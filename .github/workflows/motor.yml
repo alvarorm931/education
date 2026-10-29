@@ -1,24 +1,26 @@
 name: Motor de datos
 
-# Un solo flujo, cada dos horas. Cada paso tiene su tiempo máximo para que la ejecución completa dure menos
-# de dos horas y nunca se solape con la siguiente. Todo es reanudable: si una ejecución falla o se cancela,
+# Un solo flujo, dos veces al día (el BOE sale de madrugada; la segunda pasada recoge extraordinarios y
+# reintentos). Cada paso tiene su tiempo máximo. Todo es reanudable: si una ejecución falla o se cancela,
 # la siguiente recupera lo que faltó (días sin procesar, textos pendientes, boletines pendientes).
+# Presupuesto: GitHub Free incluye 2.000 minutos al mes en repositorios privados; este flujo está pensado para
+# quedarse en torno a 30-40 minutos al día. Las cargas históricas grandes van al servidor propio.
 
 on:
   schedule:
-    - cron: "17 */2 * * *"
+    - cron: "47 6 * * *"   # 07:47 / 08:47 en Madrid según horario
+    - cron: "47 13 * * *"  # 14:47 / 15:47 en Madrid
   workflow_dispatch:
     inputs:
       minutos_textos:
         description: "Minutos máximos para textos del BOE"
-        default: "60"
+        default: "10"
       minutos_autonomicos:
         description: "Minutos máximos para boletines autonómicos"
-        default: "30"
+        default: "5"
 
 permissions:
   contents: write
-  actions: write
 
 concurrency:
   group: rama-datos
@@ -27,10 +29,10 @@ concurrency:
 jobs:
   motor:
     runs-on: ubuntu-latest
-    timeout-minutes: 115
+    timeout-minutes: 60
     env:
-      MIN_TEXTOS: ${{ inputs.minutos_textos || '60' }}
-      MIN_AUTONOMICOS: ${{ inputs.minutos_autonomicos || '30' }}
+      MIN_TEXTOS: ${{ inputs.minutos_textos || '10' }}
+      MIN_AUTONOMICOS: ${{ inputs.minutos_autonomicos || '5' }}
     steps:
       - uses: actions/checkout@v4
 
@@ -77,7 +79,6 @@ jobs:
 
       - name: BOE, textos de anuncios de oposiciones
         run: |
-          python -c "from pathlib import Path; from motor.boe.texto import pendientes; print(len(pendientes(Path('salida'))))" > pendientes_antes.txt
           python -m motor.boe.texto --pendientes --salida salida --max-minutos "$MIN_TEXTOS" | tail -n 8 || true
           ./guardar.sh "BOE: textos de anuncios"
 
@@ -85,7 +86,7 @@ jobs:
         run: |
           Y=$(TZ=Europe/Madrid date +%Y)
           # Originales: solo huella hasta tener almacén externo (R2); la API permite volver a pedirlos.
-          python -m motor.autonomicos.boja --desde-anio "$Y" --hasta-anio "$Y" --sin-guardar-original --salida salida --max-minutos 10 | tail -n 5 || true
+          python -m motor.autonomicos.boja --desde-anio "$Y" --hasta-anio "$Y" --sin-guardar-original --salida salida --max-minutos 8 | tail -n 5 || true
           ./guardar.sh "BOJA: año en curso"
           python -m motor.autonomicos.boja --desde-anio 2022 --hasta-anio $((Y-1)) --sin-guardar-original \
             --salida salida --max-minutos "$MIN_AUTONOMICOS" | tail -n 5 || true
@@ -108,17 +109,3 @@ jobs:
               sys.exit(1)
           print("Sin huecos en el BOE. Anuncios sin texto:", h.get("anuncios_sin_texto"))
           EOF
-
-      - name: Encadenar la siguiente ejecución si queda carga histórica
-        # Respaldo por si la programación horaria de GitHub se retrasa o se salta una ejecución.
-        # Solo se encadena si esta ejecución ha avanzado, para no gastar minutos en bucle.
-        if: always()
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          ANTES=$(cat pendientes_antes.txt 2>/dev/null || echo 0)
-          AHORA=$(python -c "from pathlib import Path; from motor.boe.texto import pendientes; print(len(pendientes(Path('salida'))))")
-          echo "Textos pendientes: antes $ANTES, ahora $AHORA"
-          if [ "$AHORA" -gt 0 ] && [ "$AHORA" -lt "$ANTES" ]; then
-            gh workflow run motor.yml --repo "${{ github.repository }}" --ref main
-          fi
