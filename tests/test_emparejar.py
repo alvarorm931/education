@@ -47,3 +47,17 @@ def test_tramos_pegados_e_idiomas():
              "https://www.uji.es/en/masters/advocacia-procura/"]
     x = e.emparejar(t2, urls2)[0]
     assert x["estado"] == "unido" and "/es/" in x["url"]
+
+
+def test_misma_ficha_en_subdominios_sufijos_y_paises():
+    from motor.estudios import emparejar as e
+    assert e.misma_ficha("https://veterinaria.ucm.es/estudios/2026-27/master-libroantiguo-plan/",
+                         "https://odontologia.ucm.es/estudios/2023-24/master-libroantiguo-plazas/")
+    assert e.misma_ficha("https://www.ull.es/masteres/bioetica-bioderecho/en/", "https://www.ull.es/masteres/bioetica-bioderecho/")
+    assert e.misma_ficha("https://www.ugr.es/estudiantes/master-doctorados/master-universitario-ciencias-criminologicas-seguridad/",
+                         "https://constitucional.ugr.es/docencia/posgrados/master-universitario-ciencias-criminologicas-y-seguridad/")
+    assert not e.misma_ficha("https://www.urjc.es/estudios/master/502-abogacia-y-procura/", "https://www.cedeu.es/master-abogacia-y-procura/")
+    t = [{"codigo_ruct": "1", "nombre_oficial": "Máster Universitario en Energías Renovables por la Universidad Internacional de La Rioja"}]
+    x = e.emparejar(t, ["https://www.unir.net/ingenieria/master-energias-renovables/",
+                        "https://mexico.unir.net/ingenieria/master-energias-renovables/"])[0]
+    assert x["estado"] == "unido" and x["url"].startswith("https://www.unir.net")

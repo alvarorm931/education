@@ -64,7 +64,14 @@ def sin_modalidad(url: str) -> str:
     return MODALIDADES.sub("", url.rstrip("/"))
 
 
-IDIOMA = re.compile(r"/(es|en|ca|eu|gl|va|fr|de|it|pt|cas|cat|eng|esp)(?=/)", re.I)
+IDIOMA = re.compile(r"/(es|en|ca|eu|gl|va|fr|de|it|pt|cas|cat|eng|esp)(?=/|$)", re.I)
+# Subpáginas pegadas al nombre de la ficha (UCM: master-x-plan, master-x-plazas, master-x-acceso).
+SUFIJO_SUBPAGINA = re.compile(r"-(plan|plazas|acceso|estructura|profesorado|salidas|calendario|horarios?|matricula|"
+                              r"admision|precios?|becas|competencias|objetivos|presentacion|normativa|tfm|practicas|"
+                              r"calidad|documentacion|resultados|guias?|movilidad|acreditacion|contacto)$", re.I)
+# Sedes de otros países de la misma universidad (mexico.unir.net): no son la oferta española.
+HOST_OTRO_PAIS = re.compile(r"^(mexico|colombia|peru|ecuador|chile|argentina|bolivia|paraguay|uruguay|venezuela|"
+                            r"guatemala|panama|costarica|dominicana|latam|usa|us|mx|co|pe|ec|cl|ar)\.", re.I)
 
 
 def sin_idioma(url: str) -> str:
@@ -72,16 +79,25 @@ def sin_idioma(url: str) -> str:
     return IDIOMA.sub("", sin_modalidad(url))
 
 
+def _tramo_ficha(url: str) -> set[str]:
+    ultimo = urlparse(url).path.rstrip("/").rsplit("/", 1)[-1]
+    return palabras_url("/" + SUFIJO_SUBPAGINA.sub("", ultimo))
+
+
 def misma_ficha(a: str, b: str) -> bool:
     """Dos URL de la misma ficha: iguales sin idioma ni modalidad, una cuelga de la otra, o mismo último
-    tramo en el mismo dominio (uchceu.es/master-x/ y uchceu.es/fr/master/master-x/)."""
+    tramo (con las mismas palabras, sin sufijos de subpágina) en el mismo dominio registrado
+    (uchceu.es/master-x/ y uchceu.es/fr/master/master-x/; veterinaria.ucm.es/…/master-x-plan y
+    odontologia.ucm.es/…/master-x-plazas)."""
     if not a or not b:
         return False
     x, y = sin_idioma(a).rstrip("/"), sin_idioma(b).rstrip("/")
     if x == y or x.startswith(y + "/") or y.startswith(x + "/"):
         return True
-    ua, ub = urlparse(x), urlparse(y)
-    return ua.netloc == ub.netloc and ua.path.rsplit("/", 1)[-1] == ub.path.rsplit("/", 1)[-1] != ""
+    if dominio_registrado(a) != dominio_registrado(b):
+        return False
+    ta, tb = _tramo_ficha(x), _tramo_ficha(y)
+    return bool(ta) and ta == tb and (len(ta) >= 2 or any(len(w) >= 10 for w in ta))
 
 
 def _en(w: str, url: set[str]) -> bool:
@@ -109,7 +125,7 @@ def emparejar(titulos: list[dict], urls: list[str], textos: dict[str, str] | Non
     """textos: URL → texto del enlace que lleva a ella («Máster Universitario en …»). Cuando lo hay, se
     compara con el nombre oficial en vez de la URL (muchas webs usan URL opacas: ?id=3329, /1371206754147/)."""
     textos = textos or {}
-    raices = sorted({raiz_programa(u) for u in urls})
+    raices = sorted({raiz_programa(u) for u in urls if not HOST_OTRO_PAIS.match(urlparse(u).netloc)})
     texto_raiz: dict[str, str] = {}
     for u, t in textos.items():
         texto_raiz.setdefault(raiz_programa(u), t)
@@ -123,7 +139,9 @@ def emparejar(titulos: list[dict], urls: list[str], textos: dict[str, str] | Non
         # la misma ficha en varias modalidades o idiomas no es un empate: son la misma oferta
         if puntos:
             iguales = [u for p, u in puntos if p == mejor[0] and misma_ficha(u, mejor[1])]
-            mejor = (mejor[0], min(iguales, key=lambda u: (not re.search(r"/(es|cas|esp)/", u), len(u))))
+            mejor = (mejor[0], min(iguales, key=lambda u: (bool(SUFIJO_SUBPAGINA.search(urlparse(u).path.rstrip("/"))),
+                                                           bool(IDIOMA.search(u)) and not re.search(r"/(es|cas|esp)(/|$)", u),
+                                                           not urlparse(u).netloc.startswith("www."), len(u))))
         rivales = [p for p, u in puntos if not misma_ficha(u, mejor[1] or "")]
         segundo = rivales[0] if rivales else 0.0
         # una URL por modalidad (presencial, online…), la de castellano si hay varias lenguas
