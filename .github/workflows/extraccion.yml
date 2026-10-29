@@ -1,0 +1,102 @@
+name: Extracción con Claude (prueba)
+
+# Único flujo que recibe el secreto ANTHROPIC_API_KEY, y solo en el paso que llama a la API.
+# Tanda de prueba de la extracción de fichas de másters (motor/estudios/extraer.py, lote de Claude Haiku):
+# comprueba que la clave funciona y mide el coste real con los tokens que devuelve la API. Las páginas de los
+# centros no se publican: solo el resumen, el uso por petición y los valores sin su cita.
+
+on:
+  workflow_dispatch:
+    inputs:
+      oferta:
+        description: "Carpeta de la rama sondas con el rastreo (un JSON por dominio)"
+        default: "20261029T185308/datos/estudios/oferta_web"
+      dominios:
+        description: "Dominios separados por comas (vacío: los de la prueba)"
+        default: ""
+      por_dominio:
+        description: "Fichas por dominio"
+        default: "2"
+      maximo:
+        description: "Máximo de páginas en el lote"
+        default: "20"
+      esperar_min:
+        description: "Minutos de espera al lote"
+        default: "75"
+      recoger:
+        description: "Id de un lote ya enviado (solo recoger)"
+        default: ""
+
+permissions:
+  contents: write
+
+concurrency:
+  group: extraccion-claude
+  cancel-in-progress: false
+
+jobs:
+  prueba:
+    runs-on: ubuntu-latest
+    timeout-minutes: 95
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -e ".[estudios]"
+      - name: Traer el rastreo
+        env:
+          OFERTA: ${{ inputs.oferta }}
+        run: |
+          git fetch -q --depth 1 --filter=blob:none origin sondas
+          mkdir -p entrada
+          git archive FETCH_HEAD "$OFERTA" | tar -x -C entrada
+          ls "entrada/$OFERTA" | wc -l
+      - name: Lote de prueba
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          OFERTA: ${{ inputs.oferta }}
+          DOMINIOS: ${{ inputs.dominios }}
+          POR_DOMINIO: ${{ inputs.por_dominio }}
+          MAXIMO: ${{ inputs.maximo }}
+          ESPERAR: ${{ inputs.esperar_min }}
+          RECOGER: ${{ inputs.recoger }}
+        run: |
+          mkdir -p out
+          ARGS=(--salida out --esperar-min "$ESPERAR")
+          if [ -n "$RECOGER" ]; then ARGS+=(--recoger "$RECOGER")
+          else
+            ARGS+=(--oferta "entrada/$OFERTA" --por-dominio "$POR_DOMINIO" --maximo "$MAXIMO")
+            [ -n "$DOMINIOS" ] && ARGS+=(--dominios "$DOMINIOS")
+          fi
+          set -o pipefail
+          python -m motor.ia.prueba_extraccion "${ARGS[@]}" 2>&1 | tee out/salida.txt
+      - name: Resumen
+        if: always()
+        run: |
+          R=out/datos/ia/prueba_extraccion/resumen.json
+          if [ -f "$R" ]; then
+            echo "::notice title=Prueba de extracción::$(python -c "import json;r=json.load(open('$R'));print(json.dumps({k:r[k] for k in ('lote','estado','resultados','tokens','coste_usd','coste_por_pagina_usd','proyeccion_usd','campos','campos_aceptados','paginas_no_programa','cortadas_por_max_tokens')}))")"
+          else
+            echo "::notice title=Prueba de extracción::$(tail -c 900 out/salida.txt | tr '\n' ' ')"
+          fi
+      - name: Subir a la rama sondas
+        if: always()
+        run: |
+          STAMP=$(date -u +%Y%m%dT%H%M%S)
+          mkdir -p "pub/$STAMP"
+          cp out/salida.txt "pub/$STAMP/" 2>/dev/null || true
+          [ -d out/datos ] && cp -r out/datos "pub/$STAMP/"
+          cd pub
+          git init -q && git config user.name "motor-ia" && git config user.email "motor-ia@users.noreply.github.com"
+          git remote add origin "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git"
+          if git fetch -q --depth 1 origin sondas; then git reset -q FETCH_HEAD; fi
+          git checkout -q -B sondas
+          git add "$STAMP" && git commit -qm "Prueba de extracción con Claude"
+          for i in 1 2 3 4 5 6; do
+            git push -q origin sondas && exit 0
+            sleep $((i * 10))
+            git fetch -q --depth 1 origin sondas && git reset -q FETCH_HEAD && git add "$STAMP" \
+              && git commit -qm "Prueba de extracción con Claude" || true
+          done
+          exit 1
