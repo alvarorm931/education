@@ -16,7 +16,7 @@ import traceback
 from datetime import date
 from pathlib import Path
 
-from motor.archivo import Archivo
+from motor.archivo import Archivo, solo_huella_por_defecto
 from motor.autonomicos import boc, bopv
 from motor.autonomicos.comun import descargar_textos
 from motor.http import obtener
@@ -74,7 +74,7 @@ def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser()
     p.add_argument("--salida", type=Path, default=Path("."))
     a = p.parse_args(argv)
-    raiz, archivo = a.salida, Archivo(a.salida / "archivo", indice_por_fuente=True)
+    raiz, archivo = a.salida, Archivo(a.salida / "archivo", indice_por_fuente=True, solo_huella=solo_huella_por_defecto())
     resultado, fallos = {}, 0
     pruebas = (("boc", lambda: prueba_boc(raiz, archivo)), ("bopv", lambda: prueba_bopv(raiz, archivo)),
                ("bucles", lambda: prueba_bucles(raiz)))

@@ -26,7 +26,7 @@ from datetime import date, datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
-from motor.archivo import Archivo
+from motor.archivo import Archivo, solo_huella_por_defecto
 from motor.boe.clasificar import REGLAS_ACTO, REGLAS_MODALIDAD, _primera, alcance, normalizar
 from motor.http import obtener
 from motor.limpieza import limpiar_html
@@ -165,7 +165,7 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--max-minutos", type=float, default=0)
     a = p.parse_args(argv)
 
-    archivo = Archivo(a.salida / "archivo", indice_por_fuente=True)
+    archivo = Archivo(a.salida / "archivo", indice_por_fuente=True, solo_huella=solo_huella_por_defecto())
     inicio, informes = time.monotonic(), []
     for anio in range(a.desde_anio, a.hasta_anio + 1):
         try:

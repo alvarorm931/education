@@ -16,7 +16,7 @@ import traceback
 from datetime import date
 from pathlib import Path
 
-from motor.archivo import Archivo
+from motor.archivo import Archivo, solo_huella_por_defecto
 from motor.autonomicos import boa, bocyl, boib, bome, borm, docm, doe, dog, dogc, dogv
 from motor.autonomicos.comun import descargar_textos
 
@@ -58,7 +58,7 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--salida", type=Path, default=Path("."))
     p.add_argument("--solo", nargs="*", help="conectores a probar (por defecto, todos)")
     a = p.parse_args(argv)
-    raiz, archivo = a.salida, Archivo(a.salida / "archivo", indice_por_fuente=True)
+    raiz, archivo = a.salida, Archivo(a.salida / "archivo", indice_por_fuente=True, solo_huella=solo_huella_por_defecto())
     hoy = date.today()
     resultado, fallos = {}, 0
 

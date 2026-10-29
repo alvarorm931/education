@@ -31,7 +31,7 @@ from zoneinfo import ZoneInfo
 
 import requests
 
-from motor.archivo import Archivo
+from motor.archivo import Archivo, solo_huella_por_defecto
 from motor.autonomicos.comun import (clasificar, convocante_de_organismo, descargar_textos, es_empleo_por_titulo,
                                      es_resultado, escribir_json, escribir_jsonl, leer_jsonl)
 from motor.boe.clasificar import normalizar
@@ -216,7 +216,7 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--max-minutos", type=float, default=0)
     p.add_argument("--pausa", type=float, default=0.8)
     a = p.parse_args(argv)
-    archivo = Archivo(a.salida / "archivo", indice_por_fuente=True)
+    archivo = Archivo(a.salida / "archivo", indice_por_fuente=True, solo_huella=solo_huella_por_defecto())
 
     if a.textos:
         pend = textos_pendientes(a.salida)

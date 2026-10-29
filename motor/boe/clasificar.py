@@ -41,35 +41,61 @@ def ambito(departamento: str | None) -> str:
 
 # Orden importante: la primera regla que encaja gana.
 REGLAS_ACTO: list[tuple[str, tuple[str, ...]]] = [
+    # Castellano y, a continuación de cada regla, catalán/valenciano y gallego (textos sin tildes, en minúscula)
     ("correccion", ("correccion de error", "correccion de las bases", "correccion de errata", "se corrigen errores",
                     "se corrigen los errores", "se corrige error", "se corrige el error", "rectificacion de error",
-                    "se subsanan errores")),
-    ("desierta", ("desierta", "desierto")),
-    ("anulacion", ("deja sin efecto", "se anula", "anulacion de la convocatoria")),
+                    "se subsanan errores",
+                    "correccio d'errade", "correccio d'error", "correccio de les bases", "rectificacio d'error",
+                    "correccion de erros", "correccion das bases")),
+    ("desierta", ("desierta", "desierto", "deserta", "desert")),
+    ("anulacion", ("deja sin efecto", "se anula", "anulacion de la convocatoria",
+                   "deixa sense efecte", "deixar sense efecte", "anul·lacio de la convocatoria", "anul·lar la convocatoria",
+                   "deixar sen efecto", "deixa sen efecto", "anulacion da convocatoria")),
     ("modificacion", ("se modifica la resolucion", "se modifica la orden", "se modifica la convocatoria",
                       "modificacion de la convocatoria", "se amplia el plazo", "ampliacion del plazo",
-                      "se abre un nuevo plazo", "apertura de un nuevo plazo")),
-    ("oferta_empleo", ("oferta de empleo publico",)),
+                      "se abre un nuevo plazo", "apertura de un nuevo plazo",
+                      "modificacio de les bases", "modificacio de la convocatoria", "es modifica la convocatoria",
+                      "es modifiquen les bases", "ampliacio del termini", "obertura d'un nou termini",
+                      "nou termini de presentacio",
+                      "modificacion da convocatoria", "modificacion das bases", "ampliacion do prazo",
+                      "novo prazo de presentacion")),
+    ("oferta_empleo", ("oferta de empleo publico", "oferta publica d'ocupacio", "oferta d'ocupacio publica",
+                       "oferta de ocupacio publica", "oferta de emprego publico", "oferta publica de emprego")),
     ("normativa", ("normas procedimentales", "por la que se establecen las normas")),
     ("admitidos", ("admitidos y excluidos", "admitidas y excluidas", "lista provisional", "lista definitiva",
-                   "relacion provisional", "relacion definitiva de aspirantes admitidos")),
-    ("aprobados", ("aprobados", "aprobadas", "superado el proceso", "han superado", "seleccionados", "seleccionadas")),
-    ("nombramiento", ("se nombra", "nombramiento", "nombran funcionari", "toma de posesion", "se promociona")),
+                   "relacion provisional", "relacion definitiva de aspirantes admitidos",
+                   "admeses i excloses", "admesos i exclosos", "admesos i excloses", "admeses i exclosos",
+                   "llista provisional", "llista definitiva", "llistat provisional", "llistat definitiu",
+                   "llistes provisionals", "llistes definitives", "relacio provisional", "relacio definitiva",
+                   "admitidos e excluidos", "admitidas e excluidas", "listaxe provisional", "listaxe definitiva")),
+    ("aprobados", ("aprobados", "aprobadas", "superado el proceso", "han superado", "seleccionados", "seleccionadas",
+                   "aspirants aprovats", "persones aprovades", "relacio d'aprovats", "llista d'aprovats",
+                   "han superat", "superat el proces", "seleccionats")),
+    ("nombramiento", ("se nombra", "nombramiento", "nombran funcionari", "toma de posesion", "se promociona",
+                      "nomenament", "es nomena", "presa de possessio", "nomeamento", "nomease")),
     ("tribunal", ("tribunal calificador", "composicion del tribunal", "tribunal que ha de juzgar", "comision de seleccion",
-                  "organo de seleccion", "comision evaluadora", "composicion de la comision")),
-    ("examen", ("fecha de celebracion", "fecha, hora y lugar", "lugar, fecha y hora", "primer ejercicio")),
-    ("convocatoria", ("se convoca", "convocatoria", "convoca proceso", "convoca concurso", "proceso selectivo")),
+                  "organo de seleccion", "comision evaluadora", "composicion de la comision",
+                  "tribunal qualificador", "composicio del tribunal", "organ de seleccio", "organ qualificador",
+                  "comissio de seleccio", "comissio qualificadora", "tribunal cualificador",
+                  "composicion do tribunal")),
+    ("examen", ("fecha de celebracion", "fecha, hora y lugar", "lugar, fecha y hora", "primer ejercicio",
+                "data de realitzacio", "data, hora i lloc", "lloc, data i hora", "primer exercici",
+                "data, hora e lugar", "lugar, data e hora", "primeiro exercicio")),
+    ("convocatoria", ("se convoca", "convocatoria", "convoca proceso", "convoca concurso", "proceso selectivo",
+                      "es convoca", "es convoquen", "proces selectiu", "proces de seleccio", "convocase")),
     ("bases", ("bases",)),
 ]
 
 REGLAS_MODALIDAD: list[tuple[str, tuple[str, ...]]] = [
-    ("estabilizacion", ("estabilizacion",)),
-    ("promocion_interna", ("promocion interna",)),
-    ("concurso_oposicion", ("concurso-oposicion", "concurso oposicion")),
-    ("libre_designacion", ("libre designacion",)),
-    ("concurso", ("concurso de meritos", "concurso especifico", "concurso general", "por concurso")),
-    ("oposicion", ("oposicion",)),
-    ("bolsa", ("bolsa de empleo", "bolsa de trabajo")),
+    ("estabilizacion", ("estabilizacion", "estabilitzacio")),
+    ("promocion_interna", ("promocion interna", "promocio interna")),
+    ("concurso_oposicion", ("concurso-oposicion", "concurso oposicion", "concurs-oposicio", "concurs oposicio")),
+    ("libre_designacion", ("libre designacion", "lliure designacio")),
+    ("concurso", ("concurso de meritos", "concurso especifico", "concurso general", "por concurso",
+                  "concurs de merits", "concurs especific", "per concurs")),
+    ("oposicion", ("oposicion", "oposicio")),
+    ("bolsa", ("bolsa de empleo", "bolsa de trabajo", "borsa de treball", "borsa d'ocupacio", "borsa d'aspirants",
+               "borsa de personal", "borsa de", "bolsa de emprego")),
 ]
 
 
@@ -137,9 +163,13 @@ def alcance(titulo_norm: str, modalidad: str | None, epigrafe: str | None) -> st
     ep = normalizar(epigrafe or "")
     if modalidad in {"libre_designacion"} or "provision de puesto" in titulo_norm or "concursos de traslados" in titulo_norm \
             or "procedimientos de libre designacion" in ep or ep == "personal funcionario. concursos" \
-            or (modalidad == "concurso" and "plaza" not in titulo_norm):
+            or "provisio de lloc" in titulo_norm or "concurs de trasllats" in titulo_norm \
+            or "provision de posto" in titulo_norm \
+            or ("comissio de serveis" in titulo_norm and "acces" not in titulo_norm) \
+            or (modalidad == "concurso" and not any(p in titulo_norm for p in ("plaza", "placa", "places", "praza"))):
         return "provision_puestos"
-    if "cuerpos docentes universitarios" in ep or "profesor titular" in titulo_norm or "catedratic" in titulo_norm:
+    if "cuerpos docentes universitarios" in ep or "profesor titular" in titulo_norm or "catedratic" in titulo_norm \
+            or "professor titular" in titulo_norm:
         return "docente_universitario"
     if modalidad == "promocion_interna":
         return "promocion_interna"

@@ -28,7 +28,7 @@ from datetime import date, datetime, timedelta
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
-from motor.archivo import Archivo
+from motor.archivo import Archivo, solo_huella_por_defecto
 from motor.autonomicos.comun import (clasificar, convocante_de_organismo, es_empleo_por_titulo, es_resultado,
                                      escribir_json, escribir_jsonl)
 from motor.boe.clasificar import normalizar
@@ -156,7 +156,7 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--max-minutos", type=float, default=0)
     p.add_argument("--pausa", type=float, default=1.0)
     a = p.parse_args(argv)
-    archivo = Archivo(a.salida / "archivo", indice_por_fuente=True)
+    archivo = Archivo(a.salida / "archivo", indice_por_fuente=True, solo_huella=solo_huella_por_defecto())
     inicio, informes, d = time.monotonic(), [], a.desde
     while d <= a.hasta:
         if a.max_minutos and (time.monotonic() - inicio) / 60 > a.max_minutos:

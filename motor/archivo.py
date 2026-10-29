@@ -2,6 +2,10 @@
 
 Estructura: {raiz}/{fuente}/{AAAA}/{MM}/{DD}/{sha256}.{ext}[.gz]
 La huella sha256 es la del contenido original; si se comprime, se guarda en gzip sin alterar el contenido.
+Mientras el archivo viva en un repositorio público (la rama «datos» de GitHub), los conectores de boletines
+lo abren con solo_huella=True: del original se anotan la huella, la URL, el tamaño y la fecha de captura, pero no
+se guarda el contenido, porque los boletines traen datos de personas (listas de admitidos, nombramientos) que el
+proyecto nunca guarda ni publica. Con un almacén privado (MOTOR_ORIGINALES=completo) se guarda entero.
 Índice de capturas (una línea por captura):
   - por defecto, {raiz}/indice.jsonl;
   - con indice_por_fuente=True, {raiz}/indices/{fuente}/{AAAA-MM}.jsonl. Así dos flujos que trabajan a la vez
@@ -13,14 +17,21 @@ from __future__ import annotations
 import gzip
 import hashlib
 import json
+import os
 from datetime import date, datetime, timezone
 from pathlib import Path
 
 
+def solo_huella_por_defecto() -> bool:
+    """Sin almacén privado configurado, los originales de boletines se registran solo por su huella."""
+    return os.environ.get("MOTOR_ORIGINALES", "huella") != "completo"
+
+
 class Archivo:
-    def __init__(self, raiz: Path | str, indice_por_fuente: bool = False):
+    def __init__(self, raiz: Path | str, indice_por_fuente: bool = False, solo_huella: bool = False):
         self.raiz = Path(raiz)
         self.indice_por_fuente = indice_por_fuente
+        self.solo_huella = solo_huella
 
     def _anotar(self, registro: dict, fuente: str, fecha_ref: date) -> None:
         if self.indice_por_fuente:
@@ -42,6 +53,8 @@ class Archivo:
         cabeceras: dict[str, str] | None = None,
         comprimir: bool = True,
     ) -> dict:
+        if self.solo_huella:
+            return self.registrar(fuente, fecha_ref, contenido, url, status, cabeceras)
         sha = hashlib.sha256(contenido).hexdigest()
         carpeta = self.raiz / fuente / f"{fecha_ref:%Y}" / f"{fecha_ref:%m}" / f"{fecha_ref:%d}"
         ruta = carpeta / (f"{sha}.{ext}.gz" if comprimir else f"{sha}.{ext}")

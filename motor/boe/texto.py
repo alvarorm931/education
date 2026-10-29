@@ -4,10 +4,11 @@ Uso:
   python -m motor.boe.texto --ids BOE-A-2026-20413,BOE-A-2026-20626 --salida ruta/
   python -m motor.boe.texto --pendientes --salida ruta/ --max-minutos 300
 
-El original completo se guarda en archivo/boe-texto/ (privado). En datos/boe/textos/AAAA/MM/{id}.json
+Del original se anota la huella en archivo/indices/boe-texto/ (el contenido solo se guarda con almacén privado). En datos/boe/textos/AAAA/MM/{id}.json
 se guarda el texto con estas reglas:
   - tablas con datos de personas (DNI, apellidos, nombre): solo número de filas y cabecera;
-  - párrafos con un documento de identidad: se cuentan y no se guardan;
+  - párrafos con un documento de identidad o con el nombre de una persona («don ...»): se cuentan y no se guardan;
+  - en el título, el nombre de la persona se sustituye por «[persona]»;
   - referencias a otras disposiciones (bloque «análisis» del BOE): se guardan, sirven para unir actos.
 """
 
@@ -23,7 +24,7 @@ from datetime import date, datetime, timedelta
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
-from motor.archivo import Archivo
+from motor.archivo import Archivo, solo_huella_por_defecto
 from motor.http import obtener
 
 URL_XML = "https://www.boe.es/diario_boe/xml.php?id={id}"
@@ -31,7 +32,7 @@ RE_ID = re.compile(r"^BOE-[AB]-\d{4}-\d+$")
 FUENTE = "boe-texto"
 MADRID = ZoneInfo("Europe/Madrid")
 
-from motor.limpieza import CABECERA_PERSONAL, RE_DOCUMENTO  # noqa: E402  (reglas comunes)
+from motor.limpieza import CABECERA_PERSONAL, RE_DOCUMENTO, tiene_nombre_de_persona, titulo_sin_nombres  # noqa: E402
 
 
 def _limpio(nodo: ET.Element) -> str:
@@ -69,7 +70,7 @@ def texto_plano(xml: bytes) -> dict:
                 t = _limpio(nodo)
                 if not t:
                     continue
-                if RE_DOCUMENTO.search(t):
+                if RE_DOCUMENTO.search(t) or tiene_nombre_de_persona(t):
                     omitidos += 1
                 else:
                     parrafos.append(t)
@@ -87,7 +88,7 @@ def texto_plano(xml: bytes) -> dict:
             })
 
     return {
-        "titulo": m("titulo"),
+        "titulo": titulo_sin_nombres(m("titulo")),
         "fecha_publicacion": m("fecha_publicacion"),
         "departamento": m("departamento"),
         "rango": m("rango"),
@@ -181,7 +182,7 @@ def main(argv: list[str] | None = None) -> int:
     if a.max:
         trabajo = trabajo[: a.max]
 
-    archivo = Archivo(a.salida / "archivo", indice_por_fuente=True)
+    archivo = Archivo(a.salida / "archivo", indice_por_fuente=True, solo_huella=solo_huella_por_defecto())
     inicio, hechos, errores = time.monotonic(), 0, []
     print(f"Documentos a descargar: {len(trabajo)}")
     for i, (ident, _) in enumerate(trabajo):

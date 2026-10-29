@@ -182,7 +182,7 @@ def municipio(nombre: str | None, provincia_codigo: str | None = None, comunidad
             "comunidad_codigo": ccaa, "comunidad": COMUNIDADES[ccaa]}
 
 
-RE_BOP = re.compile(r"Bolet[ií]n Oficial de la Provincia de (?P<p>.+)$", re.IGNORECASE)
+RE_BOP = re.compile(r"(?:Bolet[ií]n|Butllet[ií]) Oficial d(?:e la|a) Prov[ií]ncia de (?P<p>.+)$", re.IGNORECASE)
 
 
 def provincia_de_boletin(nombre_boletin: str | None) -> dict | None:

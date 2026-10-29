@@ -29,7 +29,7 @@ from datetime import date, datetime, timedelta
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
-from motor.archivo import Archivo
+from motor.archivo import Archivo, solo_huella_por_defecto
 from motor.boe.clasificar import REGLAS_ACTO, REGLAS_MODALIDAD, _primera, alcance, normalizar
 from motor.http import obtener
 from motor.limpieza import parrafos_seguros
@@ -222,7 +222,7 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--max-minutos", type=float, default=0)
     p.add_argument("--pausa", type=float, default=0.7)
     a = p.parse_args(argv)
-    archivo = Archivo(a.salida / "archivo", indice_por_fuente=True)
+    archivo = Archivo(a.salida / "archivo", indice_por_fuente=True, solo_huella=solo_huella_por_defecto())
 
     if a.textos:
         hechos, errores = descargar_textos(a.salida, archivo, a.max_minutos, a.pausa)

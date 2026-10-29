@@ -20,16 +20,28 @@ from pathlib import Path
 from motor.archivo import Archivo
 from motor.boe.clasificar import REGLAS_ACTO, REGLAS_MODALIDAD, _primera, alcance, normalizar
 from motor.http import obtener
+from motor.limpieza import titulo_sin_nombres
 
+# Castellano, catalán/valenciano y gallego (texto normalizado: sin tildes y en minúscula). «Plaça» sola no cuenta:
+# también es la plaza de un pueblo («plaça de l'Ajuntament»).
 RE_EMPLEO_LOCAL = re.compile(
     r"\b(plazas?|convocatoria|bases|seleccion|bolsa|oposicion|concurso|proceso selectivo|personal|funcionari\w*|"
-    r"laboral fij\w*|empleo publico|oferta\w* (?:\w+ ){0,3}de empleo|tribunal|aspirantes)\b")
+    r"laboral fij\w*|empleo publico|oferta\w* (?:\w+ ){0,3}de empleo|tribunal|aspirantes|"
+    r"places|seleccio|borsa|oposicio|concurs|proces selectiu|proces de seleccio|ocupacio publica|"
+    r"oferta\w* (?:\w+ ){0,3}d'ocupacio|aspirants|prazas?|persoal|emprego publico|oferta\w* (?:\w+ ){0,3}de emprego)\b")
 RE_NO_EMPLEO = re.compile(
     r"\b(subvencion\w*|licencia\w*|urbanis\w*|ordenanza\w*|presupuesto\w*|expropiacion\w*|contratacion de (?:obras|servicios|suministro)\w*|"
     r"licitacion\w*|ayudas?|premios?|becas?|cuenta general|padron|tasas?|impuestos?|proyectos? de obras?|"
-    r"ejecucion de (?:las )?obras|remodelacion|relacion de puestos de trabajo)\b")
+    r"ejecucion de (?:las )?obras|remodelacion|relacion de puestos de trabajo|viviendas?|alquiler\w*|juez\w* de paz|"
+    r"subvencio\w*|llicencia\w*|ordenanca\w*|pressupost\w*|expropiacio\w*|"
+    r"contractacio de (?:les )?(?:obres|serveis|subministra)\w*|licitacio\w*|ajuts?|premis?|beques?|compte general|"
+    r"padro|taxes|impostos?|projectes? d'obres?|execucio de (?:les )?obres|relacio de llocs de treball|"
+    r"habitatges?|lloguer\w*|jutge\w* de pau|jutge/essa de pau|"
+    r"licenza\w*|orzamento\w*|axudas?|bolsas? de estudos?|vivendas?|xuiz\w* de paz)\b")
 RE_RESULTADO = re.compile(
-    r"\b(funcionari[oa]s? de carrera|personal laboral fijo|proceso selectivo|pruebas selectivas|aspirantes)\b")
+    r"\b(funcionari[oa]s? de carrera|personal laboral fijo|proceso selectivo|pruebas selectivas|aspirantes|"
+    r"funcionari\w*(?:/\w+)? de carrera|personal laboral fix|proces selectiu|proves selectives|aspirants|"
+    r"funcionari[oa]s? de carreira|persoal laboral fixo|probas selectivas)\b")
 
 PARTICULAS = {"de", "del", "la", "las", "los", "el", "y", "e", "en", "a", "o"}
 
@@ -47,6 +59,29 @@ TIPOS_ENTIDAD = (
     ("cabildo insular de ", "Cabildo Insular"),
     ("consell insular de ", "Consell Insular"),
     ("patronato ", "Patronato"),
+    # Catalán y valenciano
+    ("ajuntament del ", "Ayuntamiento", "el "),
+    ("ajuntament dels ", "Ayuntamiento", "els "),
+    ("ajuntament de ", "Ayuntamiento"),
+    ("ajuntament d'", "Ayuntamiento"),
+    ("diputacio de ", "Diputación Provincial"),
+    ("diputacio provincial de ", "Diputación Provincial"),
+    ("consell comarcal del ", "Consejo Comarcal"),
+    ("consell comarcal de ", "Consejo Comarcal"),
+    ("consell comarcal d'", "Consejo Comarcal"),
+    ("mancomunitat ", "Mancomunidad"),
+    ("consorci ", "Consorcio"),
+    ("entitat municipal descentralitzada de ", "Entidad Local Menor"),
+    ("entitat municipal descentralitzada d'", "Entidad Local Menor"),
+    ("area metropolitana de ", "Área Metropolitana"),
+    # Gallego
+    ("concello da ", "Ayuntamiento", "A "),
+    ("concello do ", "Ayuntamiento", "O "),
+    ("concello das ", "Ayuntamiento", "As "),
+    ("concello dos ", "Ayuntamiento", "Os "),
+    ("concello de ", "Ayuntamiento"),
+    ("deputacion provincial de ", "Diputación Provincial"),
+    ("deputacion de ", "Diputación Provincial"),
 )
 
 
@@ -94,10 +129,10 @@ def convocante_de_organismo(organismo: str, capitales: Iterable[str] = ()) -> di
         return None
     m = RE_PARENTESIS.match(o)
     base, provincia = (m.group("nombre"), m.group("provincia")) if m else (o, None)
-    n = normalizar(base)
-    for prefijo, tipo in TIPOS_ENTIDAD:
+    n = normalizar(base).replace("’", "'")
+    for prefijo, tipo, *articulo in TIPOS_ENTIDAD:
         if n.startswith(prefijo):
-            nombre = nombre_propio(base[len(prefijo):].strip())
+            nombre = (articulo[0] if articulo else "") + nombre_propio(base[len(prefijo):].strip())
             if provincia:
                 prov = nombre_propio(provincia)
             elif tipo == "Diputación Provincial" or normalizar(nombre) in {normalizar(c) for c in capitales}:
@@ -110,7 +145,9 @@ def convocante_de_organismo(organismo: str, capitales: Iterable[str] = ()) -> di
 
 
 def escribir_jsonl(ruta: Path, filas: list[dict]) -> None:
+    """Escribe las filas; el nombre de una persona en el título (nombramientos, notificaciones) se sustituye."""
     ruta.parent.mkdir(parents=True, exist_ok=True)
+    filas = [{**f, "titulo": titulo_sin_nombres(f["titulo"])} if f.get("titulo") else f for f in filas]
     ruta.write_text("".join(json.dumps(f, ensure_ascii=False) + "\n" for f in filas), encoding="utf-8")
 
 

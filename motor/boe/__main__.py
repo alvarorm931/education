@@ -25,7 +25,8 @@ from datetime import date, datetime, timedelta
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
-from motor.archivo import Archivo
+from motor.archivo import Archivo, solo_huella_por_defecto
+from motor.limpieza import titulo_sin_nombres
 from motor.boe import clasificar as cl
 from motor.boe.sumario import ACCEPT, ErrorSumario, parsear, url_sumario
 from motor.http import obtener
@@ -35,9 +36,12 @@ FUENTE = "boe-sumario"
 
 
 def _escribir_jsonl(ruta: Path, filas: list[dict]) -> None:
+    """Escribe las filas; el nombre de una persona en el título (nombramientos individuales) se sustituye."""
     ruta.parent.mkdir(parents=True, exist_ok=True)
     with ruta.open("w", encoding="utf-8") as f:
         for fila in filas:
+            if fila.get("titulo"):
+                fila = {**fila, "titulo": titulo_sin_nombres(fila["titulo"])}
             f.write(json.dumps(fila, ensure_ascii=False) + "\n")
 
 
@@ -153,7 +157,7 @@ def main(argv: list[str] | None = None) -> int:
         p.error("--hasta es anterior a --desde")
 
     raiz: Path = a.salida
-    archivo = Archivo(raiz / "archivo", indice_por_fuente=True)
+    archivo = Archivo(raiz / "archivo", indice_por_fuente=True, solo_huella=solo_huella_por_defecto())
     ruta_estado = raiz / "datos" / "boe" / "estado.json"
     estado = json.loads(ruta_estado.read_text(encoding="utf-8")) if ruta_estado.exists() else {}
 
