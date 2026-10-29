@@ -52,6 +52,9 @@ jobs:
     timeout-minutes: 350
     strategy:
       fail-fast: false
+      # El plan gratuito admite 20 trabajos a la vez en todo el repositorio (también los de másters):
+      # como mucho 10 boletines a la vez para dejar sitio a los demás flujos.
+      max-parallel: 10
       matrix:
         conector: ${{ fromJSON(needs.preparar.outputs.lista) }}
     concurrency:
