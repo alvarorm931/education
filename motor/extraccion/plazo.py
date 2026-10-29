@@ -11,8 +11,14 @@ Formas verificadas en convocatorias reales del BOE (2025-2026) de la AGE, comuni
   «La presentación de solicitudes deberá realizarse en el plazo de veinte días hábiles contados a partir del día
    1 de octubre de 2026.»  (inicio explícito)
 
+Lenguas: castellano, catalán/valenciano («termini de presentació de sol·licituds ... 20 dies hàbils ... a partir de
+l'endemà de la publicació») y gallego («prazo ... vinte días hábiles ... do día seguinte ao da publicación»).
+
 Reglas:
-  - Se buscan frases con «plazo», «solicitud»/«instancia» y una duración o un intervalo de fechas.
+  - Se buscan frases con «plazo» (termini, prazo), «solicitud»/«instancia» y una duración o un intervalo de fechas.
+  - El boletín desde el que cuenta se lee entre comillas, sin comillas («en el Diari Oficial de la Generalitat de
+    Catalunya») o por sus siglas (BOE, DOGC, BOPB...): el primero que sigue a «publicación» tras la duración, con
+    los que vayan unidos a él («en el DOGC y en el BOE»: depende de los dos).
   - Se descartan las que hablan de otros plazos (subsanación, alegaciones, recursos, renuncias, presentación de
     documentación tras superar el proceso, toma de posesión...).
   - El fin solo se calcula si el plazo cuenta desde la publicación en el boletín cuya fecha se conoce (el propio)
@@ -29,35 +35,66 @@ from motor.boe.clasificar import normalizar
 from motor.extraccion.texto_es import MESES, numero
 from motor.calendario import fin_de_plazo, fin_de_plazo_meses
 
-VERSION = "plazo_general_v1"
+VERSION = "plazo_general_v2"
 
-RE_FRASE = re.compile(r"(?<=[.;])\s+(?=[«(A-ZÁÉÍÓÚÑ0-9])")
-RE_DIAS = re.compile(r"(?P<n>\d{1,3}|[a-záéíóúñ]+(?:\s+y\s+[a-záéíóúñ]+)?)\s+d[ií]as\s+(?P<tipo>h[aá]biles|naturales)",
-                     re.IGNORECASE)
-RE_MESES = re.compile(r"\b(?P<n>un|una|dos|tres|cuatro|seis|\d{1,2})\s+mes(?:es)?\b", re.IGNORECASE)
+L = r"a-záéíóúñàèòïüç·"  # letras de castellano, catalán y gallego
+RE_FRASE = re.compile(r"(?<=[.;])\s+(?=[«(A-ZÁÉÍÓÚÑÀÈÒ0-9])")
+RE_DIAS = re.compile(
+    rf"(?P<n>\d{{1,3}}|[{L}]+(?:-i-[{L}]+)?(?:\s+[ye]\s+[{L}]+)?)\s+(?:d[ií]as|dies)\s+"
+    r"(?P<tipo>h[aáà]biles|h[aà]bils|feiners|naturales|naturals|naturais)", re.IGNORECASE)
+RE_MESES = re.compile(r"\b(?P<n>un|una|unha|dos|dous|dues|duas|tres|cuatro|quatre|catro|seis|sis|\d{1,2})\s+mes(?:es|os)?\b",
+                      re.IGNORECASE)
+_DE = r"(?:\s+de\s+|\s+d[\'’]\s*)"  # «de octubre», «d'octubre»
 RE_INTERVALO = re.compile(
-    r"\bdel?\s+(?:d[ií]a\s+)?(?P<d1>\d{1,2})(?:\s+de\s+(?P<m1>[a-záéíóú]+))?(?:\s+de\s+(?P<a1>\d{4}))?\s+"
-    r"(?:al|hasta\s+el)\s+(?:d[ií]a\s+)?(?P<d2>\d{1,2})\s+de\s+(?P<m2>[a-záéíóú]+)(?:\s+de\s+(?P<a2>\d{4}))?",
-    re.IGNORECASE)
+    rf"\b(?:del?|des\s+del|do)\s+(?:d[ií]a\s+)?(?P<d1>\d{{1,2}})(?:{_DE}(?P<m1>[{L}]+))?(?:\s+de\s+(?P<a1>\d{{4}}))?\s+"
+    rf"(?:al|hasta\s+el|fins\s+al|fins\s+el|ao|ata\s+o)\s+(?:d[ií]a\s+)?(?P<d2>\d{{1,2}}){_DE}(?P<m2>[{L}]+)"
+    r"(?:\s+de\s+(?P<a2>\d{4}))?", re.IGNORECASE)
 RE_INICIO_EXPLICITO = re.compile(
-    r"(?:a\s+partir\s+del|desde\s+el)\s+d[ií]a\s+(?P<d>\d{1,2})\s+de\s+(?P<m>[a-záéíóú]+)(?:\s+de\s+(?P<a>\d{4}))?",
-    re.IGNORECASE)
+    rf"(?:a\s+partir\s+del|desde\s+el|des\s+del|a\s+partir\s+do|desde\s+o)\s+d[ií]a\s+(?P<d>\d{{1,2}}){_DE}(?P<m>[{L}]+)"
+    r"(?:\s+de\s+(?P<a>\d{4}))?", re.IGNORECASE)
 RE_FIN_EXPLICITO = re.compile(
-    r"(?:finaliza\w*|termina\w*|concluy\w*|concluir\w*|vence\w*)[^.;]{0,60}?\bel\s+(?:d[ií]a\s+)?(?P<d>\d{1,2})\s+de\s+"
-    r"(?P<m>[a-záéíóú]+)(?:\s+de\s+(?P<a>\d{4}))?", re.IGNORECASE)
+    r"(?:finaliza\w*|finalitza\w*|termina\w*|concluy\w*|concluir\w*|conclou\w*|vence\w*|remata\w*|acabar[aà]\w*)"
+    rf"[^.;]{{0,60}}?\b(?:el|o)\s+(?:d[ií]a\s+)?(?P<d>\d{{1,2}}){_DE}(?P<m>[{L}]+)(?:\s+de\s+(?P<a>\d{{4}}))?",
+    re.IGNORECASE)
 RE_BOLETIN = re.compile(r"[«\"“](?P<b>(?:Boletín|Bolet[ií]n|Diario|Diari|Butlletí)[^»\"”]{3,80})[»\"”]")
+# Nombre del boletín sin comillas, como lo escriben muchos boletines autonómicos y provinciales
+RE_BOLETIN_LIBRE = re.compile(
+    r"\b(?P<b>(?:Bolet[ií]n|Diario|Diari|Butllet[ií])\s+Oficial"
+    r"(?:\s+(?:de\s+la|de\s+las|de\s+les|de\s+los|del|dels|de|da|do)?\s*[A-ZÁÉÍÓÚÑÀÈÒ][\wÀ-ÿ·'’/-]*"
+    r"(?:\s+(?:de|del|la|las|les|los|i|y)\b)*)+)")
+SIGLAS = {
+    "BOE": "Boletín Oficial del Estado", "DOGC": "Diari Oficial de la Generalitat de Catalunya",
+    "DOGV": "Diari Oficial de la Generalitat Valenciana", "DOCV": "Diari Oficial de la Comunitat Valenciana",
+    "DOG": "Diario Oficial de Galicia", "BOJA": "Boletín Oficial de la Junta de Andalucía",
+    "BOCM": "Boletín Oficial de la Comunidad de Madrid", "BOCYL": "Boletín Oficial de Castilla y León",
+    "BOA": "Boletín Oficial de Aragón", "DOE": "Diario Oficial de Extremadura",
+    "BORM": "Boletín Oficial de la Región de Murcia", "BOPV": "Boletín Oficial del País Vasco",
+    "BOIB": "Butlletí Oficial de les Illes Balears", "DOCM": "Diario Oficial de Castilla-La Mancha",
+    "BOME": "Boletín Oficial de la Ciudad de Melilla", "BOPB": "Butlletí Oficial de la Província de Barcelona",
+}
+RE_SIGLAS = re.compile(r"\b(" + "|".join(sorted(SIGLAS, key=len, reverse=True)) + r")\b")
 RE_DESDE_PUBLICACION = re.compile(
     r"(?:siguiente|siguientes)\s+(?:al?\s+)?(?:de\s+)?(?:la\s+)?(?:fecha\s+de\s+)?(?:su\s+)?(?:la\s+)?publicaci[oó]n|"
-    r"desde\s+(?:el\s+d[ií]a\s+)?(?:siguiente\s+)?(?:a|al)?\s*(?:la\s+)?(?:su\s+)?publicaci[oó]n", re.IGNORECASE)
+    r"desde\s+(?:el\s+d[ií]a\s+)?(?:siguiente\s+)?(?:a|al)?\s*(?:la\s+)?(?:su\s+)?publicaci[oó]n|"
+    r"endem[aà]\s+(?:de\s+la\s+|de\s+)?(?:seva\s+|la\s+seva\s+)?publicaci[oó]|"
+    r"seg[uü]ents?\s+(?:al|a\s+la|a)\s+(?:de\s+la\s+)?(?:seva\s+)?publicaci[oó]|"
+    r"seguinte\s+(?:ao|á|a)\s+(?:da\s+|de\s+)?(?:súa\s+|sua\s+)?publicaci[oó]n", re.IGNORECASE)
 
-EXCLUIR = ("subsan", "renuncia", "recurso", "demanda", "reclamacion", "alegacion", "han superado", "superado la fase",
-           "expirado el plazo", "finalizado el plazo", "terminado el plazo", "concluido el plazo", "lista provisional",
-           "listas provisionales", "toma de posesion", "justificacion", "acreditativ", "nombramiento",
-           "no implica nuevo", "plazo maximo", "periodo de practicas", "aportar la documentacion",
-           "desempleadas durante", "presentar la documentacion", "dentro del plazo de presentacion de instancias y",
-           "declaracion responsable", "fecha de finalizacion del plazo")
+EXCLUIR = ("subsan", "esmen", "emenda", "renuncia", "recurso de", "recurso potestativo", "recurso contencioso",
+           "interponer recurso", "recurs de", "recurs potestatiu", "recurs contencios", "demanda", "reclamacion",
+           "reclamacio", "legacion", "han superado", "han superat", "superado la fase", "superat la fase",
+           "expirado el plazo", "finalizado el plazo", "terminado el plazo", "concluido el plazo",
+           "finalitzat el termini", "expirat el termini", "lista provisional", "listas provisionales",
+           "llista provisional", "llistes provisionals", "toma de posesion", "presa de possessio", "justificacion",
+           "justificacio", "acreditativ", "nombramiento", "nomenament", "nomeamento", "no implica nuevo",
+           "plazo maximo", "termini maxim", "prazo maximo", "periodo de practicas", "periode de practiques",
+           "aportar la documentacion", "aportar la documentacio", "desempleadas durante", "presentar la documentacion",
+           "presentar la documentacio", "dentro del plazo de presentacion de instancias y", "declaracion responsable",
+           "declaracio responsable", "fecha de finalizacion del plazo")
 PREFERIR = ("presentacion de solicitudes", "presentacion de las solicitudes", "solicitudes se presentaran",
-            "solicitudes deberan presentarse", "presentacion de instancias", "plazo de presentacion")
+            "solicitudes deberan presentarse", "presentacion de instancias", "plazo de presentacion",
+            "presentacio de sol·licituds", "presentacio de les sol·licituds", "presentacio d'instancies",
+            "termini de presentacio", "prazo de presentacion")
 
 
 def frases(texto: str) -> list[str]:
@@ -76,19 +113,53 @@ def _fecha(d: str, m: str | None, a: str | None, referencia: date) -> date | Non
 
 
 def _candidata(f: str) -> bool:
-    n = normalizar(f)
-    if "plazo" not in n or not ("solicitud" in n or "instancia" in n):
+    n = normalizar(f).replace("l·l", "l·l").replace("l.l", "l·l")
+    if not any(x in n for x in ("plazo", "termini", "prazo")):
+        return False
+    if not any(x in n for x in ("solicitud", "instancia", "sol·licitud", "sollicitud", "instanci")):
         return False
     if any(x in n for x in EXCLUIR):
         return False
     return bool(RE_DIAS.search(f) or RE_MESES.search(f) or RE_INTERVALO.search(f))
 
 
-def _boletines(f: str) -> list[str]:
-    nombres = [" ".join(m.group("b").split()) for m in RE_BOLETIN.finditer(f)]
-    if re.search(r"\bBOE\b", f):
-        nombres.append("Boletín Oficial del Estado")
-    return list(dict.fromkeys(nombres))
+PARTICULAS_FINALES = re.compile(r"(?:\s+(?:de|del|la|las|les|los|i|y))+$")
+
+
+RE_UNION = re.compile(r"^[\s»\"”,]*(?:o|y|i|e|u|ou|y/o|o\s+bien)\s+(?:en\s+|a\s+)?(?:el|la|al|o|a)?\s*[«\"“]?$",
+                      re.IGNORECASE)
+
+
+def _menciones(f: str) -> list[tuple[int, int, str]]:
+    """Boletines citados en la frase, con su posición: entre comillas, sin comillas o por sus siglas."""
+    vistos: dict[str, tuple[int, int, str]] = {}
+    for m in list(RE_BOLETIN.finditer(f)) + list(RE_BOLETIN_LIBRE.finditer(f)):
+        nombre = PARTICULAS_FINALES.sub("", " ".join(m.group("b").split()))
+        k = normalizar(nombre)
+        if k not in vistos or m.start() < vistos[k][0]:
+            vistos[k] = (m.start(), m.end(), nombre)
+    for m in RE_SIGLAS.finditer(f):
+        vistos.setdefault(normalizar(SIGLAS[m.group(1)]), (m.start(), m.end(), SIGLAS[m.group(1)]))
+    return sorted(vistos.values())
+
+
+def _boletines(f: str, desde: int = 0) -> list[str]:
+    """Boletín desde el que cuenta el plazo. Si tras la duración se lee «publicación ... en el X», es X (y los que
+    vayan unidos a él: «en el BOE o en el BOJA»); si no, todos los citados en la frase. El fin solo se calcula
+    si todos son el propio."""
+    menciones = _menciones(f)
+    pub = re.compile(r"publicaci[oó]n?", re.IGNORECASE).search(f, desde)
+    if pub:
+        siguientes = [m for m in menciones if pub.start() < m[0] <= pub.end() + 160]
+        if siguientes:
+            elegidos = [siguientes[0]]
+            for m in siguientes[1:]:
+                if RE_UNION.match(f[elegidos[-1][1]:m[0]]):
+                    elegidos.append(m)
+                else:
+                    break
+            return list(dict.fromkeys(n for _, _, n in elegidos))
+    return list(dict.fromkeys(n for _, _, n in menciones))
 
 
 def extraer_plazo(texto: str, publicacion: str, boletin_propio: str | tuple[str, ...]) -> dict | None:
@@ -130,14 +201,14 @@ def extraer_plazo(texto: str, publicacion: str, boletin_propio: str | tuple[str,
     meses = RE_MESES.search(f) if not dias else None
     if dias:
         res.update({"dias": numero(dias.group("n")),
-                    "tipo": "habiles" if normalizar(dias.group("tipo")) == "habiles" else "naturales"})
+                    "tipo": "habiles" if normalizar(dias.group("tipo")) in ("habiles", "habils", "feiners") else "naturales"})
     elif meses and numero(meses.group("n")):
         res.update({"meses": numero(meses.group("n")), "tipo": "meses"})
     else:
         return None
 
     inicio_explicito = RE_INICIO_EXPLICITO.search(f)
-    boletines = _boletines(f)
+    boletines = _boletines(f, (dias or meses).end())
     if inicio_explicito:
         inicio = _fecha(inicio_explicito.group("d"), inicio_explicito.group("m"), inicio_explicito.group("a"), pub)
         if not inicio:

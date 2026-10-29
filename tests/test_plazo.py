@@ -78,3 +78,56 @@ def test_meses():
     t = "El plazo de presentación de solicitudes será de un mes a contar desde el día siguiente al de su publicación."
     p = extraer_plazo(t, "2026-10-29", BOE)
     assert p["tipo"] == "meses" and p["cuenta_desde"] == "su publicación" and p["fin_estimado"] == "2026-11-30"
+
+
+# --- Catalán, valenciano y gallego; boletines sin comillas y por siglas ---------------------------------------
+BOPB = ("Butlletí Oficial de la Província de Barcelona", "Boletín Oficial de la Provincia de Barcelona")
+DOGC = ("Diari Oficial de la Generalitat de Catalunya", "Diario Oficial de la Generalitat de Cataluña")
+
+
+def test_catalan_cuenta_desde_otro_boletin_sin_comillas():
+    # Literal del BOPB de 28/10/2026 (CVE 202610159101): el plazo cuenta desde el DOGC, no desde el BOPB
+    t = ("Havent-se aprovat per Resolució d’Alcaldia núm. 2433, de 14 d’octubre de 2026, les Bases reguladores i la "
+         "convocatòria de les proves selectives per a la provisió en propietat d’una plaça de caporal/a de la policia "
+         "local, es fa públic el present anunci i s’obre el termini de presentació de sol·licituds, que serà de 20 dies "
+         "hàbils comptats a partir de l’endemà de la publicació d’aquest anunci en el Diari Oficial de la Generalitat "
+         "de Catalunya:")
+    p = extraer_plazo(t, "2026-10-28", BOPB)
+    assert (p["dias"], p["tipo"], p["cuenta_desde"]) == (20, "habiles", "Diari Oficial de la Generalitat de Catalunya")
+    assert "fin_estimado" not in p
+    assert extraer_plazo(t, "2026-10-28", DOGC)["fin_estimado"] == "2026-11-25"
+
+
+def test_catalan_siglas_y_fechas():
+    t = ("El termini de presentació de sol·licituds és de vint dies naturals a comptar de l'endemà de la publicació "
+         "d'aquest anunci al BOPB.")
+    p = extraer_plazo(t, "2026-10-28", BOPB)
+    assert p["cuenta_desde"] == "Butlletí Oficial de la Província de Barcelona" and p["fin_estimado"] == "2026-11-17"
+    t = "El termini de presentació de sol·licituds serà del 3 al 24 de novembre de 2026, ambdós inclosos."
+    p = extraer_plazo(t, "2026-10-28", BOPB)
+    assert (p["inicio"], p["fin_estimado"], p["fin_exacto"]) == ("2026-11-03", "2026-11-24", True)
+
+
+def test_valenciano_y_gallego():
+    t = ("El termini de presentació d'instàncies serà de quinze dies hàbils, a comptar des de l'endemà de la "
+         "publicació d'aquest anunci en el Butlletí Oficial de la Província de València.")
+    p = extraer_plazo(t, "2026-10-28", ("Butlletí Oficial de la Província de València",
+                                        "Boletín Oficial de la Provincia de Valencia"))
+    assert p["dias"] == 15 and p["fin_estimado"] == "2026-11-18"
+    t = ("O prazo de presentación de solicitudes será de vinte días hábiles contados a partir do día seguinte ao da "
+         "publicación desta convocatoria no Diario Oficial de Galicia.")
+    p = extraer_plazo(t, "2026-03-02", "Diario Oficial de Galicia")
+    assert p["dias"] == 20 and p["fin_estimado"] == "2026-03-30"
+
+
+def test_castellano_sin_comillas_desde_el_boe():
+    # Bases en un boletín provincial: el plazo empieza con el extracto en el BOE (sin comillas en el texto)
+    t = ("El plazo de presentación de solicitudes será de veinte días naturales a contar desde el día siguiente al de "
+         "la publicación del extracto de la convocatoria en el Boletín Oficial del Estado.")
+    p = extraer_plazo(t, "2026-10-28", "Boletín Oficial de la Provincia de Granada")
+    assert p["cuenta_desde"] == "Boletín Oficial del Estado" and "fin_estimado" not in p
+    # «Recursos Humanos» no es un recurso administrativo: no descarta la frase
+    t = ("Las solicitudes se dirigirán a la Subdirección General de Recursos Humanos y se presentarán en el plazo de "
+         "quince días hábiles, a contar desde el siguiente al de la publicación de la presente convocatoria en el "
+         "«Boletín Oficial del Estado».")
+    assert extraer_plazo(t, "2025-11-25", BOE)["fin_estimado"] == "2025-12-17"
