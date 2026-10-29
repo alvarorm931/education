@@ -184,7 +184,8 @@ def recoger(batch_id: str, paginas: Path, salida: Path, esperar_min: float = 50)
     salida.mkdir(parents=True, exist_ok=True)
     ahora = datetime.now(timezone.utc).isoformat(timespec="seconds")
     cuentas = {"paginas": 0, "hechos": 0, "aceptados": 0, "revision": 0, "no_programa": 0, "errores": 0}
-    with (salida / "hechos.jsonl").open("w", encoding="utf-8") as f:
+    with (salida / "hechos.jsonl").open("w", encoding="utf-8") as f, \
+            (salida / "paginas_extraidas.jsonl").open("w", encoding="utf-8") as fp:
         for linea in r.text.splitlines():
             x = json.loads(linea)
             if x["result"]["type"] != "succeeded" or x["custom_id"] not in textos:
@@ -193,6 +194,10 @@ def recoger(batch_id: str, paginas: Path, salida: Path, esperar_min: float = 50)
             pagina, texto = textos[x["custom_id"]]
             datos = _json_de("".join(c.get("text", "") for c in x["result"]["message"]["content"]))
             cuentas["paginas"] += 1
+            # una línea por página, tenga o no datos: «extraída y sin precio» no es lo mismo que «sin mirar»
+            fp.write(json.dumps({"url": pagina["url"], "captura_sha256": pagina["sha256"], "extraido": ahora,
+                                 "no_es_programa": bool(datos.get("no_es_programa")), "lote": batch_id},
+                                ensure_ascii=False) + "\n")
             if datos.get("no_es_programa"):
                 cuentas["no_programa"] += 1
                 continue

@@ -194,6 +194,9 @@ Reglas:
 
 Para cada máster y cada campo esencial el motor guarda de dónde sale el dato y cuándo se volverá a mirar.
 Es lo que decide qué hacer a continuación con ese máster (leer una fuente, pedirlo al centro, esperar).
+Programado en `motor/estudios/seguimiento.py`: junta hechos extraídos, medición de la página, fuentes
+oficiales y respuestas de los centros, y saca por página el estado de cada campo, el siguiente paso, la
+fecha de la próxima comprobación, la lista de campos que hay que pedir al centro y el indicador.
 
 ```json
 {"oferta": "of-…", "campo": "precio_total",
