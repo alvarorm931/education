@@ -6,7 +6,8 @@ coincidencia es alta y no hay empate; lo demás queda «sin página» o «dudoso
 aproximación sin dejar constancia de la puntuación.
 
 Uso:
-  python -m motor.estudios.emparejar --catalogo catalogo.jsonl --oferta carpeta/oferta_web --salida ruta/
+  python -m motor.estudios.emparejar --catalogo catalogo.jsonl --censo proveedores.jsonl --rastreo carpeta \\
+         [--commoncrawl carpeta_urls] --salida ruta/
 """
 
 from __future__ import annotations
@@ -164,24 +165,52 @@ def emparejar(titulos: list[dict], urls: list[str], textos: dict[str, str] | Non
     return salida
 
 
-def ejecutar(catalogo: Path, oferta: Path, salida: Path) -> dict:
-    titulos = [json.loads(l) for l in catalogo.read_text(encoding="utf-8").splitlines() if l.strip()]
-    titulos = [t for t in titulos if t["situacion"] == "Activo"]
-    webs: dict[str, list[str]] = {}
+def _leer(ruta: Path) -> list[dict]:
+    texto = ruta.read_text(encoding="utf-8").strip()
+    return json.loads(texto) if texto.startswith("[") else [json.loads(l) for l in texto.splitlines() if l.strip()]
+
+
+def ejecutar(catalogo: Path, censo: Path, rastreos: list[Path], salida: Path, cc_urls: Path | None = None) -> dict:
+    """Une los másters activos del catálogo con las páginas de programa de las webs de su universidad y de
+    sus centros (todos los proveedores del censo con referencia RUCT a esa universidad): las del rastreo y,
+    si se dan, las de Common Crawl de esos dominios (`commoncrawl.py --urls-de`)."""
+    from motor.estudios.rastreador import es_programa
+
+    titulos = [t for t in _leer(catalogo) if t.get("situacion") == "Activo"]
+    provs = _leer(censo)
+    rastreo: dict[str, dict] = {}
+    for c in rastreos:
+        for f in c.rglob("oferta_web/*.json"):
+            r = json.loads(f.read_text(encoding="utf-8"))
+            rastreo[(r.get("centro") or {}).get("id")] = r
+    de_cc: dict[str, set] = {}
+    if cc_urls:
+        for f in cc_urls.rglob("urls_*.jsonl"):
+            for l in f.read_text(encoding="utf-8").splitlines():
+                d = json.loads(l)
+                de_cc.setdefault(d["dominio"], set()).update(u for u in d["urls"] if es_programa(u))
+    urls_univ: dict[str, set] = {}
     textos: dict[str, str] = {}
-    for f in oferta.glob("*.json"):
-        r = json.loads(f.read_text(encoding="utf-8"))
-        webs.setdefault(dominio_registrado(r["dominio"]), []).extend(r.get("programas", []))
+    for p in provs:
+        r = rastreo.get(p["id"]) or {}
         textos.update(r.get("textos_programa") or {})
-    res, filas = Counter(), []
+        urls = set(r.get("programas", [])).union(*[de_cc.get(d, set()) for d in p.get("dominios", [])])
+        for ref in p.get("ruct", []):
+            urls_univ.setdefault(ref["universidad"], set()).update(urls)
     por_univ: dict[str, list[dict]] = {}
     for t in titulos:
-        por_univ.setdefault(t.get("universidad_web") or "", []).append(t)
-    for dominio, urls in webs.items():
-        for t_univ in (v for k, v in por_univ.items() if k and dominio_registrado(k) == dominio):
-            for e in emparejar(t_univ, sorted(set(urls)), textos):
-                res[e["estado"]] += 1
-                filas.append(e)
+        por_univ.setdefault(t.get("universidad_codigo") or "", []).append(t)
+    res, filas = Counter(), []
+    for u, ts in sorted(por_univ.items()):
+        urls = sorted(urls_univ.get(u, set()))
+        if not urls:
+            res["sin_urls_de_la_universidad"] += len(ts)
+            filas += [{"codigo_ruct": t["codigo_ruct"], "nombre_oficial": t["nombre_oficial"], "estado": "sin_urls",
+                       "url": None} for t in ts]
+            continue
+        for e in emparejar(ts, urls, textos):
+            res[e["estado"]] += 1
+            filas.append(e)
     destino = salida / "datos" / "estudios" / "masters"
     destino.mkdir(parents=True, exist_ok=True)
     with (destino / "paginas_oficiales.jsonl").open("w", encoding="utf-8") as fh:
@@ -192,11 +221,14 @@ def ejecutar(catalogo: Path, oferta: Path, salida: Path) -> dict:
 
 def main() -> None:
     p = argparse.ArgumentParser()
-    p.add_argument("--catalogo", required=True)
-    p.add_argument("--oferta", required=True)
+    p.add_argument("--catalogo", required=True, help="catalogo.jsonl (o lista JSON) de catalogo.py")
+    p.add_argument("--censo", required=True, help="proveedores.jsonl de censo.py")
+    p.add_argument("--rastreo", action="append", default=[], help="carpeta con resultados del rastreador")
+    p.add_argument("--commoncrawl", help="carpeta con urls_*.jsonl de commoncrawl.py --urls-de")
     p.add_argument("--salida", required=True)
     a = p.parse_args()
-    print(json.dumps(ejecutar(Path(a.catalogo), Path(a.oferta), Path(a.salida)), ensure_ascii=False))
+    print(json.dumps(ejecutar(Path(a.catalogo), Path(a.censo), [Path(x) for x in a.rastreo], Path(a.salida),
+                              Path(a.commoncrawl) if a.commoncrawl else None), ensure_ascii=False))
 
 
 if __name__ == "__main__":

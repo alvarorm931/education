@@ -61,3 +61,20 @@ def test_misma_ficha_en_subdominios_sufijos_y_paises():
     x = e.emparejar(t, ["https://www.unir.net/ingenieria/master-energias-renovables/",
                         "https://mexico.unir.net/ingenieria/master-energias-renovables/"])[0]
     assert x["estado"] == "unido" and x["url"].startswith("https://www.unir.net")
+
+
+def test_ejecutar_con_censo_rastreo_y_commoncrawl(tmp_path):
+    import json
+    from motor.estudios import emparejar as e
+    (tmp_path / "cat.jsonl").write_text("\n".join(json.dumps(t) for t in [
+        {"codigo_ruct": "1", "nombre_oficial": "Máster Universitario en Lengua Española por la Universidad Complutense de Madrid",
+         "situacion": "Activo", "universidad_codigo": "002"},
+        {"codigo_ruct": "2", "nombre_oficial": "Máster Universitario en Física Nuclear por la Universidad X",
+         "situacion": "Activo", "universidad_codigo": "099"}]))
+    (tmp_path / "censo.jsonl").write_text(json.dumps({"id": "prov-ucm", "dominios": ["ucm.es"], "ruct": [{"universidad": "002"}]}))
+    (tmp_path / "r" / "oferta_web").mkdir(parents=True)
+    (tmp_path / "r" / "oferta_web" / "ucm.es.json").write_text(json.dumps({"dominio": "ucm.es", "centro": {"id": "prov-ucm"}, "programas": []}))
+    (tmp_path / "cc").mkdir()
+    (tmp_path / "cc" / "urls_x.jsonl").write_text(json.dumps({"dominio": "ucm.es", "urls": ["https://www.ucm.es/estudios/master-lenguaespanola"]}))
+    res = e.ejecutar(tmp_path / "cat.jsonl", tmp_path / "censo.jsonl", [tmp_path / "r"], tmp_path / "out", tmp_path / "cc")
+    assert res == {"unido": 1, "sin_urls_de_la_universidad": 1}
