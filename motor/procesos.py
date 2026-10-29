@@ -33,6 +33,7 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 
 from motor.boe.clasificar import normalizar
+from motor.catalogo.territorio import comunidad_de_fuentes, ubicar_convocante
 
 MADRID = ZoneInfo("Europe/Madrid")
 NOMBRE_FUENTE = {
@@ -179,14 +180,19 @@ def _proceso(a: dict, posteriores: list[dict], otras: list[dict], hoy: date, ide
         estado = "plazo_abierto" if fin >= hoy.isoformat() else "plazo_cerrado"
     else:
         estado = "sin_datos_de_plazo"
-    conv = a.get("convocante") or {}
     todos = [a] + posteriores + otras
+    fuentes = sorted({x.get("fuente") or "BOE" for x in todos})
+    citadas = [BOLETIN_A_FUENTE.get(normalizar(b.get("boletin") or "")) for b in a.get("boletines_citados") or []]
+    conv = ubicar_convocante(a.get("convocante"), [f for f in [*fuentes, *citadas] if f],
+                             a.get("boletines_citados")) or {}
+    comunidad = conv.get("comunidad") or (comunidad_de_fuentes(fuentes) if a.get("ambito") == "autonomico" else None)
     return {
         "id": ident,
         "estado": estado,
         "ambito": a.get("ambito"),
         "convocante": conv,
-        "provincia": conv.get("provincia") or (conv.get("nombre") if conv.get("tipo") in ("Ayuntamiento", "Diputación Provincial") else None),
+        "provincia": conv.get("provincia"),
+        "comunidad": comunidad,
         "organismo": a.get("organismo") or a.get("departamento"),
         "titulo": a.get("titulo"),
         "plazas": [{k: p.get(k) for k in ("numero", "puesto_clave", "puesto", "especialidad", "denominacion", "grupo",
@@ -199,16 +205,17 @@ def _proceso(a: dict, posteriores: list[dict], otras: list[dict], hoy: date, ide
         "actos": [_ref(x) for x in [a] + posteriores],
         "actualizado": max(x["fecha"] for x in todos),
         "fuente": NOMBRE_FUENTE.get(a["fuente"], a["fuente"]),
-        "fuentes": sorted({x.get("fuente") or "BOE" for x in todos}),
+        "fuentes": fuentes,
         "pendiente": a.get("pendiente") or [],
     }
 
 
 def resumen(procesos: list[dict], hoy: date) -> dict:
     abiertos = [p for p in procesos if p["estado"] == "plazo_abierto"]
-    por_provincia, por_puesto, por_fuente = Counter(), Counter(), Counter()
+    por_provincia, por_comunidad, por_puesto, por_fuente = Counter(), Counter(), Counter(), Counter()
     for p in abiertos:
         por_provincia[p.get("provincia") or "sin provincia"] += p.get("total_plazas") or 0
+        por_comunidad[p.get("comunidad") or ("estatal" if p.get("ambito") == "estatal" else "sin comunidad")] += 1
         for pl in p["plazas"]:
             por_puesto[pl.get("puesto_clave") or "sin puesto"] += pl.get("numero") or 0
         for f in p.get("fuentes") or ["BOE"]:
@@ -219,7 +226,8 @@ def resumen(procesos: list[dict], hoy: date) -> dict:
         "por_estado": dict(Counter(p["estado"] for p in procesos)),
         "por_fuente": dict(Counter(f for p in procesos for f in p.get("fuentes") or ["BOE"])),
         "plazo_abierto": {"procesos": len(abiertos), "plazas": sum(p.get("total_plazas") or 0 for p in abiertos),
-                          "por_provincia": dict(por_provincia.most_common()), "por_puesto": dict(por_puesto.most_common(50)),
+                          "por_provincia": dict(por_provincia.most_common()),
+                          "procesos_por_comunidad": dict(por_comunidad.most_common()), "por_puesto": dict(por_puesto.most_common(50)),
                           "por_fuente": dict(por_fuente.most_common())},
         "aviso": "Fechas de fin estimadas con festivos nacionales; comprobar siempre en el boletín oficial.",
     }

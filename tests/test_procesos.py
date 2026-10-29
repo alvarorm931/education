@@ -27,7 +27,9 @@ def test_estados_y_enlaces():
     assert ps["boe:A3"]["estado"] == "anulado"
     r = resumen(list(ps.values()), date(2026, 10, 29))
     assert r["plazo_abierto"] == {"procesos": 1, "plazas": 3, "por_provincia": {"Málaga": 3},
+                                  "procesos_por_comunidad": {"Andalucía": 1},
                                   "por_puesto": {"auxiliar-administrativo": 3}, "por_fuente": {"BOE": 1}}
+    assert ps["boe:A1"]["convocante"]["codigo_ine"] == "29070" and ps["boe:A2"]["comunidad"] == "Galicia"
 
 
 def test_boe_y_boletines_autonomicos():
