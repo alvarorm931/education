@@ -191,6 +191,27 @@ dominios de otros países y se verifica cada candidato en su propia web.
 Los agregadores (Emagister, Educaweb, masterMania…) no se usan como fuente: su base de datos está
 protegida y la ley del proyecto prohíbe copiar. Solo se usa la web de cada centro.
 
+### Medido el 29/10/2026
+
+- **Registro oficial (RUCT), completo**: 109 grupos; 99 universidades (50 públicas y 49 privadas, de ellas
+  7 de la Iglesia) y 2.157 centros (1.866 propios y 291 adscritos), 1.639 con web. Además, 18 centros
+  extranjeros autorizados por las comunidades (EU Business School, TBS, GBSB, ESCP, CESTE, EADE, CESINE,
+  Schiller, Saint Louis…), Defensa y 26 «otros centros de nivel universitario». Agrupados por dominio web,
+  352 proveedores oficiales.
+- **Common Crawl, último índice (CC-MAIN-2026-43), completo**: 6.875 dominios con rutas de posgrado en
+  español; tras quitar otros países (2.157), páginas sueltas (2.782) y agregadores o medios, 1.764
+  candidatos nuevos que no están en el RUCT.
+- **Verificación en su web, primera cuarta parte (530 candidatos)**: 111 son proveedores reales (escuelas
+  de negocio, academias online, formación sanitaria, institutos y colegios profesionales con másters y
+  expertos propios); el resto son noticias, blogs, foros o páginas de otros países. Extrapolando, unos 370
+  proveedores no oficiales solo con este índice; cada índice más de Common Crawl añade dominios que el
+  anterior no vio.
+- En las páginas de programa de esos proveedores (754 medidas): el 54 % tiene un formulario que pide el
+  correo y el 23 % el teléfono; el 76 % menciona el precio pero solo el 34 % da un importe en euros y el
+  11 % lo pone en los datos estructurados de la página (Schema.org) aunque no siempre lo muestre;
+  asignaturas o módulos el 50 %, metodología el 44 %, evaluación el 32 %, plazas el 21 %, guía o folleto en
+  PDF enlazado el 6 %.
+
 `censo.py` une todo en una tabla de proveedores con identificador propio que no cambia
 (`prov-` + huella del dominio), tipos, códigos RUCT, fuentes, señales y estado (oficial, candidato,
 verificado, descartado con motivo).
@@ -210,6 +231,20 @@ Identificadores propios que no cambian nunca: proveedor (`prov-…`), programa (
 normalizado + tipo de título), oferta (programa × sede × modalidad × curso), asignatura (programa +
 código de la universidad cuando exista). Los códigos oficiales (RUCT de título y de centro) se guardan como
 atributos, no como identificador.
+
+### Extracción de la ficha (`extraer.py`)
+
+De cada página de programa, Claude Haiku en lote devuelve los 26 campos de la ficha (tipo de título y
+universidad que lo expide, centro, créditos, duración, modalidad, sedes, idioma, inicio, plazos, horario,
+plazas, precio total y por crédito, reserva, becas y descuentos, requisitos, admisión, asignaturas,
+prácticas, TFM, metodología, evaluación, habilitación y salidas), cada uno con su frase literal. Sin IA se
+comprueba que la frase está en la página: si no, el valor no se acepta y va a revisión. Coste estimado con
+precios de lote: unos 12 dólares por cada 30.000 páginas. Necesita la clave de la API como secreto de
+GitHub (`ANTHROPIC_API_KEY`).
+
+Límite que se respeta: solo se lee lo publicado. Si un centro da el folleto o el precio únicamente tras un
+formulario, no se rellena el formulario ni se buscan rutas ocultas; la ficha dice «el centro no lo
+publica» y enlaza a su web.
 
 ## 7. Siguientes pasos
 
