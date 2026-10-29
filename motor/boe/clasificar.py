@@ -166,7 +166,9 @@ def alcance(titulo_norm: str, modalidad: str | None, epigrafe: str | None) -> st
             or "provisio de lloc" in titulo_norm or "concurs de trasllats" in titulo_norm \
             or "provision de posto" in titulo_norm \
             or ("comissio de serveis" in titulo_norm and "acces" not in titulo_norm) \
-            or (modalidad == "concurso" and not any(p in titulo_norm for p in ("plaza", "placa", "places", "praza"))):
+            or (modalidad == "concurso" and not any(p in titulo_norm for p in ("plaza", "placa", "places", "praza"))
+                and not any(p in titulo_norm for p in ("proces de seleccio", "proces selectiu", "contractacio",
+                                                        "borsa", "proceso de seleccion"))):
         return "provision_puestos"
     if "cuerpos docentes universitarios" in ep or "profesor titular" in titulo_norm or "catedratic" in titulo_norm \
             or "professor titular" in titulo_norm:

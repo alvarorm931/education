@@ -201,7 +201,10 @@ provinciales:
   - provincia: Barcelona
     url: http://bop.diba.cat
     acceso_desde_github: "ok"
-    estado: sin_conector
+    datos_estructurados: "Día filtrado por tipo «Personal»: /anteriors/AAAA-MM-DD[/página]?bopb_dia%5BtipusAnunci%5D=60 (20 por página); anuncio /anunci/{n}; PDF /anunci/descarrega-pdf/{n}; RSS del día en /dades-obertes"
+    estado: conector_en_pruebas
+    conector: motor/provinciales/bopb.py
+    nota: "Fin de semana: HTTP 500 (sin boletín). Texto solo en PDF, casi siempre en catalán. De listas de personas solo se guarda el recuento"
   - provincia: Bizkaia
     url: https://www.bizkaia.eus/es/bob
     acceso_desde_github: "ok"

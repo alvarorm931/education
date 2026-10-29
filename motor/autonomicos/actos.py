@@ -1,9 +1,10 @@
-"""Actos de oposiciones de los boletines autonómicos, con el mismo esquema que los del BOE.
+"""Actos de oposiciones de los boletines autonómicos y provinciales, con el mismo esquema que los del BOE.
 
 Uso:
   python -m motor.autonomicos.actos --salida ruta/
 
-Lee datos/autonomicos/{fuente}/oposiciones y sus textos y regenera datos/autonomicos/actos/{fuente}/AAAA/MM.jsonl.
+Lee datos/autonomicos/{fuente}/oposiciones (o datos/provinciales/{fuente}/ para los boletines de provincia) y sus
+textos y regenera datos/autonomicos/actos/{fuente}/AAAA/MM.jsonl.
 Es reproducible: si mejora la extracción, se vuelve a ejecutar sobre todo el histórico.
 
 Cada acto lleva: identificador con la fuente («bocyl:BOCYL-D-28102026-209-5»), fecha, boletín, título, organismo,
@@ -42,12 +43,15 @@ FUENTES: dict[str, tuple[str, tuple[str, ...]]] = {
                       "Boletín Oficial de las Islas Baleares")),
     "dogc": ("DOGC", ("Diari Oficial de la Generalitat de Catalunya", "Diario Oficial de la Generalitat de Cataluña",
                       "Diario Oficial de la Generalidad de Cataluña")),
+    "bopb": ("BOPB", ("Butlletí Oficial de la Província de Barcelona", "Boletín Oficial de la Provincia de Barcelona",
+                      "BOPB")),
 }
+PROVINCIALES = {"bopb"}
 CON_PLAZO = {"convocatoria", "bases", "modificacion", "correccion", "otro", None}
 
 
 def _base(raiz: Path, fuente: str) -> Path:
-    return raiz / "datos" / "autonomicos" / fuente
+    return raiz / "datos" / ("provinciales" if fuente in PROVINCIALES else "autonomicos") / fuente
 
 
 def ruta_texto(raiz: Path, fuente: str, x: dict) -> Path:
@@ -63,7 +67,15 @@ def texto_de(raiz: Path, fuente: str, x: dict) -> str | None:
     return None
 
 
-def construir_acto(fuente: str, x: dict, texto: str | None) -> dict:
+def recuento_de(raiz: Path, fuente: str, x: dict) -> int | None:
+    """En las listas de personas solo se guarda cuántas líneas traen un documento de identidad."""
+    r = ruta_texto(raiz, fuente, x)
+    if r.exists():
+        return json.loads(r.read_text(encoding="utf-8")).get("lineas_con_documento_de_identidad")
+    return None
+
+
+def construir_acto(fuente: str, x: dict, texto: str | None, recuento: int | None = None) -> dict:
     siglas, nombres = FUENTES[fuente]
     acto = {
         "id": f"{fuente}:{x['id']}",
@@ -84,6 +96,9 @@ def construir_acto(fuente: str, x: dict, texto: str | None) -> dict:
         "extraccion": "titulo",
         "pendiente": [],
     }
+    if recuento is not None:
+        acto["personas_en_listas"] = recuento
+        return acto
     if texto is None:
         acto["pendiente"].append("texto")
         return acto
@@ -104,7 +119,7 @@ def actos_de_fuente(raiz: Path, fuente: str) -> list[dict]:
     for f in sorted((_base(raiz, fuente) / "oposiciones").rglob("*.jsonl")):
         for x in leer_jsonl(f):
             if x.get("id") and x.get("fecha"):
-                actos.append(construir_acto(fuente, x, texto_de(raiz, fuente, x)))
+                actos.append(construir_acto(fuente, x, texto_de(raiz, fuente, x), recuento_de(raiz, fuente, x)))
     return actos
 
 

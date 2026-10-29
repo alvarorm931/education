@@ -52,6 +52,7 @@ NOMBRE_FUENTE = {
     "BOME": "Boletín Oficial de la Ciudad Autónoma de Melilla",
     "BOPV": "Boletín Oficial del País Vasco",
     "BOIB": "Butlletí Oficial de les Illes Balears",
+    "BOPB": "Butlletí Oficial de la Província de Barcelona",
 }
 # Cómo citan los anuncios del BOE a cada boletín autonómico (para enlazar las bases íntegras)
 BOLETIN_A_FUENTE = {
@@ -78,6 +79,8 @@ BOLETIN_A_FUENTE = {
     "diari oficial de la generalitat de catalunya": "DOGC",
     "diario oficial de la generalitat de cataluna": "DOGC",
     "diario oficial de la generalidad de cataluna": "DOGC",
+    "boletin oficial de la provincia de barcelona": "BOPB",
+    "butlleti oficial de la provincia de barcelona": "BOPB",
 }
 RE_NO_ALFANUM = re.compile(r"[^a-z0-9ñ]+")
 
@@ -112,6 +115,22 @@ def _nombre(conv: dict | None) -> str:
     return clave_titulo((conv or {}).get("nombre"))
 
 
+def _municipio(conv: dict | None, fuentes: list[str], boletines: list[dict] | None = None) -> list[str]:
+    """Claves del convocante para enlazar publicaciones: su código INE si se sabe sin dudas y su nombre
+    normalizado («El Masnou» y «el Masnou» o «Elx/Elche» y «Elche» comparten código)."""
+    u = ubicar_convocante(conv, fuentes, boletines) or {}
+    return [k for k in (u.get("codigo_ine"), _nombre(conv)) if k]
+
+
+def es_origen_local(x: dict) -> bool:
+    """Bases o convocatoria de una entidad local publicadas en un boletín autonómico o provincial."""
+    return x.get("ambito") == "local" and x.get("alcance") in (None, "acceso") and \
+        x.get("tipo_acto") in ("convocatoria", "bases")
+
+
+RE_TEMPORAL = re.compile(r"\b(temporal|interin|interi|bolsa|borsa|substitu|sustitu|suplenc|listaxe de contratacion)")
+
+
 def _plazo_salida(plazo: dict) -> dict | None:
     if not plazo:
         return None
@@ -136,7 +155,8 @@ def construir(actos: list[dict], hoy: date, autonomicos: list[dict] | None = Non
     locales: dict[tuple[str, str, str], list[dict]] = defaultdict(list)
     for x in autonomicos:
         if x.get("ambito") == "local":
-            locales[(x.get("fuente"), x.get("fecha"), _nombre(x.get("convocante")))].append(x)
+            for k in _municipio(x.get("convocante"), [x.get("fuente")]):
+                locales[(x.get("fuente"), x.get("fecha"), k)].append(x)
         elif es_origen(x):
             por_titulo[clave_titulo(x.get("titulo"))].append(x)
     usados: set[str] = set()
@@ -149,20 +169,30 @@ def construir(actos: list[dict], hoy: date, autonomicos: list[dict] | None = Non
         gemelos = [x for x in por_titulo.get(clave_titulo(a.get("titulo")), []) if x["id"] not in usados]
         usados.update(x["id"] for x in gemelos)
         bases_enlazadas = []
-        for b in a.get("boletines_citados") or []:
+        citados = a.get("boletines_citados") or []
+        for b in citados:
             fuente = BOLETIN_A_FUENTE.get(normalizar(b.get("boletin") or ""))
             if fuente and b.get("fecha"):
-                bases_enlazadas += locales.get((fuente, b["fecha"], _nombre(a.get("convocante"))), [])
+                for k in _municipio(a.get("convocante"), ["BOE", fuente], citados):
+                    vistos = {x["id"] for x in bases_enlazadas}
+                    bases_enlazadas += [x for x in locales.get((fuente, b["fecha"], k), [])
+                                        if x["id"] not in usados and x["id"] not in vistos]
+        usados.update(x["id"] for x in bases_enlazadas)
         procesos.append(_proceso(a, sorted(citados_por.get(a["id"], []), key=lambda x: x["fecha"]),
                                  gemelos + bases_enlazadas, hoy, f"boe:{a['id']}"))
 
     for x in autonomicos:
         if x.get("ambito") != "local" and es_origen(x) and x["id"] not in usados:
             procesos.append(_proceso(x, [], [], hoy, x["id"]))
+        elif es_origen_local(x) and x["id"] not in usados:
+            # Bases locales sin anuncio en el BOE que las cite: bolsas y contratos temporales (no van al BOE) o
+            # bases cuyo plazo empezará con el anuncio en el BOE, que aún no ha salido o no se ha podido enlazar
+            procesos.append(_proceso(x, [], [], hoy, x["id"], solo_bases=True))
     return procesos
 
 
-def _proceso(a: dict, posteriores: list[dict], otras: list[dict], hoy: date, ident: str) -> dict:
+def _proceso(a: dict, posteriores: list[dict], otras: list[dict], hoy: date, ident: str,
+             solo_bases: bool = False) -> dict:
     plazo = a.get("plazo") or {}
     if not plazo.get("fin_estimado"):
         # La publicación autonómica puede fijar el plazo desde su propio boletín cuando el BOE remite a él
@@ -174,10 +204,13 @@ def _proceso(a: dict, posteriores: list[dict], otras: list[dict], hoy: date, ide
         if x.get("tipo_acto") in ("modificacion", "correccion") and (x.get("plazo") or {}).get("fin_estimado"):
             plazo = {**x["plazo"], "de_acto": x["id"]}
     fin = plazo.get("fin_estimado")
+    temporal = bool(RE_TEMPORAL.search(normalizar(a.get("titulo") or ""))) or a.get("modalidad") == "bolsa"
     if any(x.get("tipo_acto") == "anulacion" for x in posteriores):
         estado = "anulado"
     elif fin:
         estado = "plazo_abierto" if fin >= hoy.isoformat() else "plazo_cerrado"
+    elif solo_bases and not temporal and "Boletín Oficial del Estado" in (plazo.get("cuenta_desde") or ""):
+        estado = "bases_publicadas_pendiente_boe"
     else:
         estado = "sin_datos_de_plazo"
     todos = [a] + posteriores + otras
@@ -207,6 +240,8 @@ def _proceso(a: dict, posteriores: list[dict], otras: list[dict], hoy: date, ide
         "fuente": NOMBRE_FUENTE.get(a["fuente"], a["fuente"]),
         "fuentes": fuentes,
         "pendiente": a.get("pendiente") or [],
+        "temporal": temporal,
+        "solo_bases_locales": solo_bases,
     }
 
 

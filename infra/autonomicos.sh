@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Ejecuta los conectores de boletines autonómicos en orden: lo del día primero, luego la carga histórica
+# Ejecuta los conectores de boletines autonómicos (y provinciales: bopb) en orden: lo del día primero, luego la carga histórica
 # pendiente y por último los textos pendientes, cada parte con su tiempo máximo. Todo es reanudable.
 #
 # Uso: infra/autonomicos.sh SALIDA MINUTOS "boja bocm bocyl dogv dog dogc" [ORDEN_DE_GUARDADO]
@@ -117,6 +117,14 @@ for c in $CONECTORES; do
       "$G" "DOGC: boletines"
       ejecutar motor.autonomicos.dogc --textos --salida "$S" --max-minutos "$M"
       "$G" "DOGC: textos"
+      ;;
+    bopb)
+      # Boletín provincial de Barcelona: se recorre del día más reciente hacia atrás
+      ejecutar motor.provinciales.bopb --salida "$S"
+      ejecutar motor.provinciales.bopb --desde 2022-01-01 --salida "$S" --max-minutos "$M"
+      "$G" "BOPB: días"
+      ejecutar motor.provinciales.bopb --textos --salida "$S" --max-minutos "$M"
+      "$G" "BOPB: textos"
       ;;
     *)
       echo "::warning::Conector desconocido: $c"

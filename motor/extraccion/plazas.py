@@ -23,11 +23,20 @@ from motor.catalogo.puestos import grupo, normalizar_puesto
 from motor.extraccion.plazo import frases
 from motor.extraccion.texto_es import numero
 
-VERSION = "plazas_general_v1"
+VERSION = "plazas_general_v2"
 
+L = "a-záéíóúñàèòïüç·"
 RE_PLAZAS = re.compile(
-    r"\b(?:convoca\w*|cubrir|proveer|cobertura\s+de)\b[^.;]{0,140}?\b(?P<n>\d{1,4}|[a-záéíóúñ]+(?:\s+y\s+[a-záéíóúñ]+)?)"
-    r"\s+(?:\(\d{1,4}\)\s+)?plazas?\b(?P<resto>[^;]{0,400})", re.IGNORECASE)
+    r"\b(?:convoca\w*|convoqu\w*|cubrir|cobrir|proveer|proveir|provisió\s+(?:en\s+propietat\s+)?(?:de|d['’])|"
+    rf"cobertura\s+(?:definitiva\s+)?(?:de|d['’])|selecció\s+de)[^.;]{{0,140}}?\b(?P<n>\d{{1,4}}|[{L}]+"
+    rf"(?:-i-[{L}]+)?(?:\s+[ye]\s+[{L}]+)?)\s+(?:\(\d{{1,4}}\)\s+)?(?:plazas?|places|pla[çc]a|prazas?)\b"
+    r"(?P<resto>[^;]{0,400})", re.IGNORECASE)
+# Denominación en convocatorias locales: «una plaça de caporal/a de la Policia Local», «dos plazas de Auxiliar»
+RE_DENOMINACION_LOCAL = re.compile(
+    r"^\s*(?:vacants?\s+|vacantes?\s+)?(?:de\s+|d['’]\s*)(?P<den>[^,;.(]{3,120}?)(?=,|;|\.|\(|\s+mitjan[çc]ant|"
+    r"\s+mediante|\s+per\s|\s+pel\s|\s+por\s|\s+en\s+r[èe]gim|\s+vacants?\b|\s+del\s+grup|\s+grupo?\b|\s+subgrupo?\b|"
+    r"\s+de\s+l['’]escala|\s+de\s+la\s+escala|\s+de\s+la\s+plantilla|\s+incl[oò]s|\s+enquadrad|\s+encuadrad|"
+    r"\s+pertanyent|\s+perteneciente|\s+de\s+la\s+subescala|$)", re.IGNORECASE)
 RE_OBJETO = re.compile(
     r"(?:del|de\s+la|en\s+el|en\s+la|de)\s+(?P<obj>(?:Cuerpo|Escala|Subescala|categor[ií]a(?:\s+profesional)?(?:\s+de)?)\s+"
     r"[^,(;]{3,160})", re.IGNORECASE)
@@ -37,8 +46,14 @@ RE_DESGLOSE = re.compile(
 RE_CORTE_OBJETO = re.compile(
     r"\s+(?:por\s+el\s+sistema|mediante|c[oó]digo|en\s+r[eé]gimen|para\s+la\s+sede|con\s+destino|y\s+con|en\s+la\s+"
     r"localidad|de\s+acceso\s+libre)\b.*$", re.IGNORECASE)
+RE_COLA_DENOMINACION = re.compile(
+    r"\s+(?:que\s+(?:se|figura|figuran|consta)|en\s+el\s+anexo|del\s+anexo|de\s+l['’]annex|de\s+esta\s+universidad|"
+    r"de\s+la\s+presente|d['’]aquest).*$", re.IGNORECASE)
+RE_NO_DENOMINACION = re.compile(
+    r"(?:acceso|acc[eé]s|turno|torn|nuevo ingreso|personal|funcionari|car[aá]cter|naturaleza|igual|promoci|diversas|"
+    r"distintas|varias|diferentes|diverses|la\s|el\s|les\s|los\s|las\s)", re.IGNORECASE)
 EXCLUIR = ("se convoco", "convocado", "convocada", "han superado", "superado el proceso", "relacion de personas",
-           "se publica", "nombramiento")
+           "se publica", "nombramiento", "han superat", "nomenament", "nomeamento")
 
 
 def _turno(f: str) -> str | None:
@@ -53,7 +68,7 @@ def _turno(f: str) -> str | None:
 def extraer_plazas(texto: str) -> dict | None:
     for f in frases(texto)[:400]:
         n_f = normalizar(f)
-        if "plaza" not in n_f or any(x in n_f for x in EXCLUIR):
+        if not any(p in n_f for p in ("plaza", "placa", "places", "praza")) or any(x in n_f for x in EXCLUIR):
             continue
         m = RE_PLAZAS.search(f)
         if not m:
@@ -73,6 +88,12 @@ def extraer_plazas(texto: str) -> dict | None:
             obj = RE_CORTE_OBJETO.sub("", " ".join(o.group("obj").split())).strip(" .")
             obj = re.sub(r"(?i)^categor[ií]a(?:\s+profesional)?(?:\s+de)?\s+", "", obj)
             res["plazas"] = [_plaza(total, obj, f)]
+        else:
+            d = RE_DENOMINACION_LOCAL.match(resto)
+            den = " ".join(d.group("den").split()).strip(" .") if d else ""
+            den = RE_COLA_DENOMINACION.sub("", den).strip(" .")
+            if den and not RE_NO_DENOMINACION.match(den) and not re.search(r"(?i)\b(?:plazas|places|prazas)\b", den):
+                res["plazas"] = [_plaza(total, den, f)]
         return res
     return None
 

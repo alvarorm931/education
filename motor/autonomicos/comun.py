@@ -165,10 +165,12 @@ def escribir_json(ruta: Path, datos: dict) -> None:
 def descargar_textos(pendientes: list[dict], destino: Callable[[dict], Path], url: Callable[[dict], str],
                      extraer: Callable[[bytes], dict], archivo: Archivo, fuente: str, max_minutos: float,
                      pausa: float, accept: str = "application/xml", ext: str = "xml",
-                     formulario: Callable[[dict], dict] | None = None, sesion=None) -> tuple[int, int]:
+                     formulario: Callable[[dict], dict] | None = None, sesion=None,
+                     por_registro: bool = False) -> tuple[int, int]:
     """Descarga y limpia los textos de la lista. Devuelve (hechos, errores). Reanudable: lo hecho queda escrito.
 
     formulario: para las API que piden el documento por POST, los campos de cada petición.
+    por_registro: extraer recibe también el registro (p. ej. para no guardar el texto de una lista de personas).
     """
     inicio, hechos, errores = time.monotonic(), 0, 0
     for x in pendientes:
@@ -185,7 +187,7 @@ def descargar_textos(pendientes: list[dict], destino: Callable[[dict], Path], ur
             time.sleep(pausa)
             continue
         try:
-            datos = extraer(r.contenido)
+            datos = extraer(r.contenido, x) if por_registro else extraer(r.contenido)
         except Exception:  # un documento mal formado no detiene la carga; queda pendiente para revisarlo
             errores += 1
             continue
