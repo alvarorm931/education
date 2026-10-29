@@ -1,0 +1,18 @@
+'use strict';
+
+angular
+	.module('BormApp.CalendarioModule')
+	.factory('CalendarioFactory', [ '$http', function($http) {
+		
+		var datos = {
+			findAll: function(){
+				return $http.get('services/boletin/fechas');
+			},
+			findAllFestivos: function(){
+				return  $http.get('services/festivo');
+			}
+		}
+		
+		return datos;
+			
+	}]);

@@ -1,0 +1,50 @@
+'use strict';
+
+angular
+	.module('BormApp.AnunciosModule')
+	.factory('AnuncioFactory', [ '$http', function($http) {
+		
+		var datos = {
+			findEliUriByFechaNumero: function(fecha, numero){
+				return $http.get('services/anuncio/eliUri/fecha/' + fecha + '/numero/' + numero);
+			},	
+			findAnunciosByAnunciante: function(nombreAnunciante){
+				return $http.get('services/anuncio?anunciante=' + nombreAnunciante);
+			},
+			findAnuncioByFechaNumero: function(fecha, numero){
+				return $http.get('services/anuncio/fecha/' + fecha + '/numero/' + numero);
+			},
+			findReferenciasByFechaNumero: function(fecha, numero){
+				return $http.get('services/referencia/anuncio/fecha/' + fecha + '/numero/' + numero);
+			},
+			findPDFById : function(idAnuncio){
+				return $http.get('services/anuncio/' + idAnuncio + '/pdf', {responseType: 'arraybuffer'});
+			},
+			findPDFByNPE : function(npe){
+				return $http.get('services/anuncio/pdf/' + npe, {responseType: 'arraybuffer'});
+			},
+			findTXTById : function(idAnuncio){
+				return $http.get('services/anuncio/' + idAnuncio + '/txt', {responseType: 'arraybuffer'});
+			},
+			findBySearchFilter: function(idAyuntamiento, pageNumber, pageSize, fechaDesde, fechaHasta){
+				return $http.get('services/anuncio/ayuntamiento/' + idAyuntamiento 
+						+ '?pageNumber=' + pageNumber + '&pageSize=' + pageSize 
+						+ '&fechaDesde=' + fechaDesde + '&fechaHasta=' + fechaHasta);
+			},
+			findAnunciosMasVisitados: function(){
+				return $http.get('services/anuncio/masVisitados');
+			},
+			findDestacadoBySearchFilter: function(pageNumber, pageSize){
+				return $http.get('services/anuncio/destacados' 
+						+ '?pageNumber=' + pageNumber + '&pageSize=' + pageSize); 
+			},
+			// Devuelve el Boletin, sirve para el titulo del cuadro gris en los suplementos.
+			findByFechaPublicacion: function(fecha){
+				return $http.get('services/boletin/fecha/' +fecha);
+			}
+			
+		}
+		
+		return datos;
+			
+	}]);

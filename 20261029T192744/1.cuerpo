@@ -1,0 +1,36 @@
+'use strict';
+
+angular
+	.module('BormApp.BoletinesModule')
+	.factory('BoletinFactory', [ '$http', function($http) {
+		
+		var datos = {
+			findLast: function(){
+				return $http.get('services/boletin/ultimo');
+			},
+			findById: function(idBoletin){
+				return $http.get('services/boletin/' + idBoletin);
+			},
+			findPDFByNPE : function(npe){
+				return $http.get('services/boletin/pdf/' + npe, {responseType: 'arraybuffer'});
+			},
+			findDatosSumario : function(fechaPublicacion){
+				return $http.get('services/boletin/fecha/' + fechaPublicacion + '/sumario');
+			},
+			findAllApartadoSumario : function(fechaPublicacion){
+				return $http.get('services/boletin/fecha/' + fechaPublicacion + '/sumario/apartados');
+			},
+			findAnunciantes : function(fechaPublicacion){
+				return $http.get('services/boletin/fecha/' + fechaPublicacion + '/sumario/anunciantes');
+			},
+			findByFecha : function(fechaPublicacion){
+				return $http.get('services/boletin/fecha/' + fechaPublicacion);
+			},
+			findByAnoNumero : function(ano,numero){
+				return $http.get('services/boletin?ano=' + ano +'&numero=' + numero);
+			}
+		}
+		
+		return datos;
+			
+	}]);

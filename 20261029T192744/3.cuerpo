@@ -1,0 +1,15 @@
+'use strict';
+
+angular
+	.module('BormApp.SumarioModule')
+	.factory('SumarioFactory', [ '$http', function($http) {
+		
+		var datos = {
+			findPDFById: function(idBoletin){
+				return $http.get('services/boletin/' + idBoletin + '/sumario/pdf', {responseType: 'arraybuffer'});
+			}
+		}
+		
+		return datos;
+			
+	}]);
