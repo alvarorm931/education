@@ -43,7 +43,7 @@ jobs:
           i=0
           for u in $URLS; do
             i=$((i+1))
-            curl -sS -L --max-time 60 -A "PortalEstudiosOposiciones/0.1 (motor de datos publicos; peticiones moderadas)" \
+            curl -sS -L --max-time 25 --connect-timeout 10 -A "PortalEstudiosOposiciones/0.1 (motor de datos publicos; peticiones moderadas)" \
               -D "$STAMP/$i.cabeceras.txt" -o "$STAMP/$i.cuerpo" -w "%{http_code} %{content_type} %{size_download} %{url_effective}\n" "$u" \
               > "$STAMP/$i.estado.txt" 2>&1 || true
             echo "$i $u" >> "$STAMP/indice.txt"
