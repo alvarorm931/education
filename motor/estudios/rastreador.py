@@ -80,6 +80,8 @@ ESPANA = re.compile(r"\bECTS\b|€|\beuros?\b|Espa[ñn]a|\+34|\bMadrid\b|\bBarce
 COLABORADORES = re.compile(r"entidades?[-_]colaboradoras?|centros?[-_]colaboradores|titulos[-_]propios[-_]entidades|"
                            r"centros?[-_]adscritos|partners?|socios[-_]academicos|convenios?[-_]academicos|"
                            r"red[-_]de[-_]centros|centros[-_]asociados", re.I)
+DOC_PRECIO = re.compile(r"(tarifa|precio|honorario|tasas|fees|tuition|matricula|condiciones[-_]economicas|"
+                        r"normativa[-_]economica|importe)[^/]*\.(pdf|xlsx?)$", re.I)
 GUIA = re.compile(r"gu[ií]a|folleto|brochure|dossier|programa|plan de estudios|syllabus", re.I)
 
 
@@ -156,6 +158,25 @@ def _xml(contenido: bytes) -> ET.Element | None:
         return None
 
 
+def fechas_de_sitemap(raiz: ET.Element) -> dict[str, str]:
+    """URL → lastmod de un sitemap (para saber qué fichas han cambiado sin descargarlas)."""
+    fechas = {}
+    for url in raiz.iter():
+        if url.tag.endswith("}url") or url.tag == "url":
+            loc = next((c.text.strip() for c in url if c.tag.endswith("loc") and c.text), None)
+            mod = next((c.text.strip() for c in url if c.tag.endswith("lastmod") and c.text), None)
+            if loc and mod:
+                fechas[loc] = mod
+    return fechas
+
+
+def reserva_tdm(cabeceras: dict, html: str) -> bool:
+    """Reserva expresa de minería de textos y datos (art. 4 Directiva 2019/790; TDMRep)."""
+    if str(cabeceras.get("tdm-reservation", cabeceras.get("TDM-Reservation", ""))).strip() == "1":
+        return True
+    return bool(re.search(r'(?is)<meta[^>]+name="tdm-reservation"[^>]+content="1"', html or ""))
+
+
 def urls_de_sitemap(raiz: ET.Element) -> tuple[list[str], list[str]]:
     """(sitemaps hijos, URL de páginas) de un sitemap o índice de sitemaps."""
     hijos, paginas = [], []
@@ -222,6 +243,7 @@ def medir_pagina(html: str, url: str) -> dict:
         "formulario_pide_correo": pide_datos,
         "formulario_pide_telefono": pide_tel,
         "pdf_guia_o_folleto": [u for u, t in pdfs if GUIA.search(t) or GUIA.search(u)][:10],
+        "pdf_precio": [u for u, t in pdfs if DOC_PRECIO.search(u) or re.search(r"tarifa|precio|honorario|tasas", t, re.I)][:10],
         "bytes": len(html),
     }
 
@@ -233,10 +255,12 @@ def rastrear(base: str, archivo: Archivo | None, max_urls: int = 60000, muestra:
     try:
         sitemaps = d.leer_robots()
         res["robots_sitemaps"] = len(sitemaps)
+        rt = d.get(d.base + "/.well-known/tdmrep.json", guardar=False)
+        res["tdmrep"] = bool(rt is not None and rt.status_code == 200 and '"tdm-reservation": 1' in rt.text.replace("'", '"'))
         if not sitemaps:
             sitemaps = [d.base + "/sitemap.xml", d.base + "/sitemap_index.xml"]
         cola = sorted(dict.fromkeys(sitemaps), key=prioridad_sitemap)
-        vistos, paginas, leidos = set(), [], 0
+        vistos, paginas, leidos, fechas = set(), [], 0, {}
         while cola and len(paginas) < max_urls and d.peticiones < max_peticiones - muestra:
             sm = cola.pop(0)
             if sm in vistos:
@@ -250,6 +274,7 @@ def rastrear(base: str, archivo: Archivo | None, max_urls: int = 60000, muestra:
                 continue
             leidos += 1
             hijos, urls = urls_de_sitemap(raiz)
+            fechas.update(fechas_de_sitemap(raiz))
             cola = sorted(dict.fromkeys(cola + [h for h in hijos if h not in vistos]), key=prioridad_sitemap)
             paginas.extend(urls)
         res["sitemaps_leidos"] = leidos
@@ -274,17 +299,22 @@ def rastrear(base: str, archivo: Archivo | None, max_urls: int = 60000, muestra:
             res["urls_programa_portada"] = len(candidatas)
         res["urls_programa"] = len(candidatas)
         res["programas"] = candidatas
+        res["programas_lastmod"] = {u: fechas[u] for u in candidatas if u in fechas}
+        res["documentos_precio"] = sorted({u for u in paginas if DOC_PRECIO.search(u)})[:100]
         medidas = []
         for u in _muestra(candidatas, muestra):
             r = d.get(u)
             if r is None or r.status_code != 200 or "html" not in r.headers.get("content-type", ""):
                 continue
-            medidas.append({"url": u, **medir_pagina(r.text, u)})
+            m = medir_pagina(r.text, u)
+            m["reserva_tdm"] = reserva_tdm(dict(r.headers), r.text)
+            medidas.append({"url": u, **m})
         res["muestra"] = medidas
         validas = sum(1 for m in medidas if m.get("es_programa"))
         res["paginas_programa_validas"] = validas
         res["verificado"] = validas >= 2 or (validas == 1 and len(medidas) <= 2)
         res["espana"] = any(m.get("espana") for m in medidas if m.get("es_programa"))
+        res["reserva_tdm"] = res.get("tdmrep", False) or any(m.get("reserva_tdm") for m in medidas)
     except Exception as e:  # un dominio roto no para el resto
         res["error"] = f"{type(e).__name__}: {e}"[:300]
     res["peticiones"] = d.peticiones

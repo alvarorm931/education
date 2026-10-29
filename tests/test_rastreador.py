@@ -78,3 +78,19 @@ def test_sin_sitemap_usa_enlaces_de_portada(monkeypatch):
     assert res["via"] == "portada"
     assert res["programas"] == ["https://x.es/masters/master-en-finanzas"]
     assert res["verificado"] and res["espana"]
+
+
+def test_lastmod_y_reserva_tdm():
+    ns = 'xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"'
+    raiz = ET.fromstring(f'<urlset {ns}><url><loc>https://x.es/master-a</loc><lastmod>2026-09-01</lastmod></url>'
+                         f'<url><loc>https://x.es/master-b</loc></url></urlset>')
+    assert r.fechas_de_sitemap(raiz) == {"https://x.es/master-a": "2026-09-01"}
+    assert r.reserva_tdm({"tdm-reservation": "1"}, "")
+    assert r.reserva_tdm({}, '<meta name="tdm-reservation" content="1">')
+    assert not r.reserva_tdm({}, "<html></html>")
+
+
+def test_pdf_de_precios():
+    html = '<a href="/docs/Tarifas_Postgrado_2026.pdf">Tarifas</a><a href="/docs/folleto.pdf">Descarga el folleto</a>'
+    m = r.medir_pagina(html, "https://x.es/master")
+    assert m["pdf_precio"] == ["https://x.es/docs/Tarifas_Postgrado_2026.pdf"]
