@@ -35,13 +35,21 @@ ventanas al entrar, Core Web Vitals en verde, robots de búsqueda y de IA permit
 
 - Repositorio privado `alvarorm931/education`. Código en `motor/`, pruebas en `tests/`, documentación en `docs/`.
 - Datos en la rama `datos` (no mezclar con `main`). Pruebas de conectores y sondas en la rama `sondas`.
-- Ejecución en GitHub Actions: `motor.yml` dos veces al día; `prueba.yml` y `sonda.yml` bajo demanda.
+- Ejecución en GitHub Actions: `motor.yml` (BOE, extracción y procesos) dos veces al día; `autonomicos.yml`
+  (boletines autonómicos, `infra/autonomicos.sh`) una vez al día; `prueba.yml` y `sonda.yml` bajo demanda.
   GitHub Free: 2.000 minutos al mes en repositorios privados. Vigilar el consumo.
-- El espacio de trabajo de Claude no llega a las webs de las fuentes: todo se prueba desde GitHub (sondas y pruebas).
+- El espacio de trabajo de Claude no llega a las webs de las fuentes: todo se prueba desde GitHub (sondas y pruebas;
+  `python -m motor.autonomicos.humo` prueba los conectores autonómicos contra las fuentes reales).
 - 16 boletines bloquean a GitHub (servidores fuera de España). Se está creando un servidor en AWS región España
   (Lightsail) como ejecutor de GitHub (`infra/arranque-servidor.sh`).
 - Hecho: BOE 2022-2026 completo (1.525 boletines, 341.298 disposiciones, 51.855 anuncios de oposiciones),
-  textos de anuncios en descarga, extractor de anuncios locales, conector BOJA (Andalucía), registro de 62 boletines.
+  textos de anuncios en descarga, registro de 62 boletines.
+- Conectores autonómicos (`motor/autonomicos/`): BOJA (Andalucía), BOCM (Madrid), BOCYL (Castilla y León), DOGV
+  (Comunitat Valenciana), DOG (Galicia) y DOGC (Cataluña), con piezas comunes en `comun.py`.
+- Extracción sin IA (`motor/extraccion/`): plazo de solicitudes de cualquier boletín (`plazo.py`) y plazas
+  convocadas (`plazas.py`); plantilla de anuncios locales del BOE en `motor/boe/extraer.py`.
+- Procesos (`motor/procesos.py`): une BOE y boletines autonómicos (misma convocatoria = un proceso; bases íntegras
+  locales enlazadas al anuncio del BOE que las cita).
 
 ## Documentos clave
 
