@@ -36,7 +36,7 @@ from motor.autonomicos.comun import (RE_NO_EMPLEO, clasificar, convocante_de_org
                                      escribir_json, escribir_jsonl, leer_jsonl)
 from motor.boe.clasificar import normalizar
 from motor.http import obtener
-from motor.limpieza import RE_DOCUMENTO, limpiar_texto
+from motor.provinciales.comun import CON_TEXTO, texto_pdf
 
 FUENTE = "bopb"
 SIGLAS = "BOPB"
@@ -59,8 +59,6 @@ RE_CABECERA_PDF = re.compile(
     r"^(?:[AB]|Butlletí Oficial de la Província de Barcelona|Data \d{2}-\d{2}-\d{4}|CVE \d+|Pàg\. \d+-\d+|"
     r"https://bop\.diba\.cat|\d+/\d+|Powered by TCPDF.*|Codi Validació:.*|Verificació:.*|"
     r"Document signat electrònicament.*)$")
-# Tipos de acto con texto útil (plazo, plazas, requisitos); los demás traen listas de personas
-CON_TEXTO = {"convocatoria", "bases", "modificacion", "correccion", "anulacion", "oferta_empleo", "otro"}
 
 
 def url_dia(d: date, pagina: int = 1) -> str:
@@ -166,16 +164,7 @@ def procesar_dia(d: date, raiz: Path, archivo: Archivo, pausa: float = 1.0) -> d
 
 
 def texto_disposicion(contenido: bytes, con_texto: bool = True) -> dict:
-    from pypdf import PdfReader
-    import io
-    if contenido[:4] != b"%PDF":
-        raise ValueError("no es un PDF")
-    bruto = "\n".join(p.extract_text() or "" for p in PdfReader(io.BytesIO(contenido)).pages)
-    if not con_texto:
-        # Lista de personas (admitidos, aprobados, nombramientos): solo se cuenta
-        return {"titulo": None, "texto": None, "tablas": [], "solo_recuento": True,
-                "lineas_con_documento_de_identidad": sum(1 for l in bruto.splitlines() if RE_DOCUMENTO.search(l))}
-    return {"titulo": None, **limpiar_texto(bruto, RE_CABECERA_PDF)}
+    return texto_pdf(contenido, con_texto, RE_CABECERA_PDF)
 
 
 def ruta_texto(raiz: Path, x: dict) -> Path:

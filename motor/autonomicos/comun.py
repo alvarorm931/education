@@ -36,7 +36,8 @@ RE_NO_EMPLEO = re.compile(
     r"subvencio\w*|llicencia\w*|ordenanca\w*|pressupost\w*|expropiacio\w*|"
     r"contractacio de (?:les )?(?:obres|serveis|subministra)\w*|licitacio\w*|ajuts?|premis?|beques?|compte general|"
     r"padro|taxes|impostos?|projectes? d'obres?|execucio de (?:les )?obres|relacio de llocs de treball|"
-    r"habitatges?|lloguer\w*|jutge\w* de pau|jutge/essa de pau|"
+    r"habitatges?|lloguer\w*|jutge\w* de pau|jutge/essa de pau|bonos?|bons|campanas?|campanyes|campanya|"
+    r"comercio\w*|comerc|entidad\w* colaborador\w*|entitat\w* col·laborador\w*|fomento del consumo|consum local|"
     r"licenza\w*|orzamento\w*|axudas?|bolsas? de estudos?|vivendas?|xuiz\w* de paz)\b")
 RE_RESULTADO = re.compile(
     r"\b(funcionari[oa]s? de carrera|personal laboral fijo|proceso selectivo|pruebas selectivas|aspirantes|"

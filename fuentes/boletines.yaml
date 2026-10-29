@@ -177,8 +177,9 @@ provinciales:
   - provincia: Alicante
     url: http://sede.diputacionalicante.es/consultas-bop/
     acceso_desde_github: "ok"
-    datos_estructurados: "RSS de la sede, incluidos bases y bolsas: https://sede.diputacionalicante.es/rssbasesant/ y /rssbolsa/"
-    estado: sin_conector
+    datos_estructurados: "Servicio JSON por día y sección: /wp-content/themes/Desarrollo-Diputacion/webservices/wseConsultaAjax.php?nemo=BOP_CON&param=<raiz>...<fechaPub>DD/MM/AAAA</fechaPub><tipoorganismo>4</tipoorganismo>...; PDF de cada edicto en www.dip-alicante.es/bop2/pdftotal/. RSS de la sede solo de la Diputación (bases y bolsas)"
+    estado: conector_en_pruebas
+    conector: motor/provinciales/bopalicante.py
   - provincia: Almería
     url: http://www.dipalme.org/Servicios/cmsdipro/index.nsf/bop_view.xsp?p=dipalme
     acceso_desde_github: "ok"
