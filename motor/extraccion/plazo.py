@@ -45,7 +45,7 @@ RE_INICIO_EXPLICITO = re.compile(
 RE_FIN_EXPLICITO = re.compile(
     r"(?:finaliza\w*|termina\w*|concluy\w*|concluir\w*|vence\w*)[^.;]{0,60}?\bel\s+(?:d[ií]a\s+)?(?P<d>\d{1,2})\s+de\s+"
     r"(?P<m>[a-záéíóú]+)(?:\s+de\s+(?P<a>\d{4}))?", re.IGNORECASE)
-RE_BOLETIN = re.compile(r"«(?P<b>(?:Boletín|Bolet[ií]n|Diario|Diari|Butlletí)[^»]{3,80})»")
+RE_BOLETIN = re.compile(r"[«\"“](?P<b>(?:Boletín|Bolet[ií]n|Diario|Diari|Butlletí)[^»\"”]{3,80})[»\"”]")
 RE_DESDE_PUBLICACION = re.compile(
     r"(?:siguiente|siguientes)\s+(?:al?\s+)?(?:de\s+)?(?:la\s+)?(?:fecha\s+de\s+)?(?:su\s+)?(?:la\s+)?publicaci[oó]n|"
     r"desde\s+(?:el\s+d[ií]a\s+)?(?:siguiente\s+)?(?:a|al)?\s*(?:la\s+)?(?:su\s+)?publicaci[oó]n", re.IGNORECASE)

@@ -17,7 +17,7 @@ from datetime import date
 from pathlib import Path
 
 from motor.archivo import Archivo
-from motor.autonomicos import bocyl, dog, dogc, dogv
+from motor.autonomicos import boa, bocyl, dog, dogc, dogv
 from motor.autonomicos.comun import descargar_textos
 
 
@@ -81,6 +81,8 @@ def main(argv: list[str] | None = None) -> int:
                                            formulario=lambda x: {"documentId": x["id"], "language": "es"},
                                            sesion=dogc.SESION)},
     }
+    pruebas["boa"] = lambda: {"dia": boa.procesar_dia(date(2026, 10, 29), raiz, archivo),
+                              "dia_2022": boa.procesar_dia(date(2022, 1, 3), raiz, archivo)}
     if a.solo and "dogc" in a.solo:
         resultado["tls_dogc"] = tls_dogc()
         print("tls_dogc", resultado["tls_dogc"])

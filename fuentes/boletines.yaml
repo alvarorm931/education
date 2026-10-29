@@ -18,7 +18,10 @@ autonomicos:
     comunidad: Aragón
     url: https://www.boa.aragon.es/
     acceso_desde_github: "ok"
-    estado: sin_conector
+    datos_estructurados: "Datos abiertos JSON por día con texto completo: https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VERLST&BASE=BOLE&DOCS=1-1000&SEC=OPENDATABOAJSON&OUTPUTMODE=JSON&SORT=-PUBL&SEPARADOR=&PUBL-C=AAAAMMDD (ISO-8859-1)"
+    estado: conector_en_pruebas
+    conector: motor/autonomicos/boa.py
+    nota: "Empleo: II. Autoridades y Personal, b) Oposiciones y concursos (incluye entidades locales)"
   - id: BOPA
     nombre: Boletín Oficial del Principado de Asturias
     comunidad: Asturias
