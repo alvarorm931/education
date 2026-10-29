@@ -36,7 +36,7 @@ from urllib.parse import quote
 from zoneinfo import ZoneInfo
 
 from motor.archivo import Archivo, solo_huella_por_defecto
-from motor.autonomicos.comun import (clasificar, convocante_de_organismo, descargar_textos, es_empleo_por_titulo,
+from motor.autonomicos.comun import (Freno, clasificar, convocante_de_organismo, descargar_textos, es_empleo_por_titulo,
                                      es_resultado, escribir_json, escribir_jsonl, leer_jsonl)
 from motor.boe.clasificar import normalizar
 from motor.http import obtener
@@ -248,6 +248,7 @@ def main(argv: list[str] | None = None) -> int:
         return 0
 
     inicio, informes = time.monotonic(), []
+    freno = Freno()
     for anio, mes in meses(a.desde, a.hasta):
         if a.max_minutos and (time.monotonic() - inicio) / 60 > a.max_minutos:
             print("Tiempo agotado; se continúa en la siguiente ejecución")
@@ -261,6 +262,8 @@ def main(argv: list[str] | None = None) -> int:
             inf = {"mes": f"{anio}-{mes:02d}", "resultado": "fuente_inaccesible", "alertas": [str(e)]}
         escribir_json(ruta, inf)
         informes.append(inf)
+        if freno.anotar(inf):
+            break
         print(f"BOCYL {anio}-{mes:02d}: {inf.get('resultado')} {inf.get('disposiciones', '')} disposiciones, "
               f"{inf.get('empleo_publico', '')} de empleo público, último día {inf.get('ultimo_dia')}")
         time.sleep(a.pausa)

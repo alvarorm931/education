@@ -32,7 +32,7 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 
 from motor.archivo import Archivo, solo_huella_por_defecto
-from motor.autonomicos.comun import (clasificar, convocante_de_organismo, descargar_textos, es_empleo_por_titulo,
+from motor.autonomicos.comun import (Freno, clasificar, convocante_de_organismo, descargar_textos, es_empleo_por_titulo,
                                      es_resultado, escribir_json, escribir_jsonl, leer_jsonl)
 from motor.boe.clasificar import normalizar
 from motor.boe.extraer import MESES
@@ -256,6 +256,7 @@ def main(argv: list[str] | None = None) -> int:
         return 0
 
     inicio, informes = time.monotonic(), []
+    freno = Freno()
     d = a.desde
     previo = ultimo_numero(a.salida, d)
     if previo is None and d != date(d.year, 1, 1):
@@ -287,6 +288,8 @@ def main(argv: list[str] | None = None) -> int:
             break  # el de hoy puede no estar publicado aún: no se da por cerrado
         escribir_json(ruta, inf)
         informes.append(inf)
+        if freno.anotar(inf):
+            break
         if inf.get("numero"):
             siguiente = inf["numero"] + 1
         if inf["resultado"] not in {"fin_de_semana"}:

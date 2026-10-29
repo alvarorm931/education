@@ -27,6 +27,7 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 
 from motor.archivo import Archivo, solo_huella_por_defecto
+from motor.autonomicos.comun import Freno
 from motor.boe.clasificar import REGLAS_ACTO, REGLAS_MODALIDAD, _primera, alcance, normalizar
 from motor.http import obtener
 from motor.limpieza import limpiar_html
@@ -167,6 +168,7 @@ def main(argv: list[str] | None = None) -> int:
 
     archivo = Archivo(a.salida / "archivo", indice_por_fuente=True, solo_huella=solo_huella_por_defecto())
     inicio, informes = time.monotonic(), []
+    freno = Freno()
     for anio in range(a.desde_anio, a.hasta_anio + 1):
         try:
             numeros = calendario(anio, a.salida, archivo)
@@ -193,6 +195,8 @@ def main(argv: list[str] | None = None) -> int:
             ruta.parent.mkdir(parents=True, exist_ok=True)
             ruta.write_text(json.dumps(inf, ensure_ascii=False, indent=1), encoding="utf-8")
             informes.append(inf)
+            if freno.anotar(inf):
+                break
             print(f"BOJA {anio}/{numero} {fecha}: {inf.get('resultado')} "
                   f"{inf.get('disposiciones', '')} disposiciones, {inf.get('oposiciones', '')} de oposiciones")
             time.sleep(a.pausa)

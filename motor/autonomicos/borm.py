@@ -29,7 +29,7 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 
 from motor.archivo import Archivo, solo_huella_por_defecto
-from motor.autonomicos.comun import (clasificar, descargar_textos, es_empleo_por_titulo, es_resultado, escribir_json,
+from motor.autonomicos.comun import (Freno, clasificar, descargar_textos, es_empleo_por_titulo, es_resultado, escribir_json,
                                      escribir_jsonl, leer_jsonl, nombre_propio)
 from motor.boe.clasificar import normalizar
 from motor.http import obtener
@@ -127,8 +127,16 @@ def procesar_dia(d: date, raiz: Path, archivo: Archivo) -> dict:
     try:
         s = parsear_sumario(r.contenido)
     except ET.ParseError as e:
-        informe["resultado"] = "error_formato"
-        informe["alertas"].append(f"BORM {d}: {e}")
+        inicio = r.contenido[:400].lower()
+        if b"<html" in inicio or b"<!doctype html" in inicio:
+            # Página HTML en lugar del XML del servicio: aviso o bloqueo del servidor, no un cambio de formato
+            informe["resultado"] = "fuente_inaccesible"
+            informe["alertas"].append(f"BORM {d}: el servicio devolvió una página HTML ({len(r.contenido)} bytes, "
+                                      f"sha256 {__import__('hashlib').sha256(r.contenido).hexdigest()[:12]})")
+        else:
+            informe["resultado"] = "error_formato"
+            informe["alertas"].append(f"BORM {d}: {e} ({len(r.contenido)} bytes, "
+                                      f"sha256 {__import__('hashlib').sha256(r.contenido).hexdigest()[:12]})")
         return informe
     if not s["numero"]:
         informe["resultado"] = "sin_boletin"
@@ -224,6 +232,7 @@ def main(argv: list[str] | None = None) -> int:
         return 0
 
     inicio, informes, d = time.monotonic(), [], a.desde
+    freno = Freno()
     while d <= a.hasta:
         if a.max_minutos and (time.monotonic() - inicio) / 60 > a.max_minutos:
             print("Tiempo agotado; se continúa en la siguiente ejecución")
@@ -240,6 +249,8 @@ def main(argv: list[str] | None = None) -> int:
         if not (inf.get("resultado") == "sin_boletin" and d >= hoy):
             escribir_json(ruta, inf)
         informes.append(inf)
+        if freno.anotar(inf):
+            break
         if inf["resultado"] != "sin_boletin":
             print(f"BORM {d}: {inf['resultado']} {inf.get('disposiciones', '')} anuncios, "
                   f"{inf.get('empleo_publico', '')} de empleo público")

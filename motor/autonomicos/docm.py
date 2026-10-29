@@ -32,7 +32,7 @@ from zoneinfo import ZoneInfo
 import requests
 
 from motor.archivo import Archivo, solo_huella_por_defecto
-from motor.autonomicos.comun import (clasificar, convocante_de_organismo, descargar_textos, es_empleo_por_titulo,
+from motor.autonomicos.comun import (Freno, clasificar, convocante_de_organismo, descargar_textos, es_empleo_por_titulo,
                                      es_resultado, escribir_json, escribir_jsonl, leer_jsonl)
 from motor.boe.clasificar import normalizar
 from motor.extraccion.texto_es import MESES
@@ -61,10 +61,11 @@ RE_CONTENIDO = re.compile(r'<div id="contenido_html">(.*?)(?:<div id="footer_not
 SESION: requests.Session | None = None
 
 
-def sesion() -> requests.Session:
-    """Sesión con la cookie del portal (se abre una vez por ejecución)."""
+def sesion(nueva: bool = False) -> requests.Session:
+    """Sesión con la cookie del portal (se abre una vez por ejecución; con nueva=True se vuelve a abrir, porque
+    el portal caduca la sesión y entonces responde 400 a todo)."""
     global SESION
-    if SESION is None:
+    if SESION is None or nueva:
         SESION = requests.Session()
         SESION.headers["User-Agent"] = USER_AGENT
         obtener(PORTADA, accept="text/html", sesion=SESION)
@@ -152,6 +153,8 @@ def _ruta(raiz: Path, carpeta: str, d: date, ext: str = "jsonl") -> Path:
 def procesar_dia(d: date, raiz: Path, archivo: Archivo) -> dict:
     url = url_dia(d)
     r = obtener(url, accept="text/html", sesion=sesion())
+    if r.status == 400:  # sesión caducada: se abre otra y se repite una vez
+        r = obtener(url, accept="text/html", sesion=sesion(nueva=True))
     informe = {"fecha": d.isoformat(), "status": r.status, "alertas": []}
     if r.status != 200:
         informe["resultado"] = "error_http"
@@ -222,11 +225,12 @@ def main(argv: list[str] | None = None) -> int:
         pend = textos_pendientes(a.salida)
         hechos, errores = descargar_textos(pend, lambda x: ruta_texto(a.salida, x), lambda x: x["url_html"],
                                            texto_disposicion, archivo, FUENTE, a.max_minutos, a.pausa,
-                                           accept="text/html", ext="html", sesion=sesion())
+                                           accept="text/html", ext="html", sesion=sesion(), renovar_sesion=lambda: sesion(nueva=True))
         print(f"DOCM textos: {hechos} descargados, {errores} errores, {len(pend) - hechos} pendientes")
         return 0
 
     inicio, informes, d = time.monotonic(), [], a.desde
+    freno = Freno()
     while d <= a.hasta:
         if a.max_minutos and (time.monotonic() - inicio) / 60 > a.max_minutos:
             print("Tiempo agotado; se continúa en la siguiente ejecución")
@@ -243,6 +247,8 @@ def main(argv: list[str] | None = None) -> int:
         if not (inf.get("resultado") == "sin_boletin" and d >= hoy):
             escribir_json(ruta, inf)
         informes.append(inf)
+        if freno.anotar(inf):
+            break
         print(f"DOCM {d}: {inf.get('resultado')} {inf.get('disposiciones', '')} disposiciones, "
               f"{inf.get('empleo_publico', '')} de empleo público")
         d += timedelta(days=1)

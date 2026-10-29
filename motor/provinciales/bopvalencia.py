@@ -32,7 +32,7 @@ from urllib.parse import urljoin
 from zoneinfo import ZoneInfo
 
 from motor.archivo import Archivo, solo_huella_por_defecto
-from motor.autonomicos.comun import (clasificar, convocante_de_organismo, descargar_textos,
+from motor.autonomicos.comun import (Freno, clasificar, convocante_de_organismo, descargar_textos,
                                      es_empleo_estricto, escribir_json, escribir_jsonl, leer_jsonl)
 from motor.boe.clasificar import normalizar
 from motor.http import obtener, sesion_tls_compatible
@@ -263,6 +263,7 @@ def main(argv: list[str] | None = None) -> int:
         return 0
 
     inicio, informes, portal = time.monotonic(), [], None
+    freno = Freno()
     d = a.hasta
     while d >= a.desde:  # del más reciente al más antiguo; lo ya hecho no se repite (salvo ayer y hoy)
         ruta = _ruta(a.salida, "dias", d, "json")
@@ -287,6 +288,8 @@ def main(argv: list[str] | None = None) -> int:
             if not (inf.get("resultado") == "sin_boletin" and d >= hoy):
                 escribir_json(ruta, inf)
             informes.append(inf)
+            if freno.anotar(inf):
+                break
             print(f"BOP Valencia {d}: {inf['resultado']} {inf.get('empleo_publico', '')}")
         d -= timedelta(days=1)
     alertas = [x for i in informes for x in i.get("alertas", [])]

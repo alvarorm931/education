@@ -30,6 +30,7 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 
 from motor.archivo import Archivo, solo_huella_por_defecto
+from motor.autonomicos.comun import Freno
 from motor.boe.clasificar import REGLAS_ACTO, REGLAS_MODALIDAD, _primera, alcance, normalizar
 from motor.http import obtener
 from motor.limpieza import parrafos_seguros
@@ -230,6 +231,7 @@ def main(argv: list[str] | None = None) -> int:
         return 0
 
     inicio, informes = time.monotonic(), []
+    freno = Freno()
     d = a.desde
     while d <= a.hasta:
         if a.max_minutos and (time.monotonic() - inicio) / 60 > a.max_minutos:
@@ -247,6 +249,8 @@ def main(argv: list[str] | None = None) -> int:
         ruta.parent.mkdir(parents=True, exist_ok=True)
         ruta.write_text(json.dumps(inf, ensure_ascii=False, indent=1), encoding="utf-8")
         informes.append(inf)
+        if freno.anotar(inf):
+            break
         print(f"BOCM {d}: {inf.get('resultado')} {inf.get('disposiciones', '')} disposiciones, "
               f"{inf.get('empleo_publico', '')} de empleo público")
         d += timedelta(days=1)

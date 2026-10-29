@@ -31,7 +31,7 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 
 from motor.archivo import Archivo, solo_huella_por_defecto
-from motor.autonomicos.comun import (clasificar, convocante_de_organismo, descargar_textos, es_empleo_por_titulo,
+from motor.autonomicos.comun import (Freno, clasificar, convocante_de_organismo, descargar_textos, es_empleo_por_titulo,
                                      es_resultado, escribir_json, escribir_jsonl, leer_jsonl)
 from motor.boe.clasificar import normalizar
 from motor.extraccion.texto_es import MESES
@@ -221,6 +221,7 @@ def main(argv: list[str] | None = None) -> int:
         return 0
 
     inicio, informes = time.monotonic(), []
+    freno = Freno()
     for anio in range(a.desde_anio, a.hasta_anio + 1):
         try:
             r = obtener(url_anio(anio), accept="text/html")
@@ -249,6 +250,8 @@ def main(argv: list[str] | None = None) -> int:
                 inf = {**b, "resultado": "fuente_inaccesible", "alertas": [str(e)]}
             escribir_json(ruta, inf)
             informes.append(inf)
+            if freno.anotar(inf):
+                break
             print(f"BOIB {b['fecha']} ({b['id']}, {b['tipo']}): {inf['resultado']} {inf.get('empleo_publico', '')}")
             time.sleep(a.pausa)
     alertas = [x for i in informes for x in i.get("alertas", [])]

@@ -26,7 +26,7 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 
 from motor.archivo import Archivo, solo_huella_por_defecto
-from motor.autonomicos.comun import (clasificar, convocante_de_organismo, descargar_textos, es_empleo_estricto,
+from motor.autonomicos.comun import (Freno, clasificar, convocante_de_organismo, descargar_textos, es_empleo_estricto,
                                      escribir_json, escribir_jsonl, leer_jsonl, nombre_propio)
 from motor.boe.clasificar import normalizar
 from motor.extraccion.texto_es import fecha_texto
@@ -184,6 +184,7 @@ def main(argv: list[str] | None = None) -> int:
         return 0
 
     inicio, informes = time.monotonic(), []
+    freno = Freno()
     d = a.hasta
     while d >= a.desde:  # del más reciente al más antiguo; lo ya hecho no se repite (salvo ayer y hoy)
         ruta = _ruta(a.salida, "dias", d, "json")
@@ -203,6 +204,8 @@ def main(argv: list[str] | None = None) -> int:
             if not (inf.get("resultado") == "sin_boletin" and d >= hoy):
                 escribir_json(ruta, inf)
             informes.append(inf)
+            if freno.anotar(inf):
+                break
             print(f"BOP Ciudad Real {d}: {inf['resultado']} {inf.get('empleo_publico', '')}")
             time.sleep(a.pausa)
         d -= timedelta(days=1)

@@ -35,7 +35,7 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 
 from motor.archivo import Archivo, solo_huella_por_defecto
-from motor.autonomicos.comun import (clasificar, convocante_de_organismo, descargar_textos, es_empleo_por_titulo,
+from motor.autonomicos.comun import (Freno, clasificar, convocante_de_organismo, descargar_textos, es_empleo_por_titulo,
                                      es_resultado, escribir_json, escribir_jsonl, leer_jsonl, nombre_propio)
 from motor.boe.clasificar import normalizar
 from motor.extraccion.texto_es import MESES
@@ -250,6 +250,7 @@ def main(argv: list[str] | None = None) -> int:
         return 0
 
     inicio, informes = time.monotonic(), []
+    freno = Freno()
     for anio in range(a.desde.year, a.hasta.year + 1):
         numero = 0
         while True:
@@ -268,6 +269,8 @@ def main(argv: list[str] | None = None) -> int:
             except ConnectionError as e:
                 inf = {"anio": anio, "numero": numero, "resultado": "fuente_inaccesible", "alertas": [str(e)]}
             informes.append(inf)
+            if freno.anotar(inf):
+                break
             time.sleep(a.pausa)
             if inf["resultado"] != "ok":
                 # Número aún no publicado (fin del año en curso), con fecha posterior o fallo: se sigue en la

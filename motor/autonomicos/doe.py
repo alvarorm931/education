@@ -32,7 +32,7 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 
 from motor.archivo import Archivo, solo_huella_por_defecto
-from motor.autonomicos.comun import (clasificar, convocante_de_organismo, descargar_textos, es_empleo_por_titulo,
+from motor.autonomicos.comun import (Freno, clasificar, convocante_de_organismo, descargar_textos, es_empleo_por_titulo,
                                      es_resultado, escribir_json, escribir_jsonl, leer_jsonl)
 from motor.boe.clasificar import normalizar
 from motor.extraccion.texto_es import MESES
@@ -230,6 +230,7 @@ def main(argv: list[str] | None = None) -> int:
 
     reciente = a.desde >= hoy - timedelta(days=3)  # en la pasada diaria se piden también los extraordinarios
     inicio, informes, d = time.monotonic(), [], a.desde
+    freno = Freno()
     while d <= a.hasta:
         if a.max_minutos and (time.monotonic() - inicio) / 60 > a.max_minutos:
             print("Tiempo agotado; se continúa en la siguiente ejecución")
@@ -246,6 +247,8 @@ def main(argv: list[str] | None = None) -> int:
         if not (inf.get("resultado") == "sin_boletin" and d >= hoy):
             escribir_json(ruta, inf)
         informes.append(inf)
+        if freno.anotar(inf):
+            break
         print(f"DOE {d}: {inf.get('resultado')} {inf.get('disposiciones', '')} disposiciones, "
               f"{inf.get('empleo_publico', '')} de empleo público")
         d += timedelta(days=1)

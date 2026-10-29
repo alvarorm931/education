@@ -29,7 +29,7 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 
 from motor.archivo import Archivo, solo_huella_por_defecto
-from motor.autonomicos.comun import (clasificar, convocante_de_organismo, es_empleo_por_titulo, es_resultado,
+from motor.autonomicos.comun import (Freno, clasificar, convocante_de_organismo, es_empleo_por_titulo, es_resultado,
                                      escribir_json, escribir_jsonl)
 from motor.boe.clasificar import normalizar
 from motor.http import obtener
@@ -158,6 +158,7 @@ def main(argv: list[str] | None = None) -> int:
     a = p.parse_args(argv)
     archivo = Archivo(a.salida / "archivo", indice_por_fuente=True, solo_huella=solo_huella_por_defecto())
     inicio, informes, d = time.monotonic(), [], a.desde
+    freno = Freno()
     while d <= a.hasta:
         if a.max_minutos and (time.monotonic() - inicio) / 60 > a.max_minutos:
             print("Tiempo agotado; se continúa en la siguiente ejecución")
@@ -174,6 +175,8 @@ def main(argv: list[str] | None = None) -> int:
         if not (inf.get("resultado") == "sin_boletin" and d >= hoy):  # hoy puede no estar publicado todavía
             escribir_json(ruta, inf)
         informes.append(inf)
+        if freno.anotar(inf):
+            break
         print(f"BOA {d}: {inf.get('resultado')} {inf.get('disposiciones', '')} disposiciones, "
               f"{inf.get('empleo_publico', '')} de empleo público")
         d += timedelta(days=1)

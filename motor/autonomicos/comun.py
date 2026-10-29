@@ -177,6 +177,25 @@ def convocante_de_organismo(organismo: str, capitales: Iterable[str] = ()) -> di
             "organismo": o}
 
 
+class Freno:
+    """Para la carga si la fuente falla varias veces seguidas (bloqueo, caída, cambio de formato): no se insiste
+    contra un servidor que no responde bien y se reintenta en la siguiente ejecución. Los días con error no se dan
+    por hechos, así que vuelven a pedirse."""
+
+    FALLOS = {"error_http", "error_formato", "fuente_inaccesible"}
+
+    def __init__(self, max_seguidos: int = 8):
+        self.max_seguidos, self.seguidos = max_seguidos, 0
+
+    def anotar(self, informe: dict) -> bool:
+        self.seguidos = self.seguidos + 1 if informe.get("resultado") in self.FALLOS else 0
+        if self.seguidos >= self.max_seguidos:
+            print(f"::warning::{self.seguidos} fallos seguidos ({informe.get('resultado')}: "
+                  f"{'; '.join((informe.get('alertas') or [])[:1])}); se para y se reintenta en la próxima ejecución")
+            return True
+        return False
+
+
 def escribir_jsonl(ruta: Path, filas: list[dict]) -> None:
     """Escribe las filas; el nombre de una persona en el título (nombramientos, notificaciones) se sustituye."""
     ruta.parent.mkdir(parents=True, exist_ok=True)
@@ -199,11 +218,13 @@ def descargar_textos(pendientes: list[dict], destino: Callable[[dict], Path], ur
                      extraer: Callable[[bytes], dict], archivo: Archivo, fuente: str, max_minutos: float,
                      pausa: float, accept: str = "application/xml", ext: str = "xml",
                      formulario: Callable[[dict], dict] | None = None, sesion=None,
-                     por_registro: bool = False) -> tuple[int, int]:
+                     por_registro: bool = False, renovar_sesion: Callable[[], object] | None = None
+                     ) -> tuple[int, int]:
     """Descarga y limpia los textos de la lista. Devuelve (hechos, errores). Reanudable: lo hecho queda escrito.
 
     formulario: para las API que piden el documento por POST, los campos de cada petición.
     por_registro: extraer recibe también el registro (p. ej. para no guardar el texto de una lista de personas).
+    renovar_sesion: para portales que caducan la sesión (responden 400): abre otra y repite una vez.
     """
     inicio, hechos, errores = time.monotonic(), 0, 0
     for x in pendientes:
@@ -212,6 +233,9 @@ def descargar_textos(pendientes: list[dict], destino: Callable[[dict], Path], ur
         u = url(x)
         try:
             r = obtener(u, accept=accept, formulario=formulario(x) if formulario else None, sesion=sesion)
+            if r.status == 400 and renovar_sesion:
+                sesion = renovar_sesion()
+                r = obtener(u, accept=accept, formulario=formulario(x) if formulario else None, sesion=sesion)
         except ConnectionError:
             errores += 1
             continue
