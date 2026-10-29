@@ -69,6 +69,13 @@ for c in $CONECTORES; do
       ejecutar motor.autonomicos.doe --textos --salida "$S" --max-minutos "$M"
       "$G" "DOE: textos"
       ;;
+    boib)
+      ejecutar motor.autonomicos.boib --salida "$S" --max-minutos "$((M * 2))"
+      ejecutar motor.autonomicos.boib --desde-anio 2022 --hasta-anio "$((Y - 1))" --salida "$S" --max-minutos "$M"
+      "$G" "BOIB: boletines"
+      ejecutar motor.autonomicos.boib --textos --salida "$S" --max-minutos "$M"
+      "$G" "BOIB: textos"
+      ;;
     dogc)
       ejecutar motor.autonomicos.dogc --salida "$S"
       ejecutar motor.autonomicos.dogc --desde 2022-01 --saltar-existentes --salida "$S" --max-minutos "$M"

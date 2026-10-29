@@ -34,9 +34,10 @@ autonomicos:
     comunidad: Illes Balears
     url: http://www.caib.es/eboibfront/?lang=es
     acceso_desde_github: "ok"
-    datos_estructurados: "RSS: https://www.caib.es/eboibfront/indexrss.do?lang=es"
-    estado: sin_conector
-    nota: "Comunidad uniprovincial: también publica lo local"
+    datos_estructurados: "Calendario anual /eboibfront/es/AAAA; sección II por boletín /eboibfront/es/AAAA/ID/seccion-ii-autoridades-y-personal/473; cada disposición en HTML, PDF y XML (ELI). RSS: /eboibfront/indexrss.do?lang=es"
+    estado: conector_en_pruebas
+    conector: motor/autonomicos/boib.py
+    nota: "Comunidad uniprovincial: también publica lo local (ayuntamientos y consells insulars) en la sección II"
   - id: BOC-CAN
     nombre: Boletín Oficial de Canarias
     comunidad: Canarias

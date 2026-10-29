@@ -1,0 +1,931 @@
+
+
+
+
+
+
+
+
+
+<?xml version="1.0"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="robots" content="noindex" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+
+
+
+	<meta http-equiv="expires" content="Tue, 27 Apr 2027 08:30:00 " />
+
+
+
+
+<title>BOIB, boletín oficial</title>
+<!-- Informacio de referencia -->
+
+<link rel="help" href='https://www.caib.es/root/estatic.do?path=/webcaib/govern_illes/accessibilitat/accessibilitat.es.htm' title="Accessibilidad" />
+<link rel="start" href='https://www.caib.es/root/index.do?lang=es' title="P&agrave;gina d'inici" />
+<link rel="contents" href='https://www.caib.es/root/estatic.do?path=/webcaib/govern_illes/mapa/mapa.es.htm' title="Mapa web" />
+<link rel="copyright" href='https://www.caib.es/root/estatic.do?path=/webcaib/govern_illes/info_legal/info.legal.es.htm' title="Informaci&oacute; legal" />
+
+<!-- CSS -->
+<!-- <link href="/eboibfront/css/estils.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="/eboibfront/css/estils_print.css" rel="stylesheet" type="text/css" media="print" />
+<link href="/eboibfront/css/eboib.css" rel="stylesheet" type="text/css" media="screen" />-->
+<link rel="stylesheet" href="/eboibfront/css/reset.css" />
+
+
+	
+	<link href="/eboibfront/mic/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" />
+
+
+
+	<script type="text/javascript">
+	var APP_SERVIDOR=window.location.href.substring(0,window.location.href.indexOf("eboibfront"))+"eboibfront/mic/tema2017/";
+	console.log(APP_SERVIDOR);
+	</script>
+<script type="text/javascript" src="/eboibfront/js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="/eboibfront/js/comuns.js"></script>
+
+
+
+	
+	<!--<script src="resources/js/jquery/jquery-1.11.0.min.js" th:src="@{/resources/js/jquery/jquery-1.11.0.min.js}"></script>-->
+	<script type="text/javascript" src="/eboibfront/mic/tema2017/files/jquery-1.12.4.min.js"></script>
+	<script type="text/javascript" src="/eboibfront/mic/tema2017/files/modernizr.js"></script>
+	<script type="text/javascript" src="/eboibfront/mic/tema2017/files/jquery.slimscroll.min.js"></script>
+	<script type="text/javascript" src="/eboibfront/mic/bootstrap/js/bootstrap.min.js"></script>
+	<!-- Fin bootstrap -->
+	<!-- Reset default bootstrap elements -->
+	<link href="/eboibfront/mic/bootstrap/css/bootstrap-reset.css" rel="stylesheet" media="screen" />
+	<!-- Fin reset bootstrap -->
+	<link href="/eboibfront/mic/css/gusiteMaps.css" rel="stylesheet" media="screen" />
+	<!-- Bootstrap compatibilidad con IE -->
+	<script src="/eboibfront/mic/tema2017/files/respond.src.js" type="text/javascript"></script>
+	<!-- Fin de bootstrap compatibilidad con IE -->
+	<script src="/eboibfront/mic/tema2017/files/globales.js" type="text/javascript"></script>
+
+	
+	<!--<link th:each="archivoCss : ${MVS_css}" rel="stylesheet" type="text/css" media="all" th:media="${archivoCss.media}" href="resources/css/estils.css"  th:href="@{${archivoCss.src}}"></link>
+	- css para incluir el logo de la cabecera en todas las páginas y que se vea correctamente en retina 
+	<link href="resources/css/estilsLogo.css" th:href="@{/resources/css/estilsLogo.css}" rel="stylesheet" media="screen" />-->
+
+	
+	
+	<link rel="stylesheet" type="text/css" media="screen" href="/eboibfront/mic/css/estils.css" />
+	<link rel="stylesheet" type="text/css" media="print" href="/eboibfront/mic/css/estils_print.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="/eboibfront/mic/css/estils_roig.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="/eboibfront/mic/tema2017/css/estils-tema.css" />
+
+    
+<link rel="stylesheet" href="/eboibfront/css/general.css" />
+<link rel="stylesheet" href="/eboibfront/css/visor.css" />
+	
+	<link rel="alternate" type="application/rss+xml" href="https://www.caib.es/root/rss.do?path=/eboibfront/indexrss.do?lang=es" title="RSS, BOIB, Boletín Oficial" />	
+	<link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet" />
+
+
+
+
+
+</head>
+
+<body class="bodyFontSize" style="font-size: 100%">
+
+		
+  
+
+
+
+
+		<!-- Cabecera-->
+		<div id="contenedor">
+			<header class="imc-titol" id="imc-titol">
+				<a href="https://www.caib.es/webgoib/ca/inici" class="imc--goib-logo"></a>
+				<div class="imc--contingut">
+					<a href="javascript:history.back()" class="imc-torna" title="Torna"><span>Torna</span></a>
+					<h1>
+
+						<span> Boletín Oficial de las Illes Balears </span>
+
+					</h1>
+					<div class="imc--m-lateral">
+						<ul>
+							<li>
+								<button type="button" class="imc-bt-menu" id="imc-bt-menu" title="Menú"><span>Menú</span></button>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</header>
+					<!-- marc -->
+			<div class="imc-marc" id="imc-marc">	 
+				<div class="imc--fons"></div>
+				<!-- menu lateral -->
+				<div class="imc-marc-menu" id="imc-marc-menu" aria-hidden="true">
+					<button class="imc-boto-tancar-menu" type="button" aria-label="Tancar menú" data-accio=menu-tanca></button>
+					<div class="imc-cercador" id="imc-cercador">
+						<!--<form id="cercador" action="/govern/cercador.do?lang=ca" method="get">
+							<p>
+								<input type="hidden" name="coduo" id="coduo" value="" />
+								<input type="hidden" name="lang" id="lang" value="ca" />
+							 <input id="cercadorText" name="cercadorText" type="text" placeholder="Cerca amb les paraules" title="Cerca amb les paraules" />
+								<button type="submit">Cercar</button>
+							</p>
+						</form>-->
+					</div>
+					<ul>
+						<li>
+							<a href="https://www.caib.es/govern/cercadorAv.do?lang=es" class="imc-marc-ico imc--avanzada" title="BÚSQUEDA AVANZADA"><span>BÚSQUEDA AVANZADA</span></a>
+						</li>
+						<li class="imc-marc-ico imc--idioma">
+							
+								
+								
+									<a href="/eboibfront/ca/canvi-idioma/" hreflang="ca">Catal&agrave;</a>
+								
+							
+								<p style="display:inline;color: white"> \ </p>
+								
+								
+									<strong>Castellano</strong>
+								
+							
+						</li>
+
+						<li>
+
+								
+									<a href="/eboibfront/accesibilidad?lang=es" class="imc-marc-ico imc--accessibilitat" hreflang="es">Accesibilidad</a>
+								
+
+						</li>
+						
+												
+					</ul>
+				</div>
+			</div>				
+		
+		<!-- /* tipocabecera 2: personalizada */-->
+		
+
+	
+		<div>
+			<!-- campanya -->
+			
+			
+			<!-- fin campanya -->
+		</div>
+		<!-- Contenido -->
+		<div id="continguts">
+    <!-- FIN MODULO CABECERA -->
+    
+    <!-- MODULO MENU PATH -->
+		    <ul id="mollaPa">
+		        <li class="first"><a href="https://www.caib.es/root/index.do">Inicio</a></li><li>&nbsp;&gt;&nbsp;<a href="/eboibfront/ES">BOIB, Boletín Oficial</a></li><li>&nbsp;&gt;&nbsp;<a href="/eboibfront/ES/2026/12352/seccion-ii-autoridades-y-personal/473">BOIB Núm. 138 - 29 / Octubre / 2026</a></li><li>&nbsp;&gt;&nbsp;Pág. 60227 a 60228</li>
+		    </ul>
+
+
+  
+  <div id="pagina"> 
+  	
+  	
+
+
+
+
+
+
+
+ <div >
+                
+            <!-- MODULO MENU PRINCIPAL -->
+            				<!-- menu -->
+				
+	<div class="menuAccessibilitat" id="marcLateralV2">
+	
+		<div class="menuLateral">
+		<!-- cercador -->
+        
+        <!-- /cercador -->
+        
+            <h2 class="invisible">
+                Menú general
+            </h2>
+
+            <div>
+	            <!-- /* menú sin iconos ################################################################################################################################*/-->
+	            <nav class="navbar navbar-default contenidoNav" role="navigation">
+	            
+	                <div class="container-fluid contenidomenuLateral">
+	                
+	                    <!-- Brand and toggle get grouped for better mobile display -->
+	                    <div class="navbar-header botonLateralResponsive">
+	                        <button type="button" class="navbar-toggle botonResponsive" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+	                            <span class="sr-only">
+	                                Toggle navigation
+	                            </span> 
+	                            <span class="icon-bar">
+	
+	                            </span> 
+	                            <span class="icon-bar">
+	
+	                            </span> 
+	                            <span class="icon-bar"></span>
+	                        </button>
+	                    </div>
+	                    
+	                    
+	                    <!--   Collect the nav links, forms, and other content for toggling -->
+	                    <div class="collapse navbar-collapse contenidoNav" id="bs-example-navbar-collapse-2">
+	                      
+	                        <ul class="contenidomenuLateral">
+	                            <li class="primerElemento">
+	                                <a class="fijo">
+	                                    <p>BOIB, boletín oficial</p>
+									    <p>
+									        <strong>
+									    		Núm. 138
+									    	</strong>
+									    	 - 29 / Octubre / 2026
+									    </p>
+										
+									    
+	                                </a>
+	 								
+	 								
+	
+		                                <ul class="primerosHijos">
+		                                
+									    	
+																			
+										    
+											  
+											  <li>
+												
+												
+											  	<a rel="section" href="/eboibfront/es/2026/12352/seccion-i-disposiciones-generales/471">
+												  	<p>Sección I</p><em>Disposiciones generales</em>
+												  	
+											  	</a>
+												
+											  </li>
+										    
+											  
+											  <li>
+												
+												
+											  	<a rel="section" href="/eboibfront/es/2026/12352/seccion-ii-autoridades-y-personal/473">
+												  	<p>Sección II</p><em>Autoridades y personal</em>
+												  	
+											  	</a>
+												
+											  </li>
+										    
+											  
+											  <li>
+												
+												
+											  	<a rel="section" href="/eboibfront/es/2026/12352/seccion-iii-otras-disposiciones-y-actos-administra/472">
+												  	<p>Sección III</p><em>Otras disposiciones y actos administrativos</em>
+												  	
+											  	</a>
+												
+											  </li>
+										    
+											  
+											  <li>
+												
+												
+											  	<a rel="section" href="/eboibfront/es/2026/12352/seccion-iv-procedimientos-judiciales/474">
+												  	<p>Sección IV</p><em>Procedimientos judiciales</em>
+												  	
+											  	</a>
+												
+											  </li>
+										    
+											  
+											  <li>
+												
+												
+											  	<a rel="section" href="/eboibfront/es/2026/12352/seccion-v-anuncios/475">
+												  	<p>Sección V</p><em>Anuncios</em>
+												  	
+											  	</a>
+												
+											  </li>
+										    
+	   				                    
+	   				                    </ul>
+	    							
+	    											                    
+			                   		                  
+			                    </li>
+			                    
+				            </ul>
+				            
+	               		</div>
+	               		
+	               	</div>
+	               	
+              	</nav>
+            
+             </div>
+             
+         </div>
+         
+     </div>  		
+                <!-- FIN MODULO MENU PRINCIPAL -->
+ </div>
+            
+            
+		<div >
+
+           <!-- MODULO MENU PRINCIPAL -->
+                				<!-- menu -->
+           <!-- FIN MODULO MENU PRINCIPAL -->
+			<div class="grupoSimple boibHtml container-contenido" id="info">
+			
+				<div id="boibDetall">
+					<!-- Seccions, subseccions, ... -->
+					<h2>
+					
+						<p>Sección II. Autoridades y personal</p>
+					
+						<p>Subsección primera. Nombramientos, situaciones e incidencias</p>
+					
+					<!-- Organisme -->
+					<p><p style="margin: 0">ADMINISTRACIÓN DE LA COMUNIDAD AUTÓNOMA</p><strong><p style="margin: 0">CONSEJERÍA DE EDUCACIÓN Y UNIVERSIDADES</p></strong></p></h2>
+					<div class="resumen">
+						<div class="titol">
+							<div class="caja">
+								
+									<p>
+										Núm. 796536<br />
+										Resolución de la directora general de Planificación y Gestión Educativas por la que se acepta la renuncia al cargo del director del CEIP Guillem de Montgrí, de Sant Antoni de Portmany
+									</p>
+
+									<ul>
+										<li>
+										
+											Contenido, oficial y auténtico, de la disposición:
+												<span><img src="/eboibfront/img/ico/ico_pdf.png" alt="Documento pdf" />&nbsp;<a class="document" rel="external" href="/eboibfront/pdf/es/2026/138/1231404">
+													Versión PDF
+												</a></span>
+										
+										</li>
+									</ul>
+														
+							</div>
+						</div>
+					</div>
+					
+					
+				</div>
+				<h3>Texto</h3>
+						<div id="contenidoEdicto" class="text contenido overrideContenidoEdicto">
+							<p><span style="line-height:1"><span style="font-family:Times New Roman,Times,serif; font-size:12px"><strong>Antecedentes</strong></span></span></p>
+
+<p><span style="font-family:&quot;Times New Roman&quot;,Times,serif">1. Mediante la Resolución del director general de Personal Docente y Centros Concertados de 11 de junio de 2025, (BOIB núm. 75, de 14 de junio), el señor Francisco J. Rey Outeiriño fue nombrado director del </span><em style="font-family:&quot;Times New Roman&quot;,Times,serif">CEIP Guillem de Montgrí</em><span style="font-family:&quot;Times New Roman&quot;,Times,serif">, de </span><em style="font-family:&quot;Times New Roman&quot;,Times,serif">Sant Antoni de Portmany</em><span style="font-family:&quot;Times New Roman&quot;,Times,serif"> por un período ordinario de cuatro años, con efectos de 1 de julio de 2025.</span></p>
+
+<p><span style="font-family:&quot;Times New Roman&quot;,Times,serif">2. El 24 de septiembre de 2026, el señor Francisco J. Rey Outeiriño presentó a la Dirección General de Planificación y Gestión Educativas una renuncia al cargo de director del </span><em style="font-family:&quot;Times New Roman&quot;,Times,serif">CEIP Guillem de Montgrí</em><span style="font-family:&quot;Times New Roman&quot;,Times,serif">, con fecha 30 de junio de 2027.</span></p>
+
+<p><strong style="font-family:&quot;Times New Roman&quot;,Times,serif">Fundamentos de derecho</strong></p>
+
+<p><span style="font-family:&quot;Times New Roman&quot;,Times,serif">1. La Ley orgánica 8/1985, de 3 de julio, reguladora del derecho a la educación (BOE núm. 159, de 4 de julio).</span></p>
+
+<p><span style="font-family:&quot;Times New Roman&quot;,Times,serif">2. El artículo 138.b) de la Ley Orgánica 2/2006, de 3 de mayo, de educación, LOE (BOE núm. 106, de 4 de mayo), modificada por la Ley Orgánica 3/2020 de 29 de diciembre, establece como uno de los supuestos de cese del director de un centro docente público, la renuncia motivada aceptada por la Administración educativa.</span></p>
+
+<p><span style="font-family:&quot;Times New Roman&quot;,Times,serif">3. La Ley 1/2022, de 8 de marzo, de educación de las Islas Baleares (BOIB núm. 38 de 17 de marzo).</span></p>
+
+<p><span style="font-family:&quot;Times New Roman&quot;,Times,serif">4.&nbsp;El artículo 36. a) del Decreto 4/2023, de 13 de febrero, por el cual se aprueba el Reglamento orgánico de las escuelas infantiles públicas, los colegios de educación primaria, los colegios de educación infantil y primaria, los colegios de educación infantil y primaria integrados con enseñanzas elementales de música, los colegios de educación infantil y primaria integrados con educación secundaria, y los institutos de educación secundaria de la Comunidad Autónoma de las Islas Baleares (BOIB núm. 21 de 16 de febrero), establece como uno de los supuestos de cese del director de un centro docente público, la renuncia motivada aceptada por la Consejería de Educación y Universidades.</span></p>
+
+<p><span style="font-family:&quot;Times New Roman&quot;,Times,serif">5. El artículo 15 de la Orden 5/2024 del consejero de Educación y Universidades por la cual se aprueban las bases para la selección, el nombramiento, la evaluación, la renovación y el cese de los directores de los centros docentes públicos no universitarios de las Islas Baleares (BOIB núm. 17, de 3 de febrero), establece cuando se den circunstancias que provoquen que el director no tenga que prestar servicios en el centro el próximo curso completo, porque se incorpore a otro destino, por jubilación u otras circunstancias per puedan producirse, el cese tendrá efectos con fecha 30 de junio.</span></p>
+
+<p><span style="font-family:&quot;Times New Roman&quot;,Times,serif">6. De acuerdo con el Decreto 10/2025, de 14 de julio, de la presidenta de las Illes Balears, por el que se establecen las competencias y la estructura orgánica básica de las consejerías de la Administración de la Comunidad Autónoma de las Illes Balears, es competente para aceptar la renuncia, la directora general de Planificación y Gestión Educativas.</span></p>
+
+<p><span style="font-family:&quot;Times New Roman&quot;,Times,serif">Por todo ello, dicto la siguiente</span></p>
+
+<p style="text-align:center"><strong style="font-family:&quot;Times New Roman&quot;,Times,serif">Resolución</strong></p>
+
+<p><span style="font-family:&quot;Times New Roman&quot;,Times,serif">1. Aceptar la renuncia al cargo del director del </span><em style="font-family:&quot;Times New Roman&quot;,Times,serif">CEIP Guillem de Montgrí</em><span style="font-family:&quot;Times New Roman&quot;,Times,serif"> del señor Francisco J. Rey Outeiriño, presentada en fecha 24 de septiembre de 2026.</span></p>
+
+<p><span style="font-family:&quot;Times New Roman&quot;,Times,serif">2. Disponer que la aceptación de la renuncia sea efectiva en fecha 30 de junio de 2027.</span></p>
+
+<p><span style="font-family:&quot;Times New Roman&quot;,Times,serif">3. Incluir el centro, </span><em style="font-family:&quot;Times New Roman&quot;,Times,serif">CEIP Guillem de Montgrí</em><span style="font-family:&quot;Times New Roman&quot;,Times,serif">, de </span><em style="font-family:&quot;Times New Roman&quot;,Times,serif">Sant Antoni de Portmany</em><span style="font-family:&quot;Times New Roman&quot;,Times,serif">, en la próxima convocatoria de concurso de méritos para la selección de directores de centros docentes públicos.</span></p>
+
+<p><span style="line-height:1"><span style="font-family:Times New Roman,Times,serif; font-size:12px">4. Notificar esta Resolución a la persona interesada.</span></span></p>
+
+<p><span style="line-height:1"><span style="font-family:Times New Roman,Times,serif; font-size:12px">5. Publicar esta Resolución en el <em>Boletín Oficial de las Islas Baleares</em>.</span></span></p>
+
+<p><span style="line-height:1"><span style="font-family:Times New Roman,Times,serif; font-size:12px"><strong>Interposición de recursos</strong></span></span></p>
+
+<p><span style="line-height:1"><span style="font-family:Times New Roman,Times,serif; font-size:12px">Contra esta Resolución, que no agota la vía administrativa, las personas interesadas pueden interponer un recurso de alzada ante el consejero de Educación y Universidades, en el plazo de un mes, contador desde el día siguiente a haberse publicado esta Resolución, de acuerdo con el que establece el artículo 122 de la Ley 39/2015, de 1 de octubre, del procedimiento administrativo común de las administraciones públicas, y el artículo 58 de la Ley 3/2003, de 26 de marzo, de régimen jurídico de la administración de la comunidad autónoma de las Islas Baleares.</span></span></p>
+
+<p> </p>
+
+<p style="text-align:center"><span style="line-height:1"><span style="font-family:Times New Roman,Times,serif; font-size:12px">Palma, en fecha de la firma electrónica (27 de octubre de 2026)</span></span></p>
+
+<p style="text-align:center"><strong style="font-family:&quot;Times New Roman&quot;,Times,serif; text-align:justify">La directora general de Planificación y Gestión Educativas<span style="display:block; line-height:1.6; margin-bottom:0px; margin-top:0px; width:100%"> </span></strong><span style="line-height:1"><span style="font-family:Times New Roman,Times,serif; font-size:12px"><span style="color:black">Catalina Maria Ginart Serrano</span></span></span></p>
+
+						</div>
+					
+					<!-- Afegeix els enllaços als documents annexes -->
+					
+					
+				
+					<div class="mensajeValidez marco">
+						<div class="caja">
+							
+							<ul>
+
+								<li class="noVermell">
+									Esta versión HTML se muestra sólo a efectos de consulta y carece de validez legal 
+									
+									<a class="noVermell" target="_blank" href="/eboibfront/pdf/VisPdf?action=VisEdicte&idDocument=1231404&lang=es">
+										para una versión oficial y auténtica, consulte la versión PDF
+									</a>
+									
+
+								</li>
+								
+							</ul>
+													
+						</div>
+					</div>	
+							
+			</div>
+			<!-- /columna central -->
+
+    	</div>
+    	<!-- /continguts -->
+	</div>    
+	<!-- peu -->
+
+    
+
+
+
+
+
+
+	<!-- footer -->
+	</div>	
+		
+			<!-- peu -->
+<footer class="imc--peu" id="imc--peu">
+
+	<div class="imc--seccions">
+		<ul>
+			<li data-offset="197" class="imc--primer" data-posicio="primer">
+				<a href="https://www.caib.es/eboibfront/" class="imc--p-boib"><span>BOIB</span></a>
+			</li>
+			<li data-offset="457">
+				<a href="https://www.caib.es/sites/transparencia/" class="imc--p-transparencia"><span>Transparència</span></a>
+			</li>
+			<li data-offset="718">
+				<a href="https://www.caib.es/seucaib/" class="imc--p-seu">
+					<span>Seu Electrònica</span></a>
+			</li>
+			<li data-offset="978">
+				<a href="https://www.caib.es/sites/atenciociutadania/" class="imc--p-atencio">
+					<span>Atenció a la ciutadania</span></a>
+			</li>
+			<li data-offset="1239">
+				<a href="https://www.caib.es/sites/contractaciopublica/" class="imc--p-contractacio">
+					<span>Contractació pública</span></a>
+			</li>
+
+			<li data-offset="1499" data-posicio="ultim">
+				<a href="https://www.caib.es/sites/protecciodedadespersonals/" class="imc--p-proteccio">
+					<span>Protecció de dades</span></a>
+			</li>
+		</ul>
+		<button type="button" class="imc--img imc--anterior" data-accio="seccions-anterior"><span></span>
+		</button>
+		<button type="button" class="imc--img imc--seguent" data-accio="seccions-seguent">
+			<span></span></button>
+	</div>
+
+	<!-- dades -->
+
+	<div class="imc--peu-dades">
+		<div class="imc--enllasos">
+			<ul>
+
+				<li><a href="https://www.caib.es/webgoib/inici">Inici</a></li>
+				<li><a href="https://www.caib.es/webgoib/ca/que-necessites">Què necessites?</a></li>
+				<li><a href="https://www.caib.es/webgoib/ca/temes">Temes</a></li>
+				<li><a href="https://www.caib.es/govern/administracio.do">Govern</a></li>
+
+
+			</ul>
+		</div>
+		<div class="imc--enllasos">
+			<ul>
+
+
+
+			</ul>
+		</div>
+
+
+		<div class="imc--info">
+
+			<p class="contacto">
+				
+					Servicio de Gestión de la Secretaria del Consejo de Gobierno<br/>Passeig de Sagrera, 2 - 07012 Palma<br/>Teléfono: 971 17 71 00
+				
+			</p>
+
+		</div>
+
+	</div>
+
+
+	<!-- xarxes -->
+
+	<div class="imc--peu-xarxes">
+		<p>Xarxes socials:</p>
+		<ul>
+			<li>
+				<a href="https://www.facebook.com/GovernIllesBalears/" class="imc--img imc--facebook">
+				</a>
+			</li>
+			<li>
+				<a href="https://twitter.com/goib" class="imc--img imc--twitter">
+				</a>
+			</li>
+			<li>
+				<a href="https://www.instagram.com/goib/" class="imc--img imc--instagram">
+				</a>
+			</li>
+			<li>
+				<a href="https://www.youtube.com/user/CanalIllesBalears" class="imc--img imc--youtube">
+				</a>
+			</li>
+		</ul>
+	</div>
+
+
+	<!-- enllaços -->
+
+	<div class="imc--peu-enllasos">
+		<strong>© Govern Illes Balears</strong>
+		<ul>
+			<li><a href="https://www.caib.es/sites/manualdidentitatcorporativa/ca/mapa/" title="mapa web">MAPA WEB</a></li>
+			<li><a href="https://www.caib.es/govern/external/infoLegal.do?lang=es">AVISO LEGAL</a></li>
+			<li>
+				<a href="https://www.caib.es/govern/rss.do?lang=es" class="imc-en-rss">
+					<span>RSS</span>
+					<svg viewBox="0 0 430.117 430.118" xml:space="preserve">
+						<g>
+							<path d="M97.493,332.473c10.419,10.408,16.755,24.525,16.794,40.244c-0.04,15.687-6.375,29.809-16.755,40.17l-0.04,0.019            c-10.398,10.352-24.603,16.681-40.398,16.681c-15.775,0-29.944-6.348-40.34-16.699C6.384,402.526,0,388.422,0,372.717            c0-15.719,6.384-29.869,16.754-40.253v0.009c10.401-10.36,24.57-16.735,40.34-16.735C72.89,315.738,87.081,322.131,97.493,332.473z             M97.493,332.464v0.009c0.019,0,0.019,0,0.019,0L97.493,332.464z M16.754,412.906c0,0,0,0,0-0.019c-0.019,0-0.019,0-0.019,0            L16.754,412.906z M0.046,146.259v82.129c53.618,0.033,104.328,21.096,142.278,59.104c37.943,37.888,58.917,88.675,59.003,142.477            h0.028v0.149h82.467c-0.065-78.233-31.866-149.099-83.279-200.549C149.122,178.126,78.285,146.308,0.046,146.259z M0.196,0v82.089            c191.661,0.14,347.464,156.184,347.594,348.028h82.327c-0.056-118.571-48.248-225.994-126.132-303.932            C226.073,48.274,118.721,0.051,0.196,0z"></path>
+						</g>
+					</svg>
+				</a>
+			</li>
+		</ul>
+	</div>
+</footer>
+		
+	
+</div>
+	<script src="/eboibfront/mic/tema2017/files/imc-lta-marc.js?v=2" type="text/javascript"></script>
+	<script src="/eboibfront/mic/tema2017/files/imc-lta-marc.js?v=2" type="text/javascript"></script>
+<!-- FIN MODULO PIE DE PAGINA -->
+    
+    <!--  /peu -->
+
+
+<!-- /contenidor -->
+<script type="text/javascript">
+var matched, browser;
+
+$.uaMatch = function( ua ) {
+    ua = ua.toLowerCase();
+
+    var match = /(chrome)[ \/]([\w.]+)/.exec( ua ) ||
+        /(webkit)[ \/]([\w.]+)/.exec( ua ) ||
+        /(opera)(?:.*version|)[ \/]([\w.]+)/.exec( ua ) ||
+        /(msie) ([\w.]+)/.exec( ua ) ||
+        ua.indexOf("compatible") < 0 && /(mozilla)(?:.*? rv:([\w.]+)|)/.exec( ua ) ||
+        [];
+
+    return {
+        browser: match[ 1 ] || "",
+        version: match[ 2 ] || "0"
+    };
+};
+
+matched = $.uaMatch( navigator.userAgent );
+browser = {};
+
+if ( matched.browser ) {
+    browser[ matched.browser ] = true;
+    browser.version = matched.version;
+}
+
+// Chrome is Webkit, but Webkit is also Safari.
+if ( browser.chrome ) {
+    browser.webkit = true;
+} else if ( browser.webkit ) {
+    browser.safari = true;
+}
+
+$.browser = browser;
+</script>
+<script type="text/javascript" >
+
+/** 
+ * 
+ * inicio de generación de CSS dinámico para los formatos de listas anidadas
+ *
+ **/
+ 
+var boibCss="";
+for(var n=0;n<4;n++){
+	for(var i=0;i<=100;i++){
+		if(n>0){ 
+			for(var j=0;j<n;j++){
+				if(j==0) 	boibCss+='#contenidoEdicto ';
+				boibCss+=('ol li >');
+			}
+		}
+		if(n==0) 	boibCss+='#contenidoEdicto ';
+		boibCss+=(' ol[start="'+(i+1)+'"] {counter-reset: lis'+n+' '+i+';}\n');
+	}
+}
+
+
+
+
+for(var n=0;n<4;n++){
+	boibCss+="#contenidoEdicto ";
+	if(n>0){ for(var j=0;j<n;j++) boibCss+=('ol li >');}
+	boibCss+=('ol > li:before {counter-increment: lis'+n+' ;}\n');
+}
+
+
+var values=['decimal','lower-alpha','upper-alpha','lower-roman','upper-roman'];
+
+
+for(var n=0;n<4;n++){
+for(var k3=0;k3<values.length;k3++){
+	boibCss+="#contenidoEdicto ";
+	if(n>0){ for(var j=0;j<n;j++) boibCss+=('ol li >');}
+	boibCss+=('ol.'+values[k3]+' > li:before {content: counter(lis'+n+' ,'+values[k3]+' ) "." ;}\n');
+}
+}
+
+var values2=JSON.parse(JSON.stringify(values));
+values2.push('circle');
+for(var k3=0;k3<values2.length;k3++){
+	boibCss+="#contenidoEdicto ";
+	boibCss+=('ol.'+values2[k3]+' > li {display:table;}\n');
+}
+var values2=JSON.parse(JSON.stringify(values));
+values2.push('circle');
+for(var k3=0;k3<values2.length;k3++){
+	boibCss+="#contenidoEdicto ";
+	boibCss+=('ol.'+values2[k3]+' > li > * {display:inline;}\n');
+}
+
+
+for(var n=0;n<4;n++){
+	var selector1="";
+	
+	for(var k1=0;k1<n;k1++){
+		selector1+="ol li > ";
+	}
+	var text=`
+		/****** LEVEL ${(n+1)}   ********************/
+		#contenidoEdicto  ${selector1} ol{
+		  counter-reset: lis${(n)};
+		}
+	`;	
+	
+	if (!$.browser.mozilla || $.browser.version > '60') {
+		boibCss+=(text);
+	}
+	
+	var counters=[0,0,0,0,0,0];
+	
+	for(var i=0;i<n;i++){
+		counters[i]=0;
+	}
+	//boibCss+=("counter: "+(Math.pow(values.length,(n+1)))+"<br/>");
+	for(var counter=0;counter<(Math.pow(values.length,(n+1)));counter++){
+		var a=0;
+		//boibCss+=("counters: "+counters+"<br/>");
+		let counterCss="",selector2="";
+			selector2="";
+			counterCss="";
+			for(var k3=0;k3<=n;k3++){
+					if(values[counters[n-k3]]!=''){
+						counterCss+=`counter(lis${k3},${values[counters[n-k3]]} )`;
+						counterCss+=' "." ';	
+						selector2+=`ol.nested.${values[counters[n-k3]]}`;
+					}else{
+						selector2+=`ol`;					
+					}	
+					if(k3<n)selector2+=` li `;
+					selector2+=` > `;
+			}
+			var cs=`#contenidoEdicto  ${selector2}  li:before {
+				 content: ${counterCss};
+			}
+			`;
+			boibCss+=(cs);
+	
+	
+		for(var i=0;i<=n;i++){
+			if( (counter+1)%((Math.pow(values.length,(i))))==0){
+				counters[i]++;
+				if(counter!=0){
+					for(var j=0;j<i;j++)
+						counters[j]=0;
+				}
+			}
+		}
+	
+	}
+}
+boibCss+=`
+#contenidoEdicto ul {
+	margin: .8em 0 1em 2em;
+	list-style-position: outside;
+	display:block !important;
+}
+
+#contenidoEdicto ol {
+		margin: .8em 0 1em 2em;
+		list-style: decimal;
+		list-style-position: outside;
+		display:block !important;
+	}
+`;
+
+boibCss2=`
+/*** INICIO DE LISTAS AUTOMÁTICAS. La generación de css está compartida con el fichero visorEdictes.jsp que contiene un tag script que genera automáticamente los CSS que faltan
+debido a que ocupan mucho tamaño en disco y es más fácil generarlos bajo demanda en el navegador, que enviar 3MB de css.
+
+**/
+
+#contenidoEdicto ol.circle > li {display:block;}
+#contenidoEdictool.decimal > li {display:block;}
+#contenidoEdictool.lower-alpha > li {display:block;}
+#contenidoEdictool.upper-alpha > li {display:block;}
+#contenidoEdictool.lower-roman > li {display:block;}
+#contenidoEdictool.upper-roman > li {display:block;}
+
+#contenidoEdictool.circle > li > *:nth-child(1) {display:inline;}
+#contenidoEdictool.decimal > li > *:nth-child(1) {display:inline;}
+#contenidoEdictool.lower-alpha > li  > *:nth-child(1) {display:inline;}
+#contenidoEdictool.upper-alpha > li > *:nth-child(1) {display:inline;}
+#contenidoEdictool.lower-roman > li > *:nth-child(1) {display:inline;}
+#contenidoEdicto ol.upper-roman > li > *:nth-child(1) {display:inline;}
+
+
+/** Nobullet para saltos dobles **/
+
+#contenidoEdicto ol.nobullet{
+	content: "";
+	list-style-type:NONE !important;	
+}
+#contenidoEdicto ol.nobullet > li:before{
+	content: '';	
+}
+
+#contenidoEdicto ol.nobullet li > ol.nested.decimal > li:before {
+content: counter(lis0,decimal ) "." counter(lis1,decimal ) "." ;
+}
+
+#contenidoEdicto ol.nobullet li > ol.decimal > li:before {
+content: counter(lis1,decimal ) "." ;
+}
+
+
+#contenidoEdicto ol.nobullet li > ol.nested.lower-alpha > li:before {
+content: counter(lis0,decimal ) "." counter(lis1,lower-alpha ) "." ;
+}
+#contenidoEdicto ol.nobullet li > ol.nested.upper-alpha > li:before {
+content: counter(lis0,decimal ) "." counter(lis1,upper-alpha ) "." ;
+}
+#contenidoEdicto ol.nobullet li > ol.nested.lower-roman > li:before {
+content: counter(lis0,decimal ) "." counter(lis1,lower-roman ) "." ;
+}
+#contenidoEdicto ol.nobullet li > ol.nested.upper-roman > li:before {
+content: counter(lis0,decimal ) "." counter(lis1,upper-roman ) "." ;
+}
+
+/** doble salto de nivel, recuperando tipo de numeración de lista anterior **/
+
+#contenidoEdicto ol.decimal  +*+ ol.nobullet li > ol.nested.decimal > li:before {
+content: counter(lis0,decimal ) "." counter(lis1,decimal ) "." ;
+}
+#contenidoEdicto ol.lower-alpha  +*+ ol.nobullet li > ol.nested.decimal > li:before {
+content: counter(lis0,lower-alpha ) "." counter(lis1,decimal ) "." ;
+}
+#contenidoEdicto ol.upper-alpha  +*+ ol.nobullet li > ol.nested.decimal > li:before {
+content: counter(lis0,upper-alpha ) "." counter(lis1,decimal ) "." ;
+}
+#contenidoEdicto ol.lower-roman  +*+ ol.nobullet li > ol.nested.decimal > li:before {
+content: counter(lis0,lower-roman ) "." counter(lis1,decimal ) "." ;
+}
+#contenidoEdicto ol.upper-roman  +*+ ol.nobullet li > ol.nested.decimal > li:before {
+content: counter(lis0,upper-roman ) "." counter(lis1,decimal ) "." ;
+}
+
+
+#contenidoEdicto ol.decimal  +*+ ol.nobullet li > ol.nested.lower-alpha > li:before {
+content: counter(lis0,decimal ) "." counter(lis1,lower-alpha ) "." ;
+}
+#contenidoEdicto ol.lower-alpha  +*+ ol.nobullet li > ol.nested.lower-alpha > li:before {
+content: counter(lis0,lower-alpha ) "." counter(lis1,lower-alpha ) "." ;
+}
+#contenidoEdicto ol.upper-alpha  +*+ ol.nobullet li > ol.nested.lower-alpha > li:before {
+content: counter(lis0,upper-alpha ) "." counter(lis1,lower-alpha ) "." ;
+}
+#contenidoEdicto ol.lower-roman  +*+ ol.nobullet li > ol.nested.lower-alpha > li:before {
+content: counter(lis0,lower-roman ) "." counter(lis1,lower-alpha ) "." ;
+}
+#contenidoEdicto ol.upper-roman  +*+ ol.nobullet li > ol.nested.lower-alpha > li:before {
+content: counter(lis0,upper-roman ) "." counter(lis1,lower-alpha ) "." ;
+}
+
+
+#contenidoEdicto ol.decimal  +*+ ol.nobullet li > ol.nested.upper-alpha > li:before {
+content: counter(lis0,decimal ) "." counter(lis1,upper-alpha ) "." ;
+}
+#contenidoEdicto ol.lower-alpha  +*+ ol.nobullet li > ol.nested.upper-alpha > li:before {
+content: counter(lis0,lower-alpha ) "." counter(lis1,upper-alpha ) "." ;
+}
+#contenidoEdicto ol.upper-alpha  +*+ ol.nobullet li > ol.nested.upper-alpha > li:before {
+content: counter(lis0,upper-alpha ) "." counter(lis1,upper-alpha ) "." ;
+}
+#contenidoEdicto ol.lower-roman  +*+ ol.nobullet li > ol.nested.upper-alpha > li:before {
+content: counter(lis0,lower-roman ) "." counter(lis1,upper-alpha ) "." ;
+}
+#contenidoEdicto ol.upper-roman  +*+ ol.nobullet li > ol.nested.upper-alpha > li:before {
+content: counter(lis0,upper-roman ) "." counter(lis1,upper-alpha ) "." ;
+}
+
+
+#contenidoEdicto ol.decimal  +*+ ol.nobullet li > ol.nested.lower-roman > li:before {
+content: counter(lis0,decimal ) "." counter(lis1,lower-roman ) "." ;
+}
+#contenidoEdicto ol.lower-alpha  +*+ ol.nobullet li > ol.nested.lower-roman > li:before {
+content: counter(lis0,lower-alpha ) "." counter(lis1,lower-roman ) "." ;
+}
+#contenidoEdicto ol.upper-alpha  +*+ ol.nobullet li > ol.nested.lower-roman > li:before {
+content: counter(lis0,upper-alpha ) "." counter(lis1,lower-roman ) "." ;
+}
+#contenidoEdicto ol.lower-roman  +*+ ol.nobullet li > ol.nested.lower-roman > li:before {
+content: counter(lis0,lower-roman ) "." counter(lis1,lower-roman ) "." ;
+}
+#contenidoEdicto ol.upper-roman  +*+ ol.nobullet li > ol.nested.lower-roman > li:before {
+content: counter(lis0,upper-roman ) "." counter(lis1,lower-roman ) "." ;
+}
+
+
+#contenidoEdicto ol.decimal  +*+ ol.nobullet li > ol.nested.upper-roman > li:before {
+content: counter(lis0,decimal ) "." counter(lis1,upper-roman ) "." ;
+}
+#contenidoEdicto ol.lower-alpha  +*+ ol.nobullet li > ol.nested.upper-roman > li:before {
+content: counter(lis0,lower-alpha ) "." counter(lis1,upper-roman ) "." ;
+}
+#contenidoEdicto ol.upper-alpha  +*+ ol.nobullet li > ol.nested.upper-roman > li:before {
+content: counter(lis0,upper-alpha ) "." counter(lis1,upper-roman ) "." ;
+}
+#contenidoEdicto ol.lower-roman  +*+ ol.nobullet li > ol.nested.upper-roman > li:before {
+content: counter(lis0,lower-roman ) "." counter(lis1,upper-roman ) "." ;
+}
+#contenidoEdicto ol.upper-roman  +*+ ol.nobullet li > ol.nested.upper-roman > li:before {
+content: counter(lis0,upper-roman ) "." counter(lis1,upper-roman ) "." ;
+}
+`;
+var style = document.createElement('style');
+style.type = 'text/css';
+style.innerHTML = boibCss;
+document.getElementsByTagName('head')[0].appendChild(style);
+
+
+var style2 = document.createElement('style');
+style2.type = 'text/css';
+style2.innerHTML = boibCss2;
+document.getElementsByTagName('head')[0].appendChild(style2);
+
+
+
+/** 
+ * 
+ *fin de generación de CSS dinámico para los formatos de listas anidadas 
+ * 
+ **/
+ 
+</script>
+</body>
+</html>

@@ -17,7 +17,7 @@ from datetime import date
 from pathlib import Path
 
 from motor.archivo import Archivo
-from motor.autonomicos import boa, bocyl, doe, dog, dogc, dogv
+from motor.autonomicos import boa, bocyl, boib, doe, dog, dogc, dogv
 from motor.autonomicos.comun import descargar_textos
 
 
@@ -87,6 +87,16 @@ def main(argv: list[str] | None = None) -> int:
                               "dia_2022": doe.procesar_dia(date(2022, 1, 3), raiz, archivo),
                               "textos": _textos(doe, raiz, archivo, lambda x: x["url_html"], accept="text/html",
                                                 ext="html")}
+    def _boib():
+        r = boib.obtener(boib.url_anio(2026), accept="text/html")
+        cal = boib.calendario(r.contenido.decode("utf-8", errors="replace"), 2026)
+        r22 = boib.obtener(boib.url_anio(2022), accept="text/html")
+        cal22 = boib.calendario(r22.contenido.decode("utf-8", errors="replace"), 2022)
+        return {"boletines_2026": len(cal), "boletines_2022": len(cal22),
+                "ultimo": boib.procesar_boletin(cal[-1], raiz, archivo),
+                "primero_2022": boib.procesar_boletin(cal22[0], raiz, archivo),
+                "textos": _textos(boib, raiz, archivo, lambda x: x["url_html"], accept="text/html", ext="html")}
+    pruebas["boib"] = _boib
     if a.solo and "dogc" in a.solo:
         resultado["tls_dogc"] = tls_dogc()
         print("tls_dogc", resultado["tls_dogc"])

@@ -45,6 +45,7 @@ NOMBRE_FUENTE = {
     "DOGC": "Diari Oficial de la Generalitat de Catalunya",
     "BOA": "Boletín Oficial de Aragón",
     "DOE": "Diario Oficial de Extremadura",
+    "BOIB": "Butlletí Oficial de les Illes Balears",
 }
 # Cómo citan los anuncios del BOE a cada boletín autonómico (para enlazar las bases íntegras)
 BOLETIN_A_FUENTE = {
@@ -58,6 +59,9 @@ BOLETIN_A_FUENTE = {
     "diario oficial de galicia": "DOG",
     "boletin oficial de aragon": "BOA",
     "diario oficial de extremadura": "DOE",
+    "butlleti oficial de les illes balears": "BOIB",
+    "boletin oficial de las illes balears": "BOIB",
+    "boletin oficial de las islas baleares": "BOIB",
     "diari oficial de la generalitat de catalunya": "DOGC",
     "diario oficial de la generalitat de cataluna": "DOGC",
     "diario oficial de la generalidad de cataluna": "DOGC",
