@@ -51,9 +51,9 @@ universidades se miden en el barrido de sus webs (§9).
 | Plazas y modalidad por centro, idiomas | RUCT, memoria | hecho, 23 de 23 |
 | Criterios de admisión y su peso, complementos | RUCT, memoria | hecho, 23 de 23 |
 | Evaluación con ponderación por materia | RUCT (memorias RD 1393/2007) | hecho, 11 de 13 memorias de ese formato |
-| Evaluación y metodología por asignatura | guía docente, obligatoria antes de la matrícula (RD 822/2021, art. 9.3) | plataformas en estudio |
+| Evaluación y metodología por asignatura | guía docente, obligatoria antes de la matrícula (RD 822/2021, art. 9.3) | mapa de plataformas hecho (`docs/fuentes-guias-docentes.md`): SIGMA DOA cubre 12 universidades con un conector; 10 más con URL predecible |
 | Plan publicado | BOE | hecho |
-| Precio público por crédito | decreto u orden anual de cada comunidad | en estudio |
+| Precio público por crédito | decreto u orden anual de cada comunidad | normas de las 19 administraciones identificadas (`docs/fuentes-precios-publicos.md`); 17 leídas, Navarra y Murcia por verificar |
 | Becas generales | BOE y Base de Datos Nacional de Subvenciones | pendiente |
 | Convenios de títulos propios con empresas | portales de transparencia de las públicas | pendiente |
 
