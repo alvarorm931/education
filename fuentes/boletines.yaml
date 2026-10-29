@@ -43,8 +43,10 @@ autonomicos:
     comunidad: Canarias
     url: http://www.gobiernodecanarias.org/boc/
     acceso_desde_github: "ok"
-    datos_estructurados: "Feeds: https://www.gobiernodecanarias.org/boc/feeds/"
-    estado: sin_conector
+    datos_estructurados: "Índice anual /boc/AAAA/index.html (número y fecha de cada boletín); índice por boletín /boc/AAAA/NNN/; copia HTML no oficial de cada disposición (el PDF de la sede es el oficial). Feeds: /boc/feeds/"
+    estado: conector_en_pruebas
+    conector: motor/autonomicos/boc.py
+    nota: "Empleo: II. Autoridades y personal, Oposiciones y concursos; Administración Local (ayuntamientos y cabildos)"
   - id: BOC-CANT
     nombre: Boletín Oficial de Cantabria
     comunidad: Cantabria
@@ -131,9 +133,10 @@ autonomicos:
     comunidad: País Vasco
     url: https://www.euskadi.eus/y22-bopv/es/bopv2/datos/Ultimo.shtml
     acceso_desde_github: "ok"
-    datos_estructurados: "XML del último boletín: /bopv2/datos/Ultimo.xml (ISO-8859-1)"
-    estado: sin_conector
-    nota: "RSS del último boletín: /bopv2/datos/Ultimo.xml (ISO-8859-1)"
+    datos_estructurados: "Sumario por número: /web01-bopv/es/p43aBOPVWebWar/VerParalelo.do?csAAAANNNNNN (ISO-8859-1, bilingüe); disposición en /web01-bopv/es/bopv2/datos/AAAA/MM/AANNNNNa.shtml; último: /bopv2/datos/Ultimo.xml"
+    estado: conector_en_pruebas
+    conector: motor/autonomicos/bopv.py
+    nota: "El sumario del día siguiente sale la tarde antes con las disposiciones vacías: no se procesa hasta su fecha"
   - id: DOGV
     nombre: Diari Oficial de la Generalitat Valenciana
     comunidad: Comunitat Valenciana

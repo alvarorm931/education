@@ -83,6 +83,20 @@ for c in $CONECTORES; do
       ejecutar motor.autonomicos.borm --textos --salida "$S" --max-minutos "$M"
       "$G" "BORM: textos"
       ;;
+    boc)
+      ejecutar motor.autonomicos.boc --salida "$S"
+      ejecutar motor.autonomicos.boc --desde 2022-01-01 --salida "$S" --max-minutos "$M"
+      "$G" "BOC: boletines"
+      ejecutar motor.autonomicos.boc --textos --salida "$S" --max-minutos "$M"
+      "$G" "BOC: textos"
+      ;;
+    bopv)
+      ejecutar motor.autonomicos.bopv --salida "$S"
+      ejecutar motor.autonomicos.bopv --desde 2022-01-01 --salida "$S" --max-minutos "$M"
+      "$G" "BOPV: boletines"
+      ejecutar motor.autonomicos.bopv --textos --salida "$S" --max-minutos "$M"
+      "$G" "BOPV: textos"
+      ;;
     dogc)
       ejecutar motor.autonomicos.dogc --salida "$S"
       ejecutar motor.autonomicos.dogc --desde 2022-01 --saltar-existentes --salida "$S" --max-minutos "$M"

@@ -46,6 +46,8 @@ NOMBRE_FUENTE = {
     "BOA": "Boletín Oficial de Aragón",
     "DOE": "Diario Oficial de Extremadura",
     "BORM": "Boletín Oficial de la Región de Murcia",
+    "BOC": "Boletín Oficial de Canarias",
+    "BOPV": "Boletín Oficial del País Vasco",
     "BOIB": "Butlletí Oficial de les Illes Balears",
 }
 # Cómo citan los anuncios del BOE a cada boletín autonómico (para enlazar las bases íntegras)
@@ -61,6 +63,8 @@ BOLETIN_A_FUENTE = {
     "boletin oficial de aragon": "BOA",
     "diario oficial de extremadura": "DOE",
     "boletin oficial de la region de murcia": "BORM",
+    "boletin oficial de canarias": "BOC",
+    "boletin oficial del pais vasco": "BOPV",
     "butlleti oficial de les illes balears": "BOIB",
     "boletin oficial de las illes balears": "BOIB",
     "boletin oficial de las islas baleares": "BOIB",
