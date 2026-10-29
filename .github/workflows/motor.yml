@@ -29,7 +29,7 @@ concurrency:
 jobs:
   motor:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 355
     env:
       MIN_TEXTOS: ${{ inputs.minutos_textos || '10' }}
       MIN_AUTONOMICOS: ${{ inputs.minutos_autonomicos || '5' }}
@@ -79,8 +79,15 @@ jobs:
 
       - name: BOE, textos de anuncios de oposiciones
         run: |
-          python -m motor.boe.texto --pendientes --salida salida --max-minutos "$MIN_TEXTOS" | tail -n 8 || true
-          ./guardar.sh "BOE: textos de anuncios"
+          # Por tandas de 1.500 documentos, guardando tras cada una para no perder avance si se corta.
+          FIN=$(( $(date +%s) + MIN_TEXTOS * 60 ))
+          while [ "$(date +%s)" -lt "$FIN" ]; do
+            RESTA=$(( (FIN - $(date +%s)) / 60 ))
+            [ "$RESTA" -lt 1 ] && break
+            python -m motor.boe.texto --pendientes --salida salida --max 1500 --max-minutos "$RESTA" | tee tanda.txt | tail -n 3 || true
+            ./guardar.sh "BOE: textos de anuncios"
+            grep -q "Documentos a descargar: 0" tanda.txt && break
+          done
 
       - name: BOJA (Andalucía)
         run: |
