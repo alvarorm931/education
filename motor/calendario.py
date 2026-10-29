@@ -53,3 +53,16 @@ def fin_de_plazo(publicacion: date, dias: int, tipo: str) -> date:
     while not es_habil(d):
         d += timedelta(days=1)
     return d
+
+
+def fin_de_plazo_meses(publicacion: date, meses: int) -> date:
+    """Plazo en meses (art. 30.4): termina el mismo día de la publicación en el mes de vencimiento; si ese mes no
+    tiene ese día, el último día del mes. Si el último día es inhábil, pasa al primer hábil siguiente (art. 30.5)."""
+    import calendar
+
+    total = publicacion.month - 1 + meses
+    anio, mes = publicacion.year + total // 12, total % 12 + 1
+    d = date(anio, mes, min(publicacion.day, calendar.monthrange(anio, mes)[1]))
+    while not es_habil(d):
+        d += timedelta(days=1)
+    return d

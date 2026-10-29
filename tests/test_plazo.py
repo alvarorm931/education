@@ -1,0 +1,80 @@
+"""Plazo de solicitudes con frases literales de convocatorias reales del BOE (2025-2026)."""
+
+from datetime import date
+
+from motor.calendario import fin_de_plazo_meses
+from motor.extraccion.plazo import extraer_plazo
+
+BOE = "Boletín Oficial del Estado"
+
+
+def test_dias_habiles_desde_el_boe():
+    t = ("4.6 Las personas interesadas dispondrán de un plazo de presentación de solicitudes de veinte días hábiles "
+         "contados a partir del día siguiente al de la fecha de publicación de esta convocatoria en el «Boletín "
+         "Oficial del Estado».\n5.1 Expirado el plazo de presentación de solicitudes, el órgano convocante dictará "
+         "resolución, en el plazo máximo de un mes, por la que declarará aprobada la lista provisional.")
+    p = extraer_plazo(t, "2026-10-20", BOE)
+    assert p["dias"] == 20 and p["tipo"] == "habiles" and p["cuenta_desde"] == BOE
+    assert p["fin_estimado"] == "2026-11-17" and p["fin_exacto"] is False
+    assert p["cita"].startswith("4.6 Las personas interesadas")
+
+
+def test_dias_naturales_y_quince_siguientes():
+    t = ("Las solicitudes para la participación en el concurso se presentarán en el plazo de veinte días naturales, "
+         "contados a partir del siguiente al de la publicación del presente concurso en el «Boletín Oficial del Estado».")
+    assert extraer_plazo(t, "2026-10-15", BOE)["fin_estimado"] == "2026-11-04"
+    t = ("3.2 La presentación de solicitudes se hará en el plazo de los quince días hábiles siguientes a la publicación "
+         "de esta convocatoria en el «Boletín Oficial del Estado».")
+    p = extraer_plazo(t, "2026-10-16", BOE)
+    assert p["dias"] == 15 and p["fin_estimado"] == "2026-11-06"
+
+
+def test_otro_boletin_no_da_fecha_de_fin():
+    t = ("El plazo de presentación de solicitudes será de quince días hábiles computados a partir del día siguiente "
+         "al de la publicación de la presente orden en el «Diario Oficial de Galicia».")
+    p = extraer_plazo(t, "2026-03-02", BOE)
+    assert p["cuenta_desde"] == "Diario Oficial de Galicia" and "fin_estimado" not in p
+    # Con el boletín propio sí: el mismo texto leído en el DOG
+    assert extraer_plazo(t, "2026-03-02", "Diario Oficial de Galicia")["fin_estimado"] == "2026-03-23"
+    # Dos boletines a la vez («BOE o BOJA»): depende del último, sin fecha de fin
+    t = ("3.1 El plazo de presentación de solicitudes será de veinte días hábiles contados a partir del siguiente al de "
+         "la publicación de la convocatoria en el «Boletín Oficial del Estado» o en el «Boletín Oficial de la Junta de "
+         "Andalucía», si esta fuera posterior.")
+    assert "fin_estimado" not in extraer_plazo(t, "2026-05-04", BOE)
+
+
+def test_fechas_escritas_en_el_texto():
+    t = ("El plazo para la presentación de solicitudes de participación es del 28 de octubre al 24 de noviembre de "
+         "2025, ambos incluidos.")
+    p = extraer_plazo(t, "2025-10-27", BOE)
+    assert (p["inicio"], p["fin_estimado"], p["fin_exacto"]) == ("2025-10-28", "2025-11-24", True)
+    t = ("El plazo de presentación de solicitudes será de diez días hábiles contados desde el día 19 de marzo de 2026, "
+         "finalizando, por tanto, el referido plazo, el 1 de abril de 2026.")
+    p = extraer_plazo(t, "2026-03-18", BOE)
+    assert p["fin_estimado"] == "2026-04-01" and p["fin_exacto"] is True
+
+
+def test_inicio_explicito():
+    t = ("La presentación de solicitudes deberá realizarse en el plazo de veinte días hábiles contados a partir del día "
+         "1 de octubre de 2026.")
+    p = extraer_plazo(t, "2026-06-15", BOE)
+    assert p["inicio"] == "2026-10-01" and p["fin_estimado"] == "2026-10-29"
+
+
+def test_frases_que_no_son_el_plazo_de_solicitudes():
+    for t in (
+        "Podrá admitirse la renuncia a la participación en el concurso dentro del plazo de presentación de instancias "
+        "y durante los diez días hábiles subsiguientes a la terminación de dicho plazo.",
+        "Las personas aspirantes dispondrán de un plazo de diez días hábiles, contados a partir del día siguiente al de "
+        "publicación de la relación de aspirantes que han superado la fase de oposición, para presentar la "
+        "documentación.",
+        "Esta resolución no implica nuevo cómputo ni ampliación de plazo de presentación de solicitudes.",
+    ):
+        assert extraer_plazo(t, "2026-10-01", BOE) is None
+
+
+def test_meses():
+    assert fin_de_plazo_meses(date(2026, 1, 31), 1) == date(2026, 3, 2)   # 28/02 es sábado
+    t = "El plazo de presentación de solicitudes será de un mes a contar desde el día siguiente al de su publicación."
+    p = extraer_plazo(t, "2026-10-29", BOE)
+    assert p["tipo"] == "meses" and p["cuenta_desde"] == "su publicación" and p["fin_estimado"] == "2026-11-30"

@@ -13,6 +13,7 @@ Reglas:
   - Estado: «anulado» si hay anulación; «plazo_abierto» si la fecha de fin estimada es hoy o posterior;
     «plazo_cerrado» si ya pasó (el proceso sigue en curso, sin novedades conocidas);
     «sin_datos_de_plazo» si aún no se ha extraído el plazo. Nunca se inventa un estado.
+  - Si una corrección o modificación posterior abre un plazo nuevo, ese plazo sustituye al original.
 """
 
 from __future__ import annotations
@@ -53,6 +54,10 @@ def construir(actos: list[dict], hoy: date) -> list[dict]:
             continue
         posteriores = sorted(citados_por.get(a["id"], []), key=lambda x: x["fecha"])
         plazo = a.get("plazo") or {}
+        # Una corrección o modificación posterior puede abrir un plazo nuevo: manda la más reciente con fecha de fin
+        for x in posteriores:
+            if x.get("tipo_acto") in ("modificacion", "correccion") and (x.get("plazo") or {}).get("fin_estimado"):
+                plazo = {**x["plazo"], "de_acto": x["id"]}
         fin = plazo.get("fin_estimado")
         if any(x.get("tipo_acto") == "anulacion" for x in posteriores):
             estado = "anulado"
@@ -71,7 +76,9 @@ def construir(actos: list[dict], hoy: date) -> list[dict]:
             "plazas": [{k: p.get(k) for k in ("numero", "puesto_clave", "puesto", "especialidad", "denominacion", "grupo",
                                               "regimen", "sistema", "turno")} for p in a.get("plazas") or []],
             "total_plazas": a.get("total_plazas"),
-            "plazo": {k: plazo.get(k) for k in ("dias", "tipo", "fin_estimado", "calendario")} if plazo else None,
+            "plazo": {k: plazo.get(k) for k in ("dias", "meses", "tipo", "inicio", "fin_estimado", "fin_exacto",
+                                                 "cuenta_desde", "calendario", "de_acto", "cita") if plazo.get(k) is not None}
+                     if plazo else None,
             "apertura_plazo": a["fecha"],
             "bases": [b for b in a.get("boletines_citados") or [] if b.get("papel") in ("bases", "extracto", "rectificacion")],
             "actos": [{"id": a["id"], "fecha": a["fecha"], "tipo": a.get("tipo_acto"), "url": a.get("url")}] +

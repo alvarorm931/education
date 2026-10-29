@@ -41,9 +41,14 @@ def ambito(departamento: str | None) -> str:
 
 # Orden importante: la primera regla que encaja gana.
 REGLAS_ACTO: list[tuple[str, tuple[str, ...]]] = [
-    ("correccion", ("correccion de error", "correccion de las bases")),
+    ("correccion", ("correccion de error", "correccion de las bases", "correccion de errata", "se corrigen errores",
+                    "se corrigen los errores", "se corrige error", "se corrige el error", "rectificacion de error",
+                    "se subsanan errores")),
     ("desierta", ("desierta", "desierto")),
     ("anulacion", ("deja sin efecto", "se anula", "anulacion de la convocatoria")),
+    ("modificacion", ("se modifica la resolucion", "se modifica la orden", "se modifica la convocatoria",
+                      "modificacion de la convocatoria", "se amplia el plazo", "ampliacion del plazo",
+                      "se abre un nuevo plazo", "apertura de un nuevo plazo")),
     ("oferta_empleo", ("oferta de empleo publico",)),
     ("normativa", ("normas procedimentales", "por la que se establecen las normas")),
     ("admitidos", ("admitidos y excluidos", "admitidas y excluidas", "lista provisional", "lista definitiva",

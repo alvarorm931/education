@@ -30,43 +30,12 @@ from motor.boe.clasificar import normalizar
 from motor.boe.texto import ruta_texto
 from motor.calendario import fin_de_plazo
 from motor.catalogo.puestos import grupo, normalizar_puesto
+from motor.extraccion.plazo import VERSION as VERSION_PLAZO, extraer_plazo
+from motor.extraccion.texto_es import MESES, UNIDADES, fecha_texto, numero  # noqa: F401 (se reexportan)
 
 VERSION = "plantilla_local_v1"
-
-MESES = {m: i for i, m in enumerate(
-    ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre",
-     "noviembre", "diciembre"], start=1)}
-UNIDADES = {
-    "un": 1, "una": 1, "uno": 1, "dos": 2, "tres": 3, "cuatro": 4, "cinco": 5, "seis": 6, "siete": 7,
-    "ocho": 8, "nueve": 9, "diez": 10, "once": 11, "doce": 12, "trece": 13, "catorce": 14, "quince": 15,
-    "dieciseis": 16, "diecisiete": 17, "dieciocho": 18, "diecinueve": 19, "veinte": 20, "veintiun": 21,
-    "veintiuna": 21, "veintiuno": 21, "veintidos": 22, "veintitres": 23, "veinticuatro": 24,
-    "veinticinco": 25, "veintiseis": 26, "veintisiete": 27, "veintiocho": 28, "veintinueve": 29,
-    "treinta": 30, "cuarenta": 40, "cincuenta": 50, "sesenta": 60, "setenta": 70, "ochenta": 80,
-    "noventa": 90, "cien": 100, "ciento": 100, "doscientas": 200, "doscientos": 200, "trescientas": 300,
-    "trescientos": 300,
-}
-
-
-def numero(texto: str) -> int | None:
-    t = normalizar(texto)
-    if t.isdigit():
-        return int(t)
-    total = 0
-    for parte in t.replace(" y ", " ").split():
-        if parte not in UNIDADES:
-            return None
-        total += UNIDADES[parte]
-    return total or None
-
-
-def fecha_texto(dia: str, mes: str, anio: str) -> str | None:
-    m = MESES.get(normalizar(mes))
-    try:
-        return date(int(anio), m, int(dia)).isoformat() if m else None
-    except ValueError:
-        return None
-
+# Tipos de acto en los que el texto puede fijar (o reabrir) un plazo de solicitudes
+CON_PLAZO = {"convocatoria", "bases", "modificacion", "correccion", "otro", None}
 
 RE_BOLETIN = re.compile(
     r"«(?P<boletin>[^»]+)»\s*(?:,?\s*(?:número|núm\.|n\.º|nº)\s*(?P<numero>[\d.]+))?\s*,\s*de\s+(?P<dia>\d{1,2})\s+de\s+"
@@ -253,6 +222,13 @@ def construir_acto(anuncio: dict, texto: dict | None) -> dict:
         else:
             acto["alcance"] = alcance_por_turnos(local["plazas"]) or acto["alcance"]
     else:
+        if acto["tipo_acto"] in CON_PLAZO:
+            plazo = extraer_plazo(cuerpo, anuncio["fecha"], "Boletín Oficial del Estado")
+            if plazo:
+                acto["plazo"] = plazo
+                acto["extraccion"] = VERSION_PLAZO
+            if not plazo or not plazo.get("fin_estimado"):
+                acto["pendiente"].append("plazo")
         acto["pendiente"].append("extraccion_ia")
     return acto
 
