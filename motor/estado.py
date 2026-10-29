@@ -52,7 +52,8 @@ def estado_fuente(carpeta: Path, hoy: date) -> dict:
                 continue
             r = inf.get("resultado") or "desconocido"
             resultados[r] += 1
-            fecha = inf.get("fecha") or (inf.get("mes") and f"{inf['mes']}-01")
+            # Informes por mes (BOCYL) llevan el último día con boletín; los de boletín, su fecha
+            fecha = inf.get("ultimo_dia") or inf.get("fecha") or (inf.get("mes") and f"{inf['mes']}-01")
             if r == "ok" and fecha and (ultimo_ok is None or fecha > ultimo_ok):
                 ultimo_ok = fecha
             if r not in ("ok", "sin_boletin"):
