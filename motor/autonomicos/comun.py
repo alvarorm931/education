@@ -85,6 +85,7 @@ TIPOS_ENTIDAD = (
     ("entitat municipal descentralitzada de ", "Entidad Local Menor"),
     ("entitat municipal descentralitzada d'", "Entidad Local Menor"),
     ("area metropolitana de ", "Área Metropolitana"),
+    ("ajuntament ", "Ayuntamiento"),  # «AJUNTAMENT ALDEA, L'» (BOP de Tarragona)
     # Gallego
     ("concello da ", "Ayuntamiento", "A "),
     ("concello do ", "Ayuntamiento", "O "),
@@ -133,6 +134,19 @@ def nombre_propio(texto: str) -> str:
     return " ".join(palabras)
 
 
+RE_ARTICULO_DETRAS = re.compile(r"^(?P<n>.+?),\s*(?P<a>L['’]|El|La|Els|Les|Los|Las|Es|Sa|Ses|O|A|Os|As)$", re.IGNORECASE)
+
+
+def articulo_delante(nombre: str) -> str:
+    """«Aldea, L'» -> «L'Aldea»; «Masnou, El» -> «El Masnou» (forma del INE con el artículo detrás)."""
+    m = RE_ARTICULO_DETRAS.match(nombre or "")
+    if not m:
+        return nombre
+    art = m.group("a")
+    art = art[0].upper() + art[1:].lower()
+    return f"{art}{m.group('n')}" if art.endswith(("'", "’")) else f"{art} {m.group('n')}"
+
+
 RE_PARENTESIS = re.compile(r"^(?P<nombre>.+?)\s*\((?P<provincia>[^()]+)\)\s*$")
 
 
@@ -150,6 +164,7 @@ def convocante_de_organismo(organismo: str, capitales: Iterable[str] = ()) -> di
     for prefijo, tipo, *articulo in TIPOS_ENTIDAD:
         if n.startswith(prefijo):
             nombre = (articulo[0] if articulo else "") + nombre_propio(base[len(prefijo):].strip())
+            nombre = articulo_delante(nombre)
             if provincia:
                 prov = nombre_propio(provincia)
             elif tipo == "Diputación Provincial" or normalizar(nombre) in {normalizar(c) for c in capitales}:

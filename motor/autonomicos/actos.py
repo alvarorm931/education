@@ -50,8 +50,10 @@ FUENTES: dict[str, tuple[str, tuple[str, ...]]] = {
                                      "Butlletí Oficial de la Província d’Alacant")),
     "bopvalencia": ("BOP-VALENCIA", ("Butlletí Oficial de la Província de València",
                                      "Boletín Oficial de la Provincia de Valencia")),
+    "bopt": ("BOPT", ("Butlletí Oficial de la Província de Tarragona", "Boletín Oficial de la Provincia de Tarragona",
+                      "BOPT")),
 }
-PROVINCIALES = {"bopb", "bopalicante", "bopvalencia"}
+PROVINCIALES = {"bopb", "bopalicante", "bopvalencia", "bopt"}
 CON_PLAZO = {"convocatoria", "bases", "modificacion", "correccion", "otro", None}
 
 

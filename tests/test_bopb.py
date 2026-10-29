@@ -6,7 +6,7 @@ from motor.archivo import Archivo
 from motor.extraccion.plazas import extraer_plazas
 from motor.extraccion.plazo import extraer_plazo
 from motor.http import Respuesta
-from motor.provinciales import bopb
+from motor.provinciales import bopb, bopt, diba
 
 F = Path(__file__).parent / "fixtures"
 
@@ -46,7 +46,7 @@ def test_procesar_dia_con_paginas_y_domingo(tmp_path, monkeypatch):
             return Respuesta(url, 200, paginas[url].encode(), {})
         return Respuesta(url, 500, _leer("bopb_domingo_20261025.html").encode(), {})
 
-    monkeypatch.setattr(bopb, "obtener", falso)
+    monkeypatch.setattr(diba, "obtener", falso)
     a = Archivo(tmp_path / "archivo", indice_por_fuente=True, solo_huella=True)
     inf = bopb.procesar_dia(date(2026, 10, 28), tmp_path, a, pausa=0)
     assert (inf["resultado"], inf["paginas"], inf["disposiciones"]) == ("ok", 2, 27) and not inf["alertas"]
@@ -68,3 +68,17 @@ def test_texto_de_bases_en_catalan():
     assert p["dias"] == 20 and p["cuenta_desde"] == "Diari Oficial de la Generalitat de Catalunya"
     pl = extraer_plazas(limpio)
     assert pl["total"] == 1 and pl["plazas"][0]["denominacion"] == "caporal/a de la policia local"
+
+
+def test_tarragona_misma_plataforma():
+    # Página del día sin filtro (55 anuncios): misma estructura; registro con guion y anunciante en mayúsculas
+    s = diba.parsear_dia(bopt.BOLETIN, _leer("bopt_20261028_todo.html"))
+    assert (s["fecha"], s["total"], len(s["anuncios"])) == ("2026-10-28", 55, 20)
+    x = s["anuncios"][0]
+    assert x["id"] == "BOPT-2026-09775" and x["url_pdf"] == "https://www.dipta.cat/bopt/web/anunci/descarrega-pdf/365595"
+    assert x["url_html"].startswith("https://www.dipta.cat/bopt/web/anunci/365595/")
+    assert bopt.BOLETIN.url_dia(date(2026, 10, 28), 2) == \
+        "https://www.dipta.cat/bopt/web/anteriors/2026-10-28/2?bopb_dia%5BtipusAnunci%5D=23"
+    from motor.autonomicos.comun import convocante_de_organismo
+    assert convocante_de_organismo("AJUNTAMENT ALDEA, L'")["nombre"] == "L'Aldea"
+    assert convocante_de_organismo("AJUNTAMENT VENDRELL, EL")["nombre"] == "El Vendrell"
