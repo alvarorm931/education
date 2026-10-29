@@ -40,6 +40,9 @@ jobs:
           echo "ejecucion $RUN" > "pub/$STAMP/origen.txt"
           find pub -type f -size +90M -print -exec gzip -9 {} \;
           echo "::notice::tamaño $(du -sh pub/$STAMP | cut -f1), ficheros $(find pub -type f | wc -l), mayor $(find pub -type f -printf '%s %p\n' | sort -n | tail -1)"
+          # Red de seguridad: claves ajenas que aparecen en URL públicas no se suben (la rama es pública)
+          grep -rlE '(AKIA|ASIA)[0-9A-Z]{16}|AIza[0-9A-Za-z_-]{35}|gh[pousr]_[A-Za-z0-9]{36}|xox[baprs]-[A-Za-z0-9-]{10,}|sk_live_[0-9a-zA-Z]{24,}' pub 2>/dev/null \
+            | xargs -r sed -i -E 's/(AKIA|ASIA)[0-9A-Z]{16}|AIza[0-9A-Za-z_-]{35}|gh[pousr]_[A-Za-z0-9]{36}|xox[baprs]-[A-Za-z0-9-]{10,}|sk_live_[0-9a-zA-Z]{24,}/[retirado]/g'
           cd pub
           git init -q && git config user.name "motor-estudios" && git config user.email "motor-estudios@users.noreply.github.com"
           git remote add origin "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git"

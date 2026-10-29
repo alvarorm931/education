@@ -35,3 +35,11 @@ def test_dominios_de_censo_y_consolidar_urls(tmp_path):
     (d / "00002.urls.jsonl").write_text(json.dumps({"dominio": "uab.cat", "url": "https://www.uab.cat/master-a"}) + "\n" +
                                         json.dumps({"dominio": "uab.cat", "url": "https://www.uab.cat/master-b"}) + "\n")
     assert cc.consolidar_urls(d) == [{"dominio": "uab.cat", "urls": ["https://www.uab.cat/master-a", "https://www.uab.cat/master-b"]}]
+
+
+def test_sin_secretos():
+    from motor.estudios import commoncrawl as cc
+    u = "https://bucket.s3.amazonaws.com/master.pdf?AWSAccessKeyId=AKIAABCDEFGHIJKLMNOP&Signature=x"
+    assert cc.sin_secretos(u) == "https://bucket.s3.amazonaws.com/master.pdf"
+    assert cc.sin_secretos("https://x.es/master/AKIAABCDEFGHIJKLMNOP/") == "https://x.es/master/[retirado]/"
+    assert cc.sin_secretos("https://x.es/master-en-finanzas?o=2") == "https://x.es/master-en-finanzas?o=2"

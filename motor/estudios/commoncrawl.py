@@ -43,6 +43,19 @@ EXCLUIR = (r"(?i)master-?class|mastercard|masterchef|yacht-?master|master-?mind|
            r"masters?-of-the-universe|/(src|tree|blob|branch|-)/master|/master/(src|tree|blob|raw)/|renault|nissan|opel|movano|ducato|"
            r"master-?key|grand-?master|masterbuilt|mastercook|master-?system|paymaster|toastmaster")
 LENGUAS = ("spa", "cat", "eus", "glg")
+# Algunas URL públicas llevan credenciales ajenas en la consulta (enlaces firmados de S3, claves de API).
+# No se guardan ni se publican: se quita la consulta de esas URL y se tacha cualquier clave reconocible.
+SECRETO = re.compile(r"(AKIA|ASIA)[0-9A-Z]{16}|AIza[0-9A-Za-z_\-]{35}|gh[pousr]_[A-Za-z0-9]{36}|xox[baprs]-[A-Za-z0-9-]{10,}|"
+                     r"sk_live_[0-9a-zA-Z]{24,}|X-Amz-[A-Za-z]+=|AWSAccessKeyId=|[?&](signature|sig|token|access_token|"
+                     r"api_?key|key|secret|password)=", re.I)
+CLAVE = re.compile(r"(AKIA|ASIA)[0-9A-Z]{16}|AIza[0-9A-Za-z_\-]{35}|gh[pousr]_[A-Za-z0-9]{36}|xox[baprs]-[A-Za-z0-9-]{10,}|"
+                   r"sk_live_[0-9a-zA-Z]{24,}")
+
+
+def sin_secretos(url: str) -> str:
+    if not url or not SECRETO.search(url):
+        return url
+    return CLAVE.sub("[retirado]", url.split("?", 1)[0])
 CONSULTA = """
 SELECT url_host_registered_domain AS dominio, url_host_name AS host,
        count(*) AS paginas,
@@ -94,7 +107,10 @@ def consultar(fichero: str) -> list[dict]:
     filas = con.execute(CONSULTA.format(fichero=fichero, patron=PATRON_RUTA.replace("'", "''"),
                                         excluir=EXCLUIR.replace("'", "''"))).fetchall()
     cols = ["dominio", "host", "paginas", "ejemplos", "tld", "idiomas"]
-    return [dict(zip(cols, f)) for f in filas]
+    salida = [dict(zip(cols, f)) for f in filas]
+    for x in salida:
+        x["ejemplos"] = [sin_secretos(u) for u in (x.get("ejemplos") or [])]
+    return salida
 
 
 def consultar_urls(fichero: str, dominios: list[str]) -> list[dict]:
@@ -105,7 +121,7 @@ def consultar_urls(fichero: str, dominios: list[str]) -> list[dict]:
     lista = ",".join("'" + d.replace("'", "") + "'" for d in dominios)
     filas = con.execute(CONSULTA_URLS.format(fichero=fichero, dominios=lista, patron=PATRON_RUTA.replace("'", "''"),
                                              excluir=EXCLUIR.replace("'", "''"))).fetchall()
-    return [{"dominio": d, "url": u} for d, u in filas]
+    return [{"dominio": d, "url": sin_secretos(u)} for d, u in filas]
 
 
 def consolidar_urls(carpeta: Path) -> list[dict]:
