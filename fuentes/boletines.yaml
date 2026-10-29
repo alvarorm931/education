@@ -114,9 +114,11 @@ autonomicos:
     nombre: Boletín Oficial de la Región de Murcia
     comunidad: Murcia
     url: https://www.borm.es/
-    datos_estructurados: "Servicio de sumario PDF: https://www.borm.es/services/boletin/ano/AAAA/numero/N/sumario/pdf"
-    estado: sin_conector
-    nota: "Comunidad uniprovincial: también publica lo local. Servicio de sumario en PDF: /services/boletin/ano/AAAA/numero/N/sumario/pdf"
+    acceso_desde_github: "ok"
+    datos_estructurados: "Servicios XML del portal: /services/boletin/fecha/DD-MM-AAAA/sumario (anuncios con apartado y categoría), /services/anuncio/{id}/txt (texto), /services/boletin/fechas"
+    estado: conector_en_pruebas
+    conector: motor/autonomicos/borm.py
+    nota: "Comunidad uniprovincial: también publica lo local (apartado IV). Publica de lunes a sábado"
   - id: BON
     nombre: Boletín Oficial de Navarra
     comunidad: Navarra

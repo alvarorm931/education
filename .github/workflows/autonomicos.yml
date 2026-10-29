@@ -1,7 +1,7 @@
 name: Boletines autonómicos
 
 # Boletines de las comunidades con conector: Andalucía (BOJA), Madrid (BOCM), Castilla y León (BOCYL),
-# Comunitat Valenciana (DOGV), Galicia (DOG), Cataluña (DOGC), Aragón (BOA), Extremadura (DOE) e Illes Balears (BOIB). Va aparte del flujo del BOE para no
+# Comunitat Valenciana (DOGV), Galicia (DOG), Cataluña (DOGC), Aragón (BOA), Extremadura (DOE), Illes Balears (BOIB) y Región de Murcia (BORM). Va aparte del flujo del BOE para no
 # alargarlo; los dos escriben en la rama «datos» en carpetas distintas y la subida reintenta si choca.
 # Una vez al día; la carga histórica y los textos avanzan unos minutos en cada ejecución.
 
@@ -15,7 +15,7 @@ on:
         default: "3"
       conectores:
         description: "Conectores, separados por espacios"
-        default: "boja bocm bocyl dogv dog dogc boa doe boib"
+        default: "boja bocm bocyl dogv dog dogc boa doe boib borm"
 
 permissions:
   contents: write
@@ -30,7 +30,7 @@ jobs:
     timeout-minutes: 340
     env:
       MINUTOS: ${{ inputs.minutos || '3' }}
-      CONECTORES: ${{ inputs.conectores || 'boja bocm bocyl dogv dog dogc boa doe boib' }}
+      CONECTORES: ${{ inputs.conectores || 'boja bocm bocyl dogv dog dogc boa doe boib borm' }}
     steps:
       - uses: actions/checkout@v4
 

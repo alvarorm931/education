@@ -32,6 +32,7 @@ FUENTES: dict[str, tuple[str, tuple[str, ...]]] = {
     "dog": ("DOG", ("Diario Oficial de Galicia",)),
     "boa": ("BOA", ("Boletín Oficial de Aragón",)),
     "doe": ("DOE", ("Diario Oficial de Extremadura",)),
+    "borm": ("BORM", ("Boletín Oficial de la Región de Murcia",)),
     "boib": ("BOIB", ("Butlletí Oficial de les Illes Balears", "Boletín Oficial de las Illes Balears",
                       "Boletín Oficial de las Islas Baleares")),
     "dogc": ("DOGC", ("Diari Oficial de la Generalitat de Catalunya", "Diario Oficial de la Generalitat de Cataluña",
