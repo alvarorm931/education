@@ -393,6 +393,7 @@ def main() -> None:
     p.add_argument("--censo", help="carpeta datos/estudios/centros del censo del RUCT")
     p.add_argument("--proveedores", help="proveedores.jsonl del censo único")
     p.add_argument("--tramo", default="0:", help="tramo de la lista de proveedores, p. ej. 0:800")
+    p.add_argument("--estados", default="oficial,candidato", help="estados del censo a rastrear")
     p.add_argument("--hilos", type=int, default=8)
     p.add_argument("--muestra", type=int, default=6)
     p.add_argument("--max-minutos", type=float, default=27)
@@ -403,7 +404,8 @@ def main() -> None:
         objetivos = [{"web": w.strip(), "nivel": "manual"} for w in a.dominios.split(",") if w.strip()]
     elif a.proveedores:
         d, _, h = a.tramo.partition(":")
-        objetivos = objetivos_de_proveedores(Path(a.proveedores), int(d or 0), int(h) if h else None)
+        objetivos = objetivos_de_proveedores(Path(a.proveedores), int(d or 0), int(h) if h else None,
+                                             tuple(a.estados.split(",")))
     elif a.censo:
         objetivos = dominios_del_censo(Path(a.censo))
     else:
