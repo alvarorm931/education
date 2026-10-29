@@ -1,0 +1,595 @@
+
+
+<link rel='stylesheet' type='text/css' href='/appcont/servibopvi/styles/r01PortalResetToBaseStyles.css' /> 
+<link rel='stylesheet' type='text/css' href='/appcont/servibopvi/styles/calendar.css' />
+<link rel='stylesheet' type='text/css' href='/appcont/servibopvi/styles/r48-boletin.css?v=20250926' /> 
+<link rel='stylesheet' type='text/css' href='/appcont/servibopvi/styles/r48-sumario.css' />
+<link rel='stylesheet' type='text/css' href='/appcont/servibopvi/styles/r48-disposicion.css' /> 
+<link rel='stylesheet' type='text/css' href='/appcont/servibopvi/styles/r48-jquery-ui-1.8.16.custom.css' />
+
+<script type="text/javascript" src="/appcont/servibopvi/scripts/avanzada/r48-jquery-1.8.1.min.js"></script>
+<script type="text/javascript" src="/appcont/servibopvi/scripts/utiles.js?v=20250926"></script>
+<script type="text/javascript">
+$(document).ready(function(){	 
+	JQ_eventoClickCambioIdioma('5');
+});
+</script>
+
+
+
+
+
+
+<div class="prinColLeft"><!-- Panel Calendario -->
+<h2 class='tituGeneral'>Consulta</h2><div class='busqsimpCal'>            
+<!-- Modif 16/07/2014: incluye r48-calendario.js, para asegurar que existe func resizeIframe() que adapta calendario -->
+<script language="JavaScript" type="text/javascript" src="/appcont/servibopvi/scripts/r48-calendario.js"></script>
+<script language="JavaScript" type="text/javascript">
+    document.write("<iframe id='calendarioBOPV' name='calendarioBOPV' frameborder=0 scrolling=no width=100% src='/bopv2/datos/CalUltimo.shtml' onLoad='resizeIframe();'></iframe>");
+</script>
+<!--Modif 20/03/2017: no se debe usar noscript por accesibilidad-->
+<!--
+<noscript>	
+     <form name="calendarioBusqueda" id="calendarioBusqueda" action="/p43aBOPVWebWar/IrACalendario.do" method="post">
+     		<input type="hidden" name="idiomaCalendario" id="idiomaCalendario" value="es"> 	 
+	     <div class="formuBuscarFecha">
+	         <div><label>Consultar el sumario:</label></div>
+	         <div class="clr"></div>
+	         <div><input type="text" name="fechaBOPV" id="fechaBOPV" class="buscarFecha" value="dd/mm/aaaa" maxlength="10" size="10"/>     
+	              <input type="submit" name="btnIrACalendario" id="btnIrACalendario" value="Buscar" class="btnBuscarFecha"/></div>
+	     </div>
+     </form>
+</noscript> 
+-->
+</div>	
+
+<div class="clr"></div>
+<!-- Panel Consulta simple -->
+<h2 class="tituGeneral">Consulta simple</h2>
+<div class="formuSimple">
+
+
+<form name="avanzada" id="formConsultaSimple" action="/p43aBOPVWebWar/realizarBusquedaAvanzada.do?submit=cargar" method="post">
+ 	<input type="hidden" name="tipoBusqueda" value="1" />  
+	<input type="hidden" name="paginaActual" value="1" />
+	<input type="hidden" name="busquedaBRS" value="false" />
+	<input type="hidden" name="seccionSeleccionado" value="-1" />
+	<input type="hidden" name="rangoSeleccionado" value="-1" />
+	<input type="hidden" name="organoEmisorSeleccionado" value="" />
+	<input type="hidden" name="descriptorSeleccionado" value="" />
+	<input type="hidden" name="idioma" value="1" />	
+	<div><input type="text" name="textoDisposicion" id="textoDisposicionID" class="buscarPrinci" title="Consulta simple" />
+<script language="JavaScript" type="text/javascript">
+	function fnContarResultados( ){
+		var urlCount="/p43aBOPVWebWar/realizarBusquedaAvanzada.do";
+		var parametrosurl="idioma=1&R01HNoPortal=true&submit=Contar&textoDisposicion="+$('#textoDisposicionID').val();
+		var respuesta=$.ajax( {
+			async: true,
+			url: urlCount,
+	        crossDomain: true,
+	        type: 'GET',
+   	        data: parametrosurl,
+   	        dataType: 'jsonp', 
+			error: function (XMLHttpRequest, textStatus, errorThrown) {
+				alert('Error al obtener numero total de registros');
+			},
+			success:function (data, textStatus, jqXHR) {
+				if (data.count!=0 && data.count!='Error') {
+					$('#formConsultaSimple').submit();
+				} else {
+					if (data.count==0) {
+						alert('No se han encontrado resultados');
+					}
+				}
+			}
+		} );
+	}
+   document.write("<a href='javascript:fnContarResultados()'><img src='/appcont/servibopvi/images/buscarPrinci.gif' alt='Buscar' /></a>");
+</script>
+	</div>
+<!--Modif 20/03/2017: no se debe usar noscript por accesibilidad-->
+<!--  
+<noscript>	
+		<input type="image" name="buscar" src="/appcont/servibopvi/images/buscarPrinci.gif" /></div>
+</noscript>
+--> 
+</form>
+	
+	<div class="clr"></div>
+</div>
+ 
+<!-- Panel Servicios -->
+<div class="clr"></div>
+<h2 class="tituServicio">Servicios</h2>
+<ul class="menuIzqda">
+	<!-- <li><a href="/y22-izapide/es/x43kToolkitWar/form/fdp?language=es&procedureId=0101003">Solicitar una publicación</a></li> -->
+	<li><a href="/peticion_servicios/solicitud-publicacion-en-el-bopv/web01-tramite/es/#pills_applyProcedure_X882756436804FB272423EA8621BBF774517FB0F">Solicitar una publicación</a></li>
+	
+		<li><a href="/web01-bopv/es/p43aBOPVWebWar/buscarAvanzada.do?idioma=es&tipoBusqueda=2">Consulta avanzada</a></li>
+	
+	<li><a href="/web01-bopv/es/p43aBOPVWebWar/listarTextosConsol.do?idioma=es&submit=">Textos consolidados</a></li>
+ 	<li><a href="/web01-bopv/es/p43aBOPVWebWar/difuEntradaUsuario.do?idioma=es&submit=cargar">Difusi&oacute;n selectiva</a></li>
+ 	<li class="lastItm"><a href="/web01-bopv/es/p43aFirmaAsuntoWar/consultaBoletines.do?idioma=1&amp;method=cargar">Verificaci&oacute;n Bolet&iacute;n Electr&oacute;nico</a></li>
+</ul>
+
+<br />
+<p class="bopvEnlacerss"><a href="/bopv2/datos/Ultimo.xml">&Uacute;ltimo bolet&iacute;n</a> <a href="/bopv2/datos/Ultimo.xml"><img src="/appcont/servibopvi/images/rss.png" alt="" border="0" /> RSS</a>
+</p>
+</div><div class="prinColCenter"><div class="colCentral">
+      <div class="BOPVSumCabecera">
+        <ul>
+          <li><img src="/appcont/servibopvi/images/BOPV_c.png" alt="BOPV" /></li>
+          <li><img src="/appcont/servibopvi/images/LOGO.png" alt="Logo Gobierno Vasco" /></li>
+          <li><img src="/appcont/servibopvi/images/BOLETIN_c.png" alt="Boletin Oficial del País Vasco" /></li>
+        </ul>
+      </div>
+      <div class="bopvContenbloques">
+<div class="bopvBloqueizqda"><h2 class="tituGeneral">
+				Laburpena ( 206. zk.), 2026ko urriaren 28a, asteazkena</h2></div>
+<div class="bopvBloquedcha"><h2 class="tituGeneral">Sumario n.º
+				<span>206</span>, miércoles 28 de octubre de  2026</h2></div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda">
+      <div class="clr"><br/></div>
+      <div>
+        <ul class="listaFormatos">Bestelako formatuak: <li class="formatoPdf"><a href="/web01-bopv/eu/bopv2/datos/2026/10/e26_0206.pdf" target="_blank" title="Lehio berrian irekiko da esteka hau">
+										PDF 
+										<span>							
+													(344 KB - 4 orri.)
+												</span></a></li> <li class="formatoePub"><a href="/web01-bopv/eu/bopv2/datos/2026/10/e26_0206.epub" target="_blank" title="Lehio berrian irekiko da esteka hau">	
+										EPUB 
+										<span>							
+													(105 KB)</span></a></li> 
+        </ul>
+      </div><script>
+$(document).ready(function(){
+if ($("#bopvNumOrden").length) {
+	var $selectorCapaImprimir = $("#capaBotonImprimir");
+	if ($("#capaBotonImprimir", $("div.bopvBloqueizqda")).length==0) {
+		$selectorCapaImprimir =	$("#capaBotonImprimir");
+	} else {
+		$selectorCapaImprimir = $("#capaBotonImprimir", $("div.bopvBloqueizqda"));
+	}
+	$selectorCapaImprimir.prepend("<div style='float:right;'><span class='bopvanalisisdoc'><a href='#' onclick='javascript:modalWinEus(); return false;' title='Lehio berrian irekiko da esteka hau'>Azterketa dokumentala</a></span></div>");
+}
+});
+</script>
+<!-- Panel Boton Imprimir -->
+<script language="JavaScript" type="text/javascript">	
+	document.write("<div id='capaBotonImprimir' class='bopvImprimir'>");
+	document.write("<a href='#'>");
+	document.write("<img src='/appcont/servibopvi/images/imprimir.png' alt='Inprimatu' border='0' onclick='javascript:self.print();'/>");
+	document.write("</a>");		
+	document.write("</div>");
+</script><a name="anclaBOPVSeccion1"></a><h4 class="BOPVSumarioSeccion">XEDAPEN OROKORRAK</h4><a name="anclaBOPVSubSeccion1"></a><h5 class="BOPVSumarioSubSeccion">
+      </h5>
+      <h5 class="BOPVSumarioOrganismo">ETXEBIZITZA ETA HIRI AGENDA SAILA </h5>
+      </div>
+<div class="bopvBloquedcha">
+      <div class="clr"><br/></div>
+      <div>
+        <ul class="listaFormatos">Otros formatos: <li class="formatoPdf"><a href="/web01-bopv/es/bopv2/datos/2026/10/s26_0206.pdf" target="_blank" title="Este enlace se abrirá en nueva ventana">
+												PDF 
+												<span>							
+															(230 KB - 4 Pág.)
+														</span></a></li> <li class="formatoePub"><a href="/web01-bopv/es/bopv2/datos/2026/10/s26_0206.epub" target="_blank" title="Este enlace se abrirá en nueva ventana">
+												EPUB 
+												<span>							
+															(107 KB)</span></a></li> 
+        </ul>
+      </div><script>
+$(document).ready(function(){
+if ($("#bopvNumOrden").length) {
+	var $selectorCapaImprimir = $("#capaBotonImprimir");
+	if ($("#capaBotonImprimir", $("div.bopvBloquedcha")).length==0) {
+		$selectorCapaImprimir =	$("#capaBotonImprimir");
+	} else {
+		$selectorCapaImprimir = $("#capaBotonImprimir", $("div.bopvBloquedcha"));
+	}
+	$selectorCapaImprimir.prepend("<div style='float:right;'><span class='bopvanalisisdoc'><a href='#' onclick='javascript:modalWinCas(); return false;' title='Este enlace se abrirá en nueva ventana'>Análisis documental</a></span></div>");
+}
+});
+</script>
+<!-- Panel Boton Imprimir -->
+<script language="JavaScript" type="text/javascript">	
+	document.write("<div id='capaBotonImprimir' class='bopvImprimir'>");
+	document.write("<a href='#'>");
+	document.write("<img src='/appcont/servibopvi/images/imprimir.png' alt='Imprimir' border='0' onclick='javascript:self.print();'/>");
+	document.write("</a>");		
+	document.write("</div>");
+</script><a name="anclaBOPVSeccion1"></a><h4 class="BOPVSumarioSeccion">DISPOSICIONES GENERALES</h4><a name="anclaBOPVSubSeccion1"></a><h5 class="BOPVSumarioSubSeccion">
+      </h5>
+      <h5 class="BOPVSumarioOrganismo">DEPARTAMENTO DE VIVIENDA Y AGENDA URBANA </h5>
+      </div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/eu/bopv2/datos/2026/10/2604524e.shtml">AGINDUA, 2026ko urriaren 16koa, Etxebizitza eta Hiri Agendako sailburuarena, Alokaplus (Aloka+) laguntza-programa sortzeari buruzkoa; programa hori bizitegi-merkatu tentsionatuko eremuetan dauden etxebizitzak errentan emateko kontratuak dituzten errentatzaileei zuzenduta dago.</a></p><span class="BOPVSumarioOrden">4524</span></div></div>
+<div class="bopvBloquedcha"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/es/bopv2/datos/2026/10/2604524a.shtml">ORDEN de 16 de octubre de 2026, del consejero de Vivienda y Agenda Urbana, sobre la creación del Programa de ayudas Alokaplus (Aloka+) dirigido a las personas arrendadoras en relación con contratos de arrendamiento de vivienda ubicadas en zonas de mercado residencial tensionado.</a></p><span class="BOPVSumarioOrden">4524</span></div></div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><a name="anclaBOPVSeccion2"></a><h4 class="BOPVSumarioSeccion">AGINTARIAK ETA LANGILEAK</h4><a name="anclaBOPVSubSeccion2"></a><h5 class="BOPVSumarioSubSeccion">Izendapenak, egoerak eta gorabeherak</h5>
+      <h5 class="BOPVSumarioOrganismo">HEZKUNTZA SAILA </h5>
+      </div>
+<div class="bopvBloquedcha"><a name="anclaBOPVSeccion2"></a><h4 class="BOPVSumarioSeccion">AUTORIDADES Y PERSONAL</h4><a name="anclaBOPVSubSeccion2"></a><h5 class="BOPVSumarioSubSeccion">Nombramientos, situaciones e incidencias</h5>
+      <h5 class="BOPVSumarioOrganismo">DEPARTAMENTO DE EDUCACIÓN </h5>
+      </div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/eu/bopv2/datos/2026/10/2604525e.shtml">EBAZPENA, 2026ko urriaren 14koa, Langileriaren kudeaketa zuzendariarena, deialdian eskatutako baldintzak betetzen dituzten hautatutako pertsonek dagozkien lan-kontratuak formalizatzeko epea ezartzen duena, eta enplegua egonkortzeko salbuespenezko prozesuan hautatutako pertsonen bosgarren zerrenda osagarria argitaratzen duena, Hezkuntza Saileko lan-kontratuko hezkuntza-langileen lan-kategorietako lanpostuak modu finkoan betetzeko.</a></p><span class="BOPVSumarioOrden">4525</span></div></div>
+<div class="bopvBloquedcha"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/es/bopv2/datos/2026/10/2604525a.shtml">RESOLUCIÓN de 14 de octubre de 2026, del director de Gestión de Personal, por la que se establece el plazo para la formalización de los correspondientes contratos laborales por las personas seleccionadas que reúnen los requisitos exigidos en la convocatoria, y por la que se da publicidad a la quinta lista complementaria de personas seleccionadas en el proceso excepcional de estabilización de empleo para la cobertura, con carácter fijo, de plazas pertenecientes a las categorías laborales del personal laboral educativo del Departamento de Educación.</a></p><span class="BOPVSumarioOrden">4525</span></div></div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><a name="anclaBOPVSeccion3"></a><h4 class="BOPVSumarioSeccion">
+      </h4><a name="anclaBOPVSubSeccion3"></a><h5 class="BOPVSumarioSubSeccion">
+      </h5>
+      <h5 class="BOPVSumarioOrganismo">ELIKADURA, LANDA GARAPEN, NEKAZARITZA ETA ARRANTZA SAILA </h5>
+      </div>
+<div class="bopvBloquedcha"><a name="anclaBOPVSeccion3"></a><h4 class="BOPVSumarioSeccion">
+      </h4><a name="anclaBOPVSubSeccion3"></a><h5 class="BOPVSumarioSubSeccion">
+      </h5>
+      <h5 class="BOPVSumarioOrganismo">DEPARTAMENTO DE ALIMENTACIÓN, DESARROLLO RURAL, AGRICULTURA Y PESCA </h5>
+      </div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/eu/bopv2/datos/2026/10/2604526e.shtml">AGINDUA, 2026ko urriaren 15ekoa, Elikadura, Landa Garapen, Nekazaritza eta Arrantzako sailburuarena, sail honetako behin-behineko langile baten kargu-uztea xedatzeko dena.</a></p><span class="BOPVSumarioOrden">4526</span></div></div>
+<div class="bopvBloquedcha"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/es/bopv2/datos/2026/10/2604526a.shtml">ORDEN de 15 de octubre de 2026, de la consejera de Alimentación, Desarrollo Rural, Agricultura y Pesca, por la que se dispone el cese de personal eventual de este Departamento.</a></p><span class="BOPVSumarioOrden">4526</span></div></div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><a name="anclaBOPVSeccion4"></a><h4 class="BOPVSumarioSeccion">
+      </h4><a name="anclaBOPVSubSeccion4"></a><h5 class="BOPVSumarioSubSeccion">
+      </h5>
+      <h5 class="BOPVSumarioOrganismo">OSAKIDETZA-EUSKAL OSASUN ZERBITZUA </h5>
+      </div>
+<div class="bopvBloquedcha"><a name="anclaBOPVSeccion4"></a><h4 class="BOPVSumarioSeccion">
+      </h4><a name="anclaBOPVSubSeccion4"></a><h5 class="BOPVSumarioSubSeccion">
+      </h5>
+      <h5 class="BOPVSumarioOrganismo">OSAKIDETZA-SERVICIO VASCO DE SALUD </h5>
+      </div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/eu/bopv2/datos/2026/10/2604527e.shtml">4507/2026 EBAZPENA, irailaren 29koa, Bilbo-Basurtuko Erakunde Sanitario Integratuko zuzendari-gerentearena, zeinaren bidez zuzendariorde mediko-kirurgikoa izendatzen baita, izendapen askez, Osakidetza-Euskal osasun zerbitzuko Bilbo-Basurtuko Erakunde Sanitario Integratuan.</a></p><span class="BOPVSumarioOrden">4527</span></div></div>
+<div class="bopvBloquedcha"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/es/bopv2/datos/2026/10/2604527a.shtml">RESOLUCIÓN 4507/2026, de 29 de septiembre, del director gerente de la Organización Sanitaria Integrada Bilbao-Basurto, por la que se nombra, mediante libre designación, subdirector médico-quirúrgico en la Organización Sanitaria Integrada Bilbao-Basurto de Osakidetza-Servicio vasco de salud.</a></p><span class="BOPVSumarioOrden">4527</span></div></div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><a name="anclaBOPVSeccion5"></a><h4 class="BOPVSumarioSeccion">
+      </h4><a name="anclaBOPVSubSeccion5"></a><h5 class="BOPVSumarioSubSeccion">
+      </h5>
+      <h5 class="BOPVSumarioOrganismo"> </h5>
+      </div>
+<div class="bopvBloquedcha"><a name="anclaBOPVSeccion5"></a><h4 class="BOPVSumarioSeccion">
+      </h4><a name="anclaBOPVSubSeccion5"></a><h5 class="BOPVSumarioSubSeccion">
+      </h5>
+      <h5 class="BOPVSumarioOrganismo"> </h5>
+      </div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/eu/bopv2/datos/2026/10/2604528e.shtml">4872/2026 EBAZPENA, urriaren 5ekoa, Arabako Erakunde Sanitario Integratuko zuzendari-gerentearena, zeinaren bidez Arabako Unibertsitate Ospitaleko prestakuntza sanitario espezializatuko ikasketaburuaren funtzioak esleitzen baitira, Osakidetza-Euskal osasun zerbitzuko Arabako Erakunde Sanitario Integratuan, lanaldiaren % 80ko dedikazioarekin.</a></p><span class="BOPVSumarioOrden">4528</span></div></div>
+<div class="bopvBloquedcha"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/es/bopv2/datos/2026/10/2604528a.shtml">RESOLUCIÓN 4872/2026, de 5 de octubre, del director gerente de la Organización Sanitaria Integrada Araba, por la que se asignan las funciones de jefa de estudios de formación sanitaria especializada del Hospital Universitario Araba en la Organización Sanitaria Integrada Araba de Osakidetza-Servicio vasco de salud, con una dedicación del 80 % de su jornada laboral.</a></p><span class="BOPVSumarioOrden">4528</span></div></div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><a name="anclaBOPVSeccion6"></a><h4 class="BOPVSumarioSeccion">
+      </h4><a name="anclaBOPVSubSeccion6"></a><h5 class="BOPVSumarioSubSeccion">
+      </h5>
+      <h5 class="BOPVSumarioOrganismo"> </h5>
+      </div>
+<div class="bopvBloquedcha"><a name="anclaBOPVSeccion6"></a><h4 class="BOPVSumarioSeccion">
+      </h4><a name="anclaBOPVSubSeccion6"></a><h5 class="BOPVSumarioSubSeccion">
+      </h5>
+      <h5 class="BOPVSumarioOrganismo"> </h5>
+      </div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/eu/bopv2/datos/2026/10/2604529e.shtml">1628/2026 EBAZPENA, urriaren 6koa, Osakidetza-Euskal osasun zerbitzuko Langileen eta Talentuaren zuzendariarena, zeinaren bidez familiako eta komunitateko medikuntzako irakaskuntzaren koordinatzaileak bere lanpostua betetzeari uzten baitio, Osakidetza-Euskal osasun zerbitzuko Zuzendaritza Nagusian, Asistentzia Sanitarioko Zuzendaritzan, Lehen Mailako Arretako Zuzendariordetzan, Familiako eta Komunitateko Medikuntzako Irakaskuntza Unitatean, Gipuzkoan, erretiroa hartzeagatik.</a></p><span class="BOPVSumarioOrden">4529</span></div></div>
+<div class="bopvBloquedcha"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/es/bopv2/datos/2026/10/2604529a.shtml">RESOLUCIÓN 1628/2026, de 6 de octubre, de la directora de Personas y Talento de Osakidetza-Servicio vasco de salud, por la que se declara el cese en el desempeño del puesto de coordinadora de docencia de Medicina Familiar y Comunitaria, en la Unidad Docente de Medicina Familiar y Comunitaria, en la Subdirección de Atención Primaria, de la Dirección de Asistencia Sanitaria, de la Dirección General de Osakidetza-Servicio vasco de salud, en Gipuzkoa, por razón de jubilación.</a></p><span class="BOPVSumarioOrden">4529</span></div></div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><a name="anclaBOPVSeccion7"></a><h4 class="BOPVSumarioSeccion">
+      </h4><a name="anclaBOPVSubSeccion7"></a><h5 class="BOPVSumarioSubSeccion">Oposizioak eta lehiaketak</h5>
+      <h5 class="BOPVSumarioOrganismo">OSAKIDETZA-EUSKAL OSASUN ZERBITZUA </h5>
+      </div>
+<div class="bopvBloquedcha"><a name="anclaBOPVSeccion7"></a><h4 class="BOPVSumarioSeccion">
+      </h4><a name="anclaBOPVSubSeccion7"></a><h5 class="BOPVSumarioSubSeccion">Oposiciones y concursos</h5>
+      <h5 class="BOPVSumarioOrganismo">OSAKIDETZA-SERVICIO VASCO DE SALUD </h5>
+      </div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/eu/bopv2/datos/2026/10/2604530e.shtml">280/2026 EBAZPENA, irailaren 25ekoa, Gorlizko Ospitaleko zuzendari-gerentearena, zeinaren bidez deialdia egiten baita zuzendaritzako idazkariaren lanpostu bat izendapen askez hornitzeko, Osakidetza-Euskal osasun zerbitzuko Gorlizko Ospitalean, Zuzendaritza Gerentzian.</a></p><span class="BOPVSumarioOrden">4530</span></div></div>
+<div class="bopvBloquedcha"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/es/bopv2/datos/2026/10/2604530a.shtml">RESOLUCIÓN 280/2026, de 25 de septiembre, del director gerente del Hospital de Gorliz, por la que se convoca la provisión, mediante libre designación, de un puesto de secretario/a de dirección de la Dirección Gerencia en el Hospital de Gorliz de Osakidetza-Servicio vasco de salud.</a></p><span class="BOPVSumarioOrden">4530</span></div></div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><a name="anclaBOPVSeccion8"></a><h4 class="BOPVSumarioSeccion">
+      </h4><a name="anclaBOPVSubSeccion8"></a><h5 class="BOPVSumarioSubSeccion">
+      </h5>
+      <h5 class="BOPVSumarioOrganismo"> </h5>
+      </div>
+<div class="bopvBloquedcha"><a name="anclaBOPVSeccion8"></a><h4 class="BOPVSumarioSeccion">
+      </h4><a name="anclaBOPVSubSeccion8"></a><h5 class="BOPVSumarioSubSeccion">
+      </h5>
+      <h5 class="BOPVSumarioOrganismo"> </h5>
+      </div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/eu/bopv2/datos/2026/10/2604531e.shtml">533/2026 EBAZPENA, irailaren 30ekoa, Emergentziak erakundeko zuzendari-gerentearena, zeinaren bidez deialdia egiten baita koordinazioko gainbegiralearen lanpostu bat izendapen askez hornitzeko Osakidetza-Euskal osasun zerbitzuan, Emergentziak erakundean.</a></p><span class="BOPVSumarioOrden">4531</span></div></div>
+<div class="bopvBloquedcha"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/es/bopv2/datos/2026/10/2604531a.shtml">RESOLUCIÓN 533/2026, de 30 de septiembre, del director gerente de Emergencias, por la que se convoca la provisión, mediante libre designación, de un puesto de supervisor/a de Coordinación en Emergencias de Osakidetza-Servicio vasco de salud.</a></p><span class="BOPVSumarioOrden">4531</span></div></div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><a name="anclaBOPVSeccion9"></a><h4 class="BOPVSumarioSeccion">BESTELAKO XEDAPENAK</h4><a name="anclaBOPVSubSeccion9"></a><h5 class="BOPVSumarioSubSeccion">
+      </h5>
+      <h5 class="BOPVSumarioOrganismo">KULTURA ETA HIZKUNTZA POLITIKA SAILA </h5>
+      </div>
+<div class="bopvBloquedcha"><a name="anclaBOPVSeccion9"></a><h4 class="BOPVSumarioSeccion">OTRAS DISPOSICIONES</h4><a name="anclaBOPVSubSeccion9"></a><h5 class="BOPVSumarioSubSeccion">
+      </h5>
+      <h5 class="BOPVSumarioOrganismo">DEPARTAMENTO DE CULTURA Y POLÍTICA LINGÜÍSTICA </h5>
+      </div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/eu/bopv2/datos/2026/10/2604532e.shtml">AGINDUA, 2026ko urriaren 5ekoa, Jaurlaritzako lehenengo lehendakariorde eta Kultura eta Hizkuntza Politikako sailburuarena, beste agindu hau aldatzeko dena: Agindua, 2026ko martxoaren 31koa, Lanhitz deialdiaren 2026ko laguntzak onartzeko dena.</a></p><span class="BOPVSumarioOrden">4532</span></div></div>
+<div class="bopvBloquedcha"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/es/bopv2/datos/2026/10/2604532a.shtml">ORDEN de 5 de octubre de 2026, de la vicepresidenta primera del Gobierno y consejera de Cultura y Política Lingüística, por la que se modifica la Orden de 31 de marzo de 2026, por la que se conceden las ayudas correspondientes a la convocatoria Lanhitz de 2026.</a></p><span class="BOPVSumarioOrden">4532</span></div></div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><a name="anclaBOPVSeccion10"></a><h4 class="BOPVSumarioSeccion">
+      </h4><a name="anclaBOPVSubSeccion10"></a><h5 class="BOPVSumarioSubSeccion">
+      </h5>
+      <h5 class="BOPVSumarioOrganismo"> </h5>
+      </div>
+<div class="bopvBloquedcha"><a name="anclaBOPVSeccion10"></a><h4 class="BOPVSumarioSeccion">
+      </h4><a name="anclaBOPVSubSeccion10"></a><h5 class="BOPVSumarioSubSeccion">
+      </h5>
+      <h5 class="BOPVSumarioOrganismo"> </h5>
+      </div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/eu/bopv2/datos/2026/10/2604533e.shtml">AGINDUA, 2026ko urriaren 19koa, Jaurlaritzako lehenengo lehendakariorde eta Kultura eta Hizkuntza Politikako sailburuarena, 2026ko edizioan arte plastikoak eta ikusizkoak sustatzeko Gure Artea sarietan sarituak izan diren pertsonen zerrenda argitaratzeko dena.</a></p><span class="BOPVSumarioOrden">4533</span></div></div>
+<div class="bopvBloquedcha"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/es/bopv2/datos/2026/10/2604533a.shtml">ORDEN de 19 de octubre de 2026, de la vicepresidenta primera del Gobierno y consejera de Cultura y Política Lingüística, por la que se hace pública la relación de personas galardonadas en los Premios Gure Artea para la promoción de las artes plásticas y visuales en su edición 2026.</a></p><span class="BOPVSumarioOrden">4533</span></div></div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><a name="anclaBOPVSeccion11"></a><h4 class="BOPVSumarioSeccion">
+      </h4><a name="anclaBOPVSubSeccion11"></a><h5 class="BOPVSumarioSubSeccion">
+      </h5>
+      <h5 class="BOPVSumarioOrganismo">INDUSTRIA, TRANTSIZIO ENERGETIKO ETA JASANGARRITASUNAREN SAILA </h5>
+      </div>
+<div class="bopvBloquedcha"><a name="anclaBOPVSeccion11"></a><h4 class="BOPVSumarioSeccion">
+      </h4><a name="anclaBOPVSubSeccion11"></a><h5 class="BOPVSumarioSubSeccion">
+      </h5>
+      <h5 class="BOPVSumarioOrganismo">DEPARTAMENTO DE INDUSTRIA, TRANSICIÓN ENERGÉTICA Y SOSTENIBILIDAD </h5>
+      </div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/eu/bopv2/datos/2026/10/2604534e.shtml">EBAZPENA, 2026ko irailaren 10ekoa, Ingurumen Administrazioaren zuzendariarena, zeinaren bidez formulatzen baita «Oiartzungo (Gipuzkoa) Hiri Antolamenduko Plan Orokorraren lehenengo aldaketa: hiri-lurzoruaren legezko egokitzapenak eta hiri-lurzoruaren eta lurzoru ez-hiritarraren arteko muga birformulatzea»ri buruzko ingurumen-txosten estrategikoa.</a></p><span class="BOPVSumarioOrden">4534</span></div></div>
+<div class="bopvBloquedcha"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/es/bopv2/datos/2026/10/2604534a.shtml">RESOLUCIÓN de 10 de septiembre de 2026, del director de Administración Ambiental, por la que se formula el informe ambiental estratégico de la primera modificación del Plan General de Ordenación Urbana de Oiartzun (Gipuzkoa): adaptaciones legales del suelo urbano y reformulación del límite entre suelo urbano y no urbano.</a></p><span class="BOPVSumarioOrden">4534</span></div></div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><a name="anclaBOPVSeccion12"></a><h4 class="BOPVSumarioSeccion">
+      </h4><a name="anclaBOPVSubSeccion12"></a><h5 class="BOPVSumarioSubSeccion">
+      </h5>
+      <h5 class="BOPVSumarioOrganismo"> </h5>
+      </div>
+<div class="bopvBloquedcha"><a name="anclaBOPVSeccion12"></a><h4 class="BOPVSumarioSeccion">
+      </h4><a name="anclaBOPVSubSeccion12"></a><h5 class="BOPVSumarioSubSeccion">
+      </h5>
+      <h5 class="BOPVSumarioOrganismo"> </h5>
+      </div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/eu/bopv2/datos/2026/10/2604535e.shtml">EBAZPENA, 2026ko irailaren 16koa, Ingurumen Administrazioaren zuzendariarena, zeinaren bidez formulatzen baita Gautegiz-Arteagako udal-mugarteko «4549 L08 Gernika &#x2013; Kanala Kosta» 13,2 kV-ko erdi-tentsioko linea 9107. eta 9084. euskarrien artean lurperatzeko proiektuaren ingurumen-inpaktuaren txostena. Proiektua i-DE, Redes Eléctricas Inteligentes S.A.U.k sustatu du.</a></p><span class="BOPVSumarioOrden">4535</span></div></div>
+<div class="bopvBloquedcha"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/es/bopv2/datos/2026/10/2604535a.shtml">RESOLUCIÓN de 16 de septiembre de 2026, del director de Administración Ambiental, por la que se formula el informe de impacto ambiental del proyecto de soterramiento de la línea de M.T. de 13,2 kV «4549 L08 Gernika &#x2013; Kanala Kosta» entre los apoyos n.º 9107 y n.º 9084, término municipal de Gautegiz-Arteaga, promovido por i-DE, Redes Eléctricas Inteligentes, S.A.U.</a></p><span class="BOPVSumarioOrden">4535</span></div></div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><a name="anclaBOPVSeccion13"></a><h4 class="BOPVSumarioSeccion">
+      </h4><a name="anclaBOPVSubSeccion13"></a><h5 class="BOPVSumarioSubSeccion">
+      </h5>
+      <h5 class="BOPVSumarioOrganismo"> </h5>
+      </div>
+<div class="bopvBloquedcha"><a name="anclaBOPVSeccion13"></a><h4 class="BOPVSumarioSeccion">
+      </h4><a name="anclaBOPVSubSeccion13"></a><h5 class="BOPVSumarioSubSeccion">
+      </h5>
+      <h5 class="BOPVSumarioOrganismo"> </h5>
+      </div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/eu/bopv2/datos/2026/10/2604536e.shtml">EBAZPENA, 2026ko irailaren 22koa, Ingurumen Administrazioaren zuzendariarena, zeinaren bidez formulatzen baita eraikuntzatik eta eraispenetik eratorritako hondakin ez-arriskutsuak jaso, tratatu eta balorizatzeko Altuna y Uria S.A.k Azpeitiko (Gipuzkoa) udal-mugarteko Sistiaga harrobian sustatutako instalazioaren ingurumen-inpaktuaren txostena.</a></p><span class="BOPVSumarioOrden">4536</span></div></div>
+<div class="bopvBloquedcha"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/es/bopv2/datos/2026/10/2604536a.shtml">RESOLUCIÓN de 22 de septiembre de 2026, del director de Administración Ambiental, por la que se formula el informe de impacto ambiental de la planta de recepción, tratamiento y valorización de residuos no peligrosos procedentes de la construcción y demolición en la cantera Sistiaga, en el término municipal de Azpeitia (Gipuzkoa), promovido por Altuna y Uria, S.A.</a></p><span class="BOPVSumarioOrden">4536</span></div></div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><a name="anclaBOPVSeccion14"></a><h4 class="BOPVSumarioSeccion">
+      </h4><a name="anclaBOPVSubSeccion14"></a><h5 class="BOPVSumarioSubSeccion">
+      </h5>
+      <h5 class="BOPVSumarioOrganismo"> </h5>
+      </div>
+<div class="bopvBloquedcha"><a name="anclaBOPVSeccion14"></a><h4 class="BOPVSumarioSeccion">
+      </h4><a name="anclaBOPVSubSeccion14"></a><h5 class="BOPVSumarioSubSeccion">
+      </h5>
+      <h5 class="BOPVSumarioOrganismo"> </h5>
+      </div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/eu/bopv2/datos/2026/10/2604537e.shtml">EBAZPENA, 2026ko irailaren 23koa, Ingurumen Administrazioaren zuzendariarena, zeinaren bidez formulatzen baita Vitoria-Gasteizko Arabako Parke Teknologikoko Plan Partzialaren &#x2013;ST5 Sektoreko OA2.58 (lehengo 11. sektorea)&#x2013; 11. aldaketaren ingurumen-txosten estrategikoa.</a></p><span class="BOPVSumarioOrden">4537</span></div></div>
+<div class="bopvBloquedcha"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/es/bopv2/datos/2026/10/2604537a.shtml">RESOLUCIÓN de 23 de septiembre de 2026, del director de Administración Ambiental, por la que se formula el informe ambiental estratégico de la 11.ª Modificación del Plan Parcial del Parque Tecnológico de Álava OA2.58 Sector ST5 (antiguo Sector 11), en Vitoria-Gasteiz.</a></p><span class="BOPVSumarioOrden">4537</span></div></div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><a name="anclaBOPVSeccion15"></a><h4 class="BOPVSumarioSeccion">
+      </h4><a name="anclaBOPVSubSeccion15"></a><h5 class="BOPVSumarioSubSeccion">
+      </h5>
+      <h5 class="BOPVSumarioOrganismo"> </h5>
+      </div>
+<div class="bopvBloquedcha"><a name="anclaBOPVSeccion15"></a><h4 class="BOPVSumarioSeccion">
+      </h4><a name="anclaBOPVSubSeccion15"></a><h5 class="BOPVSumarioSubSeccion">
+      </h5>
+      <h5 class="BOPVSumarioOrganismo"> </h5>
+      </div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/eu/bopv2/datos/2026/10/2604538e.shtml">EBAZPENA, 2026ko urriaren 2koa, Industria, Trantsizio Energetiko eta Jasangarritasuneko Arabako lurralde-ordezkariarena, «Instalación Fotovoltaica de 2,9 MWn / 3,471 MWp FV Arganzón» izeneko proiektua, Iruña Okako udal-mugartean (Araba), onura publikokoa dela deklaratzeko.</a></p><span class="BOPVSumarioOrden">4538</span></div></div>
+<div class="bopvBloquedcha"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/es/bopv2/datos/2026/10/2604538a.shtml">RESOLUCIÓN de 2 de octubre de 2026, del delegado territorial de Industria, Transición Energética y Sostenibilidad de Álava, por la que se declara, en concreto, la utilidad pública del proyecto de «Instalación Fotovoltaica de 2,9 MWn / 3,471 MWp FV Arganzón», en el término municipal de Iruña de Oca (Álava).</a></p><span class="BOPVSumarioOrden">4538</span></div></div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><a name="anclaBOPVSeccion16"></a><h4 class="BOPVSumarioSeccion">
+      </h4><a name="anclaBOPVSubSeccion16"></a><h5 class="BOPVSumarioSubSeccion">
+      </h5>
+      <h5 class="BOPVSumarioOrganismo">HEZKUNTZA SAILA </h5>
+      </div>
+<div class="bopvBloquedcha"><a name="anclaBOPVSeccion16"></a><h4 class="BOPVSumarioSeccion">
+      </h4><a name="anclaBOPVSubSeccion16"></a><h5 class="BOPVSumarioSubSeccion">
+      </h5>
+      <h5 class="BOPVSumarioOrganismo">DEPARTAMENTO DE EDUCACIÓN </h5>
+      </div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/eu/bopv2/datos/2026/10/2604539e.shtml">AGINDUA, 2026ko urriaren 13koa, Hezkuntzako sailburuarena, atzerrian ingeleseko, frantseseko eta alemaneko ikastaroak egiteko diruz lagundutako plazetarako deialdia egiten duena, Euskal Autonomia Erkidegoaren funts publikoen bitartez finantzatzen diren ikastetxeetan Derrigorrezko Bigarren Hezkuntzako 3. eta 4. mailetan eta Batxilergoko 1. eta 2. mailetan matrikulatutako ikasleentzat.</a></p><span class="BOPVSumarioOrden">4539</span></div></div>
+<div class="bopvBloquedcha"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/es/bopv2/datos/2026/10/2604539a.shtml">ORDEN de 13 de octubre de 2026, de la consejera de Educación, por la que se convocan plazas subvencionadas para la realización de cursos de inglés, francés y alemán, en el extranjero, para el alumnado de 3.º y 4.º cursos de Educación Secundaria Obligatoria y de 1.º y 2.º cursos de Bachillerato, matriculados en centros sostenidos con fondos públicos de la Comunidad Autónoma del País Vasco.</a></p><span class="BOPVSumarioOrden">4539</span></div></div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><a name="anclaBOPVSeccion17"></a><h4 class="BOPVSumarioSeccion">
+      </h4><a name="anclaBOPVSubSeccion17"></a><h5 class="BOPVSumarioSubSeccion">
+      </h5>
+      <h5 class="BOPVSumarioOrganismo"> </h5>
+      </div>
+<div class="bopvBloquedcha"><a name="anclaBOPVSeccion17"></a><h4 class="BOPVSumarioSeccion">
+      </h4><a name="anclaBOPVSubSeccion17"></a><h5 class="BOPVSumarioSubSeccion">
+      </h5>
+      <h5 class="BOPVSumarioOrganismo"> </h5>
+      </div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/eu/bopv2/datos/2026/10/2604540e.shtml">EBAZPENA, 2026ko urriaren 15ekoa, Langileriaren kudeaketa zuzendariarena, zeinaren bidez iragartzen baita zozketaz aukeratuko dela zer letraren araberako ordena alfabetikoz kudeatuko diren hautagaiak 2027-2028 ikasturteko ordezkapenetarako eta ikasturte berean litezkeen gainerako hautaketa-prozesuetan.</a></p><span class="BOPVSumarioOrden">4540</span></div></div>
+<div class="bopvBloquedcha"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/es/bopv2/datos/2026/10/2604540a.shtml">RESOLUCIÓN de 15 de octubre de 2026, del director de Gestión de Personal, por la que se anuncia el sorteo de la letra que determinará el orden alfabético en el proceso de gestión de candidatas y candidatos a sustituciones durante el curso escolar 2027-2028 así como en cualquier otro proceso selectivo que pueda convocarse a lo largo de dicho curso escolar.</a></p><span class="BOPVSumarioOrden">4540</span></div></div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><a name="anclaBOPVSeccion18"></a><h4 class="BOPVSumarioSeccion">
+      </h4><a name="anclaBOPVSubSeccion18"></a><h5 class="BOPVSumarioSubSeccion">
+      </h5>
+      <h5 class="BOPVSumarioOrganismo">ETXEBIZITZA ETA HIRI AGENDA SAILA </h5>
+      </div>
+<div class="bopvBloquedcha"><a name="anclaBOPVSeccion18"></a><h4 class="BOPVSumarioSeccion">
+      </h4><a name="anclaBOPVSubSeccion18"></a><h5 class="BOPVSumarioSubSeccion">
+      </h5>
+      <h5 class="BOPVSumarioOrganismo">DEPARTAMENTO DE VIVIENDA Y AGENDA URBANA </h5>
+      </div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/eu/bopv2/datos/2026/10/2604541e.shtml">AGINDUA, 2026ko urriaren 16koa, Etxebizitza eta Hiri Agendako sailburuarena, zeinaren bidez hasiera ematen baitzaio Hondarribiko udalerria bizitegi-merkatu tentsionatuko eremu deklaratzeko prozedurari.</a></p><span class="BOPVSumarioOrden">4541</span></div></div>
+<div class="bopvBloquedcha"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/es/bopv2/datos/2026/10/2604541a.shtml">ORDEN de 16 de octubre de 2026, del consejero de Vivienda y Agenda Urbana, por la que se inicia el procedimiento de declaración del municipio de Hondarribia como zona de mercado residencial tensionado.</a></p><span class="BOPVSumarioOrden">4541</span></div></div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><a name="anclaBOPVSeccion19"></a><h4 class="BOPVSumarioSeccion">
+      </h4><a name="anclaBOPVSubSeccion19"></a><h5 class="BOPVSumarioSubSeccion">
+      </h5>
+      <h5 class="BOPVSumarioOrganismo">OSASUN SAILA </h5>
+      </div>
+<div class="bopvBloquedcha"><a name="anclaBOPVSeccion19"></a><h4 class="BOPVSumarioSeccion">
+      </h4><a name="anclaBOPVSubSeccion19"></a><h5 class="BOPVSumarioSubSeccion">
+      </h5>
+      <h5 class="BOPVSumarioOrganismo">DEPARTAMENTO DE SALUD </h5>
+      </div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/eu/bopv2/datos/2026/10/2604542e.shtml">EBAZPENA, 2026ko urriaren 8koa, Osasuneko eta Eraldaketa Digitaleko sailburuordearena, zeinaren bidez laguntzak ematen baitzaizkie Euskal Autonomia Erkidegoan GIB/hiesa, C hepatitisa eta sexu-transmisiozko infekzioak prebenitzen eta kontrolatzen diharduten eta irabazi-asmorik ez duten ekimen sozialeko entitateei.</a></p><span class="BOPVSumarioOrden">4542</span></div></div>
+<div class="bopvBloquedcha"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/es/bopv2/datos/2026/10/2604542a.shtml">RESOLUCIÓN de 8 de octubre de 2026, del viceconsejero de Salud y Transformación Digital, por la que se conceden ayudas dirigidas a entidades de iniciativa social sin ánimo de lucro para el desarrollo de programas de prevención y control del VIH/sida, hepatitis C (HC) e infecciones de transmisión sexual (ITS) en el País Vasco.</a></p><span class="BOPVSumarioOrden">4542</span></div></div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><a name="anclaBOPVSeccion20"></a><h4 class="BOPVSumarioSeccion">
+      </h4><a name="anclaBOPVSubSeccion20"></a><h5 class="BOPVSumarioSubSeccion">
+      </h5>
+      <h5 class="BOPVSumarioOrganismo">TURISMO, MERKATARITZA ETA KONTSUMO SAILA </h5>
+      </div>
+<div class="bopvBloquedcha"><a name="anclaBOPVSeccion20"></a><h4 class="BOPVSumarioSeccion">
+      </h4><a name="anclaBOPVSubSeccion20"></a><h5 class="BOPVSumarioSubSeccion">
+      </h5>
+      <h5 class="BOPVSumarioOrganismo">DEPARTAMENTO DE TURISMO, COMERCIO Y CONSUMO </h5>
+      </div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/eu/bopv2/datos/2026/10/2604543e.shtml">EBAZPENA, 2026ko urriaren 21ekoa, Turismo eta Merkataritza sailburuordearena, zeinaren bidez handitu egiten baita laguntza-deialdi baten zenbatekoaren guztizkoa, honako agindu honetan ezarria: Turismo, Merkataritza eta Kontsumoko sailburuaren 2026ko apirilaren 29ko Agindua, merkataritza-establezimenduak eta merkataritza-jarduerarekin lotutako zerbitzu jakin batzuetako establezimenduak modernizatzeko laguntza-programaren (MEC) 2026ko deialdia egitekoa.</a></p><span class="BOPVSumarioOrden">4543</span></div></div>
+<div class="bopvBloquedcha"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/es/bopv2/datos/2026/10/2604543a.shtml">RESOLUCIÓN de 21 de octubre de 2026, del viceconsejero de Turismo y Comercio, por la que se acuerda incrementar la cuantía total de la convocatoria, que se establece en la Orden de 29 de abril de 2026, del consejero de Turismo, Comercio y Consumo, por la que se convoca, para el ejercicio 2026, el programa de apoyo a la modernización de establecimientos comerciales y de determinados servicios relacionados con la actividad comercial (MEC).</a></p><span class="BOPVSumarioOrden">4543</span></div></div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><a name="anclaBOPVSeccion21"></a><h4 class="BOPVSumarioSeccion">
+      </h4><a name="anclaBOPVSubSeccion21"></a><h5 class="BOPVSumarioSubSeccion">
+      </h5>
+      <h5 class="BOPVSumarioOrganismo">ELIKADURA, LANDA GARAPEN, NEKAZARITZA ETA ARRANTZA SAILA </h5>
+      </div>
+<div class="bopvBloquedcha"><a name="anclaBOPVSeccion21"></a><h4 class="BOPVSumarioSeccion">
+      </h4><a name="anclaBOPVSubSeccion21"></a><h5 class="BOPVSumarioSubSeccion">
+      </h5>
+      <h5 class="BOPVSumarioOrganismo">DEPARTAMENTO DE ALIMENTACIÓN, DESARROLLO RURAL, AGRICULTURA Y PESCA </h5>
+      </div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/eu/bopv2/datos/2026/10/2604544e.shtml">EBAZPENA, 2026ko urriaren 7koa, Elikadurako eta Landa Garapeneko sailburuordearena, zeinaren bidez argitaratzen baita Elikadura, Landa Garapen, Nekazaritza eta Arrantzako sailburuaren maiatzaren 19ko Aginduaren babesean emandako laguntzen onuradunen zerrenda. Agindu horren bidez, Euskal Autonomia Erkidegoko arraza garbien abeltzain-elkarteentzako 2026rako laguntzen deialdia egin zen.</a></p><span class="BOPVSumarioOrden">4544</span></div></div>
+<div class="bopvBloquedcha"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/es/bopv2/datos/2026/10/2604544a.shtml">RESOLUCIÓN de 7 de octubre de 2026, del viceconsejero de Alimentación y Desarrollo Rural, por la que se publica la relación de personas beneficiarias de las ayudas concedidas al amparo de la Orden de 19 de mayo, de la consejera de Alimentación, Desarrollo Rural, Agricultura y Pesca, por la que se convocan, para el año 2026, las ayudas a las asociaciones ganaderas de razas puras de la Comunidad Autónoma del País Vasco.</a></p><span class="BOPVSumarioOrden">4544</span></div></div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><a name="anclaBOPVSeccion22"></a><h4 class="BOPVSumarioSeccion">
+      </h4><a name="anclaBOPVSubSeccion22"></a><h5 class="BOPVSumarioSubSeccion">
+      </h5>
+      <h5 class="BOPVSumarioOrganismo">LANBIDE-EUSKAL ENPLEGU ZERBITZU PUBLIKOA </h5>
+      </div>
+<div class="bopvBloquedcha"><a name="anclaBOPVSeccion22"></a><h4 class="BOPVSumarioSeccion">
+      </h4><a name="anclaBOPVSubSeccion22"></a><h5 class="BOPVSumarioSubSeccion">
+      </h5>
+      <h5 class="BOPVSumarioOrganismo">LANBIDE-SERVICIO PÚBLICO VASCO DE EMPLEO </h5>
+      </div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/eu/bopv2/datos/2026/10/2604545e.shtml">EBAZPENA, 2026ko urriaren 20koa, Lanbide-Euskal Enplegu Zerbitzu Publikoaren zuzendari nagusiarena, zeinaren bidez argitara ematen baitira gazteek prestakuntza eta lana txandakatzeko Hezibi programan 2026ko ekitaldirako aurreikusitako dirulaguntzen oinarri arautzaileak.</a></p><span class="BOPVSumarioOrden">4545</span></div></div>
+<div class="bopvBloquedcha"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/es/bopv2/datos/2026/10/2604545a.shtml">RESOLUCIÓN de 20 de octubre de 2026, del director general de Lanbide-Servicio Público Vasco de Empleo, por la que se procede a la publicación de las bases reguladoras de las subvenciones previstas en el programa Hezibi de formación y trabajo en alternancia para jóvenes, para el ejercicio 2026.</a></p><span class="BOPVSumarioOrden">4545</span></div></div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><a name="anclaBOPVSeccion23"></a><h4 class="BOPVSumarioSeccion">
+      </h4><a name="anclaBOPVSubSeccion23"></a><h5 class="BOPVSumarioSubSeccion">
+      </h5>
+      <h5 class="BOPVSumarioOrganismo"> </h5>
+      </div>
+<div class="bopvBloquedcha"><a name="anclaBOPVSeccion23"></a><h4 class="BOPVSumarioSeccion">
+      </h4><a name="anclaBOPVSubSeccion23"></a><h5 class="BOPVSumarioSubSeccion">
+      </h5>
+      <h5 class="BOPVSumarioOrganismo"> </h5>
+      </div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/eu/bopv2/datos/2026/10/2604546e.shtml">EBAZPENA, 2026ko urriaren 20koa, Lanbide-Euskal Enplegu Zerbitzu Publikoaren zuzendari nagusiarena, zeinaren bidez argitara eman baita Euskal Autonomia Erkidegoan enplegu-, prestakuntza- eta laneratze-proiektu integralak garatzeko laguntzen 2026ko eta 2027ko ekitaldietarako deialdia, laneratzera eta lan-merkatuaren beharrizanak asetzera begira, administrazio-erregularizazioko prozesuei lotutako jarduketak txertatuta.</a></p><span class="BOPVSumarioOrden">4546</span></div></div>
+<div class="bopvBloquedcha"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/es/bopv2/datos/2026/10/2604546a.shtml">RESOLUCIÓN de 20 de octubre de 2026, del director general de Lanbide-Servicio Público Vasco de Empleo, por la que se procede a la publicación de la convocatoria de las ayudas para el desarrollo de proyectos integrales de empleo, formación e inserción laboral, orientados a la inserción laboral y a la cobertura de necesidades del mercado de trabajo, con incorporación de actuaciones vinculadas a procesos de regularización administrativa, en el ámbito de la Comunidad Autónoma de Euskadi, para los ejercicios 2026 y 2027.</a></p><span class="BOPVSumarioOrden">4546</span></div></div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><a name="anclaBOPVSeccion24"></a><h4 class="BOPVSumarioSeccion">
+      </h4><a name="anclaBOPVSubSeccion24"></a><h5 class="BOPVSumarioSubSeccion">
+      </h5>
+      <h5 class="BOPVSumarioOrganismo">OSAKIDETZA-EUSKAL OSASUN ZERBITZUA </h5>
+      </div>
+<div class="bopvBloquedcha"><a name="anclaBOPVSeccion24"></a><h4 class="BOPVSumarioSeccion">
+      </h4><a name="anclaBOPVSubSeccion24"></a><h5 class="BOPVSumarioSubSeccion">
+      </h5>
+      <h5 class="BOPVSumarioOrganismo">OSAKIDETZA-SERVICIO VASCO DE SALUD </h5>
+      </div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/eu/bopv2/datos/2026/10/2604547e.shtml">1756/2026 EBAZPENA, urriaren 19koa, Osakidetza-Euskal osasun zerbitzuko zuzendari nagusiarena, zeinaren bidez huts-zuzenketa egiten baita ebazpen honena: 1509/2026 Ebazpena, zeinaren bidez Osakidetza-Euskal osasun zerbitzuko zerbitzu-erakundeetako profesionalen lanbide-garapeneko maila aitortzeko eskabideak ebazten baitira eta behin betiko esleipena argitaratzeko agintzen baita, Osakidetza-Euskal osasun zerbitzuko zuzendari nagusiaren abenduaren 19ko 2081/2025 Ebazpenaren bidez argitaratutako lanbide-garapeneko ohiko deialdiari dagokionez.</a></p><span class="BOPVSumarioOrden">4547</span></div></div>
+<div class="bopvBloquedcha"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/es/bopv2/datos/2026/10/2604547a.shtml">RESOLUCIÓN 1756/2026, de 19 de octubre, de la directora general de Osakidetza-Servicio vasco de salud, por la que se corrigen errores de la Resolución 1509/2026, de 1 de septiembre, por la que se resuelven las solicitudes de reconocimiento del nivel de desarrollo profesional y se ordena la publicación de la asignación definitiva del nivel de desarrollo profesional de los/las profesionales, de las organizaciones de servicios de Osakidetza-Servicio vasco de salud, correspondiente a la convocatoria ordinaria de desarrollo profesional publicada por Resolución 2081/2025, de 19 de diciembre, de la directora general de Osakidetza-Servicio vasco de salud.</a></p><span class="BOPVSumarioOrden">4547</span></div></div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><a name="anclaBOPVSeccion25"></a><h4 class="BOPVSumarioSeccion">
+      </h4><a name="anclaBOPVSubSeccion25"></a><h5 class="BOPVSumarioSubSeccion">
+      </h5>
+      <h5 class="BOPVSumarioOrganismo">URAREN EUSKAL AGENTZIA </h5>
+      </div>
+<div class="bopvBloquedcha"><a name="anclaBOPVSeccion25"></a><h4 class="BOPVSumarioSeccion">
+      </h4><a name="anclaBOPVSubSeccion25"></a><h5 class="BOPVSumarioSubSeccion">
+      </h5>
+      <h5 class="BOPVSumarioOrganismo">AGENCIA VASCA DEL AGUA </h5>
+      </div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/eu/bopv2/datos/2026/10/2604548e.shtml">EBAZPENA, 2026ko urriaren 9koa, Uraren Euskal Agentziako zuzendari nagusiarena, «Muxika-Ebar Ajangiz saneamenduko kolektore nagusiaren eraikuntza-proiektua» eta haren ingurumen-inpaktuaren azterlana jendaurrean jartzeko izapidea ebazten duena eta behin betiko onartzen duena.</a></p><span class="BOPVSumarioOrden">4548</span></div></div>
+<div class="bopvBloquedcha"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/es/bopv2/datos/2026/10/2604548a.shtml">RESOLUCIÓN 9 de octubre de 2026, del director general de la Agencia Vasca del Agua, por la que se resuelve el trámite de información pública y se aprueba definitivamente el «Proyecto constructivo del colector general de saneamiento Muxika-Ebar Ajangiz» y su estudio de impacto ambiental.</a></p><span class="BOPVSumarioOrden">4548</span></div></div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><a name="anclaBOPVSeccion26"></a><h4 class="BOPVSumarioSeccion">IRAGARKIAK</h4><a name="anclaBOPVSubSeccion26"></a><h5 class="BOPVSumarioSubSeccion">Beste iragarki ofizial batzuk</h5>
+      <h5 class="BOPVSumarioOrganismo">SEGURTASUN SAILA </h5>
+      </div>
+<div class="bopvBloquedcha"><a name="anclaBOPVSeccion26"></a><h4 class="BOPVSumarioSeccion">ANUNCIOS</h4><a name="anclaBOPVSubSeccion26"></a><h5 class="BOPVSumarioSubSeccion">Otros anuncios oficiales</h5>
+      <h5 class="BOPVSumarioOrganismo">DEPARTAMENTO DE SEGURIDAD </h5>
+      </div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/eu/bopv2/datos/2026/10/2604549e.shtml">IRAGARKIA, zeinaren bidez epatzen baitira Vitoria-Gasteizko Auzialdiko Auzitegiko Administrazioarekiko Auzien Ataleko 2 zenbakiko plazan bideratutako 365/2026 prozedura arruntean interesdun direnak.</a></p><span class="BOPVSumarioOrden">4549</span></div></div>
+<div class="bopvBloquedcha"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/es/bopv2/datos/2026/10/2604549a.shtml">ANUNCIO por el que se emplaza a las personas interesadas en el procedimiento ordinario 365/2026, seguido ante la Sección de lo Contencioso-Administrativo del Tribunal de Instancia de Vitoria-Gasteiz. Plaza n.º 2.</a></p><span class="BOPVSumarioOrden">4549</span></div></div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><a name="anclaBOPVSeccion27"></a><h4 class="BOPVSumarioSeccion">
+      </h4><a name="anclaBOPVSubSeccion27"></a><h5 class="BOPVSumarioSubSeccion">
+      </h5>
+      <h5 class="BOPVSumarioOrganismo">HEZKUNTZA SAILA </h5>
+      </div>
+<div class="bopvBloquedcha"><a name="anclaBOPVSeccion27"></a><h4 class="BOPVSumarioSeccion">
+      </h4><a name="anclaBOPVSubSeccion27"></a><h5 class="BOPVSumarioSubSeccion">
+      </h5>
+      <h5 class="BOPVSumarioOrganismo">DEPARTAMENTO DE EDUCACIÓN </h5>
+      </div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/eu/bopv2/datos/2026/10/2604550e.shtml">IRAGARKIA, Donostiako Lehen Auzialdiko Auzitegiko Administrazioarekiko Auzien Ataleko 2 zenbakiko plazan bideratu den 384/2026 prozedura laburtuan interesa duten pertsonak epatzeko dena.</a></p><span class="BOPVSumarioOrden">4550</span></div></div>
+<div class="bopvBloquedcha"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/es/bopv2/datos/2026/10/2604550a.shtml">ANUNCIO por el que se emplaza a las personas interesadas en el procedimiento abreviado 384/2026, seguidos ante la Sección de lo Contencioso-Administrativo del Tribunal de Instancia de Donostia / San Sebastián. Plaza n.º 2.</a></p><span class="BOPVSumarioOrden">4550</span></div></div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda">
+      <div class="clr"><br/></div>
+      <div class="BOPVSumPie"><br/></div></div>
+<div class="bopvBloquedcha">
+      <div class="clr"><br/></div>
+      <div class="BOPVSumPie"><br/></div></div>
+</div>
+    </div>
+    <div class="colIzquierda">
+      <h2 class="tituGeneral">Sumario</h2>
+      <ul class="princiSumario">
+        <li><a href="#anclaBOPVSeccion1">DISPOSICIONES GENERALES</a></li>
+        <li><a href="#anclaBOPVSeccion2">AUTORIDADES Y PERSONAL</a><ul class="BOPVSumarioSubSeccion">
+            <li><a href="#anclaBOPVSubSeccion2">Nombramientos, situaciones e incidencias</a></li>
+          </ul>
+        </li>
+        <li class="BOPVListadoSubseccion"><a href="#anclaBOPVSubSeccion7">Oposiciones y concursos</a></li>
+        <li><a href="#anclaBOPVSeccion9">OTRAS DISPOSICIONES</a></li>
+        <li><a href="#anclaBOPVSeccion26">ANUNCIOS</a><ul class="BOPVSumarioSubSeccion">
+            <li><a href="#anclaBOPVSubSeccion26">Otros anuncios oficiales</a></li>
+          </ul>
+        </li>
+      </ul><!-- Panel Informacion general -->
+<h2 class="tituGeneral">Informaci&oacute;n general</h2>
+<ul class="menuDcha">
+	<li><a href="/web01-bopv/es/bopv2/datos/html/info1_c.shtml">Caracter&iacute;sticas</a></li>
+	<li><a href="/web01-bopv/es/bopv2/datos/html/info2a_c.shtml">C&oacute;mo utilizar el servicio de consulta</a></li>
+	<li><a href="/web01-bopv/es/bopv2/datos/html/infodsi_c.shtml">C&oacute;mo utilizar el servicio de difusi&oacute;n selectiva</a></li>
+	<li><a href="/web01-bopv/es/bopv2/datos/html/info2b_c.shtml">C&oacute;mo utilizar el servicio de verificaci&oacute;n de boletín electr&oacute;nico</a></li>
+	<li><a href="/web01-bopv/es/bopv2/datos/html/info3_c.shtml">Cómo realizar una solicitud de publicación</a></li>
+	<li><a href="/web01-bopv/es/bopv2/datos/html/info4_c.shtml">Textos consolidados</a></li>
+	<li><a href="https://www.euskadi.eus/supresion-de-datos-personales-del-boletin-oficial-del-pais-vasco-bopv-derecho-al-olvido/web01-a2datuba/es/">Datos personales. Derecho al olvido</a></li>
+	<li><a href="/web01-bopv/es/bopv2/datos/html/faq_c.shtml">Preguntas frecuentes</a></li>	
+</ul></div></div><script type="text/javascript" src="/appcont/servibopvi/scripts/r48-jquery-1.6.2.min.js"></script>
+<script type="text/javascript" src="/appcont/servibopvi/scripts/r48-jquery-ui-1.8.16.custom.min.js"></script>
+<script type="text/javascript" src="/appcont/servibopvi/scripts/r48-calendario.js"></script>
+

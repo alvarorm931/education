@@ -1,0 +1,400 @@
+
+
+<link rel='stylesheet' type='text/css' href='/appcont/servibopvi/styles/r01PortalResetToBaseStyles.css' /> 
+<link rel='stylesheet' type='text/css' href='/appcont/servibopvi/styles/calendar.css' />
+<link rel='stylesheet' type='text/css' href='/appcont/servibopvi/styles/r48-boletin.css?v=20250926' /> 
+<link rel='stylesheet' type='text/css' href='/appcont/servibopvi/styles/r48-sumario.css' />
+<link rel='stylesheet' type='text/css' href='/appcont/servibopvi/styles/r48-disposicion.css' /> 
+<link rel='stylesheet' type='text/css' href='/appcont/servibopvi/styles/r48-jquery-ui-1.8.16.custom.css' />
+
+<script type="text/javascript" src="/appcont/servibopvi/scripts/avanzada/r48-jquery-1.8.1.min.js"></script>
+<script type="text/javascript" src="/appcont/servibopvi/scripts/utiles.js?v=20250926"></script>
+<script type="text/javascript">
+$(document).ready(function(){	 
+	JQ_eventoClickCambioIdioma('5');
+});
+</script>
+
+
+
+
+
+
+<div class="prinColLeft"><!-- Panel Calendario -->
+<h2 class='tituGeneral'>Consulta</h2><div class='busqsimpCal'>            
+<!-- Modif 16/07/2014: incluye r48-calendario.js, para asegurar que existe func resizeIframe() que adapta calendario -->
+<script language="JavaScript" type="text/javascript" src="/appcont/servibopvi/scripts/r48-calendario.js"></script>
+<script language="JavaScript" type="text/javascript">
+    document.write("<iframe id='calendarioBOPV' name='calendarioBOPV' frameborder=0 scrolling=no width=100% src='/bopv2/datos/CalUltimo.shtml' onLoad='resizeIframe();'></iframe>");
+</script>
+<!--Modif 20/03/2017: no se debe usar noscript por accesibilidad-->
+<!--
+<noscript>	
+     <form name="calendarioBusqueda" id="calendarioBusqueda" action="/p43aBOPVWebWar/IrACalendario.do" method="post">
+     		<input type="hidden" name="idiomaCalendario" id="idiomaCalendario" value="es"> 	 
+	     <div class="formuBuscarFecha">
+	         <div><label>Consultar el sumario:</label></div>
+	         <div class="clr"></div>
+	         <div><input type="text" name="fechaBOPV" id="fechaBOPV" class="buscarFecha" value="dd/mm/aaaa" maxlength="10" size="10"/>     
+	              <input type="submit" name="btnIrACalendario" id="btnIrACalendario" value="Buscar" class="btnBuscarFecha"/></div>
+	     </div>
+     </form>
+</noscript> 
+-->
+</div>	
+
+<div class="clr"></div>
+<!-- Panel Consulta simple -->
+<h2 class="tituGeneral">Consulta simple</h2>
+<div class="formuSimple">
+
+
+<form name="avanzada" id="formConsultaSimple" action="/p43aBOPVWebWar/realizarBusquedaAvanzada.do?submit=cargar" method="post">
+ 	<input type="hidden" name="tipoBusqueda" value="1" />  
+	<input type="hidden" name="paginaActual" value="1" />
+	<input type="hidden" name="busquedaBRS" value="false" />
+	<input type="hidden" name="seccionSeleccionado" value="-1" />
+	<input type="hidden" name="rangoSeleccionado" value="-1" />
+	<input type="hidden" name="organoEmisorSeleccionado" value="" />
+	<input type="hidden" name="descriptorSeleccionado" value="" />
+	<input type="hidden" name="idioma" value="1" />	
+	<div><input type="text" name="textoDisposicion" id="textoDisposicionID" class="buscarPrinci" title="Consulta simple" />
+<script language="JavaScript" type="text/javascript">
+	function fnContarResultados( ){
+		var urlCount="/p43aBOPVWebWar/realizarBusquedaAvanzada.do";
+		var parametrosurl="idioma=1&R01HNoPortal=true&submit=Contar&textoDisposicion="+$('#textoDisposicionID').val();
+		var respuesta=$.ajax( {
+			async: true,
+			url: urlCount,
+	        crossDomain: true,
+	        type: 'GET',
+   	        data: parametrosurl,
+   	        dataType: 'jsonp', 
+			error: function (XMLHttpRequest, textStatus, errorThrown) {
+				alert('Error al obtener numero total de registros');
+			},
+			success:function (data, textStatus, jqXHR) {
+				if (data.count!=0 && data.count!='Error') {
+					$('#formConsultaSimple').submit();
+				} else {
+					if (data.count==0) {
+						alert('No se han encontrado resultados');
+					}
+				}
+			}
+		} );
+	}
+   document.write("<a href='javascript:fnContarResultados()'><img src='/appcont/servibopvi/images/buscarPrinci.gif' alt='Buscar' /></a>");
+</script>
+	</div>
+<!--Modif 20/03/2017: no se debe usar noscript por accesibilidad-->
+<!--  
+<noscript>	
+		<input type="image" name="buscar" src="/appcont/servibopvi/images/buscarPrinci.gif" /></div>
+</noscript>
+--> 
+</form>
+	
+	<div class="clr"></div>
+</div>
+ 
+<!-- Panel Servicios -->
+<div class="clr"></div>
+<h2 class="tituServicio">Servicios</h2>
+<ul class="menuIzqda">
+	<!-- <li><a href="/y22-izapide/es/x43kToolkitWar/form/fdp?language=es&procedureId=0101003">Solicitar una publicación</a></li> -->
+	<li><a href="/peticion_servicios/solicitud-publicacion-en-el-bopv/web01-tramite/es/#pills_applyProcedure_X882756436804FB272423EA8621BBF774517FB0F">Solicitar una publicación</a></li>
+	
+		<li><a href="/web01-bopv/es/p43aBOPVWebWar/buscarAvanzada.do?idioma=es&tipoBusqueda=2">Consulta avanzada</a></li>
+	
+	<li><a href="/web01-bopv/es/p43aBOPVWebWar/listarTextosConsol.do?idioma=es&submit=">Textos consolidados</a></li>
+ 	<li><a href="/web01-bopv/es/p43aBOPVWebWar/difuEntradaUsuario.do?idioma=es&submit=cargar">Difusi&oacute;n selectiva</a></li>
+ 	<li class="lastItm"><a href="/web01-bopv/es/p43aFirmaAsuntoWar/consultaBoletines.do?idioma=1&amp;method=cargar">Verificaci&oacute;n Bolet&iacute;n Electr&oacute;nico</a></li>
+</ul>
+
+<br />
+<p class="bopvEnlacerss"><a href="/bopv2/datos/Ultimo.xml">&Uacute;ltimo bolet&iacute;n</a> <a href="/bopv2/datos/Ultimo.xml"><img src="/appcont/servibopvi/images/rss.png" alt="" border="0" /> RSS</a>
+</p>
+</div><div class="prinColCenter"><div class="colCentral">
+      <div class="BOPVSumCabecera">
+        <ul>
+          <li><img src="/appcont/servibopvi/images/BOPV_c.png" alt="BOPV" /></li>
+          <li><img src="/appcont/servibopvi/images/LOGO.png" alt="Logo Gobierno Vasco" /></li>
+          <li><img src="/appcont/servibopvi/images/BOLETIN_c.png" alt="Boletin Oficial del País Vasco" /></li>
+        </ul>
+      </div>
+      <div class="bopvContenbloques">
+<div class="bopvBloqueizqda"><h2 class="tituGeneral">
+				Laburpena ( 1. zk.), 2022ko urtarrilaren 3a, astelehena</h2></div>
+<div class="bopvBloquedcha"><h2 class="tituGeneral">Sumario n.º
+				<span>1</span>, lunes 3 de enero de  2022</h2></div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda">
+      <div class="clr"><br/></div>
+      <div>
+        <ul class="listaFormatos">Bestelako formatuak: <li class="formatoPdf"><a href="/web01-bopv/eu/bopv2/datos/2022/01/e22_0001.pdf" target="_blank" title="Lehio berrian irekiko da esteka hau">
+										PDF 
+										<span>							
+													(451 KB - 2 orri.)
+												</span></a></li> <li class="formatoePub"><a href="/web01-bopv/eu/bopv2/datos/2022/01/e22_0001.epub" target="_blank" title="Lehio berrian irekiko da esteka hau">	
+										EPUB 
+										<span>							
+													(227 KB)</span></a></li> 
+        </ul>
+      </div><script>
+$(document).ready(function(){
+if ($("#bopvNumOrden").length) {
+	var $selectorCapaImprimir = $("#capaBotonImprimir");
+	if ($("#capaBotonImprimir", $("div.bopvBloqueizqda")).length==0) {
+		$selectorCapaImprimir =	$("#capaBotonImprimir");
+	} else {
+		$selectorCapaImprimir = $("#capaBotonImprimir", $("div.bopvBloqueizqda"));
+	}
+	$selectorCapaImprimir.prepend("<div style='float:right;'><span class='bopvanalisisdoc'><a href='#' onclick='javascript:modalWinEus(); return false;' title='Lehio berrian irekiko da esteka hau'>Azterketa dokumentala</a></span></div>");
+}
+});
+</script>
+<!-- Panel Boton Imprimir -->
+<script language="JavaScript" type="text/javascript">	
+	document.write("<div id='capaBotonImprimir' class='bopvImprimir'>");
+	document.write("<a href='#'>");
+	document.write("<img src='/appcont/servibopvi/images/imprimir.png' alt='Inprimatu' border='0' onclick='javascript:self.print();'/>");
+	document.write("</a>");		
+	document.write("</div>");
+</script><a name="anclaBOPVSeccion1"></a><h4 class="BOPVSumarioSeccion">XEDAPEN OROKORRAK</h4><a name="anclaBOPVSubSeccion1"></a><h5 class="BOPVSumarioSubSeccion">
+      </h5>
+      <h5 class="BOPVSumarioOrganismo">ARARTEKOA </h5>
+      </div>
+<div class="bopvBloquedcha">
+      <div class="clr"><br/></div>
+      <div>
+        <ul class="listaFormatos">Otros formatos: <li class="formatoPdf"><a href="/web01-bopv/es/bopv2/datos/2022/01/s22_0001.pdf" target="_blank" title="Este enlace se abrirá en nueva ventana">
+												PDF 
+												<span>							
+															(329 KB - 2 Pág.)
+														</span></a></li> <li class="formatoePub"><a href="/web01-bopv/es/bopv2/datos/2022/01/s22_0001.epub" target="_blank" title="Este enlace se abrirá en nueva ventana">
+												EPUB 
+												<span>							
+															(226 KB)</span></a></li> 
+        </ul>
+      </div><script>
+$(document).ready(function(){
+if ($("#bopvNumOrden").length) {
+	var $selectorCapaImprimir = $("#capaBotonImprimir");
+	if ($("#capaBotonImprimir", $("div.bopvBloquedcha")).length==0) {
+		$selectorCapaImprimir =	$("#capaBotonImprimir");
+	} else {
+		$selectorCapaImprimir = $("#capaBotonImprimir", $("div.bopvBloquedcha"));
+	}
+	$selectorCapaImprimir.prepend("<div style='float:right;'><span class='bopvanalisisdoc'><a href='#' onclick='javascript:modalWinCas(); return false;' title='Este enlace se abrirá en nueva ventana'>Análisis documental</a></span></div>");
+}
+});
+</script>
+<!-- Panel Boton Imprimir -->
+<script language="JavaScript" type="text/javascript">	
+	document.write("<div id='capaBotonImprimir' class='bopvImprimir'>");
+	document.write("<a href='#'>");
+	document.write("<img src='/appcont/servibopvi/images/imprimir.png' alt='Imprimir' border='0' onclick='javascript:self.print();'/>");
+	document.write("</a>");		
+	document.write("</div>");
+</script><a name="anclaBOPVSeccion1"></a><h4 class="BOPVSumarioSeccion">DISPOSICIONES GENERALES</h4><a name="anclaBOPVSubSeccion1"></a><h5 class="BOPVSumarioSubSeccion">
+      </h5>
+      <h5 class="BOPVSumarioOrganismo">ARARTEKO </h5>
+      </div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/eu/bopv2/datos/2022/01/2200001e.shtml">EBAZPENA, 2021eko abenduaren 21ekoa, Ararteko erakundearen zerbitzu-karta aldatzekoa.</a></p><span class="BOPVSumarioOrden">1</span></div></div>
+<div class="bopvBloquedcha"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/es/bopv2/datos/2022/01/2200001a.shtml">RESOLUCIÓN de 21 de diciembre de 2021, por la que se modifica la carta de servicios de la institución del Ararteko.</a></p><span class="BOPVSumarioOrden">1</span></div></div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><a name="anclaBOPVSeccion2"></a><h4 class="BOPVSumarioSeccion">AGINTARIAK ETA LANGILERIA</h4><a name="anclaBOPVSubSeccion2"></a><h5 class="BOPVSumarioSubSeccion">Oposaketak eta lehiaketak</h5>
+      <h5 class="BOPVSumarioOrganismo">ARABAKO FORU ALDUNDIA </h5>
+      </div>
+<div class="bopvBloquedcha"><a name="anclaBOPVSeccion2"></a><h4 class="BOPVSumarioSeccion">AUTORIDADES Y PERSONAL</h4><a name="anclaBOPVSubSeccion2"></a><h5 class="BOPVSumarioSubSeccion">Oposiciones y concursos</h5>
+      <h5 class="BOPVSumarioOrganismo">DIPUTACIÓN FORAL DE ÁLAVA </h5>
+      </div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/eu/bopv2/datos/2022/01/2200002e.shtml">IRAGARKIA, Lurralde Orekaren Zuzendaritzako Aholkularitza Juridikoko Zerbitzuaren buruaren lanpostua izendapen askearen bidez betetzeko (kodea: 1005.001) deialdiari buruzkoa.</a></p><span class="BOPVSumarioOrden">2</span></div></div>
+<div class="bopvBloquedcha"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/es/bopv2/datos/2022/01/2200002a.shtml">ANUNCIO relativo a la convocatoria para la provisión, por el sistema de libre designación, del puesto de Jefe/a del Servicio de Asesoramiento Jurídico, código 1005.001, de la Dirección de Equilibrio Territorial.</a></p><span class="BOPVSumarioOrden">2</span></div></div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><a name="anclaBOPVSeccion3"></a><h4 class="BOPVSumarioSeccion">BESTELAKO XEDAPENAK</h4><a name="anclaBOPVSubSeccion3"></a><h5 class="BOPVSumarioSubSeccion">
+      </h5>
+      <h5 class="BOPVSumarioOrganismo">LAN ETA ENPLEGU SAILA </h5>
+      </div>
+<div class="bopvBloquedcha"><a name="anclaBOPVSeccion3"></a><h4 class="BOPVSumarioSeccion">OTRAS DISPOSICIONES</h4><a name="anclaBOPVSubSeccion3"></a><h5 class="BOPVSumarioSubSeccion">
+      </h5>
+      <h5 class="BOPVSumarioOrganismo">DEPARTAMENTO DE TRABAJO Y EMPLEO </h5>
+      </div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/eu/bopv2/datos/2022/01/2200003e.shtml">EBAZPENA, 2021eko abenduaren 3koa, Lanbide-Euskal Enplegu Zerbitzuko zuzendari nagusiarena, zeinaren bidez jendeari aditzera ematen baitzaio agortu egin dela 2021. urteari dagokion aurrekontu-kreditua, desgaitasuna duten pertsonentzat enplegu-zentro berezietan lan egonkorra sortzeko inbertsioetarako laguntzak finantzatzera bideratutakoak. Laguntza horiek urriaren 29ko Dekretuan aurreikusten dira, zeinaren bidez arautzen baitira Euskal Autonomia Erkidegoan desgaitasuna duten pertsonen enplegagarritasunarekin loturiko programak eta zerbitzuak eta Enplegu Zentro Berezien Euskal Erregistroa.</a></p><span class="BOPVSumarioOrden">3</span></div></div>
+<div class="bopvBloquedcha"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/es/bopv2/datos/2022/01/2200003a.shtml">RESOLUCIÓN de 3 de diciembre de 2021, de la Directora General de Lanbide-Servicio Vasco de Empleo, por la que se hace público el agotamiento del crédito presupuestario, correspondiente al ejercicio 2021, destinado a la financiación de las ayudas a la inversión generadora de empleo estable para personas con discapacidad en los centros especiales de empleo, reguladas en el Decreto 168/2019, de 29 de octubre, por el que se regulan los programas y servicios relacionados con la empleabilidad de las personas con discapacidad de la Comunidad Autónoma de Euskadi y el Registro Vasco de centros especiales de empleo.</a></p><span class="BOPVSumarioOrden">3</span></div></div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><a name="anclaBOPVSeccion4"></a><h4 class="BOPVSumarioSeccion">
+      </h4><a name="anclaBOPVSubSeccion4"></a><h5 class="BOPVSumarioSubSeccion">
+      </h5>
+      <h5 class="BOPVSumarioOrganismo"> </h5>
+      </div>
+<div class="bopvBloquedcha"><a name="anclaBOPVSeccion4"></a><h4 class="BOPVSumarioSeccion">
+      </h4><a name="anclaBOPVSubSeccion4"></a><h5 class="BOPVSumarioSubSeccion">
+      </h5>
+      <h5 class="BOPVSumarioOrganismo"> </h5>
+      </div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/eu/bopv2/datos/2022/01/2200004e.shtml">EBAZPENA, 2021eko abenduaren 9koa, Lanbide-Euskal Enplegu Zerbitzuko zuzendari nagusiarena, zeinaren bidez jendeari aditzera ematen baitzaio agortu egin dela 2021. urteari dagokion txanda-kontraturako laguntzak finantzatzera bideratutako aurrekontu-kreditua. Laguntza horiek Langileen Estatutuaren Legearen testu bategina onartzen duen urriaren 23ko 2/2015 Legegintzako Errege Dekretuaren 12.7 artikuluan adierazten dira.</a></p><span class="BOPVSumarioOrden">4</span></div></div>
+<div class="bopvBloquedcha"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/es/bopv2/datos/2022/01/2200004a.shtml">RESOLUCIÓN de 9 de diciembre de 2021, de la Directora General de Lanbide-Servicio Vasco de Empleo, por la que se hace público el agotamiento del crédito presupuestario, correspondiente al ejercicio 2021, destinado a la financiación de las ayudas a los contratos de relevo a los que se refiere el artículo 12.7 del Texto Refundido de la Ley del Estatuto de los Trabajadores, aprobado por Real Decreto Legislativo 2/2015, de 23 de octubre.</a></p><span class="BOPVSumarioOrden">4</span></div></div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><a name="anclaBOPVSeccion5"></a><h4 class="BOPVSumarioSeccion">
+      </h4><a name="anclaBOPVSubSeccion5"></a><h5 class="BOPVSumarioSubSeccion">
+      </h5>
+      <h5 class="BOPVSumarioOrganismo">EKONOMIAREN GARAPEN, JASANGARRITASUN ETA INGURUMEN SAILA </h5>
+      </div>
+<div class="bopvBloquedcha"><a name="anclaBOPVSeccion5"></a><h4 class="BOPVSumarioSeccion">
+      </h4><a name="anclaBOPVSubSeccion5"></a><h5 class="BOPVSumarioSubSeccion">
+      </h5>
+      <h5 class="BOPVSumarioOrganismo">DEPARTAMENTO DE DESARROLLO ECONÓMICO, SOSTENIBILIDAD Y MEDIO AMBIENTE </h5>
+      </div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/eu/bopv2/datos/2022/01/2200005e.shtml">EBAZPENA, 2021eko azaroaren 25ekoa, Ingurumenaren Kalitatearen eta Ekonomia Zirkularraren zuzendariarena, zeinaren bidez formulatzen baita Donostiako (Gipuzkoa) Añ.03.1 Añorgako Geltokia azpieremuaren Hiri Antolamenduko Plan Bereziaren ingurumen-ebaluazio estrategikoa.</a></p><span class="BOPVSumarioOrden">5</span></div></div>
+<div class="bopvBloquedcha"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/es/bopv2/datos/2022/01/2200005a.shtml">RESOLUCIÓN de 25 de noviembre de 2021, del Director de Calidad Ambiental y Economía Circular, por la que se formula la Declaración Ambiental Estratégica del Plan Especial de Ordenación Urbana Añ.03.1 estación de Añorga en San Sebastián (Gipuzkoa).</a></p><span class="BOPVSumarioOrden">5</span></div></div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><a name="anclaBOPVSeccion6"></a><h4 class="BOPVSumarioSeccion">IRAGARKIAK</h4><a name="anclaBOPVSubSeccion6"></a><h5 class="BOPVSumarioSubSeccion">Beste iragarki ofizial batzuk</h5>
+      <h5 class="BOPVSumarioOrganismo">LURRALDE PLANGINTZA, ETXEBIZITZA ETA GARRAIO SAILA </h5>
+      </div>
+<div class="bopvBloquedcha"><a name="anclaBOPVSeccion6"></a><h4 class="BOPVSumarioSeccion">ANUNCIOS</h4><a name="anclaBOPVSubSeccion6"></a><h5 class="BOPVSumarioSubSeccion">Otros anuncios oficiales</h5>
+      <h5 class="BOPVSumarioOrganismo">DEPARTAMENTO DE PLANIFICACIÓN TERRITORIAL, VIVIENDA Y TRANSPORTES </h5>
+      </div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/eu/bopv2/datos/2022/01/2200006e.shtml">IRAGARKIA, 2021eko abenduaren 9koa, Arabako Etxebizitzako lurralde-ordezkariarena, zeinaren bidez jakinarazten baitira COVID-19 birusaren inpaktu ekonomikoari erantzuna emateko etxebizitza alokatzeko dirulaguntzen prozeduraren espedientea zuzentzeko errekerimendua edo ebazpena.</a></p><span class="BOPVSumarioOrden">6</span></div></div>
+<div class="bopvBloquedcha"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/es/bopv2/datos/2022/01/2200006a.shtml">ANUNCIO de 9 de diciembre de 2021, de la Delegada Territorial de Vivienda de Álava, por el que se notifica requerimiento de subsanación o resolución relativa al procedimiento de concesión de ayudas al alquiler de vivienda a fin de responder al impacto económico del COVID-19.</a></p><span class="BOPVSumarioOrden">6</span></div></div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><a name="anclaBOPVSeccion7"></a><h4 class="BOPVSumarioSeccion">
+      </h4><a name="anclaBOPVSubSeccion7"></a><h5 class="BOPVSumarioSubSeccion">
+      </h5>
+      <h5 class="BOPVSumarioOrganismo"> </h5>
+      </div>
+<div class="bopvBloquedcha"><a name="anclaBOPVSeccion7"></a><h4 class="BOPVSumarioSeccion">
+      </h4><a name="anclaBOPVSubSeccion7"></a><h5 class="BOPVSumarioSubSeccion">
+      </h5>
+      <h5 class="BOPVSumarioOrganismo"> </h5>
+      </div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/eu/bopv2/datos/2022/01/2200007e.shtml">IRAGARKIA, 2021eko abenduaren 14koa, Arabako Etxebizitzako lurralde-ordezkariarena, etxebizitza babestuen esleipenen ebazpena jakinaraztekoa.</a></p><span class="BOPVSumarioOrden">7</span></div></div>
+<div class="bopvBloquedcha"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/es/bopv2/datos/2022/01/2200007a.shtml">ANUNCIO de 14 de diciembre de 2021, de la Delegada Territorial de Vivienda de Álava, por el que se notifica resolución de adjudicación de vivienda protegida.</a></p><span class="BOPVSumarioOrden">7</span></div></div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><a name="anclaBOPVSeccion8"></a><h4 class="BOPVSumarioSeccion">
+      </h4><a name="anclaBOPVSubSeccion8"></a><h5 class="BOPVSumarioSubSeccion">
+      </h5>
+      <h5 class="BOPVSumarioOrganismo"> </h5>
+      </div>
+<div class="bopvBloquedcha"><a name="anclaBOPVSeccion8"></a><h4 class="BOPVSumarioSeccion">
+      </h4><a name="anclaBOPVSubSeccion8"></a><h5 class="BOPVSumarioSubSeccion">
+      </h5>
+      <h5 class="BOPVSumarioOrganismo"> </h5>
+      </div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/eu/bopv2/datos/2022/01/2200008e.shtml">IRAGARKIA, 2021eko abenduaren 14koa, Bizkaiko Etxebizitzako lurralde-ordezkariarena, etxebizitza duin eta egoki bat legez okupatzeko eskubide subjektiboari buruzko ebazpenak jakinaraztekoak.</a></p><span class="BOPVSumarioOrden">8</span></div></div>
+<div class="bopvBloquedcha"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/es/bopv2/datos/2022/01/2200008a.shtml">ANUNCIO de 14 de diciembre de 2021, del Delegado Territorial de Vivienda de Bizkaia, por el que se notifican resoluciones de solicitudes de reconocimiento del derecho subjetivo de acceso a la ocupación legal de una vivienda digna y adecuada.</a></p><span class="BOPVSumarioOrden">8</span></div></div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><a name="anclaBOPVSeccion9"></a><h4 class="BOPVSumarioSeccion">
+      </h4><a name="anclaBOPVSubSeccion9"></a><h5 class="BOPVSumarioSubSeccion">
+      </h5>
+      <h5 class="BOPVSumarioOrganismo">OSASUN SAILA </h5>
+      </div>
+<div class="bopvBloquedcha"><a name="anclaBOPVSeccion9"></a><h4 class="BOPVSumarioSeccion">
+      </h4><a name="anclaBOPVSubSeccion9"></a><h5 class="BOPVSumarioSubSeccion">
+      </h5>
+      <h5 class="BOPVSumarioOrganismo">DEPARTAMENTO DE SALUD </h5>
+      </div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/eu/bopv2/datos/2022/01/2200009e.shtml">IRAGARKIA, Bizkaiko Osasuneko lurralde-ordezkariarena, Osasuneko sailburuordearen 2021eko azaroaren 16ko Ebazpena jakinarazteko dena; ebazpen horren bidez, Osasun Publikoaren eta Adikzioen Zuzendaritzaren B-224/2021-CV zehapen-espedientean aurkeztutako gora jotzeko errekurtsoa ebazten da.</a></p><span class="BOPVSumarioOrden">9</span></div></div>
+<div class="bopvBloquedcha"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/es/bopv2/datos/2022/01/2200009a.shtml">ANUNCIO del Delegado Territorial de Salud de Bizkaia, por el que se notifica la Resolución de 16 de noviembre de 2021, del Viceconsejero de Salud, por la que se resuelve recurso de alzada presentado en el procedimiento sancionador n.º B-224/2021-CV, de la Dirección de Salud Pública y Adicciones.</a></p><span class="BOPVSumarioOrden">9</span></div></div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><a name="anclaBOPVSeccion10"></a><h4 class="BOPVSumarioSeccion">
+      </h4><a name="anclaBOPVSubSeccion10"></a><h5 class="BOPVSumarioSubSeccion">
+      </h5>
+      <h5 class="BOPVSumarioOrganismo">BERDINTASUN, JUSTIZIA ETA GIZARTE POLITIKETAKO SAILA </h5>
+      </div>
+<div class="bopvBloquedcha"><a name="anclaBOPVSeccion10"></a><h4 class="BOPVSumarioSeccion">
+      </h4><a name="anclaBOPVSubSeccion10"></a><h5 class="BOPVSumarioSubSeccion">
+      </h5>
+      <h5 class="BOPVSumarioOrganismo">DEPARTAMENTO DE IGUALDAD, JUSTICIA Y POLÍTICAS SOCIALES </h5>
+      </div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/eu/bopv2/datos/2022/01/2200010e.shtml">IRAGARKIA, Arabako, Bizkaiko eta Gipuzkoako Doako Laguntza Juridikoaren Batzordeek emandako zenbait ebazpen jakinaraztekoa.</a></p><span class="BOPVSumarioOrden">10</span></div></div>
+<div class="bopvBloquedcha"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/es/bopv2/datos/2022/01/2200010a.shtml">ANUNCIO relativo a notificaciones sobre resoluciones de las Comisiones de Asistencia Jurídica Gratuita de Álava, Bizkaia y Gipuzkoa.</a></p><span class="BOPVSumarioOrden">10</span></div></div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><a name="anclaBOPVSeccion11"></a><h4 class="BOPVSumarioSeccion">
+      </h4><a name="anclaBOPVSubSeccion11"></a><h5 class="BOPVSumarioSubSeccion">
+      </h5>
+      <h5 class="BOPVSumarioOrganismo"> </h5>
+      </div>
+<div class="bopvBloquedcha"><a name="anclaBOPVSeccion11"></a><h4 class="BOPVSumarioSeccion">
+      </h4><a name="anclaBOPVSubSeccion11"></a><h5 class="BOPVSumarioSubSeccion">
+      </h5>
+      <h5 class="BOPVSumarioOrganismo"> </h5>
+      </div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/eu/bopv2/datos/2022/01/2200011e.shtml">IRAGARKIA, 2021eko azaroaren 26koa, Familia eta Haurren zuzendariarena, Izatezko Bikoteen Erregistroaren espedienteei buruzko bertaratze izapidea betetzeko errekerimenduak jakinarazteko dena.</a></p><span class="BOPVSumarioOrden">11</span></div></div>
+<div class="bopvBloquedcha"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/es/bopv2/datos/2022/01/2200011a.shtml">ANUNCIO de 26 de noviembre de 2021, de la Directora de Familias e Infancia, por el que se notifican requerimientos de cumplimentación del trámite de comparecencia relativos a expedientes del Registro de Parejas de Hecho.</a></p><span class="BOPVSumarioOrden">11</span></div></div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><a name="anclaBOPVSeccion12"></a><h4 class="BOPVSumarioSeccion">
+      </h4><a name="anclaBOPVSubSeccion12"></a><h5 class="BOPVSumarioSubSeccion">
+      </h5>
+      <h5 class="BOPVSumarioOrganismo"> </h5>
+      </div>
+<div class="bopvBloquedcha"><a name="anclaBOPVSeccion12"></a><h4 class="BOPVSumarioSeccion">
+      </h4><a name="anclaBOPVSubSeccion12"></a><h5 class="BOPVSumarioSubSeccion">
+      </h5>
+      <h5 class="BOPVSumarioOrganismo"> </h5>
+      </div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/eu/bopv2/datos/2022/01/2200012e.shtml">IRAGARKIA, 2021eko azaroaren 29koa, Gizarte Zerbitzuen zuzendariarena, zeinaren bidez jakinarazten baitira telelaguntza-zerbitzu publikoari buruzko zenbait espedienteren gaineko ebazpenak.</a></p><span class="BOPVSumarioOrden">12</span></div></div>
+<div class="bopvBloquedcha"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/es/bopv2/datos/2022/01/2200012a.shtml">ANUNCIO de 29 de noviembre de 2021, de la Directora de Servicios Sociales, por el que se notifican resoluciones relativas a expedientes del servicio público de teleasistencia.</a></p><span class="BOPVSumarioOrden">12</span></div></div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><a name="anclaBOPVSeccion13"></a><h4 class="BOPVSumarioSeccion">
+      </h4><a name="anclaBOPVSubSeccion13"></a><h5 class="BOPVSumarioSubSeccion">
+      </h5>
+      <h5 class="BOPVSumarioOrganismo"> </h5>
+      </div>
+<div class="bopvBloquedcha"><a name="anclaBOPVSeccion13"></a><h4 class="BOPVSumarioSeccion">
+      </h4><a name="anclaBOPVSubSeccion13"></a><h5 class="BOPVSumarioSubSeccion">
+      </h5>
+      <h5 class="BOPVSumarioOrganismo"> </h5>
+      </div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/eu/bopv2/datos/2022/01/2200013e.shtml">EDIKTUA, 2021eko azaroaren 25ekoa, Familia eta Haurren zuzendariarena, Euskal Autonomia Erkidegoko Izatezko Bikoteen Erregistroaren espedienteei buruzko dokumentazio-errekerimenduak jakinaraztekoa.</a></p><span class="BOPVSumarioOrden">13</span></div></div>
+<div class="bopvBloquedcha"><div class="txtBloque">
+        <p class="BOPVSumarioTitulo"><a href="/web01-bopv/es/bopv2/datos/2022/01/2200013a.shtml">EDICTO de 25 de noviembre de 2021, de la Directora de Familias e Infancia, por el que se notifican los requerimientos de documentación relativos a expedientes del Registro de Parejas de Hecho de la Comunidad Autónoma del País Vasco.</a></p><span class="BOPVSumarioOrden">13</span></div></div>
+<div class="r01clearfix"></div><div class="bopvBloqueizqda">
+      <div class="clr"><br/></div>
+      <div class="BOPVSumPie"><br/></div></div>
+<div class="bopvBloquedcha">
+      <div class="clr"><br/></div>
+      <div class="BOPVSumPie"><br/></div></div>
+</div>
+    </div>
+    <div class="colIzquierda">
+      <h2 class="tituGeneral">Sumario</h2>
+      <ul class="princiSumario">
+        <li><a href="#anclaBOPVSeccion1">DISPOSICIONES GENERALES</a></li>
+        <li><a href="#anclaBOPVSeccion2">AUTORIDADES Y PERSONAL</a><ul class="BOPVSumarioSubSeccion">
+            <li><a href="#anclaBOPVSubSeccion2">Oposiciones y concursos</a></li>
+          </ul>
+        </li>
+        <li><a href="#anclaBOPVSeccion3">OTRAS DISPOSICIONES</a></li>
+        <li><a href="#anclaBOPVSeccion6">ANUNCIOS</a><ul class="BOPVSumarioSubSeccion">
+            <li><a href="#anclaBOPVSubSeccion6">Otros anuncios oficiales</a></li>
+          </ul>
+        </li>
+      </ul><!-- Panel Informacion general -->
+<h2 class="tituGeneral">Informaci&oacute;n general</h2>
+<ul class="menuDcha">
+	<li><a href="/web01-bopv/es/bopv2/datos/html/info1_c.shtml">Caracter&iacute;sticas</a></li>
+	<li><a href="/web01-bopv/es/bopv2/datos/html/info2a_c.shtml">C&oacute;mo utilizar el servicio de consulta</a></li>
+	<li><a href="/web01-bopv/es/bopv2/datos/html/infodsi_c.shtml">C&oacute;mo utilizar el servicio de difusi&oacute;n selectiva</a></li>
+	<li><a href="/web01-bopv/es/bopv2/datos/html/info2b_c.shtml">C&oacute;mo utilizar el servicio de verificaci&oacute;n de boletín electr&oacute;nico</a></li>
+	<li><a href="/web01-bopv/es/bopv2/datos/html/info3_c.shtml">Cómo realizar una solicitud de publicación</a></li>
+	<li><a href="/web01-bopv/es/bopv2/datos/html/info4_c.shtml">Textos consolidados</a></li>
+	<li><a href="https://www.euskadi.eus/supresion-de-datos-personales-del-boletin-oficial-del-pais-vasco-bopv-derecho-al-olvido/web01-a2datuba/es/">Datos personales. Derecho al olvido</a></li>
+	<li><a href="/web01-bopv/es/bopv2/datos/html/faq_c.shtml">Preguntas frecuentes</a></li>	
+</ul></div></div><script type="text/javascript" src="/appcont/servibopvi/scripts/r48-jquery-1.6.2.min.js"></script>
+<script type="text/javascript" src="/appcont/servibopvi/scripts/r48-jquery-ui-1.8.16.custom.min.js"></script>
+<script type="text/javascript" src="/appcont/servibopvi/scripts/r48-calendario.js"></script>
+
