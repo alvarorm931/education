@@ -64,7 +64,10 @@ URL_RUIDO = re.compile(
     r"/(master|main)/(src|lib|docs?|blob|tree|raw|include|test)|\.(md|txt)$|"
     r"/(noticias?|news|blog|actualidad|actualitat|foro|forum|member|members|events?|eventos?|tag|category|"
     r"producto|product|shop|tienda)/|msc[-_ %20]+(cruises|cruceros|magnifica|ship)", re.I)
-SUFIJOS_DOBLES = ("edu.es", "com.es", "org.es", "gob.es", "nom.es")
+SUFIJOS_DOBLES = ("edu.es", "com.es", "org.es", "gob.es", "nom.es",
+                  "co.uk", "ac.uk", "org.uk", "com.ar", "edu.ar", "org.ar", "com.mx", "edu.mx", "org.mx", "com.co",
+                  "edu.co", "com.br", "edu.br", "com.pe", "edu.pe", "com.ve", "com.ec", "edu.ec", "com.uy", "edu.uy",
+                  "com.py", "com.bo", "com.do", "edu.do", "com.gt", "com.pa", "com.pr", "com.au", "edu.au")
 HOST_VALIDO = re.compile(r"^[a-z0-9-]+(\.[a-z0-9-]+)*\.[a-z]{2,}$")
 
 

@@ -81,3 +81,8 @@ def test_colaboradores_entran_como_candidatos(tmp_path):
     assert c.enlazados_de_rastreo([tmp_path / "r"]) == {"eshi.es": ["prov-ui1"], "linkedin.com": ["prov-ui1"],
                                                        "otra.com.ar": ["prov-ui1"]}
     assert c.url_de_programa("https://imf-formacion.com/landings/master-en-direccion-mba/?utm_expid=1")
+
+
+def test_sufijos_dobles_extranjeros():
+    assert c.dominio_registrado("https://www.ox.ac.uk/master") == "ox.ac.uk"
+    assert c.dominio_registrado("posgrado.unc.edu.ar") == "unc.edu.ar"

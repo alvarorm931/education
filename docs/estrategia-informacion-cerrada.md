@@ -249,5 +249,29 @@ junto a la oferta (Decreto 625/2019 de Andalucía; Decreto 40/2026 de Castilla-L
 
 ## 9. Estado del barrido (29/10/2026)
 
-En curso: webs de todas las universidades y centros oficiales (352 dominios) y nuevo descubrimiento en
-Common Crawl con el patrón ampliado. Las cifras por universidad se añaden al terminar.
+**Webs oficiales (340 dominios del RUCT: universidades, centros propios y adscritos, extranjeros
+autorizados, otros centros de nivel universitario y Defensa)**, barrido a fondo:
+
+- Responden 293; 47 no responden (webs antiguas del RUCT, institutos del CSIC con tiempo agotado).
+- **Vetan nuestro agente en `robots.txt`: Universidad de Sevilla, Universidad de Córdoba**, ico.gencat.cat,
+  iesg.es y unibarcelona.com. **La UOC responde 403 a todo**. No se fuerza: se pide permiso (§3.4) y,
+  mientras, sus másters salen solo de fuentes oficiales.
+- 232 con páginas de programa: 55.899 URL de programa, 36.902 con fecha de última modificación en el
+  sitemap (sirven para no volver a descargar lo que no cambia) y 4.698 con el nombre del máster en el
+  enlace. 170 verificadas con fichas medidas. Ninguna reserva expresa de minería (TDM).
+- En 779 fichas de máster de esas webs: formulario que pide el correo 37 %, teléfono 30 %, importe en
+  euros 31 % (habla de precio el 82 %), precio en Schema.org 6 %, asignaturas o módulos 57 %, becas 62 %,
+  metodología 39 %, evaluación 29 %, plazas 33 %, guía o folleto en PDF enlazado 19 %.
+- **Cada máster oficial con su página**: de 4.347 activos, 1.447 unidos, 628 dudosos (varios centros o
+  páginas: revisar) y 2.272 sin página. Faltan sobre todo las grandes públicas con miles de páginas (UB,
+  UPM, UC3M, UPV, UAM) y las que vetan el rastreo. En marcha: todas las URL de programa de esos dominios
+  en Common Crawl.
+
+**Centros no oficiales**: 10.955 candidatos de Common Crawl (de 70.912 dominios con rutas de posgrado),
+en verificación en su propia web. Cifras al terminar.
+
+**Fallos encontrados al revisar el barrido y corregidos el mismo día**: se rastreaba el dominio desnudo
+(«ub.es») en vez de la web real; las redirecciones a otro dominio (uab.es → uab.cat, ehu.es → ehu.eus)
+dejaban sin programas a universidades enteras; `robots.txt` se leía solo del servidor principal; las
+páginas sin codificación en la cabecera se leían mal («MÃ¡ster»), lo que rebajaba las cifras de la §1; y
+una prueba subió 101 copias de páginas de centros a la rama pública (retiradas; queda purgar el historial).
