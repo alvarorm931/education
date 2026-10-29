@@ -27,18 +27,32 @@ Medido el 29/10/2026 en 348 páginas de programa de 111 centros no universitario
 «Menciona» no es «da el dato»: la cifra exacta por campo sale de la extracción (`extraer.py`). Las
 universidades se miden en el barrido de sus webs (§9).
 
+**Aviso sobre esta tabla.** Se midió con un rastreador que leía mal las páginas servidas sin codificación en
+la cabecera («MÃ¡ster», «â‚¬»): en esas páginas no se veían «€», «metodología», «evaluación» ni «admisión».
+Las cifras de importe en euros, metodología y evaluación pueden estar por debajo de la realidad. El fallo
+está corregido (29/10/2026) y la tabla se vuelve a medir en el barrido de candidatos.
+
 ## 2. Reglas que no se tocan
 
 1. **Solo lo publicado o lo facilitado a sabiendas.** Nunca identidades falsas, nunca hacerse pasar por
    alumno, nunca rellenar formularios para sacar un folleto, nunca buscar rutas ocultas a documentos que
    el centro reserva tras un formulario.
-2. **Robots y reserva de minería.** Se respetan `robots.txt` y la reserva expresa de minería de textos y
-   datos (cabecera o meta `tdm-reservation`, fichero `/.well-known/tdmrep.json`). El rastreador ya lo
-   comprueba en cada web; un centro con reserva no se procesa con IA, solo se enlaza.
+2. **Robots y reserva de minería.** Se respetan `robots.txt` de cada servidor y la reserva expresa de
+   minería de textos y datos (cabecera o meta `tdm-reservation`, fichero `/.well-known/tdmrep.json`). La
+   excepción de minería está en el art. 67 del Real Decreto-ley 24/2021 (no en el TRLPI): solo sobre
+   contenido accesible de forma legítima y salvo reserva expresa «por medios adecuados» (Directiva
+   2019/790, art. 4.3 y considerando 18). Por prudencia, una prohibición en `robots.txt` se trata también
+   como reserva. Un centro con reserva no se procesa con IA, solo se enlaza.
 3. **Hechos, no textos.** Se publican datos (precio, créditos, fechas, asignaturas) con su fuente y fecha;
-   nunca descripciones copiadas ni folletos. Los agregadores no son fuente.
-4. **Sin datos de personas.** No se guardan nombres de profesores ni de contactos comerciales.
-5. **Decir lo que no sabemos.** Si el centro no publica un dato, la ficha lo dice así: «el centro no
+   nunca descripciones copiadas ni folletos. La minería permite analizar, no republicar. Los agregadores no
+   son fuente: además de no ser primarios, sus bases de datos tienen protección propia (TRLPI, arts.
+   133-135) y sus condiciones prohíben reproducirlas.
+4. **Copias privadas.** Las páginas descargadas se guardan solo en el archivo privado; en la rama pública
+   del repositorio queda únicamente su URL, fecha y huella. (El 29/10/2026 se retiraron de esa rama 101
+   copias de páginas de centros que había subido una prueba; siguen en el historial de la rama y conviene
+   purgarlo.)
+5. **Sin datos de personas.** No se guardan nombres de profesores ni de contactos comerciales.
+6. **Decir lo que no sabemos.** Si el centro no publica un dato, la ficha lo dice así: «el centro no
    publica el precio; lo facilita tras pedir el correo y el teléfono». Es un dato verdadero, útil y nuestro.
 
 ## 3. Las palancas, de más fuerte a más débil
@@ -54,6 +68,8 @@ universidades se miden en el barrido de sus webs (§9).
 | Evaluación y metodología por asignatura | guía docente, obligatoria antes de la matrícula (RD 822/2021, art. 9.3) | mapa de plataformas hecho (`docs/fuentes-guias-docentes.md`): SIGMA DOA cubre 12 universidades con un conector; 10 más con URL predecible |
 | Plan publicado | BOE | hecho |
 | Precio público por crédito | decreto u orden anual de cada comunidad | normas de las 19 administraciones identificadas (`docs/fuentes-precios-publicos.md`); 17 leídas, Navarra y Murcia por verificar |
+| Precio del crédito de másteres oficiales, también privados | QEDU (Ministerio, a partir del RUCT y del SIIU) | por verificar: el Ministerio dice que da el «precio del crédito» (nota del 13/2/2025); falta comprobar qué da para las privadas |
+| Si el título es oficial o propio | obligación de informar (LOSU, art. 7.4) | la ficha lo dice siempre; se comprueba que la web del centro lo diga |
 | Becas generales | BOE y Base de Datos Nacional de Subvenciones | pendiente |
 | Convenios de títulos propios con empresas | portales de transparencia de las públicas | pendiente |
 
@@ -75,15 +91,42 @@ saltarse el veto.
 
 ### 3.3 Obligaciones de información al consumidor
 
-Pendiente del estudio jurídico en curso (normativa estatal de consumidores y decretos autonómicos sobre
-enseñanza no reglada). Si una norma obliga a dar el precio antes de pedir datos, la ficha lo dirá con su
-referencia cuando el centro no lo publique.
+Estudio del 29/10/2026 (fuentes en `docs/fuentes-legales-informacion.md`).
+
+- **Ninguna norma estatal obliga a enseñar el precio antes de pedir el correo.** Obligan a darlo antes del
+  contrato y, si se contrata en línea, justo antes del pedido (TRLGDCU, arts. 60, 97.1.e y 98.2; Ley
+  17/2009, art. 22). Si la web habla de precios, debe darlos claros y con impuestos (LSSI, art. 10.1.f).
+  El formulario para captar contactos es lícito.
+- **Algunas comunidades sí obligan a las escuelas no universitarias a ponerlo en la web** cuando venden a
+  distancia: Andalucía (Decreto 625/2019: documento informativo con el precio final completo en la web
+  junto a la oferta, arts. 6.1, 7.1 y 7.3, también para centros de fuera que venden allí, art. 2.1) y
+  Castilla-La Mancha (Decreto 40/2026, arts. 7.1 y 8.2). La Comunidad de Madrid lo pide para los cursos por
+  internet (Decreto 84/2004, según su ficha oficial; el texto del BOCM no se ha leído). Aragón (Decreto
+  82/2003) y el País Vasco (Decreto 182/1997, en reforma) tienen normas propias sin requisito web
+  verificado; en las demás no se ha localizado norma o no se ha verificado. Estas normas excluyen las
+  enseñanzas del sistema educativo, y la universitaria está en él: los títulos propios de universidades
+  quedan probablemente fuera (interpretación por confirmar con Consumo).
+- **Universidades:** guía docente antes de la matrícula en los oficiales (RD 822/2021, art. 9.3); deber de
+  decir si el título es oficial o propio y de no inducir a confusión (LOSU, art. 7.4; RD 822/2021, art. 36).
+  El Tribunal Supremo anuló el RD 905/2025, que modificaba el RD 822/2021 (STS de 6/10/2026, según la
+  copia publicada; no contrastada en el CENDOJ): el modelo usa la redacción del RD 822/2021 que esté
+  vigente y se comprueba antes de publicar.
+
+Uso en el portal: la ficha dice el hecho («el centro no publica el precio en su web»), nunca un juicio de
+legalidad; la norma se cita en la petición al centro cuando le afecta (§3.4). Denunciar ante Consumo es
+decisión de Álvaro, no del motor.
 
 ### 3.4 Petición directa y transparente al centro
 
 Lo que no está publicado se pide, como medio, con identidad real:
 
-- Cuenta de correo del portal (la crea Álvaro; Claude no crea cuentas ni rellena formularios con datos).
+- Cuenta de correo genérica del portal (la crea Álvaro; Claude no crea cuentas ni rellena formularios con
+  datos). Pedir con identidad corporativa real y diciendo que somos un portal no está prohibido; el centro
+  trata ese contacto profesional por interés legítimo (LOPDGDD, art. 19). Las identidades ficticias, en
+  cambio, suponen tratar datos de terceros sin base legal, riesgo penal si se usa la identidad de otro
+  (CP, art. 401) y coste real para el centro (paga por cada contacto que le llega de un agregador).
+- **Cuándo empezar:** cuando el portal tenga dirección pública y fichas publicadas. Antes, decir «estamos
+  publicando la ficha» no sería verdad.
 - Mensaje identificado como portal informativo, no como alumno (plantilla en el anexo), al correo de
   admisiones o por el formulario de contacto institucional, nunca por el de «solicita información» que
   alimenta su embudo comercial.
@@ -94,6 +137,11 @@ Lo que no está publicado se pide, como medio, con identidad real:
 - Una vez al año, antes de la preinscripción, se pide la actualización.
 
 ### 3.5 Ficha verificada por el centro
+
+Es el modelo de Studyportals (datos de la web oficial de cada universidad, cuenta gratuita para corregir,
+revisión por su equipo, al menos una vez al año, y avisos de error de los usuarios). Emagister y Educaweb,
+en cambio, publican lo que da el centro y lo hacen responsable de sus precios. Lo nuestro: dato de la fuente
+oficial o de la web del centro primero; lo que aporte el centro, marcado y cotejado.
 
 El centro puede revisar y completar su ficha (alta gratuita):
 
@@ -110,9 +158,16 @@ personales. Se publica como agregado («3 alumnos indican…») con fecha; nunca
 
 ### 3.7 Peticiones formales
 
-Por la Ley 19/2013 (transparencia) y la Ley 37/2007 (reutilización), a las universidades públicas: precio de
-títulos propios, convenios con entidades que los venden, guías docentes en formato reutilizable. Al
-Ministerio: precio por título, afiliación por título y QEDU.
+- **Universidades públicas, por la Ley 19/2013** (art. 2.1.d): derecho de acceso sin motivar, respuesta en
+  un mes ampliable a dos (arts. 12, 17.3 y 20.1). Qué pedir: precio de títulos propios, convenios con
+  entidades que los imparten o venden (que además deben publicar: art. 8.1.b), guías docentes en formato
+  reutilizable.
+- **Universidades privadas:** no están sujetas a esa ley (CTBG, R/1116/2024). Lo que tengan el Ministerio,
+  la comunidad o la agencia de calidad sobre ellas se pide a esas administraciones.
+- **Ministerio y comunidades, por la Ley 37/2007** (reutilización, veinte días ampliables a cuarenta): datos
+  del RUCT y del SIIU, precio por título, afiliación por título, QEDU, autorizaciones de centros y precios
+  públicos. Esta ley no sirve con las universidades: excluye los documentos de las instituciones educativas
+  que no sean datos de investigación (art. 3.3.g).
 
 ## 4. Mantenerlo al día
 
@@ -135,16 +190,26 @@ Reglas:
   [fecha]; consulta [fuente]» en vez de darlo por vigente.
 - Alerta si un dato desaparece de la web (por ejemplo, el precio deja de publicarse) o cambia de golpe.
 
-## 5. Indicador de transparencia de cada máster
+## 5. Estado de cada campo de cada máster e indicador de transparencia
 
-Dato propio que nadie da: qué parte de lo esencial publica el centro sin pedir datos.
+Para cada máster y cada campo esencial el motor guarda de dónde sale el dato y cuándo se volverá a mirar.
+Es lo que decide qué hacer a continuación con ese máster (leer una fuente, pedirlo al centro, esperar).
 
-- Campos esenciales: precio total, plan de estudios con créditos, metodología, evaluación, horario,
-  plazas, fechas de admisión, becas, tipo de título y quién lo expide.
-- Para cada campo, la mejor fuente disponible: publicado en la ficha, documento público del centro,
-  fuente oficial, facilitado por el centro a petición, o no disponible sin registro.
-- Se publica con su metodología y fecha, como hecho medido, sin juicios. Explica al alumno qué esperar y
-  empuja a los centros a publicar.
+```json
+{"oferta": "of-…", "campo": "precio_total",
+ "estado": "publicado_ficha | documento_publico | fuente_oficial | facilitado_centro | solo_con_registro | no_publicado | sin_comprobar",
+ "valor": 9900, "fuente_url": "…", "cita": "…", "capturado": "2026-10-29",
+ "comprobado": "2026-10-29", "proxima_comprobacion": "2026-11-05", "motivo_frecuencia": "admision_abierta"}
+```
+
+- `solo_con_registro`: la página tiene el formulario y no da el dato; `no_publicado`: ni formulario ni dato.
+- Siguiente paso por estado: `sin_comprobar` → extraer; `solo_con_registro` o `no_publicado` → buscar
+  documento público del centro, luego fuente oficial, luego petición al centro (§3.4); `facilitado_centro`
+  → pedir actualización antes de la siguiente admisión.
+- **Indicador de transparencia** (dato propio que nadie da): qué parte de lo esencial (precio total, plan de
+  estudios con créditos, metodología, evaluación, horario, plazas, fechas de admisión, becas, tipo de título
+  y quién lo expide) se ve sin dar datos. Se publica con su metodología y fecha, como hecho medido, sin
+  juicios. Explica al alumno qué esperar y empuja a los centros a publicar.
 
 ## 6. Quién hace qué
 
@@ -174,6 +239,10 @@ Asunto: Datos del [nombre del máster] para [portal]
 > de estudios con créditos, metodología y sistema de evaluación, horario, plazas, fechas de admisión de la
 > próxima edición y becas o descuentos? Citaremos que el dato lo facilita el centro y la fecha. No
 > cedemos datos ni pedimos información de alumnos. Gracias.
+
+Solo para escuelas no universitarias que venden a distancia en Andalucía o Castilla-La Mancha, se puede
+añadir: «Os lo pedimos también porque la normativa autonómica prevé que esta información figure en la web
+junto a la oferta (Decreto 625/2019 de Andalucía; Decreto 40/2026 de Castilla-La Mancha).»
 
 ## 9. Estado del barrido (29/10/2026)
 

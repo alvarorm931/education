@@ -1,0 +1,18 @@
+{
+ "descripcion": "Listas independientes de proveedores de másters para medir la cobertura del censo. No se usan para construirlo: solo para comprobar si lo encuentra. Fecha: 29/10/2026.",
+ "listas": {
+  "manual": {"origen": "elegidos a mano antes de mirar Common Crawl: escuelas y universidades conocidas por su oferta de másters",
+             "dominios": ["esic.edu", "eae.es", "ie.edu", "esade.edu", "iebschool.com", "structuralia.com", "imf-formacion.com",
+                          "obsbusiness.school", "cef.es", "eude.es", "eoi.es", "isdi.education", "thepowermba.com",
+                          "euroinnova.com", "ucam.edu", "nebrija.com", "ucavila.es", "unir.net"]},
+  "extranjeros_ruct": {"origen": "centros extranjeros autorizados del RUCT (grupos 091-105)",
+             "dominios": ["escp.eu", "slu.edu", "schiller.edu", "suffolk.edu", "cis-spain.com", "ufm.edu", "cesine.com", "eade.es",
+                          "esgerencia.com", "miuc.org", "digipen.es", "labavalencia.net", "edu-barcelona.com", "euruni.edu",
+                          "global-business-school.org", "tbs-education.es", "ceste.es"]},
+  "ui1_colaboradores": {"origen": "centros colaboradores publicados por la Universidad Isabel I (títulos propios vendidos por terceros)",
+             "dominios": ["anpe.es", "cesine.com", "editeca.com", "iddocente.com", "eneb.es", "icse.es", "iseb.es", "saera.es", "eshi.es"]},
+  "forbes": {"origen": "escuelas de negocio de la clasificación de Forbes España 2026",
+             "dominios": ["centrogarrigues.com", "isdi.education", "eserp.com", "esh.education", "nebrija.com", "obsbusiness.school",
+                          "global-business-school.org", "eae.es", "euruni.edu"]}
+ }
+}
