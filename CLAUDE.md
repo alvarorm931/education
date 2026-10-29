@@ -3,6 +3,8 @@
 Portal abierto, en un solo dominio .es, con dos secciones: estudios (carreras, másters, FP, notas de corte con calculadora) y oposiciones (todas las convocatorias de España). Información siempre abierta: nunca se pide registro ni correo para ver nada. El correo es opcional y solo para avisos.
 
 La guía completa está en `docs/guia.html` y la ley SEO en `docs/ley-seo.md`.
+Contexto para conversaciones nuevas: `docs/contexto-proyecto.md`. Encargos en paralelo: `docs/encargo-*.md`
+(cada encargo trabaja en su propia carpeta de `motor/` y no toca las de otros sin acuerdo).
 
 ## La ley del proyecto (obligatoria)
 
