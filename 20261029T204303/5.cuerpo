@@ -1,0 +1,56 @@
+function funcionalidadAccionesCalendarioPublico(IdElementoPadre, minMes, minAnio) {
+    var MesActual = $(IdElementoPadre).find(".calendar-months .active-month").attr('data-month-val');
+    var AnioActual = $(IdElementoPadre).find(".calendar-year p").text();
+
+    // Como mínimo, se debe indicar el año de inicialización
+    if (minAnio !== undefined && minAnio !== '') {
+        // Si no tenemos valor en el parámetro del mes, lo inicializamos a enero = 0
+        if (minMes === undefined || minMes === '') {
+            minMes = 0;
+        }
+
+        $(IdElementoPadre).find('th.addTh').each(function () {
+            $(this).remove();
+        });
+        if (MesActual === minMes && AnioActual === minAnio) {
+            $(IdElementoPadre + " .MesAnterior").hide();
+            $(IdElementoPadre + " .MesAnterior").after('<th class="addTh" style="background-color:#fff"></th>')
+        } else {
+            $(IdElementoPadre + " .MesAnterior").show();
+        }
+
+        if (AnioActual === minAnio) {
+            // El año es igual al configurado
+            // Oculto botón de año previo
+            $(IdElementoPadre).find(".calendar-year").find('button.icon-button[data-year-val="prev"]').hide();
+            // Oculto cada elemento mes menor que el configurado
+            $(IdElementoPadre).find(".calendar-months .month").each(function () {
+                if ($(this).data('month-val') < minMes) {
+                    $(this).hide();
+                } else {
+                    $(this).show();
+                }
+            });
+        } else {
+            // El año es diferente al configurado
+            // Muestro botón de año previo
+            $(IdElementoPadre).find(".calendar-year").find('button.icon-button[data-year-val="prev"]').show();
+            // Muestro cada elemento mes
+            $(IdElementoPadre).find(".calendar-months .month").each(function () {
+                $(this).show();
+            });
+        }
+    }
+}
+
+(function ($) {
+    let IdElementoPadre = '.CalendarioSAGA ';
+    $(document).ready(function () {
+        funcionalidadAccionesCalendarioPublico(IdElementoPadre, MES_INICIO_SAGA_CALENDARIO_BOP, ANIO_INICIO_SAGA_CALENDARIO_BOP);
+    });
+
+    $(document).on('click change', IdElementoPadre + ' *', function (event) {
+        console.log(`Evento detectado: ${event.type} en ${event.target}`);
+        funcionalidadAccionesCalendarioPublico(IdElementoPadre, MES_INICIO_SAGA_CALENDARIO_BOP, ANIO_INICIO_SAGA_CALENDARIO_BOP);
+    });
+})(jQuery);
