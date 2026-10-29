@@ -105,3 +105,62 @@ def test_texto_sin_datos_personales():
     assert plazas["contenido"][1] == ["Matemáticas", "12"]
     assert d["referencias"][0]["referencia"] == "BOE-A-2026-100"
     assert "Pérez" not in json.dumps(d, ensure_ascii=False)
+
+
+def test_bop_sin_numero_y_extracto_dogc():
+    t = ("En el «Boletín Oficial de la Provincia de Barcelona», de 25 de junio de 2026, se han publicado las bases que han "
+         "de regir la convocatoria para proveer:\nUna plaza de Arquitecto/a, perteneciente a la escala de Administración "
+         "Especial, subescala Técnica y clase Superior, por el sistema de concurso-oposición, en turno libre.\n"
+         "Se ha publicado, asimismo, un extracto de la convocatoria en el «Diari Oficial de la Generalitat de Catalunya» "
+         "número 9698, de 2 de julio de 2026.\nEl plazo de presentación de solicitudes será de veinte días hábiles a contar "
+         "desde el siguiente al de la publicación de esta resolución en el «Boletín Oficial del Estado».")
+    r = extraer_local(t, "2026-07-10")
+    assert r["pendiente"] == []
+    bases = r["boletines_citados"][0]
+    assert (bases["boletin"], bases["numero"], bases["fecha"], bases["papel"]) == (
+        "Boletín Oficial de la Provincia de Barcelona", None, "2026-06-25", "bases")
+    assert r["boletines_citados"][1]["papel"] == "extracto"
+    assert all(b["boletin"] != "Boletín Oficial del Estado" for b in r["boletines_citados"])
+
+
+def test_puesto_por_concurso_es_provision():
+    t = ("En el «Boletín Oficial de la Provincia de Alicante» número 98, de 27 de mayo de 2026, se han publicado las bases "
+         "que han de regir la convocatoria para proveer por concurso:\nUn puesto de Jefatura de Servicio de Recursos "
+         "Humanos, perteneciente a la escala de Administración General, subescala Técnica.\nEl plazo de presentación de "
+         "solicitudes será de quince días hábiles a contar desde el siguiente al de la publicación de esta resolución en el "
+         "«Boletín Oficial del Estado».")
+    a = construir_acto({"identificador": "X", "fecha": "2026-07-01", "ambito": "local", "tipo_acto": "convocatoria",
+                        "alcance": "acceso"}, {"texto": t, "tablas": [], "referencias": []})
+    assert a["pendiente"] == [] and a["alcance"] == "provision_puestos"
+    assert a["plazas"][0]["tipo"] == "puesto" and a["plazas"][0]["numero"] == 1
+
+
+def test_rectificacion_de_bases():
+    t = ("En el «Boletín Oficial de la Provincia de Tarragona», de 4 de junio de 2026, se han publicado las bases que han de "
+         "regir la convocatoria para proveer:\nDos plazas de Técnico/a de Administración General, pertenecientes a la escala "
+         "de Administración General, subescala Técnica y clase Superior, por el sistema de concurso-oposición, en turno libre.\n"
+         "Dichas bases fueron rectificadas en los términos publicados en el «Boletín Oficial de la Provincia de Tarragona», "
+         "de 22 de junio de 2026.\nEl plazo de presentación de solicitudes será de veinte días hábiles a contar desde el "
+         "siguiente al de la publicación de esta resolución en el «Boletín Oficial del Estado».")
+    r = extraer_local(t, "2026-07-10")
+    assert [b["papel"] for b in r["boletines_citados"]] == ["bases", "rectificacion"]
+
+
+def test_correccion_apunta_al_anuncio_original():
+    t = ("Advertido error en la inserción de la Resolución de 24 de junio de 2026, del Ayuntamiento de Zahara (Cádiz), "
+         "referente a la convocatoria para proveer una plaza, publicada en el «Boletín Oficial del Estado» número 159, "
+         "de 1 de julio de 2026 (BOE-A-2026-14275), se procede a su rectificación:")
+    a = construir_acto({"identificador": "BOE-A-2026-15000", "fecha": "2026-07-06", "ambito": "local",
+                        "tipo_acto": "correccion"}, {"texto": t, "tablas": [], "referencias": []})
+    assert a["refiere_a"] == ["BOE-A-2026-14275"] and a["tipo_acto"] == "correccion"
+
+
+def test_turno_restringido_no_es_acceso_libre():
+    t = ("En el «Boletín Oficial de la Provincia de Salamanca» número 183, de 22 de septiembre de 2026, se han publicado "
+         "las bases que han de regir la convocatoria para proveer:\nCinco plazas de Administrativo/a, pertenecientes a la "
+         "escala de Administración General/Especial, subescala Administrativa, por el sistema de concurso-oposición, en "
+         "turno restringido.\nEl plazo de presentación de solicitudes será de veinte días hábiles a contar desde el siguiente "
+         "al de la publicación de esta resolución en el «Boletín Oficial del Estado».")
+    a = construir_acto({"identificador": "X", "fecha": "2026-10-01", "ambito": "local", "tipo_acto": "convocatoria"},
+                       {"texto": t, "tablas": [], "referencias": []})
+    assert a["plazas"][0]["turno"] == "restringido" and a["alcance"] == "promocion_interna" and a["pendiente"] == []

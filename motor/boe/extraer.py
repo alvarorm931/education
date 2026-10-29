@@ -68,12 +68,13 @@ def fecha_texto(dia: str, mes: str, anio: str) -> str | None:
 
 
 RE_BOLETIN = re.compile(
-    r"«(?P<boletin>[^»]+)»\s*(?:número|núm\.|n\.º|nº)\s*(?P<numero>[\d.]+)\s*,\s*de\s+(?P<dia>\d{1,2})\s+de\s+"
+    r"«(?P<boletin>[^»]+)»\s*(?:,?\s*(?:número|núm\.|n\.º|nº)\s*(?P<numero>[\d.]+))?\s*,\s*de\s+(?P<dia>\d{1,2})\s+de\s+"
     r"(?P<mes>[a-záéíóú]+)\s+de\s+(?P<anio>\d{4})", re.IGNORECASE)
 RE_PLAZO = re.compile(
     r"plazo de presentación de solicitudes será de (?P<n>[\wáéíóú ]+?) días (?P<tipo>hábiles|naturales)", re.IGNORECASE)
 RE_LINEA_PLAZA = re.compile(
-    r"^(?P<n>[\wáéíóúñ ]+?)\s+plazas?\s+de\s+(?P<resto>.+)$", re.IGNORECASE)
+    r"^(?P<n>[\wáéíóúñ ]+?)\s+(?P<clase_plaza>plazas?|puestos?)\s+de\s+(?P<resto>.+)$", re.IGNORECASE)
+RE_ID_BOE = re.compile(r"\bBOE-[AB]-\d{4}-\d+\b")
 RE_SISTEMA = re.compile(r"por el sistema de (?P<s>concurso-oposición|concurso oposición|oposición|concurso)", re.IGNORECASE)
 RE_ESCALA = re.compile(r"escala de (?P<v>[^,]+)", re.IGNORECASE)
 RE_SUBESCALA = re.compile(r"subescala (?P<v>[^,]+?)(?:\s+y\s+clase|,|$)", re.IGNORECASE)
@@ -88,6 +89,8 @@ def _turno(linea: str) -> str | None:
         return "discapacidad"
     if "movilidad" in t:
         return "movilidad"
+    if "turno restringido" in t:
+        return "restringido"
     if "turno libre" in t or "acceso libre" in t:
         return "libre"
     return None
@@ -113,6 +116,7 @@ def plaza(linea: str) -> dict | None:
     esc, sub, cla = RE_ESCALA.search(resto), RE_SUBESCALA.search(resto), RE_CLASE.search(resto)
     return {
         "numero": n,
+        "tipo": "puesto" if m.group("clase_plaza").lower().startswith("puesto") else "plaza",
         "denominacion": denominacion,
         "regimen": "laboral_fijo" if "personal laboral" in normalizar(resto) else "funcionario",
         "escala": esc.group("v").strip() if esc else None,
@@ -132,9 +136,18 @@ def extraer_local(texto: str, fecha_boe: str) -> dict:
     for l in lineas:
         for b in RE_BOLETIN.finditer(l):
             n = normalizar(l)
-            papel = "bases" if "se han publicado" in n and "bases" in n else ("extracto" if "extracto" in n else "otro")
+            if "rectificad" in n or "modificad" in n:
+                papel = "rectificacion"
+            elif "se han publicado" in n and "bases" in n:
+                papel = "bases"
+            elif "extracto" in n:
+                papel = "extracto"
+            else:
+                papel = "otro"
+            if normalizar(b.group("boletin")) == "boletin oficial del estado":
+                continue
             res["boletines_citados"].append({
-                "boletin": b.group("boletin"), "numero": b.group("numero").replace(".", ""),
+                "boletin": b.group("boletin"), "numero": (b.group("numero") or "").replace(".", "") or None,
                 "fecha": fecha_texto(b.group("dia"), b.group("mes"), b.group("anio")), "papel": papel, "cita": l})
         p = plaza(l)
         if p:
@@ -155,6 +168,8 @@ def extraer_local(texto: str, fecha_boe: str) -> dict:
         res["pendiente"].append("plazas")
     else:
         for p in res["plazas"]:
+            if p["tipo"] == "puesto":
+                continue
             if p["sistema"] is None:
                 res["pendiente"].append("sistema")
             if p["turno"] is None:
@@ -167,11 +182,16 @@ def extraer_local(texto: str, fecha_boe: str) -> dict:
     return res
 
 
+def es_provision(texto: str) -> bool:
+    t = normalizar(texto[:600])
+    return "para proveer por concurso" in t or "por libre designacion" in t
+
+
 def alcance_por_turnos(plazas: list[dict]) -> str | None:
     turnos = {p["turno"] for p in plazas if p.get("turno")}
     if not turnos:
         return None
-    if turnos <= {"promocion_interna", "movilidad"}:
+    if turnos <= {"promocion_interna", "movilidad", "restringido"}:
         return "promocion_interna"
     return "acceso"
 
@@ -199,6 +219,10 @@ def construir_acto(anuncio: dict, texto: dict | None) -> dict:
         acto["pendiente"].append("texto")
         return acto
     acto["referencias"] = texto.get("referencias", [])
+    citados = set(RE_ID_BOE.findall(texto.get("texto") or ""))
+    citados |= {r["referencia"] for r in acto["referencias"] if r.get("referencia")}
+    citados.discard(anuncio["identificador"])
+    acto["refiere_a"] = sorted(citados)  # clave para unir correcciones, anulaciones y modificaciones con su anuncio
     acto["tablas_con_datos_personales"] = sum(1 for t in texto.get("tablas", []) if t.get("datos_personales"))
     acto["filas_en_tablas_personales"] = sum(t.get("filas", 0) for t in texto.get("tablas", []) if t.get("datos_personales"))
 
@@ -214,7 +238,10 @@ def construir_acto(anuncio: dict, texto: dict | None) -> dict:
             "plazo": local["plazo"],
             "pendiente": local["pendiente"],
         })
-        acto["alcance"] = alcance_por_turnos(local["plazas"]) or acto["alcance"]
+        if es_provision(cuerpo) or (local["plazas"] and all(p["tipo"] == "puesto" for p in local["plazas"])):
+            acto["alcance"] = "provision_puestos"
+        else:
+            acto["alcance"] = alcance_por_turnos(local["plazas"]) or acto["alcance"]
     else:
         acto["pendiente"].append("extraccion_ia")
     return acto
