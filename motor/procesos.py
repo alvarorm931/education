@@ -1,16 +1,21 @@
-"""Procesos de oposición a partir de los actos extraídos (primera versión: BOE).
+"""Procesos de oposición a partir de los actos extraídos del BOE y de los boletines autonómicos.
 
 Uso:
   python -m motor.procesos --salida ruta/ [--hoy 2026-10-29]
 
-Lee datos/boe/actos/ y escribe:
-  datos/oposiciones/procesos.jsonl   un proceso por convocatoria de acceso, con sus actos posteriores enlazados
-  datos/oposiciones/resumen.json     cifras del día: plazos abiertos por provincia y por puesto
+Lee datos/boe/actos/ y datos/autonomicos/actos/ y escribe:
+  datos/oposiciones/procesos.jsonl   un proceso por convocatoria de acceso, con sus actos enlazados
+  datos/oposiciones/resumen.json     cifras del día: plazos abiertos por provincia, por puesto y por fuente
 
 Reglas:
-  - Nace un proceso por cada anuncio de apertura de plazo (local) o convocatoria (resto) de acceso abierto.
-  - Se le enlazan los actos que lo citan por su identificador del BOE (correcciones, anulaciones, modificaciones).
-  - Estado: «anulado» si hay anulación; «plazo_abierto» si la fecha de fin estimada es hoy o posterior;
+  - Nace un proceso por cada anuncio de apertura de plazo (local) o convocatoria (resto) de acceso abierto,
+    del BOE o de un boletín autonómico.
+  - Una misma convocatoria publicada en el BOE y en su boletín autonómico (mismo título) es un solo proceso:
+    manda el BOE y la publicación autonómica queda enlazada (con su texto completo).
+  - Lo local de los boletines autonómicos (bases íntegras) no crea procesos: se enlaza al anuncio del BOE que
+    las cita («En el Boletín Oficial de ... número N, de fecha, se han publicado las bases...»).
+  - Se enlazan los actos que citan al de origen por su identificador del BOE (correcciones, anulaciones...).
+  - Estado: «anulado» si hay anulación; «plazo_abierto» si la fecha de fin es hoy o posterior;
     «plazo_cerrado» si ya pasó (el proceso sigue en curso, sin novedades conocidas);
     «sin_datos_de_plazo» si aún no se ha extraído el plazo. Nunca se inventa un estado.
   - Si una corrección o modificación posterior abre un plazo nuevo, ese plazo sustituye al original.
@@ -20,20 +25,55 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 from collections import Counter, defaultdict
 from datetime import date, datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
+from motor.boe.clasificar import normalizar
+
 MADRID = ZoneInfo("Europe/Madrid")
+NOMBRE_FUENTE = {
+    "BOE": "Agencia Estatal Boletín Oficial del Estado",
+    "BOJA": "Boletín Oficial de la Junta de Andalucía (Junta de Andalucía, CC BY 4.0)",
+    "BOCM": "Boletín Oficial de la Comunidad de Madrid",
+    "BOCYL": "Boletín Oficial de Castilla y León (Junta de Castilla y León, CC BY 4.0)",
+    "DOGV": "Diari Oficial de la Generalitat Valenciana",
+    "DOG": "Diario Oficial de Galicia",
+    "DOGC": "Diari Oficial de la Generalitat de Catalunya",
+}
+# Cómo citan los anuncios del BOE a cada boletín autonómico (para enlazar las bases íntegras)
+BOLETIN_A_FUENTE = {
+    "boletin oficial de la junta de andalucia": "BOJA",
+    "boletin oficial de la comunidad de madrid": "BOCM",
+    "boletin oficial de castilla y leon": "BOCYL",
+    "diari oficial de la generalitat valenciana": "DOGV",
+    "diario oficial de la generalitat valenciana": "DOGV",
+    "diari oficial de la comunitat valenciana": "DOGV",
+    "diario oficial de la comunitat valenciana": "DOGV",
+    "diario oficial de galicia": "DOG",
+    "diari oficial de la generalitat de catalunya": "DOGC",
+    "diario oficial de la generalitat de cataluna": "DOGC",
+    "diario oficial de la generalidad de cataluna": "DOGC",
+}
+RE_NO_ALFANUM = re.compile(r"[^a-z0-9ñ]+")
+
+
+def _leer(carpeta: Path) -> list[dict]:
+    actos = []
+    for f in sorted(carpeta.rglob("*.jsonl")):
+        actos += [json.loads(l) for l in f.read_text(encoding="utf-8").splitlines() if l.strip()]
+    return actos
 
 
 def leer_actos(raiz: Path) -> list[dict]:
-    actos = []
-    for f in sorted((raiz / "datos" / "boe" / "actos").glob("*/*.jsonl")):
-        actos += [json.loads(l) for l in f.read_text(encoding="utf-8").splitlines() if l.strip()]
-    return actos
+    return _leer(raiz / "datos" / "boe" / "actos")
+
+
+def leer_actos_autonomicos(raiz: Path) -> list[dict]:
+    return _leer(raiz / "datos" / "autonomicos" / "actos")
 
 
 def es_origen(a: dict) -> bool:
@@ -42,67 +82,125 @@ def es_origen(a: dict) -> bool:
     return a.get("tipo_acto") == "apertura_plazo" or (a.get("ambito") != "local" and a.get("tipo_acto") == "convocatoria")
 
 
-def construir(actos: list[dict], hoy: date) -> list[dict]:
+def clave_titulo(titulo: str | None) -> str:
+    """Título normalizado para reconocer la misma disposición publicada en dos boletines."""
+    return RE_NO_ALFANUM.sub(" ", normalizar(titulo or "")).strip()[:220]
+
+
+def _nombre(conv: dict | None) -> str:
+    return clave_titulo((conv or {}).get("nombre"))
+
+
+def _plazo_salida(plazo: dict) -> dict | None:
+    if not plazo:
+        return None
+    return {k: plazo.get(k) for k in ("dias", "meses", "tipo", "inicio", "fin_estimado", "fin_exacto", "cuenta_desde",
+                                      "calendario", "de_acto", "cita") if plazo.get(k) is not None}
+
+
+def _ref(x: dict) -> dict:
+    return {"id": x["id"], "fecha": x["fecha"], "tipo": x.get("tipo_acto"), "fuente": x.get("fuente") or "BOE",
+            "url": x.get("url")}
+
+
+def construir(actos: list[dict], hoy: date, autonomicos: list[dict] | None = None) -> list[dict]:
+    autonomicos = autonomicos or []
     citados_por: dict[str, list[dict]] = defaultdict(list)
     for a in actos:
         for ref in a.get("refiere_a") or []:
             citados_por[ref].append(a)
 
+    # Publicaciones autonómicas: por título (para fusionar con el BOE) y lo local por boletín, fecha y municipio
+    por_titulo: dict[str, list[dict]] = defaultdict(list)
+    locales: dict[tuple[str, str, str], list[dict]] = defaultdict(list)
+    for x in autonomicos:
+        if x.get("ambito") == "local":
+            locales[(x.get("fuente"), x.get("fecha"), _nombre(x.get("convocante")))].append(x)
+        elif es_origen(x):
+            por_titulo[clave_titulo(x.get("titulo"))].append(x)
+    usados: set[str] = set()
+
     procesos = []
     for a in actos:
         if not es_origen(a):
             continue
-        posteriores = sorted(citados_por.get(a["id"], []), key=lambda x: x["fecha"])
-        plazo = a.get("plazo") or {}
-        # Una corrección o modificación posterior puede abrir un plazo nuevo: manda la más reciente con fecha de fin
-        for x in posteriores:
-            if x.get("tipo_acto") in ("modificacion", "correccion") and (x.get("plazo") or {}).get("fin_estimado"):
-                plazo = {**x["plazo"], "de_acto": x["id"]}
-        fin = plazo.get("fin_estimado")
-        if any(x.get("tipo_acto") == "anulacion" for x in posteriores):
-            estado = "anulado"
-        elif fin:
-            estado = "plazo_abierto" if fin >= hoy.isoformat() else "plazo_cerrado"
-        else:
-            estado = "sin_datos_de_plazo"
-        conv = a.get("convocante") or {}
-        procesos.append({
-            "id": f"boe:{a['id']}",
-            "estado": estado,
-            "ambito": a.get("ambito"),
-            "convocante": conv,
-            "provincia": conv.get("provincia") or (conv.get("nombre") if conv.get("tipo") in ("Ayuntamiento", "Diputación Provincial") else None),
-            "titulo": a.get("titulo"),
-            "plazas": [{k: p.get(k) for k in ("numero", "puesto_clave", "puesto", "especialidad", "denominacion", "grupo",
-                                              "regimen", "sistema", "turno")} for p in a.get("plazas") or []],
-            "total_plazas": a.get("total_plazas"),
-            "plazo": {k: plazo.get(k) for k in ("dias", "meses", "tipo", "inicio", "fin_estimado", "fin_exacto",
-                                                 "cuenta_desde", "calendario", "de_acto", "cita") if plazo.get(k) is not None}
-                     if plazo else None,
-            "apertura_plazo": a["fecha"],
-            "bases": [b for b in a.get("boletines_citados") or [] if b.get("papel") in ("bases", "extracto", "rectificacion")],
-            "actos": [{"id": a["id"], "fecha": a["fecha"], "tipo": a.get("tipo_acto"), "url": a.get("url")}] +
-                     [{"id": x["id"], "fecha": x["fecha"], "tipo": x.get("tipo_acto"), "url": x.get("url")} for x in posteriores],
-            "actualizado": max([a["fecha"]] + [x["fecha"] for x in posteriores]),
-            "fuente": "Agencia Estatal Boletín Oficial del Estado",
-            "pendiente": a.get("pendiente") or [],
-        })
+        a = {**a, "fuente": a.get("fuente") or "BOE"}
+        gemelos = [x for x in por_titulo.get(clave_titulo(a.get("titulo")), []) if x["id"] not in usados]
+        usados.update(x["id"] for x in gemelos)
+        bases_enlazadas = []
+        for b in a.get("boletines_citados") or []:
+            fuente = BOLETIN_A_FUENTE.get(normalizar(b.get("boletin") or ""))
+            if fuente and b.get("fecha"):
+                bases_enlazadas += locales.get((fuente, b["fecha"], _nombre(a.get("convocante"))), [])
+        procesos.append(_proceso(a, sorted(citados_por.get(a["id"], []), key=lambda x: x["fecha"]),
+                                 gemelos + bases_enlazadas, hoy, f"boe:{a['id']}"))
+
+    for x in autonomicos:
+        if x.get("ambito") != "local" and es_origen(x) and x["id"] not in usados:
+            procesos.append(_proceso(x, [], [], hoy, x["id"]))
     return procesos
+
+
+def _proceso(a: dict, posteriores: list[dict], otras: list[dict], hoy: date, ident: str) -> dict:
+    plazo = a.get("plazo") or {}
+    if not plazo.get("fin_estimado"):
+        # La publicación autonómica puede fijar el plazo desde su propio boletín cuando el BOE remite a él
+        for x in otras:
+            if (x.get("plazo") or {}).get("fin_estimado") and x.get("ambito") != "local":
+                plazo = {**x["plazo"], "de_acto": x["id"]}
+                break
+    for x in posteriores:  # una corrección o modificación posterior puede abrir un plazo nuevo
+        if x.get("tipo_acto") in ("modificacion", "correccion") and (x.get("plazo") or {}).get("fin_estimado"):
+            plazo = {**x["plazo"], "de_acto": x["id"]}
+    fin = plazo.get("fin_estimado")
+    if any(x.get("tipo_acto") == "anulacion" for x in posteriores):
+        estado = "anulado"
+    elif fin:
+        estado = "plazo_abierto" if fin >= hoy.isoformat() else "plazo_cerrado"
+    else:
+        estado = "sin_datos_de_plazo"
+    conv = a.get("convocante") or {}
+    todos = [a] + posteriores + otras
+    return {
+        "id": ident,
+        "estado": estado,
+        "ambito": a.get("ambito"),
+        "convocante": conv,
+        "provincia": conv.get("provincia") or (conv.get("nombre") if conv.get("tipo") in ("Ayuntamiento", "Diputación Provincial") else None),
+        "organismo": a.get("organismo") or a.get("departamento"),
+        "titulo": a.get("titulo"),
+        "plazas": [{k: p.get(k) for k in ("numero", "puesto_clave", "puesto", "especialidad", "denominacion", "grupo",
+                                          "regimen", "sistema", "turno")} for p in a.get("plazas") or []],
+        "total_plazas": a.get("total_plazas"),
+        "plazo": _plazo_salida(plazo),
+        "apertura_plazo": a["fecha"],
+        "bases": [b for b in a.get("boletines_citados") or [] if b.get("papel") in ("bases", "extracto", "rectificacion")],
+        "otras_publicaciones": [{**_ref(x), "titulo": x.get("titulo"), "tiene_texto": x.get("tiene_texto")} for x in otras],
+        "actos": [_ref(x) for x in [a] + posteriores],
+        "actualizado": max(x["fecha"] for x in todos),
+        "fuente": NOMBRE_FUENTE.get(a["fuente"], a["fuente"]),
+        "fuentes": sorted({x.get("fuente") or "BOE" for x in todos}),
+        "pendiente": a.get("pendiente") or [],
+    }
 
 
 def resumen(procesos: list[dict], hoy: date) -> dict:
     abiertos = [p for p in procesos if p["estado"] == "plazo_abierto"]
-    por_provincia, por_puesto = Counter(), Counter()
+    por_provincia, por_puesto, por_fuente = Counter(), Counter(), Counter()
     for p in abiertos:
         por_provincia[p.get("provincia") or "sin provincia"] += p.get("total_plazas") or 0
         for pl in p["plazas"]:
             por_puesto[pl.get("puesto_clave") or "sin puesto"] += pl.get("numero") or 0
+        for f in p.get("fuentes") or ["BOE"]:
+            por_fuente[f] += 1
     return {
         "fecha": hoy.isoformat(),
         "procesos": len(procesos),
         "por_estado": dict(Counter(p["estado"] for p in procesos)),
+        "por_fuente": dict(Counter(f for p in procesos for f in p.get("fuentes") or ["BOE"])),
         "plazo_abierto": {"procesos": len(abiertos), "plazas": sum(p.get("total_plazas") or 0 for p in abiertos),
-                          "por_provincia": dict(por_provincia.most_common()), "por_puesto": dict(por_puesto.most_common(50))},
+                          "por_provincia": dict(por_provincia.most_common()), "por_puesto": dict(por_puesto.most_common(50)),
+                          "por_fuente": dict(por_fuente.most_common())},
         "aviso": "Fechas de fin estimadas con festivos nacionales; comprobar siempre en el boletín oficial.",
     }
 
@@ -112,14 +210,14 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--salida", type=Path, default=Path("."))
     p.add_argument("--hoy", type=date.fromisoformat, default=datetime.now(MADRID).date())
     a = p.parse_args(argv)
-    procesos = construir(leer_actos(a.salida), a.hoy)
+    procesos = construir(leer_actos(a.salida), a.hoy, leer_actos_autonomicos(a.salida))
     destino = a.salida / "datos" / "oposiciones"
     destino.mkdir(parents=True, exist_ok=True)
     (destino / "procesos.jsonl").write_text("".join(json.dumps(x, ensure_ascii=False) + "\n" for x in procesos),
                                             encoding="utf-8")
     r = resumen(procesos, a.hoy)
     (destino / "resumen.json").write_text(json.dumps(r, ensure_ascii=False, indent=1), encoding="utf-8")
-    print(json.dumps({k: r[k] for k in ("procesos", "por_estado")}, ensure_ascii=False))
+    print(json.dumps({k: r[k] for k in ("procesos", "por_estado", "por_fuente")}, ensure_ascii=False))
     print("Plazo abierto hoy:", r["plazo_abierto"]["procesos"], "procesos,", r["plazo_abierto"]["plazas"], "plazas")
     return 0
 

@@ -91,9 +91,14 @@ def _boletines(f: str) -> list[str]:
     return list(dict.fromkeys(nombres))
 
 
-def extraer_plazo(texto: str, publicacion: str, boletin_propio: str) -> dict | None:
-    """Plazo de solicitudes del texto. publicacion: fecha ISO del boletín propio; boletin_propio: su nombre."""
+def extraer_plazo(texto: str, publicacion: str, boletin_propio: str | tuple[str, ...]) -> dict | None:
+    """Plazo de solicitudes del texto.
+
+    publicacion: fecha ISO del boletín propio; boletin_propio: su nombre (o sus nombres: «Diari Oficial de la
+    Generalitat de Catalunya» y «Diario Oficial de la Generalitat de Cataluña» son el mismo).
+    """
     pub = date.fromisoformat(publicacion)
+    propios = {normalizar(b) for b in ((boletin_propio,) if isinstance(boletin_propio, str) else boletin_propio)}
     candidatas = [f for f in frases(texto) if _candidata(f)]
     if not candidatas:
         return None
@@ -133,7 +138,6 @@ def extraer_plazo(texto: str, publicacion: str, boletin_propio: str) -> dict | N
 
     inicio_explicito = RE_INICIO_EXPLICITO.search(f)
     boletines = _boletines(f)
-    propio = normalizar(boletin_propio)
     if inicio_explicito:
         inicio = _fecha(inicio_explicito.group("d"), inicio_explicito.group("m"), inicio_explicito.group("a"), pub)
         if not inicio:
@@ -142,7 +146,7 @@ def extraer_plazo(texto: str, publicacion: str, boletin_propio: str) -> dict | N
         res["inicio"] = inicio.isoformat()
     elif boletines:
         res["cuenta_desde"] = " o ".join(boletines)
-        if [normalizar(b) for b in boletines] != [propio]:
+        if not {normalizar(b) for b in boletines} <= propios:
             return res  # cuenta desde otro boletín (o desde el último de varios): sin fecha de fin
         base = pub
     elif RE_DESDE_PUBLICACION.search(f):

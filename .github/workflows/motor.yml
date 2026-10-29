@@ -89,6 +89,7 @@ jobs:
       - name: Extraer actos y comprobar huecos
         run: |
           python -m motor.boe.extraer --salida salida
+          python -m motor.autonomicos.actos --salida salida
           python -m motor.procesos --salida salida
           python -m motor.boe.huecos --salida salida
           ./guardar.sh "Actos y control de huecos"

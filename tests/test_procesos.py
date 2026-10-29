@@ -27,4 +27,37 @@ def test_estados_y_enlaces():
     assert ps["boe:A3"]["estado"] == "anulado"
     r = resumen(list(ps.values()), date(2026, 10, 29))
     assert r["plazo_abierto"] == {"procesos": 1, "plazas": 3, "por_provincia": {"Málaga": 3},
-                                  "por_puesto": {"auxiliar-administrativo": 3}}
+                                  "por_puesto": {"auxiliar-administrativo": 3}, "por_fuente": {"BOE": 1}}
+
+
+def test_boe_y_boletines_autonomicos():
+    titulo = ("Resolución de 5 de octubre de 2026, de la Universidad de Granada, por la que se convoca proceso selectivo "
+              "para ingreso en la Escala Auxiliar Administrativa.")
+    boe = [
+        # La universidad publica en el BOJA y el plazo cuenta desde allí: el BOE no da fecha de fin
+        _acto("U1", "2026-10-12", "convocatoria", ambito="universidad", titulo=titulo,
+              plazo={"dias": 20, "tipo": "habiles", "cuenta_desde": "Boletín Oficial de la Junta de Andalucía"}),
+        # Anuncio local del BOE que cita las bases íntegras publicadas en el BOCYL
+        _acto("L1", "2026-10-20", "apertura_plazo", convocante={"tipo": "Ayuntamiento", "nombre": "Miranda de Ebro",
+                                                               "provincia": "Burgos"},
+              boletines_citados=[{"boletin": "Boletín Oficial de Castilla y León", "numero": "189",
+                                  "fecha": "2026-10-02", "papel": "bases"}],
+              plazo={"dias": 20, "tipo": "naturales", "fin_estimado": "2026-11-09"}),
+    ]
+    autonomicos = [
+        {"id": "boja:1", "fecha": "2026-10-08", "fuente": "BOJA", "tipo_acto": "convocatoria", "ambito": "universidad",
+         "alcance": "acceso", "titulo": titulo.upper(), "tiene_texto": True,
+         "plazo": {"dias": 20, "tipo": "habiles", "fin_estimado": "2026-11-05"}},
+        {"id": "bocyl:B1", "fecha": "2026-10-02", "fuente": "BOCYL", "tipo_acto": "convocatoria", "ambito": "local",
+         "alcance": "acceso", "titulo": "ACUERDO ... bases ...", "convocante": {"nombre": "Miranda de Ebro"}},
+        # Convocatoria autonómica que no sale en el BOE: proceso propio
+        {"id": "dogv:9", "fecha": "2026-10-27", "fuente": "DOGV", "tipo_acto": "convocatoria", "ambito": "autonomico",
+         "alcance": "acceso", "titulo": "RESOLUCIÓN ... por la que se convocan pruebas selectivas",
+         "plazo": {"dias": 20, "tipo": "habiles", "fin_estimado": "2026-11-24"}},
+    ]
+    ps = {p["id"]: p for p in construir(boe, date(2026, 10, 29), autonomicos)}
+    assert set(ps) == {"boe:U1", "boe:L1", "dogv:9"}
+    u = ps["boe:U1"]
+    assert u["estado"] == "plazo_abierto" and u["plazo"]["de_acto"] == "boja:1" and u["fuentes"] == ["BOE", "BOJA"]
+    assert [x["id"] for x in ps["boe:L1"]["otras_publicaciones"]] == ["bocyl:B1"]
+    assert ps["dogv:9"]["fuente"] == "Diari Oficial de la Generalitat Valenciana"
