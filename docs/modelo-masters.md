@@ -276,18 +276,28 @@ falta. Lo encontrado al revisar el censo:
    (R2 o el servidor de España): la rama del repositorio es pública y no puede guardar páginas ajenas.
 6. **Concurrencia entre conversaciones.** Las pruebas encoladas en el grupo «rama-sondas» se cancelan entre
    sí, también las de oposiciones. Másters usa ya `estudios.yml`, que junta resultados sin ese grupo.
-7. **Pendiente y sin empezar:** unir cada página de máster oficial de la web de su universidad con su
-   código RUCT; guías docentes por plataforma (en estudio); decretos de precios públicos 2026-2027 (en
-   estudio); becas; almacén de originales (R2) antes de la extracción masiva; Excel de oferta de plazas,
-   QEDU, órdenes de másters habilitantes y profesiones reguladas de la UE; peticiones formales por la Ley
-   37/2007.
+7. **Pendiente:** becas; almacén de originales (R2) antes de la extracción masiva; Excel de oferta de
+   plazas, QEDU, órdenes de másters habilitantes y profesiones reguladas de la UE. Hechos el 29/10/2026:
+   mapa de guías docentes (`docs/fuentes-guias-docentes.md`), normas de precios públicos 2026-2027
+   (`docs/fuentes-precios-publicos.md`) y estudio de normas de información (`docs/fuentes-legales-informacion.md`;
+   corrige la vía de la Ley 37/2007, que no sirve con universidades).
 
 ## 8. Siguientes pasos
 
-1. Fichas del RUCT de los 4.859 títulos (una pasada, unos 81 minutos) y unión con el catálogo y el BOE.
-2. Memorias de los activos en el servidor de España, por la noche, empezando por los títulos con más
-   demanda de búsqueda.
-3. Precios públicos: decretos 2026-2027 de las 17 comunidades y anuario del Ministerio.
-4. Tarifas de las privadas: registro de URL de tarifa por universidad (40) y captura anual.
-5. Títulos propios: conector por universidad, empezando por las de más oferta.
-6. Guías docentes solo donde la memoria no da evaluación (formato RD 822/2021).
+Ordenados por lo que más acerca a tener, para cada máster, lo que hoy se da solo al registrarse
+(`docs/estrategia-informacion-cerrada.md`).
+
+1. **Cerrar el censo**: barrido de los 10.955 candidatos de Common Crawl (en marcha el 29/10/2026), segundo
+   índice de Common Crawl (en marcha), candidatos enlazados desde páginas de colaboradores y revisión a
+   mano de una muestra de verificados para medir la precisión.
+2. **Extracción con cita** de las páginas de programa de los proveedores verificados (`extraer.py`, lote de
+   Claude Haiku). Necesita la clave `ANTHROPIC_API_KEY` como secreto de GitHub y el archivo privado de
+   originales (R2): la rama del repositorio es pública y no guarda páginas ajenas.
+3. **Seguimiento por campo** (`seguimiento.py`) sobre lo extraído: qué campos están tras el registro en
+   cada máster y lista de peticiones por centro.
+4. **Oficiales**: unir cada título del RUCT con su página (texto del enlace; en marcha), fichas y memorias
+   del RUCT de los 4.347 activos, precio por crédito de los 19 decretos y QEDU (comprobar qué da de las
+   privadas), guías docentes por plataforma (SIGMA DOA primero).
+5. **Peticiones** a centros cuando el portal tenga dirección pública; peticiones formales a universidades
+   públicas (Ley 19/2013) y al Ministerio (Ley 37/2007).
+6. Becas, Excel de oferta de plazas, másters habilitantes y profesiones reguladas.

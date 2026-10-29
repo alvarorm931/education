@@ -135,8 +135,38 @@ fuentes:
     modulo: [carreras, masters, notas]
     url: https://www.ciencia.gob.es/qedu.html
     metodo: exportacion_csv_xlsx
+    da: >-
+      según el Ministerio (nota del 13/2/2025), grados, másteres y doctorados oficiales de públicas y privadas
+      con «precio del crédito», a partir del RUCT y el SIIU; por comprobar qué precio da de las privadas
     riesgo: inestable en la revisión
     estado: por_verificar
+
+  - id: commoncrawl-indice
+    nombre: Common Crawl · índice columnar de URL (cc-index-table)
+    modulo: [masters]
+    url: https://data.commoncrawl.org/crawl-data/{crawl}/cc-index-table.paths.gz
+    metodo: parquet por crawl, leído con DuckDB por HTTP (solo metadatos de URL, sin contenido)
+    da: dominios con rutas de programa de posgrado (descubrimiento de proveedores sin registro oficial)
+    medido: >-
+      CC-MAIN-2026-43 completo (300 ficheros): 70.912 dominios con el patrón amplio; tras quitar otros
+      países, páginas sueltas, agregadores y URL sin programa, 10.955 candidatos nuevos fuera del RUCT
+    riesgo: "limita la velocidad (403) si se pide en paralelo; un crawl no ve todo, se suman varios"
+    licencia: términos de uso de Common Crawl; no se copia contenido
+    estado: verificada
+    conector: motor/estudios/commoncrawl.py
+    verificado: 2026-10-29
+
+  - id: web-centros
+    nombre: Webs de universidades, centros y escuelas (robots.txt, sitemaps, listados y fichas)
+    modulo: [masters]
+    metodo: html; una petición por segundo y servidor, robots.txt de cada servidor, reserva TDM respetada
+    da: >-
+      URL de cada programa con su fecha de cambio (lastmod), texto del enlace (nombre), medición de lo que
+      enseña sin pedir datos, PDF de tarifas y páginas de centros colaboradores
+    copias: solo en el archivo privado; en la rama pública, URL, fecha y huella
+    estado: verificada
+    conector: motor/estudios/rastreador.py
+    verificado: 2026-10-29
 
   - id: notas-madrid
     nombre: Distrito único de Madrid · notas de corte
