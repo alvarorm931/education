@@ -42,13 +42,18 @@ def ambito(departamento: str | None) -> str:
 # Orden importante: la primera regla que encaja gana.
 REGLAS_ACTO: list[tuple[str, tuple[str, ...]]] = [
     ("correccion", ("correccion de error", "correccion de las bases")),
+    ("desierta", ("desierta", "desierto")),
+    ("anulacion", ("deja sin efecto", "se anula", "anulacion de la convocatoria")),
+    ("oferta_empleo", ("oferta de empleo publico",)),
+    ("normativa", ("normas procedimentales", "por la que se establecen las normas")),
     ("admitidos", ("admitidos y excluidos", "admitidas y excluidas", "lista provisional", "lista definitiva",
                    "relacion provisional", "relacion definitiva de aspirantes admitidos")),
     ("aprobados", ("aprobados", "aprobadas", "superado el proceso", "han superado", "seleccionados", "seleccionadas")),
-    ("nombramiento", ("se nombra", "nombramiento", "nombran funcionari", "toma de posesion")),
-    ("tribunal", ("tribunal calificador", "composicion del tribunal", "comision de seleccion", "organo de seleccion")),
+    ("nombramiento", ("se nombra", "nombramiento", "nombran funcionari", "toma de posesion", "se promociona")),
+    ("tribunal", ("tribunal calificador", "composicion del tribunal", "tribunal que ha de juzgar", "comision de seleccion",
+                  "organo de seleccion", "comision evaluadora", "composicion de la comision")),
     ("examen", ("fecha de celebracion", "fecha, hora y lugar", "lugar, fecha y hora", "primer ejercicio")),
-    ("convocatoria", ("se convoca", "convocatoria", "convoca proceso", "proceso selectivo", "referente a la convocatoria")),
+    ("convocatoria", ("se convoca", "convocatoria", "convoca proceso", "convoca concurso", "proceso selectivo")),
     ("bases", ("bases",)),
 ]
 
@@ -70,20 +75,70 @@ def _primera(reglas: list[tuple[str, tuple[str, ...]]], texto: str) -> str | Non
     return None
 
 
-ENTIDAD = (
-    r"Ayuntamiento|Diputaci[oó]n Provincial|Diputaci[oó]n Foral|Diputaci[oó]n|Cabildo Insular|"
-    r"Consell Insular|Consell Comarcal|Consejo Comarcal|Comarca|Mancomunidad|Consorcio|"
-    r"Entidad Local Menor|Junta Vecinal|[ÁA]rea Metropolitana|Organismo Aut[oó]nomo|Patronato|Instituto Municipal"
+ENTIDADES = (
+    "Ayuntamiento", "Diputación Provincial", "Diputación Foral", "Diputación", "Cabildo Insular",
+    "Consell Insular", "Consejo Insular de Aguas", "Consejo Insular", "Gerencia Municipal de Urbanismo", "Consell Comarcal", "Consejo Comarcal", "Comarca", "Mancomunidad", "Mancomunitat",
+    "Consorcio", "Consorci", "Entidad Local Menor", "Entidad", "Junta Vecinal", "Área Metropolitana",
+    "Àrea Metropolitana", "Agrupación", "Comunidad de Villa y Tierra", "Concello", "Organismo Autónomo",
+    "Patronato", "Instituto Municipal",
 )
-RE_CONVOCANTE = re.compile(
-    rf"\b(?P<tipo>{ENTIDAD})\s+(?:de\s+la\s+|de\s+los\s+|de\s+las\s+|del\s+|de\s+|d')?(?P<nombre>[^,(]+?)\s*\((?P<provincia>[^)]+)\)"
+# Tramo del título con el convocante: ", del Ayuntamiento de X (Provincia), [organismo,] referente a ..."
+RE_TRAMO = re.compile(
+    r",\s+(?:del|de la|de los|de las|de l')\s+(?P<tramo>.+?),\s+(?:referente|por la que|por el que|relativa|relativo|sobre|de convocatoria)"
 )
+RE_PARENTESIS_FINAL = re.compile(r"\s*\(([^()]+)\)\s*$")
 RE_PLAZAS = re.compile(
-    r"(?:proveer|cubrir|provisi[oó]n de|provisi[oó]n,? de|selecci[oó]n de)\s+(?:mediante\s+\S+\s+)?"
-    r"(?P<n>\d+|[a-záéíóúñ]+)\s+plazas?\b",
+    r"(?:proveer|cubrir|provisi[oó]n de|selecci[oó]n de)\s+(?P<n>\d+|[a-záéíóúñ]+)\s+plazas?\b",
     re.IGNORECASE,
 )
-RE_PUESTO = re.compile(r"\bplazas?\s+de\s+(?P<puesto>[^.;]+?)(?:,|\.|;| mediante| por el sistema| en turno|$)", re.IGNORECASE)
+RE_PUESTO = re.compile(r"\bplazas?\s+de\s+(?P<puesto>[^.;,]+?)(?:,|\.|;| mediante| por el sistema| en turno|$)", re.IGNORECASE)
+
+
+def _partir_fuera_de_parentesis(texto: str) -> list[str]:
+    partes, actual, nivel = [], [], 0
+    for i, c in enumerate(texto):
+        nivel += (c == "(") - (c == ")")
+        if c == "," and nivel == 0 and texto[i + 1:i + 2] == " ":
+            partes.append("".join(actual))
+            actual = []
+        else:
+            actual.append(c)
+    partes.append("".join(actual))
+    return partes
+
+
+def convocante(titulo: str) -> dict | None:
+    """Extrae tipo de entidad, nombre, provincia y organismo dependiente del título del BOE."""
+    m = RE_TRAMO.search(titulo)
+    if not m:
+        return None
+    partes = [p.strip() for p in _partir_fuera_de_parentesis(m.group("tramo"))]
+    principal, organismo = partes[0], (", ".join(partes[1:]) or None)
+    tipo = next((e for e in sorted(ENTIDADES, key=len, reverse=True) if principal.startswith(e + " ")), None)
+    if tipo is None:
+        return None
+    resto = principal[len(tipo):].strip()
+    resto = re.sub(r"^(?:de la|de los|de las|del|de|d')\s+", "", resto)
+    provincia = None
+    p = RE_PARENTESIS_FINAL.search(resto)
+    if p:
+        provincia = p.group(1).strip()
+        resto = resto[: p.start()].strip()
+    return {"tipo": tipo, "nombre": resto, "provincia": provincia, "organismo": organismo}
+
+
+def alcance(titulo_norm: str, modalidad: str | None, epigrafe: str | None) -> str:
+    """Qué parte del producto cubre el anuncio. Fase 1: oposiciones de acceso; fuera, provisión de puestos."""
+    ep = normalizar(epigrafe or "")
+    if modalidad in {"libre_designacion"} or "provision de puesto" in titulo_norm or "concursos de traslados" in titulo_norm \
+            or "procedimientos de libre designacion" in ep or ep == "personal funcionario. concursos" \
+            or (modalidad == "concurso" and "plaza" not in titulo_norm):
+        return "provision_puestos"
+    if "cuerpos docentes universitarios" in ep or "profesor titular" in titulo_norm or "catedratic" in titulo_norm:
+        return "docente_universitario"
+    if modalidad == "promocion_interna":
+        return "promocion_interna"
+    return "acceso"
 
 
 def _numero(palabra: str) -> int | None:
@@ -99,6 +154,7 @@ def clasificar(item: dict) -> dict:
         "ambito": ambito(item.get("departamento")),
         "tipo_acto": _primera(REGLAS_ACTO, t) or "otro",
         "modalidad": _primera(REGLAS_MODALIDAD, t),
+        "alcance": None,
         "convocante": None,
         "plazas": None,
         "plazas_texto": None,
@@ -107,14 +163,9 @@ def clasificar(item: dict) -> dict:
         "pendiente_revision": [],
     }
 
-    m = RE_CONVOCANTE.search(titulo)
-    if m:
-        resultado["convocante"] = {
-            "tipo": m.group("tipo"),
-            "nombre": m.group("nombre").strip(),
-            "provincia": m.group("provincia").strip(),
-        }
-    elif resultado["ambito"] == "local":
+    resultado["alcance"] = alcance(t, resultado["modalidad"], item.get("epigrafe"))
+    resultado["convocante"] = convocante(titulo)
+    if resultado["convocante"] is None and resultado["ambito"] == "local":
         resultado["pendiente_revision"].append("convocante")
 
     m = RE_PLAZAS.search(titulo)
@@ -130,7 +181,7 @@ def clasificar(item: dict) -> dict:
         if len(puesto) <= 120:
             resultado["puesto"] = puesto
 
-    if resultado["tipo_acto"] == "convocatoria":
+    if resultado["tipo_acto"] == "convocatoria" and resultado["alcance"] == "acceso":
         if resultado["plazas"] is None:
             resultado["pendiente_revision"].append("plazas")
         if resultado["puesto"] is None:

@@ -63,7 +63,7 @@ def test_clasificar_convocatoria_local():
     })
     assert r["ambito"] == "local"
     assert r["tipo_acto"] == "convocatoria"
-    assert r["convocante"] == {"tipo": "Ayuntamiento", "nombre": "Villaejemplo", "provincia": "Ciudad Real"}
+    assert r["convocante"] == {"tipo": "Ayuntamiento", "nombre": "Villaejemplo", "provincia": "Ciudad Real", "organismo": None}
     assert r["plazas"] == 3
     assert r["puesto"] == "Auxiliar Administrativo"
     assert r["pendiente_revision"] == []
@@ -126,3 +126,39 @@ def test_cli_extremo_a_extremo(tmp_path, monkeypatch):
     estado = json.loads((tmp_path / "datos/boe/estado.json").read_text(encoding="utf-8"))
     assert estado["ultimo_diario"]["numero"] == 260
     assert estado["alertas_ultima_ejecucion"] == []  # el domingo sin BOE no es alerta
+
+
+# Títulos reales del BOE de octubre de 2026 (sección II.B)
+@pytest.mark.parametrize("titulo,esperado", [
+    ("Resolución de 23 de septiembre de 2026, del Ayuntamiento de Ciudad Real, referente a la convocatoria para proveer varias plazas.",
+     {"tipo": "Ayuntamiento", "nombre": "Ciudad Real", "provincia": None, "organismo": None}),
+    ("Resolución de 1 de octubre de 2026, del Ayuntamiento de Vigo (Pontevedra), Organismo Autónomo Gerencia Municipal de Urbanismo, referente a la convocatoria para proveer varias plazas.",
+     {"tipo": "Ayuntamiento", "nombre": "Vigo", "provincia": "Pontevedra", "organismo": "Organismo Autónomo Gerencia Municipal de Urbanismo"}),
+    ("Resolución de 14 de octubre de 2026, de la Mancomunitat de Municipis de la Safor (Valencia/València), referente a la convocatoria para proveer una plaza.",
+     {"tipo": "Mancomunitat", "nombre": "Municipis de la Safor", "provincia": "Valencia/València", "organismo": None}),
+    ("Resolución de 24 de septiembre de 2026, de la Entidad Sociedad Pública Municipal Limpieza y Mantenimiento de Carmona (Limancar, SLU) (Sevilla), referente a la convocatoria para proveer una plaza.",
+     {"tipo": "Entidad", "nombre": "Sociedad Pública Municipal Limpieza y Mantenimiento de Carmona (Limancar, SLU)", "provincia": "Sevilla", "organismo": None}),
+    ("Resolución de 25 de septiembre de 2026, de la Diputación Provincial de Soria, referente a la convocatoria para proveer una plaza.",
+     {"tipo": "Diputación Provincial", "nombre": "Soria", "provincia": None, "organismo": None}),
+])
+def test_convocante_titulos_reales(titulo, esperado):
+    assert clasificar({"departamento": "ADMINISTRACIÓN LOCAL", "titulo": titulo})["convocante"] == esperado
+
+
+@pytest.mark.parametrize("titulo,epigrafe,acto,alc", [
+    ("Resolución de 21 de octubre de 2026, de la Subsecretaría, por la que se convoca la provisión de puestos de trabajo por el sistema de libre designación.",
+     "Procedimientos de libre designación", "convocatoria", "provision_puestos"),
+    ("Resolución de 22 de octubre de 2026, de la Subsecretaría, por la que se convoca concurso general para la provisión de puestos de trabajo.",
+     "Personal funcionario. Concursos", "convocatoria", "provision_puestos"),
+    ("Resolución de 2 de octubre de 2026, de la Universidad de Salamanca, por la que se declara concluido el procedimiento y desierta plaza de Profesor Titular de Universidad.",
+     "Cuerpos docentes universitarios", "desierta", "docente_universitario"),
+    ("Resolución de 6 de octubre de 2026, del Letrado Mayor de las Cortes Generales, por la que se publica la designación del Tribunal que ha de juzgar la oposición para el Cuerpo de Ujieres de las Cortes Generales.",
+     "Cuerpo de Ujieres de las Cortes Generales", "tribunal", "acceso"),
+    ("Resolución de 19 de octubre de 2026, de la Universidad Nacional de Educación a Distancia, por la que se publica la oferta de empleo público de personal técnico, de gestión y de administración y servicios.",
+     "Personal técnico, de gestión y de administración y servicios", "oferta_empleo", "acceso"),
+    ("Resolución de 20 de octubre de 2026, de la Subsecretaría, por la que se aprueba la relación provisional de personas admitidas y excluidas, y se anuncia fecha, hora y lugar de celebración del ejercicio único del proceso selectivo.",
+     "Personal laboral", "admitidos", "acceso"),
+])
+def test_acto_y_alcance_titulos_reales(titulo, epigrafe, acto, alc):
+    r = clasificar({"departamento": "MINISTERIO DE HACIENDA", "titulo": titulo, "epigrafe": epigrafe})
+    assert (r["tipo_acto"], r["alcance"]) == (acto, alc)
