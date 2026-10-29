@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Error 404 - Página no encontrada | Ministerio de Educación, Formación Profesional y Deportes</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #EFEFEF;
+            color: #000;
+        }
+
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background: #FFF;
+        }
+
+        header {
+            background-color: #154481;
+            padding: 0.8rem 1rem;
+        }
+
+        .header-container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .logo-link {
+            display: inline-block;
+            line-height: 0;
+        }
+
+        .logo-link img {
+            height: 60px;
+            width: auto;
+            display: block;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+
+        .content-box {
+            max-width: 700px;
+            width: 100%;
+            color: #004578;
+            animation: fadeIn 0.6s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.05);
+                opacity: 0.9;
+            }
+        }
+
+        .error-code {
+            font-size: 6rem;
+            font-weight: 700;
+            color: #154481;
+            line-height: 1;
+            margin-bottom: 1rem;
+            opacity: 0.2;
+        }
+
+        .icon-container {
+            margin-bottom: 2rem;
+        }
+
+        .error-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto;
+            background: #6366f1;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+        }
+
+        .error-icon svg {
+            width: 40px;
+            height: 40px;
+            fill: #FFF;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            color: #004578;
+        }
+
+        .message {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .submessage {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: #666;
+            margin-top: 1rem;
+        }
+
+        footer {
+            background: #004578;
+            border-top: 1px solid #ccc;
+            padding: 1rem;
+        }
+
+        .footer-container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .footer-text {
+            color: #FFF;
+            font-size: 0.85rem;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .logo-link img {
+                height: 45px;
+            }
+
+            .error-code {
+                font-size: 4rem;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .message {
+                font-size: 1rem;
+            }
+
+            .error-icon {
+                width: 70px;
+                height: 70px;
+            }
+
+            .error-icon svg {
+                width: 35px;
+                height: 35px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 0.6rem 0.8rem;
+            }
+
+            .logo-link img {
+                height: 38px;
+            }
+
+            .error-code {
+                font-size: 3rem;
+            }
+
+            h1 {
+                font-size: 1.3rem;
+            }
+
+            .message {
+                font-size: 0.95rem;
+            }
+
+            .error-icon {
+                width: 60px;
+                height: 60px;
+            }
+
+            .error-icon svg {
+                width: 30px;
+                height: 30px;
+            }
+
+            .footer-text {
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <div class="header-container">
+                <a href="/" class="logo-link" aria-label="Ministerio de Educación, Formación Profesional y Deportes">
+                    <img src="https://estaticos.educacion.gob.es/docroot/apps/img/base/MEFPD.png" 
+                         alt="Ministerio de Educación, Formación Profesional y Deportes">
+                </a>
+            </div>
+        </header>
+
+        <main>
+            <div class="content-box">
+                <div class="error-code">404</div>
+                
+                <div class="icon-container">
+                    <div class="error-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <h1>PÁGINA NO ENCONTRADA</h1>
+                
+                <p class="message">
+                    La página que está buscando no existe o ha sido movida.
+                </p>
+                
+                <p class="submessage">
+                    Verifique que la dirección sea correcta o vuelva a la página de inicio.<br>Disculpe las molestias.
+                </p>
+            </div>
+        </main>
+
+        <footer>
+            <div class="footer-container">
+                <p class="footer-text">
+                    &copy; Ministerio de Educación, Formación Profesional y Deportes - Gobierno de España
+                </p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
