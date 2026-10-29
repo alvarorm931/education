@@ -18,6 +18,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
   group: rama-datos
@@ -76,6 +77,7 @@ jobs:
 
       - name: BOE, textos de anuncios de oposiciones
         run: |
+          python -c "from pathlib import Path; from motor.boe.texto import pendientes; print(len(pendientes(Path('salida'))))" > pendientes_antes.txt
           python -m motor.boe.texto --pendientes --salida salida --max-minutos "$MIN_TEXTOS" | tail -n 8 || true
           ./guardar.sh "BOE: textos de anuncios"
 
@@ -106,3 +108,17 @@ jobs:
               sys.exit(1)
           print("Sin huecos en el BOE. Anuncios sin texto:", h.get("anuncios_sin_texto"))
           EOF
+
+      - name: Encadenar la siguiente ejecución si queda carga histórica
+        # Respaldo por si la programación horaria de GitHub se retrasa o se salta una ejecución.
+        # Solo se encadena si esta ejecución ha avanzado, para no gastar minutos en bucle.
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          ANTES=$(cat pendientes_antes.txt 2>/dev/null || echo 0)
+          AHORA=$(python -c "from pathlib import Path; from motor.boe.texto import pendientes; print(len(pendientes(Path('salida'))))")
+          echo "Textos pendientes: antes $ANTES, ahora $AHORA"
+          if [ "$AHORA" -gt 0 ] && [ "$AHORA" -lt "$ANTES" ]; then
+            gh workflow run motor.yml --repo "${{ github.repository }}" --ref main
+          fi

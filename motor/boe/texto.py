@@ -141,7 +141,7 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--ids", help="identificadores separados por comas")
     p.add_argument("--pendientes", action="store_true", help="todos los anuncios de oposiciones sin texto")
     p.add_argument("--salida", type=Path, default=Path("."))
-    p.add_argument("--pausa", type=float, default=0.7)
+    p.add_argument("--pausa", type=float, default=0.3)
     p.add_argument("--max", type=int, default=0, help="máximo de documentos (0 = sin límite)")
     p.add_argument("--max-minutos", type=float, default=0, help="parar al llegar a este tiempo (0 = sin límite)")
     a = p.parse_args(argv)
