@@ -1,0 +1,22 @@
+bocyl {"mes": {"mes": "2026-10", "status": 200, "alertas": [], "resultado": "ok", "sha256": "496d180c9e73bd5e92cedcc69bef49947c0e55664297a8834569fc1431a0621f", "disposiciones": 784, "empleo_publico": 208, "dias_con_boletin": 19, "ultimo_dia": "2026-10-28", "laborables_sin_boletin": ["2026-10-12"], "ediciones": {"2026": [191, 209, 19]}, "saltos": {}, "completo": false}, "textos": {"pendientes": 208, "hechos": 3, "errores": 0, "muestras": [{"id": "BOCYL-D-28102026-209-2", "caracteres": 11978, "inicio": "El artículo 43 de la Ley 7/2005, de 24 de mayo, de la Función Pública de Castilla y León, establece
+dogv {"calendario": 20, "dia": {"fecha": "2026-10-27", "alertas": [], "status": 200, "resultado": "ok", "numero": 10480, "ordenes": [1, 2], "sha256": "15b10a63ef70df1b123798398291a855fa9e780b8e467b29666a41badf07564f", "disposiciones": 62, "empleo_publico": 19}, "dia_2022": {"fecha": "2022-01-03", "alertas": [], "status": 200, "resultado": "ok", "numero": 9248, "ordenes": [1], "sha256": "7a451eee50936a76dce5616a7420ec7c1a81af2524d1c65e43066ed73a4829a6", "disposiciones": 8, "empleo_publico": 2}, "textos": {"pendientes": 21, "hechos": 3, "errores": 0, "muestras": [{"id": 494828, "caracteres": 3932, "i
+dog {"dia": {"fecha": "2026-10-29", "alertas": [], "probados": [[207, 200]], "resultado": "ok", "numero": 207, "sha256": "6b994f4c7cdedbcd737a0f4938118572221b868eea4052b9682c46ac25845b77", "secciones": ["III. Otras disposiciones", "IV. Oposiciones y concursos", "VI. Anuncios"], "disposiciones_leidas": 35, "empleo_publico": 12}, "dia_2022": {"fecha": "2022-01-03", "alertas": [], "probados": [[1, 200]], "resultado": "ok", "numero": 1, "sha256": "4269bd88778ccfb7e3a5c5cda61128c1c3722ebd56ae5e6afe37254ee5e7d6c2", "secciones": ["III. Otras disposiciones", "IV. Oposiciones y concursos", "VI. Anuncios"],
+dogc ERROR
+ Traceback (most recent call last):
+  File "/home/runner/work/education/education/motor/autonomicos/humo.py", line 68, in main
+    resultado[nombre] = prueba()
+                        ^^^^^^^^
+  File "/home/runner/work/education/education/motor/autonomicos/humo.py", line 59, in <lambda>
+    "dogc": lambda: {"calendario": len(dogc.calendario_mes(2026, 10)),
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/education/education/motor/autonomicos/dogc.py", line 64, in calendario_mes
+    status, datos, _, _ = _post("calendarDOGC", {"language": "es", "year": str(anio), "month": str(mes)})
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/education/education/motor/autonomicos/dogc.py", line 56, in _post
+    r = obtener(f"{API}/{endpoint}", accept="application/json", formulario=campos)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/education/education/motor/http.py", line 56, in obtener
+    raise ConnectionError(f"No se pudo descargar {url} tras {intentos} intentos: {ultimo_error}")
+ConnectionError: No se pudo descargar https://portaldogc.gencat.cat/eadop-rest/api/dogc/calendarDOGC tras 4 intentos: HTTPSConnectionPool(host='portaldogc.gencat.cat', port=443): Max retries exceeded with url: /eadop-rest/api/dogc/calendarDOGC (Caused by SSLError(SSLError(1, '[SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)')))
+
+codigo=1
