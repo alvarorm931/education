@@ -27,24 +27,30 @@ COLLINFO = "https://index.commoncrawl.org/collinfo.json"
 PATHS = "https://data.commoncrawl.org/crawl-data/{crawl}/cc-index-table.paths.gz"
 DATA = "https://data.commoncrawl.org/"
 
-# Rutas de programa de posgrado. «master» suelto da mucho ruido (masterclass, Mastercard, MasterChef,
-# relojes, cartas...), así que se exige forma de programa: /master/, /masters/, master-en-, master-universitario...
-PATRON_RUTA = (r"(?i)(/m[aá]ster(es|s)?(/|[-_](en|de|del|universitari[oa]|oficial|propio|online|executive|in|of|"
-               r"profesional|avanzado|internacional)[-_/])|/mba([-_/]|$)|/executive-mba|postgrado|posgrado|"
-               r"t[ií]tulos?[-_]propios?|formaci[oó]n[-_]permanente|experto[-_]universitario|especialista[-_]universitario|"
-               r"diploma[-_]de[-_]especializaci)")
-EXCLUIR = r"(?i)master-?class|mastercard|masterchef|yacht-?master|master-?mind|webmaster|masterpiece|/tag/|/etiqueta/"
+# Descubrimiento amplio: basta con que el dominio tenga ALGUNA URL (ruta o parámetros) que hable de másters o
+# posgrado, en cualquiera de las lenguas de España o en inglés. Common Crawl solo guarda una muestra de cada
+# sitio, así que exigir la ficha del programa deja fuera a centros reales (medido el 29/10/2026: 15 de 18
+# centros conocidos encontrados, 6 de 17 centros extranjeros autorizados). Quién vende de verdad lo decide
+# después el rastreador en la web de cada dominio, que lee su sitemap completo.
+PATRON_RUTA = (r"(?i)(m[aàá]ster|m%c3%a[01]ster|\bmba\b|\bmsc\b|\bllm\b|postgrad|posgrad|postgrau|t[ií]tulos?[-_ ]?propios?|"
+               r"estudis[-_]propis|formaci[oó]n?[-_ ]?(permanente|continua)|formacio[-_]continua|experto[-_]universitario|"
+               r"especialista[-_]universitario|executive[-_]education|masterra|mestrado)")
+EXCLUIR = (r"(?i)master-?class|mastercard|masterchef|yacht-?master|master-?mind|webmaster|masterpiece|"
+           r"masters?-of-the-universe|/(src|tree|blob|branch|-)/master|/master/(src|tree|blob|raw)/|renault|nissan|opel|movano|ducato|"
+           r"master-?key|grand-?master|masterbuilt|mastercook|master-?system|paymaster|toastmaster")
+LENGUAS = ("spa", "cat", "eus", "glg")
 CONSULTA = """
 SELECT url_host_registered_domain AS dominio, url_host_name AS host,
        count(*) AS paginas,
        array_slice(list(url ORDER BY url), 1, 8) AS ejemplos,
        max(url_host_tld) AS tld,
-       max(content_languages) AS idiomas
+       string_agg(DISTINCT coalesce(content_languages, '-'), ',') AS idiomas
 FROM read_parquet('{fichero}')
-WHERE subset = 'warc' AND fetch_status = 200
-  AND (url_host_tld = 'es' OR content_languages LIKE 'spa%')
-  AND regexp_matches(url_path, '{patron}')
-  AND NOT regexp_matches(url_path, '{excluir}')
+WHERE subset = 'warc'
+  AND (url_host_tld = 'es' OR content_languages IS NULL
+       OR regexp_matches(content_languages, '^(spa|cat|eus|glg)'))
+  AND regexp_matches(coalesce(url_path, '') || '?' || coalesce(url_query, ''), '{patron}')
+  AND NOT regexp_matches(coalesce(url_path, '') || '?' || coalesce(url_query, ''), '{excluir}')
 GROUP BY 1, 2
 """
 

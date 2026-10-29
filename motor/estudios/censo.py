@@ -70,9 +70,10 @@ def filtro_candidato(d: dict) -> str | None:
         return "otro_pais"
     if tld != "es" and tld not in TLD_GENERICOS:
         return "otro_pais"
-    if tld != "es" and not any(i.startswith("spa") for i in d.get("idiomas", [])):
+    idiomas = {i.split(",")[0] for i in d.get("idiomas", []) if i}
+    if tld != "es" and not idiomas & {"spa", "cat", "eus", "glg", "-"}:
         return "idioma"
-    if d.get("paginas", 0) < 2:
+    if tld != "es" and d.get("paginas", 0) < 2:  # un .com con una sola mención es casi siempre ruido
         return "una_sola_pagina"
     return None
 

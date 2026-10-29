@@ -52,3 +52,29 @@ def test_robots_se_lee_y_se_respeta(monkeypatch):
     assert d.get("https://x.es/privado/master") is None
     assert d.get("https://x.es/master-en-finanzas") is not None
     assert pedidas == ["https://x.es/robots.txt", "https://x.es/master-en-finanzas"]
+
+
+def test_sin_sitemap_usa_enlaces_de_portada(monkeypatch):
+    class R:
+        def __init__(self, status, text, ctype="text/html", url=""):
+            self.status_code, self.text, self.content, self.headers, self.url = status, text, text.encode(), {"content-type": ctype}, url
+
+    portada = ('<a href="/masters/master-en-finanzas">Máster</a><a href="/blog/2024/05/x-master">blog</a>'
+               '<a href="https://otro.com/master-en-y">fuera</a>')
+    ficha = ("<title>Máster en Finanzas</title><h1>Máster en Finanzas</h1><p>60 ECTS. Precio 9.000 €. "
+             "Plazas limitadas. Admisión abierta. Matrícula. Plan de estudios. Madrid</p>")
+
+    def falso_get(self, url, timeout=25, allow_redirects=True):
+        if url.endswith("/robots.txt"):
+            return R(200, "User-agent: *\nAllow: /\n", "text/plain", url)
+        if url.endswith(".xml"):
+            return R(404, "", "text/html", url)
+        if url == "https://x.es/":
+            return R(200, portada, url=url)
+        return R(200, ficha, url=url)
+
+    monkeypatch.setattr(r.requests.Session, "get", falso_get)
+    res = r.rastrear("https://x.es", None, muestra=3, pausa=0)
+    assert res["via"] == "portada"
+    assert res["programas"] == ["https://x.es/masters/master-en-finanzas"]
+    assert res["verificado"] and res["espana"]

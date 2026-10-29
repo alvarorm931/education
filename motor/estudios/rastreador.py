@@ -71,6 +71,12 @@ SENAL_PROGRAMA = re.compile(r"\bECTS\b|cr[ée]ditos|matr[ií]cula|\bprecio|plaza
                             r"salidas profesionales|programa acad[eé]mico|temario|modalidad", re.I)
 NOTICIA = re.compile(r"/(19|20)\d{2}/\d{1,2}/|/(blog|noticias?|news|actualidad|articulos?|opinion|prensa|revista|"
                      r"magazine|tag|etiquetas?|author|autor)/", re.I)
+# Señal de oferta en España (descarta centros de otros países con web en español).
+ESPANA = re.compile(r"\bECTS\b|€|\beuros?\b|Espa[ñn]a|\+34|\bMadrid\b|\bBarcelona\b|\bValencia\b|\bSevilla\b|"
+                    r"\bM[aá]laga\b|\bBilbao\b|\bZaragoza\b|\bMurcia\b|\bGranada\b|\bSalamanca\b|\bValladolid\b|"
+                    r"\bAlicante\b|\bC[oó]rdoba\b|\bPalma\b|\bLas Palmas\b|\bTenerife\b|\bA Coru[ñn]a\b|\bVigo\b|"
+                    r"\bOviedo\b|\bSantander\b|\bPamplona\b|\bLogro[ñn]o\b|\bC[aá]diz\b|\bHuelva\b|\bJa[eé]n\b|"
+                    r"\bAlmer[ií]a\b|\bLe[oó]n\b|\bBurgos\b|\bTarragona\b|\bGirona\b|\bLleida\b|\bCastell[oó]n\b")
 GUIA = re.compile(r"gu[ií]a|folleto|brochure|dossier|programa|plan de estudios|syllabus", re.I)
 
 
@@ -202,6 +208,7 @@ def medir_pagina(html: str, url: str) -> dict:
     cabecera = " ".join(re.sub(r"<[^>]+>", " ", (titulo.group(1) if titulo else "") + " " + (h1.group(1) if h1 else "")).split())
     senales = {m.group(0).lower() for m in SENAL_PROGRAMA.finditer(visible)}
     return {
+        "espana": bool(ESPANA.search(visible)),
         "es_programa": bool(TITULO_PROGRAMA.search(cabecera)) and len(senales) >= 4 and not NOTICIA.search(urlparse(url).path),
         "senales": sorted(senales)[:12],
         "titulo": " ".join(titulo.group(1).split())[:200] if titulo else None,
@@ -217,8 +224,8 @@ def medir_pagina(html: str, url: str) -> dict:
 
 
 def rastrear(base: str, archivo: Archivo | None, max_urls: int = 60000, muestra: int = 6,
-             max_peticiones: int = 80, semillas: list[str] | None = None) -> dict:
-    d = Dominio(base, archivo, max_peticiones=max_peticiones)
+             max_peticiones: int = 80, semillas: list[str] | None = None, pausa: float = 1.0) -> dict:
+    d = Dominio(base, archivo, pausa=pausa, max_peticiones=max_peticiones)
     res: dict = {"dominio": d.host, "base": d.base}
     try:
         sitemaps = d.leer_robots()
@@ -248,8 +255,17 @@ def rastrear(base: str, archivo: Archivo | None, max_urls: int = 60000, muestra:
         raiz_host = d.host.split(":")[0].removeprefix("www.")
         candidatas = sorted({u for u in paginas if es_programa(u) and urlparse(u).netloc.endswith(raiz_host)})
         res["urls_programa_sitemap"] = len(candidatas)
-        if not candidatas and semillas:  # sin sitemap útil: las URL de programa vistas en Common Crawl
-            candidatas = sorted({u for u in semillas if es_programa(u)})
+        if not candidatas:  # sin sitemap útil: enlaces de programa de la portada y semillas de Common Crawl
+            res["via"] = "portada"
+            enlaces = set(u for u in (semillas or []) if es_programa(u))
+            r0 = d.get(d.base + "/")
+            if r0 is not None and r0.status_code == 200 and "html" in r0.headers.get("content-type", ""):
+                for h in re.findall(r'href="([^"#]+)"', r0.text):
+                    u = urljoin(r0.url, h)
+                    if urlparse(u).netloc.endswith(raiz_host) and es_programa(u):
+                        enlaces.add(u.split("#")[0])
+            candidatas = sorted(enlaces)
+            res["urls_programa_portada"] = len(candidatas)
         res["urls_programa"] = len(candidatas)
         res["programas"] = candidatas
         medidas = []
@@ -262,6 +278,7 @@ def rastrear(base: str, archivo: Archivo | None, max_urls: int = 60000, muestra:
         validas = sum(1 for m in medidas if m.get("es_programa"))
         res["paginas_programa_validas"] = validas
         res["verificado"] = validas >= 2 or (validas == 1 and len(medidas) <= 2)
+        res["espana"] = any(m.get("espana") for m in medidas if m.get("es_programa"))
     except Exception as e:  # un dominio roto no para el resto
         res["error"] = f"{type(e).__name__}: {e}"[:300]
     res["peticiones"] = d.peticiones
@@ -327,6 +344,7 @@ def ejecutar(objetivos: list[dict], raiz: Path, hilos: int, max_minutos: float, 
             resumen["urls_programa"] += r.get("urls_programa", 0)
             resumen["errores"] += 1 if r.get("error") else 0
             resumen["verificados"] += 1 if r.get("verificado") else 0
+            resumen["verificados_espana"] += 1 if r.get("verificado") and r.get("espana") else 0
 
     with ThreadPoolExecutor(max_workers=hilos) as ex:
         list(ex.map(uno, objetivos))

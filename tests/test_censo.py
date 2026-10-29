@@ -17,6 +17,8 @@ def test_filtros():
     assert c.filtro_candidato({"dominio": "eigp.es", "tld": "es", "idiomas": ["spa"], "paginas": 70}) is None
     assert c.filtro_candidato({"dominio": "inesalud.com", "tld": "com", "idiomas": ["spa"], "paginas": 98}) is None
     assert c.filtro_candidato({"dominio": "x.com", "tld": "com", "idiomas": ["eng"], "paginas": 98}) == "idioma"
+    assert c.filtro_candidato({"dominio": "eshi.es", "tld": "es", "idiomas": ["-"], "paginas": 1}) is None
+    assert c.filtro_candidato({"dominio": "x.com", "tld": "com", "idiomas": ["-"], "paginas": 1}) == "una_sola_pagina"
 
 
 def test_construir_une_ruct_y_commoncrawl():
