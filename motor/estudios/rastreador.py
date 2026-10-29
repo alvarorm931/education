@@ -58,8 +58,10 @@ RUIDO = re.compile(
     r"/(noticias?|noticies|news|our-news|actualidad|actualitat|agenda|eventos?|events?|blog|prensa|premsa|press|"
     r"sala-de-prensa|sala-de-premsa|tag|etiqueta|categor[ií]a|category|author|autor|wp-content|feed|comment|"
     r"search|buscar|page/\d+|convocatorias?-de-empleo|faq|preguntas-frecuentes|pmf|contacto|contact|"
-    r"experiencias|experiences|testimonios)/"
-    r"|masterclass|master-class|mastercard"
+    r"experiencias|experiences|testimonios|asignaturas?|assignatures|subjects|becas?|beques|scholarships?|ayudas|"
+    r"normativas?|normatives)/"
+    r"|masterclass|master-class|mastercard|trabajo[-_]fin[-_]de[-_]m[aá]ster|treball[-_]fi[-_]de[-_]m[aà]ster|"
+    r"master-?s?-?(dissertation|thesis)"
     r"|\.(pdf|jpe?g|png|gif|svg|webp|docx?|xlsx?|zip|mp4)$", re.I)
 DOCTORADO = re.compile(r"doctorad|doctorat|doktore|\bph\.?d\b", re.I)
 EURO = re.compile(r"(\d{1,3}(?:[.\s]\d{3})+|\d{3,6})(?:,\d{2})?\s?(?:€|euros?\b|EUR\b)", re.I)
@@ -117,6 +119,7 @@ ENLACE = re.compile(r'(?is)<a\b[^>]*?href\s*=\s*["\']([^"\'#]+)["\'][^>]*>(.*?)<
 LISTADO = re.compile(r"m[aàá]ster|posgrad|postgrad|postgrau|masterra|mestrado|estudios|estudis|ikasketak|oferta|"
                      r"titulaci|formaci|programas|programmes|programs|studies|study|degrees|t[ií]tulos", re.I)
 MAX_LISTADOS = 8
+MAX_COLABORADORES = 4  # páginas de centros colaboradores que se abren para ver a quién enlazan
 RESERVA_PORTADA = 14  # peticiones que el recorrido de sitemaps deja libres para la portada y sus listados
 GUIA = re.compile(r"gu[ií]a|folleto|brochure|dossier|programa|plan de estudios|syllabus", re.I)
 
@@ -159,6 +162,7 @@ class Dominio:
         self.s.headers.update({"User-Agent": f"{USER_AGENT}", "Accept-Language": "es-ES,es;q=0.9"})
         self.robots: dict[str, RobotFileParser] = {}
         self.ultima_robots = None
+        self.estados: Counter = Counter()  # códigos HTTP y errores de conexión, para diagnosticar
 
     def propio(self, url: str) -> bool:
         return dominio_registrado(urlparse(url).netloc) in self.propios
@@ -177,8 +181,10 @@ class Dominio:
         self.peticiones += 1
         try:
             r = self.s.get(url, timeout=timeout, allow_redirects=True)
-        except requests.RequestException:
+        except requests.RequestException as e:
+            self.estados[type(e).__name__] += 1
             return None
+        self.estados[str(r.status_code)] += 1
         if self.archivo is not None and r.status_code == 200 and not guardar:
             self.archivo.registrar(FUENTE, date.today(), r.content, url, r.status_code)
         elif self.archivo is not None and r.status_code == 200 and len(r.content) < 15_000_000:
@@ -224,7 +230,9 @@ class Dominio:
         """Encuentra el servidor que responde: la web dada, si no con «www.»; adopta el destino de las
         redirecciones (y su dominio registrado como propio). Devuelve (sitemaps de robots.txt, responde)."""
         u = urlparse(self.base)
-        candidatos = [self.base] + ([f"{u.scheme}://www.{u.netloc}"] if not u.netloc.startswith("www.") else [])
+        otro = u.netloc[4:] if u.netloc.startswith("www.") else "www." + u.netloc
+        # la web dada, con y sin www., y por http (certificados que no cubren el nombre antiguo)
+        candidatos = list(dict.fromkeys([self.base, f"https://{otro}", f"http://{u.netloc}", f"http://{otro}"]))
         for c in candidatos:
             sitemaps = self.leer_robots(c)
             r = self.ultima_robots
@@ -288,6 +296,24 @@ def es_programa(url: str) -> bool:
     return bool(PROGRAMA.search(ruta)) and not RUIDO.search(u.path) and not DOCTORADO.search(tramos[-1] if tramos else "")
 
 
+FICHA_URL = re.compile(r"m[aàá]ster[-_](universitari[oa]?|en|in|de|of|oficial)[-_]|\bmba[-_]|experto[-_]|especialista[-_]|"
+                       r"postgrado[-_]en|posgrado[-_]en|postgrau[-_]en|/mu[-_]|master-of|msc[-_]", re.I)
+BAJO_LISTADO = re.compile(r"/(m[aàá]steres|masters?|masters-universitarios|postgrados?|posgrados?|programas)/[^/]+/?$", re.I)
+GENERICA = re.compile(r"normativa|admisi|admissi|matr[ií]cula|precios?|tasas|becas?|calendario|preguntas|faq|acceso|"
+                      r"requisitos|informaci|idiomas|oferta|listado|buscador|preinscrip|ayudas|erasmus|ranking|"
+                      r"portada|home|index", re.I)
+
+
+def prioridad_url(url: str) -> int:
+    """Más alto cuanto más parece la ficha de un programa concreto (y no un listado o una página general)."""
+    ruta = urlparse(url).path.lower()
+    tramos = [t for t in ruta.split("/") if t]
+    ultimo = tramos[-1] if tramos else ""
+    puntos = (2 if FICHA_URL.search(ruta) else 0) + (1 if BAJO_LISTADO.search(ruta) else 0)
+    puntos += 1 if len(tramos) >= 2 and len(ultimo) > 12 else 0
+    return puntos - (3 if GENERICA.search(ultimo) else 0)
+
+
 def enlaces(html: str, base_url: str) -> list[tuple[str, str]]:
     """(URL absoluta, texto del enlace) de una página."""
     salida = []
@@ -298,12 +324,17 @@ def enlaces(html: str, base_url: str) -> list[tuple[str, str]]:
     return salida
 
 
+def nombra_programa(texto: str) -> bool:
+    """«Máster Universitario en X», «MBA Executive»…; no «Másteres» ni «Postgrados» (listados)."""
+    return bool(EMPIEZA_PROGRAMA.match(texto or "")) and not PLURAL_LISTADO.match(texto or "")
+
+
 def enlace_a_programa(url: str, texto: str) -> bool:
     """Por la URL, o por un texto de enlace que nombra un programa concreto («Máster Universitario en…»)."""
     if es_programa(url):
         return True
     ruta = urlparse(url).path
-    return (bool(EMPIEZA_PROGRAMA.match(texto)) and not PLURAL_LISTADO.match(texto) and len(texto.split()) >= 3
+    return (nombra_programa(texto) and len(texto.split()) >= 3
             and not DOCTORADO.search(texto) and not RUIDO.search(ruta) and not NOTICIA.search(ruta))
 
 
@@ -346,12 +377,23 @@ def medir_pagina(html: str, url: str) -> dict:
     cabecera = " ".join(re.sub(r"<[^>]+>", " ", (titulo.group(1) if titulo else "") + " " + (h1.group(1) if h1 else "")).split())
     senales = {k for k, pat in SENALES.items() if pat.search(visible)}
     nombre = " ".join(re.sub(r"<[^>]+>", " ", h1.group(1)).split()) if h1 else (titulo.group(1) if titulo else "")
-    fuerte = bool(EMPIEZA_PROGRAMA.match(nombre)) or bool(EMPIEZA_PROGRAMA.match(titulo.group(1) if titulo else ""))
-    es_prog = (bool(TITULO_PROGRAMA.search(cabecera)) and not DOCTORADO.search(cabecera)
-               and (len(senales) >= 4 or (fuerte and len(senales) >= 3)) and not NOTICIA.search(urlparse(url).path))
+    fuerte = nombra_programa(nombre) or nombra_programa(titulo.group(1) if titulo else "")
+    caracteres = len(" ".join(visible.split()))
+    poco_texto = caracteres < 2000  # contenido cargado con JavaScript: el HTML trae poco más que el menú
+    motivo = None
+    if not NOTICIA.search(urlparse(url).path) and not DOCTORADO.search(cabecera):
+        if TITULO_PROGRAMA.search(cabecera) and (len(senales) >= 4 or (fuerte and len(senales) >= 3)):
+            motivo = "titulo_y_senales"
+        elif es_programa(url) and len(senales) >= 5:
+            motivo = "url_y_senales"  # p. ej. uji.es/estudis/base/2026/masters/historia-art/, título sin «Máster»
+        elif fuerte and poco_texto:
+            motivo = "titulo_con_contenido_en_js"
+    es_prog = motivo is not None
     return {
         "espana": bool(ESPANA.search(visible)),
         "es_programa": es_prog,
+        "motivo": motivo,
+        "caracteres_visibles": caracteres,
         "senales": sorted(senales)[:12],
         "titulo": " ".join(titulo.group(1).split())[:200] if titulo else None,
         "jsonld_tipos": tipos,
@@ -406,6 +448,25 @@ def desde_portada(d: Dominio, semillas: list[str] | None, tope: int) -> tuple[li
     return sorted(programas), visitados
 
 
+def enlaces_externos(d: Dominio, paginas: list[str], tope: int) -> list[str]:
+    """Dominios ajenos enlazados desde las páginas de colaboradores (academias que venden sus títulos)."""
+    from motor.estudios.censo import AGREGADORES  # redes sociales, medios y directorios no son colaboradores
+    externos = set()
+    for u in paginas[:MAX_COLABORADORES]:
+        if d.peticiones >= tope:
+            break
+        r = d.get(u)
+        html = _html(r)
+        if not html:
+            continue
+        for v, _ in enlaces(html, r.url):
+            dom = dominio_registrado(urlparse(v).netloc)
+            if "." in dom and dom not in d.propios and not AGREGADORES.search(dom) and \
+                    not re.search(r"google|apple|microsoft|whatsapp|t\.me|tiktok|x\.com|gob\.es|europa\.eu|w3\.org", dom):
+                externos.add(dom)
+    return sorted(externos)[:300]
+
+
 def medir_muestra(d: Dominio, urls: list[str], n: int) -> list[dict]:
     medidas = []
     for u in _muestra(urls, n):
@@ -435,6 +496,7 @@ def rastrear(base: str, archivo: Archivo | None, max_urls: int = 60000, muestra:
         if not responde:
             res["error"] = "sin_respuesta"
             res["peticiones"] = d.peticiones
+            res["estados_http"] = dict(d.estados)
             return res
         res["veto_robots"] = not d.robots_ok_para(d.base + "/")
         res["robots_sitemaps"] = len(sitemaps)
@@ -491,6 +553,7 @@ def rastrear(base: str, archivo: Archivo | None, max_urls: int = 60000, muestra:
         res["documentos_precio"] = sorted({u for u in paginas if DOC_PRECIO.search(u) and d.propio(u)
                                            and not NOTICIA.search(urlparse(u).path)})[:100]
         res["muestra"] = medidas
+        res["enlaces_colaboradores"] = enlaces_externos(d, res["urls_colaboradores"], max_peticiones)
         res["paginas_programa_validas"] = sum(1 for m in medidas if m.get("es_programa"))
         res["verificado"] = _verificado(medidas)
         res["espana"] = any(m.get("espana") for m in medidas if m.get("es_programa"))
@@ -498,15 +561,30 @@ def rastrear(base: str, archivo: Archivo | None, max_urls: int = 60000, muestra:
     except Exception as e:  # un dominio roto no para el resto
         res["error"] = f"{type(e).__name__}: {e}"[:300]
     res["peticiones"] = d.peticiones
+    res["estados_http"] = dict(d.estados)
     return res
 
 
-def _muestra(urls: list[str], n: int) -> list[str]:
-    """Muestra repartida a lo largo de la lista (evita coger solo la primera sección del sitio)."""
+def _repartida(urls: list[str], n: int) -> list[str]:
     if len(urls) <= n:
         return urls
     paso = len(urls) / n
     return [urls[int(i * paso)] for i in range(n)]
+
+
+def _muestra(urls: list[str], n: int) -> list[str]:
+    """Muestra repartida a lo largo de la lista, primero entre las URL con más pinta de ficha concreta
+    (evita coger solo listados, normativas o la primera sección del sitio)."""
+    if len(urls) <= n:
+        return urls
+    mejores = sorted({prioridad_url(u) for u in urls}, reverse=True)
+    elegidas: list[str] = []
+    for nivel in mejores:
+        grupo = [u for u in urls if prioridad_url(u) == nivel]
+        elegidas += _repartida(grupo, n - len(elegidas))
+        if len(elegidas) >= n:
+            break
+    return elegidas
 
 
 def objetivos_de_proveedores(fichero: Path, desde: int = 0, hasta: int | None = None,

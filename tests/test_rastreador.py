@@ -207,3 +207,64 @@ def test_web_principal():
     p = {"dominio": "uab.cat", "webs": ["https://caiac.uab.cat", "https://www.uab.cat/politiques-sociologia/"]}
     assert r.web_principal(p) == "https://www.uab.cat/politiques-sociologia/"
     assert r.web_principal({"dominio": "x.es", "webs": []}) == "https://x.es"
+
+
+def test_muestra_prefiere_fichas_concretas():
+    urls = ["https://x.es/es/admision-y-ayudas/masteres", "https://x.es/masteres/normativa-masteres",
+            "https://x.es/estudios/master-universitario-en-derecho", "https://x.es/estudios/master-en-finanzas-y-banca",
+            "https://x.es/estudios/masteres-idiomas"]
+    assert r._muestra(urls, 2) == ["https://x.es/estudios/master-universitario-en-derecho",
+                                   "https://x.es/estudios/master-en-finanzas-y-banca"]
+    assert not r.es_programa("https://www.uah.es/es/estudios/estudios-oficiales/grados/asignatura/Trabajo-Fin-de-Master-20242")
+    assert not r.es_programa("https://www.uah.es/es/admision-y-ayudas/becas/Beca-de-formacion-de-postgrado")
+
+
+def test_fichas_sin_maaster_en_el_titulo_o_con_js():
+    uji = ("<title>Advocacia i Procura</title><h1>Advocacia i Procura</h1><p>Crèdits ECTS: 90. Places: 40. "
+           "Preinscripció. Pla d'estudis. Modalitat presencial. Durada: 3 semestres. Matrícula.</p>")
+    m = r.medir_pagina(uji, "https://www.uji.es/estudis/base/2026/masters/advocacia-procura-2023/")
+    assert m["es_programa"] and m["motivo"] == "url_y_senales"
+    js = "<title>Máster Universitario en Energías Renovables - UPNA</title><div id='app'></div><nav>Inicio</nav>"
+    m = r.medir_pagina(js, "https://www.unavarra.es/sites/masteres/industriales/renovables.html")
+    assert m["es_programa"] and m["motivo"] == "titulo_con_contenido_en_js"
+    listado = "<title>Másteres - Portada - UPNA</title><div id='app'></div>"
+    assert not r.medir_pagina(listado, "https://www.unavarra.es/sites/masteres/home.html")["es_programa"]
+
+
+def test_base_por_http_si_https_falla(monkeypatch):
+    def falso_get(self, url, timeout=25, allow_redirects=True):
+        if url.startswith("https://"):
+            raise r.requests.exceptions.SSLError("certificado")
+        if url == "http://www.uib.es/robots.txt":
+            return _R(200, "User-agent: *\nAllow: /\n", "text/plain", "https://www.uib.cat/robots.txt")
+        return _R(404, "", "text/html", url)
+
+    monkeypatch.setattr(r.requests.Session, "get", falso_get)
+    d = r.Dominio("https://www.uib.es", None, pausa=0)
+    _, ok = d.resolver_base()
+    assert ok and d.base == "https://www.uib.cat" and d.propios == {"uib.es", "uib.cat"}
+    assert d.estados["SSLError"] == 2
+
+
+def test_enlaces_de_colaboradores(monkeypatch):
+    ns = 'xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"'
+    sm = (f'<urlset {ns}><url><loc>https://ui1.es/entidades-colaboradoras</loc></url>'
+          f'<url><loc>https://ui1.es/master-en-x</loc></url></urlset>')
+    colab = ('<a href="https://www.eshi.es/">ESHI</a><a href="https://facebook.com/ui1">fb</a>'
+             '<a href="https://ui1.es/otra">propia</a><a href="https://www.saera.es/cursos">Saera</a>')
+
+    def falso_get(self, url, timeout=25, allow_redirects=True):
+        if url.endswith("/robots.txt"):
+            return _R(200, "User-agent: *\nAllow: /\nSitemap: https://ui1.es/sm.xml\n", "text/plain", url)
+        if url.endswith("sm.xml"):
+            return _R(200, sm, "application/xml", url)
+        if url.endswith("tdmrep.json"):
+            return _R(404, "", "text/html", url)
+        if url.endswith("entidades-colaboradoras"):
+            return _R(200, colab, url=url)
+        return _R(200, "<title>Máster en X</title><p>60 ECTS precio plazas admisión matrícula</p>", url=url)
+
+    monkeypatch.setattr(r.requests.Session, "get", falso_get)
+    res = r.rastrear("https://ui1.es", None, muestra=2, pausa=0)
+    assert res["urls_colaboradores"] == ["https://ui1.es/entidades-colaboradoras"]
+    assert res["enlaces_colaboradores"] == ["eshi.es", "saera.es"]

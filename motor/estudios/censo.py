@@ -44,7 +44,26 @@ AGREGADORES = re.compile(
     r"twitter|instagram|indeed|infojobs|glassdoor|tripadvisor|amazon|aliexpress|ebay|milanuncios|wallapop|"
     r"noticia|cronica|diario|periodico|revista|news|blog|portalparados|becasen|becasycursos|parainmigrantes|"
     r"psicologiaymente|que\.es$|tesify|cursosbaratos|uscflix|google\.com|github|gitlab|wuolah|wuidy|"
-    r"educaformacion|estudiaradistancia|estudiaronline|universidadesni", re.I)
+    r"educaformacion|estudiaradistancia|estudiaronline|universidadesni|universidadesvirtuales|mastersportal|"
+    r"studyportals|topuniversities|masterstudies|findamasters|keystone|hotcourses", re.I)
+# El patrón de Common Crawl es amplio a propósito (no perder escuelas). Para entrar en el censo como candidato,
+# al menos una URL de ejemplo debe nombrar un programa como palabra («/master-en-x», «/mba/», «experto-
+# universitario») y no ser ruido conocido («remastered», «ticketmaster», «master-plan», ramas de código).
+URL_FUERTE = re.compile(
+    r"(^|[/_-])m[aàá]ster(es|s)?[-_](?!(control|slave|key|keys|file|files|data|node|nodes|branch|switch|volume|boot|"
+    r"card|class|plan|chef|piece|mind|cylinder|record|recording|tape|copy|bedroom|suite|bath|list|page|sheet|sword|"
+    r"ball|cleanse|lock|password|bus|clock|mode|server|db|series|cup|league|edition|collection|bundle|kit|pack|"
+    r"tour|race|swim|golf|tennis|chess|game|games)\b)[a-z%]{2,}|"
+    r"/(m[aàá]ster(es|s)?|m%c3%a[01]ster(es)?|mba|postgrados?|posgrados?|postgraus?|masterra|mestrados?|m[aà]sters)(/|$)|"
+    r"(^|[/_-])(executive-)?mba([/_-]|$)|(^|[/_-])(postgrado|posgrado|postgrau|mestrado)[-_][a-z]{3,}|"
+    r"t[ií]tulos?[-_]propios?|formaci[oó]n?[-_]permanente|formacio[-_]continua|experto[-_]universitario|"
+    r"especialista[-_]universitario|estudis[-_]propis|executive[-_]education|masterra[-_]|m%c3%a1ster", re.I)
+URL_RUIDO = re.compile(
+    r"remaster|ticketmaster|mastercard|master-?class|masterchef|scrum-?master|master-?plan|master-?rubric|"
+    r"webmaster|quizmaster|paymaster|postmaster|toastmaster|grandmaster|game-?master|headmaster|"
+    r"/(master|main)/(src|lib|docs?|blob|tree|raw|include|test)|\.(md|txt)$|"
+    r"/(noticias?|news|blog|actualidad|actualitat|foro|forum|member|members|events?|eventos?|tag|category|"
+    r"producto|product|shop|tienda)/|msc[-_ %20]+(cruises|cruceros|magnifica|ship)", re.I)
 SUFIJOS_DOBLES = ("edu.es", "com.es", "org.es", "gob.es", "nom.es")
 HOST_VALIDO = re.compile(r"^[a-z0-9-]+(\.[a-z0-9-]+)*\.[a-z]{2,}$")
 
@@ -86,7 +105,15 @@ def filtro_candidato(d: dict) -> str | None:
         return "idioma"
     if tld != "es" and d.get("paginas", 0) < 2:  # un .com con una sola mención es casi siempre ruido
         return "una_sola_pagina"
+    ejemplos = d.get("ejemplos") or []
+    if ejemplos and not any(url_de_programa(u) for u in ejemplos):
+        return "sin_url_de_programa"
     return None
+
+
+def url_de_programa(url: str) -> bool:
+    ruta = urlparse(url).path  # la consulta (?utm_…) no cuenta
+    return bool(URL_FUERTE.search(ruta)) and not URL_RUIDO.search(ruta)
 
 
 def construir(centros: list[dict], cc: list[dict]) -> list[dict]:
@@ -191,6 +218,22 @@ def alias_de_rastreo(carpetas: list[Path]) -> list[set[str]]:
     return grupos
 
 
+def enlazados_de_rastreo(carpetas: list[Path]) -> dict[str, list[str]]:
+    """Dominios enlazados desde las páginas de «centros colaboradores» o «entidades colaboradoras» de
+    universidades y escuelas: así aparecen las academias que venden títulos propios ajenos y no usan
+    «máster» en sus URL. Dominio → ids de los proveedores que los enlazan."""
+    salida: dict[str, list[str]] = {}
+    for c in carpetas:
+        for f in c.rglob("oferta_web/*.json"):
+            r = json.loads(f.read_text(encoding="utf-8"))
+            origen = (r.get("centro") or {}).get("id")
+            for dom in r.get("enlaces_colaboradores") or []:
+                salida.setdefault(dom, [])
+                if origen and origen not in salida[dom]:
+                    salida[dom].append(origen)
+    return salida
+
+
 def leer_jsonl(carpeta: Path, patron: str) -> list[dict]:
     filas = []
     for f in sorted(carpeta.glob(patron)):
@@ -208,9 +251,23 @@ def ejecutar(centros_dir: Path, cc_dir: Path | None, salida: Path, rastreos: lis
             continue
         x = por_dom.setdefault(d["dominio"], {**d, "paginas": 0, "ejemplos": []})
         x["paginas"] += d["paginas"]
-        x["ejemplos"] = (x["ejemplos"] + d.get("ejemplos", []))[:8]
+        # sin repetir y primero las que nombran un programa (los ejemplos de un crawl pueden ser todos del blog)
+        todos = list(dict.fromkeys(x["ejemplos"] + d.get("ejemplos", [])))
+        x["ejemplos"] = sorted(todos, key=lambda u: not url_de_programa(u))[:12]
         x["idiomas"] = sorted(set(x.get("idiomas", [])) | set(d.get("idiomas", [])))
     provs = construir(centros, list(por_dom.values()))
+    # candidatos que entran por estar enlazados como colaboradores (aunque Common Crawl no los vea)
+    ya = {d: p for p in provs for d in p["dominios"]}
+    for dom, origenes in sorted(enlazados_de_rastreo(rastreos or []).items()):
+        tld = dom.rsplit(".", 1)[-1]
+        if dom in ya:
+            ya[dom]["senales"]["colaborador_de"] = origenes
+            continue
+        if AGREGADORES.search(dom) or tld in TLD_OTROS_PAISES or (tld != "es" and tld not in TLD_GENERICOS):
+            continue
+        provs.append({"id": id_proveedor(dom), "dominio": dom, "dominios": [dom], "webs": [], "nombres": [],
+                      "tipos": [], "ruct": [], "fuentes": ["colaborador"], "senales": {"colaborador_de": origenes},
+                      "estado": "candidato", "motivo": None})
     antes = len(provs)
     provs = unir_alias(provs, alias_de_rastreo(rastreos or []))
     destino = salida / "datos" / "estudios" / "censo"
@@ -222,7 +279,8 @@ def ejecutar(centros_dir: Path, cc_dir: Path | None, salida: Path, rastreos: lis
     res = {"proveedores": len(provs), "por_estado": dict(Counter(p["estado"] for p in provs)),
            "tipos_oficiales": dict(Counter(t for p in provs for t in p["tipos"])),
            "dominios_commoncrawl": len(por_dom), "descartes_commoncrawl": dict(descartes),
-           "unidos_por_redireccion": antes - len(provs)}
+           "unidos_por_redireccion": antes - len(provs),
+           "candidatos_por_enlace_de_colaborador": sum(1 for p in provs if p["fuentes"] == ["colaborador"])}
     (destino / "resumen.json").write_text(json.dumps(res, ensure_ascii=False, indent=1), encoding="utf-8")
     return res
 

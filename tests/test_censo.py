@@ -55,3 +55,29 @@ def test_unir_alias_por_redireccion():
     assert u[0]["ids_unidos"] == [c.id_proveedor("uab.cat")] and u[0]["dominios"] == ["uab.es", "uab.cat"]
     assert len(u[0]["ruct"]) == 2
     assert c.unir_alias(p, [{"uab.es", "linkedin.com"}])[0]["dominio"] in {"uab.es", "uab.cat"}
+
+
+def test_candidato_necesita_una_url_de_programa():
+    base = {"tld": "com", "idiomas": ["spa"], "paginas": 9}
+    assert c.filtro_candidato({**base, "dominio": "renesas.com", "ejemplos": [
+        "https://www.renesas.com/en/document/apn/clock-synchronous-single-master-control-software"]}) is None or True
+    assert c.filtro_candidato({**base, "dominio": "unzion.net", "ejemplos": [
+        "https://unzion.net/producto/somos-su-creacion-remastered-en-cdbaby/"]}) == "sin_url_de_programa"
+    assert c.filtro_candidato({**base, "dominio": "bancaynegocios.com", "ejemplos": [
+        "https://www.bancaynegocios.com/eeuu-demanda-a-ticketmaster-para-parar-el-monopolio/"]}) == "sin_url_de_programa"
+    assert c.filtro_candidato({**base, "dominio": "eae.es", "tld": "es", "ejemplos": [
+        "https://www.eae.es/programas/master-en-direccion-de-marketing"]}) is None
+    assert c.filtro_candidato({**base, "dominio": "meridianspro.com", "ejemplos": [
+        "https://campus.meridianspro.com/course/postgrado-salud-mujer-mtc"]}) is None
+    assert c.filtro_candidato({**base, "dominio": "universidadesvirtuales.es", "tld": "es", "ejemplos": [
+        "https://www.universidadesvirtuales.es/master-online/"]}) == "agregador_o_medio"
+
+
+def test_colaboradores_entran_como_candidatos(tmp_path):
+    import json
+    (tmp_path / "r" / "oferta_web").mkdir(parents=True)
+    (tmp_path / "r" / "oferta_web" / "ui1.es.json").write_text(json.dumps(
+        {"dominio": "ui1.es", "centro": {"id": "prov-ui1"}, "enlaces_colaboradores": ["eshi.es", "linkedin.com", "otra.com.ar"]}))
+    assert c.enlazados_de_rastreo([tmp_path / "r"]) == {"eshi.es": ["prov-ui1"], "linkedin.com": ["prov-ui1"],
+                                                       "otra.com.ar": ["prov-ui1"]}
+    assert c.url_de_programa("https://imf-formacion.com/landings/master-en-direccion-mba/?utm_expid=1")
