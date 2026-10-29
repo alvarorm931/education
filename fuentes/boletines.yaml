@@ -58,8 +58,11 @@ autonomicos:
     nombre: Diario Oficial de Castilla-La Mancha
     comunidad: Castilla-La Mancha
     url: http://docm.castillalamancha.es/portaldocm/sumario.do
-    acceso_desde_github: "ok"
-    estado: sin_conector
+    acceso_desde_github: "ok (requiere la cookie de sesión del portal)"
+    datos_estructurados: "Sumario por fecha: https://docm.jccm.es/docm/cambiarBoletin.do?fecha=AAAAMMDD tras abrir sesión en /portaldocm/sumario.do; versión HTML de cada disposición (no oficial) en verArchivoHtml.do desde 2023 aprox.; PDF firmado oficial"
+    estado: conector_en_pruebas
+    conector: motor/autonomicos/docm.py
+    nota: "Un día sin diario muestra el último publicado: se reconoce por la fecha"
   - id: BOCYL
     nombre: Boletín Oficial de Castilla y León
     comunidad: Castilla y León

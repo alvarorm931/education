@@ -17,7 +17,7 @@ from datetime import date
 from pathlib import Path
 
 from motor.archivo import Archivo
-from motor.autonomicos import boa, bocyl, boib, borm, doe, dog, dogc, dogv
+from motor.autonomicos import boa, bocyl, boib, borm, docm, doe, dog, dogc, dogv
 from motor.autonomicos.comun import descargar_textos
 
 
@@ -97,6 +97,11 @@ def main(argv: list[str] | None = None) -> int:
                 "primero_2022": boib.procesar_boletin(cal22[0], raiz, archivo),
                 "textos": _textos(boib, raiz, archivo, lambda x: x["url_html"], accept="text/html", ext="html")}
     pruebas["boib"] = _boib
+    pruebas["docm"] = lambda: {"dia": docm.procesar_dia(date(2026, 10, 29), raiz, archivo),
+                               "dia_2022": docm.procesar_dia(date(2022, 1, 3), raiz, archivo),
+                               "sabado": docm.procesar_dia(date(2026, 10, 24), raiz, archivo),
+                               "textos": _textos(docm, raiz, archivo, lambda x: x["url_html"], accept="text/html",
+                                                 ext="html", sesion=docm.sesion())}
     pruebas["borm"] = lambda: {"dia": borm.procesar_dia(date(2026, 10, 29), raiz, archivo),
                                "dia_2022": borm.procesar_dia(date(2022, 1, 3), raiz, archivo),
                                "domingo": borm.procesar_dia(date(2026, 10, 25), raiz, archivo),
