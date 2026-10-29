@@ -222,7 +222,7 @@ def marcar_verificados(provs: list[dict], carpetas: list[Path]) -> None:
             if i:
                 ultimo[i] = r
     for p in provs:
-        r = ultimo.get(p["id"])
+        r = ultimo.get(p["id"]) or next((ultimo[i] for i in p.get("ids_unidos", []) if i in ultimo), None)
         if r is None:
             continue
         s = p["senales"]
