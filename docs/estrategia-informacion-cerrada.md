@@ -57,6 +57,10 @@ universidades se miden en el barrido de sus webs (§9).
 | Becas generales | BOE y Base de Datos Nacional de Subvenciones | pendiente |
 | Convenios de títulos propios con empresas | portales de transparencia de las públicas | pendiente |
 
+Guías vetadas a robots: UCAM y Deusto prohíben todo rastreo en el servidor de sus guías (`Disallow: /`).
+Para esos casos la vía es pedir permiso por escrito a la universidad o la petición formal (§3.7), nunca
+saltarse el veto.
+
 ### 3.2 Lo que el centro publica pero no enseña en la ficha
 
 - **Tarifas en PDF**: muchas privadas publican tarifas o «honorarios académicos» en PDF aunque la ficha

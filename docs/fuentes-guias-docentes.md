@@ -10,8 +10,10 @@ evaluación por asignatura cuando la memoria del RUCT no la trae (formato RD 822
 CEU Cardenal Herrera, Abat Oliba CEU, Coruña y EUG vistas en búsqueda; Blanquerna probable. Patrón:
 `https://{host}/doa/consultaPublica/look[conpub]MostrarPubGuiaDocAs?entradaPublica=true&idiomaPais=es.ES&_anoAcademico={año}&_codAsignatura={código}`;
 listado por plan con `BuscarPubGuiaDocAs?...&_centro={c}&_planEstudio={p}`. Carga el contenido con
-JavaScript. Zaragoza deja además PDF estáticos (`sia.unizar.es/documentos/doa/guiadocente/{año}/{código}_es.pdf`);
-por comprobar si otras instalaciones también.
+JavaScript. Zaragoza deja además PDF estáticos (`sia.unizar.es/documentos/doa/guiadocente/{año}/{código}_es.pdf`,
+comprobado); en UAM, Deusto y UCAM esa ruta no existe (404, sonda del 29/10/2026). Además, `robots.txt` de
+`laurea.ucam.edu` y `gaude.deusto.es` prohíbe todo a cualquier robot (`Disallow: /`): sus guías no se leen
+automáticamente sin permiso expreso; la UAM no tiene `robots.txt` en ese servidor.
 
 **Aplicaciones propias con URL predecible (código + curso + idioma):**
 
