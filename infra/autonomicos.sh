@@ -23,7 +23,7 @@ for c in $CONECTORES; do
   case "$c" in
     boja)
       # Originales: solo huella hasta tener almacén externo (R2); la API permite volver a pedirlos.
-      ejecutar motor.autonomicos.boja --desde-anio "$Y" --hasta-anio "$Y" --sin-guardar-original --salida "$S" --max-minutos 8
+      ejecutar motor.autonomicos.boja --desde-anio "$Y" --hasta-anio "$Y" --sin-guardar-original --salida "$S" --max-minutos 15
       "$G" "BOJA: año en curso"
       ejecutar motor.autonomicos.boja --desde-anio 2022 --hasta-anio $((Y-1)) --sin-guardar-original --salida "$S" --max-minutos "$M"
       "$G" "BOJA: carga histórica"

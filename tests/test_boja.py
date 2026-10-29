@@ -51,3 +51,16 @@ def test_registrar_solo_huella(tmp_path):
     a = boja.Archivo(tmp_path)
     r = a.registrar("boja", date(2026, 1, 1), b"x", "u", 200, {})
     assert r["solo_huella"] and r["ruta"] is None and len(r["sha256"]) == 64
+
+
+def test_de_lo_mas_reciente_a_lo_mas_antiguo(tmp_path, monkeypatch):
+    # 29/10/2026: el año en curso iba del 1 al último y con 8 minutos no pasaba del n.º 192 (2 de octubre).
+    vistos = []
+    cal = {2025: [(1, "2025-01-02"), (2, "2025-01-03")],
+           2026: [(1, "2026-01-02"), (2, "2026-01-05"), (219201, "2026-10-02"), (192, "2026-10-02")]}
+    monkeypatch.setattr(boja, "calendario", lambda anio, raiz, archivo: cal[anio])
+    monkeypatch.setattr(boja, "procesar_boletin",
+                        lambda anio, n, *a: vistos.append((anio, n)) or {"resultado": "ok", "alertas": []})
+    monkeypatch.setattr(boja.time, "sleep", lambda s: None)
+    boja.main(["--desde-anio", "2025", "--hasta-anio", "2026", "--salida", str(tmp_path)])
+    assert vistos == [(2026, 219201), (2026, 192), (2026, 2), (2026, 1), (2025, 2), (2025, 1)]

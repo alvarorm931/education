@@ -169,7 +169,8 @@ def main(argv: list[str] | None = None) -> int:
     archivo = Archivo(a.salida / "archivo", indice_por_fuente=True, solo_huella=solo_huella_por_defecto())
     inicio, informes = time.monotonic(), []
     freno = Freno()
-    for anio in range(a.desde_anio, a.hasta_anio + 1):
+    # De lo más reciente a lo más antiguo: si se agota el tiempo, lo que falta es lo viejo, no lo de esta semana.
+    for anio in range(a.hasta_anio, a.desde_anio - 1, -1):
         try:
             numeros = calendario(anio, a.salida, archivo)
         except ConnectionError as e:
@@ -178,7 +179,7 @@ def main(argv: list[str] | None = None) -> int:
         resumen_cal = a.salida / "datos" / "autonomicos" / "boja" / "calendario" / f"{anio}.json"
         resumen_cal.parent.mkdir(parents=True, exist_ok=True)
         resumen_cal.write_text(json.dumps(numeros, ensure_ascii=False), encoding="utf-8")
-        for numero, fecha in numeros:
+        for numero, fecha in sorted(numeros, key=lambda x: (x[1], x[0]), reverse=True):
             if fecha and fecha > hoy.isoformat():
                 continue
             ruta = ruta_informe(a.salida, anio, numero)

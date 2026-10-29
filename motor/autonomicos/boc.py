@@ -50,7 +50,9 @@ ISLA_A_PROVINCIA = {
 }
 RE_BOLETIN_ANIO = re.compile(r'href="/boc/(?P<a>\d{4})/(?P<n>\d{3})/index\.html"\s*title="Ir al boletín BOC '
                              r'(?P<n2>\d+)/\d{4} \((?P<f>\d{4}-\d{2}-\d{2})\)"')
-RE_CABECERA = re.compile(r"<h2>\s*BOC\s+Nº\s*(?P<n>\d+)\.\s*\w+\s+(?P<d>\d{1,2})\s+de\s+(?P<m>[a-záéíóú]+)\s+de\s+"
+# Los extraordinarios llevan «BOC EXTRAORDINARIO Nº 212. Jueves 22 de octubre de 2026» (comparten numeración)
+RE_EXTRAORDINARIO = re.compile(r"<h2>\s*BOC\s+EXTRAORDINARIO\b", re.IGNORECASE)
+RE_CABECERA = re.compile(r"<h2>\s*BOC\s+(?:EXTRAORDINARIO\s+)?Nº\s*(?P<n>\d+)\.\s*\w+\s+(?P<d>\d{1,2})\s+de\s+(?P<m>[a-záéíóú]+)\s+de\s+"
                          r"(?P<a>\d{4})\s*</h2>", re.IGNORECASE)
 RE_TOKEN = re.compile(r'<h4[^>]*>(?P<h4>.*?)</h4>|<h3 class="titboc">(?P<h3>.*?)</h3>|<h5>(?P<h5>.*?)</h5>'
                       r'|<li class="justificado_boc">(?P<li>.*?)</li>', re.DOTALL)
@@ -199,7 +201,7 @@ def procesar_boletin(anio: int, numero: int, fecha: str, raiz: Path, archivo: Ar
     escribir_jsonl(_ruta_datos(raiz, "disposiciones", fecha, numero), filas)
     escribir_jsonl(_ruta_datos(raiz, "oposiciones", fecha, numero), empleo)
     informe.update({"resultado": "ok", "sha256": captura["sha256"], "disposiciones": len(filas),
-                    "empleo_publico": len(empleo)})
+                    "empleo_publico": len(empleo), "extraordinario": bool(RE_EXTRAORDINARIO.search(html))})
     if not filas:
         informe["alertas"].append(f"BOC {anio}/{numero}: boletín sin disposiciones (posible cambio de formato)")
     return informe

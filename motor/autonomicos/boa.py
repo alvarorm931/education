@@ -38,7 +38,9 @@ from motor.limpieza import parrafos_seguros
 FUENTE = "boa"
 MADRID = ZoneInfo("Europe/Madrid")
 CGI = "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI"
-RE_ESCAPE_INVALIDO = re.compile(r'\\(?!["\\/bfnrtu])')
+# Un escape JSON válido se deja tal cual; cualquier otra barra invertida se dobla. Hay que leer las parejas «\\\\»
+# como un solo escape: con un simple «barra no seguida de…» la segunda barra de la pareja se tomaba por inválida.
+RE_ESCAPE = re.compile(r'\\(?:["\\/bfnrt]|u[0-9a-fA-F]{4})|\\')
 RE_URL = re.compile(r"https://[^`´\s]+")
 CAPITALES = ("Huesca", "Teruel", "Zaragoza")
 
@@ -50,7 +52,7 @@ def url_dia(d: date) -> str:
 
 def leer_json(contenido: bytes) -> list[dict]:
     texto = contenido.decode("latin-1")
-    datos = json.loads(RE_ESCAPE_INVALIDO.sub(r"\\\\", texto), strict=False)
+    datos = json.loads(RE_ESCAPE.sub(lambda m: m.group(0) if len(m.group(0)) > 1 else "\\\\", texto), strict=False)
     if not isinstance(datos, list):
         raise ValueError("no es una lista")
     return datos
@@ -114,6 +116,13 @@ def procesar_dia(d: date, raiz: Path, archivo: Archivo) -> dict:
         informe["resultado"] = "error_http"
         informe["alertas"].append(f"BOA {d}: HTTP {r.status}")
         return informe
+    inicio = r.contenido.lstrip()[:15].lower()
+    if not inicio or inicio.startswith((b"<!doctype", b"<html")):
+        # Un día sin boletín (sábado, domingo, festivo) el servicio responde 200 con la página de inicio del BOA en
+        # vez de datos (verificado el 29/10/2026 con el 11/07/2026 y el 15/08/2025). Si fuera un fallo, el número
+        # que falta se vería en el control de huecos de la numeración (motor.estado).
+        informe.update({"resultado": "sin_boletin", "nota": "página de inicio en vez de datos"})
+        return informe
     try:
         filas = leer_json(r.contenido)
     except ValueError as e:
@@ -164,7 +173,9 @@ def main(argv: list[str] | None = None) -> int:
             print("Tiempo agotado; se continúa en la siguiente ejecución")
             break
         ruta = _ruta(a.salida, "dias", d, "json")
-        if d.weekday() >= 5 or (a.saltar_existentes and ruta.exists() and
+        # También sábados y domingos: el BOA saca números en fin de semana (n.º 132 de 2026 el domingo 12/07, n.º 157
+        # de 2025 el sábado 16/08) y un día sin boletín cuesta una sola petición.
+        if (a.saltar_existentes and ruta.exists() and
                                 json.loads(ruta.read_text(encoding="utf-8")).get("resultado") in {"ok", "sin_boletin"}):
             d += timedelta(days=1)
             continue

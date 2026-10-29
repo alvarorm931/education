@@ -30,25 +30,120 @@ RE_EMPLEO_LOCAL = re.compile(
     r"places|seleccio|borsa|oposicio|concurs|proces selectiu|proces de seleccio|ocupacio publica|"
     r"oferta\w* (?:\w+ ){0,3}d'ocupacio|aspirants|prazas?|persoal|emprego publico|oferta\w* (?:\w+ ){0,3}de emprego)\b")
 RE_NO_EMPLEO = re.compile(
-    r"\b(subvencion\w*|licencia\w*|urbanis\w*|ordenanza\w*|presupuesto\w*|expropiacion\w*|contratacion de (?:obras|servicios|suministro)\w*|"
+    r"\b(subvencion\w*|licencias?|urbanis\w*|ordenanzas? (?:fiscal\w*|reguladora\w*|municipal\w*|general\w*|de)|presupuesto\w*|expropiacion\w*|contratacion de (?:obras|servicios|suministro)\w*|"
     r"licitacion\w*|ayudas?|premios?|becas?|cuenta general|padron|tasas?|impuestos?|proyectos? de obras?|"
     r"ejecucion de (?:las )?obras|remodelacion|relacion de puestos de trabajo|viviendas?|alquiler\w*|"
-    r"subvencio\w*|llicencia\w*|ordenanca\w*|pressupost\w*|expropiacio\w*|"
+    r"subvencio\w*|llicencies?|llicencia\b|ordenances? (?:fiscal\w*|reguladora\w*|municipal\w*|general\w*|de)|pressupost\w*|expropiacio\w*|"
     r"contractacio de (?:les )?(?:obres|serveis|subministra)\w*|licitacio\w*|ajuts?|premis?|beques?|compte general|"
     r"padro|taxes|impostos?|projectes? d'obres?|execucio de (?:les )?obres|relacio de llocs de treball|"
     r"habitatges?|lloguer\w*|jutge\w*(?:/\w+)? de pau|(?:juez|jueces)\w*(?:/\w+)? de paz|bonos?|bons|campanas?|campanyes|campanya|"
     r"comercio\w*|comerc|entidad\w* colaborador\w*|entitat\w* col·laborador\w*|fomento del consumo|consum local|"
     r"licenza\w*|orzamento\w*|axudas?|bolsas? de estudos?|vivendas?|xuiz\w* de paz)\b")
-# Para boletines con todas las secciones mezcladas: hace falta además una palabra inequívoca de empleo público
-# («bases» solas pueden ser de una subvención o de un servicio)
+# Para boletines con todas las secciones mezcladas (BOP de Alicante, Valencia, Ciudad Real, Tenerife, SAGA) solo hay
+# título. Es anuncio de empleo público si (a) trae una expresión inequívoca, o (b) nombra un puesto y un trámite de
+# selección («BASES CONVOCATORIA TÉCNICO/A MEDIO/A INDUSTRIAL»), y en ambos casos no es de un asunto ajeno (taxi,
+# concursos de fiestas, cargos políticos, plantilla o RPT…). Revisado el 30/10/2026 sobre 55.368 títulos reales de los
+# BOP de Alicante y Valencia (tests/test_empleo_estricto.py recoge los casos).
 RE_EMPLEO_FUERTE = re.compile(
-    r"\b(plazas?|places|placa de|prazas?|oposicion\w*|oposicio|concurso[- ]oposicion|concurs[- ]oposicio|"
-    r"proceso selectivo|proces selectiu|proces de seleccio|proceso de seleccion|pruebas selectivas|proves selectives|"
-    r"bolsa de (?:empleo|trabajo|trabajadores)|borsa (?:de treball|d'ocupacio|d'aspirants|de personal)|bolsa de emprego|"
-    r"funcionari\w*|personal laboral|laboral (?:fij|temporal)\w*|oferta\w* (?:\w+ ){0,3}(?:de empleo|d'ocupacio|de emprego)|"
-    r"tribunal (?:calificador|qualificador|cualificador)|aspirantes|aspirants|admitid\w+ y excluid\w+|"
-    r"admes\w+ i exclos\w+|nombramiento|nomenament|nomeamento|puestos? de trabajo|llocs? de treball|postos? de traballo|"
-    r"seleccion de personal|seleccio de personal|interin\w*|interi|policia local|agente\w* de la policia)\b")
+    r"\b(plazas?|plz|places|placa|prazas?|oposicion\w*|oposicio\w*|concurso[- ]oposicion|concurs[- ]oposicio|"
+    r"procesos? selectiv\w*|proces\w* selectiu\w*|proces\w* de seleccio|procesos? de seleccion|"
+    r"procedimientos? selectiv\w*|procediment\w* selectiu\w*|"
+    r"pruebas selectivas|proves selectives|probas selectivas|proves de seleccio|curso selectivo|curs selectiu|"
+    r"bolsas? (?:de )?(?:empleo|trabajo|trabajadores|emprego)|bors(?:a|es) (?:de treball|d'ocupacio|d'aspirants|de personal)|"
+    r"funcionari\w*|personal laboral|laboral (?:fij|temporal)\w*|"
+    r"oferta\w* (?:\w+ ){0,3}(?:de |d')?(?:empleo|ocupacio|emprego)|empleo publico|ocupacio publica|emprego publico|oep|"
+    r"emplead\w* public\w*|empleats? public\w*|"
+    r"estabiliza\w*|estabilitza\w*|consolidacion de empleo|"
+    r"tribunal(?:es)? (?:calificador|qualificador|cualificador|de seleccion|seleccionador)|"
+    r"(?:composicion|designacion|nombramiento|constitucion|miembros|composicio|designacio)\w* (?:del |de los |dels )?tribunal|"
+    r"aspirantes|aspirants|admitid\w+ (?:y|e) excluid\w+|admes\w+ i exclos\w+|admitid[oa]s|excluid[oa]s|"
+    r"incluid[oa]s y excluid[oa]s|"
+    r"(?:primer|segundo|tercer|unico|1er|2o)\w* ejercicio|ejercicio (?:practico|teorico|unico|de la fase)|"
+    r"(?:primer|segon|tercer|unic) exercici|exercici (?:practic|teoric|unic)|"
+    r"(?:fecha|lugar|hora|data|lloc)\w* (?:\w+ ){0,4}(?:examen|ejercicio|exercici|prueba|prova|entrevista)|"
+    r"nombramiento|nomenament|nomeamento|toma de posesion|presa de possessio|"
+    r"puestos? de trabajo|llocs? de treball|postos? de traballo|"
+    r"seleccion de personal|seleccio de personal|interin\w*|interi|policia local|agente\w* de (?:la )?policia|"
+    r"libre designacion|lliure designacio|comision de servicios?|comissio de serveis|concurso de meritos|concurs de merits|"
+    r"concurso\w* (?:\w+ ){0,2}(?:de )?(?:traslados|provision)|mejora de empleo|millora d'ocupacio|promocion interna|"
+    r"promocio interna|turno de movilidad|torn de mobilitat|contratacion (?:laboral )?(?:temporal )?de personal|"
+    r"contractacio (?:laboral )?(?:temporal )?de personal)\b")
+# Un puesto de trabajo con nombre propio (o su escala, grupo o categoría)
+RE_PUESTO = re.compile(
+    r"\b(tecnic[oa]?s?|tecniques|auxiliar\w*|aux|administrativ\w*|administratiu\w*|adm|conserje\w*|conserge\w*|"
+    r"ordenanza\w*|subaltern\w*|peon\w*|peo|operari\w*|oficial\w* (?:de )?(?:primera|segunda|1a|2a|policia|"
+    r"mantenimiento|servicios|obras|jardineria|electricista|fontanero|conductor|albanil|pintor|carpintero)|ofic|"
+    r"encargad\w*|encarregat\w*|capataz\w*|jardiner\w*|electricista\w*|fontaner\w*|albanil\w*|mecanic[oa]s?|"
+    r"conductor\w*|chofer\w*|limpiador\w*|netejador\w*|cocinero\w*|cuiner\w*|monitor\w*|educador\w*|maestr[oa]s?|"
+    r"mestres?|profesor\w*|professor\w*|docent\w*|psicolog[oa]s?|trabajador\w* social\w*|treballador\w* social\w*|"
+    r"arquitect\w*|aparejador\w*|ingenier\w*|enginyer\w*|delineant\w*|informatic[oa]s?|programador\w*|analista\w*|"
+    r"letrad\w*|lletrat\w*|abogad\w*|advocat\w*|tag|tae|secretari[oa]s?|interventor\w*|tesorer[oa]s?|"
+    r"tresorer[ae]?s?|recaudador\w*|inspector\w*|intendent\w*|escala\w*|subescala\w*|subgrup\w*|grupo [abce][12]?|"
+    r"grup [abce][12]?|agentes?|agent|policias?|bomber\w*|socorrista\w*|vigilant\w*|alguacil\w*|agutzil\w*|"
+    r"sepulturer\w*|operador\w*|telefonist\w*|recepcionist\w*|bibliotecari\w*|arxiver\w*|archiver\w*|"
+    r"documentalist\w*|animador\w*|dinamitzador\w*|dinamizador\w*|aedl|adl|promotor\w*|orientador\w*|mediador\w*|"
+    r"enfermer\w*|infermer\w*|medic[oa]s?|metges?|fisioterapeut\w*|logoped\w*|terapeut\w*|gerocultor\w*|cuidador\w*|"
+    r"veterinari\w*|farmaceutic\w*|quimic[oa]s?|biolog[oa]s?|economista\w*|periodista\w*|traductor\w*|"
+    r"jefe\w*|cap de (?:servei|seccio|negociat|brigada|area|policia|grup)|coordinador\w*|gestor\w*|gerente\w*|"
+    r"director\w* (?:de la |del |de )?(?:escuela|escola|conservatorio|museo|museu|banda|centro|area)|directiv\w*|"
+    r"sanitari[oa]s?|bedel\w*|informador\w*|administrador\w*|ayudante\w*|ajudant\w*|volante\w*|personal)\b")
+# Un trámite de selección o provisión. Ni «ejercicio» (también es el año presupuestario) ni «calificación» (también
+# es urbanística).
+RE_TRAMITE = re.compile(
+    r"\b(convoca\w*|bases|llista\w*|lista\w*|listado\w*|relacion\w* (?:provisional|definitiva|de aprobados)|"
+    r"relacio\w* (?:provisional|definitiva|d'aprovats)|seleccion\w*|seleccio\w*|cubrir|cobertura|provision\w*|"
+    r"provisio\w*|bolsa|borsa|borses|tribunal|nombra\w*|nomena\w*|proces\w*|procedimiento|vacante\w*|examen\w*|"
+    r"prueba\w*|proves|aprobados|aprovats|baremacion|meritos|merits|contratacion|contractacio)\b")
+# Asuntos ajenos al empleo público que también usan «bases», «convocatoria», «concurso» o «nombramiento»
+RE_NO_EMPLEO_TITULO = re.compile(
+    r"\b(taxis?|auto-?taxi|euro-?taxi|vtc|certamen\w*|carnaval\w*|disfra\w*|reinas?|falleras?|moros y cristianos|"
+    r"deportistas?|huerto\w*|concurso\w* (?:\w+ ){0,4}(?:fotograf\w*|cartel\w*|pintura|relato\w*|poesia|literari\w*|"
+    r"belen\w*|escaparat\w*|carroza\w*|dibujo\w*|portada\w*|decoracion|calles|gastronom\w*|tapas|cocina|ideas|logotipo|"
+    r"paellas?|tarjetas?|creacion|video\w*|cortos?)|"
+    r"concurs\w* (?:\w+ ){0,4}(?:fotograf\w*|cartell\w*|pintura|relat\w*|poesia|literari\w*|betlem\w*|aparador\w*|"
+    r"carross\w*|dibuix\w*|portada\w*|decoracio|carrers|gastronom\w*|logotip|paell\w*|videos?|curts|difusio)|"
+    r"tenientes? de alcald\w*|tinents? d'alcald\w*|tenencias? de (?:la )?alcaldia|tinencies? d'alcaldia|"
+    r"alcald\w* accidental|delegacion\w* de (?:competencias|atribuciones|funciones)|"
+    r"delegacio\w* de (?:competencies|atribucions|funcions)|"
+    r"personal eventual|funcionari\w* eventual|emple\w* eventual|eventual\w* de confianza|cargos? de confianza|"
+    r"cap de gabinet|jefe de gabinete|dedicacion (?:exclusiva|parcial)|dedicacio (?:exclusiva|parcial)|"
+    r"regimen de dedicacion|cargos? con (?:derecho a )?(?:retribucion|dedicacion)|"
+    r"retribucion\w* (?:de )?(?:los )?(?:cargos|miembros|concejal\w*)|indemnizacion\w* por asistencia|"
+    r"grupos? politic\w*|grups? politic\w*|carrera profesional|carrera professional|evaluacion del desempeno|"
+    r"productividad|productivitat|certificado de capacitacion|certificat d'aptitud|pacto de alcaldes|"
+    r"juez\w* de paz|jutges? de pau|declaracion\w* (?:\w+ ){0,3}bienes|declaracio\w* (?:\w+ ){0,3}bens|"
+    r"registro de intereses|miembros de la corporacion|corporacion municipal|membres de la corporacio|"
+    r"convenios? (?:\w+ )?(?:de )?colaboracion|convenios? interadministrativ\w*|conveni\w* (?:\w+ )?(?:de )?col·laboracio|"
+    r"conveni\w* interadministratiu\w*|adhesion|adhesio|acuerdo[- ]marco|acord marc|"
+    r"(?:compartir|utilizacion|uso|utilitzacio|us) (?:\w+ ){0,3}(?:bolsas?|borses?|borsa)|padrons?|padrones|objetos perdidos|"
+    r"mesa de contratacion|mesa de contractacio|credito\w*|credits?|tresoreria|romanent|remanente\w*|"
+    r"plan\w* parcial\w*|plans parcials|planeamiento|planejament|parcel\w*|reparcel\w*|estudio de detalle|"
+    r"estudi de detall|modificacion puntual|modificacio puntual|calificacion juridica|qualificacio juridica|"
+    r"emplazamiento\w*|juzgado\w*|contencioso\w*|grupos municipales|grups municipals|cargos publicos|carrecs publics|"
+    r"amortiza\w*|amortitza\w*)\b")
+# Cambios de organización (reglamentos, plantilla, RPT, catálogo): no son un proceso, salvo que traigan sus bases
+RE_ORGANIZACION = re.compile(
+    r"\b(reglamento\w*|reglament\w*|(?:modificacion|modificacio|aprobacion|aprovacio|valoracion|valoracio|"
+    r"actualizacion|actualitzacio|correccion|exposicion|exposicio|creacion|creacio)\w* (?:\w+ ){0,4}(?:plantilla|rpt|"
+    r"r\.p\.t|relacion (?:de )?(?:los )?puestos|relacio de llocs|catalogo (?:de )?puestos|puestos de trabajo|"
+    r"llocs de treball)|catalogo (?:de )?puestos|plantilla (?:de )?personal(?: \w+)? (?:eventual|\d{4}|anualidad))\b")
+RE_BASES_DE_PROCESO = re.compile(r"\b(bases|convoca\w*|procesos? selectiv\w*|proces\w* selectiu\w*|estabiliza\w*|"
+                                 r"estabilitza\w*|provision|provisio)\b")
+# Sin un puesto con nombre, «plazas» o «nombramiento» pueden ser de otra cosa
+RE_CONTEXTO_NO_EMPLEO = re.compile(
+    r"\b(aparcamiento\w*|garaje\w*|plaza de toros|placa de bous|plaza mayor|placa major|vados?|escoleta\w*|"
+    r"guarderia\w*|alumn\w*|matricula\w*|admision\w* de (?:alumnos|ninos)|residencia\w*|centro de dia|centre de dia|"
+    r"mercado\w*|mercat\w*|mercadillo\w*|fiestas?|festes|feria\w*|fira|kiosco\w*|quiosco\w*|caseta\w*|nichos?|"
+    r"sepultura\w*|usuari\w*|socios?|plazas? (?:libres|disponibles) (?:en|para)|escuela de verano|escola d'estiu|"
+    r"campamento\w*|colonias|actividades|activitats|cursos?|talleres?|tallers?|inscripcion\w*|inscripcio\w*|"
+    r"representante\w*|consejo\w*|consell\w*|patronato\w*|patronat\w*|junta de gobierno|junta de govern|"
+    r"convenio colectivo|conveni col·lectiu|conveni collectiu|mesa general de negociacion|"
+    r"concejal\w*|regidor\w*|alcalde\w*|alcaldessa|portavoz\w*|portaveu\w*|exalcald\w*|president\w*|"
+    r"vicepresident\w*|calles?|carrers?|espacios publicos|denominacion\w*|honores|honors|medallas?|cronista\w*|"
+    r"predilect\w*|adoptiv\w*|organos colegiados|organs col·legiats|organs collegiats|vehiculos?|vehicles?|"
+    r"terrass\w*|terrazas?|veladores?|reduccion horaria|reduccio horaria|organismo autonomo|organisme autonom|"
+    r"portavoc\w*|aparcament\w*|parquing\w*|parking|organos?|organs?)\b")
+
 RE_RESULTADO = re.compile(
     r"\b(funcionari[oa]s? de carrera|personal laboral fijo|proceso selectivo|pruebas selectivas|aspirantes|"
     r"funcionari\w*(?:/\w+)? de carrera|personal laboral fix|proces selectiu|proves selectives|aspirants|"
@@ -106,15 +201,64 @@ def clasificar(titulo: str, apartado: str | None = None) -> dict:
             "alcance": alcance(t, modalidad, apartado)}
 
 
+# Expresiones que solo se usan para procesos de selección o provisión. Mandan sobre las exclusiones por tema
+# («técnico de urbanismo», «Consejería de Vivienda», «tasa de reposición», «plaza de ordenanza»): el 30/10/2026 había
+# unos 4.900 títulos así descartados entre todas las fuentes. Solo no mandan si el asunto son ayudas, premios o becas
+# y no se nombra ningún puesto («entidades admitidas y excluidas de la convocatoria de subvenciones»).
+RE_SELECCION_INEQUIVOCA = re.compile(
+    r"\b(procesos? selectiv\w*|proces\w* selectiu\w*|procedimientos? selectiv\w*|pruebas selectivas|proves selectives|"
+    r"probas selectivas|concurso[- ]oposicion|concurs[- ]oposicio|oposicion (?:libre|por turno)|"
+    r"bolsas? de (?:trabajo|empleo)|bors(?:a|es) de treball|bolsas? de emprego|admitid\w+ y excluid\w+|"
+    r"admes\w+ i exclos\w+|tribunal (?:calificador|qualificador|cualificador)|"
+    r"oferta (?:de empleo|publica de empleo|d'ocupacio|publica d'ocupacio|de emprego|publica de emprego)|"
+    r"funcionari\w* de carrer\w*|personal laboral fix\w*|persoal laboral fixo|"
+    r"provision (?:\w+ ){0,3}(?:del |de )?puestos? de trabajo|provisio (?:\w+ ){0,3}(?:del |de )?llocs? de treball|"
+    r"libre designacion|lliure designacio|libre designacion|concurso (?:especifico )?de meritos|"
+    r"concurs (?:especific )?de merits|estabiliza\w* (?:\w+ ){0,3}empleo|estabilitza\w* (?:\w+ ){0,3}ocupacio)\b")
+RE_AYUDAS = re.compile(r"\b(subvenci\w*|ayudas?|ajuts?|axudas?|premios?|premis|becas?|beques|licencias? por estudios|"
+                       r"entidades|entitats|candidaturas)\b")
+
+
+# Las tasas por participar en pruebas selectivas son ordenanzas fiscales, no procesos
+RE_FISCAL = re.compile(r"\b(ordenan\w* fiscal\w*|ofr|imposicion y ordenacion|tasas? (?:\w+ ){0,4}(?:pruebas|procesos|"
+                       r"derechos de examen|examen)|tax\w* (?:\w+ ){0,3}(?:processos|proves|drets d'examen)|"
+                       r"derechos de examen)\b")
+
+
+def _seleccion_inequivoca(t: str) -> bool:
+    if not RE_SELECCION_INEQUIVOCA.search(t) or RE_FISCAL.search(t):
+        return False
+    if RE_AYUDAS.search(t):
+        return any(m.group(0) != "personal" for m in RE_PUESTO.finditer(t))
+    return True
+
+
 def es_empleo_por_titulo(titulo: str) -> bool:
-    t = normalizar(titulo or "")
+    t = normalizar(titulo or "").replace("´", "'")
+    if _seleccion_inequivoca(t):
+        return True
     return bool(RE_EMPLEO_LOCAL.search(t)) and not RE_NO_EMPLEO.search(t)
+
+
+RE_GENERO_TITULO = re.compile(r"/(?:as?|es|os?|da|ra|na|la)\b")
 
 
 def es_empleo_estricto(titulo: str) -> bool:
     """Selección por título en boletines sin sección de personal (todos los anuncios mezclados)."""
-    t = normalizar(titulo or "")
-    return bool(RE_EMPLEO_FUERTE.search(t)) and not RE_NO_EMPLEO.search(t)
+    t = normalizar(titulo or "").replace("_", " ").replace("´", "'").replace("`", "'").replace("’", "'")
+    t = RE_GENERO_TITULO.sub("", t)  # «treballador/a social», «técnico/a medio/a»
+    if RE_NO_EMPLEO_TITULO.search(t):
+        return False
+    if _seleccion_inequivoca(t):
+        return True
+    if RE_NO_EMPLEO.search(t):
+        return False
+    if RE_ORGANIZACION.search(t) and not RE_BASES_DE_PROCESO.search(t):
+        return False
+    puesto = RE_PUESTO.search(t)
+    if RE_EMPLEO_FUERTE.search(t):
+        return bool(puesto) or not RE_CONTEXTO_NO_EMPLEO.search(t)
+    return bool(puesto and RE_TRAMITE.search(t))
 
 
 def es_resultado(titulo: str) -> bool:

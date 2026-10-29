@@ -22,3 +22,9 @@ def test_estado_y_alertas(tmp_path):
     assert d["informes"] == {"ok": 1, "error_http": 1} and not d["alerta"]
     assert e["con_alerta"] == ["bopb"]  # 7 días hábiles sin boletín
     assert estado.dias_habiles_entre(date(2026, 10, 23), date(2026, 10, 26)) == 1
+
+
+def test_huecos_de_numeracion_por_serie():
+    # BOME: ordinarios 64xx correlativos y extraordinarios 1, 2, 3… cada año; BOJA: ordinarios y 5xx.
+    numeros = {"2026": {6424, 6426, 47, 48, 50}, "2025": {1, 2, 3, 501, 503}}
+    assert estado.huecos_numeracion(numeros) == {"2025": [502], "2026": [49, 6425]}

@@ -35,3 +35,20 @@ def test_procesar_dia(tmp_path, monkeypatch):
     # El mismo contenido pedido para otro día se detecta (el servicio devolvió otra fecha)
     inf = boa.procesar_dia(date(2026, 10, 28), tmp_path, boa.Archivo(tmp_path / "archivo"))
     assert inf["resultado"] == "error_formato"
+
+
+def test_barras_invertidas_en_parejas_y_sueltas():
+    # Caso real (BOA 22/10/2026): una pareja «\\» seguida de una letra. La segunda barra no es un escape suelto.
+    crudo = rb'[{"Texto": "C:\\\\carpeta a\\b \usuario \u00e1 \" fin \ y \x"}]'
+    assert boa.leer_json(crudo)[0]["Texto"] == 'C:\\\\carpeta a\\b \\usuario á " fin \\ y \\x'
+
+
+def test_pagina_de_inicio_es_dia_sin_boletin(tmp_path, monkeypatch):
+    # 11/07/2026 (sábado sin boletín): 200 con la página de inicio en HTML en lugar de la lista JSON.
+    from motor.archivo import Archivo
+    from motor.http import Respuesta
+    inicio = b'\n<!DOCTYPE html>\n<html lang="es-ES">\n<head>\n<title>Bolet&iacute;n Oficial de Arag&oacute;n</title>'
+    for cuerpo in (inicio, b"\n"):
+        monkeypatch.setattr(boa, "obtener", lambda *a, **k: Respuesta("u", 200, cuerpo, {}))
+        inf = boa.procesar_dia(date(2026, 7, 11), tmp_path, Archivo(tmp_path / "archivo"))
+        assert inf["resultado"] == "sin_boletin"

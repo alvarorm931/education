@@ -74,3 +74,12 @@ def test_procesar_boletin(tmp_path, monkeypatch):
     # Una fecha que no cuadra con la cabecera es un error de formato, no un boletín válido
     assert boc.procesar_boletin(2026, 210, "2026-10-22", tmp_path, archivo)["resultado"] == "error_formato"
     assert boc.procesar_boletin(2026, 211, "2026-10-22", tmp_path, archivo)["resultado"] == "sin_boletin"
+
+
+def test_extraordinario():
+    # 22/10/2026: el n.º 212 es extraordinario y su cabecera dice «BOC EXTRAORDINARIO Nº 212»; antes daba error de
+    # formato y el boletín no se leía (26 así en cuatro años).
+    html = (FIX / "boc_2026_212_extraordinario.html").read_text(encoding="utf-8")
+    assert boc.cabecera(html) == (212, "2026-10-22")
+    assert boc.RE_EXTRAORDINARIO.search(html)
+    assert boc.parsear_boletin(html, 2026, 212, "2026-10-22")
