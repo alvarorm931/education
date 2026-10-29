@@ -67,3 +67,16 @@ def test_procesar_boletin(tmp_path, monkeypatch):
     assert inf["resultado"] == "ok" and inf["fecha"] == "2026-10-29" and inf["empleo_publico"] == 3
     assert bopv.procesar_boletin(2026, 208, tmp_path, archivo)["resultado"] == "sin_boletin"
     assert len(bopv.textos_pendientes(tmp_path)) == 3
+
+
+def test_boletin_del_dia_siguiente(tmp_path, monkeypatch):
+    """El sumario del día siguiente sale la tarde anterior, pero sus páginas están vacías: no se procesa aún."""
+    from datetime import date
+
+    import pytest
+    monkeypatch.setattr(bopv, "obtener", lambda url, accept=None: SimpleNamespace(
+        status=200, contenido=(FIX / "bopv_2026_207.html").read_bytes(), cabeceras={}, url=url))
+    inf = bopv.procesar_boletin(2026, 207, tmp_path, bopv.Archivo(tmp_path / "archivo"), date(2026, 10, 28))
+    assert inf["resultado"] == "posterior" and not (tmp_path / "datos").exists()
+    with pytest.raises(ValueError):
+        bopv.texto_disposicion((FIX / "bopv_2604571_antes_de_publicar.html").read_bytes())

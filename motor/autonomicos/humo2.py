@@ -13,6 +13,7 @@ import argparse
 import json
 import sys
 import traceback
+from datetime import date
 from pathlib import Path
 
 from motor.archivo import Archivo
@@ -53,10 +54,20 @@ def prueba_boc(raiz: Path, archivo: Archivo) -> dict:
 
 def prueba_bopv(raiz: Path, archivo: Archivo) -> dict:
     return {"boletin_2026_207": bopv.procesar_boletin(2026, 207, raiz, archivo),
-            "boletin_2026_208": bopv.procesar_boletin(2026, 208, raiz, archivo),
+            "boletin_2026_208_con_hasta_hoy": bopv.procesar_boletin(2026, 208, raiz, archivo, date.today()),
             "boletin_2022_001": bopv.procesar_boletin(2022, 1, raiz, archivo),
             "inexistente_2026_999": bopv.procesar_boletin(2026, 999, raiz, archivo),
             "textos": _textos(bopv, raiz, archivo)}
+
+
+def prueba_bucles(raiz: Path) -> dict:
+    """Los bucles principales sobre tres días de 2022 (pocas peticiones)."""
+    r = raiz / "bucles"
+    codigos = {"boc": boc.main(["--desde", "2022-01-03", "--hasta", "2022-01-05", "--salida", str(r), "--pausa", "0.5"]),
+               "bopv": bopv.main(["--desde", "2022-01-03", "--hasta", "2022-01-05", "--salida", str(r), "--pausa", "0.5"])}
+    informes = {f.relative_to(r).as_posix(): json.loads(f.read_text(encoding="utf-8")).get("resultado")
+                for f in sorted(r.rglob("boletines/*/*.json"))}
+    return {"codigos": codigos, "informes": informes}
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -65,9 +76,11 @@ def main(argv: list[str] | None = None) -> int:
     a = p.parse_args(argv)
     raiz, archivo = a.salida, Archivo(a.salida / "archivo")
     resultado, fallos = {}, 0
-    for nombre, prueba in (("boc", prueba_boc), ("bopv", prueba_bopv)):
+    pruebas = (("boc", lambda: prueba_boc(raiz, archivo)), ("bopv", lambda: prueba_bopv(raiz, archivo)),
+               ("bucles", lambda: prueba_bucles(raiz)))
+    for nombre, prueba in pruebas:
         try:
-            resultado[nombre] = prueba(raiz, archivo)
+            resultado[nombre] = prueba()
             print(nombre, json.dumps(resultado[nombre], ensure_ascii=False)[:1500])
         except Exception:
             fallos += 1

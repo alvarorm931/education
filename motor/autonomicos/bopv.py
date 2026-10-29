@@ -10,6 +10,8 @@ Formato verificado el 29/10/2026 desde GitHub (también para 2022). Todo en ISO-
   - Disposición: texto en p.BOPVDetalle y tablas, entre p.BOPVTitulo y el campo oculto bopvNumOrden.
   - Empleo público: «AUTORIDADES Y PERSONAL» > «Oposiciones y concursos» (todo) y «Nombramientos, situaciones e
     incidencias» (solo resultados de procesos); «ANUNCIOS» seleccionados por el título.
+  - El sumario del día siguiente aparece la tarde anterior, pero sus disposiciones son páginas vacías hasta el día de
+    publicación: no se procesa un boletín con fecha posterior a hoy.
   - Último boletín (RSS): https://www.euskadi.eus/bopv2/datos/Ultimo.xml
 
 Uso:
@@ -157,7 +159,9 @@ def _ruta_datos(raiz: Path, carpeta: str, fecha: str, numero: int) -> Path:
     return _base(raiz) / carpeta / fecha[:4] / fecha[5:7] / f"{fecha[8:10]}-{numero:03d}.jsonl"
 
 
-def procesar_boletin(anio: int, numero: int, raiz: Path, archivo: Archivo) -> dict:
+def procesar_boletin(anio: int, numero: int, raiz: Path, archivo: Archivo, hasta: date | None = None) -> dict:
+    """hasta: no se procesa un boletín con fecha posterior (el sumario sale la tarde anterior, pero las
+    disposiciones no se pueden leer hasta el día de publicación)."""
     url = url_boletin(anio, numero)
     r = obtener(url, accept="text/html")
     informe = {"anio": anio, "numero": numero, "status": r.status, "alertas": []}
@@ -177,6 +181,9 @@ def procesar_boletin(anio: int, numero: int, raiz: Path, archivo: Archivo) -> di
         informe["resultado"] = "error_formato"
         informe["alertas"].append(f"BOPV {anio}/{numero}: la cabecera dice número {n_cab} y fecha {fecha}")
         return informe
+    if hasta and fecha > hasta.isoformat():
+        informe.update({"resultado": "posterior", "fecha": fecha})
+        return informe
     captura = archivo.guardar(FUENTE, date.fromisoformat(fecha), r.contenido, url, "html", r.status, r.cabeceras)
     filas = [f | {"captura_sha256": captura["sha256"]} for f in parsear_boletin(html, numero, fecha)]
     empleo = seleccionar(filas)
@@ -193,16 +200,19 @@ def texto_disposicion(contenido: bytes) -> dict:
     html = _html(contenido)
     i = html.find('<p class="BOPVTitulo">')
     if i < 0:
-        raise ValueError("sin BOPVTitulo: posible cambio de formato")
+        # Antes del día de publicación la página existe pero está vacía: queda pendiente para otra ejecución
+        raise ValueError("sin BOPVTitulo: disposición aún no publicada o cambio de formato")
     fin = html.find('name="bopvNumOrden"', i)
     cuerpo = html[i:fin if fin > 0 else None]
     titulo = re.search(r'<p class="BOPVTitulo">(.*?)</p>', cuerpo, re.DOTALL)
-    limpio = limpiar_html(cuerpo[titulo.end():] if titulo else cuerpo)
+    if titulo is None:
+        raise ValueError("disposición sin título: posible cambio de formato")
+    limpio = limpiar_html(cuerpo[titulo.end():])
 
     def _cab(clase: str) -> str | None:
         m = re.search(rf'<h[45] class="{clase}">(.*?)</h[45]>', html, re.DOTALL)
-        return texto_de(m.group(1)) or None if m else None
-    return {"titulo": texto_de(titulo.group(1)) if titulo else None, "seccion": _cab("BOPVSeccion"),
+        return (texto_de(m.group(1)) or None) if m else None
+    return {"titulo": texto_de(titulo.group(1)), "seccion": _cab("BOPVSeccion"),
             "subseccion": _cab("BOPVSubseccion"), "organismo": _cab("BOPVOrganismo"), **limpio}
 
 
@@ -254,15 +264,15 @@ def main(argv: list[str] | None = None) -> int:
                 print("Tiempo agotado; se continúa en la siguiente ejecución")
                 return _final(informes)
             try:
-                inf = procesar_boletin(anio, numero, a.salida, archivo)
+                inf = procesar_boletin(anio, numero, a.salida, archivo, min(a.hasta, hoy))
             except ConnectionError as e:
                 inf = {"anio": anio, "numero": numero, "resultado": "fuente_inaccesible", "alertas": [str(e)]}
             informes.append(inf)
             time.sleep(a.pausa)
             if inf["resultado"] != "ok":
-                # Número aún no publicado (fin del año en curso) o fallo: se sigue en la siguiente ejecución.
-                # No se guarda informe de «sin_boletin» para poder volver a pedirlo.
-                if inf["resultado"] != "sin_boletin":
+                # Número aún no publicado (fin del año en curso), con fecha posterior o fallo: se sigue en la
+                # siguiente ejecución. No se guarda informe de «sin_boletin» ni de «posterior» para volver a pedirlo.
+                if inf["resultado"] not in {"sin_boletin", "posterior"}:
                     escribir_json(ruta, inf)
                     print(f"BOPV {anio}/{numero}: {inf['resultado']}")
                 break
