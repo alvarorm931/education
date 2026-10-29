@@ -1,0 +1,736 @@
+{
+  "id" : "szwh-xrga",
+  "name" : "Convocatòries per a l’accés a la funció pública de la Generalitat de Catalunya",
+  "assetType" : "dataset",
+  "attribution" : "Escola d'Administració Pública de Catalunya (EAPC)",
+  "attributionLink" : "https://administraciodigital.gencat.cat/ca/dades/dades-obertes/informacio-practica/llicencies/",
+  "averageRating" : 0,
+  "category" : "Sector Públic",
+  "createdAt" : 1647864577,
+  "description" : "Quadre-resum de convocatòries d’accés publicades al DOGC durant el període 1997 fins l'actualitat, corresponents a la unitat competent en matèria de funció pública.\n\nDocument informatiu, transcripció de dades referents a convocatòries d'accés publicades al DOGC.",
+  "diciBackend" : false,
+  "displayType" : "table",
+  "downloadCount" : 1753,
+  "hideFromCatalog" : false,
+  "hideFromDataJson" : false,
+  "licenseId" : "SEE_TERMS_OF_USE",
+  "locked" : false,
+  "newBackend" : true,
+  "numberOfComments" : 0,
+  "oid" : 2693780,
+  "provenance" : "official",
+  "publicationAppendEnabled" : false,
+  "publicationDate" : 1686570882,
+  "publicationGroup" : 1549130,
+  "publicationStage" : "published",
+  "rowsUpdatedAt" : 1763124049,
+  "rowsUpdatedBy" : "9rf2-9pth",
+  "tableId" : 1810874,
+  "totalTimesRated" : 0,
+  "viewCount" : 72870,
+  "viewLastModified" : 1789638776,
+  "viewType" : "tabular",
+  "approvals" : [ {
+    "reviewedAt" : 1647865160,
+    "reviewedAutomatically" : true,
+    "state" : "approved",
+    "submissionId" : 1346229,
+    "submissionObject" : "public_audience_request",
+    "submissionOutcome" : "change_audience",
+    "submittedAt" : 1647865160,
+    "targetAudience" : "public",
+    "workflowId" : 182,
+    "submissionDetails" : {
+      "permissionType" : "READ"
+    },
+    "submissionOutcomeApplication" : {
+      "endedAt" : 1647865161,
+      "failureCount" : 0,
+      "startedAt" : 1647865160,
+      "status" : "success"
+    },
+    "submitter" : {
+      "id" : "m3kn-rqev",
+      "displayName" : "SGOID"
+    }
+  } ],
+  "clientContext" : {
+    "clientContextVariables" : [ ],
+    "inheritedVariables" : { }
+  },
+  "columns" : [ {
+    "id" : 24730207,
+    "name" : "Oferta",
+    "dataTypeName" : "text",
+    "description" : "Any de publicació de l’oferta d’ocupació pública",
+    "fieldName" : "oferta",
+    "position" : 1,
+    "renderTypeName" : "text",
+    "tableColumnId" : 13978854,
+    "cachedContents" : {
+      "non_null" : "492",
+      "largest" : "PESCO 2017",
+      "null" : "0",
+      "top" : [ {
+        "item" : "2022",
+        "count" : "233"
+      }, {
+        "item" : "2006",
+        "count" : "40"
+      }, {
+        "item" : "2001",
+        "count" : "21"
+      }, {
+        "item" : "2003",
+        "count" : "20"
+      }, {
+        "item" : "2007",
+        "count" : "20"
+      }, {
+        "item" : "2002",
+        "count" : "20"
+      }, {
+        "item" : "1998",
+        "count" : "19"
+      }, {
+        "item" : "2010",
+        "count" : "18"
+      }, {
+        "item" : "1999",
+        "count" : "16"
+      }, {
+        "item" : "2023",
+        "count" : "13"
+      }, {
+        "item" : "2004",
+        "count" : "12"
+      }, {
+        "item" : "2009",
+        "count" : "11"
+      }, {
+        "item" : "2017",
+        "count" : "11"
+      }, {
+        "item" : "1997",
+        "count" : "9"
+      }, {
+        "item" : "2008",
+        "count" : "9"
+      }, {
+        "item" : "2015",
+        "count" : "7"
+      }, {
+        "item" : "PESCO 2017",
+        "count" : "4"
+      }, {
+        "item" : "Llei 2/2015",
+        "count" : "4"
+      }, {
+        "item" : "Llei 1/2014",
+        "count" : "3"
+      }, {
+        "item" : "2005",
+        "count" : "1"
+      } ],
+      "smallest" : "1997",
+      "count" : "492",
+      "cardinality" : "492"
+    },
+    "format" : { }
+  }, {
+    "id" : 24730208,
+    "name" : "Núm.convocatòria",
+    "dataTypeName" : "number",
+    "description" : "Número de registre de la convocatòria del procés selectiu ",
+    "fieldName" : "num_convocatoria",
+    "position" : 2,
+    "renderTypeName" : "number",
+    "tableColumnId" : 13978853,
+    "cachedContents" : {
+      "non_null" : "492",
+      "largest" : "810",
+      "null" : "0",
+      "top" : [ {
+        "item" : "400",
+        "count" : "108"
+      }, {
+        "item" : "300",
+        "count" : "51"
+      }, {
+        "item" : "600",
+        "count" : "36"
+      }, {
+        "item" : "700",
+        "count" : "30"
+      }, {
+        "item" : "810",
+        "count" : "13"
+      }, {
+        "item" : "650",
+        "count" : "6"
+      }, {
+        "item" : "113",
+        "count" : "4"
+      }, {
+        "item" : "48",
+        "count" : "4"
+      }, {
+        "item" : "52",
+        "count" : "3"
+      }, {
+        "item" : "114",
+        "count" : "3"
+      }, {
+        "item" : "112",
+        "count" : "3"
+      }, {
+        "item" : "144",
+        "count" : "3"
+      }, {
+        "item" : "185",
+        "count" : "2"
+      }, {
+        "item" : "167",
+        "count" : "2"
+      }, {
+        "item" : "149",
+        "count" : "2"
+      }, {
+        "item" : "53",
+        "count" : "2"
+      }, {
+        "item" : "47",
+        "count" : "2"
+      }, {
+        "item" : "120",
+        "count" : "2"
+      }, {
+        "item" : "51",
+        "count" : "2"
+      }, {
+        "item" : "117",
+        "count" : "2"
+      } ],
+      "smallest" : "1",
+      "count" : "492",
+      "cardinality" : "492"
+    },
+    "format" : { }
+  }, {
+    "id" : 24730218,
+    "name" : "Codi convocatòria",
+    "dataTypeName" : "text",
+    "description" : "Codi de la convocatòria.",
+    "fieldName" : "codi_convocatria",
+    "position" : 3,
+    "renderTypeName" : "text",
+    "tableColumnId" : 15149211,
+    "cachedContents" : {
+      "non_null" : "244",
+      "largest" : "823",
+      "null" : "248",
+      "top" : [ {
+        "item" : "497",
+        "count" : "1"
+      }, {
+        "item" : "604",
+        "count" : "1"
+      }, {
+        "item" : "726",
+        "count" : "1"
+      }, {
+        "item" : "325",
+        "count" : "1"
+      }, {
+        "item" : "627",
+        "count" : "1"
+      }, {
+        "item" : "465",
+        "count" : "1"
+      }, {
+        "item" : "346",
+        "count" : "1"
+      }, {
+        "item" : "623",
+        "count" : "1"
+      }, {
+        "item" : "442",
+        "count" : "1"
+      }, {
+        "item" : "315",
+        "count" : "1"
+      }, {
+        "item" : "819",
+        "count" : "1"
+      }, {
+        "item" : "706",
+        "count" : "1"
+      }, {
+        "item" : "455",
+        "count" : "1"
+      }, {
+        "item" : "491",
+        "count" : "1"
+      }, {
+        "item" : "701",
+        "count" : "1"
+      }, {
+        "item" : "818",
+        "count" : "1"
+      }, {
+        "item" : "628",
+        "count" : "1"
+      }, {
+        "item" : "508",
+        "count" : "1"
+      }, {
+        "item" : "309",
+        "count" : "1"
+      }, {
+        "item" : "462",
+        "count" : "1"
+      } ],
+      "smallest" : "300",
+      "count" : "492",
+      "cardinality" : "492"
+    },
+    "format" : { }
+  }, {
+    "id" : 24730217,
+    "name" : "Administració",
+    "dataTypeName" : "text",
+    "description" : "Col·lectiu de les places convocades: General: cossos d'administració general Especial: cossos d'administració especial",
+    "fieldName" : "administracio",
+    "position" : 4,
+    "renderTypeName" : "text",
+    "tableColumnId" : 15149210,
+    "cachedContents" : {
+      "non_null" : "492",
+      "largest" : "GRAL",
+      "null" : "0",
+      "top" : [ {
+        "item" : "EXC.",
+        "count" : "233"
+      }, {
+        "item" : "ESP.",
+        "count" : "170"
+      }, {
+        "item" : "GRAL",
+        "count" : "89"
+      } ],
+      "smallest" : "ESP.",
+      "count" : "492",
+      "cardinality" : "492"
+    },
+    "format" : { }
+  }, {
+    "id" : 24730219,
+    "name" : "Subgrup",
+    "dataTypeName" : "text",
+    "description" : "Subgrups de personal –A1, A2, A3, B1, C1, C2, D1, D2 i E- convocats al procés selectiu ",
+    "fieldName" : "subgrup",
+    "position" : 5,
+    "renderTypeName" : "text",
+    "tableColumnId" : 15149212,
+    "cachedContents" : {
+      "non_null" : "492",
+      "largest" : "E",
+      "null" : "0",
+      "top" : [ {
+        "item" : "A1",
+        "count" : "215"
+      }, {
+        "item" : "A2",
+        "count" : "90"
+      }, {
+        "item" : "C1",
+        "count" : "64"
+      }, {
+        "item" : "D1",
+        "count" : "34"
+      }, {
+        "item" : "C2",
+        "count" : "30"
+      }, {
+        "item" : "E",
+        "count" : "25"
+      }, {
+        "item" : "B1",
+        "count" : "24"
+      }, {
+        "item" : "D2",
+        "count" : "8"
+      }, {
+        "item" : "A3",
+        "count" : "2"
+      } ],
+      "smallest" : "A1",
+      "count" : "492",
+      "cardinality" : "492"
+    },
+    "format" : { }
+  }, {
+    "id" : 24730211,
+    "name" : "Torns",
+    "dataTypeName" : "text",
+    "description" : "Torn d’accés a la convocatòria: TL: Torn lliure, PI: Promoció interna, TL/PI: Torn lliure i promoció interna, Estabilització i Funcionarització",
+    "fieldName" : "torns",
+    "position" : 6,
+    "renderTypeName" : "text",
+    "tableColumnId" : 13978850,
+    "cachedContents" : {
+      "non_null" : "492",
+      "largest" : "TL/Restringit",
+      "null" : "0",
+      "top" : [ {
+        "item" : "Estabilització",
+        "count" : "233"
+      }, {
+        "item" : "TL",
+        "count" : "97"
+      }, {
+        "item" : "Funcionarització",
+        "count" : "61"
+      }, {
+        "item" : "PI/TL",
+        "count" : "53"
+      }, {
+        "item" : "PI",
+        "count" : "36"
+      }, {
+        "item" : "Reserva especial",
+        "count" : "11"
+      }, {
+        "item" : "TL/Restringit",
+        "count" : "1"
+      } ],
+      "smallest" : "Estabilització",
+      "count" : "492",
+      "cardinality" : "492"
+    },
+    "format" : { }
+  }, {
+    "id" : 24730214,
+    "name" : "Descripció",
+    "dataTypeName" : "text",
+    "description" : "Nom del cos objecte de convocatòria del procés selectiu.",
+    "fieldName" : "descripcio",
+    "position" : 7,
+    "renderTypeName" : "text",
+    "tableColumnId" : 15149207,
+    "cachedContents" : {
+      "non_null" : "492",
+      "largest" : "Xofer/a del servei de representació",
+      "null" : "0",
+      "top" : [ {
+        "item" : "Cos superior d'administració",
+        "count" : "16"
+      }, {
+        "item" : "Cos administratiu",
+        "count" : "16"
+      }, {
+        "item" : "Cos de gestió d'administració",
+        "count" : "14"
+      }, {
+        "item" : "Cos auxiliar d'administració",
+        "count" : "12"
+      }, {
+        "item" : "Cos de titulació superior, arquitectura",
+        "count" : "11"
+      }, {
+        "item" : "Cos de titulació superior, salut pública",
+        "count" : "11"
+      }, {
+        "item" : "Cos subaltern d'administració",
+        "count" : "11"
+      }, {
+        "item" : "Cos de titulació superior, enginyeria industrial",
+        "count" : "10"
+      }, {
+        "item" : "Cos d'advocacia",
+        "count" : "10"
+      }, {
+        "item" : "Cos tècnic d'especialistes, analistes de laboratori",
+        "count" : "9"
+      }, {
+        "item" : "Cos de titulació superior, arxivística",
+        "count" : "8"
+      }, {
+        "item" : "Cos de titulació superior, enginyeria agrònoma",
+        "count" : "8"
+      }, {
+        "item" : "Cos de titulació superior, enginyeria de camins, canals i ports",
+        "count" : "8"
+      }, {
+        "item" : "Cos tècnic d'especialistes, delineació",
+        "count" : "8"
+      }, {
+        "item" : "Cos de titulació superior, psicologia",
+        "count" : "7"
+      }, {
+        "item" : "Cos de diplomatura, biblioteconomia",
+        "count" : "7"
+      }, {
+        "item" : "Cos de diplomatura, enginyeria tècnica agrícola",
+        "count" : "7"
+      }, {
+        "item" : "Cos de titulació superior, planificació lingüística",
+        "count" : "7"
+      }, {
+        "item" : "Cos de diplomatura, enginyeria tècnica industrial",
+        "count" : "7"
+      }, {
+        "item" : "Cos de diplomatura, arquitectura tècnica",
+        "count" : "7"
+      } ],
+      "smallest" : "Agent censal",
+      "count" : "492",
+      "cardinality" : "492"
+    },
+    "format" : { }
+  }, {
+    "id" : 24730215,
+    "name" : "Règim jurídic",
+    "dataTypeName" : "text",
+    "description" : "Règim jurídic del personal convocat al procés selectiu.",
+    "fieldName" : "regim_juridic",
+    "position" : 8,
+    "renderTypeName" : "text",
+    "tableColumnId" : 15149208,
+    "cachedContents" : {
+      "non_null" : "492",
+      "largest" : "Personal laboral",
+      "null" : "0",
+      "top" : [ {
+        "item" : "Personal funcionari",
+        "count" : "341"
+      }, {
+        "item" : "Personal laboral",
+        "count" : "138"
+      }, {
+        "item" : "Funcionari",
+        "count" : "13"
+      } ],
+      "smallest" : "Funcionari",
+      "count" : "492",
+      "cardinality" : "492"
+    },
+    "format" : { }
+  }, {
+    "id" : 24730213,
+    "name" : "DOGC",
+    "dataTypeName" : "text",
+    "description" : "Número del DOGC de la publicació de la resolució de la convocatòria del procés selectiu.",
+    "fieldName" : "dogc",
+    "position" : 9,
+    "renderTypeName" : "text",
+    "tableColumnId" : 13978848,
+    "cachedContents" : {
+      "non_null" : "492",
+      "largest" : "9063",
+      "null" : "0",
+      "top" : [ {
+        "item" : "8687",
+        "count" : "159"
+      }, {
+        "item" : "8816",
+        "count" : "74"
+      }, {
+        "item" : "3916",
+        "count" : "15"
+      }, {
+        "item" : "9063",
+        "count" : "13"
+      }, {
+        "item" : "3938",
+        "count" : "10"
+      }, {
+        "item" : "4630",
+        "count" : "9"
+      }, {
+        "item" : "4970",
+        "count" : "8"
+      }, {
+        "item" : "3425",
+        "count" : "7"
+      }, {
+        "item" : "4622",
+        "count" : "7"
+      }, {
+        "item" : "3430",
+        "count" : "6"
+      }, {
+        "item" : "3147",
+        "count" : "6"
+      }, {
+        "item" : "4867",
+        "count" : "5"
+      }, {
+        "item" : "4817",
+        "count" : "5"
+      }, {
+        "item" : "2879",
+        "count" : "5"
+      }, {
+        "item" : "3422",
+        "count" : "4"
+      }, {
+        "item" : "5543",
+        "count" : "4"
+      }, {
+        "item" : "5646",
+        "count" : "4"
+      }, {
+        "item" : "5208",
+        "count" : "4"
+      }, {
+        "item" : "4628",
+        "count" : "4"
+      }, {
+        "item" : "4706",
+        "count" : "4"
+      } ],
+      "smallest" : "2531",
+      "count" : "492",
+      "cardinality" : "492"
+    },
+    "format" : { }
+  }, {
+    "id" : 24730216,
+    "name" : "Data DOGC",
+    "dataTypeName" : "calendar_date",
+    "description" : "Data de la publicació de la convocatòria al DOGC.",
+    "fieldName" : "data_dogc",
+    "position" : 10,
+    "renderTypeName" : "calendar_date",
+    "tableColumnId" : 15149209,
+    "cachedContents" : {
+      "non_null" : "492",
+      "largest" : "2023-12-19T00:00:00.000",
+      "null" : "0",
+      "top" : [ {
+        "item" : "2022-06-13T00:00:00.000",
+        "count" : "159"
+      }, {
+        "item" : "2022-12-20T00:00:00.000",
+        "count" : "74"
+      }, {
+        "item" : "2003-07-02T00:00:00.000",
+        "count" : "15"
+      }, {
+        "item" : "2023-12-19T00:00:00.000",
+        "count" : "13"
+      }, {
+        "item" : "2003-08-01T00:00:00.000",
+        "count" : "10"
+      }, {
+        "item" : "2006-05-10T00:00:00.000",
+        "count" : "9"
+      }, {
+        "item" : "2007-09-18T00:00:00.000",
+        "count" : "8"
+      }, {
+        "item" : "2001-07-06T00:00:00.000",
+        "count" : "7"
+      }, {
+        "item" : "2006-04-27T00:00:00.000",
+        "count" : "7"
+      }, {
+        "item" : "2000-05-25T00:00:00.000",
+        "count" : "6"
+      }, {
+        "item" : "2001-07-13T00:00:00.000",
+        "count" : "6"
+      }, {
+        "item" : "2007-02-08T00:00:00.000",
+        "count" : "5"
+      }, {
+        "item" : "2007-04-23T00:00:00.000",
+        "count" : "5"
+      }, {
+        "item" : "1999-04-30T00:00:00.000",
+        "count" : "5"
+      }, {
+        "item" : "2010-01-12T00:00:00.000",
+        "count" : "4"
+      }, {
+        "item" : "2010-06-09T00:00:00.000",
+        "count" : "4"
+      }, {
+        "item" : "2008-09-03T00:00:00.000",
+        "count" : "4"
+      }, {
+        "item" : "2001-07-03T00:00:00.000",
+        "count" : "4"
+      }, {
+        "item" : "2005-03-11T00:00:00.000",
+        "count" : "4"
+      }, {
+        "item" : "2006-05-08T00:00:00.000",
+        "count" : "4"
+      } ],
+      "smallest" : "1997-12-03T00:00:00.000",
+      "count" : "492",
+      "cardinality" : "492"
+    },
+    "format" : {
+      "view" : "date_dmy"
+    }
+  } ],
+  "grants" : [ {
+    "inherited" : false,
+    "type" : "viewer",
+    "flags" : [ "public" ]
+  } ],
+  "license" : {
+    "name" : "See Terms of Use"
+  },
+  "metadata" : {
+    "custom_fields" : {
+      "Freqüència d'actualització" : {
+        "Freqüència d'actualització" : "Variable"
+      },
+      "Idioma" : {
+        "Idioma" : "Català",
+        "Dataset name (EN)" : "Calls for access to the public service of the Generalitat de Catalunya",
+        "Nombre del conjunto de datos (ES)" : "Convocatorias para el acceso a la funció pública de la Generalitat de Catalunya"
+      },
+      "Informació de gènere o sexe" : {
+        "Informació de gènere o sexe" : "No aplicable"
+      },
+      "Actors" : {
+        "Departament" : "Presidència",
+        "Tipus actor" : "Generalitat de Catalunya"
+      },
+      "Àmbit geogràfic" : {
+        "Informació geogràfica" : "Sense informació geogràfica",
+        "Àmbit geogràfic" : "Catalunya"
+      }
+    },
+    "availableDisplayTypes" : [ "table", "fatrow", "page" ]
+  },
+  "owner" : {
+    "id" : "a4b5-gx6v",
+    "displayName" : "Dades Obertes Catalunya",
+    "profileImageUrlLarge" : "/api/users/a4b5-gx6v/profile_images/LARGE",
+    "profileImageUrlMedium" : "/api/users/a4b5-gx6v/profile_images/THUMB",
+    "profileImageUrlSmall" : "/api/users/a4b5-gx6v/profile_images/TINY",
+    "screenName" : "Dades Obertes Catalunya",
+    "type" : "interactive",
+    "flags" : [ "acceptedEula" ]
+  },
+  "query" : { },
+  "rights" : [ "read" ],
+  "tableAuthor" : {
+    "id" : "a4b5-gx6v",
+    "displayName" : "Dades Obertes Catalunya",
+    "profileImageUrlLarge" : "/api/users/a4b5-gx6v/profile_images/LARGE",
+    "profileImageUrlMedium" : "/api/users/a4b5-gx6v/profile_images/THUMB",
+    "profileImageUrlSmall" : "/api/users/a4b5-gx6v/profile_images/TINY",
+    "screenName" : "Dades Obertes Catalunya",
+    "type" : "interactive",
+    "flags" : [ "acceptedEula" ]
+  },
+  "tags" : [ "administració pública", "accés", "selecció", "convocatòries", "oposicions", "ods16_pau justícies i institucions sòlides", "ods8_treball decent i creixement econòmic", "treballadors públics", "eapc" ],
+  "flags" : [ "default", "ownerMayBeContacted", "restorable", "restorePossibleForType" ]
+}

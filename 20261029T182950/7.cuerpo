@@ -1,0 +1,148 @@
+$(document).ready(function () {
+    var events;
+    var json = {};
+    var locale = $("#localeUltimDOGCPublicat").val();
+    var protocol = $("#protocolUltimDOGCPublicat").val();
+    var host = hostConstant;
+    var port = $("#portUltimDOGCPublicat").val();
+    var uri = $("#uriUltimDOGCPublicat").val();
+
+    //Loading i18n messages
+    var numDOGC = $("#numDOGC").val();
+    var title = $("#title").val();
+    var downloadDOGC = $("#downloadDOGC").val();
+    var downloadSummary = $("#downloadSummary").val();
+    var downloadDOGCAnnex = $("#downloadDOGCAnnex").val();
+    var downloadSummaryAnnex = $("#downloadSummaryAnnex").val();
+    var avis = $("#avis").val();
+    var avis2 = $("#avis2").val();
+
+
+    callAPILastDOGC();
+
+
+
+    /**
+     * Calling AJAX petition
+     */
+    function callAPILastDOGC() {
+        events = {};
+        var str = "";
+        var numDOGCURL;
+        var parameters = { language: locale };
+        var url = protocol + "://" + host + ":" + port + uri;
+
+        $.ajax({
+            type: 'POST',
+            url: url,
+            timeout: 45000,
+            data: parameters,
+            dataType: 'json',
+            success: function (data) {
+                if (data.sumaris) {
+                    numDOGCURL = "/" + locale + pageDOGC + "?numDOGC=" + data.sumaris[0].numDOGC;
+                    str += "<h2 class='titol-component'><a href=\"" + numDOGCURL + "\">" + numDOGC + " " + data.sumaris[0].numDOGC + "</a><span>" + data.sumaris[0].dateDOGC + "</span></h2>";
+                    str += "<div class=\"llistat_cont\">";
+                    $.each(data.sumaris, function (key, value) {
+                        if(value.title == "Annex A" || value.title == "Anexo A"){
+                         str += "<div class='sumariAvis'>" +
+                            '<div class="sumariAvisContaine">' +
+                            '<span aria-hidden="true">' + avis + ' ' + '<a class="jsScroll">' + avis2 + '</a>' + '</span>' +
+                            '</div></div>';
+                        }
+                    });      
+                    $.each(data.sumaris, function (key, value) {
+                        numDOGCURL = "/" + locale + pageDOGC + "?numDOGC=" + value.numDOGC;
+                        if(value.title == "Annex A" || value.title == "Anexo A"){
+                            str += "<h3 id='aneexo' class=\"titol-llistat\">" + value.title + "</h3>";
+                        }else{
+                            str += "<h3 class=\"titol-llistat\">" + value.title + "</h3>";
+                        }
+                        str += "<ul aria-label=\"llistat sumari\" class=\"llistat-sumari\">";
+
+                        $(value.section).each(function (i) {
+                            var summary = (value.section[i].summary != null) ? value.section[i].summary : "";
+                            var titleSumary = (value.section[i].title != null) ? value.section[i].title : "";
+                            var section = value.section[i].title;
+                            section = section.replace(/\ /g, "_");
+                            section = section.replace(/'/g, "");
+                            //ens.replace(/\ /g, '_');
+                            str += '<li class="llistat-item"><a href="' + numDOGCURL + '#section-' + section + '" aria-label="' + titleSumary + ' del ' + value.title + '">' + titleSumary + '</a><span>' + summary + '</span></li>';
+                        });
+                        str += "</ul>";
+                    });
+
+                    str += "</div>";
+                    $.each(data.sumaris, function (key, value) {
+                        if (key == 0) {
+                            str += "<div class=\"llistat-peu\">";
+                            str += "<div class=\"descarrega-document\">";
+                            str += "<a href=\"" + value.linkDownloadDOGCPDF + "\" download=\"download\" target=\"_blank\" title=\"" + downloadDOGC + "\">";
+                            str += "<img src=\"/system/modules/cat.gencat.wcmResponsive.formatters.httpFetch/resources/common/img/NG_ico_pdf.png\" alt=\"pdf\">" + downloadDOGC;
+                            str += "</a></div>";
+                            str += "<div class=\"descarrega-document\">";
+                            str += "<a href=\"" + value.linkDownloadSummaryPDF + "\" download=\"download\" target=\"_blank\" title=\"" + downloadSummary + "\">";
+                            str += "<img src=\"/system/modules/cat.gencat.wcmResponsive.formatters.httpFetch/resources/common/img/NG_ico_pdf.png\" alt=\"pdf\">" + downloadSummary;
+                            str += "</a>";
+                            str += "</div>";
+
+                            str += "</div>";
+                        } else {
+                            str += "<div class=\"llistat-peu\">";
+                            str += "<div class=\"descarrega-document\">";
+                            str += "<a href=\"" + value.linkDownloadDOGCPDF + "\" download=\"download\" target=\"_blank\" title=\"" + downloadDOGC + "\">";
+                            str += "<img src=\"/system/modules/cat.gencat.wcmResponsive.formatters.httpFetch/resources/common/img/NG_ico_pdf.png\" alt=\"pdf\">" + downloadSummaryAnnex + " " + value.title;
+                            str += "</a></div>";
+                            str += "<div class=\"descarrega-document\">";
+                            str += "<a href=\"" + value.linkDownloadSummaryPDF + "\" download=\"download\" target=\"_blank\" title=\"" + downloadSummary + "\">";
+                            str += "<img src=\"/system/modules/cat.gencat.wcmResponsive.formatters.httpFetch/resources/common/img/NG_ico_pdf.png\" alt=\"pdf\">" + downloadDOGCAnnex + " " + value.title;
+                            str += "</a>";
+                            str += "</div>";
+
+                            str += "</div>";
+                        }
+
+                    });
+
+                    $('.fpca_sumari_ultim_DOGC_publicat').append(str);
+                    $(".jsScroll").click(function() {
+                       $('body,html').animate({
+                            scrollTop: $("#aneexo").offset().top-$(".secondary-header").height()
+                        }, 800);
+                    });      
+
+
+                } else if (data.sumaris[0].errorCode != undefined && data.sumaris[0].errorDescription != undefined) {
+                    $(".errorUltimDOGCPublicat").text(data.sumaris[0].errorCode + ": " + data.sumaris[0].errorDescription);
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                error(jqXHR, textStatus, errorThrown);
+            }
+        });
+    }
+
+    /**
+     * Default errors from ajax call request
+     */
+    function error(jqXHR, textStatus, errorThrown) {
+        var message;
+        if (textStatus === 'timeout') {
+            message = "Consulta no disponible en aquests moments. Si us plau, reformuleu-la o repetiu-la més tard";
+        } else if (jqXHR.status == 404) {
+            message = "El recurs demanat no es troba disponible en el servidor.";
+        } else if (jqXHR.status == 500) {
+            message = message = "En aquests moments el servidor no es troba disponible.";
+        } else if (textStatus === 'parsererror') {
+            message = "El contingut de la resposta no s’ha pogut processar correctament.";
+        } else if (jqXHR.status === 0) {
+            message = "En aquests moments no és possible establir connexió amb el servidor.";
+        } else if (textStatus === 'abort') {
+            message = "El servidor no ha processat la petició de sol·licitud d’informació.";
+        } else {
+            message = "S’ha donat un error en el servidor amb la següent descripció: " + jqXHR.responseText;
+        }
+        $(".errorUltimDOGCPublicat").text(message);
+    }
+
+});

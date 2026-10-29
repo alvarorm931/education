@@ -1,0 +1,11 @@
+1 https://analisis.datosabiertos.jcyl.es/api/explore/v2.1/catalog/datasets/bocyl/records?limit=100&where=fecha_publicacion%3Ddate%272026-10-29%27
+2 https://analisis.datosabiertos.jcyl.es/api/explore/v2.1/catalog/datasets/bocyl/records?limit=3&order_by=fecha_publicacion
+3 https://analisis.datosabiertos.jcyl.es/api/explore/v2.1/catalog/datasets/bocyl/records?select=year(fecha_publicacion)%20as%20y,count(%2A)%20as%20n&group_by=year(fecha_publicacion)&limit=100
+4 https://analisis.datosabiertos.jcyl.es/api/explore/v2.1/catalog/datasets/bocyl/records?select=seccion,subseccion,apartado,count(%2A)%20as%20n&group_by=seccion,subseccion,apartado&where=fecha_publicacion%3E%3Ddate%272026-01-01%27&limit=100
+5 https://www.xunta.gal/diario-oficial-galicia/rss/Sumario_gl.rss
+6 https://www.xunta.gal/diario-oficial-galicia/rss/Seccion7_gl.rss
+7 https://dogc.gencat.cat/web/system/modules/cat.gencat.wcmResponsive.formatters.httpFetch/resources/fpca_sumari_ultim_DOGC_publicat/js/fpca_sumari_ultim_DOGC_publicat.js
+8 https://analisi.transparenciacatalunya.cat/api/views/szwh-xrga.json
+9 https://analisi.transparenciacatalunya.cat/resource/szwh-xrga.json?$limit=3&$order=:id%20DESC
+10 https://analisi.transparenciacatalunya.cat/api/views/g3hw-wsae.json
+11 https://dogv.gva.es/dogv-portal-frontend/es

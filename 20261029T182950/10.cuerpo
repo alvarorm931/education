@@ -1,0 +1,397 @@
+{
+  "id" : "g3hw-wsae",
+  "name" : "Diaris i butlletins oficials",
+  "assetType" : "dataset",
+  "attribution" : "Catàleg Tècnic de Dades. Entitat Autònoma del Diari Oficial i de Publicacions de la Generalitat de Catalunya (EADOP)",
+  "attributionLink" : "https://administraciodigital.gencat.cat/ca/dades/dades-obertes/informacio-practica/llicencies/",
+  "averageRating" : 0,
+  "category" : "Sector Públic",
+  "createdAt" : 1658402840,
+  "description" : "Diaris i butlletins oficials en què es publiquen les lleis, els reglaments i les disposicions emeses pels poders legislatiu i executiu.",
+  "diciBackend" : false,
+  "displayType" : "table",
+  "downloadCount" : 616,
+  "hideFromCatalog" : false,
+  "hideFromDataJson" : false,
+  "licenseId" : "SEE_TERMS_OF_USE",
+  "locked" : false,
+  "newBackend" : true,
+  "numberOfComments" : 0,
+  "oid" : 2381435,
+  "provenance" : "official",
+  "publicationAppendEnabled" : false,
+  "publicationDate" : 1658907349,
+  "publicationGroup" : 1613390,
+  "publicationStage" : "published",
+  "rowsUpdatedAt" : 1671609902,
+  "rowsUpdatedBy" : "fs3h-nuia",
+  "tableId" : 1617413,
+  "totalTimesRated" : 0,
+  "viewCount" : 2818,
+  "viewLastModified" : 1789628882,
+  "viewType" : "tabular",
+  "approvals" : [ {
+    "reviewedAt" : 1658907505,
+    "reviewedAutomatically" : true,
+    "state" : "approved",
+    "submissionId" : 1183351,
+    "submissionObject" : "public_audience_request",
+    "submissionOutcome" : "change_audience",
+    "submittedAt" : 1658907505,
+    "targetAudience" : "public",
+    "workflowId" : 182,
+    "submissionDetails" : {
+      "permissionType" : "READ"
+    },
+    "submissionOutcomeApplication" : {
+      "endedAt" : 1658907505,
+      "failureCount" : 0,
+      "startedAt" : 1658907505,
+      "status" : "success"
+    },
+    "submitter" : {
+      "id" : "fs3h-nuia",
+      "displayName" : "laura.ayats_gov.ext@gencat.cat"
+    }
+  } ],
+  "clientContext" : {
+    "clientContextVariables" : [ ],
+    "inheritedVariables" : { }
+  },
+  "columns" : [ {
+    "id" : 21857585,
+    "name" : "Identificador",
+    "dataTypeName" : "text",
+    "description" : "Identificador únic de diaris i butlletins oficials format per tres dígits numèrics seqüencials des del 001 en endavant.  No és un codi oficial, és un identificador propi del catàleg tècnic de dades. Els registres amb identificador superior a 990 són casos especials, s’afegeixen per donar valor de completesa a l’entitat.",
+    "fieldName" : "identificador",
+    "position" : 1,
+    "renderTypeName" : "text",
+    "tableColumnId" : 14311339,
+    "cachedContents" : {
+      "non_null" : "33",
+      "largest" : "999",
+      "null" : "0",
+      "top" : [ {
+        "item" : "015",
+        "count" : "1"
+      }, {
+        "item" : "020",
+        "count" : "1"
+      }, {
+        "item" : "001",
+        "count" : "1"
+      }, {
+        "item" : "017",
+        "count" : "1"
+      }, {
+        "item" : "004",
+        "count" : "1"
+      }, {
+        "item" : "024",
+        "count" : "1"
+      }, {
+        "item" : "002",
+        "count" : "1"
+      }, {
+        "item" : "998",
+        "count" : "1"
+      }, {
+        "item" : "008",
+        "count" : "1"
+      }, {
+        "item" : "009",
+        "count" : "1"
+      }, {
+        "item" : "027",
+        "count" : "1"
+      }, {
+        "item" : "010",
+        "count" : "1"
+      }, {
+        "item" : "016",
+        "count" : "1"
+      }, {
+        "item" : "011",
+        "count" : "1"
+      }, {
+        "item" : "014",
+        "count" : "1"
+      }, {
+        "item" : "022",
+        "count" : "1"
+      }, {
+        "item" : "019",
+        "count" : "1"
+      }, {
+        "item" : "028",
+        "count" : "1"
+      }, {
+        "item" : "021",
+        "count" : "1"
+      }, {
+        "item" : "999",
+        "count" : "1"
+      } ],
+      "smallest" : "001",
+      "count" : "33",
+      "cardinality" : "33"
+    },
+    "format" : { }
+  }, {
+    "id" : 21857586,
+    "name" : "Nom",
+    "dataTypeName" : "text",
+    "description" : "Denominació del diari o butlletí oficial.",
+    "fieldName" : "nom",
+    "position" : 2,
+    "renderTypeName" : "text",
+    "tableColumnId" : 14311338,
+    "cachedContents" : {
+      "non_null" : "33",
+      "largest" : "Suplement en llengua catalana del BOE",
+      "null" : "0",
+      "top" : [ {
+        "item" : "N-Lex, legislació estatal dels països de la UE",
+        "count" : "1"
+      }, {
+        "item" : "Boletín Oficial de Cantabria",
+        "count" : "1"
+      }, {
+        "item" : "Boletín Oficial de las Cortes Generales",
+        "count" : "1"
+      }, {
+        "item" : "Butlletí Oficial de la Província de Barcelona",
+        "count" : "1"
+      }, {
+        "item" : "Diari Oficial de la Unió Europea",
+        "count" : "1"
+      }, {
+        "item" : "Diario Oficial de Castilla-La Mancha",
+        "count" : "1"
+      }, {
+        "item" : "Diario Oficial de Galicia",
+        "count" : "1"
+      }, {
+        "item" : "Boletín Oficial de Aragón",
+        "count" : "1"
+      }, {
+        "item" : "Butlletí Oficial de l'Estat",
+        "count" : "1"
+      }, {
+        "item" : "Boletín Oficial de la Ciudad Autónoma de Melilla",
+        "count" : "1"
+      }, {
+        "item" : "European Forum of Official Gazettes",
+        "count" : "1"
+      }, {
+        "item" : "EUR-Lex, portal de dret de la Unió Europea",
+        "count" : "1"
+      }, {
+        "item" : "Boletín Oficial de Canarias",
+        "count" : "1"
+      }, {
+        "item" : "Boletín Oficial del País Vasco",
+        "count" : "1"
+      }, {
+        "item" : "Butlletí Oficial de la Província de Lleida",
+        "count" : "1"
+      }, {
+        "item" : "Butlletí Oficial de les Illes Balears",
+        "count" : "1"
+      }, {
+        "item" : "Butlletí Oficial del Parlament de Catalunya",
+        "count" : "1"
+      }, {
+        "item" : "Diario Oficial de Extremadura",
+        "count" : "1"
+      }, {
+        "item" : "Suplement en llengua catalana del BOE",
+        "count" : "1"
+      }, {
+        "item" : "Boletín Oficial de la Ciudad Autónoma de Ceuta",
+        "count" : "1"
+      } ],
+      "smallest" : "Altres/Diversos",
+      "count" : "33",
+      "cardinality" : "33"
+    },
+    "format" : { }
+  }, {
+    "id" : 21857587,
+    "name" : "Abreviatura",
+    "dataTypeName" : "text",
+    "description" : "Codi alfanumèric que representa el diari o butlletí oficial.   No és un codi únic perquè hi ha butlletins que comparteixen el mateix codi.",
+    "fieldName" : "abreviatura",
+    "position" : 3,
+    "renderTypeName" : "text",
+    "tableColumnId" : 14311337,
+    "cachedContents" : {
+      "non_null" : "33",
+      "largest" : "N-Lex",
+      "null" : "0",
+      "top" : [ {
+        "item" : "BOC",
+        "count" : "2"
+      }, {
+        "item" : "BOPG",
+        "count" : "1"
+      }, {
+        "item" : "BOME",
+        "count" : "1"
+      }, {
+        "item" : "BOPV",
+        "count" : "1"
+      }, {
+        "item" : "BOCM",
+        "count" : "1"
+      }, {
+        "item" : "BOPC",
+        "count" : "1"
+      }, {
+        "item" : "BOA",
+        "count" : "1"
+      }, {
+        "item" : "EUR-Lex",
+        "count" : "1"
+      }, {
+        "item" : "BOCG",
+        "count" : "1"
+      }, {
+        "item" : "N-Lex",
+        "count" : "1"
+      }, {
+        "item" : "BOPA",
+        "count" : "1"
+      }, {
+        "item" : "NC",
+        "count" : "1"
+      }, {
+        "item" : "BOCYL",
+        "count" : "1"
+      }, {
+        "item" : "Gazettes",
+        "count" : "1"
+      }, {
+        "item" : "BOCCE",
+        "count" : "1"
+      }, {
+        "item" : "BOR",
+        "count" : "1"
+      }, {
+        "item" : "DOGC",
+        "count" : "1"
+      }, {
+        "item" : "DOG",
+        "count" : "1"
+      }, {
+        "item" : "DOCM",
+        "count" : "1"
+      }, {
+        "item" : "AD",
+        "count" : "1"
+      } ],
+      "smallest" : "AD",
+      "count" : "33",
+      "cardinality" : "32"
+    },
+    "format" : { }
+  }, {
+    "id" : 21857588,
+    "name" : "Url",
+    "dataTypeName" : "url",
+    "description" : "Direcció de la pàgina web a on es pot consultar del diari o butlletí oficial.",
+    "fieldName" : "url",
+    "position" : 4,
+    "renderTypeName" : "url",
+    "tableColumnId" : 14311336,
+    "format" : { },
+    "subColumnTypes" : [ "url", "description" ]
+  }, {
+    "id" : 21857589,
+    "name" : "Ambit",
+    "dataTypeName" : "text",
+    "description" : "Nivell geogràfic associat al diari o butlletí.",
+    "fieldName" : "ambit",
+    "position" : 5,
+    "renderTypeName" : "text",
+    "tableColumnId" : 14311335,
+    "cachedContents" : {
+      "non_null" : "33",
+      "largest" : "Europa",
+      "null" : "0",
+      "top" : [ {
+        "item" : "Espanya",
+        "count" : "21"
+      }, {
+        "item" : "Catalunya",
+        "count" : "6"
+      }, {
+        "item" : "Europa",
+        "count" : "4"
+      }, {
+        "item" : "Altres",
+        "count" : "2"
+      } ],
+      "smallest" : "Altres",
+      "count" : "33",
+      "cardinality" : "4"
+    },
+    "format" : { }
+  } ],
+  "grants" : [ {
+    "inherited" : false,
+    "type" : "viewer",
+    "flags" : [ "public" ]
+  } ],
+  "license" : {
+    "name" : "See Terms of Use"
+  },
+  "metadata" : {
+    "custom_fields" : {
+      "Freqüència d'actualització" : {
+        "Freqüència d'actualització" : "Variable"
+      },
+      "Idioma" : {
+        "Idioma" : "Català",
+        "Dataset name (EN)" : "Official journals and bulletins",
+        "Nombre del conjunto de datos (ES)" : "Diarios y boletines oficiales"
+      },
+      "Informació de gènere o sexe" : {
+        "Informació de gènere o sexe" : "No aplicable"
+      },
+      "Actors" : {
+        "Departament" : "Presidència",
+        "Tipus actor" : "Generalitat de Catalunya"
+      },
+      "Àmbit geogràfic" : {
+        "Informació geogràfica" : "Sense informació geogràfica",
+        "Àmbit geogràfic" : "Europa"
+      }
+    },
+    "availableDisplayTypes" : [ "table", "fatrow", "page" ]
+  },
+  "owner" : {
+    "id" : "a4b5-gx6v",
+    "displayName" : "Dades Obertes Catalunya",
+    "profileImageUrlLarge" : "/api/users/a4b5-gx6v/profile_images/LARGE",
+    "profileImageUrlMedium" : "/api/users/a4b5-gx6v/profile_images/THUMB",
+    "profileImageUrlSmall" : "/api/users/a4b5-gx6v/profile_images/TINY",
+    "screenName" : "Dades Obertes Catalunya",
+    "type" : "interactive",
+    "flags" : [ "acceptedEula" ]
+  },
+  "query" : { },
+  "rights" : [ "read" ],
+  "tableAuthor" : {
+    "id" : "a4b5-gx6v",
+    "displayName" : "Dades Obertes Catalunya",
+    "profileImageUrlLarge" : "/api/users/a4b5-gx6v/profile_images/LARGE",
+    "profileImageUrlMedium" : "/api/users/a4b5-gx6v/profile_images/THUMB",
+    "profileImageUrlSmall" : "/api/users/a4b5-gx6v/profile_images/TINY",
+    "screenName" : "Dades Obertes Catalunya",
+    "type" : "interactive",
+    "flags" : [ "acceptedEula" ]
+  },
+  "tags" : [ "dades_de_referència", "ods16_pau justícies i institucions sòlides" ],
+  "flags" : [ "default", "ownerMayBeContacted", "restorable", "restorePossibleForType" ]
+}
