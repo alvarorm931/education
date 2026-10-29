@@ -252,7 +252,9 @@ provinciales:
   - provincia: Granada
     url: https://www.dipgra.es/bop/
     acceso_desde_github: "ok"
-    estado: sin_conector
+    datos_estructurados: "Plataforma SAGA: sumario por día /publica/consulta-de-bops/buscador/BOP-DD-MM-AAAA/ (todos los anuncios en una página, CVE BOP-XX-AAAA-N); detalle con sección y PDF"
+    estado: conector_en_pruebas
+    conector: motor/provinciales/bopgranada.py
   - provincia: Guadalajara
     url: http://boletin.dguadalajara.es/
     acceso_desde_github: "ok"
@@ -318,7 +320,9 @@ provinciales:
   - provincia: Sevilla
     url: http://www.dipusevilla.es/bop/
     acceso_desde_github: "ok"
-    estado: sin_conector
+    datos_estructurados: "Plataforma SAGA: sumario por día /publica/consulta-de-bops/buscador/BOP-DD-MM-AAAA/ (todos los anuncios en una página, CVE BOP-XX-AAAA-N); detalle con sección y PDF"
+    estado: conector_en_pruebas
+    conector: motor/provinciales/bopsevilla.py
   - provincia: Soria
     url: http://bop.dipsoria.es/
     acceso_desde_github: "ok"

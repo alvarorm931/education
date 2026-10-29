@@ -65,6 +65,7 @@ TIPOS_ENTIDAD = (
     ("consorcio ", "Consorcio"),
     ("junta vecinal ", "Junta Vecinal"),
     ("entidad local menor ", "Entidad Local Menor"),
+    ("entidad local autonoma de ", "Entidad Local Autónoma"),
     ("consejo comarcal ", "Consejo Comarcal"),
     ("comarca ", "Comarca"),
     ("cabildo insular de ", "Cabildo Insular"),

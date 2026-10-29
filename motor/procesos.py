@@ -57,6 +57,8 @@ NOMBRE_FUENTE = {
     "BOP-VALENCIA": "Butlletí Oficial de la Província de València",
     "BOPT": "Butlletí Oficial de la Província de Tarragona",
     "BOP-CIUDADREAL": "Boletín Oficial de la Provincia de Ciudad Real",
+    "BOP-GRANADA": "Boletín Oficial de la Provincia de Granada",
+    "BOP-SEVILLA": "Boletín Oficial de la Provincia de Sevilla",
 }
 # Cómo citan los anuncios del BOE a cada boletín autonómico (para enlazar las bases íntegras)
 BOLETIN_A_FUENTE = {
@@ -94,6 +96,8 @@ BOLETIN_A_FUENTE = {
     "boletin oficial de la provincia de tarragona": "BOPT",
     "butlleti oficial de la provincia de tarragona": "BOPT",
     "boletin oficial de la provincia de ciudad real": "BOP-CIUDADREAL",
+    "boletin oficial de la provincia de granada": "BOP-GRANADA",
+    "boletin oficial de la provincia de sevilla": "BOP-SEVILLA",
 }
 RE_NO_ALFANUM = re.compile(r"[^a-z0-9ñ]+")
 RE_PREFIJO_CITA = re.compile(r"^(?:en\s+(?:el|la)\s+)?[«\"“]?", re.IGNORECASE)

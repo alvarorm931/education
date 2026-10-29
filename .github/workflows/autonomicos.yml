@@ -3,7 +3,7 @@ name: Boletines autonómicos
 # Boletines de las comunidades con conector: Andalucía (BOJA), Madrid (BOCM), Castilla y León (BOCYL),
 # Comunitat Valenciana (DOGV), Galicia (DOG), Cataluña (DOGC), Aragón (BOA), Extremadura (DOE),
 # Illes Balears (BOIB), Región de Murcia (BORM), Canarias (BOC), País Vasco (BOPV), Castilla-La Mancha (DOCM)
-# y Melilla (BOME); y provinciales: Barcelona (BOPB), Tarragona (BOPT), Alicante, Valencia y Ciudad Real.
+# y Melilla (BOME); y provinciales: Barcelona (BOPB), Tarragona (BOPT), Alicante, Valencia, Ciudad Real, Granada y Sevilla.
 #
 # Un trabajo por boletín, en paralelo: cada uno pide a su propia fuente (una petición por segundo como mucho),
 # escribe solo en su carpeta de la rama «datos» y su propio índice de originales, así que las subidas no chocan
@@ -22,7 +22,7 @@ on:
         default: "60"
       conectores:
         description: "Conectores, separados por espacios"
-        default: "boja bocm bocyl dogv dog dogc boa doe boib borm boc bopv docm bome bopb bopalicante bopvalencia bopt bopciudadreal"
+        default: "boja bocm bocyl dogv dog dogc boa doe boib borm boc bopv docm bome bopb bopalicante bopvalencia bopt bopciudadreal bopgranada bopsevilla"
 
 permissions:
   contents: write
@@ -43,7 +43,7 @@ jobs:
           python -m pytest -q
       - id: lista
         env:
-          CONECTORES: ${{ inputs.conectores || 'boja bocm bocyl dogv dog dogc boa doe boib borm boc bopv docm bome bopb bopalicante bopvalencia bopt bopciudadreal' }}
+          CONECTORES: ${{ inputs.conectores || 'boja bocm bocyl dogv dog dogc boa doe boib borm boc bopv docm bome bopb bopalicante bopvalencia bopt bopciudadreal bopgranada bopsevilla' }}
         run: python -c "import json, os; print('lista=' + json.dumps(os.environ['CONECTORES'].split()))" >> "$GITHUB_OUTPUT"
 
   boletin:
