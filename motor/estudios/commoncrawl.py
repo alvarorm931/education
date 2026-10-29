@@ -17,6 +17,7 @@ from __future__ import annotations
 import argparse
 import gzip
 import json
+import re
 import time
 from pathlib import Path
 
@@ -102,10 +103,18 @@ def ejecutar(raiz: Path, crawl: str | None, desde: int, hasta: int, max_minutos:
         if time.time() > fin:
             break
         t0 = time.time()
-        try:
-            filas = consultar(lista[i])
-        except Exception as e:
-            (destino / f"{i:05d}.error.txt").write_text(f"{lista[i]}\n{e}", encoding="utf-8")
+        filas, error = None, None
+        for intento in range(6):  # 403/503 de CloudFront = «más despacio»: espera creciente y reintento
+            try:
+                filas = consultar(lista[i])
+                break
+            except Exception as e:
+                error = str(e)
+                if not re.search(r"\b(403|429|503)\b", error) or time.time() + 60 * (intento + 1) > fin:
+                    break
+                time.sleep(60 * (intento + 1))
+        if filas is None:
+            (destino / f"{i:05d}.error.txt").write_text(f"{lista[i]}\n{error}", encoding="utf-8")
             continue
         with (destino / f"{i:05d}.jsonl").open("w", encoding="utf-8") as f:
             for fila in filas:
