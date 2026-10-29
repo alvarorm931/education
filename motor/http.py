@@ -26,8 +26,12 @@ def obtener(
     timeout: float = 30.0,
     pausa_base: float = 2.0,
     sesion: requests.Session | None = None,
+    formulario: dict[str, str] | None = None,
 ) -> Respuesta:
-    """Descarga una URL. Reintenta solo errores transitorios (red, 429, 5xx) con espera creciente."""
+    """Descarga una URL. Reintenta solo errores transitorios (red, 429, 5xx) con espera creciente.
+
+    formulario: si se indica, la petición es POST con esos campos (algunas API oficiales solo aceptan POST).
+    """
     cabeceras = {"User-Agent": USER_AGENT}
     if accept:
         cabeceras["Accept"] = accept
@@ -35,7 +39,10 @@ def obtener(
     ultimo_error: Exception | None = None
     for intento in range(intentos):
         try:
-            r = http.get(url, headers=cabeceras, timeout=timeout)
+            if formulario is None:
+                r = http.get(url, headers=cabeceras, timeout=timeout)
+            else:
+                r = http.post(url, data=formulario, headers=cabeceras, timeout=timeout)
             if r.status_code in REINTENTABLES and intento < intentos - 1:
                 espera = float(r.headers.get("Retry-After", pausa_base * (2**intento)))
                 time.sleep(min(espera, 60))
