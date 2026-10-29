@@ -1,0 +1,1010 @@
+ 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+
+
+
+
+
+
+
+<html xml:lang="es" lang="es" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Registro de Universidades, Centros y Títulos (RUCT) - Ministerio de Educación, Cultura y Deporte</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-15" />
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta http-equiv="Cache-Control" content="no-cache" />
+	<meta name="verify-v1" content="/vj8XSi7jRH1ilVIo0I+weWECxS77hjWustQMQtGqqY=" />	
+	<script type="text/javascript" src="/ruct/js/jstarget.js"></script>
+	<script type="text/javascript" src="/ruct/js/glibrary.js"></script>
+	<link rel="stylesheet" media="screen" type="text/css" href="/ruct/css/estilos-web-aplicaciones.css" />
+	<link rel="stylesheet" media="print" type="text/css" href="/ruct/css/estilos-web-imprimir-aplicaciones.css" />
+	<link rel="stylesheet" media="screen" type="text/css" href="/ruct/css/contenido-web-aplicaciones.css" />
+	<link rel="stylesheet" media="print" type="text/css" href="/ruct/css/contenido-web-imprimir-aplicaciones.css" />
+	
+
+
+
+
+<script type="text/javascript" src="/ruct/struts/js/base/jquery-1.11.0.js"></script>
+        <script type="text/javascript" src="/ruct/struts/js/base/jquery.ui.core.js?s2j=3.7.1"></script>
+<script type="text/javascript" src="/ruct/struts/js/plugins/jquery.subscribe.js?s2j=3.7.1"></script>
+
+<script type="text/javascript" src="/ruct/struts/js/struts2/jquery.struts2.js?s2j=3.7.1"></script>
+
+<script type="text/javascript">
+    $(function () {
+        jQuery.struts2_jquery.version = "3.7.1";
+        jQuery.scriptPath = "/ruct/struts/";
+        jQuery.struts2_jquery.minSuffix = "";
+        jQuery.struts2_jquery.local = "es";
+        jQuery.struts2_jquery.gridLocal = "es";
+        jQuery.struts2_jquery.timeLocal = "es";
+        jQuery.ajaxSettings.traditional = true;
+
+        jQuery.ajaxSetup({
+            cache: false
+        });
+
+        jQuery.struts2_jquery.require("js/struts2/jquery.ui.struts2.js?s2j=3.7.1");
+
+    });
+</script>
+
+    <link id="jquery_theme_link" rel="stylesheet"
+          href="/ruct/struts/themes/smoothness/jquery-ui.css?s2j=3.7.1" type="text/css"/>
+
+	
+</head>
+<body>
+<div id="cabecera-superior">
+	<div id="escudo"><a href="https://www.universidades.gob.es/"><img src="/ruct/img/logo_mciu_2.png" alt="Gobierno de España - Ministerio de Ciencia, Innovación y Universidades" /></a></div>
+	<div id="menu"></div>
+</div><!--fin cabecera-superior-->
+
+<div id="contenedor">
+
+<div id="seccion-educacion">
+
+<div class="migas">
+<strong>Est&aacute; usted en:&nbsp;</strong>
+	<ol> 
+    <li><a href="https://www.universidades.gob.es/">Portada</a></li> 
+    <li><a href="https://www.educacion.gob.es/educacion/universidades.html">Universidades</a></li>
+    </ol>
+</div>
+
+<h1>Registro de Universidades, Centros y Títulos (RUCT)</h1>
+</div>
+
+<div id="menu-contenido">
+	<ul>
+<li>
+<a href="/ruct/consultauniversidades?actual=universidades">Sección universidades</a>
+</li>
+<li>
+<a href="/ruct/consultacentros?actual=centros">Sección centros</a>
+</li>
+<li>
+<a href="/ruct/consultaestudios?actual=estudios"><strong>Sección títulos</strong></a>
+</li>
+</ul>
+</div>
+
+<div id="contenido">
+
+	<div class="enlaces">
+		<ul>
+			<li><a href="/ruct/contacto_ciencia.html">Contacte</a></li>
+			<li><a href="/ruct/home">Inicio</a></li>
+			<script>document.write("<li><a href='javascript:history.back()'>Volver</a></li>");</script>
+		</ul>
+	</div>	
+	
+	
+	
+	
+	
+	<div id="formulario">
+	
+
+
+	<form id="estudio" name="estudio" action="/ruct/estudio.action;jsessionid=C95D7092E38630FCDC2069523520643C?actual=estudios" method="post">
+
+		<h2>Estudios</h2>
+
+		<div id="ver"><span class="pagebanner">174 registros encontrados, mostrando del 1 al 25.</span><span class="pagelinks">[Primero/Anterior] <strong>1</strong>, <a href="listaestudios;jsessionid=C95D7092E38630FCDC2069523520643C?codigoTipo=M&amp;actual=estudios&amp;d-1335801-p=2&amp;codigoUniversidad=025" title="Ir a la página 2">2</a>, <a href="listaestudios;jsessionid=C95D7092E38630FCDC2069523520643C?codigoTipo=M&amp;actual=estudios&amp;d-1335801-p=3&amp;codigoUniversidad=025" title="Ir a la página 3">3</a>, <a href="listaestudios;jsessionid=C95D7092E38630FCDC2069523520643C?codigoTipo=M&amp;actual=estudios&amp;d-1335801-p=4&amp;codigoUniversidad=025" title="Ir a la página 4">4</a>, <a href="listaestudios;jsessionid=C95D7092E38630FCDC2069523520643C?codigoTipo=M&amp;actual=estudios&amp;d-1335801-p=5&amp;codigoUniversidad=025" title="Ir a la página 5">5</a>, <a href="listaestudios;jsessionid=C95D7092E38630FCDC2069523520643C?codigoTipo=M&amp;actual=estudios&amp;d-1335801-p=6&amp;codigoUniversidad=025" title="Ir a la página 6">6</a>, <a href="listaestudios;jsessionid=C95D7092E38630FCDC2069523520643C?codigoTipo=M&amp;actual=estudios&amp;d-1335801-p=7&amp;codigoUniversidad=025" title="Ir a la página 7">7</a> [<a href="listaestudios;jsessionid=C95D7092E38630FCDC2069523520643C?codigoTipo=M&amp;actual=estudios&amp;d-1335801-p=2&amp;codigoUniversidad=025">Siguiente</a>/<a href="listaestudios;jsessionid=C95D7092E38630FCDC2069523520643C?codigoTipo=M&amp;actual=estudios&amp;d-1335801-p=7&amp;codigoUniversidad=025">Último</a>]</span></div>
+<table summary="Tabla de maquetaci&oacute;n" id="estudio">
+<thead>
+<tr>
+<th>Código</th>
+<th>Título</th>
+<th>Universidad</th>
+<th>Nivel académico</th>
+<th>Estado</th>
+<th></th></tr></thead>
+<tbody>
+<tr class="odd">
+<td>4318379&nbsp;</td>
+<td>
+		    	   	
+		     			
+		     			
+		     			
+		     			
+		     		
+		     		<a href="/ruct/estudio.action;jsessionid=C95D7092E38630FCDC2069523520643C?codigoCiclo=SC&amp;codigoTipo=M&amp;CodigoEstudio=4318379&amp;actual=estudios">M&aacute;ster Universitario en Agricultura de Precisi&oacute;n por la Universidad Polit&eacute;cnica de Madrid</a>
+			&nbsp;</td>
+<td>Universidad Politécnica de Madrid&nbsp;</td>
+<td>Máster - RD 1393/2007 (1)&nbsp;</td>
+<td>
+	    		Publicado en B.O.E.
+	    		
+                
+                    
+                    	
+                    		(TITULACIÓN RENOVADA POR ACREDITACIÓN INSTITUCIONAL)
+                    	
+                		
+                    
+                
+	    	&nbsp;</td>
+<td>
+		   		
+		   		
+		           	
+		            
+		           	
+		       	
+	    	   	<a href="/ruct/solicitud/detalles.action;jsessionid=C95D7092E38630FCDC2069523520643C?cod=43183792025112401&amp;sit=A&amp;actual=menu.solicitud.basicos" class="ver" title="Ver en Detalle">&nbsp;</a>
+	        	
+		   	&nbsp;</td></tr>
+<tr class="even extinguir">
+<td>4310567&nbsp;</td>
+<td>
+		    	   	
+		     			
+		     			
+		     			
+		     			
+		     		
+		     		<a href="/ruct/estudio.action;jsessionid=C95D7092E38630FCDC2069523520643C?codigoCiclo=SC&amp;codigoTipo=M&amp;CodigoEstudio=4310567&amp;actual=estudios">M&aacute;ster Universitario en Agroingenier&iacute;a</a>
+			&nbsp;</td>
+<td>Universidad Politécnica de Madrid&nbsp;</td>
+<td>Máster - RD 1393/2007 (1)&nbsp;</td>
+<td>
+	    		Publicado en B.O.E.
+	    		
+	                
+                    
+                        (TITULACIÓN A EXTINGUIR)
+                    
+                
+                
+	    	&nbsp;</td>
+<td>
+		   		
+		   		
+		           	
+		            
+		           	
+		       	
+	    	   	<a href="/ruct/solicitud/detalles.action;jsessionid=C95D7092E38630FCDC2069523520643C?cod=43105672009060101&amp;sit=X&amp;actual=menu.solicitud.basicos" class="ver" title="Ver en Detalle">&nbsp;</a>
+	        	
+		   	&nbsp;</td></tr>
+<tr class="odd">
+<td>4316984&nbsp;</td>
+<td>
+		    	   	
+		     			
+		     			
+		     			
+		     			
+		     		
+		     		<a href="/ruct/estudio.action;jsessionid=C95D7092E38630FCDC2069523520643C?codigoCiclo=SC&amp;codigoTipo=M&amp;CodigoEstudio=4316984&amp;actual=estudios">M&aacute;ster Universitario en An&aacute;lisis del Riesgo S&iacute;smico mediante Tecnolog&iacute;as Geoespaciales por la Universidad Polit&eacute;cnica de Madrid</a>
+			&nbsp;</td>
+<td>Universidad Politécnica de Madrid&nbsp;</td>
+<td>Máster - RD 822/2021 (3)&nbsp;</td>
+<td>
+	    		Publicado en B.O.E.
+	    		
+                
+                    
+                    	
+                		
+                        	(TITULACIÓN RENOVADA)
+                        
+                    
+                
+	    	&nbsp;</td>
+<td>
+		   		
+		   		
+		           	
+		            
+		           	
+		       	
+	    	   	<a href="/ruct/solicitud/detalles.action;jsessionid=C95D7092E38630FCDC2069523520643C?cod=43169842025070901&amp;sit=A&amp;actual=menu.solicitud.basicos" class="ver" title="Ver en Detalle">&nbsp;</a>
+	        	
+		   	&nbsp;</td></tr>
+<tr class="even extinguir">
+<td>4312109&nbsp;</td>
+<td>
+		    	   	
+		     			
+		     			
+		     			
+		     			
+		     		
+		     		<a href="/ruct/estudio.action;jsessionid=C95D7092E38630FCDC2069523520643C?codigoCiclo=SC&amp;codigoTipo=M&amp;CodigoEstudio=4312109&amp;actual=estudios">M&aacute;ster Universitario en An&aacute;lisis, Teor&iacute;a e Historia de la Arquitectura</a>
+			&nbsp;</td>
+<td>Universidad Politécnica de Madrid&nbsp;</td>
+<td>Máster - RD 1393/2007 (1)&nbsp;</td>
+<td>
+	    		Publicado en B.O.E.
+	    		
+	                
+                    
+                        (TITULACIÓN A EXTINGUIR)
+                    
+                
+                
+	    	&nbsp;</td>
+<td>
+		   		
+		   		
+		           	
+		            
+		           	
+		       	
+	    	   	<a href="/ruct/solicitud/detalles.action;jsessionid=C95D7092E38630FCDC2069523520643C?cod=43121092010051401&amp;sit=X&amp;actual=menu.solicitud.basicos" class="ver" title="Ver en Detalle">&nbsp;</a>
+	        	
+		   	&nbsp;</td></tr>
+<tr class="odd">
+<td>4318376&nbsp;</td>
+<td>
+		    	   	
+		     			
+		     			
+		     			
+		     			
+		     		
+		     		<a href="/ruct/estudio.action;jsessionid=C95D7092E38630FCDC2069523520643C?codigoCiclo=SC&amp;codigoTipo=M&amp;CodigoEstudio=4318376&amp;actual=estudios">M&aacute;ster Universitario en Aprendizaje Autom&aacute;tico y Datos Masivos por la Universidad Polit&eacute;cnica de Madrid</a>
+			&nbsp;</td>
+<td>Universidad Politécnica de Madrid&nbsp;</td>
+<td>Máster - RD 1393/2007 (1)&nbsp;</td>
+<td>
+	    		Publicado en B.O.E.
+	    		
+                
+                    
+                    	
+                    		(TITULACIÓN RENOVADA POR ACREDITACIÓN INSTITUCIONAL)
+                    	
+                		
+                    
+                
+	    	&nbsp;</td>
+<td>
+		   		
+		   		
+		           	
+		            
+		           	
+		       	
+	    	   	<a href="/ruct/solicitud/detalles.action;jsessionid=C95D7092E38630FCDC2069523520643C?cod=43183762025112401&amp;sit=A&amp;actual=menu.solicitud.basicos" class="ver" title="Ver en Detalle">&nbsp;</a>
+	        	
+		   	&nbsp;</td></tr>
+<tr class="even extinguido">
+<td>3001846&nbsp;</td>
+<td>
+		    	   	
+		     			
+		     			
+		     			
+		     			
+		     		
+		     		<a href="/ruct/estudio.action;jsessionid=C95D7092E38630FCDC2069523520643C?codigoCiclo=SC&amp;codigoTipo=M&amp;CodigoEstudio=3001846&amp;actual=estudios">M&aacute;ster Universitario en aprovechamiento sostenible de los recursos minerales</a>
+			&nbsp;</td>
+<td>Universidad Politécnica de Madrid&nbsp;</td>
+<td>Máster - RD 56/2005 (2)&nbsp;</td>
+<td>
+	    		Autorizado por Comunidad Aut&oacute;noma
+	    		
+	                
+                    
+                        (TITULACIÓN EXTINGUIDA)
+                    
+                
+                
+	    	&nbsp;</td>
+<td>
+		   		
+		   		
+		           	
+		            
+		           	
+		       	
+	    	   	<a href="/ruct/solicitud/detalles.action;jsessionid=C95D7092E38630FCDC2069523520643C?cod=30018462011022401&amp;sit=T&amp;actual=menu.solicitud.basicos" class="ver" title="Ver en Detalle">&nbsp;</a>
+	        	
+		   	&nbsp;</td></tr>
+<tr class="odd">
+<td>4314048&nbsp;</td>
+<td>
+		    	   	
+		     			
+		     			
+		     			
+		     			
+		     		
+		     		<a href="/ruct/estudio.action;jsessionid=C95D7092E38630FCDC2069523520643C?codigoCiclo=SC&amp;codigoTipo=M&amp;CodigoEstudio=4314048&amp;actual=estudios">M&aacute;ster Universitario en Arquitectura por la Universidad Polit&eacute;cnica de Madrid</a>
+			&nbsp;</td>
+<td>Universidad Politécnica de Madrid&nbsp;</td>
+<td>Máster - RD 1393/2007 (1)&nbsp;</td>
+<td>
+	    		Publicado en B.O.E.
+	    		
+                
+                    
+                    	
+                		
+                        	(TITULACIÓN RENOVADA)
+                        
+                    
+                
+	    	&nbsp;</td>
+<td>
+		   		
+		   		
+		           	
+		            
+		           	
+		       	
+	    	   	<a href="/ruct/solicitud/detalles.action;jsessionid=C95D7092E38630FCDC2069523520643C?cod=43140482025042101&amp;sit=A&amp;actual=menu.solicitud.basicos" class="ver" title="Ver en Detalle">&nbsp;</a>
+	        	
+		   	&nbsp;</td></tr>
+<tr class="even extinguido">
+<td>3000635&nbsp;</td>
+<td>
+		    	   	
+		     			
+		     			
+		     			
+		     			
+		     		
+		     		<a href="/ruct/estudio.action;jsessionid=C95D7092E38630FCDC2069523520643C?codigoCiclo=SC&amp;codigoTipo=M&amp;CodigoEstudio=3000635&amp;actual=estudios">M&aacute;ster Universitario en Autom&aacute;tica y Rob&oacute;tica</a>
+			&nbsp;</td>
+<td>Universidad Politécnica de Madrid&nbsp;</td>
+<td>Máster - RD 56/2005 (2)&nbsp;</td>
+<td>
+	    		Autorizado por Comunidad Aut&oacute;noma
+	    		
+	                
+                    
+                        (TITULACIÓN EXTINGUIDA)
+                    
+                
+                
+	    	&nbsp;</td>
+<td>
+		   		
+		   		
+		           	
+		            
+		           	
+		       	
+	    	   	<a href="/ruct/solicitud/detalles.action;jsessionid=C95D7092E38630FCDC2069523520643C?cod=30006352011022401&amp;sit=T&amp;actual=menu.solicitud.basicos" class="ver" title="Ver en Detalle">&nbsp;</a>
+	        	
+		   	&nbsp;</td></tr>
+<tr class="odd">
+<td>4310271&nbsp;</td>
+<td>
+		    	   	
+		     			
+		     			
+		     			
+		     			
+		     		
+		     		<a href="/ruct/estudio.action;jsessionid=C95D7092E38630FCDC2069523520643C?codigoCiclo=SC&amp;codigoTipo=M&amp;CodigoEstudio=4310271&amp;actual=estudios">M&aacute;ster Universitario en Autom&aacute;tica y Rob&oacute;tica por la Universidad Polit&eacute;cnica de Madrid</a>
+			&nbsp;</td>
+<td>Universidad Politécnica de Madrid&nbsp;</td>
+<td>Máster - RD 1393/2007 (1)&nbsp;</td>
+<td>
+	    		Publicado en B.O.E.
+	    		
+                
+                    
+                    	
+                    		(TITULACIÓN RENOVADA POR ACREDITACIÓN INSTITUCIONAL)
+                    	
+                		
+                    
+                
+	    	&nbsp;</td>
+<td>
+		   		
+		   		
+		           	
+		            
+		           	
+		       	
+	    	   	<a href="/ruct/solicitud/detalles.action;jsessionid=C95D7092E38630FCDC2069523520643C?cod=43102712025061301&amp;sit=A&amp;actual=menu.solicitud.basicos" class="ver" title="Ver en Detalle">&nbsp;</a>
+	        	
+		   	&nbsp;</td></tr>
+<tr class="even">
+<td>4316260&nbsp;</td>
+<td>
+		    	   	
+		     			
+		     			
+		     			
+		     			
+		     		
+		     		<a href="/ruct/estudio.action;jsessionid=C95D7092E38630FCDC2069523520643C?codigoCiclo=SC&amp;codigoTipo=M&amp;CodigoEstudio=4316260&amp;actual=estudios">M&aacute;ster Universitario en Biolog&iacute;a Computacional por la Universidad Polit&eacute;cnica de Madrid</a>
+			&nbsp;</td>
+<td>Universidad Politécnica de Madrid&nbsp;</td>
+<td>Máster - RD 1393/2007 (1)&nbsp;</td>
+<td>
+	    		Publicado en B.O.E.
+	    		
+                
+                    
+                    	
+                    		(TITULACIÓN RENOVADA POR ACREDITACIÓN INSTITUCIONAL)
+                    	
+                		
+                    
+                
+	    	&nbsp;</td>
+<td>
+		   		
+		   		
+		           	
+		            
+		           	
+		       	
+	    	   	<a href="/ruct/solicitud/detalles.action;jsessionid=C95D7092E38630FCDC2069523520643C?cod=43162602025092301&amp;sit=A&amp;actual=menu.solicitud.basicos" class="ver" title="Ver en Detalle">&nbsp;</a>
+	        	
+		   	&nbsp;</td></tr>
+<tr class="odd extinguido">
+<td>3001843&nbsp;</td>
+<td>
+		    	   	
+		     			
+		     			
+		     			
+		     			
+		     		
+		     		<a href="/ruct/estudio.action;jsessionid=C95D7092E38630FCDC2069523520643C?codigoCiclo=SC&amp;codigoTipo=M&amp;CodigoEstudio=3001843&amp;actual=estudios">M&aacute;ster Universitario en Biotecnolog&iacute;a Agroforestal</a>
+			&nbsp;</td>
+<td>Universidad Politécnica de Madrid&nbsp;</td>
+<td>Máster - RD 56/2005 (2)&nbsp;</td>
+<td>
+	    		Autorizado por Comunidad Aut&oacute;noma
+	    		
+	                
+                    
+                        (TITULACIÓN EXTINGUIDA)
+                    
+                
+                
+	    	&nbsp;</td>
+<td>
+		   		
+		   		
+		           	
+		            
+		           	
+		       	
+	    	   	<a href="/ruct/solicitud/detalles.action;jsessionid=C95D7092E38630FCDC2069523520643C?cod=30018432011022401&amp;sit=T&amp;actual=menu.solicitud.basicos" class="ver" title="Ver en Detalle">&nbsp;</a>
+	        	
+		   	&nbsp;</td></tr>
+<tr class="even">
+<td>4310272&nbsp;</td>
+<td>
+		    	   	
+		     			
+		     			
+		     			
+		     			
+		     		
+		     		<a href="/ruct/estudio.action;jsessionid=C95D7092E38630FCDC2069523520643C?codigoCiclo=SC&amp;codigoTipo=M&amp;CodigoEstudio=4310272&amp;actual=estudios">M&aacute;ster Universitario en Biotecnolog&iacute;a y Bioingenier&iacute;a Vegetal por la Universidad Polit&eacute;cnica de Madrid</a>
+			&nbsp;</td>
+<td>Universidad Politécnica de Madrid&nbsp;</td>
+<td>Máster - RD 1393/2007 (1)&nbsp;</td>
+<td>
+	    		Publicado en B.O.E.
+	    		
+                
+                    
+                    	
+                    		(TITULACIÓN RENOVADA POR ACREDITACIÓN INSTITUCIONAL)
+                    	
+                		
+                    
+                
+	    	&nbsp;</td>
+<td>
+		   		
+		   		
+		           	
+		            
+		           	
+		       	
+	    	   	<a href="/ruct/solicitud/detalles.action;jsessionid=C95D7092E38630FCDC2069523520643C?cod=43102722025092301&amp;sit=A&amp;actual=menu.solicitud.basicos" class="ver" title="Ver en Detalle">&nbsp;</a>
+	        	
+		   	&nbsp;</td></tr>
+<tr class="odd">
+<td>4316229&nbsp;</td>
+<td>
+		    	   	
+		     			
+		     			
+		     			
+		     			
+		     		
+		     		<a href="/ruct/estudio.action;jsessionid=C95D7092E38630FCDC2069523520643C?codigoCiclo=SC&amp;codigoTipo=M&amp;CodigoEstudio=4316229&amp;actual=estudios">M&aacute;ster Universitario en Ciberseguridad por la Universidad Polit&eacute;cnica de Madrid</a>
+			&nbsp;</td>
+<td>Universidad Politécnica de Madrid&nbsp;</td>
+<td>Máster - RD 822/2021 (3)&nbsp;</td>
+<td>
+	    		Publicado en B.O.E.
+	    		
+                
+                    
+                    	
+                		
+                        	(TITULACIÓN RENOVADA)
+                        
+                    
+                
+	    	&nbsp;</td>
+<td>
+		   		
+		   		
+		           	
+		            
+		           	
+		       	
+	    	   	<a href="/ruct/solicitud/detalles.action;jsessionid=C95D7092E38630FCDC2069523520643C?cod=43162292026042701&amp;sit=A&amp;actual=menu.solicitud.basicos" class="ver" title="Ver en Detalle">&nbsp;</a>
+	        	
+		   	&nbsp;</td></tr>
+<tr class="even">
+<td>4316972&nbsp;</td>
+<td>
+		    	   	
+		     			
+		     			
+		     			
+		     			
+		     		
+		     		<a href="/ruct/estudio.action;jsessionid=C95D7092E38630FCDC2069523520643C?codigoCiclo=SC&amp;codigoTipo=M&amp;CodigoEstudio=4316972&amp;actual=estudios">M&aacute;ster Universitario en Ciencia de Datos por la Universidad Polit&eacute;cnica de Madrid</a>
+			&nbsp;</td>
+<td>Universidad Politécnica de Madrid&nbsp;</td>
+<td>Máster - RD 1393/2007 (1)&nbsp;</td>
+<td>
+	    		Publicado en B.O.E.
+	    		
+                
+                    
+                    	
+                    		(TITULACIÓN RENOVADA POR ACREDITACIÓN INSTITUCIONAL)
+                    	
+                		
+                    
+                
+	    	&nbsp;</td>
+<td>
+		   		
+		   		
+		           	
+		            
+		           	
+		       	
+	    	   	<a href="/ruct/solicitud/detalles.action;jsessionid=C95D7092E38630FCDC2069523520643C?cod=43169722025032401&amp;sit=A&amp;actual=menu.solicitud.basicos" class="ver" title="Ver en Detalle">&nbsp;</a>
+	        	
+		   	&nbsp;</td></tr>
+<tr class="odd extinguido">
+<td>3000626&nbsp;</td>
+<td>
+		    	   	
+		     			
+		     			
+		     			
+		     			
+		     		
+		     		<a href="/ruct/estudio.action;jsessionid=C95D7092E38630FCDC2069523520643C?codigoCiclo=SC&amp;codigoTipo=M&amp;CodigoEstudio=3000626&amp;actual=estudios">M&aacute;ster Universitario en Ciencia y Tecnolog&iacute;a Nuclear</a>
+			&nbsp;</td>
+<td>Universidad Politécnica de Madrid&nbsp;</td>
+<td>Máster - RD 56/2005 (2)&nbsp;</td>
+<td>
+	    		Autorizado por Comunidad Aut&oacute;noma
+	    		
+	                
+                    
+                        (TITULACIÓN EXTINGUIDA)
+                    
+                
+                
+	    	&nbsp;</td>
+<td>
+		   		
+		   		
+		           	
+		            
+		           	
+		       	
+	    	   	<a href="/ruct/solicitud/detalles.action;jsessionid=C95D7092E38630FCDC2069523520643C?cod=30006262011022401&amp;sit=T&amp;actual=menu.solicitud.basicos" class="ver" title="Ver en Detalle">&nbsp;</a>
+	        	
+		   	&nbsp;</td></tr>
+<tr class="even">
+<td>4310273&nbsp;</td>
+<td>
+		    	   	
+		     			
+		     			
+		     			
+		     			
+		     		
+		     		<a href="/ruct/estudio.action;jsessionid=C95D7092E38630FCDC2069523520643C?codigoCiclo=SC&amp;codigoTipo=M&amp;CodigoEstudio=4310273&amp;actual=estudios">M&aacute;ster Universitario en Ciencia y Tecnolog&iacute;a Nuclear por la Universidad Polit&eacute;cnica de Madrid</a>
+			&nbsp;</td>
+<td>Universidad Politécnica de Madrid&nbsp;</td>
+<td>Máster - RD 1393/2007 (1)&nbsp;</td>
+<td>
+	    		Publicado en B.O.E.
+	    		
+                
+                    
+                    	
+                    		(TITULACIÓN RENOVADA POR ACREDITACIÓN INSTITUCIONAL)
+                    	
+                		
+                    
+                
+	    	&nbsp;</td>
+<td>
+		   		
+		   		
+		           	
+		            
+		           	
+		       	
+	    	   	<a href="/ruct/solicitud/detalles.action;jsessionid=C95D7092E38630FCDC2069523520643C?cod=43102732025061301&amp;sit=A&amp;actual=menu.solicitud.basicos" class="ver" title="Ver en Detalle">&nbsp;</a>
+	        	
+		   	&nbsp;</td></tr>
+<tr class="odd extinguido">
+<td>3001852&nbsp;</td>
+<td>
+		    	   	
+		     			
+		     			
+		     			
+		     			
+		     		
+		     		<a href="/ruct/estudio.action;jsessionid=C95D7092E38630FCDC2069523520643C?codigoCiclo=SC&amp;codigoTipo=M&amp;CodigoEstudio=3001852&amp;actual=estudios">M&aacute;ster Universitario en ciencias de la actividad f&iacute;sica y del deporte</a>
+			&nbsp;</td>
+<td>Universidad Politécnica de Madrid&nbsp;</td>
+<td>Máster - RD 56/2005 (2)&nbsp;</td>
+<td>
+	    		Autorizado por Comunidad Aut&oacute;noma
+	    		
+	                
+                    
+                        (TITULACIÓN EXTINGUIDA)
+                    
+                
+                
+	    	&nbsp;</td>
+<td>
+		   		
+		   		
+		           	
+		            
+		           	
+		       	
+	    	   	<a href="/ruct/solicitud/detalles.action;jsessionid=C95D7092E38630FCDC2069523520643C?cod=30018522011022401&amp;sit=T&amp;actual=menu.solicitud.basicos" class="ver" title="Ver en Detalle">&nbsp;</a>
+	        	
+		   	&nbsp;</td></tr>
+<tr class="even">
+<td>4310805&nbsp;</td>
+<td>
+		    	   	
+		     			
+		     			
+		     			
+		     			
+		     		
+		     		<a href="/ruct/estudio.action;jsessionid=C95D7092E38630FCDC2069523520643C?codigoCiclo=SC&amp;codigoTipo=M&amp;CodigoEstudio=4310805&amp;actual=estudios">M&aacute;ster Universitario en Ciencias de la Actividad F&iacute;sica y del Deporte por la Universidad Polit&eacute;cnica de Madrid</a>
+			&nbsp;</td>
+<td>Universidad Politécnica de Madrid&nbsp;</td>
+<td>Máster - RD 1393/2007 (1)&nbsp;</td>
+<td>
+	    		Publicado en B.O.E.
+	    		
+                
+                    
+                    	
+                		
+                        	(TITULACIÓN RENOVADA)
+                        
+                    
+                
+	    	&nbsp;</td>
+<td>
+		   		
+		   		
+		           	
+		            
+		           	
+		       	
+	    	   	<a href="/ruct/solicitud/detalles.action;jsessionid=C95D7092E38630FCDC2069523520643C?cod=43108052025091601&amp;sit=A&amp;actual=menu.solicitud.basicos" class="ver" title="Ver en Detalle">&nbsp;</a>
+	        	
+		   	&nbsp;</td></tr>
+<tr class="odd extinguir">
+<td>4315415&nbsp;</td>
+<td>
+		    	   	
+		     			
+		     			
+		     			
+		     			
+		     		
+		     		<a href="/ruct/estudio.action;jsessionid=C95D7092E38630FCDC2069523520643C?codigoCiclo=SC&amp;codigoTipo=M&amp;CodigoEstudio=4315415&amp;actual=estudios">M&aacute;ster Universitario en Ciencias y Tecnolog&iacute;as de la Computaci&oacute;n por la Universidad Polit&eacute;cnica de Madrid</a>
+			&nbsp;</td>
+<td>Universidad Politécnica de Madrid&nbsp;</td>
+<td>Máster - RD 1393/2007 (1)&nbsp;</td>
+<td>
+	    		Publicado en B.O.E.
+	    		
+	                
+                    
+                        (TITULACIÓN A EXTINGUIR)
+                    
+                
+                
+	    	&nbsp;</td>
+<td>
+		   		
+		   		
+		           	
+		            
+		           	
+		       	
+	    	   	<a href="/ruct/solicitud/detalles.action;jsessionid=C95D7092E38630FCDC2069523520643C?cod=43154152017060601&amp;sit=X&amp;actual=menu.solicitud.basicos" class="ver" title="Ver en Detalle">&nbsp;</a>
+	        	
+		   	&nbsp;</td></tr>
+<tr class="even extinguir">
+<td>4313005&nbsp;</td>
+<td>
+		    	   	
+		     			
+		     			
+		     			
+		     			
+		     		
+		     		<a href="/ruct/estudio.action;jsessionid=C95D7092E38630FCDC2069523520643C?codigoCiclo=SC&amp;codigoTipo=M&amp;CodigoEstudio=4313005&amp;actual=estudios">M&aacute;ster Universitario en Ciencias y Tecnolog&iacute;as de la Computaci&oacute;n por la Universidad Polit&eacute;cnica de Madrid</a>
+			&nbsp;</td>
+<td>Universidad Politécnica de Madrid&nbsp;</td>
+<td>Máster - RD 1393/2007 (1)&nbsp;</td>
+<td>
+	    		Publicado en B.O.E.
+	    		
+	                
+                    
+                        (TITULACIÓN A EXTINGUIR)
+                    
+                
+                
+	    	&nbsp;</td>
+<td>
+		   		
+		   		
+		           	
+		            
+		           	
+		       	
+	    	   	<a href="/ruct/solicitud/detalles.action;jsessionid=C95D7092E38630FCDC2069523520643C?cod=43130052011060601&amp;sit=X&amp;actual=menu.solicitud.basicos" class="ver" title="Ver en Detalle">&nbsp;</a>
+	        	
+		   	&nbsp;</td></tr>
+<tr class="odd">
+<td>3500159&nbsp;</td>
+<td>
+		    	   	
+		     			
+		     			
+		     			
+		     			
+		     		
+		     		<a href="/ruct/estudio.action;jsessionid=C95D7092E38630FCDC2069523520643C?codigoCiclo=SC&amp;codigoTipo=M&amp;CodigoEstudio=3500159&amp;actual=estudios">M&aacute;ster Universitario en Co-mediaci&oacute;n Arquitect&oacute;nica por la Universidad Complutense de Madrid y la Universidad Polit&eacute;cnica de Madrid</a>
+			&nbsp;</td>
+<td>(Conjunto)&nbsp;</td>
+<td>Máster - RD 822/2021 (3)&nbsp;</td>
+<td>
+	    		Publicado en B.O.E.
+	    		
+                
+                    
+                
+	    	&nbsp;</td>
+<td>
+		   		
+		   		
+		           	
+		            
+		           	
+		       	
+	    	   	<a href="/ruct/solicitud/detalles.action;jsessionid=C95D7092E38630FCDC2069523520643C?cod=35001592024123001&amp;sit=A&amp;actual=menu.solicitud.basicos" class="ver" title="Ver en Detalle">&nbsp;</a>
+	        	
+		   	&nbsp;</td></tr>
+<tr class="even extinguir">
+<td>4312007&nbsp;</td>
+<td>
+		    	   	
+		     			
+		     			
+		     			
+		     			
+		     		
+		     		<a href="/ruct/estudio.action;jsessionid=C95D7092E38630FCDC2069523520643C?codigoCiclo=SC&amp;codigoTipo=M&amp;CodigoEstudio=4312007&amp;actual=estudios">M&aacute;ster Universitario en Computaci&oacute;n Avanzada para Ciencias e Ingenier&iacute;as</a>
+			&nbsp;</td>
+<td>Universidad Politécnica de Madrid&nbsp;</td>
+<td>Máster - RD 1393/2007 (1)&nbsp;</td>
+<td>
+	    		Publicado en B.O.E.
+	    		
+	                
+                    
+                        (TITULACIÓN A EXTINGUIR)
+                    
+                
+                
+	    	&nbsp;</td>
+<td>
+		   		
+		   		
+		           	
+		            
+		           	
+		       	
+	    	   	<a href="/ruct/solicitud/detalles.action;jsessionid=C95D7092E38630FCDC2069523520643C?cod=43120072010031501&amp;sit=X&amp;actual=menu.solicitud.basicos" class="ver" title="Ver en Detalle">&nbsp;</a>
+	        	
+		   	&nbsp;</td></tr>
+<tr class="odd extinguido">
+<td>3000637&nbsp;</td>
+<td>
+		    	   	
+		     			
+		     			
+		     			
+		     			
+		     		
+		     		<a href="/ruct/estudio.action;jsessionid=C95D7092E38630FCDC2069523520643C?codigoCiclo=SC&amp;codigoTipo=M&amp;CodigoEstudio=3000637&amp;actual=estudios">M&aacute;ster Universitario en Computaci&oacute;n L&oacute;gica</a>
+			&nbsp;</td>
+<td>Universidad Politécnica de Madrid&nbsp;</td>
+<td>Máster - RD 56/2005 (2)&nbsp;</td>
+<td>
+	    		Autorizado por Comunidad Aut&oacute;noma
+	    		
+	                
+                    
+                        (TITULACIÓN EXTINGUIDA)
+                    
+                
+                
+	    	&nbsp;</td>
+<td>
+		   		
+		   		
+		           	
+		            
+		           	
+		       	
+	    	   	<a href="/ruct/solicitud/detalles.action;jsessionid=C95D7092E38630FCDC2069523520643C?cod=30006372011022401&amp;sit=T&amp;actual=menu.solicitud.basicos" class="ver" title="Ver en Detalle">&nbsp;</a>
+	        	
+		   	&nbsp;</td></tr>
+<tr class="even extinguir">
+<td>4315323&nbsp;</td>
+<td>
+		    	   	
+		     			
+		     			
+		     			
+		     			
+		     		
+		     		<a href="/ruct/estudio.action;jsessionid=C95D7092E38630FCDC2069523520643C?codigoCiclo=SC&amp;codigoTipo=M&amp;CodigoEstudio=4315323&amp;actual=estudios">M&aacute;ster Universitario en Comunicaci&oacute;n Arquitect&oacute;nica por la Universidad Polit&eacute;cnica de Madrid</a>
+			&nbsp;</td>
+<td>Universidad Politécnica de Madrid&nbsp;</td>
+<td>Máster - RD 1393/2007 (1)&nbsp;</td>
+<td>
+	    		Publicado en B.O.E.
+	    		
+	                
+                    
+                        (TITULACIÓN A EXTINGUIR)
+                    
+                
+                
+	    	&nbsp;</td>
+<td>
+		   		
+		   		
+		           	
+		            
+		           	
+		       	
+	    	   	<a href="/ruct/solicitud/detalles.action;jsessionid=C95D7092E38630FCDC2069523520643C?cod=43153232015012001&amp;sit=X&amp;actual=menu.solicitud.basicos" class="ver" title="Ver en Detalle">&nbsp;</a>
+	        	
+		   	&nbsp;</td></tr>
+<tr class="odd">
+<td>4318008&nbsp;</td>
+<td>
+		    	   	
+		     			
+		     			
+		     			
+		     			
+		     		
+		     		<a href="/ruct/estudio.action;jsessionid=C95D7092E38630FCDC2069523520643C?codigoCiclo=SC&amp;codigoTipo=M&amp;CodigoEstudio=4318008&amp;actual=estudios">M&aacute;ster Universitario en Comunicaciones Inal&aacute;mbricas / Master in Wireless Communications por la Universidad Polit&eacute;cnica de Madrid</a>
+			&nbsp;</td>
+<td>Universidad Politécnica de Madrid&nbsp;</td>
+<td>Máster - RD 1393/2007 (1)&nbsp;</td>
+<td>
+	    		Publicado en B.O.E.
+	    		
+                
+                    
+                    	
+                    		(TITULACIÓN RENOVADA POR ACREDITACIÓN INSTITUCIONAL)
+                    	
+                		
+                    
+                
+	    	&nbsp;</td>
+<td>
+		   		
+		   		
+		           	
+		            
+		           	
+		       	
+	    	   	<a href="/ruct/solicitud/detalles.action;jsessionid=C95D7092E38630FCDC2069523520643C?cod=43180082025040901&amp;sit=A&amp;actual=menu.solicitud.basicos" class="ver" title="Ver en Detalle">&nbsp;</a>
+	        	
+		   	&nbsp;</td></tr></tbody></table><p>Opciones de exportación: 
+<a href="listaestudios;jsessionid=C95D7092E38630FCDC2069523520643C?codigoTipo=M&amp;actual=estudios&amp;d-1335801-e=2&amp;6578706f7274=1&amp;codigoUniversidad=025"><span class="export excel">Excel </span></a></p>
+
+	<!-- IZERTIS-13/07/2022-MODIFICACIONES RUCT RD822 -->
+	
+	<div class="ayuda">
+		<h4>* Nivel académico</h4>
+		<ul>
+			
+			
+			<li><strong>(1)</strong> Másteres y Programas Oficiales de Doctorado adaptados al Espacio Europeo de Educación Superior (EEES) y regulados por el Real Decreto 1393/2007, de 29 de octubre, por el que se establece la ordenación de las enseñanzas universitarias oficiales, y por el Real Decreto 861/2010, de 2 de julio por el que se modifica el Real Decreto 1393/2007 de 29 de octubre.*  Se entienden como Másteres regulados por el Real Decreto 822/2021, de 28 de septiembre, por el que se establece la organización de las enseñanzas universitarias y del procedimiento de aseguramiento de su calidad, aquellos que se tramitaron a partir del 19 de octubre de 2021.</li>
+			<li><strong>(2)</strong> Títulos Universitarios Oficiales de Posgrado regulados por el Real Decreto 56/2005 de 21 de enero.</li>
+			
+			
+			<li><strong>(3)</strong> Másteres regulados por el Real Decreto 822/2021, de 28 de septiembre, por el que se establece la organización de las enseñanzas universitarias y del procedimiento de aseguramiento de su calidad.</li>
+			
+			
+		</ul>
+	</div>
+	
+
+	</form>
+
+
+
+
+	</div>
+
+</div>
+
+<div id="pie">
+	<p>© Ministerio de Ciencia, Innovación y Universidades</p><ul>
+	<li class=""><a rel="external" href="https://www.ciencia.gob.es/InfoGeneralPortal/AvisoLegal.html">Aviso legal</a></li>
+	<li class="ultimo"><a rel="external" href="https://www.ciencia.gob.es/InfoGeneralPortal/Accesibilidad.html">Accesibilidad</a></li>
+</ul>
+	<p><a rel="external" href="http://www.w3.org/WAI/WCAG1AA-Conformance"><img title="Este sitio web cumple con el nivel de accesibilidad doble A según las pautas WCAG 1.0" alt="Logotipo W3C/WAI doble A (WCAG 1.0)" src="/ruct/img/logo-w3c.gif"/></a></p>
+
+</div>
+</div></body></html>
