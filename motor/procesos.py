@@ -80,6 +80,7 @@ BOLETIN_A_FUENTE = {
     "butlleti oficial de les illes balears": "BOIB",
     "boletin oficial de las illes balears": "BOIB",
     "boletin oficial de las islas baleares": "BOIB",
+    "boletin oficial de islas baleares": "BOIB",
     "diari oficial de la generalitat de catalunya": "DOGC",
     "diario oficial de la generalitat de cataluna": "DOGC",
     "diario oficial de la generalidad de cataluna": "DOGC",
@@ -95,6 +96,12 @@ BOLETIN_A_FUENTE = {
     "boletin oficial de la provincia de ciudad real": "BOP-CIUDADREAL",
 }
 RE_NO_ALFANUM = re.compile(r"[^a-z0-9ñ]+")
+RE_PREFIJO_CITA = re.compile(r"^(?:en\s+(?:el|la)\s+)?[«\"“]?", re.IGNORECASE)
+
+
+def fuente_de_boletin(nombre: str | None) -> str | None:
+    """«Boletín Oficial de la Provincia de Barcelona» -> «BOPB» (también con restos de la frase: «En el «...»)."""
+    return BOLETIN_A_FUENTE.get(normalizar(RE_PREFIJO_CITA.sub("", (nombre or "").strip()).strip(" «»\"”")))
 
 
 def _leer(carpeta: Path) -> list[dict]:
@@ -183,7 +190,7 @@ def construir(actos: list[dict], hoy: date, autonomicos: list[dict] | None = Non
         bases_enlazadas = []
         citados = a.get("boletines_citados") or []
         for b in citados:
-            fuente = BOLETIN_A_FUENTE.get(normalizar(b.get("boletin") or ""))
+            fuente = fuente_de_boletin(b.get("boletin"))
             if fuente and b.get("fecha"):
                 for k in _municipio(a.get("convocante"), ["BOE", fuente], citados):
                     vistos = {x["id"] for x in bases_enlazadas}
@@ -227,7 +234,7 @@ def _proceso(a: dict, posteriores: list[dict], otras: list[dict], hoy: date, ide
         estado = "sin_datos_de_plazo"
     todos = [a] + posteriores + otras
     fuentes = sorted({x.get("fuente") or "BOE" for x in todos})
-    citadas = [BOLETIN_A_FUENTE.get(normalizar(b.get("boletin") or "")) for b in a.get("boletines_citados") or []]
+    citadas = [fuente_de_boletin(b.get("boletin")) for b in a.get("boletines_citados") or []]
     conv = ubicar_convocante(a.get("convocante"), [f for f in [*fuentes, *citadas] if f],
                              a.get("boletines_citados")) or {}
     comunidad = conv.get("comunidad") or (comunidad_de_fuentes(fuentes) if a.get("ambito") == "autonomico" else None)
