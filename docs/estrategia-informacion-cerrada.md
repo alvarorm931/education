@@ -9,8 +9,8 @@ total y forma de pago, folleto y plan de estudios, guía docente, metodología, 
 plazas y fechas de admisión.
 
 Medido el 29/10/2026 en 3.679 fichas de programa de 1.332 centros no universitarios verificados en su web
-(barrido de 10.955 candidatos; en una revisión a mano de 60 al azar, el 77 % eran proveedores reales tras
-los filtros) y, aparte, en 779 fichas de las webs de universidades y centros oficiales:
+(barrido de 10.955 candidatos; en una revisión a mano, el 77 % de los que pasan los filtros son
+proveedores reales) y, aparte, en 779 fichas de las webs de universidades y centros oficiales:
 
 | Qué | No universitarios | Universidades y centros oficiales |
 |---|---|---|
@@ -269,9 +269,9 @@ autorizados, otros centros de nivel universitario y Defensa)**, barrido a fondo:
   en Common Crawl.
 
 **Centros no oficiales, primer barrido** (10.955 candidatos del último índice de Common Crawl): 1.466
-con fichas de programa y señal de España, 1.332 tras los filtros de precisión; revisados a mano 60 al azar,
-el 77 % son proveedores reales (escuelas de negocio, academias en línea, institutos sanitarios, colegios
-profesionales, escuelas de arte y diseño). Estimación: entre 900 y 1.100 proveedores reales no oficiales,
+con fichas de programa y señal de España, 1.332 tras los filtros de precisión. De 60 revisados a mano al
+azar, 47 pasan los filtros y de esos el 77 % (36) son proveedores reales (escuelas de negocio, academias en línea, institutos sanitarios, colegios
+profesionales, escuelas de arte y diseño). Estimación: unos 1.000 proveedores reales no oficiales (entre 850 y 1.200 con el margen de una muestra de 47),
 con unas 90.000 URL de programa. Lo que se cuela: agregadores y blogs con fichas copiadas, sedes de otros
 países y productos con «master» en el nombre. 35 vetan nuestro agente en `robots.txt` y 5 reservan la
 minería de datos (TDM): solo se enlazan.
