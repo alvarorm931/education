@@ -54,6 +54,8 @@ def explorar(codigo: str, salida: Path, tipo: str = "M", maximo: int = 60, pausa
         texto = cuerpo.decode("latin-1", "replace")
         for enlace in RE_ENLACE.findall(texto):
             destino = _limpiar(urljoin(url, enlace))
+            if re.search(r"d-\d+-[os]=", destino):  # enlaces de ordenación de tablas: mismo contenido
+                continue
             if "/ruct/solicitud/" in destino and destino not in vistos and not destino.endswith((".css", ".js")):
                 pendientes.append(destino)
         time.sleep(pausa)
