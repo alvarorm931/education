@@ -97,3 +97,5 @@ def test_lote_completo_sin_red(tmp_path, monkeypatch):
     assert abs(res["coste_usd"] - (1000 * 0.05 + 200 * 0.25) / 1e6) < 1e-12
     capt = (tmp_path / "out" / "paginas_capturadas.jsonl").read_text()
     assert "<html" not in capt  # la página no se guarda
+    hechos = (tmp_path / "out" / "hechos.jsonl").read_text()
+    assert "Precio total" not in hechos and "cita_sha256" in hechos  # ni la cita

@@ -399,6 +399,11 @@ def lote(muestra: Path, salida: Path, esperar_min: float = 45, max_paginas: int 
             for h in verificar(datos, texto):
                 h.update({"url": pagina["url"], "captura_sha256": pagina["sha256"], "modelo": MODELO,
                           "extraido": ahora, "lote": b["id"]})
+                # la cita es texto ajeno: hasta tener el archivo privado no sale del trabajo; queda su huella
+                # (para comprobarla después contra la página) y su longitud
+                cita = h.pop("cita", "") or ""
+                h["cita_sha256"] = hashlib.sha256(_norma(cita).encode()).hexdigest() if cita else None
+                h["cita_palabras"] = len(cita.split())
                 fh.write(json.dumps(h, ensure_ascii=False) + "\n")
                 campos[(h["campo"], h["estado"])] += 1
                 if h.get("motivo"):
