@@ -1,6 +1,7 @@
 # Lista oficial de boletines autonómicos y provinciales.
 # Fuente: https://www.boe.es/legislacion/otros_diarios_oficiales.php (consultada el 29/10/2026 desde GitHub Actions).
 # 19 autonómicos (17 comunidades + Ceuta y Melilla) y 43 provinciales (incluidos Álava, Bizkaia y Gipuzkoa).
+# Sondeo del 29/10/2026 desde GitHub Actions (servidores fuera de España): acceso y canales estructurados encontrados en la portada.
 # estado: sin_conector | sondeado | conector_en_pruebas | conector_activo
 
 autonomicos:
@@ -8,45 +9,57 @@ autonomicos:
     nombre: Boletín Oficial de la Junta de Andalucía
     comunidad: Andalucía
     url: https://www.juntadeandalucia.es/eboja
+    acceso_desde_github: "ok"
+    datos_estructurados: "API JSON/CSV por año: https://datos.juntadeandalucia.es/api/v0/boja/all?year=AAAA&format=json (OpenAPI en /api/v0/boja/openapi.json)"
     estado: sin_conector
     nota: "Datos abiertos: API JSON/CSV por año (datos.juntadeandalucia.es/api/v0/boja), CC BY 4.0; Atom con cuerpo del texto"
   - id: BOA
     nombre: Boletín Oficial de Aragón
     comunidad: Aragón
     url: https://www.boa.aragon.es/
+    acceso_desde_github: "ok"
     estado: sin_conector
   - id: BOPA
     nombre: Boletín Oficial del Principado de Asturias
     comunidad: Asturias
     url: https://sede.asturias.es/servicios-del-bopa
+    acceso_desde_github: "sin_respuesta_desde_github (timeout)"
     estado: sin_conector
     nota: "Comunidad uniprovincial: también publica lo local"
   - id: BOIB
     nombre: Butlletí Oficial de les Illes Balears
     comunidad: Illes Balears
     url: http://www.caib.es/eboibfront/?lang=es
+    acceso_desde_github: "ok"
+    datos_estructurados: "RSS: https://www.caib.es/eboibfront/indexrss.do?lang=es"
     estado: sin_conector
     nota: "Comunidad uniprovincial: también publica lo local"
   - id: BOC-CAN
     nombre: Boletín Oficial de Canarias
     comunidad: Canarias
     url: http://www.gobiernodecanarias.org/boc/
+    acceso_desde_github: "ok"
+    datos_estructurados: "Feeds: https://www.gobiernodecanarias.org/boc/feeds/"
     estado: sin_conector
   - id: BOC-CANT
     nombre: Boletín Oficial de Cantabria
     comunidad: Cantabria
     url: https://boc.cantabria.es/boces/
+    acceso_desde_github: "sin_respuesta_desde_github (timeout)"
     estado: sin_conector
     nota: "Comunidad uniprovincial: también publica lo local"
   - id: DOCM
     nombre: Diario Oficial de Castilla-La Mancha
     comunidad: Castilla-La Mancha
     url: http://docm.castillalamancha.es/portaldocm/sumario.do
+    acceso_desde_github: "ok"
     estado: sin_conector
   - id: BOCYL
     nombre: Boletín Oficial de Castilla y León
     comunidad: Castilla y León
     url: https://bocyl.jcyl.es/portada.do
+    acceso_desde_github: "ok"
+    datos_estructurados: "Datos abiertos: https://datosabiertos.jcyl.es/web/jcyl/set/es/sector-publico/bocyl/1284948181134"
     estado: sin_conector
   - id: DOGC
     nombre: Diari Oficial de la Generalitat de Catalunya
@@ -57,185 +70,251 @@ autonomicos:
     nombre: Diario Oficial de Extremadura
     comunidad: Extremadura
     url: http://doe.juntaex.es/
+    acceso_desde_github: "ok"
+    datos_estructurados: "RSS por sección: http://doe.juntaex.es/rss/rss.php?seccion=N"
     estado: sin_conector
   - id: DOG
     nombre: Diario Oficial de Galicia
     comunidad: Galicia
     url: https://www.xunta.gal/diario-oficial-galicia/portalPublicoHome.do?lang=es
+    acceso_desde_github: "ok"
+    datos_estructurados: "RSS: https://www.xunta.gal/diario-oficial-galicia/suscricionsRSS.do"
     estado: sin_conector
   - id: BOR
     nombre: Boletín Oficial de La Rioja
     comunidad: La Rioja
     url: http://www.larioja.org/bor/es
+    acceso_desde_github: "sin_respuesta_desde_github (timeout)"
     estado: sin_conector
     nota: "Comunidad uniprovincial: también publica lo local"
   - id: BOCM
     nombre: Boletín Oficial de la Comunidad de Madrid
     comunidad: Madrid
     url: http://www.bocm.es/
+    acceso_desde_github: "ok"
+    datos_estructurados: "RSS /boletines.rss y /sumarios.rss; XML del boletín diario: /boletin/CM_Boletin_BOCM/AAAA/MM/DD/BOCM-AAAAMMDDNNN.xml"
     estado: sin_conector
     nota: "Comunidad uniprovincial: también publica lo local. RSS: /boletines.rss, /sumarios.rss, /ultimo-boletin.xml"
   - id: BORM
     nombre: Boletín Oficial de la Región de Murcia
     comunidad: Murcia
     url: https://www.borm.es/
+    datos_estructurados: "Servicio de sumario PDF: https://www.borm.es/services/boletin/ano/AAAA/numero/N/sumario/pdf"
     estado: sin_conector
     nota: "Comunidad uniprovincial: también publica lo local. Servicio de sumario en PDF: /services/boletin/ano/AAAA/numero/N/sumario/pdf"
   - id: BON
     nombre: Boletín Oficial de Navarra
     comunidad: Navarra
     url: http://www.navarra.es/home_es/Actualidad/BON/
+    acceso_desde_github: "sin_respuesta_desde_github (timeout)"
     estado: sin_conector
     nota: "Comunidad uniprovincial: también publica lo local"
   - id: BOPV
     nombre: Boletín Oficial del País Vasco
     comunidad: País Vasco
     url: https://www.euskadi.eus/y22-bopv/es/bopv2/datos/Ultimo.shtml
+    acceso_desde_github: "ok"
+    datos_estructurados: "XML del último boletín: /bopv2/datos/Ultimo.xml (ISO-8859-1)"
     estado: sin_conector
     nota: "RSS del último boletín: /bopv2/datos/Ultimo.xml (ISO-8859-1)"
   - id: DOGV
     nombre: Diari Oficial de la Generalitat Valenciana
     comunidad: Comunitat Valenciana
     url: https://dogv.gva.es/es/inici
+    acceso_desde_github: "ok"
     estado: sin_conector
   - id: BOCCE
     nombre: Boletín Oficial de la Ciudad Autónoma de Ceuta
     comunidad: Ceuta
     url: http://www.ceuta.es/ceuta/documentos/
+    acceso_desde_github: "sin_respuesta_desde_github (timeout)"
     estado: sin_conector
   - id: BOME
     nombre: Boletín Oficial de la Ciudad Autónoma de Melilla
     comunidad: Melilla
     url: https://bomemelilla.es/
+    acceso_desde_github: "ok"
+    datos_estructurados: "API de calendario: https://bomemelilla.es/api/bomes/calendar"
     estado: sin_conector
 
 provinciales:
   - provincia: A Coruña
     url: https://bop.dacoruna.gal/bopportal/
+    acceso_desde_github: "ok"
     estado: sin_conector
   - provincia: Albacete
     url: https://bop.dipualba.es/
+    acceso_desde_github: "sin_respuesta_desde_github (timeout)"
     estado: sin_conector
   - provincia: Alicante
     url: http://sede.diputacionalicante.es/consultas-bop/
+    acceso_desde_github: "ok"
+    datos_estructurados: "RSS de la sede, incluidos bases y bolsas: https://sede.diputacionalicante.es/rssbasesant/ y /rssbolsa/"
     estado: sin_conector
   - provincia: Almería
     url: http://www.dipalme.org/Servicios/cmsdipro/index.nsf/bop_view.xsp?p=dipalme
+    acceso_desde_github: "ok"
     estado: sin_conector
   - provincia: Araba/Álava
     url: http://www.araba.eus/botha/Inicio/SGBO5001.aspx
+    acceso_desde_github: "ok"
+    datos_estructurados: "XML por anuncio: Boletines/AAAA/NNN/AAAA_NNN_NNNNN_C.xml"
     estado: sin_conector
   - provincia: Ávila
     url: https://www.diputacionavila.es/boletin-oficial/
+    acceso_desde_github: "ok"
+    datos_estructurados: "RSS: https://www.diputacionavila.es/bop/rss.xml"
     estado: sin_conector
   - provincia: Badajoz
     url: http://www.dip-badajoz.es/bop/
+    acceso_desde_github: "ok"
+    datos_estructurados: "Atom: https://www.dip-badajoz.es/canales/atom_xml_bop.php?c=1&u=1"
     estado: sin_conector
   - provincia: Barcelona
     url: http://bop.diba.cat
+    acceso_desde_github: "ok"
     estado: sin_conector
   - provincia: Bizkaia
     url: https://www.bizkaia.eus/es/bob
+    acceso_desde_github: "ok"
+    datos_estructurados: "RSS y datos abiertos: https://www.opendatabizkaia.eus/es"
     estado: sin_conector
   - provincia: Burgos
     url: http://bopbur.diputaciondeburgos.es/
+    acceso_desde_github: "sin_respuesta_desde_github (timeout)"
     estado: sin_conector
   - provincia: Cáceres
     url: https://bop.dip-caceres.es/bop/index.html
+    acceso_desde_github: "ok"
     estado: sin_conector
   - provincia: Cádiz
     url: http://www.bopcadiz.org
+    acceso_desde_github: "sin_respuesta_desde_github (timeout)"
     estado: sin_conector
   - provincia: Castellón
     url: http://bop.dipcas.es/PortalBOP/boletin.do
+    acceso_desde_github: "ok"
     estado: sin_conector
   - provincia: Ciudad Real
     url: https://bop.dipucr.es/
+    acceso_desde_github: "certificado_ssl_incompleto"
     estado: sin_conector
   - provincia: Córdoba
     url: https://bop.dipucordoba.es/
+    acceso_desde_github: "ok"
     estado: sin_conector
   - provincia: Cuenca
     url: https://www.dipucuenca.es/boletin-oficial-de-la-provincia
+    acceso_desde_github: "http_403"
     estado: sin_conector
   - provincia: Gipuzkoa
     url: https://egoitza.gipuzkoa.eus/es/bog
+    acceso_desde_github: "ok"
     estado: sin_conector
   - provincia: Girona
     url: http://www.ddgi.cat/
+    acceso_desde_github: "ok"
     estado: sin_conector
   - provincia: Granada
     url: https://www.dipgra.es/bop/
+    acceso_desde_github: "ok"
     estado: sin_conector
   - provincia: Guadalajara
     url: http://boletin.dguadalajara.es/
+    acceso_desde_github: "ok"
     estado: sin_conector
   - provincia: Huelva
     url: https://sede.diphuelva.es/servicios/bop
+    acceso_desde_github: "ok"
     estado: sin_conector
   - provincia: Huesca
     url: http://bop.dphuesca.es/
+    acceso_desde_github: "ok"
     estado: sin_conector
   - provincia: Jaén
     url: http://bop.dipujaen.es/
+    acceso_desde_github: "http_500"
     estado: sin_conector
   - provincia: Las Palmas
     url: http://www.boplaspalmas.com
+    acceso_desde_github: "ok"
     estado: sin_conector
   - provincia: León
     url: https://bop.dipuleon.es/
+    acceso_desde_github: "ok"
+    datos_estructurados: "RSS: https://www.dipuleon.es/Contenidos_RSS/"
     estado: sin_conector
   - provincia: Lleida
     url: https://ebop.diputaciolleida.cat/bop/
+    acceso_desde_github: "sin_respuesta_desde_github (timeout)"
     estado: sin_conector
   - provincia: Lugo
     url: http://www.deputacionlugo.gal/boletin-oficial-da-provincia-de-lugo
+    acceso_desde_github: "ok"
+    datos_estructurados: "RSS: /boletin-oficial-da-provincia-de-lugo/bop/feed.xml"
     estado: sin_conector
   - provincia: Málaga
     url: http://www.bopmalaga.es/
+    acceso_desde_github: "http_403"
     estado: sin_conector
   - provincia: Ourense
     url: https://bop.depourense.es/portal/
+    acceso_desde_github: "ok"
     estado: sin_conector
   - provincia: Palencia
     url: https://www.diputaciondepalencia.es/servicios/boletin-oficial-provincia
+    acceso_desde_github: "ok"
     estado: sin_conector
   - provincia: Pontevedra
     url: https://boppo.depo.gal/es
+    acceso_desde_github: "ok"
     estado: sin_conector
   - provincia: Salamanca
     url: https://sede.diputaciondesalamanca.gob.es/BOP/
+    acceso_desde_github: "sin_respuesta_desde_github (timeout)"
     estado: sin_conector
   - provincia: Santa Cruz de Tenerife
     url: http://www.bopsantacruzdetenerife.es/
+    acceso_desde_github: "ok"
     estado: sin_conector
   - provincia: Segovia
     url: http://www.dipsegovia.es/bop
+    acceso_desde_github: "http_403"
     estado: sin_conector
   - provincia: Sevilla
     url: http://www.dipusevilla.es/bop/
+    acceso_desde_github: "ok"
     estado: sin_conector
   - provincia: Soria
     url: http://bop.dipsoria.es/
+    acceso_desde_github: "ok"
+    datos_estructurados: "RSS: http://bop.dipsoria.es/index.php/mod.global/mem.rssHome"
     estado: sin_conector
   - provincia: Tarragona
     url: http://www.diputaciodetarragona.cat/ebop/
+    acceso_desde_github: "certificado_ssl_incompleto"
     estado: sin_conector
   - provincia: Teruel
     url: http://www.dpteruel.es/boletines.htm
+    acceso_desde_github: "http_403"
     estado: sin_conector
   - provincia: Toledo
     url: http://bop.diputoledo.es/webEbop/inicio.jsp
+    acceso_desde_github: "ok"
     estado: sin_conector
   - provincia: Valencia
     url: https://bop.dival.es/bop/drvisapi.dll
+    acceso_desde_github: "ok"
     estado: sin_conector
   - provincia: Valladolid
     url: https://bop.sede.diputaciondevalladolid.es/
+    acceso_desde_github: "sin_respuesta_desde_github (timeout)"
     estado: sin_conector
   - provincia: Zamora
     url: https://www.diputaciondezamora.es/opencms/servicios/BOP/bop/index.html
+    acceso_desde_github: "ok"
     estado: sin_conector
   - provincia: Zaragoza
     url: http://bop.dpz.es/BOPZ/
+    acceso_desde_github: "sin_respuesta_desde_github (timeout)"
     estado: sin_conector
