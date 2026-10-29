@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <title>Boletín Oficial de la Provincia 208 · Miércoles 28 de Octubre de 2026 | BOP Ciudad Real</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="shortcut icon" href="https://bop.dipucr.es/favicon.ico">
+
+    <link rel="stylesheet" href="/css/jquery-ui.css">
+    <link rel="stylesheet" href="/css/general.css">
+    <link rel="stylesheet" href="/css/calendar.css">
+
+    <script src="/javascript/jquery.min.js"></script>
+    <script src="/javascript/jquery-ui.min.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+
+    
+    
+    <script>
+    $(document).ready(function() {
+      $( document ).tooltip();
+      
+      $( "#sumario" ).menu();
+      $( "#clasificaciones" ).accordion({
+        heightStyle: "content"
+      });
+    $("#goToPrevYear").click(function() {
+      $("#mes_calendario").val(10);
+      $("#anyo_calendario").val(2025);
+      $("#cambia_calendario").submit();
+    });
+
+    $("#goToPrevMonth").click(function() {
+      $("#mes_calendario").val(09);
+      $("#anyo_calendario").val(2026);
+      $("#cambia_calendario").submit();
+    });
+
+    $("#goToNextYear").click(function() {
+    $("#mes_calendario").val(10);
+      $("#anyo_calendario").val(2027);
+      $("#cambia_calendario").submit();
+    });
+
+    $("#goToNextMonth").click(function() {
+      $("#mes_calendario").val(11);
+      $("#anyo_calendario").val(2026);
+      $("#cambia_calendario").submit();
+    });
+    });
+    
+    </script>
+
+    <script>
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-40453884-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'https://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+	<!-- Script de implantaciÃ³n para bop.sede.dipucr.e INSUIT accesibilidad -->
+<script async type="text/javascript" lang="es-ES" src="https://bop--dipucr--es.insuit.net/i4tservice/insuit-app.js"  data-insuit-tab-custom= "true">
+</script>
+
+
+  </head>
+  <body>
+    <div id="bop_body">
+      <div id="header">
+<a href="https://bop.dipucr.es" title="bop.dipucr.es">
+<img src="/graphics/logo.png" alt="Diputación de Ciudad Real">
+</a>
+<div class="cab_d">
+    <div class="links"><a href="/contacto">Contacto</a>|<a href="/mapa">Mapa Web</a></div>
+    <div class="banner">
+        <a href="https://www.dipucr.es" target="_blank"><img src="/images/banner_portal_grana.png" alt="Banner de la Web www.dipucr.es"></a>
+        <a href="https://sede.dipucr.es" target="_blank"><img src="/images/banner_sede_grana.png" alt="Banner de la Sede Electrónica sede.dipucr.es"></a>
+    </div>
+</div>
+
+      </div>
+      <div id="navbar">
+<div class="menu_s">
+<ul id="nav">
+<li>
+<a href="/inicio" title="Ir al inicio">Inicio</a>
+</li>
+<li>
+<a href="#">El BOP</a>
+<ul>
+<li><a href="/historia.html">Historia</a></li>
+<li><a href="/normativa.html">Normativa</a></li>
+<li><a href="/tasas.html">Tasas y Tarifas</a></li>
+</ul>
+</li>
+<li>
+<a href="/publicarAnuncios.html" title="Cómo publicar anuncios en el BOP">Publicar Anuncios</a>
+</li>
+<li>
+<a href="/buscador" title="Buscador de anuncios a partir del año 2000. A partir de este año se dispone de ellos en formato digital">Buscador Anuncios</a>
+</li>
+<li>
+<a href="/buscadorHistorico" title="Buscador de boletines realizados en papel durante los años 1836 y 2000. Estos boletines han sido digitalizados posteriormente">BOP 1836 - 2000</a>
+</li>
+<li><a href="/suscripciones" title="Servicio de Suscripciones al BOP">Suscripciones BOP</a></li>
+<li>
+<a href="#">Ayuda</a>
+<ul>
+<li><a href="/requisitos_tecnicos.html">Requisitos Técnicos</a></li>
+<li><a href="https://se1.dipucr.es:4443/SIGEM_BuscadorDocsWeb/search.do?entidad=005" target="_blank">Código de verificación electrónica</a></li>
+<li><a href="/faqs.html">FAQs</a></li>
+</ul>
+</li>
+</ul>
+</div>
+      </div>
+      <div id="aside">
+<div id="calendario">
+
+    <form id="cambia_calendario" action="/" method="post">
+        <input id="anyo_calendario" name="anyo_calendario" type="hidden" value="">
+        <input id="mes_calendario" name="mes_calendario" type="hidden" value="">
+        <input id="dia_calendario" name="dia_calendario" type="hidden" value="">
+    </form>
+    <table><thead><tr><th class="mesAnyo" colspan="7">Octubre 2026</th></tr><tr class="controles"><th id="goToPrevYear" unselectable="on" title="Año anterior">«</th><th id="goToPrevMonth" unselectable="on" title="Mes anterior">‹</th><td colspan="3" unselectable="on">&nbsp;</td><th id="goToNextMonth" unselectable="on" title="Mes siguiente">›</th><th id="goToNextYear" unselectable="on" title="Año siguiente">»</th></tr><tr class="nombre_dias"><th title="Lunes"><div unselectable="on">L</div></th><th title="Martes"><div unselectable="on">M</div></th><th title="Miércoles"><div unselectable="on">X</div></th><th title="Jueves"><div unselectable="on">J</div></th><th title="Viernes"><div unselectable="on">V</div></th><th title="Sábado"><div unselectable="on">S</div></th><th title="Domingo"><div unselectable="on">D</div></th></tr></thead><tbody><tr><td></td><td></td><td></td><td ><a class="hayBop" href="/bop/2026/10/01" title="Ir al BOP del 01/10/2026">1</a></td><td ><a class="hayBop" href="/bop/2026/10/02" title="Ir al BOP del 02/10/2026">2</a></td><td class="fin_semana "><span>3</span></td><td class="fin_semana "><span>4</span></td></tr><tr><td ><a class="hayBop" href="/bop/2026/10/05" title="Ir al BOP del 05/10/2026">5</a></td><td ><a class="hayBop" href="/bop/2026/10/06" title="Ir al BOP del 06/10/2026">6</a></td><td ><a class="hayBop" href="/bop/2026/10/07" title="Ir al BOP del 07/10/2026">7</a></td><td ><a class="hayBop" href="/bop/2026/10/08" title="Ir al BOP del 08/10/2026">8</a></td><td ><a class="hayBop" href="/bop/2026/10/09" title="Ir al BOP del 09/10/2026">9</a></td><td class="fin_semana "><span>10</span></td><td class="fin_semana "><span>11</span></td></tr><tr><td ><a class="hayBop" href="/bop/2026/10/12" title="Ir al BOP del 12/10/2026">12</a></td><td ><a class="hayBop" href="/bop/2026/10/13" title="Ir al BOP del 13/10/2026">13</a></td><td ><a class="hayBop" href="/bop/2026/10/14" title="Ir al BOP del 14/10/2026">14</a></td><td ><a class="hayBop" href="/bop/2026/10/15" title="Ir al BOP del 15/10/2026">15</a></td><td ><a class="hayBop" href="/bop/2026/10/16" title="Ir al BOP del 16/10/2026">16</a></td><td class="fin_semana "><span>17</span></td><td class="fin_semana "><span>18</span></td></tr><tr><td ><a class="hayBop" href="/bop/2026/10/19" title="Ir al BOP del 19/10/2026">19</a></td><td ><a class="hayBop" href="/bop/2026/10/20" title="Ir al BOP del 20/10/2026">20</a></td><td ><a class="hayBop" href="/bop/2026/10/21" title="Ir al BOP del 21/10/2026">21</a></td><td ><a class="hayBop" href="/bop/2026/10/22" title="Ir al BOP del 22/10/2026">22</a></td><td ><a class="hayBop" href="/bop/2026/10/23" title="Ir al BOP del 23/10/2026">23</a></td><td class="fin_semana "><span>24</span></td><td class="fin_semana "><span>25</span></td></tr><tr><td ><a class="hayBop" href="/bop/2026/10/26" title="Ir al BOP del 26/10/2026">26</a></td><td ><a class="hayBop" href="/bop/2026/10/27" title="Ir al BOP del 27/10/2026">27</a></td><td ><a class="hayBop" href="/bop/2026/10/28" title="Ir al BOP del 28/10/2026">28</a></td><td class=" hoy"><a class="hayBop" href="/bop/2026/10/29" title="Ir al BOP del 29/10/2026">29</a></td><td ><span>30</span></td><td class="fin_semana "><span>31</span></td></tr></tbody></table>
+</div>
+
+<ul>
+<p>Enlaces de interés</p>
+
+<li><a href="https://boe.es/diario_boe/" title="Boletín Oficial del Estado" target="_blank">BOE</a>
+<li><a href="https://docm.jccm.es/" title="Diario Oficial de Castilla-La Mancha" target="_blank">DOCM</a>
+<li><a href="https://docm.jccm.es/portaldocm/enlaces.do#cat3" title="Diarios oficiales de otros organismos o instituciones" target="_blank">Otros diarios oficiales</a>
+</ul>
+      </div>
+      <div id="bop_centro">
+    <div id="migas">
+	<span>Está usted en:  </span><a href="https://bop.dipucr.es">Página Inicio </a>  > Boletín Oficial de la Provincia 208 · Miércoles 28 de Octubre de 2026
+    </div>
+    
+        
+<div id="aviso">
+    <p><span class="resaltar">Aviso Importante:</span><span>Desde el día 1 de enero de 2016 todas las personas jurídicas están obligadas a remitir los anuncios al BOP <a href="https://bop.dipucr.es/publicarAnuncios.html"> por vía electrónica</a>. </span></p>
+</div>
+
+        <h1>Boletín Oficial de la Provincia</h1>
+        <div id="boletin">
+          <h2>Último Boletín publicado: 29-10-2026</h2>
+          <div class="cabecera_bop">
+            <img src="/graphics/logo_bop.png" alt="Logo BOP">
+            <span>Número 208 · Miércoles 28 de Octubre de 2026</span>
+          </div>
+          <div class="link_descarga"><a href="https://se1.dipucr.es:4443/SIGEM_BuscadorDocsWeb/getDocument.do?entidad=005&doc=7849209" target="_blank">Descargar el boletín completo.</a> [<a href="https://se1.dipucr.es:4443/SIGEM_BuscadorDocsWeb/getDocument.do?entidad=005&doc=7849209"><img src="/images/pdf.png" alt="Descargar en PDF"></a>]</div>
+          <h3>Sumario</h3>
+          
+        <div id="clasificaciones">
+            
+                <h3 class="admons">AYUNTAMIENTOS</h3><div>
+
+                <p class="clasificaciones">ALCÁZAR DE SAN JUAN</p>
+                
+                    <ul class="anuncios">
+                        
+                        <li id="3465">
+                            <p><a href="https://se1.dipucr.es:4443/SIGEM_BuscadorDocsWeb/getDocument.do?entidad=005&doc=7849340" target="_blank">Aprobación inicial de modificación de varias ordenanzas fiscales municipales.</a><br><span class="nAnuncio">Anuncio Nº 3465</span> - <span class="nPagina">Pag. 10114</span>&nbsp;<a class="pdf" href="https://se1.dipucr.es:4443/SIGEM_BuscadorDocsWeb/getDocument.do?entidad=005&doc=7849340"><img src="/images/pdf.png" alt="Descargar en PDF"></a></p>
+                        </li>
+                        <li id="3466">
+                            <p><a href="https://se1.dipucr.es:4443/SIGEM_BuscadorDocsWeb/getDocument.do?entidad=005&doc=7849341" target="_blank">Aprobación definitiva de los expedientes de modificación presupuestaria números 24/2026 de créditos extraordinarios y 25/2026 de suplementos de crédito.</a><br><span class="nAnuncio">Anuncio Nº 3466</span> - <span class="nPagina">Pag. 10115</span>&nbsp;<a class="pdf" href="https://se1.dipucr.es:4443/SIGEM_BuscadorDocsWeb/getDocument.do?entidad=005&doc=7849341"><img src="/images/pdf.png" alt="Descargar en PDF"></a></p>
+                        </li>
+                    </ul>
+                
+
+                <p class="clasificaciones">ALCÁZAR DE SAN JUAN - INSTITUTO MUNICIPAL DE DEPORTES</p>
+                
+                    <ul class="anuncios">
+                        
+                        <li id="3467">
+                            <p><a href="https://se1.dipucr.es:4443/SIGEM_BuscadorDocsWeb/getDocument.do?entidad=005&doc=7849342" target="_blank">Aprobación definitiva del expediente de modificación presupuestaria número 4/2026 de suplementos de crédito del presupuesto para el ejercicio económico 2026.</a><br><span class="nAnuncio">Anuncio Nº 3467</span> - <span class="nPagina">Pag. 10117</span>&nbsp;<a class="pdf" href="https://se1.dipucr.es:4443/SIGEM_BuscadorDocsWeb/getDocument.do?entidad=005&doc=7849342"><img src="/images/pdf.png" alt="Descargar en PDF"></a></p>
+                        </li>
+                    </ul>
+                
+
+                <p class="clasificaciones">ALMAGRO</p>
+                
+                    <ul class="anuncios">
+                        
+                        <li id="3468">
+                            <p><a href="https://se1.dipucr.es:4443/SIGEM_BuscadorDocsWeb/getDocument.do?entidad=005&doc=7849343" target="_blank">Aprobación definitiva de modificación de la plantilla de personal.</a><br><span class="nAnuncio">Anuncio Nº 3468</span> - <span class="nPagina">Pag. 10118</span>&nbsp;<a class="pdf" href="https://se1.dipucr.es:4443/SIGEM_BuscadorDocsWeb/getDocument.do?entidad=005&doc=7849343"><img src="/images/pdf.png" alt="Descargar en PDF"></a></p>
+                        </li>
+                    </ul>
+                
+
+                <p class="clasificaciones">CAMPO DE CRIPTANA</p>
+                
+                    <ul class="anuncios">
+                        
+                        <li id="3469">
+                            <p><a href="https://se1.dipucr.es:4443/SIGEM_BuscadorDocsWeb/getDocument.do?entidad=005&doc=7849344" target="_blank">Modificación de la Relación de Puestos de Trabajo (RPT).</a><br><span class="nAnuncio">Anuncio Nº 3469</span> - <span class="nPagina">Pag. 10119</span>&nbsp;<a class="pdf" href="https://se1.dipucr.es:4443/SIGEM_BuscadorDocsWeb/getDocument.do?entidad=005&doc=7849344"><img src="/images/pdf.png" alt="Descargar en PDF"></a></p>
+                        </li>
+                    </ul>
+                
+
+                <p class="clasificaciones">DAIMIEL</p>
+                
+                    <ul class="anuncios">
+                        
+                        <li id="3470">
+                            <p><a href="https://se1.dipucr.es:4443/SIGEM_BuscadorDocsWeb/getDocument.do?entidad=005&doc=7849345" target="_blank">Extracto de las bases reguladoras de la Convocatoria para la concesión de subvenciones a Proyectos de Cooperación Internacional para el Desarrollo y de Sensibilización, año 2026.</a><br><span class="nAnuncio">Anuncio Nº 3470</span> - <span class="nPagina">Pag. 10122</span>&nbsp;<a class="pdf" href="https://se1.dipucr.es:4443/SIGEM_BuscadorDocsWeb/getDocument.do?entidad=005&doc=7849345"><img src="/images/pdf.png" alt="Descargar en PDF"></a></p>
+                        </li>
+                    </ul>
+                
+
+                <p class="clasificaciones">HERENCIA</p>
+                
+                    <ul class="anuncios">
+                        
+                        <li id="3471">
+                            <p><a href="https://se1.dipucr.es:4443/SIGEM_BuscadorDocsWeb/getDocument.do?entidad=005&doc=7849346" target="_blank">Reanudación y continuación del procedimiento selectivo para la provisión mediante movilidad de una plaza de Policía Local.</a><br><span class="nAnuncio">Anuncio Nº 3471</span> - <span class="nPagina">Pag. 10124</span>&nbsp;<a class="pdf" href="https://se1.dipucr.es:4443/SIGEM_BuscadorDocsWeb/getDocument.do?entidad=005&doc=7849346"><img src="/images/pdf.png" alt="Descargar en PDF"></a></p>
+                        </li>
+                    </ul>
+                
+
+                <p class="clasificaciones">LLANOS DEL CAUDILLO</p>
+                
+                    <ul class="anuncios">
+                        
+                        <li id="3472">
+                            <p><a href="https://se1.dipucr.es:4443/SIGEM_BuscadorDocsWeb/getDocument.do?entidad=005&doc=7849347" target="_blank">Protocolo de actuación frente al acoso sexual, el acoso por razón de sexo y el acoso por orientación sexual en el ámbito laboral.</a><br><span class="nAnuncio">Anuncio Nº 3472</span> - <span class="nPagina">Pag. 10125</span>&nbsp;<a class="pdf" href="https://se1.dipucr.es:4443/SIGEM_BuscadorDocsWeb/getDocument.do?entidad=005&doc=7849347"><img src="/images/pdf.png" alt="Descargar en PDF"></a></p>
+                        </li>
+                    </ul>
+                
+
+                <p class="clasificaciones">MALAGÓN</p>
+                
+                    <ul class="anuncios">
+                        
+                        <li id="3473">
+                            <p><a href="https://se1.dipucr.es:4443/SIGEM_BuscadorDocsWeb/getDocument.do?entidad=005&doc=7849349" target="_blank">Solicitud de licencia para ampliación de la actividad de local de comida para llevar, con ubicación en calle Piedralá, Bloque 1 Esc. 2 Planta 0 Puerta L1.</a><br><span class="nAnuncio">Anuncio Nº 3473</span> - <span class="nPagina">Pag. 10138</span>&nbsp;<a class="pdf" href="https://se1.dipucr.es:4443/SIGEM_BuscadorDocsWeb/getDocument.do?entidad=005&doc=7849349"><img src="/images/pdf.png" alt="Descargar en PDF"></a></p>
+                        </li>
+                    </ul>
+                
+
+                <p class="clasificaciones">POZUELO DE CALATRAVA</p>
+                
+                    <ul class="anuncios">
+                        
+                        <li id="3474">
+                            <p><a href="https://se1.dipucr.es:4443/SIGEM_BuscadorDocsWeb/getDocument.do?entidad=005&doc=7849350" target="_blank">Aprobación de Adenda a las Bases para la provisión por sistema de oposición libre de un puesto de Agente de la Policía Local.</a><br><span class="nAnuncio">Anuncio Nº 3474</span> - <span class="nPagina">Pag. 10139</span>&nbsp;<a class="pdf" href="https://se1.dipucr.es:4443/SIGEM_BuscadorDocsWeb/getDocument.do?entidad=005&doc=7849350"><img src="/images/pdf.png" alt="Descargar en PDF"></a></p>
+                        </li>
+                    </ul>
+                
+
+                <p class="clasificaciones">SAN LORENZO DE CALATRAVA</p>
+                
+                    <ul class="anuncios">
+                        
+                        <li id="3475">
+                            <p><a href="https://se1.dipucr.es:4443/SIGEM_BuscadorDocsWeb/getDocument.do?entidad=005&doc=7849351" target="_blank">Aprobación definitiva del presupuesto general, plantilla presupuestaria y bases de ejecución del presupuesto del ejercicio 2027.</a><br><span class="nAnuncio">Anuncio Nº 3475</span> - <span class="nPagina">Pag. 10141</span>&nbsp;<a class="pdf" href="https://se1.dipucr.es:4443/SIGEM_BuscadorDocsWeb/getDocument.do?entidad=005&doc=7849351"><img src="/images/pdf.png" alt="Descargar en PDF"></a></p>
+                        </li>
+                    </ul>
+                
+
+                <p class="clasificaciones">TOMELLOSO</p>
+                
+                    <ul class="anuncios">
+                        
+                        <li id="3476">
+                            <p><a href="https://se1.dipucr.es:4443/SIGEM_BuscadorDocsWeb/getDocument.do?entidad=005&doc=7849352" target="_blank">Aprobación definitiva de Memoria-Informe de la conveniencia y oportunidad para la gestión de un servicio público de área de estacionamiento de autocaravanas.</a><br><span class="nAnuncio">Anuncio Nº 3476</span> - <span class="nPagina">Pag. 10143</span>&nbsp;<a class="pdf" href="https://se1.dipucr.es:4443/SIGEM_BuscadorDocsWeb/getDocument.do?entidad=005&doc=7849352"><img src="/images/pdf.png" alt="Descargar en PDF"></a></p>
+                        </li>
+                    </ul>
+                
+
+                <p class="clasificaciones">TORRALBA DE CALATRAVA</p>
+                
+                    <ul class="anuncios">
+                        
+                        <li id="3477">
+                            <p><a href="https://se1.dipucr.es:4443/SIGEM_BuscadorDocsWeb/getDocument.do?entidad=005&doc=7849353" target="_blank">Proceso de elección de Juez de Paz titular.</a><br><span class="nAnuncio">Anuncio Nº 3477</span> - <span class="nPagina">Pag. 10154</span>&nbsp;<a class="pdf" href="https://se1.dipucr.es:4443/SIGEM_BuscadorDocsWeb/getDocument.do?entidad=005&doc=7849353"><img src="/images/pdf.png" alt="Descargar en PDF"></a></p>
+                        </li>
+                    </ul>
+                
+            </div>
+                <h3 class="admons">TRIBUNAL SUPERIOR DE JUSTICIA DE CASTILLA-LA MANCHA</h3><div>
+
+                <p class="clasificaciones">ALBACETE - SALA DE GOBIERNO</p>
+                
+                    <ul class="anuncios">
+                        
+                        <li id="3478">
+                            <p><a href="https://se1.dipucr.es:4443/SIGEM_BuscadorDocsWeb/getDocument.do?entidad=005&doc=7849354" target="_blank">Nombramientos de Jueces de Paz titulares y sustitutos de varios municipios de la provincia.</a><br><span class="nAnuncio">Anuncio Nº 3478</span> - <span class="nPagina">Pag. 10156</span>&nbsp;<a class="pdf" href="https://se1.dipucr.es:4443/SIGEM_BuscadorDocsWeb/getDocument.do?entidad=005&doc=7849354"><img src="/images/pdf.png" alt="Descargar en PDF"></a></p>
+                        </li>
+                    </ul>
+                
+            </div>
+        </div>
+        </div>
+      </div>
+      <div id="footer">
+<span class="izq"><a href="/contacto">Contactar</a><a href="/informacion_legal.html">Información Legal</a><a href="/accesibilidad.html">Accesibilidad</a></span>
+<span class="der">Diputación de Ciudad Real</span>
+      </div>
+    </div>
+  </body>
+</html>
