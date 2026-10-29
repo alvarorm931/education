@@ -222,7 +222,7 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--max-minutos", type=float, default=0)
     p.add_argument("--pausa", type=float, default=0.7)
     a = p.parse_args(argv)
-    archivo = Archivo(a.salida / "archivo")
+    archivo = Archivo(a.salida / "archivo", indice_por_fuente=True)
 
     if a.textos:
         hechos, errores = descargar_textos(a.salida, archivo, a.max_minutos, a.pausa)

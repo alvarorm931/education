@@ -181,7 +181,7 @@ def main(argv: list[str] | None = None) -> int:
     if a.max:
         trabajo = trabajo[: a.max]
 
-    archivo = Archivo(a.salida / "archivo")
+    archivo = Archivo(a.salida / "archivo", indice_por_fuente=True)
     inicio, hechos, errores = time.monotonic(), 0, []
     print(f"Documentos a descargar: {len(trabajo)}")
     for i, (ident, _) in enumerate(trabajo):

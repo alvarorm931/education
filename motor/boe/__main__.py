@@ -153,7 +153,7 @@ def main(argv: list[str] | None = None) -> int:
         p.error("--hasta es anterior a --desde")
 
     raiz: Path = a.salida
-    archivo = Archivo(raiz / "archivo")
+    archivo = Archivo(raiz / "archivo", indice_por_fuente=True)
     ruta_estado = raiz / "datos" / "boe" / "estado.json"
     estado = json.loads(ruta_estado.read_text(encoding="utf-8")) if ruta_estado.exists() else {}
 

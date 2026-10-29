@@ -2,7 +2,10 @@
 
 Estructura: {raiz}/{fuente}/{AAAA}/{MM}/{DD}/{sha256}.{ext}[.gz]
 La huella sha256 es la del contenido original; si se comprime, se guarda en gzip sin alterar el contenido.
-Índice de capturas (una línea por captura): {raiz}/indice.jsonl
+Índice de capturas (una línea por captura):
+  - por defecto, {raiz}/indice.jsonl;
+  - con indice_por_fuente=True, {raiz}/indices/{fuente}/{AAAA-MM}.jsonl. Así dos flujos que trabajan a la vez
+    con fuentes distintas no escriben el mismo fichero (un índice común choca al juntar sus subidas).
 """
 
 from __future__ import annotations
@@ -15,8 +18,18 @@ from pathlib import Path
 
 
 class Archivo:
-    def __init__(self, raiz: Path | str):
+    def __init__(self, raiz: Path | str, indice_por_fuente: bool = False):
         self.raiz = Path(raiz)
+        self.indice_por_fuente = indice_por_fuente
+
+    def _anotar(self, registro: dict, fuente: str, fecha_ref: date) -> None:
+        if self.indice_por_fuente:
+            ruta = self.raiz / "indices" / fuente / f"{fecha_ref:%Y-%m}.jsonl"
+        else:
+            ruta = self.raiz / "indice.jsonl"
+        ruta.parent.mkdir(parents=True, exist_ok=True)
+        with ruta.open("a", encoding="utf-8") as f:
+            f.write(json.dumps(registro, ensure_ascii=False) + "\n")
 
     def guardar(
         self,
@@ -51,9 +64,7 @@ class Archivo:
             "capturado": datetime.now(timezone.utc).isoformat(timespec="seconds"),
             "cabeceras": cabeceras or {},
         }
-        self.raiz.mkdir(parents=True, exist_ok=True)
-        with (self.raiz / "indice.jsonl").open("a", encoding="utf-8") as f:
-            f.write(json.dumps(registro, ensure_ascii=False) + "\n")
+        self._anotar(registro, fuente, fecha_ref)
         return registro
 
     def registrar(self, fuente: str, fecha_ref: date, contenido: bytes, url: str, status: int,
@@ -76,9 +87,7 @@ class Archivo:
             "capturado": datetime.now(timezone.utc).isoformat(timespec="seconds"),
             "cabeceras": cabeceras or {},
         }
-        self.raiz.mkdir(parents=True, exist_ok=True)
-        with (self.raiz / "indice.jsonl").open("a", encoding="utf-8") as f:
-            f.write(json.dumps(registro, ensure_ascii=False) + "\n")
+        self._anotar(registro, fuente, fecha_ref)
         return registro
 
 

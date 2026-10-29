@@ -74,7 +74,7 @@ def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser()
     p.add_argument("--salida", type=Path, default=Path("."))
     a = p.parse_args(argv)
-    raiz, archivo = a.salida, Archivo(a.salida / "archivo")
+    raiz, archivo = a.salida, Archivo(a.salida / "archivo", indice_por_fuente=True)
     resultado, fallos = {}, 0
     pruebas = (("boc", lambda: prueba_boc(raiz, archivo)), ("bopv", lambda: prueba_bopv(raiz, archivo)),
                ("bucles", lambda: prueba_bucles(raiz)))

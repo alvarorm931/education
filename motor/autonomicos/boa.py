@@ -156,7 +156,7 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--max-minutos", type=float, default=0)
     p.add_argument("--pausa", type=float, default=1.0)
     a = p.parse_args(argv)
-    archivo = Archivo(a.salida / "archivo")
+    archivo = Archivo(a.salida / "archivo", indice_por_fuente=True)
     inicio, informes, d = time.monotonic(), [], a.desde
     while d <= a.hasta:
         if a.max_minutos and (time.monotonic() - inicio) / 60 > a.max_minutos:

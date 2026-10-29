@@ -58,7 +58,7 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--salida", type=Path, default=Path("."))
     p.add_argument("--solo", nargs="*", help="conectores a probar (por defecto, todos)")
     a = p.parse_args(argv)
-    raiz, archivo = a.salida, Archivo(a.salida / "archivo")
+    raiz, archivo = a.salida, Archivo(a.salida / "archivo", indice_por_fuente=True)
     hoy = date.today()
     resultado, fallos = {}, 0
 

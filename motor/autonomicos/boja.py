@@ -165,7 +165,7 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--max-minutos", type=float, default=0)
     a = p.parse_args(argv)
 
-    archivo = Archivo(a.salida / "archivo")
+    archivo = Archivo(a.salida / "archivo", indice_por_fuente=True)
     inicio, informes = time.monotonic(), []
     for anio in range(a.desde_anio, a.hasta_anio + 1):
         try:
