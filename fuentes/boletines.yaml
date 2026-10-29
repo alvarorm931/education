@@ -231,7 +231,8 @@ provinciales:
     url: https://bop.dipucr.es/
     acceso_desde_github: "ok con el intermedio GlobalSign GCC R6 AlphaSSL 2025 de motor/certificados/"
     datos_estructurados: "Sumario por día: /bop/AAAA/MM/DD (secciones, municipio, anuncio y PDF en se1.dipucr.es:4443)"
-    estado: sin_conector
+    estado: conector_en_pruebas
+    conector: motor/provinciales/bopciudadreal.py
   - provincia: Córdoba
     url: https://bop.dipucordoba.es/
     acceso_desde_github: "ok"

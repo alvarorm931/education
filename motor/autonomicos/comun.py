@@ -32,11 +32,11 @@ RE_EMPLEO_LOCAL = re.compile(
 RE_NO_EMPLEO = re.compile(
     r"\b(subvencion\w*|licencia\w*|urbanis\w*|ordenanza\w*|presupuesto\w*|expropiacion\w*|contratacion de (?:obras|servicios|suministro)\w*|"
     r"licitacion\w*|ayudas?|premios?|becas?|cuenta general|padron|tasas?|impuestos?|proyectos? de obras?|"
-    r"ejecucion de (?:las )?obras|remodelacion|relacion de puestos de trabajo|viviendas?|alquiler\w*|juez\w* de paz|"
+    r"ejecucion de (?:las )?obras|remodelacion|relacion de puestos de trabajo|viviendas?|alquiler\w*|"
     r"subvencio\w*|llicencia\w*|ordenanca\w*|pressupost\w*|expropiacio\w*|"
     r"contractacio de (?:les )?(?:obres|serveis|subministra)\w*|licitacio\w*|ajuts?|premis?|beques?|compte general|"
     r"padro|taxes|impostos?|projectes? d'obres?|execucio de (?:les )?obres|relacio de llocs de treball|"
-    r"habitatges?|lloguer\w*|jutge\w*(?:/\w+)? de pau|juez\w*(?:/\w+)? de paz|bonos?|bons|campanas?|campanyes|campanya|"
+    r"habitatges?|lloguer\w*|jutge\w*(?:/\w+)? de pau|(?:juez|jueces)\w*(?:/\w+)? de paz|bonos?|bons|campanas?|campanyes|campanya|"
     r"comercio\w*|comerc|entidad\w* colaborador\w*|entitat\w* col·laborador\w*|fomento del consumo|consum local|"
     r"licenza\w*|orzamento\w*|axudas?|bolsas? de estudos?|vivendas?|xuiz\w* de paz)\b")
 # Para boletines con todas las secciones mezcladas: hace falta además una palabra inequívoca de empleo público
