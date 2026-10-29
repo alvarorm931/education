@@ -95,6 +95,9 @@ jobs:
             rm -rf "$d/archivo/web-centros"
             if [ -d "$d/archivo" ]; then mkdir -p "pub/$STAMP/archivo"; cp -r "$d/archivo/." "pub/$STAMP/archivo/"; cat "$d/archivo/indice.jsonl" >> "pub/$STAMP/archivo/indice_todos.jsonl" 2>/dev/null || true; fi
           done
+          # GitHub rechaza ficheros de más de 100 MB: los grandes se comprimen (y se ve qué pesa)
+          find pub -type f -size +90M -print -exec gzip -9 {} \;
+          du -sh pub/$STAMP; find pub -type f -size +20M -exec ls -lh {} \;
           cd pub
           git init -q && git config user.name "motor-estudios" && git config user.email "motor-estudios@users.noreply.github.com"
           git remote add origin "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git"
@@ -104,6 +107,9 @@ jobs:
           for i in 1 2 3 4 5 6; do
             git push -q origin sondas && exit 0
             sleep $((i * 10))
-            git fetch -q --depth 1 origin sondas && git rebase -q FETCH_HEAD
+            # la carpeta $STAMP es solo de esta ejecución: se rehace el commit sobre lo último de la rama (con
+            # historial de profundidad 1, «git rebase» no encuentra la base común y choca con todo el árbol)
+            git fetch -q --depth 1 origin sondas && git reset -q FETCH_HEAD && git add "$STAMP" \
+              && git commit -qm "Estudios por tramos: $MODULO" || true
           done
           exit 1
