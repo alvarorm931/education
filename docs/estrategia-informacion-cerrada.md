@@ -8,29 +8,30 @@ Lo que más valor tiene para quien elige un máster es justo lo que se esconde t
 total y forma de pago, folleto y plan de estudios, guía docente, metodología, evaluación, becas, horario,
 plazas y fechas de admisión.
 
-Medido el 29/10/2026 en 348 páginas de programa de 111 centros no universitarios verificados:
+Medido el 29/10/2026 en 3.679 fichas de programa de 1.332 centros no universitarios verificados en su web
+(barrido de 10.955 candidatos; en una revisión a mano de 60 al azar, el 77 % eran proveedores reales tras
+los filtros) y, aparte, en 779 fichas de las webs de universidades y centros oficiales:
 
-| Qué | Páginas |
-|---|---|
-| Formulario que pide el correo | 60 % |
-| Formulario que pide el teléfono | 32 % |
-| Habla de precio | 92 % |
-| Da un importe en euros | 50 % |
-| Precio en los datos estructurados de la página (Schema.org) | 14 % |
-| Menciona asignaturas o módulos | 69 % |
-| Menciona becas o descuentos | 65 % |
-| Menciona metodología | 58 % |
-| Menciona evaluación | 46 % |
-| Menciona plazas | 30 % |
-| Guía o folleto en PDF enlazado sin formulario | 9 % |
+| Qué | No universitarios | Universidades y centros oficiales |
+|---|---|---|
+| Formulario que pide el correo | 51 % | 37 % |
+| Formulario que pide el teléfono | 34 % | 30 % |
+| Pide el correo y no da ningún importe | 31 % | — |
+| Habla de precio | 76 % | 82 % |
+| Da un importe en euros | 36 % | 31 % |
+| Precio en los datos estructurados (Schema.org) | 12 % | 6 % |
+| Menciona asignaturas o módulos | 66 % | 57 % |
+| Menciona becas o descuentos | 60 % | 62 % |
+| Menciona metodología | 52 % | 39 % |
+| Menciona evaluación | 37 % | 29 % |
+| Menciona plazas | 23 % | 33 % |
+| Menciona horario o calendario | 43 % | — |
+| Guía o folleto en PDF enlazado sin formulario | 9 % | 19 % |
 
-«Menciona» no es «da el dato»: la cifra exacta por campo sale de la extracción (`extraer.py`). Las
-universidades se miden en el barrido de sus webs (§9).
-
-**Aviso sobre esta tabla.** Se midió con un rastreador que leía mal las páginas servidas sin codificación en
-la cabecera («MÃ¡ster», «â‚¬»): en esas páginas no se veían «€», «metodología», «evaluación» ni «admisión».
-Las cifras de importe en euros, metodología y evaluación pueden estar por debajo de la realidad. El fallo
-está corregido (29/10/2026) y la tabla se vuelve a medir en el barrido de candidatos.
+«Menciona» no es «da el dato»: la cifra exacta por campo sale de la extracción (`extraer.py`). Una primera
+medición en 348 páginas daba cifras más altas (60 % pide el correo, 50 % da importe): era el primer cuarto
+de la lista, los centros más grandes, y además el rastreador leía mal las páginas sin codificación en la
+cabecera (corregido).
 
 ## 2. Reglas que no se tocan
 
@@ -267,8 +268,21 @@ autorizados, otros centros de nivel universitario y Defensa)**, barrido a fondo:
   UPM, UC3M, UPV, UAM) y las que vetan el rastreo. En marcha: todas las URL de programa de esos dominios
   en Common Crawl.
 
-**Centros no oficiales**: 10.955 candidatos de Common Crawl (de 70.912 dominios con rutas de posgrado),
-en verificación en su propia web. Cifras al terminar.
+**Centros no oficiales, primer barrido** (10.955 candidatos del último índice de Common Crawl): 1.466
+con fichas de programa y señal de España, 1.332 tras los filtros de precisión; revisados a mano 60 al azar,
+el 77 % son proveedores reales (escuelas de negocio, academias en línea, institutos sanitarios, colegios
+profesionales, escuelas de arte y diseño). Estimación: entre 900 y 1.100 proveedores reales no oficiales,
+con unas 90.000 URL de programa. Lo que se cuela: agregadores y blogs con fichas copiadas, sedes de otros
+países y productos con «master» en el nombre. 35 vetan nuestro agente en `robots.txt` y 5 reservan la
+minería de datos (TDM): solo se enlazan.
+
+**Segundo barrido, en marcha** (10.462 objetivos): 7.187 candidatos nuevos del índice anterior de Common
+Crawl (CC-MAIN-2026-39), 1.589 centros enlazados desde páginas de «colaboradores» de universidades y
+escuelas, y los 1.686 verificados del primero con las reglas nuevas.
+
+**Cobertura frente a listas independientes** (53 proveedores conocidos): 49 en el censo y 40 verificados.
+Faltan CEF, ThePowerMBA y ESH, que no aparecen en ninguno de los dos índices de Common Crawl: hará falta
+una lista de semillas mantenida a mano para los que el índice no ve.
 
 **Fallos encontrados al revisar el barrido y corregidos el mismo día**: se rastreaba el dominio desnudo
 («ub.es») en vez de la web real; las redirecciones a otro dominio (uab.es → uab.cat, ehu.es → ehu.eus)

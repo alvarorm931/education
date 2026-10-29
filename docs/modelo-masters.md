@@ -198,19 +198,18 @@ protegida y la ley del proyecto prohíbe copiar. Solo se usa la web de cada cent
   extranjeros autorizados por las comunidades (EU Business School, TBS, GBSB, ESCP, CESTE, EADE, CESINE,
   Schiller, Saint Louis…), Defensa y 26 «otros centros de nivel universitario». Agrupados por dominio web,
   352 proveedores oficiales.
-- **Common Crawl, último índice (CC-MAIN-2026-43), completo**: 6.875 dominios con rutas de posgrado en
-  español; tras quitar otros países (2.157), páginas sueltas (2.782) y agregadores o medios, 1.764
-  candidatos nuevos que no están en el RUCT.
-- **Verificación en su web, primera cuarta parte (530 candidatos)**: 111 son proveedores reales (escuelas
-  de negocio, academias online, formación sanitaria, institutos y colegios profesionales con másters y
-  expertos propios); el resto son noticias, blogs, foros o páginas de otros países. Extrapolando, unos 370
-  proveedores no oficiales solo con este índice; cada índice más de Common Crawl añade dominios que el
-  anterior no vio.
-- En las páginas de programa de esos 111 proveedores (348 páginas medidas): el 60 % tiene un formulario
-  que pide el correo y el 32 % el teléfono; el 92 % habla de precio pero solo el 50 % da un importe en
-  euros, y el 14 % lo pone en los datos estructurados de la página (Schema.org); asignaturas o módulos
-  69 %, becas o descuentos 65 %, metodología 58 %, evaluación 46 %, plazas 30 %, guía o folleto en PDF
-  enlazado 9 %. Son menciones detectadas por palabras; el dato completo lo dirá la extracción.
+- **Common Crawl, dos índices completos (CC-MAIN-2026-43 y 2026-39)**: 112.412 dominios con rutas de
+  posgrado con el patrón amplio. Se descartan otros países, páginas sueltas, agregadores y dominios sin
+  ninguna URL que nombre un programa (12.275 solo en el primero): quedan 17.630 candidatos, más 1.589
+  centros enlazados desde páginas de colaboradores de universidades y escuelas.
+- **Verificación en su web, primer índice completo** (10.955 candidatos): 1.332 con fichas de programa y
+  señal de España tras los filtros; precisión medida a mano en 60 al azar, 77 %. Estimación: 900-1.100
+  proveedores reales no oficiales y unas 90.000 URL de programa. El segundo barrido (10.462) está en marcha.
+- **Webs oficiales** (340): 293 responden; 232 con fichas (55.899 URL de programa); vetan el rastreo
+  Sevilla, Córdoba y otros tres, y la UOC devuelve 403. Cada máster oficial con su página: 1.576 de 4.347
+  unidos, 820 dudosos.
+- Lo que enseñan las fichas, en `docs/estrategia-informacion-cerrada.md` §1 (3.679 fichas no
+  universitarias y 779 oficiales).
 
 `censo.py` une todo en una tabla de proveedores con identificador propio que no cambia
 (`prov-` + huella del dominio), tipos, códigos RUCT, fuentes, señales y estado (oficial, candidato,
