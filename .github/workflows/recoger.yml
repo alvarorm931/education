@@ -1,0 +1,55 @@
+name: Recoger artefactos de estudios
+
+# Sube a la rama "sondas" los artefactos de una ejecución anterior de «Estudios por tramos» cuyo paso de
+# juntar falló (los artefactos duran 7 días). Misma lógica de subida que estudios.yml.
+
+on:
+  workflow_dispatch:
+    inputs:
+      run_id:
+        description: "Identificador de la ejecución de «Estudios por tramos»"
+        required: true
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  recoger:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: tramos
+          run-id: ${{ inputs.run_id }}
+          github-token: ${{ github.token }}
+      - name: Subir a la rama sondas
+        env:
+          RUN: ${{ inputs.run_id }}
+        run: |
+          STAMP=$(date -u +%Y%m%dT%H%M%S)
+          mkdir -p "pub/$STAMP"
+          for d in tramos/*/; do
+            n=$(basename "$d")
+            cp "$d/salida.txt" "pub/$STAMP/$n.salida.txt" 2>/dev/null || true
+            if [ -d "$d/datos" ]; then cp -r "$d/datos" "pub/$STAMP/"; fi
+            rm -rf "$d/archivo/web-centros"
+            if [ -d "$d/archivo" ]; then mkdir -p "pub/$STAMP/archivo"; cp -r "$d/archivo/." "pub/$STAMP/archivo/"; fi
+          done
+          echo "ejecucion $RUN" > "pub/$STAMP/origen.txt"
+          find pub -type f -size +90M -print -exec gzip -9 {} \;
+          du -sh "pub/$STAMP"
+          cd pub
+          git init -q && git config user.name "motor-estudios" && git config user.email "motor-estudios@users.noreply.github.com"
+          git remote add origin "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git"
+          git fetch -q --depth 1 origin sondas && git reset -q FETCH_HEAD
+          git checkout -q -B sondas
+          git add "$STAMP" && git commit -qm "Recoger artefactos de la ejecución $RUN"
+          for i in 1 2 3 4 5 6; do
+            git push -q origin sondas && exit 0
+            sleep $((i * 10))
+            git fetch -q --depth 1 origin sondas && git reset -q FETCH_HEAD && git add "$STAMP" \
+              && git commit -qm "Recoger artefactos de la ejecución $RUN" || true
+          done
+          exit 1
