@@ -1,0 +1,839 @@
+<?xml version="1.0"?>
+<!DOCTYPE html>
+
+
+
+
+
+
+
+ 
+
+
+
+    <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
+    <head>
+    <title>BOIB, boletín oficial</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="google-site-verification" content="pSgmrA_qI7OMQ2ZPSdPWEq6fQWOHwU7b728KM1QZOaw" />
+    <meta name="robots" content="noindex" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+    
+    <!-- Informacio de referencia -->
+    <link rel="help" href='https://www.caib.es/root/estatic.do?path=/webcaib/govern_illes/accessibilitat/accessibilitat.es.htm' title="Accessibilidad" />
+    <link rel="start" href='https://www.caib.es/root/index.do?lang=es' title="P&agrave;gina d'inici" />
+    <link rel="contents" href='https://www.caib.es/root/estatic.do?path=/webcaib/govern_illes/mapa/mapa.es.htm' title="Mapa web" />
+    <link rel="copyright" href='https://www.caib.es/root/estatic.do?path=/webcaib/govern_illes/info_legal/info.legal.es.htm' title="Informaci&oacute; legal" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/eboibfront/css/reset.css" />
+    <link rel="stylesheet" href="/eboibfront/css/general.css" />
+
+	<script type="text/javascript" src="/eboibfront/js/jquery-1.4.4.min.js"></script>
+    <script type="text/javascript" src="/eboibfront/js/comuns.js"></script>
+	
+	<link href="/eboibfront/mic/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" />
+	<script type="text/javascript">
+	var APP_SERVIDOR=window.location.href.substring(0,window.location.href.indexOf("eboibfront"))+"eboibfront/mic/tema2017/";
+	console.log(APP_SERVIDOR);
+	</script>
+	<script type="text/javascript" src="/eboibfront/mic/tema2017/files/jquery-1.12.4.min.js"></script>
+	<script type="text/javascript" src="/eboibfront/mic/tema2017/files/modernizr.js"></script>
+	<script type="text/javascript" src="/eboibfront/mic/tema2017/files/jquery.slimscroll.min.js"></script>
+	<script type="text/javascript" src="/eboibfront/mic/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/eboibfront/mic/tema2017/files/imc-goib-gusite--app-ui-peu.js"></script>
+	<!-- Fin bootstrap -->
+	<!-- Reset default bootstrap elements -->
+	<link href="/eboibfront/mic/bootstrap/css/bootstrap-reset.css" rel="stylesheet" media="screen" />
+	<!-- Fin reset bootstrap -->
+	<link href="/eboibfront/mic/css/gusiteMaps.css" rel="stylesheet" media="screen" />
+	<!-- Bootstrap compatibilidad con IE -->
+	<script type="text/javascript" src="/eboibfront/mic/tema2017/files/respond.src.js"></script>
+	<!-- Fin de bootstrap compatibilidad con IE -->
+	<script type="text/javascript" src="/eboibfront/mic/tema2017/files/globales.js"></script>
+ 	
+ 	<link rel="stylesheet" type="text/css" media="screen" href="/eboibfront/mic/css/estils.css" />
+	<link rel="stylesheet" type="text/css" media="print" href="/eboibfront/mic/css/estils_print.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="/eboibfront/mic/css/estils_roig.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="/eboibfront/mic/tema2017/css/estils-tema.css" />
+    
+    
+   <link rel="stylesheet" href="/eboibfront/css/general.css" />
+ 
+		
+	<link rel="alternate" type="application/rss+xml" href="https://www.caib.es/root/rss.do?path=/eboibfront/indexrss.do?p_any=2026&lang=es" title="RSS, BOIB, Boletín Oficial" />
+	<link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet" />
+		
+</head>
+
+<body class="bodyFontSize" style="font-size: 100%">
+
+	
+	
+
+
+
+
+		<!-- Cabecera-->
+		<div id="contenedor">
+			<header class="imc-titol" id="imc-titol">
+				<a href="https://www.caib.es/webgoib/ca/inici" class="imc--goib-logo"></a>
+				<div class="imc--contingut">
+					<a href="javascript:history.back()" class="imc-torna" title="Torna"><span>Torna</span></a>
+					<h1>
+
+						<span> Boletín Oficial de las Illes Balears </span>
+
+					</h1>
+					<div class="imc--m-lateral">
+						<ul>
+							<li>
+								<button type="button" class="imc-bt-menu" id="imc-bt-menu" title="Menú"><span>Menú</span></button>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</header>
+					<!-- marc -->
+			<div class="imc-marc" id="imc-marc">	 
+				<div class="imc--fons"></div>
+				<!-- menu lateral -->
+				<div class="imc-marc-menu" id="imc-marc-menu" aria-hidden="true">
+					<button class="imc-boto-tancar-menu" type="button" aria-label="Tancar menú" data-accio=menu-tanca></button>
+					<div class="imc-cercador" id="imc-cercador">
+						<!--<form id="cercador" action="/govern/cercador.do?lang=ca" method="get">
+							<p>
+								<input type="hidden" name="coduo" id="coduo" value="" />
+								<input type="hidden" name="lang" id="lang" value="ca" />
+							 <input id="cercadorText" name="cercadorText" type="text" placeholder="Cerca amb les paraules" title="Cerca amb les paraules" />
+								<button type="submit">Cercar</button>
+							</p>
+						</form>-->
+					</div>
+					<ul>
+						<li>
+							<a href="https://www.caib.es/govern/cercadorAv.do?lang=es" class="imc-marc-ico imc--avanzada" title="BÚSQUEDA AVANZADA"><span>BÚSQUEDA AVANZADA</span></a>
+						</li>
+						<li class="imc-marc-ico imc--idioma">
+							
+								
+								
+									<a href="/eboibfront/ca/canvi-idioma/" hreflang="ca">Catal&agrave;</a>
+								
+							
+								<p style="display:inline;color: white"> \ </p>
+								
+								
+									<strong>Castellano</strong>
+								
+							
+						</li>
+
+						<li>
+
+								
+									<a href="/eboibfront/accesibilidad?lang=es" class="imc-marc-ico imc--accessibilitat" hreflang="es">Accesibilidad</a>
+								
+
+						</li>
+						
+												
+					</ul>
+				</div>
+			</div>				
+		
+		<!-- /* tipocabecera 2: personalizada */-->
+		
+
+	
+		<div>
+			<!-- campanya -->
+			
+			
+			<!-- fin campanya -->
+		</div>
+		<!-- Contenido -->
+		<div id="continguts">
+    <!-- FIN MODULO CABECERA -->
+    
+    <!-- MODULO MENU PATH -->
+		    <ul id="mollaPa">
+		        <li class="first"><a href="https://www.caib.es/root/index.do">Inicio</a></li><li>&nbsp;&gt;&nbsp;<a href="/eboibfront/es">BOIB, Boletín Oficial</a></li><li>&nbsp;&gt;&nbsp;Calendario anual</li>
+		    </ul>
+
+
+            <div id="pagina"> 
+		
+		    <div >
+                    
+                <!-- MODULO MENU PRINCIPAL -->
+                				<!-- menu -->
+				
+					<div class="menuAccessibilitat" id="marcLateralV2">
+					<div class="menuLateral">
+		<!-- cercador -->
+        
+        <!-- /cercador -->
+        
+            <h2 class="invisible">
+                Menú general
+            </h2>
+            
+            
+                
+        
+        <div>
+            <!-- /* menú sin iconos ################################################################################################################################*/-->
+            <nav class="navbar navbar-default contenidoNav" role="navigation">
+                <div class="container-fluid contenidomenuLateral">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header botonLateralResponsive">
+                        <button type="button" class="navbar-toggle botonResponsive" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+                            <span class="sr-only">
+                                Toggle navigation
+                            </span> 
+                            <span class="icon-bar">
+
+                            </span> 
+                            <span class="icon-bar">
+
+                            </span> 
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <!--   Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse contenidoNav" id="bs-example-navbar-collapse-2">  
+                        <ul class="contenidomenuLateral">
+                            <li class="primerElemento">
+                                <a class="fijo">BOIB, Boletín Oficial</a>
+                                
+                                
+                                
+                                
+                                <ul class="primerosHijos">
+			                        
+		                        	<li><a href="/eboibfront/es/2026/12352/?lang=es"
+		                        	
+		                        	>Último número</a></li>
+			                        
+			                        <li><a href="https://www.caib.es/root/rss.do?path=/eboibfront/indexrss.do?p_any=2026&amp;lang=es">RSS</a></li>
+			                        <li><a href="http://www.caib.es/govern/organigrama/area.do?lang=ca&amp;amp;coduo=2564">Información y ayuda</a></li>
+			                        <li><a href="/eboibfront/zonapersonal?lang=es">Zona Personal</a></li>
+									
+									<a href="/eboibfront/recursoELI?lang=es" hreflang="es">Identificador Europeo de Legislación (ELI)</a>
+									
+<z			                    </ul>
+		                    </li>
+			                </ul>
+               		</div>
+               	</div>
+               	
+              	</nav>
+             </div>
+             </div>
+             </div>  		
+                <!-- FIN MODULO MENU PRINCIPAL -->
+            </div>
+            <div class="container-contenido" id="info">
+            	<div class="calendarioAnual">
+            		<h2>Calendario anual</h2>
+
+					
+			        <form id="calendarioAnual" method="get" action="/eboibfront/calendariAnual.do" class="navegadorAnyos">
+			            	<input type="hidden" name="lang" value='es'/>
+			            	
+			   					
+						            <a href="/eboibfront/es/2025/" title="Año anterior"><span><img src="/eboibfront/img/calendario/flecha_izq.gif" alt="Mes anterior" /></span></a>
+			        			
+			                <select aria-label="Calendario" title="Calendario" name="p_any" id="p_any" onchange="document.getElementById('calendarioAnual').submit()">
+			                    
+			                    <option value="1979"  >Año 1979</option>
+			                	
+			                    <option value="1980"  >Año 1980</option>
+			                	
+			                    <option value="1981"  >Año 1981</option>
+			                	
+			                    <option value="1982"  >Año 1982</option>
+			                	
+			                    <option value="1983"  >Año 1983</option>
+			                	
+			                    <option value="1984"  >Año 1984</option>
+			                	
+			                    <option value="1985"  >Año 1985</option>
+			                	
+			                    <option value="1986"  >Año 1986</option>
+			                	
+			                    <option value="1987"  >Año 1987</option>
+			                	
+			                    <option value="1988"  >Año 1988</option>
+			                	
+			                    <option value="1989"  >Año 1989</option>
+			                	
+			                    <option value="1990"  >Año 1990</option>
+			                	
+			                    <option value="1991"  >Año 1991</option>
+			                	
+			                    <option value="1992"  >Año 1992</option>
+			                	
+			                    <option value="1993"  >Año 1993</option>
+			                	
+			                    <option value="1994"  >Año 1994</option>
+			                	
+			                    <option value="1995"  >Año 1995</option>
+			                	
+			                    <option value="1996"  >Año 1996</option>
+			                	
+			                    <option value="1997"  >Año 1997</option>
+			                	
+			                    <option value="1998"  >Año 1998</option>
+			                	
+			                    <option value="1999"  >Año 1999</option>
+			                	
+			                    <option value="2000"  >Año 2000</option>
+			                	
+			                    <option value="2001"  >Año 2001</option>
+			                	
+			                    <option value="2002"  >Año 2002</option>
+			                	
+			                    <option value="2003"  >Año 2003</option>
+			                	
+			                    <option value="2004"  >Año 2004</option>
+			                	
+			                    <option value="2005"  >Año 2005</option>
+			                	
+			                    <option value="2006"  >Año 2006</option>
+			                	
+			                    <option value="2007"  >Año 2007</option>
+			                	
+			                    <option value="2008"  >Año 2008</option>
+			                	
+			                    <option value="2009"  >Año 2009</option>
+			                	
+			                    <option value="2010"  >Año 2010</option>
+			                	
+			                    <option value="2011"  >Año 2011</option>
+			                	
+			                    <option value="2012"  >Año 2012</option>
+			                	
+			                    <option value="2013"  >Año 2013</option>
+			                	
+			                    <option value="2014"  >Año 2014</option>
+			                	
+			                    <option value="2015"  >Año 2015</option>
+			                	
+			                    <option value="2016"  >Año 2016</option>
+			                	
+			                    <option value="2017"  >Año 2017</option>
+			                	
+			                    <option value="2018"  >Año 2018</option>
+			                	
+			                    <option value="2019"  >Año 2019</option>
+			                	
+			                    <option value="2020"  >Año 2020</option>
+			                	
+			                    <option value="2021"  >Año 2021</option>
+			                	
+			                    <option value="2022"  >Año 2022</option>
+			                	
+			                    <option value="2023"  >Año 2023</option>
+			                	
+			                    <option value="2024"  >Año 2024</option>
+			                	
+			                    <option value="2025"  >Año 2025</option>
+			                	
+			                    <option value="2026" selected='selected' >Año 2026</option>
+			                	
+			                </select>
+			   					
+ 							<noscript>
+			                	<div><button type="submit">Actualizar</button></div>
+			                </noscript>
+			        </form>
+
+					<div class="calendarios">	
+							
+							
+							
+								
+							
+								<div class="calendario_anual_mes calendario pos_0">
+									<div class="interior">
+										<div class="titulo">
+									    	<h3>Enero</h3>
+								    	</div>
+									    <table summary='Boletines Oficiales de Enero de 2026'>
+									        <thead>
+									            <tr>
+									                <th><div><abbr title="Lunes">L</abbr></div></th>
+									                <th><div><abbr title="Martes">M</abbr></div></th>
+									                <th><div><abbr title="Miercoles">X</abbr></div></th>
+									                <th><div><abbr title="Jueves">J</abbr></div></th>
+									                <th><div><abbr title="Viernes">V</abbr></div></th>
+									                <th><div><abbr title="Sábado">S</abbr></div></th>
+									                <th><div><abbr title="Domingo">D</abbr></div></th>
+									            </tr>
+									        </thead>
+									        <tbody><tr>
+<td><div class="dia"></div></td><td><div class="dia"></div></td><td><div class="dia"></div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12210/" title="BOIB ordinario del dia 1" >1</a></div></div></div></td><td><div class="dia">2</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12212/" title="BOIB ordinario del dia 3" >3</a></div></div></div></td><td class="last"><div class="dia">4</div></td></tr><tr>
+<td><div class="dia">5</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12213/" title="BOIB ordinario del dia 6" >6</a></div></div></div></td><td><div class="dia">7</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12214/" title="BOIB ordinario del dia 8" >8</a></div></div></div></td><td><div class="dia">9</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12215/" title="BOIB ordinario del dia 10" >10</a></div></div></div></td><td class="last"><div class="dia">11</div></td></tr><tr>
+<td><div class="dia">12</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12216/" title="BOIB ordinario del dia 13" >13</a></div><div><a class="extraordinario" href="/eboibfront/es/2026/12218/" title="BOIB extraordinario del dia 13" >13*E</a></div></div></div></td><td><div class="dia">14</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12217/" title="BOIB ordinario del dia 15" >15</a></div></div></div></td><td><div class="dia">16</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12219/" title="BOIB ordinario del dia 17" >17</a></div></div></div></td><td class="last"><div class="dia">18</div></td></tr><tr>
+<td><div class="dia">19</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12221/" title="BOIB ordinario del dia 20" >20</a></div></div></div></td><td><div class="dia">21</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12222/" title="BOIB ordinario del dia 22" >22</a></div></div></div></td><td><div class="dia">23</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12223/" title="BOIB ordinario del dia 24" >24</a></div></div></div></td><td class="last"><div class="dia">25</div></td></tr><tr class="last">
+<td><div class="dia">26</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12224/" title="BOIB ordinario del dia 27" >27</a></div></div></div></td><td><div class="dia">28</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12225/" title="BOIB ordinario del dia 29" >29</a></div></div></div></td><td><div class="dia">30</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12226/" title="BOIB ordinario del dia 31" >31</a></div></div></div></td><td class="last"><div class="dia"></div></td></tr></tbody>
+									    </table>
+								    </div>
+							    </div>
+							    
+							    
+								    
+							
+							
+								
+							
+								<div class="calendario_anual_mes calendario pos_1">
+									<div class="interior">
+										<div class="titulo">
+									    	<h3>Febrero</h3>
+								    	</div>
+									    <table summary='Boletines Oficiales de Febrero de 2026'>
+									        <thead>
+									            <tr>
+									                <th><div><abbr title="Lunes">L</abbr></div></th>
+									                <th><div><abbr title="Martes">M</abbr></div></th>
+									                <th><div><abbr title="Miercoles">X</abbr></div></th>
+									                <th><div><abbr title="Jueves">J</abbr></div></th>
+									                <th><div><abbr title="Viernes">V</abbr></div></th>
+									                <th><div><abbr title="Sábado">S</abbr></div></th>
+									                <th><div><abbr title="Domingo">D</abbr></div></th>
+									            </tr>
+									        </thead>
+									        <tbody><tr>
+<td><div class="dia"></div></td><td><div class="dia"></div></td><td><div class="dia"></div></td><td><div class="dia"></div></td><td><div class="dia"></div></td><td><div class="dia"></div></td><td class="last"><div class="dia">1</div></td></tr><tr>
+<td><div class="dia">2</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12227/" title="BOIB ordinario del dia 3" >3</a></div></div></div></td><td><div class="dia">4</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12228/" title="BOIB ordinario del dia 5" >5</a></div></div></div></td><td><div class="dia">6</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12229/" title="BOIB ordinario del dia 7" >7</a></div></div></div></td><td class="last"><div class="dia">8</div></td></tr><tr>
+<td><div class="dia">9</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12230/" title="BOIB ordinario del dia 10" >10</a></div></div></div></td><td><div class="dia">11</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12231/" title="BOIB ordinario del dia 12" >12</a></div></div></div></td><td><div class="dia">13</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12232/" title="BOIB ordinario del dia 14" >14</a></div></div></div></td><td class="last"><div class="dia">15</div></td></tr><tr>
+<td><div class="dia">16</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12233/" title="BOIB ordinario del dia 17" >17</a></div></div></div></td><td><div class="dia">18</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12234/" title="BOIB ordinario del dia 19" >19</a></div></div></div></td><td><div class="dia">20</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12235/" title="BOIB ordinario del dia 21" >21</a></div></div></div></td><td class="last"><div class="dia">22</div></td></tr><tr class="last">
+<td><div class="dia">23</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12236/" title="BOIB ordinario del dia 24" >24</a></div></div></div></td><td><div class="dia">25</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12237/" title="BOIB ordinario del dia 26" >26</a></div></div></div></td><td><div class="dia">27</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12238/" title="BOIB ordinario del dia 28" >28</a></div></div></div></td><td class="last"><div class="dia"></div></td></tr></tbody>
+									    </table>
+								    </div>
+							    </div>
+							    
+							    
+								    
+							
+							
+								
+							
+								<div class="calendario_anual_mes calendario pos_2">
+									<div class="interior">
+										<div class="titulo">
+									    	<h3>Marzo</h3>
+								    	</div>
+									    <table summary='Boletines Oficiales de Marzo de 2026'>
+									        <thead>
+									            <tr>
+									                <th><div><abbr title="Lunes">L</abbr></div></th>
+									                <th><div><abbr title="Martes">M</abbr></div></th>
+									                <th><div><abbr title="Miercoles">X</abbr></div></th>
+									                <th><div><abbr title="Jueves">J</abbr></div></th>
+									                <th><div><abbr title="Viernes">V</abbr></div></th>
+									                <th><div><abbr title="Sábado">S</abbr></div></th>
+									                <th><div><abbr title="Domingo">D</abbr></div></th>
+									            </tr>
+									        </thead>
+									        <tbody><tr>
+<td><div class="dia"></div></td><td><div class="dia"></div></td><td><div class="dia"></div></td><td><div class="dia"></div></td><td><div class="dia"></div></td><td><div class="dia"></div></td><td class="last"><div class="dia">1</div></td></tr><tr>
+<td><div class="dia">2</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12239/" title="BOIB ordinario del dia 3" >3</a></div></div></div></td><td><div class="dia">4</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12240/" title="BOIB ordinario del dia 5" >5</a></div></div></div></td><td><div class="dia">6</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12241/" title="BOIB ordinario del dia 7" >7</a></div></div></div></td><td class="last"><div class="dia">8</div></td></tr><tr>
+<td><div class="dia">9</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12242/" title="BOIB ordinario del dia 10" >10</a></div></div></div></td><td><div class="dia">11</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12243/" title="BOIB ordinario del dia 12" >12</a></div></div></div></td><td><div class="dia">13</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12244/" title="BOIB ordinario del dia 14" >14</a></div></div></div></td><td class="last"><div class="dia">15</div></td></tr><tr>
+<td><div class="dia">16</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12245/" title="BOIB ordinario del dia 17" >17</a></div></div></div></td><td><div class="dia">18</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12246/" title="BOIB ordinario del dia 19" >19</a></div></div></div></td><td><div class="dia">20</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12247/" title="BOIB ordinario del dia 21" >21</a></div></div></div></td><td class="last"><div class="dia">22</div></td></tr><tr>
+<td><div class="dia">23</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12248/" title="BOIB ordinario del dia 24" >24</a></div></div></div></td><td><div class="dia"><div class="boib"><div><a class="extraordinario" href="/eboibfront/es/2026/12250/" title="BOIB extraordinario del dia 25" >25*E</a></div></div></div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12249/" title="BOIB ordinario del dia 26" >26</a></div></div></div></td><td><div class="dia">27</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12251/" title="BOIB ordinario del dia 28" >28</a></div></div></div></td><td class="last"><div class="dia">29</div></td></tr><tr class="last">
+<td><div class="dia">30</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12252/" title="BOIB ordinario del dia 31" >31</a></div></div></div></td><td><div class="dia"></div></td><td><div class="dia"></div></td><td><div class="dia"></div></td><td><div class="dia"></div></td><td class="last"><div class="dia"></div></td></tr></tbody>
+									    </table>
+								    </div>
+							    </div>
+							    
+							    
+								    
+							
+							
+								
+							
+								<div class="calendario_anual_mes calendario pos_0">
+									<div class="interior">
+										<div class="titulo">
+									    	<h3>Abril</h3>
+								    	</div>
+									    <table summary='Boletines Oficiales de Abril de 2026'>
+									        <thead>
+									            <tr>
+									                <th><div><abbr title="Lunes">L</abbr></div></th>
+									                <th><div><abbr title="Martes">M</abbr></div></th>
+									                <th><div><abbr title="Miercoles">X</abbr></div></th>
+									                <th><div><abbr title="Jueves">J</abbr></div></th>
+									                <th><div><abbr title="Viernes">V</abbr></div></th>
+									                <th><div><abbr title="Sábado">S</abbr></div></th>
+									                <th><div><abbr title="Domingo">D</abbr></div></th>
+									            </tr>
+									        </thead>
+									        <tbody><tr>
+<td><div class="dia"></div></td><td><div class="dia"></div></td><td><div class="dia"><div class="boib"><div><a class="extraordinario" href="/eboibfront/es/2026/12256/" title="BOIB extraordinario del dia 1" >1*E</a></div></div></div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12253/" title="BOIB ordinario del dia 2" >2</a></div></div></div></td><td><div class="dia">3</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12254/" title="BOIB ordinario del dia 4" >4</a></div></div></div></td><td class="last"><div class="dia">5</div></td></tr><tr>
+<td><div class="dia">6</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12255/" title="BOIB ordinario del dia 7" >7</a></div></div></div></td><td><div class="dia">8</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12257/" title="BOIB ordinario del dia 9" >9</a></div></div></div></td><td><div class="dia">10</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12258/" title="BOIB ordinario del dia 11" >11</a></div></div></div></td><td class="last"><div class="dia">12</div></td></tr><tr>
+<td><div class="dia">13</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12261/" title="BOIB ordinario del dia 14" >14</a></div></div></div></td><td><div class="dia">15</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12262/" title="BOIB ordinario del dia 16" >16</a></div></div></div></td><td><div class="dia">17</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12263/" title="BOIB ordinario del dia 18" >18</a></div></div></div></td><td class="last"><div class="dia">19</div></td></tr><tr>
+<td><div class="dia">20</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12264/" title="BOIB ordinario del dia 21" >21</a></div></div></div></td><td><div class="dia">22</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12265/" title="BOIB ordinario del dia 23" >23</a></div></div></div></td><td><div class="dia">24</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12266/" title="BOIB ordinario del dia 25" >25</a></div></div></div></td><td class="last"><div class="dia">26</div></td></tr><tr class="last">
+<td><div class="dia">27</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12267/" title="BOIB ordinario del dia 28" >28</a></div></div></div></td><td><div class="dia">29</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12268/" title="BOIB ordinario del dia 30" >30</a></div></div></div></td><td><div class="dia"></div></td><td><div class="dia"></div></td><td class="last"><div class="dia"></div></td></tr></tbody>
+									    </table>
+								    </div>
+							    </div>
+							    
+							    
+								    
+							
+							
+								
+							
+								<div class="calendario_anual_mes calendario pos_1">
+									<div class="interior">
+										<div class="titulo">
+									    	<h3>Mayo</h3>
+								    	</div>
+									    <table summary='Boletines Oficiales de Mayo de 2026'>
+									        <thead>
+									            <tr>
+									                <th><div><abbr title="Lunes">L</abbr></div></th>
+									                <th><div><abbr title="Martes">M</abbr></div></th>
+									                <th><div><abbr title="Miercoles">X</abbr></div></th>
+									                <th><div><abbr title="Jueves">J</abbr></div></th>
+									                <th><div><abbr title="Viernes">V</abbr></div></th>
+									                <th><div><abbr title="Sábado">S</abbr></div></th>
+									                <th><div><abbr title="Domingo">D</abbr></div></th>
+									            </tr>
+									        </thead>
+									        <tbody><tr>
+<td><div class="dia"></div></td><td><div class="dia"></div></td><td><div class="dia"></div></td><td><div class="dia"></div></td><td><div class="dia">1</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12269/" title="BOIB ordinario del dia 2" >2</a></div></div></div></td><td class="last"><div class="dia">3</div></td></tr><tr>
+<td><div class="dia">4</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12270/" title="BOIB ordinario del dia 5" >5</a></div></div></div></td><td><div class="dia">6</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12271/" title="BOIB ordinario del dia 7" >7</a></div></div></div></td><td><div class="dia">8</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12272/" title="BOIB ordinario del dia 9" >9</a></div></div></div></td><td class="last"><div class="dia">10</div></td></tr><tr>
+<td><div class="dia">11</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12273/" title="BOIB ordinario del dia 12" >12</a></div></div></div></td><td><div class="dia">13</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12274/" title="BOIB ordinario del dia 14" >14</a></div></div></div></td><td><div class="dia">15</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12275/" title="BOIB ordinario del dia 16" >16</a></div></div></div></td><td class="last"><div class="dia">17</div></td></tr><tr>
+<td><div class="dia">18</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12276/" title="BOIB ordinario del dia 19" >19</a></div></div></div></td><td><div class="dia">20</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12277/" title="BOIB ordinario del dia 21" >21</a></div></div></div></td><td><div class="dia">22</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12278/" title="BOIB ordinario del dia 23" >23</a></div></div></div></td><td class="last"><div class="dia">24</div></td></tr><tr class="last">
+<td><div class="dia">25</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12279/" title="BOIB ordinario del dia 26" >26</a></div></div></div></td><td><div class="dia">27</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12280/" title="BOIB ordinario del dia 28" >28</a></div></div></div></td><td><div class="dia">29</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12281/" title="BOIB ordinario del dia 30" >30</a></div></div></div></td><td class="last"><div class="dia">31</div></td></tr></tbody>
+									    </table>
+								    </div>
+							    </div>
+							    
+							    
+								    
+							
+							
+								
+							
+								<div class="calendario_anual_mes calendario pos_2">
+									<div class="interior">
+										<div class="titulo">
+									    	<h3>Junio</h3>
+								    	</div>
+									    <table summary='Boletines Oficiales de Junio de 2026'>
+									        <thead>
+									            <tr>
+									                <th><div><abbr title="Lunes">L</abbr></div></th>
+									                <th><div><abbr title="Martes">M</abbr></div></th>
+									                <th><div><abbr title="Miercoles">X</abbr></div></th>
+									                <th><div><abbr title="Jueves">J</abbr></div></th>
+									                <th><div><abbr title="Viernes">V</abbr></div></th>
+									                <th><div><abbr title="Sábado">S</abbr></div></th>
+									                <th><div><abbr title="Domingo">D</abbr></div></th>
+									            </tr>
+									        </thead>
+									        <tbody><tr>
+<td><div class="dia">1</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12282/" title="BOIB ordinario del dia 2" >2</a></div></div></div></td><td><div class="dia">3</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12283/" title="BOIB ordinario del dia 4" >4</a></div></div></div></td><td><div class="dia">5</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12284/" title="BOIB ordinario del dia 6" >6</a></div></div></div></td><td class="last"><div class="dia">7</div></td></tr><tr>
+<td><div class="dia">8</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12285/" title="BOIB ordinario del dia 9" >9</a></div></div></div></td><td><div class="dia">10</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12286/" title="BOIB ordinario del dia 11" >11</a></div></div></div></td><td><div class="dia">12</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12287/" title="BOIB ordinario del dia 13" >13</a></div></div></div></td><td class="last"><div class="dia">14</div></td></tr><tr>
+<td><div class="dia">15</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12288/" title="BOIB ordinario del dia 16" >16</a></div></div></div></td><td><div class="dia">17</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12289/" title="BOIB ordinario del dia 18" >18</a></div></div></div></td><td><div class="dia"><div class="boib"><div><a class="extraordinario" href="/eboibfront/es/2026/12292/" title="BOIB extraordinario del dia 19" >19*E</a></div></div></div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12290/" title="BOIB ordinario del dia 20" >20</a></div></div></div></td><td class="last"><div class="dia">21</div></td></tr><tr>
+<td><div class="dia">22</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12291/" title="BOIB ordinario del dia 23" >23</a></div></div></div></td><td><div class="dia">24</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12293/" title="BOIB ordinario del dia 25" >25</a></div></div></div></td><td><div class="dia">26</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12294/" title="BOIB ordinario del dia 27" >27</a></div></div></div></td><td class="last"><div class="dia">28</div></td></tr><tr class="last">
+<td><div class="dia">29</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12295/" title="BOIB ordinario del dia 30" >30</a></div></div></div></td><td><div class="dia"></div></td><td><div class="dia"></div></td><td><div class="dia"></div></td><td><div class="dia"></div></td><td class="last"><div class="dia"></div></td></tr></tbody>
+									    </table>
+								    </div>
+							    </div>
+							    
+							    
+								    
+							
+							
+								
+							
+								<div class="calendario_anual_mes calendario pos_0">
+									<div class="interior">
+										<div class="titulo">
+									    	<h3>Julio</h3>
+								    	</div>
+									    <table summary='Boletines Oficiales de Julio de 2026'>
+									        <thead>
+									            <tr>
+									                <th><div><abbr title="Lunes">L</abbr></div></th>
+									                <th><div><abbr title="Martes">M</abbr></div></th>
+									                <th><div><abbr title="Miercoles">X</abbr></div></th>
+									                <th><div><abbr title="Jueves">J</abbr></div></th>
+									                <th><div><abbr title="Viernes">V</abbr></div></th>
+									                <th><div><abbr title="Sábado">S</abbr></div></th>
+									                <th><div><abbr title="Domingo">D</abbr></div></th>
+									            </tr>
+									        </thead>
+									        <tbody><tr>
+<td><div class="dia"></div></td><td><div class="dia"></div></td><td><div class="dia">1</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12296/" title="BOIB ordinario del dia 2" >2</a></div></div></div></td><td><div class="dia">3</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12297/" title="BOIB ordinario del dia 4" >4</a></div></div></div></td><td class="last"><div class="dia">5</div></td></tr><tr>
+<td><div class="dia">6</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12298/" title="BOIB ordinario del dia 7" >7</a></div></div></div></td><td><div class="dia">8</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12299/" title="BOIB ordinario del dia 9" >9</a></div></div></div></td><td><div class="dia">10</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12300/" title="BOIB ordinario del dia 11" >11</a></div></div></div></td><td class="last"><div class="dia">12</div></td></tr><tr>
+<td><div class="dia">13</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12301/" title="BOIB ordinario del dia 14" >14</a></div></div></div></td><td><div class="dia">15</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12302/" title="BOIB ordinario del dia 16" >16</a></div></div></div></td><td><div class="dia">17</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12303/" title="BOIB ordinario del dia 18" >18</a></div></div></div></td><td class="last"><div class="dia">19</div></td></tr><tr>
+<td><div class="dia">20</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12304/" title="BOIB ordinario del dia 21" >21</a></div></div></div></td><td><div class="dia">22</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12305/" title="BOIB ordinario del dia 23" >23</a></div></div></div></td><td><div class="dia">24</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12306/" title="BOIB ordinario del dia 25" >25</a></div></div></div></td><td class="last"><div class="dia">26</div></td></tr><tr class="last">
+<td><div class="dia">27</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12307/" title="BOIB ordinario del dia 28" >28</a></div></div></div></td><td><div class="dia">29</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12308/" title="BOIB ordinario del dia 30" >30</a></div></div></div></td><td><div class="dia">31</div></td><td><div class="dia"></div></td><td class="last"><div class="dia"></div></td></tr></tbody>
+									    </table>
+								    </div>
+							    </div>
+							    
+							    
+								    
+							
+							
+								
+							
+								<div class="calendario_anual_mes calendario pos_1">
+									<div class="interior">
+										<div class="titulo">
+									    	<h3>Agosto</h3>
+								    	</div>
+									    <table summary='Boletines Oficiales de Agosto de 2026'>
+									        <thead>
+									            <tr>
+									                <th><div><abbr title="Lunes">L</abbr></div></th>
+									                <th><div><abbr title="Martes">M</abbr></div></th>
+									                <th><div><abbr title="Miercoles">X</abbr></div></th>
+									                <th><div><abbr title="Jueves">J</abbr></div></th>
+									                <th><div><abbr title="Viernes">V</abbr></div></th>
+									                <th><div><abbr title="Sábado">S</abbr></div></th>
+									                <th><div><abbr title="Domingo">D</abbr></div></th>
+									            </tr>
+									        </thead>
+									        <tbody><tr>
+<td><div class="dia"></div></td><td><div class="dia"></div></td><td><div class="dia"></div></td><td><div class="dia"></div></td><td><div class="dia"></div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12309/" title="BOIB ordinario del dia 1" >1</a></div></div></div></td><td class="last"><div class="dia">2</div></td></tr><tr>
+<td><div class="dia">3</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12310/" title="BOIB ordinario del dia 4" >4</a></div></div></div></td><td><div class="dia">5</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12311/" title="BOIB ordinario del dia 6" >6</a></div></div></div></td><td><div class="dia">7</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12312/" title="BOIB ordinario del dia 8" >8</a></div></div></div></td><td class="last"><div class="dia">9</div></td></tr><tr>
+<td><div class="dia">10</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12313/" title="BOIB ordinario del dia 11" >11</a></div></div></div></td><td><div class="dia">12</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12314/" title="BOIB ordinario del dia 13" >13</a></div></div></div></td><td><div class="dia">14</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12315/" title="BOIB ordinario del dia 15" >15</a></div></div></div></td><td class="last"><div class="dia">16</div></td></tr><tr>
+<td><div class="dia">17</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12316/" title="BOIB ordinario del dia 18" >18</a></div></div></div></td><td><div class="dia">19</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12317/" title="BOIB ordinario del dia 20" >20</a></div></div></div></td><td><div class="dia">21</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12318/" title="BOIB ordinario del dia 22" >22</a></div></div></div></td><td class="last"><div class="dia">23</div></td></tr><tr>
+<td><div class="dia">24</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12319/" title="BOIB ordinario del dia 25" >25</a></div></div></div></td><td><div class="dia">26</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12320/" title="BOIB ordinario del dia 27" >27</a></div></div></div></td><td><div class="dia">28</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12321/" title="BOIB ordinario del dia 29" >29</a></div></div></div></td><td class="last"><div class="dia">30</div></td></tr><tr class="last">
+<td><div class="dia">31</div></td><td><div class="dia"></div></td><td><div class="dia"></div></td><td><div class="dia"></div></td><td><div class="dia"></div></td><td><div class="dia"></div></td><td class="last"><div class="dia"></div></td></tr></tbody>
+									    </table>
+								    </div>
+							    </div>
+							    
+							    
+								    
+							
+							
+								
+							
+								<div class="calendario_anual_mes calendario pos_2">
+									<div class="interior">
+										<div class="titulo">
+									    	<h3>Septiembre</h3>
+								    	</div>
+									    <table summary='Boletines Oficiales de Septiembre de 2026'>
+									        <thead>
+									            <tr>
+									                <th><div><abbr title="Lunes">L</abbr></div></th>
+									                <th><div><abbr title="Martes">M</abbr></div></th>
+									                <th><div><abbr title="Miercoles">X</abbr></div></th>
+									                <th><div><abbr title="Jueves">J</abbr></div></th>
+									                <th><div><abbr title="Viernes">V</abbr></div></th>
+									                <th><div><abbr title="Sábado">S</abbr></div></th>
+									                <th><div><abbr title="Domingo">D</abbr></div></th>
+									            </tr>
+									        </thead>
+									        <tbody><tr>
+<td><div class="dia"></div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12322/" title="BOIB ordinario del dia 1" >1</a></div></div></div></td><td><div class="dia">2</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12323/" title="BOIB ordinario del dia 3" >3</a></div></div></div></td><td><div class="dia">4</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12324/" title="BOIB ordinario del dia 5" >5</a></div></div></div></td><td class="last"><div class="dia">6</div></td></tr><tr>
+<td><div class="dia">7</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12325/" title="BOIB ordinario del dia 8" >8</a></div></div></div></td><td><div class="dia">9</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12326/" title="BOIB ordinario del dia 10" >10</a></div></div></div></td><td><div class="dia">11</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12327/" title="BOIB ordinario del dia 12" >12</a></div></div></div></td><td class="last"><div class="dia">13</div></td></tr><tr>
+<td><div class="dia">14</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12328/" title="BOIB ordinario del dia 15" >15</a></div></div></div></td><td><div class="dia">16</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12329/" title="BOIB ordinario del dia 17" >17</a></div></div></div></td><td><div class="dia">18</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12330/" title="BOIB ordinario del dia 19" >19</a></div></div></div></td><td class="last"><div class="dia">20</div></td></tr><tr>
+<td><div class="dia">21</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12331/" title="BOIB ordinario del dia 22" >22</a></div><div><a class="extraordinario" href="/eboibfront/es/2026/12334/" title="BOIB extraordinario del dia 22" >22*E</a></div></div></div></td><td><div class="dia">23</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12332/" title="BOIB ordinario del dia 24" >24</a></div></div></div></td><td><div class="dia">25</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12333/" title="BOIB ordinario del dia 26" >26</a></div></div></div></td><td class="last"><div class="dia">27</div></td></tr><tr class="last">
+<td><div class="dia">28</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12335/" title="BOIB ordinario del dia 29" >29</a></div></div></div></td><td><div class="dia">30</div></td><td><div class="dia"></div></td><td><div class="dia"></div></td><td><div class="dia"></div></td><td class="last"><div class="dia"></div></td></tr></tbody>
+									    </table>
+								    </div>
+							    </div>
+							    
+							    
+								    
+							
+							
+								
+							
+								<div class="calendario_anual_mes calendario pos_0">
+									<div class="interior">
+										<div class="titulo">
+									    	<h3>Octubre</h3>
+								    	</div>
+									    <table summary='Boletines Oficiales de Octubre de 2026'>
+									        <thead>
+									            <tr>
+									                <th><div><abbr title="Lunes">L</abbr></div></th>
+									                <th><div><abbr title="Martes">M</abbr></div></th>
+									                <th><div><abbr title="Miercoles">X</abbr></div></th>
+									                <th><div><abbr title="Jueves">J</abbr></div></th>
+									                <th><div><abbr title="Viernes">V</abbr></div></th>
+									                <th><div><abbr title="Sábado">S</abbr></div></th>
+									                <th><div><abbr title="Domingo">D</abbr></div></th>
+									            </tr>
+									        </thead>
+									        <tbody><tr>
+<td><div class="dia"></div></td><td><div class="dia"></div></td><td><div class="dia"></div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12336/" title="BOIB ordinario del dia 1" >1</a></div><div><a class="extraordinario" href="/eboibfront/es/2026/12339/" title="BOIB extraordinario del dia 1" >1*E</a></div></div></div></td><td><div class="dia">2</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12337/" title="BOIB ordinario del dia 3" >3</a></div></div></div></td><td class="last"><div class="dia">4</div></td></tr><tr>
+<td><div class="dia">5</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12340/" title="BOIB ordinario del dia 6" >6</a></div></div></div></td><td><div class="dia">7</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12341/" title="BOIB ordinario del dia 8" >8</a></div></div></div></td><td><div class="dia">9</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12342/" title="BOIB ordinario del dia 10" >10</a></div></div></div></td><td class="last"><div class="dia">11</div></td></tr><tr>
+<td><div class="dia"><div class="boib"><div><a class="extraordinario" href="/eboibfront/es/2026/12344/" title="BOIB extraordinario del dia 12" >12*E</a></div></div></div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12343/" title="BOIB ordinario del dia 13" >13</a></div></div></div></td><td><div class="dia">14</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12345/" title="BOIB ordinario del dia 15" >15</a></div></div></div></td><td><div class="dia">16</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12346/" title="BOIB ordinario del dia 17" >17</a></div></div></div></td><td class="last"><div class="dia">18</div></td></tr><tr>
+<td><div class="dia">19</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12347/" title="BOIB ordinario del dia 20" >20</a></div></div></div></td><td><div class="dia"><div class="boib"><div><a class="extraordinario" href="/eboibfront/es/2026/12348/" title="BOIB extraordinario del dia 21" >21*E</a></div></div></div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12349/" title="BOIB ordinario del dia 22" >22</a></div></div></div></td><td><div class="dia">23</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12350/" title="BOIB ordinario del dia 24" >24</a></div></div></div></td><td class="last"><div class="dia">25</div></td></tr><tr class="last">
+<td><div class="dia">26</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12351/" title="BOIB ordinario del dia 27" >27</a></div></div></div></td><td><div class="dia">28</div></td><td><div class="dia"><div class="boib"><div><a class="ordinario" href="/eboibfront/es/2026/12352/" title="BOIB ordinario del dia 29" >29</a></div></div></div></td><td><div class="dia">30</div></td><td><div class="dia">31</div></td><td class="last"><div class="dia"></div></td></tr></tbody>
+									    </table>
+								    </div>
+							    </div>
+							    
+							    
+								    
+							    				
+							
+					</div>
+	
+					<ul class="leyenda">
+					    <li class="ordinario">Ordinario</li>
+					    <li class="extra">Extraordinario</li>
+					</ul>
+
+				</div>                
+            </div>
+        </div>
+        </div>
+			
+	<!-- peu -->
+    
+
+
+
+
+
+
+	<!-- footer -->
+	</div>	
+		
+			<!-- peu -->
+<footer class="imc--peu" id="imc--peu">
+
+	<div class="imc--seccions">
+		<ul>
+			<li data-offset="197" class="imc--primer" data-posicio="primer">
+				<a href="https://www.caib.es/eboibfront/" class="imc--p-boib"><span>BOIB</span></a>
+			</li>
+			<li data-offset="457">
+				<a href="https://www.caib.es/sites/transparencia/" class="imc--p-transparencia"><span>Transparència</span></a>
+			</li>
+			<li data-offset="718">
+				<a href="https://www.caib.es/seucaib/" class="imc--p-seu">
+					<span>Seu Electrònica</span></a>
+			</li>
+			<li data-offset="978">
+				<a href="https://www.caib.es/sites/atenciociutadania/" class="imc--p-atencio">
+					<span>Atenció a la ciutadania</span></a>
+			</li>
+			<li data-offset="1239">
+				<a href="https://www.caib.es/sites/contractaciopublica/" class="imc--p-contractacio">
+					<span>Contractació pública</span></a>
+			</li>
+
+			<li data-offset="1499" data-posicio="ultim">
+				<a href="https://www.caib.es/sites/protecciodedadespersonals/" class="imc--p-proteccio">
+					<span>Protecció de dades</span></a>
+			</li>
+		</ul>
+		<button type="button" class="imc--img imc--anterior" data-accio="seccions-anterior"><span></span>
+		</button>
+		<button type="button" class="imc--img imc--seguent" data-accio="seccions-seguent">
+			<span></span></button>
+	</div>
+
+	<!-- dades -->
+
+	<div class="imc--peu-dades">
+		<div class="imc--enllasos">
+			<ul>
+
+				<li><a href="https://www.caib.es/webgoib/inici">Inici</a></li>
+				<li><a href="https://www.caib.es/webgoib/ca/que-necessites">Què necessites?</a></li>
+				<li><a href="https://www.caib.es/webgoib/ca/temes">Temes</a></li>
+				<li><a href="https://www.caib.es/govern/administracio.do">Govern</a></li>
+
+
+			</ul>
+		</div>
+		<div class="imc--enllasos">
+			<ul>
+
+
+
+			</ul>
+		</div>
+
+
+		<div class="imc--info">
+
+			<p class="contacto">
+				
+					Servicio de Gestión de la Secretaria del Consejo de Gobierno<br/>Passeig de Sagrera, 2 - 07012 Palma<br/>Teléfono: 971 17 71 00
+				
+			</p>
+
+		</div>
+
+	</div>
+
+
+	<!-- xarxes -->
+
+	<div class="imc--peu-xarxes">
+		<p>Xarxes socials:</p>
+		<ul>
+			<li>
+				<a href="https://www.facebook.com/GovernIllesBalears/" class="imc--img imc--facebook">
+				</a>
+			</li>
+			<li>
+				<a href="https://twitter.com/goib" class="imc--img imc--twitter">
+				</a>
+			</li>
+			<li>
+				<a href="https://www.instagram.com/goib/" class="imc--img imc--instagram">
+				</a>
+			</li>
+			<li>
+				<a href="https://www.youtube.com/user/CanalIllesBalears" class="imc--img imc--youtube">
+				</a>
+			</li>
+		</ul>
+	</div>
+
+
+	<!-- enllaços -->
+
+	<div class="imc--peu-enllasos">
+		<strong>© Govern Illes Balears</strong>
+		<ul>
+			<li><a href="https://www.caib.es/sites/manualdidentitatcorporativa/ca/mapa/" title="mapa web">MAPA WEB</a></li>
+			<li><a href="https://www.caib.es/govern/external/infoLegal.do?lang=es">AVISO LEGAL</a></li>
+			<li>
+				<a href="https://www.caib.es/govern/rss.do?lang=es" class="imc-en-rss">
+					<span>RSS</span>
+					<svg viewBox="0 0 430.117 430.118" xml:space="preserve">
+						<g>
+							<path d="M97.493,332.473c10.419,10.408,16.755,24.525,16.794,40.244c-0.04,15.687-6.375,29.809-16.755,40.17l-0.04,0.019            c-10.398,10.352-24.603,16.681-40.398,16.681c-15.775,0-29.944-6.348-40.34-16.699C6.384,402.526,0,388.422,0,372.717            c0-15.719,6.384-29.869,16.754-40.253v0.009c10.401-10.36,24.57-16.735,40.34-16.735C72.89,315.738,87.081,322.131,97.493,332.473z             M97.493,332.464v0.009c0.019,0,0.019,0,0.019,0L97.493,332.464z M16.754,412.906c0,0,0,0,0-0.019c-0.019,0-0.019,0-0.019,0            L16.754,412.906z M0.046,146.259v82.129c53.618,0.033,104.328,21.096,142.278,59.104c37.943,37.888,58.917,88.675,59.003,142.477            h0.028v0.149h82.467c-0.065-78.233-31.866-149.099-83.279-200.549C149.122,178.126,78.285,146.308,0.046,146.259z M0.196,0v82.089            c191.661,0.14,347.464,156.184,347.594,348.028h82.327c-0.056-118.571-48.248-225.994-126.132-303.932            C226.073,48.274,118.721,0.051,0.196,0z"></path>
+						</g>
+					</svg>
+				</a>
+			</li>
+		</ul>
+	</div>
+</footer>
+		
+	
+</div>
+	<script src="/eboibfront/mic/tema2017/files/imc-lta-marc.js?v=2" type="text/javascript"></script>
+	<script src="/eboibfront/mic/tema2017/files/imc-lta-marc.js?v=2" type="text/javascript"></script>
+<!-- FIN MODULO PIE DE PAGINA -->
+    <!--  /peu -->
+
+<!-- /contenidor -->
+
+</body>
+</html>    
