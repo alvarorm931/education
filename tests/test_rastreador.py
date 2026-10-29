@@ -290,3 +290,16 @@ def test_profundo_sigue_dos_niveles_y_guarda_textos(monkeypatch):
     assert "https://x.es/estudios/masteres" in res["listados_visitados"]
     assert res["textos_programa"] == {"https://x.es/ficha?id=1": "Máster Universitario en Derecho",
                                       "https://x.es/ficha?id=2": "Máster Universitario en Economía"}
+
+
+def test_no_son_fichas_productos_listas_y_blogs():
+    base = "<p>ECTS créditos matrícula precio plazas admisión plan de estudios modalidad</p>"
+    for t in ["TOP MASTER BMW R1200 R/RS", "🥇 Los 7 Mejores Másters de MBA en Málaga", "Master Class de Café de Especialidad",
+              "Estudiar un máster en España desde México: Guía", "Máster Universitario en Abogac铆a y Procura", "MASTER"]:
+        assert not r.medir_pagina(f"<title>{t}</title>{base}", "https://x.com/p")["es_programa"], t
+    blog = ('<title>Máster en Finanzas</title><script type="application/ld+json">{"@type":"BlogPosting"}</script>' + base)
+    assert not r.medir_pagina(blog, "https://x.com/p")["es_programa"]
+    curso = ('<title>Máster en Finanzas</title><script type="application/ld+json">[{"@type":"BlogPosting"},{"@type":"Course"}]</script>' + base)
+    assert r.medir_pagina(curso, "https://x.com/p")["es_programa"]
+    m = r.medir_pagina("<title>Máster en Finanzas</title><p>ECTS 60 · 9.000 €</p>", "https://x.com/p")
+    assert m["espana"] and not m["espana_fuerte"]

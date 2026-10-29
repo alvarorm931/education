@@ -103,6 +103,23 @@ SENALES = {k: re.compile(v, re.I) for k, v in {
 }.items()}
 NOTICIA = re.compile(r"/(19|20)\d{2}/\d{1,2}/|/(blog|noticias?|news|actualidad|articulos?|opinion|prensa|revista|"
                      r"magazine|tag|etiquetas?|author|autor)/", re.I)
+# Páginas con «máster» en el título que no son fichas de un programa: productos («Top Master BMW»,
+# «Máster de uñas»), masterclass, listas y guías de agregadores o blogs («Los 7 mejores másters…»).
+NO_FICHA = re.compile(
+    r"master ?class|\bmastering\b|masteriza|\b(comprar|compra|venta|tienda|repuestos?|recambios?|bmw|yamaha|honda|"
+    r"m[aá]quinas? recreativas?|manicura|pedicura|u[ñn]as|maquillaje|peluquer[ií]a|barber[ií]a|caf[eé]|vinos?|"
+    r"cerveza|furgonetas?|renault|ferreter[ií]a)\b|"
+    r"^\W*(los|las|top)?\s*\d+\s+(mejores|m[aá]sters?)|mejores m[aá]sters?|\branking\b|\bopiniones\b|"
+    r"estudiar (un )?m[aá]ster en (?!espa)|desde (m[eé]xico|colombia|argentina|per[uú]|chile|ecuador)|"
+    r"\bgu[ií]a (para|de|completa)\b|c[oó]mo (elegir|estudiar|acceder|hacer)|qu[eé] es (un|el) m[aá]ster|"
+    r"descubre (el|la|c[oó]mo)|\bblog\b|\bnoticias?\b|\bentrevista\b|\bstudy (a|in)\b|complete guide|"
+    r"\b20\d\d guide\b|[\u3040-\u30ff\u4e00-\u9fff]", re.I)
+TIPOS_POST = {"BlogPosting", "NewsArticle", "ReportageNewsArticle", "NewsMediaOrganization", "LiveBlogPosting"}
+TIPOS_FICHA = {"Course", "EducationalOccupationalProgram", "CourseInstance", "Product"}
+# Señal fuerte de España (para webs que no son .es): el € y los ECTS son de toda Europa.
+ESPANA_FUERTE = re.compile(r"Espa[ñn]a|\bSpain\b|\+34|\b(Madrid|Barcelona|Valencia|Sevilla|M[aá]laga|Bilbao|Zaragoza|"
+                           r"Murcia|Granada|Salamanca|Valladolid|Alicante|Pamplona|Santander|Oviedo|Vigo|"
+                           r"A Coru[ñn]a|Palma|Las Palmas|Tenerife|Girona|Tarragona|Lleida|C[aá]diz|C[oó]rdoba)\b")
 # Señal de oferta en España (descarta centros de otros países con web en español).
 ESPANA = re.compile(r"\bECTS\b|€|\beuros?\b|Espa[ñn]a|\+34|\bMadrid\b|\bBarcelona\b|\bValencia\b|\bSevilla\b|"
                     r"\bM[aá]laga\b|\bBilbao\b|\bZaragoza\b|\bMurcia\b|\bGranada\b|\bSalamanca\b|\bValladolid\b|"
@@ -393,7 +410,11 @@ def medir_pagina(html: str, url: str) -> dict:
     caracteres = len(" ".join(visible.split()))
     poco_texto = caracteres < 2000  # contenido cargado con JavaScript: el HTML trae poco más que el menú
     motivo = None
-    if not NOTICIA.search(urlparse(url).path) and not DOCTORADO.search(cabecera):
+    tipos_ld = set(tipos)
+    es_post = bool(tipos_ld & TIPOS_POST) and not tipos_ld & TIPOS_FICHA
+    titulo_txt = " ".join(re.sub(r"<[^>]+>", " ", titulo.group(1)).split()) if titulo else ""
+    if not NOTICIA.search(urlparse(url).path) and not DOCTORADO.search(cabecera) and not es_post \
+            and not NO_FICHA.search(titulo_txt or cabecera) and len((titulo_txt or cabecera).split()) >= 2:
         if TITULO_PROGRAMA.search(cabecera) and (len(senales) >= 4 or (fuerte and len(senales) >= 3)):
             motivo = "titulo_y_senales"
         elif es_programa(url) and len(senales) >= 5:
@@ -403,6 +424,7 @@ def medir_pagina(html: str, url: str) -> dict:
     es_prog = motivo is not None
     return {
         "espana": bool(ESPANA.search(visible)),
+        "espana_fuerte": bool(ESPANA_FUERTE.search(visible)),
         "es_programa": es_prog,
         "motivo": motivo,
         "caracteres_visibles": caracteres,
@@ -606,7 +628,9 @@ def rastrear(base: str, archivo: Archivo | None, max_urls: int = 60000, muestra:
         res["enlaces_colaboradores"] = enlaces_externos(d, res["urls_colaboradores"], max_peticiones)
         res["paginas_programa_validas"] = sum(1 for m in medidas if m.get("es_programa"))
         res["verificado"] = _verificado(medidas)
-        res["espana"] = any(m.get("espana") for m in medidas if m.get("es_programa"))
+        # en .es basta la señal general (€, ECTS, ciudades); fuera de .es hace falta una señal propia de España
+        es_es = d.host.split(":")[0].endswith(".es") or d.base.split("/")[2].endswith(".es")
+        res["espana"] = any((m.get("espana") if es_es else m.get("espana_fuerte")) for m in medidas if m.get("es_programa"))
         res["reserva_tdm"] = res.get("tdmrep", False) or any(m.get("reserva_tdm") for m in medidas)
     except Exception as e:  # un dominio roto no para el resto
         res["error"] = f"{type(e).__name__}: {e}"[:300]
