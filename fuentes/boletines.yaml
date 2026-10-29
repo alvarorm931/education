@@ -59,13 +59,20 @@ autonomicos:
     comunidad: Castilla y León
     url: https://bocyl.jcyl.es/portada.do
     acceso_desde_github: "ok"
-    datos_estructurados: "Datos abiertos: https://datosabiertos.jcyl.es/web/jcyl/set/es/sector-publico/bocyl/1284948181134"
-    estado: sin_conector
+    datos_estructurados: "API Opendatasoft: https://analisis.datosabiertos.jcyl.es/api/explore/v2.1/catalog/datasets/bocyl (desde 2020, una fila por disposición con enlaces a XML; exports/json por mes)"
+    licencia: "CC BY 4.0 ES (Junta de Castilla y León)"
+    estado: conector_en_pruebas
+    conector: motor/autonomicos/bocyl.py
+    nota: "Se actualiza cada mañana con el boletín del día anterior. Empleo: apartado B.2 de las secciones I y III"
   - id: DOGC
     nombre: Diari Oficial de la Generalitat de Catalunya
     comunidad: Cataluña
     url: https://dogc.gencat.cat/es/index.html
-    estado: sin_conector
+    acceso_desde_github: "ok (requiere la lista de cifrados TLS de OpenSSL)"
+    datos_estructurados: "API REST del portal, solo POST: https://portaldogc.gencat.cat/eadop-rest/api/dogc/{calendarDOGC,summaryDOGC,documentDOGC}; documentos también en Akoma Ntoso"
+    estado: conector_en_pruebas
+    conector: motor/autonomicos/dogc.py
+    nota: "Empleo: «Cargos y personal» y «Administración local». Generalitat: quadre-resum de convocatorias desde 1997 en analisi.transparenciacatalunya.cat (szwh-xrga)"
   - id: DOE
     nombre: Diario Oficial de Extremadura
     comunidad: Extremadura
@@ -78,8 +85,10 @@ autonomicos:
     comunidad: Galicia
     url: https://www.xunta.gal/diario-oficial-galicia/portalPublicoHome.do?lang=es
     acceso_desde_github: "ok"
-    datos_estructurados: "RSS: https://www.xunta.gal/diario-oficial-galicia/suscricionsRSS.do"
-    estado: sin_conector
+    datos_estructurados: "Páginas estáticas: /dog/Publicados/AAAA/AAAAMMDD/Indice{N}_es.html y Secciones{K}_es.html; RSS por sección en suscricionsRSS.do"
+    estado: conector_en_pruebas
+    conector: motor/autonomicos/dog.py
+    nota: "N es el número del boletín, correlativo en el año. Empleo: IV. Oposiciones y concursos; VI.b Administración local"
   - id: BOR
     nombre: Boletín Oficial de La Rioja
     comunidad: La Rioja
@@ -122,7 +131,10 @@ autonomicos:
     comunidad: Comunitat Valenciana
     url: https://dogv.gva.es/es/inici
     acceso_desde_github: "ok"
-    estado: sin_conector
+    datos_estructurados: "API JSON del portal: https://dogv.gva.es/dogv-portal/dogv?date=AAAA-MM-DD&lang=es, /dogv/calendar, /disposicion/{id}"
+    estado: conector_en_pruebas
+    conector: motor/autonomicos/dogv.py
+    nota: "Empleo: II. Autoridades y personal - A) Ofertas de empleo público, oposiciones y concursos (incluye ayuntamientos)"
   - id: BOCCE
     nombre: Boletín Oficial de la Ciudad Autónoma de Ceuta
     comunidad: Ceuta
