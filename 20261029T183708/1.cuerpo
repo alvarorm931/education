@@ -1,0 +1,527 @@
+//Polyfill
+//String.prototype.includes()
+if (!String.prototype.includes) {
+	String.prototype.includes = function (search, start) {
+		'use strict';
+
+		if (search instanceof RegExp) {
+			throw TypeError('first argument must not be a RegExp');
+		}
+		if (start === undefined) {
+			start = 0;
+		}
+		return this.indexOf(search, start) !== -1;
+	};
+}
+$(document).ready(function () {
+    fpca_sumari_DOGC.init($(".fpca_sumari_DOGC_ALL"));
+	var events;
+	var json = {};
+	var localeSumari = $("#localeSumari").val();
+	var protocolSumari = $("#protocolSumari").val();
+	var hostSumari = hostConstant;
+	var portSumari = $("#portSumari").val();
+	var uriSumari = $("#uriSumari").val();
+	var downloadText = $("#downloadPagi").val();
+	var downloadTextSup = $("#downloadSup").val();
+	var downloadTextDes = $("#downloadDes").val();
+	var action = $("#action").val();
+	var up = $("#up").val();
+	var share = $("#share").val();
+	var summary = $("#summary").val();
+	var suplementText = $("#suplementText").val();
+	var currentDate = new Date();
+	var selectedMonth = currentDate.getMonth();
+	var selectedYear = currentDate.getFullYear();
+	var MAX = 2;
+
+	var numDOGCRequest = $("#numDOGCRequest").val();
+
+	callAPISumari();
+
+
+	function callAPISumari() {
+		events = {};
+		var url = protocolSumari + "://" + hostSumari + ":" + portSumari + uriSumari;
+
+		if (numDOGCRequest == "null" || numDOGCRequest === "") {
+			var inputParameters = {
+				numDOGC: getUrlParameter(window.location.href, "numDOGC"),
+				language: localeSumari
+			};
+		} else {
+			var inputParameters = {
+				numDOGC: numDOGCRequest,
+				language: localeSumari
+			};
+		}
+
+
+
+		$.ajax({
+			type: 'post',
+			url: url,
+			timeout: 45000,
+			data: inputParameters,
+			dataType: 'json',
+			async: false,
+			success: function (data) {
+				showModalLoading(true);
+				if (data) {
+					$.each(data.sumaris, function (key, value) {
+						var numDOGC = value.numDOGC;
+						var previousNumDOGC = value.previousNumDOGC;
+						var laterNumDOGC = value.laterNumDOGC;
+						var dateStringDOGC = value.dateStringDOGC;
+						var dateDOGC = value.dateDOGC;
+						fpca_sumari_DOGC_calendari_dogc.CONSTANTS["date"] = dateDOGC;
+						var linkDownloadDOGCPDF = value.linkDownloadDOGCPDF;
+						var linkDownloadSummaryPDF = value.linkDownloadSummaryPDF;
+						$('#sectionAll').append(createSecciones(value.numDOGC));						
+
+						if (linkDownloadSummaryPDF != null) {
+							linkDownloadSummaryPDF = linkDownloadSummaryPDF.replace('PdfProviderServlet', 'jsp/captcha/RecaptchaServlet.jsp');
+						}
+
+						var element = document.getElementById("panel-group-" + value.title);
+
+						/*$('#header-sumari-'+value.numDOGC).append('<h2 class="panel-title">'+getPropertiesHtml("summary")+'</h2>' +
+						'<div class="download"> <a id="myModalSumary" href="'+linkDownloadSummaryPDF+'" target="_blank"class="dropdown-toggle"> ' +
+						'<img alt="pdf icon" src="/system/modules/cat.gencat.wcmResponsive.formatters.httpFetch/resources/common/img/NG_ico_pdf.png" ' + 
+						'class="icon-corrector">'+downloadText+'<span class="sr-only">'+downloadText+'</span></a>' +
+						'</div><ul class="listado"></ul>');*/
+						$('#header-sumari-' + value.numDOGC).append(
+							'<div class="header-sumari__row"> <h2 class="panel-title">' + getPropertiesHtml("summary") + '</h2>' + '<ul class="listado"></ul></div>' +
+							'<div class="header-sumari__row"><div class="download">');
+						if (linkDownloadSummaryPDF != null) {
+							$('#download-' + value.numDOGC).append('<a href="' + linkDownloadSummaryPDF + '" target="_blank"> ' +
+								'<img alt="pdf icon" src="/system/modules/cat.gencat.wcmResponsive.formatters.httpFetch/resources/common/img/NG_ico_pdf.png" ' +
+								'class="icon-corrector">' + downloadTextSup + '<span class="sr-only">' + downloadTextSup + '</span></a>');
+						}
+
+						$('#header-sumari-' + value.numDOGC).append('</div></div>');
+
+						$('#downloadSumariHeader-' + value.numDOGC).append('<a href="' + linkDownloadDOGCPDF + '" target="_blank"><img alt="pdf icon" ' +
+							'src="/system/modules/cat.gencat.wcmResponsive.formatters.httpFetch/resources/common/img/NG_ico_pdf.png" ' +
+							'class="icon-corrector"/>' + downloadText + '<span class="sr-only">' + downloadText + '</span></a>');
+
+						loadPaginacio(numDOGC, dateStringDOGC, previousNumDOGC, laterNumDOGC, linkDownloadDOGCPDF, linkDownloadSummaryPDF, value.numDOGC);
+						iterar(value.section, value.numDOGC);
+						listaResultados(value.section, value.numDOGC);
+
+						var url = $(location).attr("href");
+
+						if (url.includes("#")) {
+							window.location.href = url;
+						}
+
+					});
+					fpca_sumari_DOGC_calendari_dogc.init($(".fpca_sumari_DOGC_ALL"));
+
+					$('.el_mes_consultat .panel-heading a').click(function () {
+						$(this).parents('.el_mes_consultat').hasClass('open') ? ($(this).parents('.el_mes_consultat').removeClass('open'), $('.el_mes_consultat .panel-body').animate({
+							right: '-260px'
+						}, 400, 'swing')) : ($(this).parents('.el_mes_consultat').addClass('open'), $('.el_mes_consultat .panel-body').animate({
+							right: '-15px'
+						}, 400, 'swing'))
+					})
+					
+					if (data.sumaris.length > 1) {
+						$.each(data.sumaris, function (key, value) {
+
+							if (value.numDOGC != getParameterByName("numDOGC")) {
+								var url = "/" + localeSumari + pageDOGC + "?numDOGC=" + value.numDOGC;
+                                var veureLabel = fpca_sumari_DOGC.config.labels.veureLabel + ' ' + value.title;
+								$('.listado').append('<li><a href="' + url + '" id="' + value.numDOGC + '">'+veureLabel + '</a></li>');
+							}
+
+						});
+					}
+
+						$.each(data.sumaris, function (key, value) {
+
+							if (value.numSuplement != null) {
+								var url = "/" + localeSumari + "/sumari-del-suplement/?numDOGC=" + value.numSuplement;
+								$('.listado').append('<li><a href="' + url + '" id="' + value.numSuplement + '" title="'+suplementText+'">' + suplementText + '</a></li>');
+							}
+
+						});
+					
+					
+
+
+					if (numDOGCRequest == "null" || numDOGCRequest === "") {
+						var number = getUrlParameter(window.location.href, "numDOGC");
+
+						$("#header-" + number).css("display", "block");
+						$("#fpca_sumari_dogc" + number).css("display", "block");
+					} else {
+						var number = numDOGCRequest;
+
+						$("#header-" + number).css("display", "block");
+						$("#fpca_sumari_dogc" + number).css("display", "block");
+					}
+
+					$('.ui-datepicker-year').attr("title", fpca_sumari_DOGC_calendari_dogc.CONSTANTS.selectTitleLiteral);
+
+
+				} else if (data.errorCode != undefined && data.errorDescription != undefined) {
+					$(".errorSumari").text(data.errorCode + ": " + data.errorDescription);
+				}
+				showModalLoading(false);
+			},
+			error: function (jqXHR, textStatus, errorThrown) {
+				error(jqXHR, textStatus, errorThrown);
+				showModalLoading(false);
+			}
+
+		});
+
+
+	}
+
+	function createSecciones(title) {
+		return '<div id="header-' + title + '" class="fpca_paginacion_sumari_dogc bgGrey" style="display:none">' +
+			'<div class="wrapper-paginacion">' +
+			'<ul class="paginacion col-xs-12">' +
+			'<li class="esquerre"><a href="" id="esquerre-' + title + '" title="" class="enllac"></a></li>' +
+			'<li class="dreta"><a href="" id="dreta-' + title + '" title="" class="enllac"></a></li>' +
+			'</ul>' +
+			'<div class="col-sm-8 col-xs-12">' +
+			'<h2 id="h1Num-' + title + '"></h2>' +
+			'</div>' +
+			'<div class="col-sm-4 col-xs-12">' +
+			'<div class="el_mes_consultat generalitat">' +
+			'<div class="panel panel-default box">' +
+			'<div class="fons_gris">' +
+			'<ul class="llistat_enllacos_filet_cont list-group">' +
+			'<li id="download-' + title + '" class="list-group-item llista-col-1 download desca pdfDOGC"></li>' +
+			'<li id="downloadSumariHeader-' + title + '" class="list-group-item llista-col-1 download desca pdfDOGC"></li>' +
+			'</ul>' +
+			'</div>' +
+			'</div>' +
+			'</div>' +
+			'</div>' +
+			'<div class="col-xs-12">' +
+			'<span id="fecha-' + title + '" class="data"></span>' +
+			'</div>' +
+			'</div>' +
+			'</div>' +
+			'<div id="fpca_sumari_dogc' + title + '" class="fpca_sumari_dogc" style="display:none">' +
+			'<section id="cercador_text" class="padding-bot-xs padding-bot-sm rslt tab-pane cercador_tab active">' +
+			'<div class="">' +
+			'<div class="row">' +
+			'<div class="col-md-4 col-xs-12">' +
+			'<div class="wrapper-sumari">' +
+			'<div id="header-sumari-' + title + '" class="header-sumari"></div>' +
+			'<div class="llistat_collap">' +
+			'<div id="panel-group-' + title + '" class="panel-group llistat_collapse_cont">' +
+			'</div>' +
+			'</div>' +
+			'</div>' +
+			' <!-- Calendari -->' +
+			'<div class="contenedor_calendari">' +
+			'<div class="fpca_calendari-dogc">' +
+			'<div id="calendari-dogc" class="calendari-dogc-view calendari-dogc"></div>' +
+			'</div>' +
+			'</div>' +
+			'</div>' +
+			'<div class="col-md-8 col-xs-12">' +
+			'<div id="inici-' + title + '" class="llistat_destacat_text column">' +
+			'</div>' +
+			'</div>' +
+			'</div>' +
+			'</div>' +
+			'<div class="ref-pointer"></div>' +
+			'</section>' +
+			'</div>';
+
+	}
+
+	function loadPaginacio(numDOGC, dateStringDOGC, previousNumDOGC, laterNumDOGC, linkDownloadDOGCPDF, linkDownloadSummaryPDF, title) {
+		var previousURL = "/" + localeSumari + pageDOGC + "?numDOGC=" + previousNumDOGC;
+		var laterURL = "/" + localeSumari + pageDOGC + "?numDOGC=" + laterNumDOGC;
+
+		if (previousNumDOGC != null) {
+			$('#esquerre-' + title).prop('title', 'DOGC núm. ' + previousNumDOGC);
+			$('#esquerre-' + title).prop('href', previousURL);
+			$('#esquerre-' + title).text("DOGC núm. " + previousNumDOGC);
+		}else{
+			$('.esquerre').hide();
+		}
+
+		if (laterNumDOGC != null) {
+			$('#dreta-' + title).prop('title', 'DOGC núm. ' + laterNumDOGC);
+			$('#dreta-' + title).prop('href', laterURL);
+			$('#dreta-' + title).text("DOGC núm. " + laterNumDOGC);
+		}else{
+			$('.dreta').hide();
+		}
+
+
+		$('#h1Num-' + title).prepend("DOGC núm. " + numDOGC);
+
+		$('#fecha-' + title).text(dateStringDOGC+" - ISSN 1988-298X");
+
+	}
+	/**
+	* Function that iterate ajax results and write in html
+	* @param [string] section - Section to which the html will be added
+	* @param [string] titleSection - The title of the section
+	**/
+	function iterar(section, titleSection) {
+		for (let i = 0; i < section.length; i++) {
+			var title = section[i].title.split(' ').join('_');
+			title = title.split("'").join('');
+			title = title.split("(").join('_');
+			title = title.split(")").join('_');
+
+			$('#panel-group-' + titleSection).append('<div id="panel' + i + titleSection + '" class="panel panel-default">');
+			$('#panel' + i + titleSection).append('<div id="panel-heading' + i + titleSection + '" class="panel-heading">');
+			$('#panel-heading' + i + titleSection).append('<h3 id="panel-title' + i + titleSection + '" class="panel-title">');
+			$('#panel-title' + i + titleSection).append('<a id="' + title + '" class="js-scrollLink" href="#section-' + title + '">' + section[i].title + '</a>');
+			$('#panel-title' + i + titleSection).append('<a id="' + title + '-collapse" data-toggle="collapse" href="#' + title + '-header' + titleSection + '" role="button" aria-expanded="false" class="collapsed"><span class="sr-only">collapse' + title + '</span></a>');
+			$('#panel-heading' + i + titleSection).append('</h3>');
+			$('#panel' + i + titleSection).append('</div>');
+			$('#panel' + i + titleSection).append('<div id="' + title + '-header' + titleSection + '" class="panel-collapse collapse">');
+			$('#' + title + '-header' + titleSection).append('<ul id="cos_bloc' + i + titleSection + '" class="cos_bloc">');
+
+			for (let j = 0; j < section[i].header.length; j++) {
+				var titleHeader = section[i].header[j].title.split(' ').join('_');
+				if ("subheader" in section[i].header[j]) {
+					$('#cos_bloc' + i + titleSection).append('<li id="li_cos_bloc' + replaceAll(titleHeader) + '_' + j + '_' + i + titleSection + '"><a href="#section_'+replaceAll(title) +"_"+ replaceAll(titleHeader) + '" class="js-scrollLink">' + section[i].header[j].title + '</a>');
+					$('#li_cos_bloc' + replaceAll(titleHeader) + '_' + j + '_' + i + titleSection).append('<ul id="ul_' + replaceAll(titleHeader) + '_' + j + '_' + i + titleSection + '">');
+					for (let k = 0; k < section[i].header[j].subheader.length; k++) {
+						$('#ul_' + replaceAll(titleHeader) + '_' + j + '_' + i + titleSection).append('<li><a href="#section_'+replaceAll(title) +'_'+ replaceAll(section[i].header[j].title) +'_'+replaceAll(section[i].header[j].subheader[k].title) + '" class="js-scrollLink">' + section[i].header[j].subheader[k].title + '</a></li>');
+					}
+					$('#li_cos_bloc' + replaceAll(titleHeader) + '_' + j + '_' + i + titleSection).append('</ul>');
+					$('#cos_bloc' + i + titleSection).append('</li>');
+				} else {
+					$('#cos_bloc' + i + titleSection).append('<li><a href="#section_'+replaceAll(title) +"_"+ replaceAll(titleHeader) + '" class="js-scrollLink">' + section[i].header[j].title + '</a></li>');
+				}
+			}
+
+			$('#' + replaceAll(title) + '-header' + titleSection).append('</ul">');
+			$('#panel' + i + titleSection).append('</div>');
+			$('#panel-group' + i + titleSection).append('</div>');
+		}
+	}
+
+	/**
+	 * Función que muestra la lista de resultados de cada sección
+	 */
+	function listaResultados(section, titleSection) {
+		var str = "";
+
+		for (let i = 0; i < section.length; i++) {
+			var sectionId = section[i].title;
+			sectionId = sectionId.replace(/\ /g, '_');
+			sectionId = sectionId.replace(/'/g, "");
+			str += "<div id=\"llistat_destacat_text column\" class=\"llistat_destacat_text column\">" +
+				'<div class="wrapper-disposicions"><span id="section-' + sectionId + '"></span><h2 id=\"' + section[i].title + '-title' + titleSection + '">' + section[i].title + '</h2>';
+			for (let j = 0; j < section[i].header.length; j++) {
+				//str+="</a>"
+				str += '<span id="section"></span>';
+				str += "<h3 id=\"section_"+replaceAll(sectionId) +"_"+ replaceAll(section[i].header[j].title) + "\">" + section[i].header[j].title + "</h3>";
+				str += "<ul class=\"llistat_destacat_text_cont list-group\">";
+				if(section[i].header[j].document != undefined){
+					for(let z = 0; z < section[i].header[j].document.length; z++ ){
+						var documentId = getDocumentId(section, i, j, undefined, z);
+						var documentURL = "/" + localeSumari + pageDocument + "?" + documentId;
+						//str += '<li class="destacat_text list-group-item filet_inf">'+ section[i].header[j].document[z].title+'</li>';
+						str += "<li class=\"destacat_text list-group-item filet_inf\">"
+						str += "<div class=\"destacat_text_cont\"><a  target='_blank' href=\"" + documentURL + "\">" + section[i].header[j].document[z].title + "</a>" +
+								'<div class="download"><a href="' + section[i].header[j].document[z].linkDownloadDocumentPDF + '" target="_blank">' +
+								"<img alt=\"pdf icon\" src=\"/system/modules/cat.gencat.wcmResponsive.formatters.httpFetch/resources/common/img/NG_ico_pdf.png\" class=\"icon-corrector\">" + downloadTextDes +
+								"</a></div></div>";
+						str += "</li>";
+					}
+				}
+				str+= "</ul>";
+				str += "<ul class=\"llistat_destacat_text_cont list-group\">";
+				if ("subheader" in section[i].header[j]) {
+					for (let l = 0; l < section[i].header[j].subheader.length; l++) {
+						str += "<h4 id=\"section_"+replaceAll(sectionId) +"_"+ replaceAll(section[i].header[j].title) +"_"+ replaceAll(section[i].header[j].subheader[l].title) + "\">" + section[i].header[j].subheader[l].title + "</h4>";
+						str += "<ul class=\"llistat_destacat_text_cont list-group\">";
+						for (let k = 0; k < +section[i].header[j].subheader[l].document.length; k++) {
+							var documentId = getDocumentId(section, i, j, l, k);
+							var documentURL = "/" + localeSumari + pageDocument + "?" + documentId;
+							str += "<li class=\"destacat_text list-group-item filet_inf\">"
+							str += "<div class=\"destacat_text_cont\"><a  target='_blank' href=\"" + documentURL + "\">" + section[i].header[j].subheader[l].document[k].title + "</a>" +
+								'<div class="download"><a href="' + section[i].header[j].subheader[l].document[k].linkDownloadDocumentPDF + '" target="_blank">' +
+								"<img alt=\"pdf icon\" src=\"/system/modules/cat.gencat.wcmResponsive.formatters.httpFetch/resources/common/img/NG_ico_pdf.png\" class=\"icon-corrector\">" + downloadTextDes +
+								"</a></div></div>";
+							str += "</li>";
+						}
+						str += "</ul>";
+
+					}
+				} else {
+					/*for (let k = 0; k < section[i].header[j].document.length; k++) {
+						var documentId = getDocumentId(section, i, j, undefined, k);
+						var documentURL = "/" + localeSumari + pageDocument + "?" + documentId;
+						str += "<li class=\"destacat_text list-group-item filet_inf\">";
+						str += "<div class=\"destacat_text_cont\"><a href=\"" + documentURL + "\">" + section[i].header[j].document[k].title + "</a>" +
+							"<div class=\"download\"><a href=\"" + section[i].header[j].document[k].linkDownloadDocumentPDF + "\" target=\"_blank\">" +
+							"<img alt=\"pdf icon\" src=\"/system/modules/cat.gencat.wcmResponsive.formatters.httpFetch/resources/common/img/NG_ico_pdf.png\" class=\"icon-corrector\">" + downloadTextDes +
+							"<span class=\"sr-only\">" + section[i].header[j].document[k].title + "</span></a></div></div>";
+						str += "</li>";
+					}*/
+				}
+
+				str += "</ul>";
+
+			}
+
+		}
+		str += "</div>";
+		$('#inici-' + titleSection).append(str);
+	}
+
+	function error(jqXHR, textStatus, errorThrown) {
+		var message;
+		if (textStatus === 'timeout') {
+			message = "Consulta no disponible en aquests moments. Si us plau, reformuleu-la o repetiu-la més tard";
+		} else if (jqXHR.status == 404) {
+			message = "El recurs demanat no es troba disponible en el servidor.";
+		} else if (jqXHR.status == 500) {
+			message = message = "En aquests moments el servidor no es troba disponible.";
+		} else if (textStatus === 'parsererror') {
+			message = "El contingut de la resposta no s’ha pogut processar correctament.";
+		} else if (jqXHR.status === 0) {
+			message = "En aquests moments no és possible establir connexió amb el servidor.";
+		} else if (textStatus === 'abort') {
+			message = "El servidor no ha processat la petició de sol·licitud d’informació.";
+		} else {
+			message = "S’ha donat un error en el servidor amb la següent descripció: " + jqXHR.responseText;
+		}
+		$(".errorSumari").text(message);
+	}
+
+	/**
+	 * Function for getting documentId
+	 */
+	function getDocumentId(section, i, j, l, k) {
+		var linkDownloadDocumentPDF = (l != undefined) ? section[i].header[j].subheader[l].document[k].linkDownloadDocumentPDF : section[i].header[j].document[k].linkDownloadDocumentPDF;
+		var startIndex = linkDownloadDocumentPDF.indexOf("documentId");
+		linkDownloadDocumentPDF = linkDownloadDocumentPDF.substring(startIndex);
+		var finalIndex = linkDownloadDocumentPDF.indexOf("&");
+		var documentId = (finalIndex != -1) ? linkDownloadDocumentPDF.substring(0, finalIndex) : linkDownloadDocumentPDF.substring(0);
+
+		return documentId;
+	}
+
+	/**
+	 * Function for replacing space to underscore and commas to nothing
+	 * str: String with text
+	 */
+	function replaceAll(str) {
+		str = str.replace(/'/g, "");
+		str = str.replace(/,/g, "");
+		return str.replace(/ /g, "_");
+	}
+
+	/**
+	 * Getting specific parameter from URL
+	 * @returns id
+	 */
+	function getParameterURL(param) {
+		//var urlParams = new URLSearchParams(window.location.search);
+		//var id = urlParams.get(param);
+
+		var url = new URL(window.location.href);
+		var id = url.searchParams.get(param);
+		return id;
+	}
+
+	function getUrlParameter(location, name) {
+		name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+		var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+		var results = regex.exec(location);
+		console.log(results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' ')))
+		return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+	};
+
+
+	/**
+	 * compartir amb facebook l'url
+	 */
+	$('body').on('click', '#NG_facebook', function (event) {
+		event.preventDefault();
+		event.stopPropagation();
+		$("#copyText").val('https://www.facebook.com/sharer/sharer.php?u=' + window.location.href);
+
+	});
+
+
+	/**
+	 * compartir amb twitter l'url
+	 */
+	$('body').on('click', '#NG_twitter', function (event) {
+		event.preventDefault();
+		event.stopPropagation();
+		$("#copyText").val('https://twitter.com/intent/tweet?text=' + window.location.href);
+
+	});
+
+	/**
+	 * Animated scroll with anchors
+	 */
+	$('body').on('click', '.js-scrollLink', function (event) {
+		var $target = $(this.getAttribute('href'));
+		if ($target.length > 0) {
+			event.preventDefault();
+			if ($(window).width() > 1199) {
+				$('html, body').stop().animate({
+					scrollTop: $target.offset().top - 10
+				}, 750, 'easeInOutQuad');
+			} else {
+				var headerHeight = $('.fpca_capcalera_new .NG-main').height();
+				$('html, body').stop().animate({
+					scrollTop: $target.offset().top - headerHeight * 1.25
+				}, 750, 'easeInOutQuad');
+			}
+
+		}
+	});
+
+	function scrollToID() {
+		var url = decodeURIComponent(window.location.href);
+		var urlIdString = "#" + url.split('#')[1];
+		var $target = $(urlIdString);
+		if ($target.length > 0) {
+			event.preventDefault();
+			if ($(window).width() > 1199) {
+				$('html, body').stop().animate({
+					scrollTop: $target.offset().top - 10
+				}, 750, 'easeInOutQuad');
+			} else {
+				var headerHeight = $('.fpca_capcalera_new .NG-main').height();
+				$('html, body').stop().animate({
+					scrollTop: $target.offset().top - headerHeight * 1.25
+				}, 750, 'easeInOutQuad');
+			}
+
+		}
+	}
+	window.onload = function () {
+		//showModalLoading(false);
+		scrollToID()
+	};
+
+
+});
+
+var fpca_sumari_DOGC = {
+    config: null,
+    init: function ($fpca) {
+        this.setUp($fpca);
+    },
+    setUp: function ($fpca) {
+        const jsonLabels = $fpca.find(".i18n");
+        this.config = {
+            fpca: $fpca,
+            labels: jsonLabels[0] ? JSON.parse(jsonLabels.text()) : {}
+        }
+    }
+}
