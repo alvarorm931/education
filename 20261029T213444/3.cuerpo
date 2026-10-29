@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="stylesheet" type="text/css" href="css/estiloGeneral.css?v=5" media="all" />
+		<link rel="stylesheet" type="text/css" href="css/estiloCoruna.css?v=5" media="all" />
+		<link rel="shortcut icon" href="./img/favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="/bopportal/toolLibraries/font-awesome-5.13.0/css/all.min.css"/>
+
+		<script type="text/javascript" src="javascript/comun.js"></script>
+		
+		<title>Bolet&iacute;n Oficial da Provincia da Coru&ntilde;a</title>
+		<meta name="Description" content="Web del Bolet&iacute;n Oficial da Provincia de A Coru&ntilde;a" />
+		<script type='text/javascript' src="/bopportal/toolLibraries/javascript/jquery-3.6.3.min.js"></script>
+		<script type="text/javascript" src="js/jsp/home.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/home.css" media="all" />
+	</head>
+	<body>
+		<!-- Inicio menu superior -->
+		<div id = "menuSuperior">
+			<aside class="bandaAceptacion home-hidden">
+				<div class="texto-aceptar">	
+					<p>Este portal utiliza cookies propias de tipo t&eacute;cnico e de terceiros para mellorar, mediante a an&aacute;lise da navegaci&oacute;n, o servizo ofrecido. As cookies non se utilizan para recoller datos persoais.</p>
+				</div>
+				<div class="btn-aceptar">	
+					<a aria-label='De acordo' class="bAcept" href="#">De acordo</a>
+				</div>
+			</aside>
+			<div id="bannerIzq_Dcha">
+				<img class="tamanoLogoDiputacionPortal" src="img/BOP2020-cabecera_logo_diputacion.png" alt=""/>
+				<a id="enlaceDiputacionCabeceraPortal" href="https://www.dacoruna.gal" title="Abre a Web www.dacoruna.gal nunha nova p&aacute;xina">
+					www.dacoruna.gal</a>
+				<a id="idiomaCabeceraCastellano" href="/bopportal/inicio?lang=es_ES" title="Cambia o idioma da p&aacute;gina a castelán">
+							Castelán</a>
+						<div id="idiomaCabeceraGallego">
+							<a href="#" title="Cambia o idioma da p&aacute;xina a galego">
+								<b>Galego</b>
+							</a>
+							<p id="separador">&nbsp;&nbsp;|&nbsp;&nbsp;</p>
+						</div>
+					<p class="textoBOPIzqDrchPortal">Xoves, 29 de outubro de 2026</p>
+			</div>
+			<div id="bannerDcha_Dcha">
+				<img id="imgDerecha" src="img/BOP2020_cabecera_escudo_inclinado.png" alt=""/>
+				<p class="bopPortal">BOP</p>
+				<p class="textoBOPDrchIzqPortal">BOLETÍN OFICIAL DA PROVINCIA DA CORUÑA</p>
+			</div>
+		</div>
+		<!-- Fin menu superior -->
+		
+		<!-- Inicio cuerpo -->
+		<div id="cuerpo">
+			<div id="formatoError">
+		    	</div>
+			<div class="alert">
+				<div>
+                    		<i class="fas fa-bell margenCampana"></i>
+	                    		<b class="tituloAlert"><u>AVISO</u></b>
+                		</div>
+                		<div class="alinearTextoAlert">
+	                    		<u><b>CÓMPUTO DE PRAZOS</b></u></br></br>
+
+<p style="text-align: justify;">
+A efectos do disposto no artigo 17 da ordenanza reguladora do BOP, Prazos de Publicación, os anuncios recibidos a través da Oficina Virtual do Boletín Oficial da Provincia con firma electrónica, asentados no rexistro telemático, axustaranse ao seguinte criterio:<br><br>
+- Dende as 24h ata as <u><b>13.30h</b></u> de luns a venres, a data de efectos será a data efectiva de rexistro. En sábados, domingos e festivos, así como dende as 13.30.01 ata as 24h, a data de efectos será a do primeiro día hábil seguinte. No asentamento de entrada inscribirán como data e hora de presentación aquelas en que se produciu efectivamente a transmisión.
+</p>
+</div>
+					</div>
+		   	<div id="divBusquedaPortal">
+				<form class="busquedaPortal" method="post" action="/bopportal/realizarBusqueda">
+					<input name="soloSumario" value="false" type="hidden" />
+					<input name="texto" placeholder="Buscar.." type="text" />
+					<button type="submit">
+						<i class="fa fa-search"></i>
+					</button>
+				</form>
+			</div>
+			<div id="cuadroIzquierda">
+				<div id="contacto">
+					<div class="titulo">
+						<span class="primeraLetra">C</span>
+						<span>ONTACTO</span>
+					</div>
+					<div id = "enlacesContacto">
+						<ul>
+							<li>
+								<a href="/bopportal/direccionTelefonos" title="Enderezo e tel&eacute;fonos">
+									Enderezo e tel&eacute;fonos</a>
+							</li>
+							<li>
+								<a href="https://sede.dacoruna.gal/sxc/gl/contacto" title="home.titleSugerencias">
+									Suxesti&oacute;ns</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div id="enlaces">
+					<div class="titulo">
+						<span class="primeraLetra">L</span>
+						<span>IGAZÓNS</span>
+					</div>
+					<div id = "rutaEnlaces">
+						<ul>
+							<li>
+								<a href="https://www.xunta.es/diario-oficial" title="Abre a Web do Diario Oficial de Galicia nunha nova p&aacute;xina" target="_blank">
+									DOG</a>
+							</li>
+							<li>
+								<a href="https://www.boe.es" title="Abre a Web do Bolet&iacute;n Oficial do Estado nunha nova p&aacute;xina" target="_blank">
+									BOE</a>
+							</li>
+							<li>
+								<a href="https://eur-lex.europa.eu/JOIndex.do?ihmlang=es" title="Abre a Web do Diario Oficial da Uni&oacute;n Europea nunha nova p&aacute;xina" target="_blank">
+									DOUE</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div id="cuadroCentro">
+				<div id="consultasBOP">
+					<div class="titulo">
+						<span class="primeraLetra">C</span>
+						<span>ONSULTAS AO BOP</span>
+					</div>
+					<div id = "enlacesConsultas">
+						<ul>
+							<li>
+								<a href="/bopportal/ultimoBoletin" title="&Uacute;ltimo BOP">
+									&Uacute;ltimo BOP</a>
+							</li>
+							<li>
+								<a href="/bopportal/boletinesAntiguos" title="BOP anteriores por data">
+									BOP anteriores por data</a>
+							</li>
+							<li>
+								<a href="/bopportal/accesoBusqueda" title="Buscar no texto">
+									Buscar no texto</a>
+							</li>
+							<li>
+								<a href="/bopportal/suscripcionesTematicas" title="Subscrici&oacute;ns ao BOP">
+									Subscrici&oacute;ns ao BOP</a>
+							</li>
+							<li>
+								<a href="/bopportal/verificarAnuncio" title="Verificar un anuncio">
+									Verificar un anuncio</a>
+							</li>
+							<li>
+								<a href="https://sede.dacoruna.gal/subtel/archivo/buscadorbop?pspdfkit" title="Do 2 de xu&ntilde;o de 1834 ao 20 de xu&ntilde;o de 2009 - ARCHIVO PROVINCIAL" target="_blank">
+									Consulta BOP HIST&Oacute;RICO (Do 2 de xu&ntilde;o de 1834 ao 20 de xu&ntilde;o de 2009) por texto - ARCHIVO PROVINCIAL</a>
+							</li>		
+							<li>
+								<a href="https://sede.dacoruna.gal/subtel/archivo/buscadorbopanteriores" title="Consulta BOP HIST&Oacute;RICO por data - ARCHIVO PROVINCIAL" target="_blank">
+									Consulta BOP HIST&Oacute;RICO por data - ARCHIVO PROVINCIAL</a>
+							</li>								
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div id="cuadroDerecha">
+				<div id="anunciantes">
+					<div class="titulo">
+						<span class="primeraLetra">A</span>
+						<span>NUNCIANTES</span>
+					</div>
+					<div id = "enlacesAnunciantes">
+						<ul>						
+							<li>
+								<a href="/boppublicador" title="Acceso &aacute; zona de anunciantes" target="_blank">
+									Acceso &aacute; zona de anunciantes</a>
+							</li>
+							<li>
+								<a href="/bopportal/accesoAltasEsporadicas" title="Alta de anuncios para anunciantes/usuarios non rexistrados" target="_blank">
+									Alta de anuncios para anunciantes/usuarios non rexistrados</a>
+							</li>
+							<li>
+							    <form id="gestionUsuarioForm" action="/bopportal/gestionUsuariosClave" method="post">
+    								<button class="button-link" type="submit">
+										Xesti&oacute;n de usuarios e permisos</button>
+							    </form>
+							</li>
+							<li>
+								<a href="/bopportal/comoPublicar" title="Como publicar">
+									Como publicar</a>
+							</li>
+							<li>
+								<a href="/bopportal/firmaDigital" title="Sinatura electr&oacute;nica">
+									Sinatura electr&oacute;nica</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div id="infoGeneral">
+					<div class="titulo">
+						<span class="primeraLetra">I</span>
+						<span>NFORMACIÓN XERAL</span>
+					</div>
+					<div id = "enlacesInfoGeneral">
+						<ul>
+							<li>
+								<a href="/bopportal/quienesSomos" title="&iquest;Quen somos?">
+									&iquest;Quen somos?</a>
+							</li>
+							<li>
+								<a href="/bopportal/normativa" title="Normativa">
+									Normativa</a>
+							</li>
+                            <li>
+								<a href="/bopportal/preguntasFrecuentes" title="Preguntas frecuentes">
+									Preguntas frecuentes</a>
+                            </li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Fin cuerpo -->
+		<!-- Inicio pie -->
+		<script type="text/javascript">
+	<!-- Matomo -->
+		var _paq = window._paq = window._paq || [];
+	  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+	  _paq.push(['trackPageView']);
+	  _paq.push(['enableLinkTracking']);
+	  (function() {
+		    var u= 'https://analitica.dacoruna.gal/';
+		    _paq.push(['setTrackerUrl', u+'matomo.php']);
+		    _paq.push(['setSiteId', '4']);
+		    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+	    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+	  })();
+	<!-- End Matomo Code -->
+</script>
+
+<div class="footer">
+	<div id="textoCabezaPie">
+			2020 &copy; Deputaci&oacute;n Provincial da Coru&ntilde;a</div>
+	<div id="divMenuPie" class="d-none d-sm-block d-sm-none d-md-block">
+		<a id="textoMenuPie" href="/bopportal/accesibilidad" title="Accesibilidade">Accesibilidade</a> 
+		<a id="textoMenuPie" href="/bopportal/avisoLegal" title="Aviso legal">Aviso legal</a> 
+		<a id="textoMenuPie" href="/bopportal/depositoLegal" title="Dep&oacute;sito legal">Dep&oacute;sito legal</a>
+	</div>
+	<div class="logoENS">
+		<a href="https://sede.dacoruna.gal/sxc/gl/sobrelasede/seguridad"><img style="width: 165px; height: 200px" src="img/ens_certificacion.png" alt="ENS certificado"></a>
+	</div>
+</div><!-- Fin pie -->
+	</body>
+</html>
