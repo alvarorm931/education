@@ -39,7 +39,7 @@ jobs:
           done
           echo "ejecucion $RUN" > "pub/$STAMP/origen.txt"
           find pub -type f -size +90M -print -exec gzip -9 {} \;
-          du -sh "pub/$STAMP"
+          echo "::notice::tamaño $(du -sh pub/$STAMP | cut -f1), ficheros $(find pub -type f | wc -l), mayor $(find pub -type f -printf '%s %p\n' | sort -n | tail -1)"
           cd pub
           git init -q && git config user.name "motor-estudios" && git config user.email "motor-estudios@users.noreply.github.com"
           git remote add origin "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git"
@@ -47,7 +47,8 @@ jobs:
           git checkout -q -B sondas
           git add "$STAMP" && git commit -qm "Recoger artefactos de la ejecución $RUN"
           for i in 1 2 3 4 5 6; do
-            git push -q origin sondas && exit 0
+            if salida=$(git push origin sondas 2>&1); then exit 0; fi
+            echo "::error::push $i: $(echo "$salida" | tr '\n' ' ' | cut -c1-900)"
             sleep $((i * 10))
             git fetch -q --depth 1 origin sondas && git reset -q FETCH_HEAD && git add "$STAMP" \
               && git commit -qm "Recoger artefactos de la ejecución $RUN" || true
