@@ -1,0 +1,1032 @@
+<title>Guía Estudios y Oposiciones</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Source+Sans+3:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: guía de proyecto con índice lateral fijo en escritorio; maquetas de ejemplo dentro de marcos de navegador */
+:root{
+  --bg:#f3f5f4; --surface:#ffffff; --ink:#132320; --muted:#566862; --line:#d8e0dd;
+  --brand:#16634e; --on-brand:#ffffff; --brand-soft:#e2f0eb; --brand-ink:#0d4536;
+  --signal:#c9821a; --signal-soft:#fbf0dc;
+  --ok:#2d7a44; --ok-soft:#e3f2e7; --warn:#a96a0d; --warn-soft:#fbf0dc; --bad:#b4433a; --bad-soft:#f8e4e1;
+  --t-basica:#4c6fd1; --t-oblig:#16634e; --t-opt:#9b6bd0; --t-prac:#c9821a; --t-tfg:#b4433a;
+  --f-display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --f-body:"Source Sans 3", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --f-mono:"IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0e1614; --surface:#15201d; --ink:#e4eeeb; --muted:#9db1ab; --line:#26332f;
+  --brand:#4fbf9a; --on-brand:#08201a; --brand-soft:#173029; --brand-ink:#b9ecd9;
+  --signal:#e7a646; --signal-soft:#33270f;
+  --ok:#6cc58b; --ok-soft:#16301f; --warn:#e7a646; --warn-soft:#33270f; --bad:#ef8a80; --bad-soft:#3a1d1a;
+  --t-basica:#87a2f0; --t-oblig:#4fbf9a; --t-opt:#c39cf0; --t-prac:#e7a646; --t-tfg:#ef8a80;
+  color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#0e1614; --surface:#15201d; --ink:#e4eeeb; --muted:#9db1ab; --line:#26332f;
+  --brand:#4fbf9a; --on-brand:#08201a; --brand-soft:#173029; --brand-ink:#b9ecd9;
+  --signal:#e7a646; --signal-soft:#33270f;
+  --ok:#6cc58b; --ok-soft:#16301f; --warn:#e7a646; --warn-soft:#33270f; --bad:#ef8a80; --bad-soft:#3a1d1a;
+  --t-basica:#87a2f0; --t-oblig:#4fbf9a; --t-opt:#c39cf0; --t-prac:#e7a646; --t-tfg:#ef8a80;
+  color-scheme:dark }
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.58;margin:0;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
+a{color:var(--brand)}
+:focus-visible{outline:2px solid var(--brand);outline-offset:2px;border-radius:4px}
+h1,h2,h3,h4{font-family:var(--f-display);text-wrap:balance;margin:0;line-height:1.15;letter-spacing:-.01em}
+h1{font-size:clamp(30px,5vw,48px);font-weight:800}
+h2{font-size:clamp(24px,3.2vw,32px);font-weight:800}
+h3{font-size:19px;font-weight:700}
+h4{font-size:16px;font-weight:700}
+p{margin:0}
+.mono{font-family:var(--f-mono);font-size:.86em}
+.num{font-variant-numeric:tabular-nums}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.layout{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:230px minmax(0,1fr);gap:40px;padding-block:32px 64px}
+nav.toc{position:sticky;top:calc(env(safe-area-inset-top,0px) + 20px);align-self:start;display:flex;flex-direction:column;gap:2px;font-size:14px}
+nav.toc a{text-decoration:none;color:var(--muted);padding:5px 10px;border-radius:6px;display:flex;gap:8px}
+nav.toc a:hover{background:var(--brand-soft);color:var(--brand-ink)}
+nav.toc a span{font-family:var(--f-mono);font-size:12px;min-width:22px;color:var(--brand)}
+nav.toc .grp{margin-top:12px;padding:0 10px 4px}
+main{display:flex;flex-direction:column;gap:56px;min-width:0}
+section.sec{display:flex;flex-direction:column;gap:20px;scroll-margin-top:20px;min-width:0}
+.sec-head{display:flex;flex-direction:column;gap:8px;max-width:760px}
+.sec-head p{color:var(--muted);font-size:17px}
+.lead{font-size:19px;max-width:780px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px 22px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:16px}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:16px}
+ul.clean{margin:0;padding-left:18px;display:grid;gap:6px}
+ul.clean li::marker{color:var(--brand)}
+.card > .pill,.box > .pill{align-self:flex-start}
+.pill{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;letter-spacing:.03em;padding:3px 9px;border-radius:999px;background:var(--brand-soft);color:var(--brand-ink);white-space:nowrap}
+.pill.warn{background:var(--warn-soft);color:var(--warn)}
+.pill.ok{background:var(--ok-soft);color:var(--ok)}
+.pill.bad{background:var(--bad-soft);color:var(--bad)}
+.pill.mute{background:var(--bg);color:var(--muted);border:1px solid var(--line)}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+table{width:100%;border-collapse:collapse;font-size:14px;min-width:720px}
+th{background:var(--brand);color:var(--on-brand);text-align:left;font-weight:600;padding:9px 12px;border-right:2px solid var(--surface);vertical-align:bottom}
+th:last-child{border-right:0}
+td{padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:0}
+td.k{font-weight:600}
+.note{border-left:3px solid var(--signal);background:var(--signal-soft);padding:12px 16px;border-radius:0 10px 10px 0;font-size:15px}
+.note b:first-child{color:var(--warn)}
+pre.tree{font-family:var(--f-mono);font-size:13px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 18px;overflow-x:auto;margin:0;line-height:1.7}
+pre.tree .c{color:var(--muted)}
+.flow{display:flex;flex-wrap:wrap;gap:8px;align-items:stretch}
+.flow .step{flex:1 1 150px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.flow .step .n{font-family:var(--f-mono);font-size:12px;color:var(--brand)}
+.flow .step b{font-family:var(--f-display);font-size:15px}
+.flow .step p{font-size:13.5px;color:var(--muted)}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--surface)}
+.vs div{padding:12px 16px;border-bottom:1px solid var(--line);font-size:15px}
+.vs div:nth-child(odd){background:var(--brand-soft)}
+.vs .h{font-weight:700;font-family:var(--f-display);background:var(--surface)!important}
+@media (max-width:620px){ .vs{grid-template-columns:1fr} .vs .h:nth-child(2){display:none} }
+.phase{display:grid;grid-template-columns:110px minmax(0,1fr);gap:16px;padding:14px 0;border-bottom:1px solid var(--line)}
+.phase:last-child{border-bottom:0}
+.phase .when{font-family:var(--f-mono);font-size:13px;color:var(--brand)}
+@media (max-width:560px){ .phase{grid-template-columns:1fr;gap:4px} }
+
+/* ---------- maquetas ---------- */
+.mock-tabs{display:flex;flex-wrap:wrap;gap:8px}
+.mock-tabs button{font:600 14px var(--f-body);padding:7px 14px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.mock-tabs button[aria-selected="true"]{background:var(--brand);color:var(--on-brand);border-color:var(--brand)}
+.browser{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--surface);box-shadow:0 8px 28px rgba(10,30,25,.08)}
+.browser .bar{display:flex;align-items:center;gap:10px;padding:9px 14px;background:var(--bg);border-bottom:1px solid var(--line)}
+.browser .dots{display:flex;gap:5px}
+.browser .dots i{width:9px;height:9px;border-radius:50%;background:var(--line);display:block}
+.browser .url{flex:1;min-width:0;font-family:var(--f-mono);font-size:12.5px;color:var(--muted);background:var(--surface);border:1px solid var(--line);border-radius:7px;padding:4px 10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.site{padding:22px 24px 28px;display:flex;flex-direction:column;gap:18px}
+.site-top{display:flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:space-between}
+.logo{font-family:var(--f-display);font-weight:800;font-size:19px;color:var(--brand)}
+.logo small{font-family:var(--f-body);font-weight:500;font-size:12px;color:var(--muted);margin-left:6px}
+.site-nav{display:flex;gap:14px;flex-wrap:wrap;font-size:14px;color:var(--muted)}
+.example-flag{font-size:12px;font-weight:700;color:var(--warn);background:var(--warn-soft);padding:4px 10px;border-radius:6px}
+.crumbs{font-size:13px;color:var(--muted)}
+.crumbs b{color:var(--ink);font-weight:600}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,140px),1fr));gap:10px}
+.fact{border:1px solid var(--line);border-radius:10px;padding:10px 12px;display:flex;flex-direction:column;gap:2px}
+.fact .v{font-family:var(--f-display);font-weight:700;font-size:20px}
+.fact .l{font-size:12.5px;color:var(--muted)}
+.actions{display:flex;flex-wrap:wrap;gap:8px}
+.btn{font:600 14px var(--f-body);padding:8px 14px;border-radius:8px;border:1px solid var(--brand);background:var(--brand);color:var(--on-brand);cursor:pointer;text-decoration:none}
+.btn.ghost{background:transparent;color:var(--brand)}
+.two{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:18px}
+@media (max-width:820px){ .two{grid-template-columns:1fr} }
+.box{border:1px solid var(--line);border-radius:10px;padding:14px 16px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.box h4{font-size:15px}
+.bar-row{display:grid;grid-template-columns:110px minmax(0,1fr) 44px;gap:10px;align-items:center;font-size:13.5px}
+.bar-track{height:10px;background:var(--bg);border-radius:6px;overflow:hidden;border:1px solid var(--line)}
+.bar-fill{height:100%;background:var(--brand)}
+.subj{display:flex;justify-content:space-between;gap:10px;font-size:14px;padding:6px 0;border-bottom:1px dashed var(--line)}
+.subj:last-child{border-bottom:0}
+.subj span:last-child{color:var(--muted);white-space:nowrap}
+.rec{display:flex;flex-direction:column;gap:6px;font-size:14px}
+.rec a{text-decoration:none;display:flex;justify-content:space-between;gap:10px;padding:6px 0;border-bottom:1px solid var(--line);color:var(--ink)}
+.rec a span{color:var(--muted);white-space:nowrap}
+.curso{display:grid;grid-template-columns:70px minmax(0,1fr);gap:10px;align-items:start}
+.curso .lbl{font-family:var(--f-mono);font-size:12px;color:var(--muted);padding-top:6px}
+.blocks{display:flex;flex-wrap:wrap;gap:6px}
+.blk{font-size:12.5px;padding:5px 8px;border-radius:6px;color:var(--on-brand);line-height:1.25}
+.blk small{display:block;opacity:.85;font-size:11px}
+.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:12.5px;color:var(--muted)}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+.timeline{display:flex;flex-direction:column;gap:0;border-left:2px solid var(--line);margin-left:7px}
+.tl{position:relative;padding:0 0 14px 20px;font-size:14px}
+.tl::before{content:"";position:absolute;left:-8px;top:4px;width:14px;height:14px;border-radius:50%;background:var(--surface);border:2px solid var(--line)}
+.tl.done::before{background:var(--brand);border-color:var(--brand)}
+.tl.now::before{background:var(--signal);border-color:var(--signal)}
+.tl b{display:block}
+.tl span{color:var(--muted);font-size:13px}
+.calc{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:10px}
+.calc label{display:flex;flex-direction:column;gap:4px;font-size:13px;color:var(--muted)}
+.calc input,.calc select{font:500 15px var(--f-body);padding:7px 9px;border:1px solid var(--line);border-radius:7px;background:var(--surface);color:var(--ink);min-width:0}
+.result{display:flex;flex-wrap:wrap;gap:14px;align-items:baseline}
+.result .big{font-family:var(--f-display);font-weight:800;font-size:30px}
+.uni-row{display:grid;grid-template-columns:minmax(0,1fr) 70px 70px 96px;gap:8px;align-items:center;font-size:14px;padding:7px 0;border-bottom:1px solid var(--line)}
+.uni-row.h{font-size:12px;color:var(--muted);font-weight:700}
+.src table{min-width:960px}
+.src td:nth-child(2){width:36%}
+.src td:first-child{width:14%}
+.srcl{font-size:12px;font-weight:600;white-space:nowrap;text-decoration:none;border-bottom:1px dotted var(--brand)}
+.cmp{overflow-x:auto}
+.cmp table{min-width:640px}
+.cmp th{background:var(--brand-soft);color:var(--brand-ink)}
+.cmp td.best{background:var(--ok-soft);font-weight:600}
+.plan-item{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:9px 0;border-bottom:1px solid var(--line);font-size:14.5px}
+.plan-item:last-child{border-bottom:0}
+.route{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:14px}
+.route .node{border:1px solid var(--line);border-radius:8px;padding:6px 10px;background:var(--surface)}
+.route .arr{color:var(--muted)}
+.search{display:flex;gap:8px}
+.search input{flex:1;min-width:0;font:500 16px var(--f-body);padding:12px 14px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--ink)}
+.hero-site{background:var(--brand-soft);border-radius:12px;padding:26px 22px;display:flex;flex-direction:column;gap:14px}
+.hero-site h3{font-size:26px}
+@media (max-width:900px){ .layout{grid-template-columns:1fr} nav.toc{position:static;flex-direction:row;flex-wrap:wrap;gap:4px} nav.toc .grp{display:none} }
+@media (max-width:560px){ .site{padding:16px} .uni-row{grid-template-columns:minmax(0,1fr) 54px 54px 80px;font-size:13px} .bar-row{grid-template-columns:90px minmax(0,1fr) 40px} }
+@media (prefers-reduced-motion: reduce){ *{scroll-behavior:auto!important} }
+</style>
+
+<div class="layout">
+<nav class="toc" aria-label="Índice">
+  <div class="grp eyebrow">Lo acordado</div>
+  <a href="#ley"><span>§</span>La ley del proyecto</a>
+  <a href="#proposito"><span>01</span>Propósito</a>
+  <a href="#producto"><span>02</span>Producto</a>
+  <a href="#alcance"><span>03</span>Alcance por módulo</a>
+  <a href="#valor"><span>04</span>Valor que aportamos</a>
+  <a href="#estructura"><span>05</span>Estructura de páginas</a>
+  <div class="grp eyebrow">La base</div>
+  <a href="#fuentes"><span>06</span>Fuentes y conexión</a>
+  <a href="#catalogo"><span>07</span>Catálogo maestro</a>
+  <a href="#tecnologia"><span>08</span>Tecnología y costes</a>
+  <div class="grp eyebrow">Cómo se verá</div>
+  <a href="#ejemplos"><span>09</span>Ejemplos de páginas</a>
+  <a href="#fases"><span>10</span>Fases y calendario</a>
+  <a href="#pendiente"><span>11</span>Lo que queda por decidir</a>
+</nav>
+
+<main>
+
+<header class="sec-head" style="gap:14px">
+  <span class="eyebrow">Guía de proyecto · octubre de 2026</span>
+  <h1>Portal de estudios y oposiciones</h1>
+  <p class="lead">Una plataforma informativa, abierta y al día sobre carreras, másters, FP, notas de corte y oposiciones en España. Esta guía recoge lo que hemos decidido, cómo conseguimos y mantenemos los datos, cómo se construye y cómo se verá. Es la referencia para construir.</p>
+</header>
+
+<!-- LEY -->
+<section class="sec" id="ley">
+  <div class="sec-head"><span class="eyebrow">La ley del proyecto · se aplica a cada página</span><h2>Lo que penaliza se descarta. Lo que favorece es norma.</h2>
+  <p>Todo está enfocado a que nos encuentren en Google y en las IA. Cada regla sale de la documentación oficial de Google, OpenAI o Anthropic, no de mitos del sector. Ninguna página se publica sin pasar el control automático.</p></div>
+
+  <div class="grid2">
+    <div class="card"><span class="pill ok">Reglas de oro</span><h3>Contenido</h3><ul class="clean">
+      <li>Cada página indexable aporta datos propios que no están juntos en otro sitio. <a class="srcl" href="https://developers.google.com/search/docs/fundamentals/creating-helpful-content" target="_blank" rel="noopener">Google · contenido útil</a></li>
+      <li>Cada dato con su fuente y su fecha. La fecha solo cambia si cambia el dato. <a class="srcl" href="https://developers.google.com/search/docs/fundamentals/creating-helpful-content" target="_blank" rel="noopener">Google · contenido útil</a> <a class="srcl" href="https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap" target="_blank" rel="noopener">Google · sitemaps</a></li>
+      <li>Página de metodología: quién hace la web, de dónde salen los datos, qué hace la automatización y qué se revisa a mano. <a class="srcl" href="https://developers.google.com/search/docs/fundamentals/creating-helpful-content" target="_blank" rel="noopener">Google · quién, cómo y por qué</a></li>
+      <li>El texto escrito con IA se revisa antes de publicarse, incluidos títulos, descripciones y datos estructurados. <a class="srcl" href="https://developers.google.com/search/docs/fundamentals/using-gen-ai-content" target="_blank" rel="noopener">Google · contenido con IA</a></li>
+      <li>Sin número mínimo de palabras: la página mide lo que necesita el dato. <a class="srcl" href="https://developers.google.com/search/docs/fundamentals/creating-helpful-content" target="_blank" rel="noopener">Google · contenido útil</a></li>
+    </ul></div>
+    <div class="card"><span class="pill ok">Reglas de oro</span><h3>Técnica</h3><ul class="clean">
+      <li>Todo el contenido está en el HTML que se sirve; JavaScript solo para herramientas como la calculadora o «Mi plan». <a class="srcl" href="https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics" target="_blank" rel="noopener">Google · JavaScript</a></li>
+      <li>Enlaces siempre como enlaces reales con dirección propia, nunca con almohadillas. <a class="srcl" href="https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics" target="_blank" rel="noopener">Google · JavaScript</a></li>
+      <li>Velocidad en verde: carga del contenido principal en 2,5 segundos o menos, respuesta a un toque por debajo de 200 milisegundos y sin saltos de diseño (CLS por debajo de 0,1). <a class="srcl" href="https://developers.google.com/search/docs/appearance/core-web-vitals" target="_blank" rel="noopener">Google · Core Web Vitals</a></li>
+      <li>Una sola versión del dominio, HTTPS, dirección canónica en cada página y redirección permanente si una dirección cambia.</li>
+    </ul></div>
+    <div class="card"><span class="pill ok">Reglas de oro</span><h3>Rastreo e indexación</h3><ul class="clean">
+      <li>Una página sin datos suficientes se marca como no indexable en el HTML original, nunca con JavaScript. <a class="srcl" href="https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics" target="_blank" rel="noopener">Google · JavaScript</a></li>
+      <li>Mapas del sitio por sección, de 50.000 direcciones como máximo, con la fecha real del último cambio. <a class="srcl" href="https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap" target="_blank" rel="noopener">Google · sitemaps</a></li>
+      <li>Toda página indexable recibe enlaces internos desde su lugar y su categoría. <a class="srcl" href="https://developers.google.com/search/docs/appearance/ai-features" target="_blank" rel="noopener">Google · funciones de IA</a></li>
+      <li>Search Console y Bing Webmaster Tools desde el primer día, con aviso automático a Bing en cada publicación (IndexNow). <a class="srcl" href="https://blogs.bing.com/webmaster/november-2021/Cloudflare-Supports-IndexNow-via-one-click-Integration" target="_blank" rel="noopener">Bing · IndexNow</a></li>
+    </ul></div>
+    <div class="card"><span class="pill ok">Reglas de oro</span><h3>Buscadores con IA</h3><ul class="clean">
+      <li>No hace falta nada especial para salir en los resúmenes con IA de Google: basta con estar indexado y con fragmento. Ni archivos para IA ni marcado especial. <a class="srcl" href="https://developers.google.com/search/docs/appearance/ai-features" target="_blank" rel="noopener">Google · funciones de IA</a></li>
+      <li>Dejar entrar a Googlebot, Bingbot, OAI-SearchBot (ChatGPT) y Claude-SearchBot: quien los bloquea no aparece en sus respuestas. <a class="srcl" href="https://developers.openai.com/docs/gptbot" target="_blank" rel="noopener">OpenAI · robots</a> <a class="srcl" href="https://support.claude.com/en/articles/8896518" target="_blank" rel="noopener">Anthropic · robots</a></li>
+      <li>Robots de entrenamiento permitidos: bloquearlos no trae tráfico y en Cloudflare puede bloquear también a Google. <a class="srcl" href="https://searchenginejournal.com/cloudflares-ai-crawler-rules-can-block-googlebot/581385" target="_blank" rel="noopener">Cloudflare y Googlebot</a></li>
+      <li>Datos estructurados solo con lo que se ve en la página. Oferta de empleo solo en la ficha de un proceso con plazo abierto y una única convocatoria. <a class="srcl" href="https://developers.google.com/search/docs/appearance/structured-data/job-posting" target="_blank" rel="noopener">Google · ofertas de empleo</a></li>
+    </ul></div>
+  </div>
+
+  <div class="tbl"><table style="min-width:760px">
+    <thead><tr><th>Prohibido siempre</th><th>Por qué</th><th>Fuente</th></tr></thead>
+    <tbody>
+      <tr><td class="k">Generar páginas en masa sin valor para el usuario</td><td>Abuso de contenido a escala: penalización manual o algorítmica</td><td><a class="srcl" href="https://developers.google.com/search/docs/essentials/spam-policies" target="_blank" rel="noopener">Políticas de spam de Google</a></td></tr>
+      <tr><td class="k">Páginas casi iguales por pueblo o variante para captar búsquedas</td><td>Páginas puerta</td><td><a class="srcl" href="https://developers.google.com/search/docs/essentials/spam-policies" target="_blank" rel="noopener">Políticas de spam de Google</a></td></tr>
+      <tr><td class="k">Comprar un dominio caducado para aprovechar su historial</td><td>Abuso de dominios caducados. Nuestro dominio será nuevo y con historial revisado</td><td><a class="srcl" href="https://developers.google.com/search/docs/essentials/spam-policies" target="_blank" rel="noopener">Políticas de spam de Google</a></td></tr>
+      <tr><td class="k">Copiar textos de otras webs</td><td>Contenido copiado. Los datos oficiales se usan para crear algo nuevo, nunca se calca a la competencia</td><td><a class="srcl" href="https://developers.google.com/search/docs/essentials/spam-policies" target="_blank" rel="noopener">Políticas de spam de Google</a></td></tr>
+      <tr><td class="k">Enseñar a Google algo distinto que al usuario, texto oculto o relleno de palabras clave</td><td>Encubrimiento, texto oculto, relleno de palabras clave</td><td><a class="srcl" href="https://developers.google.com/search/docs/essentials/spam-policies" target="_blank" rel="noopener">Políticas de spam de Google</a></td></tr>
+      <tr><td class="k">Comprar o intercambiar enlaces</td><td>Spam de enlaces</td><td><a class="srcl" href="https://developers.google.com/search/docs/essentials/spam-policies" target="_blank" rel="noopener">Políticas de spam de Google</a></td></tr>
+      <tr><td class="k">Cambiar la fecha sin cambiar el dato</td><td>Señal de contenido hecho para buscadores; además Google deja de fiarse de nuestras fechas</td><td><a class="srcl" href="https://developers.google.com/search/docs/fundamentals/creating-helpful-content" target="_blank" rel="noopener">Contenido útil</a> <a class="srcl" href="https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap" target="_blank" rel="noopener">Sitemaps</a></td></tr>
+      <tr><td class="k">Ventanas que tapan el contenido al entrar (suscripción, avisos, correo)</td><td>Ventanas intrusivas. Solo banners pequeños o peticiones tras pulsar un botón</td><td><a class="srcl" href="https://developers.google.com/search/docs/appearance/avoid-intrusive-interstitials" target="_blank" rel="noopener">Ventanas intrusivas</a></td></tr>
+      <tr><td class="k">Contenido que solo aparece con JavaScript o marcar no indexable con JavaScript</td><td>Google puede no verlo y la mayoría de robots de IA no ejecutan JavaScript</td><td><a class="srcl" href="https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics" target="_blank" rel="noopener">JavaScript</a></td></tr>
+      <tr><td class="k">Bloquear robots de búsqueda o activar «Block AI bots» en Cloudflare</td><td>Desaparecemos de Google, ChatGPT o Claude</td><td><a class="srcl" href="https://searchenginejournal.com/cloudflares-ai-crawler-rules-can-block-googlebot/581385" target="_blank" rel="noopener">Cloudflare y Googlebot</a> <a class="srcl" href="https://developers.openai.com/docs/gptbot" target="_blank" rel="noopener">OpenAI</a></td></tr>
+      <tr><td class="k">Web de pruebas abierta sin contraseña</td><td>Google la indexaría como contenido duplicado</td><td>—</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="card"><h3>El control automático: ninguna página sale sin pasarlo</h3>
+    <div class="tbl" style="border:0"><table style="min-width:680px">
+      <thead><tr><th>Comprobación en cada página</th><th>Si falla</th></tr></thead>
+      <tbody>
+        <tr><td>Tiene los datos mínimos de su tipo: un proceso con convocante, plazas, plazo y fuente; una página de lugar con al menos un proceso; un máster con asignaturas y precio</td><td><span class="pill warn">se publica sin indexar</span></td></tr>
+        <tr><td>Su texto no se parece por encima del umbral a otra página del sitio (umbral propio, a calibrar)</td><td><span class="pill warn">se publica sin indexar o se fusiona</span></td></tr>
+        <tr><td>El contenido principal está en el HTML sin ejecutar JavaScript</td><td><span class="pill bad">no se publica</span></td></tr>
+        <tr><td>Cada dato clave lleva fuente y fecha visibles</td><td><span class="pill bad">no se publica</span></td></tr>
+        <tr><td>Título y descripción únicos en todo el sitio y sin huecos de plantilla</td><td><span class="pill bad">no se publica</span></td></tr>
+        <tr><td>Responde correctamente, apunta a sí misma como canónica y recibe al menos un enlace interno</td><td><span class="pill bad">no se publica</span></td></tr>
+        <tr><td>Enlaces internos sin rotos</td><td><span class="pill bad">no se publica</span></td></tr>
+        <tr><td>Datos estructurados válidos y con lo mismo que se ve en la página</td><td><span class="pill bad">se publica sin marcado</span></td></tr>
+        <tr><td>Ninguna ventana se abre al cargar</td><td><span class="pill bad">no se publica</span></td></tr>
+        <tr><td>Texto escrito con IA aprobado en revisión</td><td><span class="pill bad">no se publica</span></td></tr>
+        <tr><td>Velocidad de cada plantilla en laboratorio: contenido principal en 2,5 segundos o menos y CLS por debajo de 0,1</td><td><span class="pill bad">no se publica la plantilla</span></td></tr>
+      </tbody>
+    </table></div>
+    <p style="font-size:14px;color:var(--muted)">Cada día, además: el archivo de robots y la configuración de Cloudflare siguen permitiendo a todos los robots de búsqueda; Search Console y Bing no muestran errores de rastreo en aumento; los datos reales de velocidad siguen en verde. Si algo falla, alerta por Telegram.</p>
+  </div>
+  <p class="note"><b>La ley se mantiene al día.</b> Una vez al mes se revisan los cambios en la documentación oficial (las políticas de spam de Google se actualizaron el 28/08/2026). Si cambia una regla, se cambia el control y se aplica a todas las páginas en la siguiente publicación.</p>
+</section>
+
+<!-- 01 -->
+<section class="sec" id="proposito">
+  <div class="sec-head"><span class="eyebrow">01 · Propósito</span><h2>Decidir con datos completos, sin dar el teléfono</h2></div>
+  <div class="grid2">
+    <div class="card"><h3>Qué queremos</h3>
+      <ul class="clean">
+        <li>Una plataforma totalmente informativa y al día, que vaya más allá de Emagister y Educaweb.</li>
+        <li>Que quien elige carrera, máster, ciclo u oposición lo tenga todo en una página, ordenado, claro y con la fuente.</li>
+        <li>Que la oposición se vea fácil: qué es, si cumples los requisitos, cuándo es y qué tienes que hacer.</li>
+      </ul></div>
+    <div class="card"><h3>Las reglas de la casa</h3>
+      <ul class="clean">
+        <li><b>La información, siempre abierta.</b> Nunca se pide registro ni correo para ver nada.</li>
+        <li><b>El correo, opcional y solo para seguimiento:</b> avisos de cambios y «Mi plan» en cualquier dispositivo. Nunca se cede a nadie.</li>
+        <li><b>Cada dato con su fuente y su fecha.</b> Si no tenemos el dato, lo decimos.</li>
+        <li><b>La información no se mezcla con la venta.</b> Los cursos propios llegarán en el futuro, en su espacio.</li>
+      </ul></div>
+  </div>
+</section>
+
+<!-- 02 -->
+<section class="sec" id="producto">
+  <div class="sec-head"><span class="eyebrow">02 · Producto</span><h2>Un dominio, dos secciones, cinco módulos y herramientas comunes</h2>
+  <p>Una sola web con dos secciones, estudios (carreras, másters, FP y notas de corte) y oposiciones, para que toda la autoridad que ganemos en Google sume en el mismo dominio. Mismo motor por detrás y enlazadas entre sí: FP, grado, máster, oposición.</p></div>
+  <div class="grid3">
+    <div class="card"><span class="pill">Estudios</span><h3>Carreras</h3><p>Todas las asignaturas de cada grado en cada universidad, hechas legibles: mapa por curso, reparto por áreas, indicadores, precio, plazas, nota y empleo.</p></div>
+    <div class="card"><span class="pill">Estudios</span><h3>Másters</h3><p>Asignaturas, metodología, evaluación, precio real, plazas, modalidad, horario, acceso y si habilita para una profesión, todo sin registrarse.</p></div>
+    <div class="card"><span class="pill">Estudios</span><h3>FP</h3><p>Cada ciclo en cada centro: módulos y horas, formación en empresa, turnos, plazas, admisión, empleo y el camino hacia grados y oposiciones.</p></div>
+    <div class="card"><span class="pill">Estudios</span><h3>Notas de corte y calculadora</h3><p>Histórico de cinco años o más por cupo, ponderaciones explicadas y una calculadora que dice dónde entras y dónde no.</p></div>
+    <div class="card"><span class="pill">Oposiciones</span><h3>Oposiciones</h3><p>Todas las convocatorias de España, del archivero de un pueblo a la Policía, cada una en una página con toda su historia y avisos de cambios.</p></div>
+    <div class="card"><span class="pill mute">Común</span><h3>Herramientas</h3><p>«Mi plan» sin registro, avisos por correo, navegador o Telegram, comparador, calendario de fechas clave, becas y páginas de «cómo llegar a ser…».</p></div>
+  </div>
+</section>
+
+<!-- 03 -->
+<section class="sec" id="alcance">
+  <div class="sec-head"><span class="eyebrow">03 · Alcance</span><h2>Qué entra en cada módulo</h2></div>
+  <div class="tbl"><table>
+    <thead><tr><th>Módulo</th><th>Entra</th><th>Queda fuera o para más adelante</th></tr></thead>
+    <tbody>
+      <tr><td class="k">Carreras</td><td>Todos los grados oficiales y dobles grados. Asignaturas por curso con créditos y tipo, menciones, precio total, plazas, nota de corte, empleo y sueldo, abandono y rendimiento. Mapa visual, reparto por áreas, tres indicadores, una frase por asignatura, «qué se estudia en primero», buscar por asignatura, carreras parecidas y comparador.</td><td>Guía docente de cada asignatura. Puente temario de oposición frente a asignaturas, para más adelante.</td></tr>
+      <tr><td class="k">Másters</td><td>Oficiales y títulos propios. Asignaturas, metodología y evaluación, precio total y por crédito, becas, plazas, duración, horario, idioma, preinscripción, grados que dan acceso, oficial o propio y si habilita. Comparador por centro y por modalidad.</td><td>Guía docente de cada asignatura.</td></tr>
+      <tr><td class="k">FP</td><td>Grado medio, superior y cursos de especialización. Módulos y horas, formación en empresa, centro, turno, distancia, plazas, admisión, precio en privados, prueba de acceso, empleo, convalidaciones con grados y oposiciones que piden el título.</td><td>Certificados profesionales y cursos cortos de la nueva ley, en una segunda fase.</td></tr>
+      <tr><td class="k">Notas de corte</td><td>Nota por carrera, universidad, cupo y lista, con histórico de cinco años o más. Plazas, ponderaciones y fechas por comunidad. Calculadora directa, inversa y simulación.</td><td>Predicción de la nota del año siguiente: solo orientativo.</td></tr>
+      <tr><td class="k">Oposiciones</td><td>Estado, comunidades, diputaciones, ayuntamientos, universidades, docentes, sanidad, interinidades y bolsas. Página por proceso con línea de tiempo, requisitos, temario, tasas, méritos, aspirantes por plaza, nota de corte, sueldo neto, idioma cooficial y cupo de discapacidad. Avisos, resumen en 30 segundos, «¿cumplo los requisitos?», «¿a qué me puedo presentar?», dificultad, plan de estudio, inscripción paso a paso, exámenes anteriores, choque de fechas y qué pasa después de aprobar.</td><td>Promoción interna y concursos de traslados al principio. Fuerzas Armadas, empresas públicas e instituciones europeas más adelante. Test generados desde la ley como última fase. Cursos propios en el futuro.</td></tr>
+      <tr><td class="k">Común</td><td>«Mi plan» sin registro y sincronizable con correo, avisos, comparador, calendario de fechas clave, becas, páginas de «cómo llegar a ser…», coste y tiempo del recorrido, «qué puedo hacer con mi título», informes anuales con nuestros datos y enlace a la web oficial de cada centro.</td><td>Inscripción a través nuestro: botón voluntario de «quiero que me informen» más adelante.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- 04 -->
+<section class="sec" id="valor">
+  <div class="sec-head"><span class="eyebrow">04 · Valor</span><h2>Lo que damos y no da nadie junto</h2>
+  <p>Comparado con lo que encontramos al analizar Educaweb, Emagister, notasdecorte.es, QEDU, Gradopedia, oposiciones.es, PreparaOposiciones, Red Opositor y OpositaTest.</p></div>
+  <div class="vs">
+    <div class="h">Nosotros</div><div class="h">Lo que hay hoy</div>
+    <div>Toda la información abierta, sin formulario.</div><div>El precio «a consultar» y el teléfono obligatorio para saber más.</div>
+    <div>Asignaturas de cada carrera hechas legibles y comparables.</div><div>Planes en PDF de cada universidad o fichas genéricas sin datos.</div>
+    <div>Metodología, evaluación y precio real de cada máster.</div><div>Nadie enseña la metodología; el precio se esconde.</div>
+    <div>Histórico de notas de corte visible, por cupo, con calculadora inversa.</div><div>Un año de nota o el histórico escondido tras un botón.</div>
+    <div>El camino completo: FP, grado, máster, oposición, con coste y tiempo.</div><div>Cada pieza en una web distinta.</div>
+    <div>Cada proceso de oposición con toda su historia en una página.</div><div>Entradas sueltas, trámites mezclados con convocatorias.</div>
+    <div>Aspirantes por plaza, notas históricas de todos los cuerpos y sueldo neto gratis.</div><div>Solo de unos pocos cuerpos del Estado; el sueldo neto se vende o no se da.</div>
+    <div>Avisos sin dar datos; el correo nunca se cede.</div><div>Datos personales cedidos a academias.</div>
+    <div>Cada dato con su fecha y su boletín.</div><div>Fichas de 2009 o 2021 presentadas como de 2026.</div>
+  </div>
+</section>
+
+<!-- 05 -->
+<section class="sec" id="estructura">
+  <div class="sec-head"><span class="eyebrow">05 · Estructura</span><h2>Una ficha central y muchos caminos para llegar a ella</h2>
+  <p>Cada ficha tiene una sola dirección y cuelga de dos padres a la vez. Alrededor se generan las páginas que copian lo que la gente busca.</p></div>
+  <div class="grid2">
+<pre class="tree"><span class="c"># Másters y carreras</span>
+/universidad/comillas-icade/
+/universidad/comillas-icade/master/finanzas/   <span class="c">← ficha</span>
+/master/finanzas/
+/master/finanzas/madrid/
+/master/finanzas/online/
+/comparar/master/finanzas/a-vs-b/
+/universidad/{u}/grado/{grado}/                <span class="c">← ficha</span>
+/grado/{grado}/primer-curso/
+/carreras-con/{asignatura}/</pre>
+<pre class="tree"><span class="c"># FP y notas de corte</span>
+/fp/centro/{centro}/
+/fp/{ciclo}/{centro}/                          <span class="c">← ficha</span>
+/fp/{ciclo}/
+/fp/{ciclo}/{provincia-o-ciudad}/
+/fp/{ciudad}/
+/nota-de-corte/{grado}/{universidad}/          <span class="c">← ficha</span>
+/nota-de-corte/{grado}/{comunidad}/
+/calculadora/{grado}/{comunidad}/</pre>
+<pre class="tree"><span class="c"># Oposiciones</span>
+/oposiciones/{oposicion}/
+/oposiciones/{oposicion}/{comunidad}/
+/oposiciones/en/{provincia}/
+/oposiciones/en/{municipio}/
+/oposiciones/{oposicion}/{convocante}/{año}/   <span class="c">← ficha</span>
+/oposiciones/con-{titulo}/
+/oposiciones/plazo-abierto/
+/sueldo-funcionario/{grupo}/{comunidad}/</pre>
+<pre class="tree"><span class="c"># Común</span>
+/como-ser/{profesion}/
+/becas/{tipo}/{comunidad}/
+/calendario/{año}/{comunidad}/
+/mi-plan/                <span class="c">← en el navegador</span>
+/datos/                  <span class="c">← descargas abiertas</span>
+/metodologia/            <span class="c">← fuentes y cobertura</span></pre>
+  </div>
+  <div class="card"><h3>Qué recomienda cada ficha</h3>
+    <ul class="clean">
+      <li><b>Lo mismo en otros sitios:</b> el mismo máster, ciclo u oposición en otra ciudad, en online, más barato o público.</li>
+      <li><b>Comparar:</b> el comparador con esta ficha ya cargada.</li>
+      <li><b>Herramientas del momento:</b> calculadora de nota en un grado, «¿puedo acceder con mi título?» en un máster, «¿cumplo los requisitos?» en una oposición.</li>
+      <li><b>El camino:</b> «cómo llegar a ser…», qué da acceso a esto y adónde te lleva, oposiciones relacionadas.</li>
+      <li><b>Seguir:</b> guardar en «Mi plan» y avisarme de cambios.</li>
+    </ul>
+    <p class="note"><b>Tres reglas.</b> Una sola dirección por ficha. Migas de pan con los dos caminos. En la dirección, los nombres que busca la gente, nunca códigos.</p>
+  </div>
+</section>
+
+<!-- 06 -->
+<section class="sec" id="fuentes">
+  <div class="sec-head"><span class="eyebrow">06 · Fuentes y conexión</span><h2>De dónde sale cada dato y cómo nos conectamos</h2>
+  <p>Revisado punto por punto en las fuentes oficiales en octubre de 2026. No hay una fuente única para nada: cada módulo se apoya en una fuente principal, una de respaldo y una de control. <span class="pill ok">verificada</span> significa leída en la fuente oficial; <span class="pill warn">por verificar</span>, que existe pero falta comprobar formato o contenido; <span class="pill bad">sin fuente central</span>, que hay que ir a buscarlo centro a centro.</p></div>
+
+  <div class="grid3">
+    <div class="card"><span class="pill ok">Llega sola</span><h3>Conexión automática</h3><p>BOE por API diaria (convocatorias, planes de estudio, títulos de FP, becas), leyes consolidadas por artículo, boletines con datos abiertos (Andalucía, País Vasco, Madrid, Murcia), datos abiertos de universidades (Murcia, Politécnica de Valencia, Complutense) y directorios de centros de tres comunidades.</p></div>
+    <div class="card"><span class="pill warn">Hay que ir a buscarla</span><h3>Lectura de webs y PDF</h3><p>Los 43 boletines provinciales, el resto de boletines autonómicos, el RUCT, las notas de corte de cada distrito, los currículos de FP de cada comunidad y la oferta de ciclos por centro. Robots propios, con vigilancia diaria.</p></div>
+    <div class="card"><span class="pill bad">Sin fuente central</span><h3>Trabajo semimanual</h3><p>Guías docentes (metodología y evaluación), precios de universidades privadas, notas y aprobados de ayuntamientos que solo salen en su tablón, convalidaciones FP–grado y precios de centros privados de FP.</p></div>
+  </div>
+
+  <h3>Oposiciones</h3>
+  <div class="tbl src"><table>
+    <thead><tr><th>Dato</th><th>Fuente y forma de conexión</th><th>Frecuencia</th><th>Licencia</th><th>Respaldo y control</th><th>Estado</th></tr></thead>
+    <tbody>
+      <tr><td class="k">Convocatorias del Estado y anuncio de todas las locales</td><td>BOE, sección II.B «Oposiciones y concursos». API del sumario: <span class="mono">boe.es/datosabiertos/api/boe/sumario/AAAAMMDD</span>, en XML o JSON, sin clave. Cada anuncio trae identificador <span class="mono">BOE-A-AAAA-NNNNN</span> y enlaces a PDF, HTML y XML. Solo el PDF firmado es oficial.</td><td>Diaria salvo domingos, con extraordinarios</td><td>Uso comercial permitido. Citar «Fuente: Agencia Estatal BOE», indicar fecha de actualización y no aparentar carácter oficial</td><td>RSS de la sección II.B y canales de oposiciones y concursos; PDF del día. Numeración correlativa para detectar huecos</td><td><span class="pill ok">verificada</span></td></tr>
+      <tr><td class="k">Bases, admitidos, tribunal y fecha de examen de ayuntamientos y diputaciones</td><td>43 boletines provinciales más los de Álava, Bizkaia y Gipuzkoa. Por ley (RD 896/1991, art. 6) las bases van al boletín provincial y al BOE solo llega el extracto. Lectura del sumario diario en web o PDF de cada uno; ninguno de los revisados ofrece API.</td><td>De lunes a viernes</td><td>Condiciones de cada diputación</td><td>El anuncio del BOE obliga a encontrar sus bases en un boletín anterior: si no aparecen, falta cobertura. Alertas por correo donde existen (Badajoz, Barcelona)</td><td><span class="pill warn">5 revisados</span></td></tr>
+      <tr><td class="k">Convocatorias de comunidades autónomas</td><td>17 boletines más Ceuta y Melilla. Con datos abiertos o XML: BOJA (dataset anual 2007-2026, CC BY 4.0), BOPV (<span class="mono">Ultimo.xml</span>), BOCM (RSS), BORM (servicio de sumario), BOC Canarias (identificador correlativo). El resto, lectura del sumario.</td><td>Diaria</td><td>CC BY 4.0 en los que tienen datos abiertos</td><td>Sumario PDF del día; buscador del Punto de Acceso General</td><td><span class="pill ok">6 verificados</span> <span class="pill warn">13 por verificar</span></td></tr>
+      <tr><td class="k">Notas, aprobados y ejercicios siguientes de procesos locales</td><td>Tablón y web de cada ayuntamiento: no van al BOE y a menudo tampoco al boletín provincial. En Cataluña, la web de transparencia municipal está obligada a publicarlos.</td><td>Variable</td><td>—</td><td>Revisión de la web del convocante en las fechas que marca la línea de tiempo del proceso</td><td><span class="pill bad">sin fuente central</span></td></tr>
+      <tr><td class="k">Control de cobertura</td><td>Buscador de empleo público del Punto de Acceso General: filtros por ámbito, plazo, bolsas y discapacidad; exportación CSV o XML de hasta 10.000 filas. Sin API.</td><td>Diaria</td><td>—</td><td>Se compara con nuestra base para encontrar lo que se nos escapa; no es fuente principal</td><td><span class="pill ok">verificada</span></td></tr>
+      <tr><td class="k">Leyes del temario (para los test, fase final)</td><td>API de legislación consolidada del BOE: cada día se piden las normas cambiadas (<span class="mono">from</span>/<span class="mono">to</span>), se compara el índice por artículo y se descarga solo el artículo modificado.</td><td>1 a 3 días después del BOE</td><td>Rotular «texto consolidado de carácter informativo»</td><td>Versión por artículo con su fecha de vigencia</td><td><span class="pill ok">verificada</span></td></tr>
+      <tr><td class="k">Aspirantes por plaza, presentados y notas de corte</td><td>No hay datos abiertos del Estado. Cataluña publica un resumen de convocatorias desde 1997. El resto se calcula contando las listas de admitidos y aprobados, sin guardar nunca nombres ni DNI.</td><td>En cada lista</td><td>—</td><td>Petición formal al Ministerio por la Ley 37/2007</td><td><span class="pill warn">por verificar</span></td></tr>
+      <tr><td class="k">Docentes y sanidad</td><td>Portales de las consejerías de educación y de los servicios de salud (listas de interinos, adjudicaciones, ofertas y bolsas)</td><td>Variable</td><td>—</td><td>Boletín autonómico</td><td><span class="pill warn">por verificar</span></td></tr>
+      <tr><td class="k">Sueldo bruto y neto</td><td>Tablas de retribuciones del Ministerio de Hacienda y norma anual de subida; complementos de cada administración. Neto calculado por nosotros con la retención y la cotización vigentes.</td><td>Anual</td><td>—</td><td>Relación de puestos de trabajo de cada administración</td><td><span class="pill warn">por verificar</span></td></tr>
+      <tr><td class="k">Exámenes anteriores</td><td>Cataluña publica los enunciados en datos abiertos (2024-2025). El resto, en la web de cada convocante.</td><td>Tras cada examen</td><td>Pendiente de revisión jurídica (art. 13 de la Ley de Propiedad Intelectual)</td><td>Enlazar en lugar de reproducir mientras no esté claro</td><td><span class="pill warn">por verificar</span></td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Carreras y másters</h3>
+  <div class="tbl src"><table>
+    <thead><tr><th>Dato</th><th>Fuente y forma de conexión</th><th>Frecuencia</th><th>Licencia</th><th>Respaldo y control</th><th>Estado</th></tr></thead>
+    <tbody>
+      <tr><td class="k">Catálogo de títulos y centros donde se imparten</td><td>RUCT del Ministerio de Universidades. Cada título tiene un código de 7 cifras y una ficha web (<span class="mono">ruct/estudio.action?CodigoEstudio=…</span>) con centros, estado y estructura del plan. Sin API ni descarga masiva: lectura de la ficha. Los dobles grados no están en el RUCT y llevan código nuestro.</td><td>Continua</td><td>Uso comercial permitido, citando el origen y la fecha</td><td>Excel anual de oferta de plazas del Ministerio como semilla. Riesgo: cambio de dominio de la sede del Ministerio</td><td><span class="pill ok">verificada</span></td></tr>
+      <tr><td class="k">Asignaturas de cada plan</td><td>Resoluciones del BOE «por la que se publica el plan de estudios» (filtro diario del sumario). Traen asignatura, tipo y créditos; el curso no siempre. Se completa con el detalle del RUCT y la web de la universidad.</td><td>Al publicarse cada plan</td><td>Licencia BOE</td><td>Memoria de verificación en la web de calidad de cada universidad</td><td><span class="pill ok">verificada</span></td></tr>
+      <tr><td class="k">Metodología y evaluación de másters</td><td>Guías docentes, que la ley obliga a publicar antes de la matrícula (RD 822/2021, art. 9.3). Las memorias de verificación solo traen descripciones generales.</td><td>Anual</td><td>—</td><td>Extracción con IA desde la guía, con la frase de origen</td><td><span class="pill bad">por universidad</span></td></tr>
+      <tr><td class="k">Plazas, nota, precio por crédito y empleo por título</td><td>QEDU del Ministerio, con exportación CSV y XLSX. Solo universidades públicas.</td><td>Anual</td><td>La del Ministerio</td><td>Inestable en la revisión: respaldo en las estadísticas SIIU y petición formal del fichero por título</td><td><span class="pill warn">inestable</span></td></tr>
+      <tr><td class="k">Empleo de los titulados</td><td>Estadística de afiliación a la Seguridad Social del SIIU (PC-Axis): tasa, contrato, grupo de cotización y base media, por universidad y rama, no por título. Última cohorte, 2019-20.</td><td>Noviembre de cada año</td><td>La del Ministerio</td><td>Por título: QEDU o petición formal. Cataluña: encuestas de AQU</td><td><span class="pill ok">verificada</span></td></tr>
+      <tr><td class="k">Precio público por crédito</td><td>Anuario de precios del Ministerio: XLSX por experimentalidad y comunidad, de 2008-09 a 2025-26. El precio de cada título sale del decreto anual de cada comunidad.</td><td>Verano</td><td>La del Ministerio</td><td>Vigilancia de los 17 boletines con «precios públicos» y «universidad»</td><td><span class="pill ok">verificada</span></td></tr>
+      <tr><td class="k">Precio de universidades privadas</td><td>Web de cada una, unas 40. No hay fuente central.</td><td>Anual</td><td>—</td><td>Revisión anual con fecha visible en la ficha</td><td><span class="pill bad">sin fuente central</span></td></tr>
+      <tr><td class="k">Abandono, rendimiento y matrícula</td><td>Datos abiertos de universidades: Politécnica de Valencia (10 datasets por título, CSV por curso), Complutense (Universidata, 2017-18 a 2025-26), Universidad de Murcia (275 datasets). Resto, estadística SIIU.</td><td>Anual</td><td>ODC-BY, Universidata, CC0 o CC BY-SA según el caso</td><td>SIIU</td><td><span class="pill ok">3 universidades</span></td></tr>
+      <tr><td class="k">Másters que habilitan para una profesión</td><td>Órdenes ministeriales de cada profesión (profesorado, abogacía, psicología sanitaria, ingenierías, arquitectura) y la base de profesiones reguladas de la UE.</td><td>Cuando cambia la norma</td><td>Licencia BOE</td><td>Ley consolidada del BOE</td><td><span class="pill warn">por verificar</span></td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Notas de corte y calculadora</h3>
+  <div class="tbl src"><table>
+    <thead><tr><th>Comunidad o dato</th><th>Fuente y forma de conexión</th><th>Histórico</th><th>Respaldo y control</th><th>Estado</th></tr></thead>
+    <tbody>
+      <tr><td class="k">Madrid</td><td>Distrito único de las seis públicas: PDF conjunto en la web de la Carlos III, con grupos 1 a 6, ordinaria y extraordinaria; cupos especiales en la Complutense</td><td>2007-08 a 2026-27</td><td>Web de cada universidad</td><td><span class="pill ok">verificada</span></td></tr>
+      <tr><td class="k">Galicia</td><td>CiUG, PDF del cupo general con dirección predecible por año</td><td>Por año</td><td>Web de cada universidad</td><td><span class="pill ok">verificada</span></td></tr>
+      <tr><td class="k">Murcia</td><td>Datos abiertos de la Universidad de Murcia: CSV, JSON y XLSX de grado y máster</td><td>2020-21 a 2024-25</td><td>Licencia a confirmar con la universidad (CC0 o CC BY-SA)</td><td><span class="pill ok">verificada</span></td></tr>
+      <tr><td class="k">Cataluña</td><td>Dataset de la Generalitat en datos.gob.es</td><td>Por confirmar</td><td>Canal Universitats</td><td><span class="pill warn">por verificar</span></td></tr>
+      <tr><td class="k">Andalucía y C. Valenciana</td><td>Distrito Único Andaluz (web y PDF, desde 2010-11); Conselleria valenciana, hasta nueve adjudicaciones de julio a octubre</td><td>Varios años</td><td>Web de cada universidad</td><td><span class="pill warn">parcial</span></td></tr>
+      <tr><td class="k">Resto de comunidades</td><td>Castilla y León con distrito único desde 2025; País Vasco y Baleares en la web de su universidad; Aragón, Asturias, Canarias, Cantabria, Castilla-La Mancha, Extremadura, Navarra y La Rioja por revisar</td><td>—</td><td>—</td><td><span class="pill warn">por verificar</span></td></tr>
+      <tr><td class="k">Fórmula de la nota</td><td>RD 534/2024 (BOE-A-2024-11858): nota de acceso más las dos materias ponderadas más favorables. Los pesos exactos (0,6 y 0,4, ponderaciones de 0,1 a 0,2) hay que comprobarlos en el texto literal antes de abrir la calculadora.</td><td>—</td><td>Ley consolidada del BOE</td><td><span class="pill warn">literal por verificar</span></td></tr>
+      <tr><td class="k">Ponderaciones y calendario</td><td>Tablas anuales por comunidad o universidad (Complutense 2026-27 verificada; Andalucía en BOJA cada año) y resolución de fechas de PAU y preinscripción en cada boletín</td><td>Anual</td><td>Web del distrito</td><td><span class="pill warn">parcial</span></td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Formación profesional</h3>
+  <div class="tbl src"><table>
+    <thead><tr><th>Dato</th><th>Fuente y forma de conexión</th><th>Frecuencia</th><th>Licencia</th><th>Respaldo y control</th><th>Estado</th></tr></thead>
+    <tbody>
+      <tr><td class="k">Catálogo de ciclos y cursos de especialización</td><td>Catálogos de ofertas del Ministerio (PDF anual, código de 8 cifras por título) y BOE diario para cada título nuevo (en 2026, por ejemplo, el curso de Aprendizaje automático). No hay dataset estatal; Cataluña tiene el suyo.</td><td>Anual y al publicarse</td><td>Licencia BOE</td><td>Tabla de equivalencias entre los tres sistemas de códigos que conviven</td><td><span class="pill ok">verificada</span></td></tr>
+      <tr><td class="k">Módulos y horas reales</td><td>Real decreto de cada título (mínimos) y currículo de cada comunidad, que fija las horas que se cursan. Ejemplo: el módulo de Programación del ciclo de Desarrollo de Aplicaciones Web tiene 135 horas en el BOE, 256 en Andalucía y 270 en Madrid.</td><td>Al cambiar la norma</td><td>Licencia BOE y de cada boletín</td><td>Ley consolidada del BOE para los mínimos</td><td><span class="pill ok">verificada</span></td></tr>
+      <tr><td class="k">Centros</td><td>Registro Estatal de Centros (código de 8 caracteres, RD 276/2003); su web no admite lectura automática. Directorios abiertos: Cataluña (API Socrata), C. Valenciana (CC BY, diario) y Castilla y León (CSV, CC BY 4.0, diario).</td><td>Diaria a semestral</td><td>CC BY</td><td>Estadística del Ministerio: 3.921 centros con FP en 2022-23</td><td><span class="pill ok">3 comunidades</span> <span class="pill warn">resto</span></td></tr>
+      <tr><td class="k">Oferta de cada ciclo en cada centro, turno y plazas</td><td>Portal de FP de cada comunidad, en PDF o buscador. Nadie lo publica como dataset: hay una solicitud abierta en datos.gob.es desde junio de 2025 sin respuesta.</td><td>Anual, antes de la admisión</td><td>—</td><td>Boletín autonómico. Entre 25.000 y 35.000 filas al año en 17 formatos</td><td><span class="pill bad">por comunidad</span></td></tr>
+      <tr><td class="k">Admisión, pruebas de acceso e inserción laboral</td><td>Portales de FP autonómicos y estadística de inserción del Ministerio</td><td>Anual</td><td>—</td><td>—</td><td><span class="pill warn">por verificar</span></td></tr>
+      <tr><td class="k">Convalidaciones con grados</td><td>RD 1618/2011 y tablas de reconocimiento de cada universidad. Los títulos superiores llevan 120 créditos ECTS reconocibles.</td><td>Anual</td><td>—</td><td>—</td><td><span class="pill bad">por universidad</span></td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Común a todos los módulos</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>Dato</th><th>Fuente y forma de conexión</th><th>Estado</th></tr></thead>
+    <tbody>
+      <tr><td class="k">Becas</td><td>BOE diario filtrado por el real decreto de umbrales y la convocatoria del Ministerio; Base de Datos Nacional de Subvenciones; becas autonómicas en cada boletín</td><td><span class="pill warn">por verificar</span></td></tr>
+      <tr><td class="k">Municipios, provincias y comunidades</td><td>Relación de municipios del INE y coordenadas; códigos postales desde CartoCiudad del IGN</td><td><span class="pill warn">por verificar</span></td></tr>
+      <tr><td class="k">Profesiones y niveles educativos</td><td>Clasificaciones CNO-11 y CNED del INE. La relación entre títulos y ocupaciones no viene codificada en los reales decretos: se hace a mano una vez</td><td><span class="pill warn">por verificar</span></td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="card"><h3>Cómo no perder nunca una fuente ni una actualización</h3>
+    <div class="flow">
+      <div class="step"><span class="n">1</span><b>Registro de fuentes</b><p>Cada fuente con su dirección, método, frecuencia esperada, licencia, responsable y fuente de respaldo.</p></div>
+      <div class="step"><span class="n">2</span><b>Calendario esperado</b><p>Si el BOE no publica de lunes a sábado o un boletín provincial un día laborable, salta la alerta «fuente caída o con retraso».</p></div>
+      <div class="step"><span class="n">3</span><b>Principal y respaldo</b><p>API y RSS en el BOE; datos abiertos y sumario en las comunidades; sumario y alertas por correo en los provinciales.</p></div>
+      <div class="step"><span class="n">4</span><b>Huecos en la numeración</b><p>Boletines y anuncios van numerados. Un número que falta abre una revisión.</p></div>
+      <div class="step"><span class="n">5</span><b>Control cruzado</b><p>Todo anuncio local del BOE debe tener sus bases en un boletín anterior; nuestra base se compara a diario con el Punto de Acceso General.</p></div>
+      <div class="step"><span class="n">6</span><b>Original guardado</b><p>Cada descarga, intacta, con huella y fecha, en un almacén que no permite borrar y con copia en otro proveedor.</p></div>
+      <div class="step"><span class="n">7</span><b>Cambios de formato</b><p>Pruebas diarias por fuente: si una página deja de devolver anuncios o cambia de estructura, alerta antes de publicar nada.</p></div>
+    </div>
+    <div class="tbl" style="border:0"><table style="min-width:560px">
+      <thead><tr><th>Mes</th><th>Qué tiene que llegar, y si no llega, alerta</th></tr></thead>
+      <tbody>
+        <tr><td class="k">Primavera</td><td>Oferta de plazas universitarias y ponderaciones; ofertas de empleo público de las administraciones</td></tr>
+        <tr><td class="k">Junio a agosto</td><td>Decretos de precios públicos; preinscripción; oferta y admisión de FP</td></tr>
+        <tr><td class="k">Julio y septiembre</td><td>Notas de corte de cada distrito, en cada adjudicación</td></tr>
+        <tr><td class="k">Octubre</td><td>Estadística de preinscripción del Ministerio</td></tr>
+        <tr><td class="k">Noviembre</td><td>Afiliación de titulados universitarios</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="grid2">
+    <div class="card"><h3>Peticiones formales desde el primer mes</h3><p>Por la Ley 37/2007 de reutilización: al Ministerio de Universidades, el fichero de precio por título, la afiliación por título y universidad y las notas de QEDU; al de Educación, la oferta de FP por centro (sumándonos a la solicitud ya abierta) y el registro de centros; a Función Pública, el histórico de pruebas selectivas. Si no contestan, queja al Consejo de Transparencia.</p></div>
+    <div class="card"><h3>Reglas de uso de los datos</h3><ul class="clean">
+      <li>Citar siempre la fuente y la fecha de actualización, como exigen el BOE y el Ministerio.</li>
+      <li>No aparentar carácter oficial ni alterar el contenido.</li>
+      <li>Las listas con nombres y DNI no se republican: solo se cuentan.</li>
+      <li>Si un boletín retira datos personales, se borran también de nuestro archivo.</li>
+      <li>Peticiones a las fuentes moderadas, identificadas y solo de lo nuevo.</li>
+    </ul></div>
+  </div>
+</section>
+
+<!-- 07 -->
+<section class="sec" id="catalogo">
+  <div class="sec-head"><span class="eyebrow">07 · Catálogo maestro</span><h2>Una lista única de todo lo que existe, con sus códigos oficiales</h2>
+  <p>El catálogo maestro es la columna vertebral. Cada universidad, centro, título, asignatura, ciclo, ayuntamiento, cuerpo y proceso existe una sola vez, con un identificador nuestro que no cambia nunca y los códigos oficiales que usa la Administración. Las fuentes se enganchan al catálogo por esos códigos, y las páginas se generan desde él.</p></div>
+
+  <div class="grid3">
+    <div class="card"><span class="pill">Estudios universitarios</span>
+      <div class="route" style="flex-direction:column;align-items:stretch">
+        <span class="node"><b>Universidad</b><br><small class="mono">código RUCT</small></span>
+        <span class="arr" style="text-align:center">↓</span>
+        <span class="node"><b>Centro</b> (facultad, escuela, adscrito)<br><small class="mono">código RUCT de centro</small></span>
+        <span class="arr" style="text-align:center">↓</span>
+        <span class="node"><b>Oferta</b> = título × centro × curso × modalidad<br><small class="mono">id propio · plazas, precio, nota</small></span>
+        <span class="arr" style="text-align:center">↓</span>
+        <span class="node"><b>Título</b> (grado, máster)<br><small class="mono">código RUCT de 7 cifras · rama · ámbito ISCED<br>dobles grados: código propio</small></span>
+        <span class="arr" style="text-align:center">↓</span>
+        <span class="node"><b>Plan</b> por curso académico → <b>Asignaturas</b><br><small class="mono">código de la universidad + id propio</small></span>
+      </div></div>
+    <div class="card"><span class="pill">Formación profesional</span>
+      <div class="route" style="flex-direction:column;align-items:stretch">
+        <span class="node"><b>Centro</b> (IES, CIFP, concertado, privado)<br><small class="mono">código del Registro Estatal de Centros, 8 caracteres</small></span>
+        <span class="arr" style="text-align:center">↓</span>
+        <span class="node"><b>Oferta</b> = ciclo × centro × curso × turno × régimen<br><small class="mono">id propio · plazas, admisión</small></span>
+        <span class="arr" style="text-align:center">↓</span>
+        <span class="node"><b>Título de FP</b><br><small class="mono">código de 8 cifras del catálogo · código tradicional (IFCS03) · real decreto · LOGSE o LOE</small></span>
+        <span class="arr" style="text-align:center">↓</span>
+        <span class="node"><b>Módulos</b><br><small class="mono">código de 4 cifras · horas mínimas del BOE y horas reales de cada comunidad</small></span>
+      </div></div>
+    <div class="card"><span class="pill">Oposiciones</span>
+      <div class="route" style="flex-direction:column;align-items:stretch">
+        <span class="node"><b>Convocante</b> (ministerio, comunidad, diputación, ayuntamiento)<br><small class="mono">código DIR3</small></span>
+        <span class="arr" style="text-align:center">↓</span>
+        <span class="node"><b>Proceso</b> = cuerpo × convocante × oferta de empleo × turno<br><small class="mono">id propio</small></span>
+        <span class="arr" style="text-align:center">↓</span>
+        <span class="node"><b>Actos</b>: bases, plazo, admitidos, examen, notas, aprobados<br><small class="mono">id del boletín (BOE-A-…, BOP…)</small></span>
+        <span class="arr" style="text-align:center">↑</span>
+        <span class="node"><b>Cuerpo o categoría normalizada</b><br><small class="mono">id propio · grupo A1–C2 · titulación exigida</small></span>
+      </div></div>
+  </div>
+
+  <div class="grid2">
+    <div class="card"><h3>Lo que lo une todo</h3>
+      <ul class="clean">
+        <li><b>Territorio:</b> comunidad, provincia y municipio con los códigos del INE y sus coordenadas, para «cerca de mí» y «a menos de 30 km».</li>
+        <li><b>Profesión:</b> código de ocupación CNO-11, enlazado con los títulos que llevan a ella y los cuerpos que la ejercen.</li>
+        <li><b>Nivel educativo:</b> clasificación CNED, que traduce «título de ESO», «técnico superior» o «grado» a lo que exige cada oposición.</li>
+        <li><b>Fuente:</b> cada fuente tiene su ficha con dirección, método de conexión, frecuencia, licencia, fuente de respaldo y fecha del último acceso correcto.</li>
+      </ul></div>
+    <div class="card"><h3>Reglas del catálogo</h3>
+      <ul class="clean">
+        <li><b>El identificador propio no cambia nunca.</b> Si cambia el nombre o la dirección de la página, la antigua redirige a la nueva.</li>
+        <li><b>Todo tiene versión por curso académico</b> (2026-27) o por fecha de vigencia. Un plan de estudios nuevo no borra el anterior.</li>
+        <li><b>Las sustituciones se guardan:</b> municipios fusionados, títulos de FP reemplazados por un real decreto nuevo, grados que se extinguen.</li>
+        <li><b>Cuando el enganche no es seguro</b>, por ejemplo un nombre de cuerpo que no reconocemos, el dato va a una cola de revisión y no se publica hasta revisarlo.</li>
+        <li><b>Nunca guardamos datos de personas:</b> de las listas de admitidos y aprobados solo contamos.</li>
+      </ul></div>
+  </div>
+
+  <div class="card"><h3>La traza de un dato</h3><p style="color:var(--muted)">Cada cifra publicada lleva detrás esta ficha. Así nunca se pierde de dónde salió ni cuándo, y se puede rehacer todo desde los originales.</p>
+    <div class="tbl" style="border:0"><table style="min-width:560px">
+      <tbody>
+        <tr><td class="k">Dato</td><td>Nota de corte · Medicina · Universidad Ejemplo · cupo general · 2026-27</td></tr>
+        <tr><td class="k">Valor</td><td class="num">13,05</td></tr>
+        <tr><td class="k">Fuente principal</td><td>Lista de notas de corte definitivas de la universidad · <span class="mono">fuente_id univ-ejemplo-notas</span></td></tr>
+        <tr><td class="k">Comprobado contra</td><td>Publicación de la comunidad autónoma · coincide</td></tr>
+        <tr><td class="k">Capturado</td><td class="num">15/07/2026 09:12 · original guardado (PDF) · huella <span class="mono">sha256 9f2c…a71</span></td></tr>
+        <tr><td class="k">Estado</td><td><span class="pill ok">verificado</span> &nbsp;publicado el 15/07/2026 09:40</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</section>
+
+<!-- 08 -->
+<section class="sec" id="tecnologia">
+  <div class="sec-head"><span class="eyebrow">08 · Tecnología y costes</span><h2>Un motor diario barato y unas páginas estáticas que no se caen</h2>
+  <p>Las páginas se generan por adelantado y se sirven como archivos, sin base de datos detrás: son rápidas, Google las lee bien y aguantan cualquier pico de visitas. El trabajo pesado lo hace un motor que se ejecuta dos veces al día. Precios comprobados en las webs oficiales el 29/10/2026.</p></div>
+
+  <div class="card"><h3>El recorrido diario de un dato</h3>
+    <div class="flow">
+      <div class="step"><span class="n">1 · 06:17 y 14:17</span><b>Consultar fuentes</b><p>BOE por su API, boletines, universidades. Solo se descarga lo que ha cambiado.</p></div>
+      <div class="step"><span class="n">2</span><b>Archivar el original</b><p>Cada PDF o página se guarda tal cual, con su huella y fecha. Nunca se borra.</p></div>
+      <div class="step"><span class="n">3</span><b>Detectar cambios</b><p>¿Documento nuevo? A extracción. Si una fuente falla o cambia de forma, alerta.</p></div>
+      <div class="step"><span class="n">4</span><b>Extraer</b><p>Texto del PDF y lectura con IA en lote, con la frase literal de la que sale cada dato.</p></div>
+      <div class="step"><span class="n">5</span><b>Validar</b><p>Reglas fijas: fechas, plazas, plazos. Lo dudoso pasa a un modelo mejor y, si sigue, a revisión humana.</p></div>
+      <div class="step"><span class="n">6</span><b>Guardar con versión</b><p>Base de datos con historial: qué cambió, cuándo y qué páginas afecta.</p></div>
+      <div class="step"><span class="n">7</span><b>Generar solo lo cambiado</b><p>Se rehacen las páginas afectadas y sus listados, no el sitio entero.</p></div>
+      <div class="step"><span class="n">8</span><b>Publicar</b><p>Se suben solo los archivos nuevos o modificados; al final, el mapa del sitio con la fecha real.</p></div>
+      <div class="step"><span class="n">9</span><b>Avisar</b><p>Correo, notificación del navegador o Telegram a quien sigue ese proceso.</p></div>
+    </div>
+  </div>
+
+  <div class="tbl"><table>
+    <thead><tr><th>Pieza</th><th>Elección</th><th>Por qué</th></tr></thead>
+    <tbody>
+      <tr><td class="k">Motor diario y base de datos</td><td>Servidor Hetzner en Alemania o Finlandia, con PostgreSQL</td><td>Coste fijo, IP europea para los boletines y sin límite de tiempo por tarea. Copia diaria de la base a otro proveedor.</td></tr>
+      <tr><td class="k">Archivo de originales</td><td>Cloudflare R2, con segunda copia en Backblaze B2 o Hetzner</td><td>Sin coste por descargar; permite rehacer todo sin volver a pedir nada a las fuentes.</td></tr>
+      <tr><td class="k">Alojamiento de las páginas</td><td>Cloudflare Workers con archivos estáticos, plan de 5 USD al mes</td><td>Peticiones a páginas estáticas gratuitas e ilimitadas; las visitas de robots no cuestan. Configuración obligatoria: buscadores, agentes y entrenamiento permitidos, sin «Block AI bots» ni modos anti-robots, IndexNow activado. Plan B: Bunny CDN, mudanza en un día.</td></tr>
+      <tr><td class="k">«Mi plan», altas y avisos</td><td>Cloudflare Workers y D1, incluidos en el plan</td><td>Sigue funcionando aunque el servidor del motor se caiga.</td></tr>
+      <tr><td class="k">Lectura de documentos con IA</td><td>Claude Haiku 5.5 en lote; los casos dudosos, Claude Sonnet 5.5</td><td>En lote cuesta 0,05 USD por millón de tokens de entrada. El modelo es un parámetro: se cambia sin tocar el código.</td></tr>
+      <tr><td class="k">Generador de páginas</td><td>Python con plantillas Jinja2</td><td>El motor ya está en Python; solo se regenera lo que cambia.</td></tr>
+      <tr><td class="k">Correo</td><td>Amazon SES en región europea</td><td>0,16 USD por cada 1.000 correos. Dominio propio con SPF, DKIM y DMARC, doble confirmación y baja en un clic.</td></tr>
+      <tr><td class="k">Notificaciones</td><td>Notificaciones web propias y bot de Telegram</td><td>Coste cero. En iPhone funcionan si se añade la web a la pantalla de inicio.</td></tr>
+      <tr><td class="k">Buscador</td><td>Pagefind; Meilisearch propio si el sitio crece</td><td>Gratuito y funciona sin servidor.</td></tr>
+      <tr><td class="k">Analítica</td><td>Search Console y Umami o GoatCounter, sin cookies</td><td>Cumple la guía de la AEPD sin banner de consentimiento. Google Analytics obligaría a pedirlo.</td></tr>
+      <tr><td class="k">Vigilancia</td><td>Vigilantes propios por fuente y Healthchecks.io, alertas por Telegram</td><td>Avisan si una fuente publica menos de lo habitual, cambia de estructura o el proceso no termina.</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="card"><h3>Coste mensual en tres escenarios</h3>
+    <p style="color:var(--muted)">Cada partida en la moneda de su tarifa; no se convierte por no tener verificado el tipo de cambio. La IA se calcula en el escenario alto: 600 anuncios al día y 10.000 documentos universitarios al año. No incluye horas de trabajo ni revisión humana.</p>
+    <div class="tbl" style="border:0"><table class="num">
+      <thead><tr><th>Partida</th><th>Arranque<br><small>100.000 páginas</small></th><th>50.000 visitas al mes<br><small>200.000 páginas</small></th><th>500.000 visitas al mes<br><small>500.000 páginas</small></th></tr></thead>
+      <tbody>
+        <tr><td class="k">Alojamiento y backend (Cloudflare)</td><td>5,00 USD</td><td>5,00 USD</td><td>5,00 USD</td></tr>
+        <tr><td class="k">Archivo de originales (R2)</td><td>0,15 USD</td><td>3,30 USD</td><td>7,05 USD</td></tr>
+        <tr><td class="k">IA: Haiku 5.5 en lote y 10 % con Sonnet 5.5</td><td>49,05 USD</td><td>49,05 USD</td><td>49,05 USD</td></tr>
+        <tr><td class="k">Correo (Amazon SES)</td><td>1,60 USD<br><small>10.000 correos</small></td><td>16,00 USD<br><small>100.000 correos</small></td><td>160,00 USD<br><small>1.000.000 correos</small></td></tr>
+        <tr><td class="k">Analítica</td><td>0</td><td>0</td><td>35,00 USD</td></tr>
+        <tr><td class="k">Vigilancia (Healthchecks.io)</td><td>0</td><td>20,00 USD</td><td>20,00 USD</td></tr>
+        <tr><td class="k">Dos dominios .com</td><td>1,86 USD</td><td>1,86 USD</td><td>1,86 USD</td></tr>
+        <tr><td class="k">Servidor del motor (Hetzner, sin IVA)</td><td>5,99 €</td><td>8,99 €</td><td>16,49 €</td></tr>
+        <tr><td class="k">Dos dominios .es (con IVA)</td><td>1,41 €</td><td>1,41 €</td><td>1,41 €</td></tr>
+        <tr><td class="k">Total</td><td><b>57,66 USD + 7,40 €</b></td><td><b>95,21 USD + 10,40 €</b></td><td><b>277,96 USD + 17,90 €</b></td></tr>
+      </tbody>
+    </table></div>
+    <p style="font-size:14px;color:var(--muted)">Con el volumen bajo de anuncios (300 al día), la IA baja a 9,73 USD y el arranque queda en 18,34 USD más 7,40 €. En el escenario grande, la partida que manda es el correo, no la tecnología.</p>
+  </div>
+
+  <div class="grid2">
+    <div class="card"><h3>Cinco hallazgos que condicionan el diseño</h3>
+      <ul class="clean">
+        <li><b>Ningún alojamiento acepta 500.000 archivos de una vez.</b> Cloudflare admite 100.000 por despliegue en el plan de pago. Por encima, el sitio se reparte por secciones o las páginas se sirven desde R2. Las direcciones se diseñan por secciones desde el primer día.</li>
+        <li><b>Solo se sube lo que cambia:</b> las plataformas comparan huellas, así que publicar a diario no cuesta más.</li>
+        <li><b>En alojamientos por consumo, quien más gasta son los robots,</b> no las personas. En Cloudflare las páginas estáticas no se cobran.</li>
+        <li><b>Leer documentos con IA es barato:</b> 14,85 USD al mes por 18.000 anuncios con Haiku 5.5 en lote.</li>
+        <li><b>Los precios se mueven:</b> Hetzner subió dos veces en 2026 y Gemini Flash duplica su precio el 01/01/2027. Todo debe poder cambiarse de proveedor.</li>
+      </ul></div>
+    <div class="card"><h3>Riesgos técnicos y respuesta</h3>
+      <ul class="clean">
+        <li><b>La IA se inventa un dato:</b> frase literal obligatoria que se comprueba en el texto, reglas fijas, doble extracción en los campos clave, revisión humana y enlace siempre al original. Un conjunto de 200 anuncios revisados a mano para probar cualquier cambio de modelo.</li>
+        <li><b>Una fuente cambia o se cae:</b> vigilantes por fuente y archivo de originales para reprocesar.</li>
+        <li><b>Un boletín nos bloquea:</b> peticiones moderadas, identificadas y solo de lo nuevo.</li>
+        <li><b>Páginas vacías que Google castiga:</b> sin datos suficientes, la página no se indexa.</li>
+        <li><b>«Mi plan» se borra con el navegador:</b> por eso se ofrece sincronizar con el correo.</li>
+        <li><b>Gasto descontrolado:</b> topes de gasto en cada proveedor y límite diario de llamadas a la IA.</li>
+      </ul></div>
+  </div>
+  <p class="note"><b>Pendiente de comprobar.</b> Cuántos archivos añade el buscador por página, el rendimiento del generador con 500.000 páginas (se mide con el código real) y algunos precios secundarios (S3, Brevo, Plausible por encima de 10.000 visitas).</p>
+</section>
+
+<!-- 09 -->
+<section class="sec" id="ejemplos">
+  <div class="sec-head"><span class="eyebrow">09 · Ejemplos</span><h2>Cómo se verían las páginas</h2>
+  <p>Una maqueta por cada situación que hemos definido. Los centros, ayuntamientos y cifras son de ejemplo y no corresponden a datos reales. El diseño es una primera propuesta, propia y distinta de cualquier competidor.</p></div>
+  <div class="mock-tabs" role="tablist" aria-label="Ejemplos de páginas">
+    <button role="tab" aria-selected="true" data-m="m-inicio">Inicio</button>
+    <button role="tab" aria-selected="false" data-m="m-master">Máster</button>
+    <button role="tab" aria-selected="false" data-m="m-carrera">Carrera</button>
+    <button role="tab" aria-selected="false" data-m="m-fp">FP</button>
+    <button role="tab" aria-selected="false" data-m="m-nota">Nota de corte y calculadora</button>
+    <button role="tab" aria-selected="false" data-m="m-opo">Oposición</button>
+    <button role="tab" aria-selected="false" data-m="m-lugar">Oposiciones en un pueblo</button>
+    <button role="tab" aria-selected="false" data-m="m-comp">Comparador</button>
+    <button role="tab" aria-selected="false" data-m="m-plan">Mi plan</button>
+    <button role="tab" aria-selected="false" data-m="m-prof">Cómo llegar a ser</button>
+  </div>
+
+  <!-- Inicio -->
+  <div class="browser" id="m-inicio">
+    <div class="bar"><div class="dots"><i></i><i></i><i></i></div><div class="url">nombre-por-decidir.es</div></div>
+    <div class="site">
+      <div class="site-top"><span class="logo">Nombre por decidir</span><div class="site-nav"><span>Carreras</span><span>Másters</span><span>FP</span><span>Notas de corte</span><span>Oposiciones</span><span>Mi plan</span></div></div>
+      <span class="example-flag">Maqueta de ejemplo · cifras ficticias</span>
+      <div class="hero-site">
+        <h3>Todo lo que necesitas para decidir qué estudiar o a qué opositar. Abierto y al día.</h3>
+        <div class="search"><input id="mk-search" type="text" value="máster finanzas madrid" aria-label="Buscar"><button class="btn" type="button">Buscar</button></div>
+        <div class="actions"><span class="pill">Calculadora de nota</span><span class="pill">Notas de corte</span><span class="pill">Comparar másters</span><span class="pill">¿A qué oposición me puedo presentar?</span></div>
+      </div>
+      <div class="grid3">
+        <div class="box"><span class="eyebrow">Hoy en oposiciones</span><div class="fact"><span class="v num">412</span><span class="l">procesos con plazo abierto</span></div><div class="fact"><span class="v num">38</span><span class="l">convocatorias nuevas hoy</span></div></div>
+        <div class="box"><span class="eyebrow">Próximas fechas</span><div class="rec"><a href="#ejemplos">Preinscripción de máster en Madrid<span>15 jun</span></a><a href="#ejemplos">Selectividad ordinaria<span>junio</span></a><a href="#ejemplos">Fin de plazo, auxiliar en Villaejemplo<span>6 días</span></a></div></div>
+        <div class="box"><span class="eyebrow">Lo más consultado</span><div class="rec"><a href="#ejemplos">Nota de corte de Medicina<span>grado</span></a><a href="#ejemplos">Máster de profesorado online<span>máster</span></a><a href="#ejemplos">Auxiliar administrativo del Estado<span>oposición</span></a></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Máster -->
+  <div class="browser" id="m-master" hidden>
+    <div class="bar"><div class="dots"><i></i><i></i><i></i></div><div class="url">/universidad/universidad-ejemplo/master/finanzas/</div></div>
+    <div class="site">
+      <div class="crumbs">Universidades › Universidad Ejemplo › <b>Máster en Finanzas</b> &nbsp;·&nbsp; Másters › Finanzas › Madrid</div>
+      <span class="example-flag">Maqueta de ejemplo · universidad y cifras ficticias</span>
+      <div style="display:flex;flex-direction:column;gap:8px"><h3 style="font-size:26px">Máster Universitario en Finanzas</h3><p style="color:var(--muted)">Universidad Ejemplo · Facultad de Económicas · Madrid</p>
+      <div class="actions"><span class="pill ok">Oficial</span><span class="pill">Presencial</span><span class="pill">Español e inglés</span><span class="pill warn">Compatible con trabajar: tarde</span></div></div>
+      <div class="facts num">
+        <div class="fact"><span class="v">9.600 €</span><span class="l">precio total</span></div>
+        <div class="fact"><span class="v">160 €</span><span class="l">por crédito</span></div>
+        <div class="fact"><span class="v">60 ECTS</span><span class="l">1 curso</span></div>
+        <div class="fact"><span class="v">40</span><span class="l">plazas</span></div>
+        <div class="fact"><span class="v">15 jun</span><span class="l">fin de preinscripción</span></div>
+        <div class="fact"><span class="v">87 %</span><span class="l">trabaja al año</span></div>
+      </div>
+      <div class="actions"><button class="btn" type="button">Guardar en Mi plan</button><button class="btn ghost" type="button">Avisarme de cambios</button><button class="btn ghost" type="button">Web oficial</button><button class="btn ghost" type="button">Comparar</button></div>
+      <div class="two">
+        <div style="display:flex;flex-direction:column;gap:14px;min-width:0">
+          <div class="box"><h4>Asignaturas</h4>
+            <div class="subj"><span>Mercados e instrumentos financieros</span><span>6 ECTS · obligatoria</span></div>
+            <div class="subj"><span>Valoración de empresas</span><span>6 ECTS · obligatoria</span></div>
+            <div class="subj"><span>Gestión de carteras</span><span>6 ECTS · obligatoria</span></div>
+            <div class="subj"><span>Finanzas corporativas</span><span>6 ECTS · obligatoria</span></div>
+            <div class="subj"><span>Econometría financiera</span><span>6 ECTS · obligatoria</span></div>
+            <div class="subj"><span>Optativas (elige 3)</span><span>12 ECTS</span></div>
+            <div class="subj"><span>Prácticas en empresa</span><span>12 ECTS</span></div>
+            <div class="subj"><span>Trabajo de fin de máster</span><span>6 ECTS</span></div>
+          </div>
+          <div class="box"><h4>Cómo se evalúa</h4>
+            <div class="bar-row"><span>Examen</span><div class="bar-track"><div class="bar-fill" style="width:40%"></div></div><span class="num">40 %</span></div>
+            <div class="bar-row"><span>Trabajos y casos</span><div class="bar-track"><div class="bar-fill" style="width:45%"></div></div><span class="num">45 %</span></div>
+            <div class="bar-row"><span>Participación</span><div class="bar-track"><div class="bar-fill" style="width:15%"></div></div><span class="num">15 %</span></div>
+            <p style="font-size:13.5px;color:var(--muted)">Metodología: clases de 18:00 a 21:30, seminarios con profesionales y prácticas en el segundo semestre. Fuente: memoria de verificación del título.</p>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:14px;min-width:0">
+          <div class="box"><h4>Acceso</h4><p style="font-size:14px">Grados en Economía, ADE, Finanzas y Contabilidad, Matemáticas o Ingenierías. <a href="#ejemplos">¿Puedo acceder con mi grado?</a></p></div>
+          <div class="box"><h4>Otros másters de finanzas</h4>
+            <div class="rec"><a href="#ejemplos">En Madrid, público<span>3.120 €</span></a><a href="#ejemplos">Online, oficial<span>4.500 €</span></a><a href="#ejemplos">Con más prácticas<span>24 ECTS</span></a><a href="#ejemplos">Ver los 46 de Madrid<span>›</span></a></div></div>
+          <div class="box"><h4>Tu camino</h4><p style="font-size:14px"><a href="#ejemplos">Cómo llegar a ser analista financiero</a> · <a href="#ejemplos">Becas para este máster</a></p></div>
+          <p style="font-size:12.5px;color:var(--muted)">Datos verificados el 12/10/2026. Fuentes: RUCT, decreto de precios, web de la universidad.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Carrera -->
+  <div class="browser" id="m-carrera" hidden>
+    <div class="bar"><div class="dots"><i></i><i></i><i></i></div><div class="url">/universidad/universidad-ejemplo/grado/economia/</div></div>
+    <div class="site">
+      <div class="crumbs">Universidades › Universidad Ejemplo › <b>Grado en Economía</b> &nbsp;·&nbsp; Grados › Economía</div>
+      <span class="example-flag">Maqueta de ejemplo · plan y cifras ficticios</span>
+      <h3 style="font-size:26px">Grado en Economía</h3>
+      <div class="facts num">
+        <div class="fact"><span class="v">240 ECTS</span><span class="l">4 cursos</span></div>
+        <div class="fact"><span class="v">6.000–7.200 h</span><span class="l">de trabajo total</span></div>
+        <div class="fact"><span class="v">17,5 %</span><span class="l">optativo: libertad para elegir</span></div>
+        <div class="fact"><span class="v">12 ECTS</span><span class="l">prácticas en empresa</span></div>
+        <div class="fact"><span class="v">9,84</span><span class="l">nota de corte 2026 (sobre 14)</span></div>
+        <div class="fact"><span class="v">5.280 €</span><span class="l">precio total del grado</span></div>
+      </div>
+      <div class="box"><h4>El mapa de la carrera</h4>
+        <div class="legend"><span><i style="background:var(--t-basica)"></i>Básica</span><span><i style="background:var(--t-oblig)"></i>Obligatoria</span><span><i style="background:var(--t-opt)"></i>Optativa</span><span><i style="background:var(--t-prac)"></i>Prácticas</span><span><i style="background:var(--t-tfg)"></i>Trabajo de fin de grado</span></div>
+        <div class="curso"><span class="lbl">1.º</span><div class="blocks"><span class="blk" style="background:var(--t-basica)">Matemáticas I<small>6</small></span><span class="blk" style="background:var(--t-basica)">Introducción a la Economía<small>6</small></span><span class="blk" style="background:var(--t-basica)">Estadística I<small>6</small></span><span class="blk" style="background:var(--t-basica)">Historia Económica<small>6</small></span><span class="blk" style="background:var(--t-basica)">Matemáticas II<small>6</small></span><span class="blk" style="background:var(--t-basica)">Microeconomía I<small>6</small></span><span class="blk" style="background:var(--t-basica)">Contabilidad<small>6</small></span><span class="blk" style="background:var(--t-basica)">Derecho<small>6</small></span><span class="blk" style="background:var(--t-basica)">Economía de la Empresa<small>6</small></span><span class="blk" style="background:var(--t-basica)">Economía Mundial<small>6</small></span></div></div>
+        <div class="curso"><span class="lbl">2.º</span><div class="blocks"><span class="blk" style="background:var(--t-oblig)">Macroeconomía I<small>6</small></span><span class="blk" style="background:var(--t-oblig)">Microeconomía II<small>6</small></span><span class="blk" style="background:var(--t-oblig)">Econometría I<small>6</small></span><span class="blk" style="background:var(--t-oblig)">Estadística II<small>6</small></span><span class="blk" style="background:var(--t-oblig)">Hacienda Pública<small>6</small></span><span class="blk" style="background:var(--t-oblig)">Macroeconomía II<small>6</small></span><span class="blk" style="background:var(--t-oblig)">Economía Española<small>6</small></span><span class="blk" style="background:var(--t-oblig)">Finanzas<small>6</small></span><span class="blk" style="background:var(--t-oblig)">Matemáticas III<small>6</small></span><span class="blk" style="background:var(--t-oblig)">Historia del Pensamiento Económico<small>6</small></span></div></div>
+        <div class="curso"><span class="lbl">3.º</span><div class="blocks"><span class="blk" style="background:var(--t-oblig)">Econometría II<small>6</small></span><span class="blk" style="background:var(--t-oblig)">Economía Internacional<small>6</small></span><span class="blk" style="background:var(--t-oblig)">Economía Laboral<small>6</small></span><span class="blk" style="background:var(--t-oblig)">Crecimiento<small>6</small></span><span class="blk" style="background:var(--t-oblig)">Organización Industrial<small>6</small></span><span class="blk" style="background:var(--t-oblig)">Economía Monetaria<small>6</small></span><span class="blk" style="background:var(--t-opt)">Optativas<small>24</small></span></div></div>
+        <div class="curso"><span class="lbl">4.º</span><div class="blocks"><span class="blk" style="background:var(--t-oblig)">Política Económica<small>6</small></span><span class="blk" style="background:var(--t-oblig)">Economía Pública<small>6</small></span><span class="blk" style="background:var(--t-oblig)">Economía Regional<small>6</small></span><span class="blk" style="background:var(--t-opt)">Optativas<small>18</small></span><span class="blk" style="background:var(--t-prac)">Prácticas<small>12</small></span><span class="blk" style="background:var(--t-tfg)">TFG<small>12</small></span></div></div>
+      </div>
+      <div class="two">
+        <div class="box"><h4>De qué está hecha (porcentaje de créditos)</h4>
+          <div class="bar-row"><span>Economía</span><div class="bar-track"><div class="bar-fill" style="width:42.5%"></div></div><span class="num">42,5 %</span></div>
+          <div class="bar-row"><span>Matemáticas y estadística</span><div class="bar-track"><div class="bar-fill" style="width:17.5%"></div></div><span class="num">17,5 %</span></div>
+          <div class="bar-row"><span>Empresa y finanzas</span><div class="bar-track"><div class="bar-fill" style="width:7.5%"></div></div><span class="num">7,5 %</span></div>
+          <div class="bar-row"><span>Derecho e historia</span><div class="bar-track"><div class="bar-fill" style="width:5%"></div></div><span class="num">5 %</span></div>
+          <div class="bar-row"><span>Optativas, prácticas y TFG</span><div class="bar-track"><div class="bar-fill" style="width:27.5%"></div></div><span class="num">27,5 %</span></div>
+        </div>
+        <div class="box"><h4>Sigue explorando</h4><div class="rec"><a href="#ejemplos">Qué se estudia en primero de Economía<span>›</span></a><a href="#ejemplos">Economía en otras 38 universidades<span>›</span></a><a href="#ejemplos">Carreras parecidas: ADE, Finanzas<span>›</span></a><a href="#ejemplos">Calcula si entras<span>›</span></a></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FP -->
+  <div class="browser" id="m-fp" hidden>
+    <div class="bar"><div class="dots"><i></i><i></i><i></i></div><div class="url">/fp/desarrollo-aplicaciones-web/ies-ejemplo/</div></div>
+    <div class="site">
+      <div class="crumbs">FP › Informática › <b>Desarrollo de Aplicaciones Web</b> › IES Ejemplo &nbsp;·&nbsp; FP en Ciudad Ejemplo</div>
+      <span class="example-flag">Maqueta de ejemplo · centro y cifras ficticios</span>
+      <h3 style="font-size:24px">Técnico Superior en Desarrollo de Aplicaciones Web</h3>
+      <p style="color:var(--muted)">IES Ejemplo · público · Ciudad Ejemplo</p>
+      <div class="actions"><span class="pill ok">Gratuito</span><span class="pill">Turno de tarde</span><span class="pill">Dual general</span><span class="pill warn">Compatible con trabajar</span></div>
+      <div class="facts num">
+        <div class="fact"><span class="v">2.000 h</span><span class="l">2 cursos</span></div>
+        <div class="fact"><span class="v">500 h</span><span class="l">formación en empresa</span></div>
+        <div class="fact"><span class="v">30</span><span class="l">plazas</span></div>
+        <div class="fact"><span class="v">7,42</span><span class="l">último admitido</span></div>
+        <div class="fact"><span class="v">71 %</span><span class="l">trabaja al año</span></div>
+      </div>
+      <div class="two">
+        <div class="box"><h4>Módulos</h4>
+          <div class="subj"><span>Programación</span><span>1.º · 256 h</span></div>
+          <div class="subj"><span>Bases de datos</span><span>1.º · 192 h</span></div>
+          <div class="subj"><span>Lenguajes de marcas</span><span>1.º · 128 h</span></div>
+          <div class="subj"><span>Desarrollo web en entorno cliente</span><span>2.º · 140 h</span></div>
+          <div class="subj"><span>Desarrollo web en entorno servidor</span><span>2.º · 160 h</span></div>
+          <div class="subj"><span>Despliegue de aplicaciones web</span><span>2.º · 80 h</span></div>
+          <div class="subj"><span>Proyecto intermodular</span><span>2.º</span></div>
+        </div>
+        <div class="box"><h4>Tu camino</h4>
+          <div class="route"><span class="node">Este ciclo</span><span class="arr">→</span><span class="node">Grado en Ingeniería Informática<br><small>créditos reconocidos según la universidad</small></span></div>
+          <div class="route"><span class="node">Este ciclo</span><span class="arr">→</span><span class="node">Oposiciones: técnico auxiliar de informática (C1)</span></div>
+          <div class="rec"><a href="#ejemplos">Mismo ciclo a distancia<span>›</span></a><a href="#ejemplos">Mismo ciclo en otros 6 centros cercanos<span>›</span></a><a href="#ejemplos">Comparar centros<span>›</span></a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Nota de corte -->
+  <div class="browser" id="m-nota" hidden>
+    <div class="bar"><div class="dots"><i></i><i></i><i></i></div><div class="url">/nota-de-corte/medicina/universidad-ejemplo/</div></div>
+    <div class="site">
+      <div class="crumbs">Notas de corte › Medicina › <b>Universidad Ejemplo</b></div>
+      <span class="example-flag">Maqueta de ejemplo · notas y ponderaciones ficticias</span>
+      <h3 style="font-size:24px">Nota de corte de Medicina en la Universidad Ejemplo</h3>
+      <div class="two">
+        <div class="box"><h4>Evolución, cupo general, última lista</h4>
+          <svg viewBox="0 0 420 180" role="img" aria-label="Nota de corte de 2022 a 2026" style="width:100%;height:auto">
+            <g font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--muted)">
+              <line x1="40" y1="20" x2="40" y2="150" stroke="var(--line)"/><line x1="40" y1="150" x2="410" y2="150" stroke="var(--line)"/>
+              <line x1="40" y1="20" x2="410" y2="20" stroke="var(--line)" stroke-dasharray="3 4"/><line x1="40" y1="85" x2="410" y2="85" stroke="var(--line)" stroke-dasharray="3 4"/>
+              <text x="34" y="24" text-anchor="end">13,4</text><text x="34" y="89" text-anchor="end">13,0</text><text x="34" y="154" text-anchor="end">12,6</text>
+              <text x="70" y="168" text-anchor="middle">2022</text><text x="150" y="168" text-anchor="middle">2023</text><text x="230" y="168" text-anchor="middle">2024</text><text x="310" y="168" text-anchor="middle">2025</text><text x="390" y="168" text-anchor="middle">2026</text>
+            </g>
+            <polyline fill="none" stroke="var(--brand)" stroke-width="3" points="70,36.25 150,28.13 230,20 310,93.13 390,76.88"/>
+            <g fill="var(--brand)"><circle cx="70" cy="36.25" r="4"/><circle cx="150" cy="28.13" r="4"/><circle cx="230" cy="20" r="4"/><circle cx="310" cy="93.13" r="4"/><circle cx="390" cy="76.88" r="5"/></g>
+            <g font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--ink)"><text x="70" y="52" text-anchor="middle">13,30</text><text x="150" y="44" text-anchor="middle">13,35</text><text x="230" y="36" text-anchor="middle">13,40</text><text x="310" y="109" text-anchor="middle">12,95</text><text x="390" y="69" text-anchor="middle">13,05</text></g>
+          </svg>
+          <p style="font-size:13px;color:var(--muted)">En 2025 la nota bajó casi medio punto. Plazas en 2026: 180. Otros cupos: desde FP 12,10; mayores de 25: 8,90.</p>
+        </div>
+        <div class="box"><h4>Calcula tu nota de admisión</h4>
+          <form class="calc" id="calc" onsubmit="return false">
+            <label for="c-bach">Media de bachillerato<input id="c-bach" type="number" step="0.01" min="0" max="10" value="9.60"></label>
+            <label for="c-acc">Fase de acceso<input id="c-acc" type="number" step="0.01" min="0" max="10" value="9.10"></label>
+            <label for="c-bio">Biología<input id="c-bio" type="number" step="0.01" min="0" max="10" value="9.50"></label>
+            <label for="c-qui">Química<input id="c-qui" type="number" step="0.01" min="0" max="10" value="9.00"></label>
+          </form>
+          <div class="result"><span class="big num" id="c-out">13,10</span><span style="color:var(--muted)">sobre 14 · acceso <b class="num" id="c-acc-out">9,40</b></span></div>
+          <div id="c-list"></div>
+          <p style="font-size:12.5px;color:var(--muted)">Ejemplo con ponderación 0,2 en Biología y Química. Orientativo: compara con la nota del año pasado.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Oposición -->
+  <div class="browser" id="m-opo" hidden>
+    <div class="bar"><div class="dots"><i></i><i></i><i></i></div><div class="url">/oposiciones/auxiliar-administrativo/ayuntamiento-villaejemplo/2026/</div></div>
+    <div class="site">
+      <div class="crumbs">Oposiciones › Auxiliar administrativo › <b>Ayuntamiento de Villaejemplo 2026</b> &nbsp;·&nbsp; Oposiciones en Ciudad Real › Villaejemplo</div>
+      <span class="example-flag">Maqueta de ejemplo · ayuntamiento y cifras ficticios</span>
+      <div style="display:flex;flex-direction:column;gap:8px"><h3 style="font-size:24px">Auxiliar administrativo · Ayuntamiento de Villaejemplo (Ciudad Real) · 2026</h3>
+      <div class="actions"><span class="pill ok">Plazo abierto · quedan 6 días</span><span class="pill">Grupo C2</span><span class="pill">Oposición libre</span><span class="pill mute">Actualizado hoy</span></div></div>
+      <div class="note"><b>En 30 segundos.</b> 3 plazas de auxiliar administrativo. Necesitas el título de ESO. Examen tipo test de 60 preguntas y un supuesto práctico, previsto en febrero. Sueldo neto estimado de 1.420 € al mes en 14 pagas. Competencia media: 41 aspirantes por plaza en la convocatoria anterior.</div>
+      <div class="actions"><button class="btn" type="button">Avisarme de cambios</button><button class="btn ghost" type="button">Guardar en Mi plan</button><button class="btn ghost" type="button">¿Cumplo los requisitos?</button><button class="btn ghost" type="button">Ver bases en el BOP</button></div>
+      <div class="two">
+        <div class="box"><h4>Línea de tiempo</h4>
+          <div class="timeline">
+            <div class="tl done"><b>Oferta de empleo 2025</b><span>BOP de Ciudad Real, 14/11/2025</span></div>
+            <div class="tl done"><b>Bases de la convocatoria</b><span>BOP de Ciudad Real, 18/09/2026</span></div>
+            <div class="tl now"><b>Plazo de solicitudes</b><span>Anuncio en el BOE 06/10/2026 · 20 días hábiles · termina el 04/11/2026</span></div>
+            <div class="tl"><b>Lista de admitidos</b><span>Pendiente</span></div>
+            <div class="tl"><b>Examen</b><span>Previsto en febrero de 2027</span></div>
+            <div class="tl"><b>Notas y aprobados</b><span>Pendiente</span></div>
+            <div class="tl"><b>Bolsa de empleo</b><span>Se creará con los no aprobados con nota</span></div>
+          </div></div>
+        <div style="display:flex;flex-direction:column;gap:14px;min-width:0">
+          <div class="box"><h4>Datos clave</h4>
+            <div class="subj"><span>Aspirantes por plaza (2023)</span><span>41</span></div>
+            <div class="subj"><span>Nota de corte (2023)</span><span>6,25 sobre 10</span></div>
+            <div class="subj"><span>Temas</span><span>20</span></div>
+            <div class="subj"><span>Tasa</span><span>15 € · exentos en desempleo</span></div>
+            <div class="subj"><span>Cupo de discapacidad</span><span>No hay plaza reservada</span></div>
+          </div>
+          <div class="box"><h4>Qué ha cambiado</h4><div class="rec"><a href="#ejemplos">Publicado el anuncio en el BOE<span>06/10</span></a><a href="#ejemplos">Publicadas las bases<span>18/09</span></a></div></div>
+          <div class="box"><h4>También te puede interesar</h4><div class="rec"><a href="#ejemplos">Auxiliar en otros 4 pueblos de Ciudad Real<span>›</span></a><a href="#ejemplos">Oposiciones con la ESO cerca de ti<span>›</span></a></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lugar -->
+  <div class="browser" id="m-lugar" hidden>
+    <div class="bar"><div class="dots"><i></i><i></i><i></i></div><div class="url">/oposiciones/en/villaejemplo/</div></div>
+    <div class="site">
+      <div class="crumbs">Oposiciones › Castilla-La Mancha › Ciudad Real › <b>Villaejemplo</b></div>
+      <span class="example-flag">Maqueta de ejemplo · pueblo y cifras ficticios</span>
+      <h3 style="font-size:24px">Oposiciones en Villaejemplo y a menos de 30 km</h3>
+      <div class="actions"><span class="pill ok">5 con plazo abierto</span><span class="pill">8 en curso</span><span class="pill mute">Avisarme de nuevas aquí</span></div>
+      <div class="box">
+        <div class="plan-item"><span><b>Archivero</b> · Ayuntamiento de Villaejemplo · 1 plaza · A2</span><span class="pill ok">quedan 12 días</span></div>
+        <div class="plan-item"><span><b>Auxiliar administrativo</b> · Ayuntamiento de Villaejemplo · 3 plazas · C2</span><span class="pill ok">quedan 6 días</span></div>
+        <div class="plan-item"><span><b>Policía local</b> · Ayuntamiento de Pueblo Vecino (12 km) · 2 plazas · C1</span><span class="pill ok">quedan 15 días</span></div>
+        <div class="plan-item"><span><b>Bolsa de limpieza</b> · Ayuntamiento de Pueblo Vecino · bolsa temporal</span><span class="pill ok">quedan 4 días</span></div>
+        <div class="plan-item"><span><b>Técnico de cultura</b> · Diputación de Ciudad Real (25 km) · 1 plaza · A2</span><span class="pill warn">examen el 14/12</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Comparador -->
+  <div class="browser" id="m-comp" hidden>
+    <div class="bar"><div class="dots"><i></i><i></i><i></i></div><div class="url">/comparar/master/profesorado/presencial-vs-online/</div></div>
+    <div class="site">
+      <span class="example-flag">Maqueta de ejemplo · universidades y cifras ficticias</span>
+      <h3 style="font-size:24px">Máster de profesorado: presencial frente a online</h3>
+      <div class="cmp"><table class="num">
+        <thead><tr><th></th><th>Universidad Pública A · presencial</th><th>Universidad Pública B · online</th><th>Universidad Privada C · online</th></tr></thead>
+        <tbody>
+          <tr><td class="k">Precio total</td><td class="best">1.050 €</td><td>1.380 €</td><td>5.900 €</td></tr>
+          <tr><td class="k">Créditos y duración</td><td>60 ECTS · 1 curso</td><td>60 ECTS · 1 curso</td><td>60 ECTS · 1 curso</td></tr>
+          <tr><td class="k">Presencialidad</td><td>100 % · mañanas</td><td class="best">Sin clases fijas</td><td class="best">Sin clases fijas</td></tr>
+          <tr><td class="k">Compatible con trabajar</td><td>Difícil</td><td class="best">Sí</td><td class="best">Sí</td></tr>
+          <tr><td class="k">Prácticas</td><td>16 ECTS</td><td>16 ECTS</td><td>16 ECTS</td></tr>
+          <tr><td class="k">Evaluación</td><td>Examen 50 % · trabajos 50 %</td><td>Examen 60 % · trabajos 40 %</td><td>Examen 40 % · trabajos 60 %</td></tr>
+          <tr><td class="k">Habilita para profesor de secundaria</td><td>Sí</td><td>Sí</td><td>Sí</td></tr>
+          <tr><td class="k">Plazas</td><td>120</td><td>400</td><td>Sin límite publicado</td></tr>
+        </tbody>
+      </table></div>
+      <div class="actions"><button class="btn ghost" type="button">Añadir otro máster</button><button class="btn ghost" type="button">Filtrar por precio máximo</button></div>
+    </div>
+  </div>
+
+  <!-- Mi plan -->
+  <div class="browser" id="m-plan" hidden>
+    <div class="bar"><div class="dots"><i></i><i></i><i></i></div><div class="url">/mi-plan/</div></div>
+    <div class="site">
+      <span class="example-flag">Maqueta de ejemplo · se guarda en tu navegador, sin registro</span>
+      <h3 style="font-size:24px">Mi plan</h3>
+      <div class="two">
+        <div class="box"><h4>Lo que sigo</h4>
+          <div class="plan-item"><span>Medicina · Universidad Ejemplo · tu nota 13,10</span><span class="pill ok">entras</span></div>
+          <div class="plan-item"><span>Enfermería · Universidad Ejemplo B</span><span class="pill ok">entras</span></div>
+          <div class="plan-item"><span>Máster en Finanzas · Universidad Ejemplo</span><span class="pill">preinscripción 15 jun</span></div>
+          <div class="plan-item"><span>Auxiliar administrativo · Villaejemplo</span><span class="pill warn">quedan 6 días</span></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:14px;min-width:0">
+          <div class="box"><h4>Próximas fechas</h4><div class="rec"><a href="#ejemplos">Fin de plazo, auxiliar en Villaejemplo<span>04/11</span></a><a href="#ejemplos">Selectividad<span>junio</span></a><a href="#ejemplos">Notas de corte, primera lista<span>julio</span></a></div></div>
+          <div class="box"><h4>Avisos</h4><p style="font-size:14px">Activos en el navegador. Añade tu correo si quieres tu plan en el móvil y avisos por correo; nunca lo cedemos.</p><div class="actions"><button class="btn" type="button">Añadir correo</button><button class="btn ghost" type="button">Telegram</button></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Profesión -->
+  <div class="browser" id="m-prof" hidden>
+    <div class="bar"><div class="dots"><i></i><i></i><i></i></div><div class="url">/como-ser/profesor-de-secundaria/</div></div>
+    <div class="site">
+      <span class="example-flag">Maqueta de ejemplo · cifras ficticias</span>
+      <h3 style="font-size:24px">Cómo llegar a ser profesor de secundaria</h3>
+      <div class="box"><h4>El camino</h4>
+        <div class="route"><span class="node">Grado de tu especialidad<br><small>4 años · desde 5.280 €</small></span><span class="arr">→</span><span class="node">Máster de profesorado<br><small>1 año · desde 1.050 €</small></span><span class="arr">→</span><span class="node">Oposición de secundaria<br><small>preparación media 1–2 años</small></span><span class="arr">→</span><span class="node">Profesor funcionario<br><small>sueldo neto desde 2.050 €</small></span></div>
+      </div>
+      <div class="facts num">
+        <div class="fact"><span class="v">6–7 años</span><span class="l">de media hasta la plaza</span></div>
+        <div class="fact"><span class="v">desde 6.330 €</span><span class="l">en estudios públicos</span></div>
+        <div class="fact"><span class="v">8.400</span><span class="l">plazas convocadas en 2026</span></div>
+        <div class="fact"><span class="v">9,8</span><span class="l">aspirantes por plaza</span></div>
+      </div>
+      <div class="rec"><a href="#ejemplos">Especialidades con más plazas<span>›</span></a><a href="#ejemplos">Másters de profesorado comparados<span>›</span></a><a href="#ejemplos">Oposiciones de secundaria en tu comunidad<span>›</span></a></div>
+    </div>
+  </div>
+</section>
+
+<!-- 10 -->
+<section class="sec" id="fases">
+  <div class="sec-head"><span class="eyebrow">10 · Fases</span><h2>Orden de construcción y calendario</h2>
+  <p>El calendario sigue al de la gente: las notas de corte tienen que estar indexadas antes de la selectividad de junio de 2027, y Google tarda meses en posicionar páginas nuevas.</p></div>
+  <div class="card">
+    <div class="phase"><span class="when">nov–dic 2026</span><div><h4>Fase 0 · La base</h4><p>Catálogo maestro con los códigos oficiales, conectores al BOE y a los boletines, archivo de originales, control de calidad con la ley del proyecto, dominio .es nuevo con historial revisado, marca, alta como autónomo o sociedad y textos legales.</p></div></div>
+    <div class="phase"><span class="when">ene–feb 2027</span><div><h4>Fase 1 · Oposiciones</h4><p>Estado, comunidades autónomas y todo lo local que se anuncia en el BOE; después, los boletines provinciales uno a uno. Fichas de proceso, páginas de lugar, avisos y «Mi plan». Es el módulo con noticias cada día, el que más rápido trae tráfico.</p></div></div>
+    <div class="phase"><span class="when">feb–abr 2027</span><div><h4>Fase 2 · Notas de corte y calculadora</h4><p>Histórico de cinco años o más, ponderaciones por comunidad y calculadora. Publicado como muy tarde en marzo para que esté posicionado en junio; en julio se cargan las notas nuevas el mismo día que salen.</p></div></div>
+    <div class="phase"><span class="when">abr–sep 2027</span><div><h4>Fase 3 · Carreras, másters y FP</h4><p>Másters antes del final de la preinscripción, carreras para quien acaba de hacer la selectividad y FP antes de la admisión de verano. Comparadores y páginas de «cómo llegar a ser…».</p></div></div>
+    <div class="phase"><span class="when">desde oct 2027</span><div><h4>Fase 4 · Profundidad</h4><p>Docentes y sanidad con su tratamiento propio, el resto de boletines, más años de histórico, informes anuales con nuestros datos y, si encaja, promoción interna.</p></div></div>
+    <div class="phase"><span class="when">al final</span><div><h4>Fase 5 · Test de oposición</h4><p>Preguntas generadas desde la ley consolidada y los temarios oficiales, revisadas antes de publicarse.</p></div></div>
+    <div class="phase"><span class="when">futuro</span><div><h4>Cursos propios</h4><p>Cuando la web tenga madurez y audiencia. Separados de la parte informativa.</p></div></div>
+  </div>
+</section>
+
+<!-- 11 -->
+<section class="sec" id="pendiente">
+  <div class="sec-head"><span class="eyebrow">11 · Por decidir</span><h2>Lo que queda abierto</h2></div>
+  <div class="grid2">
+    <div class="card"><h3>Cómo se gana dinero</h3><p>Publicidad, botón voluntario de «quiero que me informe este centro», afiliación a academias y centros, y más adelante cursos propios. Falta poner cifras: tráfico necesario, ingresos por mil visitas y precio por contacto.</p></div>
+    <div class="card"><h3>Sociedad y textos legales</h3><p>Alta como autónomo o sociedad antes de cobrar nada. Aviso legal, privacidad y cookies; tratamiento del correo para avisos; condiciones de reutilización de cada fuente; revisión de si se pueden enlazar o reproducir exámenes anteriores.</p></div>
+    <div class="card"><h3>Marca y dominio</h3><p>Decidido: un solo dominio .es, nuevo y con el historial revisado, con nombre de marca y no de palabras clave. Falta elegir el nombre. Las maquetas usan «Nombre por decidir».</p></div>
+    <div class="card"><h3>Diseño definitivo</h3><p>Las maquetas de esta guía son un punto de partida; el diseño final se decide con la marca.</p></div>
+    <div class="card"><h3>Reparto del trabajo</h3><p>Quién revisa los datos que el sistema marca como dudosos, quién responde al correo y cuántas horas a la semana pide cada fase.</p></div>
+    <div class="card"><h3>Becas y profesiones</h3><p>Hasta dónde llegan las becas (Estado, comunidades, universidades) y qué profesiones tienen página de «cómo llegar a ser…» en la primera versión.</p></div>
+  </div>
+</section>
+
+</main>
+</div>
+
+<script>
+(function(){
+  var tabs = document.querySelectorAll('.mock-tabs button');
+  tabs.forEach(function(b){
+    b.addEventListener('click', function(){
+      tabs.forEach(function(t){ t.setAttribute('aria-selected', t === b ? 'true' : 'false'); var el = document.getElementById(t.dataset.m); if (el) el.hidden = (t !== b); });
+    });
+  });
+  // Calculadora de ejemplo: acceso = 0,6·bachillerato + 0,4·fase de acceso; admisión = acceso + 0,2·Biología + 0,2·Química (si ≥ 5)
+  var unis = [
+    {n:'Medicina · Universidad Ejemplo', c:13.05},
+    {n:'Medicina · Universidad Ejemplo B', c:13.32},
+    {n:'Enfermería · Universidad Ejemplo', c:11.40},
+    {n:'Biotecnología · Universidad Ejemplo C', c:12.60},
+    {n:'Fisioterapia · Universidad Ejemplo B', c:12.15}
+  ];
+  function fmt(x){ return x.toFixed(2).replace('.', ','); }
+  function v(id){ var x = parseFloat(document.getElementById(id).value); return isNaN(x) ? 0 : Math.min(10, Math.max(0, x)); }
+  function calc(){
+    var acc = 0.6 * v('c-bach') + 0.4 * v('c-acc');
+    var b = v('c-bio'), q = v('c-qui');
+    var adm = acc + (b >= 5 ? 0.2 * b : 0) + (q >= 5 ? 0.2 * q : 0);
+    document.getElementById('c-acc-out').textContent = fmt(acc);
+    document.getElementById('c-out').textContent = fmt(adm);
+    var html = '<div class="uni-row h"><span>Dónde entras (nota de 2026)</span><span>Corte</span><span>Tú</span><span>Resultado</span></div>';
+    unis.forEach(function(u){
+      var d = adm - u.c, cls = d >= 0 ? 'ok' : (d > -0.3 ? 'warn' : 'bad'), txt = d >= 0 ? 'entras' : (d > -0.3 ? 'muy cerca' : 'no llegas');
+      html += '<div class="uni-row"><span>' + u.n + '</span><span class="num">' + fmt(u.c) + '</span><span class="num">' + fmt(adm) + '</span><span class="pill ' + cls + '">' + txt + '</span></div>';
+    });
+    document.getElementById('c-list').innerHTML = html;
+  }
+  ['c-bach','c-acc','c-bio','c-qui'].forEach(function(id){ document.getElementById(id).addEventListener('input', calc); });
+  calc();
+})();
+</script>

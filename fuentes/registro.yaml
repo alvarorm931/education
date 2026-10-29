@@ -1,0 +1,116 @@
+# Registro de fuentes. Cada fuente: qué da, cómo se conecta, frecuencia esperada,
+# licencia, respaldo y estado de verificación (verificada / por_verificar / sin_fuente_central).
+# Revisado: 29/10/2026.
+
+fuentes:
+  - id: boe-sumario
+    nombre: BOE · API del sumario diario
+    modulo: [oposiciones, carreras, fp, becas]
+    url: https://boe.es/datosabiertos/api/boe/sumario/{AAAAMMDD}
+    metodo: api_xml
+    cabecera_accept: application/xml
+    frecuencia: diaria de lunes a sábado, con números extraordinarios
+    licencia: Reutilización del BOE (uso comercial, citar fuente y fecha, sin aparentar carácter oficial)
+    doc: https://boe.es/datosabiertos/documentos/APIsumarioBOE.pdf
+    respaldo: [boe-rss-2b, boe-pdf-dia]
+    control: numeración correlativa del diario y de BOE-A
+    estado: verificada
+    conector: motor/boe
+
+  - id: boe-rss-2b
+    nombre: BOE · RSS sección II.B Oposiciones y concursos
+    modulo: [oposiciones]
+    url: https://www.boe.es/rss/boe.php?s=2B
+    metodo: rss
+    frecuencia: diaria
+    licencia: Reutilización del BOE
+    estado: verificada
+
+  - id: boe-pdf-dia
+    nombre: BOE · PDF de cada disposición
+    url: https://www.boe.es/boe/dias/{AAAA}/{MM}/{DD}/pdfs/{ID}.pdf
+    metodo: pdf
+    nota: único documento oficial y auténtico
+    estado: verificada
+
+  - id: boe-consolidada
+    nombre: BOE · API de legislación consolidada
+    modulo: [oposiciones-test, normativa]
+    url: https://www.boe.es/datosabiertos/api/legislacion-consolidada
+    metodo: api_xml
+    frecuencia: 1 a 3 días tras cada publicación
+    licencia: Reutilización del BOE; rotular texto consolidado como informativo
+    doc: https://www.boe.es/datosabiertos/documentos/APIconsolidada.pdf
+    estado: verificada
+
+  - id: pag-empleo
+    nombre: Punto de Acceso General · buscador de empleo público
+    modulo: [oposiciones]
+    url: https://administracion.gob.es/pagFront/empleoBecas/empleo/buscadorEmpleoAvanzado.htm
+    metodo: exportacion_csv_xml
+    limite: 10000 filas por exportación
+    uso: control de cobertura, no fuente principal
+    estado: verificada
+
+  - id: boja-datos-abiertos
+    nombre: BOJA · disposiciones por año (datos abiertos)
+    modulo: [oposiciones]
+    url: https://www.juntadeandalucia.es/datosabiertos/portal/dataset?tags=BOJA
+    metodo: dataset
+    licencia: CC BY 4.0
+    estado: verificada
+
+  - id: bopv-ultimo
+    nombre: BOPV · último boletín en XML
+    modulo: [oposiciones]
+    url: https://www.euskadi.eus/bopv2/datos/Ultimo.xml
+    metodo: xml
+    nota: codificación ISO-8859-1 según fuente secundaria
+    estado: verificada
+
+  - id: bocm-rss
+    nombre: BOCM · RSS
+    modulo: [oposiciones]
+    url: https://www.bocm.es/rss
+    metodo: rss
+    estado: por_verificar
+
+  - id: ruct
+    nombre: RUCT · Registro de Universidades, Centros y Títulos
+    modulo: [carreras, masters]
+    url: https://www.educacion.gob.es/ruct/estudio.action?codigoCiclo=SC&codigoTipo=G&CodigoEstudio={CODIGO}&actual=estudios
+    metodo: html
+    identificador: código de título de 7 cifras
+    riesgo: cambio de dominio de la sede del Ministerio
+    estado: verificada
+
+  - id: qedu
+    nombre: QEDU · Qué estudiar y dónde en la universidad
+    modulo: [carreras, masters, notas]
+    url: https://www.ciencia.gob.es/qedu.html
+    metodo: exportacion_csv_xlsx
+    riesgo: inestable en la revisión
+    estado: por_verificar
+
+  - id: notas-madrid
+    nombre: Distrito único de Madrid · notas de corte
+    modulo: [notas]
+    url: https://www.uc3m.es/ss/Satellite/UC3MInstitucional/es/TextoMixta/1371206740815/Notas_de_admision
+    metodo: pdf
+    historico: 2007-08 a 2026-27
+    estado: verificada
+
+  - id: notas-galicia
+    nombre: CiUG · notas de corte
+    modulo: [notas]
+    url: https://ciug.gal/PDF/ACCESO2024/notas_corte.pdf
+    metodo: pdf
+    estado: verificada
+
+  - id: notas-murcia
+    nombre: Universidad de Murcia · datos abiertos de notas de corte
+    modulo: [notas]
+    url: https://datos.um.es
+    metodo: ckan
+    licencia: CC0 o CC BY-SA (por confirmar con la universidad)
+    estado: verificada

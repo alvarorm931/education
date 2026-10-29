@@ -1,0 +1,128 @@
+import json
+from datetime import date
+from pathlib import Path
+
+import pytest
+
+from motor.archivo import Archivo
+from motor.boe import __main__ as cli
+from motor.boe.clasificar import ambito, clasificar
+from motor.boe.sumario import ErrorSumario, parsear, url_sumario
+from motor.http import Respuesta
+
+FIXTURE = Path(__file__).parent / "fixtures" / "sumario_ejemplo.xml"
+
+
+def test_url_sumario():
+    assert url_sumario(date(2026, 10, 28)) == "https://boe.es/datosabiertos/api/boe/sumario/20261028"
+
+
+def test_parsear_items_con_y_sin_epigrafe():
+    s = parsear(FIXTURE.read_bytes())
+    assert s.fecha_publicacion == "20261028"
+    assert [d["numero"] for d in s.diarios] == ["260"]
+    assert len(s.items) == 5
+    local = [i for i in s.items if i["departamento"] == "ADMINISTRACIÓN LOCAL"]
+    assert len(local) == 2 and all(i["epigrafe"] is None for i in local)
+    estado = next(i for i in s.items if i["identificador"] == "BOE-A-2026-90002")
+    assert estado["seccion_codigo"] == "2B"
+    assert estado["epigrafe"].startswith("Cuerpos y Escalas")
+    assert estado["pagina_inicial"] == "3"
+    assert estado["url_pdf"].endswith("BOE-A-2026-90002.pdf")
+
+
+def test_parsear_rechaza_estado_no_200():
+    xml = b"<response><status><code>404</code><text>No encontrado</text></status></response>"
+    with pytest.raises(ErrorSumario):
+        parsear(xml)
+
+
+def test_parsear_rechaza_formato_cambiado():
+    xml = b"<response><status><code>200</code><text>ok</text></status><data><otro/></data></response>"
+    with pytest.raises(ErrorSumario):
+        parsear(xml)
+
+
+@pytest.mark.parametrize("dep,esperado", [
+    ("ADMINISTRACIÓN LOCAL", "local"),
+    ("UNIVERSIDADES", "universidad"),
+    ("COMUNIDAD AUTÓNOMA DE ANDALUCÍA", "autonomico"),
+    ("COMUNIDAD DE MADRID", "autonomico"),
+    ("MINISTERIO DEL INTERIOR", "estatal"),
+    ("CONSEJO GENERAL DEL PODER JUDICIAL", "estatal"),
+])
+def test_ambito(dep, esperado):
+    assert ambito(dep) == esperado
+
+
+def test_clasificar_convocatoria_local():
+    r = clasificar({
+        "departamento": "ADMINISTRACIÓN LOCAL",
+        "titulo": "Resolución de 14 de octubre de 2026, del Ayuntamiento de Villaejemplo (Ciudad Real), "
+                  "referente a la convocatoria para proveer tres plazas de Auxiliar Administrativo.",
+    })
+    assert r["ambito"] == "local"
+    assert r["tipo_acto"] == "convocatoria"
+    assert r["convocante"] == {"tipo": "Ayuntamiento", "nombre": "Villaejemplo", "provincia": "Ciudad Real"}
+    assert r["plazas"] == 3
+    assert r["puesto"] == "Auxiliar Administrativo"
+    assert r["pendiente_revision"] == []
+
+
+def test_clasificar_varias_plazas_queda_pendiente():
+    r = clasificar({
+        "departamento": "ADMINISTRACIÓN LOCAL",
+        "titulo": "Resolución de 15 de octubre de 2026, de la Diputación Provincial de Ejemplo (Toledo), "
+                  "referente a la convocatoria para proveer varias plazas.",
+    })
+    assert r["convocante"]["tipo"] == "Diputación Provincial"
+    assert r["convocante"]["provincia"] == "Toledo"
+    assert r["plazas"] is None and r["plazas_texto"] == "varias"
+    assert "plazas" in r["pendiente_revision"] and "puesto" in r["pendiente_revision"]
+
+
+def test_clasificar_admitidos_universidad():
+    r = clasificar({
+        "departamento": "UNIVERSIDADES",
+        "titulo": "Resolución de 16 de octubre de 2026, de la Universidad de Ejemplo, por la que se aprueba la "
+                  "relación definitiva de aspirantes admitidos y excluidos al proceso selectivo de la Escala Administrativa.",
+    })
+    assert r["ambito"] == "universidad"
+    assert r["tipo_acto"] == "admitidos"
+
+
+def test_clasificar_correccion_prevalece():
+    r = clasificar({"departamento": "ADMINISTRACIÓN LOCAL",
+                    "titulo": "Corrección de errores de la Resolución de 1 de octubre de 2026, del Ayuntamiento de "
+                              "Pueblo (Badajoz), referente a la convocatoria para proveer una plaza de Policía Local."})
+    assert r["tipo_acto"] == "correccion"
+    assert r["plazas"] == 1
+
+
+def test_archivo_guarda_una_vez_y_registra(tmp_path):
+    a = Archivo(tmp_path)
+    r1 = a.guardar("boe-sumario", date(2026, 10, 28), b"abc", "u", "xml", 200)
+    r2 = a.guardar("boe-sumario", date(2026, 10, 28), b"abc", "u", "xml", 200)
+    assert r1["nuevo"] and not r2["nuevo"]
+    assert (tmp_path / r1["ruta"]).read_bytes() == b"abc"
+    assert len((tmp_path / "indice.jsonl").read_text().splitlines()) == 2
+
+
+def test_cli_extremo_a_extremo(tmp_path, monkeypatch):
+    contenido = FIXTURE.read_bytes()
+
+    def falso_obtener(url, accept=None, **kw):
+        if url.endswith("20261025"):  # domingo: sin BOE
+            return Respuesta(url, 404, b"<response><status><code>404</code></status></response>", {})
+        return Respuesta(url, 200, contenido, {"content-type": "application/xml"})
+
+    monkeypatch.setattr(cli, "obtener", falso_obtener)
+    codigo = cli.main(["--desde", "2026-10-25", "--hasta", "2026-10-26", "--salida", str(tmp_path), "--pausa", "0"])
+    assert codigo == 0
+    opos = (tmp_path / "datos/boe/oposiciones/2026/10/26.jsonl").read_text(encoding="utf-8").splitlines()
+    assert len(opos) == 4
+    fila = json.loads(opos[0])
+    assert fila["fuente"] == "boe-sumario" and len(fila["captura_sha256"]) == 64
+    estado = json.loads((tmp_path / "datos/boe/estado.json").read_text(encoding="utf-8"))
+    assert estado["ultimo_diario"]["numero"] == 260
+    assert estado["alertas_ultima_ejecucion"] == []  # el domingo sin BOE no es alerta
