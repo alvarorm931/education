@@ -1,0 +1,86 @@
+name: Estudios por tramos
+
+# Ejecuta un módulo de motor/estudios en varios tramos (matriz) y junta los resultados en un solo commit
+# en la rama "sondas". Evita que las pruebas encoladas se cancelen entre sí y permite tramos de hasta 55
+# minutos. Con la misma fuente (p. ej. el RUCT) usar paralelo=1 para no pasar de una petición por segundo.
+
+on:
+  workflow_dispatch:
+    inputs:
+      modulo:
+        description: "Módulo (por ejemplo motor.estudios.centros_ruct)"
+        required: true
+      tramos:
+        description: 'Lista JSON de argumentos, uno por tramo: ["--desde 0 --hasta 37", "--desde 37 --hasta 73"]'
+        required: true
+      paralelo:
+        description: "Tramos a la vez (1 si todos van a la misma fuente)"
+        default: "1"
+
+permissions:
+  contents: write
+
+jobs:
+  tramo:
+    runs-on: ubuntu-latest
+    timeout-minutes: 58
+    strategy:
+      fail-fast: false
+      max-parallel: ${{ fromJSON(inputs.paralelo) }}
+      matrix:
+        args: ${{ fromJSON(inputs.tramos) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -e .
+      - name: Ejecutar
+        env:
+          MODULO: ${{ inputs.modulo }}
+          ARGS: ${{ matrix.args }}
+        run: |
+          case "$MODULO" in motor.estudios.*) ;; *) echo "Módulo no permitido"; exit 1;; esac
+          mkdir -p out
+          set +e
+          python -m "$MODULO" $ARGS --salida out > out/salida.txt 2>&1
+          echo "codigo=$?" >> out/salida.txt
+          tail -n 20 out/salida.txt
+          echo "NOMBRE=$(echo "$ARGS" | tr -c 'a-zA-Z0-9' '_' | cut -c1-80)" >> "$GITHUB_ENV"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: tramo-${{ env.NOMBRE }}
+          path: out
+          retention-days: 7
+
+  juntar:
+    needs: tramo
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    concurrency:
+      group: rama-sondas
+      cancel-in-progress: false
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: tramos
+      - name: Subir a la rama sondas
+        env:
+          MODULO: ${{ inputs.modulo }}
+        run: |
+          STAMP=$(date -u +%Y%m%dT%H%M%S)
+          mkdir -p "pub/$STAMP"
+          for d in tramos/*/; do
+            n=$(basename "$d")
+            cp "$d/salida.txt" "pub/$STAMP/$n.salida.txt" 2>/dev/null || true
+            if [ -d "$d/datos" ]; then cp -r "$d/datos" "pub/$STAMP/"; fi
+            if [ -d "$d/archivo" ]; then mkdir -p "pub/$STAMP/archivo"; cp -r "$d/archivo/." "pub/$STAMP/archivo/"; cat "$d/archivo/indice.jsonl" >> "pub/$STAMP/archivo/indice_todos.jsonl" 2>/dev/null || true; fi
+          done
+          cd pub
+          git init -q && git config user.name "motor-estudios" && git config user.email "motor-estudios@users.noreply.github.com"
+          git remote add origin "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git"
+          if git fetch -q --depth 1 origin sondas; then git reset -q FETCH_HEAD; fi
+          git checkout -q -B sondas
+          git add "$STAMP" && git commit -qm "Estudios por tramos: $MODULO" && git push -q origin sondas
