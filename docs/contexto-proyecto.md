@@ -26,30 +26,44 @@ ventanas al entrar, Core Web Vitals en verde, robots de búsqueda y de IA permit
 ## Reglas de datos
 
 - Cada dato publicado lleva fuente, URL y fecha de captura. La fecha solo cambia si cambia el dato.
-- Los originales se guardan intactos con huella sha256 (hoy en la rama `datos`; pasarán a un almacén externo).
-- Nunca se guardan ni publican datos de personas (listas de admitidos, aprobados): solo recuentos. Ver `motor/limpieza.py`.
+- Los originales se guardan intactos con huella sha256. **Mientras el repositorio sea público**, de los originales de
+  boletines solo se guarda la huella, la URL, el tamaño y la fecha (`archivo/indices/`), porque traen datos de
+  personas; el contenido irá a un almacén privado (R2) cuando exista (`MOTOR_ORIGINALES=completo`).
+- Nunca se guardan ni publican datos de personas (listas de admitidos, aprobados, nombramientos): solo recuentos.
+  Párrafos con un documento de identidad o con un nombre precedido de tratamiento («don», «D.ª», «Sra.») se retiran
+  y se cuentan; en los títulos el nombre se sustituye por «[persona]». Ver `motor/limpieza.py`. Las ramas `datos` y
+  `sondas` son públicas: las sondas y pruebas se anonimizan antes de subir (`motor/mantenimiento/anonimizar.py`).
 - Peticiones a las fuentes moderadas (alrededor de una por segundo), identificadas y solo de lo nuevo.
 - Licencias: citar la fuente (BOE, ministerios, CC BY de comunidades) e indicar fecha de actualización.
 
 ## Estado técnico
 
-- Repositorio privado `alvarorm931/education`. Código en `motor/`, pruebas en `tests/`, documentación en `docs/`.
+- Repositorio **público** `alvarorm931/education` (comprobado por la API el 29/10/2026). Código en `motor/`, pruebas
+  en `tests/`, documentación en `docs/`.
 - Datos en la rama `datos` (no mezclar con `main`). Pruebas de conectores y sondas en la rama `sondas`.
 - Ejecución en GitHub Actions: `motor.yml` (BOE, extracción y procesos) dos veces al día; `autonomicos.yml`
-  (boletines autonómicos, `infra/autonomicos.sh`) una vez al día; `prueba.yml` y `sonda.yml` bajo demanda.
-  GitHub Free: 2.000 minutos al mes en repositorios privados. Vigilar el consumo.
+  (un trabajo por boletín autonómico o provincial, en paralelo, `infra/autonomicos.sh`) una vez al día;
+  `mantenimiento.yml`, `prueba.yml` y `sonda.yml` bajo demanda. En repositorios públicos los ejecutores estándar no
+  consumen minutos de pago (docs.github.com, «GitHub Actions billing»); límites: 6 horas por trabajo y 20 trabajos
+  a la vez en el plan gratuito.
 - El espacio de trabajo de Claude no llega a las webs de las fuentes: todo se prueba desde GitHub (sondas y pruebas;
   `python -m motor.autonomicos.humo` prueba los conectores autonómicos contra las fuentes reales).
 - 16 boletines bloquean a GitHub (servidores fuera de España). Se está creando un servidor en AWS región España
   (Lightsail) como ejecutor de GitHub (`infra/arranque-servidor.sh`).
 - Hecho: BOE 2022-2026 completo (1.525 boletines, 341.298 disposiciones, 51.855 anuncios de oposiciones),
   textos de anuncios en descarga, registro de 62 boletines.
-- Conectores autonómicos (`motor/autonomicos/`): BOJA (Andalucía), BOCM (Madrid), BOCYL (Castilla y León), DOGV
-  (Comunitat Valenciana), DOG (Galicia) y DOGC (Cataluña), con piezas comunes en `comun.py`.
-- Extracción sin IA (`motor/extraccion/`): plazo de solicitudes de cualquier boletín (`plazo.py`) y plazas
-  convocadas (`plazas.py`); plantilla de anuncios locales del BOE en `motor/boe/extraer.py`.
-- Procesos (`motor/procesos.py`): une BOE y boletines autonómicos (misma convocatoria = un proceso; bases íntegras
-  locales enlazadas al anuncio del BOE que las cita).
+- Conectores autonómicos (`motor/autonomicos/`, 14): BOJA, BOCM, BOCYL, DOGV, DOG, DOGC, BOA, DOE, BOIB, BORM,
+  BOC, BOPV, DOCM y BOME, con piezas comunes en `comun.py`. Faltan Asturias, Navarra, Cantabria, La Rioja y Ceuta
+  (bloquean a GitHub). Provinciales (`motor/provinciales/`): BOPB (Barcelona); siguientes por número de bases
+  citadas en el BOE: Valencia, Alicante, Tarragona, Granada, Sevilla, Tenerife, Málaga.
+- Catálogo territorial (`motor/catalogo/territorio.py`): 52 provincias y 8.132 municipios del INE (2026); cada
+  proceso lleva provincia, comunidad y código INE del convocante cuando es inequívoco.
+- Extracción sin IA (`motor/extraccion/`): plazo de solicitudes (`plazo.py`) y plazas (`plazas.py`) en castellano,
+  catalán/valenciano y gallego; boletines citados con comillas, sin ellas o por siglas. Plantilla de anuncios locales
+  del BOE en `motor/boe/extraer.py`.
+- Procesos (`motor/procesos.py`): une BOE y boletines autonómicos y provinciales (misma convocatoria = un proceso;
+  bases locales enlazadas al anuncio del BOE que las cita por código INE o nombre; bases locales sin anuncio en el
+  BOE, como bolsas y contratos temporales, forman su propio proceso).
 
 ## Documentos clave
 
