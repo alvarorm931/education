@@ -19,6 +19,7 @@ from collections import Counter, defaultdict
 from pathlib import Path
 
 from motor.autonomicos.comun import escribir_jsonl, leer_jsonl
+from motor.boe.extraer import aplicar_plazas
 from motor.extraccion.plazo import VERSION as VERSION_PLAZO, extraer_plazo
 
 # fuente -> (siglas, nombres con los que el propio boletín se cita en los textos)
@@ -83,6 +84,7 @@ def construir_acto(fuente: str, x: dict, texto: str | None) -> dict:
             acto["extraccion"] = VERSION_PLAZO
         if not plazo or not plazo.get("fin_estimado"):
             acto["pendiente"].append("plazo")
+        aplicar_plazas(acto, texto)
     acto["pendiente"].append("extraccion_ia")
     return acto
 

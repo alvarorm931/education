@@ -30,6 +30,7 @@ from motor.boe.clasificar import normalizar
 from motor.boe.texto import ruta_texto
 from motor.calendario import fin_de_plazo
 from motor.catalogo.puestos import grupo, normalizar_puesto
+from motor.extraccion.plazas import extraer_plazas
 from motor.extraccion.plazo import VERSION as VERSION_PLAZO, extraer_plazo
 from motor.extraccion.texto_es import MESES, UNIDADES, fecha_texto, numero  # noqa: F401 (se reexportan)
 
@@ -229,8 +230,20 @@ def construir_acto(anuncio: dict, texto: dict | None) -> dict:
                 acto["extraccion"] = VERSION_PLAZO
             if not plazo or not plazo.get("fin_estimado"):
                 acto["pendiente"].append("plazo")
+            aplicar_plazas(acto, cuerpo)
         acto["pendiente"].append("extraccion_ia")
     return acto
+
+
+def aplicar_plazas(acto: dict, cuerpo: str) -> None:
+    """Plazas desde la frase «se convoca proceso selectivo para cubrir N plazas del Cuerpo...»."""
+    p = extraer_plazas(cuerpo)
+    if not p:
+        acto["pendiente"].append("plazas")
+        return
+    acto["total_plazas"] = p["total"]
+    acto["plazas"] = p.get("plazas") or []
+    acto["cita_plazas"] = p["cita"]
 
 
 def main(argv: list[str] | None = None) -> int:
