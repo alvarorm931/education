@@ -59,9 +59,8 @@ jobs:
     if: always()
     runs-on: ubuntu-latest
     timeout-minutes: 15
-    concurrency:
-      group: rama-sondas
-      cancel-in-progress: false
+    # Sin grupo de concurrencia: el grupo «rama-sondas» lo comparten otros flujos y una espera allí puede
+    # cancelarse. Cada ejecución añade una carpeta propia, así que basta con reintentar el push.
     steps:
       - uses: actions/download-artifact@v4
         with:
@@ -83,4 +82,10 @@ jobs:
           git remote add origin "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git"
           if git fetch -q --depth 1 origin sondas; then git reset -q FETCH_HEAD; fi
           git checkout -q -B sondas
-          git add "$STAMP" && git commit -qm "Estudios por tramos: $MODULO" && git push -q origin sondas
+          git add "$STAMP" && git commit -qm "Estudios por tramos: $MODULO"
+          for i in 1 2 3 4 5 6; do
+            git push -q origin sondas && exit 0
+            sleep $((i * 10))
+            git fetch -q --depth 1 origin sondas && git rebase -q FETCH_HEAD
+          done
+          exit 1
