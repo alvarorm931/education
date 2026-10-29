@@ -53,3 +53,13 @@ def test_resumen():
     r = cat.resumen(_catalogo())
     assert r["activos_por_tipo"]["doble"] >= 1
     assert r["imparticiones_sin_codigo_de_centro"] == 0
+
+
+def test_situacion_mas_viva_por_titulo():
+    tit = [{"Nivel académico": "Máster", "Código de la titulación": "1", "Nombre de la titulación (RUCT)": "Máster X",
+            "Situación": s, "Universidad": "U", "Tipo de universidad": "Pública", "Unidad": f"C{i}",
+            "Tipo de unidad": "Público", "Presencialidad de la titulación": "Estudio presencial", "Idioma extranjero": "No"}
+           for i, s in enumerate(["En proceso de extinción", "Activo"])]
+    t = cat.construir(tit, [], [], [], "2025-2026")[0]
+    assert t["situacion"] == "Activo"
+    assert [i["situacion"] for i in t["imparticiones"]] == ["En proceso de extinción", "Activo"]

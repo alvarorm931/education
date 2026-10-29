@@ -47,6 +47,8 @@ FICHEROS = {
 }
 NIVELES_MASTER = {"Máster": "simple", "Estudio Conjunto de Master": "doble"}
 SITUACIONES_VIVAS = {"Activo", "En proceso de extinción"}
+# Un título puede tener situaciones distintas en cada centro: el título toma la más viva.
+ORDEN_SITUACION = {"Activo": 0, "En proceso de extinción": 1, "Inactivo": 2, "Extinguido": 3}
 
 
 class ErrorCatalogo(Exception):
@@ -152,6 +154,9 @@ def construir(titulaciones: list[dict], rama: list[dict], centros: list[dict], u
                 "imparticiones": [],
                 "fuente": {"cita": CITA, "curso": curso},
             }
+        sit = t.get("Situación")
+        if ORDEN_SITUACION.get(sit, 9) < ORDEN_SITUACION.get(reg["situacion"], 9):
+            reg["situacion"] = sit
         candidatos = por_centro.get((t["Universidad"], t["Unidad"]), [])
         codigos = sorted({c["Código de la unidad"] for c in candidatos})
         reg["imparticiones"].append({
@@ -161,6 +166,7 @@ def construir(titulaciones: list[dict], rama: list[dict], centros: list[dict], u
             "municipio": candidatos[0].get("Municipio de la unidad") if len(codigos) == 1 else None,
             "unidad_tipo": t.get("Tipo de unidad"),
             "unidad_modalidad": candidatos[0].get("Modalidad de la Unidad") if len(codigos) == 1 else None,
+            "situacion": sit,
             "presencialidad": t.get("Presencialidad de la titulación"),
             "idioma_extranjero": t.get("Idioma extranjero"),
         })
@@ -175,8 +181,9 @@ def resumen(catalogo: list[dict]) -> dict:
         "por_situacion": dict(Counter(t["situacion"] for t in catalogo)),
         "activos_por_tipo": dict(Counter(t["tipo"] for t in activos)),
         "activos_por_universidad_tipo": dict(Counter(t["universidad_tipo"] for t in activos if t["tipo"] == "simple")),
-        "imparticiones_activas": sum(len(t["imparticiones"]) for t in activos),
-        "presencialidad_imparticiones_activas": dict(Counter(i["presencialidad"] for t in activos for i in t["imparticiones"])),
+        "imparticiones_activas": sum(1 for t in activos for i in t["imparticiones"] if i["situacion"] == "Activo"),
+        "presencialidad_imparticiones_activas": dict(Counter(i["presencialidad"] for t in activos for i in t["imparticiones"]
+                                                             if i["situacion"] == "Activo")),
         "universidades_con_master_vivo": len({t["universidad"] for t in vivos}),
         "imparticiones_sin_codigo_de_centro": sum(1 for t in catalogo for i in t["imparticiones"] if not i["unidad_codigo"]),
     }
