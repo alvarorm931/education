@@ -105,3 +105,20 @@ jobs:
               sys.exit(1)
           print("Sin huecos en el BOE. Anuncios sin texto:", h.get("anuncios_sin_texto"))
           EOF
+
+      - name: Resumen legible por la API
+        if: always()
+        run: |
+          python - <<'EOF'
+          import json, pathlib
+          partes = []
+          h = pathlib.Path("salida/datos/boe/huecos.json")
+          if h.exists():
+              partes.append("anuncios sin texto " + str(json.loads(h.read_text()).get("anuncios_sin_texto")))
+          r = pathlib.Path("salida/datos/oposiciones/resumen.json")
+          if r.exists():
+              d = json.loads(r.read_text())
+              partes.append(f"procesos {d.get('procesos')}, por estado {d.get('por_estado')}, "
+                            f"plazo abierto {d['plazo_abierto']['procesos']} procesos y {d['plazo_abierto']['plazas']} plazas")
+          print("::notice title=Resumen BOE::" + "; ".join(partes))
+          EOF

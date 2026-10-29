@@ -17,7 +17,7 @@ on:
         default: "3"
       conectores:
         description: "Conectores, separados por espacios"
-        default: "boja bocm bocyl dogv dog dogc boa doe boib borm boc bopv"
+        default: "boja bocyl dogv dog dogc boa doe boib borm boc bopv bocm"
 
 permissions:
   contents: write
@@ -32,7 +32,7 @@ jobs:
     timeout-minutes: 340
     env:
       MINUTOS: ${{ inputs.minutos || '3' }}
-      CONECTORES: ${{ inputs.conectores || 'boja bocm bocyl dogv dog dogc boa doe boib borm boc bopv' }}
+      CONECTORES: ${{ inputs.conectores || 'boja bocyl dogv dog dogc boa doe boib borm boc bopv bocm' }}
     steps:
       - uses: actions/checkout@v4
 
@@ -76,6 +76,7 @@ jobs:
           python - <<'EOF' >> "$GITHUB_STEP_SUMMARY"
           import json, pathlib
           base = pathlib.Path("salida/datos/autonomicos")
+          resumen = []
           print("| Boletín | Días o meses con informe | Anuncios de empleo público | Textos |")
           print("|---|---|---|---|")
           for b in sorted(p.name for p in base.iterdir() if p.is_dir()) if base.exists() else []:
@@ -85,4 +86,8 @@ jobs:
               empleo = sum(1 for f in (d / "oposiciones").rglob("*.jsonl") for l in f.open(encoding="utf-8") if l.strip())
               textos = len(list((d / "textos").rglob("*.json")))
               print(f"| {b} | {informes} | {empleo} | {textos} |")
+              resumen.append(f"{b} {informes}/{empleo}/{textos}")
+          pathlib.Path("resumen.txt").write_text("; ".join(resumen), encoding="utf-8")
           EOF
+          # Las anotaciones sí se pueden leer por la API: resumen en una línea (informes/empleo/textos)
+          echo "::notice title=Resumen autonómicos::$(cat resumen.txt)"

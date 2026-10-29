@@ -41,6 +41,17 @@ class _AdaptadorTLS(HTTPAdapter):
         return super().proxy_manager_for(*args, **kwargs)
 
 
+def _leer_con_limite(r: requests.Response, limite: float) -> bytes:
+    fin = time.monotonic() + limite
+    trozos = []
+    for trozo in r.iter_content(chunk_size=65536):
+        trozos.append(trozo)
+        if time.monotonic() > fin:
+            r.close()
+            raise TimeoutError(f"respuesta de {r.url} sin terminar tras {limite:.0f} s")
+    return b"".join(trozos)
+
+
 def sesion_tls_compatible(cifrados: str = "DEFAULT") -> requests.Session:
     s = requests.Session()
     s.mount("https://", _AdaptadorTLS(cifrados))
@@ -63,10 +74,13 @@ def obtener(
     pausa_base: float = 2.0,
     sesion: requests.Session | None = None,
     formulario: dict[str, str] | None = None,
+    limite_total: float = 180.0,
 ) -> Respuesta:
     """Descarga una URL. Reintenta solo errores transitorios (red, 429, 5xx) con espera creciente.
 
     formulario: si se indica, la petición es POST con esos campos (algunas API oficiales solo aceptan POST).
+    limite_total: segundos máximos para recibir la respuesta entera (el timeout de requests es por lectura y un
+    servidor que envía muy despacio podría bloquear la ejecución).
     """
     cabeceras = {"User-Agent": USER_AGENT}
     if accept:
@@ -76,16 +90,18 @@ def obtener(
     for intento in range(intentos):
         try:
             if formulario is None:
-                r = http.get(url, headers=cabeceras, timeout=timeout)
+                r = http.get(url, headers=cabeceras, timeout=timeout, stream=True)
             else:
-                r = http.post(url, data=formulario, headers=cabeceras, timeout=timeout)
+                r = http.post(url, data=formulario, headers=cabeceras, timeout=timeout, stream=True)
             if r.status_code in REINTENTABLES and intento < intentos - 1:
+                r.close()
                 espera = float(r.headers.get("Retry-After", pausa_base * (2**intento)))
                 time.sleep(min(espera, 60))
                 continue
+            contenido = _leer_con_limite(r, limite_total)
             utiles = {k: v for k, v in r.headers.items() if k.lower() in {"etag", "last-modified", "content-type", "date"}}
-            return Respuesta(url=r.url, status=r.status_code, contenido=r.content, cabeceras=utiles)
-        except requests.RequestException as e:  # red caída, timeout, DNS
+            return Respuesta(url=r.url, status=r.status_code, contenido=contenido, cabeceras=utiles)
+        except (requests.RequestException, TimeoutError) as e:  # red caída, timeout, DNS, respuesta interminable
             ultimo_error = e
             if intento < intentos - 1:
                 time.sleep(pausa_base * (2**intento))
