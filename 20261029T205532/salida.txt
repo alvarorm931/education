@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/runner/work/education/education/motor/provinciales/sonda_tls.py", line 92, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/runner/work/education/education/motor/provinciales/sonda_tls.py", line 71, in main
+    sub = re.search(r"Subject: (.*)", texto_certificado(pem)).group(1)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'group'
+codigo=1
