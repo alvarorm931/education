@@ -1,0 +1,318 @@
+ 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+
+
+
+
+
+
+
+<html xml:lang="es" lang="es" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Registro de Universidades, Centros y Títulos (RUCT) - Ministerio de Educación, Cultura y Deporte</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-15" />
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta http-equiv="Cache-Control" content="no-cache" />
+	<meta name="verify-v1" content="/vj8XSi7jRH1ilVIo0I+weWECxS77hjWustQMQtGqqY=" />	
+	<script type="text/javascript" src="/ruct/js/jstarget.js"></script>
+	<script type="text/javascript" src="/ruct/js/glibrary.js"></script>
+	<link rel="stylesheet" media="screen" type="text/css" href="/ruct/css/estilos-web-aplicaciones.css" />
+	<link rel="stylesheet" media="print" type="text/css" href="/ruct/css/estilos-web-imprimir-aplicaciones.css" />
+	<link rel="stylesheet" media="screen" type="text/css" href="/ruct/css/contenido-web-aplicaciones.css" />
+	<link rel="stylesheet" media="print" type="text/css" href="/ruct/css/contenido-web-imprimir-aplicaciones.css" />
+	
+
+
+
+
+<script type="text/javascript" src="/ruct/struts/js/base/jquery-1.11.0.js"></script>
+        <script type="text/javascript" src="/ruct/struts/js/base/jquery.ui.core.js?s2j=3.7.1"></script>
+<script type="text/javascript" src="/ruct/struts/js/plugins/jquery.subscribe.js?s2j=3.7.1"></script>
+
+<script type="text/javascript" src="/ruct/struts/js/struts2/jquery.struts2.js?s2j=3.7.1"></script>
+
+<script type="text/javascript">
+    $(function () {
+        jQuery.struts2_jquery.version = "3.7.1";
+        jQuery.scriptPath = "/ruct/struts/";
+        jQuery.struts2_jquery.minSuffix = "";
+        jQuery.struts2_jquery.local = "es";
+        jQuery.struts2_jquery.gridLocal = "es";
+        jQuery.struts2_jquery.timeLocal = "es";
+        jQuery.ajaxSettings.traditional = true;
+
+        jQuery.ajaxSetup({
+            cache: false
+        });
+
+        jQuery.struts2_jquery.require("js/struts2/jquery.ui.struts2.js?s2j=3.7.1");
+
+    });
+</script>
+
+    <link id="jquery_theme_link" rel="stylesheet"
+          href="/ruct/struts/themes/smoothness/jquery-ui.css?s2j=3.7.1" type="text/css"/>
+
+	
+</head>
+<body>
+<div id="cabecera-superior">
+	<div id="escudo"><a href="https://www.universidades.gob.es/"><img src="/ruct/img/logo_mciu_2.png" alt="Gobierno de España - Ministerio de Ciencia, Innovación y Universidades" /></a></div>
+	<div id="menu"></div>
+</div><!--fin cabecera-superior-->
+
+<div id="contenedor">
+
+<div id="seccion-educacion">
+
+<div class="migas">
+<strong>Est&aacute; usted en:&nbsp;</strong>
+	<ol> 
+    <li><a href="https://www.universidades.gob.es/">Portada</a></li> 
+    <li><a href="https://www.educacion.gob.es/educacion/universidades.html">Universidades</a></li>
+    </ol>
+</div>
+
+<h1>Registro de Universidades, Centros y Títulos (RUCT)</h1>
+</div>
+
+<div id="menu-contenido">
+	<ul>
+<li>
+<a href="/ruct/consultauniversidades?actual=universidades"><strong>Sección universidades</strong></a>
+</li>
+<li>
+<a href="/ruct/consultacentros?actual=centros">Sección centros</a>
+</li>
+<li>
+<a href="/ruct/consultaestudios?actual=estudios">Sección títulos</a>
+</li>
+</ul>
+</div>
+
+<div id="contenido">
+
+	<div class="enlaces">
+		<ul>
+			<li><a href="/ruct/contacto_ciencia.html">Contacte</a></li>
+			<li><a href="/ruct/home">Inicio</a></li>
+			<script>document.write("<li><a href='javascript:history.back()'>Volver</a></li>");</script>
+		</ul>
+	</div>	
+	
+	
+	
+	
+	
+	<div id="formulario">
+	
+
+
+
+	<form id="listauniversidades" name="listauniversidades" action="/ruct/listauniversidades.action;jsessionid=E523CD43188E46BA539EDE2C058B7BE6?actual=universidades" method="post">
+			
+		<h2>Consulta de universidades</h2>
+	
+		<input type="hidden" name="consulta" value="1" id="listauniversidades_consulta"/>
+
+		<fieldset>
+	
+			<!--label for="codigoUniversidad">
+				<span class="label">Código de la universidad :</span>
+				<input type="text" name="textoCodigoUniversidad" size="5" maxlength="3" value="" tabindex="1" id="textoCodigoUniversidad"/>					
+			</label-->			
+			
+			<label for="cccaa" >    <span class="label">
+Administración Educativa Responsable (Comunidad Autónoma/Estado):    </span>
+<select name="cccaa" tabindex="2" id="cccaa" onchange="document.location='consultauniversidades?actual=universidades&amp;cccaa='+this.value;">
+    <option value=""
+    >Todos</option>
+    <option value="18">Ciudad de Ceuta</option>
+    <option value="19">Ciudad de Melilla</option>
+    <option value="01">Comunidad Autónoma de Andalucía</option>
+    <option value="02">Comunidad Autónoma de Aragón</option>
+    <option value="05">Comunidad Autónoma de Canarias</option>
+    <option value="06">Comunidad Autónoma de Cantabria</option>
+    <option value="08">Comunidad Autónoma de Castilla-La Mancha</option>
+    <option value="09">Comunidad Autónoma de Cataluña</option>
+    <option value="10">Comunidad Autónoma de Extremadura</option>
+    <option value="11">Comunidad Autónoma de Galicia</option>
+    <option value="12">Comunidad Autónoma de la Rioja</option>
+    <option value="04">Comunidad Autónoma de las Illes Balears</option>
+    <option value="17">Comunidad Autónoma del País Vasco</option>
+    <option value="07">Comunidad de Castilla y León</option>
+    <option value="13">Comunidad de Madrid</option>
+    <option value="15">Comunidad Foral de Navarra</option>
+    <option value="16">Comunidad Valenciana</option>
+    <option value="00">Estado</option>
+    <option value="03">Principado de Asturias</option>
+    <option value="14">Región de Murcia</option>
+
+
+</select>
+
+</label>
+
+			
+			<label for="codigoUniversidad" >    <span class="label">
+Universidad:    </span>
+<select name="codigoUniversidad" tabindex="3" id="codigoUniversidad">
+    <option value=""
+    >Todos</option>
+    <option value="099">Centros autorizados para impartir Enseñanzas Artísticas Superiores</option>
+    <option value="086">Centros dependientes del Ministerio de Defensa</option>
+    <option value="105">Centros extranjeros autorizados por la Comunidad Autónoma de Aragón</option>
+    <option value="092">Centros extranjeros autorizados por la Comunidad Autónoma de Cantabria</option>
+    <option value="101">Centros extranjeros autorizados por la Comunidad Autónoma de Cataluña</option>
+    <option value="095">Centros extranjeros autorizados por la Comunidad Autónoma del País Vasco</option>
+    <option value="093">Centros extranjeros autorizados por la Comunidad de Andalucía</option>
+    <option value="091">Centros extranjeros autorizados por la Comunidad de Madrid</option>
+    <option value="096">Centros extranjeros autorizados por la Comunidad Valenciana</option>
+    <option value="089">CUNEF Universidad</option>
+    <option value="087">ESIC Universidad</option>
+    <option value="057">IE Universidad</option>
+    <option value="109">IE Universidad Madrid</option>
+    <option value="061">Mondragón Unibertsitatea</option>
+    <option value="000">Otros Centros de Nivel Universitario</option>
+    <option value="074">Universidad a Distancia de Madrid</option>
+    <option value="047">Universidad Alfonso X El Sabio</option>
+    <option value="106">Universidad Alfonso X el Sabio Mare Nostrum</option>
+    <option value="052">Universidad Antonio de Nebrija</option>
+    <option value="022">Universidad Autónoma de Barcelona</option>
+    <option value="023">Universidad Autónoma de Madrid</option>
+    <option value="065">Universidad Camilo José Cela</option>
+    <option value="067">Universidad Cardenal Herrera-CEU</option>
+    <option value="036">Universidad Carlos III de Madrid</option>
+    <option value="072">Universidad Católica de Valencia San Vicente Mártir</option>
+    <option value="066">Universidad Católica San Antonio</option>
+    <option value="059">Universidad Católica Santa Teresa de Jesús de Ávila</option>
+    <option value="102">Universidad CEU Fernando III</option>
+    <option value="010">Universidad Complutense de Madrid</option>
+    <option value="037">Universidad de A Coruña</option>
+    <option value="029">Universidad de Alcalá</option>
+    <option value="001">Universidad de Alicante</option>
+    <option value="048">Universidad de Almería</option>
+    <option value="004">Universidad de Barcelona</option>
+    <option value="051">Universidad de Burgos</option>
+    <option value="005">Universidad de Cádiz</option>
+    <option value="016">Universidad de Cantabria</option>
+    <option value="034">Universidad de Castilla-La Mancha</option>
+    <option value="006">Universidad de Córdoba</option>
+    <option value="030">Universidad de Deusto</option>
+    <option value="100">Universidad de Diseño, Innovación y Tecnología (UDIT)</option>
+    <option value="002">Universidad de Extremadura</option>
+    <option value="008">Universidad de Granada</option>
+    <option value="049">Universidad de Huelva</option>
+    <option value="050">Universidad de Jaén</option>
+    <option value="015">Universidad de La Laguna</option>
+    <option value="045">Universidad de La Rioja</option>
+    <option value="090">Universidad de las Hespérides</option>
+    <option value="026">Universidad de Las Palmas de Gran Canaria</option>
+    <option value="009">Universidad de León</option>
+    <option value="044">Universidad de Lleida</option>
+    <option value="011">Universidad de Málaga</option>
+    <option value="110">Universidad de Mallorca</option>
+    <option value="012">Universidad de Murcia</option>
+    <option value="031">Universidad de Navarra</option>
+    <option value="013">Universidad de Oviedo</option>
+    <option value="014">Universidad de Salamanca</option>
+    <option value="007">Universidad de Santiago de Compostela</option>
+    <option value="017">Universidad de Sevilla</option>
+    <option value="019">Universidad de Valladolid</option>
+    <option value="060">Universidad de Vic-Universidad Central de Catalunya</option>
+    <option value="038">Universidad de Vigo</option>
+    <option value="021">Universidad de Zaragoza</option>
+    <option value="085">Universidad del Atlántico Medio</option>
+    <option value="020">Universidad del País Vasco/Euskal Herriko Unibertsitatea</option>
+    <option value="098">Universidad Euneiz</option>
+    <option value="107">Universidad Europea de Andalucía</option>
+    <option value="079">Universidad Europea de Canarias</option>
+    <option value="053">Universidad Europea de Madrid</option>
+    <option value="082">Universidad Europea de Valencia</option>
+    <option value="083">Universidad Europea del Atlántico</option>
+    <option value="069">Universidad Europea Miguel de Cervantes</option>
+    <option value="084">Universidad Fernando Pessoa-Canarias (UFP-C)</option>
+    <option value="068">Universidad Francisco de Vitoria</option>
+    <option value="097">Universidad Intercontinental de la Empresa</option>
+    <option value="063">Universidad Internacional de Andalucía</option>
+    <option value="094">Universidad Internacional de la Empresa</option>
+    <option value="077">Universidad Internacional de La Rioja</option>
+    <option value="080">Universidad Internacional Isabel I de Castilla</option>
+    <option value="071">Universidad Internacional Menéndez Pelayo</option>
+    <option value="108">Universidad Internacional para el Desarrollo UNINDE</option>
+    <option value="088">Universidad Internacional Villanueva</option>
+    <option value="040">Universidad Jaume I de Castellón</option>
+    <option value="081">Universidad Loyola Andalucía</option>
+    <option value="055">Universidad Miguel Hernández de Elche</option>
+    <option value="028">Universidad Nacional de Educación a Distancia</option>
+    <option value="058">Universidad Pablo de Olavide</option>
+    <option value="064">Universidad Politécnica de Cartagena</option>
+    <option value="024">Universidad Politécnica de Catalunya</option>
+    <option value="025">Universidad Politécnica de Madrid</option>
+    <option value="039">Universidad Pompeu Fabra</option>
+    <option value="033">Universidad Pontificia Comillas</option>
+    <option value="032">Universidad Pontificia de Salamanca</option>
+    <option value="035">Universidad Pública de Navarra</option>
+    <option value="041">Universidad Ramón Llull</option>
+    <option value="056">Universidad Rey Juan Carlos</option>
+    <option value="042">Universidad Rovira i Virgili</option>
+    <option value="073">Universidad San Jorge</option>
+    <option value="046">Universidad San Pablo-CEU</option>
+    <option value="103">Universidad Tecnológica Atlántico-Mediterráneo</option>
+    <option value="104">Universidad Tecnológica de las Islas Canarias</option>
+    <option value="070">Universitat Abat Oliba CEU</option>
+    <option value="043">Universitat de Girona</option>
+    <option value="003">Universitat de les Illes Balears</option>
+    <option value="018">Universitat de València (Estudi General)</option>
+    <option value="062">Universitat Internacional de Catalunya</option>
+    <option value="076">Universitat Internacional Valenciana</option>
+    <option value="054">Universitat Oberta de Catalunya</option>
+    <option value="027">Universitat Politècnica de València</option>
+
+
+</select>
+
+</label>
+
+			
+			<label for="tipo_univ" >    <span class="label">
+Naturaleza:    </span>
+<select name="tipo_univ" tabindex="4" id="tipo_univ">
+    <option value=""
+    >Todos</option>
+    <option value="1">Pública</option>
+    <option value="2">Privada</option>
+
+
+</select>
+
+</label>
+
+
+		</fieldset>
+
+
+		<div class="botones-submit">
+			<input type="submit" value="Consultar" id="listauniversidades_0" class="boton-inicio" tabindex="5"/>
+
+		</div>				
+		
+	</form>
+
+
+				
+
+	</div>
+
+</div>
+
+<div id="pie">
+	<p>© Ministerio de Ciencia, Innovación y Universidades</p><ul>
+	<li class=""><a rel="external" href="https://www.ciencia.gob.es/InfoGeneralPortal/AvisoLegal.html">Aviso legal</a></li>
+	<li class="ultimo"><a rel="external" href="https://www.ciencia.gob.es/InfoGeneralPortal/Accesibilidad.html">Accesibilidad</a></li>
+</ul>
+	<p><a rel="external" href="http://www.w3.org/WAI/WCAG1AA-Conformance"><img title="Este sitio web cumple con el nivel de accesibilidad doble A según las pautas WCAG 1.0" alt="Logotipo W3C/WAI doble A (WCAG 1.0)" src="/ruct/img/logo-w3c.gif"/></a></p>
+
+</div>
+</div></body></html>
