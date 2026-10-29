@@ -19,7 +19,7 @@ import re
 import sys
 import time
 import xml.etree.ElementTree as ET
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
@@ -104,16 +104,39 @@ def ruta_texto(raiz: Path, ident: str, fecha: str) -> Path:
     return raiz / "datos" / "boe" / "textos" / f[:4] / f[4:6] / f"{ident}.json"
 
 
-def pendientes(raiz: Path) -> list[tuple[str, str]]:
-    """(identificador, fecha) de los anuncios de oposiciones sin texto descargado, del más reciente al más antiguo."""
-    lista = []
-    for fichero in sorted((raiz / "datos" / "boe" / "oposiciones").glob("*/*/*.jsonl"), reverse=True):
+PRIORIDAD_ACTO = {"convocatoria": 0, "correccion": 0, "anulacion": 0, "admitidos": 1, "aprobados": 1, "examen": 1,
+                  "tribunal": 1, "oferta_empleo": 1, "nombramiento": 2, "desierta": 2}
+
+
+def pendientes(raiz: Path, dias_recientes: int = 60) -> list[tuple[str, str]]:
+    """(identificador, fecha) de los anuncios de oposiciones sin texto, por orden de valor:
+    1) los de los últimos `dias_recientes` días (procesos con plazo abierto o recién abierto);
+    2) los de acceso abierto al público, por tipo de acto y del más reciente al más antiguo;
+    3) el resto (provisión de puestos entre funcionarios, promoción interna, profesorado universitario).
+    """
+    filas = []
+    for fichero in (raiz / "datos" / "boe" / "oposiciones").glob("*/*/*.jsonl"):
         for linea in fichero.read_text(encoding="utf-8").splitlines():
             fila = json.loads(linea)
             ident, fecha = fila.get("identificador"), fila.get("fecha")
             if ident and fecha and not ruta_texto(raiz, ident, fecha).exists():
-                lista.append((ident, fecha))
-    return lista
+                filas.append(fila)
+    if not filas:
+        return []
+    corte = (date.fromisoformat(max(f["fecha"] for f in filas)) - timedelta(days=dias_recientes)).isoformat()
+
+    def clave(f: dict) -> tuple:
+        reciente = f["fecha"] >= corte
+        acceso = f.get("alcance") in (None, "acceso")
+        grupo = 0 if reciente else (1 if acceso else 2)
+        return (grupo, PRIORIDAD_ACTO.get(f.get("tipo_acto"), 3), _inverso(f["fecha"]))
+
+    return [(f["identificador"], f["fecha"]) for f in sorted(filas, key=clave)]
+
+
+def _inverso(fecha: str) -> str:
+    """Para ordenar de la fecha más reciente a la más antigua dentro de cada grupo."""
+    return "".join(chr(ord("9") - ord(c) + ord("0")) if c.isdigit() else c for c in fecha)
 
 
 def descargar(ident: str, raiz: Path, archivo: Archivo) -> str:

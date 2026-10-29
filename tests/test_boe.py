@@ -179,3 +179,23 @@ def test_cli_saltar_existentes(tmp_path, monkeypatch):
     cli.main(args + ["--saltar-existentes"])
     assert len(llamadas) == 2  # la segunda ejecución no repite los días ya hechos
     assert (tmp_path / "datos/boe/dias/2026/10/26.json").exists()
+
+
+def test_pendientes_por_prioridad(tmp_path):
+    from motor.boe.texto import pendientes
+    filas = [
+        {"identificador": "BOE-A-2026-1", "fecha": "2026-10-28", "alcance": "provision_puestos", "tipo_acto": "convocatoria"},
+        {"identificador": "BOE-A-2024-2", "fecha": "2024-03-01", "alcance": "provision_puestos", "tipo_acto": "convocatoria"},
+        {"identificador": "BOE-A-2023-3", "fecha": "2023-05-01", "alcance": "acceso", "tipo_acto": "convocatoria"},
+        {"identificador": "BOE-A-2025-4", "fecha": "2025-05-01", "alcance": "acceso", "tipo_acto": "aprobados"},
+        {"identificador": "BOE-A-2025-5", "fecha": "2025-06-01", "alcance": "acceso", "tipo_acto": "convocatoria"},
+    ]
+    ruta = tmp_path / "datos/boe/oposiciones/2026/10/28.jsonl"
+    ruta.parent.mkdir(parents=True)
+    ruta.write_text("".join(json.dumps(f) + "\n" for f in filas))
+    assert [i for i, _ in pendientes(tmp_path)] == [
+        "BOE-A-2026-1",  # reciente: primero, sea lo que sea
+        "BOE-A-2025-5", "BOE-A-2023-3",  # acceso, convocatorias, de más nueva a más antigua
+        "BOE-A-2025-4",  # acceso, aprobados
+        "BOE-A-2024-2",  # fuera del alcance de la fase 1
+    ]
