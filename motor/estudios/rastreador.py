@@ -77,6 +77,9 @@ ESPANA = re.compile(r"\bECTS\b|€|\beuros?\b|Espa[ñn]a|\+34|\bMadrid\b|\bBarce
                     r"\bAlicante\b|\bC[oó]rdoba\b|\bPalma\b|\bLas Palmas\b|\bTenerife\b|\bA Coru[ñn]a\b|\bVigo\b|"
                     r"\bOviedo\b|\bSantander\b|\bPamplona\b|\bLogro[ñn]o\b|\bC[aá]diz\b|\bHuelva\b|\bJa[eé]n\b|"
                     r"\bAlmer[ií]a\b|\bLe[oó]n\b|\bBurgos\b|\bTarragona\b|\bGirona\b|\bLleida\b|\bCastell[oó]n\b")
+COLABORADORES = re.compile(r"entidades?[-_]colaboradoras?|centros?[-_]colaboradores|titulos[-_]propios[-_]entidades|"
+                           r"centros?[-_]adscritos|partners?|socios[-_]academicos|convenios?[-_]academicos|"
+                           r"red[-_]de[-_]centros|centros[-_]asociados", re.I)
 GUIA = re.compile(r"gu[ií]a|folleto|brochure|dossier|programa|plan de estudios|syllabus", re.I)
 
 
@@ -255,6 +258,9 @@ def rastrear(base: str, archivo: Archivo | None, max_urls: int = 60000, muestra:
         raiz_host = d.host.split(":")[0].removeprefix("www.")
         candidatas = sorted({u for u in paginas if es_programa(u) and urlparse(u).netloc.endswith(raiz_host)})
         res["urls_programa_sitemap"] = len(candidatas)
+        # Páginas que nombran a centros colaboradores (p. ej. ucavila.es/titulos-propios-entidades/...):
+        # sirven para descubrir escuelas que venden títulos propios de la universidad.
+        res["urls_colaboradores"] = sorted({u for u in paginas if COLABORADORES.search(urlparse(u).path)})[:200]
         if not candidatas:  # sin sitemap útil: enlaces de programa de la portada y semillas de Common Crawl
             res["via"] = "portada"
             enlaces = set(u for u in (semillas or []) if es_programa(u))
