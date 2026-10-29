@@ -1,0 +1,84 @@
+{
+ "dominio": "uniminuto.edu",
+ "base": "https://uniminuto.edu",
+ "robots_sitemaps": 0,
+ "sitemaps_leidos": 0,
+ "sitemaps_pendientes": 0,
+ "urls": 0,
+ "urls_programa_sitemap": 0,
+ "urls_programa": 2,
+ "programas": [
+  "https://eventos.uniminuto.edu/128156/detail/jornadas-de-induccion-pregrado-y-posgrado-cuatrimestral-2025-q1.html",
+  "https://inscripciones.uniminuto.edu/posgrados"
+ ],
+ "muestra": [
+  {
+   "url": "https://eventos.uniminuto.edu/128156/detail/jornadas-de-induccion-pregrado-y-posgrado-cuatrimestral-2025-q1.html",
+   "es_programa": false,
+   "senales": [
+    "inicio"
+   ],
+   "titulo": "Jornadas de inducciÃ³n Pregrado y Posgrado Cuatrimestral 2025 - Q1 - Inicio",
+   "jsonld_tipos": [
+    "Event"
+   ],
+   "precio_jsonld": null,
+   "importes_euros": 0,
+   "temas": {
+    "precio": false,
+    "plazas": false,
+    "becas": false,
+    "metodologia": false,
+    "evaluacion": false,
+    "asignaturas": false,
+    "admision": false,
+    "horario": false
+   },
+   "formulario_pide_correo": false,
+   "formulario_pide_telefono": false,
+   "pdf_guia_o_folleto": [],
+   "bytes": 43102
+  },
+  {
+   "url": "https://inscripciones.uniminuto.edu/posgrados",
+   "es_programa": true,
+   "senales": [
+    "admisión",
+    "inicio",
+    "modalidad",
+    "presencial"
+   ],
+   "titulo": "Uniminuto Posgrado",
+   "jsonld_tipos": [],
+   "precio_jsonld": null,
+   "importes_euros": 0,
+   "temas": {
+    "precio": true,
+    "plazas": false,
+    "becas": true,
+    "metodologia": true,
+    "evaluacion": false,
+    "asignaturas": false,
+    "admision": true,
+    "horario": true
+   },
+   "formulario_pide_correo": false,
+   "formulario_pide_telefono": false,
+   "pdf_guia_o_folleto": [],
+   "bytes": 202902
+  }
+ ],
+ "paginas_programa_validas": 1,
+ "verificado": true,
+ "peticiones": 5,
+ "centro": {
+  "web": "https://uniminuto.edu",
+  "id": "prov-bf27082e54",
+  "estado": "candidato",
+  "semillas": [
+   "https://www.uniminuto.edu/noticias/uniminuto-cucuta-llevo-cabo-el-ix-coloquio-de-posgrados",
+   "https://eventos.uniminuto.edu/128156/detail/jornadas-de-induccion-pregrado-y-posgrado-cuatrimestral-2025-q1.html",
+   "https://inscripciones.uniminuto.edu/posgrados"
+  ]
+ }
+}

@@ -1,0 +1,78 @@
+{
+ "dominio": "cemfi.es",
+ "base": "https://cemfi.es",
+ "robots_sitemaps": 1,
+ "sitemaps_leidos": 0,
+ "sitemaps_pendientes": 0,
+ "urls": 0,
+ "urls_programa_sitemap": 0,
+ "urls_programa": 2,
+ "programas": [
+  "https://cemfi.es/programs/master/placements.asp",
+  "https://www.cemfi.es/programs/master/course.asp?c=102671"
+ ],
+ "muestra": [
+  {
+   "url": "https://cemfi.es/programs/master/placements.asp",
+   "es_programa": false,
+   "senales": [],
+   "titulo": "CEMFI",
+   "jsonld_tipos": [],
+   "precio_jsonld": null,
+   "importes_euros": 0,
+   "temas": {
+    "precio": true,
+    "plazas": false,
+    "becas": false,
+    "metodologia": false,
+    "evaluacion": false,
+    "asignaturas": false,
+    "admision": false,
+    "horario": false
+   },
+   "formulario_pide_correo": false,
+   "formulario_pide_telefono": false,
+   "pdf_guia_o_folleto": [],
+   "bytes": 34543
+  },
+  {
+   "url": "https://www.cemfi.es/programs/master/course.asp?c=102671",
+   "es_programa": false,
+   "senales": [
+    "ects"
+   ],
+   "titulo": "CEMFI",
+   "jsonld_tipos": [],
+   "precio_jsonld": null,
+   "importes_euros": 0,
+   "temas": {
+    "precio": false,
+    "plazas": false,
+    "becas": false,
+    "metodologia": false,
+    "evaluacion": false,
+    "asignaturas": false,
+    "admision": false,
+    "horario": false
+   },
+   "formulario_pide_correo": false,
+   "formulario_pide_telefono": false,
+   "pdf_guia_o_folleto": [
+    "https://www.cemfi.es/ftp/pdf/courses/Applied Macroeconometrics_syllabus.pdf"
+   ],
+   "bytes": 21215
+  }
+ ],
+ "paginas_programa_validas": 0,
+ "verificado": false,
+ "peticiones": 4,
+ "centro": {
+  "web": "https://cemfi.es",
+  "id": "prov-53322fea17",
+  "estado": "candidato",
+  "semillas": [
+   "https://www.cemfi.es/programs/master/course.asp?c=102671",
+   "https://cemfi.es/programs/master/placements.asp"
+  ]
+ }
+}

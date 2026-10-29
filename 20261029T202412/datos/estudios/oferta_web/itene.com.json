@@ -1,0 +1,91 @@
+{
+ "dominio": "itene.com",
+ "base": "https://itene.com",
+ "robots_sitemaps": 1,
+ "sitemaps_leidos": 17,
+ "sitemaps_pendientes": 0,
+ "urls": 1474,
+ "urls_programa_sitemap": 2,
+ "urls_programa": 2,
+ "programas": [
+  "https://itene.com/tipo-eventos/master/",
+  "https://itene.com/tipo-eventos/masterclass/"
+ ],
+ "muestra": [
+  {
+   "url": "https://itene.com/tipo-eventos/master/",
+   "es_programa": true,
+   "senales": [
+    "modalidad",
+    "online",
+    "presencial"
+   ],
+   "titulo": "Máster - ITENE",
+   "jsonld_tipos": [
+    "CollectionPage",
+    "Person",
+    "WebSite"
+   ],
+   "precio_jsonld": null,
+   "importes_euros": 0,
+   "temas": {
+    "precio": false,
+    "plazas": false,
+    "becas": false,
+    "metodologia": false,
+    "evaluacion": true,
+    "asignaturas": false,
+    "admision": false,
+    "horario": false
+   },
+   "formulario_pide_correo": true,
+   "formulario_pide_telefono": false,
+   "pdf_guia_o_folleto": [],
+   "bytes": 213982
+  },
+  {
+   "url": "https://itene.com/tipo-eventos/masterclass/",
+   "es_programa": true,
+   "senales": [
+    "modalidad",
+    "online",
+    "presencial"
+   ],
+   "titulo": "Masterclass - ITENE",
+   "jsonld_tipos": [
+    "CollectionPage",
+    "Person",
+    "WebSite"
+   ],
+   "precio_jsonld": null,
+   "importes_euros": 0,
+   "temas": {
+    "precio": false,
+    "plazas": false,
+    "becas": false,
+    "metodologia": false,
+    "evaluacion": true,
+    "asignaturas": false,
+    "admision": false,
+    "horario": false
+   },
+   "formulario_pide_correo": true,
+   "formulario_pide_telefono": false,
+   "pdf_guia_o_folleto": [],
+   "bytes": 216505
+  }
+ ],
+ "paginas_programa_validas": 2,
+ "verificado": true,
+ "peticiones": 20,
+ "centro": {
+  "web": "https://itene.com",
+  "id": "prov-864841eccb",
+  "estado": "candidato",
+  "semillas": [
+   "https://itene.com/actualidad/formacion-especializada-posgrado-en-packaging/",
+   "https://itene.com/eventos/master-en-logistica-inteligente-supply-chain/",
+   "https://itene.com/tipo-eventos/master/"
+  ]
+ }
+}

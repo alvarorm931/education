@@ -1,0 +1,150 @@
+{
+ "dominio": "conquerfinance.com",
+ "base": "https://conquerfinance.com",
+ "robots_sitemaps": 2,
+ "sitemaps_leidos": 1,
+ "sitemaps_pendientes": 0,
+ "urls": 23,
+ "urls_programa_sitemap": 4,
+ "urls_programa": 4,
+ "programas": [
+  "https://www.conquerfinance.com/master-en-acciones-y-etfs",
+  "https://www.conquerfinance.com/master-en-criptoactivos",
+  "https://www.conquerfinance.com/master-en-inversion-inmobiliaria",
+  "https://www.conquerfinance.com/master-prop-trading"
+ ],
+ "muestra": [
+  {
+   "url": "https://www.conquerfinance.com/master-en-acciones-y-etfs",
+   "es_programa": true,
+   "senales": [
+    "duración",
+    "online",
+    "precio"
+   ],
+   "titulo": "Máster en Acciones y ETFs | Conquer Finance",
+   "jsonld_tipos": [
+    "Course",
+    "WebPage"
+   ],
+   "precio_jsonld": null,
+   "importes_euros": 1,
+   "temas": {
+    "precio": true,
+    "plazas": false,
+    "becas": false,
+    "metodologia": true,
+    "evaluacion": false,
+    "asignaturas": true,
+    "admision": false,
+    "horario": false
+   },
+   "formulario_pide_correo": false,
+   "formulario_pide_telefono": false,
+   "pdf_guia_o_folleto": [],
+   "bytes": 216097
+  },
+  {
+   "url": "https://www.conquerfinance.com/master-en-criptoactivos",
+   "es_programa": false,
+   "senales": [
+    "online",
+    "precio"
+   ],
+   "titulo": "Máster en Criptoactivos | Conquer Finance",
+   "jsonld_tipos": [
+    "Course",
+    "WebPage"
+   ],
+   "precio_jsonld": null,
+   "importes_euros": 1,
+   "temas": {
+    "precio": true,
+    "plazas": false,
+    "becas": false,
+    "metodologia": true,
+    "evaluacion": false,
+    "asignaturas": false,
+    "admision": false,
+    "horario": false
+   },
+   "formulario_pide_correo": false,
+   "formulario_pide_telefono": false,
+   "pdf_guia_o_folleto": [],
+   "bytes": 205714
+  },
+  {
+   "url": "https://www.conquerfinance.com/master-en-inversion-inmobiliaria",
+   "es_programa": false,
+   "senales": [
+    "online",
+    "precio"
+   ],
+   "titulo": "Máster en Inversión Inmobiliaria con Juan Haro | Conquer Finance",
+   "jsonld_tipos": [
+    "Course",
+    "WebPage"
+   ],
+   "precio_jsonld": null,
+   "importes_euros": 1,
+   "temas": {
+    "precio": true,
+    "plazas": false,
+    "becas": true,
+    "metodologia": true,
+    "evaluacion": false,
+    "asignaturas": true,
+    "admision": false,
+    "horario": false
+   },
+   "formulario_pide_correo": false,
+   "formulario_pide_telefono": false,
+   "pdf_guia_o_folleto": [],
+   "bytes": 206523
+  },
+  {
+   "url": "https://www.conquerfinance.com/master-prop-trading",
+   "es_programa": true,
+   "senales": [
+    "duración",
+    "matrícula",
+    "online",
+    "precio"
+   ],
+   "titulo": "Máster en Prop Trading sin Riesgo | Conquer Finance",
+   "jsonld_tipos": [
+    "Course",
+    "WebPage"
+   ],
+   "precio_jsonld": null,
+   "importes_euros": 3,
+   "temas": {
+    "precio": true,
+    "plazas": false,
+    "becas": true,
+    "metodologia": true,
+    "evaluacion": true,
+    "asignaturas": true,
+    "admision": false,
+    "horario": true
+   },
+   "formulario_pide_correo": false,
+   "formulario_pide_telefono": false,
+   "pdf_guia_o_folleto": [],
+   "bytes": 361621
+  }
+ ],
+ "paginas_programa_validas": 2,
+ "verificado": true,
+ "peticiones": 6,
+ "centro": {
+  "web": "https://conquerfinance.com",
+  "id": "prov-2c91809522",
+  "estado": "candidato",
+  "semillas": [
+   "https://www.conquerfinance.com/master-en-acciones-y-etfs",
+   "https://www.conquerfinance.com/master-en-criptoactivos",
+   "https://www.conquerfinance.com/master-en-inversion-inmobiliaria"
+  ]
+ }
+}

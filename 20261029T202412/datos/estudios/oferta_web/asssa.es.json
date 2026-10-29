@@ -1,0 +1,86 @@
+{
+ "dominio": "asssa.es",
+ "base": "https://asssa.es",
+ "robots_sitemaps": 0,
+ "sitemaps_leidos": 0,
+ "sitemaps_pendientes": 0,
+ "urls": 0,
+ "urls_programa_sitemap": 0,
+ "urls_programa": 2,
+ "programas": [
+  "https://www.asssa.es/fr/assurance/master/",
+  "https://www.asssa.es/nl/verzekeringen/master/"
+ ],
+ "muestra": [
+  {
+   "url": "https://www.asssa.es/fr/assurance/master/",
+   "es_programa": false,
+   "senales": [],
+   "titulo": "Master - ASSSA Francés",
+   "jsonld_tipos": [
+    "BreadcrumbList",
+    "ImageObject",
+    "WebPage",
+    "WebSite"
+   ],
+   "precio_jsonld": null,
+   "importes_euros": 3,
+   "temas": {
+    "precio": false,
+    "plazas": false,
+    "becas": false,
+    "metodologia": false,
+    "evaluacion": false,
+    "asignaturas": false,
+    "admision": false,
+    "horario": false
+   },
+   "formulario_pide_correo": true,
+   "formulario_pide_telefono": true,
+   "pdf_guia_o_folleto": [],
+   "bytes": 215517
+  },
+  {
+   "url": "https://www.asssa.es/nl/verzekeringen/master/",
+   "es_programa": false,
+   "senales": [
+    "online"
+   ],
+   "titulo": "Master - ASSSA Nederlands",
+   "jsonld_tipos": [
+    "BreadcrumbList",
+    "ImageObject",
+    "WebPage",
+    "WebSite"
+   ],
+   "precio_jsonld": null,
+   "importes_euros": 3,
+   "temas": {
+    "precio": false,
+    "plazas": false,
+    "becas": false,
+    "metodologia": false,
+    "evaluacion": false,
+    "asignaturas": false,
+    "admision": false,
+    "horario": false
+   },
+   "formulario_pide_correo": true,
+   "formulario_pide_telefono": true,
+   "pdf_guia_o_folleto": [],
+   "bytes": 215382
+  }
+ ],
+ "paginas_programa_validas": 0,
+ "verificado": false,
+ "peticiones": 5,
+ "centro": {
+  "web": "https://asssa.es",
+  "id": "prov-a9ff17a9e3",
+  "estado": "candidato",
+  "semillas": [
+   "https://www.asssa.es/fr/assurance/master/",
+   "https://www.asssa.es/nl/verzekeringen/master/"
+  ]
+ }
+}

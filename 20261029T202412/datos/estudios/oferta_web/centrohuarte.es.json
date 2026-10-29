@@ -1,0 +1,152 @@
+{
+ "dominio": "centrohuarte.es",
+ "base": "https://centrohuarte.es",
+ "robots_sitemaps": 0,
+ "sitemaps_leidos": 1,
+ "sitemaps_pendientes": 0,
+ "urls": 42,
+ "urls_programa_sitemap": 4,
+ "urls_programa": 4,
+ "programas": [
+  "https://www.centrohuarte.es/es/ediciones-anteriores-master",
+  "https://www.centrohuarte.es/es/master",
+  "https://www.centrohuarte.es/es/master-edicion-actual",
+  "https://www.centrohuarte.es/es/podcasts-master"
+ ],
+ "muestra": [
+  {
+   "url": "https://www.centrohuarte.es/es/ediciones-anteriores-master",
+   "es_programa": false,
+   "senales": [],
+   "titulo": "Ediciones anteriores - Centro Huarte",
+   "jsonld_tipos": [],
+   "precio_jsonld": null,
+   "importes_euros": 0,
+   "temas": {
+    "precio": false,
+    "plazas": false,
+    "becas": false,
+    "metodologia": false,
+    "evaluacion": false,
+    "asignaturas": true,
+    "admision": false,
+    "horario": true
+   },
+   "formulario_pide_correo": true,
+   "formulario_pide_telefono": false,
+   "pdf_guia_o_folleto": [
+    "https://www.centrohuarte.es/files/2026/09/folleto-general-2026-27-1.pdf",
+    "https://www.centrohuarte.es/files/2026/09/guia-docentes-y-asignaturas-2026-2027-1.pdf"
+   ],
+   "bytes": 22854
+  },
+  {
+   "url": "https://www.centrohuarte.es/es/master",
+   "es_programa": true,
+   "senales": [
+    "créditos",
+    "duración",
+    "ects",
+    "inicio",
+    "matricula",
+    "matrícula",
+    "modalidad",
+    "precio",
+    "presencial",
+    "semipresencial",
+    "titulacion",
+    "titulación"
+   ],
+   "titulo": "Máster en prácticas artísticas y estudios culturales - Inicio master - Centro Huarte",
+   "jsonld_tipos": [],
+   "precio_jsonld": null,
+   "importes_euros": 2,
+   "temas": {
+    "precio": true,
+    "plazas": false,
+    "becas": true,
+    "metodologia": false,
+    "evaluacion": false,
+    "asignaturas": true,
+    "admision": false,
+    "horario": true
+   },
+   "formulario_pide_correo": true,
+   "formulario_pide_telefono": false,
+   "pdf_guia_o_folleto": [
+    "https://www.centrohuarte.es/files/2026/09/folleto-general-2026-27-1.pdf",
+    "https://www.centrohuarte.es/files/2026/09/guia-docentes-y-asignaturas-2026-2027-1.pdf"
+   ],
+   "bytes": 62337
+  },
+  {
+   "url": "https://www.centrohuarte.es/es/master-edicion-actual",
+   "es_programa": true,
+   "senales": [
+    "créditos",
+    "ects",
+    "plan de estudios"
+   ],
+   "titulo": "- Máster - Centro Huarte",
+   "jsonld_tipos": [],
+   "precio_jsonld": null,
+   "importes_euros": 0,
+   "temas": {
+    "precio": false,
+    "plazas": false,
+    "becas": false,
+    "metodologia": true,
+    "evaluacion": false,
+    "asignaturas": true,
+    "admision": false,
+    "horario": true
+   },
+   "formulario_pide_correo": true,
+   "formulario_pide_telefono": false,
+   "pdf_guia_o_folleto": [
+    "https://www.centrohuarte.es/files/2026/09/folleto-general-2026-27-1.pdf",
+    "https://www.centrohuarte.es/files/2026/09/guia-docentes-y-asignaturas-2026-2027-1.pdf",
+    "https://www.centrohuarte.es/files/2026/09/guia-docentes-y-asignaturas-2026-2027-1.pdf"
+   ],
+   "bytes": 69027
+  },
+  {
+   "url": "https://www.centrohuarte.es/es/podcasts-master",
+   "es_programa": false,
+   "senales": [],
+   "titulo": "Pódcasts - Centro Huarte",
+   "jsonld_tipos": [],
+   "precio_jsonld": null,
+   "importes_euros": 0,
+   "temas": {
+    "precio": false,
+    "plazas": false,
+    "becas": false,
+    "metodologia": false,
+    "evaluacion": false,
+    "asignaturas": true,
+    "admision": false,
+    "horario": true
+   },
+   "formulario_pide_correo": true,
+   "formulario_pide_telefono": false,
+   "pdf_guia_o_folleto": [
+    "https://www.centrohuarte.es/files/2026/09/folleto-general-2026-27-1.pdf",
+    "https://www.centrohuarte.es/files/2026/09/guia-docentes-y-asignaturas-2026-2027-1.pdf"
+   ],
+   "bytes": 41690
+  }
+ ],
+ "paginas_programa_validas": 2,
+ "verificado": true,
+ "peticiones": 7,
+ "centro": {
+  "web": "https://centrohuarte.es",
+  "id": "prov-f10a49dbbf",
+  "estado": "candidato",
+  "semillas": [
+   "https://www.centrohuarte.es/es/master-edicion-actual/master-en-practicas-artisticas-y-estudios-culturales/2025-2026/plan-estudios",
+   "https://www.centrohuarte.es/es/master-edicion-actual/master-en-practicas-artisticas-y-estudios-culturales/2026-2027/plan-estudios"
+  ]
+ }
+}

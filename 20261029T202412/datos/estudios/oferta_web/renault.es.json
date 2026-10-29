@@ -1,0 +1,94 @@
+{
+ "dominio": "renault.es",
+ "base": "https://renault.es",
+ "robots_sitemaps": 1,
+ "sitemaps_leidos": 1,
+ "sitemaps_pendientes": 0,
+ "urls": 9570,
+ "urls_programa_sitemap": 2,
+ "urls_programa": 2,
+ "programas": [
+  "https://www.renault.es/concept-cars-range/master-h2-tech-prototype.html",
+  "https://www.renault.es/preguntas-frecuentes-vehiculos/megane/incluye-megane-e-tech-electrico-bomba-de-calor.html"
+ ],
+ "muestra": [
+  {
+   "url": "https://www.renault.es/concept-cars-range/master-h2-tech-prototype.html",
+   "es_programa": false,
+   "senales": [
+    "online",
+    "plazas"
+   ],
+   "titulo": "Renault Master H2-Tech HYVIA – Renault",
+   "jsonld_tipos": [
+    "BreadcrumbList",
+    "Organization",
+    "Product",
+    "Vehicle"
+   ],
+   "precio_jsonld": {
+    "precio": "undefined",
+    "moneda": null
+   },
+   "importes_euros": 18,
+   "temas": {
+    "precio": true,
+    "plazas": true,
+    "becas": true,
+    "metodologia": false,
+    "evaluacion": false,
+    "asignaturas": false,
+    "admision": false,
+    "horario": false
+   },
+   "formulario_pide_correo": false,
+   "formulario_pide_telefono": false,
+   "pdf_guia_o_folleto": [],
+   "bytes": 528290
+  },
+  {
+   "url": "https://www.renault.es/preguntas-frecuentes-vehiculos/megane/incluye-megane-e-tech-electrico-bomba-de-calor.html",
+   "es_programa": false,
+   "senales": [
+    "online",
+    "plazas"
+   ],
+   "titulo": "¿el Megane E-Tech eléctrico incluye una bomba de",
+   "jsonld_tipos": [
+    "BreadcrumbList",
+    "FAQPage",
+    "Organization"
+   ],
+   "precio_jsonld": null,
+   "importes_euros": 18,
+   "temas": {
+    "precio": true,
+    "plazas": true,
+    "becas": true,
+    "metodologia": false,
+    "evaluacion": false,
+    "asignaturas": false,
+    "admision": false,
+    "horario": false
+   },
+   "formulario_pide_correo": false,
+   "formulario_pide_telefono": false,
+   "pdf_guia_o_folleto": [],
+   "bytes": 455441
+  }
+ ],
+ "paginas_programa_validas": 0,
+ "verificado": false,
+ "peticiones": 4,
+ "centro": {
+  "web": "https://renault.es",
+  "id": "prov-a9a5e41dc2",
+  "estado": "candidato",
+  "semillas": [
+   "https://empresas.renault.es/gama-master/master/accesorios.html",
+   "https://empresas.renault.es/gama-master/master/configurador-conversiones.html",
+   "https://empresas.renault.es/gama-master/master/multimedia.html",
+   "https://empresas.renault.es/gama-master/master/rendimiento.html"
+  ]
+ }
+}

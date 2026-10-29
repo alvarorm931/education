@@ -1,0 +1,80 @@
+{
+ "dominio": "academiamaestre.es",
+ "base": "https://academiamaestre.es",
+ "robots_sitemaps": 1,
+ "sitemaps_leidos": 0,
+ "sitemaps_pendientes": 0,
+ "urls": 0,
+ "urls_programa_sitemap": 0,
+ "urls_programa": 2,
+ "programas": [
+  "https://academiamaestre.es/index.php/masteres/",
+  "https://academiamaestre.es/index.php/portfolio/masteres/"
+ ],
+ "muestra": [
+  {
+   "url": "https://academiamaestre.es/index.php/masteres/",
+   "es_programa": false,
+   "senales": [],
+   "titulo": "MASTERES - Academia Maestre",
+   "jsonld_tipos": [
+    "Article",
+    "Organization",
+    "Person",
+    "WebPage",
+    "WebSite"
+   ],
+   "precio_jsonld": null,
+   "importes_euros": 0,
+   "temas": {
+    "precio": false,
+    "plazas": false,
+    "becas": false,
+    "metodologia": false,
+    "evaluacion": false,
+    "asignaturas": false,
+    "admision": false,
+    "horario": false
+   },
+   "formulario_pide_correo": false,
+   "formulario_pide_telefono": false,
+   "pdf_guia_o_folleto": [],
+   "bytes": 42783
+  },
+  {
+   "url": "https://academiamaestre.es/index.php/portfolio/masteres/",
+   "es_programa": false,
+   "senales": [],
+   "titulo": "MÁSTERES - Academia Maestre",
+   "jsonld_tipos": [],
+   "precio_jsonld": null,
+   "importes_euros": 0,
+   "temas": {
+    "precio": false,
+    "plazas": false,
+    "becas": false,
+    "metodologia": false,
+    "evaluacion": false,
+    "asignaturas": false,
+    "admision": false,
+    "horario": false
+   },
+   "formulario_pide_correo": false,
+   "formulario_pide_telefono": false,
+   "pdf_guia_o_folleto": [],
+   "bytes": 41963
+  }
+ ],
+ "paginas_programa_validas": 0,
+ "verificado": false,
+ "peticiones": 4,
+ "centro": {
+  "web": "https://academiamaestre.es",
+  "id": "prov-e92b67b852",
+  "estado": "candidato",
+  "semillas": [
+   "https://academiamaestre.es/index.php/masteres/",
+   "https://academiamaestre.es/index.php/portfolio/masteres/"
+  ]
+ }
+}

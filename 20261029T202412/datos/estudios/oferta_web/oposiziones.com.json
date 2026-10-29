@@ -1,0 +1,94 @@
+{
+ "dominio": "oposiziones.com",
+ "base": "https://oposiziones.com",
+ "robots_sitemaps": 1,
+ "sitemaps_leidos": 0,
+ "sitemaps_pendientes": 0,
+ "urls": 0,
+ "urls_programa_sitemap": 0,
+ "urls_programa": 2,
+ "programas": [
+  "https://www.oposiziones.com/noticias-tag-postgrados.html",
+  "https://www.oposiziones.com/noticias_oposiciones/ine-convoca-becas-de-postgrado-en-estadistica-org-4057.html"
+ ],
+ "muestra": [
+  {
+   "url": "https://www.oposiziones.com/noticias-tag-postgrados.html",
+   "es_programa": true,
+   "senales": [
+    "duración",
+    "inicio",
+    "matricula",
+    "matrícula",
+    "titulación"
+   ],
+   "titulo": "Noticias y Reportajes sobre postgrados en oposiZiones",
+   "jsonld_tipos": [],
+   "precio_jsonld": null,
+   "importes_euros": 5,
+   "temas": {
+    "precio": true,
+    "plazas": false,
+    "becas": true,
+    "metodologia": false,
+    "evaluacion": true,
+    "asignaturas": true,
+    "admision": false,
+    "horario": false
+   },
+   "formulario_pide_correo": false,
+   "formulario_pide_telefono": false,
+   "pdf_guia_o_folleto": [],
+   "bytes": 38903
+  },
+  {
+   "url": "https://www.oposiziones.com/noticias_oposiciones/ine-convoca-becas-de-postgrado-en-estadistica-org-4057.html",
+   "es_programa": true,
+   "senales": [
+    "duración",
+    "inicio",
+    "online",
+    "plazas",
+    "titulación"
+   ],
+   "titulo": "INE convoca becas de postgrado en estadística",
+   "jsonld_tipos": [
+    "BreadcrumbList",
+    "ImageObject",
+    "NewsArticle",
+    "Organization",
+    "Person",
+    "WebPage",
+    "WebSite"
+   ],
+   "precio_jsonld": null,
+   "importes_euros": 1,
+   "temas": {
+    "precio": false,
+    "plazas": true,
+    "becas": true,
+    "metodologia": false,
+    "evaluacion": false,
+    "asignaturas": false,
+    "admision": false,
+    "horario": false
+   },
+   "formulario_pide_correo": true,
+   "formulario_pide_telefono": false,
+   "pdf_guia_o_folleto": [],
+   "bytes": 88060
+  }
+ ],
+ "paginas_programa_validas": 2,
+ "verificado": true,
+ "peticiones": 4,
+ "centro": {
+  "web": "https://oposiziones.com",
+  "id": "prov-4613b5a280",
+  "estado": "candidato",
+  "semillas": [
+   "https://www.oposiziones.com/noticias-tag-postgrados.html",
+   "https://www.oposiziones.com/noticias_oposiciones/ine-convoca-becas-de-postgrado-en-estadistica-org-4057.html"
+  ]
+ }
+}
