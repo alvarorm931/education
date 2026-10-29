@@ -1,0 +1,53 @@
+{
+ "docm": {
+  "dia": {
+   "fecha": "2026-10-29",
+   "status": 200,
+   "alertas": [],
+   "resultado": "ok",
+   "numero": 208,
+   "sha256": "79b12002aa8851004488f6fcf00d85489c489bd41ba5529d9e82346666a25803",
+   "disposiciones": 36,
+   "empleo_publico": 2
+  },
+  "dia_2022": {
+   "fecha": "2022-01-03",
+   "status": 200,
+   "alertas": [],
+   "resultado": "ok",
+   "numero": 1,
+   "sha256": "74fd0d425e4bfc41321d101db78c7e90aa06373b2840f61a5f1afdb3bb6db765",
+   "disposiciones": 47,
+   "empleo_publico": 3
+  },
+  "sabado": {
+   "fecha": "2026-10-24",
+   "status": 200,
+   "alertas": [
+    "DOCM 2026-10-24: sumario sin fecha (posible cambio de formato)"
+   ],
+   "resultado": "error_formato"
+  },
+  "textos": {
+   "pendientes": 2,
+   "hechos": 2,
+   "errores": 0,
+   "muestras": [
+    {
+     "id": "DOCM-2026-7856",
+     "caracteres": 3695,
+     "inicio": "II.- AUTORIDADES Y PERSONAL\nOPOSICIONES Y CONCURSOS\nPresidencia de la Junta\nResolución de 27/10/2026, de la Secretaría General de la Presidencia, sobre ampliaci",
+     "tablas": 0,
+     "omitidos": 0
+    },
+    {
+     "id": "DOCM-2026-7725",
+     "caracteres": 11446,
+     "inicio": "II.- AUTORIDADES Y PERSONAL\nOPOSICIONES Y CONCURSOS\nServicio de Salud de Castilla-La Mancha (Sescam)\nResolución de 21/10/2026, de la Secretaría General, por el ",
+     "tablas": 0,
+     "omitidos": 0
+    }
+   ]
+  }
+ }
+}
