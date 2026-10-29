@@ -1,0 +1,53 @@
+name: Sonda de fuentes
+
+# Descarga unas pocas URLs para estudiar su formato real antes de programar un conector.
+# Los resultados van a la rama "sondas", separada de los datos.
+
+on:
+  workflow_dispatch:
+    inputs:
+      urls:
+        description: "URLs separadas por espacios"
+        required: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: rama-sondas
+  cancel-in-progress: false
+
+jobs:
+  sonda:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Preparar rama sondas
+        run: |
+          git init -q sondas && cd sondas
+          git config user.name "motor-sonda"
+          git config user.email "motor-sonda@users.noreply.github.com"
+          git remote add origin "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git"
+          if git ls-remote --exit-code --heads origin sondas >/dev/null; then
+            git fetch -q --depth 1 origin sondas && git checkout -q -b sondas FETCH_HEAD
+          else
+            git checkout -q --orphan sondas
+          fi
+      - name: Descargar
+        env:
+          URLS: ${{ inputs.urls }}
+        run: |
+          cd sondas
+          STAMP=$(date -u +%Y%m%dT%H%M%S)
+          mkdir -p "$STAMP"
+          i=0
+          for u in $URLS; do
+            i=$((i+1))
+            curl -sS -L --max-time 60 -A "PortalEstudiosOposiciones/0.1 (motor de datos publicos; peticiones moderadas)" \
+              -D "$STAMP/$i.cabeceras.txt" -o "$STAMP/$i.cuerpo" -w "%{http_code} %{content_type} %{size_download} %{url_effective}\n" "$u" \
+              > "$STAMP/$i.estado.txt" 2>&1 || true
+            echo "$i $u" >> "$STAMP/indice.txt"
+            cat "$STAMP/$i.estado.txt"
+            sleep 1
+          done
+          git add -A && git commit -qm "Sonda $STAMP" && git push -q origin sondas
