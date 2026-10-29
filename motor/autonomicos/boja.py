@@ -27,7 +27,7 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 
 from motor.archivo import Archivo
-from motor.boe.clasificar import REGLAS_ACTO, REGLAS_MODALIDAD, _primera, normalizar
+from motor.boe.clasificar import REGLAS_ACTO, REGLAS_MODALIDAD, _primera, alcance, normalizar
 from motor.http import obtener
 from motor.limpieza import limpiar_html
 
@@ -113,11 +113,13 @@ def procesar_boletin(anio: int, numero: int, raiz: Path, archivo: Archivo, guard
         if es_oposicion(d):
             t = normalizar(meta["titulo"])
             limpio = limpiar_html(d.get("body") or "")
+            modalidad = _primera(REGLAS_MODALIDAD, t)
             opos.append({
                 **meta,
                 "ambito": ambito(meta["organismo"], meta["titulo"]),
                 "tipo_acto": _primera(REGLAS_ACTO, t) or "otro",
-                "modalidad": _primera(REGLAS_MODALIDAD, t),
+                "modalidad": modalidad,
+                "alcance": alcance(t, modalidad, None),
                 **limpio,
             })
 

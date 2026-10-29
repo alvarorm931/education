@@ -82,7 +82,8 @@ jobs:
       - name: BOJA (Andalucía)
         run: |
           Y=$(TZ=Europe/Madrid date +%Y)
-          python -m motor.autonomicos.boja --desde-anio "$Y" --hasta-anio "$Y" --salida salida --max-minutos 10 | tail -n 5 || true
+          # Originales: solo huella hasta tener almacén externo (R2); la API permite volver a pedirlos.
+          python -m motor.autonomicos.boja --desde-anio "$Y" --hasta-anio "$Y" --sin-guardar-original --salida salida --max-minutos 10 | tail -n 5 || true
           ./guardar.sh "BOJA: año en curso"
           python -m motor.autonomicos.boja --desde-anio 2022 --hasta-anio $((Y-1)) --sin-guardar-original \
             --salida salida --max-minutos "$MIN_AUTONOMICOS" | tail -n 5 || true

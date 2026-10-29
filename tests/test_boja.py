@@ -39,6 +39,7 @@ def test_boletin_real_extremo_a_extremo(tmp_path, monkeypatch):
     filas = [json.loads(x) for x in (tmp_path / "datos/autonomicos/boja/oposiciones/2026/000207.jsonl").read_text().splitlines()]
     sas, maracena = filas
     assert sas["ambito"] == "autonomico" and sas["url_pdf"].endswith(".pdf")
+    assert sas["alcance"] in {"acceso", "provision_puestos", "promocion_interna", "docente_universitario"}
     assert maracena["ambito"] == "local" and "Boletín Oficial de la Provincia de Granada núm. 185" in maracena["texto"]
     assert maracena["fecha"] == "2026-10-26"
     todas = (tmp_path / "datos/autonomicos/boja/disposiciones/2026/000207.jsonl").read_text().splitlines()
