@@ -49,23 +49,29 @@ def main(argv: list[str] | None = None) -> int:
         informe.append(f"{host}: {len(pems)} certificados en la cadena enviada")
         if not pems:
             continue
-        t = texto_certificado(pems[-1])
-        emisor = re.search(r"Issuer: (.*)", t)
-        aia = re.search(r"CA Issuers - URI:(\S+)", t)
-        informe.append(f"  emisor del último: {emisor.group(1) if emisor else '?'}; AIA: {aia.group(1) if aia else '-'}")
-        if aia:
-            r = requests.get(aia.group(1), headers={"User-Agent": USER_AGENT}, timeout=30)
-            der = r.content
-            if der.startswith(b"-----BEGIN"):
-                pem = der.decode()
-            else:
-                pem = subprocess.run(["openssl", "x509", "-inform", "der", "-outform", "pem"], input=der,
-                                     capture_output=True, timeout=30).stdout.decode()
+        # El intermedio que falta es el emisor de algún certificado que no viene en la cadena: se sigue el AIA
+        sujetos = [re.search(r"Subject: (.*)", texto_certificado(x)).group(1) for x in pems]
+        pendientes = list(pems)
+        vistos = set()
+        while pendientes:
+            t = texto_certificado(pendientes.pop(0))
+            emisor = re.search(r"Issuer: (.*)", t).group(1)
+            aia = re.search(r"CA Issuers - URI:(\S+)", t)
+            informe.append(f"  emisor: {emisor}; AIA: {aia.group(1) if aia else '-'}")
+            if emisor in sujetos or not aia or aia.group(1) in vistos:
+                continue
+            vistos.add(aia.group(1))
+            der = requests.get(aia.group(1), headers={"User-Agent": USER_AGENT}, timeout=30).content
+            pem = der.decode() if der.startswith(b"-----BEGIN") else subprocess.run(
+                ["openssl", "x509", "-inform", "der", "-outform", "pem"], input=der, capture_output=True,
+                timeout=30).stdout.decode()
             nombre = re.sub(r"\W+", "_", aia.group(1).rsplit("/", 1)[-1]) + ".pem"
             (a.salida / nombre).write_text(pem, encoding="utf-8")
             intermedios.append(pem)
-            sub = re.search(r"Subject: (.*)", texto_certificado(pem))
-            informe.append(f"  intermedio descargado: {nombre} ({sub.group(1) if sub else '?'})")
+            sub = re.search(r"Subject: (.*)", texto_certificado(pem)).group(1)
+            sujetos.append(sub)
+            pendientes.append(pem)
+            informe.append(f"  intermedio descargado: {nombre} ({sub})")
     paquete = a.salida / "paquete.pem"
     paquete.write_text(Path(certifi.where()).read_text(encoding="utf-8") + "\n" + "\n".join(intermedios),
                        encoding="utf-8")
