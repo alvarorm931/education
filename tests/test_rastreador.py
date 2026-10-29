@@ -268,3 +268,25 @@ def test_enlaces_de_colaboradores(monkeypatch):
     res = r.rastrear("https://ui1.es", None, muestra=2, pausa=0)
     assert res["urls_colaboradores"] == ["https://ui1.es/entidades-colaboradoras"]
     assert res["enlaces_colaboradores"] == ["eshi.es", "saera.es"]
+
+
+def test_profundo_sigue_dos_niveles_y_guarda_textos(monkeypatch):
+    portada = '<a href="/estudios">Estudios</a>'
+    estudios = '<a href="/estudios/masteres">Másteres universitarios</a><a href="/estudios/grados">Grados</a>'
+    masteres = ('<a href="/ficha?id=1">Máster Universitario en Derecho</a><a href="/ficha?id=2">Más información</a>'
+                '<a href="/ficha?id=2">Máster Universitario en Economía</a>')
+    ficha = "<title>Máster Universitario en Derecho</title><p>60 ECTS. Plazas. Preinscripción. Plan de estudios.</p>"
+
+    def falso_get(self, url, timeout=25, allow_redirects=True):
+        if url.endswith("/robots.txt"):
+            return _R(200, "User-agent: *\nAllow: /\n", "text/plain", url)
+        if url.endswith((".xml", "tdmrep.json")):
+            return _R(404, "", "text/html", url)
+        paginas = {"https://x.es/": portada, "https://x.es/estudios": estudios, "https://x.es/estudios/masteres": masteres}
+        return _R(200, paginas.get(url, ficha), url=url)
+
+    monkeypatch.setattr(r.requests.Session, "get", falso_get)
+    res = r.rastrear("https://x.es", None, muestra=2, pausa=0, profundo=True)
+    assert "https://x.es/estudios/masteres" in res["listados_visitados"]
+    assert res["textos_programa"] == {"https://x.es/ficha?id=1": "Máster Universitario en Derecho",
+                                      "https://x.es/ficha?id=2": "Máster Universitario en Economía"}

@@ -18,3 +18,17 @@ def test_emparejar_une_y_agrupa_modalidades():
     r = {x["codigo_ruct"]: x for x in e.emparejar(t, urls)}
     assert r["1"]["estado"] == "unido" and len(r["1"]["urls_modalidad"]) == 2
     assert r["2"]["estado"] == "sin_pagina"
+
+
+def test_empareja_por_texto_del_enlace_si_la_url_es_opaca():
+    from motor.estudios import emparejar as e
+    titulos = [{"codigo_ruct": "4310001", "nombre_oficial": "Máster Universitario en Ingeniería Informática por la Universidad Carlos III de Madrid"},
+               {"codigo_ruct": "4310002", "nombre_oficial": "Máster Universitario en Derecho de las Telecomunicaciones por la Universidad Carlos III de Madrid"}]
+    urls = ["https://www.uc3m.es/ss/Satellite/Postgrado/es/Detalle/Estudio_C/1371210340413",
+            "https://www.uc3m.es/ss/Satellite/Postgrado/es/Detalle/Estudio_C/1371212345678"]
+    textos = {urls[0]: "Máster Universitario en Ingeniería Informática",
+              urls[1]: "Máster Universitario en Derecho de las Telecomunicaciones, Protección de Datos y Sociedad de la Información"}
+    r = {x["codigo_ruct"]: x for x in e.emparejar(titulos, urls, textos)}
+    assert r["4310001"]["estado"] == "unido" and r["4310001"]["url"].endswith("1371210340413/")
+    assert r["4310002"]["url"].endswith("1371212345678/")
+    assert all(x["estado"] == "sin_pagina" for x in e.emparejar(titulos, urls))  # sin textos, la URL no dice nada

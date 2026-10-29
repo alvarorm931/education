@@ -72,9 +72,20 @@ def puntuacion(nombre: set[str], url: set[str]) -> float:
     return round(comunes / len(nombre) * (comunes / max(len(url), comunes)) ** 0.25, 3)
 
 
-def emparejar(titulos: list[dict], urls: list[str]) -> list[dict]:
+def palabras_texto(texto: str) -> set[str]:
+    return {w for w in re.findall(r"[a-z0-9]+", _plano(texto or "")) if w not in VACIAS and len(w) > 1}
+
+
+def emparejar(titulos: list[dict], urls: list[str], textos: dict[str, str] | None = None) -> list[dict]:
+    """textos: URL → texto del enlace que lleva a ella («Máster Universitario en …»). Cuando lo hay, se
+    compara con el nombre oficial en vez de la URL (muchas webs usan URL opacas: ?id=3329, /1371206754147/)."""
+    textos = textos or {}
     raices = sorted({raiz_programa(u) for u in urls})
-    pals = [(u, palabras_url(sin_modalidad(u))) for u in raices]
+    texto_raiz: dict[str, str] = {}
+    for u, t in textos.items():
+        texto_raiz.setdefault(raiz_programa(u), t)
+    pals = [(u, palabras_texto(texto_raiz[u]) if palabras_texto(texto_raiz.get(u, "")) else palabras_url(sin_modalidad(u)))
+            for u in raices]
     salida = []
     for t in titulos:
         pn = palabras_nombre(t["nombre_oficial"])
@@ -101,16 +112,18 @@ def ejecutar(catalogo: Path, oferta: Path, salida: Path) -> dict:
     titulos = [json.loads(l) for l in catalogo.read_text(encoding="utf-8").splitlines() if l.strip()]
     titulos = [t for t in titulos if t["situacion"] == "Activo"]
     webs: dict[str, list[str]] = {}
+    textos: dict[str, str] = {}
     for f in oferta.glob("*.json"):
         r = json.loads(f.read_text(encoding="utf-8"))
         webs.setdefault(dominio_registrado(r["dominio"]), []).extend(r.get("programas", []))
+        textos.update(r.get("textos_programa") or {})
     res, filas = Counter(), []
     por_univ: dict[str, list[dict]] = {}
     for t in titulos:
         por_univ.setdefault(t.get("universidad_web") or "", []).append(t)
     for dominio, urls in webs.items():
         for t_univ in (v for k, v in por_univ.items() if k and dominio_registrado(k) == dominio):
-            for e in emparejar(t_univ, sorted(set(urls))):
+            for e in emparejar(t_univ, sorted(set(urls)), textos):
                 res[e["estado"]] += 1
                 filas.append(e)
     destino = salida / "datos" / "estudios" / "masters"

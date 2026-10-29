@@ -268,9 +268,12 @@ falta. Lo encontrado al revisar el censo:
    en Common Crawl.
 4. **Catálogo oficial con retraso.** El catálogo SIIU es de febrero de 2026; el BOE ya publica 270 títulos
    aprobados después. El universo oficial es catálogo + altas del BOE.
-5. **Minutos de GitHub.** El 29/10/2026 se consumieron 1.012 minutos entre todos los flujos (másters,
-   oposiciones y carga histórica), la mitad del cupo mensual gratuito. Las cargas grandes (rastreo de todas
-   las webs, memorias del RUCT, Common Crawl completo) deben ir al servidor de España.
+5. **Minutos de GitHub (corregido).** El repositorio es público y en los repositorios públicos los
+   ejecutores estándar de GitHub son gratuitos («The use of standard GitHub-hosted runners is free: In public
+   repositories», documentación de facturación de GitHub Actions, consultada el 29/10/2026). Los 1.012
+   minutos del 29/10/2026 no consumen cupo. Límites reales: 58 minutos por tramo en `estudios.yml` y el
+   número de trabajos a la vez de la cuenta. Lo que sigue faltando es un archivo privado de originales
+   (R2 o el servidor de España): la rama del repositorio es pública y no puede guardar páginas ajenas.
 6. **Concurrencia entre conversaciones.** Las pruebas encoladas en el grupo «rama-sondas» se cancelan entre
    sí, también las de oposiciones. Másters usa ya `estudios.yml`, que junta resultados sin ese grupo.
 7. **Pendiente y sin empezar:** unir cada página de máster oficial de la web de su universidad con su

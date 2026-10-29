@@ -163,6 +163,7 @@ class Dominio:
         self.robots: dict[str, RobotFileParser] = {}
         self.ultima_robots = None
         self.estados: Counter = Counter()  # códigos HTTP y errores de conexión, para diagnosticar
+        self.textos: dict[str, str] = {}  # URL de programa → texto del enlace que lleva a ella
 
     def propio(self, url: str) -> bool:
         return dominio_registrado(urlparse(url).netloc) in self.propios
@@ -414,36 +415,62 @@ def _html(r) -> str | None:
     return texto_de(r)
 
 
-def desde_portada(d: Dominio, semillas: list[str] | None, tope: int) -> tuple[list[str], list[str]]:
-    """Sin sitemap útil: enlaces a programas de la portada y de sus páginas de listado (másteres, posgrado,
-    estudios, oferta), más las semillas de Common Crawl. Devuelve (programas, listados visitados)."""
+def _es_listado(u: str, t: str) -> bool:
+    ruta = urlparse(u).path
+    return bool(LISTADO.search(ruta) or LISTADO.search(t)) and not RUIDO.search(ruta) and not NOTICIA.search(ruta) \
+        and ruta.count("/") <= 5
+
+
+def _prioridad_listado(u: str, t: str) -> int:
+    return 0 if re.search(r"m[aàá]ster|posgrad|postgrad|postgrau|masterra", urlparse(u).path + " " + t, re.I) else 1
+
+
+def desde_portada(d: Dominio, semillas: list[str] | None, tope: int, max_listados: int = MAX_LISTADOS,
+                  profundidad: int = 1) -> tuple[list[str], list[str]]:
+    """Enlaces a programas de la portada y de sus páginas de listado (másteres, posgrado, estudios, oferta),
+    más las semillas de Common Crawl. Con profundidad 2 sigue también los listados que cuelgan de un
+    listado de másteres (portada → estudios → másteres → rama). Guarda el texto de cada enlace a programa
+    en d.textos: sirve para unir la página con el nombre oficial cuando la URL no lo dice.
+    Devuelve (programas, listados visitados)."""
     programas = {u for u in (semillas or []) if es_programa(u) and d.propio(u)}
+
+    def anotar(u: str, t: str) -> None:
+        programas.add(u)
+        if t and nombra_programa(t) and len(t) > len(d.textos.get(u, "")):  # no «Más información»
+            d.textos[u] = t
+
+    cola: list[tuple[int, int, int, str]] = []  # (nivel, prioridad, longitud, url)
     r0 = d.get(d.base + "/")
     html0 = _html(r0)
-    listados: list[tuple[int, int, str]] = []
     if html0:
         for u, t in enlaces(html0, r0.url):
             if not d.propio(u):
                 continue
-            ruta = urlparse(u).path
             if enlace_a_programa(u, t):
-                programas.add(u)
-            if (LISTADO.search(ruta) or LISTADO.search(t)) and not RUIDO.search(ruta) and not NOTICIA.search(ruta) \
-                    and ruta.count("/") <= 4:
-                prioridad = 0 if re.search(r"m[aàá]ster|posgrad|postgrad|postgrau|masterra", ruta + " " + t, re.I) else 1
-                listados.append((prioridad, len(u), u))
-    visitados = []
-    for _, _, u in sorted(set(listados))[:MAX_LISTADOS]:
-        if d.peticiones >= tope:
-            break
+                anotar(u, t)
+            if _es_listado(u, t):
+                cola.append((1, _prioridad_listado(u, t), len(u), u))
+    visitados: list[str] = []
+    vistos = {u for *_, u in cola}
+    while cola and len(visitados) < max_listados and d.peticiones < tope:
+        cola.sort()
+        nivel, _, _, u = cola.pop(0)
         r1 = d.get(u)
         html1 = _html(r1)
         if not html1:
             continue
         visitados.append(u)
-        hallados = {v for v, t in enlaces(html1, r1.url) if d.propio(v) and enlace_a_programa(v, t)}
-        programas |= hallados
-        if len(hallados) >= 5:  # es un listado, no una ficha: no se cuenta como programa
+        hallados = 0
+        for v, t in enlaces(html1, r1.url):
+            if not d.propio(v):
+                continue
+            if enlace_a_programa(v, t):
+                anotar(v, t)
+                hallados += 1
+            if nivel < profundidad and v not in vistos and _es_listado(v, t) and _prioridad_listado(v, t) == 0:
+                vistos.add(v)
+                cola.append((nivel + 1, 0, len(v), v))
+        if hallados >= 5:  # es un listado, no una ficha: no se cuenta como programa
             programas.discard(u)
     return sorted(programas), visitados
 
@@ -486,7 +513,12 @@ def _verificado(medidas: list[dict]) -> bool:
 
 
 def rastrear(base: str, archivo: Archivo | None, max_urls: int = 60000, muestra: int = 6,
-             max_peticiones: int = 80, semillas: list[str] | None = None, pausa: float = 1.0) -> dict:
+             max_peticiones: int = 80, semillas: list[str] | None = None, pausa: float = 1.0,
+             profundo: bool = False) -> dict:
+    """profundo=True (universidades y centros oficiales): recorre siempre los listados de la web, hasta dos
+    niveles, aunque el sitemap ya dé programas, para tener el texto de cada enlace (nombre del máster)."""
+    if profundo:
+        max_peticiones = max(max_peticiones, 160)
     d = Dominio(base, archivo, pausa=pausa, max_peticiones=max_peticiones)
     res: dict = {"dominio": d.host, "base": d.base}
     try:
@@ -534,7 +566,13 @@ def rastrear(base: str, archivo: Archivo | None, max_urls: int = 60000, muestra:
                                             and not NOTICIA.search(urlparse(u).path)})[:200]
         res["via"] = "sitemap" if candidatas else "portada"
         listados: list[str] = []
-        if not candidatas:
+        if profundo:
+            del_listado, listados = desde_portada(d, semillas, max_peticiones - muestra - MAX_COLABORADORES,
+                                                  max_listados=40, profundidad=2)
+            if del_listado:
+                res["via"] = "sitemap+listados" if candidatas else "listados"
+            candidatas = sorted(set(candidatas) | set(del_listado))
+        elif not candidatas:
             candidatas, listados = desde_portada(d, semillas, max_peticiones - muestra)
         medidas = medir_muestra(d, candidatas, muestra)
         if not _verificado(medidas) and res["via"] == "sitemap":
@@ -550,6 +588,7 @@ def rastrear(base: str, archivo: Archivo | None, max_urls: int = 60000, muestra:
         res["urls_programa"] = len(candidatas)
         res["programas"] = candidatas
         res["programas_lastmod"] = {u: fechas[u] for u in candidatas if u in fechas}
+        res["textos_programa"] = {u: d.textos[u] for u in candidatas if u in d.textos}
         res["documentos_precio"] = sorted({u for u in paginas if DOC_PRECIO.search(u) and d.propio(u)
                                            and not NOTICIA.search(urlparse(u).path)})[:100]
         res["muestra"] = medidas
@@ -641,7 +680,8 @@ def ejecutar(objetivos: list[dict], raiz: Path, hilos: int, max_minutos: float, 
     def uno(obj: dict) -> None:
         if time.time() > fin:
             return
-        r = rastrear(obj["web"], archivo, muestra=muestra, semillas=obj.get("semillas"))
+        r = rastrear(obj["web"], archivo, muestra=muestra, semillas=obj.get("semillas"),
+                     profundo=obj.get("estado") == "oficial")
         r["centro"] = obj
         with cerrojo:
             (destino / f"{r['dominio'].replace(':', '_')}.json").write_text(json.dumps(r, ensure_ascii=False, indent=1), encoding="utf-8")
