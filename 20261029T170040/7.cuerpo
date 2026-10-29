@@ -1,0 +1,541 @@
+ 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+
+
+
+
+
+
+
+<html xml:lang="es" lang="es" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Registro de Universidades, Centros y Títulos (RUCT) - Ministerio de Educación, Cultura y Deporte</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-15" />
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta http-equiv="Cache-Control" content="no-cache" />
+	<meta name="verify-v1" content="/vj8XSi7jRH1ilVIo0I+weWECxS77hjWustQMQtGqqY=" />	
+	<script type="text/javascript" src="/ruct/js/jstarget.js"></script>
+	<script type="text/javascript" src="/ruct/js/glibrary.js"></script>
+	<link rel="stylesheet" media="screen" type="text/css" href="/ruct/css/estilos-web-aplicaciones.css" />
+	<link rel="stylesheet" media="print" type="text/css" href="/ruct/css/estilos-web-imprimir-aplicaciones.css" />
+	<link rel="stylesheet" media="screen" type="text/css" href="/ruct/css/contenido-web-aplicaciones.css" />
+	<link rel="stylesheet" media="print" type="text/css" href="/ruct/css/contenido-web-imprimir-aplicaciones.css" />
+	
+
+
+
+
+<script type="text/javascript" src="/ruct/struts/js/base/jquery-1.11.0.js"></script>
+        <script type="text/javascript" src="/ruct/struts/js/base/jquery.ui.core.js?s2j=3.7.1"></script>
+<script type="text/javascript" src="/ruct/struts/js/plugins/jquery.subscribe.js?s2j=3.7.1"></script>
+
+<script type="text/javascript" src="/ruct/struts/js/struts2/jquery.struts2.js?s2j=3.7.1"></script>
+
+<script type="text/javascript">
+    $(function () {
+        jQuery.struts2_jquery.version = "3.7.1";
+        jQuery.scriptPath = "/ruct/struts/";
+        jQuery.struts2_jquery.minSuffix = "";
+        jQuery.struts2_jquery.local = "es";
+        jQuery.struts2_jquery.gridLocal = "es";
+        jQuery.struts2_jquery.timeLocal = "es";
+        jQuery.ajaxSettings.traditional = true;
+
+        jQuery.ajaxSetup({
+            cache: false
+        });
+
+        jQuery.struts2_jquery.require("js/struts2/jquery.ui.struts2.js?s2j=3.7.1");
+
+    });
+</script>
+
+    <link id="jquery_theme_link" rel="stylesheet"
+          href="/ruct/struts/themes/smoothness/jquery-ui.css?s2j=3.7.1" type="text/css"/>
+
+	
+</head>
+<body>
+<div id="cabecera-superior">
+	<div id="escudo"><a href="https://www.universidades.gob.es/"><img src="/ruct/img/logo_mciu_2.png" alt="Gobierno de España - Ministerio de Ciencia, Innovación y Universidades" /></a></div>
+	<div id="menu"></div>
+</div><!--fin cabecera-superior-->
+
+<div id="contenedor">
+
+<div id="seccion-educacion">
+
+<div class="migas">
+<strong>Est&aacute; usted en:&nbsp;</strong>
+	<ol> 
+    <li><a href="https://www.universidades.gob.es/">Portada</a></li> 
+    <li><a href="https://www.educacion.gob.es/educacion/universidades.html">Universidades</a></li>
+    </ol>
+</div>
+
+<h1>Registro de Universidades, Centros y Títulos (RUCT)</h1>
+</div>
+
+<div id="menu-contenido">
+	<ul>
+<li>
+<a href="/ruct/consultauniversidades?actual=universidades">Sección universidades</a>
+</li>
+<li>
+<a href="/ruct/consultacentros?actual=centros">Sección centros</a>
+</li>
+<li>
+<a href="/ruct/consultaestudios?actual=estudios"><strong>Sección títulos</strong></a>
+</li>
+</ul>
+</div>
+
+<div id="contenido">
+
+	<div class="enlaces">
+		<ul>
+			<li><a href="/ruct/contacto_ciencia.html">Contacte</a></li>
+			<li><a href="/ruct/home">Inicio</a></li>
+			<script>document.write("<li><a href='javascript:history.back()'>Volver</a></li>");</script>
+		</ul>
+	</div>	
+	
+	
+	
+	
+	
+	<div id="formulario">
+	
+
+
+
+	
+	<form id="estudio" name="estudio" action="/ruct/estudio.action;jsessionid=98B6C546B875934B9E0F5C15FA43E5C2?actual=estudios" method="post">
+
+
+		<h2><strong>M&aacute;ster Universitario en Construcci&oacute;n Industrializada y Prototipado en el Proyecto Arquitect&oacute;nico por la Universidad Polit&eacute;cnica de Madrid</strong></h2>
+		<div id="tab_estudio"
+>
+<ul>
+</ul>
+
+		<script type='text/javascript'>
+jQuery(document).ready(function () { 
+	var options_tab_tab1 = {};
+	options_tab_tab1.id = "tab1";
+	options_tab_tab1.href = "#tone";
+	options_tab_tab1.label = "Descripción";
+  	var tabs = jQuery('#tab_estudio').data('taboptions');
+  	if(!tabs) {
+  		tabs = [];
+  	}
+  	tabs.push(options_tab_tab1);
+  	jQuery('#tab_estudio').data('taboptions', tabs);
+ });  
+</script>
+
+	    
+      	<script type='text/javascript'>
+jQuery(document).ready(function () { 
+	var options_tab_tab2 = {};
+	options_tab_tab2.id = "tab2";
+	options_tab_tab2.href = "#ttwo";
+	options_tab_tab2.label = "Fechas y Enlaces a BOE";
+  	var tabs = jQuery('#tab_estudio').data('taboptions');
+  	if(!tabs) {
+  		tabs = [];
+  	}
+  	tabs.push(options_tab_tab2);
+  	jQuery('#tab_estudio').data('taboptions', tabs);
+ });  
+</script>
+
+      	
+		
+      	<script type='text/javascript'>
+jQuery(document).ready(function () { 
+	var options_tab_tab3 = {};
+	options_tab_tab3.id = "tab3";
+	options_tab_tab3.href = "#tthree";
+	options_tab_tab3.label = "Centros en los que se imparte";
+  	var tabs = jQuery('#tab_estudio').data('taboptions');
+  	if(!tabs) {
+  		tabs = [];
+  	}
+  	tabs.push(options_tab_tab3);
+  	jQuery('#tab_estudio').data('taboptions', tabs);
+ });  
+</script>
+
+      	
+      	
+      	<script type='text/javascript'>
+jQuery(document).ready(function () { 
+	var options_tab_tab4 = {};
+	options_tab_tab4.id = "tab4";
+	options_tab_tab4.href = "#tfour";
+	options_tab_tab4.label = "Histórico";
+  	var tabs = jQuery('#tab_estudio').data('taboptions');
+  	if(!tabs) {
+  		tabs = [];
+  	}
+  	tabs.push(options_tab_tab4);
+  	jQuery('#tab_estudio').data('taboptions', tabs);
+ });  
+</script>
+
+      	
+      	<div id="tone">
+		<fieldset>
+			<h3>Descripción</h3>		
+			<label for="estudio_codigoEstudio" >    <span class="label">
+Código del título:    </span>
+<span id="estudio_codigoEstudio">4318301</span>
+</label>
+
+
+			<label for="estudio_descripcionTipo" >    <span class="label">
+Nivel académico:    </span>
+<span id="estudio_descripcionTipo">M&aacute;ster - RD 1393/2007 (1)</span>
+</label>
+
+			
+            
+                <label for="estudio_nivelMeces" >    <span class="label">
+Nivel MECES:    </span>
+<span id="estudio_nivelMeces">3</span>
+</label>
+
+            
+            
+            
+            
+            
+            
+             
+            			
+			
+				<label for="estudio_descripcionRama" >    <span class="label">
+Rama:    </span>
+<span id="estudio_descripcionRama">Ingenier&iacute;a y Arquitectura</span>
+</label>
+
+			
+			
+            <!-- IZERTIS-13/07/2022-MODIFICACIONES RUCT RD822 -->
+            
+				
+	                <label for="estudio_descripcionAmbito" >    <span class="label">
+Campo de estudio:    </span>
+<span id="estudio_descripcionAmbito">Arquitectura, construcci&oacute;n, edificaci&oacute;n y urbanismo, e ingenier&iacute;a civil</span>
+</label>
+			
+				
+				
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+				
+		    
+			
+				
+
+			
+			<h3>Créditos</h3>
+			
+			
+			
+
+			
+				<label for="estudio_creditos_obl" >    <span class="label">
+Nº Créditos Obligatorios:    </span>
+<span id="estudio_creditos_obl">35</span>
+</label>
+
+			
+
+			
+				<label for="estudio_creditos_opt" >    <span class="label">
+Nº Créditos Optativos:    </span>
+<span id="estudio_creditos_opt">9</span>
+</label>
+
+			
+
+			
+				<label for="estudio_creditos_pracext" >    <span class="label">
+Nº Créditos en Prácticas Externas:    </span>
+<span id="estudio_creditos_pracext">0</span>
+</label>
+
+			
+
+			
+				<label for="estudio_creditos_trbfin" >    <span class="label">
+Nº Créditos Trabajo Fin de Grado/Master:    </span>
+<span id="estudio_creditos_trbfin">16</span>
+</label>
+
+			
+
+			
+				<label for="estudio_creditos_compform" >    <span class="label">
+Nº Créditos Complementos Formativos:    </span>
+<span id="estudio_creditos_compform">0</span>
+</label>
+
+			
+
+			
+				<label for="estudio_creditos_ecs" >    <span class="label">
+Créditos Totales:    </span>
+<span id="estudio_creditos_ecs">60</span>
+</label>
+
+			
+			
+			
+			
+		
+			
+		</fieldset>
+		</div>
+	    
+		<div id="ttwo">
+		<fieldset>	
+			<h3>Fechas y Enlaces a BOE</h3>
+			
+				<label for="estudio_f_verif" >    <span class="label">
+Fecha de verificación:    </span>
+<span id="estudio_f_verif">13/03/2023</span>
+</label>
+
+			
+			
+				<label for="estudio_f_minist" >    <span class="label">
+Fecha de autorización del Consejo de Ministros:    </span>
+<span id="estudio_f_minist">07/10/2025</span>
+</label>
+
+			
+
+			
+				<label for="f_publi">
+					<span class="label">Fecha de publicación del Acuerdo de Consejo de Ministros en el BOE :</span>
+					
+						<span><a href="http://www.boe.es/boe/dias/2025/10/13/pdfs/BOE-A-2025-20359.pdf" rel="external">BOE&nbsp;13/10/2025&nbsp;<img alt="" src="img/ico-internet.gif" /></a></span>
+					
+					
+				</label>			
+											
+
+			
+				<label for="f_plan">
+					<span class="label">Publicación Plan Estudios en el BOE :</span>
+					
+						<span><a href="http://www.boe.es/boe/dias/2026/01/22/pdfs/BOE-A-2026-1553.pdf" rel="external">BOE&nbsp;22/01/2026&nbsp;<img alt="" src="img/ico-internet.gif" /></a></span>
+					
+					
+				</label>
+			
+			<!-- IZERTIS-13/07/2022-MODIFICACIONES RUCT RD822 -->
+		
+			
+
+				<label for="curso_ini_imp">
+				 <span class="label">Curso de inicio de impartición :</span>
+					<span>2025/2026</span>
+				</label>		 
+						
+			
+		  </fieldset>
+
+			
+			
+
+			
+			
+			
+			
+				<fieldset>
+					<legend>Comunidades Autónomas que autorizan</legend>
+					
+					<div id="ver"><span class="pagebanner">Un registro encontrado.</span></div>
+<table summary="Tabla de ccaas" id="ccaa">
+<thead>
+<tr>
+<th>Universidad</th>
+<th>Código CCAA</th>
+<th>Nombre CCAA</th>
+<th>Fecha de Autorización CCAA</th>
+<th>Enlace Autorización CCAA</th></tr></thead>
+<tbody>
+<tr class="odd">
+<td>Universidad Politécnica de Madrid&nbsp;</td>
+<td>13&nbsp;</td>
+<td>Comunidad de Madrid&nbsp;</td>
+<td>14/09/2025&nbsp;</td>
+<td>
+					    	
+	                            <a href="http://www.bocm.es/boletin/CM_Orden_BOCM/2025/10/01/BOCM-20251001-32.PDF" rel="external">&nbsp;14/09/2025&nbsp;<img alt="" src="img/ico-internet.gif" /></a>
+	                        
+				    	&nbsp;</td></tr></tbody></table>
+				</fieldset>
+			
+			
+            
+            
+            
+            
+		  </div>
+		
+		
+			<div id="tthree">
+			<fieldset>
+				<h3>Centros en los que se imparte</h3>
+					
+				<div id="ver"><span class="pagebanner">Un registro encontrado.</span></div>
+<table summary="Tabla de centros" id="centro">
+<thead>
+<tr>
+<th>Universidad</th>
+<th>Código de centro</th>
+<th>Centro</th></tr></thead>
+<tbody>
+<tr class="odd">
+<td>Universidad Politécnica de Madrid&nbsp;</td>
+<td>28026870&nbsp;</td>
+<td>
+		     			
+		     				
+		     				
+		     				
+		     			
+		     			<a href="/ruct/centro.action;jsessionid=98B6C546B875934B9E0F5C15FA43E5C2?codigoUniversidad=025&amp;codigoCentro=28026870&amp;actual=centros" title="Ver detalles del Centro">Escuela T&eacute;cnica Superior de Arquitectura</a>
+						
+					&nbsp;</td></tr></tbody></table>			
+			</fieldset>
+		  
+			
+		  </div>
+		
+		
+	
+	
+      	<div id="tfour">
+			
+			<h3>Histórico de Incidencias del Plan de Estudios</h3>
+			
+			<div id="ver"><span class="pagebanner">2 registros encontrados, mostrando todos los registros.</span></div>
+<table summary="Histórico" id="plan">
+<thead>
+<tr>
+<th>Orden</th>
+<th>Denominación </th>
+<th>Incidencia</th>
+<th>Fecha de Efectos</th>
+<th>Información del título</th></tr></thead>
+<tbody>
+<tr class="odd">
+<td>1&nbsp;</td>
+<td>Máster Universitario en Construcción Industrializada y Prototipado en el Proyecto Arquitectónico por la Universidad Politécnica de Madrid&nbsp;</td>
+<td>
+					
+					                
+	                
+	                	Alta Inicial
+                	
+                &nbsp;</td>
+<td>07/10/2025&nbsp;</td>
+<td>
+                
+                
+                
+                
+                
+                
+                    <a href="solicitud/detalles.action?cod=43183012023011201&sit=A&actual=menu.solicitud.basicos">Ver</a>
+                
+                &nbsp;</td></tr>
+<tr class="even">
+<td>2&nbsp;</td>
+<td>Máster Universitario en Construcción Industrializada y Prototipado en el Proyecto Arquitectónico por la Universidad Politécnica de Madrid&nbsp;</td>
+<td>
+					
+					
+						Modificación no sustancial
+					                
+	                
+                &nbsp;</td>
+<td>12/01/2026&nbsp;</td>
+<td>
+                
+                
+                
+                
+                
+                
+                    <a href="solicitud/detalles.action?cod=43183012026010101&sit=A&actual=menu.solicitud.basicos">Ver</a>
+                
+                &nbsp;</td></tr></tbody></table>
+			
+			<div class="ayuda">
+				<h4>* Incidencia</h4>
+				<ul>
+					<!-- IZERTIS-13/07/2022-MODIFICACIONES RUCT RD822 -->
+					<li><strong>Alta inicial:</strong> alta de una titulación en el Registro de acuerdo con el artículo 26 del Real Decreto 1393/2007, de 29 de octubre, o con el artículo 27 del Real Decreto 822/2021, de 28 de septiembre.</li>
+					<li><strong>Modificación:</strong> modificación efectuada en una titulación según el artículo 28 del Real Decreto 1393/2007, de 29 de octubre.</li>
+					<li><strong>Modificación sustancial:</strong> modificación sustancial efectuada en una titulación según los artículos 32 y 33 del Real Decreto 822/2021, de 28 de septiembre.</li>
+					<li><strong>Modificación no sustancial:</strong> modificación no sustancial de una titulación según los artículos 30 y 31 del Real Decreto 822/2021, de 28 de septiembre.</li>
+					<li><strong>Acreditación:</strong> renovación de la acreditación de una titulación.</li>
+					<li><strong>Acreditación Institucional:</strong> renovación de la acreditación de una titulación como consecuencia de la acreditación institucional del centro en el que se imparte.</li>
+					<li><strong>Suspensión o anulación:</strong> suspensión o anulación de un aspecto de un título, o bien de la titulación en sí, derivada de una resolución judicial.</li>
+				</ul>
+			</div>
+			
+		</div>
+	
+	</div>
+<script type='text/javascript'>
+jQuery(document).ready(function () { 
+	var options_tab_estudio = {};
+	options_tab_estudio.cookie = true;
+	options_tab_estudio.jqueryaction = "tabbedpanel";
+	options_tab_estudio.id = "tab_estudio";
+
+jQuery.struts2_jquery_ui.bind(jQuery('#tab_estudio'),options_tab_estudio);
+
+ });  
+</script>
+
+	</form>
+
+
+<!-- javascript that is needed for tooltips -->
+<script type="text/javascript" src='/ruct/struts/domTT.js'></script>
+<link rel="stylesheet" type="text/css" href="/ruct/struts/domTT.css"/>
+	
+
+
+	</div>
+
+</div>
+
+<div id="pie">
+	<p>© Ministerio de Ciencia, Innovación y Universidades</p><ul>
+	<li class=""><a rel="external" href="https://www.ciencia.gob.es/InfoGeneralPortal/AvisoLegal.html">Aviso legal</a></li>
+	<li class="ultimo"><a rel="external" href="https://www.ciencia.gob.es/InfoGeneralPortal/Accesibilidad.html">Accesibilidad</a></li>
+</ul>
+	<p><a rel="external" href="http://www.w3.org/WAI/WCAG1AA-Conformance"><img title="Este sitio web cumple con el nivel de accesibilidad doble A según las pautas WCAG 1.0" alt="Logotipo W3C/WAI doble A (WCAG 1.0)" src="/ruct/img/logo-w3c.gif"/></a></p>
+
+</div>
+</div></body></html>
