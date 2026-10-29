@@ -95,6 +95,7 @@ jobs:
           python -m motor.autonomicos.actos --salida salida
           python -m motor.procesos --salida salida
           python -m motor.boe.huecos --salida salida
+          python -m motor.estado --salida salida || true
           ./guardar.sh "Actos y control de huecos"
 
       - name: Avisar si hay huecos o errores
