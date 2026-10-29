@@ -31,3 +31,24 @@ def test_medir_pagina():
     assert m["importes_euros"] == 1 and m["temas"]["plazas"] and m["temas"]["becas"]
     assert m["formulario_pide_correo"] and m["formulario_pide_telefono"]
     assert m["pdf_guia_o_folleto"] == ["https://x.es/docs/programa-master.pdf"]
+
+
+def test_robots_se_lee_y_se_respeta(monkeypatch):
+    class R:
+        def __init__(self, status, text, ctype="text/plain"):
+            self.status_code, self.text, self.content, self.headers = status, text, text.encode(), {"content-type": ctype}
+
+    pedidas = []
+
+    def falso_get(self, url, timeout=25, allow_redirects=True):
+        pedidas.append(url)
+        if url.endswith("/robots.txt"):
+            return R(200, "User-agent: *\nDisallow: /privado/\nSitemap: https://x.es/sm.xml\n")
+        return R(200, "<html></html>", "text/html")
+
+    monkeypatch.setattr(r.requests.Session, "get", falso_get)
+    d = r.Dominio("https://x.es", None, pausa=0)
+    assert d.leer_robots() == ["https://x.es/sm.xml"]
+    assert d.get("https://x.es/privado/master") is None
+    assert d.get("https://x.es/master-en-finanzas") is not None
+    assert pedidas == ["https://x.es/robots.txt", "https://x.es/master-en-finanzas"]

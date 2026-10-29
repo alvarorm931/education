@@ -83,11 +83,12 @@ class Dominio:
         self.robots = RobotFileParser()
         self.robots_ok = True
 
-    def get(self, url: str, timeout: float = 25, guardar: bool = True) -> requests.Response | None:
-        """guardar=False registra solo la huella (sitemaps: grandes y se pueden volver a pedir)."""
+    def get(self, url: str, timeout: float = 25, guardar: bool = True, sin_robots: bool = False) -> requests.Response | None:
+        """guardar=False registra solo la huella (sitemaps: grandes y se pueden volver a pedir).
+        sin_robots=True solo para pedir el propio robots.txt."""
         if self.peticiones >= self.max_peticiones:
             return None
-        if not self.robots_ok_para(url):
+        if not sin_robots and not self.robots_ok_para(url):
             return None
         espera = self.pausa - (time.time() - self.ultimo)
         if espera > 0:
@@ -107,13 +108,15 @@ class Dominio:
         return r
 
     def robots_ok_para(self, url: str) -> bool:
+        if not self.robots.last_checked:  # aún sin leer: no se pide nada salvo el propio robots.txt
+            return False
         try:
             return self.robots.can_fetch(AGENTE, url)
         except Exception:
             return True
 
     def leer_robots(self) -> list[str]:
-        r = self.get(self.base + "/robots.txt")
+        r = self.get(self.base + "/robots.txt", sin_robots=True)
         sitemaps = []
         if r is not None and r.status_code == 200 and "text" in r.headers.get("content-type", "text"):
             lineas = r.text.splitlines()
