@@ -11,19 +11,22 @@ No hay un registro único de «todos los másters». Hay cuatro capas, cada una 
 |---|---|---|---|
 | Máster universitario oficial | Sí: catálogo SIIU del Ministerio (por centro) + ficha del RUCT | 4.347 títulos activos (4.166 simples y 181 dobles) en 95 universidades, 4.906 imparticiones activas por centro; 4.859 con extinguidos | XLSX anual, `motor/estudios/catalogo.py` |
 | Altas nuevas | Sí: acuerdos del Consejo de Ministros en el BOE, con el código RUCT de cada título | 27 acuerdos entre 2022 y 2026 | sumario del BOE ya capturado, `motor/estudios/boe_masters.py` |
-| Máster de formación permanente (título propio) | No. Ni el RD 822/2021 ni el RD 905/2025 obligan a inscribirlos en el RUCT | Sin cifra oficial | catálogo web de cada universidad (95) |
+| Máster de formación permanente (título propio) | No. No consta obligación de inscribirlos en el RUCT (ver §2, títulos propios) | Sin cifra oficial | catálogo web de cada universidad (95) |
 | Máster de escuela de negocio o centro no universitario | No. «Máster» sin título universitario detrás | Sin cifra | web de cada escuela; fuera de la primera versión |
 
-Además, los másters de **enseñanzas artísticas superiores** (conservatorios y escuelas superiores) se
-homologan por orden ministerial en el BOE (vistas 53 disposiciones de plan entre 2022 y 2026) y el RUCT los
-lista bajo «Centros autorizados para impartir Enseñanzas Artísticas Superiores». Por verificar si el catálogo
-SIIU los incluye; de momento no.
+Además hay dos familias de máster oficial fuera de las universidades, que el RUCT lista aparte («Centros
+autorizados para impartir Enseñanzas Artísticas Superiores» y «Centros dependientes del Ministerio de
+Defensa»): los de enseñanzas artísticas superiores (conservatorios y escuelas superiores; 32 disposiciones
+de plan en el BOE entre 2022 y 2026, homologadas por orden ministerial) y los de Defensa (por ejemplo, el
+Máster en Ingeniería de Armas Navales). Por verificar si el catálogo SIIU los incluye; de momento no se
+cuentan.
 
 ### Lo que dice el catálogo oficial (curso 2025-2026)
 
 - Pública 2.855 títulos activos, privada 1.311 (31 %).
-- Modalidad por impartición: presencial 3.213, a distancia 851, semipresencial 448, varias 394. En la
-  privada, el 44 % de las imparticiones es a distancia (603 de 1.375); en la pública, el 7 % (248 de 3.326).
+- Modalidad por impartición: presencial 3.213, a distancia 851, semipresencial 448, varias 394. En los
+  másters simples de la privada, el 44 % de las imparticiones es a distancia (603 de 1.375); en la pública,
+  el 7 % (248 de 3.326).
 - 562 imparticiones con plan en inglés u otro idioma extranjero.
 - Por comunidad: Madrid 982, Cataluña 657, Andalucía 571, C. Valenciana 490, Castilla y León 271,
   La Rioja 207 (192 son de UNIR, la universidad con más másters de España).
@@ -69,8 +72,8 @@ Precauciones medidas:
 - El RUCT tuvo caídas desde GitHub el 29/10/2026 (de 17:28 a 17:55 UTC ninguna ficha respondió). El
   conector se para tras tres fichas seguidas sin respuesta.
 - Volumen: fichas de todo el catálogo, unas 4.900 peticiones (81 minutos a una por segundo). Memorias de
-  todos los títulos activos, del orden de 200.000 peticiones (unas 60 horas). **No cabe en los 2.000 minutos
-  de GitHub**: se ejecuta en el servidor de España, repartido en noches.
+  todos los títulos activos, unas 235.000 peticiones (unas 88 horas, medido en §4). **No cabe en los 2.000
+  minutos de GitHub**: se ejecuta en el servidor de España, repartido en noches.
 
 ### BOE: planes de estudios
 
@@ -88,8 +91,8 @@ Precauciones medidas:
   anuario del Ministerio da la serie. La UCM, por ejemplo, no da el importe en la ficha y remite a un
   simulador.
 - Privadas: **publican tarifas en PDF aunque la ficha comercial pida el teléfono**. Comprobado: Universidad
-  Europea de Andalucía (9 másters: reserva 1.100 € y docencia de 8.700 € a 9.420 €), Universidad Alfonso X
-  (unos 33 másters; Abogacía 8.494 €), Universidad Francisco de Vitoria (27 másters, 21 oficiales y 6
+  Europea de Andalucía (9 másters: reserva 1.100 € y docencia de 8.700 € a 9.420 €), Universidad Alfonso X,
+  oferta online (unos 33 másters; Abogacía 8.494 €), Universidad Francisco de Vitoria (27 másters, 21 oficiales y 6
   propios; Ingeniería Industrial 14.280 €).
 - Trampa: algunas privadas publican el «precio público por ECTS a efectos de beca» (UDIMA: 28 €/ECTS en
   casi todos sus másters). Es la base de cálculo de la beca del Ministerio, no lo que paga el alumno. Nunca
@@ -98,7 +101,8 @@ Precauciones medidas:
 ### Títulos propios
 
 - Sin registro central. El RD 905/2025 exige informe previo del sistema de calidad para llamarlo «Máster de
-  Formación Permanente» y limita el volumen de créditos propios, pero no crea registro.
+  Formación Permanente» y limita los créditos propios a dos veces los oficiales; en lo leído (hasta su
+  artículo 14) no crea registro ni obligación de comunicarlos. Pendiente de leer el resto del texto.
 - La UCM los lista por entidad en `ucm.es/estudios/{curso}/titulo-propio?eid={n}` (ejemplo: 20 másters
   de formación permanente de la Escuela de Gobierno, con modalidad). Cada universidad, un conector.
 
@@ -128,16 +132,43 @@ Cada dato lleva fuente, URL y fecha de captura; la fecha solo cambia si cambia e
 
 La ley fija para el máster «asignaturas y precio». Con lo medido:
 
-- asignaturas: salen del RUCT para todos los oficiales (pendiente de medir el porcentaje exacto en la
-  muestra de 28, ver §4);
+- asignaturas (o materias con ECTS cuando la materia es la asignatura): salen del RUCT en 23 de 23
+  memorias medidas (§4);
 - precio: públicas, del decreto de su comunidad; privadas, solo si hay tarifa publicada.
 
 Consecuencia: un máster privado sin tarifa encontrada se publica con `noindex` aunque tenga asignaturas y
 plazas. Es coherente con la ley; si se quiere indexarlo, hay que cambiar la regla, no saltársela.
 
-## 4. Medición en muestra de 28 títulos
+## 4. Medición en una muestra al azar (29/10/2026)
 
-Pendiente de completar con la ejecución en curso.
+28 títulos activos elegidos al azar (14 de universidades públicas y 14 de privadas, semilla fija); en los 28
+minutos de la ejecución se leyeron 23 memorias completas (14 públicas y 9 privadas), 1.237 peticiones, sin
+errores ni páginas de otro título.
+
+| Dato | Públicas (14) | Privadas (9) | Total (23) |
+|---|---|---|---|
+| Plan con materias y sus ECTS | 14 | 9 | 23 |
+| Asignaturas por debajo de la materia (en el resto, la materia es la asignatura) | 9 | 5 | 14 |
+| Plazas por centro | 14 | 9 | 23 |
+| Modalidad marcada por centro | 14 | 9 | 23 |
+| Requisitos y criterios de admisión (más de 300 caracteres) | 14 | 9 | 23 |
+| Evaluación con ponderación por materia | 8 | 3 | 11 |
+| Identificador BOE del plan en la ficha | 12 | 7 | 19 |
+
+La evaluación ponderada depende del formato de la memoria, no de la universidad: aparece en 11 de las 13
+memorias RD 1393/2007 y en ninguna de las 10 RD 822/2021. Ejemplo privado: Trastornos del Comportamiento
+Alimentario y Obesidad (Universidad Europea de Madrid), materia de 6 ECTS: pruebas presenciales 50-55 %,
+trabajos 15-20 %, caso 15-20 %, portafolio 10-15 %; 35 horas de clase magistral al 100 % presencial.
+
+Ejemplo de plan privado a distancia: Gestión Empresarial en la Industria Musical (UNIR), 300 plazas a
+distancia, cinco materias y nueve asignaturas de 6 ECTS con su semestre, TFM de 12 ECTS.
+
+Precaución: las plazas de la memoria son las **verificadas** (el máximo autorizado y la fecha de la
+memoria), no la oferta de cada curso. En la ficha se publican como «plazas verificadas en [año]» y la oferta
+anual sale de la web o del fichero de oferta del Ministerio cuando exista.
+
+Coste medido: 54 páginas por memoria de media (públicas 62, privadas 38) y 1,35 segundos por petición
+contando la espera. Para los 4.347 títulos activos, unas 235.000 peticiones y unas 88 horas.
 
 ## 5. Siguientes pasos
 
