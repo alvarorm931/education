@@ -45,7 +45,26 @@ def _ruta_dia(base: Path, d: date) -> Path:
     return base / f"{d:%Y}" / f"{d:%m}" / f"{d:%d}.jsonl"
 
 
+def _ruta_informe(raiz: Path, d: date) -> Path:
+    return raiz / "datos" / "boe" / "dias" / f"{d:%Y}" / f"{d:%m}" / f"{d:%d}.json"
+
+
+def ya_procesado(raiz: Path, d: date) -> bool:
+    ruta = _ruta_informe(raiz, d)
+    if not ruta.exists():
+        return False
+    return json.loads(ruta.read_text(encoding="utf-8")).get("resultado") in {"ok", "sin_boletin"}
+
+
 def procesar_dia(d: date, raiz: Path, archivo: Archivo, estado: dict) -> dict:
+    informe = _procesar_dia(d, raiz, archivo, estado)
+    ruta = _ruta_informe(raiz, d)
+    ruta.parent.mkdir(parents=True, exist_ok=True)
+    ruta.write_text(json.dumps(informe, ensure_ascii=False, indent=1), encoding="utf-8")
+    return informe
+
+
+def _procesar_dia(d: date, raiz: Path, archivo: Archivo, estado: dict) -> dict:
     url = url_sumario(d)
     resp = obtener(url, accept=ACCEPT)
     captura = archivo.guardar(FUENTE, d, resp.contenido, url, "xml", resp.status, resp.cabeceras)
@@ -127,6 +146,8 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--hasta", type=date.fromisoformat, default=hoy)
     p.add_argument("--salida", type=Path, default=Path("."))
     p.add_argument("--pausa", type=float, default=1.0, help="segundos entre peticiones")
+    p.add_argument("--saltar-existentes", action="store_true",
+                   help="no volver a pedir días ya procesados (para cargas históricas)")
     a = p.parse_args(argv)
     if a.hasta < a.desde:
         p.error("--hasta es anterior a --desde")
@@ -139,6 +160,9 @@ def main(argv: list[str] | None = None) -> int:
     informes = []
     d = a.desde
     while d <= a.hasta:
+        if a.saltar_existentes and ya_procesado(raiz, d):
+            d += timedelta(days=1)
+            continue
         try:
             informes.append(procesar_dia(d, raiz, archivo, estado))
         except ConnectionError as e:

@@ -4,7 +4,7 @@ from pathlib import Path
 
 import pytest
 
-from motor.archivo import Archivo
+from motor.archivo import Archivo, leer
 from motor.boe import __main__ as cli
 from motor.boe.clasificar import ambito, clasificar
 from motor.boe.sumario import ErrorSumario, parsear, url_sumario
@@ -104,7 +104,8 @@ def test_archivo_guarda_una_vez_y_registra(tmp_path):
     r1 = a.guardar("boe-sumario", date(2026, 10, 28), b"abc", "u", "xml", 200)
     r2 = a.guardar("boe-sumario", date(2026, 10, 28), b"abc", "u", "xml", 200)
     assert r1["nuevo"] and not r2["nuevo"]
-    assert (tmp_path / r1["ruta"]).read_bytes() == b"abc"
+    assert r1["ruta"].endswith(".xml.gz")
+    assert leer(tmp_path / r1["ruta"]) == b"abc"
     assert len((tmp_path / "indice.jsonl").read_text().splitlines()) == 2
 
 
@@ -162,3 +163,19 @@ def test_convocante_titulos_reales(titulo, esperado):
 def test_acto_y_alcance_titulos_reales(titulo, epigrafe, acto, alc):
     r = clasificar({"departamento": "MINISTERIO DE HACIENDA", "titulo": titulo, "epigrafe": epigrafe})
     assert (r["tipo_acto"], r["alcance"]) == (acto, alc)
+
+
+def test_cli_saltar_existentes(tmp_path, monkeypatch):
+    llamadas = []
+    contenido = FIXTURE.read_bytes()
+
+    def falso_obtener(url, accept=None, **kw):
+        llamadas.append(url)
+        return Respuesta(url, 200, contenido, {})
+
+    monkeypatch.setattr(cli, "obtener", falso_obtener)
+    args = ["--desde", "2026-10-26", "--hasta", "2026-10-27", "--salida", str(tmp_path), "--pausa", "0"]
+    cli.main(args)
+    cli.main(args + ["--saltar-existentes"])
+    assert len(llamadas) == 2  # la segunda ejecución no repite los días ya hechos
+    assert (tmp_path / "datos/boe/dias/2026/10/26.json").exists()

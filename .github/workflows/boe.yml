@@ -63,6 +63,12 @@ jobs:
           python -m motor.boe $ARGS
           echo "codigo=$?" >> "$GITHUB_OUTPUT"
 
+      - name: Textos nuevos y extracción de actos
+        run: |
+          python -m motor.boe.texto --pendientes --salida salida --max 600 --max-minutos 30 | head -n 20 || true
+          python -m motor.boe.extraer --salida salida
+          python -m motor.boe.huecos --salida salida || true
+
       - name: Guardar resultados en la rama datos
         run: |
           cd salida

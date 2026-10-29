@@ -1,11 +1,13 @@
 """Archivo de originales: cada descarga se guarda intacta, con su huella sha256, y nunca se borra.
 
-Estructura: {raiz}/{fuente}/{AAAA}/{MM}/{DD}/{sha256}.{ext}
+Estructura: {raiz}/{fuente}/{AAAA}/{MM}/{DD}/{sha256}.{ext}[.gz]
+La huella sha256 es la del contenido original; si se comprime, se guarda en gzip sin alterar el contenido.
 Índice de capturas (una línea por captura): {raiz}/indice.jsonl
 """
 
 from __future__ import annotations
 
+import gzip
 import hashlib
 import json
 from datetime import date, datetime, timezone
@@ -25,14 +27,18 @@ class Archivo:
         ext: str,
         status: int,
         cabeceras: dict[str, str] | None = None,
+        comprimir: bool = True,
     ) -> dict:
         sha = hashlib.sha256(contenido).hexdigest()
         carpeta = self.raiz / fuente / f"{fecha_ref:%Y}" / f"{fecha_ref:%m}" / f"{fecha_ref:%d}"
-        ruta = carpeta / f"{sha}.{ext}"
-        nuevo = not ruta.exists()
+        ruta = carpeta / (f"{sha}.{ext}.gz" if comprimir else f"{sha}.{ext}")
+        sin_comprimir = carpeta / f"{sha}.{ext}"
+        nuevo = not ruta.exists() and not sin_comprimir.exists()
         if nuevo:
             carpeta.mkdir(parents=True, exist_ok=True)
-            ruta.write_bytes(contenido)
+            ruta.write_bytes(gzip.compress(contenido, mtime=0) if comprimir else contenido)
+        elif sin_comprimir.exists():
+            ruta = sin_comprimir
         registro = {
             "fuente": fuente,
             "fecha_ref": fecha_ref.isoformat(),
@@ -49,3 +55,10 @@ class Archivo:
         with (self.raiz / "indice.jsonl").open("a", encoding="utf-8") as f:
             f.write(json.dumps(registro, ensure_ascii=False) + "\n")
         return registro
+
+
+def leer(ruta: Path | str) -> bytes:
+    """Devuelve el contenido original de una captura, comprimida o no."""
+    ruta = Path(ruta)
+    datos = ruta.read_bytes()
+    return gzip.decompress(datos) if ruta.suffix == ".gz" else datos
