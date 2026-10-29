@@ -42,6 +42,14 @@ def _municipios_con_tratamiento() -> set[str]:
 
 
 MUNICIPIOS_CON_TRATAMIENTO = _municipios_con_tratamiento()
+# «Sr. Subsecretario», «Sra. Alcaldesa», «senyor President»: un cargo, no una persona con nombre
+CARGOS = re.compile(
+    r"^(?:sub)?(?:secretari|director|directora|president|presidenta|presidente|alcald|rector|rectora|vicerrector|"
+    r"vicerector|consejer|conseller|consellera|ministr|delegad|subdelegad|jef|cap\b|gerente|gerent|decan|degà|"
+    r"interventor|tesorer|tresorer|concejal|regidor|regidora|diputad|viceconsejer|viceconseller|batle|batlessa|"
+    r"defensor|fiscal|magistrad|juez|jutge|letrad|lletrad|comisari|inspector|coordinador|administrador|"
+    r"responsable|encargad|titular|vocal|portavoz|conselleir|conselleira|xefe|xefa|alcalde|alcaldesa)",
+    re.IGNORECASE)
 
 
 def _es_persona(m: re.Match) -> bool:
@@ -50,6 +58,8 @@ def _es_persona(m: re.Match) -> bool:
         return False
     # «D.» seguido de mayúsculas suele ser el apartado de un sumario («D. OTRAS DISPOSICIONES»), no una persona
     if m.group("t").lower() == "d." and m.group("n").split()[0].isupper():
+        return False
+    if CARGOS.match(m.group("n")):
         return False
     return True
 

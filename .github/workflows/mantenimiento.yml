@@ -1,0 +1,67 @@
+name: Mantenimiento de datos
+
+# Tareas puntuales sobre la rama «datos». Comparte grupo con el motor para no coincidir con él.
+#   privacidad: aplica las reglas de privacidad a lo ya guardado (textos, títulos) y retira de la rama los
+#               originales de boletines, que pueden traer datos de personas (quedan huella, URL y fecha).
+
+on:
+  workflow_dispatch:
+    inputs:
+      tarea:
+        description: "Tarea"
+        default: "privacidad"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: rama-datos
+  cancel-in-progress: false
+
+jobs:
+  mantenimiento:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Instalar y probar
+        run: |
+          pip install -e ".[dev]"
+          python -m pytest -q
+
+      - name: Preparar rama de datos
+        run: |
+          git config user.name "motor-datos"
+          git config user.email "motor-datos@users.noreply.github.com"
+          git fetch --depth 1 origin datos
+          git worktree add -B datos salida origin/datos
+
+      - name: Tarea
+        env:
+          TAREA: ${{ inputs.tarea }}
+        run: |
+          case "$TAREA" in
+            privacidad) python -m motor.mantenimiento.privacidad --salida salida | tee tarea.txt ;;
+            *) echo "::error::Tarea desconocida: $TAREA"; exit 1 ;;
+          esac
+          echo "::notice title=Mantenimiento $TAREA::$(head -c 900 tarea.txt | tr '\n' ' ')"
+
+      - name: Guardar
+        env:
+          TAREA: ${{ inputs.tarea }}
+        run: |
+          cd salida
+          git add -A
+          git diff --cached --quiet && exit 0
+          git commit -qm "Mantenimiento: $TAREA"
+          for i in 1 2 3 4 5 6 7 8; do
+            git push -q origin datos && exit 0
+            sleep $(( i * 4 + RANDOM % 7 ))
+            git fetch -q --depth 100 origin datos && git rebase -q origin/datos || { git rebase --abort; exit 1; }
+          done
+          exit 1
