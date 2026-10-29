@@ -206,7 +206,39 @@ def unir_alias(provs: list[dict], grupos: list[set[str]]) -> list[dict]:
             if otro["estado"] == "oficial":
                 jefe["estado"] = "oficial"
         salida.append(jefe)
-    return sorted(salida, key=lambda p: (p["estado"] != "oficial", -p["senales"].get("cc_paginas", 0)))
+    orden = {"oficial": 0, "verificado": 1, "candidato": 2}
+    return sorted(salida, key=lambda p: (orden.get(p["estado"], 3), -p["senales"].get("cc_paginas", 0)))
+
+
+def marcar_verificados(provs: list[dict], carpetas: list[Path]) -> None:
+    """Con los resultados del rastreador: un candidato con fichas de programa en su web y señal de España
+    pasa a «verificado»; los demás se quedan como candidatos con el motivo. A los oficiales se les anota si
+    su web enseña fichas. Las carpetas van de la más antigua a la más reciente: manda el último rastreo."""
+    ultimo: dict[str, dict] = {}
+    for c in carpetas:
+        for f in sorted(c.rglob("oferta_web/*.json")):
+            r = json.loads(f.read_text(encoding="utf-8"))
+            i = (r.get("centro") or {}).get("id")
+            if i:
+                ultimo[i] = r
+    for p in provs:
+        r = ultimo.get(p["id"])
+        if r is None:
+            continue
+        s = p["senales"]
+        s["web_rastreada"] = True
+        s["urls_programa"] = r.get("urls_programa", 0)
+        s["veto_robots"] = bool(r.get("veto_robots"))
+        s["reserva_tdm"] = bool(r.get("reserva_tdm"))
+        ok = bool(r.get("verificado") and r.get("espana"))
+        if p["estado"] == "oficial":
+            s["web_con_fichas"] = ok
+        elif ok:
+            p["estado"], p["motivo"] = "verificado", None
+        else:
+            p["motivo"] = ("sin_respuesta" if r.get("error") == "sin_respuesta" else
+                           "veto_robots" if r.get("veto_robots") else
+                           "fuera_de_espana" if r.get("verificado") else "sin_fichas_de_programa")
 
 
 def alias_de_rastreo(carpetas: list[Path]) -> list[set[str]]:
@@ -273,6 +305,7 @@ def ejecutar(centros_dir: Path, cc_dir: Path | None, salida: Path, rastreos: lis
                       "estado": "candidato", "motivo": None})
     antes = len(provs)
     provs = unir_alias(provs, alias_de_rastreo(rastreos or []))
+    marcar_verificados(provs, rastreos or [])
     destino = salida / "datos" / "estudios" / "censo"
     destino.mkdir(parents=True, exist_ok=True)
     with (destino / "proveedores.jsonl").open("w", encoding="utf-8") as f:
@@ -292,7 +325,7 @@ def main() -> None:
     p = argparse.ArgumentParser()
     p.add_argument("--centros", required=True)
     p.add_argument("--commoncrawl")
-    p.add_argument("--rastreo", action="append", default=[], help="carpeta con resultados del rastreador (alias)")
+    p.add_argument("--rastreo", action="append", default=[], help="carpeta con resultados del rastreador (alias, colaboradores y verificación); de la más antigua a la más reciente")
     p.add_argument("--salida", required=True)
     a = p.parse_args()
     print(json.dumps(ejecutar(Path(a.centros), Path(a.commoncrawl) if a.commoncrawl else None, Path(a.salida),

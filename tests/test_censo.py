@@ -86,3 +86,18 @@ def test_colaboradores_entran_como_candidatos(tmp_path):
 def test_sufijos_dobles_extranjeros():
     assert c.dominio_registrado("https://www.ox.ac.uk/master") == "ox.ac.uk"
     assert c.dominio_registrado("posgrado.unc.edu.ar") == "unc.edu.ar"
+
+
+def test_marcar_verificados(tmp_path):
+    import json
+    provs = [{"id": "a", "estado": "candidato", "senales": {}, "motivo": None},
+             {"id": "b", "estado": "candidato", "senales": {}, "motivo": None},
+             {"id": "c", "estado": "oficial", "senales": {}, "motivo": None}]
+    (tmp_path / "oferta_web").mkdir()
+    for i, r in {"a": {"verificado": True, "espana": True, "urls_programa": 9},
+                 "b": {"verificado": True, "espana": False}, "c": {"verificado": False}}.items():
+        (tmp_path / "oferta_web" / f"{i}.json").write_text(json.dumps({"centro": {"id": i}, **r}))
+    c.marcar_verificados(provs, [tmp_path])
+    assert provs[0]["estado"] == "verificado" and provs[0]["senales"]["urls_programa"] == 9
+    assert provs[1]["estado"] == "candidato" and provs[1]["motivo"] == "fuera_de_espana"
+    assert provs[2]["estado"] == "oficial" and provs[2]["senales"]["web_con_fichas"] is False
