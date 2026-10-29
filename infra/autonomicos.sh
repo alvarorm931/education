@@ -156,7 +156,8 @@ for c in $CONECTORES; do
       ;;
     bopgranada|bopsevilla)
       ejecutar motor.provinciales.$c --salida "$S"
-      ejecutar motor.provinciales.$c --desde 2024-01-01 --salida "$S" --max-minutos "$M"
+      # Cada boletín empieza donde empieza su portal (Granada, julio de 2024; Sevilla tiene 2023 y antes)
+      ejecutar motor.provinciales.$c --desde 2022-01-01 --salida "$S" --max-minutos "$M"
       "$G" "$c: días"
       ejecutar motor.provinciales.$c --textos --salida "$S" --max-minutos "$M"
       "$G" "$c: textos"

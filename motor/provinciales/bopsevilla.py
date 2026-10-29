@@ -3,7 +3,7 @@ en https://bopsevilla.dipusevilla.es.
 
 Uso:
   python -m motor.provinciales.bopsevilla --salida ruta/                                   # ayer y hoy
-  python -m motor.provinciales.bopsevilla --desde 2024-01-01 --max-minutos 30 --salida ruta/
+  python -m motor.provinciales.bopsevilla --desde 2022-01-01 --max-minutos 30 --salida ruta/
   python -m motor.provinciales.bopsevilla --textos --max-minutos 30 --salida ruta/
 """
 
@@ -17,7 +17,7 @@ from motor.provinciales import saga
 
 BOLETIN = saga.Boletin(
     fuente="bopsevilla", siglas="BOP-SEVILLA", base="https://bopsevilla.dipusevilla.es", provincia="Sevilla",
-    nombres=("Boletín Oficial de la Provincia de Sevilla",), inicio=date(2024, 1, 1),
+    nombres=("Boletín Oficial de la Provincia de Sevilla",), inicio=date(2022, 1, 1),
     cabecera_pdf=re.compile(r"^(?:Boletín Oficial de la Provincia de Sevilla|Número \d+ .*|Página \d+.*|"
                             r"BOP-SE-\d{4}-\d+|.*Pág\. \d+)$", re.IGNORECASE))
 
