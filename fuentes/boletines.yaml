@@ -314,7 +314,9 @@ provinciales:
   - provincia: Santa Cruz de Tenerife
     url: http://www.bopsantacruzdetenerife.es/
     acceso_desde_github: "ok"
-    estado: sin_conector
+    datos_estructurados: "Sumario por día: /bopsc2/sumario.php?codigopub=1&fecha_mas_reciente=AAAA-MM-DD (sección, entidad y título de cada anuncio; texto solo en el PDF del boletín completo)"
+    estado: conector_en_pruebas
+    conector: motor/provinciales/boptenerife.py
   - provincia: Segovia
     url: http://www.dipsegovia.es/bop
     acceso_desde_github: "http_403"

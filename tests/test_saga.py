@@ -31,3 +31,19 @@ def test_sevilla_municipio_sin_tipo():
                                               if x["tipo_acto"] == "oferta_empleo")
     # Subvenciones de la Diputación y empresas de vivienda no son empleo público
     assert not any("subvenciones" in x["titulo"] for x in sel.values())
+
+
+def test_huesca_paginado(tmp_path, monkeypatch):
+    from datetime import date
+    from motor.archivo import Archivo
+    from motor.http import Respuesta
+    from motor.provinciales import bophuesca
+    b = bophuesca.BOLETIN
+    url = b.url_dia(date(2026, 10, 28))
+    paginas = {url: (F / "bophuesca_20261028_p1.html").read_bytes(), url + "?page=2": (F / "bophuesca_20261028_p2.html").read_bytes()}
+    monkeypatch.setattr(saga, "obtener", lambda u, **kw: Respuesta(u, 200, paginas[u]))
+    monkeypatch.setattr(saga.time, "sleep", lambda s: None)
+    inf = saga.procesar_dia(b, date(2026, 10, 28), tmp_path, Archivo(tmp_path / "a", indice_por_fuente=True, solo_huella=True))
+    assert (inf["resultado"], inf["disposiciones"]) == ("ok", 24) and not inf["alertas"]
+    filas = [l for l in (tmp_path / "datos/provinciales/bophuesca/disposiciones/2026/10/28.jsonl").read_text().splitlines()]
+    assert '"BOPH-2026-207001"' in filas[0]

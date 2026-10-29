@@ -59,8 +59,6 @@ REGLAS_ACTO: list[tuple[str, tuple[str, ...]]] = [
                       "nou termini de presentacio",
                       "modificacion da convocatoria", "modificacion das bases", "ampliacion do prazo",
                       "novo prazo de presentacion")),
-    ("oferta_empleo", ("oferta de empleo publico", "oferta publica d'ocupacio", "oferta d'ocupacio publica",
-                       "oferta de ocupacio publica", "oferta de emprego publico", "oferta publica de emprego")),
     ("normativa", ("normas procedimentales", "por la que se establecen las normas")),
     ("admitidos", ("admitidos y excluidos", "admitidas y excluidas", "lista provisional", "lista definitiva",
                    "relacion provisional", "relacion definitiva de aspirantes admitidos",
@@ -85,6 +83,9 @@ REGLAS_ACTO: list[tuple[str, tuple[str, ...]]] = [
     ("convocatoria", ("se convoca", "convocatoria", "convoca proceso", "convoca concurso", "proceso selectivo",
                       "es convoca", "es convoquen", "proces selectiu", "proces de seleccio", "convocase")),
     ("bases", ("bases",)),
+    # Al final: muchos títulos citan la oferta («en ejecución de la Oferta de Empleo Público») sin ser la oferta
+    ("oferta_empleo", ("oferta de empleo publico", "oferta publica d'ocupacio", "oferta d'ocupacio publica",
+                       "oferta de ocupacio publica", "oferta de emprego publico", "oferta publica de emprego")),
 ]
 
 REGLAS_MODALIDAD: list[tuple[str, tuple[str, ...]]] = [

@@ -162,6 +162,12 @@ for c in $CONECTORES; do
       ejecutar motor.provinciales.$c --textos --salida "$S" --max-minutos "$M"
       "$G" "$c: textos"
       ;;
+    boptenerife)
+      # Sin textos por anuncio: el texto solo está en el PDF del boletín completo
+      ejecutar motor.provinciales.boptenerife --salida "$S"
+      ejecutar motor.provinciales.boptenerife --desde 2022-01-01 --salida "$S" --max-minutos "$M"
+      "$G" "BOP Tenerife: días"
+      ;;
     *)
       echo "::warning::Conector desconocido: $c"
       ;;

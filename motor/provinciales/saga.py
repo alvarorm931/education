@@ -38,7 +38,8 @@ RE_ENLACE = re.compile(r'<a href="(?P<href>/publica/buscador-anuncios/anuncio/[^
 RE_FECHA = re.compile(r'class="fecha_elemento">\s*<div class="container">\s*(?P<d>\d{2})/(?P<m>\d{2})/(?P<a>\d{4})')
 RE_TITULO = re.compile(r'<h3 class="titulo_elemento">(?P<t>.*?)</h3>', re.DOTALL)
 RE_ENTIDAD = re.compile(r'campo_1">\s*<div class="container">(?P<e>.*?)</div>', re.DOTALL)
-RE_CVE = re.compile(r'campo_3">\s*(?P<cve>BOP-[A-Z]+-\d{4}-\d+)')
+RE_CVE = re.compile(r'campo_3">\s*(?P<cve>BOP[A-Z]*-(?:[A-Z]+-)?\d{4}-\d+)')  # BOP-GRA-2026-210022, BOPH-2026-207001
+RE_RESULTADOS = re.compile(r"Resultados del \d+ al (?P<hasta>\d+) de (?P<total>\d+)")
 RE_NUMERO = re.compile(r"BOP núm\. (?P<n>\d+)(?:</strong>)?\s+del\s+(?P<d>\d{2})/(?P<m>\d{2})/(?P<a>\d{4})")
 RE_PDF = re.compile(r'href="(?P<pdf>/export/sites/[^"]+\.pdf)"')
 RE_DATO = re.compile(r"(?P<k>Administración|Sección|Subsección|Grupo:?)\s*</?[^>]*>\s*(?:<[^>]+>\s*)*(?P<v>[^<]{2,200})")
@@ -137,12 +138,31 @@ def procesar_dia(b: Boletin, d: date, raiz: Path, archivo: Archivo) -> dict:
         informe["resultado"] = "error_http"
         informe["alertas"].append(f"{b.siglas} {d}: HTTP {r.status}")
         return informe
-    s = parsear_dia(b, r.contenido.decode("utf-8", errors="replace"))
+    texto = r.contenido.decode("utf-8", errors="replace")
+    s = parsear_dia(b, texto)
     if s["fecha"] and s["fecha"] != d.isoformat():
         informe["resultado"] = "sin_boletin"
         return informe
     captura = archivo.guardar(b.fuente, d, r.contenido, url, "html", r.status, r.cabeceras)
-    filas = [{**x, "boletin": s["numero"], "captura_sha256": captura["sha256"]} for x in s["anuncios"]]
+    anuncios, pagina = list(s["anuncios"]), 1
+    res = RE_RESULTADOS.search(texto)
+    # Huesca pagina de 20 en 20 (Granada y Sevilla lo dan todo en una página): …/BOP-DD-MM-AAAA/?page=2
+    while res and int(res.group("hasta")) < int(res.group("total")) and pagina < 20:
+        pagina += 1
+        time.sleep(1)
+        rp = obtener(f"{url}?page={pagina}", accept="text/html")
+        if rp.status != 200:
+            informe["alertas"].append(f"{b.siglas} {d}: página {pagina} HTTP {rp.status}")
+            break
+        texto = rp.contenido.decode("utf-8", errors="replace")
+        anuncios += parsear_dia(b, texto)["anuncios"]
+        archivo.guardar(b.fuente, d, rp.contenido, f"{url}?page={pagina}", "html", rp.status, rp.cabeceras)
+        res = RE_RESULTADOS.search(texto)
+    anuncios = list({x["id"]: x for x in anuncios}.values())
+    filas = [{**x, "boletin": s["numero"], "captura_sha256": captura["sha256"]} for x in anuncios]
+    total = RE_RESULTADOS.search(r.contenido.decode("utf-8", errors="replace"))
+    if total and len(filas) != int(total.group("total")):
+        informe["alertas"].append(f"{b.siglas} {d}: {len(filas)} anuncios leídos de {total.group('total')}")
     empleo = seleccionar(b, filas)
     escribir_jsonl(_ruta(b, raiz, "disposiciones", d), filas)
     escribir_jsonl(_ruta(b, raiz, "oposiciones", d), empleo)
