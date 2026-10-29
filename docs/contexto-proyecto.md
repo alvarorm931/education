@@ -54,8 +54,13 @@ ventanas al entrar, Core Web Vitals en verde, robots de búsqueda y de IA permit
   textos de anuncios en descarga, registro de 62 boletines.
 - Conectores autonómicos (`motor/autonomicos/`, 14): BOJA, BOCM, BOCYL, DOGV, DOG, DOGC, BOA, DOE, BOIB, BORM,
   BOC, BOPV, DOCM y BOME, con piezas comunes en `comun.py`. Faltan Asturias, Navarra, Cantabria, La Rioja y Ceuta
-  (bloquean a GitHub). Provinciales (`motor/provinciales/`): BOPB (Barcelona); siguientes por número de bases
-  citadas en el BOE: Valencia, Alicante, Tarragona, Granada, Sevilla, Tenerife, Málaga.
+  (bloquean a GitHub). Provinciales (`motor/provinciales/`, 7): Barcelona y Tarragona (plataforma común `diba.py`), Valencia
+  (portal JSF con sesión), Alicante (servicio JSON), Ciudad Real, Granada y Sevilla (plataforma común `saga.py`).
+  Siguientes por número de bases citadas en el BOE: Málaga (bloquea a GitHub), Tenerife, Badajoz, Bizkaia, Córdoba,
+  A Coruña, Zaragoza, Toledo, Castellón. Intermedios TLS que faltan en algunos servidores: `motor/certificados/`.
+- Vigilancia: `motor/estado.py` escribe `datos/estado.json` (por fuente: último boletín leído, días hábiles sin
+  noticias, errores) y avisa si una lleva más de 3 días hábiles parada. Todos los conectores paran tras 8 fallos
+  seguidos y lo reintentan en la siguiente ejecución.
 - Catálogo territorial (`motor/catalogo/territorio.py`): 52 provincias y 8.132 municipios del INE (2026); cada
   proceso lleva provincia, comunidad y código INE del convocante cuando es inequívoco.
 - Extracción sin IA (`motor/extraccion/`): plazo de solicitudes (`plazo.py`) y plazas (`plazas.py`) en castellano,
