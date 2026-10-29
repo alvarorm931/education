@@ -53,3 +53,12 @@ def test_mantenimiento_limpia_lo_guardado(tmp_path):
     assert "[persona]" in s.read_text() and not o.exists()
     assert (tmp_path / "archivo/indices/boe-texto/2026-10.jsonl").exists()
     assert json.loads((tmp_path / "archivo/retirados.json").read_text())[0]["por_fuente"] == {"boe-texto": 1}
+
+
+def test_anonimizar_respuestas_de_sondas(tmp_path):
+    from motor.mantenimiento.anonimizar import main
+    f = tmp_path / "1.cuerpo"
+    f.write_bytes("<p>Vocal: Doña María López García, DNI ***4567**.</p><p>Ayuntamiento de Don Benito</p>".encode("cp1252"))
+    main([str(tmp_path)])
+    t = f.read_bytes().decode("cp1252")
+    assert "Doña Nombre Apellido Segundo" in t and "***0000**" in t and "Don Benito" in t and "López" not in t

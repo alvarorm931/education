@@ -43,6 +43,8 @@ jobs:
           python -m "$MODULO" $ARGS --salida "prueba/$STAMP" > "prueba/$STAMP/salida.txt" 2>&1
           echo "codigo=$?" >> "prueba/$STAMP/salida.txt"
           tail -n 30 "prueba/$STAMP/salida.txt"
+      - name: Anonimizar (la rama sondas es pública)
+        run: python -m motor.mantenimiento.anonimizar "prueba/$STAMP"
       - name: Subir a la rama sondas
         run: |
           cd prueba

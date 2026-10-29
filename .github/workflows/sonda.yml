@@ -1,7 +1,8 @@
 name: Sonda de fuentes
 
 # Descarga unas pocas URLs para estudiar su formato real antes de programar un conector.
-# Los resultados van a la rama "sondas", separada de los datos.
+# Los resultados van a la rama "sondas", separada de los datos. La rama es pública: antes de subir, los nombres
+# de personas y los documentos de identidad se sustituyen por datos inventados (motor.mantenimiento.anonimizar).
 
 on:
   workflow_dispatch:
@@ -21,6 +22,14 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
+      - uses: actions/checkout@v4
+        with:
+          path: codigo
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Instalar el anonimizador
+        run: pip install -q -e ./codigo
       - name: Preparar rama sondas
         run: |
           git init -q sondas && cd sondas
@@ -54,6 +63,7 @@ jobs:
             cat "$STAMP/$i.estado.txt"
             sleep 1
           done
+          (cd .. && python -m motor.mantenimiento.anonimizar "sondas/$STAMP") || { rm -rf "$STAMP"; echo "::error::no se pudo anonimizar"; exit 1; }
           cp -r "$STAMP" "../$STAMP"
           git add -A && git commit -qm "Sonda $STAMP"
           for intento in 1 2 3 4 5 6; do
