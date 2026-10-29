@@ -1,0 +1,3644 @@
+{
+  "results" :
+    [
+      {
+        "resource" :
+          {
+            "name" : "Normativa del DOGC i del Portal Jurídic de Catalunya",
+            "id" : "n6hn-rmy7",
+            "resource_name" : null,
+            "parent_fxf" : [],
+            "description" : "Documents normatius amb rang de llei, Decrets i Ordres, vigents i derogats, tant en català com en castellà, publicats a la secció 1 del DOGC des del 5/12/1977 en diferents formats. S’inclou també la versió en català de la darrera versió de la norma publicada al Portal Jurídic de Catalunya.",
+            "attribution" : "Entitat Autònoma del Diari Oficial i de Publicacions de la Generalitat de Catalunya (EADOP)",
+            "attribution_link" : "https://administraciodigital.gencat.cat/ca/dades/dades-obertes/informacio-practica/llicencies/",
+            "contact_email" : null,
+            "type" : "dataset",
+            "updatedAt" : "2026-10-29T05:01:44.000Z",
+            "createdAt" : "2020-08-28T07:07:08.000Z",
+            "metadata_updated_at" : "2026-10-29T05:00:19.000Z",
+            "data_updated_at" : "2026-10-29T05:01:44.000Z",
+            "page_views" :
+              {
+                "page_views_last_week" : 365,
+                "page_views_last_month" : 1633,
+                "page_views_total" : 21222,
+                "page_views_last_week_log" : 8.515699838284043,
+                "page_views_last_month_log" : 10.674192268145685,
+                "page_views_total_log" : 14.373340983926902
+              },
+            "columns_name" :
+              [
+                "Títol de la norma",
+                "Data de publicació del diari",
+                "Número de control",
+                "URL ES Format TURTLE",
+                "URL Format PDF",
+                "URL Format RDF",
+                "Any",
+                "Data del document",
+                "Títol de la norma ES",
+                "Número de diari",
+                "URL Format TURTLE",
+                "URL ES format XML",
+                "Rang de norma",
+                "Vigència de la norma",
+                "URL Format HTML",
+                "URL ES Formato PDF",
+                "URL Última versió Format HTML",
+                "Diari oficial",
+                "URL format XML",
+                "URL ES Formato HTML",
+                "URL ES Format RDF"
+              ],
+            "columns_field_name" :
+              [
+                "t_tol_de_la_norma",
+                "data_de_publicaci_del_diari",
+                "n_mero_de_control",
+                "url_es_format_turtle",
+                "format_pdf",
+                "format_rdf",
+                "any",
+                "data_del_document",
+                "t_tol_de_la_norma_es",
+                "n_mero_de_diari",
+                "format_turtle",
+                "url_es_format_xml",
+                "rang_de_norma",
+                "vig_ncia_de_la_norma",
+                "format_html",
+                "url_es_formato_pdf",
+                "url_ltima_versi_format_html",
+                "diari_oficial",
+                "url_format_xml",
+                "url_es_formato_html",
+                "url_es_format_rdf"
+              ],
+            "columns_datatype" :
+              [
+                "Text",
+                "Calendar date",
+                "Text",
+                "URL",
+                "URL",
+                "URL",
+                "Number",
+                "Calendar date",
+                "Text",
+                "Text",
+                "URL",
+                "URL",
+                "Text",
+                "Text",
+                "URL",
+                "URL",
+                "URL",
+                "Text",
+                "URL",
+                "URL",
+                "URL"
+              ],
+            "columns_description" :
+              [
+                "Títol complet de la norma",
+                "Data del diari oficial en què es va publicar la norma",
+                "Codi intern de la norma",
+                "URL de la norma en espanyol publicada al DOGC en format TURTLE",
+                "URL de la norma publicada al DOGC en format pdf",
+                "URL de la norma publicada al DOGC en format rdf",
+                "Any de publicació de la norma",
+                "Data de signatura de la norma",
+                "Títol de la norma en espanyol",
+                "Número del diari oficial en què es va publicar la norma",
+                "URL de la norma publicada al DOGC en format Turtle",
+                "URL de la norma en espanyol publicada al DOGC en format XML",
+                "Llei, decret legislatiu, decret llei, decret, ordre",
+                "Vigent o derogada",
+                "URL de la norma publicada al DOGC en format html",
+                "URL de la norma en espanyol publicada al DOGC en format PDF",
+                "URL de la última versió de la norma publicada al Portal Jurídic de Catalunya en format html",
+                "Diari oficial en què es va publicar la norma",
+                "URL de la norma publicada al DOGC en format XML",
+                "URL de la norma en espanyol publicada al DOGC en format HTML",
+                "URL de la norma en espanyol publicada al DOGC en format RDF"
+              ],
+            "columns_format" :
+              [
+                {},
+                { "view" : "date_dmy" },
+                {},
+                {},
+                {},
+                {},
+                { "noCommas" : "true" },
+                { "view" : "date_dmy" },
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+              ],
+            "download_count" : 3188,
+            "provenance" : "official",
+            "lens_view_type" : "tabular",
+            "lens_display_type" : "table",
+            "locked" : false,
+            "backend" : "nbe",
+            "blob_mime_type" : null,
+            "hide_from_data_json" : false,
+            "publication_date" : "2024-01-11T12:41:02.000Z"
+          },
+        "classification" :
+          {
+            "categories" : [],
+            "tags" : [],
+            "domain_category" : "Legislació-justícia",
+            "domain_tags" :
+              [
+                "normativa",
+                "legislació",
+                "dogc",
+                "diari oficial",
+                "ods16_pau justícies i institucions sòlides"
+              ],
+            "domain_metadata" :
+              [
+                {
+                  "key" : "Enllaços-relacionats_Nom",
+                  "value" : "Diari Oficial de la Generalitat de Catalunya"
+                },
+                {
+                  "key" : "Enllaços-relacionats_URL",
+                  "value" : "https://dogc.gencat.cat/ca/"
+                },
+                {
+                  "key" : "Informació-de-gènere-o-sexe_Informació-de-gènere-o-sexe",
+                  "value" : "No aplicable"
+                },
+                {
+                  "key" : "Idioma_Idioma",
+                  "value" : "Català (ca) i Castellà (es)"
+                },
+                {
+                  "key" : "Idioma_Dataset-name-(EN)",
+                  "value" : "DOGC and PJC regulations"
+                },
+                {
+                  "key" : "Idioma_Nombre-del-conjunto-de-datos-(ES)",
+                  "value" : "Normativa del DOGC i del Portal Jurídic de Catalunya"
+                },
+                {
+                  "key" : "Àmbit-geogràfic_Àmbit-geogràfic",
+                  "value" : "Catalunya"
+                },
+                {
+                  "key" : "Àmbit-geogràfic_Informació-geogràfica",
+                  "value" : "Sense informació geogràfica"
+                },
+                { "key" : "Actors_Departament", "value" : "Presidència" },
+                {
+                  "key" : "Actors_Tipus-actor",
+                  "value" : "Generalitat de Catalunya"
+                },
+                {
+                  "key" : "Freqüència-d'actualització_Freqüència-d'actualització",
+                  "value" : "Diària"
+                }
+              ]
+          },
+        "metadata" :
+          {
+            "domain" : "analisi.transparenciacatalunya.cat",
+            "license" : "See Terms of Use"
+          },
+        "permalink" : "https://analisi.transparenciacatalunya.cat/d/n6hn-rmy7",
+        "link" : "https://analisi.transparenciacatalunya.cat/Legislació-justícia/Normativa-del-DOGC-i-del-Portal-Jurídic-de-Catalun/n6hn-rmy7",
+        "owner" :
+          {
+            "id" : "a4b5-gx6v",
+            "user_type" : "interactive",
+            "display_name" : "Dades Obertes Catalunya"
+          },
+        "creator" :
+          {
+            "id" : "a4b5-gx6v",
+            "user_type" : "interactive",
+            "display_name" : "Dades Obertes Catalunya"
+          }
+      },
+      {
+        "resource" :
+          {
+            "name" : "DOGC de 1931-1939 i l’exili",
+            "id" : "neug-8fgt",
+            "resource_name" : null,
+            "parent_fxf" : [],
+            "description" : "El Diari Oficial de la Generalitat de Catalunya (DOGC) té els seus inicis en el Diari Oficial de la República Catalana, el número 1 del qual es publicà el 16 d'abril de 1931, amb la proclamació de l'Estat Català pel president de la República Catalana, Francesc Macià. El 3 de maig de 1931, aparegué un nou número 1, aleshores amb la capçalera de Butlletí de la Generalitat de Catalunya. A partir del 26 d'agost de 1936, aquest Butlletí adoptà la denominació actual de Diari Oficial de la Generalitat de Catalunya.\nEl darrer número d'aquesta època fou publicat el 26 de gener de 1939, dia de la caiguda de Barcelona a mans de les tropes franquistes. A l'exili (1939-1977) es publicaren tres números a França, amb les dates següents: núm. 1, juny de 1956; núm. 2, maig de 1977; i núm. 3, agost de 1977.",
+            "attribution" : "Entitat Autònoma del Diari Oficial i de Publicacions de la Generalitat de Catalunya (EADOP)",
+            "attribution_link" : "https://administraciodigital.gencat.cat/ca/dades/dades-obertes/informacio-practica/llicencies/",
+            "contact_email" : null,
+            "type" : "dataset",
+            "updatedAt" : "2026-09-17T09:55:30.000Z",
+            "createdAt" : "2023-09-21T06:16:34.000Z",
+            "metadata_updated_at" : "2026-09-17T09:55:30.000Z",
+            "data_updated_at" : "2026-03-30T12:07:04.000Z",
+            "page_views" :
+              {
+                "page_views_last_week" : 83,
+                "page_views_last_month" : 331,
+                "page_views_total" : 7884,
+                "page_views_last_week_log" : 6.39231742277876,
+                "page_views_last_month_log" : 8.375039431346924,
+                "page_views_total_log" : 12.944895039677872
+              },
+            "columns_name" :
+              [
+                "nom del fitxer PDF",
+                "NOM DEL DIARI",
+                "NÚMERO DE DIARI",
+                "URL_PDF",
+                "DATA PUBLICACIÓ",
+                "DEPARTAMENT/ORGANISME",
+                "PÀGINA",
+                "TÍTOL DEL DOCUMENT",
+                "TIPUS DE DOCUMENT",
+                "ANY"
+              ],
+            "columns_field_name" :
+              [
+                "nom_del_fitxer_pdf",
+                "nom_del_diari",
+                "numero",
+                "url_pdf_a_modificar_per_dades",
+                "data_web",
+                "nom_departament",
+                "pagines_comprovar_les",
+                "titol",
+                "tipus",
+                "anno"
+              ],
+            "columns_datatype" :
+              [
+                "Text",
+                "Text",
+                "Text",
+                "URL",
+                "Calendar date",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Number"
+              ],
+            "columns_description" :
+              [
+                "Nom del diari digitalitzat",
+                "Nom del diari",
+                "Número de diari",
+                "URL d’accés al diari digitalitzat",
+                "Data de publicació del diari",
+                "Organisme emissor del document",
+                "Número de pàgina on es va publicar aquell document dins del diari",
+                "Títol de la disposició normativa dins aquell diari",
+                "Rang del document",
+                "Any de publicació del diari"
+              ],
+            "columns_format" :
+              [
+                {},
+                {},
+                {},
+                {},
+                { "view" : "date_dmy" },
+                {},
+                { "decimalSeparator" : ",", "groupSeparator" : "." },
+                {},
+                {},
+                {
+                  "view" : "date_y",
+                  "decimalSeparator" : ",",
+                  "noCommas" : "true",
+                  "groupSeparator" : "."
+                }
+              ],
+            "download_count" : 649,
+            "provenance" : "official",
+            "lens_view_type" : "tabular",
+            "lens_display_type" : "table",
+            "locked" : false,
+            "backend" : "nbe",
+            "blob_mime_type" : null,
+            "hide_from_data_json" : false,
+            "publication_date" : "2024-03-07T13:01:11.000Z"
+          },
+        "classification" :
+          {
+            "categories" : [],
+            "tags" : [],
+            "domain_category" : "Legislació-justícia",
+            "domain_tags" :
+              [
+                "normativa",
+                "legislació",
+                "dogc",
+                "diari oficial",
+                "ods16_pau justícies i institucions sòlides"
+              ],
+            "domain_metadata" :
+              [
+                {
+                  "key" : "Informació-de-gènere-o-sexe_Informació-de-gènere-o-sexe",
+                  "value" : "No aplicable"
+                },
+                { "key" : "Idioma_Idioma", "value" : "Català" },
+                {
+                  "key" : "Idioma_Dataset-name-(EN)",
+                  "value" : "DOGC of 1931-1939 and exile"
+                },
+                {
+                  "key" : "Idioma_Nombre-del-conjunto-de-datos-(ES)",
+                  "value" : "DOGC de 1931-1939 y el exilio"
+                },
+                {
+                  "key" : "Àmbit-geogràfic_Àmbit-geogràfic",
+                  "value" : "Catalunya"
+                },
+                { "key" : "Actors_Departament", "value" : "Presidència" },
+                {
+                  "key" : "Actors_Tipus-actor",
+                  "value" : "Generalitat de Catalunya"
+                },
+                {
+                  "key" : "Freqüència-d'actualització_Freqüència-d'actualització",
+                  "value" : "Variable"
+                }
+              ]
+          },
+        "metadata" :
+          {
+            "domain" : "analisi.transparenciacatalunya.cat",
+            "license" : "See Terms of Use"
+          },
+        "permalink" : "https://analisi.transparenciacatalunya.cat/d/neug-8fgt",
+        "link" : "https://analisi.transparenciacatalunya.cat/Legislació-justícia/DOGC-de-1931-1939-i-l-exili/neug-8fgt",
+        "owner" :
+          {
+            "id" : "a4b5-gx6v",
+            "user_type" : "interactive",
+            "display_name" : "Dades Obertes Catalunya"
+          },
+        "creator" :
+          {
+            "id" : "a4b5-gx6v",
+            "user_type" : "interactive",
+            "display_name" : "Dades Obertes Catalunya"
+          }
+      },
+      {
+        "resource" :
+          {
+            "name" : "Enunciats dels exàmens de les convocatòries per a l’accés a la funció pública de la Generalitat de Catalunya",
+            "id" : "6p3u-9s8y",
+            "resource_name" : null,
+            "parent_fxf" : [],
+            "description" : "Quadre-resum dels enunciats dels exàmens i les plantilles de correcció de les convocatòries d’accés a la funció pública publicades al DOGC, corresponents a la unitat competent en matèria de funció pública.",
+            "attribution" : "Escola d'Administració Pública de Catalunya (EAPC)",
+            "attribution_link" : "https://administraciodigital.gencat.cat/ca/dades/dades-obertes/informacio-practica/llicencies/",
+            "contact_email" : null,
+            "type" : "dataset",
+            "updatedAt" : "2026-10-02T13:23:10.000Z",
+            "createdAt" : "2023-06-22T11:17:29.000Z",
+            "metadata_updated_at" : "2026-10-02T13:23:09.000Z",
+            "data_updated_at" : "2026-10-02T13:23:10.000Z",
+            "page_views" :
+              {
+                "page_views_last_week" : 1106,
+                "page_views_last_month" : 5279,
+                "page_views_total" : 272028,
+                "page_views_last_week_log" : 10.112439506781552,
+                "page_views_last_month_log" : 12.366322214245814,
+                "page_views_total_log" : 18.053400934463905
+              },
+            "columns_name" :
+              [
+                "Crida",
+                "Oferta",
+                "Opció",
+                "Règim jurídic",
+                "Subgrup",
+                "Tipus de prova",
+                "Procés",
+                "DOGC",
+                "Administració",
+                "Prova",
+                "Torns",
+                "Data DOGC",
+                "Núm.convocatòria",
+                "Descripció"
+              ],
+            "columns_field_name" :
+              [
+                "crida",
+                "oferta",
+                "opcio",
+                "regim_juridic",
+                "subgrup",
+                "tipus_prova",
+                "proces",
+                "dogc",
+                "administracio",
+                "prova",
+                "torns",
+                "data_dogc",
+                "num_convocatoria",
+                "descripcio"
+              ],
+            "columns_datatype" :
+              [
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Number",
+                "Text",
+                "URL",
+                "Text",
+                "Calendar date",
+                "Text",
+                "Text"
+              ],
+            "columns_description" :
+              [
+                "Crida de la convocatòria del procés selectiu.",
+                "Any de publicació de l’oferta d’ocupació pública.",
+                "Opció de la convocatòria del procés selectiu: general, econòmica, medi ambient, prevenció de riscos laborals, jurídica, activitat física i esportiva, àmbit execució penal, arts plàstiques, assistencial, treball, A i B.",
+                "Règim jurídic del personal convocat al procés selectiu: Personal funcionari i Personal laboral.",
+                "Subgrups de personal –A1, A2, A3, B1, C1, C2, D1, D2 i E- convocats al procés selectiu.",
+                "Tipologia d’examen (test de coneixements, supòsit pràctic, correcció...).",
+                "Codi del procés selectiu.",
+                "Número del DOGC de la publicació de la resolució de la convocatòria del procés selectiu.",
+                "Col·lectiu de les places convocades: General (cossos d'administració general) o Especial (cossos d'administració especial).",
+                "Enllaç a l’examen o a la plantilla de correcció.",
+                "Torn d’accés a la convocatòria: Torn lliure, Promoció interna, Torn lliure i promoció interna, Estabilització i Funcionarització.",
+                "Data de la publicació de la convocatòria al DOGC.",
+                "Número de registre de la convocatòria del procés selectiu.",
+                "Nom del cos objecte de convocatòria del procés selectiu."
+              ],
+            "columns_format" :
+              [
+                {},
+                { "decimalSeparator" : ",", "groupSeparator" : "." },
+                {},
+                {},
+                {},
+                {},
+                { "decimalSeparator" : ",", "groupSeparator" : "." },
+                { "noCommas" : "true" },
+                {},
+                {},
+                {},
+                { "view" : "date_dmy" },
+                { "decimalSeparator" : ",", "groupSeparator" : "." },
+                {}
+              ],
+            "download_count" : 11657,
+            "provenance" : "official",
+            "lens_view_type" : "tabular",
+            "lens_display_type" : "table",
+            "locked" : false,
+            "backend" : "nbe",
+            "blob_mime_type" : null,
+            "hide_from_data_json" : false,
+            "publication_date" : "2026-05-14T11:35:21.000Z"
+          },
+        "classification" :
+          {
+            "categories" : [],
+            "tags" : [],
+            "domain_category" : "Sector Públic",
+            "domain_tags" :
+              [
+                "administració pública",
+                "exàmens",
+                "accés",
+                "selecció",
+                "convocatòries",
+                "oposicions",
+                "ods16_pau justícies i institucions sòlides",
+                "treballadors públics",
+                "eapc",
+                "ods8_treball decent i creixement econòmic"
+              ],
+            "domain_metadata" :
+              [
+                {
+                  "key" : "Informació-de-gènere-o-sexe_Informació-de-gènere-o-sexe",
+                  "value" : "No aplicable"
+                },
+                { "key" : "Idioma_Idioma", "value" : "Català" },
+                {
+                  "key" : "Idioma_Dataset-name-(EN)",
+                  "value" : "Statements of the exams for the calls for access to the civil service of the Generalitat de Catalunya"
+                },
+                {
+                  "key" : "Idioma_Nombre-del-conjunto-de-datos-(ES)",
+                  "value" : "Enunciados de los exámenes de las convocatorias para el acceso a la función pública de la Generalitat de Catalunya"
+                },
+                {
+                  "key" : "Àmbit-geogràfic_Àmbit-geogràfic",
+                  "value" : "Catalunya"
+                },
+                {
+                  "key" : "Àmbit-geogràfic_Informació-geogràfica",
+                  "value" : "Sense informació geogràfica"
+                },
+                { "key" : "Actors_Departament", "value" : "Presidència" },
+                {
+                  "key" : "Actors_Tipus-actor",
+                  "value" : "Generalitat de Catalunya"
+                },
+                {
+                  "key" : "Freqüència-d'actualització_Freqüència-d'actualització",
+                  "value" : "Variable"
+                }
+              ]
+          },
+        "metadata" :
+          {
+            "domain" : "analisi.transparenciacatalunya.cat",
+            "license" : "See Terms of Use"
+          },
+        "permalink" : "https://analisi.transparenciacatalunya.cat/d/6p3u-9s8y",
+        "link" : "https://analisi.transparenciacatalunya.cat/Sector-Públic/Enunciats-dels-exàmens-de-les-convocatòries-per-a-/6p3u-9s8y",
+        "owner" :
+          {
+            "id" : "a4b5-gx6v",
+            "user_type" : "interactive",
+            "display_name" : "Dades Obertes Catalunya"
+          },
+        "creator" :
+          {
+            "id" : "a4b5-gx6v",
+            "user_type" : "interactive",
+            "display_name" : "Dades Obertes Catalunya"
+          }
+      },
+      {
+        "resource" :
+          {
+            "name" : "Convocatòries per a l’accés a la funció pública de la Generalitat de Catalunya",
+            "id" : "szwh-xrga",
+            "resource_name" : null,
+            "parent_fxf" : [],
+            "description" : "Quadre-resum de convocatòries d’accés publicades al DOGC durant el període 1997 fins l'actualitat, corresponents a la unitat competent en matèria de funció pública.\n\nDocument informatiu, transcripció de dades referents a convocatòries d'accés publicades al DOGC.",
+            "attribution" : "Escola d'Administració Pública de Catalunya (EAPC)",
+            "attribution_link" : "https://administraciodigital.gencat.cat/ca/dades/dades-obertes/informacio-practica/llicencies/",
+            "contact_email" : null,
+            "type" : "dataset",
+            "updatedAt" : "2026-09-17T09:52:56.000Z",
+            "createdAt" : "2022-03-21T12:09:37.000Z",
+            "metadata_updated_at" : "2026-09-17T09:52:56.000Z",
+            "data_updated_at" : "2025-11-14T12:40:49.000Z",
+            "page_views" :
+              {
+                "page_views_last_week" : 43,
+                "page_views_last_month" : 249,
+                "page_views_total" : 72870,
+                "page_views_last_week_log" : 5.459431618637297,
+                "page_views_last_month_log" : 7.965784284662087,
+                "page_views_total_log" : 16.153057168311378
+              },
+            "columns_name" :
+              [
+                "Codi convocatòria",
+                "Data DOGC",
+                "DOGC",
+                "Oferta",
+                "Subgrup",
+                "Descripció",
+                "Administració",
+                "Núm.convocatòria",
+                "Règim jurídic",
+                "Torns"
+              ],
+            "columns_field_name" :
+              [
+                "codi_convocatria",
+                "data_dogc",
+                "dogc",
+                "oferta",
+                "subgrup",
+                "descripcio",
+                "administracio",
+                "num_convocatoria",
+                "regim_juridic",
+                "torns"
+              ],
+            "columns_datatype" :
+              [
+                "Text",
+                "Calendar date",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Number",
+                "Text",
+                "Text"
+              ],
+            "columns_description" :
+              [
+                "Codi de la convocatòria.",
+                "Data de la publicació de la convocatòria al DOGC.",
+                "Número del DOGC de la publicació de la resolució de la convocatòria del procés selectiu.",
+                "Any de publicació de l’oferta d’ocupació pública",
+                "Subgrups de personal –A1, A2, A3, B1, C1, C2, D1, D2 i E- convocats al procés selectiu ",
+                "Nom del cos objecte de convocatòria del procés selectiu.",
+                "Col·lectiu de les places convocades: General: cossos d'administració general Especial: cossos d'administració especial",
+                "Número de registre de la convocatòria del procés selectiu ",
+                "Règim jurídic del personal convocat al procés selectiu.",
+                "Torn d’accés a la convocatòria: TL: Torn lliure, PI: Promoció interna, TL/PI: Torn lliure i promoció interna, Estabilització i Funcionarització"
+              ],
+            "columns_format" :
+              [ {}, { "view" : "date_dmy" }, {}, {}, {}, {}, {}, {}, {}, {} ],
+            "download_count" : 1752,
+            "provenance" : "official",
+            "lens_view_type" : "tabular",
+            "lens_display_type" : "table",
+            "locked" : false,
+            "backend" : "nbe",
+            "blob_mime_type" : null,
+            "hide_from_data_json" : false,
+            "publication_date" : "2023-06-12T11:54:42.000Z"
+          },
+        "classification" :
+          {
+            "categories" : [],
+            "tags" : [],
+            "domain_category" : "Sector Públic",
+            "domain_tags" :
+              [
+                "administració pública",
+                "accés",
+                "selecció",
+                "convocatòries",
+                "oposicions",
+                "ods16_pau justícies i institucions sòlides",
+                "ods8_treball decent i creixement econòmic",
+                "treballadors públics",
+                "eapc"
+              ],
+            "domain_metadata" :
+              [
+                {
+                  "key" : "Informació-de-gènere-o-sexe_Informació-de-gènere-o-sexe",
+                  "value" : "No aplicable"
+                },
+                { "key" : "Idioma_Idioma", "value" : "Català" },
+                {
+                  "key" : "Idioma_Dataset-name-(EN)",
+                  "value" : "Calls for access to the public service of the Generalitat de Catalunya"
+                },
+                {
+                  "key" : "Idioma_Nombre-del-conjunto-de-datos-(ES)",
+                  "value" : "Convocatorias para el acceso a la funció pública de la Generalitat de Catalunya"
+                },
+                {
+                  "key" : "Àmbit-geogràfic_Àmbit-geogràfic",
+                  "value" : "Catalunya"
+                },
+                {
+                  "key" : "Àmbit-geogràfic_Informació-geogràfica",
+                  "value" : "Sense informació geogràfica"
+                },
+                { "key" : "Actors_Departament", "value" : "Presidència" },
+                {
+                  "key" : "Actors_Tipus-actor",
+                  "value" : "Generalitat de Catalunya"
+                },
+                {
+                  "key" : "Freqüència-d'actualització_Freqüència-d'actualització",
+                  "value" : "Variable"
+                }
+              ]
+          },
+        "metadata" :
+          {
+            "domain" : "analisi.transparenciacatalunya.cat",
+            "license" : "See Terms of Use"
+          },
+        "permalink" : "https://analisi.transparenciacatalunya.cat/d/szwh-xrga",
+        "link" : "https://analisi.transparenciacatalunya.cat/Sector-Públic/Convocatòries-per-a-l-accés-a-la-funció-pública-de/szwh-xrga",
+        "owner" :
+          {
+            "id" : "a4b5-gx6v",
+            "user_type" : "interactive",
+            "display_name" : "Dades Obertes Catalunya"
+          },
+        "creator" :
+          {
+            "id" : "a4b5-gx6v",
+            "user_type" : "interactive",
+            "display_name" : "Dades Obertes Catalunya"
+          }
+      },
+      {
+        "resource" :
+          {
+            "name" : "Taules retributives dels alts càrrecs de la Generalitat de Catalunya",
+            "id" : "3b6m-hrxk",
+            "resource_name" : null,
+            "parent_fxf" : [],
+            "description" : "Llistat de les retribucions dels màxims responsables executius de les entitats que tenen la consideració d’alts càrrecs i personal directiu.",
+            "attribution" : "Departament d'Economia i Finances",
+            "attribution_link" : "https://administraciodigital.gencat.cat/ca/dades/dades-obertes/informacio-practica/llicencies/",
+            "contact_email" : null,
+            "type" : "dataset",
+            "updatedAt" : "2026-07-02T11:45:09.000Z",
+            "createdAt" : "2023-07-13T11:36:38.000Z",
+            "metadata_updated_at" : "2026-07-02T11:45:08.000Z",
+            "data_updated_at" : "2026-07-02T11:45:09.000Z",
+            "page_views" :
+              {
+                "page_views_last_week" : 188,
+                "page_views_last_month" : 795,
+                "page_views_total" : 59224,
+                "page_views_last_week_log" : 7.562242424221073,
+                "page_views_last_month_log" : 9.63662462054365,
+                "page_views_total_log" : 15.853918673014958
+              },
+            "columns_name" :
+              [
+                "DOGC",
+                "HONORABLE CONSELLER/A",
+                "SECRETARI/A GENERAL DE LA PRESIDÈNCIA",
+                "MOLT HONORABLE PRESIDENT DE LA GENERALITAT",
+                "ANY",
+                "DATA_DOGC",
+                "SECRETARI/A GENERAL",
+                "DIRECTOR/A GENERAL",
+                "INFORMACIONS COMPLEMENTÀRIES",
+                "NORMATIVA"
+              ],
+            "columns_field_name" :
+              [
+                "dogc",
+                "honorable_conseller_a",
+                "secretari_a_general_de_la_presid_ncia",
+                "molt_honorable_president",
+                "any",
+                "data_dogc",
+                "secretari_a_general",
+                "director_a_general",
+                "informacions_complement_ries",
+                "normativa"
+              ],
+            "columns_datatype" :
+              [
+                "Text",
+                "Number",
+                "Number",
+                "Number",
+                "Number",
+                "Calendar date",
+                "Number",
+                "Number",
+                "Text",
+                "Text"
+              ],
+            "columns_description" :
+              [
+                "Número de DOGC on es publica la Llei o decret que regula les retribucions d’Alts càrrecs i directius",
+                "Import de la retribució anual del o de la Honorable Conseller/a",
+                "Import de la retribució anual del o de la Secretari/a General de la Presidència i altres alts càrrecs assimilats retributivament: Secretari/ària del Govern, director/a del Gabinet Jurídic, director/a de l'Institut d'Estudis de l'Autogovern, President/a de la Comissió Jurídica Assessora.",
+                "Import de la retribució anual del o de la Molt Honorable President/a de la Generalitat",
+                "Any d’aplicació de l’import de la taula retributiva",
+                "Data de publicació del DOGC on es publica la Llei o decret que regula les retribucions d’Alts càrrecs i directius",
+                "Import de la retribució anual del o de la Secretari/a General i altres alts càrrecs assimilats retributivament: Secretaris sectorials, Director/a general de la Policia, Interventor/a General, President/a de l'Autoritat Catalana de la Competència.",
+                "Import de la retribució anual del o de la Director/a General",
+                "Informació complementària",
+                "Llei o decret que regula les retribucions d’Alts càrrecs i directius"
+              ],
+            "columns_format" :
+              [
+                { "decimalSeparator" : ",", "groupSeparator" : "." },
+                {
+                  "decimalSeparator" : ",",
+                  "precision" : "2",
+                  "groupSeparator" : "."
+                },
+                {
+                  "decimalSeparator" : ",",
+                  "precision" : "2",
+                  "groupSeparator" : "."
+                },
+                {
+                  "decimalSeparator" : ",",
+                  "noCommas" : "false",
+                  "precision" : "2",
+                  "groupSeparator" : "."
+                },
+                { "noCommas" : "true", "groupSeparator" : "." },
+                { "view" : "date_dmy" },
+                {
+                  "decimalSeparator" : ",",
+                  "precision" : "2",
+                  "groupSeparator" : "."
+                },
+                {
+                  "decimalSeparator" : ",",
+                  "precision" : "2",
+                  "groupSeparator" : "."
+                },
+                {},
+                {}
+              ],
+            "download_count" : 4963,
+            "provenance" : "official",
+            "lens_view_type" : "tabular",
+            "lens_display_type" : "table",
+            "locked" : false,
+            "backend" : "nbe",
+            "blob_mime_type" : null,
+            "hide_from_data_json" : false,
+            "publication_date" : "2023-07-14T07:22:52.000Z"
+          },
+        "classification" :
+          {
+            "categories" : [],
+            "tags" : [],
+            "domain_category" : "Treball",
+            "domain_tags" :
+              [
+                "alts càrrecs",
+                "retribucions",
+                "funció pública",
+                "treball",
+                "ods16_pau justícies i institucions sòlides",
+                "taules retributives",
+                "treballadors públics"
+              ],
+            "domain_metadata" :
+              [
+                {
+                  "key" : "Informació-de-gènere-o-sexe_Informació-de-gènere-o-sexe",
+                  "value" : "No aplicable"
+                },
+                { "key" : "Idioma_Idioma", "value" : "Català" },
+                {
+                  "key" : "Idioma_Dataset-name-(EN)",
+                  "value" : "Remuneration tables for senior officials of the Generalitat de Catalunya"
+                },
+                {
+                  "key" : "Idioma_Nombre-del-conjunto-de-datos-(ES)",
+                  "value" : "Tablas retributivas de los altos cargos de la Generalidad de Cataluña"
+                },
+                {
+                  "key" : "Àmbit-geogràfic_Àmbit-geogràfic",
+                  "value" : "Catalunya"
+                },
+                {
+                  "key" : "Àmbit-geogràfic_Informació-geogràfica",
+                  "value" : "Sense informació geogràfica"
+                },
+                {
+                  "key" : "Actors_Departament",
+                  "value" : "Economia i Finances"
+                },
+                {
+                  "key" : "Actors_Tipus-actor",
+                  "value" : "Generalitat de Catalunya"
+                },
+                {
+                  "key" : "Freqüència-d'actualització_Freqüència-d'actualització",
+                  "value" : "Anual"
+                }
+              ]
+          },
+        "metadata" :
+          {
+            "domain" : "analisi.transparenciacatalunya.cat",
+            "license" : "See Terms of Use"
+          },
+        "permalink" : "https://analisi.transparenciacatalunya.cat/d/3b6m-hrxk",
+        "link" : "https://analisi.transparenciacatalunya.cat/Treball/Taules-retributives-dels-alts-càrrecs-de-la-Genera/3b6m-hrxk",
+        "owner" :
+          {
+            "id" : "a4b5-gx6v",
+            "user_type" : "interactive",
+            "display_name" : "Dades Obertes Catalunya"
+          },
+        "creator" :
+          {
+            "id" : "a4b5-gx6v",
+            "user_type" : "interactive",
+            "display_name" : "Dades Obertes Catalunya"
+          }
+      },
+      {
+        "resource" :
+          {
+            "name" : "Medalles d’Or de la Generalitat de Catalunya",
+            "id" : "bxpi-auab",
+            "resource_name" : null,
+            "parent_fxf" : [],
+            "description" : "La medalla d’Or de la Generalitat de Catalunya distingeix aquelles persones que han prestat serveis eminents i extraordinaris a Catalunya en els àmbits polític, social, econòmic, cultural o científic.",
+            "attribution" : "Departament de la Presidència",
+            "attribution_link" : "https://administraciodigital.gencat.cat/ca/dades/dades-obertes/informacio-practica/llicencies/",
+            "contact_email" : null,
+            "type" : "dataset",
+            "updatedAt" : "2026-09-21T11:17:52.000Z",
+            "createdAt" : "2019-08-20T09:15:57.000Z",
+            "metadata_updated_at" : "2026-09-21T11:17:52.000Z",
+            "data_updated_at" : "2026-09-21T11:17:52.000Z",
+            "page_views" :
+              {
+                "page_views_last_week" : 49,
+                "page_views_last_month" : 200,
+                "page_views_total" : 8027,
+                "page_views_last_week_log" : 5.643856189774724,
+                "page_views_last_month_log" : 7.651051691178929,
+                "page_views_total_log" : 12.970824901362617
+              },
+            "columns_name" :
+              [
+                "País",
+                "Títol pòstum",
+                "Enllaç al DOGC",
+                "Comarca",
+                "Regió",
+                "Descripció",
+                "Any de naixement/fundació",
+                "Sexe",
+                "Població",
+                "DOGC",
+                "Persona o institució premiada",
+                "Any"
+              ],
+            "columns_field_name" :
+              [
+                "pais",
+                "t_tol_p_stum",
+                "enlla_al_dogc",
+                "comarca",
+                "regio",
+                "descripci",
+                "any_de_naixement_fundaci",
+                "sexe",
+                "poblaci",
+                "dogc",
+                "persona_o_instituci_premiada",
+                "any"
+              ],
+            "columns_datatype" :
+              [
+                "Text",
+                "Text",
+                "URL",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Number"
+              ],
+            "columns_description" :
+              [
+                "País on va néixer la persona o on es va fundar la institució",
+                "Especifica si la Medalla d’Or s’ha concedit a Títol pòstum",
+                "Enllaç al DOGC on està publicat el Decret pel qual es concedeix la Medalla d’Or",
+                "Comarca on va néixer la persona o on es va fundar la institució",
+                "Regió on va néixer la persona o on es va fundar la institució",
+                "Descriu la professió de la persona o l’àmbit de la institució que rep la Medalla d’Or",
+                "Any de naixement o de fundació de la institució",
+                "Sexe de la persona premiada. No aplica en el cas de les institucions",
+                "Població on va néixer la persona o on es va fundar la institució",
+                "Decret pel qual es concedeix la Medalla d’Or",
+                "Nom de la persona o de la institució premiada",
+                "Any que es concedeix la Medalla d’Or"
+              ],
+            "columns_format" :
+              [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                { "noCommas" : "true" }
+              ],
+            "download_count" : 1714,
+            "provenance" : "official",
+            "lens_view_type" : "tabular",
+            "lens_display_type" : "table",
+            "locked" : false,
+            "backend" : "nbe",
+            "blob_mime_type" : null,
+            "hide_from_data_json" : false,
+            "publication_date" : "2025-02-11T16:29:33.000Z"
+          },
+        "classification" :
+          {
+            "categories" : [],
+            "tags" : [],
+            "domain_category" : "Cultura-oci",
+            "domain_tags" :
+              [
+                "medalla d'or",
+                "homenatge",
+                "ods16_pau justícies i institucions sòlides"
+              ],
+            "domain_metadata" :
+              [
+                {
+                  "key" : "Dades-d'Alt-Valor_Categoria",
+                  "value" : "No són dades d’alt valor"
+                },
+                {
+                  "key" : "Informació-de-gènere-o-sexe_Informació-de-gènere-o-sexe",
+                  "value" : "Sí"
+                },
+                { "key" : "Idioma_Idioma", "value" : "Català" },
+                {
+                  "key" : "Idioma_Dataset-name-(EN)",
+                  "value" : "Gold Medals of the Generalitat de Catalunya"
+                },
+                {
+                  "key" : "Idioma_Nombre-del-conjunto-de-datos-(ES)",
+                  "value" : "Medallas de Oro de la Generalitat de Catalunya"
+                },
+                {
+                  "key" : "Àmbit-geogràfic_Àmbit-geogràfic",
+                  "value" : "Mundial"
+                },
+                {
+                  "key" : "Àmbit-geogràfic_Informació-geogràfica",
+                  "value" : "Nom d'element"
+                },
+                { "key" : "Actors_Departament", "value" : "Presidència" },
+                {
+                  "key" : "Actors_Tipus-actor",
+                  "value" : "Generalitat de Catalunya"
+                },
+                {
+                  "key" : "Freqüència-d'actualització_Freqüència-d'actualització",
+                  "value" : "Variable"
+                }
+              ]
+          },
+        "metadata" :
+          {
+            "domain" : "analisi.transparenciacatalunya.cat",
+            "license" : "See Terms of Use"
+          },
+        "permalink" : "https://analisi.transparenciacatalunya.cat/d/bxpi-auab",
+        "link" : "https://analisi.transparenciacatalunya.cat/Cultura-oci/Medalles-d-Or-de-la-Generalitat-de-Catalunya/bxpi-auab",
+        "owner" :
+          {
+            "id" : "a4b5-gx6v",
+            "user_type" : "interactive",
+            "display_name" : "Dades Obertes Catalunya"
+          },
+        "creator" :
+          {
+            "id" : "a4b5-gx6v",
+            "user_type" : "interactive",
+            "display_name" : "Dades Obertes Catalunya"
+          }
+      },
+      {
+        "resource" :
+          {
+            "name" : "Acords del Govern",
+            "id" : "ub8p-uqwj",
+            "resource_name" : null,
+            "parent_fxf" : [],
+            "description" : "La publicació dels Acords del Govern permet veure l'acció completa del Govern, i es poden visualitzar tots els acords que el Govern pren a les reunions setmanals del Consell Executiu. En aquest dataset podeu consultar els acords del Govern des de l'any 2014 fins a l'actualitat.",
+            "attribution" : "Departament de la Presidència",
+            "attribution_link" : "https://administraciodigital.gencat.cat/ca/dades/dades-obertes/informacio-practica/llicencies/",
+            "contact_email" : null,
+            "type" : "dataset",
+            "updatedAt" : "2026-10-27T18:00:13.000Z",
+            "createdAt" : "2020-04-27T08:55:53.000Z",
+            "metadata_updated_at" : "2026-10-27T18:00:04.000Z",
+            "data_updated_at" : "2026-10-27T18:00:13.000Z",
+            "page_views" :
+              {
+                "page_views_last_week" : 311,
+                "page_views_last_month" : 1139,
+                "page_views_total" : 33370,
+                "page_views_last_week_log" : 8.285402218862249,
+                "page_views_last_month_log" : 10.154818109052105,
+                "page_views_total_log" : 15.02630729871651
+              },
+            "columns_name" :
+              [
+                "Codi",
+                "Document2",
+                "Document1",
+                "Document5",
+                "Document3",
+                "Document4",
+                "Any",
+                "Tipus Document",
+                "Titol",
+                "Departament",
+                "Data"
+              ],
+            "columns_field_name" :
+              [
+                "codi",
+                "document2",
+                "document1",
+                "document5",
+                "document3",
+                "document4",
+                "any",
+                "tipus_document",
+                "titol",
+                "departament",
+                "datasessio"
+              ],
+            "columns_datatype" :
+              [
+                "Text",
+                "URL",
+                "URL",
+                "URL",
+                "URL",
+                "URL",
+                "Number",
+                "Text",
+                "Text",
+                "Text",
+                "Calendar date"
+              ],
+            "columns_description" :
+              [
+                "Codi de l’Acord (expedient)",
+                "URL d’enllaç al document 2. Podrà ser una url a un PDF si el document no es va publicar al DOGC o una url a un document del DOGC.",
+                "URL d’enllaç al document 1. Podrà ser una url a un PDF si el document no es va publicar al DOGC o una url a un document del DOGC.",
+                "URL d’enllaç al document 5. Podrà ser una url a un PDF si el document no es va publicar al DOGC o una url a un document del DOGC.",
+                "URL d’enllaç al document 3.  Podrà ser una url a un PDF si el document no es va publicar al DOGC o una url a un document del DOGC.",
+                "URL d’enllaç al document 4. Podrà ser una url a un PDF si el document no es va publicar al DOGC o una url a un document del DOGC.",
+                "Any de la sessió del Govern en la qual es va aprovar",
+                "Tipus de document: Acord, Decret, etc...",
+                "Títol del document",
+                "Nom del departament propietari del document",
+                "Data de la sessió de Govern en la qual es va aprovar"
+              ],
+            "columns_format" :
+              [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                { "noCommas" : "true" },
+                {},
+                {},
+                {},
+                { "view" : "date_dmy" }
+              ],
+            "download_count" : 2132,
+            "provenance" : "official",
+            "lens_view_type" : "tabular",
+            "lens_display_type" : "table",
+            "locked" : false,
+            "backend" : "nbe",
+            "blob_mime_type" : null,
+            "hide_from_data_json" : false,
+            "publication_date" : "2026-03-25T13:20:31.000Z"
+          },
+        "classification" :
+          {
+            "categories" : [],
+            "tags" : [],
+            "domain_category" : "Legislació-justícia",
+            "domain_tags" :
+              [
+                "acord",
+                "govern",
+                "consell executiu",
+                "ods16_pau justícies i institucions sòlides"
+              ],
+            "domain_metadata" :
+              [
+                {
+                  "key" : "Informació-de-gènere-o-sexe_Informació-de-gènere-o-sexe",
+                  "value" : "No aplicable"
+                },
+                { "key" : "Idioma_Idioma", "value" : "Català" },
+                {
+                  "key" : "Idioma_Dataset-name-(EN)",
+                  "value" : "Government Agreements"
+                },
+                {
+                  "key" : "Idioma_Nombre-del-conjunto-de-datos-(ES)",
+                  "value" : "Acuerdos del Gobierno"
+                },
+                {
+                  "key" : "Àmbit-geogràfic_Àmbit-geogràfic",
+                  "value" : "Catalunya"
+                },
+                {
+                  "key" : "Àmbit-geogràfic_Informació-geogràfica",
+                  "value" : "Sense informació geogràfica"
+                },
+                { "key" : "Actors_Departament", "value" : "Presidència" },
+                {
+                  "key" : "Actors_Tipus-actor",
+                  "value" : "Generalitat de Catalunya"
+                },
+                {
+                  "key" : "Freqüència-d'actualització_Freqüència-d'actualització",
+                  "value" : "Setmanal"
+                }
+              ]
+          },
+        "metadata" :
+          {
+            "domain" : "analisi.transparenciacatalunya.cat",
+            "license" : "See Terms of Use"
+          },
+        "permalink" : "https://analisi.transparenciacatalunya.cat/d/ub8p-uqwj",
+        "link" : "https://analisi.transparenciacatalunya.cat/Legislació-justícia/Acords-del-Govern/ub8p-uqwj",
+        "owner" :
+          {
+            "id" : "a4b5-gx6v",
+            "user_type" : "interactive",
+            "display_name" : "Dades Obertes Catalunya"
+          },
+        "creator" :
+          {
+            "id" : "a4b5-gx6v",
+            "user_type" : "interactive",
+            "display_name" : "Dades Obertes Catalunya"
+          }
+      },
+      {
+        "resource" :
+          {
+            "name" : "Premis Nacionals de Comunicació",
+            "id" : "rq36-qbdr",
+            "resource_name" : null,
+            "parent_fxf" : [],
+            "description" : "Els Premis Nacionals de Comunicació van ser creats l'any 1999 amb motiu del 75è aniversari del naixement de la primera emissió regular de ràdio a Catalunya.\n\nL'objecte dels Premis és atorgar un reconeixement a les aportacions més rellevants en el camp de la comunicació a Catalunya o en llengua catalana, tant si han estat realitzades per professionals com per qualsevol entitat pública o privada.",
+            "attribution" : "Direcció General de Mitjans de Comunicació",
+            "attribution_link" : "https://administraciodigital.gencat.cat/ca/dades/dades-obertes/informacio-practica/llicencies/",
+            "contact_email" : null,
+            "type" : "dataset",
+            "updatedAt" : "2026-05-07T07:01:21.000Z",
+            "createdAt" : "2023-07-05T11:28:09.000Z",
+            "metadata_updated_at" : "2026-05-07T07:01:20.000Z",
+            "data_updated_at" : "2026-05-07T07:01:21.000Z",
+            "page_views" :
+              {
+                "page_views_last_week" : 7,
+                "page_views_last_month" : 54,
+                "page_views_total" : 1819,
+                "page_views_last_week_log" : 3.0,
+                "page_views_last_month_log" : 5.78135971352466,
+                "page_views_total_log" : 10.82972273508606
+              },
+            "columns_name" :
+              [
+                "Sexe",
+                "Nom dels Premis",
+                "Edició",
+                "Any",
+                "Descripció",
+                "DOGC",
+                "Enllaç al DOGC",
+                "Categoria",
+                "Persona o entitat premiada"
+              ],
+            "columns_field_name" :
+              [
+                "sexe",
+                "nom_dels_premis",
+                "edici",
+                "any",
+                "descripci",
+                "dogc",
+                "enlla_al_dogc",
+                "categoria",
+                "persona_o_entitat_premiada"
+              ],
+            "columns_datatype" :
+              [
+                "Text",
+                "Text",
+                "Text",
+                "Number",
+                "Text",
+                "Text",
+                "URL",
+                "Text",
+                "Text"
+              ],
+            "columns_description" :
+              [
+                "Sexe de la persona premiada",
+                "Nom que han rebut els premis al llarg de la seva història",
+                "Número d’edició del premi",
+                "Any de concessió del premi",
+                "Motiu pel qual el jurat ha decidit atorgar el premi ",
+                "Decret o resolució pel qual es concedeix el Premi Nacional de Comunicació",
+                "Enllaç a la publicació al DOGC del Decret o resolució pel qual es concedeix el Premi Nacional de Comunicació",
+                "Categoria del premi",
+                "Nom de la persona o de l’entitat premiada"
+              ],
+            "columns_format" :
+              [
+                {},
+                {},
+                {},
+                {
+                  "decimalSeparator" : ",",
+                  "noCommas" : "true",
+                  "groupSeparator" : "."
+                },
+                {},
+                {},
+                {},
+                {},
+                {}
+              ],
+            "download_count" : 439,
+            "provenance" : "official",
+            "lens_view_type" : "tabular",
+            "lens_display_type" : "table",
+            "locked" : false,
+            "backend" : "nbe",
+            "blob_mime_type" : null,
+            "hide_from_data_json" : false,
+            "publication_date" : "2023-07-05T11:34:48.000Z"
+          },
+        "classification" :
+          {
+            "categories" : [],
+            "tags" : [],
+            "domain_category" : "Cultura-oci",
+            "domain_tags" :
+              [
+                "comunicació",
+                "premi nacional de comunicació",
+                "televisió",
+                "premsa",
+                "publicitat",
+                "radiodifusió",
+                "internet",
+                "premi",
+                "ods16_pau justícies i institucions sòlides"
+              ],
+            "domain_metadata" :
+              [
+                {
+                  "key" : "Informació-de-gènere-o-sexe_Informació-de-gènere-o-sexe",
+                  "value" : "Sí"
+                },
+                { "key" : "Idioma_Idioma", "value" : "Català" },
+                {
+                  "key" : "Idioma_Dataset-name-(EN)",
+                  "value" : "National Communication Awards"
+                },
+                {
+                  "key" : "Idioma_Nombre-del-conjunto-de-datos-(ES)",
+                  "value" : "Premios Nacionales de Comunicación"
+                },
+                {
+                  "key" : "Àmbit-geogràfic_Àmbit-geogràfic",
+                  "value" : "Catalunya"
+                },
+                {
+                  "key" : "Àmbit-geogràfic_Informació-geogràfica",
+                  "value" : "Sense informació geogràfica"
+                },
+                { "key" : "Actors_Departament", "value" : "Presidència" },
+                {
+                  "key" : "Actors_Tipus-actor",
+                  "value" : "Generalitat de Catalunya"
+                },
+                {
+                  "key" : "Freqüència-d'actualització_Freqüència-d'actualització",
+                  "value" : "Anual"
+                }
+              ]
+          },
+        "metadata" :
+          {
+            "domain" : "analisi.transparenciacatalunya.cat",
+            "license" : "See Terms of Use"
+          },
+        "permalink" : "https://analisi.transparenciacatalunya.cat/d/rq36-qbdr",
+        "link" : "https://analisi.transparenciacatalunya.cat/Cultura-oci/Premis-Nacionals-de-Comunicació/rq36-qbdr",
+        "owner" :
+          {
+            "id" : "a4b5-gx6v",
+            "user_type" : "interactive",
+            "display_name" : "Dades Obertes Catalunya"
+          },
+        "creator" :
+          {
+            "id" : "a4b5-gx6v",
+            "user_type" : "interactive",
+            "display_name" : "Dades Obertes Catalunya"
+          }
+      },
+      {
+        "resource" :
+          {
+            "name" : "Premis #FPCAT",
+            "id" : "5w3i-g3zk",
+            "resource_name" : null,
+            "parent_fxf" : [],
+            "description" : "Els Premis #FPCAT reconeixen, valoren i fomenten les bones pràctiques a les trajectòries individuals; als centres formatius, que imparteixen formació professional inicial o ocupacional; a les empreses i altres entitats; a les persones usuàries de centres de formació professional i al premi a la recerca en el camp de la formació professional.",
+            "attribution" : "Agència Pública de Formació i Qualificació Professionals de Catalunya (APFQPC)",
+            "attribution_link" : "https://administraciodigital.gencat.cat/ca/dades/dades-obertes/informacio-practica/llicencies/",
+            "contact_email" : null,
+            "type" : "dataset",
+            "updatedAt" : "2026-09-17T09:54:37.000Z",
+            "createdAt" : "2023-05-11T14:04:51.000Z",
+            "metadata_updated_at" : "2026-09-17T09:54:37.000Z",
+            "data_updated_at" : "2026-07-08T07:44:00.000Z",
+            "page_views" :
+              {
+                "page_views_last_week" : 5,
+                "page_views_last_month" : 41,
+                "page_views_total" : 751,
+                "page_views_last_week_log" : 2.584962500721156,
+                "page_views_last_month_log" : 5.392317422778761,
+                "page_views_total_log" : 9.554588851677638
+              },
+            "columns_name" :
+              [
+                "Any",
+                "Edicó",
+                "Categoria",
+                "Enllaç al DOGC",
+                "DOGC",
+                "Descripció",
+                "Persona o institució premiada",
+                "Sexe"
+              ],
+            "columns_field_name" :
+              [
+                "any",
+                "edic",
+                "categoria",
+                "enlla_al_dogc",
+                "dogc",
+                "descripci",
+                "persona_o_instituci_premiada",
+                "sexe"
+              ],
+            "columns_datatype" :
+              [
+                "Number",
+                "Text",
+                "Text",
+                "URL",
+                "Text",
+                "Text",
+                "Text",
+                "Text"
+              ],
+            "columns_description" :
+              [
+                "Any de concessió del premi",
+                "Número d’edició del premi",
+                "Categoria del premi",
+                "Enllaç a la publicació al DOGC del Decret pel qual es concedeix el Premi Blanquerna.",
+                "Decret pel qual es concedeix el Premi Blanquerna",
+                "Professió de la persona premiada o motiu pel qual s'ha atorgat el premi a la institució premiada",
+                "Nom de la persona o de la institució premiada",
+                "Sexe de la persona premiada"
+              ],
+            "columns_format" :
+              [
+                {
+                  "decimalSeparator" : ",",
+                  "noCommas" : "true",
+                  "groupSeparator" : "."
+                },
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+              ],
+            "download_count" : 402,
+            "provenance" : "official",
+            "lens_view_type" : "tabular",
+            "lens_display_type" : "table",
+            "locked" : false,
+            "backend" : "nbe",
+            "blob_mime_type" : null,
+            "hide_from_data_json" : false,
+            "publication_date" : "2023-05-11T14:09:06.000Z"
+          },
+        "classification" :
+          {
+            "categories" : [],
+            "tags" : [],
+            "domain_category" : "Cultura-oci",
+            "domain_tags" :
+              [
+                "premi",
+                "formació professional",
+                "fpcat",
+                "ods16_pau justícies i institucions sòlides",
+                "ods4_educació de qualitat"
+              ],
+            "domain_metadata" :
+              [
+                {
+                  "key" : "Informació-de-gènere-o-sexe_Informació-de-gènere-o-sexe",
+                  "value" : "Sí"
+                },
+                { "key" : "Idioma_Idioma", "value" : "Català" },
+                {
+                  "key" : "Idioma_Dataset-name-(EN)",
+                  "value" : "#FPCAT Awards"
+                },
+                {
+                  "key" : "Idioma_Nombre-del-conjunto-de-datos-(ES)",
+                  "value" : "Premios #FPCAT"
+                },
+                {
+                  "key" : "Àmbit-geogràfic_Àmbit-geogràfic",
+                  "value" : "Catalunya"
+                },
+                { "key" : "Actors_Departament", "value" : "Presidència" },
+                {
+                  "key" : "Actors_Tipus-actor",
+                  "value" : "Generalitat de Catalunya"
+                },
+                {
+                  "key" : "Freqüència-d'actualització_Freqüència-d'actualització",
+                  "value" : "Anual"
+                }
+              ]
+          },
+        "metadata" :
+          {
+            "domain" : "analisi.transparenciacatalunya.cat",
+            "license" : "See Terms of Use"
+          },
+        "permalink" : "https://analisi.transparenciacatalunya.cat/d/5w3i-g3zk",
+        "link" : "https://analisi.transparenciacatalunya.cat/Cultura-oci/Premis-FPCAT/5w3i-g3zk",
+        "owner" :
+          {
+            "id" : "a4b5-gx6v",
+            "user_type" : "interactive",
+            "display_name" : "Dades Obertes Catalunya"
+          },
+        "creator" :
+          {
+            "id" : "a4b5-gx6v",
+            "user_type" : "interactive",
+            "display_name" : "Dades Obertes Catalunya"
+          }
+      },
+      {
+        "resource" :
+          {
+            "name" : "Canvis en el mapa local",
+            "id" : "pc3x-yzfc",
+            "resource_name" : null,
+            "parent_fxf" : [],
+            "description" : "L’objectiu del dataset és recollir tots els canvis legislatius que han afectat a la creació i alteració de municipis i comarques, entitats municipals descentralitzades i els canvis d’adscripció comarcal des de la I legislatura. \n\nEn aquest dataset es presenten les dades de creació i alteració de municipis i comarques, de les entitats municipals descentralitzades, així com dels canvis d’adscripció comarcal per al període 1981 – fins a l'actualitat.",
+            "attribution" : "Direcció General d'Administració Local (DGAL)",
+            "attribution_link" : "https://administraciodigital.gencat.cat/ca/dades/dades-obertes/informacio-practica/llicencies/",
+            "contact_email" : null,
+            "type" : "dataset",
+            "updatedAt" : "2026-08-14T11:28:58.000Z",
+            "createdAt" : "2021-03-08T11:55:51.000Z",
+            "metadata_updated_at" : "2026-08-14T11:28:58.000Z",
+            "data_updated_at" : "2026-08-14T11:28:58.000Z",
+            "page_views" :
+              {
+                "page_views_last_week" : 29,
+                "page_views_last_month" : 195,
+                "page_views_total" : 5954,
+                "page_views_last_week_log" : 4.906890595608519,
+                "page_views_last_month_log" : 7.6147098441152075,
+                "page_views_total_log" : 12.539885792751479
+              },
+            "columns_name" :
+              [
+                "ENS AFECTATS",
+                "DISPOSICIO",
+                "DETALL MODIFICACIO",
+                "NUMERO DOGC",
+                "URL",
+                "TIPUS MODIFICACIO",
+                "DATA DOGC"
+              ],
+            "columns_field_name" :
+              [
+                "nom_ens_afectat",
+                "disposicio",
+                "detall_modificacio",
+                "numero_diari",
+                "url",
+                "tipus_modificacio",
+                "data_diari"
+              ],
+            "columns_datatype" :
+              [
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "URL",
+                "Text",
+                "Calendar date"
+              ],
+            "columns_description" :
+              [
+                "Indica els noms dels ens objecte de la modificació",
+                "Nom oficial que rep la publicació de la norma",
+                "Explicació del tipus de modificació",
+                "Número del DOGC on es publica la norma",
+                "Enllaç web a la norma publicada",
+                "Indica el tipus de tràmit legal que es duu a terme",
+                "Data de publicació al DOGC de la norma"
+              ],
+            "columns_format" :
+              [ {}, {}, {}, {}, {}, {}, { "view" : "date_dmy" } ],
+            "download_count" : 1006,
+            "provenance" : "official",
+            "lens_view_type" : "tabular",
+            "lens_display_type" : "table",
+            "locked" : false,
+            "backend" : "nbe",
+            "blob_mime_type" : null,
+            "hide_from_data_json" : false,
+            "publication_date" : "2023-10-18T07:58:37.000Z"
+          },
+        "classification" :
+          {
+            "categories" : [],
+            "tags" : [],
+            "domain_category" : "Sector Públic",
+            "domain_tags" :
+              [
+                "mapa",
+                "local",
+                "municipi",
+                "comarca",
+                "emd",
+                "ods16_pau justícies i institucions sòlides",
+                "ens locals"
+              ],
+            "domain_metadata" :
+              [
+                {
+                  "key" : "Informació-de-gènere-o-sexe_Informació-de-gènere-o-sexe",
+                  "value" : "No aplicable"
+                },
+                { "key" : "Idioma_Idioma", "value" : "Català" },
+                {
+                  "key" : "Idioma_Dataset-name-(EN)",
+                  "value" : "Changes to the local map"
+                },
+                {
+                  "key" : "Idioma_Nombre-del-conjunto-de-datos-(ES)",
+                  "value" : "Cambios en el mapa local"
+                },
+                {
+                  "key" : "Àmbit-geogràfic_Àmbit-geogràfic",
+                  "value" : "Catalunya"
+                },
+                { "key" : "Actors_Departament", "value" : "Presidència" },
+                {
+                  "key" : "Actors_Tipus-actor",
+                  "value" : "Generalitat de Catalunya"
+                },
+                {
+                  "key" : "Freqüència-d'actualització_Freqüència-d'actualització",
+                  "value" : "Variable"
+                }
+              ]
+          },
+        "metadata" :
+          {
+            "domain" : "analisi.transparenciacatalunya.cat",
+            "license" : "See Terms of Use"
+          },
+        "permalink" : "https://analisi.transparenciacatalunya.cat/d/pc3x-yzfc",
+        "link" : "https://analisi.transparenciacatalunya.cat/Sector-Públic/Canvis-en-el-mapa-local/pc3x-yzfc",
+        "owner" :
+          {
+            "id" : "a4b5-gx6v",
+            "user_type" : "interactive",
+            "display_name" : "Dades Obertes Catalunya"
+          },
+        "creator" :
+          {
+            "id" : "a4b5-gx6v",
+            "user_type" : "interactive",
+            "display_name" : "Dades Obertes Catalunya"
+          }
+      },
+      {
+        "resource" :
+          {
+            "name" : "Recursos governatius",
+            "id" : "k2fd-yjxp",
+            "resource_name" : null,
+            "parent_fxf" : [],
+            "description" : "La Direcció General de Dret, Entitats Jurídiques i Mediació del Departament de Justícia, Drets i Memòria resol els recursos governatius que s'interposen contra les qualificacions negatives dels títols o les clàusules concretes d'aquests títols susceptibles d'inscripció en un registre de la propietat, mercantil o de béns mobles de Catalunya, sempre que es fonamentin en una infracció de les normes de dret català. És assessorada per una comissió formada per un notari, un registrador de la propietat, un catedràtic d'universitat i un advocat nomenats per un període de tres anys pel conseller o per la consellera de Justícia a proposta de l'Observatori de Dret Privat de Catalunya.",
+            "attribution" : "Departament de Justícia i Qualitat Democràtica",
+            "attribution_link" : "https://administraciodigital.gencat.cat/ca/dades/dades-obertes/informacio-practica/llicencies/",
+            "contact_email" : null,
+            "type" : "dataset",
+            "updatedAt" : "2026-10-22T09:53:44.000Z",
+            "createdAt" : "2022-09-21T14:29:52.000Z",
+            "metadata_updated_at" : "2026-10-22T09:53:43.000Z",
+            "data_updated_at" : "2026-10-22T09:53:44.000Z",
+            "page_views" :
+              {
+                "page_views_last_week" : 4,
+                "page_views_last_month" : 61,
+                "page_views_total" : 1839,
+                "page_views_last_week_log" : 2.321928094887362,
+                "page_views_last_month_log" : 5.954196310386876,
+                "page_views_total_log" : 10.845490050944376
+              },
+            "columns_name" :
+              [
+                "Subcategoria 5",
+                "Núm. DOGC i data publicació",
+                "Categoria",
+                "Subcategoria 7",
+                "Enllaç DOGC",
+                "Codi resolució",
+                "Subcategoria 1",
+                "Subcategoria 3",
+                "Subcategoria 4",
+                "Subcategoria 2",
+                "Resolucions vinculades",
+                "Subcategoria 6"
+              ],
+            "columns_field_name" :
+              [
+                "subcategoria_5",
+                "n_m_dogc_i_data_publicaci",
+                "categoria",
+                "subcategoria_7",
+                "enlla_dogc",
+                "codi_resoluci",
+                "subcategoria_1",
+                "subcategoria_3",
+                "subcategoria_4",
+                "subcategoria_2",
+                "resolucions_vinculades",
+                "subcategoria_6"
+              ],
+            "columns_datatype" :
+              [
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "URL",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text"
+              ],
+            "columns_description" :
+              [
+                "En funció de les tries anteriors, s’ha de definir un valor ",
+                "Número de DOGC, i data de publicació del DOGC",
+                "Un d’aquests valors: Dret Civil Català, Dret Civil Català Dret Registral i Procediment, Competència pròpia, Dret Urbanístic i d'Habitatge, Dret civil",
+                "En funció de les tries anteriors, s’ha de definir un valor ",
+                "Enllaç a la resolució publicada al DOGC",
+                "Codi de la resolució del DOGC.  JUS/XX/any, on XX es un número ",
+                "En funció de la tria anterior, s’ha de definir un valor. ",
+                "En funció de les tries anteriors, s’ha de definir un valor ",
+                "En funció de les tries anteriors, s’ha de definir un valor ",
+                "En funció de les tries anteriors, s’ha de definir un valor ",
+                "Indica amb quines altres resolucions hi estan relacionades ",
+                "En funció de les tries anteriors, s’ha de definir un valor "
+              ],
+            "columns_format" :
+              [ {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {} ],
+            "download_count" : 983,
+            "provenance" : "official",
+            "lens_view_type" : "tabular",
+            "lens_display_type" : "table",
+            "locked" : false,
+            "backend" : "nbe",
+            "blob_mime_type" : null,
+            "hide_from_data_json" : false,
+            "publication_date" : "2022-09-21T14:35:13.000Z"
+          },
+        "classification" :
+          {
+            "categories" : [],
+            "tags" : [],
+            "domain_category" : "Legislació-justícia",
+            "domain_tags" :
+              [
+                "recursos",
+                "governatius",
+                "registre",
+                "qualificacions",
+                "inscripció",
+                "propietat",
+                "civil",
+                "mercantil",
+                "observatori",
+                "dret",
+                "ods16_pau justícies i institucions sòlides"
+              ],
+            "domain_metadata" :
+              [
+                {
+                  "key" : "Informació-de-gènere-o-sexe_Informació-de-gènere-o-sexe",
+                  "value" : "No aplicable"
+                },
+                { "key" : "Idioma_Idioma", "value" : "Català" },
+                {
+                  "key" : "Idioma_Dataset-name-(EN)",
+                  "value" : "Governmental appeal"
+                },
+                {
+                  "key" : "Idioma_Nombre-del-conjunto-de-datos-(ES)",
+                  "value" : "Recursos gubernativos "
+                },
+                {
+                  "key" : "Àmbit-geogràfic_Àmbit-geogràfic",
+                  "value" : "Catalunya"
+                },
+                {
+                  "key" : "Àmbit-geogràfic_Informació-geogràfica",
+                  "value" : "Sense informació geogràfica"
+                },
+                {
+                  "key" : "Actors_Departament",
+                  "value" : "Justícia i Qualitat Democràtica"
+                },
+                {
+                  "key" : "Actors_Tipus-actor",
+                  "value" : "Generalitat de Catalunya"
+                },
+                {
+                  "key" : "Freqüència-d'actualització_Freqüència-d'actualització",
+                  "value" : "Variable"
+                }
+              ]
+          },
+        "metadata" :
+          {
+            "domain" : "analisi.transparenciacatalunya.cat",
+            "license" : "See Terms of Use"
+          },
+        "permalink" : "https://analisi.transparenciacatalunya.cat/d/k2fd-yjxp",
+        "link" : "https://analisi.transparenciacatalunya.cat/Legislació-justícia/Recursos-governatius/k2fd-yjxp",
+        "owner" :
+          {
+            "id" : "a4b5-gx6v",
+            "user_type" : "interactive",
+            "display_name" : "Dades Obertes Catalunya"
+          },
+        "creator" :
+          {
+            "id" : "a4b5-gx6v",
+            "user_type" : "interactive",
+            "display_name" : "Dades Obertes Catalunya"
+          }
+      },
+      {
+        "resource" :
+          {
+            "name" : "Taules d’Accés i Avaluació Documental",
+            "id" : "mmkw-7j6u",
+            "resource_name" : null,
+            "parent_fxf" : [],
+            "description" : "Relació actualitzada de tota la informació associada a les Ordres del Departament de Cultura d’aprovació de les Taules d’Accés i Avaluació Documental (TAAD) i de les resolucions de la Comissió Nacional d’Accés, Avaluació i Tria Documental.",
+            "attribution" : "Departament de Cultura",
+            "attribution_link" : "https://administraciodigital.gencat.cat/ca/dades/dades-obertes/informacio-practica/llicencies/",
+            "contact_email" : null,
+            "type" : "dataset",
+            "updatedAt" : "2026-09-16T12:07:29.000Z",
+            "createdAt" : "2023-04-11T10:15:48.000Z",
+            "metadata_updated_at" : "2026-09-02T13:50:03.000Z",
+            "data_updated_at" : "2026-09-16T12:07:29.000Z",
+            "page_views" :
+              {
+                "page_views_last_week" : 299,
+                "page_views_last_month" : 1231,
+                "page_views_total" : 51557,
+                "page_views_last_week_log" : 8.228818690495881,
+                "page_views_last_month_log" : 10.266786540694902,
+                "page_views_total_log" : 15.65390868036994
+              },
+            "columns_name" :
+              [
+                "TAAD",
+                "Motivació",
+                "Dates Extremes",
+                "Àmbit 2",
+                "Data aprovació DOGC ",
+                "Ordre d’aprovació",
+                "DOGC vigent",
+                "Situació",
+                "Vigència de la restricció",
+                "Termini disposició 1",
+                "Data modificació o darrera modificació",
+                "Termini disposició 2",
+                "Expedient CNAATD",
+                "Fonamentació jurídica",
+                "Disposició abreujada",
+                "Vigència de la restricció abreujada",
+                "Data derogació/tancament",
+                "Organisme d’aplicació TAAD",
+                "Títol de la TAAD",
+                "Codi de classificació de Administració local (QdCAL)",
+                "Aplicació del termini 1",
+                "Aplicació del termini 2",
+                "Sèries antecedents",
+                "Codi de classificació Generalitat (QdCf)",
+                "Observacions",
+                "Règim accés",
+                "Motivació abreujada",
+                "Disposició",
+                "Ordre vigent",
+                "Enllaç TAAD",
+                "Suport de substitució",
+                "Règim d’accés abreujat",
+                "Unitat de mesura 2",
+                "Unitat de mesura 1",
+                "Sèries/TAADs relacionades",
+                "Documents recapitulatius",
+                "Documents que formen l'expedient",
+                "Marc legal",
+                "Funció administrativa",
+                "Àmbit 1"
+              ],
+            "columns_field_name" :
+              [
+                "taad",
+                "motivaci",
+                "dates_extremes",
+                "mbit_2",
+                "data_aprovaci_dogc_",
+                "ordre_aprovacio",
+                "dogc",
+                "situaci",
+                "vig_ncia_de_la_restricci",
+                "termini_anys",
+                "data_modificaci_modificacions",
+                "termini_2",
+                "resol",
+                "fonamentaci_jur_dica",
+                "disposicio_abreujada",
+                "vig_ncia_de_la_restricci_abreujada",
+                "data_derogaci_tancament",
+                "organisme_d_aplicaci_taad",
+                "s_rie",
+                "codi_de_classificaci_qdcac",
+                "aplicaci_del_termini",
+                "aplicaci_del_termini_2",
+                "series_antecedents",
+                "codi_de_classificaci_generalitat",
+                "observacions",
+                "r_gim_acc_s",
+                "motivaci_abreujada",
+                "disposici",
+                "ordre",
+                "enlla_taad",
+                "suport_substitucio",
+                "r_gim_d_acc_s_abreujat",
+                "unitat_de_mesura_2",
+                "unitat_de_mesura",
+                "s_ries_relacionades",
+                "documents_recapitulatius",
+                "documents_que_formen_l",
+                "marc_legal",
+                "funci_administrativa",
+                "mbit_1"
+              ],
+            "columns_datatype" :
+              [
+                "Number",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "URL",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text"
+              ],
+            "columns_description" :
+              [
+                "Número de la Taula d’Accés i Avaluació Documental (TADD)",
+                "Raó que motiva el tipus d’accés",
+                "Indica l’any d’inici de la sèrie documental, i si escau, l’any d’acabament de la sèrie",
+                "Segon marc temàtic on s’inscriu la TAAD, si s’escau",
+                "Data que es va publicar al DOGC l’aprovació de la TAAD ",
+                "Ordre per la qual es va aprovar la TAAD",
+                "Número del Diari Oficial de la Generalitat de Catalunya on surt publicada l’aprovació de la TAAD",
+                "Situació de la TAAD: si ja s’ha publicat al butlletí oficial, si està derogada per integració a una altra TAAD o per tancament de sèrie, si està pendent de revisió o si aquella taula ja no existeix",
+                "Període durant el qual s’aplica la restricció d’accés",
+                "Anys que s’han de conservar els documents fins a la seva eliminació (si hi ha més d’una data d’eliminació, la més alta)",
+                "Data que es va publicar al DOGC la darrera modificació de la TAAD",
+                "Anys que s’han de conservar els documents fins a la seva eliminació si hi ha més d’una data d’eliminació (la més baixa)",
+                "Número d’expedient de la Comissió Nacional d’Accés, Avaluació i Tria Documental (CNAATD)",
+                "Ordenament jurídic en el qual s’emmarca el règim d’accés corresponent a la sèrie documental de la taula",
+                "Especifica si la documentació s’ha de conservar o eliminar. Els supòsits de disposició són: Conservació Permanent (CP), Eliminació Total (ET), Eliminació Parcial per mostreig (EP mostreig), Eliminació Parcial selectiva (EP selectiva) o Derogada (Derogada)",
+                "Per facilitar la cerca consta el resum del període durant el qual s’aplica la restricció d’accés",
+                "Data que es va publicar al DOGC la derogació de la TAAD",
+                "Nom de l’Administració pública, Departament de la Generalitat, Organisme o ens que pot aplicar la TAAD",
+                "Títol identificador de la TAAD publicat al Diari Oficial de la Generalitat de Catalunya (DOGC)",
+                "Codi de classificació del Quadre de Classificació per a ajuntaments i consells comarcals (QdCAC) vinculat a la TAAD",
+                "Nota explicativa de la disposició",
+                "Nota explicativa de la disposició",
+                "Sèries que són les antecessores de la sèrie avaluada",
+                "Codi de classificació funcional de la Generalitat (QdCf) vinculat a la TAAD ",
+                "Nota explicativa ",
+                "Especificació del nivell d’accés a la informació continguda a la sèrie documental ",
+                "Per facilitar la cerca consta el resum de la raó que motiva el tipus d’accés ",
+                "Especifica la disposició, si la documentació s’ha de conservar o eliminar, tal com consta a la taula d’accés i avaluació documental",
+                "Ordre per la qual s’aprova, modifica o deroga la TAAD",
+                "Enllaç al document en PDF que recull la informació sobre la taula d’accés i avaluació documental que li correspongui: avaluació, accés, organisme d’aplicació, etc. ",
+                "Indica si es permet el canvi de suport físic per còpies electròniques de documents amb validesa d’originals. Segueix l’establert a l’article 27 de la Llei 39/2015 i l’article 53 del Reial Decret 203/2021",
+                "Per facilitar la cerca consta el resum del règim d’accés ",
+                "Unitat utilitzada per aplicar el termini de disposició. Normalment són anys, però també poden ser mesos, cursos acadèmics",
+                "Unitat utilitzada per aplicar el termini de disposició. Normalment són anys, però també poden ser mesos, cursos acadèmics",
+                "Sèries documentals que estan relacionades o vinculades amb la sèrie documental de la TAAD ",
+                "Sèries documentals que es relacionen directament amb la TAAD i que recullen la seva informació principal",
+                "Documents que formen els expedients de la sèrie documental de la TAAD",
+                "Ordenament jurídic en el qual s’emmarca la sèrie documental de la TAAD",
+                "Funció assignada a una TAAD concreta",
+                "Marc temàtic on s’inscriu la TAAD "
+              ],
+            "columns_format" :
+              [
+                { "noCommas" : "true" },
+                {},
+                {},
+                {},
+                { "view" : "date_dmy" },
+                {},
+                {},
+                {},
+                {},
+                {},
+                { "view" : "date_dmy" },
+                {},
+                {},
+                {},
+                {},
+                {},
+                { "view" : "date_dmy", "align" : "left" },
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+              ],
+            "download_count" : 3202,
+            "provenance" : "official",
+            "lens_view_type" : "tabular",
+            "lens_display_type" : "table",
+            "locked" : false,
+            "backend" : "nbe",
+            "blob_mime_type" : null,
+            "hide_from_data_json" : false,
+            "publication_date" : "2026-09-02T13:50:03.000Z"
+          },
+        "classification" :
+          {
+            "categories" : [],
+            "tags" : [],
+            "domain_category" : "Sector Públic",
+            "domain_tags" :
+              [
+                "taules d'avaluació",
+                "taules d'accés",
+                "avaluació",
+                "accés",
+                "taules d'accés i avaluació documental"
+              ],
+            "domain_metadata" :
+              [
+                {
+                  "key" : "Informació-de-gènere-o-sexe_Informació-de-gènere-o-sexe",
+                  "value" : "No aplicable"
+                },
+                { "key" : "Idioma_Idioma", "value" : "Català" },
+                {
+                  "key" : "Idioma_Dataset-name-(EN)",
+                  "value" : "Access Tables and Documentary Evaluation"
+                },
+                {
+                  "key" : "Idioma_Nombre-del-conjunto-de-datos-(ES)",
+                  "value" : "Tablas de Acceso y Evaluación Documental"
+                },
+                {
+                  "key" : "Àmbit-geogràfic_Àmbit-geogràfic",
+                  "value" : "Catalunya"
+                },
+                {
+                  "key" : "Àmbit-geogràfic_Informació-geogràfica",
+                  "value" : "Sense informació geogràfica"
+                },
+                { "key" : "Actors_Departament", "value" : "Cultura" },
+                {
+                  "key" : "Actors_Tipus-actor",
+                  "value" : "Generalitat de Catalunya"
+                },
+                {
+                  "key" : "Freqüència-d'actualització_Freqüència-d'actualització",
+                  "value" : "Variable"
+                }
+              ]
+          },
+        "metadata" :
+          {
+            "domain" : "analisi.transparenciacatalunya.cat",
+            "license" : "See Terms of Use"
+          },
+        "permalink" : "https://analisi.transparenciacatalunya.cat/d/mmkw-7j6u",
+        "link" : "https://analisi.transparenciacatalunya.cat/Sector-Públic/Taules-d-Accés-i-Avaluació-Documental/mmkw-7j6u",
+        "owner" :
+          {
+            "id" : "a4b5-gx6v",
+            "user_type" : "interactive",
+            "display_name" : "Dades Obertes Catalunya"
+          },
+        "creator" :
+          {
+            "id" : "a4b5-gx6v",
+            "user_type" : "interactive",
+            "display_name" : "Dades Obertes Catalunya"
+          }
+      },
+      {
+        "resource" :
+          {
+            "name" : "Símbols oficials dels ens locals",
+            "id" : "2zbw-miu8",
+            "resource_name" : null,
+            "parent_fxf" : [],
+            "description" : "Conjunt de dades referents als símbols heràldics oficials dels ens locals de Catalunya, amb indicació del blasonament i la seva descripció.",
+            "attribution" : "Secretaria de Governs Locals i de Relacions amb l'Aran",
+            "attribution_link" : "https://administraciodigital.gencat.cat/ca/dades/dades-obertes/informacio-practica/llicencies/",
+            "contact_email" : null,
+            "type" : "dataset",
+            "updatedAt" : "2026-10-29T04:30:32.000Z",
+            "createdAt" : "2020-06-04T15:34:39.000Z",
+            "metadata_updated_at" : "2026-10-29T04:30:24.000Z",
+            "data_updated_at" : "2026-10-29T04:30:32.000Z",
+            "page_views" :
+              {
+                "page_views_last_week" : 143,
+                "page_views_last_month" : 345,
+                "page_views_total" : 5128,
+                "page_views_last_week_log" : 7.169925001442313,
+                "page_views_last_month_log" : 8.434628227636725,
+                "page_views_total_log" : 12.324461855977319
+              },
+            "columns_name" :
+              [
+                "URL_IMATGE_SIMBOL",
+                "URL_DOGC_SIMBOL",
+                "CODI_SIMBOL",
+                "CODI_TIPUS_SIMBOL",
+                "CODI_10",
+                "NOM_ENS",
+                "DATA_APROVACIO_SIMBOL",
+                "TIPUS_SIMBOL",
+                "DATA_PUBLICACIO_SIMBOL_DOGC",
+                "BLASONAMENT_DESCRIPCIO",
+                "NUMERO_DOGC"
+              ],
+            "columns_field_name" :
+              [
+                "url_imatge_simbol",
+                "url_dogc_simbol",
+                "codi_simbol",
+                "codi_tipus_simbol",
+                "codi_10",
+                "nom_ens",
+                "data_aprovacio_simbol",
+                "tipus_simbol",
+                "data_publicacio_simbol_dogc",
+                "blasonament_descripcio",
+                "numero_dogc"
+              ],
+            "columns_datatype" :
+              [
+                "URL",
+                "URL",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Calendar date",
+                "Text",
+                "Calendar date",
+                "Text",
+                "Text"
+              ],
+            "columns_description" :
+              [
+                "Anualitat corresponent a la subvenció",
+                "URL DOGC",
+                "Codi del símbol",
+                "Codi del tipus de símbol",
+                "Codi oficial estadístic",
+                "Nom complet de l’Ens local",
+                "Data d’aprovació de l’escut",
+                "Descripció del tipus de símbol",
+                "Data publicació al DOGC",
+                "Blasonament de l’escut o descripció de la bandera",
+                "Número del DOGC"
+              ],
+            "columns_format" :
+              [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                { "view" : "date_dmy" },
+                {},
+                { "view" : "date_dmy" },
+                {},
+                {}
+              ],
+            "download_count" : 1226,
+            "provenance" : "official",
+            "lens_view_type" : "tabular",
+            "lens_display_type" : "table",
+            "locked" : false,
+            "backend" : "nbe",
+            "blob_mime_type" : null,
+            "hide_from_data_json" : false,
+            "publication_date" : "2026-03-18T09:42:41.000Z"
+          },
+        "classification" :
+          {
+            "categories" : [],
+            "tags" : [],
+            "domain_category" : "Sector Públic",
+            "domain_tags" :
+              [
+                "escuts",
+                "banderes",
+                "heràldica",
+                "municat",
+                "ods16_pau justícies i institucions sòlides",
+                "ens locals"
+              ],
+            "domain_metadata" :
+              [
+                {
+                  "key" : "Informació-de-gènere-o-sexe_Informació-de-gènere-o-sexe",
+                  "value" : "No aplicable"
+                },
+                { "key" : "Idioma_Idioma", "value" : "Català" },
+                {
+                  "key" : "Idioma_Dataset-name-(EN)",
+                  "value" : "Official symbols of the local entities"
+                },
+                {
+                  "key" : "Idioma_Nombre-del-conjunto-de-datos-(ES)",
+                  "value" : "Símbolos oficiales de los entes locales"
+                },
+                {
+                  "key" : "Àmbit-geogràfic_Àmbit-geogràfic",
+                  "value" : "Catalunya"
+                },
+                {
+                  "key" : "Àmbit-geogràfic_Informació-geogràfica",
+                  "value" : "Nom d'element"
+                },
+                { "key" : "Actors_Departament", "value" : "Presidència" },
+                {
+                  "key" : "Actors_Tipus-actor",
+                  "value" : "Generalitat de Catalunya"
+                },
+                {
+                  "key" : "Freqüència-d'actualització_Freqüència-d'actualització",
+                  "value" : "Variable"
+                }
+              ]
+          },
+        "metadata" :
+          {
+            "domain" : "analisi.transparenciacatalunya.cat",
+            "license" : "See Terms of Use"
+          },
+        "permalink" : "https://analisi.transparenciacatalunya.cat/d/2zbw-miu8",
+        "link" : "https://analisi.transparenciacatalunya.cat/Sector-Públic/Símbols-oficials-dels-ens-locals/2zbw-miu8",
+        "owner" :
+          {
+            "id" : "a4b5-gx6v",
+            "user_type" : "interactive",
+            "display_name" : "Dades Obertes Catalunya"
+          },
+        "creator" :
+          {
+            "id" : "a4b5-gx6v",
+            "user_type" : "interactive",
+            "display_name" : "Dades Obertes Catalunya"
+          }
+      },
+      {
+        "resource" :
+          {
+            "name" : "Consultes populars no referendàries",
+            "id" : "b5es-yvrb",
+            "resource_name" : null,
+            "parent_fxf" : [],
+            "description" : "Llistat de les consultes populars no referendàries realitzades a Catalunya.",
+            "attribution" : "Subdirecció General de Processos Electorals i Democràcia Directa",
+            "attribution_link" : "https://administraciodigital.gencat.cat/ca/dades/dades-obertes/informacio-practica/llicencies/",
+            "contact_email" : null,
+            "type" : "dataset",
+            "updatedAt" : "2026-06-10T09:17:27.000Z",
+            "createdAt" : "2023-06-22T08:11:22.000Z",
+            "metadata_updated_at" : "2026-06-10T09:17:26.000Z",
+            "data_updated_at" : "2026-06-10T09:17:27.000Z",
+            "page_views" :
+              {
+                "page_views_last_week" : 25,
+                "page_views_last_month" : 100,
+                "page_views_total" : 1759,
+                "page_views_last_week_log" : 4.700439718141093,
+                "page_views_last_month_log" : 6.6582114827517955,
+                "page_views_total_log" : 10.78135971352466
+              },
+            "columns_name" :
+              [
+                "Pregunta sotmesa a consulta",
+                "Participació",
+                "Cens",
+                "Data final votació",
+                "Data DOGC",
+                "Votants",
+                "Iniciativa",
+                "Any",
+                "Municipi",
+                "Codi municipi",
+                "Data inici votació",
+                "Votació electrònica",
+                "Acord de resultats oficials",
+                "Temàtica",
+                "Convocatòria DOGC",
+                "Convocant"
+              ],
+            "columns_field_name" :
+              [
+                "pregunta_sotmesa_consulta",
+                "participacio",
+                "cens",
+                "data_final_votacio",
+                "data_dogc",
+                "votants",
+                "iniciativa",
+                "any",
+                "municipi",
+                "codi_municipi",
+                "data_inici_votacio",
+                "votacio_electronica",
+                "acord_resultats_oficials",
+                "tematica",
+                "convocat_ria_dogc",
+                "convocant"
+              ],
+            "columns_datatype" :
+              [
+                "Text",
+                "Number",
+                "Number",
+                "Calendar date",
+                "Text",
+                "Number",
+                "Text",
+                "Number",
+                "Text",
+                "Text",
+                "Calendar date",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text"
+              ],
+            "columns_description" :
+              [
+                "Pregunta sotmesa a consulta",
+                "Percentatge de participació (nombre de votants sobre el cens)",
+                "Nombre de persones cridades a participar en la consulta",
+                "Data de finalització de la votació de la consulta popular no referendària",
+                "Data de publicació de la convocatòria al DOGC",
+                "Nombre total de votants",
+                "Origen de la proposta o sol·licitud de celebració de la consulta",
+                "Any que es convoca la consulta popular no referendària",
+                "Municipi on es realitza la consulta popular no referendària",
+                "Codi municipi",
+                "Data d’inici de la votació de la consulta popular no referendària",
+                "Ús de mitjans de votació electrònica (Si/No)",
+                "Número de l’acord de resultats de la Comissió de Control de les Consultes Populars o, en el seu defecte, el número de DOGC en què surten publicats",
+                "Àmbit temàtic en què s’enquadra l’objecte de la consulta",
+                "Número del DOGC on es publica la convocatòria de la consulta popular no referendària",
+                "Administració convocant de la consulta popular no referendària"
+              ],
+            "columns_format" :
+              [
+                {},
+                {},
+                { "decimalSeparator" : ",", "groupSeparator" : "." },
+                { "view" : "date_dmy" },
+                {},
+                { "decimalSeparator" : ",", "groupSeparator" : "." },
+                {},
+                {
+                  "decimalSeparator" : ",",
+                  "noCommas" : "true",
+                  "groupSeparator" : "."
+                },
+                {},
+                {},
+                { "view" : "date_dmy" },
+                {},
+                {},
+                {},
+                { "decimalSeparator" : ",", "groupSeparator" : "." },
+                {}
+              ],
+            "download_count" : 436,
+            "provenance" : "official",
+            "lens_view_type" : "tabular",
+            "lens_display_type" : "table",
+            "locked" : false,
+            "backend" : "nbe",
+            "blob_mime_type" : null,
+            "hide_from_data_json" : false,
+            "publication_date" : "2025-09-18T09:54:41.000Z"
+          },
+        "classification" :
+          {
+            "categories" : [],
+            "tags" : [],
+            "domain_category" : "Sector Públic",
+            "domain_tags" :
+              [
+                "consulta popular",
+                "participació ciutadana",
+                "ods16_pau justícies i institucions sòlides"
+              ],
+            "domain_metadata" :
+              [
+                {
+                  "key" : "Dades-d'Alt-Valor_Categoria",
+                  "value" : "No són dades d’alt valor"
+                },
+                {
+                  "key" : "Informació-de-gènere-o-sexe_Informació-de-gènere-o-sexe",
+                  "value" : "No"
+                },
+                { "key" : "Idioma_Idioma", "value" : "Català" },
+                {
+                  "key" : "Idioma_Dataset-name-(EN)",
+                  "value" : "Non-referendal Popular Consultations"
+                },
+                {
+                  "key" : "Idioma_Nombre-del-conjunto-de-datos-(ES)",
+                  "value" : "Consultas Populares no referendarias"
+                },
+                {
+                  "key" : "Àmbit-geogràfic_Àmbit-geogràfic",
+                  "value" : "Catalunya"
+                },
+                {
+                  "key" : "Àmbit-geogràfic_Informació-geogràfica",
+                  "value" : "Codi d'element"
+                },
+                {
+                  "key" : "Actors_Departament",
+                  "value" : "Justícia i Qualitat Democràtica"
+                },
+                {
+                  "key" : "Actors_Tipus-actor",
+                  "value" : "Generalitat de Catalunya"
+                },
+                {
+                  "key" : "Freqüència-d'actualització_Freqüència-d'actualització",
+                  "value" : "Variable"
+                }
+              ]
+          },
+        "metadata" :
+          {
+            "domain" : "analisi.transparenciacatalunya.cat",
+            "license" : "See Terms of Use"
+          },
+        "permalink" : "https://analisi.transparenciacatalunya.cat/d/b5es-yvrb",
+        "link" : "https://analisi.transparenciacatalunya.cat/Sector-Públic/Consultes-populars-no-referendàries/b5es-yvrb",
+        "owner" :
+          {
+            "id" : "a4b5-gx6v",
+            "user_type" : "interactive",
+            "display_name" : "Dades Obertes Catalunya"
+          },
+        "creator" :
+          {
+            "id" : "a4b5-gx6v",
+            "user_type" : "interactive",
+            "display_name" : "Dades Obertes Catalunya"
+          }
+      },
+      {
+        "resource" :
+          {
+            "name" : "Temaris dels processos de selecció de la Generalitat de Catalunya",
+            "id" : "5cfm-pzaw",
+            "resource_name" : null,
+            "parent_fxf" : [],
+            "description" : "Temaris actualment vigents i d’aplicació als processos de selecció de la Generalitat de Catalunya. Les convocatòries que ja estan en curs es regeixen pels temaris que es determinen a les bases de la convocatòria en concret.",
+            "attribution" : "Escola d'Administració Pública de Catalunya (EAPC)",
+            "attribution_link" : "https://administraciodigital.gencat.cat/ca/dades/dades-obertes/informacio-practica/llicencies/",
+            "contact_email" : null,
+            "type" : "dataset",
+            "updatedAt" : "2026-09-17T09:54:13.000Z",
+            "createdAt" : "2025-12-01T15:20:46.000Z",
+            "metadata_updated_at" : "2026-09-17T09:54:13.000Z",
+            "data_updated_at" : "2026-05-28T08:03:50.000Z",
+            "page_views" :
+              {
+                "page_views_last_week" : 920,
+                "page_views_last_month" : 4978,
+                "page_views_total" : 115307,
+                "page_views_last_week_log" : 9.847057346091336,
+                "page_views_last_month_log" : 12.28164030006605,
+                "page_views_total_log" : 16.815133084216995
+              },
+            "columns_name" :
+              [
+                "Enllaç resolució",
+                "Cos",
+                "Part del temari",
+                "Any",
+                "Escala",
+                "Règim jurídic",
+                "Subgrup",
+                "Document del temari",
+                "Grup",
+                "Títol resolució"
+              ],
+            "columns_field_name" :
+              [
+                "enllac_resolucio",
+                "cos",
+                "part_del_temari",
+                "any",
+                "escala",
+                "regim_juridic",
+                "subgrup",
+                "document_del_temari",
+                "grup",
+                "titol_resolucio"
+              ],
+            "columns_datatype" :
+              [
+                "URL",
+                "Text",
+                "Text",
+                "Number",
+                "Text",
+                "Text",
+                "Text",
+                "URL",
+                "Text",
+                "Text"
+              ],
+            "columns_description" :
+              [
+                "Enllaç web al Diari Oficial de la Generalitat de Catalunya (DOGC) de la resolució per la qual s’aproven els temaris de les proves selectives",
+                "Cos de la Generalitat al qual pertany el temari",
+                "Part del temari (general, comuna, específica)",
+                "Any en el qual es publica la convocatòria",
+                "Escala de la Generalitat a la qual pertany el temari",
+                "Règim jurídic de la convocatòria (funcionari, interí o laboral)",
+                "Subgrup de l’Administració al qual pertany el temari",
+                "Enllaç web a l’arxiu PDF del temari en qüestió",
+                "Grup de l’Administració al qual pertany el temari",
+                "Títol de la resolució del Diari Oficial de la Generalitat de Catalunya (DOGC) per la qual s’aprova el temari"
+              ],
+            "columns_format" :
+              [ {}, {}, {}, { "noCommas" : "true" }, {}, {}, {}, {}, {}, {} ],
+            "download_count" : 1122,
+            "provenance" : "official",
+            "lens_view_type" : "tabular",
+            "lens_display_type" : "table",
+            "locked" : false,
+            "backend" : "nbe",
+            "blob_mime_type" : null,
+            "hide_from_data_json" : false,
+            "publication_date" : "2025-12-01T15:25:11.000Z"
+          },
+        "classification" :
+          {
+            "categories" : [],
+            "tags" : [],
+            "domain_category" : "Sector Públic",
+            "domain_tags" :
+              [
+                "temari",
+                "temaris",
+                "oposicions",
+                "processos de selecció",
+                "concurs",
+                "ods16_pau justícies i institucions sòlides",
+                "eapc"
+              ],
+            "domain_metadata" :
+              [
+                {
+                  "key" : "Dades-d'Alt-Valor_Categoria",
+                  "value" : "No són dades d’alt valor"
+                },
+                {
+                  "key" : "Informació-de-gènere-o-sexe_Informació-de-gènere-o-sexe",
+                  "value" : "No aplicable"
+                },
+                { "key" : "Idioma_Idioma", "value" : "Català" },
+                {
+                  "key" : "Idioma_Dataset-name-(EN)",
+                  "value" : "Topics of the selection processes of the Generalitat de Catalunya"
+                },
+                {
+                  "key" : "Idioma_Nombre-del-conjunto-de-datos-(ES)",
+                  "value" : "Temarios de los procesos de selección de la Generalitat de Catalunya"
+                },
+                {
+                  "key" : "Àmbit-geogràfic_Àmbit-geogràfic",
+                  "value" : "Catalunya"
+                },
+                {
+                  "key" : "Àmbit-geogràfic_Informació-geogràfica",
+                  "value" : "Sense informació geogràfica"
+                },
+                { "key" : "Actors_Departament", "value" : "Presidència" },
+                {
+                  "key" : "Actors_Tipus-actor",
+                  "value" : "Generalitat de Catalunya"
+                },
+                {
+                  "key" : "Freqüència-d'actualització_Freqüència-d'actualització",
+                  "value" : "Variable"
+                }
+              ]
+          },
+        "metadata" :
+          {
+            "domain" : "analisi.transparenciacatalunya.cat",
+            "license" : "See Terms of Use"
+          },
+        "permalink" : "https://analisi.transparenciacatalunya.cat/d/5cfm-pzaw",
+        "link" : "https://analisi.transparenciacatalunya.cat/Sector-Públic/Temaris-dels-processos-de-selecció-de-la-Generalit/5cfm-pzaw",
+        "owner" :
+          {
+            "id" : "a4b5-gx6v",
+            "user_type" : "interactive",
+            "display_name" : "Dades Obertes Catalunya"
+          },
+        "creator" :
+          {
+            "id" : "a4b5-gx6v",
+            "user_type" : "interactive",
+            "display_name" : "Dades Obertes Catalunya"
+          }
+      },
+      {
+        "resource" :
+          {
+            "name" : "Titulars de la Presidència, la Vicepresidència i les conselleries de la Generalitat de Catalunya",
+            "id" : "ej77-hz8x",
+            "resource_name" : null,
+            "parent_fxf" : [],
+            "description" : "Llistat del personal que ocupa llocs de direcció política al més alt nivell a l’Administració de la Generalitat de Catalunya des del 1980. \n\nFont: a partir de les dades publicades al DOGC.",
+            "attribution" : "Departament de la Presidència",
+            "attribution_link" : "https://administraciodigital.gencat.cat/ca/dades/dades-obertes/informacio-practica/llicencies/",
+            "contact_email" : null,
+            "type" : "dataset",
+            "updatedAt" : "2025-09-22T09:56:28.000Z",
+            "createdAt" : "2021-10-18T08:47:08.000Z",
+            "metadata_updated_at" : "2025-09-22T09:56:28.000Z",
+            "data_updated_at" : "2024-11-06T10:59:10.000Z",
+            "page_views" :
+              {
+                "page_views_last_week" : 9,
+                "page_views_last_month" : 49,
+                "page_views_total" : 1670,
+                "page_views_last_week_log" : 3.3219280948873626,
+                "page_views_last_month_log" : 5.643856189774724,
+                "page_views_total_log" : 10.706496018061188
+              },
+            "columns_name" :
+              [
+                "Segon cognom",
+                "Núm de DOGC i data",
+                "Núm de DOGC i data 1",
+                "Data fi de l'ocupació",
+                "Primer cognom",
+                "URL",
+                "Tipus de càrrec",
+                "Nom",
+                "Data inici de l'ocupació",
+                "Nomenclatura del càrrec",
+                "URL 1",
+                "Sexe"
+              ],
+            "columns_field_name" :
+              [
+                "segon_cognom",
+                "n_m_de_dogc_i_data",
+                "n_m_de_dogc_i_data_1",
+                "data_fi_de_l_ocupaci",
+                "primer_cognom",
+                "url",
+                "tipus_de_c_rrec",
+                "nom",
+                "data_inici_de_l_ocupaci",
+                "nomenclatura_del_c_rrec",
+                "url_1",
+                "sexe"
+              ],
+            "columns_datatype" :
+              [
+                "Text",
+                "Text",
+                "Text",
+                "Calendar date",
+                "Text",
+                "URL",
+                "Text",
+                "Text",
+                "Calendar date",
+                "Text",
+                "URL",
+                "Text"
+              ],
+            "columns_description" :
+              [
+                "Segon cognom ",
+                "Número i data del Diari Oficial de la Generalitat de Catalunya on es va publicar l’inici de l’ocupació de l’alt càrrec",
+                "Número i data del Diari Oficial de la Generalitat de Catalunya on es va publicar el final de l’ocupació de l’alt càrrec.",
+                "Data fi de l’ocupació. Segons l'article 18 de la Llei de la Presidència de la Generalitat (Llei 13/2008), \"El Govern cessa quan cessa en el càrrec el president o presidenta de la Generalitat, però es manté en funcions fins a la presa de possessió del nou Govern\".",
+                "Primer cognom ",
+                "Enllaç a l’adreça del DOGC on es troba el nomenament",
+                "Els càrrecs que es relacionen són: President, Conseller/a, Vicepresident/a i Conseller/a.",
+                " Nom",
+                "Data d’inici de l’ocupació ",
+                "Nomenclatura oficial del càrrec que ocupa al Govern de la Generalitat de Catalunya",
+                "Enllaç a l’adreça del DOGC on es troba el cessament",
+                "Sexe"
+              ],
+            "columns_format" :
+              [
+                {},
+                { "view" : "date_dmy" },
+                {},
+                { "view" : "date_dmy" },
+                {},
+                {},
+                {},
+                {},
+                { "view" : "date_dmy", "align" : "right" },
+                {},
+                {},
+                {}
+              ],
+            "download_count" : 788,
+            "provenance" : "official",
+            "lens_view_type" : "tabular",
+            "lens_display_type" : "table",
+            "locked" : false,
+            "backend" : "nbe",
+            "blob_mime_type" : null,
+            "hide_from_data_json" : false,
+            "publication_date" : "2021-10-19T07:11:03.000Z"
+          },
+        "classification" :
+          {
+            "categories" : [],
+            "tags" : [],
+            "domain_category" : "Sector Públic",
+            "domain_tags" :
+              [
+                "transparència",
+                "publicitat activa",
+                "informació pública",
+                "portal de la transparència de catalunya",
+                "alts càrrecs",
+                "generalitat de catalunya",
+                "ods16_pau justícies i institucions sòlides"
+              ],
+            "domain_metadata" :
+              [
+                {
+                  "key" : "Informació-de-gènere-o-sexe_Informació-de-gènere-o-sexe",
+                  "value" : "Sí"
+                },
+                { "key" : "Idioma_Idioma", "value" : "Català" },
+                {
+                  "key" : "Idioma_Dataset-name-(EN)",
+                  "value" : "Heads of the Presidency, Vice-Presidency and Ministries of the Goverment of Catalonia. "
+                },
+                {
+                  "key" : "Idioma_Nombre-del-conjunto-de-datos-(ES)",
+                  "value" : "Titulares de la Presidencia, la Vicepresidencia y las consejerías de la Generalitat de Catalunya "
+                },
+                {
+                  "key" : "Àmbit-geogràfic_Àmbit-geogràfic",
+                  "value" : "Catalunya"
+                },
+                {
+                  "key" : "Àmbit-geogràfic_Informació-geogràfica",
+                  "value" : "Sense informació geogràfica"
+                },
+                { "key" : "Actors_Departament", "value" : "Presidència" },
+                {
+                  "key" : "Actors_Tipus-actor",
+                  "value" : "Generalitat de Catalunya"
+                },
+                {
+                  "key" : "Freqüència-d'actualització_Freqüència-d'actualització",
+                  "value" : "Variable"
+                }
+              ]
+          },
+        "metadata" :
+          {
+            "domain" : "analisi.transparenciacatalunya.cat",
+            "license" : "See Terms of Use"
+          },
+        "permalink" : "https://analisi.transparenciacatalunya.cat/d/ej77-hz8x",
+        "link" : "https://analisi.transparenciacatalunya.cat/Sector-Públic/Titulars-de-la-Presidència-la-Vicepresidència-i-le/ej77-hz8x",
+        "owner" :
+          {
+            "id" : "a4b5-gx6v",
+            "user_type" : "interactive",
+            "display_name" : "Dades Obertes Catalunya"
+          },
+        "creator" :
+          {
+            "id" : "a4b5-gx6v",
+            "user_type" : "interactive",
+            "display_name" : "Dades Obertes Catalunya"
+          }
+      },
+      {
+        "resource" :
+          {
+            "name" : "Personalitats i entitats guardonades amb la Medalla o la Placa Josep Trueta al mèrit sanitari",
+            "id" : "h8e6-hp2w",
+            "resource_name" : null,
+            "parent_fxf" : [],
+            "description" : "Personalitats i entitats guardonades amb la Medalla o la Placa Josep Trueta al mèrit sanitari, instituïdes pel Govern de la Generalitat de Catalunya, mitjançant el Decret 310/1997, de 9 de desembre (DOGC núm. 2578, de 13.2.1998), amb la finalitat d'honorar qui s'hagi destacat de manera significativa pels serveis prestats en ordre al progrés i la millora de la sanitat.",
+            "attribution" : "Departament de Salut",
+            "attribution_link" : "https://administraciodigital.gencat.cat/ca/dades/dades-obertes/informacio-practica/llicencies/",
+            "contact_email" : null,
+            "type" : "dataset",
+            "updatedAt" : "2025-04-07T10:34:22.000Z",
+            "createdAt" : "2021-03-31T10:37:02.000Z",
+            "metadata_updated_at" : "2025-04-07T10:34:22.000Z",
+            "data_updated_at" : "2023-05-17T08:19:32.000Z",
+            "page_views" :
+              {
+                "page_views_last_week" : 9,
+                "page_views_last_month" : 75,
+                "page_views_total" : 2983,
+                "page_views_last_week_log" : 3.3219280948873626,
+                "page_views_last_month_log" : 6.247927513443586,
+                "page_views_total_log" : 11.543031820255237
+              },
+            "columns_name" :
+              [
+                "Decret de concessió",
+                "Personalitat o entitat",
+                "Cognoms",
+                "A títol pòstum",
+                "Número del DOGC de publicació",
+                "Tipus de guardó",
+                "Any d'edició",
+                "Data de lliurament",
+                "Nom",
+                "Sexe",
+                "URL del Decret de concessió"
+              ],
+            "columns_field_name" :
+              [
+                "decret_concessio",
+                "persona_o_entitat",
+                "cognoms",
+                "postum",
+                "numero_dogc",
+                "tipus_guardo",
+                "any_edicio",
+                "data_lliurament",
+                "nom",
+                "sexe",
+                "url_decret"
+              ],
+            "columns_datatype" :
+              [
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Calendar date",
+                "Text",
+                "Text",
+                "URL"
+              ],
+            "columns_description" :
+              [ "", "", "", "", "", "", "", "", "", "", "" ],
+            "columns_format" :
+              [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                { "noCommas" : "true" },
+                { "view" : "date_dmy" },
+                {},
+                {},
+                {}
+              ],
+            "download_count" : 855,
+            "provenance" : "official",
+            "lens_view_type" : "tabular",
+            "lens_display_type" : "table",
+            "locked" : false,
+            "backend" : "nbe",
+            "blob_mime_type" : null,
+            "hide_from_data_json" : false,
+            "publication_date" : "2021-03-31T10:56:17.000Z"
+          },
+        "classification" :
+          {
+            "categories" : [],
+            "tags" : [],
+            "domain_category" : "Salut",
+            "domain_tags" :
+              [
+                "salut",
+                "premi",
+                "guardó",
+                "distinció",
+                "ods3_salut i benestar"
+              ],
+            "domain_metadata" :
+              [
+                {
+                  "key" : "Informació-de-gènere-o-sexe_Informació-de-gènere-o-sexe",
+                  "value" : "Sí"
+                },
+                { "key" : "Idioma_Idioma", "value" : "Català" },
+                {
+                  "key" : "Idioma_Dataset-name-(EN)",
+                  "value" : "Personalities and entities rewarded with the Medal or Plaque Josep Trueta to the Sanitary Merit"
+                },
+                {
+                  "key" : "Idioma_Nombre-del-conjunto-de-datos-(ES)",
+                  "value" : "Personalidades y entidades galardonadas con la Medalla o la Placa Josep Trueta al mérito sanitario"
+                },
+                {
+                  "key" : "Àmbit-geogràfic_Àmbit-geogràfic",
+                  "value" : "Catalunya"
+                },
+                {
+                  "key" : "Àmbit-geogràfic_Informació-geogràfica",
+                  "value" : "Sense informació geogràfica"
+                },
+                { "key" : "Actors_Departament", "value" : "Salut" },
+                {
+                  "key" : "Actors_Tipus-actor",
+                  "value" : "Generalitat de Catalunya"
+                },
+                {
+                  "key" : "Freqüència-d'actualització_Freqüència-d'actualització",
+                  "value" : "Variable"
+                }
+              ]
+          },
+        "metadata" :
+          {
+            "domain" : "analisi.transparenciacatalunya.cat",
+            "license" : "See Terms of Use"
+          },
+        "permalink" : "https://analisi.transparenciacatalunya.cat/d/h8e6-hp2w",
+        "link" : "https://analisi.transparenciacatalunya.cat/Salut/Personalitats-i-entitats-guardonades-amb-la-Medall/h8e6-hp2w",
+        "owner" :
+          {
+            "id" : "a4b5-gx6v",
+            "user_type" : "interactive",
+            "display_name" : "Dades Obertes Catalunya"
+          },
+        "creator" :
+          {
+            "id" : "a4b5-gx6v",
+            "user_type" : "interactive",
+            "display_name" : "Dades Obertes Catalunya"
+          }
+      },
+      {
+        "resource" :
+          {
+            "name" : "Concursos de canvi de destinació del personal laboral fix",
+            "id" : "sxiq-vd9j",
+            "resource_name" : null,
+            "parent_fxf" : [],
+            "description" : "Convocatòries dels diferents concursos de canvi de destinació convocades pel Departament de la Presidència, destinades a la provisió de llocs de treball mitjançant procediments selectius basats en la valoració de l’experiència, la formació i altres mèrits professionals.\n\nPermet consultar l’evolució i situació de cada convocatòria, tant si està en curs com si ja ha estat resolta, i facilita el seguiment dels processos de provisió de personal laboral fix.",
+            "attribution" : "Direcció General de Funció Pública",
+            "attribution_link" : "https://administraciodigital.gencat.cat/ca/dades/dades-obertes/informacio-practica/llicencies/",
+            "contact_email" : null,
+            "type" : "dataset",
+            "updatedAt" : "2025-12-10T16:14:03.000Z",
+            "createdAt" : "2025-11-27T13:35:11.000Z",
+            "metadata_updated_at" : "2025-12-10T16:14:03.000Z",
+            "data_updated_at" : "2025-12-10T16:13:52.000Z",
+            "page_views" :
+              {
+                "page_views_last_week" : 113,
+                "page_views_last_month" : 407,
+                "page_views_total" : 7818,
+                "page_views_last_week_log" : 6.832890014164742,
+                "page_views_last_month_log" : 8.672425341971495,
+                "page_views_total_log" : 12.93276839254092
+              },
+            "columns_name" :
+              [
+                "Data del DOGC",
+                "Número de convocatòria",
+                "Estat convocatòria",
+                "Enllaç resolució",
+                "Departament",
+                "Organisme",
+                "Enllaç convocatòria"
+              ],
+            "columns_field_name" :
+              [
+                "data_publicacio",
+                "numero_convocatoria",
+                "estat_convocatoria",
+                "enllac_resolucio",
+                "departament",
+                "organisme",
+                "enllac_convocatoria"
+              ],
+            "columns_datatype" :
+              [
+                "Calendar date",
+                "Text",
+                "Text",
+                "URL",
+                "Text",
+                "Text",
+                "URL"
+              ],
+            "columns_description" :
+              [
+                "Data de publicació de la convocatòria del concurs al Diari Oficial de la Generalitat de Catalunya (DOGC)",
+                "Identificador de la convocatòria del concurs",
+                "Estat en el qual es troba el concurs",
+                "Adreça web a la resolució del concurs",
+                "Departament al qual està inscrit l’organisme",
+                "Organisme al qual es proveeixen llocs de treball amb el concurs",
+                "Adreça web a la convocatòria del concurs"
+              ],
+            "columns_format" :
+              [ { "view" : "date_dmy" }, {}, {}, {}, {}, {}, {} ],
+            "download_count" : 196,
+            "provenance" : "official",
+            "lens_view_type" : "tabular",
+            "lens_display_type" : "table",
+            "locked" : false,
+            "backend" : "nbe",
+            "blob_mime_type" : null,
+            "hide_from_data_json" : false,
+            "publication_date" : "2025-12-10T16:14:03.000Z"
+          },
+        "classification" :
+          {
+            "categories" : [],
+            "tags" : [],
+            "domain_category" : "Sector Públic",
+            "domain_tags" :
+              [
+                "provisió",
+                "llocs de treball",
+                "oferta pública",
+                "concurs",
+                "oposicions",
+                "funció pública",
+                "sector públic",
+                "mèrits",
+                "canvi destinació",
+                "ods16_pau justícies i institucions sòlides"
+              ],
+            "domain_metadata" :
+              [
+                {
+                  "key" : "Dades-d'Alt-Valor_Categoria",
+                  "value" : "No són dades d’alt valor"
+                },
+                {
+                  "key" : "Informació-de-gènere-o-sexe_Informació-de-gènere-o-sexe",
+                  "value" : "No aplicable"
+                },
+                { "key" : "Idioma_Idioma", "value" : "Català" },
+                {
+                  "key" : "Idioma_Dataset-name-(EN)",
+                  "value" : "Permanent employees' change of destination competitions"
+                },
+                {
+                  "key" : "Idioma_Nombre-del-conjunto-de-datos-(ES)",
+                  "value" : "Concursos de cambio de destinación del personal laboral fijo"
+                },
+                {
+                  "key" : "Àmbit-geogràfic_Àmbit-geogràfic",
+                  "value" : "Catalunya"
+                },
+                {
+                  "key" : "Àmbit-geogràfic_Informació-geogràfica",
+                  "value" : "Sense informació geogràfica"
+                },
+                { "key" : "Actors_Departament", "value" : "Presidència" },
+                {
+                  "key" : "Actors_Tipus-actor",
+                  "value" : "Generalitat de Catalunya"
+                },
+                {
+                  "key" : "Freqüència-d'actualització_Freqüència-d'actualització",
+                  "value" : "Anual"
+                }
+              ]
+          },
+        "metadata" :
+          {
+            "domain" : "analisi.transparenciacatalunya.cat",
+            "license" : "See Terms of Use"
+          },
+        "permalink" : "https://analisi.transparenciacatalunya.cat/d/sxiq-vd9j",
+        "link" : "https://analisi.transparenciacatalunya.cat/Sector-Públic/Concursos-de-canvi-de-destinació-del-personal-labo/sxiq-vd9j",
+        "owner" :
+          {
+            "id" : "a4b5-gx6v",
+            "user_type" : "interactive",
+            "display_name" : "Dades Obertes Catalunya"
+          },
+        "creator" :
+          {
+            "id" : "a4b5-gx6v",
+            "user_type" : "interactive",
+            "display_name" : "Dades Obertes Catalunya"
+          }
+      },
+      {
+        "resource" :
+          {
+            "name" : "Membres del Consell Rector del Centre d’Estudis d’Opinió (CEO)",
+            "id" : "8t79-nfvt",
+            "resource_name" : null,
+            "parent_fxf" : [],
+            "description" : "Relaciona els membres del Consell Rector del Centre d’Estudis d’Opinió (CEO), que és l'òrgan que assessora i supervisa el director o directora del Centre d'Estudis d'Opinió. Les seves funcions queden especificades a la Llei 6/2007, del 17 de juliol, del Centre d'Estudis d'Opinió.",
+            "attribution" : "Centre d'Estudis d'Opinió (CEO)",
+            "attribution_link" : "https://administraciodigital.gencat.cat/ca/dades/dades-obertes/informacio-practica/llicencies/",
+            "contact_email" : null,
+            "type" : "dataset",
+            "updatedAt" : "2026-09-17T09:54:56.000Z",
+            "createdAt" : "2024-04-26T08:00:38.000Z",
+            "metadata_updated_at" : "2026-09-17T09:54:56.000Z",
+            "data_updated_at" : "2026-09-10T13:45:32.000Z",
+            "page_views" :
+              {
+                "page_views_last_week" : 16,
+                "page_views_last_month" : 53,
+                "page_views_total" : 1047,
+                "page_views_last_week_log" : 4.08746284125034,
+                "page_views_last_month_log" : 5.754887502163469,
+                "page_views_total_log" : 10.03342300153745
+              },
+            "columns_name" :
+              [
+                "NOMENAMENT",
+                "CONSELL RECTOR",
+                "NUM. CONSELL RECTOR",
+                "NOM",
+                "COGNOMS",
+                "INICI NOMENAMENT",
+                "CARREC",
+                "FI NOMENAMENT",
+                "SEXE",
+                "ENLLAÇ DISPOSICIO DE CESSAMENT",
+                "DISPOSICIO DE CESSAMENT",
+                "ENLLAÇ DISPOSICIO DE NOMENAMENT",
+                "DISPOSICIO DE NOMENAMENT"
+              ],
+            "columns_field_name" :
+              [
+                "nomenament",
+                "consell_rector",
+                "num_consell_rector",
+                "nom",
+                "cognoms",
+                "inici_nomenament",
+                "carrec",
+                "fi_nomenament",
+                "sexe",
+                "enlla_disposicio_de_cessament",
+                "disposicio_de_cessament",
+                "enlla_disposicio_de_nomenament",
+                "disposicio_de_nomenament"
+              ],
+            "columns_datatype" :
+              [
+                "Text",
+                "Text",
+                "Number",
+                "Text",
+                "Text",
+                "Calendar date",
+                "Text",
+                "Calendar date",
+                "Text",
+                "URL",
+                "Text",
+                "URL",
+                "Text"
+              ],
+            "columns_description" :
+              [
+                "Tipus de nomenament del membre del Consell Rector",
+                "Període del Consell Rector",
+                "Número del Consell Rector",
+                "Nom del membre del Consell Rector",
+                "Cognoms del membre del Consell Rector",
+                "Data d’inici del nomenament del membre del Consell Rector",
+                "Càrrec del membre del Consell Rector",
+                "Data de fi del nomenament del membre del Consell Rector",
+                "Sexe del membre del Consell Rector",
+                "Enllaç al DOGC de la disposició del cessament del membre del Consell Rector",
+                "Nom de la disposició del cessament del membre del Consell Rector",
+                "Enllaç al DOGC de la disposició del nomenament del membre del Consell Rector",
+                "Nom de la disposició del nomenament del membre del Consell Rector"
+              ],
+            "columns_format" :
+              [
+                {},
+                {},
+                { "decimalSeparator" : ",", "groupSeparator" : "." },
+                {},
+                {},
+                { "view" : "date_dmy" },
+                {},
+                { "view" : "date_dmy" },
+                {},
+                {},
+                {},
+                {},
+                {}
+              ],
+            "download_count" : 243,
+            "provenance" : "official",
+            "lens_view_type" : "tabular",
+            "lens_display_type" : "table",
+            "locked" : false,
+            "backend" : "nbe",
+            "blob_mime_type" : null,
+            "hide_from_data_json" : false,
+            "publication_date" : "2024-04-26T08:22:41.000Z"
+          },
+        "classification" :
+          {
+            "categories" : [],
+            "tags" : [],
+            "domain_category" : "Sector Públic",
+            "domain_tags" :
+              [
+                "consell rector",
+                "centre d'estudis d'opinió",
+                "ceo",
+                "enquestes",
+                "estudis d'opinió",
+                "ods16_pau justícies i institucions sòlides"
+              ],
+            "domain_metadata" :
+              [
+                {
+                  "key" : "Informació-de-gènere-o-sexe_Informació-de-gènere-o-sexe",
+                  "value" : "Sí"
+                },
+                { "key" : "Idioma_Idioma", "value" : "Català" },
+                {
+                  "key" : "Idioma_Dataset-name-(EN)",
+                  "value" : "Members of the Governing Council of the Centre d’Estudis d’Opinió (CEO)"
+                },
+                {
+                  "key" : "Idioma_Nombre-del-conjunto-de-datos-(ES)",
+                  "value" : "Miembros del Consejo Rector del Centre d’Estudis d’Opinió (CEO)"
+                },
+                {
+                  "key" : "Àmbit-geogràfic_Àmbit-geogràfic",
+                  "value" : "Catalunya"
+                },
+                {
+                  "key" : "Àmbit-geogràfic_Informació-geogràfica",
+                  "value" : "Sense informació geogràfica"
+                },
+                { "key" : "Actors_Departament", "value" : "Presidència" },
+                {
+                  "key" : "Actors_Tipus-actor",
+                  "value" : "Generalitat de Catalunya"
+                },
+                {
+                  "key" : "Freqüència-d'actualització_Freqüència-d'actualització",
+                  "value" : "Variable"
+                }
+              ]
+          },
+        "metadata" :
+          {
+            "domain" : "analisi.transparenciacatalunya.cat",
+            "license" : "See Terms of Use"
+          },
+        "permalink" : "https://analisi.transparenciacatalunya.cat/d/8t79-nfvt",
+        "link" : "https://analisi.transparenciacatalunya.cat/Sector-Públic/Membres-del-Consell-Rector-del-Centre-d-Estudis-d-/8t79-nfvt",
+        "owner" :
+          {
+            "id" : "a4b5-gx6v",
+            "user_type" : "interactive",
+            "display_name" : "Dades Obertes Catalunya"
+          },
+        "creator" :
+          {
+            "id" : "a4b5-gx6v",
+            "user_type" : "interactive",
+            "display_name" : "Dades Obertes Catalunya"
+          }
+      },
+      {
+        "resource" :
+          {
+            "name" : "Convenis, acords i pactes de caràcter funcionarial, laboral o sindical",
+            "id" : "caup-g3ka",
+            "resource_name" : null,
+            "parent_fxf" : [],
+            "description" : "Conjunt de dades que recull els convenis, acords i pactes de caràcter funcionarial, laboral o sindical, publicats en el DOGC, els BOP o el BOE, amb incidència a Catalunya.",
+            "attribution" : "Consorci Administració Oberta de Catalunya (AOC)",
+            "attribution_link" : "https://administraciodigital.gencat.cat/ca/dades/dades-obertes/informacio-practica/llicencies/",
+            "contact_email" : null,
+            "type" : "dataset",
+            "updatedAt" : "2026-10-29T02:20:07.000Z",
+            "createdAt" : "2019-12-09T12:21:17.000Z",
+            "metadata_updated_at" : "2026-10-29T02:20:01.000Z",
+            "data_updated_at" : "2026-10-29T02:20:07.000Z",
+            "page_views" :
+              {
+                "page_views_last_week" : 22,
+                "page_views_last_month" : 78,
+                "page_views_total" : 3747,
+                "page_views_last_week_log" : 4.523561956057013,
+                "page_views_last_month_log" : 6.303780748177103,
+                "page_views_total_log" : 11.871905237659186
+              },
+            "columns_name" :
+              [
+                "RESUM",
+                "NOM_ENS",
+                "ENLLAÇ",
+                "VIGENT",
+                "DATA_PUB",
+                "LIMADM_MUNICIPI",
+                "LIMADM COMARCA",
+                "GEOREFERENCIA",
+                "LONGITUD",
+                "LATITUD",
+                "CODI_ENS"
+              ],
+            "columns_field_name" :
+              [
+                "resum",
+                "nom_ens",
+                "enlla",
+                "vigent",
+                "data_pub",
+                ":@computed_region_bh64_c7uy",
+                ":@computed_region_wvic_k925",
+                "geocoded_column",
+                "longitud",
+                "latitud",
+                "codi_ens"
+              ],
+            "columns_datatype" :
+              [
+                "Text",
+                "Text",
+                "URL",
+                "Checkbox",
+                "Calendar date",
+                "Number",
+                "Number",
+                "Point",
+                "Number",
+                "Number",
+                "Text"
+              ],
+            "columns_description" :
+              [ "", "", "", "", "", "", "", "", "", "", "" ],
+            "columns_format" :
+              [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                { "decimalSeparator" : ",", "groupSeparator" : "." },
+                { "decimalSeparator" : ",", "groupSeparator" : "." },
+                {}
+              ],
+            "download_count" : 1605,
+            "provenance" : "official",
+            "lens_view_type" : "tabular",
+            "lens_display_type" : "table",
+            "locked" : false,
+            "backend" : "nbe",
+            "blob_mime_type" : null,
+            "hide_from_data_json" : false,
+            "publication_date" : "2019-12-09T14:05:11.000Z"
+          },
+        "classification" :
+          {
+            "categories" : [],
+            "tags" : [],
+            "domain_category" : "Sector Públic",
+            "domain_tags" :
+              [
+                "conveni",
+                "acord",
+                "pacte",
+                "ocupació",
+                "consorci aoc",
+                "ods16_pau justícies i institucions sòlides"
+              ],
+            "domain_metadata" :
+              [
+                {
+                  "key" : "Informació-de-gènere-o-sexe_Informació-de-gènere-o-sexe",
+                  "value" : "No aplicable"
+                },
+                { "key" : "Idioma_Idioma", "value" : "Català" },
+                {
+                  "key" : "Idioma_Dataset-name-(EN)",
+                  "value" : "Conventions, agreements and pacts of public service, work or union nature"
+                },
+                {
+                  "key" : "Idioma_Nombre-del-conjunto-de-datos-(ES)",
+                  "value" : "Convenios, acuerdos y pactos de carácter funcional, laboral o sindical"
+                },
+                {
+                  "key" : "Àmbit-geogràfic_Àmbit-geogràfic",
+                  "value" : "Catalunya"
+                },
+                {
+                  "key" : "Àmbit-geogràfic_Informació-geogràfica",
+                  "value" : "Coordenades"
+                },
+                { "key" : "Actors_Departament", "value" : "Presidència" },
+                {
+                  "key" : "Actors_Tipus-actor",
+                  "value" : "Administració local"
+                },
+                {
+                  "key" : "Actors_Organisme-o-institució",
+                  "value" : "Consorci AOC"
+                },
+                {
+                  "key" : "Freqüència-d'actualització_Freqüència-d'actualització",
+                  "value" : "Diària"
+                }
+              ]
+          },
+        "metadata" :
+          {
+            "domain" : "analisi.transparenciacatalunya.cat",
+            "license" : "See Terms of Use"
+          },
+        "permalink" : "https://analisi.transparenciacatalunya.cat/d/caup-g3ka",
+        "link" : "https://analisi.transparenciacatalunya.cat/Sector-Públic/Convenis-acords-i-pactes-de-caràcter-funcionarial-/caup-g3ka",
+        "owner" :
+          {
+            "id" : "a4b5-gx6v",
+            "user_type" : "interactive",
+            "display_name" : "Dades Obertes Catalunya"
+          },
+        "creator" :
+          {
+            "id" : "a4b5-gx6v",
+            "user_type" : "interactive",
+            "display_name" : "Dades Obertes Catalunya"
+          }
+      }
+    ],
+  "resultSetSize" : 43,
+  "timings" : { "serviceMillis" : 29, "searchMillis" : [ 3, 9 ] },
+  "warnings" : []
+}

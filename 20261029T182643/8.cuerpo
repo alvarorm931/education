@@ -1,0 +1,1171 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="gl" xml:lang="gl">
+<head>
+
+        <link rel="Shortcut Icon" href="/diario-oficial-galicia/xunta.ico" /> 
+		<script src="/diario-oficial-galicia/contenidoEstatico/scripts/prototype/prototype.js" type="text/javascript"></script>
+<script src="/diario-oficial-galicia/contenidoEstatico/scripts/script.aculo.us/scriptaculous.js?load=builder,effects" type="text/javascript"></script><script src="/diario-oficial-galicia/contenidoEstatico/scripts/modalbox/modalbox.js" type="text/javascript"></script>
+<link rel="stylesheet" href="/diario-oficial-galicia/contenidoEstatico/scripts/modalbox/modalbox.css" type="text/css" media="screen"><script src="/diario-oficial-galicia/contenidoEstatico/scripts/jquery/jquery-3.6.0.min.js" type="text/javascript"></script>
+<script src="/diario-oficial-galicia/contenidoEstatico/scripts/jquery/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
+
+<script src="/diario-oficial-galicia/contenidoEstatico/scripts/spinner/jquery.androidSpinner-min.js" type='text/javascript' ></script>
+<script src="/diario-oficial-galicia/contenidoEstatico/js/spinner/spinner.js" type='text/javascript' ></script>
+
+<script src="/diario-oficial-galicia/contenidoEstatico/js/colorbox/jquery.colorbox.js" type='text/javascript' ></script>
+<link href="/diario-oficial-galicia/contenidoEstatico/estilos/colorbox/colorbox.css" rel="stylesheet" type="text/css" media="screen">
+
+
+	
+
+<script type="text/javascript" src="/diario-oficial-galicia/contenidoEstatico/scripts/select2-4.0.0/select2.full.js"></script>
+	<script src="/diario-oficial-galicia/contenidoEstatico/scripts/publico/rs_html5/ReadSpeaker.js?pids=embhl" type="text/javascript"></script>
+	<link rel="stylesheet" type="text/css" href="/diario-oficial-galicia/contenidoEstatico/scripts/select2-4.0.0/select2.min.css" />
+<script src="/diario-oficial-galicia/contenidoEstatico/js/busqueda.js" type="text/javascript"></script>
+
+		<script type="text/javascript">
+			jQuery(document).ready(function() {
+				jQuery('a').each(function() {
+					var href = this.href;
+					var pos = href.match("do$");
+	
+					if (pos) {
+						jQuery(this).attr('href', href + '?lang=' + document.documentElement.lang);
+					}
+				});
+				
+				// Si no tiene hijos o tiene hijos pero no es el titulo del menú, ocultamos esos div.
+				if ($('#divMenuLateral').children().length == 0 || $('#divMenuLateral').children()[0].tagName != "H2") {
+					$('#menuLateralOp').css('display', 'none');
+					$('.contenidoCol2').removeClass('bordeDerechoPanel');
+				}else{
+					$('.contenidoCol2').addClass('bordeDerechoPanel');
+	
+				}
+	
+			});
+			</script>
+	
+			
+<script type="text/javascript">
+		$(document).ready(function() {
+			if($("div[class*='date']").size()!=0){
+				
+				$('.dog-datetimepicker-busqueda').datetimepicker({
+					format : "DD/MM/YYYY",
+					maxDate : today,
+					locale : document.documentElement.lang,
+					daysOfWeekDisabled : [ 0, 6 ],
+					disabledTimeIntervals : false,
+					useCurrent : false,
+					keepInvalid : true,
+					ignoreReadonly : true
+
+				});
+				$('.dog-datetimepicker-anos-lat').datetimepicker({
+					format : "YYYY",
+					maxDate : today,
+					minDate : '1978',
+					locale : document.documentElement.lang,
+					daysOfWeekDisabled : [ 0, 6 ],
+					disabledTimeIntervals : false,
+					useCurrent : false,
+					keepInvalid : true,
+					viewMode : 'years',
+					ignoreReadonly : true
+				});
+
+				$('.dog-datetimepicker-anos-lat').datetimepicker().on('dp.change', function(e) {
+					e.preventDefault();
+					window.location.href = "construirMapaCalendario.do?compMenu=10103&year=" + $('#anoBusquedaLat').val();
+
+					return false;
+				});
+				
+				$('.dog-datetimepicker-anos-lat').datetimepicker().on('dp.change', function(e) {
+					e.preventDefault();
+					window.location.href = "construirMapaCalendario.do?compMenu=10103&year=" + $('#anoBusquedaLat').val();
+					return false;
+				});
+
+				$('.dog-datetimepicker-busqueda').on("dp.update", function(e) {
+					today = new Date(e.viewDate);
+					getDiasDog(urlCargarDiariosDelMes);
+				});
+
+				$('.dog-datetimepicker-busqueda').on("dp.change", function(e) {
+					e.preventDefault();
+				});
+			}
+		});
+			
+
+			var nowDate = new Date();
+			var today = new Date(nowDate.getFullYear(), nowDate.getMonth(), nowDate.getDate(), 0, 0, 0, 0);
+
+			// Url para cargar la lista de diarios del mes
+			urlCargarDiariosDelMes = "portalPublicoHome.do?method=getDiasDog"
+
+			// Devuelve los dias que hay diario publicado
+			function getDiasDog(urlPeticion) {
+				jQuery.ajax({
+					url : urlPeticion,
+					method: 'POST',
+					data : {
+						mes : today.getMonth() + 1,
+						ano : today.getFullYear(),
+						idioma : $('#idiomaSeleccionado').val()
+					},
+					success : function(result) {
+						jQuery.each(result, function(index, diaDog) {
+							jQuery('.dog-datetimepicker-busqueda  td.day[data-day="' + diaDog.fecha + '"]').each(function() {
+								$(this).addClass("active");
+								$(this).attr("url", diaDog.url);
+								$(this).attr("descripcion", diaDog.descripcion);
+								$(this).html("<a href='" + diaDog.url + "' title='" + diaDog.descripcion + "' target='_self'>" + $(this).html() + "</a>");
+							});
+
+							jQuery('.dog-datetimepicker-busqueda  td.day[data-day="' + diaDog.fecha + '"]').on('click', function(e) {
+								e.preventDefault();
+								if ($(this).attr("url") != undefined) {
+									window.location.href = $(this).attr("url");
+								}
+								return false;
+							});
+						});
+					},					
+			        cache: false,
+					async : true,
+					error: function (result){                                        		                         
+		                abrirVentanaModal(MENSAJES.general.errorInterno);
+		            }
+				});
+			}			
+        </script>
+	
+		<script src="/diario-oficial-galicia/contenidoEstatico/js/matchHeight/jquery.matchHeight-min.js"></script>
+		<script src="/diario-oficial-galicia/contenidoEstatico/js/moment.js/2.9.0/moment-with-locales.js"></script>
+		<link rel="stylesheet" href="/diario-oficial-galicia/contenidoEstatico/estilos/animate/animate.css" />
+		
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" type="text/css" href="/diario-oficial-galicia/contenidoEstatico/js/bootstrap-3.4.1/css/bootstrap.min.css" >
+		<link rel="stylesheet" type="text/css" href="/diario-oficial-galicia/contenidoEstatico/js/bootstrap-3.4.1/css/bootstrap-theme.min.css" >
+		<script src="/diario-oficial-galicia/contenidoEstatico/js/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+
+		<link rel="stylesheet" type="text/css" href="/diario-oficial-galicia/contenidoEstatico/js/bootstrap3-dialog/css/bootstrap-dialog.min.css"/>
+		<script src="/diario-oficial-galicia/contenidoEstatico/js/bootstrap-notify-3.1.3/bootstrap-notify.min.js" type="text/javascript"></script>
+		<script src="/diario-oficial-galicia/contenidoEstatico/js/bootstrap3-dialog/js/bootstrap-dialog.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="/diario-oficial-galicia/contenidoEstatico/js/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css">
+		<script src="/diario-oficial-galicia/contenidoEstatico/js/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+		<script src="/diario-oficial-galicia/contenidoEstatico/js/bootstrap-validator-1.3.6/validator.js" type="text/javascript"></script>
+		
+
+		<link rel="stylesheet" type="text/css" href="/diario-oficial-galicia/contenidoEstatico/estilos/publico/portalPublico.css" />
+		<link rel="stylesheet" type="text/css" href="/diario-oficial-galicia/contenidoEstatico/estilos/fuentes/fuentes.css">
+        <script src="/diario-oficial-galicia/contenidoEstatico/js/util.js" type="text/javascript"></script>
+        <script src="/diario-oficial-galicia/contenidoEstatico/scripts/iniNew.js" type="text/javascript"></script>
+        
+		<meta http-equiv="Content-Type" content="text/html; charset=uft-8"/>
+		<meta charset="UTF-8">
+		<meta http-equiv="Content-Script-Type" content="text/javascript"/>
+		<meta name="apple-itunes-app" content="app-id=760493884">
+		<meta name="google-play-app" content="app-id=es.xunta.dogmob"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">        
+        <meta http-equiv="X-UA-Compatible" content="IE=9">
+        <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+        
+        
+        <script type="text/javascript">
+        $root = "/diario-oficial-galicia";
+  		
+		var verSpinner = true;
+		$(window).load(function() {
+			if ($(document).height() < $(window).height()+5){
+				jQuery(".container-fluid ").css("height", "100%");
+				//jQuery("#pie-pagina").css("margin-top", "-135px");
+			}else{
+				jQuery(".container-fluid ").css("height", "");
+				jQuery("#pie-pagina").css("margin-top", "0px");
+			}
+			
+			jQuery("#zonaContenido").css("overflow", "hidden");
+		});
+  		
+
+
+	var MENSAJES = {
+		/*********GENERAL*********/
+		'general': {
+			errorInterno : 'Produciuse un erro interno, por favor intéteo de novo máis tarde.'
+		}
+		,
+		/*********LOGIN***********/
+		'login' : {
+			'loginCorrecto' : 'O acceso realizouse de forma correcta.',
+			'loginIncorrecto' : 'Usuario ou contrasinal incorrecto.',
+			'loginCuentaBloqueada' : 'A súa conta foi bloqueada por superar o número de intentos de acceso permitidos. Pode desbloquear a súa conta reestablecendo o contrasinal da súa conta a través da ligazón "Esqueceu o seu contrasinal?" ',
+			'loginException' : 'Produciuse un erro ao acceder á súa conta. Volva tentalo e se o problema continua contacte co Administrador '
+		}
+		,
+		/*********FAVORITOS***********/
+		'favoritos' : {
+			'lineaDetalle1' : ' Diario nº  ',
+			'lineaDetalle2' : ' da data  '
+		}
+		,
+		'ciudadano' : {
+			'borradoTitulo' : ' Confirmación borrado usuario ',
+			'borradoMensaje' : ' Está seguro de que quere borrar ou seu usuario? Todos os seus datos, así como favoritos, procuras e subscricións gardadas serán eliminadas e non poderán recuperarse. '
+		},
+		'botones' : {
+			'ok' : ' Aceptar ',
+			'cancel' : ' Cancelar '
+		}
+	};
+	
+	
+	BootstrapDialog.DEFAULT_TEXTS['OK'] = MENSAJES.botones.ok;
+	BootstrapDialog.DEFAULT_TEXTS['CANCEL'] = MENSAJES.botones.cancel;
+	
+		</script>
+		
+        
+        
+            <meta name="description" content="Diario Oficial de Galicia" lang="gl-ES" />
+            <meta name="keywords" content="Diario Oficial de Galicia" />
+            
+        <title>      
+        Canles de subscrición RSS -
+            	Diario Oficial de Galicia      
+        </title>		
+		
+		<!--<script type="text/javascript">
+		try {
+			  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+			  ga('create', 'UA-43780671-1', 'auto');
+			  ga('set', 'anonymizeIp', true);
+			  ga('send', 'pageview');
+		} catch (err) {}
+		</script>-->
+
+    <!-- Google Tag Manager -->
+		<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+					new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+				j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+				'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+		})(window,document,'script','dataLayer','GTM-TL4WMRH');</script>
+		<!-- End Google Tag Manager -->
+	
+		
+		<script type="text/javascript">
+		try {
+			  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www."); 
+			  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+		} catch (err) {}
+		</script>
+		<script type="text/javascript">
+		try {
+			  var pageTracker = _gat._getTracker("GTM-TL4WMRH");
+			  _gat._anonymizeIp();
+			  pageTracker._initData();
+			  pageTracker._trackPageview('/buscarAnunciosPublico.do?method=listado?q=searchterm');
+		} catch (err) {}
+		</script>
+		
+		<script type="text/javascript">
+
+		function maxlengthTextArea(campo,maximo){			
+		    var contenido=campo.value;
+		    if(contenido.length>=maximo){
+		        campo.value=contenido.substring(0,maximo-1);
+		    }          
+		}
+		function setMaxLength(campo, maximo){
+			var contenido=campo.value;
+			if (contenido.length>=maximo) {
+				campo.value=contenido.substring(0,maximo-1);
+			}
+			$(campo).attr("maxlength", maximo)
+		};
+
+			
+		
+						
+		</script>
+</head>
+<body>
+	<!-- Google Tag Manager (noscript) -->
+	<noscript><iframe title="Google TagManager" src="https://www.googletagmanager.com/ns.html?id=GTM-TL4WMRH"
+					  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+	<!-- End Google Tag Manager (noscript) -->
+	<input type="hidden" id="next_year"  value="Próximo ano"/>
+	<input type="hidden" id="previous_year"  value="Ano anterior"/>
+	<input type="hidden" id="select_year"  value="Ano escollido"/>
+	
+	<input type="hidden" id="next_decade"  value="Próxima década"/>
+	<input type="hidden" id="previous_decade"  value="Década anterior"/>
+	<input type="hidden" id="select_decade"  value="Década escollida"/>
+	
+	<input type="hidden" id="next_month"  value="Próximo mes"/>
+	<input type="hidden" id="previous_month"  value="Mes anterior"/>
+	<input type="hidden" id="select_month"  value="Mes escollido"/>
+	
+	<input type="hidden" id="next_century"  value="Próximo centenario"/>
+	<input type="hidden" id="select_century"  value="Centenario escollido"/>
+	<input type="hidden" id="previous_century"  value="Centenario anterior"/>
+	
+			
+
+<div id="spinner" style="display: none;">
+    <div class="ajax-loader">
+    <img id="logospinner" alt="DOG" class="img-responsive cabecera-logo-dog" src="/diario-oficial-galicia/contenidoEstatico/imagenes/DOG_logo.png"></div>     
+</div>
+	<div class="container-fluid">
+
+<h1 style="font-size: 0px; color: white; margin-top:0px; margin-bottom:0px" >Axuda, Mapa, Accesibilidade e idiomas DOG</h1>
+
+<header id="header">
+
+	<div class="hidden-md">
+		<div class="row">
+			<div class="col-md-1"></div>
+		</div>
+	</div>
+	<div class="row visible-md visible-lg">
+		<div class="col-md-3">
+			
+		</div>
+		<div class="col-md-6 pull-left">
+			<div class="col-md-4">
+				<a href="/diario-oficial-galicia/preguntas.do" title="Acceso a Preguntas máis frecuentes">Axuda</a>
+			</div>
+			<div class="col-md-4">
+				<a href="/diario-oficial-galicia/mapa.do" title="Acceso ao Mapa do portal">Mapa do portal</a>
+			</div>
+			<div class="col-md-4">
+				<a href="/diario-oficial-galicia/accesibilidade.do" title="Acceso a Accesibilidade">
+				Accesibilidade</a>
+			</div>
+		</div>
+		<div class="col-md-3">
+			<div class="col-md-12" style="padding: 0px;">
+				<form name="BarraIdiomaFormBean" id="idioma" method="post" action="/diario-oficial-galicia/menu/barra_idiomaNew.do;jsessionid=Le6I6kTlLuGmSjuR8TqG7Nmk9Hh0s5IDYafETTRcim97pzcsLEJ0!-1549166176!-282063122" onsubmit="">
+<div id="selectorIdioma">
+
+		<input type="hidden" name="urlReturn" value="/diario-oficial-galicia/mostrarContenido.do?ruta=rss.htm&amp;titulo=dog.menu.rss&amp;esEstatico=true&amp;compMenu=10500&amp;key_confirmacion=&amp;lang=gl" /><input type="hidden" name="idiomaSeleccionado" value="gl" id="idiomaSeleccionado" />			
+				<span class="idiomaSeleccionado" id="Idgl">			
+					<a lang="gl" href="#" title='gl'> Galego </a>	
+				</span>
+			
+								
+			<span>|</span>						
+				 
+							
+				<span id="Ides">
+					<a lang="es" href="#" title='es'> Castellano </a>
+				</span>
+			
+								
+			<span>|</span>						
+				 
+							
+				<span id="Idpt">
+					<a lang="pt" href="#" title='pt'> Português </a>
+				</span>
+			
+								
+			<span>|</span>						
+				 
+				
+	</div>
+	<script type="text/javascript">
+		jQuery("#selectorIdioma a").click(function() {						
+			document.getElementById("idiomaSeleccionado").value=jQuery(this).attr('title');
+			document.getElementById("idioma").submit()				
+		});
+		jQuery("#selectorIdioma span").css({"display":"block","float":"left"});
+		jQuery("#selectorIdioma span:last").css("display","none");
+	</script>
+	
+</form>
+			</div>
+			
+		</div>
+	</div>
+	
+	<div class="row visible-md visible-lg">
+		<div class="col-md-9">
+			<a href="/diario-oficial-galicia" title="Acceso á páxina de Inicio"> <img alt="Logotipo Diario Oficial de Galicia"
+				class="img-responsive" src="/diario-oficial-galicia/contenidoEstatico/imagenes/DOG.png">
+			</a>
+		</div>
+
+		<div class="col-md-3">
+			
+			<a href="https://www.xunta.gal" target="_blank" title="Ir á web da Xunta de Galicia">
+			<img src="/diario-oficial-galicia/contenidoEstatico/imagenes/DiarioOficialdeGalicia.png" alt="Diario Oficial de Galicia" id="DiarioOficial" style="height:77px;width:228px;margin-top:60px" /></a>
+			
+		</div>
+	</div>
+</header>
+<nav class="navbar navbar-default dog-navbar-default">
+	<div>
+		<div class="navbar-header dog-navbar-header">
+			<a class="navbar-brand menu-header-titulo visible-xs visible-sm" href="/diario-oficial-galicia"
+				title="DOG">
+				<img class="img-responsive" alt=""
+				src="/diario-oficial-galicia/contenidoEstatico/imagenes/publico/logo_DOG_movil.png"></a> 
+			<button type="button" class="navbar-toggle collapsed btnNoBlack" title="Menú" data-toggle="collapse"
+				data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				<span class="sr-only"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+			</button></div>
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		
+			<ul class="nav navbar-nav opciones-menu">
+			<li  class="dropdown visible-xs visible-sm menu-header-bloque-texto"><a id="selector-idioma" href="#" class="dropdown-toggle menu-header-texto" data-toggle="dropdown" role="button" aria-haspopup="true"
+					aria-expanded="false" title="Idiomas">  
+				</a>
+					<div class="dropdown-menu nav navbar-nav">
+						<form name="BarraIdiomaFormBean" id="idiomaMenu" method="post" action="/diario-oficial-galicia/menu/barra_idiomaNewMenu.do;jsessionid=Le6I6kTlLuGmSjuR8TqG7Nmk9Hh0s5IDYafETTRcim97pzcsLEJ0!-1549166176!-282063122" onsubmit="">
+<div id="selectorIdiomaMenu">
+					
+				<div class="menu-header-bloque-texto">			
+					<a class="menu-header-texto activo idiomaMenu" href="#" title='gl'> Galego </a>	
+				</div>
+			
+				<div class="menu-header-bloque-texto">							
+					<a class="menu-header-texto idiomaMenu"  href="#" title='es'> Castellano </a>
+				</div>				
+			
+				<div class="menu-header-bloque-texto">							
+					<a class="menu-header-texto idiomaMenu"  href="#" title='pt'> Português </a>
+				</div>				
+					
+	</div>
+	
+	
+</form>
+
+<script type="text/javascript">
+		jQuery("#selectorIdiomaMenu a").click(function() {			
+			document.getElementById("idiomaSeleccionado").value=jQuery(this).attr('title');
+			document.getElementById("idioma").submit()			
+		});
+		
+	</script>
+
+					</div></li>
+				
+	<li id="menuPrincipalNivel1" class="col-md-10 opciones-menu">
+		<ul id="menuPrincipal" class="nav navbar-nav opciones-menu">
+			<li class="nav navbar-nav col-md-5 menu-header-bloque-texto">
+	<a class="menu-header-texto" href='/diario-oficial-galicia/portalPublicoBusqueda.do'>
+
+		
+			<span class="enlace-pagina" >Consulta e busca no DOG</span>	
+		
+	</a>
+
+</li>
+
+<li class="nav navbar-nav col-md-5 menu-header-bloque-texto activo">
+	<a class="menu-header-texto activo" href='/diario-oficial-galicia/servizos.do'>
+
+		
+			<span class="enlace-pagina-actual">Servizos e instrucións</span>	
+		
+	</a>
+
+</li>
+
+
+		</ul>
+	</li>
+
+				<li class="col-md-1 menu-usuario hidden-xs hidden-sm">
+					<ul class="nav navbar-nav opciones-menu">
+						<li class="nav navbar-nav col-md-12">
+							<div class="loggin-container">
+									
+										<div>
+										<a class="logginUserIcon loggIn" target="_blank" href="/diario-oficial-galicia/loginCiudadano/gestionarCiudadano.do" 
+										title="Acceso ao Portal do/a Cidadán/á">
+										<div class="opcion-usuario opcion-acceso">
+											<img alt="" class="imgLoggin img-responsive img-ciudadano" src="/diario-oficial-galicia/contenidoEstatico/imagenes/publico/perfil_usuario_gris.png">
+										</div>
+										<span class="loggingBuntton loggin-class opcion-usuario opcion-conexion">Acceso</span>
+										</a>
+										</div>
+									
+							</div>
+						</li>
+					</ul>
+				</li>
+				
+				
+
+				
+				<li class="dropdown visible-xs visible-sm menu-header-bloque-texto liSeparator"><a href="#" class="dropdown-toggle menu-header-texto" data-toggle="dropdown" role="button" aria-haspopup="true"
+					aria-expanded="false" title="Outras opcións">Outras opcións<span class="caret"></span>
+				</a>
+					<ul class="dropdown-menu nav navbar-nav">
+						<li class="menu-header-bloque-texto"><a class="menu-header-texto" href="/diario-oficial-galicia/mapa.do"
+							title="Acceso ao Mapa do portal">Mapa do portal</a></li>
+						<li class="menu-header-bloque-texto"><a class="menu-header-texto" href="/diario-oficial-galicia/preguntas.do"
+							title="Acceso a Preguntas máis frecuentes">Axuda</a></li>
+						<li class="menu-header-bloque-texto"><a class="menu-header-texto" href="/diario-oficial-galicia/accesibilidade.do"
+							title="Acceso a Accesibilidade">Accesibilidade</a></li>
+					</ul></li>
+
+					<li class="col-md-1 menu-usuario visible-xs visible-sm">
+					<ul class="nav navbar-nav opciones-menu">
+
+					
+							<li class="nav navbar-nav col-md-12">
+								<div class="menu-header-texto opcion-usuario opcion-acceso"></div> <a class="menu-header-texto dropdown-usuario" target="_blank" href="/diario-oficial-galicia/loginCiudadano/gestionarCiudadano.do">
+									Portal do Cidadán/á - Acceso
+							</a>
+							</li>
+					
+					</ul>
+					</li>
+					
+				<li class="visible-xs visible-sm liSeparator">
+					<a href="https://www.xunta.gal" title="Xunta de Galicia">
+					<img alt="Xunta de Galicia" class="img-responsive cabecera-logo-dog" src="/diario-oficial-galicia/contenidoEstatico/imagenes/logoXuntaPe.png" style="margin-bottom: 10px"></a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>
+<div id="zonaNavegacion" class="hidden-xs hidden-sm">
+	
+
+<div id="migas" class="fila">  
+		
+		<a class="primeiro" title="Acceso á páxina de Inicio" href="/diario-oficial-galicia/Welcome.do" >Inicio</a>	
+				
+	
+                <span class="migaMedio"> &gt; </span>  
+				<span class="migaMedio">
+				Servizos e instrucións						
+				</span>	
+	
+			<span class="migaMedio"> &gt; </span>	
+	
+			<span>
+				Canles de subscrición RSS						
+			</span>
+
+	
+</div>
+</div>
+
+
+
+
+
+<script type="text/javascript">
+<!--
+
+
+//-->
+
+ jQuery(document).ready(function () {
+	 	var textoidioma = $('#selectorIdiomaMenu .activo').html();
+	 	$('#selector-idioma').html(textoidioma + '<span class="caret"></span>');
+	 });
+</script>
+
+
+
+		<div id="zonaContenido" class="col-md-12" style="box-sizing:content-box">
+			
+				<div id="coll-1" class="col-md-3 box-lateral-busqueda">
+					<div id="menuLateralOp" class="menuLateral box-color">
+						<div class="menuLateralSup">
+							<div id="divMenuLateral" class="menuLateralInfv2">
+								  		
+	<h2 style="display:none">Servizos e instrucións </h2>				
+
+			<ul>					
+				
+<li 
+
+
+>	
+	
+	
+	<a 
+		
+			href='/diario-oficial-galicia/verificar.do'
+		
+	>
+
+		
+			<span >Verificación de documentos</span>	
+		
+
+		
+
+
+	</a>
+		
+
+</li>
+
+
+<li 
+
+
+>	
+	
+	
+	<a 
+		
+			href='/diario-oficial-galicia/servizosSinaturaElectronica.do'
+		
+	>
+
+		
+			<span >Sinatura electrónica</span>	
+		
+
+		
+
+
+	</a>
+		
+
+</li>
+
+
+<li 
+
+
+>	
+	
+	
+	<a 
+		
+			href='/diario-oficial-galicia/instruccionsPago.do'
+		
+	>
+
+		
+			<span >Instrucións para o pagamento de anuncios</span>	
+		
+
+		
+
+
+	</a>
+		
+
+</li>
+
+
+<li 
+
+
+>	
+	
+	
+	<a 
+		
+			href='/diario-oficial-galicia/taxas.do'
+		
+	>
+
+		
+			<span >Cálculo automático da taxa</span>	
+		
+
+		
+
+
+	</a>
+		
+
+</li>
+
+
+<li 
+
+class="activo"
+>	
+	
+	
+	<a 
+		
+			class="activo"
+		
+			href='/diario-oficial-galicia/suscricionsRSS.do'
+		
+	>
+
+		
+			<span class="enlace-pagina-actual">Canles de subscrición RSS</span>	
+		
+
+		
+
+
+	</a>
+		
+
+</li>
+
+
+<li 
+
+
+>	
+	
+	
+	<a 
+		
+			href='/diario-oficial-galicia/mostrarContenido.do?ruta=EnviarADOG.htm&amp;titulo=dog.menu.envioDog&amp;esEstatico=true&amp;compMenu=10205'
+		
+	>
+
+		
+			<span >Envío de disposicións ou anuncios ao DOG</span>	
+		
+
+		
+
+
+	</a>
+		
+
+</li>
+
+
+<li 
+
+
+>	
+	
+	
+	<a 
+		
+			href='http://wikidog.xunta.es/'
+		
+			target="_blank"
+		
+	>
+
+		
+			<span >Manual de estilo</span>	
+		
+
+		
+
+
+	</a>
+		
+
+</li>
+
+
+<li 
+
+
+>	
+	
+	
+	<a 
+		
+			href='/diario-oficial-galicia/contactoDog.do'
+		
+	>
+
+		
+			<span >Contacto DOG</span>	
+		
+
+		
+
+
+	</a>
+		
+
+</li>
+
+	
+			</ul>
+		
+<script type="text/javascript">
+	jQuery('#coll-1 li:last').addClass('finalSenBorde');	
+</script>    
+							</div>
+						</div>
+					</div>
+					
+				</div>
+				<div class="col-md-9 contenidoCol2 bordeDerechoPanel">
+				<form id="contenidoEstaticoBean" method="post" action="/diario-oficial-galicia/mostrarContenido.do;jsessionid=Le6I6kTlLuGmSjuR8TqG7Nmk9Hh0s5IDYafETTRcim97pzcsLEJ0!-1549166176!-282063122" class="niceform" enctype="UTF-8" onsubmit="">
+				<div>
+		<input type="hidden" name="method" id="method" value='' />
+		<input type="hidden" name="validationForward" id="validationForward" value='' />
+		<input type="hidden" name="valida" id="valida" value='false' />			
+	
+
+     <header class="cabeceiraContido">
+         
+                     <h1><span id="titulo">Canles de subscrición RSS</span></h1>
+                 
+                 <div class="lector">
+                     <div id="readspeaker_button1" class="rs_skip  rsbtn rs_preserve">
+                         <a class="rsbtn_play" target="_blank"  href="http://app.eu.readspeaker.com/cgi-bin/rsent?customerid=5356&amp;voice=Carmela&amp;lang=gl&amp;readid=audioid&amp;url=https%3A%2F%2Fwww.xunta.gal%3A443%2Fdiario-oficial-galicia%2FmostrarContenido.do%3Fruta%3Drss.htm%26titulo%3Ddog.menu.rss%26esEstatico%3Dtrue%26compMenu%3D10500%26key_confirmacion%3D%26lang%3Dgl%26lang%3Dgl&amp;audiofilename=audioxunta"  accesskey="L">
+                             <span class="rsbtn_left rsimg rspart"><span class="rsbtn_text"><span>Escoitar</span></span></span><div class = "glyphicon glyphicon-volume-up" aria-hidden="true"></div>
+                         </a>
+                     </div>
+                     <div id='xp1' class="rs_playerGr"></div>
+                 </div>
+             
+     </header>
+
+<div class="corpoContido fila">
+		
+	<div id="audioid">
+		
+<section class="contidoEstatico">
+	<p>
+		Este sistema RSS perm&iacute;telle subscribirse &aacute;s diferentes secci&oacute;ns, rangos e/ou tem&aacute;ticas do Diario Oficial de Galicia. 
+		Para facelo s&oacute; ten que dispo&ntilde;er dun lector RSS e elixir, no seguinte listado, a fonte ou fontes das que desexa recibir informaci&oacute;n:	
+	</p>
+	
+	
+	<div>   
+		<div class="rssSecciones">
+			<h2>Subscrici&oacute;ns por secci&oacute;ns do Diario</h2>
+			<ul class="fila lista_RSS">
+				<li><a href="rss/Sumario_gl.rss" title="Sumario Completo">Sumario completo</a></li>
+				
+				<li><a href="rss/Seccion1_gl.rss" title="I. Disposici&oacute;ns xerais">I. Disposici&oacute;ns xerais</a></li>
+				
+				<li>
+					<a href="rss/Seccion2_gl.rss" title="II. Autoridades e persoal">II. Autoridades e persoal</a>
+					<ul class="fila lista_RSS">
+						<li><a href="rss/Seccion3_gl.rss" title="a) Cesamentos">a) Cesamentos</a></li>
+						<li><a href="rss/Seccion4_gl.rss" title="b) Nomeamentos">b) Nomeamentos</a></li>
+						<li><a href="rss/Seccion5_gl.rss" title="c) Substituci&oacute;ns">c) Substituci&oacute;ns</a></li>
+					</ul>
+				</li>
+				
+				<li><a href="rss/Seccion6_gl.rss" title="III. Outras disposici&oacute;ns"> III. Outras disposici&oacute;ns</a></li>
+				
+				<li><a href="rss/Seccion7_gl.rss" title="IV. Oposici&oacute;ns e concursos">IV. Oposici&oacute;ns e concursos</a></li>
+				
+				<li><a href="rss/Seccion8_gl.rss" title="V. Administraci&oacute;n de xustiza">V. Administraci&oacute;n de xustiza</a></li>
+				
+				<li>
+					<a href="rss/Seccion9_gl.rss" title="VI. Anuncios">VI. Anuncios</a>
+					<ul class="fila lista_RSS">
+						<li><a href="rss/Seccion10_gl.rss" title="a) Administraci&oacute;n auton&oacute;mica">a) Administraci&oacute;n auton&oacute;mica</a></li>
+						<li><a href="rss/Seccion11_gl.rss" title="b) Administraci&oacute;n local">b) Administraci&oacute;n local</a></li>
+						<li><a href="rss/Seccion12_gl.rss" title="c) Outros anuncios">c) Outros anuncios</a></li>
+					</ul>
+				</li>
+	
+			</ul>
+		</div>
+		
+		
+		<div class="rssRangos">
+			<h2>Subscrici&oacute;ns por rangos</h2>
+			<ul class="fila lista_RSS">	
+				<li><a href="rss/Rango21_gl.rss" title="Real decreto">Real decreto</a></li>
+				
+				<li><a href="rss/Rango12_gl.rss" title="Correcci&oacute;n de lei">Correcci&oacute;n de lei</a></li>
+				<li><a href="rss/Rango7_gl.rss"  title="Lei">Lei</a></li>
+							
+				<li><a href="rss/Rango13_gl.rss" title="Correcci&oacute;n de decreto"> Correcci&oacute;n de decreto</a></li>
+				<li><a href="rss/Rango5_gl.rss"  title="Decreto">Decreto</a></li>
+				
+				<li><a href="rss/Rango14_gl.rss" title="Correcci&oacute;n de orde"> Correcci&oacute;n de orde</a></li>
+				<li><a href="rss/Rango8_gl.rss"  title="Orde">Orde</a></li>
+				
+				<li><a href="rss/Rango15_gl.rss" title="Correcci&oacute;n de acordo"> Correcci&oacute;n de acordo</a></li>
+				<li><a href="rss/Rango1_gl.rss"  title="Acordo">Acordo</a></li>
+				
+				<li><a href="rss/Rango16_gl.rss" title="Correcci&oacute;n de resoluci&oacute;n"> Correcci&oacute;n de resoluci&oacute;n</a></li>
+				<li><a href="rss/Rango9_gl.rss"  title="Resoluci&oacute;n">Resoluci&oacute;n</a></li>
+				
+				<li><a href="rss/Rango17_gl.rss" title="Correcci&oacute;n de c&eacute;dula"> Correcci&oacute;n de c&eacute;dula</a></li>
+				<li><a href="rss/Rango3_gl.rss"  title="C&eacute;dula">C&eacute;dula</a></li>
+				
+				<li><a href="rss/Rango18_gl.rss" title="Correcci&oacute;n de edicto"> Correcci&oacute;n de edicto</a></li>
+				<li><a href="rss/Rango6_gl.rss"  title="Edicto">Edicto</a></li>
+										
+				<li><a href="rss/Rango19_gl.rss" title="Correcci&oacute;n de anuncio"> Correcci&oacute;n de anuncio</a></li>
+				<li><a href="rss/Rango2_gl.rss"  title="Anuncio">Anuncio</a></li>
+				
+				<li><a href="rss/Rango20_gl.rss" title="Correcci&oacute;n de instruci&oacute;n"> Correcci&oacute;n de instruci&oacute;n</a></li>
+				<li><a href="rss/Rango10_gl.rss" title="Instruci&oacute;n">Instruci&oacute;n</a></li>
+			</ul>
+		</div>
+	</div>
+
+
+	
+
+	
+	<div class="accionsContido peContido fila">		
+	</div>
+		
+	<div style="border-bottom: 1px dotted #CFCFCF;"></div>
+	
+	<div class="accionsContido peContido fila">
+		<a title="subir" class="subir">Subir</a>
+	</div>
+	
+	<div class="rssTax2">		
+		<h2>Subscrici&oacute;ns por temas</h2>
+		<ul class="fila fila-2 lista_RSS liRSS list-group paddingList">		
+			<li class="list-group-item bordeless"><a href='rss/Taxonomia22001_gl.rss' title='Administraci&oacute;n p&uacute;blica'>Administraci&oacute;n p&uacute;blica</a></li>
+			<li class="list-group-item bordeless"><a href='rss/Taxonomia22002_gl.rss' title='Ciencia e tecnolox&iacute;a'>Ciencia e tecnolox&iacute;a</a></li>
+			<li class="list-group-item bordeless"><a href='rss/Taxonomia22003_gl.rss' title='Cultura, ocio e deporte'>Cultura, ocio e deporte</a></li>
+			<li class="list-group-item bordeless"><a href='rss/Taxonomia22004_gl.rss' title='Econom&iacute;a, empresa e emprego'>Econom&iacute;a, empresa e emprego</a></li>
+			<li class="list-group-item bordeless"><a href='rss/Taxonomia22005_gl.rss' title='Ensino e formaci&oacute;n'>Ensino e formaci&oacute;n</a></li>
+			<li class="list-group-item bordeless"><a href='rss/Taxonomia22006_gl.rss' title='Medio ambiente'>Medio ambiente</a></li>
+			<li class="list-group-item bordeless"><a href='rss/Taxonomia22007_gl.rss' title='Sa&uacute;de, asistencia sanitaria e servizos sociais'>Sa&uacute;de, asistencia sanitaria e servizos sociais</a></li>
+			<li class="list-group-item bordeless"><a href='rss/Taxonomia22008_gl.rss' title='Territorio, vivenda e transporte'>Territorio, vivenda e transporte</a></li>			
+		</ul>
+		
+	</div>
+	
+	<div class="accionsContido peContido fila">
+		<a title="subir" class="subir">Subir</a>
+	</div>
+	
+	<div class="rssTax3">
+		<h2>Subscrici&oacute;ns por colectivos</h2>
+		<ul class="fila fila-2 lista_RSS liRSS list-group paddingList">		
+			<li class="list-group-item bordeless"><a href='rss/Taxonomia21001_gl.rss' title='Agricultores/as'>Agricultores/as</a></li>
+			<li class="list-group-item bordeless"><a href='rss/Taxonomia21002_gl.rss' title='Aut&oacute;nomos'>Aut&oacute;nomos</a></li>
+			<li class="list-group-item bordeless"><a href='rss/Taxonomia21003_gl.rss' title='Asociaci&oacute;ns e ONG'>Asociaci&oacute;ns e ONG</a></li>
+			<li class="list-group-item bordeless"><a href='rss/Taxonomia21004_gl.rss' title='Centros de ensino'>Centros de ensino</a></li>
+			<li class="list-group-item bordeless"><a href='rss/Taxonomia21005_gl.rss' title='Cidad&aacute;ns'>Cidad&aacute;ns</a></li>
+			<li class="list-group-item bordeless"><a href='rss/Taxonomia21006_gl.rss' title='Desempregados/as'>Desempregados/as</a></li>
+			<li class="list-group-item bordeless"><a href='rss/Taxonomia21007_gl.rss' title='Entidades locais'>Entidades locais</a></li>
+			<li class="list-group-item bordeless"><a href='rss/Taxonomia21008_gl.rss' title='Persoas con discapacidade'>Persoas con discapacidade</a></li>
+			<li class="list-group-item bordeless"><a href='rss/Taxonomia21009_gl.rss' title='Emigrantes'>Emigrantes</a></li>
+			<li class="list-group-item bordeless"><a href='rss/Taxonomia21010_gl.rss' title='Emprendedores/as'>Emprendedores/as</a></li>
+			<li class="list-group-item bordeless"><a href='rss/Taxonomia21011_gl.rss' title='Empresas'>Empresas</a></li>
+			<li class="list-group-item bordeless"><a href='rss/Taxonomia21012_gl.rss' title='Estudantes'>Estudantes</a></li>
+			<li class="list-group-item bordeless"><a href='rss/Taxonomia21013_gl.rss' title='Gandeiros/as'>Gandeiros/as</a></li>
+			<li class="list-group-item bordeless"><a href='rss/Taxonomia21014_gl.rss' title='Inmigrantes'>Inmigrantes</a></li>
+			<li class="list-group-item bordeless"><a href='rss/Taxonomia21015_gl.rss' title='Investigadores/as'>Investigadores/as</a></li>
+			<li class="list-group-item bordeless"><a href='rss/Taxonomia21016_gl.rss' title='Maiores'>Maiores</a></li>
+			<li class="list-group-item bordeless"><a href='rss/Taxonomia21017_gl.rss' title='Mozas e mozos'>Mozas e mozos</a></li>
+			<li class="list-group-item bordeless"><a href='rss/Taxonomia21018_gl.rss' title='Mulleres'>Mulleres</a></li>
+			<li class="list-group-item bordeless"><a href='rss/Taxonomia21019_gl.rss' title='Nenos e nenas'>Nenos e nenas</a></li>
+			<li class="list-group-item bordeless"><a href='rss/Taxonomia21020_gl.rss' title='Outras administraci&oacute;ns'>Outras administraci&oacute;ns</a></li>
+			<li class="list-group-item bordeless"><a href='rss/Taxonomia21021_gl.rss' title='Pais e nais'>Pais e nais</a></li>
+			<li class="list-group-item bordeless"><a href='rss/Taxonomia21022_gl.rss' title='Profesionais do mar'>Profesionais do mar</a></li>
+			<li class="list-group-item bordeless"><a href='rss/Taxonomia21023_gl.rss' title='Traballadores/as'>Traballadores/as</a></li>			
+		</ul>		
+	</div>
+
+</section>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+
+	
+
+</div>
+
+ <div class="accionsContido peContido fila">
+	<a class="subir" title="subir">Subir</a>
+ </div>
+
+					<script type="text/javascript">var myForm=document.getElementById('formulario');</script>
+				</div>
+				</form>
+				</div>
+			
+		</div>
+
+		  <div class="clear"></div>
+	
+		
+<div id="pie-pagina">
+
+<footer class=" col-md-12 ">
+	<div class="row hidden-xs hidden-sm">
+		<div class="col-md-2 div-img-pie" >
+			<div class="enlaceImgPie">
+				<a href="https://www.xunta.gal" target="_blank"  title="Ir á web da Xunta de Galicia">
+					<img class="img-responsive-pie2" src="/diario-oficial-galicia/contenidoEstatico/imagenes/logoXuntaPe.png" alt="Xunta de Galicia"/>
+				</a>
+			</div>
+		</div>
+		<div class="col-md-7">
+			<div id="footer-enlaces">
+				<div>
+					<p>Xunta de Galicia. Información mantida e publicada na internet pola Xunta de Galicia</p>
+				</div>
+				<div>
+		           	<a class="footer-enlace" href="https://www.xunta.gal/atencion-a-cidadania" title="Acceso a Atención á cidadanía">Atención á cidadanía</a>
+		           	| 	
+					<a class="footer-enlace" href="/diario-oficial-galicia/accesibilidade.do" title="Acceso a Accesibilidade">Accesibilidade</a>
+		           	| 	
+		           	<a class="footer-enlace" href="https://www.xunta.gal/aviso-legal-do-portal-da-xunta"  target="_blank" title="Acceso ao Aviso legal" >Aviso legal</a> 
+		           	| 	
+					<a class="footer-enlace" href="/diario-oficial-galicia/mapa.do" title="Acceso ao Mapa do portal">Mapa do portal</a>
+		           	|
+		           	<a class ="footer-enlace" href="/diario-oficial-galicia/suscricionsRSS.do" title="Acceso a RSS">RSS</a>                                 
+				</div>
+			
+			</div>
+		</div>
+		
+		
+		<div class=" col-md-2 div-img-pie">
+			<div style="width: auto; float: right;">
+				<div class="enlaceImgPie">
+				<img id="Xacobeo" class="img-responsive" src="/diario-oficial-galicia/contenidoEstatico/imagenes/logo_xacobeo.png" />								 
+				</div>
+			</div>
+		</div>
+				
+		<div class="col-md-1 div-img-pie">
+			<div style="width: auto; float: right;">
+				<div class="enlaceImgPie">
+				<!-- <a href="https://www.ccn-cert.cni.es/amparo/API/public/certificaciones/3797/download/2615" title="ENS" target="_blank"> -->				
+				<img id="ENS" class="img-responsive" src="/diario-oficial-galicia/contenidoEstatico/imagenes/distintivo_ens_certificacion_MEDIA_RD311-2022.png" alt="ENS" />
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="row hidden-md hidden-lg">
+		<div class = 'col-xs-12 col-sm-12'>
+			<div class="col-xs-6 col-sm-6 div-img-pie" style="padding-top:10px">
+					<a href="https://www.xunta.gal" title="Ir á web da Xunta de Galicia" target="_blank"><img class="img-responsive-pie2" src="/diario-oficial-galicia/contenidoEstatico/imagenes/logoXuntaPe.png" alt="Xunta de Galicia"/></a>
+			</div>
+			<!-- <div class="col-sm-6 col-xs-6 div-img-pie"  style="padding-top:10px">
+				 <a href="http://www.turismo.gal" title="Ir á web de Galicia Turismo" target="_blank">
+					<img class="img-responsive-pie2 pull-right" id="galiciaresponsive" src="/diario-oficial-galicia/contenidoEstatico/imagenes/publico/marca_galicia.png" alt="Galicia Turismo"/>  
+				</a>
+			</div> -->
+			<div class="col-sm-6 col-xs-6 div-img-pie" >
+			<div style="width: auto; float: right;">
+				<div class="enlaceImgPie">
+				<img id="Xacobeo" class="img-responsive" src="/diario-oficial-galicia/contenidoEstatico/imagenes/logo_xacobeo.png" />								 
+				</div>
+			</div>
+		</div>
+				
+		<div class="col-sm-6 col-xs-6 div-img-pie" >
+			<div style="width: auto;float: left;">
+				<div class="enlaceImgPie">								
+				<img id="ENS" class="img-responsive" src="/diario-oficial-galicia/contenidoEstatico/imagenes/distintivo_ens_certificacion_MEDIA_RD311-2022.png" alt="ENS" />
+				</div>
+			</div>
+		</div>
+			
+		</div>
+	</div>
+	<div class="row hidden-md hidden-lg">
+		<div class ='col-xs-12 col-sm-12 footer-enlace'>
+			<p>Xunta de Galicia. Información mantida e publicada na internet pola Xunta de Galicia</p>
+		</div>
+	</div>
+	<div class="row hidden-md hidden-lg">
+		<div class = "col-xs-12 col-sm-12">
+			<ul style="padding-left:25px; margin-bottom:0;">
+				<li>
+						<a class="footer-enlace" href="https://www.xunta.gal/atencion-a-cidadania" title="Acceso a Atención á cidadanía">Atención á cidadanía</a>
+				</li>
+			</ul>
+			<div class ='col-xs-8 col-sm-8'>
+				<ul style="padding-left:10px">
+					<li>
+						<a class="footer-enlace" href="/diario-oficial-galicia/accesibilidade.do" title="Acceso a Accesibilidade">Accesibilidade</a>
+					</li>
+					<li>
+						<a class="footer-enlace" href="https://www.xunta.gal/aviso-legal-do-portal-da-xunta" target="_blank" title="Acceso ao Aviso legal" >Aviso legal</a> 
+					</li>
+					
+				</ul>
+			</div>
+			<div class ='col-xs-4 col-sm-4 pieNopadding'>
+				<ul style="padding-left:2px">
+					<li>
+						<a class="footer-enlace" href="/diario-oficial-galicia/mapa.do" title="Acceso ao Mapa do portal">Mapa do portal</a>
+					</li>
+					<li>
+						<a class="footer-enlace" href="/diario-oficial-galicia/suscricionsRSS.do" title="Acceso a RSS">RSS</a>                                 
+					</li>
+				</ul>
+			</div>
+
+		</div>
+	</div>
+	
+</footer>
+
+
+
+</div>	
+	
+	</div>
+
+    <script>
+        $('a[data-toggle="tab"]').on('hidden.bs.tab', function (e) {
+            $(this).css("display", "block");
+        })
+    </script>
+	
+	<input id="titulo_modal" type="hidden" value="Erro de comunicación co servidor" />
+	<input id="modal_titulo_validacion" type="hidden" value="Validación mensaxe" />
+	<input id="modal_error_validacion_numero_pagina" type="hidden" value="O número de páxina debe ser un enteiro positivo" />
+	<input id="modal_error_validacion_numero_dog" type="hidden" value="O número de DOG debe ser un enteiro positivo" />
+	<input id="modal_error_validacion_mensajeDesdeMayorNumDog" type="hidden" value="O número inicial do DOG ten que ser maior co final" />
+	<input id="modal_error_validacion_mensajeDesdeMayorPag" type="hidden" value="O número inicial da páxina ten que ser maior co final" />
+	<input id="modal_error_validacion_mensajeDesdeMayorFecha" type="hidden" value="Data inicial da publicación debe ser maior ca final" />
+	<input id="modal_error_validacion_dog_noexiste" type="hidden" value="El número de DOG buscado non foi publicado" />
+	<input id="modal_error_validacion_fecha" type="hidden" value="O formato de data debe ser dd/mm/aaaa" />
+	<input id="modal_error_validacion_al_menos_un_campo_obligatorio" type="hidden" value="É obrigatorio cubrir polo menos un dos campos do formulario" />
+
+</body>
+</html>
