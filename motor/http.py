@@ -75,14 +75,16 @@ def obtener(
     sesion: requests.Session | None = None,
     formulario: dict[str, str] | None = None,
     limite_total: float = 180.0,
+    cabeceras_extra: dict[str, str] | None = None,
 ) -> Respuesta:
     """Descarga una URL. Reintenta solo errores transitorios (red, 429, 5xx) con espera creciente.
 
     formulario: si se indica, la petición es POST con esos campos (algunas API oficiales solo aceptan POST).
+    cabeceras_extra: cabeceras que pide un portal (p. ej. las de una petición AJAX de JSF).
     limite_total: segundos máximos para recibir la respuesta entera (el timeout de requests es por lectura y un
     servidor que envía muy despacio podría bloquear la ejecución).
     """
-    cabeceras = {"User-Agent": USER_AGENT}
+    cabeceras = {"User-Agent": USER_AGENT, **(cabeceras_extra or {})}
     if accept:
         cabeceras["Accept"] = accept
     http = sesion or requests.Session()

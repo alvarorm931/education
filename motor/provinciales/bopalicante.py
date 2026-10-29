@@ -32,9 +32,8 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 
 from motor.archivo import Archivo, solo_huella_por_defecto
-from motor.autonomicos.comun import (RE_NO_EMPLEO, clasificar, convocante_de_organismo, descargar_textos,
-                                     es_empleo_por_titulo, es_resultado, escribir_json, escribir_jsonl, leer_jsonl)
-from motor.boe.clasificar import normalizar
+from motor.autonomicos.comun import (clasificar, convocante_de_organismo, descargar_textos,
+                                     es_empleo_estricto, escribir_json, escribir_jsonl, leer_jsonl)
 from motor.http import obtener
 from motor.provinciales.comun import CON_TEXTO, texto_pdf
 
@@ -96,7 +95,7 @@ def seleccionar(disposiciones: list[dict]) -> list[dict]:
     out = []
     for x in disposiciones:
         t = x["titulo"]
-        if not (es_empleo_por_titulo(t) or es_resultado(t)) or RE_NO_EMPLEO.search(normalizar(t)):
+        if not es_empleo_estricto(t):
             continue
         out.append({**x, "ambito": "local", **clasificar(t, x.get("subseccion")), "convocante": convocante(x)})
     return out

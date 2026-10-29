@@ -337,7 +337,9 @@ provinciales:
   - provincia: Valencia
     url: https://bop.dival.es/bop/drvisapi.dll
     acceso_desde_github: "ok"
-    estado: sin_conector
+    datos_estructurados: "Portal JSF con sesión (portal.xhtml): búsqueda AJAX por fechas (buscarBtn) y paginación de la rejilla «list», 25 por página; PDF estable /bop/downloads?anuncioNumReg=AAAA/N&lang=va"
+    estado: conector_en_pruebas
+    conector: motor/provinciales/bopvalencia.py
   - provincia: Valladolid
     url: https://bop.sede.diputaciondevalladolid.es/
     acceso_desde_github: "sin_respuesta_desde_github (timeout)"

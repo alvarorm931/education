@@ -1,0 +1,300 @@
+"""Conector del Butlletí Oficial de la Província de València (BOP de Valencia).
+
+Formato verificado el 29/10/2026 desde GitHub: portal JSF/PrimeFaces con sesión (bop.dival.es).
+  - GET https://bop.dival.es/bop/xhtml/portal.xhtml abre la sesión y da el formulario de búsqueda (j_idt131) con
+    las fechas «Des de» / «Fins a» (filtroCalendarioIni_input / filtroCalendarioFin_input, dd/mm/aaaa).
+  - Búsqueda: POST AJAX del botón «buscarBtn»; la respuesta parcial trae el listado en <update id="edictos">,
+    25 anuncios por página, «Mostrant del 1 al 25 de 41».
+  - Página siguiente: POST AJAX de la rejilla «list» (list_pagination, list_first, list_rows) en su formulario.
+  - Cada anuncio: sección («Municipis», «Diputació»...), entidad («Ajuntament d'Agullent»), título, número de
+    registro (2026/12998), fecha y número de boletín. Los identificadores j_idt del portal se leen de la página.
+  - Texto: PDF estable https://bop.dival.es/bop/downloads?anuncioNumReg=2026/12998&lang=va (sin sesión).
+  - Los anuncios van en valenciano (lang=va) y muchos también en castellano dentro del PDF.
+
+Uso:
+  python -m motor.provinciales.bopvalencia --salida ruta/                                   # ayer y hoy
+  python -m motor.provinciales.bopvalencia --desde 2022-01-01 --max-minutos 30 --salida ruta/
+  python -m motor.provinciales.bopvalencia --textos --max-minutos 30 --salida ruta/
+"""
+
+from __future__ import annotations
+
+import argparse
+import html
+import json
+import math
+import re
+import sys
+import time
+from datetime import date, datetime, timedelta
+from pathlib import Path
+from urllib.parse import urljoin
+from zoneinfo import ZoneInfo
+
+from motor.archivo import Archivo, solo_huella_por_defecto
+from motor.autonomicos.comun import (clasificar, convocante_de_organismo, descargar_textos,
+                                     es_empleo_estricto, escribir_json, escribir_jsonl, leer_jsonl)
+from motor.boe.clasificar import normalizar
+from motor.http import obtener, sesion_tls_compatible
+from motor.provinciales.comun import CON_TEXTO, texto_pdf
+
+FUENTE = "bopvalencia"
+SIGLAS = "BOP-VALENCIA"
+MADRID = ZoneInfo("Europe/Madrid")
+PORTAL = "https://bop.dival.es/bop/xhtml/portal.xhtml"
+DESCARGA = "https://bop.dival.es/bop/downloads?anuncioNumReg={reg}&lang=va"
+POR_PAGINA = 25
+NOMBRES = ("Butlletí Oficial de la Província de València", "Boletín Oficial de la Provincia de Valencia",
+           "BOPV", "Butlletí Oficial de la Província", "Boletín Oficial de la Provincia")
+SECCIONES_LOCALES = {"municipis", "diputacio", "organismes autonoms", "mancomunitats municipals"}
+RE_CABECERA_PDF = re.compile(
+    r"^(?:N[úu]m\. \d+|P[àa]g\.|\d{2}-\d{2}-\d{4} \d+|(?:[A-ZÀÈÉÍÒÓÚ] ){3,}[A-ZÀÈÉÍÒÓÚ]|"
+    r"Verificable a https://bop\.dival\.es/bop|CSV: BOPV-\d{4}/\d+)$")
+
+RE_CELDA = re.compile(r'class="ui-datagrid-column[^"]*">(?P<c>.*?)(?=class="ui-datagrid-column|</div></div></div>\]\]>|$)',
+                      re.DOTALL)
+RE_SECCION = re.compile(r'seccion seccion-\d+"[^>]*>\s*<div[^>]*>(?:<a[^>]*>.*?</a>)?(?P<s>[^<]+)</div>', re.DOTALL)
+RE_ENTIDAD = re.compile(r'entidad entidad-[\w-]+"[^>]*>\s*<div[^>]*>(?P<e>[^<]+)</div>', re.DOTALL)
+RE_TITULO = re.compile(r'title="Anunci en PDF">(?P<t>[^<]+)</a>')
+RE_REGISTRO = re.compile(r"Núm\. registre: </span>(?P<r>\d{4}/\d+)")
+RE_FECHA = re.compile(r'title="Butlletí complet">(?P<d>\d{2})/(?P<m>\d{2})/(?P<a>\d{4})</span>')
+RE_BOLETIN = re.compile(r'Butlletí: </span><a[^>]*>(?P<n>\d+)</a>')
+RE_TOTAL = re.compile(r"Mostrant del \d+ al \d+ de (?P<n>\d+)")
+RE_VIEWSTATE = re.compile(r'<update id="[^"]*javax\.faces\.ViewState[^"]*"><!\[CDATA\[(?P<v>[^\]]+)\]\]>')
+RE_REJILLA = re.compile(r'PrimeFaces\.cw\("DataGrid","\w+",\{id:"(?P<id>[^"]+)"[^}]*paginator')
+RE_FORM_REJILLA = re.compile(
+    r'<form id="(?P<f>[^"]+)"[^>]*>\s*<input type="hidden" name="(?P=f)" value="(?P=f)" />\s*<div id="(?P<r>[^"]+)"'
+    r'[^>]*ui-datagrid')
+
+
+class ErrorPortal(Exception):
+    pass
+
+
+def _texto(s: str) -> str:
+    return " ".join(html.unescape(s).split())
+
+
+def parsear_listado(fragmento: str) -> list[dict]:
+    """Anuncios de un listado (respuesta de búsqueda o de página)."""
+    anuncios = []
+    for m in RE_CELDA.finditer(fragmento):
+        c = m.group("c")
+        t, r = RE_TITULO.search(c), RE_REGISTRO.search(c)
+        if not (t and r):
+            continue
+        s, e, f, b = RE_SECCION.search(c), RE_ENTIDAD.search(c), RE_FECHA.search(c), RE_BOLETIN.search(c)
+        reg = r.group("r")
+        anuncios.append({
+            "id": f"BOPVALENCIA-{reg.replace('/', '-')}", "registro": reg,
+            "seccion": _texto(s.group("s")) if s else None, "organismo": _texto(e.group("e")) if e else None,
+            "titulo": _texto(t.group("t")), "fecha": f"{f.group('a')}-{f.group('m')}-{f.group('d')}" if f else None,
+            "boletin": b.group("n") if b else None, "url_pdf": DESCARGA.format(reg=reg), "url_html": None,
+            "fuente": SIGLAS,
+        })
+    return list({a["id"]: a for a in anuncios}.values())
+
+
+def campos_formulario(pagina: str, form_id: str) -> tuple[str, dict]:
+    i = pagina.find(f'<form id="{form_id}"')
+    if i < 0:
+        raise ErrorPortal(f"sin formulario {form_id}: posible cambio de formato")
+    j = pagina.find("</form>", i)
+    f = pagina[i:j]
+    accion = html.unescape(re.search(r'action="([^"]+)"', f).group(1))
+    campos = {}
+    for m in re.finditer(r"<input\b[^>]*>", f):
+        t = m.group(0)
+        n = re.search(r'name="([^"]+)"', t)
+        if not n or 'type="checkbox"' in t:
+            continue
+        v = re.search(r'value="([^"]*)"', t)
+        campos[html.unescape(n.group(1))] = html.unescape(v.group(1)) if v else ""
+    for m in re.finditer(r'<select\b[^>]*name="([^"]+)"', f):
+        campos.setdefault(m.group(1), "")
+    return accion, campos
+
+
+class Portal:
+    """Sesión con el portal: abre, busca un intervalo de fechas y recorre las páginas del resultado."""
+
+    CABECERAS = {"Faces-Request": "partial/ajax", "X-Requested-With": "XMLHttpRequest",
+                 "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"}
+
+    def __init__(self, pausa: float = 1.0):
+        self.sesion = sesion_tls_compatible()
+        self.pausa = pausa
+        self.abrir()
+
+    def abrir(self) -> None:
+        r = obtener(PORTAL, accept="text/html", sesion=self.sesion)
+        if r.status != 200:
+            raise ErrorPortal(f"portal HTTP {r.status}")
+        pagina = r.contenido.decode("utf-8", errors="replace")
+        self.form_busqueda = re.search(r'onclick="PrimeFaces\.ab\(\{s:&quot;buscarBtn&quot;,f:&quot;(\w+)&quot;', pagina)
+        if not self.form_busqueda:
+            raise ErrorPortal("sin botón de búsqueda: posible cambio de formato")
+        accion, self.campos = campos_formulario(pagina, self.form_busqueda.group(1))
+        self.url = urljoin(PORTAL, accion)
+        self.viewstate = self.campos.get("javax.faces.ViewState")
+
+    def _post(self, datos: dict):
+        time.sleep(self.pausa)
+        r = obtener(self.url, accept="application/xml", sesion=self.sesion, formulario=datos,
+                    cabeceras_extra={**self.CABECERAS, "Referer": PORTAL})
+        texto = r.contenido.decode("utf-8", errors="replace")
+        if r.status != 200 or "<partial-response" not in texto:
+            raise ErrorPortal(f"respuesta no reconocida (HTTP {r.status})")
+        v = RE_VIEWSTATE.search(texto)
+        if v:
+            self.viewstate = v.group("v")
+        return r, texto
+
+    def buscar(self, desde: date, hasta: date) -> tuple[list[dict], int, list]:
+        datos = dict(self.campos)
+        datos.update({
+            "filtroCalendarioIni_input": f"{desde:%d/%m/%Y}", "filtroCalendarioFin_input": f"{hasta:%d/%m/%Y}",
+            "javax.faces.ViewState": self.viewstate, "javax.faces.partial.ajax": "true",
+            "javax.faces.source": "buscarBtn", "javax.faces.partial.execute": "@all",
+            "javax.faces.partial.render": "messages boletines3 edictos", "buscarBtn": "buscarBtn",
+        })
+        r, texto = self._post(datos)
+        respuestas = [r]
+        anuncios = parsear_listado(texto)
+        total = RE_TOTAL.search(texto)
+        total = int(total.group("n")) if total else len(anuncios)
+        rejilla, form = RE_REJILLA.search(texto), RE_FORM_REJILLA.search(texto)
+        paginas = math.ceil(total / POR_PAGINA)
+        for k in range(1, paginas):
+            if not (rejilla and form):
+                raise ErrorPortal("sin rejilla paginable: posible cambio de formato")
+            lid, fid = rejilla.group("id"), form.group("f")
+            r, texto = self._post({
+                fid: fid, "javax.faces.ViewState": self.viewstate, "javax.faces.partial.ajax": "true",
+                "javax.faces.source": lid, "javax.faces.partial.execute": lid, "javax.faces.partial.render": lid,
+                f"{lid}_pagination": "true", f"{lid}_first": str(k * POR_PAGINA), f"{lid}_rows": str(POR_PAGINA),
+                f"{lid}_encodeFeature": "true"})
+            respuestas.append(r)
+            anuncios += parsear_listado(texto)
+        return list({a["id"]: a for a in anuncios}.values()), total, respuestas
+
+
+def seleccionar(anuncios: list[dict]) -> list[dict]:
+    out = []
+    for x in anuncios:
+        if normalizar(x.get("seccion") or "") not in SECCIONES_LOCALES:
+            continue
+        t = x["titulo"]
+        if not es_empleo_estricto(t):
+            continue
+        org = (x.get("organismo") or "").split(" / ")[0]
+        conv = convocante_de_organismo(org)
+        if conv and not conv.get("provincia"):
+            conv["provincia"] = "Valencia"
+        out.append({**x, "ambito": "local", **clasificar(t, x.get("seccion")), "convocante": conv})
+    return out
+
+
+def _base(raiz: Path) -> Path:
+    return raiz / "datos" / "provinciales" / FUENTE
+
+
+def _ruta(raiz: Path, carpeta: str, d: date, ext: str = "jsonl") -> Path:
+    return _base(raiz) / carpeta / f"{d:%Y}" / f"{d:%m}" / f"{d:%d}.{ext}"
+
+
+def procesar_dia(d: date, raiz: Path, archivo: Archivo, portal: Portal) -> dict:
+    informe = {"fecha": d.isoformat(), "alertas": []}
+    anuncios, total, respuestas = portal.buscar(d, d)
+    for r in respuestas:
+        archivo.guardar(FUENTE, d, r.contenido, portal.url, "xml", r.status, r.cabeceras)
+    if total == 0:
+        informe["resultado"] = "sin_boletin"
+        return informe
+    del_dia = [a for a in anuncios if a["fecha"] == d.isoformat()]
+    if len(del_dia) != len(anuncios):
+        informe["alertas"].append(f"BOP Valencia {d}: {len(anuncios) - len(del_dia)} anuncios de otra fecha")
+    empleo = seleccionar(del_dia)
+    escribir_jsonl(_ruta(raiz, "disposiciones", d), del_dia)
+    escribir_jsonl(_ruta(raiz, "oposiciones", d), empleo)
+    informe.update({"resultado": "ok", "anuncios": total, "disposiciones": len(del_dia), "empleo_publico": len(empleo),
+                    "boletin": next((a["boletin"] for a in del_dia if a.get("boletin")), None)})
+    if len(anuncios) != total:
+        informe["alertas"].append(f"BOP Valencia {d}: {len(anuncios)} anuncios leídos de {total}")
+    return informe
+
+
+def texto_disposicion(contenido: bytes, con_texto: bool = True) -> dict:
+    return texto_pdf(contenido, con_texto, RE_CABECERA_PDF)
+
+
+def ruta_texto(raiz: Path, x: dict) -> Path:
+    return _base(raiz) / "textos" / x["fecha"][:4] / x["fecha"][5:7] / f"{x['id']}.json"
+
+
+def textos_pendientes(raiz: Path) -> list[dict]:
+    lista = []
+    for f in (_base(raiz) / "oposiciones").glob("*/*/*.jsonl"):
+        lista += [x for x in leer_jsonl(f) if x.get("url_pdf") and not ruta_texto(raiz, x).exists()]
+    lista.sort(key=lambda x: x["fecha"], reverse=True)
+    return sorted(lista, key=lambda x: (0 if x.get("tipo_acto") in CON_TEXTO else 1,
+                                        0 if x.get("alcance") in (None, "acceso") else 1))
+
+
+def main(argv: list[str] | None = None) -> int:
+    hoy = datetime.now(MADRID).date()
+    p = argparse.ArgumentParser()
+    p.add_argument("--desde", type=date.fromisoformat, default=hoy - timedelta(days=1))
+    p.add_argument("--hasta", type=date.fromisoformat, default=hoy)
+    p.add_argument("--salida", type=Path, default=Path("."))
+    p.add_argument("--textos", action="store_true")
+    p.add_argument("--max-minutos", type=float, default=0)
+    p.add_argument("--pausa", type=float, default=1.0)
+    a = p.parse_args(argv)
+    archivo = Archivo(a.salida / "archivo", indice_por_fuente=True, solo_huella=solo_huella_por_defecto())
+
+    if a.textos:
+        pend = textos_pendientes(a.salida)
+        hechos, errores = descargar_textos(
+            pend, lambda x: ruta_texto(a.salida, x), lambda x: x["url_pdf"],
+            lambda c, x: texto_disposicion(c, x.get("tipo_acto") in CON_TEXTO), archivo, FUENTE, a.max_minutos,
+            a.pausa, accept="application/pdf", ext="pdf", por_registro=True)
+        print(f"BOP Valencia textos: {hechos} descargados, {errores} errores, {len(pend) - hechos} pendientes")
+        return 0
+
+    inicio, informes, portal = time.monotonic(), [], None
+    d = a.hasta
+    while d >= a.desde:  # del más reciente al más antiguo; lo ya hecho no se repite (salvo ayer y hoy)
+        ruta = _ruta(a.salida, "dias", d, "json")
+        hecho = ruta.exists() and json.loads(ruta.read_text(encoding="utf-8")).get("resultado") in {"ok", "sin_boletin"}
+        if d.weekday() >= 5 and not hecho:  # el BOP de Valencia no sale en fin de semana
+            escribir_json(ruta, {"fecha": d.isoformat(), "resultado": "sin_boletin", "nota": "fin de semana",
+                                 "alertas": []})
+            hecho = True
+        if not hecho or d >= hoy - timedelta(days=1):
+            if a.max_minutos and (time.monotonic() - inicio) / 60 > a.max_minutos:
+                print("Tiempo agotado; se continúa en la siguiente ejecución")
+                break
+            try:
+                portal = portal or Portal(a.pausa)
+                inf = procesar_dia(d, a.salida, archivo, portal)
+            except ErrorPortal as e:
+                inf = {"fecha": d.isoformat(), "resultado": "error_formato", "alertas": [f"BOP Valencia {d}: {e}"]}
+                portal = None  # se abre una sesión nueva para el día siguiente
+            except (ConnectionError, TimeoutError) as e:
+                inf = {"fecha": d.isoformat(), "resultado": "fuente_inaccesible", "alertas": [str(e)]}
+                portal = None
+            if not (inf.get("resultado") == "sin_boletin" and d >= hoy):
+                escribir_json(ruta, inf)
+            informes.append(inf)
+            print(f"BOP Valencia {d}: {inf['resultado']} {inf.get('empleo_publico', '')}")
+        d -= timedelta(days=1)
+    alertas = [x for i in informes for x in i.get("alertas", [])]
+    print(f"Días procesados: {len(informes)}. Alertas: {len(alertas)}")
+    for x in alertas[:30]:
+        print(" -", x)
+    return 1 if sum(i.get("resultado") in {"error_formato", "fuente_inaccesible"} for i in informes) > 3 else 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

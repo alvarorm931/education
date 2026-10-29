@@ -133,6 +133,13 @@ for c in $CONECTORES; do
       ejecutar motor.provinciales.bopalicante --textos --salida "$S" --max-minutos "$M"
       "$G" "BOP Alicante: textos"
       ;;
+    bopvalencia)
+      ejecutar motor.provinciales.bopvalencia --salida "$S"
+      ejecutar motor.provinciales.bopvalencia --desde 2022-01-01 --salida "$S" --max-minutos "$M"
+      "$G" "BOP Valencia: días"
+      ejecutar motor.provinciales.bopvalencia --textos --salida "$S" --max-minutos "$M"
+      "$G" "BOP Valencia: textos"
+      ;;
     *)
       echo "::warning::Conector desconocido: $c"
       ;;

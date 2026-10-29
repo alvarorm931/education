@@ -36,9 +36,19 @@ RE_NO_EMPLEO = re.compile(
     r"subvencio\w*|llicencia\w*|ordenanca\w*|pressupost\w*|expropiacio\w*|"
     r"contractacio de (?:les )?(?:obres|serveis|subministra)\w*|licitacio\w*|ajuts?|premis?|beques?|compte general|"
     r"padro|taxes|impostos?|projectes? d'obres?|execucio de (?:les )?obres|relacio de llocs de treball|"
-    r"habitatges?|lloguer\w*|jutge\w* de pau|jutge/essa de pau|bonos?|bons|campanas?|campanyes|campanya|"
+    r"habitatges?|lloguer\w*|jutge\w*(?:/\w+)? de pau|juez\w*(?:/\w+)? de paz|bonos?|bons|campanas?|campanyes|campanya|"
     r"comercio\w*|comerc|entidad\w* colaborador\w*|entitat\w* col·laborador\w*|fomento del consumo|consum local|"
     r"licenza\w*|orzamento\w*|axudas?|bolsas? de estudos?|vivendas?|xuiz\w* de paz)\b")
+# Para boletines con todas las secciones mezcladas: hace falta además una palabra inequívoca de empleo público
+# («bases» solas pueden ser de una subvención o de un servicio)
+RE_EMPLEO_FUERTE = re.compile(
+    r"\b(plazas?|places|placa de|prazas?|oposicion\w*|oposicio|concurso[- ]oposicion|concurs[- ]oposicio|"
+    r"proceso selectivo|proces selectiu|proces de seleccio|proceso de seleccion|pruebas selectivas|proves selectives|"
+    r"bolsa de (?:empleo|trabajo|trabajadores)|borsa (?:de treball|d'ocupacio|d'aspirants|de personal)|bolsa de emprego|"
+    r"funcionari\w*|personal laboral|laboral (?:fij|temporal)\w*|oferta\w* (?:\w+ ){0,3}(?:de empleo|d'ocupacio|de emprego)|"
+    r"tribunal (?:calificador|qualificador|cualificador)|aspirantes|aspirants|admitid\w+ y excluid\w+|"
+    r"admes\w+ i exclos\w+|nombramiento|nomenament|nomeamento|puestos? de trabajo|llocs? de treball|postos? de traballo|"
+    r"seleccion de personal|seleccio de personal|interin\w*|interi|policia local|agente\w* de la policia)\b")
 RE_RESULTADO = re.compile(
     r"\b(funcionari[oa]s? de carrera|personal laboral fijo|proceso selectivo|pruebas selectivas|aspirantes|"
     r"funcionari\w*(?:/\w+)? de carrera|personal laboral fix|proces selectiu|proves selectives|aspirants|"
@@ -97,6 +107,12 @@ def clasificar(titulo: str, apartado: str | None = None) -> dict:
 def es_empleo_por_titulo(titulo: str) -> bool:
     t = normalizar(titulo or "")
     return bool(RE_EMPLEO_LOCAL.search(t)) and not RE_NO_EMPLEO.search(t)
+
+
+def es_empleo_estricto(titulo: str) -> bool:
+    """Selección por título en boletines sin sección de personal (todos los anuncios mezclados)."""
+    t = normalizar(titulo or "")
+    return bool(RE_EMPLEO_FUERTE.search(t)) and not RE_NO_EMPLEO.search(t)
 
 
 def es_resultado(titulo: str) -> bool:
