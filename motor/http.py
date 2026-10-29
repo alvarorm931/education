@@ -2,15 +2,36 @@
 
 from __future__ import annotations
 
+import os
 import ssl
+import tempfile
 import time
 from dataclasses import dataclass, field
+from functools import lru_cache
+from pathlib import Path
 
 import requests
 from requests.adapters import HTTPAdapter
 
 USER_AGENT = "PortalEstudiosOposiciones/0.1 (motor de datos publicos; peticiones moderadas)"
 REINTENTABLES = {429, 500, 502, 503, 504}
+CERTIFICADOS = Path(__file__).parent / "certificados"
+
+
+@lru_cache(maxsize=1)
+def paquete_ca() -> str:
+    """Raíces de certifi (o las del entorno) más los intermedios públicos de motor/certificados/, para los
+    servidores oficiales que no envían su cadena completa. La verificación sigue activa."""
+    import certifi
+
+    base = os.environ.get("REQUESTS_CA_BUNDLE") or certifi.where()
+    extra = sorted(CERTIFICADOS.glob("*.pem"))
+    if not extra:
+        return base
+    destino = Path(tempfile.gettempdir()) / f"motor-ca-{os.getpid()}.pem"
+    destino.write_text(Path(base).read_text(encoding="utf-8") + "\n" +
+                       "\n".join(p.read_text(encoding="utf-8") for p in extra), encoding="utf-8")
+    return str(destino)
 
 
 class _AdaptadorTLS(HTTPAdapter):
@@ -26,9 +47,7 @@ class _AdaptadorTLS(HTTPAdapter):
         super().__init__(**kwargs)
 
     def _contexto(self) -> ssl.SSLContext:
-        import certifi
-
-        ctx = ssl.create_default_context(cafile=certifi.where())
+        ctx = ssl.create_default_context(cafile=paquete_ca())
         ctx.set_ciphers(self.cifrados)
         return ctx
 
@@ -92,9 +111,10 @@ def obtener(
     for intento in range(intentos):
         try:
             if formulario is None:
-                r = http.get(url, headers=cabeceras, timeout=timeout, stream=True)
+                r = http.get(url, headers=cabeceras, timeout=timeout, stream=True, verify=paquete_ca())
             else:
-                r = http.post(url, data=formulario, headers=cabeceras, timeout=timeout, stream=True)
+                r = http.post(url, data=formulario, headers=cabeceras, timeout=timeout, stream=True,
+                              verify=paquete_ca())
             if r.status_code in REINTENTABLES and intento < intentos - 1:
                 r.close()
                 espera = float(r.headers.get("Retry-After", pausa_base * (2**intento)))
