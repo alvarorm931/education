@@ -29,6 +29,7 @@ from pathlib import Path
 from motor.boe.clasificar import normalizar
 from motor.boe.texto import ruta_texto
 from motor.calendario import fin_de_plazo
+from motor.catalogo.puestos import grupo, normalizar_puesto
 
 VERSION = "plantilla_local_v1"
 
@@ -114,13 +115,22 @@ def plaza(linea: str) -> dict | None:
     corte = re.search(r",\s*pertenecientes?\b|\s+de la plantilla\b|,\s*por el sistema|\s+por el sistema|,\s*en turno", resto)
     denominacion = resto[: corte.start()].strip() if corte else resto.rstrip(".").strip()
     esc, sub, cla = RE_ESCALA.search(resto), RE_SUBESCALA.search(resto), RE_CLASE.search(resto)
+    escala = esc.group("v").strip() if esc else None
+    subescala = sub.group("v").strip() if sub else None
+    norm = normalizar_puesto(denominacion)
+    g, g_fuente = grupo(linea, escala, subescala)
     return {
         "numero": n,
         "tipo": "puesto" if m.group("clase_plaza").lower().startswith("puesto") else "plaza",
         "denominacion": denominacion,
         "regimen": "laboral_fijo" if "personal laboral" in normalizar(resto) else "funcionario",
-        "escala": esc.group("v").strip() if esc else None,
-        "subescala": sub.group("v").strip() if sub else None,
+        "puesto_clave": norm["clave"],
+        "puesto": norm["nombre"],
+        "especialidad": norm["especialidad"],
+        "grupo": g,
+        "grupo_fuente": g_fuente,
+        "escala": escala,
+        "subescala": subescala,
         "clase": cla.group("v").strip().rstrip(".") if cla else None,
         "sistema": _sistema(resto),
         "turno": _turno(resto),
