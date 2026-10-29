@@ -131,6 +131,8 @@ def ejecutar(centros_dir: Path, cc_dir: Path | None, salida: Path) -> dict:
     # el mismo dominio en varios crawls: se suman páginas
     por_dom: dict[str, dict] = {}
     for d in cc:
+        if not d.get("dominio"):  # hosts que son IP o sin dominio registrado
+            continue
         x = por_dom.setdefault(d["dominio"], {**d, "paginas": 0, "ejemplos": []})
         x["paginas"] += d["paginas"]
         x["ejemplos"] = (x["ejemplos"] + d.get("ejemplos", []))[:8]

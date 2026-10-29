@@ -298,8 +298,12 @@ def dominios_del_censo(carpeta: Path) -> list[dict]:
     return salida
 
 
-def ejecutar(objetivos: list[dict], raiz: Path, hilos: int, max_minutos: float, muestra: int) -> dict:
+def ejecutar(objetivos: list[dict], raiz: Path, hilos: int, max_minutos: float, muestra: int,
+             solo_huella: bool = False) -> dict:
     archivo = Archivo(raiz / "archivo")
+    if solo_huella:  # medición masiva: se registra huella y URL de cada página; el original se vuelve a pedir
+        archivo.guardar = lambda fuente, fecha, contenido, url, ext, status, cabeceras=None, comprimir=True: \
+            archivo.registrar(fuente, fecha, contenido, url, status, cabeceras)
     destino = raiz / "datos" / "estudios" / "oferta_web"
     destino.mkdir(parents=True, exist_ok=True)
     fin = time.time() + max_minutos * 60
@@ -334,6 +338,7 @@ def main() -> None:
     p.add_argument("--hilos", type=int, default=8)
     p.add_argument("--muestra", type=int, default=6)
     p.add_argument("--max-minutos", type=float, default=27)
+    p.add_argument("--solo-huella", action="store_true", help="no guardar originales, solo huella y URL")
     p.add_argument("--salida", required=True)
     a = p.parse_args()
     if a.dominios:
@@ -345,7 +350,7 @@ def main() -> None:
         objetivos = dominios_del_censo(Path(a.censo))
     else:
         sys.exit("Falta --dominios o --censo")
-    print(json.dumps(ejecutar(objetivos, Path(a.salida), a.hilos, a.max_minutos, a.muestra), ensure_ascii=False))
+    print(json.dumps(ejecutar(objetivos, Path(a.salida), a.hilos, a.max_minutos, a.muestra, a.solo_huella), ensure_ascii=False))
 
 
 if __name__ == "__main__":
