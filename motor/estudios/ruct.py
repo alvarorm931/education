@@ -375,7 +375,8 @@ class Lector:
             try:
                 r = self.s.get(url, timeout=40)
             except requests.RequestException:
-                time.sleep(5 * (i + 1))
+                if i < intentos - 1:
+                    time.sleep(5 * (i + 1))
                 continue
             if r.status_code in (429, 500, 502, 503, 504) and i < intentos - 1:
                 time.sleep(10 * (i + 1))
@@ -551,17 +552,23 @@ def ejecutar(codigos: list[str], raiz: Path, nivel: str, max_minutos: float) -> 
     destino = raiz / "datos" / "estudios" / "masters" / "ruct"
     destino.mkdir(parents=True, exist_ok=True)
     fin = time.time() + max_minutos * 60
-    hechos, errores = 0, 0
+    hechos, errores, seguidos = 0, 0, 0
+    alerta = None
     for codigo in codigos:
         if time.time() > fin:
             break
         ficha = leer_ficha(lector, codigo)
+        seguidos = seguidos + 1 if "estado 0" in ficha.get("error", "") else 0
+        if seguidos >= 3:  # el servidor no responde: se para en vez de agotar el tiempo
+            alerta = "ALERTA RUCT: tres fichas seguidas sin respuesta del servidor; ejecución detenida"
+            print(alerta, file=sys.stderr)
+            break
         if "error" not in ficha and nivel == "memoria":
             ficha["memoria"] = leer_memoria(lector, ficha)
         errores += 1 if "error" in ficha else 0
         (destino / f"{codigo}.json").write_text(json.dumps(ficha, ensure_ascii=False, indent=1), encoding="utf-8")
         hechos += 1
-    return {"pedidos": len(codigos), "hechos": hechos, "errores": errores, "peticiones": lector.peticiones}
+    return {"pedidos": len(codigos), "hechos": hechos, "errores": errores, "peticiones": lector.peticiones, "alerta": alerta}
 
 
 def main() -> None:
