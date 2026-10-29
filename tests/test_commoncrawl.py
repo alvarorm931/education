@@ -20,3 +20,18 @@ def test_ruido_fuera():
     for ruta in ["/masterclass-de-cocina", "/rolex/yacht-master/m1", "/estreno-masterchef-celebrity",
                  "/pagar-con-mastercard", "/grado-en-derecho", "/repo/master/src/main.c", "/renault/master/furgon"]:
         assert not _ok(ruta), ruta
+
+
+def test_dominios_de_censo_y_consolidar_urls(tmp_path):
+    import json
+    from motor.estudios import commoncrawl as cc
+    f = tmp_path / "p.jsonl"
+    f.write_text("\n".join(json.dumps(x) for x in [
+        {"estado": "oficial", "dominios": ["uab.es", "uab.cat"]}, {"estado": "candidato", "dominios": ["x.com"]}]))
+    assert cc.dominios_de_censo(f, ("oficial",)) == ["uab.cat", "uab.es"]
+    d = tmp_path / "c"
+    d.mkdir()
+    (d / "00001.urls.jsonl").write_text(json.dumps({"dominio": "uab.cat", "url": "https://www.uab.cat/master-a"}) + "\n")
+    (d / "00002.urls.jsonl").write_text(json.dumps({"dominio": "uab.cat", "url": "https://www.uab.cat/master-a"}) + "\n" +
+                                        json.dumps({"dominio": "uab.cat", "url": "https://www.uab.cat/master-b"}) + "\n")
+    assert cc.consolidar_urls(d) == [{"dominio": "uab.cat", "urls": ["https://www.uab.cat/master-a", "https://www.uab.cat/master-b"]}]
