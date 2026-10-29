@@ -3,6 +3,8 @@ name: Mantenimiento de datos
 # Tareas puntuales sobre la rama «datos». Comparte grupo con el motor para no coincidir con él.
 #   privacidad: aplica las reglas de privacidad a lo ya guardado (textos, títulos) y retira de la rama los
 #               originales de boletines, que pueden traer datos de personas (quedan huella, URL y fecha).
+#   reseleccionar: rehace la selección de empleo público de cada boletín con las reglas actuales, a partir de lo
+#               ya capturado (sin pedir nada a las fuentes).
 
 on:
   workflow_dispatch:
@@ -47,6 +49,7 @@ jobs:
         run: |
           case "$TAREA" in
             privacidad) python -m motor.mantenimiento.privacidad --salida salida | tee tarea.txt ;;
+            reseleccionar) python -m motor.mantenimiento.reseleccionar --salida salida | tee tarea.txt ;;
             *) echo "::error::Tarea desconocida: $TAREA"; exit 1 ;;
           esac
           echo "::notice title=Mantenimiento $TAREA::$(head -c 900 tarea.txt | tr '\n' ' ')"
