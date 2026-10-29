@@ -92,14 +92,16 @@ def consolidar(carpeta: Path) -> list[dict]:
     return sorted(salida, key=lambda d: -d["paginas"])
 
 
-def ejecutar(raiz: Path, crawl: str | None, desde: int, hasta: int, max_minutos: float, n: int = 0) -> dict:
+def ejecutar(raiz: Path, crawl: str | None, desde: int, hasta: int, max_minutos: float, n: int = 0,
+             solo: list[int] | None = None) -> dict:
     crawl = crawl or ultimo_crawl(n)
     lista = ficheros(crawl)
     destino = raiz / "datos" / "estudios" / "commoncrawl" / crawl
     destino.mkdir(parents=True, exist_ok=True)
     fin = time.time() + max_minutos * 60
     hechos, filas_total, tiempos = 0, 0, []
-    for i in range(desde, min(hasta, len(lista))):
+    indices = solo if solo is not None else range(desde, min(hasta, len(lista)))
+    for i in indices:
         if time.time() > fin:
             break
         t0 = time.time()
@@ -137,10 +139,12 @@ def main() -> None:
     p.add_argument("--anterior", type=int, default=0, help="0 = último crawl, 1 = el anterior...")
     p.add_argument("--archivos", default="0:2", help="tramo de ficheros del índice, p. ej. 0:50")
     p.add_argument("--max-minutos", type=float, default=50)
+    p.add_argument("--indices", help="solo estos ficheros (p. ej. los que fallaron): 3,7,9")
     p.add_argument("--salida", required=True)
     a = p.parse_args()
     d, h = (int(x) for x in a.archivos.split(":"))
-    print(json.dumps(ejecutar(Path(a.salida), a.crawl, d, h, a.max_minutos, a.anterior), ensure_ascii=False))
+    print(json.dumps(ejecutar(Path(a.salida), a.crawl, d, h, a.max_minutos, a.anterior,
+                                [int(x) for x in a.indices.split(",")] if a.indices else None), ensure_ascii=False))
 
 
 if __name__ == "__main__":
