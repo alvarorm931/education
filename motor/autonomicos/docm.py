@@ -159,9 +159,17 @@ def procesar_dia(d: date, raiz: Path, archivo: Archivo) -> dict:
         return informe
     s = parsear_sumario(r.contenido.decode("utf-8", errors="replace"))
     if s["fecha"] != d.isoformat():
-        # Sin diario ese día, el portal muestra otro (el último publicado)
-        informe["resultado"] = "sin_boletin" if s["fecha"] else "error_formato"
-        if not s["fecha"]:
+        # Sin diario ese día, el portal muestra otro (el último publicado) o una página sin sumario
+        if s["fecha"]:
+            informe["resultado"] = "sin_boletin"
+            return informe
+        # Página sin fecha: se guarda el original para poder estudiarla y no se da por buena
+        captura = archivo.guardar(FUENTE, d, r.contenido, url, "html", r.status, r.cabeceras)
+        informe["sha256"] = captura["sha256"]
+        if d.weekday() >= 5 and not s["disposiciones"]:
+            informe.update({"resultado": "sin_boletin", "nota": "fin de semana: página sin sumario"})
+        else:
+            informe["resultado"] = "error_formato"
             informe["alertas"].append(f"DOCM {d}: sumario sin fecha (posible cambio de formato)")
         return informe
     captura = archivo.guardar(FUENTE, d, r.contenido, url, "html", r.status, r.cabeceras)
