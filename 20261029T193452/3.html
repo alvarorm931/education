@@ -1,0 +1,1224 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Parámetro indicando si se ha cambiado el mes desde el combo de meses -->
+
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es">
+	<head>
+		
+		
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		
+		
+		<title>
+			DOCM. Diario Oficial Castilla - La Mancha
+		</title>
+		
+		
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
+<!-- HTTP 1.1 -->
+<meta http-equiv="Cache-Control" content="no-store"/>
+<!-- HTTP 1.0 -->
+<meta http-equiv="Pragma" content="no-cache"/>
+<!-- Prevents caching at the Proxy Server -->
+<meta http-equiv="Expires" content="0"/>
+<!-- internet explorer effects -->		
+<meta http-equiv="Page-Enter" content="blendTrans(Duration=0.4)" />
+<!-- robot.txt -->
+<meta name="google-site-verification" content="Eag3DwSB1gmaZ1obDxU2_HH0EzmcSAaVGJB8sA2GV7c" />      
+		 
+		
+        
+        <link rel="icon" href="/docm/images/favicon.ico" />
+        
+        <meta name="AUTHOR" content="Junta de Castilla - La Mancha. Portal" />
+ 
+ 		<meta name="KEYWORDS" content="Base de Datos. Boletín Oficial. Legislación autonómica. DOCM. Diario Oficial Castilla - La Mancha. Regulación. Suscripción. Venta. Publicación de documentos. Diario Oficial. Comunidad de Castilla-La Mancha. Legislación de Castilla-La Mancha. Disposiciones de Castilla-La Mancha. Leyes de Castilla La-Mancha. Normas de Castilla La-Mancha. DOCM" />
+ 
+		<meta name="DESCRIPTION" content="Base de datos del DOCM (Diario Oficial Castilla - La Mancha) que contiene todos los documentos publicados en el boletín oficial. " />
+        
+        <meta name="LANGUAGE" content="Castellano" />
+        
+        
+		
+		<link rel="stylesheet" type="text/css" media="all" href="/docm/css/css-common.css?version=1.4" />
+		<link rel="stylesheet" type="text/css" media="all" href="/docm/css/jccm_pie.css" />
+		<link rel="stylesheet" type="text/css" media="all" href="/docm/css/portal.css?version=1.4" />
+		<!--[if IE]>
+			<link rel="stylesheet" type="text/css" media="all" href="/docm/css/css-common.css" />
+		<![endif]-->
+		
+		<link rel="stylesheet" type="text/css" href="/docm/css/calendarioBoletines.css?version=1.4" />
+		<link rel="stylesheet" type="text/css" media="print" href="/docm/css/portalPrint.css" />
+		<link rel="stylesheet" type="text/css" media="print" href="/docm/css/css-common.css?version=1.4" />
+		
+		
+		<!-- Matomo -->
+		<script type="text/javascript">
+		var _paq = window._paq || [];
+		/* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+		_paq.push(['trackPageView']);
+		_paq.push(['enableLinkTracking']);
+		(function() {
+		var u="https://matomo.jccm.es/";
+		_paq.push(['setTrackerUrl', u+'matomo.php']);
+		_paq.push(['setSiteId', '22']);
+		var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+		g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+		})();
+		</script>
+		<!-- End Matomo Code -->
+		
+		
+		<script type="text/javascript" src="/docm/scripts/prototype.js"></script>
+		<script type="text/javascript" src="/docm/scripts/general.js"></script>	
+		<script async="async" type="text/javascript" src="https://docm--jccm--es.insuit.net/i4tservice/jscm_loader.js"></script>
+		<script type="text/javascript">
+
+			    var cambioMes = 'no';
+				function init(){
+		
+					if($('calendario')){
+					
+						var browserName = navigator.appName; 
+						
+						if (browserName=="Microsoft Internet Explorer") {
+							$('calendario').style.display = "block";
+						}
+						else {
+							$('calendario').style.display = "table";
+						}
+					}
+					
+					if($('buscaFecha')){
+						$('buscaFecha').hide();
+					}
+					
+					$("botonImprimir").style.visibility = "visible";
+					
+					//Si se ha cambiado el mes desde el combo de meses, se le pone el foco a este para que
+					//pueda seguir seleccionando meses con las flechas del cursor
+					if (cambioMes == 'si'){
+						document.getElementById('mes').focus();
+					}
+					
+				}
+		
+				function resizeMenu(){
+					
+					if (navigator.appName.indexOf("Explorer") != -1) {	
+					
+						var alturaMenu = $("menu").clientHeight;
+						$("tablaMenu").style.height = alturaMenu - $("menu").offsetTop - $("filaCalendario").clientHeight;
+					}
+				}
+				
+				function tunearLinks() {
+	    			var links = document.getElementsByTagName('a');
+	    			
+	    			for (var i=0;i < links.length;i++) {
+	        			if (links[i].className.indexOf('new-window') != -1) {
+	            			links[i].onclick = function() {
+	                			window.open(this.href);
+	                			return false;
+	            			};
+	            			
+	            			links[i].onkeypress = function() {
+	                			window.open(this.href);
+	                			return false;
+	            			};
+	        			}
+	    			}
+	    			
+	    			links = document.getElementsByTagName('form');
+	    			
+	    			for (var i=0;i < links.length;i++) {
+	        			if (links[i].className == 'new-window') {
+	            			
+	            			links[i].target = "_blank";
+	            		}
+	    			}
+				};
+				
+				function limpiar() {
+					if($F("textoBusqueda") == "Buscar...") {
+						$("textoBusqueda").setValue("");
+					}				
+				}
+				
+		</script>
+		
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+	
+	</head>
+	<body onload="init(); resizeMenu(); tunearLinks()"  id="body">
+		<div id="container"> 
+			<div id="header">
+				<div id="header-content">
+					<div class="side-padder">
+						<h1><a title="Inicio">DIARIO OFICIAL</a></h1>
+						<h2>de Castilla-La Mancha</h2>
+						<form action="/docm/buscarDisposiciones.do" method="post">
+							<div id="header-search-box">
+								<div>
+									<input type="hidden" name="paginaResultados" value="1"/>
+									<input type="hidden" name="campoOrdenacion" value="ordenFechaPublicacion"/>
+									<input type="hidden" name="tipoBusqueda" value="basica"/>
+									<input type="text" name="texto" id="textoBusqueda" class="custom-search-default-value" value="Buscar..." onclick="limpiar()" onkeypress="limpiar()"/>
+								</div>
+								<div>
+									<input type="image" src="/docm/images/search-button.png" title="Buscar en la Web" class ="imagenLupa" alt="Buscar"/>
+								</div>
+							</div>
+							<div id="header-search-box-avanced">
+								<span class="textoBusquedaAvanzada"><a href="/docm/busquedaAvanzada.do" title="Ir a la página de Busqueda Avanzada">&gt;&gt; Búsqueda Avanzada</a></span>
+							</div>
+						</form>
+					</div>
+				</div>
+				<div id="header-side">
+					<a href="http://www.castillalamancha.es"><img src="/docm/images/logo.png" alt="Inicio" title="Inicio"></a>
+				</div>
+				<div id="header-info-band">
+					<div><div class="header-info-band-section">Consejer&iacute;a de Hacienda, Administraciones P&uacute;blicas y Transformaci&oacute;n Digital.</div></div>
+				</div>
+				<div id="header-menu">
+					<div>
+						<ul>
+							<li><a href="/docm/revistaJuridica.do" title="Abrir la página de Revista Jurídica">Revista jur&iacute;dica</a></li>
+							<li><a href="/docm/codigoLegislativo.do"  title="Abrir la página de Código Legislativo">C&oacute;digo legislativo</a></li>
+							<li><a href="https://empleopublico.castillalamancha.es/" title="Abrir la página de Empleo Público en una nueva ventana" class ="new-window" >Empleo p&uacute;blico</a></li>
+							<li><a href="https://www.jccm.es/node/226" title="Abrir la página de Carta de Servicio del Diario Oficial de Castilla la Mancha" class ="new-window">Carta de Servicios</a></li>
+ 							<li><a href="/docm/eli" title="Abrir la página del Identificador Europeo de Legislación">ELI</a></li>
+						</ul>
+					</div>
+				</div>
+				<div id="header-menu-covid" style="display: none">
+					<div>
+                       <h3 class="titulo-covid-19">   
+	    					<span>Normativa sobre crisis sanitaria <a href="/docm/listadoCOVID.do" class="link-covid-19">
+		   						COVID-19 <br/> <img src="/docm/images/covid-19-news-2.png" alt="" class="menu-covid-19"/>                                    
+                            </a> </span>
+	                   </h3>  
+				    </div>
+				</div>
+			</div><!-- // Header -->
+			<div class = "filaBotonImprimir" style="padding-right: 20px">
+				<span id = "botonImprimir" class = "textoBotonImprimir" onclick="window.print();" onkeypress="window.print();">
+					<img src="/docm/images/imprimir.gif" alt=""/>
+					Imprimir
+				</span>
+			</div>
+			<div id="content" style="display: inherit;">
+				<table width="100%">
+					<tr id = "cuerpo">
+						<td id = "menu" rowspan="2">
+							
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class = "tablaMenu" id = "tablaMenu">
+	<tr>
+		<td><p style="margin-top: 11em;"><img src="/docm/images/bg_calendario.png" alt="" style="vertical-align: middle;"/>&nbsp;&nbsp;&nbsp;<b>Calendario</b></p></td>
+	</tr>
+	<tr id = "filaDiariosOficiales">
+		<td>
+			<a href="sumario.do" title="Ir a la página de consulta de diarios oficiales">
+				&gt;&gt; &Uacute;ltimo diario oficial
+			</a>
+		</td>
+	</tr>
+	<tr><td>&nbsp;</td></tr>
+	
+	<tr id = "filaCalendario">
+		<td style="width: 93%">
+			<form id="idBean" method="post" action="/docm/cambioFecha.do">
+				<div class="bordeCal" align="center">
+					
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+	// <![CDATA[ 
+	function cambiaMesAnt(){
+		$('fechaNueva').setValue($('idBean').fechaMesAnterior.value);		
+		$('idBean').action="/docm/cambioFecha.do";
+		$('idBean').submit();
+	}
+	
+	function cambiaMesSig(){
+		$('fechaNueva').setValue($('idBean').fechaMesSiguiente.value);	
+		$('idBean').action="/docm/cambioFecha.do";
+		$('idBean').submit ();
+	}
+	
+	function cambiaAnioAnt(){
+		$('fechaNueva').setValue($('idBean').anioAnterior.value);		
+		$('idBean').action="/docm/cambioFecha.do";
+		$('idBean').submit ();
+	}
+	
+	function cambiaAnioSig(){
+		$('idBean').fechaNueva.value = $('idBean').anioSiguiente.value;	
+		$('idBean').action="/docm/cambioFecha.do";
+		$('idBean').submit ();
+	}
+	
+	function cambiaMesCombo(){
+		fecha = $('idBean').fechaNueva.value;
+		mesCombo = $('idBean').mes.value;
+		if(mesCombo<10){
+			mesCombo = "0"+mesCombo;
+		}
+		arrFecha = fecha.split("/");
+		fecha = arrFecha[0] + "/" + mesCombo + "/" + arrFecha[2];
+		$('idBean').fechaNueva.value=fecha;
+		$('idBean').action="/docm/cambioFecha.do?cambioMes=si";
+		$('idBean').submit();
+	}
+	
+	function cambiaAnioInput(){
+		anio = $('idBean').anioInput.value;
+		
+		if (anio.length != 4) {
+			alert($('idBean').msjNumAnio.value);
+			return false;
+		}
+		
+		var string="1234567890";
+		
+		for(i=0;i<4;i++){
+			if (string.indexOf(anio.charAt(i))==-1){
+				alert($('idBean').msjNumAnio.value);
+				return false;
+			}
+		}
+		
+		fecha = $('idBean').fechaNueva.value;
+		arrFecha = fecha.split("/");
+		fecha = arrFecha[0] + "/" + arrFecha[1] + "/" + anio;
+		
+		$('idBean').fechaNueva.value=fecha;
+		$('idBean').action="/docm/cambioFecha.do";
+		$('idBean').submit();
+		
+		return true;
+	}
+	
+	function tecla(e){
+		if(window.event) {
+			keyCode = window.event.keyCode;
+		}
+		else if(e) {
+			keyCode = e.which;
+		}
+		
+		if(keyCode == 13) {
+			cambiaAnioInput();
+		}
+	}
+	
+	// ]]> 
+
+</script>
+	
+			<table id='calendario' class='calendario tablaControlFecha'>
+<tr>
+<td colspan='10'>
+&nbsp;
+</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td onclick='cambiaMesAnt();' onkeypress='cambiaMesAnt();' class = 'botonMesAnt'><img alt='Cambiar a mes anterior' src='/docm/images/bg_flecha_izq.png' /></td>
+<td class='etiquetaGris'><select class='controlesCalendario' name='mes' id='mes' onchange='cambiaMesCombo()'>
+<option value='1' >enero</option><option value='2' >febrero</option><option value='3' >marzo</option><option value='4'>abril</option><option value='5'>mayo</option><option value='6'>junio</option><option value='7'>julio</option><option value='8'>agosto</option><option value='9'>septiembre</option><option value='10' selected='selected'>octubre</option><option value='11'>noviembre</option><option value='12'>diciembre</option></select></td><td onclick='cambiaMesSig()' onkeypress='cambiaMesSig()' class = 'botonMesSig'><img alt='Cambia a mes siguiente' src='/docm/images/bg_flecha_der.png' /></td><td class='textoSubtit'></td><td>&nbsp;</td><td onclick='cambiaAnioAnt();' onkeypress='cambiaAnioAnt();' class = 'botonAnioAnt'><img alt='Cambia a año anterior' src='/docm/images/bg_flecha_izq.png' /></td><td class='etiquetaGris'><label for = 'anioInput'></label> <input type='text' class='controlesCalendario' id='anioInput' name='anioInput' onblur='cambiaAnioInput();' onkeypress = 'tecla(event)' value='2026'/></td><td class = 'botonAnioSig' onclick='cambiaAnioSig()' onkeypress='cambiaAnioSig()'><img alt='Cambia a año siguiente' src='/docm/images/bg_flecha_der.png' /></td><td>&nbsp;</td></tr><tr><td colspan='10'></td></tr><tr><td colspan='10'><table class='calendario'><tr class='calDays'><td class='primeraDiasCalendario'></td> <td class='diaCalendario' >L</td> <td class='diaCalendario' >M</td> <td class='diaCalendario' >X</td> <td class='diaCalendario' >J</td> <td class='diaCalendario' >V</td> <td class='diaCalendario' >S</td> <td class='diaCalendario' >D</td><td ></td></tr>
+<tr><td ></td><td class='futuro'></td><td class='futuro'></td><td class='futuro'></td><td class='siTieneDogv'>01<a class = 'diario_ordinario' href="/docm/cambiarBoletin.do?fecha=20261001" rel = 'external'><div>   <span>Ord.</span></div> </a></td> <td class='siTieneDogv'>02<a class = 'diario_ordinario' href="/docm/cambiarBoletin.do?fecha=20261002" rel = 'external'><div>   <span>Ord.</span></div> </a></td> <td class='noTieneDogv'> 3</td> <td class='noTieneDogv'> 4</td><td ></td></tr><tr><td ></td> <td class='siTieneDogv'>05<a class = 'diario_ordinario' href="/docm/cambiarBoletin.do?fecha=20261005" rel = 'external'><div>   <span>Ord.</span></div> </a></td> <td class='siTieneDogv'>06<a class = 'diario_ordinario' href="/docm/cambiarBoletin.do?fecha=20261006" rel = 'external'><div>   <span>Ord.</span></div> </a></td> <td class='siTieneDogv'>07<a class = 'diario_ordinario' href="/docm/cambiarBoletin.do?fecha=20261007" rel = 'external'><div>   <span>Ord.</span></div> </a></td> <td class='siTieneDogv'>08<a class = 'diario_ordinario' href="/docm/cambiarBoletin.do?fecha=20261008" rel = 'external'><div>   <span>Ord.</span></div> </a></td> <td class='siTieneDogv'>09<a class = 'diario_ordinario' href="/docm/cambiarBoletin.do?fecha=20261009" rel = 'external'><div>   <span>Ord.</span></div> </a></td> <td class='noTieneDogv'> 10</td> <td class='noTieneDogv'> 11</td><td ></td></tr><tr><td ></td> <td class='noTieneDogv'> 12</td> <td class='siTieneDogv'>13<a class = 'diario_ordinario' href="/docm/cambiarBoletin.do?fecha=20261013" rel = 'external'><div>   <span>Ord.</span></div> </a></td> <td class='siTieneDogv'>14<a class = 'diario_ordinario' href="/docm/cambiarBoletin.do?fecha=20261014" rel = 'external'><div>   <span>Ord.</span></div> </a></td> <td class='siTieneDogv'>15<a class = 'diario_ordinario' href="/docm/cambiarBoletin.do?fecha=20261015" rel = 'external'><div>   <span>Ord.</span></div> </a></td> <td class='siTieneDogv'>16<a class = 'diario_ordinario' href="/docm/cambiarBoletin.do?fecha=20261016" rel = 'external'><div>   <span>Ord.</span></div> </a></td> <td class='noTieneDogv'> 17</td> <td class='noTieneDogv'> 18</td><td ></td></tr><tr><td ></td> <td class='siTieneDogv'>19<a class = 'diario_ordinario' href="/docm/cambiarBoletin.do?fecha=20261019" rel = 'external'><div>   <span>Ord.</span></div> </a></td> <td class='siTieneDogv'>20<a class = 'diario_ordinario' href="/docm/cambiarBoletin.do?fecha=20261020" rel = 'external'><div>   <span>Ord.</span></div> </a></td> <td class='siTieneDogv'>21<a class = 'diario_ordinario' href="/docm/cambiarBoletin.do?fecha=20261021" rel = 'external'><div>   <span>Ord.</span></div> </a></td> <td class='siTieneDogv'>22<a class = 'diario_ordinario' href="/docm/cambiarBoletin.do?fecha=20261022" rel = 'external'><div>   <span>Ord.</span></div> </a></td> <td class='siTieneDogv'>23<a class = 'diario_ordinario' href="/docm/cambiarBoletin.do?fecha=20261023" rel = 'external'><div>   <span>Ord.</span></div> </a></td> <td class='noTieneDogv'> 24</td> <td class='noTieneDogv'> 25</td><td ></td></tr><tr><td ></td> <td class='siTieneDogv'>26<a class = 'diario_ordinario' href="/docm/cambiarBoletin.do?fecha=20261026" rel = 'external'><div>   <span>Ord.</span></div> </a></td> <td class='siTieneDogv'>27<a class = 'diario_ordinario' href="/docm/cambiarBoletin.do?fecha=20261027" rel = 'external'><div>   <span>Ord.</span></div> </a></td> <td class='siTieneDogv'>28<a class = 'diario_ordinario_visitado' href="/docm/cambiarBoletin.do?fecha=20261028" rel = 'external'><div>   <span>Ord.</span></div> </a><a class = 'diario_extraordinario' href="/docm/cambiarBoletin.do?fecha=20261028-ext-2&numDogv=2" rel = 'external'><div>   <span>Ext.</span></div> </a></td> <td class='siTieneDogv'>29<a class = 'diario_ordinario_visitado' href="/docm/cambiarBoletin.do?fecha=20261029" rel = 'external'><div>   <span>Ord.</span></div> </a></td> <td class='noTieneDogv'> 30</td> <td class='noTieneDogv'> 31</td><td ></td><td ></td></tr> </table></td></tr></table><input type="hidden" id="msjNumAnio" name="msjNumAnio" value="El año tiene que tener 4 dígitos" />
+<input type="hidden" id="fechaVista" name="fechaVista" value="29/10/2026" />
+<input type="hidden" id="fechaNueva" name="fechaNueva" value="29/10/2026" />
+<input type="hidden" id="fechaMesSiguiente" name="fechaMesSiguiente" value="29/11/2026" />
+<input type="hidden" id="fechaMesAnterior" name="fechaMesAnterior" value="29/09/2026" />
+<input type="hidden" id="anioSiguiente" name="anioSiguiente" value="29/10/2027" />
+<input type="hidden" id="anioAnterior" name="anioAnterior" value="29/10/2025" />
+
+		
+	<table id="buscaFecha">
+		<tr>
+			<td>
+				<span>
+					<label for="fechaInput"></label>
+					<input type="text" class="text" name="fechaInput" id="fechaInput" maxlength="10" value="dd/mm/yyyy"/>
+					&nbsp;&nbsp;
+					<input class="botonPortal" type="submit" value="Buscar"/>
+				</span>
+			</td>
+		</tr>
+	</table>
+ 	<br/>
+				</div>
+			</form>
+			<br/>
+		</td>
+	</tr>
+	
+	<tr>
+		<td><p><img src="/docm/images/bg_enlaces_interes.png" alt="" style="vertical-align: middle;"/>&nbsp;&nbsp;&nbsp;<b>Enlaces de Interés</b></p></td>
+	</tr>
+	<tr class = "filaOpcionesMenu" id = "filaOpcionesMenu">
+		<td>
+			<table class = "tablaOpcionesMenu">
+				<tr>
+					<td>
+						<ul>
+							<li class = "ig">
+								<a href="/docm/informacionGeneral.do" title="Abrir la página de Información general">Información general</a>
+							</li>
+							<li class = "sa">
+								<a href="/docm/alertas.do" title="Abrir la página de Servicio de alertas">Servicio de alertas</a>
+							</li>
+							<li class = "au">
+								<a href="/docm/comprobarAutenticidad.do" title="Abrir la página de Comprobar autenticidad de un boletín">Comprobar autenticidad</a>
+							</li>
+							<li class = "pf">
+								<a href="/docm/preguntasFrecuentes.do" title="Abrir la página de Preguntas frecuentes">
+									Preguntas frecuentes
+								</a>
+							</li>
+							<li class = "en">
+								<a href="/docm/enlaces.do" title="Abrir la página de enlaces">Enlaces</a>
+							</li>
+							<li>
+								<a href="/docm/cargarAltaOrganismo.do" title="Abrir la página de Solicitud de alta de organismo emisor">Alta Organismo Emisor</a>
+							</li>
+							<li class = "ap">
+								<a href="/docm/accederPublicador.do" title="Abrir la página de acceso al Publicador">Acceso al Publicador</a>
+							</li>
+							<li class = "es">
+								<a href="/docm/envioSugerencias" title="Abrir la página de Envío de Sugerencias">Envío de Sugerencias</a>
+							</li>
+							
+							
+							
+							<li class = "ba">
+								<a href="/docm/busquedaAvanzada.do" title="Abrir la página de búsqueda avanzada">Búsqueda Avanzada</a>
+							</li>
+						
+							<li>
+								<a href="/docm/descargarArchivo.do?ruta=aviso_suscriptores.pdf&amp;tipo=rutaDescargables" title="Abrir el archivo PDF de aviso a suscriptores en una nueva página" class = "new-window">Aviso a suscriptores</a>
+							</li>
+							<li class = "vn">
+								<a href="/docm/verificacionNID.do" title="Abrir la página de Verificación del NID">Verificación del NID</a>
+							</li>
+							<li class = "pe">
+								<a href="/docm/goToEliHelp.do" title="Abrir la página de Proyecto Eli">Proyecto Eli</a>
+							</li>	
+							<li class = "vn">																
+								<a href="/docm/gestionPagos.do" title="Abrir la página de Gestión de pagos">Gestión de pagos</a>
+							</li>				
+						</ul>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+						</td>
+						<td id = "contenido">
+							
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+		
+
+
+
+							
+		<table class = "tablaDatosSumario">
+			<tr>
+				<td class = "anyoDiario">
+					A&Ntilde;O XLV
+				</td>
+				<td class = "fechaDiario">
+					Miércoles, 28 de octubre de 2026
+				</td>
+				<td>
+					<div class = "numeroDiario">
+						N&uacute;m. 207
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="3">
+					<img src="./images/linea.gif" alt="" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<h2 class = "cabeceraDiario">
+						Sumario
+					</h2>
+				</td>
+				<td colspan="2" class = "descargaDiario">
+					<form action="descargarArchivo.do?ruta=2026/10/28/pdf/docm_207.pdf&amp;tipo=rutaDocm" method="post" class = "new-window">
+						<div>	
+							DOCM completo&nbsp;&nbsp;
+							<input type="image" src="./images/pdf-completo.gif" alt = "pdf &gt;"  />
+							4088 KB
+						</div>
+					</form>
+				</td>
+			</tr>
+		</table>
+			<div class = "categoriaDiario">
+			<h3 class = "cabeceraCategoria">
+					III.- OTRAS DISPOSICIONES Y ACTOS
+			</h3>
+	 		<ol class = "subcategoria">
+			  									<div class = "disposicion">
+					  						<div class = "organismo">
+							<h4 class = "tituloOrganismo">
+																											Consejería de Educación, Cultura y Deportes <br/>
+																								</h4>
+						</div>
+													
+																					
+																																				<div class = "disp_1792510256472430168">
+							<p class = "sumario">
+								<a href="./descargarArchivo.do?ruta=2026/10/28/pdf/2026_7695.pdf&amp;tipo=rutaDocm" class = "new-window">Bienes de Interés Cultural. Resoluci&#243;n de 16/10/2026</a>, de la Consejer&#237;a de Educaci&#243;n, Cultura y Deportes, por la que se declara Bien de Inter&#233;s Patrimonial la Venta de Aragoncillo, en Corduente (Guadalajara), con la categor&#237;a de Construcci&#243;n de Inter&#233;s Patrimonial. [NID 2026/7695]							
+							</p>
+							<p class = "paginaDisposicion">
+								37835
+							</p>						
+															<a onclick="javascript:abreVentanaHtml('verArchivoHtml.do?ruta=2026/10/28/html/2026_7695.html&amp;tipo=rutaDocm')" style="cursor: pointer;">	
+									<input type="image" src="./images/icono_html.gif" alt = "html &gt;"  />
+								</a>
+														<a href="./descargarArchivo.do?ruta=2026/10/28/pdf/2026_7695.pdf&amp;tipo=rutaDocm" class = "new-window">	
+								<input type="image" src="./images/pdf-completo.gif" alt = "pdf &gt;"  />
+							</a> >
+													
+							434 KB
+							&nbsp;[<a href="./detalleDocumento.do?idDisposicion=1792510256472430168" title="Ver los datos detallados del documento">Ver detalle</a>]
+						</div>
+						
+							
+						
+													
+																					
+																																				<div class = "disp_1792484265036430057">
+							<p class = "sumario">
+								<a href="./descargarArchivo.do?ruta=2026/10/28/pdf/2026_7705.pdf&amp;tipo=rutaDocm" class = "new-window">Convenios. Resoluci&#243;n de 23/09/2026</a>, de la Secretar&#237;a General, por la que se ordena la publicaci&#243;n del convenio entre la Consejer&#237;a de Educaci&#243;n, Cultura y Deportes de la Junta de Comunidades de Castilla-La Mancha, y la Empresa Tecnolog&#237;as de la Informaci&#243;n Autom&#225;ttica SLU, para el impulso del Programa wordpress.com Educaci&#243;n. [NID 2026/7705]							
+							</p>
+							<p class = "paginaDisposicion">
+								37852
+							</p>						
+															<a onclick="javascript:abreVentanaHtml('verArchivoHtml.do?ruta=2026/10/28/html/2026_7705.html&amp;tipo=rutaDocm')" style="cursor: pointer;">	
+									<input type="image" src="./images/icono_html.gif" alt = "html &gt;"  />
+								</a>
+														<a href="./descargarArchivo.do?ruta=2026/10/28/pdf/2026_7705.pdf&amp;tipo=rutaDocm" class = "new-window">	
+								<input type="image" src="./images/pdf-completo.gif" alt = "pdf &gt;"  />
+							</a> >
+													
+							255 KB
+							&nbsp;[<a href="./detalleDocumento.do?idDisposicion=1792484265036430057" title="Ver los datos detallados del documento">Ver detalle</a>]
+						</div>
+						
+							
+						
+													
+																					
+																																				<div class = "disp_1792496308346430131">
+							<p class = "sumario">
+								<a href="./descargarArchivo.do?ruta=2026/10/28/pdf/2026_7660.pdf&amp;tipo=rutaDocm" class = "new-window">Bienes de Interés Cultural. Resoluci&#243;n de 15/10/2026</a>, de la Viceconsejer&#237;a de Cultura y Deportes, por la que se inicia expediente para declarar Bien de Inter&#233;s Cultural la Tradici&#243;n Musical Popular de las Bandas en Castilla- La Mancha, con la categor&#237;a de Bien Inmaterial. [NID 2026/7660]							
+							</p>
+							<p class = "paginaDisposicion">
+								37859
+							</p>						
+															<a onclick="javascript:abreVentanaHtml('verArchivoHtml.do?ruta=2026/10/28/html/2026_7660.html&amp;tipo=rutaDocm')" style="cursor: pointer;">	
+									<input type="image" src="./images/icono_html.gif" alt = "html &gt;"  />
+								</a>
+														<a href="./descargarArchivo.do?ruta=2026/10/28/pdf/2026_7660.pdf&amp;tipo=rutaDocm" class = "new-window">	
+								<input type="image" src="./images/pdf-completo.gif" alt = "pdf &gt;"  />
+							</a> >
+													
+							250 KB
+							&nbsp;[<a href="./detalleDocumento.do?idDisposicion=1792496308346430131" title="Ver los datos detallados del documento">Ver detalle</a>]
+						</div>
+						
+							
+						
+													
+																					
+																																				<div class = "disp_1792583046947630110">
+							<p class = "sumario">
+								<a href="./descargarArchivo.do?ruta=2026/10/28/pdf/2026_7712.pdf&amp;tipo=rutaDocm" class = "new-window">Bibliotecas. Resoluci&#243;n de 16/10/2026</a>, de la Viceconsejer&#237;a de Cultura y Deportes, por la que se nombran vocales de la Comisi&#243;n T&#233;cnica de la Red de Bibliotecas P&#250;blicas de Castilla-La Mancha. [NID 2026/7712]							
+							</p>
+							<p class = "paginaDisposicion">
+								37867
+							</p>						
+															<a onclick="javascript:abreVentanaHtml('verArchivoHtml.do?ruta=2026/10/28/html/2026_7712.html&amp;tipo=rutaDocm')" style="cursor: pointer;">	
+									<input type="image" src="./images/icono_html.gif" alt = "html &gt;"  />
+								</a>
+														<a href="./descargarArchivo.do?ruta=2026/10/28/pdf/2026_7712.pdf&amp;tipo=rutaDocm" class = "new-window">	
+								<input type="image" src="./images/pdf-completo.gif" alt = "pdf &gt;"  />
+							</a> >
+													
+							178 KB
+							&nbsp;[<a href="./detalleDocumento.do?idDisposicion=1792583046947630110" title="Ver los datos detallados del documento">Ver detalle</a>]
+						</div>
+						
+							
+						
+													
+																					
+																																				<div class = "disp_1792510137882430166">
+							<p class = "sumario">
+								<a href="./descargarArchivo.do?ruta=2026/10/28/pdf/2026_7696.pdf&amp;tipo=rutaDocm" class = "new-window">Bienes de Interés Cultural. Resoluci&#243;n de 20/10/2026</a>, de la Viceconsejer&#237;a de Cultura y Deportes, por la que se inicia expediente para la delimitaci&#243;n del entorno de protecci&#243;n del yacimiento de Erc&#225;vica (Ca&#241;averuelas, Cuenca), declarado Bien de Inter&#233;s Cultural, con la categor&#237;a de Zona Arqueol&#243;gica. [NID 2026/7696]							
+							</p>
+							<p class = "paginaDisposicion">
+								37869
+							</p>						
+															<a onclick="javascript:abreVentanaHtml('verArchivoHtml.do?ruta=2026/10/28/html/2026_7696.html&amp;tipo=rutaDocm')" style="cursor: pointer;">	
+									<input type="image" src="./images/icono_html.gif" alt = "html &gt;"  />
+								</a>
+														<a href="./descargarArchivo.do?ruta=2026/10/28/pdf/2026_7696.pdf&amp;tipo=rutaDocm" class = "new-window">	
+								<input type="image" src="./images/pdf-completo.gif" alt = "pdf &gt;"  />
+							</a> >
+													
+							747 KB
+							&nbsp;[<a href="./detalleDocumento.do?idDisposicion=1792510137882430166" title="Ver los datos detallados del documento">Ver detalle</a>]
+						</div>
+						
+							
+						
+											  						<div class = "organismo">
+							<h4 class = "tituloOrganismo">
+																											Consejería de Bienestar Social <br/>
+																								</h4>
+						</div>
+													
+																					
+																																				<div class = "disp_1791964949614830059">
+							<p class = "sumario">
+								<a href="./descargarArchivo.do?ruta=2026/10/28/pdf/2026_7700.pdf&amp;tipo=rutaDocm" class = "new-window">Notificaciones. Notificaci&#243;n de 14/10/2026</a>, de la Delegaci&#243;n Provincial de Bienestar Social de Ciudad Real, por la que se acuerda dar publicidad a la resoluci&#243;n denegatoria de estancia temporal en residencia de mayores, al no haberse podido practicar la notificaci&#243;n personal en el &#250;ltimo domicilio conocido. [NID 2026/7700]							
+							</p>
+							<p class = "paginaDisposicion">
+								37898
+							</p>						
+															<a onclick="javascript:abreVentanaHtml('verArchivoHtml.do?ruta=2026/10/28/html/2026_7700.html&amp;tipo=rutaDocm')" style="cursor: pointer;">	
+									<input type="image" src="./images/icono_html.gif" alt = "html &gt;"  />
+								</a>
+														<a href="./descargarArchivo.do?ruta=2026/10/28/pdf/2026_7700.pdf&amp;tipo=rutaDocm" class = "new-window">	
+								<input type="image" src="./images/pdf-completo.gif" alt = "pdf &gt;"  />
+							</a> >
+													
+							193 KB
+							&nbsp;[<a href="./detalleDocumento.do?idDisposicion=1791964949614830059" title="Ver los datos detallados del documento">Ver detalle</a>]
+						</div>
+						
+							
+						
+													
+																					
+																																				<div class = "disp_1792068662512850806">
+							<p class = "sumario">
+								<a href="./descargarArchivo.do?ruta=2026/10/28/pdf/2026_7701.pdf&amp;tipo=rutaDocm" class = "new-window">Notificaciones. Notificaci&#243;n de 15/10/2026</a>, de la Delegaci&#243;n Provincial de Bienestar Social de Ciudad Real, por la que se acuerda la publicaci&#243;n del 2&#186; requerimiento de la declaraci&#243;n individual del pensionista no contributivo, (revisi&#243;n anual 2025-2026) de los expedientes que se relacionan en el anexo I. [NID 2026/7701]							
+							</p>
+							<p class = "paginaDisposicion">
+								37899
+							</p>						
+															<a onclick="javascript:abreVentanaHtml('verArchivoHtml.do?ruta=2026/10/28/html/2026_7701.html&amp;tipo=rutaDocm')" style="cursor: pointer;">	
+									<input type="image" src="./images/icono_html.gif" alt = "html &gt;"  />
+								</a>
+														<a href="./descargarArchivo.do?ruta=2026/10/28/pdf/2026_7701.pdf&amp;tipo=rutaDocm" class = "new-window">	
+								<input type="image" src="./images/pdf-completo.gif" alt = "pdf &gt;"  />
+							</a> >
+													
+							196 KB
+							&nbsp;[<a href="./detalleDocumento.do?idDisposicion=1792068662512850806" title="Ver los datos detallados del documento">Ver detalle</a>]
+						</div>
+						
+							
+						
+													
+																					
+																																				<div class = "disp_1791288113545600129">
+							<p class = "sumario">
+								<a href="./descargarArchivo.do?ruta=2026/10/28/pdf/2026_7691.pdf&amp;tipo=rutaDocm" class = "new-window">Notificaciones. Notificaci&#243;n de 06/10/2026</a>, de la Delegaci&#243;n Provincial de Bienestar Social de Guadalajara, por la que se acuerda la publicaci&#243;n de las resoluciones en materia de reconocimiento de la situaci&#243;n de dependencia, que se relacionan en el anexo I. [NID 2026/7691]							
+							</p>
+							<p class = "paginaDisposicion">
+								37901
+							</p>						
+															<a onclick="javascript:abreVentanaHtml('verArchivoHtml.do?ruta=2026/10/28/html/2026_7691.html&amp;tipo=rutaDocm')" style="cursor: pointer;">	
+									<input type="image" src="./images/icono_html.gif" alt = "html &gt;"  />
+								</a>
+														<a href="./descargarArchivo.do?ruta=2026/10/28/pdf/2026_7691.pdf&amp;tipo=rutaDocm" class = "new-window">	
+								<input type="image" src="./images/pdf-completo.gif" alt = "pdf &gt;"  />
+							</a> >
+													
+							192 KB
+							&nbsp;[<a href="./detalleDocumento.do?idDisposicion=1791288113545600129" title="Ver los datos detallados del documento">Ver detalle</a>]
+						</div>
+						
+							
+						
+													
+																					
+																																				<div class = "disp_1792068020332930101">
+							<p class = "sumario">
+								<a href="./descargarArchivo.do?ruta=2026/10/28/pdf/2026_7690.pdf&amp;tipo=rutaDocm" class = "new-window">Notificaciones. Notificaci&#243;n de 15/10/2026</a>, de la Delegaci&#243;n Provincial de Bienestar Social de Guadalajara, de la Resoluci&#243;n de fecha 09/09/2026 en materia de reconocimiento de la situaci&#243;n de dependencia reca&#237;da en el expediente 19/3604038/2026-03. [NID 2026/7690]							
+							</p>
+							<p class = "paginaDisposicion">
+								37903
+							</p>						
+															<a onclick="javascript:abreVentanaHtml('verArchivoHtml.do?ruta=2026/10/28/html/2026_7690.html&amp;tipo=rutaDocm')" style="cursor: pointer;">	
+									<input type="image" src="./images/icono_html.gif" alt = "html &gt;"  />
+								</a>
+														<a href="./descargarArchivo.do?ruta=2026/10/28/pdf/2026_7690.pdf&amp;tipo=rutaDocm" class = "new-window">	
+								<input type="image" src="./images/pdf-completo.gif" alt = "pdf &gt;"  />
+							</a> >
+													
+							160 KB
+							&nbsp;[<a href="./detalleDocumento.do?idDisposicion=1792068020332930101" title="Ver los datos detallados del documento">Ver detalle</a>]
+						</div>
+						
+							
+						
+													
+																					
+																																				<div class = "disp_1792497420435430140">
+							<p class = "sumario">
+								<a href="./descargarArchivo.do?ruta=2026/10/28/pdf/2026_7692.pdf&amp;tipo=rutaDocm" class = "new-window">Notificaciones. Notificaci&#243;n de 20/10/2026</a>, de la Delegaci&#243;n Provincial de Bienestar Social de Guadalajara, de la citaci&#243;n para la valoraci&#243;n y reconocimiento del derecho a los servicios y/o prestaciones del sistema para la autonom&#237;a y atenci&#243;n a la dependencia de fecha 23/09/2026 en materia de reconocimiento de la situaci&#243;n de dependencia del expediente 19/7216313/2014-77. [NID 2026/7692]							
+							</p>
+							<p class = "paginaDisposicion">
+								37904
+							</p>						
+															<a onclick="javascript:abreVentanaHtml('verArchivoHtml.do?ruta=2026/10/28/html/2026_7692.html&amp;tipo=rutaDocm')" style="cursor: pointer;">	
+									<input type="image" src="./images/icono_html.gif" alt = "html &gt;"  />
+								</a>
+														<a href="./descargarArchivo.do?ruta=2026/10/28/pdf/2026_7692.pdf&amp;tipo=rutaDocm" class = "new-window">	
+								<input type="image" src="./images/pdf-completo.gif" alt = "pdf &gt;"  />
+							</a> >
+													
+							160 KB
+							&nbsp;[<a href="./detalleDocumento.do?idDisposicion=1792497420435430140" title="Ver los datos detallados del documento">Ver detalle</a>]
+						</div>
+						
+							
+						
+											  						<div class = "organismo">
+							<h4 class = "tituloOrganismo">
+																											Consejería de Desarrollo Sostenible <br/>
+																								</h4>
+						</div>
+													
+																					
+																																				<div class = "disp_1792500041697610080">
+							<p class = "sumario">
+								<a href="./descargarArchivo.do?ruta=2026/10/28/pdf/2026_7702.pdf&amp;tipo=rutaDocm" class = "new-window">Medio Ambiente. Resoluci&#243;n de 20/10/2026</a>, de la Direcci&#243;n General de Calidad Ambiental, por la que se formula el informe de impacto ambiental del proyecto: Ampliaci&#243;n de la instalaci&#243;n de tratamiento y valorizaci&#243;n de residuos de construcci&#243;n y demolici&#243;n (expediente S478/2026/DG/00128), situado en el t&#233;rmino municipal de Villarrubia de los Ojos (Ciudad Real), cuya promotora es Movimiento de Tierras Alises, SL. [NID 2026/7702]							
+							</p>
+							<p class = "paginaDisposicion">
+								37905
+							</p>						
+															<a onclick="javascript:abreVentanaHtml('verArchivoHtml.do?ruta=2026/10/28/html/2026_7702.html&amp;tipo=rutaDocm')" style="cursor: pointer;">	
+									<input type="image" src="./images/icono_html.gif" alt = "html &gt;"  />
+								</a>
+														<a href="./descargarArchivo.do?ruta=2026/10/28/pdf/2026_7702.pdf&amp;tipo=rutaDocm" class = "new-window">	
+								<input type="image" src="./images/pdf-completo.gif" alt = "pdf &gt;"  />
+							</a> >
+													
+							301 KB
+							&nbsp;[<a href="./detalleDocumento.do?idDisposicion=1792500041697610080" title="Ver los datos detallados del documento">Ver detalle</a>]
+						</div>
+						
+							
+						
+													
+																					
+																																				<div class = "disp_1792567549179630017">
+							<p class = "sumario">
+								<a href="./descargarArchivo.do?ruta=2026/10/28/pdf/2026_7703.pdf&amp;tipo=rutaDocm" class = "new-window">Instalaciones Eléctricas. Resoluci&#243;n de 18/10/2026</a>, de la Direcci&#243;n General de Transici&#243;n Energ&#233;tica, sobre modificaci&#243;n de la instalaci&#243;n solar fotovoltaica denominada HFV Iniesta, infraestructuras auxiliares y de evacuaci&#243;n. (Referencia: 2703/01582). [NID 2026/7703]							
+							</p>
+							<p class = "paginaDisposicion">
+								37916
+							</p>						
+															<a onclick="javascript:abreVentanaHtml('verArchivoHtml.do?ruta=2026/10/28/html/2026_7703.html&amp;tipo=rutaDocm')" style="cursor: pointer;">	
+									<input type="image" src="./images/icono_html.gif" alt = "html &gt;"  />
+								</a>
+														<a href="./descargarArchivo.do?ruta=2026/10/28/pdf/2026_7703.pdf&amp;tipo=rutaDocm" class = "new-window">	
+								<input type="image" src="./images/pdf-completo.gif" alt = "pdf &gt;"  />
+							</a> >
+													
+							245 KB
+							&nbsp;[<a href="./detalleDocumento.do?idDisposicion=1792567549179630017" title="Ver los datos detallados del documento">Ver detalle</a>]
+						</div>
+						
+							
+						
+													
+																					
+																																				<div class = "disp_1792582724891800072">
+							<p class = "sumario">
+								<a href="./descargarArchivo.do?ruta=2026/10/28/pdf/2026_7710.pdf&amp;tipo=rutaDocm" class = "new-window">Medio Ambiente. Resoluci&#243;n de 20/10/2026</a>, de la Delegaci&#243;n Provincial de Desarrollo Sostenible de Cuenca, por la que se formula el informe de impacto ambiental del proyecto: Concentraci&#243;n parcelaria privada de Ca&#241;ada del Hoyo (expediente S478/2025/CU/00027), situado en el t&#233;rmino municipal de Ca&#241;ada del Hoyo (Cuenca), cuya promotora es la Asociaci&#243;n Parcelaria de Ca&#241;ada del Hoyo. [NID 2026/7710]							
+							</p>
+							<p class = "paginaDisposicion">
+								37920
+							</p>						
+															<a onclick="javascript:abreVentanaHtml('verArchivoHtml.do?ruta=2026/10/28/html/2026_7710.html&amp;tipo=rutaDocm')" style="cursor: pointer;">	
+									<input type="image" src="./images/icono_html.gif" alt = "html &gt;"  />
+								</a>
+														<a href="./descargarArchivo.do?ruta=2026/10/28/pdf/2026_7710.pdf&amp;tipo=rutaDocm" class = "new-window">	
+								<input type="image" src="./images/pdf-completo.gif" alt = "pdf &gt;"  />
+							</a> >
+													
+							341 KB
+							&nbsp;[<a href="./detalleDocumento.do?idDisposicion=1792582724891800072" title="Ver los datos detallados del documento">Ver detalle</a>]
+						</div>
+						
+							
+						
+													
+																					
+																																				<div class = "disp_1792565647171630011">
+							<p class = "sumario">
+								<a href="./descargarArchivo.do?ruta=2026/10/28/pdf/2026_7689.pdf&amp;tipo=rutaDocm" class = "new-window">Sanciones. Notificaci&#243;n de 21/10/2026</a>, de la Delegaci&#243;n Provincial de Desarrollo Sostenible de Cuenca, por la que se acuerda dar publicidad a la resoluci&#243;n por pronto pago reca&#237;da en el expediente sancionador por infracci&#243;n en materia de caza, al no haberse podido practicar la notificaci&#243;n personal en el &#250;ltimo domicilio conocido. (Expediente SANCI/26/231201/000253). [NID 2026/7689]							
+							</p>
+							<p class = "paginaDisposicion">
+								37934
+							</p>						
+															<a onclick="javascript:abreVentanaHtml('verArchivoHtml.do?ruta=2026/10/28/html/2026_7689.html&amp;tipo=rutaDocm')" style="cursor: pointer;">	
+									<input type="image" src="./images/icono_html.gif" alt = "html &gt;"  />
+								</a>
+														<a href="./descargarArchivo.do?ruta=2026/10/28/pdf/2026_7689.pdf&amp;tipo=rutaDocm" class = "new-window">	
+								<input type="image" src="./images/pdf-completo.gif" alt = "pdf &gt;"  />
+							</a> >
+													
+							194 KB
+							&nbsp;[<a href="./detalleDocumento.do?idDisposicion=1792565647171630011" title="Ver los datos detallados del documento">Ver detalle</a>]
+						</div>
+						
+							
+						
+											  						<div class = "organismo">
+							<h4 class = "tituloOrganismo">
+																									   		Universidad de Castilla-La Mancha <br/>
+																								</h4>
+						</div>
+													
+																					
+																																				<div class = "disp_1792663197033920168">
+							<p class = "sumario">
+								<a href="./descargarArchivo.do?ruta=2026/10/28/pdf/2026_7728.pdf&amp;tipo=rutaDocm" class = "new-window">Universidades. Extracto de 21/10/2026</a>, de la Universidad de Castilla-La Mancha, de la convocatoria de Premios a Trabajos Fin de Grado y Trabajos de Fin de M&#225;ster en materia de Gobierno Abierto. Universidad de Castilla-La Mancha. Curso acad&#233;mico 2025/2026. BDNS (Identif.): 937116. [NID 2026/7728]							
+							</p>
+							<p class = "paginaDisposicion">
+								37935
+							</p>						
+															<a onclick="javascript:abreVentanaHtml('verArchivoHtml.do?ruta=2026/10/28/html/2026_7728.html&amp;tipo=rutaDocm')" style="cursor: pointer;">	
+									<input type="image" src="./images/icono_html.gif" alt = "html &gt;"  />
+								</a>
+														<a href="./descargarArchivo.do?ruta=2026/10/28/pdf/2026_7728.pdf&amp;tipo=rutaDocm" class = "new-window">	
+								<input type="image" src="./images/pdf-completo.gif" alt = "pdf &gt;"  />
+							</a> >
+													
+							185 KB
+							&nbsp;[<a href="./detalleDocumento.do?idDisposicion=1792663197033920168" title="Ver los datos detallados del documento">Ver detalle</a>]
+						</div>
+						
+							
+						
+													
+																					
+																																				<div class = "disp_1792734236274931015">
+							<p class = "sumario">
+								<a href="./descargarArchivo.do?ruta=2026/10/28/pdf/2026_7750.pdf&amp;tipo=rutaDocm" class = "new-window">Universidades. Extracto de 22/10/2026</a>, de la Universidad de Castilla-La Mancha, de la convocatoria de Premios a Trabajos Fin de M&#225;ster del M&#225;ster en Ingenier&#237;a Qu&#237;mica de la Facultad de Ciencias y Tecnolog&#237;as Qu&#237;micas de la Universidad de Castilla-La Mancha en colaboraci&#243;n con CT Ingenieros. Curso Acad&#233;mico 2025/2026. BDNS (Identif.): 937385. [NID 2026/7750]							
+							</p>
+							<p class = "paginaDisposicion">
+								37937
+							</p>						
+															<a onclick="javascript:abreVentanaHtml('verArchivoHtml.do?ruta=2026/10/28/html/2026_7750.html&amp;tipo=rutaDocm')" style="cursor: pointer;">	
+									<input type="image" src="./images/icono_html.gif" alt = "html &gt;"  />
+								</a>
+														<a href="./descargarArchivo.do?ruta=2026/10/28/pdf/2026_7750.pdf&amp;tipo=rutaDocm" class = "new-window">	
+								<input type="image" src="./images/pdf-completo.gif" alt = "pdf &gt;"  />
+							</a> >
+													
+							177 KB
+							&nbsp;[<a href="./detalleDocumento.do?idDisposicion=1792734236274931015" title="Ver los datos detallados del documento">Ver detalle</a>]
+						</div>
+						
+							
+						
+													
+																					
+																																				<div class = "disp_1792734748796931020">
+							<p class = "sumario">
+								<a href="./descargarArchivo.do?ruta=2026/10/28/pdf/2026_7755.pdf&amp;tipo=rutaDocm" class = "new-window">Universidades. Extracto de 22/10/2026</a>, de la Universidad de Castilla-La Mancha, de la convocatoria de Premios a Trabajos Fin de M&#225;ster del M&#225;ster en Ingenier&#237;a Qu&#237;mica de la Facultad de Ciencias y Tecnolog&#237;as Qu&#237;micas de la Universidad de Castilla-La Mancha en colaboraci&#243;n con T&#233;cnicas Reunidas. Curso Acad&#233;mico 2025/2026. BDNS (Identif.): 937387. [NID 2026/7755]							
+							</p>
+							<p class = "paginaDisposicion">
+								37938
+							</p>						
+															<a onclick="javascript:abreVentanaHtml('verArchivoHtml.do?ruta=2026/10/28/html/2026_7755.html&amp;tipo=rutaDocm')" style="cursor: pointer;">	
+									<input type="image" src="./images/icono_html.gif" alt = "html &gt;"  />
+								</a>
+														<a href="./descargarArchivo.do?ruta=2026/10/28/pdf/2026_7755.pdf&amp;tipo=rutaDocm" class = "new-window">	
+								<input type="image" src="./images/pdf-completo.gif" alt = "pdf &gt;"  />
+							</a> >
+													
+							177 KB
+							&nbsp;[<a href="./detalleDocumento.do?idDisposicion=1792734748796931020" title="Ver los datos detallados del documento">Ver detalle</a>]
+						</div>
+						
+							
+						
+													
+																					
+																																				<div class = "disp_1792735881128931026">
+							<p class = "sumario">
+								<a href="./descargarArchivo.do?ruta=2026/10/28/pdf/2026_7760.pdf&amp;tipo=rutaDocm" class = "new-window">Universidades. Extracto de 22/10/2026</a>, de la Universidad de Castilla-La Mancha, de la convocatoria de Premio Pernod Ricard a Trabajos Fin de M&#225;ster Universitario en Innovaci&#243;n y Desarrollo de Alimentos de Calidad de la Facultad de Ciencias y Tecnolog&#237;as Qu&#237;micas de la Universidad de Castilla-La Mancha. Curso acad&#233;mico 2025/2026. BDNS (Identif.): 937389. [NID 2026/7760]							
+							</p>
+							<p class = "paginaDisposicion">
+								37939
+							</p>						
+															<a onclick="javascript:abreVentanaHtml('verArchivoHtml.do?ruta=2026/10/28/html/2026_7760.html&amp;tipo=rutaDocm')" style="cursor: pointer;">	
+									<input type="image" src="./images/icono_html.gif" alt = "html &gt;"  />
+								</a>
+														<a href="./descargarArchivo.do?ruta=2026/10/28/pdf/2026_7760.pdf&amp;tipo=rutaDocm" class = "new-window">	
+								<input type="image" src="./images/pdf-completo.gif" alt = "pdf &gt;"  />
+							</a> >
+													
+							178 KB
+							&nbsp;[<a href="./detalleDocumento.do?idDisposicion=1792735881128931026" title="Ver los datos detallados del documento">Ver detalle</a>]
+						</div>
+						
+							
+						
+													
+																					
+																																				<div class = "disp_1792736526078931034">
+							<p class = "sumario">
+								<a href="./descargarArchivo.do?ruta=2026/10/28/pdf/2026_7761.pdf&amp;tipo=rutaDocm" class = "new-window">Universidades. Extracto de 22/10/2026</a>, de la Universidad de Castilla-La Mancha, de la convocatoria de Premio Pernod Ricard a Trabajos Fin de Grado en Ciencia y Tecnolog&#237;a de Alimentos de la Facultad de Ciencias y Tecnolog&#237;as Qu&#237;micas de la Universidad de Castilla-La Mancha. Curso acad&#233;mico 2025/2026. BDNS (Identif.): 937390. [NID 2026/7761]							
+							</p>
+							<p class = "paginaDisposicion">
+								37940
+							</p>						
+															<a onclick="javascript:abreVentanaHtml('verArchivoHtml.do?ruta=2026/10/28/html/2026_7761.html&amp;tipo=rutaDocm')" style="cursor: pointer;">	
+									<input type="image" src="./images/icono_html.gif" alt = "html &gt;"  />
+								</a>
+														<a href="./descargarArchivo.do?ruta=2026/10/28/pdf/2026_7761.pdf&amp;tipo=rutaDocm" class = "new-window">	
+								<input type="image" src="./images/pdf-completo.gif" alt = "pdf &gt;"  />
+							</a> >
+													
+							177 KB
+							&nbsp;[<a href="./detalleDocumento.do?idDisposicion=1792736526078931034" title="Ver los datos detallados del documento">Ver detalle</a>]
+						</div>
+						
+							
+						
+													
+																					
+																																				<div class = "disp_1792737252752931045">
+							<p class = "sumario">
+								<a href="./descargarArchivo.do?ruta=2026/10/28/pdf/2026_7762.pdf&amp;tipo=rutaDocm" class = "new-window">Universidades. Extracto de 22/10/2026</a>, de la Universidad de Castilla-La Mancha, de la convocatoria de Premio Agrovin a Trabajos Fin de Grado sobre Enolog&#237;a de la Facultad de Ciencias y Tecnolog&#237;as Qu&#237;micas de la Universidad de Castilla-La Mancha. Curso acad&#233;mico 2025/2026. BDNS (Identif.): 937391. [NID 2026/7762]							
+							</p>
+							<p class = "paginaDisposicion">
+								37941
+							</p>						
+															<a onclick="javascript:abreVentanaHtml('verArchivoHtml.do?ruta=2026/10/28/html/2026_7762.html&amp;tipo=rutaDocm')" style="cursor: pointer;">	
+									<input type="image" src="./images/icono_html.gif" alt = "html &gt;"  />
+								</a>
+														<a href="./descargarArchivo.do?ruta=2026/10/28/pdf/2026_7762.pdf&amp;tipo=rutaDocm" class = "new-window">	
+								<input type="image" src="./images/pdf-completo.gif" alt = "pdf &gt;"  />
+							</a> >
+													
+							177 KB
+							&nbsp;[<a href="./detalleDocumento.do?idDisposicion=1792737252752931045" title="Ver los datos detallados del documento">Ver detalle</a>]
+						</div>
+						
+							
+						
+											  					</div>
+				</li>
+			   			</ol>
+		</div>
+			<div class = "categoriaDiario">
+			<h3 class = "cabeceraCategoria">
+					V.- ANUNCIOS
+			</h3>
+	 		<ol class = "subcategoria">
+			  									<li>OTROS ANUNCIOS OFICIALES
+			    					<div class = "disposicion">
+					  						<div class = "organismo">
+							<h4 class = "tituloOrganismo">
+																											Consejería de Desarrollo Sostenible <br/>
+																								</h4>
+						</div>
+													
+																					
+																																				<div class = "disp_1788955581102210072">
+							<p class = "sumario">
+								<a href="./descargarArchivo.do?ruta=2026/10/28/pdf/2026_6563.pdf&amp;tipo=rutaDocm" class = "new-window"> Anuncio de 09/09/2026</a>, de la Delegaci&#243;n Provincial de Desarrollo Sostenible de Guadalajara, sobre informaci&#243;n p&#250;blica a efectos de autorizaci&#243;n administrativa previa y autorizaci&#243;n administrativa de construcci&#243;n, del proyecto para ADE_C685 sustituci&#243;n trafo PCB en CT 19A248 en el t&#233;rmino municipal de Brihuega (Guadalajara), expediente: 2023DIST025. [NID 2026/6563]							
+							</p>
+							<p class = "paginaDisposicion">
+								37942
+							</p>						
+															<a onclick="javascript:abreVentanaHtml('verArchivoHtml.do?ruta=2026/10/28/html/2026_6563.html&amp;tipo=rutaDocm')" style="cursor: pointer;">	
+									<input type="image" src="./images/icono_html.gif" alt = "html &gt;"  />
+								</a>
+														<a href="./descargarArchivo.do?ruta=2026/10/28/pdf/2026_6563.pdf&amp;tipo=rutaDocm" class = "new-window">	
+								<input type="image" src="./images/pdf-completo.gif" alt = "pdf &gt;"  />
+							</a> >
+													
+							149 KB
+							&nbsp;[<a href="./detalleDocumento.do?idDisposicion=1788955581102210072" title="Ver los datos detallados del documento">Ver detalle</a>]
+						</div>
+						
+							
+						
+											  					</div>
+				</li>
+			   									<li>ADMINISTRACIÓN LOCAL
+			    					<div class = "disposicion">
+					  						<div class = "organismo">
+							<h4 class = "tituloOrganismo">
+																									   		Ayuntamiento de Alovera (Guadalajara) <br/>
+																								</h4>
+						</div>
+													
+																					
+																																				<div class = "disp_1792150534549950060">
+							<p class = "sumario">
+								<a href="./descargarArchivo.do?ruta=2026/10/28/pdf/2026_7601.pdf&amp;tipo=rutaDocm" class = "new-window"> Anuncio de 16/10/2026</a>, del Ayuntamiento de Alovera (Guadalajara), sobre aprobaci&#243;n definitiva del Plan Especial de Reforma Interior del casco urbano de Alovera. [NID 2026/7601]							
+							</p>
+							<p class = "paginaDisposicion">
+								37943
+							</p>						
+															<a onclick="javascript:abreVentanaHtml('verArchivoHtml.do?ruta=2026/10/28/html/2026_7601.html&amp;tipo=rutaDocm')" style="cursor: pointer;">	
+									<input type="image" src="./images/icono_html.gif" alt = "html &gt;"  />
+								</a>
+														<a href="./descargarArchivo.do?ruta=2026/10/28/pdf/2026_7601.pdf&amp;tipo=rutaDocm" class = "new-window">	
+								<input type="image" src="./images/pdf-completo.gif" alt = "pdf &gt;"  />
+							</a> >
+													
+							189 KB
+							&nbsp;[<a href="./detalleDocumento.do?idDisposicion=1792150534549950060" title="Ver los datos detallados del documento">Ver detalle</a>]
+						</div>
+						
+							
+						
+											  						<div class = "organismo">
+							<h4 class = "tituloOrganismo">
+																									   		Ayuntamiento de Camuñas (Toledo) <br/>
+																								</h4>
+						</div>
+													
+																					
+																																				<div class = "disp_1792490590920610037">
+							<p class = "sumario">
+								<a href="./descargarArchivo.do?ruta=2026/10/28/pdf/2026_7651.pdf&amp;tipo=rutaDocm" class = "new-window"> Anuncio de 20/10/2026</a>, del Ayuntamiento de Camu&#241;as (Toledo), sobre exposici&#243;n p&#250;blica del Plan Especial de Reforma Interior de la UA-5. [NID 2026/7651]							
+							</p>
+							<p class = "paginaDisposicion">
+								37944
+							</p>						
+															<a onclick="javascript:abreVentanaHtml('verArchivoHtml.do?ruta=2026/10/28/html/2026_7651.html&amp;tipo=rutaDocm')" style="cursor: pointer;">	
+									<input type="image" src="./images/icono_html.gif" alt = "html &gt;"  />
+								</a>
+														<a href="./descargarArchivo.do?ruta=2026/10/28/pdf/2026_7651.pdf&amp;tipo=rutaDocm" class = "new-window">	
+								<input type="image" src="./images/pdf-completo.gif" alt = "pdf &gt;"  />
+							</a> >
+													
+							170 KB
+							&nbsp;[<a href="./detalleDocumento.do?idDisposicion=1792490590920610037" title="Ver los datos detallados del documento">Ver detalle</a>]
+						</div>
+						
+							
+						
+											  						<div class = "organismo">
+							<h4 class = "tituloOrganismo">
+																									   		Ayuntamiento de Talavera de la Reina (Toledo) <br/>
+																								</h4>
+						</div>
+													
+																					
+																																				<div class = "disp_1792054385309850040">
+							<p class = "sumario">
+								<a href="./descargarArchivo.do?ruta=2026/10/28/pdf/2026_7557.pdf&amp;tipo=rutaDocm" class = "new-window"> Anuncio de 06/10/2026</a>, del Ayuntamiento de Talavera de la Reina (Toledo), sobre aprobaci&#243;n definitiva del Estudio de Detalle para la redefinici&#243;n de retranqueos dentro del &#225;mbito de la unidad urbana equivalente conformada por las parcelas sitas en calle Juan de la Cierva, 58 y calle Galileo, 60, en el pol&#237;gono industrial de Torrehierro. (Expediente 1341/2026/URB). [NID 2026/7557]							
+							</p>
+							<p class = "paginaDisposicion">
+								37945
+							</p>						
+															<a onclick="javascript:abreVentanaHtml('verArchivoHtml.do?ruta=2026/10/28/html/2026_7557.html&amp;tipo=rutaDocm')" style="cursor: pointer;">	
+									<input type="image" src="./images/icono_html.gif" alt = "html &gt;"  />
+								</a>
+														<a href="./descargarArchivo.do?ruta=2026/10/28/pdf/2026_7557.pdf&amp;tipo=rutaDocm" class = "new-window">	
+								<input type="image" src="./images/pdf-completo.gif" alt = "pdf &gt;"  />
+							</a> >
+													
+							202 KB
+							&nbsp;[<a href="./detalleDocumento.do?idDisposicion=1792054385309850040" title="Ver los datos detallados del documento">Ver detalle</a>]
+						</div>
+						
+							
+						
+											  					</div>
+				</li>
+			   			</ol>
+		</div>
+			<form id="abrirEnVentanaForm" method="POST" action="">
+				<input type="hidden" id="idDisposicion" name="idDisposicion" /> <input
+					type="hidden" id="from" name="from" value="" />
+		</form>
+		<script type="text/javascript">
+		
+			function abreVentanaHtml(action) {		
+				
+				nombreVentana = 'popup';
+				abreVentana(nombreVentana,'950','auto');
+				document.getElementById('abrirEnVentanaForm').target=nombreVentana;
+				document.getElementById('abrirEnVentanaForm').action=action; 
+				document.getElementById('abrirEnVentanaForm').submit();
+			}
+			
+		</script>
+	
+						</td>
+					</tr>
+					<tr>
+						<td valign="bottom">
+							&nbsp;
+						</td>
+					</tr>
+					<tr id = "pie">
+						<td colspan="3">
+							
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="section-footer" class="section section-footer">
+	<div id="zone-pie" class="zone zone-pie clearfix container-16" align="center">
+		<div id="region-pie-primera" class="grid-12 suffix-1 region region-pie-segunda" align="center">
+			<ul class="menu">
+				<li class="">
+					<a href="https://www.castillalamancha.es/certificados" target="_blank" title="Ir a la página de certificaciones">
+						<img class="imgFooter1" src="/docm/images/certificaciones.png" alt="Ir a la página de certificaciones"/>
+					</a>
+				</li>
+				<li class="">
+					<a href="http://pagina.jccm.es/fondosestructurales/inicio/" target="_blank" title="FEDER">
+						<img class="imgFooter2" src="/docm/images/feder.gif" alt="FEDER"/>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<div id="region-pie-segunda" class="grid-12 suffix-1 region region-pie-segunda" align="center">
+			<ul class="menu">
+				<li class="first leaf">
+					<a href="http://www.w3.org/WAI/WCAG1AA-Conformance" title="W3C-WAII" target="_blank">W3C-WAII</a>
+				</li>
+				<li class="leaf">
+					<a href="https://www.castillalamancha.es/protecciondedatos" target="_blank" title="Protección de datos">Protección de datos</a>
+				</li>
+				<li class="first leaf">
+					<a href="https://www.castillalamancha.es/clm/instituciones" target="_blank" title="Abrir la página de Otras instituciones">Otras instituciones</a>
+				</li>
+				<li class="leaf">
+					<a href="https://www.castillalamancha.es/sitemap" target="_blank" title="Abrir la página de Mapa del sitio">Mapa del sitio</a>
+				</li>
+				<li class="first leaf">
+					<a href="https://webmail.jccm.es/" target="_blank" title="Abrir la página de Correo web">Correo web</a>
+				</li>
+				<li class="first leaf">
+					<a href="https://www.castillalamancha.es/avisolegal" target="_blank" title="Abrir la página de Aviso legal">Aviso Legal</a>
+				</li>
+				<li class="leaf">
+					<a href="https://www.castillalamancha.es/accesibilidad" target="_blank" title="Abrir la página de Accesibilidad">Accesibilidad</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+						</td>
+					</tr>
+				</table>
+			</div><!-- // Content -->
+		</div><!-- //Container -->
+	</body>					
+</html>
