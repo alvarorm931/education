@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es" data-mode="s">
+
+<head>
+    <!-- meta charset="utf-8" -->
+<meta content="text/html; charset=ISO-8859-1" http-equiv="content-type"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>SIGMA</title>
+
+ 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <!-- FANCY TREE -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+ 
+ 
+    <style>
+        .my-auto {
+            margin-top: auto !important;
+            margin-bottom: auto !important;
+        }
+
+        .mx-auto {
+            margin-right: auto !important;
+            margin-left: auto !important;
+        }
+
+        hr {
+            background-color: #75787b;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        .container-fluid {
+            height: 80%;
+        }
+
+        .uam-clr {
+            background-color: #4a7729;
+            border-color: #4a7729;
+            color: white;
+        }
+
+        .uam-clr:hover,
+        .uam-clr:active {
+            background-color: #72ad47;
+            border-color: #4a7729;
+            color: white;
+        }
+
+        .log-prop {
+            max-width: 200px;
+            width: 100%;
+        }
+
+        .img-opa {
+            opacity: 0.5;
+        }
+
+        .disp-cen {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        html,
+        body {
+            background-image: url(/Navegacion/estilouam/fonduam.jpeg);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .superp {
+            background-color: black;
+            height: 100%;
+            z-index: 2;
+            position: absolute;
+            width: 100%;
+            opacity: 0.2;
+        }
+
+        .z-ind-3 {
+            z-index: 3;
+        }
+
+        .z-ind-1 {
+            z-index: 1;
+        }
+		.card {
+		background-color: rgba(255,255,255,.8) !important;
+		}
+		.crd-cent{
+			min-height:200px;
+			position:relative;
+			
+		}
+        .uam-clr:not(:disabled):not(.disabled).active,
+        .uam-clr:not(:disabled):not(.disabled):active,
+        .show>.uam-clr.dropdown-toggle
+    </style>
+</head>
+<script type="text/javascript" defer="defer">
+    
+    var texto="   SIGM@   ";
+    var longitud=texto.length;
+
+    function scroll() {
+        texto=texto.substring(1,longitud-1)+texto.charAt(0);
+        window.status = texto;
+        setTimeout("scroll()",150);
+    }
+    //-->
+</script>
+<script type="text/javascript"> 
+			function FuncionalidadAtras() { 
+				var atraserr = document.getElementById('atraserror'); 
+				atraserr.style.display="block";
+				if(!atraserr ) return; 
+				atraserr.onclick = atraserr.onkeypress = function(){
+					history.back();
+					return false;
+				}; 
+			};
+			window.onload = FuncionalidadAtras; 
+</script>
+<body>
+    <div class="superp"></div>
+    <div class="container-fluid z-ind-1">
+
+        <div class="row pt-3">
+            <div class="col-sm-6 text-left z-ind-3">
+                <img class="log-prop" src="/Navegacion/estilouam/logouam.png" />
+            </div>
+            <div class="col-sm-6 text-right z-ind-3">
+                <img class="log-prop" src="/Navegacion/estilouam/logosigma.png" />
+            </div>
+        </div>
+        <div class="row h-100">
+            <div class="col-sm-12 my-auto z-ind-3">
+                <div class="card  w-50 mx-auto text-center crd-cent z-ind-1">
+                    <div class="card-body disp-cen">
+                        <h5 class="card-title">ATENCIÓN<hr/></h5>
+                        <div class="w-100">
+			   <p align="center">
+				La página solicitada no se ha encontrado o el vínculo seguido es erróneo <br>Por favor, disculpe la molestia.
+			   </p>
+			   <!--- 
+			   <p align="center">
+			   <a href="#" id="atraserror">Volver a la página anterior</a>
+			   </p>
+			  -->
+                       </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    </div>
+</body>
+</html>

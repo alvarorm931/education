@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es" class="h-100">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Mantenimiento</title>
+
+    <link rel="stylesheet" href="/error_pages/acceso_restringido/DEUSTO/css/bootstrap.css" />
+    <link rel="stylesheet" href="/error_pages/acceso_restringido/DEUSTO/css/custom.css" />
+    <script type="text/javascript" src="/error_pages/acceso_restringido/DEUSTO/js/bootstrap.js"></script>
+
+</head>
+
+<body class="h-100 bg-custom">
+
+    <div class="container-fluid text-center h-100 d-flex  align-items-center">
+        <div class="d-flex w-100 row">
+            <div class="col-3"></div>
+            <div class="col-3 d-flex flex-column justify-content-center mr-auto p-2 text-left">
+                <h1 class="clr-primary">&#161;Uy&#33;</h1>
+                <h1 class="clr-primary">Algo ha fallado.</h1>
+                <h2 class="clr-drkgrey fnt-ini info-texto">Estamos intentando salir a flote lo antes posible para restablecer nuestro servicio.</h2>
+                <h3 class="clr-drkgrey">Disculpa las molestias.</h3>
+            </div>
+
+            <div class="col-6 p-2 justify-content-end">
+                <img class="/error_pages/acceso_restringido/DEUSTO/img-fluid info-img" src="/error_pages/acceso_restringido/DEUSTO/img/shark.png">
+            </div>
+        </div>
+
+    </div>
+    <footer class="bg-footer"></footer>
+    <script>
+        var arrayTextos = [
+            "Estamos intentando solucionar este paranormal imprevisto lo antes posible para restablecer nuestro servicio.",
+            "Estamos intentando salir a flote lo antes posible para restablecer nuestro servicio.",
+            "Estamos intentando amortiguar la ca\u00EDda lo antes posible para restablecer nuestro servicio."
+        ];
+        var arrayImg = ["ovni.png", "shark.png", "plane.png"];
+        var number = Math.floor(Math.random() * 3);
+        document.getElementsByClassName("info-texto")[0].innerHTML = arrayTextos[number];
+        document.getElementsByClassName("info-img")[0].src = "/error_pages/acceso_restringido/DEUSTO/img/" + arrayImg[number];
+    </script>
+</body>
+
+</html>
