@@ -10,6 +10,9 @@ El resultado son hechos (una línea por campo) con su captura de origen; la fich
 los hechos vigentes (docs/modelo-masters.md, §6).
 
 Uso:
+  python -m motor.estudios.extraer lote --muestra muestra.jsonl --salida ruta/ [--esperar-min 45]
+      # todo en una ejecución: descarga cortés de cada página (robots.txt, reserva TDM), lote de la API,
+      # espera, comprobación de citas y coste real; no guarda ninguna página, solo su huella
   python -m motor.estudios.extraer preparar --paginas ruta/paginas.jsonl --salida ruta/   # crea el lote
   python -m motor.estudios.extraer enviar --lote ruta/lote.jsonl                           # ANTHROPIC_API_KEY
   python -m motor.estudios.extraer recoger --id msgbatch_... --paginas ... --salida ruta/
@@ -19,18 +22,20 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import html as html_lib
 import json
 import os
 import re
 import sys
 import time
 import unicodedata
+from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
 
 import requests
 
-from motor.limpieza import limpiar_html
+from motor.limpieza import parrafos_seguros
 
 API = "https://api.anthropic.com/v1/messages/batches"
 MODELO = os.environ.get("MODELO_EXTRACCION", "claude-haiku-5-5")
@@ -80,13 +85,55 @@ def _norma(s: str) -> str:
     return " ".join(s.split())
 
 
+RE_FUERA = re.compile(r"(?is)<!--.*?-->|<(script|style|noscript|svg|nav|footer|template|iframe|form)\b.*?</\1>|<head\b.*?</head>")
+RE_BLOQUE_WEB = re.compile(r"(?i)</?(p|div|li|ul|ol|h[1-6]|section|article|aside|header|main|dd|dt|dl|br|tr|table|"
+                           r"tbody|thead|blockquote|figcaption|summary|details)\b[^>]*>")
+RE_CELDA_FIN = re.compile(r"(?i)</t[dh]\s*>")
+TIPOS_LD = {"Course", "EducationalOccupationalProgram", "CourseInstance", "Product", "Offer", "AggregateOffer"}
+
+
+def _ld_lineas(html: str) -> list[str]:
+    """Datos estructurados del programa (Schema.org) como líneas citables: el precio a veces solo está ahí."""
+    lineas = []
+    for bloque in re.findall(r'(?is)<script[^>]*application/ld\+json[^>]*>(.*?)</script>', html or ""):
+        try:
+            d = json.loads(bloque.strip())
+        except (ValueError, TypeError):
+            continue
+        pila = d if isinstance(d, list) else d.get("@graph", [d]) if isinstance(d, dict) else []
+        while pila:
+            x = pila.pop(0)
+            if not isinstance(x, dict):
+                continue
+            tipos = x.get("@type") if isinstance(x.get("@type"), list) else [x.get("@type")]
+            if set(map(str, tipos)) & TIPOS_LD:
+                campos = {k: x.get(k) for k in ("name", "price", "lowPrice", "highPrice", "priceCurrency",
+                                                 "timeRequired", "educationalCredentialAwarded", "numberOfCredits",
+                                                 "courseMode", "startDate", "inLanguage") if isinstance(x.get(k), (str, int, float))}
+                if campos:
+                    lineas.append(f"Schema.org {'/'.join(map(str, tipos))}: " + "; ".join(f"{k}={v}" for k, v in campos.items()))
+            for k in ("offers", "hasCourseInstance", "educationalCredentialAwarded"):
+                v = x.get(k)
+                pila += v if isinstance(v, list) else [v] if isinstance(v, dict) else []
+    return lineas
+
+
 def texto_de_pagina(html: str) -> str:
-    limpio = limpiar_html(html)
-    partes = [limpio.get("texto", "")]
-    for t in limpio.get("tablas", []):
-        for fila in t.get("contenido", []) or []:
-            partes.append(" | ".join(fila))
-    return "\n".join(p for p in partes if p)[:MAX_CARACTERES]
+    """Texto visible de una página web, por líneas, sin menús, pies, formularios ni código; las tablas como
+    «celda | celda». Se quitan las líneas con nombres de personas (motor.limpieza) y se añaden los datos
+    estructurados del programa. Es lo que ve el modelo y donde se comprueba cada cita."""
+    h = RE_FUERA.sub(" ", html or "")
+    h = RE_CELDA_FIN.sub(" | ", h)
+    h = RE_BLOQUE_WEB.sub("\n", h)
+    h = re.sub(r"<[^>]+>", " ", h)
+    lineas, previa = [], None
+    for linea in html_lib.unescape(h).replace("\xa0", " ").splitlines():
+        linea = " ".join(linea.split()).strip(" |")
+        if linea and linea != previa:
+            lineas.append(linea)
+            previa = linea
+    guardadas, _ = parrafos_seguros(lineas)
+    return "\n".join(guardadas + _ld_lineas(html))[:MAX_CARACTERES]
 
 
 def peticion(custom_id: str, url: str, texto: str) -> dict:
@@ -116,10 +163,33 @@ def verificar(respuesta: dict, texto: str) -> list[dict]:
             continue
         cita = dato.get("cita") or ""
         ok = len(cita.split()) >= 2 and _norma(cita) in base
+        motivo = None if ok else "cita_no_literal"
+        if ok and campo in NUMERICOS and not numero_en_cita(dato.get("valor"), cita):
+            ok, motivo = False, "valor_no_en_cita"  # cita literal, pero el número no sale de ella
         hechos.append({"campo": campo, "valor": dato.get("valor") if ok else None,
                        "valor_propuesto": None if ok else dato.get("valor"),
-                       "cita": cita, "cita_verificada": ok, "estado": "aceptado" if ok else "revision"})
+                       "cita": cita, "cita_verificada": ok, "estado": "aceptado" if ok else "revision", "motivo": motivo})
     return hechos
+
+
+NUMERICOS = {"creditos_ects", "plazas", "precio_total", "precio_credito", "reserva_matricula"}
+
+
+def numero_en_cita(valor, cita: str) -> bool:
+    """9800 está en «9.800 €», «9800€» o «9,800»; 60 en «60 ECTS». Valores no numéricos: no se comprueban."""
+    try:
+        v = float(str(valor).replace(",", "."))
+    except (TypeError, ValueError):
+        return True
+    numeros = set()
+    for m in re.findall(r"\d[\d.,\s]*\d|\d", cita):
+        m = m.replace(" ", "")
+        for cand in (m.replace(".", "").replace(",", "."), m.replace(",", ""), m.replace(".", "").replace(",", "")):
+            try:
+                numeros.add(float(cand))
+            except ValueError:
+                pass
+    return any(abs(v - n) < 0.005 for n in numeros)
 
 
 def _json_de(texto: str) -> dict:
@@ -210,15 +280,156 @@ def recoger(batch_id: str, paginas: Path, salida: Path, esperar_min: float = 50)
     return cuentas
 
 
+# Precios del lote (Message Batches, 50 % del precio estándar), dólares por millón de tokens, para prompts de
+# hasta 100.000 tokens y por encima. Fuente: https://platform.claude.com/docs/en/about-claude/pricing
+# (consultada el 30/10/2026). Si cambian, se cambian aquí: el coste se recalcula con los tokens guardados.
+PRECIOS_LOTE = {
+    "claude-haiku-5-5": {"hasta_100k": {"entrada": 0.05, "salida": 0.25, "escritura_cache": 0.0625, "lectura_cache": 0.005},
+                         "mas_de_100k": {"entrada": 0.25, "salida": 1.25, "escritura_cache": 0.3125, "lectura_cache": 0.025}},
+}
+
+
+def coste(uso: dict, modelo: str = MODELO) -> float:
+    """Dólares de una petición del lote según su uso (tokens de entrada, caché y salida)."""
+    ent = uso.get("input_tokens", 0)
+    esc = uso.get("cache_creation_input_tokens", 0) or 0
+    lec = uso.get("cache_read_input_tokens", 0) or 0
+    sal = uso.get("output_tokens", 0)
+    tramo = PRECIOS_LOTE[modelo]["hasta_100k" if ent + esc + lec <= 100_000 else "mas_de_100k"]
+    return (ent * tramo["entrada"] + esc * tramo["escritura_cache"] + lec * tramo["lectura_cache"]
+            + sal * tramo["salida"]) / 1_000_000
+
+
+def capturar(urls: list[str], pausa: float = 1.0) -> list[dict]:
+    """Descarga cada página con el lector cortés del rastreador (robots.txt de cada servidor, una petición por
+    segundo y servidor) y la devuelve en memoria. Nada se escribe en disco: solo se registra la huella."""
+    from motor.estudios.rastreador import Dominio, reserva_tdm, texto_de
+    from urllib.parse import urlparse
+
+    por_host: dict[str, list[str]] = {}
+    for u in urls:
+        por_host.setdefault(urlparse(u).netloc, []).append(u)
+    paginas = []
+    for host, lista in por_host.items():
+        d = Dominio(f"https://{host}", None, pausa=pausa, max_peticiones=len(lista) + 4)
+        for u in lista:
+            r = d.get(u)
+            fila = {"url": u, "estado_http": getattr(r, "status_code", None)}
+            if r is None:
+                fila["motivo"] = "robots_o_sin_respuesta"
+            elif r.status_code == 200 and "html" in (r.headers.get("content-type") or ""):
+                html = texto_de(r)
+                fila.update({"sha256": hashlib.sha256(r.content).hexdigest(), "html": html,
+                             "reserva_tdm": reserva_tdm(dict(r.headers), html)})
+            else:
+                fila["motivo"] = "no_html_o_error"
+            paginas.append(fila)
+    return paginas
+
+
+def lote(muestra: Path, salida: Path, esperar_min: float = 45, max_paginas: int | None = None) -> dict:
+    """Prueba o tanda completa en una sola ejecución: capturar, enviar, esperar, comprobar citas y medir coste."""
+    filas = list({f["url"]: f for f in (json.loads(l) for l in muestra.read_text(encoding="utf-8").splitlines()
+                                          if l.strip())}.values())[:max_paginas]
+    meta = {f["url"]: f for f in filas}
+    paginas = capturar([f["url"] for f in filas])
+    salida.mkdir(parents=True, exist_ok=True)
+    peticiones, textos, cuentas = [], {}, Counter()
+    with (salida / "paginas_capturadas.jsonl").open("w", encoding="utf-8") as f:
+        for pg in paginas:
+            cuentas["pedidas"] += 1
+            if pg.get("html") is None:
+                cuentas[pg.get("motivo", "error")] += 1
+            elif pg["reserva_tdm"]:
+                cuentas["reserva_tdm"] += 1
+            else:
+                texto = texto_de_pagina(pg["html"])
+                cid = id_pagina(pg["url"], pg["sha256"])
+                textos[cid] = (pg, texto)
+                peticiones.append(peticion(cid, pg["url"], texto))
+                cuentas["enviadas"] += 1
+                pg["caracteres_texto"] = len(texto)
+            f.write(json.dumps({k: v for k, v in pg.items() if k != "html"}, ensure_ascii=False) + "\n")
+    if not peticiones:
+        return dict(cuentas)
+    r = requests.post(API, headers=_cabeceras(), json={"requests": peticiones}, timeout=120)
+    if r.status_code >= 400:
+        return {**cuentas, "error_api": r.status_code, "detalle": r.text[:500]}
+    b = r.json()
+    (salida / "lote.json").write_text(json.dumps({"id": b["id"], "creado": b.get("created_at"), "peticiones": len(peticiones),
+                                                  "modelo": MODELO}, ensure_ascii=False), encoding="utf-8")
+    t0, fin = time.time(), time.time() + esperar_min * 60
+    while b.get("processing_status") != "ended" and time.time() < fin:
+        time.sleep(30)
+        b = requests.get(f"{API}/{b['id']}", headers=_cabeceras(), timeout=60).json()
+    cuentas["minutos_lote"] = round((time.time() - t0) / 60, 1)
+    if b.get("processing_status") != "ended":
+        return {**cuentas, "estado_lote": b.get("processing_status"), "id": b["id"]}
+    res = requests.get(b["results_url"], headers=_cabeceras(), timeout=300)
+    ahora = datetime.now(timezone.utc).isoformat(timespec="seconds")
+    uso_total, dolares, campos = Counter(), 0.0, Counter()
+    motivos = Counter()
+    with (salida / "hechos.jsonl").open("w", encoding="utf-8") as fh, \
+            (salida / "paginas_extraidas.jsonl").open("w", encoding="utf-8") as fp:
+        for linea in res.text.splitlines():
+            x = json.loads(linea)
+            if x["result"]["type"] != "succeeded" or x["custom_id"] not in textos:
+                cuentas["resultado_" + x["result"]["type"]] += 1
+                continue
+            msg = x["result"]["message"]
+            uso = msg.get("usage", {})
+            for k in ("input_tokens", "output_tokens", "cache_creation_input_tokens", "cache_read_input_tokens"):
+                uso_total[k] += uso.get(k, 0) or 0
+            dolares += coste(uso)
+            if msg.get("stop_reason") == "max_tokens":
+                cuentas["cortadas_por_max_tokens"] += 1
+            pagina, texto = textos[x["custom_id"]]
+            datos = _json_de("".join(c.get("text", "") for c in msg["content"] if c.get("type") == "text"))
+            cuentas["extraidas"] += 1
+            if not datos:
+                cuentas["json_ilegible"] += 1
+            fp.write(json.dumps({"url": pagina["url"], "captura_sha256": pagina["sha256"], "extraido": ahora,
+                                 "no_es_programa": bool(datos.get("no_es_programa")), "lote": b["id"],
+                                 "uso": uso, "coste_usd": round(coste(uso), 6),
+                                 **{k: meta.get(pagina["url"], {}).get(k) for k in ("proveedor", "grupo", "codigo_ruct")}},
+                                ensure_ascii=False) + "\n")
+            if datos.get("no_es_programa"):
+                cuentas["no_es_programa"] += 1
+                continue
+            for h in verificar(datos, texto):
+                h.update({"url": pagina["url"], "captura_sha256": pagina["sha256"], "modelo": MODELO,
+                          "extraido": ahora, "lote": b["id"]})
+                fh.write(json.dumps(h, ensure_ascii=False) + "\n")
+                campos[(h["campo"], h["estado"])] += 1
+                if h.get("motivo"):
+                    motivos[h["motivo"]] += 1
+    n = max(cuentas["extraidas"], 1)
+    resumen = {**cuentas, "uso_tokens": dict(uso_total), "coste_usd": round(dolares, 6),
+               "coste_usd_por_pagina": round(dolares / n, 6),
+               "tokens_entrada_por_pagina": round(uso_total["input_tokens"] / n),
+               "tokens_salida_por_pagina": round(uso_total["output_tokens"] / n),
+               "hechos_aceptados": sum(v for (c, e), v in campos.items() if e == "aceptado"),
+               "hechos_revision": sum(v for (c, e), v in campos.items() if e == "revision"),
+               "motivos_revision": dict(motivos),
+               "por_campo": {c: {e: v for (c2, e), v in campos.items() if c2 == c} for c in CAMPOS}}
+    (salida / "resumen.json").write_text(json.dumps(resumen, ensure_ascii=False, indent=1), encoding="utf-8")
+    return resumen
+
+
 def main() -> None:
     p = argparse.ArgumentParser()
-    p.add_argument("orden", choices=["preparar", "enviar", "recoger"])
+    p.add_argument("orden", choices=["lote", "preparar", "enviar", "recoger"])
+    p.add_argument("--muestra", help="lote: JSONL con {url, proveedor, grupo, codigo_ruct}")
+    p.add_argument("--esperar-min", type=float, default=45)
+    p.add_argument("--max-paginas", type=int)
     p.add_argument("--paginas")
     p.add_argument("--lote")
     p.add_argument("--id")
     p.add_argument("--salida")
     a = p.parse_args()
-    if a.orden == "preparar":
+    if a.orden == "lote":
+        res = lote(Path(a.muestra), Path(a.salida) / "datos" / "estudios" / "extraccion", a.esperar_min, a.max_paginas)
+    elif a.orden == "preparar":
         res = preparar(Path(a.paginas), Path(a.salida))
     elif a.orden == "enviar":
         res = enviar(Path(a.lote))
