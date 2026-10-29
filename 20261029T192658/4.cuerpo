@@ -1,0 +1,760 @@
+'use strict';
+/**
+ * @ngdoc overview
+ * @name BormApp
+ * @description
+ * # BormApp
+ *
+ * Módulo principal del aplicativo
+ */
+angular
+.module('BormApp', ['oc.lazyLoad', 'ui.router', 'ui.bootstrap', 'ngSanitize',
+  'pascalprecht.translate', 'tmh.dynamicLocale', 'angular-loading-bar',
+  'BormApp.BoletinesModule', 'BormApp.SuplementosModule',
+  'BormApp.BuzonSugerenciasModule', 'BormApp.HomeModule',
+  'BormApp.SumarioModule', 'BormApp.AnunciantesModule',
+  'BormApp.AnuncianteModule', 'BormApp.AnunciosModule',
+  'BormApp.CalendarioModule', 'BormApp.SumarioSuplementoModule',
+  'BormApp.AyuntamientosModule', 'BormApp.AyuntamientoModule',
+  'BormApp.NoticiasModule', 'BormApp.MasVisitadoModule',
+  'BormApp.NormativaGeneralModule', 'BormApp.PlantillasEncuestasModule',
+  'BormApp.PreguntasFrecuentesModule', 'BormApp.CalendarioSedeModule',
+  'BormApp.DirectorioModule', 'BormApp.DatosAbiertosModule',
+  'BormApp.NormativaModule', 'BormApp.EnlacesModule', 'BormApp.LoginModule',
+  'BormApp.SuscripcionModule', 'BormApp.BuscadorModule', 'BormApp.RssModule',
+  'BormApp.BuzonInformanteModule']).constant("Constantes", {
+  "PAGE_SIZE": 7, "FORMAT_DATE": "dd/MM/yyyy", "TIMEOUT_ALERTS": 20000,
+}).config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider',
+  '$httpProvider', '$translateProvider', 'tmhDynamicLocaleProvider',
+  function ($stateProvider, $urlRouterProvider, $ocLazyLoadProvider,
+      $httpProvider, $translateProvider, tmhDynamicLocaleProvider) {
+
+    // Todas las peticiones y respuestas se tratan a través de un objeto XMLHttpRequest,
+    // en JavaScript, sin que intervenga el navegador
+    $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
+
+    // Se añade un interceptor para controlar las respuestas HTTP erróneas
+    // Configuración necesaria para controlar cuando nos devuelven un recurso en 401
+    $httpProvider.interceptors.push('HttpResponseErrorHandler');
+
+    $ocLazyLoadProvider.config({
+      debug: false, events: true,
+    });
+
+    // Configuracion para i18n
+    $translateProvider.preferredLanguage('es');
+
+    // IMPORTANTE: Evita vulnerabilidad XSS en el aplicativo
+    $translateProvider.useSanitizeValueStrategy('sanitizeParameters');
+    translateBundle_es.messages_translate_es($translateProvider); //Bundle para Castellano
+    translateBundle_en.messages_translate_en($translateProvider); //Bundle para Ingles
+    tmhDynamicLocaleProvider.localeLocationPattern(
+        'bower_components/angular-i18n/angular-locale_{{ locale }}.js');
+
+    //Mapa de navegación del aplicativo
+    $stateProvider
+    .state('home', {
+      templateUrl: 'views/home.html',
+      url: '/home',
+      controller: 'homeController',
+      resolve: {
+        loadMyFiles: function ($ocLazyLoad) {
+          return $ocLazyLoad.load({
+            name: 'BormApp.HomeModule',
+            files: ['scripts/homeBorm/controllers/homeController.js',
+              'scripts/boletines/factories/boletinFactory.js',
+              'scripts/noticias/factories/noticiasFactory.js']
+          })
+        }
+      }
+    })
+    .state('home.boletines', {
+      url: '/boletines', views: {
+        "content": {
+          templateUrl: 'views/boletines/boletines.html',
+          controller: 'boletinController',
+          resolve: {
+            loadMyFiles: function ($ocLazyLoad) {
+              return $ocLazyLoad.load({
+                name: 'BormApp.BoletinesModule',
+                files: ['scripts/boletines/controllers/boletinController.js',
+                  'scripts/boletines/factories/boletinFactory.js']
+              })
+            }
+          }
+        }, "footer": {
+          templateUrl: 'views/footerInterior.html'
+        }
+      }
+    })
+    .state('home.suplementos', {
+      url: '/suplementos', views: {
+        "content": {
+          templateUrl: 'views/suplementos/suplementos.html',
+          controller: 'suplementoController',
+          resolve: {
+            loadMyFiles: function ($ocLazyLoad) {
+              return $ocLazyLoad.load({
+                name: 'BormApp.SuplementosModule',
+                files: ['scripts/suplementos/controllers/suplementoController.js',
+                  'scripts/suplementos/factories/suplementoFactory.js']
+              })
+            }
+          }
+        }, "footer": {
+          templateUrl: 'views/footerInterior.html'
+        }
+      }
+    })
+    .state('home.buzonSugerencias', {
+
+      url: '/buzonSugerencias', views: {
+        "content": {
+          templateUrl: 'views/buzonSugerencias/buzonSugerencias.html',
+          controller: 'sugerenciaController',
+          resolve: {
+            loadMyFiles: function ($ocLazyLoad) {
+              return $ocLazyLoad.load({
+                name: 'BormApp.BuzonSugerenciasModule',
+                files: ['scripts/buzonSugerencias/controllers/sugerenciaController.js',
+                  'scripts/buzonSugerencias/services/sugerenciaService.js',
+                  'scripts/buzonSugerencias/factories/sugerenciaFactory.js']
+              })
+            }
+          }
+        }, "footer": {
+          templateUrl: 'views/footerInterior.html'
+        }
+      }
+    })
+    .state('home.sumario', {
+      url: '/sumario/:fechaPublicacion', views: {
+        "content": {
+          templateUrl: 'views/sumario/sumario.html',
+          controller: 'sumarioController',
+          resolve: {
+            loadMyFiles: function ($ocLazyLoad) {
+              return $ocLazyLoad.load({
+                name: 'BormApp.SumarioModule',
+                files: ['scripts/sumario/controllers/sumarioController.js',
+                  'scripts/boletines/factories/boletinFactory.js',
+                  'scripts/sumario/factories/sumarioFactory.js',
+                  'scripts/anuncio/factories/anuncioFactory.js']
+              })
+            }
+          }
+        }, "footer": {
+          templateUrl: 'views/footerInterior.html'
+        }
+      }
+    })
+    .state('home.anunciantes', {
+      url: '/sumario/:fechaPublicacion/anunciantes', views: {
+        "content": {
+          templateUrl: 'views/anunciantes/anunciantes.html',
+          controller: 'anunciantesController',
+          resolve: {
+            loadMyFiles: function ($ocLazyLoad) {
+              return $ocLazyLoad.load({
+                name: 'BormApp.AnunciantesModule',
+                files: ['scripts/anunciantes/controllers/anunciantesController.js',
+                  'scripts/boletines/factories/boletinFactory.js']
+              })
+            }
+          }
+        }, "footer": {
+          templateUrl: 'views/footerInterior.html'
+        }
+      }
+    })
+    .state('home.anunciante', {
+      url: '/anuncios/:anunciante', views: {
+        "content": {
+          templateUrl: 'views/anunciante/anunciante.html',
+          controller: 'anuncianteController',
+          resolve: {
+            loadMyFiles: function ($ocLazyLoad) {
+              return $ocLazyLoad.load({
+                name: 'BormApp.AnuncianteModule',
+                files: ['scripts/anunciante/controllers/anuncianteController.js',
+                  'scripts/anuncio/factories/anuncioFactory.js']
+              })
+            }
+          }
+        }, "footer": {
+          templateUrl: 'views/footerInterior.html'
+        }
+      }
+    })
+    .state('home.anuncio', {
+      url: '/anuncio/:fecha/:numero', views: {
+        "content": {
+          templateUrl: 'views/anuncio/anuncio.html',
+          controller: 'anuncioController',
+          resolve: {
+            loadMyFiles: function ($ocLazyLoad) {
+              return $ocLazyLoad.load({
+                name: 'BormApp.AnunciosModule',
+                files: ['scripts/anuncio/controllers/anuncioController.js',
+                  'scripts/anuncio/factories/anuncioFactory.js']
+              })
+            }
+          }
+        }, "footer": {
+          templateUrl: 'views/footerInterior.html'
+        }
+      }
+    })
+    .state('home.calendario', {
+      url: '/boletines/calendario', views: {
+        "content": {
+          templateUrl: 'views/calendario/calendario.html',
+          controller: 'calendarioController',
+          resolve: {
+            loadMyFiles: function ($ocLazyLoad) {
+              return $ocLazyLoad.load({
+                name: 'BormApp.CalendarioModule',
+                files: ['scripts/calendario/controllers/calendarioController.js',
+                  'scripts/calendario/factories/calendarioFactory.js']
+              })
+            }
+          }
+        }, "footer": {
+          templateUrl: 'views/footerInterior.html'
+        }
+      }
+    })
+    .state('home.sumarioSuplementos', {
+      url: '/sumarioSuplemento/:fechaPublicacion/:numeroSuplemento', views: {
+        "content": {
+          templateUrl: 'views/sumarioSuplementos/sumarioSuplementos.html',
+          controller: 'sumarioSuplementoController',
+          resolve: {
+            loadMyFiles: function ($ocLazyLoad) {
+              return $ocLazyLoad.load({
+                name: 'BormApp.SumarioSuplementoModule',
+                files: ['scripts/sumarioSuplementos/controllers/sumarioSuplementoController.js',
+                  'scripts/suplementos/factories/suplementoFactory.js',
+                  'scripts/sumarioSuplementos/factories/sumarioSuplementoFactory.js',
+                  'scripts/anuncio/factories/anuncioFactory.js']
+              })
+            }
+          }
+        }, "footer": {
+          templateUrl: 'views/footerInterior.html'
+        }
+      }
+    })
+    .state('home.ayuntamientos', {
+      url: '/ayuntamientos', views: {
+        "content": {
+          templateUrl: 'views/ayuntamientos/ayuntamientos.html',
+          controller: 'ayuntamientosController',
+          resolve: {
+            loadMyFiles: function ($ocLazyLoad) {
+              return $ocLazyLoad.load({
+                name: 'BormApp.AyuntamientosModule',
+                files: ['scripts/ayuntamientos/controllers/ayuntamientosController.js',
+                  'scripts/ayuntamientos/factories/ayuntamientosFactory.js']
+              })
+            }
+          }
+        }, "footer": {
+          templateUrl: 'views/footerInterior.html'
+        }
+      }
+    })
+    .state('home.ayuntamiento', {
+      url: '/ayuntamientos/:ayuntamiento', views: {
+        "content": {
+          templateUrl: 'views/ayuntamiento/ayuntamiento.html',
+          controller: 'ayuntamientoController',
+          resolve: {
+            loadMyFiles: function ($ocLazyLoad) {
+              return $ocLazyLoad.load({
+                name: 'BormApp.AyuntamientoModule',
+                files: ['scripts/ayuntamiento/controllers/ayuntamientoController.js',
+                  'scripts/ayuntamientos/factories/ayuntamientosFactory.js',
+                  'scripts/anuncio/factories/anuncioFactory.js']
+              })
+            }
+          }
+        }, "footer": {
+          templateUrl: 'views/footerInterior.html'
+        }
+      }
+    })
+    .state('home.noticias', {
+      url: '/noticias', views: {
+        "content": {
+          templateUrl: 'views/noticias/noticias.html',
+          controller: 'noticiasController',
+          resolve: {
+            loadMyFiles: function ($ocLazyLoad) {
+              return $ocLazyLoad.load({
+                name: 'BormApp.NoticiasModule',
+                files: ['scripts/noticias/controllers/noticiasController.js',
+                  'scripts/noticias/factories/noticiasFactory.js']
+              })
+            }
+          }
+        }, "footer": {
+          templateUrl: 'views/footerInterior.html'
+        }
+      }
+    })
+    .state('home.masVisitado', {
+      url: '/masVisitado', views: {
+        "content": {
+          templateUrl: 'views/masVisitado/masVisitado.html',
+          controller: 'masVisitadoController',
+          resolve: {
+            loadMyFiles: function ($ocLazyLoad) {
+              return $ocLazyLoad.load({
+                name: 'BormApp.MasVisitadoModule',
+                files: ['scripts/masVisitado/controllers/masVisitadoController.js',
+                  'scripts/anuncio/factories/anuncioFactory.js']
+              })
+            }
+          }
+        }, "footer": {
+          templateUrl: 'views/footerInterior.html'
+        }
+      }
+    })
+    .state('home.normativaGeneral', {
+      url: '/normativaGeneral', views: {
+        "content": {
+          templateUrl: 'views/normativaGeneral/normativaGeneral.html',
+          controller: 'normativaGeneralController',
+          resolve: {
+            loadMyFiles: function ($ocLazyLoad) {
+              return $ocLazyLoad.load({
+                name: 'BormApp.NormativaGeneralModule',
+                files: ['scripts/normativaGeneral/controllers/normativaGeneralController.js',
+                  'scripts/normativaGeneral/factories/normativaGeneralFactory.js',
+                  'scripts/anuncio/factories/anuncioFactory.js']
+              })
+            }
+          }
+        }, "footer": {
+          templateUrl: 'views/footerInterior.html'
+        }
+      }
+    })
+    .state('home.plantillasEncuestas', {
+      url: '/plantillasEncuestas', views: {
+        "content": {
+          templateUrl: 'views/plantillasEncuestas/plantillasEncuestas.html',
+          controller: 'plantillasEncuestasController',
+          resolve: {
+            loadMyFiles: function ($ocLazyLoad) {
+              return $ocLazyLoad.load({
+                name: 'BormApp.PlantillasEncuestasModule',
+                files: ['scripts/plantillasEncuestas/controllers/plantillasEncuestasController.js',
+                  'scripts/plantillasEncuestas/factories/plantillasEncuestasFactory.js']
+              })
+            }
+          }
+        }, "footer": {
+          templateUrl: 'views/footerInterior.html'
+        }
+      }
+    })
+    .state('home.dondeEstamos', {
+      url: '/dondeEstamos', views: {
+        "content": {
+          templateUrl: 'views/informacionWeb/dondeEstamos.html',
+        }, "footer": {
+          templateUrl: 'views/footerInterior.html'
+        }
+      }
+    })
+    .state('home.mapaWeb', {
+      url: '/mapaWeb', views: {
+        "content": {
+          templateUrl: 'views/informacionWeb/mapaWeb.html',
+        }, "footer": {
+          templateUrl: 'views/footerInterior.html'
+        }
+      }
+    })
+    .state('home.terminosUso', {
+      url: '/terminosUso', views: {
+        "content": {
+          templateUrl: 'views/informacionWeb/terminosUso.html',
+        }, "footer": {
+          templateUrl: 'views/footerInterior.html'
+        }
+      }
+    })
+    .state('home.politicaCookies', {
+      url: '/politicaCookies', views: {
+        "content": {
+          templateUrl: 'views/informacionWeb/politicaCookies.html',
+        }, "footer": {
+          templateUrl: 'views/footerInterior.html'
+        }
+      }
+    })
+    .state('home.accesibilidad', {
+      url: '/accesibilidad', views: {
+        "content": {
+          templateUrl: 'views/informacionWeb/accesibilidad.html',
+        }, "footer": {
+          templateUrl: 'views/footerInterior.html'
+        }
+      }
+    })
+    .state('home.preguntasFrecuentes', {
+      url: '/faq', views: {
+        "content": {
+          templateUrl: 'views/preguntasFrecuentes/preguntasFrecuentes.html',
+          controller: 'preguntasFrecuentesController',
+          resolve: {
+            loadMyFiles: function ($ocLazyLoad) {
+              return $ocLazyLoad.load({
+                name: 'BormApp.PreguntasFrecuentesModule',
+                files: ['scripts/preguntasFrecuentes/controllers/preguntasFrecuentesController.js',
+                  'scripts/preguntasFrecuentes/factories/preguntasFrecuentesFactory.js']
+              })
+            }
+          }
+        }, "footer": {
+          templateUrl: 'views/footerInterior.html'
+        }
+      }
+    })
+    .state('home.identificacion', {
+      url: '/identificacion', views: {
+        "content": {
+          templateUrl: 'views/sedeElectronica/identificacion.html',
+        }, "footer": {
+          templateUrl: 'views/footerInterior.html'
+        }
+      }
+    })
+    .state('home.sello', {
+      url: '/sello', views: {
+        "content": {
+          templateUrl: 'views/sedeElectronica/sello.html',
+        }, "footer": {
+          templateUrl: 'views/footerInterior.html'
+        }
+      }
+    })
+    .state('home.validacionDocumentos', {
+      url: '/validacionDocumentos', views: {
+        "content": {
+          templateUrl: 'views/sedeElectronica/validacionDocumentos.html',
+        }, "footer": {
+          templateUrl: 'views/footerInterior.html'
+        }
+      }
+    })
+    .state('home.calendarioSede', {
+      url: '/calendarioSede', views: {
+        "content": {
+          templateUrl: 'views/sedeElectronica/calendarioSede.html',
+          controller: 'calendarioSedeController',
+          resolve: {
+            loadMyFiles: function ($ocLazyLoad) {
+              return $ocLazyLoad.load({
+                name: 'BormApp.CalendarioSedeModule',
+                files: ['scripts/calendarioSede/controllers/calendarioSedeController.js',
+                  'scripts/calendarioSede/factories/calendarioSedeFactory.js']
+              })
+            }
+          }
+        }, "footer": {
+          templateUrl: 'views/footerInterior.html'
+        }
+      }
+    })
+    .state('home.sistemasAdmitidos', {
+      url: '/sistemasAdmitidos', views: {
+        "content": {
+          templateUrl: 'views/sedeElectronica/sistemasAdmitidos.html',
+        }, "footer": {
+          templateUrl: 'views/footerInterior.html'
+        }
+      }
+    })
+    .state('home.directorio', {
+      url: '/directorio', views: {
+        "content": {
+          templateUrl: 'views/institucional/directorio.html',
+          controller: 'directorioController',
+          resolve: {
+            loadMyFiles: function ($ocLazyLoad) {
+              return $ocLazyLoad.load({
+                name: 'BormApp.DirectorioModule',
+                files: ['scripts/directorio/controllers/directorioController.js']
+              })
+            }
+          }
+        }, "footer": {
+          templateUrl: 'views/footerInterior.html'
+        }
+      }
+    })
+    .state('home.datosAbiertos', {
+      url: '/datosAbiertos', views: {
+        "content": {
+          templateUrl: 'views/datosAbiertos/datosAbiertos.html',
+          controller: 'datosAbiertosController',
+          resolve: {
+            loadMyFiles: function ($ocLazyLoad) {
+              return $ocLazyLoad.load({
+                name: 'BormApp.DatosAbiertosModule',
+                files: ['scripts/datosAbiertos/controllers/datosAbiertosController.js']
+              })
+            }
+          }
+        }, "footer": {
+          templateUrl: 'views/footerInterior.html'
+        }
+      }
+    })
+    .state('home.suscripcion', {
+      url: '/suscripcion?estado', views: {
+        "content": {
+          templateUrl: 'views/suscripcion/suscripcion.html',
+          controller: 'loginController',
+          resolve: {
+            loadMyFiles: function ($ocLazyLoad) {
+              return $ocLazyLoad.load({
+                name: 'BormApp.LoginModule',
+                files: ['scripts/suscripcion/controllers/loginController.js',
+                  'scripts/suscripcion/services/suscripcionService.js']
+              })
+            }
+          }
+        }, "footer": {
+          templateUrl: 'views/footerInterior.html'
+        }
+      }
+    })
+    .state('home.suscripcion.alta', {
+      templateUrl: 'views/suscripcion/alta/alta.html',
+      url: '/alta',
+      controller: 'loginController',
+      resolve: {
+        loadMyFiles: function ($ocLazyLoad) {
+          return $ocLazyLoad.load({
+            name: 'BormApp.LoginModule',
+            files: ['scripts/suscripcion/controllers/loginController.js',
+              'scripts/suscripcion/factories/suscripcionFactory.js']
+          })
+        }
+      }
+    })
+    .state('home.suscripcion.menu', {
+      templateUrl: 'views/suscripcion/menu/menu.html',
+      url: '/menu',
+      controller: 'suscripcionController',
+      resolve: {
+        loadMyFiles: function ($ocLazyLoad) {
+          return $ocLazyLoad.load({
+            name: 'BormApp.SuscripcionModule',
+            files: ['scripts/suscripcion/controllers/suscripcionController.js',
+              'scripts/suscripcion/services/suscripcionService.js',
+              'scripts/suscripcion/factories/suscripcionFactory.js']
+          })
+        }
+      }
+    })
+    .state('home.normativa', {
+      url: '/normativa', views: {
+        "content": {
+          templateUrl: 'views/institucional/normativa.html',
+          controller: 'normativaController',
+          resolve: {
+            loadMyFiles: function ($ocLazyLoad) {
+              return $ocLazyLoad.load({
+                name: 'BormApp.NormativaModule',
+                files: ['scripts/normativa/controllers/normativaController.js',
+                  'scripts/normativa/factories/normativaFactory.js']
+              })
+            }
+          }
+        }, "footer": {
+          templateUrl: 'views/footerInterior.html'
+        }
+      }
+    })
+    .state('home.certificaciones', {
+      url: '/certificaciones', views: {
+        "content": {
+          templateUrl: 'views/institucional/certificaciones.html',
+        }, "footer": {
+          templateUrl: 'views/footerInterior.html'
+        }
+      }
+    })
+    .state('home.quienesSomos', {
+      url: '/quienesSomos', views: {
+        "content": {
+          templateUrl: 'views/institucional/quienesSomos.html',
+        }, "footer": {
+          templateUrl: 'views/footerInterior.html'
+        }
+      }
+    })
+    .state('home.queEsBORM', {
+      url: '/queEsBORM', views: {
+        "content": {
+          templateUrl: 'views/institucional/queEsBORM.html',
+        }, "footer": {
+          templateUrl: 'views/footerInterior.html'
+        }
+      }
+    })
+    .state('home.queEsNPE', {
+      url: '/queEsNPE', views: {
+        "content": {
+          templateUrl: 'views/institucional/queEsNPE.html',
+        }, "footer": {
+          templateUrl: 'views/footerInterior.html'
+        }
+      }
+    })
+    .state('home.cartaServicios', {
+      url: '/cartaServicios', views: {
+        "content": {
+          templateUrl: 'views/institucional/cartaServicios.html',
+        }, "footer": {
+          templateUrl: 'views/footerInterior.html'
+        }
+      }
+    })
+    .state('home.calidadYMedioAmbiente', {
+      url: '/calidadYMedioAmbiente', views: {
+        "content": {
+          templateUrl: 'views/institucional/calidadYMedioAmbiente.html',
+        }, "footer": {
+          templateUrl: 'views/footerInterior.html'
+        }
+      }
+    })
+    .state('home.contacto', {
+      url: '/contacto', views: {
+        "content": {
+          templateUrl: 'views/contacto/contacto.html',
+        }, "footer": {
+          templateUrl: 'views/footerInterior.html'
+        }
+      }
+    })
+    .state('home.enlaces', {
+      url: '/enlaces', views: {
+        "content": {
+          templateUrl: 'views/enlaces/enlaces.html',
+          controller: 'enlacesController',
+          resolve: {
+            loadMyFiles: function ($ocLazyLoad) {
+              return $ocLazyLoad.load({
+                name: 'BormApp.EnlacesModule',
+                files: ['scripts/enlaces/controllers/enlacesController.js',
+                  'scripts/enlaces/factories/enlacesFactory.js']
+              })
+            }
+          }
+        }, "footer": {
+          templateUrl: 'views/footerInterior.html'
+        }
+      }
+    })
+    .state('home.buscador', {
+      url: '/buscador', views: {
+        "content": {
+          templateUrl: 'views/buscador/buscador.html',
+          controller: 'buscadorController',
+          resolve: {
+            loadMyFiles: function ($ocLazyLoad) {
+              return $ocLazyLoad.load({
+                name: 'BormApp.BuscadorModule',
+                files: ['scripts/buscador/controllers/buscadorController.js',
+                  'scripts/buscador/factories/buscadorFactory.js',
+                  'scripts/anuncio/factories/anuncioFactory.js']
+              })
+            }
+          }
+        }, "footer": {
+          templateUrl: 'views/footerInterior.html'
+        }
+      }
+    })
+    .state('home.rss', {
+      url: '/rss', views: {
+        "content": {
+          templateUrl: 'views/rss/rss.html',
+          controller: 'rssController',
+          resolve: {
+            loadMyFiles: function ($ocLazyLoad) {
+              return $ocLazyLoad.load({
+                name: 'BormApp.RssModule',
+                files: ['scripts/rss/controllers/rssController.js',
+                  'scripts/rss/factories/rssFactory.js']
+              })
+            }
+          }
+        }, "footer": {
+          templateUrl: 'views/footerInterior.html'
+        }
+      }
+    })
+    .state('home.buzonInformante', {
+      url: '/buzonInformante', views: {
+        "content": {
+          templateUrl: 'views/buzonInformante/buzonInformante.html',
+          controller: 'buzonInformanteController',
+          resolve: {
+            loadMyFiles: function ($ocLazyLoad) {
+              return $ocLazyLoad.load({
+                name: 'BormApp.BuzonInformanteModule',
+                files: ['scripts/buzonInformante/controllers/buzonInformanteController.js']
+              })
+            }
+          }
+        }, "footer": {
+          templateUrl: 'views/footerInterior.html'
+        }
+      }
+    })
+    .state('home.transparencia', {
+      url: '/transparencia', views: {
+        "content": {
+          templateUrl: 'views/transparencia/transparencia.html',
+        }, "footer": {
+          templateUrl: 'views/footerInterior.html'
+        }
+      }
+    });
+
+    $urlRouterProvider
+    .otherwise('/home');
+
+  }]).run(function ($rootScope) {
+
+  $rootScope.$on('$stateChangeSuccess', function () {
+    document.body.scrollTop = document.documentElement.scrollTop = 0;
+  });
+
+  $rootScope.$on('$stateChangeStart', function () {
+    $rootScope.metaEli = false;
+    $rootScope.metaCorrigendumEli = false;
+  });
+
+}).filter('filterEncodeURI', function () {
+  return function (x) {
+    console.log(encodeURIComponent(x));
+    return encodeURIComponent(x);
+  };
+}).filter('monthValue', function () {
+  var month = ["", "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+    "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+  return function (x) {
+    return month[x];
+  };
+});

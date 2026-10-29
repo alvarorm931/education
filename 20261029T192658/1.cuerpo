@@ -1,0 +1,113 @@
+'use strict';
+
+angular.module("BormApp.SumarioModule", [
+	'oc.lazyLoad',
+	'ui.router',
+	'ui.bootstrap'
+	])
+	.controller('sumarioController', 
+			['$scope', '$rootScope', '$http', 'AlertsService','$stateParams', 'BoletinFactory', 'SumarioFactory', 'SuplementoFactory',
+				'$location', '$anchorScroll', 'AnuncioFactory',
+				function($scope, $rootScope, $http, AlertsService, $stateParams, BoletinFactory, SumarioFactory, SuplementoFactory,
+						$location, $anchorScroll, AnuncioFactory) {
+				
+		$scope.ruta = $rootScope.ruta;
+		$rootScope.fechaMigaBoletin = $stateParams.fechaPublicacion;
+		$scope.contadorAnuncios = {
+				'PG': 0,
+				'CA': 0,
+				'CA_1': 0,
+				'CA_2': 0,
+				'CA_3': 0,
+				'CA_4': 0,
+				'AG': 0,
+				'AG_1': 0,
+				'AG_2': 0,
+				'AG_3': 0,
+				'AJ': 0,
+				'AL': 0,
+				'OD': 0
+		};
+		
+		$scope.cargado = false;
+		$scope.extraordinario = "";
+		$scope.extraordinarioText = "";
+		$rootScope.extraordinarioText = "";
+		BoletinFactory.findDatosSumario($stateParams.fechaPublicacion)
+			.then(function(response) {
+				$scope.sumario = response.data;
+				$scope.cargado = true;
+				
+				if($scope.sumario.extraordinario){
+					$scope.extraordinario = "/extraordinario";
+					$scope.extraordinarioText = "extraordinario";
+				}
+				
+				
+			}, function myError(response) {
+				AlertsService.addDangerAlert(response.data);
+		    });
+		
+		BoletinFactory.findAllApartadoSumario($stateParams.fechaPublicacion)
+			.then(function(response) {
+				$scope.apartadosSumario = response.data;
+				marcarApartados();
+			}, function myError(response) {
+				AlertsService.addDangerAlert(response.data);
+	    });
+		
+		SuplementoFactory.findByFechaPublicacion($stateParams.fechaPublicacion)
+			.then(function(response) {
+				$scope.suplementos = response.data;
+			}, function myError(response) {
+				AlertsService.addDangerAlert(response.data);
+		    });
+		
+		$scope.irPrueba = function(apartado){
+		      $location.hash(apartado.toString());
+		      $anchorScroll();
+		}
+		
+		function marcarApartados(){
+			$scope.contadorAnuncios.PG = $scope.apartadosSumario[13].numAnunciosApartado;
+			
+			$scope.contadorAnuncios.CA = $scope.contadorAnuncios.PG 
+				+ $scope.apartadosSumario[12].numAnunciosApartado;
+			
+			$scope.contadorAnuncios.CA_1 = $scope.contadorAnuncios.CA;
+			
+			$scope.contadorAnuncios.CA_2 = $scope.contadorAnuncios.CA_1 
+			+ $scope.apartadosSumario[1].numAnunciosApartado;
+			
+			$scope.contadorAnuncios.CA_3 = $scope.contadorAnuncios.CA_2 
+			+ $scope.apartadosSumario[2].numAnunciosApartado;
+			
+			$scope.contadorAnuncios.CA_4 = $scope.contadorAnuncios.CA_3 
+			+ $scope.apartadosSumario[3].numAnunciosApartado;
+			
+			$scope.contadorAnuncios.AG = $scope.contadorAnuncios.CA_4 
+				+ $scope.apartadosSumario[4].numAnunciosApartado;
+			
+			$scope.contadorAnuncios.AG_1 = $scope.contadorAnuncios.AG 
+			
+			$scope.contadorAnuncios.AG_2 = $scope.contadorAnuncios.AG_1 
+				+ $scope.apartadosSumario[9].numAnunciosApartado;
+			
+			$scope.contadorAnuncios.AG_3 = $scope.contadorAnuncios.AG_2 
+				+ $scope.apartadosSumario[10].numAnunciosApartado;
+			
+			$scope.contadorAnuncios.AJ = $scope.contadorAnuncios.AG_3
+				+ $scope.apartadosSumario[11].numAnunciosApartado;
+			
+			$scope.contadorAnuncios.AL = $scope.contadorAnuncios.AJ 
+				+ $scope.apartadosSumario[6].numAnunciosApartado;
+			
+			$scope.contadorAnuncios.OD = $scope.contadorAnuncios.AL 
+				+ $scope.apartadosSumario[7].numAnunciosApartado;
+		}
+		
+		$scope.setRutaBoletinSuplemento = function(){
+			$rootScope.ruta = 'boletinSuplemento';
+		}
+		
+	} ]);

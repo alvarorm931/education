@@ -1,0 +1,65 @@
+'use strict';
+
+angular.module("BormApp.CalendarioModule", [
+	'oc.lazyLoad',
+	'ui.router',
+	'ui.bootstrap'
+])
+	.controller('calendarioController', ['$scope', '$rootScope', '$http', 'AlertsService', 'CalendarioFactory', '$location',
+		function($scope, $rootScope, $http, AlertsService, CalendarioFactory, $location) {
+
+			$rootScope.ruta = 'calendario';
+			$scope.anoPattern = /[0-9]{4}/;
+			var festivos = {};
+			var festivosDate = [];
+			var boletines = [];
+			var aux = [];
+			var domingos = [];
+			
+			Promise.all([CalendarioFactory.findAllFestivos(),
+			CalendarioFactory.findAll()
+			]).then(function(response) {
+				festivos = response[0].data;
+				boletines = response[1].data;
+				//Pasamos de objeto a array para hacer el filter y eliminamos del array festivos.fecha los que esten en el array boletin
+				aux = Object.entries(festivos).filter((el) => !boletines.includes(el[1].fecha));
+				//Convertimos de string a number y finalmente a fecha
+				festivosDate = aux.map(el => new Date(Number(el[1].fecha)));
+				
+				//Pasamos de string a fecha los valores
+				boletines = boletines.map(e => new Date(Number(e)));
+				domingos = devuelveDomingos(new Date(1982,6,10), new Date());
+				domingos = domingos.filter(a=> !boletines.find(b => a.getTime()===b.getTime()))
+				festivosDate = festivosDate.concat(domingos);
+
+				$('#calendar').calendar({
+					disabledDays: festivosDate,
+					clickDay: function(e) {
+						var fecha = e.date.getDate() + "-" + (e.date.getMonth() + 1) + "-" + e.date.getFullYear();
+						window.location = '#/home/sumario/' + fecha;
+					}
+				});
+
+			});
+
+
+			$scope.setAno = function(ano) {
+				var anoSup = new Date().getFullYear();
+				if (ano > 1981 && ano <= anoSup) $('#calendar').data('calendar').setYear(ano);
+			}
+
+			function devuelveDomingos(dDate1, dDate2) {
+				if (dDate1 > dDate2) return false;
+				var date = dDate1;
+				var dates = [];
+
+				while (date < dDate2) {
+					if (date.getDay() === 0) dates.push(new Date(date));
+					date.setDate(date.getDate() + 1);
+				}
+
+				return dates;
+			}
+
+
+		}]);

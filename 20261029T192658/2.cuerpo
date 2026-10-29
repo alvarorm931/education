@@ -1,0 +1,23 @@
+'use strict';
+
+angular.module("BormApp.DatosAbiertosModule", [
+	'oc.lazyLoad',
+	'ui.router',
+	'ui.bootstrap'
+	])
+	.controller('datosAbiertosController', ['$scope', '$http', 'AlertsService',
+		function($scope, $http, AlertsService) {
+
+		$scope.anoPublicacionValores = [];
+		$scope.anoPublicacion;
+		
+		function cargarAnosDisponibles(){
+			var anoActual = new Date().getFullYear();
+			for(var i=1982; i<=anoActual; i++){
+				$scope.anoPublicacionValores.push(i);
+			}
+		}
+		
+		cargarAnosDisponibles();
+		
+	} ]);
