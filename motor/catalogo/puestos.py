@@ -54,12 +54,36 @@ FEMENINOS = {
     "interventora": "interventor", "secretaria": "secretario", "bibliotecaria": "bibliotecario",
     "archivera": "archivero", "delineante": "delineante", "programadora": "programador", "analista": "analista",
 }
-PALABRAS_VACIAS = {"de", "del", "la", "las", "los", "el", "y", "e", "en", "a", "para"}
+PALABRAS_VACIAS = {"de", "del", "la", "las", "los", "el", "y", "e", "en", "a", "para", "d", "l", "les", "els",
+                   "da", "do", "das", "dos"}
+# Catalán/valenciano y gallego -> castellano, palabra a palabra, para que el mismo puesto tenga la misma clave
+# («agent de la policia local», «axente da policía local» -> «agente de la policia local» -> «policia local»).
+TRADUCCION = {
+    "agent": "agente", "agents": "agente", "axente": "agente", "caporal": "cabo", "administratiu": "administrativo",
+    "administrativa": "administrativo", "tecnic": "tecnico", "tecnics": "tecnico", "treballador": "trabajador",
+    "treballadora": "trabajador", "traballador": "trabajador", "traballadora": "trabajador", "arquitecte": "arquitecto",
+    "enginyer": "ingeniero", "enginyera": "ingeniero", "enxeneiro": "ingeniero", "enxeneira": "ingeniero",
+    "bomber": "bombero", "bombera": "bombero", "bombeiro": "bombero", "bombeira": "bombero", "conserge": "conserje",
+    "conserxe": "conserje", "peo": "peon", "operari": "operario", "operaria": "operario", "serveis": "servicios",
+    "servizos": "servicios", "gestio": "gestion", "xestion": "gestion", "administracio": "administracion",
+    "mestre": "maestro", "mestra": "maestro", "psicoleg": "psicologo", "psicologa": "psicologo", "infermer": "enfermero",
+    "infermera": "enfermero", "arxiver": "archivero", "arxivera": "archivero", "bibliotecari": "bibliotecario",
+    "bibliotecaria": "bibliotecario", "netejador": "limpiador", "netejadora": "limpiador", "jardiner": "jardinero",
+    "jardinera": "jardinero", "lampista": "fontanero", "paleta": "albanil", "tresorer": "tesorero",
+    "tresorera": "tesorero", "secretari": "secretario", "advocat": "abogado", "advocada": "abogado",
+    "informatic": "informatico", "delineant": "delineante", "cuiner": "cocinero",
+    "cuinera": "cocinero", "ajudant": "ayudante", "vigilant": "vigilante", "mitja": "medio", "mitjana": "medio",
+    "persoal": "personal", "condutor": "conductor", "condutora": "conductor", "educadora": "educador",
+    "auxiliars": "auxiliar", "oficials": "oficial", "brigada": "brigada", "socials": "social", "general": "general",
+    "policies": "policia", "policia": "policia", "local": "local", "locals": "local", "superiors": "superior",
+    "biblioteca": "biblioteca", "escoleta": "escuela infantil", "llar": "escuela", "infants": "infantil",
+}
 
 GRUPO_POR_SUBESCALA_AG = {"tecnica": "A1", "gestion": "A2", "administrativa": "C1", "auxiliar": "C2",
                           "subalterna": "AP"}
 
-RE_GENERO = re.compile(r"(?<=\w)/(?:a|as|o|os|la|las|va|ra|ora|era)\b|\((?:a|as|o|os)\)|(?<=\w)\(a\)")
+RE_GENERO = re.compile(r"(?<=\w)/(?:a|as|o|os|la|las|va|ra|ora|era|ana|ària|aria|essa|ina|iva|ica|ua|ra)\b|"
+                       r"\((?:a|as|o|os)\)|(?<=\w)\(a\)")
 RE_ESPECIALIDAD = re.compile(r"\(([^)]*especialidad[^)]*)\)", re.IGNORECASE)
 RE_GRUPO = re.compile(r"\b(?:sub)?grupo\s+(A1|A2|B|C1|C2|AP|E)\b", re.IGNORECASE)
 RE_GRUPO_LETRA = re.compile(r"\bgrupo\s+([ABCE])\b(?!\d)", re.IGNORECASE)
@@ -68,6 +92,13 @@ RE_GRUPO_LETRA = re.compile(r"\bgrupo\s+([ABCE])\b(?!\d)", re.IGNORECASE)
 def _plano(texto: str) -> str:
     t = "".join(c for c in unicodedata.normalize("NFD", texto) if unicodedata.category(c) != "Mn")
     return " ".join(t.lower().split())
+
+
+def _clave(t: str) -> str:
+    return "-".join(w for w in t.split() if w not in PALABRAS_VACIAS)
+
+
+_SINONIMOS_POR_CLAVE = {_clave(k): v for k, v in SINONIMOS.items()}
 
 
 def normalizar_puesto(denominacion: str) -> dict:
@@ -82,13 +113,16 @@ def normalizar_puesto(denominacion: str) -> dict:
         original_sin = original
     t = RE_GENERO.sub("", original_sin)
     t = _plano(t)
-    t = re.sub(r"^(?:personal|plaza|plazas|puesto|puestos)\s+(?:de\s+)?", "", t)
+    t = re.sub(r"^(?:personal|plaza|plazas|puesto|puestos|placa|places|praza|prazas|lloc|llocs)\s+"
+               r"(?:de\s+|d'\s*|de\s+treball\s+(?:de\s+|d'\s*)?)?", "", t)
     t = re.sub(r"\s*,.*$", "", t)                       # lo que va tras una coma suele ser destino o detalle
     t = re.sub(r"\s+(?:con destino|adscrit\w*|para el|para la|en el area|del area)\b.*$", "", t)
     t = re.sub(r"[^a-z0-9ñ ]+", " ", t)
-    t = " ".join(FEMENINOS.get(w, w) for w in t.split())
-    canonico = SINONIMOS.get(t, t)
-    clave = "-".join(w for w in canonico.split() if w not in PALABRAS_VACIAS)
+    t = re.sub(r"\b(?:d|l|s)\s+(?=[a-z])", "", t)          # restos de «d'», «l'» tras quitar el apóstrofo
+    t = " ".join(FEMENINOS.get(w, w) for w in " ".join(TRADUCCION.get(w, w) for w in t.split()).split())
+    t = re.sub(r"\b(\w+(?: \w+)?) o \1\b", r"\1", t)    # «trabajador o trabajadora social» -> «trabajador social»
+    canonico = SINONIMOS.get(t) or _SINONIMOS_POR_CLAVE.get(_clave(t), t)
+    clave = _clave(canonico)
     return {"clave": clave, "nombre": canonico, "especialidad": especialidad, "denominacion": original}
 
 
