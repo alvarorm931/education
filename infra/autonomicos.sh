@@ -62,6 +62,13 @@ for c in $CONECTORES; do
       ejecutar motor.autonomicos.boa --desde 2022-01-01 --saltar-existentes --salida "$S" --max-minutos "$M"
       "$G" "BOA: boletines"
       ;;
+    doe)
+      ejecutar motor.autonomicos.doe --salida "$S"
+      ejecutar motor.autonomicos.doe --desde 2022-01-01 --saltar-existentes --salida "$S" --max-minutos "$M"
+      "$G" "DOE: boletines"
+      ejecutar motor.autonomicos.doe --textos --salida "$S" --max-minutos "$M"
+      "$G" "DOE: textos"
+      ;;
     dogc)
       ejecutar motor.autonomicos.dogc --salida "$S"
       ejecutar motor.autonomicos.dogc --desde 2022-01 --saltar-existentes --salida "$S" --max-minutos "$M"

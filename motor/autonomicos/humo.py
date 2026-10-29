@@ -17,7 +17,7 @@ from datetime import date
 from pathlib import Path
 
 from motor.archivo import Archivo
-from motor.autonomicos import boa, bocyl, dog, dogc, dogv
+from motor.autonomicos import boa, bocyl, doe, dog, dogc, dogv
 from motor.autonomicos.comun import descargar_textos
 
 
@@ -83,6 +83,10 @@ def main(argv: list[str] | None = None) -> int:
     }
     pruebas["boa"] = lambda: {"dia": boa.procesar_dia(date(2026, 10, 29), raiz, archivo),
                               "dia_2022": boa.procesar_dia(date(2022, 1, 3), raiz, archivo)}
+    pruebas["doe"] = lambda: {"dia": doe.procesar_dia(date(2026, 10, 29), raiz, archivo, extraordinario=True),
+                              "dia_2022": doe.procesar_dia(date(2022, 1, 3), raiz, archivo),
+                              "textos": _textos(doe, raiz, archivo, lambda x: x["url_html"], accept="text/html",
+                                                ext="html")}
     if a.solo and "dogc" in a.solo:
         resultado["tls_dogc"] = tls_dogc()
         print("tls_dogc", resultado["tls_dogc"])

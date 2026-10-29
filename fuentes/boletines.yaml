@@ -81,8 +81,10 @@ autonomicos:
     comunidad: Extremadura
     url: http://doe.juntaex.es/
     acceso_desde_github: "ok"
-    datos_estructurados: "RSS por sección: http://doe.juntaex.es/rss/rss.php?seccion=N"
-    estado: sin_conector
+    datos_estructurados: "Sumario diario HTML: https://doe.juntaex.es/ultimosdoe/mostrardoe.php?fecha=AAAAMMDD&t=o (t=e extraordinario); disposición en HTML (otrosFormatos/html.php) y XML desde 2023 aprox.; antes solo PDF. RSS por sección: /rss/rss.php?seccion=N"
+    estado: conector_en_pruebas
+    conector: motor/autonomicos/doe.py
+    nota: "Empleo: II. Autoridades y personal, Oposiciones y concursos; anuncios de ayuntamientos y diputaciones"
   - id: DOG
     nombre: Diario Oficial de Galicia
     comunidad: Galicia

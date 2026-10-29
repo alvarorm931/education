@@ -31,6 +31,7 @@ FUENTES: dict[str, tuple[str, tuple[str, ...]]] = {
                       "Diari Oficial de la Comunitat Valenciana", "Diario Oficial de la Comunitat Valenciana")),
     "dog": ("DOG", ("Diario Oficial de Galicia",)),
     "boa": ("BOA", ("Boletín Oficial de Aragón",)),
+    "doe": ("DOE", ("Diario Oficial de Extremadura",)),
     "dogc": ("DOGC", ("Diari Oficial de la Generalitat de Catalunya", "Diario Oficial de la Generalitat de Cataluña",
                       "Diario Oficial de la Generalidad de Cataluña")),
 }
