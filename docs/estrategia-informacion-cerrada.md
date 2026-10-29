@@ -69,7 +69,7 @@ cabecera (corregido).
 | Evaluación y metodología por asignatura | guía docente, obligatoria antes de la matrícula (RD 822/2021, art. 9.3) | mapa de plataformas hecho (`docs/fuentes-guias-docentes.md`): SIGMA DOA cubre 12 universidades con un conector; 10 más con URL predecible |
 | Plan publicado | BOE | hecho |
 | Precio público por crédito | decreto u orden anual de cada comunidad | normas de las 19 administraciones identificadas (`docs/fuentes-precios-publicos.md`); 17 leídas, Navarra y Murcia por verificar |
-| Precio del crédito de másteres oficiales, también privados | QEDU (Ministerio, a partir del RUCT y del SIIU) | por verificar: el Ministerio dice que da el «precio del crédito» (nota del 13/2/2025); falta comprobar qué da para las privadas |
+| Precio del crédito y plazas de másteres oficiales | QEDU (Ministerio, a partir del RUCT y del SIIU; lista descargable en XLSX o CSV) | según su ayuda, solo de universidades públicas: no resuelve el precio de las privadas; conector pendiente como control de los decretos |
 | Si el título es oficial o propio | obligación de informar (LOSU, art. 7.4) | la ficha lo dice siempre; se comprueba que la web del centro lo diga |
 | Becas generales | BOE y Base de Datos Nacional de Subvenciones | pendiente |
 | Convenios de títulos propios con empresas | portales de transparencia de las públicas | pendiente |

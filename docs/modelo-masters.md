@@ -295,8 +295,8 @@ Ordenados por lo que más acerca a tener, para cada máster, lo que hoy se da so
 3. **Seguimiento por campo** (`seguimiento.py`) sobre lo extraído: qué campos están tras el registro en
    cada máster y lista de peticiones por centro.
 4. **Oficiales**: unir cada título del RUCT con su página (texto del enlace; en marcha), fichas y memorias
-   del RUCT de los 4.347 activos, precio por crédito de los 19 decretos y QEDU (comprobar qué da de las
-   privadas), guías docentes por plataforma (SIGMA DOA primero).
+   del RUCT de los 4.347 activos, precio por crédito de los 19 decretos y QEDU (según su ayuda, precio y
+   plazas solo de públicas), guías docentes por plataforma (SIGMA DOA primero).
 5. **Peticiones** a centros cuando el portal tenga dirección pública; peticiones formales a universidades
    públicas (Ley 19/2013) y al Ministerio (Ley 37/2007).
 6. Becas, Excel de oferta de plazas, másters habilitantes y profesiones reguladas.
