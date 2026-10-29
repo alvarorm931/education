@@ -4,8 +4,9 @@ name: Motor de datos
 # Los boletines autonómicos van en su propio flujo (autonomicos.yml).
 # Cada paso tiene su tiempo máximo. Todo es reanudable: si una ejecución falla o se cancela, la siguiente
 # recupera lo que faltó (días sin procesar, textos pendientes).
-# Presupuesto: GitHub Free incluye 2.000 minutos al mes en repositorios privados; este flujo está pensado para
-# quedarse en torno a 20-30 minutos al día. Las cargas históricas grandes van al servidor propio.
+# El repositorio es público: los ejecutores estándar de GitHub no consumen minutos de pago
+# (https://docs.github.com/en/billing/concepts/product-billing/github-actions). Límite: 6 horas por trabajo.
+# Mientras quede carga histórica de textos, cada pasada dedica a los textos hasta 150 minutos.
 
 on:
   schedule:
@@ -15,7 +16,7 @@ on:
     inputs:
       minutos_textos:
         description: "Minutos máximos para textos del BOE"
-        default: "10"
+        default: "150"
 
 permissions:
   contents: write
@@ -29,7 +30,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 355
     env:
-      MIN_TEXTOS: ${{ inputs.minutos_textos || '10' }}
+      MIN_TEXTOS: ${{ inputs.minutos_textos || '150' }}
     steps:
       - uses: actions/checkout@v4
 
@@ -55,10 +56,12 @@ jobs:
           git add -A
           git diff --cached --quiet && exit 0
           git commit -qm "$1"
-          for i in 1 2 3; do
+          for i in 1 2 3 4 5 6 7 8; do
             git push -q origin datos && exit 0
-            git fetch -q --depth 50 origin datos && git rebase -q origin/datos || { git rebase --abort; exit 1; }
+            sleep $(( i * 4 + RANDOM % 7 ))
+            git fetch -q --depth 100 origin datos && git rebase -q origin/datos || { git rebase --abort; echo "::warning::$1: la subida choca con otra"; exit 1; }
           done
+          echo "::warning::$1: no se pudo subir"
           exit 1
           EOF
           chmod +x guardar.sh
