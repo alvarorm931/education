@@ -1,0 +1,53 @@
+name: Prueba de conector
+
+# Ejecuta un módulo del motor sobre una carpeta vacía y sube el resultado a la rama "sondas"
+# para revisarlo, sin tocar la rama de datos.
+
+on:
+  workflow_dispatch:
+    inputs:
+      modulo:
+        description: "Módulo de Python (por ejemplo motor.autonomicos.boja)"
+        required: true
+      argumentos:
+        description: "Argumentos (se añade --salida automáticamente)"
+        required: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: rama-sondas
+  cancel-in-progress: false
+
+jobs:
+  prueba:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -e .
+      - name: Ejecutar
+        env:
+          MODULO: ${{ inputs.modulo }}
+          ARGS: ${{ inputs.argumentos }}
+        run: |
+          case "$MODULO" in motor.*) ;; *) echo "Módulo no permitido"; exit 1;; esac
+          STAMP=$(date -u +%Y%m%dT%H%M%S)
+          echo "STAMP=$STAMP" >> "$GITHUB_ENV"
+          mkdir -p "prueba/$STAMP"
+          set +e
+          python -m "$MODULO" $ARGS --salida "prueba/$STAMP" > "prueba/$STAMP/salida.txt" 2>&1
+          echo "codigo=$?" >> "prueba/$STAMP/salida.txt"
+          tail -n 30 "prueba/$STAMP/salida.txt"
+      - name: Subir a la rama sondas
+        run: |
+          cd prueba
+          git init -q && git config user.name "motor-prueba" && git config user.email "motor-prueba@users.noreply.github.com"
+          git remote add origin "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git"
+          if git fetch -q --depth 1 origin sondas; then git reset -q FETCH_HEAD; fi
+          git checkout -q -B sondas
+          git add "$STAMP" && git commit -qm "Prueba ${{ inputs.modulo }}" && git push -q origin sondas

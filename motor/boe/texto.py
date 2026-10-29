@@ -31,10 +31,7 @@ RE_ID = re.compile(r"^BOE-[AB]-\d{4}-\d+$")
 FUENTE = "boe-texto"
 MADRID = ZoneInfo("Europe/Madrid")
 
-RE_DOCUMENTO = re.compile(
-    r"(\b\d{8}\s?[A-Z]\b|\b[XYZ]\d{7}\s?[A-Z]\b|\*{2,}\d{3,5}\*{1,}|\b\d{3,4}\*{3,}|\*{3,}\d{4}[A-Z]?\b|\bX{3,}\d{3,}X*)"
-)
-CABECERA_PERSONAL = re.compile(r"\b(dni|nif|nie|apellidos|nombre|documento|pasaporte)\b", re.IGNORECASE)
+from motor.limpieza import CABECERA_PERSONAL, RE_DOCUMENTO  # noqa: E402  (reglas comunes)
 
 
 def _limpio(nodo: ET.Element) -> str:

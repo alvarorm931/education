@@ -1,0 +1,107 @@
+name: Motor de datos
+
+# Un solo flujo, cada dos horas. Cada paso tiene su tiempo máximo para que la ejecución completa dure menos
+# de dos horas y nunca se solape con la siguiente. Todo es reanudable: si una ejecución falla o se cancela,
+# la siguiente recupera lo que faltó (días sin procesar, textos pendientes, boletines pendientes).
+
+on:
+  schedule:
+    - cron: "17 */2 * * *"
+  workflow_dispatch:
+    inputs:
+      minutos_textos:
+        description: "Minutos máximos para textos del BOE"
+        default: "60"
+      minutos_autonomicos:
+        description: "Minutos máximos para boletines autonómicos"
+        default: "30"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: rama-datos
+  cancel-in-progress: false
+
+jobs:
+  motor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 115
+    env:
+      MIN_TEXTOS: ${{ inputs.minutos_textos || '60' }}
+      MIN_AUTONOMICOS: ${{ inputs.minutos_autonomicos || '30' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Instalar y probar
+        run: |
+          pip install -e ".[dev]"
+          python -m pytest -q
+
+      - name: Preparar rama de datos
+        run: |
+          git config user.name "motor-datos"
+          git config user.email "motor-datos@users.noreply.github.com"
+          git fetch --depth 1 origin datos
+          git worktree add -B datos salida origin/datos
+          cat > guardar.sh <<'EOF'
+          #!/usr/bin/env bash
+          # Guarda y sube lo que haya cambiado. Si la subida choca con otra, reintenta tras rebase.
+          cd salida
+          git add -A
+          git diff --cached --quiet && exit 0
+          git commit -qm "$1"
+          for i in 1 2 3; do
+            git push -q origin datos && exit 0
+            git fetch -q --depth 50 origin datos && git rebase -q origin/datos || { git rebase --abort; exit 1; }
+          done
+          exit 1
+          EOF
+          chmod +x guardar.sh
+
+      - name: BOE de ayer y de hoy
+        run: |
+          python -m motor.boe --salida salida | tail -n 12 || echo "::warning::BOE con alertas"
+          ./guardar.sh "BOE: ayer y hoy"
+
+      - name: BOE, días que falten desde 2022
+        run: |
+          AYER=$(TZ=Europe/Madrid date -d yesterday +%F)
+          python -m motor.boe --salida salida --desde 2022-01-01 --hasta "$AYER" --saltar-existentes --pausa 0.7 | tail -n 5 || true
+          ./guardar.sh "BOE: recuperación de días pendientes"
+
+      - name: BOE, textos de anuncios de oposiciones
+        run: |
+          python -m motor.boe.texto --pendientes --salida salida --max-minutos "$MIN_TEXTOS" | tail -n 8 || true
+          ./guardar.sh "BOE: textos de anuncios"
+
+      - name: BOJA (Andalucía)
+        run: |
+          Y=$(TZ=Europe/Madrid date +%Y)
+          python -m motor.autonomicos.boja --desde-anio "$Y" --hasta-anio "$Y" --salida salida --max-minutos 10 | tail -n 5 || true
+          ./guardar.sh "BOJA: año en curso"
+          python -m motor.autonomicos.boja --desde-anio 2022 --hasta-anio $((Y-1)) --sin-guardar-original \
+            --salida salida --max-minutos "$MIN_AUTONOMICOS" | tail -n 5 || true
+          ./guardar.sh "BOJA: carga histórica"
+
+      - name: Extraer actos y comprobar huecos
+        run: |
+          python -m motor.boe.extraer --salida salida
+          python -m motor.boe.huecos --salida salida
+          ./guardar.sh "Actos y control de huecos"
+
+      - name: Avisar si hay huecos o errores
+        run: |
+          python - <<'EOF'
+          import json, sys
+          h = json.load(open("salida/datos/boe/huecos.json"))
+          problemas = {k: v for k, v in h.items() if k in ("numeros_de_diario_que_faltan", "dias_sin_procesar", "dias_con_error") and v}
+          if problemas:
+              print("::error::Huecos en el BOE: " + json.dumps(problemas, ensure_ascii=False)[:500])
+              sys.exit(1)
+          print("Sin huecos en el BOE. Anuncios sin texto:", h.get("anuncios_sin_texto"))
+          EOF

@@ -56,6 +56,31 @@ class Archivo:
             f.write(json.dumps(registro, ensure_ascii=False) + "\n")
         return registro
 
+    def registrar(self, fuente: str, fecha_ref: date, contenido: bytes, url: str, status: int,
+                  cabeceras: dict[str, str] | None = None) -> dict:
+        """Registra huella, URL y tamaño sin guardar el contenido.
+
+        Solo para cargas históricas grandes mientras no haya almacén externo: el original se puede volver
+        a pedir a la fuente y la huella permite comprobar que es el mismo.
+        """
+        registro = {
+            "fuente": fuente,
+            "fecha_ref": fecha_ref.isoformat(),
+            "url": url,
+            "status": status,
+            "sha256": hashlib.sha256(contenido).hexdigest(),
+            "bytes": len(contenido),
+            "ruta": None,
+            "nuevo": False,
+            "solo_huella": True,
+            "capturado": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+            "cabeceras": cabeceras or {},
+        }
+        self.raiz.mkdir(parents=True, exist_ok=True)
+        with (self.raiz / "indice.jsonl").open("a", encoding="utf-8") as f:
+            f.write(json.dumps(registro, ensure_ascii=False) + "\n")
+        return registro
+
 
 def leer(ruta: Path | str) -> bytes:
     """Devuelve el contenido original de una captura, comprimida o no."""
