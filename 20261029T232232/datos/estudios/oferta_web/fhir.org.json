@@ -1,0 +1,51 @@
+{
+ "dominio": "fhir.org",
+ "base": "https://fhir.org",
+ "base_final": "https://fhir.org",
+ "dominios_propios": [
+  "fhir.org"
+ ],
+ "veto_robots": false,
+ "robots_sitemaps": 0,
+ "tdmrep": false,
+ "sitemaps_leidos": 0,
+ "sitemaps_pendientes": 0,
+ "urls": 0,
+ "urls_programa_sitemap": 0,
+ "urls_colaboradores": [],
+ "via": "portada",
+ "listados_visitados": [],
+ "urls_programa": 5,
+ "programas": [
+  "http://build.fhir.org/ig/FHIR/fhir-tools-ig/branches/master/StructureDefinition-CDSHookOrderSignContext.xml",
+  "http://build.fhir.org/ig/HL7-Canada/ca-baseline/branches/master/StructureDefinition-profile-organization.sch",
+  "http://build.fhir.org/ig/HL7-Canada/ca-baseline/branches/master/ValueSet-healthcareproviderroletype.json",
+  "http://build.fhir.org/ig/HL7NZ/nzbase/branches/master/CodeSystem-coverage-category.xml",
+  "http://build.fhir.org/ig/HL7NZ/nzbase/branches/master/CodeSystem-nz-residency.xml"
+ ],
+ "programas_lastmod": {},
+ "documentos_precio": [],
+ "muestra": [],
+ "enlaces_colaboradores": [],
+ "paginas_programa_validas": 0,
+ "verificado": false,
+ "espana": false,
+ "reserva_tdm": false,
+ "peticiones": 10,
+ "estados_http": {
+  "404": 5,
+  "200": 5
+ },
+ "centro": {
+  "web": "https://fhir.org",
+  "id": "prov-947ee8f994",
+  "estado": "candidato",
+  "semillas": [
+   "http://build.fhir.org/ig/FHIR/fhir-tools-ig/branches/master/StructureDefinition-CDSHookOrderSignContext.xml",
+   "http://build.fhir.org/ig/HL7-Canada/ca-baseline/branches/master/StructureDefinition-profile-organization.sch",
+   "http://build.fhir.org/ig/HL7-Canada/ca-baseline/branches/master/ValueSet-healthcareproviderroletype.json",
+   "http://build.fhir.org/ig/HL7NZ/nzbase/branches/master/CodeSystem-coverage-category.xml",
+   "http://build.fhir.org/ig/HL7NZ/nzbase/branches/master/CodeSystem-nz-residency.xml"
+  ]
+ }
+}

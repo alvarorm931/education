@@ -1,0 +1,23 @@
+{
+ "dominio": "macports.org",
+ "base": "https://macports.org",
+ "base_final": "https://macports.org",
+ "dominios_propios": [
+  "macports.org"
+ ],
+ "error": "sin_respuesta",
+ "peticiones": 4,
+ "estados_http": {
+  "503": 4
+ },
+ "centro": {
+  "web": "https://macports.org",
+  "id": "prov-8c4274e1c7",
+  "estado": "candidato",
+  "semillas": [
+   "https://nue.de.packages.macports.org/R-MBA/R-MBA-0.1-2_0.darwin_21.arm64.tbz2.rmd160",
+   "https://nue.de.packages.macports.org/R-MBA/R-MBA-0.1-2_0.darwin_21.x86_64.tbz2.rmd160",
+   "https://nue.de.packages.macports.org/R-MBA/R-MBA-0.1-2_0.darwin_24.x86_64.tbz2.rmd160"
+  ]
+ }
+}
