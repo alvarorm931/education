@@ -206,11 +206,11 @@ protegida y la ley del proyecto prohíbe copiar. Solo se usa la web de cada cent
   expertos propios); el resto son noticias, blogs, foros o páginas de otros países. Extrapolando, unos 370
   proveedores no oficiales solo con este índice; cada índice más de Common Crawl añade dominios que el
   anterior no vio.
-- En las páginas de programa de esos proveedores (754 medidas): el 54 % tiene un formulario que pide el
-  correo y el 23 % el teléfono; el 76 % menciona el precio pero solo el 34 % da un importe en euros y el
-  11 % lo pone en los datos estructurados de la página (Schema.org) aunque no siempre lo muestre;
-  asignaturas o módulos el 50 %, metodología el 44 %, evaluación el 32 %, plazas el 21 %, guía o folleto en
-  PDF enlazado el 6 %.
+- En las páginas de programa de esos 111 proveedores (348 páginas medidas): el 60 % tiene un formulario
+  que pide el correo y el 32 % el teléfono; el 92 % habla de precio pero solo el 50 % da un importe en
+  euros, y el 14 % lo pone en los datos estructurados de la página (Schema.org); asignaturas o módulos
+  69 %, becas o descuentos 65 %, metodología 58 %, evaluación 46 %, plazas 30 %, guía o folleto en PDF
+  enlazado 9 %. Son menciones detectadas por palabras; el dato completo lo dirá la extracción.
 
 `censo.py` une todo en una tabla de proveedores con identificador propio que no cambia
 (`prov-` + huella del dominio), tipos, códigos RUCT, fuentes, señales y estado (oficial, candidato,
