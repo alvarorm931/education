@@ -1,0 +1,42 @@
+name: Textos BOE (bajo demanda)
+
+on:
+  workflow_dispatch:
+    inputs:
+      ids:
+        description: "Identificadores BOE-A separados por comas"
+        required: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: rama-datos
+  cancel-in-progress: false
+
+jobs:
+  textos:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -e .
+      - name: Preparar rama de datos
+        run: |
+          git config user.name "motor-boe"
+          git config user.email "motor-boe@users.noreply.github.com"
+          git fetch --depth 1 origin datos
+          git worktree add -B datos salida origin/datos
+      - name: Descargar textos
+        env:
+          IDS: ${{ inputs.ids }}
+        run: python -m motor.boe.texto --ids "$IDS" --salida salida
+      - name: Guardar
+        if: always()
+        run: |
+          cd salida
+          git add -A
+          git diff --cached --quiet || { git commit -qm "BOE: textos bajo demanda"; git push origin datos; }
