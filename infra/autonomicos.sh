@@ -154,7 +154,7 @@ for c in $CONECTORES; do
       ejecutar motor.provinciales.bopciudadreal --textos --salida "$S" --max-minutos "$M"
       "$G" "BOP Ciudad Real: textos"
       ;;
-    bopgranada|bopsevilla)
+    bopgranada|bopsevilla|bophuesca)
       ejecutar motor.provinciales.$c --salida "$S"
       # Cada boletín empieza donde empieza su portal (Granada, julio de 2024; Sevilla tiene 2023 y antes)
       ejecutar motor.provinciales.$c --desde 2022-01-01 --salida "$S" --max-minutos "$M"

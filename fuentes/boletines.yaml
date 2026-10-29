@@ -266,7 +266,9 @@ provinciales:
   - provincia: Huesca
     url: http://bop.dphuesca.es/
     acceso_desde_github: "ok"
-    estado: sin_conector
+    datos_estructurados: "Plataforma SAGA (como Granada y Sevilla): sumario por día /publica/consulta-de-bops/buscador/BOP-DD-MM-AAAA/"
+    estado: conector_en_pruebas
+    conector: motor/provinciales/bophuesca.py
   - provincia: Jaén
     url: http://bop.dipujaen.es/
     acceso_desde_github: "http_500"

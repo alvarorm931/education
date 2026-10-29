@@ -32,7 +32,7 @@ def _selectores() -> dict:
     for f in ("bopb", "bopt"):
         b = mod(f"motor.provinciales.{f}").BOLETIN
         sel[f] = ("provinciales", lambda filas, b=b: diba.seleccionar(b, filas))
-    for f in ("bopgranada", "bopsevilla"):
+    for f in ("bopgranada", "bopsevilla", "bophuesca"):
         b = mod(f"motor.provinciales.{f}").BOLETIN
         sel[f] = ("provinciales", lambda filas, b=b: saga.seleccionar(b, filas))
     return sel
