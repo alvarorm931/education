@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>BOLETIN OFICIAL DE LA PROVINCIA DE SANTA CRUZ DE TENERIFE</title>
+<style type="text/css">
+<!--
+body,td,th {
+	color: #000000;
+}
+body {
+	background-color: #FFF;
+	background-image: url();
+	background-repeat: no-repeat;
+	color: #E8F5FC;
+}
+a:link {
+	color: #FFFFCC;
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+	color: #FFFF66;
+}
+a:hover {
+	text-decoration: none;
+}
+a:active {
+	color: #FFFFFF;
+	font-weight: bold;
+}
+.Estilo1 {
+	font-size: 9px;
+	font-weight: bold;
+	color: #FFFFFF;
+}
+.Estilo3 {
+	font-size: 12px;
+	color: #FFF;
+}
+.as {
+	color: #FFFFFF;
+}
+.tt {
+	color: #FFFFFF;
+}
+.Estilo3 td div .tt {
+	color: white;
+}
+.estilo4 {
+	font-weight: bold;
+}
+-->
+</style>
+</head>
+<body>
+<div align="center">
+  <table width="75%" height="121" border="0" align="center" cellpadding="0" cellspacing="0">
+    <tr>
+      <td height="81" colspan="3" align="right" valign="middle" bgcolor="#FFFFFF"><table width="200" border="0" align="center">
+        <tr>
+          <td height="91" align="left"><img src="220px-Provincia_de_Santa_Cruz_de_Tenerife_-_Escudo.svg.png" width="54" height="87" /></td>
+          <td><img src="TITU1.png" width="644" height="75" /></td>
+          <td align="right"><img src="esccomauto.png" width="93" height="68" /></td>
+        </tr>
+      </table></td>
+      <td width="5%" height="81" align="right" valign="middle" bgcolor="#FFFFFF">&nbsp;</td>
+    </tr>
+  <tr>
+    <td height="33" align="center" valign="bottom" bgcolor="#000033"><table width="30%" height="23" border="0" align="left" cellpadding="3" cellspacing="5">
+      <tr class="Estilo3">
+        <td height="15" bgcolor="#000033"><div align="center"><a href="main1.php" target="mainFrame" class="tt">Inicio </a></div></td>
+        <td bgcolor="#000033"><div align="center"><a href="calen/calen.php" target="mainFrame" class="tt">Archivos</a></div>
+          <div align="center"></div></td>
+        <td bgcolor="#000033"><div align="center"><a href="busqueda.php" target="mainFrame" class="tt">Buscar</a></div>
+          <div align="center"></div></td>
+        <td bgcolor="#000033"><div align="center"><a href="suscripciones.php" target="mainFrame" class="tt">Suscripción</a></div>
+          <div align="center"></div></td>
+        <td bgcolor="#000033"><div align="center"><a href="contacto.php" target="mainFrame" class="tt">Contacto</a></div>
+          <div align="center"></div></td>
+        <td bgcolor="#000033"><div align="center"><a href="editorial.php" target="mainFrame" class="tt">Editorial</a></div>
+          <div align="center"></div></td>
+        <td bgcolor="#000033"><div align="center"><a href="ayuda.php" target="mainFrame" class="tt">Ayuda</a></div>
+          <div align="center"></div>
+          <div align="center"></div>
+          <div align="center"></div></td>
+        </tr>
+      </table>
+      <div align="center" class="as">
+        <div align="center">
+          <p>
+            
+            <font face="Verdana, Arial, Helvetica, sans-serif" size="2"><b>Jueves, 29 de octubre de 2026</b></font>          </p>
+          <p>&nbsp; </p>
+        </div>
+      </div></td>
+    <td align="right" valign="top" bgcolor="#000033"><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>Reloj</title>
+<script language="JavaScript">
+function mueveReloj(){
+	momentoActual = new Date()
+	hora = momentoActual.getHours()
+	minuto = momentoActual.getMinutes()
+	segundo = momentoActual.getSeconds()
+	
+	str_segundo = new String (segundo)
+	if (str_segundo.length == 1) 
+		segundo = "0" + segundo
+		
+	str_minuto = new String (minuto)
+	if (str_minuto.length == 1) 
+		minuto = "0" + minuto
+
+	str_hora = new String (hora)
+	if (str_hora.length == 1) 
+		hora = "0" + hora
+		
+	horaImprimible = hora + " : " + minuto + " : " + segundo
+	
+	document.form_reloj.reloj.value = horaImprimible
+	
+	setTimeout("mueveReloj()",1000)
+}
+</script>
+</head>
+
+<body onLoad="mueveReloj()">
+<form name="form_reloj">
+<input type="text" name="reloj" size="8" style="background-color : #000033; color : white; font-family : Verdana, Arial, Helvetica; font-size : 8pt; text-align : center; font-weight: bold;" onFocus="window.document.form_reloj.reloj.blur()">
+</form>
+
+
+</body>
+</html>
+</td>
+    <td align="right" valign="middle" bgcolor="#000033">&nbsp;</td>
+    </tr>
+</table>
+</div>
+</body>
+</html>

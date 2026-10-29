@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link href="favicon.ico" type="image/x-icon" rel="shortcut icon"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>BOLETIN OFICIAL DE LA PROVINCIA DE SANTA CRUZ DE TENERIFE</title>
+<script type="text/javascript">
+   //texto del mensaje
+   var texto_estado = "        Bienvenid@ al Boletin Oficial de la Provincia de Sanat Cruz de Tenerife. Atencin al pblico: De lunes a viernes, de 07:00 a 13:00 horas.  Si desea agregar esta web a favoritos pulsar Ctrl+D"
+   var posicion = 0
+   
+    //funcion para mover el texto de la barra de estado
+   function mueve_texto(){
+      if (posicion < texto_estado.length)
+         posicion ++;
+      else
+         posicion = 1;
+      string_actual = texto_estado.substring(posicion) + texto_estado.substring(0,posicion)
+      window.status = string_actual
+      setTimeout("mueve_texto()",50)
+   }
+   mueve_texto()
+   </script>
+<script type="text/javascript">
+// *******************************************************************
+// script by drevil_nz, Michael Dillon, Christchurch New Zealand. 
+// Permission granted to use this script provided this credit        
+// remains intact. Visit my homepage www.chc.quik.co.nz/juggler/mikey.html
+// Script written for Internet Explorer 4.0+.
+// ******************************************************************* 
+
+var message="BOP SANTA CRUZ DE TENERIFE"     //specifys the title
+var message=message+"          " //gives a pause at the end,1 space=1 speed unit, here I used 10 spaces@150 each = 1.5seconds. 
+i="0"			         //declares the variable and sets it to start at 0
+var temptitle=""                 //declares the variable and sets it to have no value yet.
+var speed="150"                  //the delay in milliseconds between letters
+
+function titler(){
+if (!document.all&&!document.getElementById)
+return
+document.title=temptitle+message.charAt(i)  //sets the initial title
+temptitle=temptitle+message.charAt(i)       //increases the title by one letter
+i++					    //increments the counter
+if(i==message.length)			    //determines the end of the message
+{
+i="0"					    //resets the counter at the end of the message
+temptitle=""				    //resets the title to a blank value
+}
+setTimeout("titler()",speed) 		   //Restarts. Remove line for no-repeat.
+}
+
+window.onload=titler
+</script>
+</head>
+
+<frameset rows="135,59%" cols="*" framespacing="0" frameborder="no" border="0" bordercolor="#000033">
+  
+<frame src="cab.php" name="topFrame" scrolling="No" noresize="noresize" id="topFrame" title="topFrame" />
+  
+  <frameset rows="*,32" cols="*" framespacing="0" frameborder="no" border="0">
+		<frame src="main1.php" name="mainFrame" id="mainFrame" title="mainFrame" />
+		<frame src="pie.php" name="bottomFrame" scrolling="No" noresize="noresize" id="bottomFrame" title="bottomFrame" />
+	</frameset>
+</frameset>
+<noframes><body>
+</body>
+</noframes></html>
+
+
