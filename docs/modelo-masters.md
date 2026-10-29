@@ -10,7 +10,7 @@ No hay un registro único de «todos los másters». Hay cuatro capas, cada una 
 | Capa | Lista completa | Cuántos | Cómo se conecta |
 |---|---|---|---|
 | Máster universitario oficial | Sí: catálogo SIIU del Ministerio (por centro) + ficha del RUCT | 4.347 títulos activos (4.166 simples y 181 dobles) en 95 universidades, 4.906 imparticiones activas por centro; 4.859 con extinguidos | XLSX anual, `motor/estudios/catalogo.py` |
-| Altas nuevas | Sí: acuerdos del Consejo de Ministros en el BOE, con el código RUCT de cada título | 27 acuerdos entre 2022 y 2026 | sumario del BOE ya capturado, `motor/estudios/boe_masters.py` |
+| Altas nuevas | Sí: acuerdos del Consejo de Ministros en el BOE, con el código RUCT de cada título | 27 acuerdos entre 2022 y 2026 con 1.425 títulos; 387 no están en el catálogo SIIU de febrero de 2026, de ellos 270 aprobados en septiembre y octubre de 2026 | sumario del BOE ya capturado, `motor/estudios/boe_masters.py` |
 | Máster de formación permanente (título propio) | No. No consta obligación de inscribirlos en el RUCT (ver §2, títulos propios) | Sin cifra oficial | catálogo web de cada universidad (95) |
 | Máster de escuela de negocio o centro no universitario | No. «Máster» sin título universitario detrás | Sin cifra | web de cada escuela; fuera de la primera versión |
 
@@ -246,7 +246,40 @@ Límite que se respeta: solo se lee lo publicado. Si un centro da el folleto o e
 formulario, no se rellena el formulario ni se buscan rutas ocultas; la ficha dice «el centro no lo
 publica» y enlaza a su web.
 
-## 7. Siguientes pasos
+## 7. Revisión crítica (29/10/2026, noche)
+
+Regla de trabajo: al cerrar cada pieza, preguntarse si se puede hacer mejor, si da lo que queremos y qué
+falta. Lo encontrado al revisar el censo:
+
+1. **El descubrimiento perdía centros.** Contra listas de referencia independientes, el primer patrón
+   encontraba 15 de 18 centros conocidos, 6 de 17 extranjeros autorizados, 4 de 9 colaboradores de la
+   Isabel I y 6 de 9 escuelas de Forbes. Causas medidas en el índice de Common Crawl: guarda pocas páginas
+   de cada sitio (EU Business School, 23; ESHI, 10), muchas páginas no tienen idioma detectado, las
+   escuelas internacionales publican en inglés y algunas solo nombran el máster en un parámetro o en el
+   blog. Corrección: basta cualquier URL del dominio que hable de máster o posgrado (también catalán,
+   euskera, gallego e inglés, y acentos codificados), y quién vende de verdad lo decide el rastreador en el
+   sitemap completo de cada web. El recuento contra las listas de referencia queda como prueba fija de
+   cobertura.
+2. **Ruido en la verificación.** Noticias, blogs y webs de otros países pasaban el filtro. Corrección: la
+   página de programa exige cuatro señales de ficha y no estar en rutas de noticia; se añade la señal de
+   España (€, ECTS, ciudades, +34) para descartar oferta de otros países. Lo que siga dudoso lo
+   clasificará Claude Haiku cuando haya clave de la API.
+3. **Webs sin sitemap.** Se quedaban sin programas. Corrección: enlaces de programa de la portada y URL vistas
+   en Common Crawl.
+4. **Catálogo oficial con retraso.** El catálogo SIIU es de febrero de 2026; el BOE ya publica 270 títulos
+   aprobados después. El universo oficial es catálogo + altas del BOE.
+5. **Minutos de GitHub.** El 29/10/2026 se consumieron 1.012 minutos entre todos los flujos (másters,
+   oposiciones y carga histórica), la mitad del cupo mensual gratuito. Las cargas grandes (rastreo de todas
+   las webs, memorias del RUCT, Common Crawl completo) deben ir al servidor de España.
+6. **Concurrencia entre conversaciones.** Las pruebas encoladas en el grupo «rama-sondas» se cancelan entre
+   sí, también las de oposiciones. Másters usa ya `estudios.yml`, que junta resultados sin ese grupo.
+7. **Pendiente y sin empezar:** unir cada página de máster oficial de la web de su universidad con su
+   código RUCT; guías docentes por plataforma (en estudio); decretos de precios públicos 2026-2027 (en
+   estudio); becas; almacén de originales (R2) antes de la extracción masiva; Excel de oferta de plazas,
+   QEDU, órdenes de másters habilitantes y profesiones reguladas de la UE; peticiones formales por la Ley
+   37/2007.
+
+## 8. Siguientes pasos
 
 1. Fichas del RUCT de los 4.859 títulos (una pasada, unos 81 minutos) y unión con el catálogo y el BOE.
 2. Memorias de los activos en el servidor de España, por la noche, empezando por los títulos con más
