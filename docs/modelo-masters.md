@@ -170,7 +170,48 @@ anual sale de la web o del fichero de oferta del Ministerio cuando exista.
 Coste medido: 54 páginas por memoria de media (públicas 62, privadas 38) y 1,35 segundos por petición
 contando la espera. Para los 4.347 títulos activos, unas 235.000 peticiones y unas 88 horas.
 
-## 5. Siguientes pasos
+## 5. Mapa completo de proveedores (oficiales y no oficiales)
+
+El valor diferencial está en lo que hoy se esconde tras un formulario, sobre todo en los títulos propios y
+en los centros privados. Por eso el censo no se limita a las universidades: incluye a todo el que vende un
+máster en España.
+
+| Grupo | Cómo se enumera | Conector |
+|---|---|---|
+| Universidades (activas y sin actividad) y sus centros propios y adscritos | RUCT, 109 grupos | `centros_ruct.py` |
+| Centros extranjeros autorizados (Madrid, Cataluña, Andalucía, C. Valenciana, País Vasco, Cantabria, Aragón), enseñanzas artísticas superiores, Defensa, otros centros de nivel universitario | RUCT, grupos propios | `centros_ruct.py` |
+| Escuelas y empresas que venden másters de formación permanente expedidos por una universidad | descubrimiento web + la propia universidad cuando publica sus colaboradores (la Isabel I sí; UCAM, UNIR, Nebrija, UC3M no) | `commoncrawl.py`, `rastreador.py` |
+| Escuelas de negocio y centros que venden «máster» sin título universitario | descubrimiento web | `commoncrawl.py`, `rastreador.py` |
+
+No hay registro oficial de los dos últimos grupos. Se descubren en el índice público de Common Crawl
+(metadatos de URL de miles de millones de páginas, sin descargar contenido ajeno): dominios .es, o
+genéricos en español, con rutas de programa de posgrado. Después se descartan agregadores, medios y
+dominios de otros países y se verifica cada candidato en su propia web.
+
+Los agregadores (Emagister, Educaweb, masterMania…) no se usan como fuente: su base de datos está
+protegida y la ley del proyecto prohíbe copiar. Solo se usa la web de cada centro.
+
+`censo.py` une todo en una tabla de proveedores con identificador propio que no cambia
+(`prov-` + huella del dominio), tipos, códigos RUCT, fuentes, señales y estado (oficial, candidato,
+verificado, descartado con motivo).
+
+## 6. Modelo de datos: capturas, hechos y fichas
+
+Igual que en oposiciones, tres capas que no se mezclan:
+
+1. **Capturas**: cada página, PDF o ficha descargada, intacta, con huella sha256, URL y fecha.
+2. **Hechos**: cada dato extraído (precio, créditos, asignatura, modalidad, plazas, evaluación…) con su
+   captura de origen y la frase literal de la que sale. Un dato que cambia es un hecho nuevo con fecha; el
+   anterior no se borra.
+3. **Fichas**: se recalculan desde los hechos vigentes. Si el extractor mejora, se reprocesa desde las
+   capturas.
+
+Identificadores propios que no cambian nunca: proveedor (`prov-…`), programa (proveedor + nombre
+normalizado + tipo de título), oferta (programa × sede × modalidad × curso), asignatura (programa +
+código de la universidad cuando exista). Los códigos oficiales (RUCT de título y de centro) se guardan como
+atributos, no como identificador.
+
+## 7. Siguientes pasos
 
 1. Fichas del RUCT de los 4.859 títulos (una pasada, unos 81 minutos) y unión con el catálogo y el BOE.
 2. Memorias de los activos en el servidor de España, por la noche, empezando por los títulos con más

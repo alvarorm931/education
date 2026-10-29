@@ -16,6 +16,10 @@ on:
       paralelo:
         description: "Tramos a la vez (1 si todos van a la misma fuente)"
         default: "1"
+      entrada:
+        description: "Rutas de la rama sondas que necesita el módulo, separadas por espacios (quedan en ./entrada/)"
+        required: false
+        default: ""
 
 permissions:
   contents: write
@@ -35,6 +39,17 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install -e ".[estudios]"
+      - name: Traer entradas de la rama sondas
+        if: inputs.entrada != ''
+        env:
+          RUTAS: ${{ inputs.entrada }}
+        run: |
+          git fetch -q --depth 1 origin sondas
+          mkdir -p entrada
+          for r in $RUTAS; do
+            git archive FETCH_HEAD "$r" | tar -x -C entrada
+          done
+          find entrada -maxdepth 6 -type d | head -20
       - name: Ejecutar
         env:
           MODULO: ${{ inputs.modulo }}

@@ -63,6 +63,10 @@ TEMAS = {
     "horario": re.compile(r"\bhorario|\bcalendario", re.I),
 }
 FOLLETO = re.compile(r'href="([^"]+\.pdf)"[^>]*>([^<]{0,120})', re.I)
+TITULO_PROGRAMA = re.compile(r"m[aá]ster|\bmba\b|posgrado|postgrado|experto universitario|especialista universitario|"
+                             r"diploma de especializaci|executive", re.I)
+SENAL_PROGRAMA = re.compile(r"\bECTS\b|cr[ée]ditos|matr[ií]cula|\bprecio|plazas|titulaci[oó]n|admisi[oó]n|modalidad|"
+                            r"duraci[oó]n|inicio|online|presencial|semipresencial|plan de estudios", re.I)
 GUIA = re.compile(r"gu[ií]a|folleto|brochure|dossier|programa|plan de estudios|syllabus", re.I)
 
 
@@ -190,7 +194,12 @@ def medir_pagina(html: str, url: str) -> dict:
     pide_tel = any(re.search(r'type="tel"|name="[^"]*(tel|phone|movil)[^"]*"', f, re.I) for f in formularios)
     pdfs = [(urljoin(url, h), " ".join(t.split())) for h, t in FOLLETO.findall(html)]
     titulo = re.search(r"(?is)<title[^>]*>(.*?)</title>", html)
+    h1 = re.search(r"(?is)<h1[^>]*>(.*?)</h1>", html)
+    cabecera = " ".join(re.sub(r"<[^>]+>", " ", (titulo.group(1) if titulo else "") + " " + (h1.group(1) if h1 else "")).split())
+    senales = {m.group(0).lower() for m in SENAL_PROGRAMA.finditer(visible)}
     return {
+        "es_programa": bool(TITULO_PROGRAMA.search(cabecera)) and len(senales) >= 3,
+        "senales": sorted(senales)[:12],
         "titulo": " ".join(titulo.group(1).split())[:200] if titulo else None,
         "jsonld_tipos": tipos,
         "precio_jsonld": precio_ld,
@@ -204,7 +213,7 @@ def medir_pagina(html: str, url: str) -> dict:
 
 
 def rastrear(base: str, archivo: Archivo | None, max_urls: int = 60000, muestra: int = 6,
-             max_peticiones: int = 80) -> dict:
+             max_peticiones: int = 80, semillas: list[str] | None = None) -> dict:
     d = Dominio(base, archivo, max_peticiones=max_peticiones)
     res: dict = {"dominio": d.host, "base": d.base}
     try:
@@ -232,7 +241,11 @@ def rastrear(base: str, archivo: Archivo | None, max_urls: int = 60000, muestra:
         res["sitemaps_leidos"] = leidos
         res["sitemaps_pendientes"] = len(cola)
         res["urls"] = len(paginas)
-        candidatas = sorted({u for u in paginas if es_programa(u) and urlparse(u).netloc.endswith(d.host.split(":")[0].removeprefix("www."))})
+        raiz_host = d.host.split(":")[0].removeprefix("www.")
+        candidatas = sorted({u for u in paginas if es_programa(u) and urlparse(u).netloc.endswith(raiz_host)})
+        res["urls_programa_sitemap"] = len(candidatas)
+        if not candidatas and semillas:  # sin sitemap útil: las URL de programa vistas en Common Crawl
+            candidatas = sorted({u for u in semillas if es_programa(u)})
         res["urls_programa"] = len(candidatas)
         res["programas"] = candidatas
         medidas = []
@@ -242,6 +255,9 @@ def rastrear(base: str, archivo: Archivo | None, max_urls: int = 60000, muestra:
                 continue
             medidas.append({"url": u, **medir_pagina(r.text, u)})
         res["muestra"] = medidas
+        validas = sum(1 for m in medidas if m.get("es_programa"))
+        res["paginas_programa_validas"] = validas
+        res["verificado"] = validas >= 2 or (validas == 1 and len(medidas) <= 2)
     except Exception as e:  # un dominio roto no para el resto
         res["error"] = f"{type(e).__name__}: {e}"[:300]
     res["peticiones"] = d.peticiones
@@ -254,6 +270,15 @@ def _muestra(urls: list[str], n: int) -> list[str]:
         return urls
     paso = len(urls) / n
     return [urls[int(i * paso)] for i in range(n)]
+
+
+def objetivos_de_proveedores(fichero: Path, desde: int = 0, hasta: int | None = None,
+                             estados: tuple = ("oficial", "candidato")) -> list[dict]:
+    """Proveedores del censo único (motor/estudios/censo.py) en un tramo de la lista."""
+    filas = [json.loads(l) for l in fichero.read_text(encoding="utf-8").splitlines() if l.strip()]
+    filas = [p for p in filas if p["estado"] in estados][desde:hasta]
+    return [{"web": "https://" + p["dominio"], "id": p["id"], "estado": p["estado"],
+             "semillas": p.get("senales", {}).get("cc_ejemplos", [])} for p in filas]
 
 
 def dominios_del_censo(carpeta: Path) -> list[dict]:
@@ -284,7 +309,7 @@ def ejecutar(objetivos: list[dict], raiz: Path, hilos: int, max_minutos: float, 
     def uno(obj: dict) -> None:
         if time.time() > fin:
             return
-        r = rastrear(obj["web"], archivo, muestra=muestra)
+        r = rastrear(obj["web"], archivo, muestra=muestra, semillas=obj.get("semillas"))
         r["centro"] = obj
         with cerrojo:
             (destino / f"{r['dominio'].replace(':', '_')}.json").write_text(json.dumps(r, ensure_ascii=False, indent=1), encoding="utf-8")
@@ -293,6 +318,7 @@ def ejecutar(objetivos: list[dict], raiz: Path, hilos: int, max_minutos: float, 
             resumen["con_programas"] += 1 if r.get("urls_programa") else 0
             resumen["urls_programa"] += r.get("urls_programa", 0)
             resumen["errores"] += 1 if r.get("error") else 0
+            resumen["verificados"] += 1 if r.get("verificado") else 0
 
     with ThreadPoolExecutor(max_workers=hilos) as ex:
         list(ex.map(uno, objetivos))
@@ -303,6 +329,8 @@ def main() -> None:
     p = argparse.ArgumentParser()
     p.add_argument("--dominios", help="webs separadas por comas")
     p.add_argument("--censo", help="carpeta datos/estudios/centros del censo del RUCT")
+    p.add_argument("--proveedores", help="proveedores.jsonl del censo único")
+    p.add_argument("--tramo", default="0:", help="tramo de la lista de proveedores, p. ej. 0:800")
     p.add_argument("--hilos", type=int, default=8)
     p.add_argument("--muestra", type=int, default=6)
     p.add_argument("--max-minutos", type=float, default=27)
@@ -310,6 +338,9 @@ def main() -> None:
     a = p.parse_args()
     if a.dominios:
         objetivos = [{"web": w.strip(), "nivel": "manual"} for w in a.dominios.split(",") if w.strip()]
+    elif a.proveedores:
+        d, _, h = a.tramo.partition(":")
+        objetivos = objetivos_de_proveedores(Path(a.proveedores), int(d or 0), int(h) if h else None)
     elif a.censo:
         objetivos = dominios_del_censo(Path(a.censo))
     else:
