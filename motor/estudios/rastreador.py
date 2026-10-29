@@ -330,6 +330,17 @@ def nombra_programa(texto: str) -> bool:
     return bool(EMPIEZA_PROGRAMA.match(texto or "")) and not PLURAL_LISTADO.match(texto or "")
 
 
+GENERICO = re.compile(r"^(m[aá]s informaci[oó]n|ver m[aá]s|leer m[aá]s|saber m[aá]s|info|inicio|home|aqu[ií]|here|"
+                      r"read more|learn more|more info|apply|solicita|inscr[ií]bete|matr[ií]cula|admisi[oó]n|precios?|"
+                      r"becas|descargar?|download|pdf|folleto|programa|plan de estudios|contacto|siguiente|anterior|"
+                      r"m[aàá]steres|m[aàá]sters|postgrados?|posgrados?)\b", re.I)
+
+
+def texto_de_nombre(t: str) -> bool:
+    """Un texto de enlace que puede ser el nombre de un programa («Ingeniería Industrial»), no «Más información»."""
+    return len(re.findall(r"\w{3,}", t)) >= 2 and not GENERICO.match(t.strip()) and len(t) <= 200
+
+
 def enlace_a_programa(url: str, texto: str) -> bool:
     """Por la URL, o por un texto de enlace que nombra un programa concreto («Máster Universitario en…»)."""
     if es_programa(url):
@@ -436,7 +447,7 @@ def desde_portada(d: Dominio, semillas: list[str] | None, tope: int, max_listado
 
     def anotar(u: str, t: str) -> None:
         programas.add(u)
-        if t and nombra_programa(t) and len(t) > len(d.textos.get(u, "")):  # no «Más información»
+        if t and (nombra_programa(t) or (es_programa(u) and texto_de_nombre(t))) and len(t) > len(d.textos.get(u, "")):
             d.textos[u] = t
 
     cola: list[tuple[int, int, int, str]] = []  # (nivel, prioridad, longitud, url)

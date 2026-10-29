@@ -32,3 +32,18 @@ def test_empareja_por_texto_del_enlace_si_la_url_es_opaca():
     assert r["4310001"]["estado"] == "unido" and r["4310001"]["url"].endswith("1371210340413/")
     assert r["4310002"]["url"].endswith("1371212345678/")
     assert all(x["estado"] == "sin_pagina" for x in e.emparejar(titulos, urls))  # sin textos, la URL no dice nada
+
+
+def test_tramos_pegados_e_idiomas():
+    from motor.estudios import emparejar as e
+    t = [{"codigo_ruct": "1", "nombre_oficial": "Máster Universitario en Antropología Física: Evolución y Biodiversidad Humanas por la Universidad Complutense de Madrid"},
+         {"codigo_ruct": "2", "nombre_oficial": "Máster Universitario en Lengua Española por la Universidad Complutense de Madrid"}]
+    urls = ["https://www.ucm.es/estudios/master-antropologiafisica", "https://www.ucm.es/estudios/master-lenguaespanola"]
+    r = {x["codigo_ruct"]: x for x in e.emparejar(t, urls)}
+    assert r["2"]["estado"] == "unido" and r["2"]["url"].endswith("master-lenguaespanola/")
+    assert r["1"]["url"] is None or r["1"]["url"].endswith("master-antropologiafisica/")
+    t2 = [{"codigo_ruct": "3", "nombre_oficial": "Máster Universitario en Advocacia i Procura por la Universitat Jaume I"}]
+    urls2 = ["https://www.uji.es/es/masters/advocacia-procura/", "https://www.uji.es/ca/masters/advocacia-procura/",
+             "https://www.uji.es/en/masters/advocacia-procura/"]
+    x = e.emparejar(t2, urls2)[0]
+    assert x["estado"] == "unido" and "/es/" in x["url"]

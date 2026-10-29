@@ -64,12 +64,41 @@ def sin_modalidad(url: str) -> str:
     return MODALIDADES.sub("", url.rstrip("/"))
 
 
+IDIOMA = re.compile(r"/(es|en|ca|eu|gl|va|fr|de|it|pt|cas|cat|eng|esp)(?=/)", re.I)
+
+
+def sin_idioma(url: str) -> str:
+    """La misma ficha en castellano, catalán o inglés es la misma ficha."""
+    return IDIOMA.sub("", sin_modalidad(url))
+
+
+def misma_ficha(a: str, b: str) -> bool:
+    """Dos URL de la misma ficha: iguales sin idioma ni modalidad, una cuelga de la otra, o mismo último
+    tramo en el mismo dominio (uchceu.es/master-x/ y uchceu.es/fr/master/master-x/)."""
+    if not a or not b:
+        return False
+    x, y = sin_idioma(a).rstrip("/"), sin_idioma(b).rstrip("/")
+    if x == y or x.startswith(y + "/") or y.startswith(x + "/"):
+        return True
+    ua, ub = urlparse(x), urlparse(y)
+    return ua.netloc == ub.netloc and ua.path.rsplit("/", 1)[-1] == ub.path.rsplit("/", 1)[-1] != ""
+
+
+def _en(w: str, url: set[str]) -> bool:
+    """La palabra está en la URL, sola o dentro de un tramo pegado («master-antropologiafisica», «masterlogic»)."""
+    return w in url or (len(w) >= 4 and any(len(t) >= 9 and w in t for t in url))
+
+
 def puntuacion(nombre: set[str], url: set[str]) -> float:
     """Parte del nombre recogida en la URL, penalizando URL con muchas palabras ajenas."""
     if not nombre or not url:
         return 0.0
-    comunes = len(nombre & url)
-    return round(comunes / len(nombre) * (comunes / max(len(url), comunes)) ** 0.25, 3)
+    comunes = sum(1 for w in nombre if _en(w, url))
+    if not comunes:
+        return 0.0
+    pegados = sum(1 for t in url if len(t) >= 9 and t not in nombre and any(w in t for w in nombre if len(w) >= 4))
+    ajenas = max(len(url) - pegados, 0) + pegados  # un tramo pegado cuenta como una palabra de la URL
+    return round(comunes / len(nombre) * (min(comunes, ajenas) / max(ajenas, comunes)) ** 0.25, 3)
 
 
 def palabras_texto(texto: str) -> set[str]:
@@ -89,12 +118,21 @@ def emparejar(titulos: list[dict], urls: list[str], textos: dict[str, str] | Non
     salida = []
     for t in titulos:
         pn = palabras_nombre(t["nombre_oficial"])
-        puntos = sorted(((puntuacion(pn, pu), u) for u, pu in pals), reverse=True)[:3]
+        puntos = sorted(((puntuacion(pn, pu), u) for u, pu in pals), reverse=True)[:6]
         mejor = puntos[0] if puntos else (0.0, None)
-        # la misma ficha en varias modalidades no es un empate: son ofertas del mismo título
-        rivales = [p for p, u in puntos[1:] if sin_modalidad(u) != sin_modalidad(mejor[1] or "")]
+        # la misma ficha en varias modalidades o idiomas no es un empate: son la misma oferta
+        if puntos:
+            iguales = [u for p, u in puntos if p == mejor[0] and misma_ficha(u, mejor[1])]
+            mejor = (mejor[0], min(iguales, key=lambda u: (not re.search(r"/(es|cas|esp)/", u), len(u))))
+        rivales = [p for p, u in puntos if not misma_ficha(u, mejor[1] or "")]
         segundo = rivales[0] if rivales else 0.0
-        modalidades = [u for p, u in puntos if p == mejor[0] and sin_modalidad(u) == sin_modalidad(mejor[1] or "")]
+        # una URL por modalidad (presencial, online…), la de castellano si hay varias lenguas
+        por_modalidad: dict[str, list[str]] = {}
+        for p_, u in puntos:
+            if mejor[1] and p_ == mejor[0] and sin_idioma(u) == sin_idioma(mejor[1]):
+                por_modalidad.setdefault(IDIOMA.sub("", u.rstrip("/")), []).append(u)
+        modalidades = sorted(min(v, key=lambda u: (not re.search(r"/(es|cas|esp)/", u), len(u)))
+                             for v in por_modalidad.values())
         if mejor[0] >= UMBRAL and mejor[0] - segundo >= MARGEN:
             estado = "unido"
         elif mejor[0] >= UMBRAL:
