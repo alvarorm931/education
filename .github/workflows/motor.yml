@@ -99,6 +99,14 @@ jobs:
             --salida salida --max-minutos "$MIN_AUTONOMICOS" | tail -n 5 || true
           ./guardar.sh "BOJA: carga histórica"
 
+      - name: BOCM (Madrid)
+        run: |
+          python -m motor.autonomicos.bocm --salida salida | tail -n 3 || true
+          python -m motor.autonomicos.bocm --desde 2022-01-01 --saltar-existentes --salida salida --max-minutos "$MIN_AUTONOMICOS" | tail -n 3 || true
+          ./guardar.sh "BOCM: boletines"
+          python -m motor.autonomicos.bocm --textos --salida salida --max-minutos "$MIN_AUTONOMICOS" | tail -n 2 || true
+          ./guardar.sh "BOCM: textos de empleo público"
+
       - name: Extraer actos y comprobar huecos
         run: |
           python -m motor.boe.extraer --salida salida

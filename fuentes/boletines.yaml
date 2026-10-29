@@ -11,7 +11,7 @@ autonomicos:
     url: https://www.juntadeandalucia.es/eboja
     acceso_desde_github: "ok"
     datos_estructurados: "API JSON/CSV por año: https://datos.juntadeandalucia.es/api/v0/boja/all?year=AAAA&format=json (OpenAPI en /api/v0/boja/openapi.json)"
-    estado: sin_conector
+    estado: conector_en_pruebas
     nota: "Datos abiertos: API JSON/CSV por año (datos.juntadeandalucia.es/api/v0/boja), CC BY 4.0; Atom con cuerpo del texto"
   - id: BOA
     nombre: Boletín Oficial de Aragón
@@ -93,7 +93,7 @@ autonomicos:
     url: http://www.bocm.es/
     acceso_desde_github: "ok"
     datos_estructurados: "RSS /boletines.rss y /sumarios.rss; XML del boletín diario: /boletin/CM_Boletin_BOCM/AAAA/MM/DD/BOCM-AAAAMMDDNNN.xml"
-    estado: sin_conector
+    estado: conector_en_pruebas
     nota: "Comunidad uniprovincial: también publica lo local. RSS: /boletines.rss, /sumarios.rss, /ultimo-boletin.xml"
   - id: BORM
     nombre: Boletín Oficial de la Región de Murcia
