@@ -286,6 +286,8 @@ def parsear_centro(pagina: str) -> dict:
             modalidades[nombre] = c[clave] is True
     plazas = [c.get("plazas"), c.get("plazas_2"), c.get("plazas_3")]
     por_modalidad = {n: _num(p) for n, p in zip(("presencial", "semipresencial", "a_distancia"), plazas) if _num(p)}
+    # Formato RD 1393/2007: plazas por año de implantación en lugar de por modalidad.
+    por_ano = [_num(v) for k, v in c.items() if k.endswith("ano_de_implantacion") and _num(v)]
     idiomas = []
     for t in tablas(pagina):
         if any("denominaci" in x.lower() for x in t["cabecera"]):
@@ -293,8 +295,10 @@ def parsear_centro(pagina: str) -> dict:
     return {
         "modalidades": [k for k, v in modalidades.items() if v],
         "plazas_por_modalidad": por_modalidad,
-        "plazas_total": _num(c.get("numero_total_de_plazas_ofertadas_en_el_centro")),
-        "plazas_nuevo_ingreso": _num(c.get("numero_de_plazas_de_nuevo_ingreso_para_primer_curso")),
+        "plazas_total": _num(c.get("numero_total_de_plazas_ofertadas_en_el_centro")) or (por_ano[-1] if por_ano else None),
+        "plazas_nuevo_ingreso": _num(c.get("numero_de_plazas_de_nuevo_ingreso_para_primer_curso")) or (por_ano[-1] if por_ano else None),
+        "plazas_por_ano_implantacion": por_ano,
+        "normas_permanencia": c.get("normas_de_permanencia") or None,
         "idiomas": idiomas,
     }
 
@@ -476,10 +480,8 @@ def leer_memoria(lector: Lector, ficha: dict, max_paginas: int = 250) -> dict:
     # acceso y admisión
     p = pagina(f"accesoAdmision!requisitos?actual=menu.solicitud.accesoAdmision.requisitos&cod={cod}")
     if p:
-        memoria["acceso"]["requisitos_y_criterios"] = textos(p)
-    p = pagina(f"accesoAdmision!curso?actual=menu.solicitud.accesoAdmision.complementos&cod={cod}")
-    if p:
-        memoria["acceso"]["complementos"] = textos(p)
+        # La página reúne requisitos, criterios, apoyo, reconocimiento de créditos y complementos formativos.
+        memoria["acceso"]["textos"] = textos(p)
     # catálogos del título
     for clave, ruta in (("actividades", "actividades?actual=menu.solicitud.planificacion.actividades"),
                         ("metodologias", "metodologias?actual=menu.solicitud.planificacion.metodologias"),
@@ -492,8 +494,8 @@ def leer_memoria(lector: Lector, ficha: dict, max_paginas: int = 250) -> dict:
         memoria["resultados_aprendizaje"] = [{"codigo": f[0], "descripcion": f[1], "tipo": f[-1]}
                                              for t in tablas(p) for f in t["filas"] if len(f) >= 3]
     # plan: módulos → materias → asignaturas
-    p = pagina(f"descripcionplan?actual=menu.solicitud.planificacion.descripcion&cod={cod}")
-    modulos = sorted({int(x) for x in re.findall(r"codModulo=(\d+)", p or "")})
+    p = pagina(f"modulos?actual=menu.solicitud.planificacion.modulos&cod={cod}")
+    modulos = sorted({int(x) for x in re.findall(r"codModulo=(\d+)", p or "")} - {0})
     for mod in modulos or [0]:
         pm = pagina(f"datosModulo!consulta.action?codModulo={mod}&actual=menu.solicitud.planificacion.materias") if mod else \
             pagina(f"datosModulo?actual=menu.solicitud.planificacion.materiasSin&codModulo={mod}")

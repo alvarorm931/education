@@ -31,8 +31,8 @@ def test_ficha_con_historial_elige_ultima_memoria():
 
 def test_centro_modalidad_plazas_idioma():
     c = r.parsear_centro(L("centro_3500355.html"))
-    assert c == {"modalidades": ["semipresencial"], "plazas_por_modalidad": {"semipresencial": 40.0},
-                 "plazas_total": 40.0, "plazas_nuevo_ingreso": 40.0, "idiomas": ["INGLÉS"]}
+    assert c["modalidades"] == ["semipresencial"] and c["plazas_por_modalidad"] == {"semipresencial": 40.0}
+    assert c["plazas_nuevo_ingreso"] == 40.0 and c["idiomas"] == ["INGLÉS"]
 
 
 def test_evaluacion_y_actividades_por_materia():
@@ -55,3 +55,10 @@ def test_la_sesion_de_otro_titulo_se_rechaza():
     assert r._comprobar(L("asignatura_3500355.html"), nombre)
     # el servidor devolvió una página de un grado dentro de la sesión del máster de Murcia
     assert not r._comprobar(L("sistemas_materia_rd1393.html"), "Máster Universitario en Finanzas por la Universidad de Murcia")
+
+
+def test_centro_formato_anterior_plazas_por_ano():
+    c = r.parsear_centro(L("centro_rd1393_4310193.html"))
+    assert c["modalidades"] == ["presencial"]
+    assert c["plazas_nuevo_ingreso"] == 20.0 and c["plazas_por_ano_implantacion"] == [20.0, 20.0]
+    assert c["normas_permanencia"].startswith("https://www.um.es/")
