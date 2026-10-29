@@ -1,0 +1,2439 @@
+<!DOCTYPE html>
+<html xml:lang="es" lang="es">
+
+<head>
+        <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-V5CJEH4Z0R"></script>
+<script>
+function marketingTagAnalitica() {
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-V5CJEH4Z0R');
+}
+</script>
+        <!-- Delete cookie -->
+<script>
+function deleteCookie(cname) {
+	if (readCookie(cname) != null) {
+		document.cookie = cname + "= ;expires=Thu, 01-Jan-70 00:00:01 GMT; Path=/;domain=ciencia.gob.es";
+	}
+}
+</script>
+        <!-- Set cookie -->
+<script>
+function setCookie(cname, cvalue, exdays) {
+	var d = new Date();
+	d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+	var expires = (exdays == '') ? '' : 'expires=' + d.toUTCString() + ';';
+	document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+</script>
+        <!-- Set cookie -->
+<script>
+function setCookie(cname, cvalue, exdays) {
+	var d = new Date();
+	d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+	var expires = (exdays == '') ? '' : 'expires=' + d.toUTCString() + ';';
+	document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+</script>
+<script type="text/javascript" async src="https://www.google-analytics.com/analytics.js"></script>
+<script>
+var examinar = 'Examinar';
+var opcional = 'Opcional';
+//var urlServletAssetDownload = '/gesdamdoc-servlet/?uuid=';
+var urlServletAssetDownload = '/site-web/InfoGeneralPortal/documento/';
+var site = window.location.href;
+if(site.indexOf('aee') !== -1){
+  urlServletAssetDownload = '/site-aee/InfoGeneral/documento/';
+}
+</script>
+<title>Ministerio de Ciencia, Innovación y Universidades</title>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="author" content="Ministerio de Ciencia, Innovación y Universidades">
+<meta name="description" content="Ministerio de Ciencia, Innovación y Universidades ">
+<meta name="keywords" content="Ministerio de Ciencia, Innovación y Universidades">
+<meta name="robots" content="index,
+                             follow"/>
+
+<link rel="icon" type="image/vnd.microsoft.icon" href="/.resources/site-web/webresources/img/favicon.ico">
+<link rel="canonical" href="https://www.ciencia.gob.es/"/>
+<link rel="alternate" hreflang="ca" href="https://www.ciencia.gob.es//ca/"/>
+<link rel="alternate" hreflang="cs" href="https://www.ciencia.gob.es//cs/"/>
+<link rel="alternate" hreflang="en" href="https://www.ciencia.gob.es//en/"/>
+<link rel="alternate" hreflang="eu" href="https://www.ciencia.gob.es//eu/"/>
+<link rel="alternate" hreflang="gl" href="https://www.ciencia.gob.es//gl/"/>
+<link rel="alternate" hreflang="va" href="https://www.ciencia.gob.es//va/"/>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="/.resources/site-web/webresources/css/bootstrap-icons~2026-10-28-06-41-36-104~cache.css" media="all" />
+  <link rel="stylesheet" href="/.resources/site-web/webresources/css/newHeader~2026-10-28-06-41-36-345~cache.css" media="all" />
+  <link rel="stylesheet" href="/.resources/site-web/webresources/css/bootstrap.min~2026-10-28-06-41-36-200~cache.css" media="all" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,600&display=swap" media="all" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;900&display=swap" media="all" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" media="all" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@200&display=swap" media="all" />
+  <link rel="stylesheet" href="/.resources/site-web/webresources/css/leaflet~2026-10-28-06-41-36-293~cache.css" media="all" />
+  <link rel="stylesheet" href="/.resources/site-web/webresources/css/mci-organigrama~2026-10-28-06-41-36-314~cache.css" media="all" />
+  <link rel="stylesheet" href="/.resources/site-web/webresources/css/sumoselect~2026-10-28-06-41-36-367~cache.css" media="all" />
+  <link rel="stylesheet" href="/.resources/site-web/webresources/css/datatables~2026-10-28-06-41-36-253~cache.css" media="all" />
+  <link rel="stylesheet" href="/.resources/site-web/webresources/css/bootstrap-select~2026-10-28-06-41-36-140~cache.css" media="all" />
+  <link rel="stylesheet" href="/.resources/site-web/webresources/css/mci~2026-10-28-06-41-36-331~cache.css" media="all" />
+  <link rel="stylesheet" href="/.resources/site-web/webresources/css/mci-navbar~2026-10-28-06-41-36-309~cache.css" media="all" />
+  <link rel="stylesheet" href="/.resources/site-web/webresources/css/mci-print~2026-10-28-06-41-36-327~cache.css" media="print" />
+  <script src="/.resources/site-web/webresources/js/jquery-3.6.0.min~2026-10-28-06-41-35-214~cache.js" type="text/javascript"></script>
+  <script src="/.resources/site-web/webresources/js/bootstrap.min~2026-10-28-06-41-34-908~cache.js" type="text/javascript"></script>
+  <script src="/.resources/site-web/webresources/js/bootstrap-select~2026-10-28-06-41-34-812~cache.js" type="text/javascript"></script>
+  <script src="/.resources/site-web/webresources/js/aacedfa240~2026-10-28-06-41-34-790~cache.js" type="text/javascript"></script>
+  <script src="/.resources/site-web/webresources/js/popper.min~2026-10-28-06-41-35-331~cache.js" type="text/javascript"></script>
+  <script src="/.resources/site-web/webresources/js/leaflet~2026-10-28-06-41-35-294~cache.js" type="text/javascript"></script>
+  <script src="/.resources/site-web/webresources/js/urlParams/index~2026-10-28-06-41-34-784~cache.js" type="text/javascript"></script>
+  <script src="/.resources/site-web/webresources/js/promise/polyfill.min~2026-10-28-06-41-35-676~cache.js" type="text/javascript"></script>
+  <script src="/.resources/site-web/webresources/js/sumoselect~2026-10-28-06-41-35-363~cache.js" type="text/javascript"></script>
+  <script src="/.resources/site-web/webresources/js/table2csv~2026-10-28-06-41-35-367~cache.js" type="text/javascript"></script>
+  <script src="/.resources/site-web/webresources/js/datatables~2026-10-28-06-41-34-976~cache.js" type="text/javascript"></script>
+  <script src="/.resources/site-web/webresources/js/datatables/dataTables~2026-10-28-06-41-35-455~cache.js" type="text/javascript"></script>
+  <script src="/.resources/site-web/webresources/js/datatables/dataTables.buttons~2026-10-28-06-41-35-423~cache.js" type="text/javascript"></script>
+  <script src="/.resources/site-web/webresources/js/datatables/buttons.dataTables~2026-10-28-06-41-35-391~cache.js" type="text/javascript"></script>
+  <script src="/.resources/site-web/webresources/js/datatables/jszip~2026-10-28-06-41-35-483~cache.js" type="text/javascript"></script>
+  <script src="/.resources/site-web/webresources/js/datatables/pdfmake.min~2026-10-28-06-41-35-649~cache.js" type="text/javascript"></script>
+  <script src="/.resources/site-web/webresources/js/datatables/vfs_fonts~2026-10-28-06-41-35-670~cache.js" type="text/javascript"></script>
+  <script src="/.resources/site-web/webresources/js/datatables/buttons.html5.min~2026-10-28-06-41-35-402~cache.js" type="text/javascript"></script>
+  <script src="/.resources/site-web/webresources/js/datatables/buttons.print.min~2026-10-28-06-41-35-407~cache.js" type="text/javascript"></script>
+  <script src="/.resources/site-web/webresources/js/excelexportjs~2026-10-28-06-41-35-165~cache.js" type="text/javascript"></script>
+  <script src="/.resources/site-web/webresources/js/mci~2026-10-28-06-41-35-323~cache.js" type="text/javascript"></script>
+  <script src="https://insuit.net/i4tservice/insuit-app.js" type="text/javascript"></script>
+<meta name="despliegue" content="">
+</head>
+<body>
+         
+<link href="/.resources/site-web/webresources/css/bootstrap-icons.css" rel="stylesheet">
+<link href="/.resources/site-web/webresources/css/newHeader.css" rel="stylesheet">
+
+
+<header >
+    <nav class="navbar navbar-expand-lg">
+
+
+
+
+
+
+                <a class="navbar-brand" href="/"   rel=follow title='Ir a la página en la misma ventana'>
+        <img src="/dam/jcr:6948bc92-9feb-48f7-9680-0d285a0bc13c/MCIU_header.svg" alt="Logo Ministerio de Ciencia, Innovación y Universidades">
+                </a>
+
+<style>
+    header {
+        background-color: #ffdb00;
+    }
+</style>        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <p class="txt-menu">Menú</p>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav d-none d-lg-block finderDesktop">
+
+
+    <li class="nav-item">
+            <a class="nav-link dropdown" data-toggle="dropdown" href="#">Español <i class="icon"><img src="/.resources/site-web/webresources/images/angle-circle-down.svg" alt="" title=""></i></a>
+        
+        <ul class="dropdown-menu options">
+            <li class="nav-item-title">
+                    <span>Idioma</span>
+            </li>
+            <ul>
+                    <li class="nav-item">
+                    
+                                <a class="nav-link" href="/" target="_self" rel="follow">Español</a>
+                    
+                        
+                    </li>
+                    <li class="nav-item">
+                    
+                                <a class="nav-link" href="/en/" target="_self" rel="follow">English</a>
+                    
+                        
+                    </li>
+                    <li class="nav-item">
+                    
+                                <a class="nav-link" href="/ca/" target="_self" rel="follow">Catalá</a>
+                    
+                        
+                    </li>
+                    <li class="nav-item">
+                    
+                                <a class="nav-link" href="/eu/" target="_self" rel="follow">Euskara</a>
+                    
+                        
+                    </li>
+                    <li class="nav-item">
+                    
+                                <a class="nav-link" href="/gl/" target="_self" rel="follow">Galego</a>
+                    
+                        
+                    </li>
+                    <li class="nav-item">
+                    
+                                <a class="nav-link" href="/va/" target="_self" rel="follow">Valenciá</a>
+                    
+                        
+                    </li>
+            </ul>
+        </ul>
+    </li>
+  
+
+
+    <span> | </span>
+    <li class="nav-item">
+        <a class="nav-link search dropdown" data-toggle="dropdown" href="#">Buscar <i class="bi bi-search"></i></a>
+        <ul class="dropdown-menu options">
+            <li class="nav-item-title">
+                <span>¿Qué estás buscando?</span>
+            </li>
+            <li class="nav-item option-form">
+                <form id="ContactForm" action="/Buscador-especifico.html" enctype="multipart/form-data">
+                    <div class="input-group">
+                        <input type="text" id="queryStr" name="queryStr" class="form-control border-right-0" title="Buscador" placeholder="" maxlength="" value="" required autocomplete="off" />
+                        <input type="hidden" hidden id="tipo-documento-nav" name="tipoDocumento" value="all" />
+                        <div class="input-group-append">
+                            <button class="btn border-left-0" type="button">
+                                <i class="bi bi-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <button id="search-button" class="btn btn-standard" type="submit" title="buscar" alt="buscar">Buscar</button>
+                </form>
+            </li>
+        </ul>
+    </li>
+    <style>
+        header {
+            margin-bottom: 80px;
+        }
+        @media (max-width: 992px) {
+            header .franja {
+                top: -92px;
+            }
+        }
+        @media (min-width: 768px) {
+            header {
+                margin-bottom: 90px;
+            }
+        }
+    </style>
+            </ul>
+            <ul class="navbar-nav d-block d-lg-none">
+                <ul class="navbar-nav sub-items">
+    <li class="nav-item secondMenu">
+
+        <a class="nav-link" href="/Convocatorias.html"   rel=follow title='Ir a la página en la misma ventana'>Convocatorias</a>
+    </li>
+    <li class="nav-item secondMenu">
+
+        <a class="nav-link" href="/Investigar.html"   rel=follow title='Ir a la página en la misma ventana'>Investigar</a>
+    </li>
+    <li class="nav-item secondMenu">
+
+        <a class="nav-link" href="/Innovar.html"   rel=follow title='Ir a la página en la misma ventana'>Innovar</a>
+    </li>
+    <li class="nav-item secondMenu">
+
+        <a class="nav-link" href="/Universidades.html"   rel=follow title='Ir a la página en la misma ventana'>Universidades</a>
+    </li>
+    <li class="nav-item secondMenu">
+
+        <a class="nav-link" href="/Servicios.html"   rel=follow title='Ir a la página en la misma ventana'>Servicios</a>
+    </li>
+    <li class="nav-item secondMenu">
+
+        <a class="nav-link" href="/Servicios/sede_electronica.html"   rel=follow title='Ir a la página en la misma ventana'>Sede electrónica</a>
+    </li>
+                </ul>
+    <li class="nav-item item-title">
+
+
+        <a class="nav-link idioma dropdown" data-toggle="dropdown" href="#">Español <i class="icon"><img src="/.resources/site-web/webresources/images/angle-circle-down.svg" alt="" title=""></i></a>
+        <ul class="dropdown-menu options">
+            <li class="nav-item">
+                <a class="nav-link" href="/" target="_self" rel="follow">Español</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/en/" target="_self" rel="follow">English</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/ca/" target="_self" rel="follow">Catalá</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/eu/" target="_self" rel="follow">Euskara</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/gl/" target="_self" rel="follow">Galego</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/va/" target="_self" rel="follow">Valenciá</a>
+            </li>
+        </ul>
+
+        <a class="nav-link" href="#">Ministerio <i class="icon"><img src="/.resources/site-web/webresources/images/angle-circle-down.svg" alt="" title=""></i></a>
+        <ul class="navbar-nav options">
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Ministerio/Mision-y-organizacion.html"   rel=follow aria-label="Misión y organización" title='Ir a la página en la misma ventana'>
+			Misión y organización
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Ministerio/Ministra.html"   rel=follow aria-label="Ministra" title='Ir a la página en la misma ventana'>
+			Ministra
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Ministerio/AltosCargos.html"   rel=follow aria-label="Altos cargos" title='Ir a la página en la misma ventana'>
+			Altos cargos
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Actualidad.html"   rel=follow aria-label="Actualidad" title='Ir a la página en la misma ventana'>
+			Actualidad
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Ministerio/Eventos.html"   rel=follow aria-label="Eventos" title='Ir a la página en la misma ventana'>
+			Eventos
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Secc-Servicios/Igualdad.html"   rel=follow aria-label="Igualdad de género" title='Ir a la página en la misma ventana'>
+			Igualdad de género
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Ministerio/EmpleoPublico.html"   rel=follow aria-label="Empleo público" title='Ir a la página en la misma ventana'>
+			Empleo público
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Ministerio/Estadisticas.html"   rel=follow aria-label="Estadísticas y datos abiertos" title='Ir a la página en la misma ventana'>
+			Estadísticas y datos abiertos
+		</a>
+		
+            </li>
+        </ul>
+    </li>
+
+        <li class="nav-item item-title">
+        <a class="nav-link" href="#">Estrategias y planes <i class="icon"><img src="/.resources/site-web/webresources/images/angle-circle-down.svg" alt="" title=""></i></a>
+        <ul class="navbar-nav options">
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Estrategias-y-Planes/GobernanzaEstrategica.html"   rel=follow aria-label="Gobernanza estratégica" title='Ir a la página en la misma ventana'>
+			Gobernanza estratégica
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Estrategias-y-Planes/Estrategias.html"   rel=follow aria-label="Estrategias" title='Ir a la página en la misma ventana'>
+			Estrategias
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Estrategias-y-Planes/Planes-y-programas.html"   rel=follow aria-label="Planes y programas" title='Ir a la página en la misma ventana'>
+			Planes y programas
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Estrategias-y-Planes/Plan-de-Recuperacion-Transformacion-y-Resiliencia-PRTR.html"   rel=follow aria-label="Plan de Recuperación, Transformación y Resiliencia (PRTR)" title='Ir a la página en la misma ventana'>
+			Plan de Recuperación, Transformación y Resiliencia (PRTR)
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Estrategias-y-Planes/Fondo-Europeo-de-Desarrollo-Regional-FEDER.html"   rel=follow aria-label="Fondo Europeo de Desarrollo Regional (FEDER)" title='Ir a la página en la misma ventana'>
+			Fondo Europeo de Desarrollo Regional (FEDER)
+		</a>
+		
+            </li>
+        </ul>
+    </li>
+
+        <li class="nav-item item-title">
+        <a class="nav-link" href="#">Centros <i class="icon"><img src="/.resources/site-web/webresources/images/angle-circle-down.svg" alt="" title=""></i></a>
+        <ul class="navbar-nav options">
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Organismos-y-Centros/OPI.html"   rel=follow aria-label="Organismos públicos de investigación (OPI)" title='Ir a la página en la misma ventana'>
+			Organismos públicos de investigación (OPI)
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Organismos-y-Centros/ICTS.html"   rel=follow aria-label="Infraestructuras Científicas y Técnicas Singulares (ICTS)" title='Ir a la página en la misma ventana'>
+			Infraestructuras Científicas y Técnicas Singulares (ICTS)
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Organismos-y-Centros/Comite-Polar-Espanol.html"   rel=follow aria-label="Comité Polar Español" title='Ir a la página en la misma ventana'>
+			Comité Polar Español
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Organismos-y-Centros/Consorcios-y-Fundaciones.html"   rel=follow aria-label="Consorcios y fundaciones" title='Ir a la página en la misma ventana'>
+			Consorcios y fundaciones
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Organismos-y-Centros/SOMMA.html"   rel=follow aria-label="Centros y unidades de excelencia" title='Ir a la página en la misma ventana'>
+			Centros y unidades de excelencia
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Organismos-y-Centros/Organismos-e-Infraestructuras-de-Investigacion-Internacionales.html"   rel=follow aria-label="Organismos e infraestructuras de investigación internacionales" title='Ir a la página en la misma ventana'>
+			Organismos e infraestructuras de investigación internacionales
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Organismos-y-Centros/Reales-Academias.html"   rel=follow aria-label="Instituto de España y Reales Academias" title='Ir a la página en la misma ventana'>
+			Instituto de España y Reales Academias
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Organismos-y-Centros/Museos.html"   rel=follow aria-label="Museos" title='Ir a la página en la misma ventana'>
+			Museos
+		</a>
+		
+            </li>
+        </ul>
+    </li>
+            </ul>
+            <ul class="navbar-nav d-none d-lg-block">
+                <ul class="navbar-nav sub-items show" >
+    <li class="nav-item secondMenu">
+
+        <a class="nav-link" href="/Convocatorias.html"   rel=follow title='Ir a la página en la misma ventana'>Convocatorias</a>
+    </li>
+    <li class="nav-item secondMenu">
+
+        <a class="nav-link" href="/Investigar.html"   rel=follow title='Ir a la página en la misma ventana'>Investigar</a>
+    </li>
+    <li class="nav-item secondMenu">
+
+        <a class="nav-link" href="/Innovar.html"   rel=follow title='Ir a la página en la misma ventana'>Innovar</a>
+    </li>
+    <li class="nav-item secondMenu">
+
+        <a class="nav-link" href="/Universidades.html"   rel=follow title='Ir a la página en la misma ventana'>Universidades</a>
+    </li>
+    <li class="nav-item secondMenu">
+
+        <a class="nav-link" href="/Servicios.html"   rel=follow title='Ir a la página en la misma ventana'>Servicios</a>
+    </li>
+    <li class="nav-item secondMenu">
+
+        <a class="nav-link" href="/Servicios/sede_electronica.html"   rel=follow title='Ir a la página en la misma ventana'>Sede electrónica</a>
+    </li>
+                </ul>
+
+    <li class="nav-item">
+        <a class="nav-link dropdown" data-toggle="dropdown" id="dropdownMenuButton1" href="#">Ministerio <i class="icon"><img src="/.resources/site-web/webresources/images/angle-circle-down.svg" alt="" title=""></i></a>
+
+        <ul class="dropdown-menu options" aria-labelledby="dropdownMenuButton1">
+            <li class="nav-item-title">
+                <span>Ministerio</span>
+            </li>
+            <ul>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Ministerio/Mision-y-organizacion.html"   rel=follow aria-label="Misión y organización" title='Ir a la página en la misma ventana'>
+			Misión y organización
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Ministerio/Ministra.html"   rel=follow aria-label="Ministra" title='Ir a la página en la misma ventana'>
+			Ministra
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Ministerio/AltosCargos.html"   rel=follow aria-label="Altos cargos" title='Ir a la página en la misma ventana'>
+			Altos cargos
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Actualidad.html"   rel=follow aria-label="Actualidad" title='Ir a la página en la misma ventana'>
+			Actualidad
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Ministerio/Eventos.html"   rel=follow aria-label="Eventos" title='Ir a la página en la misma ventana'>
+			Eventos
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Secc-Servicios/Igualdad.html"   rel=follow aria-label="Igualdad de género" title='Ir a la página en la misma ventana'>
+			Igualdad de género
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Ministerio/EmpleoPublico.html"   rel=follow aria-label="Empleo público" title='Ir a la página en la misma ventana'>
+			Empleo público
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Ministerio/Estadisticas.html"   rel=follow aria-label="Estadísticas y datos abiertos" title='Ir a la página en la misma ventana'>
+			Estadísticas y datos abiertos
+		</a>
+		
+            </li>
+            </ul>
+        </ul>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link dropdown" data-toggle="dropdown" id="dropdownMenuButton1" href="#">Estrategias y planes <i class="icon"><img src="/.resources/site-web/webresources/images/angle-circle-down.svg" alt="" title=""></i></a>
+
+        <ul class="dropdown-menu options" aria-labelledby="dropdownMenuButton1">
+            <li class="nav-item-title">
+                <span>Estrategias y planes</span>
+            </li>
+            <ul>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Estrategias-y-Planes/GobernanzaEstrategica.html"   rel=follow aria-label="Gobernanza estratégica" title='Ir a la página en la misma ventana'>
+			Gobernanza estratégica
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Estrategias-y-Planes/Estrategias.html"   rel=follow aria-label="Estrategias" title='Ir a la página en la misma ventana'>
+			Estrategias
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Estrategias-y-Planes/Planes-y-programas.html"   rel=follow aria-label="Planes y programas" title='Ir a la página en la misma ventana'>
+			Planes y programas
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Estrategias-y-Planes/Plan-de-Recuperacion-Transformacion-y-Resiliencia-PRTR.html"   rel=follow aria-label="Plan de Recuperación, Transformación y Resiliencia (PRTR)" title='Ir a la página en la misma ventana'>
+			Plan de Recuperación, Transformación y Resiliencia (PRTR)
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Estrategias-y-Planes/Fondo-Europeo-de-Desarrollo-Regional-FEDER.html"   rel=follow aria-label="Fondo Europeo de Desarrollo Regional (FEDER)" title='Ir a la página en la misma ventana'>
+			Fondo Europeo de Desarrollo Regional (FEDER)
+		</a>
+		
+            </li>
+            </ul>
+        </ul>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link dropdown" data-toggle="dropdown" id="dropdownMenuButton1" href="#">Centros <i class="icon"><img src="/.resources/site-web/webresources/images/angle-circle-down.svg" alt="" title=""></i></a>
+
+        <ul class="dropdown-menu options" aria-labelledby="dropdownMenuButton1">
+            <li class="nav-item-title">
+                <span>Centros</span>
+            </li>
+            <ul>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Organismos-y-Centros/OPI.html"   rel=follow aria-label="Organismos públicos de investigación (OPI)" title='Ir a la página en la misma ventana'>
+			Organismos públicos de investigación (OPI)
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Organismos-y-Centros/ICTS.html"   rel=follow aria-label="Infraestructuras Científicas y Técnicas Singulares (ICTS)" title='Ir a la página en la misma ventana'>
+			Infraestructuras Científicas y Técnicas Singulares (ICTS)
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Organismos-y-Centros/Comite-Polar-Espanol.html"   rel=follow aria-label="Comité Polar Español" title='Ir a la página en la misma ventana'>
+			Comité Polar Español
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Organismos-y-Centros/Consorcios-y-Fundaciones.html"   rel=follow aria-label="Consorcios y fundaciones" title='Ir a la página en la misma ventana'>
+			Consorcios y fundaciones
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Organismos-y-Centros/SOMMA.html"   rel=follow aria-label="Centros y unidades de excelencia" title='Ir a la página en la misma ventana'>
+			Centros y unidades de excelencia
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Organismos-y-Centros/Organismos-e-Infraestructuras-de-Investigacion-Internacionales.html"   rel=follow aria-label="Organismos e infraestructuras de investigación internacionales" title='Ir a la página en la misma ventana'>
+			Organismos e infraestructuras de investigación internacionales
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Organismos-y-Centros/Reales-Academias.html"   rel=follow aria-label="Instituto de España y Reales Academias" title='Ir a la página en la misma ventana'>
+			Instituto de España y Reales Academias
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Organismos-y-Centros/Museos.html"   rel=follow aria-label="Museos" title='Ir a la página en la misma ventana'>
+			Museos
+		</a>
+		
+            </li>
+            </ul>
+        </ul>
+    </li>
+            </ul>
+        </div>
+    </nav>
+  
+
+
+    <form class="d-lg-none" id="ContactFormResponsive" action="/Buscador-especifico.html" enctype="multipart/form-data">
+        <div class="input-group">
+            <input type="text" id="queryStrMovil" name="queryStr" class="form-control border-right-0" title="Buscador" placeholder="" maxlength="" value="" autocomplete="off">
+            <input type="hidden" hidden id="tipo-documento-mobile" name="tipoDocumento" value="all">
+            <div class="input-group-append">
+                <button class="btn border-left-0" type="button">
+                    <i class="bi bi-search"></i>
+                </button>
+            </div>
+        </div>
+    </form>
+    <style>
+        header {
+            margin-bottom: 80px;
+        }
+        @media (max-width: 992px) {
+            header .franja {
+                top: -92px;
+            }
+        }
+        @media (min-width: 768px) {
+            header {
+                margin-bottom: 90px;
+            }
+        }
+    </style>
+    <div class="franja" >
+        <div class="bg-red"></div>
+        <div class="bg-yellow"></div>
+        <div class="bg-red"></div>
+    </div>
+</header>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".navbar-toggler").on("click", function () {
+            $(this).toggleClass("on");
+            $(".icon-bar").toggleClass("on");
+        });
+
+        $(".navbar-nav .options").on("mouseleave", function () {
+            $(".navbar-nav .options").removeClass("show");
+        });
+    });
+</script>
+    
+    
+
+		    		<div id="avisos-home" class="container-fluid">
+						<div id="carrusel-avisos" class="carousel slide carrusel" data-ride="carousel">
+							<div class="chevron">
+							<a class="carousel-control-prev" href="#carrusel-avisos" data-slide="prev">
+								<img src="/.resources/site-web/webresources/img/icono-flecha-izquierda-carrusel.svg">
+							</a>
+							</div>
+							
+							<ul class="carousel-inner">
+									<li class="carousel-item  active">
+											<a href="/InfoGeneralPortal/Avisos/Cierre-subsede-electronica-Secretar-a-General-Universidades.html">
+												<div id="aviso-16326409-f968-47e5-86ad-b7b106307e0a"  class="col-11 col-sm-12"><p><span class="date">22 de octubre de 2026</span> </p></div>
+											</a>
+									</li>
+							</ul>
+							<div class="chevron">
+							<a class="carousel-control-next" href="#carrusel-avisos" data-slide="next">
+								<img src="/.resources/site-web/webresources/img/icono-flecha-izquierda-carrusel.svg">
+							</a>
+							</div>
+						</div>
+						<div class="closeBtn">
+							<button class="close">X</button>
+						</div>
+					</div>
+
+
+
+
+
+
+
+
+
+
+		<div id="banner" role="banner">
+        <div class="image-container">
+        	<img src="/.imaging/default/dam/WEB/No-rastreable/Noticias/2026/octubre/IMG_Noticia_271026.jpg/jcr:content.jpg" title="Diana Morant, en los Premios Nacionales de Investigación 2026: “Sois el talento que hace avanzar a España y nos mejora como humanidad”" alt="Diana Morant, en los Premios Nacionales de Investigación 2026: “Sois el talento que hace avanzar a España y nos mejora como humanidad”"/>
+        </div>
+
+			  	<div class="container-fluid text-box">
+			    	
+
+			      		<a href="/Noticias/2026/octubre/entrega-premios-nacionales-investigacion-2026.html" rel=follow class="col-md-5 col-xl-4" title='Ir a la página en la misma ventana'>
+			        		<h1 class="banner-title bannerHome">Diana Morant, en los Premios Nacionales de Investigación 2026: “Sois el talento que hace avanzar a España y nos mejora como humanidad”</h1>
+			        			
+			      		</a>
+
+			    	
+			  	</div>
+		</div>
+
+
+
+<div id="wrapper" role="main">
+
+
+
+
+
+
+
+<div id="news" class="container-fluid ">
+
+
+
+
+
+
+
+			<div class="row">
+				<div class="col-1"></div>
+				<div class="col-10">
+					<a href="/Noticias/2026/octubre/Iberoamerica-Declaracion-Conjunta-Alicante.html"   rel=follow class="row" title='Ir a la página en la misma ventana'>
+						<div class="col-sm-9 col-md-8 text-box  top-2">
+								<h2>Iberoamérica apuesta por la formación doctoral y posdoctoral y avanza hacia una Carta Común del Personal Investigador</h2>
+							<div class="col-sm-12 date">22 de octubre de 2026</div>
+						</div>
+							<div class="col-sm-9 image-right">
+
+
+
+									<img  src="/.imaging/mte/web-mcin-theme/972x571/dam/WEB/No-rastreable/Noticias/2026/octubre/IMG_Noticia_221026.jpg/jcr:content/IMG_Noticia_221026.jpg" alt="" />
+							</div>
+					</a>
+				</div>
+				<div class="col-1"></div>
+			</div>
+
+
+
+
+
+
+			<div class="row">
+				<div class="col-1"></div>
+				<div class="col-10">
+					<a href="/Noticias/2026/octubre/Iberoamerica_Carta_Movilidad_Academica_intercambio_estudiantil.html"   rel=follow class="row" title='Ir a la página en la misma ventana'>
+							<div class="col-sm-9 image-left">
+
+
+
+									<img  src="/.imaging/mte/web-mcin-theme/972x571/dam/WEB/No-rastreable/Noticias/2026/octubre/JMP_4780.jpg.jpeg/jcr:content/IMG_Noticia_211026_2.jpg" alt="" />
+							</div>
+						<div class="col-sm-9 col-md-8 text-box right top-2">
+								<h2>Iberoamérica aprueba la Carta de Movilidad Académica para facilitar el intercambio estudiantil en la región</h2>
+							<div class="col-sm-12 date">21 de octubre de 2026</div>
+						</div>
+					</a>
+				</div>
+				<div class="col-1"></div>
+			</div>
+
+
+
+
+
+
+			<div class="row">
+				<div class="col-1"></div>
+				<div class="col-10">
+					<a href="/Noticias/2026/octubre/declaracion-CTI-Alicante.html"   rel=follow class="row" title='Ir a la página en la misma ventana'>
+						<div class="col-sm-9 col-md-8 text-box  top-2">
+								<h2>Iberoamérica refuerza su compromiso con la ciencia, la tecnología y la innovación como motores de desarrollo</h2>
+							<div class="col-sm-12 date">21 de octubre de 2026</div>
+						</div>
+							<div class="col-sm-9 image-right">
+
+
+
+									<img  src="/.imaging/mte/web-mcin-theme/972x571/dam/WEB/No-rastreable/Noticias/2026/octubre/IMG_Noticia_211026.jpg/jcr:content/IMG_Noticia_211026.jpg" alt="" />
+							</div>
+					</a>
+				</div>
+				<div class="col-1"></div>
+			</div>
+
+		<div class="row">
+			<div class="col-12 generic-button-container">
+		<p>
+		<a class="generic-button col-12" href="/Actualidad.html"   rel=follow aria-label="MÁS ACTUALIDAD" title='Ir a la página en la misma ventana'>
+			MÁS ACTUALIDAD
+			
+		</a>
+		</p>
+			</div>
+		</div>
+</div>
+
+
+ <div id="destacados" class="container-fluid ">
+<div class="row">
+
+
+   	
+     <a class="col-md-6" href="/Universidades/QEDU.html"   rel=follow aria-label="">
+	<div>
+		<div class="text-box">
+		</div>
+
+
+
+		
+			<img  src="/.imaging/mte/web-mcin-theme/homeDestacados/dam/WEB/No-rastreable/ImagenesEspecificas/QEDU/QEDU_destacado.jpg/jcr:content/QEDU_destacado.jpg" alt="">
+		
+	</div>
+  </a>
+
+
+   	
+     <a class="col-md-6" href="/Estrategias-y-Planes/Estrategias/deep_tech.html"   rel=follow aria-label="">
+	<div>
+		<div class="text-box">
+		</div>
+
+
+
+		
+			<img  src="/.imaging/mte/web-mcin-theme/homeDestacados/dam/WEB/No-rastreable/ImagenesEspecificas/ESTRATEGIAS-Y-PLANES/ESTRATEGIAS/deeptech/Deeptech_N2portada.jpg/jcr:content/cabeceraN2_DeepTech.jpg" alt="">
+		
+	</div>
+  </a>
+
+
+   	
+     <a class="col-md-6" href="/Estrategias-y-Planes/Plan-de-Recuperacion-Transformacion-y-Resiliencia-PRTR/PERTE.html"   rel=follow aria-label="Proyectos destacados del Plan de Recuperación, Transformación y Resiliencia">
+	<div>
+		<div class="text-box">
+			<p class="titulo">Proyectos destacados del Plan de Recuperación, Transformación y Resiliencia</p>
+		</div>
+
+
+
+		
+			<img  src="/.imaging/mte/web-mcin-theme/homeDestacados/dam/WEB/No-rastreable/ImagenesEspecificas/DESTACADOS/Home/Plan_recuperacion_transformacion_resiliencia_destacados.jpg/jcr:content/Plan_recuperacion_transformacion_resiliencia_destacados.jpg" alt="">
+		
+	</div>
+  </a>
+
+
+   	
+     <a class="col-md-6" href="/Estrategias-y-Planes/Plan-de-Recuperacion-Transformacion-y-Resiliencia-PRTR/SeguimientoEvaluacion.html"   rel=follow aria-label="Seguimiento y evaluación del Plan de Recuperación, Transformación y Resiliencia">
+	<div>
+		<div class="text-box">
+			<p class="titulo">Seguimiento y evaluación del Plan de Recuperación, Transformación y Resiliencia</p>
+		</div>
+
+
+
+		
+			<img  src="/.imaging/mte/web-mcin-theme/homeDestacados/dam/WEB/No-rastreable/ImagenesEspecificas/DESTACADOS/Home/SEG_EV_Comp17_PRTR.jpg/jcr:content/SEG_EV_Comp17_PRTR.jpg" alt="">
+		
+	</div>
+  </a>
+</div>
+	     <div class="row">
+	  		<div class="col-12 generic-button-container">
+		<p>
+		<a class="generic-button col-12" href="/Destacados.html"   rel=follow aria-label="Ver más destacados" title='Ir a la página en la misma ventana'>
+			Ver más destacados
+			
+		</a>
+		</p>
+	  		</div>
+	     </div>
+</div>
+
+<div id="" class="pieCarruselLogos logos gris-claro-1">
+	<div class="container-fluid">
+		<div class="row carrousel">
+				<div class="chevron-prev">
+					<a href="" role="button" id="footer-carrousel-left-arrow" class="fas fa-chevron-left" aria-hidden="true">
+						<span class="sr-only">Anterior</span>
+					</a>
+				</div>
+					<div class="logo p-0">
+
+
+
+
+
+
+
+
+
+
+						<a href="http://www.aei.gob.es/"  target=_blank  rel=nofollow  title='Ir a la página  en una ventana nueva'>
+							<img src="/dam/jcr:70ff9fc0-2c37-4da4-8f42-dcb73d660d6b/AEI_logo_carrusel.svg" alt="AEI" />
+						</a>
+					</div>
+					<div class="logo p-0">
+
+
+
+
+
+
+
+
+
+
+						<a href="https://www.aee.gob.es"  target=_blank  rel=nofollow  title='Ir a la página Agencia Espacial Española en una ventana nueva'>
+							<img src="/dam/jcr:0b0feccb-0378-4167-a0e4-1bccfcd4a5e5/AEE_logo_carrusel.svg" alt="Agencia Espacial Española" />
+						</a>
+					</div>
+					<div class="logo p-0">
+
+
+
+
+
+
+
+
+
+
+						<a href="https://www.cdti.es/"  target=_blank  rel=nofollow  title='Ir a la página  en una ventana nueva'>
+							<img src="/dam/jcr:b76ad6c0-ad65-4b61-95ec-ba2bbbf05081/CDTI_logo_carrusel.svg" alt="CDTI" />
+						</a>
+					</div>
+					<div class="logo p-0">
+
+
+
+
+
+
+
+
+
+
+						<a href="https://www.aneca.es/"  target=_blank  rel=nofollow  title='Ir a la página  en una ventana nueva'>
+							<img src="/dam/jcr:3024a50f-ef86-4f5e-87e0-d06c492b3944/ANECA_logo_carrusel.svg" alt="ANECA" />
+						</a>
+					</div>
+					<div class="logo p-0">
+
+
+
+
+
+
+
+
+
+
+						<a href="http://sepie.es/"  target=_blank  rel=nofollow  title='Ir a la página  en una ventana nueva'>
+							<img src="/dam/jcr:36147de8-fd9c-45a6-b05e-4662f620d868/SEPIE_logo_carrusel.svg" alt="SEPIE" />
+						</a>
+					</div>
+					<div class="logo p-0">
+
+
+
+
+
+
+
+
+
+
+						<a href="https://www.csic.es/"  target=_blank  rel=nofollow  title='Ir a la página  en una ventana nueva'>
+							<img src="/dam/jcr:5aa8c612-3746-4898-b4c5-560f71c3823e/CSIC_logo.svg" alt="CSIC" />
+						</a>
+					</div>
+					<div class="logo p-0">
+
+
+
+
+
+
+
+
+
+
+						<a href="https://www.isciii.es"  target=_blank  rel=nofollow  title='Ir a la página  en una ventana nueva'>
+							<img src="/dam/jcr:87f53ead-e112-47c0-810c-eed2d07a078d/ISCIII_logo_carrusel.svg" alt="ISCIII" />
+						</a>
+					</div>
+					<div class="logo p-0">
+
+
+
+
+
+
+
+
+
+
+						<a href="http://www.ciemat.es/"  target=_blank  rel=nofollow  title='Ir a la página  en una ventana nueva'>
+							<img src="/dam/jcr:e3903ce7-e16c-47a1-bf4c-14c29dcad7c8/CIEMAT_logo_carrusel.svg" alt="CIEMAT" />
+						</a>
+					</div>
+					<div class="logo p-0">
+
+
+
+
+
+
+
+
+
+
+						<a href="http://www.iac.es/"  target=_blank  rel=nofollow  title='Ir a la página  en una ventana nueva'>
+							<img src="/dam/jcr:f7379c33-571e-43dc-a1b4-73bae31d2a61/IAC_logo_carrusel.svg" alt="IAC" />
+						</a>
+					</div>
+					<div class="logo p-0">
+
+
+
+
+
+
+
+
+
+
+						<a href="https://www.fecyt.es/"  target=_blank  rel=nofollow  title='Ir a la página  en una ventana nueva'>
+							<img src="/dam/jcr:b0267fa1-f8a0-40a7-8d05-7eb52b03277a/FECYT_logo_carrusel.svg" alt="FECYT" />
+						</a>
+					</div>
+					<div class="logo p-0">
+
+
+
+
+
+
+
+
+
+
+						<a href="https://www.uimp.es/"  target=_blank  rel=nofollow  title='Ir a la página  en una ventana nueva'>
+							<img src="/dam/jcr:320950d6-280e-4309-800b-bae3a79db7af/UIMP_logo_carrusel.svg" alt="UIMP" />
+						</a>
+					</div>
+					<div class="logo p-0">
+
+
+
+
+
+
+
+
+
+
+						<a href="https://www.uned.es/universidad/inicio.html"  target=_blank  rel=nofollow  title='Ir a la página  en una ventana nueva'>
+							<img src="/dam/jcr:a7897df2-d20a-496b-971c-af826455dcc0/UNED_logo_carrusel.svg" alt="UNED" />
+						</a>
+					</div>
+					<div class="logo p-0">
+
+
+
+
+
+
+
+
+
+
+						<a href="https://www.colesp.org/"  target=_blank  rel=nofollow  title='Ir a la página  en una ventana nueva'>
+							<img src="/dam/jcr:0776979b-182a-4ca5-ad23-3a405477538e/CdE_logo_carrusel.svg" alt="CdEP" />
+						</a>
+					</div>
+				<div class="chevron-next">
+					<a href="" role="button" id="footer-carrousel-right-arrow" class="fas fa-chevron-right" aria-hidden="true">
+						<span class="sr-only">Posterior</span>
+					</a>
+				</div>
+		</div>
+	</div>
+</div>
+
+<div id="centros" class="container-fluid ">
+  <div class="row titulo">
+    <div class="col-12">
+      <div class="component-title">Mapa de Centros</div>
+    </div>
+	<div class="col-12">
+      <a href="#comunidad" id="goToEndMap" class="">Evitar el acceso a todos los puntos del mapa por teclado</a>
+    </div>
+  </div>
+  <div class="row map">
+    <div class="col-3 canarias">
+      <div class="hover-effect"></div>
+    </div>
+    <div class="col-7"></div>
+    <div class="col-2 antartida">
+      <p>Antártida</p>
+      <div class="hover-effect"></div>
+    </div>
+    <div class="col-12 hover-effect"></div>
+    <div class="map-attribution"><a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> | © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors © <a href="https://carto.com/attributions">CARTO</a></div>
+  </div>
+  <div class="row map-2">
+    <div class="col-3 volver-al-mapa row">
+      <div id="cierra-volver-al-mapa">x</div>
+      <div class="col-12 hover-effect"></div>
+      <div class="col-3 canarias"></div>
+      <div class="col-7"></div>
+      <div class="col-2 antartida"></div>
+    </div>
+    <div class="col-12">
+      <div id="leafletMap"></div>
+    </div>
+  </div>
+  <div class="search-options">
+				<div class="row search">
+					<div class="col-sm-4 col-md-3 filterMap">
+						<label for="comunidad">Zona Geográfica</label>
+						<select id="comunidad" name="comunidad">
+						    <option cod="--" value="peninsula">- Cualquiera -</option>
+						    <option cod="00" value="-62.887 -60.222 7">Antártida</option>
+							<option cod="INT" value="39.71 -2.55 3">Internacionales</option>
+						    <option value="--">--</option>
+						    		<option cod="01" value="37.346 -4.576 8">Andalucía</option>
+						    		<option cod="02" value="41.406 -0.703 7">Aragón</option>
+						    		<option cod="03" value="43.2742 -5.8475 9">Principado de Asturias</option>
+						    		<option cod="04" value="39.370 2.741 8">Illes Balears/Islas Baleares</option>
+						    		<option cod="05" value="28.158 -15.699 7">Canarias</option>
+						    		<option cod="06" value="43.1361 -4.0018 9">Cantabria</option>
+						    		<option cod="07" value="41.677 -4.427 7">Castilla y León</option>
+						    		<option cod="08" value="39.695 -3.164 7">Castilla la Mancha</option>
+						    		<option cod="09" value="41.704 1.741 8">Cataluña</option>
+						    		<option cod="10" value="39.330 -0.417 7">Comunidad Valenciana</option>
+						    		<option cod="11" value="39.226 -6.092 8">Extremadura</option>
+						    		<option cod="12" value="42.805 -8.020 8">Galicia</option>
+						    		<option cod="13" value="40.5274 -3.8150 9">Comunidad de Madrid</option>
+						    		<option cod="14" value="38.0686 -1.4969 9">Región de Murcia</option>
+						    		<option cod="15" value="42.616 -1.609 8">Comunidad Foral de Navarra</option>
+						    		<option cod="16" value="42.9655 -2.5900 9">País Vasco</option>
+						    		<option cod="17" value="42.2824 -2.4060 9">La Rioja</option>
+						    		<option cod="18" value="35.8943 -5.3501 13">Ceuta</option>
+						    		<option cod="19" value="35.2921 -2.9407 11">Melilla</option>
+					  	</select>
+					</div>
+					<div class="col-sm-4 col-md-3 filterMap">
+						<label for="tipo-centro">Tipo de Centro</label>
+						<select id="tipo-centro" name="tipo-centro">
+						    <option cod="--" value="">- Cualquiera -</option>
+						    		<option value="somma">SOMMa</option>
+						    		<option value="consorcios">Consorcios y Fundaciones</option>
+						    		<option value="ICTS">Infraestructuras Científicas y Técnicas Singulares (ICTS)</option>
+						    		<option value="museos">Museos</option>
+						    		<option value="OPI">Organismo Público de Investigación (OPI)</option>
+						    		<option value="OI3">Organismos e Infraestructuras de Investigación Internacionales</option>
+						    		<option value="RRAA">Reales Academias</option>
+						    		<option value="EntidadAdscrita">Entidad adscrita</option>
+					  </select>
+					</div>
+					<div class="col-sm-4 col-md-3 filterMap">
+							<label class="subIcts" for="subIcts">Tipo de centro ICTS</label>
+							<select class="subIcts" id="subIcts" name="subIcts">
+							    <option cod="--" value="">- Cualquiera -</option>
+							    		<option value="Astronomia-y-Astrofisica">Astronomía y Astrofísica</option>
+							    		<option value="Ciencias-de-la-Salud-y-Biotecnologia">Ciencias de la Salud y Biotecnología</option>
+							    		<option value="Ciencias-del-Mar-Vida-y-Tierra">Ciencias del Mar, Vida y Tierra</option>
+							    		<option value="Ciencias-Socioeconomicas-y-Humanidades">Ciencias Socioeconómicas y Humanidades</option>
+							    		<option value="Energia">Energía</option>
+							    		<option value="Ingenieria">Ingeniería</option>
+							    		<option value="Materiales">Materiales</option>
+							    		<option value="Tecnologias-de-la-Informacion-y-las-Comunicaciones">Tecnologías de la Información y las Comunicaciones</option>
+							</select>
+					</div>
+					<div class="col-sm-12 col-md-3 generic-button-container">
+						<button id="filtra-centros" class="generic-button">Buscar</button>
+						<button type="button" id="descargaCentros" class="generic-button" data-toggle="modal" data-target="#modalDescargarCentros">Descarga datos</button>
+					</div>
+				</div>
+	  		</div>
+			<table id="tablaCentros">
+				<thead>
+					<tr>
+						<td>Nombre</td><td>Path</td><td>email</td><td>Latitud</td><td>Longitud</td><td>Enlace</td><td>Área de interés</td>
+						<td>Comunidad Autónoma</td><td>Provincia</td><td>Tipo de centro</td><td>Tipo ICTS</td><td>centro adscrito</td>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+</div>
+<script>
+var cualquieraTxt = 'Cualquiera';
+var internacionalesTxt = 'Internacionales';
+var urlMapaCentros = '/home/main/zona02/0';
+</script>
+
+
+<div id="servicios" class="container-fluid gris-oscuro">
+<div class="row">
+
+
+
+
+
+<div class="col-6 col-md-3">
+	<a href="/Servicios.html"   rel=follow title='Ir a la página en la misma ventana'>
+			<img src="/dam/jcr:d0e25c8c-baff-4628-a285-07e232dd20ed/icono-atencion-a-la-ciudadania.svg" alt="" />
+
+		<h2>Atención a la ciudadanía</h2>
+			<p>Contacta con nosotros, consultas informáticas, registro, becas...</p>
+	</a>
+</div>
+
+
+
+
+
+<div class="col-6 col-md-3">
+	<a href="/Secc-Servicios/Transparencia.html"   rel=nofollow title='Ir a la página en la misma ventana'>
+			<img src="/dam/jcr:7559eda0-e3d1-4936-a8a8-89a27a2e3989/icono-transparencia-y-gobierno-abierto.svg" alt="" />
+
+		<h2>Transparencia y gobierno abierto</h2>
+			<p>Información y participación pública, datos abiertos...</p>
+	</a>
+</div>
+
+
+
+
+
+<div class="col-6 col-md-3">
+	<a href="/Secc-Servicios/Igualdad.html"   rel=follow title='Ir a la página en la misma ventana'>
+			<img src="/dam/jcr:ca1d9cdd-d681-4603-94f1-ba27c184690a/icono-igualdad.svg" alt="" />
+
+		<h2>Igualdad</h2>
+			<p>Políticas de Igualdad de género en la I+D+I y en el ámbito del Departamento</p>
+	</a>
+</div>
+
+
+
+
+
+<div class="col-6 col-md-3">
+	<a href="/Servicios/Participacion-publica.html"   rel=follow title='Ir a la página en la misma ventana'>
+			<img src="/dam/jcr:657f08ec-acfb-43ca-b4dc-7e371cd869b1/icono-participacion-publica.svg" alt="" />
+
+		<h2>Participación pública</h2>
+			<p>Opinión de ciudadanos, organizaciones y asociaciones en proyectos normativos</p>
+	</a>
+</div>
+</div>
+</div><script>
+	var noEventsTxt = 'No hay eventos programados para hoy';
+	var noEventsMonthTxt = 'No hay eventos programados para el mes de';
+	var eneroName = 'Enero';
+	var febreroName = 'Febrero';
+	var marzoName = 'Marzo';
+	var abrilName = 'Abril';
+	var mayoName = 'Mayo';
+	var junioName = 'Junio';
+	var julioName = 'Julio';
+	var agostoName = 'Agosto';
+	var septiembreName = 'Septiembre';
+	var octubreName = 'Octubre';
+	var noviembreName = 'Noviembre';
+	var diciembreName = 'Diciembre';
+	var leerMas = 'Leer más';
+	var fechaInicio = "Fecha de inicio";
+	var fechaFin = 'Fecha de finalización';
+</script>
+
+
+
+
+
+<div id="eventos" class="container-fluid">
+
+	<div class="light">
+		<div class="calendar">
+			<div class="calendar-header">
+				<div class="month-picker" id="month-picker" eventos="2,5,6,12,13,20,21,22">
+					<span class="month-change" id="prev-month"><pre><</pre></span>
+					<span id="month"></span>
+					<span class="month-change" id="next-month"><pre>></pre></span>
+				</div>
+				<div class="year-picker">
+					<span class="year-change" id="prev-year"><pre><</pre></span>
+					<span id="year"></span>
+					<span class="year-change" id="next-year"><pre>></pre></span>
+				</div>
+			</div>
+
+			<div class="calendar-body">
+				<div class="calendar-week-day">
+					<div>L</div>
+					<div>M</div>
+					<div>X</div>
+					<div>J</div>
+					<div>V</div>
+					<div>S</div>
+					<div>D</div>
+				</div>
+				<div class="calendar-days"></div>
+			</div>
+			<div class="month-list"></div>
+		</div>
+	</div>
+
+	<div class="listaEventos">
+		<ul>
+			<li class="noEvent">No hay eventos programados para hoy jueves, 29 de octubre de 2026</li>
+		</ul>
+	</div>
+
+		<div class="row">
+			<div class="col-12 generic-button-container">
+				<a class="generic-button" href="/Buscador-especifico.html?queryStr=&amp;sortAscending=false&tipoDocumento=evento"   rel=follow title='Ir a la página en la misma ventana'>ver más</a>
+			</div>
+		</div>
+</div>
+
+
+
+<script>
+	var urlEventos = '/home/main/zona02/04';
+	var relevant = 'true';
+	var excluidos = '';
+	var idiomaActual = 'es';
+	var eventsLength = '0';
+	var eventsSite = 'site-web';
+</script>
+
+<div id="experienciasSlide" class="container-fluid carousel slide carrusel experiencias" data-ride="carousel" data-pause="hover">
+	<div class="chevron">
+		<a class="glyphicon glyphicon-chevron-left" href="#experienciasSlide" data-slide="prev">
+            <img src="/.resources/site-web/webresources/img/icono-flecha-izquierda-carrusel-experiencias.svg">
+        </a>
+	</div>
+    <div class="carousel-inner">
+
+
+
+			     	 <div class="carousel-item  active">
+					  	<div class="experienciaTxt">
+							<div class="text-box">
+								<div class="h3">Diego Areso Nieva</div>
+					  				<div class="h4">Diego Areso Nieva Premio Nacional de Diseño 2025 Trayectoria en Diseño</div>
+								<a href="/Experiencias/PNID2025/DiegoAresoNieva.html" rel=follow title='Ir a la página en la misma ventana'>Leer más <span>&gt;&gt;</span></a>
+							</div>
+							<div class="generic-button-container ">
+		<p>
+		<a class="generic-button col-12" href="/Buscador-especifico.html?tipoDocumento=experiencia"   rel=follow aria-label="MÁS EXPERIENCIAS" title='Ir a la página en la misma ventana'>
+			MÁS EXPERIENCIAS
+			
+		</a>
+		</p>
+							</div>
+						</div>
+						<div class="experienciaImg">
+
+
+
+					  				<img class="static" src="/.imaging/mte/web-mcin-theme/1325x1325/dam/WEB/No-rastreable/ImagenesEspecificas/EXPERIENCIAS/PNID25/DiegoAreso_expIMG.gif0/jcr:content/DiegoAreso_expIMG.gif" alt="Diego Areso Nieva" />
+						</div>
+					 </div>
+
+
+
+			     	 <div class="carousel-item  ">
+					  	<div class="experienciaTxt">
+							<div class="text-box">
+								<div class="h3">Luis Felipe Serrano Pubul</div>
+					  				<div class="h4">Luis Felipe Serrano Pubul Premio Nacional de Innovación 2025.Trayectoria Innovadora</div>
+								<a href="/Experiencias/PNID2025/LuisFelipeSerranoPubul.html" rel=follow title='Ir a la página en la misma ventana'>Leer más <span>&gt;&gt;</span></a>
+							</div>
+							<div class="generic-button-container ">
+		<p>
+		<a class="generic-button col-12" href="/Buscador-especifico.html?tipoDocumento=experiencia"   rel=follow aria-label="MÁS EXPERIENCIAS" title='Ir a la página en la misma ventana'>
+			MÁS EXPERIENCIAS
+			
+		</a>
+		</p>
+							</div>
+						</div>
+						<div class="experienciaImg">
+
+
+
+					  				<img class="static" src="/.imaging/mte/web-mcin-theme/1325x1325/dam/WEB/No-rastreable/ImagenesEspecificas/EXPERIENCIAS/PNID25/LuisFelipe_expIMG.gif0/jcr:content/LuisFelipe_expIMG.gif" alt="Luis Felipe Serrano Pubul" />
+						</div>
+					 </div>
+
+
+
+			     	 <div class="carousel-item  ">
+					  	<div class="experienciaTxt">
+							<div class="text-box">
+								<div class="h3">Patricia Urquiola Hidalgo</div>
+					  				<div class="h4">Patricia Urquiola Hidalgo Premio Nacional de Diseño 2025 Trayectoria en Diseño</div>
+								<a href="/Experiencias/PNID2025/PatriciaUrquiolaHidalgo.html" rel=follow title='Ir a la página en la misma ventana'>Leer más <span>&gt;&gt;</span></a>
+							</div>
+							<div class="generic-button-container ">
+		<p>
+		<a class="generic-button col-12" href="/Buscador-especifico.html?tipoDocumento=experiencia"   rel=follow aria-label="MÁS EXPERIENCIAS" title='Ir a la página en la misma ventana'>
+			MÁS EXPERIENCIAS
+			
+		</a>
+		</p>
+							</div>
+						</div>
+						<div class="experienciaImg">
+
+
+
+					  				<img class="static" src="/.imaging/mte/web-mcin-theme/1325x1325/dam/WEB/No-rastreable/ImagenesEspecificas/EXPERIENCIAS/PNID25/PatriciaUriola_expIMG.gif/jcr:content/PatriciaUriola_expIMG.gif" alt="Patricia Urquiola Hidalgo" />
+						</div>
+					 </div>
+
+
+
+			     	 <div class="carousel-item  ">
+					  	<div class="experienciaTxt">
+							<div class="text-box">
+								<div class="h3">Marcos González Sanz</div>
+					  				<div class="h4">Marcos González Sanz Premio Nacional de Innovación 2025 Joven Talento Innovador</div>
+								<a href="/Experiencias/PNID2025/MarcosGonzalezSanz.html" rel=follow title='Ir a la página en la misma ventana'>Leer más <span>&gt;&gt;</span></a>
+							</div>
+							<div class="generic-button-container ">
+		<p>
+		<a class="generic-button col-12" href="/Buscador-especifico.html?tipoDocumento=experiencia"   rel=follow aria-label="MÁS EXPERIENCIAS" title='Ir a la página en la misma ventana'>
+			MÁS EXPERIENCIAS
+			
+		</a>
+		</p>
+							</div>
+						</div>
+						<div class="experienciaImg">
+
+
+
+					  				<img class="static" src="/.imaging/mte/web-mcin-theme/1325x1325/dam/WEB/No-rastreable/ImagenesEspecificas/EXPERIENCIAS/PNID25/MarcosGonzalez_expIMG.gif0/jcr:content/MarcosGonzalez_expIMG.gif" alt="Marcos González Sanz" />
+						</div>
+					 </div>
+    </div>
+	<div class="chevron">
+		<a class="glyphicon glyphicon-chevron-right" href="#experienciasSlide" data-slide="next">
+            <img src="/.resources/site-web/webresources/img/icono-flecha-derecha-carrusel-experiencias.svg">
+        </a>
+	</div>
+</div>
+
+
+<div id="social" class="container-fluid gris-claro-1">
+
+
+<div class="row">
+	<div class="iconos-rrss">
+
+
+
+
+
+
+
+
+
+
+
+
+	<a href="https://www.facebook.com/CienciaGob/"  target=_blank  rel=nofollow >
+<img src="/dam/jcr:79197ee6-7305-4b6b-b5df-0ec7e81414fe/icono-facebook.svg" alt="Red Social Facebook" />
+	</a>			  	
+
+
+
+
+
+
+
+
+
+
+
+
+	<a href="https://twitter.com/CienciaGob?ref_src=twsrc%5Etfw"  target=_blank  rel=nofollow >
+<img src="/dam/jcr:b737c902-102f-4454-88b1-5a90c3d69c98/icono_Xtwitter.svg" alt="Red Social Twitter" />
+	</a>			  	
+
+
+
+
+
+
+
+
+
+
+
+
+	<a href="https://www.instagram.com/cienciagob/"  target=_blank  rel=nofollow >
+<img src="/dam/jcr:7cc8952f-4a6b-41ee-8870-245f60a53bf0/icono-instagram.svg" alt="Red Social Instagram" />
+	</a>			  	
+
+
+
+
+
+
+
+
+
+
+
+
+	<a href="https://es.linkedin.com/company/cienciagob"  target=_blank  rel=nofollow >
+<img src="/dam/jcr:a73aa0b1-f1c6-4528-8f66-e3e5dab94afe/linkedin_logo.svg" alt="Icono Linkedin" />
+	</a>			  	
+
+
+
+
+
+
+
+
+
+
+
+
+	<a href="https://www.youtube.com/user/cienciagob"  target=_blank  rel=nofollow >
+<img src="/dam/jcr:950d0eec-3438-4e20-8800-cfae0fec86fd/icono-youtube.svg" alt="Red Social Youtube" />
+	</a>			  	
+
+
+
+
+
+
+
+
+
+
+
+
+	<a href="https://www.flickr.com/photos/cienciagob/"  target=_blank  rel=nofollow >
+<img src="/dam/jcr:95787ac1-e65a-40da-ae7b-e7276ea7aa05/icono-flickr.svg" alt="Red Social Flickr" />
+	</a>			  	
+	</div>
+</div>
+	
+	<div class="row">
+		<div class="col-12">
+			<a id="goToFinRRSS" href="#finRRSS" class="gris-claro-1">Evitar el acceso a redes sociales por teclado</a>
+		</div>
+	</div>
+
+	<div class="row" style="display: none;">
+
+
+
+
+
+
+
+				<div class="col-md-8 instagram-container p-0">
+					<script src="https://cdn.lightwidget.com/widgets/lightwidget.js" crossorigin="anonymous"></script>
+					<iframe title="instagram" src="https://cdn.lightwidget.com/widgets/c311134711b75beca3935656120a6aa0.html" scrolling="no" allowtransparency="true" class="lightwidget-widget" style="width:100%;border:0;overflow:hidden;"></iframe>
+				</div>
+		<div style="flex: 0 0 3.333333%; max-width: 3.333333%;">
+		</div>
+		
+		<div id="feedTwitter" style="overflow:hidden; height:1033px; margin-top: 50px; overflow-y: auto; padding-left: 0; padding-right: 0;">
+		
+
+			
+
+			<script>
+				var html = "";
+				let today = new Date();
+				let timelineDate = new Date(localStorage.getItem('timelineDate'))
+				timelineDate.setHours(timelineDate.getHours() + 12);
+
+				if(localStorage.getItem('timeline') && today < timelineDate) {
+					getTimeline()
+					console.log("asas")
+				}
+				else {
+					localStorage.setItem('timeline', JSON.stringify({"user":{"id":"818776501617393665","name":"Ministerio de Ciencia, Innovación y Universidades","username":"CienciaGob","profile_image_url":"https://pbs.twimg.com/profile_images/2014469728471863296/CVWlFf11_normal.jpg"},"tweets":[{"text":"📍 La ministra @DianaMorantR participa hoy, junto a la ministra Margarita Robles y el ministro @jordihereub, en la presentación del programa IN+DEF, el nuevo ecosistema de formación e innovación abierta para la industria de defensa.\n\n⌚ 11:30 h\n\n📲Directo: https://t.co/T2bWW38g1u https://t.co/niixNrCxFn","mentions":[{"start":14,"end":27,"username":"DianaMorantR","id":"358127129"},{"start":94,"end":106,"username":"jordihereub","id":"1727322415032668160"}],"urls":[{"start":254,"end":277,"url":"https://t.co/T2bWW38g1u","expanded_url":"https://www.youtube.com/watch?v=ZMiH8a5ioe8","display_url":"youtube.com/watch?v=ZMiH8a…","status":200,"title":"Presentación programa IN+DEF","description":"Enjoy the videos and music you love, upload original content, and share it all with friends, family, and the world on YouTube.","unwound_url":"https://www.youtube.com/watch?v=ZMiH8a5ioe8"},{"start":278,"end":301,"url":"https://t.co/niixNrCxFn","expanded_url":"https://x.com/CienciaGob/status/2038546216556888413/photo/1","display_url":"pic.x.com/niixNrCxFn","media_key":"3_2038545422638092288"}],"image_url":"https://pbs.twimg.com/media/HEpeQt7XkAAsh9u.jpg"},{"text":"🌐 Esta nueva arquitectura transformará sectores clave como la movilidad, las comunicaciones 5G/6G o la gestión de infraestructuras críticas.\n \nInvertir en espacio es invertir en autonomía, competitividad y futuro.","mentions":null,"urls":null},{"text":"🛰️ Los satélites demostradores validarán en órbita nuevas tecnologías #PNT.\n \n🌍 #CELESTE abre un cambio de paradigma: una nueva generación de servicios desde órbita baja (LEO-PNT), más precisos y resilientes.","mentions":null,"urls":null},{"text":"🇪🇸 España desempeña un papel protagonista.\n \nLa misión está liderada por @infoGMV y cuenta con una amplia participación de la industria nacional, consolidando nuestro ecosistema espacial.","mentions":[{"start":73,"end":81,"username":"infoGMV","id":"123844811"}],"urls":null},{"text":"🛰️ Impulsado por la @ESA, #CELESTE mejorará las prestaciones y la resiliencia de #GALILEO y #EGNOS 🇪🇺\n \nUn avance clave para reforzar la autonomía tecnológica de Europa.","mentions":[{"start":20,"end":24,"username":"esa","id":"21436960"}],"urls":null}]}));
+					localStorage.setItem('timelineDate', new Date());
+					getTimeline()
+				}
+			</script>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12" id="finRRSS">
+		</div>
+	</div>
+</div>
+
+<style>
+
+	.linkTwitterTitulo:hover{text-decoration: underline;}
+	
+</style>
+<script>
+$("#feedTwitter").html(html);
+</script>
+
+<div id="publicaciones" class="container-fluid gris-oscuro">
+
+
+
+<div class="row">
+
+
+
+
+
+
+
+
+	
+	<div class="col-md-3">
+		<a href="/InfoGeneralPortal/detalle-publicacion/MICIU/Descubre-a-Maria-Sklodowska-Curie.html"   rel=follow aria-label="Descubre a Maria Sklodowska-Curie Biografía ilustrada para el público juvenil que recorre la vida de Marie Curie: la científica ganadora de dos Premios Nobel"
+		title='Ir a la página en la misma ventana'>
+			<div class="text">
+				<div class="titulo-publicacion">
+					<p class="titulo">Descubre a Maria Sklodowska-Curie</p>
+				</div>
+					<p class="texto">Biografía ilustrada para el público juvenil que recorre la vida de Marie Curie: la científica ganadora de dos Premios Nobel</p>
+				<!---->
+			</div>
+			<img class="static" src="/.imaging/mte/web-mcin-theme/publicacion/dam/WEB/No-rastreable/ImagenesEspecificas/PUBLICACIONES/MCIN/DescubreMC_portada-copia.jpg/jcr:content/DescubreMC_portada%20copia.jpg" alt="" />
+		</a>
+	</div>
+
+
+
+
+
+
+
+
+	
+	<div class="col-md-3">
+		<a href="/InfoGeneralPortal/detalle-publicacion/MICIU/Los-instrumentos-de-Humboldt.html"   rel=follow aria-label="Los instrumentos de Humboldt Catálogo sobre la visión global e interconectada de la naturaleza de A. von Humboldt y su influencia en la ciencia actual"
+		title='Ir a la página en la misma ventana'>
+			<div class="text">
+				<div class="titulo-publicacion">
+					<p class="titulo">Los instrumentos de Humboldt</p>
+				</div>
+					<p class="texto">Catálogo sobre la visión global e interconectada de la naturaleza de A. von Humboldt y su influencia en la ciencia actual</p>
+				<!---->
+			</div>
+			<img class="static" src="/.imaging/mte/web-mcin-theme/publicacion/dam/WEB/No-rastreable/ImagenesEspecificas/PUBLICACIONES/FECYT/instrumentos_humboldt_portada.jpg/jcr:content/instrumentos_humboldt_portada.jpg" alt="" />
+		</a>
+	</div>
+
+
+
+
+
+
+
+
+	
+	<div class="col-md-3">
+		<a href="/InfoGeneralPortal/detalle-publicacion/CSIC/Neuroenvejecimiento-e-inteligencia-artificial-en-biomedicina.html"   rel=follow aria-label="Neuroenvejecimiento e inteligencia artificial en biomedicina Informe que analiza el papel estratégico que puede desempeñar la inteligencia artificial en biomedicina para abordar los retos asociados al neuroenvejecimiento"
+		title='Ir a la página en la misma ventana'>
+			<div class="text">
+				<div class="titulo-publicacion">
+					<p class="titulo">Neuroenvejecimiento e inteligencia artificial en biomedicina</p>
+				</div>
+					<p class="texto">Informe que analiza el papel estratégico que puede desempeñar la inteligencia artificial en biomedicina para abordar los retos asociados al neuroenvejecimiento</p>
+				<!---->
+			</div>
+			<img class="static" src="/.imaging/mte/web-mcin-theme/publicacion/dam/WEB/No-rastreable/ImagenesEspecificas/PUBLICACIONES/CSIC/NeuroenvejecimientoIABiomedicina_portada.jpg/jcr:content/NeuroenvejecimientoIABiomedicina_portada.jpg" alt="" />
+		</a>
+	</div>
+
+
+
+
+
+
+
+
+	
+	<div class="col-md-3">
+		<a href="/InfoGeneralPortal/detalle-publicacion/CSIC/Geotermia.html"   rel=follow aria-label="Geotermia La geotermia es una energía renovable, fuente limpia e inagotable que marca un camino hacia un futuro energético más seguro y sostenible"
+		title='Ir a la página en la misma ventana'>
+			<div class="text">
+				<div class="titulo-publicacion">
+					<p class="titulo">Geotermia</p>
+				</div>
+					<p class="texto">La geotermia es una energía renovable, fuente limpia e inagotable que marca un camino hacia un futuro energético más seguro y sostenible</p>
+				<!---->
+			</div>
+			<img class="static" src="/.imaging/mte/web-mcin-theme/publicacion/dam/WEB/No-rastreable/ImagenesEspecificas/PUBLICACIONES/CSIC/Geotermia_portada.jpg/jcr:content/Geotermia_portada.jpg" alt="" />
+		</a>
+	</div>
+</div>
+
+		<div class="row">
+			<div class="col-12 generic-button-container">
+				<a class="generic-button" href="/Buscador-especifico.html?tipoDocumento=publicacion"   rel=follow title='Ir a la página en la misma ventana'>
+					Ver publicaciones
+				</a>
+			</div>
+		</div>
+</div>
+        
+    </div>       
+
+
+<div id="footer" role="contentinfo">
+	<footer>
+		<div class="links">
+			<div class="container-fluid">
+			<div class="row">
+				<div class="col-9">
+				
+<div class="row mb-sm-3">
+	<div class="col-sm-4 mb-3 mb-sm-0">
+
+	<p class="titulo">
+		Ministerio
+	</p>
+
+
+
+		<p>
+		<a class=" col-12" href="/Ministerio/Mision-y-organizacion.html"   aria-label="Misión y organización" title='Ir a la página en la misma ventana'>
+			Misión y organización
+			
+		</a>
+		</p>
+
+		<p>
+		<a class=" col-12" href="/Ministerio/Ministra.html"   rel=follow aria-label="Ministra" title='Ir a la página en la misma ventana'>
+			Ministra
+			
+		</a>
+		</p>
+
+		<p>
+		<a class=" col-12" href="/Ministerio/AltosCargos.html"   rel=follow aria-label="Altos cargos" title='Ir a la página en la misma ventana'>
+			Altos cargos
+			
+		</a>
+		</p>
+
+
+		<p>
+		<a class=" col-12" href="/Ministerio/Eventos.html"   aria-label="Eventos" title='Ir a la página en la misma ventana'>
+			Eventos
+			
+		</a>
+		</p>
+
+		<p>
+		<a class=" col-12" href="/Secc-Servicios/Igualdad.html"   rel=follow aria-label="Igualdad de género" title='Ir a la página en la misma ventana'>
+			Igualdad de género
+			
+		</a>
+		</p>
+
+		<p>
+		<a class=" col-12" href="/Ministerio/EmpleoPublico.html"   aria-label="Empleo público" title='Ir a la página en la misma ventana'>
+			Empleo público
+			
+		</a>
+		</p>
+	</div>
+	<div class="col-sm-4 mb-3 mb-sm-0">
+
+	<p class="titulo">
+		Estrategias y Planes
+	</p>
+
+
+
+		<p>
+		<a class=" col-12" href="/Estrategias-y-Planes/Estrategias.html"   rel=follow aria-label="Estrategias" title='Ir a la página en la misma ventana'>
+			Estrategias
+			
+		</a>
+		</p>
+
+		<p>
+		<a class=" col-12" href="/Estrategias-y-Planes/Planes-y-programas.html"   rel=follow aria-label="Planes y programas" title='Ir a la página en la misma ventana'>
+			Planes y programas
+			
+		</a>
+		</p>
+
+
+
+		<p>
+		<a class=" col-12" href="/Estrategias-y-Planes/Plan-de-Recuperacion-Transformacion-y-Resiliencia-PRTR.html"   rel=follow aria-label="Plan de Recuperación, Transformación y Resiliencia (PRTR)" title='Ir a la página en la misma ventana'>
+			Plan de Recuperación, Transformación y Resiliencia (PRTR)
+			
+		</a>
+		</p>
+
+		<p>
+		<a class=" col-12" href="/Estrategias-y-Planes/Fondo-Europeo-de-Desarrollo-Regional-FEDER.html"   rel=follow aria-label="Fondos Europeos de Desarrollo Regional (FEDER)" title='Ir a la página en la misma ventana'>
+			Fondos Europeos de Desarrollo Regional (FEDER)
+			
+		</a>
+		</p>
+	</div>
+	<div class="col-sm-4 mb-3 mb-sm-0">
+
+	<p class="titulo">
+		Centros
+	</p>
+
+
+
+		<p>
+		<a class=" col-12" href="/Organismos-y-Centros/OPI.html"   rel=follow aria-label="Organismos Públicos de Investigación (OPI)" title='Ir a la página en la misma ventana'>
+			Organismos Públicos de Investigación (OPI)
+			
+		</a>
+		</p>
+
+		<p>
+		<a class=" col-12" href="/Organismos-y-Centros/ICTS.html"   rel=follow aria-label="Infraestructuras Científicas y Técnicas Singulares (ICTS)" title='Ir a la página en la misma ventana'>
+			Infraestructuras Científicas y Técnicas Singulares (ICTS)
+			
+		</a>
+		</p>
+
+		<p>
+		<a class=" col-12" href="/Organismos-y-Centros/Comite-Polar-Espanol.html"   rel=follow aria-label="Comité Polar Español" title='Ir a la página en la misma ventana'>
+			Comité Polar Español
+			
+		</a>
+		</p>
+
+		<p>
+		<a class=" col-12" href="/Organismos-y-Centros/Consorcios-y-Fundaciones.html"   rel=follow aria-label="Consorcios y fundaciones" title='Ir a la página en la misma ventana'>
+			Consorcios y fundaciones
+			
+		</a>
+		</p>
+
+		<p>
+		<a class=" col-12" href="/Organismos-y-Centros/SOMMA.html"   rel=follow aria-label="Centros y unidades de excelencia" title='Ir a la página en la misma ventana'>
+			Centros y unidades de excelencia
+			
+		</a>
+		</p>
+
+		<p>
+		<a class=" col-12" href="/Organismos-y-Centros/Organismos-e-Infraestructuras-de-Investigacion-Internacionales.html"   rel=follow aria-label="Organismos e infraestructuras internacionales" title='Ir a la página en la misma ventana'>
+			Organismos e infraestructuras internacionales
+			
+		</a>
+		</p>
+
+		<p>
+		<a class=" col-12" href="/Organismos-y-Centros/Reales-Academias.html"   rel=follow aria-label="Reales Academias" title='Ir a la página en la misma ventana'>
+			Reales Academias
+			
+		</a>
+		</p>
+
+		<p>
+		<a class=" col-12" href="/Organismos-y-Centros/Museos.html"   rel=follow aria-label="Museos" title='Ir a la página en la misma ventana'>
+			Museos
+			
+		</a>
+		</p>
+	</div>
+</div>
+
+<div class="row mb-5">
+	<div class="col-sm-4 mb-3 mb-sm-0">
+
+	<p class="titulo">
+		 
+	</p>
+
+
+
+		<p>
+		<a class=" col-12" href="/Convocatorias.html"   rel=follow aria-label="Convocatorias" title='Ir a la página en la misma ventana'>
+			Convocatorias
+			
+		</a>
+		</p>
+
+		<p>
+		<a class=" col-12" href="/Investigar.html"   rel=follow aria-label="Investigar" title='Ir a la página en la misma ventana'>
+			Investigar
+			
+		</a>
+		</p>
+
+		<p>
+		<a class=" col-12" href="/Innovar.html"   rel=follow aria-label="Innovar" title='Ir a la página en la misma ventana'>
+			Innovar
+			
+		</a>
+		</p>
+
+
+
+
+
+
+
+
+		<p>
+		<a class=" col-12" href="https://www.universidades.gob.es/"  target=_blank  rel=nofollow aria-label="Universidades"  title='Ir a la página  en una ventana nueva'>
+			Universidades
+			
+		</a>
+		</p>
+
+		<p>
+		<a class=" col-12" href="/Servicios.html"   rel=follow aria-label="Servicios" title='Ir a la página en la misma ventana'>
+			Servicios
+			
+		</a>
+		</p>
+
+	</div>
+	<div class="col-sm-4 mb-3 mb-sm-0">
+
+
+
+	</div>
+	<div class="col-sm-4 mb-3 mb-sm-0">
+
+	<p class="titulo">
+		 
+	</p>
+
+
+
+		<p>
+		<a class=" col-12" href="/InfoGeneralPortal/MapaWeb.html"   rel=nofollow aria-label="Mapa Web" title='Ir a la página en la misma ventana'>
+			Mapa Web
+			
+		</a>
+		</p>
+
+		<p>
+		<a class=" col-12" href="/InfoGeneralPortal/PoliticaPrivacidad.html"   rel=follow aria-label="Política de privacidad y protección de datos" title='Ir a la página en la misma ventana'>
+			Política de privacidad y protección de datos
+			
+		</a>
+		</p>
+
+		<p>
+		<a class=" col-12" href="/InfoGeneralPortal/AvisoLegal.html"   aria-label="Aviso Legal" title='Ir a la página en la misma ventana'>
+			Aviso Legal
+			
+		</a>
+		</p>
+
+		<p>
+		<a class=" col-12" href="/InfoGeneralPortal/Cookies.html"   rel=nofollow aria-label="Política de cookies" title='Ir a la página en la misma ventana'>
+			Política de cookies
+			
+		</a>
+		</p>
+
+		<p>
+		<a class=" col-12" href="/InfoGeneralPortal/Accesibilidad.html"   rel=nofollow aria-label="Accesibilidad" title='Ir a la página en la misma ventana'>
+			Accesibilidad
+			
+		</a>
+		</p>
+
+	</div>
+</div>
+<div class="row mb-3">
+	<div class="pieN2Logos">
+		<div id="pieN2LogosMCIN">
+				    
+
+
+
+
+
+
+
+
+
+
+
+
+				<a class="gobierno" href="https://www.lamoncloa.gob.es/Paginas/index.aspx"  target=_blank  rel=nofollow   title='Ir a la página  en una ventana nueva'>
+		<img src="/dam/jcr:8b733e2d-e6e6-447e-9b9d-51779cd7b242/GOB_MCIU_negro_marco.svg" alt="Logo Gobierno de España">
+				</a>
+      
+
+		</div>
+		<div id="pieN2LogosExternos">
+		</div>
+	</div>
+</div>				</div>
+					<div id="pieN3RRSS" class="col-3 social">
+
+<p>
+
+
+
+
+
+
+
+
+
+
+		
+		<a href="https://www.facebook.com/CienciaGob/"  target=_blank  rel=nofollow  title='Ir a la página  en una ventana nueva'>
+				<img src="/dam/jcr:79197ee6-7305-4b6b-b5df-0ec7e81414fe/icono-facebook.svg" />
+		</a>
+
+
+
+
+
+
+
+
+
+
+		
+		<a href="https://twitter.com/CienciaGob?ref_src=twsrc%5Etfw"  target=_blank  rel=nofollow  title='Ir a la página  en una ventana nueva'>
+				<img src="/dam/jcr:b737c902-102f-4454-88b1-5a90c3d69c98/icono_Xtwitter.svg" />
+		</a>
+
+
+
+
+
+
+
+
+
+
+		
+		<a href="https://www.instagram.com/cienciagob/"  target=_blank  rel=nofollow  title='Ir a la página  en una ventana nueva'>
+				<img src="/dam/jcr:7cc8952f-4a6b-41ee-8870-245f60a53bf0/icono-instagram.svg" />
+		</a>
+
+
+
+
+
+
+
+
+
+
+		
+		<a href="https://es.linkedin.com/company/cienciagob"  target=_blank  rel=nofollow  title='Ir a la página  en una ventana nueva'>
+				<img src="/dam/jcr:a73aa0b1-f1c6-4528-8f66-e3e5dab94afe/linkedin_logo.svg" />
+		</a>
+
+
+
+
+
+
+
+
+
+
+		
+		<a href="https://www.youtube.com/user/cienciagob"  target=_blank  rel=nofollow  title='Ir a la página  en una ventana nueva'>
+				<img src="/dam/jcr:950d0eec-3438-4e20-8800-cfae0fec86fd/icono-youtube.svg" />
+		</a>
+
+
+
+
+
+
+
+
+
+
+		
+		<a href="https://www.flickr.com/photos/cienciagob/"  target=_blank  rel=nofollow  title='Ir a la página  en una ventana nueva'>
+				<img src="/dam/jcr:95787ac1-e65a-40da-ae7b-e7276ea7aa05/icono-flickr.svg" />
+		</a>
+	
+</p>
+
+					</div>
+			</div>
+				<div class="row">
+					<div id="pieN3copyRight" class="col-md-5 col-xl-6 mb-5 mb-sm-4 mb-md-0">
+
+    <p class="ministerio">Ministerio de Ciencia, Innovación y Universidades</p>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</footer>
+</div>
+<div class="modal fade" id="modalDescargarCentros" tabindex="-1" role="dialog" aria-labelledby="modalDescargarCentrosLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title" id="modalDescargarCentrosLabel">Descarga</h4>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			</div>
+			<div class="modal-body">
+				<p>¿Desea descargar el fichero seleccionado?</p>
+			</div>
+			<div class="modal-footer">
+				<button id="cancelarDescargarCentros" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+				<button id="aceptarDescargarCentros" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="modalDescargar" tabindex="-1" role="dialog" aria-labelledby="modalDescargarLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title" id="modalDescargarLabel">Descarga</h4>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			</div>
+			<div class="modal-body">
+				<p>¿Desea descargar el fichero seleccionado?</p>
+			</div>
+			<div class="modal-footer">
+				<button id="cancelarDescargar" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+				<button id="aceptarDescargar" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="modalConfirmar" tabindex="-1" role="dialog" aria-labelledby="modalConfirmarLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title" id="modalConfirmarLabel">Confirmar baja</h4>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			</div>
+			<div class="modal-body">
+				<p>Va a darse de baja de las siguientes listas de suscripción. Si está seguro pulse en Aceptar</p>
+				<div class="listadoSuscripcion"></div>
+			</div>
+			<div class="modal-footer">
+				<button id="cancelarBorrar" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+				<button id="aceptarBorrar" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="modalFormTitulos" tabindex="-1" role="dialog" aria-labelledby="modalFormTitulosLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title" id="modalFormTitulosLabel">Información</h4>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			</div>
+			<div class="modal-body">
+				<p>Si usted necesita ampliar el plazo para subsanar la documentación requerida de su expediente deberá aportar, a través de la  <a href="https://universidades.sede.gob.es/login">Subsede Electrónica de la Secretaría General de Universidades (universidades.sede.gob.es)</a>, un documento firmado por el interesado solicitando la prórroga.</p>
+				<p>Para ello, deberá acceder a su expediente desde la sección “Mis expedientes” y anexar el documento en “Aportar documentación”.</p>
+				<p>Si su expediente no estuviera en la sede electrónica, puede aportar la solicitud a través del <a href="https://ciencia.sede.gob.es/pagina?id=Portada-104008">Registro Electrónico General (ciencia.sede.gob.es).</a></p>
+				<p>Tenga en cuenta que se le conceden 35 días hábiles adicionales para subsanar la documentación sin necesidad de que se le responda a esta solicitud.</p>
+				<p>Si su consulta no tuviera relación con esta información de solicitud de ampliación de plazo, podrá detallarla y completarla en el campo de “Contenido de su consulta”.</p>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="footerScripts">
+<div class="container-fluid htmlTxt">
+	<style>
+    
+    #footer p.titulo {
+        color: #1D1D1B;
+    }
+    
+</style>
+</div></div>
+
+
+		<div class="cookies">
+			<div class="cookiesContent">
+				<form method="post" id="cookiesForm">
+					<fieldset>
+					<legend class="n1">Su privacidad es importante para nosotros</legend>
+					</fieldset>
+						
+					<div class="text-container">
+
+						<div class="text-box">
+                                <div>
+<p>Utilizamos cookies propias para el correcto funcionamiento y visualizaci&oacute;n del sitio web y cookies de terceros para la recogida de estad&iacute;sticas. Las cookies no almacenan ning&uacute;n tipo de datos personales sobre el usuario y se asocian &uacute;nicamente al navegador que est&aacute; utilizando.</p>
+
+<p>Si se selecciona &quot;ACEPTAR&quot; estar&aacute; aceptando el uso tanto de las cookies propias como de las estad&iacute;sticas, mientras que si selecciona &quot;RECHAZAR&quot; solo se utilizar&aacute;n las cookies propias estrictamente necesarias para la navegaci&oacute;n por el sitio web.</p>
+
+<p>Al navegar por nuestra web estar&aacute;s aceptando el uso de las cookies en las condiciones establecidas en esta <a href="
+https://www.ciencia.gob.es/InfoGeneralPortal/Cookies.html">Pol&iacute;tica de Cookies</a> que puede ser actualizada, por lo que te invitamos a revisarla de manera regular.</p>
+</div>
+
+						</div>
+						
+						<div class="hidden">
+							<label for="cookies-tecnicas">
+								<strong><span class="underline">Cookies técnicas</span></strong> <span class="nota">Cookies técnicas</span>
+							</label>
+							<input type="checkbox" id="cookies-tecnicas" checked="checked">
+							<span class="checkmark-disabled "></span>
+						</div>
+						<div class="hidden">
+							<label for="cookies-analitica">
+								<input type="checkbox" id="cookies-analitica" checked="checked">
+								<span class="checkmark"></span>
+								<span class="cookie-text"><strong>Cookies de analítica</strong></span><span class="nota">(Seleccionándolo dispones de una mejora en la experiencia de la navegación)</span>
+							</label>
+						</div>
+					</div>
+					<div class="buttons-container">
+						<button id="aceptar-cookies" class="generic-button">Aceptar</button>
+						<button id="rechazar-cookies" class="generic-button">Rechazar</button>
+						<a id="personalizar-cookies" class="generic-button-2">Personalizar</a>
+					</div>
+				</form>
+			</div>
+		</div>
+		
+
+		<div class="modal fade" id="modalDescartar" tabindex="-1" role="dialog" aria-labelledby="modalDescartarLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<input type="hidden" name="batchUpdateIdsDerechos" id="batchUpdateIdsDerechos" value="">
+					<div class="modal-header">
+						<h4 class="modal-title" id="modalRegenerarLoteLabel">Cookies</h4>
+					</div>
+					<div class="modal-body">
+						<p>Se han guardado sus preferencias en cuanto a cookies. Para cambiar sus preferencias en cualquier momento, consulte nuestra política de cookies o siga el enlace que figura a pie de página.</p>
+					</div>
+
+				</div>
+			</div>
+        </div>
+		
+
+<script>
+var urlCookies = '/InfoGeneralPortal/Cookies/CookiesPersonalizar.html';
+function cookiesConfig() {
+	if (!(/usuario_mci=sesion_iniciada|digitalDataInfo;domain=ciencia\.gob\.es/).test(document.cookie)) {
+		//si el usuario no ha aceptado todavía las cookies, muestra el pop-up de cookies
+
+		var now = new Date().getTime();
+		var expireDate = now + (1000*60*60*24*365);
+		$('.cookies #personalizar-cookies').click(function () {
+			var magnoliaInstance = window.location.origin;
+			var magnoliaUrl = window.location.href;
+
+			if (magnoliaUrl.indexOf("magnoliaPublic") > -1) {
+				magnoliaInstance = magnoliaInstance + '/magnoliaPublic';
+			} else if (magnoliaUrl.indexOf("magnoliaAuthor") > -1) {
+				magnoliaInstance = magnoliaInstance + '/magnoliaAuthor';
+			}
+
+			setCookie('usuario_mci', 'sesion_iniciada', 365);
+			window.location.href = magnoliaInstance + urlCookies;
+		});
+		$('.cookies button#aceptar-cookies').click(function (ev) {
+			ev.preventDefault();
+			$('.cookies').css('display','none');
+			$('#modalDescartar').modal('show');
+			let analiticaGlobal = $('#cookies-analitica').prop('checked');
+			setTimeout(function () {
+				$('#modalDescartar').modal('hide');
+				setCookie('usuario_mci', 'sesion_iniciada', 365);
+				if(analiticaGlobal) {
+					/** setAnalyticsCookies(); */
+					marketingTagAnalitica();
+					var magnoliaInstance = window.location.origin;
+					var url = window.location.href;
+					window.location.href = url;
+				}
+			}, 3000);
+		});
+		$('.cookies button#rechazar-cookies').click(function (ev) {
+			ev.preventDefault();
+			$('.cookies').css('display','none');
+			$('#modalDescartar').modal('show');
+			$('#cookies-analitica').prop('checked', false);
+			let analiticaGlobal = $('#cookies-analitica').prop('checked');
+			setTimeout(function () {
+				$('#modalDescartar').modal('hide');
+				setCookie('usuario_mci', 'sesion_iniciada', 365);
+				if(analiticaGlobal) {
+					/** setAnalyticsCookies(); */
+					marketingTagAnalitica();
+					var magnoliaInstance = window.location.origin;
+					var url = window.location.href;
+					window.location.href = url;
+				}
+			}, 3000);
+		});
+	} else {
+		//muestra avisos en función de las preferencias del usuario
+		//carga idioma
+		//deshabilita el formulario Feedback una vez has dado una vez
+	}
+	cookiesForms();
+}
+</script></body>
+</html>
