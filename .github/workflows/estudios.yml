@@ -61,7 +61,7 @@ jobs:
           python -m "$MODULO" $ARGS --salida out > out/salida.txt 2>&1
           echo "codigo=$?" >> out/salida.txt
           tail -n 20 out/salida.txt
-          echo "NOMBRE=$(echo "$ARGS" | tr -c 'a-zA-Z0-9' '_' | cut -c1-80)" >> "$GITHUB_ENV"
+          echo "NOMBRE=${{ strategy.job-index }}" >> "$GITHUB_ENV"
       - uses: actions/upload-artifact@v4
         if: always()
         with:

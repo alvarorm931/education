@@ -65,8 +65,12 @@ TEMAS = {
 FOLLETO = re.compile(r'href="([^"]+\.pdf)"[^>]*>([^<]{0,120})', re.I)
 TITULO_PROGRAMA = re.compile(r"m[aá]ster|\bmba\b|posgrado|postgrado|experto universitario|especialista universitario|"
                              r"diploma de especializaci|executive", re.I)
-SENAL_PROGRAMA = re.compile(r"\bECTS\b|cr[ée]ditos|matr[ií]cula|\bprecio|plazas|titulaci[oó]n|admisi[oó]n|modalidad|"
-                            r"duraci[oó]n|inicio|online|presencial|semipresencial|plan de estudios", re.I)
+# Señales de ficha de programa (lo que tiene una página que vende o describe un programa concreto).
+SENAL_PROGRAMA = re.compile(r"\bECTS\b|cr[ée]ditos|matr[ií]cula|\bprecio|plazas|titulaci[oó]n|admisi[oó]n|"
+                            r"plan de estudios|inscr[ií]bete|solicita (m[aá]s )?informaci[oó]n|requisitos de acceso|"
+                            r"salidas profesionales|programa acad[eé]mico|temario|modalidad", re.I)
+NOTICIA = re.compile(r"/(19|20)\d{2}/\d{1,2}/|/(blog|noticias?|news|actualidad|articulos?|opinion|prensa|revista|"
+                     r"magazine|tag|etiquetas?|author|autor)/", re.I)
 GUIA = re.compile(r"gu[ií]a|folleto|brochure|dossier|programa|plan de estudios|syllabus", re.I)
 
 
@@ -198,7 +202,7 @@ def medir_pagina(html: str, url: str) -> dict:
     cabecera = " ".join(re.sub(r"<[^>]+>", " ", (titulo.group(1) if titulo else "") + " " + (h1.group(1) if h1 else "")).split())
     senales = {m.group(0).lower() for m in SENAL_PROGRAMA.finditer(visible)}
     return {
-        "es_programa": bool(TITULO_PROGRAMA.search(cabecera)) and len(senales) >= 3,
+        "es_programa": bool(TITULO_PROGRAMA.search(cabecera)) and len(senales) >= 4 and not NOTICIA.search(urlparse(url).path),
         "senales": sorted(senales)[:12],
         "titulo": " ".join(titulo.group(1).split())[:200] if titulo else None,
         "jsonld_tipos": tipos,

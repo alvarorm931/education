@@ -41,7 +41,10 @@ AGREGADORES = re.compile(
     r"emagister|educaweb|mastermania|mundoposgrado|educaedu|educations|cursosycarreras|cursosgratuitos|yaq\.es|"
     r"aulaformacion|universia|blogspot|wordpress\.com|elmundo|elpais|expansion|abc\.es|20minutos|europapress|"
     r"lavanguardia|eleconomista|cincodias|magisnet|forbes|rankia|wikipedia|linkedin|facebook|youtube|"
-    r"twitter|instagram|indeed|infojobs|glassdoor|tripadvisor|amazon|aliexpress|ebay|milanuncios|wallapop", re.I)
+    r"twitter|instagram|indeed|infojobs|glassdoor|tripadvisor|amazon|aliexpress|ebay|milanuncios|wallapop|"
+    r"noticia|cronica|diario|periodico|revista|news|blog|portalparados|becasen|becasycursos|parainmigrantes|"
+    r"psicologiaymente|que\.es$|tesify|cursosbaratos|uscflix|google\.com|github|gitlab|wuolah|wuidy|"
+    r"educaformacion|estudiaradistancia|estudiaronline|universidadesni", re.I)
 SUFIJOS_DOBLES = ("edu.es", "com.es", "org.es", "gob.es", "nom.es")
 
 
