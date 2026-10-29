@@ -48,6 +48,7 @@ NOMBRE_FUENTE = {
     "BORM": "Boletín Oficial de la Región de Murcia",
     "BOC": "Boletín Oficial de Canarias",
     "DOCM": "Diario Oficial de Castilla-La Mancha",
+    "BOME": "Boletín Oficial de la Ciudad Autónoma de Melilla",
     "BOPV": "Boletín Oficial del País Vasco",
     "BOIB": "Butlletí Oficial de les Illes Balears",
 }
@@ -67,6 +68,8 @@ BOLETIN_A_FUENTE = {
     "boletin oficial de canarias": "BOC",
     "diario oficial de castilla-la mancha": "DOCM",
     "diario oficial de castilla la mancha": "DOCM",
+    "boletin oficial de la ciudad de melilla": "BOME",
+    "boletin oficial de la ciudad autonoma de melilla": "BOME",
     "boletin oficial del pais vasco": "BOPV",
     "butlleti oficial de les illes balears": "BOIB",
     "boletin oficial de las illes balears": "BOIB",

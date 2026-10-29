@@ -160,8 +160,10 @@ autonomicos:
     comunidad: Melilla
     url: https://bomemelilla.es/
     acceso_desde_github: "ok"
-    datos_estructurados: "API de calendario: https://bomemelilla.es/api/bomes/calendar"
-    estado: sin_conector
+    datos_estructurados: "API de calendario: https://bomemelilla.es/api/bomes/calendar?start=AAAA-MM-DD&end=AAAA-MM-DD; boletín /bome/BOME-B-AAAA-N (extraordinarios BOME-BX-); artículo en web /bome/BOME-B-AAAA-N/articulo/M"
+    estado: conector_en_pruebas
+    conector: motor/autonomicos/bome.py
+    nota: "Ciudad autónoma: comunidad y ayuntamiento a la vez; muchas convocatorias van en extraordinarios"
 
 provinciales:
   - provincia: A Coruña
