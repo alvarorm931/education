@@ -1,0 +1,7 @@
+www.diputaciodetarragona.cat: 3 certificados en la cadena enviada
+  emisor del último: C = US, ST = New Jersey, L = Jersey City, O = The USERTRUST Network, CN = USERTrust RSA Certification Authority; AIA: -
+bop.dipucr.es: 1 certificados en la cadena enviada
+  emisor del último: C = BE, O = GlobalSign nv-sa, CN = GlobalSign GCC R6 AlphaSSL CA 2025; AIA: http://secure.globalsign.com/cacert/gsgccr6alphasslca2025.crt
+  intermedio descargado: gsgccr6alphasslca2025_crt.pem (C = BE, O = GlobalSign nv-sa, CN = GlobalSign GCC R6 AlphaSSL CA 2025)
+url1 error HTTPSConnectionPool(host='www.diputaciodetarragona.cat', port=443): Max retries exceeded with url: /ebop/ (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)')))
+url2 200 22702 https://bop.dipucr.es/
