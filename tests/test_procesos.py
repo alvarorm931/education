@@ -63,3 +63,35 @@ def test_boe_y_boletines_autonomicos():
     assert u["estado"] == "plazo_abierto" and u["plazo"]["de_acto"] == "boja:1" and u["fuentes"] == ["BOE", "BOJA"]
     assert [x["id"] for x in ps["boe:L1"]["otras_publicaciones"]] == ["bocyl:B1"]
     assert ps["dogv:9"]["fuente"] == "Diari Oficial de la Generalitat Valenciana"
+
+
+def test_bases_locales_sin_anuncio_en_el_boe():
+    autonomicos = [
+        # Bases de carrera en el BOPB: el plazo empezará con el extracto en el BOE, que aún no ha salido
+        {"id": "bopb:BOPB-1", "fecha": "2026-10-28", "fuente": "BOPB", "tipo_acto": "convocatoria", "ambito": "local",
+         "alcance": "acceso", "titulo": "Bases i convocatòria per proveir una plaça d'enginyer/a municipal",
+         "convocante": {"tipo": "Ayuntamiento", "nombre": "Vilafranca del Penedès", "provincia": "Barcelona"},
+         "plazo": {"dias": 20, "tipo": "naturales", "cuenta_desde": "Boletín Oficial del Estado"}},
+        # Bolsa de trabajo temporal: no va al BOE y el plazo cuenta desde el propio BOP
+        {"id": "bopb:BOPB-2", "fecha": "2026-10-28", "fuente": "BOPB", "tipo_acto": "convocatoria", "ambito": "local",
+         "alcance": "acceso", "modalidad": "bolsa", "titulo": "Bases de la borsa de treball d'auxiliar administratiu",
+         "convocante": {"tipo": "Ayuntamiento", "nombre": "Castelldefels", "provincia": "Barcelona"},
+         "plazo": {"dias": 10, "tipo": "naturales", "fin_estimado": "2026-11-07"}},
+        # Las bases que sí cita un anuncio del BOE no forman proceso propio
+        {"id": "bopb:BOPB-3", "fecha": "2026-10-02", "fuente": "BOPB", "tipo_acto": "convocatoria", "ambito": "local",
+         "alcance": "acceso", "titulo": "Bases ... agent de la Policia Local",
+         "convocante": {"tipo": "Ayuntamiento", "nombre": "Mataró", "provincia": "Barcelona"}},
+    ]
+    boe = [_acto("L9", "2026-10-20", "apertura_plazo", convocante={"tipo": "Ayuntamiento", "nombre": "Mataró",
+                                                                   "provincia": "Barcelona"},
+                 boletines_citados=[{"boletin": "Boletín Oficial de la Provincia de Barcelona", "fecha": "2026-10-02",
+                                     "papel": "bases"}],
+                 plazo={"dias": 20, "tipo": "naturales", "fin_estimado": "2026-11-09"})]
+    ps = {p["id"]: p for p in construir(boe, date(2026, 10, 29), autonomicos)}
+    assert set(ps) == {"boe:L9", "bopb:BOPB-1", "bopb:BOPB-2"}
+    assert [o["id"] for o in ps["boe:L9"]["otras_publicaciones"]] == ["bopb:BOPB-3"]
+    assert ps["boe:L9"]["convocante"]["codigo_ine"] == "08121"
+    assert ps["bopb:BOPB-1"]["estado"] == "bases_publicadas_pendiente_boe" and ps["bopb:BOPB-1"]["solo_bases_locales"]
+    assert ps["bopb:BOPB-2"]["estado"] == "plazo_abierto" and ps["bopb:BOPB-2"]["temporal"]
+    r = resumen(list(ps.values()), date(2026, 10, 29))["enlaces_locales"]
+    assert r["con_bases_enlazadas"] == 1 and r["procesos_solo_con_bases_locales"] == {"BOPB": 2}
