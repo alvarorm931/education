@@ -2,13 +2,49 @@
 
 from __future__ import annotations
 
+import ssl
 import time
 from dataclasses import dataclass, field
 
 import requests
+from requests.adapters import HTTPAdapter
 
 USER_AGENT = "PortalEstudiosOposiciones/0.1 (motor de datos publicos; peticiones moderadas)"
 REINTENTABLES = {429, 500, 502, 503, 504}
+
+
+class _AdaptadorTLS(HTTPAdapter):
+    """Adaptador con la lista de cifrados por defecto de OpenSSL.
+
+    Python 3.10+ solo ofrece cifrados con secreto perfecto hacia delante; algunos servidores oficiales (DOGC)
+    solo aceptan otros cifrados TLS 1.2 que OpenSSL sigue considerando seguros. Se mantiene la verificación del
+    certificado y del nombre del servidor.
+    """
+
+    def __init__(self, cifrados: str = "DEFAULT", **kwargs):
+        self.cifrados = cifrados
+        super().__init__(**kwargs)
+
+    def _contexto(self) -> ssl.SSLContext:
+        import certifi
+
+        ctx = ssl.create_default_context(cafile=certifi.where())
+        ctx.set_ciphers(self.cifrados)
+        return ctx
+
+    def init_poolmanager(self, *args, **kwargs):
+        kwargs["ssl_context"] = self._contexto()
+        return super().init_poolmanager(*args, **kwargs)
+
+    def proxy_manager_for(self, *args, **kwargs):
+        kwargs["ssl_context"] = self._contexto()
+        return super().proxy_manager_for(*args, **kwargs)
+
+
+def sesion_tls_compatible(cifrados: str = "DEFAULT") -> requests.Session:
+    s = requests.Session()
+    s.mount("https://", _AdaptadorTLS(cifrados))
+    return s
 
 
 @dataclass

@@ -40,7 +40,7 @@ def test_seleccion_real():
 
 
 def test_calendario(monkeypatch):
-    monkeypatch.setattr(dogc, "obtener", lambda url, accept=None, formulario=None: SimpleNamespace(
+    monkeypatch.setattr(dogc, "obtener", lambda url, accept=None, formulario=None, sesion=None: SimpleNamespace(
         status=200, contenido=_fix("dogc_calendario_202610.json"), cabeceras={}, url=url))
     cal = dogc.calendario_mes(2026, 10)
     assert cal["2026-10-01"] == "9762" and "2026-10-10" not in cal
@@ -49,7 +49,7 @@ def test_calendario(monkeypatch):
 def test_procesar_dia(tmp_path, monkeypatch):
     llamadas = []
 
-    def obtener(url, accept=None, formulario=None):
+    def obtener(url, accept=None, formulario=None, sesion=None):
         llamadas.append((url, formulario))
         return SimpleNamespace(status=200, contenido=_fix("dogc_sumario_9783.json"), cabeceras={}, url=url)
     monkeypatch.setattr(dogc, "obtener", obtener)

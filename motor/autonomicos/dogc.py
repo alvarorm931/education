@@ -34,11 +34,13 @@ from motor.archivo import Archivo
 from motor.autonomicos.comun import (clasificar, convocante_de_organismo, descargar_textos, es_empleo_por_titulo,
                                      es_resultado, escribir_json, escribir_jsonl, leer_jsonl)
 from motor.boe.clasificar import normalizar
-from motor.http import obtener
+from motor.http import obtener, sesion_tls_compatible
 from motor.limpieza import limpiar_html
 
 FUENTE = "dogc"
 MADRID = ZoneInfo("Europe/Madrid")
+# El servidor del DOGC rechaza la negociación TLS con la lista de cifrados de Python: se usa la de OpenSSL.
+SESION = sesion_tls_compatible()
 API = "https://portaldogc.gencat.cat/eadop-rest/api/dogc"
 PORTAL = "https://dogc.gencat.cat/es/document-del-dogc/?documentId="
 RE_ANUNCIO_EMPLEO = re.compile(r"\b(proceso selectivo|procesos selectivos|pruebas selectivas|bolsa de (?:empleo|trabajo)|"
@@ -53,7 +55,7 @@ def _parametro(url: str | None, nombre: str) -> str | None:
 
 
 def _post(endpoint: str, campos: dict) -> tuple[int, object, bytes, dict]:
-    r = obtener(f"{API}/{endpoint}", accept="application/json", formulario=campos)
+    r = obtener(f"{API}/{endpoint}", accept="application/json", formulario=campos, sesion=SESION)
     if r.status != 200:
         return r.status, None, r.contenido, r.cabeceras
     return r.status, json.loads(r.contenido), r.contenido, r.cabeceras
@@ -198,7 +200,8 @@ def main(argv: list[str] | None = None) -> int:
         hechos, errores = descargar_textos(pend, lambda x: ruta_texto(a.salida, x), lambda x: f"{API}/documentDOGC",
                                            texto_disposicion, archivo, FUENTE, a.max_minutos, a.pausa,
                                            accept="application/json", ext="json",
-                                           formulario=lambda x: {"documentId": x["id"], "language": "es"})
+                                           formulario=lambda x: {"documentId": x["id"], "language": "es"},
+                                           sesion=SESION)
         print(f"DOGC textos: {hechos} descargados, {errores} errores, {len(pend) - hechos} pendientes")
         return 0
 

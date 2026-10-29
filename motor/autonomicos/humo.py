@@ -37,9 +37,26 @@ def _textos(modulo, raiz: Path, archivo: Archivo, url, **kw) -> dict:
             "muestras": muestras}
 
 
+def tls_dogc() -> dict:
+    """Qué listas de cifrados acepta el servidor del DOGC (diagnóstico de la negociación TLS)."""
+    from motor.http import obtener, sesion_tls_compatible
+
+    out = {}
+    for cifrados in ("DEFAULT", "DEFAULT:@SECLEVEL=1", "AES256-GCM-SHA384:AES128-GCM-SHA256:AES256-SHA:AES128-SHA"):
+        try:
+            r = obtener(f"{dogc.API}/calendarDOGC", accept="application/json", intentos=1,
+                        formulario={"language": "es", "year": "2026", "month": "10"},
+                        sesion=sesion_tls_compatible(cifrados))
+            out[cifrados] = r.status
+        except Exception as e:  # noqa: BLE001 - es un diagnóstico
+            out[cifrados] = str(e)[:200]
+    return out
+
+
 def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser()
     p.add_argument("--salida", type=Path, default=Path("."))
+    p.add_argument("--solo", nargs="*", help="conectores a probar (por defecto, todos)")
     a = p.parse_args(argv)
     raiz, archivo = a.salida, Archivo(a.salida / "archivo")
     hoy = date.today()
@@ -61,9 +78,15 @@ def main(argv: list[str] | None = None) -> int:
                          "dia": dogc.procesar_dia(date(2026, 10, 29), "9783", raiz, archivo),
                          "textos": _textos(dogc, raiz, archivo, lambda x: f"{dogc.API}/documentDOGC",
                                            accept="application/json", ext="json",
-                                           formulario=lambda x: {"documentId": x["id"], "language": "es"})},
+                                           formulario=lambda x: {"documentId": x["id"], "language": "es"},
+                                           sesion=dogc.SESION)},
     }
+    if a.solo and "dogc" in a.solo:
+        resultado["tls_dogc"] = tls_dogc()
+        print("tls_dogc", resultado["tls_dogc"])
     for nombre, prueba in pruebas.items():
+        if a.solo and nombre not in a.solo:
+            continue
         try:
             resultado[nombre] = prueba()
             print(nombre, json.dumps(resultado[nombre], ensure_ascii=False)[:600])

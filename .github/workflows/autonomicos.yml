@@ -1,0 +1,86 @@
+name: Boletines autonómicos
+
+# Boletines de las comunidades con conector: Andalucía (BOJA), Madrid (BOCM), Castilla y León (BOCYL),
+# Comunitat Valenciana (DOGV), Galicia (DOG) y Cataluña (DOGC). Va aparte del flujo del BOE para no
+# alargarlo; los dos escriben en la rama «datos» en carpetas distintas y la subida reintenta si choca.
+# Una vez al día; la carga histórica y los textos avanzan unos minutos en cada ejecución.
+
+on:
+  schedule:
+    - cron: "17 7 * * *"   # 08:17 / 09:17 en Madrid según horario
+  workflow_dispatch:
+    inputs:
+      minutos:
+        description: "Minutos máximos por conector para la carga histórica y, aparte, para los textos"
+        default: "3"
+      conectores:
+        description: "Conectores, separados por espacios"
+        default: "boja bocm bocyl dogv dog dogc"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: autonomicos
+  cancel-in-progress: false
+
+jobs:
+  autonomicos:
+    runs-on: ubuntu-latest
+    timeout-minutes: 340
+    env:
+      MINUTOS: ${{ inputs.minutos || '3' }}
+      CONECTORES: ${{ inputs.conectores || 'boja bocm bocyl dogv dog dogc' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Instalar y probar
+        run: |
+          pip install -e ".[dev]"
+          python -m pytest -q
+
+      - name: Preparar rama de datos
+        run: |
+          git config user.name "motor-datos"
+          git config user.email "motor-datos@users.noreply.github.com"
+          git fetch --depth 1 origin datos
+          git worktree add -B datos salida origin/datos
+          cat > guardar.sh <<'EOF'
+          #!/usr/bin/env bash
+          # Guarda y sube lo que haya cambiado. Si la subida choca con otra, reintenta tras rebase.
+          cd salida
+          git add -A
+          git diff --cached --quiet && exit 0
+          git commit -qm "$1"
+          for i in 1 2 3 4 5; do
+            git push -q origin datos && exit 0
+            sleep $((i * 5))
+            git fetch -q --depth 100 origin datos && git rebase -q origin/datos || { git rebase --abort; exit 1; }
+          done
+          exit 1
+          EOF
+          chmod +x guardar.sh
+
+      - name: Conectores
+        run: bash infra/autonomicos.sh salida "$MINUTOS" "$CONECTORES" ./guardar.sh
+
+      - name: Resumen
+        if: always()
+        run: |
+          python - <<'EOF' >> "$GITHUB_STEP_SUMMARY"
+          import json, pathlib
+          base = pathlib.Path("salida/datos/autonomicos")
+          print("| Boletín | Días o meses con informe | Anuncios de empleo público | Textos |")
+          print("|---|---|---|---|")
+          for b in sorted(p.name for p in base.iterdir() if p.is_dir()) if base.exists() else []:
+              d = base / b
+              informes = len(list((d / "dias").rglob("*.json"))) + len(list((d / "meses").rglob("*.json"))) + \
+                  len(list((d / "boletines").rglob("*.json")))
+              empleo = sum(1 for f in (d / "oposiciones").rglob("*.jsonl") for l in f.open(encoding="utf-8") if l.strip())
+              textos = len(list((d / "textos").rglob("*.json")))
+              print(f"| {b} | {informes} | {empleo} | {textos} |")
+          EOF

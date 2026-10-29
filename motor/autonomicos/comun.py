@@ -128,7 +128,7 @@ def escribir_json(ruta: Path, datos: dict) -> None:
 def descargar_textos(pendientes: list[dict], destino: Callable[[dict], Path], url: Callable[[dict], str],
                      extraer: Callable[[bytes], dict], archivo: Archivo, fuente: str, max_minutos: float,
                      pausa: float, accept: str = "application/xml", ext: str = "xml",
-                     formulario: Callable[[dict], dict] | None = None) -> tuple[int, int]:
+                     formulario: Callable[[dict], dict] | None = None, sesion=None) -> tuple[int, int]:
     """Descarga y limpia los textos de la lista. Devuelve (hechos, errores). Reanudable: lo hecho queda escrito.
 
     formulario: para las API que piden el documento por POST, los campos de cada petición.
@@ -139,7 +139,7 @@ def descargar_textos(pendientes: list[dict], destino: Callable[[dict], Path], ur
             break
         u = url(x)
         try:
-            r = obtener(u, accept=accept) if formulario is None else obtener(u, accept=accept, formulario=formulario(x))
+            r = obtener(u, accept=accept, formulario=formulario(x) if formulario else None, sesion=sesion)
         except ConnectionError:
             errores += 1
             continue

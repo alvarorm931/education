@@ -1,10 +1,11 @@
 name: Motor de datos
 
-# Un solo flujo, dos veces al día (el BOE sale de madrugada; la segunda pasada recoge extraordinarios y
-# reintentos). Cada paso tiene su tiempo máximo. Todo es reanudable: si una ejecución falla o se cancela,
-# la siguiente recupera lo que faltó (días sin procesar, textos pendientes, boletines pendientes).
+# BOE dos veces al día (sale de madrugada; la segunda pasada recoge extraordinarios y reintentos).
+# Los boletines autonómicos van en su propio flujo (autonomicos.yml).
+# Cada paso tiene su tiempo máximo. Todo es reanudable: si una ejecución falla o se cancela, la siguiente
+# recupera lo que faltó (días sin procesar, textos pendientes).
 # Presupuesto: GitHub Free incluye 2.000 minutos al mes en repositorios privados; este flujo está pensado para
-# quedarse en torno a 30-40 minutos al día. Las cargas históricas grandes van al servidor propio.
+# quedarse en torno a 20-30 minutos al día. Las cargas históricas grandes van al servidor propio.
 
 on:
   schedule:
@@ -15,9 +16,6 @@ on:
       minutos_textos:
         description: "Minutos máximos para textos del BOE"
         default: "10"
-      minutos_autonomicos:
-        description: "Minutos máximos para boletines autonómicos"
-        default: "5"
 
 permissions:
   contents: write
@@ -32,7 +30,6 @@ jobs:
     timeout-minutes: 355
     env:
       MIN_TEXTOS: ${{ inputs.minutos_textos || '10' }}
-      MIN_AUTONOMICOS: ${{ inputs.minutos_autonomicos || '5' }}
     steps:
       - uses: actions/checkout@v4
 
@@ -88,24 +85,6 @@ jobs:
             ./guardar.sh "BOE: textos de anuncios"
             grep -q "Documentos a descargar: 0" tanda.txt && break
           done
-
-      - name: BOJA (Andalucía)
-        run: |
-          Y=$(TZ=Europe/Madrid date +%Y)
-          # Originales: solo huella hasta tener almacén externo (R2); la API permite volver a pedirlos.
-          python -m motor.autonomicos.boja --desde-anio "$Y" --hasta-anio "$Y" --sin-guardar-original --salida salida --max-minutos 8 | tail -n 5 || true
-          ./guardar.sh "BOJA: año en curso"
-          python -m motor.autonomicos.boja --desde-anio 2022 --hasta-anio $((Y-1)) --sin-guardar-original \
-            --salida salida --max-minutos "$MIN_AUTONOMICOS" | tail -n 5 || true
-          ./guardar.sh "BOJA: carga histórica"
-
-      - name: BOCM (Madrid)
-        run: |
-          python -m motor.autonomicos.bocm --salida salida | tail -n 3 || true
-          python -m motor.autonomicos.bocm --desde 2022-01-01 --saltar-existentes --salida salida --max-minutos "$MIN_AUTONOMICOS" | tail -n 3 || true
-          ./guardar.sh "BOCM: boletines"
-          python -m motor.autonomicos.bocm --textos --salida salida --max-minutos "$MIN_AUTONOMICOS" | tail -n 2 || true
-          ./guardar.sh "BOCM: textos de empleo público"
 
       - name: Extraer actos y comprobar huecos
         run: |
