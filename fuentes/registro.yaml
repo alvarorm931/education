@@ -78,11 +78,57 @@ fuentes:
   - id: ruct
     nombre: RUCT · Registro de Universidades, Centros y Títulos
     modulo: [carreras, masters]
-    url: https://www.educacion.gob.es/ruct/estudio.action?codigoCiclo=SC&codigoTipo=G&CodigoEstudio={CODIGO}&actual=estudios
+    url: https://www.educacion.gob.es/ruct/estudio.action?codigoCiclo=SC&codigoTipo={G|M}&CodigoEstudio={CODIGO}&actual=estudios
     metodo: html
-    identificador: código de título de 7 cifras
-    riesgo: cambio de dominio de la sede del Ministerio
+    identificador: código de título de 7 cifras; memoria con código de 17 cifras (título + fecha + orden)
+    da: >-
+      ficha (créditos por tipo, fechas, BOE del acuerdo y del plan, CCAA, extinción, acreditaciones, centros,
+      histórico de memorias) y memoria vigente (profesión regulada, conjunto, plazas por centro y modalidad,
+      idiomas, acceso y admisión, módulos, materias y asignaturas con ECTS y semestre; en memorias del
+      formato RD 1393/2007, horas por actividad y ponderación mínima y máxima de la evaluación por materia)
+    sesion: las páginas de la memoria dependen de la cookie de sesión; recorrer cada memoria en orden
+    coste: 1 petición por ficha; 15-150 por memoria
+    riesgo: cambio de dominio de la sede; caídas intermitentes vistas desde GitHub el 29/10/2026
     estado: verificada
+    conector: motor/estudios/ruct.py
+    verificado: 2026-10-29
+
+  - id: siiu-clasificaciones
+    nombre: Ministerio · Clasificaciones estadísticas universitarias (SIIU)
+    modulo: [carreras, masters]
+    url: https://www.ciencia.gob.es/Ministerio/Estadisticas/SIIU/Clasificaciones.html
+    metodo: xlsx_anual
+    da: >-
+      catálogo de todos los títulos oficiales (código RUCT) por centro con situación, presencialidad e
+      idioma; rama, campo e ISCED; centros con código de 8 cifras y municipio; universidades
+    frecuencia: anual (curso 2025-2026 a fecha febrero de 2026); enlaces nuevos cada año
+    licencia: estadística oficial; citar «Ministerio de Ciencia, Innovación y Universidades. SIIU»
+    uso: universo de másters oficiales (simples y dobles, códigos 75xxxxx) y modalidad por centro
+    estado: verificada
+    conector: motor/estudios/catalogo.py
+    verificado: 2026-10-29
+
+  - id: boe-masters
+    nombre: BOE · planes de estudios y acuerdos de carácter oficial de másters
+    modulo: [masters]
+    url: sumario diario del BOE (sección III, Universidades; acuerdos del Consejo de Ministros)
+    metodo: filtro del sumario ya capturado + texto XML de cada disposición
+    da: altas de títulos con código RUCT; tablas del plan (nivel desigual por universidad)
+    medido: >-
+      100 planes 2022-2026 al azar: 95 con tablas de créditos, 46 con nombre de asignatura, 51 con periodo,
+      16 sin filas extraíbles. Se usa como fuente oficial y control; la estructura sale del RUCT
+    estado: verificada
+    conector: motor/estudios/boe_masters.py
+
+  - id: tarifas-privadas
+    nombre: Tarifas de máster de las universidades privadas (PDF en su web)
+    modulo: [masters]
+    metodo: pdf por universidad, captura anual
+    ejemplos: >-
+      Universidad Europea de Andalucía (9 másteres, reserva y docencia), Universidad Alfonso X (unos 33),
+      Universidad Francisco de Vitoria (27, con 6 títulos propios)
+    aviso: el «precio a efectos de beca» que publican algunas (UDIMA, 28 €/ECTS) no es el precio de venta
+    estado: sin_fuente_central
 
   - id: qedu
     nombre: QEDU · Qué estudiar y dónde en la universidad

@@ -28,7 +28,7 @@ from collections import Counter
 from pathlib import Path
 
 CITA = "Fuente: Agencia Estatal Boletín Oficial del Estado"
-RE_UNIV = re.compile(r",\s+de\s+(?:la\s+)?(Universi[^,]+?|Mondragon[^,]*|IE Universidad|CUNEF[^,]*|ESIC[^,]*),\s+por la que", re.I)
+RE_UNIV = re.compile(r"\b(Universi(?:dad|tat|dade)\b.*?|Mondragon.*?|IE Universidad|CUNEF.*?|ESIC.*?)\s*,?\s+por la\b", re.I)
 RE_TITULO = re.compile(r"(M[áa]ster Universitario en .+?)(?:\.\s*$|, de la Universidad|$)")
 RE_ALTA = re.compile(r"^\s*(\d{7})\s+(M[áa]ster Universitario .+?)\.?\s*$")
 
