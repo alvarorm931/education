@@ -13,9 +13,8 @@ on:
 permissions:
   contents: write
 
-concurrency:
-  group: rama-sondas
-  cancel-in-progress: false
+# Sin grupo de concurrencia: varias sondas pueden correr a la vez (otras conversaciones también las usan).
+# Cada una escribe en su propia carpeta con fecha y hora; si la subida choca, se reintenta sobre lo último.
 
 jobs:
   sonda:
@@ -55,4 +54,14 @@ jobs:
             cat "$STAMP/$i.estado.txt"
             sleep 1
           done
-          git add -A && git commit -qm "Sonda $STAMP" && git push -q origin sondas
+          cp -r "$STAMP" "../$STAMP"
+          git add -A && git commit -qm "Sonda $STAMP"
+          for intento in 1 2 3 4 5 6; do
+            git push -q origin HEAD:sondas && exit 0
+            sleep $((intento * 4))
+            git fetch -q --depth 1 origin sondas
+            git checkout -q --detach FETCH_HEAD
+            cp -r "../$STAMP" .
+            git add -A && git commit -qm "Sonda $STAMP"
+          done
+          exit 1
