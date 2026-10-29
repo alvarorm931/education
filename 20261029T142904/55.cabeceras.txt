@@ -1,0 +1,41 @@
+HTTP/1.1 307 307
+Date: Thu, 29 Oct 2026 14:39:52 GMT
+Server: Apache
+Location: https://bop.dipgra.es
+Connection: close
+Content-Type: text/html;charset=UTF-8
+Content-Length: 0
+
+HTTP/1.1 301 
+Date: Thu, 29 Oct 2026 14:39:53 GMT
+Server: Apache
+Location: /publica/
+Content-Type: text/html;charset=UTF-8
+Content-Length: 0
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: GET, POST, OPTIONS
+Access-Control-Allow-Headers: Content-Type, Authorization
+
+HTTP/1.1 302 
+Date: Thu, 29 Oct 2026 14:39:53 GMT
+Server: Apache
+Location: /publica/consulta-de-bops/
+Content-Type: text/html;charset=UTF-8
+Content-Length: 0
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: GET, POST, OPTIONS
+Access-Control-Allow-Headers: Content-Type, Authorization
+
+HTTP/1.1 200 
+Date: Thu, 29 Oct 2026 14:39:53 GMT
+Server: Apache
+Last-Modified: Thu, 29 Oct 2026 14:39:53 GMT
+Cache-Control: public, max-age=0
+Content-Type: text/html;charset=UTF-8
+Content-Length: 55297
+Set-Cookie: JSESSIONID=4F80341C651FDA1C533BC33095856F2B; Path=/; Secure; HttpOnly
+Vary: Accept-Encoding
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: GET, POST, OPTIONS
+Access-Control-Allow-Headers: Content-Type, Authorization
+

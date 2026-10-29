@@ -1,0 +1,598 @@
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
+
+<head>
+<title>BOCYL | BOLETÍN OFICIAL DE CASTILLA Y LEÓN</title>
+<meta http-equiv="Content-Script-Type" content="text/javascript" /> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="Junta de Castilla y León" />
+<meta name="description" content="Consulta del BOCYL, Boletín Oficial de Castilla y Léon. Las ediciones electrónicas del BOCYL posteriores al 1 de enero de 2010 que se publiquen en este portal, tienen plena validez jurídica." />
+<meta name="keywords" content="bocyl boletín oficial castilla león junta consejería presidencia bocyl boletin oficial castilla leon junta informacion publicar asunto documento legislacion" />
+<meta name="language" content="es" />
+<meta name="robots" content="" />
+
+<link href="https://bocyl.jcyl.es/css/bocyl.css" rel="stylesheet" type="text/css" />
+
+<!--[if IE]>
+<link rel="stylesheet" href="https://bocyl.jcyl.es/css/ie.css" type="text/css" />
+<![endif]-->
+<!--[if IE 6]>
+    <script src="https://bocyl.jcyl.es/js/DD_belatedPNG.js"></script>
+    <script>
+          DD_belatedPNG.fix('#sombraSup,.izq,.der,#sombraInf,.izq,.der,#sombraIzq,#sombraDer,.alta a,.baja a,.modificacion a'); //botones inicio y contacto
+    </script>
+<![endif]-->
+ <meta name="google-site-verification" content="Ts7BQ0wMFQ6Kbj5tSvDigjLnByr-__mh4_Si5Be7utI" />
+</head>
+<body>
+<a href="#contenido" class="skip">Saltar al contenido</a>
+<div id="total">
+<div id="sombraSup">
+	<span class="izq">&nbsp;</span>
+	<span class="der">&nbsp;</span>
+</div>
+<div id="sombraIzq">
+<div id="sombraDer">
+<div id="contenedor">
+<div id="cabecera">
+
+
+
+
+
+<a href="https://www.jcyl.es" title="Página de inicio de la Web principal de la Junta de Castilla y León"><img src="https://bocyl.jcyl.es/img/logo_jcyl.png" id="logo" alt="Página de inicio de la Web principal de la Junta de Castilla y León"/></a>
+<h1>
+	<a href="https://bocyl.jcyl.es/" title="Página de inicio del Boletín Oficial de Castilla y León">Boletín Oficial<span> de Castilla y León</span></a>
+</h1>
+
+
+
+</div>
+<div id="menu">
+
+
+
+
+
+<ul>
+    <li><a href="/portada.do" accesskey="c"><span class="spanInicio">Inicio</span></a></li>
+    <li><a href="/busquedaCampos.do" accesskey="b">Búsqueda <span>avanzada</span></a></li>
+    <li><a href="/codigoVerificacion.do" accesskey="v">Verificación <span>de documentos</span></a></li>
+    <li><a href="/menuSuscripcion.do" accesskey="r">Recibir avisos <span>de publicación</span></a></li>
+</ul>
+<ul class="enlaces">
+    <li><a href="/verInfoGeneral.do" accesskey="i">Información general</a></li>
+    <li><a href="https://servicios.jcyl.es/pboc/" target="_blank" title="Sistema de tramitación electrónica (se abre en ventana nueva)">Publicar a través del Sistema de Tramitación Electrónica</a></li>
+    <li><a href="/verComoPublicar.do" accesskey="p">Publicar por personas físicas</a></li>
+    <li><a href="/eli/" accesskey="g">Identificador Europeo de Legislación</a></li>
+     
+</ul>
+
+</div>
+
+
+ 
+
+
+     
+
+
+
+<div id="contenido">
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  	
+  	
+		
+		
+		
+	
+
+<div class="bloqueIzq">
+
+	<div class="acceso">
+		
+			<p>
+
+<a href="boletin.do?fechaBoletin=29/10/2026" accesskey="u">		
+		Último boletín publicado		
+</a>
+			
+			
+			</p>
+			
+			
+		</div>
+		
+		<div class="busqueda">
+			
+			<form id="busquedaCamposForm" method="post" action="/busquedaTitulo;jsessionid=6E38A1B9836178ED4BCFA8C587EF8E89" class="niceform">
+				<input type="hidden" name="hiddenAccion" value="Buscar" />
+				<input type="hidden" name="esPortada" value="true" />
+			    <label class="labelPortada" for="idBusqueda">Búsqueda simple por título<span>(últimos 12 meses)</span></label>
+			    <span class="tsBorder"><span><span><span><input type="text" name="titulo" value="" id="idBusqueda" /></span></span></span></span>
+			    <span class="boton"><input type="submit" name="boton" value="Buscar" class="buscar" title="Pulsar para buscar el título introducido" /></span>
+			    <span class="boton floatRight"><input type="reset" name="boton" value="Limpiar" class="limpiar" title="Pulsar para eliminar el título introducido" /></span>
+			</form>
+		</div>
+	</div>
+	<div class="bloqueDer">
+	    <!--  mj julio2013 -->
+		<!-- h2>Búsqueda por calendario</h2-->
+		<fieldset><legend>Búsqueda por calendario</legend>
+			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<form id="busquedaCambioCalendarioForm" method="post" action="/portada;jsessionid=6E38A1B9836178ED4BCFA8C587EF8E89" class="niceform">
+<div class="calendario">
+	
+
+        	<div class="izq">
+				<label class="labelPortada" for="month">Mes</label>
+				<select name="mesSeleccionado" id="month" class="ancho8"><option value="0">Enero</option>
+					<option value="1">Febrero</option>
+					<option value="2">Marzo</option>
+					<option value="3">Abril</option>
+					<option value="4">Mayo</option>
+					<option value="5">Junio</option>
+					<option value="6">Julio</option>
+					<option value="7">Agosto</option>
+					<option value="8">Septiembre</option>
+					<option value="9" selected="selected">Octubre</option>
+					<option value="10">Noviembre</option>
+					<option value="11">Diciembre</option></select>
+            </div>
+            <div class="der">
+				<label class="labelPortada" for="year">Año</label>
+				<select name="annoSeleccionado" id="year" class="ancho5"><optgroup label="Después del 2000">		
+								
+								<option value="2026" selected="selected">2026</option>
+							
+								
+								<option value="2025">2025</option>
+							
+								
+								<option value="2024">2024</option>
+							
+								
+								<option value="2023">2023</option>
+							
+								
+								<option value="2022">2022</option>
+							
+								
+								<option value="2021">2021</option>
+							
+								
+								<option value="2020">2020</option>
+							
+								
+								<option value="2019">2019</option>
+							
+								
+								<option value="2018">2018</option>
+							
+								
+								<option value="2017">2017</option>
+							
+								
+								<option value="2016">2016</option>
+							
+								
+								<option value="2015">2015</option>
+							
+								
+								<option value="2014">2014</option>
+							
+								
+								<option value="2013">2013</option>
+							
+								
+								<option value="2012">2012</option>
+							
+								
+								<option value="2011">2011</option>
+							
+								
+								<option value="2010">2010</option>
+							
+								
+								<option value="2009">2009</option>
+							
+								
+								<option value="2008">2008</option>
+							
+								
+								<option value="2007">2007</option>
+							
+								
+								<option value="2006">2006</option>
+							
+								
+								<option value="2005">2005</option>
+							
+								
+								<option value="2004">2004</option>
+							
+								
+								<option value="2003">2003</option>
+							
+								
+								<option value="2002">2002</option>
+							
+								
+								<option value="2001">2001</option>
+							
+								
+								<option value="2000">2000</option>
+							
+								
+									</optgroup>
+									<optgroup label="Antes del 2000">
+								
+								<option value="1999">1999</option>
+							
+								
+								<option value="1998">1998</option>
+							
+								
+								<option value="1997">1997</option>
+							
+								
+								<option value="1996">1996</option>
+							
+								
+								<option value="1995">1995</option>
+							
+								
+								<option value="1994">1994</option>
+							
+								
+								<option value="1993">1993</option>
+							
+								
+								<option value="1992">1992</option>
+							
+								
+								<option value="1991">1991</option>
+							
+								
+								<option value="1990">1990</option>
+							
+								
+								<option value="1989">1989</option>
+							
+								
+								<option value="1988">1988</option>
+							
+								
+								<option value="1987">1987</option>
+							
+								
+								<option value="1986">1986</option>
+							
+								
+								<option value="1985">1985</option>
+							
+								
+								<option value="1984">1984</option>
+							
+								
+								<option value="1983">1983</option>
+							
+								
+								<option value="1982">1982</option>
+							
+								
+								<option value="1981">1981</option>
+							
+								
+								<option value="1980">1980</option>
+							
+								
+								<option value="1979">1979</option>
+							
+							</optgroup></select>
+             </div>
+             <div class="der">
+             <span class="boton">
+             <input type="submit" name="boton" value="Buscar" class="buscar" title="Pulsar para refrescar el calendario según el mes/año especificados" /></span>
+            
+             </div>
+        <!--</form>-->  
+		
+				
+	</div>
+
+
+
+	<div class="mes">
+			<!--<form id="busquedaCambioCalendarioForm" method="post" action="/portada;jsessionid=6E38A1B9836178ED4BCFA8C587EF8E89" class="niceform">-->
+			<div class="barraSup">
+				
+				
+				<!--09/08/2017 Añadir ul e li por accesibilidad -->
+				<ul>
+					<li>
+						<!-- mj julio-2013: cambio 'p' por 'div class' para que muestre mes y año en el centro de la barra -->
+				 		<div class="barraMes">octubre 2026</div>
+						
+					</li>
+					<li>	
+						<span><a href='portada.do?m=9&amp;an=2025' class="flechaAnioAnterior" title="Ir al año anterior"><img src="https://bocyl.jcyl.es/img/flechaAnyoAnterior.png" alt="Ir al año anterior" /></a></span>
+					</li>
+					<li>	
+						<span><a href='portada.do?m=8&amp;an=2026' class="flechaMesAnterior" title="Ir al mes anterior"><img src="https://bocyl.jcyl.es/img/flechaMesAnterior.png" alt="Ir al mes anterior" /></a></span>
+					</li>
+						
+				
+					<li>
+						<span><a href="#" class="flechaMesSiguiente" title="Ir al mes siguiente (deshabilitado)"><img src="https://bocyl.jcyl.es/img/flechaMesSiguiente.png" alt="Ir al mes siguiente (deshabilitado)" /></a></span>
+					</li>				
+				
+				
+					<li>
+						<span><a href="#" class="flechaAnioSiguiente" title="Ir al año siguiente (deshabilitado)"><img src="https://bocyl.jcyl.es/img/flechaAnyoSiguiente.png" alt="Ir al año siguiente (deshabilitado)" /></a></span>
+					</li>				
+				
+				</ul>
+			</div>
+			<div class="pintaBorde">
+			
+			<table summary="Octubre Calendario Mensual. La primera fila contiene los días de la semana y las filas siguientes, una por semana, contienen los días de Lunes a Domingo." >
+				<thead>
+					<tr>
+						<th class="centb2" scope="col"><abbr title="Lunes">L</abbr></th>
+						<th class="centb2" scope="col"><abbr title="Martes">M</abbr></th>
+						<th class="centb2" scope="col"><abbr title="Miercoles">X</abbr></th>
+						<th class="centb2" scope="col"><abbr title="Jueves">J</abbr></th>
+						<th class="centb2" scope="col"><abbr title="Viernes">V</abbr></th>
+						<th class="centb2" scope="col"><abbr title="Sabado">S</abbr></th>
+						<th class="centb2" scope="col"><abbr title="Domingo">D</abbr></th>
+					</tr>
+				</thead>
+	<tbody>
+	
+   	<tr>
+	
+	
+	
+
+			<td scope="row"></td>
+
+		<td></td>
+
+		<td></td>
+
+		<td><a href="boletin.do?fechaBoletin=01/10/2026" title="Seleccionar día 1">1</a></td>
+		
+		<td><a href="boletin.do?fechaBoletin=02/10/2026" title="Seleccionar día 2">2</a></td>
+		
+		<td>3</td>
+		
+		<td>4</td>
+		
+</tr>
+
+<tr>
+
+		<td scope="row"><a href="boletin.do?fechaBoletin=05/10/2026" title="Seleccionar día 5">5</a></td>
+		
+		<td><a href="boletin.do?fechaBoletin=06/10/2026" title="Seleccionar día 6">6</a></td>
+		
+		<td><a href="boletin.do?fechaBoletin=07/10/2026" title="Seleccionar día 7">7</a></td>
+		
+		<td><a href="boletin.do?fechaBoletin=08/10/2026" title="Seleccionar día 8">8</a></td>
+		
+		<td><a href="boletin.do?fechaBoletin=09/10/2026" title="Seleccionar día 9">9</a></td>
+		
+		<td>10</td>
+		
+		<td>11</td>
+		
+</tr>
+
+<tr>
+
+		<td>12</td>
+		
+		<td><a href="boletin.do?fechaBoletin=13/10/2026" title="Seleccionar día 13">13</a></td>
+		
+		<td><a href="boletin.do?fechaBoletin=14/10/2026" title="Seleccionar día 14">14</a></td>
+		
+		<td><a href="boletin.do?fechaBoletin=15/10/2026" title="Seleccionar día 15">15</a></td>
+		
+		<td><a href="boletin.do?fechaBoletin=16/10/2026" title="Seleccionar día 16">16</a></td>
+		
+		<td>17</td>
+		
+		<td>18</td>
+		
+</tr>
+
+<tr>
+
+		<td scope="row"><a href="boletin.do?fechaBoletin=19/10/2026" title="Seleccionar día 19">19</a></td>
+		
+		<td><a href="boletin.do?fechaBoletin=20/10/2026" title="Seleccionar día 20">20</a></td>
+		
+		<td><a href="boletin.do?fechaBoletin=21/10/2026" title="Seleccionar día 21">21</a></td>
+		
+		<td><a href="boletin.do?fechaBoletin=22/10/2026" title="Seleccionar día 22">22</a></td>
+		
+		<td><a href="boletin.do?fechaBoletin=23/10/2026" title="Seleccionar día 23">23</a></td>
+		
+		<td>24</td>
+		
+		<td>25</td>
+		
+</tr>
+
+<tr>
+
+		<td scope="row"><a href="boletin.do?fechaBoletin=26/10/2026" title="Seleccionar día 26">26</a></td>
+		
+		<td><a href="boletin.do?fechaBoletin=27/10/2026" title="Seleccionar día 27">27</a></td>
+		
+		<td><a href="boletin.do?fechaBoletin=28/10/2026" title="Seleccionar día 28">28</a></td>
+		
+		<td class="diaActual"><a href="boletin.do?fechaBoletin=29/10/2026" title="Seleccionar día 29">29</a></td>
+		
+		<td>30</td>
+		
+		<td>31</td>
+		
+<td ></td>
+
+    </tr>
+
+</tbody>
+</table>
+</div>
+</div>
+</form>
+
+	
+		</fieldset>
+        <div class="boletin">
+        
+      		<!--  mj julio2013 -->
+			<!-- h2>Acceso al boletín de fecha</h2-->
+			<fieldset><legend>Acceso al boletín de fecha</legend>
+
+				
+				<form id="busquedaBoletinFechaForm" method="post" action="/boletinFecha;jsessionid=6E38A1B9836178ED4BCFA8C587EF8E89" class="niceform">
+					<input type="hidden" name="hiddenAccion" value="Buscar" />
+					<label for="dd">dd/mm/aaaa</label>
+					<span class="tsBorder"><span><span><span><input type="text" name="boletinFecha" value="" id="dd" /></span></span></span></span>
+					 	<div class="botones">
+							<span class="boton"><input type="submit" name="botonBusquedaFecha" value="Buscar" class="buscar" title="Pulsar para acceder al boletín de fecha especificada" /></span>
+							<span class="boton floatRight"><input type="reset" name="boton" value="Limpiar" class="limpiar" title="Pulsar para eliminar la fecha de boletín especificada" /></span>
+						</div>					
+				</form>
+			</fieldset>			
+		</div>
+	</div>
+</div>
+<div id="pie">
+</div>
+</div>
+</div>
+</div>
+<div id="sombraInf">
+	<span class="izq">&nbsp;</span>
+   	<span class="der">&nbsp;</span>
+</div>
+
+<div class="info">
+
+
+
+
+
+
+
+
+<ul class="ulCert">
+	<li><a class="certAA" title="Certificación Accesibilidad" href="https://cdn1-www.bureauveritas.es/sites/g/files/zypfnx391/files/media/document/25815885-texto_certificacion_accesibilidad_JuntaCyL-ok.pdf" target="_blank">
+	<img alt="Certificación Accesibilidad WCAG-WAI AA 2.1 (abre en nueva ventana)" src="https://bocyl.jcyl.es/img/sello_bureau_veritas.png" />
+	</a></li>
+	
+
+	<!-- junio 2020: 2 nuevos enlaces -->
+	<li><a class="certAA" title="Legislación actualizada a diario, con textos consolidados antes de 3 días laborables desde su publicación" href="https://www.dataley.es/content/Legislacion.aspx?params=H4sIAAAAAAAEACstTi2yDQ8PCQyP8LQMDlYrSCwuLrc18HA3NfRSyyx2LCgoyi9LTbE1MjAyMDAzMDU0NDQFACVGrDY0AAAAWKE" target="_blank">
+	<img alt="Acceso a Legislación Consolidada (abre en nueva ventana)" src="https://bocyl.jcyl.es/img/LegislacionCon.png" />
+	</a></li>
+
+	<li><a class="certAA" title="Acceso a Datos Abiertos BOCyL" href="https://datosabiertos.jcyl.es/web/jcyl/set/es/sector-publico/bocyl/1284948181134" target="_blank">
+	<img alt="Acceso a Datos Abiertos BOCyL (abre en nueva ventana)" src="https://bocyl.jcyl.es/img/OpenData.png" />
+	</a></li>
+
+</ul>
+
+
+
+<ul>
+	<li><a href="/indiceRss.do" class="rss">RSS</a></li>
+	<li><a href="https://bocyl.jcyl.es/boletines/2022/11/18/pdf/BOCYL-D-18112022-30.pdf" target="_blank">Carta de servicios</a></li>
+	<li><a href="/verMovil.do">Móviles y PDAs</a></li>
+	<li><a href="/verAyuda.do" accesskey="a">Ayuda del sitio</a></li>
+	<li><a href="/contacto.do" accesskey="z">Contacto</a></li>
+	<li><a href="/mapa.do" accesskey="m">Mapa del sitio</a></li>
+	<li><a href="/verAccesibilidad.do">Accesibilidad</a></li>
+	<li><a href="/verAvisoLegal.do">Aviso legal</a></li>
+</ul>
+
+</div>
+</div>
+
+
+<html:xhtml />
+
+<!-- Matomo -->
+<script type="text/javascript">
+
+  var _paq = window._paq = window._paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="https://servicios.jcyl.es/matomo/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '13']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- FIN Matomo Code -->
+
+
+</body>
+</html>

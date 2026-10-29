@@ -1,0 +1,246 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Diario Oficial de Extremadura</title>
+
+<link href="css/body_A.css" rel="stylesheet" type="text/css" /> 
+<link href="css/doe_default.css" rel="stylesheet" type="text/css" /> 
+<link href="css/sumario_default.css" rel="stylesheet" type="text/css" />
+<link href="/css/calendario.css" rel="stylesheet" type="text/css" />
+
+<link rel="alternate" title="Disposiciones Estatales" href="/rss/rss.php?seccion=0" type="application/rss+xml" />
+<link rel="alternate" title="Disposiciones Generales" href="/rss/rss.php?seccion=1" type="application/rss+xml" />
+<link rel="alternate" title="Autoridades y Personal" href="/rss/rss.php?seccion=2" type="application/rss+xml" />
+<link rel="alternate" title="Otras Resoluciones" href="/rss/rss.php?seccion=3" type="application/rss+xml" />
+<link rel="alternate" title="Administracion de Justicia" href="/rss/rss.php?seccion=4" type="application/rss+xml" />
+<link rel="alternate" title="Anuncios" href="/rss/rss.php?seccion=5" type="application/rss+xml" /> 
+
+<link rel="shortcut icon" type="image/x-icon" href="/img/logo.png" />
+
+</head>
+<body>
+
+<script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+<script type="text/javascript">
+
+function googleTranslateElementInit() {
+	new google.translate.TranslateElement({pageLanguage: 'es', includedLanguages: 'pt-PT,en,es', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, gaTrack: true}, 'google_translate_element');
+        }
+</script> 
+<script src="https://code.jquery.com/jquery-latest.js"></script>
+   <script src="../divisores/menu.js"></script>
+    <div class="container">
+	 
+	<h1 class="oculto">Junta de Extremadura	</h1> 
+	<h2 class="oculto">Página Web del Diario Oficial de Extremadura	</h2>
+	<h3 class="oculto">Ultimos Diarios Oficiales</h3>
+
+   <span class="translate" id="google_translate_element"></span>
+    <span class="avisoPortu"> AVISO: La traducción a inglés y portugués deriva de un proceso automático con carácter informativo. </span>
+        <div class="contenedor">
+	<div class="header"> 
+        	
+        
+        <hr class="cab">    	
+           
+        <div class="colCab1"><img  class="cab1" src="/img/DOE_logo.png" alt="Logo DOE" /></div> 
+        <div class="colCab2"><img class="cab2" src="/img/JUNTA_doslineas_con_bandera.png" alt="Logo DOE" /></div>     
+        
+		</div>
+   
+	    <div class="menu_mvl"><img class="imgMenu" src="/img/menu.png" alt="Menu" width="40em" height="40em" /></div> 
+       <hr>
+	<div class="izda">
+        	 <h3 class="oculto">Menú principal</h3>
+              	
+<nav class="menu" id="menuIzq">
+<div>
+<img class="xtbl"  src="/img/int.png" alt="Icono" />
+<span class="opcionmenu" >B&uacute;squeda </span>
+</div>
+
+<div class="xtbl">
+<img class="punto"  src="/img/punto.png" alt="Icono" />
+<a class="subm" href="/index.php" title="Búsqueda por Calendario" accesskey="d">Calen<span class="atajo">d</span>ario</a>
+</div>
+
+
+<div class="xtbl">
+<img class="punto"  src="/img/punto.png" alt="Icono" />
+<a class="subm" href="/busquedas/bus_avanzada.php" title="Búsqueda avanzada" accesskey="a"><span class="atajo">A</span>vanzada</a>
+</div>
+<div >
+<img class="xtbl"  src="/img/publi.png" alt="Icono" />
+<a class="menu" href="/pub/publicar.php" title="Publicar en el DOE" accesskey="l">Pub<span class="atajo">l</span>icar en DOE</a>
+</div>
+
+<div >
+<img class="xtbl"  src="/img/euro.png" alt="Icono" />
+<a class="menu" href="/tasasDoe/tasas.php" title="Tasas del DOE">Tasas del DOE</a>
+</div>
+<div class="xtbl">
+<img class="punto"  src="/img/punto.png" alt="Icono" />
+<a class="subm" href="/tasasDoe/calculartasas.php" title="Cálculo automático de tasa" accesskey="1">Cálculo de tasa</a>
+</div>
+<div>
+<img class="xtbl"  src="/img/autenticidad.png" alt="Icono" />
+<span class="opcionmenu" >Comprobar autenticidad</span>
+</div>
+
+<div class="xtbl">
+<img  class="punto"  src="/img/punto.png" alt="Icono" />
+<a class="subm" href="/firma/impresa.php" title="Comprobar autenticidad de una copia impresa" accesskey="i">De copia <span class="atajo">i</span>mpresa</a>
+</div>
+
+<div class="xtbl">
+<img  class="punto"  src="/img/punto.png" alt="Icono" />
+<a class="subm" href="/firma/pdf.php" title="Comprobar autenticidad de un PDF firmado" accesskey="o">De PDF firmad<span class="atajo">o</span></a>
+</div>
+
+
+<div >
+<img class="xtbl"  src="/img/candado.png" alt="Icono" />
+<a class="menu" href="https://www.juntaex.es/w/0624422" title="Derecho al olvido en búsquedas de internet" accesskey="2" >Derecho al olvido en búsquedas de internet</a>
+
+</div>
+
+<div >
+<img class="xtbl"  src="/img/lista.png" alt="Icono" />
+<a class="menu" href="/suscripciones/index.php" title="DOE a la carta" accesskey="c">DOE a la <span class="atajo">c</span>arta </a> 
+<span class="opcionmenu" >[NOVEDAD]</span>
+</div>
+
+  
+
+</nav>
+
+
+
+
+
+
+
+
+   
+	</div>
+     <div class="derecha">
+        	 <h3 class="oculto">Menú Derecha</h3>
+              	 <nav class="menuDer" id="menuDer">
+ <div>
+<img class="xtbl"  src="/img/suge.png" alt="Icono" />
+<a class="menu" href="mailto:doe@juntaex.es" title="Sugerencias" accesskey="g">Su<span class="atajo">g</span>erencias</a>
+</div>
+ <div >
+<img class="xtbl"  src="/img/cartaservicios.png" alt="Icono" />
+<a class="menu" href="/cartaservicios/cartaservicios.php" title="Carta de Servicios">Carta de Servicios</a> </div>
+
+<div>
+<img class="xtbl" src="/img/encuesta.png" alt="Icono" />
+<a class="menu" href="/encuesta/encuesta.php" title="Encuesta" accesskey="3">Danos tu opini&oacute;n </a> </div>
+
+
+<div>
+<img class="xtbl" alt="Icono" src="/img/consol.png" />
+<a class="menu" href="/consolidada/consolidadas.php" title="Consolidación Normativa" accesskey="n">Co<span class="atajo">n</span>solidación normativa</a> </div>
+
+
+<div>
+<img class="xtbl" alt="Icono" src="/img/otros_boletines.png" />
+<span class="opcionmenu" >Otros Boletines</span>
+</div>
+ 
+<div class="xtbl">
+<img class="punto" alt="Icono" src="/img/punto.png" />
+<a class="subm" href="https://www.boe.es" title="Boletin Oficial del Estado" accesskey="b"><span class="atajo">B</span>OE</a>
+</div>
+
+<div class="xtbl">
+<img  class="punto" alt="Icono" src="/img/punto.png" />
+<a class="subm" href="/enlaces/autonomicos.php" title="Diarios Autonomicos" accesskey="m">Auton&oacute;<span class="atajo">m</span>icos</a>
+</div>
+
+<div class="xtbl">
+<img  class="punto" alt="Icono" src="/img/punto.png" />
+<a class="subm" href="/enlaces/provinciales.php" title="Boletines Provinciales" accesskey="v">Pro<span class="atajo">v</span>inciales</a>
+</div>
+
+<div class="xtbl">
+<img  class="punto" alt="Icono" src="/img/punto.png" />
+<a class="subm" href="http://eur-lex.europa.eu/JOIndex.do?ihmlang=es" title="Diario de la Union Europea" accesskey="e">Uni&oacute;n <span class="atajo">E</span>uropea</a>
+</div>
+
+<div>
+<img  class="xtbl" alt="Icono" src="/img/tu_atencion.png" />
+<a class="menu" href="https://www.juntaex.es/tuatencion" title="Tu Atención" accesskey="4">Tu Atenci&oacute;n</a>
+</div>
+
+<div>
+<img  class="xtbl" alt="Icono" src="/img/directorio.png" />
+<a class="menu" href="/contacto/contacto.php" title="Contacto" accesskey="5">Contacto</a>
+</div>
+
+</nav>
+<div class="lineablanco"></div>
+<div class="lineablanco"></div>
+
+   
+    	</div> 
+        
+          <div class="Contenido_principal">
+        <div class="lineablanco"></div> 
+        <div class="lineablanco"></div> 
+         <div class="lineablanco"></div> 
+        <div class="mvl"><form name="calendario" action="index.php" method="post"><table class="collapse"><tr  class="nombremes" ><td class="nombremes" colspan="7"><label><select class="sel" name="messel" id="messel" onchange="javascript:document.calendario.submit();">
+  <option value="1" >Enero</option>
+  <option value="2" >Febrero</option>
+  <option value="3" >Marzo</option>
+  <option value="4" >Abril</option>
+  <option value="5" >Mayo</option>
+  <option value="6" >Junio</option>
+  <option value="7" >Julio</option>
+  <option value="8" >Agosto</option>
+  <option value="9" >Septiembre</option>
+  <option value="10" selected>Octubre</option>
+  <option value="11" >Noviembre</option>
+  <option value="12" >Diciembre</option>
+  </select></label> <label><select class="sel" name="aniosel" id="aniosel" onchange="javascript:document.calendario.submit();"><option value="2026" selected>2026</option><option value="2025" >2025</option><option value="2024" >2024</option><option value="2023" >2023</option><option value="2022" >2022</option><option value="2021" >2021</option><option value="2020" >2020</option><option value="2019" >2019</option><option value="2018" >2018</option><option value="2017" >2017</option><option value="2016" >2016</option><option value="2015" >2015</option><option value="2014" >2014</option><option value="2013" >2013</option><option value="2012" >2012</option><option value="2011" >2011</option><option value="2010" >2010</option><option value="2009" >2009</option><option value="2008" >2008</option><option value="2007" >2007</option><option value="2006" >2006</option><option value="2005" >2005</option><option value="2004" >2004</option><option value="2003" >2003</option><option value="2002" >2002</option><option value="2001" >2001</option><option value="2000" >2000</option><option value="1999" >1999</option><option value="1998" >1998</option><option value="1997" >1997</option><option value="1996" >1996</option><option value="1995" >1995</option><option value="1994" >1994</option><option value="1993" >1993</option><option value="1992" >1992</option><option value="1991" >1991</option><option value="1990" >1990</option><option value="1989" >1989</option><option value="1988" >1988</option><option value="1987" >1987</option><option value="1986" >1986</option><option value="1985" >1985</option><option value="1984" >1984</option><option value="1983" >1983</option><option value="1982" >1982</option><option value="1981" >1981</option><option value="1980" >1980</option></select></label></td></tr><tr class="semana"><td class="cdia">Lu</td><td class="cdia" >Ma</td><td class="cdia" >Mi</td><td class="cdia" >Ju</td><td class="cdia">Vi</td><td class="cdia">Sa</td><td class="cdia" >Do</td></tr><tr><td class="diavacio"><table class="cal"><tr><td>28</td></tr><tr><td>&nbsp;</td></tr><tr><td>&nbsp;</td></tr></table></td><td class="diavacio"><table class="cal"><tr><td>29</td></tr><tr><td>&nbsp;</td></tr><tr><td>&nbsp;</td></tr></table></td><td class="diavacio"><table class="cal"><tr><td>30</td></tr><tr><td>&nbsp;</td></tr><tr><td>&nbsp;</td></tr></table></td><td class="diacondoe"><table class="cal" align="center"><tr><td>1</td></tr><tr><td class="ord"><a  href="../ultimosdoe/mostrardoe.php?fecha=20261001&t=o" title="Diario Oficial del día 01 de OCTUBRE de 2026" >Ordinario</a></td></tr><tr><td>&nbsp;</td></tr></table></td><td class="diacondoe"><table class="cal" align="center"><tr><td>2</td></tr><tr><td class="ord"><a  href="../ultimosdoe/mostrardoe.php?fecha=20261002&t=o" title="Diario Oficial del día 02 de OCTUBRE de 2026" >Ordinario</a></td></tr><tr><td>&nbsp;</td></tr></table></td><td class="dia"><table class="cal" ><tr><td class="festivo">3</td></tr><tr><td>&nbsp;</td></tr><tr><td>&nbsp;</td></tr></table></td><td class="dia"><table class="cal" ><tr><td class="festivo">4</td></tr><tr><td>&nbsp;</td></tr><tr><td>&nbsp;</td></tr></table></td></tr><tr><td class="diacondoe"><table class="cal" align="center"><tr><td>5</td></tr><tr><td class="ord"><a  href="../ultimosdoe/mostrardoe.php?fecha=20261005&t=o" title="Diario Oficial del día 05 de OCTUBRE de 2026" >Ordinario</a></td></tr><tr><td>&nbsp;</td></tr></table></td><td class="diacondoe"><table class="cal" align="center"><tr><td>6</td></tr><tr><td class="ord"><a  href="../ultimosdoe/mostrardoe.php?fecha=20261006&t=o" title="Diario Oficial del día 06 de OCTUBRE de 2026" >Ordinario</a></td></tr><tr><td>&nbsp;</td></tr></table></td><td class="diacondoe"><table class="cal" align="center"><tr><td>7</td></tr><tr><td class="ord"><a  href="../ultimosdoe/mostrardoe.php?fecha=20261007&t=o" title="Diario Oficial del día 07 de OCTUBRE de 2026" >Ordinario</a></td></tr><tr><td>&nbsp;</td></tr></table></td><td class="diacondoe"><table class="cal" align="center"><tr><td>8</td></tr><tr><td class="ord"><a  href="../ultimosdoe/mostrardoe.php?fecha=20261008&t=o" title="Diario Oficial del día 08 de OCTUBRE de 2026" >Ordinario</a></td></tr><tr><td>&nbsp;</td></tr></table></td><td class="diacondoe"><table class="cal" align="center"><tr><td>9</td></tr><tr><td class="ord"><a  href="../ultimosdoe/mostrardoe.php?fecha=20261009&t=o" title="Diario Oficial del día 09 de OCTUBRE de 2026" >Ordinario</a></td></tr><tr><td>&nbsp;</td></tr></table></td><td class="dia"><table class="cal" ><tr><td class="festivo">10</td></tr><tr><td>&nbsp;</td></tr><tr><td>&nbsp;</td></tr></table></td><td class="dia"><table class="cal" ><tr><td class="festivo">11</td></tr><tr><td>&nbsp;</td></tr><tr><td>&nbsp;</td></tr></table></td></tr><tr><td class="dia"><table class="cal" ><tr><td >12</td></tr><tr><td>&nbsp;</td></tr><tr><td>&nbsp;</td></tr></table></td><td class="diacondoe"><table class="cal" align="center"><tr><td>13</td></tr><tr><td class="ord"><a  href="../ultimosdoe/mostrardoe.php?fecha=20261013&t=o" title="Diario Oficial del día 13 de OCTUBRE de 2026" >Ordinario</a></td></tr><tr><td>&nbsp;</td></tr></table></td><td class="diacondoe"><table class="cal" align="center"><tr><td>14</td></tr><tr><td class="ord"><a  href="../ultimosdoe/mostrardoe.php?fecha=20261014&t=o" title="Diario Oficial del día 14 de OCTUBRE de 2026" >Ordinario</a></td></tr><tr><td>&nbsp;</td></tr></table></td><td class="diacondoe"><table class="cal" align="center"><tr><td>15</td></tr><tr><td class="ord"><a  href="../ultimosdoe/mostrardoe.php?fecha=20261015&t=o" title="Diario Oficial del día 15 de OCTUBRE de 2026" >Ordinario</a></td></tr><tr><td>&nbsp;</td></tr></table></td><td class="diacondoe"><table class="cal" align="center"><tr><td>16</td></tr><tr><td class="ord"><a  href="../ultimosdoe/mostrardoe.php?fecha=20261016&t=o" title="Diario Oficial del día 16 de OCTUBRE de 2026" >Ordinario</a></td></tr><tr><td>&nbsp;</td></tr></table></td><td class="dia"><table class="cal" ><tr><td class="festivo">17</td></tr><tr><td>&nbsp;</td></tr><tr><td>&nbsp;</td></tr></table></td><td class="dia"><table class="cal" ><tr><td class="festivo">18</td></tr><tr><td>&nbsp;</td></tr><tr><td>&nbsp;</td></tr></table></td></tr><tr><td class="diacondoe"><table class="cal" align="center"><tr><td>19</td></tr><tr><td class="ord"><a  href="../ultimosdoe/mostrardoe.php?fecha=20261019&t=o" title="Diario Oficial del día 19 de OCTUBRE de 2026" >Ordinario</a></td></tr><tr><td>&nbsp;</td></tr></table></td><td class="diacondoe"><table class="cal" align="center"><tr><td>20</td></tr><tr><td class="ord"><a  href="../ultimosdoe/mostrardoe.php?fecha=20261020&t=o" title="Diario Oficial del día 20 de OCTUBRE de 2026" >Ordinario</a></td></tr><tr><td>&nbsp;</td></tr></table></td><td class="diacondoe"><table class="cal" align="center"><tr><td>21</td></tr><tr><td class="ord"><a  href="../ultimosdoe/mostrardoe.php?fecha=20261021&t=o" title="Diario Oficial del día 21 de OCTUBRE de 2026" >Ordinario</a></td></tr><tr><td>&nbsp;</td></tr></table></td><td class="diacondoe"><table class="cal" align="center"><tr><td>22</td></tr><tr><td class="ord"><a  href="../ultimosdoe/mostrardoe.php?fecha=20261022&t=o" title="Diario Oficial del día 22 de OCTUBRE de 2026" >Ordinario</a></td></tr><tr><td>&nbsp;</td></tr></table></td><td class="diacondoe"><table class="cal" align="center"><tr><td>23</td></tr><tr><td class="ord"><a  href="../ultimosdoe/mostrardoe.php?fecha=20261023&t=o" title="Diario Oficial del día 23 de OCTUBRE de 2026" >Ordinario</a></td></tr><tr><td>&nbsp;</td></tr></table></td><td class="dia"><table class="cal" ><tr><td class="festivo">24</td></tr><tr><td>&nbsp;</td></tr><tr><td>&nbsp;</td></tr></table></td><td class="dia"><table class="cal" ><tr><td class="festivo">25</td></tr><tr><td>&nbsp;</td></tr><tr><td>&nbsp;</td></tr></table></td></tr><tr><td class="diacondoe"><table class="cal" align="center"><tr><td>26</td></tr><tr><td class="ord"><a  href="../ultimosdoe/mostrardoe.php?fecha=20261026&t=o" title="Diario Oficial del día 26 de OCTUBRE de 2026" >Ordinario</a></td></tr><tr><td>&nbsp;</td></tr></table></td><td class="diacondoe"><table class="cal" align="center"><tr><td>27</td></tr><tr><td class="ord"><a  href="../ultimosdoe/mostrardoe.php?fecha=20261027&t=o" title="Diario Oficial del día 27 de OCTUBRE de 2026" >Ordinario</a></td></tr><tr><td>&nbsp;</td></tr></table></td><td class="diacondoe"><table class="cal" align="center"><tr><td>28</td></tr><tr><td class="ord"><a  href="../ultimosdoe/mostrardoe.php?fecha=20261028&t=o" title="Diario Oficial del día 28 de OCTUBRE de 2026" >Ordinario</a></td></tr><tr><td class="ext"><a  href="../ultimosdoe/mostrardoe.php?fecha=20261028&t=e" title="Diario Oficial del día 28 de OCTUBRE de 2026 (Extra)" >Extra</a></td></tr></table></td><td class="diacondoe"><table class="cal" align="center"><tr><td>29</td></tr><tr><td class="ord"><a  href="../ultimosdoe/mostrardoe.php?fecha=20261029&t=o" title="Diario Oficial del día 29 de OCTUBRE de 2026" >Ordinario</a></td></tr><tr><td>&nbsp;</td></tr></table></td><td class="dia"><table class="cal" ><tr><td >30</td></tr><tr><td>&nbsp;</td></tr><tr><td>&nbsp;</td></tr></table></td><td class="dia"><table class="cal" ><tr><td class="festivo">31</td></tr><tr><td>&nbsp;</td></tr><tr><td>&nbsp;</td></tr></table></td><td class="diavacio"><table align="center"><tr><td >1</td></tr><tr><td>&nbsp;</td></tr><tr><td>&nbsp;</td></tr></table></td></tr></table></form></div>       
+        </div> 
+      
+        <div class="lineablanco"></div>
+            
+      
+<div class="lineablanco"></div>   
+<h3 class="oculto"> Otras Opciones</h3>
+
+<!-- OPCIONES DEL PIE -->
+    
+<div class="pie">
+<div class="lineablanco"></div><div class="lineablanco"></div>
+	<div class="titcentrado">
+    <span class="TxtBold">2026 &copy; Junta de Extremadura. Todos los derechos reservados</span>
+	  <img alt="Icono" src="/img/punto.png" />
+	  <a class="subm" href="/eli/es-ex" title="Normativa Eli" accesskey="e">Normativa <span class="atajo">E</span>LI</a>
+		<img alt="Icono" src="/img/punto.png" />
+		<img class="padRSS" alt="Icono RSS" src="/img/rss_icon.gif" /><a class="subm" href="/rss/index.php" title="Sindicar contenido" accesskey="r"> <span class="atajo">R</span>SS</a>
+		<img alt="Icono" src="/img/punto.png" />
+		<a class="subm" href="/accesibilidad/index.php" title="Accesibilidad" accesskey="s">Acce<span class="atajo">s</span>ibilidad</a>
+		<img alt="Icono" src="/img/punto.png" />
+		<a class="subm" href="/mapa/index.php" title="Mapa" accesskey="t">Mapa del si<span class="atajo">t</span>io</a>
+        <img alt="Icono" src="/img/punto.png" />
+		<a class="subm" href="/aviso/avisolegal.pdf" title="Aviso" accesskey="t">Aviso Legal</a>
+	</div>
+    <div class="lineablanco"></div>
+    
+</div>
+ 	
+<!-- FINAL DE PÁGINA -->  
+</div> 
+</div>
+</body>
+</html> 
+ 	 
+        </div>
