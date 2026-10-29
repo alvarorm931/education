@@ -138,15 +138,18 @@ def _json_de(texto: str) -> dict:
 def preparar(paginas: Path, salida: Path) -> dict:
     """paginas.jsonl: {"url", "sha256", "html"} por línea (o "ruta" a la captura)."""
     salida.mkdir(parents=True, exist_ok=True)
-    n = 0
+    n, reservadas = 0, 0
     with (salida / "lote.jsonl").open("w", encoding="utf-8") as f:
         for linea in paginas.read_text(encoding="utf-8").splitlines():
             p = json.loads(linea)
+            if p.get("reserva_tdm"):  # el titular reservó la minería de datos: no se procesa, solo se enlaza
+                reservadas += 1
+                continue
             html = p.get("html") or Path(p["ruta"]).read_text(encoding="utf-8", errors="replace")
             texto = texto_de_pagina(html)
             f.write(json.dumps(peticion(id_pagina(p["url"], p["sha256"]), p["url"], texto), ensure_ascii=False) + "\n")
             n += 1
-    return {"peticiones": n}
+    return {"peticiones": n, "excluidas_por_reserva_tdm": reservadas}
 
 
 def _cabeceras() -> dict:
