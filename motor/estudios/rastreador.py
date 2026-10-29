@@ -1,10 +1,15 @@
 """Rastreador de oferta de posgrado por web: robots.txt, sitemaps y páginas de programa.
 
 Para cada dominio de un centro (universidad, centro adscrito, escuela de negocio...):
-  1. lee robots.txt, respeta sus prohibiciones para nuestro agente y toma las líneas «Sitemap:»;
+  0. parte de la web real del registro; si no responde prueba con «www.» y, si redirige a otro dominio
+     (ub.es → ub.edu, uab.es → uab.cat), adopta el destino y lo cuenta como propio;
+  1. lee robots.txt de cada servidor que visita (no solo del principal), respeta sus prohibiciones para
+     nuestro agente y toma las líneas «Sitemap:»; si robots.txt da error de servidor, no se rastrea (RFC 9309);
   2. recorre los sitemaps (índices, gzip) hasta un tope de URL;
   3. marca las URL que parecen programas de posgrado (máster, MBA, experto, especialista, título propio,
-     formación permanente, postgrado) y descarta noticias, eventos, blog y ficheros;
+     formación permanente, postgrado, en castellano, catalán, euskera, gallego e inglés) y descarta noticias,
+     eventos, blog, preguntas frecuentes, doctorados y ficheros; sin sitemap útil, recorre la portada y sus
+     páginas de listado (másteres, posgrado, estudios, oferta) y toma los enlaces a programas;
   4. abre una muestra de esas páginas y mide qué enseñan sin pedir datos: datos estructurados (Course,
      EducationalOccupationalProgram, Offer con precio), importes en euros, menciones a plazas, becas,
      metodología o evaluación, enlaces a guía docente o folleto en PDF y formularios que piden correo o
@@ -38,19 +43,25 @@ from urllib.robotparser import RobotFileParser
 import requests
 
 from motor.archivo import Archivo
+from motor.estudios.censo import dominio_registrado
 from motor.http import USER_AGENT
 
 AGENTE = "PortalEstudiosOposiciones"
 FUENTE = "web-centros"
 
 PROGRAMA = re.compile(
-    r"m[aá]ster|masters?\b|mba\b|maestr[ií]a|postgrado|posgrado|t[ií]tulos?[-_ ]propios?|formaci[oó]n[-_ ]permanente|"
+    r"m[aàá]ster|m%c3%a[01]ster|mba\b|maestr[ií]a|postgrado|posgrado|postgrau|masterra|mestrado|"
+    r"t[ií]tulos?[-_ ]propios?|estudis[-_]propis|formaci[oó]n?[-_ ]permanente|formacio[-_]continua|"
     r"experto[-_ ]universitario|especialista[-_ ]universitario|diploma[-_ ]de[-_ ]especializaci[oó]n|executive|"
-    r"estudios[-_ ]propios|postgraduate|master-?s?-?degree", re.I)
+    r"estudios[-_ ]propios|postgraduate|\bmsc\b|\bllm\b", re.I)
 RUIDO = re.compile(
-    r"/(noticias?|news|actualidad|agenda|eventos?|events?|blog|prensa|press|tag|etiqueta|categor[ií]a|category|"
-    r"author|autor|wp-content|feed|comment|search|buscar|page/\d+|sala-de-prensa|convocatorias?-de-empleo)/"
+    r"/(noticias?|noticies|news|our-news|actualidad|actualitat|agenda|eventos?|events?|blog|prensa|premsa|press|"
+    r"sala-de-prensa|sala-de-premsa|tag|etiqueta|categor[ií]a|category|author|autor|wp-content|feed|comment|"
+    r"search|buscar|page/\d+|convocatorias?-de-empleo|faq|preguntas-frecuentes|pmf|contacto|contact|"
+    r"experiencias|experiences|testimonios)/"
+    r"|masterclass|master-class|mastercard"
     r"|\.(pdf|jpe?g|png|gif|svg|webp|docx?|xlsx?|zip|mp4)$", re.I)
+DOCTORADO = re.compile(r"doctorad|doctorat|doktore|\bph\.?d\b", re.I)
 EURO = re.compile(r"(\d{1,3}(?:[.\s]\d{3})+|\d{3,6})(?:,\d{2})?\s?(?:€|euros?\b|EUR\b)", re.I)
 TEMAS = {
     "precio": re.compile(r"\bprecio|\bimporte|\bcoste\b|\btasas?\b|\bmatr[ií]cula\b|\bfee", re.I),
@@ -63,12 +74,31 @@ TEMAS = {
     "horario": re.compile(r"\bhorario|\bcalendario", re.I),
 }
 FOLLETO = re.compile(r'href="([^"]+\.pdf)"[^>]*>([^<]{0,120})', re.I)
-TITULO_PROGRAMA = re.compile(r"m[aá]ster|\bmba\b|posgrado|postgrado|experto universitario|especialista universitario|"
-                             r"diploma de especializaci|executive", re.I)
-# Señales de ficha de programa (lo que tiene una página que vende o describe un programa concreto).
-SENAL_PROGRAMA = re.compile(r"\bECTS\b|cr[ée]ditos|matr[ií]cula|\bprecio|plazas|titulaci[oó]n|admisi[oó]n|"
-                            r"plan de estudios|inscr[ií]bete|solicita (m[aá]s )?informaci[oó]n|requisitos de acceso|"
-                            r"salidas profesionales|programa acad[eé]mico|temario|modalidad", re.I)
+TITULO_PROGRAMA = re.compile(r"m[aàá]ster|\bmba\b|posgrado|postgrado|postgrau|masterra|mestrado|maestr[ií]a|"
+                             r"experto universitario|especialista universitario|diploma de especializaci|executive|"
+                             r"\bmsc\b|\bllm\b", re.I)
+# Título o enlace que empieza por el tipo de programa («Máster Universitario en…»), no por un plural de listado.
+EMPIEZA_PROGRAMA = re.compile(r"^\s*(m[aàá]ster|mba\b|executive|experto universitario|especialista universitario|"
+                              r"diploma de especializaci|postgrado en|posgrado en|postgrau en|msc\b|llm\b|masterra)", re.I)
+PLURAL_LISTADO = re.compile(r"^\s*(m[aàá]steres|m[aàá]sters|masters\b|postgrados|posgrados|masterrak)", re.I)
+# Señales de ficha de programa, por grupos (cuenta cada grupo una vez, en cualquiera de los idiomas).
+SENALES = {k: re.compile(v, re.I) for k, v in {
+    "creditos": r"\bECTS\b|cr[eé]ditos|cr[eè]dits|\bcredits\b|kreditu",
+    "matricula": r"matr[ií]cula|enrol?lment|izen[- ]?ematea",
+    "precio": r"\bprecios?\b|\bpreus?\b|\bprices?\b|tuition|\bfees?\b|\bimporte\b|\bcoste\b|prezioa",
+    "plazas": r"\bplazas\b|\bplaces\b|\bseats\b|\bprazas\b",
+    "titulacion": r"titulaci[oó]n?\b|\btitulación\b|\bdegree\b",
+    "admision": r"admisi[oó]n|admissi[oó]|admission|preinscripci[oó]n?|requisitos de acceso|requisits d.acc[eé]s|"
+                r"entry requirements|onarpen",
+    "plan": r"plan de estudios|pla d.estudis|study plan|curriculum|syllabus|programa acad[eé]mico|temario|"
+            r"asignaturas|assignatures|\bsubjects\b|ikasgaiak|materias",
+    "salidas": r"salidas profesionales|sortides professionals|career (opportunities|prospects|outcomes)|sa[ií]das profesionais",
+    "modalidad": r"modalidad|modalitat|semipresencial|mode of study|study mode|a distancia|distance learning",
+    "duracion": r"duraci[oó]n?\b|\bdurada\b|\bduration\b|iraupena",
+    "informacion": r"inscr[ií]bete|solicita (m[aá]s )?informaci[oó]n|sol.licita informaci[oó]|request information|"
+                   r"apply now|solicitar informaci[oó]n",
+    "horario": r"\bhorarios?\b|\bhorari\b|\bschedule\b|\btimetable\b",
+}.items()}
 NOTICIA = re.compile(r"/(19|20)\d{2}/\d{1,2}/|/(blog|noticias?|news|actualidad|articulos?|opinion|prensa|revista|"
                      r"magazine|tag|etiquetas?|author|autor)/", re.I)
 # Señal de oferta en España (descarta centros de otros países con web en español).
@@ -78,20 +108,48 @@ ESPANA = re.compile(r"\bECTS\b|€|\beuros?\b|Espa[ñn]a|\+34|\bMadrid\b|\bBarce
                     r"\bOviedo\b|\bSantander\b|\bPamplona\b|\bLogro[ñn]o\b|\bC[aá]diz\b|\bHuelva\b|\bJa[eé]n\b|"
                     r"\bAlmer[ií]a\b|\bLe[oó]n\b|\bBurgos\b|\bTarragona\b|\bGirona\b|\bLleida\b|\bCastell[oó]n\b")
 COLABORADORES = re.compile(r"entidades?[-_]colaboradoras?|centros?[-_]colaboradores|titulos[-_]propios[-_]entidades|"
-                           r"centros?[-_]adscritos|partners?|socios[-_]academicos|convenios?[-_]academicos|"
-                           r"red[-_]de[-_]centros|centros[-_]asociados", re.I)
+                           r"centros?[-_]adscritos|centres?[-_]adscrits|socios[-_]academicos|convenios?[-_]academicos|"
+                           r"red[-_]de[-_]centros|centros[-_]asociados|academic[-_]partners|partner[-_](schools|institutions)|"
+                           r"escuelas?[-_](asociadas|colaboradoras)|entitats[-_]col[-_.]?laboradores", re.I)
 DOC_PRECIO = re.compile(r"(tarifa|precio|honorario|tasas|fees|tuition|matricula|condiciones[-_]economicas|"
                         r"normativa[-_]economica|importe)[^/]*\.(pdf|xlsx?)$", re.I)
+ENLACE = re.compile(r'(?is)<a\b[^>]*?href\s*=\s*["\']([^"\'#]+)["\'][^>]*>(.*?)</a>')
+LISTADO = re.compile(r"m[aàá]ster|posgrad|postgrad|postgrau|masterra|mestrado|estudios|estudis|ikasketak|oferta|"
+                     r"titulaci|formaci|programas|programmes|programs|studies|study|degrees|t[ií]tulos", re.I)
+MAX_LISTADOS = 8
+RESERVA_PORTADA = 14  # peticiones que el recorrido de sitemaps deja libres para la portada y sus listados
 GUIA = re.compile(r"gu[ií]a|folleto|brochure|dossier|programa|plan de estudios|syllabus", re.I)
 
 
+def _origen(url: str) -> str:
+    u = urlparse(url)
+    return f"{u.scheme or 'https'}://{u.netloc}".lower()
+
+
+def texto_de(r) -> str:
+    """Texto de una respuesta con la codificación correcta: la de la cabecera, la de <meta charset> o UTF-8.
+    (requests supone ISO-8859-1 si la cabecera no la dice y deja «MÃ¡ster» donde pone «Máster».)"""
+    ctype = (r.headers.get("content-type") or "").lower()
+    if "charset=" in ctype:
+        return r.text
+    cabeza = r.content[:4096].decode("ascii", "ignore")
+    m = re.search(r"(?i)<meta[^>]+charset=[\"']?([\w-]+)", cabeza) or re.search(r'(?i)encoding=["\']([\w-]+)', cabeza)
+    for cod in ([m.group(1)] if m else []) + ["utf-8", "cp1252"]:
+        try:
+            return r.content.decode(cod)
+        except (LookupError, UnicodeDecodeError):
+            continue
+    return r.content.decode("utf-8", "replace")
+
+
 class Dominio:
-    """Lector cortés de un dominio: robots.txt, una petición por segundo, originales archivados."""
+    """Lector cortés de un dominio: robots.txt de cada servidor, una petición por segundo, originales archivados."""
 
     def __init__(self, base: str, archivo: Archivo | None, pausa: float = 1.0, max_peticiones: int = 80):
         p = urlparse(base if base.startswith("http") else "https://" + base)
         self.base = f"{p.scheme or 'https'}://{p.netloc}"
         self.host = p.netloc
+        self.propios = {dominio_registrado(p.netloc)}  # dominios registrados que cuentan como web del centro
         self.archivo = archivo
         self.pausa = pausa
         self.max_peticiones = max_peticiones
@@ -99,8 +157,11 @@ class Dominio:
         self.ultimo = 0.0
         self.s = requests.Session()
         self.s.headers.update({"User-Agent": f"{USER_AGENT}", "Accept-Language": "es-ES,es;q=0.9"})
-        self.robots = RobotFileParser()
-        self.robots_ok = True
+        self.robots: dict[str, RobotFileParser] = {}
+        self.ultima_robots = None
+
+    def propio(self, url: str) -> bool:
+        return dominio_registrado(urlparse(url).netloc) in self.propios
 
     def get(self, url: str, timeout: float = 25, guardar: bool = True, sin_robots: bool = False) -> requests.Response | None:
         """guardar=False registra solo la huella (sitemaps: grandes y se pueden volver a pedir).
@@ -127,23 +188,56 @@ class Dominio:
         return r
 
     def robots_ok_para(self, url: str) -> bool:
-        if not self.robots.last_checked:  # aún sin leer: no se pide nada salvo el propio robots.txt
-            return False
+        """robots.txt es de cada servidor: antes de la primera página de un servidor se lee el suyo."""
+        clave = _origen(url)
+        if clave not in self.robots:
+            if self.peticiones >= self.max_peticiones:
+                return False
+            self.leer_robots(clave)
         try:
-            return self.robots.can_fetch(AGENTE, url)
+            return self.robots[clave].can_fetch(AGENTE, url)
         except Exception:
             return True
 
-    def leer_robots(self) -> list[str]:
-        r = self.get(self.base + "/robots.txt", sin_robots=True)
-        sitemaps = []
-        if r is not None and r.status_code == 200 and "text" in r.headers.get("content-type", "text"):
-            lineas = r.text.splitlines()
-            self.robots.parse(lineas)
+    def leer_robots(self, origen: str | None = None) -> list[str]:
+        """Lee y guarda las reglas de un servidor. Devuelve sus líneas «Sitemap:».
+        Error de servidor o sin respuesta: no se rastrea; 4xx o fichero que no es de texto: sin restricciones."""
+        origen = (origen or self.base).rstrip("/").lower()
+        r = self.get(origen + "/robots.txt", sin_robots=True)
+        rp, sitemaps = RobotFileParser(), []
+        if r is None or r.status_code >= 500:
+            rp.disallow_all = True
+        elif r.status_code == 200 and "html" not in (r.headers.get("content-type") or "text/plain").lower():
+            lineas = texto_de(r).splitlines()
+            rp.parse(lineas)
             sitemaps = [l.split(":", 1)[1].strip() for l in lineas if l.lower().startswith("sitemap:")]
         else:
-            self.robots.parse([])
+            rp.parse([])
+        self.robots[origen] = rp
+        final = getattr(r, "url", "") if r is not None else ""
+        if final and _origen(final) != origen and urlparse(final).path.endswith("/robots.txt"):
+            self.robots.setdefault(_origen(final), rp)  # redirigido al robots.txt de otro servidor: vale para él
+        self.ultima_robots = r
         return sitemaps
+
+    def resolver_base(self) -> tuple[list[str], bool]:
+        """Encuentra el servidor que responde: la web dada, si no con «www.»; adopta el destino de las
+        redirecciones (y su dominio registrado como propio). Devuelve (sitemaps de robots.txt, responde)."""
+        u = urlparse(self.base)
+        candidatos = [self.base] + ([f"{u.scheme}://www.{u.netloc}"] if not u.netloc.startswith("www.") else [])
+        for c in candidatos:
+            sitemaps = self.leer_robots(c)
+            r = self.ultima_robots
+            if r is None or r.status_code >= 500:
+                continue
+            final = _origen(getattr(r, "url", "") or c)
+            if final != c.lower():
+                if not urlparse(r.url).path.endswith("/robots.txt"):  # redirigió a una página: robots del destino
+                    sitemaps = self.leer_robots(final)
+                self.propios.add(dominio_registrado(final))
+            self.base = final
+            return sitemaps, True
+        return [], False
 
 
 def _xml(contenido: bytes) -> ET.Element | None:
@@ -190,7 +284,27 @@ def urls_de_sitemap(raiz: ET.Element) -> tuple[list[str], list[str]]:
 def es_programa(url: str) -> bool:
     u = urlparse(url)
     ruta = u.path + ("?" + u.query if u.query else "")
-    return bool(PROGRAMA.search(ruta)) and not RUIDO.search(u.path)
+    tramos = [t for t in u.path.split("/") if t]
+    return bool(PROGRAMA.search(ruta)) and not RUIDO.search(u.path) and not DOCTORADO.search(tramos[-1] if tramos else "")
+
+
+def enlaces(html: str, base_url: str) -> list[tuple[str, str]]:
+    """(URL absoluta, texto del enlace) de una página."""
+    salida = []
+    for h, t in ENLACE.findall(html):
+        u = urljoin(base_url, h.strip()).split("#")[0]
+        if u.startswith("http"):
+            salida.append((u, " ".join(re.sub(r"<[^>]+>", " ", t).split())[:200]))
+    return salida
+
+
+def enlace_a_programa(url: str, texto: str) -> bool:
+    """Por la URL, o por un texto de enlace que nombra un programa concreto («Máster Universitario en…»)."""
+    if es_programa(url):
+        return True
+    ruta = urlparse(url).path
+    return (bool(EMPIEZA_PROGRAMA.match(texto)) and not PLURAL_LISTADO.match(texto) and len(texto.split()) >= 3
+            and not DOCTORADO.search(texto) and not RUIDO.search(ruta) and not NOTICIA.search(ruta))
 
 
 def prioridad_sitemap(url: str) -> int:
@@ -230,10 +344,14 @@ def medir_pagina(html: str, url: str) -> dict:
     titulo = re.search(r"(?is)<title[^>]*>(.*?)</title>", html)
     h1 = re.search(r"(?is)<h1[^>]*>(.*?)</h1>", html)
     cabecera = " ".join(re.sub(r"<[^>]+>", " ", (titulo.group(1) if titulo else "") + " " + (h1.group(1) if h1 else "")).split())
-    senales = {m.group(0).lower() for m in SENAL_PROGRAMA.finditer(visible)}
+    senales = {k for k, pat in SENALES.items() if pat.search(visible)}
+    nombre = " ".join(re.sub(r"<[^>]+>", " ", h1.group(1)).split()) if h1 else (titulo.group(1) if titulo else "")
+    fuerte = bool(EMPIEZA_PROGRAMA.match(nombre)) or bool(EMPIEZA_PROGRAMA.match(titulo.group(1) if titulo else ""))
+    es_prog = (bool(TITULO_PROGRAMA.search(cabecera)) and not DOCTORADO.search(cabecera)
+               and (len(senales) >= 4 or (fuerte and len(senales) >= 3)) and not NOTICIA.search(urlparse(url).path))
     return {
         "espana": bool(ESPANA.search(visible)),
-        "es_programa": bool(TITULO_PROGRAMA.search(cabecera)) and len(senales) >= 4 and not NOTICIA.search(urlparse(url).path),
+        "es_programa": es_prog,
         "senales": sorted(senales)[:12],
         "titulo": " ".join(titulo.group(1).split())[:200] if titulo else None,
         "jsonld_tipos": tipos,
@@ -248,12 +366,77 @@ def medir_pagina(html: str, url: str) -> dict:
     }
 
 
+def _html(r) -> str | None:
+    if r is None or r.status_code != 200 or "html" not in (r.headers.get("content-type") or ""):
+        return None
+    return texto_de(r)
+
+
+def desde_portada(d: Dominio, semillas: list[str] | None, tope: int) -> tuple[list[str], list[str]]:
+    """Sin sitemap útil: enlaces a programas de la portada y de sus páginas de listado (másteres, posgrado,
+    estudios, oferta), más las semillas de Common Crawl. Devuelve (programas, listados visitados)."""
+    programas = {u for u in (semillas or []) if es_programa(u) and d.propio(u)}
+    r0 = d.get(d.base + "/")
+    html0 = _html(r0)
+    listados: list[tuple[int, int, str]] = []
+    if html0:
+        for u, t in enlaces(html0, r0.url):
+            if not d.propio(u):
+                continue
+            ruta = urlparse(u).path
+            if enlace_a_programa(u, t):
+                programas.add(u)
+            if (LISTADO.search(ruta) or LISTADO.search(t)) and not RUIDO.search(ruta) and not NOTICIA.search(ruta) \
+                    and ruta.count("/") <= 4:
+                prioridad = 0 if re.search(r"m[aàá]ster|posgrad|postgrad|postgrau|masterra", ruta + " " + t, re.I) else 1
+                listados.append((prioridad, len(u), u))
+    visitados = []
+    for _, _, u in sorted(set(listados))[:MAX_LISTADOS]:
+        if d.peticiones >= tope:
+            break
+        r1 = d.get(u)
+        html1 = _html(r1)
+        if not html1:
+            continue
+        visitados.append(u)
+        hallados = {v for v, t in enlaces(html1, r1.url) if d.propio(v) and enlace_a_programa(v, t)}
+        programas |= hallados
+        if len(hallados) >= 5:  # es un listado, no una ficha: no se cuenta como programa
+            programas.discard(u)
+    return sorted(programas), visitados
+
+
+def medir_muestra(d: Dominio, urls: list[str], n: int) -> list[dict]:
+    medidas = []
+    for u in _muestra(urls, n):
+        r = d.get(u)
+        html = _html(r)
+        if not html:
+            continue
+        m = medir_pagina(html, u)
+        m["reserva_tdm"] = reserva_tdm(dict(r.headers), html)
+        medidas.append({"url": u, **m})
+    return medidas
+
+
+def _verificado(medidas: list[dict]) -> bool:
+    validas = sum(1 for m in medidas if m.get("es_programa"))
+    return validas >= 2 or (validas == 1 and len(medidas) <= 2)
+
+
 def rastrear(base: str, archivo: Archivo | None, max_urls: int = 60000, muestra: int = 6,
              max_peticiones: int = 80, semillas: list[str] | None = None, pausa: float = 1.0) -> dict:
     d = Dominio(base, archivo, pausa=pausa, max_peticiones=max_peticiones)
     res: dict = {"dominio": d.host, "base": d.base}
     try:
-        sitemaps = d.leer_robots()
+        sitemaps, responde = d.resolver_base()
+        res["base_final"] = d.base
+        res["dominios_propios"] = sorted(d.propios)
+        if not responde:
+            res["error"] = "sin_respuesta"
+            res["peticiones"] = d.peticiones
+            return res
+        res["veto_robots"] = not d.robots_ok_para(d.base + "/")
         res["robots_sitemaps"] = len(sitemaps)
         rt = d.get(d.base + "/.well-known/tdmrep.json", guardar=False)
         res["tdmrep"] = bool(rt is not None and rt.status_code == 200 and '"tdm-reservation": 1' in rt.text.replace("'", '"'))
@@ -261,7 +444,8 @@ def rastrear(base: str, archivo: Archivo | None, max_urls: int = 60000, muestra:
             sitemaps = [d.base + "/sitemap.xml", d.base + "/sitemap_index.xml"]
         cola = sorted(dict.fromkeys(sitemaps), key=prioridad_sitemap)
         vistos, paginas, leidos, fechas = set(), [], 0, {}
-        while cola and len(paginas) < max_urls and d.peticiones < max_peticiones - muestra:
+        tope_sitemaps = max_peticiones - muestra - RESERVA_PORTADA
+        while cola and len(paginas) < max_urls and d.peticiones < tope_sitemaps:
             sm = cola.pop(0)
             if sm in vistos:
                 continue
@@ -280,39 +464,35 @@ def rastrear(base: str, archivo: Archivo | None, max_urls: int = 60000, muestra:
         res["sitemaps_leidos"] = leidos
         res["sitemaps_pendientes"] = len(cola)
         res["urls"] = len(paginas)
-        raiz_host = d.host.split(":")[0].removeprefix("www.")
-        candidatas = sorted({u for u in paginas if es_programa(u) and urlparse(u).netloc.endswith(raiz_host)})
+        candidatas = sorted({u for u in paginas if es_programa(u) and d.propio(u)})
         res["urls_programa_sitemap"] = len(candidatas)
         # Páginas que nombran a centros colaboradores (p. ej. ucavila.es/titulos-propios-entidades/...):
         # sirven para descubrir escuelas que venden títulos propios de la universidad.
-        res["urls_colaboradores"] = sorted({u for u in paginas if COLABORADORES.search(urlparse(u).path)})[:200]
-        if not candidatas:  # sin sitemap útil: enlaces de programa de la portada y semillas de Common Crawl
-            res["via"] = "portada"
-            enlaces = set(u for u in (semillas or []) if es_programa(u))
-            r0 = d.get(d.base + "/")
-            if r0 is not None and r0.status_code == 200 and "html" in r0.headers.get("content-type", ""):
-                for h in re.findall(r'href="([^"#]+)"', r0.text):
-                    u = urljoin(r0.url, h)
-                    if urlparse(u).netloc.endswith(raiz_host) and es_programa(u):
-                        enlaces.add(u.split("#")[0])
-            candidatas = sorted(enlaces)
-            res["urls_programa_portada"] = len(candidatas)
+        res["urls_colaboradores"] = sorted({u for u in paginas if COLABORADORES.search(urlparse(u).path)
+                                            and not NOTICIA.search(urlparse(u).path)})[:200]
+        res["via"] = "sitemap" if candidatas else "portada"
+        listados: list[str] = []
+        if not candidatas:
+            candidatas, listados = desde_portada(d, semillas, max_peticiones - muestra)
+        medidas = medir_muestra(d, candidatas, muestra)
+        if not _verificado(medidas) and res["via"] == "sitemap":
+            # el sitemap trae URL de programa pero la muestra no convence (noticias, listados): se mira la portada
+            medidas_urls = {m["url"] for m in medidas}
+            extra, listados = desde_portada(d, semillas, max_peticiones - muestra)
+            extra = [u for u in extra if u not in medidas_urls and u not in set(candidatas)]
+            if extra:
+                res["via"] = "sitemap+portada"
+                medidas += medir_muestra(d, extra, muestra)
+                candidatas = sorted(set(candidatas) | set(extra))
+        res["listados_visitados"] = listados
         res["urls_programa"] = len(candidatas)
         res["programas"] = candidatas
         res["programas_lastmod"] = {u: fechas[u] for u in candidatas if u in fechas}
-        res["documentos_precio"] = sorted({u for u in paginas if DOC_PRECIO.search(u)})[:100]
-        medidas = []
-        for u in _muestra(candidatas, muestra):
-            r = d.get(u)
-            if r is None or r.status_code != 200 or "html" not in r.headers.get("content-type", ""):
-                continue
-            m = medir_pagina(r.text, u)
-            m["reserva_tdm"] = reserva_tdm(dict(r.headers), r.text)
-            medidas.append({"url": u, **m})
+        res["documentos_precio"] = sorted({u for u in paginas if DOC_PRECIO.search(u) and d.propio(u)
+                                           and not NOTICIA.search(urlparse(u).path)})[:100]
         res["muestra"] = medidas
-        validas = sum(1 for m in medidas if m.get("es_programa"))
-        res["paginas_programa_validas"] = validas
-        res["verificado"] = validas >= 2 or (validas == 1 and len(medidas) <= 2)
+        res["paginas_programa_validas"] = sum(1 for m in medidas if m.get("es_programa"))
+        res["verificado"] = _verificado(medidas)
         res["espana"] = any(m.get("espana") for m in medidas if m.get("es_programa"))
         res["reserva_tdm"] = res.get("tdmrep", False) or any(m.get("reserva_tdm") for m in medidas)
     except Exception as e:  # un dominio roto no para el resto
@@ -334,8 +514,21 @@ def objetivos_de_proveedores(fichero: Path, desde: int = 0, hasta: int | None = 
     """Proveedores del censo único (motor/estudios/censo.py) en un tramo de la lista."""
     filas = [json.loads(l) for l in fichero.read_text(encoding="utf-8").splitlines() if l.strip()]
     filas = [p for p in filas if p["estado"] in estados][desde:hasta]
-    return [{"web": "https://" + p["dominio"], "id": p["id"], "estado": p["estado"],
+    return [{"web": web_principal(p), "id": p["id"], "estado": p["estado"],
              "semillas": p.get("senales", {}).get("cc_ejemplos", [])} for p in filas]
+
+
+def web_principal(p: dict) -> str:
+    """La web real del registro (p. ej. https://www.ub.edu) antes que el dominio desnudo, que a veces no
+    responde; entre varias, la del propio dominio y más corta (la de la universidad, no la de un centro)."""
+    webs = p.get("webs") or []
+    if not webs:
+        return "https://" + p["dominio"]
+
+    def clave(w: str) -> tuple:
+        u = urlparse(w)
+        return (u.netloc.lower().removeprefix("www.") != p["dominio"], len([t for t in u.path.split("/") if t]), len(w))
+    return min(webs, key=clave)
 
 
 def dominios_del_censo(carpeta: Path) -> list[dict]:
@@ -379,6 +572,9 @@ def ejecutar(objetivos: list[dict], raiz: Path, hilos: int, max_minutos: float, 
             resumen["con_programas"] += 1 if r.get("urls_programa") else 0
             resumen["urls_programa"] += r.get("urls_programa", 0)
             resumen["errores"] += 1 if r.get("error") else 0
+            resumen["sin_respuesta"] += 1 if r.get("error") == "sin_respuesta" else 0
+            resumen["veto_robots"] += 1 if r.get("veto_robots") else 0
+            resumen["redirigidos_a_otro_dominio"] += 1 if len(r.get("dominios_propios", [])) > 1 else 0
             resumen["verificados"] += 1 if r.get("verificado") else 0
             resumen["verificados_espana"] += 1 if r.get("verificado") and r.get("espana") else 0
 

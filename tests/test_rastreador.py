@@ -94,3 +94,116 @@ def test_pdf_de_precios():
     html = '<a href="/docs/Tarifas_Postgrado_2026.pdf">Tarifas</a><a href="/docs/folleto.pdf">Descarga el folleto</a>'
     m = r.medir_pagina(html, "https://x.es/master")
     assert m["pdf_precio"] == ["https://x.es/docs/Tarifas_Postgrado_2026.pdf"]
+
+
+class _R:
+    def __init__(self, status, cuerpo, ctype="text/html", url=""):
+        self.status_code, self.headers, self.url = status, {"content-type": ctype}, url
+        self.content = cuerpo if isinstance(cuerpo, bytes) else cuerpo.encode()
+        self.text = self.content.decode("latin-1")  # lo que haría requests sin charset en la cabecera
+
+
+def test_texto_de_corrige_la_codificacion():
+    r1 = _R(200, "<title>Máster Universitario</title>".encode("utf-8"))
+    assert r1.text != "<title>Máster Universitario</title>"  # el fallo que había: «MÃ¡ster»
+    assert r.texto_de(r1) == "<title>Máster Universitario</title>"
+    r2 = _R(200, '<meta charset="iso-8859-1"><p>Máster</p>'.encode("latin-1"))
+    assert "Máster" in r.texto_de(r2)
+
+
+def test_redireccion_a_otro_dominio_y_www(monkeypatch):
+    """ub.es no responde; www.ub.es redirige a www.ub.edu, que es la web real: sus programas cuentan."""
+    ns = 'xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"'
+    sm = f'<urlset {ns}><url><loc>https://www.ub.edu/estudis/masters/master-en-dret</loc></url></urlset>'
+    ficha = ("<title>Màster en Dret</title><h1>Màster universitari en Dret</h1><p>60 crèdits ECTS. Preu: 2.100 €. "
+             "Places: 40. Preinscripció i admissió. Pla d'estudis. Barcelona</p>")
+
+    def falso_get(self, url, timeout=25, allow_redirects=True):
+        if url.startswith("https://ub.es"):
+            raise r.requests.ConnectionError("sin DNS")
+        if url == "https://www.ub.es/robots.txt":
+            return _R(200, "User-agent: *\nAllow: /\nSitemap: https://www.ub.edu/sm.xml\n", "text/plain",
+                      "https://www.ub.edu/robots.txt")
+        if url == "https://www.ub.edu/sm.xml":
+            return _R(200, sm, "application/xml", url)
+        if url.endswith("tdmrep.json"):
+            return _R(404, "", "text/html", url)
+        return _R(200, ficha.encode("utf-8"), "text/html", url)
+
+    monkeypatch.setattr(r.requests.Session, "get", falso_get)
+    res = r.rastrear("https://ub.es", None, muestra=2, pausa=0)
+    assert res["base_final"] == "https://www.ub.edu"
+    assert res["dominios_propios"] == ["ub.edu", "ub.es"]
+    assert res["programas"] == ["https://www.ub.edu/estudis/masters/master-en-dret"]
+    assert res["verificado"] and res["espana"] and res["dominio"] == "ub.es"
+
+
+def test_robots_por_servidor_y_error_de_servidor(monkeypatch):
+    pedidas = []
+
+    def falso_get(self, url, timeout=25, allow_redirects=True):
+        pedidas.append(url)
+        if url == "https://x.es/robots.txt":
+            return _R(200, "User-agent: *\nAllow: /\n", "text/plain", url)
+        if url == "https://postgrado.x.es/robots.txt":
+            return _R(200, "User-agent: *\nDisallow: /\n", "text/plain", url)
+        if url == "https://caido.x.es/robots.txt":
+            return _R(503, "", "text/html", url)
+        return _R(200, "<html></html>", "text/html", url)
+
+    monkeypatch.setattr(r.requests.Session, "get", falso_get)
+    d = r.Dominio("https://x.es", None, pausa=0)
+    d.leer_robots()
+    assert d.get("https://x.es/master") is not None
+    assert d.get("https://postgrado.x.es/master-en-y") is None  # su propio robots.txt lo prohíbe
+    assert d.get("https://caido.x.es/master") is None  # robots.txt con error de servidor: no se rastrea
+    assert "https://postgrado.x.es/master-en-y" not in pedidas and "https://caido.x.es/master" not in pedidas
+
+
+def test_listados_de_la_portada_y_enlaces_por_texto(monkeypatch):
+    """Universidad sin sitemap: la portada enlaza al listado de másteres y este a fichas cuya URL no dice «máster»."""
+    portada = '<a href="/estudios/masteres">Másteres</a><a href="/noticias/x">Noticias</a>'
+    listado = "".join(f'<a href="/titulacion?id={i}">Máster Universitario en Materia {i}</a>' for i in range(6))
+    listado += '<a href="/titulacion?id=99">Programa de Doctorado en Física</a>'
+    ficha = ("<title>Universidad X</title><h1>Máster Universitario en Materia</h1><p>60 ECTS. Plazas: 30. "
+             "Preinscripción. Plan de estudios. Precio por crédito. Sevilla</p>")
+
+    def falso_get(self, url, timeout=25, allow_redirects=True):
+        if url.endswith("/robots.txt"):
+            return _R(200, "User-agent: *\nAllow: /\n", "text/plain", url)
+        if url.endswith((".xml", "tdmrep.json")):
+            return _R(404, "", "text/html", url)
+        if url == "https://x.es/":
+            return _R(200, portada, url=url)
+        if url == "https://x.es/estudios/masteres":
+            return _R(200, listado, url=url)
+        return _R(200, ficha, url=url)
+
+    monkeypatch.setattr(r.requests.Session, "get", falso_get)
+    res = r.rastrear("https://x.es", None, muestra=3, pausa=0)
+    assert res["listados_visitados"] == ["https://x.es/estudios/masteres"]
+    assert res["urls_programa"] == 6 and "https://x.es/titulacion?id=99" not in res["programas"]
+    assert "https://x.es/estudios/masteres" not in res["programas"]  # el listado no es una ficha
+    assert res["verificado"]
+
+
+def test_paginas_que_no_son_fichas():
+    assert not r.es_programa("https://www.ugr.es/estudiantes/master-doctorados/programa-doctorado-matematicas")
+    assert not r.es_programa("https://www.udit.es/masterclass-de-david-chumilla/")
+    assert not r.es_programa("https://www.ie.edu/our-news/carmen-panadero-master-real-estate/")
+    assert not r.es_programa("https://www.urv.cat/en/studies/master/faq/62/es-un-master-oficial/")
+    assert r.es_programa("https://www.urv.cat/ca/estudis/masters/oferta/advocacia-procura/")
+    noticia = ("<title>El Máster en X, entre los mejores</title><h1>El Máster en X, entre los mejores</h1>"
+               "<p>ECTS créditos matrícula precio plazas</p>")
+    assert not r.medir_pagina(noticia, "https://x.es/2024/05/master-x")["es_programa"]
+    ugr = ("<title>Máster Universitario en Psicología Jurídica | Universidad de Granada</title>"
+           "<h1>Máster Universitario en Psicología Jurídica</h1><p>Admisión. 60 créditos. Matrícula.</p>")
+    assert r.medir_pagina(ugr, "https://www.ugr.es/estudiantes/master-doctorados/master-psicologia")["es_programa"]
+    doct = "<title>Programa de Doctorado en Matemáticas</title><p>Admisión créditos matrícula precio plazas</p>"
+    assert not r.medir_pagina(doct, "https://x.es/doctorado")["es_programa"]
+
+
+def test_web_principal():
+    p = {"dominio": "uab.cat", "webs": ["https://caiac.uab.cat", "https://www.uab.cat/politiques-sociologia/"]}
+    assert r.web_principal(p) == "https://www.uab.cat/politiques-sociologia/"
+    assert r.web_principal({"dominio": "x.es", "webs": []}) == "https://x.es"

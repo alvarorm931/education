@@ -46,6 +46,7 @@ AGREGADORES = re.compile(
     r"psicologiaymente|que\.es$|tesify|cursosbaratos|uscflix|google\.com|github|gitlab|wuolah|wuidy|"
     r"educaformacion|estudiaradistancia|estudiaronline|universidadesni", re.I)
 SUFIJOS_DOBLES = ("edu.es", "com.es", "org.es", "gob.es", "nom.es")
+HOST_VALIDO = re.compile(r"^[a-z0-9-]+(\.[a-z0-9-]+)*\.[a-z]{2,}$")
 
 
 def dominio_registrado(url_o_host: str) -> str:
@@ -55,6 +56,16 @@ def dominio_registrado(url_o_host: str) -> str:
     if len(partes) >= 3 and ".".join(partes[-2:]) in SUFIJOS_DOBLES:
         return ".".join(partes[-3:])
     return ".".join(partes[-2:]) if len(partes) >= 2 else host
+
+
+def web_valida(web: str | None) -> str | None:
+    """La web tal como la da el registro, si es una dirección real (el RUCT trae a veces códigos o texto)."""
+    if not web or not isinstance(web, str):
+        return None
+    w = web.strip()
+    w = w if "://" in w else "https://" + w
+    host = urlparse(w).netloc.lower().split(":")[0]
+    return w if HOST_VALIDO.match(host) else None
 
 
 def id_proveedor(dominio: str) -> str:
@@ -85,9 +96,9 @@ def construir(centros: list[dict], cc: list[dict]) -> list[dict]:
         p = provs.get(dominio)
         if p is None:
             p = provs[dominio] = {"id": id_proveedor(dominio), "dominio": dominio, "dominios": [dominio],
-                                  "nombres": [], "tipos": [], "ruct": [], "fuentes": [], "senales": {},
+                                  "webs": [], "nombres": [], "tipos": [], "ruct": [], "fuentes": [], "senales": {},
                                   "estado": None, "motivo": None}
-        for k in ("nombres", "tipos", "fuentes"):
+        for k in ("webs", "nombres", "tipos", "fuentes"):
             for v in base.get(k, []):
                 if v and v not in p[k]:
                     p[k].append(v)
@@ -95,16 +106,20 @@ def construir(centros: list[dict], cc: list[dict]) -> list[dict]:
 
     for u in centros:
         tipo_u = u.get("grupo") if u.get("grupo") != "universidad" else f"universidad_{(u.get('tipo') or '').split(' ')[0].lower()}"
-        if u.get("web"):
-            p = alta(dominio_registrado(u["web"]), {"nombres": [u.get("nombre")], "tipos": [tipo_u], "fuentes": ["ruct"]})
+        web_u = web_valida(u.get("web"))
+        if web_u:  # la web real del registro (con www. o en otro dominio), no solo el dominio registrado
+            p = alta(dominio_registrado(web_u), {"webs": [web_u], "nombres": [u.get("nombre")], "tipos": [tipo_u],
+                                                 "fuentes": ["ruct"]})
             p["ruct"].append({"universidad": u.get("codigo")})
             p["estado"] = "oficial"
         for c in u.get("centros", []):
-            if not c.get("web"):
+            web_c = web_valida(c.get("web"))
+            if not web_c:
                 continue
             vinc = (c.get("vinculacion") or "").lower()
             tipo_c = f"centro_{vinc}" if u.get("grupo") == "universidad" else tipo_u
-            p = alta(dominio_registrado(c["web"]), {"nombres": [c.get("nombre")], "tipos": [tipo_c], "fuentes": ["ruct"]})
+            p = alta(dominio_registrado(web_c), {"webs": [web_c], "nombres": [c.get("nombre")], "tipos": [tipo_c],
+                                                 "fuentes": ["ruct"]})
             p["ruct"].append({"universidad": u.get("codigo"), "centro": c.get("codigo")})
             p["estado"] = "oficial"
 
@@ -122,6 +137,60 @@ def construir(centros: list[dict], cc: list[dict]) -> list[dict]:
     return sorted(provs.values(), key=lambda p: (p["estado"] != "oficial", -p["senales"].get("cc_paginas", 0)))
 
 
+def unir_alias(provs: list[dict], grupos: list[set[str]]) -> list[dict]:
+    """Une los proveedores que son la misma web: el rastreador ve que un dominio redirige a otro
+    (uab.es → uab.cat, ehu.es → ehu.eus). Se queda el identificador del principal (el de la universidad,
+    o el de más referencias del RUCT) y los demás quedan en «ids_unidos» para no perder ninguna referencia."""
+    por_dom = {p["dominio"]: p for p in provs}
+    padre = {d: d for d in por_dom}
+
+    def raiz(d: str) -> str:
+        while padre[d] != d:
+            padre[d] = padre[padre[d]]
+            d = padre[d]
+        return d
+
+    for g in grupos:
+        dentro = [d for d in g if d in por_dom and not AGREGADORES.search(d)]
+        for d in dentro[1:]:
+            padre[raiz(d)] = raiz(dentro[0])
+    conjuntos: dict[str, list[dict]] = {}
+    for d, p in por_dom.items():
+        conjuntos.setdefault(raiz(d), []).append(p)
+    salida = []
+    for miembros in conjuntos.values():
+        if len(miembros) == 1:
+            salida.append(miembros[0])
+            continue
+        miembros.sort(key=lambda p: (not any("centro" not in r for r in p["ruct"]), -len(p["ruct"]),
+                                     -p["senales"].get("cc_paginas", 0), p["dominio"]))
+        jefe = miembros[0]
+        for otro in miembros[1:]:
+            for k in ("dominios", "webs", "nombres", "tipos", "fuentes"):
+                jefe[k] += [v for v in otro[k] if v not in jefe[k]]
+            jefe["ruct"] += [r for r in otro["ruct"] if r not in jefe["ruct"]]
+            s = jefe["senales"]
+            s["cc_paginas"] = s.get("cc_paginas", 0) + otro["senales"].get("cc_paginas", 0)
+            s["cc_ejemplos"] = (s.get("cc_ejemplos", []) + otro["senales"].get("cc_ejemplos", []))[:5]
+            jefe.setdefault("ids_unidos", []).append(otro["id"])
+            if otro["estado"] == "oficial":
+                jefe["estado"] = "oficial"
+        salida.append(jefe)
+    return sorted(salida, key=lambda p: (p["estado"] != "oficial", -p["senales"].get("cc_paginas", 0)))
+
+
+def alias_de_rastreo(carpetas: list[Path]) -> list[set[str]]:
+    """Grupos de dominios que el rastreador vio como una sola web (redirecciones)."""
+    grupos = []
+    for c in carpetas:
+        for f in c.rglob("oferta_web/*.json"):
+            r = json.loads(f.read_text(encoding="utf-8"))
+            propios = set(r.get("dominios_propios") or [])
+            if len(propios) > 1:
+                grupos.append(propios)
+    return grupos
+
+
 def leer_jsonl(carpeta: Path, patron: str) -> list[dict]:
     filas = []
     for f in sorted(carpeta.glob(patron)):
@@ -129,7 +198,7 @@ def leer_jsonl(carpeta: Path, patron: str) -> list[dict]:
     return filas
 
 
-def ejecutar(centros_dir: Path, cc_dir: Path | None, salida: Path) -> dict:
+def ejecutar(centros_dir: Path, cc_dir: Path | None, salida: Path, rastreos: list[Path] | None = None) -> dict:
     centros = [json.loads(f.read_text(encoding="utf-8")) for f in sorted(centros_dir.glob("[0-9][0-9][0-9].json"))]
     cc = leer_jsonl(cc_dir, "dominios_*.jsonl") if cc_dir else []
     # el mismo dominio en varios crawls: se suman páginas
@@ -142,6 +211,8 @@ def ejecutar(centros_dir: Path, cc_dir: Path | None, salida: Path) -> dict:
         x["ejemplos"] = (x["ejemplos"] + d.get("ejemplos", []))[:8]
         x["idiomas"] = sorted(set(x.get("idiomas", [])) | set(d.get("idiomas", [])))
     provs = construir(centros, list(por_dom.values()))
+    antes = len(provs)
+    provs = unir_alias(provs, alias_de_rastreo(rastreos or []))
     destino = salida / "datos" / "estudios" / "censo"
     destino.mkdir(parents=True, exist_ok=True)
     with (destino / "proveedores.jsonl").open("w", encoding="utf-8") as f:
@@ -150,7 +221,8 @@ def ejecutar(centros_dir: Path, cc_dir: Path | None, salida: Path) -> dict:
     descartes = Counter(filtro_candidato(d) for d in por_dom.values() if filtro_candidato(d))
     res = {"proveedores": len(provs), "por_estado": dict(Counter(p["estado"] for p in provs)),
            "tipos_oficiales": dict(Counter(t for p in provs for t in p["tipos"])),
-           "dominios_commoncrawl": len(por_dom), "descartes_commoncrawl": dict(descartes)}
+           "dominios_commoncrawl": len(por_dom), "descartes_commoncrawl": dict(descartes),
+           "unidos_por_redireccion": antes - len(provs)}
     (destino / "resumen.json").write_text(json.dumps(res, ensure_ascii=False, indent=1), encoding="utf-8")
     return res
 
@@ -159,9 +231,11 @@ def main() -> None:
     p = argparse.ArgumentParser()
     p.add_argument("--centros", required=True)
     p.add_argument("--commoncrawl")
+    p.add_argument("--rastreo", action="append", default=[], help="carpeta con resultados del rastreador (alias)")
     p.add_argument("--salida", required=True)
     a = p.parse_args()
-    print(json.dumps(ejecutar(Path(a.centros), Path(a.commoncrawl) if a.commoncrawl else None, Path(a.salida)),
+    print(json.dumps(ejecutar(Path(a.centros), Path(a.commoncrawl) if a.commoncrawl else None, Path(a.salida),
+                              [Path(x) for x in a.rastreo]),
                      ensure_ascii=False, indent=1))
 
 

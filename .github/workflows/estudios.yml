@@ -90,6 +90,9 @@ jobs:
             n=$(basename "$d")
             cp "$d/salida.txt" "pub/$STAMP/$n.salida.txt" 2>/dev/null || true
             if [ -d "$d/datos" ]; then cp -r "$d/datos" "pub/$STAMP/"; fi
+            # Las páginas de webs de centros no se publican: la rama es pública y son textos ajenos. Solo se sube
+            # su índice (URL, fecha, huella sha256); el original irá al archivo privado (R2) cuando exista.
+            rm -rf "$d/archivo/web-centros"
             if [ -d "$d/archivo" ]; then mkdir -p "pub/$STAMP/archivo"; cp -r "$d/archivo/." "pub/$STAMP/archivo/"; cat "$d/archivo/indice.jsonl" >> "pub/$STAMP/archivo/indice_todos.jsonl" 2>/dev/null || true; fi
           done
           cd pub
