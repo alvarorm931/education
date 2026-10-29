@@ -44,7 +44,7 @@ jobs:
         env:
           RUTAS: ${{ inputs.entrada }}
         run: |
-          git fetch -q --depth 1 origin sondas
+          git fetch -q --depth 1 --filter=blob:none origin sondas
           mkdir -p entrada
           for r in $RUTAS; do
             git archive FETCH_HEAD "$r" | tar -x -C entrada
