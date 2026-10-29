@@ -278,9 +278,18 @@ def resumen(procesos: list[dict], hoy: date) -> dict:
             por_puesto[pl.get("puesto_clave") or "sin puesto"] += pl.get("numero") or 0
         for f in p.get("fuentes") or ["BOE"]:
             por_fuente[f] += 1
+    locales_boe = [p for p in procesos if p["id"].startswith("boe:") and p.get("ambito") == "local"]
+    enlaces = Counter(o["fuente"] for p in locales_boe for o in p.get("otras_publicaciones") or [])
     return {
         "fecha": hoy.isoformat(),
         "procesos": len(procesos),
+        "enlaces_locales": {
+            "anuncios_locales_del_boe": len(locales_boe),
+            "con_bases_enlazadas": sum(1 for p in locales_boe if p.get("otras_publicaciones")),
+            "bases_enlazadas_por_fuente": dict(enlaces.most_common()),
+            "procesos_solo_con_bases_locales": dict(Counter(p["fuentes"][0] for p in procesos
+                                                            if p.get("solo_bases_locales")).most_common()),
+        },
         "por_estado": dict(Counter(p["estado"] for p in procesos)),
         "por_fuente": dict(Counter(f for p in procesos for f in p.get("fuentes") or ["BOE"])),
         "plazo_abierto": {"procesos": len(abiertos), "plazas": sum(p.get("total_plazas") or 0 for p in abiertos),
