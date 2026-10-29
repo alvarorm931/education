@@ -133,7 +133,11 @@ Lo que no está publicado se pide, como medio, con identidad real:
   alimenta su embudo comercial.
 - Se piden los datos de la ficha, no el folleto: precio total, reserva, forma de pago, plan de estudios
   con créditos, metodología, evaluación, horario, plazas, fechas de admisión y becas.
+- A quién primero: `motor/estudios/peticiones.py` ordena los centros por fichas que piden el correo y no
+  dan importe, y anota qué campos faltan en la mitad o más de sus fichas. Con el primer barrido: 1.531
+  centros con algún campo esencial sin publicar, 508 con el precio tras el formulario.
 - Registro de cada petición: fecha, canal, respuesta y fecha de la respuesta. Recordatorio a los 15 días.
+  Las respuestas van a `facilitados.jsonl`, que lee `seguimiento.py`.
 - En la ficha: «dato facilitado por el centro a [portal] el [fecha]».
 - Una vez al año, antes de la preinscripción, se pide la actualización.
 
