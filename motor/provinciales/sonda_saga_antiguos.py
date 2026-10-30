@@ -42,9 +42,11 @@ def main(argv: list[str] | None = None) -> int:
     p = parametros_base(h)
     print("resultados", r.status_code, len(r.content), "parámetros", len(p), "urlAjax", p.get("urlAjax"),
           "indexacionFecha", p.get("indexacionFecha"), "IndiceSolr", p.get("IndiceSolr"))
-    facets = sorted(set(re.findall(r"value='((?:<quitar>[^<]*</quitar>)?[^']{1,30})' class='filtro_busqueda-opciones facet'", h)))
+    facets = sorted(set(re.findall(r'data-camposolr="bopantiguo\.mes\.formateado_prop_s"\] \.filtro_busqueda-opciones'
+                                   r'\[value="([^"]*)"\]', h) + re.findall(r"value='((?:<quitar>[^<]*</quitar>)?[^']{1,30})' "
+                                                                          r"class='filtro_busqueda-opciones facet'", h)))
     print("facets:", facets[:40])
-    valor_mes = next((f for f in facets if f.endswith(MESES[int(mes) - 1])), f"<quitar>{int(mes):02d} - </quitar>{MESES[int(mes) - 1]}")
+    valor_mes = next((f for f in facets if f.endswith(MESES[int(mes) - 1])), f"{int(mes):02d} - {MESES[int(mes) - 1]}")
     datos = {**p, "busquedaActiva": "true", "forma_listar": "busqueda", "page": "1",
              "personalizado_bopantiguo.anio_prop_s": anio, "personalizado_bopantiguo.mes.formateado_prop_s": valor_mes}
     time.sleep(1)
