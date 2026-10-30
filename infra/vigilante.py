@@ -190,8 +190,19 @@ def main() -> None:
         if r["status"] == "queued":
             espera = (t0 - fecha(r["created_at"])).total_seconds() / 60
             if espera > 30:
-                colas.append({"flujo": r["name"], "id": r["id"], "en_cola_min": round(espera),
-                              "url": r["html_url"]})
+                # Con max-parallel, la ejecución figura «en cola» mientras sus trabajos van de uno en uno:
+                # solo es cola de verdad si ningún trabajo ha empezado en los últimos 30 minutos.
+                try:
+                    trabajos = api(f"/repos/{repo}/actions/runs/{r['id']}/jobs?per_page=100").get("jobs", [])
+                except Exception:
+                    trabajos = []
+                inicios = [fecha(j.get("started_at")) for j in trabajos
+                           if j.get("status") in ("in_progress", "completed") and j.get("started_at")]
+                avanza = any(i and (t0 - i) < timedelta(minutes=30) for i in inicios) or any(
+                    j.get("status") == "in_progress" for j in trabajos)
+                if not avanza:
+                    colas.append({"flujo": r["name"], "id": r["id"], "en_cola_min": round(espera),
+                                  "trabajos_empezados": len(inicios), "url": r["html_url"]})
             continue
         if r["status"] != "completed" or r.get("conclusion") not in ("failure", "timed_out", "startup_failure"):
             continue
