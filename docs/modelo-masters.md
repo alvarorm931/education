@@ -312,15 +312,17 @@ falta. Lo encontrado al revisar el censo:
 Ordenados por lo que más acerca a tener, para cada máster, lo que hoy se da solo al registrarse
 (`docs/estrategia-informacion-cerrada.md`).
 
-1. **Cerrar el censo**: barrido de los 10.955 candidatos de Common Crawl (en marcha el 29/10/2026), segundo
-   índice de Common Crawl (en marcha), candidatos enlazados desde páginas de colaboradores y revisión a
-   mano de una muestra de verificados para medir la precisión.
+1. **Cerrar el censo**: hecho el 30/10/2026 con dos índices de Common Crawl y los colaboradores (1.503
+   verificados, unos 1.000 reales). Queda: rastrear los 726 pendientes con las reglas nuevas de academias
+   (/cursos/, «Curso de Experto Universitario»), una lista de semillas a mano para los que Common Crawl no
+   ve (CEF, ThePowerMBA, ESH, Saera) y separar portales y blogs con la extracción o una clasificación.
 2. **Extracción con cita** de las páginas de programa de los proveedores verificados (`extraer.py`, lote de
    Claude Haiku). Necesita la clave `ANTHROPIC_API_KEY` como secreto de GitHub y el archivo privado de
    originales (R2): la rama del repositorio es pública y no guarda páginas ajenas.
 3. **Seguimiento por campo** (`seguimiento.py`) sobre lo extraído: qué campos están tras el registro en
    cada máster y lista de peticiones por centro.
-4. **Oficiales**: unir cada título del RUCT con su página (texto del enlace; en marcha), fichas y memorias
+4. **Oficiales**: unir cada título del RUCT con su página (1.576 unidos y 820 dudosos; usar el resultado de la
+   extracción para descartar lo que no es ficha), fichas y memorias
    del RUCT de los 4.347 activos, precio por crédito de los 19 decretos y QEDU (según su ayuda, precio y
    plazas solo de públicas), guías docentes por plataforma (SIGMA DOA primero).
 5. **Peticiones** a centros cuando el portal tenga dirección pública; peticiones formales a universidades

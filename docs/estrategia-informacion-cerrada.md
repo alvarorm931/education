@@ -9,8 +9,8 @@ total y forma de pago, folleto y plan de estudios, guía docente, metodología, 
 plazas y fechas de admisión.
 
 Medido el 29/10/2026 en 3.679 fichas de programa de 1.332 centros no universitarios verificados en su web
-(barrido de 10.955 candidatos; en una revisión a mano, el 77 % de los que pasan los filtros son
-proveedores reales) y, aparte, en 779 fichas de las webs de universidades y centros oficiales:
+(primer barrido; en el censo final, tras el segundo, el 67 % de los verificados son proveedores reales
+según una revisión a mano de 60 al azar) y, aparte, en 779 fichas de las webs de universidades y centros oficiales:
 
 | Qué | No universitarios | Universidades y centros oficiales |
 |---|---|---|
@@ -272,7 +272,7 @@ autorizados, otros centros de nivel universitario y Defensa)**, barrido a fondo:
   UPM, UC3M, UPV, UAM) y las que vetan el rastreo. En marcha: todas las URL de programa de esos dominios
   en Common Crawl.
 
-**Centros no oficiales, primer barrido** (10.955 candidatos del último índice de Common Crawl): 1.466
+**Centros no oficiales, primer barrido** (29/10/2026, 10.955 candidatos del último índice de Common Crawl): 1.466
 con fichas de programa y señal de España, 1.332 tras los filtros de precisión. De 60 revisados a mano al
 azar, 47 pasan los filtros y de esos el 77 % (36) son proveedores reales (escuelas de negocio, academias en línea, institutos sanitarios, colegios
 profesionales, escuelas de arte y diseño). Estimación: unos 1.000 proveedores reales no oficiales (entre 850 y 1.200 con el margen de una muestra de 47),
