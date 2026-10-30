@@ -178,6 +178,13 @@ BOLETINES_OFICIALES = {
     "https://se1.dipucr.es:4443/SIGEM_BuscadorDocsWeb/": "BOP de Ciudad Real (PDF)",
     "https://bop.diputoledo.es/": "BOP de Toledo",
     "https://miprincipado.asturias.es/bopa/": "BOPA (textos)",
+    "https://www.boplaspalmas.com/": "BOP de Las Palmas",
+    "https://ebop.diputaciolleida.cat/": "BOP de Lleida",
+    "https://www.dip-badajoz.es/bop/": "BOP de Badajoz",
+    "https://sede.diphuelva.es/": "BOP de Huelva (robots.txt no responde)",
+    "https://bop.dipcas.es/": "BOP de Castellón (robots.txt no responde)",
+    "https://www.bopcadiz.org/": "BOP de Cádiz (robots.txt no responde)",
+    "https://bop.dpz.es/": "BOP de Zaragoza (robots.txt no responde)",
 }
 DECISION_BOLETINES = ("Álvaro", "2026-10-30")
 # Documentos concretos que el boletín cierra en su robots.txt para proteger datos de personas (el BOPA tiene más de 600
