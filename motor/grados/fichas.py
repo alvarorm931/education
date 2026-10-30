@@ -1,0 +1,257 @@
+"""Ficha de cada grado y comparativa por grado genérico, desde lo capturado (sin pedir nada a ninguna fuente).
+
+Entradas (todas opcionales salvo el catálogo):
+  - catálogo SIIU (catalogo.jsonl)                     → identidad, centros, modalidad, idioma, rama, área;
+  - grados genéricos (genericos.jsonl)                 → a qué genérico pertenece cada título;
+  - QEDU: tarjetas y detalles (qedu_*.jsonl)           → nota de corte, plazas, precio, inserción por centro;
+  - BOE: actos y planes (boe_actos.jsonl, boe_planes.jsonl) → plan de estudios con su comprobación de créditos.
+
+Salidas:
+  - fichas.jsonl: una por grado o doble grado activo (título × universidad), con sus centros dentro;
+  - comparativa.jsonl: por genérico con página, una fila por título × centro con las columnas del comparador;
+  - fichas_resumen.json: cuántas fichas cumplen los datos mínimos para indexar y por qué no las demás.
+
+Datos mínimos para indexar (propuesta, docs/modelo-grados.md §3): asignaturas comprobadas y al menos nota de corte
+o precio. Lo que no los cumple se genera igual, con «indexable: false» y sus motivos.
+
+Uso:
+  python -m motor.grados.fichas --catalogo … --genericos … [--qedu carpeta] [--boe carpeta] --salida ruta/
+"""
+
+from __future__ import annotations
+
+import argparse
+import json
+import re
+from collections import Counter, defaultdict
+from pathlib import Path
+
+from motor.grados.catalogo import clave, clave_union, nombre_corto
+from motor.grados.generico import nombre_base
+
+FUENTE_QEDU = "Ministerio de Ciencia, Innovación y Universidades. QEDU"
+FUENTE_SIIU = "Ministerio de Ciencia, Innovación y Universidades. SIIU"
+FUENTE_BOE = "Agencia Estatal Boletín Oficial del Estado"
+
+
+def _leer(ruta: Path) -> list[dict]:
+    return [json.loads(x) for x in ruta.read_text(encoding="utf-8").splitlines() if x.strip()]
+
+
+def _num(v):
+    try:
+        return float(str(v).replace(",", "."))
+    except (TypeError, ValueError):
+        return None
+
+
+def clave_universidad(nombre: str | None) -> str:
+    """«Universidad Complutense de Madrid» y «Complutense de Madrid» → «complutense madrid»."""
+    u = clave(nombre)
+    u = re.sub(r"^(universidad|universitat|universidade|unibertsitatea)( de| d| del| da| dels)? ", "", u)
+    return " ".join(w for w in u.split() if w not in {"de", "del", "la", "les", "i", "y"})
+
+
+# --------------------------------------------------------------------------------------------- QEDU
+
+
+def indexar_qedu(carpeta: Path | None) -> tuple[dict, dict]:
+    """(título, centro) → tarjeta y (título, centro) → detalle."""
+    tarjetas, detalles = {}, {}
+    if not carpeta:
+        return tarjetas, detalles
+    for f in sorted(carpeta.rglob("qedu_tarjetas_*.jsonl")):
+        for t in _leer(f):
+            tarjetas[(t["codTitula"], t["codCentro"])] = t
+    for f in sorted(carpeta.rglob("qedu_detalles_*.jsonl")):
+        for d in _leer(f):
+            detalles[(d["codTitula"], d["codCentro"])] = d
+    return tarjetas, detalles
+
+
+def centro_qedu(t: dict, d: dict | None) -> dict:
+    det = (d or {}).get("detalle") or {}
+    ins = (d or {}).get("insercion") or {}
+    nota = det.get("nota_corte") if det else _num(t.get("notaCorte"))
+    return {
+        "codigo": t["codCentro"],
+        "centro": t.get("nombreCentro"),
+        "tipo_centro": t.get("tipoCentro"),
+        "provincia": t.get("provincia"),
+        "nota_corte": nota,
+        "nota_corte_anterior": det.get("nota_corte_anterior"),
+        "nota_media_admision": det.get("nota_media_admision"),
+        "curso": det.get("curso") or t.get("anio"),
+        "curso_anterior": det.get("curso_anterior"),
+        "plazas": det.get("plazas"),
+        "precio_credito": det.get("precio_credito"),
+        "creditos": det.get("creditos"),
+        "modalidad": det.get("modalidad"),
+        "insercion": {k: v for k, v in ins.items() if v is not None} or None,
+        "fuente": {"cita": FUENTE_QEDU, "capturado": ((d or {}).get("fuente") or t.get("fuente") or {}).get("capturado")},
+    }
+
+
+# ---------------------------------------------------------------------------------------------- BOE
+
+
+def indexar_planes(carpeta: Path | None) -> dict[tuple[str, str], list[dict]]:
+    """(universidad, grado) normalizados → planes del BOE leídos, del más reciente al más antiguo."""
+    if not carpeta:
+        return {}
+    actos = {}
+    for f in carpeta.rglob("boe_actos.jsonl"):
+        for a in _leer(f):
+            actos[a["identificador"]] = a
+    salida: dict[tuple[str, str], list[dict]] = defaultdict(list)
+    for f in carpeta.rglob("boe_planes.jsonl"):
+        for p in _leer(f):
+            a = actos.get(p["identificador"])
+            if not a or not a.get("titulo_grado") or not a.get("universidad"):
+                continue
+            k = (clave_universidad(a["universidad"]), clave_union(nombre_base(nombre_corto(a["titulo_grado"]))))
+            salida[k].append({**p, "fecha": a.get("fecha"), "universidad_boe": a["universidad"]})
+    for k in salida:
+        salida[k].sort(key=lambda p: p.get("fecha") or "", reverse=True)
+    return salida
+
+
+def plan_comprobado(p: dict) -> bool:
+    esp = p.get("esperado_sin_optativas")
+    return bool(esp) and abs((p.get("suma_sin_optativas") or 0) - esp) <= 0.5
+
+
+def resumen_plan(p: dict) -> dict:
+    filas = p.get("plan") or []
+    return {
+        "boe": p["identificador"],
+        "fecha": p.get("fecha"),
+        "tipo": p.get("tipo"),
+        "comprobado": plan_comprobado(p),
+        "distribucion": p.get("distribucion"),
+        "asignaturas": [{k: f.get(k) for k in ("nombre", "modulo", "tipo", "creditos", "curso", "semestre")}
+                        for f in filas],
+        "menciones": p.get("menciones") or [],
+        "fuente": {"cita": FUENTE_BOE, "url": f"https://www.boe.es/diario_boe/txt.php?id={p['identificador']}"},
+    }
+
+
+# -------------------------------------------------------------------------------------------- fichas
+
+
+def construir(catalogo: list[dict], genericos: list[dict], tarjetas: dict, detalles: dict,
+              planes: dict) -> tuple[list[dict], list[dict]]:
+    gen_de = {c: g for g in genericos for c in g["titulos"]}
+    qedu_por_titulo: dict[str, list] = defaultdict(list)
+    for (tit, cen), t in tarjetas.items():
+        qedu_por_titulo[tit].append(centro_qedu(t, detalles.get((tit, cen))))
+    fichas = []
+    for t in catalogo:
+        if t["situacion"] != "Activo" or t["clase"] not in ("grado", "doble"):
+            continue
+        g = gen_de.get(t["codigo"])
+        centros = sorted(qedu_por_titulo.get(t["codigo"], []), key=lambda c: c["codigo"])
+        # plan del BOE: el más reciente comprobado de esa universidad y ese grado; si no hay, el más reciente
+        plan = None
+        if t["clase"] == "grado":
+            candidatos = []
+            for u in t["universidades"]:
+                candidatos += planes.get((clave_universidad(u["nombre"]), clave_union(nombre_base(t["nombre"]))), [])
+            if candidatos:
+                plan = resumen_plan(next((p for p in candidatos if plan_comprobado(p)), candidatos[0]))
+        notas = [c["nota_corte"] for c in centros if c["nota_corte"] is not None]
+        precios = [c["precio_credito"] for c in centros if c["precio_credito"]]
+        creditos = next((c["creditos"] for c in centros if c["creditos"]), None)
+        motivos = []
+        if not (plan and plan["comprobado"]):
+            motivos.append("sin asignaturas comprobadas" if not plan else "plan sin cuadrar con su tabla de créditos")
+        if not notas and not precios:
+            motivos.append("sin nota de corte ni precio")
+        fichas.append({
+            "codigo": t["codigo"],
+            "clase": t["clase"],
+            "nombre": t["nombre"],
+            "nombre_oficial": t["nombre_oficial"],
+            "universidades": t["universidades"],
+            "universidad_tipo": t["universidad_tipo"],
+            "rama": t["rama"],
+            "area": t["campo"],
+            "generico": g and {"id": g["id"], "nombre": g["nombre"], "pagina_propia": g["pagina_propia"]},
+            "componentes": t.get("componentes") or [],
+            "modalidades": sorted({i["presencialidad"] for i in t["imparticiones"] if i["situacion"] == "Activo"} - {None}),
+            "idioma_extranjero": sorted({i["idioma_extranjero"] for i in t["imparticiones"]
+                                         if (i["idioma_extranjero"] or "").startswith("Sí")}),
+            "centros": centros,
+            "precio_primera_matricula": round(min(precios) * creditos, 2) if precios and creditos else None,
+            "plan": plan,
+            "indexable": not motivos,
+            "motivos_noindex": motivos,
+            "fuente_catalogo": {"cita": FUENTE_SIIU, **{k: t["fuente"].get(k) for k in ("url", "curso", "capturado")}},
+        })
+    # comparativa por genérico con página
+    por_gen: dict[str, list] = defaultdict(list)
+    for f in fichas:
+        if f["generico"] and f["generico"]["pagina_propia"]:
+            for c in f["centros"] or [{}]:
+                por_gen[f["generico"]["id"]].append({
+                    "codigo": f["codigo"], "universidad": f["universidades"][0]["nombre"],
+                    "tipo": f["universidad_tipo"], "centro": c.get("centro"), "provincia": c.get("provincia"),
+                    "nota_corte": c.get("nota_corte"), "nota_corte_anterior": c.get("nota_corte_anterior"),
+                    "plazas": c.get("plazas"), "precio_credito": c.get("precio_credito"),
+                    "afiliacion": (c.get("insercion") or {}).get("tasa_afiliacion"),
+                    "base_media_cotizacion": (c.get("insercion") or {}).get("base_media_cotizacion"),
+                    "practicas_externas": ((f["plan"] or {}).get("distribucion") or {}).get("practicas_externas"),
+                    "optativas": ((f["plan"] or {}).get("distribucion") or {}).get("optativas"),
+                    "modalidades": f["modalidades"],
+                })
+    comparativa = []
+    nombres = {g["id"]: g["nombre"] for g in genericos}
+    for gid, filas in por_gen.items():
+        filas.sort(key=lambda x: (x["nota_corte"] is None, -(x["nota_corte"] or 0)))
+        comparativa.append({"generico": gid, "nombre": nombres.get(gid), "filas": filas,
+                            "universidades": len({x["universidad"] for x in filas})})
+    comparativa.sort(key=lambda x: -len(x["filas"]))
+    return fichas, comparativa
+
+
+def resumen(fichas: list[dict], comparativa: list[dict]) -> dict:
+    return {
+        "fichas": len(fichas),
+        "por_clase": dict(Counter(f["clase"] for f in fichas)),
+        "con_centros_qedu": sum(1 for f in fichas if f["centros"]),
+        "con_nota_de_corte": sum(1 for f in fichas if any(c["nota_corte"] is not None for c in f["centros"])),
+        "con_precio": sum(1 for f in fichas if f["precio_primera_matricula"]),
+        "con_insercion": sum(1 for f in fichas if any(c.get("insercion") for c in f["centros"])),
+        "con_plan_boe": sum(1 for f in fichas if f["plan"]),
+        "con_plan_comprobado": sum(1 for f in fichas if f["plan"] and f["plan"]["comprobado"]),
+        "indexables": sum(1 for f in fichas if f["indexable"]),
+        "motivos_noindex": dict(Counter(m for f in fichas for m in f["motivos_noindex"])),
+        "comparativas": len(comparativa),
+        "filas_comparativa": sum(len(c["filas"]) for c in comparativa),
+    }
+
+
+def main() -> None:
+    p = argparse.ArgumentParser()
+    p.add_argument("--catalogo", required=True)
+    p.add_argument("--genericos", required=True)
+    p.add_argument("--qedu", help="carpeta con qedu_tarjetas_*.jsonl y qedu_detalles_*.jsonl")
+    p.add_argument("--boe", help="carpeta con boe_actos.jsonl y boe_planes.jsonl")
+    p.add_argument("--salida", required=True)
+    a = p.parse_args()
+    tarjetas, detalles = indexar_qedu(Path(a.qedu) if a.qedu else None)
+    fichas, comparativa = construir(_leer(Path(a.catalogo)), _leer(Path(a.genericos)), tarjetas, detalles,
+                                    indexar_planes(Path(a.boe) if a.boe else None))
+    destino = Path(a.salida) / "datos" / "estudios" / "grados"
+    destino.mkdir(parents=True, exist_ok=True)
+    for nombre, datos in (("fichas.jsonl", fichas), ("comparativa.jsonl", comparativa)):
+        with (destino / nombre).open("w", encoding="utf-8") as f:
+            for x in datos:
+                f.write(json.dumps(x, ensure_ascii=False) + "\n")
+    res = resumen(fichas, comparativa)
+    (destino / "fichas_resumen.json").write_text(json.dumps(res, ensure_ascii=False, indent=1), encoding="utf-8")
+    print(json.dumps(res, ensure_ascii=False, indent=1))
+
+
+if __name__ == "__main__":
+    main()
