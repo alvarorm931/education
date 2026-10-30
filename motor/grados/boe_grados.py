@@ -33,7 +33,7 @@ import time
 from collections import Counter
 from pathlib import Path
 
-from motor.estudios.boe_masters import RE_UNIV, rellenar
+from motor.estudios.boe_masters import RE_UNIV
 
 CITA = "Fuente: Agencia Estatal Boletín Oficial del Estado"
 RE_TITULO = re.compile(r"((?:Graduad[oa]|Grado)\b.*?\ben\s+.+?)(?:\.\s*$|, de la Universidad|$)")
@@ -108,10 +108,10 @@ def altas(texto: str) -> list[dict]:
 COL = {
     "nombre": re.compile(r"asignatura|materia|denominaci", re.I),
     "modulo": re.compile(r"m[óo]dulo|bloque", re.I),
-    "creditos": re.compile(r"cr[ée]ditos|ects", re.I),
+    "creditos": re.compile(r"cr[ée]d(?:itos?)?\b|cr[èe]dits?\b|ects", re.I),
     "caracter": re.compile(r"car[áa]cter|^tipo|tipolog", re.I),
     "curso": re.compile(r"^\s*curso\b|\bcurso\s*$", re.I),
-    "semestre": re.compile(r"semestre|cuatrimestre|trimestre|temporal|periodo|duraci", re.I),
+    "semestre": re.compile(r"semestre|cuatrimestre|trimestre|temporal|\btemp\b|periodo|duraci", re.I),
 }
 TOTAL = re.compile(r"^(total|suma)", re.I)
 TIPOS_CREDITO = [
@@ -266,8 +266,20 @@ def normalizar_tablas(tablas: list[dict]) -> list[dict]:
             continue
         i = next((k for k in range(min(3, len(filas))) if _es_cabecera(filas[k])), None)
         if i is None:
-            salida.append(t)
-            continue
+            # «| ECTS | Tipo» con la columna del nombre sin rótulo: se le pone «Asignatura»
+            k = next((k for k in range(min(3, len(filas))) if len(filas[k]) >= 2 and not (filas[k][0] or "").strip()
+                      and any(COL["creditos"].search(c or "") for c in filas[k][1:])), None)
+            if k is None:
+                salida.append(t)
+                continue
+            filas = filas[:k] + [["Asignatura"] + list(filas[k][1:])] + filas[k + 1:]
+            t = {**t, "nombre_sin_rotulo": True}
+            i = k
+        # rótulos de una sola celda encima de la cabecera («Total de créditos de formación básica = 60»)
+        rotulo_tabla = " ".join(c.strip() for f in filas[:i] for c in f if len([x for x in f if (x or "").strip()]) == 1
+                                and (c or "").strip())
+        if rotulo_tabla:
+            t = {**t, "rotulo": rotulo_tabla}
         cab, rotulos = filas[i], (filas[i - 1] if i > 0 else [])
         inicios = [k for k, c in enumerate(cab) if COL["nombre"].search(c or "") and not COL["creditos"].search(c or "")
                    and not COL["modulo"].search(c or "")]
@@ -298,11 +310,65 @@ def _corregir_columnas(cols: dict[str, int], filas: list[list[str]]) -> dict[str
     return cols
 
 
-def plan(tablas: list[dict]) -> list[dict]:
+def tipo_de_rotulo(texto: str | None) -> str | None:
+    """Tipo de las asignaturas de una tabla o de un tramo por su rótulo: «Total de créditos de formación básica
+    = 60», «Asignaturas obligatorias», «Optatividad». Con más de un tipo en el rótulo, ninguno."""
+    s = sin_acentos_min(texto)
+    hallados = {clave for clave, patron in (
+        ("basica", r"formacion basica|\bbasicas?\b"), ("obligatoria", r"obligatori"), ("optativa", r"optativ"),
+        ("practicas", r"practicas (?:externas|academicas|curriculares)|\bpracticum\b"),
+        ("tfg", r"trabajo (?:de )?fin")) if re.search(patron, s)}
+    return hallados.pop() if len(hallados) == 1 else None
+
+
+def _separador(texto: str, estado: dict) -> None:
+    """Fila de una sola celda: «Primer curso», «Segundo semestre», «Curso 2.º - Semestre 1», «Formación básica»,
+    «Módulo 3. Gestión»: actualiza el estado que heredan las filas siguientes."""
+    for parte in re.split(r"[.,;:–—/-]\s+|\s+[–—-]\s+", texto):
+        if re.search(r"semestre|cuatrimestre", parte, re.I):
+            estado["semestre"] = numero_orden(parte)
+        elif re.search(r"\bcurso\b", parte, re.I):
+            estado["curso"], estado["semestre"] = numero_orden(parte), None
+        elif tipo_de_rotulo(parte):
+            estado["tipo"] = tipo_de_rotulo(parte)
+        elif re.search(r"\bm[óo]dulo\b|\bmateria\b", parte, re.I):
+            estado["modulo"] = texto.strip().rstrip(" .")
+
+
+def _con_separadores(filas: list[list[str]], ancho: int) -> list[tuple[list[str], dict]]:
+    """Filas del cuerpo con su estado (curso, semestre, tipo, módulo) heredado de las filas separadoras, y las
+    celdas combinadas (rowspan) completadas por la izquierda con la fila anterior. Las separadoras no salen."""
+    estado: dict = {"curso": None, "semestre": None, "tipo": None, "modulo": None}
+    salida, previa = [], [""] * ancho
+    for f in filas:
+        llenas = [x for x in f if (x or "").strip()]
+        if ancho >= 2 and len(llenas) == 1 and not re.fullmatch(r"\s*\d+(?:[.,]\d+)?\s*", llenas[0]):
+            _separador(llenas[0], estado)
+            continue
+        if len(f) < ancho:
+            f = previa[: ancho - len(f)] + list(f)
+        f = list(f[:ancho]) + [""] * (ancho - len(f))
+        salida.append((f, dict(estado)))
+        previa = f
+    return salida
+
+
+def _curso_y_semestre(curso: int | None, semestre: int | None) -> tuple[int | None, int | None]:
+    """«Semestre 5» sin curso o con su curso → curso 3, semestre 1 (dos semestres por curso)."""
+    if semestre and semestre > 2:
+        return curso or (semestre + 1) // 2, (semestre - 1) % 2 + 1
+    return curso, semestre
+
+
+def plan(tablas: list[dict], dist: dict | None = None) -> list[dict]:
     """Filas de asignatura o materia del plan, con carácter, créditos, curso y semestre cuando vienen.
 
     Un plan suele repetir asignaturas en varias tablas (la de formación básica por rama y la del plan completo):
     se leen todas y se queda, para cada nombre, la fila de la tabla más completa.
+
+    El tipo (básica, obligatoria…) sale de la columna de carácter; si no la hay, del rótulo de la tabla o de su
+    fila de total («Total de créditos de formación obligatoria»); y si tampoco, de la tabla de créditos por tipo
+    (dist): cuando la suma de la tabla es exactamente la de un solo tipo, sus filas son de ese tipo.
     """
     por_tabla = []
     for n, t in enumerate(normalizar_tablas(tablas)):
@@ -312,20 +378,21 @@ def plan(tablas: list[dict]) -> list[dict]:
         cab = filas[0]
         if RESUMEN.search(cab[0] or "") and len(cab) <= 3:
             continue  # tabla de créditos por tipo: se lee aparte (distribucion_creditos)
-        cuerpo = rellenar(filas[1:], len(cab))
+        filas_estado = _con_separadores(filas[1:], len(cab))
+        cuerpo = [f for f, _ in filas_estado]
         cols = _corregir_columnas(_columnas(cab), [cab] + cuerpo)
         if "nombre" not in cols and "modulo" in cols:
             cols["nombre"], cols["nivel"] = cols.pop("modulo"), "modulo"
         if "nombre" not in cols or "creditos" not in cols:
             continue
+        tipo_tabla = tipo_de_rotulo(t.get("rotulo"))
+        if not tipo_tabla:  # fila de total al pie: «Total de créditos de formación obligatoria. | 150»
+            pies = {tipo_de_rotulo(f[cols["nombre"]]) for f in cuerpo if TOTAL.match((f[cols["nombre"]] or "").strip())}
+            pies.discard(None)
+            tipo_tabla = pies.pop() if len(pies) == 1 else None
         salida = []
-        curso_actual = None
-        for f in cuerpo:
+        for f, estado in filas_estado:
             nombre = (f[cols["nombre"]] or "").strip().rstrip(" .")
-            # filas separadoras «Primer curso», «Curso 2.º» dentro de la tabla
-            if nombre and len([x for x in f if x.strip()]) == 1 and re.search(r"\bcurso\b", nombre, re.I):
-                curso_actual = numero_orden(nombre)
-                continue
             if not nombre or TOTAL.match(nombre) or nombre.lower() == (cab[cols["nombre"]] or "").lower():
                 continue
             curso = numero_orden(f[cols["curso"]]) if "curso" in cols else None
@@ -334,16 +401,18 @@ def plan(tablas: list[dict]) -> list[dict]:
                 partes = re.findall(r"\d+", f[cols["curso_semestre"]] or "")
                 curso = int(partes[0]) if partes else curso
                 semestre = int(partes[1]) if len(partes) > 1 else semestre
+            curso, semestre = _curso_y_semestre(curso or estado["curso"], semestre or estado["semestre"])
             nivel = "modulo" if cols.get("nivel") == "modulo" else (
                 "asignatura" if re.search("asignatura", cab[cols["nombre"]], re.I) else "materia")
             caracter = f[cols["caracter"]].strip().rstrip(" .") if "caracter" in cols else None
+            modulo = f[cols["modulo"]].strip().rstrip(" .") if "modulo" in cols and isinstance(cols["modulo"], int) else None
             salida.append({
                 "nombre": nombre,
-                "modulo": f[cols["modulo"]].strip().rstrip(" .") if "modulo" in cols and isinstance(cols["modulo"], int) else None,
+                "modulo": modulo or estado["modulo"],
                 "caracter": caracter,
-                "tipo": tipo_caracter(caracter),
+                "tipo": tipo_caracter(caracter) or estado["tipo"] or tipo_tabla,
                 "creditos": _num(f[cols["creditos"]]),
-                "curso": curso or curso_actual,
+                "curso": curso,
                 "semestre": semestre,
                 "periodo_literal": f[cols["semestre"]] if "semestre" in cols else None,
                 "nivel": nivel,
@@ -351,8 +420,20 @@ def plan(tablas: list[dict]) -> list[dict]:
                 "fila_literal": f,
             })
         if salida:
-            riqueza = sum(bool(x["caracter"]) + bool(x["curso"]) + bool(x["semestre"]) for x in salida) / len(salida)
-            por_tabla.append((riqueza, len(salida), n, salida))
+            por_tabla.append((0, len(salida), n, salida))
+    # tablas sin ningún tipo: si su suma es la de un tipo que ninguna otra tabla trae, son de ese tipo
+    presentes = {x["tipo"] for *_, sal in por_tabla for x in sal if x["tipo"]}
+    for *_, sal in por_tabla:
+        if dist and not any(x["tipo"] for x in sal):
+            suma = sum(x["creditos"] or 0 for x in sal)
+            iguales = [tipo for tipo, clave in CLAVE_DIST.items()
+                       if tipo not in presentes and dist.get(clave) and abs(dist[clave] - suma) <= 0.5]
+            if len(iguales) == 1:
+                presentes.add(iguales[0])
+                for x in sal:
+                    x["tipo"], x["tipo_por_suma_de_tabla"] = iguales[0], True
+    por_tabla = [(sum(bool(x["tipo"]) + bool(x["curso"]) + bool(x["semestre"]) for x in sal) / len(sal), k, n, sal)
+                 for _, k, n, sal in por_tabla]
     vistos, resultado = set(), []
     for _, _, _, salida in sorted(por_tabla, key=lambda x: (-x[0], -x[1], x[2])):
         for x in salida:
@@ -373,8 +454,53 @@ def menciones(texto: str) -> list[str]:
     return vistas
 
 
+RE_ANEXO = re.compile(r"^ANEXO\b", re.I)
+RE_CABECERA_PLAN = re.compile(r"^(?:Plan(?:es)? de estudios?|ANEXO)\b.*?\b((?:Graduad[oa]|Grado)\b.*?\ben\s+.+?)\.?$")
+RE_SOLO_TITULO = re.compile(r"^((?:Graduad[oa]|Grado)\b.*?\ben\s+.+?)\.?$")
+
+
+def cabeceras_de_plan(texto: str) -> list[tuple[int, str]]:
+    """(posición, título) de cada plan en una resolución con varios: «Plan de estudios conducente al título de
+    Graduado o Graduada en X», «ANEXO II. Grado en X» o la línea «Graduado o Graduada en X» tras «ANEXO II»."""
+    salida, previa, pos = [], "", 0
+    for linea in (texto or "").split("\n"):
+        limpia = linea.strip()
+        m = RE_CABECERA_PLAN.match(limpia) or (RE_SOLO_TITULO.match(limpia) if RE_ANEXO.match(previa) else None)
+        if m:
+            titulo = re.sub(r"\s+por la Universi.*$", "", m.group(1)).strip().rstrip(".")
+            if not salida or salida[-1][1] != titulo:
+                salida.append((pos, titulo))
+        if limpia:
+            previa = limpia
+        pos += len(linea) + 1
+    return salida
+
+
+def separar_planes(doc: dict) -> list[dict]:
+    """Una resolución con varios planes («por la que se publican planes de estudios») trae una tabla de créditos
+    por tipo al comienzo de cada plan, en el orden de sus anexos. Si hay tantas como títulos de plan en el texto,
+    se separa en un documento por plan con su «titulo_grado»; si no cuadran, se deja entero (sin título)."""
+    tablas = doc.get("tablas") or []
+    grupos: list[list[dict]] = []
+    for t in tablas:
+        es_dist = distribucion_creditos([t]) is not None
+        if not grupos or es_dist and any(distribucion_creditos([x]) is None for x in grupos[-1]):
+            grupos.append([])
+        grupos[-1].append(t)
+    cabeceras = cabeceras_de_plan(doc.get("texto", ""))
+    if len(grupos) < 2 or len(grupos) != len(cabeceras):
+        return [doc]
+    texto = doc.get("texto", "")
+    partes = []
+    for k, (grupo, (pos, titulo)) in enumerate(zip(grupos, cabeceras)):
+        fin = cabeceras[k + 1][0] if k + 1 < len(cabeceras) else len(texto)
+        partes.append({**doc, "tablas": grupo, "texto": texto[pos:fin], "titulo_grado": titulo, "parte": k + 1,
+                       "partes": len(grupos)})
+    return partes
+
+
 def medir_plan(doc: dict) -> dict:
-    filas = plan(doc.get("tablas", []))
+    filas = plan(doc.get("tablas", []), distribucion_creditos(doc.get("tablas", [])))
     asig = [f for f in filas if f["nivel"] == "asignatura"]
     base = asig or filas
     dist = distribucion_creditos(doc.get("tablas", []))
@@ -488,9 +614,11 @@ def cmd_medir(textos: Path, actos_fichero: Path | None, salida: Path) -> dict:
             continue
         if tipo is None:
             continue
-        m = medir_plan(doc)
-        planes.append({"identificador": doc["identificador"], "tipo": tipo, "titulo": doc.get("titulo"), **m,
-                       "plan": plan(doc.get("tablas", []))})
+        for parte in separar_planes(doc):
+            m = medir_plan(parte)
+            extra = {k: parte[k] for k in ("titulo_grado", "parte", "partes") if k in parte}
+            planes.append({"identificador": doc["identificador"], "tipo": tipo, "titulo": doc.get("titulo"), **extra,
+                           **m, "plan": plan(parte.get("tablas", []), m.get("distribucion"))})
     _escribir(destino, "boe_planes.jsonl", planes)
     _escribir(destino, "boe_altas.jsonl", altas_todas)
 

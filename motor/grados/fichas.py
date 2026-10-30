@@ -247,9 +247,11 @@ def indexar_planes(carpeta: Path | None) -> dict[tuple[str, str], list[dict]]:
     for f in carpeta.rglob("boe_planes.jsonl"):
         for p in _leer(f):
             a = actos.get(p["identificador"])
-            if not a or not a.get("titulo_grado") or not a.get("universidad"):
+            # en las resoluciones con varios planes el título sale de cada anexo (boe_grados.separar_planes)
+            titulo = p.get("titulo_grado") or (a or {}).get("titulo_grado")
+            if not a or not titulo or not a.get("universidad"):
                 continue
-            k = (clave_universidad(a["universidad"]), clave_union(nombre_base(nombre_corto(a["titulo_grado"]))))
+            k = (clave_universidad(a["universidad"]), clave_union(nombre_base(nombre_corto(titulo))))
             salida[k].append({**p, "fecha": a.get("fecha"), "universidad_boe": a["universidad"]})
     for k in salida:
         salida[k].sort(key=lambda p: p.get("fecha") or "", reverse=True)

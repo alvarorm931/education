@@ -103,3 +103,52 @@ def test_columnas_de_creditos_y_caracter_cambiadas():
     filas = bg.plan([t])
     assert [(f["nombre"], f["creditos"], f["tipo"], f["curso"]) for f in filas] == [
         ("Fundamentos de Marketing", 6, "obligatoria", 1), ("Política de Producto", 6, "obligatoria", 2)]
+
+
+def _t(filas):
+    return {"filas": len(filas), "contenido": filas, "datos_personales": False}
+
+
+def test_plan_tipo_por_rotulo_separadores_y_cabecera_sin_rotulo():
+    from motor.grados.boe_grados import plan, tipo_de_rotulo
+    assert tipo_de_rotulo("Total de créditos de formación básica = 60") == "basica"
+    assert tipo_de_rotulo("Básicas y obligatorias") is None
+    t1 = _t([["Total de créditos de formación básica = 60"], ["Asignatura", "Créditos", "Curso"],
+             ["Cálculo.", "6", "1"], ["Física.", "6", "1"]])
+    t2 = _t([["", "ECTS", "Tipo"], ["Primer semestre"], ["Química.", "6", "OB"], ["Segundo semestre"],
+             ["Geología.", "6", "OB"]])
+    t3 = _t([["Módulo", "Asignatura", "Créd.", "Carácter", "Curso", "Org. Temp."],
+             ["Mates", "Álgebra.", "6", "Básica.", "1.º", "1S"]])
+    p = {x["nombre"]: x for x in plan([t1, t2, t3])}
+    assert p["Cálculo"]["tipo"] == "basica" and p["Cálculo"]["curso"] == 1
+    assert p["Química"]["semestre"] == 1 and p["Geología"]["semestre"] == 2 and p["Geología"]["tipo"] == "obligatoria"
+    assert p["Álgebra"]["creditos"] == 6 and p["Álgebra"]["semestre"] == 1 and p["Álgebra"]["tipo"] == "basica"
+
+
+def test_plan_tipo_por_pie_y_por_suma_de_tabla():
+    from motor.grados.boe_grados import plan
+    obl = _t([["Asignatura", "Créditos", "Curso"], ["Sociedad.", "6", "2"], ["Penal.", "6", "2"],
+              ["Total de créditos de formación obligatoria.", "12", ""]])
+    fb = _t([["Ámbito de conocimiento", "Asignatura", "Créditos"], ["Derecho.", "Constitucional.", "6"],
+             ["Derecho.", "Civil.", "6"]])
+    dist = {"formacion_basica": 12, "obligatorias": 12, "optativas": 6, "total": 30}
+    p = {x["nombre"]: x for x in plan([obl, fb], dist)}
+    assert p["Sociedad"]["tipo"] == "obligatoria"
+    # la suma de la tabla sin tipo (12) es la de básicas y obligatorias, pero obligatorias ya la trae otra tabla
+    assert p["Civil"]["tipo"] == "basica" and p["Civil"]["tipo_por_suma_de_tabla"]
+
+
+def test_separar_planes_de_una_resolucion_con_varios():
+    from motor.grados.boe_grados import separar_planes
+    dist = lambda b, o: _t([["Tipo de materia", "Créditos"], ["Formación básica.", str(b)], ["Obligatorias.", str(o)],  # noqa: E731
+                            ["Optativas.", "30"], ["Total.", "240"]])
+    asig = _t([["Asignatura", "ECTS"], ["Química.", "6"]])
+    texto = ("Ha resuelto publicar los planes:\n2504437 Graduado o Graduada en Ciencias Ambientales.\nANEXO I\n"
+             "Plan de estudios conducente al título de Graduado o Graduada en Ciencias Ambientales\nRama de Ciencias\n"
+             "ANEXO II\nGraduado o Graduada en Farmacia por la Universidad de Alcalá\n")
+    partes = separar_planes({"identificador": "X", "texto": texto, "tablas": [dist(60, 120), asig, dist(60, 150), asig]})
+    assert [p["titulo_grado"] for p in partes] == ["Graduado o Graduada en Ciencias Ambientales",
+                                                    "Graduado o Graduada en Farmacia"]
+    assert len(partes[1]["tablas"]) == 2 and "Farmacia" in partes[1]["texto"]
+    # si no cuadran tablas y títulos, el documento queda entero
+    assert separar_planes({"identificador": "X", "texto": texto, "tablas": [dist(60, 120), asig]})[0].get("titulo_grado") is None
