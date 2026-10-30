@@ -100,6 +100,16 @@ def test_precio_de_la_norma_solo_con_precio_unico_y_centro_propio_sin_precio_en_
     assert f["precio_credito_norma"] is None and f["precio_primera_matricula"] == round(16.92 * 240, 2)
 
 
+def test_precio_por_rama_de_la_norma():
+    from motor.grados import precios
+    assert precios.precio_por_rama("Galicia", [("Ciencias Sociales y Jurídicas", "Derecho")])["precio_credito"] == 9.85
+    assert precios.precio_por_rama("Galicia", [("Artes y Humanidades", "Bellas Artes")])["precio_credito"] == 13.93
+    # doble con sus dos grados en el mismo precio: ese; en precios distintos: no se deduce
+    assert precios.precio_por_rama("Cantabria", [("Ciencias", "Física"), ("Ciencias", "Matemáticas")])["precio_credito"] == 12.22
+    assert precios.precio_por_rama("Cantabria", [("Ciencias", "Física"), ("Ingeniería y Arquitectura", "X")]) is None
+    assert precios.precio_por_rama("Madrid (Comunidad de)", [("Ciencias", "Física")]) is None
+
+
 def _imp(valor, tipo):
     return {"valor": valor, "tipo": tipo, "verosimil": True, "contexto_sha256": "x"}
 

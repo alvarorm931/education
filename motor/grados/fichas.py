@@ -30,7 +30,7 @@ from pathlib import Path
 from motor.grados.asignaturas import comparar
 from motor.grados.catalogo import clave, clave_union, nombre_corto
 from motor.grados.generico import nombre_base
-from motor.grados.precios import de_comunidad, precio_unico
+from motor.grados.precios import de_comunidad, precio_por_rama, precio_unico
 
 FUENTE_QEDU = "Ministerio de Ciencia, Innovación y Universidades. QEDU"
 URL_QEDU = "https://www.ciencia.gob.es/qedu.html"
@@ -478,6 +478,7 @@ def construir(catalogo: list[dict], genericos: list[dict], tarjetas: dict, detal
     for (tit, cen), t in tarjetas.items():
         qedu_por_titulo[tit].append(centro_qedu(t, detalles.get((tit, cen))))
     fichas = []
+    rama_de = {t["codigo"]: (t.get("rama"), t["nombre"]) for t in catalogo if t.get("clase") == "grado"}
     for t in catalogo:
         if t["situacion"] != "Activo" or t["clase"] not in ("grado", "doble"):
             continue
@@ -529,7 +530,16 @@ def construir(catalogo: list[dict], genericos: list[dict], tarjetas: dict, detal
             propio = any(c.get("tipo_centro") == "Propio" for c in centros) if centros else any(
                 i.get("unidad_modalidad") == "Centro propio" and i.get("situacion") == "Activo"
                 for i in t.get("imparticiones") or [])
-            pu = precio_unico(t["universidades"][0].get("comunidad")) if propio else None
+            comunidad = t["universidades"][0].get("comunidad")
+            pu = precio_unico(comunidad) if propio else None
+            if propio and not pu:
+                # precio por rama: la del grado o, en un doble, la de los dos grados que lo forman (mismo precio)
+                if t["clase"] == "grado":
+                    titulos = [(t.get("rama"), t["nombre"])]
+                else:
+                    comp = [rama_de.get(c.get("codigo") or "") for c in t.get("componentes") or []]
+                    titulos = comp if len(comp) >= 2 and all(comp) else []
+                pu = precio_por_rama(comunidad, titulos)
             if pu:
                 precio_norma = {**pu, "centros": "propios", "creditos": creditos}
         if not notas and not precios and not precio_norma and not (pweb and pweb["precio_curso"]):
