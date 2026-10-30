@@ -140,3 +140,11 @@ def test_importe_desde_no_es_precio_del_curso():
     assert imp[0]["desde"]
     p = precio_web({"url": "x", "importes": imp, "precio_jsonld": {"precio": 3060, "moneda": "EUR"}})
     assert p["precio_curso"] is None and "desde" in p["nota"]
+
+
+def test_espacio_normal_no_separa_miles():
+    """«10 983 €» en una fila «… | 10 | 983 € |» son 10 cuotas de 983 €, no 10.983 € (Alfonso X)."""
+    from motor.grados.web_privadas import IMPORTE, valor_importe
+    assert [valor_importe(m) for m in IMPORTE.finditer("11.730 € 800 € 1.100 € 10 983 € 206 €")] == \
+        [11730, 800, 1100, 983, 206]
+    assert [valor_importe(m) for m in IMPORTE.finditer("9 990 €")] == [9990]

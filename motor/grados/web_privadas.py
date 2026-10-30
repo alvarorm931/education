@@ -74,7 +74,8 @@ RANGO = {"credito": (40, 450), "curso": (2500, 30000), "mensual": (200, 3500), "
          "total": (8000, 160000)}
 IDIOMA_EXTRANJERO = re.compile(r"/(en|ca|eu|gl|fr|de|it|pt|va)(/|$)|/english/", re.I)
 # «9.990 €», «9.990,00 euros» y, en las páginas en inglés, «€9,990» o «€ 9,990.00»
-IMPORTE = re.compile(r"(?:(?P<e>\d{1,3}(?:[.\s]\d{3})+|\d{3,6})(?:,(?P<d>\d{2}))?\s?(?:€|euros?\b|EUR\b))|"
+# miles con punto o con espacio duro (no con un espacio normal: «10 983 €» de «10 cuotas de 983 €» no son 10.983 €)
+IMPORTE = re.compile(r"(?:(?P<e>\d{1,3}(?:[.\u00a0\u202f]\d{3})+|\d{3,6})(?:,(?P<d>\d{2}))?\s?(?:€|euros?\b|EUR\b))|"
                      r"(?:(?:€|EUR)\s?(?P<e2>\d{1,3}(?:[.,]\d{3})+|\d{3,6})(?:\.(?P<d2>\d{2}))?(?![\d.,]\d))", re.I)
 
 
