@@ -254,3 +254,8 @@ def test_extraer_guarda_la_lectura_con_miles_por_espacio():
     r = tg.extraer(["Grado en Psicología 11.730€ 800 €  1  100 € 10 983 € 206 €"], G)
     valores = {i["valor"]: i.get("miles_con_espacio") for i in r["grados"]["1"]}
     assert valores == {11730: None, 800: None, 100: 1100, 983: 10983, 206: None}
+
+
+def test_diagnostico_html_sin_texto():
+    d = tg.diagnostico_html("<table><tr><td>ADE</td><td>2.094,00</td></tr></table><script>x='1.047,00'</script>")
+    assert d["tablas"] == 1 and d["filas"] == 1 and d["cifras_visibles"] == 1 and d["cifras_en_scripts"] == 1

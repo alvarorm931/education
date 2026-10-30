@@ -214,6 +214,23 @@ def grados_por_codigo(catalogo: list[dict]) -> dict[str, list[dict]]:
 BLOQUE = re.compile(r"(?is)</(?:p|li|h[1-6]|div|section|article|dt|dd|caption|table)>|<br\s*/?>")
 
 
+CIFRA_EUROPEA = re.compile(r"(?<![\d.,])\d{1,3}(?:\.\d{3})*,\d{2}(?![\d,])")
+
+
+def diagnostico_html(html: str) -> dict:
+    """Por qué una página de precios no da ninguna línea con importe, sin guardar su texto: cuántas tablas y filas
+    trae, cuántas cifras con decimales hay a la vista y cuántas dentro de scripts (tablas que se pintan con
+    JavaScript) o de plantillas."""
+    scripts = " ".join(re.findall(r"(?is)<script\b.*?</script>", html))
+    plantillas = " ".join(re.findall(r"(?is)<template\b.*?</template>", html))
+    visible = "\n".join(lineas_html(html))
+    return {"bytes": len(html), "tablas": len(re.findall(r"(?i)<table\b", html)),
+            "filas": len(re.findall(r"(?i)<tr\b", html)), "cifras_visibles": len(CIFRA_EUROPEA.findall(visible)),
+            "cifras_en_scripts": len(CIFRA_EUROPEA.findall(scripts)),
+            "cifras_en_plantillas": len(CIFRA_EUROPEA.findall(plantillas)),
+            "iframes": len(re.findall(r"(?i)<iframe\b", html)), "euro": "€" in visible}
+
+
 def lineas_html(html: str) -> list[str]:
     """Texto visible de una página en líneas: una por párrafo o elemento de lista y una por fila de tabla, con las
     celdas separadas por « | » (para leer cada importe con el rótulo de su columna)."""
@@ -443,6 +460,8 @@ def ejecutar(catalogo: list[dict], rastreos: Path, salida: Path, max_minutos: fl
                 gs = list(por_u.get(p["codigo_universidad"], []))
                 gs += [por_cod[c] for c in p.get("grados_rastreo") or [] if c in por_cod and por_cod[c] not in gs]
                 res.update(extraer(paginas, gs, grado_de_fichero(r_url, gs) if es_pdf else grado_de_url(r_url, gs)))
+                if es_html and not res.get("lineas_con_importe"):
+                    res["diagnostico"] = diagnostico_html(r.text)
             except Exception as e:  # noqa: BLE001 - un documento roto no para el resto
                 res["error"] = f"{type(e).__name__}: {str(e)[:120]}"
         elif r is not None and r.status_code == 200:

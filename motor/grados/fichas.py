@@ -262,10 +262,14 @@ def indexar_tarifas(carpeta: Path | None) -> dict[str, dict]:
                                           for b, v in por_bloque.items()) if c]
                 cuentas = min(soluciones, key=lambda c: c["precio_curso"]) if soluciones else None
                 releido = (cuentas or {}).get("importe_releido")
-                p = cuentas and {**cuentas, "url": doc["url"],
-                                 "nota": releido and (f"el documento escribe los miles con un espacio; "
-                                                      f"{releido['leido']:,.0f} € se lee {releido['como']:,.0f} € porque solo "
-                                                      f"así cuadran las cifras del grado").replace(",", "."),
+                varios = sorted({c["precio_curso"] for c in soluciones})
+                nota_varios = (len(varios) > 1 and "la lista da varios precios para este grado (campus, modalidad o "
+                               "idioma): se publica el menor, «desde»") or None
+                p = cuentas and {**cuentas, "url": doc["url"], **({"precios_de_la_lista": varios} if nota_varios else {}),
+                                 "nota": "; ".join(x for x in (nota_varios, releido and (
+                                     f"el documento escribe los miles con un espacio; {releido['leido']:,.0f} € se "
+                                     f"lee {releido['como']:,.0f} € porque solo así cuadran las cifras del grado"
+                                 ).replace(",", ".")) if x) or None,
                                  "importes": sorted({i["valor"] for i in importes}), "precio_jsonld": None}
                 if not p and (doc.get("lectura") or lecturas.get(doc["url"])) == "importe_anual_mayor_de_la_linea":
                     # documento comprobado a mano (tarifas_grado.LECTURA_CONOCIDA): cada grado da en su línea el
