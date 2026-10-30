@@ -1,7 +1,7 @@
-# Vigilancia 30/10 09:46 (Madrid)
+# Vigilancia 30/10 10:15 (Madrid)
 
-- Ejecuciones revisadas (últimas 6 h): 270
-- Fallos: 2; pendientes: 0; relanzados ahora: 0
+- Ejecuciones revisadas (últimas 6 h): 220
+- Fallos: 1; pendientes: 0; relanzados ahora: 0
 - Colas de más de 30 minutos: 0
 - Flujos programados parados: ninguno
 - Almacén S3: ok
@@ -20,9 +20,4 @@ https://github.com/alvarorm931/education/actions/runs/41018014171 (intento 1, wo
       FAILED tests/test_privacidad.py::test_originales_solo_huella - KeyError: 'solo_huella'
       2 failed, 586 passed, 1 skipped in 50.77s
       ##[error]Process completed with exit code 1.
-
-## Boletines autonómicos · 30/10 04:41 · superado
-https://github.com/alvarorm931/education/actions/runs/40995655119 (intento 1, workflow_dispatch, f26c916, pasajero: False)
-- (ninguno) · pasos: ? · ejecutor: None
-      Falló sin ningún trabajo fallido: error en la definición del flujo (matriz vacía, YAML, permisos de la ejecución). Ver la página.
 

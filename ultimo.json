@@ -1,10 +1,10 @@
 {
- "fecha": "2026-10-30T08:46:37+00:00",
- "fecha_madrid": "30/10 09:46",
+ "fecha": "2026-10-30T09:15:37+00:00",
+ "fecha_madrid": "30/10 10:15",
  "ventana_horas": 6.0,
  "resumen": {
-  "ejecuciones_revisadas": 270,
-  "fallos": 2,
+  "ejecuciones_revisadas": 220,
+  "fallos": 1,
   "fallos_pendientes": 0,
   "relanzados": 0,
   "colas_largas": 0,
@@ -76,33 +76,6 @@
      ]
     }
    ]
-  },
-  {
-   "flujo": "Boletines autonómicos",
-   "fichero": "autonomicos.yml",
-   "id": 40995655119,
-   "intento": 1,
-   "evento": "workflow_dispatch",
-   "rama": "main",
-   "commit": "f26c916",
-   "titulo": "Boletines autonómicos",
-   "conclusion": "failure",
-   "cuando": "30/10 04:41",
-   "url": "https://github.com/alvarorm931/education/actions/runs/40995655119",
-   "superado": true,
-   "en_curso": null,
-   "pasajero": false,
-   "detalle": [
-    {
-     "trabajo": "(ninguno)",
-     "pasos": [],
-     "ejecutor": null,
-     "etiquetas": null,
-     "final_registro": [
-      "Falló sin ningún trabajo fallido: error en la definición del flujo (matriz vacía, YAML, permisos de la ejecución). Ver la página."
-     ]
-    }
-   ]
   }
  ],
  "colas_largas": [],
@@ -112,7 +85,7 @@
    "parado": false
   },
   "autonomicos.yml": {
-   "ultimo_bien": "30/10 07:35",
+   "ultimo_bien": "30/10 10:15",
    "parado": false
   },
   "seo.yml": {
