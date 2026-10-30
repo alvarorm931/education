@@ -1,13 +1,13 @@
 {
- "fecha": "2026-10-30T20:00:27+00:00",
- "fecha_madrid": "30/10 21:00",
+ "fecha": "2026-10-30T20:04:51+00:00",
+ "fecha_madrid": "30/10 21:04",
  "ventana_horas": 6.0,
  "resumen": {
-  "ejecuciones_revisadas": 93,
-  "fallos": 2,
+  "ejecuciones_revisadas": 91,
+  "fallos": 1,
   "fallos_pendientes": 0,
   "relanzados": 0,
-  "colas_largas": 3,
+  "colas_largas": 2,
   "flujos_programados_parados": [],
   "programaciones_lanzadas_a_mano": [],
   "avisos_de_fuentes": 0,
@@ -74,86 +74,22 @@
      ]
     }
    ]
-  },
-  {
-   "flujo": "Latido",
-   "fichero": "latido.yml",
-   "id": 41068408931,
-   "intento": 1,
-   "evento": "workflow_dispatch",
-   "rama": "main",
-   "commit": "b727abc",
-   "titulo": "Latido",
-   "conclusion": "failure",
-   "cuando": "30/10 15:28",
-   "url": "https://github.com/alvarorm931/education/actions/runs/41068408931",
-   "superado": true,
-   "en_curso": null,
-   "pasajero": false,
-   "detalle": [
-    {
-     "trabajo": "latido",
-     "pasos": [
-      "Lanzar al vigilante y el siguiente latido"
-     ],
-     "ejecutor": "GitHub Actions 1000000965",
-     "etiquetas": [
-      "ubuntu-latest"
-     ],
-     "final_registro": [
-      "##[error]Process completed with exit code 1.",
-      "...",
-      "24.04.5",
-      "LTS",
-      "Image: ubuntu-24.04",
-      "Version: 20261025.353.1",
-      "Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261025.353/images/ubuntu/Ubuntu2404-Readme.md",
-      "Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261025.353",
-      "Actions: write",
-      "Contents: read",
-      "Metadata: read",
-      "Secret source: Actions",
-      "Cache mode: write",
-      "Prepare workflow directory",
-      "Prepare all required actions",
-      "Complete job name: latido",
-      "\u001b[36;1msleep 1500\u001b[0m",
-      "\u001b[36;1mgh workflow run vigilante.yml -R \"$GITHUB_REPOSITORY\" --ref main\u001b[0m",
-      "\u001b[36;1mdesde=$(date -u -d '-3 hours' +%Y-%m-%dT%H:%M:%SZ)\u001b[0m",
-      "\u001b[36;1mn=$(gh api \"repos/$GITHUB_REPOSITORY/actions/workflows/vigilante.yml/runs?event=schedule&per_page=1&created=>=$desde\" --jq .total_count || echo 0)\u001b[0m",
-      "\u001b[36;1mif [ \"${n:-0}\" -gt 0 ]; then\u001b[0m",
-      "\u001b[36;1m  echo \"::notice title=Latido::GitHub ya dispara las programaciones; el latido se detiene.\"\u001b[0m",
-      "\u001b[36;1m  exit 0\u001b[0m",
-      "\u001b[36;1mfi\u001b[0m",
-      "\u001b[36;1mgh workflow run latido.yml -R \"$GITHUB_REPOSITORY\" --ref main\u001b[0m",
-      "could not create workflow dispatch event: HTTP 500 (https://api.github.com/repos/alvarorm931/education/actions/workflows/401287485/dispatches)",
-      "##[error]Process completed with exit code 1."
-     ]
-    }
-   ]
   }
  ],
  "colas_largas": [
   {
    "flujo": "Boletines autonómicos",
    "id": 41113872721,
-   "en_cola_min": 44,
+   "en_cola_min": 49,
    "trabajos_empezados": 2,
    "url": "https://github.com/alvarorm931/education/actions/runs/41113872721"
   },
   {
    "flujo": "Sonda de fuentes",
    "id": 41113365103,
-   "en_cola_min": 48,
+   "en_cola_min": 52,
    "trabajos_empezados": 0,
    "url": "https://github.com/alvarorm931/education/actions/runs/41113365103"
-  },
-  {
-   "flujo": "Boletines autonómicos",
-   "id": 41070595583,
-   "en_cola_min": 343,
-   "trabajos_empezados": 44,
-   "url": "https://github.com/alvarorm931/education/actions/runs/41070595583"
   }
  ],
  "programados": {
@@ -171,7 +107,7 @@
   }
  },
  "respaldo_programaciones": [],
- "latido": "en marcha",
+ "latido": "no hace falta: GitHub ya dispara las programaciones",
  "boe": {
   "ultimo_diario": {
    "fecha": "2026-10-30",

@@ -1,12 +1,12 @@
-# Vigilancia 30/10 21:00 (Madrid)
+# Vigilancia 30/10 21:04 (Madrid)
 
-- Ejecuciones revisadas (últimas 6 h): 93
-- Fallos: 2; pendientes: 0; relanzados ahora: 0
-- Colas de más de 30 minutos: 3
+- Ejecuciones revisadas (últimas 6 h): 91
+- Fallos: 1; pendientes: 0; relanzados ahora: 0
+- Colas de más de 30 minutos: 2
 - Flujos programados parados: ninguno
 - Almacén S3: ok
 - Programaciones que GitHub no disparó y se lanzaron a mano: ninguna
-- Latido (relanza al vigilante cada ~25 min mientras GitHub no dispare programaciones): en marcha
+- Latido (relanza al vigilante cada ~25 min mientras GitHub no dispare programaciones): no hace falta: GitHub ya dispara las programaciones
 - Avisos de fuentes: 0
 
 ## Motor de datos · 30/10 17:32 · otra ejecución en curso: https://github.com/alvarorm931/education/actions/runs/41110828448
@@ -21,18 +21,5 @@ https://github.com/alvarorm931/education/actions/runs/41079079352 (intento 2, wo
       BOP-GRANADA: 5211 actos, 1935 con texto, 267 con fecha de fin de plazo; {'titulo': 4305, 'plazo_general_v3': 906}
       ##[error]Process completed with exit code 1.
 
-## Latido · 30/10 15:28 · superado
-https://github.com/alvarorm931/education/actions/runs/41068408931 (intento 1, workflow_dispatch, b727abc, pasajero: False)
-- latido · pasos: Lanzar al vigilante y el siguiente latido · ejecutor: GitHub Actions 1000000965
-      [36;1mn=$(gh api "repos/$GITHUB_REPOSITORY/actions/workflows/vigilante.yml/runs?event=schedule&per_page=1&created=>=$desde" --jq .total_count || echo 0)[0m
-      [36;1mif [ "${n:-0}" -gt 0 ]; then[0m
-      [36;1m  echo "::notice title=Latido::GitHub ya dispara las programaciones; el latido se detiene."[0m
-      [36;1m  exit 0[0m
-      [36;1mfi[0m
-      [36;1mgh workflow run latido.yml -R "$GITHUB_REPOSITORY" --ref main[0m
-      could not create workflow dispatch event: HTTP 500 (https://api.github.com/repos/alvarorm931/education/actions/workflows/401287485/dispatches)
-      ##[error]Process completed with exit code 1.
-
-- En cola 44 min: Boletines autonómicos https://github.com/alvarorm931/education/actions/runs/41113872721
-- En cola 48 min: Sonda de fuentes https://github.com/alvarorm931/education/actions/runs/41113365103
-- En cola 343 min: Boletines autonómicos https://github.com/alvarorm931/education/actions/runs/41070595583
+- En cola 49 min: Boletines autonómicos https://github.com/alvarorm931/education/actions/runs/41113872721
+- En cola 52 min: Sonda de fuentes https://github.com/alvarorm931/education/actions/runs/41113365103
