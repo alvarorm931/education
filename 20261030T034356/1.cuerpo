@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ca"><head id="j_idt2">
+                <meta charset="utf-8" />
+                <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
+                <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <link rel="shortcut icon" href="/bop/resources/img/favicon.ico" type="image/x-icon" />
+            <title>BOP - Butlletí Oficial de la Província de Lleida</title>
+            <link href="/bop/resources/css/bop.css?versio=202001020810" rel="stylesheet" />
+            <link href="/bop/resources/css/bootstrap.css?versio=202001020810" rel="stylesheet" />
+            <link href="/bop/resources/css/bootstrap-datepicker.min.css?versio=202001020810" rel="stylesheet" />
+            <link href="/bop/resources/css/estils.css?versio=202001020810" rel="stylesheet" />
+            <script type="text/javascript" src="/bop/resources/js/jquery-3.6.0.min.js"></script>
+            <script type="text/javascript" src="/bop/resources/js/general.js?versio=202001020810"></script>
+            <script type="text/javascript" src="/bop/resources/js/bootstrap-datepicker.min.js?versio=202001020810"></script>
+            <script type="text/javascript" src="/bop/resources/locales/bootstrap-datepicker.ca.min.js?versio=202001020810"></script>
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    var quinMenuActiu = "ultim-numero";
+                            $('ul.menu-principal li.' + quinMenuActiu).addClass('active');
+                });
+            </script></head><body>
+            <div id="top"> 
+      <!--   &lt;a href="http://www.ddgi.cat" title="Diputaci&oacute; de Lleida"&gt;
+                    &lt;img src="/bop/resources/img/diputacio.png" alt="Diputaci&oacute; de Lleida" /&gt;
+                &lt;/a&gt; -->
+            </div>
+
+            <header>
+                <div class="container">
+                    <nav class="navbar navbar-md">
+                        <div class="navbar-header">
+                            <a class="navbar-brand" href="https://ebop.diputaciolleida.cat/bop/">
+                                <img src="/bop/resources/img/bop.jpg" alt="BOP Diputació de Lleida" />
+                            </a>
+                            <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </a>
+                        </div>
+                        <div class="navbar-collapse collapse ">
+                            <ul class="nav navbar-nav navbar-right menu-principal">
+                                <li class="ultim-numero">
+                                    <a href="/bop" class="">
+                                        Últim número
+                                    </a>
+                                </li>
+                                <li class="consultar">
+                                    <a href="/bop/cerca">
+                                        Cercador del BOP
+                                    </a>
+                                </li>
+                                <li class="publicar">
+                                    <a href="/bop/publicar">
+                                        Publicar al BOP
+                                    </a>
+                                </li>
+                                <li class="verificar">
+                                    <a href="/bop/verificar">
+                                        Verificador BOP
+                                    </a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Idioma
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <ul>
+                                            <li>
+                                                <a class="dropdown-item" href="/bop/idioma/ca">
+                                                    Català
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" href="/bop/idioma/es">
+                                                    Castellà
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </header>
+
+
+            <div class="container">
+                <div class="row titol titol-principal">
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('.row.titol.titol-principal').hide();
+            });
+        </script>
+                </div>
+            <div class="row titol">
+                <div class="col-6">
+                        <img src="/bop/resources/img/boptot.jpg" class="imatge" alt="BOP número 207/0 - 29/10/2026" />
+                        <h1>
+                            Bop número: 207/0 - 29/10/2026
+                        </h1>
+                </div>
+            </div>
+
+            <div class="aplicacio">
+                    <section>
+                        <h2 class="seccioTau">
+                            Administració Autonòmica - Generalitat de Catalunya
+                        </h2>
+                        <ul>
+                                <li class="edicte">
+                                    <a href="https://ebop.diputaciolleida.cat/aplicacions/bop/bopV1/fitxers/pdf/2026/207/202620708900.pdf" target="new" class="linkAjuda">
+                                        8900 - <span>DEPARTAMENT D'EMPRESA I TREBALL. SERVEIS TERRITORIALS A LLEIDA (LLEIDA)</span> - Acord o pacte mixt de funcionaris públics  i personal laboral de l’Ajuntament d’Almenar 
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ebop.diputaciolleida.cat/aplicacions/bop/bopV1/fitxers/pdf/2026/207/202620708901.pdf" target="new" class="linkAjuda">
+                                        8901 - <span>DEPARTAMENT D'EMPRESA I TREBALL. SERVEIS TERRITORIALS A LLEIDA (LLEIDA)</span> - Calendari laboral per a l’any 2027 (sector construcció)
+                                    </a>
+                                </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2 class="seccioTau">
+                            Administració Local - Ajuntaments
+                        </h2>
+                        <ul>
+                                <li class="edicte">
+                                    <a href="https://ebop.diputaciolleida.cat/aplicacions/bop/bopV1/fitxers/pdf/2026/207/202620708923.pdf" target="new" class="linkAjuda">
+                                        8923 - <span>AJUNTAMENT D'AGRAMUNT (AGRAMUNT)</span> - APROVACIÓ DEFINITIVA DEL PROJECTE D'OBRES DE MILLORA DEL CAMÍ DE PUELLES, AL TERME MUNICIPAL D’AGRAMUNT   
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ebop.diputaciolleida.cat/aplicacions/bop/bopV1/fitxers/pdf/2026/207/202620708925.pdf" target="new" class="linkAjuda">
+                                        8925 - <span>AJUNTAMENT D'AGRAMUNT (AGRAMUNT)</span> - EDICTE: Rectificació de l’edicte del BOP  núm. 186 on es fa públic  l'Organigrama  de l'ajuntament d'Agramunt 2026
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ebop.diputaciolleida.cat/aplicacions/bop/bopV1/fitxers/pdf/2026/207/202620709015.pdf" target="new" class="linkAjuda">
+                                        9015 - <span>AJUNTAMENT D'ALFARRÀS (ALFARRÀS)</span> - Publicació de l’acord de modificació de la jornada ordinària de treball a 35 hores setmanals
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ebop.diputaciolleida.cat/aplicacions/bop/bopV1/fitxers/pdf/2026/207/202620708917.pdf" target="new" class="linkAjuda">
+                                        8917 - <span>AJUNTAMENT D'ALÀS I CERC (ALÀS I CERC)</span> - Anunci d'aprovació del Plànol de Delimitació
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ebop.diputaciolleida.cat/aplicacions/bop/bopV1/fitxers/pdf/2026/207/202620708919.pdf" target="new" class="linkAjuda">
+                                        8919 - <span>AJUNTAMENT D'ALÀS I CERC (ALÀS I CERC)</span> - Anunci exposició pública compte general
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ebop.diputaciolleida.cat/aplicacions/bop/bopV1/fitxers/pdf/2026/207/202620708924.pdf" target="new" class="linkAjuda">
+                                        8924 - <span>AJUNTAMENT D'ALÀS I CERC (ALÀS I CERC)</span> - Anunci aprovació padró fiscal aigua i calendari de cobrament
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ebop.diputaciolleida.cat/aplicacions/bop/bopV1/fitxers/pdf/2026/207/202620708902.pdf" target="new" class="linkAjuda">
+                                        8902 - <span>AJUNTAMENT D'ANGLESOLA</span> - Renúncia a una concessió d'ús funerari
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ebop.diputaciolleida.cat/aplicacions/bop/bopV1/fitxers/pdf/2026/207/202620709024.pdf" target="new" class="linkAjuda">
+                                        9024 - <span>AJUNTAMENT D'ARTESA DE SEGRE (ARTESA DE SEGRE)</span> - Anunci aprovació bases i convocatòria plaça operari/ària de neteja
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ebop.diputaciolleida.cat/aplicacions/bop/bopV1/fitxers/pdf/2026/207/202620709009.pdf" target="new" class="linkAjuda">
+                                        9009 - <span>AJUNTAMENT D'IVORRA (IVORRA)</span> - Anunci exposició pública modificació de llicència d’obres en sòl no urbanitzable per actualització de les instal·lacions ramaderes “La Berenguera”, situades al polígon 1, parcel·la 125, del terme municipal d’Ivorra (Segarra).
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ebop.diputaciolleida.cat/aplicacions/bop/bopV1/fitxers/pdf/2026/207/202620708926.pdf" target="new" class="linkAjuda">
+                                        8926 - <span>AJUNTAMENT DE BELLPUIG (BELLPUIG)</span> - Edicte modificació ordenança fiscal núm. 33 reguladora per parades, barraques, casetes de venda, espectacles o atraccions
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ebop.diputaciolleida.cat/aplicacions/bop/bopV1/fitxers/pdf/2026/207/202620708927.pdf" target="new" class="linkAjuda">
+                                        8927 - <span>AJUNTAMENT DE BELLPUIG (BELLPUIG)</span> - Edicte de modificació ordenança 57 reguladora de la taxa per la prestació del servei de recollida i gestió de residus municipals
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ebop.diputaciolleida.cat/aplicacions/bop/bopV1/fitxers/pdf/2026/207/202620708931.pdf" target="new" class="linkAjuda">
+                                        8931 - <span>AJUNTAMENT DE CABÓ (CABÓ)</span> - Modificació 2/2026 del Pressupost municipal 2026
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ebop.diputaciolleida.cat/aplicacions/bop/bopV1/fitxers/pdf/2026/207/202620708888.pdf" target="new" class="linkAjuda">
+                                        8888 - <span>AJUNTAMENT DE CAMARASA (CAMARASA)</span> - Aprovació inicial projecte d'obres
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ebop.diputaciolleida.cat/aplicacions/bop/bopV1/fitxers/pdf/2026/207/202620709027.pdf" target="new" class="linkAjuda">
+                                        9027 - <span>AJUNTAMENT DE CASTELLSERÀ (CASTELLSERÀ)</span> - Aprovació definitiva modificació de crédit 4/2026
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ebop.diputaciolleida.cat/aplicacions/bop/bopV1/fitxers/pdf/2026/207/202620709028.pdf" target="new" class="linkAjuda">
+                                        9028 - <span>AJUNTAMENT DE CASTELLSERÀ (CASTELLSERÀ)</span> - Aprovació definitiva modificació de crédit 5/2026
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ebop.diputaciolleida.cat/aplicacions/bop/bopV1/fitxers/pdf/2026/207/202620708937.pdf" target="new" class="linkAjuda">
+                                        8937 - <span>AJUNTAMENT DE GRANYENA DE LES GARRIGUES (GRANYENA DE LES GARRIGUES)</span> - Ordenança fiscal reguladora de la taxa de guals
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ebop.diputaciolleida.cat/aplicacions/bop/bopV1/fitxers/pdf/2026/207/202620708889.pdf" target="new" class="linkAjuda">
+                                        8889 - <span>AJUNTAMENT DE JUNEDA (JUNEDA)</span> - Informació pública legalització d’unes obres en l’explotació ramadera
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ebop.diputaciolleida.cat/aplicacions/bop/bopV1/fitxers/pdf/2026/207/202620709011.pdf" target="new" class="linkAjuda">
+                                        9011 - <span>AJUNTAMENT DE LA GRANADELLA (GRANADELLA, LA)</span> - ANUNCI D’APROVACIÓ DEFINITIVA DE L’EXPEDIENT DE MODIFICACIÓ DE CRÈDIT NÚM. 1/2026, EN LA MODALITAT DE SUPLEMENT DE CRÈDIT
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ebop.diputaciolleida.cat/aplicacions/bop/bopV1/fitxers/pdf/2026/207/202620709012.pdf" target="new" class="linkAjuda">
+                                        9012 - <span>AJUNTAMENT DE LA GRANADELLA (GRANADELLA, LA)</span> - ANUNCI D’APROVACIÓ DEFINITIVA DE L’EXPEDIENT DE MODIFICACIÓ DE CRÈDIT NÚM. 3/2026, EN LA MODALITAT DE SUPLEMENT DE CRÈDIT
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ebop.diputaciolleida.cat/aplicacions/bop/bopV1/fitxers/pdf/2026/207/202620709013.pdf" target="new" class="linkAjuda">
+                                        9013 - <span>AJUNTAMENT DE LA GRANADELLA (GRANADELLA, LA)</span> - ANUNCI D’APROVACIÓ DEFINITIVA DE L’EXPEDIENT DE MODIFICACIÓ DE CRÈDIT NÚM. 4/2026, EN LA MODALITAT DE CRÈDIT EXTRAORDINARI
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ebop.diputaciolleida.cat/aplicacions/bop/bopV1/fitxers/pdf/2026/207/202620709014.pdf" target="new" class="linkAjuda">
+                                        9014 - <span>AJUNTAMENT DE LA GRANADELLA (GRANADELLA, LA)</span> - ANUNCI D’APROVACIÓ DEFINITIVA DE L’EXPEDIENT DE MODIFICACIÓ DE CRÈDIT NÚM. 6/2026, EN LA MODALITAT DE SUPLEMENT DE CRÈDIT
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ebop.diputaciolleida.cat/aplicacions/bop/bopV1/fitxers/pdf/2026/207/202620709025.pdf" target="new" class="linkAjuda">
+                                        9025 - <span>AJUNTAMENT DE LA SEU D'URGELL (SEU D'URGELL, LA)</span> - 3633/2026 Modificació parcial del Reglament general de control Intern - aprovació definitiva
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ebop.diputaciolleida.cat/aplicacions/bop/bopV1/fitxers/pdf/2026/207/202620708934.pdf" target="new" class="linkAjuda">
+                                        8934 - <span>AJUNTAMENT DE LES AVELLANES I SANTA LINYA (AVELLANES I SANTA LINYA, LES)</span> - Edicte d'aprovació definitiva de la modificació del pressupost núm. 05/2026.
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ebop.diputaciolleida.cat/aplicacions/bop/bopV1/fitxers/pdf/2026/207/202620709016.pdf" target="new" class="linkAjuda">
+                                        9016 - <span>AJUNTAMENT DE LES BORGES BLANQUES (BORGES BLANQUES, LES)</span> - ANUNCI contractació amb caràcter d'urgència d'un subaltern per la biblioteca
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ebop.diputaciolleida.cat/aplicacions/bop/bopV1/fitxers/pdf/2026/207/202620708920.pdf" target="new" class="linkAjuda">
+                                        8920 - <span>AJUNTAMENT DEL SOLERÀS (SOLERÀS, EL)</span> - Aprovació definitiva de la modificació de l'Ordenança reguladora de la taxa per la utilització d'espais, locals i materials de propietat municipal per a usos particulars
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ebop.diputaciolleida.cat/aplicacions/bop/bopV1/fitxers/pdf/2026/207/202620708940.pdf" target="new" class="linkAjuda">
+                                        8940 - <span>AJUNTAMENT DE MOLLERUSSA (MOLLERUSSA)</span> - Convocatòria del procés de selecció per cobrir la plaça vacant d'Oficial de 3a de la Brigada d'Obres i Serveis Diversos. Relació d’admesos i exclosos provisional.
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ebop.diputaciolleida.cat/aplicacions/bop/bopV1/fitxers/pdf/2026/207/202620709008.pdf" target="new" class="linkAjuda">
+                                        9008 - <span>AJUNTAMENT DE PRULLANS (PRULLANS)</span> - Anunci d'aprovació definitiva del Pressupost general i de la plantilla de personal per a l'any 2027
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ebop.diputaciolleida.cat/aplicacions/bop/bopV1/fitxers/pdf/2026/207/202620708990.pdf" target="new" class="linkAjuda">
+                                        8990 - <span>AJUNTAMENT DE SANT LLORENÇ DE MORUNYS (SANT LLORENÇ DE MORUNYS)</span> - Edicte aprovació inicial modificació de credit número 1
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ebop.diputaciolleida.cat/aplicacions/bop/bopV1/fitxers/pdf/2026/207/202620709017.pdf" target="new" class="linkAjuda">
+                                        9017 - <span>AJUNTAMENT DE SIDAMON (SIDAMON)</span> - ANUNCI OBRES EN SNU AMPLIACIÓ CAPACITAT CONSTRUCTIVA SENSE INCREMENT CAPACITAT. BENETAR ANIMAL. EXP 241/2025
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ebop.diputaciolleida.cat/aplicacions/bop/bopV1/fitxers/pdf/2026/207/202620709005.pdf" target="new" class="linkAjuda">
+                                        9005 - <span>AJUNTAMENT DE TORRELAMEU (TORRELAMEU) - ANUNCI CONTRACTACIÓ I CONSTITUCIÓ DE BORSA DE TREBALL</span> - AUXILIAR ADMINISTRATIU/VA 
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ebop.diputaciolleida.cat/aplicacions/bop/bopV1/fitxers/pdf/2026/207/202620709001.pdf" target="new" class="linkAjuda">
+                                        9001 - <span>AJUNTAMENT DE TÀRREGA (TÀRREGA)</span> - Aprovació definitiva 34a modificació de pressupost
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ebop.diputaciolleida.cat/aplicacions/bop/bopV1/fitxers/pdf/2026/207/202620709010.pdf" target="new" class="linkAjuda">
+                                        9010 - <span>AJUNTAMENT DE VALLFOGONA DE BALAGUER (VALLFOGONA DE BALAGUER)</span> - Aprovació i notificació col·lectiva del padró de la taxa del servei de llar d’infants i acollides matinals de la llar d’infants i escoles del mes de novembre de 2026
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ebop.diputaciolleida.cat/aplicacions/bop/bopV1/fitxers/pdf/2026/207/202620708921.pdf" target="new" class="linkAjuda">
+                                        8921 - <span>PAERIA DE CERVERA</span> - Edicte d’aprovació del padró fiscal de la taxa relativa a la utilització de les piscines, instal·lacions esportives i altres serveis anàlegs del mes de novembre de 2026 notificació col·lectiva i període de cobrament
+                                    </a>
+                                </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2 class="seccioTau">
+                            Administració Local - Consells Comarcals
+                        </h2>
+                        <ul>
+                                <li class="edicte">
+                                    <a href="https://ebop.diputaciolleida.cat/aplicacions/bop/bopV1/fitxers/pdf/2026/207/202620708935.pdf" target="new" class="linkAjuda">
+                                        8935 - <span>CONSELL COMARCAL DE LA NOGUERA (BALAGUER)</span> - Anunci d’aprovació de bases i convocatòria que han de regir la creació d’una borsa de treball per cobrir vacants i substitucions de les places de secretaria intervenció de classe tercera, adscrites al Servei d’Assistència Tècnica (SAT) del Consell Comarcal de la Noguera
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ebop.diputaciolleida.cat/aplicacions/bop/bopV1/fitxers/pdf/2026/207/202620708918.pdf" target="new" class="linkAjuda">
+                                        8918 - <span>CONSELL COMARCAL DEL PALLARS JUSSÀ (TREMP)</span> - Bases reguladores i convocatoria del procés de selecció, mitjançant concurs oposició lliure, per proveir un lloc de treball en règim laboral indefinit fix inicialment amb modalitat de contracte de relleu, a temps complet, del lloc de treball de tècnic/a dinamitzador/a ocupacional, Grup A1
+                                    </a>
+                                </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2 class="seccioTau">
+                            Administració Local - Diputació de Lleida
+                        </h2>
+                        <ul>
+                                <li class="edicte">
+                                    <a href="https://ebop.diputaciolleida.cat/aplicacions/bop/bopV1/fitxers/pdf/2026/207/202620708936.pdf" target="new" class="linkAjuda">
+                                        8936 - <span>AJUNTAMENT DE BELLAGUARDA (BELLAGUARDA)</span> - Anunci definitiu compte general 2025
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ebop.diputaciolleida.cat/aplicacions/bop/bopV1/fitxers/pdf/2026/207/202620709026.pdf" target="new" class="linkAjuda">
+                                        9026 - <span>DIPUTACIÓ DE LLEIDA (LLEIDA)</span> - Anunci de resolució de la convocatòria per a la provisió definitiva del lloc de treball de gestor/a administratiu/va de les Escoles Especials de la Diputació de Lleida (PLL/12/26)
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ebop.diputaciolleida.cat/aplicacions/bop/bopV1/fitxers/pdf/2026/207/202620709040.pdf" target="new" class="linkAjuda">
+                                        9040 - <span>DIPUTACIÓ DE LLEIDA (LLEIDA)</span> - Extracte dels acords adoptats per la Junta de Govern núm. 35/2026, de 26 d'octubre
+                                    </a>
+                                </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2 class="seccioTau">
+                            Administració Local - Societat Municipal
+                        </h2>
+                        <ul>
+                                <li class="edicte">
+                                    <a href="https://ebop.diputaciolleida.cat/aplicacions/bop/bopV1/fitxers/pdf/2026/207/202620709006.pdf" target="new" class="linkAjuda">
+                                        9006 - <span>EMPRESA MUNICIPAL D'ENERGIA ELECTRICA DE TORRES DE SEGRE, SL</span> - APROVACIÓ INICIAL PROJECTE INSTAL·LACIÓ D'UN PUNT DE RECÀRREGA DE VEHICLE ELÈCTRIC
+                                    </a>
+                                </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2 class="seccioTau">
+                            Anuncis Diversos - Col·lectivitats de regants
+                        </h2>
+                        <ul>
+                                <li class="edicte">
+                                    <a href="https://ebop.diputaciolleida.cat/aplicacions/bop/bopV1/fitxers/pdf/2026/207/202620708890.pdf" target="new" class="linkAjuda">
+                                        8890 - <span>COL·LECTIVITAT DE REGANTS NÚM. 13 DELS CANALS D'URGELL. MIRALCAMP (MIRALCAMP)</span> - EDICTE ASSEMBLEA GENERAL ORDINARIA
+                                    </a>
+                                </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2 class="seccioTau">
+                            Anuncis Diversos - Comunitats de regants
+                        </h2>
+                        <ul>
+                                <li class="edicte">
+                                    <a href="https://ebop.diputaciolleida.cat/aplicacions/bop/bopV1/fitxers/pdf/2026/207/202620708922.pdf" target="new" class="linkAjuda">
+                                        8922 - <span>COL·LECTIVITAT DE REGANTS NÚM. 7 DELS CANALS D'URGELL. CASTELLNOU DE SEANA (CASTELLNOU DE SEANA)</span> - anunci assemblea 
+                                    </a>
+                                </li>
+                        </ul>
+                    </section>
+            </div>
+            </div>
+            <footer>
+                <div class="container">
+                    <div class="row items">
+                        <div class="col-md-6 contactefooter">
+                            <address class="vcard">
+                                <div class="fn org">Diputació de Lleida</div>
+                                <div class="adr">
+                                    <div class="street-address">Carrer del Carme, 26</div>
+                                    <span class="postal-code">25007</span> <span class="locality">Lleida</span>
+                                </div>
+                                <div class="tel">Tel. 973 24 92 00</div>
+                            </address>
+                        </div>
+
+                        <div class="col-md-3 col-xs-6 linksfooter"> 
+                            <a href="/bop" title="Map">
+                                Últim número
+                            </a>
+                            <a href="/bop/cerca" title="Cercador">
+                                Cercador del BOP
+                            </a>
+                            <a href="/bop/publicar" title="Publicar">
+                                Publicar al BOP
+                            </a>
+                            <a href="/bop/verificar" title="Verificador">
+                                Verificador BOP
+                            </a>
+                        </div>
+                        <div class="col-md-3 col-xs-6 linksfooter"> 
+                            <a href="https://www.diputaciolleida.cat/avis-legal-2/" title="Avís legal">Avís legal</a>
+                            <a href="https://www.diputaciolleida.cat/politica-cookies/" title="Política de cookies">Política de cookies</a>
+                            <a href="https://www.diputaciolleida.cat/accessibilitat/" title="Accessibilitat">Accessibilitat</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            <script src="/bop/resources/js/bootstrap.min.js"></script> 
+            <script src="https://www.google-analytics.com/urchin.js"></script>
+            <script type="text/javascript">
+                            _uacct = "UA-340666-4";
+                            urchinTracker();
+            </script></body>
+</html>

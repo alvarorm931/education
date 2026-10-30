@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ca"><head id="j_idt2">
+                <meta charset="utf-8" />
+                <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
+                <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <link rel="shortcut icon" href="/bop/resources/img/favicon.ico" type="image/x-icon" />
+            <title>BOP - Butlletí Oficial de la Província de Lleida</title>
+            <link href="/bop/resources/css/bop.css?versio=202001020810" rel="stylesheet" />
+            <link href="/bop/resources/css/bootstrap.css?versio=202001020810" rel="stylesheet" />
+            <link href="/bop/resources/css/bootstrap-datepicker.min.css?versio=202001020810" rel="stylesheet" />
+            <link href="/bop/resources/css/estils.css?versio=202001020810" rel="stylesheet" />
+            <script type="text/javascript" src="/bop/resources/js/jquery-3.6.0.min.js"></script>
+            <script type="text/javascript" src="/bop/resources/js/general.js?versio=202001020810"></script>
+            <script type="text/javascript" src="/bop/resources/js/bootstrap-datepicker.min.js?versio=202001020810"></script>
+            <script type="text/javascript" src="/bop/resources/locales/bootstrap-datepicker.ca.min.js?versio=202001020810"></script>
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    var quinMenuActiu = "ultim-numero";
+                            $('ul.menu-principal li.' + quinMenuActiu).addClass('active');
+                });
+            </script></head><body>
+            <div id="top"> 
+      <!--   &lt;a href="http://www.ddgi.cat" title="Diputaci&oacute; de Lleida"&gt;
+                    &lt;img src="/bop/resources/img/diputacio.png" alt="Diputaci&oacute; de Lleida" /&gt;
+                &lt;/a&gt; -->
+            </div>
+
+            <header>
+                <div class="container">
+                    <nav class="navbar navbar-md">
+                        <div class="navbar-header">
+                            <a class="navbar-brand" href="https://ebop.diputaciolleida.cat/bop/">
+                                <img src="/bop/resources/img/bop.jpg" alt="BOP Diputació de Lleida" />
+                            </a>
+                            <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </a>
+                        </div>
+                        <div class="navbar-collapse collapse ">
+                            <ul class="nav navbar-nav navbar-right menu-principal">
+                                <li class="ultim-numero">
+                                    <a href="/bop" class="">
+                                        Últim número
+                                    </a>
+                                </li>
+                                <li class="consultar">
+                                    <a href="/bop/cerca">
+                                        Cercador del BOP
+                                    </a>
+                                </li>
+                                <li class="publicar">
+                                    <a href="/bop/publicar">
+                                        Publicar al BOP
+                                    </a>
+                                </li>
+                                <li class="verificar">
+                                    <a href="/bop/verificar">
+                                        Verificador BOP
+                                    </a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Idioma
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <ul>
+                                            <li>
+                                                <a class="dropdown-item" href="/bop/idioma/ca">
+                                                    Català
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" href="/bop/idioma/es">
+                                                    Castellà
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </header>
+
+
+            <div class="container">
+                <div class="row titol titol-principal">
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('.row.titol.titol-principal').hide();
+            });
+        </script>
+                </div>
+            <div class="row titol">
+                <div class="col-6">
+                        <a href="/aplicacions/bop/pdf-bops-complets/2022/2022_1_3_0_.pdf" target="new">
+                            <img src="/bop/resources/img/boptot.jpg" class="imatge" alt="BOP número 1/0 - 03/01/2022" />
+                        </a> 
+                        <h1>
+                            <a href="#">
+                                Bop número: 1/0 - 03/01/2022
+                            </a>
+                        </h1>
+                </div>
+            </div>
+
+            <div class="aplicacio">
+                    <section>
+                        <h2 class="seccioTau">
+                            Ajuntaments - Administració Local
+                        </h2>
+                        <ul>
+                                <li class="edicte">
+                                    <a href="/aplicacions/bop/bopV1/fitxers/pdf/2022/1/BOP-553271139.pdf" target="new" class="linkAjuda">
+                                        10552 - <span>AJUNTAMENT D'ALCANÓ</span> - Anunci licitació Centre de Convivència Social
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="/aplicacions/bop/bopV1/fitxers/pdf/2022/1/BOP-696783092.pdf" target="new" class="linkAjuda">
+                                        10596 - <span>AJUNTAMENT D'ALCARRÀS</span> - Projecte adequació benzinera i parquing a la Crta. L-800 Km. 2 de Miquel Membrives SL.
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="/aplicacions/bop/bopV1/fitxers/pdf/2022/1/BOP-855577931.pdf" target="new" class="linkAjuda">
+                                        10641 - <span>AJUNTAMENT D'ALCARRÀS</span> - Aprovació padró preu públic 3a Revista Informativa Local 2021
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="/aplicacions/bop/bopV1/fitxers/pdf/2022/1/BOP-86539700.pdf" target="new" class="linkAjuda">
+                                        10557 - <span>AJUNTAMENT D'ALGUAIRE</span> - Contractació d´una auxiliar administrativa per a la Biblioteca Municipal 
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="/aplicacions/bop/bopV1/fitxers/pdf/2022/1/BOP-322688751.pdf" target="new" class="linkAjuda">
+                                        10632 - <span>AJUNTAMENT D'ESPOT</span> - Edicte Aprovació Inicial Pressupost 2022
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="/aplicacions/bop/bopV1/fitxers/pdf/2022/1/BOP-994243758.pdf" target="new" class="linkAjuda">
+                                        10633 - <span>AJUNTAMENT D'ESPOT</span> - Edicte Aprovació Inicial Transferencia de Crèdit 
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="/aplicacions/bop/bopV1/fitxers/pdf/2022/1/BOP-882082603.pdf" target="new" class="linkAjuda">
+                                        10636 - <span>AJUNTAMENT D'ESPOT</span> - Anunci Adhesió a l'acord comú empleats públics dels ens locals de menys de 20.000 habitanst
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="/aplicacions/bop/bopV1/fitxers/pdf/2022/1/BOP-994865326.pdf" target="new" class="linkAjuda">
+                                        10619 - <span>AJUNTAMENT D'IVORRA</span> - Aprovació inicial pressupost 20222
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="/aplicacions/bop/bopV1/fitxers/pdf/2022/1/BOP-924450041.pdf" target="new" class="linkAjuda">
+                                        10620 - <span>AJUNTAMENT D'IVORRA</span> - Aprovació inicial projecte Urbanització carrer Barceloneta 
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="/aplicacions/bop/bopV1/fitxers/pdf/2022/1/BOP-523969351.pdf" target="new" class="linkAjuda">
+                                        10556 - <span>AJUNTAMENT DE BELLPUIG</span> - Aprovació de bases i convocatòria 37a. edició Premi Valeri Serra i Boldú
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="/aplicacions/bop/bopV1/fitxers/pdf/2022/1/BOP-901340855.pdf" target="new" class="linkAjuda">
+                                        10528 - <span>AJUNTAMENT DE BELLVER DE CERDANYA</span> - Aprovació inicial de desafectació d'una part del pati de l'escola Mare de Déu de Talló
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="/aplicacions/bop/bopV1/fitxers/pdf/2022/1/BOP-28269901.pdf" target="new" class="linkAjuda">
+                                        10608 - <span>AJUNTAMENT DE GAVET DE LA CONCA</span> - Edicte de Cessió Casa la Mestra Sant Miquel de la Vall
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="/aplicacions/bop/bopV1/fitxers/pdf/2022/1/BOP-54080649.pdf" target="new" class="linkAjuda">
+                                        10561 - <span>AJUNTAMENT DE GOLMÉS</span> - Aprovació definitiva de Projecte de reparcel·lació voluntària PAU 3.3
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="/aplicacions/bop/bopV1/fitxers/pdf/2022/1/BOP-633727409.pdf" target="new" class="linkAjuda">
+                                        10569 - <span>AJUNTAMENT DE GOLMÉS</span> - Aprovació inicial de Projecte urbanització PAU 3.3
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="/aplicacions/bop/bopV1/fitxers/pdf/2022/1/BOP-358129161.pdf" target="new" class="linkAjuda">
+                                        10625 - <span>AJUNTAMENT DE LA FULIOLA</span> - Anunci aprovació inicial del Pressupost i la plantilla de personal 2022
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="/aplicacions/bop/bopV1/fitxers/pdf/2022/1/BOP-941572295.pdf" target="new" class="linkAjuda">
+                                        10580 - <span>AJUNTAMENT DE LA GUINGUETA D'ÀNEU</span> - Anunci modificació pressupost 2021
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="/aplicacions/bop/bopV1/fitxers/pdf/2022/1/BOP-845578750.pdf" target="new" class="linkAjuda">
+                                        10584 - <span>AJUNTAMENT DE LA GUINGUETA D'ÀNEU</span> - Adhesió a l'acord comú conveni empleats públics ens locals 
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="/aplicacions/bop/bopV1/fitxers/pdf/2022/1/BOP-148177330.pdf" target="new" class="linkAjuda">
+                                        10524 - <span>AJUNTAMENT DE LA SEU D'URGELL</span> - OT-OMU-2021/018(1854) Aprovar inicialment Projecte Accés Adaptat al Parc dels Enamorats.
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="/aplicacions/bop/bopV1/fitxers/pdf/2022/1/BOP-738822242.pdf" target="new" class="linkAjuda">
+                                        10523 - <span>AJUNTAMENT DE LA SEU D'URGELL</span> - OT-OMU-2021/022(3657) Aprovació inicial de Projecte d'un Espai per al dol Perinatal
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="/aplicacions/bop/bopV1/fitxers/pdf/2022/1/BOP-777771150.pdf" target="new" class="linkAjuda">
+                                        10567 - <span>AJUNTAMENT DE LA SEU D'URGELL</span> - RI-PER-2021/026 Convocatòria 1 plaça de tècnic de Pla Educatiu d'Entorn 
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="/aplicacions/bop/bopV1/fitxers/pdf/2022/1/BOP-732056107.pdf" target="new" class="linkAjuda">
+                                        10526 - <span>AJUNTAMENT DELS OMELLS DE NA GAIA</span> - Aprovació definitiva de projecte d'obres
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="/aplicacions/bop/bopV1/fitxers/pdf/2022/1/BOP-227378037.pdf" target="new" class="linkAjuda">
+                                        10565 - <span>AJUNTAMENT DE MONTOLIU DE LLEIDA</span> - Atermenament de finques
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="/aplicacions/bop/bopV1/fitxers/pdf/2022/1/BOP-577865232.pdf" target="new" class="linkAjuda">
+                                        10591 - <span>AJUNTAMENT DE PERAMOLA</span> - Anunci d'aprovació inicial i informació pública de la modificació de crèdits exp. núm. 2/2021.
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="/aplicacions/bop/bopV1/fitxers/pdf/2022/1/BOP-67635712.pdf" target="new" class="linkAjuda">
+                                        10549 - <span>AJUNTAMENT DE PINÓS</span> - Aprovació inicial DUPROCIM
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="/aplicacions/bop/bopV1/fitxers/pdf/2022/1/BOP-373275123.pdf" target="new" class="linkAjuda">
+                                        10595 - <span>AJUNTAMENT DE PUIGVERD D'AGRAMUNT</span> - Aprovació DEFINITIVA projecte obres: Recuperació del Molí
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="/aplicacions/bop/bopV1/fitxers/pdf/2022/1/BOP-847298820.pdf" target="new" class="linkAjuda">
+                                        10630 - <span>AJUNTAMENT DE PUIGVERD DE LLEIDA</span> - Aprovació del  projecte bàsic i d'execució per l'ampliació del centre Cívic en la planta baixa a Puigverd de Lleida
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="/aplicacions/bop/bopV1/fitxers/pdf/2022/1/BOP-288220154.pdf" target="new" class="linkAjuda">
+                                        10576 - <span>AJUNTAMENT DE SIDAMON</span> - Aprovació de projecte obra Centre de Serveis
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="/aplicacions/bop/bopV1/fitxers/pdf/2022/1/BOP-775519947.pdf" target="new" class="linkAjuda">
+                                        10582 - <span>AJUNTAMENT DE SIDAMON</span> - Aprovació MC 3/2021
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="/aplicacions/bop/bopV1/fitxers/pdf/2022/1/BOP-800138747.pdf" target="new" class="linkAjuda">
+                                        10600 - <span>AJUNTAMENT DE SUDANELL</span> - Anunci d'aprovació inicial de la modificació de crèdit 3/2021
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="/aplicacions/bop/bopV1/fitxers/pdf/2022/1/BOP-666159615.pdf" target="new" class="linkAjuda">
+                                        10658 - <span>AJUNTAMENT DE SUDANELL</span> - Aprovació del padró fiscal de l'aigua del 4r trimestre de l'any 2021.
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="/aplicacions/bop/bopV1/fitxers/pdf/2022/1/BOP-101562846.pdf" target="new" class="linkAjuda">
+                                        10638 - <span>AJUNTAMENT DE VALLBONA DE LES MONGES</span> - Edicte d'aprovació inicial del Pressupost 2022
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="/aplicacions/bop/bopV1/fitxers/pdf/2022/1/BOP-993175900.pdf" target="new" class="linkAjuda">
+                                        10544 - <span>AJUNTAMENT DE VIELHA E MIJARAN</span> - Aprovació definitiva projecte d'obres
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="/aplicacions/bop/bopV1/fitxers/pdf/2022/1/BOP-14502923.pdf" target="new" class="linkAjuda">
+                                        10593 - <span>AJUNTAMENT DE VILANOVA DE BELLPUIG</span> - Contractació de personal urgent
+                                    </a>
+                                </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2 class="seccioTau">
+                            Consells Comarcals - Administració Local
+                        </h2>
+                        <ul>
+                                <li class="edicte">
+                                    <a href="/aplicacions/bop/bopV1/fitxers/pdf/2022/1/BOP-655776669.pdf" target="new" class="linkAjuda">
+                                        10586 - <span>CONSELL COMARCAL DEL SEGRIÀ</span> - Aprovació del preu públic de Serveis Socials per al 2022 (exp. 2336/2021) 
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="/aplicacions/bop/bopV1/fitxers/pdf/2022/1/BOP-552082546.pdf" target="new" class="linkAjuda">
+                                        10587 - <span>CONSELL COMARCAL DEL SEGRIÀ</span> - Aprovació definitiva de modificació número 12/2021 del pressupost comarcal (Exp. 2505/2021)
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="/aplicacions/bop/bopV1/fitxers/pdf/2022/1/BOP-809397646.pdf" target="new" class="linkAjuda">
+                                        10588 - <span>CONSELL COMARCAL DEL SEGRIÀ</span> - Aprovació Circular d'instruccions interna per al Tancament de l'Exercici Pressupostari (exp. núm. 2517/2021)
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="/aplicacions/bop/bopV1/fitxers/pdf/2022/1/BOP-625013216.pdf" target="new" class="linkAjuda">
+                                        10589 - <span>CONSELL COMARCAL DEL SEGRIÀ</span> - Modificació 6 cartipàs comarcal 2019-2023, nou portaveu grup comarcal Junts (exp. 2411/2021)
+                                    </a>
+                                </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2 class="seccioTau">
+                            Diputació de Lleida - Administració Local
+                        </h2>
+                        <ul>
+                                <li class="edicte">
+                                    <a href="/aplicacions/bop/bopV1/fitxers/pdf/2022/1/BOP-59560368.pdf" target="new" class="linkAjuda">
+                                        10603 - <span>DIPUTACIÓ DE LLEIDA. SECRETARIA GENERAL</span> - Edicte cessament personal eventual amb funcions de suport al Ple i a les comissions
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="/aplicacions/bop/bopV1/fitxers/pdf/2022/1/BOP-664067396.pdf" target="new" class="linkAjuda">
+                                        10640 - <span>INSTITUT D'ESTUDIS ILERDENCS</span> - Aprovació del Conveni de col·laboració entre l'Oficina de Suport a la Iniciativa cultural del Departament de Cultura i l'Institut d'Estudis Ilerdencs de la Diputació de Lleida  per al suport a la programació d'Arts escèniques i música als municipis per a l'any 2021
+                                    </a>
+                                </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2 class="seccioTau">
+                            Entitats Municipals Descentralitzades - Administració Local
+                        </h2>
+                        <ul>
+                                <li class="edicte">
+                                    <a href="/aplicacions/bop/bopV1/fitxers/pdf/2022/1/BOP-567948745.pdf" target="new" class="linkAjuda">
+                                        10614 - <span>ENTITAT MUNICIPAL DESCENTRALITZADA DE ROCALLAURA</span> - Aprovació inicial Pressupost 2022
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="/aplicacions/bop/bopV1/fitxers/pdf/2022/1/BOP-447454675.pdf" target="new" class="linkAjuda">
+                                        10615 - <span>ENTITAT MUNICIPAL DESCENTRALITZADA DE ROCALLAURA</span> - Aprovació calendari fiscal 2022
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="/aplicacions/bop/bopV1/fitxers/pdf/2022/1/BOP-165073127.pdf" target="new" class="linkAjuda">
+                                        10616 - <span>ENTITAT MUNICIPAL DESCENTRALITZADA DE ROCALLAURA</span> - Aprovació inicial projecte
+                                    </a>
+                                </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2 class="seccioTau">
+                            Ministeris - Administració de l'Estat
+                        </h2>
+                        <ul>
+                                <li class="edicte">
+                                    <a href="/aplicacions/bop/bopV1/fitxers/pdf/2022/1/BOP-2426387.pdf" target="new" class="linkAjuda">
+                                        10566 - <span>MINISTERIO DE INCLUSIÓN, SEGURIDAD SOCIAL Y MIGRACIONES. TRESORERIA DE LA SEGURETAT SOCIAL. DIRECCIÓ PROVINCIAL DE LLEIDA</span> - Anunci de subhasta pública per alienació d´un immoble
+                                    </a>
+                                </li>
+                        </ul>
+                    </section>
+            </div>
+            </div>
+            <footer>
+                <div class="container">
+                    <div class="row items">
+                        <div class="col-md-6 contactefooter">
+                            <address class="vcard">
+                                <div class="fn org">Diputació de Lleida</div>
+                                <div class="adr">
+                                    <div class="street-address">Carrer del Carme, 26</div>
+                                    <span class="postal-code">25007</span> <span class="locality">Lleida</span>
+                                </div>
+                                <div class="tel">Tel. 973 24 92 00</div>
+                            </address>
+                        </div>
+
+                        <div class="col-md-3 col-xs-6 linksfooter"> 
+                            <a href="/bop" title="Map">
+                                Últim número
+                            </a>
+                            <a href="/bop/cerca" title="Cercador">
+                                Cercador del BOP
+                            </a>
+                            <a href="/bop/publicar" title="Publicar">
+                                Publicar al BOP
+                            </a>
+                            <a href="/bop/verificar" title="Verificador">
+                                Verificador BOP
+                            </a>
+                        </div>
+                        <div class="col-md-3 col-xs-6 linksfooter"> 
+                            <a href="https://www.diputaciolleida.cat/avis-legal-2/" title="Avís legal">Avís legal</a>
+                            <a href="https://www.diputaciolleida.cat/politica-cookies/" title="Política de cookies">Política de cookies</a>
+                            <a href="https://www.diputaciolleida.cat/accessibilitat/" title="Accessibilitat">Accessibilitat</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            <script src="/bop/resources/js/bootstrap.min.js"></script> 
+            <script src="https://www.google-analytics.com/urchin.js"></script>
+            <script type="text/javascript">
+                            _uacct = "UA-340666-4";
+                            urchinTracker();
+            </script></body>
+</html>
