@@ -137,8 +137,7 @@ def robots_de(url: str, sesion: requests.Session | None = None) -> Robots:
 
 # Servicios de datos que su responsable documenta para que se consulten o descarguen con programas, aunque su
 # robots.txt (pensado para buscadores) lo cierre todo. Solo con cita literal de la documentación oficial; cada
-# fuente nueva aquí la decide Álvaro. Pendientes de su decisión (30/10/2026): API de datos abiertos de BOCYL
-# (analisis.datosabiertos.jcyl.es) y API del DOGC (portaldogc.gencat.cat).
+# fuente nueva aquí la decide Álvaro.
 EXCEPCIONES_ROBOTS = {
     "https://data.commoncrawl.org": (
         "«To access data from outside the Amazon cloud, via HTTP(S), the new URL prefix "
@@ -149,10 +148,48 @@ EXCEPCIONES_ROBOTS = {
 }
 
 
+# Boletines oficiales que se leen aunque su robots.txt lo cierre: decisión de Álvaro del 30/10/2026 («podemos usar
+# los datos»). Publican disposiciones y actos de organismos públicos, que no son objeto de propiedad intelectual, y
+# la ley de reutilización los hace reutilizables (BASE_BOLETINES). Solo estas direcciones, con las mismas peticiones
+# moderadas e identificadas de siempre y sin guardar datos de personas. El resto de servidores, incluidas las webs
+# de los centros de estudios, sigue con su robots.txt.
+BASE_BOLETINES = (
+    ("«No son objeto de propiedad intelectual las disposiciones legales o reglamentarias y sus correspondientes "
+     "proyectos, las resoluciones de los órganos jurisdiccionales y los actos, acuerdos, deliberaciones y dictámenes "
+     "de los organismos públicos»", "Real Decreto Legislativo 1/1996 (Ley de Propiedad Intelectual), art. 13",
+     "https://www.boe.es/buscar/act.php?id=BOE-A-1996-8930#a13"),
+    ("«Los documentos de los sujetos previstos en el artículo 2 serán reutilizables en los términos previstos en esta "
+     "ley»", "Ley 37/2007, de reutilización de la información del sector público, art. 4.1",
+     "https://www.boe.es/buscar/act.php?id=BOE-A-2007-19814#a4"),
+)
+BOLETINES_OFICIALES = {
+    "https://analisis.datosabiertos.jcyl.es/api/explore/v2.1/catalog/datasets/bocyl": "BOCYL (API de datos abiertos)",
+    "https://bocyl.jcyl.es/boletines/": "BOCYL (textos)",
+    "https://portaldogc.gencat.cat/eadop-rest/api/dogc": "DOGC (API del portal)",
+    "https://www.caib.es/eboibfront/": "BOIB",
+    "https://docm.jccm.es/docm/": "DOCM (sumarios por fecha)",
+    "https://docm.jccm.es/portaldocm/": "DOCM",
+    "https://bop.diba.cat/": "BOP de Barcelona",
+    "https://www.dip-alicante.es/bop2/": "BOP de Alicante (PDF)",
+    "https://bop.dacoruna.gal/bopportal/": "BOP de A Coruña",
+    "https://boppo.depo.gal/": "BOP de Pontevedra",
+    "https://bop.dipucr.es/": "BOP de Ciudad Real",
+    "https://se1.dipucr.es:4443/SIGEM_BuscadorDocsWeb/": "BOP de Ciudad Real (PDF)",
+    "https://bop.diputoledo.es/": "BOP de Toledo",
+}
+DECISION_BOLETINES = ("Álvaro", "2026-10-30")
+
+
+def boletin_oficial(url: str) -> str | None:
+    """Nombre del boletín si url es de un boletín oficial que se lee aunque su robots.txt lo cierre."""
+    u = url.lower()
+    return next((v for k, v in BOLETINES_OFICIALES.items() if u.startswith(k)), None)
+
+
 def comprobar_robots(url: str, sesion: requests.Session | None = None) -> None:
     from urllib.parse import urlparse
 
-    if urlparse(url).path == "/robots.txt" or _origen(url) in EXCEPCIONES_ROBOTS:
+    if urlparse(url).path == "/robots.txt" or _origen(url) in EXCEPCIONES_ROBOTS or boletin_oficial(url):
         return
     permitido, regla = robots_de(url, sesion).regla(url)
     if not permitido:

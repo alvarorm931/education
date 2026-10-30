@@ -39,11 +39,11 @@ def test_obtener_no_pide_lo_prohibido(monkeypatch):
 
     from motor import http
 
-    monkeypatch.setitem(http._ROBOTS, "https://bop.diba.cat", Robots("User-agent: *\nAllow: /\nDisallow: /anteriors/\n"))
+    monkeypatch.setitem(http._ROBOTS, "https://www.uncentro.es", Robots("User-agent: *\nAllow: /\nDisallow: /privado/\n"))
     pedidas = []
     monkeypatch.setattr(http.requests.Session, "get", lambda self, url, **k: pedidas.append(url))
     with pytest.raises(http.RobotsProhibe):
-        http.obtener("https://bop.diba.cat/anteriors/2026-10-28")
+        http.obtener("https://www.uncentro.es/privado/master")
     assert pedidas == []  # ni una petición
 
 
@@ -65,3 +65,23 @@ def test_excepcion_documentada(monkeypatch):
     monkeypatch.setitem(http._ROBOTS, "https://data.commoncrawl.org", Robots("User-Agent: *\nDisallow: /\n"))
     http.comprobar_robots("https://data.commoncrawl.org/crawl-data/CC-MAIN-2026-43/cc-index-table.paths.gz")
     assert set(http.EXCEPCIONES_ROBOTS) == {"https://data.commoncrawl.org", "https://index.commoncrawl.org"}
+
+
+def test_boletines_oficiales(monkeypatch):
+    """Boletines oficiales cerrados en robots.txt: se leen solo en sus direcciones (decisión del 30/10/2026)."""
+    import pytest
+
+    from motor import http
+    from motor.robots import Robots
+
+    cerrado = Robots("User-agent: *\nDisallow: /\n")
+    for origen in ("https://www.caib.es", "https://portaldogc.gencat.cat", "https://www.uncentro.es"):
+        monkeypatch.setitem(http._ROBOTS, origen, cerrado)
+    http.comprobar_robots("https://www.caib.es/eboibfront/es/2026/12248/713302/")
+    http.comprobar_robots("https://portaldogc.gencat.cat/eadop-rest/api/dogc/documentDOGC")
+    with pytest.raises(http.RobotsProhibe):
+        http.comprobar_robots("https://www.caib.es/sites/otra-cosa/")  # mismo servidor, fuera del boletín
+    with pytest.raises(http.RobotsProhibe):
+        http.comprobar_robots("https://www.uncentro.es/master")  # webs que no son boletines: robots.txt manda
+    assert http.boletin_oficial("https://BOP.DIBA.CAT/anuncis") == "BOP de Barcelona"
+    assert all(k.startswith("https://") and (k.endswith("/") or "/api/" in k) for k in http.BOLETINES_OFICIALES)

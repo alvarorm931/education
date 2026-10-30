@@ -72,9 +72,12 @@ for c in $CONECTORES; do
       "$G" "DOE: textos"
       ;;
     boib)
-      # En pausa (30/10/2026): robots.txt de caib.es prohíbe /eboibfront a todos salvo a los buscadores. Lo ya leído
-      # se conserva. Se reanuda con permiso del BOIB o si cambia su robots.txt (motor.robots_auditoria lo dirá).
-      echo "::notice title=BOIB en pausa::robots.txt de www.caib.es prohíbe /eboibfront a nuestro agente"
+      # robots.txt de caib.es cierra /eboibfront salvo a los buscadores; se lee como boletín oficial (motor/http.py)
+      ejecutar motor.autonomicos.boib --salida "$S" --max-minutos "$((M * 2))"
+      ejecutar motor.autonomicos.boib --desde-anio 2022 --hasta-anio "$((Y - 1))" --salida "$S" --max-minutos "$M"
+      "$G" "BOIB: boletines"
+      ejecutar motor.autonomicos.boib --textos --salida "$S" --max-minutos "$M"
+      "$G" "BOIB: textos"
       ;;
     borm)
       ejecutar motor.autonomicos.borm --salida "$S"
@@ -98,9 +101,10 @@ for c in $CONECTORES; do
       "$G" "BOPV: textos"
       ;;
     docm)
-      # robots.txt prohíbe pedir los diarios por fecha: solo el del día, por la portada
+      # El del día por la portada; los demás por fecha (robots.txt los cierra; se leen como boletín oficial)
       ejecutar motor.autonomicos.docm --salida "$S"
-      "$G" "DOCM: diario del día"
+      ejecutar motor.autonomicos.docm --historico --desde 2022-01-01 --saltar-existentes --salida "$S" --max-minutos "$M"
+      "$G" "DOCM: boletines"
       ejecutar motor.autonomicos.docm --textos --salida "$S" --max-minutos "$M"
       "$G" "DOCM: textos"
       ;;
@@ -119,16 +123,21 @@ for c in $CONECTORES; do
       "$G" "DOGC: textos"
       ;;
     bopb)
-      # Boletín provincial de Barcelona: robots.txt prohíbe el listado por días y los PDF; se lee el canal de datos
-      # abiertos del boletín del día (sin carga histórica ni textos)
+      # El del día por el canal de datos abiertos; los anteriores por el listado por días y los textos en PDF (cerrados
+      # en robots.txt; se leen como boletín oficial, motor/http.py)
       ejecutar motor.provinciales.bopb --salida "$S"
-      "$G" "BOPB: boletín del día (datos abiertos)"
+      ejecutar motor.provinciales.bopb --desde 2022-01-01 --salida "$S" --max-minutos "$M"
+      "$G" "BOPB: días"
+      ejecutar motor.provinciales.bopb --textos --salida "$S" --max-minutos "$M"
+      "$G" "BOPB: textos"
       ;;
     bopalicante)
       ejecutar motor.provinciales.bopalicante --salida "$S"
       ejecutar motor.provinciales.bopalicante --desde 2022-01-01 --salida "$S" --max-minutos "$M"
       "$G" "BOP Alicante: días"
-      # Textos: robots.txt de dip-alicante.es prohíbe /bop2/ (los PDF); solo títulos
+      # Los PDF (/bop2/) están cerrados en robots.txt; se leen como boletín oficial (motor/http.py)
+      ejecutar motor.provinciales.bopalicante --textos --salida "$S" --max-minutos "$M"
+      "$G" "BOP Alicante: textos"
       ;;
     bopvalencia)
       ejecutar motor.provinciales.bopvalencia --salida "$S"

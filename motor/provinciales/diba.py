@@ -256,7 +256,8 @@ def textos_pendientes(b: Boletin, raiz: Path) -> list[dict]:
 def main(b: Boletin, argv: list[str] | None = None) -> int:
     hoy = datetime.now(MADRID).date()
     p = argparse.ArgumentParser()
-    p.add_argument("--desde", type=date.fromisoformat, default=hoy - timedelta(days=1))
+    p.add_argument("--desde", type=date.fromisoformat, default=None,
+                   help="por el listado por días; sin él, el boletín del día (por el canal de datos si lo hay)")
     p.add_argument("--hasta", type=date.fromisoformat, default=hoy)
     p.add_argument("--salida", type=Path, default=Path("."))
     p.add_argument("--textos", action="store_true")
@@ -274,8 +275,8 @@ def main(b: Boletin, argv: list[str] | None = None) -> int:
         print(f"{b.siglas} textos: {hechos} descargados, {errores} errores, {len(pend) - hechos} pendientes")
         return 0
 
-    if b.feed:
-        # Sin listado por días (robots.txt): solo el boletín del día por su canal de datos abiertos
+    if b.feed and a.desde is None:
+        # El boletín del día, por su canal de datos abiertos
         try:
             inf = procesar_feed(b, a.salida, archivo)
         except (ConnectionError, TimeoutError) as e:
@@ -286,6 +287,7 @@ def main(b: Boletin, argv: list[str] | None = None) -> int:
               f"{'; '.join(inf.get('alertas', []))}")
         return 1 if inf["resultado"] in {"error_formato", "fuente_inaccesible", "error_http"} else 0
 
+    a.desde = a.desde or hoy - timedelta(days=1)
     inicio, informes = time.monotonic(), []
     freno = Freno()
     d = a.hasta

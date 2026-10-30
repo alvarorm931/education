@@ -1,10 +1,13 @@
 """Conector del Butlletí Oficial de la Província de Barcelona (BOPB): plataforma común en motor/provinciales/diba.py.
 
-Desde el 30/10/2026, por su robots.txt, se lee el canal RSS de datos abiertos del boletín del día; los anuncios de
-personal son los de tipo «Personal | …». Sin textos: los PDF están prohibidos a los programas.
+El boletín del día sale del canal RSS de datos abiertos (los anuncios de personal son los de tipo «Personal | …»);
+los anteriores, del listado por días, y los textos, de los PDF. Listado y PDF están cerrados en robots.txt y se leen
+como boletín oficial (motor/http.py, decisión del 30/10/2026).
 
 Uso:
-  python -m motor.provinciales.bopb --salida ruta/         # boletín del día
+  python -m motor.provinciales.bopb --salida ruta/                              # boletín del día
+  python -m motor.provinciales.bopb --desde 2022-01-01 --max-minutos 30 --salida ruta/
+  python -m motor.provinciales.bopb --textos --max-minutos 30 --salida ruta/
 """
 
 from __future__ import annotations

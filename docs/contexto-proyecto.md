@@ -49,12 +49,14 @@ ventanas al entrar, Core Web Vitals en verde, robots de búsqueda y de IA permit
   razonamiento cuenta dentro de `max_tokens`: para extraer datos con cita se envía `thinking: {"type": "disabled"}`. En repositorios públicos los ejecutores estándar no
   consumen minutos de pago (docs.github.com, «GitHub Actions billing»); límites: 6 horas por trabajo y 20 trabajos
   a la vez en el plan gratuito.
-- robots.txt obligatorio: `motor/http.py` lee el de cada servidor y no pide lo que prohíbe (RFC 9309, con
-  comodines, `motor/robots.py`); excepciones solo para servicios de datos documentados para uso por programa, con
-  cita (`EXCEPCIONES_ROBOTS`). Auditoría: `motor/robots_auditoria.py` sobre `fuentes/urls_ejemplo.json`. Por eso
-  el BOE se lee en HTML (`txt.php`) y el BOCM por su boletín completo en HTML; BOIB, el sumario del DOCM, BOCYL,
-  DOGC, el listado del BOP de Barcelona y los PDF de Alicante quedan en pausa o solo con títulos
-  (`claude/robots-txt-motor.md` en el proyecto).
+- robots.txt: `motor/http.py` lee el de cada servidor y no pide lo que prohíbe (RFC 9309, con comodines,
+  `motor/robots.py`). Dos excepciones, y solo en sus direcciones: servicios de datos documentados para uso por
+  programa, con cita (`EXCEPCIONES_ROBOTS`, Common Crawl), y boletines oficiales (`BOLETINES_OFICIALES`: BOCYL, DOGC,
+  BOIB, DOCM y los BOP de Barcelona, Alicante, A Coruña, Pontevedra, Ciudad Real y Toledo), por decisión de Álvaro
+  del 30/10/2026: sus actos no son objeto de propiedad intelectual (TRLPI, art. 13) y son reutilizables (Ley
+  37/2007, art. 4.1). Las webs de centros de estudios siguen siempre con su robots.txt. Auditoría:
+  `motor/robots_auditoria.py` sobre `fuentes/urls_ejemplo.json`. El BOE se lee en HTML (`txt.php`) y el BOCM por su
+  boletín completo en HTML, permitidos y equivalentes (`claude/robots-txt-motor.md` en el proyecto).
 - El espacio de trabajo de Claude no llega a las webs de las fuentes: todo se prueba desde GitHub (sondas y pruebas;
   `python -m motor.autonomicos.humo` prueba los conectores autonómicos contra las fuentes reales).
 - 16 boletines bloquean a GitHub (servidores fuera de España). Se está creando un servidor en AWS región España

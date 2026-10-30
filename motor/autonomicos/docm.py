@@ -42,7 +42,7 @@ from motor.limpieza import limpiar_html, texto_de
 FUENTE = "docm"
 MADRID = ZoneInfo("Europe/Madrid")
 BASE = "https://docm.jccm.es"
-PORTADA = BASE + "/docm/"  # robots.txt (30/10/2026) prohíbe sumario.do y cambiarBoletin.do; la portada no
+PORTADA = BASE + "/docm/"  # el diario del día; los demás por cambiarBoletin.do (--historico)
 CAPITALES = ("Albacete", "Ciudad Real", "Cuenca", "Guadalajara", "Toledo")
 
 RE_FECHA = re.compile(r'class\s*=\s*"fechaDiario"[^>]*>\s*[^,<]*,\s*(\d{1,2}) de ([a-záéíóú]+) de (\d{4})', re.IGNORECASE)
@@ -243,7 +243,7 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--saltar-existentes", action="store_true")
     p.add_argument("--textos", action="store_true")
     p.add_argument("--historico", action="store_true",
-                   help="por días con cambiarBoletin.do: robots.txt lo prohíbe, el control de motor/http.py no lo pide")
+                   help="por días con cambiarBoletin.do (cerrado en robots.txt; se lee como boletín oficial)")
     p.add_argument("--max-minutos", type=float, default=0)
     p.add_argument("--pausa", type=float, default=0.8)
     a = p.parse_args(argv)
@@ -258,7 +258,7 @@ def main(argv: list[str] | None = None) -> int:
         return 0
 
     if not a.historico:
-        # Solo el diario del día, por la portada (permitida): robots.txt prohíbe pedir los demás días
+        # El diario del día, por la portada
         try:
             inf = procesar_portada(a.salida, archivo)
         except ConnectionError as e:
