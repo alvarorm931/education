@@ -413,6 +413,8 @@ def _proceso(a: dict, posteriores: list[dict], otras: list[dict], hoy: date, ide
         "pendiente": a.get("pendiente") or [],
         "temporal": temporal,
         "solo_bases_locales": solo_bases,
+        # Sedes y tablones que citan la convocatoria o sus bases: donde saldrán notas y listas (seguimiento)
+        "sedes": sorted({s for x in todos for s in x.get("sedes") or []})[:5],
     }
 
 

@@ -22,7 +22,7 @@ from pathlib import Path
 from motor.autonomicos.comun import clasificar, convocante_de_organismo, escribir_jsonl, leer_jsonl
 from motor.boe.clasificar import normalizar
 from motor.boe.extraer import aplicar_plazas
-from motor.extraccion.citas import citas
+from motor.extraccion.citas import citas, sedes
 from motor.extraccion.plazo import VERSION as VERSION_PLAZO, extraer_plazo
 
 # fuente -> (siglas, nombres con los que el propio boletín se cita en los textos)
@@ -173,6 +173,8 @@ def construir_acto(fuente: str, x: dict, texto: str | None, recuento: int | None
         return acto
     if texto is not None and (c := citas(texto)):
         acto["citas"] = c
+    if texto is not None and (s := sedes(texto)):
+        acto["sedes"] = s
     if texto is None:
         acto["pendiente"].append("texto")
         return acto

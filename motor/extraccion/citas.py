@@ -65,3 +65,21 @@ def citas(texto: str | None, maximo: int = 8) -> list[dict]:
         if len(out) >= maximo:
             break
     return out
+
+
+RE_SEDE = re.compile(r"https?://[\w.-]*(?:sedelectronica|sede|seu|egoitza|tablon|tauler|taboleiro|eadmin|eadministracio|"
+                     r"carpetaciudadana|sedipualba|dipualba|dipcas|diputacion)[\w.-]*\.(?:es|gal|cat|eus|org|net|com)"
+                     r"(?:/[^\s)\]>,;«»\"']*)?", re.IGNORECASE)
+
+
+def sedes(texto: str | None, maximo: int = 5) -> list[str]:
+    """Direcciones de sedes electrónicas y tablones que cita un texto («se publicará en el tablón de anuncios de la
+    sede electrónica https://trabada.sedelectronica.gal»), sin repetir: donde saldrán notas y listas."""
+    out = []
+    for m in RE_SEDE.finditer(texto or ""):
+        u = m.group(0).rstrip(".:")
+        if u.lower() not in (x.lower() for x in out):
+            out.append(u)
+        if len(out) >= maximo:
+            break
+    return out
