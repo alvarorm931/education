@@ -342,9 +342,13 @@ textos largos quedan solo en el almacén privado; en `sondas` va su tamaño y su
   al año en lugar de unos 6.000). En las listas de precios solo valen cifras que cuadran entre sí dentro del bloque
   de cada grado; si la lista da varios precios para el mismo título (campus, modalidad, idioma), se publica el menor
   como «desde» y la ficha lo dice con todos los precios (`precios_de_la_lista`). Con datos estructurados y texto en
-  desacuerdo, no se publica precio. Total del grado estimado: precio por curso × créditos / 60, al precio de hoy;
-  en un doble grado solo si el precio sale del precio del crédito (sus cursos pasan de 60 créditos, 72 o 78, y con
-  el precio de un curso el total no se sabe: la ficha lo dice en `nota_total`).
+  desacuerdo, no se publica precio. Qué es cada cifra: `precio_curso` es lo que la fuente da como pagado en el
+  primer curso (en una lista, la enseñanza más la reserva, la matrícula y los cargos de la misma fila si la fila trae
+  ese total: Cardenal Herrera, 6.420 € de enseñanza y 9.020 € con 700 de reserva, 1.500 de inscripción y 400 de
+  apertura); `ensenanza` es la enseñanza de un curso cuando se puede separar. Total del grado estimado: la enseñanza
+  (o, si no se separa, el precio del curso) × créditos / 60, al precio de hoy, y la ficha dice que la matrícula y los
+  cargos van aparte (pueden ser solo del primer año); en un doble grado solo si el precio sale del precio del crédito
+  (sus cursos pasan de 60 créditos, 72 o 78, y con el precio de un curso el total no se sabe: `nota_total`).
 
   Lectura de las listas (`tarifas_grado.extraer`, 30/10 por la noche): las tablas HTML se leen con un lector de HTML
   (Deusto omite los cierres de celda y de fila, que el estándar permite); las celdas sin «€» valen si la cabecera
@@ -354,16 +358,29 @@ textos largos quedan solo en el almacén privado; en `sondas` va su tamaño y su
   del PDF parte en dos («1. 100 €», Alfonso X) se toma entera solo si así cuadran las cifras de su fila, con nota (23
   fichas). Una página de precios sin ningún importe leído guarda un diagnóstico sin texto (tablas, filas, cifras a
   la vista y en scripts, forma de sus líneas y direcciones de datos que carga aparte), y una línea con importe que no
-  se une con ningún grado, su forma (letras como «a», dígitos como «9»): así se vio que Nebrija carga sus precios
-  de grado aparte (la página no los trae) y que la tabla de Deusto sí estaba en el HTML.
+  se une con ningún grado, su forma (letras como «a», dígitos como «9»): así se vio que la tabla de Deusto sí estaba
+  en el HTML y que Nebrija carga sus precios de grado aparte. Nebrija usa Gatsby, que sirve los datos de cada página
+  en un JSON público («/page-data/…/page-data.json», en su dominio de recursos `assets.griddo.nebrija.com`): se lee
+  como una página más (`tarifas_grado.lineas_json`, 26 grados con precio de 2026-2027).
 
-  Resultado (30/10, 23:45, con las reglas nuevas, la relectura de las listas de las 45 privadas y sus centros y la de
-  sus páginas de grado): **501 de 1.410 grados y dobles de privadas con precio por curso** (159 de su página y 342 de
-  sus listas de precios), de 28 universidades (antes de estas reglas, 358 de 27). Entran sobre todo San Pablo-CEU
-  (74), Francisco de Vitoria (53), Deusto (32), San Jorge (27) y Alfonso X (22). 46 llevan varios precios de la
-  lista («desde»). De los 87 dobles con precio, 10 tienen total estimado (los demás, el precio de un curso). Y 15
-  grados de centros adscritos de
-  públicas con el precio de su web. Control del título de la página: si la
+  Resultado (31/10, 00:00, con las reglas nuevas, la relectura de las listas de las 45 privadas y sus centros y la
+  de sus páginas de grado): **527 de 1.410 grados y dobles de privadas con precio por curso** (159 de su página y
+  368 de sus listas de precios), de 28 universidades (antes de estas reglas, 358 de 27). Entran sobre todo San
+  Pablo-CEU (74), Nebrija (26 más, de los datos de su página de precios), Francisco de Vitoria (53), Deusto (32), San
+  Jorge (27) y Alfonso X (22). 51 llevan varios precios de la lista («desde»). De los 101 dobles con precio, 10
+  tienen total estimado (los demás, el precio de un curso). Y 15 grados de centros adscritos de públicas con el
+  precio de su web.
+
+  **Quinta revisión independiente (30/10, 23:30, antes de sumar Nebrija).** Un revisor sin acceso al código comparó 12 precios nuevos con su
+  fuente (Deusto, San Pablo-CEU, Cardenal Herrera, Alfonso X y Mare Nostrum, San Jorge, Francisco de Vitoria; informe
+  local en `trabajo/verificacion3/informe.md`): 7 correctos, 1 error y 4 sin poder abrir la fuente desde su entorno
+  (Deusto 2027-2028 y San Jorge). El error: Cardenal Herrera publicaba solo la enseñanza (6.420 €) de una fila cuyo
+  total es 9.020 € con reserva, inscripción y apertura, mientras el doble del mismo PDF sí daba el total: corregido
+  con la regla de arriba (40 fichas pasan al total de su fila). Observado y no corregible con lo publicado: Alfonso X
+  tiene versión en inglés y en línea del mismo título con otro precio (la en línea de 2026-2027 no está publicada);
+  San Pablo-CEU da la enseñanza sin la matrícula anual (la ficha lo dice).
+
+  Control del título de la página: si la
   dirección casa con el grado pero el título dice que es de otro estudio (un doble para un grado simple, una FP,
   otro grado, o un doble con otros grados), la página no vale para ese grado (`web_privadas.titulo_contradice`);
   un título genérico («Admisión») no contradice nada. Descartó 29 uniones, 4 con precio (por ejemplo, un doble de
@@ -405,8 +422,8 @@ textos largos quedan solo en el almacén privado; en `sondas` va su tamaño y su
     por crédito para todos los grados, sin grado por línea; sus fichas, prohibidas por robots.txt), Esade (un único
     importe de primer curso para todos los grados, sin curso), UCAV (precio por crédito por tramos de créditos, no
     por grado), La Salle, Blanquerna y UVic (páginas en inglés cuyos nombres no casan con los del catálogo), Isabel I
-    (el importe se carga con JavaScript), Nebrija (su página de precios carga los de grado aparte: la página no
-    los trae; sus fichas de grado sí dan precio) y la Europea (2025-2026 retirado, 404). San Jorge, que daba error,
+    (el importe se carga con JavaScript) y la Europea (2025-2026 retirado, 404). Nebrija, que no se leía, ya se lee
+    de los datos de su página de precios. San Jorge, que daba error,
     ya se lee (27 grados con precio).
 
 - **Por qué no responde una dirección** (`tarifas_grado.pedir_con_motivo`, desde el 30/10): cada dirección sin
@@ -583,7 +600,7 @@ pedir nada a ninguna fuente, y marca cada ficha como indexable o no, con el moti
 | Con nota de corte | 2.532 |
 | Con precio de primera matrícula (públicas) | 2.113 de 2.239 grados y 498 de 647 dobles de públicas |
 | De ellos, con el precio de la norma de su comunidad (QEDU no lo da) | 508 |
-| Privadas con precio por curso | 501 de 1.410 (y 15 centros adscritos de públicas con el precio de su web) |
+| Privadas con precio por curso | 527 de 1.410 (y 15 centros adscritos de públicas con el precio de su web) |
 | Con histórico de notas de corte comprobado | 1.430 (1.569 centros; 963 con cinco cursos o más; 1.030 con los cupos de reserva) |
 | Con inserción laboral | 1.703 |
 | Con indicadores de rendimiento del SIIU | 3.125 |
@@ -591,11 +608,11 @@ pedir nada a ninguna fuente, y marca cada ficha como indexable o no, con el moti
 | Grados con plan del BOE | 3.095 de 3.265 |
 | Grados con plan comprobado | 2.145 (1.536 por asignaturas, el resto por materias) |
 | Dobles con los planes de sus dos grados comprobados | 557 |
-| **Indexables** con los datos mínimos decididos | **2.138** (1.747 grados y 391 dobles; 1.775 de públicas y 363 de privadas) |
+| **Indexables** con los datos mínimos decididos | **2.162** (1.758 grados y 404 dobles; 1.775 de públicas y 387 de privadas) |
 
 El resto va con `noindex` y su motivo: 950 con plan que no
 cuadra, 644 sin plan (o doble sin los dos planes comprobados) y
-907 sin nota ni precio (casi todas, privadas que no publican el precio); una
+881 sin nota ni precio (casi todas, privadas que no publican el precio); una
 ficha puede tener varios.
 
 Para rehacerlo todo desde `sondas`: bajar las carpetas con `datos/estudios/grados/` y ejecutar en orden
@@ -645,12 +662,11 @@ comprobados por asignaturas:
    `trabajo/memorias_prioridad_v2.txt`). El lector ya está en las fichas
    (`fichas.plan_de_memoria`: el plan de la memoria entra si el del BOE no cuadra y él sí cuadra con los créditos
    por tipo del RUCT; con una página sin leer no cuenta como comprobado).
-3. Privadas sin precio (909): la Europea retiró sus PDF de 2025-2026 (404 también desde el
+3. Privadas sin precio (883): la Europea retiró sus PDF de 2025-2026 (404 también desde el
    servidor de España, 30/10) y la tabla 2026-2027 solo aparece en copias de terceros, que no son fuente; Católica de
-   Valencia publica su tabla 2026-2027 en una ruta que su robots.txt prohíbe (no se pide); Nebrija carga los precios
-   de grado de su página de precios aparte (la página no los trae; se buscará la dirección de esos datos); Comillas,
-   sin sitemap ni enlaces a sus grados en la portada; lo que no esté publicado, peticiones a cada universidad cuando
-   el portal tenga dirección pública
+   Valencia publica su tabla 2026-2027 en una ruta que su robots.txt prohíbe (no se pide); Comillas, sin sitemap ni
+   enlaces a sus grados en la portada; UNIR, VIU, UDIMA, CUNEF y la Europea no publican tabla; lo que no esté
+   publicado, peticiones a cada universidad cuando el portal tenga dirección pública
    (`docs/estrategia-informacion-cerrada.md` §3.4). El índice de Common Crawl de los dominios de centros dio 710
    direcciones más y solo 3 grados con importe: esa vía está agotada.
 4. Dobles de públicas sin precio (149): resoluciones de cada programa en Salamanca; UPV y UPV/EHU, de su web.
