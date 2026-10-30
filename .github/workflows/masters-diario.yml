@@ -85,10 +85,12 @@ jobs:
           for i in 1 2 3 4 5 6; do
             git fetch -q --depth 1 origin sondas && git reset -q FETCH_HEAD
             git checkout -q -B sondas
-            # el estado (manifiesto y conjunto) se sustituye entero; lo nuevo del día va en su carpeta
-            git rm -rq --cached masters-estado 2>/dev/null || true
-            rm -rf masters-estado && cp -r masters-estado.nuevo masters-estado
-            git add "$STAMP" masters-estado && git commit -qm "Másteres diario: $STAMP" || true
+            # el conjunto y el manifiesto se sustituyen; las entradas fijas (masters-estado/entradas) no se tocan;
+            # lo nuevo del día va en su carpeta
+            git rm -rq --cached masters-estado/conjunto 2>/dev/null || true
+            mkdir -p masters-estado && rm -rf masters-estado/conjunto
+            cp -r masters-estado.nuevo/conjunto masters-estado/conjunto && cp masters-estado.nuevo/manifiesto.json masters-estado/
+            git add "$STAMP" masters-estado/conjunto masters-estado/manifiesto.json && git commit -qm "Másteres diario: $STAMP" || true
             git push -q origin sondas && exit 0
             sleep $((i * 10))
           done
