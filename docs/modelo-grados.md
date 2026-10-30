@@ -138,45 +138,53 @@ resoluciones con varios planes se separan por anexo (52 resoluciones en 233 plan
 títulos, el documento queda entero y sin título.
 
 **Comprobación.** Un plan cuenta como comprobado si la suma de sus filas coincide con su propia tabla de créditos:
-completo (básicas + obligatorias + prácticas + TFG) o en básicas y obligatorias (el núcleo del plan; las prácticas
-y el TFG se toman de la tabla). Si la lectura directa no cuadra se prueban lecturas más prudentes, y solo se
-aceptan si entonces cuadra exactamente: sin los tipos deducidos (por nombre, rótulo o suma), sin una lista resumen
-que repite otra tabla, sin la única tabla que suma justo lo que sobra (itinerarios, listas a otro nivel), dando su
-tipo a la única tabla sin tipo que suma justo lo que falta, el resto sin tipo como obligatorio, o las asignaturas
-de un módulo de mención o itinerario sin carácter como optativas y el resto como obligatorio. Una lectura que
-comprueba el plan completo gana a la que solo cuadra en básicas y obligatorias. La ficha dice si la lectura fue
-directa o alternativa (562 de los 3.650 comprobados) y si además cuadra **tipo a tipo** (básicas, obligatorias,
-prácticas y TFG por separado, `cuadra_por_tipo`): 1.791 de los 2.203 planes nuevos comprobados. Si el plan del BOE
-no trae tabla que cuadre, se compara con los créditos por tipo de la ficha del RUCT (otra fuente oficial). Nunca se
-completa un plan con datos inventados.
+completo (básicas + obligatorias + prácticas + TFG), sin que ningún tipo pase de lo que dice la tabla (se admite que
+las obligatorias pasen justo en lo que falta de prácticas y TFG, porque hay planes que marcan el practicum «OB»); o
+en básicas y obligatorias, las dos exactas (el núcleo del plan; las prácticas y el TFG se toman de la tabla). Si la
+lectura directa no cuadra se prueban lecturas más prudentes, y solo se aceptan si entonces cuadra: sin los tipos
+deducidos (por nombre, rótulo o suma), sin una lista resumen que repite otra tabla, sin la única tabla que suma
+justo lo que sobra (itinerarios, listas a otro nivel), dando su tipo a la única tabla sin tipo que suma justo lo que
+falta, el resto sin tipo como obligatorio, o las asignaturas de un módulo de mención o itinerario sin carácter como
+optativas y el resto como obligatorio. Una lectura que comprueba el plan completo gana a la que solo cuadra en
+básicas y obligatorias. La ficha dice si la lectura fue directa o alternativa (448 de los 3.473 comprobados) y si
+además cuadra **tipo a tipo** (básicas, obligatorias, prácticas y TFG por separado, `cuadra_por_tipo`): 3.013 de
+los 3.473. Si el plan del BOE no trae tabla que cuadre, se compara con los créditos por tipo de la ficha del RUCT
+(otra fuente oficial). Nunca se completa un plan con datos inventados.
 
-**Revisión independiente (30/10/2026).** Un revisor que no había visto el lector comparó fila a fila 8 planes
-comprobados al azar (3 de lectura alternativa) con sus tablas del BOE. Encontró: el practicum y el TFG con carácter
-«Obligatoria» contados como obligatorias aunque la tabla de créditos los separa (la suma total no lo detectaba); una
-fila «Total» leída como asignatura de 240 créditos; semestres 1 y 2 sin curso en planes con semestres del 1 al 8;
-«1 y 2», «7 u 8» o «1.º y 2.º» recortados al primero; llamadas de nota («(1)», «(*)») pegadas al nombre. Todo
-corregido el mismo día: el practicum y el TFG van a su tipo cuando la tabla de créditos los separa, las filas de
-total y las que valen la mitad del grado se descartan, «7 u 8» es cuarto curso sin semestre y «1 y 2» queda sin
-semestre (el literal se guarda), y se añadió la comprobación tipo a tipo. Efecto, con la misma medida antes y después: planes comprobados que
-cuadran también tipo a tipo, de 1.960 a 2.715; comprobados, de 3.625 a 3.650 (se cayeron 31 que cuadraban por
-casualidad, la mayoría con el TFG contado como obligatoria). También se cruza la tabla de módulos con la de curso y
-semestre: si la asignatura tiene un único curso y semestre en el plan, lo toma (`curso_de_otra_tabla`; 17 planes
-más con curso). Los huecos de optativas del plan («Optativa I», «Optativas 2-7») van marcados
-en la ficha (`hueco`: 2.592 de 148.328 filas). Queda por resolver: rótulos de grupo de optativas con créditos leídos
-como nombre en algún plan (solo afecta a las optativas, que no cuentan en la comprobación).
+**Dos revisiones independientes (30/10/2026).** Dos revisores que no habían visto el lector compararon fila a fila
+16 planes comprobados al azar (7 de lectura alternativa) con sus tablas del BOE.
 
-Resultado con todo lo leído (30/10/2026, 07:45, hora de España):
+- La primera encontró: el practicum y el TFG con carácter «Obligatoria» contados como obligatorias aunque la tabla
+  de créditos los separa; una fila «Total» leída como asignatura de 240 créditos; semestres 1 y 2 sin curso en
+  planes con semestres del 1 al 8; «1 y 2», «7 u 8» o «1.º y 2.º» recortados al primero; llamadas de nota («(1)»,
+  «(*)») pegadas al nombre. Corregido: el practicum y el TFG van a su tipo cuando la tabla de créditos los separa,
+  las filas de total y las que valen la mitad del grado se descartan, «7 u 8» es cuarto curso sin semestre y «1 y 2»
+  queda sin semestre (el literal se guarda), la tabla de módulos toma el curso de la de distribución temporal si es
+  único (`curso_de_otra_tabla`) y los huecos de optativas («Optativa I», «Optativas 2-7») van marcados (`hueco`).
+- La segunda, ya con eso corregido, encontró el riesgo principal: **errores que se compensan** (un plan con 70
+  créditos de obligatorias sin leer y 64 de optativas leídas como obligatorias cuadraba en el total) y filas
+  «Créditos totales» leídas como asignaturas. Corregido: ningún tipo puede pasar de su tabla de créditos y, en el
+  nivel de básicas y obligatorias, las dos sumas tienen que ser exactas; las filas de totales se descartan.
+- Efecto neto de las dos: comprobados, de 3.625 a 3.473 (salen los que cuadraban por compensación o con los tipos
+  cambiados); de ellos, los que cuadran también tipo a tipo, de 1.960 (medidos igual antes de corregir) a 3.013.
+- Queda abierto (solo afecta a optativas o al curso, no a la comprobación): tablas con dos semestres lado a lado
+  de las que se lee solo el bloque izquierdo (visto en la UOC: con la regla nueva ese plan ya no cuenta como
+  comprobado), cursos que solo dice el texto encima de cada tabla («Primer curso») o semestres en números romanos
+  (I a X), optativas perdidas al descartar una tabla repetida y variantes de nombre («Idioma moderno II» e «Idioma
+  moderno II: Inglés II»).
+
+Resultado con todo lo leído (30/10/2026, 08:00, hora de España):
 
 | | Leídos | Con asignaturas | Con curso | Comprobados | Y además tipo a tipo |
 |---|---|---|---|---|---|
-| Planes nuevos | 3.496 | 2.551 | 2.154 | 2.203 (63 %) | 1.791 |
-| Modificaciones | 2.231 | 1.599 | 984 | 1.381 (62 %) | 1.156 |
+| Planes nuevos | 3.496 | 2.551 | 2.154 | 2.093 (60 %) | 1.799 |
+| Modificaciones | 2.231 | 1.599 | 984 | 1.314 (59 %) | 1.163 |
 | Cambios de denominación | 20 | 16 | 15 | 12 | 11 |
 | Correcciones de errores | 391 | 139 | 96 | 54 | 40 |
 
-De los 1.293 planes nuevos que no cuadran: publicados solo por materias, sin asignaturas (403); tablas sin carácter
-que no se puede asignar de forma comprobable (322); diferencias de una o dos asignaturas, 12 créditos o menos
-(113); otras diferencias (283); sin tabla de créditos por tipo (91) y sin tabla de plan legible (81). Esos planes
+De los 1.403 planes nuevos que no cuadran: publicados solo por materias, sin asignaturas (419); tablas sin carácter
+que no se puede asignar de forma comprobable (339); diferencias de una o dos asignaturas, 12 créditos o menos
+(176); otras diferencias (295); sin tabla de créditos por tipo (93) y sin tabla de plan legible (81). Esos planes
 se guardan igual (la ficha los enseña, marcados como no comprobados) pero no cuentan como asignaturas comprobadas.
 
 Menciones: 692 planes y modificaciones las citan, en el texto o en las tablas.
@@ -313,12 +321,12 @@ pedir nada a ninguna fuente, y marca cada ficha como indexable o no, con el moti
 | Con indicadores de rendimiento del SIIU | 3.125 |
 | Con ficha del RUCT | 3.265 |
 | Grados con plan del BOE | 3.079 de 3.265 |
-| Grados con plan comprobado | 2.247 (1.585 por asignaturas, el resto por materias) |
-| Dobles con los planes de sus dos grados comprobados | 608 |
-| **Indexables** con la propuesta de datos mínimos | **2.071** (1.727 grados y 344 dobles; 1.852 de públicas y 219 de privadas) |
+| Grados con plan comprobado | 2.215 (1.568 por asignaturas, el resto por materias) |
+| Dobles con los planes de sus dos grados comprobados | 593 |
+| **Indexables** con la propuesta de datos mínimos | **2.038** (1.705 grados y 333 dobles; 1.824 de públicas y 214 de privadas) |
 
-El resto va con `noindex` y su motivo: 832 con plan que no
-cuadra, 609 sin plan (o doble sin los dos planes comprobados) y
+El resto va con `noindex` y su motivo: 864 con plan que no
+cuadra, 624 sin plan (o doble sin los dos planes comprobados) y
 1.201 sin nota ni precio (casi todas, privadas que no publican el precio); una
 ficha puede tener varios.
 
@@ -337,16 +345,16 @@ Datos propios que salen de los planes (`motor/grados/asignaturas.py` y `relacion
 comprobados por asignaturas:
 
 - **Asignaturas en común**: en cuántas universidades del mismo grado aparece cada asignatura, qué parte del plan de
-  cada una es común y cuáles solo tiene ella (161 genéricos con al menos dos
+  cada una es común y cuáles solo tiene ella (159 genéricos con al menos dos
   planes comparables).
-- **Buscar por asignatura** (`asignaturas_indice.jsonl`): 36.848 asignaturas distintas
-  (nombre normalizado, sin numeración), 8.191 en dos títulos o más, cada una
+- **Buscar por asignatura** (`asignaturas_indice.jsonl`): 36.504 asignaturas distintas
+  (nombre normalizado, sin numeración), 8.129 en dos títulos o más, cada una
   con dónde se estudia, su tipo y su curso. TFG, optativas, prácticas y practicum van marcados como huecos del plan
   (19), sin página propia.
 - **Carreras parecidas** (`relaciones.jsonl`): por campo ISCED-F, ámbito, área y rama del SIIU, nombre, dobles
   grados que las combinan y asignaturas básicas y obligatorias en común; cada relación lleva sus motivos.
   244 de los 245 genéricos de grado con página tienen alguna
-  (1.390 relaciones apoyadas en asignaturas comunes); la que no tiene nada cercano queda
+  (1.383 relaciones apoyadas en asignaturas comunes); la que no tiene nada cercano queda
   vacía.
 - **Dobles grados que incluyen cada carrera** y los grados que forman cada doble; la ficha del doble enlaza los
   planes de sus dos grados.
