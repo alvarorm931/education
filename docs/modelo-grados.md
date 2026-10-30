@@ -221,8 +221,11 @@ peticiones sin un fallo): 3.080 grados activos tienen ahí el identificador BOE 
 
 Las memorias de verificación (asignaturas, semestre, evaluación, plazas por centro) pesan entre 100 y 250 páginas
 por título en el RUCT; se midieron en una muestra de 6 (785 peticiones). Decidido por Álvaro el 30/10/2026: se
-piden para los 1.020 grados sin plan comprobado (68 tramos; los textos largos de la memoria quedan solo en el
-almacén privado y en `sondas` va su tamaño y su huella, `ruct_grados.sin_textos`).
+piden para los 1.020 grados sin plan comprobado. El RUCT tarda unos 10 segundos por página (medido: 307 peticiones
+en 53 minutos, 5 memorias), así que se piden solo las páginas del plan (`ruct_grados.leer_plan_memoria`: módulos,
+materias y asignaturas, sin actividades, evaluación, contenidos, acceso, catálogos ni centros), por prioridad
+(165 grados sin plan, 441 publicados solo por materias y 409 que no cuadran), en 170 tramos de 6, 4 a la vez. Los
+textos largos quedan solo en el almacén privado; en `sondas` va su tamaño y su huella (`ruct_grados.sin_textos`).
 
 ### Precio
 
@@ -277,12 +280,15 @@ almacén privado y en `sondas` va su tamaño y su huella, `ruct_grados.sin_texto
   Regla del precio (`fichas.precio_por_cuentas` y `precio_web`), de más a menos comprobado: un importe que es el
   crédito × 60 de otro de la misma página (un curso son 60 créditos, RD 822/2021); crédito × 60 más la matrícula;
   reserva más 8 a 12 cuotas iguales; el precio de los datos estructurados (schema.org) si no contradice al texto;
-  un único importe por curso; un único precio del crédito × 60. En las listas de precios solo valen cifras que
-  cuadran entre sí dentro del bloque de cada grado. Con datos estructurados y texto en desacuerdo, no se publica
-  precio. Total del grado estimado: precio por curso × créditos / 60, al precio de hoy.
+  un único importe por curso. Un precio del crédito suelto, sin otra cifra de la página que lo confirme, ya no se
+  publica: revisados a mano los 7 que había, 2 eran una reserva de 350 € leída como crédito (Mediterrani, 21.000 €
+  al año en lugar de unos 6.000). En las listas de precios solo valen cifras que cuadran entre sí dentro del bloque
+  de cada grado. Con datos estructurados y texto en desacuerdo, no se publica precio. Total del grado estimado:
+  precio por curso × créditos / 60, al precio de hoy.
 
-  Resultado: **253 de 1.410 grados y dobles de privadas con precio por curso** (162 de su página y 91 de sus
-  listas de precios), de 20 universidades; los 253 con total estimado. Control del título de la página: si la
+  Resultado: **307 de 1.410 grados y dobles de privadas con precio por curso** (180 de su página y 127 de sus
+  listas de precios, 22 de ellos de la web de su centro), de 24 universidades; los 307 con total estimado. Y 11
+  grados de centros adscritos de públicas con el precio de su web. Control del título de la página: si la
   dirección casa con el grado pero el título dice que es de otro estudio (un doble para un grado simple, una FP,
   otro grado, o un doble con otros grados), la página no vale para ese grado (`web_privadas.titulo_contradice`);
   un título genérico («Admisión») no contradice nada. Descartó 29 uniones, 4 con precio (por ejemplo, un doble de
@@ -294,12 +300,12 @@ almacén privado y en `sondas` va su tamaño y su huella, `ruct_grados.sin_texto
 
 ### Lo que falta por medir
 
-- Notas de corte de cinco cursos o más por cupo (decisión de Álvaro: dentro de grados). En marcha, ver
-  «Notas de corte históricas» abajo.
+- Notas de corte de cinco cursos o más por cupo (decisión de Álvaro: dentro de grados): Madrid, Murcia,
+  Cataluña y Salamanca hechos; el resto de distritos, ver «Notas de corte históricas» abajo.
 - Guías docentes de grado: la guía decidió no hacerlas asignatura por asignatura para carreras.
 - Una frase por asignatura (guía): se genera cuando el plan esté completo; no es un dato de fuente.
 
-### Notas de corte históricas (en marcha)
+### Notas de corte históricas
 
 QEDU da dos cursos (2025-2026 y el anterior) con el código del título y del centro. Para cinco cursos por cupo hay
 que ir a cada distrito: fuentes oficiales localizadas el 30/10/2026 en las 17 comunidades; solo Cataluña
@@ -321,13 +327,38 @@ Ministerio).
   Generalitat lo cierra por robots.txt), UCLM, Granada, Cádiz. Sin acceso desde GitHub: ULPGC y Extremadura (403),
   CiUG (sin respuesta), La Rioja (429), Valladolid (404 en las direcciones conocidas).
 - Lo que da la nota de cada distrito no es siempre lo mismo: la de Cataluña es la de la primera asignación de
-  junio (solo coincide con la final de QEDU en un 10 %); Madrid y Murcia, la final. Cada fila guardará el tipo de
-  lista y su fecha.
+  junio (solo coincide con la final de QEDU en un 10 %); Madrid, Murcia y Salamanca, la final. Cada fila lleva el
+  tipo de lista y su documento.
 - Licencias: Zaragoza publica sus datos abiertos con CC BY-NC (no comercial), que choca con una web con
   anuncios: fuera hasta que Álvaro decida (sus PDF no llevan licencia propia). Murcia: CC0 en su portal y CC BY-SA
   en datos.gob.es.
-- **Fase 2** (pendiente): lector de cada formato y unión de cada fila con su título y centro (nombre, municipio,
-  plazas y, donde la nota es la final, la nota de QEDU de los cursos que se solapan).
+- QEDU no da cursos anteriores aunque se le pidan (sonda del 30/10: con `anio`, `curso` y otros campos devuelve
+  siempre 2025-2026).
+- **Fase 2** (`motor/grados/notas_corte.py`): un lector por formato y la unión de cada fila con su título y
+  centro.
+  - Lectores: Madrid (las dos tablas del PDF: la completa de once columnas y la de la Autónoma, con los grupos 1, 2
+    y 6 y celdas vacías; cada cifra a su columna por el orden o por su posición; lo dudoso se descarta),
+    Universidad de Murcia (CSV con códigos del Ministerio), Cataluña (Socrata) y Salamanca (grupo general con el
+    tipo del último admitido).
+  - Unión: universidad, nombre normalizado (siglas como «ADE», «CC.», «Ing.»; en Cataluña, un diccionario de
+    palabras del catalán), dobles escritos «A-B», «A / B» o con «(simultaneïtat)», campus o centro entre paréntesis
+    o comillas, municipio, centro propio cuando el nombre no cita ninguno, el título que se oferta frente al que se
+    extingue y, si el distrito da la nota final, la nota de QEDU del mismo curso. El mismo código del distrito en
+    otro curso con un nombre parecido es la misma oferta.
+  - Nota del título en el centro: la menor de sus ofertas (menciones, grupos de idioma, títulos con máster), que es
+    como la da QEDU. Comprobado: coincide con QEDU en 606 de 651 cursos de Madrid, 45 de 64 de Murcia y 29 de 33
+    de Salamanca (con nota por encima de 5,000; QEDU redondea o trunca a dos decimales). Revisión a mano de 6 notas
+    de 2021-2022 de Madrid al azar contra el PDF oficial: 5 exactas y 1 sin poder confirmar.
+  - Se publica (`historico.jsonl`, `publicable`) el histórico de un título y centro que no contradice a QEDU en
+    ningún curso; si ninguna de sus notas es la final (Cataluña), solo si sus plazas coinciden con las de QEDU.
+    Cada curso lleva su documento, huella, fecha de captura y tipo de lista.
+  - Resultado (30/10/2026): 1.040 títulos y centros con histórico, 923 publicables, 393 con cinco cursos o más;
+    876 centros de 815 fichas lo llevan ya (`centros[].notas_historicas`).
+  - Pendiente: distrito único andaluz (la consulta por formulario aún no devuelve resultados: falta el campo de
+    envío), Burgos (tabla acumulada con celdas vacías y columnas desplazadas: hace falta la posición real de cada
+    cifra en el PDF), León, Cantabria, UCLM, Pública de Navarra, UPV/EHU (PDF de imagen desde 2022-2023), Comunitat
+    Valenciana (solo un curso accesible), Galicia, Extremadura, ULPGC y La Rioja (sin acceso desde GitHub) y
+    Zaragoza (licencia).
 
 ## 3. La ficha del grado
 
@@ -341,7 +372,7 @@ serían casi iguales (ley SEO). Dirección: `/universidad/{universidad}/grado/{g
 | Tipo | grado, doble grado (y sus dos grados), régimen, rama, área | SIIU | RUCT |
 | Plan | asignaturas con créditos, carácter, curso y semestre; menciones | BOE (plan vigente; el que enlaza el RUCT y sus modificaciones) | tabla de créditos del plan |
 | Reparto | créditos por tipo: básica, obligatoria, optativa, prácticas, TFG | BOE | RUCT |
-| Acceso | nota de corte de dos cursos y nota media de admisión por centro | QEDU | distrito |
+| Acceso | nota de corte de dos cursos y nota media de admisión por centro; histórico del distrito (hasta siete cursos) donde está comprobado | QEDU; distrito | QEDU |
 | Plazas | plazas de nuevo ingreso por centro | QEDU | oferta del Ministerio |
 | Precio | públicas: €/crédito y grado completo en primera matrícula, bonificaciones; privadas: precio por curso de su web o su lista de precios y total estimado | QEDU y norma autonómica / web de la privada | cuentas entre cifras |
 | Empleo | afiliación, autónomos, indefinidos, cotización adecuada, base media de cotización | QEDU | SIIU |
@@ -382,18 +413,19 @@ pedir nada a ninguna fuente, y marca cada ficha como indexable o no, con el moti
 | Con nota de corte | 2.662 |
 | Con precio de primera matrícula (públicas) | 2.113 de 2.239 grados y 498 de 647 dobles de públicas |
 | De ellos, con el precio de la norma de su comunidad (QEDU no lo da) | 508 |
-| Privadas con precio por curso | 253 de 1.410 |
+| Privadas con precio por curso | 307 de 1.410 (y 11 centros adscritos de públicas con el precio de su web) |
+| Con histórico de notas de corte comprobado | 815 (876 centros; 354 con cinco cursos o más) |
 | Con inserción laboral | 1.703 |
 | Con indicadores de rendimiento del SIIU | 3.125 |
 | Con ficha del RUCT | 3.265 |
 | Grados con plan del BOE | 3.095 de 3.265 |
 | Grados con plan comprobado | 2.245 (1.595 por asignaturas, el resto por materias) |
 | Dobles con los planes de sus dos grados comprobados | 599 |
-| **Indexables** con los datos mínimos decididos | **2.100** (1.719 grados y 381 dobles; 1.886 de públicas y 214 de privadas) |
+| **Indexables** con los datos mínimos decididos | **2.118** (1.735 grados y 383 dobles; 1.886 de públicas y 232 de privadas) |
 
 El resto va con `noindex` y su motivo: 850 con plan que no
 cuadra, 602 sin plan (o doble sin los dos planes comprobados) y
-1.148 sin nota ni precio (casi todas, privadas que no publican el precio); una
+1.101 sin nota ni precio (casi todas, privadas que no publican el precio); una
 ficha puede tener varios.
 
 Para rehacerlo todo desde `sondas`: bajar las carpetas con `datos/estudios/grados/` y ejecutar en orden
@@ -432,12 +464,14 @@ comprobados por asignaturas:
 1. **Decisiones de Álvaro:** la excepción del RUCT (§2), que tomó Claude y se puede revertir; Zaragoza (licencia
    no comercial de sus datos abiertos de notas de corte).
 2. Planes que no cuadran (sobre todo publicados solo por materias o sin carácter por asignatura): memorias del RUCT
-   de los 1.020 grados sin plan comprobado (decidido por Álvaro); 68 tramos en cola en GitHub desde las 11:36.
+   de los 1.020 grados sin plan comprobado (decidido por Álvaro), solo las páginas del plan, en marcha desde las
+   12:54 (170 tramos, 4 a la vez; más de un día); después, su lector para las fichas.
 3. Privadas sin precio: peticiones a cada universidad cuando el portal tenga dirección pública
    (`docs/estrategia-informacion-cerrada.md` §3.4); Comillas y UOC desde el servidor de España; Navarra con su
    lista de precios conocida (`tarifas_grado.URLS_CONOCIDAS`).
 4. Dobles de públicas sin precio (149): resoluciones de cada programa en Salamanca; UPV y UPV/EHU, de su web.
-5. Notas de corte de cinco cursos por cupo: fase 2 (lectores y unión con título y centro).
+5. Notas de corte del resto de distritos (andaluz, Burgos, León, Cantabria, UCLM, Pública de Navarra, UPV/EHU…) y
+   de los cupos distintos del general (Madrid ya los lee: grupos 2 a 6).
 6. Mantenerlo al día: BOE diario (planes y modificaciones nuevos), QEDU y SIIU cada curso, RUCT semanal
    (acreditaciones y extinciones), webs de privadas en primavera-verano, notas de corte en cada adjudicación.
 7. Generador de páginas de grado con el diseño «Noche en blanco» y el control de la ley SEO.
