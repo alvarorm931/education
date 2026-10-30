@@ -100,6 +100,10 @@ def procesar_portada(raiz: Path, archivo: Archivo) -> dict:
     if r.status != 200:
         return {"fecha": None, "status": r.status, "resultado": "error_http", "alertas": [f"BOPPO portada: HTTP {r.status}"]}
     s = parsear_portada(r.contenido)
+    if not s["fecha"] and "no está disponible temporalmente" in r.contenido.decode("utf-8", errors="replace"):
+        # «Último BOPPO no está disponible temporalmente» (de madrugada, mientras se publica): se reintenta otro día
+        return {"fecha": None, "status": 200, "resultado": "fuente_inaccesible",
+                "alertas": ["BOPPO: la portada dice que el último boletín no está disponible temporalmente"]}
     if not s["fecha"] or not s["anuncios"]:
         return {"fecha": s["fecha"], "status": 200, "resultado": "error_formato",
                 "alertas": ["BOPPO portada sin número, fecha o anuncios (posible cambio de formato)"]}
