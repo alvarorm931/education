@@ -468,6 +468,45 @@ def construir_y_unir(actos: list[dict], hoy: date, autonomicos: list[dict] | Non
     return procesos, dict(recuento), huerfanos
 
 
+RE_ANIO_OFERTA = re.compile(r"(?:oferta (?:de empleo publico|publica de empleo|d'ocupacio publica|publica d'ocupacio|"
+                            r"de emprego publico|publica de emprego)|\boep\b)\s*(?:de |del |para el |per a l'|para o |"
+                            r"correspondiente al |corresponent a l'|do |da )?(?:ano |any |exercicio |ejercicio )?"
+                            r"(?:de |del )?(?P<a>20\d\d)")
+
+
+def anio_oferta(titulo: str | None) -> int | None:
+    """Año de la oferta de empleo que cita un título («OEP 2024», «Oferta de Empleo Público para el año 2025»)."""
+    m = RE_ANIO_OFERTA.search(normalizar(titulo or "").replace("’", "'").replace("de l'any", "de"))
+    return int(m.group("a")) if m else None
+
+
+def ofertas(actos: list[dict], procesos: list[dict]) -> list[dict]:
+    """Ofertas de empleo (el aviso más temprano de lo que se va a convocar): una por convocante y año, con sus
+    publicaciones y los procesos que la citan."""
+    por_clave: dict[tuple[str, int], dict] = {}
+    for x in actos:
+        if x.get("tipo_acto") != "oferta_empleo":
+            continue
+        anio = anio_oferta(x.get("titulo")) or int((x.get("fecha") or "0000")[:4])
+        claves = clave_convocante(x) or [clave_titulo(x.get("organismo") or x.get("departamento"))]
+        k = (claves[0] if claves else "", anio)
+        o = por_clave.setdefault(k, {"convocante": x.get("convocante") or {"organismo": x.get("organismo") or
+                                                                             x.get("departamento")},
+                                     "anio": anio, "publicaciones": [], "procesos": []})
+        o["publicaciones"].append({**_ref(x), "titulo": x.get("titulo")})
+    for p in procesos:
+        anio = anio_oferta(" ".join([p.get("titulo") or ""] + [o.get("titulo") or "" for o in p.get("otras_publicaciones") or []]))
+        if not anio:
+            continue
+        p["oferta_anio"] = anio
+        c = p.get("convocante") or {}
+        for k in (c.get("codigo_ine"), clave_titulo(c.get("nombre"))):
+            if k and (k, anio) in por_clave:
+                por_clave[(k, anio)]["procesos"].append(p["id"])
+                break
+    return sorted(por_clave.values(), key=lambda o: (o["anio"], str(o["convocante"])))
+
+
 def cobertura(procesos: list[dict]) -> dict:
     """Control del modelo: cada anuncio local del BOE debe tener sus bases localizadas en el boletín que cita. Por
     boletín citado: cuántas bases cita el BOE, cuántas están enlazadas y si el boletín tiene conector."""
@@ -550,9 +589,14 @@ def main(argv: list[str] | None = None) -> int:
     (destino / "huerfanos.jsonl").write_text("".join(json.dumps(x, ensure_ascii=False) + "\n" for x in huerfanos),
                                              encoding="utf-8")
     r = resumen(procesos, a.hoy)
+    oep = ofertas(leer_actos(a.salida) + leer_actos_autonomicos(a.salida), procesos)
+    (destino / "ofertas.jsonl").write_text("".join(json.dumps(x, ensure_ascii=False) + "\n" for x in oep),
+                                           encoding="utf-8")
     cob = cobertura(procesos)
     (destino / "cobertura.json").write_text(json.dumps(cob, ensure_ascii=False, indent=1), encoding="utf-8")
     r["cobertura_bases"] = {k: v for k, v in cob.items() if k != "por_boletin"}
+    r["ofertas_de_empleo"] = {"ofertas": len(oep), "con_procesos_que_la_citan": sum(1 for o in oep if o["procesos"]),
+                              "procesos_con_año_de_oferta": sum(1 for p in procesos if p.get("oferta_anio"))}
     r["uniones"] = {"actos_unidos": sum(v for k, v in uniones.items() if not k.startswith("huerfano:")),
                     "huerfanos": len(huerfanos), "por_motivo": dict(sorted(uniones.items(), key=lambda kv: -kv[1])),
                     "procesos_con_actos_posteriores": sum(1 for p in procesos if len(p.get("actos") or []) > 1),
