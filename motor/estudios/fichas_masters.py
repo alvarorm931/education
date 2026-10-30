@@ -206,8 +206,32 @@ def con_altas(cat: dict[str, dict], altas: list[dict]) -> int:
     return n
 
 
+CONCEPTO_A_CAMPO = {"total": "precio_total", "credito": "precio_credito", "reserva": "reserva_matricula"}
+
+
+def aplicar_tarifas(fichas: list[dict], unidos: list[dict]) -> int:
+    """Precios de las tarifas en PDF (tarifas.py unir) en las fichas que no los tienen en su página. La página
+    manda: un precio de tarifa nunca sustituye al de la ficha. Queda la fuente (el PDF) como documento público."""
+    por_clave = {f["clave"]: f for f in fichas}
+    n = 0
+    for u in unidos:
+        f, campo = por_clave.get(u.get("ficha")), CONCEPTO_A_CAMPO.get(u.get("concepto"))
+        if not f or not campo or campo in f.setdefault("campos", {}) or u.get("importe") is None:
+            continue
+        if f["grupo"] == "oficial" and f.get("comprobacion_nombre") not in ("confirmado", "probable_oficial",
+                                                                             "confirmado_por_nombre"):
+            continue
+        fuentes = f.setdefault("fuentes", [])
+        fuentes.append({"url": u["url"], "captura_sha256": u.get("captura_sha256"), "extraido": u.get("extraido"),
+                        "pagina": "documento", "curso": u.get("curso")})
+        f["campos"][campo] = {"valor": u["importe"], "fuente": len(fuentes) - 1, "cita_sha256": u.get("cita_sha256")}
+        n += 1
+    return n
+
+
 def ejecutar(extracciones: list[Path], salida: Path, catalogo: Path | None = None,
-             clasificacion: Path | None = None, censo: Path | None = None, altas: Path | None = None) -> dict:
+             clasificacion: Path | None = None, censo: Path | None = None, altas: Path | None = None,
+             tarifas: Path | None = None) -> dict:
     paginas, hechos = leer_extracciones(extracciones)
     cat = {}
     if catalogo:
@@ -321,6 +345,9 @@ def ejecutar(extracciones: list[Path], salida: Path, catalogo: Path | None = Non
         res["no_oficial_master" if ficha["es_master"] else "no_oficial_otro_titulo"] += 1
         fichas.append(ficha)
 
+    if tarifas:
+        res["campos_desde_tarifas_pdf"] = aplicar_tarifas(fichas, _jsonl(tarifas))
+
     completitud = Counter()
     for f in fichas:
         for campo in f.get("campos", {}):
@@ -346,11 +373,12 @@ def main() -> None:
     p.add_argument("--clasificacion")
     p.add_argument("--censo", help="proveedores.jsonl: une a sus másters oficiales las páginas propias con su nombre")
     p.add_argument("--altas", help="boe_altas.jsonl: másters aprobados después del catálogo")
+    p.add_argument("--tarifas", help="precios_unidos.jsonl de tarifas.py unir: precios de PDF para las fichas sin ellos")
     p.add_argument("--salida", required=True)
     a = p.parse_args()
     print(json.dumps(ejecutar([Path(x) for x in a.extraccion], Path(a.salida), Path(a.catalogo) if a.catalogo else None,
                               Path(a.clasificacion) if a.clasificacion else None, Path(a.censo) if a.censo else None,
-                              Path(a.altas) if a.altas else None),
+                              Path(a.altas) if a.altas else None, Path(a.tarifas) if a.tarifas else None),
                      ensure_ascii=False, indent=1))
 
 

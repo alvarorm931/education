@@ -130,3 +130,14 @@ def test_altas_del_boe_entran_en_el_catalogo():
                            "universidad": "Universidad Cardenal Herrera-CEU", "boe": "BOE-A-2022-619", "fecha": "2022-01-15"},
                           {"codigo_ruct": "1", "nombre": "repetido"}])
     assert n == 1 and cat["4317450"]["universidad_codigo"] == "080" and "boe.es" in cat["4317450"]["fuente"]["url"]
+
+
+def test_tarifa_pdf_rellena_sin_pisar_la_pagina():
+    fichas = [{"clave": "url:a", "grupo": "no_oficial", "campos": {"precio_total": {"valor": 9000, "fuente": 0}},
+               "fuentes": [{"url": "https://a.es/m"}]},
+              {"clave": "url:b", "grupo": "no_oficial", "campos": {}, "fuentes": []}]
+    n = f.aplicar_tarifas(fichas, [{"ficha": "url:a", "concepto": "total", "importe": 1, "url": "https://a.es/t.pdf"},
+                                   {"ficha": "url:b", "concepto": "total", "importe": 7500, "url": "https://b.es/t.pdf"}])
+    assert n == 1 and fichas[0]["campos"]["precio_total"]["valor"] == 9000
+    b = fichas[1]
+    assert b["campos"]["precio_total"]["valor"] == 7500 and b["fuentes"][0]["pagina"] == "documento"
