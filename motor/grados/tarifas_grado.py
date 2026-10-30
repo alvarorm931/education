@@ -245,12 +245,17 @@ def extraer(paginas: list[str], grados: list[dict], de_la_pagina: str | None = N
     con_importe, muestra, previa, rotulo = 0, [], "", None
     curso, cabecera = None, None
     bloque, ultimo = 0, None
+    # tablas cuyas celdas dan el importe sin «€» («1.278,00»): valen si la página habla de euros y la tabla tiene
+    # cabecera con rótulos de importe (matrícula, plazos, total…)
+    euros = bool(re.search(r"€|\beuros?\b", " ".join(paginas), re.I))
     for n, pagina in enumerate(paginas, 1):
         if not curso and (m := CURSO_DOC.search(pagina)):
             curso = f"{m.group(1)}-20{m.group(2)}"
         for linea in (x.strip() for x in pagina.split("\n")):
             if not linea:
                 continue
+            if cabecera and euros and " | " in linea:
+                linea = re.sub(r"(?<=\| )(\d{1,3}(?:\.\d{3})*,\d{2})(?= \||$)", r"\1 €", linea)
             hallados = list(IMPORTE.finditer(linea))
             celdas = [c.strip() for c in linea.split(" | ")]
             if not hallados:
@@ -294,7 +299,8 @@ def extraer(paginas: list[str], grados: list[dict], de_la_pagina: str | None = N
 
 
 def ejecutar(catalogo: list[dict], rastreos: Path, salida: Path, max_minutos: float = 50,
-             cc: Path | None = None, extra: dict[str, list[str]] | None = None, previas: Path | None = None) -> dict:
+             cc: Path | None = None, extra: dict[str, list[str]] | None = None, previas: Path | None = None,
+             releer: set[str] | None = None) -> dict:
     from motor.estudios.rastreador import Dominio
 
     archivo = Archivo(salida / "archivo", indice_por_fuente=True, solo_huella=solo_huella_por_defecto())
@@ -311,7 +317,7 @@ def ejecutar(catalogo: list[dict], rastreos: Path, salida: Path, max_minutos: fl
                  for p in elegir_cc(cc, {p["url"] for p in elegidos})]
     elegidos += elegir_conocidas({p["url"] for p in elegidos}, extra)
     # solo lo nuevo: las direcciones que una ejecución anterior ya pidió (con respuesta) no se vuelven a pedir
-    ya = urls_previas(previas)
+    ya = urls_previas(previas) - (releer or set())  # releer: las que cambió la forma de leerlas
     elegidos = [p for p in elegidos if p["url"] not in ya]
     for p in elegidos:
         if time.time() > fin:
@@ -379,12 +385,13 @@ def main() -> None:
     p.add_argument("--rastreos", required=True, help="carpeta con …/web_privadas/{código}.json")
     p.add_argument("--cc", help="carpeta con …/cc_precios/urls_*.jsonl (cc_precios.py)")
     p.add_argument("--previas", help="carpeta con …/tarifas_grado/tarifas.jsonl de ejecuciones anteriores (no se repiten)")
+    p.add_argument("--releer", action="append", default=[], help="dirección ya pedida que se vuelve a leer")
     p.add_argument("--max-minutos", type=float, default=50)
     p.add_argument("--salida", required=True)
     a = p.parse_args()
     cat = [json.loads(x) for x in Path(a.catalogo).read_text(encoding="utf-8").splitlines() if x.strip()]
     print(json.dumps(ejecutar(cat, Path(a.rastreos), Path(a.salida), a.max_minutos, Path(a.cc) if a.cc else None,
-                              previas=Path(a.previas) if a.previas else None),
+                              previas=Path(a.previas) if a.previas else None, releer=set(a.releer)),
                      ensure_ascii=False, indent=1))
 
 

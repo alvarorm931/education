@@ -142,3 +142,12 @@ def test_no_se_repiten_las_direcciones_ya_pedidas(tmp_path, monkeypatch):
     (tmp_path / "r").mkdir()
     tg.ejecutar([], tmp_path / "r", tmp_path / "s", max_minutos=1, previas=tmp_path / "p")
     assert pedidas == ["https://a.es/2", "https://a.es/3"]
+
+
+def test_tabla_con_importes_sin_simbolo_de_euro():
+    paginas = ["Importes en euros\nGRADO | CRÉDITOS | MATRÍCULA | 8 PLAZOS ENSEÑANZA | TOTAL\n"
+               "Psicología | 60 | 1.278,00 | 639,00 | 6.390,00"]
+    r = tg.extraer(paginas, G, None)
+    assert sorted(i["valor"] for i in r["grados"]["1"]) == [639.0, 1278.0, 6390.0]
+    # sin la palabra «euros» en la página, las cifras sueltas no se toman por importes
+    assert not tg.extraer([paginas[0].replace("Importes en euros\n", "")], G, None)["grados"]
