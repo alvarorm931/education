@@ -309,7 +309,7 @@ def unir(procesos: list[dict], origenes: dict[str, dict], actos: list[dict], cla
         if (org := organo(x.get("titulo"))):
             claves.add("org:" + clave_organo(org, x.get("fuente")))
         q, t = puesto(x.get("titulo")) or x.get("puesto_texto"), turno(x.get("titulo"))
-        elegido, motivo = None, None
+        elegido, motivo, candidatos = None, None, []
         # 1. referencia explícita (identificador del BOE de la convocatoria o de otro acto ya unido)
         refs = {por_acto[r]["id"]: por_acto[r] for r in x.get("refiere_a") or [] if r in por_acto}
         if len(refs) == 1:
@@ -354,14 +354,18 @@ def unir(procesos: list[dict], origenes: dict[str, dict], actos: list[dict], cla
                 elegido, motivo = r, "convocante_puesto_reciente"
             elif len(cands) > 1:
                 motivo = f"varios_candidatos:{len(cands)}"
-        # 4b. mismo convocante, puesto parecido («operarios servicios múltiples» y «servicios múltiples»)
+                candidatos = [c["id"] for c in sorted(cands, key=lambda c: c.get("apertura_plazo") or "",
+                                                      reverse=True)[:5]]
+        # 4b. mismo convocante, puesto parecido («operarios servicios múltiples» y «servicios múltiples»). Medido el
+        # 31/10/2026 sobre los actos unidos por cita, acertaba el 59 % (y no mejoraba con un umbral más alto): no se
+        # une, se deja en la cola con su candidata para revisarla.
         if not elegido and not motivo and q and claves:
             cands = {c["id"]: c for k in claves for c in por_convocante.get(k, [])
                      if (c.get("apertura_plazo") or "") <= fecha and _dias(c.get("apertura_plazo"), fecha) <= VENTANA_DIAS}
             mejores = _parecidos(list(cands.values()), q, puestos_proc)
             mejores = _por_rasgos(por_puesto_y_turno(mejores, None, t), x.get("titulo"))
             if len(mejores) == 1:
-                elegido, motivo = mejores[0], "convocante_puesto_parecido"
+                motivo, candidatos = "puesto_parecido_sin_confirmar", [mejores[0]["id"]]
         # 4b'. sin puesto en el título: si el convocante tiene una sola convocatoria en el año anterior al acto, y el
         # acto es de los que siguen pronto a la convocatoria (listas, tribunal, examen, resultados)
         if not elegido and not motivo and not q and claves and x.get("tipo_acto") in UNICO_TIPOS:
@@ -405,7 +409,7 @@ def unir(procesos: list[dict], origenes: dict[str, dict], actos: list[dict], cla
             huerfanos.append({"id": x["id"], "fecha": fecha, "fuente": x.get("fuente") or "BOE",
                               "tipo": x.get("tipo_acto"), "titulo": x.get("titulo"), "url": x.get("url"),
                               "convocante": sorted(k for k in claves if not k.startswith("org:"))[:2],
-                              "puesto": q, "motivo": m})
+                              "puesto": q, "motivo": m, **({"candidatos": candidatos} if candidatos else {})})
     for p in procesos:
         if "uniones" in p:
             p["uniones"] = dict(p["uniones"])
@@ -455,13 +459,14 @@ def _por_rasgos(cands: list[dict], titulo: str | None) -> list[dict]:
 
 
 def _mas_reciente_clara(cands: list[dict], fecha: str, tipo: str | None) -> dict | None:
-    """La convocatoria más reciente anterior al acto, si la siguiente es claramente más antigua (un año o más) y
-    el acto llega en un tiempo normal para su fase (admitidos o tribunal, hasta un año; el resto, hasta dos)."""
+    """La convocatoria más reciente anterior al acto, si la siguiente es claramente más antigua (dos años o más) y
+    el acto llega en un tiempo normal para su fase (admitidos o tribunal, hasta un año; el resto, hasta dos).
+    Medido el 31/10/2026 sobre los actos unidos por cita: con un año de margen acertaba el 68 %; con dos, el 82 %."""
     orden = sorted(cands, key=lambda c: c.get("apertura_plazo") or "", reverse=True)
     a, b = orden[0], orden[1]
     margen = _dias(b.get("apertura_plazo"), a.get("apertura_plazo") or fecha)
     limite = 366 if tipo in ("admitidos", "tribunal") else 2 * 366
-    if margen >= 366 and _dias(a.get("apertura_plazo"), fecha) <= limite:
+    if margen >= 2 * 366 and _dias(a.get("apertura_plazo"), fecha) <= limite:
         return a
     return None
 

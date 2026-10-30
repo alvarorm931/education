@@ -111,3 +111,13 @@ def test_mas_formas_de_nombrar_el_puesto():
     assert u.puesto("relació de persones admeses i excloses per a la convocatòria d'una plaça de peó/na") == "peon"
     assert u.puesto("LISTADO DEFINITIVO DE ADMITIDOS/AS Y EXCLUIDOS/AS") is None
     assert u.puesto("Nombramiento de funcionarios de carrera.") is None
+
+
+def test_puesto_parecido_no_une_y_deja_la_candidata():
+    procesos = [_proc("bop:7", "Bases de una plaza de Operario de Servicios Múltiples de Deportes", "2025-03-01",
+                      ["operario-servicio-multiple-deporte"], 1)]
+    actos = [{"id": "y1", "fecha": "2025-06-10", "tipo_acto": "admitidos", "convocante": "teruel",
+              "titulo": "Lista de admitidos de la plaza de Operario de Servicios Múltiples"}]
+    recuento, huerfanos = u.unir(procesos, {"bop:7": {"convocante": "teruel"}}, actos, lambda a: [a["convocante"]])
+    assert not recuento.get("convocante_puesto_parecido")
+    assert huerfanos[0]["motivo"] == "puesto_parecido_sin_confirmar" and huerfanos[0]["candidatos"] == ["bop:7"]
