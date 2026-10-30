@@ -11,14 +11,19 @@ fecha de captura) y su unión con el título y el centro del Ministerio cuando s
   centro o idioma.
 - **Cataluña** (Socrata): cupo general de la preinscripción de junio con sus plazas (nota de la primera asignación,
   no la final).
+- **Andalucía** (Distrito Único Andaluz, consulta histórica en CSV, un fichero por curso desde 2010-11): todas las
+  universidades públicas, código de la petición, grado, centro y cinco cupos; definitivas de la convocatoria
+  ordinaria. El nombre del centro decide entre centros.
 - **Universidad de Salamanca** (un PDF por curso): cupo general, con el tipo del último admitido.
 - **Universidad del País Vasco** (un PDF por curso, 2017-18 a 2021-22; desde 2022-23 los PDF son imágenes sin
   texto): cinco cupos por campus con la marca «E» de la convocatoria extraordinaria; el campus da los municipios.
 
 Unión por nombre (pocos distritos traen el código): universidad, nombre normalizado del título y pistas de centro
 (municipio o nombre del centro entre paréntesis); si queda más de un candidato, decide la nota de QEDU del mismo
-curso (QEDU da la final de 2025-2026 y 2024-2025, redondeada a dos decimales) o las plazas. Sin unión segura, la
-fila se guarda sin título y no se publica en ninguna ficha.
+curso (QEDU da la final de 2025-2026 y 2024-2025, redondeada a dos decimales) o las plazas. El nombre tiene que
+parecerse al menos 0,8 al del catálogo (salvo que QEDU confirme la nota): los títulos ya extinguidos de los cursos
+antiguos no se unen con el activo más parecido. Sin unión segura, la fila se guarda sin título y no se publica en
+ninguna ficha.
 
 Uso:
   python -m motor.grados.notas_corte --fuentes carpeta_notas_fuentes [...] --catalogo catalogo.jsonl
@@ -62,6 +67,10 @@ ABREVIATURAS = {"ade": "administracion direccion empresas", "cc": "ciencias", "i
 # Palabras de los nombres de grado en catalán → castellano, para unir la oferta catalana con el catálogo (en
 # castellano). Solo cambia palabras sueltas; lo demás decide el parecido.
 CATALAN = {
+    "producte": "producto", "serveis": "servicios", "occitans": "occitanos", "analisi": "analisis",
+    "documentacio": "documentacion", "energies": "energias", "contemporanies": "contemporaneas", "negoci": "negocio",
+    "ambit": "ambito", "creatives": "creativas", "transformacio": "transformacion", "hoteleres": "hoteleras",
+    "natura": "naturaleza",
     "informacio": "informacion", "gestio": "gestion", "comunicacio": "comunicacion", "produccio": "produccion",
     "prevencio": "prevencion", "organitzacio": "organizacion", "educacio": "educacion",
     "activitat": "actividad", "actuarials": "actuariales", "administracio": "administracion",
@@ -293,6 +302,47 @@ def leer_murcia(lineas: list[str]) -> list[dict]:
     return filas
 
 
+# ------------------------------------------------------------------------------------------------- Andalucía
+
+CITA_ANDALUCIA = ("Junta de Andalucía, Distrito Único Andaluz: notas de corte de años anteriores (definitivas de la "
+                  "convocatoria ordinaria, última lista de admitidos de noviembre)")
+UNIV_ANDALUCIA = {"ALMERIA": "Almería", "CADIZ": "Cádiz", "CORDOBA": "Córdoba", "GRANADA": "Granada",
+                  "HUELVA": "Huelva", "JAEN": "Jaén", "MALAGA": "Málaga", "P. OLAVIDE": "Pablo de Olavide",
+                  "PABLO DE OLAVIDE": "Pablo de Olavide", "SEVILLA": "Sevilla"}
+CUPOS_ANDALUCIA = {"GENERAL": "general", "TITULADOS": "titulados", "MAYORES 25": "mayores_25",
+                   "MAYORES 40": "mayores_40", "MAYORES 45": "mayores_45"}
+
+
+def leer_andalucia(lineas: list[str]) -> list[dict]:
+    """CSV de la consulta histórica del Distrito Único Andaluz (un fichero por curso, todas las universidades
+    públicas): código de la petición (título y centro), grado, centro y la nota de los cinco cupos. Son las notas
+    definitivas de la convocatoria ordinaria (última lista de admitidos, en noviembre). Tras la cifra del cupo general
+    puede ir «PREF» o «N.P.» (si el último admitido era preferente o no: con «N.P.» entraron todos los preferentes) y
+    tras la de mayores de 25 un código (OPA, ONPA…): se guardan tal cual."""
+    texto = "\n".join(x.replace("\ufeff", "").replace("ï»¿", "") for x in lineas if x.strip() and not x.startswith("### "))
+    filas = []
+    for r in csv.DictReader(io.StringIO(texto), delimiter=";"):
+        if not (r.get("CURSO") or "").strip().isdigit() or not r.get("GRADO"):
+            continue
+        a = int(r["CURSO"])
+        univ = UNIV_ANDALUCIA.get(sin_acentos(r.get("UNIVERSIDAD") or "").upper().strip())
+        for col, cupo in CUPOS_ANDALUCIA.items():
+            v = (r.get(col) or "").strip()
+            m = re.match(r"(\d{1,2},\d{2,3})\s*(.*)$", v)
+            if not m:
+                continue
+            marca = m.group(2).strip() or None
+            filas.append({"distrito": "andalucia", "curso": f"{a}-{a + 1}", "universidad": univ,
+                          "codigo_local": (r.get("PETICION") or "").strip() or None,
+                          "titulacion": re.sub(r"\s+", " ", r["GRADO"]).strip(),
+                          "centro_nombre": re.sub(r"\s+", " ", r.get("CENTRO") or "").strip() or None,
+                          "cupo": cupo, "convocatoria": "ordinaria", "lista": "final", "nota": _nota(m.group(1)),
+                          "sin_plazas": False,
+                          "todos_admitidos": (marca == "N.P.") if cupo == "general" else None,
+                          "tipo_ultimo_admitido": marca})
+    return filas
+
+
 # ------------------------------------------------------------------------------------------------- Salamanca
 
 def leer_usal(lineas: list[str]) -> list[dict]:
@@ -441,6 +491,8 @@ LECTORES = {
                "Universidad de Murcia, datos abiertos: nota de corte de grado"),
     "castilla-leon": (leer_usal, lambda d: "usal.es/files/acceso/notas_corte" in d["url"] and d.get("formato") == "pdf",
                       "Universidad de Salamanca: notas de corte de grado"),
+    "andalucia": (leer_andalucia, lambda d: "g_not_cor_anteriores_csv.php" in d["url"] and d.get("formato") == "csv",
+                  CITA_ANDALUCIA),
     "pais-vasco": (leer_ehu, lambda d: "ehu.eus" in d["url"] and d.get("formato") == "pdf",
                    "Universidad del País Vasco/Euskal Herriko Unibertsitatea: límite de plazas y nota de corte de admisión"),
     "cataluna": (leer_cataluna, lambda d: "/resource/usyn-hngc" in d["url"],
@@ -528,7 +580,19 @@ def _es_pista(z: str, cs: list[dict]) -> bool:
         z and (z == c["municipio"] or z in c["municipio"].split(" (")[0]) for c in cs)
 
 
-def puntuar(nombre: str, x0: dict, xs: list[dict], cs: list[dict]) -> list[tuple[float, dict, str]]:
+def nombre_de_centro(z: str) -> str:
+    """Abreviaturas de los nombres de centro del distrito («E.T.S. de Ingeniería», «F. Ciencias», «CC. Econ.»)."""
+    z = re.sub(r"(?i)\bE\.\s*T\.\s*S\.", "Escuela Técnica Superior", z)
+    z = re.sub(r"(?i)\bE\.\s*P\.\s*S\.", "Escuela Politécnica Superior", z)
+    z = re.sub(r"(?i)\b(?:E|ESC)\.\s", "Escuela ", z)
+    z = re.sub(r"(?i)\b(?:F|FAC)\.\s", "Facultad ", z)
+    z = re.sub(r"(?i)\bCC\.\s*", "Ciencias ", z)
+    z = re.sub(r"(?i)\bECON\.\s*", "Económicas ", z)
+    z = re.sub(r"(?i)\bEMPRES?\.?(?=\s|\)|$)", "Empresariales", z)
+    return re.sub(r"(?i)\(ADS\.?\)|\(ADSCRITO\)", " ", z)
+
+
+def puntuar(nombre: str, x0: dict, xs: list[dict], cs: list[dict]) -> list[tuple[float, dict, str, float]]:
     """Puntuación de cada candidato: parecido del nombre (grado entero, grado con variante o los dos grados de un
     doble), pistas de centro y, si el distrito publica la nota final, la nota de QEDU del mismo curso."""
     ca = x0["distrito"] == "cataluna"
@@ -572,14 +636,20 @@ def puntuar(nombre: str, x0: dict, xs: list[dict], cs: list[dict]) -> list[tuple
                 extra += 0.2
             if z and len(palabras(z) & palabras(c["unidad"])) >= 2:
                 extra += 0.2
+        if x0.get("centro_nombre"):
+            # el distrito nombra el centro (Andalucía): cuanto más se parece al de la unidad, más puntos
+            extra += 0.3 * _parecido(palabras(nombre_de_centro(x0["centro_nombre"])), palabras(c["unidad"]))
         if idioma and (c["idioma"] or "").startswith("Sí"):
             extra += 0.1
         if x0["lista"] == "final" and any(
                 y.get("nota") and y["nota"] > 5 and igual_a_qedu(c["notas_qedu"].get(y["curso"]), y["nota"])
                 for y in xs if y["cupo"] == "general" and y.get("convocatoria") in (None, "ordinaria")):
             extra += 0.2
-        salida.append((s + extra, c, variante or ("idioma" if idioma else "")))
+        salida.append((s + extra, c, variante or ("idioma" if idioma else ""), s))
     return sorted(salida, key=lambda z: -z[0])
+
+
+PARECIDO_NOMBRE_MINIMO = 0.8
 
 
 def unir(filas: list[dict], cands: dict[str, list[dict]]) -> Counter:
@@ -604,21 +674,27 @@ def unir(filas: list[dict], cands: dict[str, list[dict]]) -> Counter:
             resumen["sin_candidato"] += 1
             continue
         mejor = puntos[0][0]
-        cerca = [(s, c, v) for s, c, v in puntos if s >= mejor - 0.05]
-        if len({c["codigo"] for _, c, _ in cerca}) != 1 or mejor < 0.8:
-            resumen["ambigua" if len({c["codigo"] for _, c, _ in cerca}) > 1 else "parecido_bajo"] += 1
+        cerca = [z for z in puntos if z[0] >= mejor - 0.05]
+        if len({z[1]["codigo"] for z in cerca}) != 1 or mejor < 0.8:
+            resumen["ambigua" if len({z[1]["codigo"] for z in cerca}) > 1 else "parecido_bajo"] += 1
             continue
-        centros = {c["centro"] for _, c, _ in cerca}
-        if len(centros) > 1 and not pistas(nombre):
+        centros = {z[1]["centro"] for z in cerca}
+        if len(centros) > 1 and not pistas(nombre) and not xs[0].get("centro_nombre"):
             # sin campus ni centro en el nombre, el título se refiere a su centro propio (los adscritos se nombran)
             propios = [z for z in cerca if z[1]["propio"]]
             if len({z[1]["centro"] for z in propios}) == 1:
                 cerca, centros = propios, {propios[0][1]["centro"]}
-        _, c, variante = cerca[0]
+        _, c, variante, parecido = cerca[0]
+        if parecido < PARECIDO_NOMBRE_MINIMO and not any(
+                y.get("nota") and y["nota"] > 5 and igual_a_qedu(c["notas_qedu"].get(y["curso"]), y["nota"]) for y in xs):
+            # el centro y la universidad empujan, pero el nombre no basta: un título ya extinguido (los históricos
+            # vienen desde 2010) no se une con el activo más parecido salvo que QEDU confirme la nota
+            resumen["parecido_de_nombre_bajo"] += 1
+            continue
         for x in xs:
             x["codigo_titulo"] = c["codigo"]
             x["codigo_centro"] = c["centro"] if len(centros) == 1 else None
-            x["union"] = {"metodo": "nombre", "puntuacion": round(mejor, 2), "nombre_catalogo": c["nombre"],
+            x["union"] = {"metodo": "nombre", "puntuacion": round(mejor, 2), "parecido_nombre": round(parecido, 2), "nombre_catalogo": c["nombre"],
                           "variante": variante or None}
         resumen["nombre" if len(centros) == 1 else "nombre_sin_centro"] += 1
     # el mismo código del distrito en otro curso, con un nombre parecido (renombrado, abreviado), es la misma oferta
@@ -659,6 +735,24 @@ def nota_del_titulo(filas: list[dict]) -> dict[tuple, dict]:
             for k, xs in por.items()}
 
 
+DIFERENCIA_LISTA_POSTERIOR = 0.25
+
+
+def tipo_de_contraste(q: float, nota: float) -> str:
+    """Nota final del distrito frente a la de QEDU del mismo curso y centro. Además de «igual», hay dos diferencias
+    que no indican una unión equivocada sino que QEDU toma la nota en otro momento del proceso (Andalucía: 511
+    iguales, 65 con la del distrito algo menor y 67 con QEDU en 5,000, de 645): la del distrito es la de la última
+    lista y queda por debajo de la de QEDU (menos de un cuarto de punto), o QEDU da 5,000 porque al final quedaron plazas
+    libres. Cualquier otra diferencia es «distinta» y el histórico de ese título y centro no se publica."""
+    if igual_a_qedu(q, nota):
+        return "igual"
+    if q <= 5.0005 < nota:
+        return "qedu_con_plazas_libres"
+    if nota < q < nota + DIFERENCIA_LISTA_POSTERIOR:
+        return "lista_posterior_mas_baja"
+    return "distinta"
+
+
 def historico(filas: list[dict], cands: dict[str, list[dict]]) -> list[dict]:
     """Por título y centro: la nota de corte del cupo general por curso (la menor de sus ofertas, como QEDU) y el
     contraste con QEDU en los cursos que se solapan. Si en alguno no coincide (con una nota por encima de 5,000, que
@@ -676,7 +770,7 @@ def historico(filas: list[dict], cands: dict[str, list[dict]]) -> list[dict]:
         for curso, v in cursos.items():
             q = c["notas_qedu"].get(curso)
             if q is not None and v["nota"] > 5 and v["lista"] == "final":
-                contraste["igual" if igual_a_qedu(q, v["nota"]) else "distinta"] += 1
+                contraste[tipo_de_contraste(q, v["nota"])] += 1
         finales = any(v["lista"] == "final" for v in cursos.values())
         # sin nota final que contrastar (Cataluña): vale si las plazas del distrito coinciden con las de QEDU en el
         # mismo curso, señal de que la oferta unida por el nombre es la misma
@@ -706,8 +800,7 @@ def contrastar(filas: list[dict], cands: dict[str, list[dict]]) -> dict:
         c = por_cod.get((tit, cen))
         if not c or curso not in c["notas_qedu"] or v["nota"] <= 5 or v["lista"] != "final":
             continue
-        igual = igual_a_qedu(c["notas_qedu"][curso], v["nota"])
-        salida[v["distrito"]]["igual" if igual else "distinta"] += 1
+        salida[v["distrito"]][tipo_de_contraste(c["notas_qedu"][curso], v["nota"])] += 1
     return {k: dict(v) for k, v in salida.items()}
 
 

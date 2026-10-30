@@ -82,6 +82,10 @@ def test_qedu_redondea_o_trunca_y_el_historico_solo_publica_lo_que_cuadra():
     h = {x["codigo_titulo"]: x for x in nc.historico(filas, cands)}
     assert h["1"]["cursos"]["2025-2026"]["nota"] == 9.214 and h["1"]["cursos"]["2025-2026"]["ofertas"] == 2
     assert h["1"]["publicable"] and not h["2"]["publicable"]  # Medicina no coincide con QEDU
+    # diferencias que solo dicen que QEDU toma la nota en otro momento del proceso
+    assert nc.tipo_de_contraste(11.72, 11.70) == "lista_posterior_mas_baja"
+    assert nc.tipo_de_contraste(5.0, 9.3) == "qedu_con_plazas_libres"
+    assert nc.tipo_de_contraste(13.0, 12.5) == "distinta" and nc.tipo_de_contraste(9.0, 9.4) == "distinta"
     fichas = [{"codigo": "1", "centros": [{"codigo": "C1"}]}, {"codigo": "2", "centros": [{"codigo": "C1"}]}]
     r = anadir_historico(fichas, list(h.values()))
     assert r["centros_con_notas_historicas"] == 1 and "2024-2025" in fichas[0]["centros"][0]["notas_historicas"]["cursos"]
@@ -166,3 +170,26 @@ def test_un_doble_por_nombre_no_se_une_con_uno_de_sus_grados():
            "idioma": None, "propio": True, "ofertado": True, "notas_qedu": {}, "plazas_qedu": {}}]
     x0 = {"distrito": "pais-vasco", "lista": "final"}
     assert puntuar("Doble Grado en Gestión de Negocios + Rel. Lab. y Rec. Hum.", x0, [x0], cs) == []
+
+
+def test_andalucia_csv_del_distrito_unico():
+    lineas = ['ï»¿CURSO;UNIVERSIDAD;PETICION;GRADO;CENTRO;ÁREA;GENERAL;TITULADOS;"MAYORES 25";"MAYORES 40";"MAYORES 45"',
+              '2025;ALMERÍA;125504;"ADMINISTRACIÓN Y DIRECCIÓN DE EMPRESAS";"FACULTAD CIENCIAS ECONÓMICAS Y '
+              'EMPRESARIALES";SYJ;"5,361 PREF";5,000;"5,000 ONPNA";8,558;5,000',
+              '2024;"P. OLAVIDE";1;DERECHO;"FACULTAD DE DERECHO";SYJ;"6,800 N.P.";5,000;"5,000 ONPNA";5,000;5,000']
+    f = nc.leer_andalucia(lineas)
+    g = [x for x in f if x["cupo"] == "general"]
+    assert len(f) == 10 and g[0]["curso"] == "2025-2026" and g[0]["universidad"] == "Almería"
+    assert g[0]["nota"] == 5.361 and g[0]["tipo_ultimo_admitido"] == "PREF" and g[0]["codigo_local"] == "125504"
+    assert g[0]["centro_nombre"].startswith("FACULTAD CIENCIAS") and g[0]["lista"] == "final"
+    assert g[1]["universidad"] == "Pablo de Olavide" and g[1]["todos_admitidos"] is True
+    assert [x["nota"] for x in f[:5]] == [5.361, 5.0, 5.0, 8.558, 5.0]
+    assert nc.nombre_de_centro("F. CIENCIAS ECONÓMICAS Y EMPRES.").startswith("Facultad CIENCIAS")
+
+
+def test_nombre_poco_parecido_no_se_une_aunque_el_centro_empuje():
+    """«Derecho y Administración de Empresas» (un doble sin «+») no es «Administración de Empresas»."""
+    cands = {"U": [_cand("1", "Administración de Empresas", "C1", "getafe")]}
+    x = _fila("Derecho y Administración de Empresas (Getafe)", 11.0)
+    r = nc.unir([x], cands)
+    assert not x.get("codigo_titulo") and r["parecido_de_nombre_bajo"] == 1
