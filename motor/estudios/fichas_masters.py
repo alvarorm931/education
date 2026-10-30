@@ -18,6 +18,7 @@ Uso:
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 from collections import Counter, defaultdict
 from pathlib import Path
@@ -137,6 +138,7 @@ def ejecutar(extracciones: list[Path], salida: Path, catalogo: Path | None = Non
         fichas.append(ficha)
 
     # no oficiales: una ficha por página principal
+    programas, programas_master = set(), set()
     subs: dict[str, list[dict]] = defaultdict(list)
     for q in paginas.values():
         if q.get("principal"):
@@ -152,9 +154,18 @@ def ejecutar(extracciones: list[Path], salida: Path, catalogo: Path | None = Non
                  "centro": c.get("nombre"), "tipo_centro": c.get("tipo_centro"), "dominio": c.get("dominio"),
                  **componer([p] + subs.get(p["url"], []), hechos)}
         tipo = (ficha["campos"].get("tipo_titulo") or {}).get("valor") or ""
+        nombre = str((ficha["campos"].get("nombre") or {}).get("valor") or "")
+        # programa (docs/modelo-masters.md §6): proveedor + nombre normalizado + tipo; la misma oferta en varias
+        # URL (ciudades, idiomas, campañas) es un solo programa
+        ficha["programa"] = "prog-" + hashlib.sha256(
+            f"{p.get('proveedor')}|{' '.join(sorted(palabras_texto(nombre)))}|{tipo.lower()}".encode()).hexdigest()[:12] \
+            if nombre else None
         ficha["es_master"] = "máster" in tipo.lower() or "master" in tipo.lower() or \
             "máster" in str((ficha["campos"].get("nombre") or {}).get("valor", "")).lower()
         res["no_oficial_ficha"] += 1
+        programas.add(ficha["programa"]) if ficha["programa"] else None
+        if ficha["es_master"] and ficha["programa"]:
+            programas_master.add(ficha["programa"])
         res["no_oficial_master" if ficha["es_master"] else "no_oficial_otro_titulo"] += 1
         fichas.append(ficha)
 
@@ -167,6 +178,8 @@ def ejecutar(extracciones: list[Path], salida: Path, catalogo: Path | None = Non
     with (destino / "fichas.jsonl").open("w", encoding="utf-8") as fo:
         for f in fichas:
             fo.write(json.dumps(f, ensure_ascii=False) + "\n")
+    res["no_oficial_programas"] = len(programas)
+    res["no_oficial_programas_master"] = len(programas_master)
     resumen = {**res, "fichas": len(fichas),
                "campos_por_grupo": {g: {c: n for (g2, c), n in sorted(completitud.items()) if g2 == g}
                                     for g in ("oficial", "no_oficial")}}
