@@ -1,0 +1,1115 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
+
+<head>
+
+
+
+
+
+
+
+
+
+	<meta name="author" content="Guadaltel" />
+	<meta name="description" content="Pagina web del Ayuntamiento" />
+	<meta name="keywords" content="municipio , ayuntamiento, sede, sede electronica " />
+	<meta name="robots" content="index, follow" />
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta http-equiv="Content-Script-Type" content="text/tcl" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+<style type="text/css">
+	
+	/********************** Variables **********************/
+	
+	:root {
+		--fontFamily1: "Noto Sans", sans-serif;
+		--fontFamily2: "Montserrat", sans-serif;
+		--textColor: #333;
+		--mainColor: #306898;
+		--mainColorDark:  #1b4c77;
+		--mainColorLight: #a9c9e6;
+		--colorLinesInput: #b5b5b5; 
+        --colorLines: #D8D8D8;
+        --colorBg: #F5F5F5;
+		--colorArea: #306898;
+			
+	
+        --mainColor: #16578c; 
+	
+	
+	        
+        --mainColorDark: #668c71; 
+    
+	
+		
+        --mainColorLight: #668c71; 
+	
+	
+		
+        --colorArea: #16578c; 
+	
+    
+	}
+		
+</style>
+	
+	<link rel="stylesheet" type="text/css"
+		href="/opencms/export/system/modules/gsede/resources/bootstrap/css/bootstrap-theme.css?v=GSede-1.4.1.0" />
+	<link rel="stylesheet" type="text/css"
+		href="/opencms/export/system/modules/gsede/resources/bootstrap/css/bootstrap.css?v=GSede-1.4.1.0" />
+	<link rel="stylesheet" type="text/css" href="/opencms/export/system/modules/gsede/resources/css/epicsa-icons.css?v=GSede-1.4.1.0" />
+	<link rel="stylesheet" type="text/css" href="/opencms/export/sites/DIPHUE_SEDE/sede/resources/css/styles.css?v=GSede-1.4.1.0" />
+	<link rel="stylesheet" type="text/css" href="/opencms/export/system/modules/gsede/resources/css/color.css?v=GSede-1.4.1.0" />
+	<link rel="stylesheet" type="text/css"
+		href="/opencms/export/system/modules/gsede/resources/css/fonts-sede.css?v=GSede-1.4.1.0" />
+	<link rel="stylesheet" type="text/css"
+		href="/opencms/export/system/modules/gsede/resources/font-awesome-6.5.2/css/fontawesome.min.css?v=GSede-1.4.1.0" />
+	<link rel="stylesheet" type="text/css"
+      href="/opencms/export/system/modules/gsede/resources/font-awesome-6.5.2/css/solid.min.css?v=GSede-1.4.1.0" />
+	<link rel="stylesheet" type="text/css"
+      href="/opencms/export/system/modules/gsede/resources/font-awesome-6.5.2/css/brands.min.css?v=GSede-1.4.1.0" />
+	<link rel="stylesheet" type="text/css"
+		href="/opencms/export/system/modules/sede/resources/css/component.css?v=GSede-1.4.1.0" />
+	<link rel="stylesheet" type="text/css" href="/opencms/export/system/modules/gsede/resources/css/default.css?v=GSede-1.4.1.0" />
+	<link rel="stylesheet" type="text/css"
+		href="/opencms/export/system/modules/gsede/resources/jquery/jquery.ui.css?v=GSede-1.4.1.0" />
+	<link rel="stylesheet" type="text/css"
+		href="/opencms/export/system/modules/gsede/resources/css/oficina-icons.css?v=GSede-1.4.1.0" />
+	<link rel="stylesheet" type="text/css"
+		href="/opencms/export/system/modules/gsede/resources/css/oficina-icons-ie7.css?v=GSede-1.4.1.0" />
+	<link rel="stylesheet" type="text/css"
+		href="/opencms/export/system/modules/gsede/resources/css/jquery.dataTables.min.css?v=GSede-1.4.1.0" />
+	<link rel="stylesheet" type="text/css" href="/opencms/export/system/modules/gsede/resources/toastr/toastr.min.css?v=GSede-1.4.1.0" />
+
+	<link rel="shortcut icon" href="/opencms/export/sites/DIPHUE_SEDE/sede/resources/images/icon.png" type="image/png">
+
+	<title>Sede Electr&oacute;nica</title>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<script type="text/javascript"
+		src="/opencms/export/system/modules/gsede/resources/jquery/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript"
+		src="/opencms/export/system/modules/gsede/resources/jquery/jquery-ui-1.11.1.min.js"></script>
+	<script type="text/javascript"
+		src="/opencms/export/system/modules/gsede/resources/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/opencms/export/system/modules/gsede/resources/js/zabuto-calendar.js"></script>
+	<script type="text/javascript" src="/opencms/export/system/modules/gsede/resources/js/scripts.js"></script>
+	<script type="text/javascript" src="/opencms/export/system/modules/gsede/resources/js/cbpTooltipMenu.js"></script>
+	<script type="text/javascript" src="/opencms/export/system/modules/gsede/resources/js/modernizr.custom.js"></script>
+	<script type="text/javascript" src="/opencms/export/system/modules/gsede/resources/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="/opencms/export/system/modules/gsede/resources/toastr/toastr.min.js"></script>
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+	function update_clock(width) {
+		var now = new Date();
+		var hours = now.getHours();
+		var minutes = now.getMinutes();
+		var seconds = now.getSeconds();
+		hour_hand.rotate(30 * hours + (minutes / 2.5), width * .5, width * .5);
+		minute_hand.rotate(6 * minutes, width * .5, width * .5);
+		second_hand.rotate(6 * seconds, width * .5, width * .5);
+	}
+
+	var days = "Domingo,Lunes,Martes,Miércoles,Jueves,Viernes,Sábado";
+	var months = "enero,febrero,marzo,abril,mayo,junio,julio,agosto,septiembre,octubre,noviembre,diciembre";
+	var dayarray = days.split(",");
+	var montharray = months.split(",");
+	
+	var mypreviousdate;
+
+	function fechaActual() {
+
+		if (!document.getElementById)
+			getthedate();
+		if (document.getElementById)
+			setInterval("getthedate()", 1000);
+	}
+
+	function getthedate() {
+		var mydate = new Date();
+		var year = mydate.getYear();
+		if (year < 1000)
+			year += 1900;
+		var day = mydate.getDay();
+		var month = mydate.getMonth();
+		var daym = mydate.getDate();
+		var hours = mydate.getHours();
+		var minutes = mydate.getMinutes();
+		var seconds = mydate.getSeconds();
+		var dn = "AM";
+
+		if(mypreviousdate != undefined && minutes == mypreviousdate.getMinutes()){
+			return false;
+		}
+		
+		if (minutes <= 9)
+			minutes = "0" + minutes;
+		if (seconds <= 9)
+			seconds = "0" + seconds;
+		//change font size here
+		if (document.getElementById) {
+			var cdate = "<span>" + hours + ":" + minutes + "</span>&nbsp;&nbsp;" + dayarray[day] + " " + daym + " " + montharray[month] + " " + year;
+			document.getElementById('clock').innerHTML = cdate;
+		} else {
+			var cdate = "<span class=normal>" + dayarray[day] + " " + daym + " " + montharray[month] + " " + year + "</span>";
+			document.getElementById('clock').innerHTML = cdate;
+		}
+		
+		mypreviousdate = mydate;
+	}
+	fechaActual();
+</script>
+
+<div class="header">
+	<div class="firstbar">
+		<div class="container">
+			<div class="margin"></div>
+
+			<!-- hora y fecha -->
+			<div class="hour"><div id="clock"></div></div>
+
+			<div class="user">				
+
+				<!-- Login -->
+				
+					<a href="/opencms/system/modules/gsede/elements/secciones/autenticacion/autenticacion.jsp"><i class="fa-solid fa-user" aria-hidden="true"></i> Identificarse</a>
+				
+
+				<!-- Usuario logado -->
+				
+			</div>
+		</div>
+	</div>
+
+	
+
+
+
+
+
+
+
+
+<!-- Para los enlaces con ticket -->
+<script type="text/javascript">
+	function ticket(parametros) {
+
+		// Se recupera el formulario.
+		var form = document.getElementById("formTicket");
+
+		// Se limpia el formulario.
+		form.area.value = '';
+		form.procedure.value = '';
+		form.others.value = '';
+		form.identifier.value = '';
+
+		if (parametros.area) {
+			form.area.value = parametros.area;
+		}
+		if (parametros.procedure) {
+			form.procedure.value = parametros.procedure;
+		}
+		if (parametros.others) {
+			form.others.value = parametros.others;
+		}
+		if (parametros.identifier) {
+			form.identifier.value = parametros.identifier;
+		}
+		form.action.value = "generaTicket";
+		form.submit();
+	}
+</script>
+
+<form action="#" id="formTicket" style="margin: 0px;" name="formLogin" method="post">
+	<input type="hidden" id="action" name="action" /> <input type="hidden" id="area" name="area" /> <input type="hidden" id="procedure" name="procedure" /> <input type="hidden"
+		id="others" name="others" /> <input type="hidden" id="identifier" name="identifier" />
+</form>
+
+
+
+<nav class="navbar navbar-default">
+	<div class="container">
+	  <!-- Brand and toggle get grouped for better mobile display -->
+	  <div class="navbar-header">
+		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+		  <span class="sr-only">Toggle navigation</span>
+		  <i class="fa-solid fa-bars"></i>
+		</button>
+		<a class="navbar-brand" href="/opencms/sede/index.html">
+			<img src="/opencms/export/sites/DIPHUE_SEDE/sede/resources/images/logo.png" title="Logo" alt="Logo" />
+		</a>
+		<!--<span class="navbar-brand"><img src="/opencms/export/system/modules/sede/resources/images/logo-adel.png" title="Logo ADEL" alt="Logo ADEL" class="logo2" /></span>-->
+	  </div>
+
+  
+	  <!-- Collect the nav links, forms, and other content for toggling -->
+	  <div class="collapse navbar-collapse main-menu" id="bs-example-navbar-collapse-1">
+		<ul class="nav navbar-nav navbar-right">
+		  <li class="dropdown navbar-item">
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+				<div class="navbar-top">
+					<i class="fa-solid fa-file-contract" aria-hidden="true"></i>
+					<span>Trámites</span>
+				</div>
+			</a>
+			<ul class="dropdown-menu">
+				<li class="submenu-title">Trámites</li>
+				
+					
+						<li><a href="#" onclick="ticket({area: 'AYUDA_A_DOMICILIO'});" title="AYUDA A DOMICILIO" class="submenu-element">AYUDA A DOMICILIO</a></li>
+					
+						<li><a href="#" onclick="ticket({area: 'CONCURSOS_Y_PREMIOS'});" title="CONCURSOS Y PREMIOS" class="submenu-element">CONCURSOS Y PREMIOS</a></li>
+					
+						<li><a href="#" onclick="ticket({area: 'CONSUMO'});" title="CONSUMO" class="submenu-element">CONSUMO</a></li>
+					
+						<li><a href="#" onclick="ticket({area: 'DEPORTES'});" title="DEPORTES" class="submenu-element">DEPORTES</a></li>
+					
+						<li><a href="#" onclick="ticket({area: 'EMPLEO_PUBLICO_CONCURSOS_OTRAS_FORMAS_PROVISION'});" title="EMPLEO_PUBLICO_CONCURSOS_OTRAS_FORMAS_PROVISION" class="submenu-element">EMPLEO PÚBLICO </br> CONCURSOS/OTRAS FORMAS PROVISIÓN</a></li>
+					
+						<li><a href="#" onclick="ticket({area: 'INFRAESTRUCTURAS'});" title="INFRAESTRUCTURAS" class="submenu-element">INFRAESTRUCTURAS</a></li>
+					
+						<li><a href="#" onclick="ticket({area: 'INSERCION_ANUNCIO_BOP'});" title="INSERCIÓN ANUNCIO BOP" class="submenu-element">INSERCIÓN ANUNCIO BOP</a></li>
+					
+						<li><a href="#" onclick="ticket({area: 'INSTANCIA_GENERICA_REGISTRO_ELECTRONICO'});" title="INSTANCIA GENÉRICA / REGISTRO ELECTRÓNICO" class="submenu-element">INSTANCIA GENÉRICA <br> REGISTRO ELECTRÓNICO</a></li>
+					
+						<li><a href="#" onclick="ticket({area: 'OPE_PROMOCION_INTERNA'});" title="OPE PROMOCIÓN INTERNA" class="submenu-element">OPE PROMOCIÓN INTERNA</a></li>
+					
+						<li><a href="#" onclick="ticket({area: 'OPE_TURNO_LIBRE'});" title="OPE TURNO LIBRE" class="submenu-element">OPE TURNO LIBRE</a></li>
+					
+						<li><a href="#" onclick="ticket({area: 'OTROS_TRAMITES'});" title="Autorizaciones, inscripciones y denuncias" class="submenu-element">OTROS TRÁMITES</a></li>
+					
+						<li><a href="#" onclick="ticket({area: 'PLAN_INFRAEST_MODERNIZACION'});" title="PLAN INFRAEST. Y MODERNIZACIÓN" class="submenu-element">PLAN INFRAEST. Y MODERNIZACIÓN</a></li>
+					
+						<li><a href="#" onclick="ticket({area: 'PROCESOS_SELECTIVOS_ESPECIFICOS'});" title="PROCESOS SELECTIVOS ESPECÍFICOS" class="submenu-element">PROCESOS SELECTIVOS ESPECÍFICOS</a></li>
+					
+						<li><a href="#" onclick="ticket({area: 'SECRETARIA_-_INTERVENCION'});" title="SECRETARÍA - INTERVENCIÓN" class="submenu-element">SECRETARÍA - INTERVENCIÓN</a></li>
+					
+						<li><a href="#" onclick="ticket({area: 'SERVICIOS_SOCIALES'});" title="Asistencia y servicios sociales" class="submenu-element">SERVICIOS SOCIALES</a></li>
+					
+						<li><a href="#" onclick="ticket({area: 'SUBVENCIONES'});" title="SUBVENCIONES" class="submenu-element">SUBVENCIONES</a></li>
+					
+						<li><a href="#" onclick="ticket({area: 'TRIBUNAL_ADMINISTRATIVO_DE_RECURSOS_CONTRACTUALES'});" title="TRIBUNAL ADMINISTRATIVO DE RECURSOS CONTRACTUALES" class="submenu-element">TRIBUNAL ADMINISTRATIVO DE RECURSOS CONTRACTUALES</a></li>
+					
+						<li><a href="#" onclick="ticket({area: 'TRAMITES_SIN_CERTIFICADO'});" title="TRÁMITES SIN CERTIFICADO" class="submenu-element">TRÁMITES SIN CERTIFICADO</a></li>
+					
+						<li><a href="#" onclick="ticket({area: 'AREA_ECONOMICA'});" title="ÁREA ECONÓMICA" class="submenu-element">ÁREA ECONÓMICA</a></li>
+					
+				
+			</ul>
+		  </li>
+		  <li class="dropdown navbar-item">
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+				<div class="navbar-top">
+					<i class="fa-solid fa-image-portrait" aria-hidden="true"></i>
+					<span>Carpeta Ciudadana</span>
+				</div>
+			</a>
+			<ul class="dropdown-menu">
+				<li class="submenu-title">Carpeta Ciudadana</li>
+				<li><a href="#" onclick="ticket({others: 'myRequests'});" title="Mi carpeta" class="submenu-element">Mi carpeta</a></li>
+				
+			</ul>
+		  </li>
+		  
+		  <li class="dropdown navbar-item">
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+				<div class="navbar-top">
+					<i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+					<span>Servicios</span>
+				</div>
+			</a>
+			<ul class="dropdown-menu">
+				<li class="submenu-title">Servicios</li>
+				
+					
+						
+							<li><a href="https://sede.diphuelva.es/opencms/opencms/system/modules/gsede/elements/contenedores/normativa.html" target="_blank" title="Normativa Reguladora" class="submenu-element">Normativa Reguladora</a></li>
+						
+						
+					
+				
+					
+						
+							<li><a href="https://sede.diphuelva.es/opencms/opencms/system/modules/gsede/elements/contenedores/preguntasFrecuentes.html" target="_blank" title="Preguntas Frecuentes" class="submenu-element">Preguntas Frecuentes</a></li>
+						
+						
+					
+				
+					
+						
+							<li><a href="https://sede.diphuelva.es/opencms/opencms/system/modules/gsede/elements/contenedores/contacto.html" target="_blank" title="Contacto" class="submenu-element">Contacto</a></li>
+						
+						
+					
+				
+					
+						
+							<li><a href="https://sede.diphuelva.es/opencms/opencms/system/modules/gsede/elements/contenedores/certificados.html" target="_blank" title="Firmas electrónicas admitidas" class="submenu-element">Firmas electrónicas admitidas</a></li>
+						
+						
+					
+				
+					
+						
+							<li><a href="https://sede.diphuelva.es/opencms/sede/elements/contenedores/selloElectronico.html" target="_blank" title="Certificado de Sello" class="submenu-element">Certificado de Sello</a></li>
+						
+						
+					
+				
+					
+						
+							<li><a href="https://sede.diphuelva.es/opencms/opencms/system/modules/gsede/elements/contenedores/sellos.html" target="_blank" title="Verificación certificado sede electrónica" class="submenu-element">Verificación certificado sede electrónica</a></li>
+						
+						
+					
+				
+					
+						
+							<li><a href="https://sede.diphuelva.es/opencms/sede/elements/contenedores/autorizacionUsuarios.html" target="_blank" title="¿Dónde autorizar mi usuario ?" class="submenu-element">¿ Donde Autorizar mi Usuario ?</a></li>
+						
+						
+					
+				
+			</ul>
+		  </li>
+		  
+		  
+        		<li class="navbar-item">
+					<a href="/opencms/sede/index.html">
+						<div class="navbar-top">
+							<i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+							<span>Buscar</span>
+						</div>
+					</a>
+		  		</li>
+    	  
+		</ul>
+		<div id="asistenteVirtual">
+			<!---<base href="/opencms">-->
+			<chat-widget></chat-widget>
+					<script>
+						document.addEventListener('DOMContentLoaded', testMainWidget);
+						let widget;
+						  function testMainWidget() {
+							widget = document.querySelector('chat-widget');
+
+							requestUrlChange();
+							chatStateChanged();
+						  }
+
+						  function chatStateChanged() {
+							widget.addEventListener('chatStateChanged', event => {
+							  const state = event.detail;
+							  if (!state) return;
+							  switch (state) {
+								case 'open':
+								  console.log('chat open');
+								  break;
+								case 'close':
+								default:
+								  console.log('chat close');
+								  break;
+							  }
+							});
+						  }
+
+						  function requestUrlChange() {
+							widget.addEventListener('requestUrlChange', function (event) {
+							  const newUrl = event.detail;
+							});
+						  }
+
+						  function _toggle() {
+							if (widget.hasAttribute('toggle')) {
+							  widget.removeAttribute('toggle');
+							} else {
+							  widget.setAttribute('toggle', true);
+							}
+						  }
+					</script>
+
+					  <link rel="modulepreload" href="/opencms/opencms/sede/AV/chunk-3TNXBFUJ.js">
+					  <link rel="modulepreload" href="/opencms/opencms/sede/AV/chunk-P5YMQ6NI.js">
+					  <link rel="modulepreload" href="/opencms/opencms/sede/AV/chunk-EAFGGBBB.js">
+					  <link rel="modulepreload" href="/opencms/opencms/sede/AV/chunk-4HNAA3QD.js">
+					  <link rel="modulepreload" href="/opencms/opencms/sede/AV/chunk-ZR2VQGMP.js">
+					  <link rel="modulepreload" href="/opencms/opencms/sede/AV/chunk-WQW72BYF.js">
+					  <link rel="modulepreload" href="/opencms/opencms/sede/AV/chunk-2HUIEKAV.js">
+					  <link rel="modulepreload" href="/opencms/opencms/sede/AV/chunk-PUAS7KUQ.js">
+					  <link rel="modulepreload" href="/opencms/opencms/sede/AV/chunk-6ER5EEDF.js">
+					  <link rel="modulepreload" href="/opencms/opencms/sede/AV/chunk-G3IYRU5Z.js">
+					  <script src="/opencms/opencms/sede/AV/polyfills.js" type="module"></script><script src="/opencms/opencms/sede/AV/main.js" type="module"></script>
+		</div>
+		
+		
+	  </div><!-- /.navbar-collapse -->
+	</div><!-- /.container-fluid -->
+  </nav>
+</div><!--Cierre de la cabecera-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="breadcrumb">
+	<a href="/opencms/sede/index.html"> Inicio </a>
+
+	
+</div>
+
+<div class="row">
+	<div class="col-xs-12 col-sm-9">	
+        	
+	</div>
+	
+		<div class="col-xs-12 col-sm-3">				
+			<div class="share">
+				<label>Compartir</label>					
+				<a class="btn-preview" href="https://twitter.com/intent/tweet?url=https://sedeayuntamiento1.guadaltel.es/opencms/opencms/system/modules/gsede/elements/contenedores/accesibilidad.html" target="_blank"><i class="fa-brands fa-x-twitter" title="Compartir en Twitter" aria-hidden="true"></i><span class="screenreader-text">Compartir en Twitter</span></a>
+				<a class="btn-preview" href="https://www.facebook.com/sharer/sharer.php?u=https://sedeayuntamiento1.guadaltel.es/opencms/opencms/system/modules/gsede/elements/contenedores/accesibilidad.html" target="_blank"><i class="fa-brands fa-facebook-f" title="Compartir en Facebook" aria-hidden="true"></i><span class="screenreader-text">Compartir en Facebook</span></a>
+				<a class="btn-preview" href="https://www.linkedin.com/sharing/share-offsite/?url=https://sedeayuntamiento1.guadaltel.es/opencms/opencms/system/modules/gsede/elements/contenedores/accesibilidad.html" target="_blank"><i class="fa-brands fa-linkedin-in" title="Compartir en Linkedin" aria-hidden="true"></i><span class="screenreader-text">Compartir en Linkedin</span></a>
+			</div>
+		</div>
+	
+</div>
+
+<link rel="stylesheet" type="text/css" href="../../resources/css/menu.css">
+
+<script type="text/javascript">
+
+	window.addEventListener("message", (event) => { 
+		var dato = event.data;
+		var iframe = document.getElementById('bopIframe'); // Obtén el elemento iframe por su ID
+
+		if (iframe) {
+		  iframe.style.height = dato + 'px'; // Establece el alto del iframe
+		}	
+	});
+	
+	let menus = ["busqueda", "tramitacion", "otros"]
+	
+    function activaMenu(idMenu)
+    {
+        var  idPlus = "plus" + idMenu;
+        var  idMinus = "minus" + idMenu;
+        var item = document.getElementById(idMenu);
+        var itemPlus = document.getElementById(idPlus);
+        var itemMinus = document.getElementById(idMinus);
+
+        for (var i=0; i< menus.length; i++)
+        {
+            if (menus[i]==idMenu)
+            {
+                if (item.classList.contains("open"))
+                {
+                    itemPlus.style.display="inline";
+                    itemMinus.style.opacity="0";
+                    item.classList.remove("open");
+                }
+                else
+                {
+                    itemPlus.style.display="none";
+                    itemMinus.style.opacity="1";
+                    item.classList.add("open");
+                }
+            }
+            else
+            {
+                document.getElementById("plus" + menus[i]).style.display="inline";
+                document.getElementById("minus" + menus[i]).style.opacity="0";
+                document.getElementById(menus[i]).classList.remove("open");
+            }
+        }
+    }
+	
+/*	function resizeIframe(obj) 
+	{
+    	obj.style.height = obj.contentWindow.document.documentElement.scrollHeight + 'px';
+  	}
+	*/
+</script>
+
+<div id="subcabecera">&nbsp;</div>
+<div class="container2" style="display:block; margin: 0 auto; width:1000px !important;">
+
+    <!--<h1 style="color:#007AA5; text-align:center;">BOP</h1>-->
+    <div class="window">
+        <br>
+        
+        <div class="accionador_menu_movil">
+            <div class="btn-accionador">
+                <span class="contenido-oculto">Menú</span>
+                <span class="icon-bar icon-bar-1"></span>
+                <span class="icon-bar icon-bar-2"></span>
+                <span class="icon-bar icon-bar-3"></span>
+            </div>
+            <div class="texto_btn_responsive">Menú</div>
+        </div>
+        <div class="menu">
+            <ul class="menu_estatico nivel-1 nav">
+                <li class="elemento_menu" id="busqueda" onclick="activaMenu('busqueda')">
+                    <div class="titulo_rama">Búsqueda
+                        <span class="bullet-accordion">
+                            <span class="plus" id="plusbusqueda">
+                                <i class="fa fa-plus"></i>
+                            </span>
+                            <span class="minus" id="minusbusqueda">
+                                <i class="fa fa-minus"></i>
+                            </span>
+                        </span>
+                    </div>
+                    <ul class="menu_estatico_submenu">
+                        <li class="elemento_submenu" style="width: inherit;">
+                            <a href="https://s2.diphuelva.es/servicios/bope_web/UltimoBop" target="bop" title="Ir a Último Bop">Último BOP</a>
+                        </li>
+                        <li class="elemento_submenu" style="width: inherit;">
+                            <a href="https://s2.diphuelva.es/servicios/bope_web/busquedaCalendario" target="bop" title="Ir a Calendario">Calendario</a>
+                        </li>
+                        <li class="elemento_submenu" style="width: inherit;">
+                            <a href="https://s2.diphuelva.es/servicios/bope_web/busquedaAvanzada" target="bop" title="Ir a Búsqueda Avanzada">Búsqueda Avanzada</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="elemento_menu" id="tramitacion" onclick="activaMenu('tramitacion')">
+                    <div class="titulo_rama">B.O.P.
+                        <span class="bullet-accordion">
+                            <span class="plus" id="plustramitacion">
+                                <i class="fa fa-plus"></i>
+                            </span>
+                            <span class="minus" id="minustramitacion">
+                                <i class="fa fa-minus"></i>
+                            </span>
+                        </span>
+                    </div>
+                    <ul class="menu_estatico_submenu">
+                        <li class="elemento_submenu" style="width: inherit;">
+                            <a href="https://sede.diphuelva.es/moad/oficina-moad/tramites/acceso.do?id=15800&entity=635&siteCode=DIPHUE_SEDE" target="_self" title="Ir a Inserción de Anuncios">Inserción de Anuncios</a>
+                        </li>
+                        <li class="elemento_submenu" style="width: inherit;">
+                            <a href="https://s2.diphuelva.es/segura/servicios/bope_suscripciones" target="bop" title="Ir a Suscripciones">Suscripciones</a>
+                        </li>
+                        <li class="elemento_submenu" style="width: inherit;">
+                            <a href="https://sede.diphuelva.es/moad/oficina-moad/tramites/acceso.do?id=14864&entity=635&siteCode=DIPHUE_SEDE" target="_self" title="Ir a Registro de Autoridades">Registro de Autoridades</a>
+                        </li>
+                        <li class="elemento_submenu" style="width: inherit;">
+                            <a href="https://sede.diphuelva.es/moad/oficina-moad/tramites/acceso.do?id=15800&descarga=128423&entity=635&siteCode=DIPHUE_SEDE" target="_blank" title="Ir a Ordenanza Reguladora">Ordenanza Reguladora</a>
+                        </li>
+                        <li class="elemento_submenu" style="width: inherit;">
+                            <a href="https://sede.diphuelva.es/moad/oficina-moad/tramites/acceso.do?id=15800&descarga=128424&entity=635&siteCode=DIPHUE_SEDE" target="_blank" title="Ir a Ordenanza Fiscal">Ordenanza Fiscal</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="elemento_menu" id="otros" onclick="activaMenu('otros')">
+                    <div class="titulo_rama">Otros Boletines
+                        <span class="bullet-accordion">
+                            <span class="plus" id="plusotros">
+                                <i class="fa fa-plus"></i>
+                            </span>
+                            <span class="minus" id="minusotros">
+                                <i class="fa fa-minus"></i>
+                            </span>
+                        </span>
+                    </div>
+                    <ul class="menu_estatico_submenu">
+                        <li class="elemento_submenu" style="width: inherit;">
+                            <a href="https://s2.diphuelva.es/servicios/bop" target="bop" title="Ir a BOP Anteriores a 20/06/2023">BOP Anteriores a 20/06/2023</a>
+                        </li>
+                        <li class="elemento_submenu" style="width: inherit;">
+                            <a href="https://s2.diphuelva.es/servicios/boparchivo" target="bop" title="Ir a BOP Anteriores a 2000">BOP Anteriores a 2000</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>                      
+        
+        
+        
+        
+        
+        <div class="area-buscador" id="area-buscador">
+            <iframe class="no-border" scrolling="no" style="border: none; min-height: 700px;" title="BOP" id="bopIframe" name="bop" src="https://s2.diphuelva.es/servicios/bope_web/UltimoBop" width="100%"></iframe>
+        </div>
+    </div>
+</div>
+
+<br />
+<br />
+
+<a class="btn btn-default" href="/opencms/sede/index.html"
+    role="button">Volver</a>
+
+<br />
+<br />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+    
+
+	<div class="footer-links" id="footer-links">
+		<section class="interest-links-section">
+			<div class="container">				
+				<div class="row">
+				
+					<!-- SEDE ELECTRONICA -->
+					<div class="col-xs-12 col-sm-6 col-md-3">
+						<label class="f-title-li">Sede electrónica</label>
+						<ul class="footer-ul">
+						
+													
+								
+													
+								
+													
+								
+													
+								
+													
+								
+													
+								
+									<li><a href="https://sede.diphuelva.es/opencms/opencms/system/modules/gsede/elements/contenedores/sellos.html" alt="Verificación certificado Sede Electrónica">Verificación certificado Sede Electrónica</a></li>
+								
+													
+								
+									<li><a href="https://valide.redsara.es/valide/validarCertificado/ejecutar.html" alt="Verificación certificados digitales">Verificación certificados digitales</a></li>
+								
+													
+								
+									<li><a href="https://verifirma.diphuelva.es/" alt="Verifirma">Verifirma</a></li>
+								
+													
+								
+									<li><a href="https://sede.diphuelva.es/opencms/sede/elements/contenedores/autorizacionUsuarios.html" alt="¿Dónde autorizar mi usuario?">¿Dónde autorizar mi usuario?</a></li>
+								
+													
+								
+													
+								
+													
+								
+													
+								
+													
+								
+													
+								
+													
+								
+							
+						</ul>
+					</div>
+				
+					<!-- ATENCION CIUDADANA-->
+					<div class="col-xs-12 col-sm-6 col-md-3">
+						<label class="f-title-li">Atención ciudadana</label>
+						<ul class="footer-ul">
+						
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									<li><a href="https://www.diphuelva.es/mas-informacion/contacto/" alt="Si desea ponerse en contacto con nosotros para comunicarnos alguna mejora o para cualquier incidencia o sugerencia puede hacerlo a través de nuestro formulario de contacto.">Si desea ponerse en contacto con nosotros para comunicarnos alguna mejora o para cualquier incidencia o sugerencia puede hacerlo a través de nuestro formulario de contacto.</a></li>
+								
+									
+								
+							
+						</ul>
+					</div>				
+				
+					<!-- ENLACES DE INTERÉS -->
+					<div class="col-xs-12 col-sm-6 col-md-3">
+						<label class="f-title-li">Enlaces de interés</label>
+						<ul class="footer-ul">
+						
+									
+									
+										<li><a href="https://portafirmas.diphuelva.es" alt="Portafirmas">Portafirmas</a></li>
+								
+									
+									
+										<li><a href="https://sede.diphuelva.es/opencms/opencms/system/modules/gsede/elements/contenedores/BOP.html" alt="Acceso a BOP">Acceso a BOP</a></li>
+								
+									
+									
+										<li><a href="http://www.juntadeandalucia.es/boja/" alt="Acceso a BOJA">Acceso a BOJA</a></li>
+								
+									
+									
+										<li><a href="http://www.boe.es/" alt="Acceso a BOE">Acceso a BOE</a></li>
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+									
+										<li><a href="https://www.aepd.es/" alt="Agencia Española de Protección de Datos">Agencia Española de Protección de Datos</a></li>
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+							
+						</ul>
+					</div>			
+				
+					<!-- INFORMACIÓN GENERAL Y REDES SOCIALES -->
+					<div class="col-xs-12 col-sm-6 col-md-3">
+						<label class="f-title-li">Información general</label>
+						<ul class="footer-ul">
+						
+									
+								
+									
+								
+									
+								
+									
+								
+									
+									
+										<li><a href="http://www.diphuelva.es" alt="Diputación de Huelva">Diputación de Huelva</a></li>
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+								
+									
+									
+										<li><a href="https://sede.diphuelva.es/opencms/opencms/system/modules/gsede/elements/contenedores/preguntasFrecuentes.html" alt="Preguntas frecuentes">Preguntas frecuentes</a></li>
+								
+							
+							<label class="f-title-li">Síguenos en:</label>
+							<ul class="footer-ul">
+								<li>
+											
+										
+										
+										
+										
+											
+										
+										
+										
+										
+											
+										
+										
+										
+										
+											
+										
+										
+										
+										
+											
+										
+										
+										
+										
+											
+										
+										
+										
+										
+											
+										
+										
+										
+										
+											
+										
+										
+										
+										
+											
+										
+										
+										
+										
+											
+										
+										
+										
+										
+											
+										
+											
+												<a href="https://www.instagram.com/dipuhu/?hl=es" alt="Instagram"> <span><img src="/opencms/system/modules/sede/resources/images/instagram.svg" alt="Logo de Instagram" /></span></a>
+										
+										
+										
+											
+										
+										
+											
+												<a href="https://www.facebook.com/DiputaciondeHuelva" alt="Facebook"> <span><img src="/opencms/system/modules/sede/resources/images/facebook-f.svg" alt="Logo de Facebook" /></span></a>
+										
+										
+											
+										
+										
+										
+											
+												<a href="https://www.youtube.com/user/diphuelva" alt="Youtube"> <span><img src="/opencms/system/modules/sede/resources/images/youtube.svg" alt="Logo de Youtube" /></span></a>
+										
+											
+											
+												<a href="https://x.com/DipuHU" alt="X"> <span><img src="/opencms/system/modules/sede/resources/images/x-twitter.svg" alt="Logo de X" /></span></a>
+										
+										
+										
+										
+											
+										
+										
+										
+										
+											
+										
+										
+										
+										
+									
+							</li>
+						</ul>
+					</div>							
+							
+				</div>
+			</div>
+		</section>
+	</div>
+    
+
+
+
+
+	
+
+
+
+
+<footer id="footer">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-5 col-xs-12">
+				<img src="/opencms/export/sites/DIPHUE_SEDE/sede/resources/images/logo.png" class="responsive logo-img" alt="Logo del Ayuntamiento">
+			</div>
+			
+			<div class="col-md-7 col-xs-12">
+				<ul>
+					<li><a href="/opencms/sede/elements/contenedores/accesibilidad.html" title="Accesibilidad en el Portal">Accesibilidad en el Portal</a></li>
+					<li><a href="/opencms/sede/elements/contenedores/normativa.html" title="Aviso legal">Aviso legal</a></li>
+					<li><a href="/opencms/sede/elements/contenedores/proteccionDatos.html" title="Protección de datos">Protección de datos</a></li>
+				</ul>
+			</div>		
+		</div>
+	</div>	
+</footer>
+
+
+	<!-- Aviso de notificaciones -->
+	
+
+	<script type="text/javascript">
+		function waiting() {
+
+			var fondo = document.getElementById("fondo");
+			fondo.style.display = "inline";
+			fondo.style.height = document.getElementsByTagName("Body")[0].scrollHeight
+					+ "px";
+
+			var modalText = document.getElementById("modalText");
+			modalText.style.display = "inline";
+		}
+	</script>
+
+	<div id="fondo" class="fondo"></div>
+	<div id="modalText" class="modalText">
+		<div class="loading_img_sign">
+			<img src="/opencms/export/system/modules/gsede/resources/images/loading.gif" />
+		</div>
+		<div class="loading_text_sign">Por favor, espere...</div>
+	</div>
+
+	</html>
+
+
