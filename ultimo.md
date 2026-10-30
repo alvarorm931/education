@@ -1,6 +1,6 @@
-# Vigilancia 30/10 09:30 (Madrid)
+# Vigilancia 30/10 09:46 (Madrid)
 
-- Ejecuciones revisadas (últimas 6 h): 283
+- Ejecuciones revisadas (últimas 6 h): 270
 - Fallos: 2; pendientes: 0; relanzados ahora: 0
 - Colas de más de 30 minutos: 0
 - Flujos programados parados: ninguno
