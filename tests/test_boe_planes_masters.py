@@ -35,3 +35,16 @@ def test_medir_une_por_el_identificador_de_la_ficha(tmp_path):
     assert res["documentos"] == 1 and res["comprobados"] == 1 and res["codigos"] == 1
     fila = json.loads((tmp_path / "o/datos/estudios/masters/boe_planes_masters.jsonl").read_text())
     assert fila["codigos_ruct"] == ["4310193"] and fila["planes"][0]["filas_plan"][0]["creditos"] == 6
+
+
+def test_union_por_nombre_y_universidad_solo_si_es_unica():
+    cat = [{"codigo_ruct": "1", "nombre_oficial": "Máster Universitario en Comercio Internacional por la Universidad de Extremadura",
+            "universidad": "Extremadura", "situacion": "Activo"},
+           {"codigo_ruct": "2", "nombre_oficial": "Máster Universitario en Comercio Internacional y Logística por la Universidad de Extremadura",
+            "universidad": "Extremadura", "situacion": "Activo"},
+           {"codigo_ruct": "3", "nombre_oficial": "Máster Universitario en Comercio Internacional por la Universidad de Murcia",
+            "universidad": "Murcia", "situacion": "Activo"}]
+    res = [{"identificador": "BOE-A-2025-1", "tipo": "plan", "titulo": "Resolución de 16 de diciembre de 2025, de la "
+            "Universidad de Extremadura, por la que se publica el plan de estudios de Máster Universitario en Comercio Internacional."},
+           {"identificador": "BOE-A-2025-2", "tipo": "otro", "titulo": "Convenio con la Universidad de Murcia"}]
+    assert bp.ids_por_nombre(res, cat) == {"BOE-A-2025-1": ["1"]}

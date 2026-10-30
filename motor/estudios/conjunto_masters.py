@@ -200,9 +200,14 @@ def cargar_boe_planes(carpetas: list[Path]) -> dict[str, dict]:
                 planes = [p for p in d.get("planes") or [] if p.get("filas_plan")]
                 if len(planes) != 1:  # varios planes en una resolución: sin saber cuál es cuál, ninguno
                     continue
+                nuevo = {**planes[0], "identificador": d["identificador"], "url": d.get("url"), "union": d.get("union"),
+                         "capturado": d.get("capturado"), "fecha_publicacion": d.get("fecha_publicacion")}
                 for cod in d.get("codigos_ruct") or []:
-                    out[cod] = {**planes[0], "identificador": d["identificador"], "url": d.get("url"),
-                                "capturado": d.get("capturado"), "fecha_publicacion": d.get("fecha_publicacion")}
+                    # el plan vigente: el comprobado más reciente (un plan nuevo o una modificación que lo publica entero)
+                    previo = out.get(cod)
+                    if previo is None or (bool(nuevo.get("comprobacion")), nuevo.get("fecha_publicacion") or "") >= \
+                            (bool(previo.get("comprobacion")), previo.get("fecha_publicacion") or ""):
+                        out[cod] = nuevo
     return out
 
 
