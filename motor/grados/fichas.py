@@ -615,17 +615,19 @@ def construir(catalogo: list[dict], genericos: list[dict], tarjetas: dict, detal
                                     "boe": (c.get("plan") or {}).get("boe"),
                                     "comprobado": bool(c.get("plan") and c["plan"]["comprobado"]),
                                     "nivel": (c.get("plan") or {}).get("nivel")} for c in comp if c]
-        # precio del doble de pública que no trae QEDU: la regla de su comunidad sobre los precios de sus dos grados
-        # (centros propios de la misma universidad; si un grado tiene dos precios distintos, no se deduce)
-        if f["universidad_tipo"] == "Pública" and not f["precio_primera_matricula"] and len(comp) >= 2 and all(comp) \
+        # precio del doble de pública que no trae QEDU: el nivel que le da el anexo de la norma de su comunidad o la
+        # regla de la norma (o de su universidad) sobre los precios de sus dos grados (centros propios de la misma
+        # universidad; si un grado tiene dos precios distintos, no se deduce)
+        if f["universidad_tipo"] == "Pública" and not f["precio_primera_matricula"] \
                 and any(x.get("tipo_centro") == "Propio" for x in f["centros"]):
             precios = []
-            for c in comp:
+            for c in comp if len(comp) >= 2 and all(comp) else []:
                 propios = {x["precio_credito"] for x in c["centros"] if x.get("precio_credito")
                            and x.get("tipo_centro") == "Propio"}
                 precios.append(propios.pop() if len(propios) == 1 else None)
             creditos = next((x["creditos"] for x in f["centros"] if x.get("creditos")), None)
-            pd = precio_doble(f["universidades"][0].get("comunidad"), precios) if creditos else None
+            u0 = f["universidades"][0]
+            pd = precio_doble(u0.get("comunidad"), precios, u0.get("nombre"), f["codigo"]) if creditos else None
             if pd:
                 f["precio_credito_norma"] = {**pd, "centros": "propios", "creditos": creditos}
                 f["precio_primera_matricula"] = round(pd["precio_credito"] * creditos, 2)

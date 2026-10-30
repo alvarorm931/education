@@ -228,6 +228,24 @@ def test_precio_del_doble_por_la_regla_de_su_comunidad():
     assert precios.precio_doble("Comunidad sin regla", [10.0, 10.0]) is None
 
 
+def test_precio_del_doble_por_el_anexo_o_la_regla_de_su_universidad():
+    from motor.grados import precios
+    # nivel del anexo: sin precios de sus grados, solo en su universidad y con el texto literal de la norma
+    r = precios.precio_doble("Asturias (Principado de)", [], "Oviedo", "7001387")
+    assert r["precio_credito"] == 12.30 and r["nivel"] == 2 and r["denominacion_en_la_norma"].startswith("PCEO")
+    assert precios.precio_doble("Asturias (Principado de)", [], "Oviedo", "7999999") is None
+    assert precios.precio_doble("Castilla - La Mancha", [], "Castilla-La Mancha", "7001094")["precio_credito"] == 18.87
+    # reglas de la universidad: solo con el mismo precio en los dos grados
+    assert precios.precio_doble("Castilla y León", [14.0, 14.0], "Valladolid")["regla"] == "cada_asignatura"
+    assert precios.precio_doble("Castilla y León", [14.0, 16.0], "Valladolid") is None
+    assert precios.precio_doble("Castilla y León", [14.0, 14.0], "Salamanca") is None
+    assert precios.precio_doble("Comunitat Valenciana", [16.0, 16.0], "València (Estudi General)")["precio_credito"] == 16.0
+    assert precios.precio_doble("Comunitat Valenciana", [14.0, 16.0], "València (Estudi General)") is None
+    # cada doble del anexo tiene un nivel con precio
+    for a in precios.ANEXO_DOBLE.values():
+        assert all(n in a["precios"] for n, _ in a["dobles"].values())
+
+
 def test_fichas_proximas_de_altas_que_no_estan_en_el_catalogo():
     altas = [{"codigo_ruct": "2500828", "nombre": "Graduado o Graduada en Derecho", "universidad": "Universidad Complutense de Madrid", "boe": "BOE-A-1"},
              {"codigo_ruct": "2599999", "nombre": "Graduado o Graduada en Derecho", "universidad": "Universidad Complutense de Madrid", "boe": "BOE-A-2"}]
