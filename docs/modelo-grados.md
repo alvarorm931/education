@@ -161,9 +161,9 @@ semestre (el literal se guarda), y se añadió la comprobación tipo a tipo. Efe
 cuadran también tipo a tipo, de 1.960 a 2.715; comprobados, de 3.625 a 3.650 (se cayeron 31 que cuadraban por
 casualidad, la mayoría con el TFG contado como obligatoria). También se cruza la tabla de módulos con la de curso y
 semestre: si la asignatura tiene un único curso y semestre en el plan, lo toma (`curso_de_otra_tabla`; 17 planes
-más con curso). Quedan por resolver: rótulos de grupo de optativas con créditos leídos como nombre en algún plan y
-huecos genéricos («Optativa I») junto a la lista real de optativas (solo afectan a las optativas, que no cuentan en
-la comprobación).
+más con curso). Los huecos de optativas del plan («Optativa I», «Optativas 2-7») van marcados
+en la ficha (`hueco`: 2.592 de 148.328 filas). Queda por resolver: rótulos de grupo de optativas con créditos leídos
+como nombre en algún plan (solo afecta a las optativas, que no cuentan en la comprobación).
 
 Resultado con todo lo leído (30/10/2026, 07:45, hora de España):
 
