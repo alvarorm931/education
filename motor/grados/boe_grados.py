@@ -177,11 +177,13 @@ RESUMEN = re.compile(r"^\s*(tipo|car[áa]cter) de (asignatura|materia|m[óo]dulo
 CODIGOS_CARACTER = {
     "basica": {"fb", "b", "bs", "ba", "fba", "bas", "fbr"},
     "obligatoria": {"ob", "o", "obl", "obg", "obli"},
-    "optativa": {"op", "opt", "ot", "optat"},
+    # «OBM», «OPM»: obligatoria u optativa de mención; en la tabla de créditos cuentan como optatividad
+    "optativa": {"op", "opt", "ot", "optat", "obm", "opm", "om", "obme", "opme", "obmen"},
     "practicas": {"pe", "pae", "prt", "pr", "pex", "pext"},
     "tfg": {"tfg", "tfm", "tfg/tfm", "tf"},
 }
 PALABRAS_CARACTER = [  # por el comienzo del texto, una vez quitado «Materias», «Formación», «Créditos»
+    ("optativa", re.compile(r"^obligatori\w* de (?:la )?menci[oó]n")),
     ("basica", re.compile(r"^b[áa]sic")),
     ("tfg", re.compile(r"^trabajo")),
     ("practicas", re.compile(r"^pr[áa]cticas")),
@@ -423,7 +425,7 @@ def plan(tablas: list[dict], dist: dict | None = None) -> list[dict]:
         if t.get("datos_personales") or len(filas) < 2:
             continue
         cab = filas[0]
-        if RESUMEN.search(cab[0] or "") and len(cab) <= 3:
+        if RESUMEN.search(cab[0] or "") and len(cab) <= 3 or distribucion_creditos([t]) is not None:
             continue  # tabla de créditos por tipo: se lee aparte (distribucion_creditos)
         filas_estado = _con_separadores(filas[1:], len(cab))
         cuerpo = [f for f, _ in filas_estado]
@@ -436,7 +438,8 @@ def plan(tablas: list[dict], dist: dict | None = None) -> list[dict]:
                 if salida:
                     por_tabla.append((0, len(salida), n, salida))
             continue
-        tipo_tabla = tipo_de_rotulo(t.get("rotulo"))
+        # rótulo encima de la tabla o en la propia cabecera de la columna del nombre («Asignaturas optativas»)
+        tipo_tabla = tipo_de_rotulo(t.get("rotulo")) or tipo_de_rotulo(cab[cols["nombre"]])
         if not tipo_tabla:  # fila de total al pie: «Total de créditos de formación obligatoria. | 150»
             pies = {tipo_de_rotulo(f[cols["nombre"]]) for f in cuerpo if TOTAL.match((f[cols["nombre"]] or "").strip())}
             pies.discard(None)
@@ -462,6 +465,7 @@ def plan(tablas: list[dict], dist: dict | None = None) -> list[dict]:
                 "modulo": modulo or estado["modulo"],
                 "caracter": caracter,
                 "tipo": tipo_caracter(caracter) or estado["tipo"] or tipo_tabla,
+                "tipo_por_rotulo": not tipo_caracter(caracter) and bool(estado["tipo"] or tipo_tabla),
                 "creditos": _num(f[cols["creditos"]]),
                 "curso": curso,
                 "semestre": semestre,
@@ -483,7 +487,9 @@ def plan(tablas: list[dict], dist: dict | None = None) -> list[dict]:
                 presentes.add(iguales[0])
                 for x in sal:
                     x["tipo"], x["tipo_por_suma_de_tabla"] = iguales[0], True
-    por_tabla = [(sum(bool(x["tipo"]) + bool(x["curso"]) + bool(x["semestre"]) for x in sal) / len(sal), k, n, sal)
+    # riqueza: el tipo leído en su columna vale más que el deducido del rótulo o de la suma
+    por_tabla = [(sum((0.5 if x.get("tipo_por_rotulo") or x.get("tipo_por_suma_de_tabla") else 1) * bool(x["tipo"])
+                      + bool(x["curso"]) + bool(x["semestre"]) for x in sal) / len(sal), k, n, sal)
                  for _, k, n, sal in por_tabla]
     # la misma asignatura en varias tablas: se queda la de la tabla más completa; dentro de una misma tabla se
     # conservan las repetidas (una materia repartida en dos cursos, varias «Optativa» de 6 créditos)
@@ -574,13 +580,46 @@ def medir_plan(doc: dict) -> dict:
     dist = distribucion_creditos(doc.get("tablas", []))
     filas = plan(doc.get("tablas", []), dist)
     m = _medir(filas, dist, doc)
-    if not m["comprobacion"] and any(x.get("tipo_por_nombre") for x in filas):
-        alt = [{**x, "tipo": None, "tipo_por_nombre": False} if x.get("tipo_por_nombre") else x for x in filas]
-        m2 = _medir(alt, dist, doc)
-        if m2["comprobacion"]:
-            filas, m = alt, m2
+    if not m["comprobacion"]:
+        for alt in _alternativas(filas, dist):
+            m2 = _medir(alt, dist, doc)
+            if m2["comprobacion"]:
+                filas, m = alt, {**m2, "interpretacion": "alternativa"}
+                break
     m["filas_plan"] = filas
     return m
+
+
+def _alternativas(filas: list[dict], dist: dict | None = None):
+    """Lecturas más prudentes del mismo plan, de menos a más recorte: sin los tipos deducidos por el nombre, por
+    el rótulo o por la suma, y sin las tablas que repiten casi entera otra (listas resumen de la formación básica
+    con nombres algo distintos que contarían dos veces)."""
+    sin = lambda marca: [{**x, "tipo": None, marca: False} if x.get(marca) else x for x in filas]  # noqa: E731
+    for marca in ("tipo_por_nombre", "tipo_por_rotulo", "tipo_por_suma_de_tabla", "tipo_por_tabla_de_ambitos"):
+        if any(x.get(marca) for x in filas):
+            yield sin(marca)
+    por_tabla: dict = {}
+    for x in filas:
+        por_tabla.setdefault(x["tabla"], []).append(x)
+    if dist and len(por_tabla) > 1:
+        # un tipo repartido en varias tablas cuando una sola ya suma lo de la tabla de créditos (la lista de
+        # formación básica completa y, en el plan por cursos, algunas básicas con otro nombre): vale esa tabla
+        for tipo, clave in CLAVE_DIST.items():
+            if not dist.get(clave):
+                continue
+            exactas = [n for n, xs in por_tabla.items()
+                       if abs(sum(x["creditos"] or 0 for x in xs if x["tipo"] == tipo) - dist[clave]) <= 0.5]
+            otras = [n for n, xs in por_tabla.items() if n not in exactas and any(x["tipo"] == tipo for x in xs)]
+            if len(exactas) == 1 and otras:
+                yield [x for x in filas if not (x["tipo"] == tipo and x["tabla"] != exactas[0])]
+    if len(por_tabla) > 1:
+        claves = {n: {clave_union(x["nombre"]) for x in xs} for n, xs in por_tabla.items()}
+        # una tabla es «repetida» si la mitad o más de sus palabras clave están en otras tablas del plan
+        palabras = {n: set().union(*(k.split() for k in ks)) for n, ks in claves.items()}
+        repetidas = {n for n in por_tabla if palabras[n] and len(palabras[n] & set().union(
+            *(palabras[m] for m in por_tabla if m != n))) >= 0.8 * len(palabras[n]) and len(por_tabla[n]) <= 15}
+        for n in sorted(repetidas):
+            yield [x for x in filas if x["tabla"] != n]
 
 
 def _medir(filas: list[dict], dist: dict | None, doc: dict) -> dict:

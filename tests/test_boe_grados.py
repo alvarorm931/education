@@ -175,3 +175,12 @@ def test_plan_con_asignaturas_dentro_de_las_celdas():
     assert p["Mundo medieval"]["creditos"] == 6 and p["Mundo medieval"]["curso"] == 2 and p["Mundo medieval"]["semestre"] == 1
     assert p["Inglés B2.1"]["creditos"] == 6
     assert p["Mundo contemporáneo"]["tipo"] == "obligatoria" and p["Mundo contemporáneo"]["semestre"] == 2
+
+
+def test_cabecera_con_tipo_y_codigos_de_mencion_y_tabla_resumen_excluida():
+    from motor.grados.boe_grados import plan, tipo_caracter
+    assert tipo_caracter("OBM") == "optativa" and tipo_caracter("Obligatoria de mención") == "optativa"
+    resumen = _t([["Materias", "Créditos"], ["Formación Básica.", "60"], ["Obligatorias.", "120"], ["Optativas.", "36"]])
+    opt = _t([["Asignaturas optativas", "Créditos"], ["1. Psicología del deporte", "6"]])
+    p = plan([resumen, opt])
+    assert [(x["nombre"], x["tipo"]) for x in p] == [("1. Psicología del deporte", "optativa")]
