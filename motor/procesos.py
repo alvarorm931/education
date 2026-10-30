@@ -404,6 +404,31 @@ def construir(actos: list[dict], hoy: date, autonomicos: list[dict] | None = Non
             if (elegido := _anuncio_del_puesto(x, lista)):
                 asignada[xid] = elegido["id"]
 
+    # Bases que el anuncio del BOE no cita por fecha (o cita otro boletín: el DOE, el BOCYL o el DOGC repiten las del
+    # BOP) pero son del mismo ayuntamiento y puesto, y el anuncio sale en los 180 días siguientes: si es el único
+    # anuncio así, son las suyas. Sin esto, cada una quedaba como un proceso aparte (unos 3.000 duplicados).
+    boe_por_mun: dict[str, list[dict]] = defaultdict(list)
+    for a in origenes_boe:
+        if a.get("ambito") == "local":
+            for k in _municipio(a.get("convocante"), ["BOE"], a.get("boletines_citados")):
+                boe_por_mun[k].append(a)
+    sin_cita: dict[str, list[dict]] = defaultdict(list)
+    from motor.union import turno as turno_de
+    for x in autonomicos:
+        if not es_origen_local(x) or x["id"] in pretendientes or \
+                RE_TEMPORAL.search(normalizar(x.get("titulo") or "")) or x.get("modalidad") == "bolsa":
+            continue
+        px = _puestos_de(x)
+        if not px:
+            continue
+        cands = {a["id"]: a for k in _municipio(x.get("convocante"), [x.get("fuente")]) for a in boe_por_mun.get(k, [])
+                 if 0 <= _dias_entre(x.get("fecha"), a.get("fecha")) <= 180 and px & _puestos_de(a)}
+        lista = list(cands.values())
+        if len(lista) > 1 and (t := turno_de(x.get("titulo"))):
+            lista = [a for a in lista if all(p.get("turno") in (None, t) for p in a.get("plazas") or [])] or lista
+        if len(lista) == 1:
+            sin_cita[lista[0]["id"]].append(x)
+
     procesos = []
     for a in origenes_boe:
         a = {**a, "fuente": a.get("fuente") or "BOE"}
@@ -411,6 +436,8 @@ def construir(actos: list[dict], hoy: date, autonomicos: list[dict] | None = Non
             gemelos_por_disposicion(a)
         usados.update(x["id"] for x in gemelos)
         bases_enlazadas = [x for x in citadas_por(a) if x["id"] not in usados and asignada.get(x["id"], a["id"]) == a["id"]]
+        bases_enlazadas += [x for x in sin_cita.get(a["id"], []) if x["id"] not in usados and
+                            x["id"] not in {y["id"] for y in bases_enlazadas}]
         usados.update(x["id"] for x in bases_enlazadas)
         procesos.append(_proceso(a, sorted(citados_por.get(a["id"], []), key=lambda x: x["fecha"]),
                                  gemelos + bases_enlazadas, hoy, f"boe:{a['id']}"))

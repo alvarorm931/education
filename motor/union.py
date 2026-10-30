@@ -145,9 +145,30 @@ RE_NO_ES_PUESTO = re.compile(r"^(?:que-se-relacionan|que-se-indican|que-se-citan
                              r"extraordinaria|basicas|empresa-publica|varias-categorias|categorias|diversas|varias|excluido.*|admitido.*)$")
 
 
+_TOKENS_CORTE: dict[str, re.Pattern] = {}
+RE_ENTIDAD_TRAS_PUESTO = re.compile(r"\s*(?:excm\w*\.?\s+|ilm\w*\.?\s+)?(?:ayuntamiento|ajuntament|concello|udal|diputaci|"
+                                    r"mancomunidad|mancomunitat|consorci|organismo|patronato|cabildo|consell|comarca|"
+                                    r"entidad|universi|plantilla|escala|subescala|oferta|relaci[oó]n de puestos|"
+                                    r"servicio\s+(?:de|municipal)|corporaci|municipio|localidad)", re.IGNORECASE)
+RE_ARTICULO_CORTE = re.compile(r"^\s+(?:del|de la|de las|de los)\b", re.IGNORECASE)
+
+
+def _cortar(p: str, corte: re.Pattern) -> str:
+    """Quita lo que sigue al puesto («… mediante oposición», «… de la plantilla»), pero no corta en «de la» si delante
+    solo queda una palabra: «agente de la policía local» es «policía local», no «agente»."""
+    tokens = _TOKENS_CORTE.setdefault(corte.pattern, re.compile(corte.pattern.replace(r"\b.*$", r"\b"), re.IGNORECASE))
+    for m in tokens.finditer(p):
+        cabeza = p[:m.start()].strip(" -")
+        if RE_ARTICULO_CORTE.match(m.group(0)) and len(cabeza.split()) < 2 and \
+                not RE_ENTIDAD_TRAS_PUESTO.match(p[m.end():]):
+            continue
+        return cabeza
+    return p.strip(" -")
+
+
 def _clave_puesto(p: str, cuerpo: bool = False) -> str | None:
     from motor.catalogo.territorio import provincia
-    p = (RE_CORTE_CUERPO if cuerpo else RE_CORTE_PUESTO).sub("", p).strip(" -")
+    p = _cortar(p, RE_CORTE_CUERPO if cuerpo else RE_CORTE_PUESTO)
     p = RE_ANTES_PUESTO.sub("", p).strip(" -")
     if provincia(p) or set(normalizar(p).split()) <= GENERICOS:  # «(Córdoba)», «plazas vacantes»
         return None

@@ -158,3 +158,24 @@ def test_misma_resolucion_en_el_boe_y_en_su_comunidad_y_melilla():
     assert set(ps) == {"boe:U1", "boe:U2", "boe:M1"}
     assert [o["id"] for o in ps["boe:U1"]["otras_publicaciones"]] == ["boja:1"]
     assert [o["id"] for o in ps["boe:M1"]["otras_publicaciones"]] == ["bome:1"]
+
+
+def test_bases_sin_cita_del_mismo_ayuntamiento_y_puesto():
+    """El DOGC anuncia las bases que publicó el BOPB y el BOE cita solo el BOPB: las del DOGC van con el anuncio del
+    BOE del mismo ayuntamiento y puesto de los 180 días siguientes, si es el único; si hay dos, no."""
+    conv = {"tipo": "Ayuntamiento", "nombre": "Santa Margarida i els Monjos", "provincia": "Barcelona"}
+    boe = [_acto("B1", "2022-09-24", "apertura_plazo", convocante=conv,
+                 plazas=[{"numero": 2, "puesto_clave": "policia-local"}],
+                 boletines_citados=[{"boletin": "Boletín Oficial de la Provincia de Barcelona", "fecha": "2022-09-12",
+                                     "papel": "bases"}])]
+    otro = {"tipo": "Ayuntamiento", "nombre": "Artés", "provincia": "Barcelona"}
+    boe += [_acto(f"A{i}", "2023-04-24", "apertura_plazo", convocante=otro,
+                  plazas=[{"numero": 1, "puesto_clave": "arquitecto"}]) for i in (1, 2)]
+    loc = lambda i, f, t, c: {"id": i, "fecha": f, "fuente": "DOGC", "tipo_acto": "convocatoria", "ambito": "local",
+                              "alcance": "acceso", "titulo": t, "convocante": c}
+    autonomicos = [loc("dogc:1", "2022-09-22", "ANUNCIO sobre publicación en el BOPB de las bases de dos plazas de "
+                                               "agente de la policía local", conv),
+                   loc("dogc:2", "2023-01-12", "ANUNCIO sobre las bases de una plaza de arquitecto", otro)]
+    ps = {p["id"]: p for p in construir(boe, date(2026, 10, 29), autonomicos)}
+    assert [o["id"] for o in ps["boe:B1"]["otras_publicaciones"]] == ["dogc:1"]
+    assert "dogc:2" in ps and not ps["boe:A1"]["otras_publicaciones"] and not ps["boe:A2"]["otras_publicaciones"]
