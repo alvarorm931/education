@@ -129,7 +129,7 @@ def indexar_indicadores(carpeta: Path | None) -> dict[tuple[str, str], dict]:
                 if nombre == "eficiencia" and k == "exito":
                     continue  # el éxito de egresados no se mezcla con el de matriculados
                 u = x.get("Universidad") or x.get("Universidades") or ""  # el nombre cambia según la tabla
-                cu = "todas" if u == "Todas las universidades" else clave_universidad(u)
+                cu = "todas" if u in ("Todas las universidades", "Total") else clave_universidad(u)  # según la tabla
                 ambito = x.get("Ámbito de estudio")
                 actual = salida[(cu, ambito)].get(k)
                 if actual is None or (x["Periodo"], x["Indicador"]) > (actual["curso"], actual["indicador"]):
