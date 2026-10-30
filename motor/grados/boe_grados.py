@@ -658,6 +658,12 @@ def _alternativas(filas: list[dict], dist: dict | None = None):
     por_tabla: dict = {}
     for x in filas:
         por_tabla.setdefault(x["tabla"], []).append(x)
+    # planes por módulos sin columna de carácter: lo que queda sin tipo, fuera de las tablas de optativas, como
+    # obligatorio (solo vale si entonces cuadra con la tabla de créditos)
+    optativas = {n for n, xs in por_tabla.items() if any(x["tipo"] == "optativa" for x in xs)}
+    if any(not x["tipo"] for x in filas):
+        yield [{**x, "tipo": "obligatoria", "tipo_por_resto": True}
+               if not x["tipo"] and x["tabla"] not in optativas else x for x in filas]
     if dist and len(por_tabla) > 1:
         # un tipo repartido en varias tablas cuando una sola ya suma lo de la tabla de créditos (la lista de
         # formación básica completa y, en el plan por cursos, algunas básicas con otro nombre): vale esa tabla
