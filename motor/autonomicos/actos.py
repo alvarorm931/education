@@ -19,7 +19,8 @@ import sys
 from collections import Counter, defaultdict
 from pathlib import Path
 
-from motor.autonomicos.comun import clasificar, escribir_jsonl, leer_jsonl
+from motor.autonomicos.comun import clasificar, convocante_de_organismo, escribir_jsonl, leer_jsonl
+from motor.boe.clasificar import normalizar
 from motor.boe.extraer import aplicar_plazas
 from motor.extraccion.citas import citas
 from motor.extraccion.plazo import VERSION as VERSION_PLAZO, extraer_plazo
@@ -130,6 +131,20 @@ def citas_guardadas(raiz: Path, fuente: str, x: dict) -> list[dict] | None:
     return None
 
 
+def convocante_local(x: dict) -> dict | None:
+    """Convocante de lo local cuando el conector no lo ha guardado (BOCM: «Griñón. Personal. Convocatoria…», con el
+    municipio en el organismo o al principio del título y «AYUNTAMIENTOS» en la sección)."""
+    if x.get("ambito") != "local":
+        return None
+    nombre = x.get("organismo") or (x.get("titulo") or "").split(". ")[0]
+    if not nombre or len(nombre) > 60 or len(nombre.split()) > 7:
+        return None
+    sec = normalizar(" ".join(str(x.get(k) or "") for k in ("seccion", "subseccion", "apartado")))
+    if "ayuntamiento" in sec or "concello" in sec or "ajuntament" in sec:
+        return convocante_de_organismo(f"AYUNTAMIENTO DE {nombre}")
+    return convocante_de_organismo(nombre)
+
+
 def construir_acto(fuente: str, x: dict, texto: str | None, recuento: int | None = None) -> dict:
     siglas, nombres = FUENTES[fuente]
     acto = {
@@ -143,7 +158,7 @@ def construir_acto(fuente: str, x: dict, texto: str | None, recuento: int | None
         "organismo": x.get("organismo"),
         "seccion": " / ".join(p for p in (x.get("seccion"), x.get("subseccion") or x.get("apartado")) if p) or None,
         "ambito": x.get("ambito"),
-        "convocante": x.get("convocante"),
+        "convocante": x.get("convocante") or convocante_local(x),
         # Con las reglas vigentes (motor/boe/clasificar.py), no con las del día de la captura: así una mejora de
         # las reglas se aplica a todo el histórico sin volver a seleccionar
         "tipo_acto": clasificar(x.get("titulo") or "")["tipo_acto"] if x.get("titulo") else x.get("tipo_acto"),

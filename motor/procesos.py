@@ -181,9 +181,53 @@ RE_NO_ALFANUM = re.compile(r"[^a-z0-9ñ]+")
 RE_PREFIJO_CITA = re.compile(r"^(?:en\s+(?:el|la)\s+)?[«\"“]?", re.IGNORECASE)
 
 
+# Para las formas de citar que no están en BOLETIN_A_FUENTE («Boletín Oficial de Málaga», «Boletín Oficial de la
+# Provincial de Granada», «Boletín Oficial de Provincia de Cuenca»): la provincia o comunidad que nombran. Los
+# boletines sin conector llevan su sigla propia para que el control de cobertura los cuente aparte.
+PROVINCIA_A_FUENTE = {
+    "barcelona": "BOPB", "alicante": "BOP-ALICANTE", "alacant": "BOP-ALICANTE", "valencia": "BOP-VALENCIA",
+    "tarragona": "BOPT", "ciudad real": "BOP-CIUDADREAL", "granada": "BOP-GRANADA", "sevilla": "BOP-SEVILLA",
+    "huesca": "BOP-HUESCA", "santa cruz de tenerife": "BOP-TENERIFE", "tenerife": "BOP-TENERIFE",
+    "cordoba": "BOP-CORDOBA", "a coruna": "BOP-CORUNA", "la coruna": "BOP-CORUNA", "coruna": "BOP-CORUNA",
+    "pontevedra": "BOP-PONTEVEDRA", "avila": "BOP-AVILA", "badajoz": "BOP-BADAJOZ", "zamora": "BOP-ZAMORA",
+    "toledo": "BOP-TOLEDO", "burgos": "BOP-BURGOS", "alava": "BOTHA", "araba": "BOTHA", "salamanca": "BOP-SALAMANCA",
+    "albacete": "BOP-ALBACETE", "jaen": "BOP-JAEN", "zaragoza": "BOP-ZARAGOZA", "gipuzkoa": "BOG", "guipuzcoa": "BOG",
+    "bizkaia": "BOB", "vizcaya": "BOB", "lugo": "BOP-LUGO", "huelva": "BOP-HUELVA", "las palmas": "BOP-LASPALMAS",
+    "las palmas de gran canaria": "BOP-LASPALMAS", "valladolid": "BOP-VALLADOLID", "caceres": "BOP-CACERES",
+    "guadalajara": "BOP-GUADALAJARA", "girona": "BOP-GIRONA", "gerona": "BOP-GIRONA", "ourense": "BOP-OURENSE",
+    "orense": "BOP-OURENSE", "lleida": "BOP-LLEIDA", "lerida": "BOP-LLEIDA", "palencia": "BOP-PALENCIA",
+    "soria": "BOP-SORIA", "teruel": "BOP-TERUEL", "castellon": "BOP-CASTELLON", "castello": "BOP-CASTELLON",
+    "leon": "BOP-LEON", "madrid": "BOCM", "asturias": "BOPA", "cantabria": "BOC-CANT", "murcia": "BORM",
+    "navarra": "BON", "la rioja": "BOR", "melilla": "BOME", "ceuta": "BOCCE",
+    "malaga": "BOP-MALAGA", "almeria": "BOP-ALMERIA", "cadiz": "BOP-CADIZ", "cuenca": "BOP-CUENCA",
+    "segovia": "BOP-SEGOVIA",
+}
+RE_PROVINCIA_CITA = re.compile(r"^(?:boletin(?:es)? (?:oficial(?:es)? )?|butlleti oficial |diario oficial )"
+                               r"(?:de\s+|del\s+|de la\s+|la\s+)*(?:(?:provincial|provincia|diputacion provincial|"
+                               r"territorio historico|comunidad|ciudad autonoma|principado|region)\s*(?:\(bop\)\s*)?"
+                               r"(?:de\s+|del\s+|de la\s+|d'\s*)*)?(?P<p>[a-z ]+?)\s*$")
+OTRAS_CITAS = (("comunidad de madrid", "BOCM"), ("castilla y leon", "BOCYL"), ("illes balears", "BOIB"),
+               ("islas baleares", "BOIB"), ("generalitat valenciana", "DOGV"), ("generalidad valenciana", "DOGV"),
+               ("comunidad valenciana", "DOGV"), ("comunitat valenciana", "DOGV"), ("generalitat de catalunya", "DOGC"),
+               ("generalidad de cataluna", "DOGC"), ("de cataluna", "DOGC"), ("principado de asturias", "BOPA"),
+               ("canarias", "BOC"), ("ayuntamiento de madrid", "BOAM"), ("diario municipal", "DIARIO-MUNICIPAL"),
+               ("gaceta municipal", "DIARIO-MUNICIPAL"))
+
+
 def fuente_de_boletin(nombre: str | None) -> str | None:
-    """«Boletín Oficial de la Provincia de Barcelona» -> «BOPB» (también con restos de la frase: «En el «...»)."""
-    return BOLETIN_A_FUENTE.get(normalizar(RE_PREFIJO_CITA.sub("", (nombre or "").strip()).strip(" «»\"”")))
+    """«Boletín Oficial de la Provincia de Barcelona» -> «BOPB» (también con restos de la frase: «En el «...»), y
+    las formas abreviadas o con erratas por la provincia o comunidad que nombran."""
+    n = normalizar(RE_PREFIJO_CITA.sub("", (nombre or "").strip()).strip(" «»\"”"))
+    if (f := BOLETIN_A_FUENTE.get(n)):
+        return f
+    n = re.sub(r"\b(de|del)\s+(?=de\b|del\b|la\b|oficial\b|boletin\b)", "", n)
+    n = re.sub(r"\s+", " ", re.sub(r"\bboletin oficial (?:de )?boletin oficial\b", "boletin oficial", n)).strip()
+    n = re.sub(r"\boficial (?:de )?oficial\b", "oficial", n)
+    for clave, fuente in OTRAS_CITAS:
+        if clave in n:
+            return fuente
+    m = RE_PROVINCIA_CITA.match(n)
+    return PROVINCIA_A_FUENTE.get(m.group("p").strip()) if m else None
 
 
 def _leer(carpeta: Path) -> list[dict]:
