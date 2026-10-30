@@ -22,6 +22,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import re
 import time
 from datetime import date
 from pathlib import Path
@@ -36,7 +37,41 @@ def del_dia(clave: str, dia: int) -> bool:
 
 
 def manifiesto(raiz: Path) -> dict:
-    return json.loads((raiz / ESTADO / "manifiesto.json").read_text(encoding="utf-8"))
+    m = json.loads((raiz / ESTADO / "manifiesto.json").read_text(encoding="utf-8"))
+    c = raiz / "carpetas.json"
+    if c.exists():  # las carpetas que el flujo encontró en la rama (carpetas_en_arbol)
+        m.update(json.loads(c.read_text(encoding="utf-8")))
+    return m
+
+
+TIPOS = {  # clave del manifiesto → cómo se reconoce su carpeta en la rama
+    "extracciones": re.compile(r"^([^/]+)/datos/estudios/extraccion/"),
+    "ruct": re.compile(r"^([^/]+)/datos/estudios/masters/(?:ruct|ruct_memoria)/\d{7}\.json$"),
+    "qedu": re.compile(r"^([^/]+)/datos/estudios/masters/qedu/"),
+    "boe": re.compile(r"^([^/]+)/datos/estudios/masters/boe_planes_masters\.jsonl$"),
+    "guias": re.compile(r"^([^/]+)/datos/estudios/masters/guias/.+/guias\.jsonl$"),
+}
+SUBRUTAS = {"extracciones": ["datos/estudios/extraccion"], "ruct": ["datos/estudios/masters/ruct", "datos/estudios/masters/ruct_memoria"],
+            "qedu": ["datos/estudios/masters/qedu"], "boe": ["datos/estudios/masters/boe_planes_masters.jsonl"],
+            "guias": ["datos/estudios/masters/guias"]}
+
+
+def carpetas_en_arbol(rutas: list[str], desde: str) -> dict[str, list[str]]:
+    """Las carpetas de ejecución de la rama sondas con cada tipo de resultado, desde un sello."""
+    out: dict[str, set] = {k: set() for k in TIPOS}
+    for r in rutas:
+        for k, patron in TIPOS.items():
+            m = patron.match(r)
+            if m and m.group(1) >= desde and m.group(1)[:1].isdigit():
+                out[k].add(m.group(1))
+    return {k: sorted(v) for k, v in out.items()}
+
+
+def rutas_a_traer(m: dict, carpetas: dict[str, list[str]]) -> list[str]:
+    rutas = [ESTADO] + [m[k] for k in ("catalogo", "altas", "clasificacion", "censo", "tarifas") if m.get(k)]
+    for k, cs in carpetas.items():
+        rutas += [f"{c}/{s}" for c in cs for s in SUBRUTAS[k]]
+    return list(dict.fromkeys(rutas))
 
 
 def _rutas(raiz: Path, lista: list[str]) -> list[Path]:
@@ -129,14 +164,11 @@ def ejecutar(raiz: Path, salida: Path, dia: int, sello: str, max_minutos: float 
     qedu_dirs = _rutas(raiz, m.get("qedu", [])) + ([nuevo] if (nuevo / "datos" / "estudios" / "masters" / "qedu").exists() else [])
     res["conjunto"] = {k: v for k, v in conjunto_masters.ejecutar(
         raiz / m["catalogo"], salida / ESTADO / "conjunto", opcional("altas"), ruct_dirs, qedu_dirs, fichas,
-        opcional("conjunto"), boe=_rutas(raiz, m.get("boe", []))).items() if not k.startswith("cobertura")}
+        opcional("conjunto"), boe=_rutas(raiz, m.get("boe", [])), guias=_rutas(raiz, m.get("guias", []))).items()
+        if not k.startswith("cobertura")}
 
     # 5. manifiesto nuevo: lo de hoy se añade a sus listas
-    m2 = dict(m)
-    for clave, subs in (("extracciones", ("extraccion",)), ("ruct", ("masters/ruct", "masters/ruct_memoria")),
-                        ("qedu", ("masters/qedu",))):
-        if any((nuevo / "datos" / "estudios" / sub).exists() for sub in subs):
-            m2[clave] = list(m.get(clave, [])) + [sello]
+    m2 = {k: v for k, v in m.items() if k not in TIPOS}  # las carpetas se vuelven a buscar en la rama cada día
     m2["conjunto"] = f"{ESTADO}/conjunto"
     m2["actualizado"] = sello
     (salida / ESTADO).mkdir(parents=True, exist_ok=True)
@@ -147,6 +179,22 @@ def ejecutar(raiz: Path, salida: Path, dia: int, sello: str, max_minutos: float 
 
 
 def main() -> None:
+    import sys
+
+    if len(sys.argv) > 1 and sys.argv[1] == "carpetas":
+        # para el flujo: qué traer de la rama (una ruta por línea) y la lista de carpetas por tipo
+        q = argparse.ArgumentParser()
+        q.add_argument("orden")
+        q.add_argument("--manifiesto", required=True)
+        q.add_argument("--arbol", required=True)
+        q.add_argument("--salida", required=True)
+        a = q.parse_args()
+        m = json.loads(Path(a.manifiesto).read_text(encoding="utf-8"))
+        cs = carpetas_en_arbol(Path(a.arbol).read_text(encoding="utf-8").split("\n"), m.get("desde", ""))
+        Path(a.salida).parent.mkdir(parents=True, exist_ok=True)
+        Path(a.salida).write_text(json.dumps(cs, ensure_ascii=False, indent=1), encoding="utf-8")
+        print("\n".join(rutas_a_traer(m, cs)))
+        return
     p = argparse.ArgumentParser()
     p.add_argument("--raiz", required=True, help="carpeta con lo traído de sondas (con masters-estado/manifiesto.json)")
     p.add_argument("--dia", type=int, required=True)

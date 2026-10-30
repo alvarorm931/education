@@ -43,17 +43,11 @@ jobs:
           fi
           echo "hay=si" >> "$GITHUB_OUTPUT"
           mkdir -p entrada
-          python - <<'EOF' > rutas.txt
-          import json
-          m = json.load(open("manifiesto.json"))
-          rutas = ["masters-estado"]
-          rutas += [m[k] for k in ("catalogo", "altas", "clasificacion", "censo", "tarifas") if m.get(k)]
-          rutas += [f"{x}/datos/estudios/extraccion" for x in m.get("extracciones", [])]
-          rutas += [f"{x}/datos/estudios/masters/{c}" for x in m.get("ruct", []) for c in ("ruct", "ruct_memoria")]
-          rutas += [f"{x}/datos/estudios/masters/qedu" for x in m.get("qedu", [])]
-          rutas += [f"{x}/datos/estudios/masters/boe_planes_masters.jsonl" for x in m.get("boe", [])]
-          print("\n".join(dict.fromkeys(rutas)))
-          EOF
+          # Las carpetas de resultados se buscan por su forma en la rama (también las que suben otras ejecuciones
+          # largas, como la lectura del RUCT), desde el sello «desde» del manifiesto
+          git ls-tree -r --name-only FETCH_HEAD > arbol.txt
+          python -m motor.estudios.diario_masters carpetas --manifiesto manifiesto.json --arbol arbol.txt \
+            --salida entrada/carpetas.json > rutas.txt
           while read -r r; do git archive FETCH_HEAD "$r" 2>/dev/null | tar -x -C entrada 2>/dev/null || true; done < rutas.txt
           du -sh entrada
       - name: Pasada del día

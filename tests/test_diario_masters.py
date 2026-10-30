@@ -49,4 +49,21 @@ def test_pasada_del_dia(tmp_path, monkeypatch):
     assert res["qedu_error"].startswith("ConnectionError") and "ruct" not in res  # el RUCT diario aún no
     assert any(x.endswith("SELLO") for x in llamadas["fichas"])
     m = json.loads((tmp_path / "out" / "masters-estado" / "manifiesto.json").read_text())
-    assert m["extracciones"] == ["20261030T0000", "SELLO"] and m["actualizado"] == "SELLO"
+    assert "extracciones" not in m and m["actualizado"] == "SELLO" and m["catalogo"] == "cat.json"
+
+
+def test_carpetas_por_su_forma_en_la_rama():
+    arbol = ["20261030T103924/datos/estudios/extraccion/retomado_x/hechos.jsonl",
+             "20261030T000449/datos/estudios/extraccion/lote.json",
+             "20261030T111924-t0/datos/estudios/masters/ruct/4310193.json",
+             "20261030T111924-t0/datos/estudios/masters/ruct/resumen-ficha-1.json",
+             "20261031T010000-t3/datos/estudios/masters/ruct_memoria/3500004.json",
+             "20261030T112546-t0/datos/estudios/masters/qedu/qedu_detalles_master_0_950.jsonl",
+             "20261030T150000/datos/estudios/masters/boe_planes_masters.jsonl",
+             "20261030T160000-t0/datos/estudios/masters/guias/tramo_0/guias.jsonl",
+             "masters-estado/conjunto/resumen.json"]
+    cs = diario_masters.carpetas_en_arbol(arbol, "20261030T1000")
+    assert cs == {"extracciones": ["20261030T103924"], "ruct": ["20261030T111924-t0", "20261031T010000-t3"],
+                  "qedu": ["20261030T112546-t0"], "boe": ["20261030T150000"], "guias": ["20261030T160000-t0"]}
+    r = diario_masters.rutas_a_traer({"catalogo": "masters-estado/cat.json"}, cs)
+    assert "20261031T010000-t3/datos/estudios/masters/ruct_memoria" in r and r[0] == "masters-estado"
