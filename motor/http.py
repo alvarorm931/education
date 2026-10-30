@@ -179,6 +179,7 @@ BOLETINES_OFICIALES = {
     "https://bop.diputoledo.es/": "BOP de Toledo",
     "https://miprincipado.asturias.es/bopa/": "BOPA (textos)",
     "https://www.boplaspalmas.com/": "BOP de Las Palmas",
+    "https://www.boplaspalmas.net/": "BOP de Las Palmas (redirige de .com a .net)",
     "https://ebop.diputaciolleida.cat/": "BOP de Lleida",
     "https://www.dip-badajoz.es/bop/": "BOP de Badajoz",
     "https://sede.diphuelva.es/": "BOP de Huelva (robots.txt no responde)",
