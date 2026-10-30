@@ -1,55 +1,57 @@
 {
- "generado": "2026-10-30T17:08:01+00:00",
+ "generado": "2026-10-30T23:12:17+00:00",
  "oficiales": 4734,
- "oficiales_con_ruct_ficha": 686,
+ "oficiales_con_ruct_ficha": 1201,
  "oficiales_con_ruct_memoria": 27,
  "oficiales_en_qedu": 4356,
- "oficiales_con_plan_boe": 3389,
- "oficiales_con_guias": 172,
- "oficiales_con_web": 2893,
- "oficiales_indexables": 2605,
+ "oficiales_con_plan_boe": 3439,
+ "oficiales_con_guias": 178,
+ "oficiales_con_web": 3142,
+ "oficiales_con_precio_de_tabla": 114,
+ "oficiales_indexables": 2824,
  "oficiales_faltan": {
-  "precio": 1768,
-  "asignaturas": 1033
+  "precio": 1548,
+  "asignaturas": 948
  },
  "oficiales_por_titularidad": {
   "Pública": {
    "total": 3113,
-   "indexables": 2327
+   "indexables": 2482
   },
   "Privada": {
    "total": 1606,
-   "indexables": 278
+   "indexables": 342
   }
  },
- "programas_no_oficiales": 20527,
- "programas_master": 20527,
- "programas_indexables": 9023,
+ "programas_no_oficiales": 20211,
+ "programas_master": 20211,
+ "programas_indexables": 8959,
  "paginas_web_antiguas": {
-  "oficiales": 43,
-  "no_oficiales": 388
+  "oficiales": 49,
+  "no_oficiales": 386
  },
  "fechas": {
-  "sin_cambios": 286994,
-  "cambiados": 11169,
-  "retirados": 13841,
-  "nuevos": 27446
+  "sin_cambios": 319781,
+  "retirados": 405,
+  "cambiados": 1507,
+  "nuevos": 5542
  },
  "descartes": {
-  "web_expide_otra_universidad": 112,
-  "guias_pesos_incoherentes": 274,
+  "web_expide_otra_universidad": 120,
+  "precio_total_web_incoherente": 29,
+  "precio_tabla_ambiguo": 34,
+  "guias_pesos_incoherentes": 279,
   "asignaturas_web_insuficientes": 798,
-  "web_probable_fuera_de_su_universidad": 6,
+  "web_probable_fuera_de_su_universidad": 11,
   "web_en_dominio_de_otra_universidad": 12,
-  "precio_total_web_incoherente": 3,
-  "no_oficial_parece_master_oficial": 3713,
-  "no_oficial_otro_pais": 51,
+  "no_oficial_parece_master_oficial": 3393,
+  "no_oficial_otro_pais": 546,
   "no_oficial_no_es_pagina_de_programa": 2,
-  "no_oficial_unidos_por_dominio_y_nombre": 629,
+  "no_oficial_unidos_por_dominio_y_nombre": 600,
   "precio_credito_imposible": 2
  },
  "privacidad": {
-  "parrafos_retirados": 37,
+  "parrafos_retirados": 169,
   "correos_retirados": 11
  },
  "cobertura_oficiales": {
@@ -64,145 +66,147 @@
    "boe": 387
   },
   "creditos_ects": {
-   "total": 4654,
-   "qedu": 3877,
-   "ruct": 676,
-   "web": 101
+   "total": 4660,
+   "qedu": 3376,
+   "ruct": 1191,
+   "web": 93
   },
   "modalidad": {
-   "total": 4508,
+   "total": 4509,
    "catalogo": 4320,
    "ruct": 27,
    "qedu": 71,
-   "web": 90
+   "web": 91
   },
   "web_oficial": {
    "total": 4356,
    "qedu": 4356
   },
   "plazas": {
-   "total": 4184,
+   "total": 4189,
    "qedu": 4096,
-   "web": 88
+   "web": 93
   },
   "asignaturas": {
-   "total": 3701,
-   "web": 403,
-   "boe": 3273,
+   "total": 3786,
+   "web": 455,
+   "boe": 3306,
    "ruct": 25
   },
   "precio_total": {
-   "total": 2901,
-   "calculado": 2292,
-   "web": 604,
-   "tarifa": 5
+   "total": 3112,
+   "calculado": 2382,
+   "web": 648,
+   "tarifa": 82
   },
   "nombre": {
-   "total": 2763,
-   "web": 2763
+   "total": 2999,
+   "web": 2999
   },
   "precio_credito": {
-   "total": 2733,
+   "total": 2916,
    "qedu": 2612,
-   "tarifa": 31,
-   "web": 90
+   "norma": 179,
+   "tarifa": 37,
+   "web": 88
   },
   "tfm": {
-   "total": 2272,
-   "web": 1597,
-   "ruct": 675
+   "total": 2775,
+   "web": 1585,
+   "ruct": 1190
   },
   "practicas": {
-   "total": 2135,
-   "web": 1469,
-   "ruct": 666
+   "total": 2658,
+   "web": 1478,
+   "ruct": 1180
   },
   "requisitos_acceso": {
-   "total": 1958,
-   "web": 1936,
+   "total": 2142,
+   "web": 2120,
    "ruct": 22
   },
   "salidas": {
-   "total": 1939,
-   "web": 1939
-  },
-  "metodologia": {
-   "total": 1787,
-   "web": 1763,
-   "ruct": 24
+   "total": 2109,
+   "web": 2109
   },
   "centro_que_imparte": {
-   "total": 1756,
-   "web": 1756
+   "total": 1943,
+   "web": 1943
   },
-  "duracion": {
-   "total": 1715,
-   "web": 1715
+  "metodologia": {
+   "total": 1911,
+   "web": 1887,
+   "ruct": 24
   },
   "idioma": {
-   "total": 1707,
-   "web": 1680,
+   "total": 1895,
+   "web": 1868,
    "ruct": 27
   },
+  "duracion": {
+   "total": 1869,
+   "web": 1869
+  },
   "sedes": {
-   "total": 1394,
-   "web": 1394
+   "total": 1548,
+   "web": 1548
   },
   "proceso_admision": {
-   "total": 1392,
-   "web": 1392
+   "total": 1531,
+   "web": 1531
+  },
+  "verificacion_y_acreditacion": {
+   "total": 1201,
+   "ruct": 1201
   },
   "fecha_inicio": {
-   "total": 1069,
-   "web": 1069
+   "total": 1193,
+   "web": 1193
+  },
+  "creditos_por_tipo": {
+   "total": 1191,
+   "ruct": 1191
   },
   "evaluacion": {
-   "total": 983,
-   "web": 787,
+   "total": 1023,
+   "web": 821,
    "ruct": 27,
-   "guia": 169
+   "guia": 175
+  },
+  "habilita_profesion": {
+   "total": 1008,
+   "web": 602,
+   "ruct": 27,
+   "boe": 379
+  },
+  "descuentos_becas": {
+   "total": 961,
+   "web": 961
   },
   "insercion_laboral": {
    "total": 923,
    "qedu": 923
   },
-  "descuentos_becas": {
-   "total": 878,
-   "web": 878
-  },
-  "habilita_profesion": {
-   "total": 757,
-   "web": 730,
-   "ruct": 27
+  "plan_en_boe": {
+   "total": 869,
+   "boe": 869
   },
   "plazo_admision": {
-   "total": 736,
-   "web": 736
-  },
-  "verificacion_y_acreditacion": {
-   "total": 686,
-   "ruct": 686
-  },
-  "creditos_por_tipo": {
-   "total": 676,
-   "ruct": 676
+   "total": 835,
+   "web": 835
   },
   "horario": {
-   "total": 582,
-   "web": 582
-  },
-  "plan_en_boe": {
-   "total": 433,
-   "boe": 433
+   "total": 651,
+   "web": 651
   },
   "reserva_matricula": {
-   "total": 207,
+   "total": 224,
    "web": 203,
-   "tarifa": 4
+   "tarifa": 21
   },
   "evaluacion_por_asignatura": {
-   "total": 170,
-   "guia": 170
+   "total": 176,
+   "guia": 176
   },
   "plan": {
    "total": 27,
@@ -227,110 +231,110 @@
  },
  "cobertura_no_oficiales": {
   "nombre": {
-   "total": 20375,
-   "web": 20375
+   "total": 20066,
+   "web": 20066
   },
   "tipo_titulo": {
-   "total": 18732,
-   "web": 18732
+   "total": 18500,
+   "web": 18500
   },
   "metodologia": {
-   "total": 18425,
-   "web": 18425
+   "total": 18146,
+   "web": 18146
   },
   "modalidad": {
-   "total": 17531,
-   "web": 17531
+   "total": 17412,
+   "web": 17412
   },
   "duracion": {
-   "total": 16931,
-   "web": 16931
+   "total": 16655,
+   "web": 16655
   },
   "salidas": {
-   "total": 16004,
-   "web": 16004
+   "total": 15757,
+   "web": 15757
   },
   "precio_total": {
-   "total": 14079,
-   "web": 14070,
-   "tarifa": 9
+   "total": 14013,
+   "web": 14003,
+   "tarifa": 10
   },
   "requisitos_acceso": {
-   "total": 13361,
-   "web": 13361
+   "total": 13119,
+   "web": 13119
   },
   "asignaturas": {
-   "total": 12927,
-   "web": 12927
+   "total": 12767,
+   "web": 12767
   },
   "universidad_que_expide": {
-   "total": 12048,
-   "web": 12048
+   "total": 11770,
+   "web": 11770
   },
   "centro_que_imparte": {
-   "total": 10762,
-   "web": 10762
+   "total": 10638,
+   "web": 10638
   },
   "evaluacion": {
-   "total": 10589,
-   "web": 10589
+   "total": 10433,
+   "web": 10433
   },
   "descuentos_becas": {
-   "total": 10273,
-   "web": 10273
+   "total": 10093,
+   "web": 10093
   },
   "creditos_ects": {
-   "total": 8858,
-   "web": 8858
+   "total": 8593,
+   "web": 8593
   },
   "fecha_inicio": {
-   "total": 8510,
-   "web": 8510
+   "total": 8335,
+   "web": 8335
   },
   "tfm": {
-   "total": 7473,
-   "web": 7473
+   "total": 7355,
+   "web": 7355
   },
   "horario": {
-   "total": 6496,
-   "web": 6496
+   "total": 6425,
+   "web": 6425
   },
   "idioma": {
-   "total": 6419,
-   "web": 6419
+   "total": 6217,
+   "web": 6217
   },
   "habilita_profesion": {
-   "total": 6162,
-   "web": 6162
-  },
-  "sedes": {
-   "total": 4729,
-   "web": 4729
+   "total": 6084,
+   "web": 6084
   },
   "proceso_admision": {
-   "total": 4669,
-   "web": 4669
+   "total": 4599,
+   "web": 4599
+  },
+  "sedes": {
+   "total": 4591,
+   "web": 4591
   },
   "practicas": {
-   "total": 4510,
-   "web": 4510
+   "total": 4431,
+   "web": 4431
   },
   "plazo_admision": {
-   "total": 4411,
-   "web": 4411
+   "total": 4359,
+   "web": 4359
   },
   "plazas": {
-   "total": 2977,
-   "web": 2977
+   "total": 2926,
+   "web": 2926
   },
   "reserva_matricula": {
-   "total": 2568,
-   "web": 2565,
+   "total": 2555,
+   "web": 2552,
    "tarifa": 3
   },
   "precio_credito": {
-   "total": 275,
-   "web": 270,
+   "total": 268,
+   "web": 263,
    "tarifa": 5
   }
  },
@@ -342,6 +346,7 @@
   "web": "Página del propio centro",
   "tarifa": "Tarifa publicada por el propio centro",
   "guia": "Guía docente publicada por la universidad",
-  "calculado": "Cálculo del portal con datos oficiales"
+  "calculado": "Cálculo del portal con los datos que se indican",
+  "norma": "Precio público fijado por la norma de la comunidad autónoma"
  }
 }
