@@ -306,11 +306,20 @@ textos largos quedan solo en el almacén privado; en `sondas` va su tamaño y su
   2026-2027) y Mondragon (patrón por grado). Dos lecturas nuevas: el total anual como reserva + matrícula + 8 a 12
   cuotas iguales (`fichas.precio_por_cuentas`, «reserva_matricula_y_cuotas»), y las listas cuyo formato se comprobó
   a mano con un único importe anual por grado (`tarifas_grado.LECTURA_CONOCIDA`; con dos importes en la fila, como
-  presencial y semipresencial, no se publica). Sin leer: la Europea (sus PDF dan 404 a GitHub: se piden desde el
-  servidor de España) y Deusto (su tabla de tasas no sale en el HTML que se descarga; las celdas sin «€» ya se
-  leen). No publican tabla de precios en su web (búsqueda del 30/10): Católica de Valencia, VIU, UOC (remite al
-  decreto), UDIMA (solo el precio a efectos de beca, que no es el de venta), CUNEF, ESIC y otras; ver
+  presencial y semipresencial, no se publica). Sin leer: la Europea (sus PDF de 2025-2026 dan 404 también desde el
+  servidor de España, así que ya no están; la tabla 2026-2027 solo aparece en copias de terceros, que no son
+  fuente), Católica de Valencia (publica su tabla de honorarios de grado 2026-2027 en PDF, pero su robots.txt prohíbe
+  esa ruta: no se pide) y Deusto (su tabla de tasas no sale en el HTML que se descarga; las celdas sin «€» ya se
+  leen). No publican tabla de precios en su web (búsqueda del 30/10): VIU, UOC (remite al decreto), UDIMA (solo el precio a efectos de beca, que no es el de venta), CUNEF, ESIC y otras; ver
   `docs/estrategia-informacion-cerrada.md` §3.4.
+
+- **Por qué no responde una dirección** (`tarifas_grado.pedir_con_motivo`, desde el 30/10): cada dirección sin
+  respuesta lleva `motivo` (robots.txt que lo prohíbe, robots.txt que no responde —entonces no se rastrea—, límite
+  de peticiones al servidor o el error de conexión). En la prueba del 30/10 (GitHub), de las 235 direcciones de
+  Common Crawl que nunca habían respondido, 3 respondieron (Centro Superior de Diseño de Moda de la UPM: una tarifa
+  de 2023-2024 sin importes unidos a un grado) y las otras 232 son de robots.txt: 62 prohibidas (ETSI Aeronáutica
+  y del Espacio de la UPM) y 170 de servidores cuyo robots.txt no contesta (UPM, Salamanca, Vigo, Barcelona,
+  Manresa). Las 2 de Católica de Valencia, también prohibidas por su robots.txt. Ninguna es un fallo nuestro. `--solo CÓDIGO` limita una ejecución a una universidad o centro.
 
 ### Lo que falta por medir
 
@@ -531,8 +540,10 @@ comprobados por asignaturas:
    165 grados sin ningún plan serían unas 19 horas y los 1.020, unas 120; lo decide Álvaro. El lector ya está en las fichas
    (`fichas.plan_de_memoria`: el plan de la memoria entra si el del BOE no cuadra y él sí cuadra con los créditos
    por tipo del RUCT; con una página sin leer no cuenta como comprobado).
-3. Privadas sin precio (1.055): la Europea desde el servidor de España y Deusto (tabla que no sale
-   en el HTML); lo que no esté publicado, peticiones a cada universidad cuando el portal tenga dirección pública
+3. Privadas sin precio (1.055): la Europea retiró sus PDF de 2025-2026 (404 también desde el
+   servidor de España, 30/10) y la tabla 2026-2027 solo aparece en copias de terceros, que no son fuente; Católica de
+   Valencia publica su tabla 2026-2027 en una ruta que su robots.txt prohíbe (no se pide); Deusto, tabla que no sale
+   en el HTML; lo que no esté publicado, peticiones a cada universidad cuando el portal tenga dirección pública
    (`docs/estrategia-informacion-cerrada.md` §3.4). El índice de Common Crawl de los dominios de centros dio 710
    direcciones más y solo 3 grados con importe: esa vía está agotada.
 4. Dobles de públicas sin precio (149): resoluciones de cada programa en Salamanca; UPV y UPV/EHU, de su web.
