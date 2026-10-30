@@ -1,0 +1,84 @@
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="stylesheet" type="text/css" href="css/estiloGeneral.css?v=4" media="all" />
+		<link rel="stylesheet" type="text/css" href="css/estiloCoruna.css?v=5" media="all" />
+		<link rel="shortcut icon" href="./img/favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="/bopportal/toolLibraries/font-awesome-5.13.0/css/all.min.css"/>
+
+		<script type="text/javascript" src="javascript/comun.js"></script>
+	</head>
+	<body>
+		<!-- Inicio menu superior -->
+		<div id = "menuSuperior">
+			<div class="bandaAceptacion" role="complementary" style="display:none;">
+				<div class="texto-aceptar">	
+					<p>Este portal utiliza cookies propias de tipo t&eacute;cnico e de terceiros para mellorar, mediante a an&aacute;lise da navegaci&oacute;n, o servizo ofrecido. As cookies non se utilizan para recoller datos persoais.</p>
+				</div>
+				<div class="btn-aceptar">	
+					<a aria-label='De acordo' class="bAcept" href="#">De acordo</a>
+				</div>
+			</div>
+			<div id="bannerIzq_Dcha">
+				<img class="tamanoLogoDiputacionPortal" src="img/BOP2020-cabecera_logo_diputacion.png"/>
+				<a id="enlaceDiputacionCabeceraPortal" href="https://www.dacoruna.gal" title="Abre a Web www.dacoruna.gal nunha nova p&aacute;xina">
+					www.dacoruna.gal</a>
+				<a id="idiomaCabeceraCastellano" href="/bopportal/inicio?lang=es_ES" title="Cambia o idioma da p&aacute;gina a castelán">
+							Castelán</a>
+						<div id="idiomaCabeceraGallego">
+							<a href="#" title="Cambia o idioma da p&aacute;xina a galego">
+								<b>Galego</b>
+							</a>
+							<p id="separador">&nbsp;&nbsp;|&nbsp;&nbsp;</p>
+						</div>
+					<p class="textoBOPIzqDrchPortal">Venres, 30 de outubro de 2026</p>
+			</div>
+			<div id="bannerDcha_Dcha">
+				<img id="imgDerecha" src="img/BOP2020_cabecera_escudo_inclinado.png"/>
+				<p class="bopPortal">BOP</p>
+				<p class="textoBOPDrchIzqPortal">BOLETÍN OFICIAL DA PROVINCIA DA CORUÑA</p>
+			</div>
+		</div>
+		<!-- Fin menu superior -->
+		<div id="paginaError">
+			<h1>
+				Produciuse un erro ao realizar a acci&oacute;n.</h1>
+			<br>
+			<h2 id="textoPaginaError">
+				Por favor, ténteo de novo e se o erro continúa contacte co <a href="mailto:bop.soporte@dacoruna.gal">Soporte do BOP</a>.</h2>
+		</div>
+
+		<!-- Inicio pie -->
+		<script type="text/javascript">
+	<!-- Matomo -->
+		var _paq = window._paq = window._paq || [];
+	  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+	  _paq.push(['trackPageView']);
+	  _paq.push(['enableLinkTracking']);
+	  (function() {
+		    var u= 'https://analitica.dacoruna.gal/';
+		    _paq.push(['setTrackerUrl', u+'matomo.php']);
+		    _paq.push(['setSiteId', '4']);
+		    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+	    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+	  })();
+	<!-- End Matomo Code -->
+</script>
+
+<div class="footer">
+	<div id="textoCabezaPie">
+			2020 &copy; Deputaci&oacute;n Provincial da Coru&ntilde;a</div>
+	<div id="divMenuPie" class="d-none d-sm-block d-sm-none d-md-block">
+		<a id="textoMenuPie" href="/bopportal/accesibilidad" title="Accesibilidade">Accesibilidade</a> 
+		<a id="textoMenuPie" href="/bopportal/avisoLegal" title="Aviso legal">Aviso legal</a> 
+		<a id="textoMenuPie" href="/bopportal/depositoLegal" title="Dep&oacute;sito legal">Dep&oacute;sito legal</a>
+	</div>
+	<div class="logoENS">
+		<a href="https://sede.dacoruna.gal/sxc/gl/sobrelasede/seguridad"><img style="width: 165px; height: 200px" src="img/ens_certificacion.png" alt="ENS certificado"></a>
+	</div>
+</div><!-- Fin pie -->
+	</body>
+</html>
