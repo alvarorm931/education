@@ -5,17 +5,29 @@ trae el sumario del último boletín: sección (h3 «Sección quinta»), entidad
 por anuncio, el asunto (a.enlaceEdicto, abreVentanaDetalleEdicto('N')). El número sale de la ruta del boletín completo
 (Boletines\\AAAA\\NNN\\bop.pdf) y la fecha, de la cabecera.
 
+Texto de cada anuncio (verificado el 30/10/2026): obtenerContenidoEdicto.do?idEdicto=N, con el texto en
+div.medium-12.panel (versión HTML; el oficial es el PDF de Edictos). De las listas de personas solo el recuento y las
+citas.
+
 Uso: python -m motor.provinciales.bopzaragoza --salida ruta/
      python -m motor.provinciales.bopzaragoza --historico --max-minutos 30 --salida ruta/
+     python -m motor.provinciales.bopzaragoza --textos --max-minutos 30 --salida ruta/
 """
 
 from __future__ import annotations
 
+import argparse
 import html
 import re
 import sys
+from pathlib import Path
 
+from motor.archivo import Archivo, solo_huella_por_defecto
+from motor.autonomicos.comun import descargar_textos, leer_jsonl
+from motor.extraccion.citas import citas
 from motor.extraccion.texto_es import fecha_texto
+from motor.limpieza import RE_DOCUMENTO, limpiar_html, texto_de
+from motor.provinciales.comun import CON_TEXTO
 from motor.provinciales.portadas import Portada, main as main_portada, seleccionar as sel_portada
 
 BASE = "https://bop.dpz.es/BOPZ/"
@@ -159,9 +171,65 @@ def historico(argv: list[str] | None = None) -> int:
     return 0
 
 
+def url_edicto(x: dict) -> str:
+    return f"{BASE}obtenerContenidoEdicto.do?idEdicto={x['numero_anuncio']}"
+
+
+def texto_edicto(contenido: bytes, x: dict | None = None) -> dict:
+    """Texto del anuncio (div.medium-12.panel). En listas, nombramientos y resultados (fuera de CON_TEXTO) solo se
+    cuentan las líneas con documento de identidad y se guardan las citas."""
+    h = contenido.decode("latin-1", errors="replace")
+    i = h.find('<div class="medium-12 panel">')
+    if i < 0:
+        raise ValueError("sin div.medium-12.panel: posible cambio de formato")
+    j = h.find('<div class="medium-12 text-center">', i)
+    cuerpo = h[i:j if j > i else None]
+    if x is not None and x.get("tipo_acto") not in CON_TEXTO:
+        lineas = [texto_de(b) for b in re.split(r"</(?:p|tr|li|div)>", cuerpo)]
+        return {"titulo": None, "texto": None, "tablas": [], "solo_recuento": True,
+                "lineas_con_documento_de_identidad": sum(1 for l in lineas if RE_DOCUMENTO.search(l)),
+                "citas": citas("\n".join(lineas))}
+    return {"titulo": None, **limpiar_html(cuerpo)}
+
+
+def _base(raiz: Path) -> Path:
+    return raiz / "datos" / "provinciales" / FUENTE
+
+
+def ruta_texto(raiz: Path, x: dict) -> Path:
+    return _base(raiz) / "textos" / x["fecha"][:4] / x["fecha"][5:7] / f"{x['id']}.json"
+
+
+def textos_pendientes(raiz: Path) -> list[dict]:
+    lista = []
+    for f in sorted((_base(raiz) / "oposiciones").glob("*/*/*.jsonl"), reverse=True):
+        lista += [x for x in leer_jsonl(f) if x.get("numero_anuncio") and not ruta_texto(raiz, x).exists()]
+    return sorted(lista, key=lambda x: (0 if x.get("tipo_acto") in CON_TEXTO else 1,
+                                        0 if x.get("alcance") in (None, "acceso") else 1))
+
+
+def textos(argv: list[str] | None = None) -> int:
+    p = argparse.ArgumentParser()
+    p.add_argument("--textos", action="store_true")
+    p.add_argument("--salida", type=Path, default=Path("."))
+    p.add_argument("--max-minutos", type=float, default=0)
+    p.add_argument("--pausa", type=float, default=1.0)
+    a = p.parse_args(argv)
+    archivo = Archivo(a.salida / "archivo", indice_por_fuente=True, solo_huella=solo_huella_por_defecto())
+    pend = textos_pendientes(a.salida)
+    hechos, errores = descargar_textos(pend, lambda x: ruta_texto(a.salida, x), url_edicto, texto_edicto, archivo,
+                                       FUENTE, a.max_minutos, a.pausa, accept="text/html", ext="html",
+                                       por_registro=True)
+    print(f"BOPZ textos: {hechos} descargados, {errores} errores, {len(pend) - hechos} pendientes")
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
-    if "--historico" in (argv if argv is not None else sys.argv[1:]):
+    args = argv if argv is not None else sys.argv[1:]
+    if "--historico" in args:
         return historico(argv)
+    if "--textos" in args:
+        return textos(args)
     return main_portada(PORTADA, argv)
 
 

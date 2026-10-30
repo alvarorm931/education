@@ -240,6 +240,9 @@ for c in $CONECTORES; do
       # Días anteriores por el calendario de la portada (formulario de portada.do), mes a mes hasta 2022
       ejecutar motor.provinciales.bopzaragoza --historico --salida "$S" --max-minutos "$M"
       "$G" "BOP Zaragoza: histórico"
+      # Texto de cada anuncio de empleo (obtenerContenidoEdicto.do); de las listas, solo recuento y citas
+      ejecutar motor.provinciales.bopzaragoza --textos --salida "$S" --max-minutos "$M"
+      "$G" "BOP Zaragoza: textos"
       ;;
     bopgipuzkoa)
       # Desde el servidor de España: a GitHub deja de responderle tras unos cientos de peticiones

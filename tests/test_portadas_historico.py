@@ -72,3 +72,23 @@ def test_albacete_por_calendario(tmp_path, monkeypatch):
     al.historico(["--historico", "--salida", str(tmp_path), "--max-minutos", "0.05"])
     dia = tmp_path / "datos" / "provinciales" / "bopalbacete" / "dias" / "2026" / "10" / "28.json"
     assert dia.exists() and '"resultado": "ok"' in dia.read_text(encoding="utf-8")
+
+
+def test_zaragoza_texto_del_edicto():
+    """Texto del anuncio en obtenerContenidoEdicto.do (div.medium-12.panel); de las listas, solo recuento y citas."""
+    from motor.provinciales import bopzaragoza as z
+    h = ('<html><body><div class="row"><p><b>Materia:</b> Empleo Público</p></div>'
+         '<div class="row"><div class="medium-12 panel"><p><strong>SECCI&Oacute;N QUINTA</strong></p>'
+         '<p>Las bases se publicaron en el Boletín Oficial de la Provincia de Zaragoza núm. 120, de 28 de mayo de '
+         '2026.</p><p>12345678A GARCÍA LÓPEZ, MARÍA</p></div></div>'
+         '<div class="row"><div class="medium-12 text-center"><a href="#">Cerrar</a></div></div></body></html>'
+         ).encode("latin-1")
+    assert z.url_edicto({"numero_anuncio": "899282"}) == \
+        "https://bop.dpz.es/BOPZ/obtenerContenidoEdicto.do?idEdicto=899282"
+    bases = z.texto_edicto(h, {"tipo_acto": "bases"})
+    assert bases["texto"].startswith("SECCIÓN QUINTA") and "Cerrar" not in bases["texto"]
+    assert "GARCÍA" not in bases["texto"]
+    lista = z.texto_edicto(h, {"tipo_acto": "admitidos"})
+    assert lista["texto"] is None and lista["lineas_con_documento_de_identidad"] == 1
+    assert lista["citas"] == [{"boletin": "Boletín Oficial de la Provincia de Zaragoza", "numero": "120",
+                               "fecha": "2026-05-28"}]
