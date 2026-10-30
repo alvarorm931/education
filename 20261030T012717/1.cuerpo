@@ -1,0 +1,5252 @@
+<!DOCTYPE html>
+<html xml:lang="es" lang="es">
+
+<head>
+        <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-V5CJEH4Z0R"></script>
+<script>
+function marketingTagAnalitica() {
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-V5CJEH4Z0R');
+}
+</script>
+        <!-- Delete cookie -->
+<script>
+function deleteCookie(cname) {
+	if (readCookie(cname) != null) {
+		document.cookie = cname + "= ;expires=Thu, 01-Jan-70 00:00:01 GMT; Path=/;domain=ciencia.gob.es";
+	}
+}
+</script>
+        <!-- Set cookie -->
+<script>
+function setCookie(cname, cvalue, exdays) {
+	var d = new Date();
+	d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+	var expires = (exdays == '') ? '' : 'expires=' + d.toUTCString() + ';';
+	document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+</script>
+        <!-- Set cookie -->
+<script>
+function setCookie(cname, cvalue, exdays) {
+	var d = new Date();
+	d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+	var expires = (exdays == '') ? '' : 'expires=' + d.toUTCString() + ';';
+	document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+</script>
+<script type="text/javascript" async src="https://www.google-analytics.com/analytics.js"></script>
+<script>
+var examinar = 'Examinar';
+var opcional = 'Opcional';
+//var urlServletAssetDownload = '/gesdamdoc-servlet/?uuid=';
+var urlServletAssetDownload = '/site-web/InfoGeneralPortal/documento/';
+var site = window.location.href;
+if(site.indexOf('aee') !== -1){
+  urlServletAssetDownload = '/site-aee/InfoGeneral/documento/';
+}
+</script>
+<title>qedu</title>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="author" content="Ministerio de Ciencia, Innovación y Universidades">
+<meta name="description" content="qedu">
+<meta name="keywords" content="qedu">
+<meta name="robots" content="index,
+                             follow"/>
+
+<link rel="icon" type="image/vnd.microsoft.icon" href="/.resources/site-web/webresources/img/favicon.ico">
+<link rel="canonical" href="https://www,ciencia.gob.es/qedu.html"/>
+<link rel="alternate" hreflang="ca" href="https://www,ciencia.gob.es/qedu.html/ca/qedu.html"/>
+<link rel="alternate" hreflang="cs" href="https://www,ciencia.gob.es/qedu.html/cs/qedu.html"/>
+<link rel="alternate" hreflang="en" href="https://www,ciencia.gob.es/qedu.html/en/qedu.html"/>
+<link rel="alternate" hreflang="eu" href="https://www,ciencia.gob.es/qedu.html/eu/qedu.html"/>
+<link rel="alternate" hreflang="gl" href="https://www,ciencia.gob.es/qedu.html/gl/qedu.html"/>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="/.resources/site-web/webresources/css/bootstrap-icons~2026-10-28-06-36-44-746~cache.css" media="all" />
+  <link rel="stylesheet" href="/.resources/site-web/webresources/css/newHeader~2026-10-28-06-36-44-925~cache.css" media="all" />
+  <link rel="stylesheet" href="/.resources/site-web/webresources/css/bootstrap.min~2026-10-28-06-36-44-820~cache.css" media="all" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,600&display=swap" media="all" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;900&display=swap" media="all" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" media="all" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@200&display=swap" media="all" />
+  <link rel="stylesheet" href="/.resources/site-web/webresources/css/leaflet~2026-10-28-06-36-44-887~cache.css" media="all" />
+  <link rel="stylesheet" href="/.resources/site-web/webresources/css/mci-organigrama~2026-10-28-06-36-44-902~cache.css" media="all" />
+  <link rel="stylesheet" href="/.resources/site-web/webresources/css/sumoselect~2026-10-28-06-36-44-943~cache.css" media="all" />
+  <link rel="stylesheet" href="/.resources/site-web/webresources/css/datatables~2026-10-28-06-36-44-858~cache.css" media="all" />
+  <link rel="stylesheet" href="/.resources/site-web/webresources/css/bootstrap-select~2026-10-28-06-36-44-778~cache.css" media="all" />
+  <link rel="stylesheet" href="/.resources/site-web/webresources/css/mci~2026-10-28-06-36-44-914~cache.css" media="all" />
+  <link rel="stylesheet" href="/.resources/site-web/webresources/css/mci-navbar~2026-10-28-06-36-44-898~cache.css" media="all" />
+  <link rel="stylesheet" href="/.resources/site-web/webresources/css/mci-print~2026-10-28-06-36-44-911~cache.css" media="print" />
+  <script src="/.resources/site-web/webresources/js/jquery-3.6.0.min~2026-10-28-06-36-44-097~cache.js" type="text/javascript"></script>
+  <script src="/.resources/site-web/webresources/js/bootstrap.min~2026-10-28-06-36-43-894~cache.js" type="text/javascript"></script>
+  <script src="/.resources/site-web/webresources/js/bootstrap-select~2026-10-28-06-36-43-823~cache.js" type="text/javascript"></script>
+  <script src="/.resources/site-web/webresources/js/aacedfa240~2026-10-28-06-36-43-808~cache.js" type="text/javascript"></script>
+  <script src="/.resources/site-web/webresources/js/popper.min~2026-10-28-06-36-44-189~cache.js" type="text/javascript"></script>
+  <script src="/.resources/site-web/webresources/js/leaflet~2026-10-28-06-36-44-161~cache.js" type="text/javascript"></script>
+  <script src="/.resources/site-web/webresources/js/urlParams/index~2026-10-28-06-36-43-803~cache.js" type="text/javascript"></script>
+  <script src="/.resources/site-web/webresources/js/promise/polyfill.min~2026-10-28-06-36-44-422~cache.js" type="text/javascript"></script>
+  <script src="/.resources/site-web/webresources/js/sumoselect~2026-10-28-06-36-44-216~cache.js" type="text/javascript"></script>
+  <script src="/.resources/site-web/webresources/js/table2csv~2026-10-28-06-36-44-220~cache.js" type="text/javascript"></script>
+  <script src="/.resources/site-web/webresources/js/datatables~2026-10-28-06-36-43-945~cache.js" type="text/javascript"></script>
+  <script src="/.resources/site-web/webresources/js/datatables/dataTables~2026-10-28-06-36-44-280~cache.js" type="text/javascript"></script>
+  <script src="/.resources/site-web/webresources/js/datatables/dataTables.buttons~2026-10-28-06-36-44-259~cache.js" type="text/javascript"></script>
+  <script src="/.resources/site-web/webresources/js/datatables/buttons.dataTables~2026-10-28-06-36-44-238~cache.js" type="text/javascript"></script>
+  <script src="/.resources/site-web/webresources/js/datatables/jszip~2026-10-28-06-36-44-300~cache.js" type="text/javascript"></script>
+  <script src="/.resources/site-web/webresources/js/datatables/pdfmake.min~2026-10-28-06-36-44-404~cache.js" type="text/javascript"></script>
+  <script src="/.resources/site-web/webresources/js/datatables/vfs_fonts~2026-10-28-06-36-44-418~cache.js" type="text/javascript"></script>
+  <script src="/.resources/site-web/webresources/js/datatables/buttons.html5.min~2026-10-28-06-36-44-245~cache.js" type="text/javascript"></script>
+  <script src="/.resources/site-web/webresources/js/datatables/buttons.print.min~2026-10-28-06-36-44-248~cache.js" type="text/javascript"></script>
+  <script src="/.resources/site-web/webresources/js/excelexportjs~2026-10-28-06-36-44-052~cache.js" type="text/javascript"></script>
+  <script src="/.resources/site-web/webresources/js/mci~2026-10-28-06-36-44-181~cache.js" type="text/javascript"></script>
+  <script src="https://insuit.net/i4tservice/insuit-app.js" type="text/javascript"></script>
+<meta name="despliegue" content="">
+</head>
+<body>
+         
+<link href="/.resources/site-web/webresources/css/bootstrap-icons.css" rel="stylesheet">
+<link href="/.resources/site-web/webresources/css/newHeader.css" rel="stylesheet">
+
+
+<header >
+    <nav class="navbar navbar-expand-lg">
+
+
+
+
+
+
+                <a class="navbar-brand" href="/"   rel=follow title='Ir a la página en la misma ventana'>
+        <img src="/dam/jcr:6948bc92-9feb-48f7-9680-0d285a0bc13c/MCIU_header.svg" alt="Logo Ministerio de Ciencia, Innovación y Universidades">
+                </a>
+
+<style>
+    header {
+        background-color: #ffdb00;
+    }
+</style>        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <p class="txt-menu">Menú</p>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav d-none d-lg-block finderDesktop">
+
+
+    <li class="nav-item">
+            <a class="nav-link dropdown" data-toggle="dropdown" href="#">Español <i class="icon"><img src="/.resources/site-web/webresources/images/angle-circle-down.svg" alt="" title=""></i></a>
+        
+        <ul class="dropdown-menu options">
+            <li class="nav-item-title">
+                    <span>Idioma</span>
+            </li>
+            <ul>
+                    <li class="nav-item">
+                    
+                                <a class="nav-link" href="/qedu.html" target="_self" rel="follow">Español</a>
+                    
+                        
+                    </li>
+                    <li class="nav-item">
+                    
+                                <a class="nav-link" href="/en/qedu.html" target="_self" rel="follow">English</a>
+                    
+                        
+                    </li>
+                    <li class="nav-item">
+                    
+                                <a class="nav-link" href="/ca/qedu.html" target="_self" rel="follow">Catalá</a>
+                    
+                        
+                    </li>
+                    <li class="nav-item">
+                    
+                                <a class="nav-link" href="/eu/qedu.html" target="_self" rel="follow">Euskara</a>
+                    
+                        
+                    </li>
+                    <li class="nav-item">
+                    
+                                <a class="nav-link" href="/gl/qedu.html" target="_self" rel="follow">Galego</a>
+                    
+                        
+                    </li>
+                    <li class="nav-item">
+                    
+                                <a class="nav-link" href="/va/qedu.html" target="_self" rel="follow">Valenciá</a>
+                    
+                        
+                    </li>
+            </ul>
+        </ul>
+    </li>
+  
+
+
+    <span> | </span>
+    <li class="nav-item">
+        <a class="nav-link search dropdown" data-toggle="dropdown" href="#">Buscar <i class="bi bi-search"></i></a>
+        <ul class="dropdown-menu options">
+            <li class="nav-item-title">
+                <span>¿Qué estás buscando?</span>
+            </li>
+            <li class="nav-item option-form">
+                <form id="ContactForm" action="/Buscador-especifico.html" enctype="multipart/form-data">
+                    <div class="input-group">
+                        <input type="text" id="queryStr" name="queryStr" class="form-control border-right-0" title="Buscador" placeholder="" maxlength="" value="" required autocomplete="off" />
+                        <input type="hidden" hidden id="tipo-documento-nav" name="tipoDocumento" value="all" />
+                        <div class="input-group-append">
+                            <button class="btn border-left-0" type="button">
+                                <i class="bi bi-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <button id="search-button" class="btn btn-standard" type="submit" title="buscar" alt="buscar">Buscar</button>
+                </form>
+            </li>
+        </ul>
+    </li>
+    <style>
+        header {
+            margin-bottom: 80px;
+        }
+        @media (max-width: 992px) {
+            header .franja {
+                top: -92px;
+            }
+        }
+        @media (min-width: 768px) {
+            header {
+                margin-bottom: 90px;
+            }
+        }
+    </style>
+            </ul>
+            <ul class="navbar-nav d-block d-lg-none">
+                <ul class="navbar-nav sub-items">
+    <li class="nav-item secondMenu">
+
+        <a class="nav-link" href="/Convocatorias.html"   rel=follow title='Ir a la página en la misma ventana'>Convocatorias</a>
+    </li>
+    <li class="nav-item secondMenu">
+
+        <a class="nav-link" href="/Investigar.html"   rel=follow title='Ir a la página en la misma ventana'>Investigar</a>
+    </li>
+    <li class="nav-item secondMenu">
+
+        <a class="nav-link" href="/Innovar.html"   rel=follow title='Ir a la página en la misma ventana'>Innovar</a>
+    </li>
+    <li class="nav-item secondMenu">
+
+        <a class="nav-link" href="/Universidades.html"   rel=follow title='Ir a la página en la misma ventana'>Universidades</a>
+    </li>
+    <li class="nav-item secondMenu">
+
+        <a class="nav-link" href="/Servicios.html"   rel=follow title='Ir a la página en la misma ventana'>Servicios</a>
+    </li>
+    <li class="nav-item secondMenu">
+
+        <a class="nav-link" href="/Servicios/sede_electronica.html"   rel=follow title='Ir a la página en la misma ventana'>Sede electrónica</a>
+    </li>
+                </ul>
+    <li class="nav-item item-title">
+
+
+        <a class="nav-link idioma dropdown" data-toggle="dropdown" href="#">Español <i class="icon"><img src="/.resources/site-web/webresources/images/angle-circle-down.svg" alt="" title=""></i></a>
+        <ul class="dropdown-menu options">
+            <li class="nav-item">
+                <a class="nav-link" href="/qedu.html" target="_self" rel="follow">Español</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/en/qedu.html" target="_self" rel="follow">English</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/ca/qedu.html" target="_self" rel="follow">Catalá</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/eu/qedu.html" target="_self" rel="follow">Euskara</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/gl/qedu.html" target="_self" rel="follow">Galego</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" target="_self" rel="follow">Valenciá</a>
+            </li>
+        </ul>
+
+        <a class="nav-link" href="#">Ministerio <i class="icon"><img src="/.resources/site-web/webresources/images/angle-circle-down.svg" alt="" title=""></i></a>
+        <ul class="navbar-nav options">
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Ministerio/Mision-y-organizacion.html"   rel=follow aria-label="Misión y organización" title='Ir a la página en la misma ventana'>
+			Misión y organización
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Ministerio/Ministra.html"   rel=follow aria-label="Ministra" title='Ir a la página en la misma ventana'>
+			Ministra
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Ministerio/AltosCargos.html"   rel=follow aria-label="Altos cargos" title='Ir a la página en la misma ventana'>
+			Altos cargos
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Actualidad.html"   rel=follow aria-label="Actualidad" title='Ir a la página en la misma ventana'>
+			Actualidad
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Ministerio/Eventos.html"   rel=follow aria-label="Eventos" title='Ir a la página en la misma ventana'>
+			Eventos
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Secc-Servicios/Igualdad.html"   rel=follow aria-label="Igualdad de género" title='Ir a la página en la misma ventana'>
+			Igualdad de género
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Ministerio/EmpleoPublico.html"   rel=follow aria-label="Empleo público" title='Ir a la página en la misma ventana'>
+			Empleo público
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Ministerio/Estadisticas.html"   rel=follow aria-label="Estadísticas y datos abiertos" title='Ir a la página en la misma ventana'>
+			Estadísticas y datos abiertos
+		</a>
+		
+            </li>
+        </ul>
+    </li>
+
+        <li class="nav-item item-title">
+        <a class="nav-link" href="#">Estrategias y planes <i class="icon"><img src="/.resources/site-web/webresources/images/angle-circle-down.svg" alt="" title=""></i></a>
+        <ul class="navbar-nav options">
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Estrategias-y-Planes/GobernanzaEstrategica.html"   rel=follow aria-label="Gobernanza estratégica" title='Ir a la página en la misma ventana'>
+			Gobernanza estratégica
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Estrategias-y-Planes/Estrategias.html"   rel=follow aria-label="Estrategias" title='Ir a la página en la misma ventana'>
+			Estrategias
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Estrategias-y-Planes/Planes-y-programas.html"   rel=follow aria-label="Planes y programas" title='Ir a la página en la misma ventana'>
+			Planes y programas
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Estrategias-y-Planes/Plan-de-Recuperacion-Transformacion-y-Resiliencia-PRTR.html"   rel=follow aria-label="Plan de Recuperación, Transformación y Resiliencia (PRTR)" title='Ir a la página en la misma ventana'>
+			Plan de Recuperación, Transformación y Resiliencia (PRTR)
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Estrategias-y-Planes/Fondo-Europeo-de-Desarrollo-Regional-FEDER.html"   rel=follow aria-label="Fondo Europeo de Desarrollo Regional (FEDER)" title='Ir a la página en la misma ventana'>
+			Fondo Europeo de Desarrollo Regional (FEDER)
+		</a>
+		
+            </li>
+        </ul>
+    </li>
+
+        <li class="nav-item item-title">
+        <a class="nav-link" href="#">Centros <i class="icon"><img src="/.resources/site-web/webresources/images/angle-circle-down.svg" alt="" title=""></i></a>
+        <ul class="navbar-nav options">
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Organismos-y-Centros/OPI.html"   rel=follow aria-label="Organismos públicos de investigación (OPI)" title='Ir a la página en la misma ventana'>
+			Organismos públicos de investigación (OPI)
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Organismos-y-Centros/ICTS.html"   rel=follow aria-label="Infraestructuras Científicas y Técnicas Singulares (ICTS)" title='Ir a la página en la misma ventana'>
+			Infraestructuras Científicas y Técnicas Singulares (ICTS)
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Organismos-y-Centros/Comite-Polar-Espanol.html"   rel=follow aria-label="Comité Polar Español" title='Ir a la página en la misma ventana'>
+			Comité Polar Español
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Organismos-y-Centros/Consorcios-y-Fundaciones.html"   rel=follow aria-label="Consorcios y fundaciones" title='Ir a la página en la misma ventana'>
+			Consorcios y fundaciones
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Organismos-y-Centros/SOMMA.html"   rel=follow aria-label="Centros y unidades de excelencia" title='Ir a la página en la misma ventana'>
+			Centros y unidades de excelencia
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Organismos-y-Centros/Organismos-e-Infraestructuras-de-Investigacion-Internacionales.html"   rel=follow aria-label="Organismos e infraestructuras de investigación internacionales" title='Ir a la página en la misma ventana'>
+			Organismos e infraestructuras de investigación internacionales
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Organismos-y-Centros/Reales-Academias.html"   rel=follow aria-label="Instituto de España y Reales Academias" title='Ir a la página en la misma ventana'>
+			Instituto de España y Reales Academias
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Organismos-y-Centros/Museos.html"   rel=follow aria-label="Museos" title='Ir a la página en la misma ventana'>
+			Museos
+		</a>
+		
+            </li>
+        </ul>
+    </li>
+            </ul>
+            <ul class="navbar-nav d-none d-lg-block">
+                <ul class="navbar-nav sub-items show" >
+    <li class="nav-item secondMenu">
+
+        <a class="nav-link" href="/Convocatorias.html"   rel=follow title='Ir a la página en la misma ventana'>Convocatorias</a>
+    </li>
+    <li class="nav-item secondMenu">
+
+        <a class="nav-link" href="/Investigar.html"   rel=follow title='Ir a la página en la misma ventana'>Investigar</a>
+    </li>
+    <li class="nav-item secondMenu">
+
+        <a class="nav-link" href="/Innovar.html"   rel=follow title='Ir a la página en la misma ventana'>Innovar</a>
+    </li>
+    <li class="nav-item secondMenu">
+
+        <a class="nav-link" href="/Universidades.html"   rel=follow title='Ir a la página en la misma ventana'>Universidades</a>
+    </li>
+    <li class="nav-item secondMenu">
+
+        <a class="nav-link" href="/Servicios.html"   rel=follow title='Ir a la página en la misma ventana'>Servicios</a>
+    </li>
+    <li class="nav-item secondMenu">
+
+        <a class="nav-link" href="/Servicios/sede_electronica.html"   rel=follow title='Ir a la página en la misma ventana'>Sede electrónica</a>
+    </li>
+                </ul>
+
+    <li class="nav-item">
+        <a class="nav-link dropdown" data-toggle="dropdown" id="dropdownMenuButton1" href="#">Ministerio <i class="icon"><img src="/.resources/site-web/webresources/images/angle-circle-down.svg" alt="" title=""></i></a>
+
+        <ul class="dropdown-menu options" aria-labelledby="dropdownMenuButton1">
+            <li class="nav-item-title">
+                <span>Ministerio</span>
+            </li>
+            <ul>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Ministerio/Mision-y-organizacion.html"   rel=follow aria-label="Misión y organización" title='Ir a la página en la misma ventana'>
+			Misión y organización
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Ministerio/Ministra.html"   rel=follow aria-label="Ministra" title='Ir a la página en la misma ventana'>
+			Ministra
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Ministerio/AltosCargos.html"   rel=follow aria-label="Altos cargos" title='Ir a la página en la misma ventana'>
+			Altos cargos
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Actualidad.html"   rel=follow aria-label="Actualidad" title='Ir a la página en la misma ventana'>
+			Actualidad
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Ministerio/Eventos.html"   rel=follow aria-label="Eventos" title='Ir a la página en la misma ventana'>
+			Eventos
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Secc-Servicios/Igualdad.html"   rel=follow aria-label="Igualdad de género" title='Ir a la página en la misma ventana'>
+			Igualdad de género
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Ministerio/EmpleoPublico.html"   rel=follow aria-label="Empleo público" title='Ir a la página en la misma ventana'>
+			Empleo público
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Ministerio/Estadisticas.html"   rel=follow aria-label="Estadísticas y datos abiertos" title='Ir a la página en la misma ventana'>
+			Estadísticas y datos abiertos
+		</a>
+		
+            </li>
+            </ul>
+        </ul>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link dropdown" data-toggle="dropdown" id="dropdownMenuButton1" href="#">Estrategias y planes <i class="icon"><img src="/.resources/site-web/webresources/images/angle-circle-down.svg" alt="" title=""></i></a>
+
+        <ul class="dropdown-menu options" aria-labelledby="dropdownMenuButton1">
+            <li class="nav-item-title">
+                <span>Estrategias y planes</span>
+            </li>
+            <ul>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Estrategias-y-Planes/GobernanzaEstrategica.html"   rel=follow aria-label="Gobernanza estratégica" title='Ir a la página en la misma ventana'>
+			Gobernanza estratégica
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Estrategias-y-Planes/Estrategias.html"   rel=follow aria-label="Estrategias" title='Ir a la página en la misma ventana'>
+			Estrategias
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Estrategias-y-Planes/Planes-y-programas.html"   rel=follow aria-label="Planes y programas" title='Ir a la página en la misma ventana'>
+			Planes y programas
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Estrategias-y-Planes/Plan-de-Recuperacion-Transformacion-y-Resiliencia-PRTR.html"   rel=follow aria-label="Plan de Recuperación, Transformación y Resiliencia (PRTR)" title='Ir a la página en la misma ventana'>
+			Plan de Recuperación, Transformación y Resiliencia (PRTR)
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Estrategias-y-Planes/Fondo-Europeo-de-Desarrollo-Regional-FEDER.html"   rel=follow aria-label="Fondo Europeo de Desarrollo Regional (FEDER)" title='Ir a la página en la misma ventana'>
+			Fondo Europeo de Desarrollo Regional (FEDER)
+		</a>
+		
+            </li>
+            </ul>
+        </ul>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link dropdown" data-toggle="dropdown" id="dropdownMenuButton1" href="#">Centros <i class="icon"><img src="/.resources/site-web/webresources/images/angle-circle-down.svg" alt="" title=""></i></a>
+
+        <ul class="dropdown-menu options" aria-labelledby="dropdownMenuButton1">
+            <li class="nav-item-title">
+                <span>Centros</span>
+            </li>
+            <ul>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Organismos-y-Centros/OPI.html"   rel=follow aria-label="Organismos públicos de investigación (OPI)" title='Ir a la página en la misma ventana'>
+			Organismos públicos de investigación (OPI)
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Organismos-y-Centros/ICTS.html"   rel=follow aria-label="Infraestructuras Científicas y Técnicas Singulares (ICTS)" title='Ir a la página en la misma ventana'>
+			Infraestructuras Científicas y Técnicas Singulares (ICTS)
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Organismos-y-Centros/Comite-Polar-Espanol.html"   rel=follow aria-label="Comité Polar Español" title='Ir a la página en la misma ventana'>
+			Comité Polar Español
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Organismos-y-Centros/Consorcios-y-Fundaciones.html"   rel=follow aria-label="Consorcios y fundaciones" title='Ir a la página en la misma ventana'>
+			Consorcios y fundaciones
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Organismos-y-Centros/SOMMA.html"   rel=follow aria-label="Centros y unidades de excelencia" title='Ir a la página en la misma ventana'>
+			Centros y unidades de excelencia
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Organismos-y-Centros/Organismos-e-Infraestructuras-de-Investigacion-Internacionales.html"   rel=follow aria-label="Organismos e infraestructuras de investigación internacionales" title='Ir a la página en la misma ventana'>
+			Organismos e infraestructuras de investigación internacionales
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Organismos-y-Centros/Reales-Academias.html"   rel=follow aria-label="Instituto de España y Reales Academias" title='Ir a la página en la misma ventana'>
+			Instituto de España y Reales Academias
+		</a>
+		
+            </li>
+            <li class="nav-item">
+
+		
+		<a class="nav-link col-12" href="/Organismos-y-Centros/Museos.html"   rel=follow aria-label="Museos" title='Ir a la página en la misma ventana'>
+			Museos
+		</a>
+		
+            </li>
+            </ul>
+        </ul>
+    </li>
+            </ul>
+        </div>
+    </nav>
+  
+
+
+    <form class="d-lg-none" id="ContactFormResponsive" action="/Buscador-especifico.html" enctype="multipart/form-data">
+        <div class="input-group">
+            <input type="text" id="queryStrMovil" name="queryStr" class="form-control border-right-0" title="Buscador" placeholder="" maxlength="" value="" autocomplete="off">
+            <input type="hidden" hidden id="tipo-documento-mobile" name="tipoDocumento" value="all">
+            <div class="input-group-append">
+                <button class="btn border-left-0" type="button">
+                    <i class="bi bi-search"></i>
+                </button>
+            </div>
+        </div>
+    </form>
+    <style>
+        header {
+            margin-bottom: 80px;
+        }
+        @media (max-width: 992px) {
+            header .franja {
+                top: -92px;
+            }
+        }
+        @media (min-width: 768px) {
+            header {
+                margin-bottom: 90px;
+            }
+        }
+    </style>
+    <div class="franja" >
+        <div class="bg-red"></div>
+        <div class="bg-yellow"></div>
+        <div class="bg-red"></div>
+    </div>
+</header>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".navbar-toggler").on("click", function () {
+            $(this).toggleClass("on");
+            $(".icon-bar").toggleClass("on");
+        });
+
+        $(".navbar-nav .options").on("mouseleave", function () {
+            $(".navbar-nav .options").removeClass("show");
+        });
+    });
+</script>
+    
+    
+
+					<div id="avisos" class="container-fluid carousel slide carrusel" data-ride="carousel">
+						
+						<a class="carousel-control-prev glyphicon glyphicon-chevron-left" href="#avisos" data-slide="prev">
+						</a>
+						<div class="carousel-inner">
+									<div class="carousel-item  active">
+								    	<div class="row">
+											<div class="col-sm-1"></div>
+											<div class="col-sm-5">
+												<div class="text-box" id="aviso-16326409-f968-47e5-86ad-b7b106307e0a">
+														<a href="/InfoGeneralPortal/Avisos/Cierre-subsede-electronica-Secretar-a-General-Universidades.html">
+													<div class="title  today">
+														<h2>Cierre de la subsede electrónica de la Secretaría General de Universidades<span class="date">22 de octubre de 2026</span></h2>
+													</div>
+													<span class="more">
+														Leer más
+													</span>
+													</a>
+												</div>
+											</div>
+								    			<div class="col-sm-5"></div>
+							    			<div class="col-sm-1"></div>
+										</div>
+							    	</div>
+				        </div>
+					    <a class="carousel-control-next glyphicon glyphicon-chevron-right" href="#avisos" data-slide="next">
+					    </a>
+
+						<button class="close">X</button>
+					</div>
+<div id="wrapper" role="main">
+
+
+
+
+<div id="breadcrumbs" class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12">
+          <a class="" href="/">Ministerio de Ciencia, Innovación y Universidades</a> 
+      > <span class="actualPage">
+      qedu
+      </span>
+    </div>
+  </div>
+</div>
+
+
+<div class="overlay"></div>
+<div class="container-fluid" id="qedu">
+    <div class="imagen">
+            <h1>Qué estudiar y dónde en la universidad</h1>
+
+
+
+		    <img src="/dam/jcr:4938f1f1-d8d3-4ab9-8281-0cd4e0433585/Logo_Simbolo_Fit-transparent-blue.svg" title="" alt=""/>
+    </div>
+
+    <div class="row" id="buscador">
+
+            <div class="col-12">
+                <label class="nivelTit" ><span>¿Qué titulación universitaria estás buscando?</span></label>
+            </div>
+
+
+
+        <div class="col-12 nivel">
+            
+            
+            <div class="colNivel">
+                <input type="checkbox" name="grado" id="grado" checked="checked">
+                <label class="nivelLabel" for="grado"><span>Grado</span></label>
+            </div>
+            <div class="colNivel">
+                <input type="checkbox" name="gradod" id="gradod">
+                <label class="nivelLabel" for="gradod"><span>Doble Grado</span></label>
+            </div>
+            <div class="colNivel">
+                <input type="checkbox" name="master" id="master">
+                <label class="nivelLabel" for="master"><span>Máster</span></label>
+            </div>
+            <div class="colNivel">
+                <input type="checkbox" name="masterd" id="masterd">
+                <label class="nivelLabel" for="masterd"><span>Doble Máster</span></label>
+            </div>
+            <div class="colNivel">
+                <input type="checkbox" name="doctor" id="doctor">
+                <label class="nivelLabel" for="doctor"><span>Doctorado</span></label>
+            </div>
+        </div>
+        <div class="col-12"><label class="nivelSubTit" ><span>Escoge una de las dos formas de búsqueda.</span></label></div>
+        <div class="col-12 margenColumna">
+            <div class="col-9 opcion">
+                <!--<div class="boton"><button class="generic-button active" id="consulta">Palabra clave</button></div>
+                <div class="boton"><button class="generic-button" id="ambitos">Ámbito de estudio</button></div>-->
+                 <div class="radio">
+                    <input type="radio" id="consulta" name="busquedaQedu" value="consulta" checked>
+                    <label class="radio-label inlineMovil" for="consulta"><span>Por palabra clave (en el nombre de la titulación)</span></label>
+                    <div class='consulta busqueda'>
+                        <input type="text" id="query" name="query" placeholder="Mínimo 3 caracteres"/>
+                    </div>
+                </div>
+                <div class="col-12 busqueda">
+                    <div class="queryError">
+                        <span>Por favor, asegurate de que has introducido al menos 3 caracteres</span>
+                    </div>
+                </div>
+                <div class="radio amb">
+                    <input type="radio" id="ambitos" name="busquedaQedu" value="ambitos">
+                    <label  class="radio-label inlineMovil" for="ambitos">Ámbito de estudio</label><br>
+                </div>
+                <div class="col-12 busqueda">
+                    <div class="queryError2">
+                        <span>Debes seleccionar al menos un ámbito</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-9 ambitos busqueda">
+                
+                <label class="main">Ámbitos</label>
+                
+                <div class="col-12 content">
+                    <div class="col-8 txt">
+                        <span>Seleccionar todos los ámbitos</span>
+                    </div>
+                    <div class="w32 btn">
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="customSwitch1">
+                            <label class="custom-control-label" for="customSwitch1"></label>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="contenedorAmbito">
+                        <div class="contenedorTituloAmbito">
+                            <div class="col-8 enLinea">
+                                <span>Educación</span>
+                            </div>
+                            <div class="w32 btn">
+                                <pre>></pre>
+                            </div>
+                        </div>
+                            
+                                <div class="itemAmbito">
+                                        <div class="col-9">
+                                            <label for="143">Formación de docentes de enseñanza infantil</label>
+                                        </div>
+                                        <div class="w25">
+                                            <input type="checkbox" name="143" id="143">
+                                        </div>
+                                        <div class="col-9">
+                                            <label for="144">Formación de docentes de enseñanza primaria</label>
+                                        </div>
+                                        <div class="w25">
+                                            <input type="checkbox" name="144" id="144">
+                                        </div>
+                                        <div class="col-9">
+                                            <label for="149">Otra Formación de personal docente y ciencias de la educación</label>
+                                        </div>
+                                        <div class="w25">
+                                            <input type="checkbox" name="149" id="149">
+                                        </div>
+                                        <div class="col-9">
+                                            <label for="109">Otra Educación</label>
+                                        </div>
+                                        <div class="w25">
+                                            <input type="checkbox" name="109" id="109">
+                                        </div>
+                                </div>
+                        </div>
+                        <div class="contenedorAmbito">
+                        <div class="contenedorTituloAmbito">
+                            <div class="col-8 enLinea">
+                                <span>Artes y humanidades</span>
+                            </div>
+                            <div class="w32 btn">
+                                <pre>></pre>
+                            </div>
+                        </div>
+                            
+                                <div class="itemAmbito">
+                                        <div class="col-9">
+                                            <label for="213">Técnicas audiovisuales</label>
+                                        </div>
+                                        <div class="w25">
+                                            <input type="checkbox" name="213" id="213">
+                                        </div>
+                                        <div class="col-9">
+                                            <label for="219">Artes</label>
+                                        </div>
+                                        <div class="w25">
+                                            <input type="checkbox" name="219" id="219">
+                                        </div>
+                                        <div class="col-9">
+                                            <label for="228">Lenguas</label>
+                                        </div>
+                                        <div class="w25">
+                                            <input type="checkbox" name="228" id="228">
+                                        </div>
+                                        <div class="col-9">
+                                            <label for="229">Humanidades</label>
+                                        </div>
+                                        <div class="w25">
+                                            <input type="checkbox" name="229" id="229">
+                                        </div>
+                                        <div class="col-9">
+                                            <label for="209">Otras Artes y Humanidades</label>
+                                        </div>
+                                        <div class="w25">
+                                            <input type="checkbox" name="209" id="209">
+                                        </div>
+                                </div>
+                        </div>
+                        <div class="contenedorAmbito">
+                        <div class="contenedorTituloAmbito">
+                            <div class="col-8 enLinea">
+                                <span>Ciencias sociales y derecho</span>
+                            </div>
+                            <div class="w32 btn">
+                                <pre>></pre>
+                            </div>
+                        </div>
+                            
+                                <div class="itemAmbito">
+                                        <div class="col-9">
+                                            <label for="311">Psicología</label>
+                                        </div>
+                                        <div class="w25">
+                                            <input type="checkbox" name="311" id="311">
+                                        </div>
+                                        <div class="col-9">
+                                            <label for="314">Economía</label>
+                                        </div>
+                                        <div class="w25">
+                                            <input type="checkbox" name="314" id="314">
+                                        </div>
+                                        <div class="col-9">
+                                            <label for="319">Otras Ciencias sociales y del comportamiento</label>
+                                        </div>
+                                        <div class="w25">
+                                            <input type="checkbox" name="319" id="319">
+                                        </div>
+                                        <div class="col-9">
+                                            <label for="320">Periodismo e información</label>
+                                        </div>
+                                        <div class="w25">
+                                            <input type="checkbox" name="320" id="320">
+                                        </div>
+                                        <div class="col-9">
+                                            <label for="345">Administración y gestión de empresas</label>
+                                        </div>
+                                        <div class="w25">
+                                            <input type="checkbox" name="345" id="345">
+                                        </div>
+                                        <div class="col-9">
+                                            <label for="349">Otra Educación comercial y empresarial</label>
+                                        </div>
+                                        <div class="w25">
+                                            <input type="checkbox" name="349" id="349">
+                                        </div>
+                                        <div class="col-9">
+                                            <label for="380">Derecho</label>
+                                        </div>
+                                        <div class="w25">
+                                            <input type="checkbox" name="380" id="380">
+                                        </div>
+                                        <div class="col-9">
+                                            <label for="309">Otras Ciencias sociales, educación comercial y derecho</label>
+                                        </div>
+                                        <div class="w25">
+                                            <input type="checkbox" name="309" id="309">
+                                        </div>
+                                </div>
+                        </div>
+                        <div class="contenedorAmbito">
+                        <div class="contenedorTituloAmbito">
+                            <div class="col-8 enLinea">
+                                <span>Ciencias e informática</span>
+                            </div>
+                            <div class="w32 btn">
+                                <pre>></pre>
+                            </div>
+                        </div>
+                            
+                                <div class="itemAmbito">
+                                        <div class="col-9">
+                                            <label for="420">Ciencias de la vida: Biología, Ambientales</label>
+                                        </div>
+                                        <div class="w25">
+                                            <input type="checkbox" name="420" id="420">
+                                        </div>
+                                        <div class="col-9">
+                                            <label for="440">Ciencias Físicas, químicas, geológicas</label>
+                                        </div>
+                                        <div class="w25">
+                                            <input type="checkbox" name="440" id="440">
+                                        </div>
+                                        <div class="col-9">
+                                            <label for="460">Matemáticas y Estadística</label>
+                                        </div>
+                                        <div class="w25">
+                                            <input type="checkbox" name="460" id="460">
+                                        </div>
+                                        <div class="col-9">
+                                            <label for="409">Otras Ciencias</label>
+                                        </div>
+                                        <div class="w25">
+                                            <input type="checkbox" name="409" id="409">
+                                        </div>
+                                        <div class="col-9">
+                                            <label for="480">Informática</label>
+                                        </div>
+                                        <div class="w25">
+                                            <input type="checkbox" name="480" id="480">
+                                        </div>
+                                </div>
+                        </div>
+                        <div class="contenedorAmbito">
+                        <div class="contenedorTituloAmbito">
+                            <div class="col-8 enLinea">
+                                <span>Ingeniería, industria y construcción</span>
+                            </div>
+                            <div class="w32 btn">
+                                <pre>></pre>
+                            </div>
+                        </div>
+                            
+                                <div class="itemAmbito">
+                                        <div class="col-9">
+                                            <label for="509">Ingenierías</label>
+                                        </div>
+                                        <div class="w25">
+                                            <input type="checkbox" name="509" id="509">
+                                        </div>
+                                        <div class="col-9">
+                                            <label for="580">Arquitectura y construcción</label>
+                                        </div>
+                                        <div class="w25">
+                                            <input type="checkbox" name="580" id="580">
+                                        </div>
+                                </div>
+                        </div>
+                        <div class="contenedorAmbito">
+                        <div class="contenedorTituloAmbito">
+                            <div class="col-8 enLinea">
+                                <span>Agricultura y veterinaria</span>
+                            </div>
+                            <div class="w32 btn">
+                                <pre>></pre>
+                            </div>
+                        </div>
+                            
+                                <div class="itemAmbito">
+                                        <div class="col-9">
+                                            <label for="620">Agricultura, ganadería y pesca</label>
+                                        </div>
+                                        <div class="w25">
+                                            <input type="checkbox" name="620" id="620">
+                                        </div>
+                                        <div class="col-9">
+                                            <label for="640">Veterinaria</label>
+                                        </div>
+                                        <div class="w25">
+                                            <input type="checkbox" name="640" id="640">
+                                        </div>
+                                        <div class="col-9">
+                                            <label for="609">Otras Agricultura y veterinaria</label>
+                                        </div>
+                                        <div class="w25">
+                                            <input type="checkbox" name="609" id="609">
+                                        </div>
+                                </div>
+                        </div>
+                        <div class="contenedorAmbito">
+                        <div class="contenedorTituloAmbito">
+                            <div class="col-8 enLinea">
+                                <span>Salud y servicios sociales</span>
+                            </div>
+                            <div class="w32 btn">
+                                <pre>></pre>
+                            </div>
+                        </div>
+                            
+                                <div class="itemAmbito">
+                                        <div class="col-9">
+                                            <label for="721">Medicina</label>
+                                        </div>
+                                        <div class="w25">
+                                            <input type="checkbox" name="721" id="721">
+                                        </div>
+                                        <div class="col-9">
+                                            <label for="723">Enfermería y atención a enfermos</label>
+                                        </div>
+                                        <div class="w25">
+                                            <input type="checkbox" name="723" id="723">
+                                        </div>
+                                        <div class="col-9">
+                                            <label for="729">Otras ciencias de la Salud (Farmacia, Odontología, Fisioterapia...)</label>
+                                        </div>
+                                        <div class="w25">
+                                            <input type="checkbox" name="729" id="729">
+                                        </div>
+                                        <div class="col-9">
+                                            <label for="760">Trabajo social y orientación</label>
+                                        </div>
+                                        <div class="w25">
+                                            <input type="checkbox" name="760" id="760">
+                                        </div>
+                                        <div class="col-9">
+                                            <label for="709">Otras Salud y servicios sociales</label>
+                                        </div>
+                                        <div class="w25">
+                                            <input type="checkbox" name="709" id="709">
+                                        </div>
+                                </div>
+                        </div>
+                        <div class="contenedorAmbito">
+                        <div class="contenedorTituloAmbito">
+                            <div class="col-8 enLinea">
+                                <span>Servicios</span>
+                            </div>
+                            <div class="w32 btn">
+                                <pre>></pre>
+                            </div>
+                        </div>
+                            
+                                <div class="itemAmbito">
+                                        <div class="col-9">
+                                            <label for="809">Otros Servicios</label>
+                                        </div>
+                                        <div class="w25">
+                                            <input type="checkbox" name="809" id="809">
+                                        </div>
+                                        <div class="col-9">
+                                            <label for="813">Actividad Física y del Deporte</label>
+                                        </div>
+                                        <div class="w25">
+                                            <input type="checkbox" name="813" id="813">
+                                        </div>
+                                        <div class="col-9">
+                                            <label for="819">Turismo y Hostelería</label>
+                                        </div>
+                                        <div class="w25">
+                                            <input type="checkbox" name="819" id="819">
+                                        </div>
+                                </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-4 search-button-container">
+            <button id="search-button-qedu" class="generic-button">Buscar</button>
+        </div>
+        <div class="col-4 search-button-container">
+            <button id="clean-search-qedu" class="generic-button">Limpiar</button>
+        </div>
+    </div>
+
+    <div class="row">
+        <div id="infoBox" class="alert-primary">
+            <div class="close">
+                <span>X</span>
+            </div>
+            <div class="text">
+                <p><strong>&iquest;Dudas al buscar sobre titulaciones?</strong></p>
+
+<p>Si no sabes como realizar la b&uacute;squeda, te ofrecemos informaci&oacute;n sobre c&oacute;mo hacerlo.</p>
+
+<p><a href="/qedu/AyudaQEDU.html">M&aacute;s informaci&oacute;n</a></p>
+
+            </div>
+        </div>
+    </div>
+
+    <style>
+        #infoBox {
+            width: 60%;
+            padding: 15px;
+            margin-left: 30px;
+            border-radius: 5px;
+            margin-bottom: 30px;
+        }
+        #infoBox .close {
+            width: 100%;
+            text-align: right;
+            font-size: 18px;
+            font-weight: bold;
+            padding: -15px;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        $('#infoBox .close span').click(function() {
+            $('#infoBox').hide();
+            $('#infoBtn').show();
+        });
+    </script>
+
+    
+    <script>
+        /*$('#buscador .ambitos label.main').click(function() {
+            if($('#buscador .opcion input[type=radio]:checked').val() == 'consulta'){
+                $('#buscador .ambitos label.main').toggleClass('dropbtn');
+            }
+        });*/
+
+        /*$('#buscador .ambitos .btn pre').click(function() {
+            $(this).parent().parent().parent().find('.itemAmbito').animate({
+                    height: 'toggle'
+                });   
+
+        });*/
+
+        $('.contenedorTituloAmbito').click(function() {
+            $(this).parent().find('.itemAmbito').animate({
+                    height: 'toggle'
+                });   
+
+        });
+        
+        
+    </script>
+
+    <div class="ambitosEscogidos">
+        Se esta filtrando por lo siguientes criterios: 
+    </div>
+
+
+        
+        <div id="btnFiltrar">
+            
+            <div class="col-12 btn">
+                <div>
+                    <span>Filtros <img src="/.resources/site-web/webresources/img/filter-solid.svg" class="fltN">
+                    <img src="/.resources/site-web/webresources/img/filter-solid-active.svg" class="fltA"></span>
+                </div>
+            
+                <a id="downloadTargets"><img src="/.resources/site-web/webresources/img/file-csv-solid.svg"></a>
+                <a id="downloadTargetsExcel"><img src="/.resources/site-web/webresources/img/file-excel-solid.svg"></a>
+            </div>
+            <div id="filtros" class="col-12">
+                
+                <div class="col-3 flt">
+                    <div class="cabeceraFlt">
+                        Selecciona el tipo de estudios
+                    </div>
+                        <div class="col-12">
+                            <label class="" for="presencialidad">Modalidad</label>
+                            <select id="presencialidad" name="presencialidad">
+                                <option value="all">--</option>
+                                <option value="1">Presencial</option>
+                                <option value="2">Semi/No Presencial</option>
+                                <option value="4">Varias modalidades</option>
+                            </select>
+                        </div>
+
+                        <div class="col-12">
+                            <label class="" for="idioma">Idioma extranjero</label>
+                            <select id="idioma" name="idioma">
+                                <option value="all">--</option>
+                                <option value="0">No</option>
+                                <option value="1">Sí</option>
+                            </select>
+                        </div>
+
+                        <div class="col-12">
+                            <label class="" for="nota">Nota de corte máxima</label>
+                            <select id="nota" name="nota">
+                                <option value="all">--</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                                <option value="13">13</option>
+                                <option value="14">14</option>
+                            </select>
+                        </div>
+                    
+                </div>
+                <div class="col-3 flt">
+                    <div class="cabeceraFlt">
+                        Selecciona la universidad
+                    </div>
+
+                        <div class="col-12">
+                            <label class="" for="tipoUniversidad">Tipo de universidad</label>
+                            <select id="tipoUniversidad" name="tipoUniversidad">
+                                <option value="all">--</option>
+                                <option value="1">Pública</option>
+                                <option value="2">Privada</option>
+                            </select>
+                        </div>
+
+
+                        <div class="col-12 uniFilter">
+                            <div class="col-12">
+                                <label class="universidad" for="universidad">Universidad</label>
+                            
+                                <select class="js-example-basic-multiple" id="universidad" name="universidades[]" multiple="multiple">
+                                            <option value="070">Abat Oliba CEU</option>
+                                            
+                                            <option value="037">A Coruña</option>
+                                            
+                                            <option value="074">A Distancia de Madrid</option>
+                                            
+                                            <option value="029">Alcalá</option>
+                                            
+                                            <option value="047">Alfonso X El Sabio</option>
+                                            
+                                            <option value="001">Alicante</option>
+                                            
+                                            <option value="048">Almería</option>
+                                            
+                                            <option value="052">Antonio de Nebrija</option>
+                                            
+                                            <option value="022">Autónoma de Barcelona</option>
+                                            
+                                            <option value="023">Autónoma de Madrid</option>
+                                            
+                                            <option value="004">Barcelona</option>
+                                            
+                                            <option value="051">Burgos</option>
+                                            
+                                            <option value="005">Cádiz</option>
+                                            
+                                            <option value="065">Camilo José Cela</option>
+                                            
+                                            <option value="016">Cantabria</option>
+                                            
+                                            <option value="067">Cardenal Herrera-CEU</option>
+                                            
+                                            <option value="036">Carlos III de Madrid</option>
+                                            
+                                            <option value="034">Castilla-La Mancha</option>
+                                            
+                                            <option value="072">Católica de Valencia San Vicente Mártir</option>
+                                            
+                                            <option value="066">Católica San Antonio</option>
+                                            
+                                            <option value="059">Católica Santa Teresa de Jesús de Ávila</option>
+                                            
+                                            <option value="010">Complutense de Madrid</option>
+                                            
+                                            <option value="006">Córdoba</option>
+                                            
+                                            <option value="089">CUNEF Universidad</option>
+                                            
+                                            <option value="030">Deusto</option>
+                                            
+                                            <option value="087">ESIC Universidad</option>
+                                            
+                                            <option value="079">Europea de Canarias</option>
+                                            
+                                            <option value="083">Europea del Atlántico</option>
+                                            
+                                            <option value="053">Europea de Madrid</option>
+                                            
+                                            <option value="082">Europea de Valencia</option>
+                                            
+                                            <option value="069">Europea Miguel de Cervantes</option>
+                                            
+                                            <option value="002">Extremadura</option>
+                                            
+                                            <option value="068">Francisco de Vitoria</option>
+                                            
+                                            <option value="043">Girona</option>
+                                            
+                                            <option value="008">Granada</option>
+                                            
+                                            <option value="049">Huelva</option>
+                                            
+                                            <option value="057">IE Universidad</option>
+                                            
+                                            <option value="063">Internacional de Andalucía</option>
+                                            
+                                            <option value="062">Internacional de Catalunya</option>
+                                            
+                                            <option value="094">Internacional de la Empresa</option>
+                                            
+                                            <option value="077">Internacional de La Rioja</option>
+                                            
+                                            <option value="080">Internacional Isabel I de Castilla</option>
+                                            
+                                            <option value="071">Internacional Menéndez Pelayo</option>
+                                            
+                                            <option value="076">Internacional Valenciana</option>
+                                            
+                                            <option value="050">Jaén</option>
+                                            
+                                            <option value="040">Jaume I de Castellón</option>
+                                            
+                                            <option value="015">La Laguna</option>
+                                            
+                                            <option value="045">La Rioja</option>
+                                            
+                                            <option value="026">Las Palmas de Gran Canaria</option>
+                                            
+                                            <option value="009">León</option>
+                                            
+                                            <option value="003">les Illes Balears</option>
+                                            
+                                            <option value="044">Lleida</option>
+                                            
+                                            <option value="081">Loyola Andalucía</option>
+                                            
+                                            <option value="011">Málaga</option>
+                                            
+                                            <option value="055">Miguel Hernández de Elche</option>
+                                            
+                                            <option value="061">Mondragón Unibertsitatea</option>
+                                            
+                                            <option value="012">Murcia</option>
+                                            
+                                            <option value="028">Nacional de Educación a Distancia</option>
+                                            
+                                            <option value="031">Navarra</option>
+                                            
+                                            <option value="054">Oberta de Catalunya</option>
+                                            
+                                            <option value="013">Oviedo</option>
+                                            
+                                            <option value="058">Pablo de Olavide</option>
+                                            
+                                            <option value="020">País Vasco/Euskal Herriko Unibertsitatea</option>
+                                            
+                                            <option value="064">Politécnica de Cartagena</option>
+                                            
+                                            <option value="024">Politécnica de Catalunya</option>
+                                            
+                                            <option value="025">Politécnica de Madrid</option>
+                                            
+                                            <option value="027">Politècnica de València</option>
+                                            
+                                            <option value="039">Pompeu Fabra</option>
+                                            
+                                            <option value="033">Pontificia Comillas</option>
+                                            
+                                            <option value="032">Pontificia de Salamanca</option>
+                                            
+                                            <option value="035">Pública de Navarra</option>
+                                            
+                                            <option value="041">Ramón Llull</option>
+                                            
+                                            <option value="056">Rey Juan Carlos</option>
+                                            
+                                            <option value="042">Rovira i Virgili</option>
+                                            
+                                            <option value="014">Salamanca</option>
+                                            
+                                            <option value="073">San Jorge</option>
+                                            
+                                            <option value="046">San Pablo-CEU</option>
+                                            
+                                            <option value="007">Santiago de Compostela</option>
+                                            
+                                            <option value="017">Sevilla</option>
+                                            
+                                            <option value="085">Univ. del Atlántico Medio</option>
+                                            
+                                            <option value="106">Universidad Alfonso X el Sabio Mare Nostrum</option>
+                                            
+                                            <option value="102">Universidad CEU Fernando</option>
+                                            
+                                            <option value="100">Universidad de Diseño, Innovación y Tecnología</option>
+                                            
+                                            <option value="090">Universidad de las Hespérides</option>
+                                            
+                                            <option value="098">Universidad Euneiz</option>
+                                            
+                                            <option value="107">Universidad Europea de Andalucía</option>
+                                            
+                                            <option value="084">Universidad Fernando Pessoa-Canarias </option>
+                                            
+                                            <option value="097">Universidad Intercontinental de la Empresa</option>
+                                            
+                                            <option value="088">Universidad Internacional Villanueva</option>
+                                            
+                                            <option value="103">Universidad Tecnológica Atlántico-Mediterráneo</option>
+                                            
+                                            <option value="104">Universidad Tecnológica de las Islas C</option>
+                                            
+                                            <option value="018">València (Estudi General)</option>
+                                            
+                                            <option value="019">Valladolid</option>
+                                            
+                                            <option value="060">Vic- Central de Catalunya</option>
+                                            
+                                            <option value="038">Vigo</option>
+                                            
+                                            <option value="021">Zaragoza</option>
+                                            
+                                    
+                                </select>
+                            </div>
+                            <div class="col-12">
+
+                            </div>
+                        </div>
+                </div>
+                <div class="col-3 flt">
+                    <div class="cabeceraFlt">
+                        Selecciona la zona geográfica
+                    </div>
+                        <div class="col-12 ccaaFilter">
+                            <div class="col-12">
+                                <label class="" for="caFilter">Comunidad autónoma (del centro):</label>
+                                <select class="js-example-basic-multiple" id="caFilter" name="caFilter[]" multiple="multiple">
+                                            <option value="Andalucía">Andalucía</option>
+                                            
+                                            <option value="Aragón">Aragón</option>
+                                            
+                                            <option value="Asturias (Principado de)">Asturias (Principado de)</option>
+                                            
+                                            <option value="Balears (Illes)">Balears (Illes)</option>
+                                            
+                                            <option value="Canarias">Canarias</option>
+                                            
+                                            <option value="Cantabria">Cantabria</option>
+                                            
+                                            <option value="Castilla-La Mancha">Castilla-La Mancha</option>
+                                            
+                                            <option value="Castilla y León">Castilla y León</option>
+                                            
+                                            <option value="Cataluña">Cataluña</option>
+                                            
+                                            <option value="Ceuta">Ceuta</option>
+                                            
+                                            <option value="Comunitat Valenciana">Comunitat Valenciana</option>
+                                            
+                                            <option value="Extremadura">Extremadura</option>
+                                            
+                                            <option value="Galicia">Galicia</option>
+                                            
+                                            <option value="Madrid (Comunidad de)">Madrid (Comunidad de)</option>
+                                            
+                                            <option value="Melilla">Melilla</option>
+                                            
+                                            <option value="Murcia (Región de)">Murcia (Región de)</option>
+                                            
+                                            <option value="Navarra (Comunidad Foral de)">Navarra (Comunidad Foral de)</option>
+                                            
+                                            <option value="País Vasco">País Vasco</option>
+                                            
+                                            <option value="Rioja (La)">Rioja (La)</option>
+                                            
+                                    
+                                </select>
+                            </div>
+                            <div class="col-12">
+                            </div>
+                        </div>
+
+
+                        <div class="col-12 provinciaFilter">
+                            <div class="col-12">
+                                <label class="" for="provincia">Provincia (del centro):</label>
+                                <select class="js-example-basic-multiple" id="provincia" name="provincia[]" multiple="multiple">
+                                            <option value="15">A Coruña</option>
+                                            
+                                            <option value="02">Albacete</option>
+                                            
+                                            <option value="03">Alicante/Alacant</option>
+                                            
+                                            <option value="04">Almería</option>
+                                            
+                                            <option value="01">Araba/Álava</option>
+                                            
+                                            <option value="33">Asturias</option>
+                                            
+                                            <option value="05">Ávila</option>
+                                            
+                                            <option value="06">Badajoz</option>
+                                            
+                                            <option value="08">Barcelona</option>
+                                            
+                                            <option value="48">Bizkaia</option>
+                                            
+                                            <option value="09">Burgos</option>
+                                            
+                                            <option value="10">Cáceres</option>
+                                            
+                                            <option value="11">Cádiz</option>
+                                            
+                                            <option value="39">Cantabria</option>
+                                            
+                                            <option value="12">Castellón/Castelló</option>
+                                            
+                                            <option value="51">Ceuta</option>
+                                            
+                                            <option value="13">Ciudad Real</option>
+                                            
+                                            <option value="14">Córdoba</option>
+                                            
+                                            <option value="16">Cuenca</option>
+                                            
+                                            <option value="20">Gipuzkoa</option>
+                                            
+                                            <option value="17">Girona</option>
+                                            
+                                            <option value="18">Granada</option>
+                                            
+                                            <option value="19">Guadalajara</option>
+                                            
+                                            <option value="21">Huelva</option>
+                                            
+                                            <option value="22">Huesca</option>
+                                            
+                                            <option value="07">Illes Balears</option>
+                                            
+                                            <option value="23">Jaén</option>
+                                            
+                                            <option value="26">La Rioja</option>
+                                            
+                                            <option value="35">Las Palmas</option>
+                                            
+                                            <option value="24">León</option>
+                                            
+                                            <option value="25">Lleida</option>
+                                            
+                                            <option value="27">Lugo</option>
+                                            
+                                            <option value="28">Madrid</option>
+                                            
+                                            <option value="29">Málaga</option>
+                                            
+                                            <option value="52">Melilla</option>
+                                            
+                                            <option value="30">Murcia</option>
+                                            
+                                            <option value="31">Navarra</option>
+                                            
+                                            <option value="32">Ourense</option>
+                                            
+                                            <option value="34">Palencia</option>
+                                            
+                                            <option value="36">Pontevedra</option>
+                                            
+                                            <option value="37">Salamanca</option>
+                                            
+                                            <option value="38">Santa Cruz de Tenerife</option>
+                                            
+                                            <option value="40">Segovia</option>
+                                            
+                                            <option value="41">Sevilla</option>
+                                            
+                                            <option value="42">Soria</option>
+                                            
+                                            <option value="43">Tarragona</option>
+                                            
+                                            <option value="44">Teruel</option>
+                                            
+                                            <option value="45">Toledo</option>
+                                            
+                                            <option value="46">Valencia/València</option>
+                                            
+                                            <option value="47">Valladolid</option>
+                                            
+                                            <option value="49">Zamora</option>
+                                            
+                                            <option value="50">Zaragoza</option>
+                                            
+                                    
+                                </select>
+                            </div>
+                            <div class="col-12">
+                            </div>
+                        </div>
+           
+                </div>
+                <div class="col-2">
+                    <div class="col-12 button-container">
+                        <button id="filtrar" class="generic-button">Filtrar</button>
+                    </div>
+                </div>
+            
+            
+            </div>
+        </div>
+
+
+
+    
+
+
+    <!--<div class="botonFlotante button-container">
+        <button id="botonScrollTop" class="generic-button" type="button">Volver arriba</button>
+    </div>-->
+
+    <a aria-label="Hacer scroll a la parte superior de la página" href="#" id="botonScrollTop" class="scroll-top-right" style="opacity: 1; display: block;">
+        <i class=" fa fa-angle-up" aria-hidden="true" role="img">
+        </i>
+    </a>
+        <a href="/qedu/AyudaQEDU.html" id="infoBtn">
+            <span>i</span>
+        </a>
+    <div class="numResultados">
+    </div>
+    
+    <div class="row" id="targets">
+        
+    </div>
+
+    <div class="row">
+        <div id="noData">
+            <h2>No hay resultados para estos criterios de búsqueda</h2>
+        </div>    
+    </div>
+
+</div>
+    <div class="modalMovil col-12">
+
+        <div class="modalMovilTexto">
+            <span>Esta usted navegando en un dispositivo móvil, le recomendamos descargar la aplicación desde la tienda puesto que está optimizada para verse en su dispositivo. Sí aún así desea continuar con la versión web, pulse en &quot;Continuar&quot;</span>
+        </div>
+        <div class="modalMovilEnlaces">
+            <a id="enlace_descarga1" href="https://play.google.com/store/apps/details?id=es.gob.qedu">
+
+
+
+                    <img src="/.imaging/default/dam/WEB/No-rastreable/ImagenesEspecificas/QEDU/gp.jpg/jcr:content.jpg" title="" alt=""/>
+            </a>
+            <a id="enlace_descarga2" href="https://apps.apple.com/es/app/qedu/id6449674405">
+
+
+
+                    <img src="/.imaging/default/dam/WEB/No-rastreable/ImagenesEspecificas/QEDU/as.jpg/jcr:content.jpg" title="" alt=""/>
+            </a>
+        </div>
+
+        <div class="modalMovilEnlaces boton">
+            <button class="generic-button" value="cerrar">Continuar</button>
+        </div>
+    </div>
+
+    <div id="modalTargetQedu">
+        <div class="fixed">
+            <div class="row boton">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="modallHide();"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="row">
+                <h2 class="titulo">titulación</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="tercio head active" name="informacion">
+                <div>
+                    <h5>Información general</h5>
+                </div>
+            </div>
+            <div class="tercio head" name="rendimiento">
+                <div>
+                    <h5>Rendimiento probable</h5>
+                </div>
+            </div>
+            <div class="tercio head" name="insercion">
+                <div>
+                    <h5>Inserción laboral</h5>
+                </div>
+            </div>
+        </div>
+        <div class="content" id="informacion">
+            
+            <div class="row datos">
+                <h4>Datos sobre la titulación</h4>
+                <div class="info">
+                    <p>Denominación</p>
+                    <h5 class="titulo"><span>titulo</span><a href="ass" target="_blank"><img src="/.resources/site-web/webresources/img/link-qedu.svg" alt="" title=""></a></h5>
+                </div>
+                <div class="info">
+                    <p>Centro</p>
+                    <h5 class="centro">centro</h5>
+                </div>
+                <div class="info">
+                    <p>Tipo de Centro</p>
+                    <h5 class="tipoCentro">tipoCentro</h5>
+                </div>
+                <div class="info">
+                    <p>Modalidad</p>
+                    <h5 class="modalidad">modalidad</h5>
+                </div>
+                <div class="info">
+                    <p>Idioma extranjero</p>
+                    <h5 class="idioma">idioma</h5>
+                </div>
+                <div class="info">
+                    <p>Número de plazas</p>
+                    <h5 class="plazas">plazas</h5>
+                </div>
+                <div class="info">
+                    <p>Tasa de afiliación</p>
+                    <h5 class="tasa">tasa</h5>
+                </div>
+            </div>
+            <div class="row datos">
+                <h4>Datos sobre la universidad</h4>
+                <div class="info">
+                    <p>Tipo</p>
+                    <h5 class="tipoUniversidad">tipoUniversidad</h5>
+                </div>
+                <div class="info">
+                    <p>Nombre</p>
+                    <h5 class="nombre">nombre</h5>
+                </div>
+                <div class="info">
+                    <p>Comunidad Autónoma (Centro)</p>
+                    <h5 class="ccaa">ccaa</h5>
+                </div>
+                <div class="info">
+                    <p>Provincia (Centro)</p>
+                    <h5 class="provincia">provincia</h5>
+                </div>
+            </div>
+            <div class="row datos">
+                <h4>Datos sobre la matrícula</h4>
+                <div class="info">
+                    <p>Número de créditos</p>
+                    <h5 class="creditos">créditos</h5>
+                </div>
+                <div class="info">
+                    <p>Precio del crédito</p>
+                    <h5 class="precio">precio</h5>
+                </div>
+            </div>
+            <div class="row datos">
+                <h4>Datos de nota de corte final (tras el último llamamiento)</h4>
+                <div class="info post">
+                    <p>Nota de corte final del curso <span></span></p>
+                    <h5 class="notaActual">notaActual</h5>
+                </div>
+                <div class="info ant">
+                    <p>Nota de corte final del curso <span></span></p>
+                    <h5 class="notaAnterior">notaAnterior</h5>
+                </div>
+                <div class="info">
+                    <p>Nota media</p>
+                    <h5 class="media">media</h5>
+                </div>
+            </div>
+        </div>
+        <div class="content" id="rendimiento" ambito="">
+            <div id="gradoRend">
+                <div class="row head">
+                    <h4>Selecciona los datos para configurar tu perfil</h4>
+                </div>
+                <div class="row datos">
+                    <h4>Formas de Acceso</h4>
+                    <div class="info">
+                        
+                        <button class="estudios generic-button titulo" value="FP">FP</button>
+                        <button class="estudios generic-button titulo active" value="PAU">Bachillerato</button>
+                    </div>
+                </div>
+                <div class="row datos">
+                    <h4>Nota prevista de admisión</h4>
+                    <div class="info">
+                        <select class="nota" id="notaRend">
+                            <option value="5 - 6.5">5 - 6.5</option>
+                            <option value="6.5 - 8" selected="selected">6.5 - 8</option>
+                            <option value="8 - 9.5">8 - 9.5</option>
+                            <option value="9.5 +">9.5 +</option>
+                        </select>
+                        <div class="notaRend alert alert-danger" role="alert">Valor no válido</div>
+                    </div>
+                </div>
+                <div class="row datos">
+                    <h4>Sexo</h4>
+                    <div class="info">
+                        <button class="sexo titulo" value="Mujeres">Mujeres</button>
+                        <button class="sexo titulo active" value="Hombres">Hombres</button>
+                    </div>
+                </div>
+                <div class="row datos">
+                    <div id="resultsRend">
+                        <h4>El rendimiento se calcula dividiendo los créditos aprobados sobre el total de los créditos matriculados</h4>
+                        <div class="info">
+                            <p>Rendimiento de tu perfil</p>
+                            <h5 class="titulo rendInv">75.37%</h5>
+                            <div class="progress">
+                                <div id="rendInv" class="progress-bar" role="progressbar" style="width: 75.37%" aria-valuenow="75.37" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                        <h4>Rendimiento de los estudiantes con el perfil seleccionado en el ámbito de estudio (créditos aprobados/matriculados).</h4>
+                        <div class="info">
+                            <p>Rendimiento medio</p>
+                            <h5 class="titulo rendIsced">28.68%</h5>
+                            <div class="progress">
+                                <div id="rendIsced" class="progress-bar" role="progressbar" style="width: 28.68%" aria-valuenow="28.68" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="noResultsRend">
+                        <h3>No existen datos de rendimiento probable para el perfil seleccionado.</h3>
+                    </div>
+                </div>
+            </div>
+            <div id="noGradoRend">
+                <h3>Esta funcionalidad solo está disponible para Grados. No hay información para dobles titulaciones, Máster ni Doctorado.</h3>
+            </div>
+        </div>
+        <div class="content" id="insercion" nivel="">
+            <div id="resultsIns">
+                <div class="row datos head">
+                    <h4>Los datos mostrados sobre afiliación corresponden al período de 4 años después de egresar.</h4>
+                </div>
+                <div class="row datos" id="iltit">
+                    <h4>Datos de la titulación</h4>
+                    <div class="info">
+                        <p>Tasa de afiliación</p>
+                        <h5 class="ta"></h5>
+                    </div>
+                    <div class="info">
+                        <p>Porcentaje de autónomos</p>
+                        <h5 class="pa"></h5>
+                    </div>
+                    <div class="info">
+                        <p>Porcentaje de contratados indefinidos</p>
+                        <h5 class="pi"></h5>
+                    </div>
+                    <div class="info">
+                        <p>Porcentaje con grupo de cotización nivel universitario</p>
+                        <h5 class="pc"></h5>
+                    </div>
+                    <div class="info">
+                        <p>Base media de cotización anual</p>
+                        <h5 class="bma"></h5>
+                    </div>
+                </div>
+                <div id="noTit">No disponemos de información de inserción laboral de esta titulación, pero te ofrecemos la información comparativa a nivel de ámbito de estudio y a nivel nacional.</div>
+                <div class="row datos comparativos">
+                    <h4>Datos comparativos</h4>
+                    <div class="info" id="ilamb">
+                        <h5>Titulados en Grado a nivel nacional en <span></span></h5>
+                        <div class="cabecera">
+                            <div class="tercio">
+                                Hombres
+                            </div>
+                            <div class="tercio">
+                                Mujeres
+                            </div>
+                            <div class="tercio">
+                                Ambos sexos
+                            </div>
+                        </div>
+                        <div class="odd">
+                            <div class="tit">Tasa de afiliación</div>
+                            <div class="tercio tasaAfilH">
+                                asdasd asdASd
+                            </div>
+                            <div class="tercio tasaAfilM">
+                                
+                            </div>
+                            <div class="tercio tasaAfilA">
+                                
+                            </div>
+                        </div>
+                        <div class="pair">
+                            <div class="tit">Porcentaje de autónomos</div>
+                            <div class="tercio autonomosH">
+                                asdasd asdASd
+                            </div>
+                            <div class="tercio autonomosM">
+                                
+                            </div>
+                            <div class="tercio autonomosA">
+                                
+                            </div>
+                        </div>
+                        <div class="odd">
+                            <div class="tit">Porcentaje con grupo de cotización nivel universitario</div>
+                            <div class="tercio cotizacionH">
+                                asdasd asdASd
+                            </div>
+                            <div class="tercio cotizacionM">
+                                
+                            </div>
+                            <div class="tercio cotizacionA">
+                                
+                            </div>
+                        </div>
+                        <div class="pair">
+                            <div class="tit">Base media de cotización</div>
+                            <div class="tercio baseH">
+                                asdasd asdASd
+                            </div>
+                            <div class="tercio baseM">
+                                
+                            </div>
+                            <div class="tercio baseA">
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info" id="ilgl">
+                        <h5>Todos los titulados de <span></span> a nivel nacional</h5>
+                        <div class="cabecera">
+                            <div class="tercio">
+                                Hombres
+                            </div>
+                            <div class="tercio">
+                                Mujeres
+                            </div>
+                            <div class="tercio">
+                                Ambos sexos
+                            </div>
+                        </div>
+                        <div class="odd">
+                            <div class="tit">Tasa de afiliación</div>
+                            <div class="tercio tasaAfilHG">
+                                asdasd asdASd
+                            </div>
+                            <div class="tercio tasaAfilMG">
+                                
+                            </div>
+                            <div class="tercio tasaAfilAG">
+                                
+                            </div>
+                        </div>
+                        <div class="pair">
+                            <div class="tit">Porcentaje de autónomos</div>
+                            <div class="tercio autonomosHG">
+                                asdasd asdASd
+                            </div>
+                            <div class="tercio autonomosMG">
+                                
+                            </div>
+                            <div class="tercio autonomosAG">
+                                
+                            </div>
+                        </div>
+                        <div class="odd">
+                            <div class="tit">Porcentaje con grupo de cotización nivel universitario</div>
+                            <div class="tercio cotizacionHG">
+                                asdasd asdASd
+                            </div>
+                            <div class="tercio cotizacionMG">
+                                
+                            </div>
+                            <div class="tercio cotizacionAG">
+                                
+                            </div>
+                        </div>
+                        <div class="pair">
+                            <div class="tit">Base media de cotización</div>
+                            <div class="tercio baseHG">
+                                asdasd asdASd
+                            </div>
+                            <div class="tercio baseMG">
+                                
+                            </div>
+                            <div class="tercio baseAG">
+                                
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div id="noResultsIns">
+                <h3>No hay disponible Información de inserción laboral para Doctorados</h3>
+            </div>
+        </div>
+        
+    </div>
+    <table id="tablaQedu">
+		<thead>
+			<tr>
+                <td>Nivel de estudios</td>
+                <td>Comunidad Autónoma</td>
+                <td>Tipo de universidad</td>
+                <td>Universidad</td>
+                <td>Modalidad</td>
+                <td>Tipo de centro</td>
+                <td>Provincia</td>
+                <td>Centro</td>
+                <td>Titulación</td>
+                <td>Idioma extranjero</td>
+                <td>Nota de corte final del curso</td>
+			</tr>
+		</thead>
+		<tbody>
+		</tbody>
+	</table>
+
+
+<style>
+    .imagen {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 60px;
+        flex-wrap: wrap;
+    }
+    .imagen img {
+        flex: 0 0 25%;
+        max-width: 25%;
+    }
+    .imagen h1 {
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+
+    #tablaQedu {
+    font-size: 0px;
+    }
+    #tablaQedu, #tablaQedu thead, #tablaQedu tbody, #tablaQedu tr, #tablaQedu td {
+        height: 0px;
+        padding: 0px;
+        border: 0px;
+        font-size: 0rem !important;
+    }
+
+    #buscador .txt {
+        float: left;
+    }
+
+    #buscador .enLinea {
+        display:inline-block;
+
+    }
+
+
+    
+        
+    #buscador .btn {
+        padding: 0px;
+    }
+
+    #buscador .btn pre {
+        margin: 0px;
+        text-align: right;
+    }
+
+    #buscador .btn .custom-switch {
+        text-align: right;
+    }
+
+    #filtros .flt {
+        flex: 0 0 33.33%;
+        max-width: 33.33%;
+        border: 1px solid #eee;
+        padding: 0px;
+    }
+
+    #filtros .flt .cabeceraFlt {
+        background-color: #154481;
+        color: #fff;
+        padding: 5px;
+        margin-bottom: 10px;
+    }
+
+    #buscador .opcion {
+        /*display: flex;*/
+        align-items: left;
+    }
+
+    #buscador .opcion div.titulo {
+        flex: 0 0 64%;
+    }
+
+    #buscador .opcion div.titulo h5{
+        font-weight: bold;
+    }
+    #buscador .opcion div.boton {
+        flex: 0 0 18%;
+    }
+
+    #buscador .ambitos {
+        margin-top: 15px;
+    }
+
+    #buscador .ambitos .contenedorTituloAmbito{
+        color: #525a66;
+        background-color: #FFF;
+        cursor: pointer;
+    }
+
+
+
+    #buscador .ambitos .main{
+        position: relative;
+        width: 80%;
+        padding: 15px;
+        font-size: 13px;
+        color: #525a66;
+        border: 2px solid #eaeef4;
+        border-radius: 10px;
+        background-color: #FFF;
+        min-height: 53px;
+        background: url(http://localhost:8080/site-web/.resources/site-web/webresources/img/icono-desplegar-menu.svg) no-repeat #FFF;
+        background-size: 12px 12px;
+        background-position: 97% 50%;
+
+    }
+
+    #buscador .ambitos .dropbtn::before {
+        content: "";
+        position: absolute;
+        top: 41%;
+        left: 95%;
+        z-index: 1;
+        background: url(http://localhost:8080/site-web/.resources/site-web/webresources/img/icono-desplegar-menu.svg) no-repeat #FFF;
+        background-size: 12px 12px;
+        background-position: 50% 50%;
+        transform: rotate(180deg);
+        width: 17px;
+        height: 10px;
+    }
+
+
+    #buscador .ambitos .content {
+        display: none;           
+        overflow: hidden;
+        position: relative;
+        width: 80%;
+        padding: 15px;
+        font-size: 13px;
+        color: #525a66;
+        border: 2px solid #eaeef4;
+        border-radius: 10px;
+        background-color: #FFF;
+        min-height: 53px;
+    }
+
+    #buscador .ambitos p {
+        cursor: pointer;
+        margin-bottom: 0px;
+        margin-left: 15px;
+    }
+
+    #buscador .search-button-container {
+        margin-top: 45px;
+        text-align: center;
+    }
+
+    #buscador .itemAmbito {
+        display: none;
+        color: #525a66;
+        background-color: #FFF;
+        margin-left: 15px;
+    }
+
+    #buscador .itemAmbito.active {
+        display: block;
+        transition: display 2s ease-in-out;
+    }
+        
+    #ambitos, #consulta {
+        margin: 0 auto 15px auto;
+        padding: 5px 10px !important;
+        font-size: 14px;
+        background-color: #eee;
+        border: 3px solid #eee;
+        color: #000;
+    }
+    #ambitos.active, #consulta.active {
+        background-color: #154481;
+        border: 3px solid #154481;
+        color: #FFF;
+    }
+
+    #buscador .itemAmbito div {
+        float: left;
+    }
+
+    #buscador .itemAmbito p {
+        cursor: auto;
+    }
+
+    #buscador .ambitos.busqueda {
+        /*display: none;*/
+    }
+    #buscador .nivel {
+        display: flex;
+        padding-left: 30px;
+    }
+
+    #buscador .nivel .colNivel {
+        max-width: 14%;
+        flex: 0 0 14%;
+    }
+    #buscador .nivel label {
+        margin-bottom: 0px;
+    }
+    .radio.amb {
+        margin-top: 30px;
+    }
+    .nivelTit {
+        font-size: 18px;
+        font-weight: bold;
+        padding-left: 15px;
+        margin-bottom: 30px;
+    }
+
+    .nivelSubTit {
+        font-size: 16px;
+        font-weight: bold;
+        padding-left: 15px;
+        margin-bottom: 0;
+        margin-top: 15px;
+    }
+
+    #buscador .w32{
+        width: 32%;
+    }
+
+    #buscador .w24{
+        width: 24%;
+        text-align: right;
+    }
+
+    #buscador .w25{
+        width: 25%;
+        text-align: right;
+        padding-right: 1%;
+    }
+
+    .margenColumna{
+        margin-left: 2em;
+    }
+
+    #qedu .row {
+        display: flex;
+    }
+    #qedu .row .qeduTarget {
+        flex: 0 0 33%;
+        min-width: 33%;
+        color: #4b4b4b;
+        padding: 15px;
+        cursor: pointer;
+    }
+
+    #qedu .row .qeduTarget .qeduContent {
+        border: 1px solid #d8e1e8;
+        box-shadow: -4px 4px 6px 0 rgba(67, 98, 138, 0.2);
+        hyphens: manual;
+        border-radius: 15px;
+        background-color: #FFF;
+        word-wrap: break-word;
+        padding: 15px;
+        min-height: 100%;
+    }
+
+    #qedu .row .qeduTarget .qeduContent .row {
+        margin: 10px 0px;
+    }
+
+    #qedu .row .qeduTarget .qeduContent .nota {
+        border-radius: 15px;
+        background-color: #eee;
+        padding: 4px 8px;
+    }
+
+    #qedu .row .qeduTarget .qeduContent .row div {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+
+    #qedu .row .qeduTarget .qeduContent .ccaa span {
+        font-size: 14px;
+        border-radius: 15px;
+        background-color: #ddd;
+        padding: 4px 8px;
+    }
+
+    #qedu .row .qeduTarget .qeduContent .nota .txt span {
+        font-size: 14px;
+    }
+    #qedu .row .qeduTarget .qeduContent .tipo span {
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    #qedu .row .qeduTarget .qeduContent .tipo {
+        text-align: right;
+    }
+
+    #qedu .row .qeduTarget .qeduContent .row.info .col-10 div {
+        padding: 0px 8px;
+    }
+
+    #qedu .row .qeduTarget .qeduContent .row.info .col-10 div p {
+        margin: 0px;
+    }
+
+    #qedu .row .qeduTarget .qeduContent .row.info .col-10 div.universidad p {
+        text-transform: uppercase;
+        font-size: 12px;
+        font-weight: 600;
+        color: #999;
+    }
+
+    #qedu .row .qeduTarget .qeduContent .row.info .col-10 div.titulacion p {
+        color: #000;
+        font-size: 16px;
+        font-weight: 600;
+    }
+    
+    #qedu .row .qeduTarget .qeduContent .row.info .col-10 div.facultad p {
+        font-size: 12px;
+        color: #999;
+    }
+    #qedu .row .qeduTarget .qeduContent .row.info .col-10 div.centro p {
+        font-size: 14px;
+        color: #999;
+    }
+
+    #qedu .row .qeduTarget .qeduContent .row.info .col-10 div.centro.classCentro p {
+        color: #836501;
+        font-weight: bold;
+    }
+
+    #modalTargetQedu .tipoCentro.classCentro {
+        color: #836501;
+        font-weight: bold;
+    }
+
+    #qedu .row .qeduTarget .qeduContent .nota .pts{
+        font-size: 18px;
+        color: #000;
+        font-weight: 600;
+        text-align: right;
+        padding-right: 4px;
+    }
+
+    #qedu .row .qeduTarget .qeduContent .row.info .col-2 pre {
+        text-align: right;
+        color: #000;
+        font-size: 20px;
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+        padding-right: 10px;
+    }
+
+    #modalTargetQedu {
+        position: fixed !important;
+        top: 7%;
+        left: 25%;
+        z-index: 1050 !important;
+        display: none;
+        width: 50%;
+        height:86%;
+        overflow: auto !important;
+        outline: 0;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid rgba(0, 0, 0, .2);
+        border-radius: .3rem;
+        color: black;
+    }
+
+    #modalTargetQedu .content {
+        padding: 10px;
+        outline: 0;
+    }
+
+    #modalTargetQedu .row.boton {
+        margin: 0px;
+        justify-content: flex-end;
+    }
+
+    #modalTargetQedu .row button {
+        float: right;
+    }
+     
+    #modalTargetQedu .row {
+        margin: 0px;
+        padding: 0px 10px;
+    }
+
+    #modalTargetQedu .fixed {
+        position: sticky;
+        top: 0;
+        background-color: #eee;
+    }
+
+    #modalTargetQedu .row.datos {
+        padding-left: 5px;
+        border-top: 1px solid #ddd;
+        padding-top: 5px;
+        display: flex;
+    }
+    #modalTargetQedu .row h2 {
+        font-size: 20px;
+        margin-left: 5px;
+        width: 100%;
+        font-weight: 600;
+    }
+    #modalTargetQedu .row h3 {
+        font-size: 18px;
+        margin-left: 5px;
+        width: 100%;
+        font-weight: 600;
+    }
+
+    #modalTargetQedu .row h4 {
+        font-size: 14px;
+        margin-left: 5px;
+        width: 100%;
+        margin-top: 15px;
+    }
+    #modalTargetQedu .row.datos .info {
+        min-width: 50%;
+        flex: 0 0 50%;
+        margin-bottom: 2px;
+        padding-left: 5px;
+    }
+    #modalTargetQedu .row.datos .info p, #modalTargetQedu .row.datos .info h5 {
+        width: 100%;
+    }
+
+    #modalTargetQedu .row.datos .info p {
+        font-size: 12px;
+        margin-bottom: 0px;
+    }
+
+    #modalTargetQedu .row.datos .info h5, #modalTargetQedu .row .tercio h5 {
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    #modalTargetQedu .row .tercio {
+        flex: 0 0 33%;
+        min-width: 33.33%;
+        padding: 15px;
+        text-align: center;
+        cursor: pointer;
+    }
+
+    #modalTargetQedu .row .tercio.active {
+        border-bottom: 1px solid red;
+    }
+    #modalTargetQedu .estudios.titulo, #modalTargetQedu .sexo.titulo {
+        margin: 0 auto 15px auto !important;
+        padding: 0px 10px !important;
+        font-weight: bold;
+        color: #000;
+        text-align: center;
+        background-color: #eee;
+        text-transform: uppercase;
+        border-radius: 50px;
+        font-size: 14px;
+        border: 3px solid #eee;
+        cursor: pointer;
+        transition: 0.5s ease;
+        min-width: 110px;
+        float: left;
+    }
+    #modalTargetQedu .estudios.titulo:hover, #modalTargetQedu .sexo.titulo:hover {
+        background-color: #154481;
+        border: 3px solid #154481;
+        color: #FFF;
+    }
+
+    #modalTargetQedu .titulo.active, #modalTargetQedu .sexo.active {
+        background-color: #154481;
+        border: 3px solid #154481;
+        color: #FFF;
+    }
+
+    #modalTargetQedu .titulo a {
+    }
+    #modalTargetQedu .titulo a img {
+        float: right;
+        width: 4%;
+        margin-right: 15px;
+    }
+
+    #informacion {
+        display: block;
+    }
+    #rendimiento {
+        display: none;
+    }
+    #insercion {
+        display: none;
+    }
+
+    #buscador input[type=text] {
+        padding: 15px;
+        font-size: 14px;
+        color: #525a66;
+        border: 2px solid #eaeef4;
+        background-color: #FFF;
+        border-radius: 10px;
+        text-align: left;
+        min-height: 53px;
+        width: 80%;
+    }
+
+    #filtros select {
+        padding: 5px;
+        font-size: 14px;
+        color: #525a66;
+        border: 2px solid #eaeef4;
+        background-color: #FFF;
+        border-radius: 10px;
+        text-align: left;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    #buscador ul li:before {
+        background-image: none;
+    }
+
+    #filtros, #btnFiltrar {
+        display: none;
+        margin-bottom: 30px;
+    }
+
+    #buscador .queryError, #buscador .queryError2 {
+        display: none;
+        color: red;
+    }
+
+    #noData {
+        display: none;
+    }
+
+    #btnFiltrar {
+        margin-right: 15px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    #btnFiltrar .btn div{
+        float: left;
+        border: 1px solid black;
+        padding: 3px;
+        border-radius: 6px;
+        background-color: #eee;
+        padding: 8px 16px;
+    }
+    #btnFiltrar .btn div.filterActive {
+        box-shadow: -2px -2px 20px gray inset;
+    }
+    
+    .fltA {
+        display: none;
+    }
+
+
+    #btnFiltrar .btn img {
+        height: 15px;
+        width: 15px;
+    }
+
+    #downloadTargets img, #downloadTargetsExcel img {
+        float: right;
+        height: 30px !important;
+        width: 30px !important;
+   }
+
+    #btnFiltrar #filtros .col-3, #btnFiltrar #filtros .col-2, #btnFiltrar #filtros .col-4 {
+        display: table-cell;
+    }
+
+    #btnFiltrar #filtros .button-container {
+        
+        position: absolute;
+        bottom: 10%;
+    }
+
+    #btnFiltrar #filtros .button-container button {
+        position: relative;
+        top: 25%;
+        left: 25%;
+    }
+
+    .botonFlotante{
+        position: fixed;
+        left: 85%;
+        bottom: 0%;
+    }
+
+    .ambitosEscogidos{
+        display: none;
+        position: relative;
+        font-family: "Open Sans", Sans-serif;
+        font-weight: 500;
+        color: #154581;
+        border: 2px solid #154581;
+        border-radius: 3px;
+        background: #fff;
+    }
+    
+    #universidad, #caFilter, #provincia {
+        height: 100px;
+        overflow: auto;
+    }
+    #universidad ul, #caFilter ul, #provincia ul {
+        
+        z-index: 100;
+        padding-left: 0px;
+    }
+    #universidad ul li, #caFilter ul li, #provincia ul li {
+        margin-bottom: 5px;
+        display: flex;
+        overflow-x: hidden;
+        font-size: 14px;
+    }
+    #universidad ul li:before, #caFilter ul li:before, #provincia ul li:before {
+        content: '';
+        background-image: none;
+        width: 0px;
+    }
+    .uniFilter, .ccaaFilter, .provinciaFilter {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    .provinciaFilter {
+        margin-top: 15px;
+    }
+    
+    .custom-switch {
+        float: right;
+    }
+
+    #botonScrollTop {
+        display:none;
+        background-color: #154581;
+        color: #fff;
+        font-size: 27px;
+        width: 45px;
+        height: 45px;
+        line-height: 45px;
+        bottom: 87px;
+        cursor: pointer;
+        border-radius: 2px;
+        text-align: center;
+        z-index: 100;
+        box-sizing: content-box;  
+        position: fixed;
+        left: 96%;
+    }
+
+    #infoBtn {
+        display: none;
+        background-color: #154581;
+        color: #fff;
+        font-size: 27px;
+        width: 45px;
+        height: 45px;
+        line-height: 45px;
+        bottom: 140px;
+        cursor: pointer;
+        border-radius: 2px;
+        text-align: center;
+        z-index: 100;
+        box-sizing: content-box;  
+        position: fixed;
+        left: 96%;
+        border-radius: 50%;
+    }
+
+
+    #rendimiento .nota {
+        font-size: 14px;
+        color: #525a66;
+        border: 2px solid #eaeef4;
+        background-color: #FFF;
+        border-radius: 10px;
+        text-align: left;
+        min-height: 40x;
+        width: 100%;
+    }
+
+    .fijoScroll{
+        position: fixed;
+        width: 82%;
+        z-index: 99;
+        top: 187px;
+    }
+
+
+    .container-fluid{
+        display:block;
+    }
+
+    .bloqueado{
+        pointer-events: none;
+        color: #D3D3D3;
+        z-index: 99;
+        position: initial !important;
+    }
+
+    .overlay{
+        display:none;
+        background-color: #D3D3D3;
+        z-index: 99;
+        width: 100%;
+        height: 1000vh;
+        opacity: 0.2;
+        position: absolute !important;
+    }
+
+    #rendimiento #notaRend {
+        width: 50%;
+    }
+
+    #rendimiento .notaRend.alert {
+        display: none;
+    }
+
+    #noResultsRend, #noResultsIns, #noGradoRend, #resultsIns #noTit {
+        display: none;
+    }
+    #resultsIns #noTit {
+        padding: 15px;
+        font-size: 12px;
+        border-top: 1px solid #ddd;
+    }
+    #insercion .datos.comparativos .info {
+        min-width: 100%;
+        flex: 0 0 100%;
+    }
+    #insercion .datos.comparativos .info .odd, #insercion .datos.comparativos .info .pair {
+        max-width: 100%;
+
+        display: flow-root;
+    }
+    #insercion .datos.comparativos .info .odd {
+        background-color: #eee;
+        
+    }
+    #insercion .datos.comparativos .info .odd .tercio , #insercion .datos.comparativos .info .pair .tercio {
+        float: left;
+        font-size: 14px;
+        padding: 5px;
+    }
+    #insercion .datos.comparativos .info .odd .tit, #insercion .datos.comparativos .info .pair .tit {
+        font-size: 12px;
+        width: 100%;
+        float: left;
+    }
+
+    #insercion .datos.comparativos .cabecera {
+        max-width: 100%;
+        display: flow-root;
+        border-bottom: 1px solid #ddd;
+    }
+    #insercion .datos.comparativos .cabecera .tercio {
+        float: left;
+        font-size: 14px;
+        padding: 5px;
+    }
+
+
+    .countNiveles{
+        font-weight: bold;
+    }
+
+
+    .nivelLabel{
+        width: 50%;
+    }
+
+    #modalTargetQedu .tipoCentro.classCentro {
+     position: relative;
+     display: inline-block;
+   }
+   
+   .tooltip-text {
+     visibility: hidden;
+     width: 360px;
+     background-color: #000;
+     color: #fff;
+     text-align: center;
+     border-radius: 6px;
+     padding:10px;
+     position: absolute;
+     z-index: 1;
+     bottom: 125%; /* Posiciona el tooltip encima del elemento */
+     left: 50%;
+     transform: translateX(-50%);
+     opacity: 0;
+     transition: opacity 0.3s;
+   }
+
+   #modalTargetQedu .tipoCentro.classCentro:hover .tooltip-text {
+     visibility: visible;
+     opacity: 1;
+   }
+
+       .tercio.head h5 {
+        font-size: 20px !important;
+    }
+
+    .content .head h4, .content .datos.head h4 {
+        font-size: 18px !important;
+    }
+
+    .content .datos h4 {
+        font-size: 16px !important;
+    }
+
+    #noGradoRend h3, #noResultsIns h3 {
+        margin-top: 60px;
+        margin-left: 15px;
+        font-size: 24px;
+    }
+
+    .select2.select2-container.select2-container--default {
+        width: 100% !important;
+    }
+
+    .modalMovil{
+        position: absolute !important;
+        top: 12%;
+        /*border: 1px solid black;*/
+        background-color: white;
+        display: none;
+        width: 100%;
+        height: 100%;
+    }
+
+    .modalMovil a {
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 20px;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+
+    .modalMovil a img {
+        max-width: 50%;
+    }
+
+    .modalMovilTexto {
+        width: fit-content;
+        margin: auto;
+        margin-top: 20px;
+    }
+
+    .modalMovilEnlaces {
+        width: fit-content;
+        position: relative;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    .modalMovilEnlaces.boton {
+        margin: auto;
+    }
+
+
+   @media only screen and (max-width: 1850px) {
+        #buscador .nivel .colNivel {
+            max-width: 22%;
+            flex: 0 0 22%;
+        }
+
+        .nivelLabel {
+            width: 80%;
+        }
+
+        #buscador .ambitos .main {
+            background-position: 99% 50%;
+        }
+   }
+
+    @media only screen and (max-width: 1590px) {
+        #qedu .row .qeduTarget .qeduContent .tipo span{
+            font-size: 15px;
+        }
+    }
+
+    @media only screen and (max-width: 1590px) {
+
+        #qedu .row .qeduTarget .qeduContent .row .ccaa{
+            max-width: 70%;
+
+        }
+
+        #qedu .row .qeduTarget .qeduContent .row .tipo{
+            max-width: 29%;
+            margin: auto;
+            
+        }
+
+        #qedu .row .qeduTarget .qeduContent .row .tipo span{
+            font-size: 0.8em;
+            
+        }
+
+        #qedu .row .qeduTarget .qeduContent .ccaa span {
+            font-size: 12px;
+        }
+
+        #buscador .ambitos .main {
+            background-position: 99% 50%;
+        }
+
+    }
+
+
+    @media only screen and (max-width: 1024px) {
+
+        #qedu .row .qeduTarget {
+            min-width: 50% ;
+        }
+
+        #qedu .row .qeduTarget .qeduContent .nota .pts {
+            font-size: 14px;
+        }
+
+        #qedu .row .qeduTarget .qeduContent .tipo span, #qedu .row .qeduTarget .qeduContent .nota .txt span{
+            font-size: 12px;
+        }
+
+        #filtros .flt{
+            display: block !important;
+            max-width: 80%;
+        }
+
+        #btnFiltrar #filtros .button-container{
+            position: relative;
+            margin-top: 3%;
+        }
+
+        #modalTargetQedu{
+                width: 80%;
+                left: 10%;
+            }
+
+
+    }
+
+
+
+    @media only screen and (max-width: 901px) {
+        .fijoScroll{
+            top: 0px;
+        }
+
+    }
+
+    @media only screen and (max-width: 850px) {
+        .fijoScroll{
+            top: 0px;
+        }
+
+        #buscador .nivel{
+            display: block;
+            flex: auto;
+            max-width: 100%;
+
+        }
+
+        .tercio.head h5 {
+            font-size: 15px !important;
+        }
+
+        #botonScrollTop, #infoBtn {
+            left: 92%;
+        }
+
+    }
+
+
+    @media only screen and (max-width: 600px) {
+
+           #qedu .row .qeduTarget {
+                min-width: 100%;
+                width: 100%;
+           } 
+
+           #btnFiltrar #filtros .col-3, #btnFiltrar #filtros .col-2, #btnFiltrar #filtros .col-4 {
+                display: block;
+                max-width: 100%;
+           }
+
+           #botonScrollTop, #infoBtn {
+                bottom: 4%;
+                left: 85%;
+           }
+
+            .tercio.head h5 {
+                font-size: 15px !important;
+            }
+
+           #buscador .col-8{
+                max-width: 100%;
+           }
+
+
+            #qedu .row {
+                display: block;
+            }
+           
+           .row {
+                display: block;
+           }
+
+            #botonScrollTop, #infoBtn {
+            left: 92%;
+            }
+
+           #buscador .opcion {
+                display: block;
+                max-width: 100%;
+           }
+
+           #buscador .ambitos.busqueda{
+                max-width: 100%;
+                width: 100%;
+           }
+
+           #buscador .ambitos .main{
+            width: 100%;
+           }
+
+           #buscador input[type=text]{
+            width: 100%;
+           }
+
+            #qedu .row .qeduTarget .qeduContent .row.info .col-2 pre{
+                margin-left: 10px;
+                margin-top: 10px;
+                text-align: left;
+            }
+
+
+            .content .datos .info .titulo img{
+                width: 15%;
+            }
+
+            #modalTargetQedu{
+                width: 90%;
+                left: 5%;
+            }
+
+            #qedu .row .qeduTarget .qeduContent .tipo{
+                max-width: 19%;
+                text-align: left;
+                margin-left: 10px;
+            }
+
+            #buscador .nivel .colNivel {
+                max-width: 70%;
+            }
+
+
+            .inlineMovil{
+                display: inline;
+            }
+
+            .numResultados{
+                display: inline-block;
+            }
+
+            #qedu .row .qeduTarget .qeduContent .row .ccaa{
+                width: 100%;
+                
+            }
+
+            #qedu .row .qeduTarget .qeduContent .row .tipo{
+                margin: inherit;
+            }
+            
+
+            #buscador .search-button-container{
+                display: inline;
+                margin-left: 14px;
+            }
+
+
+
+        .modalMovilEnlaces button.generic-button {
+            max-width: 100% !important;
+
+        }
+
+    }
+
+    @media only screen and (max-width: 450px) {
+        #qedu .row .qeduTarget .qeduContent .nota .pts {
+            font-size: 11px;
+        }
+
+        #search-button-qedu{
+            padding: 8px 22px !important;
+        }
+
+        #clean-search-qedu{
+            padding: 8px 22px !important;
+        }
+
+        #btnFiltrar .col-12{
+            padding-left: 0px;
+        }
+
+        #btnFiltrar{
+            text-align: left;
+            float: left;
+        }
+
+        #botonScrollTop, #infoBtn {
+            left: 92%;
+        }
+
+        #qedu .row .qeduTarget .qeduContent .row .tipo{
+            margin: inherit;
+        }
+
+    }
+    
+
+
+</style>
+
+<script>
+    var tooltipLiteral = 'Los centros adscritos están vinculados mediante la firma de un convenio a una Universidad. Los alumnos de estos centros, además de las tasas académicas, suelen realizar otros pagos periódicos';
+    var numResultadosLiteral = 'Se han encontrado';
+    var resultadosLiteral = 'resultados';
+    var urlQedu = '/home/qedu/main/zona02/0';
+    
+
+    $(document).ready(function () {
+        $('.js-example-basic-multiple').select2();
+        activeTarget();
+        loadTargets();
+        filtros();
+        ambitosSwitch();
+        //scrollTop();
+        selectAnidados();
+        uniFilterSwitch();
+        ccaaFilterSwitch();
+        provinciaFilterSwitch();
+        rendChangeOptions();
+        searchChangeOptions();
+        cleanSearchQedu();
+        modalMovil();
+    });
+
+    function modalMovil() {
+        if($(document).width() <= 600){
+            $('.modalMovil').show();
+            $('#qedu').first().addClass('bloqueado');
+            $('.overlay').first().show();
+            $('body').css('overflow', 'hidden');
+        }
+        
+        $('.modalMovil .modalMovilEnlaces button').click(function() {
+            $('.modalMovil').hide();
+            $('#qedu').first().removeClass('bloqueado');
+            $('.overlay').first().hide();
+            $('body').css('overflow', 'auto');
+        });
+    }
+    
+    function modallHide() {
+        $("#modalTargetQedu").hide();
+        $("#qedu").first().removeClass("bloqueado");
+        $(".overlay").first().hide();
+        $('body').css('overflow', 'scroll');
+    }
+
+    function activeTarget() {
+        $('#modalTargetQedu .row .tercio.head').click(function() {
+            $('#modalTargetQedu .row .tercio.head').removeClass('active');
+            $(this).addClass('active');
+            $('#modalTargetQedu .content').hide();
+            let id = '#modalTargetQedu .content#' + $(this).attr('name');
+            $(id).show();
+        })
+    } 
+
+    function targetsHeight() {
+        var alturas = [];
+        $('.qeduTarget .qeduContent .info').each(function(){
+            alturas.push($(this).height());
+        });
+
+        var maximo = Math.max.apply(null, alturas)
+
+        $('.qeduTarget .qeduContent .info').each(function(){
+            //Aplicamos a todos los divs la misma altura
+            $(this).height(maximo);
+        });
+
+    }
+
+    function cleanSearchQedu(){
+        $('#clean-search-qedu').click(function() {
+            $('#query').val('');
+            $('#targets').empty();
+            //$('.ambitosEscogidos').empty();
+            //$('.ambitosEscogidos').hide();
+            $('#btnFiltrar').hide();
+            $('#btnFiltrar .btn div .fltN').css('display', 'inline-block');
+            $('#btnFiltrar .btn div .fltA').css('display', 'none');
+            $("#presencialidad").val("all");
+            $("#idioma").val("all");
+            $("#nota").val("all");
+            $("#tipoUniversidad").val("all");
+            /*
+            $("#customSwitchUniversidad").prop( "checked", true );
+            $('#universidad li input[type=checkbox]').prop('checked', true);
+            $("#customSwitchCcaa").prop( "checked", true );
+            $('#caFilter li input[type=checkbox]').prop('checked', true);
+            $("#customSwitchProvincia").prop( "checked", true );
+            $('#provincia li input[type=checkbox]').prop('checked', true);
+            */
+            $('#universidad').val('');
+            $('#select2-universidad-container').empty();
+            $('#caFilter').val('');
+            $('#select2-caFilter-container').empty();
+            $('#provincia').val('');
+            $('#select2-provincia-container').empty();
+            $("#customSwitch1").prop( "checked", false );
+            $('.itemAmbito input[type=checkbox]').prop('checked', false);
+            $('.countNiveles').remove();
+            $("label[for='grado']").parent().children('.labelNiv').remove();
+            $("label[for='grados']").parent().children('.labelNiv').remove();
+            $("label[for='masterd']").parent().children('.labelNiv').remove();
+            $("label[for='masterd']").parent().children('.labelNiv').remove();
+            $("label[for='doctor']").parent().children('.labelNiv').remove();
+            $('.numResultados').empty();
+            $('#infoBox').show();
+            $('#infoBtn').hide();
+        });
+    }
+
+function loadTargets() {
+
+    $(document).on('keypress',function(e) {
+        if(e.which == 13) {
+            //$('.ambitosEscogidos').first().css('display', 'block');
+            offset = 0;
+        $("#noData").hide();
+         
+        var type = $('#buscador .opcion input[type=radio]:checked').val();
+        
+        if(type === 'consulta' && $("#query").val().length >= 3){
+            firstCharge(type);
+            $('#btnFiltrar .btn div .fltN').css('display', 'inline-block');
+            $('#btnFiltrar .btn div .fltA').css('display', 'none');
+            $("#presencialidad").val("all");
+            $("#idioma").val("all");
+            $("#nota").val("all");
+            $("#tipoUniversidad").val("all");
+
+            $("#btnFiltrar").show();
+            $("#buscador .queryError").hide();
+            $("#buscador .queryError2").hide();
+        }
+        else if(type === 'ambitos' && $('.itemAmbito input[type=checkbox]:checked').length > 0) {
+            firstCharge(type);
+            $('#btnFiltrar .btn div .fltN').css('display', 'inline-block');
+            $('#btnFiltrar .btn div .fltA').css('display', 'none');
+            $("#presencialidad").val("all");
+            $("#idioma").val("all");
+            $("#nota").val("all");
+            $("#tipoUniversidad").val("all");
+
+            $("#btnFiltrar").show();
+            $("#buscador .queryError").hide();
+            $("#buscador .queryError2").hide();
+        }
+        else if(type === 'consulta' && $("#query").val().length >= 0 && $("#query").val().length < 3) {
+            //Mensaje de control
+            $("#buscador .queryError").show();
+        }
+        else if(type === 'ambitos' && $('.itemAmbito input[type=checkbox]:checked').length == 0) {
+            //Mensaje de control
+            $("#buscador .queryError2").show();
+        }
+            
+
+        }
+    });
+    $('#search-button-qedu').click(function() {
+        //$('.ambitosEscogidos').first().css('display', 'block');
+        offset = 0;
+        $('#infoBtn').show();
+        $('#infoBox').hide();
+        $("#noData").hide();
+         
+        var type = $('#buscador .opcion input[type=radio]:checked').val();
+        
+
+        if(type === 'consulta' && $("#query").val().length >= 3){
+            firstCharge(type);
+            $('#btnFiltrar .btn div .fltN').css('display', 'inline-block');
+            $('#btnFiltrar .btn div .fltA').css('display', 'none');
+            $("#presencialidad").val("all");
+            $("#idioma").val("all");
+            $("#nota").val("all");
+            $("#tipoUniversidad").val("all");
+
+            $("#btnFiltrar").show();
+            $("#buscador .queryError").hide();
+            $("#buscador .queryError2").hide();
+        }
+        else if(type === 'ambitos' && $('.itemAmbito input[type=checkbox]:checked').length > 0) {
+            firstCharge(type);
+            $('#btnFiltrar .btn div .fltN').css('display', 'inline-block');
+            $('#btnFiltrar .btn div .fltA').css('display', 'none');
+            $("#presencialidad").val("all");
+            $("#idioma").val("all");
+            $("#nota").val("all");
+            $("#tipoUniversidad").val("all");
+
+
+            $("#btnFiltrar").show();
+            $("#buscador .queryError").hide();
+            $("#buscador .queryError2").hide();
+        }
+        else if(type === 'consulta' && $("#query").val().length >= 0 && $("#query").val().length < 3) {
+            //Mensaje de control
+            $("#buscador .queryError").show();
+        }
+        else if(type === 'ambitos' && $('.itemAmbito input[type=checkbox]:checked').length == 0) {
+            //Mensaje de control
+            $("#buscador .queryError2").show();
+        }
+        
+        
+    })
+
+    $('#btnFiltrar .btn span').click(function() {
+        $("#filtros").animate({
+            height: 'toggle'
+        });            
+
+    })
+}    
+
+var magnoliaInstance = window.location.origin;
+
+var offset = 0;
+var json = '';
+var json_filtrado;
+function firstCharge(type) {
+
+    var niveles = [];
+    $('.nivel input[type=checkbox').each(function(i, el) {
+        if($(el).prop('checked')) {
+            niveles.push('\'' + $(el).prop('id').toUpperCase() + '\'');
+        }
+    });
+    
+    var ambitos = [];
+    $('.itemAmbito input[type=checkbox]').each(function(i, el) {
+        if($(el).prop('checked')) {
+            ambitos.push($(el).prop('id').toUpperCase());
+        } 
+    });
+    var data = {
+        action: 'tarjeta',
+        offset: offset,
+        consulta: $('#query').val(),
+        niveles: niveles.toString(),
+        ambitos: ambitos.toString()
+    };
+
+    if(type === 'ambitos') {
+        data = {
+            action: 'tarjeta',
+            offset: offset,
+            consulta: '',
+            niveles: niveles.toString(),
+            ambitos: ambitos.toString()
+        }
+    }
+
+    $.ajax({
+		type: 'POST',
+		url: urlQedu,
+		contenType: 'application/json',
+		dataType: 'json',
+		data: data,
+		success: function (response) {
+            //console.log(response)
+            if(response.length > 0){
+                json = response;
+                json_filtrado = response;
+                pintarTarjetas(json);
+                $('html,body').animate({
+                    scrollTop: $("#targets").offset().top - 300
+                }, 'slow');
+            }else{
+                $('#targets').html('');
+                resultsZero();
+                $("#noData").show();
+            }
+		},
+		error: function(err) {
+			//console.log("Error mapa centros: "+ err);
+			//console.log(err);
+		},
+		complete: function() {
+            offset += 12;
+            
+		}
+	});
+
+}
+var load = true;
+$(window).scroll(function(){
+    if (isOnScreen($('.qeduTarget').last())){
+        if(load) {
+            load = false;
+            //ajax2();
+        }
+    }
+
+     var y = $(this).scrollTop();
+
+     if (y > 200) {
+        $('#botonScrollTop').css('display', 'block');
+     }else{
+        $('#botonScrollTop').css('display', 'none');
+     }
+
+
+
+        var elemAmbitos = $('.ambitos').first();
+        var visibleAtTop = elemAmbitos.offset().top + elemAmbitos.height() >= $(window).scrollTop();
+        var visibleAtBottom = elemAmbitos.offset().top <= $(window).scrollTop() + $(window).height();
+        /*if (!visibleAtTop || !visibleAtBottom) {
+            
+            $('.ambitosEscogidos').addClass('fijoScroll');
+        }else{
+            $('.ambitosEscogidos').removeClass('fijoScroll');
+        }*/
+
+
+});
+
+function ajaxModal(cod_tit, cod_centro, cod_univ) {
+
+    $('#modalTargetQedu .row .tercio').removeClass('active');
+    $('#modalTargetQedu .row .tercio:first-child').addClass('active');
+    $('#modalTargetQedu .content').hide();
+    $('#modalTargetQedu .content#informacion').show();
+    $('#qedu').first().addClass('bloqueado');
+    $('.overlay').first().show();
+    $('body').css('overflow', 'hidden');
+    
+    $.ajax({
+		type: 'POST',
+		url: urlQedu,
+		contenType: 'application/json',
+		dataType: 'json',
+		data: {
+            action: 'detalle',
+            codTit: cod_tit,
+            codCentro: cod_centro,
+            codUniv: cod_univ
+        },
+		success: function (response) {
+            printModal(response);
+		},
+		error: function(err) {
+			//console.log("Error mapa centros: "+ err);
+			//console.log(err);
+		},
+		complete: function() {
+            ajaxRendimiento();
+            detalleInsercion(cod_tit, cod_centro, cod_univ);
+            detalleInsercionAmb();
+            detalleInsercionAmbG();
+            $("#modalTargetQedu").show();
+		}
+	});
+    
+}
+
+function rendChangeOptions() {
+    /**$('#modalTargetQedu #notaRend').keyup(function(i, el) {
+        $('#rendimiento .notaRend.alert').hide();
+        if($('#modalTargetQedu #notaRend').val() < 5 || $('#modalTargetQedu #notaRend') > 14) {
+            $('#rendimiento .notaRend.alert').show();
+        }else {
+            ajaxRendimiento();
+        }
+    });*/
+    $('#modalTargetQedu #notaRend').change(function(i, el) {
+        $('#rendimiento .notaRend.alert').hide();
+        ajaxRendimiento();
+    });
+    $('#modalTargetQedu .titulo.sexo').click(function(i, el) {
+        $('#modalTargetQedu .sexo.titulo').removeClass('active');
+        $(this).addClass('active');
+        ajaxRendimiento();
+    });
+    $('#modalTargetQedu .estudios.titulo').click(function(i, el) {
+        $('#modalTargetQedu .estudios.titulo').removeClass('active');
+        $(this).addClass('active');
+        ajaxRendimiento();
+    });
+}
+
+function searchChangeOptions() {
+    $('#buscador .opcion input[type=radio]').change(function(i, el) {
+        $('#buscador .busqueda #query').val('');
+        $('#buscador .busqueda input[type=checkbox]').prop('checked', false);
+        $('#buscador .ambitos label.main').toggleClass('dropbtn');
+        $("#buscador .queryError").hide();
+        $("#buscador .queryError2").hide();
+        $('#buscador .ambitos .content').animate({
+            height: 'toggle'
+        });
+
+        if ($('#ambitos').is(':checked')) {
+            $('#query').val('').prop('disabled', true);
+        } else if ($('#consulta').is(':checked')) {
+            $('#query').prop('disabled', false);
+        }
+
+    });
+
+
+    $('#buscador .ambitos.busqueda .main').click(function(i, el) {
+        console.log($('#buscador .opcion input[type=radio]:checked').val());
+        if($('#buscador .opcion input[type=radio]:checked').val() == 'consulta'){
+            $('#buscador .busqueda #query').val('');
+            $('#buscador .busqueda input[type=checkbox]').prop('checked', false);
+            $('#buscador #ambitos').prop('checked', true);
+            $('#buscador .ambitos label.main').toggleClass('dropbtn');
+            $("#buscador .queryError").hide();
+            $("#buscador .queryError2").hide();
+            $('#buscador .ambitos .content').animate({
+                height: 'toggle'
+            });
+            
+            //Controlar caso en el quese clicka sobre ambitos y no el checkbox, caja bloqueada  
+            if ($('#ambitos').is(':checked')) {
+                $('#query').val('').prop('disabled', true);
+            } else if ($('#consulta').is(':checked')) {
+                $('#query').prop('disabled', false);
+            }
+            
+        }
+    });
+
+}
+
+function ajaxRendimiento() {
+
+    var nivelDTO = $('#modalTargetQedu #insercion').attr('nivel');
+
+
+    if(nivelDTO === 'GRADO') {
+        $('#gradoRend').show();
+        $('#noGradoRend').hide();
+        var ambito = $('#modalTargetQedu #rendimiento').attr('ambito');
+        var notaRend = $('#modalTargetQedu #notaRend').val();
+        var sexo = $('#modalTargetQedu .sexo.titulo.active').val();
+        var estudios = $('#modalTargetQedu .estudios.titulo.active').val();
+
+        json = {
+                action: 'detalleRend',
+                notaRend: notaRend,
+                estudios: estudios,
+                sexo: sexo,
+                ambito: ambito
+            }
+        //console.log(json);
+        
+        $.ajax({
+            type: 'POST',
+            url: urlQedu,
+            contenType: 'application/json',
+            dataType: 'json',
+            data: json,
+            success: function (res) {
+                if(res != '') {
+                    printRend(res);
+                }
+                else {
+                    $('#resultsRend').hide();
+                    $('#noResultsRend').show();
+                }
+            },
+            error: function(err) {
+                //console.log("Error mapa centros: "+ err);
+                //console.log(err);
+            },
+            complete: function() {
+                
+            }
+        });
+    }
+    else {
+        $('#gradoRend').hide();
+        $('#noGradoRend').show();
+    }
+}
+
+function printRend(res) {
+    $('#resultsRend').show();
+    $('#noResultsRend').hide();
+    var rendInv = res.rdtoInv + '%';
+    var rendIsced = res.rdtoIsced + '%';
+    $('#rendInv').css('width', rendInv.replace(',', '.'));
+    $('#rendIsced').css('width', rendIsced.replace(',', '.'));
+    $('.rendInv').text(rendInv);
+    $('.rendIsced').text(rendIsced);
+}
+
+
+function printModal(obj) {
+
+     if(obj !== undefined) {
+        //enlace
+        $('#modalTargetQedu h2.titulo').text(obj.titulacion);
+        $('#modalTargetQedu .titulo span').text(obj.titulacion);
+        $('#modalTargetQedu .titulo a').attr('href', obj.enlace);
+        $('#modalTargetQedu .centro').text(obj.nombreCentro);
+        if(obj.tipoCentro.toLowerCase() === 'adscrito') {
+            $('#modalTargetQedu .tipoCentro').text(obj.tipoCentro).addClass('classCentro').append('<span class="tooltip-text">'+tooltipLiteral+'</span>');
+        }
+        else {
+            $('#modalTargetQedu .tipoCentro').text(obj.tipoCentro).removeClass('classCentro');
+        }
+        $('#modalTargetQedu .modalidad').text(obj.modalidad);
+        $('#modalTargetQedu .idioma').text(obj.idiomaextranjero);
+        $('#modalTargetQedu .plazas').text(obj.plazas);
+        $('#modalTargetQedu .tasa').text(obj.tasas);
+        $('#modalTargetQedu .tipoUniversidad').text(obj.tipoUniversidad);
+        $('#modalTargetQedu .nombre').text(obj.nombreUniversidad);
+        $('#modalTargetQedu .ccaa').text(obj.ccaa);
+        $('#modalTargetQedu .provincia').text(obj.provincia);
+        $('#modalTargetQedu .creditos').text(obj.creditos);
+        $('#modalTargetQedu .precio').text(obj.precio);
+        $('#modalTargetQedu .notaActual').text(obj.notaCorte);
+        $('#modalTargetQedu .notaAnterior').text(obj.notaCorteAnt);
+        $('#modalTargetQedu .media').text(obj.notaAdmision);
+        $('#modalTargetQedu #rendimiento').attr('ambito', obj.ambito);
+        $('#modalTargetQedu #insercion').attr('nivel', obj.nivel);
+        $('#modalTargetQedu .post span').text(obj.anioActual);
+        $('#modalTargetQedu .ant span').text(obj.anioAnterior);
+    }
+    else {
+        $('#modalTargetQedu h2.titulo').text('');
+        $('#modalTargetQedu .titulo').text('');
+        $('#modalTargetQedu .titulo span').attr('href', '');
+        $('#modalTargetQedu .centro').text('');
+        $('#modalTargetQedu .tipoCentro').text('');
+        $('#modalTargetQedu .modalidad').text('');
+        $('#modalTargetQedu .idioma').text('');
+        $('#modalTargetQedu .plazas').text('');
+        $('#modalTargetQedu .tasa').text('');
+        $('#modalTargetQedu .tipoUniversidad').text('');
+        $('#modalTargetQedu .nombre').text('');
+        $('#modalTargetQedu .ccaa').text('');
+        $('#modalTargetQedu .provincia').text('');
+        $('#modalTargetQedu .creditos').text('');
+        $('#modalTargetQedu .precio').text('');
+        $('#modalTargetQedu .notaActual').text('');
+        $('#modalTargetQedu .notaAnterior').text('');
+        $('#modalTargetQedu .media').text('');
+        $('#modalTargetQedu #rendimiento').attr('ambito', ''); 
+        $('#modalTargetQedu #insercion').attr('nivel', '');
+        $('#modalTargetQedu .post span').text('');
+        $('#modalTargetQedu .ant span').text('');
+    }
+}
+
+function filtros() {
+
+    $('.universidad').click(function() {
+        $('#universidad ul').toggle();
+    });
+
+    
+    $('#filtrar').click(function(i, el){
+
+        //console.log($('#universidad').val());
+        //console.log(arrayFiltros('#caFilter'));
+
+        $("#noData").hide();
+        $('#btnFiltrar .btn div .fltN').css('display', 'inline-block');
+                $('#btnFiltrar .btn div .fltA').css('display', 'none');
+        //$('.ambitosEscogidos').first().css('display', 'block');
+        var valorModalidad = $('#presencialidad').val();
+        var textoModalidad = $('#presencialidad option:selected').text();
+        var valorIdioma = $('#idioma').val();
+        var textoIdioma = $('#idioma option:selected').text();
+        
+        var valorNota = $('#nota').val();
+        var textoNota = $('#nota option:selected').text();
+        var valorTipo = $('#tipoUniversidad').val();
+        var textoTipo = $('#tipoUniversidad option:selected').text();
+
+        
+        var valorUniversidad = $('#universidad').val();
+        var valorCcaa = $('#caFilter').val();
+        var valorProvincia = $('#provincia').val();
+
+        var filter_json = json;
+        //$('.ambitosEscogidos').append("Se estan aplicando los siguientes filtros: ");
+        
+        if(valorModalidad !== 'all') {
+            var filter_aux = filter_json;
+            filter_json = filter_json.filter(res => res.modalidad ===  valorModalidad);
+            if(valorModalidad !== '4') {
+                filter_aux = filter_aux.filter(res => res.modalidad ===  '4');
+                filter_aux.forEach(function(el, i) {
+                    filter_json.push(el)
+                });
+            }
+            //$('.ambitosEscogidos').append("Modalidad ");
+            $('#btnFiltrar .btn div .fltN').css('display', 'none');
+            $('#btnFiltrar .btn div .fltA').css('display', 'inline-block')
+        }
+        if(valorIdioma !== 'all') {
+            filter_json = filter_json.filter(res => res.idiomaextranjero ===  valorIdioma);
+            //$('.ambitosEscogidos').append("Idioma extranjero ");
+            $('#btnFiltrar .btn div .fltN').css('display', 'none');
+            $('#btnFiltrar .btn div .fltA').css('display', 'inline-block');
+        }
+        if(valorTipo !== 'all') {
+            filter_json = filter_json.filter(res => res.tipoUniversidadFiltro ===  valorTipo);
+           //$('.ambitosEscogidos').append("Tipo universidad ");
+           $('#btnFiltrar .btn div .fltN').css('display', 'none');
+            $('#btnFiltrar .btn div .fltA').css('display', 'inline-block');
+
+        }
+        if(valorNota !== 'all') {
+            filter_json = filter_json.filter(res => parseFloat(res.notaCorteFiltro) <= parseFloat(valorNota));
+            //$('.ambitosEscogidos').append("Nota ");
+            $('#btnFiltrar .btn div .fltN').css('display', 'none');
+            $('#btnFiltrar .btn div .fltA').css('display', 'inline-block');
+        }
+        if(!$('#customSwitchUniversidad').prop('checked') && valorUniversidad.length > 0) {
+            //$('.ambitosEscogidos').append("Universidad" );
+            $('#btnFiltrar .btn div .fltN').css('display', 'none');
+                $('#btnFiltrar .btn div .fltA').css('display', 'inline-block');
+            var json_medio = [];
+            valorUniversidad.forEach(function(el, i) {
+                filter_json.forEach(function(elJ, iJ) {
+                    if(elJ.codUniv === el) {
+                        json_medio.push(filter_json[iJ]);
+                        
+                        
+                    }
+                })
+            });
+            filter_json = json_medio;
+        }
+        if(!$('#customSwitchCcaa').prop('checked') && valorCcaa.length > 0) {
+           // $('.ambitosEscogidos').append("Comunidad autónoma " );
+           $('#btnFiltrar .btn div .fltN').css('display', 'none');
+                $('#btnFiltrar .btn div .fltA').css('display', 'inline-block');
+            var json_medio = [];
+            valorCcaa.forEach(function(el, i) {
+                filter_json.forEach(function(elJ, iJ) {
+                    if(elJ.ccaa === el) {
+                        json_medio.push(filter_json[iJ]);
+                    }
+                })
+            });
+            filter_json = json_medio;
+        }
+        if(!$('#customSwitchProvincia').prop('checked') && valorProvincia.length > 0) {
+            //$('.ambitosEscogidos').append("Provincia" );
+            $('#btnFiltrar .btn div .fltN').css('display', 'none');
+                $('#btnFiltrar .btn div .fltA').css('display', 'inline-block');
+            var json_medio = [];
+            valorProvincia.forEach(function(el, i) {
+                filter_json.forEach(function(elJ, iJ) {
+                    if(elJ.codProvi === el) {
+                        json_medio.push(filter_json[iJ]);
+                    }
+                })
+            });
+            filter_json = json_medio;
+            //filter_json = filter_json.filter(res => res.codProvi === valorProvincia);
+        }
+
+        if(filter_json.length > 0){
+            pintarTarjetas(filter_json);
+        }else{
+
+            $('#targets').html('');
+            resultsZero();
+            $("#noData").show();
+        }
+        json_filtrado = filter_json;
+        //pintarTarjetas(filter_json);
+        $("#filtros").animate({
+            height: 'toggle'
+        });   
+    });
+}
+
+function resultsZero() {
+    $('.countNiveles').empty();
+    $('.numResultados').empty();
+    $('.numResultados').append(numResultadosLiteral + ' ' + 0 + ' ' + resultadosLiteral);
+
+    if($('#grado').prop('checked')) {
+        $("label[for='grado']").parent().children('.labelNiv').remove();
+        $("label[for='grado']").parent().append('<label class="labelNiv"><span class="countNiveles">' + 0 + '</span></label>');
+    }
+    if($('#gradod').prop('checked')) {
+        $("label[for='grados']").parent().children('.labelNiv').remove();
+        $("label[for='gradod']").parent().append('<label class="labelNiv"><span class="countNiveles">' + 0 + '</span></label>');
+    }
+    if($('#master').prop('checked')) {
+        $("label[for='masterd']").parent().children('.labelNiv').remove();
+        $("label[for='master']").parent().append('<label class="labelNiv"><span class="countNiveles">' + 0 + '</span></label>');
+    }
+    if($('#masterd').prop('checked')) {
+        $("label[for='masterd']").parent().children('.labelNiv').remove();
+        $("label[for='masterd']").parent().append('<label class="labelNiv"><span class="countNiveles">' + 0 + '</span></label>');
+    }
+    if($('#doctor').prop('checked')) {
+        $("label[for='doctor']").parent().children('.labelNiv').remove();
+        $("label[for='doctor']").parent().append('<label class="labelNiv"><span class="countNiveles">' + 0 + '</span></label>');
+    }
+}
+
+function pintarTarjetas(json) {
+    var html = '';
+    var countGrado = 0;
+    var countGradoD = 0;
+    var countMaster = 0;
+    var countMasterD = 0;
+    var countDoctor = 0;
+    $.each(json, function (i, e) {
+        var classCentro = '';
+        if(e.tipoCentro.toLowerCase() === 'adscrito') {
+            classCentro = 'classCentro';
+        }
+
+        html+='<div onclick="ajaxModal(\''+e.codTitula+'\',\''+e.codCentro+'\',\''+e.codUniv+'\');" class="qeduTarget">'+
+            '<div class="qeduContent">'+
+                '<div class="row">'+
+                    '<div class="col-10 ccaa"><span>'+e.ccaa+'</span></div>'+
+                    '<div class="col-2 tipo"><span>'+e.tipoUniversidad+'</span></div>'+
+                '</div>'+
+                '<div class="row info">'+
+                    '<div class="col-10">'+
+                        '<div class="universidad"><p>'+e.nombreUniversidad+'</p></div>'+
+                        '<div class="titulacion"><p>'+e.titulacion+'</p></div>'+
+                        '<div class="facultad"><p>'+e.nombreCentro+' (' + e.provincia + ')</p></div>'+
+                        '<div class="centro '+classCentro+'"><p>Centro '+e.tipoCentro+'</p></div>'+
+                    '</div>'+
+                    '<div class="col-2">'+
+                        '<pre>></pre>'+
+                    '</div>'+
+                '</div>'+
+                '<div class="row nota">'+
+                    '<div class="col-10 txt"><span>Nota de corte final del curso</span> <span class="anio">' + e.anio + '</span></div>'+
+                    '<div class="col-2 pts"><span>'+e.notaCorte.replace('.', ',')+'</span></div>'+
+                '</div>'+
+            '</div>'+
+        '</div>';
+
+        if(e.nivel == "GRADO"){
+            countGrado++;
+        }else if(e.nivel == "GRADOD"){
+            countGradoD++;
+        }else if(e.nivel == "MASTER"){
+            countMaster++;
+        }else if(e.nivel == "MASTERD"){
+            countMasterD++;
+        }else if(e.nivel == "DOCTOR"){
+            countDoctor++;
+        }
+
+
+    });
+    $('#targets').html(html);
+    $('.countNiveles').empty();
+    $('.numResultados').empty();
+    $('.numResultados').append(numResultadosLiteral + ' ' + json.length + ' ' + resultadosLiteral);
+
+    if(countGrado != 0){
+        $("label[for='grado']").parent().children('.labelNiv').remove();
+        $("label[for='grado']").parent().append('<label class="labelNiv"><span class="countNiveles">' + countGrado + '</span></label>');
+    }
+    if(countGradoD != 0){
+        $("label[for='gradod']").parent().children('.labelNiv').remove();
+        $("label[for='gradod']").parent().append('<label class="labelNiv"><span class="countNiveles">' + countGradoD + '</span></label>');
+    }
+    if(countMaster != 0){
+        $("label[for='master']").parent().children('.labelNiv').remove();
+        $("label[for='master']").parent().append('<label class="labelNiv"><span class="countNiveles">' + countMaster + '</span></label>');
+    }
+    if(countMasterD != 0){
+        $("label[for='masterd']").parent().children('.labelNiv').remove();
+        $("label[for='masterd']").parent().append('<label class="labelNiv"><span class="countNiveles">' + countMasterD + '</span></label>');
+    }
+    if(countDoctor != 0){
+        $("label[for='doctor']").parent().children('.labelNiv').remove();
+        $("label[for='doctor']").parent().append('<label class="labelNiv"><span class="countNiveles">' + countDoctor + '</span></label>');
+    }
+    
+    
+
+
+    targetsHeight();
+}
+
+function ambitosSwitch() {
+    $('#customSwitch1').change(function() {
+        if($('#customSwitch1').prop('checked')) {
+            $('.itemAmbito input[type=checkbox]').prop('checked', true);
+        }
+        else {
+            $('.itemAmbito input[type=checkbox]').prop('checked', false);
+        }
+    })
+}
+
+function uniFilterSwitch() {
+    $('#customSwitchUniversidad').change(function() {
+        if($('#customSwitchUniversidad').prop('checked')) {
+            $('#universidad li input[type=checkbox]').prop('checked', true);
+        }
+        else {
+            $('#universidad li input[type=checkbox]').prop('checked', false);
+        }
+    });
+
+    $('#universidad li input[type=checkbox]').change(function() {
+        var dif = false;
+        var status = $(this).prop('checked');
+        var switchStatus = $('#customSwitchUniversidad').prop('checked');
+
+        $('#universidad li input[type=checkbox]').each(function(i, el) {
+            if($(el).prop('checked') != status) {
+                dif = true;
+                return true;
+            }
+        });
+        if(!dif) {
+            $('#customSwitchUniversidad').prop('checked', status);
+        }
+        else {
+            $('#customSwitchUniversidad').prop('checked', false);
+        }
+    });
+}
+
+function ccaaFilterSwitch() {
+    $('#customSwitchCcaa').change(function() {
+        if($('#customSwitchCcaa').prop('checked')) {
+            $('#caFilter li input[type=checkbox]').prop('checked', true);
+            $('#customSwitchProvincia').prop('checked', true);
+            $('#provincia li input[type=checkbox]').prop('checked', true);
+        }
+        else {
+            $('#caFilter li input[type=checkbox]').prop('checked', false);
+            $('#customSwitchProvincia').prop('checked', false);
+            $('#provincia li input[type=checkbox]').prop('checked', false);
+        }
+    });
+    $('#caFilter li input[type=checkbox]').change(function() {
+        var dif = false;
+        var status = $(this).prop('checked');
+        var switchStatus = $('#customSwitchCcaa').prop('checked');
+
+        $('#caFilter li input[type=checkbox]').each(function(i, el) {
+            if($(el).prop('checked') != status) {
+                dif = true;
+                return true;
+            }
+        });
+        if(!dif) {
+            //console.log(status);
+            $('#customSwitchCcaa').prop('checked', status);
+        }
+        else {
+            $('#customSwitchCcaa').prop('checked', false);
+        }
+    });
+}
+
+function provinciaFilterSwitch() {
+    $('#customSwitchProvincia').change(function() {
+        if($('#customSwitchProvincia').prop('checked')) {
+            $('#provincia li input[type=checkbox]').prop('checked', true);
+        }
+        else {
+            $('#provincia li input[type=checkbox]').prop('checked', false);
+        }
+    });
+
+    $('#provincia li input[type=checkbox]').change(function() {
+        var dif = false;
+        var status = $(this).prop('checked');
+        var switchStatus = $('#customSwitchProvincia').prop('checked');
+
+        $('#provincia li input[type=checkbox]').each(function(i, el) {
+            if($(el).prop('checked') != status) {
+                dif = true;
+                return true;
+            }
+        });
+        if(!dif) {
+            $('#customSwitchProvincia').prop('checked', status);
+        }
+        else {
+            $('#customSwitchProvincia').prop('checked', false);
+        }
+    });
+}
+
+function selectAnidados() {
+    $('#tipoUniversidad').change(function() {
+        $.ajax({
+            type: 'POST',
+            url: urlQedu,
+            contenType: 'application/json',
+            dataType: 'json',
+            data: {
+                action: 'tipoUniversidad',
+                value: $('#tipoUniversidad').val()
+            },
+            success: function (response) {
+                //console.log(response);
+                printUniversidades(response);
+            },
+            error: function(err) {
+                //console.log("Error mapa centros: "+ err);
+                //console.log(err);
+            },
+            complete: function() {
+                
+            }
+        });
+    });
+
+    $('#customSwitchCcaa ').change(function() {
+        var value = '';
+
+        if($('#customSwitchCcaa').prop('checked')) {
+            value = 'all';
+        }
+
+        $.ajax({
+            type: 'POST',
+            url: urlQedu,
+            contenType: 'application/json',
+            dataType: 'json',
+            data: {
+                action: 'ccaa',
+                value: value
+            },
+            success: function (response) {
+                //console.log(response);
+                printProvincias(response);
+            },
+            error: function(err) {
+                //console.log("Error mapa centros: "+ err);
+                //console.log(err);
+            },
+            complete: function() {
+                
+            }
+        });
+
+    });
+
+    $('#caFilter').change(function() {
+        
+        var value = '';
+        var val = $('#caFilter').val();
+        val.forEach(function(el, i) {
+            
+            if(i == val.length - 1) {
+                value += '\'' + el + '\'';
+            }
+            else {
+                value += '\'' + el + '\',';
+            }
+            
+            
+        });
+        if(value === '') {
+            value = 'all';
+        }
+        
+        $.ajax({
+            type: 'POST',
+            url: urlQedu,
+            contenType: 'application/json',
+            dataType: 'json',
+            data: {
+                action: 'ccaa',
+                value: value
+            },
+            success: function (response) {
+                //console.log(response);
+                printProvincias(response);
+            },
+            error: function(err) {
+                //console.log("Error mapa centros: "+ err);
+                //console.log(err);
+            },
+            complete: function() {
+                
+            }
+        });
+
+    });
+}
+
+function printUniversidades(res) {
+    var html = '';
+    res.forEach(function(el, i) {
+        //console.log(el.codUni)
+        html += '<option value="' + el.codUni + '">' + el.nomCorta + '</option>';
+    });
+    $('#universidad').html(html);
+}
+function printProvincias(res) {
+    var html = '';
+    res.forEach(function(el, i) {
+        //console.log(el.codUni)
+        html += '<option value="' + el.codProvi + '">' + el.nombre + '</option>';
+        
+    });
+    $('#provincia').html(html);
+}
+
+function arrayFiltros(id) {
+    var array = [];
+    $(id + ' input[type=checkbox]:checked').each(function(i, el) {
+        array.push($(el).val());
+    });
+    return array;
+}
+
+function detalleInsercion(cod_tit, cod_centro, cod_univ) {
+    var nivelDTO = $('#modalTargetQedu #insercion').attr('nivel');
+    var ambito = $('#modalTargetQedu #rendimiento').attr('ambito');
+    
+    $.ajax({
+		type: 'POST',
+		url: urlQedu,
+		contenType: 'application/json',
+		dataType: 'json',
+		data: {
+            action: 'detalleIn',
+            codTit: cod_tit,
+            codCentro: cod_centro,
+            codUniv: cod_univ,
+            nivel: nivelDTO,
+            ambito: ambito
+        },
+		success: function (res) {
+            //console.log(res
+            if(res != '') {
+                printInsercionTit(res);
+                $('#resultsIns #noTit').hide();
+                $('#resultsIns #iltit').show();
+            }
+            else {
+                $('#resultsIns').show();
+                $('#noResultsIns').hide();
+                if(nivelDTO === 'GRADO' || nivelDTO === 'MASTER' || nivelDTO === 'GRADOD' || nivelDTO === 'MASTERD') {                    
+                    $('#resultsIns #iltit').hide();
+                    $('#resultsIns #noTit').show();
+                }
+                else  {
+                    $('#resultsIns').hide();
+                    $('#noResultsIns').show();
+                }
+            }
+		},
+		error: function(err) {
+			//console.log("Error mapa centros: "+ err);
+			//console.log(err);
+		},
+		complete: function() {
+            
+		}
+	});
+}
+
+function detalleInsercionAmb() {
+    var nivel = '';
+    var nivelDTO = $('#modalTargetQedu #insercion').attr('nivel');
+    if(nivelDTO.includes('GRA')) {
+        nivel = 'G';
+    }
+    else if(nivelDTO.includes('MAS')) {
+        nivel = 'M';
+    }
+    var isced = $('#modalTargetQedu #rendimiento').attr('ambito');
+    if(isced.includes(',')) {
+        var tmp = isced.split(',');
+        isced = tmp[0];
+    }
+    $.ajax({
+        type: 'POST',
+        url: urlQedu,
+        contenType: 'application/json',
+        dataType: 'json',
+        data: {
+            action: 'detalleAmb',
+            ambito: isced,
+            nivel: nivel
+        },
+        success: function (response) {
+            if(response.length > 0) {
+                printInsercionAmb(response);
+            }
+        },
+        error: function(err) {
+            //console.log("Error mapa centros: "+ err);
+            //console.log(err);
+        },
+        complete: function() {
+            
+        }
+    });
+ 
+ 
+}
+
+function detalleInsercionAmbG() {
+    
+    var nivel = '';
+    var nivelDTO = $('#modalTargetQedu #insercion').attr('nivel');
+    if(nivelDTO.includes('GRA')) {
+        nivel = 'G';
+    }
+    else if(nivelDTO.includes('MAS')) {
+        nivel = 'M';
+    }
+    
+    $.ajax({
+		type: 'POST',
+		url: urlQedu,
+		contenType: 'application/json',
+		dataType: 'json',
+		data: {
+            action: 'detalleAmb',
+            ambito: '000',
+            nivel: nivel
+        },
+		success: function (response) {
+            //console.log(response);
+            printInsercionAmbG(response);
+            if(nivelDTO === 'GRADOD') {
+                $('#ilgl h5 span').text('GRADO');
+            }
+            else if(nivelDTO === 'MASTERD') {
+                $('#ilgl h5 span').text('MÁSTER');
+            }
+            else {
+                $('#ilgl h5 span').text(nivelDTO);
+            }
+		},
+		error: function(err) {
+			//console.log("Error mapa centros: "+ err);
+			//console.log(err);
+		},
+		complete: function() {
+            
+		}
+	});
+}
+
+function printInsercionTit(res) {
+    $('#resultsIns').show();
+    $('#noResultsIns').hide();
+    $('h5.ta').text(res.tasaAfiliacion);
+    $('h5.pa').text(res.porcentajeAutonomos);
+    $('h5.pi').text(res.porcentajeIndefinidos);
+    $('h5.pc').text(res.porcentajeCotizacion);
+    $('h5.bma').text(res.baseMedia);
+}
+
+function printInsercionAmb(res) {    
+    res.forEach(function(el, i) {
+        var sexo = el.sexo;
+        $('.comparativos #ilamb h5 span').text(el.ambito);
+        if(sexo.includes('Hom')) {
+            $('.tasaAfilH').text(el.tasaAfiliacion + '%');
+            $('.autonomosH').text(el.porcentajeAutonomos + '%');
+            $('.cotizacionH').text(el.porcentajeCotizacion + '%');
+            $('.baseH').text(el.baseMedia + ' €');
+        }
+        else if(sexo.includes('Muj')) {
+            $('.tasaAfilM').text(el.tasaAfiliacion + '%');
+            $('.autonomosM').text(el.porcentajeAutonomos + '%');
+            $('.cotizacionM').text(el.porcentajeCotizacion + '%');
+            $('.baseM').text(el.baseMedia + ' €');
+        }
+        else if(sexo.includes('Amb')) {
+            $('.tasaAfilA').text(el.tasaAfiliacion + '%');
+            $('.autonomosA').text(el.porcentajeAutonomos + '%');
+            $('.cotizacionA').text(el.porcentajeCotizacion + '%');
+            $('.baseA').text(el.baseMedia + ' €');
+        }
+    });
+}
+
+function printInsercionAmbG(res) {    
+    res.forEach(function(el, i) {
+        
+        var sexo = el.sexo;
+        if(sexo.includes('Hom')) {
+            $('.tasaAfilHG').text(el.tasaAfiliacion + '%');
+            $('.autonomosHG').text(el.porcentajeAutonomos + '%');
+            $('.cotizacionHG').text(el.porcentajeCotizacion + '%');
+            $('.baseHG').text(el.baseMedia + ' €');
+        }
+        else if(sexo.includes('Muj')) {
+            $('.tasaAfilMG').text(el.tasaAfiliacion + '%');
+            $('.autonomosMG').text(el.porcentajeAutonomos + '%');
+            $('.cotizacionMG').text(el.porcentajeCotizacion + '%');
+            $('.baseMG').text(el.baseMedia + ' €');
+        }
+        else if(sexo.includes('Amb')) {
+            $('.tasaAfilAG').text(el.tasaAfiliacion + '%');
+            $('.autonomosAG').text(el.porcentajeAutonomos + '%');
+            $('.cotizacionAG').text(el.porcentajeCotizacion + '%');
+            $('.baseAG').text(el.baseMedia + ' €');
+        }
+    });
+}
+
+
+ function blockBackground() {
+    $('.overlay').on('click', function(e) {
+        if (e.target !== this) {
+        return;
+    }
+        $('.overlay').hide();
+    });
+ }
+
+$('#downloadTargets').click(function() {
+    descargaQeduTargets();
+});
+
+$('#downloadTargetsExcel').click(function() {
+    descargaQeduTargetsExcel();
+});
+
+function descargaQeduTargets() {
+	json_filtrado;
+	let tablaListado = $('#tablaQedu tbody');
+	let contenidoTabla = '';
+
+	$.each(json_filtrado, function () {
+        var idioma = 'Sí';
+        if(this.idiomaextranjero === '0') {
+            idioma = 'No';
+        }
+        var mod = 'Varias modalidades';
+        if(this.modalidad === '1') {
+            mod = 'Presencial';
+        }
+        else if(this.modalidad === '2') {
+            mod = 'Semi/No Presencial';
+        }
+        
+		contenidoTabla += '<tr>';
+        if(this.nivel === 'GRADOD') {
+            contenidoTabla += '<td>DOBLE GRADO</td>';
+        }
+        else if (this.nivel === 'MASTERD') {
+            contenidoTabla += '<td>DOBLE MÁSTER</td>';
+        }
+        else {
+            contenidoTabla += '<td>' + this.nivel + '</td>';
+        }
+            contenidoTabla += '<td>' + this.ccaa + '</td>';
+            contenidoTabla += '<td>' + this.tipoUniversidad + '</td>';
+            contenidoTabla += '<td>' + this.nombreUniversidad + '</td>';
+            contenidoTabla += '<td>' + mod + '</td>';
+            contenidoTabla += '<td>' + this.tipoCentro + '</td>';
+            contenidoTabla += '<td>' + this.provincia + '</td>';
+            contenidoTabla += '<td>' + this.nombreCentro + '</td>';
+            contenidoTabla += '<td>' + this.titulacion + '</td>';
+            contenidoTabla += '<td>' + idioma + '</td>';
+            contenidoTabla += '<td>' + this.notaCorte + '</td>';
+		contenidoTabla += '</tr>';
+	});
+		
+	tablaListado.html(contenidoTabla);
+	
+	let options = {
+		"separator": ",",
+		"newline": "\n",
+		"quoteFields": true,
+		"excludeColumns": "",
+		"excludeRows": "",
+		"trimContent": true,
+		"filename": "qedu.csv",
+		"appendTo": "#output"
+	}
+		
+	$('#tablaQedu').table2csv('download', options);
+}
+
+function descargaQeduTargetsExcel() {
+
+    json_filtrado;
+	let tablaListado = $('#tablaQedu tbody');
+	let contenidoTabla = '';
+
+	$.each(json_filtrado, function () {
+        var idioma = 'Sí';
+        if(this.idiomaextranjero === '0') {
+            idioma = 'No';
+        }
+        var mod = 'Varias modalidades';
+        if(this.modalidad === '1') {
+            mod = 'Presencial';
+        }
+        else if(this.modalidad === '2') {
+            mod = 'Semi/No Presencial';
+        }
+		contenidoTabla += '<tr>';
+        if(this.nivel === 'GRADOD') {
+            contenidoTabla += '<td>DOBLE GRADO</td>';
+        }
+        else if(this.nivel === 'MASTERD') {
+            contenidoTabla += '<td>DOBLE MÁSTER</td>';
+        }
+        else {
+            contenidoTabla += '<td>' + this.nivel + '</td>';
+        }
+            contenidoTabla += '<td>' + this.ccaa + '</td>';
+            contenidoTabla += '<td>' + this.tipoUniversidad + '</td>';
+            contenidoTabla += '<td>' + this.nombreUniversidad + '</td>';
+            contenidoTabla += '<td>' + mod + '</td>';
+            contenidoTabla += '<td>' + this.tipoCentro + '</td>';
+            contenidoTabla += '<td>' + this.provincia + '</td>';
+            contenidoTabla += '<td>' + this.nombreCentro + '</td>';
+            contenidoTabla += '<td>' + this.titulacion + '</td>';
+            contenidoTabla += '<td>' + idioma + '</td>';
+            contenidoTabla += '<td>' + this.notaCorte + '</td>';
+		contenidoTabla += '</tr>';
+	});
+		
+	tablaListado.html(contenidoTabla);
+
+    
+
+    const table = document.getElementById('tablaQedu');
+
+    const wb = XLSX.utils.table_to_book(table, {sheet: 'sheet-1'});
+    XLSX.writeFile(wb, 'qedu.xlsx');
+    
+
+    /*
+    $("#tablaQedu").excelexportjs({
+        containerid: "tablaQedu", 
+        datatype: 'table'
+    });*/
+}
+
+</script>
+        
+    </div>       
+
+
+<div id="footer" role="contentinfo">
+	<footer>
+		<div class="links">
+			<div class="container-fluid">
+			<div class="row">
+				<div class="col-9">
+				
+<div class="row mb-sm-3">
+	<div class="col-sm-4 mb-3 mb-sm-0">
+
+	<p class="titulo">
+		Ministerio
+	</p>
+
+
+
+		<p>
+		<a class=" col-12" href="/Ministerio/Mision-y-organizacion.html"   aria-label="Misión y organización" title='Ir a la página en la misma ventana'>
+			Misión y organización
+			
+		</a>
+		</p>
+
+		<p>
+		<a class=" col-12" href="/Ministerio/Ministra.html"   rel=follow aria-label="Ministra" title='Ir a la página en la misma ventana'>
+			Ministra
+			
+		</a>
+		</p>
+
+		<p>
+		<a class=" col-12" href="/Ministerio/AltosCargos.html"   rel=follow aria-label="Altos cargos" title='Ir a la página en la misma ventana'>
+			Altos cargos
+			
+		</a>
+		</p>
+
+
+		<p>
+		<a class=" col-12" href="/Ministerio/Eventos.html"   aria-label="Eventos" title='Ir a la página en la misma ventana'>
+			Eventos
+			
+		</a>
+		</p>
+
+		<p>
+		<a class=" col-12" href="/Secc-Servicios/Igualdad.html"   rel=follow aria-label="Igualdad de género" title='Ir a la página en la misma ventana'>
+			Igualdad de género
+			
+		</a>
+		</p>
+
+		<p>
+		<a class=" col-12" href="/Ministerio/EmpleoPublico.html"   aria-label="Empleo público" title='Ir a la página en la misma ventana'>
+			Empleo público
+			
+		</a>
+		</p>
+	</div>
+	<div class="col-sm-4 mb-3 mb-sm-0">
+
+	<p class="titulo">
+		Estrategias y Planes
+	</p>
+
+
+
+		<p>
+		<a class=" col-12" href="/Estrategias-y-Planes/Estrategias.html"   rel=follow aria-label="Estrategias" title='Ir a la página en la misma ventana'>
+			Estrategias
+			
+		</a>
+		</p>
+
+		<p>
+		<a class=" col-12" href="/Estrategias-y-Planes/Planes-y-programas.html"   rel=follow aria-label="Planes y programas" title='Ir a la página en la misma ventana'>
+			Planes y programas
+			
+		</a>
+		</p>
+
+
+
+		<p>
+		<a class=" col-12" href="/Estrategias-y-Planes/Plan-de-Recuperacion-Transformacion-y-Resiliencia-PRTR.html"   rel=follow aria-label="Plan de Recuperación, Transformación y Resiliencia (PRTR)" title='Ir a la página en la misma ventana'>
+			Plan de Recuperación, Transformación y Resiliencia (PRTR)
+			
+		</a>
+		</p>
+
+		<p>
+		<a class=" col-12" href="/Estrategias-y-Planes/Fondo-Europeo-de-Desarrollo-Regional-FEDER.html"   rel=follow aria-label="Fondos Europeos de Desarrollo Regional (FEDER)" title='Ir a la página en la misma ventana'>
+			Fondos Europeos de Desarrollo Regional (FEDER)
+			
+		</a>
+		</p>
+	</div>
+	<div class="col-sm-4 mb-3 mb-sm-0">
+
+	<p class="titulo">
+		Centros
+	</p>
+
+
+
+		<p>
+		<a class=" col-12" href="/Organismos-y-Centros/OPI.html"   rel=follow aria-label="Organismos Públicos de Investigación (OPI)" title='Ir a la página en la misma ventana'>
+			Organismos Públicos de Investigación (OPI)
+			
+		</a>
+		</p>
+
+		<p>
+		<a class=" col-12" href="/Organismos-y-Centros/ICTS.html"   rel=follow aria-label="Infraestructuras Científicas y Técnicas Singulares (ICTS)" title='Ir a la página en la misma ventana'>
+			Infraestructuras Científicas y Técnicas Singulares (ICTS)
+			
+		</a>
+		</p>
+
+		<p>
+		<a class=" col-12" href="/Organismos-y-Centros/Comite-Polar-Espanol.html"   rel=follow aria-label="Comité Polar Español" title='Ir a la página en la misma ventana'>
+			Comité Polar Español
+			
+		</a>
+		</p>
+
+		<p>
+		<a class=" col-12" href="/Organismos-y-Centros/Consorcios-y-Fundaciones.html"   rel=follow aria-label="Consorcios y fundaciones" title='Ir a la página en la misma ventana'>
+			Consorcios y fundaciones
+			
+		</a>
+		</p>
+
+		<p>
+		<a class=" col-12" href="/Organismos-y-Centros/SOMMA.html"   rel=follow aria-label="Centros y unidades de excelencia" title='Ir a la página en la misma ventana'>
+			Centros y unidades de excelencia
+			
+		</a>
+		</p>
+
+		<p>
+		<a class=" col-12" href="/Organismos-y-Centros/Organismos-e-Infraestructuras-de-Investigacion-Internacionales.html"   rel=follow aria-label="Organismos e infraestructuras internacionales" title='Ir a la página en la misma ventana'>
+			Organismos e infraestructuras internacionales
+			
+		</a>
+		</p>
+
+		<p>
+		<a class=" col-12" href="/Organismos-y-Centros/Reales-Academias.html"   rel=follow aria-label="Reales Academias" title='Ir a la página en la misma ventana'>
+			Reales Academias
+			
+		</a>
+		</p>
+
+		<p>
+		<a class=" col-12" href="/Organismos-y-Centros/Museos.html"   rel=follow aria-label="Museos" title='Ir a la página en la misma ventana'>
+			Museos
+			
+		</a>
+		</p>
+	</div>
+</div>
+
+<div class="row mb-5">
+	<div class="col-sm-4 mb-3 mb-sm-0">
+
+	<p class="titulo">
+		 
+	</p>
+
+
+
+		<p>
+		<a class=" col-12" href="/Convocatorias.html"   rel=follow aria-label="Convocatorias" title='Ir a la página en la misma ventana'>
+			Convocatorias
+			
+		</a>
+		</p>
+
+		<p>
+		<a class=" col-12" href="/Investigar.html"   rel=follow aria-label="Investigar" title='Ir a la página en la misma ventana'>
+			Investigar
+			
+		</a>
+		</p>
+
+		<p>
+		<a class=" col-12" href="/Innovar.html"   rel=follow aria-label="Innovar" title='Ir a la página en la misma ventana'>
+			Innovar
+			
+		</a>
+		</p>
+
+
+
+
+
+
+
+
+		<p>
+		<a class=" col-12" href="https://www.universidades.gob.es/"  target=_blank  rel=nofollow aria-label="Universidades"  title='Ir a la página  en una ventana nueva'>
+			Universidades
+			
+		</a>
+		</p>
+
+		<p>
+		<a class=" col-12" href="/Servicios.html"   rel=follow aria-label="Servicios" title='Ir a la página en la misma ventana'>
+			Servicios
+			
+		</a>
+		</p>
+
+	</div>
+	<div class="col-sm-4 mb-3 mb-sm-0">
+
+
+
+	</div>
+	<div class="col-sm-4 mb-3 mb-sm-0">
+
+	<p class="titulo">
+		 
+	</p>
+
+
+
+		<p>
+		<a class=" col-12" href="/InfoGeneralPortal/MapaWeb.html"   rel=nofollow aria-label="Mapa Web" title='Ir a la página en la misma ventana'>
+			Mapa Web
+			
+		</a>
+		</p>
+
+		<p>
+		<a class=" col-12" href="/InfoGeneralPortal/PoliticaPrivacidad.html"   rel=follow aria-label="Política de privacidad y protección de datos" title='Ir a la página en la misma ventana'>
+			Política de privacidad y protección de datos
+			
+		</a>
+		</p>
+
+		<p>
+		<a class=" col-12" href="/InfoGeneralPortal/AvisoLegal.html"   aria-label="Aviso Legal" title='Ir a la página en la misma ventana'>
+			Aviso Legal
+			
+		</a>
+		</p>
+
+		<p>
+		<a class=" col-12" href="/InfoGeneralPortal/Cookies.html"   rel=nofollow aria-label="Política de cookies" title='Ir a la página en la misma ventana'>
+			Política de cookies
+			
+		</a>
+		</p>
+
+		<p>
+		<a class=" col-12" href="/InfoGeneralPortal/Accesibilidad.html"   rel=nofollow aria-label="Accesibilidad" title='Ir a la página en la misma ventana'>
+			Accesibilidad
+			
+		</a>
+		</p>
+
+	</div>
+</div>
+
+<div class="row mb-5">
+	<div class="col-sm-4 mb-3 mb-sm-0">
+
+
+
+	</div>
+	<div class="col-sm-4 mb-3 mb-sm-0">
+
+
+
+	</div>
+	<div class="col-sm-4 mb-3 mb-sm-0">
+
+
+
+	</div>
+</div>
+<div class="row mb-3">
+	<div class="pieN2Logos">
+		<div id="pieN2LogosMCIN">
+				    
+
+
+
+
+
+
+
+
+
+
+
+
+				<a class="gobierno" href="https://www.lamoncloa.gob.es/Paginas/index.aspx"  target=_blank  rel=nofollow   title='Ir a la página  en una ventana nueva'>
+		<img src="/dam/jcr:8b733e2d-e6e6-447e-9b9d-51779cd7b242/GOB_MCIU_negro_marco.svg" alt="Logo Gobierno de España">
+				</a>
+      
+
+		</div>
+		<div id="pieN2LogosExternos">
+		</div>
+	</div>
+</div>				</div>
+					<div id="pieN3RRSS" class="col-3 social">
+
+<p>
+
+
+
+
+
+
+
+
+
+
+		
+		<a href="https://www.facebook.com/CienciaGob/"  target=_blank  rel=nofollow  title='Ir a la página  en una ventana nueva'>
+				<img src="/dam/jcr:79197ee6-7305-4b6b-b5df-0ec7e81414fe/icono-facebook.svg" />
+		</a>
+
+
+
+
+
+
+
+
+
+
+		
+		<a href="https://twitter.com/CienciaGob?ref_src=twsrc%5Etfw"  target=_blank  rel=nofollow  title='Ir a la página  en una ventana nueva'>
+				<img src="/dam/jcr:b737c902-102f-4454-88b1-5a90c3d69c98/icono_Xtwitter.svg" />
+		</a>
+
+
+
+
+
+
+
+
+
+
+		
+		<a href="https://www.instagram.com/cienciagob/"  target=_blank  rel=nofollow  title='Ir a la página  en una ventana nueva'>
+				<img src="/dam/jcr:7cc8952f-4a6b-41ee-8870-245f60a53bf0/icono-instagram.svg" />
+		</a>
+
+
+
+
+
+
+
+
+
+
+		
+		<a href="https://es.linkedin.com/company/cienciagob"  target=_blank  rel=nofollow  title='Ir a la página  en una ventana nueva'>
+				<img src="/dam/jcr:a73aa0b1-f1c6-4528-8f66-e3e5dab94afe/linkedin_logo.svg" />
+		</a>
+
+
+
+
+
+
+
+
+
+
+		
+		<a href="https://www.youtube.com/user/cienciagob"  target=_blank  rel=nofollow  title='Ir a la página  en una ventana nueva'>
+				<img src="/dam/jcr:950d0eec-3438-4e20-8800-cfae0fec86fd/icono-youtube.svg" />
+		</a>
+
+
+
+
+
+
+
+
+
+
+		
+		<a href="https://www.flickr.com/photos/cienciagob/"  target=_blank  rel=nofollow  title='Ir a la página  en una ventana nueva'>
+				<img src="/dam/jcr:95787ac1-e65a-40da-ae7b-e7276ea7aa05/icono-flickr.svg" />
+		</a>
+	
+</p>
+
+					</div>
+			</div>
+				<div class="row">
+					<div id="pieN3copyRight" class="col-md-5 col-xl-6 mb-5 mb-sm-4 mb-md-0">
+
+    <p class="ministerio">Ministerio de Ciencia, Innovación y Universidades</p>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</footer>
+</div>
+<div class="modal fade" id="modalDescargarCentros" tabindex="-1" role="dialog" aria-labelledby="modalDescargarCentrosLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title" id="modalDescargarCentrosLabel">Descarga</h4>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			</div>
+			<div class="modal-body">
+				<p>¿Desea descargar el fichero seleccionado?</p>
+			</div>
+			<div class="modal-footer">
+				<button id="cancelarDescargarCentros" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+				<button id="aceptarDescargarCentros" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="modalDescargar" tabindex="-1" role="dialog" aria-labelledby="modalDescargarLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title" id="modalDescargarLabel">Descarga</h4>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			</div>
+			<div class="modal-body">
+				<p>¿Desea descargar el fichero seleccionado?</p>
+			</div>
+			<div class="modal-footer">
+				<button id="cancelarDescargar" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+				<button id="aceptarDescargar" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="modalConfirmar" tabindex="-1" role="dialog" aria-labelledby="modalConfirmarLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title" id="modalConfirmarLabel">Confirmar baja</h4>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			</div>
+			<div class="modal-body">
+				<p>Va a darse de baja de las siguientes listas de suscripción. Si está seguro pulse en Aceptar</p>
+				<div class="listadoSuscripcion"></div>
+			</div>
+			<div class="modal-footer">
+				<button id="cancelarBorrar" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+				<button id="aceptarBorrar" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="modalFormTitulos" tabindex="-1" role="dialog" aria-labelledby="modalFormTitulosLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title" id="modalFormTitulosLabel">Información</h4>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			</div>
+			<div class="modal-body">
+				<p>Si usted necesita ampliar el plazo para subsanar la documentación requerida de su expediente deberá aportar, a través de la  <a href="https://universidades.sede.gob.es/login">Subsede Electrónica de la Secretaría General de Universidades (universidades.sede.gob.es)</a>, un documento firmado por el interesado solicitando la prórroga.</p>
+				<p>Para ello, deberá acceder a su expediente desde la sección “Mis expedientes” y anexar el documento en “Aportar documentación”.</p>
+				<p>Si su expediente no estuviera en la sede electrónica, puede aportar la solicitud a través del <a href="https://ciencia.sede.gob.es/pagina?id=Portada-104008">Registro Electrónico General (ciencia.sede.gob.es).</a></p>
+				<p>Tenga en cuenta que se le conceden 35 días hábiles adicionales para subsanar la documentación sin necesidad de que se le responda a esta solicitud.</p>
+				<p>Si su consulta no tuviera relación con esta información de solicitud de ampliación de plazo, podrá detallarla y completarla en el campo de “Contenido de su consulta”.</p>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="footerScripts">
+<div class="container-fluid htmlTxt">
+	<style>
+    
+    #footer p.titulo {
+        color: #1D1D1B;
+    }
+    
+</style>
+</div></div>
+
+
+		<div class="cookies">
+			<div class="cookiesContent">
+				<form method="post" id="cookiesForm">
+					<fieldset>
+					<legend class="n1">Su privacidad es importante para nosotros</legend>
+					</fieldset>
+						
+					<div class="text-container">
+
+						<div class="text-box">
+                                <div>
+<p>Utilizamos cookies propias para el correcto funcionamiento y visualizaci&oacute;n del sitio web y cookies de terceros para la recogida de estad&iacute;sticas. Las cookies no almacenan ning&uacute;n tipo de datos personales sobre el usuario y se asocian &uacute;nicamente al navegador que est&aacute; utilizando.</p>
+
+<p>Si se selecciona &quot;ACEPTAR&quot; estar&aacute; aceptando el uso tanto de las cookies propias como de las estad&iacute;sticas, mientras que si selecciona &quot;RECHAZAR&quot; solo se utilizar&aacute;n las cookies propias estrictamente necesarias para la navegaci&oacute;n por el sitio web.</p>
+
+<p>Al navegar por nuestra web estar&aacute;s aceptando el uso de las cookies en las condiciones establecidas en esta <a href="
+https://www.ciencia.gob.es/InfoGeneralPortal/Cookies.html">Pol&iacute;tica de Cookies</a> que puede ser actualizada, por lo que te invitamos a revisarla de manera regular.</p>
+</div>
+
+						</div>
+						
+						<div class="hidden">
+							<label for="cookies-tecnicas">
+								<strong><span class="underline">Cookies técnicas</span></strong> <span class="nota">Cookies técnicas</span>
+							</label>
+							<input type="checkbox" id="cookies-tecnicas" checked="checked">
+							<span class="checkmark-disabled "></span>
+						</div>
+						<div class="hidden">
+							<label for="cookies-analitica">
+								<input type="checkbox" id="cookies-analitica" checked="checked">
+								<span class="checkmark"></span>
+								<span class="cookie-text"><strong>Cookies de analítica</strong></span><span class="nota">(Seleccionándolo dispones de una mejora en la experiencia de la navegación)</span>
+							</label>
+						</div>
+					</div>
+					<div class="buttons-container">
+						<button id="aceptar-cookies" class="generic-button">Aceptar</button>
+						<button id="rechazar-cookies" class="generic-button">Rechazar</button>
+						<a id="personalizar-cookies" class="generic-button-2">Personalizar</a>
+					</div>
+				</form>
+			</div>
+		</div>
+		
+
+		<div class="modal fade" id="modalDescartar" tabindex="-1" role="dialog" aria-labelledby="modalDescartarLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<input type="hidden" name="batchUpdateIdsDerechos" id="batchUpdateIdsDerechos" value="">
+					<div class="modal-header">
+						<h4 class="modal-title" id="modalRegenerarLoteLabel">Cookies</h4>
+					</div>
+					<div class="modal-body">
+						<p>Se han guardado sus preferencias en cuanto a cookies. Para cambiar sus preferencias en cualquier momento, consulte nuestra política de cookies o siga el enlace que figura a pie de página.</p>
+					</div>
+
+				</div>
+			</div>
+        </div>
+		
+
+<script>
+var urlCookies = '/InfoGeneralPortal/Cookies/CookiesPersonalizar.html';
+function cookiesConfig() {
+	if (!(/usuario_mci=sesion_iniciada|digitalDataInfo;domain=ciencia\.gob\.es/).test(document.cookie)) {
+		//si el usuario no ha aceptado todavía las cookies, muestra el pop-up de cookies
+
+		var now = new Date().getTime();
+		var expireDate = now + (1000*60*60*24*365);
+		$('.cookies #personalizar-cookies').click(function () {
+			var magnoliaInstance = window.location.origin;
+			var magnoliaUrl = window.location.href;
+
+			if (magnoliaUrl.indexOf("magnoliaPublic") > -1) {
+				magnoliaInstance = magnoliaInstance + '/magnoliaPublic';
+			} else if (magnoliaUrl.indexOf("magnoliaAuthor") > -1) {
+				magnoliaInstance = magnoliaInstance + '/magnoliaAuthor';
+			}
+
+			setCookie('usuario_mci', 'sesion_iniciada', 365);
+			window.location.href = magnoliaInstance + urlCookies;
+		});
+		$('.cookies button#aceptar-cookies').click(function (ev) {
+			ev.preventDefault();
+			$('.cookies').css('display','none');
+			$('#modalDescartar').modal('show');
+			let analiticaGlobal = $('#cookies-analitica').prop('checked');
+			setTimeout(function () {
+				$('#modalDescartar').modal('hide');
+				setCookie('usuario_mci', 'sesion_iniciada', 365);
+				if(analiticaGlobal) {
+					/** setAnalyticsCookies(); */
+					marketingTagAnalitica();
+					var magnoliaInstance = window.location.origin;
+					var url = window.location.href;
+					window.location.href = url;
+				}
+			}, 3000);
+		});
+		$('.cookies button#rechazar-cookies').click(function (ev) {
+			ev.preventDefault();
+			$('.cookies').css('display','none');
+			$('#modalDescartar').modal('show');
+			$('#cookies-analitica').prop('checked', false);
+			let analiticaGlobal = $('#cookies-analitica').prop('checked');
+			setTimeout(function () {
+				$('#modalDescartar').modal('hide');
+				setCookie('usuario_mci', 'sesion_iniciada', 365);
+				if(analiticaGlobal) {
+					/** setAnalyticsCookies(); */
+					marketingTagAnalitica();
+					var magnoliaInstance = window.location.origin;
+					var url = window.location.href;
+					window.location.href = url;
+				}
+			}, 3000);
+		});
+	} else {
+		//muestra avisos en función de las preferencias del usuario
+		//carga idioma
+		//deshabilita el formulario Feedback una vez has dado una vez
+	}
+	cookiesForms();
+}
+</script></body>
+</html>
