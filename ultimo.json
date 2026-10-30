@@ -1,17 +1,15 @@
 {
- "fecha": "2026-10-30T14:03:07+00:00",
+ "fecha": "2026-10-30T14:03:35+00:00",
  "fecha_madrid": "30/10 15:03",
  "ventana_horas": 6.0,
  "resumen": {
-  "ejecuciones_revisadas": 202,
+  "ejecuciones_revisadas": 204,
   "fallos": 0,
   "fallos_pendientes": 0,
   "relanzados": 0,
   "colas_largas": 5,
   "flujos_programados_parados": [],
-  "programaciones_lanzadas_a_mano": [
-   "motor.yml"
-  ],
+  "programaciones_lanzadas_a_mano": [],
   "avisos_de_fuentes": 0,
   "almacen": "ok"
  },
@@ -27,14 +25,14 @@
   {
    "flujo": "Sonda de fuentes",
    "id": 41061393230,
-   "en_cola_min": 50,
+   "en_cola_min": 51,
    "trabajos_empezados": 0,
    "url": "https://github.com/alvarorm931/education/actions/runs/41061393230"
   },
   {
    "flujo": "Boletines autonómicos",
    "id": 41061253358,
-   "en_cola_min": 51,
+   "en_cola_min": 52,
    "trabajos_empezados": 2,
    "url": "https://github.com/alvarorm931/education/actions/runs/41061253358"
   },
@@ -67,13 +65,7 @@
    "parado": false
   }
  },
- "respaldo_programaciones": [
-  {
-   "flujo": "motor.yml",
-   "prevista": "30/10 14:47",
-   "lanzado": true
-  }
- ],
+ "respaldo_programaciones": [],
  "latido": "en marcha",
  "boe": {
   "ultimo_diario": {
