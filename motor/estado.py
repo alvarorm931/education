@@ -68,6 +68,7 @@ def huecos_numeracion(numeros: dict[str, set[int]]) -> dict:
 
 def estado_fuente(carpeta: Path, hoy: date) -> dict:
     resultados, ultimo_ok, errores = Counter(), None, []
+    serie: list[tuple[str, int]] = []  # (fecha, anuncios de empleo) de cada informe correcto
     numeros: dict[str, set[int]] = {}
     for sub in CARPETAS_INFORMES:
         for f in (carpeta / sub).rglob("*.json"):
@@ -82,6 +83,8 @@ def estado_fuente(carpeta: Path, hoy: date) -> dict:
             fecha = inf.get("ultimo_dia") or inf.get("fecha") or (inf.get("mes") and f"{inf['mes']}-01")
             if r == "ok" and fecha and (ultimo_ok is None or fecha > ultimo_ok):
                 ultimo_ok = fecha
+            if r == "ok" and fecha and isinstance(inf.get("empleo_publico"), int):
+                serie.append((fecha, inf["empleo_publico"]))
             if r == "ok" and (n := _numero(inf)) and (anio := str(inf.get("anio") or (fecha or "")[:4])):
                 numeros.setdefault(anio, set()).add(n)
             if r not in ("ok", "sin_boletin"):
@@ -98,13 +101,21 @@ def estado_fuente(carpeta: Path, hoy: date) -> dict:
     sin_noticias = dias_habiles_entre(date.fromisoformat(ultimo_ok[:10]), hoy) if ultimo_ok else None
     errores.sort(key=lambda e: e.get("fecha") or "", reverse=True)
     huecos = huecos_numeracion(numeros)
+    # Recuento frente a lo normal: los últimos 5 boletines sin ningún anuncio de empleo cuando lo normal (mediana de
+    # los 60 anteriores) es tener 2 o más apunta a un cambio de formato o a una selección que se ha roto
+    serie.sort()
+    previos = sorted(n for _, n in serie[-65:-5])
+    mediana = previos[len(previos) // 2] if previos else None
+    ultimos = sum(n for _, n in serie[-5:])
+    recuento_bajo = bool(mediana and mediana >= 2 and len(serie) >= 10 and ultimos == 0)
     return {
         "informes": dict(resultados), "ultimo_boletin_leido": ultimo_ok, "dias_habiles_sin_boletin": sin_noticias,
+        "empleo_mediana_por_boletin": mediana, "empleo_ultimos_5_boletines": ultimos, "recuento_bajo": recuento_bajo,
         "anuncios_empleo": empleo, "textos": textos, "textos_pendientes": max(empleo - textos, 0),
         "ultimos_errores": errores[:5],
         "huecos_numeracion": {k: v[:30] for k, v in huecos.items()},
         "boletines_sin_leer_por_numeracion": sum(len(v) for v in huecos.values()),
-        "alerta": sin_noticias is None or sin_noticias > UMBRAL_DIAS_HABILES,
+        "alerta": sin_noticias is None or sin_noticias > UMBRAL_DIAS_HABILES or recuento_bajo,
     }
 
 
