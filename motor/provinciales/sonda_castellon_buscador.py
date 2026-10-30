@@ -45,7 +45,8 @@ def _ajax(s: requests.Session, url: str, campos: dict, fuente: str, render: str)
 
 def main(argv: list[str] | None = None) -> int:
     """Boletines anteriores: búsqueda por fechas (enero de 2022) y anuncios del primer boletín de la lista."""
-    desde, hasta = (argv if argv is not None else sys.argv[1:]) or ["03/01/2022", "14/01/2022"]
+    args = [x for x in (argv if argv is not None else sys.argv[1:]) if "/" in x and len(x) == 10]
+    desde, hasta = args[:2] if len(args) >= 2 else ["03/01/2022", "14/01/2022"]
     s = requests.Session()
     s.headers["User-Agent"] = USER_AGENT
     comprobar_robots(ANTIGUOS, s)
