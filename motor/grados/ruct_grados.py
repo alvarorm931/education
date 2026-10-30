@@ -147,6 +147,9 @@ def ejecutar(codigos: list[str], raiz: Path, nivel: str, max_minutos: float) -> 
 def main() -> None:
     p = argparse.ArgumentParser()
     p.add_argument("--codigos", help="códigos separados por comas")
+    p.add_argument("--codigos-fichero", help="fichero con un código por línea")
+    p.add_argument("--desde", type=int, default=0)
+    p.add_argument("--hasta", type=int)
     p.add_argument("--catalogo", help="catalogo.jsonl de grados (con --muestra)")
     p.add_argument("--muestra", type=int, default=0)
     p.add_argument("--semilla", type=int, default=20261030)
@@ -154,7 +157,9 @@ def main() -> None:
     p.add_argument("--max-minutos", type=float, default=50)
     p.add_argument("--salida", required=True)
     a = p.parse_args()
-    if a.codigos:
+    if a.codigos_fichero:
+        codigos = Path(a.codigos_fichero).read_text(encoding="utf-8").split()[a.desde:a.hasta]
+    elif a.codigos:
         codigos = [c.strip() for c in a.codigos.split(",") if c.strip()]
     elif a.catalogo and a.muestra:
         cat = [json.loads(x) for x in Path(a.catalogo).read_text(encoding="utf-8").splitlines() if x.strip()]
