@@ -71,3 +71,42 @@ def test_sumario_de_tenerife_con_pocos_puntos():
     assert c["a"][0].startswith("Anuncio relativo a la contratación") and "Primera.- Objeto" in c["a"][0]
     # una línea del cuerpo que acaba en cifras sin puntos no es sumario
     assert "artículo 3 de la Ley 39/2015" in sin_entradas_de_sumario("según el artículo 3 de la Ley 39/2015\nOtra.")
+
+
+def test_lugo_corta_por_el_registro_de_cada_anuncio():
+    """En el BOP de Lugo cada anuncio acaba con «R. NNNN»: el texto va de la marca anterior a la suya, sin el final
+    del anuncio anterior ni los siguientes, aunque el título del sumario no esté igual en el cuerpo (30/10/2026)."""
+    from motor.limpieza import limpiar_texto
+    from motor.provinciales.textos import CABECERAS
+    pagina = ("54 Núm. 073 – sábado, 29 de marzo de 2025 BOP Lugo\nSarria, 20 de marzo de 2025.- O Alcalde.\nR. 0816\n"
+              "O SAVIÑAO\nAnuncio\nAprobáronse as bases para a selección de tres peóns.\nPrazo: dez días.\n"
+              "Anuncio publicado en: Num BOP 73 año 2025 (29/03/2025 08:00:00)\nR. 0817\n"
+              "Anuncio\nAprobáronse as bases para a selección dun cófer.\nR. 0818\nSOBER\nPadrón fiscal.\nR. 0806\n")
+    anuncios = [{"id": "a", "pagina": 1, "registro": "0817", "titulo": "BASES PARA A SELECCIÓN DE 3 PEÓNS/OAS"},
+                {"id": "b", "pagina": 1, "registro": "0818", "titulo": "BASES PARA A SELECCIÓN DE 1 CÓFER"}]
+    c = cortar([pagina], anuncios)
+    a = limpiar_texto(c["a"][0], CABECERAS["boplugo"])["texto"]
+    assert a.startswith("O SAVIÑAO") and "tres peóns" in a and "Sarria" not in a and "cófer" not in a
+    assert "Anuncio publicado en" not in a and "R. 08" not in a
+    b = limpiar_texto(c["b"][0], CABECERAS["boplugo"])["texto"]
+    assert "cófer" in b and "peóns" not in b and "Padrón" not in b
+    assert limpiar_texto("XOVES, 4 DE XULLO DE 2024 N.º 154\nCONCELLOS\nTexto.", CABECERAS["boplugo"])["texto"] == "CONCELLOS Texto."
+    # sin el título en el cuerpo, con la página y el registro también
+    c = cortar([pagina], [{"id": "z", "pagina": 1, "registro": "0818", "titulo": "Título que no aparece en el cuerpo"}])
+    assert "cófer" in c["z"][0] and "peóns" not in c["z"][0]
+
+
+def test_titulos_que_empiezan_igual_en_un_mismo_boletin():
+    """BOP de Las Palmas: varios anuncios con el mismo comienzo de título; cada uno se queda con el suyo."""
+    comun = "Bases específicas que regirán la convocatoria del proceso selectivo para la cobertura definitiva de una plaza de"
+    pagina = (f"ANUNCIO\n{comun.upper()} ARQUITECTO/A TÉCNICO, POR EL SISTEMA DE CONCURSO\nPRIMERO. Aprobar las {comun} "
+              "arquitecto/a técnico.\nTexto del arquitecto.\n"
+              f"ANUNCIO\n{comun.upper()} TÉCNICO/A GESTIÓN DE ADMINISTRACIÓN GENERAL\nTexto del técnico de gestión.\n"
+              f"ANUNCIO\n{comun.upper()} DELINEANTE, POR EL SISTEMA DE CONCURSO\nTexto del delineante.\n")
+    anuncios = [{"id": "a", "titulo": f"{comun} arquitecto/a técnico, por el sistema de concurso"},
+                {"id": "b", "titulo": f"{comun} técnico/a gestión de administración general"},
+                {"id": "c", "titulo": f"{comun} delineante, por el sistema de concurso"}]
+    c = cortar([pagina], anuncios)
+    assert "arquitecto." in c["a"][0] and "Texto del arquitecto" in c["a"][0] and "gestión" not in c["a"][0]
+    assert "Texto del técnico de gestión" in c["b"][0] and "delineante" not in c["b"][0].lower()
+    assert "Texto del delineante" in c["c"][0]

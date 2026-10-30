@@ -133,6 +133,11 @@ def procesar_dia(d: date, raiz: Path, archivo: Archivo) -> dict:
     return inf
 
 
+# Anuncios que el BOG publica solo en PDF: la página HTML no trae el texto, solo este aviso (174 textos así en la rama
+# de datos el 30/10/2026). Su texto se toma del PDF del anuncio.
+RE_SOLO_PDF = re.compile(r"(?i)anuncio publicado (?:[uú]nicamente|solamente) en formato pdf|pdf formatuan bakarrik")
+
+
 def texto_disposicion(contenido: bytes, x: dict | None = None) -> dict:
     """Texto limpio del anuncio. En nombramientos, listas y resultados (tipos fuera de CON_TEXTO) no se guarda el
     texto, que nombra a las personas: solo se cuentan las líneas con documento de identidad."""
@@ -142,6 +147,8 @@ def texto_disposicion(contenido: bytes, x: dict | None = None) -> dict:
         raise ValueError("sin div#cuerpoAnuncio: posible cambio de formato")
     j = h.rfind("</body>")
     cuerpo = h[i:j if j > i else None]
+    if RE_SOLO_PDF.search(texto_de(cuerpo)) and len(texto_de(cuerpo)) < 400:
+        return {"titulo": None, "texto": "", "tablas": [], "solo_pdf": True}
     if x is not None and x.get("tipo_acto") not in CON_TEXTO:
         lineas = [texto_de(b) for b in re.split(r"</(?:p|tr|li)>", cuerpo)]
         return {"titulo": None, "texto": None, "tablas": [], "solo_recuento": True,
@@ -162,6 +169,26 @@ def textos_pendientes(raiz: Path) -> list[dict]:
                                         0 if x.get("alcance") in (None, "acceso") else 1))
 
 
+def textos_solo_pdf(raiz: Path) -> list[dict]:
+    """Anuncios con el texto guardado desde la página HTML que solo traía el aviso de «publicado únicamente en
+    formato pdf» y con PDF: se vuelven a hacer desde el PDF."""
+    lista = []
+    for f in sorted((_base(raiz) / "oposiciones").glob("*/*/*.jsonl"), reverse=True):
+        for x in leer_jsonl(f):
+            r = ruta_texto(raiz, x)
+            if not x.get("url_pdf") or not r.exists():
+                continue
+            d = json.loads(r.read_text(encoding="utf-8"))
+            if not d.get("desde_pdf") and (d.get("solo_pdf") or RE_SOLO_PDF.search(d.get("texto") or "")):
+                lista.append(x)
+    return lista
+
+
+def texto_pdf_anuncio(contenido: bytes, x: dict) -> dict:
+    from motor.provinciales.comun import texto_pdf
+    return {**texto_pdf(contenido, x.get("tipo_acto") in CON_TEXTO), "titulo": None, "desde_pdf": True}
+
+
 def main(argv: list[str] | None = None) -> int:
     hoy = datetime.now(MADRID).date()
     p = argparse.ArgumentParser()
@@ -179,6 +206,11 @@ def main(argv: list[str] | None = None) -> int:
                                            texto_disposicion, archivo, FUENTE, a.max_minutos, a.pausa,
                                            accept="text/html", ext="html", por_registro=True)
         print(f"BOG textos: {hechos} descargados, {errores} errores, {len(pend) - hechos} pendientes")
+        solo_pdf = textos_solo_pdf(a.salida)
+        hechos, errores = descargar_textos(solo_pdf, lambda x: ruta_texto(a.salida, x), lambda x: x["url_pdf"],
+                                           texto_pdf_anuncio, archivo, FUENTE, a.max_minutos, a.pausa,
+                                           accept="application/pdf", ext="pdf", por_registro=True)
+        print(f"BOG textos desde el PDF: {hechos} hechos, {errores} errores, {len(solo_pdf) - hechos} pendientes")
         return 0
     inicio, informes, freno = time.monotonic(), [], Freno()
     d = a.hasta

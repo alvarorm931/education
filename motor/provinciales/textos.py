@@ -36,6 +36,20 @@ BOLETIN_ENTERO = {"boplugo": "url_pdf", "boppalencia": "url_pdf", "boptenerife":
                   "boplaspalmas": "url_pdf_boletin", "bopalbacete": "url_pdf_boletin"}
 
 
+# Cabeceras y pies de página que no son texto del anuncio, por fuente (líneas enteras)
+_DIAS = r"(?:luns|martes|m[ée]rcores|xoves|venres|s[áa]bado|domingo|lunes|mi[ée]rcoles|jueves|viernes)"
+CABECERAS = {
+    # BOP de Lugo: «54 Núm. 073 – sábado, 29 de marzo de 2025 BOP Lugo», «XOVES, 4 DE XULLO DE 2024 N.º 154»,
+    # «R. 0816» (registro al final de cada anuncio), «Anuncio publicado en: Num BOP 73 año 2025 (…)», «Powered by TCPDF»
+    "boplugo": re.compile(
+        rf"(?i)^(?:(?:\d{{1,4}}\s+)?N[úu]m\.\s*\d+\s*[–-]\s*{_DIAS},?\s+\d{{1,2}}\s+de\s+\w+\s+de\s+\d{{4}}\s+BOP\s+(?:de\s+)?Lugo"
+        rf"(?:\s+\d{{1,4}})?|{_DIAS},?\s+\d{{1,2}}\s+de\s+\w+\s+de\s+\d{{4}}\s+N\.?\s?º\s*\d+(?:\s+\d{{1,4}})?|R\.\s?\d{{2,5}}"
+        r"|(?:Powered by TCPDF \(www\.tcpdf\.org\)\s*)?Anuncio publicado en: Num BOP .*|Powered by TCPDF.*)$"),
+}
+# Registro al final de cada anuncio en el BOP de Lugo («R. 0816»): marca dónde acaba un anuncio y empieza el siguiente
+RE_REGISTRO = re.compile(r"(?m)^[ \t]*R\.\s?\d{2,5}[ \t]*$")
+
+
 def _plano(s: str) -> str:
     return re.sub(r"[^a-z0-9ñ]+", " ", normalizar(s or "")).strip()
 
@@ -51,12 +65,33 @@ def paginas_pdf(contenido: bytes) -> list[str]:
 RE_INDICE = re.compile(r"\.{5,}|…{2,}|(?:\. ){4,}|\S\s?>\s?\d{1,4}\s*$|(?:\s\.{2,4}|…)\s?\d{2,6}\s*$")
 
 
-def _posicion(plano: str, titulo: str, desde: int) -> int:
+# Palabras del título con las que se busca: primero muchas y luego menos. En el BOP de Las Palmas muchos títulos de un
+# mismo boletín empiezan igual («Bases específicas que regirán la convocatoria del proceso selectivo para la cobertura
+# definitiva de una plaza de …»): con doce palabras se tomaba el anuncio de otro (30/10/2026)
+LARGOS_TITULO = (24, 18, 12, 8, 5)
+
+
+class _Compacto:
+    """Texto plano sin espacios y, para cada letra, su posición en el plano: «DEFINITIV A» casa con «definitiva»."""
+
+    def __init__(self, plano: str):
+        self.posiciones = [k for k, c in enumerate(plano) if c != " "]
+        self.texto = "".join(plano[k] for k in self.posiciones)
+
+    def buscar(self, clave: str, desde: int) -> int:
+        import bisect
+        inicio = bisect.bisect_left(self.posiciones, desde)
+        j = self.texto.find(clave.replace(" ", ""), inicio)
+        return self.posiciones[j] if j >= 0 else -1
+
+
+def _posicion(plano: str, titulo: str, desde: int, compacto: _Compacto | None = None) -> int:
     """Dónde empieza el título (sus primeras palabras) en el texto plano del boletín, desde una posición."""
     palabras = _plano(titulo).split()
-    for n in (12, 8, 5):
-        if len(palabras) >= min(n, 4):
-            i = plano.find(" ".join(palabras[:n]), desde)
+    compacto = compacto or _Compacto(plano)
+    for n in LARGOS_TITULO:
+        if len(palabras) >= min(n, 4) and (n == 5 or len(palabras) >= n):
+            i = compacto.buscar(" ".join(palabras[:n]), desde)
             if i >= 0:
                 return i
     return -1
@@ -97,11 +132,12 @@ def cortar(paginas: list[str], anuncios: list[dict]) -> dict[str, tuple[str, lis
         inicio_pag.append(acumulado)
         acumulado += len(p) + 1
     plano = " ".join(planos)
+    compacto = _Compacto(plano)
     posiciones, desde = [], 0
     for x in anuncios:
         pag = x.get("pagina")
         base = inicio_pag[pag - 1] if isinstance(pag, int) and 0 < pag <= len(inicio_pag) else desde
-        i = _posicion(plano, x.get("titulo") or "", max(base, desde) if not isinstance(pag, int) else base)
+        i = _posicion(plano, x.get("titulo") or "", max(base, desde) if not isinstance(pag, int) else base, compacto)
         posiciones.append(i)
         if i >= 0:
             desde = i + 1
@@ -116,7 +152,18 @@ def cortar(paginas: list[str], anuncios: list[dict]) -> dict[str, tuple[str, lis
             fin = siguiente if siguiente > i else tope
             pags = [n + 1 for n, ini in enumerate(inicio_pag) if ini <= fin and ini + len(planos[n]) >= i]
         else:
-            # Sin el título no se sabe dónde empieza ni acaba: mejor sin texto que con el de otro anuncio
+            # Sin el título no se sabe dónde empieza ni acaba (mejor sin texto que con el de otro anuncio), salvo con
+            # la página y el registro del anuncio
+            pag = x.get("pagina")
+            por_registro = _por_registro(paginas, [pag, pag + 1], x.get("registro")) if isinstance(pag, int) else None
+            if por_registro:
+                out[x["id"]] = por_registro
+            continue
+        # Con el registro del anuncio (BOP de Lugo), de la marca «R. NNNN» anterior a la suya: así no entra el final
+        # del anuncio anterior ni los siguientes aunque el título del sumario no esté igual en el cuerpo (30/10/2026)
+        por_registro = _por_registro(paginas, pags, x.get("registro"))
+        if por_registro:
+            out[x["id"]] = por_registro
             continue
         # El texto se toma de las páginas originales (con sus saltos de línea), recortado a lo que toca si se puede
         bruto = "\n".join(paginas[n - 1] for n in pags if 0 < n <= len(paginas))
@@ -129,19 +176,44 @@ def cortar(paginas: list[str], anuncios: list[dict]) -> dict[str, tuple[str, lis
     return out
 
 
+def _por_registro(paginas: list[str], pags: list[int], registro) -> tuple[str, list[int]] | None:
+    reg = str(registro or "").strip()
+    if not reg.isdigit() or not pags:
+        return None
+    nums = [n for n in range(pags[0], min(pags[-1] + 1, len(paginas)) + 1) if 0 < n <= len(paginas)]
+    inicios, completo = [], ""
+    for n in nums:
+        inicios.append(len(completo))
+        completo += paginas[n - 1] + "\n"
+    fin = re.search(rf"(?m)^[ \t]*R\.\s?0*{int(reg)}[ \t]*$", completo)
+    if not fin:
+        return None
+    previas = list(RE_REGISTRO.finditer(completo, 0, fin.start()))
+    ini = previas[-1].end() if previas else 0
+    usadas = [n for n, i0 in zip(nums, inicios) if i0 <= fin.start() and i0 + len(paginas[n - 1]) >= ini]
+    return completo[ini:fin.start()], usadas
+
+
 def _posicion_bruto(bruto: str, titulo: str | None, desde: int = 0) -> int:
-    """Posición aproximada del título en el texto original: la primera línea que contiene sus primeras palabras."""
+    """Posición aproximada del título en el texto original: la primera línea en la que empiezan sus primeras palabras
+    (con más palabras primero, como en _posicion)."""
     if not titulo:
         return -1
-    clave = " ".join(_plano(titulo).split()[:5])
-    if not clave:
-        return -1
-    pos = 0
+    palabras = _plano(titulo).split()
+    lineas, pos = [], 0
     for linea in bruto.splitlines(keepends=True):
-        if pos >= desde and (_plano(linea + " " + bruto[pos + len(linea):pos + len(linea) + 200]).startswith(clave)
-                             or clave in _plano(linea)):
-            return pos
+        lineas.append((pos, linea))
         pos += len(linea)
+    for n in LARGOS_TITULO:
+        if not palabras or (n != 5 and len(palabras) < n):
+            continue
+        clave = " ".join(palabras[:n]).replace(" ", "")
+        for p0, linea in lineas:
+            if p0 < desde:
+                continue
+            ventana = _plano(linea + " " + bruto[p0 + len(linea):p0 + len(linea) + 40 * n]).replace(" ", "")
+            if ventana.startswith(clave) or clave in _plano(linea).replace(" ", ""):
+                return p0
     return -1
 
 
@@ -207,7 +279,8 @@ def textos_boletin_entero(raiz: Path, fuente: str, archivo: Archivo, max_minutos
                 continue
             bruto, pags = cortes[x["id"]]
             if x.get("tipo_acto") in CON_TEXTO:
-                datos = {"titulo": x.get("titulo"), **{k: v for k, v in limpiar_texto(bruto).items() if k != "titulo"}}
+                datos = {"titulo": x.get("titulo"),
+                         **{k: v for k, v in limpiar_texto(bruto, CABECERAS.get(fuente)).items() if k != "titulo"}}
             else:
                 datos = {"titulo": x.get("titulo"), "texto": None, "tablas": [], "solo_recuento": True,
                          "lineas_con_documento_de_identidad": sum(1 for l in bruto.splitlines() if RE_DOCUMENTO.search(l)),

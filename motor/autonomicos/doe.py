@@ -193,7 +193,17 @@ def texto_disposicion(contenido: bytes) -> dict:
     if not m:
         raise ValueError("sin div.xml: posible cambio de formato")
     cuerpo = RE_DIV_TXT.sub(lambda x: "<p>" + x.group(1) + "</p>", m.group(1))
-    return {"titulo": None, **limpiar_html(cuerpo)}
+    limpio = limpiar_html(cuerpo)
+    limpio["texto"] = sin_navegacion(limpio["texto"])
+    return {"titulo": None, **limpio}
+
+
+# Enlaces de la página del DOE que entraban en el texto (los 4.934 textos de la rama de datos, 30/10/2026)
+NAVEGACION = {"TEXTO ORIGINAL", "Subir ^", "Otras Opciones"}
+
+
+def sin_navegacion(texto: str) -> str:
+    return "\n".join(p for p in (texto or "").split("\n") if p.strip() not in NAVEGACION)
 
 
 def ruta_texto(raiz: Path, x: dict) -> Path:

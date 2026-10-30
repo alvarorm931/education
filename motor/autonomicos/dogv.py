@@ -203,6 +203,32 @@ def texto_disposicion(contenido: bytes) -> dict:
             "cve": datos.get("cve"), "fecha_disposicion": datos.get("fechaDisposicion"), **limpio}
 
 
+# Cabeceras y pies del PDF del DOGV («Núm. 9552 / 13.03.2023», «CVE: DOGV-C-2023-2519», «https://dogv.gva.es»)
+RE_CABECERA_PDF = re.compile(r"(?i)^(?:N[úu]m\.\s*\d+\s*/\s*\d{1,2}\.\d{1,2}\.\d{4}(?:\s+\d+)?|CVE:\s*DOGV-\S+.*|"
+                             r"https?://\S*dogv\S*.*|\d{1,5})$")
+
+
+def textos_vacios(raiz: Path) -> list[dict]:
+    """Disposiciones con el texto ya guardado pero vacío (la API del DOGV no da el texto de muchas de 2023: 532 el
+    30/10/2026) y con PDF: se toma el texto del PDF."""
+    lista = []
+    for f in sorted((_base(raiz) / "oposiciones").glob("*/*/*.jsonl"), reverse=True):
+        for x in leer_jsonl(f):
+            r = ruta_texto(raiz, x)
+            if not x.get("url_pdf") or not r.exists():
+                continue
+            d = json.loads(r.read_text(encoding="utf-8"))
+            if d.get("texto") == "" and not d.get("tablas") and not d.get("parrafos_omitidos_por_datos_personales") \
+                    and not d.get("desde_pdf"):
+                lista.append(x)
+    return lista
+
+
+def texto_pdf_disposicion(contenido: bytes, x: dict) -> dict:
+    from motor.provinciales.comun import texto_pdf
+    return {**texto_pdf(contenido, True, RE_CABECERA_PDF), "titulo": x.get("titulo"), "desde_pdf": True}
+
+
 def ruta_texto(raiz: Path, x: dict) -> Path:
     return _base(raiz) / "textos" / x["fecha"][:4] / x["fecha"][5:7] / f"{x['id']}.json"
 
@@ -233,6 +259,15 @@ def main(argv: list[str] | None = None) -> int:
                                            texto_disposicion, archivo, FUENTE, a.max_minutos, a.pausa,
                                            accept="application/json", ext="json")
         print(f"DOGV textos: {hechos} descargados, {errores} errores, {len(pend) - hechos} pendientes")
+        vacios = textos_vacios(a.salida)
+        def desde_pdf(contenido: bytes, x: dict) -> dict:  # conserva sección, organismo… de lo ya guardado
+            previo = json.loads(ruta_texto(a.salida, x).read_text(encoding="utf-8"))
+            return {**{k: previo[k] for k in ("seccion", "organismo", "tipo_documento", "cve", "fecha_disposicion")
+                       if k in previo}, **texto_pdf_disposicion(contenido, x)}
+        hechos, errores = descargar_textos(vacios, lambda x: ruta_texto(a.salida, x), lambda x: x["url_pdf"],
+                                           desde_pdf, archivo, FUENTE, a.max_minutos, a.pausa,
+                                           accept="application/pdf", ext="pdf", por_registro=True)
+        print(f"DOGV textos desde el PDF: {hechos} hechos, {errores} errores, {len(vacios) - hechos} pendientes")
         return 0
 
     inicio, informes, calendarios = time.monotonic(), [], {}
