@@ -139,6 +139,15 @@ def _num(s: str | None) -> float | None:
     return float(m.group(0).replace(",", ".")) if m else None
 
 
+ROMANOS = {"I": 1, "II": 2, "III": 3, "IV": 4, "V": 5, "VI": 6, "VII": 7, "VIII": 8, "IX": 9, "X": 10, "XI": 11,
+           "XII": 12}
+
+
+def arabigos(s: str | None) -> str:
+    """«III-IV» → «3-4»: semestres o cursos en números romanos (solo en mayúsculas, para no tocar la «i» catalana)."""
+    return re.sub(r"\b(XII|XI|X|IX|VIII|VII|VI|V|IV|III|II|I)\b", lambda m: str(ROMANOS[m.group(1)]), s or "")
+
+
 def numero_orden(s: str | None) -> int | None:
     """«1», «1º», «1.º», «Primero», «S1», «C2», «2.º cuatrimestre» → número; «Anual» → None."""
     s = (s or "").strip().lower()
@@ -613,12 +622,14 @@ def plan(tablas: list[dict], dist: dict | None = None, codigos: dict[str, str] |
                 # (con créditos se queda: «Elegir 2 asignaturas transversales de entre: 12» cuenta en el plan)
             if creditos and dist and dist.get("total") and creditos >= 0.5 * dist["total"]:
                 continue  # ninguna asignatura vale la mitad del grado: es un total o un rótulo
-            curso = numero_orden(f[cols["curso"]]) if "curso" in cols else None
-            semestre = numero_orden(f[cols["semestre"]]) if "semestre" in cols else None
-            if "curso" in cols and RE_VARIOS.search(f[cols["curso"]] or ""):
+            txt_curso = arabigos(f[cols["curso"]]) if "curso" in cols else ""
+            txt_sem = arabigos(f[cols["semestre"]]) if "semestre" in cols else ""
+            curso = numero_orden(txt_curso) if "curso" in cols else None
+            semestre = numero_orden(txt_sem) if "semestre" in cols else None
+            if "curso" in cols and RE_VARIOS.search(txt_curso):
                 curso = None  # «1.º y 2.º»: la materia se reparte en dos cursos
-            if "semestre" in cols and RE_VARIOS.search(f[cols["semestre"]] or ""):
-                vals = sorted({int(v) for v in re.findall(r"\d+", f[cols["semestre"]])})
+            if "semestre" in cols and RE_VARIOS.search(txt_sem):
+                vals = sorted({int(v) for v in re.findall(r"\d+", txt_sem)})
                 semestre = None  # «1 y 2», «7 u 8»: anual o a elegir; el literal queda en periodo_literal
                 if not curso and vals and all(v > 2 for v in vals) and len({(v + 1) // 2 for v in vals}) == 1:
                     curso = (vals[0] + 1) // 2
