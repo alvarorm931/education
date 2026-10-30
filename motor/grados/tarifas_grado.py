@@ -133,6 +133,7 @@ def extraer(paginas: list[str], grados: list[dict]) -> dict:
     precios: dict[str, list] = defaultdict(list)
     con_importe, muestra, previa, rotulo = 0, [], "", None
     curso, cabecera = None, None
+    bloque, ultimo = 0, None
     for n, pagina in enumerate(paginas, 1):
         if not curso and (m := CURSO_DOC.search(pagina)):
             curso = f"{m.group(1)}-20{m.group(2)}"
@@ -152,8 +153,13 @@ def extraer(paginas: list[str], grados: list[dict]) -> dict:
             con_importe += 1
             texto_sin = IMPORTE.sub(" ", linea)
             codigo = grado_de(linea, grados)
-            if not codigo and not re.search(r"[A-Za-zÁÉÍÓÚáéíóú]{4}", texto_sin):
+            if codigo:
+                bloque += 1  # cada línea con nombre de grado abre un bloque; las de solo cifras que siguen, también suyas
+            elif not re.search(r"[A-Za-zÁÉÍÓÚáéíóú]{4}", texto_sin):
                 codigo = grado_de(previa, grados)
+                if codigo and codigo != ultimo:
+                    bloque += 1
+            ultimo = codigo or ultimo
             if len(muestra) < 60 and re.search(r"grado|doble|bachelor|degree", linea + " " + previa, re.I):
                 muestra.append(linea[:MAX_LINEA_MUESTRA])
             if not codigo:
@@ -170,7 +176,8 @@ def extraer(paginas: list[str], grados: list[dict]) -> dict:
                 tipo = tipo or tipo_cercano(antes[-60:], despues[:40]) or (rotulo if len(hallados) == 1 else None)
                 bajo, alto = RANGO.get(tipo, (1, 0)) if tipo else (1, 0)
                 precios[codigo].append({"valor": valor, "tipo": tipo, "verosimil": bool(tipo) and bajo <= valor <= alto,
-                                        "pagina": n, "linea_sha256": hashlib.sha256(linea.encode()).hexdigest()[:16]})
+                                        "pagina": n, "bloque": bloque,
+                                        "linea_sha256": hashlib.sha256(linea.encode()).hexdigest()[:16]})
     return {"curso_documento": curso, "lineas_con_importe": con_importe, "grados": dict(precios), "muestra": muestra}
 
 

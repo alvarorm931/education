@@ -117,9 +117,22 @@ def test_indexar_tarifas_prefiere_el_curso_mas_reciente(tmp_path):
     d = tmp_path / "20261030T040000-t0" / "datos" / "estudios" / "grados" / "tarifas_grado"
     d.mkdir(parents=True)
     docs = [{"url": "https://u.es/precios-25-26.pdf", "curso_documento": "2025-2026", "universidad": "U",
-             "grados": {"2500001": [_imp(9000.0, "curso")]}},
+             "grados": {"2500001": [_imp(150.0, None), _imp(9000.0, None)]}},
             {"url": "https://u.es/precios-26-27.pdf", "curso_documento": "2026-2027", "universidad": "U",
-             "grados": {"2500001": [_imp(9300.0, "curso")]}}]
+             "grados": {"2500001": [_imp(155.0, None), _imp(9300.0, None)]}},
+            {"url": "https://u.es/otra.pdf", "curso_documento": "2026-2027", "universidad": "U",
+             "grados": {"2500002": [_imp(9300.0, "curso")]}}]
     (d / "tarifas.jsonl").write_text("\n".join(json.dumps(x) for x in docs))
-    t = indexar_tarifas(tmp_path)["2500001"]
-    assert t["precio_curso"] == 9300.0 and t["curso_documento"] == "2026-2027" and t["capturado"] == "2026-10-30"
+    t = indexar_tarifas(tmp_path)
+    assert t["2500001"]["precio_curso"] == 9300.0 and t["2500001"]["curso_documento"] == "2026-2027"
+    assert t["2500001"]["capturado"] == "2026-10-30"
+    assert "2500002" not in t  # una cifra suelta con rótulo «curso» en una lista de precios no basta
+
+
+def test_precio_por_cuentas():
+    from motor.grados.fichas import precio_por_cuentas as p
+    assert p([2100, 10320, 172, 12420])["precio_curso"] == 10320
+    r = p([700, 130, 8500])
+    assert r["precio_curso"] == 7800 and r["matricula_o_reserva"] == 700
+    assert p([1047, 1500, 11970])["metodo"] == "reserva_mas_cuotas"
+    assert p([950, 1500, 4800]) is None

@@ -71,7 +71,7 @@ TIPO_IMPORTE = [
     ("mensual", re.compile(r"mensual|al mes|/mes|cuotas?|plazos?", re.I)),
     ("reserva", re.compile(r"reserva|preinscripci|matr[íi]cula de plaza", re.I)),
     ("total", re.compile(r"total|grado completo|todo el grado|programa completo", re.I)),
-    ("curso", re.compile(r"curso|anual|por año|al año|/año|año acad", re.I)),
+    ("curso", re.compile(r"curso|\banual\b|por año|al año|/año|año acad", re.I)),  # «anuales»: sueldos
 ]
 MAX_URLS = 80000
 PAUSA = 1.0

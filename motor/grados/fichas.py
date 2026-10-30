@@ -66,6 +66,32 @@ RANGO_PRECIO = {"credito": (40, 450), "curso": (2500, 30000), "total": (8000, 16
 MAX_RAZON_CURSO = 1.6
 
 
+def precio_por_cuentas(valores: list[float]) -> dict | None:
+    """Precio por curso cuando los importes de la misma página o fila cuadran entre sí, sin fiarse de su rótulo:
+      - un importe es el crédito × 60 de otro (curso = 60 créditos): «172 € | 10.320 €»;
+      - un importe es el crédito × 60 más otro (la matrícula o reserva): «130 € | 700 € | 8.500 €» → 7.800 € de
+        enseñanza más 700 € de matrícula;
+      - un importe es otro (reserva) más entre 8 y 12 cuotas iguales de un tercero: «1.500 € | 1.047 € | 11.970 €».
+    Con varias soluciones (modalidades, idiomas) se da la menor («desde»)."""
+    v = sorted({round(float(x), 2) for x in valores})
+    creditos = [x for x in v if RANGO_PRECIO["credito"][0] <= x <= RANGO_PRECIO["credito"][1]]
+    cursos = [x for x in v if RANGO_PRECIO["curso"][0] <= x <= RANGO_PRECIO["curso"][1]]
+    pequenos = [x for x in v if 100 <= x <= 3500]
+    cerca = lambda a, b: abs(a - b) <= max(1.0, 0.001 * b)  # noqa: E731
+    a = sorted({k for k in cursos for c in creditos if cerca(c * 60, k)})
+    if a:
+        return {"precio_curso": a[0], "metodo": "curso_igual_a_credito_por_60", "soluciones": len(a)}
+    b = sorted({(round(c * 60, 2), k, r) for c in creditos for r in pequenos for k in cursos if cerca(c * 60 + r, k)})
+    if b:
+        return {"precio_curso": b[0][0], "metodo": "credito_por_60_mas_matricula", "matricula_o_reserva": b[0][2],
+                "primer_curso_con_matricula": b[0][1], "soluciones": len(b)}
+    c = sorted({k for k in cursos for r in pequenos for m in pequenos if m != r
+                for n in range(8, 13) if abs(r + n * m - k) <= 2})
+    if c:
+        return {"precio_curso": c[0], "metodo": "reserva_mas_cuotas", "soluciones": len(c)}
+    return None
+
+
 def precio_web(f: dict) -> dict | None:
     """Precio de un grado privado desde su página: importes por tipo y un precio por curso orientativo.
 
@@ -88,8 +114,11 @@ def precio_web(f: dict) -> dict | None:
     creditos = sorted(por_tipo.get("credito") or ())
     curso, metodo, nota = None, None, None
     cruzados = [c for c in cursos for k in creditos if abs(c - k * 60) <= 0.02 * c]
+    cuentas = precio_por_cuentas([i["valor"] for i in f.get("importes") or [] if i.get("tipo") != "sueldo"])
     if cruzados:
         curso, metodo = min(cruzados), "curso_igual_a_credito_por_60"
+    elif cuentas and not ld_valor:
+        curso, metodo = cuentas["precio_curso"], cuentas["metodo"]
     elif ld_valor and (not cursos or ld_valor in cursos):
         curso, metodo = ld_valor, "datos_estructurados"
     elif cursos and not ld_valor and cursos[-1] / cursos[0] <= MAX_RAZON_CURSO:
@@ -142,7 +171,17 @@ def indexar_tarifas(carpeta: Path | None) -> dict[str, dict]:
         fecha = f"{m.group(1)}-{m.group(2)}-{m.group(3)}" if m else None
         for doc in _leer(f):
             for cod, importes in (doc.get("grados") or {}).items():
-                p = precio_web({"url": doc["url"], "importes": importes})
+                # en las listas de precios el rótulo de cada cifra no es fiable: solo vale si las cifras de un mismo
+                # bloque (la línea del grado y las de solo cifras que la siguen) cuadran entre sí; entre bloques,
+                # la menor
+                por_bloque: dict = defaultdict(list)
+                for i in importes:
+                    if i.get("tipo") != "sueldo":
+                        por_bloque[i.get("bloque", i.get("linea_sha256"))].append(i["valor"])
+                soluciones = [c for c in (precio_por_cuentas(v) for v in por_bloque.values()) if c]
+                cuentas = min(soluciones, key=lambda c: c["precio_curso"]) if soluciones else None
+                p = cuentas and {**cuentas, "nota": None, "url": doc["url"],
+                                 "importes": sorted({i["valor"] for i in importes}), "precio_jsonld": None}
                 if p:
                     candidatos[cod].append({**p, "fuente": "Tarifas publicadas por la universidad",
                                             "formato": doc.get("formato") or "pdf",
