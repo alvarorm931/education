@@ -346,6 +346,30 @@ def _proceso(a: dict, posteriores: list[dict], otras: list[dict], hoy: date, ide
     }
 
 
+def clave_convocante(x: dict) -> list[str]:
+    """Claves con las que un acto identifica a su convocante: código INE o nombre del municipio (local) y el
+    organismo normalizado."""
+    claves = _municipio(x.get("convocante"), [x.get("fuente") or "BOE"]) if x.get("convocante") else []
+    org = clave_titulo(x.get("organismo") or x.get("departamento"))
+    if org and x.get("ambito") != "local":
+        claves.append("orgn:" + org)
+    return claves
+
+
+def construir_y_unir(actos: list[dict], hoy: date, autonomicos: list[dict] | None = None) -> tuple[list[dict], dict, list[dict]]:
+    """Procesos con sus actos posteriores unidos (motor/union.py). Devuelve (procesos, recuento, huérfanos)."""
+    from motor.union import fase_y_estado, unir
+    autonomicos = autonomicos or []
+    procesos = construir(actos, hoy, autonomicos)
+    por_id = {a["id"]: a for a in actos}
+    por_id.update({x["id"]: x for x in autonomicos})
+    origenes = {p["id"]: por_id.get(p["actos"][0]["id"]) for p in procesos if p.get("actos")}
+    recuento, huerfanos = unir(procesos, origenes, actos + autonomicos, clave_convocante)
+    for p in procesos:
+        fase_y_estado(p, hoy)
+    return procesos, dict(recuento), huerfanos
+
+
 def resumen(procesos: list[dict], hoy: date) -> dict:
     abiertos = [p for p in procesos if p["estado"] == "plazo_abierto"]
     por_provincia, por_comunidad, por_puesto, por_fuente = Counter(), Counter(), Counter(), Counter()
@@ -383,14 +407,21 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--salida", type=Path, default=Path("."))
     p.add_argument("--hoy", type=date.fromisoformat, default=datetime.now(MADRID).date())
     a = p.parse_args(argv)
-    procesos = construir(leer_actos(a.salida), a.hoy, leer_actos_autonomicos(a.salida))
+    procesos, uniones, huerfanos = construir_y_unir(leer_actos(a.salida), a.hoy, leer_actos_autonomicos(a.salida))
     destino = a.salida / "datos" / "oposiciones"
     destino.mkdir(parents=True, exist_ok=True)
     (destino / "procesos.jsonl").write_text("".join(json.dumps(x, ensure_ascii=False) + "\n" for x in procesos),
                                             encoding="utf-8")
+    # Cola de huérfanos: actos posteriores que no se han podido unir con seguridad, para revisarlos
+    (destino / "huerfanos.jsonl").write_text("".join(json.dumps(x, ensure_ascii=False) + "\n" for x in huerfanos),
+                                             encoding="utf-8")
     r = resumen(procesos, a.hoy)
+    r["uniones"] = {"actos_unidos": sum(v for k, v in uniones.items() if not k.startswith("huerfano:")),
+                    "huerfanos": len(huerfanos), "por_motivo": dict(sorted(uniones.items(), key=lambda kv: -kv[1])),
+                    "procesos_con_actos_posteriores": sum(1 for p in procesos if len(p.get("actos") or []) > 1),
+                    "por_fase": dict(Counter(p.get("fase") for p in procesos if p.get("fase")).most_common())}
     (destino / "resumen.json").write_text(json.dumps(r, ensure_ascii=False, indent=1), encoding="utf-8")
-    print(json.dumps({k: r[k] for k in ("procesos", "por_estado", "por_fuente")}, ensure_ascii=False))
+    print(json.dumps({k: r[k] for k in ("procesos", "por_estado", "uniones")}, ensure_ascii=False))
     print("Plazo abierto hoy:", r["plazo_abierto"]["procesos"], "procesos,", r["plazo_abierto"]["plazas"], "plazas")
     return 0
 

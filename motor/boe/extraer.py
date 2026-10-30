@@ -26,7 +26,7 @@ from collections import Counter, defaultdict
 from datetime import date
 from pathlib import Path
 
-from motor.boe.clasificar import normalizar
+from motor.boe.clasificar import REGLAS_ACTO, _primera, normalizar
 from motor.boe.texto import ruta_texto
 from motor.calendario import fin_de_plazo
 from motor.catalogo.puestos import grupo, normalizar_puesto
@@ -188,7 +188,8 @@ def construir_acto(anuncio: dict, texto: dict | None) -> dict:
         "epigrafe": anuncio.get("epigrafe"),
         "ambito": anuncio.get("ambito"),
         "convocante": anuncio.get("convocante"),
-        "tipo_acto": anuncio.get("tipo_acto"),
+        "tipo_acto": _primera(REGLAS_ACTO, normalizar(anuncio["titulo"])) or "otro" if anuncio.get("titulo")
+        else anuncio.get("tipo_acto"),  # con las reglas vigentes, no con las del día de la captura
         "alcance": anuncio.get("alcance"),
         "modalidad": anuncio.get("modalidad"),
         "tiene_texto": texto is not None,

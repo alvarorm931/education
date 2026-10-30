@@ -19,7 +19,7 @@ import sys
 from collections import Counter, defaultdict
 from pathlib import Path
 
-from motor.autonomicos.comun import escribir_jsonl, leer_jsonl
+from motor.autonomicos.comun import clasificar, escribir_jsonl, leer_jsonl
 from motor.boe.extraer import aplicar_plazas
 from motor.extraccion.plazo import VERSION as VERSION_PLAZO, extraer_plazo
 
@@ -135,7 +135,9 @@ def construir_acto(fuente: str, x: dict, texto: str | None, recuento: int | None
         "seccion": " / ".join(p for p in (x.get("seccion"), x.get("subseccion") or x.get("apartado")) if p) or None,
         "ambito": x.get("ambito"),
         "convocante": x.get("convocante"),
-        "tipo_acto": x.get("tipo_acto"),
+        # Con las reglas vigentes (motor/boe/clasificar.py), no con las del día de la captura: así una mejora de
+        # las reglas se aplica a todo el histórico sin volver a seleccionar
+        "tipo_acto": clasificar(x.get("titulo") or "")["tipo_acto"] if x.get("titulo") else x.get("tipo_acto"),
         "alcance": x.get("alcance"),
         "modalidad": x.get("modalidad"),
         "tiene_texto": texto is not None,

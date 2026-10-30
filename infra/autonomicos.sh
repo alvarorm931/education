@@ -156,6 +156,9 @@ for c in $CONECTORES; do
       ejecutar motor.provinciales.bopavila --salida "$S"
       ejecutar motor.provinciales.bopavila --historico --desde 2022-01-01 --salida "$S" --max-minutos "$M"
       "$G" "BOP Ávila: boletín del día"
+      # Textos: el PDF de cada anuncio de empleo (motor/provinciales/textos.py)
+      ejecutar motor.provinciales.textos bopavila --salida "$S" --max-minutos "$M"
+      "$G" "BOP Ávila: textos"
       ;;
     bopbadajoz)
       # El boletín del día por su canal Atom; el histórico, por el sumario de cada fecha
@@ -172,6 +175,9 @@ for c in $CONECTORES; do
       # Histórico por la lista completa («BOP Total», 20 boletines por página) hasta 2022
       ejecutar motor.provinciales.bopzamora --historico --salida "$S" --max-minutos "$M"
       "$G" "BOP Zamora: histórico"
+      # Textos: el PDF de cada anuncio de empleo (motor/provinciales/textos.py)
+      ejecutar motor.provinciales.textos bopzamora --salida "$S" --max-minutos "$M"
+      "$G" "BOP Zamora: textos"
       ;;
     boptoledo)
       # robots.txt cierra todo el servidor: se lee como boletín oficial (motor/http.py)
@@ -190,6 +196,9 @@ for c in $CONECTORES; do
       ejecutar motor.provinciales.bopalava --salida "$S"
       ejecutar motor.provinciales.bopalava --desde 2022-01-01 --salida "$S" --max-minutos "$M"
       "$G" "BOTHA: días"
+      # Textos: el PDF de cada anuncio de empleo (motor/provinciales/textos.py)
+      ejecutar motor.provinciales.textos bopalava --salida "$S" --max-minutos "$M"
+      "$G" "BOTHA: textos"
       ;;
     bopsalamanca)
       # Solo el boletín del día, desde la portada
@@ -238,6 +247,9 @@ for c in $CONECTORES; do
       ejecutar motor.provinciales.boplugo --salida "$S"
       ejecutar motor.provinciales.boplugo --historico --desde 2022-01-01 --salida "$S" --max-minutos "$M"
       "$G" "BOP Lugo: boletines"
+      # Textos: el anuncio cortado del PDF del boletín entero (motor/provinciales/textos.py)
+      ejecutar motor.provinciales.textos boplugo --salida "$S" --max-minutos "$M"
+      "$G" "BOP Lugo: textos"
       ;;
     bophuelva)
       # JSON del día desde s2.diphuelva.es (robots.txt lo cierra: boletín oficial, motor/http.py), desde el servidor de España: a GitHub deja de responderle. Este sistema empieza el 20/06/2023
@@ -252,6 +264,9 @@ for c in $CONECTORES; do
       ejecutar motor.provinciales.boplaspalmas --salida "$S"
       ejecutar motor.provinciales.boplaspalmas --desde 2022-01-01 --salida "$S" --max-minutos "$M"
       "$G" "BOP Las Palmas: días"
+      # Textos: el anuncio cortado del PDF del boletín entero (motor/provinciales/textos.py)
+      ejecutar motor.provinciales.textos boplaspalmas --salida "$S" --max-minutos "$M"
+      "$G" "BOP Las Palmas: textos"
       ;;
     bopvalladolid)
       # Desde GitHub no responde: servidor de España. Calendario por mes y boletín por fecha
@@ -303,6 +318,9 @@ for c in $CONECTORES; do
       ejecutar motor.provinciales.boppalencia --salida "$S"
       ejecutar motor.provinciales.boppalencia --paginas 70 --salida "$S" --max-minutos "$M"
       "$G" "BOP Palencia: boletines"
+      # Textos: el anuncio cortado del PDF del boletín entero (motor/provinciales/textos.py)
+      ejecutar motor.provinciales.textos boppalencia --salida "$S" --max-minutos "$M"
+      "$G" "BOP Palencia: textos"
       ;;
     bopsoria)
       # Boletines del día y sumario de su ficha, con un PDF por anuncio
@@ -404,10 +422,13 @@ for c in $CONECTORES; do
       "$G" "BOP A Coruña: textos"
       ;;
     boptenerife)
-      # Sin textos por anuncio: el texto solo está en el PDF del boletín completo
+      # Sin PDF por anuncio: los textos se cortan del PDF del boletín completo
       ejecutar motor.provinciales.boptenerife --salida "$S"
       ejecutar motor.provinciales.boptenerife --desde 2022-01-01 --salida "$S" --max-minutos "$M"
       "$G" "BOP Tenerife: días"
+      # Textos: el anuncio cortado del PDF del boletín entero (motor/provinciales/textos.py)
+      ejecutar motor.provinciales.textos boptenerife --salida "$S" --max-minutos "$M"
+      "$G" "BOP Tenerife: textos"
       ;;
     *)
       echo "::warning::Conector desconocido: $c"
