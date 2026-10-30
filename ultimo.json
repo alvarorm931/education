@@ -1,45 +1,97 @@
 {
- "fecha": "2026-10-30T21:20:51+00:00",
- "fecha_madrid": "30/10 22:20",
+ "fecha": "2026-10-30T21:26:50+00:00",
+ "fecha_madrid": "30/10 22:26",
  "ventana_horas": 6.0,
  "resumen": {
-  "ejecuciones_revisadas": 98,
-  "fallos": 0,
-  "fallos_pendientes": 0,
+  "ejecuciones_revisadas": 104,
+  "fallos": 1,
+  "fallos_pendientes": 1,
   "relanzados": 0,
-  "colas_largas": 4,
+  "colas_largas": 3,
   "flujos_programados_parados": [],
   "programaciones_lanzadas_a_mano": [],
   "avisos_de_fuentes": 0,
   "almacen": "ok"
  },
- "fallos": [],
+ "fallos": [
+  {
+   "flujo": "Prueba de conector",
+   "fichero": "prueba.yml",
+   "id": 41120449947,
+   "intento": 1,
+   "evento": "workflow_dispatch",
+   "rama": "main",
+   "commit": "05434bb",
+   "titulo": "Prueba de conector",
+   "conclusion": "failure",
+   "cuando": "30/10 22:26",
+   "url": "https://github.com/alvarorm931/education/actions/runs/41120449947",
+   "superado": false,
+   "en_curso": null,
+   "pasajero": false,
+   "detalle": [
+    {
+     "trabajo": "prueba",
+     "pasos": [
+      "Subir a la rama sondas"
+     ],
+     "ejecutor": "motor-espana",
+     "etiquetas": [
+      "self-hosted",
+      "espana"
+     ],
+     "final_registro": [
+      "##[error]Process completed with exit code 1.",
+      "...",
+      "ajustarse a los principios de imparcialidad y profesionalidad de sus miembros. ",
+      "Dicho tribunal calificador estará integrado por un presidente y dos vocales, de los cuales uno de ellos ejercerá ",
+      "la función secretario. Todos los miembros del tribunal tendrán voz y voto. ",
+      "La pertenencia al tribunal calificador será siempre a título individual, no pudiendo ostentarse esta en represen-",
+      "tación o por cuenta de nadie. ",
+      "Todos los miembros del tribunal, titulares y suplentes, serán funcionarios de carrera o personal laboral fijo de ",
+      "las di",
+      "codigo=0",
+      "\u001b[36;1mpython -m motor.mantenimiento.anonimizar \"prueba/$STAMP\"\u001b[0m",
+      "Sustituciones: 0",
+      "\u001b[36;1mcd prueba\u001b[0m",
+      "\u001b[36;1mgit init -q && git config user.name \"motor-prueba\" && git config user.email \"motor-prueba@users.noreply.github.com\"\u001b[0m",
+      "\u001b[36;1mgit remote add origin \"***github.com/alvarorm931/education.git\"\u001b[0m",
+      "\u001b[36;1mif git fetch -q --depth 1 origin sondas; then git reset -q FETCH_HEAD; fi\u001b[0m",
+      "\u001b[36;1mgit checkout -q -B sondas\u001b[0m",
+      "\u001b[36;1mgit add \"$STAMP\" && git commit -qm \"Prueba motor.provinciales.sonda_pdf_texto\" && git push -q origin sondas\u001b[0m",
+      "To https://github.com/alvarorm931/education.git",
+      " ! [rejected]          sondas -> sondas (fetch first)",
+      "error: failed to push some refs to 'https://github.com/alvarorm931/education.git'",
+      "hint: Updates were rejected because the remote contains work that you do not",
+      "hint: have locally. This is usually caused by another repository pushing to",
+      "hint: the same ref. If you want to integrate the remote changes, use",
+      "hint: 'git pull' before pushing again.",
+      "hint: See the 'Note about fast-forwards' in 'git push --help' for details.",
+      "##[error]Process completed with exit code 1."
+     ]
+    }
+   ]
+  }
+ ],
  "colas_largas": [
   {
    "flujo": "Boletines autonómicos",
    "id": 41125671517,
-   "en_cola_min": 36,
+   "en_cola_min": 42,
    "trabajos_empezados": 2,
    "url": "https://github.com/alvarorm931/education/actions/runs/41125671517"
   },
   {
    "flujo": "Grados por tramos",
    "id": 41120742487,
-   "en_cola_min": 74,
+   "en_cola_min": 80,
    "trabajos_empezados": 0,
    "url": "https://github.com/alvarorm931/education/actions/runs/41120742487"
   },
   {
-   "flujo": "Prueba de conector",
-   "id": 41120449947,
-   "en_cola_min": 76,
-   "trabajos_empezados": 0,
-   "url": "https://github.com/alvarorm931/education/actions/runs/41120449947"
-  },
-  {
    "flujo": "Estudios por tramos",
    "id": 41119697629,
-   "en_cola_min": 81,
+   "en_cola_min": 87,
    "trabajos_empezados": 0,
    "url": "https://github.com/alvarorm931/education/actions/runs/41119697629"
   }
