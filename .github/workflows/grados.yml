@@ -1,0 +1,118 @@
+name: Grados por tramos
+
+# Ejecuta un módulo de motor/grados en varios tramos (matriz) y junta los resultados en un solo commit
+# en la rama "sondas". Evita que las pruebas encoladas se cancelen entre sí y permite tramos de hasta 55
+# minutos. Con la misma fuente (p. ej. el RUCT) usar paralelo=1 para no pasar de una petición por segundo.
+
+on:
+  workflow_dispatch:
+    inputs:
+      modulo:
+        description: "Módulo (por ejemplo motor.grados.ruct_grados)"
+        required: true
+      tramos:
+        description: 'Lista JSON de argumentos, uno por tramo: ["--desde 0 --hasta 37", "--desde 37 --hasta 73"]'
+        required: true
+      paralelo:
+        description: "Tramos a la vez (1 si todos van a la misma fuente)"
+        default: "1"
+      entrada:
+        description: "Rutas de la rama sondas que necesita el módulo, separadas por espacios (quedan en ./entrada/)"
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+
+jobs:
+  tramo:
+    runs-on: ubuntu-latest
+    timeout-minutes: 58
+    strategy:
+      fail-fast: false
+      max-parallel: ${{ fromJSON(inputs.paralelo) }}
+      matrix:
+        args: ${{ fromJSON(inputs.tramos) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -e ".[estudios]"
+      - name: Traer entradas de la rama sondas
+        if: inputs.entrada != ''
+        env:
+          RUTAS: ${{ inputs.entrada }}
+        run: |
+          git fetch -q --depth 1 --filter=blob:none origin sondas
+          mkdir -p entrada
+          for r in $RUTAS; do
+            git archive FETCH_HEAD "$r" | tar -x -C entrada
+          done
+          find entrada -maxdepth 6 -type d | head -20
+      - name: Ejecutar
+        env:
+          MODULO: ${{ inputs.modulo }}
+          ARGS: ${{ matrix.args }}
+        run: |
+          case "$MODULO" in motor.grados.*) ;; *) echo "Módulo no permitido"; exit 1;; esac
+          mkdir -p out
+          set +e
+          python -m "$MODULO" $ARGS --salida out > out/salida.txt 2>&1
+          echo "codigo=$?" >> out/salida.txt
+          tail -n 20 out/salida.txt
+          echo "NOMBRE=${{ strategy.job-index }}" >> "$GITHUB_ENV"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: tramo-${{ env.NOMBRE }}
+          path: out
+          retention-days: 7
+
+  juntar:
+    needs: tramo
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    # Sin grupo de concurrencia: el grupo «rama-sondas» lo comparten otros flujos y una espera allí puede
+    # cancelarse. Cada ejecución añade una carpeta propia, así que basta con reintentar el push.
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: tramos
+      - name: Subir a la rama sondas
+        env:
+          MODULO: ${{ inputs.modulo }}
+        run: |
+          STAMP=$(date -u +%Y%m%dT%H%M%S)
+          mkdir -p "pub/$STAMP"
+          for d in tramos/*/; do
+            n=$(basename "$d")
+            cp "$d/salida.txt" "pub/$STAMP/$n.salida.txt" 2>/dev/null || true
+            if [ -d "$d/datos" ]; then cp -r "$d/datos" "pub/$STAMP/"; fi
+            # Las páginas de webs de centros no se publican: la rama es pública y son textos ajenos. Solo se sube
+            # su índice (URL, fecha, huella sha256); el original irá al archivo privado (R2) cuando exista.
+            rm -rf "$d/archivo/web-centros"
+            if [ -d "$d/archivo" ]; then mkdir -p "pub/$STAMP/archivo"; cp -r "$d/archivo/." "pub/$STAMP/archivo/"; cat "$d/archivo/indice.jsonl" >> "pub/$STAMP/archivo/indice_todos.jsonl" 2>/dev/null || true; fi
+          done
+          # GitHub rechaza ficheros de más de 100 MB: los grandes se comprimen (y se ve qué pesa)
+          find pub -type f -size +90M -print -exec gzip -9 {} \;
+          du -sh pub/$STAMP; find pub -type f -size +20M -exec ls -lh {} \;
+          # Red de seguridad: claves ajenas que aparecen en URL públicas no se suben (la rama es pública)
+          grep -rlE '(AKIA|ASIA)[0-9A-Z]{16}|AIza[0-9A-Za-z_-]{35}|gh[pousr]_[A-Za-z0-9]{36}|xox[baprs]-[A-Za-z0-9-]{10,}|sk_live_[0-9a-zA-Z]{24,}' pub 2>/dev/null \
+            | xargs -r sed -i -E 's/(AKIA|ASIA)[0-9A-Z]{16}|AIza[0-9A-Za-z_-]{35}|gh[pousr]_[A-Za-z0-9]{36}|xox[baprs]-[A-Za-z0-9-]{10,}|sk_live_[0-9a-zA-Z]{24,}/[retirado]/g'
+          cd pub
+          git init -q && git config user.name "motor-grados" && git config user.email "motor-grados@users.noreply.github.com"
+          git remote add origin "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git"
+          if git fetch -q --depth 1 origin sondas; then git reset -q FETCH_HEAD; fi
+          git checkout -q -B sondas
+          git add "$STAMP" && git commit -qm "Grados por tramos: $MODULO"
+          for i in 1 2 3 4 5 6; do
+            git push -q origin sondas && exit 0
+            sleep $((i * 10))
+            # la carpeta $STAMP es solo de esta ejecución: se rehace el commit sobre lo último de la rama (con
+            # historial de profundidad 1, «git rebase» no encuentra la base común y choca con todo el árbol)
+            git fetch -q --depth 1 origin sondas && git reset -q FETCH_HEAD && git add "$STAMP" \
+              && git commit -qm "Grados por tramos: $MODULO" || true
+          done
+          exit 1
