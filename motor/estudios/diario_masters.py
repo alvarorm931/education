@@ -5,8 +5,8 @@ Con lo que ya hay en la rama sondas (su lista está en masters-estado/manifiesto
      página, una vez por semana). Se vuelven a pedir con el lector cortés; si su texto no ha cambiado no se envía a
      la API (extraer.huellas_previas); las que solo se pintan con JavaScript, con el navegador;
   2. QEDU: las tarjetas del curso (una petición) y el detalle de las imparticiones del día;
-  3. RUCT: la ficha de los títulos del día y, si su memoria vigente cambió, la memoria (desde RUCT_DIARIO_DESDE,
-     cuando haya terminado la primera lectura completa, para no pasar de una petición por segundo);
+  3. RUCT: la ficha de los títulos del día y, si su memoria vigente cambió, la memoria (desde RUCT_DIARIO_DESDE:
+     el 30/10 el RUCT dejó de aceptar conexiones desde GitHub y la primera lectura completa sigue en marcha);
   4. fichas_masters con todas las extracciones y conjunto_masters con el conjunto anterior (la fecha de cada dato
      solo cambia si cambia el dato).
 
@@ -29,7 +29,7 @@ from pathlib import Path
 
 ESTADO = "masters-estado"
 DIAS = 7
-RUCT_DIARIO_DESDE = date(2026, 11, 3)  # la lectura completa de memorias (30/10) termina hacia el 2 de noviembre
+RUCT_DIARIO_DESDE = date(2026, 11, 15)  # 30/10: el RUCT rechaza las conexiones desde GitHub; revisar antes de activarlo
 
 
 def del_dia(clave: str, dia: int) -> bool:
