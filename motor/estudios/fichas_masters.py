@@ -140,7 +140,8 @@ def ejecutar(extracciones: list[Path], salida: Path, catalogo: Path | None = Non
                       "capturado": (t.get("fuente") or {}).get("capturado")}
             ficha["oficiales"] = {"tipo_titulo": {"valor": "máster universitario oficial", **fuente},
                                   "universidad_que_expide": {"valor": t.get("universidad"), **fuente},
-                                  "rama": {"valor": t.get("rama"), **fuente}}
+                                  "rama": {"valor": t.get("rama"), **fuente},
+                                  "titularidad": {"valor": t.get("universidad_tipo"), **fuente}}
         fichas.append(ficha)
 
     # no oficiales: una ficha por página principal

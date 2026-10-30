@@ -71,12 +71,72 @@ def ejecutar(censo: Path, rastreos: list[Path], salida: Path) -> dict:
             "campos": dict(Counter(c for x in filas for c in x["campos_que_faltan"]))}
 
 
+ESENCIALES_FICHA = ("precio_total", "asignaturas", "metodologia", "evaluacion", "horario", "plazas", "plazo_admision",
+                    "descuentos_becas")
+
+
+def desde_fichas(fichas: list[Path], salida: Path, min_fichas: int = 1) -> dict:
+    """Lista de peticiones desde lo ya extraído (más fiable que la medición del rastreo): por centro, cuántas
+    fichas de máster no publican cada dato esencial, con un ejemplo. En los oficiales, el precio de las públicas
+    sale del decreto de su comunidad y no se pide."""
+    por_centro: dict[str, dict] = {}
+    for ruta in fichas:
+        for l in ruta.read_text(encoding="utf-8").splitlines():
+            if not l.strip():
+                continue
+            f = json.loads(l)
+            if f["grupo"] == "oficial":
+                if f.get("comprobacion_nombre") not in ("confirmado", "probable_oficial"):
+                    continue
+                clave = (f.get("oficiales") or {}).get("universidad_que_expide", {}).get("valor") or "?"
+                url = f["paginas"][0] if f.get("paginas") else None
+            else:
+                if not f.get("es_master"):
+                    continue
+                clave = f.get("proveedor") or "?"
+                url = f.get("url")
+            c = por_centro.setdefault(clave, {"centro": f.get("centro") or clave, "grupo": f["grupo"],
+                                              "dominio": f.get("dominio"), "fichas_master": 0,
+                                              "faltan": Counter(), "ejemplo": {}})
+            c["fichas_master"] += 1
+            publica = ((f.get("oficiales") or {}).get("titularidad") or {}).get("valor") == "Pública"
+            for campo in ESENCIALES_FICHA:
+                if campo == "precio_total" and publica:
+                    continue  # el precio de las públicas lo fija el decreto de su comunidad: no se pide
+                if campo not in f.get("campos", {}):
+                    c["faltan"][campo] += 1
+                    c["ejemplo"].setdefault(campo, url)
+    filas = []
+    for clave, c in por_centro.items():
+        if c["fichas_master"] < min_fichas:
+            continue
+        filas.append({"clave": clave, **{k: v for k, v in c.items() if k != "faltan"},
+                      "faltan": dict(c["faltan"]),
+                      "parte_sin_precio": round(c["faltan"]["precio_total"] / c["fichas_master"], 3)})
+    filas.sort(key=lambda x: (-x["faltan"].get("precio_total", 0), -x["fichas_master"]))
+    destino = salida / "datos" / "estudios" / "peticiones"
+    destino.mkdir(parents=True, exist_ok=True)
+    (destino / "centros_a_pedir_desde_fichas.jsonl").write_text(
+        "".join(json.dumps(x, ensure_ascii=False) + "\n" for x in filas), encoding="utf-8")
+    total = Counter()
+    for x in filas:
+        total["fichas_master"] += x["fichas_master"]
+        for k, v in x["faltan"].items():
+            total["sin_" + k] += v
+    return {"centros": len(filas), "con_algun_master_sin_precio": sum(1 for x in filas if x["faltan"].get("precio_total")),
+            **dict(total)}
+
+
 def main() -> None:
     p = argparse.ArgumentParser()
-    p.add_argument("--censo", required=True)
+    p.add_argument("--fichas", action="append", default=[], help="fichas.jsonl de fichas_masters.py (sustituye a --censo)")
+    p.add_argument("--censo")
     p.add_argument("--rastreo", action="append", default=[])
     p.add_argument("--salida", required=True)
     a = p.parse_args()
+    if a.fichas:
+        print(json.dumps(desde_fichas([Path(x) for x in a.fichas], Path(a.salida)), ensure_ascii=False, indent=1))
+        return
     print(json.dumps(ejecutar(Path(a.censo), [Path(x) for x in a.rastreo], Path(a.salida)), ensure_ascii=False, indent=1))
 
 
