@@ -24,6 +24,7 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import unicodedata
 from collections import Counter, defaultdict
 from pathlib import Path
 
@@ -474,8 +475,54 @@ def resumen_plan(p: dict) -> dict:
                          "hueco": bool(HUECO_OPTATIVO.match((f.get("nombre") or "").strip(" .")))}
                         for f in filas],
         "menciones": p.get("menciones") or [],
-        "fuente": {"cita": FUENTE_BOE, "url": f"https://www.boe.es/diario_boe/txt.php?id={p['identificador']}"},
+        "fuente": {"cita": FUENTE_BOE, "url": f"https://www.boe.es/diario_boe/txt.php?id={p['identificador']}"}
+        if p.get("identificador") else None,
     }
+
+
+TIPO_MEMORIA = {"basica": "basica", "obligatoria": "obligatoria", "optativa": "optativa",
+                "practicas externas": "practicas", "practicas": "practicas", "trabajo fin de grado": "tfg",
+                "trabajo fin de grado / master": "tfg", "trabajo fin de grado/master": "tfg"}
+
+
+def _tipo_memoria(caracter: str | None) -> str | None:
+    c = unicodedata.normalize("NFKD", (caracter or "").lower())
+    c = re.sub(r"\s+", " ", "".join(x for x in c if not unicodedata.combining(x))).strip()
+    return TIPO_MEMORIA.get(c) or ("tfg" if c.startswith("trabajo fin") else None)
+
+
+def plan_de_memoria(r: dict | None) -> dict | None:
+    """Plan de la memoria vigente del RUCT (módulos, materias y asignaturas con carácter, ECTS y semestre) con la
+    misma forma que un plan del BOE. Se comprueba con los créditos por tipo de la ficha del propio RUCT: básicas +
+    obligatorias + prácticas + TFG de las asignaturas = total − optativos. Si alguna asignatura no tiene carácter o
+    créditos, o la memoria avisa de páginas que no se pudieron leer, no se da por comprobado."""
+    m = (r or {}).get("memoria") or {}
+    if not m.get("plan") or m.get("error"):
+        return None
+    filas, incompleto = [], bool([a for a in m.get("avisos") or [] if "estado" in a or "límite" in a])
+    for b in m["plan"]:
+        for x in b.get("materias") or []:
+            for a in x.get("asignaturas") or []:
+                tipo = _tipo_memoria(a.get("caracter"))
+                sem = sorted(int(k) for k, v in (a.get("despliegue") or {}).items() if str(k).isdigit() and v)
+                incompleto = incompleto or not tipo or not a.get("ects")
+                filas.append({"nombre": a.get("nombre"), "modulo": b.get("nombre"), "materia": x.get("nombre"),
+                              "tipo": tipo, "creditos": a.get("ects"),
+                              "curso": (sem[0] + 1) // 2 if sem else None, "semestre": sem[0] if sem else None,
+                              "nivel": "asignatura"})
+    if not filas:
+        return None
+    cr = (r or {}).get("creditos") or {}
+    fijos = sum(f["creditos"] or 0 for f in filas if f["tipo"] in ("basica", "obligatoria", "practicas", "tfg"))
+    esperado = cr["total"] - cr["optativos"] if cr.get("total") and cr.get("optativos") is not None else None
+    cuadra = bool(esperado) and not incompleto and abs(fijos - esperado) <= 0.5
+    fuente = (r.get("fuente") or {})
+    return {"identificador": None, "origen": "memoria_ruct", "memoria": m.get("cod"), "fecha": r.get("fecha_verificacion"),
+            "plan": filas, "comprobacion": "con_creditos_del_ruct" if cuadra else None,
+            # incompleta (páginas sin leer, asignaturas sin carácter): sin cifra esperada, así no cuenta como comprobada
+            "esperado_sin_optativas": None if incompleto else esperado, "suma_sin_optativas": fijos, "incompleta": incompleto,
+            "fuente": {"cita": FUENTE_RUCT + ", memoria de verificación vigente", "url": fuente.get("url"),
+                       "capturado": fuente.get("capturado")}}
 
 
 # -------------------------------------------------------------------------------------------- fichas
@@ -519,6 +566,12 @@ def construir(catalogo: list[dict], genericos: list[dict], tarjetas: dict, detal
                 candidatos = [comprobar_con_ruct(p, r) for p in candidatos]
             if candidatos:
                 plan = resumen_plan(next((p for p in candidatos if plan_comprobado(p)), candidatos[0]))
+        if not (plan and plan["comprobado"]):
+            # sin plan del BOE que cuadre: el de la memoria vigente del RUCT, si cuadra con sus créditos por tipo
+            pm = plan_de_memoria(r)
+            if pm and (plan_comprobado(pm) or not plan):
+                plan = {**resumen_plan({**pm, "identificador": None}), "boe": None, "origen": "memoria_ruct",
+                        "memoria": pm["memoria"], "fuente": pm["fuente"]}
         notas = [c["nota_corte"] for c in centros if c["nota_corte"] is not None]
         precios = [c["precio_credito"] for c in centros if c["precio_credito"]]
         creditos = next((c["creditos"] for c in centros if c["creditos"]), None)
@@ -760,12 +813,16 @@ def fichas_proximas(altas: list[dict], catalogo: list[dict], planes: dict, ruct:
     return salida
 
 
+CURSO_RECIENTE = "2021-2022"
+
+
 def anadir_historico(fichas: list[dict], historico: list[dict]) -> dict:
     """Pone en cada centro de cada ficha su histórico de notas de corte del cupo general (notas_corte.py), solo el
     publicable: nota final de su distrito que coincide con QEDU en los cursos que se solapan. Cada curso lleva su
-    fuente (documento del distrito, huella y fecha de captura)."""
+    fuente (documento del distrito, huella y fecha de captura). Una ficha sin nota de QEDU ni precio que tenga la de su
+    distrito desde 2021-2022 deja de tener ese motivo para no indexarse."""
     por = {(h["codigo_titulo"], h["codigo_centro"]): h for h in historico if h.get("publicable")}
-    fichas_con, centros_con, cinco = set(), 0, 0
+    fichas_con, centros_con, cinco, indexables_por_historico = set(), 0, 0, set()
     for f in fichas:
         for c in f.get("centros") or []:
             h = por.get((f["codigo"], c.get("codigo")))
@@ -778,8 +835,15 @@ def anadir_historico(fichas: list[dict], historico: list[dict]) -> dict:
             fichas_con.add(f["codigo"])
             centros_con += 1
             cinco += len(h["cursos"]) >= 5
+            # una nota de corte publicada por su distrito en los últimos cursos es nota de corte para indexar
+            if any(k >= CURSO_RECIENTE for k in h["cursos"]) \
+                    and "sin nota de corte ni precio" in (f.get("motivos_noindex") or []):
+                f["motivos_noindex"] = [m for m in f["motivos_noindex"] if m != "sin nota de corte ni precio"]
+                f["indexable"] = not f["motivos_noindex"]
+                indexables_por_historico.add(f["codigo"])
     return {"fichas_con_notas_historicas": len(fichas_con), "centros_con_notas_historicas": centros_con,
-            "centros_con_cinco_cursos_o_mas": cinco}
+            "centros_con_cinco_cursos_o_mas": cinco,
+            "fichas_con_nota_solo_por_el_historico": len(indexables_por_historico)}
 
 
 def main() -> None:

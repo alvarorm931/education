@@ -90,6 +90,10 @@ def test_qedu_redondea_o_trunca_y_el_historico_solo_publica_lo_que_cuadra():
     r = anadir_historico(fichas, list(h.values()))
     assert r["centros_con_notas_historicas"] == 1 and "2024-2025" in fichas[0]["centros"][0]["notas_historicas"]["cursos"]
     assert "notas_historicas" not in fichas[1]["centros"][0]
+    # con la nota de su distrito en un curso reciente, la ficha deja de estar sin nota de corte
+    f = [{"codigo": "1", "centros": [{"codigo": "C1"}], "indexable": False,
+          "motivos_noindex": ["sin nota de corte ni precio"]}]
+    assert anadir_historico(f, list(h.values()))["fichas_con_nota_solo_por_el_historico"] == 1 and f[0]["indexable"]
 
 
 def test_cataluna_primera_asignacion_no_se_publica_sin_otra_comprobacion():

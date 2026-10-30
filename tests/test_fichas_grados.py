@@ -259,3 +259,23 @@ def test_fichas_proximas_de_altas_que_no_estan_en_el_catalogo():
 def test_precio_por_credito_suelto_no_se_publica():
     p = fichas.precio_web({"url": "https://c.es/g", "importes": [{"valor": 350.0, "tipo": "credito", "verosimil": True}]})
     assert p["precio_curso"] is None and p["importes"] == {"credito": [350.0]} and "no se publica" in p["nota"]
+
+
+def test_plan_de_la_memoria_del_ruct_se_comprueba_con_sus_creditos():
+    from motor.grados.fichas import plan_comprobado, plan_de_memoria
+
+    def asig(i, nombre, caracter, ects, sem):
+        return {"id": i, "nombre": nombre, "caracter": caracter, "ects": ects, "despliegue": {str(sem): ects}}
+
+    r = {"codigo": "1", "creditos": {"total": 30.0, "optativos": 6.0}, "fecha_verificacion": "2020-01-01",
+         "fuente": {"url": "https://www.educacion.gob.es/ruct/estudio?codigo=1", "capturado": "2026-10-30"},
+         "memoria": {"cod": "1x", "avisos": [], "plan": [{"modulo": 1, "nombre": "Básico", "materias": [
+             {"nombre": "M1", "asignaturas": [asig(1, "Álgebra", "Básica", 6.0, 1), asig(2, "Cálculo", "Básica", 6.0, 2)]},
+             {"nombre": "M2", "asignaturas": [asig(1, "Física", "Obligatoria", 6.0, 3),
+                                              asig(2, "Optativa A", "Optativa", 6.0, 5),
+                                              asig(3, "TFG", "Trabajo Fin de Grado / Máster", 6.0, 8)]}]}]}}
+    p = plan_de_memoria(r)
+    assert plan_comprobado(p) and p["suma_sin_optativas"] == 24.0 and p["esperado_sin_optativas"] == 24.0
+    assert p["plan"][2]["curso"] == 2 and p["plan"][4]["tipo"] == "tfg" and p["origen"] == "memoria_ruct"
+    r["memoria"]["avisos"] = ["datosAsignatura!consulta.action?codModulo=1: estado 0"]
+    assert not plan_comprobado(plan_de_memoria(r))  # una página sin leer: no se da por comprobado
