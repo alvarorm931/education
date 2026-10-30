@@ -544,12 +544,21 @@ marcha y cómo encaja (las cifras finales, en el apartado de resultados de abajo
 
 - **RUCT, ficha y memoria de los 4.734** (`ruct.py`). Orden de lectura en `sondas:ruct-masters/20261030/`: primero
   los 1.835 sin ficha web, después los que no tienen dos de asignaturas, evaluación y plazas, etc. Una ejecución
-  de 108 tramos en fila (una petición por segundo contada desde el inicio de la anterior), cada tramo sube lo
-  suyo al terminar (`estudios.yml por_tramo=si`). Fichas en hora y media; memorias, unos tres días. Antes de
-  cada petición, robots.txt (excepción de registro público, la misma que grados: solo mientras no se pueda
-  leer). Cortes del servidor: espera de dos minutos y reintento; los cortes sueltos se reintentan al final; lo
-  que no se lee queda en `resumen-*.json` (`sin_leer`) para la siguiente pasada. Originales al almacén privado.
-  La memoria trae además la descripción del plan.
+  de 110 tramos en fila; cada tramo sube lo suyo al terminar (`estudios.yml por_tramo=si`) y el siguiente sigue
+  por lo que falte (`--pendientes-de-sondas`: mira los nombres de fichero de la rama). Antes de cada petición,
+  robots.txt (excepción de registro público, la misma que grados: solo mientras no se pueda leer). Originales al
+  almacén privado. La memoria va a `ruct_memoria/` y trae además la descripción del plan.
+  **Medido el 30/10 de día desde GitHub: el RUCT deja de responder tras unas 8 peticiones seguidas a una por
+  segundo y vuelve a los 40-50 segundos** (287 fichas en 50 minutos; de noche, grados leyó 24 por minuto). El
+  lector se adapta: cada petición sin respuesta duplica la pausa (hasta 12 s) y cada 15 buenas la bajan un 20 %,
+  nunca por debajo de un segundo. A unas 10 por minuto, las fichas son unas 8 horas y las memorias (unas 54
+  páginas por máster), semanas: por eso se leen por prioridad y las asignaturas salen antes del BOE.
+- **Planes de estudios del BOE** (`boe_planes_masters.py`): el identificador del plan viene en la ficha del RUCT
+  (unión exacta). Texto HTML del BOE, uno cada dos segundos, leído con el lector de planes de grados (reconoce
+  TFM); comprobado si la suma cuadra con su tabla de créditos. En el conjunto va detrás de la memoria.
+- **Guías docentes** (`guias.py`): enlaces a guías del propio centro en las páginas de máster oficial ya leídas
+  (hasta 12 por máster); evaluación con porcentaje y frase literal comprobada, metodología. Sin nombres de
+  profesores. Es la evaluación por asignatura de las memorias RD 822/2021, que no la traen.
 - **QEDU de másteres** (`qedu_masters.py`, reutiliza `motor/grados/qedu.py` sin tocarlo): 5.561 imparticiones del
   curso 2025-2026 (4.599 títulos). Por impartición: plazas, precio del crédito (públicas), modalidad, idioma,
   enlace a la web oficial e inserción laboral del título. Es además la lista oficial de qué se imparte este
@@ -592,4 +601,13 @@ ley SEO (asignaturas y precio) e `indexable`. Aviso de página web antigua (solo
 Privacidad: los textos de la memoria y de las webs pierden los párrafos con nombres de personas (motor.limpieza,
 más «Dr./Dra./Prof.» delante de un nombre) y los correos personales («[correo]»; los buzones de un servicio,
 como admisiones@ o info@, se dejan).
+
+### Pasada diaria (`diario_masters.py`, `masters-diario.yml`)
+
+A las 02:17 (Madrid), una séptima parte de todo: las páginas ya extraídas (si su texto no cambió, no se paga), el
+detalle de QEDU de las imparticiones del día (y sus tarjetas, una petición) y, desde el 3/11, la ficha del RUCT de
+los títulos del día y su memoria si cambió. Después, fichas y conjunto con el conjunto anterior: la fecha de cada
+dato solo cambia si cambia el dato. Las carpetas de resultados se buscan por su forma en la rama (también las de
+las ejecuciones largas); `sondas:masters-estado/` guarda el manifiesto (entradas fijas) y el conjunto. Sin
+manifiesto, el flujo no hace nada.
 
