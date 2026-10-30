@@ -1,11 +1,11 @@
 {
- "fecha": "2026-10-30T16:28:36+00:00",
- "fecha_madrid": "30/10 17:28",
+ "fecha": "2026-10-30T16:32:22+00:00",
+ "fecha_madrid": "30/10 17:32",
  "ventana_horas": 6.0,
  "resumen": {
-  "ejecuciones_revisadas": 247,
-  "fallos": 1,
-  "fallos_pendientes": 0,
+  "ejecuciones_revisadas": 248,
+  "fallos": 2,
+  "fallos_pendientes": 1,
   "relanzados": 0,
   "colas_largas": 2,
   "flujos_programados_parados": [],
@@ -14,6 +14,67 @@
   "almacen": "ok"
  },
  "fallos": [
+  {
+   "flujo": "Motor de datos",
+   "fichero": "motor.yml",
+   "id": 41079079352,
+   "intento": 2,
+   "evento": "workflow_dispatch",
+   "rama": "main",
+   "commit": "dfa06eb",
+   "titulo": "Motor de datos",
+   "conclusion": "failure",
+   "cuando": "30/10 17:32",
+   "url": "https://github.com/alvarorm931/education/actions/runs/41079079352",
+   "superado": false,
+   "en_curso": null,
+   "pasajero": false,
+   "detalle": [
+    {
+     "trabajo": "motor",
+     "pasos": [
+      "Extraer actos y comprobar huecos"
+     ],
+     "ejecutor": "GitHub Actions 1000001163",
+     "etiquetas": [
+      "ubuntu-latest"
+     ],
+     "final_registro": [
+      "Descargados: 361. Errores: 0",
+      "Traceback (most recent call last):",
+      "    raise JSONDecodeError(\"Expecting value\", s, err.value) from None",
+      "json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)",
+      "##[error]Process completed with exit code 1.",
+      "...",
+      "BOJA: 21945 actos, 21945 con texto, 7479 con fecha de fin de plazo; {'titulo': 9949, 'plazo_general_v3': 11996}",
+      "BOCM: 31478 actos, 2169 con texto, 248 con fecha de fin de plazo; {'titulo': 31016, 'plazo_general_v3': 462}",
+      "BOCYL: 12558 actos, 7999 con texto, 541 con fecha de fin de plazo; {'titulo': 9514, 'plazo_general_v3': 3044}",
+      "DOGV: 21232 actos, 3932 con texto, 571 con fecha de fin de plazo; {'titulo': 20069, 'plazo_general_v3': 1163}",
+      "DOG: 12693 actos, 6216 con texto, 383 con fecha de fin de plazo; {'titulo': 11988, 'plazo_general_v3': 705}",
+      "BOA: 10389 actos, 10389 con texto, 1685 con fecha de fin de plazo; {'titulo': 7856, 'plazo_general_v3': 2533}",
+      "DOE: 5232 actos, 4933 con texto, 260 con fecha de fin de plazo; {'titulo': 4362, 'plazo_general_v3': 870}",
+      "BORM: 9110 actos, 1885 con texto, 469 con fecha de fin de plazo; {'titulo': 8521, 'plazo_general_v3': 589}",
+      "BOC: 5101 actos, 5101 con texto, 857 con fecha de fin de plazo; {'titulo': 3846, 'plazo_general_v3': 1255}",
+      "DOCM: 5375 actos, 3910 con texto, 435 con fecha de fin de plazo; {'titulo': 4629, 'plazo_general_v3': 746}",
+      "BOME: 2026 actos, 2026 con texto, 46 con fecha de fin de plazo; {'titulo': 1850, 'plazo_general_v3': 176}",
+      "BOPV: 5047 actos, 5047 con texto, 1043 con fecha de fin de plazo; {'titulo': 3668, 'plazo_general_v3': 1379}",
+      "BOIB: 14830 actos, 6588 con texto, 904 con fecha de fin de plazo; {'titulo': 13405, 'plazo_general_v3': 1425}",
+      "BOPA: 12444 actos, 1324 con texto, 239 con fecha de fin de plazo; {'titulo': 12139, 'plazo_general_v3': 305}",
+      "BON: 4489 actos, 224 con texto, 46 con fecha de fin de plazo; {'titulo': 4443, 'plazo_general_v3': 46}",
+      "BOC-CANT: 1105 actos, 1105 con texto, 59 con fecha de fin de plazo; {'titulo': 982, 'plazo_general_v3': 123}",
+      "BOR: 1806 actos, 633 con texto, 63 con fecha de fin de plazo; {'titulo': 1712, 'plazo_general_v3': 94}",
+      "DOGC: 41022 actos, 9102 con texto, 2606 con fecha de fin de plazo; {'titulo': 37119, 'plazo_general_v3': 3903}",
+      "BOPB: 8450 actos, 3828 con texto, 698 con fecha de fin de plazo; {'titulo': 6235, 'plazo_general_v3': 2215}",
+      "BOP-ALICANTE: 13122 actos, 3511 con texto, 455 con fecha de fin de plazo; {'titulo': 11618, 'plazo_general_v3': 1504}",
+      "BOP-VALENCIA: 11882 actos, 2740 con texto, 406 con fecha de fin de plazo; {'titulo': 10674, 'plazo_general_v3': 1208}",
+      "BOPT: 2916 actos, 331 con texto, 49 con fecha de fin de plazo; {'titulo': 2718, 'plazo_general_v3': 198}",
+      "BOP-CIUDADREAL: 6002 actos, 2143 con texto, 201 con fecha de fin de plazo; {'titulo': 4906, 'plazo_general_v3': 1096}",
+      "BOP-GRANADA: 5211 actos, 1935 con texto, 267 con fecha de fin de plazo; {'titulo': 4305, 'plazo_general_v3': 906}",
+      "##[error]Process completed with exit code 1."
+     ]
+    }
+   ]
+  },
   {
    "flujo": "Latido",
    "fichero": "latido.yml",
@@ -76,14 +137,14 @@
   {
    "flujo": "Boletines autonómicos",
    "id": 41083823389,
-   "en_cola_min": 42,
+   "en_cola_min": 46,
    "trabajos_empezados": 2,
    "url": "https://github.com/alvarorm931/education/actions/runs/41083823389"
   },
   {
    "flujo": "Estudios por tramos",
    "id": 41064537986,
-   "en_cola_min": 173,
+   "en_cola_min": 177,
    "trabajos_empezados": 0,
    "url": "https://github.com/alvarorm931/education/actions/runs/41064537986"
   }
