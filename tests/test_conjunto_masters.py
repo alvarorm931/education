@@ -305,3 +305,14 @@ def test_paginas_de_otra_universidad_fuera_de_la_ficha():
         {"url": "https://www.uma.es/m", "extraido": "2026-10-30T00:00:00+00:00"}], "campos": {"horario": {"valor": "tarde", "fuente": 0}}}
     o = cm.oficial("4316605", cat, None, [], web, "2026-10-29", ajenos={"uma.es"})
     assert o["paginas_web"] == ["https://www.us.es/m"] and "horario" not in o["campos"]
+
+
+def test_dominio_de_universidad_aunque_lo_compartan_interuniversitarios():
+    cat = {f"c{i}": {"universidad_codigo": "010", "nombre_oficial": "Máster Universitario en X por la Universidad Complutense"}
+           for i in range(20)}
+    cat.update({"x1": {"universidad_codigo": "023", "nombre_oficial": "Máster Universitario en Y por la Universidad "
+                       "Autónoma de Madrid y la Universidad Complutense de Madrid"},
+                "y1": {"universidad_codigo": "022", "nombre_oficial": "Máster Universitario en Z por la Universidad de Alcalá"}})
+    q = {c: [{"enlace": "https://www.ucm.es/m" + c}] for c in cat}
+    d = cm.dominios_de_universidades(cat, q)
+    assert d["ucm.es"] == {"010"}  # una sola mención de otras (interuniversitarios) no hace el dominio suyo

@@ -1030,18 +1030,31 @@ def _anterior(carpeta: Path | None) -> dict[str, dict]:
     return out
 
 
-MAX_UNIVERSIDADES_POR_DOMINIO = 2   # un dominio enlazado por QEDU para más universidades es compartido (no dice nada)
+# Un dominio es de las universidades cuyos másteres de una sola universidad enlaza QEDU en él (los
+# interuniversitarios se enlazan en la web de la coordinadora: ucm.es tiene másteres de la Autónoma con la
+# Complutense). Con dos enlaces o una décima parte basta (universidadeuropea.com es de las cuatro Europeas).
+MIN_ENLACES_DUEÑA = 2
+MIN_PARTE_DUEÑA = 0.10
 
 
 def dominios_de_universidades(cat: dict[str, dict], r_qedu: dict[str, list[dict]]) -> dict[str, set[str]]:
-    """Dominio → universidades (código SIIU) cuyos másteres enlaza QEDU en él: la web oficial de cada universidad."""
-    por: dict[str, set[str]] = defaultdict(set)
+    """Dominio → universidades (código SIIU) cuya web oficial es, por los enlaces de QEDU de sus másteres propios."""
+    por: dict[str, Counter] = defaultdict(Counter)
     for c, imps in r_qedu.items():
-        cu = (cat.get(c) or {}).get("universidad_codigo")
+        t = cat.get(c) or {}
+        cu = t.get("universidad_codigo")
+        if not cu or len(universidades_del_nombre(t.get("nombre_oficial"))) > 1:
+            continue
         for i in imps:
-            if cu and i.get("enlace"):
-                por[dominio(i["enlace"])].add(cu)
-    return {d: us for d, us in por.items() if d and len(us) <= MAX_UNIVERSIDADES_POR_DOMINIO}
+            if i.get("enlace"):
+                por[dominio(i["enlace"])][cu] += 1
+    out = {}
+    for d, cs in por.items():
+        total = sum(cs.values())
+        dueñas = {u for u, n in cs.items() if n >= MIN_ENLACES_DUEÑA or n / total >= MIN_PARTE_DUEÑA}
+        if d and dueñas:
+            out[d] = dueñas
+    return out
 
 
 def filtrar_web(web: dict | None, propias: set[str], dominios: dict[str, set[str]], clave_propia: str,
