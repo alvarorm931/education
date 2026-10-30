@@ -106,3 +106,10 @@ def test_tablas_revisadas_con_su_universidad(tmp_path):
     assert [x["dominio"] for x in filas] == ["unav.edu", "ie.edu"]
     assert filas[0]["estado"] == "tabla" and filas[0]["curso_lista"] == "2026-2027"
     assert filas[1]["programa_lista"] == "Master in Management"
+
+
+def test_cita_de_tabla_web_sin_separadores():
+    texto = "Tuition fee | 43,300€\nAdmission fee | 150€"
+    v = t.verificar({"precios": [{"programa": "Master in Management", "importe": "43,300", "concepto": "total",
+                                  "cita": "Tuition fee 43,300€"}]}, texto)
+    assert v[0]["estado"] == "aceptado" and v[0]["importe"] == 43300 and v[0]["cita_nivel"] == "sin_signos"

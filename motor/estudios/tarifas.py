@@ -245,11 +245,14 @@ def peticion(cid: str, url: str, texto: str) -> dict:
 
 def verificar(datos: dict, texto: str) -> list[dict]:
     base = extraer._norma(texto)
+    laxa = extraer._laxa(base)
     out = []
     for x in (datos.get("precios") or [])[:150]:
         cita = str(x.get("cita") or "")
         n = extraer.como_numero(x.get("importe"))
-        ok = len(cita.split()) >= 2 and extraer.cita_en_texto(cita, base)
+        # literal o con las mismas palabras y cifras en el mismo orden (las tablas web llegan como «celda | celda»)
+        nivel = extraer.nivel_cita(cita, base, laxa) if len(cita.split()) >= 2 else None
+        ok = nivel in ("literal", "sin_signos")
         motivo = None if ok else "cita_no_literal"
         if n is None:
             ok, motivo = False, motivo or "valor_no_numerico"
@@ -260,6 +263,7 @@ def verificar(datos: dict, texto: str) -> list[dict]:
         out.append({"programa": str(x.get("programa") or "")[:200], "importe": n if ok else None,
                     "importe_propuesto": None if ok else x.get("importe"), "concepto": x.get("concepto"),
                     "estado": "aceptado" if ok else "revision", "motivo": motivo,
+                    **({"cita_nivel": nivel} if nivel and nivel != "literal" else {}),
                     "cita_sha256": hashlib.sha256(extraer._norma(cita).encode()).hexdigest() if cita else None})
     return out
 
