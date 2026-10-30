@@ -69,9 +69,33 @@ def elegir_cc(carpeta: Path | None, ya: set[str]) -> list[dict]:
 
 # Listas de precios que cada universidad publica fuera de lo que enlazan sus páginas de grado o su sitemap, halladas
 # a mano en su web oficial (código de universidad del RUCT → URL). Se leen igual que las demás, con robots.txt.
+# Las del 30/10/2026 por la tarde salen de una búsqueda dirigida en el dominio de cada universidad (sin copias de
+# terceros); solo cursos 2025-2026 o posteriores. Cada documento dice su curso y la ficha lo muestra.
 URLS_CONOCIDAS = {
     "031": ["https://www.unav.edu/admision-y-ayudas/grado/cuanto-cuesta-estudiar-en-la-universidad",
             "https://en.unav.edu/admission-and-financial-aid/degree/cuanto-cuesta-estudiar-en-la-universidad-"],
+    # Universidad Europea: tablas de honorarios de grado 2025-2026 (Madrid, Valencia y Alicante, Málaga)
+    "053": ["https://universidadeuropea.com/resources/media/documents/TARIFARIO_GRADO_2025_26_v04.pdf"],
+    "082": ["https://universidadeuropea.com/resources/media/documents/Honorarios_Academicos_Grados_2025-26_UEV.pdf"],
+    "107": ["https://universidadeuropea.com/resources/media/documents/Tarifas_Grado_Malaga_2025-2026.pdf"],
+    # Alfonso X: honorarios de UAX Online 2025-2026 y de UAX Mare Nostrum 2026-2027
+    "047": ["https://www.uax.com/download/36836/file/AF_HONORARIOS_ACADEMICOS_UAX_ONLINE_210_X_297_2025_26_V2%20%C3%9A"
+            "LTIMA%20VERSION.pdf"],
+    "106": ["https://www.uax.com/en/download/74149/file/AF_HONORARIOS_ACADEMICOS_DE_GRADOS_UAX_MARE_NOSTRUM__210_X_297_"
+            "2026_27_V2.pdf"],
+    # Deusto: tasas de primer curso de grado 2026-2027 (página general)
+    "030": ["https://www.deusto.es/es/inicio/estudia/condiciones-economicas/grado/proximo-curso/tasas-primer-curso"],
+    # Pontificia de Salamanca: tasas de grado 2026-2027, nuevo ingreso
+    "032": ["https://adminpro.upsa.es/uploads/Tasas_Grados_26_27_e6a7c2a872.pdf"],
+    # IE Universidad: tasa anual por programa de grado (el fichero es del curso 2027-2028)
+    "057": ["https://docs.ie.edu/Admissions/Tasas_IE_University_27-28.pdf"],
+    # Cardenal Herrera-CEU: honorarios de nuevo estudiante por campus (la dirección fija cambia de curso: huella y fecha)
+    "067": ["https://www.uchceu.es/docs/nuevo-alumno/tasas-academicas/grado/campus-valencia.pdf",
+            "https://www.uchceu.es/docs/nuevo-alumno/tasas-academicas/grado/facultad-derecho-empresa-ciencias-politicas.pdf",
+            "https://www.uchceu.es/docs/nuevo-alumno/tasas-academicas/grado/campus-elche.pdf",
+            "https://www.uchceu.es/docs/nuevo-alumno/tasas-academicas/grado/campus-castellon.pdf"],
+    # Mondragon: precio por grado en su página de precios (ejemplo comprobado; el resto, mismo patrón)
+    "061": ["https://mondragon.edu/grado-ingenieria-biomedica/precios-becas-ayudas"],
 }
 
 
