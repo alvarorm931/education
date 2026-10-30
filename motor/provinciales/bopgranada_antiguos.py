@@ -8,8 +8,10 @@ Formato verificado el 30/10/2026 desde GitHub (sondas motor/provinciales/sonda_s
   - Cada boletín es un PDF entero (…/Boletines-Anteriores/20230331-2023062.pdf: fecha y número). La primera página
     es el sumario a dos columnas: secciones («AYUNTAMIENTOS»), entidad en mayúsculas y asunto separados por «.-»
     («MOTRIL.-Admitidos y excluidos para una plaza de Electricista…… 17»; los asuntos siguientes de la misma
-    entidad no la repiten). En el cuerpo, cada anuncio empieza por su número de registro («NÚMERO 380»), en el orden
-    del sumario: de ahí sale su texto, si el número de anuncios coincide.
+    entidad no la repiten). En el cuerpo, cada anuncio empieza por su número de registro («NÚMERO 380»; en 2022-2023,
+    «NÚMERO 5.852/22»), seguido de la entidad y el asunto, a veces ya en la propia página del sumario. El orden del
+    cuerpo no es siempre el del sumario (Granada capital va por áreas), así que cada asunto se casa con el anuncio que
+    empieza en su página y nombra su entidad (emparejar): el que no casa se queda sin texto.
   - robots.txt: el listado y los PDF están permitidos.
 
 Uso: python -m motor.provinciales.bopgranada_antiguos --max-minutos 30 --salida ruta/
@@ -47,8 +49,16 @@ RE_PDF = re.compile(r'href="(?P<u>/export/sites/bop/publica/boletines-anteriores
                     r'(?P<f>\d{8})-(?P<a>\d{4})(?P<n>\d{3,4})\.pdf)"')
 RE_PAGINAS = re.compile(r'class="totalPages" value="(\d+)"')
 RE_ENTRADA = re.compile(r"^(?P<t>.*?)\s*\.{2,}\s*(?P<p>\d{1,3})\s*$")
-RE_ENTIDAD = re.compile(r"^(?P<e>[^a-záéíóúñüç]+?)\.-\s*(?P<t>.+)$")
-RE_REGISTRO = re.compile(r"(?m)^\s*N[ÚU]MERO\s+(\d{1,3}(?:\.\d{3})*|\d{4,6})\s*$")  # «NÚMERO 3.456» desde el mil
+# «MOTRIL.-Bases…» y, a veces, sin el punto: «DIPUTACIÓN DE GRANADA. PATRONATO FEDERICO GARCÍA LORCA-Modificación…»
+RE_ENTIDAD = re.compile(r"^(?P<e>[^a-záéíóúñüç]+?)\.-\s*(?P<t>.+)$|"
+                        r"^(?P<e2>[A-ZÁÉÍÓÚÑÜ][^a-záéíóúñüç-]{8,} [^a-záéíóúñüç-]+)-\s*(?P<t2>[A-ZÁÉÍÓÚÑ].+)$")
+# «NÚMERO 380», «NÚMERO 3.456» desde el mil y, en 2022-2023, con el año del registro: «NÚMERO 5.852/22»
+RE_REGISTRO = re.compile(r"(?m)^\s*N[ÚU]MERO\s+(\d{1,3}(?:\.\d{3})*|\d{4,6})(?:\s*/\s*(\d{2,4}))?\s*$")
+# Unidades de un ayuntamiento que el sumario pone sin repetir el municipio («ÁREA DE CIENCIA…» tras «GRANADA. …»)
+UNIDADES = ("area ", "delegacion ", "concejalia ", "servicio ", "departamento ", "gerencia ", "junta municipal",
+            "distrito ", "oficina ", "seccion ", "alcaldia", "secretaria", "intervencion", "tesoreria")
+VACIAS = {"de", "del", "la", "las", "el", "los", "y", "e", "en", "a", "al", "por", "para", "con", "n", "no", "o", "u",
+          "num", "un", "una", "sobre", "su", "sus", "que"}
 SECCIONES = {"anuncios oficiales", "administracion de justicia", "ayuntamientos", "anuncios no oficiales",
              "administracion local", "diputacion provincial", "diputacion de granada", "mancomunidades",
              "mancomunidades de municipios", "entidades locales autonomas", "consorcios", "comunidades de regantes",
@@ -77,10 +87,14 @@ def _es_seccion(lin: str) -> bool:
 
 
 def sumario(paginas: list[str]) -> tuple[list[dict], int]:
-    """Asuntos del sumario y el índice de la primera página del cuerpo (la primera con «NÚMERO 380»)."""
+    """Asuntos del sumario y el índice de la primera página del cuerpo (la primera con «NÚMERO 380», que puede ser
+    la del propio sumario)."""
     cuerpo = next((k for k, p in enumerate(paginas) if RE_REGISTRO.search(p)), len(paginas))
+    # El primer anuncio puede empezar en la propia página del sumario, tras él (boletín nº 16 de 25/01/2022)
+    previas = paginas[:cuerpo] + ([paginas[cuerpo][:RE_REGISTRO.search(paginas[cuerpo]).start()]]
+                                  if cuerpo < len(paginas) else [])
     entradas, seccion, entidad, buffer, empezado = [], None, None, [], False
-    for texto in paginas[:cuerpo]:
+    for texto in previas:
         for linea in texto.splitlines():
             lin = " ".join(linea.split())
             if not lin:
@@ -98,7 +112,11 @@ def sumario(paginas: list[str]) -> tuple[list[dict], int]:
             buffer = []
             e = RE_ENTIDAD.match(texto_e)
             if e:
-                entidad, titulo = " ".join(e.group("e").split()).strip(" ."), e.group("t").strip()
+                nueva = " ".join((e.group("e") or e.group("e2")).split()).strip(" .")
+                if (entidad and normalizar(nueva).startswith(UNIDADES) and normalizar(seccion or "") in
+                        {"ayuntamientos", "administracion local"}):
+                    nueva = entidad.split(". ")[0] + ". " + nueva
+                entidad, titulo = nueva, (e.group("t") or e.group("t2")).strip()
             else:
                 titulo = texto_e
             entradas.append({"seccion": seccion, "entidad": entidad, "titulo": titulo.strip(" ."),
@@ -111,19 +129,77 @@ def organismo(x: dict) -> str | None:
     if not e:
         return None
     if normalizar(x.get("seccion") or "") == "ayuntamientos" and not normalizar(e).startswith("ayuntamiento"):
-        return "Ayuntamiento de " + nombre_propio(e)
+        return "Ayuntamiento de " + nombre_propio(e.split(". ")[0])  # «GRANADA. DELEGACIÓN DE …»: el municipio
     return nombre_propio(e)
 
 
-def bloques(paginas: list[str], desde: int) -> list[tuple[str, str]]:
-    """(número de registro, texto) de cada anuncio del cuerpo, en orden."""
-    cuerpo = "\n".join(paginas[desde:])
+def bloques(paginas: list[str], desde: int) -> list[dict]:
+    """Cada anuncio del cuerpo, en orden: número de registro, texto, página del PDF (desde 1) en que empieza y
+    palabras de su cabecera (entidad y asunto, antes de «EDICTO» o «ANUNCIO»)."""
+    cuerpo, inicios = "", []
+    for k, p in enumerate(paginas[desde:]):
+        inicios.append((len(cuerpo), desde + k + 1))
+        cuerpo += p + "\n"
     marcas = list(RE_REGISTRO.finditer(cuerpo))
-    return [(m.group(1), cuerpo[m.start():marcas[k + 1].start() if k + 1 < len(marcas) else len(cuerpo)])
-            for k, m in enumerate(marcas)]
+    out = []
+    for k, m in enumerate(marcas):
+        texto = cuerpo[m.start():marcas[k + 1].start() if k + 1 < len(marcas) else len(cuerpo)]
+        lineas = texto.splitlines()[1:]
+        corte = next((i for i, l in enumerate(lineas[:12]) if normalizar(l).strip(" .:") in
+                      {"edicto", "anuncio", "anuncios", "resolucion", "decreto", "acuerdo", "correccion de errores"}), 8)
+        cabecera = re.sub(r"\(\s*granada\s*\)", " ", " ".join(lineas[:corte]), flags=re.IGNORECASE)
+        out.append({"registro": m.group(1) + (f"/{m.group(2)}" if m.group(2) else ""), "texto": texto,
+                    "pagina": max(n for i, n in inicios if i <= m.start()), "cabecera": palabras(cabecera),
+                    "inicio": palabras(" ".join(lineas[:20]))})
+    return out
 
 
-VERSION = "antiguos_v2"  # v2 (30/10/2026): registros con punto de millar («NÚMERO 3.456»)
+def palabras(texto: str) -> set[str]:
+    return {w for w in re.findall(r"[a-z0-9]+", normalizar(texto)) if w not in VACIAS and (len(w) > 1 or w.isdigit())}
+
+
+def _parecido(buscadas: set[str], en: set[str]) -> float:
+    return len(buscadas & en) / len(buscadas) if buscadas else 0.0
+
+
+def emparejar(entradas: list[dict], trozos: list[dict]) -> dict[int, int]:
+    """{índice del asunto del sumario: índice del anuncio del cuerpo}. Solo empareja un asunto con un anuncio que
+    empieza en la página que dice el sumario y cuya cabecera nombra la misma entidad (o, si el sumario no la da, el
+    mismo asunto); entre varios así, el de asunto más parecido y, a igualdad, por orden. Lo que no casa queda sin texto:
+    nunca se pone a un asunto el texto de otro."""
+    def candidatos(desfase: int, tolerancia: int, minimo_titulo: float) -> list[tuple[float, int, int]]:
+        out = []
+        for i, x in enumerate(entradas):
+            ent, tit = palabras(x.get("entidad") or ""), palabras(x["titulo"])
+            principal = palabras((x.get("entidad") or "").split(". ")[0])  # «JUNTA DE ANDALUCÍA. DELEGACIÓN…»
+            for j, t in enumerate(trozos):
+                if abs(t["pagina"] - (x["pagina"] + desfase)) > tolerancia:
+                    continue
+                pe, pt = _parecido(ent, t["cabecera"]), _parecido(tit, t["inicio"])
+                if ent and pe < 0.6 and not (principal and principal <= t["cabecera"] and pt >= 0.3):
+                    continue
+                if pt < minimo_titulo or (not ent and pt < 0.5):
+                    continue
+                out.append((pe + pt, j, i))
+        return out
+
+    def asignar(pares: list[tuple[float, int, int]], hecho: dict[int, int]) -> dict[int, int]:
+        usados = set(hecho.values())
+        for _, j, i in sorted(pares, key=lambda p: (-p[0], p[1], p[2])):
+            if i not in hecho and j not in usados:
+                hecho[i] = j
+                usados.add(j)
+        return hecho
+
+    # La página del sumario es la del PDF; por si algún boletín la desplaza, el desfase que más asuntos casa
+    desfase = max((0, -1, 1, -2, 2), key=lambda d: len({i for _, _, i in candidatos(d, 0, 0.0)}))
+    hecho = asignar(candidatos(desfase, 0, 0.0), {})
+    # Segunda vuelta, una página arriba o abajo, solo con la misma entidad y el asunto muy parecido
+    return asignar([p for p in candidatos(desfase, 1, 0.5) if p[2] not in hecho], hecho)
+
+
+VERSION = "antiguos_v3"  # v2: registros con punto de millar; v3 (30/10/2026): «NÚMERO 5.852/22» y textos por
+#                           página y entidad de cada anuncio, no por posición
 
 
 def procesar(b: dict, raiz: Path, archivo: Archivo) -> dict:
@@ -146,10 +222,10 @@ def leer_pdf(b: dict, pdf: bytes, captura: dict, raiz: Path) -> dict:
     paginas = paginas_pdf(pdf)
     entradas, desde = sumario(paginas)
     trozos = bloques(paginas, desde)
-    casan = len(trozos) == len(entradas)
+    pareja = emparejar(entradas, trozos)
     filas = []
     for i, x in enumerate(entradas):
-        registro = trozos[i][0] if casan else None
+        registro = trozos[pareja[i]]["registro"] if i in pareja else None
         filas.append({**x, "organismo": organismo(x), "numero_anuncio": registro or f"{b['numero']}-{i + 1:03d}",
                       "id": f"BOPGR-{d.year}-{b['numero']}-{i + 1:03d}", "fecha": b["fecha"], "boletin": b["numero"],
                       "url_pdf_boletin": b["url_pdf"], "fuente": BOLETIN.siglas, "captura_sha256": captura["sha256"]})
@@ -157,24 +233,27 @@ def leer_pdf(b: dict, pdf: bytes, captura: dict, raiz: Path) -> dict:
     escribir_jsonl(saga._ruta(BOLETIN, raiz, "disposiciones", d), filas)
     escribir_jsonl(saga._ruta(BOLETIN, raiz, "oposiciones", d), empleo)
     inf = {"resultado": "ok", "sha256": captura["sha256"], "capturado": captura.get("capturado"),
-           "url_pdf": b["url_pdf"], "version": VERSION, "alertas": []}
+           "url_pdf": b["url_pdf"], "version": VERSION, "alertas": [],
+           "emparejados": len(pareja), "anuncios_en_cuerpo": len(trozos)}
     textos = 0
-    if casan:
-        por_id = {f["id"]: trozos[i][1] for i, f in enumerate(filas)}
-        for x in empleo:
-            bruto = por_id[x["id"]]
-            if x.get("tipo_acto") in CON_TEXTO:
-                datos = {"titulo": x["titulo"], **limpiar_texto(bruto, BOLETIN.cabecera_pdf)}
-            else:
-                datos = {"titulo": x["titulo"], "texto": None, "tablas": [], "solo_recuento": True,
-                         "lineas_con_documento_de_identidad": sum(1 for l in bruto.splitlines() if RE_DOCUMENTO.search(l)),
-                         "citas": citas(bruto)}
-            escribir_json(saga.ruta_texto(BOLETIN, raiz, x), {"id": x["id"], **datos, "captura_sha256": captura["sha256"],
-                                                             "capturado": captura.get("capturado"), "url": b["url_pdf"]})
-            textos += 1
-    elif empleo:
-        inf["alertas"].append(f"BOP Granada {d}: {len(entradas)} asuntos y {len(trozos)} anuncios en el cuerpo: "
-                              "sin textos")
+    por_id = {f["id"]: trozos[pareja[i]]["texto"] for i, f in enumerate(filas) if i in pareja}
+    for x in empleo:
+        bruto = por_id.get(x["id"])
+        if bruto is None:  # el texto que una versión anterior le pusiera por posición puede ser de otro anuncio
+            saga.ruta_texto(BOLETIN, raiz, x).unlink(missing_ok=True)
+            continue
+        if x.get("tipo_acto") in CON_TEXTO:
+            datos = {"titulo": x["titulo"], **limpiar_texto(bruto, BOLETIN.cabecera_pdf)}
+        else:
+            datos = {"titulo": x["titulo"], "texto": None, "tablas": [], "solo_recuento": True,
+                     "lineas_con_documento_de_identidad": sum(1 for l in bruto.splitlines() if RE_DOCUMENTO.search(l)),
+                     "citas": citas(bruto)}
+        escribir_json(saga.ruta_texto(BOLETIN, raiz, x), {"id": x["id"], **datos, "captura_sha256": captura["sha256"],
+                                                         "capturado": captura.get("capturado"), "url": b["url_pdf"]})
+        textos += 1
+    if len(empleo) > textos:
+        inf["alertas"].append(f"BOP Granada {d}: {len(empleo) - textos} de {len(empleo)} anuncios de empleo sin su "
+                              f"texto ({len(pareja)} de {len(entradas)} asuntos casados con {len(trozos)} anuncios)")
     inf.update({"disposiciones": len(filas), "empleo_publico": len(empleo), "textos": textos})
     if not filas:
         inf["alertas"].append(f"BOP Granada {d}: sumario sin anuncios (posible cambio de formato)")
