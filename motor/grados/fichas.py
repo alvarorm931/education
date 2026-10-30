@@ -26,6 +26,7 @@ import re
 from collections import Counter, defaultdict
 from pathlib import Path
 
+from motor.grados.asignaturas import comparar
 from motor.grados.catalogo import clave, clave_union, nombre_corto
 from motor.grados.generico import nombre_base
 
@@ -272,10 +273,20 @@ def construir(catalogo: list[dict], genericos: list[dict], tarjetas: dict, detal
                 })
     comparativa = []
     nombres = {g["id"]: g["nombre"] for g in genericos}
+    por_codigo = {f["codigo"]: f for f in fichas}
     for gid, filas in por_gen.items():
         filas.sort(key=lambda x: (x["nota_corte"] is None, -(x["nota_corte"] or 0)))
+        # asignaturas comparadas: solo con planes comprobados (la suma cuadra con su tabla de créditos)
+        planes_ok = {f["codigo"]: f["plan"]["asignaturas"] for f in fichas
+                     if f["generico"] and f["generico"]["id"] == gid and f["plan"] and f["plan"]["comprobado"]}
+        cuadro = comparar(planes_ok) if len(planes_ok) >= 2 else None
+        if cuadro:
+            for c, v in cuadro["por_titulo"].items():
+                por_codigo[c]["asignaturas_comparadas"] = {**v, "planes_comparados": cuadro["planes_comparados"]}
         comparativa.append({"generico": gid, "nombre": nombres.get(gid), "filas": filas,
-                            "universidades": len({x["universidad"] for x in filas})})
+                            "universidades": len({x["universidad"] for x in filas}),
+                            "asignaturas": cuadro and {"planes_comparados": cuadro["planes_comparados"],
+                                                       "comunes": cuadro["asignaturas_comunes"][:60]}})
     comparativa.sort(key=lambda x: -len(x["filas"]))
     return fichas, comparativa
 
@@ -296,6 +307,7 @@ def resumen(fichas: list[dict], comparativa: list[dict]) -> dict:
         "indexables": sum(1 for f in fichas if f["indexable"]),
         "motivos_noindex": dict(Counter(m for f in fichas for m in f["motivos_noindex"])),
         "comparativas": len(comparativa),
+        "comparativas_con_asignaturas": sum(1 for c in comparativa if c.get("asignaturas")),
         "filas_comparativa": sum(len(c["filas"]) for c in comparativa),
     }
 
