@@ -1,11 +1,11 @@
-# Vigilancia 30/10 12:04 (Madrid)
+# Vigilancia 30/10 12:26 (Madrid)
 
-- Ejecuciones revisadas (últimas 6 h): 145
+- Ejecuciones revisadas (últimas 6 h): 134
 - Fallos: 1; pendientes: 0; relanzados ahora: 0
-- Colas de más de 30 minutos: 0
+- Colas de más de 30 minutos: 2
 - Flujos programados parados: ninguno
 - Almacén S3: ok
-- Programaciones que GitHub no disparó y se lanzaron a mano: ninguna
+- Programaciones que GitHub no disparó y se lanzaron a mano: masters-diario.yml (30/10 02:17)
 - Latido (relanza al vigilante cada ~25 min mientras GitHub no dispare programaciones): no hace falta: GitHub ya dispara las programaciones
 - Avisos de fuentes: 0
 
@@ -21,3 +21,5 @@ https://github.com/alvarorm931/education/actions/runs/41018014171 (intento 1, wo
       2 failed, 586 passed, 1 skipped in 50.77s
       ##[error]Process completed with exit code 1.
 
+- En cola 41 min: Grados por tramos https://github.com/alvarorm931/education/actions/runs/41043133281
+- En cola 43 min: Prueba de conector https://github.com/alvarorm931/education/actions/runs/41042887699
