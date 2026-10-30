@@ -365,6 +365,48 @@ def _curso_y_semestre(curso: int | None, semestre: int | None) -> tuple[int | No
     return curso, semestre
 
 
+RE_LISTA_CELDA = re.compile(r"asignaturas?\s*:\s*[–—-]", re.I)
+RE_ITEM_CELDA = re.compile(r"[–—]\s*([^–—]+)")
+
+
+def _plan_en_celdas(filas: list[list[str]], n: int) -> list[dict]:
+    """Planes con las asignaturas escritas dentro de las celdas de un cuadro curso × semestre:
+    «| Curso 1 | ECTS: 30. Asignaturas: – Álgebra Lineal (6 ECTS). – Inglés B2.1 (6 ECTS). |» o «– Mundo medieval
+    (B).». El curso sale de la fila y el semestre de la cabecera de la columna."""
+    cab, salida = filas[0], []
+    for f in filas[1:]:
+        curso_fila = numero_orden(f[0]) if f and re.search(r"curso", f[0] or "", re.I) else None
+        for j, celda in enumerate(f):
+            if not RE_LISTA_CELDA.search(celda or ""):
+                continue
+            semestre_col = numero_orden(cab[j]) if j < len(cab) and re.search(r"semestre|cuatrimestre", cab[j] or "", re.I) else None
+            curso, semestre = _curso_y_semestre(curso_fila, semestre_col)
+            lista = RE_LISTA_CELDA.split(celda, maxsplit=1)[-1]
+            for m in RE_ITEM_CELDA.finditer("– " + lista):
+                item = m.group(1).strip().rstrip(" .")
+                parentesis = re.findall(r"\(([^)]*)\)", item)
+                nombre = re.sub(r"\s*\([^)]*\)", "", item).strip().rstrip(" .")
+                creditos = next((_num(x) for x in parentesis if re.search(r"ects|cr[ée]d", x, re.I)), None)
+                codigo = next((x.strip() for x in parentesis if re.fullmatch(r"\s*[A-Za-z]{1,4}\s*", x)), None)
+                if nombre:
+                    salida.append({"nombre": nombre, "modulo": None, "caracter": codigo, "tipo": tipo_caracter(codigo),
+                                   "creditos": creditos, "curso": curso, "semestre": semestre, "periodo_literal": None,
+                                   "nivel": "asignatura", "tabla": n, "fila_literal": None})
+    return salida
+
+
+def _basicas_por_ambito(tablas: list[dict]) -> set[str]:
+    """Nombres de las tablas «Asignatura | Ámbito de conocimiento»: en el RD 822/2021 la formación básica va
+    vinculada a ámbitos, y esas tablas son su lista."""
+    salida = set()
+    for t in tablas:
+        filas = t.get("contenido") or []
+        if len(filas) >= 2 and len(filas[0]) == 2 and re.search(r"asignatura", filas[0][0] or "", re.I) \
+                and re.search(r"[áa]mbito", filas[0][1] or "", re.I):
+            salida |= {clave_union(f[0]) for f in filas[1:] if f and f[0]}
+    return salida
+
+
 def plan(tablas: list[dict], dist: dict | None = None) -> list[dict]:
     """Filas de asignatura o materia del plan, con carácter, créditos, curso y semestre cuando vienen.
 
@@ -389,6 +431,10 @@ def plan(tablas: list[dict], dist: dict | None = None) -> list[dict]:
         if "nombre" not in cols and "modulo" in cols:
             cols["nombre"], cols["nivel"] = cols.pop("modulo"), "modulo"
         if "nombre" not in cols or "creditos" not in cols:
+            if any(RE_LISTA_CELDA.search(c or "") for f in filas[1:] for c in f):
+                salida = _plan_en_celdas(filas, n)
+                if salida:
+                    por_tabla.append((0, len(salida), n, salida))
             continue
         tipo_tabla = tipo_de_rotulo(t.get("rotulo"))
         if not tipo_tabla:  # fila de total al pie: «Total de créditos de formación obligatoria. | 150»
@@ -448,6 +494,21 @@ def plan(tablas: list[dict], dist: dict | None = None) -> list[dict]:
             k = (clave_union(x["nombre"]) or x["nombre"].lower(), x["nivel"])  # «Trabajo de Fin de Grado» = «Trabajo Fin de Grado»
             if vistos.setdefault(k, n) == n:
                 resultado.append(x)
+    # filas aún sin tipo: el TFG, las prácticas y las optativas por su nombre; las básicas por la tabla de ámbitos;
+    # y el resto, obligatorias solo si su suma es exactamente la de obligatorias de la tabla de créditos
+    basicas = _basicas_por_ambito(tablas)
+    for x in resultado:
+        if not x["tipo"]:
+            por_nombre = tipo_de_rotulo(x["nombre"])
+            if por_nombre in ("tfg", "practicas", "optativa"):
+                x["tipo"], x["tipo_por_nombre"] = por_nombre, True
+            elif clave_union(x["nombre"]) in basicas:
+                x["tipo"], x["tipo_por_tabla_de_ambitos"] = "basica", True
+    resto = [x for x in resultado if not x["tipo"]]
+    if dist and resto and dist.get("obligatorias") and \
+            abs(sum(x["creditos"] or 0 for x in resto) - dist["obligatorias"]) <= 0.5:
+        for x in resto:
+            x["tipo"], x["tipo_por_suma_de_tabla"] = "obligatoria", True
     return resultado
 
 
@@ -507,10 +568,24 @@ def separar_planes(doc: dict) -> list[dict]:
 
 
 def medir_plan(doc: dict) -> dict:
-    filas = plan(doc.get("tablas", []), distribucion_creditos(doc.get("tablas", [])))
+    """Medidas del plan y su comprobación contra la tabla de créditos por tipo. Si los tipos deducidos por el
+    nombre («Prácticas externas», «Trabajo fin de grado» sin columna de carácter) impiden cuadrar y sin ellos
+    cuadra, se quitan: unas prácticas pueden ser optativas. «filas_plan» lleva las filas con que se midió."""
+    dist = distribucion_creditos(doc.get("tablas", []))
+    filas = plan(doc.get("tablas", []), dist)
+    m = _medir(filas, dist, doc)
+    if not m["comprobacion"] and any(x.get("tipo_por_nombre") for x in filas):
+        alt = [{**x, "tipo": None, "tipo_por_nombre": False} if x.get("tipo_por_nombre") else x for x in filas]
+        m2 = _medir(alt, dist, doc)
+        if m2["comprobacion"]:
+            filas, m = alt, m2
+    m["filas_plan"] = filas
+    return m
+
+
+def _medir(filas: list[dict], dist: dict | None, doc: dict) -> dict:
     asig = [f for f in filas if f["nivel"] == "asignatura"]
     base = asig or filas
-    dist = distribucion_creditos(doc.get("tablas", []))
     suma = sum(f["creditos"] or 0 for f in base)
     fijos = sum(f["creditos"] or 0 for f in base if f["tipo"] in ("basica", "obligatoria", "practicas", "tfg"))
     esperado = sum(dist.get(k, 0) for k in ("formacion_basica", "obligatorias", "practicas_externas", "tfg")) \
@@ -632,9 +707,10 @@ def cmd_medir(textos: Path, actos_fichero: Path | None, salida: Path) -> dict:
             continue
         for parte in separar_planes(doc):
             m = medir_plan(parte)
+            filas = m.pop("filas_plan")
             extra = {k: parte[k] for k in ("titulo_grado", "parte", "partes") if k in parte}
             planes.append({"identificador": doc["identificador"], "tipo": tipo, "titulo": doc.get("titulo"), **extra,
-                           **m, "plan": plan(parte.get("tablas", []), m.get("distribucion"))})
+                           **m, "plan": filas})
     _escribir(destino, "boe_planes.jsonl", planes)
     _escribir(destino, "boe_altas.jsonl", altas_todas)
 

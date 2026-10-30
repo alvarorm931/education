@@ -164,3 +164,14 @@ def test_comprobacion_y_materias_mixtas():
     assert medir_plan({"tablas": [dist, asig], "texto": ""})["comprobacion"] == "basicas_y_obligatorias"
     asig2 = _t(asig["contenido"] + [["Prácticas.", "6", "PE"], ["Trabajo Fin de Grado.", "6", "TFG"]])
     assert medir_plan({"tablas": [dist, asig2], "texto": ""})["comprobacion"] == "completo"
+
+
+def test_plan_con_asignaturas_dentro_de_las_celdas():
+    from motor.grados.boe_grados import plan
+    t = _t([["", "Semestre 3", "Semestre 4"],
+            ["Curso 2", "ECTS: 12. Asignaturas: – Mundo medieval (6 ECTS). – Inglés B2.1 (6 ECTS).",
+             "ECTS: 6. Asignaturas: – Mundo contemporáneo (O)."]])
+    p = {x["nombre"]: x for x in plan([t])}
+    assert p["Mundo medieval"]["creditos"] == 6 and p["Mundo medieval"]["curso"] == 2 and p["Mundo medieval"]["semestre"] == 1
+    assert p["Inglés B2.1"]["creditos"] == 6
+    assert p["Mundo contemporáneo"]["tipo"] == "obligatoria" and p["Mundo contemporáneo"]["semestre"] == 2
