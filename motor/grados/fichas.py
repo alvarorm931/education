@@ -165,7 +165,8 @@ def indexar_web_privadas(carpeta: Path | None) -> dict[str, dict]:
             p = precio_web(fi)
             if p:
                 salida[cod] = {**p, "fuente": FUENTE_WEB, "universidad": d.get("universidad"), "capturado": fecha,
-                               "_titulo": fi.get("titulo")}
+                               "_titulo": fi.get("titulo"), "centro": d.get("centro"),
+                               "centro_adscrito": bool(d.get("centro_adscrito"))}
             elif cod in salida and salida[cod]["url"] != fi.get("url"):
                 del salida[cod]  # el rastreo nuevo lleva a otra página sin precio: el viejo ya no vale
     return salida
@@ -520,7 +521,9 @@ def construir(catalogo: list[dict], genericos: list[dict], tarjetas: dict, detal
         motivos = []
         if not (plan and plan["comprobado"]):
             motivos.append("sin asignaturas comprobadas" if not plan else "plan sin cuadrar con su tabla de créditos")
-        pweb = (web or {}).get(t["codigo"]) if t["universidad_tipo"] == "Privada" else None
+        pweb = (web or {}).get(t["codigo"])
+        if pweb and t["universidad_tipo"] != "Privada" and not (pweb.get("centro_adscrito") and not precios):
+            pweb = None  # en una pública solo vale la web de su centro adscrito, y solo si QEDU no da precio
         # la dirección casaba con el grado, pero el título de la página dice que es de otro estudio (un doble, una
         # FP, otro grado): esa página no vale para este grado
         pag = (paginas or {}).get(t["codigo"]) if t["universidad_tipo"] == "Privada" else None

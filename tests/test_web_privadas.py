@@ -88,3 +88,31 @@ def test_titulo_que_contradice_la_union_por_direccion():
     assert not titulo_contradice(doble, "Doble Grado en ADE y Economía | X")
     assert not titulo_contradice({"clase": "grado", "nombre": "Ingeniería Informática"},
                                  "Grado en Ingenier&iacute;a Inform&aacute;tica - Universidad Europea")
+
+
+def test_objetivos_por_centros_propios_de_privadas_y_adscritos_de_publicas(tmp_path):
+    import json
+    from motor.grados.web_privadas import objetivos_centros
+    (tmp_path / "041.json").write_text(json.dumps({"codigo": "041", "nombre": "Ramón Llull", "tipo": "Privada",
+        "web": "https://www.url.edu", "centros": [
+            {"codigo": "08037051", "nombre": "IQS", "web": "https://www.iqs.url.edu/", "vinculacion": "Propio"},
+            {"codigo": "08070088", "nombre": "Derecho Esade", "web": "https://www.esade.edu/", "vinculacion": "Propio"},
+            {"codigo": "08033067", "nombre": "Empresa Esade", "web": "https://www.esade.edu/", "vinculacion": "Propio"}]}))
+    (tmp_path / "004.json").write_text(json.dumps({"codigo": "004", "nombre": "Barcelona", "tipo": "Pública",
+        "web": "https://www.ub.edu", "centros": [
+            {"codigo": "08072000", "nombre": "CETT", "web": "https://www.cett.es", "vinculacion": "Adscrito"},
+            {"codigo": "08001234", "nombre": "Facultad", "web": "https://www.ub.edu/dret", "vinculacion": "Propio"}]}))
+
+    def t(codigo, nombre, uni, ucod, tipo, centro):
+        return {"codigo": codigo, "clase": "grado", "nombre": nombre, "situacion": "Activo", "universidad_tipo": tipo,
+                "universidades": [{"nombre": uni, "codigo": ucod}],
+                "imparticiones": [{"situacion": "Activo", "unidad_codigo": centro, "universidad": uni}]}
+    cat = [t("1", "Química", "Ramón Llull", "041", "Privada", "08037051"),
+           t("2", "Derecho", "Ramón Llull", "041", "Privada", "08070088"),
+           t("3", "ADE", "Ramón Llull", "041", "Privada", "08033067"),
+           t("4", "Turismo", "Barcelona", "004", "Pública", "08072000"),
+           t("5", "Derecho", "Barcelona", "004", "Pública", "08001234")]
+    obj = {o["web"]: (o, sorted(g["codigo"] for g in gs)) for o, gs in objetivos_centros(cat, tmp_path)}
+    assert set(obj) == {"https://www.iqs.url.edu/", "https://www.esade.edu/", "https://www.cett.es"}
+    assert obj["https://www.esade.edu/"][1] == ["2", "3"]  # un rastreo por dominio
+    assert obj["https://www.cett.es"][0]["centro_adscrito"] and obj["https://www.cett.es"][1] == ["4"]

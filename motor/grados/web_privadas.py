@@ -248,6 +248,8 @@ def desde_portada(d: Dominio, max_listados: int = 10) -> list[str]:
 def recorrer(universidad: dict, grados: list[dict], archivo: Archivo | None, max_paginas: int) -> dict:
     d = Dominio(universidad["web"], archivo, pausa=PAUSA, max_peticiones=max_paginas + 60)
     res: dict = {"universidad": universidad["nombre"], "codigo": universidad["codigo"], "web": universidad["web"],
+                 **({"centro": universidad["centro"], "centro_adscrito": universidad.get("centro_adscrito")}
+                    if universidad.get("centro") else {}),
                  "grados_catalogo": len(grados)}
     sitemaps, responde = d.resolver_base()
     res["base"] = d.base
@@ -362,6 +364,54 @@ def objetivos(catalogo: list[dict], centros: Path) -> list[tuple[dict, list[dict
     return salida
 
 
+def _host(web: str) -> str:
+    return urlparse(web if web.startswith("http") else "https://" + web).netloc.lower().removeprefix("www.")
+
+
+def objetivos_centros(catalogo: list[dict], centros: Path) -> list[tuple[dict, list[dict]]]:
+    """Webs propias de centros, con los grados que se imparten en cada uno: los centros de las privadas cuya web no
+    es la de su universidad (Ramón Llull: Esade, IQS, La Salle, Blanquerna…) y los centros adscritos de las
+    públicas, que fijan su propio precio. Cada objetivo se llama «{universidad}{centro}» para no pisar el de la
+    universidad, y lleva la marca de adscrito si lo es."""
+    fichas_u = {}
+    for f in sorted(centros.rglob("*.json")):
+        if re.fullmatch(r"\d{3}\.json", f.name):
+            d = json.loads(f.read_text(encoding="utf-8"))
+            fichas_u[d.get("codigo")] = d
+    por_centro: dict[tuple[str, str], list[dict]] = defaultdict(list)
+    for t in catalogo:
+        if t["situacion"] != "Activo" or t["clase"] not in ("grado", "doble"):
+            continue
+        for u in t["universidades"]:
+            for i in t["imparticiones"]:
+                if i.get("situacion") == "Activo" and i.get("unidad_codigo") and i.get("universidad") == u["nombre"]:
+                    por_centro[(u.get("codigo") or "", i["unidad_codigo"])].append(t)
+    salida = []
+    for (cu, cc), gs in sorted(por_centro.items()):
+        u = fichas_u.get(cu) or {}
+        centro = next((c for c in u.get("centros") or [] if c.get("codigo") == cc), None)
+        web = (centro or {}).get("web") or ""
+        if not re.match(r"https?://[^/]+\.[a-z]{2,}", web):
+            continue
+        adscrito = (centro.get("vinculacion") or "").lower().startswith("adscrit")
+        privada = (u.get("tipo") or "").lower().startswith("priv") or any(
+            x["universidad_tipo"] == "Privada" for x in gs)
+        propia = _host(web) != _host(u.get("web") or "")  # otro host (iqs.url.edu sí; url.edu/centro no)
+        if (privada and propia) or (not privada and adscrito):
+            nombre = f"{u.get('nombre') or cu} · {(centro.get('nombre') or cc)[:60]}"
+            salida.append(({"codigo": f"{cu}{cc}", "nombre": nombre, "web": web, "centro": cc,
+                            "centro_adscrito": adscrito}, list({g["codigo"]: g for g in gs}.values())))
+    # un mismo dominio para varios centros (Esade: Empresa y Derecho): un solo rastreo con todos sus grados
+    por_web: dict[str, tuple[dict, list[dict]]] = {}
+    for obj, gs in salida:
+        h = _host(obj["web"])
+        if h in por_web:
+            por_web[h][1].extend(g for g in gs if g not in por_web[h][1])
+        else:
+            por_web[h] = (obj, list(gs))
+    return list(por_web.values())
+
+
 def main() -> None:
     p = argparse.ArgumentParser()
     p.add_argument("--catalogo", required=True)
@@ -371,10 +421,17 @@ def main() -> None:
     p.add_argument("--hilos", type=int, default=4)
     p.add_argument("--max-paginas", type=int, default=120, help="páginas de grado por universidad")
     p.add_argument("--max-minutos", type=float, default=50)
+    p.add_argument("--por-centros", action="store_true",
+                   help="webs propias de centros (de privadas y adscritos de públicas) en vez de la de la universidad")
+    p.add_argument("--solo", help="códigos de universidad separados por comas (p. ej. 033,054)")
     p.add_argument("--salida", required=True)
     a = p.parse_args()
     cat = [json.loads(x) for x in Path(a.catalogo).read_text(encoding="utf-8").splitlines() if x.strip()]
-    trabajo = objetivos(cat, Path(a.centros))[a.desde:a.hasta]
+    trabajo = (objetivos_centros if a.por_centros else objetivos)(cat, Path(a.centros))
+    if a.solo:
+        solo = set(a.solo.split(","))
+        trabajo = [x for x in trabajo if x[0]["codigo"][:3] in solo]
+    trabajo = trabajo[a.desde:a.hasta]
     archivo = Archivo(Path(a.salida) / "archivo", indice_por_fuente=True, solo_huella=solo_huella_por_defecto())
     destino = Path(a.salida) / "datos" / "estudios" / "grados" / "web_privadas"
     destino.mkdir(parents=True, exist_ok=True)
