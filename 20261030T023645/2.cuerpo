@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="es_ES" xmlns="http://www.w3.org/1999/xhtml"><head id="j_idt2"><link type="text/css" rel="stylesheet" href="/PortalBOP/javax.faces.resource/theme.css.xhtml;jsessionid=BDE42EBFABB58C220B60ED7ECFC46B01?ln=primefaces-saga&amp;v=12.0.0&amp;e=12.0.0" /><link type="text/css" rel="stylesheet" href="/PortalBOP/javax.faces.resource/primeicons/primeicons.css.xhtml;jsessionid=BDE42EBFABB58C220B60ED7ECFC46B01?ln=primefaces&amp;v=12.0.0&amp;e=12.0.0" /><link type="text/css" rel="stylesheet" href="/PortalBOP/javax.faces.resource/components.css.xhtml;jsessionid=BDE42EBFABB58C220B60ED7ECFC46B01?ln=primefaces&amp;v=12.0.0&amp;e=12.0.0" /><script type="text/javascript" src="/PortalBOP/javax.faces.resource/jquery/jquery.js.xhtml;jsessionid=BDE42EBFABB58C220B60ED7ECFC46B01?ln=primefaces&amp;v=12.0.0&amp;e=12.0.0"></script><script type="text/javascript" src="/PortalBOP/javax.faces.resource/core.js.xhtml;jsessionid=BDE42EBFABB58C220B60ED7ECFC46B01?ln=primefaces&amp;v=12.0.0&amp;e=12.0.0"></script><script type="text/javascript" src="/PortalBOP/javax.faces.resource/components.js.xhtml;jsessionid=BDE42EBFABB58C220B60ED7ECFC46B01?ln=primefaces&amp;v=12.0.0&amp;e=12.0.0"></script><script type="text/javascript" src="/PortalBOP/javax.faces.resource/jquery/jquery-plugins.js.xhtml;jsessionid=BDE42EBFABB58C220B60ED7ECFC46B01?ln=primefaces&amp;v=12.0.0&amp;e=12.0.0"></script><script type="text/javascript" src="/PortalBOP/javax.faces.resource/watermark/watermark.js.xhtml;jsessionid=BDE42EBFABB58C220B60ED7ECFC46B01?ln=primefaces&amp;v=12.0.0&amp;e=12.0.0"></script><script type="text/javascript" src="/PortalBOP/javax.faces.resource/filedownload/filedownload.js.xhtml;jsessionid=BDE42EBFABB58C220B60ED7ECFC46B01?ln=primefaces&amp;v=12.0.0&amp;e=12.0.0"></script><link type="text/css" rel="stylesheet" href="/PortalBOP/javax.faces.resource/css/frameworkWeb.css.xhtml;jsessionid=BDE42EBFABB58C220B60ED7ECFC46B01?ln=framework-1.1.4" /><link type="text/css" rel="stylesheet" href="/PortalBOP/javax.faces.resource/css/portalBOP.css.xhtml;jsessionid=BDE42EBFABB58C220B60ED7ECFC46B01?ln=1.2.21" /><script type="text/javascript">if(window.PrimeFaces){PrimeFaces.settings.locale='es_ES';PrimeFaces.settings.viewId='/login.xhtml';PrimeFaces.settings.contextPath='/PortalBOP';PrimeFaces.settings.cookiesSecure=false;}</script>
+	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	    <link rel="shortcut icon" type="image/x-icon" href="/PortalBOP/javax.faces.resource/img/favicon.ico.xhtml?ln=1.2.21" />
+	    <title>BOP
+	    </title>
+	    
+	    <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,600,600i,700,700i,800,800i&amp;subset=latin-ext" rel="stylesheet" type="text/css" />
+	    	<script type="text/javascript">
+	      		//<![CDATA[
+					if (typeof console == 'undefined') {
+						console = {log: function() {}};
+					}
+					
+					function evitarMostarDialogoCargando() {
+						$('body').data('evitar_mostrar_dialogo_cargando', true); 
+					}
+					
+					function mostarDialogoCargando() {
+						var evitar_mostrar_dialogo_cargando = $('body').data('evitar_mostrar_dialogo_cargando');
+						
+						if (evitar_mostrar_dialogo_cargando == null || !evitar_mostrar_dialogo_cargando) {
+							//En los filtros de cabecera no mostramos el loading de cargando
+							if ($('.ui-datatable table thead tr th .ui-inputfield.ui-inputtext:focus').length == 0) {
+								if ($('#loadingDialog').length > 0) {
+									$('#loadingDialog').addClass('invisible');
+									PF('loadingDialog').show();
+								}
+							}
+						}
+						
+						$('body').data('evitar_mostrar_dialogo_cargando', false); 
+					}
+					
+					function ajaxErrorHanler(event) {
+						if (event.currentTarget.status = 401) {
+							window.location = 'https://bop.dipcas.es/PortalBOP';
+						} else {
+							ocultarDialogoCargando();
+						}
+					}
+					
+					function evitarCierreDialogoCargando() {
+						$('body').data('evitar_cierre_dialogo_cargando', true); 
+					}
+					
+					function ocultarDialogoCargando() {
+						var evitar_cierre_dialogo_cargando = $('body').data('evitar_cierre_dialogo_cargando');
+						
+						if (evitar_cierre_dialogo_cargando == null || !evitar_cierre_dialogo_cargando) {
+							if ($('#loadingDialog').length > 0) {
+								PF('loadingDialog').hide()
+							}
+						}
+						
+						$('body').data('evitar_mostrar_dialogo_cargando', false); 
+						$('body').data('evitar_cierre_dialogo_cargando', false); 
+					}
+					
+					$(function() {
+						$('.ui-inplace-content input').livequery(function(){
+							$(this).keypress(function(event) {
+								var charCode = (event.which) ? event.which : event.keyCode;
+								if (charCode == 13) {
+									event.preventDefault();
+								}
+							});
+						}, function() {
+							$(this).unbind('keypress'); 
+						});
+						
+						$('.ui-growl-item-container').livequery(function(){
+							if ($(this).children('.ui-growl-item').children('.ui-growl-image.ui-growl-image-info').length > 0) {
+								$(this).addClass('info');
+							} else if ($(this).children('.ui-growl-item').children('.ui-growl-image.ui-growl-image-warn').length > 0) {
+								$(this).addClass('warn');
+							} else if ($(this).children('.ui-growl-item').children('.ui-growl-image.ui-growl-image-error').length > 0) {
+								$(this).addClass('error');
+							} else if ($(this).children('.ui-growl-item').children('.ui-growl-image.ui-growl-image-fatal').length > 0) {
+								$(this).addClass('fatal');
+							}
+						});
+						
+						$('.ui-datatable table thead tr th .ui-inputfield.ui-inputtext').livequery(function(){
+							$(this).focus(function(event) {
+								$(this).trigger('keypress');
+							});
+							
+							$(this).keydown(function(event) {
+								if ($('#loadingDialog_modal').length > 0) {
+									var input_value = $(this).val();
+								
+									var lower_case = true;
+									if (input_value != '') {
+										var last_character = input_value.substr(-1);
+										lower_case = (last_character == last_character.toLowerCase());
+									}
+									
+									var charCode = (event.which) ? event.which : event.keyCode;
+									if (charCode == 8 || charCode == 127) {
+										if (input_value != '') {
+											input_value = input_value.substr(0, input_value.length - 1);
+											$(this).val(input_value)
+										}
+									} else {
+										var strCharacter = String.fromCharCode(charCode);
+										if (strCharacter != null && strCharacter != '') {
+											if (lower_case) {
+												strCharacter = strCharacter.toLowerCase();
+											}
+										
+											$(this).val(input_value + strCharacter)
+										}
+									}
+								}
+							});
+						}, function() {
+							$(this).unbind('focus');
+							$(this).unbind('keydown');
+						});
+						
+						$('#loadingDialog_modal').livequery(function(){
+							var timeout_loading_dialog = setTimeout(function(){
+								$('#loadingDialog').removeClass('invisible');
+								$('#loadingDialog_modal').addClass('visible');
+								
+								$('body').data('timeout_loading_dialog', null); 
+							}, 2000);
+						
+							$('body').data('timeout_loading_dialog', timeout_loading_dialog);
+						}, function() {
+							var timeout_loading_dialog = $('body').data('timeout_loading_dialog');
+							
+							if (timeout_loading_dialog != null) {
+								clearTimeout(timeout_loading_dialog);
+							}
+						});
+				   	});
+				   	
+				   	function showNotificationBar() {
+				   		PF('notificationBar').show();
+				   	}
+				   	
+				   	function hideNotificationBar() {
+				   		PF('notificationBar').hide();
+				   	}
+				   	
+				   	function crearCaminoMigasYPieCabecera(){
+				   		//primer nivel
+				   		var textoPieCabecera = "";
+				   		var menuPrincipalSelected = $(".menuCabeceraSelected")[0];
+				   		if(menuPrincipalSelected != null && menuPrincipalSelected !='undefined'){
+				   			var url = $("a.menuCabeceraSelected").attr("href");
+				   			var nombre = $("a.menuCabeceraSelected span").text();
+				   			$( "#migas ul" ).append( "<li><a href='" +url+ "'>" +nombre+ "</a></li>" );
+				   			textoPieCabecera = nombre;
+				   		}
+				   		//segundo nivel
+				   		var menuSelected = $(".menuSelected")[0];
+				   		if(menuSelected != null && menuSelected !='undefined'){
+				   			var url = $("a.menuSelected").attr("href");
+				   			var nombre = $("a.menuSelected span").text();
+				   			$( "#migas ul" ).append( "<li><a href='" +url+ "'>" +nombre+ "</a></li>" );
+				   			textoPieCabecera = nombre;
+				   		}
+				   		$("#pieCabecera span").text(textoPieCabecera);
+				   	}
+				   	
+				    function toggleInputSearchLupa(){
+		      			$(".inputSearchLupa").toggle();
+		      			$(".idioma").toggle();
+		      		  }         
+				   	
+				    jQuery(document).ready(function() {
+				    	crearCaminoMigasYPieCabecera();
+				    	toggleInputSearchLupa();
+	      				$(".idioma").toggle();
+				    });
+				//]]>
+    		</script><script type="text/javascript" src="/PortalBOP/javax.faces.resource/js/primefacesLocales.js.xhtml;jsessionid=BDE42EBFABB58C220B60ED7ECFC46B01?ln=framework-1.1.4"></script><script type="text/javascript" src="/PortalBOP/javax.faces.resource/js/jquery.livequery.js.xhtml;jsessionid=BDE42EBFABB58C220B60ED7ECFC46B01?ln=framework-1.1.4"></script><script type="text/javascript" src="/PortalBOP/javax.faces.resource/primefaces-extensions.js.xhtml;jsessionid=BDE42EBFABB58C220B60ED7ECFC46B01?ln=primefaces-extensions&amp;v=12.0.0&amp;e=12.0.0"></script><script type="text/javascript" src="/PortalBOP/javax.faces.resource/js/markerclusterer_packed.js.xhtml;jsessionid=BDE42EBFABB58C220B60ED7ECFC46B01?ln=framework-1.1.4"></script><script type="text/javascript" src="/PortalBOP/javax.faces.resource/js/oms.min.js.xhtml;jsessionid=BDE42EBFABB58C220B60ED7ECFC46B01?ln=framework-1.1.4"></script>
+    		
+    		<script src="https://insuit.net/i4tservice/insuit-app.js"></script><script type="text/javascript" src="/PortalBOP/javax.faces.resource/js/miniapplet.js.xhtml;jsessionid=BDE42EBFABB58C220B60ED7ECFC46B01?ln=1.2.21"></script>
+		
+		<script type="text/javascript">
+	      		//<![CDATA[
+			MiniApplet.cargarMiniApplet('https://bop.dipcas.es/PortalBOP');
+	    	
+			
+			function firmaFakeAcceso() {
+				if ($('input[id$=":instanciaBase64"]').val() != '') {
+					//Framework.ajaxStatusOnStart();
+				
+					try {
+						var params = 'headless=true\n';
+						params +=    'expPolicy=FirmaAGE\n';
+						//params +=    'format=XAdES Detached\n';
+						//params +=    'filters=nonexpired:;qualified:';
+						params +=    'filters=nonexpired';
+	 					MiniApplet.sign($('input[id$=":instanciaBase64"]').val(), 'SHA1withRSA', 'XAdES', params, enviarFirmaFake, mostrarErrorDuranteFirmaFake);
+	 				} catch (exception) {
+	 					console.log(exception);
+	 					mostrarErrorDuranteFirma();
+	 				}
+				}
+			}
+			
+			function enviarFirmaFake(intanciaFirmada) {
+				$('input[id$=":instanciaBase64"]').val('');
+				$('input[id$=":instanciaBase64Firmado"]').val(intanciaFirmada);
+				
+				rcEnviarInstanciaFirmadaProceso();
+			}
+			
+			function mostrarErrorDuranteFirmaFake(type, message) {
+				//Framework.ajaxStatusOnSuccess();
+			
+ 				var msgAlertError = "Error en el proceso de acceso con certificado";
+ 		    	if (message != null && (type == null || type != 'java.lang.Exception')) {
+ 		    		msgAlertError += '\n' + message;
+ 		    	}
+ 		    	alert(msgAlertError);
+ 		    	
+		    	$('input[id$=":instanciaBase64Firmado"]').val();
+ 			}
+	      		 
+				//]]>
+    	</script></head><body><div id="cabeceraPrincipal" class="ui-outputpanel ui-widget "><div id="cabecera" class="ui-outputpanel ui-widget">
+				<div id="inclusite">
+				</div>
+				<h1><a href="?application.home%3F%3F%3F">BOP</a>
+					
+				</h1><div id="accionesCabecera" class="ui-outputpanel ui-widget">
+					<ul>
+						<li class="idioma"><a id="j_idt36" href="#" class="ui-commandlink ui-widget" onclick="PrimeFaces.ab({s:&quot;j_idt36&quot;});return false;" title="Castellano"><span class="localeSelected">Castellano</span></a><script id="j_idt36_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandLink","widget_j_idt36",{id:"j_idt36"});});</script>
+						</li>
+						<li class="idioma"><a id="j_idt39" href="#" class="ui-commandlink ui-widget" onclick="PrimeFaces.ab({s:&quot;j_idt39&quot;});return false;" title="Castellano"><span class="">Valencià</span></a><script id="j_idt39_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandLink","widget_j_idt39",{id:"j_idt39"});});</script>
+						</li>
+						<li>
+<form id="j_idt42" name="j_idt42" method="post" action="/PortalBOP/login;jsessionid=BDE42EBFABB58C220B60ED7ECFC46B01" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="j_idt42" value="j_idt42" />
+<script id="j_idt42:j_idt43" type="text/javascript">remoteSearchInput = function() {return PrimeFaces.ab({s:"j_idt42:j_idt43",f:"j_idt42",u:"accionesCabecera",pa:arguments[0]});}</script><input id="j_idt42:searchInput" name="j_idt42:searchInput" type="text" class="ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all inputSearchLupa" onkeypress="if (event.keyCode == 13) { remoteSearchInput(); return false; }" /><script id="j_idt42:searchInput_s" type="text/javascript">$(function(){PrimeFaces.cw("InputText","widget_j_idt42_searchInput",{id:"j_idt42:searchInput"});});</script><script id="j_idt42:j_idt44_s" type="text/javascript">$(function(){PrimeFaces.cw("Watermark","widget_j_idt42_j_idt44",{id:"j_idt42:j_idt44",value:"Escriba y pulse Enter",target:"j_idt42:searchInput"});});</script><button id="j_idt42:j_idt45" name="j_idt42:j_idt45" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only custom-icon-button lupaButton" onclick="PrimeFaces.bcn(this,event,[function(event){toggleInputSearchLupa(); return false;},function(event){PrimeFaces.ab({s:&quot;j_idt42:j_idt45&quot;,f:&quot;j_idt42&quot;,u:&quot;accionesCabecera&quot;});return false;}]);" title="Buscar" type="submit"><span class="ui-button-icon-left ui-icon ui-c pi pi-search pi-1_7x"></span><span class="ui-button-text ui-c">Buscar</span></button><script id="j_idt42:j_idt45_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandButton","widget_j_idt42_j_idt45",{id:"j_idt42:j_idt45"});});</script><input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:0" value="-5493802650246972927:-1407545463853140560" autocomplete="off" />
+</form>
+						</li>
+					</ul></div></div><div id="menuCabecera" class="ui-outputpanel ui-widget"><div id="logoMenu" class="ui-outputpanel ui-widget"><a href="http://www.dipcas.es" class="logoImage"></a></div>
+<form id="formMenuCabecera" name="formMenuCabecera" method="post" action="/PortalBOP/login;jsessionid=BDE42EBFABB58C220B60ED7ECFC46B01" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="formMenuCabecera" value="formMenuCabecera" />
+
+		
+			<script src="https://www.googletagmanager.com/gtag/js?id=UA-127397200-4" async="async"></script>
+			<script>
+				  window.dataLayer = window.dataLayer || [];
+				  function gtag(){dataLayer.push(arguments);}
+				  gtag('js', new Date());
+				  gtag('config', 'UA-127397200-4');
+			</script><div id="formMenuCabecera:j_idt49" class="ui-menu ui-menubar ui-megamenu ui-widget ui-widget-content ui-corner-all ui-helper-clearfix"><div tabindex="0" class="ui-helper-hidden-accessible"></div><ul role="menubar" class="ui-menu-list ui-helper-reset"><li class="ui-menuitem ui-widget ui-corner-all" role="none"><a tabindex="-1" role="menuitem" class="ui-menuitem-link ui-corner-all " href="/PortalBOP/informacion/"><span class="ui-menuitem-text">Información</span></a></li><li class="ui-menuitem ui-widget ui-corner-all" role="none"><a tabindex="-1" role="menuitem" class="ui-menuitem-link ui-corner-all " href="/PortalBOP/buscador/"><span class="ui-menuitem-text">Buscador</span></a></li><li class="ui-menuitem ui-widget ui-corner-all" role="none"><a tabindex="-1" role="menuitem" class="ui-menuitem-link ui-corner-all menuCabeceraSelected" href="/PortalBOP/login"><span class="ui-menuitem-text">Publicador</span></a></li><li class="ui-menuitem ui-widget ui-corner-all" role="none"><a tabindex="-1" role="menuitem" class="ui-menuitem-link ui-corner-all " href="/PortalBOP/loginSuscriptor"><span class="ui-menuitem-text">Suscriptor</span></a></li><li class="ui-menuitem ui-widget ui-corner-all" role="none"><a tabindex="-1" role="menuitem" class="ui-menuitem-link ui-corner-all " href="/PortalBOP/contacta/"><span class="ui-menuitem-text">Contacta</span></a></li></ul></div><script id="formMenuCabecera:j_idt49_s" type="text/javascript">$(function(){PrimeFaces.cw("MegaMenu","widget_formMenuCabecera_j_idt49",{id:"formMenuCabecera:j_idt49",autoDisplay:true,delay:0});});</script><input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:1" value="-5493802650246972927:-1407545463853140560" autocomplete="off" />
+</form></div><div id="pieCabecera" class="ui-outputpanel ui-widget">
+				<span>
+					
+				</span></div></div><div id="migas" class="ui-outputpanel ui-widget">
+			<ul>
+				<li class="inicio"><span>Inicio</span>
+				</li>
+			</ul>
+			<div id="zonaMigas">
+		<div id="busquedaAvanzada"> 
+		</div>
+			</div></div><div id="submenu" class="ui-outputpanel ui-widget"><span id="globalMessages"></span><script id="globalMessages_s" type="text/javascript">$(function(){PrimeFaces.cw("Growl","globalMessages",{id:"globalMessages",sticky:false,life:10000,escape:true,keepAlive:false,msgs:[]});});</script></div><div id="content" class="ui-outputpanel ui-widget">
+<form id="formSideBar" name="formSideBar" method="post" action="/PortalBOP/login;jsessionid=BDE42EBFABB58C220B60ED7ECFC46B01" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="formSideBar" value="formSideBar" />
+<div id="formSideBar:j_idt61" class="ui-panel ui-widget ui-widget-content ui-corner-all sidebar" data-widget="widget_formSideBar_j_idt61"><div id="formSideBar:j_idt61_content" class="ui-panel-content ui-widget-content">
+				<div class="titulo">Publicador
+				</div><html xmlns="http://www.w3.org/1999/xhtml"><div id="formSideBar:j_idt67" class="ui-menu ui-tieredmenu ui-widget ui-widget-content ui-corner-all ui-helper-clearfix"><div tabindex="0" class="ui-helper-hidden-accessible"></div><ul role="menubar" class="ui-menu-list ui-helper-reset"><li class="ui-menuitem ui-widget ui-corner-all" role="none"><a tabindex="-1" role="menuitem" class="ui-menuitem-link ui-corner-all " href="/PortalBOP/altas/altaOrganismo.xhtml"><span class="ui-menuitem-text">Alta organismo emisor</span></a></li><li class="ui-menuitem ui-widget ui-corner-all" role="none"><a tabindex="-1" role="menuitem" class="ui-menuitem-link ui-corner-all menuSelected" href="/PortalBOP/login"><span class="ui-menuitem-text">Acceso al publicador</span></a></li></ul></div><script id="formSideBar:j_idt67_s" type="text/javascript">$(function(){PrimeFaces.cw("TieredMenu","widget_formSideBar_j_idt67",{id:"formSideBar:j_idt67",autoDisplay:true});});</script>
+	
+</html></div></div><script id="formSideBar:j_idt61_s" type="text/javascript">$(function(){PrimeFaces.cw("Panel","widget_formSideBar_j_idt61",{id:"formSideBar:j_idt61"});});</script><input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:2" value="-5493802650246972927:-1407545463853140560" autocomplete="off" />
+</form><div id="center">	
+			<div id="normativa"><div id="j_idt72" class="ui-outputpanel ui-widget panelWithBorder">
+					
+					<p><span class="tituloTabla">Protección de Datos Personales y Garantía de Derechos Digitales</span></p>
+					<p><span class="normativaDPD">Advertencia legal: Los textos que figuran en el Boletín Oficial de la Provincia de Castellón se publican por orden del anunciante y bajo su exclusiva responsabilidad. El anunciante debe de adecuar el texto a publicar a las previsiones contenidas en el reglamento 2016/679 del Parlamento Europeo y del Consejo de 27 de abril de 2016 y en la Ley Orgánica 3/2018, de 5 de diciembre, de Protección de Datos Personales y garantía de los derechos digitales.</span></p></div>				
+			</div>							
+			<div>								
+					<div id="login">
+<form id="loginForm" name="loginForm" method="post" action="/PortalBOP/login;jsessionid=BDE42EBFABB58C220B60ED7ECFC46B01" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="loginForm" value="loginForm" />
+<table id="loginGrid" class="ui-panelgrid ui-widget panelWithBorder" role="grid"><tbody><tr class="ui-widget-content ui-panelgrid-odd"><td role="gridcell" class="ui-panelgrid-cell"><label id="j_idt83" class="ui-outputlabel ui-widget" for="j_username">NIF<span class="ui-outputlabel-rfi">*</span></label></td><td role="gridcell" class="ui-panelgrid-cell"><input id="j_username" name="j_username" type="text" class="ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all " aria-required="true" /><script id="j_username_s" type="text/javascript">$(function(){PrimeFaces.cw("InputText","widget_j_username",{id:"j_username"});});</script></td></tr><tr class="ui-widget-content ui-panelgrid-even"><td role="gridcell" class="ui-panelgrid-cell"><label id="j_idt87" class="ui-outputlabel ui-widget" for="j_password">Contraseña<span class="ui-outputlabel-rfi">*</span></label></td><td role="gridcell" class="ui-panelgrid-cell"><input id="j_password" name="j_password" type="password" class="ui-password ui-inputfield ui-widget ui-state-default ui-corner-all " aria-required="true" /><script id="j_password_s" type="text/javascript">$(function(){PrimeFaces.cw("Password","widget_j_password",{id:"j_password"});});</script></td></tr><tr class="ui-widget-content ui-panelgrid-odd"><td role="gridcell" class="ui-panelgrid-cell" colspan="2"><button id="buttonLogin" name="buttonLogin" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only button center" onclick="" type="submit"><span class="ui-button-text ui-c">Entrar</span></button><script id="buttonLogin_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandButton","widget_buttonLogin",{id:"buttonLogin"});});</script></td></tr></tbody></table><input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:3" value="-5493802650246972927:-1407545463853140560" autocomplete="off" />
+</form>
+					</div>		
+					<div id="loginCertificado">
+<form id="loginCertificadoForm" name="loginCertificadoForm" method="post" action="/PortalBOP/login;jsessionid=BDE42EBFABB58C220B60ED7ECFC46B01" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="loginCertificadoForm" value="loginCertificadoForm" />
+<table id="loginCertificadoGrid" class="ui-panelgrid ui-widget panelWithoutBorder" role="grid"><tbody><tr class="ui-widget-content ui-panelgrid-odd"><td role="gridcell" class="ui-panelgrid-cell" colspan="2"><a id="loginCertificadoLink" href="#" class="ui-commandlink ui-widget" onclick="PrimeFaces.addSubmitParam('loginCertificadoForm',{'loginCertificadoLink':'loginCertificadoLink'}).submit('loginCertificadoForm');return false;">Acceso con certificado</a><script id="loginCertificadoLink_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandLink","widget_loginCertificadoLink",{id:"loginCertificadoLink"});});</script></td></tr><tr class="ui-widget-content ui-panelgrid-even"><td role="gridcell" class="ui-panelgrid-cell" colspan="2"><a id="autofirmaLink" href="#" class="ui-commandlink ui-widget" onclick="PrimeFaces.addSubmitParam('loginCertificadoForm',{'autofirmaLink':'autofirmaLink'}).submit('loginCertificadoForm','_blank');return false;" target="_blank">(requiere aplicación AutoFirma)</a><script id="autofirmaLink_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandLink","widget_autofirmaLink",{id:"autofirmaLink"});});</script></td></tr><tr class="ui-widget-content ui-panelgrid-odd"><td role="gridcell" class="ui-panelgrid-cell"><a id="recordarPassword" href="#" class="ui-commandlink ui-widget" onclick="PrimeFaces.addSubmitParam('loginCertificadoForm',{'recordarPassword':'recordarPassword'}).submit('loginCertificadoForm','_blank');return false;" target="_blank">Restablecer contraseña Publicador</a><script id="recordarPassword_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandLink","widget_recordarPassword",{id:"recordarPassword"});});</script></td></tr><tr class="ui-widget-content ui-panelgrid-even"><td role="gridcell" class="ui-panelgrid-cell" colspan="2"><a id="java64" href="#" class="ui-commandlink ui-widget" onclick="PrimeFaces.addSubmitParam('loginCertificadoForm',{'java64':'java64'}).submit('loginCertificadoForm');return false;">Guia básica publicación anuncios</a><script id="java64_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandLink","widget_java64",{id:"java64"});});</script></td></tr></tbody></table><input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:4" value="-5493802650246972927:-1407545463853140560" autocomplete="off" />
+</form>
+<form id="form_firma" name="form_firma" method="post" action="/PortalBOP/login;jsessionid=BDE42EBFABB58C220B60ED7ECFC46B01" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="form_firma" value="form_firma" />
+<input id="form_firma:instanciaBase64" type="hidden" name="form_firma:instanciaBase64" /><input id="form_firma:instanciaBase64Firmado" type="hidden" name="form_firma:instanciaBase64Firmado" /><script id="form_firma:j_idt103" type="text/javascript">rcEnviarInstanciaFirmadaProceso = function() {return PrimeFaces.ab({s:"form_firma:j_idt103",f:"form_firma",p:"form_firma",u:"form_firma",pa:arguments[0]});}</script><input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:5" value="-5493802650246972927:-1407545463853140560" autocomplete="off" />
+</form>
+					</div>
+			</div></div></div><div id="cierrePie" class="ui-outputpanel ui-widget">
+			<div class="mascara">
+			</div>
+			<div class="logo"><img id="j_idt107" src="/PortalBOP/javax.faces.resource/img/logoNegativo.png.xhtml;jsessionid=BDE42EBFABB58C220B60ED7ECFC46B01?ln=1.2.21" alt="" ismap="false" />
+			</div></div>
+		
+		<div id="footer">
+			<div class="footerInferior">
+				<div class="redes">
+		<ul>
+			<li>
+				<a class="facebook" target="_blank" href="https://www.facebook.com/dipcas"></a>
+			</li>
+			<li>
+				<a class="twitter" target="_blank" href="https://twitter.com/#!/dipcas"></a>
+			</li>
+			<li>
+				<a class="youtube" target="_blank" href="https://www.youtube.com/user/prensadipcas"></a>
+			</li>
+			<li>
+				<a class="flickr" target="_blank" href="https://www.flickr.com/photos/diputacion/"></a>
+			</li>
+		</ul>
+				</div>
+				<div class="menuPie">
+			<ul>
+                 <li>
+                     <a href="http://www.dipcas.es/es/contacto.html">Contacto
+					</a>
+                 </li>
+                 <li>
+                     <a href="http://www.dipcas.es/es/aviso-legal.html">Aviso Legal                           
+					</a>
+                 </li>
+                 <li>
+                     <a href="http://www.dipcas.es/es/accesibilidad.html">Accesibilidad
+					</a>
+                 </li>
+                 <li>
+                     <a href="http://www.dipcas.es/es/buzon-de-sugerencias.html">Buzón de sugerencias                           
+					</a>
+                 </li>
+                 <li>
+                     <a href="http://www.dipcas.es/es/mapa-web.html">Mapa web
+					</a>
+                 </li>
+                 <li>
+                     <a href="https://intranet.dipcas.es/">Intranet  
+					</a>
+                 </li>
+			</ul>
+				</div>
+			</div>
+		</div><div id="j_idt126" class="ui-confirm-dialog ui-dialog ui-widget ui-widget-content ui-corner-all ui-shadow ui-hidden-container"><div class="ui-dialog-titlebar ui-widget-header ui-helper-clearfix ui-corner-top"><span id="j_idt126_title" class="ui-dialog-title"></span></div><div class="ui-dialog-content ui-widget-content" id="j_idt126_content"><span class="ui-icon ui-confirm-dialog-severity"></span><span class="ui-confirm-dialog-message"></span></div><div class="ui-dialog-buttonpane ui-dialog-footer ui-widget-content ui-helper-clearfix">
+			<div class="buttons">
+				<div class="buttonsContent"><button id="j_idt128" name="j_idt128" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only button left ui-confirmdialog-yes" onclick="PrimeFaces.ab({s:&quot;j_idt128&quot;});return false;" type="submit"><span class="ui-button-text ui-c">Aceptar</span></button><script id="j_idt128_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandButton","widget_j_idt128",{id:"j_idt128"});});</script><button id="j_idt129" name="j_idt129" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only button left ui-confirmdialog-no" onclick="PrimeFaces.ab({s:&quot;j_idt129&quot;});return false;" type="submit"><span class="ui-button-text ui-c">Cancelar</span></button><script id="j_idt129_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandButton","widget_j_idt129",{id:"j_idt129"});});</script>
+				</div>
+			</div></div></div><script id="j_idt126_s" type="text/javascript">$(function(){PrimeFaces.cw("ConfirmDialog","widget_j_idt126",{id:"j_idt126",global:true});});</script><div id="j_idt132"></div><script id="j_idt132_s" type="text/javascript">$(function(){PrimeFaces.cw("AjaxStatus","widget_j_idt132",{id:"j_idt132",delay:0,start:function(){mostarDialogoCargando()},error:function(){ajaxErrorHanler(event)},success:function(){ocultarDialogoCargando()}});});</script><div id="loadingDialog" class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-shadow ui-hidden-container"><div class="ui-dialog-content ui-widget-content" id="loadingDialog_content"><img id="j_idt133" src="/PortalBOP/javax.faces.resource/img/loading.gif.xhtml;jsessionid=BDE42EBFABB58C220B60ED7ECFC46B01?ln=framework-1.1.4" alt="" ismap="false" />
+		    
+		    <div>Cargando...
+		    </div></div></div><script id="loadingDialog_s" type="text/javascript">$(function(){PrimeFaces.cw("Dialog","loadingDialog",{id:"loadingDialog",draggable:false,resizable:false,modal:true});});</script></body>
+</html>
