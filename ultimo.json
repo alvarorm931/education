@@ -1,17 +1,15 @@
 {
- "fecha": "2026-10-30T11:26:59+00:00",
- "fecha_madrid": "30/10 12:26",
+ "fecha": "2026-10-30T11:53:34+00:00",
+ "fecha_madrid": "30/10 12:53",
  "ventana_horas": 6.0,
  "resumen": {
-  "ejecuciones_revisadas": 134,
+  "ejecuciones_revisadas": 124,
   "fallos": 1,
   "fallos_pendientes": 0,
   "relanzados": 0,
   "colas_largas": 2,
   "flujos_programados_parados": [],
-  "programaciones_lanzadas_a_mano": [
-   "masters-diario.yml"
-  ],
+  "programaciones_lanzadas_a_mano": [],
   "avisos_de_fuentes": 0,
   "almacen": "ok"
  },
@@ -84,14 +82,14 @@
   {
    "flujo": "Grados por tramos",
    "id": 41043133281,
-   "en_cola_min": 41,
+   "en_cola_min": 68,
    "trabajos_empezados": 0,
    "url": "https://github.com/alvarorm931/education/actions/runs/41043133281"
   },
   {
    "flujo": "Prueba de conector",
    "id": 41042887699,
-   "en_cola_min": 43,
+   "en_cola_min": 70,
    "trabajos_empezados": 0,
    "url": "https://github.com/alvarorm931/education/actions/runs/41042887699"
   }
@@ -102,7 +100,7 @@
    "parado": false
   },
   "autonomicos.yml": {
-   "ultimo_bien": "30/10 12:24",
+   "ultimo_bien": "30/10 12:32",
    "parado": false
   },
   "seo.yml": {
@@ -110,14 +108,8 @@
    "parado": false
   }
  },
- "respaldo_programaciones": [
-  {
-   "flujo": "masters-diario.yml",
-   "prevista": "30/10 02:17",
-   "lanzado": true
-  }
- ],
- "latido": "no hace falta: GitHub ya dispara las programaciones",
+ "respaldo_programaciones": [],
+ "latido": "cortado: relanzado",
  "boe": {
   "ultimo_diario": {
    "fecha": "2026-10-30",
