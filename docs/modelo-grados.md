@@ -148,7 +148,10 @@ falta, el resto sin tipo como obligatorio, o las asignaturas de un módulo de me
 optativas y el resto como obligatorio. Una lectura que comprueba el plan completo gana a la que solo cuadra en
 básicas y obligatorias. La ficha dice si la lectura fue directa o alternativa (448 de los 3.476 comprobados) y si
 además cuadra **tipo a tipo** (básicas, obligatorias, prácticas y TFG por separado, `cuadra_por_tipo`): 3.015 de
-los 3.476. Los cursos y semestres en números romanos («III-IV», «X») se leen como números. Si el plan del BOE no trae tabla que cuadre, se compara con los créditos por tipo de la ficha del RUCT
+los 3.476. Los cursos y semestres en números romanos («III-IV», «X») se leen como números, y en los planes con una
+tabla por curso cuyo curso solo dice el párrafo de encima («Primer curso», «Segundo curso»…) se toma de ese párrafo
+cuando la racha de párrafos y la de tablas casan exactamente (`cursos_por_encabezado`): 89 planes nuevos y 71
+modificaciones más con curso. Si el plan del BOE no trae tabla que cuadre, se compara con los créditos por tipo de la ficha del RUCT
 (otra fuente oficial). Nunca se completa un plan con datos inventados.
 
 **Dos revisiones independientes (30/10/2026).** Dos revisores que no habían visto el lector compararon fila a fila
@@ -169,17 +172,17 @@ los 3.476. Los cursos y semestres en números romanos («III-IV», «X») se lee
   cambiados); de ellos, los que cuadran también tipo a tipo, de 1.960 (medidos igual antes de corregir) a 3.015.
 - Queda abierto (solo afecta a optativas o al curso, no a la comprobación): tablas con dos semestres lado a lado
   de las que se lee solo el bloque izquierdo (visto en la UOC: con la regla nueva ese plan ya no cuenta como
-  comprobado), cursos que solo dice el texto encima de cada tabla («Primer curso»), optativas perdidas al descartar una tabla repetida y variantes de nombre («Idioma moderno II» e «Idioma
+  comprobado), optativas perdidas al descartar una tabla repetida y variantes de nombre («Idioma moderno II» e «Idioma
   moderno II: Inglés II»).
 
 Resultado con todo lo leído (30/10/2026, 08:00, hora de España):
 
 | | Leídos | Con asignaturas | Con curso | Comprobados | Y además tipo a tipo |
 |---|---|---|---|---|---|
-| Planes nuevos | 3.496 | 2.551 | 2.176 | 2.095 (60 %) | 1.800 |
-| Modificaciones | 2.231 | 1.599 | 990 | 1.314 (59 %) | 1.164 |
+| Planes nuevos | 3.496 | 2.551 | 2.265 | 2.095 (60 %) | 1.800 |
+| Modificaciones | 2.231 | 1.599 | 1.061 | 1.314 (59 %) | 1.164 |
 | Cambios de denominación | 20 | 16 | 15 | 12 | 11 |
-| Correcciones de errores | 391 | 139 | 96 | 55 | 40 |
+| Correcciones de errores | 391 | 139 | 102 | 55 | 40 |
 
 De los 1.401 planes nuevos que no cuadran: publicados solo por materias, sin asignaturas (418); tablas sin carácter
 que no se puede asignar de forma comprobable (339); diferencias de una o dos asignaturas, 12 créditos o menos
