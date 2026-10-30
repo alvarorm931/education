@@ -111,9 +111,26 @@ def url_lista(pagina: int) -> str:
 
 
 def boletines_lista(contenido: bytes) -> list[dict]:
+    """Boletines de una página de la lista, del más nuevo al más antiguo. Un año imposible en el título («BOP DE
+    29/12/8202», errata de la fuente) se corrige por el de los boletines vecinos, de modo que la fecha quede entre
+    ambos."""
+    from datetime import date as _date
     h = contenido.decode("utf-8", errors="replace")
-    return [{"numero": m.group("cod"), "id_nodo": m.group("id"), "url": WEB + m.group("nodo"),
-             "fecha": f"{m.group('a')}-{m.group('m')}-{m.group('d')}"} for m in RE_FILA.finditer(h)]
+    lista = [{"numero": m.group("cod"), "id_nodo": m.group("id"), "url": WEB + m.group("nodo"),
+              "fecha": f"{m.group('a')}-{m.group('m')}-{m.group('d')}"} for m in RE_FILA.finditer(h)]
+    tope = _date.today().year + 1
+    validos = [b["fecha"] if 2000 <= int(b["fecha"][:4]) <= tope else None for b in lista]
+    for k, b in enumerate(lista):
+        if validos[k]:
+            continue
+        nuevo = next((v for v in validos[:k][::-1] if v), None)   # el vecino más nuevo
+        viejo = next((v for v in validos[k + 1:] if v), None)     # el vecino más antiguo
+        for anio in {x[:4] for x in (viejo, nuevo) if x}:
+            candidata = f"{anio}{b['fecha'][4:]}"
+            if (viejo is None or candidata >= viejo) and (nuevo is None or candidata <= nuevo):
+                b["fecha"], b["fecha_corregida"] = candidata, True
+                break
+    return [b for k, b in enumerate(lista) if validos[k] or b.get("fecha_corregida")]
 
 
 def leer_nodo(contenido: bytes, fecha: str) -> list[dict]:

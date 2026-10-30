@@ -35,3 +35,12 @@ def test_lista_total():
     assert (b[0]["numero"], b[0]["fecha"], b[-1]["numero"], b[-1]["fecha"]) == (127, "2026-10-28", 108, "2026-09-16")
     assert b[0]["url"].startswith("https://www.diputaciondezamora.es/opencms/servicios/BOP/indice-bop/")
     assert z.url_lista(3).endswith("/opencms/servicios/BOP/bop-total/index.html?reloaded&sort=date_desc&page=3")
+
+
+def test_lugo_lista_con_errata_en_el_anio():
+    """La lista del BOP de Lugo titula un boletín «BOP DE 29/12/8202»: se corrige por los vecinos (2023)."""
+    from motor.provinciales import boplugo as lu
+    fila = lambda cod, nodo, f: (f'<td class="views-field views-field-field-ail-codigo"> {cod} </td>'  # noqa: E731
+                                 f'<td><a href="/gl/node/{nodo}">BOP DE {f}</a>')
+    h = "".join([fila("1", "10", "02/01/2024"), fila("297", "9", "29/12/8202"), fila("296", "8", "28/12/2023")])
+    assert [b["fecha"] for b in lu.boletines_lista(h.encode())] == ["2024-01-02", "2023-12-29", "2023-12-28"]
