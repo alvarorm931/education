@@ -30,7 +30,7 @@ import json
 import random
 import re
 import time
-from collections import Counter
+from collections import Counter, defaultdict
 from pathlib import Path
 
 from motor.estudios.boe_masters import RE_UNIV
@@ -117,6 +117,8 @@ COL = {
 TOTAL = re.compile(r"^(total|suma)", re.I)
 # llamada de nota pegada al nombre: «Proyectos de Luminotecnia (1)», «Prácticas Académicas Externas (*)»
 RE_LLAMADA = re.compile(r"\s*(?:\(\s*(?:\d{1,2}|\*+|[a-z])\s*\)|\*+)$")
+# rótulo de un grupo de asignaturas leído en la columna del nombre
+RE_ROTULO_GRUPO = re.compile(r"\ba elegir\b|:\s*$", re.I)
 # varios cursos o semestres en una celda: «1 y 2», «1.º y 2.º», «7 u 8», «2.º, 3.º y 4.º»
 RE_VARIOS = re.compile(r"\d\s*\.?\s*[ºª°o]?\s*(?:y|u|o|,|-|–|/)\s*\d", re.I)
 TIPOS_CREDITO = [
@@ -604,6 +606,9 @@ def plan(tablas: list[dict], dist: dict | None = None, codigos: dict[str, str] |
             if any(TOTAL.match((c or "").strip()) for c in f):
                 continue  # fila de total cuyo nombre heredó la celda combinada de la fila de arriba
             creditos = _num(f[cols["creditos"]]) if "creditos" in cols else None
+            if RE_ROTULO_GRUPO.search(nombre) and creditos is None:
+                continue  # «Optativas 1 y 2 (3.er curso), a elegir entre:» sin créditos: rótulo de un grupo
+                # (con créditos se queda: «Elegir 2 asignaturas transversales de entre: 12» cuenta en el plan)
             if creditos and dist and dist.get("total") and creditos >= 0.5 * dist["total"]:
                 continue  # ninguna asignatura vale la mitad del grado: es un total o un rótulo
             curso = numero_orden(f[cols["curso"]]) if "curso" in cols else None
@@ -677,6 +682,18 @@ def plan(tablas: list[dict], dist: dict | None = None, codigos: dict[str, str] |
             k = (clave_union(x["nombre"]) or x["nombre"].lower(), x["nivel"])  # «Trabajo de Fin de Grado» = «Trabajo Fin de Grado»
             if vistos.setdefault(k, n) == n:
                 resultado.append(x)
+    # curso y semestre que da otra tabla del plan (la de distribución temporal, cuando la elegida es la de módulos):
+    # solo si en todo el plan esa asignatura tiene un único curso y semestre
+    tiempos: dict[str, set] = defaultdict(set)
+    for *_, salida in por_tabla:
+        for x in salida:
+            if x["curso"]:
+                tiempos[clave_union(x["nombre"]) or x["nombre"].lower()].add((x["curso"], x["semestre"]))
+    for x in resultado:
+        t = tiempos.get(clave_union(x["nombre"]) or x["nombre"].lower())
+        if not x["curso"] and t and len(t) == 1:
+            x["curso"], x["semestre"] = next(iter(t))
+            x["curso_de_otra_tabla"] = True
     # filas aún sin tipo: el TFG, las prácticas y las optativas por su nombre; las básicas por la tabla de ámbitos;
     # y el resto, obligatorias solo si su suma es exactamente la de obligatorias de la tabla de créditos
     basicas = _basicas_por_ambito(tablas)

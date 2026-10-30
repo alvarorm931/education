@@ -317,3 +317,14 @@ def test_revision_independiente_tfg_totales_semestres_y_llamadas():
     # una fila con la mitad de los créditos del grado no es una asignatura
     t2 = _t([["Asignatura", "Créditos", "Carácter"], ["A.", "6", "Básica"], ["–", "20", "Obligatoria"]])
     assert [x["nombre"] for x in plan([t2], {"total": 30.0, "formacion_basica": 6.0})] == ["A"]
+
+
+def test_curso_de_la_tabla_de_distribucion_temporal():
+    from motor.grados.boe_grados import plan
+    modulos = _t([["Módulo", "Asignatura", "Créditos", "Carácter"], ["Física", "Mecánica.", "6", "Básica"],
+                  ["Física", "Ondas.", "6", "Básica"], ["Química", "Química general.", "6", "Básica"]])
+    tiempo = _t([["Asignatura", "Carácter", "Curso", "Cuatrimestre"], ["Mecánica.", "Básica", "1", "1"],
+                 ["Ondas.", "Básica", "1", "2"]])
+    filas = {x["nombre"]: x for x in plan([modulos, tiempo])}
+    assert (filas["Ondas"]["curso"], filas["Ondas"]["semestre"]) == (1, 2) and filas["Ondas"]["tipo"] == "basica"
+    assert filas["Química general"]["curso"] is None
