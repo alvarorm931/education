@@ -161,7 +161,60 @@ def _columnas(cabecera: list[str]) -> dict[str, int]:
         if "modulo" not in cols and "nombre" in cols:
             cols["modulo"] = cols["nombre"]
         cols["nombre"] = asig[0]
+    # Con dos columnas de créditos («Materia | ECTS | Asignatura | ECTS») la buena es la primera a la derecha
+    # del nombre; la otra es el total de la materia o del módulo.
+    if "nombre" in cols:
+        creditos = [i for i, c in enumerate(cabecera) if COL["creditos"].search(c or "")]
+        derecha = [i for i in creditos if i > cols["nombre"]]
+        if derecha:
+            cols["creditos"] = derecha[0]
     return cols
+
+
+RESUMEN = re.compile(r"^\s*(tipo|car[áa]cter) de (asignatura|materia|m[óo]dulo|cr[ée]dito|formaci)|^\s*tipo\s*$|"
+                     r"^\s*distribuci[óo]n", re.I)
+CODIGOS_CARACTER = {
+    "basica": {"fb", "b", "bs", "ba", "fba", "bas", "fbr"},
+    "obligatoria": {"ob", "o", "obl", "obg", "obli"},
+    "optativa": {"op", "opt", "ot", "optat"},
+    "practicas": {"pe", "pae", "prt", "pr", "pex", "pext"},
+    "tfg": {"tfg", "tfm", "tfg/tfm", "tf"},
+}
+PALABRAS_CARACTER = [  # por el comienzo del texto, una vez quitado «Materias», «Formación», «Créditos»
+    ("basica", re.compile(r"^b[áa]sic")),
+    ("tfg", re.compile(r"^trabajo")),
+    ("practicas", re.compile(r"^pr[áa]cticas")),
+    ("obligatoria", re.compile(r"^obligatori")),
+    ("optativa", re.compile(r"^optativ|^optatividad")),
+]
+
+
+def tipo_caracter(c: str | None) -> str | None:
+    """«FB. Ciencias Sociales y Jurídicas.», «Básica», «OB», «PAE», «Prácticas externas (obligatorias)» →
+    basica, obligatoria, optativa, practicas o tfg."""
+    s = sin_acentos_min(c)
+    codigo = re.split(r"[\s.(,;:-]+", s.strip())[0] if s.strip() else ""
+    for clave, codigos in CODIGOS_CARACTER.items():
+        if codigo in codigos:
+            return clave
+    s = re.sub(r"^(materias?|formacion|creditos|asignaturas?|de)\s+", "", s.strip())
+    s = re.sub(r"^(materias?|formacion|creditos|asignaturas?|de)\s+", "", s)
+    for clave, patron in PALABRAS_CARACTER:
+        if patron.search(s):
+            return clave
+    return None
+
+
+def sin_acentos_min(s: str | None) -> str:
+    import unicodedata
+
+    s = unicodedata.normalize("NFKD", (s or "").lower())
+    return "".join(ch for ch in s if not unicodedata.combining(ch))
+
+
+RE_TOTAL_DIST = re.compile(r"^(?:creditos\s+)?totale?s?\.?$|^total(?:\s+de)?(?:\s+creditos)?(?:\s+ects)?\.?$")
+CLAVE_DIST = {"basica": "formacion_basica", "obligatoria": "obligatorias", "optativa": "optativas",
+              "practicas": "practicas_externas", "tfg": "tfg"}
 
 
 def distribucion_creditos(tablas: list[dict]) -> dict | None:
@@ -174,32 +227,45 @@ def distribucion_creditos(tablas: list[dict]) -> dict | None:
         for f in filas:
             if len(f) < 2:
                 continue
-            etiqueta, valor = f[0], _num(f[-1])
-            for clave, patron in TIPOS_CREDITO:
-                if clave not in res and patron.search(etiqueta.strip()) and valor is not None:
-                    res[clave] = valor
-                    break
+            etiqueta, valor = sin_acentos_min(f[0]).strip(" ."), _num(f[-1])
+            if valor is None:
+                continue
+            if RE_TOTAL_DIST.match(etiqueta):
+                res.setdefault("total", valor)
+                continue
+            tipo = tipo_caracter(f[0])
+            if tipo and CLAVE_DIST[tipo] not in res:
+                res[CLAVE_DIST[tipo]] = valor
         if len(res) >= 3 and ("obligatorias" in res or "formacion_basica" in res):
+            if "total" not in res:
+                res["total_calculado"] = sum(v for k, v in res.items())
             return res
     return None
 
 
 def plan(tablas: list[dict]) -> list[dict]:
-    """Filas de asignatura o materia de las tablas de un plan, con curso y semestre cuando vienen."""
-    salida = []
+    """Filas de asignatura o materia del plan, con carácter, créditos, curso y semestre cuando vienen.
+
+    Un plan suele repetir asignaturas en varias tablas (la de formación básica por rama y la del plan completo):
+    se leen todas y se queda, para cada nombre, la fila de la tabla más completa.
+    """
+    por_tabla = []
     for n, t in enumerate(tablas):
         filas = t.get("contenido") or []
         if t.get("datos_personales") or len(filas) < 2:
             continue
         cab = filas[0]
+        if RESUMEN.search(cab[0] or "") and len(cab) <= 3:
+            continue  # tabla de créditos por tipo: se lee aparte (distribucion_creditos)
         cols = _columnas(cab)
         if "nombre" not in cols and "modulo" in cols:
             cols["nombre"], cols["nivel"] = cols.pop("modulo"), "modulo"
         if "nombre" not in cols or "creditos" not in cols:
             continue
+        salida = []
         curso_actual = None
         for f in rellenar(filas[1:], len(cab)):
-            nombre = (f[cols["nombre"]] or "").strip().rstrip(".")
+            nombre = (f[cols["nombre"]] or "").strip().rstrip(" .")
             # filas separadoras «Primer curso», «Curso 2.º» dentro de la tabla
             if nombre and len([x for x in f if x.strip()]) == 1 and re.search(r"\bcurso\b", nombre, re.I):
                 curso_actual = numero_orden(nombre)
@@ -214,10 +280,12 @@ def plan(tablas: list[dict]) -> list[dict]:
                 semestre = int(partes[1]) if len(partes) > 1 else semestre
             nivel = "modulo" if cols.get("nivel") == "modulo" else (
                 "asignatura" if re.search("asignatura", cab[cols["nombre"]], re.I) else "materia")
+            caracter = f[cols["caracter"]].strip().rstrip(" .") if "caracter" in cols else None
             salida.append({
                 "nombre": nombre,
-                "modulo": f[cols["modulo"]].strip().rstrip(".") if "modulo" in cols and isinstance(cols["modulo"], int) else None,
-                "caracter": f[cols["caracter"]].strip().rstrip(".") if "caracter" in cols else None,
+                "modulo": f[cols["modulo"]].strip().rstrip(" .") if "modulo" in cols and isinstance(cols["modulo"], int) else None,
+                "caracter": caracter,
+                "tipo": tipo_caracter(caracter),
                 "creditos": _num(f[cols["creditos"]]),
                 "curso": curso or curso_actual,
                 "semestre": semestre,
@@ -226,7 +294,17 @@ def plan(tablas: list[dict]) -> list[dict]:
                 "tabla": n,
                 "fila_literal": f,
             })
-    return salida
+        if salida:
+            riqueza = sum(bool(x["caracter"]) + bool(x["curso"]) + bool(x["semestre"]) for x in salida) / len(salida)
+            por_tabla.append((riqueza, len(salida), n, salida))
+    vistos, resultado = set(), []
+    for _, _, _, salida in sorted(por_tabla, key=lambda x: (-x[0], -x[1], x[2])):
+        for x in salida:
+            k = (" ".join(re.sub(r"[^\w]+", " ", x["nombre"].lower()).split()), x["nivel"])
+            if k not in vistos:
+                vistos.add(k)
+                resultado.append(x)
+    return resultado
 
 
 def menciones(texto: str) -> list[str]:
@@ -245,6 +323,12 @@ def medir_plan(doc: dict) -> dict:
     base = asig or filas
     dist = distribucion_creditos(doc.get("tablas", []))
     suma = sum(f["creditos"] or 0 for f in base)
+    fijos = sum(f["creditos"] or 0 for f in base if f["tipo"] in ("basica", "obligatoria", "practicas", "tfg"))
+    esperado = sum(dist.get(k, 0) for k in ("formacion_basica", "obligatorias", "practicas_externas", "tfg")) \
+        if dist else None
+    # Básicas + obligatorias: lo que más importa del listado de asignaturas (prácticas y TFG a veces no van en tabla)
+    bo = sum(f["creditos"] or 0 for f in base if f["tipo"] in ("basica", "obligatoria"))
+    bo_esperado = (dist.get("formacion_basica", 0) + dist.get("obligatorias", 0)) if dist else None
     return {
         "filas": len(filas),
         "asignaturas": len(asig),
@@ -253,6 +337,11 @@ def medir_plan(doc: dict) -> dict:
         "con_curso": sum(1 for f in base if f["curso"]),
         "con_semestre": sum(1 for f in base if f["semestre"]),
         "suma_creditos": round(suma, 1),
+        "suma_sin_optativas": round(fijos, 1),
+        "esperado_sin_optativas": esperado,
+        "basicas_obligatorias": round(bo, 1),
+        "basicas_obligatorias_esperado": bo_esperado,
+        "con_tipo": sum(1 for f in base if f["tipo"]),
         "distribucion": dist,
         "menciones": menciones(doc.get("texto", "")),
         "tablas": len(doc.get("tablas", [])),
@@ -364,8 +453,11 @@ def cmd_medir(textos: Path, actos_fichero: Path | None, salida: Path) -> dict:
             "con_semestre": cuenta(ps, lambda p: p["con_semestre"]),
             "con_distribucion_creditos": cuenta(ps, lambda p: p["distribucion"]),
             "con_menciones": cuenta(ps, lambda p: p["menciones"]),
-            "suma_cuadra_con_total": cuenta(ps, lambda p: p["distribucion"] and p["distribucion"].get("total")
-                                           and abs(p["suma_creditos"] - p["distribucion"]["total"]) <= 6),
+            "con_tipo_en_casi_todas": cuenta(ps, lambda p: p["filas"] and p["con_tipo"] >= 0.9 * (p["asignaturas"] or p["filas"])),
+            "cuadran_creditos_sin_optativas": cuenta(ps, lambda p: p["esperado_sin_optativas"]
+                                                    and abs(p["suma_sin_optativas"] - p["esperado_sin_optativas"]) <= 0.5),
+            "cuadran_basicas_y_obligatorias": cuenta(ps, lambda p: p["basicas_obligatorias_esperado"]
+                                                    and abs(p["basicas_obligatorias"] - p["basicas_obligatorias_esperado"]) <= 0.5),
         }
     res["altas"] = len(altas_todas)
     res["altas_codigos_distintos"] = len({a["codigo_ruct"] for a in altas_todas})
