@@ -6,8 +6,8 @@ Con la portada de cada sitio (título, descripción, encabezados, textos de men�
 títulos de las fichas que encontró el rastreador, Claude Haiku clasifica el sitio en lote. El nombre del centro
 solo se acepta si su cita literal está en la portada (misma regla que la extracción).
 
-Para el censo solo cuentan los «centro» con ámbito España o internacional: los agregadores se guardan aparte,
-porque sus datos no son de primera mano y sirven para descubrir centros, no para publicar.
+Para el censo solo cuentan los «centro» con ámbito España o internacional: los agregadores se guardan aparte
+y no se usan como fuente (sus datos no son de primera mano y su base de datos está protegida).
 
 Privacidad y derechos: la portada se pide con el lector cortés (robots.txt, reserva TDM); su original y lo
 enviado a la API van solo al almacén privado; lo público lleva la clasificación, el motivo en palabras de la IA
@@ -280,7 +280,7 @@ def lote(entrada_: Path, salida: Path, esperar_min: float = 40, max_minutos: flo
 
 def aplicar(censo: Path, clasificaciones: list[Path], salida: Path) -> dict:
     """Censo con la clasificación: los verificados que no son centro (o no son de España) pasan a «descartado»
-    con su motivo; los agregadores se listan aparte, como fuente para descubrir centros (no para publicar).
+    con su motivo; los agregadores se listan aparte y no se usan como fuente.
     Si un proveedor se clasificó varias veces, vale la última clasificación legible."""
     ultima: dict[str, dict] = {}
     for f in clasificaciones:  # de más antigua a más reciente

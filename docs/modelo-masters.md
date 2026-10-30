@@ -327,8 +327,7 @@ sobrescribe. Una página igual a una ya guardada no se vuelve a escribir.
 
 Los 1.503 verificados (precisión a mano del 67 %) se clasificaron con su portada y los títulos de sus
 fichas, con salida estructurada (`output_config.format`, esquema JSON): **983 centros reales** (953 de
-España y 30 internacionales con oferta en España), 187 agregadores (se guardan aparte, para descubrir centros,
-no para publicar), 109 medios o blogs, 106 de otro sector, 93 centros sin másters propios y 25 de otro
+España y 30 internacionales con oferta en España), 187 agregadores (se guardan aparte y no se usan como fuente), 109 medios o blogs, 106 de otro sector, 93 centros sin másters propios y 25 de otro
 país. Coincide con la estimación a mano (unos 1.000). Tipos: 354 escuelas de formación, 136 fundaciones o
 asociaciones, 111 empresas, 96 academias, 92 escuelas de negocio, 49 universidades, 31 centros adscritos, 27
 colegios profesionales. Coste: 0,20 $.
@@ -443,8 +442,9 @@ Ordenados por lo que más acerca a tener, para cada máster, lo que hoy se da so
    permiso); UB, UPM, UPV, UC3M, UAM, Murcia, A Coruña, UPF y otras grandes tienen catálogos con URL opacas o
    que se pintan con JavaScript: la tercera vuelta las lee y las asigna por el nombre; lo que quede, conector
    por universidad o el lector con navegador del servidor de España.
-5. **Descubrimiento**: los 187 agregadores sirven para encontrar centros que el índice no ve (solo el nombre y
-   la web del centro, nunca sus fichas); ESH, Saera y ThePowerMBA necesitan lector con JavaScript.
+5. **Descubrimiento**: los 187 agregadores podrían señalar centros que el índice no ve, pero su base de datos
+   tiene protección propia (derecho «sui generis»): antes de leer ni sus listados hay que valorarlo; ESH, Saera y
+   ThePowerMBA necesitan lector con JavaScript.
 6. **Peticiones** (`peticiones.py --fichas`): 825 centros con másters sin precio publicado; primero tarifas en
    PDF y memorias, después la petición cuando el portal tenga dirección pública.
 7. Másters oficiales que venden centros no universitarios con web propia (642 fichas «máster universitario
