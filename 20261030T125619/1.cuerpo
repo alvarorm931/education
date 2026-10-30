@@ -1,0 +1,28 @@
+#
+# robots.txt del PAG v1.3 (18/01/2021)
+#
+# NOTAS GENERALES A TENER EN CUENTA:
+# User agent es case insensitive. Ademas en caso de no encontrar un matcheo total o parcial usa *
+# Las reglas allow/disallow son case insensitive
+# Como buena practica, por defecto se quitara de la indexacion los buscadores internos
+
+# Permitimos todos los bots. Se exceptua la URI /buscador
+User-agent: *
+User-agent: AdsBot-Google
+User-agent: AdsBot-Mobile
+Disallow: /buscador
+Disallow: /content/pag-home/
+Disallow: *.pdf$
+# Un minuto entre peticiones
+Crawl-delay: 60
+# Acceso de 1 am a 6:45 am (hora GMT)
+Visit-time: 0100-0645
+#Visit-time: 0100-2100
+# Un documento al minuto
+Request-rate: 1/1m
+Sitemap: https://administracion.gob.es/sitemap.xml
+Sitemap: https://administracion.gob.es/ca/sitemap.xml
+Sitemap: https://administracion.gob.es//va/sitemap.xml
+Sitemap: https://administracion.gob.es//eu/sitemap.xml
+Sitemap: https://administracion.gob.es//gl/sitemap.xml
+Sitemap: https://administracion.gob.es//en/sitemap.xml
