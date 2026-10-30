@@ -38,6 +38,7 @@ def test_tipo_caracter():
     assert bg.tipo_caracter("PAE") == "practicas"
     assert bg.tipo_caracter("Prácticas externas (obligatorias).") == "practicas"
     assert bg.tipo_caracter("Trabajo de Fin de Grado.") == "tfg"
+    assert bg.tipo_caracter("Asignaturas de Formación Básica.") == "basica"
     assert bg.tipo_caracter("6") is None
 
 
@@ -82,3 +83,23 @@ def test_numero_orden():
 def test_menciones():
     assert bg.menciones("Mención en Educación Física. Mención en Lengua Extranjera: Inglés; otra") == \
         ["Educación Física", "Lengua Extranjera"]
+
+
+def test_semestres_lado_a_lado_y_cabecera_en_segunda_fila():
+    t = {"contenido": [["Primer semestre", "Segundo semestre"],
+                       ["Asignatura", "Ects", "Carácter", "Asignatura", "Ects", "Carácter"],
+                       ["Fundamentos de Física I.", "6", "Básica.", "Fundamentos de Física II.", "6", "Básica."],
+                       ["Cálculo I.", "6", "Básica.", "Óptica.", "6", "Obligatoria."]]}
+    filas = bg.plan([t])
+    assert [(f["nombre"], f["semestre"], f["tipo"]) for f in filas] == [
+        ("Fundamentos de Física I", 1, "basica"), ("Cálculo I", 1, "basica"),
+        ("Fundamentos de Física II", 2, "basica"), ("Óptica", 2, "obligatoria")]
+
+
+def test_columnas_de_creditos_y_caracter_cambiadas():
+    t = {"contenido": [["Materia", "Asignatura", "Carácter", "ECTS", "Curso"],
+                       ["Marketing.", "Fundamentos de Marketing.", "6", "OB", "1.º"],
+                       ["Política de Producto.", "6", "OB", "2.º"]]}
+    filas = bg.plan([t])
+    assert [(f["nombre"], f["creditos"], f["tipo"], f["curso"]) for f in filas] == [
+        ("Fundamentos de Marketing", 6, "obligatoria", 1), ("Política de Producto", 6, "obligatoria", 2)]

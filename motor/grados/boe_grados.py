@@ -197,8 +197,12 @@ def tipo_caracter(c: str | None) -> str | None:
     for clave, codigos in CODIGOS_CARACTER.items():
         if codigo in codigos:
             return clave
-    s = re.sub(r"^(materias?|formacion|creditos|asignaturas?|de)\s+", "", s.strip())
-    s = re.sub(r"^(materias?|formacion|creditos|asignaturas?|de)\s+", "", s)
+    s = s.strip()
+    while True:  # «Asignaturas de Formación Básica», «Créditos de materias obligatorias»…
+        nuevo = re.sub(r"^(materias?|formacion|creditos|asignaturas?|de|las|los|ects)\s+", "", s)
+        if nuevo == s:
+            break
+        s = nuevo
     for clave, patron in PALABRAS_CARACTER:
         if patron.search(s):
             return clave
@@ -243,6 +247,57 @@ def distribucion_creditos(tablas: list[dict]) -> dict | None:
     return None
 
 
+def _es_cabecera(fila: list[str]) -> bool:
+    return any(COL["nombre"].search(c or "") and not COL["creditos"].search(c or "") for c in fila) and \
+        any(COL["creditos"].search(c or "") for c in fila)
+
+
+def normalizar_tablas(tablas: list[dict]) -> list[dict]:
+    """Prepara tablas con formas habituales en los planes del BOE:
+      - la cabecera real en la segunda o tercera fila (encima, «Primer semestre | Segundo semestre»);
+      - dos o más bloques iguales lado a lado («Asignatura | ECTS | Carácter | Asignatura | ECTS | Carácter»), que se
+        separan en tablas, cada una con el periodo de su rótulo como columna «Semestre».
+    Las demás tablas pasan igual."""
+    salida = []
+    for t in tablas:
+        filas = t.get("contenido") or []
+        if t.get("datos_personales") or len(filas) < 2:
+            salida.append(t)
+            continue
+        i = next((k for k in range(min(3, len(filas))) if _es_cabecera(filas[k])), None)
+        if i is None:
+            salida.append(t)
+            continue
+        cab, rotulos = filas[i], (filas[i - 1] if i > 0 else [])
+        inicios = [k for k, c in enumerate(cab) if COL["nombre"].search(c or "") and not COL["creditos"].search(c or "")
+                   and not COL["modulo"].search(c or "")]
+        ancho = len(cab) // len(inicios) if inicios else 0
+        bloques = {tuple(" ".join((c or "").lower().split()) for c in cab[k:k + ancho]) for k in inicios} if ancho else set()
+        if len(inicios) < 2 or len(cab) % len(inicios) or len(bloques) != 1:  # bloques repetidos de verdad
+            salida.append({**t, "contenido": filas[i:]})
+            continue
+        for b, ini in enumerate(inicios):
+            rotulo = rotulos[b] if b < len(rotulos) else ""
+            sub = [cab[ini:ini + ancho] + (["Semestre"] if rotulo else [])]
+            for f in filas[i + 1:]:
+                trozo = f[ini:ini + ancho] if len(f) == len(cab) else []
+                if trozo and any(x.strip() for x in trozo):
+                    sub.append(trozo + ([rotulo] if rotulo else []))
+            salida.append({**t, "contenido": sub})
+    return salida
+
+
+def _corregir_columnas(cols: dict[str, int], filas: list[list[str]]) -> dict[str, int]:
+    """Si la columna de créditos trae textos y la de carácter números, la cabecera está cambiada de orden."""
+    if "creditos" in cols and "caracter" in cols:
+        cuerpo = [f for f in filas[1:] if len(f) > max(cols["creditos"], cols["caracter"])]
+        num = lambda v: bool(re.fullmatch(r"\s*\d+(?:[.,]\d+)?\s*", v or ""))  # noqa: E731
+        if cuerpo and sum(num(f[cols["caracter"]]) for f in cuerpo) > len(cuerpo) / 2 \
+                and sum(num(f[cols["creditos"]]) for f in cuerpo) < len(cuerpo) / 4:
+            cols["creditos"], cols["caracter"] = cols["caracter"], cols["creditos"]
+    return cols
+
+
 def plan(tablas: list[dict]) -> list[dict]:
     """Filas de asignatura o materia del plan, con carácter, créditos, curso y semestre cuando vienen.
 
@@ -250,21 +305,22 @@ def plan(tablas: list[dict]) -> list[dict]:
     se leen todas y se queda, para cada nombre, la fila de la tabla más completa.
     """
     por_tabla = []
-    for n, t in enumerate(tablas):
+    for n, t in enumerate(normalizar_tablas(tablas)):
         filas = t.get("contenido") or []
         if t.get("datos_personales") or len(filas) < 2:
             continue
         cab = filas[0]
         if RESUMEN.search(cab[0] or "") and len(cab) <= 3:
             continue  # tabla de créditos por tipo: se lee aparte (distribucion_creditos)
-        cols = _columnas(cab)
+        cuerpo = rellenar(filas[1:], len(cab))
+        cols = _corregir_columnas(_columnas(cab), [cab] + cuerpo)
         if "nombre" not in cols and "modulo" in cols:
             cols["nombre"], cols["nivel"] = cols.pop("modulo"), "modulo"
         if "nombre" not in cols or "creditos" not in cols:
             continue
         salida = []
         curso_actual = None
-        for f in rellenar(filas[1:], len(cab)):
+        for f in cuerpo:
             nombre = (f[cols["nombre"]] or "").strip().rstrip(" .")
             # filas separadoras «Primer curso», «Curso 2.º» dentro de la tabla
             if nombre and len([x for x in f if x.strip()]) == 1 and re.search(r"\bcurso\b", nombre, re.I):
@@ -345,6 +401,9 @@ def medir_plan(doc: dict) -> dict:
         "distribucion": dist,
         "menciones": menciones(doc.get("texto", "")),
         "tablas": len(doc.get("tablas", [])),
+        "tablas_del_plan_retenidas_por_privacidad": sum(
+            1 for t in doc.get("tablas", []) if t.get("datos_personales")
+            and re.search(r"asignatura|materia|cr[ée]ditos|ects", " ".join(t.get("cabecera") or []), re.I)),
     }
 
 
