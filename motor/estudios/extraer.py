@@ -33,7 +33,7 @@ import sys
 import threading
 import time
 import unicodedata
-from collections import Counter
+from collections import Counter, defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -857,13 +857,87 @@ def lista_segunda_vuelta(paginas_oficiales: Path, fichas: Path, capturadas: list
     return {**cuentas, "urls": len(filas)}
 
 
+def lista_tercera_vuelta(censo: Path, rastreos: list[Path], cc_urls: Path | None, catalogo: Path, fichas: Path,
+                         capturadas: list[Path], salida: Path, umbral: float = 0.7, max_por_web: int = 150,
+                         tramos: int = 3) -> dict:
+    """Universidades con pocos másters oficiales con ficha (menos del `umbral`): casi siempre webs con URL opacas
+    (códigos en vez de nombres) donde la unión por URL no puede acertar. Se mandan a extraer sus páginas de
+    programa aún no leídas, y la ficha se asigna después por el nombre extraído (fichas_masters.rescatar_oficiales)."""
+    import ast
+    from urllib.parse import urlparse
+
+    from motor.estudios.emparejar import raiz_programa, sin_idioma
+
+    texto = catalogo.read_text(encoding="utf-8").strip()
+    cat = json.loads(texto) if texto.startswith("[") else [json.loads(l) for l in texto.splitlines() if l.strip()]
+    activos = [t for t in cat if t.get("situacion", "Activo") == "Activo"]
+    con_ficha = set()
+    for l in fichas.read_text(encoding="utf-8").splitlines():
+        if l.strip():
+            f = json.loads(l)
+            if f["grupo"] == "oficial" and f.get("comprobacion_nombre") in ("confirmado", "probable_oficial", "confirmado_por_nombre"):
+                con_ficha.add(f["codigo_ruct"])
+    tot, ok = Counter(), Counter()
+    for t in activos:
+        tot[t["universidad_codigo"]] += 1
+        ok[t["universidad_codigo"]] += t["codigo_ruct"] in con_ficha
+    flojas = {u for u in tot if ok[u] < umbral * tot[u]}
+    hechas = {json.loads(l)["url"] for c in capturadas for l in c.read_text(encoding="utf-8").splitlines() if l.strip()}
+    provs = {}
+    for l in censo.read_text(encoding="utf-8").splitlines():
+        if l.strip():
+            x = json.loads(l)
+            if x["estado"] == "oficial" and any(r.get("universidad") in flojas for r in x.get("ruct", [])):
+                provs[x["id"]] = x
+    urls_de: dict[str, set] = defaultdict(set)
+    for c in rastreos:
+        for f in sorted(c.rglob("oferta_web/*.json")):
+            r = json.loads(f.read_text(encoding="utf-8"))
+            cen = r.get("centro") or {}
+            if isinstance(cen, str):
+                cen = ast.literal_eval(cen)
+            if cen.get("id") in provs:
+                ps = r.get("programas") or []
+                urls_de[cen["id"]].update(ast.literal_eval(ps) if isinstance(ps, str) else ps)
+    if cc_urls:
+        dom_a_prov = {d: i for i, x in provs.items() for d in x.get("dominios", [x["dominio"]])}
+        for f in cc_urls.rglob("urls_*.jsonl"):
+            for l in f.read_text(encoding="utf-8").splitlines():
+                d = json.loads(l)
+                if d["dominio"] in dom_a_prov:
+                    urls_de[dom_a_prov[d["dominio"]]].update(d["urls"])
+    por_host: dict[str, list[dict]] = defaultdict(list)
+    cuentas = Counter({"universidades_flojas": len(flojas), "webs": len(provs)})
+    for i, urls in urls_de.items():
+        elegidas: dict[str, str] = {}
+        for u in sorted((_sin_seguimiento(html_lib.unescape(x)) for x in urls), key=_orden_ficha):
+            if u in hechas or not RE_MASTER.search(u) or _no_es_ficha_por_url(u):
+                continue
+            elegidas.setdefault(sin_idioma(raiz_programa(u)), u)
+        for u in list(elegidas.values())[:max_por_web]:
+            por_host[urlparse(u).netloc].append({"url": u, "grupo": "oficial_por_nombre", "proveedor": i,
+                                                 "pagina": "principal"})
+    cargas, destino = [0] * tramos, [[] for _ in range(tramos)]
+    for h in sorted(por_host, key=lambda h: -len(por_host[h])):
+        k = cargas.index(min(cargas))
+        destino[k] += por_host[h]
+        cargas[k] += len(por_host[h])
+    salida.mkdir(parents=True, exist_ok=True)
+    for k, filas in enumerate(destino):
+        (salida / f"oficiales_tercera_{k}.jsonl").write_text(
+            "".join(json.dumps(f, ensure_ascii=False) + "\n" for f in filas), encoding="utf-8")
+    return {**cuentas, "paginas": sum(cargas), "por_tramo": cargas, "servidores": len(por_host)}
+
+
 def main() -> None:
     p = argparse.ArgumentParser()
     p.add_argument("orden", choices=["lote", "retomar", "lista-oficiales", "lista-no-oficiales", "lista-propios-oficiales",
-                                     "lista-segunda-vuelta",
+                                     "lista-segunda-vuelta", "lista-tercera-vuelta",
                                      "preparar", "enviar", "recoger"])
     p.add_argument("--censo")
     p.add_argument("--fichas")
+    p.add_argument("--catalogo")
+    p.add_argument("--commoncrawl")
     p.add_argument("--capturadas", action="append", default=[])
     p.add_argument("--clasificacion")
     p.add_argument("--rastreo", action="append", default=[])
@@ -897,6 +971,10 @@ def main() -> None:
     elif a.orden == "lista-no-oficiales":
         res = lista_no_oficiales(Path(a.clasificacion), [Path(x) for x in a.rastreo], Path(a.salida), a.por_proveedor,
                                  a.tramos, a.desde_por_proveedor)
+    elif a.orden == "lista-tercera-vuelta":
+        res = lista_tercera_vuelta(Path(a.censo), [Path(x) for x in a.rastreo], Path(a.commoncrawl) if a.commoncrawl else None,
+                                   Path(a.catalogo), Path(a.fichas), [Path(x) for x in a.capturadas], Path(a.salida),
+                                   tramos=a.tramos)
     elif a.orden == "lista-segunda-vuelta":
         res = lista_segunda_vuelta(Path(a.paginas_oficiales), Path(a.fichas), [Path(x) for x in a.capturadas],
                                    Path(a.salida))
