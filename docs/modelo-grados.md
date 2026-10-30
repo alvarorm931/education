@@ -320,9 +320,11 @@ textos largos quedan solo en el almacén privado; en `sondas` va su tamaño y su
   de cada grado. Con datos estructurados y texto en desacuerdo, no se publica precio. Total del grado estimado:
   precio por curso × créditos / 60, al precio de hoy.
 
-  Resultado (30/10 por la tarde): **355 de 1.410 grados y dobles de privadas con precio por curso** (180 de su
-  página y 175 de sus listas de precios, con las halladas a mano abajo), de 27 universidades; los 355 con total
-  estimado. Y 12 grados de centros adscritos de públicas con el precio de su web. Control del título de la página: si la
+  Resultado (30/10 por la noche, tras la tercera revisión y la relectura de las webs de universidades y centros con
+  las reglas nuevas): **354 de 1.410 grados y dobles de privadas con precio por curso** (160 de su página y 194 de
+  sus listas de precios), de 27 universidades; los 354 con total estimado. Quedan sin precio por las reglas nuevas
+  15 fichas cuyo importe solo estaba en los datos estructurados, 5 con un importe «desde» y 1 con la página de
+  otra sede; entran los de las listas nuevas. Y 12 grados de centros adscritos de públicas con el precio de su web. Control del título de la página: si la
   dirección casa con el grado pero el título dice que es de otro estudio (un doble para un grado simple, una FP,
   otro grado, o un doble con otros grados), la página no vale para ese grado (`web_privadas.titulo_contradice`);
   un título genérico («Admisión») no contradice nada. Descartó 29 uniones, 4 con precio (por ejemplo, un doble de
@@ -343,8 +345,25 @@ textos largos quedan solo en el almacén privado; en `sondas` va su tamaño y su
   servidor de España, así que ya no están; la tabla 2026-2027 solo aparece en copias de terceros, que no son
   fuente), Católica de Valencia (publica su tabla de honorarios de grado 2026-2027 en PDF, pero su robots.txt prohíbe
   esa ruta: no se pide) y Deusto (su tabla de tasas no sale en el HTML que se descarga; las celdas sin «€» ya se
-  leen). No publican tabla de precios en su web (búsqueda del 30/10): VIU, UOC (remite al decreto), UDIMA (solo el precio a efectos de beca, que no es el de venta), CUNEF, ESIC y otras; ver
-  `docs/estrategia-informacion-cerrada.md` §3.4.
+  leen). No publican tabla de precios en su web (búsqueda del 30/10): VIU, UOC (remite al decreto), UDIMA (solo el
+  precio a efectos de beca, que no es el de venta), CUNEF y otras; ver `docs/estrategia-informacion-cerrada.md` §3.4.
+- **Segunda búsqueda dirigida (30/10 por la noche)**, 20 privadas con pocos precios, solo en su dominio:
+  - Leídas y añadidas a `URLS_CONOCIDAS`: Camilo José Cela (tarifario de grados 2026-2027 y las fichas de precio
+    de Salud, cada una con su curso; los PDF de un solo grado se atribuyen por el nombre del fichero,
+    `tarifas_grado.grado_de_fichero`), Alfonso X (Villanueva, honorarios 2026-2027), Mondragon (página de precio de
+    cada grado: «previsión para el curso 2027-28», que la ficha dice con su nota, `CURSO_CONOCIDO`; su tabla central
+    no cuadra con esas páginas, 8.520 € frente a 143 €/ECTS × 60 = 8.580 €, y no se usa), Euneiz, Intercontinental
+    de la Empresa (UIE, página de cada grado), Abat Oliba CEU y Comillas (dos fichas de ejemplo; el resto, con el
+    rastreo de su web, que responde 421 a GitHub y se pide desde el servidor de España).
+  - Resultado: Camilo José Cela 18 de 81 grados con precio, Alfonso X 5 de 46, Mondragon 8 de 19, UIE 6 de 6,
+    Abat Oliba 2 de 15. Euneiz: su página se lee pero los importes no se unen a ningún grado.
+  - No publican precio: UNIR («consulta precios con tu asesor»), Villanueva («consultar precio»), UEMC, Europea del
+    Atlántico, Fernando Pessoa-Canarias, Atlántico Medio y UTAMED.
+  - Publican, pero no se puede usar: Católica de Valencia (su robots.txt prohíbe la ruta del PDF), IQS (un precio
+    por crédito para todos los grados, sin grado por línea; sus fichas, prohibidas por robots.txt), Esade (un único
+    importe de primer curso para todos los grados, sin curso), UCAV (precio por crédito por tramos de créditos, no
+    por grado), La Salle, Blanquerna y UVic (páginas en inglés cuyos nombres no casan con los del catálogo), Isabel I
+    (el importe se carga con JavaScript), San Jorge (su web da error) y la Europea (2025-2026 retirado, 404).
 
 - **Por qué no responde una dirección** (`tarifas_grado.pedir_con_motivo`, desde el 30/10): cada dirección sin
   respuesta lleva `motivo` (robots.txt que lo prohíbe, robots.txt que no responde —entonces no se rastrea—, límite
@@ -517,22 +536,22 @@ pedir nada a ninguna fuente, y marca cada ficha como indexable o no, con el moti
 | Fichas activas | 4.296 (3.265 grados y 1.031 dobles) |
 | Con sus centros en QEDU | 4.265 |
 | Ofertas de QEDU con detalle (plazas, precio, inserción) | 5.486 de 5.486 |
-| Con nota de corte | 2.662 |
+| Con nota de corte | 2.532 |
 | Con precio de primera matrícula (públicas) | 2.113 de 2.239 grados y 498 de 647 dobles de públicas |
 | De ellos, con el precio de la norma de su comunidad (QEDU no lo da) | 508 |
-| Privadas con precio por curso | 355 de 1.410 (y 12 centros adscritos de públicas con el precio de su web) |
+| Privadas con precio por curso | 354 de 1.410 (y 12 centros adscritos de públicas con el precio de su web) |
 | Con histórico de notas de corte comprobado | 1.430 (1.569 centros; 963 con cinco cursos o más; 1.030 con los cupos de reserva) |
 | Con inserción laboral | 1.703 |
 | Con indicadores de rendimiento del SIIU | 3.125 |
 | Con ficha del RUCT | 3.265 |
-| Grados con plan del BOE | 3.098 de 3.265 |
-| Grados con plan comprobado | 2.245 (1.595 por asignaturas, el resto por materias) |
-| Dobles con los planes de sus dos grados comprobados | 599 |
-| **Indexables** con los datos mínimos decididos | **2.160** (1.777 grados y 383 dobles; 1.886 de públicas y 274 de privadas) |
+| Grados con plan del BOE | 3.095 de 3.265 |
+| Grados con plan comprobado | 2.236 (1.594 por asignaturas, el resto por materias) |
+| Dobles con los planes de sus dos grados comprobados | 596 |
+| **Indexables** con los datos mínimos decididos | **2.144** (1.778 grados y 366 dobles; 1.875 de públicas y 269 de privadas) |
 
-El resto va con `noindex` y su motivo: 853 con plan que no
-cuadra, 599 sin plan (o doble sin los dos planes comprobados) y
-1.053 sin nota ni precio (casi todas, privadas que no publican el precio); una
+El resto va con `noindex` y su motivo: 859 con plan que no
+cuadra, 605 sin plan (o doble sin los dos planes comprobados) y
+1.054 sin nota ni precio (casi todas, privadas que no publican el precio); una
 ficha puede tener varios.
 
 Para rehacerlo todo desde `sondas`: bajar las carpetas con `datos/estudios/grados/` y ejecutar en orden
@@ -552,14 +571,14 @@ comprobados por asignaturas:
 - **Asignaturas en común**: en cuántas universidades del mismo grado aparece cada asignatura, qué parte del plan de
   cada una es común y cuáles solo tiene ella (160 genéricos con al menos dos
   planes comparables).
-- **Buscar por asignatura** (`asignaturas_indice.jsonl`): 36.890 asignaturas distintas
-  (nombre normalizado, sin numeración), 8.250 en dos títulos o más, cada una
+- **Buscar por asignatura** (`asignaturas_indice.jsonl`): 35.954 asignaturas distintas
+  (nombre normalizado, sin numeración), 8.221 en dos títulos o más, cada una
   con dónde se estudia, su tipo y su curso. TFG, optativas, prácticas y practicum van marcados como huecos del plan
   (19), sin página propia.
 - **Carreras parecidas** (`relaciones.jsonl`): por campo ISCED-F, ámbito, área y rama del SIIU, nombre, dobles
   grados que las combinan y asignaturas básicas y obligatorias en común; cada relación lleva sus motivos.
   244 de los 245 genéricos de grado con página tienen alguna
-  (1.399 relaciones apoyadas en asignaturas comunes); la que no tiene nada cercano queda
+  (1.404 relaciones apoyadas en asignaturas comunes); la que no tiene nada cercano queda
   vacía.
 - **Dobles grados que incluyen cada carrera** y los grados que forman cada doble; la ficha del doble enlaza los
   planes de sus dos grados.
@@ -579,7 +598,7 @@ comprobados por asignaturas:
    165 grados sin ningún plan serían unas 19 horas y los 1.020, unas 120; lo decide Álvaro. El lector ya está en las fichas
    (`fichas.plan_de_memoria`: el plan de la memoria entra si el del BOE no cuadra y él sí cuadra con los créditos
    por tipo del RUCT; con una página sin leer no cuenta como comprobado).
-3. Privadas sin precio (1.055): la Europea retiró sus PDF de 2025-2026 (404 también desde el
+3. Privadas sin precio (1.056): la Europea retiró sus PDF de 2025-2026 (404 también desde el
    servidor de España, 30/10) y la tabla 2026-2027 solo aparece en copias de terceros, que no son fuente; Católica de
    Valencia publica su tabla 2026-2027 en una ruta que su robots.txt prohíbe (no se pide); Deusto, tabla que no sale
    en el HTML; lo que no esté publicado, peticiones a cada universidad cuando el portal tenga dirección pública
@@ -597,8 +616,7 @@ comprobados por asignaturas:
 7. Generador de páginas de grado con el diseño «Noche en blanco» y el control de la ley SEO.
 
 Límite conocido: 8 parejas de grados activos con el mismo nombre en la misma universidad (un título del RD
-1393/2007 que se extingue y su sucesor del RD 822/2021) pueden compartir el plan más reciente, salvo que el texto
-del BOE declare el código del título («Código Titulación: …»), que desde el 30/10 se respeta.
+1393/2007 que se extingue y su sucesor del RD 822/2021) pueden compartir el plan más reciente.
 
 ## 6. Avisos para las otras conversaciones
 
