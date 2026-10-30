@@ -30,7 +30,7 @@ from pathlib import Path
 from motor.grados.asignaturas import comparar
 from motor.grados.catalogo import clave, clave_union, nombre_corto
 from motor.grados.generico import nombre_base
-from motor.grados.precios import de_comunidad, precio_por_rama, precio_unico
+from motor.grados.precios import de_comunidad, precio_doble, precio_por_rama, precio_unico
 from motor.grados.web_privadas import titulo_contradice
 
 FUENTE_QEDU = "Ministerio de Ciencia, Innovación y Universidades. QEDU"
@@ -608,6 +608,22 @@ def construir(catalogo: list[dict], genericos: list[dict], tarjetas: dict, detal
                                     "boe": (c.get("plan") or {}).get("boe"),
                                     "comprobado": bool(c.get("plan") and c["plan"]["comprobado"]),
                                     "nivel": (c.get("plan") or {}).get("nivel")} for c in comp if c]
+        # precio del doble de pública que no trae QEDU: la regla de su comunidad sobre los precios de sus dos grados
+        # (centros propios de la misma universidad; si un grado tiene dos precios distintos, no se deduce)
+        if f["universidad_tipo"] == "Pública" and not f["precio_primera_matricula"] and len(comp) >= 2 and all(comp) \
+                and any(x.get("tipo_centro") == "Propio" for x in f["centros"]):
+            precios = []
+            for c in comp:
+                propios = {x["precio_credito"] for x in c["centros"] if x.get("precio_credito")
+                           and x.get("tipo_centro") == "Propio"}
+                precios.append(propios.pop() if len(propios) == 1 else None)
+            creditos = next((x["creditos"] for x in f["centros"] if x.get("creditos")), None)
+            pd = precio_doble(f["universidades"][0].get("comunidad"), precios) if creditos else None
+            if pd:
+                f["precio_credito_norma"] = {**pd, "centros": "propios", "creditos": creditos}
+                f["precio_primera_matricula"] = round(pd["precio_credito"] * creditos, 2)
+                f["motivos_noindex"] = [m for m in f["motivos_noindex"] if m != "sin nota de corte ni precio"]
+                f["indexable"] = not f["motivos_noindex"]
         if len(f["planes_componentes"]) >= 2 and all(x["comprobado"] for x in f["planes_componentes"]):
             f["motivos_noindex"] = [m for m in f["motivos_noindex"] if m != "sin asignaturas comprobadas"]
             f["indexable"] = not f["motivos_noindex"]

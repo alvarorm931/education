@@ -88,6 +88,23 @@ PRECIO_POR_RAMA = {
         "contraste": "QEDU 2025-2026: las 26 ofertas con precio de centros propios de la Universidad de Cantabria "
                      "cuadran con su rama"},
 }
+# Precio del crédito de un doble grado en comunidades donde depende del título: la regla de la norma aplicada a los
+# precios de sus dos grados en la misma universidad (que da QEDU). «media»: media aritmética de los dos;
+# «cada_asignatura»: cada asignatura paga el de su grado (solo se deduce si los dos grados tienen el mismo precio).
+REGLA_DOBLE = {
+    "Madrid (Comunidad de)": {
+        "regla": "media", "curso": "2026-2027",
+        "norma": "Decreto 43/2022 (BOCM 155, 1-7-2022): en las dobles titulaciones con distinto nivel de "
+                 "experimentalidad, la media aritmética del precio de los títulos que las componen, en todas las "
+                 "asignaturas",
+        "url": "https://www.urjc.es/i-d-i/centro-de-apoyo-tecnologico-cat-y-redlabu/485-precios-publicos",
+        "capturado": "2026-10-30",
+        "contraste": "La Universidad Autónoma de Madrid publica 18,80 €/crédito para los dobles de niveles 1 y 3 y "
+                     "18,18 € para los de 2 y 3: la media exacta de 20,68 y 16,92 y de 19,43 y 16,92 "
+                     "(https://uam.es/uam/media/doc/1606965874673/precios-para-estudiantes-extranjeros---ea.pdf)"},
+}
+
+
 # Ayudas que no rebajan el precio pero devuelven lo pagado (se muestran aparte, como ayuda)
 AYUDAS = {
     "Castilla y León": {
@@ -135,3 +152,20 @@ def precio_por_rama(comunidad: str | None, titulos: list[tuple[str | None, str]]
     if len(precios) != 1:
         return None
     return {"precio_credito": precios.pop(), **{k: regla[k] for k in ("curso", "norma", "url", "capturado", "contraste")}}
+
+
+def precio_doble(comunidad: str | None, precios_componentes: list[float | None]) -> dict | None:
+    """Precio del crédito de un doble grado con la regla de su comunidad y los precios de sus dos grados."""
+    from decimal import ROUND_HALF_UP, Decimal
+
+    regla = REGLA_DOBLE.get(comunidad or "")
+    if not regla or len(precios_componentes) < 2 or any(p is None for p in precios_componentes):
+        return None
+    if regla["regla"] == "media":
+        media = sum(Decimal(str(p)) for p in precios_componentes) / len(precios_componentes)
+        precio = float(media.quantize(Decimal("0.01"), rounding=ROUND_HALF_UP))
+    elif regla["regla"] == "cada_asignatura" and len(set(precios_componentes)) == 1:
+        precio = precios_componentes[0]
+    else:
+        return None
+    return {"precio_credito": precio, "precios_de_sus_grados": list(precios_componentes), **regla}

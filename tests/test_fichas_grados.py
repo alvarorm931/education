@@ -206,3 +206,11 @@ def test_hueco_optativo_marcado():
     p = {**PLAN, "plan": PLAN["plan"] + [{"nombre": "Optativa II", "tipo": "optativa", "creditos": 6}]}
     a = {x["nombre"]: x["hueco"] for x in fichas.resumen_plan(p)["asignaturas"]}
     assert a == {"Derecho Romano": False, "Derecho Civil I": False, "Optativa II": True}
+
+
+def test_precio_del_doble_por_la_regla_de_su_comunidad():
+    from motor.grados import precios
+    assert precios.precio_doble("Madrid (Comunidad de)", [20.68, 16.92])["precio_credito"] == 18.80
+    assert precios.precio_doble("Madrid (Comunidad de)", [19.43, 16.92])["precio_credito"] == 18.18
+    assert precios.precio_doble("Madrid (Comunidad de)", [19.43, None]) is None
+    assert precios.precio_doble("Comunidad sin regla", [10.0, 10.0]) is None
