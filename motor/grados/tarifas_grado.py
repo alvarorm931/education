@@ -30,6 +30,7 @@ import re
 import time
 from collections import Counter, defaultdict
 from datetime import date
+from html.parser import HTMLParser
 from pathlib import Path
 
 from motor.archivo import Archivo, solo_huella_por_defecto
@@ -245,10 +246,58 @@ def forma(texto: str) -> str:
     return re.sub(r"[^\W\d_]", "a", re.sub(r"\s", "_", re.sub(r"\d", "9", texto)))
 
 
+class _Tabla(HTMLParser):
+    """Filas de una tabla HTML con sus celdas, también si la página omite los cierres </td> y </tr> (los permite el
+    estándar; Deusto) o pone párrafos dentro de las celdas."""
+
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.filas: list[list[str]] = []
+        self.celda: list[str] | None = None
+
+    def _cerrar_celda(self):
+        if self.celda is not None and self.filas:
+            self.filas[-1].append(" ".join("".join(self.celda).split()))
+        self.celda = None
+
+    def handle_starttag(self, tag, attrs):
+        if tag == "tr":
+            self._cerrar_celda()
+            self.filas.append([])
+        elif tag in ("td", "th"):
+            self._cerrar_celda()
+            if not self.filas:
+                self.filas.append([])
+            self.celda = []
+        elif tag in ("br", "p", "div", "li") and self.celda is not None:
+            self.celda.append(" ")
+
+    def handle_endtag(self, tag):
+        if tag in ("td", "th", "tr", "table"):
+            self._cerrar_celda()
+
+    def handle_data(self, data):
+        if self.celda is not None:
+            self.celda.append(data)
+
+
+def _tabla_a_lineas(m: re.Match) -> str:
+    t = _Tabla()
+    t.feed(m.group())
+    t.close()
+    t._cerrar_celda()
+    filas = [" | ".join(c.replace("|", "/") for c in f) for f in t.filas if any(f)]
+    import html as _html
+
+    return "<div>" + "</div><div>".join(_html.escape(f, quote=False) for f in filas) + "</div>"
+
+
 def lineas_html(html: str) -> list[str]:
     """Texto visible de una página en líneas: una por párrafo o elemento de lista y una por fila de tabla, con las
     celdas separadas por « | » (para leer cada importe con el rótulo de su columna)."""
     texto = re.sub(r"(?is)<(script|style|noscript|svg|head)\b.*?</\1>", " ", html)
+    # cada tabla, fila a fila con un lector de HTML (cierres omitidos, párrafos dentro de las celdas)
+    texto = re.sub(r"(?is)<table\b.*?</table>", _tabla_a_lineas, texto)
     # los párrafos o saltos dentro de una celda («<td><p>Trabajo Social</p></td>») no parten la fila
     texto = re.sub(r"(?is)<tr\b.*?</tr>", lambda m: BLOQUE.sub(" ", m.group()), texto)
     texto = re.sub(r"(?is)</t[dh]>", " | ", texto)

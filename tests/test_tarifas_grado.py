@@ -282,3 +282,9 @@ def test_tabla_sin_euros_con_columnas_de_dinero():
     assert {i["valor"] for i in r["grados"]["1"]} == {2094.0, 1047.0, 10470.0}
     from motor.grados.fichas import precio_por_cuentas
     assert precio_por_cuentas([2094.0, 1047.0, 10470.0])["precio_curso"] == 10470.0
+
+
+def test_tabla_sin_cierres_de_celda():
+    html = ("<table><tr><th>GRADO<th>CRÉDITOS<th>MATRÍCULA<th>8 PLAZOS ENSEÑANZA<th>TOTAL"
+            "<tr><td><p>Psicología</p><td>60<td><div>2.094,00</div><td>1.047,00<td>10.470,00</table>")
+    assert tg.lineas_html(html)[1] == "Psicología | 60 | 2.094,00 | 1.047,00 | 10.470,00"
