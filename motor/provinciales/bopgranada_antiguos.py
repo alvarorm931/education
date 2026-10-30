@@ -13,6 +13,7 @@ Formato verificado el 30/10/2026 desde GitHub (sondas motor/provinciales/sonda_s
   - robots.txt: el listado y los PDF están permitidos.
 
 Uso: python -m motor.provinciales.bopgranada_antiguos --max-minutos 30 --salida ruta/
+     python -m motor.provinciales.bopgranada_antiguos --reprocesar --salida ruta/   # desde el almacén
 """
 
 from __future__ import annotations
@@ -47,7 +48,7 @@ RE_PDF = re.compile(r'href="(?P<u>/export/sites/bop/publica/boletines-anteriores
 RE_PAGINAS = re.compile(r'class="totalPages" value="(\d+)"')
 RE_ENTRADA = re.compile(r"^(?P<t>.*?)\s*\.{2,}\s*(?P<p>\d{1,3})\s*$")
 RE_ENTIDAD = re.compile(r"^(?P<e>[^a-záéíóúñüç]+?)\.-\s*(?P<t>.+)$")
-RE_REGISTRO = re.compile(r"(?m)^\s*N[ÚU]MERO\s+(\d{1,6})\s*$")
+RE_REGISTRO = re.compile(r"(?m)^\s*N[ÚU]MERO\s+(\d{1,3}(?:\.\d{3})*|\d{4,6})\s*$")  # «NÚMERO 3.456» desde el mil
 SECCIONES = {"anuncios oficiales", "administracion de justicia", "ayuntamientos", "anuncios no oficiales",
              "administracion local", "diputacion provincial", "diputacion de granada", "mancomunidades",
              "mancomunidades de municipios", "entidades locales autonomas", "consorcios", "comunidades de regantes",
@@ -122,9 +123,10 @@ def bloques(paginas: list[str], desde: int) -> list[tuple[str, str]]:
             for k, m in enumerate(marcas)]
 
 
-def procesar(b: dict, raiz: Path, archivo: Archivo) -> dict:
-    from motor.provinciales.textos import paginas_pdf
+VERSION = "antiguos_v2"  # v2 (30/10/2026): registros con punto de millar («NÚMERO 3.456»)
 
+
+def procesar(b: dict, raiz: Path, archivo: Archivo) -> dict:
     d = date.fromisoformat(b["fecha"])
     r = obtener(b["url_pdf"], accept="application/pdf")
     inf = {"fecha": b["fecha"], "numero": b["numero"], "status": r.status, "origen": "boletines_anteriores",
@@ -134,7 +136,14 @@ def procesar(b: dict, raiz: Path, archivo: Archivo) -> dict:
         inf["alertas"].append(f"BOP Granada {d}: PDF HTTP {r.status}")
         return inf
     captura = archivo.guardar(BOLETIN.fuente, d, r.contenido, b["url_pdf"], "pdf", r.status, r.cabeceras)
-    paginas = paginas_pdf(r.contenido)
+    return {**inf, **leer_pdf(b, r.contenido, captura, raiz)}
+
+
+def leer_pdf(b: dict, pdf: bytes, captura: dict, raiz: Path) -> dict:
+    from motor.provinciales.textos import paginas_pdf
+
+    d = date.fromisoformat(b["fecha"])
+    paginas = paginas_pdf(pdf)
     entradas, desde = sumario(paginas)
     trozos = bloques(paginas, desde)
     casan = len(trozos) == len(entradas)
@@ -147,6 +156,8 @@ def procesar(b: dict, raiz: Path, archivo: Archivo) -> dict:
     empleo = saga.seleccionar(BOLETIN, filas)
     escribir_jsonl(saga._ruta(BOLETIN, raiz, "disposiciones", d), filas)
     escribir_jsonl(saga._ruta(BOLETIN, raiz, "oposiciones", d), empleo)
+    inf = {"resultado": "ok", "sha256": captura["sha256"], "capturado": captura.get("capturado"),
+           "url_pdf": b["url_pdf"], "version": VERSION, "alertas": []}
     textos = 0
     if casan:
         por_id = {f["id"]: trozos[i][1] for i, f in enumerate(filas)}
@@ -159,16 +170,45 @@ def procesar(b: dict, raiz: Path, archivo: Archivo) -> dict:
                          "lineas_con_documento_de_identidad": sum(1 for l in bruto.splitlines() if RE_DOCUMENTO.search(l)),
                          "citas": citas(bruto)}
             escribir_json(saga.ruta_texto(BOLETIN, raiz, x), {"id": x["id"], **datos, "captura_sha256": captura["sha256"],
-                                                             "capturado": captura["capturado"], "url": b["url_pdf"]})
+                                                             "capturado": captura.get("capturado"), "url": b["url_pdf"]})
             textos += 1
     elif empleo:
         inf["alertas"].append(f"BOP Granada {d}: {len(entradas)} asuntos y {len(trozos)} anuncios en el cuerpo: "
                               "sin textos")
-    inf.update({"resultado": "ok", "sha256": captura["sha256"], "disposiciones": len(filas),
-                "empleo_publico": len(empleo), "textos": textos})
+    inf.update({"disposiciones": len(filas), "empleo_publico": len(empleo), "textos": textos})
     if not filas:
         inf["alertas"].append(f"BOP Granada {d}: sumario sin anuncios (posible cambio de formato)")
     return inf
+
+
+def reprocesar(raiz: Path) -> int:
+    """Vuelve a leer, desde su PDF original en el almacén (sin pedirlo a la fuente), los boletines anteriores ya
+    cargados con una versión vieja del lector."""
+    from motor.almacen import Almacen, clave_original
+    from motor.autonomicos.comun import leer_jsonl
+
+    base, almacen, hechos, fallos = saga._base(BOLETIN, raiz), None, 0, 0
+    for dia in sorted((base / "dias").glob("*/*/*.json")):
+        inf = json.loads(dia.read_text(encoding="utf-8"))
+        if inf.get("origen") != "boletines_anteriores" or inf.get("resultado") != "ok" or inf.get("version") == VERSION:
+            continue
+        d = date.fromisoformat(inf["fecha"])
+        indice = raiz / "archivo" / "indices" / BOLETIN.fuente / f"{d:%Y-%m}.jsonl"
+        reg = next((x for x in (leer_jsonl(indice) if indice.exists() else []) if x.get("sha256") == inf["sha256"]), {})
+        try:
+            almacen = almacen or Almacen()
+            pdf = almacen.leer(reg.get("clave") or clave_original(BOLETIN.fuente, d, inf["sha256"], "pdf"))
+        except Exception as e:  # noqa: BLE001 - sin almacén se deja para otra ejecución
+            fallos += 1
+            if fallos >= 5:
+                print(f"BOP Granada: el almacén no responde ({type(e).__name__}); se deja para otra ejecución")
+                break
+            continue
+        b = {"fecha": inf["fecha"], "numero": inf["numero"], "url_pdf": reg.get("url") or inf.get("url_pdf")}
+        escribir_json(dia, {**inf, **leer_pdf(b, pdf, {"sha256": inf["sha256"], "capturado": reg.get("capturado")}, raiz)})
+        hechos += 1
+    print(f"BOP Granada anteriores releídos desde el almacén: {hechos}; sin original: {fallos}")
+    return 0
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -176,7 +216,10 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--salida", type=Path, default=Path("."))
     p.add_argument("--max-minutos", type=float, default=0)
     p.add_argument("--pausa", type=float, default=1.0)
+    p.add_argument("--reprocesar", action="store_true", help="releer desde el almacén los ya cargados")
     a = p.parse_args(argv)
+    if a.reprocesar:
+        return reprocesar(a.salida)
     archivo = Archivo(a.salida / "archivo", indice_por_fuente=True, solo_huella=solo_huella_por_defecto())
     base = saga._base(BOLETIN, a.salida)
     ruta_hist = base / "antiguos.json"

@@ -29,7 +29,7 @@ CUERPO = ["NÚMERO 380\nJUNTA DE ANDALUCÍA\nEDICTO\nResolución de utilidad pú
           "NÚMERO 381\nAYUNTAMIENTO DE ALBUÑOL\nPresupuesto.\nNÚMERO 382\nAYUNTAMIENTO DE CHURRIANA DE LA VEGA\n"
           "Padrón.\nNÚMERO 383\nAYUNTAMIENTO DE CHURRIANA DE LA VEGA\nLista de admitidos:\n1 GARCIA LOPEZ, MARIA "
           "***1234**\nBases publicadas en el Boletín Oficial de la Provincia de Granada número 20, de 1 de febrero de 2023.",
-          "NÚMERO 384\nAYUNTAMIENTO DE MOTRIL\nBases de la convocatoria de una plaza de Electricista.\n"
+          "NÚMERO 1.384\nAYUNTAMIENTO DE MOTRIL\nBases de la convocatoria de una plaza de Electricista.\n"
           "Plazo: veinte días hábiles."]
 
 
@@ -54,7 +54,7 @@ def test_sumario_y_bloques():
         ("AYUNTAMIENTOS", "ALBUÑOL", 3), ("AYUNTAMIENTOS", "CHURRIANA DE LA VEGA", 3),
         ("AYUNTAMIENTOS", "CHURRIANA DE LA VEGA", 3), ("AYUNTAMIENTOS", "MOTRIL", 4)]
     assert e[3]["titulo"] == "Admitidos y excluidos para plaza de Conserje Encargado de Mantenimiento en Centro Municipal de Cultura"
-    assert [n for n, _ in g.bloques([SUMARIO] + CUERPO, cuerpo)] == ["380", "381", "382", "383", "384"]
+    assert [n for n, _ in g.bloques([SUMARIO] + CUERPO, cuerpo)] == ["380", "381", "382", "383", "1.384"]
 
 
 def test_procesar(tmp_path, monkeypatch):

@@ -72,7 +72,10 @@ REGLAS_ACTO: list[tuple[str, tuple[str, ...]]] = [
                    "admeses i excloses", "admesos i exclosos", "admesos i excloses", "admeses i exclosos",
                    "llista provisional", "llista definitiva", "llistat provisional", "llistat definitiu",
                    "llistes provisionals", "llistes definitives", "relacio provisional", "relacio definitiva",
-                   "admitidos e excluidos", "admitidas e excluidas", "listaxe provisional", "listaxe definitiva")),
+                   "admitidos e excluidos", "admitidas e excluidas", "listaxe provisional", "listaxe definitiva",
+                   # «Admitidos/excluidos para plaza de…», «admitidos-excluidos» (BOP de Granada, 30/10/2026)
+                   "admitidos/excluidos", "admitidas/excluidas", "admitidos/as/excluidos", "admitidos-excluidos",
+                   "admitidos y no admitidos", "admitidos/as y excluidos")),
     ("aprobados", ("aprobados", "aprobadas", "superado el proceso", "prelacion", "orden de puntuacion",
                    "relacion de puntuaciones", "calificaciones definitivas", "calificaciones provisionales",
                    "puntuaciones definitivas", "puntuaciones provisionales", "cualificacions", "puntuacions", "han superado", "seleccionados", "seleccionadas",
