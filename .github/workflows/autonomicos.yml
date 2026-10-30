@@ -64,6 +64,7 @@ jobs:
 
   boletin:
     needs: preparar
+    if: needs.preparar.outputs.lista != '[]'   # una tanda solo con boletines del servidor de España
     strategy:
       fail-fast: false
       # El plan gratuito admite 20 trabajos a la vez en todo el repositorio (también los de másters):
