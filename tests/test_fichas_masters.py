@@ -44,3 +44,20 @@ def test_ficha_oficial_une_principal_y_subpagina_y_rechaza_pagina_de_otro_master
     assert fichas["ruct:2"]["comprobacion_nombre"] == "distinto" and fichas["ruct:2"]["campos"] == {}
     assert r["oficial_confirmado"] == 1 and r["oficial_distinto"] == 1
     assert "cita" not in json.dumps(uno).replace("cita_sha256", "")
+
+
+def test_probable_solo_si_la_pagina_dice_oficial(tmp_path):
+    t = "2026-10-30T03:00:00+00:00"
+    pag = [{"url": "https://u.es/a", "extraido": t, "grupo": "oficial", "codigos_ruct": ["1"], "pagina": "principal"},
+           {"url": "https://u.es/b", "extraido": t, "grupo": "oficial", "codigos_ruct": ["2"], "pagina": "principal"}]
+    h = lambda url, campo, valor: {"url": url, "campo": campo, "valor": valor, "estado": "aceptado", "extraido": t,
+                                   "captura_sha256": "s"}
+    hs = [h("https://u.es/a", "nombre", "Máster en Dirección de Empresas"), h("https://u.es/a", "tipo_titulo", "otro"),
+          h("https://u.es/b", "nombre", "Máster en Dirección de Empresas"),
+          h("https://u.es/b", "tipo_titulo", "máster universitario oficial"), h("https://u.es/b", "plazas", 40)]
+    _escribir(tmp_path / "e", pag, hs)
+    cat = [{"codigo_ruct": c, "nombre_oficial": "Máster Universitario en Dirección y Gestión de Empresas Familiares por la U"}
+           for c in ("1", "2")]
+    (tmp_path / "c.json").write_text(json.dumps(cat))
+    r = f.ejecutar([tmp_path / "e"], tmp_path / "o", catalogo=tmp_path / "c.json")
+    assert r["oficial_probable_sin_confirmar"] == 1 and r["oficial_probable_oficial"] == 1

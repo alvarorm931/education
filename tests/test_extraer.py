@@ -289,3 +289,20 @@ def test_propios_de_oficiales_sin_los_ya_unidos_ni_noticias(tmp_path):
     urls = [js.loads(l)["url"] for l in (tmp_path / "o" / "propios_oficiales_0.jsonl").read_text().splitlines()]
     assert urls == ["https://www.garrigues.es/masters-executive/recursos-humanos/"]
     assert r["ya_unidas_a_un_oficial"] == 2 and r["descartadas_por_url"] == 1
+
+
+def test_segunda_vuelta_solo_masters_sin_ficha_y_urls_nuevas(tmp_path):
+    import json as js
+    po = [{"codigo_ruct": "1", "estado": "unido", "url": "https://u.es/a", "alternativas": [{"url": "https://u.es/a2", "puntuacion": 0.8}]},
+          {"codigo_ruct": "2", "estado": "unido", "url": "https://u.es/b",
+           "alternativas": [{"url": "https://u.es/b", "puntuacion": 0.9}, {"url": "https://u.es/b2", "puntuacion": 0.6},
+                            {"url": "https://u.es/b3", "puntuacion": 0.3}]},
+          {"codigo_ruct": "3", "estado": "sin_pagina", "url": None, "puntuacion": 0.6, "candidata": "https://u.es/c",
+           "alternativas": []}]
+    (tmp_path / "po.jsonl").write_text("".join(js.dumps(x) + "\n" for x in po))
+    fichas = [{"codigo_ruct": "1", "comprobacion_nombre": "confirmado"}, {"codigo_ruct": "2", "comprobacion_nombre": "no_es_ficha"}]
+    (tmp_path / "f.jsonl").write_text("".join(js.dumps(x) + "\n" for x in fichas))
+    (tmp_path / "c.jsonl").write_text(js.dumps({"url": "https://u.es/b"}) + "\n")
+    r = e.lista_segunda_vuelta(tmp_path / "po.jsonl", tmp_path / "f.jsonl", [tmp_path / "c.jsonl"], tmp_path / "s.jsonl")
+    urls = [js.loads(l)["url"] for l in (tmp_path / "s.jsonl").read_text().splitlines()]
+    assert urls == ["https://u.es/b2", "https://u.es/c"] and r["con_candidatas"] == 2

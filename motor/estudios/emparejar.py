@@ -219,6 +219,8 @@ def emparejar(titulos: list[dict], urls: list[str], textos: dict[str, str] | Non
                        "url": url, "puntuacion": mejor[0],
                        "url_es_subpagina": bool(url) and raiz_programa(url, False) != mejor[1],
                        "url_deducida": bool(url) and reales.get(mejor[1], ("", True))[1],
+                       # sin página: la mejor candidata igualmente, para que la extracción la compruebe por el nombre
+                       "candidata": real.get(mejor[1], mejor[1]) if estado == "sin_pagina" and mejor[1] else None,
                        "subpaginas": subpaginas_utiles(mejor[1], originales.get(mejor[1], []), url) if url else [],
                        "urls_modalidad": [real.get(u, u) for u in modalidades] if estado == "unido" and len(modalidades) > 1 else [],
                        "alternativas": [{"url": real.get(u, u), "puntuacion": p} for p, u in puntos[1:]]})

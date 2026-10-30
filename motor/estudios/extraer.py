@@ -792,11 +792,56 @@ def lista_propios_de_oficiales(censo: Path, rastreos: list[Path], paginas_oficia
     return {**cuentas, "paginas": sum(cargas), "por_tramo": cargas, "servidores": len(hosts)}
 
 
+def lista_segunda_vuelta(paginas_oficiales: Path, fichas: Path, capturadas: list[Path], salida: Path,
+                         umbral: float = 0.5, por_master: int = 2) -> dict:
+    """Másters oficiales sin página comprobada tras la primera extracción (no era la ficha, nombre de otro
+    máster, sin nombre, página caída o sin unir): sus siguientes candidatas con puntuación >= umbral que aún no se
+    han extraído. La extracción hace de verificador: solo vale la página cuyo nombre es el del RUCT
+    (fichas_masters.comprobar_nombre)."""
+    hechas = set()
+    for c in capturadas:
+        for l in c.read_text(encoding="utf-8").splitlines():
+            if l.strip():
+                hechas.add(json.loads(l)["url"])
+    ok = set()
+    for l in fichas.read_text(encoding="utf-8").splitlines():
+        if l.strip():
+            f = json.loads(l)
+            if f.get("comprobacion_nombre") in ("confirmado", "probable_oficial"):
+                ok.add(f["codigo_ruct"])
+    filas: dict[str, dict] = {}
+    cuentas = Counter()
+    for l in paginas_oficiales.read_text(encoding="utf-8").splitlines():
+        if not l.strip():
+            continue
+        x = json.loads(l)
+        if x["codigo_ruct"] in ok:
+            continue
+        cuentas["sin_ficha_comprobada"] += 1
+        cands = ([x["candidata"]] if x.get("candidata") and x.get("puntuacion", 0) >= umbral else []) + \
+                [a["url"] for a in x.get("alternativas", []) if a["puntuacion"] >= umbral]
+        cands = [u for u in dict.fromkeys(cands) if u and u not in hechas][:por_master]
+        cuentas["con_candidatas"] += bool(cands)
+        for u in cands:
+            f = filas.setdefault(u, {"url": u, "grupo": "oficial", "estado_emparejado": "segunda_vuelta",
+                                     "pagina": "principal", "codigos_ruct": []})
+            if x["codigo_ruct"] not in f["codigos_ruct"]:
+                f["codigos_ruct"].append(x["codigo_ruct"])
+    for f in filas.values():
+        f["codigo_ruct"] = f["codigos_ruct"][0]
+    salida.parent.mkdir(parents=True, exist_ok=True)
+    salida.write_text("".join(json.dumps(f, ensure_ascii=False) + "\n" for f in filas.values()), encoding="utf-8")
+    return {**cuentas, "urls": len(filas)}
+
+
 def main() -> None:
     p = argparse.ArgumentParser()
     p.add_argument("orden", choices=["lote", "retomar", "lista-oficiales", "lista-no-oficiales", "lista-propios-oficiales",
+                                     "lista-segunda-vuelta",
                                      "preparar", "enviar", "recoger"])
     p.add_argument("--censo")
+    p.add_argument("--fichas")
+    p.add_argument("--capturadas", action="append", default=[])
     p.add_argument("--clasificacion")
     p.add_argument("--rastreo", action="append", default=[])
     p.add_argument("--por-proveedor", type=int, default=30)
@@ -823,6 +868,9 @@ def main() -> None:
     elif a.orden == "lista-no-oficiales":
         res = lista_no_oficiales(Path(a.clasificacion), [Path(x) for x in a.rastreo], Path(a.salida), a.por_proveedor,
                                  a.tramos, a.desde_por_proveedor)
+    elif a.orden == "lista-segunda-vuelta":
+        res = lista_segunda_vuelta(Path(a.paginas_oficiales), Path(a.fichas), [Path(x) for x in a.capturadas],
+                                   Path(a.salida))
     elif a.orden == "lista-propios-oficiales":
         res = lista_propios_de_oficiales(Path(a.censo), [Path(x) for x in a.rastreo], Path(a.paginas_oficiales),
                                          Path(a.salida), a.por_proveedor, a.tramos, a.desde_por_proveedor)

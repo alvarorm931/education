@@ -112,12 +112,19 @@ def ejecutar(extracciones: list[Path], salida: Path, catalogo: Path | None = Non
             estado, cob = "no_es_ficha", 0.0
         else:
             estado, cob = comprobar_nombre(t.get("nombre_oficial", ""), nombre_ext) if t else ("sin_catalogo", 0.0)
+        if estado == "probable":
+            # nombre parecido pero no igual (doble máster, programa ejecutivo con nombre parecido…): solo vale si la
+            # página dice que es un máster universitario oficial
+            tipo = next((str(h["valor"]) for p in principales for h in hechos.get(p["url"], [])
+                         if h["campo"] == "tipo_titulo"), "")
+            estado = "probable_oficial" if "oficial" in tipo.lower() and "doble" not in (nombre_ext or "").lower() \
+                else "probable_sin_confirmar"
         res["oficial_" + estado] += 1
         ficha = {"clave": f"ruct:{codigo}", "grupo": "oficial", "codigo_ruct": codigo,
                  "nombre_oficial": t.get("nombre_oficial"), "nombre_en_pagina": nombre_ext,
                  "comprobacion_nombre": estado, "cobertura_nombre": cob,
                  "paginas": sorted(p["url"] for p in ps)}
-        if estado in ("confirmado", "probable"):
+        if estado in ("confirmado", "probable_oficial"):
             ficha.update(componer(ps, hechos))
         else:
             ficha.update({"campos": {}, "campos_con_valores_distintos": []})
