@@ -207,6 +207,9 @@ for c in $CONECTORES; do
       # Días anteriores por la dirección del boletín de cada día (calendario de la portada)
       ejecutar motor.provinciales.bopsalamanca --historico --salida "$S" --max-minutos "$M"
       "$G" "BOP Salamanca: histórico"
+      # Textos: el PDF de cada anuncio de empleo (motor/provinciales/textos.py)
+      ejecutar motor.provinciales.textos bopsalamanca --salida "$S" --max-minutos "$M"
+      "$G" "BOP Salamanca: textos"
       ;;
     bopalbacete)
       # Solo el boletín del día, desde la portada
@@ -220,6 +223,9 @@ for c in $CONECTORES; do
       # Días anteriores por la dirección del boletín de cada día (calendario de la portada)
       ejecutar motor.provinciales.bopjaen --historico --salida "$S" --max-minutos "$M"
       "$G" "BOP Jaén: histórico"
+      # Textos: el PDF de cada anuncio de empleo (motor/provinciales/textos.py)
+      ejecutar motor.provinciales.textos bopjaen --salida "$S" --max-minutos "$M"
+      "$G" "BOP Jaén: textos"
       ;;
     bopzaragoza)
       # El boletín del día, desde la portada
