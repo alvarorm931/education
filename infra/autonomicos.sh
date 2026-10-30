@@ -426,6 +426,11 @@ for c in $CONECTORES; do
       "$G" "$c: días"
       ejecutar motor.provinciales.$c --textos --salida "$S" --max-minutos "$M"
       "$G" "$c: textos"
+      # Granada antes de julio de 2024: «boletines anteriores» por año y mes, PDF entero (sumario y textos)
+      if [ "$c" = bopgranada ]; then
+        ejecutar motor.provinciales.bopgranada_antiguos --salida "$S" --max-minutos "$M"
+        "$G" "$c: boletines anteriores"
+      fi
       ;;
     bopcordoba)
       ejecutar motor.provinciales.bopcordoba --salida "$S"
