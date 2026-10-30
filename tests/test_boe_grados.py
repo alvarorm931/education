@@ -370,3 +370,12 @@ def test_dos_semestres_lado_a_lado_con_tipo_de_materia_y_llamada():
     partes = normalizar_tablas([t])
     assert len(partes) == 2 and partes[1]["contenido"][1][0] == "Derecho público"
     assert partes[1]["contenido"][1][-1] == "Segundo Semestre"
+
+
+
+def test_plan_estudios_sin_de_errata_del_boe():
+    from motor.grados.boe_grados import actos
+    a = actos([{"identificador": "BOE-A-2010-4831", "fecha": "2010-03-23",
+                "titulo": "Resolución de 3 de marzo de 2010, de la Universidad de Alcalá, por la que se publica el plan "
+                          "estudios de Graduado en Biología Sanitaria."}])
+    assert a[0]["tipo"] == "plan" and a[0]["titulo_grado"] == "Graduado en Biología Sanitaria"

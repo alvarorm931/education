@@ -47,7 +47,7 @@ def tipo_acto(titulo: str) -> str | None:
         return None
     if re.search(r"car[áa]cter oficial", t) and re.search(r"t[íi]tulos? (?:universitarios oficiales )?de grado|grado", t):
         return "oficialidad"
-    if not re.search(r"plan(?:es)? de estudios?", t):
+    if not re.search(r"plan(?:es)? (?:de )?estudios?", t):  # «plan estudios»: errata en títulos del BOE de 2010
         return None
     if re.search(r"corrigen? errores|correcci[óo]n de (?:errores|erratas)|erratas", t):
         return "correccion"
@@ -71,7 +71,7 @@ def actos(filas_sumario: list[dict]) -> list[dict]:
             cola = re.split(r"\bpor el de\s+", titulo, maxsplit=1)
             cola[-1] = re.sub(r"\s+y el plan de estudios.*$", "", cola[-1])
         else:
-            cola = re.split(r"plan(?:es)? de estudios? de\s+", titulo, maxsplit=1)
+            cola = re.split(r"plan(?:es)? (?:de )?estudios? de\s+", titulo, maxsplit=1)
         m = RE_TITULO.search(cola[-1]) if len(cola) > 1 else None
         varios = bool(re.search(r"planes de estudios?\b", titulo, re.I))
         salida.append({
