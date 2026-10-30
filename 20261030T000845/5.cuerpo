@@ -1,0 +1,300 @@
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="es">
+	<title>Buscador - Boletín Oficial de la Provincia de Toledo</title>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="expires" content="0">
+	<meta http-equiv="keywords" content="bop,toledo,boletin oficial provincial,diputacion de toledo">
+	<meta http-equiv="description" content="Boletín Oficial de la Provincia de Toledo">
+
+	<link rel="stylesheet" href="css/webEbop.css" type="text/css" />
+	<link rel="stylesheet" href="theme/ui.all.css" type="text/css" />
+
+	<script src="js/prototype.js" type="text/javascript"></script>
+	<script src="js/jquery.js" type="text/javascript"></script>
+	<script>var $j = jQuery.noConflict(); // Para usar jquery:$j, prototype:$</script>
+	<script src="js/jquery-ui-1.7.2.custom.min.js" type="text/javascript"></script>
+	<script src="js/i18n/ui.datepicker-es.js" type="text/javascript"></script>
+	<script src="js/livevalidation_prototype.js" type="text/javascript"></script>
+	<script src="js/ebop.js" type="text/javascript"></script></script>
+
+	<script>
+		//Variable para que en el onload de la página se seleccione el mismo anunciante que antes al cargar el combo con ajax
+		var seleccionado = "";
+	</script>
+
+	<body class="bodyDiputoledo">
+		<div id="tres-col">
+			
+
+
+
+
+
+
+
+<div id="bop-header">
+	<header>
+		<link type="image/x-icon" href="img/favicon.ico" rel="shortcut icon" />
+		<link rel="stylesheet" type="text/css" media="screen" href="fonts/Montserrat/stylesheet.css" />
+
+		<div id="header-content">
+			<div id="header-content-img"><img src="img/escudo.png" height="80px" title="Web oficial de la Diputación de Toledo" alt="Escudo de la Diputación de Toledo"></div>
+			<div id="header-content-title">BOLETÍN OFICIAL DE LA PROVINCIAL DE TOLEDO</div>
+		</div>
+
+		<div id="header-line">
+			<nav>
+				<div id="header-line-content">
+					<a href="http://www.diputoledo.es">
+						<img src="img/inicio.png" alt="Inicio de www.diputoledo.es" align="absmiddle" border="0" height="16" width="16">
+					</a>
+					<strong>»</strong>
+					<a href="/webEbop/"><strong>Boletín oficial de la provincia</strong></a>
+					<strong>»</strong> Búsquedas en el BOP
+				</div>
+			</nav>
+		</div>
+	</header>
+</div>
+<main>
+
+
+			<div id="bop-wrapper">
+				<div id="bop-content">
+					<div id="bopSearch">
+						<div id="header">
+							<h1>Búsquedas en el BOP</h1>
+
+							<form method="post" id="searchForm" action="ebop.jsp" accept-charset="UTF-8">
+								<input type="hidden" name="search" id="search" value="true"/>
+								<input type="hidden" name="start" id="start" value=""/>
+								<input type="hidden" name="otrosCriterios" id="otrosCriterios" value=""/>
+								<input type="hidden" name="numResults" id="numResults" value=""/>
+
+								<div id="formulario">
+									<fieldset>
+										<legend>Criterios de búsqueda</legend>
+
+										<ul class="listaCriteriosBusqueda">
+											<li><label class="label1" for="contents">Texto del anuncio :</label>
+												<input type="text" id="contents" name="contents" value=""  size="50" maxlength="255"/>
+											</li>
+
+											<li>
+												<label class="label1" for="publisher_type">Tipo de anunciante :</label>
+												<select id="publisher_type" name="publisher_type_facet" onchange="changeComboTipoAnunciante()">
+													<option value="" selected>Todos</option>
+													
+														<option value="Admon. Autonómica" >Admon. Autonómica</option>
+													
+														<option value="Admon. Estatal" >Admon. Estatal</option>
+													
+														<option value="Ayuntamiento" >Ayuntamiento</option>
+													
+														<option value="Confederación Hidrográfica" >Confederación Hidrográfica</option>
+													
+														<option value="Consejería" >Consejería</option>
+													
+														<option value="Diputación" >Diputación</option>
+													
+														<option value="Juzgado" >Juzgado</option>
+													
+														<option value="Mancomunidad" >Mancomunidad</option>
+													
+														<option value="Mancomunidades" >Mancomunidades</option>
+													
+														<option value="Notaría" >Notaría</option>
+													
+														<option value="Organismos Especiales" >Organismos Especiales</option>
+													
+														<option value="Otros Organismos" >Otros Organismos</option>
+													
+														<option value="Particular" >Particular</option>
+													
+														<option value="Procurador" >Procurador</option>
+													
+												</select>
+												<img src="img/load_ico.gif" style="display:none" id="load_ico_publisher_type" alt="Icono de carga"/>
+											</li>
+
+											<li>
+												<label class="label1" for="publisher">Anunciante :</label>
+												<input type="text" id="publisher" name="publisher" value="" size="50" maxlength="100"/>
+											</li>
+
+											<li>
+												<label class="label1" for="publication_date">Fecha publicación desde :</label>
+												<input type="text" id="publication_date" name="publication_date" value="" size="10" maxlength="10"/>
+												<label class="label2" style="float:none" for="publication_date_to"> hasta :</label>
+												<input type="text"  style="float:none" id="publication_date_to" name="publication_date_to" value="" size="10" maxlength="10"/>&nbsp;(dd/mm/aaaa)
+											</li>
+										</ul>
+									</fieldset>
+
+									<h2 class="headAvanzada"><a id="otrosCriteriosEnlace" href="javascript:otrosCriterios();" >Mostrar otros criterios</a></h2>
+
+									<fieldset class="listaCriteriosBusqueda" style="display:none">
+										<legend>Otros criterios</legend>
+
+										<ul>
+											<li>
+												<label class="label1" for="insert_number">Número de inserción :</label>
+												<input type="text" id="insert_number" name="insert_number" value="" size="5" maxlength="5"/>
+											</li>
+
+											<!--
+											<li>
+												<label class="label1" for="insert_year">Año de publicación :</label>
+												<input type="text" id="insert_year" name="insert_year" value="" size="4" maxlength="4"/>
+											</li>
+											-->
+
+											<li>
+												<label class="label1" for="bop_number">Número BOP :</label>
+												<input type="text" id="bop_number" name="bop_number" value=""  size="6" maxlength="6"/>
+											</li>
+
+											<!--
+											<li>
+												<label class="label1" for="insert_date">Fecha de inserción :</label>
+												<input type="text" id="insert_date" name="insert_date" value="" size="10" maxlength="10"/>
+												<label class="label2" for="insert_date_to">hasta :</label>
+												<input type="text" id="insert_date_to" name="insert_date_to" value="" size="10" maxlength="10"/>
+											</li>
+											-->
+
+											<li>
+												<label class="label1" for="announcement_type">Tipo de anuncio :</label>
+												<select id="announcement_type" name="announcement_type_facet">
+												<option value="" selected>Todos</option>
+												
+													<option value="Acuerdo" >Acuerdo</option>
+												
+													<option value="Anuncio" >Anuncio</option>
+												
+													<option value="Anuncio de subasta" >Anuncio de subasta</option>
+												
+													<option value="Aprobación" >Aprobación</option>
+												
+													<option value="Citación" >Citación</option>
+												
+													<option value="Concurso" >Concurso</option>
+												
+													<option value="Convenio" >Convenio</option>
+												
+													<option value="Convocatoria" >Convocatoria</option>
+												
+													<option value="Corrección" >Corrección</option>
+												
+													<option value="Decreto" >Decreto</option>
+												
+													<option value="Emplazamiento" >Emplazamiento</option>
+												
+													<option value="Exposicion" >Exposicion</option>
+												
+													<option value="Exposición" >Exposición</option>
+												
+													<option value="Información" >Información</option>
+												
+													<option value="Ley" >Ley</option>
+												
+													<option value="Notificación" >Notificación</option>
+												
+													<option value="Orden" >Orden</option>
+												
+													<option value="Resolución" >Resolución</option>
+												
+												</select>
+											</li>
+
+											<li>
+												<label class="label1" for="subject">Resumen/Asunto :</label>
+												<input type="text" id="subject" name="subject" value=""  size="50" maxlength="100"/>
+											</li>
+										</ul>
+									</fieldset>
+
+									<input type="submit" value="Consultar"/>
+
+									<span style="padding-left:3em">
+										<label for="sort">Ordenar resultados por :</label>
+										<select id="sort" name="sort" >
+											<option value="score desc" >Relevancia</option>
+											<option value="publication_date desc" >Fecha de publicación</option>
+											<option value="insert_number desc"  >Nº de inserción</option>
+										</select>
+									</span>
+								</div>
+							</form>
+						</div>
+
+						
+						
+						
+						
+						
+					</div><!-- bop-search -->
+				</div><!-- bop-contetn -->
+			</div><!-- bop-wrapper -->
+
+			
+
+
+
+
+
+<div id="bop-navigation">
+	<ul>
+		<li><a href="inicio.jsp">Inicio</a></li>
+		<li><a href="ebopResumen.jsp?publication_date=30/10/2026&publication_date_to=30/10/2026">Boletín de hoy</a></li>
+		<li><a href="ebopCalendar.jsp">Calendario</a></li>
+		<li><a href="csv.jsp">Validar documento</a></li>
+		<li><a href="ebop.jsp">Buscador</a></li>
+		<li><a target="_blank" href="https://bibliotecadigital.diputoledo.es/pandora/index.vm?view=bop&lang=es">Colección Histórica. Desde 1833</a></li>
+		<li><a href="otrosBoletines.jsp">Otros boletines</a></li>
+		<li><a href="ordenanzaReguladoraBOP.jsp">Ordenanza Reguladora del BOP</a></li>
+		<li><a href="contacto.jsp">Contacto</a></li>
+	</ul>
+
+	<br/>
+</div>
+
+
+			<div id="bop-extra">
+				
+			</div>
+
+			
+
+</main>
+<div id="bop-footer">
+	<footer>
+		<div id="footer-content" class="verdana10">
+			Resolución mínima de 1024x768 v3.0.0 b26<br>
+			<strong>©Diputación de Toledo</strong>. Plaza de la Merced, 4 CP 45002 - Toledo. <img src="img/tfno.png" height="11" width="14" alt="Telefono"> 925 259 300<br>
+
+			<script type="text/javascript">
+				document.write('<a href="&#32;&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#119;&#101;&#98;&#109;&#97;&#115;&#116;&#101;&#114;&#64;&#100;&#105;&#112;&#117;&#116;&#111;&#108;&#101;&#100;&#111;&#46;&#101;&#115" style="color:#FFFFFF"><b>Contacto</b></a>');
+			</script>
+		</div>
+	</footer>
+</div>
+
+		</div>
+	</body>
+</html>
