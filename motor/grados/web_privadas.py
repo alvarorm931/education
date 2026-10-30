@@ -254,6 +254,9 @@ def recorrer(universidad: dict, grados: list[dict], archivo: Archivo | None, max
                                                          for w in clave(i.get("municipio") or "").split()}
     union = unir(grados, urls, propias)
     res["grados_con_url"] = len(union)
+    # para revisar por qué no se unen: URL de grado que no son de ningún grado del catálogo (solo direcciones)
+    unidas = {u["url"] for u in union.values()} | {a for u in union.values() for a in u["alternativas"]}
+    res["muestra_urls_grado_sin_unir"] = [u for u in dict.fromkeys(urls) if es_url_grado(u) and u not in unidas][:40]
     fichas, pdfs = {}, Counter()
     for codigo, u in list(union.items())[:max_paginas]:
         r = d.get(u["url"])
