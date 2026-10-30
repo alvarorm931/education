@@ -66,14 +66,32 @@ ESQUEMA = {
     },
 }
 MAX_TOKENS = 12_000
+# Las tablas largas (la de la UNED, con cada máster y su precio) no caben en una respuesta: van en trozos.
+TROZO = 12_000
+MAX_CARACTERES_TABLA = 240_000
 
 
-def texto_pdf(contenido: bytes) -> str:
+def trozos(texto: str, n: int = TROZO) -> list[str]:
+    """El texto en trozos de unas n letras, por líneas (una fila de la tabla no se parte)."""
+    out, actual = [], []
+    largo = 0
+    for linea in texto.split("\n"):
+        if actual and largo + len(linea) > n:
+            out.append("\n".join(actual))
+            actual, largo = [], 0
+        actual.append(linea)
+        largo += len(linea) + 1
+    if actual:
+        out.append("\n".join(actual))
+    return out
+
+
+def texto_pdf(contenido: bytes, maximo: int = MAX_CARACTERES) -> str:
     from pypdf import PdfReader
 
     try:
         paginas = PdfReader(io.BytesIO(contenido)).pages
-        return "\n".join((p.extract_text() or "") for p in paginas)[:MAX_CARACTERES]
+        return "\n".join((p.extract_text() or "") for p in paginas)[:maximo]
     except Exception:  # noqa: BLE001 - PDF ilegible o cifrado
         return ""
 
@@ -224,7 +242,7 @@ def capturar_pdfs(filas: list[dict], guarda: extraer.Guarda, hilos: int = 12, fi
                 g.update({"motivo": "reserva_tdm", "reserva_tdm": True})
             else:
                 g.update({"sha256": hashlib.sha256(r.content).hexdigest(), "bytes": len(r.content),
-                          "texto": texto_pdf(r.content)})
+                          "texto": texto_pdf(r.content, MAX_CARACTERES_TABLA if f.get("estado") == "tabla" else MAX_CARACTERES)})
                 g.update(guarda.original("web-centros", r.content, "pdf", f["url"]))
             out.append(g)
         return out
@@ -286,13 +304,17 @@ def lote(pdfs: list[Path], censo: Path | None, salida: Path, esperar_min: float 
                 cuentas["sin_texto"] += 1  # PDF escaneado o vacío: queda para leerlo con imagen
                 c["motivo"] = "sin_texto"
             else:
-                cid = "t" + hashlib.sha256((c["url"] + c["sha256"]).encode()).hexdigest()[:24]
-                por_id[cid] = (c, texto)
-                peticiones.append(peticion(cid, c["url"], texto))
-                enviado.append({"custom_id": cid, "url": c["url"], "sha256": c["sha256"], "texto": texto,
-                                "proveedor": c["proveedor"], "dominio": c["dominio"],
-                                **{k: c[k] for k in ("universidad", "curso_lista", "programa_lista") if c.get(k)}})
+                base_id = "t" + hashlib.sha256((c["url"] + c["sha256"]).encode()).hexdigest()[:24]
+                partes = trozos(texto) if c.get("estado") == "tabla" and len(texto) > TROZO else [texto]
+                for i, parte in enumerate(partes):
+                    cid = base_id if len(partes) == 1 else f"{base_id}-{i}"
+                    por_id[cid] = (c, parte)
+                    peticiones.append(peticion(cid, c["url"], parte))
+                    enviado.append({"custom_id": cid, "url": c["url"], "sha256": c["sha256"], "texto": parte,
+                                    "proveedor": c["proveedor"], "dominio": c["dominio"],
+                                    **{k: c[k] for k in ("universidad", "curso_lista", "programa_lista") if c.get(k)}})
                 cuentas["enviados"] += 1
+                cuentas["trozos"] += len(partes)
             f.write(json.dumps(c, ensure_ascii=False) + "\n")
     if not peticiones:
         return dict(cuentas)

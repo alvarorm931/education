@@ -113,3 +113,10 @@ def test_cita_de_tabla_web_sin_separadores():
     v = t.verificar({"precios": [{"programa": "Master in Management", "importe": "43,300", "concepto": "total",
                                   "cita": "Tuition fee 43,300€"}]}, texto)
     assert v[0]["estado"] == "aceptado" and v[0]["importe"] == 43300 and v[0]["cita_nivel"] == "sin_signos"
+
+
+def test_tablas_largas_en_trozos_por_lineas():
+    texto = "\n".join(f"Máster Universitario en Materia {i} | 60 | {1000 + i},00 €" for i in range(2000))
+    ps = t.trozos(texto, 12_000)
+    assert len(ps) > 3 and all(len(p) <= 12_100 for p in ps)
+    assert "\n".join(ps) == texto  # ninguna fila partida ni perdida
