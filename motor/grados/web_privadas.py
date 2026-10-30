@@ -34,14 +34,22 @@ from motor.estudios.rastreador import Dominio, _xml, medir_pagina, texto_de, url
 from motor.grados.catalogo import clave, clave_union
 from motor.grados.generico import nombre_base
 
-GRADO_URL = re.compile(r"grado|grados|graus?\b|grau-en|carreras?|degree|bachelor|undergraduate|titulaciones|"
-                       r"estudios-universitarios|doble-|dobles-", re.I)
+GRADO_URL = re.compile(r"\bgrados?\b|\bgraus?\b|\bcarreras?\b|\bdegrees?\b|\bbachelors?\b|undergraduate|titulaciones|"
+                       r"estudios-universitarios|\bdobles?-", re.I)
 NO_GRADO = re.compile(r"m[aá]ster|masters?\b|postgrado|posgrado|postgrau|doctorad|/blog|noticia|news|actualidad|evento|"
                       r"agenda|/tag/|/category/|/autor|/author|/wp-content/|\.pdf$|\.jpe?g$|\.png$|curso-de-|cursos/|"
                       r"formacion-permanente|experto|especialista|executive|mba|lanza|nuevo-grado|trabajo-fin|tfg|"
                       r"salidas|que-estudiar|requisitos|becas?[-/]|preguntas|faq|opiniones|testimonio|entrevista|"
                       r"jornada|webinar|open-day|puertas-abiertas|premio|convenio|acuerdo|calendario|horario|"
-                      r"profesor|docente|investigaci|departamento|/prensa|comunicado", re.I)
+                      r"profesor|docente|investigaci|departamento|/prensa|comunicado|sala-de-prensa|notici|formacion-profesional|"
+                      r"grado-superior|grado-medio|ciclos?-formativ|prestec|prestamo|financiaci|extinguir|alumni", re.I)
+# Palabras que acompañan al nombre en la ruta de una ficha de grado sin cambiar de qué grado se trata
+MARCADORES = {"grado", "grados", "grau", "graus", "doble", "dobles", "oficial", "oficiales", "estudios", "estudis",
+              "universitario", "universitarios", "bachelor", "degree", "online", "distancia", "presencial",
+              "semipresencial", "titulacion", "titulaciones", "carrera", "carreras", "in", "of", "and", "the", "en",
+              "es", "html", "htm", "php", "aspx", "presentacion", "informacion", "general"}
+# Más palabras ajenas al nombre en el último tramo de la ruta: es una noticia o una página de otra cosa
+MAX_SOBRA_TRAMO = 3
 # Sedes y ciudades: una URL de otra sede (universidades con un sitemap para varias) no es de esta universidad
 SEDES = {"madrid", "valencia", "canaria", "canarias", "andalucia", "sevilla", "malaga", "barcelona", "alicante",
          "castellon", "elche", "murcia", "bilbao", "donostia", "vitoria", "zaragoza", "salamanca", "valladolid",
@@ -71,6 +79,29 @@ def palabras_url(url: str) -> set[str]:
     return set(clave_union(re.sub(r"[/_\-.]+", " ", p)).split())
 
 
+def sobra_tramo(url: str, objetivo: set[str]) -> int:
+    """Palabras del último tramo de la ruta que no son del nombre ni marcadores («grado», «online»…)."""
+    tramos = [t for t in unquote(urlparse(url).path).split("/") if t]
+    if not tramos:
+        return 0
+    return len(set(clave_union(re.sub(r"[_\-.]+", " ", tramos[-1])).split()) - objetivo - MARCADORES)
+
+
+def objetivos_nombre(g: dict) -> list[set[str]]:
+    """Conjuntos de palabras que identifican el grado en una URL: el nombre en castellano y, si el título es
+    bilingüe («Diseño de Moda / Bachelor in Fashion Design»), también el nombre en el otro idioma."""
+    if g["clase"] == "doble":
+        if g.get("componentes"):
+            return [set().union(*(palabras(nombre_base(c["nombre"])) for c in g["componentes"]))]
+        return [palabras(g["nombre"])]
+    salida = [palabras(nombre_base(g["nombre"]))]
+    for parte in g["nombre"].split(" / ")[1:]:
+        otro = palabras(parte) - MARCADORES
+        if otro:
+            salida.append(otro)
+    return [o for o in salida if o]
+
+
 def es_url_grado(url: str) -> bool:
     ruta = unquote(urlparse(url).path)
     return bool(GRADO_URL.search(ruta)) and not NO_GRADO.search(ruta)
@@ -80,25 +111,25 @@ def unir(grados: list[dict], urls: list[str], propias: set[str] | None = None) -
     """código → {url, alternativas}: la URL de grado cuyo camino contiene todas las palabras del nombre.
 
     Entre varias, la que no está en otro idioma y tiene el camino más corto. Los dobles grados exigen además «doble»
-    en la URL; los simples, no tenerlo."""
+    en la URL; los simples, no tenerlo. Se descarta la URL cuyo último tramo trae más de MAX_SOBRA_TRAMO palabras
+    ajenas al nombre (noticias del tipo «alumnos-del-grado-en-x-visitan-…»)."""
     ajenas = SEDES - (propias or set())
     candidatas = [(u, pu) for u in urls if es_url_grado(u) for pu in [palabras_url(u)] if not (pu & ajenas)]
     salida = {}
     for g in grados:
-        if g["clase"] == "doble":
-            objetivo = set().union(*(palabras(nombre_base(c["nombre"])) for c in g["componentes"])) if g["componentes"] else palabras(g["nombre"])
-        else:
-            objetivo = palabras(nombre_base(g["nombre"]))
-        if not objetivo:
+        objetivos = objetivos_nombre(g)
+        if not objetivos:
             continue
         buenas = []
         for u, pu in candidatas:
             doble = "doble" in pu or "dobles" in pu
             if g["clase"] == "doble" and not doble or g["clase"] != "doble" and doble:
                 continue
-            if objetivo <= pu:
-                sobra = len(pu - objetivo)
-                buenas.append((bool(IDIOMA_EXTRANJERO.search(urlparse(u).path)), sobra, len(u), u))
+            for objetivo in objetivos:
+                if objetivo <= pu and sobra_tramo(u, objetivo) <= MAX_SOBRA_TRAMO:
+                    sobra = len(pu - objetivo)
+                    buenas.append((bool(IDIOMA_EXTRANJERO.search(urlparse(u).path)), sobra, len(u), u))
+                    break
         if buenas:
             buenas.sort()
             salida[g["codigo"]] = {"url": buenas[0][3], "alternativas": [b[3] for b in buenas[1:4]]}

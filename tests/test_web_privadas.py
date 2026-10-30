@@ -44,3 +44,21 @@ def test_otra_sede_y_paginas_que_no_son_ficha():
 def test_importes_fuera_de_rango():
     i = wp.importes("<p>Salario medio por curso 70.000 €</p><p>Precio por curso 9.420 €</p>")
     assert [(x["valor"], x["verosimil"]) for x in i] == [(70000, False), (9420, True)]
+
+
+def test_unir_descarta_noticias_fp_y_falsos_grado():
+    grados = [{"codigo": "1", "clase": "grado", "nombre": "Fisioterapia", "componentes": []},
+              {"codigo": "2", "clase": "grado", "nombre": "Marketing", "componentes": []},
+              {"codigo": "3", "clase": "grado", "nombre": "Enseñanza y Animación Sociodeportiva", "componentes": []}]
+    urls = ["https://u.es/el-grado-en-fisioterapia-celebra-a-su-patron-san-juan-de-dios/",
+            "https://u.es/marketing-directo-integrado",
+            "https://u.es/formacion-profesional/grado-superior-ensenanza-animacion-sociodeportiva/"]
+    assert wp.unir(grados, urls) == {}
+    urls.append("https://u.es/estudios/grado-en-fisioterapia-online/")
+    assert wp.unir(grados, urls)["1"]["url"] == "https://u.es/estudios/grado-en-fisioterapia-online/"
+
+
+def test_unir_usa_el_nombre_en_ingles_de_los_titulos_bilingues():
+    g = {"codigo": "9", "clase": "grado", "nombre": "Diseño de Moda / Bachelor in Fashion Design", "componentes": []}
+    u = wp.unir([g], ["https://www.ie.edu/university/studies/bachelor-in-fashion-design/"])
+    assert u["9"]["url"].endswith("bachelor-in-fashion-design/")
