@@ -100,13 +100,16 @@ def _clave(t: str) -> str:
 
 
 NO_SINGULAR = {"crisis", "analisis", "tesis", "menos", "mas", "tres", "dos", "seis", "ademas", "lunes", "martes",
-               "miercoles", "jueves", "viernes", "campus", "virus", "bus", "gas", "pais", "mies", "ciempozuelos"}
+               "miercoles", "jueves", "viernes", "campus", "virus", "bus", "gas", "pais", "mies", "ciempozuelos",
+               "interes", "mes", "ingles", "frances", "portugues", "cortes", "antes", "despues", "atlas"}
 
 
 def singular(w: str) -> str:
     """«auxiliares administrativos» y «auxiliar administrativo», «peones», «oficiales», «técnicos»: la misma clave."""
     if len(w) < 5 or w in NO_SINGULAR or w.endswith(("is", "us")):
         return w
+    if w.endswith("ces") and len(w) > 5 and w[-4] in "aeiou":  # «jueces», «capataces»
+        return w[:-3] + "z"
     if w.endswith("es") and len(w) > 5 and w[-3] in "rlndz" and w[-4] in "aeiou":
         return w[:-2]
     if w.endswith(("os", "as", "es")):
@@ -138,9 +141,20 @@ def normalizar_puesto(denominacion: str) -> dict:
     t = " ".join(FEMENINOS.get(w, w) for w in " ".join(TRADUCCION.get(w, w) for w in t.split()).split())
     t = " ".join(FEMENINOS.get(singular(w), singular(w)) for w in t.split())
     t = re.sub(r"\b(\w+(?: \w+)?) o \1\b", r"\1", t)    # «trabajador o trabajadora social» -> «trabajador social»
-    canonico = SINONIMOS.get(t) or _SINONIMOS_POR_CLAVE.get(_clave(t), t)
+    canonico = SINONIMOS.get(t) or _SINONIMOS_POR_CLAVE.get(_clave(t)) or _sinonimos_en_singular().get(_clave(t), t)
     clave = _clave(canonico)
     return {"clave": clave, "nombre": canonico, "especialidad": especialidad, "denominacion": original}
+
+
+_SINGULARES: dict[str, str] = {}
+
+
+def _sinonimos_en_singular() -> dict[str, str]:
+    """Los sinónimos con sus palabras en singular, como las claves («policía local y sus auxiliares»)."""
+    if not _SINGULARES:
+        for k, v in SINONIMOS.items():
+            _SINGULARES[_clave(" ".join(FEMENINOS.get(singular(w), singular(w)) for w in k.split()))] = v
+    return _SINGULARES
 
 
 def grupo(texto: str, escala: str | None, subescala: str | None) -> tuple[str | None, str | None]:

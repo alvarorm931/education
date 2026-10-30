@@ -242,9 +242,13 @@ def alcance(titulo_norm: str, modalidad: str | None, epigrafe: str | None) -> st
 # Nombramientos accidentales, provisionales o en acumulación de los puestos reservados a habilitados nacionales
 # («se confiere nombramiento accidental para el puesto de Secretaría-Intervención»): provisión, no acceso
 RE_PROVISION_HABILITADOS = re.compile(
-    r"nombramientos? (?:accidental|provisional|en comision de servicios|interino) (?:para|en|del?) (?:el )?puesto|"
-    r"nombramientos? accidental|acumulacion de (?:las )?funciones|comision de servicios|"
-    r"nomenament (?:accidental|provisional)|acumulacio de funcions")
+    r"nombramientos? (?:accidental|provisional|en comision de servicios|interino) (?:para|en|del?) (?:el )?puesto "
+    r"(?:de (?:la )?)?(?:secretari|intervenci|tesorer|vicesecretari|vicointervenci)|"
+    r"nombramientos? accidental|acumulacion de (?:las )?funciones|"
+    r"nomenament (?:accidental|provisional)|acumulacio de funcions|"
+    # «en comisión de servicios», salvo en una convocatoria de acceso («procedimiento selectivo para el acceso al
+    # Cuerpo de Inspectores… y Inspector Accidental, en comisión de servicios»)
+    r"^(?!.*(?:acceso|ingreso|selectiv|oposici)).*comision de servicios")
 # Lo que no es de ningún proceso de selección aunque hable de personal (ceses, personal eventual, plantillas,
 # relaciones de puestos, convenios, retribuciones): ni crea procesos ni se espera en ninguno
 RE_NO_SELECCION = re.compile(

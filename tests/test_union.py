@@ -132,3 +132,15 @@ def test_convocatoria_unica_pero_demasiado_antigua():
     recuento, huerfanos = u.unir(procesos, {"bop:8": {"convocante": "huesca"}}, actos, lambda a: [a["convocante"]])
     assert [h["motivo"] for h in huerfanos] == ["convocante_puesto_lejano"] and huerfanos[0]["candidatos"] == ["bop:8"]
     assert recuento["convocante_puesto"] == 1  # el de aprobados sí: puede llegar años después
+
+
+def test_puesto_del_texto_nunca_guarda_una_persona():
+    """Revisión del 31/10/2026: «nombramiento de Juan…» o «funcionaria en prácticas a Doña Ana…» se guardaban como
+    puesto. En el texto solo valen «plaza de X» y «como X», sin nombres."""
+    assert u.puesto_en_texto("Visto el expediente, se resuelve el nombramiento de Juan Antonio López Martínez, "
+                             "funcionario de carrera.") is None
+    assert u.puesto_en_texto("Se ha nombrado funcionaria en prácticas a Doña Ana López Ruiz.") is None
+    assert u.puesto_en_texto("PO 575/2025 Carmen María Morote Castellano administrativo") is None
+    assert u.puesto_en_texto("nombrar a D. Pedro Pérez como Técnico de Gestión") == "tecnico-gestion"
+    assert u.puesto("Nombramiento de Margarita Bujosa Pocoví") is None
+    assert u.puesto("RESOLUCIÓN por la que se modifica el plazo máximo de 10 plazas") is None

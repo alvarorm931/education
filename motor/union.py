@@ -142,7 +142,9 @@ RE_ANTES_PUESTO = re.compile(r"^(?:(?:interin[oa]s?|interines|temporal(?:es)?|ev
 RE_NO_ES_PUESTO = re.compile(r"^(?:que-se-relacionan|que-se-indican|que-se-citan|dentro|por|carreira|carrera|num-\d+|"
                              r"numero-\d+|n-\d+|efectos?-.*|aspirantes?(?:-.*)?|persona.*|resolucion-.*|decreto-.*|"
                              r"orden-.*|area-\d+|op\d+.*|correccion-errores|interin.*|temporal|temporal-.*|"
-                             r"extraordinaria|basicas|empresa-publica|varias-categorias|categorias|diversas|varias|excluido.*|admitido.*)$")
+                             r"extraordinaria|basicas?|empresa-publica|varias-categorias|categorias|diversas|varias|excluido.*|admitido.*|"
+                             r"https?-.*|www-.*|.*-(?:es|com|org|cat|gal|eus|net)|civil|sescam|maximo.*|ley-.*|boletin-.*|"
+                             r"boe-.*|boib-.*|calle-.*|organo-.*|plazo-.*|ayuntamiento-.*|.*-\d{4}(?:-.*)?)$")
 
 
 _TOKENS_CORTE: dict[str, re.Pattern] = {}
@@ -168,6 +170,8 @@ def _cortar(p: str, corte: re.Pattern) -> str:
 
 def _clave_puesto(p: str, cuerpo: bool = False) -> str | None:
     from motor.catalogo.territorio import provincia
+    if _con_persona(p):
+        return None
     p = _cortar(p, RE_CORTE_CUERPO if cuerpo else RE_CORTE_PUESTO)
     p = RE_ANTES_PUESTO.sub("", p).strip(" -")
     if provincia(p) or set(normalizar(p).split()) <= GENERICOS:  # «(Córdoba)», «plazas vacantes»
@@ -194,15 +198,37 @@ def puesto(titulo: str | None) -> str | None:
     return None
 
 
+RE_PUESTO_TEXTO = re.compile(r"\b(?:plazas?|pla[çc]a|places|prazas?|puestos?|categor[ií]as?)\s+(?:de\s+|d'\s*|da\s+)"
+                             r"(?:(?:una|un|dos|tres|\d+)\s+(?:plazas?\s+de\s+)?)?(?P<p>[^,.;:()]{3,90})"
+                             r"|\b(?:como|com a)\s+(?P<q>[A-ZÁÉÍÓÚÑa-záéíóúñ][^,.;:()]{3,80})", re.IGNORECASE)
+
+
 def puesto_en_texto(texto: str | None) -> str | None:
     """Puesto del principio del texto de un acto cuyo título no lo nombra («Nombramiento de funcionario de carrera»:
     «… ha sido nombrado funcionario de carrera en la plaza de Agente de Policía Local …»). Solo la clave del puesto;
-    nada más del texto (que puede llevar nombres)."""
+    nada más del texto.
+
+    En el texto lo que sigue a «nombramiento de» o a «funcionario de carrera,» suele ser una persona (la revisión
+    del 31/10/2026 encontró nombres guardados así): aquí solo valen «plaza de X» y «como X», y nunca un trozo con un
+    nombre de persona."""
     cabeza = re.sub(r"\s+", " ", (texto or "")[:2000])
     for frase in re.split(r"(?<=[.;:])\s+", cabeza):
-        if (q := puesto(frase)):
-            return q
+        for m in RE_PUESTO_TEXTO.finditer(frase):
+            trozo = re.split(r"\s+(?:a|al|que|quien|quienes|cuyo|cuya|para|y se)\s", m.group("p") or m.group("q"))[0]
+            if _con_persona(trozo):
+                continue
+            if (c := _clave_puesto(trozo)):
+                return c
     return None
+
+
+def _con_persona(trozo: str) -> bool:
+    """Un nombre de persona en el trozo (tratamiento, nombre y apellidos) o una palabra que es un nombre de pila."""
+    from motor.limpieza import NOMBRES_PILA, tiene_nombre_de_persona
+    if tiene_nombre_de_persona(trozo) or re.search(r"\b(?:d\.|d[oñ]a\.?|don|doña|sr\.|sra\.)\s", trozo, re.IGNORECASE):
+        return True
+    palabras = [normalizar(w) for w in re.findall(r"[A-ZÁÉÍÓÚÑ][a-záéíóúñ]+", trozo)]
+    return any(w in NOMBRES_PILA for w in palabras)
 
 
 def turno(titulo: str | None) -> str | None:
@@ -270,7 +296,7 @@ def unir(procesos: list[dict], origenes: dict[str, dict], actos: list[dict], cla
         conv = set(clave_convocante(o)) if o else set()
         org = organo(p.get("titulo"))
         if org:
-            conv.add("org:" + clave_organo(org, o.get("fuente") or (p.get("fuentes") or ["BOE"])[0]))
+            conv.add("org:" + clave_organo(org, o.get("fuente") or (p.get("fuentes") or ["BOE"])[0], o.get("departamento")))
         claves_proc[p["id"]] = conv
         f, cod = disposicion(p.get("titulo"), p.get("apertura_plazo") or "9999")
         if f:
@@ -307,7 +333,7 @@ def unir(procesos: list[dict], origenes: dict[str, dict], actos: list[dict], cla
         fecha = x.get("fecha") or ""
         claves = set(clave_convocante(x))
         if (org := organo(x.get("titulo"))):
-            claves.add("org:" + clave_organo(org, x.get("fuente")))
+            claves.add("org:" + clave_organo(org, x.get("fuente"), x.get("departamento")))
         q, t = puesto(x.get("titulo")) or x.get("puesto_texto"), turno(x.get("titulo"))
         elegido, motivo, candidatos = None, None, []
         # 1. referencia explícita (identificador del BOE de la convocatoria o de otro acto ya unido)
@@ -467,7 +493,7 @@ def _plazo_normal(tipo: str | None) -> int:
     """Días tras la convocatoria en los que un acto de ese tipo sale con normalidad (medido sobre los actos unidos por
     cita, 31/10/2026): listas, tribunal, correcciones y lo demás, un año; nombramientos, dos; resultados y exámenes,
     los tres de la ventana."""
-    if tipo in ("aprobados", "examen"):
+    if tipo in ("aprobados", "examen", "desierta", "anulacion"):
         return VENTANA_DIAS
     if tipo == "nombramiento":
         return 2 * 366

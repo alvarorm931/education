@@ -390,8 +390,9 @@ class Freno:
 
     FALLOS = {"error_http", "error_formato", "fuente_inaccesible"}
 
-    def __init__(self, max_seguidos: int = 8):
+    def __init__(self, max_seguidos: int = 8, max_reintentos_fallidos: int = 30):
         self.max_seguidos, self.seguidos = max_seguidos, 0
+        self.max_reintentos, self.reintentos_fallidos = max_reintentos_fallidos, 0
 
     def anotar(self, informe: dict, reintento: bool = False) -> bool:
         """reintento: el día ya había fallado antes. Si vuelve a fallar no cuenta: con 8 días viejos con error
@@ -399,7 +400,15 @@ class Freno:
         no pasaba del 27/07/2025)."""
         fallo = informe.get("resultado") in self.FALLOS
         if fallo and reintento:
-            return False
+            # Una caída de verdad (sin conexión) sí cuenta; y como mucho 30 reintentos fallidos por ejecución, para
+            # no repetir sin freno días que fallan siempre
+            self.reintentos_fallidos += 1
+            if self.reintentos_fallidos >= self.max_reintentos:
+                print(f"::warning::{self.reintentos_fallidos} días reintentados siguen fallando; se para y se reintenta "
+                      "en la próxima ejecución")
+                return True
+            if informe.get("resultado") != "fuente_inaccesible":
+                return False
         self.seguidos = self.seguidos + 1 if fallo else 0
         if self.seguidos >= self.max_seguidos:
             print(f"::warning::{self.seguidos} fallos seguidos ({informe.get('resultado')}: "

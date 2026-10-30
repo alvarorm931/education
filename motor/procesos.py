@@ -366,12 +366,14 @@ def construir(actos: list[dict], hoy: date, autonomicos: list[dict] | None = Non
     usados: set[str] = set()
 
     def gemelos_por_disposicion(a: dict) -> list[dict]:
+        """Solo entre las publicaciones que no son gemelas exactas (por título) de otro anuncio del BOE."""
         fd, _ = disposicion(a.get("titulo"), a.get("fecha") or "9999")
         if not fd or a.get("ambito") == "local":
             return []
         cands = {x["id"]: x for k in clave_convocante(a) if k.startswith("orgn:")
                  for x in por_disposicion.get((k.split(":", 1)[1].split(":")[-1], fd), [])
-                 if x["id"] not in usados and abs(_dias_entre(a.get("fecha"), x.get("fecha"))) <= 60}
+                 if x["id"] not in usados and x["id"] not in gemelas_exactas and
+                 abs(_dias_entre(a.get("fecha"), x.get("fecha"))) <= 60}
         lista = list(cands.values())
         if len(lista) > 1:
             pa = _puestos_de(a)
@@ -429,6 +431,7 @@ def construir(actos: list[dict], hoy: date, autonomicos: list[dict] | None = Non
         if len(lista) == 1:
             sin_cita[lista[0]["id"]].append(x)
 
+    gemelas_exactas = {x["id"] for a in origenes_boe for x in por_titulo.get(clave_titulo(a.get("titulo")), [])}
     procesos = []
     for a in origenes_boe:
         a = {**a, "fuente": a.get("fuente") or "BOE"}
@@ -574,12 +577,18 @@ def universidad_del_titulo(titulo: str | None) -> str | None:
     return m.group(1).strip() if m else None
 
 
-def clave_organo(org: str, fuente: str | None) -> str:
+def clave_organo(org: str, fuente: str | None, departamento: str | None = None) -> str:
     """El nombre de una consejería o dirección general no la distingue («Consejería de Sanidad» de Madrid, Cantabria,
-    Canarias o Castilla y León): va con el boletín donde publica. Las universidades no (convocan en el BOE y
-    publican las listas en el boletín de su comunidad) ni el BOE (sus departamentos son únicos)."""
+    Canarias o Castilla y León): va con el boletín donde publica. En el BOE, con su departamento («Subsecretaría» la
+    tienen 30 ministerios; «Dirección General de Personal», Aragón, Canarias y Defensa). Las universidades no
+    (convocan en el BOE y publican las listas en el boletín de su comunidad)."""
     f = fuente or "BOE"
-    return org if f == "BOE" or "universi" in org else f"{f}:{org}"
+    if "universi" in org:
+        return org
+    if f == "BOE":
+        dep = clave_titulo(departamento)
+        return f"BOE:{dep}:{org}" if dep and dep != org else org
+    return f"{f}:{org}"
 
 
 RE_NOMBRAMIENTO_2A = re.compile(
