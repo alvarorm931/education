@@ -27,3 +27,9 @@ def test_badajoz():
     assert [(x["convocante"]["nombre"], x["tipo_acto"]) for x in sel] == [
         ("Ahillones", "admitidos"), ("Puebla de la Calzada", "correccion"), ("Talarrubias", "convocatoria")]
     assert sel[0]["convocante"]["organismo"] == "Ahillones" and sel[0]["convocante"]["provincia"] == "Badajoz"
+
+
+def test_badajoz_texto():
+    t = bopbadajoz.texto_disposicion((FIX / "bopbadajoz_anuncio_165039.html").read_bytes())
+    assert t["titulo"].startswith("Lista definitiva de aspirantes admitidos de la convocatoria de una plaza de Encargado")
+    assert "decreto de Alcaldía número 171/2026" in t["texto"]

@@ -44,8 +44,49 @@ def seleccionar(filas: list[dict]) -> list[dict]:
     return sel(CANAL, filas)
 
 
+def texto_disposicion(contenido: bytes) -> dict:
+    from motor.limpieza import limpiar_html, texto_de
+
+    h = contenido.decode("utf-8", errors="replace")
+    i = h.find('<div class="contenido_anuncio">')
+    if i < 0:
+        raise ValueError("sin contenido_anuncio: posible cambio de formato")
+    fin = h.find("</article>", i)
+    tit = re.search(r"<div class='epigrafe'>(.*?)</div>", h, re.DOTALL)
+    return {"titulo": texto_de(tit.group(1)) if tit else None, **limpiar_html(h[i:fin if fin > 0 else None])}
+
+
+def ruta_texto(raiz, x: dict):
+    return raiz / "datos" / "provinciales" / FUENTE / "textos" / x["fecha"][:4] / x["fecha"][5:7] / f"{x['id']}.json"
+
+
 def main(argv: list[str] | None = None) -> int:
-    return main_canal(CANAL, argv)
+    """--textos: la ficha de cada anuncio de empleo (/bop/ventana_anuncio.php, cerrada en robots.txt; se lee como
+    boletín oficial, motor/http.py)."""
+    argv = sys.argv[1:] if argv is None else argv
+    if "--textos" not in argv:
+        return main_canal(CANAL, argv)
+    import argparse
+    from pathlib import Path
+
+    from motor.archivo import Archivo, solo_huella_por_defecto
+    from motor.autonomicos.comun import descargar_textos, leer_jsonl
+
+    p = argparse.ArgumentParser()
+    p.add_argument("--textos", action="store_true")
+    p.add_argument("--salida", type=Path, default=Path("."))
+    p.add_argument("--max-minutos", type=float, default=0)
+    p.add_argument("--pausa", type=float, default=1.0)
+    a = p.parse_args(argv)
+    archivo = Archivo(a.salida / "archivo", indice_por_fuente=True, solo_huella=solo_huella_por_defecto())
+    base = a.salida / "datos" / "provinciales" / FUENTE / "oposiciones"
+    pend = [x for f in sorted(base.glob("*/*/*.jsonl"), reverse=True) for x in leer_jsonl(f)
+            if x.get("url_html") and not ruta_texto(a.salida, x).exists()]
+    hechos, errores = descargar_textos(pend, lambda x: ruta_texto(a.salida, x), lambda x: x["url_html"],
+                                       texto_disposicion, archivo, FUENTE, a.max_minutos, a.pausa,
+                                       accept="text/html", ext="html")
+    print(f"BOP Badajoz textos: {hechos} descargados, {errores} errores, {len(pend) - hechos} pendientes")
+    return 0
 
 
 if __name__ == "__main__":

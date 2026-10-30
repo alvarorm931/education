@@ -160,6 +160,8 @@ for c in $CONECTORES; do
       # Solo el boletín del día, por su canal Atom (sin histórico por ahora)
       ejecutar motor.provinciales.bopbadajoz --salida "$S"
       "$G" "BOP Badajoz: boletín del día"
+      ejecutar motor.provinciales.bopbadajoz --textos --salida "$S" --max-minutos "$M"
+      "$G" "BOP Badajoz: textos"
       ;;
     bopzamora)
       # Los boletines que sigan en la portada (los 8 últimos, unas tres semanas)
