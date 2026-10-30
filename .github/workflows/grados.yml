@@ -20,13 +20,18 @@ on:
         description: "Rutas de la rama sondas que necesita el módulo, separadas por espacios (quedan en ./entrada/)"
         required: false
         default: ""
+      ejecutor:
+        description: "Dónde se ejecuta: github o espana (servidor propio, para fuentes que no responden a GitHub)"
+        type: choice
+        options: [github, espana]
+        default: github
 
 permissions:
   contents: write
 
 jobs:
   tramo:
-    runs-on: ubuntu-latest
+    runs-on: ${{ inputs.ejecutor == 'espana' && fromJSON('["self-hosted", "espana"]') || 'ubuntu-latest' }}
     timeout-minutes: 58
     strategy:
       fail-fast: false
@@ -34,6 +39,9 @@ jobs:
       matrix:
         args: ${{ fromJSON(inputs.tramos) }}
     steps:
+      # En el servidor propio la carpeta de trabajo se conserva entre ejecuciones: se empieza de cero
+      - name: Limpiar restos de ejecuciones anteriores
+        run: rm -rf out entrada
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
