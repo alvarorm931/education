@@ -1,13 +1,13 @@
 {
- "fecha": "2026-10-30T20:25:26+00:00",
- "fecha_madrid": "30/10 21:25",
+ "fecha": "2026-10-30T20:53:26+00:00",
+ "fecha_madrid": "30/10 21:53",
  "ventana_horas": 6.0,
  "resumen": {
-  "ejecuciones_revisadas": 99,
+  "ejecuciones_revisadas": 108,
   "fallos": 1,
   "fallos_pendientes": 0,
   "relanzados": 0,
-  "colas_largas": 2,
+  "colas_largas": 3,
   "flujos_programados_parados": [],
   "programaciones_lanzadas_a_mano": [],
   "avisos_de_fuentes": 0,
@@ -78,18 +78,25 @@
  ],
  "colas_largas": [
   {
-   "flujo": "Boletines autonómicos",
-   "id": 41113872721,
-   "en_cola_min": 69,
-   "trabajos_empezados": 2,
-   "url": "https://github.com/alvarorm931/education/actions/runs/41113872721"
+   "flujo": "Grados por tramos",
+   "id": 41120742487,
+   "en_cola_min": 46,
+   "trabajos_empezados": 0,
+   "url": "https://github.com/alvarorm931/education/actions/runs/41120742487"
   },
   {
-   "flujo": "Sonda de fuentes",
-   "id": 41113365103,
-   "en_cola_min": 73,
+   "flujo": "Prueba de conector",
+   "id": 41120449947,
+   "en_cola_min": 48,
    "trabajos_empezados": 0,
-   "url": "https://github.com/alvarorm931/education/actions/runs/41113365103"
+   "url": "https://github.com/alvarorm931/education/actions/runs/41120449947"
+  },
+  {
+   "flujo": "Estudios por tramos",
+   "id": 41119697629,
+   "en_cola_min": 54,
+   "trabajos_empezados": 0,
+   "url": "https://github.com/alvarorm931/education/actions/runs/41119697629"
   }
  ],
  "programados": {

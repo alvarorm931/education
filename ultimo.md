@@ -1,8 +1,8 @@
-# Vigilancia 30/10 21:25 (Madrid)
+# Vigilancia 30/10 21:53 (Madrid)
 
-- Ejecuciones revisadas (últimas 6 h): 99
+- Ejecuciones revisadas (últimas 6 h): 108
 - Fallos: 1; pendientes: 0; relanzados ahora: 0
-- Colas de más de 30 minutos: 2
+- Colas de más de 30 minutos: 3
 - Flujos programados parados: ninguno
 - Almacén S3: ok
 - Programaciones que GitHub no disparó y se lanzaron a mano: ninguna
@@ -21,5 +21,6 @@ https://github.com/alvarorm931/education/actions/runs/41079079352 (intento 2, wo
       BOP-GRANADA: 5211 actos, 1935 con texto, 267 con fecha de fin de plazo; {'titulo': 4305, 'plazo_general_v3': 906}
       ##[error]Process completed with exit code 1.
 
-- En cola 69 min: Boletines autonómicos https://github.com/alvarorm931/education/actions/runs/41113872721
-- En cola 73 min: Sonda de fuentes https://github.com/alvarorm931/education/actions/runs/41113365103
+- En cola 46 min: Grados por tramos https://github.com/alvarorm931/education/actions/runs/41120742487
+- En cola 48 min: Prueba de conector https://github.com/alvarorm931/education/actions/runs/41120449947
+- En cola 54 min: Estudios por tramos https://github.com/alvarorm931/education/actions/runs/41119697629
