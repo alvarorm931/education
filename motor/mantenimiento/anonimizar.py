@@ -16,7 +16,7 @@ import re
 import sys
 from pathlib import Path
 
-from motor.limpieza import RE_DOCUMENTO, RE_TRATAMIENTO, _es_persona
+from motor.limpieza import RE_DESIGNADO, RE_DOCUMENTO, RE_TRATAMIENTO, _es_designado, _es_persona
 
 
 def _nombre_falso(n: str) -> str:
@@ -92,6 +92,16 @@ def anonimizar_texto(t: str) -> tuple[str, int]:
         return re.sub(r"\d", "0", m.group(0))
 
     t = RE_TRATAMIENTO.sub(nombre, t)
+
+    def designado(m: re.Match) -> str:  # «nombrar … a Nombre Apellido como …» (sin don ni doña)
+        nonlocal n
+        if not _es_designado(m):
+            return m.group(0)
+        n += 1
+        return m.group(0)[: m.start("n") - m.start()] + _nombre_falso(m.group("n")) + m.group(0)[m.end("n") - m.start():]
+
+    for r in RE_DESIGNADO:
+        t = r.sub(designado, t)
     return RE_DOCUMENTO.sub(documento, t), n
 
 

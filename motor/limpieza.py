@@ -69,8 +69,39 @@ def _es_persona(m: re.Match) -> bool:
     return True
 
 
+# Nombres sin tratamiento junto al acto que nombra a la persona: «nombrar … a Nombre Apellido Apellido como …»,
+# «funcionaria interina de Nombre Apellido:», «Nombre Apellido tomará posesión».
+_NOMBRE = rf"(?P<n>{_PAL}(?:\s+(?:(?:de|del|de\s+la|y|i|e)\s+)?{_PAL}){{1,4}})"
+RE_DESIGNADO = [re.compile(x) for x in (
+    rf"(?i:\b(?:nombrar|nombra|nombro|se nombra|nomear|nomea|nomenar|nomena|designar|designa|contratar|contrata|"
+    rf"adjudicar|adjudica)\b)[^.;:]{{0,160}}?\s(?:a|al|á|à)\s+{_NOMBRE}(?=\s+(?:como|para|en|con|que)\b|\s*[,.:;)])",
+    rf"(?i:\b(?:interin[oa]s?|interí|de carrera|en pr[aá]cticas|laboral fix[oa]|laboral fij[oa])\b)\s+"
+    rf"(?:a|de|á)\s+{_NOMBRE}(?=\s*[,.:;(]|\s+(?:como|para|con)\b)",
+    rf"{_NOMBRE}(?=\s+(?i:tomar[áa] posesi[óo]n|ha tomado posesi[óo]n|tom[óo] posesi[óo]n|prendrà possessió))",
+)]
+NO_NOMBRE = {"agente", "agent", "auxiliar", "técnico", "técnica", "tecnico", "tècnic", "administrativo",
+             "administrativa", "administratiu", "oficial", "operario", "operaria", "operari", "peón", "peon", "policía",
+             "policia", "conserje", "arquitecto", "arquitecta", "ingeniero", "ingeniera", "secretario", "secretaria",
+             "interventor", "interventora", "tesorero", "tesorera", "ayuntamiento", "concello", "ajuntament",
+             "diputación", "diputació", "deputación", "junta", "xunta", "consejería", "conselleria", "comisión",
+             "comissió", "tribunal", "personal", "persoal", "funcionario", "funcionaria", "recursos", "servicios",
+             "serveis", "departamento", "departament", "área", "area", "alcaldía", "alcaldia", "presidencia",
+             "presidència", "concejalía", "plaza", "plaça", "praza", "puesto", "lloc", "posto", "cuerpo", "cos",
+             "escala", "subescala", "grupo", "grup", "boletín", "butlletí", "real", "orden", "resolución", "decreto",
+             "ley", "mancomunidad", "consorcio", "entidad", "empresa", "sociedad", "fundación", "universidad",
+             "excmo", "excma", "ilmo", "ilma", "el", "la", "los", "las", "les", "els"}
+
+
+def _es_designado(m: re.Match) -> bool:
+    n = m.group("n")
+    primera = n.split()[0].lower().strip(".,")
+    return not (primera in NO_NOMBRE or CARGOS.match(n) or n.isupper())
+
+
 def tiene_nombre_de_persona(texto: str) -> bool:
-    return any(_es_persona(m) for m in RE_TRATAMIENTO.finditer(texto or ""))
+    t = texto or ""
+    return any(_es_persona(m) for m in RE_TRATAMIENTO.finditer(t)) or any(_es_designado(m) for r in RE_DESIGNADO
+                                                                        for m in r.finditer(t))
 
 
 def titulo_sin_nombres(titulo: str | None) -> str | None:
@@ -78,7 +109,11 @@ def titulo_sin_nombres(titulo: str | None) -> str | None:
     «... por la que se nombra Catedrático de Universidad a [persona].»"""
     if not titulo:
         return titulo
-    return RE_TRATAMIENTO.sub(lambda m: "[persona]" if _es_persona(m) else m.group(0), titulo)
+    t = RE_TRATAMIENTO.sub(lambda m: "[persona]" if _es_persona(m) else m.group(0), titulo)
+    for r in RE_DESIGNADO:
+        t = r.sub(lambda m: (m.group(0)[: m.start("n") - m.start()] + "[persona]" + m.group(0)[m.end("n") - m.start():])
+                  if _es_designado(m) else m.group(0), t)
+    return t
 
 
 def texto_de(fragmento: str) -> str:
