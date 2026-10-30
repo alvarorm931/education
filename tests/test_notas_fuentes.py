@@ -40,3 +40,22 @@ def test_nunca_listas_de_personas():
             '<a href="/x/Lista_1_2026_espera_publicar.pdf">Lista de espera</a>')
     assert [u for u, _ in nf.enlaces(html, "https://u.es/")] == ["https://u.es/notas_corte/2026/NOTASDECORTE2026-15julio.pdf"]
     assert nf.DNI.search("GARCÍA LÓPEZ, ANA ***1234** 9,876") and not nf.DNI.search("Medicina 0051 13,456")
+
+
+def test_consulta_post_de_formulario(monkeypatch, tmp_path):
+    from motor import http
+    from motor.archivo import Archivo
+
+    class R:
+        status = 200
+        contenido = "<table><tr><td>Medicina</td><td>Granada</td><td>13,512</td></tr></table>".encode()
+        cabeceras = {"Content-Type": "text/html"}
+
+    pedidos = []
+    monkeypatch.setattr(http, "obtener", lambda url, **k: pedidos.append((url, k["formulario"])) or R())
+    monkeypatch.setattr(nf.time, "sleep", lambda s: None)
+    doc = nf.consultar({"url": "https://j.es/sguit/?q=grados", "campos": {"anio": "2024", "univpet": ""}},
+                       Archivo(tmp_path / "a", indice_por_fuente=True, solo_huella=True), 1000)
+    assert pedidos == [("https://j.es/sguit/?q=grados", {"anio": "2024", "univpet": ""})]
+    assert doc["estado"] == 200 and doc["formato"] == "html" and doc["filas_con_nota"] == 1
+    assert doc["url"].endswith("anio=2024&univpet=")

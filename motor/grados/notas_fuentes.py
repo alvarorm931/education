@@ -65,6 +65,11 @@ SEMILLAS: dict[str, dict] = {
                      "https://analisi.transparenciacatalunya.cat/resource/bvmc-igg6.json?$limit=50000"]},
     "andalucia": {
         "nombre": "Distrito único andaluz",
+        # consulta de cursos anteriores (formulario POST de la página; un curso cada vez, el resto «Cualquiera»)
+        "consultas": [{"url": "https://www.juntadeandalucia.es/economiaconocimientoempresasyuniversidad/sguit/"
+                              "?q=grados&d=g_not_cor_anteriores_top.php",
+                       "campos": {"univpet": "", "familia": "", "anio": str(a), "titulpet": ""}}
+                      for a in range(2020, 2026)],
         "indices": ["https://www.juntadeandalucia.es/economiaconocimientoempresasyuniversidad/sguit/"
                     "?q=grados&d=g_not_cor_anteriores_top.php",
                     "https://www.juntadeandalucia.es/economiaconocimientoempresasyuniversidad/sguit/convocatorias/"
@@ -245,6 +250,29 @@ def medir(contenido: bytes, formato: str, filas: int = MUESTRA_FILAS) -> dict:
             "cabecera": [x for x in lineas[:40] if x.strip()][:25], "muestra": guardadas[:filas]}
 
 
+def consultar(q: dict, archivo: Archivo, filas: int) -> dict:
+    """Una consulta POST de un formulario oficial (robots.txt comprobado por motor.http.obtener), con su original."""
+    from motor.http import obtener
+
+    url = q["url"] + ("&" if "?" in q["url"] else "?") + "&".join(f"{k}={v}" for k, v in q["campos"].items())
+    doc = {"url": url, "origen": "consulta", "campos": q["campos"]}
+    time.sleep(2)
+    try:
+        r = obtener(q["url"], formulario=q["campos"], timeout=60, limite_total=180)
+    except Exception as e:  # noqa: BLE001 - robots.txt o red: se anota y se sigue
+        return {**doc, "estado": None, "error": f"{type(e).__name__}: {str(e)[:160]}"}
+    doc["estado"] = r.status
+    if r.status == 200:
+        cab = (r.cabeceras or {}).get("Content-Type") or (r.cabeceras or {}).get("content-type") or "text/html"
+        formato = formato_de(r.contenido, cab.lower(), url)
+        medida = medir(r.contenido, formato, filas)
+        if DNI.search("\n".join(medida.get("muestra") or [])):
+            return {**doc, "omitido": "datos_de_personas"}
+        archivo.guardar(FUENTE, date.today(), r.contenido, url, formato, r.status, None)
+        doc.update(formato=formato, bytes=len(r.contenido), sha256=hashlib.sha256(r.contenido).hexdigest(), **medida)
+    return doc
+
+
 def ejecutar(salida: Path, solo: list[str] | None = None, max_minutos: float = 50, filas: int = MUESTRA_FILAS,
              extra: dict[str, list[str]] | None = None) -> dict:
     from motor.estudios.rastreador import Dominio
@@ -281,6 +309,11 @@ def ejecutar(salida: Path, solo: list[str] | None = None, max_minutos: float = 5
                 for a, _ in ls[:60]:
                     candidatos.setdefault(a, "enlazado")
             res["indices"].append(info)
+        for q in s.get("consultas", []):
+            if time.time() > fin:
+                break
+            doc = consultar(q, archivo, filas)
+            res["documentos"].append(doc)
         for u, origen in candidatos.items():
             if time.time() > fin:
                 res["sin_tiempo"] = True
