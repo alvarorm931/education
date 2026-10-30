@@ -168,7 +168,7 @@ NO_RESPALDAR = {"vigilante.yml", "latido.yml"}
 
 def respaldo_programaciones(repo: str, runs: list[dict], t0: datetime, lanzar: bool) -> list[dict]:
     """GitHub no siempre dispara las programaciones (en repositorios nuevos puede tardar horas o días). Para cada
-    hora diaria «M H * * *» de los flujos, si ya pasaron 15 minutos y no hay ninguna ejecución de ese flujo creada
+    hora diaria «M H * * *» de los flujos, si ya pasaron 10 minutos y no hay ninguna ejecución de ese flujo creada
     desde 10 minutos antes de esa hora (por ningún evento), se lanza a mano (workflow_dispatch, entradas por
     defecto). Solo dentro de las 12 horas siguientes a la hora prevista."""
     salida = []
@@ -186,15 +186,20 @@ def respaldo_programaciones(repo: str, runs: list[dict], t0: datetime, lanzar: b
             prevista = t0.replace(hour=hora, minute=minuto, second=0, microsecond=0)
             if prevista > t0:
                 prevista -= timedelta(days=1)
-            if not (timedelta(minutes=15) <= t0 - prevista <= timedelta(hours=12)):
+            if not (timedelta(minutes=10) <= t0 - prevista <= timedelta(hours=12)):
                 continue
+            # Cuenta como hecha la programación si hay una ejecución desde 10 minutos antes de su hora que la
+            # sustituye: la de GitHub (schedule) o la que lanzó este vigilante (github-actions[bot]). Las tandas que
+            # lanzan las conversaciones a mano (con otras entradas, p. ej. unos pocos conectores) no cuentan.
             desde = (prevista - timedelta(minutes=10)).strftime("%Y-%m-%dT%H:%M:%SZ")
             try:
-                hubo = api(f"/repos/{repo}/actions/workflows/{f.name}/runs?per_page=1&created=>={desde}").get("total_count", 0)
+                candidatas = api(f"/repos/{repo}/actions/workflows/{f.name}/runs?per_page=50&created=>={desde}"
+                                 ).get("workflow_runs", [])
             except urllib.error.HTTPError:
-                hubo = any((r.get("path", "").split("/")[-1] == f.name) and fecha(r["created_at"]) >= prevista - timedelta(minutes=10)
-                           for r in runs)
-            if hubo:
+                candidatas = [r for r in runs if r.get("path", "").split("/")[-1] == f.name
+                              and fecha(r["created_at"]) >= prevista - timedelta(minutes=10)]
+            if any(r.get("event") == "schedule" or (r.get("triggering_actor") or {}).get("login") == "github-actions[bot]"
+                   for r in candidatas):
                 continue
             item = {"flujo": f.name, "prevista": madrid(prevista), "lanzado": False}
             if lanzar:
