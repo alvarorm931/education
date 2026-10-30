@@ -32,3 +32,13 @@ def test_salta_el_sumario_del_boletin():
     assert c["a"][1] == [2] and "Primera. Objeto" in c["a"][0] and "......" not in c["a"][0]
     # sin el título en el cuerpo, sin texto (nunca el de otro anuncio)
     assert cortar([sumario, "Otro anuncio distinto\n"], [{"id": "b", "pagina": 2, "titulo": "Bases de bombero"}]) == {}
+
+
+def test_sumario_de_albacete_no_se_toma_por_el_anuncio():
+    """El sumario del BOP de Albacete no lleva puntos sino «• Asunto>36»: también es sumario (30/10/2026)."""
+    from motor.provinciales.textos import es_pagina_de_sumario
+    pag = "\n".join(["Sección tercera. Administración Local", "Ayuntamientos", "Albacete",
+                     "• Bases generales que van a regir las convocatorias>36", "• Lista de admitidos>40",
+                     "• Bases específicas para cubrir la plaza de Monitor>55", "• Convocatoria de una plaza>57"])
+    assert es_pagina_de_sumario(pag)
+    assert not es_pagina_de_sumario("Primera.- Objeto de la convocatoria.\nSegunda.- Requisitos de los aspirantes.")

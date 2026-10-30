@@ -68,9 +68,13 @@ def meses_del_anio(contenido: bytes) -> dict[int, str]:
     return {MESES.index(m) + 1: u for u, _, m in RE_MES.findall(contenido.decode("utf-8", errors="replace"))}
 
 
-def boletines_del_mes(contenido: bytes) -> list[dict]:
+def boletines_del_mes(contenido: bytes, categoria: str | None = None) -> list[dict]:
+    """Boletines de la página de un mes. Cada página de jDownloads trae además el recuadro de las últimas descargas
+    (los boletines de este mes): con `categoria` («1982-octubre») solo cuentan los del propio mes."""
     vistos = {}
     for m in RE_BOLETIN.finditer(html.unescape(contenido.decode("utf-8", errors="replace"))):
+        if categoria and m.group("cat") != categoria:
+            continue
         num = m.group("num").lower()
         vistos.setdefault(m.group("id"), {
             "id_descarga": m.group("id"), "categoria": m.group("cat"),
@@ -241,8 +245,9 @@ def main(argv: list[str] | None = None) -> int:
         return 1
     # Meses ya completos (todos sus boletines bien): su página no se vuelve a pedir
     ruta_hist = _base(a.salida) / "historico.json"
-    hist = json.loads(ruta_hist.read_text(encoding="utf-8")) if ruta_hist.exists() else {"meses_completos": []}
-    completos = set(hist["meses_completos"])
+    hist = json.loads(ruta_hist.read_text(encoding="utf-8")) if ruta_hist.exists() else {}
+    # «meses_completos» de la primera versión contaba el recuadro de últimas descargas de cada página: no vale
+    completos = set(hist.get("meses_completos_v2", []))
     recientes = {f"{hoy.year}-{hoy.month:02d}", f"{desde_mes_anterior(hoy)}"}
     parar = False
     for anio in sorted((x for x in por_anio if x >= desde[0]), reverse=True):
@@ -260,7 +265,8 @@ def main(argv: list[str] | None = None) -> int:
                 parar = True
                 break
             time.sleep(a.pausa)
-            lista = boletines_del_mes(obtener(BASE + meses[mes] + "?Itemid=534", accept="text/html").contenido)
+            lista = boletines_del_mes(obtener(BASE + meses[mes] + "?Itemid=534", accept="text/html").contenido,
+                                      meses[mes].rsplit("/", 1)[1])
             if not lista:
                 print(f"::warning::BOCCE {clave}: el mes no enlaza boletines (posible cambio de formato)")
             bien = 0
@@ -295,7 +301,7 @@ def main(argv: list[str] | None = None) -> int:
                 break
         if parar:
             break
-    escribir_json(ruta_hist, {"meses_completos": sorted(completos)})
+    escribir_json(ruta_hist, {"meses_completos_v2": sorted(completos)})
     alertas = [x for i in informes for x in i.get("alertas", [])]
     print(f"Boletines procesados: {len(informes)}. Alertas: {len(alertas)}")
     return 1 if any(i.get("resultado") in {"error_formato", "fuente_inaccesible"} for i in informes) else 0

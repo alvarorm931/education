@@ -46,7 +46,8 @@ def paginas_pdf(contenido: bytes) -> list[str]:
     return [p.extract_text() or "" for p in PdfReader(io.BytesIO(contenido)).pages]
 
 
-RE_INDICE = re.compile(r"\.{5,}|…{2,}|(?:\. ){4,}")
+# Líneas de un sumario: puntos hasta la página o, en el BOP de Albacete, «• Asunto>36» (30/10/2026)
+RE_INDICE = re.compile(r"\.{5,}|…{2,}|(?:\. ){4,}|\S\s?>\s?\d{1,4}\s*$")
 
 
 def _posicion(plano: str, titulo: str, desde: int) -> int:
@@ -125,6 +126,23 @@ def _posicion_bruto(bruto: str, titulo: str | None, desde: int = 0) -> int:
     return -1
 
 
+def original_guardado(raiz: Path, fuente: str, fecha: str, url: str) -> tuple[bytes, dict] | None:
+    """El PDF de esa URL si ya se guardó en el almacén (por el índice del archivo), con los datos de su captura."""
+    from motor.archivo import almacen_por_defecto
+    indice = raiz / "archivo" / "indices" / fuente / f"{fecha[:7]}.jsonl"
+    if not indice.exists():
+        return None
+    reg = next((x for x in leer_jsonl(indice) if x.get("url") == url and x.get("clave") and x.get("status") == 200), None)
+    almacen = almacen_por_defecto() if reg else None
+    if not almacen:
+        return None
+    try:
+        contenido = almacen.leer(reg["clave"])
+    except Exception:  # noqa: BLE001 - si no se puede leer, se pide a la fuente
+        return None
+    return (contenido, {"sha256": reg["sha256"], "capturado": reg.get("capturado")}) if contenido[:4] == b"%PDF" else None
+
+
 def textos_boletin_entero(raiz: Path, fuente: str, archivo: Archivo, max_minutos: float, pausa: float) -> tuple[int, int, int]:
     base = raiz / "datos" / "provinciales" / fuente
     campo = BOLETIN_ENTERO[fuente]
@@ -142,19 +160,25 @@ def textos_boletin_entero(raiz: Path, fuente: str, archivo: Archivo, max_minutos
         todas.sort(key=lambda x: (x.get("pagina") or 0, x.get("orden") or 0))
         if not todas:
             continue
-        time.sleep(pausa)
+        # Si el PDF ya está en el almacén (una pasada anterior), se lee de allí: no se vuelve a pedir a la fuente
+        guardado = original_guardado(raiz, fuente + "-boletin", fecha, url)
+        if guardado:
+            contenido, captura = guardado
+        else:
+            time.sleep(pausa)
+            try:
+                r = obtener(url, accept="application/pdf, */*")
+            except (ConnectionError, TimeoutError):
+                errores += len(lista)
+                continue
+            if r.status != 200 or r.contenido[:4] != b"%PDF":
+                errores += len(lista)
+                continue
+            contenido = r.contenido
+            captura = archivo.guardar(fuente + "-boletin", date.fromisoformat(fecha), r.contenido, url, "pdf",
+                                      r.status, r.cabeceras)
         try:
-            r = obtener(url, accept="application/pdf, */*")
-        except (ConnectionError, TimeoutError):
-            errores += len(lista)
-            continue
-        if r.status != 200 or r.contenido[:4] != b"%PDF":
-            errores += len(lista)
-            continue
-        captura = archivo.guardar(fuente + "-boletin", date.fromisoformat(fecha), r.contenido, url, "pdf", r.status,
-                                  r.cabeceras)
-        try:
-            cortes = cortar(paginas_pdf(r.contenido), todas)
+            cortes = cortar(paginas_pdf(contenido), todas)
         except Exception:  # un PDF mal formado no detiene la carga
             errores += len(lista)
             continue

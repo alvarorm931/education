@@ -70,6 +70,8 @@ def test_portada_anio_y_mes():
     lista = b.boletines_del_mes(MES)
     assert [(x["numero"], x["fecha"], x["extraordinario"]) for x in lista] == [
         ("Extra 51", "2026-10-28", True), ("6665", "2026-10-30", False)]  # el acta no es un boletín
+    # El recuadro de últimas descargas sale en todas las páginas: con la categoría solo cuentan los del mes
+    assert b.boletines_del_mes(MES, "1966-enero") == [] and len(b.boletines_del_mes(MES, "1982-octubre")) == 2
     assert lista[1]["url_pdf"] == ("https://www.ceuta.es/ceuta/component/jdownloads/finish/1982-octubre/"
                                    "23305-bocce-6665-30-10-2026?Itemid=0")
 
