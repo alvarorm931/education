@@ -570,7 +570,8 @@ def leyenda(doc: dict) -> dict[str, str]:
     return {c: next(iter(t)) for c, t in vistos.items() if len(t) == 1}
 
 
-def plan(tablas: list[dict], dist: dict | None = None, codigos: dict[str, str] | None = None) -> list[dict]:
+def plan(tablas: list[dict], dist: dict | None = None, codigos: dict[str, str] | None = None,
+         curso_tabla: dict[int, int] | None = None) -> list[dict]:
     """Filas de asignatura o materia del plan, con carácter, créditos, curso y semestre cuando vienen.
 
     Un plan suele repetir asignaturas en varias tablas (la de formación básica por rama y la del plan completo):
@@ -661,6 +662,9 @@ def plan(tablas: list[dict], dist: dict | None = None, codigos: dict[str, str] |
                 "periodo_literal": f[cols["semestre"]] if "semestre" in cols else None,
                 "nivel": nivel,
                 "tabla": n,
+                # curso que solo dice el párrafo de encima de la tabla: se usa después de elegir tabla, para no
+                # cambiar qué tabla gana (cursos_por_encabezado)
+                "curso_por_encabezado": (curso_tabla or {}).get(n),
                 "fila_literal": f,
             })
         if semestre_global:
@@ -700,9 +704,13 @@ def plan(tablas: list[dict], dist: dict | None = None, codigos: dict[str, str] |
     tiempos: dict[str, set] = defaultdict(set)
     for *_, salida in por_tabla:
         for x in salida:
-            if x["curso"]:
-                tiempos[clave_union(x["nombre"]) or x["nombre"].lower()].add((x["curso"], x["semestre"]))
+            if x["curso"] or x.get("curso_por_encabezado"):
+                tiempos[clave_union(x["nombre"]) or x["nombre"].lower()].add(
+                    (x["curso"] or x["curso_por_encabezado"], x["semestre"]))
     for x in resultado:
+        if not x["curso"] and x.get("curso_por_encabezado"):
+            x["curso"] = x["curso_por_encabezado"]
+            continue
         t = tiempos.get(clave_union(x["nombre"]) or x["nombre"].lower())
         if not x["curso"] and t and len(t) == 1:
             x["curso"], x["semestre"] = next(iter(t))
@@ -798,12 +806,51 @@ def separar_planes(doc: dict) -> list[dict]:
     return partes
 
 
+RE_LINEA_CURSO = re.compile(r"^(primer|segundo|tercer|cuarto|quinto|sexto)\s+curso\.?$", re.I)
+
+
+def cursos_por_encabezado(doc: dict) -> dict[int, int]:
+    """Tablas de un curso cada una con el curso solo en el párrafo de encima («Primer curso», «Segundo curso»…):
+    el texto guarda esos párrafos seguidos y las tablas van aparte. Si hay una sola racha de k tablas seguidas con
+    la misma cabecera y sin columna de curso, y en el texto k líneas «X curso» seguidas en orden (1, 2, 3…), la
+    tabla i-ésima de la racha es del curso i. Si no casa exactamente, nada."""
+    lineas = [x.strip() for x in (doc.get("texto") or "").splitlines()]
+    rachas, actual = [], []
+    for x in lineas:
+        m = RE_LINEA_CURSO.match(x)
+        if m:
+            actual.append(ORDINALES[m.group(1).lower()])
+        else:
+            if len(actual) >= 2:
+                rachas.append(actual)
+            actual = []
+    if len(actual) >= 2:
+        rachas.append(actual)
+    rachas = [r for r in rachas if r == list(range(1, len(r) + 1))]
+    if len(rachas) != 1:
+        return {}
+    k = len(rachas[0])
+    tablas = normalizar_tablas(doc.get("tablas") or [])
+    cabeceras = [tuple((t.get("contenido") or [[]])[0]) for t in tablas]
+    grupos, i = [], 0
+    while i < len(cabeceras):
+        j = i
+        while j + 1 < len(cabeceras) and cabeceras[j + 1] == cabeceras[i]:
+            j += 1
+        if j - i + 1 == k and cabeceras[i] and "curso" not in _columnas(list(cabeceras[i])):
+            grupos.append(list(range(i, j + 1)))
+        i = j + 1
+    if len(grupos) != 1:
+        return {}
+    return {n: c for c, n in enumerate(grupos[0], 1)}
+
+
 def medir_plan(doc: dict) -> dict:
     """Medidas del plan y su comprobación contra la tabla de créditos por tipo. Si los tipos deducidos por el
     nombre («Prácticas externas», «Trabajo fin de grado» sin columna de carácter) impiden cuadrar y sin ellos
     cuadra, se quitan: unas prácticas pueden ser optativas. «filas_plan» lleva las filas con que se midió."""
     dist = distribucion_creditos(doc.get("tablas", [])) or distribucion_de_texto(doc.get("texto", ""))
-    filas = plan(doc.get("tablas", []), dist, leyenda(doc))
+    filas = plan(doc.get("tablas", []), dist, leyenda(doc), cursos_por_encabezado(doc))
     m = _medir(filas, dist, doc)
     if not m["comprobacion"] and any(x["nivel"] == "asignatura" for x in filas) \
             and any(x["nivel"] != "asignatura" for x in filas):

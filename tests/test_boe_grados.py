@@ -345,3 +345,17 @@ def test_errores_que_se_compensan_no_comprueban():
     t2 = _t([["Asignatura", "Créditos", "Carácter"], ["A.", "6", "FB"], ["B.", "6", "OB"],
              ["Prácticas tuteladas.", "6", "OB"]])
     assert medir_plan({"tablas": [dist2, t2], "texto": ""})["comprobacion"] == "completo"
+
+
+def test_curso_por_el_parrafo_de_encima_de_cada_tabla():
+    from motor.grados.boe_grados import cursos_por_encabezado, medir_plan
+    cab = ["Asignaturas", "Semestre", "Carácter", "ECTS"]
+    dist = _t([["Tipo de materia", "Créditos"], ["Formación básica.", "6"], ["Obligatorias.", "6"], ["Total.", "12"]])
+    c1 = _t([cab, ["Anatomía.", "1", "FB", "6"]])
+    c2 = _t([cab, ["Fisiología.", "2", "OB", "6"]])
+    doc = {"texto": "Organización temporal\nPrimer curso\nSegundo curso\nRelación de optativas", "tablas": [dist, c1, c2]}
+    assert cursos_por_encabezado(doc) == {1: 1, 2: 2}
+    filas = {x["nombre"]: x for x in medir_plan(doc)["filas_plan"]}
+    assert (filas["Anatomía"]["curso"], filas["Fisiología"]["curso"]) == (1, 2)
+    # sin la racha exacta de párrafos, nada
+    assert cursos_por_encabezado({**doc, "texto": "Primer curso\nTercer curso"}) == {}
