@@ -42,7 +42,7 @@ from motor.limpieza import limpiar_html, texto_de
 FUENTE = "docm"
 MADRID = ZoneInfo("Europe/Madrid")
 BASE = "https://docm.jccm.es"
-PORTADA = BASE + "/portaldocm/sumario.do"
+PORTADA = BASE + "/docm/"  # robots.txt (30/10/2026) prohíbe sumario.do y cambiarBoletin.do; la portada no
 CAPITALES = ("Albacete", "Ciudad Real", "Cuenca", "Guadalajara", "Toledo")
 
 RE_FECHA = re.compile(r'class\s*=\s*"fechaDiario"[^>]*>\s*[^,<]*,\s*(\d{1,2}) de ([a-záéíóú]+) de (\d{4})', re.IGNORECASE)
@@ -208,6 +208,32 @@ def textos_pendientes(raiz: Path) -> list[dict]:
     return sorted(lista, key=lambda x: 0 if x.get("alcance") in (None, "acceso") else 1)
 
 
+def procesar_portada(raiz: Path, archivo: Archivo) -> dict:
+    """El diario del día desde la portada /docm/ (mismo sumario que sumario.do, que robots.txt prohíbe)."""
+    r = obtener(PORTADA, accept="text/html", sesion=sesion())
+    if r.status == 400:
+        r = obtener(PORTADA, accept="text/html", sesion=sesion(nueva=True))
+    if r.status != 200:
+        return {"fecha": None, "status": r.status, "resultado": "error_http", "alertas": [f"DOCM portada: HTTP {r.status}"]}
+    s = parsear_sumario(r.contenido.decode("utf-8", errors="replace"))
+    if not s["fecha"]:
+        return {"fecha": None, "status": 200, "resultado": "error_formato",
+                "alertas": ["DOCM portada sin fecha de diario (posible cambio de formato)"]}
+    d = date.fromisoformat(s["fecha"])
+    captura = archivo.guardar(FUENTE, d, r.contenido, PORTADA, "html", r.status, r.cabeceras)
+    filas = [x | {"fecha": d.isoformat(), "boletin": s["numero"], "captura_sha256": captura["sha256"]}
+             for x in s["disposiciones"]]
+    empleo = seleccionar(filas)
+    escribir_jsonl(_ruta(raiz, "disposiciones", d), filas)
+    escribir_jsonl(_ruta(raiz, "oposiciones", d), empleo)
+    inf = {"fecha": d.isoformat(), "status": 200, "resultado": "ok", "numero": s["numero"], "origen": "portada",
+           "sha256": captura["sha256"], "disposiciones": len(filas), "empleo_publico": len(empleo), "alertas": []}
+    if not filas:
+        inf["alertas"].append(f"DOCM {d}: portada sin disposiciones (posible cambio de formato)")
+    escribir_json(_ruta(raiz, "dias", d, "json"), inf)
+    return inf
+
+
 def main(argv: list[str] | None = None) -> int:
     hoy = datetime.now(MADRID).date()
     p = argparse.ArgumentParser()
@@ -216,6 +242,8 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--salida", type=Path, default=Path("."))
     p.add_argument("--saltar-existentes", action="store_true")
     p.add_argument("--textos", action="store_true")
+    p.add_argument("--historico", action="store_true",
+                   help="por días con cambiarBoletin.do: robots.txt lo prohíbe, el control de motor/http.py no lo pide")
     p.add_argument("--max-minutos", type=float, default=0)
     p.add_argument("--pausa", type=float, default=0.8)
     a = p.parse_args(argv)
@@ -228,6 +256,16 @@ def main(argv: list[str] | None = None) -> int:
                                            accept="text/html", ext="html", sesion=sesion(), renovar_sesion=lambda: sesion(nueva=True))
         print(f"DOCM textos: {hechos} descargados, {errores} errores, {len(pend) - hechos} pendientes")
         return 0
+
+    if not a.historico:
+        # Solo el diario del día, por la portada (permitida): robots.txt prohíbe pedir los demás días
+        try:
+            inf = procesar_portada(a.salida, archivo)
+        except ConnectionError as e:
+            inf = {"fecha": None, "resultado": "fuente_inaccesible", "alertas": [str(e)]}
+        print(f"DOCM {inf.get('fecha')}: {inf.get('resultado')} {inf.get('disposiciones', '')} disposiciones, "
+              f"{inf.get('empleo_publico', '')} de empleo público {'; '.join(inf.get('alertas', []))}")
+        return 1 if inf.get("resultado") in {"error_formato", "fuente_inaccesible", "error_http"} else 0
 
     inicio, informes, d = time.monotonic(), [], a.desde
     freno = Freno()

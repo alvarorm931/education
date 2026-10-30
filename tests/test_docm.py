@@ -48,3 +48,14 @@ def test_texto():
     assert t["texto"].startswith("I.- DISPOSICIONES GENERALES")
     assert "Esta ley entrará en vigor a los veinte días siguientes" in t["texto"]
     assert "AÑO XLV" not in t["texto"]
+
+
+def test_portada_del_dia(tmp_path, monkeypatch):
+    # robots.txt prohíbe sumario.do y cambiarBoletin.do; la portada /docm/ trae el diario del día
+    from motor.http import Respuesta
+    cuerpo = (Path(__file__).parent / "fixtures" / "docm_portada_20261030.html").read_bytes()
+    monkeypatch.setattr(docm, "obtener", lambda url, **k: Respuesta(url, 200, cuerpo, {}))
+    monkeypatch.setattr(docm, "sesion", lambda nueva=False: None)
+    inf = docm.procesar_portada(tmp_path, docm.Archivo(tmp_path / "archivo"))
+    assert (inf["resultado"], inf["fecha"], inf["numero"], inf["disposiciones"]) == ("ok", "2026-10-30", 209, 62)
+    assert (tmp_path / "datos/autonomicos/docm/dias/2026/10/30.json").exists()

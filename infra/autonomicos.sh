@@ -72,11 +72,9 @@ for c in $CONECTORES; do
       "$G" "DOE: textos"
       ;;
     boib)
-      ejecutar motor.autonomicos.boib --salida "$S" --max-minutos "$((M * 2))"
-      ejecutar motor.autonomicos.boib --desde-anio 2022 --hasta-anio "$((Y - 1))" --salida "$S" --max-minutos "$M"
-      "$G" "BOIB: boletines"
-      ejecutar motor.autonomicos.boib --textos --salida "$S" --max-minutos "$M"
-      "$G" "BOIB: textos"
+      # En pausa (30/10/2026): robots.txt de caib.es prohíbe /eboibfront a todos salvo a los buscadores. Lo ya leído
+      # se conserva. Se reanuda con permiso del BOIB o si cambia su robots.txt (motor.robots_auditoria lo dirá).
+      echo "::notice title=BOIB en pausa::robots.txt de www.caib.es prohíbe /eboibfront a nuestro agente"
       ;;
     borm)
       ejecutar motor.autonomicos.borm --salida "$S"
@@ -100,9 +98,9 @@ for c in $CONECTORES; do
       "$G" "BOPV: textos"
       ;;
     docm)
+      # robots.txt prohíbe pedir los diarios por fecha: solo el del día, por la portada
       ejecutar motor.autonomicos.docm --salida "$S"
-      ejecutar motor.autonomicos.docm --desde 2022-01-01 --saltar-existentes --salida "$S" --max-minutos "$M"
-      "$G" "DOCM: boletines"
+      "$G" "DOCM: diario del día"
       ejecutar motor.autonomicos.docm --textos --salida "$S" --max-minutos "$M"
       "$G" "DOCM: textos"
       ;;
@@ -130,8 +128,7 @@ for c in $CONECTORES; do
       ejecutar motor.provinciales.bopalicante --salida "$S"
       ejecutar motor.provinciales.bopalicante --desde 2022-01-01 --salida "$S" --max-minutos "$M"
       "$G" "BOP Alicante: días"
-      ejecutar motor.provinciales.bopalicante --textos --salida "$S" --max-minutos "$M"
-      "$G" "BOP Alicante: textos"
+      # Textos: robots.txt de dip-alicante.es prohíbe /bop2/ (los PDF); solo títulos
       ;;
     bopvalencia)
       ejecutar motor.provinciales.bopvalencia --salida "$S"
