@@ -182,6 +182,9 @@ def test_precio_por_cuentas():
     assert r["precio_curso"] == 7800 and r["matricula_o_reserva"] == 700
     assert p([1047, 1500, 11970])["metodo"] == "reserva_mas_cuotas"
     assert p([950, 1500, 4800]) is None
+    # Alfonso X: total anual = reserva + matrícula + 10 cuotas
+    r = p([24250, 3000, 1350, 1990, 425])
+    assert r["precio_curso"] == 24250 and r["metodo"] == "reserva_matricula_y_cuotas"
 
 
 def test_comprobar_con_ruct():
@@ -279,3 +282,19 @@ def test_plan_de_la_memoria_del_ruct_se_comprueba_con_sus_creditos():
     assert p["plan"][2]["curso"] == 2 and p["plan"][4]["tipo"] == "tfg" and p["origen"] == "memoria_ruct"
     r["memoria"]["avisos"] = ["datosAsignatura!consulta.action?codModulo=1: estado 0"]
     assert not plan_comprobado(plan_de_memoria(r))  # una página sin leer: no se da por comprobado
+
+
+def test_lista_conocida_con_importe_anual(tmp_path):
+    import json as _json
+
+    from motor.grados.fichas import indexar_tarifas
+
+    d = tmp_path / "20261030T125638-t0" / "datos" / "estudios" / "grados" / "tarifas_grado"
+    d.mkdir(parents=True)
+    doc = {"url": "https://adminpro.upsa.es/uploads/Tasas_Grados_26_27_e6a7c2a872.pdf", "formato": "pdf",
+           "curso_documento": "2026-2027", "codigo_universidad": "032",
+           "grados": {"1": [{"valor": 150, "tipo": "reserva", "bloque": 1}, {"valor": 550, "tipo": "reserva", "bloque": 1},
+                            {"valor": 9240, "tipo": "credito", "bloque": 1}]}}
+    (d / "tarifas.jsonl").write_text(_json.dumps(doc) + "\n", encoding="utf-8")
+    t = indexar_tarifas(tmp_path)
+    assert t["1"]["precio_curso"] == 9240 and t["1"]["metodo"] == "importe_anual_del_documento"

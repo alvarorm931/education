@@ -99,13 +99,24 @@ URLS_CONOCIDAS = {
 }
 
 
+# Cómo leer las listas conocidas cuyo formato se comprobó a mano: una fila por grado con su importe anual (o de 60
+# créditos), que es el mayor de la fila (las demás cifras son reserva, matrícula o el crédito).
+LECTURA_CONOCIDA = {
+    # «TASAS TITULACIONES OFICIALES DE GRADO 2026-2027»: Enfermería 9.240 € por 60 ECTS
+    "https://adminpro.upsa.es/uploads/Tasas_Grados_26_27_e6a7c2a872.pdf": "importe_anual_mayor_de_la_linea",
+    # «Programa de grado / Tasa anual»: una cifra por programa
+    "https://docs.ie.edu/Admissions/Tasas_IE_University_27-28.pdf": "importe_anual_mayor_de_la_linea",
+}
+
+
 def elegir_conocidas(ya: set[str], extra: dict[str, list[str]] | None = None) -> list[dict]:
     salida = []
     for cod, urls in {**URLS_CONOCIDAS, **(extra or {})}.items():
         for u in urls:
             if u not in ya:
                 ya.add(u)
-                salida.append({"codigo_universidad": cod, "url": u, "origen": "lista_conocida"})
+                salida.append({"codigo_universidad": cod, "url": u, "origen": "lista_conocida",
+                               **({"lectura": LECTURA_CONOCIDA[u]} if u in LECTURA_CONOCIDA else {})})
     return salida
 
 

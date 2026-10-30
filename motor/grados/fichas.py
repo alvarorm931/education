@@ -100,6 +100,12 @@ def precio_por_cuentas(valores: list[float]) -> dict | None:
                 for n in range(8, 13) if abs(r + n * m - k) <= 2})
     if c:
         return {"precio_curso": c[0], "metodo": "reserva_mas_cuotas", "soluciones": len(c)}
+    # el total anual es la reserva más la matrícula más 8 a 12 cuotas iguales (Alfonso X: «24.250 € | 3.000 € |
+    # 1.350 € | 10 | 1.990 €»): el precio del curso es ese total, que se paga cada año
+    d = sorted({k for k in cursos for r in pequenos for m in pequenos for q in pequenos if len({r, m, q}) == 3
+                for n in range(8, 13) if abs(r + m + n * q - k) <= 2})
+    if d:
+        return {"precio_curso": d[0], "metodo": "reserva_matricula_y_cuotas", "soluciones": len(d)}
     return None
 
 
@@ -201,6 +207,7 @@ def indexar_tarifas(carpeta: Path | None) -> dict[str, dict]:
     candidatos: dict[str, list] = defaultdict(list)
     if not carpeta:
         return {}
+    from motor.grados.tarifas_grado import LECTURA_CONOCIDA as lecturas  # capturas anteriores a la regla
     for f in sorted(carpeta.rglob("tarifas_grado/tarifas.jsonl"), key=lambda x: str(x)):
         m = re.search(r"(\d{4})(\d{2})(\d{2})T\d{6}", str(f))
         fecha = f"{m.group(1)}-{m.group(2)}-{m.group(3)}" if m else None
@@ -217,6 +224,15 @@ def indexar_tarifas(carpeta: Path | None) -> dict[str, dict]:
                 cuentas = min(soluciones, key=lambda c: c["precio_curso"]) if soluciones else None
                 p = cuentas and {**cuentas, "nota": None, "url": doc["url"],
                                  "importes": sorted({i["valor"] for i in importes}), "precio_jsonld": None}
+                if not p and (doc.get("lectura") or lecturas.get(doc["url"])) == "importe_anual_mayor_de_la_linea":
+                    # documento comprobado a mano (tarifas_grado.LECTURA_CONOCIDA): cada grado da en su línea el
+                    # importe anual o de 60 créditos, el único de su línea en el rango de un curso (con dos, como
+                    # presencial y semipresencial, no se sabe cuál es cuál: no se publica)
+                    anual = {i["valor"] for i in importes if i.get("tipo") != "sueldo"
+                             and RANGO_PRECIO["curso"][0] <= i["valor"] <= RANGO_PRECIO["curso"][1]}
+                    p = len(anual) == 1 and {"precio_curso": anual.pop(), "metodo": "importe_anual_del_documento", "nota": None,
+                                   "url": doc["url"], "importes": sorted({i["valor"] for i in importes}),
+                                   "precio_jsonld": None}
                 if not p and doc.get("formato") == "html" and len(doc.get("grados") or {}) == 1:
                     # página de precios de un solo grado: valen las reglas de la página del grado (tipo por contexto)
                     p = precio_web({"url": doc["url"], "importes": importes})
