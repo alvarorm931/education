@@ -36,7 +36,7 @@ from motor.estudios import extraer
 
 MAX_PDF = 10_000_000
 MAX_CARACTERES = 80_000
-POR_DOMINIO = 12  # PDF por dominio en una tanda
+POR_DOMINIO = 40  # PDF por dominio en una tanda (folletos de cada máster)
 AÑO = re.compile(r"20(2[4-9]|3\d)")
 
 SISTEMA = (
@@ -100,6 +100,62 @@ def elegir_pdfs(ficheros: list[Path], censo: Path, por_dominio: int = POR_DOMINI
         elegidas = sorted(urls, key=lambda u: (-año(u), len(u), u))[:por_dominio]
         filas += [{"url": u, "dominio": d, "proveedor": provs[d]["id"], "estado": provs[d]["estado"]} for u in elegidas]
     return filas
+
+
+RE_ENLACE_PDF = re.compile(r"""(?is)<a\b[^>]*href\s*=\s*["']([^"'#]+\.pdf(?:\?[^"'#]*)?)["'][^>]*>(.*?)</a>""")
+TEXTO_PRECIO = re.compile(r"(?i)(tarifa|precio|preu|honorario|importe|tasas|coste|cuota|matr[ií]cula|financiaci|fees|"
+                          r"tuition|folleto|brochure|dossier)")
+
+
+def descubrir_en_originales(capturadas: list[Path], salida: Path, hilos: int = 16) -> dict:
+    """Enlaces a PDF de precios en las páginas de programa ya leídas: se abren sus originales del almacén privado
+    (las claves están en paginas_capturadas.jsonl) y se recogen los PDF cuyo enlace o nombre habla de precio,
+    tarifa, matrícula o folleto. Sale en el mismo formato que commoncrawl.py --patron precios."""
+    from concurrent.futures import ThreadPoolExecutor
+    from html import unescape
+    from urllib.parse import urljoin, urlparse
+
+    from motor.estudios.censo import dominio_registrado
+
+    filas = {}
+    for c in capturadas:
+        for f in sorted(c.rglob("paginas_capturadas.jsonl")):
+            for l in f.read_text(encoding="utf-8").splitlines():
+                if l.strip():
+                    x = json.loads(l)
+                    if x.get("clave") and x.get("clave", "").endswith(".html.gz"):
+                        filas.setdefault(x["clave"], x["url"])
+    guarda = extraer.Guarda()
+    if not guarda.activa:
+        return {"error": "sin almacén privado"}
+    cuentas: Counter = Counter()
+
+    def uno(kv):
+        clave, url = kv
+        try:
+            html = guarda.almacen.leer(clave).decode("utf-8", "replace")
+        except Exception:  # noqa: BLE001
+            return url, []
+        out = []
+        for href, texto in RE_ENLACE_PDF.findall(html):
+            href = unescape(href.strip())
+            if TEXTO_PRECIO.search(href) or TEXTO_PRECIO.search(re.sub(r"<[^>]+>", " ", texto)):
+                out.append(urljoin(url, href))
+        return url, out
+
+    por_dom: dict[str, set] = defaultdict(set)
+    with ThreadPoolExecutor(max_workers=hilos) as ex:
+        for url, pdfs in ex.map(uno, filas.items()):
+            cuentas["paginas"] += 1
+            for u in pdfs:
+                d = dominio_registrado(urlparse(u).netloc)
+                if d == dominio_registrado(urlparse(url).netloc):  # solo PDF del propio centro
+                    por_dom[d].add(u)
+    salida.mkdir(parents=True, exist_ok=True)
+    (salida / "precios_desde_paginas.jsonl").write_text(
+        "".join(json.dumps({"dominio": d, "urls": sorted(v)}, ensure_ascii=False) + "\n" for d, v in sorted(por_dom.items())),
+        encoding="utf-8")
+    return {**cuentas, "dominios": len(por_dom), "pdfs": sum(len(v) for v in por_dom.values())}
 
 
 def capturar_pdfs(filas: list[dict], guarda: extraer.Guarda, hilos: int = 12, fin: float | None = None) -> list[dict]:
@@ -295,7 +351,8 @@ def unir(tarifas: list[Path], fichas: Path, salida: Path) -> dict:
 
 def main() -> None:
     a = argparse.ArgumentParser()
-    a.add_argument("orden", choices=["lote", "unir"])
+    a.add_argument("orden", choices=["lote", "unir", "descubrir", "todo"])
+    a.add_argument("--capturadas", action="append", default=[], help="carpetas con paginas_capturadas.jsonl")
     a.add_argument("--pdfs", action="append", default=[])
     a.add_argument("--censo")
     a.add_argument("--tarifas", action="append", default=[])
@@ -305,7 +362,14 @@ def main() -> None:
     a.add_argument("--hilos", type=int, default=12)
     a.add_argument("--salida", required=True)
     x = a.parse_args()
-    if x.orden == "lote":
+    if x.orden in ("descubrir", "todo"):
+        base = Path(x.salida) / "datos" / "estudios" / "tarifas"
+        r = descubrir_en_originales([Path(p) for p in x.capturadas], base)
+        print(json.dumps(r, ensure_ascii=False), flush=True)
+        if x.orden == "descubrir":
+            return
+        x.pdfs = list(x.pdfs) + [str(base / "precios_desde_paginas.jsonl")]
+    if x.orden in ("lote", "todo"):
         r = lote([Path(p) for p in x.pdfs], Path(x.censo), Path(x.salida) / "datos" / "estudios" / "tarifas" / "lote",
                  x.esperar_min, x.max_minutos, x.hilos)
     else:

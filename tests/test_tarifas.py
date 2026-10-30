@@ -49,3 +49,11 @@ def test_elegir_pdfs_del_censo_y_recientes_primero(tmp_path):
                                       + json.dumps({"dominio": "x.es", "urls": ["https://x.es/precios.pdf"]}) + "\n")
     f = t.elegir_pdfs([tmp_path / "p.jsonl"], tmp_path / "c.jsonl")
     assert [x["url"] for x in f] == ["https://u.es/tarifas-2026-27.pdf", "https://u.es/tarifas-2024.pdf"]
+
+
+def test_enlaces_pdf_de_precio():
+    html = ('<a href="/docs/tarifas-2026.pdf">Descarga</a> <a href="programa.pdf">Plan de estudios</a>'
+            '<a href="https://u.es/f.pdf?v=2"><span>Folleto del máster</span></a>')
+    pdfs = [(h, txt) for h, txt in t.RE_ENLACE_PDF.findall(html)]
+    elegidos = [h for h, txt in pdfs if t.TEXTO_PRECIO.search(h) or t.TEXTO_PRECIO.search(txt)]
+    assert elegidos == ["/docs/tarifas-2026.pdf", "https://u.es/f.pdf?v=2"]
