@@ -108,41 +108,58 @@ lo dice.
 
 ### BOE: planes de estudios y altas
 
-Del sumario ya capturado (2022-2026, rama `datos`): 603 planes nuevos, 942 modificaciones, 9 cambios de
-denominación con plan actualizado, 66 correcciones de errores y 26 acuerdos de carácter oficial. 72
-disposiciones publican varios planes a la vez. Del sumario de 2008 a 2021 (`motor/grados/boe_historico.py`,
-ejecución 40987508205) salen los planes anteriores.
+Sumarios: 2022-2026 (rama `datos`) y 2008-2021 (`motor/grados/boe_historico.py`, 4.384 sumarios, sin errores;
+`sondas/20261030T034413`). Planes de grado de 2008 a 2021: 3.152 nuevos, 1.481 modificaciones, 367 correcciones y
+18 cambios de denominación; de 2022 a 2026: 603 planes, 942 modificaciones, 66 correcciones y 9 cambios. El mismo
+recorrido guarda los planes de máster (5.002 planes y 936 modificaciones de 2008 a 2021), útiles para másters.
 
-Textos (versión HTML del BOE, que su robots.txt permite; pausa de un segundo): 1.328 textos de 2022-2026, las 64
-resoluciones con varios planes y, en curso, los 813 planes que enlaza el RUCT (casi todos de 2009 a 2014).
+Unión con el catálogo: por universidad y nombre del grado. Los planes antiguos dicen «Graduado en X» o
+«Graduado Maestro en …» y las universidades se nombran de otra forma («Universidad del País Vasco», «Universitat
+de València», «Universidad de las Illes Balears»): se normalizan y se resuelven contra el catálogo. Además, la ficha
+del RUCT de cada título da el identificador BOE de su plan. Resultado: **3.106 de los 3.265 grados activos (95 %)
+tienen su plan localizado en el BOE**; 159 no (sobre todo de la Politécnica de Catalunya, que no publica sus planes
+de grado en el BOE, y grados con nombre muy distinto en el catálogo).
+
+Textos (versión HTML del BOE, que su robots.txt permite; una petición cada uno o dos segundos): 6.008 textos
+descargados; **el texto más reciente de los 3.106 grados con plan conocido está leído**.
 
 El lector de tablas (`motor/grados/boe_grados.py`) saca de cada plan las asignaturas o materias con créditos,
-carácter, curso y semestre, y la tabla de créditos por tipo. Formas que reconoce, todas vistas en planes reales:
-cabecera en la segunda o tercera fila, bloques por semestre lado a lado, filas separadoras («Primer curso»,
-«Segundo semestre», «Formación básica»), celdas combinadas, columnas cambiadas de orden, «Créd.», «Org. Temp.»,
-columna del nombre sin rótulo, asignaturas escritas dentro de las celdas de un cuadro curso × semestre, tipo en
-el rótulo de la tabla, en su cabecera o en su fila de total, materias mixtas («Obligatoria / Optativa», sin un solo
-tipo) y obligatorias u optativas de mención (OBM, OPM) como optatividad. Las resoluciones con varios planes se
-separan por anexo (una tabla de créditos por tipo al comienzo de cada plan, tantas como títulos de plan en el
-texto); si no cuadran, el documento queda entero y sin título.
+carácter, curso y semestre, las menciones y la tabla de créditos por tipo. Formas que reconoce, todas vistas en
+planes reales: cabecera en la segunda o tercera fila, bloques por semestre lado a lado, filas separadoras («Primer
+curso», «Segundo semestre», «Formación básica», «Módulo 3»), celdas combinadas, columnas cambiadas de orden,
+«Créd.», «CRD», «Org. Temp.», «Denominación módulo» y «ECTS módulo» (no son la asignatura), columna del nombre sin
+rótulo, asignaturas escritas dentro de las celdas de un cuadro curso × semestre, tablas sin créditos por
+asignatura (se guardan sin comprobar), tipo en el rótulo de la tabla, en su cabecera, en su fila de total o en el
+nombre del módulo («Módulo 1: Formación Básica»), la tabla de materias básicas por rama del RD 1393/2007 (art.
+12.5), códigos de carácter (FB, MB, BSC, OB, OBL, OP, OBM y OPM de mención, PE, TFG), materias mixtas
+(«Obligatoria / Optativa», sin un solo tipo) y la tabla de créditos por tipo también escrita en párrafos. Las
+resoluciones con varios planes se separan por anexo (52 resoluciones en 233 planes); si no cuadran tablas y
+títulos, el documento queda entero y sin título.
 
 **Comprobación.** Un plan cuenta como comprobado si la suma de sus filas coincide con su propia tabla de créditos:
-completo (básicas + obligatorias + prácticas + TFG) o, cuando las prácticas y el TFG no van en ninguna tabla, en
-básicas y obligatorias. Si la lectura directa no cuadra se prueban lecturas más prudentes (sin los tipos deducidos
-por el nombre, el rótulo o la suma; sin listas resumen que repiten otra tabla); si una cuadra, se usa y la ficha
-lo dice (`lectura: alternativa`). Nunca se completa un plan con datos inventados.
+completo (básicas + obligatorias + prácticas + TFG) o en básicas y obligatorias (el núcleo del plan; las prácticas
+y el TFG se toman de la tabla). Si la lectura directa no cuadra se prueban lecturas más prudentes, y solo se
+aceptan si entonces cuadra exactamente: sin los tipos deducidos (por nombre, rótulo o suma), sin una lista resumen
+que repite otra tabla, sin la única tabla que suma justo lo que sobra (itinerarios, listas a otro nivel), dando su
+tipo a la única tabla sin tipo que suma justo lo que falta, o el resto sin tipo como obligatorio. La ficha dice si
+la lectura fue directa o alternativa (553 de los comprobados). Si el plan del BOE no trae tabla que cuadre, se
+compara con los créditos por tipo de la ficha del RUCT (otra fuente oficial). Nunca se completa un plan con datos
+inventados.
 
-Resultado con lo leído a las 03:25 (1.452 resoluciones, 1.593 planes contando los anexos separados):
+Resultado con todo lo leído (30/10/2026, 05:05):
 
-| | Leídos | Con asignaturas | Comprobados |
-|---|---|---|---|
-| Planes nuevos | 644 | 485 | 380 (59 %) |
-| Modificaciones | 900 | 621 | 464 (52 %) |
-| Cambios de denominación | 6 | 4 | 3 |
+| | Leídos | Con asignaturas | Con curso | Comprobados |
+|---|---|---|---|---|
+| Planes nuevos | 3.496 | 2.491 | 2.105 | 1.952 (56 %) |
+| Modificaciones | 2.231 | 1.582 | 965 | 1.188 (53 %) |
+| Cambios de denominación | 20 | 16 | 15 | 9 |
 
-Lo que no cuadra es sobre todo: planes publicados solo por materias (sin asignaturas), tablas sin carácter que no
-se pueden asignar por suma, tablas de créditos por tipo que faltan y planes por módulos. Esos planes se guardan
-igual (la ficha los enseña como materias) pero no cuentan como asignaturas comprobadas.
+Lo que no cuadra es sobre todo: planes publicados solo por materias (463), tablas sin carácter que no se pueden
+asignar de forma comprobable (329), diferencias de una o dos asignaturas (479) y planes sin tabla de créditos por
+tipo (122). Esos planes se guardan igual (la ficha los enseña, marcados como no comprobados) pero no cuentan como
+asignaturas comprobadas.
+
+Menciones: 692 planes y modificaciones las citan, en el texto o en las tablas.
 
 Altas: los 26 acuerdos de 2022-2026 dan 853 grados con código RUCT, nombre y universidad.
 
@@ -163,8 +180,8 @@ la excepción.
 Lo que da la ficha (una petición por título): créditos por tipo (obligatorios, optativos, prácticas, TFG; la
 formación básica es el resto hasta el total), fecha de verificación, curso de inicio, autorización de la
 comunidad, acreditaciones, extinción, centros e **identificador BOE de su plan** (también de los anteriores a
-2022). Tramo 0: 1.200 títulos, 1.162 con su plan en el BOE (171 de 2011, 161 de 2010, 115 de 2012…); tramos 1 y 2
-en curso (ejecución 40992324770).
+2022). Leídas las 3.573 fichas pedidas (todos los grados del catálogo con código RUCT, tres tramos, 3.600
+peticiones sin un fallo): 3.080 grados activos tienen ahí el identificador BOE de su plan.
 
 Las memorias de verificación (asignaturas, semestre, evaluación, plazas por centro) pesan entre 100 y 250 páginas
 por título en el RUCT; se midieron en una muestra de 6 (785 peticiones) y no se piden en masa: solo donde el BOE no
