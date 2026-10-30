@@ -9,6 +9,22 @@ name: Vigilante
 on:
   schedule:
     - cron: "7,37 * * * *"
+  # Además, en cuanto termina mal cualquier otro flujo (la programación de GitHub puede retrasarse u omitirse)
+  workflow_run:
+    workflows:
+      - Motor de datos
+      - Boletines autonómicos
+      - Estudios por tramos
+      - Grados por tramos
+      - Recoger artefactos de estudios
+      - Mantenimiento de datos
+      - Extracción con Claude (prueba)
+      - Prueba de conector
+      - Prueba del almacén de originales
+      - Sonda de fuentes
+      - SEO
+      - Textos BOE (bajo demanda)
+    types: [completed]
   push:
     branches: [main]
     paths:
@@ -27,6 +43,8 @@ concurrency:
 
 jobs:
   vigilar:
+    # Tras otro flujo, solo si no terminó bien (los que salen bien no necesitan revisión inmediata)
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion != 'success'
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
