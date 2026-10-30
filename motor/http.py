@@ -195,6 +195,7 @@ BOLETINES_OFICIALES = {
     "https://www.bizkaia.eus/lehendakaritza/Bao_bob/": "BOB (PDF de los anuncios)",
     "https://236ws.dpteruel.es/DPT/bopt.nsf/": "BOP de Teruel",
     "https://www.araba.eus/botha/": "BOTHA (Álava)",
+    "https://www.diputaciondepalencia.es/system/files/bop/": "BOP de Palencia (PDF de cada boletín)",
     "https://www.ceuta.es/ceuta/bocce/": "BOCCE (Ceuta)",
 }
 DECISION_BOLETINES = ("Álvaro", "2026-10-30")
