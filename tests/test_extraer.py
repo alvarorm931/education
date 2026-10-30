@@ -264,3 +264,28 @@ def test_pagina_sin_texto_no_se_envia(tmp_path, monkeypatch):
     (tmp_path / "m.jsonl").write_text(js.dumps({"url": "https://x.es/m"}) + "\n")
     res = e.lote(tmp_path / "m.jsonl", tmp_path / "o", guarda=e.Guarda(None))
     assert res["sin_texto_suficiente"] == 1 and not llamadas
+
+
+def test_propios_de_oficiales_sin_los_ya_unidos_ni_noticias(tmp_path):
+    import json as js
+    censo = [{"id": "prov-g", "dominio": "garrigues.es", "estado": "oficial"}]
+    (tmp_path / "censo.jsonl").write_text(js.dumps(censo[0]) + "\n")
+    rastreo = {"centro": {"id": "prov-g"}, "programas": [
+        "https://www.garrigues.es/",
+        "https://www.garrigues.es/masters-oficiales/recursos-humanos/",
+        "https://www.garrigues.es/masters-oficiales/recursos-humanos/plan-de-estudios",
+        "https://www.garrigues.es/masters-executive/recursos-humanos/?utm_source=x",
+        "https://www.garrigues.es/noticias/premio-al-mejor-master/",
+        "https://www.garrigues.es/master-universitario-en-tributacion/"]}
+    d = tmp_path / "r" / "datos" / "estudios" / "oferta_web"
+    d.mkdir(parents=True)
+    (d / "garrigues.es.json").write_text(js.dumps(rastreo))
+    # un oficial quedó unido a la portada: no por eso se excluye todo el sitio
+    unidos = [{"codigo_ruct": "1", "estado": "unido", "url": "https://www.garrigues.es/masters-oficiales/recursos-humanos/"},
+              {"codigo_ruct": "2", "estado": "dudoso", "url": "https://www.garrigues.es/"}]
+    (tmp_path / "po.jsonl").write_text("".join(js.dumps(x) + "\n" for x in unidos))
+    r = e.lista_propios_de_oficiales(tmp_path / "censo.jsonl", [tmp_path / "r"], tmp_path / "po.jsonl", tmp_path / "o",
+                                     tramos=1)
+    urls = [js.loads(l)["url"] for l in (tmp_path / "o" / "propios_oficiales_0.jsonl").read_text().splitlines()]
+    assert urls == ["https://www.garrigues.es/masters-executive/recursos-humanos/"]
+    assert r["ya_unidas_a_un_oficial"] == 2 and r["descartadas_por_url"] == 1

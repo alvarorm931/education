@@ -626,6 +626,36 @@ def lista_oficiales(paginas_oficiales: Path, salida: Path, estados: tuple[str, .
 
 
 RE_MASTER = re.compile(r"(?i)(m[aá]ster|masters?|mba|postgrado|posgrado)")
+RUTA_NO_FICHA = re.compile(r"(?i)/(blog|noticias?|news|actualidad|eventos?|events?|agenda|landing|prensa|press|"
+                           r"tag|etiqueta|categor[ií]a|category|author|autor|wp-content|feed)/")
+
+
+def _orden_ficha(u: str) -> tuple:
+    """Antes lo que parece la ficha de un programa concreto (rastreador.prioridad_url), sin consulta, en castellano."""
+    from motor.estudios.rastreador import prioridad_url
+
+    return (-prioridad_url(u), not RE_MASTER.search(u), "?" in u, not re.search(r"/(es|cas|esp)(/|$)", u), len(u), u)
+
+
+def _sin_seguimiento(u: str) -> str:
+    """Quita de la URL los parámetros de campañas (utm_*, gclid…): es la misma página."""
+    from urllib.parse import parse_qsl, urlencode, urlparse, urlunparse
+
+    p = urlparse(u)
+    if not p.query:
+        return u
+    q = [(k, v) for k, v in parse_qsl(p.query, keep_blank_values=True)
+         if not re.match(r"(?i)^(utm_\w*|gclid|fbclid|mc_\w*|_ga|_gl|ref|referrer)$", k)]
+    return urlunparse(p._replace(query=urlencode(q)))
+
+
+def _no_es_ficha_por_url(u: str) -> bool:
+    from urllib.parse import urlparse
+
+    from motor.estudios.rastreador import NO_FICHA
+
+    ruta = urlparse(u).path
+    return bool(RUTA_NO_FICHA.search(ruta + "/")) or bool(NO_FICHA.search(re.sub(r"[-_/]+", " ", ruta)))
 
 
 def lista_no_oficiales(clasificacion: Path, rastreos: list[Path], salida: Path, por_proveedor: int = 30,
@@ -663,9 +693,11 @@ def lista_no_oficiales(clasificacion: Path, rastreos: list[Path], salida: Path, 
         if isinstance(ps, str):
             ps = ast.literal_eval(ps)
         fichas: dict[str, str] = {}
-        for u in sorted(ps, key=lambda u: (not RE_MASTER.search(u), not re.search(r"/(es|cas|esp)(/|$)", u), "?" in u, len(u), u)):
-            clave = sin_idioma(raiz_programa(html_lib.unescape(u)))
-            fichas.setdefault(clave, html_lib.unescape(u))
+        for u in sorted((_sin_seguimiento(html_lib.unescape(x)) for x in ps), key=_orden_ficha):
+            if _no_es_ficha_por_url(u):
+                cuentas["descartadas_por_url"] += 1
+                continue
+            fichas.setdefault(sin_idioma(raiz_programa(u)), u)
         elegidas = list(fichas.values())[desde_por_proveedor:desde_por_proveedor + por_proveedor]
         cuentas["proveedores"] += 1
         cuentas["fichas_unicas"] += len(fichas)
@@ -687,10 +719,84 @@ def lista_no_oficiales(clasificacion: Path, rastreos: list[Path], salida: Path, 
             "max_por_servidor": max((len(v) for v in por_host.values()), default=0)}
 
 
+def lista_propios_de_oficiales(censo: Path, rastreos: list[Path], paginas_oficiales: Path, salida: Path,
+                               por_proveedor: int = 30, tramos: int = 3, desde_por_proveedor: int = 0) -> dict:
+    """Títulos propios (formación permanente, másters propios de centros adscritos y escuelas del RUCT: ESIC,
+    Centro Garrigues, IEB…) en las webs de los proveedores oficiales: las fichas de máster de su rastreo que no
+    son la página (ni una subpágina) de ningún máster oficial ya unido. La extracción dice después qué tipo de
+    título es cada una (`tipo_titulo`) y descarta lo que no es ficha."""
+    import ast
+    from urllib.parse import urlparse
+
+    from motor.estudios.emparejar import raiz_programa, sin_idioma
+
+    oficiales = {}
+    for l in censo.read_text(encoding="utf-8").splitlines():
+        if l.strip():
+            x = json.loads(l)
+            if x["estado"] == "oficial":
+                oficiales[x["id"]] = x
+    usadas_raiz: dict[str, set[str]] = {}
+    for l in paginas_oficiales.read_text(encoding="utf-8").splitlines():
+        if l.strip():
+            x = json.loads(l)
+            for u in [x.get("url")] + list(x.get("subpaginas") or []) + list(x.get("urls_modalidad") or []):
+                if u and x.get("estado") in ("unido", "dudoso"):
+                    usadas_raiz.setdefault(urlparse(u).netloc, set()).add(sin_idioma(raiz_programa(u)))
+    ultimo: dict[str, dict] = {}
+    for c in rastreos:
+        for f in sorted(c.rglob("oferta_web/*.json")):
+            r = json.loads(f.read_text(encoding="utf-8"))
+            cen = r.get("centro") or {}
+            if isinstance(cen, str):
+                cen = ast.literal_eval(cen)
+            if cen.get("id") in oficiales:
+                ultimo[cen["id"]] = r
+    por_host: dict[str, list[dict]] = {}
+    cuentas = Counter()
+    for i, r in ultimo.items():
+        ps = r.get("programas") or []
+        if isinstance(ps, str):
+            ps = ast.literal_eval(ps)
+        fichas: dict[str, str] = {}
+        for u in sorted((html_lib.unescape(x) for x in ps), key=_orden_ficha):
+            if not RE_MASTER.search(u) or re.search(r"(?i)m[aá]ster(es)?[-_ ]?(universitari[oa]s?|oficial(es)?)", u):
+                continue  # solo lo que nombra un máster, y no los oficiales («máster universitario»)
+            if _no_es_ficha_por_url(u):
+                cuentas["descartadas_por_url"] += 1
+                continue
+            u = _sin_seguimiento(u)
+            clave = sin_idioma(raiz_programa(u))
+            # misma ficha (o subpágina suya, que tiene la misma raíz) que un máster oficial ya unido. No vale «cuelga
+            # de»: si un oficial quedó unido a un listado o a la portada, todo el sitio colgaría de él.
+            if clave in usadas_raiz.get(urlparse(u).netloc, set()):
+                cuentas["ya_unidas_a_un_oficial"] += 1
+                continue
+            fichas.setdefault(clave, u)
+        elegidas = list(fichas.values())[desde_por_proveedor:desde_por_proveedor + por_proveedor]
+        cuentas["proveedores_con_fichas"] += bool(fichas)
+        cuentas["fichas_unicas"] += len(fichas)
+        for u in elegidas:
+            por_host.setdefault(urlparse(u).netloc, []).append({"url": u, "grupo": "propio_oficial", "proveedor": i,
+                                                                "pagina": "principal"})
+    hosts = sorted(por_host, key=lambda h: -len(por_host[h]))
+    cargas, destino = [0] * tramos, [[] for _ in range(tramos)]
+    for h in hosts:
+        k = cargas.index(min(cargas))
+        destino[k] += por_host[h]
+        cargas[k] += len(por_host[h])
+    salida.mkdir(parents=True, exist_ok=True)
+    for k, filas in enumerate(destino):
+        (salida / f"propios_oficiales_{k}.jsonl").write_text(
+            "".join(json.dumps(f, ensure_ascii=False) + "\n" for f in filas), encoding="utf-8")
+    return {**cuentas, "paginas": sum(cargas), "por_tramo": cargas, "servidores": len(hosts)}
+
+
 def main() -> None:
     p = argparse.ArgumentParser()
-    p.add_argument("orden", choices=["lote", "retomar", "lista-oficiales", "lista-no-oficiales", "preparar", "enviar",
-                                     "recoger"])
+    p.add_argument("orden", choices=["lote", "retomar", "lista-oficiales", "lista-no-oficiales", "lista-propios-oficiales",
+                                     "preparar", "enviar", "recoger"])
+    p.add_argument("--censo")
     p.add_argument("--clasificacion")
     p.add_argument("--rastreo", action="append", default=[])
     p.add_argument("--por-proveedor", type=int, default=30)
@@ -717,6 +823,9 @@ def main() -> None:
     elif a.orden == "lista-no-oficiales":
         res = lista_no_oficiales(Path(a.clasificacion), [Path(x) for x in a.rastreo], Path(a.salida), a.por_proveedor,
                                  a.tramos, a.desde_por_proveedor)
+    elif a.orden == "lista-propios-oficiales":
+        res = lista_propios_de_oficiales(Path(a.censo), [Path(x) for x in a.rastreo], Path(a.paginas_oficiales),
+                                         Path(a.salida), a.por_proveedor, a.tramos, a.desde_por_proveedor)
     elif a.orden == "lista-oficiales":
         res = lista_oficiales(Path(a.paginas_oficiales), Path(a.salida))
     elif a.orden == "preparar":
