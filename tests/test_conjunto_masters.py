@@ -239,12 +239,14 @@ def test_no_oficiales_filtrados_unidos_y_con_id_estable():
            f("u4", "p4", "https://esc.es/m-y", "Máster en Y", sedes=["Bogotá"]),
            f("u5", "p5", "https://esc.es/blog/mejores-masters", "Máster en Z"),
            f("u6", "p6", "https://esc.es/mu", "Máster Universitario en Derecho"),
-           f("u7", "p7", "https://esc.es/mp", "Máster de Formación Permanente en Derecho", sedes=["Madrid", "Bogotá"])]
+           f("u7", "p7", "https://esc.es/mp", "Máster de Formación Permanente en Derecho", sedes=["Madrid", "Bogotá"]),
+           f("u8", "p8", "https://esc.es/es-lat/products/master-z", "Máster en Z2"),
+           f("u9", "p9", "https://esc.es/it/studi/master-w", "Master in W")]
     prev = {"p2": {"id": "p2"}}
     out = cm.programas_no_oficiales(web, prev)
     assert [r["id"] for r in out] == ["p2", "p7"]
     assert out[0]["campos"]["precio_total"]["valor"] == 9000 and out[0]["otras_paginas"]
-    assert cm.DESCARTES["no_oficial_otro_pais"] == 2 and cm.DESCARTES["no_oficial_parece_master_oficial"] == 1
+    assert cm.DESCARTES["no_oficial_otro_pais"] == 4 and cm.DESCARTES["no_oficial_parece_master_oficial"] == 1
 
 
 def test_modalidad_de_qedu_y_boe_solo_cuadra_si_completo():

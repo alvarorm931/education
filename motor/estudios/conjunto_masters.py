@@ -1035,6 +1035,9 @@ RE_ESPAÑA = re.compile(
     r"tenerife|canarias|coru[nñ]a|santiago de compostela|vigo|lugo|ourense|pontevedra|segovia|[aá]vila|soria|zamora|"
     r"palencia|huesca|teruel|cartagena|elche|getafe|legan[eé]s|alcal[aá]|m[oó]stoles|fuenlabrada|terrassa|sabadell|"
     r"reus|ceuta|melilla|villaviciosa|pozuelo|majadahonda|boadilla|alcobendas|san cugat|sant cugat)\b")
+# Versiones de la página para otro país o en una lengua que no es de España («/es-lat/», «/en-intl/», «/it/»): el
+# programa ya está en su versión española o no se imparte aquí
+RE_VERSION_OTRO_IDIOMA = re.compile(r"(?i)^https?://[^/]+/(es-lat|en-intl|en-uae|fr|it|de|pt|zh|ru|lt|nl|pl|ar)(/|$)")
 RE_NOMBRE_OFICIAL = re.compile(r"(?i)\bm[aáà]ster universitari[oa]?\b|\buniversity master\b|\bofficial master")
 RE_NOMBRE_PROPIO = re.compile(r"(?i)propio|permanente|own degree|t[ií]tulo de la escuela")
 
@@ -1051,7 +1054,7 @@ def fuera_de_no_oficiales(f: dict) -> str | None:
     tipo = str((c.get("tipo_titulo") or {}).get("valor") or "")
     if es_tipo_oficial(tipo) or (RE_NOMBRE_OFICIAL.search(nombre) and not RE_NOMBRE_PROPIO.search(nombre + " " + tipo)):
         return "parece_master_oficial"
-    if LOCALE_OTRO_PAIS.search(url) or re.search(r"(?i)\bmaestr[ií]a", nombre):
+    if LOCALE_OTRO_PAIS.search(url) or RE_VERSION_OTRO_IDIOMA.search(url) or re.search(r"(?i)\bmaestr[ií]a", nombre):
         return "otro_pais"
     sedes = (c.get("sedes") or {}).get("valor")
     sedes = " · ".join(sedes) if isinstance(sedes, list) else str(sedes or "")
