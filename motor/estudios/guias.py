@@ -360,7 +360,8 @@ def main() -> None:
         res = lote(Path(a.guias), base / f"tramo_{a.desde}", a.desde, a.hasta, a.esperar_min, a.max_minutos, a.hilos,
                    navegador=a.navegador)
     else:
-        res = retomar(Path(a.lote_json), base / "retomado", a.esperar_min)
+        lj = Path(a.lote_json)  # una carpeta por lote: dos retomas en la misma ejecución no se pisan
+        res = retomar(lj, base / ("retomado_" + json.loads(lj.read_text(encoding="utf-8"))["id"][-16:]), a.esperar_min)
     print(json.dumps(res, ensure_ascii=False, indent=1))
 
 
