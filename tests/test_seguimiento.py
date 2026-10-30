@@ -54,3 +54,20 @@ def test_ejecutar(tmp_path):
     (tmp_path / "e.jsonl").write_text(json.dumps({"url": "https://x.es/n", "no_es_programa": True}) + "\n")
     res = s.ejecutar(tmp_path / "h.jsonl", tmp_path / "m.jsonl", tmp_path / "out", hoy=HOY, extraidas=tmp_path / "e.jsonl")
     assert res["paginas"] == 1 and res["no_programa"] == 1 and res["campos_a_pedir"]["metodologia"] == 1
+
+
+def test_estado_por_master_desde_fichas(tmp_path):
+    import json
+    from datetime import date
+    from motor.estudios import seguimiento as sg
+    fichas = [{"clave": "ruct:1", "grupo": "oficial", "comprobacion_nombre": "confirmado", "codigo_ruct": "1",
+               "fuentes": [{"url": "https://u.es/m", "extraido": "2026-10-30T03:00:00+00:00"}],
+               "campos": {"asignaturas": {"valor": ["A"], "fuente": 0}},
+               "oficiales": {"tipo_titulo": {"valor": "máster universitario oficial", "fuente": "catalogo_siiu"},
+                             "titularidad": {"valor": "Pública"}}},
+              {"clave": "url:x", "grupo": "no_oficial", "es_master": True, "proveedor": "prov-a", "fuentes": [], "campos": {}}]
+    (tmp_path / "f.jsonl").write_text("".join(json.dumps(x) + "\n" for x in fichas))
+    r = sg.desde_fichas(tmp_path / "f.jsonl", tmp_path / "o", hoy=date(2026, 10, 30))
+    assert r["masters"] == 2
+    assert r["por_campo"]["precio_total"] == {"fuente_oficial_pendiente": 1, "no_publicado": 1}
+    assert r["por_campo"]["asignaturas"]["publicado_ficha"] == 1 and r["por_campo"]["tipo_titulo"]["fuente_oficial"] == 1

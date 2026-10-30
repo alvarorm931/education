@@ -38,6 +38,7 @@ SIGUIENTE = {
     "documento_publico": "vigilar_cambios",
     "fuente_oficial": "vigilar_boletin_o_registro",
     "facilitado_centro": "pedir_actualizacion_antes_de_la_admision",
+    "fuente_oficial_pendiente": "cargar_decreto_de_precios_de_la_comunidad",
 }
 # Días hasta la próxima comprobación, en temporada de admisión y fuera de ella.
 FRECUENCIA = {
@@ -104,6 +105,48 @@ def seguir(url: str, hechos: dict[str, dict], medida: dict, oficiales: dict[str,
             "proxima_comprobacion": min(e["proxima_comprobacion"] for e in campos.values())}
 
 
+def desde_fichas(fichas: Path, salida: Path, hoy: date | None = None, facilitados: Path | None = None) -> dict:
+    """Estado de cada campo esencial de cada máster desde las fichas compuestas (fichas_masters.py): un máster
+    por ficha (los oficiales por su código RUCT) y no por página. Las públicas tienen el precio en el decreto de
+    su comunidad: «fuente_oficial_pendiente» hasta que esté cargado."""
+    hoy = hoy or date.today()
+    fac: dict[str, dict] = defaultdict(dict)
+    for x in _jsonl(facilitados):
+        fac[x.get("clave") or x.get("url_programa")][x["campo"]] = x
+    cuentas, transp, filas = Counter(), [], []
+    for f in _jsonl(fichas):
+        if f["grupo"] == "oficial" and f.get("comprobacion_nombre") not in ("confirmado", "probable_oficial",
+                                                                             "confirmado_por_nombre"):
+            continue
+        if f["grupo"] != "oficial" and not f.get("es_master"):
+            continue
+        fuentes = f.get("fuentes") or []
+        hechos = {c: {"estado": "aceptado", "valor": v["valor"],
+                      "url": (fuentes[v["fuente"]]["url"] if isinstance(v.get("fuente"), int) and v["fuente"] < len(fuentes) else v.get("url")),
+                      "extraido": (fuentes[v["fuente"]]["extraido"] if isinstance(v.get("fuente"), int) and v["fuente"] < len(fuentes) else v.get("extraido", ""))}
+                  for c, v in (f.get("campos") or {}).items()}
+        oficiales = {c: {**v, "fuente": v.get("fuente")} for c, v in (f.get("oficiales") or {}).items()}
+        publica = (oficiales.get("titularidad") or {}).get("valor") == "Pública"
+        r = seguir(f["clave"], hechos, {"extraido": True}, oficiales, fac.get(f["clave"], {}), hoy)
+        if publica and r["campos"]["precio_total"]["estado"] in ("no_publicado", "solo_con_registro"):
+            r["campos"]["precio_total"].update({"estado": "fuente_oficial_pendiente",
+                                                "siguiente_paso": "cargar_decreto_de_precios_de_la_comunidad"})
+            r["pedir_al_centro"] = [c for c in r["pedir_al_centro"] if c != "precio_total"]
+        r.update({"grupo": f["grupo"], "codigo_ruct": f.get("codigo_ruct"), "proveedor": f.get("proveedor")})
+        filas.append(r)
+        for c, e in r["campos"].items():
+            cuentas[(c, e["estado"])] += 1
+        if r["transparencia"] is not None:
+            transp.append(r["transparencia"])
+    destino = salida / "datos" / "estudios" / "seguimiento"
+    destino.mkdir(parents=True, exist_ok=True)
+    (destino / "campos_por_master.jsonl").write_text("".join(json.dumps(x, ensure_ascii=False) + "\n" for x in filas),
+                                                    encoding="utf-8")
+    return {"masters": len(filas),
+            "transparencia_media": round(sum(transp) / len(transp), 3) if transp else None,
+            "por_campo": {c: {e: n for (c2, e), n in sorted(cuentas.items()) if c2 == c} for c in ESENCIALES}}
+
+
 def _jsonl(ruta: Path | None) -> list[dict]:
     if not ruta:
         return []
@@ -146,14 +189,20 @@ def ejecutar(hechos: Path, medidas: Path, salida: Path, oficiales: Path | None =
 
 def main() -> None:
     p = argparse.ArgumentParser()
-    p.add_argument("--hechos", required=True)
-    p.add_argument("--medidas", required=True)
+    p.add_argument("--fichas", help="fichas.jsonl de fichas_masters.py: estado por máster (sustituye a --hechos)")
+    p.add_argument("--hechos")
+    p.add_argument("--medidas")
     p.add_argument("--extraidas")
     p.add_argument("--oficiales")
     p.add_argument("--facilitados")
     p.add_argument("--salida", required=True)
     p.add_argument("--hoy")
     a = p.parse_args()
+    if a.fichas:
+        res = desde_fichas(Path(a.fichas), Path(a.salida), date.fromisoformat(a.hoy) if a.hoy else None,
+                           Path(a.facilitados) if a.facilitados else None)
+        print(json.dumps(res, ensure_ascii=False, indent=1))
+        return
     res = ejecutar(Path(a.hechos), Path(a.medidas), Path(a.salida), Path(a.oficiales) if a.oficiales else None,
                    Path(a.facilitados) if a.facilitados else None, date.fromisoformat(a.hoy) if a.hoy else None,
                    Path(a.extraidas) if a.extraidas else None)
