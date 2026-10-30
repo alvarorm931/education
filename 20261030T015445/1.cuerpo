@@ -1,0 +1,835 @@
+<!DOCTYPE html><html lang="es">
+<head>
+<title>UNIVbase - Estadísticas Universitarias</title>
+<link rel="shortcut icon" href="/menus/img/favicon.ico" type="image/x-icon">
+<link href="/menus/img/favicon.png" rel="apple-touch-icon">
+<link href="/menus/img/apple-touch-icon-57x57-precomposed.png" rel="apple-touch-icon" sizes="57x57">
+<link href="/menus/img/apple-touch-icon-60x60-precomposed.png" rel="apple-touch-icon" sizes="60x60">
+<link href="/menus/img/apple-touch-icon-72x72-precomposed.png" rel="apple-touch-icon" sizes="76x76">
+<link href="/menus/img/apple-touch-icon-76x76-precomposed.png" rel="apple-touch-icon" sizes="76x76">
+<link href="/menus/img/apple-touch-icon-114x114-precomposed.png" rel="apple-touch-icon" sizes="114x114">
+<link href="/menus/img/apple-touch-icon-120x120-precomposed.png" rel="apple-touch-icon" sizes="120x120">
+<link href="/menus/img/apple-touch-icon-144x144-precomposed.png" rel="apple-touch-icon" sizes="144x144">
+<link href="/menus/img/apple-touch-icon-152x152-precomposed.png" rel="apple-touch-icon" sizes="152x152">
+<link href="/menus/img/apple-touch-icon-160x160-precomposed.png" rel="apple-touch-icon" sizes="160x160">
+<link href="/menus/img/apple-touch-icon-180x180-precomposed.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/menus/img/favicon-192x192.png" rel="icon" sizes="192x192">
+<link href="/menus/img/favicon-160x160.png" rel="icon" sizes="160x160">
+<link href="/menus/img/favicon-128x128.png" rel="icon" sizes="128x128">
+<link href="/menus/img/favicon-96x96.png" rel="icon" sizes="96x96">
+<link href="/menus/img/favicon-32x32.png" rel="icon" sizes="32x32">
+<link href="/menus/img/favicon-16x16.png" rel="icon" sizes="16x16">
+<meta property="og:locale" content="es_ES">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ministerio de Ciencia, Innovaci&oacute;n y Universidades">
+<meta property="og:image" content="/menus/_b/img/muniv_footer_logo.svg">
+<meta property="og:image:secure_url" content="/menus/_b/img/muniv_footer_logo.svg">
+<meta property="og:image:alt" content="Logo">
+<meta property="og:image:type" content="image/svg+xml">
+<meta property="og:image:width" content="326">
+<meta property="og:image:height" content="126">
+<meta content="True" name="HandheldFriendly">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=yes">
+<script src="/menus/_b/../plantillas/inebase/js/es/widget-grid.js"></script>
+<script src="/menus/js/loading.js"></script>
+<script src="/menus/_b/js/es/general.js"></script><link rel="stylesheet" as="style" media="screen" href="/menus/lib/jquery-ui/1.13.2/jquery-ui.css" onload="this.rel='stylesheet'; this.onload=null">
+<link rel="stylesheet" as="style" media="screen" href="/menus/_b/css/bootstrapINE.min.css" onload="this.rel='stylesheet'; this.onload=null">
+<link rel="stylesheet" as="style" href="/menus/_b/fonts/fontAwesome/css/all.min.css" onload="this.rel='stylesheet'; this.onload=null"><script>
+	var sepMil= ".";var sepDec= ",";
+	var docIsLoaded=false;
+	var HM_Menu_Dir="/menus/";
+	var HM_Menu_DirVersion="/menus/_b/";
+	var HM_imgDir="/menus/img/";
+	var HM_DirJs="/menus/js/";
+	var HM_idioma="es";
+	var HM_idiomaINE="0";
+	var othethickbox="";
+	var INE_Servidor="http://www.ine.es";
+	var INE_ServidorAbsoluta="http://www.ine.es";
+	var HTMLVersion=5;
+	var showBtnAddCesta=false;
+	var isIE=false;
+</script>
+<script src="/menus/lib/jquery-3.6.3.js"></script>
+<script src="/menus/_b/js/general.js"></script>
+<!--<script async="" src="/menus/lib/bootstrap/5.3.1/js/bootstrap.min.js"></script>-->
+<script async="" src="/menus/lib/jquery-ui/1.13.2/jquery-ui.js"></script>
+<link rel="stylesheet" as="style" href="/menus/_b/css/component/components.css?s=0&amp;ilp=1&amp;sv=2&amp;pnls=1" onload="this.rel='stylesheet'; this.onload=null">
+<script src="/menus/_b/js/component/components.js?s=0&amp;ilp=1&amp;sv=2&amp;pnls=1" charset=""></script>
+<link rel="stylesheet" href="/menus/_b/css/baseINE.css">
+<link rel="stylesheet" as="style" onload="this.rel='stylesheet'; this.onload=null" href="/menus/_b/css/iconos.css">
+<link rel="stylesheet" as="style" onload="this.rel='stylesheet'; this.onload=null" href="/menus/_b/css/cabecera_pie.css">
+<link rel="preload" as="style" onload="this.rel='stylesheet'; this.onload=null" href="/menus/_b/css/cabecera_pie_print.css" media="print">
+<link rel="stylesheet" as="style" onload="this.rel='stylesheet'; this.onload=null" href="/menus/_b/css/nav.css">
+<link rel="preload" as="style" onload="this.rel='stylesheet'; this.onload=null" href="/menus/_b/css/nav_print.css" media="print">
+<link rel="stylesheet" as="style" onload="this.rel='stylesheet'; this.onload=null" href="/menus/_b/css/global.css">
+<link rel="stylesheet" href="/menus/_b/css/oldMigration.css">
+<script async="" src="/menus/js/cookie.js"></script>
+<script async="" src="/menus/_b/js/cabecera.js"></script>
+<script async="" src="/menus/_b/js/social.js"></script>
+<script async="" src="/menus/js/thickboxINE.js"></script>
+<script src="/menus/_b/js/oldMigration.js"></script>
+<!--<script src="/menus/lib/jquery-migrate-3.4.0.min.js"></script>-->
+		
+<script>
+	try{if ( isMobile.any() ) {
+		loadUrlStyle(HM_Menu_DirVersion +"css/media_query.css",null,null);
+	}}catch(e){}
+</script>
+		
+<link rel="stylesheet" href="/menus/plantillas/inebase/css/web.css">
+<link rel="stylesheet" href="/menus/plantillas/inebase/css/grid_styles.css">
+<script type="text/javascript" src="/menus/plantillas/inebase/js/nodo.js?v=2"></script>
+<script type="text/javascript" src="/menus/plantillas/inebase/js/notex.js"></script>
+<script type="text/javascript" src="/menus/plantillas/inebase/js/widget-grid.js"></script>
+<script type="text/javascript">
+$( document ).ready(function() {loadEvntTooltip($(document)); loadEvntDesplegar($(document))});
+</script>
+ <script type="text/javascript">
+var UrlCapitulosAjax="../ajax/es/listaCapitulos.htm";
+var UrlTablasAjax="../ajax/es/listaTablas.htm";
+</script>
+<script type="text/javascript">
+var UrlCapitulosAjax="ajax/es/listaCapitulos.htm";
+var UrlTablasAjax="ajax/es/listaTablas.htm";
+</script>
+</head>
+<body>
+<div class="contenedor">
+	<header>
+		<div class="row">
+			<div class="col ImagenLogoIne">
+				<a href="https://www.ciencia.gob.es"><img src="/menus/_b/img/muni_logo.svg" alt="Logotipo MICIU"></a>
+			</div>
+			<div class="col MenuDch">
+				<h1>UNIVBASE</h1>
+			</div>
+		</div>
+		<div id="bandera">
+			<div class="parterojoizquierda"></div>
+			<div class="parteamarillo"></div>
+			<div class="parterojoderecha"></div>
+		</div>			
+	</header>
+	<nav class="navbar navbar-expand-sm bg-dark navbar-dark justify-content-end">
+		<div class="container-fluid">
+			<a href="/index.html" class="thickbox btn btn-info" title="UNIVBASE" tabindex="0" role="button">
+				<img src="/menus/_b/img/home.jpg" alt="Standalone">
+			</a>
+		</div>
+	</nav>
+<div class="AppToolBarFondo AppToolBarImg2">
+<a class="AppToolBarLogo" href="/inebmenu/indice.htm" title="Inicio UNIVbase">
+				<img src="/menus//img/logoinebase.gif" class="sinborde" alt="Inicio UNIVbase">
+			</a>
+		<div class="AppToolBarContent">
+   	<div class="Sup"><ul class="miga">
+<li><a href="/inebmenu/indice.htm">UNIVbase</a></li>
+			</ul></div>
+      <div class="Inf"></div>
+   </div>
+</div><main id="listadoInebase">
+<h1 class="inebase_titulo" id="c_-9223372036854775808"> Indicadores de rendimiento académico y de transición a Máster de estudiantes de Grado</h1>
+	<ul class="secciones highlight" data-type="tree" aria-labelledby="c_-9223372036854775808">
+		<li class="" role="treeitem" data-has-children="true">
+  			<a id="c_0"
+  					   title="Desplegar subelementos"
+  					   class="desplegar title titleOpen" 
+  					   data-value="10_ 1"
+  					   aria-expanded="true">
+				Resultados nacionales</a>
+					<ul class="subSecc" role="group" aria-labelledby="c_-9223372036854775808 c_-9223372036854775807">
+		<li role="none">
+		<span class="additional">
+				<a href="/jaxiPx/dlgExport.htm?path=/Universitaria/Indicadores/2025/1_Grado//&file=Renovacion_Grado_Tot.px&nocab=1&L=0" class="thickbox" title="Descarga ficheros" role="button"><img class="iconoDown" src="/menus//plantillas/inebase/img/down.gif"  alt="Descarga ficheros"></a>
+
+				<a href="#" class="tooltip tooltip-evnt" id="t_-9223372036854775806Tooltip" aria-label="Información sobre última modificación, dimensiones y periodo" aria-haspopup="true" role="button"><img class="icono" src="/menus//plantillas/inebase/img/i.gif" alt="Informacion tabla"></a>
+					<dl class="tooltip-content" role="tooltip" aria-labelledby="t_-9223372036854775806Tooltip">
+						<dt class="FechCambio">Ultima modificacion: </dt>
+						  <dd class="FechCambio">26/08/2025</dd>
+						<dt class="Tamanyo">Tamaño del fichero:</dt>
+						  <dd class="Tamanyo">155.929,00 bytes</dd>
+						<dt class="Variables">Dimensiones:</dt>
+						  <dd class="Variables">
+						  	Tipo de universidad, Modalidad de la universidad, Ámbito de estudio, Sexo</dd>
+					</dl>
+					</span>
+			<a href="/jaxiPx/Tabla.htm?path=/Universitaria/Indicadores/2025/1_Grado/l0/&amp;file=Renovacion_Grado_Tot.px&amp;L=0" data-tabla="1--9223372036854775806" class="titulo t2">Tasa de renovación por tipo y modalidad de la universidad, ámbito de estudio y sexo</a>
+				<li role="none">
+		<span class="additional">
+				<a href="/jaxiPx/dlgExport.htm?path=/Universitaria/Indicadores/2025/1_Grado//&file=Rendimiento_Exito_Eval_Grado_Tot.px&nocab=1&L=0" class="thickbox" title="Descarga ficheros" role="button"><img class="iconoDown" src="/menus//plantillas/inebase/img/down.gif"  alt="Descarga ficheros"></a>
+
+				<a href="#" class="tooltip tooltip-evnt" id="t_-9223372036854775805Tooltip" aria-label="Información sobre última modificación, dimensiones y periodo" aria-haspopup="true" role="button"><img class="icono" src="/menus//plantillas/inebase/img/i.gif" alt="Informacion tabla"></a>
+					<dl class="tooltip-content" role="tooltip" aria-labelledby="t_-9223372036854775805Tooltip">
+						<dt class="FechCambio">Ultima modificacion: </dt>
+						  <dd class="FechCambio">25/08/2025</dd>
+						<dt class="Tamanyo">Tamaño del fichero:</dt>
+						  <dd class="Tamanyo">170.681,00 bytes</dd>
+						<dt class="Variables">Dimensiones:</dt>
+						  <dd class="Variables">
+						  	Tipo de universidad, Modalidad de la universidad, Ámbito de estudio, Sexo, Indicador</dd>
+					</dl>
+					</span>
+			<a href="/jaxiPx/Tabla.htm?path=/Universitaria/Indicadores/2025/1_Grado/l0/&amp;file=Rendimiento_Exito_Eval_Grado_Tot.px&amp;L=0" data-tabla="1--9223372036854775805" class="titulo t2">Tasa de rendimiento, éxito y evaluación (estudiantes matriculados) por tipo y modalidad de la universidad, ámbito de estudio y sexo</a>
+				<li role="none">
+		<span class="additional">
+				<a href="/jaxiPx/dlgExport.htm?path=/Universitaria/Indicadores/2025/1_Grado//&file=Creditos_Mat_Pre_Sup_Grado_Tot.px&nocab=1&L=0" class="thickbox" title="Descarga ficheros" role="button"><img class="iconoDown" src="/menus//plantillas/inebase/img/down.gif"  alt="Descarga ficheros"></a>
+
+				<a href="#" class="tooltip tooltip-evnt" id="t_-9223372036854775804Tooltip" aria-label="Información sobre última modificación, dimensiones y periodo" aria-haspopup="true" role="button"><img class="icono" src="/menus//plantillas/inebase/img/i.gif" alt="Informacion tabla"></a>
+					<dl class="tooltip-content" role="tooltip" aria-labelledby="t_-9223372036854775804Tooltip">
+						<dt class="FechCambio">Ultima modificacion: </dt>
+						  <dd class="FechCambio">25/08/2025</dd>
+						<dt class="Tamanyo">Tamaño del fichero:</dt>
+						  <dd class="Tamanyo">396.070,00 bytes</dd>
+						<dt class="Variables">Dimensiones:</dt>
+						  <dd class="Variables">
+						  	Tipo de universidad, Modalidad de la universidad, Ámbito de estudio, Sexo, Indicador</dd>
+					</dl>
+					</span>
+			<a href="/jaxiPx/Tabla.htm?path=/Universitaria/Indicadores/2025/1_Grado/l0/&amp;file=Creditos_Mat_Pre_Sup_Grado_Tot.px&amp;L=0" data-tabla="1--9223372036854775804" class="titulo t2">Número medio y total de créditos matriculados, presentados y superados (estudiantes matriculados) por tipo y modalidad de la universidad, ámbito de estudio y sexo</a>
+				<li role="none">
+		<span class="additional">
+				<a href="/jaxiPx/dlgExport.htm?path=/Universitaria/Indicadores/2025/1_Grado//&file=Creditos_123_Matricula_Grado_Tot.px&nocab=1&L=0" class="thickbox" title="Descarga ficheros" role="button"><img class="iconoDown" src="/menus//plantillas/inebase/img/down.gif"  alt="Descarga ficheros"></a>
+
+				<a href="#" class="tooltip tooltip-evnt" id="t_-9223372036854775803Tooltip" aria-label="Información sobre última modificación, dimensiones y periodo" aria-haspopup="true" role="button"><img class="icono" src="/menus//plantillas/inebase/img/i.gif" alt="Informacion tabla"></a>
+					<dl class="tooltip-content" role="tooltip" aria-labelledby="t_-9223372036854775803Tooltip">
+						<dt class="FechCambio">Ultima modificacion: </dt>
+						  <dd class="FechCambio">25/08/2025</dd>
+						<dt class="Tamanyo">Tamaño del fichero:</dt>
+						  <dd class="Tamanyo">201.491,00 bytes</dd>
+						<dt class="Variables">Dimensiones:</dt>
+						  <dd class="Variables">
+						  	Tipo de universidad, Modalidad de la universidad, Ámbito de estudio, Sexo, Indicador</dd>
+					</dl>
+					</span>
+			<a href="/jaxiPx/Tabla.htm?path=/Universitaria/Indicadores/2025/1_Grado/l0/&amp;file=Creditos_123_Matricula_Grado_Tot.px&amp;L=0" data-tabla="1--9223372036854775803" class="titulo t2">Distribución de los créditos matriculados en primera, segunda y tercera y sucesivas matrículas (estudiantes matriculados) por tipo y modalidad de la universidad, ámbito de estudio y sexo</a>
+				<li role="none">
+		<span class="additional">
+				<a href="/jaxiPx/dlgExport.htm?path=/Universitaria/Indicadores/2025/1_Grado//&file=Abandono_Grado_Tot.px&nocab=1&L=0" class="thickbox" title="Descarga ficheros" role="button"><img class="iconoDown" src="/menus//plantillas/inebase/img/down.gif"  alt="Descarga ficheros"></a>
+
+				<a href="#" class="tooltip tooltip-evnt" id="t_-9223372036854775802Tooltip" aria-label="Información sobre última modificación, dimensiones y periodo" aria-haspopup="true" role="button"><img class="icono" src="/menus//plantillas/inebase/img/i.gif" alt="Informacion tabla"></a>
+					<dl class="tooltip-content" role="tooltip" aria-labelledby="t_-9223372036854775802Tooltip">
+						<dt class="FechCambio">Ultima modificacion: </dt>
+						  <dd class="FechCambio">04/09/2025</dd>
+						<dt class="Tamanyo">Tamaño del fichero:</dt>
+						  <dd class="Tamanyo">249.243,00 bytes</dd>
+						<dt class="Variables">Dimensiones:</dt>
+						  <dd class="Variables">
+						  	Tipo de universidad, Modalidad de la universidad, Ámbito de estudio, Sexo, Indicador</dd>
+					</dl>
+					</span>
+			<a href="/jaxiPx/Tabla.htm?path=/Universitaria/Indicadores/2025/1_Grado/l0/&amp;file=Abandono_Grado_Tot.px&amp;L=0" data-tabla="1--9223372036854775802" class="titulo t2">Tasas de abandono del estudio (cohortes de nuevo ingreso en el estudio) por tipo y modalidad de la universidad, ámbito de estudio y sexo</a>
+				<li role="none">
+		<span class="additional">
+				<a href="/jaxiPx/dlgExport.htm?path=/Universitaria/Indicadores/2025/1_Grado//&file=Cambio_Grado_Tot.px&nocab=1&L=0" class="thickbox" title="Descarga ficheros" role="button"><img class="iconoDown" src="/menus//plantillas/inebase/img/down.gif"  alt="Descarga ficheros"></a>
+
+				<a href="#" class="tooltip tooltip-evnt" id="t_-9223372036854775801Tooltip" aria-label="Información sobre última modificación, dimensiones y periodo" aria-haspopup="true" role="button"><img class="icono" src="/menus//plantillas/inebase/img/i.gif" alt="Informacion tabla"></a>
+					<dl class="tooltip-content" role="tooltip" aria-labelledby="t_-9223372036854775801Tooltip">
+						<dt class="FechCambio">Ultima modificacion: </dt>
+						  <dd class="FechCambio">04/09/2025</dd>
+						<dt class="Tamanyo">Tamaño del fichero:</dt>
+						  <dd class="Tamanyo">234.303,00 bytes</dd>
+						<dt class="Variables">Dimensiones:</dt>
+						  <dd class="Variables">
+						  	Tipo de universidad, Modalidad de la universidad, Ámbito de estudio, Sexo, Indicador</dd>
+					</dl>
+					</span>
+			<a href="/jaxiPx/Tabla.htm?path=/Universitaria/Indicadores/2025/1_Grado/l0/&amp;file=Cambio_Grado_Tot.px&amp;L=0" data-tabla="1--9223372036854775801" class="titulo t2">Tasas de cambio del estudio (cohortes de nuevo ingreso en el estudio) por tipo y modalidad de la universidad, ámbito de estudio y sexo</a>
+				<li role="none">
+		<span class="additional">
+				<a href="/jaxiPx/dlgExport.htm?path=/Universitaria/Indicadores/2025/1_Grado//&file=AbandonoSUE_Grado_Tot.px&nocab=1&L=0" class="thickbox" title="Descarga ficheros" role="button"><img class="iconoDown" src="/menus//plantillas/inebase/img/down.gif"  alt="Descarga ficheros"></a>
+
+				<a href="#" class="tooltip tooltip-evnt" id="t_-9223372036854775800Tooltip" aria-label="Información sobre última modificación, dimensiones y periodo" aria-haspopup="true" role="button"><img class="icono" src="/menus//plantillas/inebase/img/i.gif" alt="Informacion tabla"></a>
+					<dl class="tooltip-content" role="tooltip" aria-labelledby="t_-9223372036854775800Tooltip">
+						<dt class="FechCambio">Ultima modificacion: </dt>
+						  <dd class="FechCambio">04/09/2025</dd>
+						<dt class="Tamanyo">Tamaño del fichero:</dt>
+						  <dd class="Tamanyo">243.347,00 bytes</dd>
+						<dt class="Variables">Dimensiones:</dt>
+						  <dd class="Variables">
+						  	Tipo de universidad, Modalidad de la universidad, Ámbito de estudio, Sexo, Indicador</dd>
+					</dl>
+					</span>
+			<a href="/jaxiPx/Tabla.htm?path=/Universitaria/Indicadores/2025/1_Grado/l0/&amp;file=AbandonoSUE_Grado_Tot.px&amp;L=0" data-tabla="1--9223372036854775800" class="titulo t2">Tasas de abandono del SUE (cohortes de nuevo ingreso en el estudio) por tipo y modalidad de la universidad, ámbito de estudio y sexo</a>
+				<li role="none">
+		<span class="additional">
+				<a href="/jaxiPx/dlgExport.htm?path=/Universitaria/Indicadores/2025/1_Grado//&file=Idoneidad_Grado_Tot.px&nocab=1&L=0" class="thickbox" title="Descarga ficheros" role="button"><img class="iconoDown" src="/menus//plantillas/inebase/img/down.gif"  alt="Descarga ficheros"></a>
+
+				<a href="#" class="tooltip tooltip-evnt" id="t_-9223372036854775799Tooltip" aria-label="Información sobre última modificación, dimensiones y periodo" aria-haspopup="true" role="button"><img class="icono" src="/menus//plantillas/inebase/img/i.gif" alt="Informacion tabla"></a>
+					<dl class="tooltip-content" role="tooltip" aria-labelledby="t_-9223372036854775799Tooltip">
+						<dt class="FechCambio">Ultima modificacion: </dt>
+						  <dd class="FechCambio">04/09/2025</dd>
+						<dt class="Tamanyo">Tamaño del fichero:</dt>
+						  <dd class="Tamanyo">106.623,00 bytes</dd>
+						<dt class="Variables">Dimensiones:</dt>
+						  <dd class="Variables">
+						  	Tipo de universidad, Modalidad de la universidad, Ámbito de estudio, Sexo, Indicador</dd>
+					</dl>
+					</span>
+			<a href="/jaxiPx/Tabla.htm?path=/Universitaria/Indicadores/2025/1_Grado/l0/&amp;file=Idoneidad_Grado_Tot.px&amp;L=0" data-tabla="1--9223372036854775799" class="titulo t2">Tasas de idoneidad en el estudio (cohortes de nuevo ingreso en el estudio) por tipo y modalidad de la universidad, ámbito de estudio y sexo</a>
+				<li role="none">
+		<span class="additional">
+				<a href="/jaxiPx/dlgExport.htm?path=/Universitaria/Indicadores/2025/1_Grado//&file=Graduacion_Grado_Tot.px&nocab=1&L=0" class="thickbox" title="Descarga ficheros" role="button"><img class="iconoDown" src="/menus//plantillas/inebase/img/down.gif"  alt="Descarga ficheros"></a>
+
+				<a href="#" class="tooltip tooltip-evnt" id="t_-9223372036854775798Tooltip" aria-label="Información sobre última modificación, dimensiones y periodo" aria-haspopup="true" role="button"><img class="icono" src="/menus//plantillas/inebase/img/i.gif" alt="Informacion tabla"></a>
+					<dl class="tooltip-content" role="tooltip" aria-labelledby="t_-9223372036854775798Tooltip">
+						<dt class="FechCambio">Ultima modificacion: </dt>
+						  <dd class="FechCambio">04/09/2025</dd>
+						<dt class="Tamanyo">Tamaño del fichero:</dt>
+						  <dd class="Tamanyo">107.799,00 bytes</dd>
+						<dt class="Variables">Dimensiones:</dt>
+						  <dd class="Variables">
+						  	Tipo de universidad, Modalidad de la universidad, Ámbito de estudio, Sexo, Indicador</dd>
+					</dl>
+					</span>
+			<a href="/jaxiPx/Tabla.htm?path=/Universitaria/Indicadores/2025/1_Grado/l0/&amp;file=Graduacion_Grado_Tot.px&amp;L=0" data-tabla="1--9223372036854775798" class="titulo t2">Tasas de graduación en el estudio (cohortes de nuevo ingreso en el estudio) por tipo y modalidad de la universidad, ámbito de estudio y sexo</a>
+				<li role="none">
+		<span class="additional">
+				<a href="/jaxiPx/dlgExport.htm?path=/Universitaria/Indicadores/2025/1_Grado//&file=Eficiencia_Exito_Eval_Grado_Tot.px&nocab=1&L=0" class="thickbox" title="Descarga ficheros" role="button"><img class="iconoDown" src="/menus//plantillas/inebase/img/down.gif"  alt="Descarga ficheros"></a>
+
+				<a href="#" class="tooltip tooltip-evnt" id="t_-9223372036854775797Tooltip" aria-label="Información sobre última modificación, dimensiones y periodo" aria-haspopup="true" role="button"><img class="icono" src="/menus//plantillas/inebase/img/i.gif" alt="Informacion tabla"></a>
+					<dl class="tooltip-content" role="tooltip" aria-labelledby="t_-9223372036854775797Tooltip">
+						<dt class="FechCambio">Ultima modificacion: </dt>
+						  <dd class="FechCambio">05/09/2025</dd>
+						<dt class="Tamanyo">Tamaño del fichero:</dt>
+						  <dd class="Tamanyo">167.249,00 bytes</dd>
+						<dt class="Variables">Dimensiones:</dt>
+						  <dd class="Variables">
+						  	Tipo de universidad, Modalidad de la universidad, Ámbito de estudio, Sexo, Indicador</dd>
+					</dl>
+					</span>
+			<a href="/jaxiPx/Tabla.htm?path=/Universitaria/Indicadores/2025/1_Grado/l0/&amp;file=Eficiencia_Exito_Eval_Grado_Tot.px&amp;L=0" data-tabla="1--9223372036854775797" class="titulo t2">Tasas de eficiencia, éxito y evaluación (estudiantes egresados) por tipo y modalidad de la universidad, ámbito de estudio y sexo</a>
+				<li role="none">
+		<span class="additional">
+				<a href="/jaxiPx/dlgExport.htm?path=/Universitaria/Indicadores/2025/1_Grado//&file=Nota_Expediente_Grado_Tot.px&nocab=1&L=0" class="thickbox" title="Descarga ficheros" role="button"><img class="iconoDown" src="/menus//plantillas/inebase/img/down.gif"  alt="Descarga ficheros"></a>
+
+				<a href="#" class="tooltip tooltip-evnt" id="t_-9223372036854775796Tooltip" aria-label="Información sobre última modificación, dimensiones y periodo" aria-haspopup="true" role="button"><img class="icono" src="/menus//plantillas/inebase/img/i.gif" alt="Informacion tabla"></a>
+					<dl class="tooltip-content" role="tooltip" aria-labelledby="t_-9223372036854775796Tooltip">
+						<dt class="FechCambio">Ultima modificacion: </dt>
+						  <dd class="FechCambio">26/08/2025</dd>
+						<dt class="Tamanyo">Tamaño del fichero:</dt>
+						  <dd class="Tamanyo">325.499,00 bytes</dd>
+						<dt class="Variables">Dimensiones:</dt>
+						  <dd class="Variables">
+						  	Tipo de universidad, Modalidad de la universidad, Ámbito de estudio, Sexo, Indicador</dd>
+					</dl>
+					</span>
+			<a href="/jaxiPx/Tabla.htm?path=/Universitaria/Indicadores/2025/1_Grado/l0/&amp;file=Nota_Expediente_Grado_Tot.px&amp;L=0" data-tabla="1--9223372036854775796" class="titulo t2">Media, cuartiles y máximo de la nota del expediente (estudiantes egresados) por tipo y modalidad de la universidad, ámbito de estudio y sexo</a>
+				<li role="none">
+		<span class="additional">
+				<a href="/jaxiPx/dlgExport.htm?path=/Universitaria/Indicadores/2025/1_Grado//&file=Duracion_Grado_Tot.px&nocab=1&L=0" class="thickbox" title="Descarga ficheros" role="button"><img class="iconoDown" src="/menus//plantillas/inebase/img/down.gif"  alt="Descarga ficheros"></a>
+
+				<a href="#" class="tooltip tooltip-evnt" id="t_-9223372036854775795Tooltip" aria-label="Información sobre última modificación, dimensiones y periodo" aria-haspopup="true" role="button"><img class="icono" src="/menus//plantillas/inebase/img/i.gif" alt="Informacion tabla"></a>
+					<dl class="tooltip-content" role="tooltip" aria-labelledby="t_-9223372036854775795Tooltip">
+						<dt class="FechCambio">Ultima modificacion: </dt>
+						  <dd class="FechCambio">25/08/2025</dd>
+						<dt class="Tamanyo">Tamaño del fichero:</dt>
+						  <dd class="Tamanyo">89.914,00 bytes</dd>
+						<dt class="Variables">Dimensiones:</dt>
+						  <dd class="Variables">
+						  	Tipo de universidad, Modalidad de la universidad, Ámbito de estudio, Sexo, Indicador</dd>
+					</dl>
+					</span>
+			<a href="/jaxiPx/Tabla.htm?path=/Universitaria/Indicadores/2025/1_Grado/l0/&amp;file=Duracion_Grado_Tot.px&amp;L=0" data-tabla="1--9223372036854775795" class="titulo t2">Duración media de los estudios (estudiantes egresados) por tipo y modalidad de la universidad, ámbito de estudio y sexo</a>
+				<li role="none">
+		<span class="additional">
+				<a href="/jaxiPx/dlgExport.htm?path=/Universitaria/Indicadores/2025/1_Grado//&file=Transicion_G_M_Tot.px&nocab=1&L=0" class="thickbox" title="Descarga ficheros" role="button"><img class="iconoDown" src="/menus//plantillas/inebase/img/down.gif"  alt="Descarga ficheros"></a>
+
+				<a href="#" class="tooltip tooltip-evnt" id="t_-9223372036854775794Tooltip" aria-label="Información sobre última modificación, dimensiones y periodo" aria-haspopup="true" role="button"><img class="icono" src="/menus//plantillas/inebase/img/i.gif" alt="Informacion tabla"></a>
+					<dl class="tooltip-content" role="tooltip" aria-labelledby="t_-9223372036854775794Tooltip">
+						<dt class="FechCambio">Ultima modificacion: </dt>
+						  <dd class="FechCambio">04/09/2025</dd>
+						<dt class="Tamanyo">Tamaño del fichero:</dt>
+						  <dd class="Tamanyo">106.253,00 bytes</dd>
+						<dt class="Variables">Dimensiones:</dt>
+						  <dd class="Variables">
+						  	Tipo de universidad, Modalidad de la universidad, Ámbito de estudio, Sexo, Indicador</dd>
+					</dl>
+					</span>
+			<a href="/jaxiPx/Tabla.htm?path=/Universitaria/Indicadores/2025/1_Grado/l0/&amp;file=Transicion_G_M_Tot.px&amp;L=0" data-tabla="1--9223372036854775794" class="titulo t2">Tasa de transición de Grado a Máster (estudiantes egresados) por tipo y modalidad de la universidad, ámbito de estudio y sexo</a>
+				</ul>
+<li class="" role="treeitem" data-has-children="true">
+  			<a id="c_1"
+  					   title="Desplegar subelementos"
+  					   class="desplegar title titleOpen" 
+  					   data-value="10_ 1"
+  					   aria-expanded="true">
+				Resultados por comunidad autónoma</a>
+					<ul class="subSecc" role="group" aria-labelledby="c_-9223372036854775808 c_-9223372036854775793">
+		<li role="none">
+		<span class="additional">
+				<a href="/jaxiPx/dlgExport.htm?path=/Universitaria/Indicadores/2025/1_Grado//&file=Renovacion_Grado_CA.px&nocab=1&L=0" class="thickbox" title="Descarga ficheros" role="button"><img class="iconoDown" src="/menus//plantillas/inebase/img/down.gif"  alt="Descarga ficheros"></a>
+
+				<a href="#" class="tooltip tooltip-evnt" id="t_-9223372036854775792Tooltip" aria-label="Información sobre última modificación, dimensiones y periodo" aria-haspopup="true" role="button"><img class="icono" src="/menus//plantillas/inebase/img/i.gif" alt="Informacion tabla"></a>
+					<dl class="tooltip-content" role="tooltip" aria-labelledby="t_-9223372036854775792Tooltip">
+						<dt class="FechCambio">Ultima modificacion: </dt>
+						  <dd class="FechCambio">26/08/2025</dd>
+						<dt class="Tamanyo">Tamaño del fichero:</dt>
+						  <dd class="Tamanyo">1.998.679,00 bytes</dd>
+						<dt class="Variables">Dimensiones:</dt>
+						  <dd class="Variables">
+						  	Comunidad autónoma, Tipo de universidad, Modalidad de la universidad, Ámbito de estudio, Sexo</dd>
+					</dl>
+					</span>
+			<a href="/jaxiPx/Tabla.htm?path=/Universitaria/Indicadores/2025/1_Grado/l0/&amp;file=Renovacion_Grado_CA.px&amp;L=0" data-tabla="1--9223372036854775792" class="titulo t2">Tasa de renovación por tipo y modalidad de la universidad, ámbito de estudio y sexo</a>
+				<li role="none">
+		<span class="additional">
+				<a href="/jaxiPx/dlgExport.htm?path=/Universitaria/Indicadores/2025/1_Grado//&file=Rendimiento_Exito_Eval_Grado_CA.px&nocab=1&L=0" class="thickbox" title="Descarga ficheros" role="button"><img class="iconoDown" src="/menus//plantillas/inebase/img/down.gif"  alt="Descarga ficheros"></a>
+
+				<a href="#" class="tooltip tooltip-evnt" id="t_-9223372036854775791Tooltip" aria-label="Información sobre última modificación, dimensiones y periodo" aria-haspopup="true" role="button"><img class="icono" src="/menus//plantillas/inebase/img/i.gif" alt="Informacion tabla"></a>
+					<dl class="tooltip-content" role="tooltip" aria-labelledby="t_-9223372036854775791Tooltip">
+						<dt class="FechCambio">Ultima modificacion: </dt>
+						  <dd class="FechCambio">25/08/2025</dd>
+						<dt class="Tamanyo">Tamaño del fichero:</dt>
+						  <dd class="Tamanyo">2.802.526,00 bytes</dd>
+						<dt class="Variables">Dimensiones:</dt>
+						  <dd class="Variables">
+						  	Comunidad autónoma, Tipo de universidad, Modalidad de la universidad, Ámbito de estudio, Sexo, Indicador</dd>
+					</dl>
+					</span>
+			<a href="/jaxiPx/Tabla.htm?path=/Universitaria/Indicadores/2025/1_Grado/l0/&amp;file=Rendimiento_Exito_Eval_Grado_CA.px&amp;L=0" data-tabla="1--9223372036854775791" class="titulo t2">Tasa de rendimiento, éxito y evaluación (estudiantes matriculados) por tipo y modalidad de la universidad, ámbito de estudio y sexo</a>
+				<li role="none">
+		<span class="additional">
+				<a href="/jaxiPx/dlgExport.htm?path=/Universitaria/Indicadores/2025/1_Grado//&file=Creditos_Mat_Pre_Sup_Grado_CA.px&nocab=1&L=0" class="thickbox" title="Descarga ficheros" role="button"><img class="iconoDown" src="/menus//plantillas/inebase/img/down.gif"  alt="Descarga ficheros"></a>
+
+				<a href="#" class="tooltip tooltip-evnt" id="t_-9223372036854775790Tooltip" aria-label="Información sobre última modificación, dimensiones y periodo" aria-haspopup="true" role="button"><img class="icono" src="/menus//plantillas/inebase/img/i.gif" alt="Informacion tabla"></a>
+					<dl class="tooltip-content" role="tooltip" aria-labelledby="t_-9223372036854775790Tooltip">
+						<dt class="FechCambio">Ultima modificacion: </dt>
+						  <dd class="FechCambio">25/08/2025</dd>
+						<dt class="Tamanyo">Tamaño del fichero:</dt>
+						  <dd class="Tamanyo">5.836.389,00 bytes</dd>
+						<dt class="Variables">Dimensiones:</dt>
+						  <dd class="Variables">
+						  	Comunidad autónoma, Tipo de universidad, Modalidad de la universidad, Ámbito de estudio, Sexo, Indicador</dd>
+					</dl>
+					</span>
+			<a href="/jaxiPx/Tabla.htm?path=/Universitaria/Indicadores/2025/1_Grado/l0/&amp;file=Creditos_Mat_Pre_Sup_Grado_CA.px&amp;L=0" data-tabla="1--9223372036854775790" class="titulo t2">Número medio y total de créditos matriculados, presentados y superados (estudiantes matriculados) por tipo y modalidad de la universidad, ámbito de estudio y sexo</a>
+				<li role="none">
+		<span class="additional">
+				<a href="/jaxiPx/dlgExport.htm?path=/Universitaria/Indicadores/2025/1_Grado//&file=Creditos_123_Matricula_Grado_CA.px&nocab=1&L=0" class="thickbox" title="Descarga ficheros" role="button"><img class="iconoDown" src="/menus//plantillas/inebase/img/down.gif"  alt="Descarga ficheros"></a>
+
+				<a href="#" class="tooltip tooltip-evnt" id="t_-9223372036854775789Tooltip" aria-label="Información sobre última modificación, dimensiones y periodo" aria-haspopup="true" role="button"><img class="icono" src="/menus//plantillas/inebase/img/i.gif" alt="Informacion tabla"></a>
+					<dl class="tooltip-content" role="tooltip" aria-labelledby="t_-9223372036854775789Tooltip">
+						<dt class="FechCambio">Ultima modificacion: </dt>
+						  <dd class="FechCambio">25/08/2025</dd>
+						<dt class="Tamanyo">Tamaño del fichero:</dt>
+						  <dd class="Tamanyo">2.766.917,00 bytes</dd>
+						<dt class="Variables">Dimensiones:</dt>
+						  <dd class="Variables">
+						  	Comunidad autónoma, Tipo de universidad, Modalidad de la universidad, Ámbito de estudio, Sexo, Indicador</dd>
+					</dl>
+					</span>
+			<a href="/jaxiPx/Tabla.htm?path=/Universitaria/Indicadores/2025/1_Grado/l0/&amp;file=Creditos_123_Matricula_Grado_CA.px&amp;L=0" data-tabla="1--9223372036854775789" class="titulo t2">Distribución de los créditos matriculados en primera, segunda y tercera y sucesivas matrículas (estudiantes matriculados) por tipo y modalidad de la universidad, ámbito de estudio y sexo</a>
+				<li role="none">
+		<span class="additional">
+				<a href="/jaxiPx/dlgExport.htm?path=/Universitaria/Indicadores/2025/1_Grado//&file=Abandono_Grado_CA.px&nocab=1&L=0" class="thickbox" title="Descarga ficheros" role="button"><img class="iconoDown" src="/menus//plantillas/inebase/img/down.gif"  alt="Descarga ficheros"></a>
+
+				<a href="#" class="tooltip tooltip-evnt" id="t_-9223372036854775788Tooltip" aria-label="Información sobre última modificación, dimensiones y periodo" aria-haspopup="true" role="button"><img class="icono" src="/menus//plantillas/inebase/img/i.gif" alt="Informacion tabla"></a>
+					<dl class="tooltip-content" role="tooltip" aria-labelledby="t_-9223372036854775788Tooltip">
+						<dt class="FechCambio">Ultima modificacion: </dt>
+						  <dd class="FechCambio">04/09/2025</dd>
+						<dt class="Tamanyo">Tamaño del fichero:</dt>
+						  <dd class="Tamanyo">4.171.568,00 bytes</dd>
+						<dt class="Variables">Dimensiones:</dt>
+						  <dd class="Variables">
+						  	Comunidad autónoma, Tipo de universidad, Modalidad de la universidad, Ámbito de estudio, Sexo, Indicador</dd>
+					</dl>
+					</span>
+			<a href="/jaxiPx/Tabla.htm?path=/Universitaria/Indicadores/2025/1_Grado/l0/&amp;file=Abandono_Grado_CA.px&amp;L=0" data-tabla="1--9223372036854775788" class="titulo t2">Tasas de abandono del estudio (cohortes de nuevo ingreso en el estudio) por tipo y modalidad de la universidad, ámbito de estudio y sexo</a>
+				<li role="none">
+		<span class="additional">
+				<a href="/jaxiPx/dlgExport.htm?path=/Universitaria/Indicadores/2025/1_Grado//&file=Cambio_Grado_CA.px&nocab=1&L=0" class="thickbox" title="Descarga ficheros" role="button"><img class="iconoDown" src="/menus//plantillas/inebase/img/down.gif"  alt="Descarga ficheros"></a>
+
+				<a href="#" class="tooltip tooltip-evnt" id="t_-9223372036854775787Tooltip" aria-label="Información sobre última modificación, dimensiones y periodo" aria-haspopup="true" role="button"><img class="icono" src="/menus//plantillas/inebase/img/i.gif" alt="Informacion tabla"></a>
+					<dl class="tooltip-content" role="tooltip" aria-labelledby="t_-9223372036854775787Tooltip">
+						<dt class="FechCambio">Ultima modificacion: </dt>
+						  <dd class="FechCambio">04/09/2025</dd>
+						<dt class="Tamanyo">Tamaño del fichero:</dt>
+						  <dd class="Tamanyo">3.992.328,00 bytes</dd>
+						<dt class="Variables">Dimensiones:</dt>
+						  <dd class="Variables">
+						  	Comunidad autónoma, Tipo de universidad, Modalidad de la universidad, Ámbito de estudio, Sexo, Indicador</dd>
+					</dl>
+					</span>
+			<a href="/jaxiPx/Tabla.htm?path=/Universitaria/Indicadores/2025/1_Grado/l0/&amp;file=Cambio_Grado_CA.px&amp;L=0" data-tabla="1--9223372036854775787" class="titulo t2">Tasas de cambio del estudio (cohortes de nuevo ingreso en el estudio) por tipo y modalidad de la universidad, ámbito de estudio y sexo</a>
+				<li role="none">
+		<span class="additional">
+				<a href="/jaxiPx/dlgExport.htm?path=/Universitaria/Indicadores/2025/1_Grado//&file=AbandonoSUE_Grado_CA.px&nocab=1&L=0" class="thickbox" title="Descarga ficheros" role="button"><img class="iconoDown" src="/menus//plantillas/inebase/img/down.gif"  alt="Descarga ficheros"></a>
+
+				<a href="#" class="tooltip tooltip-evnt" id="t_-9223372036854775786Tooltip" aria-label="Información sobre última modificación, dimensiones y periodo" aria-haspopup="true" role="button"><img class="icono" src="/menus//plantillas/inebase/img/i.gif" alt="Informacion tabla"></a>
+					<dl class="tooltip-content" role="tooltip" aria-labelledby="t_-9223372036854775786Tooltip">
+						<dt class="FechCambio">Ultima modificacion: </dt>
+						  <dd class="FechCambio">04/09/2025</dd>
+						<dt class="Tamanyo">Tamaño del fichero:</dt>
+						  <dd class="Tamanyo">4.073.552,00 bytes</dd>
+						<dt class="Variables">Dimensiones:</dt>
+						  <dd class="Variables">
+						  	Comunidad autónoma, Tipo de universidad, Modalidad de la universidad, Ámbito de estudio, Sexo, Indicador</dd>
+					</dl>
+					</span>
+			<a href="/jaxiPx/Tabla.htm?path=/Universitaria/Indicadores/2025/1_Grado/l0/&amp;file=AbandonoSUE_Grado_CA.px&amp;L=0" data-tabla="1--9223372036854775786" class="titulo t2">Tasas de abandono del SUE (cohortes de nuevo ingreso en el estudio) por tipo y modalidad de la universidad, ámbito de estudio y sexo</a>
+				<li role="none">
+		<span class="additional">
+				<a href="/jaxiPx/dlgExport.htm?path=/Universitaria/Indicadores/2025/1_Grado//&file=Idoneidad_Grado_CA.px&nocab=1&L=0" class="thickbox" title="Descarga ficheros" role="button"><img class="iconoDown" src="/menus//plantillas/inebase/img/down.gif"  alt="Descarga ficheros"></a>
+
+				<a href="#" class="tooltip tooltip-evnt" id="t_-9223372036854775785Tooltip" aria-label="Información sobre última modificación, dimensiones y periodo" aria-haspopup="true" role="button"><img class="icono" src="/menus//plantillas/inebase/img/i.gif" alt="Informacion tabla"></a>
+					<dl class="tooltip-content" role="tooltip" aria-labelledby="t_-9223372036854775785Tooltip">
+						<dt class="FechCambio">Ultima modificacion: </dt>
+						  <dd class="FechCambio">04/09/2025</dd>
+						<dt class="Tamanyo">Tamaño del fichero:</dt>
+						  <dd class="Tamanyo">1.839.269,00 bytes</dd>
+						<dt class="Variables">Dimensiones:</dt>
+						  <dd class="Variables">
+						  	Comunidad autónoma, Tipo de universidad, Modalidad de la universidad, Ámbito de estudio, Sexo, Indicador</dd>
+					</dl>
+					</span>
+			<a href="/jaxiPx/Tabla.htm?path=/Universitaria/Indicadores/2025/1_Grado/l0/&amp;file=Idoneidad_Grado_CA.px&amp;L=0" data-tabla="1--9223372036854775785" class="titulo t2">Tasas de idoneidad en el estudio (cohortes de nuevo ingreso en el estudio) por tipo y modalidad de la universidad, ámbito de estudio y sexo</a>
+				<li role="none">
+		<span class="additional">
+				<a href="/jaxiPx/dlgExport.htm?path=/Universitaria/Indicadores/2025/1_Grado//&file=Graduacion_Grado_CA.px&nocab=1&L=0" class="thickbox" title="Descarga ficheros" role="button"><img class="iconoDown" src="/menus//plantillas/inebase/img/down.gif"  alt="Descarga ficheros"></a>
+
+				<a href="#" class="tooltip tooltip-evnt" id="t_-9223372036854775784Tooltip" aria-label="Información sobre última modificación, dimensiones y periodo" aria-haspopup="true" role="button"><img class="icono" src="/menus//plantillas/inebase/img/i.gif" alt="Informacion tabla"></a>
+					<dl class="tooltip-content" role="tooltip" aria-labelledby="t_-9223372036854775784Tooltip">
+						<dt class="FechCambio">Ultima modificacion: </dt>
+						  <dd class="FechCambio">04/09/2025</dd>
+						<dt class="Tamanyo">Tamaño del fichero:</dt>
+						  <dd class="Tamanyo">1.845.028,00 bytes</dd>
+						<dt class="Variables">Dimensiones:</dt>
+						  <dd class="Variables">
+						  	Comunidad autónoma, Tipo de universidad, Modalidad de la universidad, Ámbito de estudio, Sexo, Indicador</dd>
+					</dl>
+					</span>
+			<a href="/jaxiPx/Tabla.htm?path=/Universitaria/Indicadores/2025/1_Grado/l0/&amp;file=Graduacion_Grado_CA.px&amp;L=0" data-tabla="1--9223372036854775784" class="titulo t2">Tasas de graduación en el estudio (cohortes de nuevo ingreso en el estudio) por tipo y modalidad de la universidad, ámbito de estudio y sexo</a>
+				<li role="none">
+		<span class="additional">
+				<a href="/jaxiPx/dlgExport.htm?path=/Universitaria/Indicadores/2025/1_Grado//&file=Eficiencia_Exito_Eval_Grado_CA.px&nocab=1&L=0" class="thickbox" title="Descarga ficheros" role="button"><img class="iconoDown" src="/menus//plantillas/inebase/img/down.gif"  alt="Descarga ficheros"></a>
+
+				<a href="#" class="tooltip tooltip-evnt" id="t_-9223372036854775783Tooltip" aria-label="Información sobre última modificación, dimensiones y periodo" aria-haspopup="true" role="button"><img class="icono" src="/menus//plantillas/inebase/img/i.gif" alt="Informacion tabla"></a>
+					<dl class="tooltip-content" role="tooltip" aria-labelledby="t_-9223372036854775783Tooltip">
+						<dt class="FechCambio">Ultima modificacion: </dt>
+						  <dd class="FechCambio">05/09/2025</dd>
+						<dt class="Tamanyo">Tamaño del fichero:</dt>
+						  <dd class="Tamanyo">2.720.837,00 bytes</dd>
+						<dt class="Variables">Dimensiones:</dt>
+						  <dd class="Variables">
+						  	Comunidad autónoma, Tipo de universidad, Modalidad de la universidad, Ámbito de estudio, Sexo, Indicador</dd>
+					</dl>
+					</span>
+			<a href="/jaxiPx/Tabla.htm?path=/Universitaria/Indicadores/2025/1_Grado/l0/&amp;file=Eficiencia_Exito_Eval_Grado_CA.px&amp;L=0" data-tabla="1--9223372036854775783" class="titulo t2">Tasas de eficiencia, éxito y evaluación (estudiantes egresados) por tipo y modalidad de la universidad, ámbito de estudio y sexo</a>
+				<li role="none">
+		<span class="additional">
+				<a href="/jaxiPx/dlgExport.htm?path=/Universitaria/Indicadores/2025/1_Grado//&file=Nota_Expediente_Grado_CA.px&nocab=1&L=0" class="thickbox" title="Descarga ficheros" role="button"><img class="iconoDown" src="/menus//plantillas/inebase/img/down.gif"  alt="Descarga ficheros"></a>
+
+				<a href="#" class="tooltip tooltip-evnt" id="t_-9223372036854775782Tooltip" aria-label="Información sobre última modificación, dimensiones y periodo" aria-haspopup="true" role="button"><img class="icono" src="/menus//plantillas/inebase/img/i.gif" alt="Informacion tabla"></a>
+					<dl class="tooltip-content" role="tooltip" aria-labelledby="t_-9223372036854775782Tooltip">
+						<dt class="FechCambio">Ultima modificacion: </dt>
+						  <dd class="FechCambio">26/08/2025</dd>
+						<dt class="Tamanyo">Tamaño del fichero:</dt>
+						  <dd class="Tamanyo">5.068.855,00 bytes</dd>
+						<dt class="Variables">Dimensiones:</dt>
+						  <dd class="Variables">
+						  	Comunidad autónoma, Tipo de universidad, Modalidad de la universidad, Ámbito de estudio, Sexo, Indicador</dd>
+					</dl>
+					</span>
+			<a href="/jaxiPx/Tabla.htm?path=/Universitaria/Indicadores/2025/1_Grado/l0/&amp;file=Nota_Expediente_Grado_CA.px&amp;L=0" data-tabla="1--9223372036854775782" class="titulo t2">Media, cuartiles y máximo de la nota del expediente (estudiantes egresados) por tipo y modalidad de la universidad, ámbito de estudio y sexo</a>
+				<li role="none">
+		<span class="additional">
+				<a href="/jaxiPx/dlgExport.htm?path=/Universitaria/Indicadores/2025/1_Grado//&file=Duracion_Grado_CA.px&nocab=1&L=0" class="thickbox" title="Descarga ficheros" role="button"><img class="iconoDown" src="/menus//plantillas/inebase/img/down.gif"  alt="Descarga ficheros"></a>
+
+				<a href="#" class="tooltip tooltip-evnt" id="t_-9223372036854775781Tooltip" aria-label="Información sobre última modificación, dimensiones y periodo" aria-haspopup="true" role="button"><img class="icono" src="/menus//plantillas/inebase/img/i.gif" alt="Informacion tabla"></a>
+					<dl class="tooltip-content" role="tooltip" aria-labelledby="t_-9223372036854775781Tooltip">
+						<dt class="FechCambio">Ultima modificacion: </dt>
+						  <dd class="FechCambio">25/08/2025</dd>
+						<dt class="Tamanyo">Tamaño del fichero:</dt>
+						  <dd class="Tamanyo">1.589.426,00 bytes</dd>
+						<dt class="Variables">Dimensiones:</dt>
+						  <dd class="Variables">
+						  	Comunidad autónoma, Tipo de universidad, Modalidad de la universidad, Ámbito de estudio, Sexo, Indicador</dd>
+					</dl>
+					</span>
+			<a href="/jaxiPx/Tabla.htm?path=/Universitaria/Indicadores/2025/1_Grado/l0/&amp;file=Duracion_Grado_CA.px&amp;L=0" data-tabla="1--9223372036854775781" class="titulo t2">Duración media de los estudios (estudiantes egresados) por tipo y modalidad de la universidad, ámbito de estudio y sexo</a>
+				<li role="none">
+		<span class="additional">
+				<a href="/jaxiPx/dlgExport.htm?path=/Universitaria/Indicadores/2025/1_Grado//&file=Transicion_G_M_CA.px&nocab=1&L=0" class="thickbox" title="Descarga ficheros" role="button"><img class="iconoDown" src="/menus//plantillas/inebase/img/down.gif"  alt="Descarga ficheros"></a>
+
+				<a href="#" class="tooltip tooltip-evnt" id="t_-9223372036854775780Tooltip" aria-label="Información sobre última modificación, dimensiones y periodo" aria-haspopup="true" role="button"><img class="icono" src="/menus//plantillas/inebase/img/i.gif" alt="Informacion tabla"></a>
+					<dl class="tooltip-content" role="tooltip" aria-labelledby="t_-9223372036854775780Tooltip">
+						<dt class="FechCambio">Ultima modificacion: </dt>
+						  <dd class="FechCambio">04/09/2025</dd>
+						<dt class="Tamanyo">Tamaño del fichero:</dt>
+						  <dd class="Tamanyo">1.746.657,00 bytes</dd>
+						<dt class="Variables">Dimensiones:</dt>
+						  <dd class="Variables">
+						  	Comunidad autónoma, Tipo de universiad, Modalidad de la universidad, Ámbito de estudio, Sexo, Indicador</dd>
+					</dl>
+					</span>
+			<a href="/jaxiPx/Tabla.htm?path=/Universitaria/Indicadores/2025/1_Grado/l0/&amp;file=Transicion_G_M_CA.px&amp;L=0" data-tabla="1--9223372036854775780" class="titulo t2">Tasa de transición de Grado a Máster (estudiantes egresados) por tipo y modalidad de la universidad, ámbito de estudio y sexo</a>
+				</ul>
+<li class="" role="treeitem" data-has-children="true">
+  			<a id="c_2"
+  					   title="Desplegar subelementos"
+  					   class="desplegar title titleOpen" 
+  					   data-value="10_ 1"
+  					   aria-expanded="true">
+				Resultados por universidad</a>
+					<ul class="subSecc" role="group" aria-labelledby="c_-9223372036854775808 c_-9223372036854775779">
+		<li role="none">
+		<span class="additional">
+				<a href="/jaxiPx/dlgExport.htm?path=/Universitaria/Indicadores/2025/1_Grado//&file=Renovacion_Grado_Univ.px&nocab=1&L=0" class="thickbox" title="Descarga ficheros" role="button"><img class="iconoDown" src="/menus//plantillas/inebase/img/down.gif"  alt="Descarga ficheros"></a>
+
+				<a href="#" class="tooltip tooltip-evnt" id="t_-9223372036854775778Tooltip" aria-label="Información sobre última modificación, dimensiones y periodo" aria-haspopup="true" role="button"><img class="icono" src="/menus//plantillas/inebase/img/i.gif" alt="Informacion tabla"></a>
+					<dl class="tooltip-content" role="tooltip" aria-labelledby="t_-9223372036854775778Tooltip">
+						<dt class="FechCambio">Ultima modificacion: </dt>
+						  <dd class="FechCambio">04/09/2025</dd>
+						<dt class="Tamanyo">Tamaño del fichero:</dt>
+						  <dd class="Tamanyo">1.235.499,00 bytes</dd>
+						<dt class="Variables">Dimensiones:</dt>
+						  <dd class="Variables">
+						  	Universidad, Ámbito de estudio, Sexo</dd>
+					</dl>
+					</span>
+			<a href="/jaxiPx/Tabla.htm?path=/Universitaria/Indicadores/2025/1_Grado/l0/&amp;file=Renovacion_Grado_Univ.px&amp;L=0" data-tabla="1--9223372036854775778" class="titulo t2">Tasa de renovación por ámbito de estudio y sexo</a>
+				<li role="none">
+		<span class="additional">
+				<a href="/jaxiPx/dlgExport.htm?path=/Universitaria/Indicadores/2025/1_Grado//&file=Rendimiento_Exito_Eval_Grado_Univ.px&nocab=1&L=0" class="thickbox" title="Descarga ficheros" role="button"><img class="iconoDown" src="/menus//plantillas/inebase/img/down.gif"  alt="Descarga ficheros"></a>
+
+				<a href="#" class="tooltip tooltip-evnt" id="t_-9223372036854775777Tooltip" aria-label="Información sobre última modificación, dimensiones y periodo" aria-haspopup="true" role="button"><img class="icono" src="/menus//plantillas/inebase/img/i.gif" alt="Informacion tabla"></a>
+					<dl class="tooltip-content" role="tooltip" aria-labelledby="t_-9223372036854775777Tooltip">
+						<dt class="FechCambio">Ultima modificacion: </dt>
+						  <dd class="FechCambio">25/08/2025</dd>
+						<dt class="Tamanyo">Tamaño del fichero:</dt>
+						  <dd class="Tamanyo">1.634.044,00 bytes</dd>
+						<dt class="Variables">Dimensiones:</dt>
+						  <dd class="Variables">
+						  	Universidades, Ámbito de estudio, Sexo, Indicador</dd>
+					</dl>
+					</span>
+			<a href="/jaxiPx/Tabla.htm?path=/Universitaria/Indicadores/2025/1_Grado/l0/&amp;file=Rendimiento_Exito_Eval_Grado_Univ.px&amp;L=0" data-tabla="1--9223372036854775777" class="titulo t2">Tasa de rendimiento, éxito y evaluación (estudiantes matriculados) por ámbito de estudio y sexo</a>
+				<li role="none">
+		<span class="additional">
+				<a href="/jaxiPx/dlgExport.htm?path=/Universitaria/Indicadores/2025/1_Grado//&file=Creditos_Mat_Pre_Sup_Grado_Univ.px&nocab=1&L=0" class="thickbox" title="Descarga ficheros" role="button"><img class="iconoDown" src="/menus//plantillas/inebase/img/down.gif"  alt="Descarga ficheros"></a>
+
+				<a href="#" class="tooltip tooltip-evnt" id="t_-9223372036854775776Tooltip" aria-label="Información sobre última modificación, dimensiones y periodo" aria-haspopup="true" role="button"><img class="icono" src="/menus//plantillas/inebase/img/i.gif" alt="Informacion tabla"></a>
+					<dl class="tooltip-content" role="tooltip" aria-labelledby="t_-9223372036854775776Tooltip">
+						<dt class="FechCambio">Ultima modificacion: </dt>
+						  <dd class="FechCambio">25/08/2025</dd>
+						<dt class="Tamanyo">Tamaño del fichero:</dt>
+						  <dd class="Tamanyo">3.350.289,00 bytes</dd>
+						<dt class="Variables">Dimensiones:</dt>
+						  <dd class="Variables">
+						  	Universidades, Ámbito de estudio, Sexo, Indicador</dd>
+					</dl>
+					</span>
+			<a href="/jaxiPx/Tabla.htm?path=/Universitaria/Indicadores/2025/1_Grado/l0/&amp;file=Creditos_Mat_Pre_Sup_Grado_Univ.px&amp;L=0" data-tabla="1--9223372036854775776" class="titulo t2">Número medio y total de créditos matriculados, presentados y superados (estudiantes matriculados) por ámbito de estudio y sexo</a>
+				<li role="none">
+		<span class="additional">
+				<a href="/jaxiPx/dlgExport.htm?path=/Universitaria/Indicadores/2025/1_Grado//&file=Creditos_123_Matricula_Grado_Univ.px&nocab=1&L=0" class="thickbox" title="Descarga ficheros" role="button"><img class="iconoDown" src="/menus//plantillas/inebase/img/down.gif"  alt="Descarga ficheros"></a>
+
+				<a href="#" class="tooltip tooltip-evnt" id="t_-9223372036854775775Tooltip" aria-label="Información sobre última modificación, dimensiones y periodo" aria-haspopup="true" role="button"><img class="icono" src="/menus//plantillas/inebase/img/i.gif" alt="Informacion tabla"></a>
+					<dl class="tooltip-content" role="tooltip" aria-labelledby="t_-9223372036854775775Tooltip">
+						<dt class="FechCambio">Ultima modificacion: </dt>
+						  <dd class="FechCambio">25/08/2025</dd>
+						<dt class="Tamanyo">Tamaño del fichero:</dt>
+						  <dd class="Tamanyo">1.537.588,00 bytes</dd>
+						<dt class="Variables">Dimensiones:</dt>
+						  <dd class="Variables">
+						  	Universidades, Ámbito de estudio, Sexo, Indicador</dd>
+					</dl>
+					</span>
+			<a href="/jaxiPx/Tabla.htm?path=/Universitaria/Indicadores/2025/1_Grado/l0/&amp;file=Creditos_123_Matricula_Grado_Univ.px&amp;L=0" data-tabla="1--9223372036854775775" class="titulo t2">Distribución de los créditos matriculados en primera, segunda y tercera y sucesivas matrículas (estudiantes matriculados) por ámbito de estudio y sexo</a>
+				<li role="none">
+		<span class="additional">
+				<a href="/jaxiPx/dlgExport.htm?path=/Universitaria/Indicadores/2025/1_Grado//&file=Abandono_Grado_Univ.px&nocab=1&L=0" class="thickbox" title="Descarga ficheros" role="button"><img class="iconoDown" src="/menus//plantillas/inebase/img/down.gif"  alt="Descarga ficheros"></a>
+
+				<a href="#" class="tooltip tooltip-evnt" id="t_-9223372036854775774Tooltip" aria-label="Información sobre última modificación, dimensiones y periodo" aria-haspopup="true" role="button"><img class="icono" src="/menus//plantillas/inebase/img/i.gif" alt="Informacion tabla"></a>
+					<dl class="tooltip-content" role="tooltip" aria-labelledby="t_-9223372036854775774Tooltip">
+						<dt class="FechCambio">Ultima modificacion: </dt>
+						  <dd class="FechCambio">04/09/2025</dd>
+						<dt class="Tamanyo">Tamaño del fichero:</dt>
+						  <dd class="Tamanyo">2.268.099,00 bytes</dd>
+						<dt class="Variables">Dimensiones:</dt>
+						  <dd class="Variables">
+						  	Universidad, Ámbito de estudio, Sexo, Indicador</dd>
+					</dl>
+					</span>
+			<a href="/jaxiPx/Tabla.htm?path=/Universitaria/Indicadores/2025/1_Grado/l0/&amp;file=Abandono_Grado_Univ.px&amp;L=0" data-tabla="1--9223372036854775774" class="titulo t2">Tasas de abandono del estudio (cohortes de nuevo ingreso en el estudio) por  ámbito de estudio y sexo</a>
+				<li role="none">
+		<span class="additional">
+				<a href="/jaxiPx/dlgExport.htm?path=/Universitaria/Indicadores/2025/1_Grado//&file=Cambio_Grado_Univ.px&nocab=1&L=0" class="thickbox" title="Descarga ficheros" role="button"><img class="iconoDown" src="/menus//plantillas/inebase/img/down.gif"  alt="Descarga ficheros"></a>
+
+				<a href="#" class="tooltip tooltip-evnt" id="t_-9223372036854775773Tooltip" aria-label="Información sobre última modificación, dimensiones y periodo" aria-haspopup="true" role="button"><img class="icono" src="/menus//plantillas/inebase/img/i.gif" alt="Informacion tabla"></a>
+					<dl class="tooltip-content" role="tooltip" aria-labelledby="t_-9223372036854775773Tooltip">
+						<dt class="FechCambio">Ultima modificacion: </dt>
+						  <dd class="FechCambio">26/08/2025</dd>
+						<dt class="Tamanyo">Tamaño del fichero:</dt>
+						  <dd class="Tamanyo">2.144.872,00 bytes</dd>
+						<dt class="Variables">Dimensiones:</dt>
+						  <dd class="Variables">
+						  	Universidad, Ámbito de estudio, Sexo, Indicador</dd>
+					</dl>
+					</span>
+			<a href="/jaxiPx/Tabla.htm?path=/Universitaria/Indicadores/2025/1_Grado/l0/&amp;file=Cambio_Grado_Univ.px&amp;L=0" data-tabla="1--9223372036854775773" class="titulo t2">Tasas de cambio del estudio (cohortes de nuevo ingreso en el estudio) por  ámbito de estudio y sexo</a>
+				<li role="none">
+		<span class="additional">
+				<a href="/jaxiPx/dlgExport.htm?path=/Universitaria/Indicadores/2025/1_Grado//&file=AbandonoSUE_Grado_Univ.px&nocab=1&L=0" class="thickbox" title="Descarga ficheros" role="button"><img class="iconoDown" src="/menus//plantillas/inebase/img/down.gif"  alt="Descarga ficheros"></a>
+
+				<a href="#" class="tooltip tooltip-evnt" id="t_-9223372036854775772Tooltip" aria-label="Información sobre última modificación, dimensiones y periodo" aria-haspopup="true" role="button"><img class="icono" src="/menus//plantillas/inebase/img/i.gif" alt="Informacion tabla"></a>
+					<dl class="tooltip-content" role="tooltip" aria-labelledby="t_-9223372036854775772Tooltip">
+						<dt class="FechCambio">Ultima modificacion: </dt>
+						  <dd class="FechCambio">26/08/2025</dd>
+						<dt class="Tamanyo">Tamaño del fichero:</dt>
+						  <dd class="Tamanyo">2.196.355,00 bytes</dd>
+						<dt class="Variables">Dimensiones:</dt>
+						  <dd class="Variables">
+						  	Universidad, Ámbito de estudio, Sexo, Indicador</dd>
+					</dl>
+					</span>
+			<a href="/jaxiPx/Tabla.htm?path=/Universitaria/Indicadores/2025/1_Grado/l0/&amp;file=AbandonoSUE_Grado_Univ.px&amp;L=0" data-tabla="1--9223372036854775772" class="titulo t2">Tasas de abandono del SUE (cohortes de nuevo ingreso en el estudio) por  ámbito de estudio y sexo</a>
+				<li role="none">
+		<span class="additional">
+				<a href="/jaxiPx/dlgExport.htm?path=/Universitaria/Indicadores/2025/1_Grado//&file=Idoneidad_Grado_Univ.px&nocab=1&L=0" class="thickbox" title="Descarga ficheros" role="button"><img class="iconoDown" src="/menus//plantillas/inebase/img/down.gif"  alt="Descarga ficheros"></a>
+
+				<a href="#" class="tooltip tooltip-evnt" id="t_-9223372036854775771Tooltip" aria-label="Información sobre última modificación, dimensiones y periodo" aria-haspopup="true" role="button"><img class="icono" src="/menus//plantillas/inebase/img/i.gif" alt="Informacion tabla"></a>
+					<dl class="tooltip-content" role="tooltip" aria-labelledby="t_-9223372036854775771Tooltip">
+						<dt class="FechCambio">Ultima modificacion: </dt>
+						  <dd class="FechCambio">26/08/2025</dd>
+						<dt class="Tamanyo">Tamaño del fichero:</dt>
+						  <dd class="Tamanyo">995.813,00 bytes</dd>
+						<dt class="Variables">Dimensiones:</dt>
+						  <dd class="Variables">
+						  	Universidad, Ámbito de estudio, Sexo, Indicador</dd>
+					</dl>
+					</span>
+			<a href="/jaxiPx/Tabla.htm?path=/Universitaria/Indicadores/2025/1_Grado/l0/&amp;file=Idoneidad_Grado_Univ.px&amp;L=0" data-tabla="1--9223372036854775771" class="titulo t2">Tasas de idoneidad en el estudio (cohortes de nuevo ingreso en el estudio) por  ámbito de estudio y sexo</a>
+				<li role="none">
+		<span class="additional">
+				<a href="/jaxiPx/dlgExport.htm?path=/Universitaria/Indicadores/2025/1_Grado//&file=Graduacion_Grado_Univ.px&nocab=1&L=0" class="thickbox" title="Descarga ficheros" role="button"><img class="iconoDown" src="/menus//plantillas/inebase/img/down.gif"  alt="Descarga ficheros"></a>
+
+				<a href="#" class="tooltip tooltip-evnt" id="t_-9223372036854775770Tooltip" aria-label="Información sobre última modificación, dimensiones y periodo" aria-haspopup="true" role="button"><img class="icono" src="/menus//plantillas/inebase/img/i.gif" alt="Informacion tabla"></a>
+					<dl class="tooltip-content" role="tooltip" aria-labelledby="t_-9223372036854775770Tooltip">
+						<dt class="FechCambio">Ultima modificacion: </dt>
+						  <dd class="FechCambio">26/08/2025</dd>
+						<dt class="Tamanyo">Tamaño del fichero:</dt>
+						  <dd class="Tamanyo">999.064,00 bytes</dd>
+						<dt class="Variables">Dimensiones:</dt>
+						  <dd class="Variables">
+						  	Universidad, Ámbito de estudio, Sexo, Indicador</dd>
+					</dl>
+					</span>
+			<a href="/jaxiPx/Tabla.htm?path=/Universitaria/Indicadores/2025/1_Grado/l0/&amp;file=Graduacion_Grado_Univ.px&amp;L=0" data-tabla="1--9223372036854775770" class="titulo t2">Tasas de graduación en el estudio (cohortes de nuevo ingreso en el estudio) por  ámbito de estudio y sexo</a>
+				<li role="none">
+		<span class="additional">
+				<a href="/jaxiPx/dlgExport.htm?path=/Universitaria/Indicadores/2025/1_Grado//&file=Eficiencia_Exito_Eval_Grado_Univ.px&nocab=1&L=0" class="thickbox" title="Descarga ficheros" role="button"><img class="iconoDown" src="/menus//plantillas/inebase/img/down.gif"  alt="Descarga ficheros"></a>
+
+				<a href="#" class="tooltip tooltip-evnt" id="t_-9223372036854775769Tooltip" aria-label="Información sobre última modificación, dimensiones y periodo" aria-haspopup="true" role="button"><img class="icono" src="/menus//plantillas/inebase/img/i.gif" alt="Informacion tabla"></a>
+					<dl class="tooltip-content" role="tooltip" aria-labelledby="t_-9223372036854775769Tooltip">
+						<dt class="FechCambio">Ultima modificacion: </dt>
+						  <dd class="FechCambio">05/09/2025</dd>
+						<dt class="Tamanyo">Tamaño del fichero:</dt>
+						  <dd class="Tamanyo">1.450.472,00 bytes</dd>
+						<dt class="Variables">Dimensiones:</dt>
+						  <dd class="Variables">
+						  	Universidad, Ámbito de estudio, Sexo, Indicador</dd>
+					</dl>
+					</span>
+			<a href="/jaxiPx/Tabla.htm?path=/Universitaria/Indicadores/2025/1_Grado/l0/&amp;file=Eficiencia_Exito_Eval_Grado_Univ.px&amp;L=0" data-tabla="1--9223372036854775769" class="titulo t2">Tasas de eficiencia, éxito y evaluación (estudiantes egresados) por  ámbito de estudio y sexo</a>
+				<li role="none">
+		<span class="additional">
+				<a href="/jaxiPx/dlgExport.htm?path=/Universitaria/Indicadores/2025/1_Grado//&file=Nota_Expediente_Grado_Univ.px&nocab=1&L=0" class="thickbox" title="Descarga ficheros" role="button"><img class="iconoDown" src="/menus//plantillas/inebase/img/down.gif"  alt="Descarga ficheros"></a>
+
+				<a href="#" class="tooltip tooltip-evnt" id="t_-9223372036854775768Tooltip" aria-label="Información sobre última modificación, dimensiones y periodo" aria-haspopup="true" role="button"><img class="icono" src="/menus//plantillas/inebase/img/i.gif" alt="Informacion tabla"></a>
+					<dl class="tooltip-content" role="tooltip" aria-labelledby="t_-9223372036854775768Tooltip">
+						<dt class="FechCambio">Ultima modificacion: </dt>
+						  <dd class="FechCambio">26/08/2025</dd>
+						<dt class="Tamanyo">Tamaño del fichero:</dt>
+						  <dd class="Tamanyo">2.806.725,00 bytes</dd>
+						<dt class="Variables">Dimensiones:</dt>
+						  <dd class="Variables">
+						  	Universidad, Ámbito de estudio, Sexo, Indicador</dd>
+					</dl>
+					</span>
+			<a href="/jaxiPx/Tabla.htm?path=/Universitaria/Indicadores/2025/1_Grado/l0/&amp;file=Nota_Expediente_Grado_Univ.px&amp;L=0" data-tabla="1--9223372036854775768" class="titulo t2">Media, cuartiles y máximo de la nota del expediente (estudiantes egresados) por  ámbito de estudio y sexo</a>
+				<li role="none">
+		<span class="additional">
+				<a href="/jaxiPx/dlgExport.htm?path=/Universitaria/Indicadores/2025/1_Grado//&file=Duracion_Grado_Univ.px&nocab=1&L=0" class="thickbox" title="Descarga ficheros" role="button"><img class="iconoDown" src="/menus//plantillas/inebase/img/down.gif"  alt="Descarga ficheros"></a>
+
+				<a href="#" class="tooltip tooltip-evnt" id="t_-9223372036854775767Tooltip" aria-label="Información sobre última modificación, dimensiones y periodo" aria-haspopup="true" role="button"><img class="icono" src="/menus//plantillas/inebase/img/i.gif" alt="Informacion tabla"></a>
+					<dl class="tooltip-content" role="tooltip" aria-labelledby="t_-9223372036854775767Tooltip">
+						<dt class="FechCambio">Ultima modificacion: </dt>
+						  <dd class="FechCambio">25/08/2025</dd>
+						<dt class="Tamanyo">Tamaño del fichero:</dt>
+						  <dd class="Tamanyo">841.067,00 bytes</dd>
+						<dt class="Variables">Dimensiones:</dt>
+						  <dd class="Variables">
+						  	Universidad, Ámbito de estudio, Sexo, Indicador</dd>
+					</dl>
+					</span>
+			<a href="/jaxiPx/Tabla.htm?path=/Universitaria/Indicadores/2025/1_Grado/l0/&amp;file=Duracion_Grado_Univ.px&amp;L=0" data-tabla="1--9223372036854775767" class="titulo t2">Duración media de los estudios (estudiantes egresados) por  ámbito de estudio y sexo</a>
+				<li role="none">
+		<span class="additional">
+				<a href="/jaxiPx/dlgExport.htm?path=/Universitaria/Indicadores/2025/1_Grado//&file=Transicion_G_M_Univ.px&nocab=1&L=0" class="thickbox" title="Descarga ficheros" role="button"><img class="iconoDown" src="/menus//plantillas/inebase/img/down.gif"  alt="Descarga ficheros"></a>
+
+				<a href="#" class="tooltip tooltip-evnt" id="t_-9223372036854775766Tooltip" aria-label="Información sobre última modificación, dimensiones y periodo" aria-haspopup="true" role="button"><img class="icono" src="/menus//plantillas/inebase/img/i.gif" alt="Informacion tabla"></a>
+					<dl class="tooltip-content" role="tooltip" aria-labelledby="t_-9223372036854775766Tooltip">
+						<dt class="FechCambio">Ultima modificacion: </dt>
+						  <dd class="FechCambio">04/09/2025</dd>
+						<dt class="Tamanyo">Tamaño del fichero:</dt>
+						  <dd class="Tamanyo">997.387,00 bytes</dd>
+						<dt class="Variables">Dimensiones:</dt>
+						  <dd class="Variables">
+						  	Universidad, Ámbito de estudio, Sexo, Indicador</dd>
+					</dl>
+					</span>
+			<a href="/jaxiPx/Tabla.htm?path=/Universitaria/Indicadores/2025/1_Grado/l0/&amp;file=Transicion_G_M_Univ.px&amp;L=0" data-tabla="1--9223372036854775766" class="titulo t2">Tasa de transición de Grado a Máster (estudiantes egresados) por  ámbito de estudioy sexo</a>
+				</ul>
+<li class=" title-incomplete" role="treeitem" data-has-children="false">
+  			<span class="wlink">
+				Fuente: Sistema Integrado de Información Universitaria (SIIU). Ministerio de Ciencia, Innovación y Universidades.</span>
+					<ul class="subSecc" role="group" aria-labelledby="c_-9223372036854775808 c_-9223372036854775765">
+		</ul>
+</ul>
+</main>
+<div id="dialog-modal" title="Notas adjuntas"></div>
+<footer>
+<div id="pie">
+        <div class="homePie col">
+	<ul>
+		<li><img src="/menus/_b/img/muniv_footer_logo.svg" class="attachment-large size-large" alt="Logo Ministerio de Ciencia" loading="lazy"></li>
+		<li>
+                        <div >
+                                <p> Ministerio de Ciencia, Innovaci&oacute;n y Universidades</p>
+                                <p> Paseo de la Castellana, 162, 28046 Madrid</p>
+                        </div>                                                
+                </li>
+	</ul>
+        </div>        
+        <div class="homePie col">
+	<ul>
+		<li><a href="https://www.ciencia.gob.es/" itemprop="url" class="hfe-menu-item" style="color: black;">Inicio</a></li>
+                <li><a href="https://www.ciencia.gob.es/InfoGeneralPortal/Accesibilidad.html" itemprop="url" class="hfe-menu-item" style="color: black;">Accesibilidad</a></li>
+                <li><a href="https://www.ciencia.gob.es/InfoGeneralPortal/AvisoLegal.html" itemprop="url" class="hfe-menu-item"style="color: black;">Aviso Legal</a></li>
+                <li><a href="https://www.ciencia.gob.es/InfoGeneralPortal/MapaWeb.html" itemprop="url" class="hfe-menu-item"style="color: black;">Mapa del sitio</a></a></li>
+		<li><a href="https://www.ciencia.gob.es/InfoGeneralPortal/Cookies.html" itemprop="url" class="hfe-menu-item"style="color: black;">Pol&iacute;tica de cookies</a></li>
+		<li><a href="https://www.ciencia.gob.es/InfoGeneralPortal/PoliticaPrivacidad.html" itemprop="url" class="hfe-menu-item"style="color: black;">Protecci&oacute;n de Datos Personales</a></li>
+	</ul>
+        </div>      
+        <div class="homePie col">
+	<ul>
+                <li><a class="icoSocial icoFacebook" href="https://www.facebook.com/CienciaGob/"><span class="tit">Facebook</span></a></li>
+                <li><a class="icoSocial icoFacebook" href="https://twitter.com/CienciaGob"><span class="tit">Twitter</span></a></li>
+                <li><a class="icoSocial icoFacebook" href="https://www.youtube.com/user/cienciagob"><span class="tit">YouTube</span></a></li>
+                <li><a class="icoSocial icoFacebook" href="https://www.instagram.com/cienciagob/"><span class="tit">Instagram</span></a></li>
+                <li><a class="icoSocial icoFacebook" href="https://www.flickr.com/photos/cienciagob/"><span class="tit">Flickr</span></a></li>
+	</ul>
+        </div>           
+</div>
+<a class="ir-arriba" href="javascript:void(0)" aria-label="Bot&oacute;n para volver arriba" title="Volver arriba" tabindex="0" role="button" style="display: inline;">
+	<i class="fas fa-caret-up"></i>
+</a>
+</footer>
+</body>
+<script type="text/javascript">
+var paramDh=null;
+</script>
+<script src="/menus//plantillas/inebase/js/pxTree.js" type="text/javascript"></script>
+</html>

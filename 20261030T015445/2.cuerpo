@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error 404 - Not found</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oxygen&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Oxygen', sans-serif;
+        background-color: #f4f4f4;
+        color: #333;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        text-align: center;
+    }
+ 
+    .container {
+        max-width: 800px;
+        padding: 20px;
+    }
+ 
+    .error {
+        margin-bottom: 20px;
+    }
+ 
+    .error h1 {
+        font-size: 6em;
+        margin: 0;
+        color: #e74c3c;
+    }
+ 
+    .error h2 {
+        font-size: 2em;
+        margin: 10px 0;
+    }
+ 
+    .error p {
+        font-size: 1.2em;
+        margin: 10px 0;
+    }
+ 
+    .error .subtitle {
+        font-size: 0.9em;
+        color: #888;
+    }
+ 
+    .stack-container {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 20px;
+    }
+ 
+    .card-container {
+        perspective: 1000px;
+    }
+ 
+    .perspec {
+        transform-style: preserve-3d;
+        transition: transform 0.5s ease-in-out;
+    }
+ 
+    .card {
+        width: 200px;
+        height: 150px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        position: relative;
+        transform-style: preserve-3d;
+    }
+ 
+    .writing {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        right: 10px;
+        bottom: 10px;
+        display: flex;
+        flex-direction: column;
+    }
+ 
+    .topbar {
+        display: flex;
+        gap: 5px;
+        margin-bottom: 10px;
+    }
+ 
+    .topbar div {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+    }
+ 
+    .red { background-color: #ff5f56; }
+    .yellow { background-color: #ffbd2e; }
+    .green { background-color: #27c93f; }
+    .code {
+        flex: 1;
+        background-color: #f5f5f5;
+        border-radius: 4px;
+        padding: 10px;
+        overflow: auto;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 2em;
+        text-align: center;
+       
+    }
+    .code ul {
+        list-style: none;
+        padding: 0;
+        margin-top: 5px;
+    }
+    .code ul li {
+        margin-bottom: 5px;
+    }
+</style>
+<div class="container">
+    <div class="error">
+        <h1>404</h1>
+        <h2>error</h2>
+        <p>La página a la que intenta acceder no está disponible en este momento, o bien ninguno de nuestros servidores ha respondido a tiempo. Por favor, inténtelo de nuevo más tarde.
+        Si el problema persiste, por favor, contacte con el servicio de soporte.
+        </p>
+        <p class="subtitle">ERR_NOT_FOUND</p>
+    </div>
+    <div class="stack-container">
+       
+        <div class="card-container">
+            <div class="perspec" style="--spreaddist: 25px; --scaledist: .95; --vertdist: -5px;">
+                <div class="card">
+                    <div class="writing">
+                        <div class="topbar">
+                            <div class="red"></div>
+                            <div class="yellow"></div>
+                            <div class="green"></div>
+                        </div>
+                        <div class="code">
+                            <ul>
+                               ⚠️
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+    </div>
+ 
+ 
+ 
+    <footer>
+        <p class="copyright">Ministerio de Ciencia, Innovación y Universidades - Gobierno de España</p>
+    </footer>
+    </div>
+    <style>
+        footer {
+            position: relative;
+            margin-top: 20px;
+            bottom:0;
+            height: 40px;
+            border-top-color:#33333342;
+            border-top-style:solid;
+            border-top-width:1px;
+            width: 100%;
+        }
+ 
+        p.copyright {
+            position:absolute;
+            margin:0;
+            top: 9px;
+            width: 100%;
+            color: #000000a3;
+            font-size: 1em;
+            text-align: center;
+            bottom:0;
+        }
+    </style>
+   
+</body>
+</html>
