@@ -1,0 +1,163 @@
+{
+ "dominio": "www.ub.es",
+ "base": "https://www.ub.es",
+ "base_final": "http://www.ub.edu",
+ "dominios_propios": [
+  "ub.edu",
+  "ub.es"
+ ],
+ "veto_robots": false,
+ "robots_sitemaps": 0,
+ "tdmrep": false,
+ "sitemaps_leidos": 3,
+ "sitemaps_pendientes": 0,
+ "urls": 48,
+ "urls_programa_sitemap": 0,
+ "urls_colaboradores": [],
+ "via": "listados",
+ "listados_visitados": [],
+ "urls_programa": 3,
+ "programas": [
+  "https://bid.ub.edu/afiliacions/bibliotecaria-master-de-biblioteques-i-colleccions-patrimonials-universitat-de-barcelona",
+  "https://bid.ub.edu/afiliacions/master-en-gestio-de-continguts-digitaluniversitat-de-barcelona",
+  "https://www.il3.ub.edu/ca/curs-adaptacio-master-industria-musical"
+ ],
+ "programas_lastmod": {},
+ "textos_programa": {},
+ "documentos_precio": [],
+ "muestra": [
+  {
+   "url": "https://bid.ub.edu/afiliacions/bibliotecaria-master-de-biblioteques-i-colleccions-patrimonials-universitat-de-barcelona",
+   "espana": true,
+   "espana_fuerte": true,
+   "es_programa": false,
+   "motivo": null,
+   "caracteres_visibles": 6866,
+   "senales": [],
+   "titulo": "Bibliotecària Màster de Biblioteques i Col•leccions Patrimonials Universitat de Barcelona &#8211; BID",
+   "jsonld_tipos": [],
+   "precio_jsonld": null,
+   "importes_euros": 0,
+   "temas": {
+    "precio": false,
+    "plazas": false,
+    "becas": false,
+    "metodologia": true,
+    "evaluacion": false,
+    "asignaturas": false,
+    "admision": false,
+    "horario": false
+   },
+   "formulario_pide_correo": false,
+   "formulario_pide_telefono": false,
+   "pdf_guia_o_folleto": [],
+   "pdf_precio": [],
+   "bytes": 67390,
+   "reserva_tdm": false
+  },
+  {
+   "url": "https://bid.ub.edu/afiliacions/master-en-gestio-de-continguts-digitaluniversitat-de-barcelona",
+   "espana": true,
+   "espana_fuerte": true,
+   "es_programa": false,
+   "motivo": null,
+   "caracteres_visibles": 2810,
+   "senales": [],
+   "titulo": "Màster en Gestió de Continguts DigitalUniversitat de Barcelona &#8211; BID",
+   "jsonld_tipos": [],
+   "precio_jsonld": null,
+   "importes_euros": 0,
+   "temas": {
+    "precio": false,
+    "plazas": false,
+    "becas": false,
+    "metodologia": true,
+    "evaluacion": false,
+    "asignaturas": false,
+    "admision": false,
+    "horario": false
+   },
+   "formulario_pide_correo": false,
+   "formulario_pide_telefono": false,
+   "pdf_guia_o_folleto": [],
+   "pdf_precio": [],
+   "bytes": 62576,
+   "reserva_tdm": false
+  },
+  {
+   "url": "https://www.il3.ub.edu/ca/curs-adaptacio-master-industria-musical",
+   "espana": true,
+   "espana_fuerte": true,
+   "es_programa": true,
+   "motivo": "titulo_y_senales",
+   "caracteres_visibles": 25288,
+   "senales": [
+    "admision",
+    "creditos",
+    "horario",
+    "informacion",
+    "matricula",
+    "modalidad",
+    "precio",
+    "titulacion"
+   ],
+   "titulo": "Curs d&#039;Adaptació al Màster en Indústria Musical | IL3 - UB",
+   "jsonld_tipos": [
+    "BreadcrumbList",
+    "Course",
+    "EducationalOrganization",
+    "WebSite"
+   ],
+   "precio_jsonld": null,
+   "importes_euros": 2,
+   "temas": {
+    "precio": true,
+    "plazas": false,
+    "becas": false,
+    "metodologia": true,
+    "evaluacion": false,
+    "asignaturas": false,
+    "admision": true,
+    "horario": false
+   },
+   "formulario_pide_correo": true,
+   "formulario_pide_telefono": true,
+   "pdf_guia_o_folleto": [],
+   "pdf_precio": [],
+   "bytes": 207030,
+   "reserva_tdm": false
+  }
+ ],
+ "enlaces_colaboradores": [],
+ "paginas_programa_validas": 1,
+ "verificado": false,
+ "espana": true,
+ "reserva_tdm": false,
+ "peticiones": 21,
+ "estados_http": {
+  "SSLError": 2,
+  "200": 11,
+  "404": 2,
+  "403": 6
+ },
+ "centro": {
+  "web": "https://www.ub.es",
+  "id": "prov-e30cd77b35",
+  "estado": "oficial",
+  "semillas": [
+   "https://fima.ub.edu/noticies/2020/06/28/defenses-de-tfm-del-master-en-gestio-de-continguts-digitals/",
+   "https://fima.ub.edu/noticies/2025/09/23/inauguracio-de-la-1a-edicio-del-master-en-biblioteques-publiques/",
+   "https://bid.ub.edu/afiliacions/bibliotecaria-master-de-biblioteques-i-colleccions-patrimonials-universitat-de-barcelona",
+   "https://bid.ub.edu/afiliacions/master-en-gestio-de-continguts-digitaluniversitat-de-barcelona",
+   "https://www.il3.ub.edu/ca/curs-adaptacio-master-industria-musical"
+  ],
+  "listados": [
+   "https://web.ub.edu/en/web/estudis/masters-postgraduate-degrees",
+   "https://web.ub.edu/es/web/estudis/masters-y-posgrados",
+   "https://www.ub.edu/portal/web/filosofia/masters-universitaris",
+   "https://www.ub.edu/portal/web/fisica/masters",
+   "https://www.ub.edu/portal/web/medicina-ciencies-salut/masters"
+  ],
+  "max_peticiones": 400
+ }
+}
