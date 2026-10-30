@@ -938,7 +938,7 @@ def lista_segunda_vuelta(paginas_oficiales: Path, fichas: Path, capturadas: list
 
 
 def lista_tercera_vuelta(censo: Path, rastreos: list[Path], cc_urls: Path | None, catalogo: Path, fichas: Path,
-                         capturadas: list[Path], salida: Path, umbral: float = 0.7, max_por_web: int = 150,
+                         capturadas: list[Path], salida: Path, umbral: float = 0.7, max_por_web: int = 300,
                          tramos: int = 3) -> dict:
     """Universidades con pocos másters oficiales con ficha (menos del `umbral`): casi siempre webs con URL opacas
     (códigos en vez de nombres) donde la unión por URL no puede acertar. Se mandan a extraer sus páginas de
@@ -970,6 +970,7 @@ def lista_tercera_vuelta(censo: Path, rastreos: list[Path], cc_urls: Path | None
             if x["estado"] == "oficial" and any(r.get("universidad") in flojas for r in x.get("ruct", [])):
                 provs[x["id"]] = x
     urls_de: dict[str, set] = defaultdict(set)
+    textos: dict[str, str] = {}  # texto del enlace a cada programa (URL opacas: el nombre está en el enlace)
     for c in rastreos:
         for f in sorted(c.rglob("oferta_web/*.json")):
             r = json.loads(f.read_text(encoding="utf-8"))
@@ -979,6 +980,8 @@ def lista_tercera_vuelta(censo: Path, rastreos: list[Path], cc_urls: Path | None
             if cen.get("id") in provs:
                 ps = r.get("programas") or []
                 urls_de[cen["id"]].update(ast.literal_eval(ps) if isinstance(ps, str) else ps)
+                tx = r.get("textos_programa") or {}
+                textos.update(ast.literal_eval(tx) if isinstance(tx, str) else tx)
     if cc_urls:
         dom_a_prov = {d: i for i, x in provs.items() for d in x.get("dominios", [x["dominio"]])}
         for f in cc_urls.rglob("urls_*.jsonl"):
@@ -990,8 +993,10 @@ def lista_tercera_vuelta(censo: Path, rastreos: list[Path], cc_urls: Path | None
     cuentas = Counter({"universidades_flojas": len(flojas), "webs": len(provs)})
     for i, urls in urls_de.items():
         elegidas: dict[str, str] = {}
+        textos.update({_sin_seguimiento(html_lib.unescape(k)): v for k, v in list(textos.items())})
         for u in sorted((_sin_seguimiento(html_lib.unescape(x)) for x in urls), key=_orden_ficha):
-            if u in hechas or not RE_MASTER.search(u) or _no_es_ficha_por_url(u):
+            nombra = RE_MASTER.search(u) or RE_MASTER.search(textos.get(u, ""))
+            if u in hechas or not nombra or _no_es_ficha_por_url(u):
                 continue
             elegidas.setdefault(sin_idioma(raiz_programa(u)), u)
         for u in list(elegidas.values())[:max_por_web]:
