@@ -296,6 +296,10 @@ def main() -> None:
         # ¿Ya hay una ejecución posterior del mismo flujo que terminó bien? Entonces está superado.
         posterior_ok = any(o.get("workflow_id") == r.get("workflow_id") and o.get("conclusion") == "success"
                            and fecha(o["created_at"]) > fecha(r["created_at"]) for o in runs)
+        # ¿O una posterior que aún no ha terminado (relanzada a mano o por otra vía)?
+        posterior_en_curso = next((o["html_url"] for o in runs if o.get("workflow_id") == r.get("workflow_id")
+                                   and o.get("status") != "completed"
+                                   and fecha(o["created_at"]) > fecha(r["created_at"])), None)
         try:
             trabajos = api(f"/repos/{repo}/actions/runs/{r['id']}/jobs?per_page=50").get("jobs", [])
         except Exception:
@@ -317,7 +321,8 @@ def main() -> None:
              "evento": r.get("event"), "rama": r.get("head_branch"), "commit": r.get("head_sha", "")[:7],
              "titulo": r.get("display_title"), "conclusion": r.get("conclusion"),
              "cuando": madrid(fecha(r.get("updated_at"))), "url": r["html_url"],
-             "superado": posterior_ok, "pasajero": pasajero, "detalle": detalle}
+             "superado": posterior_ok, "en_curso": None if posterior_ok else posterior_en_curso,
+             "pasajero": pasajero, "detalle": detalle}
         if (a.relanzar and pasajero and not posterior_ok and r.get("run_attempt", 1) == 1
                 and flujo not in NO_SE_RELANZAN and len(relanzados) < MAX_RELANZAMIENTOS):
             try:
@@ -345,7 +350,7 @@ def main() -> None:
             avisos_fuentes.append({"fuente": nombre, **{k: e.get(k) for k in ("aviso", "parada", "errores",
                                                                                  "ultimo_boletin", "dias_habiles_sin_noticias")}})
 
-    pendientes = [f for f in fallos if not f["superado"] and not f.get("relanzado")]
+    pendientes = [f for f in fallos if not f["superado"] and not f.get("relanzado") and not f.get("en_curso")]
     resultado = {
         "fecha": t0.isoformat(timespec="seconds"),
         "fecha_madrid": madrid(t0),
@@ -387,7 +392,8 @@ def main() -> None:
           f"- Latido (relanza al vigilante cada ~25 min mientras GitHub no dispare programaciones): {latido}",
           f"- Avisos de fuentes: {len(avisos_fuentes)}", ""]
     for f in fallos:
-        marca = "superado" if f["superado"] else ("relanzado" if f.get("relanzado") is True else "PENDIENTE")
+        marca = ("superado" if f["superado"] else "relanzado" if f.get("relanzado") is True
+                 else f"otra ejecución en curso: {f['en_curso']}" if f.get("en_curso") else "PENDIENTE")
         md.append(f"## {f['flujo']} · {f['cuando']} · {marca}")
         md.append(f"{f['url']} (intento {f['intento']}, {f['evento']}, {f['commit']}, pasajero: {f['pasajero']})")
         for d in f["detalle"]:
