@@ -33,9 +33,10 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("url")
     p.add_argument("--paginas", type=int, default=3)
     p.add_argument("--seguir", action="store_true")
+    p.add_argument("--accept", default="application/pdf, text/html, */*")
     p.add_argument("--salida", default=None)  # la añade prueba.yml; no se guarda nada
     a = p.parse_args(argv)
-    r = obtener(a.url, accept="application/pdf, text/html, */*", intentos=2)
+    r = obtener(a.url, accept=a.accept, intentos=2)
     tipo = r.cabeceras.get("Content-Type") or r.cabeceras.get("content-type")
     print("respuesta", r.status, tipo, len(r.contenido), r.url)
     if r.contenido[:4] == b"%PDF":
