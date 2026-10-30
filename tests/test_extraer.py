@@ -60,7 +60,7 @@ def test_coste_por_tramos():
 def test_lote_completo_sin_red(tmp_path, monkeypatch):
     import json as js
     pagina = ("<html><body><h1>Máster en Finanzas</h1><p>Precio total: 9.800 €</p><p>60 créditos ECTS</p></body></html>")
-    monkeypatch.setattr(e, "capturar", lambda urls, pausa=1.0: [
+    monkeypatch.setattr(e, "capturar", lambda urls, **kw: [
         {"url": urls[0], "estado_http": 200, "sha256": "abc", "html": pagina, "reserva_tdm": False},
         {"url": "https://y.es/m", "estado_http": 200, "sha256": "def", "html": pagina, "reserva_tdm": True}])
     monkeypatch.setenv("ANTHROPIC_API_KEY", "prueba")
@@ -92,7 +92,7 @@ def test_lote_completo_sin_red(tmp_path, monkeypatch):
     monkeypatch.setattr(e.requests, "get", get)
     monkeypatch.setattr(e.time, "sleep", lambda s: None)
     (tmp_path / "m.jsonl").write_text(js.dumps({"url": "https://x.es/master", "grupo": "no_oficial"}) + "\n")
-    res = e.lote(tmp_path / "m.jsonl", tmp_path / "out")
+    res = e.lote(tmp_path / "m.jsonl", tmp_path / "out", guarda=e.Guarda(None))
     assert enviado["n"] == 1 and res["reserva_tdm"] == 1 and res["extraidas"] == 1
     assert res["hechos_aceptados"] == 1 and res["motivos_revision"] == {"valor_no_en_cita": 1}
     assert abs(res["coste_usd"] - (1000 * 0.05 + 200 * 0.25) / 1e6) < 1e-12
@@ -105,3 +105,148 @@ def test_lote_completo_sin_red(tmp_path, monkeypatch):
 def test_verificar_formato_compacto():
     h = e.verificar({"creditos_ects": {"v": 60, "c": "60 créditos ECTS"}}, "Son 60 créditos ECTS en total")[0]
     assert h["estado"] == "aceptado" and h["valor"] == 60
+
+
+class AlmacenFalso:
+    """Como motor.almacen.Almacen: claves con la huella del contenido y escritura única."""
+
+    def __init__(self):
+        self.objetos = {}
+
+    def guardar_original(self, fuente, fecha_ref, contenido, ext, url, comprimir=True):
+        import hashlib
+        from motor.almacen import Resultado, clave_original
+
+        sha = hashlib.sha256(contenido).hexdigest()
+        clave = clave_original(fuente, fecha_ref, sha, ext, comprimir)
+        nuevo = clave not in self.objetos
+        self.objetos.setdefault(clave, contenido)
+        return Resultado(clave=clave, nuevo=nuevo, sha256=sha, bytes=len(contenido))
+
+    def leer(self, clave):
+        return self.objetos[clave]
+
+
+def _api_simulada(monkeypatch, estados, enviado):
+    """Lote que sigue «in_progress» las primeras consultas y luego termina con una respuesta con cita."""
+    import json as js
+
+    class R:
+        def __init__(self, status, datos=None, texto=""):
+            self.status_code, self._d, self.text = status, datos, texto
+            self.content = texto.encode()
+
+        def json(self):
+            return self._d
+
+    def post(url, headers, json, timeout):
+        enviado["id"] = json["requests"][0]["custom_id"]
+        return R(200, {"id": "msgbatch_2", "processing_status": "in_progress"})
+
+    def get(url, headers, timeout):
+        if url.endswith("msgbatch_2"):
+            return R(200, {"id": "msgbatch_2", "processing_status": estados.pop(0) if estados else "ended",
+                           "results_url": "https://r/2"})
+        respuesta = {"precio_total": {"v": 9800, "c": "Precio total: 9.800 €"}}
+        linea = {"custom_id": enviado["id"], "result": {"type": "succeeded", "message": {
+            "content": [{"type": "text", "text": js.dumps(respuesta)}], "stop_reason": "end_turn",
+            "usage": {"input_tokens": 1000, "output_tokens": 100}}}}
+        return R(200, texto=js.dumps(linea))
+
+    monkeypatch.setenv("ANTHROPIC_API_KEY", "prueba")
+    monkeypatch.setattr(e.requests, "post", post)
+    monkeypatch.setattr(e.requests, "get", get)
+    monkeypatch.setattr(e.time, "sleep", lambda s: None)
+
+
+def test_lote_guarda_lo_ajeno_solo_en_el_almacen_y_se_puede_retomar(tmp_path, monkeypatch):
+    import json as js
+
+    pagina = "<html><body><h1>Máster en Finanzas</h1><p>Precio total: 9.800 €</p></body></html>"
+    almacen = AlmacenFalso()
+
+    def capturar(urls, guarda=None, **kw):
+        fila = {"url": urls[0], "estado_http": 200, "sha256": "abc", "reserva_tdm": False,
+                "texto": e.texto_de_pagina(pagina)}
+        fila.update(guarda.original(e.FUENTE_PAGINAS, pagina.encode(), "html", urls[0]))
+        return [fila]
+
+    monkeypatch.setattr(e, "capturar", capturar)
+    enviado = {}
+    _api_simulada(monkeypatch, ["in_progress"] * 1000, enviado)  # no termina en esta ejecución
+    (tmp_path / "m.jsonl").write_text(js.dumps({"url": "https://x.es/master", "codigos_ruct": ["4310000"]}) + "\n")
+    res = e.lote(tmp_path / "m.jsonl", tmp_path / "a", esperar_min=0, guarda=e.Guarda(almacen))
+    assert res["estado_lote"] == "in_progress"
+    info = js.loads((tmp_path / "a" / "lote.json").read_text())
+    assert info["clave_enviado"].startswith("extraccion-masters/")
+    assert any(k.startswith("web-centros/") for k in almacen.objetos)  # el original de la página, privado
+    publico = "".join(f.read_text() for f in (tmp_path / "a").iterdir())
+    assert "Precio total" not in publico and "<html" not in publico
+
+    # otra ejecución recoge el lote con el texto exacto enviado, sin volver a pedir la página
+    _api_simulada(monkeypatch, [], enviado)
+    res2 = e.retomar(tmp_path / "a" / "lote.json", tmp_path / "b", guarda=e.Guarda(almacen))
+    assert res2["hechos_aceptados"] == 1 and res2["almacen"]["claves_privadas"]["hechos_con_cita"]
+    privados = almacen.leer(res2["almacen"]["claves_privadas"]["hechos_con_cita"]).decode()
+    assert "Precio total: 9.800" in privados  # la cita, solo en el almacén
+    hechos = (tmp_path / "b" / "hechos.jsonl").read_text()
+    assert "Precio total" not in hechos and "4310000" in (tmp_path / "b" / "paginas_extraidas.jsonl").read_text()
+
+
+def test_guarda_no_insiste_tras_cinco_fallos():
+    class Roto:
+        def guardar_original(self, *a, **k):
+            raise RuntimeError("sin permiso")
+
+    g = e.Guarda(Roto())
+    for _ in range(6):
+        r = g.original("web-centros", b"x", "html", "https://x.es")
+        assert "fallo_almacen" in r or r == {}
+    assert not g.activa and g.cuentas["fallos"] == 5
+
+
+def test_lista_oficiales_une_codigos_por_url(tmp_path):
+    import json as js
+
+    filas = [{"codigo_ruct": "1", "estado": "unido", "url": "https://u.es/m"},
+             {"codigo_ruct": "2", "estado": "dudoso", "url": "https://u.es/m"},
+             {"codigo_ruct": "3", "estado": "dudoso", "url": "https://v.es/m"},
+             {"codigo_ruct": "4", "estado": "sin_pagina", "url": None}]
+    (tmp_path / "p.jsonl").write_text("".join(js.dumps(f) + "\n" for f in filas))
+    r = e.lista_oficiales(tmp_path / "p.jsonl", tmp_path / "m.jsonl")
+    assert r["urls"] == 2 and r["urls_unido"] == 1 and r["urls_con_varios_codigos"] == 1
+    m = [js.loads(l) for l in (tmp_path / "m.jsonl").read_text().splitlines()]
+    assert m[0]["codigos_ruct"] == ["1", "2"] and m[0]["estado_emparejado"] == "unido"
+
+
+def test_capturar_guarda_original_salvo_reserva_tdm(monkeypatch):
+    from motor.estudios import rastreador
+
+    class Resp:
+        def __init__(self, url, html, cab=None):
+            self.url, self.status_code, self.content = url, 200, html.encode()
+            self.headers = {"content-type": "text/html", **(cab or {})}
+            self.encoding, self.apparent_encoding, self.text = "utf-8", "utf-8", html
+
+    class DominioFalso:
+        def __init__(self, base, archivo, pausa=1.0, max_peticiones=80):
+            self.base = base
+
+        def get(self, url):
+            if "reservada" in url:
+                return Resp(url, "<html><body>x</body></html>", {"tdm-reservation": "1"})
+            if "nada" in url:
+                return None
+            return Resp(url, "<html><body><p>Precio total: 9.800 €</p></body></html>")
+
+    monkeypatch.setattr(rastreador, "Dominio", DominioFalso)
+    almacen = AlmacenFalso()
+    filas = e.capturar(["https://a.es/m1", "https://a.es/m2", "https://b.es/reservada", "https://c.es/nada"],
+                       hilos=3, guarda=e.Guarda(almacen))
+    por = {f["url"]: f for f in filas}
+    assert len(filas) == 4 and "Precio total: 9.800 €" in por["https://a.es/m1"]["texto"]
+    assert por["https://a.es/m1"]["clave"].startswith("web-centros/")
+    assert por["https://b.es/reservada"]["reserva_tdm"] and "clave" not in por["https://b.es/reservada"]
+    assert "texto" not in por["https://b.es/reservada"]
+    assert por["https://c.es/nada"]["motivo"] == "robots_o_sin_respuesta"
+    assert len(almacen.objetos) == 1  # m1 y m2 tienen el mismo contenido: una sola clave, sin sobrescribir

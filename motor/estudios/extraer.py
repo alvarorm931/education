@@ -10,9 +10,12 @@ El resultado son hechos (una línea por campo) con su captura de origen; la fich
 los hechos vigentes (docs/modelo-masters.md, §6).
 
 Uso:
-  python -m motor.estudios.extraer lote --muestra muestra.jsonl --salida ruta/ [--esperar-min 45]
+  python -m motor.estudios.extraer lote --muestra muestra.jsonl --salida ruta/ [--esperar-min 45] [--hilos 12]
       # todo en una ejecución: descarga cortés de cada página (robots.txt, reserva TDM), lote de la API,
-      # espera, comprobación de citas y coste real; no guarda ninguna página, solo su huella
+      # espera, comprobación de citas y coste real. Con MOTOR_ORIGINALES=s3, el original de cada página, lo
+      # enviado, las respuestas y las citas van al almacén privado (escritura única); lo público, sin textos ajenos
+  python -m motor.estudios.extraer retomar --lote-json ruta/lote.json --salida ruta/   # lote que no terminó a tiempo
+  python -m motor.estudios.extraer lista-oficiales --paginas-oficiales paginas_oficiales.jsonl --salida muestra.jsonl
   python -m motor.estudios.extraer preparar --paginas ruta/paginas.jsonl --salida ruta/   # crea el lote
   python -m motor.estudios.extraer enviar --lote ruta/lote.jsonl                           # ANTHROPIC_API_KEY
   python -m motor.estudios.extraer recoger --id msgbatch_... --paginas ... --salida ruta/
@@ -27,6 +30,7 @@ import json
 import os
 import re
 import sys
+import threading
 import time
 import unicodedata
 from collections import Counter
@@ -315,78 +319,217 @@ def coste(uso: dict, modelo: str = MODELO) -> float:
             + sal * tramo["salida"]) / 1_000_000
 
 
-def capturar(urls: list[str], pausa: float = 1.0) -> list[dict]:
-    """Descarga cada página con el lector cortés del rastreador (robots.txt de cada servidor, una petición por
-    segundo y servidor) y la devuelve en memoria. Nada se escribe en disco: solo se registra la huella."""
-    from motor.estudios.rastreador import Dominio, reserva_tdm, texto_de
+# ------------------------------------------------------------------ almacén privado (S3, escritura única)
+
+FUENTE_PAGINAS = "web-centros"            # mismo nombre de fuente que el rastreador
+FUENTE_EXTRACCION = "extraccion-masters"  # lo enviado a la API, sus respuestas y los hechos con su cita
+
+
+class Guarda:
+    """Guarda en el almacén privado (motor/almacen.py) sin sobrescribir nunca: la clave lleva la huella del
+    contenido y toda escritura va con If-None-Match: *. Sin almacén (MOTOR_ORIGINALES distinto de s3) no guarda
+    nada y la extracción sigue igual. Tras 5 fallos seguidos deja de intentarlo en esta ejecución."""
+
+    def __init__(self, almacen="auto"):
+        self.cuentas: Counter = Counter()
+        if almacen == "auto":
+            from motor.archivo import almacen_por_defecto
+
+            try:
+                almacen = almacen_por_defecto()
+            except Exception as e:  # noqa: BLE001 - sin credenciales: se avisa y se sigue sin copia privada
+                print(f"AVISO almacén: no disponible ({type(e).__name__}: {str(e)[:200]})", flush=True)
+                self.cuentas["sin_conexion"] += 1
+                almacen = None
+        self.almacen = almacen
+        self.fallos = 0
+        self._cerrojo = threading.Lock()
+
+    @property
+    def activa(self) -> bool:
+        return self.almacen is not None
+
+    def original(self, fuente: str, contenido: bytes, ext: str, url: str) -> dict:
+        a = self.almacen
+        if a is None:
+            return {}
+        try:
+            r = a.guardar_original(fuente, datetime.now(timezone.utc).date(), contenido, ext, url)
+        except Exception as e:  # noqa: BLE001 - sin copia privada el dato sigue; la página se puede volver a pedir
+            with self._cerrojo:
+                self.fallos += 1
+                self.cuentas["fallos"] += 1
+                if self.fallos >= 5 and self.almacen is not None:
+                    print("AVISO almacén: 5 fallos seguidos; sin copia privada hasta la próxima ejecución", flush=True)
+                    self.almacen = None
+            return {"fallo_almacen": f"{type(e).__name__}: {str(e)[:200]}"}
+        with self._cerrojo:
+            self.fallos = 0
+            self.cuentas["nuevos" if r.nuevo else "ya_estaban"] += 1
+        return {"clave": r.clave}
+
+    def jsonl(self, fuente: str, filas: list[dict], nombre: str, url: str) -> str | None:
+        datos = "".join(json.dumps(f, ensure_ascii=False) + "\n" for f in filas).encode("utf-8")
+        return self.original(fuente, datos, nombre, url).get("clave")
+
+    def leer_jsonl(self, clave: str) -> list[dict]:
+        if self.almacen is None:
+            sys.exit("Sin almacén privado (MOTOR_ORIGINALES=s3 y credenciales): no se puede retomar el lote")
+        return [json.loads(l) for l in self.almacen.leer(clave).decode("utf-8").splitlines() if l.strip()]
+
+
+# ----------------------------------------------------------------------------------- captura cortés
+
+
+def capturar(urls: list[str], pausa: float = 1.0, hilos: int = 12, guarda: Guarda | None = None,
+             fin: float | None = None) -> list[dict]:
+    """Descarga cada página con el lector cortés del rastreador: robots.txt de cada servidor y una petición por
+    segundo y servidor (las de un mismo servidor van en fila; servidores distintos, a la vez). Devuelve el texto
+    de cada página en memoria; el original, intacto, solo va al almacén privado. Nada se escribe en disco.
+    Las páginas cuyo titular reserva la minería de textos (TDM) ni se guardan ni se procesan: solo su huella."""
+    from concurrent.futures import ThreadPoolExecutor
     from urllib.parse import urlparse
 
+    from motor.estudios.rastreador import Dominio, reserva_tdm, texto_de
+
     por_host: dict[str, list[str]] = {}
-    for u in urls:
+    for u in dict.fromkeys(urls):
         por_host.setdefault(urlparse(u).netloc, []).append(u)
-    paginas = []
-    for host, lista in por_host.items():
-        d = Dominio(f"https://{host}", None, pausa=pausa, max_peticiones=len(lista) + 4)
+
+    def servidor(host: str, lista: list[str]) -> list[dict]:
+        filas = []
+        try:
+            d = Dominio(f"https://{host}", None, pausa=pausa, max_peticiones=len(lista) + 6)
+        except Exception as e:  # noqa: BLE001
+            return [{"url": u, "motivo": f"error_{type(e).__name__}"} for u in lista]
         for u in lista:
-            r = d.get(u)
+            if fin is not None and time.time() > fin:
+                filas.append({"url": u, "motivo": "sin_tiempo"})
+                continue
+            try:
+                r = d.get(u)
+            except Exception as e:  # noqa: BLE001 - un servidor raro no para la tanda
+                filas.append({"url": u, "motivo": f"error_{type(e).__name__}"})
+                continue
             fila = {"url": u, "estado_http": getattr(r, "status_code", None)}
             if r is None:
                 fila["motivo"] = "robots_o_sin_respuesta"
             elif r.status_code == 200 and "html" in (r.headers.get("content-type") or ""):
                 html = texto_de(r)
-                fila.update({"sha256": hashlib.sha256(r.content).hexdigest(), "html": html,
-                             "reserva_tdm": reserva_tdm(dict(r.headers), html)})
+                tdm = reserva_tdm(dict(r.headers), html)
+                fila.update({"sha256": hashlib.sha256(r.content).hexdigest(), "bytes": len(r.content),
+                             "reserva_tdm": tdm, "url_final": r.url if r.url != u else None})
+                if not tdm:
+                    fila["texto"] = texto_de_pagina(html)
+                    if guarda is not None:
+                        fila.update(guarda.original(FUENTE_PAGINAS, r.content, "html", u))
             else:
                 fila["motivo"] = "no_html_o_error"
-            paginas.append(fila)
-    return paginas
+            filas.append(fila)
+        return filas
+
+    orden = sorted(por_host.items(), key=lambda kv: -len(kv[1]))  # los servidores con más páginas, primero
+    with ThreadPoolExecutor(max_workers=max(1, hilos)) as ex:
+        return [f for lote_host in ex.map(lambda kv: servidor(*kv), orden) for f in lote_host]
 
 
-def lote(muestra: Path, salida: Path, esperar_min: float = 45, max_paginas: int | None = None) -> dict:
-    """Prueba o tanda completa en una sola ejecución: capturar, enviar, esperar, comprobar citas y medir coste."""
+# ----------------------------------------------------------------------------- tanda de extracción
+
+META = ("proveedor", "grupo", "codigo_ruct", "codigos_ruct")
+
+
+def lote(muestra: Path, salida: Path, esperar_min: float = 45, max_paginas: int | None = None, desde: int = 0,
+         hilos: int = 12, max_minutos: float = 52, guarda: Guarda | None = None) -> dict:
+    """Tanda en una ejecución: capturar, enviar el lote, esperar, comprobar citas y medir el coste real.
+
+    Lo público (salida) lleva URL, huellas, valores y coste. Lo ajeno (el texto enviado, las respuestas con sus
+    citas) va solo al almacén privado, con su clave en lote.json: si el lote no termina a tiempo, «retomar»
+    lo recoge en otra ejecución sin volver a pagar ni a pedir las páginas."""
+    t0 = time.time()
+    fin_total = t0 + max_minutos * 60
+    guarda = guarda if guarda is not None else Guarda()
     filas = list({f["url"]: f for f in (json.loads(l) for l in muestra.read_text(encoding="utf-8").splitlines()
-                                          if l.strip())}.values())[:max_paginas]
-    meta = {f["url"]: f for f in filas}
-    paginas = capturar([f["url"] for f in filas])
+                                          if l.strip())}.values())
+    filas = filas[desde:desde + max_paginas] if max_paginas else filas[desde:]
+    meta = {f["url"]: {k: f[k] for k in META if f.get(k) is not None} for f in filas}
+    paginas = capturar([f["url"] for f in filas], hilos=hilos, guarda=guarda, fin=fin_total - 10 * 60)
     salida.mkdir(parents=True, exist_ok=True)
-    peticiones, textos, cuentas = [], {}, Counter()
+    peticiones, textos, enviado, cuentas = [], {}, [], Counter()
     with (salida / "paginas_capturadas.jsonl").open("w", encoding="utf-8") as f:
         for pg in paginas:
             cuentas["pedidas"] += 1
-            if pg.get("html") is None:
-                cuentas[pg.get("motivo", "error")] += 1
-            elif pg["reserva_tdm"]:
-                cuentas["reserva_tdm"] += 1
-            else:
+            texto = pg.pop("texto", None)
+            if texto is None and pg.get("html") is not None and not pg.get("reserva_tdm"):
                 texto = texto_de_pagina(pg["html"])
+            if pg.get("reserva_tdm"):
+                cuentas["reserva_tdm"] += 1
+            elif texto is None:
+                cuentas[pg.get("motivo", "error")] += 1
+            else:
                 cid = id_pagina(pg["url"], pg["sha256"])
                 textos[cid] = (pg, texto)
                 peticiones.append(peticion(cid, pg["url"], texto))
+                enviado.append({"custom_id": cid, "url": pg["url"], "sha256": pg["sha256"], "texto": texto,
+                                **meta.get(pg["url"], {})})
                 cuentas["enviadas"] += 1
                 pg["caracteres_texto"] = len(texto)
             f.write(json.dumps({k: v for k, v in pg.items() if k != "html"}, ensure_ascii=False) + "\n")
+    cuentas["minutos_captura"] = round((time.time() - t0) / 60, 1)
     if not peticiones:
         return dict(cuentas)
-    r = requests.post(API, headers=_cabeceras(), json={"requests": peticiones}, timeout=120)
+    r = requests.post(API, headers=_cabeceras(), json={"requests": peticiones}, timeout=300)
     if r.status_code >= 400:
         return {**cuentas, "error_api": r.status_code, "detalle": r.text[:500]}
     b = r.json()
-    (salida / "lote.json").write_text(json.dumps({"id": b["id"], "creado": b.get("created_at"), "peticiones": len(peticiones),
-                                                  "modelo": MODELO}, ensure_ascii=False), encoding="utf-8")
-    t0, fin = time.time(), time.time() + esperar_min * 60
+    clave_enviado = guarda.jsonl(FUENTE_EXTRACCION, enviado, "enviado.jsonl", f"anthropic-batch:{b['id']}/enviado")
+    (salida / "lote.json").write_text(json.dumps({
+        "id": b["id"], "creado": b.get("created_at"), "peticiones": len(peticiones), "modelo": MODELO,
+        "clave_enviado": clave_enviado, "muestra": str(muestra), "desde": desde, "max_paginas": max_paginas},
+        ensure_ascii=False), encoding="utf-8")
+    return _esperar_y_procesar(b, textos, meta, salida, guarda, cuentas, min(fin_total, time.time() + esperar_min * 60))
+
+
+def retomar(lote_json: Path, salida: Path, esperar_min: float = 50, guarda: Guarda | None = None) -> dict:
+    """Recoge un lote enviado en otra ejecución con el texto exacto que se envió (guardado en el almacén)."""
+    guarda = guarda if guarda is not None else Guarda()
+    info = json.loads(lote_json.read_text(encoding="utf-8"))
+    if not info.get("clave_enviado"):
+        sys.exit("El lote no tiene copia privada de lo enviado: no se puede comprobar ninguna cita")
+    textos, meta = {}, {}
+    for e in guarda.leer_jsonl(info["clave_enviado"]):
+        textos[e["custom_id"]] = ({"url": e["url"], "sha256": e["sha256"]}, e["texto"])
+        meta[e["url"]] = {k: e[k] for k in META if e.get(k) is not None}
+    salida.mkdir(parents=True, exist_ok=True)
+    (salida / "lote.json").write_text(json.dumps(info, ensure_ascii=False), encoding="utf-8")
+    b = requests.get(f"{API}/{info['id']}", headers=_cabeceras(), timeout=60).json()
+    return _esperar_y_procesar(b, textos, meta, salida, guarda, Counter({"retomado": 1}), time.time() + esperar_min * 60)
+
+
+def _esperar_y_procesar(b: dict, textos: dict, meta: dict, salida: Path, guarda: Guarda, cuentas: Counter,
+                        fin: float) -> dict:
+    t0 = time.time()
     while b.get("processing_status") != "ended" and time.time() < fin:
         time.sleep(30)
         b = requests.get(f"{API}/{b['id']}", headers=_cabeceras(), timeout=60).json()
     cuentas["minutos_lote"] = round((time.time() - t0) / 60, 1)
     if b.get("processing_status") != "ended":
-        return {**cuentas, "estado_lote": b.get("processing_status"), "id": b["id"]}
-    res = requests.get(b["results_url"], headers=_cabeceras(), timeout=300)
+        resumen = {**cuentas, "estado_lote": b.get("processing_status"), "id": b["id"],
+                   "cuentas_lote": b.get("request_counts"), "almacen": dict(guarda.cuentas),
+                   "siguiente": "retomar con lote.json de esta ejecución"}
+        (salida / "resumen.json").write_text(json.dumps(resumen, ensure_ascii=False, indent=1), encoding="utf-8")
+        return resumen
+    res = requests.get(b["results_url"], headers=_cabeceras(), timeout=600)
+    privado = {"resultados": guarda.original(FUENTE_EXTRACCION, res.content, "resultados.jsonl",
+                                             f"anthropic-batch:{b['id']}/resultados").get("clave")
+               if guarda.activa else None}
     ahora = datetime.now(timezone.utc).isoformat(timespec="seconds")
     uso_total, dolares, campos = Counter(), 0.0, Counter()
-    motivos = Counter()
+    motivos, completos = Counter(), []
     with (salida / "hechos.jsonl").open("w", encoding="utf-8") as fh, \
             (salida / "paginas_extraidas.jsonl").open("w", encoding="utf-8") as fp:
         for linea in res.text.splitlines():
+            if not linea.strip():
+                continue
             x = json.loads(linea)
             if x["result"]["type"] != "succeeded" or x["custom_id"] not in textos:
                 cuentas["resultado_" + x["result"]["type"]] += 1
@@ -411,16 +554,16 @@ def lote(muestra: Path, salida: Path, esperar_min: float = 45, max_paginas: int 
                                  "parada": msg.get("stop_reason"),
                                  "caracteres_respuesta": sum(len(c.get("text", "")) for c in msg.get("content", [])
                                                              if c.get("type") == "text"),
-                                 **{k: meta.get(pagina["url"], {}).get(k) for k in ("proveedor", "grupo", "codigo_ruct")}},
-                                ensure_ascii=False) + "\n")
+                                 **meta.get(pagina["url"], {})}, ensure_ascii=False) + "\n")
             if datos.get("no_es_programa"):
                 cuentas["no_es_programa"] += 1
                 continue
             for h in verificar(datos, texto):
                 h.update({"url": pagina["url"], "captura_sha256": pagina["sha256"], "modelo": MODELO,
                           "extraido": ahora, "lote": b["id"]})
-                # la cita es texto ajeno: hasta tener el archivo privado no sale del trabajo; queda su huella
-                # (para comprobarla después contra la página) y su longitud
+                completos.append(dict(h))  # con su cita: solo al almacén privado
+                # la cita es texto ajeno: en lo público queda su huella (para comprobarla contra el original
+                # guardado) y su longitud
                 cita = h.pop("cita", "") or ""
                 h["cita_sha256"] = hashlib.sha256(_norma(cita).encode()).hexdigest() if cita else None
                 h["cita_palabras"] = len(cita.split())
@@ -428,32 +571,72 @@ def lote(muestra: Path, salida: Path, esperar_min: float = 45, max_paginas: int 
                 campos[(h["campo"], h["estado"])] += 1
                 if h.get("motivo"):
                     motivos[h["motivo"]] += 1
+    privado["hechos_con_cita"] = guarda.jsonl(FUENTE_EXTRACCION, completos, "hechos.jsonl",
+                                              f"anthropic-batch:{b['id']}/hechos")
     n = max(cuentas["extraidas"], 1)
-    resumen = {**cuentas, "uso_tokens": dict(uso_total), "coste_usd": round(dolares, 6),
+    resumen = {**cuentas, "id": b["id"], "uso_tokens": dict(uso_total), "coste_usd": round(dolares, 6),
                "coste_usd_por_pagina": round(dolares / n, 6),
                "tokens_entrada_por_pagina": round(uso_total["input_tokens"] / n),
                "tokens_salida_por_pagina": round(uso_total["output_tokens"] / n),
                "hechos_aceptados": sum(v for (c, e), v in campos.items() if e == "aceptado"),
                "hechos_revision": sum(v for (c, e), v in campos.items() if e == "revision"),
                "motivos_revision": dict(motivos),
+               "almacen": {**dict(guarda.cuentas), "claves_privadas": privado} if guarda.activa or guarda.cuentas else None,
                "por_campo": {c: {e: v for (c2, e), v in campos.items() if c2 == c} for c in CAMPOS}}
     (salida / "resumen.json").write_text(json.dumps(resumen, ensure_ascii=False, indent=1), encoding="utf-8")
     return resumen
 
 
+def lista_oficiales(paginas_oficiales: Path, salida: Path, estados: tuple[str, ...] = ("unido", "dudoso")) -> dict:
+    """Muestra para extraer las fichas de los másters oficiales desde paginas_oficiales.jsonl (emparejar.py):
+    una fila por URL; si una página sirve a varios códigos del RUCT (interuniversitarios), los lleva todos."""
+    por_url: dict[str, dict] = {}
+    cuentas = Counter()
+    for l in paginas_oficiales.read_text(encoding="utf-8").splitlines():
+        if not l.strip():
+            continue
+        x = json.loads(l)
+        cuentas[x.get("estado")] += 1
+        if x.get("estado") not in estados or not x.get("url"):
+            continue
+        f = por_url.setdefault(x["url"], {"url": x["url"], "grupo": "oficial", "estado_emparejado": x["estado"],
+                                          "codigos_ruct": []})
+        f["codigos_ruct"].append(x["codigo_ruct"])
+        if x["estado"] == "unido":
+            f["estado_emparejado"] = "unido"
+    filas = sorted(por_url.values(), key=lambda f: (f["estado_emparejado"] != "unido", f["url"]))
+    for f in filas:
+        f["codigo_ruct"] = f["codigos_ruct"][0]
+    salida.parent.mkdir(parents=True, exist_ok=True)
+    salida.write_text("".join(json.dumps(f, ensure_ascii=False) + "\n" for f in filas), encoding="utf-8")
+    return {"masters": dict(cuentas), "urls": len(filas),
+            "urls_unido": sum(1 for f in filas if f["estado_emparejado"] == "unido"),
+            "urls_con_varios_codigos": sum(1 for f in filas if len(f["codigos_ruct"]) > 1)}
+
+
 def main() -> None:
     p = argparse.ArgumentParser()
-    p.add_argument("orden", choices=["lote", "preparar", "enviar", "recoger"])
+    p.add_argument("orden", choices=["lote", "retomar", "lista-oficiales", "preparar", "enviar", "recoger"])
     p.add_argument("--muestra", help="lote: JSONL con {url, proveedor, grupo, codigo_ruct}")
     p.add_argument("--esperar-min", type=float, default=45)
     p.add_argument("--max-paginas", type=int)
+    p.add_argument("--desde", type=int, default=0)
+    p.add_argument("--hilos", type=int, default=12, help="servidores a la vez (cada uno, una petición por segundo)")
+    p.add_argument("--max-minutos", type=float, default=52, help="tope de la ejecución entera")
+    p.add_argument("--lote-json", help="retomar: lote.json de la ejecución que envió el lote")
+    p.add_argument("--paginas-oficiales", help="lista-oficiales: paginas_oficiales.jsonl de emparejar.py")
     p.add_argument("--paginas")
     p.add_argument("--lote")
     p.add_argument("--id")
     p.add_argument("--salida")
     a = p.parse_args()
+    destino = Path(a.salida) / "datos" / "estudios" / "extraccion" if a.salida else None
     if a.orden == "lote":
-        res = lote(Path(a.muestra), Path(a.salida) / "datos" / "estudios" / "extraccion", a.esperar_min, a.max_paginas)
+        res = lote(Path(a.muestra), destino, a.esperar_min, a.max_paginas, a.desde, a.hilos, a.max_minutos)
+    elif a.orden == "retomar":
+        res = retomar(Path(a.lote_json), destino, a.esperar_min)
+    elif a.orden == "lista-oficiales":
+        res = lista_oficiales(Path(a.paginas_oficiales), Path(a.salida))
     elif a.orden == "preparar":
         res = preparar(Path(a.paginas), Path(a.salida))
     elif a.orden == "enviar":

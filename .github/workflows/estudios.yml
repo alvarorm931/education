@@ -20,13 +20,22 @@ on:
         description: "Rutas de la rama sondas que necesita el módulo, separadas por espacios (quedan en ./entrada/)"
         required: false
         default: ""
+      ejecutor:
+        description: "Dónde se ejecuta: github (servidores de GitHub) o espana (servidor propio en España; los tramos van en fila)"
+        type: choice
+        options: [github, espana]
+        default: github
 
+# id-token: solo para pedir por OIDC credenciales temporales del almacén privado (sin claves guardadas). El rol
+# de AWS solo lo pueden asumir flujos de la rama main y no puede borrar ni sobrescribir.
 permissions:
   contents: write
+  id-token: write
 
 jobs:
   tramo:
-    runs-on: ubuntu-latest
+    # Solo workflow_dispatch: el servidor propio nunca ejecuta código de un pull request (repositorio público)
+    runs-on: ${{ inputs.ejecutor == 'espana' && fromJSON('["self-hosted", "espana"]') || 'ubuntu-latest' }}
     timeout-minutes: 58
     strategy:
       fail-fast: false
@@ -38,7 +47,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: pip install -e ".[estudios]"
+      - run: pip install -q -e ".[estudios,almacen]"
       - name: Traer entradas de la rama sondas
         if: inputs.entrada != ''
         env:
@@ -56,6 +65,10 @@ jobs:
           ARGS: ${{ matrix.args }}
           # La clave de la API solo llega al módulo de extracción; el resto de módulos no la ven.
           ANTHROPIC_API_KEY: ${{ inputs.modulo == 'motor.estudios.extraer' && secrets.ANTHROPIC_API_KEY || '' }}
+          # Los módulos que leen webs de centros guardan el original de cada página (y la extracción, lo enviado a
+          # la API y las citas) en el almacén privado de S3, con escritura única y credenciales OIDC que se renuevan
+          # solas (motor/credenciales_aws.py). Nada de eso llega a la rama pública.
+          MOTOR_ORIGINALES: ${{ (inputs.modulo == 'motor.estudios.extraer' || inputs.modulo == 'motor.estudios.rastreador') && 's3' || 'huella' }}
         run: |
           case "$MODULO" in motor.estudios.*) ;; *) echo "Módulo no permitido"; exit 1;; esac
           mkdir -p out
@@ -70,6 +83,9 @@ jobs:
           name: tramo-${{ env.NOMBRE }}
           path: out
           retention-days: 7
+      - name: Limpiar la copia local (en el servidor propio no queda nada entre ejecuciones)
+        if: always() && inputs.ejecutor == 'espana'
+        run: rm -rf out entrada
 
   juntar:
     needs: tramo
@@ -93,7 +109,7 @@ jobs:
             cp "$d/salida.txt" "pub/$STAMP/$n.salida.txt" 2>/dev/null || true
             if [ -d "$d/datos" ]; then cp -r "$d/datos" "pub/$STAMP/"; fi
             # Las páginas de webs de centros no se publican: la rama es pública y son textos ajenos. Solo se sube
-            # su índice (URL, fecha, huella sha256); el original irá al archivo privado (R2) cuando exista.
+            # su índice (URL, fecha, huella sha256 y clave del original en el almacén privado de S3).
             rm -rf "$d/archivo/web-centros"
             if [ -d "$d/archivo" ]; then mkdir -p "pub/$STAMP/archivo"; cp -r "$d/archivo/." "pub/$STAMP/archivo/"; cat "$d/archivo/indice.jsonl" >> "pub/$STAMP/archivo/indice_todos.jsonl" 2>/dev/null || true; fi
           done
