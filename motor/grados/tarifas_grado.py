@@ -80,7 +80,9 @@ URLS_CONOCIDAS = {
     "107": ["https://universidadeuropea.com/resources/media/documents/Tarifas_Grado_Malaga_2025-2026.pdf"],
     # Alfonso X: honorarios de UAX Online 2025-2026 y de UAX Mare Nostrum 2026-2027
     "047": ["https://www.uax.com/download/36836/file/AF_HONORARIOS_ACADEMICOS_UAX_ONLINE_210_X_297_2025_26_V2%20%C3%9A"
-            "LTIMA%20VERSION.pdf"],
+            "LTIMA%20VERSION.pdf",
+            # Villanueva de la Cañada: honorarios académicos de grado 2026-2027 (hallado el 30/10 por la noche)
+            "https://www.uax.com/download/71554/file/HONORARIOS_ACADEMICOS_GRADO%202026_27.pdf"],
     "106": ["https://www.uax.com/en/download/74149/file/AF_HONORARIOS_ACADEMICOS_DE_GRADOS_UAX_MARE_NOSTRUM__210_X_297_"
             "2026_27_V2.pdf"],
     # Deusto: tasas de primer curso de grado 2026-2027 (página general)
@@ -94,8 +96,43 @@ URLS_CONOCIDAS = {
             "https://www.uchceu.es/docs/nuevo-alumno/tasas-academicas/grado/facultad-derecho-empresa-ciencias-politicas.pdf",
             "https://www.uchceu.es/docs/nuevo-alumno/tasas-academicas/grado/campus-elche.pdf",
             "https://www.uchceu.es/docs/nuevo-alumno/tasas-academicas/grado/campus-castellon.pdf"],
-    # Mondragon: precio por grado en su página de precios (ejemplo comprobado; el resto, mismo patrón)
-    "061": ["https://mondragon.edu/grado-ingenieria-biomedica/precios-becas-ayudas"],
+    # Mondragon: precio por grado en su página de precios (importe anual previsto 2027-2028). La tabla central
+    # (/es/informacion/becas-ayudas/precios-grados) no cuadra con estas páginas (8.520 € frente a 143 €/ECTS × 60 =
+    # 8.580 € en Informática y Mecánica, 30/10): no se usa.
+    "061": ["https://mondragon.edu/grado-ingenieria-biomedica/precios-becas-ayudas"] + [
+        f"https://www.mondragon.edu/es/{g}" for g in (
+            "grado-ingenieria-mecanica/precios-becas-ayudas", "grado-ingenieria-informatica/precios-becas-ayudas",
+            "grado-ingenieria-mecatronica/precios-becas-ayudas",
+            "grado-ingenieria-electronica-industrial/precios-becas-ayudas",
+            "grado-ingenieria-diseno-industrial-desarrollo-producto/precios-becas-ayudas",
+            "grado-ingenieria-energia/precios-becas-ayudas", "grado-ingenieria-organizacion-industrial/precios-becas-ayudas",
+            "grado-administracion-direccion-empresas/precio-becas-ayudas",
+            "grado-business-data-analytics/precio-becas-y-ayudas",
+            "grado-humanidades-digitales-globales/precios-becas-ayudas",
+            "grado-comunicacion-audiovisual/precio-becas-ayudas", "grado-educacion-primaria/precio-becas-ayudas",
+            "grados-educacion-infantil/precio-becas-ayudas",
+            "grado-liderazgo-emprendedor-innovacion/precios-becas-ayudas",
+            "grado-gastronomia-artes-culinarias/precios-becas-ayudas")],
+    # Halladas el 30/10 por la noche (búsqueda dirigida en el dominio de cada universidad, sin copias de terceros).
+    # Camilo José Cela: tarifario de grados 2026-2027 y fichas de precio de los grados de Salud (cada una dice su curso)
+    "065": ["https://ucjc.edu/pdfs/aula/becas/precios-grados-26-27.pdf"] + [
+        f"https://www.ucjc.edu/pdfs/estudios/{f}.pdf" for f in (
+            "grado_en_medicina", "grado_en_farmacia", "grado_en_fisioterapia_prof", "grado_en_odontologia",
+            "grado_en_nutricion_humana_dietetica", "doble_grado_en_nutricion_humana_dietetica_fisioterapia")] + [
+        f"https://ucjc.edu/pdfs/estudios/{f}.pdf" for f in (
+            "grado_en_CCAFYD", "grado_en_enfermeria", "doble_grado_en_enfermeria_fisioterapia")],
+    # Euneiz: información académica con el precio de cada titulación (2027-2028)
+    "098": ["https://www.euneiz.com/informacion-academica/"],
+    # Intercontinental de la Empresa (UIE): precio de primer curso en la página de cada grado
+    "097": [f"https://uie.edu/grado/{g}/" for g in (
+        "grado-en-administracion-y-direccion-de-empresas-de-uie", "grado-en-psicologia", "grado-en-matematica-aplicada",
+        "grado-en-fisioterapia", "grado-en-biomedicina", "doble-grado-en-derecho-y-administracion-de-negocios-digitales",
+        "grado-en-enfermeria", "grado-en-derecho")],
+    # Abat Oliba CEU: precio en la página de cada grado
+    "070": ["https://www.uaoceu.es/grado-en-psicolog%C3%ADa", "https://www.uaoceu.es/grado-medicina"],
+    # Comillas: precio en la página de cada grado (ejemplos; el resto, con el rastreo de su web)
+    "033": ["https://www.comillas.edu/grados/grado-en-derecho-e-1/",
+            "https://www.comillas.edu/grados/grado-en-ingenieria-en-tecnologias-industriales-giti/"],
 }
 
 
@@ -240,6 +277,15 @@ def grado_de_url(url: str, grados: list[dict]) -> str | None:
     return next(iter(union)) if len(union) == 1 else None
 
 
+def grado_de_fichero(url: str, grados: list[dict]) -> str | None:
+    """PDF de un solo grado por el nombre del fichero («…/grado_en_medicina.pdf»): solo si empieza por «grado» o
+    «doble_grado» y su nombre casa con un único grado de la universidad."""
+    nombre = url.split("?")[0].rstrip("/").rsplit("/", 1)[-1]
+    if not re.match(r"(?i)(?:doble[_-])?grado[_-]", nombre):
+        return None
+    return grado_de_url(re.sub(r"\.pdf$", "/", url.split("?")[0], flags=re.I).replace("_", "-"), grados)
+
+
 def extraer(paginas: list[str], grados: list[dict], de_la_pagina: str | None = None) -> dict:
     """Importes por grado de un PDF o una página de precios (una cadena por página, con saltos de línea; en las
     tablas HTML las celdas van separadas por « | » y cada importe toma el tipo del rótulo de su columna)."""
@@ -364,7 +410,7 @@ def ejecutar(catalogo: list[dict], rastreos: Path, salida: Path, max_minutos: fl
                 res["paginas"] = len(paginas)
                 gs = list(por_u.get(p["codigo_universidad"], []))
                 gs += [por_cod[c] for c in p.get("grados_rastreo") or [] if c in por_cod and por_cod[c] not in gs]
-                res.update(extraer(paginas, gs, None if es_pdf else grado_de_url(r_url, gs)))
+                res.update(extraer(paginas, gs, grado_de_fichero(r_url, gs) if es_pdf else grado_de_url(r_url, gs)))
             except Exception as e:  # noqa: BLE001 - un documento roto no para el resto
                 res["error"] = f"{type(e).__name__}: {str(e)[:120]}"
         elif r is not None and r.status_code == 200:

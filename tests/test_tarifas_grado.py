@@ -210,3 +210,11 @@ def test_solo_algunas_universidades(tmp_path, monkeypatch):
     assert pedidas == ["https://b.es/1"] and res["pdfs_elegidos"] == 1
     assert json.loads((tmp_path / "s/datos/estudios/grados/tarifas_grado/tarifas.jsonl").read_text())["motivo"] \
         == "sin_respuesta"
+
+
+def test_pdf_de_un_solo_grado_por_el_nombre_del_fichero():
+    gs = [{"codigo": "1", "clase": "grado", "nombre": "Medicina", "nombre_oficial": "Graduado en Medicina"},
+          {"codigo": "2", "clase": "grado", "nombre": "Odontología", "nombre_oficial": "Graduado en Odontología"}]
+    assert tg.grado_de_fichero("https://u.es/pdfs/estudios/grado_en_medicina.pdf", gs) == "1"
+    assert tg.grado_de_fichero("https://u.es/pdfs/aula/becas/precios-grados-26-27.pdf", gs) is None
+    assert tg.grado_de_fichero("https://u.es/pdfs/estudios/grado_en_fisioterapia.pdf", gs) is None
