@@ -645,6 +645,18 @@ def medir_plan(doc: dict) -> dict:
             if m2["comprobacion"]:
                 filas, m = alt, {**m2, "interpretacion": "alternativa"}
                 break
+    if not m["comprobacion"] and m["esperado_sin_optativas"] and m["suma_sin_optativas"] > m["esperado_sin_optativas"]:
+        # sobran créditos: si los sobrantes son exactamente los de una sola tabla (una lista repetida con otros
+        # nombres, las obligatorias de una mención), sin esa tabla
+        exceso = m["suma_sin_optativas"] - m["esperado_sin_optativas"]
+        fijas = lambda xs: sum(x["creditos"] or 0 for x in xs if x["tipo"] in ("basica", "obligatoria", "practicas", "tfg"))  # noqa: E731
+        tablas = sorted({x["tabla"] for x in filas})
+        iguales = [n for n in tablas if abs(fijas([x for x in filas if x["tabla"] == n]) - exceso) <= 0.5]
+        if len(iguales) == 1:
+            alt = [x for x in filas if x["tabla"] != iguales[0]]
+            m2 = _medir(alt, dist, doc)
+            if m2["comprobacion"]:
+                filas, m = alt, {**m2, "interpretacion": "alternativa"}
     m["filas_plan"] = filas
     return m
 
