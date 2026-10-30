@@ -296,3 +296,12 @@ def test_guia_con_la_lectura_mas_reciente_aunque_pierda_la_evaluacion(tmp_path):
     (a / "guias.jsonl").write_text(json.dumps(g) + "\n")
     (b / "guias.jsonl").write_text(json.dumps({**g, "evaluacion": [], "extraido": "2026-10-30T15:00:00+00:00"}) + "\n")
     assert cm.cargar_guias([a]) and not cm.cargar_guias([a, b])
+
+
+def test_paginas_de_otra_universidad_fuera_de_la_ficha():
+    cat = {"codigo_ruct": "4316605", "nombre_oficial": "Máster Universitario en Informática por la Universidad de Sevilla",
+           "universidad": "Sevilla", "universidad_codigo": "001", "situacion": "Activo", "imparticiones": []}
+    web = {"paginas": ["https://www.uma.es/m", "https://www.us.es/m"], "fuentes": [
+        {"url": "https://www.uma.es/m", "extraido": "2026-10-30T00:00:00+00:00"}], "campos": {"horario": {"valor": "tarde", "fuente": 0}}}
+    o = cm.oficial("4316605", cat, None, [], web, "2026-10-29", ajenos={"uma.es"})
+    assert o["paginas_web"] == ["https://www.us.es/m"] and "horario" not in o["campos"]

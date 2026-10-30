@@ -892,7 +892,7 @@ def oficial(cod: str, cat: dict, ruct: dict | None, imps: list[dict], web: dict 
                             if q["centro_codigo"] not in {i.get("unidad_codigo") for i in cat.get("imparticiones") or []}],
         "en_oferta_del_curso": bool(imps),
         "campos": campos,
-        "paginas_web": (web or {}).get("paginas") or [],
+        "paginas_web": [u for u in (web or {}).get("paginas") or [] if dominio(u) not in (ajenos or set())],
         "pagina_web_antigua": pagina_antigua(w) if w else None,
         "datos_minimos_faltan": falta, "indexable": not falta,
         "fuentes_usadas": sorted({c["fuente"] for c in campos.values()}),
