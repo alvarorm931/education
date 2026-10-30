@@ -120,6 +120,16 @@ def precio_por_cuentas(valores: list[float]) -> dict | None:
     mensuales = [x for x in v if RANGO_PRECIO["mensual"][0] <= x <= RANGO_PRECIO["mensual"][1]]
     e = sorted({k for k in cursos for m in mensuales for n in range(8, 13) if abs(n * m - k) <= max(2.0, 0.5 * n)})
     if len(e) == 1:
+        # el total de la fila es la enseñanza más la reserva, la matrícula y otros pagos de la misma fila (Cardenal
+        # Herrera: 9 × 526,67 € = 4.740 € de enseñanza y 4.740 + 400 + 700 + 675 = 6.515 € en total): vale el total
+        otros = [x for x in pequenos if x != e[0]]
+        from itertools import combinations
+
+        totales = sorted({k for k in cursos if k > e[0] for n in (1, 2, 3) for comb in combinations(otros, n)
+                          if abs(e[0] + sum(comb) - k) <= 2})
+        if len(totales) == 1:
+            return {"precio_curso": totales[0], "metodo": "cuotas_mas_reserva_y_matricula", "soluciones": 1,
+                    "ensenanza": e[0]}
         return {"precio_curso": e[0], "metodo": "cuotas_iguales_sin_matricula", "soluciones": 1,
                 "nota_matricula": "la reserva y la matrícula se pagan aparte"}
     return None
@@ -177,7 +187,7 @@ def precio_web(f: dict) -> dict | None:
     if cruzados:
         curso, metodo = min(cruzados), "curso_igual_a_credito_por_60"
     elif cuentas and (not ld_valor or abs(ld_valor - cuentas["precio_curso"]) <= 0.5):
-        curso, metodo = cuentas["precio_curso"], cuentas["metodo"]
+        curso, metodo, nota = cuentas["precio_curso"], cuentas["metodo"], cuentas.get("nota_matricula")
     elif ld_valor and ld_valor in cursos:
         # los datos estructurados valen si la página muestra ese mismo importe: solos no (verificación del 30/10:
         # una página con «Precio: Consultar» llevaba en sus datos estructurados un «desde» de promoción)
@@ -279,7 +289,8 @@ def indexar_tarifas(carpeta: Path | None) -> dict[str, dict]:
                 nota_varios = (len(varios) > 1 and "la lista da varios precios para este grado (campus, modalidad o "
                                "idioma): se publica el menor, «desde»") or None
                 p = cuentas and {**cuentas, "url": doc["url"], **({"precios_de_la_lista": varios} if nota_varios else {}),
-                                 "nota": "; ".join(x for x in (nota_varios, releido and (
+                                 "nota": "; ".join(x for x in (nota_varios, (cuentas or {}).get("nota_matricula"),
+                                                               releido and (
                                      f"el texto extraído del documento parte la cifra {releido['como']:,.0f} € y deja "
                                      f"{releido['leido']:,.0f} €; se toma {releido['como']:,.0f} € porque solo así "
                                      f"cuadran las cifras del grado"
