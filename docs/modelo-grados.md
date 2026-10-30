@@ -159,18 +159,20 @@ corregido el mismo día: el practicum y el TFG van a su tipo cuando la tabla de 
 total y las que valen la mitad del grado se descartan, «7 u 8» es cuarto curso sin semestre y «1 y 2» queda sin
 semestre (el literal se guarda), y se añadió la comprobación tipo a tipo. Efecto, con la misma medida antes y después: planes comprobados que
 cuadran también tipo a tipo, de 1.960 a 2.715; comprobados, de 3.625 a 3.650 (se cayeron 31 que cuadraban por
-casualidad, la mayoría con el TFG contado como obligatoria). Quedan por resolver: rótulos de grupo de optativas
-leídos como asignatura en algún plan, huecos genéricos («Optativa I») junto a la lista real de optativas y tablas de
-curso y semestre que no se cruzan con la de módulos.
+casualidad, la mayoría con el TFG contado como obligatoria). También se cruza la tabla de módulos con la de curso y
+semestre: si la asignatura tiene un único curso y semestre en el plan, lo toma (`curso_de_otra_tabla`; 17 planes
+más con curso). Quedan por resolver: rótulos de grupo de optativas con créditos leídos como nombre en algún plan y
+huecos genéricos («Optativa I») junto a la lista real de optativas (solo afectan a las optativas, que no cuentan en
+la comprobación).
 
 Resultado con todo lo leído (30/10/2026, 07:45, hora de España):
 
 | | Leídos | Con asignaturas | Con curso | Comprobados | Y además tipo a tipo |
 |---|---|---|---|---|---|
-| Planes nuevos | 3.496 | 2.551 | 2.137 | 2.203 (63 %) | 1.791 |
-| Modificaciones | 2.231 | 1.599 | 975 | 1.381 (62 %) | 1.156 |
+| Planes nuevos | 3.496 | 2.551 | 2.154 | 2.203 (63 %) | 1.791 |
+| Modificaciones | 2.231 | 1.599 | 984 | 1.381 (62 %) | 1.156 |
 | Cambios de denominación | 20 | 16 | 15 | 12 | 11 |
-| Correcciones de errores | 391 | 139 | 94 | 54 | 40 |
+| Correcciones de errores | 391 | 139 | 96 | 54 | 40 |
 
 De los 1.293 planes nuevos que no cuadran: publicados solo por materias, sin asignaturas (403); tablas sin carácter
 que no se puede asignar de forma comprobable (322); diferencias de una o dos asignaturas, 12 créditos o menos
@@ -337,7 +339,7 @@ comprobados por asignaturas:
 - **Asignaturas en común**: en cuántas universidades del mismo grado aparece cada asignatura, qué parte del plan de
   cada una es común y cuáles solo tiene ella (161 genéricos con al menos dos
   planes comparables).
-- **Buscar por asignatura** (`asignaturas_indice.jsonl`): 36.856 asignaturas distintas
+- **Buscar por asignatura** (`asignaturas_indice.jsonl`): 36.848 asignaturas distintas
   (nombre normalizado, sin numeración), 8.191 en dos títulos o más, cada una
   con dónde se estudia, su tipo y su curso. TFG, optativas, prácticas y practicum van marcados como huecos del plan
   (19), sin página propia.
