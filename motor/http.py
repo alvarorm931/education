@@ -135,10 +135,24 @@ def robots_de(url: str, sesion: requests.Session | None = None) -> Robots:
     return _ROBOTS[origen]
 
 
+# Servicios de datos que su responsable documenta para que se consulten o descarguen con programas, aunque su
+# robots.txt (pensado para buscadores) lo cierre todo. Solo con cita literal de la documentación oficial; cada
+# fuente nueva aquí la decide Álvaro. Pendientes de su decisión (30/10/2026): API de datos abiertos de BOCYL
+# (analisis.datosabiertos.jcyl.es) y API del DOGC (portaldogc.gencat.cat).
+EXCEPCIONES_ROBOTS = {
+    "https://data.commoncrawl.org": (
+        "«To access data from outside the Amazon cloud, via HTTP(S), the new URL prefix "
+        "https://data.commoncrawl.org/ – must be used»", "https://commoncrawl.org/the-data/get-started/", "2026-10-30"),
+    "https://index.commoncrawl.org": (
+        "«The index is served from index.commoncrawl.org» · «the CDXJ index is free to access or download for anybody»",
+        "https://commoncrawl.org/cdxj-index", "2026-10-30"),
+}
+
+
 def comprobar_robots(url: str, sesion: requests.Session | None = None) -> None:
     from urllib.parse import urlparse
 
-    if urlparse(url).path == "/robots.txt":
+    if urlparse(url).path == "/robots.txt" or _origen(url) in EXCEPCIONES_ROBOTS:
         return
     permitido, regla = robots_de(url, sesion).regla(url)
     if not permitido:

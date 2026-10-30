@@ -57,3 +57,11 @@ def test_robots_ilegible_es_prohibido(monkeypatch):
     monkeypatch.setattr(http.time, "sleep", lambda s: None)
     http._ROBOTS.pop("https://nadie.example", None)
     assert http.robots_de("https://nadie.example/x").permite("https://nadie.example/x") is False
+
+
+def test_excepcion_documentada(monkeypatch):
+    from motor import http
+
+    monkeypatch.setitem(http._ROBOTS, "https://data.commoncrawl.org", Robots("User-Agent: *\nDisallow: /\n"))
+    http.comprobar_robots("https://data.commoncrawl.org/crawl-data/CC-MAIN-2026-43/cc-index-table.paths.gz")
+    assert set(http.EXCEPCIONES_ROBOTS) == {"https://data.commoncrawl.org", "https://index.commoncrawl.org"}
