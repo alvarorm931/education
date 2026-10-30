@@ -65,18 +65,19 @@ def main(argv: list[str] | None = None) -> int:
     if not filas:
         print(x[:3000])
         return 0
-    boton = re.findall(r'PrimeFaces\.ab\(\{s:(?:&quot;|")([^&"]+)(?:&quot;|"),f:(?:&quot;|")([^&"]+)(?:&quot;|")(?:,u:(?:&quot;|")([^&"]+))?',
-                       filas[0][1])
-    print("botón fila 0:", boton)
+    a_tag = re.search(r'<a[^>]+id="(formListBoletinAntiguos:tableBoletinesAntiguos:0:j_idt\d+)"[^>]*>', filas[0][1])
+    print("enlace fila 0:", html.unescape(a_tag.group(0))[:600] if a_tag else None)
     vs = re.search(r'<update id="[^"]*ViewState[^"]*"><!\[CDATA\[([^\]]+)\]\]>', x)
-    if boton and vs:
-        fuente, form, render = boton[0]
-        a2, c2 = accion, {form: form, "javax.faces.ViewState": vs.group(1)}
-        y = _ajax(s, requests.compat.urljoin(r.url, a2), c2, fuente, render or "formListAnunciosBolAnt")
+    if a_tag and vs:
+        fuente = a_tag.group(1)
+        c2 = {"formListBoletinAntiguos": "formListBoletinAntiguos", "javax.faces.ViewState": vs.group(1),
+              "formListBoletinAntiguos:tableBoletinesAntiguos_scrollState": "0,0"}
+        y = _ajax(s, url, c2, fuente, "formListAnunciosBolAnt")
         t = " ".join(html.unescape(re.sub(r"<script.*?</script>|<[^>]+>", " ", y, flags=re.S)).split())
-        print("anuncios:", t[:3000])
+        print("anuncios:", t[:2500])
         print("enlaces:", sorted(set(re.findall(r'href="([^"]+)"', y)))[:20])
-        print("acciones:", sorted(set(re.findall(r'PrimeFaces\.ab\(\{s:(?:&quot;|")([^&"]+)', y)))[:20])
+        i = y.find("formListAnunciosBolAnt")
+        print("html:", y[i:i + 2500])
     return 0
 
 
