@@ -100,3 +100,33 @@ def test_lectura_optica_solo_con_ocr_y_con_las_herramientas(monkeypatch):
     assert nf.OCR["activo"] is False  # por defecto no se lee ningún PDF por lectura óptica
     monkeypatch.setattr(nf.shutil, "which", lambda _: None)
     assert nf.lineas_ocr(b"%PDF-1.4") is None
+
+
+def _pdf_minimo(textos):
+    """PDF de una página con cada texto en su posición (sin dependencias para dibujarlo)."""
+    flujo = "".join(f"BT /F1 12 Tf {x} {y} Td ({t}) Tj ET\n" for x, y, t in textos).encode("latin-1")
+    objetos = [b"<< /Type /Catalog /Pages 2 0 R >>", b"<< /Type /Pages /Kids [3 0 R] /Count 1 >>",
+               b"<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R "
+               b"/Resources << /Font << /F1 5 0 R >> >> >>",
+               b"<< /Length %d >>\nstream\n" % len(flujo) + flujo + b"endstream",
+               b"<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>"]
+    salida, posiciones = b"%PDF-1.4\n", []
+    for i, o in enumerate(objetos, 1):
+        posiciones.append(len(salida))
+        salida += b"%d 0 obj\n" % i + o + b"\nendobj\n"
+    xref = len(salida)
+    salida += b"xref\n0 %d\n0000000000 65535 f \n" % (len(objetos) + 1)
+    salida += b"".join(b"%010d 00000 n \n" % p for p in posiciones)
+    return salida + b"trailer\n<< /Size %d /Root 1 0 R >>\nstartxref\n%d\n%%%%EOF\n" % (len(objetos) + 1, xref)
+
+
+def test_posicion_de_cada_cifra_en_el_pdf():
+    from motor.grados import notas_fuentes as nf
+
+    pdf = _pdf_minimo([(100, 700, "Grado en Medicina"), (400, 700, "9,817"), (100, 680, "Grado en Quimica"),
+                       (300, 680, "5,000*")])
+    p = nf.posiciones_pdf(pdf)[0]["lineas"]
+    # x relativa al margen izquierdo de la página (el modo de disposición de pypdf alinea a la izquierda)
+    (x0, t0), (x1, t1) = p[0]["trozos"]
+    assert (t0, t1, x1 - x0) == ("Grado en Medicina", "9,817", 300.0)
+    assert p[1]["trozos"][1][1] == "5,000*" and p[1]["trozos"][1][0] - p[1]["trozos"][0][0] == 200.0

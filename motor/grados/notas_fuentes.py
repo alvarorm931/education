@@ -42,6 +42,8 @@ MAX_DOC = 25_000_000
 MUESTRA_FILAS = 80
 # Lectura óptica (tesseract) de los PDF que son imágenes sin texto (UPV/EHU desde 2022-23); se activa con --ocr
 OCR = {"activo": False}
+# Posición de cada fragmento de texto de los PDF con notas (tablas con celdas vacías); se activa con --posiciones
+POSICIONES = {"activo": False}
 NOTA = re.compile(r"(?<![\d.,])(?:1[0-4]|[5-9])[.,]\d{2,3}(?![\d.,])")
 CURSO = re.compile(r"\b(20[12]\d)\s*[-/–_]\s*(?:20)?([12]\d)\b")
 ENLACE = re.compile(r"""(?is)<a\b[^>]*?href\s*=\s*["']([^"'#]+)["'][^>]*>(.*?)</a>""")
@@ -275,6 +277,34 @@ def lineas_ocr(contenido: bytes) -> list[str] | None:
         return lineas
 
 
+def posiciones_pdf(contenido: bytes, max_paginas: int = 40) -> list[dict]:
+    """Cada fragmento de texto del PDF con su posición en la página (x en puntos desde el texto más a la izquierda de
+    la página, y desde abajo),
+    agrupados en líneas por su altura. Para las tablas con celdas vacías, donde el texto en una línea no dice a qué
+    columna va cada cifra: el lector la asigna por la x de los rótulos de la cabecera. Usa el mismo cálculo de
+    posiciones que el modo de disposición de pypdf (sus operaciones de texto agrupadas por línea)."""
+    from pypdf import PdfReader
+    from pypdf._text_extraction import _layout_mode
+    from pypdf.generic import ContentStream
+
+    lector = PdfReader(io.BytesIO(contenido))
+    salida = []
+    for i, p in enumerate(lector.pages[:max_paginas], 1):
+        try:
+            ops = iter(ContentStream(p["/Contents"].get_object(), lector, "bytes").operations)
+            grupos = _layout_mode.text_show_operations(ops, p._layout_mode_fonts(), True, None)
+            por_y = _layout_mode.y_coordinate_groups(grupos, None) if grupos else {}
+        except Exception:  # noqa: BLE001 - una página rota (o una versión de pypdf sin esa API) no para el resto
+            continue
+        lineas = []
+        for y in sorted(por_y, reverse=True):
+            trozos = sorted([round(float(g["tx"]), 1), g["text"].strip()] for g in por_y[y] if g["text"].strip())
+            if trozos:
+                lineas.append({"y": round(float(y), 1), "trozos": trozos})
+        salida.append({"pagina": i, "lineas": lineas})
+    return salida
+
+
 def lineas_documento(contenido: bytes, formato: str) -> tuple[list[str], int | None]:
     """Líneas de texto de un documento (PDF con la disposición de columnas; CSV/JSON/HTML tal cual)."""
     if formato == "pdf":
@@ -335,8 +365,11 @@ def medir(contenido: bytes, formato: str, filas: int = MUESTRA_FILAS) -> dict:
     # con muchas filas pedidas se guarda el documento entero (rótulos de universidad, curso y columnas incluidos)
     guardadas = [x for x in lineas if x.strip()] if filas >= 10_000 else con_nota
     cursos = sorted({f"{a}-{int(b) + 2000 if len(b) == 2 else b}" for a, b in CURSO.findall(" ".join(lineas[:400]))})
-    return {"paginas": paginas, "lineas": len(lineas), "filas_con_nota": len(con_nota), "cursos_que_cita": cursos[:12],
-            "cabecera": [x for x in lineas[:40] if x.strip()][:25], "muestra": guardadas[:filas]}
+    salida = {"paginas": paginas, "lineas": len(lineas), "filas_con_nota": len(con_nota), "cursos_que_cita": cursos[:12],
+              "cabecera": [x for x in lineas[:40] if x.strip()][:25], "muestra": guardadas[:filas]}
+    if POSICIONES["activo"] and formato == "pdf" and con_nota:
+        salida["posiciones"] = posiciones_pdf(contenido)
+    return salida
 
 
 def consultar(q: dict, archivo: Archivo, filas: int) -> dict:
@@ -452,8 +485,10 @@ def main() -> None:
     p.add_argument("--filas", type=int, default=MUESTRA_FILAS, help="filas con nota que se guardan de cada documento")
     p.add_argument("--extra", action="append", default=[], help="distrito=url: un documento más que leer")
     p.add_argument("--ocr", action="store_true", help="lectura óptica de los PDF sin texto (pdftoppm y tesseract)")
+    p.add_argument("--posiciones", action="store_true", help="guarda la posición de cada fragmento de los PDF con notas")
     a = p.parse_args()
     OCR["activo"] = a.ocr
+    POSICIONES["activo"] = a.posiciones
     extra: dict[str, list[str]] = defaultdict(list)
     for x in a.extra:
         k, _, u = x.partition("=")
