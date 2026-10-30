@@ -110,3 +110,16 @@ def test_indexar_web_privadas_gana_el_rastreo_mas_reciente(tmp_path):
         d.mkdir(parents=True)
         (d / "123.json").write_text(json.dumps({"universidad": "U", "fichas": {"2500001": {"url": url, "importes": imp}}}))
     assert indexar_web_privadas(tmp_path) == {}
+
+
+def test_indexar_tarifas_prefiere_el_curso_mas_reciente(tmp_path):
+    from motor.grados.fichas import indexar_tarifas
+    d = tmp_path / "20261030T040000-t0" / "datos" / "estudios" / "grados" / "tarifas_grado"
+    d.mkdir(parents=True)
+    docs = [{"url": "https://u.es/precios-25-26.pdf", "curso_documento": "2025-2026", "universidad": "U",
+             "grados": {"2500001": [_imp(9000.0, "curso")]}},
+            {"url": "https://u.es/precios-26-27.pdf", "curso_documento": "2026-2027", "universidad": "U",
+             "grados": {"2500001": [_imp(9300.0, "curso")]}}]
+    (d / "tarifas.jsonl").write_text("\n".join(json.dumps(x) for x in docs))
+    t = indexar_tarifas(tmp_path)["2500001"]
+    assert t["precio_curso"] == 9300.0 and t["curso_documento"] == "2026-2027" and t["capturado"] == "2026-10-30"
