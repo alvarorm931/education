@@ -1,0 +1,23 @@
+{
+ "dominio": "frb.io",
+ "base": "https://frb.io",
+ "base_final": "https://frb.io",
+ "dominios_propios": [
+  "frb.io"
+ ],
+ "error": "sin_respuesta",
+ "peticiones": 4,
+ "estados_http": {
+  "ConnectionError": 4
+ },
+ "centro": {
+  "web": "https://frb.io",
+  "id": "prov-4e54becadd",
+  "estado": "candidato",
+  "semillas": [
+   "https://rn-nordic-prod.objects.frb.io/Cars/Varebil/Master/PDF/Prisliste-0109-Master-diesel-uten-frakt.pdf",
+   "https://rn-nordic-prod.objects.frb.io/Cars/Varebil/Master-E-Tech-electric/PDF/Prisliste-Nye-Master-E-Tech-Electric-CHASSI-020126.pdf",
+   "https://rn-nordic-prod.objects.frb.io/Cars/Varebil/Master-E-Tech-electric/PDF/Prisliste-Master-E-Tech-Electric-02.01.2026-2.pdf"
+  ]
+ }
+}

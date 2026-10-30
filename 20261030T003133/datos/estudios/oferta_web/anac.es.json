@@ -1,0 +1,119 @@
+{
+ "dominio": "anac.es",
+ "base": "https://anac.es",
+ "base_final": "https://anac.es",
+ "dominios_propios": [
+  "anac.es"
+ ],
+ "veto_robots": false,
+ "robots_sitemaps": 1,
+ "tdmrep": false,
+ "sitemaps_leidos": 6,
+ "sitemaps_pendientes": 0,
+ "urls": 35,
+ "urls_programa_sitemap": 2,
+ "urls_colaboradores": [],
+ "via": "sitemap",
+ "listados_visitados": [],
+ "urls_programa": 2,
+ "programas": [
+  "https://anac.es/nuevo-master/",
+  "https://anac.es/unidad-de-postgrado-udc/"
+ ],
+ "programas_lastmod": {
+  "https://anac.es/nuevo-master/": "2024-07-04T17:31:37+02:00",
+  "https://anac.es/unidad-de-postgrado-udc/": "2024-06-28T12:52:15+02:00"
+ },
+ "textos_programa": {},
+ "documentos_precio": [],
+ "muestra": [
+  {
+   "url": "https://anac.es/nuevo-master/",
+   "espana": true,
+   "espana_fuerte": true,
+   "es_programa": true,
+   "motivo": "titulo_y_senales",
+   "caracteres_visibles": 12987,
+   "senales": [
+    "admision",
+    "creditos",
+    "duracion",
+    "matricula",
+    "modalidad",
+    "plan",
+    "precio",
+    "titulacion"
+   ],
+   "titulo": "Nuevo máster &#8211; Anac",
+   "jsonld_tipos": [],
+   "precio_jsonld": null,
+   "importes_euros": 6,
+   "temas": {
+    "precio": true,
+    "plazas": false,
+    "becas": true,
+    "metodologia": false,
+    "evaluacion": true,
+    "asignaturas": true,
+    "admision": true,
+    "horario": true
+   },
+   "formulario_pide_correo": false,
+   "formulario_pide_telefono": false,
+   "pdf_guia_o_folleto": [
+    "https://anac.es/folletos/XII_Master-Experto_Solicitud_de_Inscripcion.pdf"
+   ],
+   "pdf_precio": [],
+   "bytes": 108374,
+   "reserva_tdm": false
+  },
+  {
+   "url": "https://anac.es/unidad-de-postgrado-udc/",
+   "espana": false,
+   "espana_fuerte": false,
+   "es_programa": false,
+   "motivo": null,
+   "caracteres_visibles": 2660,
+   "senales": [],
+   "titulo": "Misión &#8211; Anac",
+   "jsonld_tipos": [],
+   "precio_jsonld": null,
+   "importes_euros": 0,
+   "temas": {
+    "precio": false,
+    "plazas": false,
+    "becas": false,
+    "metodologia": false,
+    "evaluacion": false,
+    "asignaturas": false,
+    "admision": false,
+    "horario": false
+   },
+   "formulario_pide_correo": false,
+   "formulario_pide_telefono": false,
+   "pdf_guia_o_folleto": [],
+   "pdf_precio": [],
+   "bytes": 96722,
+   "reserva_tdm": false
+  }
+ ],
+ "enlaces_colaboradores": [],
+ "paginas_programa_validas": 1,
+ "verificado": true,
+ "espana": true,
+ "reserva_tdm": false,
+ "peticiones": 10,
+ "estados_http": {
+  "200": 9,
+  "404": 1
+ },
+ "centro": {
+  "web": "https://anac.es",
+  "id": "prov-f6fb4e7825",
+  "estado": "candidato",
+  "semillas": [
+   "https://anac.es/unidad-de-postgrado-udc/",
+   "https://anac.es/nuevo-master/"
+  ]
+ }
+}

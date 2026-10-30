@@ -1,0 +1,24 @@
+{
+ "dominio": "fuel-infra.org",
+ "base": "https://fuel-infra.org",
+ "base_final": "https://fuel-infra.org",
+ "dominios_propios": [
+  "fuel-infra.org"
+ ],
+ "error": "sin_respuesta",
+ "peticiones": 4,
+ "estados_http": {
+  "ConnectionError": 4
+ },
+ "centro": {
+  "web": "https://fuel-infra.org",
+  "id": "prov-b1603da9da",
+  "estado": "candidato",
+  "semillas": [
+   "http://mirror.seed-cz1.fuel-infra.org/fwm/master/ubuntu/dists/precise/Release",
+   "http://seed.fuel-infra.org/fwm/master.yaml.txt",
+   "http://mirror.fuel-infra.org/fwm/master.yaml.txt",
+   "http://mirror.fuel-infra.org/mos-repos/xenial/master.target.txt"
+  ]
+ }
+}

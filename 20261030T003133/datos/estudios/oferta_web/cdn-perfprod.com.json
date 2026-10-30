@@ -1,0 +1,24 @@
+{
+ "dominio": "cdn-perfprod.com",
+ "base": "https://cdn-perfprod.com",
+ "base_final": "https://cdn-perfprod.com",
+ "dominios_propios": [
+  "cdn-perfprod.com"
+ ],
+ "error": "sin_respuesta",
+ "peticiones": 4,
+ "estados_http": {
+  "ConnectionError": 4
+ },
+ "centro": {
+  "web": "https://cdn-perfprod.com",
+  "id": "prov-f32cc3c3a2",
+  "estado": "candidato",
+  "semillas": [
+   "http://mirror.es.cdn-perfprod.com/kali/project/trace/master",
+   "http://mirror.nl.cdn-perfprod.com/debian/project/trace/master",
+   "http://mirror.fr.cdn-perfprod.com/kali/project/trace/master",
+   "http://mirror.nl.cdn-perfprod.com/debian/project/trace/ftp-master.debian.org"
+  ]
+ }
+}

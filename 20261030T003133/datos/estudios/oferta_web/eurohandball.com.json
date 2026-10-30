@@ -1,0 +1,91 @@
+{
+ "dominio": "eurohandball.com",
+ "base": "https://eurohandball.com",
+ "base_final": "https://www.eurohandball.com",
+ "dominios_propios": [
+  "eurohandball.com"
+ ],
+ "veto_robots": false,
+ "robots_sitemaps": 11,
+ "tdmrep": false,
+ "sitemaps_leidos": 11,
+ "sitemaps_pendientes": 0,
+ "urls": 2736,
+ "urls_programa_sitemap": 1,
+ "urls_colaboradores": [],
+ "via": "sitemap+portada",
+ "listados_visitados": [
+  "https://www.eurohandball.com/en/what-we-do/development/master-plan/"
+ ],
+ "urls_programa": 8,
+ "programas": [
+  "https://www.eurohandball.com/en/team/mMgJ_RqgRTmiXmksJ0embA/Cyprus/",
+  "https://www.eurohandball.com/en/what-we-do/development/master-plan/competition.linkToTv",
+  "https://www.eurohandball.com/en/what-we-do/development/master-plan/competition.scheduleUrl",
+  "https://www.eurohandball.com/en/what-we-do/development/master-plan/competition.websiteUrl",
+  "https://www.eurohandball.com/en/what-we-do/development/master-plan/dayitem.calendarUrl",
+  "https://www.eurohandball.com/en/what-we-do/development/master-plan/item.match.url",
+  "https://www.eurohandball.com/en/what-we-do/development/master-plan/item.url",
+  "https://www.eurohandball.com/en/what-we-do/development/master-plan/item.websiteUrl"
+ ],
+ "programas_lastmod": {},
+ "textos_programa": {
+  "https://www.eurohandball.com/en/what-we-do/development/master-plan/competition.linkToTv": "Watch Games",
+  "https://www.eurohandball.com/en/what-we-do/development/master-plan/competition.websiteUrl": "{{competition.name}}",
+  "https://www.eurohandball.com/en/what-we-do/development/master-plan/dayitem.calendarUrl": "{{dayitem.monthFormatted}} {{dayitem.dayFormatted}}",
+  "https://www.eurohandball.com/en/what-we-do/development/master-plan/item.match.url": "{{item.match.competitionShortName}} Match is live {{item.matchStats.time != null && item.matchStats.time != \"-\" ? item.matchStats.time + \"'\" : item.matchStats.startTime}} {{item.match.homeTeam.name}} ",
+  "https://www.eurohandball.com/en/what-we-do/development/master-plan/item.url": "{{item.name}} - {{item.ageClass}}",
+  "https://www.eurohandball.com/en/what-we-do/development/master-plan/item.websiteUrl": "{{item.name}}"
+ },
+ "documentos_precio": [],
+ "muestra": [
+  {
+   "url": "https://www.eurohandball.com/en/team/mMgJ_RqgRTmiXmksJ0embA/Cyprus/",
+   "espana": false,
+   "espana_fuerte": false,
+   "es_programa": false,
+   "motivo": null,
+   "caracteres_visibles": 6169,
+   "senales": [],
+   "titulo": "Cyprus - Players, Team &amp; Season Info | EHF",
+   "jsonld_tipos": [],
+   "precio_jsonld": null,
+   "importes_euros": 0,
+   "temas": {
+    "precio": false,
+    "plazas": false,
+    "becas": false,
+    "metodologia": false,
+    "evaluacion": false,
+    "asignaturas": false,
+    "admision": false,
+    "horario": false
+   },
+   "formulario_pide_correo": false,
+   "formulario_pide_telefono": false,
+   "pdf_guia_o_folleto": [],
+   "pdf_precio": [],
+   "bytes": 131050,
+   "reserva_tdm": false
+  }
+ ],
+ "enlaces_colaboradores": [],
+ "paginas_programa_validas": 0,
+ "verificado": false,
+ "espana": false,
+ "reserva_tdm": false,
+ "peticiones": 29,
+ "estados_http": {
+  "200": 24,
+  "404": 5
+ },
+ "centro": {
+  "web": "https://eurohandball.com",
+  "id": "prov-77851461a4",
+  "estado": "candidato",
+  "semillas": [
+   "https://www.eurohandball.com/media/csfe5t1n/handball_master_plan_interim_report.pdf",
+   "https://activities.eurohandball.com/media/lymng5fe/concept-ehf-master-coach-course-2026-3.pdf"
+  ]
+ }
+}

@@ -1,0 +1,52 @@
+{
+ "dominio": "pi-hole.net",
+ "base": "https://pi-hole.net",
+ "base_final": "https://pi-hole.net",
+ "dominios_propios": [
+  "pi-hole.net"
+ ],
+ "veto_robots": false,
+ "robots_sitemaps": 1,
+ "tdmrep": false,
+ "sitemaps_leidos": 5,
+ "sitemaps_pendientes": 0,
+ "urls": 199,
+ "urls_programa_sitemap": 0,
+ "urls_colaboradores": [],
+ "via": "portada",
+ "listados_visitados": [],
+ "urls_programa": 5,
+ "programas": [
+  "https://ftl.pi-hole.net/master/pihole-FTL-386",
+  "https://ftl.pi-hole.net/master/pihole-FTL-amd64-clang.sha1",
+  "https://ftl.pi-hole.net/master/pihole-FTL-amd64.sha1",
+  "https://ftl.pi-hole.net/master/pihole-FTL-arm64.sha1",
+  "https://ftl.pi-hole.net/master/pihole-FTL-armv6"
+ ],
+ "programas_lastmod": {},
+ "textos_programa": {},
+ "documentos_precio": [],
+ "muestra": [],
+ "enlaces_colaboradores": [],
+ "paginas_programa_validas": 0,
+ "verificado": false,
+ "espana": false,
+ "reserva_tdm": false,
+ "peticiones": 13,
+ "estados_http": {
+  "200": 11,
+  "404": 2
+ },
+ "centro": {
+  "web": "https://pi-hole.net",
+  "id": "prov-3fca23583f",
+  "estado": "candidato",
+  "semillas": [
+   "https://ftl.pi-hole.net/master/pihole-FTL-386",
+   "https://ftl.pi-hole.net/master/pihole-FTL-amd64-clang.sha1",
+   "https://ftl.pi-hole.net/master/pihole-FTL-amd64.sha1",
+   "https://ftl.pi-hole.net/master/pihole-FTL-arm64.sha1",
+   "https://ftl.pi-hole.net/master/pihole-FTL-armv6"
+  ]
+ }
+}
