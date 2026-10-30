@@ -113,14 +113,23 @@ def consultar(fichero: str) -> list[dict]:
     return salida
 
 
-def consultar_urls(fichero: str, dominios: list[str]) -> list[dict]:
+# Documentos de precios (tarifas, honorarios, precios de matrícula) en PDF: muchas privadas los publican aunque la
+# ficha comercial pida el teléfono (docs/estrategia-informacion-cerrada.md §3.2).
+PATRON_PRECIOS = (r"(?i)(tarifa|precio|preu|prezo|honorario|importe|tasas|taxes|fees|tuition|coste|cost|cuota|"
+                  r"matr[ií]cula|matricula|pago|financiaci)[^/?]*\.pdf")
+NADA = r"^\b$"  # no excluye nada
+PATRONES = {"programas": (PATRON_RUTA, EXCLUIR), "precios": (PATRON_PRECIOS, NADA)}
+
+
+def consultar_urls(fichero: str, dominios: list[str], patron: str = "programas") -> list[dict]:
     import duckdb
 
     con = duckdb.connect()
     con.execute("INSTALL httpfs; LOAD httpfs; SET http_retries=6; SET http_retry_wait_ms=2000;")
     lista = ",".join("'" + d.replace("'", "") + "'" for d in dominios)
-    filas = con.execute(CONSULTA_URLS.format(fichero=fichero, dominios=lista, patron=PATRON_RUTA.replace("'", "''"),
-                                             excluir=EXCLUIR.replace("'", "''"))).fetchall()
+    incluir, excluir = PATRONES[patron]
+    filas = con.execute(CONSULTA_URLS.format(fichero=fichero, dominios=lista, patron=incluir.replace("'", "''"),
+                                             excluir=excluir.replace("'", "''"))).fetchall()
     return [{"dominio": d, "url": sin_secretos(u)} for d, u in filas]
 
 
@@ -154,10 +163,11 @@ def consolidar(carpeta: Path) -> list[dict]:
 
 
 def ejecutar(raiz: Path, crawl: str | None, desde: int, hasta: int, max_minutos: float, n: int = 0,
-             solo: list[int] | None = None, urls_de: list[str] | None = None) -> dict:
+             solo: list[int] | None = None, urls_de: list[str] | None = None, patron: str = "programas") -> dict:
     crawl = crawl or ultimo_crawl(n)
     lista = ficheros(crawl)
-    destino = raiz / "datos" / "estudios" / "commoncrawl" / (crawl + ("-urls" if urls_de else ""))
+    sufijo = ("-urls" if patron == "programas" else f"-{patron}") if urls_de else ""
+    destino = raiz / "datos" / "estudios" / "commoncrawl" / (crawl + sufijo)
     destino.mkdir(parents=True, exist_ok=True)
     fin = time.time() + max_minutos * 60
     hechos, filas_total, tiempos = 0, 0, []
@@ -169,7 +179,7 @@ def ejecutar(raiz: Path, crawl: str | None, desde: int, hasta: int, max_minutos:
         filas, error = None, None
         for intento in range(6):  # 403/503 de CloudFront = «más despacio»: espera creciente y reintento
             try:
-                filas = consultar_urls(lista[i], urls_de) if urls_de else consultar(lista[i])
+                filas = consultar_urls(lista[i], urls_de, patron) if urls_de else consultar(lista[i])
                 break
             except Exception as e:
                 error = str(e)
@@ -187,7 +197,8 @@ def ejecutar(raiz: Path, crawl: str | None, desde: int, hasta: int, max_minutos:
         tiempos.append(round(time.time() - t0, 1))
     if urls_de:
         por_dom = consolidar_urls(destino)
-        with (destino.parent / f"urls_{crawl}_{desde}_{hasta}.jsonl").open("w", encoding="utf-8") as f:
+        nombre = "urls" if patron == "programas" else patron
+        with (destino.parent / f"{nombre}_{crawl}_{desde}_{hasta}.jsonl").open("w", encoding="utf-8") as f:
             for d in por_dom:
                 f.write(json.dumps(d, ensure_ascii=False) + "\n")
         return {"crawl": crawl, "modo": "urls", "dominios_pedidos": len(urls_de), "leidos": hechos,
@@ -211,12 +222,15 @@ def main() -> None:
     p.add_argument("--indices", help="solo estos ficheros (p. ej. los que fallaron): 3,7,9")
     p.add_argument("--urls-de", help="proveedores.jsonl del censo: todas las URL de programa de sus dominios")
     p.add_argument("--estados", default="oficial", help="estados del censo para --urls-de")
+    p.add_argument("--patron", default="programas", choices=sorted(PATRONES),
+                   help="con --urls-de: páginas de programa o documentos de precios en PDF")
     p.add_argument("--salida", required=True)
     a = p.parse_args()
     d, h = (int(x) for x in a.archivos.split(":"))
     doms = dominios_de_censo(Path(a.urls_de), tuple(a.estados.split(","))) if a.urls_de else None
     print(json.dumps(ejecutar(Path(a.salida), a.crawl, d, h, a.max_minutos, a.anterior,
-                                [int(x) for x in a.indices.split(",")] if a.indices else None, doms), ensure_ascii=False))
+                                [int(x) for x in a.indices.split(",")] if a.indices else None, doms, a.patron),
+                     ensure_ascii=False))
 
 
 if __name__ == "__main__":
