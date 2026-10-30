@@ -1,7 +1,7 @@
-# Vigilancia 30/10 06:04 (Madrid)
+# Vigilancia 30/10 06:30 (Madrid)
 
-- Ejecuciones revisadas (últimas 6 h): 264
-- Fallos: 6; pendientes: 0; relanzados ahora: 0
+- Ejecuciones revisadas (últimas 6 h): 287
+- Fallos: 4; pendientes: 0; relanzados ahora: 0
 - Colas de más de 30 minutos: 0
 - Flujos programados parados: ninguno
 - Almacén S3: ok
@@ -47,28 +47,4 @@ https://github.com/alvarorm931/education/actions/runs/40985002326 (intento 1, wo
         LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
         AWS_DEFAULT_REGION: eu-south-2
         AWS_REGION: eu-south-2
-
-## Recoger artefactos de estudios · 30/10 00:31 · superado
-https://github.com/alvarorm931/education/actions/runs/40973232716 (intento 1, workflow_dispatch, d865b45, pasajero: False)
-- recoger · pasos: Subir a la rama sondas · ejecutor: GitHub Actions 1000000185
-      ##[error]push 2: remote: error: GH013: Repository rule violations found for refs/heads/sondas.         remote:  remote: - GITHUB PUSH PROTECTION         remote:   —————————————————————————————————————————         remote:     Resolve the following violations before pushing again         remote:  remo
-      ##[error]push 3: remote: error: GH013: Repository rule violations found for refs/heads/sondas.         remote:  remote: - GITHUB PUSH PROTECTION         remote:   —————————————————————————————————————————         remote:     Resolve the following violations before pushing again         remote:  remo
-      ##[error]push 4: remote: error: GH013: Repository rule violations found for refs/heads/sondas.         remote:  remote: - GITHUB PUSH PROTECTION         remote:   —————————————————————————————————————————         remote:     Resolve the following violations before pushing again         remote:  remo
-      ##[error]push 5: remote: error: GH013: Repository rule violations found for refs/heads/sondas.         remote:  remote: - GITHUB PUSH PROTECTION         remote:   —————————————————————————————————————————         remote:     Resolve the following violations before pushing again         remote:  remo
-      ##[error]push 6: remote: error: GH013: Repository rule violations found for refs/heads/sondas.         remote:  remote: - GITHUB PUSH PROTECTION         remote:   —————————————————————————————————————————         remote:     Resolve the following violations before pushing again         remote:  remo
-      ##[error]Process completed with exit code 1.
-      Cleaning up orphan processes
-      ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/download-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
-
-## Recoger artefactos de estudios · 30/10 00:26 · superado
-https://github.com/alvarorm931/education/actions/runs/40972663354 (intento 1, workflow_dispatch, 0cb7fa9, pasajero: False)
-- recoger · pasos: Subir a la rama sondas · ejecutor: GitHub Actions 1000000183
-      remote: 
-      remote: 
-      To https://github.com/alvarorm931/education.git
-       ! [remote rejected]   sondas -> sondas (push declined due to repository rule violations)
-      error: failed to push some refs to 'https://github.com/alvarorm931/education.git'
-      ##[error]Process completed with exit code 1.
-      Cleaning up orphan processes
-      ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/download-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
 

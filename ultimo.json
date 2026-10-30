@@ -1,10 +1,10 @@
 {
- "fecha": "2026-10-30T05:04:13+00:00",
- "fecha_madrid": "30/10 06:04",
+ "fecha": "2026-10-30T05:30:24+00:00",
+ "fecha_madrid": "30/10 06:30",
  "ventana_horas": 6.0,
  "resumen": {
-  "ejecuciones_revisadas": 264,
-  "fallos": 6,
+  "ejecuciones_revisadas": 287,
+  "fallos": 4,
   "fallos_pendientes": 0,
   "relanzados": 0,
   "colas_largas": 0,
@@ -209,124 +209,6 @@
      ]
     }
    ]
-  },
-  {
-   "flujo": "Recoger artefactos de estudios",
-   "fichero": "recoger.yml",
-   "id": 40973232716,
-   "intento": 1,
-   "evento": "workflow_dispatch",
-   "rama": "main",
-   "commit": "d865b45",
-   "titulo": "Recoger artefactos de estudios",
-   "conclusion": "failure",
-   "cuando": "30/10 00:31",
-   "url": "https://github.com/alvarorm931/education/actions/runs/40973232716",
-   "superado": true,
-   "pasajero": false,
-   "detalle": [
-    {
-     "trabajo": "recoger",
-     "pasos": [
-      "Subir a la rama sondas"
-     ],
-     "ejecutor": "GitHub Actions 1000000185",
-     "etiquetas": [
-      "ubuntu-latest"
-     ],
-     "final_registro": [
-      "##[error]push 1: remote: error: GH013: Repository rule violations found for refs/heads/sondas.         remote:  remote: - GITHUB PUSH PROTECTION         remote:   —————————————————————————————————————————         remote:     Resolve the following violations before pushing again         remote:  remo",
-      "##[error]push 2: remote: error: GH013: Repository rule violations found for refs/heads/sondas.         remote:  remote: - GITHUB PUSH PROTECTION         remote:   —————————————————————————————————————————         remote:     Resolve the following violations before pushing again         remote:  remo",
-      "##[error]push 3: remote: error: GH013: Repository rule violations found for refs/heads/sondas.         remote:  remote: - GITHUB PUSH PROTECTION         remote:   —————————————————————————————————————————         remote:     Resolve the following violations before pushing again         remote:  remo",
-      "##[error]push 4: remote: error: GH013: Repository rule violations found for refs/heads/sondas.         remote:  remote: - GITHUB PUSH PROTECTION         remote:   —————————————————————————————————————————         remote:     Resolve the following violations before pushing again         remote:  remo",
-      "##[error]push 5: remote: error: GH013: Repository rule violations found for refs/heads/sondas.         remote:  remote: - GITHUB PUSH PROTECTION         remote:   —————————————————————————————————————————         remote:     Resolve the following violations before pushing again         remote:  remo",
-      "##[error]push 6: remote: error: GH013: Repository rule violations found for refs/heads/sondas.         remote:  remote: - GITHUB PUSH PROTECTION         remote:   —————————————————————————————————————————         remote:     Resolve the following violations before pushing again         remote:  remo",
-      "##[error]Process completed with exit code 1.",
-      "...",
-      "\u001b[36;1mgit remote add origin \"***github.com/alvarorm931/education.git\"\u001b[0m",
-      "\u001b[36;1mgit fetch -q --depth 1 origin sondas && git reset -q FETCH_HEAD\u001b[0m",
-      "\u001b[36;1mgit checkout -q -B sondas\u001b[0m",
-      "\u001b[36;1mgit add \"$STAMP\" && git commit -qm \"Recoger artefactos de la ejecución $RUN\"\u001b[0m",
-      "\u001b[36;1mfor i in 1 2 3 4 5 6; do\u001b[0m",
-      "\u001b[36;1m  if salida=$(git push origin sondas 2>&1); then exit 0; fi\u001b[0m",
-      "\u001b[36;1m  echo \"::error::push $i: $(echo \"$salida\" | tr '\\n' ' ' | cut -c1-900)\"\u001b[0m",
-      "\u001b[36;1m  sleep $((i * 10))\u001b[0m",
-      "\u001b[36;1m  git fetch -q --depth 1 origin sondas && git reset -q FETCH_HEAD && git add \"$STAMP\" \\\u001b[0m",
-      "\u001b[36;1m    && git commit -qm \"Recoger artefactos de la ejecución $RUN\" || true\u001b[0m",
-      "\u001b[36;1mdone\u001b[0m",
-      "\u001b[36;1mexit 1\u001b[0m",
-      "shell: /usr/bin/bash -e {0}",
-      "env:",
-      "  RUN: 40963881714",
-      "##[notice]tamaño 50M, ficheros 305, mayor 15052204 pub/20261029T232714/datos/estudios/commoncrawl/dominios_CC-MAIN-2026-39_0_150.jsonl",
-      "##[error]push 1: remote: error: GH013: Repository rule violations found for refs/heads/sondas.         remote:  remote: - GITHUB PUSH PROTECTION         remote:   —————————————————————————————————————————         remote:     Resolve the following violations before pushing again         remote:  remo",
-      "##[error]push 2: remote: error: GH013: Repository rule violations found for refs/heads/sondas.         remote:  remote: - GITHUB PUSH PROTECTION         remote:   —————————————————————————————————————————         remote:     Resolve the following violations before pushing again         remote:  remo",
-      "##[error]push 3: remote: error: GH013: Repository rule violations found for refs/heads/sondas.         remote:  remote: - GITHUB PUSH PROTECTION         remote:   —————————————————————————————————————————         remote:     Resolve the following violations before pushing again         remote:  remo",
-      "##[error]push 4: remote: error: GH013: Repository rule violations found for refs/heads/sondas.         remote:  remote: - GITHUB PUSH PROTECTION         remote:   —————————————————————————————————————————         remote:     Resolve the following violations before pushing again         remote:  remo",
-      "##[error]push 5: remote: error: GH013: Repository rule violations found for refs/heads/sondas.         remote:  remote: - GITHUB PUSH PROTECTION         remote:   —————————————————————————————————————————         remote:     Resolve the following violations before pushing again         remote:  remo",
-      "##[error]push 6: remote: error: GH013: Repository rule violations found for refs/heads/sondas.         remote:  remote: - GITHUB PUSH PROTECTION         remote:   —————————————————————————————————————————         remote:     Resolve the following violations before pushing again         remote:  remo",
-      "##[error]Process completed with exit code 1.",
-      "Cleaning up orphan processes",
-      "##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/download-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/"
-     ]
-    }
-   ]
-  },
-  {
-   "flujo": "Recoger artefactos de estudios",
-   "fichero": "recoger.yml",
-   "id": 40972663354,
-   "intento": 1,
-   "evento": "workflow_dispatch",
-   "rama": "main",
-   "commit": "0cb7fa9",
-   "titulo": "Recoger artefactos de estudios",
-   "conclusion": "failure",
-   "cuando": "30/10 00:26",
-   "url": "https://github.com/alvarorm931/education/actions/runs/40972663354",
-   "superado": true,
-   "pasajero": false,
-   "detalle": [
-    {
-     "trabajo": "recoger",
-     "pasos": [
-      "Subir a la rama sondas"
-     ],
-     "ejecutor": "GitHub Actions 1000000183",
-     "etiquetas": [
-      "ubuntu-latest"
-     ],
-     "final_registro": [
-      "##[error]Process completed with exit code 1.",
-      "...",
-      "remote:     Resolve the following violations before pushing again        ",
-      "remote: ",
-      "remote:     - Push cannot contain secrets        ",
-      "remote: ",
-      "remote:             ",
-      "remote:      (?) Learn how to resolve a blocked push        ",
-      "remote:      https://docs.github.com/code-security/secret-scanning/working-with-secret-scanning-and-push-protection/working-with-push-protection-from-the-command-line#resolving-a-blocked-push        ",
-      "remote:             ",
-      "remote:             ",
-      "remote:       —— Amazon AWS Access Key ID ——————————————————————————        ",
-      "remote:        locations:        ",
-      "remote:          - commit: 592d71e77c8bec25e62400631b17094deb01e2a6        ",
-      "remote:            path: 20261029T232220/datos/estudios/commoncrawl/dominios_CC-MAIN-2026-39_0_150.jsonl:2920        ",
-      "remote:             ",
-      "remote:        (?) To push, remove secret from commit(s) or follow this URL to allow the secret.        ",
-      "remote:        https://github.com/alvarorm931/education/security/secret-scanning/unblock-secret/3LOCQ96dYM0sIHVUAtPY5wsBHUR        ",
-      "remote:             ",
-      "remote: ",
-      "remote: ",
-      "To https://github.com/alvarorm931/education.git",
-      " ! [remote rejected]   sondas -> sondas (push declined due to repository rule violations)",
-      "error: failed to push some refs to 'https://github.com/alvarorm931/education.git'",
-      "##[error]Process completed with exit code 1.",
-      "Cleaning up orphan processes",
-      "##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/download-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/"
-     ]
-    }
-   ]
   }
  ],
  "colas_largas": [],
@@ -336,7 +218,7 @@
    "parado": false
   },
   "autonomicos.yml": {
-   "ultimo_bien": "30/10 05:29",
+   "ultimo_bien": "30/10 06:16",
    "parado": false
   },
   "seo.yml": {
