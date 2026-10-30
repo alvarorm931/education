@@ -777,7 +777,7 @@ def capturar(urls: list[str], pausa: float = 1.0, hilos: int = 12, guarda: Guard
 
 # ----------------------------------------------------------------------------- tanda de extracción
 
-META = ("proveedor", "grupo", "codigo_ruct", "codigos_ruct", "pagina", "principal")
+META = ("proveedor", "grupo", "codigo_ruct", "codigos_ruct", "pagina", "principal", "principales")
 MIN_CARACTERES = 200  # menos texto que esto: página vacía, de aviso o que se pinta con JavaScript; no se envía
 
 
@@ -1389,9 +1389,12 @@ def lista_subpaginas(principales: Path, salida: Path, guarda: Guarda | None = No
             cuentas["con_subpaginas"] += bool(subs)
             for u in subs:
                 f = out.setdefault(u, {"url": u, "grupo": "oficial", "estado_emparejado": "subpagina_enlazada",
-                                       "pagina": "subpagina", "principal": x["principal"], "codigos_ruct": []})
+                                       "pagina": "subpagina", "principal": x["principal"], "codigos_ruct": [],
+                                       "principales": []})
                 if x["codigo_ruct"] not in f["codigos_ruct"]:
                     f["codigos_ruct"].append(x["codigo_ruct"])
+                if x["principal"] not in f["principales"]:
+                    f["principales"].append(x["principal"])
     for f in out.values():
         f["codigo_ruct"] = f["codigos_ruct"][0]
     salida.parent.mkdir(parents=True, exist_ok=True)

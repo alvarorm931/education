@@ -173,3 +173,19 @@ def test_nombre_en_ingles_del_titulo_bilingue():
     assert comprobar_nombre(o, "Master in Finance")[0] == "confirmado"
     assert comprobar_nombre(o, "Master in Management")[0] == "distinto"
     assert comprobar_nombre("Máster Universitario en Química por la Universidad de Oviedo", "Master in Chemistry")[0] == "distinto"
+
+
+def test_subpagina_enlazada_solo_si_es_de_ese_master():
+    from motor.estudios.fichas_masters import cuelga_de, subpagina_valida
+
+    assert cuelga_de("https://www.ucm.es/master-x-plan", "https://www.ucm.es/master-x")
+    assert cuelga_de("https://u.es/m/x/plan", "https://u.es/m/x/")
+    assert cuelga_de("https://u.es/m/x?tab=2", "https://u.es/m/x?tab=1")
+    assert not cuelga_de("https://u.es/admision", "https://u.es/m/x")
+    assert not cuelga_de("https://otra.es/m/x/plan", "https://u.es/m/x")
+    oficial = "Máster Universitario en Finanzas por la Universidad de Murcia"
+    general = {"url": "https://u.es/admision/precios", "pagina": "subpagina", "principal": "https://u.es/m/finanzas"}
+    hechos = {general["url"]: [{"campo": "nombre", "valor": "Máster Universitario en Marketing"}]}
+    assert not subpagina_valida(general, "https://u.es/m/finanzas", oficial, hechos)
+    hechos = {general["url"]: [{"campo": "nombre", "valor": "Máster Universitario en Finanzas"}]}
+    assert subpagina_valida(general, "https://u.es/m/finanzas", oficial, hechos)

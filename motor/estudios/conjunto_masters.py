@@ -427,12 +427,38 @@ def _curso_tabla(x: dict) -> int | None:
     return max(años) if años else None
 
 
+RE_ESPECIALIDAD = re.compile(r"(?i)\s*[,:(-]\s*(?:especialidad|especializaci[oó]n|itinerario|menci[oó]n|track)\b.*$")
+RE_POR_UNIVERSIDAD = re.compile(r"(?i)\s+(?:por|per)\s+(?:la|el|las|los|l')?\s*(?:universi|ie\b|cunef|esic|mondrag).*$")
+
+
+ABREVIATURAS = [(re.compile(r"\bM\.\s?U\.\s"), "Máster Universitario "), (re.compile(r"\bBach\.(?=\s|$)"), "Bachillerato"),
+                (re.compile(r"\bF\.\s?P\.?(?=\s|$|,)"), "Formación Profesional"),
+                (re.compile(r"\bE\.?S\.?O\.?(?=\s|$|,)"), "Educación Secundaria Obligatoria")]
+
+
+def variantes_nombre(nombre: str) -> list[str]:
+    """El nombre y sus partes en cada idioma («Estudios de Comisariado / Curatorial Studies», también al revés en
+    la tabla), sin la especialidad («…, especialidad en Cáncer») y sin abreviaturas de tabla («Bach. F.P.»): la
+    misma titulación con otra forma de escribirla."""
+    base = RE_POR_UNIVERSIDAD.sub("", nombre or "").strip()
+    for r, v in ABREVIATURAS:
+        base = r.sub(v, base)
+    out = [nombre]
+    partes = [x.strip() for x in re.split(r"\s*/\s*", base) if len(x.strip()) > 3]
+    for x in [base] + (partes if len(partes) > 1 else []):
+        for v in (x, RE_ESPECIALIDAD.sub("", x)):
+            if v and v not in out:
+                out.append(v)
+    return out
+
+
 def campos_tabla(nombre_oficial: str | None, filas: list[dict]) -> dict[str, dict]:
     from motor.estudios.fichas_masters import comprobar_nombre
 
     if not nombre_oficial or not filas:
         return {}
     doble = bool(RE_DOBLE.search(nombre_oficial))
+    oficiales = variantes_nombre(nombre_oficial)
     mejores: dict[str, list[tuple]] = defaultdict(list)
     for x in filas:
         campo_ = CONCEPTO_TABLA.get(x.get("concepto"))
@@ -442,7 +468,10 @@ def campos_tabla(nombre_oficial: str | None, filas: list[dict]) -> dict[str, dic
         nombres = [n for n in (x.get("programa"), x.get("programa_lista")) if n]
         if any(bool(RE_DOBLE.search(n)) != doble for n in nombres[:1]):
             continue
-        resultados = [comprobar_nombre(nombre_oficial, n) for n in nombres]
+        # otro tipo de título con el nombre entero («(título propio)», «Executive…»): fuera aunque una parte encaje
+        if nombres and comprobar_nombre(nombre_oficial, nombres[0])[0] == "otro_tipo":
+            continue
+        resultados = [comprobar_nombre(o, v) for n in nombres for v in variantes_nombre(n) for o in oficiales]
         buenos = [r[1] for r in resultados if r[0] == "confirmado"]
         if buenos:
             mejores[campo_].append((max(buenos), año, x))

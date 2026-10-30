@@ -208,6 +208,34 @@ URL_NO_VIGENTE = __import__("re").compile(r"(?i)/20\d\d/\d{1,2}/\d{1,2}/|/(notic
                                            r"blog|prensa|plansanteriors|planes?-anteriores?|historico|extinguid)")
 
 
+def cuelga_de(url: str, principal: str) -> bool:
+    """La subpágina es de esa ficha por su dirección: debajo de ella (/master-x/plan), pegada a su nombre
+    (/master-x-plan, como la UCM) o la misma página con otra pestaña (?tab=plan)."""
+    from urllib.parse import urlparse
+
+    u, p = urlparse(url), urlparse(principal)
+    if u.netloc != p.netloc:
+        return False
+    pu, pp = u.path.rstrip("/"), p.path.rstrip("/")
+    if pu == pp:
+        return u.query != p.query
+    if pp and pu.startswith(pp + "/"):
+        return True
+    dir_u, _, ult_u = pu.rpartition("/")
+    dir_p, _, ult_p = pp.rpartition("/")
+    ult_p = re.sub(r"\.(html?|php|aspx?)$", "", ult_p)
+    return dir_u == dir_p and len(ult_p) >= 8 and ult_u.startswith(ult_p + "-")
+
+
+def subpagina_valida(p: dict, principal: str, nombre_oficial: str, hechos: dict[str, list[dict]]) -> bool:
+    """Una subpágina enlazada desde la ficha vale si cuelga de ella por la dirección o si su propio nombre es el
+    del máster (una página general de precios o de admisión de la universidad no le da su precio a un máster)."""
+    if p.get("pagina") != "subpagina" or cuelga_de(p["url"], principal):
+        return True
+    nom = next((h["valor"] for h in hechos.get(p["url"], []) if h["campo"] == "nombre"), None)
+    return bool(nombre_oficial) and comprobar_nombre(nombre_oficial, nom)[0] == "confirmado"
+
+
 def rescatar_oficiales(paginas: dict[str, dict], hechos: dict[str, list[dict]], cat: dict[str, dict],
                        censo: dict[str, dict]) -> dict[str, tuple[str, float]]:
     """URL → (código RUCT, cobertura) de las páginas extraídas como no oficiales o títulos propios que son, por su
@@ -364,7 +392,11 @@ def ejecutar(extracciones: list[Path], salida: Path, catalogo: Path | None = Non
         if juicios:
             _, _, url_buena, estado, cob, nombre_ext = min(juicios)
             ps = [p for p in ps if p["url"] == url_buena or p.get("principal") == url_buena
+                  or url_buena in (p.get("principales") or [])
                   or (p.get("pagina") == "subpagina" and not p.get("principal"))]
+            # las enlazadas desde la ficha: solo las que son de este máster (por la dirección o por su nombre)
+            ps = [p for p in ps if p["url"] == url_buena or not p.get("principal")
+                  or subpagina_valida(p, url_buena, t.get("nombre_oficial", ""), hechos)]
         else:
             estado, cob, nombre_ext = "sin_pagina", 0.0, None
         rescate = sorted((u for u, (c, _) in rescatadas.items() if c == codigo), key=lambda u: -rescatadas[u][1])

@@ -396,3 +396,21 @@ def test_tablas_por_universidad_por_lista_o_por_dominio():
              _fila_tabla("D", 1000, dominio="otra.es")]
     t = cm.tablas_por_universidad(filas, por_clave, dominios)
     assert [x["programa"] for x in t["045"]] == ["A"] and [x["programa"] for x in t["024"]] == ["B"] and len(t) == 2
+
+
+def test_precio_de_tabla_con_otra_forma_del_nombre():
+    filas = [_fila_tabla("Máster Universitario en Big Data Science", 19600.2),
+             _fila_tabla("Master in Curatorial Studies / Máster Universitario en Estudios de Comisariado", 15850.8),
+             _fila_tabla("Máster Universitario en Investigación Biomédica, especialidad en Cáncer", 15350.4),
+             _fila_tabla("Máster Universitario en Investigación Biomédica, especialidad en Neurociencia", 15350.4),
+             _fila_tabla("Máster Universitario en Profesorado de Educación Secundaria Obligatoria y Bach. F.P. y "
+                         "Enseñanza de Idiomas", 9400.2),
+             _fila_tabla("Máster en Sostenibilidad (título propio)", 17500.2)]
+    v = lambda o: (cm.campos_tabla(o, filas).get("precio_total") or {}).get("valor")
+    assert v("Máster Universitario en Ciencia de Datos Masivos/Big Data Science por la Universidad de Navarra") == 19600.2
+    assert v("Máster Universitario en Estudios de Comisariado / Curatorial Studies por la Universidad de Navarra") == 15850.8
+    assert v("Máster Universitario en Investigación Biomédica por la Universidad de Navarra") == 15350.4
+    assert v("Máster Universitario en Profesorado de Educación Secundaria Obligatoria y Bachillerato, Formación "
+             "Profesional y Enseñanza de Idiomas por la Universidad de Navarra") == 9400.2
+    # el título propio con el mismo nombre no es el máster oficial
+    assert v("Máster Universitario en Sostenibilidad por la Universidad de Navarra") is None
