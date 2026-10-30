@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/motor/runner/_trabajo/education/education/codigo/motor/http.py", line 196, in comprobar_robots
+    raise RobotsProhibe(f"robots.txt de {_origen(url)} no permite {url} ({regla})")
+motor.http.RobotsProhibe: robots.txt de https://miprincipado.asturias.es no permite https://miprincipado.asturias.es/bopa/disposiciones?p_p_id=pa_sede_bopa_web_portlet_SedeBopaDispositionWeb&p_p_lifecycle=0&_pa_sede_bopa_web_portlet_SedeBopaDispositionWeb_mvcRenderCommandName=%2Fdisposition%2Fdetail&p_r_p_dispositionText=2026-08847&p_r_p_dispositionReference=2026-08847&p_r_p_dispositionDate=29%2F10%2F2026 (Disallow: /bopa/disposiciones?p_p_id=pa_sede_bopa_web_portlet_SedeBopaDispositionWeb*)

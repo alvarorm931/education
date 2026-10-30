@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/motor/runner/_trabajo/education/education/codigo/motor/http.py", line 196, in comprobar_robots
+    raise RobotsProhibe(f"robots.txt de {_origen(url)} no permite {url} ({regla})")
+motor.http.RobotsProhibe: robots.txt de https://web.larioja.org no permite https://web.larioja.org/apps/ckan-client/public/js/bor/index.js?20230503 (Disallow: /apps)
