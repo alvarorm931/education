@@ -110,8 +110,13 @@ lo dice.
 ### BOE: planes de estudios y altas
 
 Sumarios: 2022-2026 (rama `datos`) y 2008-2021 (`motor/grados/boe_historico.py`, 4.384 sumarios, sin errores;
-`sondas/20261030T034413`). Planes de grado de 2008 a 2021: 3.152 nuevos, 1.481 modificaciones, 367 correcciones y
-18 cambios de denominación; de 2022 a 2026: 603 planes, 942 modificaciones, 66 correcciones y 9 cambios. El mismo
+`sondas/20261030T034413`, releído el 30/10 a las 08:00 en `sondas/20261030T0741…-t0` a `-t4`). Planes de grado de
+2008 a 2021: 3.155 nuevos, 1.474 modificaciones, 409 correcciones y 18 cambios de denominación; de 2022 a 2026:
+603 planes, 942 modificaciones, 66 correcciones y 9 cambios. **Errata del BOE:** en 2010 la Universidad de Alcalá
+publicó sus planes con el título «… el plan estudios de Graduado en …» (sin «de»), y el clasificador no los veía:
+21 grados de Alcalá quedaban sin plan. Ya se aceptan; la relectura del histórico halló 38 disposiciones más (37
+planes de Alcalá), con sus textos descargados: ahora 34 de los 39 grados de Alcalá tienen plan y 28 lo tienen
+comprobado. El mismo
 recorrido guarda los planes de máster (5.002 planes y 936 modificaciones de 2008 a 2021), útiles para másters.
 
 Unión con el catálogo: por universidad y nombre del grado. Los planes antiguos dicen «Graduado en X» o
@@ -146,9 +151,9 @@ deducidos (por nombre, rótulo o suma), sin una lista resumen que repite otra ta
 justo lo que sobra (itinerarios, listas a otro nivel), dando su tipo a la única tabla sin tipo que suma justo lo que
 falta, el resto sin tipo como obligatorio, o las asignaturas de un módulo de mención o itinerario sin carácter como
 optativas y el resto como obligatorio. Una lectura que comprueba el plan completo gana a la que solo cuadra en
-básicas y obligatorias. La ficha dice si la lectura fue directa o alternativa (453 de los 3.492 comprobados) y si
-además cuadra **tipo a tipo** (básicas, obligatorias, prácticas y TFG por separado, `cuadra_por_tipo`): 3.030 de
-los 3.492. Los cursos y semestres en números romanos («III-IV», «X») se leen como números, y en los planes con una
+básicas y obligatorias. La ficha dice si la lectura fue directa o alternativa (457 de los 3.514 comprobados) y si
+además cuadra **tipo a tipo** (básicas, obligatorias, prácticas y TFG por separado, `cuadra_por_tipo`): 3.046 de
+los 3.514. Los cursos y semestres en números romanos («III-IV», «X») se leen como números, y en los planes con una
 tabla por curso cuyo curso solo dice el párrafo de encima («Primer curso», «Segundo curso»…) se toma de ese párrafo
 cuando la racha de párrafos y la de tablas casan exactamente (`cursos_por_encabezado`): 89 planes nuevos y 71
 modificaciones más con curso. Si el plan del BOE no trae tabla que cuadre, se compara con los créditos por tipo de la ficha del RUCT
@@ -170,8 +175,9 @@ modificaciones más con curso. Si el plan del BOE no trae tabla que cuadre, se c
   nivel de básicas y obligatorias, las dos sumas tienen que ser exactas; las filas de totales se descartan.
 - También se leía solo el bloque izquierdo de las tablas con dos semestres lado a lado cuando la cabecera traía
   «Tipo de materia» o una llamada de nota (planes de la UOC): corregido, 16 planes comprobados más, tipo a tipo.
-- Efecto neto de las dos: comprobados, de 3.625 a 3.492 (salen los que cuadraban por compensación o con los tipos
-  cambiados); de ellos, los que cuadran también tipo a tipo, de 1.960 (medidos igual antes de corregir) a 3.030.
+- Efecto neto de las dos (antes de sumar los planes de Alcalá): comprobados, de 3.625 a 3.492 (salen los que
+  cuadraban por compensación o con los tipos cambiados); de ellos, los que cuadran también tipo a tipo, de 1.960
+  (medidos igual antes de corregir) a 3.030.
 - Queda abierto (solo afecta a optativas, no a la comprobación): optativas perdidas al descartar una tabla repetida y variantes de nombre («Idioma moderno II» e «Idioma
   moderno II: Inglés II»).
 
@@ -179,14 +185,14 @@ Resultado con todo lo leído (30/10/2026, 08:00, hora de España):
 
 | | Leídos | Con asignaturas | Con curso | Comprobados | Y además tipo a tipo |
 |---|---|---|---|---|---|
-| Planes nuevos | 3.496 | 2.551 | 2.263 | 2.110 (60 %) | 1.814 |
-| Modificaciones | 2.231 | 1.599 | 1.060 | 1.315 (59 %) | 1.165 |
+| Planes nuevos | 3.532 | 2.591 | 2.302 | 2.132 (60 %) | 1.830 |
+| Modificaciones | 2.226 | 1.596 | 1.058 | 1.315 (59 %) | 1.165 |
 | Cambios de denominación | 20 | 16 | 15 | 12 | 11 |
-| Correcciones de errores | 391 | 139 | 102 | 55 | 40 |
+| Correcciones de errores | 402 | 144 | 106 | 55 | 40 |
 
-De los 1.386 planes nuevos que no cuadran: publicados solo por materias, sin asignaturas (418); tablas sin carácter
-que no se puede asignar de forma comprobable (324); diferencias de una o dos asignaturas, 12 créditos o menos
-(176); otras diferencias (295); sin tabla de créditos por tipo (92) y sin tabla de plan legible (81). Esos planes
+De los 1.400 planes nuevos que no cuadran: publicados solo por materias, sin asignaturas (418); tablas sin carácter
+que no se puede asignar de forma comprobable (329); diferencias de una o dos asignaturas, 12 créditos o menos
+(186); otras diferencias (298); sin tabla de créditos por tipo (92) y sin tabla de plan legible (77). Esos planes
 se guardan igual (la ficha los enseña, marcados como no comprobados) pero no cuentan como asignaturas comprobadas.
 
 Menciones: 692 planes y modificaciones las citan, en el texto o en las tablas.
@@ -322,13 +328,13 @@ pedir nada a ninguna fuente, y marca cada ficha como indexable o no, con el moti
 | Con inserción laboral | 1.703 |
 | Con indicadores de rendimiento del SIIU | 3.125 |
 | Con ficha del RUCT | 3.265 |
-| Grados con plan del BOE | 3.079 de 3.265 |
-| Grados con plan comprobado | 2.231 (1.581 por asignaturas, el resto por materias) |
-| Dobles con los planes de sus dos grados comprobados | 593 |
-| **Indexables** con la propuesta de datos mínimos | **2.038** (1.705 grados y 333 dobles; 1.824 de públicas y 214 de privadas) |
+| Grados con plan del BOE | 3.095 de 3.265 |
+| Grados con plan comprobado | 2.245 (1.595 por asignaturas, el resto por materias) |
+| Dobles con los planes de sus dos grados comprobados | 599 |
+| **Indexables** con la propuesta de datos mínimos | **2.056** (1.719 grados y 337 dobles; 1.842 de públicas y 214 de privadas) |
 
-El resto va con `noindex` y su motivo: 848 con plan que no
-cuadra, 624 sin plan (o doble sin los dos planes comprobados) y
+El resto va con `noindex` y su motivo: 850 con plan que no
+cuadra, 602 sin plan (o doble sin los dos planes comprobados) y
 1.201 sin nota ni precio (casi todas, privadas que no publican el precio); una
 ficha puede tener varios.
 
@@ -349,14 +355,14 @@ comprobados por asignaturas:
 - **Asignaturas en común**: en cuántas universidades del mismo grado aparece cada asignatura, qué parte del plan de
   cada una es común y cuáles solo tiene ella (160 genéricos con al menos dos
   planes comparables).
-- **Buscar por asignatura** (`asignaturas_indice.jsonl`): 36.764 asignaturas distintas
-  (nombre normalizado, sin numeración), 8.208 en dos títulos o más, cada una
+- **Buscar por asignatura** (`asignaturas_indice.jsonl`): 36.890 asignaturas distintas
+  (nombre normalizado, sin numeración), 8.250 en dos títulos o más, cada una
   con dónde se estudia, su tipo y su curso. TFG, optativas, prácticas y practicum van marcados como huecos del plan
   (19), sin página propia.
 - **Carreras parecidas** (`relaciones.jsonl`): por campo ISCED-F, ámbito, área y rama del SIIU, nombre, dobles
   grados que las combinan y asignaturas básicas y obligatorias en común; cada relación lleva sus motivos.
   244 de los 245 genéricos de grado con página tienen alguna
-  (1.391 relaciones apoyadas en asignaturas comunes); la que no tiene nada cercano queda
+  (1.399 relaciones apoyadas en asignaturas comunes); la que no tiene nada cercano queda
   vacía.
 - **Dobles grados que incluyen cada carrera** y los grados que forman cada doble; la ficha del doble enlaza los
   planes de sus dos grados.
