@@ -1,7 +1,13 @@
 {
  "fecha": "2022-02-22",
- "resultado": "fuente_inaccesible",
- "alertas": [
-  "No se pudo descargar https://dogv.gva.es/dogv-portal/dogv?date=2022-02-22&lang=es tras 4 intentos: HTTPSConnectionPool(host='dogv.gva.es', port=443): Max retries exceeded with url: /dogv-portal/dogv?date=2022-02-22&lang=es (Caused by ConnectTimeoutError(<HTTPSConnection(host='dogv.gva.es', port=443) at 0x7f73c43577d0>, 'Connection to dogv.gva.es timed out. (connect timeout=30.0)'))"
- ]
+ "alertas": [],
+ "status": 200,
+ "resultado": "ok",
+ "numero": 9283,
+ "ordenes": [
+  1
+ ],
+ "sha256": "b6e1fbed06b47ccd13a4ee60c3df6cfb2800f4b29edcafce1799190514accbaf",
+ "disposiciones": 38,
+ "empleo_publico": 14
 }
