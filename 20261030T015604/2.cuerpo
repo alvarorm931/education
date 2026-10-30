@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <title>Tasas de abandono del estudio (cohortes de nuevo ingreso en el estudio) por ámbito de estudio y sexo</title>
+  <meta name="description" content="Tasas de abandono del estudio (cohortes de nuevo ingreso en el estudio) por ámbito de estudio y sexo">
+    <meta name="keywords" content="Universidad, Ámbito de estudio, Sexo, Indicador, , null">
+
+    <script>
+	  var pathJaxi = "/jaxiPx/";
+      var tablaId = 0;
+      var fechaInicio= new Date();
+      var fechaFin= new Date();
+      var idioma = 0;
+      var notas =  5;
+      isLoadData = true;
+      var isMegatabla =false;
+      var sepMil = ".";
+      var sepDec = ",";
+
+    </script>
+	<link rel="shortcut icon" href="/menus/img/favicon.ico" type="image/x-icon">
+<link href="/menus/img/favicon.png" rel="apple-touch-icon">
+<link href="/menus/img/apple-touch-icon-57x57-precomposed.png" rel="apple-touch-icon" sizes="57x57">
+<link href="/menus/img/apple-touch-icon-60x60-precomposed.png" rel="apple-touch-icon" sizes="60x60">
+<link href="/menus/img/apple-touch-icon-72x72-precomposed.png" rel="apple-touch-icon" sizes="76x76">
+<link href="/menus/img/apple-touch-icon-76x76-precomposed.png" rel="apple-touch-icon" sizes="76x76">
+<link href="/menus/img/apple-touch-icon-114x114-precomposed.png" rel="apple-touch-icon" sizes="114x114">
+<link href="/menus/img/apple-touch-icon-120x120-precomposed.png" rel="apple-touch-icon" sizes="120x120">
+<link href="/menus/img/apple-touch-icon-144x144-precomposed.png" rel="apple-touch-icon" sizes="144x144">
+<link href="/menus/img/apple-touch-icon-152x152-precomposed.png" rel="apple-touch-icon" sizes="152x152">
+<link href="/menus/img/apple-touch-icon-160x160-precomposed.png" rel="apple-touch-icon" sizes="160x160">
+<link href="/menus/img/apple-touch-icon-180x180-precomposed.png" rel="apple-touch-icon" sizes="180x180">
+<link href="/menus/img/favicon-192x192.png" rel="icon" sizes="192x192">
+<link href="/menus/img/favicon-160x160.png" rel="icon" sizes="160x160">
+<link href="/menus/img/favicon-128x128.png" rel="icon" sizes="128x128">
+<link href="/menus/img/favicon-96x96.png" rel="icon" sizes="96x96">
+<link href="/menus/img/favicon-32x32.png" rel="icon" sizes="32x32">
+<link href="/menus/img/favicon-16x16.png" rel="icon" sizes="16x16">
+<meta property="og:locale" content="es_ES">
+	<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ministerio de Ciencia, Innovaci&oacute;n y Universidades">
+<meta property="og:image" content="/menus/_b/img/muniv_footer_logo.svg">
+<meta property="og:image:secure_url" content="/menus/_b/img/muniv_footer_logo.svg">
+<meta property="og:image:alt" content="Logo">
+<meta property="og:image:type" content="image/svg+xml">
+<meta property="og:image:width" content="326">
+<meta property="og:image:height" content="126">
+<meta content="True" name="HandheldFriendly">
+<meta name="viewport" content="width=device-width,maximum-scale=3.0,initial-scale=1.0,minimum-scale=0.9,user-scalable=yes"><!--<script src="/jaxi/js/Messages.js"></script>-->
+<script>
+var paramLanguage='L0';
+var primero='Es el primero';
+var ultimo='Es el Ãºltimo';
+var reducir='Ha seleccionado m&aacute;s de 30.000 datos. <br>Puede descargar la tabla completa en distintos formatos haciendo clic en el icono de descarga <a class="icoDescargarLink" style="width:20px;height:20px;"></a> que aparece en esta pantalla. <br>Tambi&eacute;n puede descargar la tabla desde la lista de tablas haciendo clic sobre el mismo icono. <br>Para ver los resultados en su pantalla, por favor reduzca su selecci&oacute;n.';
+var reducirMegatabla='Ha seleccionado mÃ¡s de 5.000 datos. Por favor reduzca la selecciÃ³n para consulta en lÃ­nea. <br>Puede disponer de todos los datos de esta tabla en diferentes formatos. Pulse en el botÃ³n <a href="javascript:void(0)" onclick=\"dlgModalLink(\'#btnDescarga\')\"><u>Descarga</u></a> para acceder.';
+var seleccionar='Debe escoger un valor en las variables con 0 valores seleccionados';
+var maxSelection=30000;
+var maxSelecHastaCarga=1000;
+var maxSelecHastaCargaMegatabla=10000;
+var esperacarga='5000';
+var filasVacias='Debe de haber al menos una variable en las filas';
+var columnasVacias='Debe de haber al menos una variable en las columnas';
+var numPeticionesMax='40';
+var timeOutRequests='30000';
+var peticion='PeticiÃ³n en curso';
+var mensajesCarga = ["Procesando peticiÃ³n","Consultando a base de datos","Cargando series","Cargando datos","Procesando salida"];
+var txtMsgMaxCeldasInLoad='En estos momentos se estan procesando los datos y por ello solo se puede servir un mÃ¡ximo de 1000 celdas. Â¿Desea esperar con su selecciÃ³n actual?';
+var txtMsgMaxIntentosLoad='Tiempo de espera agotado. Por favor, vuelva a intentarlo mÃ¡s tarde.';
+var MenuUrl = '/menus/';
+var numPeticionesMaxCargaDetalle = '20';
+var tiemposMaxCargaDetalle = '10000';
+var avisoGrafico_1 = 'Debe de seleccionar valores distintos en las columnas y eje horizontal';
+var avisoGrafico_2 = 'Debe de seleccionar al menos un valor de cada variable';
+var avisoGrafico_3 = 'Debe de seleccionar al menos un periodo';
+var avisoGrafico_4 = 'Debe de seleccionar al menos una operaciÃ³n';
+var avisoGrafico = 'Para visualizar el mapa actualice su navegador.';
+var textoNotas = 'Notas';
+var textoMetadatos = 'MetodologÃ­a';
+var textoInfo = 'Notas/InformaciÃ³n';
+var tablaId = '';
+var timeResizeMapMilis='';
+var avisoMapa = 'Para visualizar el mapa actualice su navegador.';
+var changeColorGraf = 'Cambiar color';
+var graphicColorsEnabled = '1';
+var modosGrafico = '2~2~2~2~2~1~1';
+var tiposGrafico = 'lineas~barras~barrashorizontales~barrasapiladas~barrashorizapiladas~circular';
+var msgZip_1 = 'No es posible descargar el fichero, hay tablas errÃ³neas';
+var msgZip_2 = 'Actualmente se estÃ¡ ejecutando el proceso de generaciÃ³n de tablas, espere por favor...';
+var msgZip_3 = 'URL invÃ¡lida, parÃ¡metros errÃ³neos';
+var textoMapaIntervalos = 'Seleccionar el nÃºmero de intervalos';
+var textoMapaGama = 'Seleccionar gama de colores';
+</script><script src="/menus/js/es/treeGrp.js" charset="UTF-8"></script>
+<script src="/menus/_b/js/es/general.js" charset="UTF-8"></script><script src="/menus/lib/jquery-3.6.3.js"></script>
+<script src="/menus/_b/js/general.js"></script>
+<script src="/menus/lib/jquery-ui/1.13.2/jquery-ui.js"></script><script src="/menus/plantillas/jaxi/js/jquery.sortElements.js"></script>
+<script src="/menus/js//es/textoTooltip.js" charset="UTF-8"></script><link rel="stylesheet" as="style" media="screen" href="/menus/lib/jquery-ui/1.13.2/jquery-ui.css" onload="this.rel='stylesheet'; this.onload=null">
+<link rel="stylesheet" as="style" media="screen" href="/menus/_b/css/bootstrapINE.min.css" onload="this.rel='stylesheet'; this.onload=null">
+<link rel="stylesheet" as="style" href="/menus/_b/fonts/fontAwesome/css/all.min.css" onload="this.rel='stylesheet'; this.onload=null"><script>
+	var sepMil= ".";var sepDec= ",";
+	var docIsLoaded=false;
+	var HM_Menu_Dir="/menus/";
+	var HM_Menu_DirVersion="/menus/_b/";
+	var HM_imgDir="/menus/img/";
+	var HM_DirJs="/menus/js/";
+	var HM_idioma="es";
+	var HM_idiomaINE="0";
+	var othethickbox="";
+	var INE_Servidor="";
+	var INE_ServidorAbsoluta="https://www.ine.es";
+	var HTMLVersion=5;
+	var showBtnAddCesta=false;
+	var isIE=false;
+</script><script async="" src="/menus/js/loading.js"></script>
+<link rel="stylesheet" as="style" href="/menus/_b/css/component/components.css?s=0&amp;ilp=1&amp;sv=1&amp;tbs=1&amp;pnls=1" onload="this.rel='stylesheet'; this.onload=null">
+<script src="/menus/_b/js/component/components.js?s=0&amp;ilp=1&amp;sv=1&amp;tbs=1&amp;pnls=1" charset=""></script><link rel="stylesheet" href="/menus/_b/css/baseINE.css?st=0">
+<link rel="stylesheet" href="/menus/_b/css/iconos.css">
+<link rel="stylesheet" href="/menus/_b/css/cabecera_pie.css">
+<link rel="stylesheet" href="/menus/_b/css/cabecera_pie_print.css" media="print">
+<link rel="stylesheet" href="/menus/_b/css/nav.css">
+<link rel="stylesheet" href="/menus/_b/css/nav_print.css" media="print">
+<link rel="stylesheet" href="/menus/_b/css/global.css">
+<script async="" src="/menus/js/cookie.js"></script>
+<script async="" src="/menus/js/tooltip.min.js"></script>
+<script async="" src="/menus/_b/js/cabecera.js"></script>
+<script async="" src="/menus/_b/js/social.js"></script>
+<script async="" src="/menus/js/thickboxINE.js"></script>	<script>
+var dirPlantilla='/menus/plantillas/jaxiPx/';
+var dirApp='./';
+</script>
+<script src="/menus/js/validators.js"></script>
+<script src="/menus/plantillas/jaxiPx/js/liveSearchJaxiT3.js"></script>
+<script src="/menus/plantillas/jaxiPx/js/jaxi.js"></script>
+<script src="/menus/plantillas/jaxiPx/js/recargaPagina.js"></script>
+<script src="/menus/plantillas/jaxiPx/js/jaxiT3Json.js"></script><script>LoadToolTipAuto=false;</script>
+<script src="/menus/plantillas/jaxiPx/js/excanvas.js"></script>
+<link rel="stylesheet" href="/menus/plantillas/jaxiPx/css/jaxiT3.css"><link rel="stylesheet" href="/menus/css/mapas.css">
+<link rel="stylesheet" href="/menus/css/treeGrp.css">
+<script src="/menus/js/treeGrp.js"></script>
+<script>
+try{if ( isMobile.any() ) {
+	loadUrlStyle('/menus/plantillas/jaxiPx/css/jaxiT3_mob.css',null,null);
+	loadUrlStyle(HM_Menu_DirVersion +"css/media_query.css",null,null);
+}}catch(e){}
+</script>
+</head>
+  <body id="t0" >
+    <div class="contenedor">
+	<header>
+		<div class="row">
+			<div class="col ImagenLogoIne">
+				<a href="https://www.ciencia.gob.es"><img src="/menus/_b/img/muni_logo.svg" alt="Logotipo MICIU"></a>
+			</div>
+			<div class="col MenuDch">
+				<h1>UNIVBASE</h1>
+			</div>
+		</div>
+		<div id="bandera">
+			<div class="parterojoizquierda"></div>
+			<div class="parteamarillo"></div>
+			<div class="parterojoderecha"></div>
+		</div>			
+	</header>
+	<nav class="navbar navbar-expand-sm bg-dark navbar-dark justify-content-end">
+		<div class="container-fluid">
+			<a href="/index.html" class="thickbox btn btn-info" title="UNIVBASE" tabindex="0" role="button">
+				<img src="/menus/_b/img/home.jpg" alt="Standalone">
+			</a>
+		</div>
+	</nav>
+	<script src="/menus/plantillas/jaxiPx/js/jaxiTabla.js"></script>
+<div class="AppToolBarFondo AppToolBarImg2">
+<a class="AppToolBarLogo" href="/inebmenu/indice.htm" title="Lista completa de operaciones">
+				<img src="/menus//_b/img/muniv_footer_logo.png" class="sinborde" alt="Inicio UNIVbase">
+			</a>
+		<div class="AppToolBarContent">
+   	<div class="Sup"><ul class="miga">
+		<li><a href="/inebmenu/indice.htm">UNIVbase</a></li><li class="medio"><a href="/dynPx/inebase/index.htm?type=pcaxis&path=/Universitaria/Indicadores/2025/1_Grado/&file=pcaxis&L=0">Indicadores de rendimiento académico y de transición a Máster de estudiantes de Grado</a>
+						</li>
+					</ul></div>
+      <div class="Inf"></div>
+   </div>
+</div><br class="limpia">
+    <form id="tablaForm" name="tablaForm" action="Datos.htm?path=/Universitaria/Indicadores/2025/1_Grado/l0/&file=Abandono_Grado_Univ.px" method="POST"
+      onsubmit="return enviarTabla(event, $('#tablaForm'),0, timeOutRequests);" >
+    <input type="hidden" name="isPx" id ="isPx" value="true">
+    <input type="hidden" name="L" value="0">
+    <input type="hidden" name="fromTabla" value="1"/>
+    <input type="hidden" name="formatoVisible" value="1"/>
+    <input type="hidden" id="oper" name="oper" value="-9223372036854775808">
+         <input type="hidden" id="sel_oper" name="sel_oper" class="input_seleccionados" value="1" >
+      <span class="cab1">Indicadores de rendimiento académico y de transición a Máster de estudiantes de Grado</span>
+      <span class="cab2">Resultados por universidad</span>
+        <h1 class="cab3">Tasas de abandono del estudio (cohortes de nuevo ingreso en el estudio) por ámbito de estudio y sexo</h1>
+      <div id="capaIconos" class="titulo_detalle">
+          <span id="tablaDetalle"><strong class="paddingRight">Unidades:</strong>Tasas</span>
+          <div class="right">
+          	<a role="button" title="Descargar" id="btnDescarga" href="dlgExport.htm?path=/Universitaria/Indicadores/2025/1_Grado/l0/&file=Abandono_Grado_Univ.px" class="thickbox icoDescargarLink">
+          		<span class="sr-only">Descargar</span>
+          	</a>
+           </div>
+      </div>
+      <ul class="secciones">
+      <li>
+        <span tabindex=0 title="Plegar/Desplegar" class="title titleOpen texto_variables borderSeccion">Seleccione valores a consultar</span>
+        <ul id="variables" class="variables">
+          <li id ="tg0" >
+    <div class="marcoINE">
+		<fieldset>
+			<legend><label for="cri0">Universidad</label></legend>
+               <div class="capaSelecBusqueda">
+	               	<label for="busc_0" class="oculto">Valores que contienen</label>
+	                <input title="Valores que contienen" size="10" type="text" id="busc_0" name="busc_0" class="cajaBusquedaVar" value="" >
+	                <button type="button" class="icoBuscar" title="Valores que contienen" onclick="buscar('sel_0','cri0',document.forms['tablaForm'].busc_0.value,'content');"></button>
+            	</div>
+            	<div class="capaSelecTodosNinguno">
+            		<input type="hidden" name="orden_0" id="orden_0" >
+	               	<button type="button" class="icoSeleccionTodos opcionesvarDer" title="Seleccionar todos" onclick="todos(true,'cri0','sel_0');return false;"></button>
+	               	<button type="button" class="icoSeleccionNinguno" title="Borrar seleccion" onclick="todos(false,'cri0','sel_0');return false;"></button>
+	               	<button type="button" class="icoCambioSentidoASC" title="Ordenar" onclick="if (this.className.indexOf('ASC')>0){ ordena('#cri'+0,'ASC'); this.className=this.className.replace('ASC','DESC'); $('#orden_'+0).val('ASC');}else {ordena('#cri'+0,'DESC'); this.className=this.className.replace('DESC','ASC');$('#orden_'+0).val('DESC');} return false;"></button>
+					</div>
+
+				<select id="cri0" name="cri0" class="cajaVariables jax_SELECT" multiple="multiple" size="8" onchange="cuantos('sel_0','cri0');">
+					<option class="jP_0" value="0" selected="selected">Todas las universidades</option>
+						<option class="jP_0" value="1" selected="selected">Universidades Públicas</option>
+						<option class="jP_0" value="2" selected="selected">Universidades Públicas Presenciales</option>
+						<option class="jP_0" value="3" selected="selected">A Coruña</option>
+						<option class="jP_0" value="4" selected="selected">Alcalá</option>
+						<option class="jP_0" value="5" selected="selected">Alicante</option>
+						<option class="jP_0" value="6" selected="selected">Almería</option>
+						<option class="jP_0" value="7" selected="selected">Autónoma de Barcelona</option>
+						<option class="jP_0" value="8" selected="selected">Autónoma de Madrid</option>
+						<option class="jP_0" value="9" selected="selected">Barcelona</option>
+						<option class="jP_0" value="10" selected="selected">Burgos</option>
+						<option class="jP_0" value="11" selected="selected">Cádiz</option>
+						<option class="jP_0" value="12" selected="selected">Cantabria</option>
+						<option class="jP_0" value="13" selected="selected">Carlos III de Madrid</option>
+						<option class="jP_0" value="14" selected="selected">Castilla-La Mancha</option>
+						<option class="jP_0" value="15" selected="selected">Complutense de Madrid</option>
+						<option class="jP_0" value="16" selected="selected">Córdoba</option>
+						<option class="jP_0" value="17" selected="selected">Extremadura</option>
+						<option class="jP_0" value="18" selected="selected">Girona</option>
+						<option class="jP_0" value="19" selected="selected">Granada</option>
+						<option class="jP_0" value="20" selected="selected">Huelva</option>
+						<option class="jP_0" value="21" selected="selected">Illes Balears (Les)</option>
+						<option class="jP_0" value="22" selected="selected">Jaén</option>
+						<option class="jP_0" value="23" selected="selected">Jaume I de Castellón</option>
+						<option class="jP_0" value="24" selected="selected">La Laguna</option>
+						<option class="jP_0" value="25" selected="selected">La Rioja</option>
+						<option class="jP_0" value="26" selected="selected">Las Palmas de Gran Canaria</option>
+						<option class="jP_0" value="27" selected="selected">León</option>
+						<option class="jP_0" value="28" selected="selected">Lleida</option>
+						<option class="jP_0" value="29" selected="selected">Málaga</option>
+						<option class="jP_0" value="30" selected="selected">Miguel Hernández de Elche</option>
+						<option class="jP_0" value="31" selected="selected">Murcia</option>
+						<option class="jP_0" value="32" selected="selected">Oviedo</option>
+						<option class="jP_0" value="33" selected="selected">Pablo de Olavide</option>
+						<option class="jP_0" value="34" selected="selected">País Vasco/Euskal Herriko Unibertsitatea</option>
+						<option class="jP_0" value="35" selected="selected">Politécnica de Cartagena</option>
+						<option class="jP_0" value="36" selected="selected">Politécnica de Catalunya</option>
+						<option class="jP_0" value="37" selected="selected">Politécnica de Madrid</option>
+						<option class="jP_0" value="38" selected="selected">Politècnica de València</option>
+						<option class="jP_0" value="39" selected="selected">Pompeu Fabra</option>
+						<option class="jP_0" value="40" selected="selected">Pública de Navarra</option>
+						<option class="jP_0" value="41" selected="selected">Rey Juan Carlos</option>
+						<option class="jP_0" value="42" selected="selected">Rovira i Virgili</option>
+						<option class="jP_0" value="43" selected="selected">Salamanca</option>
+						<option class="jP_0" value="44" selected="selected">Santiago de Compostela</option>
+						<option class="jP_0" value="45" selected="selected">Sevilla</option>
+						<option class="jP_0" value="46" selected="selected">València (Estudi General)</option>
+						<option class="jP_0" value="47" selected="selected">Valladolid</option>
+						<option class="jP_0" value="48" selected="selected">Vigo</option>
+						<option class="jP_0" value="49" selected="selected">Zaragoza</option>
+						<option class="jP_0" value="50" selected="selected">Universidades Públicas No Presenciales</option>
+						<option class="jP_0" value="51" selected="selected">Nacional de Educación a Distancia</option>
+						<option class="jP_0" value="52" selected="selected">Universidades Privadas</option>
+						<option class="jP_0" value="53" selected="selected">Universidades Privadas Presenciales</option>
+						<option class="jP_0" value="54" selected="selected">Abat Oliba CEU</option>
+						<option class="jP_0" value="55" selected="selected">Alfonso X El Sabio</option>
+						<option class="jP_0" value="56" selected="selected">Antonio de Nebrija</option>
+						<option class="jP_0" value="57" selected="selected">Atlántico Medio</option>
+						<option class="jP_0" value="58" selected="selected">Camilo José Cela</option>
+						<option class="jP_0" value="59" selected="selected">Cardenal Herrera-CEU</option>
+						<option class="jP_0" value="60" selected="selected">Católica de Valencia San Vicente Mártir</option>
+						<option class="jP_0" value="61" selected="selected">Católica San Antonio</option>
+						<option class="jP_0" value="62" selected="selected">Católica Santa Teresa de Jesús de Ávila</option>
+						<option class="jP_0" value="63" selected="selected">CUNEF Universidad</option>
+						<option class="jP_0" value="64" selected="selected">Deusto</option>
+						<option class="jP_0" value="65" selected="selected">ESIC Universidad</option>
+						<option class="jP_0" value="66" selected="selected">Europea de Canarias</option>
+						<option class="jP_0" value="67" selected="selected">Europea del Atlántico</option>
+						<option class="jP_0" value="68" selected="selected">Europea de Madrid</option>
+						<option class="jP_0" value="69" selected="selected">Europea de Valencia</option>
+						<option class="jP_0" value="70" selected="selected">Europea Miguel de Cervantes</option>
+						<option class="jP_0" value="71" selected="selected">Fernando Pessoa-Canarias (UFP-C)</option>
+						<option class="jP_0" value="72" selected="selected">Francisco de Vitoria</option>
+						<option class="jP_0" value="73" selected="selected">IE Universidad</option>
+						<option class="jP_0" value="74" selected="selected">Internacional de Catalunya</option>
+						<option class="jP_0" value="75" selected="selected">Internacional Villanueva</option>
+						<option class="jP_0" value="76" selected="selected">Loyola Andalucía</option>
+						<option class="jP_0" value="77" selected="selected">Mondragón Unibertsitatea</option>
+						<option class="jP_0" value="78" selected="selected">Navarra</option>
+						<option class="jP_0" value="79" selected="selected">Pontificia Comillas</option>
+						<option class="jP_0" value="80" selected="selected">Pontificia de Salamanca</option>
+						<option class="jP_0" value="81" selected="selected">Ramón Llull</option>
+						<option class="jP_0" value="82" selected="selected">San Jorge</option>
+						<option class="jP_0" value="83" selected="selected">San Pablo-CEU</option>
+						<option class="jP_0" value="84" selected="selected">Vic-Central de Catalunya</option>
+						<option class="jP_0" value="85" selected="selected">Universidades Privadas No Presenciales</option>
+						<option class="jP_0" value="86" selected="selected">A Distancia de Madrid</option>
+						<option class="jP_0" value="87" selected="selected">Internacional de La Rioja</option>
+						<option class="jP_0" value="88" selected="selected">Internacional Isabel I de Castilla</option>
+						<option class="jP_0" value="89" selected="selected">Internacional Valenciana</option>
+						<option class="jP_0" value="90" selected="selected">Oberta de Catalunya</option>
+						</select>
+				<div class="capaClear">
+					<div class="capaSeleccionadosEstado">
+						<span class="paddingRight">Seleccionados:</span><span id="sel_0">91</span>
+					</div>
+					<div class="capaTotalSeleccionadosEstado">
+						<span class="paddingRight">Total:</span><span id="totalvar0">91</span>
+					</div>
+				</div>
+			</fieldset>
+		</div>
+</li><li id ="tg1" >
+    <div class="marcoINE">
+		<fieldset>
+			<legend><label for="cri1">Ámbito de estudio</label></legend>
+               <div class="capaSelecBusqueda">
+	               	<label for="busc_1" class="oculto">Valores que contienen</label>
+	                <input title="Valores que contienen" size="10" type="text" id="busc_1" name="busc_1" class="cajaBusquedaVar" value="" >
+	                <button type="button" class="icoBuscar" title="Valores que contienen" onclick="buscar('sel_1','cri1',document.forms['tablaForm'].busc_1.value,'content');"></button>
+            	</div>
+            	<div class="capaSelecTodosNinguno">
+            		<input type="hidden" name="orden_1" id="orden_1" >
+	               	<button type="button" class="icoSeleccionTodos opcionesvarDer" title="Seleccionar todos" onclick="todos(true,'cri1','sel_1');return false;"></button>
+	               	<button type="button" class="icoSeleccionNinguno" title="Borrar seleccion" onclick="todos(false,'cri1','sel_1');return false;"></button>
+	               	<button type="button" class="icoCambioSentidoASC" title="Ordenar" onclick="if (this.className.indexOf('ASC')>0){ ordena('#cri'+1,'ASC'); this.className=this.className.replace('ASC','DESC'); $('#orden_'+1).val('ASC');}else {ordena('#cri'+1,'DESC'); this.className=this.className.replace('DESC','ASC');$('#orden_'+1).val('DESC');} return false;"></button>
+					</div>
+
+				<select id="cri1" name="cri1" class="cajaVariables jax_SELECT" multiple="multiple" size="8" onchange="cuantos('sel_1','cri1');">
+					<option class="jP_0" value="91" selected="selected">Todos los ámbitos</option>
+						<option class="jP_0" value="92" >Total Educación</option>
+						<option class="jP_0" value="93" >Formación de docentes de enseñanza infantil</option>
+						<option class="jP_0" value="94" >Formación de docentes de enseñanza primaria</option>
+						<option class="jP_0" value="95" >Otra Formación de personal docente y ciencias de la educación</option>
+						<option class="jP_0" value="96" >Total Artes y humanidades</option>
+						<option class="jP_0" value="97" >Técnicas audiovisuales y medios de comunicación</option>
+						<option class="jP_0" value="98" >Artes</option>
+						<option class="jP_0" value="99" >Lenguas</option>
+						<option class="jP_0" value="100" >Humanidades</option>
+						<option class="jP_0" value="101" >Total Ciencias sociales, periodismo y documentación</option>
+						<option class="jP_0" value="102" >Psicología</option>
+						<option class="jP_0" value="103" >Economía</option>
+						<option class="jP_0" value="104" >Otras Ciencias sociales y del comportamiento</option>
+						<option class="jP_0" value="105" >Periodismo e información</option>
+						<option class="jP_0" value="106" >Total Negocios, administración y derecho</option>
+						<option class="jP_0" value="107" >Administración y gestión de empresas</option>
+						<option class="jP_0" value="108" >Otra Educación comercial y empresarial</option>
+						<option class="jP_0" value="109" >Derecho</option>
+						<option class="jP_0" value="110" >Total Ciencias</option>
+						<option class="jP_0" value="111" >Ciencias de la vida</option>
+						<option class="jP_0" value="112" >Ciencias Físicas, químicas, geológicas</option>
+						<option class="jP_0" value="113" >Matemáticas y Estadística</option>
+						<option class="jP_0" value="114" >Total Informática</option>
+						<option class="jP_0" value="115" >Informática</option>
+						<option class="jP_0" value="116" >Total Ingeniería, industria y construcción</option>
+						<option class="jP_0" value="117" >Ingenierías</option>
+						<option class="jP_0" value="118" >Arquitectura y construcción</option>
+						<option class="jP_0" value="119" >Total Agricultura, ganadería,  silvicultura, pesca, y veterinaria</option>
+						<option class="jP_0" value="120" >Agricultura, ganadería y pesca</option>
+						<option class="jP_0" value="121" >Veterinaria</option>
+						<option class="jP_0" value="122" >Total Salud y servicios sociales</option>
+						<option class="jP_0" value="123" >Medicina</option>
+						<option class="jP_0" value="124" >Enfermería y atención a enfermos</option>
+						<option class="jP_0" value="125" >Otras ciencias de la Salud</option>
+						<option class="jP_0" value="126" >Trabajo social y orientación</option>
+						<option class="jP_0" value="127" >Total Servicios</option>
+						<option class="jP_0" value="128" >Deportes</option>
+						<option class="jP_0" value="129" >Turismo y Hostelería</option>
+						<option class="jP_0" value="130" >Otros Servicios</option>
+						</select>
+				<div class="capaClear">
+					<div class="capaSeleccionadosEstado">
+						<span class="paddingRight">Seleccionados:</span><span id="sel_1">1</span>
+					</div>
+					<div class="capaTotalSeleccionadosEstado">
+						<span class="paddingRight">Total:</span><span id="totalvar1">40</span>
+					</div>
+				</div>
+			</fieldset>
+		</div>
+</li><li id ="tg2" >
+    <div class="marcoINE">
+		<fieldset>
+			<legend><label for="cri2">Sexo</label></legend>
+               <div class="capaSelecBusqueda">
+	               	<label for="busc_2" class="oculto">Valores que contienen</label>
+	                <input title="Valores que contienen" size="10" type="text" id="busc_2" name="busc_2" class="cajaBusquedaVar" value="" >
+	                <button type="button" class="icoBuscar" title="Valores que contienen" onclick="buscar('sel_2','cri2',document.forms['tablaForm'].busc_2.value,'content');"></button>
+            	</div>
+            	<div class="capaSelecTodosNinguno">
+            		<input type="hidden" name="orden_2" id="orden_2" >
+	               	<button type="button" class="icoSeleccionTodos opcionesvarDer" title="Seleccionar todos" onclick="todos(true,'cri2','sel_2');return false;"></button>
+	               	<button type="button" class="icoSeleccionNinguno" title="Borrar seleccion" onclick="todos(false,'cri2','sel_2');return false;"></button>
+	               	<button type="button" class="icoCambioSentidoASC" title="Ordenar" onclick="if (this.className.indexOf('ASC')>0){ ordena('#cri'+2,'ASC'); this.className=this.className.replace('ASC','DESC'); $('#orden_'+2).val('ASC');}else {ordena('#cri'+2,'DESC'); this.className=this.className.replace('DESC','ASC');$('#orden_'+2).val('DESC');} return false;"></button>
+					</div>
+
+				<select id="cri2" name="cri2" class="cajaVariables jax_SELECT" multiple="multiple" size="8" onchange="cuantos('sel_2','cri2');">
+					<option class="jP_0" value="131" selected="selected">Ambos sexos</option>
+						<option class="jP_0" value="132" >Hombres</option>
+						<option class="jP_0" value="133" >Mujeres</option>
+						</select>
+				<div class="capaClear">
+					<div class="capaSeleccionadosEstado">
+						<span class="paddingRight">Seleccionados:</span><span id="sel_2">1</span>
+					</div>
+					<div class="capaTotalSeleccionadosEstado">
+						<span class="paddingRight">Total:</span><span id="totalvar2">3</span>
+					</div>
+				</div>
+			</fieldset>
+		</div>
+</li><li id ="tg3" >
+    <div class="marcoINE">
+		<fieldset>
+			<legend><label for="cri3">Indicador</label></legend>
+               <div class="capaSelecBusqueda">
+	               	<label for="busc_3" class="oculto">Valores que contienen</label>
+	                <input title="Valores que contienen" size="10" type="text" id="busc_3" name="busc_3" class="cajaBusquedaVar" value="" >
+	                <button type="button" class="icoBuscar" title="Valores que contienen" onclick="buscar('sel_3','cri3',document.forms['tablaForm'].busc_3.value,'content');"></button>
+            	</div>
+            	<div class="capaSelecTodosNinguno">
+            		<input type="hidden" name="orden_3" id="orden_3" >
+	               	<button type="button" class="icoSeleccionTodos opcionesvarDer" title="Seleccionar todos" onclick="todos(true,'cri3','sel_3');return false;"></button>
+	               	<button type="button" class="icoSeleccionNinguno" title="Borrar seleccion" onclick="todos(false,'cri3','sel_3');return false;"></button>
+	               	<button type="button" class="icoCambioSentidoASC" title="Ordenar" onclick="if (this.className.indexOf('ASC')>0){ ordena('#cri'+3,'ASC'); this.className=this.className.replace('ASC','DESC'); $('#orden_'+3).val('ASC');}else {ordena('#cri'+3,'DESC'); this.className=this.className.replace('DESC','ASC');$('#orden_'+3).val('DESC');} return false;"></button>
+					</div>
+
+				<select id="cri3" name="cri3" class="cajaVariables jax_SELECT" multiple="multiple" size="8" onchange="cuantos('sel_3','cri3');">
+					<option class="jP_0" value="134" selected="selected">Tasa de abandono el 1º año</option>
+						<option class="jP_0" value="135" >Tasa de abandono el 2º año</option>
+						<option class="jP_0" value="136" >Tasa de abandono el 3º año</option>
+						<option class="jP_0" value="137" >Tasa global de abandono</option>
+						</select>
+				<div class="capaClear">
+					<div class="capaSeleccionadosEstado">
+						<span class="paddingRight">Seleccionados:</span><span id="sel_3">1</span>
+					</div>
+					<div class="capaTotalSeleccionadosEstado">
+						<span class="paddingRight">Total:</span><span id="totalvar3">4</span>
+					</div>
+				</div>
+			</fieldset>
+		</div>
+</li><!-- <span class="texto_periodos">Seleccione las periodos:</span> -->
+                  <li id ="caja_periodo"><div class="marcoINE">
+                        <fieldset>
+                          <legend><label for="periodo">Periodo</label> </legend>
+                                  <div class="capaClear"></div>
+                          <div class="capaSelecBusqueda">
+                            <label for="busc_periodo" class="oculto">Valores que comienzan por...</label>
+                            <input size="10" type="text" id="busc_periodo" name="busc_periodo" class="cajaBusquedaVar" value="" title="Valores que comienzan por...">
+                            <button type="button" title="Valores que comienzan por..." class="icoBuscar" onclick="buscar('sel_periodo','periodo',document.forms['tablaForm'].busc_periodo.value,'content');"></button>
+                          </div>
+                                  <div class="capaSelecTodosNinguno">
+                                    <input type="hidden" name="orden_periodo" id="orden_periodo" value="DESC">
+                                      <button type="button" title="Seleccionar todos" class="icoSeleccionTodos opcionesvarDer" onclick="todos(true,'periodo','sel_periodo');return false;"></button>
+                            <button type="button" title="Borrar seleccion" class="icoSeleccionNinguno" onclick="todos(false,'periodo','sel_periodo');return false;"></button>
+                            <button type="button" title="Ordenar" class="icoCambioSentidoASC" onclick="if (this.className.indexOf('ASC')>0){ ordena('#periodo','ASC'); this.className=this.className.replace('ASC','DESC'); $('#orden_periodo').val('ASC');}else {ordena('#periodo','DESC'); this.className=this.className.replace('DESC','ASC');$('#orden_periodo').val('DESC');} return false;"></button>
+
+                          </div>
+
+                          <select id="periodo" name="periodo" class="cajaVariables "  size="8" multiple="multiple" onchange="cuantos('sel_periodo','periodo');">
+
+                            <option title="10"
+                                  	 data-order="10~00000"
+                                  	value="-2147483648~10" selected="selected">2021-2022</option>
+                                  <option title="9"
+                                   data-order="9~00000"
+                                  value="-2147483648~9">2020-2021</option>
+                                <option title="8"
+                                   data-order="8~00000"
+                                  value="-2147483648~8">2019-2020</option>
+                                <option title="7"
+                                   data-order="7~00000"
+                                  value="-2147483648~7">2018-2019</option>
+                                <option title="6"
+                                   data-order="6~00000"
+                                  value="-2147483648~6">2017-2018</option>
+                                <option title="5"
+                                   data-order="5~00000"
+                                  value="-2147483648~5">2016-2017</option>
+                                <option title="4"
+                                   data-order="4~00000"
+                                  value="-2147483648~4">2015-2016</option>
+                                <option title="3"
+                                   data-order="3~00000"
+                                  value="-2147483648~3">2014-2015</option>
+                                <option title="2"
+                                   data-order="2~00000"
+                                  value="-2147483648~2">2013-2014</option>
+                                <option title="1"
+                                   data-order="1~00000"
+                                  value="-2147483648~1">2012-2013</option>
+                                <option title="0"
+                                   data-order="0~00000"
+                                  value="-2147483648~0">2011-2012</option>
+                                </select>
+                                  <div class="capaClear"></div>
+                          <div class="capaSeleccionadosEstado">
+                                    <span>Seleccionados:</span><span id="sel_periodo" class="paddingLeft">1</span>
+                                    <!-- <input type="text" id="sel_3" name="sel_3" class="input_seleccionados" readonly size="1" value="0" > -->
+                                </div>
+                                <div class="capaTotalSeleccionadosEstado">
+                                    <span>Total:</span><span id="totalvar_Per" class="paddingLeft">11</span>
+                                  </div>
+                                </fieldset>
+                              </div>
+                    </li>
+
+                </ul>
+      </li>
+
+        <li id="capaFormato">
+              <span tabindex=0 title="Plegar/Desplegar" class="title titleOpen titulo_formato borderSeccion">
+               Elija forma de presentacion de la tabla</span>
+               <ul id="capaFilasColumnas" class="floatLeft">
+               <li>
+                 <table class="formato" title="formato">
+                 <tr>
+                 <td  class='celdacabeceravacia'><img id="swap" title="Intercambiar filas por columnas" alt="Intercambiar filas por columnas"  src="/menus/plantillas/jaxiPx/img/intercambio.gif"></td>
+                 <th colspan="3" class="tCL_0" id="tCL_col">
+                   <ul id="OrderColumns" class="connectedSortable">
+                            <li>Sexo<input type="hidden" name="columns" value="2"><div class="swapContent">
+	<img class="swapDown swapButtons" tabindex=0 role="button" alt="Desplazar abajo" title="Desplazar abajo" src="/menus/plantillas/jaxiPx/img/triAba.gif">
+	<img class="swapUp swapButtons" tabindex=0 role="button" alt="Desplazar arriba" title="Desplazar arriba" src="/menus/plantillas/jaxiPx/img/triArri.gif">
+	<img class="swapColumn swapChange swapButtons" tabindex=0 role="button" alt="Pasar a fila" title="Pasar a fila" src="/menus/plantillas/jaxiPx/img/interDown.gif">
+	<img class="swapRown swapChange swapButtons" tabindex=0 role="button" alt="Pasar a columna" title="Pasar a columna" src="/menus/plantillas/jaxiPx/img/interUp.gif"></div></li>
+                            	<li>Indicador<input type="hidden" name="columns" value="3"><div class="swapContent">
+	<img class="swapDown swapButtons" tabindex=0 role="button" alt="Desplazar abajo" title="Desplazar abajo" src="/menus/plantillas/jaxiPx/img/triAba.gif">
+	<img class="swapUp swapButtons" tabindex=0 role="button" alt="Desplazar arriba" title="Desplazar arriba" src="/menus/plantillas/jaxiPx/img/triArri.gif">
+	<img class="swapColumn swapChange swapButtons" tabindex=0 role="button" alt="Pasar a fila" title="Pasar a fila" src="/menus/plantillas/jaxiPx/img/interDown.gif">
+	<img class="swapRown swapChange swapButtons" tabindex=0 role="button" alt="Pasar a columna" title="Pasar a columna" src="/menus/plantillas/jaxiPx/img/interUp.gif"></div></li>
+                            	<li>Periodo<input type="hidden" name="columns" value="p_per"><div class="swapContent">
+	<img class="swapDown swapButtons" tabindex=0 role="button" alt="Desplazar abajo" title="Desplazar abajo" src="/menus/plantillas/jaxiPx/img/triAba.gif">
+	<img class="swapUp swapButtons" tabindex=0 role="button" alt="Desplazar arriba" title="Desplazar arriba" src="/menus/plantillas/jaxiPx/img/triArri.gif">
+	<img class="swapColumn swapChange swapButtons" tabindex=0 role="button" alt="Pasar a fila" title="Pasar a fila" src="/menus/plantillas/jaxiPx/img/interDown.gif">
+	<img class="swapRown swapChange swapButtons" tabindex=0 role="button" alt="Pasar a columna" title="Pasar a columna" src="/menus/plantillas/jaxiPx/img/interUp.gif"></div></li>
+                              </ul>
+                 </th>
+                 </tr>
+                 <tr>
+                 <th rowspan="3" class="tCL_0"  id="tCL_row">
+                 <ul id="OrderRows" class="connectedSortable">
+                      <li>Universidad<input type="hidden" name="rows" value="0"><div class="swapContent">
+	<img class="swapDown swapButtons" tabindex=0 role="button" alt="Desplazar abajo" title="Desplazar abajo" src="/menus/plantillas/jaxiPx/img/triAba.gif">
+	<img class="swapUp swapButtons" tabindex=0 role="button" alt="Desplazar arriba" title="Desplazar arriba" src="/menus/plantillas/jaxiPx/img/triArri.gif">
+	<img class="swapColumn swapChange swapButtons" tabindex=0 role="button" alt="Pasar a fila" title="Pasar a fila" src="/menus/plantillas/jaxiPx/img/interDown.gif">
+	<img class="swapRown swapChange swapButtons" tabindex=0 role="button" alt="Pasar a columna" title="Pasar a columna" src="/menus/plantillas/jaxiPx/img/interUp.gif"></div></li>
+                            <li>Ámbito de estudio<input type="hidden" name="rows" value="1"><div class="swapContent">
+	<img class="swapDown swapButtons" tabindex=0 role="button" alt="Desplazar abajo" title="Desplazar abajo" src="/menus/plantillas/jaxiPx/img/triAba.gif">
+	<img class="swapUp swapButtons" tabindex=0 role="button" alt="Desplazar arriba" title="Desplazar arriba" src="/menus/plantillas/jaxiPx/img/triArri.gif">
+	<img class="swapColumn swapChange swapButtons" tabindex=0 role="button" alt="Pasar a fila" title="Pasar a fila" src="/menus/plantillas/jaxiPx/img/interDown.gif">
+	<img class="swapRown swapChange swapButtons" tabindex=0 role="button" alt="Pasar a columna" title="Pasar a columna" src="/menus/plantillas/jaxiPx/img/interUp.gif"></div></li>
+                            </ul>
+                 </th>
+                 <td class='dCIe' headers="tCL_row tCL_col">.</td>
+                 <td class='dCIe' headers="tCL_row tCL_col">.</td>
+                 <td class='dCIe' headers="tCL_row tCL_col">.</td>
+                 </tr>
+                 <tr>
+                 <td class='dCIe' headers="tCL_row tCL_col">.</td>
+                 <td class='dCIe' headers="tCL_row tCL_col">.</td>
+                 <td class='dCIe' headers="tCL_row tCL_col">.</td>
+                 </tr>
+                 <tr>
+                 <td class='dCIe' headers="tCL_row tCL_col">.</td>
+                 <td class='dCIe' headers="tCL_row tCL_col">.</td>
+                 <td class='dCIe' headers="tCL_row tCL_col">.</td>
+                 </tr>
+               </table>
+              </li>
+            <li>
+                    <div id="capa_tabla_showdec">
+                      <label for="formato_tabla_dec">
+                        <span>Decimales a mostrar:</span>
+                      </label>
+                      <select id="formato_tabla_dec" name="formato_tabla_dec">
+                             <option title="Por defecto" value="">Por defecto</option>
+                            <option title="0" value="0">0</option>
+                                 <option title="1" value="1">1</option>
+                                 <option title="2" value="2">2</option>
+                                 </select>
+                      </div>
+                    </li>
+               </ul>
+
+
+            </li>
+
+          <li class="seccNotas">
+        <span id="tituloNotas" class="title texto_notas borderSeccion">Notas ( 5 )
+          </span><ul id="capaListadoNotas" class="notas">
+            <li>1) (.) : Dato no aplicable en dicha desagregación. (..) : Dato no disponible por tener una población insuficiente para su cálculo</li>
+               <li>1) ~'Indicador,Tasa de abandono el 1º año'~Proporción de estudiantes de nuevo ingreso en el curso X, no titulados en ese curso y no matriculados en ese estudio en el curso X+1 ni X+2</li>
+               <li>1) ~'Indicador,Tasa de abandono el 2º año'~Proporción de estudiantes de nuevo ingreso en el curso X, matriculados en el mismo estudio en el curso X+1 y no titulados, y no matriculados en ese estudio en el curso X+2 ni X+3</li>
+               <li>1) ~'Indicador,Tasa de abandono el 3º año'~Proporción de estudiantes de nuevo ingreso en el curso X, matriculados en el mismo estudio en el curso X+2 y no titulados, y no matriculados en ese estudio en el curso X+3 ni X+4</li>
+               <li>1) ~'Indicador,Tasa global de abandono'~Tasa de abandono el 1º año + Tasa de abandono el 2º año + Tasa de abandono el 3º año</li>
+               </ul></ul>
+       <div class="capaClear"></div>
+
+       <div id="capaSeparacion"></div>
+         <div id="capaTotalSeriesCeldas" role="status">
+             <span id="totalSeriesCeldas">Total:</span>
+             <span id="NumSeries" class="paddingRight">0</span><span>series</span><span class="paddingBothSides">y </span><span id="NumCeldas" class="paddingRight">0</span><span>datos</span>
+          </div>
+
+
+          <div id="capaBotones">
+                 <input type="hidden" name=totalOps value="6">
+                 <input type="hidden" name="numCri" value="-1">
+                  <input type="submit" class="botonSel" id="botonConsulSele" name="consulsele" value="Consultar seleccion"
+                      onmouseover="">
+<!-- 				      	 	   		onmouseover="">		 -->
+<input type="submit" class="botonSel all" id="botonConsulTodo" name="ct" value="Consultar todo"
+                          onmouseover="">
+                    </div>
+
+      <div class="capaClear"></div>
+
+
+      <ul class="piePx">
+        <li><span class="textoFuente">Fuente:Sistema Integrado de Información Universitaria (SIIU). Ministerio de Ciencia, Innovación y Universidades.</span></li>
+        </ul>
+      </form>
+    <footer>
+<div id="pie">
+        <div class="homePie col">
+	<ul>
+		<li><img src="/menus/_b/img/muniv_footer_logo.svg" class="attachment-large size-large" alt="Logo Ministerio de Ciencia" loading="lazy"></li>
+		<li>
+                        <div >
+                                <p> Ministerio de Ciencia, Innovaci&oacute;n y Universidades</p>
+                                <p> Paseo de la Castellana, 162, 28046 Madrid</p>
+                        </div>                                                
+                </li>
+	</ul>
+        </div>        
+        <div class="homePie col">
+	<ul>
+		<li><a href="https://www.ciencia.gob.es/" itemprop="url" class="hfe-menu-item" style="color: black;">Inicio</a></li>
+                <li><a href="https://www.ciencia.gob.es/InfoGeneralPortal/Accesibilidad.html" itemprop="url" class="hfe-menu-item" style="color: black;">Accesibilidad</a></li>
+                <li><a href="https://www.ciencia.gob.es/InfoGeneralPortal/AvisoLegal.html" itemprop="url" class="hfe-menu-item"style="color: black;">Aviso Legal</a></li>
+                <li><a href="https://www.ciencia.gob.es/InfoGeneralPortal/MapaWeb.html" itemprop="url" class="hfe-menu-item"style="color: black;">Mapa del sitio</a></a></li>
+		<li><a href="https://www.ciencia.gob.es/InfoGeneralPortal/Cookies.html" itemprop="url" class="hfe-menu-item"style="color: black;">Pol&iacute;tica de cookies</a></li>
+		<li><a href="https://www.ciencia.gob.es/InfoGeneralPortal/PoliticaPrivacidad.html" itemprop="url" class="hfe-menu-item"style="color: black;">Protecci&oacute;n de Datos Personales</a></li>
+	</ul>
+        </div>      
+        <div class="homePie col">
+	<ul>
+                <li><a class="icoSocial icoFacebook" href="https://www.facebook.com/CienciaGob/"><span class="tit">Facebook</span></a></li>
+                <li><a class="icoSocial icoFacebook" href="https://twitter.com/CienciaGob"><span class="tit">Twitter</span></a></li>
+                <li><a class="icoSocial icoFacebook" href="https://www.youtube.com/user/cienciagob"><span class="tit">YouTube</span></a></li>
+                <li><a class="icoSocial icoFacebook" href="https://www.instagram.com/cienciagob/"><span class="tit">Instagram</span></a></li>
+                <li><a class="icoSocial icoFacebook" href="https://www.flickr.com/photos/cienciagob/"><span class="tit">Flickr</span></a></li>
+	</ul>
+        </div>           
+</div>
+<a class="ir-arriba" href="javascript:void(0)" aria-label="Bot&oacute;n para volver arriba" title="Volver arriba" tabindex="0" role="button" style="display: inline;">
+	<i class="fas fa-caret-up"></i>
+</a>
+</footer>
+</body>
+</html>
