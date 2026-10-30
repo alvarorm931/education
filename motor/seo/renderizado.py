@@ -4,6 +4,8 @@ Para una muestra de páginas de cada plantilla:
 1. **Contenido que añade JavaScript.** Se compara el texto de `<main>` del HTML servido con el que queda tras
    ejecutar JavaScript. Si el JavaScript añade contenido, un robot que no lo ejecuta no lo ve (los de IA no
    ejecutan JavaScript; Google lo hace más tarde y no siempre): no se publica.
+   Si al revés el JavaScript oculta parte del contenido (pestañas o paneles cerrados), aviso: Google lo indexa,
+   pero Microsoft advierte de que sus sistemas de IA pueden no ver lo que está en pestañas o menús desplegables.
 2. **Directivas cambiadas con JavaScript.** `noindex` o canónica distintos tras ejecutar JavaScript: no se publica
    (Google: «don't use JavaScript to change the robots meta tag»; ley, regla 10).
 3. **Ventanas al cargar.** Elementos fijos que tapan más de una cuarta parte de la pantalla del móvil tres segundos
@@ -144,6 +146,11 @@ def comprobar_con_navegador(sitio: Path, control, por_plantilla: int = 3, medir_
                     if len(nuevas) > max(30, 0.05 * len(palabras_html)):
                         fallos.append(Fallo("contenido_html", ruta, f"JavaScript añade {len(nuevas)} palabras al "
                                             f"contenido principal (por ejemplo: {', '.join(sorted(nuevas)[:8])})"))
+                    ocultas = palabras_html - set(PALABRA.findall(dom["main"].lower()))
+                    if len(ocultas) > max(30, 0.2 * len(palabras_html)):
+                        fallos.append(Fallo("contenido_html", ruta, f"JavaScript oculta {len(ocultas)} palabras del "
+                                            "contenido principal (pestañas o paneles cerrados): los sistemas de IA "
+                                            "pueden no verlas; mejor secciones visibles", "aviso"))
                     robots_html = "|".join(sorted(x.lower() for x in crudo.robots))
                     if dom["robots"] != robots_html:
                         fallos.append(Fallo("indexacion", ruta, f"JavaScript cambia las directivas de robots: "

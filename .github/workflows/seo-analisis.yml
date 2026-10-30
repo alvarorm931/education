@@ -1,8 +1,8 @@
 name: SEO, análisis bajo demanda
 
-# Ejecuta un módulo de motor/seo (competencia, dominio…) en los servidores de GitHub y deja el resultado como
-# artefacto de la ejecución. No usa la rama sondas ni su cola, para no cancelar ni ser cancelado por las pruebas
-# de las demás conversaciones.
+# Ejecuta un módulo de motor/seo (competencia, dominio…) en los servidores de GitHub y deja el resultado en la rama
+# propia «seo» (seo/AAAAMMDDTHHMMSS-modulo/) y como artefacto. No usa la rama sondas ni su cola, para no cancelar ni
+# ser cancelado por las pruebas de las demás conversaciones. Solo guarda medidas de webs públicas, nunca sus textos.
 
 on:
   workflow_dispatch:
@@ -15,7 +15,7 @@ on:
         required: false
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   analisis:
@@ -35,6 +35,26 @@ jobs:
           case "$MODULO" in motor.seo.*) ;; *) echo "Solo módulos de motor.seo"; exit 1;; esac
           mkdir -p salida
           python -m "$MODULO" $ARGS --salida salida 2>&1 | tee salida/salida.txt
+      - name: Subir a la rama seo
+        if: always()
+        run: |
+          STAMP=$(date -u +%Y%m%dT%H%M%S)-${MODULO##*.}
+          mkdir -p envio && cp -r salida "envio/$STAMP"
+          cd envio
+          git init -q && git config user.name "motor-seo" && git config user.email "motor-seo@users.noreply.github.com"
+          git remote add origin "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git"
+          git checkout -q -B seo
+          git add "$STAMP" && git commit -qm "Análisis $MODULO"
+          for intento in 1 2 3 4 5; do
+            if git fetch -q --depth 1 origin seo; then git rebase -q FETCH_HEAD || git reset -q --soft FETCH_HEAD; fi
+            git push -q origin seo && break
+            sleep $((intento * 5))
+          done
+        env:
+          MODULO: ${{ inputs.modulo }}
+      - name: Borrar la copia local
+        if: always()
+        run: rm -rf envio
       - uses: actions/upload-artifact@v4
         if: always()
         with:

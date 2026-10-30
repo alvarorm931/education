@@ -424,6 +424,9 @@ def test_navegador(web):
                '<script>setTimeout(() => document.querySelector("main").insertAdjacentHTML("afterbegin", '
                '"<div style=\\"height:600px\\">Anuncio</div>"), 400)</script>')
     reescribir(raiz, "/metodologia/", lambda h: h.replace("</body>", ventana + "</body>"))
+    pestanas = ("<script>document.querySelectorAll('main p').forEach(p => p.style.display = 'none')</script>")
+    reescribir(raiz, PROCESO_A, lambda h: h.replace("</body>", pestanas + "</body>").replace(
+        "<h1>", "<p>" + " ".join(f"requisito{i}" for i in range(40)) + "</p><h1>"))
     c = control(raiz, man)
     c.ejecutar()
     f = comprobar_con_navegador(raiz, c, por_plantilla=1)
@@ -434,7 +437,8 @@ def test_navegador(web):
     assert any(r == LUGAR for r, _ in por_regla["indexacion"])
     assert any(r == "/metodologia/" for r, _ in por_regla["ventanas"])
     assert any("CLS" in d and "metodologia" in d for _, d in por_regla["velocidad"])
-    assert all(r != PROCESO_A for r, _ in por_regla.get("contenido_html", []))
+    assert not any(r == PROCESO_A and "añade" in d for r, d in por_regla["contenido_html"])
+    assert any(r == PROCESO_A and "oculta" in d for r, d in por_regla["contenido_html"])
 
 
 # ---------------------------------------------------------------- avisos a buscadores
