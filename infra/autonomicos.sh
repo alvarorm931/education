@@ -384,6 +384,8 @@ for c in $CONECTORES; do
       # Histórico por la ficha de cada día (/detalle/, cerrada en robots.txt; se lee como boletín oficial)
       ejecutar motor.provinciales.boppontevedra --historico --salida "$S" --max-minutos "$M"
       "$G" "BOPPO: histórico"
+      ejecutar motor.provinciales.boppontevedra --textos --salida "$S" --max-minutos "$M"
+      "$G" "BOPPO: textos"
       ;;
     bopcoruna)
       # Textos: /bopportal/publicado está cerrado en robots.txt; se lee como boletín oficial (motor/http.py)

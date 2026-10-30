@@ -25,3 +25,12 @@ def test_ficha_del_dia(tmp_path, monkeypatch):
     monkeypatch.setattr(b, "obtener", lambda url, accept=None: Respuesta(url, 200, contenido, {}))
     inf = b.procesar_dia(date(2022, 1, 3), tmp_path, Archivo(tmp_path / "archivo", solo_huella=True))
     assert (inf["resultado"], inf["numero"], inf["disposiciones"]) == ("ok", "1", 14)
+
+
+def test_texto_ficha():
+    h = ('<div id="detalle"><div id="contAnuncio"><div><h2>ADMINISTRACI&Oacute;N LOCAL</h2>'
+         '<p class="x00-PARRAFO-SUMARIO">BASES PARA A SELECCI&Oacute;N DUNHA PRAZA DE AUXILIAR</p>'
+         '<p>Primeira. Obxecto da convocatoria.</p></div></div><div class="boton">pdf</div>').encode()
+    t = b.texto_disposicion(h, {"tipo_acto": "bases"})
+    assert "BASES PARA A SELECCIÓN DUNHA PRAZA DE AUXILIAR" in t["texto"] and "pdf" not in t["texto"]
+    assert b.texto_disposicion(h, {"tipo_acto": "admitidos"})["solo_recuento"] is True

@@ -11,6 +11,7 @@ Formato verificado el 30/10/2026 desde GitHub:
 Uso:
   python -m motor.provinciales.boppontevedra --salida ruta/
   python -m motor.provinciales.boppontevedra --historico --max-minutos 40 --salida ruta/
+  python -m motor.provinciales.boppontevedra --textos --max-minutos 30 --salida ruta/
 """
 
 from __future__ import annotations
@@ -26,10 +27,13 @@ from zoneinfo import ZoneInfo
 from pathlib import Path
 
 from motor.archivo import Archivo, solo_huella_por_defecto
-from motor.autonomicos.comun import Freno, clasificar, convocante_de_organismo, es_empleo_estricto, escribir_json, escribir_jsonl
+from motor.autonomicos.comun import (Freno, clasificar, convocante_de_organismo, descargar_textos, es_empleo_estricto,
+                                     escribir_json, escribir_jsonl, leer_jsonl)
 from motor.boe.clasificar import normalizar
 from motor.extraccion.texto_es import fecha_texto
 from motor.http import obtener
+from motor.limpieza import RE_DOCUMENTO, limpiar_html, texto_de
+from motor.provinciales.comun import CON_TEXTO
 
 FUENTE = "boppontevedra"
 SIGLAS = "BOP-PONTEVEDRA"
@@ -133,6 +137,39 @@ def procesar_portada(raiz: Path, archivo: Archivo) -> dict:
     return inf
 
 
+def texto_disposicion(contenido: bytes, x: dict | None = None) -> dict:
+    """Texto de la ficha del anuncio (div#contAnuncio, versión HTML informativa; la oficial es el PDF firmado). En
+    nombramientos, listas y resultados (tipos fuera de CON_TEXTO) solo se cuentan las líneas con documento de
+    identidad."""
+    h = contenido.decode("utf-8", errors="replace")
+    i = h.find('<div id="contAnuncio"')
+    if i < 0:
+        raise ValueError("sin div#contAnuncio: posible cambio de formato")
+    j = h.find('<div class="boton">', i)
+    cuerpo = h[i:j if j > i else None]
+    if x is not None and x.get("tipo_acto") not in CON_TEXTO:
+        lineas = [texto_de(b) for b in re.split(r"</(?:p|tr|li)>", cuerpo)]
+        return {"titulo": None, "texto": None, "tablas": [], "solo_recuento": True,
+                "lineas_con_documento_de_identidad": sum(1 for l in lineas if RE_DOCUMENTO.search(l))}
+    return {"titulo": None, **limpiar_html(cuerpo)}
+
+
+def _base(raiz: Path) -> Path:
+    return raiz / "datos" / "provinciales" / FUENTE
+
+
+def ruta_texto(raiz: Path, x: dict) -> Path:
+    return _base(raiz) / "textos" / x["fecha"][:4] / x["fecha"][5:7] / f"{x['id']}.json"
+
+
+def textos_pendientes(raiz: Path) -> list[dict]:
+    lista = []
+    for f in sorted((_base(raiz) / "oposiciones").glob("*/*/*.jsonl"), reverse=True):
+        lista += [x for x in leer_jsonl(f) if x.get("url_html") and not ruta_texto(raiz, x).exists()]
+    return sorted(lista, key=lambda x: (0 if x.get("tipo_acto") in CON_TEXTO else 1,
+                                        0 if x.get("alcance") in (None, "acceso") else 1))
+
+
 def procesar_dia(d: date, raiz: Path, archivo: Archivo) -> dict:
     url = url_dia(d)
     r = obtener(url, accept="text/html")
@@ -202,11 +239,19 @@ def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser()
     p.add_argument("--salida", type=Path, default=Path("."))
     p.add_argument("--historico", action="store_true", help="días anteriores por la ficha de cada boletín")
+    p.add_argument("--textos", action="store_true", help="texto de la ficha de cada anuncio de empleo")
     p.add_argument("--desde", type=date.fromisoformat, default=INICIO)
     p.add_argument("--max-minutos", type=float, default=0)
     p.add_argument("--pausa", type=float, default=1.0)
     a = p.parse_args(argv)
     archivo = Archivo(a.salida / "archivo", indice_por_fuente=True, solo_huella=solo_huella_por_defecto())
+    if a.textos:
+        pend = textos_pendientes(a.salida)
+        hechos, errores = descargar_textos(pend, lambda x: ruta_texto(a.salida, x), lambda x: x["url_html"],
+                                           texto_disposicion, archivo, FUENTE, a.max_minutos, a.pausa,
+                                           accept="text/html", ext="html", por_registro=True)
+        print(f"BOPPO textos: {hechos} descargados, {errores} errores, {len(pend) - hechos} pendientes")
+        return 0
     if a.historico:
         ayer = datetime.now(MADRID).date() - timedelta(days=1)
         return historico(a.salida, archivo, a.desde, ayer, a.pausa, a.max_minutos)
