@@ -1,103 +1,47 @@
 {
- "fecha": "2026-10-30T13:12:46+00:00",
- "fecha_madrid": "30/10 14:12",
+ "fecha": "2026-10-30T13:25:19+00:00",
+ "fecha_madrid": "30/10 14:25",
  "ventana_horas": 6.0,
  "resumen": {
-  "ejecuciones_revisadas": 164,
-  "fallos": 1,
+  "ejecuciones_revisadas": 179,
+  "fallos": 0,
   "fallos_pendientes": 0,
   "relanzados": 0,
-  "colas_largas": 3,
+  "colas_largas": 4,
   "flujos_programados_parados": [],
   "programaciones_lanzadas_a_mano": [],
   "avisos_de_fuentes": 0,
   "almacen": "ok"
  },
- "fallos": [
-  {
-   "flujo": "Motor de datos",
-   "fichero": "motor.yml",
-   "id": 41019168283,
-   "intento": 2,
-   "evento": "workflow_dispatch",
-   "rama": "main",
-   "commit": "d142273",
-   "titulo": "Motor de datos",
-   "conclusion": "failure",
-   "cuando": "30/10 13:30",
-   "url": "https://github.com/alvarorm931/education/actions/runs/41019168283",
-   "superado": false,
-   "en_curso": "https://github.com/alvarorm931/education/actions/runs/41055944787",
-   "pasajero": true,
-   "detalle": [
-    {
-     "trabajo": "motor",
-     "pasos": [
-      "BOE, textos de anuncios de oposiciones"
-     ],
-     "ejecutor": "GitHub Actions 1000000677",
-     "etiquetas": [
-      "ubuntu-latest"
-     ],
-     "final_registro": [
-      "Descargados: 1500. Errores: 0",
-      "Descargados: 1500. Errores: 0",
-      "Descargados: 1500. Errores: 0",
-      "Descargados: 1500. Errores: 0",
-      "Descargados: 464. Errores: 0",
-      "##[error]Process completed with exit code 1.",
-      "...",
-      "hint: the same ref. If you want to integrate the remote changes, use",
-      "hint: 'git pull' before pushing again.",
-      "hint: See the 'Note about fast-forwards' in 'git push --help' for details.",
-      "Documentos a descargar: 1500",
-      "Descargados: 1500. Errores: 0",
-      "To https://github.com/alvarorm931/education",
-      " ! [rejected]              datos -> datos (fetch first)",
-      "error: failed to push some refs to 'https://github.com/alvarorm931/education'",
-      "hint: Updates were rejected because the remote contains work that you do not",
-      "hint: have locally. This is usually caused by another repository pushing to",
-      "hint: the same ref. If you want to integrate the remote changes, use",
-      "hint: 'git pull' before pushing again.",
-      "hint: See the 'Note about fast-forwards' in 'git push --help' for details.",
-      "Documentos a descargar: 1500",
-      "Tiempo agotado: quedan 1036 para la siguiente ejecución",
-      "Descargados: 464. Errores: 0",
-      "To https://github.com/alvarorm931/education",
-      " ! [rejected]              datos -> datos (fetch first)",
-      "error: failed to push some refs to 'https://github.com/alvarorm931/education'",
-      "hint: Updates were rejected because the remote contains work that you do not",
-      "hint: have locally. This is usually caused by another repository pushing to",
-      "hint: the same ref. If you want to integrate the remote changes, use",
-      "hint: 'git pull' before pushing again.",
-      "hint: See the 'Note about fast-forwards' in 'git push --help' for details.",
-      "##[error]Process completed with exit code 1."
-     ]
-    }
-   ]
-  }
- ],
+ "fallos": [],
  "colas_largas": [
   {
    "flujo": "Grados por tramos",
-   "id": 41056747000,
+   "id": 41058373231,
    "en_cola_min": 35,
+   "trabajos_empezados": 0,
+   "url": "https://github.com/alvarorm931/education/actions/runs/41058373231"
+  },
+  {
+   "flujo": "Grados por tramos",
+   "id": 41056747000,
+   "en_cola_min": 48,
    "trabajos_empezados": 0,
    "url": "https://github.com/alvarorm931/education/actions/runs/41056747000"
   },
   {
-   "flujo": "Estudios por tramos",
-   "id": 41054418328,
-   "en_cola_min": 54,
-   "trabajos_empezados": 0,
-   "url": "https://github.com/alvarorm931/education/actions/runs/41054418328"
+   "flujo": "Boletines autonómicos",
+   "id": 41051537477,
+   "en_cola_min": 90,
+   "trabajos_empezados": 3,
+   "url": "https://github.com/alvarorm931/education/actions/runs/41051537477"
   },
   {
    "flujo": "Boletines autonómicos",
-   "id": 41051537477,
-   "en_cola_min": 77,
-   "trabajos_empezados": 3,
-   "url": "https://github.com/alvarorm931/education/actions/runs/41051537477"
+   "id": 41020598739,
+   "en_cola_min": 354,
+   "trabajos_empezados": 52,
+   "url": "https://github.com/alvarorm931/education/actions/runs/41020598739"
   }
  ],
  "programados": {
@@ -106,7 +50,7 @@
    "parado": false
   },
   "autonomicos.yml": {
-   "ultimo_bien": "30/10 14:07",
+   "ultimo_bien": "30/10 14:14",
    "parado": false
   },
   "seo.yml": {
