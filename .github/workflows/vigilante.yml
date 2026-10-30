@@ -9,7 +9,7 @@ name: Vigilante
 on:
   schedule:
     - cron: "7,37 * * * *"
-  # Además, en cuanto termina mal cualquier otro flujo (la programación de GitHub puede retrasarse u omitirse)
+  # Además, al terminar cualquier otro flujo (la programación de GitHub puede retrasarse u omitirse)
   workflow_run:
     workflows:
       - Motor de datos
@@ -43,17 +43,32 @@ concurrency:
 
 jobs:
   vigilar:
-    # Tras otro flujo, solo si no terminó bien (los que salen bien no necesitan revisión inmediata)
-    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion != 'success'
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
+      # La programación de GitHub no siempre se dispara. Por eso también se arranca al terminar otros flujos:
+      # si terminaron mal, siempre; si terminaron bien, solo si el último informe tiene más de 25 minutos.
+      - name: ¿Hace falta revisar?
+        id: toca
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          EVENTO: ${{ github.event_name }}
+          RESULTADO: ${{ github.event.workflow_run.conclusion }}
+        run: |
+          if [ "$EVENTO" != "workflow_run" ] || [ "$RESULTADO" != "success" ]; then echo "si=1" >> "$GITHUB_OUTPUT"; exit 0; fi
+          ULTIMA=$(gh api "repos/$GITHUB_REPOSITORY/commits/vigilancia" --jq .commit.committer.date 2>/dev/null || echo 1970-01-01T00:00:00Z)
+          EDAD=$(( ( $(date -u +%s) - $(date -u -d "$ULTIMA" +%s) ) / 60 ))
+          echo "Último informe hace $EDAD minutos"
+          if [ "$EDAD" -ge 25 ]; then echo "si=1" >> "$GITHUB_OUTPUT"; else echo "si=0" >> "$GITHUB_OUTPUT"; fi
+
       - uses: actions/checkout@v4
+        if: steps.toca.outputs.si == '1'
         with:
           fetch-depth: 1   # sin sparse-checkout: con él, «git add» rechaza ficheros fuera de la selección
 
       - name: Credenciales del almacén (si falla, se anota)
         id: aws
+        if: steps.toca.outputs.si == '1'
         continue-on-error: true
         uses: aws-actions/configure-aws-credentials@v4
         with:
@@ -62,12 +77,13 @@ jobs:
           role-session-name: vigilante-${{ github.run_id }}
 
       - name: Revisar
+        if: steps.toca.outputs.si == '1'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python3 infra/vigilante.py --salida informe --horas 6 --relanzar
 
       - name: Subir a la rama vigilancia
-        if: always()
+        if: always() && steps.toca.outputs.si == '1'
         run: |
           [ -f informe/ultimo.json ] || exit 0
           git config user.name "vigilante"
