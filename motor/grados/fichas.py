@@ -161,6 +161,26 @@ def indexar_web_privadas(carpeta: Path | None) -> dict[str, dict]:
     return salida
 
 
+def indexar_paginas_privadas(carpeta: Path | None) -> dict[str, dict]:
+    """código → página del grado en la web de su universidad privada, con lo que pide su formulario. Sirve para
+    decir un hecho verdadero cuando no hay precio: «la universidad no publica el precio en la página del grado;
+    su formulario pide correo y teléfono» (docs/estrategia-informacion-cerrada.md §2.6)."""
+    salida: dict[str, dict] = {}
+    if not carpeta:
+        return salida
+    for f in sorted(carpeta.rglob("web_privadas/[0-9]*.json"), key=lambda x: str(x)):
+        d = json.loads(f.read_text(encoding="utf-8"))
+        m = re.search(r"(\d{4})(\d{2})(\d{2})T\d{6}", str(f))
+        fecha = f"{m.group(1)}-{m.group(2)}-{m.group(3)}" if m else None
+        for cod, fi in (d.get("fichas") or {}).items():
+            if fi.get("estado") == 200:
+                salida[cod] = {"url": fi.get("url"), "formulario_pide_correo": bool(fi.get("formulario_pide_correo")),
+                               "formulario_pide_telefono": bool(fi.get("formulario_pide_telefono")),
+                               "da_algun_importe": any(i.get("verosimil") for i in fi.get("importes") or []),
+                               "capturado": fecha}
+    return salida
+
+
 def indexar_tarifas(carpeta: Path | None) -> dict[str, dict]:
     """código → precio leído en los PDF o páginas de precios de su universidad (tarifas_grado.py). Entre varios
     documentos gana el del curso más reciente que dé un precio por curso."""
@@ -435,7 +455,8 @@ def resumen_plan(p: dict) -> dict:
 
 def construir(catalogo: list[dict], genericos: list[dict], tarjetas: dict, detalles: dict,
               planes: dict, ind: dict | None = None, web: dict | None = None, ruct: dict | None = None,
-              planes_id: dict | None = None, tarifas: dict | None = None) -> tuple[list[dict], list[dict]]:
+              planes_id: dict | None = None, tarifas: dict | None = None,
+              paginas: dict | None = None) -> tuple[list[dict], list[dict]]:
     gen_de = {c: g for g in genericos for c in g["titulos"]}
     por_ambito = Counter((clave_universidad(t["universidades"][0]["nombre"]), t.get("ambito")) for t in catalogo
                          if t["situacion"] == "Activo" and t["clase"] == "grado")
@@ -505,6 +526,9 @@ def construir(catalogo: list[dict], genericos: list[dict], tarjetas: dict, detal
             "centros": centros,
             "precio_primera_matricula": round(min(precios) * creditos, 2) if precios and creditos else None,
             "precio_web": pweb,
+            # privada sin precio: su página del grado y lo que pide su formulario (hecho medido, sin juicio)
+            "pagina_privada_sin_precio": (paginas or {}).get(t["codigo"])
+            if t["universidad_tipo"] == "Privada" and not (pweb and pweb.get("precio_curso")) else None,
             "bonificacion": de_comunidad(t["universidades"][0].get("comunidad")) if t["universidad_tipo"] == "Pública" else None,
             "plan": plan,
             "ruct": resumen_ruct(r),
@@ -565,6 +589,9 @@ def resumen(fichas: list[dict], comparativa: list[dict]) -> dict:
         "privadas_con_precio_por_curso": sum(1 for f in fichas if (f.get("precio_web") or {}).get("precio_curso")),
         "privadas_con_precio_total_estimado": sum(1 for f in fichas
                                                   if (f.get("precio_web") or {}).get("precio_total_estimado")),
+        "privadas_sin_precio_con_pagina_leida": sum(1 for f in fichas if f.get("pagina_privada_sin_precio")),
+        "privadas_sin_precio_que_piden_correo": sum(1 for f in fichas if (f.get("pagina_privada_sin_precio") or {})
+                                                    .get("formulario_pide_correo")),
         "privadas_precio_por_fuente": dict(Counter((f.get("precio_web") or {}).get("fuente") for f in fichas
                                                    if (f.get("precio_web") or {}).get("precio_curso"))),
         "privadas_precio_por_metodo": dict(Counter((f.get("precio_web") or {}).get("metodo") for f in fichas
@@ -607,7 +634,8 @@ def main() -> None:
                                     indexar_web_privadas(Path(a.web_privadas) if a.web_privadas else None),
                                     indexar_ruct(Path(a.ruct) if a.ruct else None),
                                     planes_por_identificador(Path(a.boe) if a.boe else None),
-                                    indexar_tarifas(Path(a.tarifas) if a.tarifas else None))
+                                    indexar_tarifas(Path(a.tarifas) if a.tarifas else None),
+                                    indexar_paginas_privadas(Path(a.web_privadas) if a.web_privadas else None))
     destino = Path(a.salida) / "datos" / "estudios" / "grados"
     destino.mkdir(parents=True, exist_ok=True)
     for nombre, datos in (("fichas.jsonl", fichas), ("comparativa.jsonl", comparativa)):
