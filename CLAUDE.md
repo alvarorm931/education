@@ -37,4 +37,17 @@ El control está programado en `motor/seo/` (`python -m motor.seo.control`); el 
 - `motor/` código del motor (conectores, archivo de originales, extracción).
 - `fuentes/registro.yaml` registro de fuentes: dirección, método, frecuencia, licencia, respaldo y estado.
 - `tests/` pruebas.
-- Rama `datos`: resultados del motor en la fase de pruebas (se moverán a R2).
+- Rama `datos`: resultados del motor en la fase de pruebas. Originales completos: almacén S3 privado (ver abajo).
+- Rama `vigilancia`: estado de la infraestructura cada 30 minutos (`ultimo.md`, `ultimo.json`), escrito por `vigilante.yml`.
+
+## Infraestructura e incidencias (obligatorio para todas las conversaciones)
+
+- La infraestructura (AWS, servidor `motor-espana`, almacén S3, permisos, secretos y ajustes de GitHub) la lleva
+  la conversación de estado. Está descrita en el documento del proyecto `claude/infraestructura.md`: léelo antes de
+  usar AWS, el servidor o el almacén.
+- Si algo de infraestructura falla, **no lo arregles por tu cuenta ni se lo pidas a Álvaro**: apúntalo en el buzón
+  `claude/incidencias.md` del proyecto (léelo justo antes de escribir y conserva lo que haya), con el error literal,
+  el enlace a la ejecución y lo que ya probaste. La conversación de estado lo revisa y anota la solución.
+- Antes de reintentar algo que falló, mira el buzón y `git show origin/vigilancia:ultimo.md`: puede estar ya
+  resuelto o relanzado. El vigilante relanza una vez los fallos pasajeros (red, tiempo agotado, choque al subir).
+- Los fallos de tu propio módulo los arreglas tú, como siempre.

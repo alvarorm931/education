@@ -1,0 +1,75 @@
+name: Vigilante
+
+# Cada 30 minutos revisa las ejecuciones de GitHub Actions de las últimas 6 horas, los flujos programados, el
+# estado de las fuentes y el acceso al almacén S3. Relanza una vez lo que falló por un error pasajero (red, tiempo
+# agotado, choque al subir) y deja el estado en la rama `vigilancia` (ultimo.json, ultimo.md, historial/).
+# Lo demás lo arregla la conversación de estado del proyecto (buzón: claude/incidencias.md del proyecto).
+# Repositorio público: los ejecutores estándar no consumen minutos de pago.
+
+on:
+  schedule:
+    - cron: "7,37 * * * *"
+  push:
+    branches: [main]
+    paths:
+      - infra/vigilante.py
+      - .github/workflows/vigilante.yml
+  workflow_dispatch:
+
+permissions:
+  actions: write    # leer ejecuciones y registros, y relanzar trabajos fallidos
+  contents: write   # subir el estado a la rama vigilancia
+  id-token: write   # comprobar el almacén S3 con credenciales temporales (OIDC)
+
+concurrency:
+  group: vigilante
+  cancel-in-progress: false
+
+jobs:
+  vigilar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: infra
+          fetch-depth: 1
+
+      - name: Credenciales del almacén (si falla, se anota)
+        id: aws
+        continue-on-error: true
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::369017477131:role/education-originales-github
+          aws-region: eu-south-2
+          role-session-name: vigilante-${{ github.run_id }}
+
+      - name: Revisar
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 infra/vigilante.py --salida informe --horas 6 --relanzar
+
+      - name: Subir a la rama vigilancia
+        if: always()
+        run: |
+          [ -f informe/ultimo.json ] || exit 0
+          git config user.name "vigilante"
+          git config user.email "vigilante@users.noreply.github.com"
+          if git ls-remote --exit-code --heads origin vigilancia >/dev/null; then
+            git fetch -q --depth 1 origin vigilancia
+            git worktree add -q -B vigilancia rama origin/vigilancia
+          else
+            git worktree add -q --orphan -b vigilancia rama
+          fi
+          cp informe/ultimo.json informe/ultimo.md rama/
+          mkdir -p rama/historial
+          python3 -c "import json;d=json.load(open('informe/ultimo.json'));print(json.dumps({'fecha':d['fecha'],**d['resumen']},ensure_ascii=False))" >> rama/historial/$(date -u +%Y-%m).jsonl
+          cd rama
+          git add -A
+          git commit -qm "Vigilancia $(TZ=Europe/Madrid date '+%d/%m %H:%M')"
+          for i in 1 2 3 4 5; do
+            git push -q origin vigilancia && exit 0
+            sleep $(( i * 5 ))
+            git fetch -q --depth 1 origin vigilancia && git rebase -q origin/vigilancia || git rebase --abort
+          done
+          echo "::warning::No se pudo subir el estado de vigilancia"
