@@ -13,3 +13,15 @@ def test_portada():
     sel = b.seleccionar(s["anuncios"])
     assert [(x["convocante"]["nombre"], x["tipo_acto"]) for x in sel] == [("Pontevedra", "admitidos"), ("Tomiño", "admitidos")]
     assert all(x["url_html"].startswith("https://boppo.depo.gal/web/boppo/detalle/-/boppo/2026/10/29/") for x in sel)
+
+
+def test_ficha_del_dia(tmp_path, monkeypatch):
+    from datetime import date
+
+    from motor.archivo import Archivo
+    from motor.http import Respuesta
+    contenido = (FIX / "boppontevedra_dia_20220103.html").read_bytes()
+    assert b.url_dia(date(2022, 1, 3)) == "https://boppo.depo.gal/detalle/-/boppo/2022/01/03"
+    monkeypatch.setattr(b, "obtener", lambda url, accept=None: Respuesta(url, 200, contenido, {}))
+    inf = b.procesar_dia(date(2022, 1, 3), tmp_path, Archivo(tmp_path / "archivo", solo_huella=True))
+    assert (inf["resultado"], inf["numero"], inf["disposiciones"]) == ("ok", "1", 14)

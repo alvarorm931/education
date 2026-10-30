@@ -372,9 +372,12 @@ for c in $CONECTORES; do
       "$G" "BOP Córdoba: textos"
       ;;
     boppontevedra)
-      # Solo el boletín del día, por la portada: robots.txt prohíbe fichas, descargas y PDF
+      # El boletín del día, por la portada
       ejecutar motor.provinciales.boppontevedra --salida "$S"
       "$G" "BOP Pontevedra: boletín del día"
+      # Histórico por la ficha de cada día (/detalle/, cerrada en robots.txt; se lee como boletín oficial)
+      ejecutar motor.provinciales.boppontevedra --historico --salida "$S" --max-minutos "$M"
+      "$G" "BOPPO: histórico"
       ;;
     bopcoruna)
       # Textos: /bopportal/publicado está cerrado en robots.txt; se lee como boletín oficial (motor/http.py)
