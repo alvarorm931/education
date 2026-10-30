@@ -326,3 +326,9 @@ def test_errata_del_cuadro_de_creditos_del_boe_se_corrige_con_el_ruct():
     assert p["distribucion"]["tfg"] == 8.0 and p["distribucion"]["optativas"] == 6.0 and p["distribucion_boe"]["tfg"] == 6.0
     plan["asignaturas"][0]["creditos"] = 6.0  # las filas dicen lo del BOE: no se toca
     assert corregir_distribucion(plan, ruct)["distribucion"]["tfg"] == 6.0
+
+
+def test_plan_con_el_codigo_de_otro_titulo_no_se_usa():
+    from motor.grados.boe_grados import codigos_en_texto
+    assert codigos_en_texto("Código Titulación: 1500661\nOtra cosa") == ["1500661"]
+    assert codigos_en_texto("sin código") == []
