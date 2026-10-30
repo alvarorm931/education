@@ -44,3 +44,15 @@ def test_texto_guardado_vacio_no_para_los_actos(tmp_path):
     assert texto_de(tmp_path, "bopsevilla", x) is None and recuento_de(tmp_path, "bopsevilla", x) is None
     escribir_json(r, {"texto": "hola"})
     assert texto_de(tmp_path, "bopsevilla", x) == "hola" and not list(r.parent.glob(".*.tmp"))
+
+
+def test_dia_leido_a_medias_se_vuelve_a_leer(tmp_path):
+    import json
+    from motor.autonomicos.comun import estado_dia
+    r = tmp_path / "d.json"
+    r.write_text(json.dumps({"resultado": "ok", "alertas": ["BOP-SEVILLA 2023-03-22: 36 anuncios leídos de 72"]}))
+    assert estado_dia(r) == (False, True)
+    r.write_text(json.dumps({"resultado": "ok", "alertas": []}))
+    assert estado_dia(r) == (True, False)
+    r.write_text(json.dumps({"resultado": "error_http"}))
+    assert estado_dia(r) == (False, True)

@@ -414,10 +414,25 @@ def estado_dia(ruta: Path, hechos: frozenset = frozenset({"ok", "sin_boletin"}))
     if not ruta.exists():
         return False, False
     try:
-        r = json.loads(ruta.read_text(encoding="utf-8")).get("resultado")
+        inf = json.loads(ruta.read_text(encoding="utf-8"))
     except (ValueError, UnicodeDecodeError):
         return False, False
+    r = inf.get("resultado")
+    if r == "ok" and leido_a_medias(inf):
+        # «36 anuncios leídos de 72» (BOP de Sevilla, 5 días; BOP de Valencia, 1.132): se vuelve a leer, como reintento
+        return False, True
     return r in hechos, r not in hechos
+
+
+RE_LEIDOS = re.compile(r"(\d+) anuncios leídos de (\d+)")
+
+
+def leido_a_medias(informe: dict) -> bool:
+    """Un día dado por leído con menos anuncios de los que dice la fuente."""
+    for a in informe.get("alertas") or []:
+        if (m := RE_LEIDOS.search(a)) and int(m.group(1)) < int(m.group(2)):
+            return True
+    return False
 
 
 def escribir_jsonl(ruta: Path, filas: list[dict]) -> None:
