@@ -69,6 +69,43 @@ def portadas(qedu: list[Path], catalogo: Path, fichas: Path) -> list[dict]:
     return out
 
 
+def paginas_qedu_sin_ficha(qedu: list[Path], catalogo: Path, fichas: Path, capturadas: list[Path]) -> list[dict]:
+    """La página que QEDU da para un máster sin ficha (de uno a tres títulos) cuando no era la del programa (una
+    página de facultad, de departamento…): de ella cuelga muchas veces la del máster. Se lee sin seguir listados."""
+    from motor.estudios.conjunto_masters import ESTADOS_WEB_OFICIAL, dominio
+    from motor.estudios.extraer import _sin_seguimiento
+
+    cat = {t["codigo_ruct"]: t for t in json.loads(catalogo.read_text(encoding="utf-8")) if t.get("situacion") == "Activo"}
+    con_web = {f.get("codigo_ruct") for f in (json.loads(l) for l in fichas.read_text(encoding="utf-8").split("\n") if l.strip())
+               if f.get("grupo") == "oficial" and f.get("comprobacion_nombre") in ESTADOS_WEB_OFICIAL}
+    no_programa = set()
+    for c in capturadas:
+        for f in sorted(c.rglob("paginas_extraidas.jsonl")):
+            for l in f.read_text(encoding="utf-8").split("\n"):
+                if l.strip():
+                    x = json.loads(l)
+                    if x.get("no_es_programa"):
+                        no_programa.add(x["url"])
+    por_enlace: dict[str, set] = defaultdict(set)
+    for c in qedu:
+        for f in sorted(c.rglob("qedu_detalles_master_*.jsonl")):
+            for l in f.read_text(encoding="utf-8").split("\n"):
+                if l.strip():
+                    d = json.loads(l)
+                    e = _sin_seguimiento(((d.get("detalle") or {}).get("enlace") or "").strip())
+                    if e.startswith("http") and d.get("codTitula") in cat and d["codTitula"] not in con_web:
+                        por_enlace[e].add(d["codTitula"])
+    out = []
+    for url, cods in sorted(por_enlace.items()):
+        if len(cods) >= MIN_CODIGOS_PORTADA or url not in no_programa:
+            continue
+        uni = cat[sorted(cods)[0]].get("universidad_codigo")
+        out.append({"url": url, "dominio": dominio(url), "universidad_codigo": uni, "seguir": False,
+                    "universidad": cat[sorted(cods)[0]].get("universidad"),
+                    "masters": [{"codigo_ruct": c, "nombre": cat[c].get("nombre_oficial")} for c in sorted(cods)]})
+    return out
+
+
 def _slug(url: str) -> str:
     return " ".join(re.split(r"[-_/.]+", urlparse(url).path.rstrip("/").rsplit("/", 1)[-1]))
 
@@ -118,6 +155,9 @@ def leer(portadas_: list[dict], navegador: bool = False, max_minutos: float = 50
         u["masters"].update({m["codigo_ruct"]: m for m in p["masters"]})
         u["dominios"].add(p["dominio"])
         u["portadas"].append(p["url"])
+        u.setdefault("sin_listados", set())
+        if p.get("seguir") is False:  # la página del máster en QEDU (no una portada): sin seguir listados
+            u["sin_listados"].add(p["url"])
     for uni, u in sorted(por_uni.items()):
         for portada in u["portadas"]:
             if time.time() > fin:
@@ -150,7 +190,7 @@ def leer(portadas_: list[dict], navegador: bool = False, max_minutos: float = 50
                 for h, t in propios:
                     u["enlaces"].setdefault(h.rstrip("/"), t)
                     # listados que cuelgan de la portada (por rama, por facultad, página 2…)
-                    if url == portada and h not in vistas and RE_LISTADO.search(h + " " + t) and \
+                    if url == portada and portada not in u["sin_listados"] and h not in vistas and RE_LISTADO.search(h + " " + t) and \
                             len(pendientes) < MAX_LISTADOS and urlparse(h).path.count("/") <= urlparse(portada).path.count("/") + 2:
                         pendientes.append(h)
             cuentas["paginas_leidas"] += len(vistas)
@@ -177,6 +217,8 @@ def main() -> None:
     a.add_argument("--qedu", action="append", default=[])
     a.add_argument("--catalogo", required=True)
     a.add_argument("--fichas", required=True)
+    a.add_argument("--capturadas", action="append", default=[],
+                   help="carpetas de extracción: añade las páginas de QEDU de un máster que no eran la del programa")
     b = sub.add_parser("leer")
     b.add_argument("--portadas", required=True)
     b.add_argument("--navegador", action="store_true")
@@ -188,6 +230,9 @@ def main() -> None:
     destino.mkdir(parents=True, exist_ok=True)
     if x.orden == "portadas":
         filas = portadas([Path(q) for q in x.qedu], Path(x.catalogo), Path(x.fichas))
+        if x.capturadas:
+            filas += paginas_qedu_sin_ficha([Path(q) for q in x.qedu], Path(x.catalogo), Path(x.fichas),
+                                            [Path(c) for c in x.capturadas])
         (destino / "portadas.jsonl").write_text("".join(json.dumps(f, ensure_ascii=False) + "\n" for f in filas), encoding="utf-8")
         print(json.dumps({"portadas": len(filas), "masters": sum(len(f["masters"]) for f in filas)}, ensure_ascii=False))
     else:
