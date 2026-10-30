@@ -56,8 +56,8 @@ def test_probable_solo_si_la_pagina_dice_oficial(tmp_path):
           h("https://u.es/b", "nombre", "Máster en Dirección de Empresas"),
           h("https://u.es/b", "tipo_titulo", "máster universitario oficial"), h("https://u.es/b", "plazas", 40)]
     _escribir(tmp_path / "e", pag, hs)
-    cat = [{"codigo_ruct": c, "nombre_oficial": "Máster Universitario en Dirección y Gestión de Empresas Familiares por la U"}
-           for c in ("1", "2")]
+    cat = [{"codigo_ruct": c, "universidad_codigo": c,  # de universidades distintas: no compiten entre sí
+            "nombre_oficial": "Máster Universitario en Dirección y Gestión de Empresas Familiares por la U"} for c in ("1", "2")]
     (tmp_path / "c.json").write_text(json.dumps(cat))
     r = f.ejecutar([tmp_path / "e"], tmp_path / "o", catalogo=tmp_path / "c.json")
     assert r["oficial_probable_sin_confirmar"] == 1 and r["oficial_probable_oficial"] == 1
@@ -83,3 +83,19 @@ def test_rescate_de_oficial_por_nombre(tmp_path):
     uno = next(x for x in fichas if x["clave"] == "ruct:1")
     assert uno["comprobacion_nombre"] == "confirmado_por_nombre" and uno["campos"]["plazas"]["valor"] == 25
     assert r["paginas_rescatadas_como_oficiales"] == 1 and not any(x["grupo"] == "no_oficial" for x in fichas)
+
+
+def test_gana_la_mejor_candidata_de_un_mismo_master(tmp_path):
+    t = "2026-10-30T03:00:00+00:00"
+    pag = [{"url": "https://u.es/evento", "extraido": t, "grupo": "oficial", "codigos_ruct": ["1"], "pagina": "principal",
+            "no_es_programa": True},
+           {"url": "https://u.es/master-q", "extraido": t, "grupo": "oficial", "codigos_ruct": ["1"], "pagina": "principal"}]
+    h = lambda url, campo, valor: {"url": url, "campo": campo, "valor": valor, "estado": "aceptado", "extraido": t,
+                                   "captura_sha256": "s"}
+    _escribir(tmp_path / "e", pag, [h("https://u.es/master-q", "nombre", "Máster Universitario en Química Industrial"),
+                                    h("https://u.es/master-q", "plazas", 30)])
+    (tmp_path / "c.json").write_text(json.dumps([{"codigo_ruct": "1", "nombre_oficial": "Máster Universitario en Química Industrial por la U"}]))
+    f.ejecutar([tmp_path / "e"], tmp_path / "o", catalogo=tmp_path / "c.json")
+    x = json.loads((tmp_path / "o/datos/estudios/masters/fichas.jsonl").read_text().splitlines()[0])
+    assert x["comprobacion_nombre"] == "confirmado" and x["campos"]["plazas"]["valor"] == 30
+    assert x["paginas"] == ["https://u.es/master-q"]

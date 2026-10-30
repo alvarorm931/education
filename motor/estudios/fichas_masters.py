@@ -28,6 +28,8 @@ from motor.estudios.emparejar import palabras_nombre, palabras_texto
 from motor.estudios.extraer import NUMERICOS, como_numero
 
 CONFIRMADO, PROBABLE = 0.8, 0.5
+ORDEN_ESTADO = {"confirmado": 0, "probable_oficial": 1, "probable_sin_confirmar": 2, "distinto": 3, "sin_nombre": 4,
+                "no_es_ficha": 5, "sin_catalogo": 6}
 
 
 def comprobar_nombre(oficial: str, extraido: str | None) -> tuple[str, float]:
@@ -148,23 +150,37 @@ def ejecutar(extracciones: list[Path], salida: Path, catalogo: Path | None = Non
                 por_codigo[c].append(p)
     for u, (c, _) in rescatadas.items():
         por_codigo.setdefault(c, [])
+    hermanos: dict[str, list[dict]] = defaultdict(list)  # másters activos de cada universidad
+    for x in cat.values():
+        if x.get("situacion", "Activo") == "Activo":
+            hermanos[x.get("universidad_codigo")].append(x)
     for codigo, ps in sorted(por_codigo.items()):
         t = cat.get(codigo, {})
         principales = [p for p in ps if p.get("pagina", "principal") == "principal"]
-        nombre_ext = next((h["valor"] for p in principales for h in hechos.get(p["url"], []) if h["campo"] == "nombre"), None)
-        if not ps:
-            estado, cob = "sin_pagina", 0.0
-        elif principales and all(p.get("no_es_programa") for p in principales):
-            estado, cob = "no_es_ficha", 0.0
+        # cada página principal candidata (primera unión, segunda vuelta…) se juzga por separado; gana la mejor
+        juicios = []
+        for p in principales:
+            nom = next((h["valor"] for h in hechos.get(p["url"], []) if h["campo"] == "nombre"), None)
+            if p.get("no_es_programa"):
+                est, cb = "no_es_ficha", 0.0
+            else:
+                est, cb = comprobar_nombre(t.get("nombre_oficial", ""), nom) if t else ("sin_catalogo", 0.0)
+            if est == "probable":
+                # nombre parecido pero no igual (doble máster, programa ejecutivo…): solo vale si la página
+                # dice que es un máster universitario oficial y ningún otro máster de la misma universidad se
+                # parece tanto o más a ese nombre
+                tipo = next((str(h["valor"]) for h in hechos.get(p["url"], []) if h["campo"] == "tipo_titulo"), "")
+                rival = max((comprobar_nombre(o["nombre_oficial"], nom)[1] for o in hermanos.get(t.get("universidad_codigo"), [])
+                             if o["codigo_ruct"] != codigo), default=0.0)
+                est = "probable_oficial" if "oficial" in tipo.lower() and "doble" not in (nom or "").lower() \
+                    and rival < cb else "probable_sin_confirmar"
+            juicios.append((ORDEN_ESTADO.get(est, 9), -cb, p["url"], est, cb, nom))
+        if juicios:
+            _, _, url_buena, estado, cob, nombre_ext = min(juicios)
+            ps = [p for p in ps if p["url"] == url_buena or p.get("principal") == url_buena
+                  or (p.get("pagina") == "subpagina" and not p.get("principal"))]
         else:
-            estado, cob = comprobar_nombre(t.get("nombre_oficial", ""), nombre_ext) if t else ("sin_catalogo", 0.0)
-        if estado == "probable":
-            # nombre parecido pero no igual (doble máster, programa ejecutivo con nombre parecido…): solo vale si la
-            # página dice que es un máster universitario oficial
-            tipo = next((str(h["valor"]) for p in principales for h in hechos.get(p["url"], [])
-                         if h["campo"] == "tipo_titulo"), "")
-            estado = "probable_oficial" if "oficial" in tipo.lower() and "doble" not in (nombre_ext or "").lower() \
-                else "probable_sin_confirmar"
+            estado, cob, nombre_ext = "sin_pagina", 0.0, None
         rescate = sorted((u for u, (c, _) in rescatadas.items() if c == codigo), key=lambda u: -rescatadas[u][1])
         if estado not in ("confirmado", "probable_oficial") and rescate:
             # la página propia no era la ficha (o no había): vale la rescatada por el nombre
