@@ -1,17 +1,15 @@
 {
- "fecha": "2026-10-30T05:50:33+00:00",
- "fecha_madrid": "30/10 06:50",
+ "fecha": "2026-10-30T06:15:41+00:00",
+ "fecha_madrid": "30/10 07:15",
  "ventana_horas": 6.0,
  "resumen": {
-  "ejecuciones_revisadas": 293,
+  "ejecuciones_revisadas": 307,
   "fallos": 4,
   "fallos_pendientes": 0,
   "relanzados": 0,
-  "colas_largas": 0,
+  "colas_largas": 1,
   "flujos_programados_parados": [],
-  "programaciones_lanzadas_a_mano": [
-   "seo.yml"
-  ],
+  "programaciones_lanzadas_a_mano": [],
   "avisos_de_fuentes": 0,
   "almacen": "ok"
  },
@@ -214,14 +212,22 @@
    ]
   }
  ],
- "colas_largas": [],
+ "colas_largas": [
+  {
+   "flujo": "Boletines autonómicos",
+   "id": 41008945432,
+   "en_cola_min": 44,
+   "trabajos_empezados": 2,
+   "url": "https://github.com/alvarorm931/education/actions/runs/41008945432"
+  }
+ ],
  "programados": {
   "motor.yml": {
    "ultimo_bien": "30/10 00:08",
    "parado": false
   },
   "autonomicos.yml": {
-   "ultimo_bien": "30/10 06:16",
+   "ultimo_bien": "30/10 07:03",
    "parado": false
   },
   "seo.yml": {
@@ -229,13 +235,7 @@
    "parado": false
   }
  },
- "respaldo_programaciones": [
-  {
-   "flujo": "seo.yml",
-   "prevista": "30/10 06:23",
-   "lanzado": true
-  }
- ],
+ "respaldo_programaciones": [],
  "latido": "en marcha",
  "boe": {
   "ultimo_diario": {

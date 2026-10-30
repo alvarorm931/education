@@ -1,11 +1,11 @@
-# Vigilancia 30/10 06:50 (Madrid)
+# Vigilancia 30/10 07:15 (Madrid)
 
-- Ejecuciones revisadas (últimas 6 h): 293
+- Ejecuciones revisadas (últimas 6 h): 307
 - Fallos: 4; pendientes: 0; relanzados ahora: 0
-- Colas de más de 30 minutos: 0
+- Colas de más de 30 minutos: 1
 - Flujos programados parados: ninguno
 - Almacén S3: ok
-- Programaciones que GitHub no disparó y se lanzaron a mano: seo.yml (30/10 06:23)
+- Programaciones que GitHub no disparó y se lanzaron a mano: ninguna
 - Latido (relanza al vigilante cada ~25 min mientras GitHub no dispare programaciones): en marcha
 - Avisos de fuentes: 0
 
@@ -50,3 +50,4 @@ https://github.com/alvarorm931/education/actions/runs/40985002326 (intento 1, wo
         AWS_DEFAULT_REGION: eu-south-2
         AWS_REGION: eu-south-2
 
+- En cola 44 min: Boletines autonómicos https://github.com/alvarorm931/education/actions/runs/41008945432
