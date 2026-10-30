@@ -67,6 +67,7 @@ RE_PROVISIONAL = re.compile(r"\bprovisional")
 RE_DEFINITIVA = re.compile(r"\bdefinitiv")
 VENTANA_DIAS = 3 * 366
 UNICO_TIPOS = {"admitidos", "tribunal", "examen", "aprobados"}
+RE_BOLSA = re.compile(r"\b(?:bolsa|borsa|lista de reserva|listaxe|interin)")
 
 
 def fecha_iso(d: str, m: str, a: str | None, cod: str | None, ref: str) -> str | None:
@@ -310,7 +311,13 @@ def unir(procesos: list[dict], origenes: dict[str, dict], actos: list[dict], cla
             cands = {c["id"]: c for k in claves for c in por_convocante.get(k, [])
                      if (c.get("apertura_plazo") or "") <= fecha and _dias(c.get("apertura_plazo"), fecha) <= 366}
             if len(cands) == 1:
-                elegido, motivo = next(iter(cands.values())), "convocante_unico"
+                c = next(iter(cands.values()))
+                tit_c = " ".join([c.get("titulo") or ""] + [o.get("titulo") or "" for o in c.get("otras_publicaciones") or []])
+                bolsa_x = bool(RE_BOLSA.search(normalizar(x.get("titulo") or "")))
+                # La única convocatoria tiene que ser del mismo tipo: estabilización o no, bolsa o plaza
+                if _rasgos(x.get("titulo"))[0] == _rasgos(tit_c)[0] and (not bolsa_x or c.get("temporal")) and \
+                        (bolsa_x or not c.get("temporal") or not RE_BOLSA.search(normalizar(c.get("titulo") or ""))):
+                    elegido, motivo = c, "convocante_unico"
         # 4c. estabilización (Ley 20/2021): una sola convocatoria de estabilización del convocante, sin puestos
         # conocidos, en los dos años anteriores
         if not elegido and not (motivo or "").startswith("varios") and claves and _rasgos(x.get("titulo"))[0]:
