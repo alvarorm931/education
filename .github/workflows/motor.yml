@@ -91,7 +91,8 @@ jobs:
             python -m motor.boe.texto --pendientes --salida salida --max 1500 --max-minutos "$RESTA" | tee tanda.txt | tail -n 3 || true
             # Si la subida choca, la tanda queda guardada en local y sube con la siguiente: no se para la pasada
             ./guardar.sh "BOE: textos de anuncios" || echo "::warning::BOE textos: la subida se reintenta con la siguiente tanda"
-            grep -q "Documentos a descargar: 0" tanda.txt && break
+            # «if»: un «grep && break» al final del bucle deja el paso en error cuando el bucle acaba por tiempo
+            if grep -q "Documentos a descargar: 0" tanda.txt; then break; fi
           done
 
       - name: Extraer actos y comprobar huecos
