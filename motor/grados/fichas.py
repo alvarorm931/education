@@ -29,6 +29,7 @@ from pathlib import Path
 from motor.grados.asignaturas import comparar
 from motor.grados.catalogo import clave, clave_union, nombre_corto
 from motor.grados.generico import nombre_base
+from motor.grados.precios import de_comunidad
 
 FUENTE_QEDU = "Ministerio de Ciencia, Innovación y Universidades. QEDU"
 FUENTE_SIIU = "Ministerio de Ciencia, Innovación y Universidades. SIIU"
@@ -247,6 +248,7 @@ def construir(catalogo: list[dict], genericos: list[dict], tarjetas: dict, detal
                                          if (i["idioma_extranjero"] or "").startswith("Sí")}),
             "centros": centros,
             "precio_primera_matricula": round(min(precios) * creditos, 2) if precios and creditos else None,
+            "bonificacion": de_comunidad(t["universidades"][0].get("comunidad")) if t["universidad_tipo"] == "Pública" else None,
             "plan": plan,
             "indicadores": indicadores_de(t, ind or {}, por_ambito) if t["clase"] == "grado" else None,
             "indexable": not motivos,
@@ -298,6 +300,7 @@ def resumen(fichas: list[dict], comparativa: list[dict]) -> dict:
         "con_centros_qedu": sum(1 for f in fichas if f["centros"]),
         "con_nota_de_corte": sum(1 for f in fichas if any(c["nota_corte"] is not None for c in f["centros"])),
         "con_precio": sum(1 for f in fichas if f["precio_primera_matricula"]),
+        "con_bonificacion_o_ayuda": sum(1 for f in fichas if f.get("bonificacion")),
         "con_insercion": sum(1 for f in fichas if any(c.get("insercion") for c in f["centros"])),
         "con_indicadores_siiu": sum(1 for f in fichas if f.get("indicadores")),
         "indicadores_solo_de_ese_grado": sum(1 for f in fichas if f.get("indicadores")

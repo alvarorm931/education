@@ -60,3 +60,15 @@ def test_indicadores_por_universidad_y_ambito(tmp_path):
     v = f[0]["indicadores"]["valores"]["abandono"]
     assert (v["valor"], v["curso"], v["media_espana_ambito"]) == (18.75, "2019-2020", 24.0)
     assert f[0]["indicadores"]["grados_de_la_universidad_en_el_ambito"] == 1
+
+
+def test_bonificacion_por_comunidad_solo_en_publicas():
+    from motor.grados import precios
+    assert precios.de_comunidad("Andalucía")["tipo"] == "bonificacion"
+    assert precios.de_comunidad("Castilla y León")["tipo"] == "ayuda"
+    assert precios.de_comunidad("Cantabria") is None  # solo vista en prensa: fuera hasta verificarla
+    cat = _cat()
+    cat[0]["universidades"][0]["comunidad"] = "Galicia"
+    assert fichas.construir(cat, GEN, TARJ, DET, {})[0][0]["bonificacion"]["norma"].startswith("Decreto 72/2026")
+    cat[0]["universidad_tipo"] = "Privada"
+    assert fichas.construir(cat, GEN, TARJ, DET, {})[0][0]["bonificacion"] is None
