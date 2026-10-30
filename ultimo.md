@@ -1,12 +1,12 @@
-# Vigilancia 30/10 20:04 (Madrid)
+# Vigilancia 30/10 20:29 (Madrid)
 
-- Ejecuciones revisadas (últimas 6 h): 142
+- Ejecuciones revisadas (últimas 6 h): 112
 - Fallos: 2; pendientes: 0; relanzados ahora: 0
 - Colas de más de 30 minutos: 1
 - Flujos programados parados: ninguno
 - Almacén S3: ok
 - Programaciones que GitHub no disparó y se lanzaron a mano: ninguna
-- Latido (relanza al vigilante cada ~25 min mientras GitHub no dispare programaciones): cortado: relanzado
+- Latido (relanza al vigilante cada ~25 min mientras GitHub no dispare programaciones): en marcha
 - Avisos de fuentes: 0
 
 ## Motor de datos · 30/10 17:32 · otra ejecución en curso: https://github.com/alvarorm931/education/actions/runs/41110828448
@@ -33,4 +33,4 @@ https://github.com/alvarorm931/education/actions/runs/41068408931 (intento 1, wo
       could not create workflow dispatch event: HTTP 500 (https://api.github.com/repos/alvarorm931/education/actions/workflows/401287485/dispatches)
       ##[error]Process completed with exit code 1.
 
-- En cola 287 min: Boletines autonómicos https://github.com/alvarorm931/education/actions/runs/41070595583
+- En cola 312 min: Boletines autonómicos https://github.com/alvarorm931/education/actions/runs/41070595583
