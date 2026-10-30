@@ -241,6 +241,8 @@ def sin_acentos_min(s: str | None) -> str:
 RE_TOTAL_DIST = re.compile(r"^(?:creditos\s+)?totale?s?\.?$|^total(?:\s+de)?(?:\s+creditos)?(?:\s+ects)?\.?$")
 CLAVE_DIST = {"basica": "formacion_basica", "obligatoria": "obligatorias", "optativa": "optativas",
               "practicas": "practicas_externas", "tfg": "tfg"}
+# módulos cuyas asignaturas se eligen (menciones, itinerarios, intensificaciones)
+RE_MODULO_ELEGIBLE = re.compile(r"\bmenci[oó]n|\bmenciones\b|\bitinerari|\bintensificaci", re.I)
 
 
 def distribucion_creditos(tablas: list[dict]) -> dict | None:
@@ -811,6 +813,14 @@ def _alternativas(filas: list[dict], dist: dict | None = None):
     if any(not x["tipo"] for x in filas):
         yield [{**x, "tipo": "obligatoria", "tipo_por_resto": True}
                if not x["tipo"] and x["tabla"] not in optativas else x for x in filas]
+        # lo mismo, pero lo que va en un módulo de menciones o itinerarios («Menciones», «Mención en Educación
+        # Física», «Itinerario 2») como optativo: en los planes españoles las asignaturas de mención se eligen;
+        # separadas las de mención, el resto sin tipo es obligatorio aunque comparta tabla con optativas
+        if any(not x["tipo"] and RE_MODULO_ELEGIBLE.search(x.get("modulo") or "") for x in filas):
+            yield [({**x, "tipo": "optativa", "tipo_por_modulo_de_mencion": True}
+                    if RE_MODULO_ELEGIBLE.search(x.get("modulo") or "")
+                    else {**x, "tipo": "obligatoria", "tipo_por_resto": True})
+                   if not x["tipo"] else x for x in filas]
     if dist and len(por_tabla) > 1:
         # un tipo repartido en varias tablas cuando una sola ya suma lo de la tabla de créditos (la lista de
         # formación básica completa y, en el plan por cursos, algunas básicas con otro nombre): vale esa tabla

@@ -140,22 +140,23 @@ y el TFG se toman de la tabla). Si la lectura directa no cuadra se prueban lectu
 aceptan si entonces cuadra exactamente: sin los tipos deducidos (por nombre, rótulo o suma), sin una lista resumen
 que repite otra tabla, sin la única tabla que suma justo lo que sobra (itinerarios, listas a otro nivel), dando su
 tipo a la única tabla sin tipo que suma justo lo que falta, o el resto sin tipo como obligatorio. La ficha dice si
-la lectura fue directa o alternativa (553 de los comprobados). Si el plan del BOE no trae tabla que cuadre, se
+la lectura fue directa o alternativa (468 de los 3.620 comprobados). Si el plan del BOE no trae tabla que cuadre, se
 compara con los créditos por tipo de la ficha del RUCT (otra fuente oficial). Nunca se completa un plan con datos
 inventados.
 
-Resultado con todo lo leído (30/10/2026, 05:05):
+Resultado con todo lo leído (30/10/2026, 06:00):
 
 | | Leídos | Con asignaturas | Con curso | Comprobados |
 |---|---|---|---|---|
-| Planes nuevos | 3.496 | 2.491 | 2.105 | 1.952 (56 %) |
-| Modificaciones | 2.231 | 1.582 | 965 | 1.188 (53 %) |
-| Cambios de denominación | 20 | 16 | 15 | 9 |
+| Planes nuevos | 3.496 | 2.551 | 2.137 | 2.177 (62 %) |
+| Modificaciones | 2.231 | 1.599 | 972 | 1.378 (62 %) |
+| Cambios de denominación | 20 | 16 | 15 | 11 |
+| Correcciones de errores | 391 | 139 | 95 | 54 |
 
-Lo que no cuadra es sobre todo: planes publicados solo por materias (463), tablas sin carácter que no se pueden
-asignar de forma comprobable (329), diferencias de una o dos asignaturas (479) y planes sin tabla de créditos por
-tipo (122). Esos planes se guardan igual (la ficha los enseña, marcados como no comprobados) pero no cuentan como
-asignaturas comprobadas.
+De los 1.319 planes nuevos que no cuadran: publicados solo por materias, sin asignaturas (401); tablas sin carácter
+que no se puede asignar de forma comprobable (336); diferencias de una o dos asignaturas, 12 créditos o menos
+(115); otras diferencias (296); sin tabla de créditos por tipo (90) y sin tabla de plan legible (81). Esos planes
+se guardan igual (la ficha los enseña, marcados como no comprobados) pero no cuentan como asignaturas comprobadas.
 
 Menciones: 692 planes y modificaciones las citan, en el texto o en las tablas.
 

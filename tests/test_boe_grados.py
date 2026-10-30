@@ -235,6 +235,19 @@ def test_lecturas_que_quitan_lo_que_sobra_o_ponen_lo_que_falta():
     assert m["comprobacion"] and {x["nombre"]: x["tipo"] for x in m["filas_plan"]}["F"] == "obligatoria"
 
 
+def test_modulo_de_menciones_sin_caracter_cuenta_como_optativo():
+    from motor.grados.boe_grados import medir_plan
+    dist = _t([["Tipo de materia", "Créditos"], ["Formación básica.", "12"], ["Obligatorias.", "12"],
+               ["Optativas.", "6"], ["Total.", "30"]])
+    plan_ = _t([["Módulo", "Asignatura", "Créditos"], ["Formación Básica", "A.", "6"], ["Formación Básica", "B.", "6"],
+                ["Didáctico", "C.", "6"], ["Didáctico", "D.", "6"], ["Menciones", "E.", "6"], ["Menciones", "F.", "6"],
+                ["Optatividad", "G.", "6"]])
+    m = medir_plan({"tablas": [dist, plan_], "texto": ""})
+    assert m["comprobacion"] == "completo" and m["interpretacion"] == "alternativa"
+    tipos = {x["nombre"]: x["tipo"] for x in m["filas_plan"]}
+    assert tipos["C"] == "obligatoria" and tipos["E"] == "optativa"
+
+
 def test_columnas_de_modulo_con_denominacion_y_ects():
     from motor.grados.boe_grados import _columnas
     assert _columnas(["Denominación Módulo", "ECTS", "Denominación materia", "ECTS", "Carácter", "Curso"]) == {
