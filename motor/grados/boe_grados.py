@@ -189,7 +189,11 @@ CODIGOS_CARACTER = {
     "practicas": {"pe", "pae", "prt", "pr", "pex", "pext"},
     "tfg": {"tfg", "tfm", "tfg/tfm", "tf"},
 }
+# Códigos dobles castellano/inglés de los planes bilingües (Carlos III: «FB/BC», «O/C», «P/E», «TFG/BT»)
+BILINGUES = {"fb/bc": "basica", "fbr/bbc": "basica", "o/c": "obligatoria", "ob/c": "obligatoria",
+             "p/e": "optativa", "op/e": "optativa", "tfg/bt": "tfg", "pe/i": "practicas"}
 PALABRAS_CARACTER = [  # por el comienzo del texto, una vez quitado «Materias», «Formación», «Créditos»
+    ("optativa", re.compile(r"^opcional")),
     ("optativa", re.compile(r"^obligatori\w* de (?:la )?menci[oó]n")),
     ("basica", re.compile(r"^b[áa]sic")),
     ("tfg", re.compile(r"^trabajo")),
@@ -207,7 +211,9 @@ def tipo_caracter(c: str | None) -> str | None:
     if re.search(r"obligatori\w*\s*(?:/|y|o|,)\s*optativ|optativ\w*\s*(?:/|y|o|,)\s*obligatori|"
                  r"basica\w*\s*(?:/|y|,)\s*obligatori|^(?:formacion\s+)?basica\s*\(\d", s):
         return None
-    codigo = re.split(r"[\s.(,;:-]+", s.strip())[0] if s.strip() else ""
+    codigo = re.split(r"[\s.(,;:*-]+", s.strip())[0] if s.strip() else ""
+    if re.sub(r"\s", "", s.strip(" .*")) in BILINGUES:  # «O/C» (obligatoria/compulsory) de los planes bilingües
+        return BILINGUES[re.sub(r"\s", "", s.strip(" .*"))]
     for clave, codigos in CODIGOS_CARACTER.items():
         if codigo in codigos:
             return clave
