@@ -98,9 +98,6 @@ def main(argv: list[str] | None = None) -> int:
     return main_canal(CANAL, argv)
 
 
-if __name__ == "__main__":
-    sys.exit(main())
-
 
 # --- Histórico: la lista de boletines (tabla paginada) y la página de cada boletín (mismo sumario que el canal) ---
 LISTA = WEB + "/gl/boletin-oficial-da-provincia-de-lugo/bop"
@@ -202,3 +199,7 @@ def historico(argv: list[str] | None = None) -> int:
     escribir_json(estado_ruta, estado)
     print(f"BOP Lugo histórico: {hechos} boletines nuevos")
     return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
