@@ -159,7 +159,7 @@ def precio_web(f: dict) -> dict | None:
     por_tipo: dict[str, set] = defaultdict(set)
     desde = [i for i in f.get("importes") or [] if i.get("desde")]
     for i in f.get("importes") or []:
-        if i.get("verosimil") and i.get("tipo") in RANGO_PRECIO and not i.get("desde"):
+        if i.get("verosimil") and i.get("tipo") in RANGO_PRECIO and not i.get("desde") and not i.get("beca"):
             por_tipo[i["tipo"]].add(round(float(i["valor"]), 2))
     if desde and not por_tipo:
         return {"precio_curso": None, "metodo": None, "url": f.get("url"), "precio_jsonld": None,
@@ -172,7 +172,8 @@ def precio_web(f: dict) -> dict | None:
     creditos = sorted(por_tipo.get("credito") or ())
     curso, metodo, nota = None, None, None
     cruzados = [c for c in cursos for k in creditos if abs(c - k * 60) <= 0.02 * c]
-    cuentas = precio_por_cuentas([i["valor"] for i in f.get("importes") or [] if i.get("tipo") != "sueldo"])
+    cuentas = precio_por_cuentas([i["valor"] for i in f.get("importes") or []
+                                  if i.get("tipo") != "sueldo" and not i.get("beca")])
     if cruzados:
         curso, metodo = min(cruzados), "curso_igual_a_credito_por_60"
     elif cuentas and (not ld_valor or abs(ld_valor - cuentas["precio_curso"]) <= 0.5):

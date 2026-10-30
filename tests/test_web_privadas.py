@@ -148,3 +148,11 @@ def test_espacio_normal_no_separa_miles():
     assert [valor_importe(m) for m in IMPORTE.finditer("11.730 € 800 € 1.100 € 10 983 € 206 €")] == \
         [11730, 800, 1100, 983, 206]
     assert [valor_importe(m) for m in IMPORTE.finditer("9 990 €")] == [9990]
+
+
+def test_importe_con_beca_marcado():
+    from motor.grados.web_privadas import importes
+
+    imps = importes("<p>Precio anual: 9.000 €</p><p>Con la beca Excelencia: 6.300 €</p>")
+    assert [i.get("beca") for i in imps] == [None, True]
+    assert importes("<p>Precio sin descuento: 9.000 €</p>")[0].get("beca") is None

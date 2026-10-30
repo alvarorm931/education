@@ -243,6 +243,10 @@ def importes(html: str) -> list[dict]:
                        # «Desde 3.060 €/año»: un mínimo o una promoción, no el precio del curso
                        **({"desde": True} if re.search(r"(?i)\b(?:desde|a partir de|from)\s*$", antes.strip()[-25:])
                           else {}),
+                       # «con la beca X: 2.880 €»: el precio con una beca o un descuento no es el del curso
+                       **({"beca": True} if re.search(r"(?i)\bbecas?\b|\bbecad|descuento|bonificad|scholarship",
+                                                      antes[-45:])
+                          and not re.search(r"(?i)\bsin\s+(?:becas?|descuentos?)\b", antes[-45:]) else {}),
                        "contexto_sha256": hashlib.sha256(contexto.encode()).hexdigest()[:16]})
     return salida[:40]
 
