@@ -213,7 +213,24 @@ interna («doble-estudio-inglese-…»); la dirección pública es la de `identi
 grado, no el de un curso. El precio de la UPSA sale de su lista de Salamanca y Nutrición tiene también un centro
 en Madrid (Salus Infirmorum) que esa lista no nombra: sin comprobar para Madrid.
 
-Resultado con todo lo leído (30/10/2026, 23:30, hora de España, tras la tercera revisión):
+**Cuarta revisión independiente (30/10/2026, medianoche).** Otro revisor, otras 12 fichas al azar (sin repetir las
+anteriores). QEDU, los precios de las públicas y los históricos contrastados (Huelva 8 cursos, Granada 3, Salamanca
+1) cuadran; los precios de CEU Fernando III y Francisco de Vitoria, también. Errores comprobados y corrección:
+
+| Error | Corrección |
+|---|---|
+| Plan desactualizado: Historia (URJC) con el plan de 2020 cuando hay una modificación de 2026 con otro plan, que no cuadra por una errata del BOE («OB/FB» en la columna de créditos) | `fichas.plan_casi_entero`: el plan vigente es el más reciente que trae el plan entero o casi (lo que suma sin optativas llega al 80 % de su tabla); si no cuadra, la ficha no tiene plan comprobado aunque uno anterior cuadre (`plan_anterior_comprobado` lo dice). Afecta a 91 grados, que pasan a las memorias del RUCT |
+| Tabla de optativas de ADE (Zaragoza) leída con una columna desplazada: la cabecera «Curso/Duración» va sobre dos columnas del cuerpo («4.º \| S1») | `boe_grados.normalizar_tablas` parte esa celda en «Curso» y «Semestre» cuando casi todas las filas traen una celda más |
+| ADE de Zaragoza en extinción desde 2026-2027 publicada como abierta | `fichas.en_extincion`: con extinción en el RUCT en todas sus universidades, la ficha lo dice y no se indexa (55 títulos) |
+| Psicología (UCAM): el precio era el de la modalidad a distancia | `solo_modalidad` cuando la dirección de la página es de una modalidad («online», «a distancia», «semipresencial») y el grado también es presencial (11 fichas) |
+
+Quedan sin corregir y se dicen: 7 optativas sin tipo en Economía (URJC; el BOE no da su carácter en la tabla y la
+ficha las deja sin tipo), tres asignaturas anuales de Educación Primaria (UFV) leídas como de primer semestre, el
+curso que el BOE da y la ficha no en León (Marketing) y Extremadura (Periodismo) y las 5 menciones de Educación
+Primaria (UFV). En Hespérides, ADE y otro grado, el RUCT registra modificaciones posteriores al BOE leído sin BOE
+nuevo: riesgo de plan desactualizado, sin confirmar (las memorias del RUCT lo resolverán).
+
+Resultado con todo lo leído (31/10/2026, 00:30, hora de España, tras las dos revisiones de la noche):
 
 | | Leídos | Con asignaturas | Con curso | Comprobados | Y además tipo a tipo |
 |---|---|---|---|---|---|
@@ -320,11 +337,12 @@ textos largos quedan solo en el almacén privado; en `sondas` va su tamaño y su
   de cada grado. Con datos estructurados y texto en desacuerdo, no se publica precio. Total del grado estimado:
   precio por curso × créditos / 60, al precio de hoy.
 
-  Resultado (30/10 por la noche, tras la tercera revisión y la relectura de las webs de universidades y centros con
-  las reglas nuevas): **354 de 1.410 grados y dobles de privadas con precio por curso** (160 de su página y 194 de
-  sus listas de precios), de 27 universidades; los 354 con total estimado. Quedan sin precio por las reglas nuevas
-  15 fichas cuyo importe solo estaba en los datos estructurados, 5 con un importe «desde» y 1 con la página de
-  otra sede; entran los de las listas nuevas. Y 12 grados de centros adscritos de públicas con el precio de su web. Control del título de la página: si la
+  Resultado (31/10 de madrugada, tras las dos revisiones de la noche y la relectura de las webs de universidades y
+  centros con las reglas nuevas): **358 de 1.410 grados y dobles de privadas con precio por curso**
+  (159 de su página y 199 de sus listas de precios), de 27 universidades; todos con total estimado. Quedan
+  sin precio por las reglas nuevas 15 fichas cuyo importe solo estaba en los datos estructurados, 5 con un importe
+  «desde» y 1 con la página de otra sede; entran los de las listas nuevas. Y 12 grados de centros adscritos de
+  públicas con el precio de su web. Control del título de la página: si la
   dirección casa con el grado pero el título dice que es de otro estudio (un doble para un grado simple, una FP,
   otro grado, o un doble con otros grados), la página no vale para ese grado (`web_privadas.titulo_contradice`);
   un título genérico («Admisión») no contradice nada. Descartó 29 uniones, 4 con precio (por ejemplo, un doble de
@@ -539,19 +557,19 @@ pedir nada a ninguna fuente, y marca cada ficha como indexable o no, con el moti
 | Con nota de corte | 2.532 |
 | Con precio de primera matrícula (públicas) | 2.113 de 2.239 grados y 498 de 647 dobles de públicas |
 | De ellos, con el precio de la norma de su comunidad (QEDU no lo da) | 508 |
-| Privadas con precio por curso | 354 de 1.410 (y 12 centros adscritos de públicas con el precio de su web) |
+| Privadas con precio por curso | 358 de 1.410 (y 12 centros adscritos de públicas con el precio de su web) |
 | Con histórico de notas de corte comprobado | 1.430 (1.569 centros; 963 con cinco cursos o más; 1.030 con los cupos de reserva) |
 | Con inserción laboral | 1.703 |
 | Con indicadores de rendimiento del SIIU | 3.125 |
 | Con ficha del RUCT | 3.265 |
 | Grados con plan del BOE | 3.095 de 3.265 |
-| Grados con plan comprobado | 2.236 (1.594 por asignaturas, el resto por materias) |
-| Dobles con los planes de sus dos grados comprobados | 596 |
-| **Indexables** con los datos mínimos decididos | **2.144** (1.778 grados y 366 dobles; 1.875 de públicas y 269 de privadas) |
+| Grados con plan comprobado | 2.145 (1.536 por asignaturas, el resto por materias) |
+| Dobles con los planes de sus dos grados comprobados | 557 |
+| **Indexables** con los datos mínimos decididos | **2.035** (1.690 grados y 345 dobles; 1.775 de públicas y 260 de privadas) |
 
-El resto va con `noindex` y su motivo: 859 con plan que no
-cuadra, 605 sin plan (o doble sin los dos planes comprobados) y
-1.054 sin nota ni precio (casi todas, privadas que no publican el precio); una
+El resto va con `noindex` y su motivo: 950 con plan que no
+cuadra, 644 sin plan (o doble sin los dos planes comprobados) y
+1.050 sin nota ni precio (casi todas, privadas que no publican el precio); una
 ficha puede tener varios.
 
 Para rehacerlo todo desde `sondas`: bajar las carpetas con `datos/estudios/grados/` y ejecutar en orden
@@ -569,16 +587,16 @@ Datos propios que salen de los planes (`motor/grados/asignaturas.py` y `relacion
 comprobados por asignaturas:
 
 - **Asignaturas en común**: en cuántas universidades del mismo grado aparece cada asignatura, qué parte del plan de
-  cada una es común y cuáles solo tiene ella (160 genéricos con al menos dos
+  cada una es común y cuáles solo tiene ella (153 genéricos con al menos dos
   planes comparables).
-- **Buscar por asignatura** (`asignaturas_indice.jsonl`): 35.954 asignaturas distintas
-  (nombre normalizado, sin numeración), 8.221 en dos títulos o más, cada una
+- **Buscar por asignatura** (`asignaturas_indice.jsonl`): 34.865 asignaturas distintas
+  (nombre normalizado, sin numeración), 7.908 en dos títulos o más, cada una
   con dónde se estudia, su tipo y su curso. TFG, optativas, prácticas y practicum van marcados como huecos del plan
   (19), sin página propia.
 - **Carreras parecidas** (`relaciones.jsonl`): por campo ISCED-F, ámbito, área y rama del SIIU, nombre, dobles
   grados que las combinan y asignaturas básicas y obligatorias en común; cada relación lleva sus motivos.
   244 de los 245 genéricos de grado con página tienen alguna
-  (1.404 relaciones apoyadas en asignaturas comunes); la que no tiene nada cercano queda
+  (1.378 relaciones apoyadas en asignaturas comunes); la que no tiene nada cercano queda
   vacía.
 - **Dobles grados que incluyen cada carrera** y los grados que forman cada doble; la ficha del doble enlaza los
   planes de sus dos grados.
@@ -596,11 +614,12 @@ comprobados por asignaturas:
    las 13:30: la memoria de Ingeniería en Sistemas de Información, 63 páginas en unos siete minutos, 37 asignaturas,
    plan comprobado con los créditos del RUCT, 186 = 186). Ese servidor lo comparten todas las conversaciones y el
    buzón de incidencias pide una sola lectura del RUCT a la vez en todo el proyecto: la noche del 30/10 lee másters;
-   las de grados (los 165 grados sin ningún plan, 28 tandas de 6 de una en una, unas 19 horas; los 1.020 serían
-   unas 120) se lanzan en cuanto termine (Álvaro: «sigue a saco»). El lector ya está en las fichas
+   las de grados (los 164 grados sin ningún plan y los 88 cuyo plan vigente no cuadra, 42 tandas de 6 de una en
+   una, unas 35 horas; los 1.020 serían unas 120) se lanzan en cuanto termine (Álvaro: «sigue a saco»; lista en
+   `trabajo/memorias_prioridad_v2.txt`). El lector ya está en las fichas
    (`fichas.plan_de_memoria`: el plan de la memoria entra si el del BOE no cuadra y él sí cuadra con los créditos
    por tipo del RUCT; con una página sin leer no cuenta como comprobado).
-3. Privadas sin precio (1.056): la Europea retiró sus PDF de 2025-2026 (404 también desde el
+3. Privadas sin precio (1.052): la Europea retiró sus PDF de 2025-2026 (404 también desde el
    servidor de España, 30/10) y la tabla 2026-2027 solo aparece en copias de terceros, que no son fuente; Católica de
    Valencia publica su tabla 2026-2027 en una ruta que su robots.txt prohíbe (no se pide); Deusto, tabla que no sale
    en el HTML; lo que no esté publicado, peticiones a cada universidad cuando el portal tenga dirección pública
