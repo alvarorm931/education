@@ -10,6 +10,11 @@ on:
       urls:
         description: "URLs separadas por espacios"
         required: true
+      ejecutor:
+        description: "Dónde se ejecuta: github (servidores de GitHub, fuera de España) o espana (servidor propio en España, para las fuentes que no responden a GitHub)"
+        type: choice
+        options: [github, espana]
+        default: github
 
 permissions:
   contents: write
@@ -19,9 +24,12 @@ permissions:
 
 jobs:
   sonda:
-    runs-on: ubuntu-latest
+    runs-on: ${{ inputs.ejecutor == 'espana' && fromJSON('["self-hosted", "espana"]') || 'ubuntu-latest' }}
     timeout-minutes: 20
     steps:
+      # En el servidor propio la carpeta de trabajo se conserva entre ejecuciones: se empieza siempre de cero
+      - name: Limpiar restos de ejecuciones anteriores
+        run: rm -rf sondas 2*T*
       - uses: actions/checkout@v4
         with:
           path: codigo
@@ -81,3 +89,6 @@ jobs:
             git add -A && git commit -qm "Sonda $STAMP"
           done
           exit 1
+      - name: Borrar la copia local (lleva el token de esta ejecución)
+        if: always()
+        run: rm -rf sondas 2*T*
