@@ -363,6 +363,9 @@ for c in $CONECTORES; do
       "$G" "BOP Castellón: boletines"
       ejecutar motor.provinciales.bopcastellon --textos --salida "$S" --max-minutos "$M"
       "$G" "BOP Castellón: textos"
+      # Boletines anteriores al carrusel: búsqueda por fechas y PDF entero (anuncios del cuerpo por su registro)
+      ejecutar motor.provinciales.bopcastellon_antiguos --salida "$S" --max-minutos "$M"
+      "$G" "BOP Castellón: boletines anteriores"
       ;;
     bopleon)
       # Ficha del boletín de cada día y su sumario en PDF (portal nuevo, desde el 17/02/2025)
