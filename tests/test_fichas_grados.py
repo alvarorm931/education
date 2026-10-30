@@ -136,3 +136,15 @@ def test_precio_por_cuentas():
     assert r["precio_curso"] == 7800 and r["matricula_o_reserva"] == 700
     assert p([1047, 1500, 11970])["metodo"] == "reserva_mas_cuotas"
     assert p([950, 1500, 4800]) is None
+
+
+def test_comprobar_con_ruct():
+    from motor.grados.fichas import comprobar_con_ruct, plan_comprobado
+    p = {"plan": [{"nombre": "A", "tipo": "basica", "creditos": 60, "nivel": "asignatura"},
+                  {"nombre": "B", "tipo": "obligatoria", "creditos": 156, "nivel": "asignatura"},
+                  {"nombre": "C", "tipo": "optativa", "creditos": 12, "nivel": "asignatura"},
+                  {"nombre": "TFG", "tipo": "tfg", "creditos": 12, "nivel": "asignatura"}]}
+    r = {"creditos": {"obligatorios": 156, "optativos": 12, "practicas_externas": 0, "tfm": 12, "total": 240}}
+    assert plan_comprobado(comprobar_con_ruct(p, r))
+    r["creditos"]["optativos"] = 24
+    assert not plan_comprobado(comprobar_con_ruct(p, r))

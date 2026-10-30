@@ -383,6 +383,21 @@ def plan_comprobado(p: dict) -> bool:
     return bool(esp) and abs((p.get("suma_sin_optativas") or 0) - esp) <= 0.5
 
 
+def comprobar_con_ruct(p: dict, r: dict) -> dict:
+    """Comprobación cruzada del plan del BOE con los créditos por tipo de la ficha del RUCT (otra fuente oficial):
+    básicas + obligatorias + prácticas + TFG del listado = total − optativos del RUCT."""
+    cr = (r or {}).get("creditos") or {}
+    if not cr.get("total") or cr.get("optativos") is None:
+        return p
+    filas = p.get("plan") or []
+    base = [f for f in filas if f.get("nivel") == "asignatura"] or filas
+    fijos = sum(f.get("creditos") or 0 for f in base if f.get("tipo") in ("basica", "obligatoria", "practicas", "tfg"))
+    esperado = cr["total"] - cr["optativos"]
+    if fijos and abs(fijos - esperado) <= 0.5:
+        return {**p, "comprobacion": "con_creditos_del_ruct"}
+    return p
+
+
 def nivel_plan(filas: list[dict]) -> str | None:
     """«asignatura» si el plan del BOE lista asignaturas; «materia» si solo publica materias (o módulos)."""
     if not filas:
@@ -444,6 +459,9 @@ def construir(catalogo: list[dict], genericos: list[dict], tarjetas: dict, detal
                     candidatos.append({**p, "fecha": p.get("fecha") or ((r.get("boe") or {}).get("plan") or {}).get("fecha"),
                                        "enlazado_por_ruct": True})
             candidatos.sort(key=lambda p: p.get("fecha") or "", reverse=True)
+            if candidatos and not any(plan_comprobado(p) for p in candidatos) and r:
+                # sin tabla de créditos que cuadre en el BOE: se comprueba contra los créditos por tipo del RUCT
+                candidatos = [comprobar_con_ruct(p, r) for p in candidatos]
             if candidatos:
                 plan = resumen_plan(next((p for p in candidatos if plan_comprobado(p)), candidatos[0]))
         notas = [c["nota_corte"] for c in centros if c["nota_corte"] is not None]
