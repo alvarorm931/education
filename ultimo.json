@@ -1,21 +1,81 @@
 {
- "fecha": "2026-10-30T07:06:00+00:00",
- "fecha_madrid": "30/10 08:06",
+ "fecha": "2026-10-30T07:13:11+00:00",
+ "fecha_madrid": "30/10 08:13",
  "ventana_horas": 6.0,
  "resumen": {
-  "ejecuciones_revisadas": 319,
-  "fallos": 4,
-  "fallos_pendientes": 0,
+  "ejecuciones_revisadas": 320,
+  "fallos": 5,
+  "fallos_pendientes": 1,
   "relanzados": 0,
   "colas_largas": 0,
   "flujos_programados_parados": [],
-  "programaciones_lanzadas_a_mano": [
-   "motor.yml"
-  ],
+  "programaciones_lanzadas_a_mano": [],
   "avisos_de_fuentes": 0,
   "almacen": "ok"
  },
  "fallos": [
+  {
+   "flujo": "Motor de datos",
+   "fichero": "motor.yml",
+   "id": 41018014171,
+   "intento": 1,
+   "evento": "workflow_dispatch",
+   "rama": "main",
+   "commit": "54bb117",
+   "titulo": "Motor de datos",
+   "conclusion": "failure",
+   "cuando": "30/10 08:07",
+   "url": "https://github.com/alvarorm931/education/actions/runs/41018014171",
+   "superado": false,
+   "pasajero": false,
+   "detalle": [
+    {
+     "trabajo": "motor",
+     "pasos": [
+      "Instalar y probar"
+     ],
+     "ejecutor": "GitHub Actions 1000000611",
+     "etiquetas": [
+      "ubuntu-latest"
+     ],
+     "final_registro": [
+      "E       AttributeError: 'NoneType' object has no attribute 'endswith'",
+      "tests/test_boe.py:107: AttributeError",
+      "E       KeyError: 'solo_huella'",
+      "tests/test_privacidad.py:33: KeyError",
+      "FAILED tests/test_boe.py::test_archivo_guarda_una_vez_y_registra - AttributeError: 'NoneType' object has no attribute 'endswith'",
+      "FAILED tests/test_privacidad.py::test_originales_solo_huella - KeyError: 'solo_huella'",
+      "##[error]Process completed with exit code 1.",
+      "...",
+      "        r1 = a.guardar(\"boe-sumario\", date(2026, 10, 28), b\"abc\", \"u\", \"xml\", 200)",
+      "        r2 = a.guardar(\"boe-sumario\", date(2026, 10, 28), b\"abc\", \"u\", \"xml\", 200)",
+      "        assert r1[\"nuevo\"] and not r2[\"nuevo\"]",
+      ">       assert r1[\"ruta\"].endswith(\".xml.gz\")",
+      "               ^^^^^^^^^^^^^^^^^^^",
+      "E       AttributeError: 'NoneType' object has no attribute 'endswith'",
+      "",
+      "tests/test_boe.py:107: AttributeError",
+      "_________________________ test_originales_solo_huella __________________________",
+      "",
+      "tmp_path = PosixPath('/tmp/pytest-of-runner/pytest-0/test_originales_solo_huella0')",
+      "",
+      "    def test_originales_solo_huella(tmp_path):",
+      "        a = Archivo(tmp_path, indice_por_fuente=True, solo_huella=True)",
+      "        r = a.guardar(\"boe-texto\", __import__(\"datetime\").date(2026, 10, 29), b\"<xml/>\", \"https://x\", \"xml\", 200)",
+      ">       assert r[\"solo_huella\"] and r[\"ruta\"] is None and not list((tmp_path / \"boe-texto\").glob(\"**/*\"))",
+      "               ^^^^^^^^^^^^^^^^",
+      "E       KeyError: 'solo_huella'",
+      "",
+      "tests/test_privacidad.py:33: KeyError",
+      "=========================== short test summary info ============================",
+      "FAILED tests/test_boe.py::test_archivo_guarda_una_vez_y_registra - AttributeError: 'NoneType' object has no attribute 'endswith'",
+      "FAILED tests/test_privacidad.py::test_originales_solo_huella - KeyError: 'solo_huella'",
+      "2 failed, 586 passed, 1 skipped in 50.77s",
+      "##[error]Process completed with exit code 1."
+     ]
+    }
+   ]
+  },
   {
    "flujo": "Boletines autonómicos",
    "fichero": "autonomicos.yml",
@@ -229,13 +289,7 @@
    "parado": false
   }
  },
- "respaldo_programaciones": [
-  {
-   "flujo": "motor.yml",
-   "prevista": "30/10 07:47",
-   "lanzado": true
-  }
- ],
+ "respaldo_programaciones": [],
  "latido": "en marcha",
  "boe": {
   "ultimo_diario": {
