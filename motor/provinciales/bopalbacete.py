@@ -6,6 +6,7 @@ entidad o grupo («Ayuntamientos») y entidad («Ossa de Montiel») en span.fw-b
 (div.col-12) con el PDF de su página (servicesajax/descargararchivopaginaBOP/N).
 
 Uso: python -m motor.provinciales.bopalbacete --salida ruta/
+     python -m motor.provinciales.bopalbacete --historico --max-minutos 30 --salida ruta/
 """
 
 from __future__ import annotations
@@ -58,7 +59,94 @@ def seleccionar(filas: list[dict]) -> list[dict]:
     return sel_portada(PORTADA, filas)
 
 
+def historico(argv: list[str] | None = None) -> int:
+    """Días anteriores por los servicios del calendario de la portada (verificado desde España el 30/10/2026):
+    servicesajax/obtenerdiaspublicacion?a=AAAA-MM-01 da los boletines del mes (JSON en base64, con «fechabop») y
+    servicesajax/obtenersumariobop (POST a=DD/MM/AAAA, con el token de la página) el sumario de ese día, con el mismo
+    formato que la portada. Mes a mes hacia atrás hasta enero de 2022."""
+    import argparse
+    import base64
+    import json
+    import time
+    from datetime import date, datetime
+    from pathlib import Path
+    from zoneinfo import ZoneInfo
+
+    import requests
+
+    from motor.archivo import Archivo, solo_huella_por_defecto
+    from motor.autonomicos.comun import Freno
+    from motor.http import USER_AGENT, Respuesta, obtener
+    from motor.provinciales.portadas import _guardar, _ruta
+
+    a = argparse.ArgumentParser()
+    a.add_argument("--historico", action="store_true")
+    a.add_argument("--salida", type=Path, default=Path("."))
+    a.add_argument("--max-minutos", type=float, default=0)
+    a.add_argument("--pausa", type=float, default=1.0)
+    args = a.parse_args(argv)
+    archivo = Archivo(args.salida / "archivo", indice_por_fuente=True, solo_huella=solo_huella_por_defecto())
+    sesion = requests.Session()
+    sesion.headers["User-Agent"] = USER_AGENT
+    r = obtener(BASE + "/", accept="text/html", sesion=sesion)
+    token = re.search(r'name="__RequestVerificationToken"[^>]*value="([^"]+)"', r.contenido.decode("utf-8", "replace"))
+    if not token:
+        print("::warning::BOP Albacete: la portada no trae el token del calendario (posible cambio de formato)")
+        return 1
+    cab = {"RequestVerificationToken": token.group(1), "X-Requested-With": "XMLHttpRequest"}
+    hoy = datetime.now(ZoneInfo("Europe/Madrid")).date()
+    anio, mes, inicio, freno, hechos = hoy.year, hoy.month, time.monotonic(), Freno(), 0
+    while (anio, mes) >= (2022, 1):
+        if args.max_minutos and (time.monotonic() - inicio) / 60 > args.max_minutos:
+            print("Tiempo agotado; se continúa en la siguiente ejecución")
+            break
+        time.sleep(args.pausa)
+        rd = obtener(f"{BASE}/servicesajax/obtenerdiaspublicacion?a={anio}-{mes:02d}-01", accept="application/json",
+                     sesion=sesion, cabeceras_extra=cab)
+        try:
+            eventos = json.loads(base64.b64decode(json.loads(rd.contenido).get("yedata") or "") or b"[]")
+        except ValueError:
+            print(f"::warning::BOP Albacete {anio}-{mes:02d}: el calendario no es el esperado (HTTP {rd.status})")
+            return 1
+        parar = False
+        for ev in sorted(eventos, key=lambda e: e.get("start") or "", reverse=True):
+            d = date.fromisoformat(ev["start"][:10])
+            ruta = _ruta(PORTADA, args.salida, "dias", d, "json")
+            if d >= hoy or (ruta.exists() and json.loads(ruta.read_text(encoding="utf-8")).get("resultado") == "ok"):
+                continue
+            if args.max_minutos and (time.monotonic() - inicio) / 60 > args.max_minutos:
+                parar = True
+                break
+            time.sleep(args.pausa)
+            rs = obtener(f"{BASE}/servicesajax/obtenersumariobop", accept="application/json", sesion=sesion,
+                         formulario={"a": ev.get("fechabop")}, cabeceras_extra=cab)
+            try:
+                h = (json.loads(rs.contenido).get("yedata") or "").encode("utf-8")
+            except ValueError:
+                h = b""
+            s = leer(h)
+            if s.get("fecha") == d.isoformat() and s.get("anuncios"):
+                inf = _guardar(PORTADA, s, Respuesta(rs.url, 200, h, rs.cabeceras),
+                               f"{BASE}/servicesajax/obtenersumariobop#{ev.get('fechabop')}", args.salida, archivo,
+                               "historico")
+                hechos += 1
+            else:
+                inf = {"fecha": d.isoformat(), "resultado": "error_formato",
+                       "alertas": [f"BOP Albacete {d}: el sumario no trae fecha o anuncios"]}
+            print(f"BOP Albacete {d}: {inf['resultado']} {inf.get('empleo_publico', '')}")
+            if freno.anotar(inf):
+                parar = True
+                break
+        if parar:
+            break
+        anio, mes = (anio, mes - 1) if mes > 1 else (anio - 1, 12)
+    print(f"BOP Albacete histórico: {hechos} boletines nuevos")
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
+    if "--historico" in (argv if argv is not None else sys.argv[1:]):
+        return historico(argv)
     return main_portada(PORTADA, argv)
 
 

@@ -212,9 +212,12 @@ for c in $CONECTORES; do
       "$G" "BOP Salamanca: textos"
       ;;
     bopalbacete)
-      # Solo el boletín del día, desde la portada
+      # El boletín del día, desde la portada
       ejecutar motor.provinciales.bopalbacete --salida "$S"
       "$G" "BOP Albacete: boletín del día"
+      # Días anteriores por los servicios del calendario de la portada, mes a mes hasta 2022
+      ejecutar motor.provinciales.bopalbacete --historico --salida "$S" --max-minutos "$M"
+      "$G" "BOP Albacete: histórico"
       ;;
     bopjaen)
       # El boletín del día, desde la portada

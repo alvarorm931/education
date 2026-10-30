@@ -48,3 +48,27 @@ def test_zaragoza_por_calendario(tmp_path, monkeypatch):
     dia = tmp_path / "datos" / "provinciales" / "bopzaragoza" / "dias" / "2026" / "10" / "01.json"
     assert dia.exists() and '"resultado": "ok"' in dia.read_text(encoding="utf-8")
     assert {"idBoletin": "91929", "fechaNueva": "01/10/2026"} in pedidas
+
+
+def test_albacete_por_calendario(tmp_path, monkeypatch):
+    import base64
+    import json
+
+    from motor.provinciales import bopalbacete as al
+    portada = (FIX / "bopalbacete_portada_20261028.html").read_text(encoding="utf-8")
+    eventos = [{"start": "2026-10-28", "fechabop": "28/10/2026"}]
+
+    def obtener(url, accept=None, sesion=None, formulario=None, cabeceras_extra=None):
+        if url.endswith("/"):
+            return Respuesta(url, 200, b'<input name="__RequestVerificationToken" type="hidden" value="t0k">', {})
+        if "obtenerdiaspublicacion" in url:
+            datos = eventos if "2026-10-01" in url else []
+            return Respuesta(url, 200, json.dumps({"yedata": base64.b64encode(json.dumps(datos).encode()).decode()}).encode(), {})
+        assert formulario == {"a": "28/10/2026"} and cabeceras_extra["RequestVerificationToken"] == "t0k"
+        return Respuesta(url, 200, json.dumps({"yedata": portada}).encode(), {})
+
+    monkeypatch.setattr("motor.http.obtener", obtener)
+    monkeypatch.setattr("time.sleep", lambda s: None)
+    al.historico(["--historico", "--salida", str(tmp_path), "--max-minutos", "0.05"])
+    dia = tmp_path / "datos" / "provinciales" / "bopalbacete" / "dias" / "2026" / "10" / "28.json"
+    assert dia.exists() and '"resultado": "ok"' in dia.read_text(encoding="utf-8")
