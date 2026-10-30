@@ -119,7 +119,10 @@ propio plan, el listado está completo. En los demás casos falta algo (materias
 TFG fuera de la tabla, resoluciones con varios planes) y el dato se completa con otra fuente o va a revisión.
 
 Cobertura: 1.252 de los 3.265 grados activos (38 %) tienen plan o modificación publicados entre 2022 y 2026. El
-resto tiene su plan en el BOE de años anteriores (2009-2021), todavía sin capturar.
+resto tiene su plan en el BOE de años anteriores. `motor/grados/boe_historico.py` recorre el sumario de 2008 a 2021
+con la misma API y guarda solo los planes, modificaciones y acuerdos de grado y de máster (prueba con las dos
+últimas semanas de junio de 2010: 15 sumarios, 65 planes de grado). En curso el 30/10/2026 (ejecución
+40987508205); después se descargan sus textos con `boe_grados textos`.
 
 Altas: los 26 acuerdos dan 853 grados con código RUCT, nombre y universidad (todos con universidad).
 
@@ -188,6 +191,14 @@ La ley SEO fija los del máster («asignaturas y precio») pero no los del grado
 Con lo medido, casi todos los grados de públicas lo cumplirán cuando el plan esté capturado. Los de privadas
 necesitarán su tarifa, porque QEDU no da precio y casi nunca nota. Sin esos datos, `noindex`, como en másters.
 
+### Cómo se genera (`motor/grados/fichas.py`)
+
+Une catálogo, genérico, QEDU y plan del BOE sin pedir nada a ninguna fuente, y marca cada ficha como indexable o
+no, con el motivo. Con lo capturado el 30/10/2026 (QEDU solo con las tarjetas; BOE con la muestra de 60 planes):
+4.296 fichas activas (3.265 grados y 1.031 dobles), 4.265 con sus centros en QEDU y 2.662 con nota de corte; 372
+comparativas (245 genéricos de grado y 127 de doble grado con página). Precio, plazas e inserción entran al
+terminar los detalles de QEDU; las asignaturas, según se capturen los planes.
+
 ## 4. Comparar
 
 Lo que hoy no da nadie junto: **el mismo grado en todas las universidades, en una tabla**. Por cada genérico con
@@ -212,13 +223,15 @@ suficientes.
 ## 5. Siguientes pasos, por lo que más acerca a la ficha completa
 
 1. **Decisión de Álvaro sobre el RUCT** (§2): con él, el plan vigente de todos los grados y sus memorias.
-2. **Planes anteriores a 2022**: capturar del BOE solo las resoluciones de planes de estudio de 2009 a 2021 (sirve
-   también a másters), y extraer las tablas con la comprobación de créditos.
+2. **Planes anteriores a 2022**: selección del sumario 2008-2021 en curso; después, textos de esos planes y
+   tablas con la comprobación de créditos (sirve también a másters).
 3. **QEDU completo** (en curso) y, después, cruce con el catálogo y primer cuadro por genérico.
 4. **Precios**: tabla de normas 2026-2027 por comunidad (en investigación) y tarifas de las privadas con el
    extractor de másters.
 5. Rendimiento y abandono por título donde haya datos abiertos; afiliación del SIIU por universidad y rama.
 6. Normalización de asignaturas y «asignaturas en común».
+7. **Privadas**: sin precio en QEDU y casi sin nota de corte, la mayoría de sus 1.410 grados y dobles activos no
+   cumplirá los datos mínimos hasta tener su tarifa. Es el hueco más grande del módulo.
 
 ## 6. Avisos para las otras conversaciones
 
