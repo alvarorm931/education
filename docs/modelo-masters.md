@@ -420,41 +420,43 @@ Esneca, Formación Continua, INESEM, Structuralia, ISEIE, EOI) y la **tercera vu
 UPF…), donde las URL son códigos opacos: se leen sus páginas de programa y la ficha se asigna por el nombre
 extraído. También se buscan ya los 387 másters aprobados en el BOE después del catálogo de febrero.
 
-### Resultado de la noche (todas las tandas)
+### Resultado de la noche (todas las tandas, comprobadas otra vez con las reglas corregidas)
 
 | | |
 |---|---|
-| Páginas pedidas / enviadas a la API | 52.857 / 49.273 |
-| Datos aceptados con cita literal comprobada / a revisión | 392.163 / 17.868 |
-| Coste de la API (extracción; la clasificación, 0,20 $ más) | 20,33 $ |
+| Páginas pedidas / enviadas a la API | 55.149 / 51.416 |
+| Datos aceptados con cita literal comprobada / a revisión | 429.325 / 22.656 |
+| Coste de la API | 20,78 $ extracción, 0,52 $ tarifas, 0,20 $ clasificación |
 | Respuestas ilegibles | menos del 0,1 % |
 
-**Másters oficiales con ficha comprobada: 2.779 de 4.734 (59 %)** (4.347 del catálogo y 387 altas del BOE):
-2.162 con el nombre del RUCT en su página unida por URL, 187 casi iguales que la página declara oficiales y
-430 encontrados por el nombre en otras páginas de su universidad o de su centro adscrito. 1.726 de públicas
-y 1.053 de privadas.
+**Másters oficiales con ficha comprobada: 2.778 de 4.734 (59 %)** (4.347 del catálogo y 387 altas del BOE):
+2.156 con el nombre del RUCT en su página unida por URL, 178 casi iguales que la página declara oficiales (y
+que no encajan mejor en otro máster de su universidad) y 444 encontrados por el nombre en otras páginas de su
+universidad o de su centro adscrito. 1.732 de públicas y 1.046 de privadas. 41 páginas que parecían la ficha
+eran de otro tipo de título (experto, propio, curso) y no se usan.
 
-**Másters no oficiales y títulos propios: 20.193 programas de máster distintos** (proveedor + nombre + tipo):
-15.590 de 913 centros no universitarios y 4.603 títulos propios en webs de 177 universidades y centros
-adscritos. Además, 3.360 fichas de otros títulos (expertos, cursos).
+**Másters no oficiales y títulos propios: 20.517 programas de máster distintos** (proveedor + nombre + tipo):
+15.574 de 913 centros no universitarios y 4.943 títulos propios en webs de 177 universidades y centros
+adscritos. Además, 3.383 fichas de otros títulos (expertos, cursos).
 
 Lo que publica cada grupo en su ficha (con cita comprobada):
 
-| Dato | Oficial pública (1.726) | Oficial privada (1.053) | Propio en web universitaria (6.393 fichas) | Centro no universitario (17.385 fichas) |
+| Dato | Oficial pública (1.732) | Oficial privada (1.046) | Propio en web universitaria (7.165 fichas) | Centro no universitario (17.358 fichas) |
 |---|---|---|---|---|
-| precio total | 17 % | **22 %** | **35 %** | 68 % |
-| asignaturas o módulos | 45 % | 79 % | 51 % | 63 % |
-| metodología | 45 % | 90 % | 66 % | 86 % |
-| evaluación | 15 % | 54 % | 24 % | 49 % |
-| horario | 13 % | 34 % | 33 % | 28 % |
-| plazas | 58 % | 44 % | 35 % | 8 % |
-| plazo de admisión | 21 % | 35 % | 28 % | 17 % |
-| becas y descuentos | 11 % | 63 % | 34 % | 44 % |
+| precio total | 17 % | **23 %** | **35 %** | 66 % |
+| asignaturas o módulos | 44 % | 79 % | 49 % | 63 % |
+| metodología | 44 % | 90 % | 63 % | 86 % |
+| evaluación | 15 % | 55 % | 22 % | 49 % |
+| horario | 13 % | 35 % | 32 % | 28 % |
+| plazas | 58 % | 45 % | 35 % | 8 % |
+| plazo de admisión | 21 % | 35 % | 29 % | 17 % |
+| becas y descuentos | 11 % | 63 % | 33 % | 44 % |
 
-Estado por campo de cada máster (`seguimiento.py --fichas`): de 26.557 másters con ficha, la mitad de lo
-esencial se ve sin dar datos (indicador de transparencia medio 0,50). Peticiones (`peticiones.py --fichas`):
-884 centros con másters sin precio publicado (10.381 fichas; las públicas no cuentan, su precio es del
-decreto). Todo en la rama `sondas`, `fichas-masters/20261030-todas/` (fichas en gzip, estado por campo,
+Estado por campo de cada máster (`seguimiento.py --fichas`): de 27.301 másters con ficha, la mitad de lo
+esencial se ve sin dar datos (indicador de transparencia medio 0,50); el precio se ve en 14.578 (15 de ellos solo
+en una tarifa en PDF), está pendiente del decreto en 1.435 públicas y no se publica en 11.288. Peticiones
+(`peticiones.py --fichas`): 891 centros con másters sin precio publicado (11.172 fichas; las públicas no
+cuentan). Todo en la rama `sondas`, `fichas-masters/20261030-todas/` (fichas en gzip, estado por campo,
 peticiones y resúmenes).
 
 ### Tarifas en PDF (`tarifas.py`)
@@ -514,7 +516,7 @@ Ordenados por lo que más acerca a tener, para cada máster, lo que hoy se da so
    norma leída y la categoría del título comprobada.
 3. **Memorias del RUCT** (plazas verificadas, plan con asignaturas, evaluación ponderada) para los oficiales,
    en el servidor de España, repartidas en noches.
-4. **Oficiales que siguen sin ficha** (1.955 de 4.734): Sevilla y Córdoba vetan el rastreo y la UOC da 403 (pedir
+4. **Oficiales que siguen sin ficha** (1.956 de 4.734): Sevilla y Córdoba vetan el rastreo y la UOC da 403 (pedir
    permiso); UB, UPM, UPV, UC3M, UAM, Murcia, A Coruña, UPF y otras grandes tienen catálogos con URL opacas o
    que se pintan con JavaScript: la tercera vuelta las lee y las asigna por el nombre; lo que quede, conector
    por universidad o el lector con navegador del servidor de España.
