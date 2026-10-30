@@ -56,13 +56,14 @@ SUBRUTAS = {"extracciones": ["datos/estudios/extraccion"], "ruct": ["datos/estud
             "guias": ["datos/estudios/masters/guias"]}
 
 
-def carpetas_en_arbol(rutas: list[str], desde: str) -> dict[str, list[str]]:
-    """Las carpetas de ejecución de la rama sondas con cada tipo de resultado, desde un sello."""
+def carpetas_en_arbol(rutas: list[str], desde: str, desde_por_tipo: dict[str, str] | None = None) -> dict[str, list[str]]:
+    """Las carpetas de ejecución de la rama sondas con cada tipo de resultado, desde un sello (o el de su tipo: las
+    memorias del RUCT del 29/10 siguen valiendo; las extracciones de antes del sello ya están en las retomadas)."""
     out: dict[str, set] = {k: set() for k in TIPOS}
     for r in rutas:
         for k, patron in TIPOS.items():
             m = patron.match(r)
-            if m and m.group(1) >= desde and m.group(1)[:1].isdigit():
+            if m and m.group(1) >= (desde_por_tipo or {}).get(k, desde) and m.group(1)[:1].isdigit():
                 out[k].add(m.group(1))
     return {k: sorted(v) for k, v in out.items()}
 
@@ -207,7 +208,8 @@ def main() -> None:
         q.add_argument("--salida", required=True)
         a = q.parse_args()
         m = json.loads(Path(a.manifiesto).read_text(encoding="utf-8"))
-        cs = carpetas_en_arbol(Path(a.arbol).read_text(encoding="utf-8").split("\n"), m.get("desde", ""))
+        cs = carpetas_en_arbol(Path(a.arbol).read_text(encoding="utf-8").split("\n"), m.get("desde", ""),
+                               m.get("desde_por_tipo"))
         Path(a.salida).parent.mkdir(parents=True, exist_ok=True)
         Path(a.salida).write_text(json.dumps(cs, ensure_ascii=False, indent=1), encoding="utf-8")
         print("\n".join(rutas_a_traer(m, cs)))

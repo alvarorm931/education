@@ -405,10 +405,13 @@ def cargar_guias(carpetas: list[Path]) -> dict[str, list[dict]]:
     for c in carpetas:
         for f in sorted(c.rglob("guias.jsonl")):
             for g in _jsonl(f):
-                if g.get("evaluacion") and (g["url"] not in por_url or g["extraido"] >= por_url[g["url"]]["extraido"]):
+                # la lectura más reciente manda aunque ya no tenga evaluación (una comprobación posterior la quitó)
+                if g["url"] not in por_url or g["extraido"] >= por_url[g["url"]]["extraido"]:
                     por_url[g["url"]] = g
     out: dict[str, list[dict]] = defaultdict(list)
     for g in por_url.values():
+        if not g.get("evaluacion"):
+            continue
         for cod in g.get("codigos_ruct") or []:
             out[cod].append(g)
     return out

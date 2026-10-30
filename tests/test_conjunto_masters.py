@@ -285,3 +285,14 @@ def test_plan_del_boe_con_la_ultima_medicion_del_documento(tmp_path):
     (a / "boe_planes_masters.jsonl").write_text(json.dumps({**doc, "codigos_ruct": ["4317886"]}) + "\n")
     (b / "boe_planes_masters.jsonl").write_text(json.dumps({**doc, "codigos_ruct": ["4310001"], "medido": "2026-10-30T16:00:00+00:00"}) + "\n")
     assert set(cm.cargar_boe_planes([tmp_path])) == {"4310001"}  # la unión antigua (a otro código) ya no cuenta
+
+
+def test_guia_con_la_lectura_mas_reciente_aunque_pierda_la_evaluacion(tmp_path):
+    a, b = tmp_path / "t0", tmp_path / "retomado"
+    a.mkdir()
+    b.mkdir()
+    g = {"url": "https://u.es/g.pdf", "codigos_ruct": ["4310001"], "asignatura": "A",
+         "evaluacion": [{"sistema": "Examen", "min": 100, "max": 100}], "extraido": "2026-10-30T12:00:00+00:00"}
+    (a / "guias.jsonl").write_text(json.dumps(g) + "\n")
+    (b / "guias.jsonl").write_text(json.dumps({**g, "evaluacion": [], "extraido": "2026-10-30T15:00:00+00:00"}) + "\n")
+    assert cm.cargar_guias([a]) and not cm.cargar_guias([a, b])
