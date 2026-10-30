@@ -16,6 +16,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 from collections import Counter, defaultdict
 from pathlib import Path
 
@@ -138,6 +139,12 @@ def dobles(genericos: list[dict]) -> tuple[dict[str, list[dict]], dict[str, list
     return dict(incluye), forman
 
 
+# Huecos del plan más que asignaturas: no tienen página de buscador propia
+GENERICAS = re.compile(r"^(trabajo (?:de )?fin(?:al)? de grado|tfg|optativas?|optatividad|asignaturas? optativas?|"
+                       r"pr[aá]cticas?(?: (?:externas?|acad[eé]micas?(?: externas?)?|en empresas?|curriculares?|"
+                       r"tuteladas?))?|practicum|pr[aá]cticum|idioma moderno|reconocimiento.*|libre elecci[oó]n.*)$", re.I)
+
+
 def indice_asignaturas(fichas: list[dict]) -> list[dict]:
     """Asignatura (clave normalizada) → carreras con planes comprobados donde se estudia, con su tipo y curso."""
     nombres: dict[str, Counter] = defaultdict(Counter)
@@ -161,7 +168,9 @@ def indice_asignaturas(fichas: list[dict]) -> list[dict]:
     salida = []
     for k, filas in donde.items():
         genericos = Counter(x["generico"] for x in filas.values() if x["generico"])
-        salida.append({"clave": k, "nombre": nombres[k].most_common(1)[0][0], "titulos": len(filas),
+        nombre = nombres[k].most_common(1)[0][0]
+        salida.append({"clave": k, "nombre": nombre, "titulos": len(filas),
+                       "generica": bool(GENERICAS.match(nombre.strip(" .")) or GENERICAS.match(k)),
                        "genericos": [{"generico": g, "titulos": n} for g, n in genericos.most_common()],
                        "donde": sorted(filas.values(), key=lambda x: (x["generico"] or "", x["universidad"]))})
     salida.sort(key=lambda x: (-x["titulos"], x["clave"]))
@@ -197,7 +206,8 @@ def main() -> None:
            "con_parecidas": sum(1 for v in par.values() if v),
            "parecidas_por_asignaturas": sum(1 for v in par.values() for x in v if any("asignaturas" in m for m in x["motivos"])),
            "simples_con_dobles": len(incluye), "genericos_con_asignaturas": len(asig),
-           "asignaturas_distintas": len(indice), "asignaturas_en_2_o_mas_titulos": sum(1 for x in indice if x["titulos"] >= 2)}
+           "asignaturas_distintas": len(indice), "asignaturas_en_2_o_mas_titulos": sum(1 for x in indice if x["titulos"] >= 2),
+           "genericas_sin_pagina": sum(1 for x in indice if x["generica"])}
     (destino / "relaciones_resumen.json").write_text(json.dumps(res, ensure_ascii=False, indent=1), encoding="utf-8")
     print(json.dumps(res, ensure_ascii=False, indent=1))
 
