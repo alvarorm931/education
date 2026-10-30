@@ -12,6 +12,8 @@ dependencies = [
 [project.optional-dependencies]
 dev = ["pytest>=8"]
 estudios = ["duckdb>=1.1"]
+# Almacén privado de originales en S3 (escritura condicional If-None-Match: botocore 1.35 o posterior)
+almacen = ["boto3>=1.35"]
 
 [build-system]
 requires = ["setuptools>=68"]

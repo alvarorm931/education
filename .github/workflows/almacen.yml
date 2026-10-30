@@ -1,0 +1,44 @@
+name: Prueba del almacén de originales
+
+# Comprueba de punta a punta el acceso al almacén privado de S3 (education-originales-finads, eu-south-2) sin
+# claves: GitHub pide credenciales temporales por OIDC al rol education-originales-github, que solo pueden asumir
+# los flujos de la rama main. La prueba sube un objeto bajo pruebas-almacen/, lo lee, comprueba su huella y que
+# una segunda escritura en la misma clave se rechaza (If-None-Match: *). No borra nada: el rol no puede.
+
+on:
+  workflow_dispatch:
+    inputs:
+      ejecutor:
+        description: "Dónde se ejecuta: github (servidores de GitHub) o espana (servidor propio en España)"
+        type: choice
+        options: [github, espana]
+        default: github
+
+permissions:
+  id-token: write   # para pedir el token OIDC que canjea AWS
+  contents: read
+
+jobs:
+  prueba:
+    runs-on: ${{ inputs.ejecutor == 'espana' && fromJSON('["self-hosted", "espana"]') || 'ubuntu-latest' }}
+    timeout-minutes: 10
+    steps:
+      - name: Limpiar restos de ejecuciones anteriores
+        run: rm -rf codigo
+      - uses: actions/checkout@v4
+        with:
+          path: codigo
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -q -e "./codigo[almacen]"
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::369017477131:role/education-originales-github
+          aws-region: eu-south-2
+          role-session-name: prueba-almacen-${{ github.run_id }}
+      - name: Subir, leer y comprobar que no se sobrescribe
+        run: python -m motor.almacen prueba
+      - name: Limpiar la copia local
+        if: always()
+        run: rm -rf codigo
