@@ -312,8 +312,9 @@ provinciales:
     url: https://bop.dipuleon.es/
     acceso_desde_github: "ok"
     datos_estructurados: "RSS: https://www.dipuleon.es/Contenidos_RSS/"
-    nota: "Sondeo 30/10/2026: portal nuevo desde el 17/02/2025; el boletín de cada día en /publica/consulta-de-bops/buscador/BOP-DD-MM-AAAA/ (404 si no hay) solo enlaza el sumario y el boletín en PDF; lo anterior, en el buscador antiguo (boletines-anteriores). Falta leer el sumario en PDF."
-    estado: sin_conector
+    nota: "Sondeo 30/10/2026: portal nuevo desde el 17/02/2025; el boletín de cada día en /publica/consulta-de-bops/buscador/BOP-DD-MM-AAAA/ (404 si no hay) enlaza el sumario en PDF, que el conector lee (sangrías y enlaces a la ficha de cada anuncio). Lo anterior al 17/02/2025, en el buscador antiguo (boletines-anteriores): pendiente."
+    estado: conector_en_pruebas
+    conector: motor/provinciales/bopleon.py
   - provincia: Lleida
     url: https://ebop.diputaciolleida.cat/bop/
     acceso_desde_github: "sin_respuesta_desde_github (timeout)"

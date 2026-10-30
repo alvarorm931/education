@@ -89,9 +89,10 @@ FUENTES: dict[str, tuple[str, tuple[str, ...]]] = {
     "bopsoria": ("BOP-SORIA", ("Boletín Oficial de la Provincia de Soria",)),
     "bopteruel": ("BOP-TERUEL", ("Boletín Oficial de la Provincia de Teruel",)),
     "bopcastellon": ("BOP-CASTELLON", ("Boletín Oficial de la Provincia de Castellón",)),
+    "bopleon": ("BOP-LEON", ("Boletín Oficial de la Provincia de León",)),
 }
 PROVINCIALES = {"bopb", "bopalicante", "bopvalencia", "bopt", "bopciudadreal", "bopgranada", "bopsevilla", "bophuesca",
-                "boptenerife", "bopcordoba", "bopcoruna", "boppontevedra", "bopavila", "bopbadajoz", "bopzamora", "boptoledo", "bopburgos", "bopalava", "bopsalamanca", "bopalbacete", "bopjaen", "bopzaragoza", "bopgipuzkoa", "bopbizkaia", "boplugo", "bophuelva", "boplaspalmas", "bopvalladolid", "bopcaceres", "bopguadalajara", "bopgirona", "bopourense", "boplleida", "boppalencia", "bopsoria", "bopteruel", "bopcastellon"}
+                "boptenerife", "bopcordoba", "bopcoruna", "boppontevedra", "bopavila", "bopbadajoz", "bopzamora", "boptoledo", "bopburgos", "bopalava", "bopsalamanca", "bopalbacete", "bopjaen", "bopzaragoza", "bopgipuzkoa", "bopbizkaia", "boplugo", "bophuelva", "boplaspalmas", "bopvalladolid", "bopcaceres", "bopguadalajara", "bopgirona", "bopourense", "boplleida", "boppalencia", "bopsoria", "bopteruel", "bopcastellon", "bopleon"}
 CON_PLAZO = {"convocatoria", "bases", "modificacion", "correccion", "otro", None}
 
 

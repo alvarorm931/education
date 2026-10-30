@@ -318,6 +318,12 @@ for c in $CONECTORES; do
       ejecutar motor.provinciales.bopcastellon --textos --salida "$S" --max-minutos "$M"
       "$G" "BOP Castellón: textos"
       ;;
+    bopleon)
+      # Ficha del boletín de cada día y su sumario en PDF (portal nuevo, desde el 17/02/2025)
+      ejecutar motor.provinciales.bopleon --salida "$S"
+      ejecutar motor.provinciales.bopleon --desde 2025-02-17 --salida "$S" --max-minutos "$M"
+      "$G" "BOP León: boletines"
+      ;;
     bopb)
       # El del día por el canal de datos abiertos; los anteriores por el listado por días y los textos en PDF (cerrados
       # en robots.txt; se leen como boletín oficial, motor/http.py)
