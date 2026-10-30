@@ -225,7 +225,7 @@ for c in $CONECTORES; do
       "$G" "BOP Lugo: boletín del día"
       ;;
     bophuelva)
-      # JSON del día desde s2.diphuelva.es (robots.txt lo cierra: boletín oficial, motor/http.py). Este sistema empieza el 20/06/2023
+      # JSON del día desde s2.diphuelva.es (robots.txt lo cierra: boletín oficial, motor/http.py), desde el servidor de España: a GitHub deja de responderle. Este sistema empieza el 20/06/2023
       ejecutar motor.provinciales.bophuelva --salida "$S"
       ejecutar motor.provinciales.bophuelva --desde 2023-06-20 --salida "$S" --max-minutos "$M"
       "$G" "BOP Huelva: días"

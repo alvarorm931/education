@@ -61,10 +61,15 @@ def _t(s: str) -> str:
 
 
 def ultimo(contenido: bytes) -> dict | None:
+    """El último boletín que enlaza la portada (el del recuadro «Último boletín» o, si no está, el más reciente)."""
     h = contenido.decode("utf-8", errors="replace")
     i = h.find("last-boletin-title")
-    m = RE_ULTIMO.search(h, max(i, 0))
-    return {"fecha": f"{m.group(1)}-{m.group(2)}-{m.group(3)}", "numero": int(m.group(4))} if m else None
+    m = RE_ULTIMO.search(h, i) if i >= 0 else None
+    todos = [m] if m else list(RE_ULTIMO.finditer(h))
+    if not todos:
+        return None
+    m = max(todos, key=lambda x: (x.group(1), x.group(2), x.group(3), int(x.group(4))))
+    return {"fecha": f"{m.group(1)}-{m.group(2)}-{m.group(3)}", "numero": int(m.group(4))}
 
 
 def parsear_boletin(contenido: bytes) -> dict:
@@ -160,12 +165,17 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--pausa", type=float, default=1.0)
     a = p.parse_args(argv)
     archivo = Archivo(a.salida / "archivo", indice_por_fuente=True, solo_huella=solo_huella_por_defecto())
-    try:
-        r = obtener(PORTADA, accept="text/html")
-        actual = ultimo(r.contenido) if r.status == 200 else None
-    except (ConnectionError, TimeoutError) as e:
-        print(f"BOB: fuente inaccesible ({e})")
-        return 1
+    actual = None
+    for intento in range(3):  # la portada a veces llega sin el recuadro del último boletín: se repite
+        try:
+            r = obtener(PORTADA, accept="text/html")
+            actual = ultimo(r.contenido) if r.status == 200 else None
+        except (ConnectionError, TimeoutError) as e:
+            print(f"BOB: fuente inaccesible ({e})")
+            return 1
+        if actual:
+            break
+        time.sleep(5 * (intento + 1))
     if not actual:
         print("::warning::BOB: la portada no enlaza el último boletín (posible cambio de formato)")
         return 1
