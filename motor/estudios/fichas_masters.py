@@ -20,6 +20,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import re
 from collections import Counter, defaultdict
 from pathlib import Path
 
@@ -94,8 +95,38 @@ def componer(paginas_master: list[dict], hechos: dict[str, list[dict]]) -> dict:
     return {"campos": campos, "campos_con_valores_distintos": sorted(set(distintos))}
 
 
+def rescatar_oficiales(paginas: dict[str, dict], hechos: dict[str, list[dict]], cat: dict[str, dict],
+                       censo: dict[str, dict]) -> dict[str, tuple[str, float]]:
+    """URL → (código RUCT, cobertura) de las páginas extraídas como no oficiales o títulos propios que son, por su
+    nombre, la ficha de un máster oficial de las universidades de su proveedor (la unión por URL no las vio:
+    otra dirección, otro idioma, otro centro). Solo con el nombre del RUCT confirmado y la página diciendo que
+    es oficial."""
+    por_univ: dict[str, list[dict]] = defaultdict(list)
+    for t in cat.values():
+        if t.get("situacion", "Activo") == "Activo":
+            por_univ[t.get("universidad_codigo") or ""].append(t)
+    salida = {}
+    for url, p in paginas.items():
+        if p.get("grupo") == "oficial" or p.get("pagina") == "subpagina" or p.get("no_es_programa"):
+            continue
+        hs = {h["campo"]: h["valor"] for h in hechos.get(url, [])}
+        nombre, tipo = str(hs.get("nombre") or ""), str(hs.get("tipo_titulo") or "").lower()
+        if not nombre or not ("oficial" in tipo or "universitari" in nombre.lower()):
+            continue
+        univs = {r.get("universidad") for r in (censo.get(p.get("proveedor") or "") or {}).get("ruct", [])}
+        mejor = None
+        for u in univs:
+            for t in por_univ.get(u or "", []):
+                est, cob = comprobar_nombre(t["nombre_oficial"], nombre)
+                if est == "confirmado" and (mejor is None or cob > mejor[1]):
+                    mejor = (t["codigo_ruct"], cob)
+        if mejor:
+            salida[url] = mejor
+    return salida
+
+
 def ejecutar(extracciones: list[Path], salida: Path, catalogo: Path | None = None,
-             clasificacion: Path | None = None) -> dict:
+             clasificacion: Path | None = None, censo: Path | None = None) -> dict:
     paginas, hechos = leer_extracciones(extracciones)
     cat = {}
     if catalogo:
@@ -105,17 +136,25 @@ def ejecutar(extracciones: list[Path], salida: Path, catalogo: Path | None = Non
     clas = {c["id"]: c for c in _jsonl(clasificacion)} if clasificacion else {}
     res, fichas = Counter(), []
 
+    provs = {x["id"]: x for x in _jsonl(censo)} if censo else {}
+    rescatadas = rescatar_oficiales(paginas, hechos, cat, provs) if cat and provs else {}
+    res["paginas_rescatadas_como_oficiales"] = len(rescatadas)
+
     # oficiales: un máster por código RUCT, con su principal y sus subpáginas
     por_codigo: dict[str, list[dict]] = defaultdict(list)
     for p in paginas.values():
         if p.get("grupo") == "oficial":
             for c in p.get("codigos_ruct") or ([p["codigo_ruct"]] if p.get("codigo_ruct") else []):
                 por_codigo[c].append(p)
+    for u, (c, _) in rescatadas.items():
+        por_codigo.setdefault(c, [])
     for codigo, ps in sorted(por_codigo.items()):
         t = cat.get(codigo, {})
         principales = [p for p in ps if p.get("pagina", "principal") == "principal"]
         nombre_ext = next((h["valor"] for p in principales for h in hechos.get(p["url"], []) if h["campo"] == "nombre"), None)
-        if principales and all(p.get("no_es_programa") for p in principales):
+        if not ps:
+            estado, cob = "sin_pagina", 0.0
+        elif principales and all(p.get("no_es_programa") for p in principales):
             estado, cob = "no_es_ficha", 0.0
         else:
             estado, cob = comprobar_nombre(t.get("nombre_oficial", ""), nombre_ext) if t else ("sin_catalogo", 0.0)
@@ -126,12 +165,18 @@ def ejecutar(extracciones: list[Path], salida: Path, catalogo: Path | None = Non
                          if h["campo"] == "tipo_titulo"), "")
             estado = "probable_oficial" if "oficial" in tipo.lower() and "doble" not in (nombre_ext or "").lower() \
                 else "probable_sin_confirmar"
+        rescate = sorted((u for u, (c, _) in rescatadas.items() if c == codigo), key=lambda u: -rescatadas[u][1])
+        if estado not in ("confirmado", "probable_oficial") and rescate:
+            # la página propia no era la ficha (o no había): vale la rescatada por el nombre
+            ps = [paginas[rescate[0]]]
+            nombre_ext = next((h["valor"] for h in hechos.get(rescate[0], []) if h["campo"] == "nombre"), None)
+            estado, cob = "confirmado_por_nombre", rescatadas[rescate[0]][1]
         res["oficial_" + estado] += 1
         ficha = {"clave": f"ruct:{codigo}", "grupo": "oficial", "codigo_ruct": codigo,
                  "nombre_oficial": t.get("nombre_oficial"), "nombre_en_pagina": nombre_ext,
                  "comprobacion_nombre": estado, "cobertura_nombre": cob,
                  "paginas": sorted(p["url"] for p in ps)}
-        if estado in ("confirmado", "probable_oficial"):
+        if estado in ("confirmado", "probable_oficial", "confirmado_por_nombre"):
             ficha.update(componer(ps, hechos))
         else:
             ficha.update({"campos": {}, "campos_con_valores_distintos": []})
@@ -151,7 +196,7 @@ def ejecutar(extracciones: list[Path], salida: Path, catalogo: Path | None = Non
         if q.get("principal"):
             subs[q["principal"]].append(q)
     for p in sorted(paginas.values(), key=lambda p: p["url"]):
-        if p.get("grupo") == "oficial" or p.get("pagina") == "subpagina":
+        if p.get("grupo") == "oficial" or p.get("pagina") == "subpagina" or p["url"] in rescatadas:
             continue
         if p.get("no_es_programa"):
             res["no_oficial_no_es_ficha"] += 1
@@ -167,8 +212,8 @@ def ejecutar(extracciones: list[Path], salida: Path, catalogo: Path | None = Non
         ficha["programa"] = "prog-" + hashlib.sha256(
             f"{p.get('proveedor')}|{' '.join(sorted(palabras_texto(nombre)))}|{tipo.lower()}".encode()).hexdigest()[:12] \
             if nombre else None
-        ficha["es_master"] = "máster" in tipo.lower() or "master" in tipo.lower() or \
-            "máster" in str((ficha["campos"].get("nombre") or {}).get("valor", "")).lower()
+        ficha["es_master"] = bool(re.search(r"(?i)m[aá]ster|\bmba\b", f"{tipo} {nombre}")) or \
+            (not nombre and bool(re.search(r"(?i)m[aá]ster|\bmba\b", p["url"])))
         res["no_oficial_ficha"] += 1
         programas.add(ficha["programa"]) if ficha["programa"] else None
         if ficha["es_master"] and ficha["programa"]:
@@ -199,10 +244,12 @@ def main() -> None:
     p.add_argument("--extraccion", action="append", required=True)
     p.add_argument("--catalogo")
     p.add_argument("--clasificacion")
+    p.add_argument("--censo", help="proveedores.jsonl: une a sus másters oficiales las páginas propias con su nombre")
     p.add_argument("--salida", required=True)
     a = p.parse_args()
     print(json.dumps(ejecutar([Path(x) for x in a.extraccion], Path(a.salida), Path(a.catalogo) if a.catalogo else None,
-                              Path(a.clasificacion) if a.clasificacion else None), ensure_ascii=False, indent=1))
+                              Path(a.clasificacion) if a.clasificacion else None, Path(a.censo) if a.censo else None),
+                     ensure_ascii=False, indent=1))
 
 
 if __name__ == "__main__":

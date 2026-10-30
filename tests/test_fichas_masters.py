@@ -61,3 +61,25 @@ def test_probable_solo_si_la_pagina_dice_oficial(tmp_path):
     (tmp_path / "c.json").write_text(json.dumps(cat))
     r = f.ejecutar([tmp_path / "e"], tmp_path / "o", catalogo=tmp_path / "c.json")
     assert r["oficial_probable_sin_confirmar"] == 1 and r["oficial_probable_oficial"] == 1
+
+
+def test_rescate_de_oficial_por_nombre(tmp_path):
+    t = "2026-10-30T03:00:00+00:00"
+    pag = [{"url": "https://u.es/vieja", "extraido": t, "grupo": "oficial", "codigos_ruct": ["1"], "pagina": "principal",
+            "no_es_programa": True},
+           {"url": "https://u.es/master-quimica", "extraido": t, "grupo": "propio_oficial", "proveedor": "prov-u",
+            "pagina": "principal"}]
+    h = lambda url, campo, valor: {"url": url, "campo": campo, "valor": valor, "estado": "aceptado", "extraido": t,
+                                   "captura_sha256": "s"}
+    hs = [h("https://u.es/master-quimica", "nombre", "Máster Universitario en Química Industrial"),
+          h("https://u.es/master-quimica", "tipo_titulo", "máster universitario oficial"),
+          h("https://u.es/master-quimica", "plazas", 25)]
+    _escribir(tmp_path / "e", pag, hs)
+    (tmp_path / "c.json").write_text(json.dumps([{"codigo_ruct": "1", "universidad_codigo": "001", "situacion": "Activo",
+        "nombre_oficial": "Máster Universitario en Química Industrial por la Universidad X"}]))
+    (tmp_path / "p.jsonl").write_text(json.dumps({"id": "prov-u", "ruct": [{"universidad": "001"}]}) + "\n")
+    r = f.ejecutar([tmp_path / "e"], tmp_path / "o", catalogo=tmp_path / "c.json", censo=tmp_path / "p.jsonl")
+    fichas = [json.loads(l) for l in (tmp_path / "o/datos/estudios/masters/fichas.jsonl").read_text().splitlines()]
+    uno = next(x for x in fichas if x["clave"] == "ruct:1")
+    assert uno["comprobacion_nombre"] == "confirmado_por_nombre" and uno["campos"]["plazas"]["valor"] == 25
+    assert r["paginas_rescatadas_como_oficiales"] == 1 and not any(x["grupo"] == "no_oficial" for x in fichas)
