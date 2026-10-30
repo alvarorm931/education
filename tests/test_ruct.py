@@ -197,6 +197,6 @@ def test_codigos_ya_leidos_por_nivel_y_sello():
 
 def test_memoria_va_a_su_carpeta(monkeypatch, tmp_path):
     monkeypatch.setattr(ruct, "leer_ficha", lambda l, c, tipo="M": {"codigo": c, "fuente": {}})
-    monkeypatch.setattr(ruct, "leer_memoria", lambda l, f, max_paginas=0: {"plan": []})
+    monkeypatch.setattr(ruct, "leer_memoria", lambda l, f, max_paginas=0, ligera=False: {"plan": []})
     ruct.ejecutar(["A"], tmp_path, "memoria", 5, pausa_corte=0)
     assert (tmp_path / "datos/estudios/masters/ruct_memoria/A.json").exists()

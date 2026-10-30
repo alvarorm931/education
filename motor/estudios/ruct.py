@@ -457,7 +457,10 @@ def _comprobar(pagina: str, nombre_esperado: str) -> bool:
     return _clave(nombre_esperado).startswith(a[: max(10, len(a) - 3)])
 
 
-def leer_memoria(lector: Lector, ficha: dict, max_paginas: int = 250) -> dict:
+def leer_memoria(lector: Lector, ficha: dict, max_paginas: int = 250, ligera: bool = False) -> dict:
+    """ligera=True: sin la página de cada asignatura (sus nombres salen igual de la materia; sus créditos, del plan
+    del BOE) ni la de resultados de aprendizaje. Unas 15 peticiones menos por máster, para cuando el servidor
+    pide ir despacio."""
     """Recorre la memoria vigente en orden dentro de su sesión y devuelve sus datos estructurados."""
     m = memoria_vigente(ficha)
     if not m:
@@ -534,7 +537,7 @@ def leer_memoria(lector: Lector, ficha: dict, max_paginas: int = 250) -> dict:
         p = pagina(f"{ruta}&cod={cod}")
         if p:
             memoria["catalogos"][clave] = textos(p) or [x["texto"] for x in lista_catalogo(p)]
-    p = pagina(f"resultados?actual=menu.solicitud.resultados&cod={cod}")
+    p = None if ligera else pagina(f"resultados?actual=menu.solicitud.resultados&cod={cod}")
     if p:
         memoria["resultados_aprendizaje"] = [{"codigo": f[0], "descripcion": f[1], "tipo": f[-1]}
                                              for t in tablas(p) for f in t["filas"] if len(f) >= 3]
@@ -570,7 +573,7 @@ def leer_memoria(lector: Lector, ficha: dict, max_paginas: int = 250) -> dict:
             if "datosMateria!contenidos" in pmat:
                 pc = pagina(f"datosMateria!contenidos?tipo=C&actual=menu.solicitud.planificacion.materias.contenidos&codMateria={mat}&codModulo={mod}")
                 materia["contenidos"] = textos(pc) if pc else []
-            asignaturas = sorted({int(x) for x in re.findall(r"codAsignatura=(\d+)", pmat)})
+            asignaturas = [] if ligera else sorted({int(x) for x in re.findall(r"codAsignatura=(\d+)", pmat)})
             materia["asignaturas"] = []
             for a in asignaturas:
                 pas = pagina(f"datosAsignatura!consulta.action?codModulo={mod}&codMateria={mat}&codAsignatura={a}"
@@ -668,7 +671,7 @@ def resumen_memoria(m: dict) -> dict:
 
 
 def ejecutar(codigos: list[str], raiz: Path, nivel: str, max_minutos: float, pausa_corte: float | None = None,
-             pausa: float = PAUSA) -> dict:
+             pausa: float = PAUSA, ligera: bool = False) -> dict:
     """Lee la ficha (y con nivel «memoria» la memoria vigente) de cada código, en orden.
 
     Los originales van al archivo con la política del motor: en la rama pública solo índice y huella; enteros en el
@@ -720,7 +723,7 @@ def ejecutar(codigos: list[str], raiz: Path, nivel: str, max_minutos: float, pau
         if "error" in ficha:
             errores[ficha["error"]] += 1
         elif nivel == "memoria":
-            ficha["memoria"] = leer_memoria(lector, ficha, max_paginas=MAX_PAGINAS)
+            ficha["memoria"] = leer_memoria(lector, ficha, max_paginas=MAX_PAGINAS, ligera=ligera)
             resumenes[codigo] = resumen_memoria(ficha["memoria"])
         (destino / f"{codigo}.json").write_text(json.dumps(ficha, ensure_ascii=False, indent=1), encoding="utf-8")
         hechos += 1
@@ -750,6 +753,8 @@ def main() -> None:
     p.add_argument("--pendientes-de-sondas", metavar="SELLO", nargs="?", const="",
                    help="quitar los códigos ya leídos en este nivel en la rama sondas (carpetas desde SELLO)")
     p.add_argument("--tramo", help="solo para distinguir tramos iguales en la matriz del flujo")
+    p.add_argument("--memoria-ligera", action="store_true",
+                   help="memoria sin la página de cada asignatura ni la de resultados de aprendizaje")
     p.add_argument("--pausa", type=float, default=PAUSA,
                    help="segundos entre peticiones de partida (el lector la sube sola si el servidor no responde)")
     p.add_argument("--salida", required=True)
@@ -767,7 +772,8 @@ def main() -> None:
         hechos = hechos_en_sondas(a.nivel, a.pendientes_de_sondas)
         codigos = [c for c in codigos if c not in hechos]
         print(f"ya leídos en sondas ({a.nivel}): {len(hechos)}; pendientes: {len(codigos)}", file=sys.stderr)
-    print(json.dumps(ejecutar(codigos, Path(a.salida), a.nivel, a.max_minutos, pausa=a.pausa), ensure_ascii=False))
+    print(json.dumps(ejecutar(codigos, Path(a.salida), a.nivel, a.max_minutos, pausa=a.pausa, ligera=a.memoria_ligera),
+                     ensure_ascii=False))
 
 
 if __name__ == "__main__":
