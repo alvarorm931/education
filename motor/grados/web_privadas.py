@@ -38,7 +38,17 @@ GRADO_URL = re.compile(r"grado|grados|graus?\b|grau-en|carreras?|degree|bachelor
                        r"estudios-universitarios|doble-|dobles-", re.I)
 NO_GRADO = re.compile(r"m[aá]ster|masters?\b|postgrado|posgrado|postgrau|doctorad|/blog|noticia|news|actualidad|evento|"
                       r"agenda|/tag/|/category/|/autor|/author|/wp-content/|\.pdf$|\.jpe?g$|\.png$|curso-de-|cursos/|"
-                      r"formacion-permanente|experto|especialista|executive|mba", re.I)
+                      r"formacion-permanente|experto|especialista|executive|mba|lanza|nuevo-grado|trabajo-fin|tfg|"
+                      r"salidas|que-estudiar|requisitos|becas?[-/]|preguntas|faq|opiniones|testimonio|entrevista|"
+                      r"jornada|webinar|open-day|puertas-abiertas|premio|convenio|acuerdo|calendario|horario|"
+                      r"profesor|docente|investigaci|departamento|/prensa|comunicado", re.I)
+# Sedes y ciudades: una URL de otra sede (universidades con un sitemap para varias) no es de esta universidad
+SEDES = {"madrid", "valencia", "canaria", "canarias", "andalucia", "sevilla", "malaga", "barcelona", "alicante",
+         "castellon", "elche", "murcia", "bilbao", "donostia", "vitoria", "zaragoza", "salamanca", "valladolid",
+         "palma", "tenerife", "granada", "cordoba", "almeria", "marbella", "santander", "oviedo", "leon"}
+# Importes verosímiles por tipo (€): fuera de rango se guardan como «fuera_de_rango» (sueldos, cifras de otra cosa)
+RANGO = {"credito": (40, 450), "curso": (2500, 30000), "mensual": (200, 3500), "reserva": (100, 3500),
+         "total": (8000, 160000)}
 IDIOMA_EXTRANJERO = re.compile(r"/(en|ca|eu|gl|fr|de|it|pt|va)(/|$)|/english/", re.I)
 IMPORTE = re.compile(r"(\d{1,3}(?:[.\s]\d{3})+|\d{3,6})(?:,(\d{2}))?\s?(?:€|euros?\b|EUR\b)", re.I)
 TIPO_IMPORTE = [
@@ -66,12 +76,13 @@ def es_url_grado(url: str) -> bool:
     return bool(GRADO_URL.search(ruta)) and not NO_GRADO.search(ruta)
 
 
-def unir(grados: list[dict], urls: list[str]) -> dict[str, dict]:
+def unir(grados: list[dict], urls: list[str], propias: set[str] | None = None) -> dict[str, dict]:
     """código → {url, alternativas}: la URL de grado cuyo camino contiene todas las palabras del nombre.
 
     Entre varias, la que no está en otro idioma y tiene el camino más corto. Los dobles grados exigen además «doble»
     en la URL; los simples, no tenerlo."""
-    candidatas = [(u, palabras_url(u)) for u in urls if es_url_grado(u)]
+    ajenas = SEDES - (propias or set())
+    candidatas = [(u, pu) for u in urls if es_url_grado(u) for pu in [palabras_url(u)] if not (pu & ajenas)]
     salida = {}
     for g in grados:
         if g["clase"] == "doble":
@@ -118,8 +129,41 @@ def importes(html: str) -> list[dict]:
         antes, despues = visible[inicio:m.start()], visible[m.end():fin]
         tipo = tipo_cercano(antes, despues)
         contexto = visible[inicio:fin]
-        salida.append({"valor": valor, "tipo": tipo, "contexto_sha256": hashlib.sha256(contexto.encode()).hexdigest()[:16]})
+        rango = RANGO.get(tipo)
+        verosimil = bool(rango and rango[0] <= valor <= rango[1])
+        salida.append({"valor": valor, "tipo": tipo, "verosimil": verosimil,
+                       "contexto_sha256": hashlib.sha256(contexto.encode()).hexdigest()[:16]})
     return salida[:40]
+
+
+LISTADO = re.compile(r"grados?|graus?|estudios|estudis|titulaciones|titulacions|carreras|oferta|degrees?|bachelor|"
+                     r"undergraduate|estudia", re.I)
+
+
+def desde_portada(d: Dominio, max_listados: int = 10) -> list[str]:
+    """Enlaces de la portada y de sus páginas de listado de estudios (para webs sin sitemap útil)."""
+    from motor.estudios.rastreador import enlaces
+
+    vistos, salida = set(), []
+    r = d.get(d.base + "/")
+    if r is None or r.status_code != 200:
+        return salida
+    cola = []
+    for u, t in enlaces(texto_de(r), r.url):
+        if d.propio(u) and u not in vistos:
+            vistos.add(u)
+            salida.append(u)
+            if LISTADO.search(urlparse(u).path + " " + (t or "")) and not NO_GRADO.search(urlparse(u).path):
+                cola.append(u)
+    for u in cola[:max_listados]:
+        r = d.get(u)
+        if r is None or r.status_code != 200 or "html" not in (r.headers.get("content-type") or ""):
+            continue
+        for v, _ in enlaces(texto_de(r), r.url):
+            if d.propio(v) and v not in vistos:
+                vistos.add(v)
+                salida.append(v)
+    return salida
 
 
 def recorrer(universidad: dict, grados: list[dict], archivo: Archivo | None, max_paginas: int) -> dict:
@@ -153,9 +197,14 @@ def recorrer(universidad: dict, grados: list[dict], archivo: Archivo | None, max
         cola = list(dict.fromkeys(hijos + cola))
         urls.extend(u for u in paginas if d.propio(u))
     res["sitemaps_leidos"] = leidos
+    if sum(1 for u in urls if es_url_grado(u)) < 3:  # sin sitemap útil: portada y páginas de listado de grados
+        urls += desde_portada(d)
+        res["via"] = "portada"
     res["urls"] = len(urls)
     res["urls_grado"] = sum(1 for u in urls if es_url_grado(u))
-    union = unir(grados, urls)
+    propias = set(clave(universidad["nombre"]).split()) | {w for g in grados for i in g["imparticiones"]
+                                                         for w in clave(i.get("municipio") or "").split()}
+    union = unir(grados, urls, propias)
     res["grados_con_url"] = len(union)
     fichas, pdfs = {}, Counter()
     for codigo, u in list(union.items())[:max_paginas]:
@@ -193,6 +242,10 @@ def resumen(resultados: list[dict]) -> dict:
         "paginas_leidas": len(leidas),
         "con_precio_jsonld": sum(1 for f in leidas if f.get("precio_jsonld")),
         "con_algun_importe": len(con_importe),
+        "con_importe_verosimil": sum(1 for f in leidas if any(i.get("verosimil") for i in f.get("importes") or [])),
+        "con_precio_curso_o_credito_verosimil": sum(1 for f in leidas if any(
+            i.get("verosimil") and i["tipo"] in ("curso", "credito", "total") for i in f.get("importes") or [])),
+        "via_portada": sum(1 for r in resultados if r.get("via") == "portada"),
         "con_importe_por_tipo": dict(Counter(i["tipo"] for f in con_importe for i in f["importes"])),
         "formulario_pide_correo": sum(1 for f in leidas if f.get("formulario_pide_correo")),
         "pide_correo_y_sin_importe": sum(1 for f in leidas if f.get("formulario_pide_correo") and not f.get("importes")),

@@ -29,3 +29,18 @@ def test_importes_con_su_tipo():
     i = wp.importes(html)
     assert [(x["valor"], x["tipo"]) for x in i] == [(180, "credito"), (1100, "reserva"), (795, "mensual"), (9420, "curso")]
     assert all(len(x["contexto_sha256"]) == 16 for x in i)
+
+
+def test_otra_sede_y_paginas_que_no_son_ficha():
+    grados = [{"codigo": "1", "clase": "grado", "nombre": "Fisioterapia", "componentes": []},
+              {"codigo": "2", "clase": "grado", "nombre": "Empresas y Actividades Turísticas", "componentes": []}]
+    urls = ["https://ue.com/grado-fisioterapia-madrid/", "https://ue.com/grado-fisioterapia-valencia/",
+            "https://u.es/trabajo-fin-grado-empresas-actividades-turisticas"]
+    u = wp.unir(grados, urls, propias={"europea", "valencia"})
+    assert u["1"]["url"] == "https://ue.com/grado-fisioterapia-valencia/"
+    assert "2" not in u
+
+
+def test_importes_fuera_de_rango():
+    i = wp.importes("<p>Salario medio por curso 70.000 €</p><p>Precio por curso 9.420 €</p>")
+    assert [(x["valor"], x["verosimil"]) for x in i] == [(70000, False), (9420, True)]
