@@ -218,3 +218,12 @@ def test_pdf_de_un_solo_grado_por_el_nombre_del_fichero():
     assert tg.grado_de_fichero("https://u.es/pdfs/estudios/grado_en_medicina.pdf", gs) == "1"
     assert tg.grado_de_fichero("https://u.es/pdfs/aula/becas/precios-grados-26-27.pdf", gs) is None
     assert tg.grado_de_fichero("https://u.es/pdfs/estudios/grado_en_fisioterapia.pdf", gs) is None
+
+
+def test_linea_con_solo_el_rotulo_del_importe_es_del_grado_de_encima():
+    gs = [{"codigo": "1", "clase": "grado", "nombre": "Fisioterapia", "nombre_oficial": "Graduado en Fisioterapia"},
+          {"codigo": "2", "clase": "grado", "nombre": "Psicología", "nombre_oficial": "Graduado en Psicología"}]
+    r = tg.extraer(["Coste de Matrículas CURSO 2027-2028\nFisioterapia\nCoste/crédito anual 147,50€\nPsicología\n"
+                    "Coste/crédito anual 141€"], gs)
+    assert r["curso_documento"] == "2027-2028"
+    assert [i["valor"] for i in r["grados"]["1"]] == [147.5] and [i["valor"] for i in r["grados"]["2"]] == [141]

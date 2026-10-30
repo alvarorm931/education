@@ -151,6 +151,9 @@ LECTURA_CONOCIDA = {
     "https://adminpro.upsa.es/uploads/Tasas_Grados_26_27_e6a7c2a872.pdf": "importe_anual_mayor_de_la_linea",
     # «Programa de grado / Tasa anual»: una cifra por programa
     "https://docs.ie.edu/Admissions/Tasas_IE_University_27-28.pdf": "importe_anual_mayor_de_la_linea",
+    # Euneiz, «Coste de Matrículas de Grado … CURSO 2027-2028»: por titulación, «Coste/crédito anual» (comprobado
+    # el 30/10/2026); el curso son 60 créditos
+    "https://www.euneiz.com/informacion-academica/": "credito_anual_de_la_tabla",
 }
 
 
@@ -328,9 +331,12 @@ def extraer(paginas: list[str], grados: list[dict], de_la_pagina: str | None = N
             con_importe += 1
             texto_sin = IMPORTE.sub(" ", linea)
             codigo = grado_de(linea, grados)
+            # una línea de solo cifras, o con solo el rótulo del importe («Coste/crédito anual 147,50 €»), es del
+            # grado de la línea de texto anterior
+            solo_rotulo = len(texto_sin.strip()) < 40 and bool(tipo_rotulo(texto_sin)) and not grado_de(texto_sin, grados)
             if codigo:
                 bloque += 1  # cada línea con nombre de grado abre un bloque; las de solo cifras que siguen, también suyas
-            elif not re.search(r"[A-Za-zÁÉÍÓÚáéíóú]{4}", texto_sin):
+            elif not re.search(r"[A-Za-zÁÉÍÓÚáéíóú]{4}", texto_sin) or solo_rotulo:
                 codigo = grado_de(previa, grados)
                 if codigo and codigo != ultimo:
                     bloque += 1

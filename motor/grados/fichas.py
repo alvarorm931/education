@@ -242,6 +242,14 @@ def indexar_tarifas(carpeta: Path | None) -> dict[str, dict]:
                     p = len(anual) == 1 and {"precio_curso": anual.pop(), "metodo": "importe_anual_del_documento", "nota": None,
                                    "url": doc["url"], "importes": sorted({i["valor"] for i in importes}),
                                    "precio_jsonld": None}
+                if not p and (doc.get("lectura") or lecturas.get(doc["url"])) == "credito_anual_de_la_tabla":
+                    # tabla comprobada a mano con el precio del crédito de cada titulación y nada más: un curso son
+                    # 60 créditos (RD 822/2021)
+                    cred = {i["valor"] for i in importes if i.get("tipo") != "sueldo"
+                            and RANGO_PRECIO["credito"][0] <= i["valor"] <= RANGO_PRECIO["credito"][1]}
+                    p = len(cred) == 1 and {"precio_curso": round(next(iter(cred)) * 60, 2),
+                                            "metodo": "credito_por_60_de_la_tabla", "nota": None, "url": doc["url"],
+                                            "importes": sorted({i["valor"] for i in importes}), "precio_jsonld": None}
                 if not p and doc.get("formato") == "html" and len(doc.get("grados") or {}) == 1:
                     # página de precios de un solo grado: valen las reglas de la página del grado (tipo por contexto)
                     p = precio_web({"url": doc["url"], "importes": importes})
