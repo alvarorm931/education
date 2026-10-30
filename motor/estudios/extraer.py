@@ -183,6 +183,12 @@ def verificar(respuesta: dict, texto: str) -> list[dict]:
         cita = dato.get("cita") or ""
         ok = len(cita.split()) >= 2 and _norma(cita) in base
         motivo = None if ok else "cita_no_literal"
+        if campo in NUMERICOS:
+            n = como_numero(dato.get("valor"))
+            if n is None:  # «no indicado», «consultar», «30-40»: no es un número
+                ok, motivo = False, motivo or "valor_no_numerico"
+            else:
+                dato["valor"] = n
         if ok and campo in NUMERICOS and not numero_en_cita(dato.get("valor"), cita):
             ok, motivo = False, "valor_no_en_cita"  # cita literal, pero el número no sale de ella
         hechos.append({"campo": campo, "valor": dato.get("valor") if ok else None,
@@ -192,6 +198,23 @@ def verificar(respuesta: dict, texto: str) -> list[dict]:
 
 
 NUMERICOS = {"creditos_ects", "plazas", "precio_total", "precio_credito", "reserva_matricula"}
+
+
+def como_numero(valor):
+    """9800, «9800», «9.800», «9.800 €», «12,50» → número; lo demás (texto, rangos, listas) → None."""
+    if isinstance(valor, bool):
+        return None
+    if isinstance(valor, (int, float)):
+        return valor
+    t = re.sub(r"\s|€|euros?|eur|ects|cr[eé]ditos?|plazas?", "", str(valor), flags=re.I)
+    if not re.fullmatch(r"\d{1,3}([.,]\d{3})*([.,]\d{1,2})?|\d+([.,]\d{1,2})?", t):
+        return None
+    if re.fullmatch(r"\d{1,3}([.,]\d{3})+", t):  # 9.800 / 12,000: separador de miles
+        return int(re.sub(r"[.,]", "", t))
+    m = re.fullmatch(r"(\d{1,3}(?:[.,]\d{3})*)[.,](\d{1,2})", t)
+    if m:
+        return float(re.sub(r"[.,]", "", m.group(1)) + "." + m.group(2))
+    return int(t)
 
 
 def numero_en_cita(valor, cita: str) -> bool:

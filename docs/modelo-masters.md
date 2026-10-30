@@ -307,7 +307,120 @@ falta. Lo encontrado al revisar el censo:
    (`docs/fuentes-precios-publicos.md`) y estudio de normas de información (`docs/fuentes-legales-informacion.md`;
    corrige la vía de la Ley 37/2007, que no sirve con universidades).
 
-## 8. Siguientes pasos
+## 8. Extracción masiva y censo depurado (30/10/2026, madrugada)
+
+Todo con `estudios.yml` en GitHub (gratis en repositorio público), la API de Claude en lote (Claude Haiku
+5.5, sin pensamiento, esfuerzo bajo) y el almacén privado de S3 (`motor/almacen.py`, escritura única).
+
+### Qué se guarda y dónde
+
+| Qué | Dónde | Por qué |
+|---|---|---|
+| Original de cada página leída, intacto | S3 privado, `web-centros/AAAA/MM/DD/{sha256}.html.gz` | regla de originales; nunca en la rama pública |
+| Texto enviado a la API, respuestas y hechos con su cita | S3 privado, `extraccion-masters/…` | la cita es texto ajeno; permite reprocesar y retomar lotes |
+| URL, huellas, valores extraídos, coste, clasificación | rama `sondas` (pública) | sin textos ajenos: solo hechos, huellas y claves privadas |
+
+La clave de cada objeto lleva la huella del contenido y toda escritura va con `If-None-Match: *`: nada se
+sobrescribe. Una página igual a una ya guardada no se vuelve a escribir.
+
+### Censo depurado con Claude (`clasificar.py`)
+
+Los 1.503 verificados (precisión a mano del 67 %) se clasificaron con su portada y los títulos de sus
+fichas, con salida estructurada (`output_config.format`, esquema JSON): **983 centros reales** (953 de
+España y 30 internacionales con oferta en España), 187 agregadores (se guardan aparte, para descubrir centros,
+no para publicar), 109 medios o blogs, 106 de otro sector, 93 centros sin másters propios y 25 de otro
+país. Coincide con la estimación a mano (unos 1.000). Tipos: 354 escuelas de formación, 136 fundaciones o
+asociaciones, 111 empresas, 96 academias, 92 escuelas de negocio, 49 universidades, 31 centros adscritos, 27
+colegios profesionales. Coste: 0,20 $.
+
+Al barrer los 726 candidatos pendientes y cuatro centros de referencia que faltaban salieron 7
+verificados más (CEF entre ellos). ESH no responde; Saera y ThePowerMBA no enseñan fichas a un lector
+sin JavaScript: siguen fuera.
+
+### Másters oficiales: unión con su página y extracción
+
+**Fallo encontrado y corregido.** La unión devolvía la clave de comparación (con «/» añadida detrás de
+`.html`) en vez de la URL real: en la tanda de prueba, 28 de 40 páginas daban 404 o una página vacía.
+Además se perdían los programas que solo cambian en la consulta (`uab.cat/…html?param1=…`). Ahora se
+devuelve la URL encontrada, se conservan los parámetros que distinguen un programa y con cada ficha van
+hasta 6 subpáginas con precio, plan, acceso u horario. Unión nueva: 1.604 unidos y 837 dudosos.
+
+**Extracción** de 2.978 páginas (2.297 fichas principales y 636 subpáginas, más 45 compartidas): 2.799
+enviadas, 1,77 $ (0,00063 $ por página), 10 minutos de descarga y 5 de lote, 6 respuestas ilegibles. 30.912
+datos aceptados con cita comprobada y 1.407 a revisión (1.260 por cita no literal, 147 porque el número no
+está en la cita). El nombre extraído de la página se compara con el del RUCT (`fichas_masters.py`):
+
+| Resultado | Másters |
+|---|---|
+| nombre del RUCT confirmado en su página | 1.826 |
+| casi igual y la página dice que es oficial | 119 |
+| casi igual sin decirlo (dobles másters, programas ejecutivos): no se usa | 21 |
+| la página no es la ficha | 259 |
+| nombre de otro máster | 16 |
+| sin nombre en la página | 28 |
+
+**1.945 de los 4.347 másters activos (45 %) tienen ya ficha con datos comprobados**: 1.219 de públicas y
+726 de privadas. Lo que dan sus páginas:
+
+| Campo | Públicas | Privadas |
+|---|---|---|
+| precio total | 18 % | 23 % |
+| asignaturas | 51 % | 83 % |
+| plazas | 62 % | 57 % |
+| metodología | 44 % | 92 % |
+| evaluación | 17 % | 57 % |
+| horario | 12 % | 35 % |
+| plazo de admisión | 20 % | 39 % |
+| becas y descuentos | 9 % | 66 % |
+| requisitos de acceso | 62 % | 87 % |
+
+En las privadas el precio es el dato que más se esconde (23 %): es la lista de peticiones al centro. En
+las públicas el precio sale de los decretos (`docs/fuentes-precios-publicos.md`), no de la página.
+
+**Segunda vuelta**: para los másters sin ficha comprobada se extraen sus siguientes candidatas (puntuación de
+0,5 o más); el nombre extraído hace de verificador, así que una candidata floja no contamina: o confirma el
+nombre del RUCT o se descarta. 1.179 páginas para 794 másters.
+
+### Másters no oficiales y títulos propios
+
+**Tanda 1** (hasta 30 fichas por centro real, de máster primero, sin repetir idioma ni modalidad): 13.005
+páginas en tres tramos sin servidores compartidos, 12.575 enviadas, 4,97 $ (0,0004 $ por página); 103.936
+datos aceptados y 4.282 a revisión. Resultado: 8.465 fichas de
+programa (4.110 páginas no eran ficha), **5.928 programas de máster distintos** y 1.663 de otros títulos
+(cursos, expertos). Lo que dan:
+
+| Campo | Fichas no oficiales (8.465) |
+|---|---|
+| precio total | 57 % |
+| metodología | 84 % |
+| asignaturas | 60 % |
+| evaluación | 41 % |
+| horario | 37 % |
+| becas y descuentos | 43 % |
+| plazas | 14 % |
+
+**Tanda 2**, adaptativa: solo los centros cuyas primeras fichas fueron másters de verdad (al menos el 30 % o
+tres), hasta 300 fichas más cada uno, y los 28 centros que entraron con los reintentos de clasificación:
+15.089 páginas.
+
+**Títulos propios en las webs oficiales.** Las escuelas adscritas y las universidades venden másters propios
+que no están en el RUCT (Máster en Finanzas de ESIC, Máster Executive en Recursos Humanos del Centro
+Garrigues, los del IEB): ni la unión oficial ni la lista de no oficiales los recogía. `extraer.py
+lista-propios-oficiales` toma las fichas de máster de esas webs que no son la página de un oficial unido:
+34.131 fichas candidatas en 220 webs; primera tanda, 5.254 (hasta 40 por web).
+
+### Fallos de proceso encontrados esta noche
+
+1. La clave normalizada de la unión se usaba como dirección (arriba).
+2. Al juntar tramos, los ficheros con el mismo nombre se pisaban: de la tanda 1 no oficial solo llegó a la
+   rama un tramo de tres. Recuperados con `recoger.yml` (cada tramo en su carpeta); la extracción y la
+   clasificación escriben ya cada tramo aparte y `estudios.yml` numera cualquier otro choque.
+3. El 5 % de las clasificaciones devolvía JSON ilegible (comillas de la portada dentro de la cita): con la
+   salida estructurada, 0 de 28 en el reintento.
+4. Un oficial unido a un listado o a la portada hacía que todo el sitio pareciera «ya unido» y se perdían
+   los propios (Centro Garrigues): ahora solo cuenta la misma ficha o sus subpáginas.
+
+## 9. Siguientes pasos
 
 Ordenados por lo que más acerca a tener, para cada máster, lo que hoy se da solo al registrarse
 (`docs/estrategia-informacion-cerrada.md`).

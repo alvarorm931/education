@@ -306,3 +306,12 @@ def test_segunda_vuelta_solo_masters_sin_ficha_y_urls_nuevas(tmp_path):
     r = e.lista_segunda_vuelta(tmp_path / "po.jsonl", tmp_path / "f.jsonl", [tmp_path / "c.jsonl"], tmp_path / "s.jsonl")
     urls = [js.loads(l)["url"] for l in (tmp_path / "s.jsonl").read_text().splitlines()]
     assert urls == ["https://u.es/b2", "https://u.es/c"] and r["con_candidatas"] == 2
+
+
+def test_valores_numericos():
+    assert e.como_numero("9.800 €") == 9800 and e.como_numero("12,50") == 12.5 and e.como_numero(60) == 60
+    assert e.como_numero("no indicado") is None and e.como_numero("30-40") is None and e.como_numero([1]) is None
+    h = e.verificar({"precio_total": {"v": "no indicado", "c": "Precio total: 9.800 €"}}, "Precio total: 9.800 €")[0]
+    assert h["estado"] == "revision" and h["motivo"] == "valor_no_numerico"
+    h = e.verificar({"precio_total": {"v": "9.800 €", "c": "Precio total: 9.800 €"}}, "Precio total: 9.800 €")[0]
+    assert h["estado"] == "aceptado" and h["valor"] == 9800

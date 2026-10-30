@@ -24,6 +24,7 @@ from collections import Counter, defaultdict
 from pathlib import Path
 
 from motor.estudios.emparejar import palabras_nombre, palabras_texto
+from motor.estudios.extraer import NUMERICOS, como_numero
 
 CONFIRMADO, PROBABLE = 0.8, 0.5
 
@@ -79,6 +80,11 @@ def componer(paginas_master: list[dict], hechos: dict[str, list[dict]]) -> dict:
     campos, distintos = {}, []
     for p in orden:
         for h in hechos.get(p["url"], []):
+            if h["campo"] in NUMERICOS:
+                n = como_numero(h["valor"])
+                if n is None:  # hechos de antes de la comprobación de tipo («no indicado» como precio)
+                    continue
+                h = {**h, "valor": n}
             v = {"valor": h["valor"], "url": h["url"], "captura_sha256": h["captura_sha256"],
                  "extraido": h["extraido"], "cita_sha256": h.get("cita_sha256"), "pagina": p.get("pagina", "principal")}
             if h["campo"] not in campos:
