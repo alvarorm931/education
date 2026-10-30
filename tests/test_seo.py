@@ -576,3 +576,18 @@ def test_historial_de_dominio(monkeypatch):
     h = dm.historial("x.es", Sesion())
     assert h["wayback_anos"] == ["2019"] and h["resuelve"] is False
     assert dm.veredicto(h, []).startswith("tiene historial")
+
+
+# ---------------------------------------------------------------- competencia
+def test_competencia_robots_y_html():
+    from motor.seo.competencia import analizar_html, robots_info
+
+    r = robots_info("User-agent: *\nAllow: /\n\nUser-agent: GPTBot\nUser-agent: OAI-SearchBot\nDisallow: /\n"
+                    "Content-signal: search=yes, ai-train=no\nSitemap: https://x.es/sitemap.xml\n")
+    assert r["cerrado_a"] == ["OAI-SearchBot", "GPTBot"] and r["content_signal"] and r["sitemaps"]
+    h = analizar_html(b'<html><head><title>T</title><script type="application/ld+json">{"@type": "JobPosting"}'
+                      b'</script></head><body><div id="__next"></div><script>var __NEXT_DATA__={}</script>'
+                      b'<form><input type="email" name="correo"></form><a href="#">x</a></body></html>',
+                      "https://x.es/")
+    assert h["datos_estructurados"] == ["JobPosting"] and h["pide_correo"] and h["tecnologia"] == ["Next.js"]
+    assert h["palabras_sin_js"] == 1 and h["almohadillas"] == 1
