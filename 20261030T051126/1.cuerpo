@@ -1,0 +1,117 @@
+/**
+ * Función que se ejecuta antes de la "Interacción" en SagaListado
+ * @param parametros
+ * @param that
+ * @param thatconnect
+ */
+function funcionPreInteraccion(parametros, that, thatconnect) {
+    // Parámetros de la petición
+    var parametrosURL = new URLSearchParams(window.location.search);
+
+    var fechaDesdeParam = parametrosURL.get('fdesde');
+    var fechaHastaParam = parametrosURL.get('fhasta');
+
+    // Inputs de fechas
+    var _fechaDesde = $('#' + that.attr('id') + "-desde");
+    var _fechaHasta = $('#' + that.attr('id') + "-hasta");
+
+    // Formato de fecha para los parámetros 'yyyy-mm-dd'
+    if ((fechaDesdeParam !== null && fechaDesdeParam !== undefined) || (fechaHastaParam !== null && fechaHastaParam !== undefined)) {
+        if ((fechaDesdeParam !== null && fechaDesdeParam !== undefined)) {
+            _fechaDesde.val(fechaDesdeParam);
+        }
+        if ((fechaHastaParam !== null && fechaHastaParam !== undefined)) {
+            _fechaHasta.val(fechaHastaParam);
+        }
+    } else {
+        if (INTERVALO_FECHAS_ACTIVO) {
+            var fechaDesde = _fechaDesde.val();
+            var fechaHasta = _fechaHasta.val();
+
+            if ((fechaDesde !== null && fechaDesde !== undefined) && (fechaHasta !== null && fechaHasta !== undefined)) {
+                // INTERVALO_MESES_BUSCADOR es una constante definida en com.saga.inpro.theme.bop/templates/template-base/head_data.jsp
+                _fechaDesde.val(formatearFecha(fechaMenosMeses(INTERVALO_MESES_BUSCADOR)));
+                _fechaHasta.val(formatearFecha(new Date()));
+
+                _fechaDesde.click();
+                _fechaHasta.click();
+            }
+        }
+    }
+}
+
+/**
+ * Función que se ejecuta después de la "Interacción" en SagaListado
+ * @param parametros
+ * @param that
+ * @param thatconnect
+ */
+function funcionPostInteraccion(parametros, that, thatconnect) {
+    $('.RealizarBusqueda.oculto').click();
+    $('#' + that.attr('id') + "-desde").attr('type', 'date');
+    $('#' + that.attr('id') + "-hasta").attr('type', 'date');
+}
+
+/**
+ * Función que se ejecuta antes de realizar la búsqueda en SagaListado
+ * @param parametros
+ * @param that
+ * @param thatconnect
+ */
+function funcionPreLlamadaListado(parametros, that, thatconnect) {
+    var _fechaDesde = $('#' + that.attr('id') + "-desde");
+    var _fechaHasta = $('#' + that.attr('id') + "-hasta");
+    var fechaDesde = _fechaDesde.val();
+    var fechaHasta = _fechaHasta.val();
+    $('p#fechaHasta-error').remove();
+
+    if (INTERVALO_FECHAS_ACTIVO) {
+        if (fechaDesde === undefined || fechaDesde === '' || fechaHasta === undefined || fechaHasta === '') {
+            // INTERVALO_MESES_BUSCADOR es una constante definida en com.saga.inpro.theme.bop/templates/template-base/head_data.jsp
+            _fechaDesde.val(formatearFecha(fechaMenosMeses(INTERVALO_MESES_BUSCADOR)));
+            _fechaHasta.val(formatearFecha(new Date()));
+
+            if (!parametros.esReinicio) {
+                $("#modalBuscadorAnuncios").modal({
+                    fadeDuration: 100
+                });
+            }
+            parametros.esReinicio = false;
+        } else {
+            if (INTERVALO_MESES_BUSCADOR > -1) {
+                if (!fechaDesde || !fechaHasta) {
+                    // No se realizan comprobaciones
+                    return true;
+                } else {
+                    const fechaDesdeDate = new Date(fechaDesde);
+                    const fechaHastaDate = new Date(fechaHasta);
+
+                    // Si la fecha "hasta" es anterior a la fecha "desde", devolver true para que salte la validación de fechas anteriores
+                    if (fechaHastaDate < fechaDesdeDate) {
+                        $('p#fechaHasta-error').remove()
+                        _fechaHasta.after("<p id=\"fechaHasta-error\" style=\"background: rgb(204, 51, 51); color: rgb(255, 255, 255); padding: 4px 8px; vertical-align: middle; font-size: 12px; width: 100%;\" class=\"error\">La fecha hasta debe ser superior a la fecha desde.</p>");
+                        return false;
+                    }
+
+                    // Calcular la fecha límite sumando el número de meses a la fecha inicial
+                    const fechaLimite = new Date(fechaDesdeDate);
+                    fechaLimite.setMonth(fechaLimite.getMonth() + INTERVALO_MESES_BUSCADOR);
+
+                    // Verificar si la fecha final es menor o igual a la fecha límite, pero no mayor
+                    if (!(fechaHastaDate < fechaLimite)) {
+                        $('p#fechaHasta-error').remove()
+                        _fechaDesde.after("<p id=\"fechaHasta-error\" style=\"background: rgb(204, 51, 51); color: rgb(255, 255, 255); padding: 4px 8px; vertical-align: middle; font-size: 12px; width: 100%;\" class=\"error\">El intervalo de fechas no debe ser superior a " + INTERVALO_MESES_BUSCADOR + " meses.</p>");
+                        _fechaHasta.after("<p id=\"fechaHasta-error\" style=\"background: rgb(204, 51, 51); color: rgb(255, 255, 255); padding: 4px 8px; vertical-align: middle; font-size: 12px; width: 100%;\" class=\"error\">El intervalo de fechas no debe ser superior a " + INTERVALO_MESES_BUSCADOR + " meses.</p>");
+                        return false;
+                    } else {
+                        $('p#fechaHasta-error').remove();
+                        return true;
+                    }
+                }
+            } else {
+                return true;
+            }
+        }
+    }
+    return true;
+}

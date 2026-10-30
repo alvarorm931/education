@@ -1,0 +1,1471 @@
+(function ($) {
+
+    var cargandoListado = false;
+
+    $.fn.SagaListado = function (parametros) {
+        var that = this;
+        var thatuuid = $('.SagaListado.general[data-uuid="' + this.attr('data-uuid') + '"]');
+
+        init(parametros, that, thatuuid);
+
+        if (parametros.AgruparPorDataNivel === 'true') {
+            AgruparPorDataNivel(parametros);
+        }
+
+        FiltrosFlotanteRestponsive(parametros);
+
+        function AgruparPorDataNivel(parametros) {
+            if (parametros.AgruparPorDataNivel === 'true') {
+
+                var contenedor_padre = $(".wrapper-aside .filtros_busqueda.con_categoria .categoria-busqueda .filtro_busqueda_grupo");
+
+                var contenedor = $(".wrapper-aside .filtros_busqueda.con_categoria .categoria-busqueda .filtro_busqueda_grupo .contenedorFacets");
+
+                var elementos = $(".wrapper-aside .filtros_busqueda.con_categoria .categoria-busqueda .filtro_busqueda_grupo .contenedorFacets .elementoFacet");
+
+
+                elementos.sort(function (a, b) {
+                    return $(a).data("nivel") - $(b).data("nivel");
+                });
+                contenedor_padre.find('.filtros_busqueda-label-contenedor').remove();
+                contenedor.html(elementos);
+
+                $(document).ready(function () {
+
+                    // Paso 2: Crear objeto contenedores_por_categoria
+                    var contenedores_por_categoria = {};
+
+                    // Paso 3: Agregar elementos a sus respectivos contenedores en contenedores_por_categoria
+                    elementos.each(function () {
+                        var categoria = $(this).data("nivel");
+                        if (!contenedores_por_categoria[categoria]) {
+                            contenedores_por_categoria[categoria] = [];
+                        }
+                        contenedores_por_categoria[categoria].push($(this));
+                    });
+
+                    // Paso 4: Crear nuevos contenedores y agregar elementos
+                    for (var categoria in contenedores_por_categoria) {
+                        var nuevos_elementos = contenedores_por_categoria[categoria];
+                        var nuevo_contenedor = $("<div>").addClass("contenedorFacets").append(nuevos_elementos);
+                        contenedor_padre.append(nuevo_contenedor);
+
+                        // Paso 5: Eliminar contenedor vacío
+                        if (contenedor.is(":empty")) {
+                            contenedor.remove();
+                        }
+                    }
+
+
+                    $('label[for]').each(function () {
+                        var currentForValue = $(this).attr('for');
+                        $('label[for="' + currentForValue + '"]:not(:first)').each(function () {
+                            $(this).closest('.elementoFacet').remove();
+                            $(this).remove();
+                        });
+                    });
+
+
+                    var contenedores = contenedor_padre.find('.contenedorFacets');
+                    contenedores.each(function () {
+                        var contenedor_actual = $(this);
+
+                        // obtiene el valor de la propiedad data-category
+                        var categoria = contenedor_actual.find('.elementoFacet').first().data('category');
+
+                        // filtra los elementos por la categoria
+                        var elementos_filtrados = elementos.filter('[data-category="' + categoria + '"]');
+
+                        // crea un nuevo contenedor de facet con los elementos filtrados
+                        var nuevo_contenedor = $('<div class="contenedorFacets"></div>').append(elementos_filtrados);
+
+                        // agrega el nuevo contenedor antes del contenedor actual
+                        contenedor_actual.before(nuevo_contenedor);
+
+                        // crea el elemento de etiqueta de filtro si no existe ya
+                        if (!contenedor_actual.prev().hasClass('filtros_busqueda-label-contenedor')) {
+                            var etiqueta_filtro = $('<div class="filtros_busqueda-label-contenedor"><div class="filtro_busqueda-label" data-nivel="' + contenedor_actual.find('.elementoFacet').first().data('nivel') + '">' + contenedor_actual.find('.elementoFacet').first().data('nivel') + '</div><div class="filtro_busqueda-toggle desplegado"><div class="filtro_busqueda-toggle-1"></div><div class="filtro_busqueda-toggle-2"></div></div></div>');
+                            contenedor_actual.before(etiqueta_filtro);
+                        }
+                    });
+
+                    // oculta los contenedores vacíos
+                    contenedor_padre.find('.contenedorFacets').filter(function () {
+                        return $(this).children().length == 0;
+                    }).addClass('oculto');
+
+                    contenedor_padre.find('.filtro_busqueda-label').filter(function () {
+                        return $(this).text().toLowerCase().includes('undefined');
+                    }).parent().addClass('oculto');
+
+                });
+
+            }
+        }
+
+        function init(parametros, that, thatuuid) {
+            if (parametros.origen === 'nativo' || parametros.origen === 'filtros') {
+                comprobarDuplicidadIDs(parametros, that, thatuuid);
+            }
+
+            if (parametros.esOnline === false) {
+                var idElemento = that.attr('id');
+                moverCreacion(that, idElemento, parametros.idiomaUsuarioActual, true);
+                moverSagaListadoConfig(that, idElemento, parametros.idiomaUsuarioActual, true);
+                moverSagaListadoFormatterConfig(that, idElemento, parametros.idiomaUsuarioActual, true);
+            }
+
+            if (parametros.activarZoom === 'true') {
+                $('.venobox').venobox();
+            }
+        }
+
+        function comprobarDuplicidadIDs(parametros, that, thatuuid) {
+            var ids;
+            var idsfiltros;
+
+            $('.SagaListado[data-uuid="' + that.attr('data-uuid') + '"]:not(.filtros):not(.creacion)').each(function () {
+                ids = $('.SagaListado:not(.filtros)[data-uuid="' + $(this).attr('data-uuid') + '"]');
+                idsfiltros = $('.SagaListado.filtros[data-uuid="' + $(this).attr('data-uuid') + '"]');
+            });
+
+            if (ids !== undefined && idsfiltros !== undefined) {
+                if (ids.length > 1 && idsfiltros.length > 0) {
+                    if ($(this).find('.mensajeSAGA.duplicidad').length === 0) {
+                        ids.empty();
+                        ids.prepend('' +
+                            '<div class="mensajeSAGA error duplicidad">' +
+                            '   <div class="linea1">Recurso duplicado</div>' +
+                            '   <div class="linea2">No se puede usar el mismo listado varias veces en la misma página</div>' +
+                            '</div>');
+                    }
+                } else {
+                    if (typeof funcionPreInteraccion === 'function') {
+                        funcionPreInteraccion(parametros, that, thatuuid);
+                    } else {
+                        // console.log('La función funcionPreInteraccion no está definida.');
+                    }
+
+
+                    if (parametros.origen === 'nativo') {
+                        interaccion(parametros, that);
+                    } else if (parametros.origen === 'filtros') {
+                        interaccion(parametros, that, thatuuid);
+                    }
+
+                    if (typeof funcionPostInteraccion === 'function') {
+                        funcionPostInteraccion(parametros, that, thatuuid);
+                    } else {
+                        // console.log('La función funcionPostInteraccion no está definida.');
+                    }
+                }
+            }
+        }
+
+        function cargarFiltrosBusqueda(parametros, that, thatconnect) {
+            var EsReinicio = parametros.esReinicio === true;
+
+            if (!EsReinicio) {
+                var valorTerminoBusqueda;
+                var valorDesdeBusqueda;
+                var valorHastaBusqueda;
+                var CategoriasMarcadas;
+                var valorCategoriaBusqueda;
+                var valorTipoRecursoBusqueda;
+
+                if (parametros.MostrarFiltros === 'facets') {
+                    valorTerminoBusqueda = that.find('.filtros_busqueda .termino_busqueda .filtro_busqueda-opciones').val();
+                    valorDesdeBusqueda = that.find('.filtros_busqueda .rangofechas .desde .filtro_busqueda-opciones').val();
+                    valorHastaBusqueda = that.find('.filtros_busqueda .rangofechas .hasta .filtro_busqueda-opciones').val();
+                    CategoriasMarcadas = that.find('.filtros_busqueda .categoria-busqueda .filtro_busqueda-opciones:checked');
+                    CategoriasMarcadas.each(function (indiceCategoriasMarcadas) {
+                        if (indiceCategoriasMarcadas === 0) {
+                            valorCategoriaBusqueda = $(this).val();
+                        } else {
+                            valorCategoriaBusqueda = valorCategoriaBusqueda + ',' + $(this).val();
+                        }
+                    });
+
+                    valorTipoRecursoBusqueda = that.find('.filtros_busqueda .tipoRecurso-busqueda .filtro_busqueda-opciones:checked').val();
+                } else {
+                    valorTerminoBusqueda = that.find('.filtros_busqueda .termino_busqueda .filtro_busqueda-opciones').val();
+                    valorDesdeBusqueda = that.find('.filtros_busqueda .rangofechas .desde .filtro_busqueda-opciones').val();
+                    valorHastaBusqueda = that.find('.filtros_busqueda .rangofechas .hasta .filtro_busqueda-opciones').val();
+                    valorCategoriaBusqueda = that.find('.filtros_busqueda .categoria-busqueda .filtro_busqueda-opciones').val();
+                    valorTipoRecursoBusqueda = that.find('.filtros_busqueda .tipoRecurso-busqueda .filtro_busqueda-opciones').val();
+                    that.find('.filtros_busqueda .categoria-busqueda .filtro_busqueda-opciones').each(function (indiceCategoriasMarcadas) {
+                        if (indiceCategoriasMarcadas === 0) {
+                            valorCategoriaBusqueda = $(this).val();
+                        } else {
+                            valorCategoriaBusqueda = valorCategoriaBusqueda + ',' + $(this).val();
+                        }
+                    })
+                }
+
+                var queryString = window.location.search;
+                var urlParams = new URLSearchParams(queryString);
+                var parametroBusqueda = urlParams.get('busqueda');
+
+                if (valorTerminoBusqueda === '' && parametroBusqueda != null) {
+                    parametros.buscarTexto = parametroBusqueda;
+                    parametros.dym = parametroBusqueda;
+                } else {
+                    parametros.buscarTexto = valorTerminoBusqueda;
+                    parametros.dym = valorTerminoBusqueda;
+                }
+
+                var InputDesde = valorDesdeBusqueda;
+                var ExisteInputDesde = InputDesde !== '' && InputDesde !== undefined;
+                if (ExisteInputDesde) {
+                    var DateInputDesde = new Date(InputDesde + ' 00:00:00');
+                    parametros.desde = DateInputDesde.toISOString();
+                }
+                var InputHasta = valorHastaBusqueda;
+                var ExisteInputHasta = InputHasta !== '' && InputHasta !== undefined;
+                if (ExisteInputHasta) {
+                    var DateInputHasta = new Date(InputHasta + ' 23:59:59');
+                    parametros.hasta = DateInputHasta.toISOString();
+                }
+
+                parametros.buscarCategoria = valorCategoriaBusqueda;
+                parametros.buscarTipo = valorTipoRecursoBusqueda;
+
+
+                if (!parametros.MostrarResultadosAlInicio && parametros.Prebusqueda !== '' && parametros.Prebusqueda !== undefined && parametros.Prebusqueda !== null) {
+                    parametros.busquedaActiva = true;
+                } else {
+                    if ((valorTerminoBusqueda !== undefined && valorTerminoBusqueda !== '') ||
+                        (valorDesdeBusqueda !== undefined && valorDesdeBusqueda !== '') ||
+                        (valorHastaBusqueda !== undefined && valorHastaBusqueda !== '') ||
+                        (valorCategoriaBusqueda !== undefined && valorCategoriaBusqueda !== '') ||
+                        (valorTipoRecursoBusqueda !== undefined && valorTipoRecursoBusqueda !== '')) {
+
+                        parametros.busquedaActiva = true;
+                    } else {
+                        parametros.busquedaActiva = false;
+                    }
+
+                    that.find('.filtro_personalizado').each(function () {
+                        var campoFiltro = $(this).attr('data-camposolr');
+                        var widgetFiltro = $(this).attr('data-widget');
+                        var valorFiltro;
+                        var paramCat;
+
+                        if (widgetFiltro === 'alfabetico') {
+                            valorFiltro = $(this).find('.filtro_busqueda-opciones').val();
+                            paramCat = 'alfabetico_';
+                        } else {
+                            if (parametros.MostrarFiltros === 'facets') {
+                                valorFiltro = $(this).find('.filtro_busqueda-opciones:checked').val();
+                            } else {
+                                valorFiltro = $(this).find('.filtro_busqueda-opciones').val();
+                            }
+                            paramCat = 'personalizado_';
+                        }
+
+                        if ((campoFiltro !== undefined) && (campoFiltro !== '') && (valorFiltro !== undefined) && (valorFiltro !== '')) {
+                            parametros[paramCat + campoFiltro] = valorFiltro;
+                            parametros.busquedaActiva = true;
+                        } else {
+                            delete parametros[paramCat + campoFiltro];
+                        }
+                    });
+
+
+                    that.find('.rangofechas_personalizado').each(function (index, element) {
+                        const $el = $(this);
+                        const campoDesde = $el.find('.desde').attr('data-camposolr') || '';
+                        const valorDesde = $el.find('.desde .filtro_busqueda-opciones').val() || '';
+                        const campoHasta = $el.find('.hasta').attr('data-camposolr') || '';
+                        const valorHasta = $el.find('.hasta .filtro_busqueda-opciones').val() || '';
+
+                        // Si no hay ni desde ni hasta, borramos cualquier filtro previo
+                        if (!campoDesde && !campoHasta) {
+                            delete parametros[`personalizadofecha_${index}`];
+                            return;
+                        }
+
+                        // Construimos los Date y sus cadenas ISO solo si hay valor
+                        let isoDesde = '';
+                        if (campoDesde && valorDesde) {
+                            const DateFiltroDesde = new Date(valorDesde + ' 00:00:00');
+                            isoDesde = DateFiltroDesde.toISOString();
+                        }
+
+                        let isoHasta = '';
+                        if (campoHasta && valorHasta) {
+                            const DateFiltroHasta = new Date(valorHasta + ' 23:59:59');
+                            isoHasta = DateFiltroHasta.toISOString();
+                        }
+
+                        // Concatenamos "campoDesde|isoDesde;campoHasta|isoHasta"
+                        const combinado = [
+                            campoDesde, isoDesde
+                        ].join('|') + ';' + [
+                            campoHasta, isoHasta
+                        ].join('|');
+
+                        parametros[`personalizadofecha_${index}`] = combinado;
+                        parametros.busquedaActiva = true;
+                    });
+
+
+                }
+
+            } else {
+                parametros.buscarTexto = '';
+                parametros.buscarCategoria = '';
+                parametros.buscarTipo = '';
+                parametros.desde = '';
+                parametros.hasta = '';
+
+                that.find('.filtro_personalizado').each(function () {
+                    var campoFiltro = $(this).attr('data-camposolr');
+                    var widgetFiltro = $(this).attr('data-widget');
+                    var paramCat;
+
+                    if (widgetFiltro === 'alfabetico') {
+                        paramCat = 'alfabetico_';
+                    } else {
+                        paramCat = 'personalizado_';
+                    }
+
+                    delete parametros[paramCat + campoFiltro];
+                });
+
+                that.find('.rangofechas_personalizado').each(function(index, element) {
+                    const $el = $(this);
+                    const valorDesde = $el.find('.desde .filtro_busqueda-opciones').val();
+                    const valorHasta = $el.find('.hasta .filtro_busqueda-opciones').val();
+
+                    // Si ni desde ni hasta tienen valor, borramos el parámetro y no hay búsqueda activa
+                    if ((!valorDesde || valorDesde === '') && (!valorHasta || valorHasta === '')) {
+                        delete parametros[`personalizadofecha_${index}`];
+                    }
+                });
+
+                parametros.busquedaActiva = false;
+            }
+
+            parametros.that = that.attr('id');
+            parametros.thatconnect = thatconnect.attr('id');
+        }
+
+        function llamadaListado(parametros, that, thatconnect) {
+            var continuar = true;
+            if (typeof funcionPreLlamadaListado === 'function') {
+                continuar = funcionPreLlamadaListado(parametros, that, thatconnect);
+            } else {
+                // console.log('La función funcionPreLlamadaListado no está definida.');
+            }
+            if (continuar) {
+                cargandoListado = true;
+
+                var cargarAnimacionCargandoEnElementos = (parametros.forma_listar === 'busqueda' || (parametros.forma_listar === 'carga' && parametros.tipo_paginacion === 'numeros')) && parametros.UbicacionCargandoNumerico === 'cadaRecurso';
+                var cargarAnimacionEnListado = (parametros.forma_listar === 'busqueda' || (parametros.forma_listar === 'carga' && parametros.tipo_paginacion === 'numeros')) && parametros.UbicacionCargandoNumerico === 'centradoListado';
+
+                if (cargarAnimacionCargandoEnElementos) {
+                    interaccionCargandoElementos(thatconnect, 'mostrar');
+                } else if (cargarAnimacionEnListado) {
+                    interaccionCargandoListado(thatconnect, 'mostrar');
+                } else {
+                    thatconnect.find('.cargandoListado').removeClass('oculto');
+                }
+
+                that.find('.CargandoFiltros').removeClass('oculto');
+                that.find('.filtro_busqueda.rangofechas input').prop('disabled', true);
+                that.find('.filtro_busqueda.termino_busqueda input').prop('disabled', true);
+
+
+                // Selector de orden personalizado en el front
+                if (that.find('.ordenacionResultados .selectOrdenacion').length > 0) {
+                    var ordenSeleccionado = that.find('.ordenacionResultados .selectOrdenacion .ordenSeleccionado').attr('data-orden-actual');
+
+                    if (ordenSeleccionado !== 'defecto') {
+                        parametros.OrdenacionQueryFront = ordenSeleccionado;
+                        parametros.ForzarOrdenacionBusqueda = true;
+                    } else {
+                        parametros.OrdenacionQueryFront = '';
+                        if (parametros.EstadoInicialForzarOrdenacionBusqueda === true) {
+                            parametros.ForzarOrdenacionBusqueda = true;
+                        } else {
+                            parametros.ForzarOrdenacionBusqueda = false;
+                        }
+                    }
+                }
+                // ------------------------------------------------
+
+                cargarFiltrosBusqueda(parametros, that, thatconnect);
+
+                var dataTypeAjax;
+                if (parametros.formatterOrigen === 'JSON') {
+                    dataTypeAjax = 'json'
+                } else {
+                    dataTypeAjax = 'HTML'
+                }
+
+                $.ajax({
+                    type: 'POST',
+                    url: parametros.urlAjax,
+                    data: parametros,
+                    dataType: dataTypeAjax,
+
+                    success: function (paginaCargada) {
+
+                        if (parametros.MostrarFiltros === 'facets' && parametros.forma_listar !== 'carga') {
+                            that.find('.contenedorFacets .filtro_busqueda-opciones:not(:checked)').parents('.elementoFacet').remove();
+                        }
+
+                        if (parametros.TipoFormatter === 'slider') {
+                            apagarSlider(thatconnect)
+                        }
+
+                        if (parametros.tipo_paginacion === 'infinite' && parametros.forma_listar !== 'busqueda') {
+                            thatconnect.find('.resultados_listado').append(paginaCargada);
+                        } else {
+                            thatconnect.find('.resultados_listado').html(paginaCargada);
+                        }
+
+                        if (parametros.UbicacionCargandoNumerico === 'cadaRecurso') {
+                            aniadirCargandoAElementos(thatconnect, parametros.rutaCargandoElemento);
+                        } else {
+                            aniadirCargandoAListado(thatconnect, parametros.rutaCargandoElemento);
+                        }
+
+                        // $.list_backgroundizator(that.find('.resultados_listado .imagen_elemento img'));
+
+
+                        that.find('.CargandoFiltros').addClass('oculto');
+                        that.find('.filtro_busqueda.rangofechas input').prop('disabled', false);
+                        that.find('.filtro_busqueda.termino_busqueda input').prop('disabled', false);
+
+                        if (cargarAnimacionCargandoEnElementos) {
+                            interaccionCargandoElementos(thatconnect, 'ocultar');
+                        } else if (cargarAnimacionEnListado) {
+                            interaccionCargandoListado(thatconnect, 'ocultar');
+                        } else {
+                            thatconnect.find('.cargandoListado').addClass('oculto');
+                        }
+
+                        if (parametros.activarZoom === 'true') {
+                            $('.venobox').venobox();
+                        }
+
+                        if (parametros.forma_listar === 'busqueda' && parametros.esReinicio !== true && parametros.busquedaActiva === true) {
+                            that.find('.reiniciarBusqueda').removeClass('oculto');
+                            that.find('.botones-accion-wrapper').attr('data-reinicio-activo', 'true');
+                        } else if (parametros.esReinicio !== true && parametros.busquedaActiva === true) {
+                            that.find('.reiniciarBusqueda').removeClass('oculto');
+                            that.find('.botones-accion-wrapper').attr('data-reinicio-activo', 'true');
+                        } else {
+                            that.find('.reiniciarBusqueda').addClass('oculto');
+                            that.find('.botones-accion-wrapper').attr('data-reinicio-activo', 'false');
+                        }
+
+                        if (parametros.esReinicio === true) {
+                            that.find('.filtro_busqueda-opciones').prop('checked', false);
+                            that.find('.reiniciarBusqueda').addClass('oculto');
+                            that.find('.botones-accion-wrapper').attr('data-reinicio-activo', 'false');
+                        }
+
+                        if (parametros.AgruparPorDataNivel === 'true') {
+                            AgruparPorDataNivel(parametros);
+                        }
+
+                        if (parametros.TipoFormatter === 'slider') {
+                            iniciarSlider(parametros, thatconnect)
+                        }
+
+                        cargandoListado = false;
+                        parametros.esReinicio = false;
+
+                        if (!parametros.MostrarResultadosAlInicio) {
+                            parametros.Prebusqueda = '';
+                        }
+                    }
+                });
+            } else {
+            }
+        }
+
+        function interaccion(parametros, that, thatconnect) {
+            if (thatconnect === undefined) {
+                thatconnect = that;
+            }
+
+            var keypressFecha = false;
+            var valorAnteriorFecha;
+
+            // Filtrar cualquier cosa que no sea la fecha
+            $(document).on('change', "#" + that.attr('id') + " .filtro_busqueda-opciones", function (e) {
+                var realizarLlamada = true;
+
+                if ($(this).closest('.filtro_busqueda').hasClass('rangofechas') && keypressFecha === true) {
+                    realizarLlamada = false;
+                }
+
+                if (cargandoListado === false && realizarLlamada) {
+                    parametros.forma_listar = 'busqueda';
+                    parametros.page = 1;
+
+                    llamadaListado(parametros, that, thatconnect);
+                }
+            });
+
+            // Sistema de filtro por fecha
+            $(document).on('focus', "#" + that.attr('id') + " .filtro_busqueda.rangofechas .filtro_busqueda-opciones", function (e) {
+                valorAnteriorFecha = $(this).val();
+            });
+
+            $(document).on('keypress', "#" + that.attr('id') + " .filtro_busqueda.rangofechas .filtro_busqueda-opciones", function (e) {
+                var realizarLlamada = true;
+                keypressFecha = true;
+
+                // Comprobamos si se ha pulsado "intro"
+                if (e.which === 13) {
+                    var valorInputFecha = $(this).val();
+
+                    if (valorInputFecha) {
+                        var date = new Date(valorInputFecha);
+                        if (!isNaN(date.getTime())) { // Verifica si la fecha es válida
+                            if (date.getTime() < -30610223116000 || date.getTime() > 253370761200000) { // Task 12879: Comprueba una fecha mínima y máxima antes de realizar la búsqueda
+                                realizarLlamada = false;
+                            } else {
+                                realizarLlamada = true;
+                            }
+                        } else {
+                            realizarLlamada = false;
+                        }
+
+                        if (cargandoListado === false && realizarLlamada && valorAnteriorFecha !== $(this).val()) {
+                            parametros.forma_listar = 'busqueda';
+                            parametros.page = 1;
+
+                            llamadaListado(parametros, that, thatconnect);
+                        }
+                    }
+
+                    keypressFecha = false;
+                }
+            });
+
+            $(document).on('blur', "#" + that.attr('id') + " .filtro_busqueda.rangofechas .filtro_busqueda-opciones", function (e) {
+                var realizarLlamada = true;
+
+                // Comprobamos si se ha pulsado "intro" o si se ha hecho clic fuera del input
+                var valorInputFecha = $(this).val();
+
+                if (valorInputFecha) {
+                    var date = new Date(valorInputFecha);
+                    if (!isNaN(date.getTime())) { // Verifica si la fecha es válida
+                        if (date.getTime() < -30610223116000 || date.getTime() > 253370761200000) { // Task 12879: Comprueba una fecha mínima y máxima antes de realizar la búsqueda
+                            realizarLlamada = false;
+                        } else {
+                            realizarLlamada = true;
+                        }
+                    } else {
+                        realizarLlamada = false;
+                    }
+
+                    if (cargandoListado === false && realizarLlamada && valorAnteriorFecha !== $(this).val()) {
+                        parametros.forma_listar = 'busqueda';
+                        parametros.page = 1;
+
+                        llamadaListado(parametros, that, thatconnect);
+
+                        keypressFecha = false;
+                    }
+                }
+            });
+            // FIN Sistema de filtro por fecha -----------------------------------------------
+
+            // Ordenación
+            $(document).on('change', "#" + that.attr('id') + " .ordenacionResultados .selectOrdenacion", function (e) {
+                var realizarLlamada = true;
+
+                if (cargandoListado === false && realizarLlamada) {
+                    parametros.forma_listar = 'busqueda';
+                    parametros.page = 1;
+
+                    llamadaListado(parametros, that, thatconnect);
+                }
+            });
+
+            $(document).on('click', "#" + that.attr('id') + " .elementoAlfabeto", function (e) {
+
+                if ($(this).hasClass('marcado')) {
+                    $(this).removeClass('marcado');
+                    $(this).closest('.filtro_busqueda').find('.filtro_busqueda-opciones').val('');
+                } else {
+                    $("#" + that.attr('id') + " .elementoAlfabeto").removeClass('marcado');
+                    $(this).addClass('marcado');
+                    $(this).closest('.filtro_busqueda').find('.filtro_busqueda-opciones').val($(this).text());
+                }
+
+                if (cargandoListado === false) {
+                    parametros.forma_listar = 'busqueda';
+                    parametros.page = 1;
+
+                    llamadaListado(parametros, that, thatconnect);
+                }
+            });
+
+            $(document).on('click', '.RealizarBusqueda.oculto', function (e) {
+                if (cargandoListado === false) {
+                    parametros.forma_listar = 'busqueda';
+                    parametros.page = 1;
+
+                    llamadaListado(parametros, that, thatconnect);
+                }
+            });
+
+            $(document).on('click', '.reiniciarBusqueda', function () {
+
+                parametros.forma_listar = 'busqueda';
+                parametros.esReinicio = true;
+                parametros.page = 1;
+
+                removeQueryParam('busqueda');
+
+                $("#" + that.attr('id') + " .elementoAlfabeto").removeClass('marcado');
+
+                vaciarFiltros(parametros, that, thatconnect);
+            });
+
+            if (parametros.PlegadoFiltros !== 'nunca') {
+                $(document).on('click', "#" + that.attr('id') + " .filtros_busqueda-accionador", function (e) {
+                    $(this).toggleClass('desplegado');
+                    $(this).siblings('.filtros_busqueda').slideToggle("fast", function () {
+                        if ($(this).css('display') != 'none') {
+                            $(this).css('display', 'flex');
+                        }
+                    });
+                })
+            }
+
+            if (parametros.tipo_paginacion === 'numeros') {
+                $(document).on('click', "#" + that.attr('id') + " .paginacion_contenedor .paginacion_pagina", function (e) {
+                    e.preventDefault();
+                    parametros.page = parseInt($(this).text());
+                    parametros.forma_listar = 'carga';
+                    llamadaListado(parametros, that, thatconnect);
+                });
+
+                $(document).on('click', "#" + that.attr('id') + " .paginacion_contenedor .paginacion_siguiente", function (e) {
+                    e.preventDefault();
+                    parametros.page = parseInt($("#" + that.attr('id') + " .zona_inferior").attr('data-npagina')) + 1;
+                    parametros.forma_listar = 'carga';
+                    llamadaListado(parametros, that, thatconnect);
+                });
+
+                $(document).on('click', "#" + that.attr('id') + " .paginacion_contenedor .paginacion_anterior", function (e) {
+                    e.preventDefault();
+                    parametros.page = parseInt($("#" + that.attr('id') + " .zona_inferior").attr('data-npagina')) - 1;
+                    parametros.forma_listar = 'carga';
+                    llamadaListado(parametros, that, thatconnect);
+                });
+
+                $(document).on('click', "#" + that.attr('id') + " .paginacion_contenedor .paginacion_primera", function (e) {
+                    e.preventDefault();
+                    parametros.page = 1;
+                    parametros.forma_listar = 'carga';
+                    llamadaListado(parametros, that, thatconnect);
+                });
+
+                $(document).on('click', "#" + that.attr('id') + " .paginacion_contenedor .paginacion_ultima", function (e) {
+                    e.preventDefault();
+                    parametros.page = parseInt($("#" + that.attr('id') + " .totalPages").val());
+                    parametros.forma_listar = 'carga';
+                    llamadaListado(parametros, that, thatconnect);
+                });
+
+                $(document).on('click', "#" + that.attr('id') + " .resultados_listado ul li a", function (e) {
+                    e.preventDefault();
+                    var TargetValue = $(this).attr("target");
+                    var PaginaDestino = $(this).attr('href');
+
+                    if (TargetValue === '_blank') {
+                        window.open(PaginaDestino, '_blank');
+                    } else {
+                        var UrlActual = window.location.href;
+                        var PaginaActual = parseInt($("#" + that.attr('id') + " .zona_inferior").attr('data-npagina'));
+
+                        var urlParts = UrlActual.split('?');
+                        var baseUrl = urlParts[0];
+                        var searchParams = urlParts[1] ? urlParts[1].split('&') : [];
+                        var newSearchParams = [];
+
+                        for (var i = 0; i < searchParams.length; i++) {
+                            var paramParts = searchParams[i].split('=');
+                            var paramName = paramParts[0];
+                            if (paramName !== 'page' && paramName !== 'BusquedaInicial') {
+                                newSearchParams.push(searchParams[i]);
+                            }
+                        }
+
+                        if (PaginaActual !== 1) {
+                            newSearchParams.push('page=' + PaginaActual);
+                        }
+
+                        var JSONfiltrosVolver = {};
+
+                        JSONfiltrosVolver = gestionJsonPrefiltros('texto', JSONfiltrosVolver, that.find('.filtros_busqueda .termino_busqueda'));
+                        JSONfiltrosVolver = gestionJsonPrefiltros('desde', JSONfiltrosVolver, that.find('.filtros_busqueda .desde'));
+                        JSONfiltrosVolver = gestionJsonPrefiltros('hasta', JSONfiltrosVolver, that.find('.filtros_busqueda .hasta'));
+                        JSONfiltrosVolver = gestionJsonPrefiltros('type', JSONfiltrosVolver, that.find('.filtros_busqueda .tipoRecurso-busqueda'));
+                        JSONfiltrosVolver = gestionJsonPrefiltros('category_exact', JSONfiltrosVolver, that.find('.filtros_busqueda .categoria-busqueda'));
+
+                        that.find('.filtro_personalizado').each(function () {
+                            JSONfiltrosVolver = gestionJsonPrefiltros($(this).attr('data-camposolr'), JSONfiltrosVolver, $(this));
+                        });
+
+                        var parametro = '';
+                        for (var campo in JSONfiltrosVolver) {
+                            parametro += campo + ':' + JSONfiltrosVolver[campo] + '|';
+                        }
+
+                        parametro = parametro.slice(0, -1);
+
+                        if (!$.isEmptyObject(JSONfiltrosVolver)) {
+                            newSearchParams.push('BusquedaInicial=' + encodeURIComponent(parametro));
+                        }
+
+                        var newUrl = baseUrl;
+
+                        if (newSearchParams && Array.isArray(newSearchParams) && newSearchParams.length > 0) {
+                            newUrl += '?' + newSearchParams.join('&');
+                        }
+
+
+                        window.history.pushState("Página de donde vengo", "Título", newUrl);
+
+                        window.location.href = PaginaDestino;
+                    }
+
+                });
+
+            } else if (parametros.tipo_paginacion === 'infinite') {
+                $(window).scroll(function () {
+                    if ($(window).scrollTop() + $(window).height() >= that.height()) {
+
+                        parametros.page = parseInt($("#" + that.attr('id') + " .paginaActualFormatter").val()) + 1;
+                        parametros.forma_listar = 'carga';
+
+                        if (parametros.page <= $("#" + that.attr('id') + " .totalPages").val()) {
+                            if (cargandoListado === false) {
+                                llamadaListado(parametros, that, thatconnect);
+                            }
+                        }
+                    }
+                });
+            }
+
+            if (parametros.UbicacionCargandoNumerico === 'cadaRecurso') {
+                aniadirCargandoAElementos(thatconnect, parametros.rutaCargandoElemento);
+            } else {
+                aniadirCargandoAListado(thatconnect, parametros.rutaCargandoElemento);
+            }
+
+            if (parametros.TipoFormatter === 'slider') {
+                iniciarSlider(parametros, thatconnect)
+            }
+
+            $(document).on('click', '#' + that.attr('id') + ' .filtro_busqueda-toggle', function () {
+                var estadoActual;
+                if ($(this).hasClass('desplegado')) {
+                    estadoActual = 'desplegado';
+                } else {
+                    estadoActual = 'replegado';
+                }
+                var contenedorFiltro = $(this).closest('.filtro_busqueda');
+                var elementoActual = $(this).closest('.filtros_busqueda-label-contenedor');
+                var elementoActualContenido = elementoActual.siblings('.contenedorFacets');
+
+                if (estadoActual === 'desplegado') {
+                    $(this).removeClass('desplegado');
+                    $(this).addClass('replegado');
+                    contenedorFiltro.removeClass('desplegado');
+                    contenedorFiltro.addClass('replegado');
+                    elementoActual.removeClass('desplegado');
+                    elementoActual.addClass('replegado');
+
+                    elementoActualContenido.slideUp("fast");
+                } else {
+                    $(this).removeClass('replegado');
+                    $(this).addClass('desplegado');
+                    contenedorFiltro.removeClass('replegado');
+                    contenedorFiltro.addClass('desplegado');
+                    elementoActual.removeClass('replegado');
+                    elementoActual.addClass('desplegado');
+
+                    elementoActualContenido.slideDown("fast");
+                }
+            });
+
+            if (parametros.activarReiniciarFiltros) {
+                that.find('.reiniciarBusqueda').removeClass('oculto');
+            }
+
+            // Selector de orden personalizado en el front
+            if (that.find('.ordenacionResultados .selectOrdenacion').length > 0) {
+
+                var ordenSeleccionado = that.find('.ordenacionResultados .selectOrdenacion .ordenSeleccionado').attr('data-orden-actual');
+
+                if (ordenSeleccionado !== 'defecto') {
+                    parametros.OrdenacionQueryFront = ordenSeleccionado;
+                } else {
+                    parametros.OrdenacionQueryFront = '';
+                }
+
+                $(document).on('click', "#" + that.attr('id') + " .ordenacionResultados .selectOrdenacion .ordenSeleccionado", function (e) {
+                    var contenedorPadre = $(this).closest('.selectOrdenacion');
+                    var contenedorEtiqueta = $(this).closest('.ordenSeleccionado');
+                    var contenedorListado = $(this).siblings('.listaOrdenes');
+
+                    if (contenedorPadre.hasClass('desplegado')) {
+                        contenedorPadre.removeClass('desplegado');
+                        contenedorEtiqueta.removeClass('desplegado');
+                        contenedorPadre.addClass('plegado');
+                        contenedorEtiqueta.addClass('plegado');
+                    } else {
+                        contenedorPadre.removeClass('plegado');
+                        contenedorEtiqueta.removeClass('plegado');
+                        contenedorPadre.addClass('desplegado');
+                        contenedorEtiqueta.addClass('desplegado');
+                    }
+
+                    contenedorListado.slideToggle(100);
+                });
+
+                $(document).on('click', "#" + that.attr('id') + " .ordenacionResultados .selectOrdenacion .elementoOrdenacion", function (e) {
+                    var contenedorPadre = $(this).closest('.selectOrdenacion');
+                    var contenedorSelector = contenedorPadre.find('.ordenSeleccionado');
+                    var contenedorEtiqueta = contenedorPadre.find('.etiquetaOrden');
+                    var contenedorListado = contenedorPadre.find('.listaOrdenes');
+
+                    var solrOrdenacionSeleccionada = $(this).attr('data-orden');
+                    var etiquetaOrdenacionSeleccionada = $(this).text();
+
+                    contenedorEtiqueta.html(etiquetaOrdenacionSeleccionada);
+
+                    if (solrOrdenacionSeleccionada === '' || solrOrdenacionSeleccionada === undefined) {
+                        solrOrdenacionSeleccionada = 'defecto';
+                    }
+                    contenedorSelector.attr('data-orden-actual', solrOrdenacionSeleccionada);
+
+                    parametros.forma_listar = 'busqueda';
+                    parametros.page = 1;
+
+                    llamadaListado(parametros, that, thatconnect);
+
+                    contenedorSelector.removeClass('desplegado');
+                    contenedorPadre.removeClass('desplegado');
+                    contenedorSelector.addClass('plegado');
+                    contenedorPadre.addClass('plegado');
+
+                    contenedorListado.slideUp(100);
+                });
+
+                // CLICK FUERA DEL SELECTOR DE ORDEN
+                $(document).on('click', function (event) {
+                    var $target = $(event.target);
+                    if (!$target.closest('.selectOrdenacion ').length && $target.parents('.selectOrdenacion ').length === 0) {
+                        var contenedorPadre = $("#" + that.attr('id') + " .ordenacionResultados .selectOrdenacion");
+                        var contenedorSelector = contenedorPadre.find('.ordenSeleccionado');
+                        var contenedorListado = contenedorPadre.find('.listaOrdenes');
+
+                        contenedorSelector.removeClass('desplegado');
+                        contenedorPadre.removeClass('desplegado');
+                        contenedorSelector.addClass('plegado');
+                        contenedorPadre.addClass('plegado');
+
+                        contenedorListado.slideUp(100);
+                    }
+                });
+            } else {
+                parametros.OrdenacionQueryFront = '';
+            }
+            // ------------------------------------------------
+
+            // Selector de exportación en el front
+            if (that.find('.exportacionResultados .selectExportacion').length > 0) {
+
+                // DESPLIEGA LAS OPCIONES DE EXPORTACIÓN
+                $(document).on('click', "#" + that.attr('id') + " .exportacionResultados .selectExportacion .labelExportacion", function (e) {
+                    var contenedorPadre = $(this).closest('.selectExportacion');
+                    var contenedorEtiqueta = $(this).closest('.labelExportacion');
+                    var contenedorListado = $(this).siblings('.listaExportacion');
+
+                    if (contenedorPadre.hasClass('desplegado')) {
+                        contenedorPadre.removeClass('desplegado');
+                        contenedorEtiqueta.removeClass('desplegado');
+                        contenedorPadre.addClass('plegado');
+                        contenedorEtiqueta.addClass('plegado');
+                    } else {
+                        contenedorPadre.removeClass('plegado');
+                        contenedorEtiqueta.removeClass('plegado');
+                        contenedorPadre.addClass('desplegado');
+                        contenedorEtiqueta.addClass('desplegado');
+                    }
+
+                    contenedorListado.slideToggle(100);
+                });
+
+                // CLICK FUERA DEL SELECTOR DE EXPORTACIÓN
+                $(document).on('click', function (event) {
+                    var $target = $(event.target);
+                    if (!$target.closest('.selectExportacion ').length && $target.parents('.selectExportacion ').length === 0) {
+                        var contenedorPadre = $("#" + that.attr('id') + " .exportacionResultados .selectExportacion");
+                        var contenedorSelector = contenedorPadre.find('.labelExportacion');
+                        var contenedorListado = contenedorPadre.find('.listaExportacion');
+
+                        contenedorSelector.removeClass('desplegado');
+                        contenedorPadre.removeClass('desplegado');
+                        contenedorSelector.addClass('plegado');
+                        contenedorPadre.addClass('plegado');
+
+                        contenedorListado.slideUp(100);
+                    }
+                });
+
+                // CLICK EN UNA OPCIÓN DE EXPORTACIÓN
+                $(document).on('click', "#" + that.attr('id') + " .exportacionResultados .selectExportacion .elementoExportacion", function (e) {
+                    const paramsModal = {
+                        accion: 'configurarExportacion',
+                        tipoExportacion: $(this).attr('data-tipo')
+                    }
+                    llamarModalSagaListado(paramsModal);
+                });
+
+                // CLICK EN EL BOTÓN DE EXPORTAR DEL MODAL
+                $(document).on('click', ".accionesConfiguracionExportacion .exportarFormulario", function (e) {
+                    switch ($(this).attr('data-accion')) {
+                        case 'PDF':
+                            exportarSagaListadoPDF();
+                            break;
+                        case 'XLSX':
+                            exportarSagaListadoExcel();
+                            break;
+                    }
+                });
+
+                // CLICK FUERA DEL MODAL PARA CERRARLO
+                $(document).on('click', ':not(.ExportacionSagaListadoVuelo)', function (event) {
+                    var $target = $(event.target);
+                    if (!$target.closest('.modalSagaListadoWrapper ').length && $target.parents('.modalSagaListadoWrapper ').length === 0 && $target.closest('.ExportacionSagaListadoVuelo').length === 0) {
+                        if (!$('.modalSagaListadoContenido').hasClass('cargandoExportacion')) {
+                            $('.modalSagaListado').fadeOut(function () {
+                                $(this).remove();
+                            });
+                        }
+                    }
+                });
+            }
+            // ------------------------------------------------
+
+            $(document).on('click', "#" + that.attr('id') + " .SugerenciasListado-Collated", function () {
+                $('.filtro_busqueda.termino_busqueda .filtro_busqueda-opciones').val($(this).text());
+                llamadaListado(parametros, that, thatconnect);
+            });
+        }
+
+        function removeQueryParam(parametro) {
+            // Obtener la URL actual
+            var currentUrl = window.location.href;
+
+            // Buscar el índice del parámetro especificado
+            var paramIndex = currentUrl.indexOf(parametro + '=');
+
+            // Si se encuentra el parámetro
+            if (paramIndex !== -1) {
+                // Obtener el índice del siguiente carácter "&" o el final de la URL
+                var nextCharIndex = currentUrl.indexOf('&', paramIndex);
+
+                // Si no se encuentra el carácter "&"
+                if (nextCharIndex === -1) {
+                    // Quitar el parámetro y su valor de la URL
+                    currentUrl = currentUrl.substring(0, paramIndex - 1);
+                } else {
+                    // Quitar el parámetro y su valor de la URL
+                    currentUrl = currentUrl.substring(0, paramIndex) + currentUrl.substring(nextCharIndex + 1);
+                }
+
+                // Actualizar la URL en el historial del navegador sin redirigir
+                window.history.replaceState(null, null, currentUrl);
+            }
+        }
+
+        function getRandomInt(min, max) {
+            return Math.floor(Math.random() * (max - min)) + min;
+        }
+
+        function vaciarFiltros(parametros, that, thatconnect) {
+            that.find('.filtro_busqueda input[type="text"],.filtro_busqueda input[type="date"],.filtro_busqueda select,.filtro_busqueda-opciones').val('');
+            that.find('.filtro_busqueda input[type="checkbox"]').prop('checked', false);
+            parametros.dym = '';
+
+            llamadaListado(parametros, that, thatconnect);
+        }
+
+        $(document).on('focus', '.rangofechas input[type="text"], .rangofechas_personalizado input[type="text"]', function () {
+            var tipoInput = $(this).attr('type');
+
+            if (tipoInput == 'text') {
+                $(this).attr('type', 'date');
+            }
+        });
+
+        // Boton de acción en responsive, flotante.
+        function FiltrosFlotanteRestponsive(parametros) {
+            var idListado = ".SagaListado[data-css-id=" + parametros.that + "]";
+            var MostrarFiltrosSuperior = idListado + ' .wrapper-aside .filtros_busqueda .botones-accion-wrapper .MostrarFiltros-wrapper .MostrarFiltros.superior';
+            var CerrarFiltrosSuperior = idListado + ' .wrapper-aside .filtros_busqueda .botones-accion-wrapper .CerrarFiltros-wrapper .CerrarFiltros.superior';
+            var AplicarFiltrosInferior = idListado + ' .wrapper-aside .filtros_busqueda .botones-accion-wrapper .AplicarFiltros-wrapper .AplicarFiltros.inferior';
+            var reiniciarBusquedaInferior = idListado + ' .wrapper-aside .filtros_busqueda .botones-accion-wrapper .reiniciarBusqueda-wrapper .reiniciarBusqueda.inferior';
+            var MostrarFiltros = idListado + ' .wrapper-aside .filtros_busqueda .botones-accion-wrapper .MostrarFiltros-wrapper .MostrarFiltros';
+            var CerrarFiltros = idListado + ' .wrapper-aside .filtros_busqueda .botones-accion-wrapper .CerrarFiltros-wrapper .CerrarFiltros';
+            var AplicarFiltros = idListado + ' .wrapper-aside .filtros_busqueda .botones-accion-wrapper .AplicarFiltros-wrapper .AplicarFiltros';
+
+            $(document).ready(function () {
+                function actualizarClase() {
+                    if ($(window).width() > parametros.CorteFiltrosFlotanteRestponsive) {
+                        $(MostrarFiltrosSuperior).addClass('oculto');
+                    } else {
+                        $(MostrarFiltrosSuperior).removeClass('oculto');
+                    }
+                }
+
+                actualizarClase();
+                $(window).resize(actualizarClase);
+                $(document).ajaxComplete(actualizarClase);
+            });
+
+
+            $(document).on('click', MostrarFiltros, function () {
+                var $wrapperAside = $(this).closest('.SagaListado .wrapper-aside');
+                if ($wrapperAside.hasClass('flotante')) {
+                    $wrapperAside.addClass('cerrando');
+                    setTimeout(function () {
+                        $wrapperAside.removeClass('cerrando');
+                        $wrapperAside.removeClass('flotante');
+                        $(CerrarFiltrosSuperior).toggleClass('oculto');
+                        $(AplicarFiltrosInferior).toggleClass('oculto');
+                        $(reiniciarBusquedaInferior).toggleClass('ocultisimo');
+                    }, 500);
+
+                } else {
+                    $wrapperAside.addClass('flotante');
+                    $(CerrarFiltrosSuperior).toggleClass('oculto');
+                    $(AplicarFiltrosInferior).toggleClass('oculto');
+                    $(reiniciarBusquedaInferior).toggleClass('ocultisimo');
+                }
+            });
+
+
+            $(document).on('click', AplicarFiltros, function () {
+                var $wrapperAside = $('.SagaListado .wrapper-aside');
+                if ($wrapperAside.hasClass('flotante')) {
+                    $wrapperAside.addClass('cerrando');
+                    setTimeout(function () {
+                        $wrapperAside.removeClass('cerrando');
+                        $wrapperAside.removeClass('flotante');
+                        $(CerrarFiltrosSuperior).toggleClass('oculto');
+                        $(AplicarFiltrosInferior).toggleClass('oculto');
+                        $(reiniciarBusquedaInferior).toggleClass('ocultisimo');
+                    }, 500);
+
+                }
+            });
+            $(document).on('click', CerrarFiltros, function () {
+                var $wrapperAside = $('.SagaListado .wrapper-aside');
+                if ($wrapperAside.hasClass('flotante')) {
+                    $wrapperAside.addClass('cerrando');
+                    setTimeout(function () {
+                        $wrapperAside.removeClass('cerrando');
+                        $wrapperAside.removeClass('flotante');
+                        $(CerrarFiltrosSuperior).toggleClass('oculto');
+                        $(reiniciarBusquedaInferior).toggleClass('ocultisimo');
+                        $(AplicarFiltrosInferior).toggleClass('oculto');
+                    }, 500);
+
+                }
+            });
+        }
+
+
+        function moverCreacion(that, idElemento, idiomaUsuarioActual, ejecutarDende) {
+            var titleCmsState;
+            if (idiomaUsuarioActual === 'en') {
+                titleCmsState = 'New';
+            } else {
+                titleCmsState = 'Nuevo'
+            }
+
+            var intervalID = setInterval(function () {
+                if ($('#' + idElemento).find('.ListadoBotones .cmsState[title="' + titleCmsState + '"]').length > 0) {
+                    clearInterval(intervalID);
+
+                    if (ejecutarDende === true) {
+                        DendeScript(idElemento, function () {
+                            moverCreacion(that, idElemento, idiomaUsuarioActual, false);
+                        });
+                    }
+
+                    $('#' + idElemento).find('.ListadoBotones .BotonCreacion').each(function (index) {
+                        var elementoMover = $('#' + idElemento).find('.org-opencms-gwt-client-ui-css-I_CmsDirectEditCss-directEditButtons').eq(index).find('.cmsState[title=' + titleCmsState + ']').detach();
+                        /*console.log(elementoMover);
+                        console.log(idiomaUsuarioActual);
+                        console.log(titleCmsState);*/
+                        elementoMover.appendTo($(this)).data($('#' + idElemento).find('.org-opencms-gwt-client-ui-css-I_CmsDirectEditCss-directEditButtons .cmsState[title=' + titleCmsState + ']').eq(index).data("events"));
+                    });
+                }
+            }, 500);
+        }
+
+        function moverSagaListadoConfig(that, idElemento, idiomaUsuarioActual, ejecutarDende) {
+            var titleCmsState;
+            if (idiomaUsuarioActual === 'en') {
+                titleCmsState = 'Edit';
+            } else {
+                titleCmsState = 'Editar'
+            }
+
+            var intervalID = setInterval(function () {
+                if ($('#' + idElemento).find('.editarSagaListadoConfig .cmsState[title="' + titleCmsState + '"]').length > 0) {
+                    clearInterval(intervalID);
+
+                    if (ejecutarDende === true) {
+                        DendeScript(idElemento, function () {
+                            moverSagaListadoConfig(that, idElemento, idiomaUsuarioActual, false);
+                        });
+                    }
+
+                    var elementoMover = $('#' + idElemento).find('.editarSagaListadoConfig .org-opencms-gwt-client-ui-css-I_CmsDirectEditCss-directEditButtons').find('.cmsState[title=' + titleCmsState + ']').detach();
+                    /*console.log(elementoMover);
+                    console.log(idiomaUsuarioActual);
+                    console.log(titleCmsState);*/
+                    elementoMover.appendTo($('#' + idElemento).find('.editarSagaListadoConfig')).data($('#' + idElemento).find('.editarSagaListadoConfig .org-opencms-gwt-client-ui-css-I_CmsDirectEditCss-directEditButtons .cmsState[title=' + titleCmsState + ']').data("events"));
+                }
+            }, 500);
+        }
+
+        function moverSagaListadoFormatterConfig(that, idElemento, idiomaUsuarioActual, ejecutarDende) {
+            var titleCmsState;
+            if (idiomaUsuarioActual === 'en') {
+                titleCmsState = 'Edit';
+            } else {
+                titleCmsState = 'Editar'
+            }
+
+            var intervalID = setInterval(function () {
+                if ($('#' + idElemento).find('.editarSagaListadoFormatterConfig .cmsState[title="' + titleCmsState + '"]').length > 0) {
+                    clearInterval(intervalID);
+
+                    if (ejecutarDende === true) {
+                        DendeScript(idElemento, function () {
+                            moverSagaListadoFormatterConfig(that, idElemento, idiomaUsuarioActual, false);
+                        });
+                    }
+
+                    var elementoMover = $('#' + idElemento).find('.editarSagaListadoFormatterConfig .org-opencms-gwt-client-ui-css-I_CmsDirectEditCss-directEditButtons').find('.cmsState[title=' + titleCmsState + ']').detach();
+                    /*console.log(elementoMover);
+                    console.log(idiomaUsuarioActual);
+                    console.log(titleCmsState);*/
+                    elementoMover.appendTo($('#' + idElemento).find('.editarSagaListadoFormatterConfig')).data($('#' + idElemento).find('.editarSagaListadoFormatterConfig .org-opencms-gwt-client-ui-css-I_CmsDirectEditCss-directEditButtons .cmsState[title=' + titleCmsState + ']').data("events"));
+                }
+            }, 500);
+        }
+
+        function aniadirCargandoAElementos(thatconnect, rutaCargandoElemento) {
+
+            thatconnect.find('.resultados_listado .listado li').each(function () {
+                if ($(this).find('.cargando_elemento').length === 0) {
+                    $(this).append('<div class="cargando_elemento oculto"><lottie-player class="" src="' + rutaCargandoElemento + '" background="transparent" loop autoplay></lottie-player></div>');
+                }
+            });
+        }
+
+        function interaccionCargandoElementos(thatconnect, accion) {
+
+            if (accion === 'mostrar') {
+                thatconnect.find('.resultados_listado .listado li').each(function () {
+                    $(this).addClass('animando');
+                });
+                thatconnect.find('.cargando_elemento').removeClass('oculto');
+            } else {
+                thatconnect.find('.resultados_listado .listado li').each(function () {
+                    $(this).removeClass('animando');
+                });
+                thatconnect.find('.cargando_elemento').addClass('oculto');
+            }
+        }
+
+        function aniadirCargandoAListado(thatconnect, rutaCargandoElemento) {
+
+            thatconnect.find('.resultados_contenedor').each(function () {
+                if ($(this).find('.cargando_listado').length === 0) {
+                    $(this).append('<div class="cargando_listado oculto"><lottie-player class="" src="' + rutaCargandoElemento + '" background="transparent" loop autoplay></lottie-player></div>');
+                }
+            });
+        }
+
+        function interaccionCargandoListado(thatconnect, accion) {
+
+            if (accion === 'mostrar') {
+                thatconnect.find('.cargando_listado').removeClass('oculto');
+            } else {
+                thatconnect.find('.cargando_listado').addClass('oculto');
+            }
+        }
+
+        // CONVERTIMOS IMÁGENES EN BACKGROUNDS PARA FAVORECER AL RESPONSIVE
+        $.list_backgroundizator = function (element) {
+            $(element).each(function (index) {
+                var class_a_crear = 'background_dinamico_' + getRandomInt(0, 1000000);
+                var url_imagen = $(this).attr('src');
+                var estilo_a_aplicar = '.' + class_a_crear + '{background-image: url("' + url_imagen + '");}';
+
+                let style = document.createElement('style');
+                style.type = 'text/css';
+                document.head.appendChild(style);
+                style.innerHTML = estilo_a_aplicar;
+
+                $('<div class="background_dinamico ' + class_a_crear + '"></div>').insertBefore($(this));
+
+                $(this).parents('.imagen_elemento').addClass('background_dinamico-fixed');
+
+                $(this).remove();
+            });
+        };
+
+        function iniciarSlider(parametros, thatconnect) {
+            // FORMATTER DE SLIDER
+            var slickConfig = {
+                pauseOnFocus: false,
+                pauseOnHover: false,
+                lazyLoad: "progressive",
+                cssEase: "cubic-bezier(0.87, 0.03, 0.41, 0.9)",
+                responsive: [
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            arrows: true,
+                            slidesToShow: 2,
+                            slidesToScroll: 2
+                        }
+                    },
+                    {
+                        breakpoint: 480,
+                        settings: {
+                            arrows: true,
+                            slidesToShow: 1,
+                            slidesToScroll: 1
+                        }
+                    }
+                ]
+            };
+
+            slickConfig.dots = parametros.SliderResultadosDots;
+            slickConfig.arrows = parametros.SliderResultadosArrows;
+            slickConfig.infinite = parametros.SliderResultadosInfinite;
+            slickConfig.autoplay = parametros.SliderResultadosAutoplay;
+            slickConfig.slidesToShow = parametros.SliderResultadosNSlides;
+            slickConfig.slidesToScroll = parametros.SliderResultadosNDesplazados;
+
+            thatconnect.find('.resultados_listado .listado').on('init', function (event, slick) {
+                thatconnect.addClass('slickInicializado');
+            });
+
+            thatconnect.find('.resultados_listado .listado').slick(slickConfig);
+        }
+
+        function apagarSlider(thatconnect) {
+            thatconnect.find('.resultados_listado .listado').slick('unslick');
+        }
+
+        function gestionJsonPrefiltros(campoObjetivo, json, that) {
+            var valorFiltro;
+
+            if (parametros.MostrarFiltros === 'facets' && campoObjetivo !== 'texto' && campoObjetivo !== 'desde' && campoObjetivo !== 'hasta') {
+                valorFiltro = that.find('.filtro_busqueda-opciones:checked').val();
+            } else {
+                valorFiltro = that.find('.filtro_busqueda-opciones').val();
+            }
+
+            if ((campoObjetivo !== undefined) && (campoObjetivo !== '') && (valorFiltro !== undefined) && (valorFiltro !== '')) {
+                json[campoObjetivo] = valorFiltro;
+            }
+
+            return json;
+        }
+
+
+        /*
+            SISTEMA DE EXPORTACIÓN
+        */
+
+        // MODAL DE EXPORTACIÓN
+        function llamarModalSagaListado(data, callback) {
+
+            if (data.accion) {
+                const parametrosLlamada = {
+                    accionModal: data.accion,
+                    tipoExportacion: data.tipoExportacion,
+                    localeActual: parametros.localeActual
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: parametros.rutaModal,
+                    dataType: 'HTML',
+                    data: parametrosLlamada,
+                    success: function (responseModal) {
+                        let wrapperModal = $(".modalSagaListadoWrapper");
+                        switch (data.accion) {
+                            case 'configurarExportacion':
+                                $("body").append(responseModal);
+                                $('.modalSagaListado').fadeIn();
+                                break;
+                            case 'errorExportacion':
+                            case 'cargarExportacion':
+                            case 'cargarExportacionOK':
+                                wrapperModal.html(responseModal);
+                                break;
+                            default:
+                                console.warn("Acción no reconocida:", data.accion);
+                                break;
+                        }
+
+                        // Callback se ejecutará después del switch sin ser afectado por los breaks
+                        if (typeof callback === "function") {
+                            callback(null, responseModal);
+                        }
+                    },
+                    error: function () {
+                        llamarModalSagaListado({accion: 'errorExportacion'});
+                    }
+                });
+            } else {
+                console.log('Acción no definida');
+            }
+
+        }
+
+        // REALIZAR EXPORTACIÓN EN PDF
+        function exportarSagaListadoPDF() {
+            let nombreArchivoExportacion = $('#nombreExportacionSagaListado').val();
+            if (nombreArchivoExportacion === '' || nombreArchivoExportacion === null || nombreArchivoExportacion === undefined) {
+                nombreArchivoExportacion = 'file'
+            }
+
+            const paramsLlamada = {
+                ...parametros,
+                formatterOrigen: 'PDF',
+                GenerarPdfApaisado: parametros.OrientacionExportacionPDF === 'horizontal',
+                tituloContenidoArchivoExportacion: $('#tituloExportacionSagaListado').val()
+            };
+
+            llamarModalSagaListado({accion: 'cargarExportacion'}, function () {
+                $.ajax({
+                    type: "POST",
+                    url: parametros.rutaElementPDF,
+                    data: paramsLlamada,
+                    xhrFields: {
+                        responseType: 'blob' // Esto asegura que el response sea tratado como un Blob
+                    },
+                    success: function (blob) {
+                        // Comprobar si el blob es válido
+                        const reader = new FileReader();
+                        reader.onload = function () {
+                            const a = document.createElement('a');
+                            a.href = reader.result;
+                            a.download = nombreArchivoExportacion + ".pdf";
+                            a.className = "ExportacionSagaListadoVuelo";
+                            document.body.appendChild(a);
+                            a.click();
+                            a.remove();
+                        };
+                        reader.readAsDataURL(blob);  // Convierte el blob a una URL de datos
+
+                        llamarModalSagaListado({accion: 'cargarExportacionOK'});
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        llamarModalSagaListado({accion: 'errorExportacion'});
+                    }
+                });
+            });
+        }
+
+        // REALIZAR EXPORTACIÓN EN EXCEL
+        function exportarSagaListadoExcel() {
+            let nombreArchivoExportacion = $('#nombreExportacionSagaListado').val();
+            if (nombreArchivoExportacion === '' || nombreArchivoExportacion === null || nombreArchivoExportacion === undefined) {
+                nombreArchivoExportacion = 'file'
+            }
+
+            const paramsLlamada = {
+                ...parametros,
+                formatterOrigen: 'JSON',
+                esExportacionExcel: true
+            };
+
+            llamarModalSagaListado({accion: 'cargarExportacion'}, function () {
+                $.ajax({
+                    type: "POST",
+                    url: parametros.urlAjax,
+                    data: paramsLlamada,
+                    dataType: 'json',
+                    success: async function (response) {
+                        const datos = response;
+
+                        // 1) Crear workbook y worksheet
+                        const workbook = new ExcelJS.Workbook();
+                        const ws = workbook.addWorksheet('SagaListado');
+
+                        // 2) Definir columnas según las claves posibles
+                        let arrayColumnas = []
+                        datos.columnas.forEach(item => {
+                            arrayColumnas.push({
+                                header: item.texto, key: item.nodo, width: item.ancho
+                            });
+                        });
+
+                        ws.columns = arrayColumnas;
+
+                        // 3) Agregar cada elemento del array como fila (con zebra stripes y wrapText)
+                        datos.elementosSagaListado.forEach(item => {
+                            const valores = datos.columnas.map(col => item[col.nodo] || '');
+
+                            const row = ws.addRow(valores);
+
+                            row.eachCell(cell => {
+                                cell.alignment = {
+                                    wrapText: true,
+                                    vertical: 'top'
+                                };
+                            });
+                        });
+
+                        // 4) Generar buffer y disparar descarga
+                        const buffer = await workbook.xlsx.writeBuffer();
+                        const blob = new Blob([buffer], {
+                            type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+                        });
+                        saveAs(blob, nombreArchivoExportacion + '.xlsx');
+
+                        llamarModalSagaListado({accion: 'cargarExportacionOK'});
+
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        llamarModalSagaListado({accion: 'errorExportacion'});
+                        console.log('ERROR:' + errorThrown);
+                    }
+                });
+            });
+        }
+
+        /*
+            FIN SISTEMA DE EXPORTACIÓN
+        */
+    };
+})(jQuery);
