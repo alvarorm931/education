@@ -529,7 +529,8 @@ def menciones(texto: str) -> list[str]:
 
 
 RE_ANEXO = re.compile(r"^ANEXO\b", re.I)
-RE_CABECERA_PLAN = re.compile(r"^(?:Plan(?:es)? de estudios?|ANEXO)\b.*?\b((?:Graduad[oa]|Grado)\b.*?\ben\s+.+?)\.?$")
+RE_CABECERA_PLAN = re.compile(r"^(?:\d{1,2}\.\s*)?(?:Plan(?:es)? de estudios?|ANEXO|Denominaci[oó]n del t[ií]tulo:)\s*"
+                              r".*?\b((?:Graduad[oa]|Grado)\b.*?\ben\s+.+?)\.?$")
 RE_SOLO_TITULO = re.compile(r"^((?:Graduad[oa]|Grado)\b.*?\ben\s+.+?)\.?$")
 
 
