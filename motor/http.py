@@ -189,6 +189,7 @@ BOLETINES_OFICIALES = {
     "https://bop.dipcas.es/": "BOP de Castellón (robots.txt no responde)",
     "https://www.bopcadiz.org/": "BOP de Cádiz (robots.txt no responde)",
     "https://bop.dpz.es/": "BOP de Zaragoza (robots.txt no responde)",
+    "https://www.ddgi.cat/bop/": "BOP de Girona",
 }
 DECISION_BOLETINES = ("Álvaro", "2026-10-30")
 # Documentos concretos que el boletín cierra en su robots.txt para proteger datos de personas (el BOPA tiene más de 600
