@@ -1,0 +1,47 @@
+{
+ "lote": "msgbatch_01WmJJj66YUn9DPAWS6TheRV",
+ "modelo": "claude-haiku-5-5",
+ "tipos_de_bloque": {
+  "text": 20
+ },
+ "estado": "ended",
+ "creado": "2026-10-30T00:05:06.079195+00:00",
+ "terminado": "2026-10-30T00:11:25.288543+00:00",
+ "cuentas": {
+  "processing": 0,
+  "succeeded": 20,
+  "errored": 0,
+  "canceled": 0,
+  "expired": 0
+ },
+ "resultados": {
+  "succeeded": 20
+ },
+ "tokens": {
+  "input_tokens": 172512,
+  "output_tokens": 28621,
+  "cache_creation_input_tokens": 835,
+  "cache_read_input_tokens": 15865
+ },
+ "coste_usd": 0.016,
+ "coste_por_pagina_usd": 0.000802,
+ "proyeccion_usd": {
+  "1000_paginas": 0.8,
+  "30000_paginas": 24.07
+ },
+ "paginas_con_json": 20,
+ "paginas_no_programa": 4,
+ "cortadas_por_max_tokens": 0,
+ "superan_100k_tokens": 0,
+ "campos": 238,
+ "campos_aceptados": 230,
+ "precios": {
+  "usd_por_mtok": {
+   "input_tokens": 0.05,
+   "output_tokens": 0.25,
+   "cache_creation_input_tokens": 0.125,
+   "cache_read_input_tokens": 0.01
+  },
+  "fuente": "https://platform.claude.com/docs/en/about-claude/pricing (30/10/2026)"
+ }
+}
