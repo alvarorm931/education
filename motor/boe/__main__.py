@@ -63,6 +63,14 @@ def ya_procesado(raiz: Path, d: date) -> bool:
 def procesar_dia(d: date, raiz: Path, archivo: Archivo, estado: dict) -> dict:
     informe = _procesar_dia(d, raiz, archivo, estado)
     ruta = _ruta_informe(raiz, d)
+    # Un fallo pasajero al volver a pedir un día ya leído bien no borra lo que había (el 30/10/2026 un HTTP 500 del
+    # BOE dejó como erróneos el 29 y el 30, que estaban bien): se conserva el informe bueno y se avisa
+    if informe["resultado"] in {"error_http", "error_formato"} and ruta.exists():
+        previo = json.loads(ruta.read_text(encoding="utf-8"))
+        if previo.get("resultado") == "ok":
+            print(f"{d}: {'; '.join(informe['alertas'])}; se conserva la lectura anterior, que estaba bien")
+            return {**previo, "alertas": previo.get("alertas", []) + [f"{a} (se conserva la lectura anterior)"
+                                                                     for a in informe["alertas"]]}
     ruta.parent.mkdir(parents=True, exist_ok=True)
     ruta.write_text(json.dumps(informe, ensure_ascii=False, indent=1), encoding="utf-8")
     return informe

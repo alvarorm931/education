@@ -199,3 +199,19 @@ def test_pendientes_por_prioridad(tmp_path):
         "BOE-A-2025-4",  # acceso, aprobados
         "BOE-A-2024-2",  # fuera del alcance de la fase 1
     ]
+
+
+def test_un_fallo_pasajero_no_borra_un_dia_ya_leido(tmp_path, monkeypatch):
+    """El 30/10/2026 un HTTP 500 del BOE al volver a pedir el 29 y el 30 dejó esos días como erróneos."""
+    import json
+    from datetime import date
+
+    from motor.archivo import Archivo
+    from motor.boe import __main__ as boe
+    from motor.http import Respuesta
+    ruta = boe._ruta_informe(tmp_path, date(2026, 10, 29))
+    ruta.parent.mkdir(parents=True)
+    ruta.write_text(json.dumps({"fecha": "2026-10-29", "resultado": "ok", "oposiciones": 216, "alertas": []}))
+    monkeypatch.setattr(boe, "obtener", lambda url, accept=None: Respuesta(url, 500, b"error", {}))
+    inf = boe.procesar_dia(date(2026, 10, 29), tmp_path, Archivo(tmp_path / "archivo"), {})
+    assert inf["resultado"] == "ok" and json.loads(ruta.read_text())["oposiciones"] == 216
