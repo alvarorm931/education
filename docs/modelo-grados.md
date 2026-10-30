@@ -93,7 +93,7 @@ histórico de cinco años y los cupos salen de cada distrito (módulo de notas d
 cohorte que QEDU indique (su ayuda habla de los egresados de cuatro años antes, afiliados en marzo del último año
 disponible). Se publica con ese rótulo, nunca como «sueldo».
 
-Capturado (30/10/2026): las 5.486 tarjetas y el detalle e inserción de 2.868 ofertas, por tramos de GitHub (`grados.yml`, una petición cada uno o dos segundos). Las públicas traen el precio del crédito; las privadas, «N/D».
+Capturado (30/10/2026): las 5.486 tarjetas y el detalle e inserción de 5.486 ofertas, por tramos de GitHub (`grados.yml`, una petición cada uno o dos segundos). Las públicas traen el precio del crédito; las privadas, «N/D».
 
 ### SIIU: indicadores de rendimiento por universidad y ámbito
 
@@ -270,21 +270,21 @@ pedir nada a ninguna fuente, y marca cada ficha como indexable o no, con el moti
 |---|---|
 | Fichas activas | 4.296 (3.265 grados y 1.031 dobles) |
 | Con sus centros en QEDU | 4.265 |
-| Ofertas de QEDU con detalle (plazas, precio, inserción) | 2.868 de 5.486 |
+| Ofertas de QEDU con detalle (plazas, precio, inserción) | 5.486 de 5.486 |
 | Con nota de corte | 2.662 |
-| Con precio de primera matrícula (públicas) | 1.603 |
+| Con precio de primera matrícula (públicas) | 2.103 de 2.239 grados de públicas (los 647 dobles de públicas no traen precio en QEDU) |
 | Privadas con precio por curso | 256 de 1.410 |
-| Con inserción laboral | 1.434 |
+| Con inserción laboral | 1.703 |
 | Con indicadores de rendimiento del SIIU | 3.125 |
 | Con ficha del RUCT | 3.265 |
 | Grados con plan del BOE | 3.079 de 3.265 |
-| Grados con plan comprobado | 2.215 (1.555 por asignaturas, el resto por materias) |
+| Grados con plan comprobado | 2.233 (1.567 por asignaturas, el resto por materias) |
 | Dobles con los planes de sus dos grados comprobados | 574 |
-| **Indexables** con la propuesta de datos mínimos | **1.994** (1.685 grados y 309 dobles; 1.773 de públicas y 221 de privadas) |
+| **Indexables** con la propuesta de datos mínimos | **2.026** (1.717 grados y 309 dobles; 1.804 de públicas y 222 de privadas) |
 
-El resto va con `noindex` y su motivo: 864 con plan que no
+El resto va con `noindex` y su motivo: 846 con plan que no
 cuadra, 643 sin plan (o doble sin los dos planes comprobados) y
-1.326 sin nota ni precio (casi todas, privadas que no publican el precio); una
+1.311 sin nota ni precio (casi todas, privadas que no publican el precio); una
 ficha puede tener varios.
 
 Para rehacerlo todo desde `sondas`: bajar las carpetas con `datos/estudios/grados/` y ejecutar en orden
@@ -302,16 +302,16 @@ Datos propios que salen de los planes (`motor/grados/asignaturas.py` y `relacion
 comprobados por asignaturas:
 
 - **Asignaturas en común**: en cuántas universidades del mismo grado aparece cada asignatura, qué parte del plan de
-  cada una es común y cuáles solo tiene ella (159 genéricos con al menos dos
+  cada una es común y cuáles solo tiene ella (160 genéricos con al menos dos
   planes comparables).
-- **Buscar por asignatura** (`asignaturas_indice.jsonl`): 36.313 asignaturas distintas
-  (nombre normalizado, sin numeración), 8.027 en dos títulos o más, cada una
+- **Buscar por asignatura** (`asignaturas_indice.jsonl`): 36.455 asignaturas distintas
+  (nombre normalizado, sin numeración), 8.089 en dos títulos o más, cada una
   con dónde se estudia, su tipo y su curso. TFG, optativas, prácticas y practicum van marcados como huecos del plan
   (19), sin página propia.
 - **Carreras parecidas** (`relaciones.jsonl`): por campo ISCED-F, ámbito, área y rama del SIIU, nombre, dobles
   grados que las combinan y asignaturas básicas y obligatorias en común; cada relación lleva sus motivos.
   244 de los 245 genéricos de grado con página tienen alguna
-  (1.387 relaciones apoyadas en asignaturas comunes); la que no tiene nada cercano queda
+  (1.377 relaciones apoyadas en asignaturas comunes); la que no tiene nada cercano queda
   vacía.
 - **Dobles grados que incluyen cada carrera** y los grados que forman cada doble; la ficha del doble enlaza los
   planes de sus dos grados.
