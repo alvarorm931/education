@@ -47,3 +47,27 @@ def test_sesion_busqueda_y_paginas(monkeypatch, tmp_path):
                          portal)
     assert (inf["resultado"], inf["anuncios"], inf["disposiciones"]) == ("ok", 41, 41) and not inf["alertas"]
     assert len(llamadas) == 3 and re.match(r"-?\d+:-?\d+", llamadas[2]["javax.faces.ViewState"])
+
+
+def test_busqueda_que_sale_por_la_pagina_anterior(monkeypatch, tmp_path):
+    """Tras un día de varias páginas, la búsqueda del siguiente salía por la segunda página («Mostrant del 26…») y se
+    perdían los 25 primeros: ahora se pide también la primera. Y un día leído a medias se vuelve a leer."""
+    import json
+    desplazada = BUSQUEDA.replace("Mostrant del 1 al 25 de 41", "Mostrant del 26 al 41 de 41")
+    pedidas = []
+
+    def falso(url, accept=None, sesion=None, formulario=None, cabeceras_extra=None, **kw):
+        if formulario is None:
+            return Respuesta(url, 200, PORTAL.encode())
+        if formulario.get("javax.faces.source") == "buscarBtn":
+            return Respuesta(url, 200, desplazada.encode())
+        pedidas.append(formulario["list_first"])
+        return Respuesta(url, 200, (BUSQUEDA if formulario["list_first"] == "0" else PAGINA2).encode())
+
+    monkeypatch.setattr(v, "obtener", falso)
+    inf = v.procesar_dia(date(2026, 10, 28), tmp_path, Archivo(tmp_path / "a", indice_por_fuente=True, solo_huella=True),
+                         v.Portal(pausa=0))
+    assert pedidas == ["0", "25"] and (inf["anuncios"], inf["disposiciones"]) == (41, 41) and not inf["alertas"]
+    r = tmp_path / "d.json"
+    r.write_text(json.dumps({"resultado": "ok", "alertas": ["BOP Valencia 2022-01-19: 1 anuncios leídos de 26"]}))
+    assert v.incompleto(r) and not v.incompleto(tmp_path / "no.json")

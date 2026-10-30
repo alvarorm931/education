@@ -59,7 +59,7 @@ RE_TITULO = re.compile(r'title="Anunci en PDF">(?P<t>[^<]+)</a>')
 RE_REGISTRO = re.compile(r"Núm\. registre: </span>(?P<r>\d{4}/\d+)")
 RE_FECHA = re.compile(r'title="Butlletí complet">(?P<d>\d{2})/(?P<m>\d{2})/(?P<a>\d{4})</span>')
 RE_BOLETIN = re.compile(r'Butlletí: </span><a[^>]*>(?P<n>\d+)</a>')
-RE_TOTAL = re.compile(r"Mostrant del \d+ al \d+ de (?P<n>\d+)")
+RE_TOTAL = re.compile(r"Mostrant del (?P<del>\d+) al \d+ de (?P<n>\d+)")
 RE_VIEWSTATE = re.compile(r'<update id="[^"]*javax\.faces\.ViewState[^"]*"><!\[CDATA\[(?P<v>[^\]]+)\]\]>')
 RE_REJILLA = re.compile(r'PrimeFaces\.cw\("DataGrid","\w+",\{id:"(?P<id>[^"]+)"[^}]*paginator')
 RE_FORM_REJILLA = re.compile(
@@ -161,11 +161,17 @@ class Portal:
         r, texto = self._post(datos)
         respuestas = [r]
         anuncios = parsear_listado(texto)
-        total = RE_TOTAL.search(texto)
-        total = int(total.group("n")) if total else len(anuncios)
+        m = RE_TOTAL.search(texto)
+        total = int(m.group("n")) if m else len(anuncios)
         rejilla, form = RE_REJILLA.search(texto), RE_FORM_REJILLA.search(texto)
         paginas = math.ceil(total / POR_PAGINA)
-        for k in range(1, paginas):
+        # La rejilla recuerda la página de la búsqueda anterior de la misma sesión: tras un día de varias páginas,
+        # la búsqueda del siguiente salía por la segunda («Mostrant del 26 al…») y se perdían los 25 primeros
+        # (1.132 días del histórico, del 30/10/2026). Si no empieza por el 1, se pide también la primera.
+        desde_primera = not m or m.group("del") == "1"
+        if not desde_primera:
+            anuncios = []
+        for k in range(0 if not desde_primera else 1, paginas):
             if not (rejilla and form):
                 raise ErrorPortal("sin rejilla paginable: posible cambio de formato")
             lid, fid = rejilla.group("id"), form.group("f")
@@ -241,6 +247,14 @@ def textos_pendientes(raiz: Path) -> list[dict]:
                                         0 if x.get("alcance") in (None, "acceso") else 1))
 
 
+def incompleto(ruta: Path) -> bool:
+    """Día dado por leído con menos anuncios de los que dice el portal («25 anuncios leídos de 50»)."""
+    try:
+        return any("anuncios leídos de" in a for a in json.loads(ruta.read_text(encoding="utf-8")).get("alertas") or [])
+    except (OSError, ValueError):
+        return False
+
+
 def main(argv: list[str] | None = None) -> int:
     hoy = datetime.now(MADRID).date()
     p = argparse.ArgumentParser()
@@ -268,6 +282,8 @@ def main(argv: list[str] | None = None) -> int:
     while d >= a.desde:  # del más reciente al más antiguo; lo ya hecho no se repite (salvo ayer y hoy)
         ruta = _ruta(a.salida, "dias", d, "json")
         hecho, reintento = estado_dia(ruta)
+        if hecho and incompleto(ruta):  # leído a medias por la paginación (se vuelve a leer entero)
+            hecho = False
         if d.weekday() >= 5 and not hecho:  # el BOP de Valencia no sale en fin de semana
             escribir_json(ruta, {"fecha": d.isoformat(), "resultado": "sin_boletin", "nota": "fin de semana",
                                  "alertas": []})
