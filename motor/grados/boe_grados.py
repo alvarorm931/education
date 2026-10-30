@@ -657,6 +657,23 @@ def medir_plan(doc: dict) -> dict:
             m2 = _medir(alt, dist, doc)
             if m2["comprobacion"]:
                 filas, m = alt, {**m2, "interpretacion": "alternativa"}
+    if not m["comprobacion"] and dist and m["esperado_sin_optativas"] and m["suma_sin_optativas"] < m["esperado_sin_optativas"]:
+        # faltan créditos de un tipo y una sola tabla sin tipo suma exactamente lo que falta: es de ese tipo
+        base = [x for x in filas if x["nivel"] == "asignatura"] or filas
+        falta = {t: dist.get(c, 0) - sum(x["creditos"] or 0 for x in base if x["tipo"] == t)
+                 for t, c in CLAVE_DIST.items() if t != "optativa"}
+        sin_tipo: dict = {}
+        for x in base:
+            if not x["tipo"]:
+                sin_tipo[x["tabla"]] = sin_tipo.get(x["tabla"], 0) + (x["creditos"] or 0)
+        casan = [(n, t) for n, v in sin_tipo.items() for t, f in falta.items() if f > 0 and abs(v - f) <= 0.5]
+        if len(casan) == 1:
+            n, t = casan[0]
+            alt = [{**x, "tipo": t, "tipo_por_lo_que_falta": True} if not x["tipo"] and x["tabla"] == n else x
+                   for x in filas]
+            m2 = _medir(alt, dist, doc)
+            if m2["comprobacion"]:
+                filas, m = alt, {**m2, "interpretacion": "alternativa"}
     m["filas_plan"] = filas
     return m
 

@@ -218,3 +218,18 @@ def test_tabla_sin_creditos_y_crd_y_erratas():
     p = {x["nombre"]: x for x in plan([sin, crd])}
     assert p["Sociología"]["tipo"] == "basica" and p["Sociología"]["creditos"] is None
     assert p["Historia"]["creditos"] == 6
+
+
+def test_lecturas_que_quitan_lo_que_sobra_o_ponen_lo_que_falta():
+    from motor.grados.boe_grados import medir_plan
+    dist = _t([["Tipo de materia", "Créditos"], ["Formación básica.", "12"], ["Obligatorias.", "12"],
+               ["Optativas.", "6"], ["Total.", "30"]])
+    plan_ = _t([["Asignatura", "Créditos", "Carácter"], ["A.", "6", "FB"], ["B.", "6", "FB"], ["C.", "6", "OB"],
+                ["D.", "6", "OB"]])
+    itinerario = _t([["Itinerario", "Asignatura", "Créditos", "Carácter"], ["Mención X", "E.", "6", "OB"]])
+    m = medir_plan({"tablas": [dist, plan_, itinerario], "texto": ""})
+    assert m["comprobacion"] == "completo" and m["interpretacion"] == "alternativa"
+    sin = _t([["Asignatura", "Créditos"], ["F.", "6"], ["G.", "6"]])
+    fb = _t([["Asignatura", "Créditos", "Carácter"], ["A.", "6", "FB"], ["B.", "6", "FB"]])
+    m = medir_plan({"tablas": [dist, fb, sin], "texto": ""})
+    assert m["comprobacion"] and {x["nombre"]: x["tipo"] for x in m["filas_plan"]}["F"] == "obligatoria"
