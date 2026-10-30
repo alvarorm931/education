@@ -252,11 +252,15 @@ def distribucion_creditos(tablas: list[dict]) -> dict | None:
             if valor is None:
                 continue
             con_cifra += 1
+            # «F | Formación Básica | 60»: el código en la primera columna y su nombre en la segunda
+            con_codigo = bool(re.fullmatch(r"\s*[A-ZÑ]{1,4}\.?\s*", f[0] or "")) and len(f) > 2
+            if con_codigo:
+                etiqueta = sin_acentos_min(f[1]).strip(" .")
             if RE_TOTAL_DIST.match(etiqueta):
                 res.setdefault("total", valor)
                 con_tipo += 1
                 continue
-            tipo = tipo_caracter(f[0])
+            tipo = tipo_caracter(f[1] if con_codigo else f[0])
             con_tipo += bool(tipo)
             if tipo and CLAVE_DIST[tipo] not in res:
                 res[CLAVE_DIST[tipo]] = valor
@@ -455,7 +459,34 @@ def _basicas_por_ambito(tablas: list[dict]) -> set[str]:
     return salida
 
 
-def plan(tablas: list[dict], dist: dict | None = None) -> list[dict]:
+RE_LEYENDA = re.compile(r"(?<![\w/])([A-ZÑ]{1,4}(?:\s?/\s?[A-ZÑ]{1,4})?)\s*[:=]\s*"
+                        r"([A-Za-zÁÉÍÓÚÜÑáéíóúüñ][A-Za-zÁÉÍÓÚÜÑáéíóúüñ .]{2,60}?)(?=\s*[,;.)]|\s+[A-ZÑ]{1,4}\s*[:=]|$)")
+
+
+def leyenda(doc: dict) -> dict[str, str]:
+    """Códigos de carácter que define el propio plan: «FB: Formación Básica, O: Obligatoria, P: Optativa, TF: Trabajo
+    Fin de Grado» → {"fb": "basica", "o": "obligatoria", "p": "optativa", "tf": "tfg"}. Solo los que el texto o las
+    tablas definen; un código definido de dos formas distintas no se usa."""
+    trozos = [doc.get("texto") or ""] + [c for t in doc.get("tablas") or [] if not t.get("datos_personales")
+                                          for f in (t.get("contenido") or []) for c in f if ":" in (c or "") or "=" in (c or "")]
+    vistos: dict[str, set] = {}
+    # tablas que definen los códigos en filas: «F | Formación Básica | 60»
+    for t in doc.get("tablas") or []:
+        for f in (t.get("contenido") or []):
+            if len(f) >= 2 and re.fullmatch(r"\s*[A-ZÑ]{1,4}\.?\s*", f[0] or ""):
+                tipo = tipo_caracter(f[1]) or tipo_de_rotulo(f[1])
+                if tipo and len(f[1] or "") > 4:
+                    vistos.setdefault(f[0].strip(" .").lower(), set()).add(tipo)
+    for trozo in trozos:
+        for m in RE_LEYENDA.finditer(trozo):
+            codigo = re.sub(r"\s", "", m.group(1)).lower()
+            tipo = tipo_caracter(m.group(2)) or tipo_de_rotulo(m.group(2))
+            if tipo:
+                vistos.setdefault(codigo, set()).add(tipo)
+    return {c: next(iter(t)) for c, t in vistos.items() if len(t) == 1}
+
+
+def plan(tablas: list[dict], dist: dict | None = None, codigos: dict[str, str] | None = None) -> list[dict]:
     """Filas de asignatura o materia del plan, con carácter, créditos, curso y semestre cuando vienen.
 
     Un plan suele repetir asignaturas en varias tablas (la de formación básica por rama y la del plan completo):
@@ -514,9 +545,11 @@ def plan(tablas: list[dict], dist: dict | None = None) -> list[dict]:
                 "caracter": caracter,
                 # el tipo: su columna; si no, la fila separadora, el rótulo de la tabla o el nombre del módulo
                 # («Módulo 1: Formación Básica Común»)
-                "tipo": tipo_caracter(caracter) or estado["tipo"] or tipo_tabla or tipo_de_rotulo(modulo or estado["modulo"]),
-                "tipo_por_rotulo": not tipo_caracter(caracter) and bool(estado["tipo"] or tipo_tabla
-                                                                         or tipo_de_rotulo(modulo or estado["modulo"])),
+                "tipo": tipo_caracter(caracter) or (codigos or {}).get(re.sub(r"\s", "", (caracter or "").lower()))
+                or estado["tipo"] or tipo_tabla or tipo_de_rotulo(modulo or estado["modulo"]),
+                "tipo_por_rotulo": not tipo_caracter(caracter)
+                and not (codigos or {}).get(re.sub(r"\s", "", (caracter or "").lower()))
+                and bool(estado["tipo"] or tipo_tabla or tipo_de_rotulo(modulo or estado["modulo"])),
                 "creditos": _num(f[cols["creditos"]]) if "creditos" in cols else None,  # hay planes sin ECTS por asignatura
                 "curso": curso,
                 "semestre": semestre,
@@ -644,7 +677,7 @@ def medir_plan(doc: dict) -> dict:
     nombre («Prácticas externas», «Trabajo fin de grado» sin columna de carácter) impiden cuadrar y sin ellos
     cuadra, se quitan: unas prácticas pueden ser optativas. «filas_plan» lleva las filas con que se midió."""
     dist = distribucion_creditos(doc.get("tablas", [])) or distribucion_de_texto(doc.get("texto", ""))
-    filas = plan(doc.get("tablas", []), dist)
+    filas = plan(doc.get("tablas", []), dist, leyenda(doc))
     m = _medir(filas, dist, doc)
     if not m["comprobacion"] and any(x["nivel"] == "asignatura" for x in filas) \
             and any(x["nivel"] != "asignatura" for x in filas):

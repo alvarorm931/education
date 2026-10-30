@@ -251,3 +251,17 @@ def test_plan_por_materias_con_optativas_por_asignaturas_se_comprueba_por_materi
     optativas = _t([["Asignatura", "Créditos", "Carácter"], ["Astronomía.", "6", "OP"]])
     m = medir_plan({"tablas": [dist, materias, optativas], "texto": ""})
     assert m["comprobacion"] == "completo" and m["nivel_comprobado"] == "materia"
+
+
+def test_leyenda_de_codigos_del_propio_plan():
+    from motor.grados.boe_grados import distribucion_creditos, leyenda, plan
+    doc = {"texto": "FB: Formación Básica, O: Obligatoria, OE: Obligatoria de la Especialidad, P: Optativa, "
+                    "TF: Trabajo Fin de Grado, Cuat: Cuatrimestre.", "tablas": []}
+    assert leyenda(doc) == {"fb": "basica", "o": "obligatoria", "oe": "obligatoria", "p": "optativa", "tf": "tfg"}
+    dist = _t([["Tipo de materia", "Créditos"], ["F", "Formación Básica", "60"], ["O", "Obligatorias", "144"],
+               ["P", "Optativas", "24"], ["T", "Trabajo fin de grado", "12"], ["", "Total", "240"]])
+    assert distribucion_creditos([dist])["formacion_basica"] == 60
+    codigos = leyenda({"texto": "", "tablas": [dist]})
+    assert codigos["p"] == "optativa" and codigos["f"] == "basica"
+    asig = _t([["Asignatura", "Tipo", "Créditos"], ["Economía.", "P", "6"]])
+    assert plan([asig], None, codigos)[0]["tipo"] == "optativa"
