@@ -169,6 +169,9 @@ for c in $CONECTORES; do
       # Los boletines que sigan en la portada (los 8 últimos, unas tres semanas)
       ejecutar motor.provinciales.bopzamora --salida "$S"
       "$G" "BOP Zamora: boletines recientes"
+      # Histórico por la lista completa («BOP Total», 20 boletines por página) hasta 2022
+      ejecutar motor.provinciales.bopzamora --historico --salida "$S" --max-minutos "$M"
+      "$G" "BOP Zamora: histórico"
       ;;
     boptoledo)
       # robots.txt cierra todo el servidor: se lee como boletín oficial (motor/http.py)

@@ -25,3 +25,13 @@ def test_indice():
             "organismo": "Ayuntamiento de Toro", "procedencia": "AYUNTAMIENTOS", "id": "x"}
     sel = z.seleccionar([fila])
     assert sel[0]["convocante"]["nombre"] == "Toro" and sel[0]["convocante"]["provincia"] == "Zamora"
+
+
+def test_lista_total():
+    from motor.provinciales import bopzamora as z
+    h = (FIX / "bopzamora_total_p1.html").read_text(encoding="utf-8")
+    b = z.boletines_portada(h)
+    assert len(b) == 20
+    assert (b[0]["numero"], b[0]["fecha"], b[-1]["numero"], b[-1]["fecha"]) == (127, "2026-10-28", 108, "2026-09-16")
+    assert b[0]["url"].startswith("https://www.diputaciondezamora.es/opencms/servicios/BOP/indice-bop/")
+    assert z.url_lista(3).endswith("/opencms/servicios/BOP/bop-total/index.html?reloaded&sort=date_desc&page=3")
