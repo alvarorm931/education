@@ -53,7 +53,8 @@ def convocante(c: Canal, entidad: str | None, titulo: str = "") -> dict | None:
     if not entidad:
         return None
     if normalizar(entidad).startswith(("ayuntamiento", "diputacion", "mancomunidad", "consorcio", "junta vecinal",
-                                       "entidad local", "comunidad de villa", "concejo")):
+                                       "entidad local", "comunidad de villa", "concejo", "concello", "deputacion",
+                                       "ajuntament", "consell comarcal")):
         conv = convocante_de_organismo(entidad)
     else:
         conv = convocante_de_organismo(f"AYUNTAMIENTO DE {entidad}")
@@ -68,7 +69,7 @@ def convocante(c: Canal, entidad: str | None, titulo: str = "") -> dict | None:
 
 def es_local(entidad: str | None) -> bool:
     e = normalizar(entidad or "")
-    return not e.startswith(("junta de castilla", "junta c. y l", "junta cyl", "junta de extremadura", "ministerio",
+    return not e.startswith(("junta de castilla", "junta c. y l", "junta cyl", "junta de extremadura", "xunta", "ministerio",
                              "subdelegacion", "delegacion del gobierno", "confederacion", "juzgado", "tribunal",
                              "tesoreria general", "agencia tributaria", "seguridad social", "jefatura", "demarcacion"))
 

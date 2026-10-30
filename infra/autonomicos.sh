@@ -219,6 +219,11 @@ for c in $CONECTORES; do
       ejecutar motor.provinciales.bopbizkaia --desde 2022-01-01 --salida "$S" --max-minutos "$M"
       "$G" "BOB Bizkaia: boletines"
       ;;
+    boplugo)
+      # Canal RSS: el boletín del día (el histórico empieza al conectarlo)
+      ejecutar motor.provinciales.boplugo --salida "$S"
+      "$G" "BOP Lugo: boletín del día"
+      ;;
     bopb)
       # El del día por el canal de datos abiertos; los anteriores por el listado por días y los textos en PDF (cerrados
       # en robots.txt; se leen como boletín oficial, motor/http.py)

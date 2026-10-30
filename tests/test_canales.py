@@ -33,3 +33,20 @@ def test_badajoz_texto():
     t = bopbadajoz.texto_disposicion((FIX / "bopbadajoz_anuncio_165039.html").read_bytes())
     assert t["titulo"].startswith("Lista definitiva de aspirantes admitidos de la convocatoria de una plaza de Encargado")
     assert "decreto de Alcaldía número 171/2026" in t["texto"]
+
+
+def test_lugo():
+    from motor.provinciales import boplugo
+    s = boplugo.leer((FIX / "boplugo_rss_20261029.xml").read_text(encoding="utf-8"))
+    assert (s["fecha"], s["numero"], len(s["anuncios"])) == ("2026-10-29", "248", 11)
+    a = s["anuncios"][4]
+    assert (a["entidad"], a["numero_anuncio"], a["pagina"]) == ("CONCELLO DE MONFORTE DE LEMOS", "2026-2962", 5)
+    assert a["titulo"] == "APROBACIÓN PROVISIONAL DA MODIFICACIÓN DAS ORDENANZAS FISCAIS E NON FISCAIS 2027"
+    assert s["anuncios"][9]["entidad"] == "CONCELLO DE O VALADOURO"  # «O <strong>VALADOURO</strong>»
+    assert s["anuncios"][0]["entidad"] == "Deputación Provincial de Lugo"
+    assert boplugo.seleccionar(_filas(boplugo, s)) == []  # ese día no hubo anuncios de empleo
+    filas = [{"id": "x", "entidad": "CONCELLO DE SARRIA", "titulo": "BASES E CONVOCATORIA PARA A PROVISIÓN DUNHA PRAZA "
+              "DE AUXILIAR ADMINISTRATIVO"}]
+    sel = boplugo.seleccionar(filas)
+    assert (sel[0]["convocante"]["nombre"], sel[0]["convocante"]["provincia"], sel[0]["tipo_acto"]) == (
+        "Sarria", "Lugo", "convocatoria")

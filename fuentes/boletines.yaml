@@ -314,7 +314,8 @@ provinciales:
     url: http://www.deputacionlugo.gal/boletin-oficial-da-provincia-de-lugo
     acceso_desde_github: "ok"
     datos_estructurados: "RSS: /boletin-oficial-da-provincia-de-lugo/bop/feed.xml"
-    estado: sin_conector
+    estado: conector_en_pruebas
+    conector: motor/provinciales/boplugo.py
   - provincia: Málaga
     url: http://www.bopmalaga.es/
     acceso_desde_github: "http_403"
