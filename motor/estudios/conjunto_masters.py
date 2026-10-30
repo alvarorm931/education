@@ -256,7 +256,8 @@ def es_asignatura_real(n: str) -> bool:
 
 
 def asignaturas_reales(nombres: list[str]) -> int:
-    return sum(1 for n in nombres if es_asignatura_real(n))
+    """Asignaturas de verdad distintas (la misma fila repetida en la tabla del plan cuenta una vez)."""
+    return len({" ".join(n.lower().split()) for n in nombres if es_asignatura_real(n)})
 
 
 def _nombre_fila(x) -> str:

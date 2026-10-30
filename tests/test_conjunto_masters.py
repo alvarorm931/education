@@ -422,3 +422,9 @@ def test_la_tabla_de_la_universidad_manda_sobre_la_pagina():
                                       nota="tabla de precios de la universidad")}
     c = cm.unir({"web": web, "tabla": tabla, "calculado": {}})
     assert c["precio_total"]["valor"] == 27700.2 and c["precio_total"]["alternativas"][0]["valor"] == 3000
+
+
+def test_asignaturas_repetidas_cuentan_una_vez():
+    fila = ["Prácticas/Proyecto de Investigación", 6]
+    assert cm.asignaturas_validas([["Conceptos Básicos Cuánticos", 6]] + [fila] * 5) is None
+    assert cm.asignaturas_validas([["Álgebra", 6], ["Análisis", 6], ["Geometría", 6]]) is not None
