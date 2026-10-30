@@ -288,3 +288,9 @@ def test_tabla_sin_cierres_de_celda():
     html = ("<table><tr><th>GRADO<th>CRÉDITOS<th>MATRÍCULA<th>8 PLAZOS ENSEÑANZA<th>TOTAL"
             "<tr><td><p>Psicología</p><td>60<td><div>2.094,00</div><td>1.047,00<td>10.470,00</table>")
     assert tg.lineas_html(html)[1] == "Psicología | 60 | 2.094,00 | 1.047,00 | 10.470,00"
+
+
+def test_cabecera_entre_el_grado_y_sus_filas():
+    paginas = ["Grado en Psicología\nConcepto | Importe\nReserva de plaza | 500 €\nDocencia anual | 9.500 €"]
+    r = tg.extraer(paginas, G)
+    assert {i["valor"] for i in r["grados"]["1"]} == {500, 9500}

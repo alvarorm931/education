@@ -390,6 +390,7 @@ def extraer(paginas: list[str], grados: list[dict], de_la_pagina: str | None = N
     con_importe, muestra, previa, rotulo = 0, [], "", None
     curso, cabecera = None, None
     bloque, ultimo = 0, None
+    sin_grado, formas_sin_grado = 0, []
     # tablas cuyas celdas dan el importe sin «€» («1.278,00»): valen si la página habla de euros y la tabla tiene
     # cabecera con rótulos de importe (matrícula, plazos, total…)
     euros = bool(re.search(r"€|\beuros?\b", " ".join(paginas), re.I))
@@ -409,12 +410,15 @@ def extraer(paginas: list[str], grados: list[dict], de_la_pagina: str | None = N
             hallados = list(IMPORTE.finditer(linea))
             celdas = [c.strip() for c in linea.split(" | ")]
             if not hallados:
-                if len(celdas) >= 2 and any(tipo_rotulo(c) for c in celdas):
+                es_cabecera = len(celdas) >= 2 and any(tipo_rotulo(c) for c in celdas)
+                if es_cabecera:
                     cabecera = celdas
                 if tipo_rotulo(linea) and len(linea) < 120:
                     rotulo = tipo_rotulo(linea)
-                # el nombre de la línea de encima: no vale una celda de solo unidades («60 ECTS», «240 créditos»)
-                if re.search(r"[A-Za-zÁÉÍÓÚáéíóú]{4}", SOLO_UNIDADES.sub(" ", linea)):
+                # el nombre de la línea de encima: no vale una celda de solo unidades («60 ECTS», «240 créditos») ni la
+                # cabecera de la tabla («Concepto | Importe») que va entre el nombre del grado y sus filas
+                if re.search(r"[A-Za-zÁÉÍÓÚáéíóú]{4}", SOLO_UNIDADES.sub(" ", linea)) and \
+                        not ((es_cabecera or " | " in linea) and not grado_de(linea, grados)):
                     previa = linea
                 continue
             con_importe += 1
@@ -437,6 +441,9 @@ def extraer(paginas: list[str], grados: list[dict], de_la_pagina: str | None = N
             if MUESTRA and len(muestra) < 60 and re.search(r"grado|doble|bachelor|degree", linea + " " + previa, re.I):
                 muestra.append(linea[:MAX_LINEA_MUESTRA])  # solo en pruebas locales: en sondas no va texto ajeno
             if not codigo:
+                sin_grado += 1
+                if len(formas_sin_grado) < 3:  # sin texto: para ver por qué no se une con ningún grado
+                    formas_sin_grado.append({"linea": forma(linea)[:80], "previa": forma(previa)[:80]})
                 continue
             for k, m in enumerate(hallados):
                 valor = valor_importe(m)
@@ -467,7 +474,8 @@ def extraer(paginas: list[str], grados: list[dict], de_la_pagina: str | None = N
     # escrito antes de sus importes; si no hay, el primero del documento
     if cursos_de_importes:
         curso = cursos_de_importes.most_common(1)[0][0]
-    return {"curso_documento": curso, "lineas_con_importe": con_importe, "grados": dict(precios), "muestra": muestra}
+    return {"curso_documento": curso, "lineas_con_importe": con_importe, "grados": dict(precios), "muestra": muestra,
+            **({"lineas_sin_grado": sin_grado, "formas_sin_grado": formas_sin_grado} if sin_grado else {})}
 
 
 def pedir_con_motivo(d, url: str):
