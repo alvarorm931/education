@@ -251,6 +251,7 @@ def reprocesar(raiz: Path) -> int:
     """Relee, desde su PDF original en el almacén (sin pedirlo a la fuente), los boletines anteriores ya cargados
     con una versión vieja del lector."""
     from motor.almacen import Almacen, clave_original
+    from motor.archivo import almacen_por_defecto
     from motor.autonomicos.comun import leer_jsonl
 
     almacen, hechos, fallos = None, 0, 0
@@ -262,7 +263,7 @@ def reprocesar(raiz: Path) -> int:
         indice = raiz / "archivo" / "indices" / cs.FUENTE / f"{d:%Y-%m}.jsonl"
         reg = next((x for x in (leer_jsonl(indice) if indice.exists() else []) if x.get("sha256") == inf["sha256"]), {})
         try:
-            almacen = almacen or Almacen()
+            almacen = almacen or almacen_por_defecto() or Almacen()  # en GitHub, credenciales OIDC
             pdf = almacen.leer(reg.get("clave") or clave_original(cs.FUENTE, d, inf["sha256"], "pdf"))
             b = {"fecha": inf["fecha"], "numero": inf["numero"], "url_pdf": reg.get("url") or inf.get("url_pdf")}
             nuevo = leer_pdf(b, pdf, {"sha256": inf["sha256"], "capturado": reg.get("capturado")}, raiz)

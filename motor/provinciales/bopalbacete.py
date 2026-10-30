@@ -190,6 +190,7 @@ def reparar_boletin(argv: list[str] | None = None) -> int:
     from pathlib import Path
 
     from motor.almacen import Almacen, clave_original
+    from motor.archivo import almacen_por_defecto
     from motor.autonomicos.comun import escribir_jsonl, leer_jsonl
 
     p = argparse.ArgumentParser()
@@ -206,7 +207,7 @@ def reparar_boletin(argv: list[str] | None = None) -> int:
         if inf.get("resultado") != "ok" or not inf.get("sha256") or all(x.get("url_pdf_boletin") for x in filas[0]):
             continue
         try:
-            almacen = almacen or Almacen()
+            almacen = almacen or almacen_por_defecto() or Almacen()  # en GitHub, credenciales OIDC
             h = almacen.leer(clave_original(FUENTE, date.fromisoformat(inf["fecha"]), inf["sha256"], "html"))
         except Exception as e:  # noqa: BLE001 - sin almacén (o sin ese original) se deja para otra ejecución
             fallos += 1
