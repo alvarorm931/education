@@ -1,0 +1,146 @@
+{
+ "retomado": 1,
+ "minutos_lote": 0.0,
+ "extraidas": 1496,
+ "respuestas_con_pensamiento": 0,
+ "no_es_programa": 307,
+ "json_ilegible": 1,
+ "id": "msgbatch_01Kvxa61ULrQxqMFdgaKZPxG",
+ "uso_tokens": {
+  "input_tokens": 11295742,
+  "output_tokens": 1597115,
+  "cache_creation_input_tokens": 946,
+  "cache_read_input_tokens": 1414270
+ },
+ "coste_usd": 0.971196,
+ "coste_usd_por_pagina": 0.000649,
+ "tokens_entrada_por_pagina": 7551,
+ "tokens_salida_por_pagina": 1068,
+ "hechos_aceptados": 18195,
+ "hechos_revision": 1980,
+ "motivos_revision": {
+  "valor_no_en_cita": 1316,
+  "cita_no_literal": 540,
+  "valor_no_numerico": 89,
+  "precio_total_demasiado_bajo": 18,
+  "moneda_no_euro_o_fuera_de_rango": 17
+ },
+ "niveles_cita": {
+  "literal": 19592,
+  "ninguno": 540,
+  "sin_signos": 43
+ },
+ "almacen": {
+  "ya_estaban": 1,
+  "nuevos": 1,
+  "claves_privadas": {
+   "resultados": "extraccion-masters/2026/10/30/e550fe1c0f752b157aee75384bb61e31459544c673844351b49f1b9be69dcdd4.resultados.jsonl.gz",
+   "hechos_con_cita": "extraccion-masters/2026/10/30/6a21e6cfd1253ac499ec08a5852cca37dd826af0a22965ca974ef4a215fb2efe.hechos.jsonl.gz"
+  }
+ },
+ "por_campo": {
+  "nombre": {
+   "aceptado": 1181,
+   "revision": 7
+  },
+  "tipo_titulo": {
+   "aceptado": 574,
+   "revision": 597
+  },
+  "universidad_que_expide": {
+   "aceptado": 736,
+   "revision": 16
+  },
+  "centro_que_imparte": {
+   "aceptado": 439,
+   "revision": 30
+  },
+  "creditos_ects": {
+   "aceptado": 150,
+   "revision": 4
+  },
+  "duracion": {
+   "aceptado": 1050,
+   "revision": 35
+  },
+  "modalidad": {
+   "aceptado": 1012,
+   "revision": 158
+  },
+  "sedes": {
+   "aceptado": 140,
+   "revision": 9
+  },
+  "idioma": {
+   "aceptado": 826,
+   "revision": 109
+  },
+  "fecha_inicio": {
+   "aceptado": 901,
+   "revision": 30
+  },
+  "plazo_admision": {
+   "aceptado": 810,
+   "revision": 1
+  },
+  "horario": {
+   "aceptado": 840,
+   "revision": 9
+  },
+  "plazas": {
+   "aceptado": 753,
+   "revision": 18
+  },
+  "precio_total": {
+   "revision": 323,
+   "aceptado": 735
+  },
+  "precio_credito": {
+   "revision": 2
+  },
+  "reserva_matricula": {
+   "revision": 202,
+   "aceptado": 492
+  },
+  "descuentos_becas": {
+   "aceptado": 714,
+   "revision": 164
+  },
+  "requisitos_acceso": {
+   "aceptado": 966,
+   "revision": 3
+  },
+  "proceso_admision": {
+   "aceptado": 638,
+   "revision": 1
+  },
+  "asignaturas": {
+   "aceptado": 791,
+   "revision": 1
+  },
+  "practicas": {
+   "aceptado": 112,
+   "revision": 47
+  },
+  "tfm": {
+   "aceptado": 757,
+   "revision": 39
+  },
+  "metodologia": {
+   "aceptado": 1115,
+   "revision": 14
+  },
+  "evaluacion": {
+   "aceptado": 939,
+   "revision": 7
+  },
+  "habilita_profesion": {
+   "aceptado": 527,
+   "revision": 136
+  },
+  "salidas": {
+   "aceptado": 997,
+   "revision": 18
+  }
+ }
+}

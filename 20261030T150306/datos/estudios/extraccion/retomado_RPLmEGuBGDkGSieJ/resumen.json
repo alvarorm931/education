@@ -1,0 +1,106 @@
+{
+ "retomado": 1,
+ "minutos_lote": 0.0,
+ "extraidas": 6,
+ "respuestas_con_pensamiento": 0,
+ "id": "msgbatch_01PsLvoZRPLmEGuBGDkGSieJ",
+ "uso_tokens": {
+  "input_tokens": 77446,
+  "output_tokens": 7754,
+  "cache_creation_input_tokens": 946,
+  "cache_read_input_tokens": 4730
+ },
+ "coste_usd": 0.005894,
+ "coste_usd_por_pagina": 0.000982,
+ "tokens_entrada_por_pagina": 12908,
+ "tokens_salida_por_pagina": 1292,
+ "hechos_aceptados": 85,
+ "hechos_revision": 13,
+ "motivos_revision": {
+  "valor_no_en_cita": 9,
+  "cita_no_literal": 3,
+  "valor_no_numerico": 1
+ },
+ "niveles_cita": {
+  "literal": 95,
+  "ninguno": 3
+ },
+ "almacen": {
+  "ya_estaban": 1,
+  "nuevos": 1,
+  "claves_privadas": {
+   "resultados": "extraccion-masters/2026/10/30/664178df07a8ebbc943765b25c882e4ce7f14ba697b27abe91cf8e48ed27a8f6.resultados.jsonl.gz",
+   "hechos_con_cita": "extraccion-masters/2026/10/30/f684115ed963c3f934ea8687c437ef2c4ecf6bd1b995b47a9817d836ea7baedb.hechos.jsonl.gz"
+  }
+ },
+ "por_campo": {
+  "nombre": {
+   "aceptado": 6
+  },
+  "tipo_titulo": {
+   "revision": 3,
+   "aceptado": 3
+  },
+  "universidad_que_expide": {
+   "aceptado": 6
+  },
+  "centro_que_imparte": {},
+  "creditos_ects": {
+   "aceptado": 6
+  },
+  "duracion": {
+   "aceptado": 6
+  },
+  "modalidad": {
+   "aceptado": 6
+  },
+  "sedes": {},
+  "idioma": {
+   "revision": 5
+  },
+  "fecha_inicio": {
+   "aceptado": 6
+  },
+  "plazo_admision": {},
+  "horario": {},
+  "plazas": {},
+  "precio_total": {
+   "aceptado": 6
+  },
+  "precio_credito": {},
+  "reserva_matricula": {
+   "revision": 1
+  },
+  "descuentos_becas": {},
+  "requisitos_acceso": {
+   "aceptado": 6
+  },
+  "proceso_admision": {
+   "aceptado": 6
+  },
+  "asignaturas": {
+   "aceptado": 6
+  },
+  "practicas": {
+   "revision": 1,
+   "aceptado": 1
+  },
+  "tfm": {
+   "aceptado": 5,
+   "revision": 1
+  },
+  "metodologia": {
+   "aceptado": 6
+  },
+  "evaluacion": {
+   "aceptado": 6
+  },
+  "habilita_profesion": {
+   "revision": 2,
+   "aceptado": 1
+  },
+  "salidas": {
+   "aceptado": 3
+  }
+ }
+}
