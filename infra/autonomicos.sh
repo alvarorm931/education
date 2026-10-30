@@ -365,6 +365,12 @@ for c in $CONECTORES; do
       ejecutar motor.provinciales.bopleon --textos --salida "$S" --max-minutos "$M"
       "$G" "BOP León: textos"
       ;;
+    bocce)
+      # PDF de cada boletín: sumario y textos del propio PDF (solo responde desde España)
+      ejecutar motor.autonomicos.bocce --salida "$S"
+      ejecutar motor.autonomicos.bocce --desde 2022-01 --salida "$S" --max-minutos "$M"
+      "$G" "BOCCE: boletines y textos"
+      ;;
     bopb)
       # El del día por el canal de datos abiertos; los anteriores por el listado por días y los textos en PDF (cerrados
       # en robots.txt; se leen como boletín oficial, motor/http.py)

@@ -87,7 +87,7 @@ PROVINCIAS: dict[str, tuple[str, str, tuple[str, ...]]] = {
 # Fuente autonómica -> comunidad (para resolver municipios que el boletín no acompaña de provincia)
 COMUNIDAD_DE_FUENTE = {"BOJA": "01", "BOA": "02", "BOIB": "04", "BOC": "05", "BOCYL": "07", "DOCM": "08",
                        "DOGC": "09", "DOGV": "10", "DOE": "11", "DOG": "12", "BOCM": "13", "BORM": "14",
-                       "BOPV": "16", "BOME": "19"}
+                       "BOPV": "16", "BOCCE": "18", "BOME": "19"}
 ARTICULOS = {"el", "la", "los", "las", "l'", "els", "les", "o", "a", "os", "as", "es", "sa", "ses", "s'"}
 
 

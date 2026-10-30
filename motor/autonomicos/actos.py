@@ -40,6 +40,8 @@ FUENTES: dict[str, tuple[str, tuple[str, ...]]] = {
     "docm": ("DOCM", ("Diario Oficial de Castilla-La Mancha",)),
     "bome": ("BOME", ("Boletín Oficial de la Ciudad de Melilla", "Boletín Oficial de la Ciudad Autónoma de Melilla",
                       "BOME")),
+    "bocce": ("BOCCE", ("Boletín Oficial de la Ciudad de Ceuta", "Boletín Oficial de la Ciudad Autónoma de Ceuta",
+                        "BOCCE")),
     "bopv": ("BOPV", ("Boletín Oficial del País Vasco", "Boletín Oficial del Pais Vasco")),
     "boib": ("BOIB", ("Butlletí Oficial de les Illes Balears", "Boletín Oficial de las Illes Balears",
                       "Boletín Oficial de las Islas Baleares")),

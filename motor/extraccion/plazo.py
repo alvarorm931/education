@@ -70,7 +70,8 @@ SIGLAS = {
     "BOA": "Boletín Oficial de Aragón", "DOE": "Diario Oficial de Extremadura",
     "BORM": "Boletín Oficial de la Región de Murcia", "BOPV": "Boletín Oficial del País Vasco",
     "BOIB": "Butlletí Oficial de les Illes Balears", "DOCM": "Diario Oficial de Castilla-La Mancha",
-    "BOME": "Boletín Oficial de la Ciudad de Melilla", "BOPB": "Butlletí Oficial de la Província de Barcelona",
+    "BOME": "Boletín Oficial de la Ciudad de Melilla", "BOCCE": "Boletín Oficial de la Ciudad de Ceuta",
+    "BOPB": "Butlletí Oficial de la Província de Barcelona",
 }
 RE_SIGLAS = re.compile(r"\b(" + "|".join(sorted(SIGLAS, key=len, reverse=True)) + r")\b")
 RE_DESDE_PUBLICACION = re.compile(

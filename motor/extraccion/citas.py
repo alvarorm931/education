@@ -19,7 +19,7 @@ RE_CITA = re.compile(
     rf"Principado|del Pa[ií]s|de la Junta|de Castilla|de Arag[oó]n|de Canarias|de Cantabria|de Navarra|de La Rioja|"
     rf"de las Illes|de Bizkaia|de Gipuzkoa|del Territorio)[^,;:()«»\n]{{0,60}}?|Butllet[ií] Oficial[^,;:()«»\n]{{0,60}}?|"
     rf"Diari[oa]? Oficial[^,;:()«»\n]{{0,60}}?|{_SIGLAS})"
-    rf"[»\"”]?\s*,?\s*(?:(?:n[úu]m(?:ero)?\.?|n\.?\s?[º°o]\.?|nº|no\.)\s*(?P<numero>\d{{1,4}}))?\s*,?\s*"
+    rf"(?:\s+extraordinari[oa]|\s+extra)?[»\"”]?\s*,?\s*(?:(?:n[úu]m(?:ero)?\.?|n\.?\s?[º°o]\.?|nº|no\.)\s*(?P<numero>\d{{1,4}}))?\s*,?\s*"
     rf"(?:\(|de\s+(?:fecha\s+|data\s+)?|del\s+(?:d[ií]a\s+)?|del\s+|do\s+(?:d[ií]a\s+)?|el\s+d[ií]a\s+|,\s*)?"
     rf"(?P<fecha>\d{{1,2}}\s+(?:de\s+|d'|d’)?[a-záéíóúç]+\s+(?:de\s+|del\s+)?\d{{4}}|\d{{1,2}}[/.-]\d{{1,2}}[/.-]\d{{2,4}})",
     re.IGNORECASE)

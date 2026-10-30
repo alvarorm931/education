@@ -166,8 +166,11 @@ autonomicos:
     comunidad: Ceuta
     url: http://www.ceuta.es/ceuta/documentos/
     acceso_desde_github: "sin_respuesta_desde_github (timeout)"
-    nota: "Sondeo 30/10/2026 desde España: https://www.ceuta.es/ceuta/bocce responde; cada boletín es un PDF de jDownloads (categoría por año, /ceuta/component/jdownloads/viewcategory/1965-2026, y descarga BOCCE_6665_30-10-2026). Falta leer el sumario del PDF."
-    estado: sin_conector
+    acceso_desde_espana: "ok (30/10/2026)"
+    datos_estructurados: "jDownloads: año /ceuta/component/jdownloads/viewcategory/1965-2026, mes /viewcategory/1982-octubre, boletín /viewdownload/1982-octubre/23305-bocce-6665-30-10-2026 y PDF /finish/…; el PDF empieza por el sumario («101.- Título… Pág.1367») y cada anuncio del cuerpo por su número"
+    nota: "Solo responde desde España (servidor propio). Los textos salen del propio PDF del boletín; de las listas de personas solo el recuento y las citas"
+    estado: conector_en_pruebas
+    conector: motor/autonomicos/bocce.py
   - id: BOME
     nombre: Boletín Oficial de la Ciudad Autónoma de Melilla
     comunidad: Melilla
