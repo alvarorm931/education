@@ -1,8 +1,8 @@
-# Vigilancia 30/10 13:47 (Madrid)
+# Vigilancia 30/10 14:12 (Madrid)
 
-- Ejecuciones revisadas (últimas 6 h): 144
-- Fallos: 2; pendientes: 0; relanzados ahora: 0
-- Colas de más de 30 minutos: 4
+- Ejecuciones revisadas (últimas 6 h): 164
+- Fallos: 1; pendientes: 0; relanzados ahora: 0
+- Colas de más de 30 minutos: 3
 - Flujos programados parados: ninguno
 - Almacén S3: ok
 - Programaciones que GitHub no disparó y se lanzaron a mano: ninguna
@@ -21,19 +21,6 @@ https://github.com/alvarorm931/education/actions/runs/41019168283 (intento 2, wo
       hint: See the 'Note about fast-forwards' in 'git push --help' for details.
       ##[error]Process completed with exit code 1.
 
-## Motor de datos · 30/10 08:07 · otra ejecución en curso: https://github.com/alvarorm931/education/actions/runs/41055944787
-https://github.com/alvarorm931/education/actions/runs/41018014171 (intento 1, workflow_dispatch, 54bb117, pasajero: False)
-- motor · pasos: Instalar y probar · ejecutor: GitHub Actions 1000000611
-      E       KeyError: 'solo_huella'
-      
-      tests/test_privacidad.py:33: KeyError
-      =========================== short test summary info ============================
-      FAILED tests/test_boe.py::test_archivo_guarda_una_vez_y_registra - AttributeError: 'NoneType' object has no attribute 'endswith'
-      FAILED tests/test_privacidad.py::test_originales_solo_huella - KeyError: 'solo_huella'
-      2 failed, 586 passed, 1 skipped in 50.77s
-      ##[error]Process completed with exit code 1.
-
-- En cola 34 min: Prueba de conector https://github.com/alvarorm931/education/actions/runs/41053708492
-- En cola 35 min: Sonda de fuentes https://github.com/alvarorm931/education/actions/runs/41053644182
-- En cola 37 min: Boletines autonómicos https://github.com/alvarorm931/education/actions/runs/41053362726
-- En cola 316 min: Boletines autonómicos https://github.com/alvarorm931/education/actions/runs/41020598739
+- En cola 35 min: Grados por tramos https://github.com/alvarorm931/education/actions/runs/41056747000
+- En cola 54 min: Estudios por tramos https://github.com/alvarorm931/education/actions/runs/41054418328
+- En cola 77 min: Boletines autonómicos https://github.com/alvarorm931/education/actions/runs/41051537477
