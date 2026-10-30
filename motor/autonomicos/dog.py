@@ -10,7 +10,7 @@ Formato verificado el 29/10/2026 desde GitHub:
   - Empleo público: «IV. Oposiciones y concursos» (todo); «II. Autoridades y personal» (nombramientos de quienes
     superan un proceso); «VI. Anuncios» b) Administración local y c) Otros anuncios, seleccionados por el título.
   - Como N no se conoce de antemano, se recorre cada año en orden: tras el boletín N se busca N+1 (y N+2 por si
-    hubo un número extraordinario). Fines de semana sin petición. Si no aparece, ese día no hubo boletín.
+    hubo un número extraordinario). También sábados y domingos. Si no aparece, ese día no hubo boletín.
 
 Uso:
   python -m motor.autonomicos.dog --salida ruta/                                   # año en curso, lo que falte
@@ -271,19 +271,19 @@ def main(argv: list[str] | None = None) -> int:
             break
         ruta = _ruta(a.salida, "dias", d, "json")
         hecho = json.loads(ruta.read_text(encoding="utf-8")) if ruta.exists() else None
-        if hecho and hecho.get("resultado") in {"ok", "sin_boletin", "fin_de_semana"} and d < hoy:
+        # «fin_de_semana» ya no cuenta como hecho: esos días se piden (el DOG saca extraordinarios en sábado)
+        if hecho and hecho.get("resultado") in {"ok", "sin_boletin"} and d < hoy:
             if hecho.get("numero"):
                 siguiente = hecho["numero"] + 1
             d += timedelta(days=1)
             continue
-        if d.weekday() >= 5:
-            inf = {"fecha": d.isoformat(), "resultado": "fin_de_semana", "alertas": []}
-        else:
-            try:
-                inf = procesar_dia(d, siguiente, a.salida, archivo)
-            except ConnectionError as e:
-                inf = {"fecha": d.isoformat(), "resultado": "fuente_inaccesible", "alertas": [str(e)]}
-            time.sleep(a.pausa)
+        # También sábados y domingos: n.º 166 de 2025 el sábado 30/08 y n.º 83 de 2022 el sábado 30/04 (comprobado el
+        # 29/10/2026); un día sin boletín son dos 404.
+        try:
+            inf = procesar_dia(d, siguiente, a.salida, archivo)
+        except ConnectionError as e:
+            inf = {"fecha": d.isoformat(), "resultado": "fuente_inaccesible", "alertas": [str(e)]}
+        time.sleep(a.pausa)
         if inf.get("resultado") == "sin_boletin" and d >= hoy:
             break  # el de hoy puede no estar publicado aún: no se da por cerrado
         escribir_json(ruta, inf)
