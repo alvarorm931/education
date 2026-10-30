@@ -379,3 +379,26 @@ def test_plan_estudios_sin_de_errata_del_boe():
                 "titulo": "Resolución de 3 de marzo de 2010, de la Universidad de Alcalá, por la que se publica el plan "
                           "estudios de Graduado en Biología Sanitaria."}])
     assert a[0]["tipo"] == "plan" and a[0]["titulo_grado"] == "Graduado en Biología Sanitaria"
+
+
+def test_celda_combinada_en_medio_de_la_fila():
+    """«Asignatura | Carácter | ECTS | Temporalidad» con el carácter de varias filas en una sola celda: la fila
+    corta conserva su nombre y toma el carácter de la anterior (BOE-A-2021-7541, Ciencia Política, Salamanca)."""
+    from motor.grados.boe_grados import _encajar
+    cols = {"nombre": 0, "caracter": 1, "creditos": 2, "periodo": 3}
+    prev = ["Sistemas Políticos de América Latina.", "Op./ (Ob.Mención Ciencia Política)", "6", "Semestral."]
+    assert _encajar(["Política y gobierno de los EE.UU.", "4,5", "Semestral."], prev, 4, cols) == \
+        ["Política y gobierno de los EE.UU.", "Op./ (Ob.Mención Ciencia Política)", "4,5", "Semestral."]
+    cols2 = {"modulo": 0, "nombre": 1, "creditos": 2, "caracter": 3}
+    assert _encajar(["Cálculo", "6", "FB"], ["Módulo 1", "Álgebra", "6", "FB"], 4, cols2) == ["Módulo 1", "Cálculo", "6", "FB"]
+
+
+def test_taller_de_tfg_obligatorio_no_pasa_a_tfg_si_la_tabla_ya_esta_llena():
+    """«Taller de Trabajo Fin de Grado» (6, Obligatoria) junto al TFG de 6 con una tabla de créditos de TFG 6: el
+    taller se queda obligatoria (Nebrija, Publicidad, BOE-A-2025-24830)."""
+    from motor.grados import boe_grados as bg
+    tablas = [{"contenido": [["Asignatura", "Carácter", "ECTS"], ["Taller de Trabajo Fin de Grado.", "Obligatoria.", "6"],
+                              ["Trabajo Fin de Grado.", "Trabajo Fin de Grado.", "6"], ["Derecho", "Obligatoria.", "6"]]}]
+    filas = bg.plan(tablas, {"tfg": 6.0, "obligatorias": 12.0, "total": 18.0})
+    tipos = {f["nombre"]: f["tipo"] for f in filas}
+    assert tipos["Taller de Trabajo Fin de Grado"] == "obligatoria" and tipos["Trabajo Fin de Grado"] == "tfg"

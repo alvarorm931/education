@@ -116,3 +116,18 @@ def test_objetivos_por_centros_propios_de_privadas_y_adscritos_de_publicas(tmp_p
     assert set(obj) == {"https://www.iqs.url.edu/", "https://www.esade.edu/", "https://www.cett.es"}
     assert obj["https://www.esade.edu/"][1] == ["2", "3"]  # un rastreo por dominio
     assert obj["https://www.cett.es"][0]["centro_adscrito"] and obj["https://www.cett.es"][1] == ["4"]
+
+
+def test_pagina_de_otra_sede_de_la_misma_universidad():
+    from motor.grados.web_privadas import sede_ajena
+    ade = {"universidades": [{"nombre": "ESIC Universidad"}],
+           "imparticiones": [{"unidad_codigo": "28054919", "municipio": "POZUELO DE ALARCÓN", "situacion": "Activo"}]}
+    mk = {**ade, "imparticiones": ade["imparticiones"] + [{"unidad_codigo": "50012451", "municipio": "ZARAGOZA",
+                                                          "situacion": "Activo"}]}
+    assert sede_ajena(ade, "https://www.esic.edu/grados/grado-ade-zaragoza") == "zaragoza"
+    assert sede_ajena(mk, "https://www.esic.edu/grados/grado-marketing-zaragoza") is None
+    assert sede_ajena(ade, "https://www.esic.edu/grados/grado-ade-madrid") is None  # Pozuelo es de Madrid
+    assert sede_ajena(ade, "https://www.esic.edu/grados/grado-ade") is None
+    ue = {"universidades": [{"nombre": "Europea de Valencia"}],
+          "imparticiones": [{"unidad_codigo": "03000001", "municipio": "ALICANTE", "situacion": "Activo"}]}
+    assert sede_ajena(ue, "https://u.es/grado-x-valencia") is None  # el nombre de la universidad

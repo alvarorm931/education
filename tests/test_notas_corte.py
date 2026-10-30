@@ -282,3 +282,16 @@ def test_cupos_de_reserva_van_con_el_historico_del_cupo_general():
     r = anadir_historico(fichas, [h])
     oc = fichas[0]["centros"][0]["notas_historicas"]["otros_cupos"]
     assert oc["mayores_25"]["rotulo"] == "mayores de 25 años" and r["centros_con_cupos_de_reserva"] == 1
+
+
+def test_nota_de_qedu_distinta_de_la_final_del_distrito_no_se_ensena_dos_veces():
+    h = {"codigo_titulo": "1", "codigo_centro": "C1", "distrito": "andalucia", "publicable": True,
+         "contraste_qedu": {"qedu_con_plazas_libres": 1},
+         "cursos": {"2024-2025": {"nota": 8.032, "lista": "final"}, "2025-2026": {"nota": 5.0, "lista": "final"}}}
+    fichas = [{"codigo": "1", "centros": [{"codigo": "C1", "nota_corte": 5.0, "curso": "2025-2026",
+                                           "nota_corte_anterior": 5.0, "curso_anterior": "2024-2025"}]}]
+    r = anadir_historico(fichas, [h])
+    c = fichas[0]["centros"][0]
+    assert c["nota_corte"] == 5.0 and c["nota_corte_anterior"] is None
+    assert c["nota_corte_anterior_qedu_no_usada"]["nota_distrito"] == 8.032
+    assert r["notas_de_qedu_sustituidas_por_la_del_distrito"] == 1

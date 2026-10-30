@@ -60,6 +60,15 @@ MAX_SOBRA_TRAMO = 3
 SEDES = {"madrid", "valencia", "canaria", "canarias", "andalucia", "sevilla", "malaga", "barcelona", "alicante",
          "castellon", "elche", "murcia", "bilbao", "donostia", "vitoria", "zaragoza", "salamanca", "valladolid",
          "palma", "tenerife", "granada", "cordoba", "almeria", "marbella", "santander", "oviedo", "leon"}
+# Provincias (dos primeras cifras del código de centro del SIIU) de cada sede: una página de grado cuya dirección
+# nombra una sede de otra provincia que las de los centros del grado es de otro centro (ESIC Zaragoza frente a Pozuelo)
+SEDE_PROVINCIAS = {"madrid": {"28"}, "valencia": {"46"}, "canaria": {"35", "38"}, "canarias": {"35", "38"},
+                   "andalucia": {"04", "11", "14", "18", "21", "23", "29", "41"}, "sevilla": {"41"},
+                   "malaga": {"29"}, "marbella": {"29"}, "barcelona": {"08"}, "alicante": {"03"}, "elche": {"03"},
+                   "castellon": {"12"}, "murcia": {"30"}, "bilbao": {"48"}, "donostia": {"20"}, "vitoria": {"01"},
+                   "zaragoza": {"50"}, "salamanca": {"37"}, "valladolid": {"47"}, "palma": {"07"}, "tenerife": {"38"},
+                   "granada": {"18"}, "cordoba": {"14"}, "almeria": {"04"}, "santander": {"39"}, "oviedo": {"33"},
+                   "leon": {"24"}}
 # Importes verosímiles por tipo (€): fuera de rango se guardan como «fuera_de_rango» (sueldos, cifras de otra cosa)
 RANGO = {"credito": (40, 450), "curso": (2500, 30000), "mensual": (200, 3500), "reserva": (100, 3500),
          "total": (8000, 160000)}
@@ -151,6 +160,23 @@ def titulo_contradice(g: dict, titulo: str | None) -> bool:
     return any(p and not (p & pal) for p in partes)
 
 
+def sede_ajena(t: dict, url: str | None) -> str | None:
+    """La sede que nombra la dirección de una página si no es la de ningún centro activo del grado (por provincia o
+    municipio) ni sale en el nombre de su universidad: esa página es de otro centro. None si no nombra ninguna o
+    si es suya."""
+    if not url:
+        return None
+    imp = [i for i in t.get("imparticiones") or [] if i.get("situacion", "Activo") == "Activo"]
+    provincias = {str(i["unidad_codigo"])[:2] for i in imp if i.get("unidad_codigo")}
+    municipios = {w for i in imp for w in clave(i.get("municipio") or "").split()}
+    universidad = {w for u in t.get("universidades") or [] for w in clave(u.get("nombre") or "").split()}
+    for w in sorted(palabras_url(url) & SEDES):
+        if w in municipios or w in universidad or provincias & SEDE_PROVINCIAS.get(w, set()):
+            continue
+        return w
+    return None
+
+
 def es_url_grado(url: str) -> bool:
     ruta = unquote(urlparse(url).path)
     return bool(GRADO_URL.search(ruta)) and not NO_GRADO.search(ruta)
@@ -171,6 +197,8 @@ def unir(grados: list[dict], urls: list[str], propias: set[str] | None = None) -
             continue
         buenas = []
         for u, pu in candidatas:
+            if g.get("imparticiones") and sede_ajena(g, u):
+                continue  # página de otro centro de la misma universidad
             doble = "doble" in pu or "dobles" in pu
             if g["clase"] == "doble" and not doble or g["clase"] != "doble" and doble:
                 continue

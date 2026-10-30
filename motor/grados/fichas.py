@@ -32,7 +32,7 @@ from motor.grados.asignaturas import comparar
 from motor.grados.catalogo import clave, clave_union, nombre_corto
 from motor.grados.generico import nombre_base
 from motor.grados.precios import de_comunidad, precio_doble, precio_por_rama, precio_unico
-from motor.grados.web_privadas import titulo_contradice
+from motor.grados.web_privadas import SEDES, palabras_url, sede_ajena, titulo_contradice
 
 FUENTE_QEDU = "Ministerio de Ciencia, Innovación y Universidades. QEDU"
 URL_QEDU = "https://www.ciencia.gob.es/qedu.html"
@@ -134,10 +134,14 @@ def precio_web(f: dict) -> dict | None:
     cuentas = precio_por_cuentas([i["valor"] for i in f.get("importes") or [] if i.get("tipo") != "sueldo"])
     if cruzados:
         curso, metodo = min(cruzados), "curso_igual_a_credito_por_60"
-    elif cuentas and not ld_valor:
+    elif cuentas and (not ld_valor or abs(ld_valor - cuentas["precio_curso"]) <= 0.5):
         curso, metodo = cuentas["precio_curso"], cuentas["metodo"]
-    elif ld_valor and (not cursos or ld_valor in cursos):
+    elif ld_valor and ld_valor in cursos:
+        # los datos estructurados valen si la página muestra ese mismo importe: solos no (verificación del 30/10:
+        # una página con «Precio: Consultar» llevaba en sus datos estructurados un «desde» de promoción)
         curso, metodo = ld_valor, "datos_estructurados"
+    elif ld_valor and not cursos:
+        nota = "solo los datos estructurados de la página dan un importe y su texto no lo muestra: no se publica precio"
     elif cursos and not ld_valor and cursos[-1] / cursos[0] <= MAX_RAZON_CURSO:
         curso, metodo = cursos[0], "texto_por_curso"
         if len(cursos) > 1:
@@ -434,6 +438,33 @@ def resumen_ruct(d: dict | None) -> dict | None:
     }
 
 
+PAREJAS_DIST = {"obligatorias": ("obligatorios", "obligatoria"), "optativas": ("optativos", None),
+                "practicas_externas": ("practicas_externas", "practicas"), "tfg": ("tfg", "tfg")}
+
+
+def corregir_distribucion(plan: dict | None, ruct: dict | None) -> dict | None:
+    """Errata del cuadro de créditos del BOE (Medicina, CEU: TFG 6 y optativas 8 en el cuadro, 8 y 6 en las filas
+    del mismo BOE y en el RUCT): si los tipos en que el cuadro y el RUCT discrepan suman lo mismo en los dos y las
+    filas del plan dan lo del RUCT en cada uno que se puede contar (todos menos optativas), vale el reparto del RUCT y
+    el del BOE queda aparte con la explicación. Si no, no se toca nada."""
+    d, cr = (plan or {}).get("distribucion") or {}, ((ruct or {}).get("creditos") or {})
+    if not d or not cr:
+        return plan
+    distintos = [k for k, (kr, _) in PAREJAS_DIST.items() if d.get(k) is not None and cr.get(kr) is not None
+                 and abs(d[k] - cr[kr]) > 0.5]
+    if not distintos or abs(sum(d[k] for k in distintos) - sum(cr[PAREJAS_DIST[k][0]] for k in distintos)) > 0.5:
+        return plan
+    filas = plan.get("asignaturas") or []
+    for k in distintos:
+        tipo = PAREJAS_DIST[k][1]
+        if tipo and abs(sum(a.get("creditos") or 0 for a in filas if a.get("tipo") == tipo)
+                        - cr[PAREJAS_DIST[k][0]]) > 0.5:
+            return plan
+    return {**plan, "distribucion": {**d, **{k: cr[PAREJAS_DIST[k][0]] for k in distintos}}, "distribucion_boe": d,
+            "nota_distribucion": "el cuadro de créditos del BOE no cuadra con las filas del propio plan; vale el "
+                                 "reparto del RUCT, que sí cuadra con ellas"}
+
+
 def plan_comprobado(p: dict) -> bool:
     """El listado cuadra con la tabla de créditos por tipo del propio plan: entero (básicas + obligatorias +
     prácticas + TFG) o en básicas y obligatorias (el núcleo del plan), o con los créditos por tipo del RUCT."""
@@ -470,8 +501,21 @@ def nivel_plan(filas: list[dict]) -> str | None:
     return "asignatura" if asig >= 0.5 * len(filas) else "materia"
 
 
+def sin_niveles_repetidos(filas: list[dict]) -> list[dict]:
+    """Planes por materias que además listan las asignaturas de un tipo (las básicas, sobre todo): las mismas
+    créditos dos veces. Si las asignaturas de un tipo suman lo mismo que sus materias, quedan las asignaturas (el
+    desglose) y salen las materias de ese tipo; si no suman lo mismo, no se toca nada."""
+    suma: dict = defaultdict(float)
+    for f in filas:
+        if f.get("tipo") and f.get("nivel") in ("materia", "asignatura"):
+            suma[(f["tipo"], f["nivel"])] += f.get("creditos") or 0
+    fuera = {tipo for (tipo, nivel), v in suma.items() if nivel == "materia" and v
+             and abs(suma.get((tipo, "asignatura"), 0) - v) <= 0.5}
+    return [f for f in filas if not (f.get("nivel") == "materia" and f.get("tipo") in fuera)]
+
+
 def resumen_plan(p: dict) -> dict:
-    filas = p.get("plan") or []
+    filas = sin_niveles_repetidos(p.get("plan") or [])
     return {
         "boe": p["identificador"],
         "fecha": p.get("fecha"),
@@ -576,12 +620,16 @@ def construir(catalogo: list[dict], genericos: list[dict], tarjetas: dict, detal
                         clave_union(nombre_base(t["nombre"])):
                     candidatos.append({**p, "fecha": p.get("fecha") or ((r.get("boe") or {}).get("plan") or {}).get("fecha"),
                                        "enlazado_por_ruct": True})
+            # un plan cuyo texto declara el código de otro título (el plan nuevo de un título que sustituye a este,
+            # con el mismo nombre) no es de este
+            candidatos = [p for p in candidatos if not p.get("codigos_en_texto") or t["codigo"] in p["codigos_en_texto"]]
             candidatos.sort(key=lambda p: p.get("fecha") or "", reverse=True)
             if candidatos and not any(plan_comprobado(p) for p in candidatos) and r:
                 # sin tabla de créditos que cuadre en el BOE: se comprueba contra los créditos por tipo del RUCT
                 candidatos = [comprobar_con_ruct(p, r) for p in candidatos]
             if candidatos:
-                plan = resumen_plan(next((p for p in candidatos if plan_comprobado(p)), candidatos[0]))
+                plan = corregir_distribucion(resumen_plan(next((p for p in candidatos if plan_comprobado(p)),
+                                                               candidatos[0])), resumen_ruct(r))
         if not (plan and plan["comprobado"]):
             # sin plan del BOE que cuadre: el de la memoria vigente del RUCT, si cuadra con sus créditos por tipo
             pm = plan_de_memoria(r)
@@ -602,19 +650,30 @@ def construir(catalogo: list[dict], genericos: list[dict], tarjetas: dict, detal
         pag = (paginas or {}).get(t["codigo"]) if t["universidad_tipo"] == "Privada" else None
         if pweb and titulo_contradice(t, pweb.get("_titulo")):
             pweb, descartadas[t["codigo"]] = None, "precio"
-        if pag and titulo_contradice(t, pag.get("_titulo")):
+        if pweb and sede_ajena(t, pweb.get("url")):
+            pweb, descartadas[t["codigo"]] = None, "precio_de_otra_sede"  # la dirección nombra otra sede
+        if pag and (titulo_contradice(t, pag.get("_titulo")) or sede_ajena(t, pag.get("url"))):
             pag, descartadas[t["codigo"]] = None, descartadas.get(t["codigo"], "pagina")
         pweb = {k: v for k, v in pweb.items() if k != "_titulo"} if pweb else None
         pag = {k: v for k, v in pag.items() if k != "_titulo"} if pag else None
         ptar = (tarifas or {}).get(t["codigo"])
         if ptar and t["universidad_tipo"] != "Privada" and not (ptar.get("centro_adscrito") and not precios):
             ptar = None  # en una pública, como con la web: solo la lista de su centro adscrito y sin precio en QEDU
+        if ptar and sede_ajena(t, ptar.get("url")):
+            ptar = None  # lista de precios de otro campus («…/campus-elche.pdf» para un grado de Valencia)
         if ptar and ptar["precio_curso"] and not (pweb and pweb["precio_curso"]):
             pweb = ptar  # la página del grado no da precio y el documento de precios de la universidad sí
         if not creditos and r and (r.get("creditos") or {}).get("total"):
             creditos = r["creditos"]["total"]
         if not creditos and plan and plan["comprobado"]:
             creditos = (plan.get("distribucion") or {}).get("total") or (plan.get("distribucion") or {}).get("total_calculado")
+        if pweb and pweb.get("url"):
+            # un grado en centros de varias provincias con la página de una sede: el precio es solo de esa sede
+            provincias = {str(i["unidad_codigo"])[:2] for i in t["imparticiones"]
+                          if i.get("situacion") == "Activo" and i.get("unidad_codigo")}
+            sedes = sorted(palabras_url(pweb["url"]) & SEDES)
+            if sedes and len(provincias) > 1:
+                pweb = {**pweb, "solo_sede": sedes}
         if pweb and pweb["precio_curso"] and creditos:
             # todo el grado al precio de hoy: un curso son 60 créditos (RD 822/2021 art. 5); sin subidas futuras
             pweb = {**pweb, "precio_total_estimado": round(pweb["precio_curso"] * creditos / 60, 2),
@@ -814,7 +873,8 @@ def fichas_proximas(altas: list[dict], catalogo: list[dict], planes: dict, ruct:
         ku = resolver_universidad(clave_universidad(a.get("universidad")), set(universidades))
         u = universidades.get(ku)
         nombre = nombre_corto(a.get("nombre") or "")
-        candidatos = sorted(planes.get((ku, clave_union(nombre_base(nombre))), []),
+        candidatos = sorted((p for p in planes.get((ku, clave_union(nombre_base(nombre))), [])
+                             if not p.get("codigos_en_texto") or cod in p["codigos_en_texto"]),
                             key=lambda p: p.get("fecha") or "", reverse=True)
         plan = resumen_plan(next((p for p in candidatos if plan_comprobado(p)), candidatos[0])) if candidatos else None
         salida.append({
@@ -838,9 +898,10 @@ def anadir_historico(fichas: list[dict], historico: list[dict]) -> dict:
     fuente (documento del distrito, huella y fecha de captura). Una ficha sin nota de QEDU ni precio que tenga la de su
     distrito desde 2021-2022 deja de tener ese motivo para no indexarse."""
     por = {(h["codigo_titulo"], h["codigo_centro"]): h for h in historico if h.get("publicable")}
-    from motor.grados.notas_corte import CUPOS_RESERVA
+    from motor.grados.notas_corte import CUPOS_RESERVA, igual_a_qedu
 
     fichas_con, centros_con, cinco, indexables_por_historico, centros_con_cupos = set(), 0, 0, set(), 0
+    notas_qedu_sustituidas = 0
     for f in fichas:
         for c in f.get("centros") or []:
             h = por.get((f["codigo"], c.get("codigo")))
@@ -849,7 +910,8 @@ def anadir_historico(fichas: list[dict], historico: list[dict]) -> dict:
             c["notas_historicas"] = {"cupo": "general", "distrito": h["distrito"], "cursos": h["cursos"],
                                      "contraste_qedu": h["contraste_qedu"],
                                      "nota": "la menor de las ofertas del título en el centro, como QEDU; 5,000 = "
-                                             "entraron todos los que lo pidieron"}
+                                             "entraron todos los que lo pidieron; «tipo_ultimo_admitido», lo que "
+                                             "dice el documento del último admitido, literal"}
             if h.get("otros_cupos"):
                 # cupos de reserva: misma fila del mismo documento que la del cupo general, ya contrastada con QEDU
                 c["notas_historicas"]["otros_cupos"] = {
@@ -859,6 +921,16 @@ def anadir_historico(fichas: list[dict], historico: list[dict]) -> dict:
                     "cada cupo de reserva tiene su propia prueba o baremo y sus notas no se comparan con las del cupo "
                     "general; 5,000 = se admitió a todos los que lo pidieron por ese cupo")
                 centros_con_cupos += 1
+            # la nota de QEDU de un curso que el distrito publica distinta (QEDU con 5,000 porque al final quedaron
+            # plazas, o tomada en otro llamamiento): no se enseñan dos notas para el mismo curso; vale la del
+            # distrito, que es la lista final con su documento, y la de QEDU queda aparte
+            for campo, campo_curso in (("nota_corte", "curso"), ("nota_corte_anterior", "curso_anterior")):
+                q, d = c.get(campo), h["cursos"].get(c.get(campo_curso) or "")
+                if q is not None and d and d.get("lista") == "final" and not igual_a_qedu(q, d["nota"]):
+                    c[f"{campo}_qedu_no_usada"] = {"nota": q, "curso": c.get(campo_curso), "nota_distrito": d["nota"],
+                                                   "motivo": "el distrito publica otra nota final para ese curso"}
+                    c[campo] = None
+                    notas_qedu_sustituidas += 1
             fichas_con.add(f["codigo"])
             centros_con += 1
             cinco += len(h["cursos"]) >= 5
@@ -870,6 +942,7 @@ def anadir_historico(fichas: list[dict], historico: list[dict]) -> dict:
                 indexables_por_historico.add(f["codigo"])
     return {"fichas_con_notas_historicas": len(fichas_con), "centros_con_notas_historicas": centros_con,
             "centros_con_cinco_cursos_o_mas": cinco, "centros_con_cupos_de_reserva": centros_con_cupos,
+            "notas_de_qedu_sustituidas_por_la_del_distrito": notas_qedu_sustituidas,
             "fichas_con_nota_solo_por_el_historico": len(indexables_por_historico)}
 
 

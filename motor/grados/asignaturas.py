@@ -20,8 +20,18 @@ NUMERACION = re.compile(r"\s+(?:[ivx]{1,4}|\d{1,2}|[abc])$")
 COMUN = 0.5  # una asignatura es «común» si está en la mitad o más de las universidades del grado
 
 
+BILINGUE = re.compile(r"^(.{4,}?)\s*/\s*([A-Z][^/]{3,})$")
+FIJOS = ("basica", "obligatoria", "practicas", "tfg")  # tipos que todos cursan (sin tipo no se cuenta)
+
+
+def sin_traduccion(nombre: str) -> str:
+    """«Dermatología/Dermatology» → «Dermatología»: los planes bilingües dan el nombre en las dos lenguas."""
+    m = BILINGUE.match((nombre or "").strip())
+    return m.group(1) if m else (nombre or "")
+
+
 def clave_asignatura(nombre: str) -> str:
-    k = clave_union(nombre or "")
+    k = clave_union(sin_traduccion(nombre))
     anterior = None
     while k != anterior:  # «derecho civil ii», «estadistica 1»
         anterior = k
@@ -37,14 +47,14 @@ def comparar(planes: dict[str, list[dict]]) -> dict:
     nombre_visible: dict[str, Counter] = defaultdict(Counter)
     for asig in planes.values():
         for a in asig:
-            nombre_visible[clave_asignatura(a["nombre"])][NUMERACION.sub("", (a["nombre"] or "").strip())] += 1
+            nombre_visible[clave_asignatura(a["nombre"])][NUMERACION.sub("", sin_traduccion(a["nombre"]).strip())] += 1
     por_titulo = {}
     for c, asig in planes.items():
-        total = sum(a.get("creditos") or 0 for a in asig if a.get("tipo") != "optativa") or None
-        comunes = sum(a.get("creditos") or 0 for a in asig if a.get("tipo") != "optativa"
-                      and frecuencia[clave_asignatura(a["nombre"])] / n >= COMUN)
-        exclusivas = sorted({NUMERACION.sub("", a["nombre"].strip()) for a in asig
-                             if frecuencia[clave_asignatura(a["nombre"])] == 1 and a.get("tipo") != "optativa"})
+        fijas = [a for a in asig if a.get("tipo") in FIJOS and not a.get("hueco")]
+        total = sum(a.get("creditos") or 0 for a in fijas) or None
+        comunes = sum(a.get("creditos") or 0 for a in fijas if frecuencia[clave_asignatura(a["nombre"])] / n >= COMUN)
+        exclusivas = sorted({NUMERACION.sub("", sin_traduccion(a["nombre"]).strip()) for a in fijas
+                             if frecuencia[clave_asignatura(a["nombre"])] == 1})
         por_titulo[c] = {
             "creditos_no_optativos": total,
             "porcentaje_comun": round(100 * comunes / total, 1) if total else None,

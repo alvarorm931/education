@@ -127,7 +127,11 @@ def test_precio_web_prefiere_curso_que_cuadra_con_el_credito_y_no_se_fia_del_jso
 
 def test_precio_web_resto_de_casos():
     from motor.grados.fichas import precio_web
-    assert precio_web({"url": "x", "precio_jsonld": {"precio": 3060, "moneda": "EUR"}, "importes": []})["metodo"] == "datos_estructurados"
+    # datos estructurados solos, sin el importe en el texto de la página («Precio: Consultar»): no se publica
+    p = precio_web({"url": "x", "precio_jsonld": {"precio": 3060, "moneda": "EUR"}, "importes": []})
+    assert p["precio_curso"] is None and "datos estructurados" in p["nota"]
+    p = precio_web({"url": "x", "precio_jsonld": {"precio": 9000, "moneda": "EUR"}, "importes": [_imp(9000.0, "curso")]})
+    assert p["metodo"] == "datos_estructurados" and p["precio_curso"] == 9000.0
     p = precio_web({"url": "x", "importes": [_imp(9000.0, "curso"), _imp(9900.0, "curso")]})
     assert p["precio_curso"] == 9000.0 and "desde" in p["nota"]
     assert precio_web({"url": "x", "importes": [_imp(6000.0, "curso"), _imp(15000.0, "curso")]})["precio_curso"] is None
@@ -298,3 +302,27 @@ def test_lista_conocida_con_importe_anual(tmp_path):
     (d / "tarifas.jsonl").write_text(_json.dumps(doc) + "\n", encoding="utf-8")
     t = indexar_tarifas(tmp_path)
     assert t["1"]["precio_curso"] == 9240 and t["1"]["metodo"] == "importe_anual_del_documento"
+
+
+def test_basicas_listadas_por_materia_y_por_asignatura_no_cuentan_dos_veces():
+    from motor.grados.fichas import sin_niveles_repetidos
+    filas = [{"nombre": "Empresa", "tipo": "basica", "creditos": 12.0, "nivel": "materia"},
+             {"nombre": "Econometría", "tipo": "obligatoria", "creditos": 6.0, "nivel": "materia"},
+             {"nombre": "Contabilidad", "tipo": "basica", "creditos": 6.0, "nivel": "asignatura"},
+             {"nombre": "Marketing", "tipo": "basica", "creditos": 6.0, "nivel": "asignatura"}]
+    assert [f["nombre"] for f in sin_niveles_repetidos(filas)] == ["Econometría", "Contabilidad", "Marketing"]
+    filas[3]["creditos"] = 3.0  # no suman lo mismo: no se toca
+    assert len(sin_niveles_repetidos(filas)) == 4
+
+
+def test_errata_del_cuadro_de_creditos_del_boe_se_corrige_con_el_ruct():
+    from motor.grados.fichas import corregir_distribucion
+    plan = {"distribucion": {"formacion_basica": 90.0, "obligatorias": 195.0, "practicas_externas": 61.0,
+                             "optativas": 8.0, "tfg": 6.0, "total": 360.0},
+            "asignaturas": [{"tipo": "tfg", "creditos": 8.0}, {"tipo": "obligatoria", "creditos": 195.0},
+                            {"tipo": "practicas", "creditos": 61.0}]}
+    ruct = {"creditos": {"obligatorios": 195.0, "optativos": 6.0, "practicas_externas": 61.0, "tfg": 8.0, "total": 360.0}}
+    p = corregir_distribucion(plan, ruct)
+    assert p["distribucion"]["tfg"] == 8.0 and p["distribucion"]["optativas"] == 6.0 and p["distribucion_boe"]["tfg"] == 6.0
+    plan["asignaturas"][0]["creditos"] = 6.0  # las filas dicen lo del BOE: no se toca
+    assert corregir_distribucion(plan, ruct)["distribucion"]["tfg"] == 6.0

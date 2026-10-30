@@ -871,6 +871,8 @@ def nota_del_titulo(filas: list[dict]) -> dict[tuple, dict]:
             por[(x["codigo_titulo"], x["codigo_centro"], x["curso"])].append(x)
     return {k: {"nota": min(x["nota"] for x in xs), "ofertas": len(xs), "distrito": xs[0]["distrito"],
                 "lista": xs[0]["lista"], "fuente": xs[0]["fuente"],
+                # lo que el documento dice del último admitido («no prioritaria extraord.», «PREF»), tal cual
+                "tipo_ultimo_admitido": min(xs, key=lambda x: x["nota"]).get("tipo_ultimo_admitido"),
                 "plazas": sum(x["plazas"] for x in xs) if all(x.get("plazas") for x in xs) else None}
             for k, xs in por.items()}
 
@@ -943,6 +945,8 @@ def historico(filas: list[dict], cands: dict[str, list[dict]]) -> list[dict]:
             contraste["plazas_iguales"] = len(plazas_iguales)
         salida.append({"codigo_titulo": tit, "codigo_centro": cen, "distrito": next(iter(cursos.values()))["distrito"],
                        "cursos": {k: {"nota": v["nota"], "ofertas": v["ofertas"], "lista": v["lista"],
+                                      **({"tipo_ultimo_admitido": v["tipo_ultimo_admitido"]}
+                                         if v.get("tipo_ultimo_admitido") else {}),
                                       "fuente": v["fuente"]} for k, v in sorted(cursos.items())},
                        "contraste_qedu": dict(contraste),
                        # una nota de primera asignación (Cataluña) no se puede contrastar con la final de QEDU: no se

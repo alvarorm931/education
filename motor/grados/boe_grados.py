@@ -131,7 +131,9 @@ TIPOS_CREDITO = [
     ("tfg", re.compile(r"trabajo (?:de )?fin|^tfg$", re.I)),
     ("total", re.compile(r"^total", re.I)),
 ]
-ORDINALES = {"primer": 1, "primero": 1, "segundo": 2, "tercer": 3, "tercero": 3, "cuarto": 4, "quinto": 5, "sexto": 6}
+ORDINALES = {"primer": 1, "primero": 1, "segundo": 2, "tercer": 3, "tercero": 3, "cuarto": 4, "quinto": 5, "sexto": 6,
+             "septimo": 7, "séptimo": 7, "octavo": 8, "noveno": 9, "decimo": 10, "décimo": 10, "undecimo": 11,
+             "undécimo": 11, "duodecimo": 12, "duodécimo": 12}
 
 
 def _num(s: str | None) -> float | None:
@@ -419,6 +421,11 @@ RE_TABLA_BASICAS = re.compile(r"rama de conocimiento|^\s*rama\s*$|materias? b[á
                               r"materia (?:del )?(?:anexo|rd|real decreto)", re.I)
 
 
+# el nombre de la asignatura ES el TFG o las prácticas (no «Taller de Trabajo Fin de Grado», «Metodología del TFG»)
+ES_TFG_O_PRACTICAS = re.compile(r"\s*(?:\d+[.)]?\s*)?(?:trabajo (?:de )?fin|tfg\b|practicum\b|"
+                                r"practicas (?:externas|academicas|curriculares|tuteladas))")
+
+
 def tipo_de_rotulo(texto: str | None) -> str | None:
     """Tipo de las asignaturas de una tabla o de un tramo por su rótulo: «Total de créditos de formación básica
     = 60», «Asignaturas obligatorias», «Optatividad». Con más de un tipo en el rótulo, ninguno."""
@@ -444,16 +451,31 @@ def _separador(texto: str, estado: dict) -> None:
             estado["modulo"] = texto.strip().rstrip(" .")
 
 
+CODIGO_CARACTER = re.compile(r"(?i)^(?:fb|ob|0b|op|opt|mx|pe|pex|tfg|tfm|b|o|ob\.|op\.|obligatori[ao]s?|optativ[ao]s?|"
+                             r"b[áa]sic[ao]s?|mixt[ao])\.?$")
+
+
 def _encajar(f: list[str], previa: list[str], ancho: int, cols: dict | None) -> list[str]:
     """Fila más corta que la cabecera (celdas combinadas): lo que falta se toma de la fila anterior, por la
     izquierda (módulo, materia) y, si hace falta, también por la derecha (el carácter combinado al final). Se elige
-    el encaje que deja una cifra en la columna de créditos y un texto en la del nombre; a igualdad, por la izquierda."""
+    el encaje que deja una cifra en la columna de créditos y un texto en la del nombre; a igualdad, por la izquierda.
+    Caso aparte: el carácter combinado en medio de la fila («Asignatura | Carácter | ECTS» con «Op./(Ob. Mención)»
+    para varias filas): si por la izquierda el nombre sería el de la fila anterior y poniendo la celda que falta en la
+    columna del carácter la fila conserva su propio nombre, vale eso."""
     falta = ancho - len(f)
     if not cols or "creditos" not in cols or "nombre" not in cols:
         return previa[:falta] + list(f)
     es_num = lambda v: bool(re.fullmatch(r"\s*\d+(?:[.,]\d+)?\s*", v or ""))  # noqa: E731
     izquierda = previa[:falta] + list(f)
     if es_num(izquierda[cols["creditos"]]):
+        k = cols.get("caracter")
+        if falta == 1 and k is not None and 0 < k < ancho:
+            medio = list(f[:k]) + previa[k:k + 1] + list(f[k:])
+            nom, ant = (medio[cols["nombre"]] or "").strip(), (previa[cols["nombre"]] or "").strip()
+            if len(medio) == ancho and es_num(medio[cols["creditos"]]) and nom and not es_num(nom) \
+                    and (izquierda[cols["nombre"]] or "").strip() == ant and nom != ant \
+                    and not CODIGO_CARACTER.match(nom):
+                return medio
         return izquierda  # por la izquierda ya encaja: como siempre
     mejor, puntos_mejor = None, -1
     for izq in range(falta, -1, -1):
@@ -709,6 +731,16 @@ def plan(tablas: list[dict], dist: dict | None = None, codigos: dict[str, str] |
             if x["curso"] or x.get("curso_por_encabezado"):
                 tiempos[clave_union(x["nombre"]) or x["nombre"].lower()].add(
                     (x["curso"] or x["curso_por_encabezado"], x["semestre"]))
+    # semestres numerados del 1 al 8 en tablas distintas («Primer semestre | Segundo semestre», luego «Tercer
+    # semestre | Cuarto semestre»…): si alguna tabla del plan da un semestre por encima de 2, los semestres 1 y 2
+    # sin curso son de primero
+    if any((numero_orden(x.get("periodo_literal")) or 0) > 2 and re.search(r"semestre|cuatrimestre",
+                                                                            x.get("periodo_literal") or "", re.I)
+           for x in resultado):
+        for x in resultado:
+            if not x["curso"] and x["semestre"] in (1, 2) and not RE_VARIOS.search(x.get("periodo_literal") or "") \
+                    and re.search(r"semestre|cuatrimestre", x.get("periodo_literal") or "", re.I):
+                x["curso"] = 1
     for x in resultado:
         if not x["curso"] and x.get("curso_por_encabezado"):
             x["curso"] = x["curso_por_encabezado"]
@@ -720,12 +752,32 @@ def plan(tablas: list[dict], dist: dict | None = None, codigos: dict[str, str] |
     # filas aún sin tipo: el TFG, las prácticas y las optativas por su nombre; las básicas por la tabla de ámbitos;
     # y el resto, obligatorias solo si su suma es exactamente la de obligatorias de la tabla de créditos
     basicas = _basicas_por_ambito(tablas)
+    # el practicum y el TFG con carácter «Obligatoria» van a su tipo si la tabla de créditos los separa, sin pasar de
+    # lo que esa tabla da al tipo («Taller de Trabajo Fin de Grado», obligatoria, junto al TFG de 6 de 6, se queda
+    # obligatoria). La misma asignatura repetida en otra tabla («Trabajo de fin de grado (4/8)» y «Trabajo fin de
+    # grado») no cuenta dos veces.
+    clave_tfg = lambda n: clave_union(re.sub(r"\([^)]*\)", " ", n or ""))  # noqa: E731
+    suma_tipo, movidas = defaultdict(float), set()
     for x in resultado:
-        # el practicum y el TFG con carácter «Obligatoria» van a su tipo si la tabla de créditos los separa
+        if x["tipo"] in ("tfg", "practicas"):
+            if clave_tfg(x["nombre"]) not in movidas:
+                suma_tipo[(x["tipo"], x.get("nivel"))] += x["creditos"] or 0
+            movidas.add(clave_tfg(x["nombre"]))
+    for x in resultado:
         por_nombre = tipo_de_rotulo(x["nombre"])
-        if x["tipo"] == "obligatoria" and por_nombre in ("tfg", "practicas") and dist \
-                and dist.get(CLAVE_DIST[por_nombre]):
+        if not (x["tipo"] == "obligatoria" and por_nombre in ("tfg", "practicas") and dist
+                and dist.get(CLAVE_DIST[por_nombre])):
+            continue
+        k, clave_n = (por_nombre, x.get("nivel")), clave_tfg(x["nombre"])
+        # dentro de lo que da la tabla, o con nombre que ES el TFG o el practicum (varios practicum alternativos
+        # de itinerario): pasa a su tipo; «Taller de…», «Seminario de…» por encima de la tabla, no
+        if clave_n in movidas or suma_tipo[k] + (x["creditos"] or 0) <= dist[CLAVE_DIST[por_nombre]] + 0.5 \
+                or ES_TFG_O_PRACTICAS.match(sin_acentos_min(x["nombre"])):
+            if clave_n not in movidas:
+                suma_tipo[k] += x["creditos"] or 0
+                movidas.add(clave_n)
             x["tipo"], x["tipo_por_nombre_y_tabla_de_creditos"] = por_nombre, True
+    for x in resultado:
         if not x["tipo"]:
             por_nombre = tipo_de_rotulo(x["nombre"])
             if por_nombre in ("tfg", "practicas", "optativa"):
@@ -785,6 +837,15 @@ def cabeceras_de_plan(texto: str) -> list[tuple[int, str]]:
     return salida
 
 
+RE_CODIGO_TITULO = re.compile(r"C[óo]digo\s+(?:de\s+(?:la\s+)?|del\s+)?(?:titulaci[óo]n|RUCT|t[íi]tulo)"
+                              r"(?:\s+(?:en\s+el\s+)?RUCT)?\s*:?\s*(\d{7})\b", re.I)
+
+
+def codigos_en_texto(texto: str) -> list[str]:
+    """Códigos de título del RUCT que el propio texto del BOE declara («Código Titulación: 1500661»)."""
+    return sorted(set(RE_CODIGO_TITULO.findall(texto or "")))
+
+
 def separar_planes(doc: dict) -> list[dict]:
     """Una resolución con varios planes («por la que se publican planes de estudios») trae una tabla de créditos
     por tipo al comienzo de cada plan, en el orden de sus anexos. Si hay tantas como títulos de plan en el texto,
@@ -808,7 +869,8 @@ def separar_planes(doc: dict) -> list[dict]:
     return partes
 
 
-RE_LINEA_CURSO = re.compile(r"^(primer|segundo|tercer|cuarto|quinto|sexto)\s+curso\.?$", re.I)
+RE_LINEA_CURSO = re.compile(r"^(?:(primer|segundo|tercer|cuarto|quinto|sexto)\s+curso|curso\s+(\d)\s*\.?\s*[ºo°]?|"
+                            r"(\d)\s*\.?\s*[ºo°]?\s+curso)\.?$", re.I)
 
 
 def cursos_por_encabezado(doc: dict) -> dict[int, int]:
@@ -821,7 +883,7 @@ def cursos_por_encabezado(doc: dict) -> dict[int, int]:
     for x in lineas:
         m = RE_LINEA_CURSO.match(x)
         if m:
-            actual.append(ORDINALES[m.group(1).lower()])
+            actual.append(ORDINALES[m.group(1).lower()] if m.group(1) else int(m.group(2) or m.group(3)))
         else:
             if len(actual) >= 2:
                 rachas.append(actual)
@@ -1004,6 +1066,8 @@ def _medir(filas: list[dict], dist: dict | None, doc: dict) -> dict:
         "con_tipo": sum(1 for f in base if f["tipo"]),
         "distribucion": dist,
         "menciones": menciones(doc.get("texto", ""), doc.get("tablas")),
+        # «Código Titulación: 1500661», «Código RUCT: 2504546»: el título al que pertenece el plan, si lo dice
+        "codigos_en_texto": codigos_en_texto(doc.get("texto", "")),
         "tablas": len(doc.get("tablas", [])),
         "tablas_del_plan_retenidas_por_privacidad": sum(
             1 for t in doc.get("tablas", []) if t.get("datos_personales")
