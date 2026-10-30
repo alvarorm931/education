@@ -273,3 +273,15 @@ def test_alta_del_boe_con_su_fuente_y_su_fecha_de_captura(tmp_path):
     c = o["campos"]["tipo_titulo"]
     assert c["fuente"] == "boe" and c["url"].endswith("BOE-A-2026-1") and c["capturado"] == "2026-10-29"
     assert o["comunidad"] == "Región de Murcia" and o["universidad_tipo"] == "Pública"  # universidad por su clave
+
+
+def test_plan_del_boe_con_la_ultima_medicion_del_documento(tmp_path):
+    filas = [{"nombre": n, "tipo": "obligatoria", "creditos": 6} for n in ("Álgebra", "Cálculo", "Física")]
+    doc = {"identificador": "BOE-A-2011-1", "url": "u", "fecha_publicacion": "20110101",
+           "planes": [{"comprobacion": "completo", "filas_plan": filas}]}
+    a, b = tmp_path / "20261030T1200" / "m", tmp_path / "20261030T1600" / "m"
+    a.mkdir(parents=True)
+    b.mkdir(parents=True)
+    (a / "boe_planes_masters.jsonl").write_text(json.dumps({**doc, "codigos_ruct": ["4317886"]}) + "\n")
+    (b / "boe_planes_masters.jsonl").write_text(json.dumps({**doc, "codigos_ruct": ["4310001"], "medido": "2026-10-30T16:00:00+00:00"}) + "\n")
+    assert set(cm.cargar_boe_planes([tmp_path])) == {"4310001"}  # la unión antigua (a otro código) ya no cuenta

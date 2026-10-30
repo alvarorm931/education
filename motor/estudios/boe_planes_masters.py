@@ -163,14 +163,18 @@ def cmd_medir(textos: Path, ruct: list[Path], salida: Path, por_nombre: dict[str
     destino = salida / "datos" / "estudios" / "masters"
     destino.mkdir(parents=True, exist_ok=True)
     filas, cuentas = [], {"documentos": 0, "planes": 0, "con_asignaturas": 0, "comprobados": 0, "codigos": 0}
+    from datetime import datetime, timezone
+    medido = datetime.now(timezone.utc).isoformat(timespec="seconds")
+    vistos: set[str] = set()
     for ruta in sorted(textos.rglob("*.json")):
         try:
             doc = json.loads(ruta.read_text(encoding="utf-8"))
         except ValueError:
             continue
         ident = doc.get("identificador")
-        if ident not in por_id:
+        if ident not in por_id or ident in vistos:
             continue
+        vistos.add(ident)
         cuentas["documentos"] += 1
         planes = leer_plan(doc)
         # varios planes en una resolución: sin el título de cada uno no se sabe cuál es de cada código; se guarda
@@ -179,7 +183,8 @@ def cmd_medir(textos: Path, ruct: list[Path], salida: Path, por_nombre: dict[str
             cuentas["planes"] += 1
             cuentas["con_asignaturas"] += bool(p["filas_plan"])
             cuentas["comprobados"] += bool(p["comprobacion"])
-        filas.append({"identificador": ident, "codigos_ruct": por_id[ident], "union": union[ident], "titulo": doc.get("titulo"),
+        filas.append({"identificador": ident, "codigos_ruct": por_id[ident], "union": union[ident], "medido": medido,
+                      "titulo": doc.get("titulo"),
                       "fecha_publicacion": doc.get("fecha_publicacion"), "url": doc.get("url"),
                       "capturado": doc.get("capturado"), "captura_sha256": doc.get("captura_sha256"),
                       "cita": FUENTE_CITA, "planes": planes})

@@ -357,21 +357,26 @@ def cargar_qedu(carpetas: list[Path]) -> dict[str, list[dict]]:
 
 def cargar_boe_planes(carpetas: list[Path]) -> dict[str, dict]:
     """código → plan publicado en el BOE (boe_planes_masters.py), el único del documento o el comprobado."""
+    # cada documento, con la última medición (la unión al código puede haber cambiado: manda la más reciente)
+    por_doc: dict[str, tuple] = {}
+    for f in sorted((f for c in carpetas for f in c.rglob("boe_planes_masters.jsonl")), key=str):
+        for d in _jsonl(f):
+            clave = (d.get("medido") or "", str(f))
+            if d.get("identificador") and (d["identificador"] not in por_doc or clave >= por_doc[d["identificador"]][0]):
+                por_doc[d["identificador"]] = (clave, d)
     out: dict[str, dict] = {}
-    for c in carpetas:
-        for f in sorted(c.rglob("boe_planes_masters.jsonl")):
-            for d in _jsonl(f):
-                planes = [p for p in d.get("planes") or [] if p.get("filas_plan")]
-                if len(planes) != 1:  # varios planes en una resolución: sin saber cuál es cuál, ninguno
-                    continue
-                nuevo = {**planes[0], "identificador": d["identificador"], "url": d.get("url"), "union": d.get("union"),
-                         "capturado": d.get("capturado"), "fecha_publicacion": d.get("fecha_publicacion")}
-                for cod in d.get("codigos_ruct") or []:
-                    # el plan vigente: el comprobado más reciente (un plan nuevo o una modificación que lo publica entero)
-                    previo = out.get(cod)
-                    if previo is None or (bool(nuevo.get("comprobacion")), nuevo.get("fecha_publicacion") or "") >= \
-                            (bool(previo.get("comprobacion")), previo.get("fecha_publicacion") or ""):
-                        out[cod] = nuevo
+    for _, d in sorted(por_doc.values(), key=lambda x: x[1]["identificador"]):
+        planes = [p for p in d.get("planes") or [] if p.get("filas_plan")]
+        if len(planes) != 1:  # varios planes en una resolución: sin saber cuál es cuál, ninguno
+            continue
+        nuevo = {**planes[0], "identificador": d["identificador"], "url": d.get("url"), "union": d.get("union"),
+                 "capturado": d.get("capturado"), "fecha_publicacion": d.get("fecha_publicacion")}
+        for cod in d.get("codigos_ruct") or []:
+            # el plan vigente: el comprobado más reciente (un plan nuevo o una modificación que lo publica entero)
+            previo = out.get(cod)
+            if previo is None or (bool(nuevo.get("comprobacion")), nuevo.get("fecha_publicacion") or "") >= \
+                    (bool(previo.get("comprobacion")), previo.get("fecha_publicacion") or ""):
+                out[cod] = nuevo
     return out
 
 
