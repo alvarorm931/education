@@ -282,7 +282,8 @@ def posiciones_pdf(contenido: bytes, max_paginas: int = 40) -> list[dict]:
     la página, y desde abajo),
     agrupados en líneas por su altura. Para las tablas con celdas vacías, donde el texto en una línea no dice a qué
     columna va cada cifra: el lector la asigna por la x de los rótulos de la cabecera. Usa el mismo cálculo de
-    posiciones que el modo de disposición de pypdf (sus operaciones de texto agrupadas por línea)."""
+    posiciones que el modo de disposición de pypdf: la posición es la de cada bloque de texto del PDF (BT…ET), así
+    que solo sirve si cada celda es su propio bloque (no en la tabla de Burgos, que escribe una fila entera en uno)."""
     from pypdf import PdfReader
     from pypdf._text_extraction import _layout_mode
     from pypdf.generic import ContentStream
