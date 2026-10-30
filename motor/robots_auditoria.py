@@ -33,7 +33,7 @@ def robots_de(origen: str) -> tuple[Robots, dict]:
                           "regla": "sin robots.txt: todo permitido"}
     texto = r.contenido.decode("utf-8", errors="replace")
     lineas = texto.splitlines()
-    return Robots(texto), {"estado": "ok", "lineas": len(lineas),
+    return Robots(texto), {"estado": "ok", "lineas": len(lineas), "texto": texto[:20000],
                 "disallow": [l.strip() for l in lineas if l.lower().startswith("disallow")][:40]}
 
 
@@ -48,7 +48,8 @@ def auditar(urls: dict[str, list[str]]) -> dict:
             if origen not in cache:
                 cache[origen] = robots_de(origen)
             rp, info = cache[origen]
-            filas.append({"url": u, "permitida": rp.permite(u),
+            ok, regla = rp.regla(u)
+            filas.append({"url": u, "permitida": ok, "regla": regla,
                           "robots": info["estado"]})
         out[fuente] = {"todas_permitidas": all(f["permitida"] for f in filas), "urls": filas}
     return {"fuentes": out, "robots": {o: i for o, (_, i) in cache.items()}}

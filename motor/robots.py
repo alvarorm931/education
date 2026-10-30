@@ -47,15 +47,19 @@ class Robots:
         elegidas = propias or generales
         self.reglas = [(permite, ruta, _patron(ruta)) for grupo in elegidas for permite, ruta in grupo]
 
-    def permite(self, url: str) -> bool:
+    def regla(self, url: str) -> tuple[bool, str | None]:
+        """(permitido, regla que decide). Sin regla que case, permitido."""
         if self.todo_prohibido:
-            return False
+            return False, "robots.txt no disponible"
         p = urlparse(url)
         ruta = unquote(p.path or "/") + ("?" + p.query if p.query else "")
-        mejor, permitido = -1, True
+        mejor, permitido, cual = -1, True, None
         for permite, texto, patron in self.reglas:
             if patron.match(ruta):
                 largo = len(texto)
                 if largo > mejor or (largo == mejor and permite):
-                    mejor, permitido = largo, permite
-        return permitido
+                    mejor, permitido, cual = largo, permite, ("Allow: " if permite else "Disallow: ") + texto
+        return permitido, cual
+
+    def permite(self, url: str) -> bool:
+        return self.regla(url)[0]
