@@ -458,3 +458,26 @@ def test_sin_navegador_no_se_pinta(monkeypatch):
     monkeypatch.setattr(rastreador, "Dominio", DominioFalso)
     monkeypatch.setattr(e, "Navegador", lambda: (_ for _ in ()).throw(AssertionError("no debe abrir navegador")))
     assert not e.capturar(["https://a.es/spa"], guarda=e.Guarda(None))[0].get("pintada")
+
+
+def test_lista_qedu_solo_oficiales_sin_ficha_y_enlaces_nuevos(tmp_path):
+    import json as js
+    q = tmp_path / "q"
+    q.mkdir()
+    filas = [{"codTitula": "1", "detalle": {"enlace": "https://u.es/m1?utm_source=qedu"}},
+             {"codTitula": "2", "detalle": {"enlace": "https://u.es/m2"}},          # ya tiene ficha
+             {"codTitula": "3", "detalle": {"enlace": "https://u.es/m3"}},          # ya capturado
+             {"codTitula": "4", "detalle": {"enlace": ""}},
+             {"codTitula": "5", "detalle": {"enlace": "https://u.es/m1"}}]          # misma web, dos títulos
+    (q / "qedu_detalles_master_0_10.jsonl").write_text("".join(js.dumps(f) + "\n" for f in filas))
+    (tmp_path / "fichas.jsonl").write_text(js.dumps({"grupo": "oficial", "codigo_ruct": "2",
+                                                     "comprobacion_nombre": "confirmado"}) + "\n")
+    c = tmp_path / "c"
+    c.mkdir()
+    (c / "paginas_capturadas.jsonl").write_text(js.dumps({"url": "https://u.es/m3", "estado_http": 200,
+                                                          "caracteres_texto": 5000}) + "\n")
+    res = e.lista_qedu([q], tmp_path / "fichas.jsonl", [c], tmp_path / "o")
+    out = [js.loads(x) for x in (tmp_path / "o" / "oficiales_qedu.jsonl").read_text().split("\n") if x]
+    assert out == [{"url": "https://u.es/m1", "grupo": "oficial", "estado_emparejado": "qedu", "pagina": "principal",
+                    "codigos_ruct": ["1", "5"], "codigo_ruct": "1"}]
+    assert res["ya_con_ficha"] == 1 and res["enlace_ya_capturado"] == 1 and res["sin_enlace"] == 1

@@ -1073,6 +1073,60 @@ def lista_propios_de_oficiales(censo: Path, rastreos: list[Path], paginas_oficia
     return {**cuentas, "paginas": sum(cargas), "por_tramo": cargas, "servidores": len(hosts)}
 
 
+def lista_qedu(qedu: list[Path], fichas: Path, capturadas: list[Path], salida: Path) -> dict:
+    """Másters oficiales sin ficha web comprobada cuya web oficial da QEDU (el enlace de cada impartición): una
+    fila por enlace, unida a su código RUCT desde el principio. La extracción comprueba después el nombre de la
+    página contra el del RUCT, como con cualquier otra (fichas_masters.py)."""
+    from urllib.parse import urlparse
+
+    aceptados = {"confirmado", "probable_oficial", "confirmado_por_nombre"}  # como en conjunto_masters.py
+    con_ficha = set()
+    for l in fichas.read_text(encoding="utf-8").split("\n"):
+        if l.strip():
+            f = json.loads(l)
+            if f.get("grupo") == "oficial" and f.get("comprobacion_nombre") in aceptados:
+                con_ficha.add(f.get("codigo_ruct"))
+    ya = set()
+    for c in capturadas:
+        for f in sorted(c.rglob("paginas_capturadas.jsonl")):
+            for l in f.read_text(encoding="utf-8").split("\n"):
+                if l.strip():
+                    x = json.loads(l)
+                    if x.get("estado_http") == 200 and (x.get("caracteres_texto") or 0) >= MIN_CARACTERES:
+                        ya.add(x["url"])
+    por_url: dict[str, dict] = {}
+    cuentas = Counter()
+    for c in qedu:
+        for f in sorted(c.rglob("qedu_detalles_master_*.jsonl")):
+            for l in f.read_text(encoding="utf-8").split("\n"):
+                if not l.strip():
+                    continue
+                d = json.loads(l)
+                cod, enlace = d.get("codTitula"), ((d.get("detalle") or {}).get("enlace") or "").strip()
+                cuentas["imparticiones"] += 1
+                if not enlace or not urlparse(enlace).scheme.startswith("http"):
+                    cuentas["sin_enlace"] += 1
+                    continue
+                if cod in con_ficha:
+                    cuentas["ya_con_ficha"] += 1
+                    continue
+                enlace = _sin_seguimiento(enlace)
+                if enlace in ya:
+                    cuentas["enlace_ya_capturado"] += 1
+                    continue
+                fila = por_url.setdefault(enlace, {"url": enlace, "grupo": "oficial", "estado_emparejado": "qedu",
+                                                   "pagina": "principal", "codigos_ruct": []})
+                if cod not in fila["codigos_ruct"]:
+                    fila["codigos_ruct"].append(cod)
+    for f in por_url.values():
+        f["codigos_ruct"].sort()
+        f["codigo_ruct"] = f["codigos_ruct"][0]
+    salida.mkdir(parents=True, exist_ok=True)
+    (salida / "oficiales_qedu.jsonl").write_text("".join(json.dumps(f, ensure_ascii=False) + "\n" for f in por_url.values()),
+                                                 encoding="utf-8")
+    return {**cuentas, "enlaces": len(por_url), "codigos": len({c for f in por_url.values() for c in f["codigos_ruct"]})}
+
+
 def lista_segunda_vuelta(paginas_oficiales: Path, fichas: Path, capturadas: list[Path], salida: Path,
                          umbral: float = 0.5, por_master: int = 2) -> dict:
     """Másters oficiales sin página comprobada tras la primera extracción (no era la ficha, nombre de otro
@@ -1195,9 +1249,10 @@ def lista_tercera_vuelta(censo: Path, rastreos: list[Path], cc_urls: Path | None
 def main() -> None:
     p = argparse.ArgumentParser()
     p.add_argument("orden", choices=["lote", "retomar", "lista-oficiales", "lista-no-oficiales", "lista-propios-oficiales",
-                                     "lista-segunda-vuelta", "lista-tercera-vuelta",
+                                     "lista-segunda-vuelta", "lista-tercera-vuelta", "lista-qedu",
                                      "preparar", "enviar", "recoger"])
     p.add_argument("--censo")
+    p.add_argument("--qedu", action="append", default=[], help="lista-qedu: carpetas con qedu_detalles_master_*.jsonl")
     p.add_argument("--fichas")
     p.add_argument("--catalogo")
     p.add_argument("--commoncrawl")
@@ -1242,6 +1297,8 @@ def main() -> None:
     elif a.orden == "lista-no-oficiales":
         res = lista_no_oficiales(Path(a.clasificacion), [Path(x) for x in a.rastreo], Path(a.salida), a.por_proveedor,
                                  a.tramos, a.desde_por_proveedor)
+    elif a.orden == "lista-qedu":
+        res = lista_qedu([Path(x) for x in a.qedu], Path(a.fichas), [Path(x) for x in a.capturadas], Path(a.salida))
     elif a.orden == "lista-tercera-vuelta":
         res = lista_tercera_vuelta(Path(a.censo), [Path(x) for x in a.rastreo], Path(a.commoncrawl) if a.commoncrawl else None,
                                    Path(a.catalogo), Path(a.fichas), [Path(x) for x in a.capturadas], Path(a.salida),

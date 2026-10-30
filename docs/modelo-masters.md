@@ -517,8 +517,10 @@ Ordenados por lo que más acerca a tener, para cada máster, lo que hoy se da so
 2. **Precio de las públicas** desde los decretos (`docs/fuentes-precios-publicos.md`): precio por crédito de la
    comunidad × créditos, con la condición de habilitante del RUCT. No se publica un precio calculado sin la
    norma leída y la categoría del título comprobada.
-3. **Memorias del RUCT** (plazas verificadas, plan con asignaturas, evaluación ponderada) para los oficiales,
-   en el servidor de España, repartidas en noches.
+3. **Memorias del RUCT** (plazas verificadas, plan con asignaturas, evaluación ponderada) para los oficiales:
+   en marcha desde el 30/10/2026 desde GitHub (§10; el repositorio es público y los ejecutores de GitHub no
+   tienen límite de minutos, así que no hace falta el servidor de España, que queda para lo que GitHub no
+   alcanza).
 4. **Oficiales que siguen sin ficha** (1.835 de 4.734): Sevilla y Córdoba vetan el rastreo y la UOC da 403 (pedir
    permiso); UB, UPM, UPV, UC3M, UAM, Murcia, A Coruña, UPF y otras grandes tienen catálogos con URL opacas o
    que se pintan con JavaScript: la tercera vuelta las lee y las asigna por el nombre; lo que quede, conector
@@ -532,3 +534,62 @@ Ordenados por lo que más acerca a tener, para cada máster, lo que hoy se da so
    oficial» fuera de las webs del RUCT): ya se asignan por la universidad que dice la página; revisar los que
    no encajan.
 8. Becas, Excel de oferta de plazas, másters habilitantes y profesiones reguladas.
+
+## 10. Hasta que solo quede publicar (30/10/2026, desde las 11:15)
+
+Encargo de Álvaro: «tenemos que llegar hasta que no quede nada salvo publicar los datos». Lo que se ha puesto en
+marcha y cómo encaja (las cifras finales, en el apartado de resultados de abajo cuando terminen las ejecuciones).
+
+### Fuentes oficiales para todos los oficiales
+
+- **RUCT, ficha y memoria de los 4.734** (`ruct.py`). Orden de lectura en `sondas:ruct-masters/20261030/`: primero
+  los 1.835 sin ficha web, después los que no tienen dos de asignaturas, evaluación y plazas, etc. Una ejecución
+  de 108 tramos en fila (una petición por segundo contada desde el inicio de la anterior), cada tramo sube lo
+  suyo al terminar (`estudios.yml por_tramo=si`). Fichas en hora y media; memorias, unos tres días. Antes de
+  cada petición, robots.txt (excepción de registro público, la misma que grados: solo mientras no se pueda
+  leer). Cortes del servidor: espera de dos minutos y reintento; los cortes sueltos se reintentan al final; lo
+  que no se lee queda en `resumen-*.json` (`sin_leer`) para la siguiente pasada. Originales al almacén privado.
+  La memoria trae además la descripción del plan.
+- **QEDU de másteres** (`qedu_masters.py`, reutiliza `motor/grados/qedu.py` sin tocarlo): 5.561 imparticiones del
+  curso 2025-2026 (4.599 títulos). Por impartición: plazas, precio del crédito (públicas), modalidad, idioma,
+  enlace a la web oficial e inserción laboral del título. Es además la lista oficial de qué se imparte este
+  curso: de los 1.835 oficiales sin ficha web, 1.578 están en QEDU y 257 no (207 son altas del BOE aún sin
+  impartir).
+- **Precios públicos**: QEDU da el precio del crédito de cada impartición pública, de la fuente oficial; los
+  decretos (`docs/fuentes-precios-publicos.md`) quedan como control y para las condiciones (bonificaciones).
+
+### Lo que faltaba de las webs
+
+- **Citas**: con las reglas de la revisión, 14.206 datos seguían en revisión por «cita no literal». Ahora una
+  cita vale también si son las mismas palabras en el mismo orden sin contar tildes ni separadores («Modalidad:
+  Online» frente a «Modalidad | Online»), con los signos de fin de frase contando como palabra («No. Incluye»
+  no es «No incluye») y sin partir números; o en trozos con «...» de cuatro palabras o más, en orden y cerca.
+  Recupera 3.398 datos sin pagar nada (`retomar` de los 28 lotes). Además, una cita literal ya no vale dentro
+  de un decimal («1.500» en «1.500,50»). Cada hecho anota `cita_nivel`.
+- **Segunda oportunidad** (`recitar.py`): para los que siguen en revisión por la cita, se pide al modelo solo
+  el fragmento literal que dice ese valor, sobre el mismo texto exacto; se comprueba igual y el valor no cambia.
+- **Páginas que solo se pintan con JavaScript** (1.962 sin texto en el HTML): `extraer.py lote --navegador` las
+  pinta con Chromium sin cabeza, con robots.txt en cada petición, sin imágenes ni estilos, tres segundos entre
+  páginas del mismo servidor; las verificaciones antibots no se intentan pasar (quedan marcadas). Con ellas se
+  reintentan 759 sin respuesta y 109 con error 5xx, y las 118 de la Rioja que dieron 429, a una cada seis
+  segundos. No se reintentan los 404 (URL mal deducida: QEDU da la buena), los 403 ni los 202 (verificación).
+- **Cuarta tanda**: de las 44.510 fichas únicas de los rastreos de no oficiales quedaban 15.299 sin pedir, pero
+  más de la mitad eran lecciones, adjuntos y aulas virtuales (Zenith Sports, Magister, CEIBS) o ediciones de otros
+  años del mismo programa; quedan 6.300 programas. De los propios en webs de universidades, los 16.273 restantes
+  eran casi todos subpáginas de oficiales, trámites, noticias o un catálogo de EE. UU.; quedan 281 (99 másters
+  propios de la UAB). Los servidores que estaban en la recuperación van después, para no pasar de una petición
+  por segundo.
+
+### Conjunto final (`conjunto_masters.py`)
+
+Une todo por máster sin pedir nada: catálogo, RUCT (ficha y memoria), QEDU, webs y tarifas. Cada campo con
+valor, fuente, URL y fecha de captura; manda la fuente oficial (`PRIORIDAD`) y las demás quedan como
+alternativas si dicen otra cosa (plazas: QEDU del curso, con las verificadas de la memoria aparte y lo que dice
+la web como alternativa). Lo calculado se dice: precio total = precio del crédito × créditos, solo si no hay uno
+publicado; presencialidad = horas presenciales de las actividades de la memoria. **Fecha estable**: con
+`--anterior`, el dato que no cambia conserva su fecha de captura y solo cambia «revisado». Datos mínimos de la
+ley SEO (asignaturas y precio) e `indexable`. Aviso de página web antigua (solo habla de cursos de 2023 o antes).
+Privacidad: los textos de la memoria y de las webs pierden los párrafos con nombres de personas (motor.limpieza,
+más «Dr./Dra./Prof.» delante de un nombre) y los correos personales («[correo]»; los buzones de un servicio,
+como admisiones@ o info@, se dejan).
+
