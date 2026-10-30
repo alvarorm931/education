@@ -1,7 +1,10 @@
 {
  "fecha": "2024-12-23",
- "resultado": "fuente_inaccesible",
- "alertas": [
-  "No se pudo descargar https://bop.dacoruna.gal/bopportal/cambioBoletin?fechaInput=23%2f12%2f2024 tras 4 intentos: HTTPSConnectionPool(host='bop.dacoruna.gal', port=443): Max retries exceeded with url: /bopportal/cambioBoletin?fechaInput=23%2F12%2F2024 (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)')))"
- ]
+ "status": 200,
+ "alertas": [],
+ "resultado": "ok",
+ "numero": "246",
+ "sha256": "06613f538ccfaae4ebca9377c2aff5c4902ef89f0a220a529ac9a0324d6090a7",
+ "disposiciones": 59,
+ "empleo_publico": 25
 }
