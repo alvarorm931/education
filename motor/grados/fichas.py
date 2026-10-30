@@ -713,6 +713,41 @@ def resumen(fichas: list[dict], comparativa: list[dict]) -> dict:
     }
 
 
+FUENTE_BOE = "Fuente: Agencia Estatal Boletín Oficial del Estado"
+
+
+def fichas_proximas(altas: list[dict], catalogo: list[dict], planes: dict, ruct: dict | None = None) -> list[dict]:
+    """Grados con carácter oficial por acuerdo del Consejo de Ministros (BOE) que aún no están en el catálogo del
+    SIIU: los que empiezan en los próximos cursos. La ficha lleva el acuerdo, la universidad y, si ya está
+    publicado, su plan del BOE. Sin nota de corte ni precio todavía: no se indexan hasta tenerlos."""
+    from motor.grados.planes import resolver_universidad
+
+    en_catalogo = {t["codigo"] for t in catalogo}
+    universidades = {clave_universidad(u["nombre"]): u for t in catalogo for u in t["universidades"]}
+    tipo_de = {clave_universidad(u["nombre"]): t["universidad_tipo"] for t in catalogo for u in t["universidades"]}
+    salida = []
+    for a in altas:
+        cod = a.get("codigo_ruct")
+        if not cod or cod in en_catalogo:
+            continue
+        ku = resolver_universidad(clave_universidad(a.get("universidad")), set(universidades))
+        u = universidades.get(ku)
+        nombre = nombre_corto(a.get("nombre") or "")
+        candidatos = sorted(planes.get((ku, clave_union(nombre_base(nombre))), []),
+                            key=lambda p: p.get("fecha") or "", reverse=True)
+        plan = resumen_plan(next((p for p in candidatos if plan_comprobado(p)), candidatos[0])) if candidatos else None
+        salida.append({
+            "codigo": cod, "clase": "grado", "estado": "nuevo", "nombre": nombre, "nombre_oficial": a.get("nombre"),
+            "universidades": [u] if u else [{"nombre": a.get("universidad")}],
+            "universidad_tipo": tipo_de.get(ku),
+            "alta": {"boe": a.get("boe"), "url": f"https://www.boe.es/diario_boe/txt.php?id={a.get('boe')}",
+                     "cita": FUENTE_BOE},
+            "plan": plan, "ruct": resumen_ruct((ruct or {}).get(cod)),
+            "indexable": False, "motivos_noindex": ["grado nuevo: todavía sin nota de corte ni precio"],
+        })
+    return salida
+
+
 def main() -> None:
     p = argparse.ArgumentParser()
     p.add_argument("--catalogo", required=True)
@@ -736,13 +771,19 @@ def main() -> None:
                                     planes_por_identificador(Path(a.boe) if a.boe else None),
                                     indexar_tarifas(Path(a.tarifas) if a.tarifas else None),
                                     indexar_paginas_privadas(Path(a.web_privadas) if a.web_privadas else None))
+    altas_f = Path(a.boe) / "boe_altas.jsonl" if a.boe else None
+    proximas = fichas_proximas(_leer(altas_f), catalogo, indexar_planes(Path(a.boe), conocidas),
+                               indexar_ruct(Path(a.ruct) if a.ruct else None)) if altas_f and altas_f.exists() else []
     destino = Path(a.salida) / "datos" / "estudios" / "grados"
     destino.mkdir(parents=True, exist_ok=True)
-    for nombre, datos in (("fichas.jsonl", fichas), ("comparativa.jsonl", comparativa)):
+    for nombre, datos in (("fichas.jsonl", fichas), ("comparativa.jsonl", comparativa),
+                          ("fichas_proximas.jsonl", proximas)):
         with (destino / nombre).open("w", encoding="utf-8") as f:
             for x in datos:
                 f.write(json.dumps(x, ensure_ascii=False) + "\n")
     res = resumen(fichas, comparativa)
+    res["proximas"] = len(proximas)
+    res["proximas_con_plan_del_boe"] = sum(1 for x in proximas if x["plan"])
     (destino / "fichas_resumen.json").write_text(json.dumps(res, ensure_ascii=False, indent=1), encoding="utf-8")
     print(json.dumps(res, ensure_ascii=False, indent=1))
 

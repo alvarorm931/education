@@ -214,3 +214,13 @@ def test_precio_del_doble_por_la_regla_de_su_comunidad():
     assert precios.precio_doble("Madrid (Comunidad de)", [19.43, 16.92])["precio_credito"] == 18.18
     assert precios.precio_doble("Madrid (Comunidad de)", [19.43, None]) is None
     assert precios.precio_doble("Comunidad sin regla", [10.0, 10.0]) is None
+
+
+def test_fichas_proximas_de_altas_que_no_estan_en_el_catalogo():
+    altas = [{"codigo_ruct": "2500828", "nombre": "Graduado o Graduada en Derecho", "universidad": "Universidad Complutense de Madrid", "boe": "BOE-A-1"},
+             {"codigo_ruct": "2599999", "nombre": "Graduado o Graduada en Derecho", "universidad": "Universidad Complutense de Madrid", "boe": "BOE-A-2"}]
+    planes = {(fichas.clave_universidad("Complutense de Madrid"), "derecho"): [PLAN]}
+    xs = fichas.fichas_proximas(altas, _cat(), planes)
+    assert [x["codigo"] for x in xs] == ["2599999"]
+    assert xs[0]["estado"] == "nuevo" and xs[0]["plan"]["comprobado"] and not xs[0]["indexable"]
+    assert xs[0]["alta"]["url"].endswith("BOE-A-2")
