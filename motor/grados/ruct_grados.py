@@ -86,6 +86,24 @@ def muestra(catalogo: list[dict], n: int, semilla: int) -> list[str]:
     return salida + rnd.sample(dob, 2)
 
 
+LARGO_PUBLICABLE = 300  # caracteres: por encima, un texto de la memoria no va a la rama pública
+
+
+def sin_textos(x):
+    """La memoria con su estructura (módulos, materias, asignaturas, créditos, carácter, despliegue, plazas) y sin
+    los textos largos (competencias, contenidos, acceso…): esos van enteros al almacén privado con la página
+    original; en la rama pública queda su tamaño y su huella."""
+    import hashlib
+
+    if isinstance(x, dict):
+        return {k: sin_textos(v) for k, v in x.items()}
+    if isinstance(x, list):
+        return [sin_textos(v) for v in x]
+    if isinstance(x, str) and len(x) > LARGO_PUBLICABLE:
+        return {"caracteres": len(x), "sha256": hashlib.sha256(x.encode("utf-8")).hexdigest()}
+    return x
+
+
 def resumen_memoria(m: dict) -> dict:
     materias = [x for b in m.get("plan", []) for x in b.get("materias", [])]
     asignaturas = [a for x in materias for a in x.get("asignaturas", [])]
@@ -149,8 +167,9 @@ def ejecutar(codigos: list[str], raiz: Path, nivel: str, max_minutos: float) -> 
         if "error" in ficha:
             errores[ficha["error"]] += 1
         elif nivel == "memoria":
-            ficha["memoria"] = ruct.leer_memoria(lector, ficha, max_paginas=MAX_PAGINAS)
-            resumenes[codigo] = resumen_memoria(ficha["memoria"])
+            memoria = ruct.leer_memoria(lector, ficha, max_paginas=MAX_PAGINAS)
+            resumenes[codigo] = resumen_memoria(memoria)
+            ficha["memoria"] = sin_textos(memoria)
         (destino / f"{codigo}.json").write_text(json.dumps(ficha, ensure_ascii=False, indent=1), encoding="utf-8")
         hechos += 1
     if recientes_fallidos:

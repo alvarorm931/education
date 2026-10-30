@@ -75,3 +75,16 @@ def test_cortes_del_servidor_se_esperan_y_se_reintenta(monkeypatch, tmp_path):
     monkeypatch.setattr(ruct_grados.ruct, "leer_ficha", ficha)
     res = ruct_grados.ejecutar(["A", "B", "C", "D", "E"], tmp_path, "ficha", 5)
     assert res["hechos"] == 5 and res["alerta"] is None and not res["errores"]
+
+
+def test_memoria_publicable_sin_textos_largos():
+    from motor.grados.ruct_grados import sin_textos
+    m = {"plan": [{"materias": [{"nombre": "Anatomía", "caracter": "Básica", "ects": 6.0, "despliegue": {"1": 6.0},
+                                 "textos": ["x" * 2000]}]}], "acceso": {"textos": ["y" * 400]},
+         "centros": [{"normas_permanencia": "https://u.es/n.pdf", "plazas_total": 140.0}]}
+    p = sin_textos(m)
+    mat = p["plan"][0]["materias"][0]
+    assert (mat["nombre"], mat["caracter"], mat["ects"], mat["despliegue"]) == ("Anatomía", "Básica", 6.0, {"1": 6.0})
+    assert mat["textos"][0]["caracteres"] == 2000 and len(mat["textos"][0]["sha256"]) == 64
+    assert p["acceso"]["textos"][0]["caracteres"] == 400
+    assert p["centros"][0] == {"normas_permanencia": "https://u.es/n.pdf", "plazas_total": 140.0}
