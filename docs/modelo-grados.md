@@ -399,6 +399,12 @@ Ministerio).
     idiomas, nombres catalanes mal traducidos: 87 ofertas), que quedan sin publicar.
   - Nota del título en el centro: la menor de sus ofertas (menciones, grupos de idioma, títulos con máster), que es
     como la da QEDU.
+  - **Cupos de reserva** (`notas_corte.notas_de_otros_cupos`, desde el 30/10 por la noche): titulados, mayores de
+    25, 40 y 45, convocatoria ordinaria, la menor de las ofertas. Salen de la misma fila del mismo documento que la
+    del cupo general, así que van con su histórico solo si este es publicable (`otros_cupos` en
+    `centros[].notas_historicas`, con su rótulo). Cada cupo tiene su propia prueba o baremo: sus notas no se comparan
+    con las del general (en Andalucía y la UPV/EHU, mayores de 40 pasa de 10). Un 5,000 se publica como «se admitió a
+    todos los que lo pidieron por ese cupo»; una casilla vacía (sin plazas o sin cupo) no sale.
   - Contraste con QEDU en los cursos que se solapan (nota por encima de 5,000; QEDU redondea o trunca a dos
     decimales): además de «igual», dos diferencias que no indican una unión equivocada sino que QEDU toma la nota en
     otro momento del proceso: la del distrito es la de la última lista y queda por debajo de la de QEDU (menos de un
@@ -482,7 +488,7 @@ pedir nada a ninguna fuente, y marca cada ficha como indexable o no, con el moti
 | Con precio de primera matrícula (públicas) | 2.113 de 2.239 grados y 498 de 647 dobles de públicas |
 | De ellos, con el precio de la norma de su comunidad (QEDU no lo da) | 508 |
 | Privadas con precio por curso | 355 de 1.410 (y 12 centros adscritos de públicas con el precio de su web) |
-| Con histórico de notas de corte comprobado | 1.430 (1.569 centros; 963 con cinco cursos o más) |
+| Con histórico de notas de corte comprobado | 1.430 (1.569 centros; 963 con cinco cursos o más; 1.030 con los cupos de reserva) |
 | Con inserción laboral | 1.703 |
 | Con indicadores de rendimiento del SIIU | 3.125 |
 | Con ficha del RUCT | 3.265 |
@@ -550,8 +556,9 @@ comprobados por asignaturas:
 5. Notas de corte del resto de distritos. Tampoco responden desde el servidor de España (prueba de las 13:29): CiUG
    de Galicia y Universidad de Oviedo (su robots.txt no contesta, así que no se pide nada), ULPGC y Extremadura
    (403), La Rioja (429); la Comunitat Valenciana solo deja la primera adjudicación de 2026-2027 de la UV.
-   Ilegibles: Burgos, UCLM y UPV/EHU desde 2022-2023. Pública de Navarra: sin lista final. Falta también publicar
-   los cupos distintos del general (Madrid, Andalucía y UPV/EHU ya los leen).
+   Ilegibles: Burgos, UCLM y UPV/EHU desde 2022-2023. Pública de Navarra: sin lista final. Los cupos de reserva (titulados,
+   mayores de 25, 40 y 45) ya van en las fichas junto al histórico publicable del cupo general
+   (1.030 centros: Madrid, Andalucía y UPV/EHU); la convocatoria extraordinaria de Madrid y Cantabria, todavía no.
 6. Mantenerlo al día: BOE diario (planes y modificaciones nuevos), QEDU y SIIU cada curso, RUCT semanal
    (acreditaciones y extinciones), webs de privadas en primavera-verano, notas de corte en cada adjudicación.
 7. Generador de páginas de grado con el diseño «Noche en blanco» y el control de la ley SEO.
