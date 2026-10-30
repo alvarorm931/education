@@ -14,6 +14,7 @@ Formato verificado el 30/10/2026 desde GitHub:
 Uso:
   python -m motor.provinciales.bopleon --salida ruta/                       # ayer y hoy
   python -m motor.provinciales.bopleon --desde 2025-02-17 --max-minutos 30 --salida ruta/
+  python -m motor.provinciales.bopleon --textos --max-minutos 30 --salida ruta/
 """
 
 from __future__ import annotations
@@ -35,6 +36,7 @@ from motor.autonomicos.comun import (Freno, clasificar, convocante_de_organismo,
                                      escribir_jsonl)
 from motor.boe.clasificar import normalizar
 from motor.http import obtener
+from motor.provinciales.comun import descargar_textos_pdf, ruta_texto_pdf
 
 FUENTE = "bopleon"
 SIGLAS = "BOP-LEON"
@@ -45,6 +47,7 @@ NOMBRES = ("Boletín Oficial de la Provincia de León",)
 
 RE_CABECERA = re.compile(r"<h1><strong>BOP n[uú]m\.\s*(?P<n>\d+)</strong>\s*del\s*(?P<d>\d{2})/(?P<m>\d{2})/(?P<a>\d{4})</h1>")
 RE_SUMARIO = re.compile(r'href="(?P<url>/export/sites/bop/\.galleries/DOCUMENTOS-Sumarios-en-PDF/[^"]+\.pdf)"')
+RE_PDF_ANUNCIO = re.compile(r'href="(?P<url>/export/sites/bop/\.galleries/Documentos-Anuncios-en-PDF/[^"]+\.pdf)"')
 RE_RUIDO = re.compile(r"^(Bolet[íi]n n[úu]m\.|\w+ \d{1,2} de \w+ de \d{4} - p[áa]gina|P[áa]gina \d+ de \d+ del sumario|"
                       r"CVE del|Sumario\s+\[\d+ anuncios?\])", re.IGNORECASE)
 
@@ -150,6 +153,33 @@ def parsear_sumario(pdf: bytes) -> tuple[list[dict], list[str]]:
     return anuncios, alertas
 
 
+def resolver_pdfs(raiz: Path, pausa: float = 1.0, max_minutos: float = 0) -> int:
+    """La ficha de cada anuncio de empleo (url_anuncio) enlaza su PDF firmado: se anota en url_pdf para descargar
+    luego los textos. Devuelve cuántos se han resuelto."""
+    from motor.autonomicos.comun import leer_jsonl
+    inicio, hechos = time.monotonic(), 0
+    for f in sorted((_base(raiz) / "oposiciones").glob("*/*/*.jsonl"), reverse=True):
+        filas, cambio = leer_jsonl(f), False
+        for x in filas:
+            if x.get("url_pdf") or not x.get("url_anuncio") or ruta_texto_pdf(_base(raiz), x).exists():
+                continue
+            if max_minutos and (time.monotonic() - inicio) / 60 > max_minutos:
+                break
+            time.sleep(pausa)
+            try:
+                r = obtener(x["url_anuncio"], accept="text/html")
+            except (ConnectionError, TimeoutError):
+                continue
+            m = RE_PDF_ANUNCIO.search(r.contenido.decode("utf-8", errors="replace")) if r.status == 200 else None
+            if m:
+                x["url_pdf"], cambio, hechos = WEB + html.unescape(m.group("url")), True, hechos + 1
+        if cambio:
+            escribir_jsonl(f, filas)
+        if max_minutos and (time.monotonic() - inicio) / 60 > max_minutos:
+            break
+    return hechos
+
+
 def es_local(x: dict) -> bool:
     return "administracion local" in normalizar(x.get("seccion") or "")
 
@@ -228,8 +258,16 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--salida", type=Path, default=Path("."))
     p.add_argument("--max-minutos", type=float, default=0)
     p.add_argument("--pausa", type=float, default=1.0)
+    p.add_argument("--textos", action="store_true", help="PDF de cada anuncio de empleo (por su ficha)")
     a = p.parse_args(argv)
     archivo = Archivo(a.salida / "archivo", indice_por_fuente=True, solo_huella=solo_huella_por_defecto())
+    if a.textos:
+        resueltos = resolver_pdfs(a.salida, a.pausa, a.max_minutos / 2 if a.max_minutos else 0)
+        hechos, errores, pendientes = descargar_textos_pdf(_base(a.salida), FUENTE, archivo,
+                                                           a.max_minutos / 2 if a.max_minutos else 0, a.pausa)
+        print(f"BOP León textos: {resueltos} PDF localizados, {hechos} descargados, {errores} errores, "
+              f"{pendientes} pendientes")
+        return 0
     inicio, informes, freno = time.monotonic(), [], Freno()
     d = a.hasta
     while d >= max(a.desde, INICIO):

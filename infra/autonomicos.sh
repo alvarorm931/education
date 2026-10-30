@@ -323,6 +323,8 @@ for c in $CONECTORES; do
       ejecutar motor.provinciales.bopleon --salida "$S"
       ejecutar motor.provinciales.bopleon --desde 2025-02-17 --salida "$S" --max-minutos "$M"
       "$G" "BOP León: boletines"
+      ejecutar motor.provinciales.bopleon --textos --salida "$S" --max-minutos "$M"
+      "$G" "BOP León: textos"
       ;;
     bopb)
       # El del día por el canal de datos abiertos; los anteriores por el listado por días y los textos en PDF (cerrados
