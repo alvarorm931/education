@@ -113,3 +113,16 @@ def test_catalan_doble_por_simultaneidad():
     x = {**_fila("Criminologia / Dret (simultaneïtat)", 9.0), "distrito": "cataluna", "lista": "primera_asignacion"}
     nc.unir([x], cands)
     assert x["codigo_titulo"] == "3"
+
+
+def test_salamanca_grupo_general_y_tipo_de_lista():
+    lineas = ["NOTAS DE CORTE EN LOS GRADOS DE LA USAL EN EL CURSO 2026-27",
+              "correspondientes al último estudiante admitido en cada titulación, según el tercery último   listado.",
+              "                                  Biología                                             180          "
+              "09.228 (prioritaria ordinaria)            05.000 (ordinaria)",
+              "   Antropología-Filosofía                                        10        05.000 (no prioritaria extraord.)",
+              "        Administración y Dirección de Empresas-                   30           11.467      (prioritaria ordinaria)"]
+    f = nc.leer_usal(lineas)
+    assert [(x["titulacion"], x["nota"], x["plazas"], x["todos_admitidos"]) for x in f] == [
+        ("Biología", 9.228, 180, False), ("Antropología-Filosofía", 5.0, 10, True)]  # el doble partido, fuera
+    assert f[0]["curso"] == "2026-2027" and f[0]["lista"] == "tercer_listado"

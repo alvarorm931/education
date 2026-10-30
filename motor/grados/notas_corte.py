@@ -137,7 +137,7 @@ def palabras(nombre: str, catalan: bool = False) -> frozenset[str]:
 def partes(nombre: str) -> list[str]:
     """Los dos grados de un doble escrito «A - B», «A-B», «A / B» o «A + B» (sin lo que va entre paréntesis)."""
     base = re.sub(r"\([^)]*\)", " ", ANEXO_OFERTA.sub("", nombre))
-    return [z for z in re.split(r"\s*(?:\s-\s|(?<=[A-Za-záéíóúñ.])-(?=[A-ZÁÉÍÓÚ])|/|\s\+\s)\s*", base) if z.strip()]
+    return [z for z in re.split(r"\s*(?:\s-\s|(?<=[A-Za-záéíóúñ.])-\s*(?=[A-ZÁÉÍÓÚ])|/|\s\+\s)\s*", base) if z.strip()]
 
 
 def pistas(nombre: str) -> list[str]:
@@ -290,6 +290,32 @@ def leer_murcia(lineas: list[str]) -> list[dict]:
     return filas
 
 
+# ------------------------------------------------------------------------------------------------- Salamanca
+
+def leer_usal(lineas: list[str]) -> list[dict]:
+    """Notas de corte de la Universidad de Salamanca (un PDF por curso): nombre del grado, plazas y, primero, la
+    nota del grupo general con su tipo entre paréntesis («prioritaria ordinaria», «no prioritaria extraord.»: si el
+    último admitido no era prioritario, entraron todos los prioritarios). Las finales y las de «tras llamamientos»
+    son la última lista; la del tercer listado (curso en marcha) no lo es."""
+    texto = " ".join(lineas[:60])
+    m = re.search(r"CURSO\s+(20\d\d)\s*[-/]\s*(\d\d)", texto, re.I) or re.search(r"(20\d\d)-(\d\d)\b", texto)
+    if not m:
+        return []
+    curso = f"{m.group(1)}-20{m.group(2)}"
+    lista = "tercer_listado" if re.search(r"tercer\w*\s*y?\s*último\s+listado", texto, re.I) else "final"
+    filas = []
+    for linea in lineas:
+        m = re.match(r"\s*(\S.*?\S)\s{2,}(\d{1,3})\s{2,}(\d{2}\.\d{3})\s*\(\s*([^)]*)\)", linea)
+        if not m or re.search(r"(?i)graduado|plazas", m.group(1)) or re.search(r"[-–]\s*$", m.group(1)):
+            continue  # cabeceras, o un doble cuyo segundo grado va en otra línea (nombre incompleto)
+        tipo = re.sub(r"\s+", " ", m.group(4)).strip()
+        filas.append({"distrito": "salamanca", "curso": curso, "universidad": "Salamanca", "codigo_local": None,
+                      "titulacion": re.sub(r"\s+", " ", m.group(1)), "plazas": int(m.group(2)), "cupo": "general",
+                      "convocatoria": None, "lista": lista, "nota": float(m.group(3)), "sin_plazas": False,
+                      "todos_admitidos": tipo.lower().startswith("no prior"), "tipo_ultimo_admitido": tipo})
+    return filas
+
+
 # ------------------------------------------------------------------------------------------------- Cataluña
 
 SIGLAS_CAT = {"UB": "Barcelona", "UAB": "Autónoma de Barcelona", "UPC": "Politécnica de Catalunya", "UPF": "Pompeu Fabra",
@@ -336,6 +362,8 @@ LECTORES = {
     "madrid": (leer_madrid, lambda d: d.get("formato") == "pdf", CITA_MADRID),
     "murcia": (leer_murcia, lambda d: d.get("formato") == "csv" and "datos.um.es" in d["url"],
                "Universidad de Murcia, datos abiertos: nota de corte de grado"),
+    "castilla-leon": (leer_usal, lambda d: "usal.es/files/acceso/notas_corte" in d["url"] and d.get("formato") == "pdf",
+                      "Universidad de Salamanca: notas de corte de grado"),
     "cataluna": (leer_cataluna, lambda d: "/resource/usyn-hngc" in d["url"],
                  "Generalitat de Catalunya, datos abiertos: notas de corte de acceso a los estudios universitarios"),
 }
@@ -550,9 +578,9 @@ def nota_del_titulo(filas: list[dict]) -> dict[tuple, dict]:
 def historico(filas: list[dict], cands: dict[str, list[dict]]) -> list[dict]:
     """Por título y centro: la nota de corte del cupo general por curso (la menor de sus ofertas, como QEDU) y el
     contraste con QEDU en los cursos que se solapan. Si en alguno no coincide (con una nota por encima de 5,000, que
-    es «entraron todos»), el histórico de ese título y centro no se publica (`publicable`: false). Si la nota no es
+    es «entraron todos»), el histórico de ese título y centro no se publica (`publicable`: false). Si ninguna nota es
     la final (Cataluña da la de la primera asignación, que no se puede contrastar con la de QEDU), solo se publica
-    si las plazas del distrito y las de QEDU coinciden en el mismo curso, y con su tipo de lista."""
+    si las plazas del distrito y las de QEDU coinciden en el mismo curso. Cada curso lleva su tipo de lista."""
     por_cod = {(c["codigo"], c["centro"]): c for cs in cands.values() for c in cs}
     por: dict[tuple, dict] = defaultdict(dict)
     for (tit, cen, curso), v in nota_del_titulo(filas).items():
@@ -565,7 +593,7 @@ def historico(filas: list[dict], cands: dict[str, list[dict]]) -> list[dict]:
             q = c["notas_qedu"].get(curso)
             if q is not None and v["nota"] > 5 and v["lista"] == "final":
                 contraste["igual" if igual_a_qedu(q, v["nota"]) else "distinta"] += 1
-        finales = all(v["lista"] == "final" for v in cursos.values())
+        finales = any(v["lista"] == "final" for v in cursos.values())
         # sin nota final que contrastar (Cataluña): vale si las plazas del distrito coinciden con las de QEDU en el
         # mismo curso, señal de que la oferta unida por el nombre es la misma
         plazas_iguales = [curso for curso, v in cursos.items() if v.get("plazas") is not None
@@ -580,7 +608,8 @@ def historico(filas: list[dict], cands: dict[str, list[dict]]) -> list[dict]:
                        # una nota de primera asignación (Cataluña) no se puede contrastar con la final de QEDU: no se
                        # publica hasta tener otra comprobación
                        "publicable": not contraste.get("distinta") and (finales or bool(plazas_iguales)),
-                       "lista": "final" if finales else next(iter(cursos.values()))["lista"]})
+                       "lista": "final" if all(v["lista"] == "final" for v in cursos.values())
+                       else "varias" if finales else next(iter(cursos.values()))["lista"]})
     return salida
 
 
