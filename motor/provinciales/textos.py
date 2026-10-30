@@ -4,7 +4,7 @@ personas (fuera de CON_TEXTO) solo el recuento de líneas con documento de ident
   - Con un PDF por anuncio (url_pdf): Zamora, BOTHA, Ávila, Jaén y Salamanca.
   - Con el PDF del boletín entero: Lugo y Palencia (página de cada anuncio), Tenerife y Las Palmas (sin página: se
     busca el título). Se descarga el boletín una vez y se corta el texto de cada anuncio de empleo desde su título
-    hasta el título del anuncio siguiente (o, si no se encuentra, sus páginas).
+    hasta el título del anuncio siguiente; si no se encuentra el título, sin texto (nunca el de otro anuncio).
 
 Uso: python -m motor.provinciales.textos FUENTE --salida ruta/ [--max-minutos 30]
 """
@@ -46,6 +46,9 @@ def paginas_pdf(contenido: bytes) -> list[str]:
     return [p.extract_text() or "" for p in PdfReader(io.BytesIO(contenido)).pages]
 
 
+RE_INDICE = re.compile(r"\.{5,}|…{2,}|(?:\. ){4,}")
+
+
 def _posicion(plano: str, titulo: str, desde: int) -> int:
     """Dónde empieza el título (sus primeras palabras) en el texto plano del boletín, desde una posición."""
     palabras = _plano(titulo).split()
@@ -57,10 +60,18 @@ def _posicion(plano: str, titulo: str, desde: int) -> int:
     return -1
 
 
+def es_pagina_de_sumario(pagina: str) -> bool:
+    """Página del sumario del propio boletín: muchas líneas con puntos hasta el número de página o de registro."""
+    lineas = [l for l in pagina.splitlines() if l.strip()]
+    con_puntos = sum(1 for l in lineas if RE_INDICE.search(l))
+    return con_puntos >= 4 and con_puntos >= 0.2 * len(lineas)
+
+
 def cortar(paginas: list[str], anuncios: list[dict]) -> dict[str, tuple[str, list[int]]]:
     """Texto de cada anuncio del boletín (en su orden): de su título al del siguiente. Con «pagina», la búsqueda
-    empieza en su página; si el título no aparece, el texto son sus páginas (hasta la del anuncio siguiente)."""
-    planos = [_plano(p) for p in paginas]
+    empieza en su página. Si el título no aparece, el anuncio se queda sin texto (nunca con el de otro)."""
+    # Las páginas del sumario se dejan en blanco (con su largo) para no confundir sus títulos con los del cuerpo
+    planos = [" " * len(_plano(p)) if es_pagina_de_sumario(p) else _plano(p) for p in paginas]
     inicio_pag, acumulado = [], 0
     for p in planos:
         inicio_pag.append(acumulado)
@@ -79,12 +90,13 @@ def cortar(paginas: list[str], anuncios: list[dict]) -> dict[str, tuple[str, lis
         i = posiciones[k]
         siguiente = next((p for p in posiciones[k + 1:] if p > i), -1) if i >= 0 else -1
         if i >= 0:
-            fin = siguiente if siguiente > i else len(plano)
+            # Sin anuncio siguiente localizado, como mucho hasta el final de la página siguiente a la de inicio
+            pag_ini = max(n for n, ini in enumerate(inicio_pag) if ini <= i)
+            tope = inicio_pag[pag_ini + 2] if pag_ini + 2 < len(inicio_pag) else len(plano)
+            fin = siguiente if siguiente > i else tope
             pags = [n + 1 for n, ini in enumerate(inicio_pag) if ini <= fin and ini + len(planos[n]) >= i]
-        elif isinstance(x.get("pagina"), int):
-            sig = next((a.get("pagina") for a in anuncios[k + 1:] if isinstance(a.get("pagina"), int)), x["pagina"])
-            pags = list(range(x["pagina"], max(x["pagina"], sig) + 1))
         else:
+            # Sin el título no se sabe dónde empieza ni acaba: mejor sin texto que con el de otro anuncio
             continue
         # El texto se toma de las páginas originales (con sus saltos de línea), recortado a lo que toca si se puede
         bruto = "\n".join(paginas[n - 1] for n in pags if 0 < n <= len(paginas))

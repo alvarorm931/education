@@ -22,3 +22,13 @@ def test_cortar_sin_pagina():
     c = cortar(paginas, [{"id": "a", "titulo": "Convocatoria de dos plazas de bombero"},
                          {"id": "b", "titulo": "Modificación de créditos 5/2026"}])
     assert "Texto de bombero" in c["a"][0] and "créditos" not in c["a"][0]
+
+
+def test_salta_el_sumario_del_boletin():
+    sumario = "SUMARIO\n" + "".join(f"{n} Anuncio número {n} ............................ {n}\n" for n in range(1, 6)) + \
+        "2040825 Convocatoria de una plaza de Técnico Jurídico ........................ 28017\n"
+    cuerpo = "AYUNTAMIENTO DE LA GUANCHA\nConvocatoria de una plaza de Técnico Jurídico\nPrimera. Objeto.\n"
+    c = cortar([sumario, cuerpo], [{"id": "a", "titulo": "Convocatoria de una plaza de Técnico Jurídico"}])
+    assert c["a"][1] == [2] and "Primera. Objeto" in c["a"][0] and "......" not in c["a"][0]
+    # sin el título en el cuerpo, sin texto (nunca el de otro anuncio)
+    assert cortar([sumario, "Otro anuncio distinto\n"], [{"id": "b", "pagina": 2, "titulo": "Bases de bombero"}]) == {}

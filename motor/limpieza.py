@@ -16,7 +16,9 @@ import html
 import re
 
 RE_DOCUMENTO = re.compile(
-    r"(\b\d{8}\s?[A-Z]\b|\b[XYZ]\d{7}\s?[A-Z]\b|\*{2,}\d{3,5}\*{1,}|\b\d{3,4}\*{3,}|\*{3,}\d{4}[A-Z]?\b|\bX{3,}\d{3,}X*)"
+    r"(\b\d{8}\s?[A-Z]\b|\b[XYZ]\d{7}\s?[A-Z]\b|\*{2,}\d{3,5}\*{1,}|\b\d{3,4}\*{3,}|\*{3,}\d{4}[A-Z]?\b|\bX{3,}\d{3,}X*"
+    # documentos enmascarados con guiones, puntos o equis («77----74W», «12··345·X», «xxx1234xx»), 30/10/2026
+    r"|\b\d{1,5}[-·.xX#]{2,}\d{1,5}\s?[A-Z]?\b|\b[xX#]{2,}\d{3,5}[xX#]{1,}\b)"
 )
 # Cabeceras de tablas con datos de personas, en castellano, gallego, catalán y euskera («D.N.I», «Nome e Apelidos»,
 # «Nom i cognoms», «Izen-abizenak»)
