@@ -123,3 +123,16 @@ def test_albacete_boletin_completo_y_reparar(tmp_path, monkeypatch):
     assert leer_jsonl(base / "oposiciones" / "2026" / "10" / "28.jsonl")[0]["url_pdf_boletin"].endswith("?a=22769")
     al.main(["--reparar-boletin", "--salida", str(tmp_path)])  # ya hecho: no se vuelve a leer
     assert len(leidas) == 1
+
+
+def test_albacete_enlace_por_el_id_del_calendario(tmp_path):
+    """El sumario del histórico no trae el enlace al boletín completo: sale del «id» del calendario."""
+    from datetime import date
+
+    from motor.autonomicos.comun import escribir_jsonl, leer_jsonl
+    from motor.provinciales import bopalbacete as al
+    r = tmp_path / "datos" / "provinciales" / "bopalbacete" / "oposiciones" / "2022" / "01" / "03.jsonl"
+    escribir_jsonl(r, [{"id": "x"}])
+    assert al.anotar_boletin(tmp_path, date(2022, 1, 3), al.url_boletin_id("19042")) == 1
+    assert leer_jsonl(r)[0]["url_pdf_boletin"] == "https://bop.dipualba.es/servicesajax/descararchivobopcompleto/?a=19042"
+    assert al.anotar_boletin(tmp_path, date(2022, 1, 3), al.url_boletin_id("1")) == 0  # ya lo tiene

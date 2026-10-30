@@ -36,6 +36,25 @@ def _t(s: str) -> str:
 RE_COMPLETO = re.compile(r"servicesajax/descararchivobopcompleto/\?a=(\d+)")
 
 
+def url_boletin_id(ident: str | int) -> str:
+    """El calendario da el identificador de cada boletín («id»: 22769), el mismo del enlace al boletín completo."""
+    return f"{BASE}/servicesajax/descararchivobopcompleto/?a={ident}"
+
+
+def anotar_boletin(raiz, d, url: str) -> int:
+    """Pone url_pdf_boletin a los anuncios de un día que aún no lo tienen. Devuelve 1 si ha cambiado algo."""
+    from motor.autonomicos.comun import escribir_jsonl, leer_jsonl
+    cambio = 0
+    for carpeta in ("disposiciones", "oposiciones"):
+        r = raiz / "datos" / "provinciales" / FUENTE / carpeta / f"{d:%Y}" / f"{d:%m}" / f"{d:%d}.jsonl"
+        if r.exists():
+            filas = leer_jsonl(r)
+            if filas and any(not x.get("url_pdf_boletin") for x in filas):
+                escribir_jsonl(r, [{**x, "url_pdf_boletin": x.get("url_pdf_boletin") or url} for x in filas])
+                cambio = 1
+    return cambio
+
+
 def url_boletin(h: str) -> str | None:
     m = RE_COMPLETO.search(h)
     return f"{BASE}/servicesajax/descararchivobopcompleto/?a={m.group(1)}" if m else None
@@ -109,7 +128,7 @@ def historico(argv: list[str] | None = None) -> int:
         return 1
     cab = {"RequestVerificationToken": token.group(1), "X-Requested-With": "XMLHttpRequest"}
     hoy = datetime.now(ZoneInfo("Europe/Madrid")).date()
-    anio, mes, inicio, freno, hechos = hoy.year, hoy.month, time.monotonic(), Freno(), 0
+    anio, mes, inicio, freno, hechos, anotados = hoy.year, hoy.month, time.monotonic(), Freno(), 0, 0
     while (anio, mes) >= (2022, 1):
         if args.max_minutos and (time.monotonic() - inicio) / 60 > args.max_minutos:
             print("Tiempo agotado; se continúa en la siguiente ejecución")
@@ -127,6 +146,8 @@ def historico(argv: list[str] | None = None) -> int:
             d = date.fromisoformat(ev["start"][:10])
             ruta = _ruta(PORTADA, args.salida, "dias", d, "json")
             if d >= hoy or (ruta.exists() and json.loads(ruta.read_text(encoding="utf-8")).get("resultado") == "ok"):
+                if ev.get("id") and ruta.exists():
+                    anotados += anotar_boletin(args.salida, d, url_boletin_id(ev["id"]))
                 continue
             if args.max_minutos and (time.monotonic() - inicio) / 60 > args.max_minutos:
                 parar = True
@@ -143,6 +164,8 @@ def historico(argv: list[str] | None = None) -> int:
                 inf = _guardar(PORTADA, s, Respuesta(rs.url, 200, h, rs.cabeceras),
                                f"{BASE}/servicesajax/obtenersumariobop#{ev.get('fechabop')}", args.salida, archivo,
                                "historico")
+                if ev.get("id"):
+                    anotar_boletin(args.salida, d, url_boletin_id(ev["id"]))
                 hechos += 1
             else:
                 inf = {"fecha": d.isoformat(), "resultado": "error_formato",
@@ -154,7 +177,7 @@ def historico(argv: list[str] | None = None) -> int:
         if parar:
             break
         anio, mes = (anio, mes - 1) if mes > 1 else (anio - 1, 12)
-    print(f"BOP Albacete histórico: {hechos} boletines nuevos")
+    print(f"BOP Albacete histórico: {hechos} boletines nuevos; enlace al boletín completo en {anotados} días más")
     return 0
 
 
