@@ -45,7 +45,8 @@ def ruta_texto_pdf(base, x: dict):
 
 
 def descargar_textos_pdf(base, fuente: str, archivo, max_minutos: float, pausa: float,
-                         cabeceras: re.Pattern | None = None, campo: str = "url_pdf") -> tuple[int, int, int]:
+                         cabeceras: re.Pattern | None = None, campo: str = "url_pdf",
+                         accept: str = "application/pdf") -> tuple[int, int, int]:
     """Descarga y limpia el PDF de cada anuncio de empleo pendiente. Devuelve (hechos, errores, pendientes)."""
     from motor.autonomicos.comun import descargar_textos
     pend = textos_pdf_pendientes(base, campo)
@@ -53,5 +54,5 @@ def descargar_textos_pdf(base, fuente: str, archivo, max_minutos: float, pausa: 
         pend, lambda x: ruta_texto_pdf(base, x), lambda x: x[campo],
         lambda c, x: {"titulo": x.get("titulo"), **{k: v for k, v in texto_pdf(c, x.get("tipo_acto") in CON_TEXTO,
                                                                                 cabeceras).items() if k != "titulo"}},
-        archivo, fuente, max_minutos, pausa, accept="application/pdf", ext="pdf", por_registro=True)
+        archivo, fuente, max_minutos, pausa, accept=accept, ext="pdf", por_registro=True)
     return hechos, errores, len(pend) - hechos

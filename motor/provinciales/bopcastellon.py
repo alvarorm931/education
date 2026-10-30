@@ -154,7 +154,9 @@ def main(argv: list[str] | None = None) -> int:
     a = p.parse_args(argv)
     archivo = Archivo(a.salida / "archivo", indice_por_fuente=True, solo_huella=solo_huella_por_defecto())
     if a.textos:
-        hechos, errores, pendientes = descargar_textos_pdf(_base(a.salida), FUENTE, archivo, a.max_minutos, a.pausa)
+        # El servicio responde 500 si se pide «application/pdf»: lo sirve como application/octet-stream
+        hechos, errores, pendientes = descargar_textos_pdf(_base(a.salida), FUENTE, archivo, a.max_minutos, a.pausa,
+                                                           accept="*/*")
         print(f"BOP Castellón textos: {hechos} descargados, {errores} errores, {pendientes} pendientes")
         return 0
     sesion = requests.Session()
