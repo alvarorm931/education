@@ -378,12 +378,14 @@ def normalizar_tablas(tablas: list[dict]) -> list[dict]:
             t = {**t, "rotulo": rotulo_tabla}
         cab, rotulos = filas[i], (filas[i - 1] if i > 0 else [])
         inicios = [k for k, c in enumerate(cab) if COL["nombre"].search(c or "") and not COL["creditos"].search(c or "")
-                   and not COL["modulo"].search(c or "")]
+                   and not COL["modulo"].search(c or "") and not COL["caracter"].search(c or "")]  # «Tipo de materia»
         ancho = len(cab) // len(inicios) if inicios else 0
-        bloques = {tuple(" ".join((c or "").lower().split()) for c in cab[k:k + ancho]) for k in inicios} if ancho else set()
+        # sin llamadas de nota: «Tipo de materia 1» y «Tipo de materia» son la misma columna
+        cab_norm = [" ".join(re.sub(r"\s*(?:\(\s*\d+\s*\)|\d+|\*+)\s*$", "", c or "").lower().split()) for c in cab]
+        bloques = {tuple(cab_norm[k:k + ancho]) for k in inicios} if ancho else set()
         if len(inicios) >= 2 and not len(cab) % len(inicios) and len(bloques) != 1:
             # bloques iguales que no empiezan por el nombre («Curso | Cuatr. | Asignatura | ECTS | Curso | …»)
-            norm = [" ".join((c or "").lower().split()) for c in cab]
+            norm = cab_norm
             ancho = len(cab) // len(inicios)
             if all(norm[k * ancho:(k + 1) * ancho] == norm[:ancho] for k in range(len(inicios))):
                 inicios, bloques = [k * ancho for k in range(len(inicios))], {tuple(norm[:ancho])}

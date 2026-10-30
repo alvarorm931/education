@@ -360,3 +360,13 @@ def test_curso_por_el_parrafo_de_encima_de_cada_tabla():
     assert (filas["Anatomía"]["curso"], filas["Fisiología"]["curso"]) == (1, 2)
     # sin la racha exacta de párrafos, nada
     assert cursos_por_encabezado({**doc, "texto": "Primer curso\nTercer curso"}) == {}
+
+
+def test_dos_semestres_lado_a_lado_con_tipo_de_materia_y_llamada():
+    from motor.grados.boe_grados import normalizar_tablas
+    t = _t([["Primer Semestre", "Segundo Semestre"],
+            ["Asignaturas", "Tipo de materia 1", "Créditos ECTS", "Asignaturas", "Tipo de materia", "Créditos ECTS"],
+            ["Introducción al Derecho", "B", "6", "Derecho público", "B", "6"]])
+    partes = normalizar_tablas([t])
+    assert len(partes) == 2 and partes[1]["contenido"][1][0] == "Derecho público"
+    assert partes[1]["contenido"][1][-1] == "Segundo Semestre"
