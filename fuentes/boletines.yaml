@@ -314,7 +314,8 @@ provinciales:
   - provincia: Lleida
     url: https://ebop.diputaciolleida.cat/bop/
     acceso_desde_github: "sin_respuesta_desde_github (timeout)"
-    estado: sin_conector
+    estado: conector_en_pruebas
+    conector: motor/provinciales/boplleida.py
   - provincia: Lugo
     url: http://www.deputacionlugo.gal/boletin-oficial-da-provincia-de-lugo
     acceso_desde_github: "ok"

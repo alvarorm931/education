@@ -30,3 +30,16 @@ def test_boletin_2022():
     assert {x["seccion"] for x in s["anuncios"]} == {"Administració local - Ajuntaments",
                                                      "Administració local - Consells comarcals",
                                                      "Administració local - Diputació"}
+
+
+def test_lleida_misma_plataforma():
+    from motor.provinciales import boplleida, mostrabop
+    c = (FIX / "boplleida_portada_2026_208.html").read_bytes()
+    assert mostrabop.ultimo(c) == (2026, 208)  # sin enlace «Últim número»: la cabecera de la portada
+    s = mostrabop.parsear_boletin(c)
+    assert (s["numero"], s["fecha"], len(s["anuncios"])) == (208, "2026-10-30", 38)
+    sel = boplleida.seleccionar([{**x, "id": x["numero_anuncio"]} for x in s["anuncios"]])
+    nombres = {x["convocante"]["nombre"] for x in sel}
+    assert {"Balaguer", "Tàrrega", "Ponts"} <= nombres  # «AJUNTAMENT DE TÀRREGA (TÀRREGA)»: sin el municipio detrás
+    assert all(x["convocante"]["provincia"] == "Lleida" for x in sel)
+    assert boplleida.url_boletin(2026, 208) == "https://ebop.diputaciolleida.cat/bop/mostra-bop/2026-01-01/2026/208"

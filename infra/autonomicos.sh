@@ -266,6 +266,12 @@ for c in $CONECTORES; do
       ejecutar motor.provinciales.bopourense --desde 2022-01-01 --salida "$S" --max-minutos "$M"
       "$G" "BOP Ourense: días"
       ;;
+    boplleida)
+      # Misma plataforma que Girona (mostrabop.py). Solo responde desde España
+      ejecutar motor.provinciales.boplleida --salida "$S"
+      ejecutar motor.provinciales.boplleida --desde 2022-01-01 --salida "$S" --max-minutos "$M"
+      "$G" "BOP Lleida: boletines"
+      ;;
     bopb)
       # El del día por el canal de datos abiertos; los anteriores por el listado por días y los textos en PDF (cerrados
       # en robots.txt; se leen como boletín oficial, motor/http.py)
