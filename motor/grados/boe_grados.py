@@ -700,8 +700,9 @@ def _medir(filas: list[dict], dist: dict | None, doc: dict) -> dict:
     pe_tfg = sum(f["creditos"] or 0 for f in base if f["tipo"] in ("practicas", "tfg"))
     if esperado and abs(fijos - esperado) <= 0.5:
         comprobacion = "completo"
-    elif bo_esperado and abs(bo - bo_esperado) <= 0.5 and pe_tfg == 0:
-        # básicas y obligatorias cuadran y las prácticas y el TFG no van en tabla: se toman de la de créditos
+    elif bo_esperado and bo and abs(bo - bo_esperado) <= 0.5:
+        # básicas y obligatorias cuadran (el núcleo del plan está entero); las prácticas y el TFG no van en tabla o
+        # van contados de otra forma (prácticas optativas, TFG en dos tablas): se toman de la tabla de créditos
         comprobacion = "basicas_y_obligatorias"
     else:
         comprobacion = None
@@ -842,7 +843,7 @@ def cmd_medir(textos: Path, actos_fichero: Path | None, salida: Path) -> dict:
             "cuadran_basicas_y_obligatorias": cuenta(ps, lambda p: p["basicas_obligatorias_esperado"]
                                                     and abs(p["basicas_obligatorias"] - p["basicas_obligatorias_esperado"]) <= 0.5),
             "comprobados": cuenta(ps, lambda p: p["comprobacion"]),
-            "comprobados_sin_practicas_ni_tfg_en_tabla": cuenta(ps, lambda p: p["comprobacion"] == "basicas_y_obligatorias"),
+            "comprobados_solo_en_basicas_y_obligatorias": cuenta(ps, lambda p: p["comprobacion"] == "basicas_y_obligatorias"),
         }
     res["altas"] = len(altas_todas)
     res["altas_codigos_distintos"] = len({a["codigo_ruct"] for a in altas_todas})

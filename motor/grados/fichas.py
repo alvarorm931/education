@@ -400,7 +400,7 @@ def resumen_ruct(d: dict | None) -> dict | None:
 
 def plan_comprobado(p: dict) -> bool:
     """El listado cuadra con la tabla de créditos por tipo del propio plan: entero (básicas + obligatorias +
-    prácticas + TFG) o en básicas y obligatorias cuando las prácticas y el TFG no van en ninguna tabla."""
+    prácticas + TFG) o en básicas y obligatorias (el núcleo del plan), o con los créditos por tipo del RUCT."""
     if p.get("comprobacion"):
         return True
     esp = p.get("esperado_sin_optativas")
