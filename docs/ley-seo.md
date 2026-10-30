@@ -68,7 +68,7 @@ Responsable: la conversación SEO (`docs/encargo-seo.md`).
 | Contenido solo con JavaScript; noindex o canónica con JavaScript | Google puede no verlo; los robots de IA no ejecutan JS | [JavaScript](https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics) |
 | Bloquear robots de búsqueda o de IA; bloquear el entrenamiento con «Block» en Cloudflare | Desaparecer de Google, ChatGPT o Claude | [Cloudflare](https://blog.cloudflare.com/accountable-mixed-use-ai-crawlers) |
 | Perfiles de autor inventados | Señal de baja calidad | [Contenido útil](https://developers.google.com/search/docs/fundamentals/creating-helpful-content) |
-| Web de pruebas sin contraseña | Contenido duplicado indexado | — |
+| Web de pruebas sin contraseña; copias de la web generada en el repositorio público o en GitHub Pages | Contenido duplicado indexado en otro dominio | — |
 
 ## Control automático de cada página
 

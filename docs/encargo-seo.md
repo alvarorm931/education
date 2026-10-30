@@ -25,6 +25,9 @@ cumplir el contrato de abajo.
   la clave de IndexNow (`{clave}.txt`) y, si hacen falta, `_redirects` y `_headers` de Cloudflare.
 - Los sitemaps los escribe el control (`--generar-sitemaps`) desde las páginas que quedan indexables.
 - Recursos propios con rutas desde la raíz (`/css/web.css`), no con la dirección completa.
+- La web generada no se sube a ninguna rama del repositorio (es público) ni a GitHub Pages: sería una copia
+  indexable en otro dominio. Se genera en el flujo y va directa al alojamiento; en el repositorio, solo el informe
+  del control.
 
 ### Cada página
 - `<title>`, `<meta name="description">`, `<link rel="canonical">` absoluto a sí misma y `<meta name="viewport">`.
@@ -85,3 +88,5 @@ Los textos con IA se aprueban en `control/revision_ia.jsonl` (`{"huella": sha256
 - Sin probar contra servicios reales, a falta de dominio y claves: API de Search Console, Indexing API, API de
   Bing, IndexNow y CrUX.
 - Pendiente de calibrar: el umbral de similitud, con las primeras páginas reales de cada plantilla.
+- Escala medida: 20.000 fichas en 39 s y 0,8 GB de memoria. Para el sitio entero (500.000), por secciones o en el
+  servidor de España; si hace falta, guardar menos datos por página.
