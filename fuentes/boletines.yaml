@@ -109,9 +109,12 @@ autonomicos:
   - id: BOR
     nombre: Boletín Oficial de La Rioja
     comunidad: La Rioja
-    url: http://www.larioja.org/bor/es
+    url: https://web.larioja.org/bor-portada
     acceso_desde_github: "sin_respuesta_desde_github (timeout)"
-    estado: sin_conector
+    acceso_desde_espana: "ok (30/10/2026)"
+    datos_estructurados: "Buscador /bor-portada/bor?page=N&sort=fecha_publicacion+desc (20 por página: organismo, título, número, fecha, PDF y HTML); la página del día se carga con JavaScript"
+    estado: conector_en_pruebas
+    conector: motor/autonomicos/bor.py
     nota: "Comunidad uniprovincial: también publica lo local"
   - id: BOCM
     nombre: Boletín Oficial de la Comunidad de Madrid

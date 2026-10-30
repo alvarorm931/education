@@ -137,6 +137,13 @@ for c in $CONECTORES; do
       ejecutar motor.autonomicos.bon --textos --salida "$S" --max-minutos "$M"
       "$G" "BON: textos"
       ;;
+    bor)
+      ejecutar motor.autonomicos.bor --salida "$S"
+      ejecutar motor.autonomicos.bor --desde 2022-01-01 --salida "$S" --max-minutos "$M"
+      "$G" "BOR: anuncios"
+      ejecutar motor.autonomicos.bor --textos --salida "$S" --max-minutos "$M"
+      "$G" "BOR: textos"
+      ;;
     bocant)
       ejecutar motor.autonomicos.bocant --salida "$S"
       ejecutar motor.autonomicos.bocant --desde 2022-01-01 --salida "$S" --max-minutos "$M"

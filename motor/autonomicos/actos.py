@@ -44,6 +44,7 @@ FUENTES: dict[str, tuple[str, tuple[str, ...]]] = {
     "bopa": ("BOPA", ("Boletín Oficial del Principado de Asturias",)),
     "bon": ("BON", ("Boletín Oficial de Navarra",)),
     "bocant": ("BOC-CANT", ("Boletín Oficial de Cantabria",)),
+    "bor": ("BOR", ("Boletín Oficial de La Rioja",)),
     "dogc": ("DOGC", ("Diari Oficial de la Generalitat de Catalunya", "Diario Oficial de la Generalitat de Cataluña",
                       "Diario Oficial de la Generalidad de Cataluña")),
     "bopb": ("BOPB", ("Butlletí Oficial de la Província de Barcelona", "Boletín Oficial de la Provincia de Barcelona",
