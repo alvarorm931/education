@@ -1,13 +1,13 @@
 {
- "fecha": "2026-10-30T15:16:40+00:00",
- "fecha_madrid": "30/10 16:16",
+ "fecha": "2026-10-30T15:39:32+00:00",
+ "fecha_madrid": "30/10 16:39",
  "ventana_horas": 6.0,
  "resumen": {
-  "ejecuciones_revisadas": 227,
+  "ejecuciones_revisadas": 238,
   "fallos": 1,
   "fallos_pendientes": 0,
   "relanzados": 0,
-  "colas_largas": 6,
+  "colas_largas": 2,
   "flujos_programados_parados": [],
   "programaciones_lanzadas_a_mano": [],
   "avisos_de_fuentes": 0,
@@ -76,44 +76,16 @@
   {
    "flujo": "Estudios por tramos",
    "id": 41064537986,
-   "en_cola_min": 101,
+   "en_cola_min": 124,
    "trabajos_empezados": 0,
    "url": "https://github.com/alvarorm931/education/actions/runs/41064537986"
   },
   {
    "flujo": "Boletines autonómicos",
    "id": 41062712067,
-   "en_cola_min": 114,
+   "en_cola_min": 137,
    "trabajos_empezados": 2,
    "url": "https://github.com/alvarorm931/education/actions/runs/41062712067"
-  },
-  {
-   "flujo": "Sonda de fuentes",
-   "id": 41061393230,
-   "en_cola_min": 124,
-   "trabajos_empezados": 0,
-   "url": "https://github.com/alvarorm931/education/actions/runs/41061393230"
-  },
-  {
-   "flujo": "Boletines autonómicos",
-   "id": 41061253358,
-   "en_cola_min": 125,
-   "trabajos_empezados": 2,
-   "url": "https://github.com/alvarorm931/education/actions/runs/41061253358"
-  },
-  {
-   "flujo": "Grados por tramos",
-   "id": 41061047455,
-   "en_cola_min": 126,
-   "trabajos_empezados": 0,
-   "url": "https://github.com/alvarorm931/education/actions/runs/41061047455"
-  },
-  {
-   "flujo": "Boletines autonómicos",
-   "id": 41060907312,
-   "en_cola_min": 127,
-   "trabajos_empezados": 2,
-   "url": "https://github.com/alvarorm931/education/actions/runs/41060907312"
   }
  ],
  "programados": {
@@ -138,8 +110,10 @@
    "numero": 270,
    "anio": 2026
   },
-  "ultima_ejecucion": "2026-10-30T15:56:04+01:00",
-  "alertas_ultima_ejecucion": []
+  "ultima_ejecucion": "2026-10-30T16:26:54+01:00",
+  "alertas_ultima_ejecucion": [
+   "2026-10-29: HTTP 500 al pedir el sumario"
+  ]
  },
  "avisos_de_fuentes": [],
  "almacen": {
