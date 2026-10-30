@@ -49,7 +49,7 @@ def tipo_acto(titulo: str) -> str | None:
         return "oficialidad"
     if not re.search(r"plan(?:es)? de estudios?", t):
         return None
-    if re.search(r"corrigen? errores|correcci[óo]n de errores", t):
+    if re.search(r"corrigen? errores|correcci[óo]n de (?:errores|erratas)|erratas", t):
         return "correccion"
     if re.search(r"cambio de denominaci[óo]n", t):
         return "denominacion"
@@ -109,7 +109,7 @@ def altas(texto: str) -> list[dict]:
 COL = {
     "nombre": re.compile(r"asignatura|materia|denominaci", re.I),
     "modulo": re.compile(r"m[óo]dulo|bloque", re.I),
-    "creditos": re.compile(r"cr[ée]d(?:itos?)?\b|cr[èe]dits?\b|ects", re.I),
+    "creditos": re.compile(r"cr[ée]d(?:itos?)?\b|cr[èe]dits?\b|ects|^\s*crd\.?\s*$", re.I),
     "caracter": re.compile(r"car[áa]cter|^tipo|tipolog", re.I),
     "curso": re.compile(r"^\s*curso\b|\bcurso\s*$", re.I),
     "semestre": re.compile(r"semestre|cuatrimestre|trimestre|temporal|\btemp\b|periodo|duraci", re.I),
@@ -471,7 +471,7 @@ def plan(tablas: list[dict], dist: dict | None = None) -> list[dict]:
         cols = _corregir_columnas(_columnas(cab), [cab] + cuerpo)
         if "nombre" not in cols and "modulo" in cols:
             cols["nombre"], cols["nivel"] = cols.pop("modulo"), "modulo"
-        if "nombre" not in cols or "creditos" not in cols:
+        if "nombre" not in cols or "creditos" not in cols and "caracter" not in cols:
             if any(RE_LISTA_CELDA.search(c or "") for f in filas[1:] for c in f):
                 salida = _plan_en_celdas(filas, n)
                 if salida:
@@ -510,7 +510,7 @@ def plan(tablas: list[dict], dist: dict | None = None) -> list[dict]:
                 "tipo": tipo_caracter(caracter) or estado["tipo"] or tipo_tabla or tipo_de_rotulo(modulo or estado["modulo"]),
                 "tipo_por_rotulo": not tipo_caracter(caracter) and bool(estado["tipo"] or tipo_tabla
                                                                          or tipo_de_rotulo(modulo or estado["modulo"])),
-                "creditos": _num(f[cols["creditos"]]),
+                "creditos": _num(f[cols["creditos"]]) if "creditos" in cols else None,  # hay planes sin ECTS por asignatura
                 "curso": curso,
                 "semestre": semestre,
                 "periodo_literal": f[cols["semestre"]] if "semestre" in cols else None,
@@ -532,8 +532,10 @@ def plan(tablas: list[dict], dist: dict | None = None) -> list[dict]:
                 for x in sal:
                     x["tipo"], x["tipo_por_suma_de_tabla"] = iguales[0], True
     # riqueza: el tipo leído en su columna vale más que el deducido del rótulo o de la suma
+    # (las tablas sin créditos por asignatura van detrás: sirven solo para lo que no esté en otra)
     por_tabla = [(sum((0.5 if x.get("tipo_por_rotulo") or x.get("tipo_por_suma_de_tabla") else 1) * bool(x["tipo"])
-                      + bool(x["curso"]) + bool(x["semestre"]) for x in sal) / len(sal), k, n, sal)
+                      + bool(x["curso"]) + bool(x["semestre"]) + 3 * (x["creditos"] is not None) for x in sal) / len(sal),
+                  k, n, sal)
                  for _, k, n, sal in por_tabla]
     # la misma asignatura en varias tablas: se queda la de la tabla más completa; dentro de una misma tabla se
     # conservan las repetidas (una materia repartida en dos cursos, varias «Optativa» de 6 créditos)

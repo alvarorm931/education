@@ -207,3 +207,14 @@ def test_distribucion_en_texto_y_tabla_de_asignaturas_que_no_es_distribucion():
     con_obs = _t([["Tipo de materias", "Créditos", "Observaciones"], ["Formación Básica", "60", ""],
                   ["Obligatorias", "111", ""], ["Optativas", "9", ""], ["Total", "240", ""]])
     assert distribucion_creditos([con_obs])["obligatorias"] == 111
+
+
+def test_tabla_sin_creditos_y_crd_y_erratas():
+    from motor.grados.boe_grados import plan, tipo_acto
+    assert tipo_acto("Corrección de erratas de la Resolución de 30 de noviembre de 2010, de la Universidad X, por la que "
+                     "se publica el plan de estudios de Graduado en Arquitectura.") == "correccion"
+    sin = _t([["Módulo", "Materia", "Asignatura", "Carácter"], ["Básico", "Sociología.", "Sociología.", "Formación básica."]])
+    crd = _t([["Asignatura", "Carácter", "CRD"], ["Historia.", "Obligatoria.", "6"]])
+    p = {x["nombre"]: x for x in plan([sin, crd])}
+    assert p["Sociología"]["tipo"] == "basica" and p["Sociología"]["creditos"] is None
+    assert p["Historia"]["creditos"] == 6
