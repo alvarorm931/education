@@ -1,4 +1,4 @@
-"""BOP da Coruña (solo títulos: robots.txt prohíbe el texto de cada anuncio)."""
+"""BOP da Coruña: sumario del día, selección y texto de cada anuncio."""
 
 from pathlib import Path
 
@@ -21,3 +21,9 @@ def test_dia_2022():
     s = b.parsear_dia((FIX / "bopcoruna_20220103.html").read_bytes())
     assert (s["numero"], s["fecha"], len(s["anuncios"])) == ("1", "2022-01-03", 9)
     assert [x["tipo_acto"] for x in b.seleccionar(s["anuncios"])] == ["oferta_empleo", "nombramiento", "nombramiento"]
+
+
+def test_texto():
+    t = b.texto_disposicion((FIX / "bopcoruna_anuncio_2026_0000006891.html").read_bytes())
+    assert "Proceso selectivo persoal funcionario por concurso-oposición" in t["titulo"]
+    assert "Oferta de Emprego Público para o ano 2026" in t["texto"]

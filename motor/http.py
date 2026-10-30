@@ -196,8 +196,8 @@ def retirado_por_privacidad(url: str, sesion: requests.Session | None = None) ->
 
 def boletin_oficial(url: str) -> str | None:
     """Nombre del boletín si url es de un boletín oficial que se lee aunque su robots.txt lo cierre."""
-    u = url.lower()
-    return next((v for k, v in BOLETINES_OFICIALES.items() if u.startswith(k)), None)
+    u = url.lower().split("://", 1)[-1]  # da igual http o https
+    return next((v for k, v in BOLETINES_OFICIALES.items() if u.startswith(k.split("://", 1)[-1])), None)
 
 
 def comprobar_robots(url: str, sesion: requests.Session | None = None) -> None:

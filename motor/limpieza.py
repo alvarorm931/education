@@ -18,7 +18,12 @@ import re
 RE_DOCUMENTO = re.compile(
     r"(\b\d{8}\s?[A-Z]\b|\b[XYZ]\d{7}\s?[A-Z]\b|\*{2,}\d{3,5}\*{1,}|\b\d{3,4}\*{3,}|\*{3,}\d{4}[A-Z]?\b|\bX{3,}\d{3,}X*)"
 )
-CABECERA_PERSONAL = re.compile(r"\b(dni|nif|nie|apellidos|nombre|documento|pasaporte)\b", re.IGNORECASE)
+# Cabeceras de tablas con datos de personas, en castellano, gallego, catalán y euskera («D.N.I», «Nome e Apelidos»,
+# «Nom i cognoms», «Izen-abizenak»)
+CABECERA_PERSONAL = re.compile(r"(?<!\w)(d\.?\s?n\.?\s?i\.?|n\.?\s?i\.?\s?f\.?|n\.?\s?i\.?\s?e\.?|apellidos|apelidos|nombre(?!\s+(?:del?|de la|de los)\s+(?:puesto|plaza|categor|cuerpo|escala|especialidad|centro|"
+                               r"organ|unidad|servicio))|nome|"
+                               r"cognoms?|izen\w*|abizen\w*|documento|documento nacional|pasaporte|passaport)(?!\w)",
+                               re.IGNORECASE)
 RE_BLOQUE = re.compile(r"<table\b.*?</table>|<(p|li|h\d)\b[^>]*>.*?</\1>", re.IGNORECASE | re.DOTALL)
 RE_FILA = re.compile(r"<tr\b.*?</tr>", re.IGNORECASE | re.DOTALL)
 RE_CELDA = re.compile(r"<t[dh]\b[^>]*>(.*?)</t[dh]>", re.IGNORECASE | re.DOTALL)
@@ -84,7 +89,8 @@ def tabla(filas: list[list[str]]) -> dict:
     filas = [f for f in filas if any(f)]
     cabecera = filas[0] if filas else []
     contenido = " ".join(" ".join(f) for f in filas)
-    if CABECERA_PERSONAL.search(" ".join(cabecera)) or len(RE_DOCUMENTO.findall(contenido)) >= 2:
+    # Un solo documento de identidad basta: una lista de una persona también es un dato personal
+    if CABECERA_PERSONAL.search(" ".join(cabecera)) or RE_DOCUMENTO.search(contenido):
         return {"filas": max(len(filas) - 1, 0), "cabecera": cabecera, "datos_personales": True}
     return {"filas": len(filas), "contenido": filas, "datos_personales": False}
 

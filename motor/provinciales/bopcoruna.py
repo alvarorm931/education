@@ -5,13 +5,14 @@ Formato verificado el 30/10/2026 desde GitHub (también para 2022):
     Mércores, 28 de outubro de 2026»). Sin boletín (sábados, domingos, festivos) responde 500.
   - Secciones en h1 («Administración Local», «Municipal»), entidad en h2/h3 y cada anuncio en div.bloqueAnuncio con
     su número («2026/6891») y su título en p.resumenSumario.
-  - robots.txt prohíbe /bopportal/publicado (el texto en PDF y HTML de cada anuncio): solo se guarda el título y
-    la dirección del texto, que no se pide.
+  - El texto de cada anuncio, en HTML (versión del PDF oficial): /bopportal/publicado/AAAA/MM/DD/AAAA_NNNNNNNNNN.html.
+    robots.txt cierra /bopportal/publicado; se lee como boletín oficial (motor/http.py, decisión del 30/10/2026).
   - Títulos en gallego o en castellano.
 
 Uso:
   python -m motor.provinciales.bopcoruna --salida ruta/                                   # ayer y hoy
   python -m motor.provinciales.bopcoruna --desde 2022-01-01 --max-minutos 30 --salida ruta/
+  python -m motor.provinciales.bopcoruna --textos --max-minutos 30 --salida ruta/
 """
 
 from __future__ import annotations
@@ -27,11 +28,12 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 
 from motor.archivo import Archivo, solo_huella_por_defecto
-from motor.autonomicos.comun import (Freno, articulo_delante, clasificar, convocante_de_organismo, es_empleo_estricto,
-                                     escribir_json, escribir_jsonl)
+from motor.autonomicos.comun import (Freno, articulo_delante, clasificar, convocante_de_organismo, descargar_textos,
+                                     es_empleo_estricto, escribir_json, escribir_jsonl, leer_jsonl)
 from motor.boe.clasificar import normalizar
 from motor.extraccion.texto_es import fecha_texto
 from motor.http import obtener
+from motor.limpieza import limpiar_html, texto_de
 
 FUENTE = "bopcoruna"
 SIGLAS = "BOP-CORUNA"
@@ -156,6 +158,26 @@ def procesar_dia(d: date, raiz: Path, archivo: Archivo) -> dict:
     return informe
 
 
+def texto_disposicion(contenido: bytes) -> dict:
+    h = contenido.decode("utf-8", errors="replace")
+    i = h.find('<div class="Marco-gr-fico-b-sico"')
+    if i < 0:
+        raise ValueError("anuncio sin cuerpo: posible cambio de formato")
+    titulo = re.search(r'<p class="P-rrafo-texto-sumario">(.*?)</p>', h, re.DOTALL)
+    return {"titulo": texto_de(titulo.group(1)) if titulo else None, **limpiar_html(h[i:])}
+
+
+def ruta_texto(raiz: Path, x: dict) -> Path:
+    return _base(raiz) / "textos" / x["fecha"][:4] / x["fecha"][5:7] / f"{x['id']}.json"
+
+
+def textos_pendientes(raiz: Path) -> list[dict]:
+    lista = []
+    for f in sorted((_base(raiz) / "oposiciones").glob("*/*/*.jsonl"), reverse=True):
+        lista += [x for x in leer_jsonl(f) if x.get("url_html") and not ruta_texto(raiz, x).exists()]
+    return sorted(lista, key=lambda x: 0 if x.get("alcance") in (None, "acceso") else 1)
+
+
 def main(argv: list[str] | None = None) -> int:
     hoy = datetime.now(MADRID).date()
     p = argparse.ArgumentParser()
@@ -164,8 +186,16 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--salida", type=Path, default=Path("."))
     p.add_argument("--max-minutos", type=float, default=0)
     p.add_argument("--pausa", type=float, default=1.0)
+    p.add_argument("--textos", action="store_true")
     a = p.parse_args(argv)
     archivo = Archivo(a.salida / "archivo", indice_por_fuente=True, solo_huella=solo_huella_por_defecto())
+    if a.textos:
+        pend = textos_pendientes(a.salida)
+        hechos, errores = descargar_textos(pend, lambda x: ruta_texto(a.salida, x), lambda x: x["url_html"],
+                                           texto_disposicion, archivo, FUENTE, a.max_minutos, a.pausa,
+                                           accept="text/html", ext="html")
+        print(f"BOP A Coruña textos: {hechos} descargados, {errores} errores, {len(pend) - hechos} pendientes")
+        return 0
     inicio, informes, freno = time.monotonic(), [], Freno()
     d = a.hasta
     while d >= a.desde:  # del más reciente al más antiguo; lo ya hecho no se repite (salvo ayer y hoy)

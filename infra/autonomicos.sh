@@ -203,10 +203,12 @@ for c in $CONECTORES; do
       "$G" "BOP Pontevedra: boletín del día"
       ;;
     bopcoruna)
-      # Solo títulos: robots.txt prohíbe /bopportal/publicado (texto de cada anuncio)
+      # Textos: /bopportal/publicado está cerrado en robots.txt; se lee como boletín oficial (motor/http.py)
       ejecutar motor.provinciales.bopcoruna --salida "$S"
       ejecutar motor.provinciales.bopcoruna --desde 2022-01-01 --salida "$S" --max-minutos "$M"
       "$G" "BOP A Coruña: días"
+      ejecutar motor.provinciales.bopcoruna --textos --salida "$S" --max-minutos "$M"
+      "$G" "BOP A Coruña: textos"
       ;;
     boptenerife)
       # Sin textos por anuncio: el texto solo está en el PDF del boletín completo
