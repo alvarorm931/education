@@ -32,6 +32,21 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install -q -e "./codigo[almacen]"
+      # Diagnóstico: qué identidad presenta GitHub a AWS. Se publican solo las afirmaciones del token (quién, qué
+      # rama, para quién), nunca el token: sin firma no sirve para nada y caduca en minutos.
+      - name: Identidad OIDC que recibe AWS
+        run: |
+          python - <<'PY'
+          import base64, json, os, urllib.request
+          url = os.environ["ACTIONS_ID_TOKEN_REQUEST_URL"] + "&audience=sts.amazonaws.com"
+          req = urllib.request.Request(url, headers={"Authorization": "bearer " + os.environ["ACTIONS_ID_TOKEN_REQUEST_TOKEN"]})
+          token = json.load(urllib.request.urlopen(req))["value"]
+          carga = token.split(".")[1]
+          claims = json.loads(base64.urlsafe_b64decode(carga + "=" * (-len(carga) % 4)))
+          ver = {k: claims.get(k) for k in ("iss", "aud", "sub", "ref", "ref_type", "event_name", "repository",
+                                             "repository_id", "repository_owner_id", "job_workflow_ref", "environment")}
+          print("::notice title=OIDC::" + json.dumps(ver, ensure_ascii=False))
+          PY
       - uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: arn:aws:iam::369017477131:role/education-originales-github
