@@ -115,7 +115,12 @@ def _ruta(p: Plataforma, raiz: Path, carpeta: str, fecha: str, numero: int) -> P
 
 def procesar_boletin(p: Plataforma, anio: int, numero: int, raiz: Path, archivo: Archivo) -> dict:
     url = p.url_boletin(anio, numero)
-    r = obtener(url, accept="text/html")
+    try:
+        r = obtener(url, accept="text/html")
+    except ConnectionError as e:
+        if "redirects" in str(e).lower():  # Girona: un número que no existe da un bucle de redirecciones
+            return {"anio": anio, "numero": numero, "resultado": "no_existe", "alertas": []}
+        raise
     inf = {"anio": anio, "numero": numero, "status": r.status, "alertas": []}
     if r.status != 200:
         inf["resultado"] = "error_http"

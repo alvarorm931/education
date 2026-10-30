@@ -207,6 +207,7 @@ for c in $CONECTORES; do
       "$G" "BOP Zaragoza: boletín del día"
       ;;
     bopgipuzkoa)
+      # Desde el servidor de España: a GitHub deja de responderle tras unos cientos de peticiones
       ejecutar motor.provinciales.bopgipuzkoa --salida "$S"
       ejecutar motor.provinciales.bopgipuzkoa --desde 2022-01-01 --salida "$S" --max-minutos "$M"
       "$G" "BOG Gipuzkoa: días"
