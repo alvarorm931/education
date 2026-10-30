@@ -265,3 +265,12 @@ def test_leyenda_de_codigos_del_propio_plan():
     assert codigos["p"] == "optativa" and codigos["f"] == "basica"
     asig = _t([["Asignatura", "Tipo", "Créditos"], ["Economía.", "P", "6"]])
     assert plan([asig], None, codigos)[0]["tipo"] == "optativa"
+
+
+def test_celdas_combinadas_a_izquierda_y_derecha():
+    from motor.grados.boe_grados import plan
+    t = _t([["Módulo", "Materia", "Asignaturas vinculadas", "ECTS", "Curso", "Organización temporal", "Carácter"],
+            ["M1: Formación básica.", "Idioma moderno I.", "Alemán I.", "6", "1.º", "Semestre 1.º", "Básica."],
+            ["Alemán II.", "6", "1.º", "Semestre 2.º"]])
+    p = {x["nombre"]: x for x in plan([t])}
+    assert p["Alemán II"]["creditos"] == 6 and p["Alemán II"]["tipo"] == "basica" and p["Alemán II"]["semestre"] == 2

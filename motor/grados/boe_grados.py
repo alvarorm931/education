@@ -398,9 +398,31 @@ def _separador(texto: str, estado: dict) -> None:
             estado["modulo"] = texto.strip().rstrip(" .")
 
 
-def _con_separadores(filas: list[list[str]], ancho: int) -> list[tuple[list[str], dict]]:
+def _encajar(f: list[str], previa: list[str], ancho: int, cols: dict | None) -> list[str]:
+    """Fila más corta que la cabecera (celdas combinadas): lo que falta se toma de la fila anterior, por la
+    izquierda (módulo, materia) y, si hace falta, también por la derecha (el carácter combinado al final). Se elige
+    el encaje que deja una cifra en la columna de créditos y un texto en la del nombre; a igualdad, por la izquierda."""
+    falta = ancho - len(f)
+    if not cols or "creditos" not in cols or "nombre" not in cols:
+        return previa[:falta] + list(f)
+    es_num = lambda v: bool(re.fullmatch(r"\s*\d+(?:[.,]\d+)?\s*", v or ""))  # noqa: E731
+    izquierda = previa[:falta] + list(f)
+    if es_num(izquierda[cols["creditos"]]):
+        return izquierda  # por la izquierda ya encaja: como siempre
+    mejor, puntos_mejor = None, -1
+    for izq in range(falta, -1, -1):
+        cand = previa[:izq] + list(f) + previa[izq + len(f):ancho]
+        cand = cand + [""] * (ancho - len(cand))
+        puntos = es_num(cand[cols["creditos"]]) + (bool((cand[cols["nombre"]] or "").strip())
+                                                   and not es_num(cand[cols["nombre"]]))
+        if puntos > puntos_mejor:
+            mejor, puntos_mejor = cand, puntos
+    return mejor
+
+
+def _con_separadores(filas: list[list[str]], ancho: int, cols: dict | None = None) -> list[tuple[list[str], dict]]:
     """Filas del cuerpo con su estado (curso, semestre, tipo, módulo) heredado de las filas separadoras, y las
-    celdas combinadas (rowspan) completadas por la izquierda con la fila anterior. Las separadoras no salen."""
+    celdas combinadas (rowspan) completadas con la fila anterior (_encajar). Las separadoras no salen."""
     estado: dict = {"curso": None, "semestre": None, "tipo": None, "modulo": None}
     salida, previa = [], [""] * ancho
     for f in filas:
@@ -409,7 +431,7 @@ def _con_separadores(filas: list[list[str]], ancho: int) -> list[tuple[list[str]
             _separador(llenas[0], estado)
             continue
         if len(f) < ancho:
-            f = previa[: ancho - len(f)] + list(f)
+            f = _encajar(list(f), previa, ancho, cols)
         f = list(f[:ancho]) + [""] * (ancho - len(f))
         salida.append((f, dict(estado)))
         previa = f
@@ -514,7 +536,7 @@ def plan(tablas: list[dict], dist: dict | None = None, codigos: dict[str, str] |
         cab = filas[0]
         if RESUMEN.search(cab[0] or "") and len(cab) <= 3 or distribucion_creditos([t]) is not None:
             continue  # tabla de créditos por tipo: se lee aparte (distribucion_creditos)
-        filas_estado = _con_separadores(filas[1:], len(cab))
+        filas_estado = _con_separadores(filas[1:], len(cab), _columnas(cab))
         cuerpo = [f for f, _ in filas_estado]
         cols = _corregir_columnas(_columnas(cab), [cab] + cuerpo)
         if "nombre" not in cols and "modulo" in cols:
