@@ -363,7 +363,7 @@ textos largos quedan solo en el almacén privado; en `sondas` va su tamaño y su
   en un JSON público («/page-data/…/page-data.json», en su dominio de recursos `assets.griddo.nebrija.com`): se lee
   como una página más (`tarifas_grado.lineas_json`, 26 grados con precio de 2026-2027).
 
-  Resultado (31/10, 00:00, con las reglas nuevas, la relectura de las listas de las 45 privadas y sus centros y la
+  Resultado (30/10, 23:50, con las reglas nuevas, la relectura de las listas de las 45 privadas y sus centros y la
   de sus páginas de grado): **527 de 1.410 grados y dobles de privadas con precio por curso** (159 de su página y
   368 de sus listas de precios), de 28 universidades (antes de estas reglas, 358 de 27). Entran sobre todo San
   Pablo-CEU (74), Nebrija (26 más, de los datos de su página de precios), Francisco de Vitoria (53), Deusto (32), San
