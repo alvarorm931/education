@@ -172,6 +172,17 @@ def ejecutar(raiz: Path, salida: Path, dia: int, sello: str, max_minutos: float 
         opcional("conjunto"), boe=_rutas(raiz, m.get("boe", [])), guias=_rutas(raiz, m.get("guias", []))).items()
         if not k.startswith("cobertura")}
 
+    # copia del conjunto en el almacén privado (escritura única por huella: un conjunto igual no se vuelve a guardar)
+    guarda = extraer.Guarda()
+    if guarda.activa:
+        import gzip as _gz
+
+        res["conjunto_almacen"] = {}
+        for nombre in ("masters_oficiales.jsonl.gz", "programas_no_oficiales.jsonl.gz"):
+            f = salida / ESTADO / "conjunto" / nombre
+            if f.exists():
+                res["conjunto_almacen"][nombre] = guarda.original(
+                    "conjunto-masters", _gz.decompress(f.read_bytes()), "jsonl", f"sondas:{ESTADO}/conjunto/{nombre}")
     # 5. manifiesto nuevo: lo de hoy se añade a sus listas
     m2 = {k: v for k, v in m.items() if k not in TIPOS}  # las carpetas se vuelven a buscar en la rama cada día
     m2["conjunto"] = f"{ESTADO}/conjunto"
