@@ -23,15 +23,18 @@ REPO_URL="https://github.com/alvarorm931/education"
 export DEBIAN_FRONTEND=noninteractive
 timedatectl set-timezone Europe/Madrid || true
 
-apt-get update -y
-apt-get upgrade -y
-apt-get install -y python3 python3-venv python3-pip git curl jq unattended-upgrades
+# En el primer arranque las actualizaciones automáticas de Ubuntu suelen tener cogido el bloqueo de apt: sin
+# esperar, apt-get falla y «set -e» para el script. Se espera hasta 10 minutos.
+ESPERA="-o DPkg::Lock::Timeout=600"
+apt-get $ESPERA update -y
+apt-get $ESPERA upgrade -y
+apt-get $ESPERA install -y python3 python3-venv python3-pip git curl jq unattended-upgrades
 dpkg-reconfigure -f noninteractive unattended-upgrades
 
 # Memoria de intercambio de 2 GB por si un proceso grande se queda sin memoria
 if [ ! -f /swapfile ]; then
   fallocate -l 2G /swapfile && chmod 600 /swapfile && mkswap /swapfile && swapon /swapfile
-  echo "/swapfile none swap sw 0 0" >> /etc/fstab
+  grep -q '^/swapfile ' /etc/fstab || echo "/swapfile none swap sw 0 0" >> /etc/fstab
 fi
 
 id motor >/dev/null 2>&1 || useradd -m -s /bin/bash motor
