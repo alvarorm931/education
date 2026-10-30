@@ -712,3 +712,25 @@ aceptados) y recitado (6.495 recuperados); desde el servidor de España, 48 pág
   nuevo es del código más reciente que ya podía existir. La UPC no publica sus planes de máster en el BOE: sus
   asignaturas solo pueden salir de la memoria del RUCT o de su web.
 
+- **Tablas de precios de las universidades** (`tarifas.py lote --tablas`, `conjunto_masters.campos_tabla`): lista
+  revisada a mano, en orden de reputación, de las tablas (PDF o página web) con el precio de cada máster oficial
+  que publica la propia universidad (Navarra, UAM, Complutense, UPM, UPC, UPV, Francisco de Vitoria, Pontificia de
+  Salamanca, UNED, Mondragón, URJC, Málaga, Zaragoza…). Claude Haiku lee la tabla y cada importe se comprueba en
+  el texto (cita con las mismas palabras y cifras; las tablas web llegan como «celda | celda»). El precio pasa a
+  su máster oficial por el nombre del RUCT aunque el máster no tenga web: mismo nombre (en cualquier idioma del
+  título bilingüe, sin especialidad ni abreviaturas como «Bach.» o «F.P.»), ni doble máster ni título propio, de un
+  curso no pasado y sin dos precios distintos igual de parecidos. Fuente pública: «Tarifa publicada por el propio
+  centro», con la URL de la tabla y su curso; la tabla manda sobre el precio de la página (que a veces es la
+  reserva). Las privadas que solo dan el precio por programa o a petición (Ramon Llull, Comillas, Deusto, CUNEF,
+  CEU, ESIC) siguen sin tabla; las páginas de IE pintan el precio con JavaScript.
+- **Subpáginas enlazadas desde la ficha** (`extraer.py subpaginas`): para los oficiales con ficha a los que les
+  faltan asignaturas o precio, se leen los enlaces de su página principal (en el original guardado) que llevan al
+  plan de estudios o a precios y admisión, en el mismo servidor, y se extraen como subpáginas de esa ficha. Solo
+  cuentan si cuelgan de la ficha por la dirección (`/master-x/plan`, `/master-x-plan`, otra pestaña) o si su
+  propio nombre es el del máster: una página general de precios o de admisión no le pone precio a un máster.
+- **Nombres en catalán, gallego y valenciano**: además de las raíces, la grafía (ll, tg, ss, ny) y las palabras
+  largas a una letra («Ciutadania» / «Ciudadanía», «Cirurgia» / «Cirugía»). Con el ensamblado de la noche: 14
+  fichas oficiales más y ninguna perdida.
+- **UB**: su web responde 403 a GitHub y su buscador de másteres se pinta con JavaScript; la lectura de sus
+  listados con el navegador y la extracción de lo que encuentre van en una sola ejecución en el servidor de España
+  (`catalogos_uni.py leer --y-extraer`), en cola detrás del RUCT.
