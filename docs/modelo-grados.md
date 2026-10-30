@@ -228,7 +228,7 @@ dé asignaturas, y cuando se decida.
   la ficha (`precio_credito_norma`): precio único en Andalucía (12,62 €) y Cataluña (17,69 €); por rama en Galicia
   y Cantabria (en un doble, solo si sus dos grados caen en el mismo precio). Antes se contrastó con QEDU: las 403
   ofertas andaluzas con precio menos una (un grado conjunto internacional), las 348 catalanas, las 140 gallegas y
-  las 26 cántabras cuadran con la regla. Resultado: 314 fichas más con precio (304 dobles y 10 grados). En las
+  las 26 cántabras cuadran con la regla. Resultado: 316 fichas más con precio (306 dobles y 10 grados). En las
   comunidades con niveles por título (Madrid, Castilla y León, C. Valenciana…) el precio de un doble no se deduce:
   pendiente de leer qué dice cada norma de los dobles (§5).
 - **Privadas:** QEDU no da precio. Tres fuentes propias, siempre con URL y fecha:
