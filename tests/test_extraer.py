@@ -559,3 +559,16 @@ def test_valor_tiene_que_salir_de_la_cita_en_campos_cortos():
     h = {x["campo"]: x for x in e.verificar(resp, texto)}
     assert h["modalidad"]["estado"] == "aceptado" and h["idioma"]["estado"] == "aceptado"
     assert h["sedes"]["estado"] == "revision" and h["sedes"]["motivo"] == "valor_no_en_cita"
+
+
+def test_tipo_de_titulo_y_varias_modalidades_son_categorias():
+    texto = "Máster en Finanzas. Clases presenciales y online. Máster Universitario en Datos."
+    resp = {"tipo_titulo": {"valor": "otro", "cita": "Máster en Finanzas"},
+            "modalidad": {"valor": "varias", "cita": "Clases presenciales y online"}}
+    h = {x["campo"]: x for x in e.verificar(resp, texto)}
+    assert h["tipo_titulo"]["estado"] == "aceptado" and h["modalidad"]["estado"] == "aceptado"
+    # que sea oficial sí tiene que decirlo la cita
+    h = e.verificar({"tipo_titulo": {"valor": "máster universitario oficial", "cita": "Máster en Finanzas"}}, texto)[0]
+    assert h["motivo"] == "valor_no_en_cita"
+    h = e.verificar({"tipo_titulo": {"valor": "máster universitario oficial", "cita": "Máster Universitario en Datos"}}, texto)[0]
+    assert h["estado"] == "aceptado"

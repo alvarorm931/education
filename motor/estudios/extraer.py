@@ -206,7 +206,7 @@ def verificar(respuesta: dict, texto: str) -> list[dict]:
             ok, motivo = False, "moneda_no_euro_o_fuera_de_rango"
         if ok and campo == "precio_total" and dato.get("valor", 0) < PRECIO_TOTAL_MINIMO:
             ok, motivo = False, "precio_total_demasiado_bajo"  # un precio por crédito, una tasa o una sesión gratuita
-        if ok and campo in VALOR_EN_CITA and not valor_en_cita(dato.get("valor"), cita):
+        if ok and campo in VALOR_EN_CITA and not valor_en_cita(dato.get("valor"), cita, campo):
             ok, motivo = False, "valor_no_en_cita"  # la cita está, pero no dice ese valor
         hechos.append({"campo": campo, "valor": dato.get("valor") if ok else None,
                        "valor_propuesto": None if ok else dato.get("valor"),
@@ -225,11 +225,24 @@ VACIAS_VALOR = {"de", "del", "la", "las", "los", "el", "en", "por", "para", "con
                 "universidad", "sede", "sedes", "centro", "curso", "duracion", "horario", "si", "no"}
 
 
-def valor_en_cita(valor, cita: str) -> bool:
+# El tipo de título es una categoría del esquema («otro», «máster de formación permanente / título propio»), no un
+# texto: solo se comprueba que la cita respalde que es oficial (lo que cambia cómo se publica)
+RE_OFICIAL_EN_CITA = re.compile(r"(?i)universitari|oficial|official|university|verificad|\bRUCT\b|EEES|habilitante")
+MODALIDADES = {"online", "linea", "distancia", "virtual", "remoto", "remota", "elearning", "telematica", "semipresencial",
+               "blended", "hibrida", "hibrido", "mixta", "presencial", "campus", "aula"}
+
+
+def valor_en_cita(valor, cita: str, campo: str | None = None) -> bool:
     """Alguna palabra con contenido del valor (o su número) está en la cita. «online» en «100 % online»,
-    «inglés» en «Se imparte en inglés»; «presencial» no está en «Modalidad: online»."""
+    «inglés» en «Se imparte en inglés»; «presencial» no está en «Modalidad: online». En el tipo de título, solo que
+    sea oficial; la modalidad «varias», con alguna modalidad en la cita."""
     if isinstance(valor, (int, float)) or valor is None:
         return True
+    if campo == "tipo_titulo":
+        return not re.search(r"(?i)oficial|universitari", str(valor)) or re.search(r"(?i)no oficial|propio", str(valor)) \
+            or bool(RE_OFICIAL_EN_CITA.search(cita or ""))
+    if campo == "modalidad" and re.match(r"(?i)\s*(varias|varias modalidades|mixta|todas)\s*$", str(valor)):
+        return bool(set(_laxa(cita or "").split()) & MODALIDADES)
     texto = valor if isinstance(valor, str) else " ".join(map(str, valor)) if isinstance(valor, list) else str(valor)
     palabras = [w for w in _laxa(texto).split() if len(w) >= 3 and w not in VACIAS_VALOR and not w.isdigit()]
     numeros = [w for w in _laxa(texto).split() if w.isdigit()]
