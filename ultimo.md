@@ -1,8 +1,8 @@
-# Vigilancia 30/10 07:28 (Madrid)
+# Vigilancia 30/10 07:40 (Madrid)
 
-- Ejecuciones revisadas (últimas 6 h): 315
+- Ejecuciones revisadas (últimas 6 h): 321
 - Fallos: 4; pendientes: 0; relanzados ahora: 0
-- Colas de más de 30 minutos: 1
+- Colas de más de 30 minutos: 0
 - Flujos programados parados: ninguno
 - Almacén S3: ok
 - Programaciones que GitHub no disparó y se lanzaron a mano: ninguna
@@ -50,4 +50,3 @@ https://github.com/alvarorm931/education/actions/runs/40985002326 (intento 1, wo
       Assuming role with OIDC
       ##[error]Could not assume role with OIDC: Not authorized to perform sts:AssumeRoleWithWebIdentity
 
-- En cola 36 min: Sonda de fuentes https://github.com/alvarorm931/education/actions/runs/41010906257
