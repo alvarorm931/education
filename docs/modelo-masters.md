@@ -645,3 +645,39 @@ dato solo cambia si cambia el dato. Las carpetas de resultados se buscan por su 
 las ejecuciones largas); `sondas:masters-estado/` guarda el manifiesto (entradas fijas) y el conjunto. Sin
 manifiesto, el flujo no hace nada.
 
+### Resultado del 30/10/2026 (18:00)
+
+Todo lo que se puede bajar de las fuentes abiertas está bajado y unido, salvo el RUCT (ver abajo). Conjunto de
+`sondas:masters-estado/conjunto` rehecho por la pasada diaria (`solo_conjunto`) con el código de `main`.
+
+| | Oficiales (4.734) | No oficiales (20.527) |
+|---|---|---|
+| Indexables (asignaturas y precio) | 2.605 (públicas 2.327 de 3.113; privadas 278 de 1.606) | 9.023 |
+| Asignaturas | 3.701 (BOE 3.273, web 403, memoria 25) | 12.927 |
+| Precio total | 2.901 (calculado con QEDU 2.292, web 604, tarifa 5) | 14.079 |
+| Precio del crédito | 2.733 (QEDU 2.612) | — |
+| Plazas del curso | 4.184 (QEDU 4.096) | — |
+| Modalidad | 4.508 (SIIU 4.320) | 17.531 |
+| Evaluación | 983 (web 787, guías 169, memoria 27) | — |
+| Metodología, acceso, salidas | 1.787, 1.958, 1.939 | 18.425, 13.361, 16.004 |
+| Becas y descuentos | 878 | 10.273 |
+| Inserción laboral (QEDU) | 923 | — |
+
+Fuentes cerradas el 30/10: QEDU completo (5.561 imparticiones con detalle: plazas en 4.581, precio del crédito
+en 3.278); BOE: 4.761 resoluciones de plan medidas (3.861 cuadran con su tabla), plan para 3.389 oficiales;
+guías: 1.253 con evaluación comprobada (172 másters); webs: 36 lotes comprobados otra vez (479.024 datos
+aceptados) y recitado (6.495 recuperados); desde el servidor de España, 48 páginas que no respondían a GitHub
+(386 más tienen un robots.txt que no contesta ni desde allí: no se piden).
+
+**Lo que queda y por qué:**
+- **RUCT**: desde GitHub responde a unas 70 fichas por hora (604 oficiales con ficha; quedan unas 4.200, ~40 h,
+  en fila). Las memorias (unas 50 páginas cada una) solo son viables desde el servidor de España, que comparten
+  todas las conversaciones: lo decide Álvaro (buzón de incidencias). Lo que la memoria añadiría ya lo cubren en
+  gran parte el BOE (asignaturas) y QEDU (plazas, modalidad); faltan las plazas verificadas y la evaluación
+  ponderada de las memorias.
+- **Precio de las privadas**: 1.311 oficiales privados sin precio; en sus páginas solo 19 tenían algún precio.
+  No se publica: es la información cerrada (`docs/estrategia-informacion-cerrada.md`), que solo se consigue con
+  peticiones.
+- **Webs vetadas**: Sevilla y Córdoba prohíben el rastreo y la UOC da 403; UCLM, UNEX y UNICAN bloquean. Pedir
+  permiso (Álvaro).
+
