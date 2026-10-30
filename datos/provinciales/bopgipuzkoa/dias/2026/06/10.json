@@ -1,7 +1,10 @@
 {
  "fecha": "2026-06-10",
- "resultado": "fuente_inaccesible",
- "alertas": [
-  "No se pudo descargar https://egoitza.gipuzkoa.eus/gao-bog/castell/bog/2026/06/10/bc260610.htm tras 4 intentos: HTTPSConnectionPool(host='egoitza.gipuzkoa.eus', port=443): Max retries exceeded with url: /gao-bog/castell/bog/2026/06/10/bc260610.htm (Caused by ConnectTimeoutError(<HTTPSConnection(host='egoitza.gipuzkoa.eus', port=443) at 0x7f3b931d76b0>, 'Connection to egoitza.gipuzkoa.eus timed out. (connect timeout=30.0)'))"
- ]
+ "status": 200,
+ "alertas": [],
+ "resultado": "ok",
+ "numero": "107",
+ "sha256": "44cd954c95b0a729e1827082691384ce33a70a0b27a708a461eb0dfb1024a596",
+ "disposiciones": 59,
+ "empleo_publico": 9
 }
