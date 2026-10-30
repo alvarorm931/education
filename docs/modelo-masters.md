@@ -237,9 +237,34 @@ De cada página de programa, Claude Haiku en lote devuelve los 26 campos de la f
 universidad que lo expide, centro, créditos, duración, modalidad, sedes, idioma, inicio, plazos, horario,
 plazas, precio total y por crédito, reserva, becas y descuentos, requisitos, admisión, asignaturas,
 prácticas, TFM, metodología, evaluación, habilitación y salidas), cada uno con su frase literal. Sin IA se
-comprueba que la frase está en la página: si no, el valor no se acepta y va a revisión. Coste estimado con
-precios de lote: unos 12 dólares por cada 30.000 páginas. Necesita la clave de la API como secreto de
-GitHub (`ANTHROPIC_API_KEY`).
+comprueba que la frase está en la página y, en los datos numéricos, que el número sale de ella: si no, el
+valor no se acepta y va a revisión. La clave (`ANTHROPIC_API_KEY`) está como secreto de GitHub y
+`estudios.yml` solo se la pasa al módulo de extracción.
+
+**Prueba real del 30/10/2026** (muestra fija de 50 páginas: 30 de centros no oficiales verificados y 20 de
+másters oficiales unidos con su página; `extraer.py lote`, que descarga, envía, espera y comprueba en una
+sola ejecución sin guardar ninguna página):
+
+| Tanda | Cambio | Respuestas cortadas | Salida por página | Coste | Datos aceptados / a revisión |
+|---|---|---|---|---|---|
+| 1 | prompt inicial, 3.000 tokens de salida | 31 de 46 | 2.394 tokens | 0,041157 $ | 36 / 0 |
+| 2 | salida compacta, 6.000 tokens | 9 de 48 | 3.668 tokens | 0,058291 $ | 355 / 1 |
+| 3 | sin pensamiento adaptativo y esfuerzo bajo | 0 de 45 | 874 tokens | 0,023478 $ | 462 / 15 |
+
+- Claude Haiku 5.5 piensa por defecto y ese pensamiento se cobra como salida: era la causa de los cortes.
+  Sin él, en 24 páginas comparables coinciden 252 datos, salen 53 más que pensando (29 solo pensando) y
+  descarta mejor lo que no es ficha (vídeos, noticias, páginas sin contenido por JavaScript).
+- **Coste real: 0,000522 $ por página** (mediana 0,000465 $; máximo 0,001642 $), con 5.946 tokens de entrada
+  y 874 de salida de media. 1.000 páginas, unos 0,52 $; las 2.400 páginas de los másters oficiales ya
+  unidos, unos 1,25 $; 40.000 fichas no oficiales, unos 21 $. Después solo se extrae lo que cambia.
+- Lo que dan las fichas (muestra pequeña, orientativa): en 21 fichas no oficiales, precio 14, metodología 19,
+  asignaturas 15, evaluación 11, plazas 7; de las 14 con formulario de correo, 8 dan el precio igualmente.
+  En 12 fichas oficiales, créditos 11 y precio 1 (el precio público sale de los decretos).
+- De las 20 páginas «unidas» a un máster oficial, 5 no eran la ficha (un evento, una comisión académica, un
+  vídeo, una noticia de 2014, una página sin contenido por JavaScript): la extracción lo detecta
+  (`no_es_programa`) y devuelve el máster al emparejado.
+- Las citas no se publican en la rama pública: queda su huella sha256 y su longitud hasta tener el archivo
+  privado.
 
 Límite que se respeta: solo se lee lo publicado. Si un centro da el folleto o el precio únicamente tras un
 formulario, no se rellena el formulario ni se buscan rutas ocultas; la ficha dice «el centro no lo
