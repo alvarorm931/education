@@ -288,6 +288,9 @@ def grado_de_url(url: str, grados: list[dict]) -> str | None:
     return next(iter(union)) if len(union) == 1 else None
 
 
+SOLO_UNIDADES = re.compile(r"(?i)\b(?:ects|cr[ée]ditos?|horas?|cursos?|años?|semestres?|totales?)\b")
+
+
 def grado_de_fichero(url: str, grados: list[dict]) -> str | None:
     """PDF de un solo grado por el nombre del fichero («…/grado_en_medicina.pdf»): solo si empieza por «grado» o
     «doble_grado» y su nombre casa con un único grado de la universidad."""
@@ -325,7 +328,8 @@ def extraer(paginas: list[str], grados: list[dict], de_la_pagina: str | None = N
                     cabecera = celdas
                 if tipo_rotulo(linea) and len(linea) < 120:
                     rotulo = tipo_rotulo(linea)
-                if re.search(r"[A-Za-zÁÉÍÓÚáéíóú]{4}", linea):
+                # el nombre de la línea de encima: no vale una celda de solo unidades («60 ECTS», «240 créditos»)
+                if re.search(r"[A-Za-zÁÉÍÓÚáéíóú]{4}", SOLO_UNIDADES.sub(" ", linea)):
                     previa = linea
                 continue
             con_importe += 1

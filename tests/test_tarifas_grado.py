@@ -227,3 +227,9 @@ def test_linea_con_solo_el_rotulo_del_importe_es_del_grado_de_encima():
                     "Coste/crédito anual 141€"], gs)
     assert r["curso_documento"] == "2027-2028"
     assert [i["valor"] for i in r["grados"]["1"]] == [147.5] and [i["valor"] for i in r["grados"]["2"]] == [141]
+
+
+def test_celdas_de_unidades_no_son_el_nombre_de_la_linea_de_encima():
+    gs = [{"codigo": "1", "clase": "grado", "nombre": "Fisioterapia", "nombre_oficial": "Graduado en Fisioterapia"}]
+    r = tg.extraer(["CURSO 2027-2028\nFisioterapia\n60 ECTS\n240 ECTS\n147,50€"], gs)
+    assert [i["valor"] for i in r["grados"]["1"]] == [147.5]
