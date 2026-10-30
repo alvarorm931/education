@@ -1,12 +1,12 @@
 {
- "fecha": "2026-10-30T09:15:37+00:00",
- "fecha_madrid": "30/10 10:15",
+ "fecha": "2026-10-30T09:58:16+00:00",
+ "fecha_madrid": "30/10 10:58",
  "ventana_horas": 6.0,
  "resumen": {
-  "ejecuciones_revisadas": 220,
-  "fallos": 1,
-  "fallos_pendientes": 0,
-  "relanzados": 0,
+  "ejecuciones_revisadas": 162,
+  "fallos": 2,
+  "fallos_pendientes": 1,
+  "relanzados": 1,
   "colas_largas": 0,
   "flujos_programados_parados": [],
   "programaciones_lanzadas_a_mano": [],
@@ -14,6 +14,70 @@
   "almacen": "ok"
  },
  "fallos": [
+  {
+   "flujo": "Motor de datos",
+   "fichero": "motor.yml",
+   "id": 41019168283,
+   "intento": 1,
+   "evento": "workflow_dispatch",
+   "rama": "main",
+   "commit": "d142273",
+   "titulo": "Motor de datos",
+   "conclusion": "failure",
+   "cuando": "30/10 10:58",
+   "url": "https://github.com/alvarorm931/education/actions/runs/41019168283",
+   "superado": false,
+   "en_curso": null,
+   "pasajero": true,
+   "detalle": [
+    {
+     "trabajo": "motor",
+     "pasos": [
+      "Extraer actos y comprobar huecos"
+     ],
+     "ejecutor": "GitHub Actions 1000000616",
+     "etiquetas": [
+      "ubuntu-latest"
+     ],
+     "final_registro": [
+      "Descargados: 1500. Errores: 0",
+      "Descargados: 1500. Errores: 0",
+      "Descargados: 1500. Errores: 0",
+      "Descargados: 1500. Errores: 0",
+      "Descargados: 1500. Errores: 0",
+      "Descargados: 482. Errores: 0",
+      "##[error]Process completed with exit code 1.",
+      "...",
+      " ! [remote rejected]       datos -> datos (pre-receive hook declined)",
+      "error: failed to push some refs to 'https://github.com/alvarorm931/education'",
+      "remote: error: Trace: 2a0703f4c51cdfc5d3e8b0e1b63a2645ba045bbefaf9e602184d1902c2422b87        ",
+      "remote: error: See https://gh.io/lfs for more information.        ",
+      "remote: error: File datos/oposiciones/procesos.jsonl is 174.17 MB; this exceeds GitHub's file size limit of 100.00 MB        ",
+      "remote: error: GH001: Large files detected. You may want to try Git Large File Storage - https://git-lfs.github.com.        ",
+      "To https://github.com/alvarorm931/education",
+      " ! [remote rejected]       datos -> datos (pre-receive hook declined)",
+      "error: failed to push some refs to 'https://github.com/alvarorm931/education'",
+      "remote: error: Trace: 7dc1e73ea72a2d5969ddf4a5d619366742a74e42a1274745fa10017b1f19e384        ",
+      "remote: error: See https://gh.io/lfs for more information.        ",
+      "remote: error: File datos/oposiciones/procesos.jsonl is 174.17 MB; this exceeds GitHub's file size limit of 100.00 MB        ",
+      "remote: error: GH001: Large files detected. You may want to try Git Large File Storage - https://git-lfs.github.com.        ",
+      "To https://github.com/alvarorm931/education",
+      " ! [remote rejected]       datos -> datos (pre-receive hook declined)",
+      "error: failed to push some refs to 'https://github.com/alvarorm931/education'",
+      "remote: error: Trace: 822074bcb98eee90fc09bd251c4a24a902755f4cd5729876a6d178826162677c        ",
+      "remote: error: See https://gh.io/lfs for more information.        ",
+      "remote: error: File datos/oposiciones/procesos.jsonl is 174.17 MB; this exceeds GitHub's file size limit of 100.00 MB        ",
+      "remote: error: GH001: Large files detected. You may want to try Git Large File Storage - https://git-lfs.github.com.        ",
+      "To https://github.com/alvarorm931/education",
+      " ! [remote rejected]       datos -> datos (pre-receive hook declined)",
+      "error: failed to push some refs to 'https://github.com/alvarorm931/education'",
+      "##[warning]Actos y control de huecos: no se pudo subir",
+      "##[error]Process completed with exit code 1."
+     ]
+    }
+   ],
+   "relanzado": true
+  },
   {
    "flujo": "Motor de datos",
    "fichero": "motor.yml",
@@ -27,7 +91,7 @@
    "cuando": "30/10 08:07",
    "url": "https://github.com/alvarorm931/education/actions/runs/41018014171",
    "superado": false,
-   "en_curso": "https://github.com/alvarorm931/education/actions/runs/41019168283",
+   "en_curso": null,
    "pasajero": false,
    "detalle": [
     {
