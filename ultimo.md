@@ -1,6 +1,6 @@
-# Vigilancia 30/10 23:56 (Madrid)
+# Vigilancia 30/10 23:59 (Madrid)
 
-- Ejecuciones revisadas (últimas 6 h): 153
+- Ejecuciones revisadas (últimas 6 h): 155
 - Fallos: 1; pendientes: 0; relanzados ahora: 0
 - Colas de más de 30 minutos: 2
 - Flujos programados parados: ninguno
@@ -21,5 +21,5 @@ https://github.com/alvarorm931/education/actions/runs/41120449947 (intento 1, wo
       hint: See the 'Note about fast-forwards' in 'git push --help' for details.
       ##[error]Process completed with exit code 1.
 
-- En cola 88 min: Sonda de fuentes https://github.com/alvarorm931/education/actions/runs/41131341263
-- En cola 177 min: Estudios por tramos https://github.com/alvarorm931/education/actions/runs/41119697629
+- En cola 90 min: Sonda de fuentes https://github.com/alvarorm931/education/actions/runs/41131341263
+- En cola 180 min: Estudios por tramos https://github.com/alvarorm931/education/actions/runs/41119697629
