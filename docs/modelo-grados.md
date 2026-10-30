@@ -188,6 +188,10 @@ La ley SEO fija los del máster («asignaturas y precio») pero no los del grado
 - **asignaturas** comprobadas (el listado cuadra con la tabla de créditos del plan o viene del RUCT);
 - y al menos una cifra propia del grado: **nota de corte o precio**.
 
+Cuando se decida, se declara en `DATOS_MINIMOS` de `motor/seo/reglas.py` (cada módulo declara los suyos; «grado»
+ya figura como tipo de ficha en `motor/seo/control.py`): `"grado": [["asignaturas"], ["nota_corte", "precio_total",
+"precio_credito"]]`.
+
 Con lo medido, casi todos los grados de públicas lo cumplirán cuando el plan esté capturado. Los de privadas
 necesitarán su tarifa, porque QEDU no da precio y casi nunca nota. Sin esos datos, `noindex`, como en másters.
 
