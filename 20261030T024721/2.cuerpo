@@ -1,0 +1,47 @@
+<html>
+<head>
+<link href="favicon.ico" type="image/x-icon" rel="shortcut icon"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>BOLETIN OFICIAL DE LA PROVINCIA DE LAS PALMAS</title>
+<script type="text/javascript">
+// *******************************************************************
+// script by drevil_nz, Michael Dillon, Christchurch New Zealand. 
+// Permission granted to use this script provided this credit        
+// remains intact. Visit my homepage www.chc.quik.co.nz/juggler/mikey.html
+// Script written for Internet Explorer 4.0+.
+// ******************************************************************* 
+
+var message="BOP LAS PALMAS"     //specifys the title
+var message=message+"          " //gives a pause at the end,1 space=1 speed unit, here I used 10 spaces@150 each = 1.5seconds. 
+i="0"			         //declares the variable and sets it to start at 0
+var temptitle=""                 //declares the variable and sets it to have no value yet.
+var speed="150"                  //the delay in milliseconds between letters
+
+function titler(){
+if (!document.all&&!document.getElementById)
+return
+document.title=temptitle+message.charAt(i)  //sets the initial title
+temptitle=temptitle+message.charAt(i)       //increases the title by one letter
+i++					    //increments the counter
+if(i==message.length)			    //determines the end of the message
+{
+i="0"					    //resets the counter at the end of the message
+temptitle=""				    //resets the title to a blank value
+}
+setTimeout("titler()",speed) 		   //Restarts. Remove line for no-repeat.
+}
+
+window.onload=titler
+</script>
+</head>
+
+<frameset rows="135,59%" cols="*" framespacing="0" frameborder="no" border="0" bordercolor="#000033">
+  <frame src="cab.php" name="topFrame" scrolling="No" noresize="noresize" id="topFrame" title="topFrame" />
+  <frameset rows="*,32" cols="*" framespacing="0" frameborder="no" border="0">
+		<frame src="main1.php" name="mainFrame" id="mainFrame" title="mainFrame" />
+		<frame src="pie.php" name="bottomFrame" scrolling="No" noresize="noresize" id="bottomFrame" title="bottomFrame" />
+	</frameset>
+</frameset>
+<noframes><body>
+</body>
+</noframes></html>
