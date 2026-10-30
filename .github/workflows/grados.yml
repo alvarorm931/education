@@ -20,6 +20,11 @@ on:
         description: "Rutas de la rama sondas que necesita el módulo, separadas por espacios (quedan en ./entrada/)"
         required: false
         default: ""
+      por_tramo:
+        description: "si: cada tramo sube sus resultados a sondas al terminar (para usarlos sin esperar al resto)"
+        type: choice
+        options: ["no", "si"]
+        default: "no"
       ejecutor:
         description: "Dónde se ejecuta: github o espana (servidor propio, para fuentes que no responden a GitHub)"
         type: choice
@@ -33,7 +38,7 @@ jobs:
   tramo:
     # Credenciales temporales del almacén de originales por OIDC (claude/infraestructura.md); sin claves
     permissions:
-      contents: read
+      contents: write   # solo para subir el tramo a sondas con por_tramo=si
       id-token: write
     runs-on: ${{ inputs.ejecutor == 'espana' && fromJSON('["self-hosted", "espana"]') || 'ubuntu-latest' }}
     timeout-minutes: 58
@@ -81,8 +86,35 @@ jobs:
           echo "codigo=$?" >> out/salida.txt
           tail -n 20 out/salida.txt
           echo "NOMBRE=${{ strategy.job-index }}" >> "$GITHUB_ENV"
+      - name: Subir este tramo a sondas (por_tramo=si)
+        if: always() && inputs.por_tramo == 'si'
+        run: |
+          rm -rf out/archivo/web-centros
+          STAMP=$(date -u +%Y%m%dT%H%M%S)-t${{ strategy.job-index }}
+          mkdir -p "pub/$STAMP" && cp -r out/. "pub/$STAMP/"
+          find pub -type f -size +90M -exec gzip -9 {} \;
+          grep -rlE '(AKIA|ASIA)[0-9A-Z]{16}|AIza[0-9A-Za-z_-]{35}|gh[pousr]_[A-Za-z0-9]{36}|xox[baprs]-[A-Za-z0-9-]{10,}|sk_live_[0-9a-zA-Z]{24,}' pub 2>/dev/null \
+            | xargs -r sed -i -E 's/(AKIA|ASIA)[0-9A-Z]{16}|AIza[0-9A-Za-z_-]{35}|gh[pousr]_[A-Za-z0-9]{36}|xox[baprs]-[A-Za-z0-9-]{10,}|sk_live_[0-9a-zA-Z]{24,}/[retirado]/g'
+          cd pub
+          git init -q && git config user.name "motor-grados" && git config user.email "motor-grados@users.noreply.github.com"
+          git remote add origin "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git"
+          if git fetch -q --depth 1 origin sondas; then git reset -q FETCH_HEAD; fi
+          git checkout -q -B sondas
+          git add "$STAMP" && git commit -qm "Grados, tramo ${{ strategy.job-index }}: $MODULO"
+          for i in 1 2 3 4 5 6; do
+            git push -q origin sondas && exit 0
+            sleep $((i * 10))
+            git fetch -q --depth 1 origin sondas && git reset -q FETCH_HEAD && git add "$STAMP" \
+              && git commit -qm "Grados, tramo ${{ strategy.job-index }}: $MODULO" || true
+          done
+          exit 1
+        env:
+          MODULO: ${{ inputs.modulo }}
+      - name: Borrar la copia local (servidor propio)
+        if: always() && inputs.ejecutor == 'espana'
+        run: rm -rf pub
       - uses: actions/upload-artifact@v4
-        if: always()
+        if: always() && inputs.por_tramo != 'si'
         with:
           name: tramo-${{ env.NOMBRE }}
           path: out
@@ -90,7 +122,7 @@ jobs:
 
   juntar:
     needs: tramo
-    if: always()
+    if: always() && inputs.por_tramo != 'si'
     runs-on: ubuntu-latest
     timeout-minutes: 15
     # Sin grupo de concurrencia: el grupo «rama-sondas» lo comparten otros flujos y una espera allí puede
