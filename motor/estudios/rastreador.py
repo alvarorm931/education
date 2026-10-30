@@ -461,7 +461,7 @@ def _prioridad_listado(u: str, t: str) -> int:
 
 
 def desde_portada(d: Dominio, semillas: list[str] | None, tope: int, max_listados: int = MAX_LISTADOS,
-                  profundidad: int = 1) -> tuple[list[str], list[str]]:
+                  profundidad: int = 1, listados_semilla: list[str] | None = None) -> tuple[list[str], list[str]]:
     """Enlaces a programas de la portada y de sus páginas de listado (másteres, posgrado, estudios, oferta),
     más las semillas de Common Crawl. Con profundidad 2 sigue también los listados que cuelgan de un
     listado de másteres (portada → estudios → másteres → rama). Guarda el texto de cada enlace a programa
@@ -485,6 +485,10 @@ def desde_portada(d: Dominio, semillas: list[str] | None, tope: int, max_listado
                 anotar(u, t)
             if _es_listado(u, t):
                 cola.append((1, _prioridad_listado(u, t), len(u), u))
+    # catálogos de másters dados a mano (la portada de muchas universidades no enlaza a su catálogo): van primero
+    for u in listados_semilla or []:
+        if d.propio(u):
+            cola.append((1, -1, len(u), u))
     visitados: list[str] = []
     vistos = {u for *_, u in cola}
     while cola and len(visitados) < max_listados and d.peticiones < tope:
@@ -549,7 +553,7 @@ def _verificado(medidas: list[dict]) -> bool:
 
 def rastrear(base: str, archivo: Archivo | None, max_urls: int = 60000, muestra: int = 6,
              max_peticiones: int = 80, semillas: list[str] | None = None, pausa: float = 1.0,
-             profundo: bool = False) -> dict:
+             profundo: bool = False, listados: list[str] | None = None) -> dict:
     """profundo=True (universidades y centros oficiales): recorre siempre los listados de la web, hasta dos
     niveles, aunque el sitemap ya dé programas, para tener el texto de cada enlace (nombre del máster)."""
     if profundo:
@@ -600,10 +604,12 @@ def rastrear(base: str, archivo: Archivo | None, max_urls: int = 60000, muestra:
         res["urls_colaboradores"] = sorted({u for u in paginas if COLABORADORES.search(urlparse(u).path)
                                             and not NOTICIA.search(urlparse(u).path)})[:200]
         res["via"] = "sitemap" if candidatas else "portada"
-        listados: list[str] = []
+        semilla_listados = list(listados or [])
+        listados = []
         if profundo:
             del_listado, listados = desde_portada(d, semillas, max_peticiones - muestra - MAX_COLABORADORES,
-                                                  max_listados=40, profundidad=2)
+                                                  max_listados=40 + 2 * len(semilla_listados), profundidad=2,
+                                                  listados_semilla=semilla_listados)
             if del_listado:
                 res["via"] = "sitemap+listados" if candidatas else "listados"
             candidatas = sorted(set(candidatas) | set(del_listado))
@@ -669,7 +675,9 @@ def objetivos_de_proveedores(fichero: Path, desde: int = 0, hasta: int | None = 
     filas = [json.loads(l) for l in fichero.read_text(encoding="utf-8").splitlines() if l.strip()]
     filas = [p for p in filas if p["estado"] in estados][desde:hasta]
     return [{"web": web_principal(p), "id": p["id"], "estado": p["estado"],
-             "semillas": p.get("senales", {}).get("cc_ejemplos", [])} for p in filas]
+             "semillas": p.get("senales", {}).get("cc_ejemplos", []),
+             **({"listados": p["listados"]} if p.get("listados") else {}),
+             **({"max_peticiones": p["max_peticiones"]} if p.get("max_peticiones") else {})} for p in filas]
 
 
 def web_principal(p: dict) -> str:
@@ -718,7 +726,8 @@ def ejecutar(objetivos: list[dict], raiz: Path, hilos: int, max_minutos: float, 
         if time.time() > fin:
             return
         r = rastrear(obj["web"], archivo, muestra=muestra, semillas=obj.get("semillas"),
-                     profundo=obj.get("estado") == "oficial")
+                     profundo=obj.get("estado") == "oficial", listados=obj.get("listados"),
+                     max_peticiones=obj.get("max_peticiones", 80))
         r["centro"] = obj
         with cerrojo:
             (destino / f"{r['dominio'].replace(':', '_')}.json").write_text(json.dumps(r, ensure_ascii=False, indent=1), encoding="utf-8")
