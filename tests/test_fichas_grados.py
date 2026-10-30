@@ -148,3 +148,14 @@ def test_comprobar_con_ruct():
     assert plan_comprobado(comprobar_con_ruct(p, r))
     r["creditos"]["optativos"] = 24
     assert not plan_comprobado(comprobar_con_ruct(p, r))
+
+
+def test_doble_con_los_dos_planes_comprobados_cubre_asignaturas():
+    cat = _cat() + [
+        {**_cat()[0], "codigo": "2500829", "nombre": "Economía", "nombre_oficial": "Graduado o Graduada en Economía"},
+        {**_cat()[0], "codigo": "7000001", "clase": "doble", "nombre": "Derecho y Economía",
+         "componentes": [{"nombre": "Derecho", "codigo": "2500828"}, {"nombre": "Economía", "codigo": "2500829"}]}]
+    fichas_, _ = fichas.construir(cat, [], {}, {}, {})
+    d = next(f for f in fichas_ if f["codigo"] == "7000001")
+    assert [x["codigo"] for x in d["planes_componentes"]] == ["2500828", "2500829"]
+    assert "sin asignaturas comprobadas" in d["motivos_noindex"]  # sin planes comprobados no se cubre

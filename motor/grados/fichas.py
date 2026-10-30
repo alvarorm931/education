@@ -537,6 +537,21 @@ def construir(catalogo: list[dict], genericos: list[dict], tarjetas: dict, detal
             "motivos_noindex": motivos,
             "fuente_catalogo": {"cita": FUENTE_SIIU, **{k: t["fuente"].get(k) for k in ("url", "curso", "capturado")}},
         })
+    # dobles grados: no tienen plan propio en el BOE; se cursan las asignaturas de sus dos grados (con los
+    # reconocimientos que fije cada universidad). Si los dos grados que lo forman tienen su plan comprobado, la
+    # ficha del doble los enlaza y ese requisito queda cubierto.
+    por_codigo_f = {f["codigo"]: f for f in fichas}
+    for f in fichas:
+        if f["clase"] != "doble":
+            continue
+        comp = [por_codigo_f.get(c.get("codigo")) for c in f["componentes"]]
+        f["planes_componentes"] = [{"codigo": c["codigo"], "nombre": c["nombre"],
+                                    "boe": (c.get("plan") or {}).get("boe"),
+                                    "comprobado": bool(c.get("plan") and c["plan"]["comprobado"]),
+                                    "nivel": (c.get("plan") or {}).get("nivel")} for c in comp if c]
+        if len(f["planes_componentes"]) >= 2 and all(x["comprobado"] for x in f["planes_componentes"]):
+            f["motivos_noindex"] = [m for m in f["motivos_noindex"] if m != "sin asignaturas comprobadas"]
+            f["indexable"] = not f["motivos_noindex"]
     # comparativa por genérico con página
     por_gen: dict[str, list] = defaultdict(list)
     for f in fichas:
@@ -605,6 +620,9 @@ def resumen(fichas: list[dict], comparativa: list[dict]) -> dict:
         "con_creditos_por_tipo_ruct": sum(1 for f in fichas if (f.get("ruct") or {}).get("creditos")),
         "con_plan_boe": sum(1 for f in fichas if f["plan"]),
         "con_plan_comprobado": sum(1 for f in fichas if f["plan"] and f["plan"]["comprobado"]),
+        "dobles_con_los_dos_planes_comprobados": sum(1 for f in fichas if f["clase"] == "doble"
+                                                     and len(f.get("planes_componentes") or []) >= 2
+                                                     and all(x["comprobado"] for x in f["planes_componentes"])),
         "con_plan_comprobado_de_asignaturas": sum(1 for f in fichas if f["plan"] and f["plan"]["comprobado"]
                                                  and f["plan"].get("nivel") == "asignatura"),
         "indexables": sum(1 for f in fichas if f["indexable"]),
