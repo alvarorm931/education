@@ -1,0 +1,1314 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Parámetro indicando si se ha cambiado el mes desde el combo de meses -->
+
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es">
+	<head>
+		
+		
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		
+		
+		<title>
+			DOCM. Diario Oficial Castilla - La Mancha
+		</title>
+		
+		
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
+<!-- HTTP 1.1 -->
+<meta http-equiv="Cache-Control" content="no-store"/>
+<!-- HTTP 1.0 -->
+<meta http-equiv="Pragma" content="no-cache"/>
+<!-- Prevents caching at the Proxy Server -->
+<meta http-equiv="Expires" content="0"/>
+<!-- internet explorer effects -->		
+<meta http-equiv="Page-Enter" content="blendTrans(Duration=0.4)" />
+<!-- robot.txt -->
+<meta name="google-site-verification" content="Eag3DwSB1gmaZ1obDxU2_HH0EzmcSAaVGJB8sA2GV7c" />      
+		 
+		
+        
+        <link rel="icon" href="/docm/images/favicon.ico" />
+        
+        <meta name="AUTHOR" content="Junta de Castilla - La Mancha. Portal" />
+ 
+ 		<meta name="KEYWORDS" content="Base de Datos. Boletín Oficial. Legislación autonómica. DOCM. Diario Oficial Castilla - La Mancha. Regulación. Suscripción. Venta. Publicación de documentos. Diario Oficial. Comunidad de Castilla-La Mancha. Legislación de Castilla-La Mancha. Disposiciones de Castilla-La Mancha. Leyes de Castilla La-Mancha. Normas de Castilla La-Mancha. DOCM" />
+ 
+		<meta name="DESCRIPTION" content="Base de datos del DOCM (Diario Oficial Castilla - La Mancha) que contiene todos los documentos publicados en el boletín oficial. " />
+        
+        <meta name="LANGUAGE" content="Castellano" />
+        
+        
+		
+		<link rel="stylesheet" type="text/css" media="all" href="/docm/css/css-common.css?version=1.4" />
+		<link rel="stylesheet" type="text/css" media="all" href="/docm/css/jccm_pie.css" />
+		<link rel="stylesheet" type="text/css" media="all" href="/docm/css/portal.css?version=1.4" />
+		<!--[if IE]>
+			<link rel="stylesheet" type="text/css" media="all" href="/docm/css/css-common.css" />
+		<![endif]-->
+		
+		<link rel="stylesheet" type="text/css" href="/docm/css/calendarioBoletines.css?version=1.4" />
+		<link rel="stylesheet" type="text/css" media="print" href="/docm/css/portalPrint.css" />
+		<link rel="stylesheet" type="text/css" media="print" href="/docm/css/css-common.css?version=1.4" />
+		
+		
+		<!-- Matomo -->
+		<script type="text/javascript">
+		var _paq = window._paq || [];
+		/* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+		_paq.push(['trackPageView']);
+		_paq.push(['enableLinkTracking']);
+		(function() {
+		var u="https://matomo.jccm.es/";
+		_paq.push(['setTrackerUrl', u+'matomo.php']);
+		_paq.push(['setSiteId', '22']);
+		var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+		g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+		})();
+		</script>
+		<!-- End Matomo Code -->
+		
+		
+		<script type="text/javascript" src="/docm/scripts/prototype.js"></script>
+		<script type="text/javascript" src="/docm/scripts/general.js"></script>	
+		<script async="async" type="text/javascript" src="https://docm--jccm--es.insuit.net/i4tservice/jscm_loader.js"></script>
+		<script type="text/javascript">
+
+			    var cambioMes = 'no';
+				function init(){
+		
+					if($('calendario')){
+					
+						var browserName = navigator.appName; 
+						
+						if (browserName=="Microsoft Internet Explorer") {
+							$('calendario').style.display = "block";
+						}
+						else {
+							$('calendario').style.display = "table";
+						}
+					}
+					
+					if($('buscaFecha')){
+						$('buscaFecha').hide();
+					}
+					
+					$("botonImprimir").style.visibility = "visible";
+					
+					//Si se ha cambiado el mes desde el combo de meses, se le pone el foco a este para que
+					//pueda seguir seleccionando meses con las flechas del cursor
+					if (cambioMes == 'si'){
+						document.getElementById('mes').focus();
+					}
+					
+				}
+		
+				function resizeMenu(){
+					
+					if (navigator.appName.indexOf("Explorer") != -1) {	
+					
+						var alturaMenu = $("menu").clientHeight;
+						$("tablaMenu").style.height = alturaMenu - $("menu").offsetTop - $("filaCalendario").clientHeight;
+					}
+				}
+				
+				function tunearLinks() {
+	    			var links = document.getElementsByTagName('a');
+	    			
+	    			for (var i=0;i < links.length;i++) {
+	        			if (links[i].className.indexOf('new-window') != -1) {
+	            			links[i].onclick = function() {
+	                			window.open(this.href);
+	                			return false;
+	            			};
+	            			
+	            			links[i].onkeypress = function() {
+	                			window.open(this.href);
+	                			return false;
+	            			};
+	        			}
+	    			}
+	    			
+	    			links = document.getElementsByTagName('form');
+	    			
+	    			for (var i=0;i < links.length;i++) {
+	        			if (links[i].className == 'new-window') {
+	            			
+	            			links[i].target = "_blank";
+	            		}
+	    			}
+				};
+				
+				function limpiar() {
+					if($F("textoBusqueda") == "Buscar...") {
+						$("textoBusqueda").setValue("");
+					}				
+				}
+				
+		</script>
+		
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+	
+	</head>
+	<body onload="init(); resizeMenu(); tunearLinks()"  id="body">
+		<div id="container"> 
+			<div id="header">
+				<div id="header-content">
+					<div class="side-padder">
+						<h1><a title="Inicio">DIARIO OFICIAL</a></h1>
+						<h2>de Castilla-La Mancha</h2>
+						<form action="/docm/buscarDisposiciones.do" method="post">
+							<div id="header-search-box">
+								<div>
+									<input type="hidden" name="paginaResultados" value="1"/>
+									<input type="hidden" name="campoOrdenacion" value="ordenFechaPublicacion"/>
+									<input type="hidden" name="tipoBusqueda" value="basica"/>
+									<input type="text" name="texto" id="textoBusqueda" class="custom-search-default-value" value="Buscar..." onclick="limpiar()" onkeypress="limpiar()"/>
+								</div>
+								<div>
+									<input type="image" src="/docm/images/search-button.png" title="Buscar en la Web" class ="imagenLupa" alt="Buscar"/>
+								</div>
+							</div>
+							<div id="header-search-box-avanced">
+								<span class="textoBusquedaAvanzada"><a href="/docm/busquedaAvanzada.do" title="Ir a la página de Busqueda Avanzada">&gt;&gt; Búsqueda Avanzada</a></span>
+							</div>
+						</form>
+					</div>
+				</div>
+				<div id="header-side">
+					<a href="http://www.castillalamancha.es"><img src="/docm/images/logo.png" alt="Inicio" title="Inicio"></a>
+				</div>
+				<div id="header-info-band">
+					<div><div class="header-info-band-section">Consejer&iacute;a de Hacienda, Administraciones P&uacute;blicas y Transformaci&oacute;n Digital.</div></div>
+				</div>
+				<div id="header-menu">
+					<div>
+						<ul>
+							<li><a href="/docm/revistaJuridica.do" title="Abrir la página de Revista Jurídica">Revista jur&iacute;dica</a></li>
+							<li><a href="/docm/codigoLegislativo.do"  title="Abrir la página de Código Legislativo">C&oacute;digo legislativo</a></li>
+							<li><a href="https://empleopublico.castillalamancha.es/" title="Abrir la página de Empleo Público en una nueva ventana" class ="new-window" >Empleo p&uacute;blico</a></li>
+							<li><a href="https://www.jccm.es/node/226" title="Abrir la página de Carta de Servicio del Diario Oficial de Castilla la Mancha" class ="new-window">Carta de Servicios</a></li>
+ 							<li><a href="/docm/eli" title="Abrir la página del Identificador Europeo de Legislación">ELI</a></li>
+						</ul>
+					</div>
+				</div>
+				<div id="header-menu-covid" style="display: none">
+					<div>
+                       <h3 class="titulo-covid-19">   
+	    					<span>Normativa sobre crisis sanitaria <a href="/docm/listadoCOVID.do" class="link-covid-19">
+		   						COVID-19 <br/> <img src="/docm/images/covid-19-news-2.png" alt="" class="menu-covid-19"/>                                    
+                            </a> </span>
+	                   </h3>  
+				    </div>
+				</div>
+			</div><!-- // Header -->
+			<div class = "filaBotonImprimir" style="padding-right: 20px">
+				<span id = "botonImprimir" class = "textoBotonImprimir" onclick="window.print();" onkeypress="window.print();">
+					<img src="/docm/images/imprimir.gif" alt=""/>
+					Imprimir
+				</span>
+			</div>
+			<div id="content" style="display: inherit;">
+				<table width="100%">
+					<tr id = "cuerpo">
+						<td id = "menu" rowspan="2">
+							
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class = "tablaMenu" id = "tablaMenu">
+	<tr>
+		<td><p style="margin-top: 11em;"><img src="/docm/images/bg_calendario.png" alt="" style="vertical-align: middle;"/>&nbsp;&nbsp;&nbsp;<b>Calendario</b></p></td>
+	</tr>
+	<tr id = "filaDiariosOficiales">
+		<td>
+			<a href="sumario.do" title="Ir a la página de consulta de diarios oficiales">
+				&gt;&gt; &Uacute;ltimo diario oficial
+			</a>
+		</td>
+	</tr>
+	<tr><td>&nbsp;</td></tr>
+	
+	<tr id = "filaCalendario">
+		<td style="width: 93%">
+			<form id="idBean" method="post" action="/docm/cambioFecha.do">
+				<div class="bordeCal" align="center">
+					
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+	// <![CDATA[ 
+	function cambiaMesAnt(){
+		$('fechaNueva').setValue($('idBean').fechaMesAnterior.value);		
+		$('idBean').action="/docm/cambioFecha.do";
+		$('idBean').submit();
+	}
+	
+	function cambiaMesSig(){
+		$('fechaNueva').setValue($('idBean').fechaMesSiguiente.value);	
+		$('idBean').action="/docm/cambioFecha.do";
+		$('idBean').submit ();
+	}
+	
+	function cambiaAnioAnt(){
+		$('fechaNueva').setValue($('idBean').anioAnterior.value);		
+		$('idBean').action="/docm/cambioFecha.do";
+		$('idBean').submit ();
+	}
+	
+	function cambiaAnioSig(){
+		$('idBean').fechaNueva.value = $('idBean').anioSiguiente.value;	
+		$('idBean').action="/docm/cambioFecha.do";
+		$('idBean').submit ();
+	}
+	
+	function cambiaMesCombo(){
+		fecha = $('idBean').fechaNueva.value;
+		mesCombo = $('idBean').mes.value;
+		if(mesCombo<10){
+			mesCombo = "0"+mesCombo;
+		}
+		arrFecha = fecha.split("/");
+		fecha = arrFecha[0] + "/" + mesCombo + "/" + arrFecha[2];
+		$('idBean').fechaNueva.value=fecha;
+		$('idBean').action="/docm/cambioFecha.do?cambioMes=si";
+		$('idBean').submit();
+	}
+	
+	function cambiaAnioInput(){
+		anio = $('idBean').anioInput.value;
+		
+		if (anio.length != 4) {
+			alert($('idBean').msjNumAnio.value);
+			return false;
+		}
+		
+		var string="1234567890";
+		
+		for(i=0;i<4;i++){
+			if (string.indexOf(anio.charAt(i))==-1){
+				alert($('idBean').msjNumAnio.value);
+				return false;
+			}
+		}
+		
+		fecha = $('idBean').fechaNueva.value;
+		arrFecha = fecha.split("/");
+		fecha = arrFecha[0] + "/" + arrFecha[1] + "/" + anio;
+		
+		$('idBean').fechaNueva.value=fecha;
+		$('idBean').action="/docm/cambioFecha.do";
+		$('idBean').submit();
+		
+		return true;
+	}
+	
+	function tecla(e){
+		if(window.event) {
+			keyCode = window.event.keyCode;
+		}
+		else if(e) {
+			keyCode = e.which;
+		}
+		
+		if(keyCode == 13) {
+			cambiaAnioInput();
+		}
+	}
+	
+	// ]]> 
+
+</script>
+	
+			<table id='calendario' class='calendario tablaControlFecha'>
+<tr>
+<td colspan='10'>
+&nbsp;
+</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td onclick='cambiaMesAnt();' onkeypress='cambiaMesAnt();' class = 'botonMesAnt'><img alt='Cambiar a mes anterior' src='/docm/images/bg_flecha_izq.png' /></td>
+<td class='etiquetaGris'><select class='controlesCalendario' name='mes' id='mes' onchange='cambiaMesCombo()'>
+<option value='1' >enero</option><option value='2' >febrero</option><option value='3' >marzo</option><option value='4'>abril</option><option value='5'>mayo</option><option value='6'>junio</option><option value='7'>julio</option><option value='8'>agosto</option><option value='9'>septiembre</option><option value='10' selected='selected'>octubre</option><option value='11'>noviembre</option><option value='12'>diciembre</option></select></td><td onclick='cambiaMesSig()' onkeypress='cambiaMesSig()' class = 'botonMesSig'><img alt='Cambia a mes siguiente' src='/docm/images/bg_flecha_der.png' /></td><td class='textoSubtit'></td><td>&nbsp;</td><td onclick='cambiaAnioAnt();' onkeypress='cambiaAnioAnt();' class = 'botonAnioAnt'><img alt='Cambia a año anterior' src='/docm/images/bg_flecha_izq.png' /></td><td class='etiquetaGris'><label for = 'anioInput'></label> <input type='text' class='controlesCalendario' id='anioInput' name='anioInput' onblur='cambiaAnioInput();' onkeypress = 'tecla(event)' value='2026'/></td><td class = 'botonAnioSig' onclick='cambiaAnioSig()' onkeypress='cambiaAnioSig()'><img alt='Cambia a año siguiente' src='/docm/images/bg_flecha_der.png' /></td><td>&nbsp;</td></tr><tr><td colspan='10'></td></tr><tr><td colspan='10'><table class='calendario'><tr class='calDays'><td class='primeraDiasCalendario'></td> <td class='diaCalendario' >L</td> <td class='diaCalendario' >M</td> <td class='diaCalendario' >X</td> <td class='diaCalendario' >J</td> <td class='diaCalendario' >V</td> <td class='diaCalendario' >S</td> <td class='diaCalendario' >D</td><td ></td></tr>
+<tr><td ></td><td class='futuro'></td><td class='futuro'></td><td class='futuro'></td><td class='siTieneDogv'>01<a class = 'diario_ordinario_visitado' href="/docm/cambiarBoletin.do?fecha=20261001" rel = 'external'><div>   <span>Ord.</span></div> </a></td> <td class='siTieneDogv'>02<a class = 'diario_ordinario_visitado' href="/docm/cambiarBoletin.do?fecha=20261002" rel = 'external'><div>   <span>Ord.</span></div> </a></td> <td class='noTieneDogv'> 3</td> <td class='noTieneDogv'> 4</td><td ></td></tr><tr><td ></td> <td class='siTieneDogv'>05<a class = 'diario_ordinario_visitado' href="/docm/cambiarBoletin.do?fecha=20261005" rel = 'external'><div>   <span>Ord.</span></div> </a></td> <td class='siTieneDogv'>06<a class = 'diario_ordinario_visitado' href="/docm/cambiarBoletin.do?fecha=20261006" rel = 'external'><div>   <span>Ord.</span></div> </a></td> <td class='siTieneDogv'>07<a class = 'diario_ordinario' href="/docm/cambiarBoletin.do?fecha=20261007" rel = 'external'><div>   <span>Ord.</span></div> </a></td> <td class='siTieneDogv'>08<a class = 'diario_ordinario_visitado' href="/docm/cambiarBoletin.do?fecha=20261008" rel = 'external'><div>   <span>Ord.</span></div> </a></td> <td class='siTieneDogv'>09<a class = 'diario_ordinario_visitado' href="/docm/cambiarBoletin.do?fecha=20261009" rel = 'external'><div>   <span>Ord.</span></div> </a></td> <td class='noTieneDogv'> 10</td> <td class='noTieneDogv'> 11</td><td ></td></tr><tr><td ></td> <td class='noTieneDogv'> 12</td> <td class='siTieneDogv'>13<a class = 'diario_ordinario_visitado' href="/docm/cambiarBoletin.do?fecha=20261013" rel = 'external'><div>   <span>Ord.</span></div> </a></td> <td class='siTieneDogv'>14<a class = 'diario_ordinario_visitado' href="/docm/cambiarBoletin.do?fecha=20261014" rel = 'external'><div>   <span>Ord.</span></div> </a></td> <td class='siTieneDogv'>15<a class = 'diario_ordinario_visitado' href="/docm/cambiarBoletin.do?fecha=20261015" rel = 'external'><div>   <span>Ord.</span></div> </a></td> <td class='siTieneDogv'>16<a class = 'diario_ordinario' href="/docm/cambiarBoletin.do?fecha=20261016" rel = 'external'><div>   <span>Ord.</span></div> </a></td> <td class='noTieneDogv'> 17</td> <td class='noTieneDogv'> 18</td><td ></td></tr><tr><td ></td> <td class='siTieneDogv'>19<a class = 'diario_ordinario' href="/docm/cambiarBoletin.do?fecha=20261019" rel = 'external'><div>   <span>Ord.</span></div> </a></td> <td class='siTieneDogv'>20<a class = 'diario_ordinario_visitado' href="/docm/cambiarBoletin.do?fecha=20261020" rel = 'external'><div>   <span>Ord.</span></div> </a></td> <td class='siTieneDogv'>21<a class = 'diario_ordinario_visitado' href="/docm/cambiarBoletin.do?fecha=20261021" rel = 'external'><div>   <span>Ord.</span></div> </a></td> <td class='siTieneDogv'>22<a class = 'diario_ordinario_visitado' href="/docm/cambiarBoletin.do?fecha=20261022" rel = 'external'><div>   <span>Ord.</span></div> </a></td> <td class='siTieneDogv'>23<a class = 'diario_ordinario_visitado' href="/docm/cambiarBoletin.do?fecha=20261023" rel = 'external'><div>   <span>Ord.</span></div> </a></td> <td class='noTieneDogv'> 24</td> <td class='noTieneDogv'> 25</td><td ></td></tr><tr><td ></td> <td class='siTieneDogv'>26<a class = 'diario_ordinario_visitado' href="/docm/cambiarBoletin.do?fecha=20261026" rel = 'external'><div>   <span>Ord.</span></div> </a></td> <td class='siTieneDogv'>27<a class = 'diario_ordinario_visitado' href="/docm/cambiarBoletin.do?fecha=20261027" rel = 'external'><div>   <span>Ord.</span></div> </a></td> <td class='siTieneDogv'>28<a class = 'diario_ordinario_visitado' href="/docm/cambiarBoletin.do?fecha=20261028" rel = 'external'><div>   <span>Ord.</span></div> </a><a class = 'diario_extraordinario_visitado' href="/docm/cambiarBoletin.do?fecha=20261028-ext-2&numDogv=2" rel = 'external'><div>   <span>Ext.</span></div> </a></td> <td class='siTieneDogv'>29<a class = 'diario_ordinario_visitado' href="/docm/cambiarBoletin.do?fecha=20261029" rel = 'external'><div>   <span>Ord.</span></div> </a></td> <td class='siTieneDogv'>30<a class = 'diario_ordinario_visitado' href="/docm/cambiarBoletin.do?fecha=20261030" rel = 'external'><div>   <span>Ord.</span></div> </a></td> <td class='noTieneDogv'> 31</td><td ></td><td ></td></tr> </table></td></tr></table><input type="hidden" id="msjNumAnio" name="msjNumAnio" value="El año tiene que tener 4 dígitos" />
+<input type="hidden" id="fechaVista" name="fechaVista" value="30/10/2026" />
+<input type="hidden" id="fechaNueva" name="fechaNueva" value="30/10/2026" />
+<input type="hidden" id="fechaMesSiguiente" name="fechaMesSiguiente" value="30/11/2026" />
+<input type="hidden" id="fechaMesAnterior" name="fechaMesAnterior" value="30/09/2026" />
+<input type="hidden" id="anioSiguiente" name="anioSiguiente" value="30/10/2027" />
+<input type="hidden" id="anioAnterior" name="anioAnterior" value="30/10/2025" />
+
+		
+	<table id="buscaFecha">
+		<tr>
+			<td>
+				<span>
+					<label for="fechaInput"></label>
+					<input type="text" class="text" name="fechaInput" id="fechaInput" maxlength="10" value="dd/mm/yyyy"/>
+					&nbsp;&nbsp;
+					<input class="botonPortal" type="submit" value="Buscar"/>
+				</span>
+			</td>
+		</tr>
+	</table>
+ 	<br/>
+				</div>
+			</form>
+			<br/>
+		</td>
+	</tr>
+	
+	<tr>
+		<td><p><img src="/docm/images/bg_enlaces_interes.png" alt="" style="vertical-align: middle;"/>&nbsp;&nbsp;&nbsp;<b>Enlaces de Interés</b></p></td>
+	</tr>
+	<tr class = "filaOpcionesMenu" id = "filaOpcionesMenu">
+		<td>
+			<table class = "tablaOpcionesMenu">
+				<tr>
+					<td>
+						<ul>
+							<li class = "ig">
+								<a href="/docm/informacionGeneral.do" title="Abrir la página de Información general">Información general</a>
+							</li>
+							<li class = "sa">
+								<a href="/docm/alertas.do" title="Abrir la página de Servicio de alertas">Servicio de alertas</a>
+							</li>
+							<li class = "au">
+								<a href="/docm/comprobarAutenticidad.do" title="Abrir la página de Comprobar autenticidad de un boletín">Comprobar autenticidad</a>
+							</li>
+							<li class = "pf">
+								<a href="/docm/preguntasFrecuentes.do" title="Abrir la página de Preguntas frecuentes">
+									Preguntas frecuentes
+								</a>
+							</li>
+							<li class = "en">
+								<a href="/docm/enlaces.do" title="Abrir la página de enlaces">Enlaces</a>
+							</li>
+							<li>
+								<a href="/docm/cargarAltaOrganismo.do" title="Abrir la página de Solicitud de alta de organismo emisor">Alta Organismo Emisor</a>
+							</li>
+							<li class = "ap">
+								<a href="/docm/accederPublicador.do" title="Abrir la página de acceso al Publicador">Acceso al Publicador</a>
+							</li>
+							<li class = "es">
+								<a href="/docm/envioSugerencias" title="Abrir la página de Envío de Sugerencias">Envío de Sugerencias</a>
+							</li>
+							
+							
+							
+							<li class = "ba">
+								<a href="/docm/busquedaAvanzada.do" title="Abrir la página de búsqueda avanzada">Búsqueda Avanzada</a>
+							</li>
+						
+							<li>
+								<a href="/docm/descargarArchivo.do?ruta=aviso_suscriptores.pdf&amp;tipo=rutaDescargables" title="Abrir el archivo PDF de aviso a suscriptores en una nueva página" class = "new-window">Aviso a suscriptores</a>
+							</li>
+							<li class = "vn">
+								<a href="/docm/verificacionNID.do" title="Abrir la página de Verificación del NID">Verificación del NID</a>
+							</li>
+							<li class = "pe">
+								<a href="/docm/goToEliHelp.do" title="Abrir la página de Proyecto Eli">Proyecto Eli</a>
+							</li>	
+							<li class = "vn">																
+								<a href="/docm/gestionPagos.do" title="Abrir la página de Gestión de pagos">Gestión de pagos</a>
+							</li>				
+						</ul>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+						</td>
+						<td id = "contenido">
+							
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+		
+
+
+
+							
+		<table class = "tablaDatosSumario">
+			<tr>
+				<td class = "anyoDiario">
+					A&Ntilde;O XLIV
+				</td>
+				<td class = "fechaDiario">
+					Lunes, 4 de agosto de 2025
+				</td>
+				<td>
+					<div class = "numeroDiario">
+						N&uacute;m. 148
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="3">
+					<img src="./images/linea.gif" alt="" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<h2 class = "cabeceraDiario">
+						Sumario
+					</h2>
+				</td>
+				<td colspan="2" class = "descargaDiario">
+					<form action="descargarArchivo.do?ruta=2025/08/04/pdf/docm_148.pdf&amp;tipo=rutaDocm" method="post" class = "new-window">
+						<div>	
+							DOCM completo&nbsp;&nbsp;
+							<input type="image" src="./images/pdf-completo.gif" alt = "pdf &gt;"  />
+							2360 KB
+						</div>
+					</form>
+				</td>
+			</tr>
+		</table>
+			<div class = "categoriaDiario">
+			<h3 class = "cabeceraCategoria">
+					I.- DISPOSICIONES GENERALES
+			</h3>
+	 		<ol class = "subcategoria">
+			  									<div class = "disposicion">
+					  						<div class = "organismo">
+							<h4 class = "tituloOrganismo">
+																											Consejería de Bienestar Social <br/>
+																								</h4>
+						</div>
+													
+																					
+																																				<div class = "disp_1753866557427910030">
+							<p class = "sumario">
+								<a href="./descargarArchivo.do?ruta=2025/08/04/pdf/2025_6153.pdf&amp;tipo=rutaDocm" class = "new-window">Servicios Sociales. Decreto 60/2025</a>, de 29 de julio, por el que se modifica el Decreto 75/2024, de 29 de octubre, por el que se regula la participaci&#243;n econ&#243;mica de las personas beneficiarias en la financiaci&#243;n de determinados servicios del sistema para la autonom&#237;a y atenci&#243;n a la dependencia y del sistema p&#250;blico de servicios sociales de Castilla-La Mancha. [NID 2025/6153]							
+							</p>
+							<p class = "paginaDisposicion">
+								26598
+							</p>						
+															<a onclick="javascript:abreVentanaHtml('verArchivoHtml.do?ruta=2025/08/04/html/2025_6153.html&amp;tipo=rutaDocm')" style="cursor: pointer;">	
+									<input type="image" src="./images/icono_html.gif" alt = "html &gt;"  />
+								</a>
+														<a href="./descargarArchivo.do?ruta=2025/08/04/pdf/2025_6153.pdf&amp;tipo=rutaDocm" class = "new-window">	
+								<input type="image" src="./images/pdf-completo.gif" alt = "pdf &gt;"  />
+							</a> >
+													
+							149 KB
+							&nbsp;[<a href="./detalleDocumento.do?idDisposicion=1753866557427910030" title="Ver los datos detallados del documento">Ver detalle</a>]
+						</div>
+						
+							
+						
+											  					</div>
+				</li>
+			   			</ol>
+		</div>
+			<div class = "categoriaDiario">
+			<h3 class = "cabeceraCategoria">
+					II.- AUTORIDADES Y PERSONAL
+			</h3>
+	 		<ol class = "subcategoria">
+			  									<li>OPOSICIONES Y CONCURSOS
+			    					<div class = "disposicion">
+					  						<div class = "organismo">
+							<h4 class = "tituloOrganismo">
+																											Consejería de Educación, Cultura y Deportes <br/>
+																								</h4>
+						</div>
+													
+																					
+																																				<div class = "disp_1753451363238110080">
+							<p class = "sumario">
+								<a href="./descargarArchivo.do?ruta=2025/08/04/pdf/2025_6083.pdf&amp;tipo=rutaDocm" class = "new-window">Provisión de Puestos de Trabajo. Resoluci&#243;n de 25/07/2025</a>, de la Consejer&#237;a de Educaci&#243;n, Cultura y Deportes, por la que se resuelve el procedimiento para el nombramiento, por el sistema de libre designaci&#243;n, del puesto de direcci&#243;n del centro integrado p&#250;blico de Formaci&#243;n Profesional Aguas Nuevas de Albacete. [NID 2025/6083]							
+							</p>
+							<p class = "paginaDisposicion">
+								26600
+							</p>						
+															<a onclick="javascript:abreVentanaHtml('verArchivoHtml.do?ruta=2025/08/04/html/2025_6083.html&amp;tipo=rutaDocm')" style="cursor: pointer;">	
+									<input type="image" src="./images/icono_html.gif" alt = "html &gt;"  />
+								</a>
+														<a href="./descargarArchivo.do?ruta=2025/08/04/pdf/2025_6083.pdf&amp;tipo=rutaDocm" class = "new-window">	
+								<input type="image" src="./images/pdf-completo.gif" alt = "pdf &gt;"  />
+							</a> >
+													
+							150 KB
+							&nbsp;[<a href="./detalleDocumento.do?idDisposicion=1753451363238110080" title="Ver los datos detallados del documento">Ver detalle</a>]
+						</div>
+						
+							
+						
+													
+																					
+																																				<div class = "disp_1753451204220110078">
+							<p class = "sumario">
+								<a href="./descargarArchivo.do?ruta=2025/08/04/pdf/2025_6084.pdf&amp;tipo=rutaDocm" class = "new-window">Provisión de Puestos de Trabajo. Resoluci&#243;n de 25/07/2025</a>, de la Consejer&#237;a de Educaci&#243;n, Cultura y Deportes, por la que se resuelve el procedimiento para la provisi&#243;n, por el sistema de libre designaci&#243;n, del puesto de direcci&#243;n del centro integrado p&#250;blico de Formaci&#243;n Profesional Aguas Nuevas de Albacete. [NID 2025/6084]							
+							</p>
+							<p class = "paginaDisposicion">
+								26601
+							</p>						
+															<a onclick="javascript:abreVentanaHtml('verArchivoHtml.do?ruta=2025/08/04/html/2025_6084.html&amp;tipo=rutaDocm')" style="cursor: pointer;">	
+									<input type="image" src="./images/icono_html.gif" alt = "html &gt;"  />
+								</a>
+														<a href="./descargarArchivo.do?ruta=2025/08/04/pdf/2025_6084.pdf&amp;tipo=rutaDocm" class = "new-window">	
+								<input type="image" src="./images/pdf-completo.gif" alt = "pdf &gt;"  />
+							</a> >
+													
+							149 KB
+							&nbsp;[<a href="./detalleDocumento.do?idDisposicion=1753451204220110078" title="Ver los datos detallados del documento">Ver detalle</a>]
+						</div>
+						
+							
+						
+											  					</div>
+				</li>
+			   			</ol>
+		</div>
+			<div class = "categoriaDiario">
+			<h3 class = "cabeceraCategoria">
+					III.- OTRAS DISPOSICIONES Y ACTOS
+			</h3>
+	 		<ol class = "subcategoria">
+			  									<div class = "disposicion">
+					  						<div class = "organismo">
+							<h4 class = "tituloOrganismo">
+																											Consejería de Economía, Empresas y Empleo <br/>
+																								</h4>
+						</div>
+													
+																					
+																																				<div class = "disp_1753700224164110290">
+							<p class = "sumario">
+								<a href="./descargarArchivo.do?ruta=2025/08/04/pdf/2025_6107.pdf&amp;tipo=rutaDocm" class = "new-window">Turismo. Orden 110/2025</a>, de 25 de julio, de la Consejer&#237;a de Econom&#237;a, Empresas y Empleo, por la que se declara Municipio Tur&#237;stico a la localidad de Valdepe&#241;as, de conformidad con lo dispuesto la Ley 8/1999, de 26 de mayo, de Ordenaci&#243;n del Turismo de Castilla-La Mancha. [NID 2025/6107]							
+							</p>
+							<p class = "paginaDisposicion">
+								26602
+							</p>						
+															<a onclick="javascript:abreVentanaHtml('verArchivoHtml.do?ruta=2025/08/04/html/2025_6107.html&amp;tipo=rutaDocm')" style="cursor: pointer;">	
+									<input type="image" src="./images/icono_html.gif" alt = "html &gt;"  />
+								</a>
+														<a href="./descargarArchivo.do?ruta=2025/08/04/pdf/2025_6107.pdf&amp;tipo=rutaDocm" class = "new-window">	
+								<input type="image" src="./images/pdf-completo.gif" alt = "pdf &gt;"  />
+							</a> >
+													
+							161 KB
+							&nbsp;[<a href="./detalleDocumento.do?idDisposicion=1753700224164110290" title="Ver los datos detallados del documento">Ver detalle</a>]
+						</div>
+						
+							
+						
+													
+																					
+																																				<div class = "disp_1753700303959110292">
+							<p class = "sumario">
+								<a href="./descargarArchivo.do?ruta=2025/08/04/pdf/2025_6108.pdf&amp;tipo=rutaDocm" class = "new-window">Turismo. Orden 111/2025</a>, de 25 de julio, de la Consejer&#237;a de Econom&#237;a, Empresas y Empleo, por la que se declara Municipio Tur&#237;stico a la localidad de Pozuelo de Calatrava, de conformidad con lo dispuesto la Ley 8/1999, de 26 de mayo, de Ordenaci&#243;n del Turismo de Castilla-La Mancha. [NID 2025/6108]							
+							</p>
+							<p class = "paginaDisposicion">
+								26604
+							</p>						
+															<a onclick="javascript:abreVentanaHtml('verArchivoHtml.do?ruta=2025/08/04/html/2025_6108.html&amp;tipo=rutaDocm')" style="cursor: pointer;">	
+									<input type="image" src="./images/icono_html.gif" alt = "html &gt;"  />
+								</a>
+														<a href="./descargarArchivo.do?ruta=2025/08/04/pdf/2025_6108.pdf&amp;tipo=rutaDocm" class = "new-window">	
+								<input type="image" src="./images/pdf-completo.gif" alt = "pdf &gt;"  />
+							</a> >
+													
+							160 KB
+							&nbsp;[<a href="./detalleDocumento.do?idDisposicion=1753700303959110292" title="Ver los datos detallados del documento">Ver detalle</a>]
+						</div>
+						
+							
+						
+													
+																					
+																																				<div class = "disp_1753700074995110286">
+							<p class = "sumario">
+								<a href="./descargarArchivo.do?ruta=2025/08/04/pdf/2025_6109.pdf&amp;tipo=rutaDocm" class = "new-window">Turismo. Orden 112/2025</a>, de 25 de julio, de la Consejer&#237;a de Econom&#237;a, Empresas y Empleo, por la que se declara Municipio Tur&#237;stico a la localidad de La Roda, de conformidad con lo dispuesto la Ley 8/1999, de 26 de mayo, de Ordenaci&#243;n del Turismo de Castilla-La Mancha. [NID 2025/6109]							
+							</p>
+							<p class = "paginaDisposicion">
+								26606
+							</p>						
+															<a onclick="javascript:abreVentanaHtml('verArchivoHtml.do?ruta=2025/08/04/html/2025_6109.html&amp;tipo=rutaDocm')" style="cursor: pointer;">	
+									<input type="image" src="./images/icono_html.gif" alt = "html &gt;"  />
+								</a>
+														<a href="./descargarArchivo.do?ruta=2025/08/04/pdf/2025_6109.pdf&amp;tipo=rutaDocm" class = "new-window">	
+								<input type="image" src="./images/pdf-completo.gif" alt = "pdf &gt;"  />
+							</a> >
+													
+							160 KB
+							&nbsp;[<a href="./detalleDocumento.do?idDisposicion=1753700074995110286" title="Ver los datos detallados del documento">Ver detalle</a>]
+						</div>
+						
+							
+						
+													
+																					
+																																				<div class = "disp_1753688364762100162">
+							<p class = "sumario">
+								<a href="./descargarArchivo.do?ruta=2025/08/04/pdf/2025_6085.pdf&amp;tipo=rutaDocm" class = "new-window">Notificaciones. Notificaci&#243;n de 28/07/2025</a>, de la Secretar&#237;a General, de la Resoluci&#243;n de la Delegaci&#243;n Provincial de la Consejer&#237;a de Econom&#237;a, Empresas y Empleo en Ciudad Real, por delegaci&#243;n de la Direcci&#243;n General de Formaci&#243;n Profesional en el &#193;mbito Laboral, de fecha 20/06/2025, sobre procedimiento de solicitud de beca y/o ayuda de conciliaci&#243;n, al no haberse podido practicar la notificaci&#243;n personal en el &#250;ltimo domicilio conocido, con expediente n&#250;mero FPTD/2023/013/2107. [NID 2025/6085]							
+							</p>
+							<p class = "paginaDisposicion">
+								26608
+							</p>						
+															<a onclick="javascript:abreVentanaHtml('verArchivoHtml.do?ruta=2025/08/04/html/2025_6085.html&amp;tipo=rutaDocm')" style="cursor: pointer;">	
+									<input type="image" src="./images/icono_html.gif" alt = "html &gt;"  />
+								</a>
+														<a href="./descargarArchivo.do?ruta=2025/08/04/pdf/2025_6085.pdf&amp;tipo=rutaDocm" class = "new-window">	
+								<input type="image" src="./images/pdf-completo.gif" alt = "pdf &gt;"  />
+							</a> >
+													
+							175 KB
+							&nbsp;[<a href="./detalleDocumento.do?idDisposicion=1753688364762100162" title="Ver los datos detallados del documento">Ver detalle</a>]
+						</div>
+						
+							
+						
+											  						<div class = "organismo">
+							<h4 class = "tituloOrganismo">
+																											Consejería de Sanidad <br/>
+																								</h4>
+						</div>
+													
+																					
+																																				<div class = "disp_1753696456200100240">
+							<p class = "sumario">
+								<a href="./descargarArchivo.do?ruta=2025/08/04/pdf/2025_6110.pdf&amp;tipo=rutaDocm" class = "new-window">Sanciones. Notificaci&#243;n de 28/07/2025</a>, de la Delegaci&#243;n Provincial de Sanidad de Ciudad Real, por la que se da publicidad al acuerdo de iniciaci&#243;n del expediente sancionador n&#250;mero CO/13/098/25. [NID 2025/6110]							
+							</p>
+							<p class = "paginaDisposicion">
+								26609
+							</p>						
+															<a onclick="javascript:abreVentanaHtml('verArchivoHtml.do?ruta=2025/08/04/html/2025_6110.html&amp;tipo=rutaDocm')" style="cursor: pointer;">	
+									<input type="image" src="./images/icono_html.gif" alt = "html &gt;"  />
+								</a>
+														<a href="./descargarArchivo.do?ruta=2025/08/04/pdf/2025_6110.pdf&amp;tipo=rutaDocm" class = "new-window">	
+								<input type="image" src="./images/pdf-completo.gif" alt = "pdf &gt;"  />
+							</a> >
+													
+							143 KB
+							&nbsp;[<a href="./detalleDocumento.do?idDisposicion=1753696456200100240" title="Ver los datos detallados del documento">Ver detalle</a>]
+						</div>
+						
+							
+						
+													
+																					
+																																				<div class = "disp_1753442503209110062">
+							<p class = "sumario">
+								<a href="./descargarArchivo.do?ruta=2025/08/04/pdf/2025_6088.pdf&amp;tipo=rutaDocm" class = "new-window">Notificaciones. Notificaci&#243;n de 16/07/2025</a>, de la Delegaci&#243;n Provincial de Sanidad de Toledo, por la que se da publicidad a la notificaci&#243;n de fecha 26/06/2025 y referencia expediente 188/2025, dictada en el marco del control de establecimientos y servicios biocidas de Castilla-La Mancha. [NID 2025/6088]							
+							</p>
+							<p class = "paginaDisposicion">
+								26610
+							</p>						
+															<a onclick="javascript:abreVentanaHtml('verArchivoHtml.do?ruta=2025/08/04/html/2025_6088.html&amp;tipo=rutaDocm')" style="cursor: pointer;">	
+									<input type="image" src="./images/icono_html.gif" alt = "html &gt;"  />
+								</a>
+														<a href="./descargarArchivo.do?ruta=2025/08/04/pdf/2025_6088.pdf&amp;tipo=rutaDocm" class = "new-window">	
+								<input type="image" src="./images/pdf-completo.gif" alt = "pdf &gt;"  />
+							</a> >
+													
+							140 KB
+							&nbsp;[<a href="./detalleDocumento.do?idDisposicion=1753442503209110062" title="Ver los datos detallados del documento">Ver detalle</a>]
+						</div>
+						
+							
+						
+											  						<div class = "organismo">
+							<h4 class = "tituloOrganismo">
+																											Consejería de Educación, Cultura y Deportes <br/>
+																								</h4>
+						</div>
+													
+																					
+																																				<div class = "disp_1753687075575110212">
+							<p class = "sumario">
+								<a href="./descargarArchivo.do?ruta=2025/08/04/pdf/2025_6095.pdf&amp;tipo=rutaDocm" class = "new-window">Ayudas y Subvenciones. Resoluci&#243;n de 25/07/2025</a>, de la Consejer&#237;a de Educaci&#243;n, Cultura y Deportes, por la que se conceden ayudas cofinanciadas por el Fondo Social Europeo +, a los centros docentes privados concertados de Castilla-La Mancha para desarrollar los programas Prepara-T+ y Titula-S+, integrados en el VI Plan de &#201;xito Educativo y Prevenci&#243;n del Abandono Escolar Temprano en Castilla-La Mancha para el curso escolar 2025/2026. [NID 2025/6095]							
+							</p>
+							<p class = "paginaDisposicion">
+								26611
+							</p>						
+															<a onclick="javascript:abreVentanaHtml('verArchivoHtml.do?ruta=2025/08/04/html/2025_6095.html&amp;tipo=rutaDocm')" style="cursor: pointer;">	
+									<input type="image" src="./images/icono_html.gif" alt = "html &gt;"  />
+								</a>
+														<a href="./descargarArchivo.do?ruta=2025/08/04/pdf/2025_6095.pdf&amp;tipo=rutaDocm" class = "new-window">	
+								<input type="image" src="./images/pdf-completo.gif" alt = "pdf &gt;"  />
+							</a> >
+													
+							317 KB
+							&nbsp;[<a href="./detalleDocumento.do?idDisposicion=1753687075575110212" title="Ver los datos detallados del documento">Ver detalle</a>]
+						</div>
+						
+							
+						
+													
+																					
+																																				<div class = "disp_1753444292088110069">
+							<p class = "sumario">
+								<a href="./descargarArchivo.do?ruta=2025/08/04/pdf/2025_6081.pdf&amp;tipo=rutaDocm" class = "new-window">Centros Educativos. Resoluci&#243;n de 22/07/2025</a>, de la Viceconsejer&#237;a de Educaci&#243;n, Universidades e Investigaci&#243;n, por la que se aprueba la modificaci&#243;n de la autorizaci&#243;n del centro privado de Educaci&#243;n Infantil: ...y Mil&#250;, de Guadalajara, por cambio de titularidad. [NID 2025/6081]							
+							</p>
+							<p class = "paginaDisposicion">
+								26620
+							</p>						
+															<a onclick="javascript:abreVentanaHtml('verArchivoHtml.do?ruta=2025/08/04/html/2025_6081.html&amp;tipo=rutaDocm')" style="cursor: pointer;">	
+									<input type="image" src="./images/icono_html.gif" alt = "html &gt;"  />
+								</a>
+														<a href="./descargarArchivo.do?ruta=2025/08/04/pdf/2025_6081.pdf&amp;tipo=rutaDocm" class = "new-window">	
+								<input type="image" src="./images/pdf-completo.gif" alt = "pdf &gt;"  />
+							</a> >
+													
+							178 KB
+							&nbsp;[<a href="./detalleDocumento.do?idDisposicion=1753444292088110069" title="Ver los datos detallados del documento">Ver detalle</a>]
+						</div>
+						
+							
+						
+													
+																					
+																																				<div class = "disp_1753443722408110064">
+							<p class = "sumario">
+								<a href="./descargarArchivo.do?ruta=2025/08/04/pdf/2025_6082.pdf&amp;tipo=rutaDocm" class = "new-window">Centros Educativos. Resoluci&#243;n de 22/07/2025</a>, de la Viceconsejer&#237;a de Educaci&#243;n, Universidades e Investigaci&#243;n, por la que se aprueba la modificaci&#243;n de la autorizaci&#243;n del centro privado de Educaci&#243;n Infantil: Tint&#237;n, de Guadalajara, por cambio de titularidad. [NID 2025/6082]							
+							</p>
+							<p class = "paginaDisposicion">
+								26621
+							</p>						
+															<a onclick="javascript:abreVentanaHtml('verArchivoHtml.do?ruta=2025/08/04/html/2025_6082.html&amp;tipo=rutaDocm')" style="cursor: pointer;">	
+									<input type="image" src="./images/icono_html.gif" alt = "html &gt;"  />
+								</a>
+														<a href="./descargarArchivo.do?ruta=2025/08/04/pdf/2025_6082.pdf&amp;tipo=rutaDocm" class = "new-window">	
+								<input type="image" src="./images/pdf-completo.gif" alt = "pdf &gt;"  />
+							</a> >
+													
+							177 KB
+							&nbsp;[<a href="./detalleDocumento.do?idDisposicion=1753443722408110064" title="Ver los datos detallados del documento">Ver detalle</a>]
+						</div>
+						
+							
+						
+													
+																					
+																																				<div class = "disp_1753699207120100249">
+							<p class = "sumario">
+								<a href="./descargarArchivo.do?ruta=2025/08/04/pdf/2025_6104.pdf&amp;tipo=rutaDocm" class = "new-window">Centros Educativos. Resoluci&#243;n de 25/07/2025</a>, de la Viceconsejer&#237;a de Educaci&#243;n, Universidades e Investigaci&#243;n, por la que se autoriza la apertura y funcionamiento y se aprueba la ampliaci&#243;n del n&#250;mero de puestos escolares del centro docente extranjero Escuela Internacional Waldorf Madreselva, de Ciudad Real. [NID 2025/6104]							
+							</p>
+							<p class = "paginaDisposicion">
+								26622
+							</p>						
+															<a onclick="javascript:abreVentanaHtml('verArchivoHtml.do?ruta=2025/08/04/html/2025_6104.html&amp;tipo=rutaDocm')" style="cursor: pointer;">	
+									<input type="image" src="./images/icono_html.gif" alt = "html &gt;"  />
+								</a>
+														<a href="./descargarArchivo.do?ruta=2025/08/04/pdf/2025_6104.pdf&amp;tipo=rutaDocm" class = "new-window">	
+								<input type="image" src="./images/pdf-completo.gif" alt = "pdf &gt;"  />
+							</a> >
+													
+							159 KB
+							&nbsp;[<a href="./detalleDocumento.do?idDisposicion=1753699207120100249" title="Ver los datos detallados del documento">Ver detalle</a>]
+						</div>
+						
+							
+						
+											  						<div class = "organismo">
+							<h4 class = "tituloOrganismo">
+																											Consejería de Bienestar Social <br/>
+																								</h4>
+						</div>
+													
+																					
+																																				<div class = "disp_1753706696226100269">
+							<p class = "sumario">
+								<a href="./descargarArchivo.do?ruta=2025/08/04/pdf/2025_6111.pdf&amp;tipo=rutaDocm" class = "new-window">Notificaciones. Notificaci&#243;n de 28/07/2025</a>, de la Delegaci&#243;n Provincial de Bienestar Social de Albacete, en la que se acuerda la publicaci&#243;n de las resoluciones de expedientes de ayuda a familias numerosas con hijos menores de edad tramitadas conforme al Decreto 80/2012, de 26 de abril, modificado por Decreto 108/2014, de 23 de octubre, relacionadas en anexo I. [NID 2025/6111]							
+							</p>
+							<p class = "paginaDisposicion">
+								26623
+							</p>						
+															<a onclick="javascript:abreVentanaHtml('verArchivoHtml.do?ruta=2025/08/04/html/2025_6111.html&amp;tipo=rutaDocm')" style="cursor: pointer;">	
+									<input type="image" src="./images/icono_html.gif" alt = "html &gt;"  />
+								</a>
+														<a href="./descargarArchivo.do?ruta=2025/08/04/pdf/2025_6111.pdf&amp;tipo=rutaDocm" class = "new-window">	
+								<input type="image" src="./images/pdf-completo.gif" alt = "pdf &gt;"  />
+							</a> >
+													
+							181 KB
+							&nbsp;[<a href="./detalleDocumento.do?idDisposicion=1753706696226100269" title="Ver los datos detallados del documento">Ver detalle</a>]
+						</div>
+						
+							
+						
+											  						<div class = "organismo">
+							<h4 class = "tituloOrganismo">
+																											Consejería de Desarrollo Sostenible <br/>
+																								</h4>
+						</div>
+													
+																					
+																																				<div class = "disp_1753357194919000123">
+							<p class = "sumario">
+								<a href="./descargarArchivo.do?ruta=2025/08/04/pdf/2025_6097.pdf&amp;tipo=rutaDocm" class = "new-window">Instalaciones Eléctricas. Resoluci&#243;n de 24/07/2025</a>, de la Delegaci&#243;n Provincial de Desarrollo Sostenible de Toledo, de autorizaci&#243;n administrativa previa y autorizaci&#243;n administrativa de construcci&#243;n de instalaci&#243;n el&#233;ctrica de alta tensi&#243;n con n&#250;mero de expediente: E-45211122615 corresponde I. [NID 2025/6097]							
+							</p>
+							<p class = "paginaDisposicion">
+								26624
+							</p>						
+															<a onclick="javascript:abreVentanaHtml('verArchivoHtml.do?ruta=2025/08/04/html/2025_6097.html&amp;tipo=rutaDocm')" style="cursor: pointer;">	
+									<input type="image" src="./images/icono_html.gif" alt = "html &gt;"  />
+								</a>
+														<a href="./descargarArchivo.do?ruta=2025/08/04/pdf/2025_6097.pdf&amp;tipo=rutaDocm" class = "new-window">	
+								<input type="image" src="./images/pdf-completo.gif" alt = "pdf &gt;"  />
+							</a> >
+													
+							169 KB
+							&nbsp;[<a href="./detalleDocumento.do?idDisposicion=1753357194919000123" title="Ver los datos detallados del documento">Ver detalle</a>]
+						</div>
+						
+							
+						
+													
+																					
+																																				<div class = "disp_1753357242375000126">
+							<p class = "sumario">
+								<a href="./descargarArchivo.do?ruta=2025/08/04/pdf/2025_6098.pdf&amp;tipo=rutaDocm" class = "new-window">Instalaciones Eléctricas. Resoluci&#243;n de 24/07/2025</a>, de la Delegaci&#243;n Provincial de Desarrollo Sostenible de Toledo, de autorizaci&#243;n administrativa previa y autorizaci&#243;n administrativa de construcci&#243;n de instalaci&#243;n el&#233;ctrica de alta tensi&#243;n con n&#250;mero de expediente: E-45241122955. [NID 2025/6098]							
+							</p>
+							<p class = "paginaDisposicion">
+								26626
+							</p>						
+															<a onclick="javascript:abreVentanaHtml('verArchivoHtml.do?ruta=2025/08/04/html/2025_6098.html&amp;tipo=rutaDocm')" style="cursor: pointer;">	
+									<input type="image" src="./images/icono_html.gif" alt = "html &gt;"  />
+								</a>
+														<a href="./descargarArchivo.do?ruta=2025/08/04/pdf/2025_6098.pdf&amp;tipo=rutaDocm" class = "new-window">	
+								<input type="image" src="./images/pdf-completo.gif" alt = "pdf &gt;"  />
+							</a> >
+													
+							164 KB
+							&nbsp;[<a href="./detalleDocumento.do?idDisposicion=1753357242375000126" title="Ver los datos detallados del documento">Ver detalle</a>]
+						</div>
+						
+							
+						
+													
+																					
+																																				<div class = "disp_1753356801409000116">
+							<p class = "sumario">
+								<a href="./descargarArchivo.do?ruta=2025/08/04/pdf/2025_6099.pdf&amp;tipo=rutaDocm" class = "new-window">Instalaciones Eléctricas. Resoluci&#243;n de 24/07/2025</a>, de la Delegaci&#243;n Provincial de Desarrollo Sostenible de Toledo, de autorizaci&#243;n administrativa previa y autorizaci&#243;n administrativa de construcci&#243;n de instalaci&#243;n el&#233;ctrica de alta tensi&#243;n con n&#250;mero de expediente: E-45211101716 CX. [NID 2025/6099]							
+							</p>
+							<p class = "paginaDisposicion">
+								26628
+							</p>						
+															<a onclick="javascript:abreVentanaHtml('verArchivoHtml.do?ruta=2025/08/04/html/2025_6099.html&amp;tipo=rutaDocm')" style="cursor: pointer;">	
+									<input type="image" src="./images/icono_html.gif" alt = "html &gt;"  />
+								</a>
+														<a href="./descargarArchivo.do?ruta=2025/08/04/pdf/2025_6099.pdf&amp;tipo=rutaDocm" class = "new-window">	
+								<input type="image" src="./images/pdf-completo.gif" alt = "pdf &gt;"  />
+							</a> >
+													
+							168 KB
+							&nbsp;[<a href="./detalleDocumento.do?idDisposicion=1753356801409000116" title="Ver los datos detallados del documento">Ver detalle</a>]
+						</div>
+						
+							
+						
+													
+																					
+																																				<div class = "disp_1753357112691000121">
+							<p class = "sumario">
+								<a href="./descargarArchivo.do?ruta=2025/08/04/pdf/2025_6101.pdf&amp;tipo=rutaDocm" class = "new-window">Instalaciones Eléctricas. Resoluci&#243;n de 24/07/2025</a>, de la Delegaci&#243;n Provincial de Desarrollo Sostenible de Toledo, de autorizaci&#243;n administrativa previa y autorizaci&#243;n administrativa de construcci&#243;n de instalaci&#243;n el&#233;ctrica de alta tensi&#243;n con n&#250;mero de expediente: E-45210222954. [NID 2025/6101]							
+							</p>
+							<p class = "paginaDisposicion">
+								26630
+							</p>						
+															<a onclick="javascript:abreVentanaHtml('verArchivoHtml.do?ruta=2025/08/04/html/2025_6101.html&amp;tipo=rutaDocm')" style="cursor: pointer;">	
+									<input type="image" src="./images/icono_html.gif" alt = "html &gt;"  />
+								</a>
+														<a href="./descargarArchivo.do?ruta=2025/08/04/pdf/2025_6101.pdf&amp;tipo=rutaDocm" class = "new-window">	
+								<input type="image" src="./images/pdf-completo.gif" alt = "pdf &gt;"  />
+							</a> >
+													
+							166 KB
+							&nbsp;[<a href="./detalleDocumento.do?idDisposicion=1753357112691000121" title="Ver los datos detallados del documento">Ver detalle</a>]
+						</div>
+						
+							
+						
+													
+																					
+																																				<div class = "disp_1753357090592000119">
+							<p class = "sumario">
+								<a href="./descargarArchivo.do?ruta=2025/08/04/pdf/2025_6102.pdf&amp;tipo=rutaDocm" class = "new-window">Instalaciones Eléctricas. Resoluci&#243;n de 24/07/2025</a>, de la Delegaci&#243;n Provincial de Desarrollo Sostenible de Toledo, de autorizaci&#243;n administrativa previa y autorizaci&#243;n administrativa de construcci&#243;n de instalaci&#243;n el&#233;ctrica de alta tensi&#243;n con n&#250;mero de expediente: E-45211022947. [NID 2025/6102]							
+							</p>
+							<p class = "paginaDisposicion">
+								26632
+							</p>						
+															<a onclick="javascript:abreVentanaHtml('verArchivoHtml.do?ruta=2025/08/04/html/2025_6102.html&amp;tipo=rutaDocm')" style="cursor: pointer;">	
+									<input type="image" src="./images/icono_html.gif" alt = "html &gt;"  />
+								</a>
+														<a href="./descargarArchivo.do?ruta=2025/08/04/pdf/2025_6102.pdf&amp;tipo=rutaDocm" class = "new-window">	
+								<input type="image" src="./images/pdf-completo.gif" alt = "pdf &gt;"  />
+							</a> >
+													
+							165 KB
+							&nbsp;[<a href="./detalleDocumento.do?idDisposicion=1753357090592000119" title="Ver los datos detallados del documento">Ver detalle</a>]
+						</div>
+						
+							
+						
+											  						<div class = "organismo">
+							<h4 class = "tituloOrganismo">
+																									   		Universidad de Castilla-La Mancha <br/>
+																								</h4>
+						</div>
+													
+																					
+																																				<div class = "disp_1753347327181900146">
+							<p class = "sumario">
+								<a href="./descargarArchivo.do?ruta=2025/08/04/pdf/2025_6026.pdf&amp;tipo=rutaDocm" class = "new-window">Universidades. Extracto de 23/07/2025</a>, de la Universidad de Castilla-La Mancha, de la convocatoria de becas de colaboraci&#243;n en tareas de dise&#241;o de rutinas de entrenamiento a los usuarios de la sala de acondicionamiento f&#237;sico de la Facultad de Ciencias del Deporte de la Universidad de Castilla-La Mancha. Curso 2025-2026. BDNS (Identif.): 848188. [NID 2025/6026]							
+							</p>
+							<p class = "paginaDisposicion">
+								26634
+							</p>						
+															<a onclick="javascript:abreVentanaHtml('verArchivoHtml.do?ruta=2025/08/04/html/2025_6026.html&amp;tipo=rutaDocm')" style="cursor: pointer;">	
+									<input type="image" src="./images/icono_html.gif" alt = "html &gt;"  />
+								</a>
+														<a href="./descargarArchivo.do?ruta=2025/08/04/pdf/2025_6026.pdf&amp;tipo=rutaDocm" class = "new-window">	
+								<input type="image" src="./images/pdf-completo.gif" alt = "pdf &gt;"  />
+							</a> >
+													
+							161 KB
+							&nbsp;[<a href="./detalleDocumento.do?idDisposicion=1753347327181900146" title="Ver los datos detallados del documento">Ver detalle</a>]
+						</div>
+						
+							
+						
+											  					</div>
+				</li>
+			   			</ol>
+		</div>
+			<div class = "categoriaDiario">
+			<h3 class = "cabeceraCategoria">
+					V.- ANUNCIOS
+			</h3>
+	 		<ol class = "subcategoria">
+			  									<li>OTROS ANUNCIOS OFICIALES
+			    					<div class = "disposicion">
+					  						<div class = "organismo">
+							<h4 class = "tituloOrganismo">
+																											Consejería de Desarrollo Sostenible <br/>
+																								</h4>
+						</div>
+													
+																					
+																																				<div class = "disp_1751355687854900013">
+							<p class = "sumario">
+								<a href="./descargarArchivo.do?ruta=2025/08/04/pdf/2025_5403.pdf&amp;tipo=rutaDocm" class = "new-window"> Anuncio de 01/07/2025</a>, de la Delegaci&#243;n Provincial de Desarrollo Sostenible de Albacete, sobre informaci&#243;n p&#250;blica del proyecto de instalaci&#243;n de energ&#237;a el&#233;ctrica denominado: Cambio de conductor de LA-56 a LA-100. Tramo Ap 3293-Ap 2743 en L05 Sotu&#233;lamos de ST El Bonillo y cierre con Ap 146 L27 Chaparrala de ST Villarrobledo, emplazada en el t&#233;rmino municipal de El Bonillo, a efectos de su autorizaci&#243;n administrativa previa y su autorizaci&#243;n administrativa de construcci&#243;n. Referencia: 02211003021. [NID 2025/5403]							
+							</p>
+							<p class = "paginaDisposicion">
+								26635
+							</p>						
+															<a onclick="javascript:abreVentanaHtml('verArchivoHtml.do?ruta=2025/08/04/html/2025_5403.html&amp;tipo=rutaDocm')" style="cursor: pointer;">	
+									<input type="image" src="./images/icono_html.gif" alt = "html &gt;"  />
+								</a>
+														<a href="./descargarArchivo.do?ruta=2025/08/04/pdf/2025_5403.pdf&amp;tipo=rutaDocm" class = "new-window">	
+								<input type="image" src="./images/pdf-completo.gif" alt = "pdf &gt;"  />
+							</a> >
+													
+							156 KB
+							&nbsp;[<a href="./detalleDocumento.do?idDisposicion=1751355687854900013" title="Ver los datos detallados del documento">Ver detalle</a>]
+						</div>
+						
+							
+						
+											  					</div>
+				</li>
+			   									<li>ADMINISTRACIÓN LOCAL
+			    					<div class = "disposicion">
+					  						<div class = "organismo">
+							<h4 class = "tituloOrganismo">
+																									   		Organismo Autónomo de Gestión Tributaria Provincial de Albacete (Gestalba) <br/>
+																								</h4>
+						</div>
+													
+																					
+																																				<div class = "disp_1753344607026000026">
+							<p class = "sumario">
+								<a href="./descargarArchivo.do?ruta=2025/08/04/pdf/2025_6008.pdf&amp;tipo=rutaDocm" class = "new-window"> Anuncio de 24/07/2025</a>, del Organismo Aut&#243;nomo de Gesti&#243;n Tributaria Provincial de Albacete (Gestalba), por el que se hace p&#250;blico el acuerdo de ampliaci&#243;n de competencias delegadas, en materia de gesti&#243;n tributaria, recaudatoria e inspecci&#243;n del Impuesto sobre el Incremento de Valor de los Terrenos de Naturaleza Urbana (IIVTNU), entre la Diputaci&#243;n Provincial de Albacete y el Ayuntamiento de Jorquera. [NID 2025/6008]							
+							</p>
+							<p class = "paginaDisposicion">
+								26636
+							</p>						
+															<a onclick="javascript:abreVentanaHtml('verArchivoHtml.do?ruta=2025/08/04/html/2025_6008.html&amp;tipo=rutaDocm')" style="cursor: pointer;">	
+									<input type="image" src="./images/icono_html.gif" alt = "html &gt;"  />
+								</a>
+														<a href="./descargarArchivo.do?ruta=2025/08/04/pdf/2025_6008.pdf&amp;tipo=rutaDocm" class = "new-window">	
+								<input type="image" src="./images/pdf-completo.gif" alt = "pdf &gt;"  />
+							</a> >
+													
+							154 KB
+							&nbsp;[<a href="./detalleDocumento.do?idDisposicion=1753344607026000026" title="Ver los datos detallados del documento">Ver detalle</a>]
+						</div>
+						
+							
+						
+													
+																					
+																																				<div class = "disp_1753345107266000035">
+							<p class = "sumario">
+								<a href="./descargarArchivo.do?ruta=2025/08/04/pdf/2025_6009.pdf&amp;tipo=rutaDocm" class = "new-window"> Anuncio de 24/07/2025</a>, del Organismo Aut&#243;nomo de Gesti&#243;n Tributaria Provincial de Albacete (Gestalba), por el que se hace p&#250;blico el acuerdo de ampliaci&#243;n de competencias delegadas, en materia de gesti&#243;n tributaria, recaudatoria e inspecci&#243;n del Impuesto sobre el Incremento de Valor de los Terrenos de Naturaleza Urbana (IIVTNU), entre la Diputaci&#243;n Provincial de Albacete y el Ayuntamiento de Viveros. [NID 2025/6009]							
+							</p>
+							<p class = "paginaDisposicion">
+								26637
+							</p>						
+															<a onclick="javascript:abreVentanaHtml('verArchivoHtml.do?ruta=2025/08/04/html/2025_6009.html&amp;tipo=rutaDocm')" style="cursor: pointer;">	
+									<input type="image" src="./images/icono_html.gif" alt = "html &gt;"  />
+								</a>
+														<a href="./descargarArchivo.do?ruta=2025/08/04/pdf/2025_6009.pdf&amp;tipo=rutaDocm" class = "new-window">	
+								<input type="image" src="./images/pdf-completo.gif" alt = "pdf &gt;"  />
+							</a> >
+													
+							154 KB
+							&nbsp;[<a href="./detalleDocumento.do?idDisposicion=1753345107266000035" title="Ver los datos detallados del documento">Ver detalle</a>]
+						</div>
+						
+							
+						
+											  						<div class = "organismo">
+							<h4 class = "tituloOrganismo">
+																									   		Ayuntamiento de Alcázar del Rey (Cuenca) <br/>
+																								</h4>
+						</div>
+													
+																					
+																																				<div class = "disp_1753358260639000136">
+							<p class = "sumario">
+								<a href="./descargarArchivo.do?ruta=2025/08/04/pdf/2025_6043.pdf&amp;tipo=rutaDocm" class = "new-window"> Anuncio de 14/07/2025</a>, del Ayuntamiento de Alc&#225;zar del Rey (Cuenca), sobre informaci&#243;n p&#250;blica de expediente de calificaci&#243;n urban&#237;stica en suelo r&#250;stico de reserva en el t&#233;rmino municipal de Alc&#225;zar del Rey. [NID 2025/6043]							
+							</p>
+							<p class = "paginaDisposicion">
+								26638
+							</p>						
+															<a onclick="javascript:abreVentanaHtml('verArchivoHtml.do?ruta=2025/08/04/html/2025_6043.html&amp;tipo=rutaDocm')" style="cursor: pointer;">	
+									<input type="image" src="./images/icono_html.gif" alt = "html &gt;"  />
+								</a>
+														<a href="./descargarArchivo.do?ruta=2025/08/04/pdf/2025_6043.pdf&amp;tipo=rutaDocm" class = "new-window">	
+								<input type="image" src="./images/pdf-completo.gif" alt = "pdf &gt;"  />
+							</a> >
+													
+							165 KB
+							&nbsp;[<a href="./detalleDocumento.do?idDisposicion=1753358260639000136" title="Ver los datos detallados del documento">Ver detalle</a>]
+						</div>
+						
+							
+						
+											  						<div class = "organismo">
+							<h4 class = "tituloOrganismo">
+																									   		Ayuntamiento de Menasalbas (Toledo) <br/>
+																								</h4>
+						</div>
+													
+																					
+																																				<div class = "disp_1753085886033820105">
+							<p class = "sumario">
+								<a href="./descargarArchivo.do?ruta=2025/08/04/pdf/2025_5898.pdf&amp;tipo=rutaDocm" class = "new-window"> Anuncio de 21/07/2025</a>, del Ayuntamiento de Menasalbas (Toledo), sobre aprobaci&#243;n de licencias urban&#237;sticas de obra y de actividad para llevar a cabo el proyecto de legalizaci&#243;n de explotaci&#243;n de ganado vacuno de cebo, en el pol&#237;gono 4, parcela 7. [NID 2025/5898]							
+							</p>
+							<p class = "paginaDisposicion">
+								26639
+							</p>						
+															<a onclick="javascript:abreVentanaHtml('verArchivoHtml.do?ruta=2025/08/04/html/2025_5898.html&amp;tipo=rutaDocm')" style="cursor: pointer;">	
+									<input type="image" src="./images/icono_html.gif" alt = "html &gt;"  />
+								</a>
+														<a href="./descargarArchivo.do?ruta=2025/08/04/pdf/2025_5898.pdf&amp;tipo=rutaDocm" class = "new-window">	
+								<input type="image" src="./images/pdf-completo.gif" alt = "pdf &gt;"  />
+							</a> >
+													
+							155 KB
+							&nbsp;[<a href="./detalleDocumento.do?idDisposicion=1753085886033820105" title="Ver los datos detallados del documento">Ver detalle</a>]
+						</div>
+						
+							
+						
+											  						<div class = "organismo">
+							<h4 class = "tituloOrganismo">
+																									   		Ayuntamiento de Trijueque (Guadalajara) <br/>
+																								</h4>
+						</div>
+													
+																					
+																																				<div class = "disp_1753699660262100252">
+							<p class = "sumario">
+								<a href="./descargarArchivo.do?ruta=2025/08/04/pdf/2025_6096.pdf&amp;tipo=rutaDocm" class = "new-window"> Anuncio de 28/07/2025</a>, del Ayuntamiento de Trijueque (Guadalajara), sobre Oferta de Empleo P&#250;blico correspondiente a las plazas que a continuaci&#243;n se rese&#241;an para el a&#241;o 2025. [NID 2025/6096]							
+							</p>
+							<p class = "paginaDisposicion">
+								26640
+							</p>						
+															<a onclick="javascript:abreVentanaHtml('verArchivoHtml.do?ruta=2025/08/04/html/2025_6096.html&amp;tipo=rutaDocm')" style="cursor: pointer;">	
+									<input type="image" src="./images/icono_html.gif" alt = "html &gt;"  />
+								</a>
+														<a href="./descargarArchivo.do?ruta=2025/08/04/pdf/2025_6096.pdf&amp;tipo=rutaDocm" class = "new-window">	
+								<input type="image" src="./images/pdf-completo.gif" alt = "pdf &gt;"  />
+							</a> >
+													
+							157 KB
+							&nbsp;[<a href="./detalleDocumento.do?idDisposicion=1753699660262100252" title="Ver los datos detallados del documento">Ver detalle</a>]
+						</div>
+						
+							
+						
+											  					</div>
+				</li>
+			   			</ol>
+		</div>
+			<form id="abrirEnVentanaForm" method="POST" action="">
+				<input type="hidden" id="idDisposicion" name="idDisposicion" /> <input
+					type="hidden" id="from" name="from" value="" />
+		</form>
+		<script type="text/javascript">
+		
+			function abreVentanaHtml(action) {		
+				
+				nombreVentana = 'popup';
+				abreVentana(nombreVentana,'950','auto');
+				document.getElementById('abrirEnVentanaForm').target=nombreVentana;
+				document.getElementById('abrirEnVentanaForm').action=action; 
+				document.getElementById('abrirEnVentanaForm').submit();
+			}
+			
+		</script>
+	
+						</td>
+					</tr>
+					<tr>
+						<td valign="bottom">
+							&nbsp;
+						</td>
+					</tr>
+					<tr id = "pie">
+						<td colspan="3">
+							
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="section-footer" class="section section-footer">
+	<div id="zone-pie" class="zone zone-pie clearfix container-16" align="center">
+		<div id="region-pie-primera" class="grid-12 suffix-1 region region-pie-segunda" align="center">
+			<ul class="menu">
+				<li class="">
+					<a href="https://www.castillalamancha.es/certificados" target="_blank" title="Ir a la página de certificaciones">
+						<img class="imgFooter1" src="/docm/images/certificaciones.png" alt="Ir a la página de certificaciones"/>
+					</a>
+				</li>
+				<li class="">
+					<a href="http://pagina.jccm.es/fondosestructurales/inicio/" target="_blank" title="FEDER">
+						<img class="imgFooter2" src="/docm/images/feder.gif" alt="FEDER"/>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<div id="region-pie-segunda" class="grid-12 suffix-1 region region-pie-segunda" align="center">
+			<ul class="menu">
+				<li class="first leaf">
+					<a href="http://www.w3.org/WAI/WCAG1AA-Conformance" title="W3C-WAII" target="_blank">W3C-WAII</a>
+				</li>
+				<li class="leaf">
+					<a href="https://www.castillalamancha.es/protecciondedatos" target="_blank" title="Protección de datos">Protección de datos</a>
+				</li>
+				<li class="first leaf">
+					<a href="https://www.castillalamancha.es/clm/instituciones" target="_blank" title="Abrir la página de Otras instituciones">Otras instituciones</a>
+				</li>
+				<li class="leaf">
+					<a href="https://www.castillalamancha.es/sitemap" target="_blank" title="Abrir la página de Mapa del sitio">Mapa del sitio</a>
+				</li>
+				<li class="first leaf">
+					<a href="https://webmail.jccm.es/" target="_blank" title="Abrir la página de Correo web">Correo web</a>
+				</li>
+				<li class="first leaf">
+					<a href="https://www.castillalamancha.es/avisolegal" target="_blank" title="Abrir la página de Aviso legal">Aviso Legal</a>
+				</li>
+				<li class="leaf">
+					<a href="https://www.castillalamancha.es/accesibilidad" target="_blank" title="Abrir la página de Accesibilidad">Accesibilidad</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+						</td>
+					</tr>
+				</table>
+			</div><!-- // Content -->
+		</div><!-- //Container -->
+	</body>					
+</html>
