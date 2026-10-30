@@ -31,3 +31,8 @@ def test_verificar_solo_lo_citado():
     assert [s["sistema"] for s in v["evaluacion"]] == ["Examen final", "Trabajos"]
     assert v["evaluacion"][1]["cita_nivel"] == "sin_signos" and v["evaluacion_completa"] and v["creditos"] == 6
     assert v["cuentas"] == {"sistemas_aceptados": 2, "cita_no_literal": 1}
+
+
+def test_ruta_con_puntos_se_normaliza():
+    out = g.enlaces_de_guia('<a href="/content/../master/guiadocent/pdf/esp/1/x.pdf">Guía docente</a>', "https://www.upc.edu/m")
+    assert out == ["https://www.upc.edu/master/guiadocent/pdf/esp/1/x.pdf"]

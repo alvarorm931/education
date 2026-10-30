@@ -104,6 +104,11 @@ def enlaces_de_guia(html: str, url: str) -> list[str]:
         if not (GUIA.search(href) or GUIA.search(texto)) or NO_GUIA.search(href + " " + texto):
             continue
         u = urljoin(url, href)
+        pu = urlparse(u)
+        if "/." in pu.path:  # «/content/../master/…»: la ruta normalizada (robots.txt mira la ruta real)
+            import posixpath
+
+            u = pu._replace(path=posixpath.normpath(pu.path)).geturl()
         if dominio_registrado(urlparse(u).netloc) == propio and u not in out:
             out.append(u)
     return out
@@ -167,14 +172,15 @@ def tarifas_jsonl(f: Path) -> list[dict]:
 # ---------------------------------------------------------------------------------------------- lote
 
 
-def capturar(filas: list[dict], guarda: extraer.Guarda, hilos: int, fin: float) -> list[dict]:
+def capturar(filas: list[dict], guarda: extraer.Guarda, hilos: int, fin: float, navegador: bool = False) -> list[dict]:
     """PDF con el capturador de tarifas; HTML con el de la extracción (y su texto sin menús ni nombres)."""
     pdf = [f for f in filas if re.search(r"(?i)\.pdf(\?|$)|pdfGuia|/pdf\b|estudispdf", f["url"])]
     html = [f for f in filas if f not in pdf]
     out = tarifas.capturar_pdfs([{**f, "dominio": None, "proveedor": None} for f in pdf], guarda, hilos=hilos, fin=fin) if pdf else []
     if html:
         por_url = {f["url"]: f for f in html}
-        for p in extraer.capturar(list(por_url), hilos=hilos, guarda=guarda, fin=fin, navegador=False):
+        # SIGMA DOA y otras plataformas pintan la guía con JavaScript: con --navegador, Chromium (sin pasar antibots)
+        for p in extraer.capturar(list(por_url), hilos=hilos, guarda=guarda, fin=fin, navegador=navegador):
             g = {**por_url[p["url"]], **{k: v for k, v in p.items() if k != "texto"}}
             if p.get("texto"):
                 g["texto"] = p["texto"]
@@ -221,11 +227,11 @@ def verificar(datos: dict, texto: str) -> dict:
 
 
 def lote(guias: Path, salida: Path, desde: int = 0, hasta: int | None = None, esperar_min: float = 40,
-         max_minutos: float = 55, hilos: int = 16, guarda: extraer.Guarda | None = None) -> dict:
+         max_minutos: float = 55, hilos: int = 16, guarda: extraer.Guarda | None = None, navegador: bool = False) -> dict:
     t0 = time.time()
     guarda = guarda if guarda is not None else extraer.Guarda()
     filas = tarifas_jsonl(guias)[desde:hasta]
-    capt = capturar(filas, guarda, hilos, t0 + (max_minutos - 18) * 60)
+    capt = capturar(filas, guarda, hilos, t0 + (max_minutos - 18) * 60, navegador)
     salida.mkdir(parents=True, exist_ok=True)
     peticiones, por_id, enviado, cuentas = [], {}, [], Counter()
     with (salida / "guias_capturadas.jsonl").open("w", encoding="utf-8") as f:
@@ -332,13 +338,15 @@ def main() -> None:
     p.add_argument("--esperar-min", type=float, default=40)
     p.add_argument("--max-minutos", type=float, default=55)
     p.add_argument("--hilos", type=int, default=16)
+    p.add_argument("--navegador", action="store_true", help="lote: guías en HTML que se pintan con JavaScript")
     p.add_argument("--salida", required=True)
     a = p.parse_args()
     base = Path(a.salida) / "datos" / "estudios" / "masters" / "guias"
     if a.orden == "descubrir":
         res = descubrir([Path(x) for x in a.capturadas], base)
     elif a.orden == "lote":
-        res = lote(Path(a.guias), base / f"tramo_{a.desde}", a.desde, a.hasta, a.esperar_min, a.max_minutos, a.hilos)
+        res = lote(Path(a.guias), base / f"tramo_{a.desde}", a.desde, a.hasta, a.esperar_min, a.max_minutos, a.hilos,
+                   navegador=a.navegador)
     else:
         res = retomar(Path(a.lote_json), base / "retomado", a.esperar_min)
     print(json.dumps(res, ensure_ascii=False, indent=1))
