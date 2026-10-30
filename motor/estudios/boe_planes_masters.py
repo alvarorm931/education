@@ -39,7 +39,7 @@ def ids_de_ruct(carpetas: list[Path]) -> dict[str, list[str]]:
 
 
 RE_PLAN = re.compile(r"(?i)de la (?P<uni>Universi[dt]a[dt]\b.+?|Universidade\b.+?|Mondragon Unibertsitatea|[^,]*Unibertsitatea),"
-                     r".*?plan(?:es)? de estudios? de (?P<nombre>M[áa]ster Universitario.+?)\.?\s*$")
+                     r".*?plan(?:es)? de estudios? (?:de|del) (?:t[íi]tulo (?:oficial )?de )?(?P<nombre>M[áa]ster\b.+?)\.?\s*$")
 
 
 def _clave_uni(s: str) -> str:
