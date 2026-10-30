@@ -283,7 +283,7 @@ def preparar(paginas: Path, salida: Path) -> dict:
     salida.mkdir(parents=True, exist_ok=True)
     n, reservadas = 0, 0
     with (salida / "lote.jsonl").open("w", encoding="utf-8") as f:
-        for linea in paginas.read_text(encoding="utf-8").splitlines():
+        for linea in paginas.read_text(encoding="utf-8").split("\n"):
             p = json.loads(linea)
             if p.get("reserva_tdm"):  # el titular reservó la minería de datos: no se procesa, solo se enlaza
                 reservadas += 1
@@ -303,7 +303,7 @@ def _cabeceras() -> dict:
 
 
 def enviar(lote: Path) -> dict:
-    reqs = [json.loads(l) for l in lote.read_text(encoding="utf-8").splitlines()]
+    reqs = [json.loads(l) for l in lote.read_text(encoding="utf-8").split("\n") if l.strip()]
     r = requests.post(API, headers=_cabeceras(), json={"requests": reqs}, timeout=120)
     r.raise_for_status()
     return r.json()
@@ -319,7 +319,7 @@ def recoger(batch_id: str, paginas: Path, salida: Path, esperar_min: float = 50)
     if b.get("processing_status") != "ended":
         return {"estado": b.get("processing_status"), "cuentas": b.get("request_counts")}
     textos = {}
-    for linea in paginas.read_text(encoding="utf-8").splitlines():
+    for linea in paginas.read_text(encoding="utf-8").split("\n"):
         p = json.loads(linea)
         html = p.get("html") or Path(p["ruta"]).read_text(encoding="utf-8", errors="replace")
         textos[id_pagina(p["url"], p["sha256"])] = (p, texto_de_pagina(html))
@@ -329,7 +329,7 @@ def recoger(batch_id: str, paginas: Path, salida: Path, esperar_min: float = 50)
     cuentas = {"paginas": 0, "hechos": 0, "aceptados": 0, "revision": 0, "no_programa": 0, "errores": 0}
     with (salida / "hechos.jsonl").open("w", encoding="utf-8") as f, \
             (salida / "paginas_extraidas.jsonl").open("w", encoding="utf-8") as fp:
-        for linea in r.text.splitlines():
+        for linea in r.text.split("\n"):
             x = json.loads(linea)
             if x["result"]["type"] != "succeeded" or x["custom_id"] not in textos:
                 cuentas["errores"] += 1
@@ -436,7 +436,7 @@ class Guarda:
     def leer_jsonl(self, clave: str) -> list[dict]:
         if self.almacen is None:
             sys.exit("Sin almacén privado (MOTOR_ORIGINALES=s3 y credenciales): no se puede retomar el lote")
-        return [json.loads(l) for l in self.almacen.leer(clave).decode("utf-8").splitlines() if l.strip()]
+        return [json.loads(l) for l in self.almacen.leer(clave).decode("utf-8").split("\n") if l.strip()]
 
 
 # ----------------------------------------------------------------------------------- captura cortés
@@ -506,7 +506,7 @@ def huellas_previas(carpetas: list[Path]) -> dict[str, tuple]:
     previas: dict[str, tuple] = {}
     for c in carpetas:
         for f in sorted(c.rglob("paginas_extraidas.jsonl")):
-            for l in f.read_text(encoding="utf-8").splitlines():
+            for l in f.read_text(encoding="utf-8").split("\n"):
                 if not l.strip():
                     continue
                 x = json.loads(l)
@@ -530,7 +530,7 @@ def lote(muestra: Path, salida: Path, esperar_min: float = 45, max_paginas: int 
     t0 = time.time()
     fin_total = t0 + max_minutos * 60
     guarda = guarda if guarda is not None else Guarda()
-    filas = list({f["url"]: f for f in (json.loads(l) for l in muestra.read_text(encoding="utf-8").splitlines()
+    filas = list({f["url"]: f for f in (json.loads(l) for l in muestra.read_text(encoding="utf-8").split("\n")
                                           if l.strip())}.values())
     filas = filas[desde:desde + max_paginas] if max_paginas else filas[desde:]
     meta = {f["url"]: {k: f[k] for k in META if f.get(k) is not None} for f in filas}
@@ -620,7 +620,7 @@ def _esperar_y_procesar(b: dict, textos: dict, meta: dict, salida: Path, guarda:
     motivos, completos = Counter(), []
     with (salida / "hechos.jsonl").open("w", encoding="utf-8") as fh, \
             (salida / "paginas_extraidas.jsonl").open("w", encoding="utf-8") as fp:
-        for linea in res.text.splitlines():
+        for linea in res.text.split("\n"):
             if not linea.strip():
                 continue
             x = json.loads(linea)
@@ -692,7 +692,7 @@ def lista_oficiales(paginas_oficiales: Path, salida: Path, estados: tuple[str, .
     una fila por URL; si una página sirve a varios códigos del RUCT (interuniversitarios), los lleva todos."""
     por_url: dict[str, dict] = {}
     cuentas = Counter()
-    for l in paginas_oficiales.read_text(encoding="utf-8").splitlines():
+    for l in paginas_oficiales.read_text(encoding="utf-8").split("\n"):
         if not l.strip():
             continue
         x = json.loads(l)
@@ -774,7 +774,7 @@ def lista_no_oficiales(clasificacion: Path, rastreos: list[Path], salida: Path, 
     from motor.estudios.emparejar import raiz_programa, sin_idioma
 
     clas = {}
-    for l in clasificacion.read_text(encoding="utf-8").splitlines():
+    for l in clasificacion.read_text(encoding="utf-8").split("\n"):
         if l.strip():
             c = json.loads(l)
             clas[c["id"]] = c
@@ -834,13 +834,13 @@ def lista_propios_de_oficiales(censo: Path, rastreos: list[Path], paginas_oficia
     from motor.estudios.emparejar import raiz_programa, sin_idioma
 
     oficiales = {}
-    for l in censo.read_text(encoding="utf-8").splitlines():
+    for l in censo.read_text(encoding="utf-8").split("\n"):
         if l.strip():
             x = json.loads(l)
             if x["estado"] == "oficial":
                 oficiales[x["id"]] = x
     usadas_raiz: dict[str, set[str]] = {}
-    for l in paginas_oficiales.read_text(encoding="utf-8").splitlines():
+    for l in paginas_oficiales.read_text(encoding="utf-8").split("\n"):
         if l.strip():
             x = json.loads(l)
             for u in [x.get("url")] + list(x.get("subpaginas") or []) + list(x.get("urls_modalidad") or []):
@@ -903,18 +903,18 @@ def lista_segunda_vuelta(paginas_oficiales: Path, fichas: Path, capturadas: list
     (fichas_masters.comprobar_nombre)."""
     hechas = set()
     for c in capturadas:
-        for l in c.read_text(encoding="utf-8").splitlines():
+        for l in c.read_text(encoding="utf-8").split("\n"):
             if l.strip():
                 hechas.add(json.loads(l)["url"])
     ok = set()
-    for l in fichas.read_text(encoding="utf-8").splitlines():
+    for l in fichas.read_text(encoding="utf-8").split("\n"):
         if l.strip():
             f = json.loads(l)
             if f.get("comprobacion_nombre") in ("confirmado", "probable_oficial"):
                 ok.add(f["codigo_ruct"])
     filas: dict[str, dict] = {}
     cuentas = Counter()
-    for l in paginas_oficiales.read_text(encoding="utf-8").splitlines():
+    for l in paginas_oficiales.read_text(encoding="utf-8").split("\n"):
         if not l.strip():
             continue
         x = json.loads(l)
@@ -949,10 +949,10 @@ def lista_tercera_vuelta(censo: Path, rastreos: list[Path], cc_urls: Path | None
     from motor.estudios.emparejar import raiz_programa, sin_idioma
 
     texto = catalogo.read_text(encoding="utf-8").strip()
-    cat = json.loads(texto) if texto.startswith("[") else [json.loads(l) for l in texto.splitlines() if l.strip()]
+    cat = json.loads(texto) if texto.startswith("[") else [json.loads(l) for l in texto.split("\n") if l.strip()]
     activos = [t for t in cat if t.get("situacion", "Activo") == "Activo"]
     con_ficha = set()
-    for l in fichas.read_text(encoding="utf-8").splitlines():
+    for l in fichas.read_text(encoding="utf-8").split("\n"):
         if l.strip():
             f = json.loads(l)
             if f["grupo"] == "oficial" and f.get("comprobacion_nombre") in ("confirmado", "probable_oficial", "confirmado_por_nombre"):
@@ -962,9 +962,9 @@ def lista_tercera_vuelta(censo: Path, rastreos: list[Path], cc_urls: Path | None
         tot[t["universidad_codigo"]] += 1
         ok[t["universidad_codigo"]] += t["codigo_ruct"] in con_ficha
     flojas = {u for u in tot if ok[u] < umbral * tot[u]}
-    hechas = {json.loads(l)["url"] for c in capturadas for l in c.read_text(encoding="utf-8").splitlines() if l.strip()}
+    hechas = {json.loads(l)["url"] for c in capturadas for l in c.read_text(encoding="utf-8").split("\n") if l.strip()}
     provs = {}
-    for l in censo.read_text(encoding="utf-8").splitlines():
+    for l in censo.read_text(encoding="utf-8").split("\n"):
         if l.strip():
             x = json.loads(l)
             if x["estado"] == "oficial" and any(r.get("universidad") in flojas for r in x.get("ruct", [])):
@@ -982,7 +982,7 @@ def lista_tercera_vuelta(censo: Path, rastreos: list[Path], cc_urls: Path | None
     if cc_urls:
         dom_a_prov = {d: i for i, x in provs.items() for d in x.get("dominios", [x["dominio"]])}
         for f in cc_urls.rglob("urls_*.jsonl"):
-            for l in f.read_text(encoding="utf-8").splitlines():
+            for l in f.read_text(encoding="utf-8").split("\n"):
                 d = json.loads(l)
                 if d["dominio"] in dom_a_prov:
                     urls_de[dom_a_prov[d["dominio"]]].update(d["urls"])

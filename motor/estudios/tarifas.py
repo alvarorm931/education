@@ -77,7 +77,7 @@ def elegir_pdfs(ficheros: list[Path], censo: Path, por_dominio: int = POR_DOMINI
     """Los PDF de precios de los dominios del censo (oficiales y verificados), los del curso más reciente
     primero (año en la URL), sin repetir."""
     provs = {}
-    for l in censo.read_text(encoding="utf-8").splitlines():
+    for l in censo.read_text(encoding="utf-8").split("\n"):
         if l.strip():
             p = json.loads(l)
             if p["estado"] in ("oficial", "verificado"):
@@ -85,7 +85,7 @@ def elegir_pdfs(ficheros: list[Path], censo: Path, por_dominio: int = POR_DOMINI
                     provs[d] = p
     por_dom: dict[str, set] = defaultdict(set)
     for f in ficheros:
-        for l in f.read_text(encoding="utf-8").splitlines():
+        for l in f.read_text(encoding="utf-8").split("\n"):
             if l.strip():
                 x = json.loads(l)
                 if x["dominio"] in provs:
@@ -120,7 +120,7 @@ def descubrir_en_originales(capturadas: list[Path], salida: Path, hilos: int = 1
     filas = {}
     for c in capturadas:
         for f in sorted(c.rglob("paginas_capturadas.jsonl")):
-            for l in f.read_text(encoding="utf-8").splitlines():
+            for l in f.read_text(encoding="utf-8").split("\n"):
                 if l.strip():
                     x = json.loads(l)
                     if x.get("clave") and x.get("clave", "").endswith(".html.gz"):
@@ -284,7 +284,7 @@ def _procesar(b: dict, por_id: dict, salida: Path, guarda: extraer.Guarda, cuent
     dolares = 0.0
     salida.mkdir(parents=True, exist_ok=True)
     with (salida / "precios.jsonl").open("w", encoding="utf-8") as fo:
-        for linea in res.text.splitlines():
+        for linea in res.text.split("\n"):
             if not linea.strip():
                 continue
             x = json.loads(linea)
@@ -328,7 +328,7 @@ def retomar(lote_json: Path, salida: Path, censo: Path | None = None, esperar_mi
     info = json.loads(lote_json.read_text(encoding="utf-8"))
     provs = {}
     if censo:
-        for l in censo.read_text(encoding="utf-8").splitlines():
+        for l in censo.read_text(encoding="utf-8").split("\n"):
             if l.strip():
                 x = json.loads(l)
                 for d in x.get("dominios", [x["dominio"]]):
@@ -357,9 +357,9 @@ def unir(tarifas: list[Path], fichas: Path, salida: Path) -> dict:
     from motor.estudios.fichas_masters import comprobar_nombre
 
     precios = [json.loads(l) for t in tarifas for f in sorted(t.rglob("precios.jsonl"))
-               for l in f.read_text(encoding="utf-8").splitlines() if l.strip()]
+               for l in f.read_text(encoding="utf-8").split("\n") if l.strip()]
     por_prov: dict[str, list[dict]] = defaultdict(list)
-    for l in fichas.read_text(encoding="utf-8").splitlines():
+    for l in fichas.read_text(encoding="utf-8").split("\n"):
         if l.strip():
             f = json.loads(l)
             nombre = f.get("nombre_oficial") or str(((f.get("campos") or {}).get("nombre") or {}).get("valor") or "")

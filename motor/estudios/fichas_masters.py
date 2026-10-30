@@ -65,7 +65,7 @@ def comprobar_nombre(oficial: str, extraido: str | None) -> tuple[str, float]:
 
 
 def _jsonl(ruta: Path) -> list[dict]:
-    return [json.loads(l) for l in ruta.read_text(encoding="utf-8").splitlines() if l.strip()] if ruta.exists() else []
+    return [json.loads(l) for l in ruta.read_text(encoding="utf-8").split("\n") if l.strip()] if ruta.exists() else []
 
 
 def legible(p: dict) -> bool:
@@ -212,7 +212,7 @@ def ejecutar(extracciones: list[Path], salida: Path, catalogo: Path | None = Non
     cat = {}
     if catalogo:
         texto = catalogo.read_text(encoding="utf-8").strip()
-        filas = json.loads(texto) if texto.startswith("[") else [json.loads(l) for l in texto.splitlines() if l.strip()]
+        filas = json.loads(texto) if texto.startswith("[") else [json.loads(l) for l in texto.split("\n") if l.strip()]
         cat = {t["codigo_ruct"]: t for t in filas}
     clas = {c["id"]: c for c in _jsonl(clasificacion)} if clasificacion else {}
     res, fichas = Counter(), []

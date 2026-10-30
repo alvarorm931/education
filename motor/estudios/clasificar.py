@@ -125,7 +125,7 @@ def _muestra(r: dict) -> list:
 def entrada(censo: Path, rastreos: list[Path], salida: Path, estados: tuple[str, ...] = ("verificado",)) -> dict:
     """Une a cada proveedor del censo su último rastreo: web final, nº de fichas y títulos de su muestra."""
     provs = {}
-    for l in censo.read_text(encoding="utf-8").splitlines():
+    for l in censo.read_text(encoding="utf-8").split("\n"):
         if l.strip():
             p = json.loads(l)
             if p["estado"] in estados:
@@ -207,7 +207,7 @@ def lote(entrada_: Path, salida: Path, esperar_min: float = 40, max_minutos: flo
          guarda: extraer.Guarda | None = None) -> dict:
     t0 = time.time()
     guarda = guarda if guarda is not None else extraer.Guarda()
-    filas = [json.loads(l) for l in entrada_.read_text(encoding="utf-8").splitlines() if l.strip()]
+    filas = [json.loads(l) for l in entrada_.read_text(encoding="utf-8").split("\n") if l.strip()]
     capt = {c["url"]: c for c in extraer.capturar([f["web"] for f in filas], hilos=hilos, guarda=guarda,
                                                    fin=t0 + (max_minutos - 15) * 60, procesar=texto_portada)}
     salida.mkdir(parents=True, exist_ok=True)
@@ -247,7 +247,7 @@ def lote(entrada_: Path, salida: Path, esperar_min: float = 40, max_minutos: flo
     ahora = datetime.now(timezone.utc).isoformat(timespec="seconds")
     dolares, cat = 0.0, Counter()
     with (salida / "clasificacion.jsonl").open("w", encoding="utf-8") as fo:
-        for linea in res.text.splitlines():
+        for linea in res.text.split("\n"):
             if not linea.strip():
                 continue
             x = json.loads(linea)
@@ -284,13 +284,13 @@ def aplicar(censo: Path, clasificaciones: list[Path], salida: Path) -> dict:
     Si un proveedor se clasificó varias veces, vale la última clasificación legible."""
     ultima: dict[str, dict] = {}
     for f in clasificaciones:  # de más antigua a más reciente
-        for l in f.read_text(encoding="utf-8").splitlines():
+        for l in f.read_text(encoding="utf-8").split("\n"):
             if l.strip():
                 c = json.loads(l)
                 if c.get("categoria") or c["id"] not in ultima:
                     ultima[c["id"]] = c
     cuentas, agregadores, filas = Counter(), [], []
-    for l in censo.read_text(encoding="utf-8").splitlines():
+    for l in censo.read_text(encoding="utf-8").split("\n"):
         if not l.strip():
             continue
         p = json.loads(l)

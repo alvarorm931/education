@@ -45,7 +45,7 @@ def prioridad(prov: dict, r: dict) -> dict | None:
 
 
 def ejecutar(censo: Path, rastreos: list[Path], salida: Path) -> dict:
-    provs = {json.loads(l)["id"]: json.loads(l) for l in censo.read_text(encoding="utf-8").splitlines() if l.strip()}
+    provs = {json.loads(l)["id"]: json.loads(l) for l in censo.read_text(encoding="utf-8").split("\n") if l.strip()}
     ultimo: dict[str, dict] = {}
     for c in rastreos:
         for f in sorted(c.rglob("oferta_web/*.json")):
@@ -81,7 +81,7 @@ def desde_fichas(fichas: list[Path], salida: Path, min_fichas: int = 1) -> dict:
     sale del decreto de su comunidad y no se pide."""
     por_centro: dict[str, dict] = {}
     for ruta in fichas:
-        for l in ruta.read_text(encoding="utf-8").splitlines():
+        for l in ruta.read_text(encoding="utf-8").split("\n"):
             if not l.strip():
                 continue
             f = json.loads(l)

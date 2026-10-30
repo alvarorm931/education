@@ -150,7 +150,7 @@ def desde_fichas(fichas: Path, salida: Path, hoy: date | None = None, facilitado
 def _jsonl(ruta: Path | None) -> list[dict]:
     if not ruta:
         return []
-    return [json.loads(l) for l in ruta.read_text(encoding="utf-8").splitlines() if l.strip()]
+    return [json.loads(l) for l in ruta.read_text(encoding="utf-8").split("\n") if l.strip()]
 
 
 def ejecutar(hechos: Path, medidas: Path, salida: Path, oficiales: Path | None = None,
