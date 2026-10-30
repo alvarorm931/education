@@ -310,6 +310,7 @@ def recoger(batch_id: str, paginas: Path, salida: Path, esperar_min: float = 50)
             cuentas["paginas"] += 1
             # una línea por página, tenga o no datos: «extraída y sin precio» no es lo mismo que «sin mirar»
             fp.write(json.dumps({"url": pagina["url"], "captura_sha256": pagina["sha256"], "extraido": ahora,
+                                 "texto_sha256": pagina.get("texto_sha256") or hashlib.sha256(texto.encode()).hexdigest(),
                                  "no_es_programa": bool(datos.get("no_es_programa")), "lote": batch_id},
                                 ensure_ascii=False) + "\n")
             if datos.get("no_es_programa"):
@@ -473,7 +474,8 @@ def huellas_previas(carpetas: list[Path]) -> dict[str, str]:
                 if l.strip():
                     x = json.loads(l)
                     if x["url"] not in previas or x["extraido"] >= previas[x["url"]][1]:
-                        previas[x["url"]] = (x["captura_sha256"], x["extraido"])
+                        # la huella del texto (sin scripts ni marcas) no cambia con fechas o fichas de sesión
+                        previas[x["url"]] = (x.get("texto_sha256") or x["captura_sha256"], x["extraido"])
     return {u: h for u, (h, _) in previas.items()}
 
 
@@ -505,7 +507,7 @@ def lote(muestra: Path, salida: Path, esperar_min: float = 45, max_paginas: int 
                 cuentas["reserva_tdm"] += 1
             elif texto is None:
                 cuentas[pg.get("motivo", "error")] += 1
-            elif previas and previas.get(pg["url"]) == pg.get("sha256"):
+            elif previas and previas.get(pg["url"]) in (pg.get("sha256"), hashlib.sha256(texto.encode()).hexdigest()):
                 # misma página que la ya extraída (misma huella): sus hechos siguen vigentes, no se paga otra vez
                 cuentas["sin_cambios"] += 1
                 pg["motivo"] = "sin_cambios"
@@ -515,6 +517,7 @@ def lote(muestra: Path, salida: Path, esperar_min: float = 45, max_paginas: int 
                 pg["caracteres_texto"] = len(texto)
             else:
                 cid = id_pagina(pg["url"], pg["sha256"])
+                pg["texto_sha256"] = hashlib.sha256(texto.encode()).hexdigest()
                 textos[cid] = (pg, texto)
                 peticiones.append(peticion(cid, pg["url"], texto))
                 enviado.append({"custom_id": cid, "url": pg["url"], "sha256": pg["sha256"], "texto": texto,
@@ -597,6 +600,7 @@ def _esperar_y_procesar(b: dict, textos: dict, meta: dict, salida: Path, guarda:
             bloques = Counter(c.get("type") for c in msg.get("content", []))
             cuentas["respuestas_con_pensamiento"] += 1 if bloques.get("thinking") else 0
             fp.write(json.dumps({"url": pagina["url"], "captura_sha256": pagina["sha256"], "extraido": ahora,
+                                 "texto_sha256": pagina.get("texto_sha256") or hashlib.sha256(texto.encode()).hexdigest(),
                                  "no_es_programa": bool(datos.get("no_es_programa")), "lote": b["id"],
                                  "uso": uso, "coste_usd": round(coste(uso), 6), "bloques": dict(bloques),
                                  "parada": msg.get("stop_reason"),
