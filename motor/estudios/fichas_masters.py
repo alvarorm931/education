@@ -59,7 +59,14 @@ def leer_extracciones(carpetas: list[Path]) -> tuple[dict[str, dict], dict[str, 
     for c in carpetas:
         for f in sorted(c.rglob("paginas_extraidas.jsonl")):
             for p in _jsonl(f):
-                if p["url"] not in paginas or p["extraido"] >= paginas[p["url"]]["extraido"]:
+                previa = paginas.get(p["url"])
+                if previa is None:
+                    paginas[p["url"]] = p
+                elif previa.get("grupo") == "oficial" and p.get("grupo") != "oficial":
+                    continue  # la misma página pedida también como no oficial: manda su unión a un máster oficial
+                elif p["extraido"] >= previa["extraido"] or (p.get("grupo") == "oficial" and previa.get("grupo") != "oficial"):
+                    if previa.get("grupo") == "oficial" and p.get("grupo") == "oficial":
+                        p = {**p, "codigos_ruct": sorted(set(previa.get("codigos_ruct") or []) | set(p.get("codigos_ruct") or []))}
                     paginas[p["url"]] = p
     hechos: dict[str, list[dict]] = defaultdict(list)
     for c in carpetas:
