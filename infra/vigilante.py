@@ -164,6 +164,7 @@ def ultimo_bien(repo: str, flujo: str) -> datetime | None:
 
 CRON_DIARIO = re.compile(r'^\s*-\s*cron:\s*["\']?(\d{1,2})\s+(\d{1,2})\s+\*\s+\*\s+\*["\']?', re.M)
 NO_RESPALDAR = {"vigilante.yml", "latido.yml"}
+PROGRAMACION_FIABLE = 4   # programaciones del vigilante en 3 horas (tocan 6) para apagar el latido
 
 
 def respaldo_programaciones(repo: str, runs: list[dict], t0: datetime, lanzar: bool) -> list[dict]:
@@ -221,8 +222,11 @@ def reanimar_latido(repo: str, t0: datetime, lanzar: bool) -> str:
         return api(ruta).get("total_count", 0)
     try:
         hace3h = (t0 - timedelta(hours=3)).strftime("%Y-%m-%dT%H:%M:%SZ")
-        if cuantas(f"/repos/{repo}/actions/workflows/vigilante.yml/runs?event=schedule&per_page=1&created=>={hace3h}"):
-            return "no hace falta: GitHub ya dispara las programaciones"
+        # El vigilante está programado dos veces por hora: en 3 horas tocan 6. Solo se da por buena la programación
+        # de GitHub si llegan al menos 4; el 30/10 llegaban de vez en cuando y con 5 a 7 horas de retraso.
+        programadas = cuantas(f"/repos/{repo}/actions/workflows/vigilante.yml/runs?event=schedule&per_page=1&created=>={hace3h}")
+        if programadas >= PROGRAMACION_FIABLE:
+            return f"no hace falta: GitHub disparó {programadas} programaciones del vigilante en 3 horas"
         hace45 = (t0 - timedelta(minutes=45)).strftime("%Y-%m-%dT%H:%M:%SZ")
         if cuantas(f"/repos/{repo}/actions/workflows/latido.yml/runs?per_page=1&created=>={hace45}"):
             return "en marcha"
