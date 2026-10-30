@@ -378,6 +378,14 @@ def normalizar_tablas(tablas: list[dict]) -> list[dict]:
                                 and (c or "").strip())
         if rotulo_tabla:
             t = {**t, "rotulo": rotulo_tabla}
+        # «Curso/Duración» de una sola celda en la cabecera sobre dos columnas del cuerpo («4.º | S1»): casi todas las
+        # filas traen una celda más que la cabecera; se parte en «Curso» y «Semestre» (Zaragoza, ADE, BOE-A-2010-18353)
+        cuerpo = [f for f in filas[i + 1:] if any((c or "").strip() for c in f)]
+        if cuerpo and sum(len(f) == len(filas[i]) + 1 for f in cuerpo) >= 0.8 * len(cuerpo):
+            k = next((j for j, c in enumerate(filas[i]) if re.search(
+                r"(?i)curso\s*/\s*(?:duraci|semestre|cuatrimestre|periodo|temporalidad)", c or "")), None)
+            if k is not None:
+                filas = filas[:i] + [list(filas[i][:k]) + ["Curso", "Semestre"] + list(filas[i][k + 1:])] + filas[i + 1:]
         cab, rotulos = filas[i], (filas[i - 1] if i > 0 else [])
         inicios = [k for k, c in enumerate(cab) if COL["nombre"].search(c or "") and not COL["creditos"].search(c or "")
                    and not COL["modulo"].search(c or "") and not COL["caracter"].search(c or "")]  # «Tipo de materia»

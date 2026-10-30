@@ -220,6 +220,7 @@ def indexar_tarifas(carpeta: Path | None) -> dict[str, dict]:
     for f in sorted(carpeta.rglob("tarifas_grado/tarifas.jsonl"), key=lambda x: str(x)):
         m = re.search(r"(\d{4})(\d{2})(\d{2})T\d{6}", str(f))
         fecha = f"{m.group(1)}-{m.group(2)}-{m.group(3)}" if m else None
+        carpeta_f = m.group(0) if m else ""
         for doc in _leer(f):
             for cod, importes in (doc.get("grados") or {}).items():
                 # en las listas de precios el rótulo de cada cifra no es fiable: solo vale si las cifras de un mismo
@@ -258,7 +259,7 @@ def indexar_tarifas(carpeta: Path | None) -> dict[str, dict]:
                     conocido = cursos_conocidos.get(doc["url"]) or {}
                     if conocido.get("nota"):
                         p = {**p, "nota": conocido["nota"]}
-                    candidatos[cod].append({**p, "fuente": "Tarifas publicadas por la universidad",
+                    candidatos[cod].append({**p, "_carpeta": carpeta_f, "fuente": "Tarifas publicadas por la universidad",
                                             "formato": doc.get("formato") or "pdf",
                                             "curso_documento": conocido.get("curso") or doc.get("curso_documento"),
                                             "universidad": doc.get("universidad"), "capturado": fecha,
@@ -266,8 +267,10 @@ def indexar_tarifas(carpeta: Path | None) -> dict[str, dict]:
                                                if doc.get("centro") else {})})
     salida = {}
     for cod, ps in candidatos.items():
-        ps.sort(key=lambda p: (p["precio_curso"] is not None, p.get("curso_documento") or ""), reverse=True)
-        salida[cod] = ps[0]
+        # el curso más reciente; a igualdad, la lectura más reciente (las reglas de lectura mejoran)
+        ps.sort(key=lambda p: (p["precio_curso"] is not None, p.get("curso_documento") or "", p.get("_carpeta") or ""),
+                reverse=True)
+        salida[cod] = {k: v for k, v in ps[0].items() if k != "_carpeta"}
     return salida
 
 
@@ -481,6 +484,25 @@ def corregir_distribucion(plan: dict | None, ruct: dict | None) -> dict | None:
                                  "reparto del RUCT, que sí cuadra con ellas"}
 
 
+def en_extincion(t: dict, r: dict | None) -> list[dict] | None:
+    """Las extinciones del RUCT del título si cubren todas sus universidades (en un título conjunto, la de una sola
+    no lo cierra); None si no hay."""
+    ext = [e for e in (r or {}).get("extincion") or [] if e.get("universidad")]
+    if not ext:
+        return None
+    cerradas = {clave_universidad(e["universidad"]) for e in ext}
+    suyas = {clave_universidad(u["nombre"]) for u in t.get("universidades") or []}
+    cubiertas = all(any(s in c or c in s for c in cerradas) for s in suyas) if suyas else False
+    return ext if cubiertas else None
+
+
+def plan_casi_entero(p: dict) -> bool:
+    """Un plan o modificación del BOE que trae (casi) todas sus asignaturas fijas: lo que suman sin optativas llega
+    al 80 % de lo que dice su tabla de créditos. Una modificación de unas pocas asignaturas no lo es."""
+    esperado = p.get("esperado_sin_optativas")
+    return bool(esperado) and (p.get("suma_sin_optativas") or 0) >= 0.8 * esperado
+
+
 def plan_comprobado(p: dict) -> bool:
     """El listado cuadra con la tabla de créditos por tipo del propio plan: entero (básicas + obligatorias +
     prácticas + TFG) o en básicas y obligatorias (el núcleo del plan), o con los créditos por tipo del RUCT."""
@@ -644,8 +666,16 @@ def construir(catalogo: list[dict], genericos: list[dict], tarjetas: dict, detal
                 # sin tabla de créditos que cuadre en el BOE: se comprueba contra los créditos por tipo del RUCT
                 candidatos = [comprobar_con_ruct(p, r) for p in candidatos]
             if candidatos:
-                plan = corregir_distribucion(resumen_plan(next((p for p in candidatos if plan_comprobado(p)),
-                                                               candidatos[0])), resumen_ruct(r))
+                # el plan vigente es el más reciente que trae el plan entero o casi (verificación del 30/10: la
+                # modificación de 2026 de Historia de la URJC, sin cuadrar por una errata, y la ficha enseñaba el
+                # plan de 2020); si ese no cuadra, la ficha no tiene plan comprobado, aunque uno anterior cuadre
+                vigente = next((p for p in candidatos if plan_comprobado(p) or plan_casi_entero(p)), candidatos[0])
+                anterior = next((p for p in candidatos if plan_comprobado(p)), None)
+                plan = corregir_distribucion(resumen_plan(vigente), resumen_ruct(r))
+                if anterior is not None and anterior is not vigente:
+                    plan["plan_anterior_comprobado"] = {"boe": anterior["identificador"], "fecha": anterior.get("fecha"),
+                                                        "nota": "hay una modificación posterior del plan que no cuadra"
+                                                                " con su tabla de créditos: el plan anterior no se usa"}
         if not (plan and plan["comprobado"]):
             # sin plan del BOE que cuadre: el de la memoria vigente del RUCT, si cuadra con sus créditos por tipo
             pm = plan_de_memoria(r)
@@ -690,6 +720,15 @@ def construir(catalogo: list[dict], genericos: list[dict], tarjetas: dict, detal
             sedes = sorted(palabras_url(pweb["url"]) & SEDES)
             if sedes and len(provincias) > 1:
                 pweb = {**pweb, "solo_sede": sedes}
+            # la página de una modalidad («…/psicologia-a-distancia») de un grado que también es presencial: el
+            # precio es solo de esa modalidad (verificación del 30/10: UCAM, 6.000 € online frente a 6.250 €)
+            modalidad = palabras_url(pweb["url"]) & {"online", "distancia", "semipresencial", "virtual"}
+            presencial = any("presencial" in (i.get("presencialidad") or "").lower()
+                             and "no presencial" not in (i.get("presencialidad") or "").lower()
+                             or "varias" in (i.get("presencialidad") or "").lower()
+                             for i in t["imparticiones"] if i.get("situacion") == "Activo")
+            if modalidad and presencial:
+                pweb = {**pweb, "solo_modalidad": "semipresencial" if "semipresencial" in modalidad else "a distancia"}
         if pweb and pweb["precio_curso"] and creditos:
             # todo el grado al precio de hoy: un curso son 60 créditos (RD 822/2021 art. 5); sin subidas futuras
             pweb = {**pweb, "precio_total_estimado": round(pweb["precio_curso"] * creditos / 60, 2),
@@ -716,6 +755,11 @@ def construir(catalogo: list[dict], genericos: list[dict], tarjetas: dict, detal
                 precio_norma = {**pu, "centros": "propios", "creditos": creditos}
         if not notas and not precios and not precio_norma and not (pweb and pweb["precio_curso"]):
             motivos.append("sin nota de corte ni precio")
+        # título en extinción según el RUCT en todas sus universidades (no admite alumnos nuevos): no se indexa
+        # (verificación del 30/10: ADE de Zaragoza, extinción desde 2026-2027, se publicaba como abierto)
+        extincion = en_extincion(t, r)
+        if extincion:
+            motivos.append("título en extinción: no admite alumnos nuevos")
         fichas.append({
             "codigo": t["codigo"],
             "clase": t["clase"],
@@ -743,6 +787,7 @@ def construir(catalogo: list[dict], genericos: list[dict], tarjetas: dict, detal
             if t["universidad_tipo"] == "Privada" and not (pweb and pweb.get("precio_curso")) else None,
             "bonificacion": de_comunidad(t["universidades"][0].get("comunidad")) if t["universidad_tipo"] == "Pública" else None,
             "plan": plan,
+            "en_extincion": extincion,
             "ruct": resumen_ruct(r),
             "indicadores": indicadores_de(t, ind or {}, por_ambito) if t["clase"] == "grado" else None,
             "indexable": not motivos,

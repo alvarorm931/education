@@ -332,3 +332,18 @@ def test_plan_con_el_codigo_de_otro_titulo_no_se_usa():
     from motor.grados.boe_grados import codigos_en_texto
     assert codigos_en_texto("Código Titulación: 1500661\nOtra cosa") == ["1500661"]
     assert codigos_en_texto("sin código") == []
+
+
+def test_plan_casi_entero():
+    from motor.grados.fichas import plan_casi_entero
+    assert plan_casi_entero({"esperado_sin_optativas": 228.0, "suma_sin_optativas": 228.0})
+    assert not plan_casi_entero({"esperado_sin_optativas": 228.0, "suma_sin_optativas": 24.0})  # cambia unas pocas
+    assert not plan_casi_entero({"suma_sin_optativas": 228.0})
+
+
+def test_titulo_en_extincion_en_todas_sus_universidades():
+    from motor.grados.fichas import en_extincion
+    r = {"extincion": [{"universidad": "Universidad de Zaragoza", "fecha": "2026-07-22"}]}
+    assert en_extincion({"universidades": [{"nombre": "Zaragoza"}]}, r)
+    assert en_extincion({"universidades": [{"nombre": "Zaragoza"}, {"nombre": "Lleida"}]}, r) is None
+    assert en_extincion({"universidades": [{"nombre": "Zaragoza"}]}, {}) is None
