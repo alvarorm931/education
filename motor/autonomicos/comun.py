@@ -35,7 +35,7 @@ RE_NO_EMPLEO = re.compile(
     r"ejecucion de (?:las )?obras|remodelacion|relacion de puestos de trabajo|viviendas?|alquiler\w*|"
     r"subvencio\w*|llicencies?|llicencia\b|ordenances? (?:fiscal\w*|reguladora\w*|municipal\w*|general\w*|de)|pressupost\w*|expropiacio\w*|"
     r"contractacio de (?:les )?(?:obres|serveis|subministra)\w*|licitacio\w*|ajuts?|premis?|beques?|compte general|"
-    r"padro|taxes|impostos?|projectes? d'obres?|execucio de (?:les )?obres|relacio de llocs de treball|"
+    r"padro|taxes|impostos?|projectes? d'obr\w*|urbanitz\w*|execucio de (?:les )?obres|relacio de llocs de treball|"
     r"habitatges?|lloguer\w*|jutge\w*(?:/\w+)? de pau|(?:juez|jueces)\w*(?:/\w+)? de paz|bonos?|bons|campanas?|campanyes|campanya|"
     r"comercio\w*|comerc|entidad\w* colaborador\w*|entitat\w* col·laborador\w*|fomento del consumo|consum local|"
     r"licenza\w*|orzamento\w*|axudas?|bolsas? de estudos?|vivendas?|xuiz\w* de paz)\b")
@@ -157,7 +157,7 @@ RE_RESULTADO = re.compile(
     r"funcionari\w*(?:/\w+)? de carrera|personal laboral fix|proces selectiu|proves selectives|aspirants|"
     r"funcionari[oa]s? de carreira|persoal laboral fixo|probas selectivas)\b")
 
-PARTICULAS = {"de", "del", "la", "las", "los", "el", "y", "e", "en", "a", "o"}
+PARTICULAS = {"de", "del", "la", "las", "los", "el", "y", "e", "en", "a", "o", "i", "les", "els", "da", "do", "das", "dos"}
 
 TIPOS_ENTIDAD = (
     ("ayuntamiento de ", "Ayuntamiento"),
@@ -301,6 +301,9 @@ def nombre_propio(texto: str) -> str:
     for i, w in enumerate(texto.lower().split()):
         if i and w in PARTICULAS:
             palabras.append(w)
+        elif "'" in w and w.split("'", 1)[0] in {"d", "l", "s", "n"} and w.split("'", 1)[1]:
+            pre, resto = w.split("'", 1)  # «D'ADRI» -> «d'Adri», «L'ESCALA» -> «L'Escala»
+            palabras.append((pre if i else pre.upper()) + "'" + "-".join(p[:1].upper() + p[1:] for p in resto.split("-")))
         else:
             palabras.append("-".join(p[:1].upper() + p[1:] for p in w.split("-")))
     return " ".join(palabras)

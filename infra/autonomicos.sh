@@ -254,6 +254,12 @@ for c in $CONECTORES; do
       ejecutar motor.provinciales.bopguadalajara --desde 2022-01-01 --salida "$S" --max-minutos "$M"
       "$G" "BOP Guadalajara: días"
       ;;
+    bopgirona)
+      # Número a número (robots.txt cierra /bop: boletín oficial, motor/http.py)
+      ejecutar motor.provinciales.bopgirona --salida "$S"
+      ejecutar motor.provinciales.bopgirona --desde 2022-01-01 --salida "$S" --max-minutos "$M"
+      "$G" "BOP Girona: boletines"
+      ;;
     bopb)
       # El del día por el canal de datos abiertos; los anteriores por el listado por días y los textos en PDF (cerrados
       # en robots.txt; se leen como boletín oficial, motor/http.py)

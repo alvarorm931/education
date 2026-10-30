@@ -272,7 +272,8 @@ provinciales:
   - provincia: Girona
     url: http://www.ddgi.cat/
     acceso_desde_github: "ok"
-    estado: sin_conector
+    estado: conector_en_pruebas
+    conector: motor/provinciales/bopgirona.py
   - provincia: Granada
     url: https://www.dipgra.es/bop/
     acceso_desde_github: "ok"
