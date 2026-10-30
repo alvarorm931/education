@@ -625,9 +625,77 @@ def lista_oficiales(paginas_oficiales: Path, salida: Path, estados: tuple[str, .
             "subpaginas": sum(1 for f in filas if f["pagina"] == "subpagina")}
 
 
+RE_MASTER = re.compile(r"(?i)(m[aá]ster|masters?|mba|postgrado|posgrado)")
+
+
+def lista_no_oficiales(clasificacion: Path, rastreos: list[Path], salida: Path, por_proveedor: int = 30,
+                       tramos: int = 3, desde_por_proveedor: int = 0) -> dict:
+    """Fichas de máster de los proveedores aptos según la clasificación (centro con ámbito España o
+    internacional): una por programa (sin repetir la misma ficha en otro idioma o modalidad, antes la de
+    castellano), las de máster primero y hasta `por_proveedor` por proveedor a partir de `desde_por_proveedor`
+    (tandas sucesivas sin repetir). Se reparten en `tramos` por servidor: un servidor nunca está en dos tramos, así
+    los tramos pueden ir a la vez sin pasar de una petición por segundo a cada servidor."""
+    import ast
+    from urllib.parse import urlparse
+
+    from motor.estudios.emparejar import raiz_programa, sin_idioma
+
+    clas = {}
+    for l in clasificacion.read_text(encoding="utf-8").splitlines():
+        if l.strip():
+            c = json.loads(l)
+            clas[c["id"]] = c
+    ultimo: dict[str, dict] = {}
+    for c in rastreos:
+        for f in sorted(c.rglob("oferta_web/*.json")):
+            r = json.loads(f.read_text(encoding="utf-8"))
+            cen = r.get("centro") or {}
+            if isinstance(cen, str):
+                cen = ast.literal_eval(cen)
+            if cen.get("id") in clas:
+                ultimo[cen["id"]] = r
+    por_host: dict[str, list[dict]] = {}
+    cuentas = Counter()
+    for i, c in clas.items():
+        if not c.get("apto_censo"):
+            continue
+        ps = (ultimo.get(i) or {}).get("programas") or []
+        if isinstance(ps, str):
+            ps = ast.literal_eval(ps)
+        fichas: dict[str, str] = {}
+        for u in sorted(ps, key=lambda u: (not RE_MASTER.search(u), not re.search(r"/(es|cas|esp)(/|$)", u), "?" in u, len(u), u)):
+            clave = sin_idioma(raiz_programa(html_lib.unescape(u)))
+            fichas.setdefault(clave, html_lib.unescape(u))
+        elegidas = list(fichas.values())[desde_por_proveedor:desde_por_proveedor + por_proveedor]
+        cuentas["proveedores"] += 1
+        cuentas["fichas_unicas"] += len(fichas)
+        for u in elegidas:
+            por_host.setdefault(urlparse(u).netloc, []).append({"url": u, "grupo": "no_oficial", "proveedor": i,
+                                                                "pagina": "principal"})
+    hosts = sorted(por_host, key=lambda h: -len(por_host[h]))
+    cargas = [0] * tramos
+    destino = [[] for _ in range(tramos)]
+    for h in hosts:  # el servidor con más páginas, al tramo con menos carga
+        k = cargas.index(min(cargas))
+        destino[k] += por_host[h]
+        cargas[k] += len(por_host[h])
+    salida.mkdir(parents=True, exist_ok=True)
+    for k, filas in enumerate(destino):
+        (salida / f"no_oficiales_{k}.jsonl").write_text("".join(json.dumps(f, ensure_ascii=False) + "\n" for f in filas),
+                                                        encoding="utf-8")
+    return {**cuentas, "paginas": sum(cargas), "por_tramo": cargas, "servidores": len(hosts),
+            "max_por_servidor": max((len(v) for v in por_host.values()), default=0)}
+
+
 def main() -> None:
     p = argparse.ArgumentParser()
-    p.add_argument("orden", choices=["lote", "retomar", "lista-oficiales", "preparar", "enviar", "recoger"])
+    p.add_argument("orden", choices=["lote", "retomar", "lista-oficiales", "lista-no-oficiales", "preparar", "enviar",
+                                     "recoger"])
+    p.add_argument("--clasificacion")
+    p.add_argument("--rastreo", action="append", default=[])
+    p.add_argument("--por-proveedor", type=int, default=30)
+    p.add_argument("--desde-por-proveedor", type=int, default=0)
+    p.add_argument("--tramos", type=int, default=3)
     p.add_argument("--muestra", help="lote: JSONL con {url, proveedor, grupo, codigo_ruct}")
     p.add_argument("--esperar-min", type=float, default=45)
     p.add_argument("--max-paginas", type=int)
@@ -646,6 +714,9 @@ def main() -> None:
         res = lote(Path(a.muestra), destino, a.esperar_min, a.max_paginas, a.desde, a.hilos, a.max_minutos)
     elif a.orden == "retomar":
         res = retomar(Path(a.lote_json), destino, a.esperar_min)
+    elif a.orden == "lista-no-oficiales":
+        res = lista_no_oficiales(Path(a.clasificacion), [Path(x) for x in a.rastreo], Path(a.salida), a.por_proveedor,
+                                 a.tramos, a.desde_por_proveedor)
     elif a.orden == "lista-oficiales":
         res = lista_oficiales(Path(a.paginas_oficiales), Path(a.salida))
     elif a.orden == "preparar":

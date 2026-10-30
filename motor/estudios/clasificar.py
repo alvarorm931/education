@@ -60,7 +60,7 @@ SISTEMA = (
     "exactamente de la portada que lo contiene (3 a 15 palabras); si no aparece, omite nombre. motivo: 20 palabras "
     "como máximo, tuyas. Solo lo que se ve en el texto; si dudas, confianza baja."
 )
-MAX_TOKENS = 400
+MAX_TOKENS = 800
 
 RE_TITULO = re.compile(r"(?is)<title[^>]*>(.*?)</title>")
 RE_META = re.compile(r'(?is)<meta\s+[^>]*(?:name|property)=["\'](description|og:site_name|og:title)["\'][^>]*>')
@@ -245,7 +245,9 @@ def lote(entrada_: Path, salida: Path, esperar_min: float = 40, max_minutos: flo
             n.update({"id": f["id"], "dominio": f["dominio"], "web": f["web"], "portada_sha256": c.get("sha256"),
                       "portada_clave": c.get("clave"), "portada_leida": bool(c.get("texto")),
                       "urls_programa": f.get("urls_programa"), "apto_censo": apto_para_censo(n),
-                      "clasificado": ahora, "modelo": extraer.MODELO, "lote": b["id"]})
+                      "clasificado": ahora, "modelo": extraer.MODELO, "lote": b["id"],
+                      "json_legible": bool(datos), "parada": msg.get("stop_reason"),
+                      "tokens_salida": (msg.get("usage") or {}).get("output_tokens")})
             fo.write(json.dumps(n, ensure_ascii=False) + "\n")
             cat[(n["categoria"], n["ambito"])] += 1
             cuentas["apto_censo"] += n["apto_censo"]
