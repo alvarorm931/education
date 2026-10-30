@@ -360,6 +360,7 @@ def ejecutar(extracciones: list[Path], salida: Path, catalogo: Path | None = Non
                 est = "probable_oficial" if es_tipo_oficial(tipo) and "doble" not in (nom or "").lower() \
                     and rival < cb else "probable_sin_confirmar"
             juicios.append((ORDEN_ESTADO.get(est, 9), -cb, p["url"], est, cb, nom))
+        url_buena = None
         if juicios:
             _, _, url_buena, estado, cob, nombre_ext = min(juicios)
             ps = [p for p in ps if p["url"] == url_buena or p.get("principal") == url_buena
@@ -369,14 +370,15 @@ def ejecutar(extracciones: list[Path], salida: Path, catalogo: Path | None = Non
         rescate = sorted((u for u, (c, _) in rescatadas.items() if c == codigo), key=lambda u: -rescatadas[u][1])
         if estado not in ("confirmado", "probable_oficial") and rescate:
             # la página propia no era la ficha (o no había): vale la rescatada por el nombre
-            ps = [paginas[rescate[0]]]
+            ps, url_buena = [paginas[rescate[0]]], rescate[0]
             nombre_ext = next((h["valor"] for h in hechos.get(rescate[0], []) if h["campo"] == "nombre"), None)
             estado, cob = "confirmado_por_nombre", rescatadas[rescate[0]][1]
         res["oficial_" + estado] += 1
         ficha = {"clave": f"ruct:{codigo}", "grupo": "oficial", "codigo_ruct": codigo,
                  "nombre_oficial": t.get("nombre_oficial"), "nombre_en_pagina": nombre_ext,
                  "comprobacion_nombre": estado, "cobertura_nombre": cob,
-                 "paginas": sorted(p["url"] for p in ps)}
+                 "paginas": sorted(p["url"] for p in ps),
+                 **({"pagina_principal": url_buena} if url_buena else {})}
         if estado in ("confirmado", "probable_oficial", "confirmado_por_nombre"):
             ficha.update(componer(ps, hechos))
         else:

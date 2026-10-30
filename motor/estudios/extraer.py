@@ -1316,6 +1316,89 @@ def lista_segunda_vuelta(paginas_oficiales: Path, fichas: Path, capturadas: list
     return {**cuentas, "urls": len(filas)}
 
 
+# Enlaces de la ficha a las subpáginas con los datos que le faltan: el plan de estudios (asignaturas) y el precio
+# (tasas, admisión, matrícula). Se leen en el original guardado de la página principal (almacén privado).
+SUBPAGINA_PLAN = re.compile(r"(?i)plan(?:[-_ ]+de)?[-_ ]+estudios?|pla[-_ ]+d.?estudis|estructura|asignaturas|assignatures|"
+                            r"materias|m[oò]dul|curr[ií]cul|syllabus|course[-_ ]+(?:structure|content)|programme[-_ ]+"
+                            r"structure|study[-_ ]+plan|temario|contenidos?|programa[-_ ]+(?:acad|formativo)|itinerari")
+SUBPAGINA_PRECIO = re.compile(r"(?i)precios?|preus?|tasas|taxes|tarifas?|honorarios|fees|tuition|coste|financiaci|"
+                              r"matr[ií]cula|admisi[oó]n|admissi|becas|beques|scholarship")
+NO_SUBPAGINA = re.compile(r"(?i)\.(pdf|jpe?g|png|gif|svg|zip|docx?|xlsx?|pptx?|mp4)(\?|$)|^(mailto|tel|javascript):|"
+                          r"/(login|acceso-usuarios|intranet|campus-virtual|moodle|noticias?|news|agenda|blog)(/|$)")
+RE_ENLACE = re.compile(r"""(?is)<a\b[^>]*href\s*=\s*["']([^"'#][^"']*)["'][^>]*>(.*?)</a>""")
+MAX_SUBPAGINAS_ENLAZADAS = 3
+
+
+def subpaginas_enlazadas(html: str, principal: str, faltan: list[str]) -> list[str]:
+    """Las subpáginas de la ficha que llevan, por su enlace o su dirección, a lo que falta (primero el plan si
+    faltan las asignaturas, después el precio), en el mismo servidor y bajo la misma web."""
+    from html import unescape
+    from urllib.parse import urljoin, urlparse
+
+    base = urlparse(principal)
+    raiz = base.path.rstrip("/").rsplit("/", 1)[0] if base.path.count("/") > 1 else ""
+    vistos, cands = set(), []
+    for href, texto in RE_ENLACE.findall(html or ""):
+        href = unescape(href.strip())
+        if NO_SUBPAGINA.search(href):
+            continue
+        u = urljoin(principal, href).split("#")[0]
+        pu = urlparse(u)
+        if pu.scheme not in ("http", "https") or pu.netloc != base.netloc or u.rstrip("/") == principal.rstrip("/") or u in vistos:
+            continue
+        vistos.add(u)
+        t = " ".join(re.sub(r"<[^>]+>", " ", unescape(texto)).split())[:120]
+        ruta = pu.path + "?" + pu.query
+        plan = bool(SUBPAGINA_PLAN.search(t) or SUBPAGINA_PLAN.search(ruta))
+        precio = bool(SUBPAGINA_PRECIO.search(t) or SUBPAGINA_PRECIO.search(ruta))
+        utiles = ("asignaturas" in faltan and plan) or ("precio" in faltan and precio)
+        if not utiles:
+            continue
+        # dentro de la web del máster (misma ruta) antes que las páginas generales de la universidad
+        dentro = bool(raiz) and pu.path.startswith(raiz + "/")
+        cands.append((not dentro, not ("asignaturas" in faltan and plan), len(u), u))
+    return [c[-1] for c in sorted(cands)][:MAX_SUBPAGINAS_ENLAZADAS]
+
+
+def lista_subpaginas(principales: Path, salida: Path, guarda: Guarda | None = None, hilos: int = 16) -> dict:
+    """Para cada máster oficial con ficha comprobada al que le faltan asignaturas o precio ({codigo_ruct, principal,
+    clave del original, faltan}), las subpáginas enlazadas desde su página principal que pueden traerlo. Salen
+    como subpáginas de esa ficha: la extracción las une a su máster y la ficha toma de ellas lo que le falta."""
+    from concurrent.futures import ThreadPoolExecutor
+
+    guarda = guarda if guarda is not None else Guarda()
+    if not guarda.activa:
+        return {"error": "sin almacén privado"}
+    filas = [json.loads(l) for l in principales.read_text(encoding="utf-8").split("\n") if l.strip()]
+    cuentas = Counter()
+
+    def uno(x):
+        try:
+            html = guarda.almacen.leer(x["clave"]).decode("utf-8", "replace")
+        except Exception:  # noqa: BLE001 - sin original no hay enlaces; la ficha sigue como estaba
+            return x, None
+        return x, subpaginas_enlazadas(html, x["principal"], x.get("faltan") or [])
+
+    out: dict[str, dict] = {}
+    with ThreadPoolExecutor(max_workers=hilos) as ex:
+        for x, subs in ex.map(uno, filas):
+            cuentas["principales"] += 1
+            if subs is None:
+                cuentas["sin_original"] += 1
+                continue
+            cuentas["con_subpaginas"] += bool(subs)
+            for u in subs:
+                f = out.setdefault(u, {"url": u, "grupo": "oficial", "estado_emparejado": "subpagina_enlazada",
+                                       "pagina": "subpagina", "principal": x["principal"], "codigos_ruct": []})
+                if x["codigo_ruct"] not in f["codigos_ruct"]:
+                    f["codigos_ruct"].append(x["codigo_ruct"])
+    for f in out.values():
+        f["codigo_ruct"] = f["codigos_ruct"][0]
+    salida.parent.mkdir(parents=True, exist_ok=True)
+    salida.write_text("".join(json.dumps(f, ensure_ascii=False) + "\n" for f in out.values()), encoding="utf-8")
+    return {**cuentas, "subpaginas": len(out)}
+
+
 def lista_tercera_vuelta(censo: Path, rastreos: list[Path], cc_urls: Path | None, catalogo: Path, fichas: Path,
                          capturadas: list[Path], salida: Path, umbral: float = 0.7, max_por_web: int = 300,
                          tramos: int = 3) -> dict:
@@ -1396,8 +1479,9 @@ def lista_tercera_vuelta(censo: Path, rastreos: list[Path], cc_urls: Path | None
 def main() -> None:
     p = argparse.ArgumentParser()
     p.add_argument("orden", choices=["lote", "retomar", "lista-oficiales", "lista-no-oficiales", "lista-propios-oficiales",
-                                     "lista-segunda-vuelta", "lista-tercera-vuelta", "lista-qedu",
+                                     "lista-segunda-vuelta", "lista-tercera-vuelta", "lista-qedu", "subpaginas",
                                      "preparar", "enviar", "recoger"])
+    p.add_argument("--principales", help="subpaginas: JSONL {codigo_ruct, principal, clave, faltan}; después se extraen")
     p.add_argument("--censo")
     p.add_argument("--qedu", action="append", default=[], help="lista-qedu: carpetas con qedu_detalles_master_*.jsonl")
     p.add_argument("--fichas")
@@ -1441,6 +1525,14 @@ def main() -> None:
                    navegador=a.navegador, pausa=a.pausa)
     elif a.orden == "retomar":
         res = retomar(Path(a.lote_json), destino, a.esperar_min)
+    elif a.orden == "subpaginas":
+        # la lista de subpáginas y su extracción en la misma ejecución (los originales solo están en el almacén)
+        t0 = time.time()
+        muestra = base / "subpaginas_enlazadas" / "subpaginas.jsonl"
+        res = {"lista": lista_subpaginas(Path(a.principales), muestra)}
+        if muestra.exists() and muestra.stat().st_size:
+            res["lote"] = lote(muestra, base / "subpaginas_enlazadas", a.esperar_min, a.max_paginas, 0, a.hilos,
+                               a.max_minutos - (time.time() - t0) / 60, navegador=a.navegador, pausa=a.pausa)
     elif a.orden == "lista-no-oficiales":
         res = lista_no_oficiales(Path(a.clasificacion), [Path(x) for x in a.rastreo], Path(a.salida), a.por_proveedor,
                                  a.tramos, a.desde_por_proveedor)

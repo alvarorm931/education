@@ -572,3 +572,18 @@ def test_tipo_de_titulo_y_varias_modalidades_son_categorias():
     assert h["motivo"] == "valor_no_en_cita"
     h = e.verificar({"tipo_titulo": {"valor": "máster universitario oficial", "cita": "Máster Universitario en Datos"}}, texto)[0]
     assert h["estado"] == "aceptado"
+
+
+def test_subpaginas_enlazadas_con_lo_que_falta():
+    from motor.estudios.extraer import subpaginas_enlazadas
+
+    html = ('<a href="/master-x/plan-de-estudios">Plan de estudios</a> <a href="https://www.u.es/master-x/precios">'
+            'Precios y becas</a><a href="/admision">Admisión</a><a href="/doc.pdf">Plan PDF</a>'
+            '<a href="https://otra.es/plan">plan de estudios</a><a href="/master-x/profesorado">Profesorado</a>'
+            '<a href="#top">arriba</a><a href="mailto:a@b">correo</a><a href="/noticias/plan-de-estudios">x</a>')
+    p = "https://www.u.es/master-x/presentacion"
+    # primero el plan (faltan asignaturas), dentro de la web del máster; ni PDF, ni otro servidor, ni noticias
+    assert subpaginas_enlazadas(html, p, ["asignaturas", "precio"]) == [
+        "https://www.u.es/master-x/plan-de-estudios", "https://www.u.es/master-x/precios", "https://www.u.es/admision"]
+    assert subpaginas_enlazadas(html, p, ["precio"]) == ["https://www.u.es/master-x/precios", "https://www.u.es/admision"]
+    assert subpaginas_enlazadas(html, p, []) == []
