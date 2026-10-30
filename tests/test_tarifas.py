@@ -57,3 +57,19 @@ def test_enlaces_pdf_de_precio():
     pdfs = [(h, txt) for h, txt in t.RE_ENLACE_PDF.findall(html)]
     elegidos = [h for h, txt in pdfs if t.TEXTO_PRECIO.search(h) or t.TEXTO_PRECIO.search(txt)]
     assert elegidos == ["/docs/tarifas-2026.pdf", "https://u.es/f.pdf?v=2"]
+
+
+def test_descubrir_pdfs_en_originales(tmp_path, monkeypatch):
+    class Alm:
+        def leer(self, clave):
+            return ('<a href="/docs/tarifas-2026.pdf">x</a><a href="https://otro.es/precios.pdf">y</a>'
+                    '<a href="plan.pdf">Plan</a>').encode()
+
+    monkeypatch.setattr(e.Guarda, "__init__", lambda self, almacen="auto": (setattr(self, "almacen", Alm()),
+                                                                             setattr(self, "cuentas", {}))[0])
+    d = tmp_path / "c"
+    d.mkdir()
+    (d / "paginas_capturadas.jsonl").write_text(json.dumps({"url": "https://www.u.es/master/x", "clave": "web-centros/a.html.gz"}) + "\n")
+    r = t.descubrir_en_originales([d], tmp_path / "o")
+    x = json.loads((tmp_path / "o" / "precios_desde_paginas.jsonl").read_text())
+    assert r["pdfs"] == 1 and x == {"dominio": "u.es", "urls": ["https://www.u.es/docs/tarifas-2026.pdf"]}
