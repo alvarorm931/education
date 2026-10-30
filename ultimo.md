@@ -1,7 +1,7 @@
-# Vigilancia 30/10 08:42 (Madrid)
+# Vigilancia 30/10 08:56 (Madrid)
 
-- Ejecuciones revisadas (últimas 6 h): 312
-- Fallos: 4; pendientes: 0; relanzados ahora: 0
+- Ejecuciones revisadas (últimas 6 h): 304
+- Fallos: 3; pendientes: 0; relanzados ahora: 0
 - Colas de más de 30 minutos: 0
 - Flujos programados parados: ninguno
 - Almacén S3: ok
@@ -37,16 +37,4 @@ https://github.com/alvarorm931/education/actions/runs/40988823872 (intento 1, pu
       hint: * Disable or modify the sparsity rules.
       hint: Disable this message with "git config set advice.updateSparsePath false"
       ##[error]Process completed with exit code 1.
-
-## Boletines autonómicos · 30/10 02:45 · superado
-https://github.com/alvarorm931/education/actions/runs/40987648750 (intento 1, workflow_dispatch, 8e7f017, pasajero: False)
-- preparar · pasos: Instalar y probar · ejecutor: GitHub Actions 1000000264
-      motor/seo/sitemaps.py:18: in <module>
-          from lxml import etree
-      E   ModuleNotFoundError: No module named 'lxml'
-      =========================== short test summary info ============================
-      ERROR tests/test_seo.py
-      !!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
-      1 error in 1.24s
-      ##[error]Process completed with exit code 2.
 
