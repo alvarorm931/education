@@ -1,11 +1,11 @@
-# Vigilancia 30/10 07:40 (Madrid)
+# Vigilancia 30/10 08:06 (Madrid)
 
-- Ejecuciones revisadas (últimas 6 h): 321
+- Ejecuciones revisadas (últimas 6 h): 319
 - Fallos: 4; pendientes: 0; relanzados ahora: 0
 - Colas de más de 30 minutos: 0
 - Flujos programados parados: ninguno
 - Almacén S3: ok
-- Programaciones que GitHub no disparó y se lanzaron a mano: ninguna
+- Programaciones que GitHub no disparó y se lanzaron a mano: motor.yml (30/10 07:47)
 - Latido (relanza al vigilante cada ~25 min mientras GitHub no dispare programaciones): en marcha
 - Avisos de fuentes: 0
 

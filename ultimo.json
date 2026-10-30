@@ -1,15 +1,17 @@
 {
- "fecha": "2026-10-30T06:40:49+00:00",
- "fecha_madrid": "30/10 07:40",
+ "fecha": "2026-10-30T07:06:00+00:00",
+ "fecha_madrid": "30/10 08:06",
  "ventana_horas": 6.0,
  "resumen": {
-  "ejecuciones_revisadas": 321,
+  "ejecuciones_revisadas": 319,
   "fallos": 4,
   "fallos_pendientes": 0,
   "relanzados": 0,
   "colas_largas": 0,
   "flujos_programados_parados": [],
-  "programaciones_lanzadas_a_mano": [],
+  "programaciones_lanzadas_a_mano": [
+   "motor.yml"
+  ],
   "avisos_de_fuentes": 0,
   "almacen": "ok"
  },
@@ -227,7 +229,13 @@
    "parado": false
   }
  },
- "respaldo_programaciones": [],
+ "respaldo_programaciones": [
+  {
+   "flujo": "motor.yml",
+   "prevista": "30/10 07:47",
+   "lanzado": true
+  }
+ ],
  "latido": "en marcha",
  "boe": {
   "ultimo_diario": {
