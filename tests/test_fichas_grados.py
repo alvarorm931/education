@@ -159,3 +159,10 @@ def test_doble_con_los_dos_planes_comprobados_cubre_asignaturas():
     d = next(f for f in fichas_ if f["codigo"] == "7000001")
     assert [x["codigo"] for x in d["planes_componentes"]] == ["2500828", "2500829"]
     assert "sin asignaturas comprobadas" in d["motivos_noindex"]  # sin planes comprobados no se cubre
+
+
+def test_clave_universidad_del_boe_y_del_catalogo():
+    from motor.grados.fichas import clave_universidad
+    assert clave_universidad("Universidad de las Illes Balears") == clave_universidad("Illes Balears (Les)")
+    assert clave_universidad("Universidad de Vic-Universidad Central de Catalunya") == clave_universidad("Vic-Central de Catalunya")
+    assert clave_universidad("Universitat de València") == clave_universidad("València (Estudi General)")

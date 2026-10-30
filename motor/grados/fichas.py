@@ -49,11 +49,19 @@ def _num(v):
         return None
 
 
+# Nombres de universidad del BOE que no se parecen al del catálogo
+ALIAS_UNIVERSIDAD = {"valencia": "valencia estudi general", "valencia estudi general": "valencia estudi general"}
+
+
 def clave_universidad(nombre: str | None) -> str:
-    """«Universidad Complutense de Madrid» y «Complutense de Madrid» → «complutense madrid»."""
+    """«Universidad Complutense de Madrid» y «Complutense de Madrid» → «complutense madrid»; «Universidad de las
+    Illes Balears» → «illes balears»; «Universidad de Vic-Universidad Central de Catalunya» → «vic central
+    catalunya»; «Universitat de València» → «valencia estudi general» (el nombre del catálogo)."""
     u = clave(nombre)
     u = re.sub(r"^(universidad|universitat|universidade|unibertsitatea)( de| d| del| da| dels)? ", "", u)
-    return " ".join(w for w in u.split() if w not in {"de", "del", "la", "les", "i", "y"})
+    u = " ".join(w for w in u.split() if w not in {"de", "del", "la", "las", "los", "el", "les", "l", "i", "y",
+                                                     "universidad", "universitat"})
+    return ALIAS_UNIVERSIDAD.get(u, u)
 
 
 # --------------------------------------------------------------------------------- precios de privadas
@@ -326,8 +334,11 @@ def indicadores_de(t: dict, ind: dict, por_ambito: Counter) -> dict | None:
 # ---------------------------------------------------------------------------------------------- BOE
 
 
-def indexar_planes(carpeta: Path | None) -> dict[tuple[str, str], list[dict]]:
-    """(universidad, grado) normalizados → planes del BOE leídos, del más reciente al más antiguo."""
+def indexar_planes(carpeta: Path | None, conocidas: set[str] | None = None) -> dict[tuple[str, str], list[dict]]:
+    """(universidad, grado) normalizados → planes del BOE leídos, del más reciente al más antiguo. La universidad
+    del BOE se resuelve contra las del catálogo («pais vasco» → «pais vasco euskal herriko unibertsitatea»)."""
+    from motor.grados.planes import resolver_universidad
+
     if not carpeta:
         return {}
     actos = {}
@@ -342,7 +353,8 @@ def indexar_planes(carpeta: Path | None) -> dict[tuple[str, str], list[dict]]:
             titulo = p.get("titulo_grado") or (a or {}).get("titulo_grado")
             if not a or not titulo or not a.get("universidad"):
                 continue
-            k = (clave_universidad(a["universidad"]), clave_union(nombre_base(nombre_corto(titulo))))
+            k = (resolver_universidad(clave_universidad(a["universidad"]), conocidas or set()),
+                 clave_union(nombre_base(nombre_corto(titulo))))
             salida[k].append({**p, "fecha": a.get("fecha"), "universidad_boe": a["universidad"]})
     for k in salida:
         salida[k].sort(key=lambda p: p.get("fecha") or "", reverse=True)
@@ -646,8 +658,10 @@ def main() -> None:
     p.add_argument("--salida", required=True)
     a = p.parse_args()
     tarjetas, detalles = indexar_qedu(Path(a.qedu) if a.qedu else None)
-    fichas, comparativa = construir(_leer(Path(a.catalogo)), _leer(Path(a.genericos)), tarjetas, detalles,
-                                    indexar_planes(Path(a.boe) if a.boe else None),
+    catalogo = _leer(Path(a.catalogo))
+    conocidas = {clave_universidad(u["nombre"]) for t in catalogo for u in t["universidades"]}
+    fichas, comparativa = construir(catalogo, _leer(Path(a.genericos)), tarjetas, detalles,
+                                    indexar_planes(Path(a.boe) if a.boe else None, conocidas),
                                     indexar_indicadores(Path(a.indicadores) if a.indicadores else None),
                                     indexar_web_privadas(Path(a.web_privadas) if a.web_privadas else None),
                                     indexar_ruct(Path(a.ruct) if a.ruct else None),
