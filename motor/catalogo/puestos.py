@@ -98,6 +98,21 @@ def _clave(t: str) -> str:
     return "-".join(w for w in t.split() if w not in PALABRAS_VACIAS)
 
 
+NO_SINGULAR = {"crisis", "analisis", "tesis", "menos", "mas", "tres", "dos", "seis", "ademas", "lunes", "martes",
+               "miercoles", "jueves", "viernes", "campus", "virus", "bus", "gas", "pais", "mies", "ciempozuelos"}
+
+
+def singular(w: str) -> str:
+    """«auxiliares administrativos» y «auxiliar administrativo», «peones», «oficiales», «técnicos»: la misma clave."""
+    if len(w) < 5 or w in NO_SINGULAR or w.endswith(("is", "us")):
+        return w
+    if w.endswith("es") and len(w) > 5 and w[-3] in "rlndz" and w[-4] in "aeiou":
+        return w[:-2]
+    if w.endswith(("os", "as", "es")):
+        return w[:-1]
+    return w
+
+
 _SINONIMOS_POR_CLAVE = {_clave(k): v for k, v in SINONIMOS.items()}
 
 
@@ -120,6 +135,7 @@ def normalizar_puesto(denominacion: str) -> dict:
     t = re.sub(r"[^a-z0-9ñ ]+", " ", t)
     t = re.sub(r"\b(?:d|l|s)\s+(?=[a-z])", "", t)          # restos de «d'», «l'» tras quitar el apóstrofo
     t = " ".join(FEMENINOS.get(w, w) for w in " ".join(TRADUCCION.get(w, w) for w in t.split()).split())
+    t = " ".join(FEMENINOS.get(singular(w), singular(w)) for w in t.split())
     t = re.sub(r"\b(\w+(?: \w+)?) o \1\b", r"\1", t)    # «trabajador o trabajadora social» -> «trabajador social»
     canonico = SINONIMOS.get(t) or _SINONIMOS_POR_CLAVE.get(_clave(t), t)
     clave = _clave(canonico)

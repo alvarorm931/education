@@ -121,3 +121,43 @@ def test_un_dia_raro_no_para_la_carga(tmp_path, monkeypatch, capsys):
     assert vistos == [date(2025, 7, 27), date(2025, 7, 26), date(2025, 7, 25), date(2025, 7, 24)]
     raro = json.loads((tmp_path / "datos" / "provinciales" / "bopb" / "dias" / "2025" / "07" / "26.json").read_text())
     assert raro["resultado"] == "error_formato" and "TypeError" in raro["alertas"][0]
+
+
+def test_dias_viejos_con_error_no_paran_la_carga(tmp_path, monkeypatch):
+    """Ocho días viejos con HTTP 500 permanente, repartidos por el año, se reintentan pero no cuentan para el freno:
+    la carga llega a los días nuevos."""
+    import json
+    base = tmp_path / "datos" / "provinciales" / "bopb" / "dias"
+    malos = [date(2025, 9, d) for d in (1, 3, 5, 8, 10, 12, 15, 17, 19, 22)]
+    for d in malos:
+        r = base / f"{d:%Y}" / f"{d:%m}" / f"{d:%d}.json"
+        r.parent.mkdir(parents=True, exist_ok=True)
+        r.write_text(json.dumps({"fecha": d.isoformat(), "resultado": "error_http"}))
+    nuevos = []
+
+    def falso(b, d, raiz, archivo, pausa=1.0):
+        if d in malos:
+            return {"fecha": d.isoformat(), "resultado": "error_http", "alertas": ["HTTP 500"]}
+        nuevos.append(d)
+        return {"fecha": d.isoformat(), "resultado": "ok", "alertas": []}
+
+    def hecho(d):
+        r = base / f"{d:%Y}" / f"{d:%m}" / f"{d:%d}.json"
+        r.parent.mkdir(parents=True, exist_ok=True)
+        r.write_text(json.dumps({"fecha": d.isoformat(), "resultado": "ok"}))
+
+    for k in range(1, 31):
+        if date(2025, 9, k) not in malos:
+            hecho(date(2025, 9, k))
+    monkeypatch.setattr(diba, "procesar_dia", falso)
+    monkeypatch.setattr(diba.time, "sleep", lambda s: None)
+    bopb.main(["--desde", "2025-08-28", "--hasta", "2025-09-30", "--salida", str(tmp_path), "--pausa", "0"])
+    assert date(2025, 8, 28) in nuevos
+
+
+def test_freno_cuenta_solo_lo_nuevo():
+    from motor.autonomicos.comun import Freno
+    f = Freno(max_seguidos=3)
+    assert not any(f.anotar({"resultado": "error_http"}, reintento=True) for _ in range(10))
+    assert not f.anotar({"resultado": "error_http"}) and not f.anotar({"resultado": "error_http"})
+    assert f.anotar({"resultado": "error_http"})

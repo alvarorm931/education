@@ -393,13 +393,31 @@ class Freno:
     def __init__(self, max_seguidos: int = 8):
         self.max_seguidos, self.seguidos = max_seguidos, 0
 
-    def anotar(self, informe: dict) -> bool:
-        self.seguidos = self.seguidos + 1 if informe.get("resultado") in self.FALLOS else 0
+    def anotar(self, informe: dict, reintento: bool = False) -> bool:
+        """reintento: el día ya había fallado antes. Si vuelve a fallar no cuenta: con 8 días viejos con error
+        repartidos por el año (HTTP 500 permanentes), cada carga se paraba antes de llegar a los días nuevos (el BOPB
+        no pasaba del 27/07/2025)."""
+        fallo = informe.get("resultado") in self.FALLOS
+        if fallo and reintento:
+            return False
+        self.seguidos = self.seguidos + 1 if fallo else 0
         if self.seguidos >= self.max_seguidos:
             print(f"::warning::{self.seguidos} fallos seguidos ({informe.get('resultado')}: "
                   f"{'; '.join((informe.get('alertas') or [])[:1])}); se para y se reintenta en la próxima ejecución")
             return True
         return False
+
+
+def estado_dia(ruta: Path, hechos: frozenset = frozenset({"ok", "sin_boletin"})) -> tuple[bool, bool]:
+    """(hecho, reintento) del informe guardado de un día: hecho si se leyó bien o no hubo boletín; reintento si se
+    pidió y falló (para Freno.anotar). Un informe ilegible cuenta como no pedido."""
+    if not ruta.exists():
+        return False, False
+    try:
+        r = json.loads(ruta.read_text(encoding="utf-8")).get("resultado")
+    except (ValueError, UnicodeDecodeError):
+        return False, False
+    return r in hechos, r not in hechos
 
 
 def escribir_jsonl(ruta: Path, filas: list[dict]) -> None:

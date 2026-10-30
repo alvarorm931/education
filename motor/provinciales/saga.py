@@ -25,7 +25,7 @@ from zoneinfo import ZoneInfo
 
 from motor.archivo import Archivo, solo_huella_por_defecto
 from motor.autonomicos.comun import (Freno, clasificar, convocante_de_organismo, descargar_textos, es_empleo_estricto,
-                                     escribir_json, escribir_jsonl, leer_jsonl, nombre_propio)
+                                     escribir_json, escribir_jsonl, leer_jsonl, nombre_propio, estado_dia)
 from motor.boe.clasificar import normalizar
 from motor.catalogo.territorio import municipio, provincia
 from motor.http import obtener
@@ -250,7 +250,7 @@ def main(b: Boletin, argv: list[str] | None = None) -> int:
     desde = max(a.desde, b.inicio)
     while d >= desde:
         ruta = _ruta(b, a.salida, "dias", d, "json")
-        hecho = ruta.exists() and json.loads(ruta.read_text(encoding="utf-8")).get("resultado") in {"ok", "sin_boletin"}
+        hecho, reintento = estado_dia(ruta)
         if d.weekday() >= 5 and not hecho:
             escribir_json(ruta, {"fecha": d.isoformat(), "resultado": "sin_boletin", "nota": "fin de semana",
                                  "alertas": []})
@@ -266,7 +266,7 @@ def main(b: Boletin, argv: list[str] | None = None) -> int:
             if not (inf.get("resultado") == "sin_boletin" and d >= hoy):
                 escribir_json(ruta, inf)
             informes.append(inf)
-            if freno.anotar(inf):
+            if freno.anotar(inf, reintento=reintento):
                 break
             print(f"{b.siglas} {d}: {inf['resultado']} {inf.get('empleo_publico', '')}")
             time.sleep(a.pausa)

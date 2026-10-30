@@ -161,7 +161,7 @@ def parsear_sumario(pdf: bytes) -> tuple[list[dict], list[str]]:
 def resolver_pdfs(raiz: Path, pausa: float = 1.0, max_minutos: float = 0) -> int:
     """La ficha de cada anuncio de empleo (url_anuncio) enlaza su PDF firmado: se anota en url_pdf para descargar
     luego los textos. Devuelve cuántos se han resuelto."""
-    from motor.autonomicos.comun import leer_jsonl
+    from motor.autonomicos.comun import leer_jsonl, estado_dia
     inicio, hechos = time.monotonic(), 0
     for f in sorted((_base(raiz) / "oposiciones").glob("*/*/*.jsonl"), reverse=True):
         filas, cambio = leer_jsonl(f), False
@@ -489,7 +489,7 @@ def main(argv: list[str] | None = None) -> int:
     d = a.hasta
     while d >= max(a.desde, INICIO):
         ruta = _ruta(a.salida, "dias", d, "json")
-        hecho = ruta.exists() and json.loads(ruta.read_text(encoding="utf-8")).get("resultado") in {"ok", "sin_boletin"}
+        hecho, reintento = estado_dia(ruta)
         if d.weekday() >= 5 and not hecho:
             escribir_json(ruta, {"fecha": d.isoformat(), "resultado": "sin_boletin", "nota": "fin de semana", "alertas": []})
             hecho = True
@@ -505,7 +505,7 @@ def main(argv: list[str] | None = None) -> int:
                 escribir_json(ruta, inf)
             informes.append(inf)
             print(f"BOP León {d}: {inf['resultado']} {inf.get('empleo_publico', '')}")
-            if freno.anotar(inf):
+            if freno.anotar(inf, reintento=reintento):
                 break
             time.sleep(a.pausa)
         d -= timedelta(days=1)

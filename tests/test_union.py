@@ -24,7 +24,7 @@ def test_piezas_del_titulo():
 def test_puesto_del_titulo():
     assert u.puesto("Relación definitiva de admitidos y excluidos para la provisión, por oposición libre, de 4 plazas "
                     "de Auxiliar Administrativo. Nombramiento del Tribunal") == "auxiliar-administrativo"
-    assert u.puesto("Nombramiento de funcionaria de carrera (Técnica de Exacciones y Rentas).") == "tecnico-exacciones-rentas"
+    assert u.puesto("Nombramiento de funcionaria de carrera (Técnica de Exacciones y Rentas).") == "tecnico-exaccion-renta"
     assert u.puesto("NOMBRAMIENTO FUNCIONARIO DE CARRERA INSPECTOR DE POLICÍA LOCAL.") == "inspector-policia-local"
     assert u.puesto("Lista provisional del proceso para la selección de un Notificador mediante") == "notificador"
     # la provincia entre paréntesis y «plazas vacantes» no son puestos

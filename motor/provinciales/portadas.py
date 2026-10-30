@@ -15,7 +15,7 @@ from datetime import date
 from pathlib import Path
 
 from motor.archivo import Archivo, solo_huella_por_defecto
-from motor.autonomicos.comun import clasificar, convocante_de_organismo, es_empleo_estricto, escribir_json, escribir_jsonl
+from motor.autonomicos.comun import clasificar, convocante_de_organismo, es_empleo_estricto, escribir_json, escribir_jsonl, estado_dia
 from motor.boe.clasificar import normalizar
 from motor.http import obtener
 
@@ -115,7 +115,7 @@ def historico(p: Portada, raiz: Path, archivo: Archivo, desde: date, hasta: date
     inicio, informes, freno, d = time.monotonic(), [], Freno(), hasta
     while d >= desde:
         ruta = _ruta(p, raiz, "dias", d, "json")
-        hecho = ruta.exists() and json.loads(ruta.read_text(encoding="utf-8")).get("resultado") in {"ok", "sin_boletin"}
+        hecho, reintento = estado_dia(ruta)
         if d.weekday() >= 5 and not hecho:
             escribir_json(ruta, {"fecha": d.isoformat(), "resultado": "sin_boletin", "nota": "fin de semana", "alertas": []})
             hecho = True
@@ -144,7 +144,7 @@ def historico(p: Portada, raiz: Path, archivo: Archivo, desde: date, hasta: date
             escribir_json(ruta, inf)
             informes.append(inf)
             print(f"{p.siglas} {d}: {inf['resultado']} {inf.get('empleo_publico', '')}")
-            if freno.anotar(inf):
+            if freno.anotar(inf, reintento=reintento):
                 break
         d -= timedelta(days=1)
     print(f"{p.siglas} histórico: {len(informes)} días, {sum(i.get('empleo_publico', 0) for i in informes)} de empleo")

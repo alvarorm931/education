@@ -29,7 +29,7 @@ from zoneinfo import ZoneInfo
 
 from motor.archivo import Archivo, solo_huella_por_defecto
 from motor.autonomicos.comun import (Freno, clasificar, convocante_de_organismo, es_empleo_estricto, escribir_json,
-                                     escribir_jsonl)
+                                     escribir_jsonl, estado_dia)
 from motor.boe.clasificar import normalizar
 from motor.extraccion.texto_es import fecha_texto
 from motor.http import obtener
@@ -171,7 +171,7 @@ def main(argv: list[str] | None = None) -> int:
     d = a.hasta
     while d >= a.desde:
         ruta = _ruta(a.salida, "dias", d, "json")
-        hecho = ruta.exists() and json.loads(ruta.read_text(encoding="utf-8")).get("resultado") in {"ok", "sin_boletin"}
+        hecho, reintento = estado_dia(ruta)
         reciente = d >= hoy - timedelta(days=1)
         if not hecho or reciente:
             if a.max_minutos and (time.monotonic() - inicio) / 60 > a.max_minutos:
@@ -198,7 +198,7 @@ def main(argv: list[str] | None = None) -> int:
             if not (inf.get("resultado") == "sin_boletin" and reciente):
                 escribir_json(ruta, inf)
             informes.append(inf)
-            if freno.anotar(inf):
+            if freno.anotar(inf, reintento=reintento):
                 break
             print(f"BOP Valladolid {d}: {inf['resultado']} {inf.get('empleo_publico', '')}")
             time.sleep(a.pausa)

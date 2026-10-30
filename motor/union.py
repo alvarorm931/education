@@ -124,16 +124,28 @@ GENERICOS = {"vacantes", "varias", "diversas", "diversos", "distintas", "plantil
              "i", "y", "e", "de", "del", "la", "el", "los", "las"}
 
 
+# Lo que precede al puesto sin serlo («funcionària interina per projectes com a tècnica…», «temporal com a operari»)
+RE_ANTES_PUESTO = re.compile(r"^(?:(?:interin[oa]s?|interines|temporal(?:es)?|eventual(?:es)?|fij[oa]s?|en pr[aá]cticas|"
+                             r"de carrera|de carreira|per projectes|por proyectos|per programes|com a|como|com|per a|"
+                             r"para|per|d'una|de una|de un|una|un)\s+)+", re.IGNORECASE)
+# Claves que no son un puesto (salen de títulos como «… de las plazas que se relacionan», «(núm. 99)»)
+RE_NO_ES_PUESTO = re.compile(r"^(?:que-se-relacionan|que-se-indican|que-se-citan|dentro|por|carreira|carrera|num-\d+|"
+                             r"numero-\d+|n-\d+|efectos?-.*|aspirantes?(?:-.*)?|persona.*|resolucion-.*|decreto-.*|"
+                             r"orden-.*|area-\d+|op\d+.*|correccion-errores|interin.*|temporal|temporal-.*|"
+                             r"extraordinaria|basicas|empresa-publica|varias-categorias|categorias|diversas|varias)$")
+
+
 def _clave_puesto(p: str, cuerpo: bool = False) -> str | None:
     from motor.catalogo.territorio import provincia
     p = (RE_CORTE_CUERPO if cuerpo else RE_CORTE_PUESTO).sub("", p).strip(" -")
+    p = RE_ANTES_PUESTO.sub("", p).strip(" -")
     if provincia(p) or set(normalizar(p).split()) <= GENERICOS:  # «(Córdoba)», «plazas vacantes»
         return None
     if len(p) < 3 or RE_NO_PUESTO.match(normalizar(p)) or \
             normalizar(p).startswith(("trabajo", "empleo", "personal", "funcionari", "laboral", "carrera", "practicas")):
         return None
     clave = normalizar_puesto(p)["clave"]
-    return clave if clave and len(clave) >= 3 else None
+    return clave if clave and len(clave) >= 3 and not RE_NO_ES_PUESTO.match(clave) else None
 
 
 def puesto(titulo: str | None) -> str | None:

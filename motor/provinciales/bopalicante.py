@@ -33,7 +33,7 @@ from zoneinfo import ZoneInfo
 
 from motor.archivo import Archivo, solo_huella_por_defecto
 from motor.autonomicos.comun import (Freno, clasificar, convocante_de_organismo, descargar_textos,
-                                     es_empleo_estricto, escribir_json, escribir_jsonl, leer_jsonl)
+                                     es_empleo_estricto, escribir_json, escribir_jsonl, leer_jsonl, estado_dia)
 from motor.http import obtener
 from motor.provinciales.comun import CON_TEXTO, texto_pdf
 
@@ -182,7 +182,7 @@ def main(argv: list[str] | None = None) -> int:
     d = a.hasta
     while d >= a.desde:  # del más reciente al más antiguo; lo ya hecho no se repite (salvo ayer y hoy)
         ruta = _ruta(a.salida, "dias", d, "json")
-        hecho = ruta.exists() and json.loads(ruta.read_text(encoding="utf-8")).get("resultado") in {"ok", "sin_boletin"}
+        hecho, reintento = estado_dia(ruta)
         if not hecho or d >= hoy - timedelta(days=1):
             if a.max_minutos and (time.monotonic() - inicio) / 60 > a.max_minutos:
                 print("Tiempo agotado; se continúa en la siguiente ejecución")
@@ -194,7 +194,7 @@ def main(argv: list[str] | None = None) -> int:
             if not (inf.get("resultado") == "sin_boletin" and d >= hoy):
                 escribir_json(ruta, inf)
             informes.append(inf)
-            if freno.anotar(inf):
+            if freno.anotar(inf, reintento=reintento):
                 break
             print(f"BOP Alicante {d}: {inf['resultado']} {inf.get('empleo_publico', '')}")
             time.sleep(a.pausa)

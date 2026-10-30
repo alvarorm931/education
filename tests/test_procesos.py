@@ -105,7 +105,7 @@ def test_bases_compartidas_y_diputacion():
     benissa = {"tipo": "Ayuntamiento", "nombre": "Benissa", "provincia": "Alicante"}
     boe = [_acto(f"B{i}", "2022-06-10", "apertura_plazo", convocante=benissa, boletines_citados=cita,
                  plazas=[{"numero": 1, "puesto_clave": q}]) for i, q in
-           [(1, "profesor-musica"), (2, "profesor-ballet"), (3, "monitor-danzas-tradicionales")]]
+           [(1, "profesor-musica"), (2, "profesor-ballet"), (3, "monitor-danza-tradicional")]]
     boe.append(_acto("D1", "2022-06-10", "apertura_plazo", boletines_citados=cita,
                      convocante={"tipo": "Diputación Provincial", "nombre": "Alicante", "provincia": None}))
     loc = lambda i, t, c: {"id": i, "fecha": "2022-05-23", "fuente": "BOP-ALICANTE", "tipo_acto": "bases",

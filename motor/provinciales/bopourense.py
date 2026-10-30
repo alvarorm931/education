@@ -172,7 +172,7 @@ def procesar_dia(d: date, raiz: Path, archivo: Archivo, pausa: float = 1.0) -> d
 def reparar(raiz: Path, pausa: float, max_minutos: float) -> tuple[int, int]:
     """Anuncios de empleo sin entidad (guardados antes de que pasara a disposiciones y perdida al reseleccionar):
     se vuelve a pedir la cabecera de su texto y se completan oposiciones y disposiciones."""
-    from motor.autonomicos.comun import leer_jsonl
+    from motor.autonomicos.comun import leer_jsonl, estado_dia
     inicio, hechos, errores = time.monotonic(), 0, 0
     for f in sorted((_base(raiz) / "oposiciones").glob("*/*/*.jsonl"), reverse=True):
         filas = leer_jsonl(f)
@@ -224,7 +224,7 @@ def main(argv: list[str] | None = None) -> int:
     d = a.hasta
     while d >= a.desde:
         ruta = _ruta(a.salida, "dias", d, "json")
-        hecho = ruta.exists() and json.loads(ruta.read_text(encoding="utf-8")).get("resultado") in {"ok", "sin_boletin"}
+        hecho, reintento = estado_dia(ruta)
         if d.weekday() >= 5 and not hecho:
             escribir_json(ruta, {"fecha": d.isoformat(), "resultado": "sin_boletin", "nota": "fin de semana", "alertas": []})
             hecho = True
@@ -239,7 +239,7 @@ def main(argv: list[str] | None = None) -> int:
             if not (inf.get("resultado") == "sin_boletin" and d >= hoy - timedelta(days=1)):
                 escribir_json(ruta, inf)
             informes.append(inf)
-            if freno.anotar(inf):
+            if freno.anotar(inf, reintento=reintento):
                 break
             print(f"BOP Ourense {d}: {inf['resultado']} {inf.get('empleo_publico', '')}")
             time.sleep(a.pausa)
