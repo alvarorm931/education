@@ -115,6 +115,8 @@ COL = {
     "semestre": re.compile(r"semestre|cuatrimestre|trimestre|temporal|\btemp\b|periodo|duraci", re.I),
 }
 TOTAL = re.compile(r"^(total|suma)", re.I)
+# fila de totales (con el nombre heredado de la celda combinada de arriba): «Total», «Créditos totales | 15»
+RE_FILA_TOTAL = re.compile(r"^(?:total|suma|cr[ée]ditos\s+totales|n[uú]mero total)", re.I)
 # llamada de nota pegada al nombre: «Proyectos de Luminotecnia (1)», «Prácticas Académicas Externas (*)»
 RE_LLAMADA = re.compile(r"\s*(?:\(\s*(?:\d{1,2}|\*+|[a-z])\s*\)|\*+)$")
 # rótulo de un grupo de asignaturas leído en la columna del nombre
@@ -603,7 +605,7 @@ def plan(tablas: list[dict], dist: dict | None = None, codigos: dict[str, str] |
             nombre = RE_LLAMADA.sub("", (f[cols["nombre"]] or "").strip().rstrip(" .")).strip()
             if not nombre or TOTAL.match(nombre) or nombre.lower() == (cab[cols["nombre"]] or "").lower():
                 continue
-            if any(TOTAL.match((c or "").strip()) for c in f):
+            if any(RE_FILA_TOTAL.match((c or "").strip()) for c in f):
                 continue  # fila de total cuyo nombre heredó la celda combinada de la fila de arriba
             creditos = _num(f[cols["creditos"]]) if "creditos" in cols else None
             if RE_ROTULO_GRUPO.search(nombre) and creditos is None:
@@ -902,12 +904,24 @@ def _medir(filas: list[dict], dist: dict | None, doc: dict) -> dict:
     bo_esperado = (dist.get("formacion_basica", 0) + dist.get("obligatorias", 0)) if dist else None
     pe_tfg = sum(f["creditos"] or 0 for f in base if f["tipo"] in ("practicas", "tfg"))
     # cada tipo por separado (básicas, obligatorias, prácticas y TFG): más estricto que la suma; la ficha lo dice
-    por_tipo = bool(dist) and all(
-        abs(sum(f["creditos"] or 0 for f in base if f["tipo"] == t) - (dist.get(CLAVE_DIST[t]) or 0)) <= 0.5
-        for t in ("basica", "obligatoria", "practicas", "tfg"))
-    if esperado and abs(fijos - esperado) <= 0.5:
+    sumas = {t: sum(f["creditos"] or 0 for f in base if f["tipo"] == t) for t in ("basica", "obligatoria", "practicas", "tfg")}
+    por_tipo = bool(dist) and all(abs(v - (dist.get(CLAVE_DIST[t]) or 0)) <= 0.5 for t, v in sumas.items())
+    # ningún tipo puede pasar de lo que dice la tabla de créditos: si pasa, la suma total cuadraría solo porque un
+    # error compensa otro (optativas leídas como obligatorias que tapan asignaturas que faltan; filas de total)
+    # (se admite que las obligatorias pasen justo en lo que falta de prácticas y TFG: hay planes que marcan el
+    # practicum «OB» y la tabla de créditos lo separa)
+    if dist:
+        d = {t: dist.get(CLAVE_DIST[t]) or 0 for t in sumas}
+        excede = sumas["basica"] > d["basica"] + 0.5 or sumas["practicas"] > d["practicas"] + 0.5 \
+            or sumas["tfg"] > d["tfg"] + 0.5 or sumas["obligatoria"] > d["obligatoria"] + 0.5 + \
+            (d["practicas"] - sumas["practicas"]) + (d["tfg"] - sumas["tfg"])
+    else:
+        excede = False
+    if esperado and abs(fijos - esperado) <= 0.5 and not excede:
         comprobacion = "completo"
-    elif bo_esperado and bo and abs(bo - bo_esperado) <= 0.5:
+    elif bo_esperado and bo and abs(bo - bo_esperado) <= 0.5 and dist \
+            and abs(sumas["basica"] - (dist.get("formacion_basica") or 0)) <= 0.5:
+        # el núcleo, básicas y obligatorias, exacto tipo a tipo (sus dos sumas, no solo la suma de las dos)
         # básicas y obligatorias cuadran (el núcleo del plan está entero); las prácticas y el TFG no van en tabla o
         # van contados de otra forma (prácticas optativas, TFG en dos tablas): se toman de la tabla de créditos
         comprobacion = "basicas_y_obligatorias"

@@ -328,3 +328,20 @@ def test_curso_de_la_tabla_de_distribucion_temporal():
     filas = {x["nombre"]: x for x in plan([modulos, tiempo])}
     assert (filas["Ondas"]["curso"], filas["Ondas"]["semestre"]) == (1, 2) and filas["Ondas"]["tipo"] == "basica"
     assert filas["Química general"]["curso"] is None
+
+
+def test_errores_que_se_compensan_no_comprueban():
+    from motor.grados.boe_grados import medir_plan
+    dist = _t([["Tipo de materia", "Créditos"], ["Formación básica.", "12"], ["Obligatorias.", "12"],
+               ["Optativas.", "6"], ["Total.", "30"]])
+    # faltan 6 de obligatorias y sobran 6 de básicas: la suma total cuadra, tipo a tipo no
+    t = _t([["Asignatura", "Créditos", "Carácter"], ["A.", "6", "FB"], ["B.", "6", "FB"], ["C.", "6", "FB"],
+            ["D.", "6", "OB"]])
+    m = medir_plan({"tablas": [dist, t], "texto": ""})
+    assert m["comprobacion"] is None and not m["cuadra_por_tipo"]
+    # el practicum marcado «OB» cuando la tabla de créditos lo separa sí vale (las obligatorias pasan justo en eso)
+    dist2 = _t([["Tipo de materia", "Créditos"], ["Formación básica.", "6"], ["Obligatorias.", "6"],
+                ["Prácticas externas.", "6"], ["Total.", "18"]])
+    t2 = _t([["Asignatura", "Créditos", "Carácter"], ["A.", "6", "FB"], ["B.", "6", "OB"],
+             ["Prácticas tuteladas.", "6", "OB"]])
+    assert medir_plan({"tablas": [dist2, t2], "texto": ""})["comprobacion"] == "completo"
