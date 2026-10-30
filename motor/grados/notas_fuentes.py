@@ -204,6 +204,53 @@ def formularios(html: str, base: str) -> list[dict]:
     return salida
 
 
+def cuerpo_funcion(js: str, nombre: str, maximo: int = 2500) -> str | None:
+    """Código de `function nombre(...) {...}` (o `nombre = function`), con las llaves emparejadas."""
+    m = re.search(rf"(?:function\s+{re.escape(nombre)}\s*\(|\b{re.escape(nombre)}\s*=\s*(?:async\s+)?function\s*\()", js)
+    if not m:
+        return None
+    i = js.find("{", m.end())
+    if i < 0:
+        return None
+    nivel, j = 0, i
+    while j < len(js):
+        nivel += {"{": 1, "}": -1}.get(js[j], 0)
+        if nivel == 0:
+            break
+        j += 1
+    return js[m.start():j + 1][:maximo]
+
+
+def funciones_de_envio(html: str, base: str, pedir) -> list[dict]:
+    """Funciones que llaman los botones de los formularios (onclick), buscadas en los scripts de la página y en sus
+    ficheros .js del mismo sitio: dicen a qué dirección y con qué campos se hace la consulta de verdad."""
+    nombres = sorted(set(re.findall(r"(?i)on(?:click|submit|change)\s*=\s*[\"']\s*(?:return\s+)?([A-Za-z_$][\w$]*)\s*\(",
+                                    " ".join(c for _, c in FORM.findall(html)) or html)))
+    if not nombres:
+        return []
+    fuentes = [("pagina", " ".join(re.findall(r"(?is)<script\b[^>]*>(.*?)</script>", html)))]
+    host = urlparse(base).netloc
+    for src in re.findall(r"(?is)<script\b[^>]*\bsrc\s*=\s*[\"']([^\"']+)", html)[:15]:
+        u = urljoin(base, unescape(src))
+        if urlparse(u).netloc != host or re.search(r"(?i)jquery|bootstrap|popper|analytics|gtag|cookie", u):
+            continue
+        r = pedir(u)
+        if r is not None and r.status_code == 200 and len(r.content) < 2_000_000:
+            fuentes.append((u, r.text))
+    salida = []
+    for n in nombres[:8]:
+        for origen, js in fuentes:
+            c = cuerpo_funcion(js, n)
+            if c:
+                salida.append({"funcion": n, "origen": origen, "codigo": c,
+                               "direcciones": sorted(set(re.findall(r"[\"']([^\"'\s]*\.(?:php|aspx?|jsp|json|csv)[^\"'\s]*)[\"']",
+                                                                    c)))[:10]})
+                break
+        else:
+            salida.append({"funcion": n, "origen": None})
+    return salida
+
+
 def lineas_documento(contenido: bytes, formato: str) -> tuple[list[str], int | None]:
     """Líneas de texto de un documento (PDF con la disposición de columnas; CSV/JSON/HTML tal cual)."""
     if formato == "pdf":
@@ -315,6 +362,8 @@ def ejecutar(salida: Path, solo: list[str] | None = None, max_minutos: float = 5
             if r is not None and r.status_code == 200:
                 ls = enlaces(r.text, r.url)
                 info.update(enlaces=[{"url": a, "texto": t} for a, t in ls][:150], formularios=formularios(r.text, r.url))
+                if info["formularios"]:
+                    info["funciones"] = funciones_de_envio(r.text, r.url, pedir)
                 for a, _ in ls[:60]:
                     candidatos.setdefault(a, "enlazado")
             res["indices"].append(info)

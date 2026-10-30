@@ -59,3 +59,28 @@ def test_consulta_post_de_formulario(monkeypatch, tmp_path):
     assert pedidos == [("https://j.es/sguit/?q=grados", {"anio": "2024", "univpet": ""})]
     assert doc["estado"] == 200 and doc["formato"] == "html" and doc["filas_con_nota"] == 1
     assert doc["url"].endswith("anio=2024&univpet=")
+
+
+def test_funcion_del_boton_se_busca_en_los_js_del_sitio():
+    from motor.grados import notas_fuentes as nf
+
+    html = ('<form action="?q=a" method="post"><select name="anio"><option value="2024">x</option></select>'
+            '<button type="button" onclick="BuscarPeticiones(\'csv\')"></button></form>'
+            '<script src="/js/consulta.js"></script><script src="https://otro.es/x.js"></script>')
+    js = "var a=1; function BuscarPeticiones(f){ if(f){ $.post('ajax/notas.php', {anio: x}); } else { y(); } } z();"
+
+    class R:
+        status_code = 200
+        content = js.encode()
+        text = js
+
+    pedidas = []
+
+    def pedir(u):
+        pedidas.append(u)
+        return R()
+
+    f = nf.funciones_de_envio(html, "https://www.ejemplo.es/sguit/", pedir)
+    assert pedidas == ["https://www.ejemplo.es/js/consulta.js"]
+    assert f[0]["funcion"] == "BuscarPeticiones" and f[0]["codigo"].endswith("y(); } }")
+    assert f[0]["direcciones"] == ["ajax/notas.php"]
