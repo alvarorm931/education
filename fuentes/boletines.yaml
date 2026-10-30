@@ -386,7 +386,8 @@ provinciales:
   - provincia: Valladolid
     url: https://bop.sede.diputaciondevalladolid.es/
     acceso_desde_github: "sin_respuesta_desde_github (timeout)"
-    estado: sin_conector
+    estado: conector_en_pruebas
+    conector: motor/provinciales/bopvalladolid.py
   - provincia: Zamora
     url: https://www.diputaciondezamora.es/opencms/servicios/BOP/bop/index.html
     acceso_desde_github: "ok"

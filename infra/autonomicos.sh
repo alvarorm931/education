@@ -236,6 +236,12 @@ for c in $CONECTORES; do
       ejecutar motor.provinciales.boplaspalmas --desde 2022-01-01 --salida "$S" --max-minutos "$M"
       "$G" "BOP Las Palmas: días"
       ;;
+    bopvalladolid)
+      # Desde GitHub no responde: servidor de España. Calendario por mes y boletín por fecha
+      ejecutar motor.provinciales.bopvalladolid --salida "$S"
+      ejecutar motor.provinciales.bopvalladolid --desde 2022-01-01 --salida "$S" --max-minutos "$M"
+      "$G" "BOP Valladolid: días"
+      ;;
     bopb)
       # El del día por el canal de datos abiertos; los anteriores por el listado por días y los textos en PDF (cerrados
       # en robots.txt; se leen como boletín oficial, motor/http.py)
