@@ -79,6 +79,24 @@ def actos_por_grado(carpeta: Path | None, conocidas: set[str] | None = None) -> 
     return salida
 
 
+def varios_planes(carpeta: Path | None) -> list[str]:
+    """Resoluciones que publican varios planes a la vez («por la que se publican planes de estudios»): su título
+    no dice de qué grados son, así que no se pueden unir por nombre antes de leerlas (boe_grados.separar_planes
+    las separa por anexo). Se piden todas las de plan, modificación y cambio de denominación."""
+    if not carpeta:
+        return []
+    filas, ids = [], []
+    for f in carpeta.rglob("*.jsonl"):
+        for x in _leer(f):
+            if x.get("varios_planes") and x.get("tipo") in ("plan", "modificacion", "denominacion"):
+                ids.append(x["identificador"])  # boe_actos.jsonl ya clasificado
+            elif x.get("nivel", "grado") == "grado" and x.get("identificador") and x.get("titulo") and "varios_planes" not in x:
+                filas.append(x)
+    ids += [a["identificador"] for a in actos_de_sumario(filas)
+            if a.get("varios_planes") and a["tipo"] in ("plan", "modificacion", "denominacion")]
+    return list(dict.fromkeys(ids))
+
+
 def plan_ruct(carpeta: Path | None) -> dict[str, dict]:
     """código → identificador BOE del plan según la ficha del RUCT (y del acuerdo)."""
     salida = {}
@@ -98,7 +116,7 @@ def ya_descargados(carpeta: Path | None) -> set[str]:
     return {f.stem for f in carpeta.rglob("BOE-*.json")} if carpeta else set()
 
 
-def calcular(catalogo: list[dict], ruct: dict, actos: dict, hechos: set[str]) -> dict:
+def calcular(catalogo: list[dict], ruct: dict, actos: dict, hechos: set[str], varios: list[str] | None = None) -> dict:
     grados = [t for t in catalogo if t["situacion"] == "Activo" and t["clase"] == "grado"]
     pendientes_1, pendientes_2 = [], []
     cobertura = Counter({k: 0 for k in ("con_publicacion_conocida", "sin_publicacion_conocida", "con_plan_en_ruct",
@@ -121,9 +139,11 @@ def calcular(catalogo: list[dict], ruct: dict, actos: dict, hechos: set[str]) ->
         else:
             pendientes_1.append(ids[0])
         pendientes_2 += [i for i in ids[1:] if i not in hechos]
-    lista = list(dict.fromkeys(pendientes_1 + pendientes_2))
+    varios_pend = [i for i in (varios or []) if i not in hechos]
+    lista = list(dict.fromkeys(pendientes_1 + varios_pend + pendientes_2))
     return {"grados_activos": len(grados), **cobertura, "textos_pendientes": len(lista),
-            "pendientes_mas_recientes": len(dict.fromkeys(pendientes_1)), "ids": lista}
+            "pendientes_mas_recientes": len(dict.fromkeys(pendientes_1)),
+            "resoluciones_con_varios_planes_pendientes": len(varios_pend), "ids": lista}
 
 
 def main() -> None:
@@ -138,7 +158,8 @@ def main() -> None:
     conocidas = {clave_universidad(u["nombre"]) for t in cat for u in t["universidades"]}
     res = calcular(cat, plan_ruct(Path(a.ruct) if a.ruct else None),
                    actos_por_grado(Path(a.actos) if a.actos else None, conocidas),
-                   ya_descargados(Path(a.textos) if a.textos else None))
+                   ya_descargados(Path(a.textos) if a.textos else None),
+                   varios_planes(Path(a.actos) if a.actos else None))
     destino = Path(a.salida) / "datos" / "estudios" / "grados"
     destino.mkdir(parents=True, exist_ok=True)
     (destino / "planes_pendientes.json").write_text(json.dumps(res, ensure_ascii=False, indent=1), encoding="utf-8")
