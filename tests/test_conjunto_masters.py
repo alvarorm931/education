@@ -414,3 +414,11 @@ def test_precio_de_tabla_con_otra_forma_del_nombre():
              "Profesional y Enseñanza de Idiomas por la Universidad de Navarra") == 9400.2
     # el título propio con el mismo nombre no es el máster oficial
     assert v("Máster Universitario en Sostenibilidad por la Universidad de Navarra") is None
+
+
+def test_la_tabla_de_la_universidad_manda_sobre_la_pagina():
+    web = {"precio_total": cm.campo(3000, "web", "https://www.unav.edu/web/master-x/admision", "2026-10-30")}
+    tabla = {"precio_total": cm.campo(27700.2, "tarifa", "https://www.unav.edu/precios", "2026-10-31",
+                                      nota="tabla de precios de la universidad")}
+    c = cm.unir({"web": web, "tabla": tabla, "calculado": {}})
+    assert c["precio_total"]["valor"] == 27700.2 and c["precio_total"]["alternativas"][0]["valor"] == 3000

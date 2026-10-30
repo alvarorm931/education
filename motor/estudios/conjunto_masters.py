@@ -57,8 +57,10 @@ PRIORIDAD = {
     "modalidad": ("ruct", "catalogo", "qedu", "web"),
     "plazas": ("qedu", "ruct", "web"),
     "idioma": ("ruct", "qedu", "web"),
-    "precio_credito": ("qedu", "norma", "web", "tarifa"),
-    "precio_total": ("web", "tarifa", "calculado"),
+    # la tabla de precios de la universidad (fuente «tarifa») manda sobre la página: es la lista oficial del curso
+    "precio_credito": ("qedu", "norma", "tabla", "web", "tarifa"),
+    "precio_total": ("tabla", "web", "tarifa", "calculado"),
+    "reserva_matricula": ("tabla", "web", "tarifa"),
     "asignaturas": ("ruct", "boe", "web"),
     "evaluacion": ("ruct", "guia", "web"),
     "metodologia": ("ruct", "web"),
@@ -1082,8 +1084,8 @@ def oficial(cod: str, cat: dict, ruct: dict | None, imps: list[dict], web: dict 
     if ajenos:  # datos de una página en el dominio oficial de otra universidad: fuera
         w = {k: v for k, v in w.items() if dominio(v.get("url")) not in ajenos}
     por_fuente["web"] = {k: v for k, v in w.items() if v["fuente"] == "web"}
-    por_fuente["tarifa"] = {**campos_tabla(cat.get("nombre_oficial"), tablas or []),
-                            **{k: v for k, v in w.items() if v["fuente"] == "tarifa"}}
+    por_fuente["tabla"] = campos_tabla(cat.get("nombre_oficial"), tablas or [])
+    por_fuente["tarifa"] = {k: v for k, v in w.items() if v["fuente"] == "tarifa"}
     por_fuente["calculado"] = calc
     por_fuente["guia"] = campos_guias(guias or [])
     hab = ((por_fuente.get("ruct") or {}).get("habilita_profesion") or {}).get("valor")
