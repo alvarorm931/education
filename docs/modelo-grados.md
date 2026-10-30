@@ -374,7 +374,10 @@ textos largos quedan solo en el almacén privado; en `sondas` va su tamaño y su
     de la Empresa (UIE, página de cada grado), Abat Oliba CEU y Comillas (dos fichas de ejemplo; el resto, con el
     rastreo de su web, que responde 421 a GitHub y se pide desde el servidor de España).
   - Resultado: Camilo José Cela 18 de 81 grados con precio, Alfonso X 5 de 46, Mondragon 8 de 19, UIE 6 de 6,
-    Abat Oliba 2 de 15. Euneiz: su página se lee pero los importes no se unen a ningún grado.
+    Euneiz 5 de 11 (tabla del precio del crédito por titulación, comprobada a mano: `LECTURA_CONOCIDA`,
+    «credito_por_60_de_la_tabla»), Abat Oliba 2 de 15. Alfonso X: el texto del PDF escribe «1 100 €» (miles con
+    espacio) y «10 983 €» (10 cuotas de 983 €) igual; desde el 30/10 el espacio normal no separa miles, así que la
+    matrícula sale 100 € y la fila no cuadra: no se publica (23 grados de su lista, sin precio).
   - No publican precio: UNIR («consulta precios con tu asesor»), Villanueva («consultar precio»), UEMC, Europea del
     Atlántico, Fernando Pessoa-Canarias, Atlántico Medio y UTAMED.
   - Publican, pero no se puede usar: Católica de Valencia (su robots.txt prohíbe la ruta del PDF), IQS (un precio
