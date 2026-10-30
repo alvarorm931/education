@@ -84,3 +84,11 @@ def test_funcion_del_boton_se_busca_en_los_js_del_sitio():
     assert pedidas == ["https://www.ejemplo.es/js/consulta.js"]
     assert f[0]["funcion"] == "BuscarPeticiones" and f[0]["codigo"].endswith("y(); } }")
     assert f[0]["direcciones"] == ["ajax/notas.php"]
+
+
+def test_csv_de_un_php_y_en_windows_1252():
+    from motor.grados import notas_fuentes as nf
+
+    assert nf.formato_de(b"a;b\n", "application/octet-stream", "https://x.es/g_not_cor_anteriores_csv.php?anio=1") == "csv"
+    lineas, _ = nf.lineas_documento("Almería;Grado en Física;8,5\n".encode("cp1252"), "csv")
+    assert lineas[0] == "Almería;Grado en Física;8,5"

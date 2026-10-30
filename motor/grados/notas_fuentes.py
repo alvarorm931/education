@@ -66,10 +66,12 @@ SEMILLAS: dict[str, dict] = {
     "andalucia": {
         "nombre": "Distrito único andaluz",
         # consulta de cursos anteriores (formulario POST de la página; un curso cada vez, el resto «Cualquiera»)
-        "consultas": [{"url": "https://www.juntadeandalucia.es/economiaconocimientoempresasyuniversidad/sguit/"
-                              "?q=grados&d=g_not_cor_anteriores_top.php",
+        # el botón «Descargar» de la consulta histórica envía el formulario a g_not_cor_anteriores_csv.php
+        # (libportal/js/g_funcs_js_nca.js, función BuscarPeticiones): un CSV por curso con todas las universidades
+        "consultas": [{"url": f"https://www.juntadeandalucia.es/economiaconocimientoempresasyuniversidad/sguit/{r}"
+                              "g_not_cor_anteriores_csv.php",
                        "campos": {"univpet": "", "familia": "", "anio": str(a), "titulpet": ""}}
-                      for a in range(2020, 2026)],
+                      for r in ("", "grados/") for a in range(2025, 2009, -1)],
         "indices": ["https://www.juntadeandalucia.es/economiaconocimientoempresasyuniversidad/sguit/"
                     "?q=grados&d=g_not_cor_anteriores_top.php",
                     "https://www.juntadeandalucia.es/economiaconocimientoempresasyuniversidad/sguit/convocatorias/"
@@ -266,7 +268,10 @@ def lineas_documento(contenido: bytes, formato: str) -> tuple[list[str], int | N
             # se conservan los espacios: la columna de cada cifra sale de su posición en la línea
             lineas += [f"### página {i}"] + [x.rstrip() for x in t.splitlines()]
         return lineas, len(lector.pages)
-    texto = contenido.decode("utf-8", errors="replace")
+    try:
+        texto = contenido.decode("utf-8-sig")
+    except UnicodeDecodeError:  # CSV de hojas de cálculo antiguas (Windows-1252)
+        texto = contenido.decode("cp1252", errors="replace")
     if formato == "html":
         texto = re.sub(r"(?is)<(script|style)\b.*?</\1>", " ", texto)
         texto = re.sub(r"(?is)</(tr|p|li|div|h\d)>|<br\s*/?>", "\n", texto)
@@ -282,7 +287,7 @@ def formato_de(contenido: bytes, cabecera: str, url: str) -> str:
         return "xlsx"
     if "json" in cabecera or contenido.lstrip()[:1] in (b"[", b"{"):
         return "json"
-    if "csv" in cabecera or url.lower().split("?")[0].endswith("csv"):
+    if "csv" in cabecera or re.search(r"[_.]csv(?:\.\w+)?$", url.lower().split("?")[0]):
         return "csv"
     return "html" if "html" in cabecera else "otro"
 
@@ -367,11 +372,16 @@ def ejecutar(salida: Path, solo: list[str] | None = None, max_minutos: float = 5
                 for a, _ in ls[:60]:
                     candidatos.setdefault(a, "enlazado")
             res["indices"].append(info)
+        fallidas: set[str] = set()
         for q in s.get("consultas", []):
             if time.time() > fin:
                 break
+            if q["url"] in fallidas:
+                continue  # una dirección que no respondió con datos no se vuelve a pedir con otros campos
             doc = consultar(q, archivo, filas)
             res["documentos"].append(doc)
+            if doc.get("estado") != 200 or doc.get("formato") == "html" and not doc.get("filas_con_nota"):
+                fallidas.add(q["url"])
         for u, origen in candidatos.items():
             if time.time() > fin:
                 res["sin_tiempo"] = True
