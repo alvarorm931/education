@@ -44,6 +44,23 @@ MAX_PDF = 12_000_000
 MAX_LINEA_MUESTRA = 160
 
 
+def elegir_cc(carpeta: Path | None, ya: set[str]) -> list[dict]:
+    """URL de precios halladas en el índice de Common Crawl (cc_precios.py) que no se han elegido ya."""
+    salida = []
+    if not carpeta:
+        return salida
+    for f in sorted(carpeta.rglob("cc_precios/urls_*.jsonl")):
+        for linea in f.read_text(encoding="utf-8").splitlines():
+            x = json.loads(linea)
+            u = x["url"]
+            if u in ya or not x.get("codigo") or NO_TARIFA.search(u):
+                continue
+            ya.add(u)
+            salida.append({"universidad": x.get("universidad"), "codigo_universidad": x["codigo"], "web": x.get("web"),
+                           "url": u, "origen": "common_crawl"})
+    return salida
+
+
 def elegir(rastreos: Path) -> list[dict]:
     """PDF de precios citados en las páginas de grado y páginas de precios del sitemap de cada universidad
     (sin repetir URL)."""
@@ -181,7 +198,8 @@ def extraer(paginas: list[str], grados: list[dict]) -> dict:
     return {"curso_documento": curso, "lineas_con_importe": con_importe, "grados": dict(precios), "muestra": muestra}
 
 
-def ejecutar(catalogo: list[dict], rastreos: Path, salida: Path, max_minutos: float = 50) -> dict:
+def ejecutar(catalogo: list[dict], rastreos: Path, salida: Path, max_minutos: float = 50,
+             cc: Path | None = None) -> dict:
     from motor.estudios.rastreador import Dominio
 
     archivo = Archivo(salida / "archivo", indice_por_fuente=True, solo_huella=solo_huella_por_defecto())
@@ -195,7 +213,9 @@ def ejecutar(catalogo: list[dict], rastreos: Path, salida: Path, max_minutos: fl
                     por_u[u["codigo"]].append(t)
     fin = time.time() + max_minutos * 60
     resultados, dominios = [], {}
-    for p in elegir(rastreos):
+    elegidos = elegir(rastreos)
+    elegidos += elegir_cc(cc, {p["url"] for p in elegidos})
+    for p in elegidos:
         if time.time() > fin:
             break
         r_url = p["url"]
@@ -224,6 +244,8 @@ def ejecutar(catalogo: list[dict], rastreos: Path, salida: Path, max_minutos: fl
             f.write(json.dumps(x, ensure_ascii=False) + "\n")
     resumen = {
         "pdfs_elegidos": len(resultados),
+        "por_origen": {o: sum(1 for x in resultados if x.get("origen") == o) for o in
+                       ("pdf_de_pagina_de_grado", "pagina_de_precios", "common_crawl")},
         "leidos": sum(1 for x in resultados if x.get("paginas")),
         "con_algun_grado": sum(1 for x in resultados if x.get("grados")),
         "grados_con_importe": len({c for x in resultados for c in (x.get("grados") or {})}),
@@ -241,11 +263,13 @@ def main() -> None:
     p = argparse.ArgumentParser()
     p.add_argument("--catalogo", required=True)
     p.add_argument("--rastreos", required=True, help="carpeta con …/web_privadas/{código}.json")
+    p.add_argument("--cc", help="carpeta con …/cc_precios/urls_*.jsonl (cc_precios.py)")
     p.add_argument("--max-minutos", type=float, default=50)
     p.add_argument("--salida", required=True)
     a = p.parse_args()
     cat = [json.loads(x) for x in Path(a.catalogo).read_text(encoding="utf-8").splitlines() if x.strip()]
-    print(json.dumps(ejecutar(cat, Path(a.rastreos), Path(a.salida), a.max_minutos), ensure_ascii=False, indent=1))
+    print(json.dumps(ejecutar(cat, Path(a.rastreos), Path(a.salida), a.max_minutos, Path(a.cc) if a.cc else None),
+                     ensure_ascii=False, indent=1))
 
 
 if __name__ == "__main__":

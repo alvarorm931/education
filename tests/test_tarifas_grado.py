@@ -42,3 +42,14 @@ def test_html_tabla_con_rotulos_de_columna():
     assert lineas[1] == "Grado en Psicología | 500 € | 9.990 €"
     r = tg.extraer(["\n".join(lineas)], G)
     assert [(i["valor"], i["tipo"]) for i in r["grados"]["1"]] == [(500, "reserva"), (9990, "curso")]
+
+
+def test_elegir_cc_une_por_codigo_y_no_repite(tmp_path):
+    d = tmp_path / "x" / "cc_precios"
+    d.mkdir(parents=True)
+    filas = [{"dominio": "u.es", "url": "https://u.es/precios-grados.pdf", "codigo": "123", "universidad": "U"},
+             {"dominio": "u.es", "url": "https://u.es/ya.pdf", "codigo": "123", "universidad": "U"},
+             {"dominio": "v.es", "url": "https://v.es/precios.pdf"}]
+    (d / "urls_CC_0_1.jsonl").write_text("\n".join(json.dumps(x) for x in filas))
+    r = tg.elegir_cc(tmp_path, {"https://u.es/ya.pdf"})
+    assert [x["url"] for x in r] == ["https://u.es/precios-grados.pdf"] and r[0]["origen"] == "common_crawl"
