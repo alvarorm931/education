@@ -308,6 +308,10 @@ def resumen_ruct(d: dict | None) -> dict | None:
 
 
 def plan_comprobado(p: dict) -> bool:
+    """El listado cuadra con la tabla de créditos por tipo del propio plan: entero (básicas + obligatorias +
+    prácticas + TFG) o en básicas y obligatorias cuando las prácticas y el TFG no van en ninguna tabla."""
+    if p.get("comprobacion"):
+        return True
     esp = p.get("esperado_sin_optativas")
     return bool(esp) and abs((p.get("suma_sin_optativas") or 0) - esp) <= 0.5
 
@@ -319,6 +323,7 @@ def resumen_plan(p: dict) -> dict:
         "fecha": p.get("fecha"),
         "tipo": p.get("tipo"),
         "comprobado": plan_comprobado(p),
+        "comprobacion": p.get("comprobacion") or ("completo" if plan_comprobado(p) else None),
         "distribucion": p.get("distribucion"),
         "asignaturas": [{k: f.get(k) for k in ("nombre", "modulo", "tipo", "creditos", "curso", "semestre")}
                         for f in filas],

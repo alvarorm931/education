@@ -34,6 +34,7 @@ from collections import Counter
 from pathlib import Path
 
 from motor.estudios.boe_masters import RE_UNIV
+from motor.grados.catalogo import clave_union
 
 CITA = "Fuente: Agencia Estatal Boletín Oficial del Estado"
 RE_TITULO = re.compile(r"((?:Graduad[oa]|Grado)\b.*?\ben\s+.+?)(?:\.\s*$|, de la Universidad|$)")
@@ -193,6 +194,10 @@ def tipo_caracter(c: str | None) -> str | None:
     """«FB. Ciencias Sociales y Jurídicas.», «Básica», «OB», «PAE», «Prácticas externas (obligatorias)» →
     basica, obligatoria, optativa, practicas o tfg."""
     s = sin_acentos_min(c)
+    # materias mixtas («Obligatoria / Optativa», «Formación básica (6)» de una materia de 36): sin un solo tipo
+    if re.search(r"obligatori\w*\s*(?:/|y|o|,)\s*optativ|optativ\w*\s*(?:/|y|o|,)\s*obligatori|"
+                 r"basica\w*\s*(?:/|y|,)\s*obligatori|^(?:formacion\s+)?basica\s*\(\d", s):
+        return None
     codigo = re.split(r"[\s.(,;:-]+", s.strip())[0] if s.strip() else ""
     for clave, codigos in CODIGOS_CARACTER.items():
         if codigo in codigos:
@@ -434,12 +439,14 @@ def plan(tablas: list[dict], dist: dict | None = None) -> list[dict]:
                     x["tipo"], x["tipo_por_suma_de_tabla"] = iguales[0], True
     por_tabla = [(sum(bool(x["tipo"]) + bool(x["curso"]) + bool(x["semestre"]) for x in sal) / len(sal), k, n, sal)
                  for _, k, n, sal in por_tabla]
-    vistos, resultado = set(), []
-    for _, _, _, salida in sorted(por_tabla, key=lambda x: (-x[0], -x[1], x[2])):
+    # la misma asignatura en varias tablas: se queda la de la tabla más completa; dentro de una misma tabla se
+    # conservan las repetidas (una materia repartida en dos cursos, varias «Optativa» de 6 créditos)
+    vistos: dict[tuple, int] = {}
+    resultado = []
+    for _, _, n, salida in sorted(por_tabla, key=lambda x: (-x[0], -x[1], x[2])):
         for x in salida:
-            k = (" ".join(re.sub(r"[^\w]+", " ", x["nombre"].lower()).split()), x["nivel"])
-            if k not in vistos:
-                vistos.add(k)
+            k = (clave_union(x["nombre"]) or x["nombre"].lower(), x["nivel"])  # «Trabajo de Fin de Grado» = «Trabajo Fin de Grado»
+            if vistos.setdefault(k, n) == n:
                 resultado.append(x)
     return resultado
 
@@ -511,7 +518,16 @@ def medir_plan(doc: dict) -> dict:
     # Básicas + obligatorias: lo que más importa del listado de asignaturas (prácticas y TFG a veces no van en tabla)
     bo = sum(f["creditos"] or 0 for f in base if f["tipo"] in ("basica", "obligatoria"))
     bo_esperado = (dist.get("formacion_basica", 0) + dist.get("obligatorias", 0)) if dist else None
+    pe_tfg = sum(f["creditos"] or 0 for f in base if f["tipo"] in ("practicas", "tfg"))
+    if esperado and abs(fijos - esperado) <= 0.5:
+        comprobacion = "completo"
+    elif bo_esperado and abs(bo - bo_esperado) <= 0.5 and pe_tfg == 0:
+        # básicas y obligatorias cuadran y las prácticas y el TFG no van en tabla: se toman de la de créditos
+        comprobacion = "basicas_y_obligatorias"
+    else:
+        comprobacion = None
     return {
+        "comprobacion": comprobacion,
         "filas": len(filas),
         "asignaturas": len(asig),
         "con_creditos": sum(1 for f in base if f["creditos"]),
@@ -645,6 +661,8 @@ def cmd_medir(textos: Path, actos_fichero: Path | None, salida: Path) -> dict:
                                                     and abs(p["suma_sin_optativas"] - p["esperado_sin_optativas"]) <= 0.5),
             "cuadran_basicas_y_obligatorias": cuenta(ps, lambda p: p["basicas_obligatorias_esperado"]
                                                     and abs(p["basicas_obligatorias"] - p["basicas_obligatorias_esperado"]) <= 0.5),
+            "comprobados": cuenta(ps, lambda p: p["comprobacion"]),
+            "comprobados_sin_practicas_ni_tfg_en_tabla": cuenta(ps, lambda p: p["comprobacion"] == "basicas_y_obligatorias"),
         }
     res["altas"] = len(altas_todas)
     res["altas_codigos_distintos"] = len({a["codigo_ruct"] for a in altas_todas})

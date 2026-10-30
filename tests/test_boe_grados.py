@@ -152,3 +152,15 @@ def test_separar_planes_de_una_resolucion_con_varios():
     assert len(partes[1]["tablas"]) == 2 and "Farmacia" in partes[1]["texto"]
     # si no cuadran tablas y títulos, el documento queda entero
     assert separar_planes({"identificador": "X", "texto": texto, "tablas": [dist(60, 120), asig]})[0].get("titulo_grado") is None
+
+
+def test_comprobacion_y_materias_mixtas():
+    from motor.grados.boe_grados import medir_plan, tipo_caracter
+    assert tipo_caracter("Obligatoria / Optativa") is None and tipo_caracter("Formación básica (6) (Ciencias)") is None
+    dist = _t([["Tipo de materia", "Créditos"], ["Formación básica.", "12"], ["Obligatorias.", "6"],
+               ["Prácticas externas.", "6"], ["Trabajo fin de grado.", "6"], ["Total.", "30"]])
+    asig = _t([["Asignatura", "Créditos", "Carácter"], ["Cálculo.", "6", "FB"], ["Álgebra.", "6", "FB"],
+               ["Física.", "6", "OB"]])
+    assert medir_plan({"tablas": [dist, asig], "texto": ""})["comprobacion"] == "basicas_y_obligatorias"
+    asig2 = _t(asig["contenido"] + [["Prácticas.", "6", "PE"], ["Trabajo Fin de Grado.", "6", "TFG"]])
+    assert medir_plan({"tablas": [dist, asig2], "texto": ""})["comprobacion"] == "completo"
