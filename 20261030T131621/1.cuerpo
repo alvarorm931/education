@@ -1,0 +1,840 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="es_ES" xmlns="http://www.w3.org/1999/xhtml"><head id="j_idt2"><link type="text/css" rel="stylesheet" href="/PortalBOP/javax.faces.resource/theme.css.xhtml;jsessionid=FF442E071E3A023305C774B9990D7D35?ln=primefaces-saga&amp;v=12.0.0&amp;e=12.0.0" /><link type="text/css" rel="stylesheet" href="/PortalBOP/javax.faces.resource/primeicons/primeicons.css.xhtml;jsessionid=FF442E071E3A023305C774B9990D7D35?ln=primefaces&amp;v=12.0.0&amp;e=12.0.0" /><link type="text/css" rel="stylesheet" href="/PortalBOP/javax.faces.resource/components.css.xhtml;jsessionid=FF442E071E3A023305C774B9990D7D35?ln=primefaces&amp;v=12.0.0&amp;e=12.0.0" /><script type="text/javascript" src="/PortalBOP/javax.faces.resource/jquery/jquery.js.xhtml;jsessionid=FF442E071E3A023305C774B9990D7D35?ln=primefaces&amp;v=12.0.0&amp;e=12.0.0"></script><script type="text/javascript" src="/PortalBOP/javax.faces.resource/core.js.xhtml;jsessionid=FF442E071E3A023305C774B9990D7D35?ln=primefaces&amp;v=12.0.0&amp;e=12.0.0"></script><script type="text/javascript" src="/PortalBOP/javax.faces.resource/components.js.xhtml;jsessionid=FF442E071E3A023305C774B9990D7D35?ln=primefaces&amp;v=12.0.0&amp;e=12.0.0"></script><script type="text/javascript" src="/PortalBOP/javax.faces.resource/jquery/jquery-plugins.js.xhtml;jsessionid=FF442E071E3A023305C774B9990D7D35?ln=primefaces&amp;v=12.0.0&amp;e=12.0.0"></script><script type="text/javascript" src="/PortalBOP/javax.faces.resource/watermark/watermark.js.xhtml;jsessionid=FF442E071E3A023305C774B9990D7D35?ln=primefaces&amp;v=12.0.0&amp;e=12.0.0"></script><script type="text/javascript" src="/PortalBOP/javax.faces.resource/touch/touchswipe.js.xhtml;jsessionid=FF442E071E3A023305C774B9990D7D35?ln=primefaces&amp;v=12.0.0&amp;e=12.0.0"></script><script type="text/javascript" src="/PortalBOP/javax.faces.resource/inputmask/inputmask.js.xhtml;jsessionid=FF442E071E3A023305C774B9990D7D35?ln=primefaces&amp;v=12.0.0&amp;e=12.0.0"></script><script type="text/javascript" src="/PortalBOP/javax.faces.resource/datepicker/datepicker.js.xhtml;jsessionid=FF442E071E3A023305C774B9990D7D35?ln=primefaces&amp;v=12.0.0&amp;e=12.0.0"></script><link type="text/css" rel="stylesheet" href="/PortalBOP/javax.faces.resource/css/frameworkWeb.css.xhtml;jsessionid=FF442E071E3A023305C774B9990D7D35?ln=framework-1.1.4" /><link type="text/css" rel="stylesheet" href="/PortalBOP/javax.faces.resource/css/portalBOP.css.xhtml;jsessionid=FF442E071E3A023305C774B9990D7D35?ln=1.2.21" /><script type="text/javascript">if(window.PrimeFaces){PrimeFaces.settings.locale='es_ES';PrimeFaces.settings.viewId='/boletines/boletinesAntiguos.xhtml';PrimeFaces.settings.contextPath='/PortalBOP';PrimeFaces.settings.cookiesSecure=false;}</script>
+	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	    <link rel="shortcut icon" type="image/x-icon" href="/PortalBOP/javax.faces.resource/img/favicon.ico.xhtml?ln=1.2.21" />
+	    <title>BOP
+	    </title>
+	    
+	    <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,600,600i,700,700i,800,800i&amp;subset=latin-ext" rel="stylesheet" type="text/css" />
+	    	<script type="text/javascript">
+	      		//<![CDATA[
+					if (typeof console == 'undefined') {
+						console = {log: function() {}};
+					}
+					
+					function evitarMostarDialogoCargando() {
+						$('body').data('evitar_mostrar_dialogo_cargando', true); 
+					}
+					
+					function mostarDialogoCargando() {
+						var evitar_mostrar_dialogo_cargando = $('body').data('evitar_mostrar_dialogo_cargando');
+						
+						if (evitar_mostrar_dialogo_cargando == null || !evitar_mostrar_dialogo_cargando) {
+							//En los filtros de cabecera no mostramos el loading de cargando
+							if ($('.ui-datatable table thead tr th .ui-inputfield.ui-inputtext:focus').length == 0) {
+								if ($('#loadingDialog').length > 0) {
+									$('#loadingDialog').addClass('invisible');
+									PF('loadingDialog').show();
+								}
+							}
+						}
+						
+						$('body').data('evitar_mostrar_dialogo_cargando', false); 
+					}
+					
+					function ajaxErrorHanler(event) {
+						if (event.currentTarget.status = 401) {
+							window.location = 'https://bop.dipcas.es/PortalBOP';
+						} else {
+							ocultarDialogoCargando();
+						}
+					}
+					
+					function evitarCierreDialogoCargando() {
+						$('body').data('evitar_cierre_dialogo_cargando', true); 
+					}
+					
+					function ocultarDialogoCargando() {
+						var evitar_cierre_dialogo_cargando = $('body').data('evitar_cierre_dialogo_cargando');
+						
+						if (evitar_cierre_dialogo_cargando == null || !evitar_cierre_dialogo_cargando) {
+							if ($('#loadingDialog').length > 0) {
+								PF('loadingDialog').hide()
+							}
+						}
+						
+						$('body').data('evitar_mostrar_dialogo_cargando', false); 
+						$('body').data('evitar_cierre_dialogo_cargando', false); 
+					}
+					
+					$(function() {
+						$('.ui-inplace-content input').livequery(function(){
+							$(this).keypress(function(event) {
+								var charCode = (event.which) ? event.which : event.keyCode;
+								if (charCode == 13) {
+									event.preventDefault();
+								}
+							});
+						}, function() {
+							$(this).unbind('keypress'); 
+						});
+						
+						$('.ui-growl-item-container').livequery(function(){
+							if ($(this).children('.ui-growl-item').children('.ui-growl-image.ui-growl-image-info').length > 0) {
+								$(this).addClass('info');
+							} else if ($(this).children('.ui-growl-item').children('.ui-growl-image.ui-growl-image-warn').length > 0) {
+								$(this).addClass('warn');
+							} else if ($(this).children('.ui-growl-item').children('.ui-growl-image.ui-growl-image-error').length > 0) {
+								$(this).addClass('error');
+							} else if ($(this).children('.ui-growl-item').children('.ui-growl-image.ui-growl-image-fatal').length > 0) {
+								$(this).addClass('fatal');
+							}
+						});
+						
+						$('.ui-datatable table thead tr th .ui-inputfield.ui-inputtext').livequery(function(){
+							$(this).focus(function(event) {
+								$(this).trigger('keypress');
+							});
+							
+							$(this).keydown(function(event) {
+								if ($('#loadingDialog_modal').length > 0) {
+									var input_value = $(this).val();
+								
+									var lower_case = true;
+									if (input_value != '') {
+										var last_character = input_value.substr(-1);
+										lower_case = (last_character == last_character.toLowerCase());
+									}
+									
+									var charCode = (event.which) ? event.which : event.keyCode;
+									if (charCode == 8 || charCode == 127) {
+										if (input_value != '') {
+											input_value = input_value.substr(0, input_value.length - 1);
+											$(this).val(input_value)
+										}
+									} else {
+										var strCharacter = String.fromCharCode(charCode);
+										if (strCharacter != null && strCharacter != '') {
+											if (lower_case) {
+												strCharacter = strCharacter.toLowerCase();
+											}
+										
+											$(this).val(input_value + strCharacter)
+										}
+									}
+								}
+							});
+						}, function() {
+							$(this).unbind('focus');
+							$(this).unbind('keydown');
+						});
+						
+						$('#loadingDialog_modal').livequery(function(){
+							var timeout_loading_dialog = setTimeout(function(){
+								$('#loadingDialog').removeClass('invisible');
+								$('#loadingDialog_modal').addClass('visible');
+								
+								$('body').data('timeout_loading_dialog', null); 
+							}, 2000);
+						
+							$('body').data('timeout_loading_dialog', timeout_loading_dialog);
+						}, function() {
+							var timeout_loading_dialog = $('body').data('timeout_loading_dialog');
+							
+							if (timeout_loading_dialog != null) {
+								clearTimeout(timeout_loading_dialog);
+							}
+						});
+				   	});
+				   	
+				   	function showNotificationBar() {
+				   		PF('notificationBar').show();
+				   	}
+				   	
+				   	function hideNotificationBar() {
+				   		PF('notificationBar').hide();
+				   	}
+				   	
+				   	function crearCaminoMigasYPieCabecera(){
+				   		//primer nivel
+				   		var textoPieCabecera = "";
+				   		var menuPrincipalSelected = $(".menuCabeceraSelected")[0];
+				   		if(menuPrincipalSelected != null && menuPrincipalSelected !='undefined'){
+				   			var url = $("a.menuCabeceraSelected").attr("href");
+				   			var nombre = $("a.menuCabeceraSelected span").text();
+				   			$( "#migas ul" ).append( "<li><a href='" +url+ "'>" +nombre+ "</a></li>" );
+				   			textoPieCabecera = nombre;
+				   		}
+				   		//segundo nivel
+				   		var menuSelected = $(".menuSelected")[0];
+				   		if(menuSelected != null && menuSelected !='undefined'){
+				   			var url = $("a.menuSelected").attr("href");
+				   			var nombre = $("a.menuSelected span").text();
+				   			$( "#migas ul" ).append( "<li><a href='" +url+ "'>" +nombre+ "</a></li>" );
+				   			textoPieCabecera = nombre;
+				   		}
+				   		$("#pieCabecera span").text(textoPieCabecera);
+				   	}
+				   	
+				    function toggleInputSearchLupa(){
+		      			$(".inputSearchLupa").toggle();
+		      			$(".idioma").toggle();
+		      		  }         
+				   	
+				    jQuery(document).ready(function() {
+				    	crearCaminoMigasYPieCabecera();
+				    	toggleInputSearchLupa();
+	      				$(".idioma").toggle();
+				    });
+				//]]>
+    		</script><script type="text/javascript" src="/PortalBOP/javax.faces.resource/js/primefacesLocales.js.xhtml;jsessionid=FF442E071E3A023305C774B9990D7D35?ln=framework-1.1.4"></script><script type="text/javascript" src="/PortalBOP/javax.faces.resource/js/jquery.livequery.js.xhtml;jsessionid=FF442E071E3A023305C774B9990D7D35?ln=framework-1.1.4"></script><script type="text/javascript" src="/PortalBOP/javax.faces.resource/primefaces-extensions.js.xhtml;jsessionid=FF442E071E3A023305C774B9990D7D35?ln=primefaces-extensions&amp;v=12.0.0&amp;e=12.0.0"></script><script type="text/javascript" src="/PortalBOP/javax.faces.resource/js/markerclusterer_packed.js.xhtml;jsessionid=FF442E071E3A023305C774B9990D7D35?ln=framework-1.1.4"></script><script type="text/javascript" src="/PortalBOP/javax.faces.resource/js/oms.min.js.xhtml;jsessionid=FF442E071E3A023305C774B9990D7D35?ln=framework-1.1.4"></script>
+    		
+    		<script src="https://insuit.net/i4tservice/insuit-app.js"></script><script type="text/javascript" src="/PortalBOP/javax.faces.resource/js/miniapplet.js.xhtml;jsessionid=FF442E071E3A023305C774B9990D7D35?ln=1.2.21"></script>
+		
+		<script type="text/javascript">
+	      		//<![CDATA[
+			MiniApplet.cargarMiniApplet('https://bop.dipcas.es/PortalBOP');
+	    	
+			
+			function firmaFakeAcceso() {
+				if ($('input[id$=":instanciaBase64"]').val() != '') {
+					//Framework.ajaxStatusOnStart();
+				
+					try {
+						var params = 'headless=true\n';
+						params +=    'expPolicy=FirmaAGE\n';
+						//params +=    'format=XAdES Detached\n';
+						//params +=    'filters=nonexpired:;qualified:';
+						params +=    'filters=nonexpired';
+	 					MiniApplet.sign($('input[id$=":instanciaBase64"]').val(), 'SHA1withRSA', 'XAdES', params, enviarFirmaFake, mostrarErrorDuranteFirmaFake);
+	 				} catch (exception) {
+	 					console.log(exception);
+	 					mostrarErrorDuranteFirma();
+	 				}
+				}
+			}
+			
+			function enviarFirmaFake(intanciaFirmada) {
+				$('input[id$=":instanciaBase64"]').val('');
+				$('input[id$=":instanciaBase64Firmado"]').val(intanciaFirmada);
+				
+				rcEnviarInstanciaFirmadaProceso();
+			}
+			
+			function mostrarErrorDuranteFirmaFake(type, message) {
+				//Framework.ajaxStatusOnSuccess();
+			
+ 				var msgAlertError = "Error en el proceso de acceso con certificado";
+ 		    	if (message != null && (type == null || type != 'java.lang.Exception')) {
+ 		    		msgAlertError += '\n' + message;
+ 		    	}
+ 		    	alert(msgAlertError);
+ 		    	
+		    	$('input[id$=":instanciaBase64Firmado"]').val();
+ 			}
+	      		 
+				//]]>
+    	</script></head><body><div id="cabeceraPrincipal" class="ui-outputpanel ui-widget "><div id="cabecera" class="ui-outputpanel ui-widget">
+				<div id="inclusite">
+				</div>
+				<h1><a href="?application.home%3F%3F%3F">BOP</a>
+					
+				</h1><div id="accionesCabecera" class="ui-outputpanel ui-widget">
+					<ul>
+						<li class="idioma"><a id="j_idt36" href="#" class="ui-commandlink ui-widget" onclick="PrimeFaces.ab({s:&quot;j_idt36&quot;});return false;" title="Castellano"><span class="localeSelected">Castellano</span></a><script id="j_idt36_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandLink","widget_j_idt36",{id:"j_idt36"});});</script>
+						</li>
+						<li class="idioma"><a id="j_idt39" href="#" class="ui-commandlink ui-widget" onclick="PrimeFaces.ab({s:&quot;j_idt39&quot;});return false;" title="Castellano"><span class="">Valencià</span></a><script id="j_idt39_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandLink","widget_j_idt39",{id:"j_idt39"});});</script>
+						</li>
+						<li>
+<form id="j_idt42" name="j_idt42" method="post" action="/PortalBOP/boletinesAntiguos/;jsessionid=FF442E071E3A023305C774B9990D7D35" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="j_idt42" value="j_idt42" />
+<script id="j_idt42:j_idt43" type="text/javascript">remoteSearchInput = function() {return PrimeFaces.ab({s:"j_idt42:j_idt43",f:"j_idt42",u:"accionesCabecera",pa:arguments[0]});}</script><input id="j_idt42:searchInput" name="j_idt42:searchInput" type="text" class="ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all inputSearchLupa" onkeypress="if (event.keyCode == 13) { remoteSearchInput(); return false; }" /><script id="j_idt42:searchInput_s" type="text/javascript">$(function(){PrimeFaces.cw("InputText","widget_j_idt42_searchInput",{id:"j_idt42:searchInput"});});</script><script id="j_idt42:j_idt44_s" type="text/javascript">$(function(){PrimeFaces.cw("Watermark","widget_j_idt42_j_idt44",{id:"j_idt42:j_idt44",value:"Escriba y pulse Enter",target:"j_idt42:searchInput"});});</script><button id="j_idt42:j_idt45" name="j_idt42:j_idt45" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only custom-icon-button lupaButton" onclick="PrimeFaces.bcn(this,event,[function(event){toggleInputSearchLupa(); return false;},function(event){PrimeFaces.ab({s:&quot;j_idt42:j_idt45&quot;,f:&quot;j_idt42&quot;,u:&quot;accionesCabecera&quot;});return false;}]);" title="Buscar" type="submit"><span class="ui-button-icon-left ui-icon ui-c pi pi-search pi-1_7x"></span><span class="ui-button-text ui-c">Buscar</span></button><script id="j_idt42:j_idt45_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandButton","widget_j_idt42_j_idt45",{id:"j_idt42:j_idt45"});});</script><input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:0" value="7689290337797757428:-1076939348089403587" autocomplete="off" />
+</form>
+						</li>
+					</ul></div></div><div id="menuCabecera" class="ui-outputpanel ui-widget"><div id="logoMenu" class="ui-outputpanel ui-widget"><a href="http://www.dipcas.es" class="logoImage"></a></div>
+<form id="formMenuCabecera" name="formMenuCabecera" method="post" action="/PortalBOP/boletinesAntiguos/;jsessionid=FF442E071E3A023305C774B9990D7D35" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="formMenuCabecera" value="formMenuCabecera" />
+
+		
+			<script src="https://www.googletagmanager.com/gtag/js?id=UA-127397200-4" async="async"></script>
+			<script>
+				  window.dataLayer = window.dataLayer || [];
+				  function gtag(){dataLayer.push(arguments);}
+				  gtag('js', new Date());
+				  gtag('config', 'UA-127397200-4');
+			</script><div id="formMenuCabecera:j_idt49" class="ui-menu ui-menubar ui-megamenu ui-widget ui-widget-content ui-corner-all ui-helper-clearfix"><div tabindex="0" class="ui-helper-hidden-accessible"></div><ul role="menubar" class="ui-menu-list ui-helper-reset"><li class="ui-menuitem ui-widget ui-corner-all" role="none"><a tabindex="-1" role="menuitem" class="ui-menuitem-link ui-corner-all " href="/PortalBOP/informacion/"><span class="ui-menuitem-text">Información</span></a></li><li class="ui-menuitem ui-widget ui-corner-all" role="none"><a tabindex="-1" role="menuitem" class="ui-menuitem-link ui-corner-all menuCabeceraSelected" href="/PortalBOP/buscador/"><span class="ui-menuitem-text">Buscador</span></a></li><li class="ui-menuitem ui-widget ui-corner-all" role="none"><a tabindex="-1" role="menuitem" class="ui-menuitem-link ui-corner-all " href="/PortalBOP/login"><span class="ui-menuitem-text">Publicador</span></a></li><li class="ui-menuitem ui-widget ui-corner-all" role="none"><a tabindex="-1" role="menuitem" class="ui-menuitem-link ui-corner-all " href="/PortalBOP/loginSuscriptor"><span class="ui-menuitem-text">Suscriptor</span></a></li><li class="ui-menuitem ui-widget ui-corner-all" role="none"><a tabindex="-1" role="menuitem" class="ui-menuitem-link ui-corner-all " href="/PortalBOP/contacta/"><span class="ui-menuitem-text">Contacta</span></a></li></ul></div><script id="formMenuCabecera:j_idt49_s" type="text/javascript">$(function(){PrimeFaces.cw("MegaMenu","widget_formMenuCabecera_j_idt49",{id:"formMenuCabecera:j_idt49",autoDisplay:true,delay:0});});</script><input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:1" value="7689290337797757428:-1076939348089403587" autocomplete="off" />
+</form></div><div id="pieCabecera" class="ui-outputpanel ui-widget">
+				<span>
+					
+				</span></div></div><div id="migas" class="ui-outputpanel ui-widget">
+			<ul>
+				<li class="inicio"><span>Inicio</span>
+				</li>
+			</ul>
+			<div id="zonaMigas">
+		<div id="busquedaAvanzada"> 
+		</div>
+			</div></div><div id="submenu" class="ui-outputpanel ui-widget"><span id="globalMessages"></span><script id="globalMessages_s" type="text/javascript">$(function(){PrimeFaces.cw("Growl","globalMessages",{id:"globalMessages",sticky:false,life:10000,escape:true,keepAlive:false,msgs:[]});});</script></div><div id="content" class="ui-outputpanel ui-widget">
+<form id="formSideBar" name="formSideBar" method="post" action="/PortalBOP/boletinesAntiguos/;jsessionid=FF442E071E3A023305C774B9990D7D35" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="formSideBar" value="formSideBar" />
+<div id="formSideBar:j_idt61" class="ui-panel ui-widget ui-widget-content ui-corner-all sidebar" data-widget="widget_formSideBar_j_idt61"><div id="formSideBar:j_idt61_content" class="ui-panel-content ui-widget-content">
+				<div class="titulo">Buscador
+				</div></div></div><script id="formSideBar:j_idt61_s" type="text/javascript">$(function(){PrimeFaces.cw("Panel","widget_formSideBar_j_idt61",{id:"formSideBar:j_idt61"});});</script><input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:2" value="7689290337797757428:-1076939348089403587" autocomplete="off" />
+</form><div id="center">	
+			
+			<script type="text/javascript">
+			
+			</script>
+<form id="buscadorReducidaForm" name="buscadorReducidaForm" method="post" action="/PortalBOP/boletinesAntiguos/;jsessionid=FF442E071E3A023305C774B9990D7D35" class="carousel" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="buscadorReducidaForm" value="buscadorReducidaForm" />
+<table id="buscadorReducidaForm:j_idt67" class="ui-panelgrid ui-widget panelWithoutBorder" role="grid"><tbody><tr class="ui-widget-content ui-panelgrid-odd"><td role="gridcell" class="ui-panelgrid-cell"><button id="buscadorReducidaForm:j_idt70" name="buscadorReducidaForm:j_idt70" type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only button left" onclick="window.open('\/PortalBOP\/;jsessionid=FF442E071E3A023305C774B9990D7D35','_self')"><span class="ui-button-text ui-c">Último Boletín</span></button><script id="buscadorReducidaForm:j_idt70_s" type="text/javascript">$(function(){PrimeFaces.cw("Button","widget_buscadorReducidaForm_j_idt70",{id:"buscadorReducidaForm:j_idt70"});});</script></td><td role="gridcell" class="ui-panelgrid-cell"><button id="buscadorReducidaForm:j_idt72" name="buscadorReducidaForm:j_idt72" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only button left" onclick="PrimeFaces.ab({s:&quot;buscadorReducidaForm:j_idt72&quot;,f:&quot;buscadorReducidaForm&quot;,u:&quot;buscadorForm formListBoletinAntiguos formListAnunciosBolAnt&quot;});return false;" type="submit"><span class="ui-button-text ui-c">Búsqueda Boletines</span></button><script id="buscadorReducidaForm:j_idt72_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandButton","widget_buscadorReducidaForm_j_idt72",{id:"buscadorReducidaForm:j_idt72"});});</script></td><td role="gridcell" class="ui-panelgrid-cell"><button id="buscadorReducidaForm:j_idt74" name="buscadorReducidaForm:j_idt74" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only button left" onclick="PrimeFaces.ab({s:&quot;buscadorReducidaForm:j_idt74&quot;,f:&quot;buscadorReducidaForm&quot;,u:&quot;buscadorForm formListBoletinAntiguos formListAnunciosBolAnt&quot;});return false;" type="submit"><span class="ui-button-text ui-c">Búsqueda Anuncios</span></button><script id="buscadorReducidaForm:j_idt74_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandButton","widget_buscadorReducidaForm_j_idt74",{id:"buscadorReducidaForm:j_idt74"});});</script></td></tr></tbody></table><div id="buscadorReducidaForm:j_idt75" class="ui-carousel ui-widget carousel ui-carousel-horizontal"><div class="ui-carousel-header">Boletines anteriores</div><div class="ui-carousel-content"><div class="ui-carousel-container"><button class="ui-carousel-prev ui-link" type="button"><span class="ui-carousel-prev-icon pi pi-chevron-left"></span></button><div class="ui-carousel-items-content" style="height:auto"><div class="ui-carousel-items-container ui-items-hidden"><div class="ui-carousel-item"><a id="buscadorReducidaForm:j_idt75:0:j_idt76" href="#" class="ui-commandlink ui-widget" onclick="PrimeFaces.ab({s:&quot;buscadorReducidaForm:j_idt75:0:j_idt76&quot;,f:&quot;buscadorReducidaForm&quot;});return false;"><table class="boletinSelected">
+<tbody>
+<tr>
+<td><span class="text">Nº 131</span></td>
+</tr>
+<tr>
+<td><span class="text">Jueves, </span><span class="text">29</span></td>
+</tr>
+<tr>
+<td><span class="text">Octubre</span></td>
+</tr>
+<tr>
+<td><span class="text">2026</span></td>
+</tr>
+</tbody>
+</table>
+</a><script id="buscadorReducidaForm:j_idt75:0:j_idt76_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandLink","widget_buscadorReducidaForm_j_idt75_0_j_idt76",{id:"buscadorReducidaForm:j_idt75:0:j_idt76"});});</script></div><div class="ui-carousel-item"><a id="buscadorReducidaForm:j_idt75:1:j_idt76" href="#" class="ui-commandlink ui-widget" onclick="PrimeFaces.ab({s:&quot;buscadorReducidaForm:j_idt75:1:j_idt76&quot;,f:&quot;buscadorReducidaForm&quot;});return false;"><table class="">
+<tbody>
+<tr>
+<td><span class="text">Nº 130</span></td>
+</tr>
+<tr>
+<td><span class="text">Martes, </span><span class="text">27</span></td>
+</tr>
+<tr>
+<td><span class="text">Octubre</span></td>
+</tr>
+<tr>
+<td><span class="text">2026</span></td>
+</tr>
+</tbody>
+</table>
+</a><script id="buscadorReducidaForm:j_idt75:1:j_idt76_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandLink","widget_buscadorReducidaForm_j_idt75_1_j_idt76",{id:"buscadorReducidaForm:j_idt75:1:j_idt76"});});</script></div><div class="ui-carousel-item"><a id="buscadorReducidaForm:j_idt75:2:j_idt76" href="#" class="ui-commandlink ui-widget" onclick="PrimeFaces.ab({s:&quot;buscadorReducidaForm:j_idt75:2:j_idt76&quot;,f:&quot;buscadorReducidaForm&quot;});return false;"><table class="">
+<tbody>
+<tr>
+<td><span class="text">Nº 129</span></td>
+</tr>
+<tr>
+<td><span class="text">Sábado, </span><span class="text">24</span></td>
+</tr>
+<tr>
+<td><span class="text">Octubre</span></td>
+</tr>
+<tr>
+<td><span class="text">2026</span></td>
+</tr>
+</tbody>
+</table>
+</a><script id="buscadorReducidaForm:j_idt75:2:j_idt76_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandLink","widget_buscadorReducidaForm_j_idt75_2_j_idt76",{id:"buscadorReducidaForm:j_idt75:2:j_idt76"});});</script></div><div class="ui-carousel-item"><a id="buscadorReducidaForm:j_idt75:3:j_idt76" href="#" class="ui-commandlink ui-widget" onclick="PrimeFaces.ab({s:&quot;buscadorReducidaForm:j_idt75:3:j_idt76&quot;,f:&quot;buscadorReducidaForm&quot;});return false;"><table class="">
+<tbody>
+<tr>
+<td><span class="text">Nº 128</span></td>
+</tr>
+<tr>
+<td><span class="text">Jueves, </span><span class="text">22</span></td>
+</tr>
+<tr>
+<td><span class="text">Octubre</span></td>
+</tr>
+<tr>
+<td><span class="text">2026</span></td>
+</tr>
+</tbody>
+</table>
+</a><script id="buscadorReducidaForm:j_idt75:3:j_idt76_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandLink","widget_buscadorReducidaForm_j_idt75_3_j_idt76",{id:"buscadorReducidaForm:j_idt75:3:j_idt76"});});</script></div><div class="ui-carousel-item"><a id="buscadorReducidaForm:j_idt75:4:j_idt76" href="#" class="ui-commandlink ui-widget" onclick="PrimeFaces.ab({s:&quot;buscadorReducidaForm:j_idt75:4:j_idt76&quot;,f:&quot;buscadorReducidaForm&quot;});return false;"><table class="">
+<tbody>
+<tr>
+<td><span class="text">Nº 127</span></td>
+</tr>
+<tr>
+<td><span class="text">Martes, </span><span class="text">20</span></td>
+</tr>
+<tr>
+<td><span class="text">Octubre</span></td>
+</tr>
+<tr>
+<td><span class="text">2026</span></td>
+</tr>
+</tbody>
+</table>
+</a><script id="buscadorReducidaForm:j_idt75:4:j_idt76_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandLink","widget_buscadorReducidaForm_j_idt75_4_j_idt76",{id:"buscadorReducidaForm:j_idt75:4:j_idt76"});});</script></div><div class="ui-carousel-item"><a id="buscadorReducidaForm:j_idt75:5:j_idt76" href="#" class="ui-commandlink ui-widget" onclick="PrimeFaces.ab({s:&quot;buscadorReducidaForm:j_idt75:5:j_idt76&quot;,f:&quot;buscadorReducidaForm&quot;});return false;"><table class="">
+<tbody>
+<tr>
+<td><span class="text">Nº 126</span></td>
+</tr>
+<tr>
+<td><span class="text">Sábado, </span><span class="text">17</span></td>
+</tr>
+<tr>
+<td><span class="text">Octubre</span></td>
+</tr>
+<tr>
+<td><span class="text">2026</span></td>
+</tr>
+</tbody>
+</table>
+</a><script id="buscadorReducidaForm:j_idt75:5:j_idt76_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandLink","widget_buscadorReducidaForm_j_idt75_5_j_idt76",{id:"buscadorReducidaForm:j_idt75:5:j_idt76"});});</script></div><div class="ui-carousel-item"><a id="buscadorReducidaForm:j_idt75:6:j_idt76" href="#" class="ui-commandlink ui-widget" onclick="PrimeFaces.ab({s:&quot;buscadorReducidaForm:j_idt75:6:j_idt76&quot;,f:&quot;buscadorReducidaForm&quot;});return false;"><table class="">
+<tbody>
+<tr>
+<td><span class="text">Nº 125</span></td>
+</tr>
+<tr>
+<td><span class="text">Jueves, </span><span class="text">15</span></td>
+</tr>
+<tr>
+<td><span class="text">Octubre</span></td>
+</tr>
+<tr>
+<td><span class="text">2026</span></td>
+</tr>
+</tbody>
+</table>
+</a><script id="buscadorReducidaForm:j_idt75:6:j_idt76_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandLink","widget_buscadorReducidaForm_j_idt75_6_j_idt76",{id:"buscadorReducidaForm:j_idt75:6:j_idt76"});});</script></div><div class="ui-carousel-item"><a id="buscadorReducidaForm:j_idt75:7:j_idt76" href="#" class="ui-commandlink ui-widget" onclick="PrimeFaces.ab({s:&quot;buscadorReducidaForm:j_idt75:7:j_idt76&quot;,f:&quot;buscadorReducidaForm&quot;});return false;"><table class="">
+<tbody>
+<tr>
+<td><span class="text">Nº 124</span></td>
+</tr>
+<tr>
+<td><span class="text">Martes, </span><span class="text">13</span></td>
+</tr>
+<tr>
+<td><span class="text">Octubre</span></td>
+</tr>
+<tr>
+<td><span class="text">2026</span></td>
+</tr>
+</tbody>
+</table>
+</a><script id="buscadorReducidaForm:j_idt75:7:j_idt76_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandLink","widget_buscadorReducidaForm_j_idt75_7_j_idt76",{id:"buscadorReducidaForm:j_idt75:7:j_idt76"});});</script></div><div class="ui-carousel-item"><a id="buscadorReducidaForm:j_idt75:8:j_idt76" href="#" class="ui-commandlink ui-widget" onclick="PrimeFaces.ab({s:&quot;buscadorReducidaForm:j_idt75:8:j_idt76&quot;,f:&quot;buscadorReducidaForm&quot;});return false;"><table class="">
+<tbody>
+<tr>
+<td><span class="text">Nº 123</span></td>
+</tr>
+<tr>
+<td><span class="text">Lunes, </span><span class="text">12</span></td>
+</tr>
+<tr>
+<td><span class="text">Octubre</span></td>
+</tr>
+<tr>
+<td><span class="text">2026</span></td>
+</tr>
+</tbody>
+</table>
+</a><script id="buscadorReducidaForm:j_idt75:8:j_idt76_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandLink","widget_buscadorReducidaForm_j_idt75_8_j_idt76",{id:"buscadorReducidaForm:j_idt75:8:j_idt76"});});</script></div><div class="ui-carousel-item"><a id="buscadorReducidaForm:j_idt75:9:j_idt76" href="#" class="ui-commandlink ui-widget" onclick="PrimeFaces.ab({s:&quot;buscadorReducidaForm:j_idt75:9:j_idt76&quot;,f:&quot;buscadorReducidaForm&quot;});return false;"><table class="">
+<tbody>
+<tr>
+<td><span class="text">Nº 122</span></td>
+</tr>
+<tr>
+<td><span class="text">Sábado, </span><span class="text">10</span></td>
+</tr>
+<tr>
+<td><span class="text">Octubre</span></td>
+</tr>
+<tr>
+<td><span class="text">2026</span></td>
+</tr>
+</tbody>
+</table>
+</a><script id="buscadorReducidaForm:j_idt75:9:j_idt76_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandLink","widget_buscadorReducidaForm_j_idt75_9_j_idt76",{id:"buscadorReducidaForm:j_idt75:9:j_idt76"});});</script></div><div class="ui-carousel-item"><a id="buscadorReducidaForm:j_idt75:10:j_idt76" href="#" class="ui-commandlink ui-widget" onclick="PrimeFaces.ab({s:&quot;buscadorReducidaForm:j_idt75:10:j_idt76&quot;,f:&quot;buscadorReducidaForm&quot;});return false;"><table class="">
+<tbody>
+<tr>
+<td><span class="text">Nº 121</span></td>
+</tr>
+<tr>
+<td><span class="text">Jueves, </span><span class="text">08</span></td>
+</tr>
+<tr>
+<td><span class="text">Octubre</span></td>
+</tr>
+<tr>
+<td><span class="text">2026</span></td>
+</tr>
+</tbody>
+</table>
+</a><script id="buscadorReducidaForm:j_idt75:10:j_idt76_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandLink","widget_buscadorReducidaForm_j_idt75_10_j_idt76",{id:"buscadorReducidaForm:j_idt75:10:j_idt76"});});</script></div><div class="ui-carousel-item"><a id="buscadorReducidaForm:j_idt75:11:j_idt76" href="#" class="ui-commandlink ui-widget" onclick="PrimeFaces.ab({s:&quot;buscadorReducidaForm:j_idt75:11:j_idt76&quot;,f:&quot;buscadorReducidaForm&quot;});return false;"><table class="">
+<tbody>
+<tr>
+<td><span class="text">Nº 120</span></td>
+</tr>
+<tr>
+<td><span class="text">Martes, </span><span class="text">06</span></td>
+</tr>
+<tr>
+<td><span class="text">Octubre</span></td>
+</tr>
+<tr>
+<td><span class="text">2026</span></td>
+</tr>
+</tbody>
+</table>
+</a><script id="buscadorReducidaForm:j_idt75:11:j_idt76_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandLink","widget_buscadorReducidaForm_j_idt75_11_j_idt76",{id:"buscadorReducidaForm:j_idt75:11:j_idt76"});});</script></div><div class="ui-carousel-item"><a id="buscadorReducidaForm:j_idt75:12:j_idt76" href="#" class="ui-commandlink ui-widget" onclick="PrimeFaces.ab({s:&quot;buscadorReducidaForm:j_idt75:12:j_idt76&quot;,f:&quot;buscadorReducidaForm&quot;});return false;"><table class="">
+<tbody>
+<tr>
+<td><span class="text">Nº 119</span></td>
+</tr>
+<tr>
+<td><span class="text">Sábado, </span><span class="text">03</span></td>
+</tr>
+<tr>
+<td><span class="text">Octubre</span></td>
+</tr>
+<tr>
+<td><span class="text">2026</span></td>
+</tr>
+</tbody>
+</table>
+</a><script id="buscadorReducidaForm:j_idt75:12:j_idt76_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandLink","widget_buscadorReducidaForm_j_idt75_12_j_idt76",{id:"buscadorReducidaForm:j_idt75:12:j_idt76"});});</script></div><div class="ui-carousel-item"><a id="buscadorReducidaForm:j_idt75:13:j_idt76" href="#" class="ui-commandlink ui-widget" onclick="PrimeFaces.ab({s:&quot;buscadorReducidaForm:j_idt75:13:j_idt76&quot;,f:&quot;buscadorReducidaForm&quot;});return false;"><table class="">
+<tbody>
+<tr>
+<td><span class="text">Nº 118</span></td>
+</tr>
+<tr>
+<td><span class="text">Jueves, </span><span class="text">01</span></td>
+</tr>
+<tr>
+<td><span class="text">Octubre</span></td>
+</tr>
+<tr>
+<td><span class="text">2026</span></td>
+</tr>
+</tbody>
+</table>
+</a><script id="buscadorReducidaForm:j_idt75:13:j_idt76_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandLink","widget_buscadorReducidaForm_j_idt75_13_j_idt76",{id:"buscadorReducidaForm:j_idt75:13:j_idt76"});});</script></div><div class="ui-carousel-item"><a id="buscadorReducidaForm:j_idt75:14:j_idt76" href="#" class="ui-commandlink ui-widget" onclick="PrimeFaces.ab({s:&quot;buscadorReducidaForm:j_idt75:14:j_idt76&quot;,f:&quot;buscadorReducidaForm&quot;});return false;"><table class="">
+<tbody>
+<tr>
+<td><span class="text">Nº 117</span></td>
+</tr>
+<tr>
+<td><span class="text">Martes, </span><span class="text">29</span></td>
+</tr>
+<tr>
+<td><span class="text">Septiembre</span></td>
+</tr>
+<tr>
+<td><span class="text">2026</span></td>
+</tr>
+</tbody>
+</table>
+</a><script id="buscadorReducidaForm:j_idt75:14:j_idt76_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandLink","widget_buscadorReducidaForm_j_idt75_14_j_idt76",{id:"buscadorReducidaForm:j_idt75:14:j_idt76"});});</script></div><div class="ui-carousel-item"><a id="buscadorReducidaForm:j_idt75:15:j_idt76" href="#" class="ui-commandlink ui-widget" onclick="PrimeFaces.ab({s:&quot;buscadorReducidaForm:j_idt75:15:j_idt76&quot;,f:&quot;buscadorReducidaForm&quot;});return false;"><table class="">
+<tbody>
+<tr>
+<td><span class="text">Nº 116</span></td>
+</tr>
+<tr>
+<td><span class="text">Sábado, </span><span class="text">26</span></td>
+</tr>
+<tr>
+<td><span class="text">Septiembre</span></td>
+</tr>
+<tr>
+<td><span class="text">2026</span></td>
+</tr>
+</tbody>
+</table>
+</a><script id="buscadorReducidaForm:j_idt75:15:j_idt76_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandLink","widget_buscadorReducidaForm_j_idt75_15_j_idt76",{id:"buscadorReducidaForm:j_idt75:15:j_idt76"});});</script></div><div class="ui-carousel-item"><a id="buscadorReducidaForm:j_idt75:16:j_idt76" href="#" class="ui-commandlink ui-widget" onclick="PrimeFaces.ab({s:&quot;buscadorReducidaForm:j_idt75:16:j_idt76&quot;,f:&quot;buscadorReducidaForm&quot;});return false;"><table class="">
+<tbody>
+<tr>
+<td><span class="text">Nº 115</span></td>
+</tr>
+<tr>
+<td><span class="text">Jueves, </span><span class="text">24</span></td>
+</tr>
+<tr>
+<td><span class="text">Septiembre</span></td>
+</tr>
+<tr>
+<td><span class="text">2026</span></td>
+</tr>
+</tbody>
+</table>
+</a><script id="buscadorReducidaForm:j_idt75:16:j_idt76_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandLink","widget_buscadorReducidaForm_j_idt75_16_j_idt76",{id:"buscadorReducidaForm:j_idt75:16:j_idt76"});});</script></div><div class="ui-carousel-item"><a id="buscadorReducidaForm:j_idt75:17:j_idt76" href="#" class="ui-commandlink ui-widget" onclick="PrimeFaces.ab({s:&quot;buscadorReducidaForm:j_idt75:17:j_idt76&quot;,f:&quot;buscadorReducidaForm&quot;});return false;"><table class="">
+<tbody>
+<tr>
+<td><span class="text">Nº 114</span></td>
+</tr>
+<tr>
+<td><span class="text">Martes, </span><span class="text">22</span></td>
+</tr>
+<tr>
+<td><span class="text">Septiembre</span></td>
+</tr>
+<tr>
+<td><span class="text">2026</span></td>
+</tr>
+</tbody>
+</table>
+</a><script id="buscadorReducidaForm:j_idt75:17:j_idt76_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandLink","widget_buscadorReducidaForm_j_idt75_17_j_idt76",{id:"buscadorReducidaForm:j_idt75:17:j_idt76"});});</script></div><div class="ui-carousel-item"><a id="buscadorReducidaForm:j_idt75:18:j_idt76" href="#" class="ui-commandlink ui-widget" onclick="PrimeFaces.ab({s:&quot;buscadorReducidaForm:j_idt75:18:j_idt76&quot;,f:&quot;buscadorReducidaForm&quot;});return false;"><table class="">
+<tbody>
+<tr>
+<td><span class="text">Nº 113</span></td>
+</tr>
+<tr>
+<td><span class="text">Sábado, </span><span class="text">19</span></td>
+</tr>
+<tr>
+<td><span class="text">Septiembre</span></td>
+</tr>
+<tr>
+<td><span class="text">2026</span></td>
+</tr>
+</tbody>
+</table>
+</a><script id="buscadorReducidaForm:j_idt75:18:j_idt76_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandLink","widget_buscadorReducidaForm_j_idt75_18_j_idt76",{id:"buscadorReducidaForm:j_idt75:18:j_idt76"});});</script></div><div class="ui-carousel-item"><a id="buscadorReducidaForm:j_idt75:19:j_idt76" href="#" class="ui-commandlink ui-widget" onclick="PrimeFaces.ab({s:&quot;buscadorReducidaForm:j_idt75:19:j_idt76&quot;,f:&quot;buscadorReducidaForm&quot;});return false;"><table class="">
+<tbody>
+<tr>
+<td><span class="text">Nº 112</span></td>
+</tr>
+<tr>
+<td><span class="text">Jueves, </span><span class="text">17</span></td>
+</tr>
+<tr>
+<td><span class="text">Septiembre</span></td>
+</tr>
+<tr>
+<td><span class="text">2026</span></td>
+</tr>
+</tbody>
+</table>
+</a><script id="buscadorReducidaForm:j_idt75:19:j_idt76_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandLink","widget_buscadorReducidaForm_j_idt75_19_j_idt76",{id:"buscadorReducidaForm:j_idt75:19:j_idt76"});});</script></div><div class="ui-carousel-item"><a id="buscadorReducidaForm:j_idt75:20:j_idt76" href="#" class="ui-commandlink ui-widget" onclick="PrimeFaces.ab({s:&quot;buscadorReducidaForm:j_idt75:20:j_idt76&quot;,f:&quot;buscadorReducidaForm&quot;});return false;"><table class="">
+<tbody>
+<tr>
+<td><span class="text">Nº 111</span></td>
+</tr>
+<tr>
+<td><span class="text">Martes, </span><span class="text">15</span></td>
+</tr>
+<tr>
+<td><span class="text">Septiembre</span></td>
+</tr>
+<tr>
+<td><span class="text">2026</span></td>
+</tr>
+</tbody>
+</table>
+</a><script id="buscadorReducidaForm:j_idt75:20:j_idt76_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandLink","widget_buscadorReducidaForm_j_idt75_20_j_idt76",{id:"buscadorReducidaForm:j_idt75:20:j_idt76"});});</script></div><div class="ui-carousel-item"><a id="buscadorReducidaForm:j_idt75:21:j_idt76" href="#" class="ui-commandlink ui-widget" onclick="PrimeFaces.ab({s:&quot;buscadorReducidaForm:j_idt75:21:j_idt76&quot;,f:&quot;buscadorReducidaForm&quot;});return false;"><table class="">
+<tbody>
+<tr>
+<td><span class="text">Nº 110</span></td>
+</tr>
+<tr>
+<td><span class="text">Sábado, </span><span class="text">12</span></td>
+</tr>
+<tr>
+<td><span class="text">Septiembre</span></td>
+</tr>
+<tr>
+<td><span class="text">2026</span></td>
+</tr>
+</tbody>
+</table>
+</a><script id="buscadorReducidaForm:j_idt75:21:j_idt76_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandLink","widget_buscadorReducidaForm_j_idt75_21_j_idt76",{id:"buscadorReducidaForm:j_idt75:21:j_idt76"});});</script></div><div class="ui-carousel-item"><a id="buscadorReducidaForm:j_idt75:22:j_idt76" href="#" class="ui-commandlink ui-widget" onclick="PrimeFaces.ab({s:&quot;buscadorReducidaForm:j_idt75:22:j_idt76&quot;,f:&quot;buscadorReducidaForm&quot;});return false;"><table class="">
+<tbody>
+<tr>
+<td><span class="text">Nº 109</span></td>
+</tr>
+<tr>
+<td><span class="text">Jueves, </span><span class="text">10</span></td>
+</tr>
+<tr>
+<td><span class="text">Septiembre</span></td>
+</tr>
+<tr>
+<td><span class="text">2026</span></td>
+</tr>
+</tbody>
+</table>
+</a><script id="buscadorReducidaForm:j_idt75:22:j_idt76_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandLink","widget_buscadorReducidaForm_j_idt75_22_j_idt76",{id:"buscadorReducidaForm:j_idt75:22:j_idt76"});});</script></div><div class="ui-carousel-item"><a id="buscadorReducidaForm:j_idt75:23:j_idt76" href="#" class="ui-commandlink ui-widget" onclick="PrimeFaces.ab({s:&quot;buscadorReducidaForm:j_idt75:23:j_idt76&quot;,f:&quot;buscadorReducidaForm&quot;});return false;"><table class="">
+<tbody>
+<tr>
+<td><span class="text">Nº 108</span></td>
+</tr>
+<tr>
+<td><span class="text">Martes, </span><span class="text">08</span></td>
+</tr>
+<tr>
+<td><span class="text">Septiembre</span></td>
+</tr>
+<tr>
+<td><span class="text">2026</span></td>
+</tr>
+</tbody>
+</table>
+</a><script id="buscadorReducidaForm:j_idt75:23:j_idt76_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandLink","widget_buscadorReducidaForm_j_idt75_23_j_idt76",{id:"buscadorReducidaForm:j_idt75:23:j_idt76"});});</script></div><div class="ui-carousel-item"><a id="buscadorReducidaForm:j_idt75:24:j_idt76" href="#" class="ui-commandlink ui-widget" onclick="PrimeFaces.ab({s:&quot;buscadorReducidaForm:j_idt75:24:j_idt76&quot;,f:&quot;buscadorReducidaForm&quot;});return false;"><table class="">
+<tbody>
+<tr>
+<td><span class="text">Nº 107</span></td>
+</tr>
+<tr>
+<td><span class="text">Sábado, </span><span class="text">05</span></td>
+</tr>
+<tr>
+<td><span class="text">Septiembre</span></td>
+</tr>
+<tr>
+<td><span class="text">2026</span></td>
+</tr>
+</tbody>
+</table>
+</a><script id="buscadorReducidaForm:j_idt75:24:j_idt76_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandLink","widget_buscadorReducidaForm_j_idt75_24_j_idt76",{id:"buscadorReducidaForm:j_idt75:24:j_idt76"});});</script></div><div class="ui-carousel-item"><a id="buscadorReducidaForm:j_idt75:25:j_idt76" href="#" class="ui-commandlink ui-widget" onclick="PrimeFaces.ab({s:&quot;buscadorReducidaForm:j_idt75:25:j_idt76&quot;,f:&quot;buscadorReducidaForm&quot;});return false;"><table class="">
+<tbody>
+<tr>
+<td><span class="text">Nº 106</span></td>
+</tr>
+<tr>
+<td><span class="text">Jueves, </span><span class="text">03</span></td>
+</tr>
+<tr>
+<td><span class="text">Septiembre</span></td>
+</tr>
+<tr>
+<td><span class="text">2026</span></td>
+</tr>
+</tbody>
+</table>
+</a><script id="buscadorReducidaForm:j_idt75:25:j_idt76_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandLink","widget_buscadorReducidaForm_j_idt75_25_j_idt76",{id:"buscadorReducidaForm:j_idt75:25:j_idt76"});});</script></div><div class="ui-carousel-item"><a id="buscadorReducidaForm:j_idt75:26:j_idt76" href="#" class="ui-commandlink ui-widget" onclick="PrimeFaces.ab({s:&quot;buscadorReducidaForm:j_idt75:26:j_idt76&quot;,f:&quot;buscadorReducidaForm&quot;});return false;"><table class="">
+<tbody>
+<tr>
+<td><span class="text">Nº 105</span></td>
+</tr>
+<tr>
+<td><span class="text">Martes, </span><span class="text">01</span></td>
+</tr>
+<tr>
+<td><span class="text">Septiembre</span></td>
+</tr>
+<tr>
+<td><span class="text">2026</span></td>
+</tr>
+</tbody>
+</table>
+</a><script id="buscadorReducidaForm:j_idt75:26:j_idt76_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandLink","widget_buscadorReducidaForm_j_idt75_26_j_idt76",{id:"buscadorReducidaForm:j_idt75:26:j_idt76"});});</script></div><div class="ui-carousel-item"><a id="buscadorReducidaForm:j_idt75:27:j_idt76" href="#" class="ui-commandlink ui-widget" onclick="PrimeFaces.ab({s:&quot;buscadorReducidaForm:j_idt75:27:j_idt76&quot;,f:&quot;buscadorReducidaForm&quot;});return false;"><table class="">
+<tbody>
+<tr>
+<td><span class="text">Nº 104</span></td>
+</tr>
+<tr>
+<td><span class="text">Sábado, </span><span class="text">29</span></td>
+</tr>
+<tr>
+<td><span class="text">Agosto</span></td>
+</tr>
+<tr>
+<td><span class="text">2026</span></td>
+</tr>
+</tbody>
+</table>
+</a><script id="buscadorReducidaForm:j_idt75:27:j_idt76_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandLink","widget_buscadorReducidaForm_j_idt75_27_j_idt76",{id:"buscadorReducidaForm:j_idt75:27:j_idt76"});});</script></div><div class="ui-carousel-item"><a id="buscadorReducidaForm:j_idt75:28:j_idt76" href="#" class="ui-commandlink ui-widget" onclick="PrimeFaces.ab({s:&quot;buscadorReducidaForm:j_idt75:28:j_idt76&quot;,f:&quot;buscadorReducidaForm&quot;});return false;"><table class="">
+<tbody>
+<tr>
+<td><span class="text">Nº 103</span></td>
+</tr>
+<tr>
+<td><span class="text">Jueves, </span><span class="text">27</span></td>
+</tr>
+<tr>
+<td><span class="text">Agosto</span></td>
+</tr>
+<tr>
+<td><span class="text">2026</span></td>
+</tr>
+</tbody>
+</table>
+</a><script id="buscadorReducidaForm:j_idt75:28:j_idt76_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandLink","widget_buscadorReducidaForm_j_idt75_28_j_idt76",{id:"buscadorReducidaForm:j_idt75:28:j_idt76"});});</script></div><div class="ui-carousel-item"><a id="buscadorReducidaForm:j_idt75:29:j_idt76" href="#" class="ui-commandlink ui-widget" onclick="PrimeFaces.ab({s:&quot;buscadorReducidaForm:j_idt75:29:j_idt76&quot;,f:&quot;buscadorReducidaForm&quot;});return false;"><table class="">
+<tbody>
+<tr>
+<td><span class="text">Nº 102</span></td>
+</tr>
+<tr>
+<td><span class="text">Martes, </span><span class="text">25</span></td>
+</tr>
+<tr>
+<td><span class="text">Agosto</span></td>
+</tr>
+<tr>
+<td><span class="text">2026</span></td>
+</tr>
+</tbody>
+</table>
+</a><script id="buscadorReducidaForm:j_idt75:29:j_idt76_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandLink","widget_buscadorReducidaForm_j_idt75_29_j_idt76",{id:"buscadorReducidaForm:j_idt75:29:j_idt76"});});</script></div></div></div><button class="ui-carousel-next ui-link" type="button"><span class="ui-carousel-next-icon pi pi-chevron-right"></span></button></div><ul class="ui-carousel-indicators ui-reset"></ul></div></div><script id="buscadorReducidaForm:j_idt75_s" type="text/javascript">$(function(){PrimeFaces.cw("Carousel","widget_buscadorReducidaForm_j_idt75",{id:"buscadorReducidaForm:j_idt75",numVisible:10});});</script><input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:3" value="7689290337797757428:-1076939348089403587" autocomplete="off" />
+</form>
+<form id="buscadorForm" name="buscadorForm" method="post" action="/PortalBOP/boletinesAntiguos/;jsessionid=FF442E071E3A023305C774B9990D7D35" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="buscadorForm" value="buscadorForm" />
+<fieldset id="buscadorForm:j_idt136" class="ui-fieldset ui-widget ui-widget-content ui-corner-all ui-hidden-container" data-widget="widget_buscadorForm_j_idt136"><legend class="ui-fieldset-legend ui-corner-all ui-state-default">Búsqueda Boletines</legend><div class="ui-fieldset-content"><table id="buscadorForm:j_idt137" class="ui-panelgrid ui-widget panelWithoutBorder" role="grid"><tbody>
+						<br />
+						<br />
+						<a href="https://archivodigital.dipcas.es/ArchivoWeb/archivoBiblioHemero/bop" style="font-size: 18px;font-weight:bold;color: #A30D3B; text-align: center;">Los boletines anteriores a Enero de 2011 se pueden consultar pinchando aquí</a>
+						<br />
+						<br /><tr class="ui-widget-content ui-panelgrid-odd"><td role="gridcell" class="ui-panelgrid-cell columnLabelTabGeneral"><label id="buscadorForm:j_idt141" class="ui-outputlabel ui-widget labelFormulario" for="buscadorForm:numBoletinAntiguo">Nº Boletín</label></td><td role="gridcell" class="ui-panelgrid-cell"><input id="buscadorForm:numBoletinAntiguo" name="buscadorForm:numBoletinAntiguo" type="text" class="ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all " /><script id="buscadorForm:numBoletinAntiguo_s" type="text/javascript">$(function(){PrimeFaces.cw("InputText","widget_buscadorForm_numBoletinAntiguo",{id:"buscadorForm:numBoletinAntiguo"});});</script></td></tr><tr class="ui-widget-content ui-panelgrid-even"><td role="gridcell" class="ui-panelgrid-cell columnLabelTabGeneral"><label id="buscadorForm:j_idt145" class="ui-outputlabel ui-widget labelFormulario" for="buscadorForm:fechaInicialAntiguo_input">Fecha Inicial</label></td><td role="gridcell" class="ui-panelgrid-cell"><span id="buscadorForm:fechaInicialAntiguo" class="p-datepicker ui-calendar"><input id="buscadorForm:fechaInicialAntiguo_input" name="buscadorForm:fechaInicialAntiguo_input" type="text" class="ui-inputfield ui-widget ui-state-default ui-corner-all " aria-labelledby="buscadorForm:j_idt145" /></span><script id="buscadorForm:fechaInicialAntiguo_s" type="text/javascript">$(function(){PrimeFaces.cw("DatePicker","widget_buscadorForm_fechaInicialAntiguo",{id:"buscadorForm:fechaInicialAntiguo",inline:false,userLocale:"es_ES",dateFormat:"dd\/mm\/yy",selectionMode:"single",showOnFocus:true,monthNavigator:true,yearNavigator:true,appendTo:"@(body)",fractionSeparator:",",timeInput:false});});</script></td><td role="gridcell" class="ui-panelgrid-cell columnLabelTabGeneral"><label id="buscadorForm:j_idt148" class="ui-outputlabel ui-widget labelFormulario" for="buscadorForm:fechaFinalAntiguo_input">Fecha Final</label></td><td role="gridcell" class="ui-panelgrid-cell"><span id="buscadorForm:fechaFinalAntiguo" class="p-datepicker ui-calendar"><input id="buscadorForm:fechaFinalAntiguo_input" name="buscadorForm:fechaFinalAntiguo_input" type="text" class="ui-inputfield ui-widget ui-state-default ui-corner-all " aria-labelledby="buscadorForm:j_idt148" /></span><script id="buscadorForm:fechaFinalAntiguo_s" type="text/javascript">$(function(){PrimeFaces.cw("DatePicker","widget_buscadorForm_fechaFinalAntiguo",{id:"buscadorForm:fechaFinalAntiguo",inline:false,userLocale:"es_ES",dateFormat:"dd\/mm\/yy",selectionMode:"single",showOnFocus:true,monthNavigator:true,yearNavigator:true,appendTo:"@(body)",fractionSeparator:",",timeInput:false});});</script></td></tr><tr class="ui-widget-content ui-panelgrid-odd"><td role="gridcell" class="ui-panelgrid-cell"><button id="buscadorForm:j_idt152" name="buscadorForm:j_idt152" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only button left" onclick="PrimeFaces.ab({s:&quot;buscadorForm:j_idt152&quot;,f:&quot;buscadorForm&quot;,u:&quot;formListBoletinAntiguos formListAnunciosBolAnt buscadorForm buscadorReducidaForm&quot;});return false;" type="submit"><span class="ui-button-text ui-c">Buscar</span></button><script id="buscadorForm:j_idt152_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandButton","widget_buscadorForm_j_idt152",{id:"buscadorForm:j_idt152"});});</script></td></tr></tbody></table></div></fieldset><script id="buscadorForm:j_idt136_s" type="text/javascript">$(function(){PrimeFaces.cw("Fieldset","widget_buscadorForm_j_idt136",{id:"buscadorForm:j_idt136"});});</script><input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:4" value="7689290337797757428:-1076939348089403587" autocomplete="off" />
+</form>
+<form id="formListBoletinAntiguos" name="formListBoletinAntiguos" method="post" action="/PortalBOP/boletinesAntiguos/;jsessionid=FF442E071E3A023305C774B9990D7D35" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="formListBoletinAntiguos" value="formListBoletinAntiguos" />
+<div id="formListBoletinAntiguos:tableBoletinesAntiguos" class="ui-datatable ui-widget ui-datatable-scrollable tableBoletinesAntiguosStyleClass"><div class="ui-widget-header ui-datatable-scrollable-header"><div class="ui-datatable-scrollable-header-box"><table role="grid"><thead id="formListBoletinAntiguos:tableBoletinesAntiguos_head"><tr><th id="formListBoletinAntiguos:tableBoletinesAntiguos:j_idt153" class="ui-state-default" aria-label="Nº Boletín" scope="col" style="width:30%"><span class="ui-column-title">Nº Boletín</span></th><th id="formListBoletinAntiguos:tableBoletinesAntiguos:j_idt155" class="ui-state-default" aria-label="Fecha" scope="col" style="width:30%"><span class="ui-column-title">Fecha</span></th><th id="formListBoletinAntiguos:tableBoletinesAntiguos:j_idt157" class="ui-state-default" aria-label="Referencia" scope="col" style="width:30%"><span class="ui-column-title">Referencia</span></th><th id="formListBoletinAntiguos:tableBoletinesAntiguos:j_idt159" class="ui-state-default" scope="col" style="width:10%"><span class="ui-column-title"></span></th></tr></thead></table></div></div><div class="ui-datatable-scrollable-body" tabindex="-1"><table role="grid"><tbody id="formListBoletinAntiguos:tableBoletinesAntiguos_data" class="ui-datatable-data ui-widget-content"><tr class="ui-widget-content ui-datatable-empty-message"><td colspan="4">No hay registros</td></tr></tbody></table></div><div class="ui-widget-header ui-datatable-scrollable-footer"><div class="ui-datatable-scrollable-footer-box"><table role="grid"></table></div></div><input id="formListBoletinAntiguos:tableBoletinesAntiguos_scrollState" name="formListBoletinAntiguos:tableBoletinesAntiguos_scrollState" type="hidden" autocomplete="off" value="0,0" /></div><script id="formListBoletinAntiguos:tableBoletinesAntiguos_s" type="text/javascript">$(function(){PrimeFaces.cw("DataTable","widget_formListBoletinAntiguos_tableBoletinesAntiguos",{id:"formListBoletinAntiguos:tableBoletinesAntiguos",scrollable:true,liveScroll:false,scrollStep:0,scrollLimit:0,liveScrollBuffer:0,virtualScroll:false,touchable:false,groupColumnIndexes:[],disableContextMenuIfEmpty:false});});</script><input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:5" value="7689290337797757428:-1076939348089403587" autocomplete="off" />
+</form>
+<form id="formListAnunciosBolAnt" name="formListAnunciosBolAnt" method="post" action="/PortalBOP/boletinesAntiguos/;jsessionid=FF442E071E3A023305C774B9990D7D35" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="formListAnunciosBolAnt" value="formListAnunciosBolAnt" />
+<input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:6" value="7689290337797757428:-1076939348089403587" autocomplete="off" />
+</form><span id="globalMessagesCustom"></span><script id="globalMessagesCustom_s" type="text/javascript">$(function(){PrimeFaces.cw("Growl","globalMessagesCustom",{id:"globalMessagesCustom",sticky:false,life:10000,escape:true,keepAlive:false,msgs:[]});});</script></div></div><div id="cierrePie" class="ui-outputpanel ui-widget">
+			<div class="mascara">
+			</div>
+			<div class="logo"><img id="j_idt176" src="/PortalBOP/javax.faces.resource/img/logoNegativo.png.xhtml;jsessionid=FF442E071E3A023305C774B9990D7D35?ln=1.2.21" alt="" ismap="false" />
+			</div></div>
+		
+		<div id="footer">
+			<div class="footerInferior">
+				<div class="redes">
+		<ul>
+			<li>
+				<a class="facebook" target="_blank" href="https://www.facebook.com/dipcas"></a>
+			</li>
+			<li>
+				<a class="twitter" target="_blank" href="https://twitter.com/#!/dipcas"></a>
+			</li>
+			<li>
+				<a class="youtube" target="_blank" href="https://www.youtube.com/user/prensadipcas"></a>
+			</li>
+			<li>
+				<a class="flickr" target="_blank" href="https://www.flickr.com/photos/diputacion/"></a>
+			</li>
+		</ul>
+				</div>
+				<div class="menuPie">
+			<ul>
+                 <li>
+                     <a href="http://www.dipcas.es/es/contacto.html">Contacto
+					</a>
+                 </li>
+                 <li>
+                     <a href="http://www.dipcas.es/es/aviso-legal.html">Aviso Legal                           
+					</a>
+                 </li>
+                 <li>
+                     <a href="http://www.dipcas.es/es/accesibilidad.html">Accesibilidad
+					</a>
+                 </li>
+                 <li>
+                     <a href="http://www.dipcas.es/es/buzon-de-sugerencias.html">Buzón de sugerencias                           
+					</a>
+                 </li>
+                 <li>
+                     <a href="http://www.dipcas.es/es/mapa-web.html">Mapa web
+					</a>
+                 </li>
+                 <li>
+                     <a href="https://intranet.dipcas.es/">Intranet  
+					</a>
+                 </li>
+			</ul>
+				</div>
+			</div>
+		</div><div id="j_idt195" class="ui-confirm-dialog ui-dialog ui-widget ui-widget-content ui-corner-all ui-shadow ui-hidden-container"><div class="ui-dialog-titlebar ui-widget-header ui-helper-clearfix ui-corner-top"><span id="j_idt195_title" class="ui-dialog-title"></span></div><div class="ui-dialog-content ui-widget-content" id="j_idt195_content"><span class="ui-icon ui-confirm-dialog-severity"></span><span class="ui-confirm-dialog-message"></span></div><div class="ui-dialog-buttonpane ui-dialog-footer ui-widget-content ui-helper-clearfix">
+			<div class="buttons">
+				<div class="buttonsContent"><button id="j_idt197" name="j_idt197" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only button left ui-confirmdialog-yes" onclick="PrimeFaces.ab({s:&quot;j_idt197&quot;});return false;" type="submit"><span class="ui-button-text ui-c">Aceptar</span></button><script id="j_idt197_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandButton","widget_j_idt197",{id:"j_idt197"});});</script><button id="j_idt198" name="j_idt198" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only button left ui-confirmdialog-no" onclick="PrimeFaces.ab({s:&quot;j_idt198&quot;});return false;" type="submit"><span class="ui-button-text ui-c">Cancelar</span></button><script id="j_idt198_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandButton","widget_j_idt198",{id:"j_idt198"});});</script>
+				</div>
+			</div></div></div><script id="j_idt195_s" type="text/javascript">$(function(){PrimeFaces.cw("ConfirmDialog","widget_j_idt195",{id:"j_idt195",global:true});});</script><div id="j_idt201"></div><script id="j_idt201_s" type="text/javascript">$(function(){PrimeFaces.cw("AjaxStatus","widget_j_idt201",{id:"j_idt201",delay:0,start:function(){mostarDialogoCargando()},error:function(){ajaxErrorHanler(event)},success:function(){ocultarDialogoCargando()}});});</script><div id="loadingDialog" class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-shadow ui-hidden-container"><div class="ui-dialog-content ui-widget-content" id="loadingDialog_content"><img id="j_idt202" src="/PortalBOP/javax.faces.resource/img/loading.gif.xhtml;jsessionid=FF442E071E3A023305C774B9990D7D35?ln=framework-1.1.4" alt="" ismap="false" />
+		    
+		    <div>Cargando...
+		    </div></div></div><script id="loadingDialog_s" type="text/javascript">$(function(){PrimeFaces.cw("Dialog","loadingDialog",{id:"loadingDialog",draggable:false,resizable:false,modal:true});});</script></body>
+</html>
