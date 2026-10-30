@@ -1,5 +1,9 @@
-#!/bin/bash
+#!/bin/sh
 # Script de arranque del servidor del motor (AWS Lightsail, región de España, Ubuntu 24.04).
+#
+# Es sh POSIX a propósito: Lightsail pone sus propias líneas delante del script de lanzamiento y lo ejecuta todo con
+# sh, no con bash (el 30/10/2026 falló en «set -euo pipefail»: «Illegal option -o pipefail» y no hizo nada). Nada de
+# pipefail, arrays ni [[ ]]. Se puede volver a ejecutar sin romper nada.
 # Se pega en "Script de lanzamiento" al crear la instancia. Lo único que hay que cambiar es el TOKEN,
 # que se copia de GitHub: repositorio > Settings > Actions > Runners > New self-hosted runner.
 # El token caduca en una hora: crear la instancia justo después de copiarlo.
@@ -11,7 +15,7 @@
 #   - instala el ejecutor de GitHub Actions como servicio, con las etiquetas "espana" y "motor".
 # Desde ese momento los flujos de GitHub con "runs-on: [self-hosted, espana]" se ejecutan en este servidor.
 
-set -euo pipefail
+set -eu
 
 TOKEN="PEGA_AQUI_EL_TOKEN"
 REPO_URL="https://github.com/alvarorm931/education"
@@ -34,16 +38,31 @@ id motor >/dev/null 2>&1 || useradd -m -s /bin/bash motor
 
 cd /home/motor
 mkdir -p runner && cd runner
-VER=$(curl -fsSL https://api.github.com/repos/actions/runner/releases/latest | jq -r .tag_name | sed 's/^v//')
-case "$(uname -m)" in aarch64) ARQ=arm64 ;; *) ARQ=x64 ;; esac
-curl -fsSL -o runner.tar.gz "https://github.com/actions/runner/releases/download/v${VER}/actions-runner-linux-${ARQ}-${VER}.tar.gz"
-tar xzf runner.tar.gz && rm runner.tar.gz
-chown -R motor:motor /home/motor
-./bin/installdependencies.sh
+if [ ! -x ./config.sh ]; then
+  # Sin pipefail: se comprueba a mano que la versión ha llegado
+  VER=$(curl -fsSL https://api.github.com/repos/actions/runner/releases/latest | jq -r .tag_name | sed 's/^v//')
+  if [ -z "$VER" ] || [ "$VER" = "null" ]; then
+    echo "No se pudo saber la última versión del ejecutor de GitHub" >&2
+    exit 1
+  fi
+  case "$(uname -m)" in aarch64) ARQ=arm64 ;; *) ARQ=x64 ;; esac
+  curl -fsSL -o runner.tar.gz "https://github.com/actions/runner/releases/download/v${VER}/actions-runner-linux-${ARQ}-${VER}.tar.gz"
+  tar xzf runner.tar.gz && rm runner.tar.gz
+  chown -R motor:motor /home/motor
+  ./bin/installdependencies.sh
+fi
 
-sudo -u motor ./config.sh --unattended --url "$REPO_URL" --token "$TOKEN" \
-  --name motor-espana --labels espana,motor --work _trabajo --replace
-./svc.sh install motor
+if [ -f .runner ]; then
+  echo "El ejecutor ya está configurado: no se vuelve a registrar"
+else
+  if [ "$TOKEN" = "PEGA_AQUI_EL_TOKEN" ]; then
+    echo "Falta el TOKEN de registro del ejecutor (GitHub > Settings > Actions > Runners)" >&2
+    exit 1
+  fi
+  sudo -u motor ./config.sh --unattended --url "$REPO_URL" --token "$TOKEN" \
+    --name motor-espana --labels espana,motor --work _trabajo --replace
+fi
+./svc.sh install motor || true   # ya instalado: no es un error
 ./svc.sh start
 
 echo "Servidor listo: ejecutor de GitHub instalado como servicio" > /home/motor/LISTO.txt
