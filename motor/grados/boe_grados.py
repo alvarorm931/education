@@ -360,6 +360,12 @@ def normalizar_tablas(tablas: list[dict]) -> list[dict]:
                    and not COL["modulo"].search(c or "")]
         ancho = len(cab) // len(inicios) if inicios else 0
         bloques = {tuple(" ".join((c or "").lower().split()) for c in cab[k:k + ancho]) for k in inicios} if ancho else set()
+        if len(inicios) >= 2 and not len(cab) % len(inicios) and len(bloques) != 1:
+            # bloques iguales que no empiezan por el nombre («Curso | Cuatr. | Asignatura | ECTS | Curso | …»)
+            norm = [" ".join((c or "").lower().split()) for c in cab]
+            ancho = len(cab) // len(inicios)
+            if all(norm[k * ancho:(k + 1) * ancho] == norm[:ancho] for k in range(len(inicios))):
+                inicios, bloques = [k * ancho for k in range(len(inicios))], {tuple(norm[:ancho])}
         if len(inicios) < 2 or len(cab) % len(inicios) or len(bloques) != 1:  # bloques repetidos de verdad
             salida.append({**t, "contenido": filas[i:]})
             continue

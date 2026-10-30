@@ -274,3 +274,11 @@ def test_celdas_combinadas_a_izquierda_y_derecha():
             ["Alemán II.", "6", "1.º", "Semestre 2.º"]])
     p = {x["nombre"]: x for x in plan([t])}
     assert p["Alemán II"]["creditos"] == 6 and p["Alemán II"]["tipo"] == "basica" and p["Alemán II"]["semestre"] == 2
+
+
+def test_bloques_lado_a_lado_que_no_empiezan_por_el_nombre():
+    from motor.grados.boe_grados import plan
+    t = _t([["Curso", "Cuatrimestre", "Asignatura", "Tipo", "ECTS", "", "Curso", "Cuatrimestre", "Asignatura", "Tipo", "ECTS"],
+            ["1.º", "1.º", "Lengua.", "FB", "6", "", "1.º", "2.º", "Historia.", "FB", "6"]])
+    p = {x["nombre"]: x for x in plan([t])}
+    assert p["Lengua"]["semestre"] == 1 and p["Historia"]["semestre"] == 2 and p["Historia"]["tipo"] == "basica"
