@@ -1,7 +1,7 @@
-# Vigilancia 30/10 13:22 (Madrid)
+# Vigilancia 30/10 13:31 (Madrid)
 
-- Ejecuciones revisadas (últimas 6 h): 133
-- Fallos: 1; pendientes: 0; relanzados ahora: 0
+- Ejecuciones revisadas (últimas 6 h): 143
+- Fallos: 2; pendientes: 2; relanzados ahora: 0
 - Colas de más de 30 minutos: 1
 - Flujos programados parados: ninguno
 - Almacén S3: ok
@@ -9,7 +9,19 @@
 - Latido (relanza al vigilante cada ~25 min mientras GitHub no dispare programaciones): en marcha
 - Avisos de fuentes: 0
 
-## Motor de datos · 30/10 08:07 · otra ejecución en curso: https://github.com/alvarorm931/education/actions/runs/41019168283
+## Motor de datos · 30/10 13:30 · PENDIENTE
+https://github.com/alvarorm931/education/actions/runs/41019168283 (intento 2, workflow_dispatch, d142273, pasajero: True)
+- motor · pasos: BOE, textos de anuncios de oposiciones · ejecutor: GitHub Actions 1000000677
+       ! [rejected]              datos -> datos (fetch first)
+      error: failed to push some refs to 'https://github.com/alvarorm931/education'
+      hint: Updates were rejected because the remote contains work that you do not
+      hint: have locally. This is usually caused by another repository pushing to
+      hint: the same ref. If you want to integrate the remote changes, use
+      hint: 'git pull' before pushing again.
+      hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+      ##[error]Process completed with exit code 1.
+
+## Motor de datos · 30/10 08:07 · PENDIENTE
 https://github.com/alvarorm931/education/actions/runs/41018014171 (intento 1, workflow_dispatch, 54bb117, pasajero: False)
 - motor · pasos: Instalar y probar · ejecutor: GitHub Actions 1000000611
       E       KeyError: 'solo_huella'
@@ -21,4 +33,4 @@ https://github.com/alvarorm931/education/actions/runs/41018014171 (intento 1, wo
       2 failed, 586 passed, 1 skipped in 50.77s
       ##[error]Process completed with exit code 1.
 
-- En cola 292 min: Boletines autonómicos https://github.com/alvarorm931/education/actions/runs/41020598739
+- En cola 300 min: Boletines autonómicos https://github.com/alvarorm931/education/actions/runs/41020598739
