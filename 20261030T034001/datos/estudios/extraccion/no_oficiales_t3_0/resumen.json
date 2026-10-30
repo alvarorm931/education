@@ -1,0 +1,128 @@
+{
+ "pedidas": 1500,
+ "enviadas": 1500,
+ "minutos_captura": 27.3,
+ "minutos_lote": 7.5,
+ "extraidas": 1500,
+ "respuestas_con_pensamiento": 0,
+ "no_es_programa": 8,
+ "id": "msgbatch_017ANoUeQGxsnyQoESXYLG4a",
+ "uso_tokens": {
+  "input_tokens": 5563779,
+  "output_tokens": 1946064,
+  "cache_creation_input_tokens": 2838,
+  "cache_read_input_tokens": 1416162
+ },
+ "coste_usd": 0.771963,
+ "coste_usd_por_pagina": 0.000515,
+ "tokens_entrada_por_pagina": 3709,
+ "tokens_salida_por_pagina": 1297,
+ "hechos_aceptados": 20572,
+ "hechos_revision": 277,
+ "motivos_revision": {
+  "cita_no_literal": 273,
+  "valor_no_en_cita": 4
+ },
+ "almacen": {
+  "nuevos": 1503,
+  "claves_privadas": {
+   "resultados": "extraccion-masters/2026/10/30/376620e1a865ef82ba25619af713f5f86eac8b852c83f9557b0a90e873ad56be.resultados.jsonl.gz",
+   "hechos_con_cita": "extraccion-masters/2026/10/30/118e35977beb87ebd7a137116a09a10d6527d077de7dd856e71f4f717f3bd444.hechos.jsonl.gz"
+  }
+ },
+ "por_campo": {
+  "nombre": {
+   "aceptado": 1487,
+   "revision": 5
+  },
+  "tipo_titulo": {
+   "aceptado": 1453,
+   "revision": 38
+  },
+  "universidad_que_expide": {
+   "aceptado": 1327,
+   "revision": 6
+  },
+  "centro_que_imparte": {
+   "aceptado": 502,
+   "revision": 8
+  },
+  "creditos_ects": {
+   "aceptado": 989,
+   "revision": 12
+  },
+  "duracion": {
+   "aceptado": 1466,
+   "revision": 26
+  },
+  "modalidad": {
+   "aceptado": 1491,
+   "revision": 1
+  },
+  "sedes": {
+   "aceptado": 38,
+   "revision": 2
+  },
+  "idioma": {
+   "aceptado": 1239,
+   "revision": 67
+  },
+  "fecha_inicio": {
+   "aceptado": 17
+  },
+  "plazo_admision": {
+   "aceptado": 5
+  },
+  "horario": {
+   "aceptado": 57,
+   "revision": 2
+  },
+  "plazas": {
+   "revision": 1
+  },
+  "precio_total": {
+   "aceptado": 1399
+  },
+  "precio_credito": {
+   "revision": 1
+  },
+  "reserva_matricula": {},
+  "descuentos_becas": {
+   "aceptado": 881
+  },
+  "requisitos_acceso": {
+   "aceptado": 902,
+   "revision": 44
+  },
+  "proceso_admision": {
+   "revision": 1,
+   "aceptado": 1
+  },
+  "asignaturas": {
+   "aceptado": 1309
+  },
+  "practicas": {
+   "aceptado": 36,
+   "revision": 12
+  },
+  "tfm": {
+   "aceptado": 381,
+   "revision": 11
+  },
+  "metodologia": {
+   "aceptado": 1491
+  },
+  "evaluacion": {
+   "aceptado": 1399,
+   "revision": 4
+  },
+  "habilita_profesion": {
+   "aceptado": 1232,
+   "revision": 16
+  },
+  "salidas": {
+   "aceptado": 1470,
+   "revision": 20
+  }
+ }
+}
