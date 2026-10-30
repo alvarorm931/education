@@ -139,7 +139,7 @@ def cargar_ruct(carpetas: list[Path]) -> dict[str, dict]:
     """código → ficha del RUCT (con memoria si alguna lectura la trae), la más reciente."""
     out: dict[str, dict] = {}
     for c in carpetas:
-        for f in sorted(c.rglob("ruct/*.json")):
+        for f in sorted(list(c.rglob("ruct/*.json")) + list(c.rglob("ruct_memoria/*.json"))):
             if f.name.startswith("resumen"):
                 continue
             try:
@@ -537,8 +537,8 @@ def huella(valor) -> str:
 
 
 def fechas_estables(registros: list[dict], anterior: dict[str, dict], hoy: str) -> Counter:
-    """El dato que no cambia conserva la fecha de captura que tenía; el nuevo o cambiado la toma de su fuente.
-    «revisado» es la fecha de esta pasada (la última vez que se comprobó)."""
+    """El dato que no cambia conserva la fecha de captura que tenía; el nuevo o cambiado la toma de su fuente. La
+    fecha de la pasada va solo en resumen.json («generado»): así un conjunto sin cambios es el mismo fichero."""
     cuentas = Counter()
     for r in registros:
         previo = (anterior.get(r["id"]) or {}).get("campos") or {}
@@ -552,7 +552,6 @@ def fechas_estables(registros: list[dict], anterior: dict[str, dict], hoy: str) 
             else:
                 c["capturado"] = c.get("capturado") or hoy
                 cuentas["cambiados" if p else "nuevos"] += 1
-            c["revisado"] = hoy
         cuentas["retirados"] += sum(1 for n in previo if n not in r["campos"])
     return cuentas
 

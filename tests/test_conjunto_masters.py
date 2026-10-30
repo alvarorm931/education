@@ -109,7 +109,11 @@ def test_la_fecha_solo_cambia_si_cambia_el_dato(tmp_path):
     assert c["precio_credito"]["capturado"] == "2026-10-30T12:00:00+00:00"       # mismo dato: misma fecha
     assert c["universidad_que_expide"]["capturado"] == "2026-10-29"
     assert c["horario"]["valor"] == "de mañana" and c["horario"]["capturado"] == "2026-11-06T02:00:00+00:00"
-    assert res["fechas"]["cambiados"] == 1 and c["horario"]["revisado"] == c["precio_credito"]["revisado"]
+    assert res["fechas"]["cambiados"] == 1 and "revisado" not in c["horario"]
+    # sin cambios, el mismo fichero
+    cm.ejecutar(t / "cat.json", t / "v3", ruct=[t / "ruct"], qedu=[t / "qedu"], fichas=f, anterior=t / "v2",
+                fecha_catalogo="2026-11-07")
+    assert (t / "v3" / "masters_oficiales.jsonl.gz").read_bytes() == (t / "v2" / "masters_oficiales.jsonl.gz").read_bytes()
 
 
 def test_limpia_numero_de_catalogo():

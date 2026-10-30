@@ -144,3 +144,59 @@ def test_ejecutar_reintenta_al_final_los_cortes_sueltos(monkeypatch, tmp_path):
     monkeypatch.setattr(ruct, "leer_ficha", ficha)
     res = ruct.ejecutar(["A", "B", "C"], tmp_path, "ficha", 5, pausa_corte=0)
     assert res["hechos"] == 3 and res["sin_leer"] == 0 and not res["errores"]
+
+
+def test_el_ritmo_se_adapta_al_servidor(monkeypatch):
+    import requests
+
+    monkeypatch.setattr(ruct.time, "sleep", lambda s: None)
+    lector = ruct.Lector(archivo=None, pausa=1.0)
+    import itertools
+
+    respuestas = itertools.chain([requests.Timeout()], itertools.repeat("ok"))
+
+    class R:
+        status_code, content, headers = 200, b"<html></html>", {}
+
+    def get(url, timeout=0):
+        x = next(respuestas)
+        if isinstance(x, Exception):
+            raise x
+        return R()
+
+    monkeypatch.setattr(lector.s, "get", get)
+    assert lector.get("https://www.educacion.gob.es/ruct/x")[0] == 200
+    assert lector.pausa == 2.0 and lector.errores["Timeout"] == 1
+    for _ in range(ruct.SEGUIDAS_PARA_ACELERAR * 4):
+        lector.get("https://www.educacion.gob.es/ruct/x")
+    assert lector.pausa == 1.0 and lector.pausa_max_usada == 2.0  # vuelve a una por segundo, nunca menos
+
+
+def test_429_frena_hasta_el_maximo(monkeypatch):
+    monkeypatch.setattr(ruct.time, "sleep", lambda s: None)
+    lector = ruct.Lector(archivo=None, pausa=1.0)
+
+    class R:
+        status_code, content, headers = 429, b"", {}
+
+    monkeypatch.setattr(lector.s, "get", lambda url, timeout=0: R())
+    for _ in range(5):
+        lector.get("https://www.educacion.gob.es/ruct/x")
+    assert lector.pausa == ruct.PAUSA_MAX
+
+
+def test_codigos_ya_leidos_por_nivel_y_sello():
+    rutas = ["20261029T172051/datos/estudios/masters/ruct/4310193.json",
+             "20261030T111924-t0/datos/estudios/masters/ruct/3500004.json",
+             "20261030T111924-t0/datos/estudios/masters/ruct/resumen-ficha-1.json",
+             "20261031T010000-t5/datos/estudios/masters/ruct_memoria/3500005.json"]
+    assert ruct.codigos_en_rutas(rutas, "ficha", "20261030T1100") == {"3500004"}
+    assert ruct.codigos_en_rutas(rutas, "ficha") == {"4310193", "3500004"}
+    assert ruct.codigos_en_rutas(rutas, "memoria") == {"3500005"}
+
+
+def test_memoria_va_a_su_carpeta(monkeypatch, tmp_path):
+    monkeypatch.setattr(ruct, "leer_ficha", lambda l, c, tipo="M": {"codigo": c, "fuente": {}})
+    monkeypatch.setattr(ruct, "leer_memoria", lambda l, f, max_paginas=0: {"plan": []})
+    ruct.ejecutar(["A"], tmp_path, "memoria", 5, pausa_corte=0)
+    assert (tmp_path / "datos/estudios/masters/ruct_memoria/A.json").exists()

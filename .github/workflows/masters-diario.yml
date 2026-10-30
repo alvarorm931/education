@@ -1,0 +1,93 @@
+name: Másteres diario
+
+# Cada día, una séptima parte de todo lo de másteres (webs de centros, QEDU y RUCT): cada página y cada título se
+# vuelven a mirar una vez por semana y solo se paga la extracción de lo que cambió. Después se rehacen las fichas y
+# el conjunto final, que conserva la fecha de captura de cada dato que no cambia (motor/estudios/diario_masters.py).
+# Entradas: lo que dice sondas:masters-estado/manifiesto.json. Sin manifiesto, no hace nada.
+
+on:
+  schedule:
+    - cron: "17 1 * * *"   # 02:17 / 03:17 en Madrid según horario, sin solaparse con el motor ni los boletines
+  workflow_dispatch:
+    inputs:
+      dia:
+        description: "Séptima parte que toca (0-6); vacío = la del día del año"
+        required: false
+        default: ""
+
+# id-token: credenciales temporales del almacén privado por OIDC (originales, lo enviado a la API y las citas)
+permissions:
+  contents: write
+  id-token: write
+
+concurrency:
+  group: masters-diario
+  cancel-in-progress: false
+
+jobs:
+  diario:
+    runs-on: ubuntu-latest
+    timeout-minutes: 340
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -q -e ".[estudios,almacen]" "playwright>=1.45" && python -m playwright install --with-deps chromium
+      - name: Traer de sondas lo que dice el manifiesto
+        id: entrada
+        run: |
+          git fetch -q --depth 1 --filter=blob:none origin sondas
+          if ! git show FETCH_HEAD:masters-estado/manifiesto.json > manifiesto.json 2>/dev/null; then
+            echo "Sin masters-estado/manifiesto.json en sondas: nada que hacer"; echo "hay=no" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          echo "hay=si" >> "$GITHUB_OUTPUT"
+          mkdir -p entrada
+          python - <<'EOF' > rutas.txt
+          import json
+          m = json.load(open("manifiesto.json"))
+          rutas = ["masters-estado"]
+          rutas += [m[k] for k in ("catalogo", "altas", "clasificacion", "censo", "tarifas") if m.get(k)]
+          rutas += [f"{x}/datos/estudios/extraccion" for x in m.get("extracciones", [])]
+          rutas += [f"{x}/datos/estudios/masters/{c}" for x in m.get("ruct", []) for c in ("ruct", "ruct_memoria")]
+          rutas += [f"{x}/datos/estudios/masters/qedu" for x in m.get("qedu", [])]
+          print("\n".join(dict.fromkeys(rutas)))
+          EOF
+          while read -r r; do git archive FETCH_HEAD "$r" 2>/dev/null | tar -x -C entrada 2>/dev/null || true; done < rutas.txt
+          du -sh entrada
+      - name: Pasada del día
+        if: steps.entrada.outputs.hay == 'si'
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          MOTOR_ORIGINALES: s3
+          DIA: ${{ inputs.dia }}
+        run: |
+          STAMP=$(date -u +%Y%m%dT%H%M%S)-masters
+          echo "STAMP=$STAMP" >> "$GITHUB_ENV"
+          D=${DIA:-$(( $(date -u +%j | sed 's/^0*//') % 7 ))}
+          python -m motor.estudios.diario_masters --raiz entrada --dia "$D" --sello "$STAMP" --max-minutos 300 --salida out \
+            > out.log 2>&1 || { tail -50 out.log; exit 1; }
+          tail -40 out.log
+      - name: Subir a sondas
+        if: steps.entrada.outputs.hay == 'si'
+        run: |
+          # Nada de textos ajenos en la rama pública: las páginas de centros solo con su índice (los originales, en S3)
+          rm -rf "out/$STAMP/archivo/web-centros" "out/$STAMP/archivo/web-centros-render"
+          mkdir -p pub && cp -r "out/$STAMP" pub/ && cp -r out/masters-estado pub/masters-estado.nuevo
+          find pub -type f -size +90M -print -exec gzip -9 {} \;
+          grep -rlE '(AKIA|ASIA)[0-9A-Z]{16}|AIza[0-9A-Za-z_-]{35}|gh[pousr]_[A-Za-z0-9]{36}|xox[baprs]-[A-Za-z0-9-]{10,}|sk_live_[0-9a-zA-Z]{24,}' pub 2>/dev/null \
+            | xargs -r sed -i -E 's/(AKIA|ASIA)[0-9A-Z]{16}|AIza[0-9A-Za-z_-]{35}|gh[pousr]_[A-Za-z0-9]{36}|xox[baprs]-[A-Za-z0-9-]{10,}|sk_live_[0-9a-zA-Z]{24,}/[retirado]/g'
+          cd pub
+          git init -q && git config user.name "motor-masters" && git config user.email "motor-masters@users.noreply.github.com"
+          git remote add origin "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git"
+          for i in 1 2 3 4 5 6; do
+            git fetch -q --depth 1 origin sondas && git reset -q FETCH_HEAD
+            git checkout -q -B sondas
+            # el estado (manifiesto y conjunto) se sustituye entero; lo nuevo del día va en su carpeta
+            git rm -rq --cached masters-estado 2>/dev/null || true
+            rm -rf masters-estado && cp -r masters-estado.nuevo masters-estado
+            git add "$STAMP" masters-estado && git commit -qm "Másteres diario: $STAMP" || true
+            git push -q origin sondas && exit 0
+            sleep $((i * 10))
+          done
+          exit 1

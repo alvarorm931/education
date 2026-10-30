@@ -36,6 +36,7 @@ import re
 import sys
 import time
 import unicodedata
+from collections import Counter
 from datetime import date, datetime, timezone
 from pathlib import Path
 from urllib.parse import parse_qs, urljoin, urlparse
@@ -361,38 +362,68 @@ def lista_catalogo(pagina: str) -> list[dict]:
 # --------------------------------------------------------------------------------------- descarga
 
 
-class Lector:
-    """Sesión educada con el RUCT: identificada, una petición por segundo, originales archivados."""
+PAUSA_MAX = 12.0       # si el servidor pide ir más despacio, hasta una petición cada 12 segundos
+ESPERA_RESPUESTA = 20  # segundos: una ficha responde en menos de uno; lo que tarda más es que no va a responder
+SEGUIDAS_PARA_ACELERAR = 15
 
-    def __init__(self, archivo: Archivo | None, pausa: float = PAUSA):
+
+class Lector:
+    """Sesión educada con el RUCT: identificada, una petición por segundo como mucho, originales archivados.
+
+    El ritmo se adapta al servidor: cada petición que no responde o que responde 429/5xx duplica la pausa (hasta
+    PAUSA_MAX) y cada SEGUIDAS_PARA_ACELERAR respuestas buenas la reducen un 20 % (nunca por debajo de la de
+    partida). Medido el 30/10/2026 de día desde GitHub: el RUCT dejaba de responder tras unas 8 peticiones seguidas
+    a una por segundo y volvía a los 40-50 segundos (unas 10 por minuto); de noche había atendido 24 por minuto."""
+
+    def __init__(self, archivo: Archivo | None, pausa: float = PAUSA, adaptable: bool = True):
         self.s = requests.Session()
         self.s.headers["User-Agent"] = USER_AGENT
         self.archivo = archivo
         self.pausa = pausa
+        self.base = pausa
+        self.adaptable = adaptable
         self.peticiones = 0
         self.capturas: list[dict] = []
         self._ultima = 0.0  # inicio de la última petición (reloj monótono)
+        self.seguidas = 0
+        self.errores: Counter = Counter()
+        self.pausa_max_usada = pausa
 
     def _esperar_turno(self) -> None:
-        """Una petición por segundo contando desde el inicio de la anterior (no un segundo más la respuesta)."""
+        """La pausa cuenta desde el inicio de la petición anterior (no la pausa más lo que tardó la respuesta)."""
         espera = self.pausa - (time.monotonic() - self._ultima)
         if espera > 0:
             time.sleep(espera)
         self._ultima = time.monotonic()
+
+    def _frenar(self, motivo: str) -> None:
+        self.errores[motivo] += 1
+        self.seguidas = 0
+        if self.adaptable:
+            self.pausa = min(PAUSA_MAX, max(self.pausa * 2, self.base + 1))
+            self.pausa_max_usada = max(self.pausa_max_usada, self.pausa)
+
+    def _bien(self) -> None:
+        self.seguidas += 1
+        if self.adaptable and self.pausa > self.base and self.seguidas >= SEGUIDAS_PARA_ACELERAR:
+            self.pausa = max(self.base, self.pausa * 0.8)
+            self.seguidas = 0
 
     def get(self, url: str, intentos: int = 3) -> tuple[int, str, dict | None]:
         for i in range(intentos):
             self._esperar_turno()
             self.peticiones += 1
             try:
-                r = self.s.get(url, timeout=40)
-            except requests.RequestException:
+                r = self.s.get(url, timeout=ESPERA_RESPUESTA)
+            except requests.RequestException as e:
+                self._frenar(type(e).__name__)
+                continue
+            if r.status_code in (429, 500, 502, 503, 504):
+                self._frenar(f"HTTP {r.status_code}")
                 if i < intentos - 1:
-                    time.sleep(5 * (i + 1))
-                continue
-            if r.status_code in (429, 500, 502, 503, 504) and i < intentos - 1:
-                time.sleep(10 * (i + 1))
-                continue
+                    continue
+            else:
+                self._bien()
             reg = None
             if self.archivo is not None and r.status_code == 200:
                 reg = self.archivo.guardar(FUENTE, date.today(), r.content, url, "html", r.status_code,
@@ -565,6 +596,25 @@ def leer_memoria(lector: Lector, ficha: dict, max_paginas: int = 250) -> dict:
 
 
 MAX_PAGINAS = 400   # una memoria de máster de 120 créditos con muchas asignaturas pasa de 250 páginas
+# Cada nivel en su carpeta: así se sabe, solo por los nombres de fichero de la rama sondas, qué códigos están ya
+# leídos en cada nivel (hechos_en_sondas) y cada tramo sigue por el siguiente pendiente.
+CARPETA = {"ficha": "ruct", "memoria": "ruct_memoria"}
+
+
+def hechos_en_sondas(nivel: str, desde_sello: str = "") -> set[str]:
+    """Códigos ya leídos en ese nivel según los nombres de fichero de la rama sondas (sin bajar su contenido).
+    Solo cuentan las carpetas de ejecución con sello igual o posterior a desde_sello."""
+    import subprocess
+
+    subprocess.run(["git", "fetch", "-q", "--depth", "1", "--filter=blob:none", "origin", "sondas"], check=True)
+    nombres = subprocess.run(["git", "ls-tree", "-r", "--name-only", "FETCH_HEAD"], check=True, capture_output=True,
+                             text=True).stdout.split("\n")
+    return codigos_en_rutas(nombres, nivel, desde_sello)
+
+
+def codigos_en_rutas(rutas: list[str], nivel: str, desde_sello: str = "") -> set[str]:
+    patron = re.compile(r"^([^/]+)/datos/estudios/masters/" + CARPETA[nivel] + r"/(\d{7})\.json$")
+    return {m.group(2) for r in rutas if (m := patron.match(r)) and m.group(1) >= desde_sello}
 PAUSA_CORTE = 120   # segundos de espera cuando el servidor deja de responder
 PAUSAS_MAX = 5
 
@@ -630,7 +680,7 @@ def ejecutar(codigos: list[str], raiz: Path, nivel: str, max_minutos: float, pau
     pausa_corte = PAUSA_CORTE if pausa_corte is None else pausa_corte
     archivo = Archivo(raiz / "archivo", indice_por_fuente=True, solo_huella=solo_huella_por_defecto())
     lector = LectorRegistro(archivo)
-    destino = raiz / "datos" / "estudios" / "masters" / "ruct"
+    destino = raiz / "datos" / "estudios" / "masters" / CARPETA[nivel]
     destino.mkdir(parents=True, exist_ok=True)
     fin = time.time() + max_minutos * 60
     hechos, errores, seguidos, alerta, pausas = 0, Counter(), 0, None, 0
@@ -678,7 +728,8 @@ def ejecutar(codigos: list[str], raiz: Path, nivel: str, max_minutos: float, pau
     if fallidos:
         errores["sin respuesta del servidor"] += len(fallidos)
     res = {"pedidos": len(codigos), "hechos": hechos, "errores": dict(errores), "peticiones": lector.peticiones,
-           "alerta": alerta, "sin_leer": sin_leer,
+           "fallos_de_peticion": dict(lector.errores), "pausa_final": round(lector.pausa, 2),
+           "pausa_max_usada": round(lector.pausa_max_usada, 2), "alerta": alerta, "sin_leer": sin_leer,
            "peticiones_por_excepcion_de_registro_publico": lector.excepcion_registro,
            "decision_excepcion": DECISION_RUCT if lector.excepcion_registro else None, "memorias": resumenes}
     (destino / f"resumen-{nivel}-{int(time.time())}.json").write_text(json.dumps(res, ensure_ascii=False, indent=1),
@@ -695,6 +746,9 @@ def main() -> None:
     p.add_argument("--hasta", type=int)
     p.add_argument("--nivel", choices=["ficha", "memoria"], default="ficha")
     p.add_argument("--max-minutos", type=float, default=50)
+    p.add_argument("--pendientes-de-sondas", metavar="SELLO", nargs="?", const="",
+                   help="quitar los códigos ya leídos en este nivel en la rama sondas (carpetas desde SELLO)")
+    p.add_argument("--tramo", help="solo para distinguir tramos iguales en la matriz del flujo")
     p.add_argument("--salida", required=True)
     a = p.parse_args()
     if a.codigos:
@@ -706,6 +760,10 @@ def main() -> None:
     else:
         sys.exit("Falta --codigos, --codigos-fichero o --catalogo")
     codigos = codigos[a.desde:a.hasta]
+    if a.pendientes_de_sondas is not None:
+        hechos = hechos_en_sondas(a.nivel, a.pendientes_de_sondas)
+        codigos = [c for c in codigos if c not in hechos]
+        print(f"ya leídos en sondas ({a.nivel}): {len(hechos)}; pendientes: {len(codigos)}", file=sys.stderr)
     print(json.dumps(ejecutar(codigos, Path(a.salida), a.nivel, a.max_minutos), ensure_ascii=False))
 
 
