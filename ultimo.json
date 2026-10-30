@@ -1,13 +1,13 @@
 {
- "fecha": "2026-10-30T13:25:19+00:00",
- "fecha_madrid": "30/10 14:25",
+ "fecha": "2026-10-30T13:34:19+00:00",
+ "fecha_madrid": "30/10 14:34",
  "ventana_horas": 6.0,
  "resumen": {
-  "ejecuciones_revisadas": 179,
+  "ejecuciones_revisadas": 184,
   "fallos": 0,
   "fallos_pendientes": 0,
   "relanzados": 0,
-  "colas_largas": 4,
+  "colas_largas": 1,
   "flujos_programados_parados": [],
   "programaciones_lanzadas_a_mano": [],
   "avisos_de_fuentes": 0,
@@ -16,32 +16,11 @@
  "fallos": [],
  "colas_largas": [
   {
-   "flujo": "Grados por tramos",
-   "id": 41058373231,
-   "en_cola_min": 35,
-   "trabajos_empezados": 0,
-   "url": "https://github.com/alvarorm931/education/actions/runs/41058373231"
-  },
-  {
-   "flujo": "Grados por tramos",
-   "id": 41056747000,
-   "en_cola_min": 48,
-   "trabajos_empezados": 0,
-   "url": "https://github.com/alvarorm931/education/actions/runs/41056747000"
-  },
-  {
    "flujo": "Boletines autonómicos",
    "id": 41051537477,
-   "en_cola_min": 90,
+   "en_cola_min": 99,
    "trabajos_empezados": 3,
    "url": "https://github.com/alvarorm931/education/actions/runs/41051537477"
-  },
-  {
-   "flujo": "Boletines autonómicos",
-   "id": 41020598739,
-   "en_cola_min": 354,
-   "trabajos_empezados": 52,
-   "url": "https://github.com/alvarorm931/education/actions/runs/41020598739"
   }
  ],
  "programados": {
