@@ -206,6 +206,13 @@ for c in $CONECTORES; do
       ejecutar motor.provinciales.bopzaragoza --salida "$S"
       "$G" "BOP Zaragoza: boletín del día"
       ;;
+    bopgipuzkoa)
+      ejecutar motor.provinciales.bopgipuzkoa --salida "$S"
+      ejecutar motor.provinciales.bopgipuzkoa --desde 2022-01-01 --salida "$S" --max-minutos "$M"
+      "$G" "BOG Gipuzkoa: días"
+      ejecutar motor.provinciales.bopgipuzkoa --textos --salida "$S" --max-minutos "$M"
+      "$G" "BOG Gipuzkoa: textos"
+      ;;
     bopb)
       # El del día por el canal de datos abiertos; los anteriores por el listado por días y los textos en PDF (cerrados
       # en robots.txt; se leen como boletín oficial, motor/http.py)
