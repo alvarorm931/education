@@ -120,7 +120,11 @@ def final_registro(job_id: int, lineas: int = 25) -> list[str]:
     filas = texto.decode("utf-8", "replace").splitlines()
     # Quita la marca de tiempo inicial de cada línea y los grupos vacíos
     limpias = [re.sub(r"^\d{4}-\d\d-\d\dT[\d:.]+Z ", "", f)[:300] for f in filas if f.strip()]
-    return limpias[-lineas:]
+    # Lo que importa está antes de la limpieza final del trabajo («Post job cleanup»)
+    corte = next((i for i, f in enumerate(limpias) if f.startswith("Post job cleanup")), len(limpias))
+    utiles = [f for f in limpias[:corte] if not f.startswith(("[command]", "##[group]", "##[endgroup]"))]
+    errores = [f for f in utiles if "##[error]" in f or re.search(r"(Traceback|Error|FAILED|fatal:)", f)]
+    return (errores[-8:] + ["..."] + utiles[-lineas:]) if errores else utiles[-lineas:]
 
 
 def ejecuciones(repo: str, desde: datetime) -> list[dict]:
