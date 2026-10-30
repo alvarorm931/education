@@ -71,3 +71,41 @@ def test_carpetas_por_su_forma_en_la_rama():
     arbol.append("20261029T175722/datos/estudios/masters/ruct_memoria/4310001.json")
     cs = diario_masters.carpetas_en_arbol(arbol, "20261030T1000", {"ruct": "20261029T1700"})
     assert cs["ruct"][0] == "20261029T175722" and cs["extracciones"] == ["20261030T103924"]
+
+
+def test_pasada_del_dia_baja_los_planes_del_boe_de_las_fichas(tmp_path, monkeypatch):
+    from motor.estudios import boe_planes_masters
+
+    raiz = tmp_path / "entrada"
+    r = raiz / "20261030T120000-t0" / "datos" / "estudios" / "masters" / "ruct"
+    r.mkdir(parents=True)
+    for c, i in (("4310001", "BOE-A-2011-1"), ("4310002", "BOE-A-2012-2")):
+        (r / f"{c}.json").write_text(json.dumps({"codigo": c, "boe": {"plan": {"identificador": i}}}))
+    (raiz / "masters-estado").mkdir(parents=True)
+    (raiz / "cat.json").write_text("[]")
+    (raiz / "boe_descargados.txt").write_text("BOE-A-2011-1\n")
+    (raiz / "masters-estado" / "manifiesto.json").write_text(json.dumps(
+        {"catalogo": "cat.json", "extracciones": [], "ruct": ["20261030T120000-t0"], "qedu": []}))
+    pedidos = {}
+
+    def textos(ruct, salida, desde, hasta, minutos, ya=None, por_nombre=None):
+        pedidos["ids"] = sorted(set(boe_planes_masters.ids_de_ruct(ruct)) - set(ya or ()))
+        (salida / "datos" / "boe" / "textos").mkdir(parents=True)
+        return {"descargados": 1}
+
+    monkeypatch.setattr(boe_planes_masters, "cmd_textos", textos)
+    monkeypatch.setattr(boe_planes_masters, "cmd_medir", lambda *a, **k: {"documentos": 1})
+    monkeypatch.setattr(extraer, "huellas_previas", lambda c: {})
+    monkeypatch.setattr(qedu_masters, "tarjetas", lambda r: (_ for _ in ()).throw(ConnectionError("x")))
+
+    def fichas(ext, salida, *a):
+        (salida / "datos").mkdir(parents=True)
+        (salida / "datos" / "fichas.jsonl").write_text("")
+        return {}
+
+    monkeypatch.setattr(fichas_masters, "ejecutar", fichas)
+    visto = {}
+    monkeypatch.setattr(conjunto_masters, "ejecutar", lambda *a, **k: visto.setdefault("boe", k.get("boe")) and {})
+    res = diario_masters.ejecutar(raiz, tmp_path / "out", 2, "SELLO", hoy=date(2026, 10, 31))
+    assert pedidos["ids"] == ["BOE-A-2012-2"] and res["boe_pendientes"] == 1
+    assert any(str(x).endswith("SELLO") for x in visto["boe"])

@@ -51,6 +51,8 @@ jobs:
           # Las carpetas de resultados se buscan por su forma en la rama (también las que suben otras ejecuciones
           # largas, como la lectura del RUCT), desde el sello «desde» del manifiesto
           git ls-tree -r --name-only FETCH_HEAD > arbol.txt
+          # planes del BOE que ya están en la rama (de cualquier ejecución): la pasada solo baja los que falten
+          sed -nE 's#.*/datos/boe/textos/.*(BOE-A-[0-9]{4}-[0-9]+)\.json$#\1#p' arbol.txt | sort -u > entrada/boe_descargados.txt || true
           python -m motor.estudios.diario_masters carpetas --manifiesto manifiesto.json --arbol arbol.txt \
             --salida entrada/carpetas.json > rutas.txt
           while read -r r; do git archive FETCH_HEAD "$r" 2>/dev/null | tar -x -C entrada 2>/dev/null || true; done < rutas.txt

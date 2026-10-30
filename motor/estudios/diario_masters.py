@@ -168,9 +168,27 @@ def ejecutar(raiz: Path, salida: Path, dia: int, sello: str, max_minutos: float 
     hay_ruct = any((nuevo / "datos" / "estudios" / "masters" / c).exists() for c in ("ruct", "ruct_memoria"))
     ruct_dirs = _rutas(raiz, m.get("ruct", [])) + ([nuevo] if hay_ruct else [])
     qedu_dirs = _rutas(raiz, m.get("qedu", [])) + ([nuevo] if (nuevo / "datos" / "estudios" / "masters" / "qedu").exists() else [])
+
+    # 3b. planes del BOE que dan las fichas del RUCT y aún no están en la rama (los de las lecturas largas del RUCT
+    # también): se bajan y se miden aquí, así que cada ficha nueva trae su plan al día siguiente como mucho
+    boe_dirs = _rutas(raiz, m.get("boe", []))
+    if not solo_conjunto:
+        from motor.estudios import boe_planes_masters
+
+        f_desc = raiz / "boe_descargados.txt"
+        ya = set(f_desc.read_text(encoding="utf-8").split()) if f_desc.exists() else set()
+        pendientes = set(boe_planes_masters.ids_de_ruct(ruct_dirs)) - ya
+        res["boe_pendientes"] = len(pendientes)
+        if pendientes and f_desc.exists():
+            res["boe_textos"] = boe_planes_masters.cmd_textos(ruct_dirs, nuevo, 0, None,
+                                                              max(2.0, min(25, (fin - time.time()) / 60 - 20)), ya=ya)
+            textos = nuevo / "datos" / "boe" / "textos"
+            if textos.exists():
+                res["boe_medicion"] = boe_planes_masters.cmd_medir(textos, ruct_dirs, nuevo)
+                boe_dirs = boe_dirs + [nuevo]
     res["conjunto"] = {k: v for k, v in conjunto_masters.ejecutar(
         raiz / m["catalogo"], salida / ESTADO / "conjunto", opcional("altas"), ruct_dirs, qedu_dirs, fichas,
-        opcional("conjunto"), fecha_catalogo=m.get("fecha_catalogo"), boe=_rutas(raiz, m.get("boe", [])),
+        opcional("conjunto"), fecha_catalogo=m.get("fecha_catalogo"), boe=boe_dirs,
         guias=_rutas(raiz, m.get("guias", []))).items()
         if not k.startswith("cobertura")}
 
