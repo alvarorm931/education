@@ -305,6 +305,8 @@ def grado_de_url(url: str, grados: list[dict]) -> str | None:
     return next(iter(union)) if len(union) == 1 else None
 
 
+COLUMNA_DE_DINERO = re.compile(r"(?i)precio|importe|matr[íi]cula|\btotal\b|plazos?|cuotas?|honorarios|tasas?|"
+                               r"ense[ñn]anza|docencia|mensualidad")
 BECA = re.compile(r"(?i)\bbecas?\b|\bbecad[oa]s?\b|\bbecarios?\b")
 SOLO_UNIDADES = re.compile(r"(?i)\b(?:ects|cr[ée]ditos?|horas?|cursos?|años?|semestres?|totales?)\b")
 
@@ -337,7 +339,9 @@ def extraer(paginas: list[str], grados: list[dict], de_la_pagina: str | None = N
                 continue
             if m := list(CURSO_DOC.finditer(linea)):
                 curso_linea = f"{m[-1].group(1)}-20{m[-1].group(2)}"
-            if cabecera and euros and " | " in linea:
+            # sin «€» ni «euros» en la página (Deusto): vale si la cabecera rotula columnas de dinero («MATRÍCULA»,
+            # «8 PLAZOS ENSEÑANZA», «TOTAL») y la cifra lleva céntimos
+            if cabecera and (euros or any(COLUMNA_DE_DINERO.search(c) for c in cabecera)) and " | " in linea:
                 linea = re.sub(r"(?<=\| )(\d{1,3}(?:\.\d{3})*,\d{2})(?= \||$)", r"\1 €", linea)
             hallados = list(IMPORTE.finditer(linea))
             celdas = [c.strip() for c in linea.split(" | ")]

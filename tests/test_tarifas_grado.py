@@ -149,8 +149,10 @@ def test_tabla_con_importes_sin_simbolo_de_euro():
                "Psicología | 60 | 1.278,00 | 639,00 | 6.390,00"]
     r = tg.extraer(paginas, G, None)
     assert sorted(i["valor"] for i in r["grados"]["1"]) == [639.0, 1278.0, 6390.0]
-    # sin la palabra «euros» en la página, las cifras sueltas no se toman por importes
-    assert not tg.extraer([paginas[0].replace("Importes en euros\n", "")], G, None)["grados"]
+    # sin la palabra «euros» en la página valen si la cabecera rotula columnas de dinero; si no, no son importes
+    assert tg.extraer([paginas[0].replace("Importes en euros\n", "")], G, None)["grados"]
+    sin_dinero = "GRADO | CRÉDITOS | HORAS | RATIO\nPsicología | 60 | 1.278,00 | 639,00"
+    assert not tg.extraer([sin_dinero], G, None)["grados"]
 
 
 def test_celdas_con_parrafos_no_parten_la_fila():
@@ -271,3 +273,12 @@ def test_cuotas_redondeadas_y_cuotas_sin_matricula_y_becas():
     r = tg.extraer(["Grado en Psicología | 950,00€ | 1.500,00€ | 533,33€ | 4.800,00€\n"
                     "Grado en Psicología (Becas Marqués de Lozoya) | 950,00€ | 1.500,00€ | 320,00€ | 2.880,00€"], G)
     assert 2880.0 not in {i["valor"] for i in r["grados"]["1"]}
+
+
+def test_tabla_sin_euros_con_columnas_de_dinero():
+    html = ("<table><tr><th>GRADO</th><th>CRÉDITOS</th><th>MATRÍCULA</th><th>8 PLAZOS ENSEÑANZA</th><th>TOTAL</th></tr>"
+            "<tr><td>Psicología</td><td>60</td><td>2.094,00</td><td>1.047,00</td><td>10.470,00</td></tr></table>")
+    r = tg.extraer(["\n".join(tg.lineas_html(html))], G)
+    assert {i["valor"] for i in r["grados"]["1"]} == {2094.0, 1047.0, 10470.0}
+    from motor.grados.fichas import precio_por_cuentas
+    assert precio_por_cuentas([2094.0, 1047.0, 10470.0])["precio_curso"] == 10470.0
