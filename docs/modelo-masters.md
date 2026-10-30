@@ -734,3 +734,7 @@ aceptados) y recitado (6.495 recuperados); desde el servidor de España, 48 pág
 - **UB**: su web responde 403 a GitHub y su buscador de másteres se pinta con JavaScript; la lectura de sus
   listados con el navegador y la extracción de lo que encuentre van en una sola ejecución en el servidor de España
   (`catalogos_uni.py leer --y-extraer`), en cola detrás del RUCT.
+- **Resultado de la noche (00:12 de Madrid, conjunto de `sondas:masters-estado` rehecho con `main`)**: 2.824
+  oficiales indexables (públicas 2.482 de 3.113, privadas 342 de 1.606), 114 con precio de la tabla de su
+  universidad; Navarra pasa de 3 a 35. Una asignatura repetida en la tabla del plan cuenta ya una vez: 15 másteres
+  con dos asignaturas distintas repetidas dejan de ser indexables (9 de la UB).
