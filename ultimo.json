@@ -1,12 +1,12 @@
 {
- "fecha": "2026-10-30T15:13:15+00:00",
- "fecha_madrid": "30/10 16:13",
+ "fecha": "2026-10-30T15:15:28+00:00",
+ "fecha_madrid": "30/10 16:15",
  "ventana_horas": 6.0,
  "resumen": {
-  "ejecuciones_revisadas": 221,
-  "fallos": 2,
+  "ejecuciones_revisadas": 225,
+  "fallos": 1,
   "fallos_pendientes": 0,
-  "relanzados": 1,
+  "relanzados": 0,
   "colas_largas": 6,
   "flujos_programados_parados": [],
   "programaciones_lanzadas_a_mano": [],
@@ -14,65 +14,6 @@
   "almacen": "ok"
  },
  "fallos": [
-  {
-   "flujo": "Motor de datos",
-   "fichero": "motor.yml",
-   "id": 41074279763,
-   "intento": 1,
-   "evento": "workflow_dispatch",
-   "rama": "main",
-   "commit": "17caa6c",
-   "titulo": "Motor de datos",
-   "conclusion": "failure",
-   "cuando": "30/10 16:11",
-   "url": "https://github.com/alvarorm931/education/actions/runs/41074279763",
-   "superado": false,
-   "en_curso": "https://github.com/alvarorm931/education/actions/runs/41078534936",
-   "pasajero": true,
-   "detalle": [
-    {
-     "trabajo": "motor",
-     "pasos": [
-      "BOE, textos de anuncios de oposiciones"
-     ],
-     "ejecutor": "GitHub Actions 1000001013",
-     "etiquetas": [
-      "ubuntu-latest"
-     ],
-     "final_registro": [
-      "Descargados: 621. Errores: 0",
-      "##[error]Process completed with exit code 1.",
-      "...",
-      "",
-      "- Ninguna",
-      "",
-      "\u001b[36;1m# Por tandas de 1.500 documentos, guardando tras cada una para no perder avance si se corta.\u001b[0m",
-      "\u001b[36;1mFIN=$(( $(date +%s) + MIN_TEXTOS * 60 ))\u001b[0m",
-      "\u001b[36;1mwhile [ \"$(date +%s)\" -lt \"$FIN\" ]; do\u001b[0m",
-      "\u001b[36;1m  RESTA=$(( (FIN - $(date +%s)) / 60 ))\u001b[0m",
-      "\u001b[36;1m  [ \"$RESTA\" -lt 1 ] && break\u001b[0m",
-      "\u001b[36;1m  python -m motor.boe.texto --pendientes --salida salida --max 1500 --max-minutos \"$RESTA\" | tee tanda.txt | tail -n 3 || true\u001b[0m",
-      "\u001b[36;1m  # Si la subida choca, la tanda queda guardada en local y sube con la siguiente: no se para la pasada\u001b[0m",
-      "\u001b[36;1m  ./guardar.sh \"BOE: textos de anuncios\" || echo \"::warning::BOE textos: la subida se reintenta con la siguiente tanda\"\u001b[0m",
-      "\u001b[36;1m  grep -q \"Documentos a descargar: 0\" tanda.txt && break\u001b[0m",
-      "\u001b[36;1mdone\u001b[0m",
-      "Documentos a descargar: 1500",
-      "Tiempo agotado: quedan 879 para la siguiente ejecución",
-      "Descargados: 621. Errores: 0",
-      "To https://github.com/alvarorm931/education",
-      " ! [rejected]              datos -> datos (fetch first)",
-      "error: failed to push some refs to 'https://github.com/alvarorm931/education'",
-      "hint: Updates were rejected because the remote contains work that you do not",
-      "hint: have locally. This is usually caused by another repository pushing to",
-      "hint: the same ref. If you want to integrate the remote changes, use",
-      "hint: 'git pull' before pushing again.",
-      "hint: See the 'Note about fast-forwards' in 'git push --help' for details.",
-      "##[error]Process completed with exit code 1."
-     ]
-    }
-   ],
-   "relanzado": true
-  },
   {
    "flujo": "Latido",
    "fichero": "latido.yml",
@@ -85,8 +26,8 @@
    "conclusion": "failure",
    "cuando": "30/10 15:28",
    "url": "https://github.com/alvarorm931/education/actions/runs/41068408931",
-   "superado": false,
-   "en_curso": "https://github.com/alvarorm931/education/actions/runs/41074901194",
+   "superado": true,
+   "en_curso": null,
    "pasajero": false,
    "detalle": [
     {
@@ -135,42 +76,42 @@
   {
    "flujo": "Estudios por tramos",
    "id": 41064537986,
-   "en_cola_min": 98,
+   "en_cola_min": 100,
    "trabajos_empezados": 0,
    "url": "https://github.com/alvarorm931/education/actions/runs/41064537986"
   },
   {
    "flujo": "Boletines autonómicos",
    "id": 41062712067,
-   "en_cola_min": 111,
+   "en_cola_min": 113,
    "trabajos_empezados": 2,
    "url": "https://github.com/alvarorm931/education/actions/runs/41062712067"
   },
   {
    "flujo": "Sonda de fuentes",
    "id": 41061393230,
-   "en_cola_min": 120,
+   "en_cola_min": 122,
    "trabajos_empezados": 0,
    "url": "https://github.com/alvarorm931/education/actions/runs/41061393230"
   },
   {
    "flujo": "Boletines autonómicos",
    "id": 41061253358,
-   "en_cola_min": 121,
+   "en_cola_min": 123,
    "trabajos_empezados": 2,
    "url": "https://github.com/alvarorm931/education/actions/runs/41061253358"
   },
   {
    "flujo": "Grados por tramos",
    "id": 41061047455,
-   "en_cola_min": 123,
+   "en_cola_min": 125,
    "trabajos_empezados": 0,
    "url": "https://github.com/alvarorm931/education/actions/runs/41061047455"
   },
   {
    "flujo": "Boletines autonómicos",
    "id": 41060907312,
-   "en_cola_min": 124,
+   "en_cola_min": 126,
    "trabajos_empezados": 2,
    "url": "https://github.com/alvarorm931/education/actions/runs/41060907312"
   }
