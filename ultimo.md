@@ -1,7 +1,7 @@
-# Vigilancia 30/10 08:13 (Madrid)
+# Vigilancia 30/10 08:18 (Madrid)
 
-- Ejecuciones revisadas (últimas 6 h): 320
-- Fallos: 5; pendientes: 1; relanzados ahora: 0
+- Ejecuciones revisadas (últimas 6 h): 324
+- Fallos: 4; pendientes: 1; relanzados ahora: 0
 - Colas de más de 30 minutos: 0
 - Flujos programados parados: ninguno
 - Almacén S3: ok
@@ -49,16 +49,4 @@ https://github.com/alvarorm931/education/actions/runs/40987648750 (intento 1, wo
       !!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
       1 error in 1.24s
       ##[error]Process completed with exit code 2.
-
-## Prueba del almacén de originales · 30/10 02:19 · superado
-https://github.com/alvarorm931/education/actions/runs/40985002326 (intento 1, workflow_dispatch, 86fe8bb, pasajero: False)
-- prueba · pasos: Run aws-actions/configure-aws-credentials@v4 · ejecutor: GitHub Actions 1000000242
-      Assuming role with OIDC
-      Assuming role with OIDC
-      Assuming role with OIDC
-      Assuming role with OIDC
-      Assuming role with OIDC
-      Assuming role with OIDC
-      Assuming role with OIDC
-      ##[error]Could not assume role with OIDC: Not authorized to perform sts:AssumeRoleWithWebIdentity
 

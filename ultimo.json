@@ -1,10 +1,10 @@
 {
- "fecha": "2026-10-30T07:13:11+00:00",
- "fecha_madrid": "30/10 08:13",
+ "fecha": "2026-10-30T07:18:35+00:00",
+ "fecha_madrid": "30/10 08:18",
  "ventana_horas": 6.0,
  "resumen": {
-  "ejecuciones_revisadas": 320,
-  "fallos": 5,
+  "ejecuciones_revisadas": 324,
+  "fallos": 4,
   "fallos_pendientes": 1,
   "relanzados": 0,
   "colas_largas": 0,
@@ -213,62 +213,6 @@
       "!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!",
       "1 error in 1.24s",
       "##[error]Process completed with exit code 2."
-     ]
-    }
-   ]
-  },
-  {
-   "flujo": "Prueba del almacén de originales",
-   "fichero": "almacen.yml",
-   "id": 40985002326,
-   "intento": 1,
-   "evento": "workflow_dispatch",
-   "rama": "main",
-   "commit": "86fe8bb",
-   "titulo": "Prueba del almacén de originales",
-   "conclusion": "failure",
-   "cuando": "30/10 02:19",
-   "url": "https://github.com/alvarorm931/education/actions/runs/40985002326",
-   "superado": true,
-   "pasajero": false,
-   "detalle": [
-    {
-     "trabajo": "prueba",
-     "pasos": [
-      "Run aws-actions/configure-aws-credentials@v4"
-     ],
-     "ejecutor": "GitHub Actions 1000000242",
-     "etiquetas": [
-      "ubuntu-latest"
-     ],
-     "final_registro": [
-      "##[error]Could not assume role with OIDC: Not authorized to perform sts:AssumeRoleWithWebIdentity",
-      "...",
-      "  allow-prereleases: false",
-      "  freethreaded: false",
-      "(node:2378) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.",
-      "(Use `node --trace-deprecation ...` to show where the warning was created)",
-      "Successfully set up CPython (3.12.15)",
-      "\u001b[36;1mpip install -q -e \"./codigo[almacen]\"\u001b[0m",
-      "with:",
-      "  role-to-assume: arn:aws:iam::369017477131:role/education-originales-github",
-      "  aws-region: eu-south-2",
-      "  role-session-name: prueba-almacen-40985002326",
-      "  audience: sts.amazonaws.com",
-      "  output-env-credentials: true",
-      "Assuming role with OIDC",
-      "Assuming role with OIDC",
-      "Assuming role with OIDC",
-      "Assuming role with OIDC",
-      "Assuming role with OIDC",
-      "Assuming role with OIDC",
-      "Assuming role with OIDC",
-      "Assuming role with OIDC",
-      "Assuming role with OIDC",
-      "Assuming role with OIDC",
-      "Assuming role with OIDC",
-      "Assuming role with OIDC",
-      "##[error]Could not assume role with OIDC: Not authorized to perform sts:AssumeRoleWithWebIdentity"
      ]
     }
    ]
