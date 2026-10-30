@@ -259,3 +259,15 @@ def test_extraer_guarda_la_lectura_con_miles_por_espacio():
 def test_diagnostico_html_sin_texto():
     d = tg.diagnostico_html("<table><tr><td>ADE</td><td>2.094,00</td></tr></table><script>x='1.047,00'</script>")
     assert d["tablas"] == 1 and d["filas"] == 1 and d["cifras_visibles"] == 1 and d["cifras_en_scripts"] == 1
+
+
+def test_cuotas_redondeadas_y_cuotas_sin_matricula_y_becas():
+    from motor.grados.fichas import precio_por_cuentas
+
+    assert precio_por_cuentas([932, 1500, 10815])["precio_curso"] == 10815  # 1.500 + 10 × 931,50
+    c = precio_por_cuentas([950.0, 1500.0, 533.33, 4800.0])  # 9 cuotas de 533,33 €
+    assert c["precio_curso"] == 4800.0 and c["metodo"] == "cuotas_iguales_sin_matricula"
+    assert precio_por_cuentas([950.0, 1500.0, 4800.0]) is None
+    r = tg.extraer(["Grado en Psicología | 950,00€ | 1.500,00€ | 533,33€ | 4.800,00€\n"
+                    "Grado en Psicología (Becas Marqués de Lozoya) | 950,00€ | 1.500,00€ | 320,00€ | 2.880,00€"], G)
+    assert 2880.0 not in {i["valor"] for i in r["grados"]["1"]}

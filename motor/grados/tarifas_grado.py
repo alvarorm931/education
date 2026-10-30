@@ -305,6 +305,7 @@ def grado_de_url(url: str, grados: list[dict]) -> str | None:
     return next(iter(union)) if len(union) == 1 else None
 
 
+BECA = re.compile(r"(?i)\bbecas?\b|\bbecad[oa]s?\b|\bbecarios?\b")
 SOLO_UNIDADES = re.compile(r"(?i)\b(?:ects|cr[ée]ditos?|horas?|cursos?|años?|semestres?|totales?)\b")
 
 
@@ -351,6 +352,8 @@ def extraer(paginas: list[str], grados: list[dict], de_la_pagina: str | None = N
                 continue
             con_importe += 1
             texto_sin = IMPORTE.sub(" ", linea)
+            if BECA.search(texto_sin):
+                continue  # «Educación Primaria (Becas Marqués de Lozoya)»: el precio con beca no es el del grado
             codigo = grado_de(linea, grados)
             # una línea de solo cifras, o con solo el rótulo del importe («Coste/crédito anual 147,50 €»), es del
             # grado de la línea de texto anterior

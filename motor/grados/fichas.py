@@ -100,16 +100,26 @@ def precio_por_cuentas(valores: list[float]) -> dict | None:
     if b:
         return {"precio_curso": b[0][0], "metodo": "credito_por_60_mas_matricula", "matricula_o_reserva": b[0][2],
                 "primer_curso_con_matricula": b[0][1], "soluciones": len(b)}
+    # la cuota puede venir redondeada al euro (Francisco de Vitoria: 1.500 € + 10 × 932 € = 10.820 € frente a
+    # 10.815 €, cuota de 931,50 €): se admite medio euro por cuota
+    tol = lambda n: max(2.0, 0.5 * n)  # noqa: E731
     c = sorted({k for k in cursos for r in pequenos for m in pequenos if m != r
-                for n in range(8, 13) if abs(r + n * m - k) <= 2})
+                for n in range(8, 13) if abs(r + n * m - k) <= tol(n)})
     if c:
         return {"precio_curso": c[0], "metodo": "reserva_mas_cuotas", "soluciones": len(c)}
     # el total anual es la reserva más la matrícula más 8 a 12 cuotas iguales (Alfonso X: «24.250 € | 3.000 € |
     # 1.350 € | 10 | 1.990 €»): el precio del curso es ese total, que se paga cada año
     d = sorted({k for k in cursos for r in pequenos for m in pequenos for q in pequenos if len({r, m, q}) == 3
-                for n in range(8, 13) if abs(r + m + n * q - k) <= 2})
+                for n in range(8, 13) if abs(r + m + n * q - k) <= tol(n)})
     if d:
         return {"precio_curso": d[0], "metodo": "reserva_matricula_y_cuotas", "soluciones": len(d)}
+    # el precio anual de la enseñanza es 8 a 12 cuotas iguales de otro importe de la fila, sin la reserva ni la
+    # matrícula, que se pagan aparte (CEU San Pablo: «533,33 € | 4.800,00 €», nueve cuotas)
+    mensuales = [x for x in v if RANGO_PRECIO["mensual"][0] <= x <= RANGO_PRECIO["mensual"][1]]
+    e = sorted({k for k in cursos for m in mensuales for n in range(8, 13) if abs(n * m - k) <= tol(n)})
+    if e:
+        return {"precio_curso": e[0], "metodo": "cuotas_iguales_sin_matricula", "soluciones": len(e),
+                "nota_matricula": "la reserva y la matrícula se pagan aparte"}
     return None
 
 
