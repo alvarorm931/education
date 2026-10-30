@@ -6,6 +6,7 @@ bloques sangrados: sección («IV. ADMINISTRACIÓN LOCAL»), grupo («Ayuntamien
 por anuncio, el asunto y su PDF (/documentacion/bop/AAAA/AAAAMMDD/BOP-SA-AAAAMMDD-NNN.pdf).
 
 Uso: python -m motor.provinciales.bopsalamanca --salida ruta/
+     python -m motor.provinciales.bopsalamanca --historico --max-minutos 30 --salida ruta/
 """
 
 from __future__ import annotations
@@ -48,7 +49,10 @@ def leer(contenido: bytes) -> dict:
 
 PORTADA = Portada(fuente="bopsalamanca", siglas="BOP-SALAMANCA", provincia="Salamanca",
                   url=BASE + "/opencms/opencms/sede/BOP/", nombres=("Boletín Oficial de la Provincia de Salamanca",),
-                  leer=leer)
+                  leer=leer,
+                  # Boletín de cada día (el calendario de la portada lleva a index.jsp?fechaBoletin=AAAA-MM-DD; verificado
+                  # desde España para el 28/10/2026 y el 03/01/2022)
+                  url_dia=lambda d: f"{BASE}/opencms/opencms/sede/BOP/index.jsp?fechaBoletin={d:%Y-%m-%d}")
 FUENTE, SIGLAS, NOMBRES = PORTADA.fuente, PORTADA.siglas, PORTADA.nombres
 
 

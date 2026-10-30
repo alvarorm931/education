@@ -6,6 +6,7 @@ trae el sumario del día: sección (p.seccion «Administración Local»), entida
 (descargarws.dip?fechaBoletin=AAAA-MM-DD&numeroEdicto=N…). El número y la fecha salen del enlace al sumario.
 
 Uso: python -m motor.provinciales.bopjaen --salida ruta/
+     python -m motor.provinciales.bopjaen --historico --max-minutos 30 --salida ruta/
 """
 
 from __future__ import annotations
@@ -46,7 +47,10 @@ def leer(contenido: bytes) -> dict:
 
 
 PORTADA = Portada(fuente="bopjaen", siglas="BOP-JAEN", provincia="Jaén", url=BASE + "/",
-                  nombres=("Boletín Oficial de la Provincia de Jaén",), leer=leer)
+                  nombres=("Boletín Oficial de la Provincia de Jaén",), leer=leer,
+                  # Boletín de cada día por el calendario de la portada (/bop/DD-MM-AAAA; verificado desde España para el
+                  # 28/10/2026 y el 03/01/2022)
+                  url_dia=lambda d: f"{BASE}/bop/{d:%d-%m-%Y}")
 FUENTE, SIGLAS, NOMBRES = PORTADA.fuente, PORTADA.siglas, PORTADA.nombres
 
 
