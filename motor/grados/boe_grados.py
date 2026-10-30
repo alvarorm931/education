@@ -175,7 +175,7 @@ def _columnas(cabecera: list[str]) -> dict[str, int]:
 RESUMEN = re.compile(r"^\s*(tipo|car[áa]cter) de (asignatura|materia|m[óo]dulo|cr[ée]dito|formaci)|^\s*tipo\s*$|"
                      r"^\s*distribuci[óo]n", re.I)
 CODIGOS_CARACTER = {
-    "basica": {"fb", "b", "bs", "ba", "fba", "bas", "fbr"},
+    "basica": {"fb", "b", "bs", "ba", "fba", "bas", "fbr", "mb", "bsc", "mbr", "fbc", "bc"},
     "obligatoria": {"ob", "o", "obl", "obg", "obli"},
     # «OBM», «OPM»: obligatoria u optativa de mención; en la tabla de créditos cuentan como optatividad
     "optativa": {"op", "opt", "ot", "optat", "obm", "opm", "om", "obme", "opme", "obmen"},
@@ -317,6 +317,11 @@ def _corregir_columnas(cols: dict[str, int], filas: list[list[str]]) -> dict[str
     return cols
 
 
+# Cabecera de la tabla de formación básica del RD 1393/2007: «Rama de conocimiento | Materia | Asignaturas vinculadas»
+RE_TABLA_BASICAS = re.compile(r"rama de conocimiento|^\s*rama\s*$|materias? b[áa]sicas?|asignaturas? vinculadas|"
+                              r"materia (?:del )?(?:anexo|rd|real decreto)", re.I)
+
+
 def tipo_de_rotulo(texto: str | None) -> str | None:
     """Tipo de las asignaturas de una tabla o de un tramo por su rótulo: «Total de créditos de formación básica
     = 60», «Asignaturas obligatorias», «Optatividad». Con más de un tipo en el rótulo, ninguno."""
@@ -440,6 +445,8 @@ def plan(tablas: list[dict], dist: dict | None = None) -> list[dict]:
             continue
         # rótulo encima de la tabla o en la propia cabecera de la columna del nombre («Asignaturas optativas»)
         tipo_tabla = tipo_de_rotulo(t.get("rotulo")) or tipo_de_rotulo(cab[cols["nombre"]])
+        if not tipo_tabla and "caracter" not in cols and any(RE_TABLA_BASICAS.search(c or "") for c in cab):
+            tipo_tabla = "basica"  # la tabla de materias básicas por rama del RD 1393/2007 (art. 12.5)
         if not tipo_tabla:  # fila de total al pie: «Total de créditos de formación obligatoria. | 150»
             pies = {tipo_de_rotulo(f[cols["nombre"]]) for f in cuerpo if TOTAL.match((f[cols["nombre"]] or "").strip())}
             pies.discard(None)
@@ -464,8 +471,11 @@ def plan(tablas: list[dict], dist: dict | None = None) -> list[dict]:
                 "nombre": nombre,
                 "modulo": modulo or estado["modulo"],
                 "caracter": caracter,
-                "tipo": tipo_caracter(caracter) or estado["tipo"] or tipo_tabla,
-                "tipo_por_rotulo": not tipo_caracter(caracter) and bool(estado["tipo"] or tipo_tabla),
+                # el tipo: su columna; si no, la fila separadora, el rótulo de la tabla o el nombre del módulo
+                # («Módulo 1: Formación Básica Común»)
+                "tipo": tipo_caracter(caracter) or estado["tipo"] or tipo_tabla or tipo_de_rotulo(modulo or estado["modulo"]),
+                "tipo_por_rotulo": not tipo_caracter(caracter) and bool(estado["tipo"] or tipo_tabla
+                                                                         or tipo_de_rotulo(modulo or estado["modulo"])),
                 "creditos": _num(f[cols["creditos"]]),
                 "curso": curso,
                 "semestre": semestre,
