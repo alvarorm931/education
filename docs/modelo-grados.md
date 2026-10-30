@@ -1,6 +1,6 @@
 # Módulo de grados (carreras): universo, fuentes medidas y ficha
 
-Versión 30/10/2026 (mañana). Lo mantiene la conversación de grados. Todas las cifras salen de datos reales capturados el
+Versión 30/10/2026 (mediodía). Lo mantiene la conversación de grados. Todas las cifras salen de datos reales capturados el
 29 y el 30/10/2026 (originales en la rama `sondas`, carpeta indicada en cada caso); lo que no está medido se dice.
 Código en `motor/grados/`, pruebas en `tests/test_*grados*.py`, `tests/test_qedu.py`, flujo `grados.yml`.
 Desde el 30/10/2026 (02:47) `grados.yml` guarda los originales enteros en el almacén privado S3
@@ -220,8 +220,9 @@ comunidad, acreditaciones, extinción, centros e **identificador BOE de su plan*
 peticiones sin un fallo): 3.080 grados activos tienen ahí el identificador BOE de su plan.
 
 Las memorias de verificación (asignaturas, semestre, evaluación, plazas por centro) pesan entre 100 y 250 páginas
-por título en el RUCT; se midieron en una muestra de 6 (785 peticiones) y no se piden en masa: solo donde el BOE no
-dé asignaturas, y cuando se decida.
+por título en el RUCT; se midieron en una muestra de 6 (785 peticiones). Decidido por Álvaro el 30/10/2026: se
+piden para los 1.020 grados sin plan comprobado (68 tramos; los textos largos de la memoria quedan solo en el
+almacén privado y en `sondas` va su tamaño y su huella, `ruct_grados.sin_textos`).
 
 ### Precio
 
@@ -236,9 +237,29 @@ dé asignaturas, y cuando se decida.
   la ficha (`precio_credito_norma`): precio único en Andalucía (12,62 €) y Cataluña (17,69 €); por rama en Galicia
   y Cantabria (en un doble, solo si sus dos grados caen en el mismo precio). Antes se contrastó con QEDU: las 403
   ofertas andaluzas con precio menos una (un grado conjunto internacional), las 348 catalanas, las 140 gallegas y
-  las 26 cántabras cuadran con la regla. Resultado: 316 fichas más con precio (306 dobles y 10 grados). En las
-  comunidades con niveles por título (Madrid, Castilla y León, C. Valenciana…) el precio de un doble no se deduce:
-  pendiente de leer qué dice cada norma de los dobles (§5).
+  las 26 cántabras cuadran con la regla. Resultado: 316 fichas más con precio (306 dobles y 10 grados).
+- **Dobles de públicas en comunidades con niveles por título** (`precios.REGLA_DOBLE`, `ANEXO_DOBLE` y
+  `REGLA_DOBLE_UNIVERSIDAD`; solo centros propios, con la norma, su URL y el curso en la ficha):
+  - **Madrid** (Decreto 43/2022): media aritmética de los precios de sus dos grados (contraste: la UAM publica la
+    media exacta). 121 dobles.
+  - **Anexo de la norma con el nivel de cada doble** (55): Castilla-La Mancha (Orden 74/2026), Extremadura
+    (Decreto 145/2026), Illes Balears (Acuerdo de 3/7/2026), Aragón (Decreto 120/2026), Canarias (Decreto
+    177/2022, prorrogado; solo la ULPGC lista dobles) y Asturias (Decreto 45/2026, que trae el código de cada
+    PCEO). El cruce de cada denominación del anexo con su doble se hizo por los nombres de sus dos grados y se
+    revisó a mano; la ficha guarda la denominación literal. Contraste: en esas seis universidades, todas las
+    ofertas de grado de centros propios con precio en QEDU tienen uno de los niveles de su norma (86, 65, 41, 58,
+    45 y 53 ofertas).
+  - **Reglas de la universidad cuando la norma no dice nada** (16): Valladolid (cada asignatura paga el precio
+    de su grado) y Universitat de València (nivel superior; el reglamento no dice si es el de más precio). Con las
+    dos solo se deduce cuando los dos grados cuestan lo mismo.
+  - No se deduce (149 dobles de públicas siguen sin precio): Salamanca (26, precio de cada programa por
+    resolución del rector), UPV (17), UPV/EHU (14, la orden no regula dobles), Murcia (potestativo), Pública de
+    Navarra, La Laguna (su anexo no lista dobles), Miguel Hernández, Alicante, Burgos, León…; ni el doble de
+    Almendralejo (centro adscrito, aunque el anexo de Extremadura lo cite).
+- **Centros adscritos de públicas y centros de privadas con web propia** (Esade, IQS, Tecnocampus…): se rastrea la
+  web de cada centro (`web_privadas.py --por-centros`, 124 webs) y sus listas de precios se cruzan con los grados
+  de ese centro (`tarifas_grado.grados_por_codigo`). En una pública solo valen las del centro adscrito y solo si
+  QEDU no da precio.
 - **Privadas:** QEDU no da precio. Tres fuentes propias, siempre con URL y fecha:
   1. **la página del grado** (`motor/grados/web_privadas.py`, las 43 universidades privadas con web en el RUCT):
      se une cada grado con su página por las palabras del nombre (también el nombre inglés de los bilingües) y se
@@ -273,9 +294,40 @@ dé asignaturas, y cuando se decida.
 
 ### Lo que falta por medir
 
-- Notas de corte de cinco cursos o más por cupo: distritos (módulo de notas de corte, fase 2 de la guía).
+- Notas de corte de cinco cursos o más por cupo (decisión de Álvaro: dentro de grados). En marcha, ver
+  «Notas de corte históricas» abajo.
 - Guías docentes de grado: la guía decidió no hacerlas asignatura por asignatura para carreras.
 - Una frase por asignatura (guía): se genera cuando el plan esté completo; no es un dato de fuente.
+
+### Notas de corte históricas (en marcha)
+
+QEDU da dos cursos (2025-2026 y el anterior) con el código del título y del centro. Para cinco cursos por cupo hay
+que ir a cada distrito: fuentes oficiales localizadas el 30/10/2026 en las 17 comunidades; solo Cataluña
+(Generalitat, datos abiertos), la Universidad de Murcia y la de Zaragoza las dan en datos abiertos; el resto, PDF o
+HTML, y ninguna con el código del título salvo la Universidad de Murcia (código del título y del centro del
+Ministerio).
+
+- **Fase 1** (`motor/grados/notas_fuentes.py`): lee las páginas índice y los ficheros oficiales de cada distrito,
+  guarda el original en el almacén y mide cada documento (formato, curso, filas con nota) para escribir su lector.
+  Nunca pide ni guarda listas de personas (admitidos, espera, excluidos, tablón de la sede) ni documentos con DNI
+  o NIE (el 30/10 se colaron 19 listas de la Pública de Navarra en el almacén: corregido en el código y pedido su
+  borrado en el buzón de incidencias).
+- Medido el 30/10: Madrid (distrito único, un PDF por curso de 2020-2021 a 2026-2027, grupos 1 a 6, ordinaria y
+  extraordinaria, unas 600 ofertas por curso); Cataluña (Socrata, cupo general de 2023-2024 a 2026-2027 con
+  plazas y 2022-2023 con cuatro cupos, nota al inicio y al final); Universidad de Murcia (CSV de 2021-2022 a
+  2024-2025 con código de título y centro, que cuadra con QEDU al redondear a dos decimales); UPV/EHU (PDF de
+  texto hasta 2021-2022 y de imagen desde 2022-2023); Salamanca, León, Burgos, Cantabria, Pública de Navarra
+  (una lista de notas por adjudicación), Comunitat Valenciana (solo 2026-2027 en la copia de la UV; la web de la
+  Generalitat lo cierra por robots.txt), UCLM, Granada, Cádiz. Sin acceso desde GitHub: ULPGC y Extremadura (403),
+  CiUG (sin respuesta), La Rioja (429), Valladolid (404 en las direcciones conocidas).
+- Lo que da la nota de cada distrito no es siempre lo mismo: la de Cataluña es la de la primera asignación de
+  junio (solo coincide con la final de QEDU en un 10 %); Madrid y Murcia, la final. Cada fila guardará el tipo de
+  lista y su fecha.
+- Licencias: Zaragoza publica sus datos abiertos con CC BY-NC (no comercial), que choca con una web con
+  anuncios: fuera hasta que Álvaro decida (sus PDF no llevan licencia propia). Murcia: CC0 en su portal y CC BY-SA
+  en datos.gob.es.
+- **Fase 2** (pendiente): lector de cada formato y unión de cada fila con su título y centro (nombre, municipio,
+  plazas y, donde la nota es la final, la nota de QEDU de los cursos que se solapan).
 
 ## 3. La ficha del grado
 
@@ -299,22 +351,28 @@ serían casi iguales (ley SEO). Dirección: `/universidad/{universidad}/grado/{g
 
 Cada dato lleva fuente, URL y fecha de captura; la fecha solo cambia si cambia el dato.
 
-### Datos mínimos para indexar (propuesta)
+### Datos mínimos para indexar (decidido por Álvaro el 30/10/2026)
 
-La ley SEO fija los del máster («asignaturas y precio») pero no los del grado. Propuesta, a decidir:
-
-- **asignaturas** comprobadas (el listado cuadra con la tabla de créditos del plan);
+- **asignaturas** comprobadas (el listado cuadra con la tabla de créditos del plan; en un doble, las de sus dos
+  grados);
 - y al menos una cifra propia del grado: **nota de corte o precio**.
 
-Cuando se decida, se declara en `DATOS_MINIMOS` de `motor/seo/reglas.py` (cada módulo declara los suyos; «grado»
-ya figura como tipo de ficha en `motor/seo/control.py`): `"grado": [["asignaturas"], ["nota_corte", "precio_total",
-"precio_credito"]]`.
+Declarado en `DATOS_MINIMOS` de `motor/seo/reglas.py`: `"grado": [["asignaturas"], ["nota_corte", "precio_total",
+"precio_credito", "precio_curso"]]`.
+
+### Direcciones estables (`motor/grados/identificadores.py`)
+
+Una tabla que solo crece: cada universidad, genérico, título y asignatura con página recibe su dirección la
+primera vez y no la pierde ni la cede (`identificadores.json`, junto a las fichas). Sin códigos en la dirección:
+dos títulos con el mismo nombre en la misma universidad se distinguen por ciudad, modalidad, idioma o año del
+plan; las fichas próximas (altas del BOE), por el año del alta. 13.026 direcciones el 30/10/2026; una segunda
+pasada sobre los mismos datos no crea ninguna.
 
 ### Cómo se genera (`motor/grados/fichas.py`)
 
 Une catálogo, genérico, QEDU, indicadores del SIIU, plan del BOE, ficha del RUCT y precios de las privadas sin
 pedir nada a ninguna fuente, y marca cada ficha como indexable o no, con el motivo. Con todo lo capturado hasta el
-30/10/2026 por la mañana:
+30/10/2026 a mediodía:
 
 | | Fichas |
 |---|---|
@@ -322,8 +380,8 @@ pedir nada a ninguna fuente, y marca cada ficha como indexable o no, con el moti
 | Con sus centros en QEDU | 4.265 |
 | Ofertas de QEDU con detalle (plazas, precio, inserción) | 5.486 de 5.486 |
 | Con nota de corte | 2.662 |
-| Con precio de primera matrícula (públicas) | 2.113 de 2.239 grados y 306 de 647 dobles de públicas |
-| De ellos, con el precio de la norma de su comunidad (QEDU no lo da) | 316 |
+| Con precio de primera matrícula (públicas) | 2.113 de 2.239 grados y 498 de 647 dobles de públicas |
+| De ellos, con el precio de la norma de su comunidad (QEDU no lo da) | 508 |
 | Privadas con precio por curso | 253 de 1.410 |
 | Con inserción laboral | 1.703 |
 | Con indicadores de rendimiento del SIIU | 3.125 |
@@ -331,11 +389,11 @@ pedir nada a ninguna fuente, y marca cada ficha como indexable o no, con el moti
 | Grados con plan del BOE | 3.095 de 3.265 |
 | Grados con plan comprobado | 2.245 (1.595 por asignaturas, el resto por materias) |
 | Dobles con los planes de sus dos grados comprobados | 599 |
-| **Indexables** con la propuesta de datos mínimos | **2.056** (1.719 grados y 337 dobles; 1.842 de públicas y 214 de privadas) |
+| **Indexables** con los datos mínimos decididos | **2.100** (1.719 grados y 381 dobles; 1.886 de públicas y 214 de privadas) |
 
 El resto va con `noindex` y su motivo: 850 con plan que no
 cuadra, 602 sin plan (o doble sin los dos planes comprobados) y
-1.201 sin nota ni precio (casi todas, privadas que no publican el precio); una
+1.148 sin nota ni precio (casi todas, privadas que no publican el precio); una
 ficha puede tener varios.
 
 Para rehacerlo todo desde `sondas`: bajar las carpetas con `datos/estudios/grados/` y ejecutar en orden
@@ -371,18 +429,18 @@ comprobados por asignaturas:
 
 ## 5. Siguientes pasos
 
-1. **Decisiones de Álvaro:** datos mínimos del grado (propuesta en §3) y la excepción del RUCT (§2), que tomó
-   Claude y se puede revertir.
+1. **Decisiones de Álvaro:** la excepción del RUCT (§2), que tomó Claude y se puede revertir; Zaragoza (licencia
+   no comercial de sus datos abiertos de notas de corte).
 2. Planes que no cuadran (sobre todo publicados solo por materias o sin carácter por asignatura): memorias del RUCT
-   solo para esos grados (unas 130 peticiones por título; decidir alcance) o la página de la universidad.
+   de los 1.020 grados sin plan comprobado (decidido por Álvaro); 68 tramos en cola en GitHub desde las 11:36.
 3. Privadas sin precio: peticiones a cada universidad cuando el portal tenga dirección pública
-   (`docs/estrategia-informacion-cerrada.md` §3.4); Navarra, Comillas, UOC y Ramón Llull, a mano.
-4. Precio de los dobles de públicas en comunidades con niveles por título (341 fichas sin precio): leer qué
-   dice cada norma de los dobles (si cada asignatura paga el nivel de su grado, un doble con sus dos grados al mismo
-   precio tiene ese precio) antes de deducir nada; los centros adscritos, de su web.
-5. Mantenerlo al día: BOE diario (planes y modificaciones nuevos), QEDU y SIIU cada curso, RUCT semanal
-   (acreditaciones y extinciones), webs de privadas en primavera-verano.
-6. Identificadores estables de genérico y de asignatura (tabla que solo crece) antes de publicar.
+   (`docs/estrategia-informacion-cerrada.md` §3.4); Comillas y UOC desde el servidor de España; Navarra con su
+   lista de precios conocida (`tarifas_grado.URLS_CONOCIDAS`).
+4. Dobles de públicas sin precio (149): resoluciones de cada programa en Salamanca; UPV y UPV/EHU, de su web.
+5. Notas de corte de cinco cursos por cupo: fase 2 (lectores y unión con título y centro).
+6. Mantenerlo al día: BOE diario (planes y modificaciones nuevos), QEDU y SIIU cada curso, RUCT semanal
+   (acreditaciones y extinciones), webs de privadas en primavera-verano, notas de corte en cada adjudicación.
+7. Generador de páginas de grado con el diseño «Noche en blanco» y el control de la ley SEO.
 
 Límite conocido: 8 parejas de grados activos con el mismo nombre en la misma universidad (un título del RD
 1393/2007 que se extingue y su sucesor del RD 822/2021) pueden compartir el plan más reciente.
@@ -400,3 +458,8 @@ Límite conocido: 8 parejas de grados activos con el mismo nombre en la misma un
   leyendas de códigos de `boe_grados.leyenda` sirven para precios y planes de máster.
 - **Todas:** el catálogo SIIU y el sumario del BOE ya capturados sirven sin volver a pedirlos
   (`motor/grados/catalogo.py --originales`, `motor/grados/boe_grados.py actos`).
+- **SEO:** grados declaró su tipo en `DATOS_MINIMOS` de `motor/seo/reglas.py` (decisión de Álvaro) y, para eso,
+  cambió `tests/test_seo.py::test_tipo_sin_declarar`, que usaba «grado» como ejemplo de tipo sin declarar: ahora
+  usa «tipo-sin-declarar».
+- **Todas las que lean listas oficiales:** `motor/grados/notas_fuentes.PERSONAS` y `DNI` filtran las listas de
+  personas antes de pedirlas o guardarlas; sirven para cualquier rastreo que siga enlaces de una sede.
