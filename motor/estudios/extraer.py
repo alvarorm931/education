@@ -464,8 +464,22 @@ META = ("proveedor", "grupo", "codigo_ruct", "codigos_ruct", "pagina", "principa
 MIN_CARACTERES = 200  # menos texto que esto: página vacía, de aviso o que se pinta con JavaScript; no se envía
 
 
+def huellas_previas(carpetas: list[Path]) -> dict[str, str]:
+    """URL → huella de la última captura ya extraída (paginas_extraidas.jsonl de tandas anteriores)."""
+    previas: dict[str, tuple[str, str]] = {}
+    for c in carpetas:
+        for f in sorted(c.rglob("paginas_extraidas.jsonl")):
+            for l in f.read_text(encoding="utf-8").splitlines():
+                if l.strip():
+                    x = json.loads(l)
+                    if x["url"] not in previas or x["extraido"] >= previas[x["url"]][1]:
+                        previas[x["url"]] = (x["captura_sha256"], x["extraido"])
+    return {u: h for u, (h, _) in previas.items()}
+
+
 def lote(muestra: Path, salida: Path, esperar_min: float = 45, max_paginas: int | None = None, desde: int = 0,
-         hilos: int = 12, max_minutos: float = 52, guarda: Guarda | None = None) -> dict:
+         hilos: int = 12, max_minutos: float = 52, guarda: Guarda | None = None,
+         previas: dict[str, str] | None = None) -> dict:
     """Tanda en una ejecución: capturar, enviar el lote, esperar, comprobar citas y medir el coste real.
 
     Lo público (salida) lleva URL, huellas, valores y coste. Lo ajeno (el texto enviado, las respuestas con sus
@@ -491,6 +505,10 @@ def lote(muestra: Path, salida: Path, esperar_min: float = 45, max_paginas: int 
                 cuentas["reserva_tdm"] += 1
             elif texto is None:
                 cuentas[pg.get("motivo", "error")] += 1
+            elif previas and previas.get(pg["url"]) == pg.get("sha256"):
+                # misma página que la ya extraída (misma huella): sus hechos siguen vigentes, no se paga otra vez
+                cuentas["sin_cambios"] += 1
+                pg["motivo"] = "sin_cambios"
             elif len(texto) < MIN_CARACTERES:
                 cuentas["sin_texto_suficiente"] += 1
                 pg["motivo"] = "sin_texto_suficiente"
@@ -961,6 +979,8 @@ def main() -> None:
     p.add_argument("--hilos", type=int, default=12, help="servidores a la vez (cada uno, una petición por segundo)")
     p.add_argument("--max-minutos", type=float, default=52, help="tope de la ejecución entera")
     p.add_argument("--lote-json", help="retomar: lote.json de la ejecución que envió el lote")
+    p.add_argument("--previas", action="append", default=[],
+                   help="lote: carpetas de tandas anteriores; las páginas con la misma huella no se vuelven a enviar")
     p.add_argument("--paginas-oficiales", help="lista-oficiales: paginas_oficiales.jsonl de emparejar.py")
     p.add_argument("--paginas")
     p.add_argument("--lote")
@@ -975,7 +995,8 @@ def main() -> None:
     elif base is not None and a.orden == "retomar":
         destino = base / ("retomado_" + Path(a.lote_json).parent.name)
     if a.orden == "lote":
-        res = lote(Path(a.muestra), destino, a.esperar_min, a.max_paginas, a.desde, a.hilos, a.max_minutos)
+        res = lote(Path(a.muestra), destino, a.esperar_min, a.max_paginas, a.desde, a.hilos, a.max_minutos,
+                   previas=huellas_previas([Path(x) for x in a.previas]) if a.previas else None)
     elif a.orden == "retomar":
         res = retomar(Path(a.lote_json), destino, a.esperar_min)
     elif a.orden == "lista-no-oficiales":

@@ -322,3 +322,18 @@ def test_precio_en_otra_moneda_o_version_de_otro_pais():
     assert h["estado"] == "revision" and h["motivo"] == "moneda_no_euro_o_fuera_de_rango"
     assert e._no_es_ficha_por_url("https://www.medicapanamericana.com/es-CO/formacion/master-en-urologia")
     assert not e._no_es_ficha_por_url("https://www.medicapanamericana.com/es/formacion/master-en-urologia")
+
+
+def test_pagina_sin_cambios_no_se_vuelve_a_enviar(tmp_path, monkeypatch):
+    import json as js
+    monkeypatch.setattr(e, "capturar", lambda urls, **kw: [
+        {"url": urls[0], "estado_http": 200, "sha256": "igual", "reserva_tdm": False, "texto": "x" * 500}])
+    llamadas = []
+    monkeypatch.setattr(e.requests, "post", lambda *a, **k: llamadas.append(1))
+    (tmp_path / "m.jsonl").write_text(js.dumps({"url": "https://x.es/m"}) + "\n")
+    prev = tmp_path / "prev"
+    prev.mkdir()
+    (prev / "paginas_extraidas.jsonl").write_text(js.dumps({"url": "https://x.es/m", "captura_sha256": "igual",
+                                                            "extraido": "2026-10-30T00:00:00+00:00"}) + "\n")
+    res = e.lote(tmp_path / "m.jsonl", tmp_path / "o", guarda=e.Guarda(None), previas=e.huellas_previas([prev]))
+    assert res["sin_cambios"] == 1 and not llamadas
