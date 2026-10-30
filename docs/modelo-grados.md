@@ -348,6 +348,11 @@ Ministerio).
     definitivas de la convocatoria ordinaria (última lista de admitidos, en noviembre, según la propia página).
     Tras la cifra del cupo general puede ir «PREF» o «N.P.» (último admitido preferente o no); se guarda tal cual.
     La página no indica licencia; es información pública de la Junta (Ley 37/2007).
+  - **Cantabria:** «Comparativa notas de corte estudios de grado. 5 últimos cursos» (2021-2022 a 2025-2026,
+    convocatoria ordinaria y extraordinaria), PDF de imagen: lectura óptica con tesseract y la posición de cada
+    palabra (`notas_fuentes --ocr --posiciones`); cada cifra va a la columna cuyo rótulo tiene el centro más cerca
+    (las celdas vacías no salen en el texto) y la fila con una cifra lejos de toda columna o dos en la misma no se
+    usa. Contraste con QEDU: 33 iguales, 3 de lista posterior y 2 distintas (no se publican) de 38.
   - **UPV/EHU:** un PDF por curso de 2017-2018 a 2021-2022, por campus (Álava, Gipuzkoa, Bizkaia: el campus da los
     municipios para elegir centro), plazas y cinco cupos con su leyenda («*» plazas vacantes, «─» sin acceso, «E»
     nota de la extraordinaria). Las cifras salen pegadas en el texto («*8,0836,610»): se parte cada fila en cinco
@@ -381,6 +386,7 @@ Ministerio).
     | Madrid | 606 | 26 | — | 19 |
     | Murcia | 45 | 2 | — | 17 |
     | Salamanca | 29 | 1 | 3 | — |
+    | Cantabria (lectura óptica) | 33 | 3 | — | 2 |
 
     Revisión a mano de 6 notas de 2021-2022 de Madrid al azar contra el PDF oficial: 5 exactas y 1 sin poder
     confirmar; de la UPV/EHU, 6 al azar contra su línea del PDF: las 6 exactas.
@@ -388,10 +394,12 @@ Ministerio).
     ninguna de sus notas es la final (Cataluña), solo si sus plazas coinciden con las de QEDU. Cada curso lleva su
     documento, huella, fecha de captura y tipo de lista. Una ficha sin nota de QEDU ni precio que tenga la de su
     distrito desde 2021-2022 deja de tener ese motivo para no indexarse.
-  - Resultado (30/10/2026, tarde): 1.675 títulos y centros con histórico, 1.587 publicables, 972 con cinco cursos
-    o más; 1.537 centros de 1.398 fichas lo llevan ya (`centros[].notas_historicas`), 931 con cinco cursos o más.
+  - Resultado (30/10/2026, tarde): 1.709 títulos y centros con histórico, 1.619 publicables, 1.004 con cinco cursos
+    o más; 1.569 centros de 1.430 fichas lo llevan ya (`centros[].notas_historicas`), 963 con cinco cursos o más.
   - Pendiente: Pública de Navarra (una lista por adjudicación, sin lista final declarada), Burgos (tabla acumulada
-    con celdas vacías: hace falta la posición real de cada cifra en el PDF), León, Cantabria, UCLM, UPV/EHU desde
+    2021-2026 con celdas vacías; el PDF escribe cada fila en un solo bloque de texto, así que ni el texto ni la
+    posición de los bloques dicen la columna: haría falta leerlo como imagen), León (solo 2025-2026, que ya da
+    QEDU), UCLM (la lectura óptica de su tabla sale ilegible), UPV/EHU desde
     2022-2023 (imágenes), Comunitat Valenciana, Galicia, Extremadura, ULPGC, Asturias y La Rioja (sin acceso desde
     GitHub: pedidos desde el servidor de España) y Zaragoza (licencia).
 
@@ -448,19 +456,19 @@ pedir nada a ninguna fuente, y marca cada ficha como indexable o no, con el moti
 | Con nota de corte | 2.662 |
 | Con precio de primera matrícula (públicas) | 2.113 de 2.239 grados y 498 de 647 dobles de públicas |
 | De ellos, con el precio de la norma de su comunidad (QEDU no lo da) | 508 |
-| Privadas con precio por curso | 307 de 1.410 (y 11 centros adscritos de públicas con el precio de su web) |
-| Con histórico de notas de corte comprobado | 1.398 (1.537 centros; 931 con cinco cursos o más) |
+| Privadas con precio por curso | 355 de 1.410 (y 12 centros adscritos de públicas con el precio de su web) |
+| Con histórico de notas de corte comprobado | 1.430 (1.569 centros; 963 con cinco cursos o más) |
 | Con inserción laboral | 1.703 |
 | Con indicadores de rendimiento del SIIU | 3.125 |
 | Con ficha del RUCT | 3.265 |
 | Grados con plan del BOE | 3.098 de 3.265 |
 | Grados con plan comprobado | 2.245 (1.595 por asignaturas, el resto por materias) |
 | Dobles con los planes de sus dos grados comprobados | 599 |
-| **Indexables** con los datos mínimos decididos | **2.118** (1.735 grados y 383 dobles; 1.886 de públicas y 232 de privadas) |
+| **Indexables** con los datos mínimos decididos | **2.160** (1.777 grados y 383 dobles; 1.886 de públicas y 274 de privadas) |
 
 El resto va con `noindex` y su motivo: 853 con plan que no
 cuadra, 599 sin plan (o doble sin los dos planes comprobados) y
-1.101 sin nota ni precio (casi todas, privadas que no publican el precio); una
+1.053 sin nota ni precio (casi todas, privadas que no publican el precio); una
 ficha puede tener varios.
 
 Para rehacerlo todo desde `sondas`: bajar las carpetas con `datos/estudios/grados/` y ejecutar en orden
