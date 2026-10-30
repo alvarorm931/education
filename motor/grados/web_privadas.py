@@ -65,6 +65,8 @@ RANGO = {"credito": (40, 450), "curso": (2500, 30000), "mensual": (200, 3500), "
 IDIOMA_EXTRANJERO = re.compile(r"/(en|ca|eu|gl|fr|de|it|pt|va)(/|$)|/english/", re.I)
 IMPORTE = re.compile(r"(\d{1,3}(?:[.\s]\d{3})+|\d{3,6})(?:,(\d{2}))?\s?(?:€|euros?\b|EUR\b)", re.I)
 TIPO_IMPORTE = [
+    # sueldos y salidas («un sueldo medio de 28.000 € al año»): no son precios; sin rango, nunca verosímiles
+    ("sueldo", re.compile(r"salari|sueldo|retribuci|cobra[nr]?\b|ganar|brutos?\b|n[óo]mina|empleabilidad", re.I)),
     ("credito", re.compile(r"cr[ée]dito|ects", re.I)),
     ("mensual", re.compile(r"mensual|al mes|/mes|cuotas?|plazos?", re.I)),
     ("reserva", re.compile(r"reserva|preinscripci|matr[íi]cula de plaza", re.I)),

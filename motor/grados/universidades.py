@@ -40,6 +40,9 @@ def construir(fichas: list[dict], ruct: dict[str, dict], ind: dict) -> list[dict
         notas = [c["nota_corte"] for f in fs for c in f["centros"] if c.get("nota_corte") and c["nota_corte"] > 5]
         plazas = sum(c["plazas"] for f in fs for c in f["centros"] if c.get("plazas"))
         total = (ind.get((clave_universidad(nombre), "Todos los ámbitos")) or {})
+        # precio por curso que publica la propia universidad (privadas) o primera matrícula de todo el grado (públicas)
+        cursos = sorted(f["precio_web"]["precio_curso"] for f in fs if (f.get("precio_web") or {}).get("precio_curso"))
+        primeras = sorted(f["precio_primera_matricula"] for f in fs if f.get("precio_primera_matricula"))
         salida.append({
             "nombre": nombre,
             "nombre_oficial": r.get("nombre"),
@@ -59,6 +62,9 @@ def construir(fichas: list[dict], ruct: dict[str, dict], ind: dict) -> list[dict
             "nota_corte_mediana": round(median(notas), 2) if notas else None,
             "ofertas_con_nota_de_corte_mayor_de_5": len(notas),
             "indicadores_todos_los_ambitos": {k: v for k, v in total.items()} or None,
+            "precio_curso_web": {"desde": cursos[0], "hasta": cursos[-1], "grados_con_precio": len(cursos)} if cursos else None,
+            "precio_grado_completo_primera_matricula": {"desde": primeras[0], "hasta": primeras[-1],
+                                                         "grados_con_precio": len(primeras)} if primeras else None,
             "fuente": {"cita": "Ministerio de Ciencia, Innovación y Universidades: SIIU, QEDU y RUCT"},
         })
     return sorted(salida, key=lambda x: (-x["grados"], x["nombre"]))

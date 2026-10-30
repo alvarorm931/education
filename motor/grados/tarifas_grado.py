@@ -168,7 +168,7 @@ def extraer(paginas: list[str], grados: list[dict]) -> dict:
                     j = linea[:m.start()].count(" | ")
                     tipo = tipo_rotulo(cabecera[j]) if j < len(cabecera) else None
                 tipo = tipo or tipo_cercano(antes[-60:], despues[:40]) or (rotulo if len(hallados) == 1 else None)
-                bajo, alto = RANGO.get(tipo, (0, 10 ** 9)) if tipo else (0, 0)
+                bajo, alto = RANGO.get(tipo, (1, 0)) if tipo else (1, 0)
                 precios[codigo].append({"valor": valor, "tipo": tipo, "verosimil": bool(tipo) and bajo <= valor <= alto,
                                         "pagina": n, "linea_sha256": hashlib.sha256(linea.encode()).hexdigest()[:16]})
     return {"curso_documento": curso, "lineas_con_importe": con_importe, "grados": dict(precios), "muestra": muestra}
