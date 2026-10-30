@@ -32,8 +32,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          sparse-checkout: infra
-          fetch-depth: 1
+          fetch-depth: 1   # sin sparse-checkout: con él, «git add» rechaza ficheros fuera de la selección
 
       - name: Credenciales del almacén (si falla, se anota)
         id: aws
