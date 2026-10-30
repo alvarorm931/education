@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ca"><head id="j_idt2">
+            <meta charset="utf-8" />
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <title>BOP - Butlletí Oficial de la Província de Girona</title>
+            <link href="/bop/resources/css/bop.css?versio=20220922" rel="stylesheet" />
+            <link href="/bop/resources/css/bootstrap.css?versio=20220922" rel="stylesheet" />
+            <link href="/bop/resources/css/bootstrap-datepicker.min.css?versio=20220922" rel="stylesheet" />
+            <link href="/bop/resources/css/estils.css?versio=20220922" rel="stylesheet" />
+            <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet" type="text/css" />
+            <script type="text/javascript" src="/bop/resources/js/jquery-3.6.0.min.js"></script>
+            <script type="text/javascript" src="/bop/resources/js/general.js?versio=20220922"></script>
+            <script type="text/javascript" src="/bop/resources/js/bootstrap-datepicker.min.js?versio=20220922"></script>
+            <script type="text/javascript" src="/bop/resources/locales/bootstrap-datepicker.ca.min.js?versio=20220922"></script>
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    var quinMenuActiu = "ultim-numero";
+                            $('ul.menu-principal li.' + quinMenuActiu).addClass('active');
+                });
+            </script>
+            <!-- Matomo -->
+            <script>
+                var _paq = window._paq = window._paq || [];
+                /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+                _paq.push(['trackPageView']);
+                _paq.push(['enableLinkTracking']);
+                (function () {
+                    var u = "https://matomo.ddgi.cat/";
+                    _paq.push(['setTrackerUrl', u + 'matomo.php']);
+                    _paq.push(['setSiteId', '12']);
+                    var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+                    g.async = true;
+                    g.src = u + 'matomo.js';
+                    s.parentNode.insertBefore(g, s);
+                })();
+            </script>
+            <!-- End Matomo Code --></head><body>
+            <header>
+                <div class="container">
+                    <div class="badge_DDGI">
+                        <a href="https://www.ddgi.cat/web" title="Portal web de la Diputació de Girona" target="_blank"> 
+                            <img src="https://www.ddgi.cat/ddgi/docNivell/web/badge/Diputacio_de_Girona_x1.png" srcset="https://www.ddgi.cat/ddgi/docNivell/web/badge/Diputacio_de_Girona_x2.png 2x" alt="Diputació de Girona" />
+                        </a>
+                    </div>
+                    <nav class="navbar navbar-md">
+                        <div class="navbar-header"> 
+                            <a class="navbar-brand" href="http://www.ddgi.cat/bop"> 
+                                <img src="/bop/resources/img/bop-ddgi.jpg" alt="BOP Diputació de Girona" />
+                            </a>
+                            <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                <span class="icon-bar"></span> 
+                                <span class="icon-bar"></span> 
+                                <span class="icon-bar"></span> 
+                            </a> 
+                        </div>
+
+                        <div class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav navbar-right menu-principal">
+                                <li class="ultim-numero">
+                                    <a href="/bop/mostra-bop/2026-10-30/2026/209" class="">
+                                        Últim número
+                                    </a>
+                                </li>
+                                <li class="consultar">
+                                    <a href="/bop/cerca">
+                                        Cercador
+                                    </a>
+                                </li>
+                                <li class="publicar">
+                                    <a href="/bop/publicar">
+                                        Publicar
+                                    </a>
+                                </li>
+                                <li class="verificar">
+                                    <a href="/bop/verificar">
+                                        Verificador
+                                    </a>
+                                </li>
+                                <li class="subscripcio">
+                                    <a href="/bop/subscripcio">
+                                        Subscripció
+                                    </a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Idioma
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <ul>
+                                            <li>
+                                                <a class="dropdown-item" href="/bop/idioma/ca">
+                                                    Català
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" href="/bop/idioma/es">
+                                                    Castellà
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </header>
+
+
+            <div class="container">
+                <div class="row titol titol-principal">
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('.row.titol.titol-principal').hide();
+            });
+        </script>
+                </div>
+            <div class="row titol">
+                <div class="col-6">
+                        <img src="/bop/resources/img/boptot.jpg" class="imatge" alt="BOP número 209/0 - 30/10/2026" />
+                        <h1>
+                            Bop número: 209/0 - 30/10/2026
+                        </h1>
+                </div>
+            </div>
+
+            <div class="aplicacio">
+                    <section>
+                        <h2 class="seccioTau">
+                            Administració local - Ajuntaments
+                        </h2>
+                        <ul>
+                                <li class="edicte">
+                                    <a href="https://ssl4.ddgi.cat/bopV1/pdf/2026/209/202620909143.pdf" target="new" class="linkAjuda">
+                                        9143 - <span>AJUNTAMENT D'AIGUAVIVA</span> - Aprovació definitiva de l'expedient modificació de crèdit 1SC 8/2026
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ssl4.ddgi.cat/bopV1/pdf/2026/209/202620909354.pdf" target="new" class="linkAjuda">
+                                        9354 - <span>AJUNTAMENT D'HOSTALRIC</span> - Aprovació definitiva de l'expedient de modificació de crèdits 6/2026
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ssl4.ddgi.cat/bopV1/pdf/2026/209/202620909155.pdf" target="new" class="linkAjuda">
+                                        9155 - <span>AJUNTAMENT D'ORDIS</span> - Aprovació inicial de l'expedient de modificació de crèdits 06/2026
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ssl4.ddgi.cat/bopV1/pdf/2026/209/202620909379.pdf" target="new" class="linkAjuda">
+                                        9379 - <span>AJUNTAMENT DE BEGUR</span> - Exposició pública del compte general de l'Ajuntament de Begur de l'exercici 2025
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ssl4.ddgi.cat/bopV1/pdf/2026/209/202620909136.pdf" target="new" class="linkAjuda">
+                                        9136 - <span>AJUNTAMENT DE BESALÚ</span> - Aprovació inicial del projecte de reparacions puntuals de les cobertes i façanes de l'església parroquial de Sant Vicenç de Besalú
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ssl4.ddgi.cat/bopV1/pdf/2026/209/202620909274.pdf" target="new" class="linkAjuda">
+                                        9274 - <span>AJUNTAMENT DE BLANES</span> - Extracte de la resolució de l'Ajuntament de Blanes de 23 d'octubre de 2026, de convocatòria de subvencions per a les festes de barri organitzades per associacions de veïns, exercici pressupostari 2026 (Convocatòria BDNS 937522. Extracte núm. 223657) 
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ssl4.ddgi.cat/bopV1/pdf/2026/209/202620909275.pdf" target="new" class="linkAjuda">
+                                        9275 - <span>AJUNTAMENT DE BLANES</span> - Extracte de la resolució de l'Ajuntament de Blanes de 23 d'octubre de 2026, de convocatòria de subvencions, en règim de concurrència competitiva, destinades a projectes de cooperació al desenvolupament en l'àmbit internacional, per a l'any 2026 (Convocatòria BDNS 937574. Extracte núm. 223669)
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ssl4.ddgi.cat/bopV1/pdf/2026/209/202620909267.pdf" target="new" class="linkAjuda">
+                                        9267 - <span>AJUNTAMENT DE CADAQUÉS</span> - Aprovació definitiva de l'expedient de modificació de crèdit 24/2026
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ssl4.ddgi.cat/bopV1/pdf/2026/209/202620909270.pdf" target="new" class="linkAjuda">
+                                        9270 - <span>AJUNTAMENT DE CADAQUÉS</span> - Aprovació inicial del pressupost general i la plantilla de personal per a l'exercici 2027
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ssl4.ddgi.cat/bopV1/pdf/2026/209/202620909113.pdf" target="new" class="linkAjuda">
+                                        9113 - <span>AJUNTAMENT DE CALDES DE MALAVELLA</span> - Aprovació inicial de l'expedient de modificació de crèdit 6/2026
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ssl4.ddgi.cat/bopV1/pdf/2026/209/202620909132.pdf" target="new" class="linkAjuda">
+                                        9132 - <span>AJUNTAMENT DE CALDES DE MALAVELLA</span> - Informació pública d'una modificació de la plantilla de personal de l'any 2026
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ssl4.ddgi.cat/bopV1/pdf/2026/209/202620909147.pdf" target="new" class="linkAjuda">
+                                        9147 - <span>AJUNTAMENT DE CALDES DE MALAVELLA</span> - Aprovació definitiva de la memòria valorada de l'ampliació de la sala tècnica de bombes i filtres i la nova instal·lació de filtrat i climatització de l'aigua termal de la piscina municipal
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ssl4.ddgi.cat/bopV1/pdf/2026/209/202620909361.pdf" target="new" class="linkAjuda">
+                                        9361 - <span>AJUNTAMENT DE CALDES DE MALAVELLA</span> - Aprovació provisional de la modificació de les ordenances fiscals per a l'exercici 2027
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ssl4.ddgi.cat/bopV1/pdf/2026/209/202620909262.pdf" target="new" class="linkAjuda">
+                                        9262 - <span>AJUNTAMENT DE CASSÀ DE LA SELVA</span> - Aprovació definitiva de l'expedient de suplement de crèdit 3SC 8/2026 del pressupost de l'Ajuntament de Cassà de la Selva
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ssl4.ddgi.cat/bopV1/pdf/2026/209/202620909154.pdf" target="new" class="linkAjuda">
+                                        9154 - <span>AJUNTAMENT DE CELRÀ</span> - Aprovació inicial de l'actualització del Pla de prevenció d'incendis forestals de Celrà (Exp. X2026002703)
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ssl4.ddgi.cat/bopV1/pdf/2026/209/202620909111.pdf" target="new" class="linkAjuda">
+                                        9111 - <span>AJUNTAMENT DE GARRIGUELLA</span> - Aprovació definitiva de l'Ordenança reguladora de l'estacionament i pernocta d'autocaravanes, caravanes, campers i vehicles camperitzats, vehicles habitatge i similars al municipi de Garriguella
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ssl4.ddgi.cat/bopV1/pdf/2026/209/202620909110.pdf" target="new" class="linkAjuda">
+                                        9110 - <span>AJUNTAMENT DE GIRONA</span> - Nomenament de personal eventual
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ssl4.ddgi.cat/bopV1/pdf/2026/209/202620909260.pdf" target="new" class="linkAjuda">
+                                        9260 - <span>AJUNTAMENT DE JAFRE</span> - Informació pública del projecte d'actuació específica per a la implantació d'una minideixalleria municipal a Jafre
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ssl4.ddgi.cat/bopV1/pdf/2026/209/202620909380.pdf" target="new" class="linkAjuda">
+                                        9380 - <span>AJUNTAMENT DE L'ESCALA</span> - Aprovació inicial de la modificació de les ordenances fiscals per a l'exercici 2027
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ssl4.ddgi.cat/bopV1/pdf/2026/209/202620909108.pdf" target="new" class="linkAjuda">
+                                        9108 - <span>AJUNTAMENT DE LLAGOSTERA</span> - Delegació temporal de la presidència de la Residència Josep Baulida del 19 al 22 d'octubre de 2026, ambdós inclosos
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ssl4.ddgi.cat/bopV1/pdf/2026/209/202620909133.pdf" target="new" class="linkAjuda">
+                                        9133 - <span>AJUNTAMENT DE LLORET DE MAR</span> - Aprovació definitiva del Projecte executiu per a la reurbanització d'un tram del c. Vall de Venècia entre c. Fèlix Azúa i c. de Venècia de Lloret de Mar, Tram 1
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ssl4.ddgi.cat/bopV1/pdf/2026/209/202620909293.pdf" target="new" class="linkAjuda">
+                                        9293 - <span>AJUNTAMENT DE MAÇANET DE CABRENYS</span> - Aprovació definitiva de l'expedient de modificació de crèdits 10/2026
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ssl4.ddgi.cat/bopV1/pdf/2026/209/202620909355.pdf" target="new" class="linkAjuda">
+                                        9355 - <span>AJUNTAMENT DE MAÇANET DE LA SELVA</span> - Aprovació inicial de la modificació de les ordenances fiscals per a l'exercici 2027
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ssl4.ddgi.cat/bopV1/pdf/2026/209/202620909357.pdf" target="new" class="linkAjuda">
+                                        9357 - <span>AJUNTAMENT DE MAÇANET DE LA SELVA</span> - Aprovació inicial de l'expedient de modificació de crèdit 19/2026
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ssl4.ddgi.cat/bopV1/pdf/2026/209/202620909351.pdf" target="new" class="linkAjuda">
+                                        9351 - <span>AJUNTAMENT DE PALAFRUGELL</span> - Aprovació provisional de la modificació de les ordenances fiscals per a l'exercici 2027
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ssl4.ddgi.cat/bopV1/pdf/2026/209/202620909352.pdf" target="new" class="linkAjuda">
+                                        9352 - <span>AJUNTAMENT DE PALAFRUGELL</span> - Aprovació inicial de l'expedient de  modificació pressupostària núm. 064/2026
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ssl4.ddgi.cat/bopV1/pdf/2026/209/202620909356.pdf" target="new" class="linkAjuda">
+                                        9356 - <span>AJUNTAMENT DE PALS</span> - Aprovació definitiva de l'expedient de modificació de crèdit MC 15/26 (exp. 1367/2026)
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ssl4.ddgi.cat/bopV1/pdf/2026/209/202620909112.pdf" target="new" class="linkAjuda">
+                                        9112 - <span>AJUNTAMENT DE PONT DE MOLINS</span> - Incoació de l'expedient de recerca de la titularitat de béns: Pont sobre el riu Muga, sota el molí d'en Jordà 
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ssl4.ddgi.cat/bopV1/pdf/2026/209/202620909148.pdf" target="new" class="linkAjuda">
+                                        9148 - <span>AJUNTAMENT DE PORQUERES</span> - Aprovació inicial i exposició pública del Pla parcial urbanístic del Sud 1 "Camp Llarg" - Gener 2026 (Exp. X2025001111)
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ssl4.ddgi.cat/bopV1/pdf/2026/209/202620909144.pdf" target="new" class="linkAjuda">
+                                        9144 - <span>AJUNTAMENT DE PORTBOU</span> - Convocatòria del procés selectiu amb caràcter d'urgència per a la constitució d'una borsa de treball per cobrir necessitats temporals de la brigada d'obres i serveis (subgrup AP), mitjançant concurs oposició i pel torn lliure
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ssl4.ddgi.cat/bopV1/pdf/2026/209/202620909346.pdf" target="new" class="linkAjuda">
+                                        9346 - <span>AJUNTAMENT DE PORTBOU</span> - Delegació de competència del Ple a la Junta de Govern Local per a la celebració de sortejos de les meses electorals
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ssl4.ddgi.cat/bopV1/pdf/2026/209/202620909382.pdf" target="new" class="linkAjuda">
+                                        9382 - <span>AJUNTAMENT DE PORTBOU</span> - Aprovació provisional de la modificació de les ordenances fiscals per a l'exercici 2027
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ssl4.ddgi.cat/bopV1/pdf/2026/209/202620909383.pdf" target="new" class="linkAjuda">
+                                        9383 - <span>AJUNTAMENT DE PORTBOU</span> - Aprovació inicial del pressupost general, les bases d'execució i la plantilla de personal per a l'exercici 2027
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ssl4.ddgi.cat/bopV1/pdf/2026/209/202620909384.pdf" target="new" class="linkAjuda">
+                                        9384 - <span>AJUNTAMENT DE PORTBOU</span> - Aprovació inicial de l'expedient de modificació de crèdits núm. 10/2026 per suplements de crèdit
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ssl4.ddgi.cat/bopV1/pdf/2026/209/202620909135.pdf" target="new" class="linkAjuda">
+                                        9135 - <span>AJUNTAMENT DE QUART</span> - Aprovació definitiva del projecte d'obres de millora de l'aïllament tèrmic de l'Escola Santa Margarida
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ssl4.ddgi.cat/bopV1/pdf/2026/209/202620909381.pdf" target="new" class="linkAjuda">
+                                        9381 - <span>AJUNTAMENT DE SANTA CRISTINA D'ARO</span> - Aprovació provisional de modificació de les ordenances fiscals per a l'exercici 2027 i següents
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ssl4.ddgi.cat/bopV1/pdf/2026/209/202620909286.pdf" target="new" class="linkAjuda">
+                                        9286 - <span>AJUNTAMENT DE SANT ANDREU SALOU</span> - Aprovació provisional de la modificació de l'Ordenança fiscal reguladora de la taxa de manteniment del cementiri de Sant Andreu Salou
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ssl4.ddgi.cat/bopV1/pdf/2026/209/202620909264.pdf" target="new" class="linkAjuda">
+                                        9264 - <span>AJUNTAMENT DE SANT FELIU DE GUÍXOLS</span> - Aprovació inicial del projecte d'endegament i urbanització del darrer tram de la Riera de Sant Pol de Sant Feliu de Guíxols 
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ssl4.ddgi.cat/bopV1/pdf/2026/209/202620909137.pdf" target="new" class="linkAjuda">
+                                        9137 - <span>AJUNTAMENT DE SANT JULIÀ DE RAMIS</span> - Modificació del cartipàs municipal mandat 2023-2027
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ssl4.ddgi.cat/bopV1/pdf/2026/209/202620909347.pdf" target="new" class="linkAjuda">
+                                        9347 - <span>AJUNTAMENT DE SARRIÀ DE TER</span> - Aprovació del projecte executiu de reforma i adequació del Centre d'Arts Escèniques Fase 2 
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ssl4.ddgi.cat/bopV1/pdf/2026/209/202620909153.pdf" target="new" class="linkAjuda">
+                                        9153 - <span>AJUNTAMENT DE TORROELLA DE MONTGRÍ</span> - Contractació de personal en règim laboral fix (Exp. 188080Y)
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ssl4.ddgi.cat/bopV1/pdf/2026/209/202620909156.pdf" target="new" class="linkAjuda">
+                                        9156 - <span>AJUNTAMENT DE TORROELLA DE MONTGRÍ</span> - Nomenament de funcionaris de carrera (Exp. 213838Y)
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ssl4.ddgi.cat/bopV1/pdf/2026/209/202620909109.pdf" target="new" class="linkAjuda">
+                                        9109 - <span>AJUNTAMENT DE VALL-LLOBREGA</span> - Aprovació inicial de l'expedient 3TC 05/2026 de modificació del pressupost de 2026
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ssl4.ddgi.cat/bopV1/pdf/2026/209/202620909142.pdf" target="new" class="linkAjuda">
+                                        9142 - <span>AJUNTAMENT DE VIDRÀ</span> - Exposició pública de l'expedient de modificació de crèdit 2/2026 
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ssl4.ddgi.cat/bopV1/pdf/2026/209/202620909134.pdf" target="new" class="linkAjuda">
+                                        9134 - <span>AJUNTAMENT DE VILOBÍ D'ONYAR</span> - Aprovació inicial del Projecte de retirada de mòduls prefabricats cantonada carrers Jacint Verdaguer i la Selva - Vilobí d'Onyar
+                                    </a>
+                                </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2 class="seccioTau">
+                            Administració local - Consells comarcals
+                        </h2>
+                        <ul>
+                                <li class="edicte">
+                                    <a href="https://ssl4.ddgi.cat/bopV1/pdf/2026/209/202620909152.pdf" target="new" class="linkAjuda">
+                                        9152 - <span>CONSELL COMARCAL DE LA SELVA</span> - Aprovació del Conveni de col·laboració entre el Consell Comarcal de la Selva i diversos ajuntaments per a realitzar les accions del programa Pla corresponsables de la Selva. Any 2026
+                                    </a>
+                                </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2 class="seccioTau">
+                            Administració local - Consorcis
+                        </h2>
+                        <ul>
+                                <li class="edicte">
+                                    <a href="https://ssl4.ddgi.cat/bopV1/pdf/2026/209/202620909278.pdf" target="new" class="linkAjuda">
+                                        9278 - <span>CONSORCI DE BENESTAR SOCIAL GIRONÈS-SALT</span> - Aprovació definitiva de l'expedient de modificació de crèdit 07/2026
+                                    </a>
+                                </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2 class="seccioTau">
+                            Administració local - Diputació
+                        </h2>
+                        <ul>
+                                <li class="edicte">
+                                    <a href="https://ssl4.ddgi.cat/bopV1/pdf/2026/209/202620909219.pdf" target="new" class="linkAjuda">
+                                        9219 - <span>DIPUTACIÓ DE GIRONA</span> - Aprovació de la cessió en precari d'ús del Router amb número de registre de bé 15032 a l'Ajuntament de Rupià
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ssl4.ddgi.cat/bopV1/pdf/2026/209/202620909284.pdf" target="new" class="linkAjuda">
+                                        9284 - <span>DIPUTACIÓ DE GIRONA</span> - Extracte de l'acord de la Junta de Govern de la Diputació de Girona de 20 d'octubre de 2026, de convocatòria anticipada de subvencions per al foment de programes i projectes contra l'abandonament escolar prematur (AEP) en l'àmbit de les comarques gironines, anualitat 2027 (Convocatòria BDNS 937774. Extracte núm. 
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ssl4.ddgi.cat/bopV1/pdf/2026/209/202620909285.pdf" target="new" class="linkAjuda">
+                                        9285 - <span>DIPUTACIÓ DE GIRONA</span> - Extracte de l'acord de la Junta de Govern de la Diputació de Girona de 20 d'octubre de 2026, de convocatòria anticipada de subvencions als municipis de fins a 500 habitants de la demarcació de Girona per al finançament dels centres escolars municipals, anualitat 2027 (Convocatòria BDNS 937775. Extracte núm. 223731)
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ssl4.ddgi.cat/bopV1/pdf/2026/209/202620909288.pdf" target="new" class="linkAjuda">
+                                        9288 - <span>DIPUTACIÓ DE GIRONA</span> - Extracte de l'acord de la Junta de Govern de la Diputació de Girona de 20 d'octubre de 2026, de convocatòria anticipada de subvencions, en règim de concurrència competitiva, per a festivals o cicles artístics en municipis rurals de fins a 1.000 habitants de les comarques gironines, anualitat 2027 (Convocatòria BDNS 937804. Extracte núm. 223742)
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ssl4.ddgi.cat/bopV1/pdf/2026/209/202620909290.pdf" target="new" class="linkAjuda">
+                                        9290 - <span>DIPUTACIÓ DE GIRONA</span> - Extracte de l'acord de la Junta de Govern de la Diputació de Girona de 20 d'octubre de 2026, de convocatòria anticipada de subvencions per al finançament de les activitats i projectes culturals de les oficines joves, les capitals de comarca i els municipis de més de 15.000 habitants de les comarques gironines, exercici 2027 (Convocatòria BDNS 937803. Extracte núm. 223741)
+                                    </a>
+                                </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2 class="seccioTau">
+                            Administració local - Organismes autònoms
+                        </h2>
+                        <ul>
+                                <li class="edicte">
+                                    <a href="https://ssl4.ddgi.cat/bopV1/pdf/2026/209/202620909261.pdf" target="new" class="linkAjuda">
+                                        9261 - <span>ORGANISME AUTÒNOM DE SALUT PÚBLICA DE LA DIPUTACIÓ DE GIRONA (DIPSALUT)</span> - Delegació de competències a favor de la Presidència de Dipsalut en l'atorgament d'una subvenció directa per interès públic 
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ssl4.ddgi.cat/bopV1/pdf/2026/209/202620909257.pdf" target="new" class="linkAjuda">
+                                        9257 - <span>XARXA LOCAL DE MUNICIPIS GIRONINS DE LA DIPUTACIÓ DE GIRONA (XALOC)</span> - Aprovació del padró d'aigua del 3r. trimestre de 2026 de diversos municipis
+                                    </a>
+                                </li>
+                        </ul>
+                    </section>
+            </div>
+            </div>
+
+
+            <footer id="footer">
+                <div class="footer-top">
+                    <div class="container">
+                        <div class="col">
+                            <div class="footer1_DDGI">
+                                <address>
+                                    <span class="footer_titol">Diputació de Girona</span> <span class="footer_subtitol">Secretaria General </span> <span>Pujada de Sant Martí, 4</span> <span>17004 Girona</span> <span>Tel.: 972 185 000</span> <span><a href="mailto:bop@ddgi.cat">bop@ddgi.cat</a></span> <span><a href="https://www.ddgi.cat/web" title="Portal web de la Diputació de Girona" target="_blank">www.ddgi.cat</a></span>
+                                </address>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="footer2_DDGI">
+                                <a href="https://www.ddgi.cat/web/nivell/5164/agenda-2030" title="Agenda 2030" target="_blank">
+                                    <img alt="DDGI 2030 ODS 8, 10 i 16" width="176" src="https://www.ddgi.cat/ddgi/docNivell/web/ods/svg/cg3/ODS_Secretaria.svg" />
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col"> </div>
+                        <div class="col">
+                            <div class="footer4_DDGI">
+                                <div class="footer_DGII_menu">
+                                    <span class="footer_titol">Menú</span>
+                                    <ul>
+
+
+
+                                        <li>   <a href="/bop">
+                                                Últim número
+                                            </a></li>
+                                        <li>  <a href="/bop/cerca" title="Cercador">
+                                                Cercador del BOP
+                                            </a></li>
+                                        <li>  <a href="/bop/publicar">
+                                                Publicar al BOP
+                                            </a></li>
+                                        <li>  <a href="/bop/verificar">
+                                                Verificador BOP
+                                            </a></li>
+                                        <li> <a href="/bop/subscripcio">
+                                                Subscripció
+                                            </a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <div class="container">
+                        <div class="col">
+                            <div class="footer_DDGI_logo"> <a href="https://www.ddgi.cat/web" title="Portal web de la Diputació de Girona" target="_blank"> <img alt="Diputació de Girona" src="https://www.ddgi.cat/ddgi/docNivell/web/footer/Diputacio_Girona_200_anys.svg" /> </a> </div>
+                        </div>
+                        <div class="col">
+                            <div class="footer_DDGI_links">
+                                <ul>
+                                    <li><a href="https://www.ddgi.cat/web/nivell/379/s-/Avis+Legal" target="_blank">Avís legal</a></li>
+                                    <li><a href="https://www.ddgi.cat/web/nivell/380/s-/Proteccio-de-dades" target="_blank">Protecció de dades</a> </li>
+                                    <li> <a href="https://www.ddgi.cat/web/nivell/381/s-/Accessibilitat" target="_blank">Accessibilitat</a> </li>
+                                    <li> <a href="https://www.ddgi.cat/web/nivell/5897/politica-de-galetes" target="_blank">Política de galetes</a> </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer></body>
+</html>

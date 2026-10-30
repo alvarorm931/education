@@ -1,0 +1,84 @@
+User-Agent: *
+Crawl-delay: 10
+Disallow: /bopV1
+Disallow: /bop
+Disallow: /bopH
+Disallow: /bop/consulta/index.html
+Disallow: /crl
+Disallow: /docVal
+Disallow: /intranet
+Disallow: /atlesWeb
+Disallow: /proves
+Disallow: /estatdepagament
+Disallow: /quioscAdmin
+Disallow: /ddgiAdmin
+Disallow: /gestiodominisGlassFish
+Disallow: /inspaiAdmin
+Disallow: /revistaDeGironaAdmin
+#Disallow: /web/noticia/
+Disallow: /comerc-a-casa/proves
+Disallow: /Inspai/serveix-imatge/
+
+#Amazonbot https://developer.amazon.com/amazonbot
+User-agent: Amazonbot
+Disallow: /catalegescenics
+
+#Googlebot-Image
+User-agent: Googlebot-Image
+Disallow: /Inspai/serveix-imatge/
+
+#Baiduspider
+User-agent: Baiduspider
+Disallow: /
+
+#Yandex
+User-agent: Yandex
+Disallow: /
+
+#To block SemrushBot from crawling your site for different SEO and technical issues:
+User-agent: SiteAuditBot
+Disallow: /
+#To block SemrushBot from crawling your site for Backlink Audit tool:
+User-agent: SemrushBot-BA
+Disallow: /
+#To block SemrushBot from crawling your site for On Page SEO Checker tool and similar tools:
+User-agent: SemrushBot-SI
+Disallow: /
+#To block SemrushBot from checking URLs on your site for SWA tool:
+User-agent: SemrushBot-SWA
+Disallow: /
+#To block SplitSignalBot from crawling your site for SplitSignal tool:
+User-agent: SplitSignalBot
+Disallow: /
+#To block SemrushBot-OCOB from crawling your site for Content Toolkit:
+User-agent: SemrushBot-OCOB
+Disallow: /
+#To block SemrushBot-FT from crawling your site for Plagiarism Checker and similar tools:
+User-agent: SemrushBot-FT
+Disallow: /
+#To block RyteBot from crawling your site for tools provided by Ryte.com:
+User-agent: RyteBot
+Disallow: /
+#To block SemrushBot-ESI from crawling your site for services provided by Semrush Enterprise Site Intelligence:
+User-agent: SemrushBot-ESI
+Disallow: /
+
+#Robot que ens han demanat que pugui accedir al bop
+User-agent: BluebayBot
+Crawl-delay: 5
+Disallow: /bopV1
+Disallow: /bopH
+Disallow: /crl
+Disallow: /docVal
+Disallow: /intranet
+Disallow: /atlesWeb
+Disallow: /proves
+Disallow: /estatdepagament
+Disallow: /quioscAdmin
+Disallow: /ddgiAdmin
+Disallow: /gestiodominisGlassFish
+Disallow: /inspaiAdmin
+Disallow: /revistaDeGironaAdmin
+Disallow: /comerc-a-casa/proves
+Disallow: /Inspai/serveix-imatge/
+
