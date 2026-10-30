@@ -237,3 +237,29 @@ def test_burgos_evolucion_por_posicion():
                    ("2026-2027", "general", 11.048), ("2021-2022", "titulados", 8.13)]
     der = [x for x in f if x["titulacion"] == "Grado en Derecho"][0]
     assert der["todos_admitidos"] and der["plazas"] == 95 and der["distrito"] == "burgos"
+
+
+def test_misma_huella_gana_la_lectura_mas_completa(tmp_path, monkeypatch):
+    import json as _json
+
+    def carpeta(nombre, muestra, posiciones=None):
+        d = tmp_path / nombre / "datos" / "estudios" / "grados" / "notas_fuentes"
+        d.mkdir(parents=True)
+        doc = {"url": "https://x.es/evolucion.pdf", "sha256": "abc", "muestra": muestra, "formato": "pdf"}
+        if posiciones:
+            doc["posiciones"] = posiciones
+        (d / "cantabria.json").write_text(_json.dumps({"distrito": "cantabria", "capturado": "2026-10-30",
+                                                       "documentos": [doc]}), encoding="utf-8")
+
+    carpeta("20261030T130852-t0", ["### página 1 (lectura óptica)", "a", "b"], [{"pagina": 1, "ocr": True, "lineas": []}])
+    carpeta("20261030T132911-t0", ["### página 1"])  # posterior, mismo PDF leído sin lectura óptica
+    vistos = []
+
+    def lector(lineas, pos):
+        vistos.append(pos)
+        return []
+
+    monkeypatch.setitem(nc.LECTORES, "cantabria", (lector, lambda d: True, "x"))
+    monkeypatch.setattr(nc, "CON_POSICIONES", {lector})
+    nc.leer_fuentes([tmp_path])
+    assert vistos and vistos[0][0]["ocr"]

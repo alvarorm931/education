@@ -642,7 +642,15 @@ def leer_fuentes(carpetas: list[Path]) -> list[dict]:
             for d in x.get("documentos") or []:
                 if d.get("sha256") and d.get("muestra"):
                     clave = (x["distrito"], d["url"])
-                    if clave not in docs or str(f) > docs[clave][0]:
+                    previo = docs.get(clave)
+                    # el mismo documento (misma huella) leído dos veces: gana la lectura más completa (con
+                    # posiciones o lectura óptica, más líneas); si el documento cambió, gana la captura más reciente
+                    if previo and previo[1]["sha256"] == d["sha256"]:
+                        mejor = (bool(d.get("posiciones")), len(d["muestra"])) > \
+                            (bool(previo[1].get("posiciones")), len(previo[1]["muestra"]))
+                    else:
+                        mejor = not previo or str(f) > previo[0]
+                    if mejor:
                         docs[clave] = (str(f), {**d, "capturado": d.get("capturado") or x.get("capturado")})
     filas = []
     for (distrito, _), (_, d) in sorted(docs.items()):
