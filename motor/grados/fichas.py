@@ -92,6 +92,67 @@ def centro_qedu(t: dict, d: dict | None) -> dict:
     }
 
 
+# ------------------------------------------------------------------------------------- indicadores SIIU
+
+# Indicador del SIIU → clave de la ficha. Se publica el último curso con dato y la media de España en el ámbito.
+INDICADORES = {
+    "Tasa global de abandono": "abandono",
+    "Tasa de abandono el 1º año": "abandono_primer_ano",
+    "Tasa global de cambio": "cambio_de_estudio",
+    "Tasa global de abandono del SUE": "abandono_universidad",
+    "Tasa de graduación en grados de 4 años": "graduacion",
+    "Tasa de graduación en grados de 5 años": "graduacion",
+    "Tasa de rendimiento": "rendimiento",
+    "Tasa de éxito": "exito",
+    "Nota media": "nota_media_expediente",
+    "Duración media en estudios de Grado de 4 años": "duracion_media",
+    "Duración media de estudios de Grado de 5 años": "duracion_media",
+    "Tasa de transición Grado Máster": "transicion_master",
+}
+FICHEROS_INDICADORES = ("abandono", "cambio", "abandono_sistema", "graduacion", "rendimiento", "nota_expediente",
+                        "duracion", "transicion_master")
+
+
+def indexar_indicadores(carpeta: Path | None) -> dict[tuple[str, str], dict]:
+    """(universidad, ámbito) → {clave: {valor, curso, indicador}} con el último curso que tiene dato.
+    La clave («todas», ámbito) guarda la media de todas las universidades para comparar."""
+    salida: dict[tuple[str, str], dict] = defaultdict(dict)
+    if not carpeta:
+        return salida
+    for nombre in FICHEROS_INDICADORES:
+        for f in carpeta.rglob(f"{nombre}.jsonl"):
+            for x in _leer(f):
+                k = INDICADORES.get(x.get("Indicador"))
+                if not k or x.get("valor") is None:
+                    continue
+                if nombre == "eficiencia" and k == "exito":
+                    continue  # el éxito de egresados no se mezcla con el de matriculados
+                u = x.get("Universidad") or x.get("Universidades") or ""  # el nombre cambia según la tabla
+                cu = "todas" if u == "Todas las universidades" else clave_universidad(u)
+                ambito = x.get("Ámbito de estudio")
+                actual = salida[(cu, ambito)].get(k)
+                if actual is None or (x["Periodo"], x["Indicador"]) > (actual["curso"], actual["indicador"]):
+                    salida[(cu, ambito)][k] = {"valor": round(x["valor"], 2), "curso": x["Periodo"],
+                                               "indicador": x["Indicador"]}
+    return salida
+
+
+def indicadores_de(t: dict, ind: dict, por_ambito: Counter) -> dict | None:
+    if not ind:
+        return None
+    u = clave_universidad(t["universidades"][0]["nombre"])
+    datos = ind.get((u, t.get("ambito")))
+    if not datos:
+        return None
+    espana = ind.get(("todas", t.get("ambito")), {})
+    return {
+        "ambito": t.get("ambito"),
+        "grados_de_la_universidad_en_el_ambito": por_ambito[(u, t.get("ambito"))],
+        "valores": {k: {**v, "media_espana_ambito": (espana.get(k) or {}).get("valor")} for k, v in datos.items()},
+        "fuente": {"cita": "Ministerio de Ciencia, Innovación y Universidades. Indicadores de rendimiento académico (SIIU)"},
+    }
+
+
 # ---------------------------------------------------------------------------------------------- BOE
 
 
@@ -140,8 +201,10 @@ def resumen_plan(p: dict) -> dict:
 
 
 def construir(catalogo: list[dict], genericos: list[dict], tarjetas: dict, detalles: dict,
-              planes: dict) -> tuple[list[dict], list[dict]]:
+              planes: dict, ind: dict | None = None) -> tuple[list[dict], list[dict]]:
     gen_de = {c: g for g in genericos for c in g["titulos"]}
+    por_ambito = Counter((clave_universidad(t["universidades"][0]["nombre"]), t.get("ambito")) for t in catalogo
+                         if t["situacion"] == "Activo" and t["clase"] == "grado")
     qedu_por_titulo: dict[str, list] = defaultdict(list)
     for (tit, cen), t in tarjetas.items():
         qedu_por_titulo[tit].append(centro_qedu(t, detalles.get((tit, cen))))
@@ -184,6 +247,7 @@ def construir(catalogo: list[dict], genericos: list[dict], tarjetas: dict, detal
             "centros": centros,
             "precio_primera_matricula": round(min(precios) * creditos, 2) if precios and creditos else None,
             "plan": plan,
+            "indicadores": indicadores_de(t, ind or {}, por_ambito) if t["clase"] == "grado" else None,
             "indexable": not motivos,
             "motivos_noindex": motivos,
             "fuente_catalogo": {"cita": FUENTE_SIIU, **{k: t["fuente"].get(k) for k in ("url", "curso", "capturado")}},
@@ -203,6 +267,8 @@ def construir(catalogo: list[dict], genericos: list[dict], tarjetas: dict, detal
                     "practicas_externas": ((f["plan"] or {}).get("distribucion") or {}).get("practicas_externas"),
                     "optativas": ((f["plan"] or {}).get("distribucion") or {}).get("optativas"),
                     "modalidades": f["modalidades"],
+                    "abandono": (((f.get("indicadores") or {}).get("valores") or {}).get("abandono") or {}).get("valor"),
+                    "graduacion": (((f.get("indicadores") or {}).get("valores") or {}).get("graduacion") or {}).get("valor"),
                 })
     comparativa = []
     nombres = {g["id"]: g["nombre"] for g in genericos}
@@ -222,6 +288,9 @@ def resumen(fichas: list[dict], comparativa: list[dict]) -> dict:
         "con_nota_de_corte": sum(1 for f in fichas if any(c["nota_corte"] is not None for c in f["centros"])),
         "con_precio": sum(1 for f in fichas if f["precio_primera_matricula"]),
         "con_insercion": sum(1 for f in fichas if any(c.get("insercion") for c in f["centros"])),
+        "con_indicadores_siiu": sum(1 for f in fichas if f.get("indicadores")),
+        "indicadores_solo_de_ese_grado": sum(1 for f in fichas if f.get("indicadores")
+                                            and f["indicadores"]["grados_de_la_universidad_en_el_ambito"] == 1),
         "con_plan_boe": sum(1 for f in fichas if f["plan"]),
         "con_plan_comprobado": sum(1 for f in fichas if f["plan"] and f["plan"]["comprobado"]),
         "indexables": sum(1 for f in fichas if f["indexable"]),
@@ -237,11 +306,13 @@ def main() -> None:
     p.add_argument("--genericos", required=True)
     p.add_argument("--qedu", help="carpeta con qedu_tarjetas_*.jsonl y qedu_detalles_*.jsonl")
     p.add_argument("--boe", help="carpeta con boe_actos.jsonl y boe_planes.jsonl")
+    p.add_argument("--indicadores", help="carpeta con los indicadores del SIIU (abandono.jsonl, …)")
     p.add_argument("--salida", required=True)
     a = p.parse_args()
     tarjetas, detalles = indexar_qedu(Path(a.qedu) if a.qedu else None)
     fichas, comparativa = construir(_leer(Path(a.catalogo)), _leer(Path(a.genericos)), tarjetas, detalles,
-                                    indexar_planes(Path(a.boe) if a.boe else None))
+                                    indexar_planes(Path(a.boe) if a.boe else None),
+                                    indexar_indicadores(Path(a.indicadores) if a.indicadores else None))
     destino = Path(a.salida) / "datos" / "estudios" / "grados"
     destino.mkdir(parents=True, exist_ok=True)
     for nombre, datos in (("fichas.jsonl", fichas), ("comparativa.jsonl", comparativa)):

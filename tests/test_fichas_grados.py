@@ -43,3 +43,20 @@ def test_sin_plan_ni_datos_no_indexa():
 def test_clave_universidad():
     assert fichas.clave_universidad("Universidad Complutense de Madrid") == fichas.clave_universidad("Complutense de Madrid")
     assert fichas.clave_universidad("Universitat de València (Estudi General)") == fichas.clave_universidad("València (Estudi General)")
+
+
+def test_indicadores_por_universidad_y_ambito(tmp_path):
+    import json
+    d = tmp_path / "ind"
+    d.mkdir()
+    filas = [{"Universidad": "Complutense de Madrid", "Ámbito de estudio": "Derecho", "Indicador": "Tasa global de abandono", "Periodo": p, "valor": v}
+             for p, v in (("2018-2019", 23.19), ("2019-2020", 18.75))]
+    filas.append({"Universidad": "Todas las universidades", "Ámbito de estudio": "Derecho", "Indicador": "Tasa global de abandono", "Periodo": "2019-2020", "valor": 24.0})
+    (d / "abandono.jsonl").write_text("\n".join(json.dumps(x) for x in filas), encoding="utf-8")
+    ind = fichas.indexar_indicadores(d)
+    cat = _cat()
+    cat[0]["ambito"] = "Derecho"
+    f, _ = fichas.construir(cat, GEN, TARJ, DET, {}, ind)
+    v = f[0]["indicadores"]["valores"]["abandono"]
+    assert (v["valor"], v["curso"], v["media_espana_ambito"]) == (18.75, "2019-2020", 24.0)
+    assert f[0]["indicadores"]["grados_de_la_universidad_en_el_ambito"] == 1
