@@ -13,8 +13,13 @@ tabla de precios en PDF (docs/estrategia-informacion-cerrada.md §3.2). Aquí:
 
 Lo público lleva programa, importe, concepto, curso, URL del PDF y huellas; nunca la cita.
 
+Tablas de precios de las universidades (`--tablas`): la lista revisada a mano de las tablas (PDF o página web) que
+cada universidad publica con el precio de sus másteres oficiales, en orden de reputación. Cada precio lleva la
+universidad de la tabla y lo une conjunto_masters.py a sus másteres oficiales por el nombre (aunque no tengan web).
+
 Uso:
   python -m motor.estudios.tarifas lote --pdfs precios_*.jsonl [--pdfs …] --censo proveedores.jsonl --salida ruta/
+  python -m motor.estudios.tarifas lote --tablas tablas_precios.jsonl --salida ruta/
   python -m motor.estudios.tarifas unir --tarifas carpeta --fichas fichas.jsonl --salida ruta/
 """
 
@@ -40,7 +45,7 @@ POR_DOMINIO = 40  # PDF por dominio en una tanda (folletos de cada máster)
 AÑO = re.compile(r"20(2[4-9]|3\d)")
 
 SISTEMA = (
-    "Lees el texto de un documento PDF de un centro de formación. Si es una tabla o lista de precios de programas "
+    "Lees el texto de un documento (PDF o página web) de un centro de formación. Si es una tabla o lista de precios de programas "
     "(másters, posgrados, cursos), devuelve cada programa con su importe; si no lo es, es_tarifa=false y lista "
     "vacía. Reglas: 1) solo lo que dice el texto; 2) un elemento por importe (si un programa tiene precio total y "
     "reserva, dos elementos); 3) programa: el nombre tal cual; importe: el número tal cual aparece (con sus puntos "
@@ -99,6 +104,27 @@ def elegir_pdfs(ficheros: list[Path], censo: Path, por_dominio: int = POR_DOMINI
     for d, urls in sorted(por_dom.items()):
         elegidas = sorted(urls, key=lambda u: (-año(u), len(u), u))[:por_dominio]
         filas += [{"url": u, "dominio": d, "proveedor": provs[d]["id"], "estado": provs[d]["estado"]} for u in elegidas]
+    return filas
+
+
+def elegir_tablas(fichero: Path) -> list[dict]:
+    """Las tablas de precios revisadas (una por URL), con su universidad y el curso que dice la lista."""
+    from urllib.parse import urlparse
+
+    from motor.estudios.censo import dominio_registrado
+
+    filas, vistas = [], set()
+    for l in fichero.read_text(encoding="utf-8").split("\n"):
+        if not l.strip():
+            continue
+        x = json.loads(l)
+        u = (x.get("url") or "").strip()
+        if not u.startswith("http") or u in vistas or not x.get("universidad"):
+            continue
+        vistas.add(u)
+        filas.append({"url": u, "dominio": dominio_registrado(urlparse(u).netloc), "proveedor": None, "estado": "tabla",
+                      "universidad": x["universidad"], "curso_lista": x.get("curso") or "",
+                      "programa_lista": x.get("programa") or ""})
     return filas
 
 
@@ -183,6 +209,13 @@ def capturar_pdfs(filas: list[dict], guarda: extraer.Guarda, hilos: int = 12, fi
                 r, g["motivo"] = None, f"error_{type(e).__name__}"
             if r is None:
                 g.setdefault("motivo", "robots_o_sin_respuesta")
+            elif r.status_code == 200 and f.get("estado") == "tabla" and "html" in (r.headers.get("content-type") or "") \
+                    and str(r.headers.get("tdm-reservation", "")).strip() != "1":
+                # tabla de precios en una página web: su texto visible, con las tablas como «celda | celda»
+                html = r.content.decode(r.encoding or "utf-8", errors="replace")
+                g.update({"sha256": hashlib.sha256(r.content).hexdigest(), "bytes": len(r.content),
+                          "texto": extraer.texto_de_pagina(html), "formato": "html"})
+                g.update(guarda.original("web-centros", r.content, "html", f["url"]))
             elif r.status_code != 200 or not (r.content[:5] == b"%PDF-" or "pdf" in (r.headers.get("content-type") or "")):
                 g.update({"motivo": "no_pdf_o_error", "estado_http": r.status_code})
             elif len(r.content) > MAX_PDF:
@@ -207,7 +240,7 @@ def peticion(cid: str, url: str, texto: str) -> dict:
         "system": [{"type": "text", "text": SISTEMA, "cache_control": {"type": "ephemeral"}}],
         "thinking": extraer.PENSAMIENTO,
         "output_config": {"effort": extraer.ESFUERZO, "format": {"type": "json_schema", "schema": ESQUEMA}},
-        "messages": [{"role": "user", "content": f"URL: {url}\n\nTexto del PDF:\n{texto}"}]}}
+        "messages": [{"role": "user", "content": f"URL: {url}\n\nTexto del documento:\n{texto}"}]}}
 
 
 def verificar(datos: dict, texto: str) -> list[dict]:
@@ -231,11 +264,11 @@ def verificar(datos: dict, texto: str) -> list[dict]:
     return out
 
 
-def lote(pdfs: list[Path], censo: Path, salida: Path, esperar_min: float = 40, max_minutos: float = 52,
-         hilos: int = 12, guarda: extraer.Guarda | None = None) -> dict:
+def lote(pdfs: list[Path], censo: Path | None, salida: Path, esperar_min: float = 40, max_minutos: float = 52,
+         hilos: int = 12, guarda: extraer.Guarda | None = None, tablas: Path | None = None) -> dict:
     t0 = time.time()
     guarda = guarda if guarda is not None else extraer.Guarda()
-    filas = elegir_pdfs(pdfs, censo)
+    filas = (elegir_pdfs(pdfs, censo) if pdfs and censo else []) + (elegir_tablas(tablas) if tablas else [])
     capt = capturar_pdfs(filas, guarda, hilos=hilos, fin=t0 + (max_minutos - 15) * 60)
     salida.mkdir(parents=True, exist_ok=True)
     peticiones, por_id, enviado, cuentas = [], {}, [], Counter()
@@ -253,7 +286,8 @@ def lote(pdfs: list[Path], censo: Path, salida: Path, esperar_min: float = 40, m
                 por_id[cid] = (c, texto)
                 peticiones.append(peticion(cid, c["url"], texto))
                 enviado.append({"custom_id": cid, "url": c["url"], "sha256": c["sha256"], "texto": texto,
-                                "proveedor": c["proveedor"], "dominio": c["dominio"]})
+                                "proveedor": c["proveedor"], "dominio": c["dominio"],
+                                **{k: c[k] for k in ("universidad", "curso_lista", "programa_lista") if c.get(k)}})
                 cuentas["enviados"] += 1
             f.write(json.dumps(c, ensure_ascii=False) + "\n")
     if not peticiones:
@@ -308,8 +342,11 @@ def _procesar(b: dict, por_id: dict, salida: Path, guarda: extraer.Guarda, cuent
                 continue
             for p in verificados:
                 p.update({"url": c["url"], "proveedor": c.get("proveedor"), "dominio": c.get("dominio"),
-                          "curso": str(datos.get("curso") or "")[:20], "captura_sha256": c["sha256"],
+                          "curso": str(datos.get("curso") or c.get("curso_lista") or "")[:20], "captura_sha256": c["sha256"],
                           "extraido": ahora, "modelo": extraer.MODELO, "lote": b["id"]})
+                if c.get("universidad"):  # tabla revisada: el precio es de esa universidad
+                    p.update({"universidad": c["universidad"], "tabla": True,
+                              **({"programa_lista": c["programa_lista"]} if c.get("programa_lista") else {})})
                 fo.write(json.dumps(p, ensure_ascii=False) + "\n")
                 cuentas["precios_" + p["estado"]] += 1
     resumen = {**cuentas, "id": b["id"], "coste_usd": round(dolares, 6), "almacen": dict(guarda.cuentas)}
@@ -337,7 +374,9 @@ def retomar(lote_json: Path, salida: Path, censo: Path | None = None, esperar_mi
     for e in guarda.leer_jsonl(info["clave_enviado"]):
         dom = e.get("dominio") or dominio_registrado(urlparse(e["url"]).netloc)
         por_id[e["custom_id"]] = ({"url": e["url"], "sha256": e["sha256"], "dominio": dom,
-                                   "proveedor": e.get("proveedor") or provs.get(dom)}, e["texto"])
+                                   "proveedor": e.get("proveedor") or provs.get(dom),
+                                   **{k: e[k] for k in ("universidad", "curso_lista", "programa_lista") if e.get(k)}},
+                                  e["texto"])
     b = requests.get(f"{extraer.API}/{info['id']}", headers=extraer._cabeceras(), timeout=60).json()
     fin = time.time() + esperar_min * 60
     while b.get("processing_status") != "ended" and time.time() < fin:
@@ -413,6 +452,7 @@ def main() -> None:
     a.add_argument("--capturadas", action="append", default=[], help="carpetas con paginas_capturadas.jsonl")
     a.add_argument("--pdfs", action="append", default=[])
     a.add_argument("--censo")
+    a.add_argument("--tablas", help="tablas de precios revisadas de las universidades (jsonl: url, universidad, curso)")
     a.add_argument("--tarifas", action="append", default=[])
     a.add_argument("--fichas")
     a.add_argument("--esperar-min", type=float, default=40)
@@ -432,8 +472,9 @@ def main() -> None:
             return
         x.pdfs = list(x.pdfs) + [str(base / "precios_desde_paginas.jsonl")]
     if x.orden in ("lote", "todo"):
-        r = lote([Path(p) for p in x.pdfs], Path(x.censo), Path(x.salida) / "datos" / "estudios" / "tarifas" / "lote",
-                 x.esperar_min, x.max_minutos, x.hilos)
+        r = lote([Path(p) for p in x.pdfs], Path(x.censo) if x.censo else None,
+                 Path(x.salida) / "datos" / "estudios" / "tarifas" / "lote", x.esperar_min, x.max_minutos, x.hilos,
+                 tablas=Path(x.tablas) if x.tablas else None)
     else:
         r = unir([Path(p) for p in x.tarifas], Path(x.fichas), Path(x.salida))
     print(json.dumps(r, ensure_ascii=False))

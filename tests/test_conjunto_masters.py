@@ -350,3 +350,49 @@ def test_habilitacion_solo_con_el_nombre_de_la_profesion():
         assert h(n) is None, n
     c = cm.campos_habilitacion("Máster Universitario en Psicología General Sanitaria por la Universidad X")["habilita_profesion"]
     assert c["valor"] == "Sí: Psicólogo General Sanitario" and c["fuente"] == "boe" and c["url"].startswith("https://")
+
+
+def _fila_tabla(programa, importe, concepto="total", curso="2026-2027", **extra):
+    return {"programa": programa, "importe": importe, "concepto": concepto, "curso": curso, "estado": "aceptado",
+            "url": "https://www.unav.edu/admision-y-ayudas/master/precios-becas-y-ayudas", "extraido": "2026-10-31T00:10:00+00:00",
+            "cita_sha256": "ab", **extra}
+
+
+def test_precio_de_la_tabla_de_la_universidad():
+    filas = [_fila_tabla("Máster Universitario en Ingeniería Industrial", 27715.5),
+             _fila_tabla("Doble Máster en Ingeniería Industrial + Análisis de Datos en Ingeniería", 37500.3),
+             _fila_tabla("Máster Universitario en Análisis de Datos en Ingeniería", 18475.2),
+             _fila_tabla("Máster en Gestión y Tratamiento de Residuos", 4800, curso="2014-2015")]
+    c = cm.campos_tabla("Máster Universitario en Ingeniería Industrial por la Universidad de Navarra", filas)
+    assert c["precio_total"]["valor"] == 27715.5 and c["precio_total"]["fuente"] == "tarifa"
+    assert c["precio_total"]["nota"] == "tabla de precios de la universidad" and c["precio_total"]["curso"] == "2026-2027"
+    # el doble máster no es el máster, ni al revés
+    d = cm.campos_tabla("Doble Máster Universitario en Ingeniería Industrial y Análisis de Datos en Ingeniería", filas)
+    assert d["precio_total"]["valor"] == 37500.3
+    # curso pasado: fuera
+    assert cm.campos_tabla("Máster Universitario en Gestión y Tratamiento de Residuos", filas) == {}
+    # dos precios distintos igual de parecidos: ninguno
+    amb = [_fila_tabla("Máster Universitario en Arquitectura", 20180.4),
+           _fila_tabla("Máster Universitario en Arquitectura", 23150.0)]
+    assert cm.campos_tabla("Máster Universitario en Arquitectura por la Universidad de Navarra", amb) == {}
+    # el precio del crédito fuera de lo posible: fuera
+    assert cm.campos_tabla("Máster Universitario en Arquitectura", [_fila_tabla("Máster Universitario en Arquitectura",
+                                                                                 2, concepto="credito")]) == {}
+
+
+def test_precio_de_tabla_por_pagina_del_programa():
+    # la página de tasas de un máster: el nombre lo da la lista revisada si la página no lo repite
+    filas = [_fila_tabla("Tuition fee", 42500, programa_lista="Master in Management")]
+    c = cm.campos_tabla("Máster Universitario en Gestión / Master in Management (MIM) por IE Universidad", filas)
+    assert c["precio_total"]["valor"] == 42500
+
+
+def test_tablas_por_universidad_por_lista_o_por_dominio():
+    por_clave = {cm.clave_universidad("Universidad de Navarra"): {"universidad_codigo": "045"},
+                 cm.clave_universidad("Universidad Autónoma de Madrid"): {"universidad_codigo": "024"}}
+    dominios = {"uam.es": {"024"}, "ucm.es": {"022", "024"}}
+    filas = [_fila_tabla("A", 1000, universidad="Universidad de Navarra", dominio="unav.edu"),
+             _fila_tabla("B", 1000, dominio="uam.es"), _fila_tabla("C", 1000, dominio="ucm.es"),
+             _fila_tabla("D", 1000, dominio="otra.es")]
+    t = cm.tablas_por_universidad(filas, por_clave, dominios)
+    assert [x["programa"] for x in t["045"]] == ["A"] and [x["programa"] for x in t["024"]] == ["B"] and len(t) == 2

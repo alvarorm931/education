@@ -91,3 +91,18 @@ def test_tarifas_otra_moneda_y_un_precio_por_ficha(tmp_path):
     r = t.unir([tmp_path / "t"], tmp_path / "f.jsonl", tmp_path / "o")
     x = [json.loads(l) for l in (tmp_path / "o/datos/estudios/tarifas/precios_unidos.jsonl").read_text().splitlines()]
     assert r["unidos"] == 1 and x[0]["importe"] == 9500
+
+
+def test_tablas_revisadas_con_su_universidad(tmp_path):
+    f = tmp_path / "tablas.jsonl"
+    f.write_text("\n".join(json.dumps(x) for x in [
+        {"universidad": "Universidad de Navarra", "url": "https://www.unav.edu/admision-y-ayudas/master/precios",
+         "tipo": "html", "curso": "2026-2027"},
+        {"universidad": "Universidad de Navarra", "url": "https://www.unav.edu/admision-y-ayudas/master/precios"},
+        {"universidad": "", "url": "https://x.es/p.pdf"},
+        {"universidad": "IE Universidad", "url": "https://www.ie.edu/masters/master-in-management/admissions-fees",
+         "programa": "Master in Management"}]))
+    filas = t.elegir_tablas(f)
+    assert [x["dominio"] for x in filas] == ["unav.edu", "ie.edu"]
+    assert filas[0]["estado"] == "tabla" and filas[0]["curso_lista"] == "2026-2027"
+    assert filas[1]["programa_lista"] == "Master in Management"

@@ -400,6 +400,86 @@ def campos_boe(plan: dict | None) -> dict[str, dict]:
                                  comprobado=plan.get("comprobacion"))} if filas else {}
 
 
+def cargar_tablas(carpetas: list[Path]) -> list[dict]:
+    """Precios aceptados de las tarifas (tarifas.py): las tablas de precios de las universidades y los PDF de
+    precios de sus dominios. Uno por URL, programa, concepto e importe (la extracción más reciente)."""
+    out: dict[tuple, dict] = {}
+    for c in carpetas:
+        for f in sorted(c.rglob("precios.jsonl")):
+            for x in _jsonl(f):
+                if x.get("estado") != "aceptado" or not isinstance(x.get("importe"), (int, float)):
+                    continue
+                k = (x.get("url"), x.get("programa"), x.get("concepto"), x.get("importe"))
+                if k not in out or str(x.get("extraido") or "") > str(out[k].get("extraido") or ""):
+                    out[k] = x
+    return list(out.values())
+
+
+# Precio de la tabla de la universidad: el programa de la tabla tiene que ser ese máster (mismo nombre, sin ser un
+# doble máster ni otro tipo de título) y de un curso que no esté pasado. Si dos filas igual de parecidas dan precios
+# distintos para el mismo concepto, no se pone ninguno.
+CONCEPTO_TABLA = {"total": "precio_total", "credito": "precio_credito", "reserva": "reserva_matricula"}
+RE_DOBLE = re.compile(r"(?i)\b(doble|dobles|pceo|double)\b|\s\+\s")
+
+
+def _curso_tabla(x: dict) -> int | None:
+    años = [int(a) for a in re.findall(r"\b(20[0-3]\d)\b", f"{x.get('curso') or ''} {x.get('url') or ''}")]
+    return max(años) if años else None
+
+
+def campos_tabla(nombre_oficial: str | None, filas: list[dict]) -> dict[str, dict]:
+    from motor.estudios.fichas_masters import comprobar_nombre
+
+    if not nombre_oficial or not filas:
+        return {}
+    doble = bool(RE_DOBLE.search(nombre_oficial))
+    mejores: dict[str, list[tuple]] = defaultdict(list)
+    for x in filas:
+        campo_ = CONCEPTO_TABLA.get(x.get("concepto"))
+        año = _curso_tabla(x)
+        if not campo_ or not año or año <= AÑO_ANTIGUO:
+            continue
+        nombres = [n for n in (x.get("programa"), x.get("programa_lista")) if n]
+        if any(bool(RE_DOBLE.search(n)) != doble for n in nombres[:1]):
+            continue
+        resultados = [comprobar_nombre(nombre_oficial, n) for n in nombres]
+        buenos = [r[1] for r in resultados if r[0] == "confirmado"]
+        if buenos:
+            mejores[campo_].append((max(buenos), año, x))
+    out = {}
+    for campo_, cands in mejores.items():
+        cands.sort(key=lambda t: (-t[0], -t[1]))
+        top = [t for t in cands if t[0] == cands[0][0] and t[1] == cands[0][1]]
+        if len({round(t[2]["importe"], 2) for t in top}) > 1:
+            DESCARTES["precio_tabla_ambiguo"] += 1
+            continue
+        _, año, x = top[0]
+        v = x["importe"]
+        if campo_ == "precio_total" and v < PRECIO_TOTAL_MINIMO or \
+                campo_ == "precio_credito" and not PRECIO_CREDITO[0] <= v <= PRECIO_CREDITO[1]:
+            DESCARTES["precio_tabla_imposible"] += 1
+            continue
+        out[campo_] = campo(v, "tarifa", x.get("url"), str(x.get("extraido") or "")[:10] or None,
+                            curso=x.get("curso") or None, cita_sha256=x.get("cita_sha256"),
+                            nota="tabla de precios de la universidad")
+    return out
+
+
+def tablas_por_universidad(filas: list[dict], por_clave: dict[str, dict], dominios: dict[str, set[str]]) -> dict[str, list[dict]]:
+    """Código SIIU de universidad → sus precios de tabla: la universidad que dice la lista revisada o, en los PDF
+    hallados por su dominio, la única dueña de ese dominio."""
+    out: dict[str, list[dict]] = defaultdict(list)
+    for x in filas:
+        if x.get("universidad"):
+            u = (por_clave.get(clave_universidad(x["universidad"])) or {}).get("universidad_codigo")
+        else:
+            dueñas = dominios.get(x.get("dominio") or "") or set()
+            u = next(iter(dueñas)) if len(dueñas) == 1 else None
+        if u:
+            out[u].append(x)
+    return out
+
+
 def cargar_guias(carpetas: list[Path]) -> dict[str, list[dict]]:
     """código → guías docentes leídas (guias.py), una por URL (la última)."""
     por_url: dict[str, dict] = {}
@@ -944,7 +1024,8 @@ def _sin_fecha(q: dict | None) -> dict | None:
 
 def oficial(cod: str, cat: dict, ruct: dict | None, imps: list[dict], web: dict | None,
             fecha_catalogo: str | None = None, universidades: dict[str, str] | None = None,
-            plan_boe: dict | None = None, guias: list[dict] | None = None, ajenos: set[str] | None = None) -> dict:
+            plan_boe: dict | None = None, guias: list[dict] | None = None, ajenos: set[str] | None = None,
+            tablas: list[dict] | None = None) -> dict:
     url_cat = (cat.get("fuente") or {}).get("url") or URL_SIIU
     fecha_cat = (cat.get("fuente") or {}).get("capturado") or fecha_catalogo
     nombre_uni = (universidades or {}).get(cat.get("universidad_codigo") or "") or \
@@ -972,7 +1053,8 @@ def oficial(cod: str, cat: dict, ruct: dict | None, imps: list[dict], web: dict 
     if ajenos:  # datos de una página en el dominio oficial de otra universidad: fuera
         w = {k: v for k, v in w.items() if dominio(v.get("url")) not in ajenos}
     por_fuente["web"] = {k: v for k, v in w.items() if v["fuente"] == "web"}
-    por_fuente["tarifa"] = {k: v for k, v in w.items() if v["fuente"] == "tarifa"}
+    por_fuente["tarifa"] = {**campos_tabla(cat.get("nombre_oficial"), tablas or []),
+                            **{k: v for k, v in w.items() if v["fuente"] == "tarifa"}}
     por_fuente["calculado"] = calc
     por_fuente["guia"] = campos_guias(guias or [])
     hab = ((por_fuente.get("ruct") or {}).get("habilita_profesion") or {}).get("valor")
@@ -1192,7 +1274,8 @@ def filtrar_web(web: dict | None, propias: set[str], dominios: dict[str, set[str
 
 def ejecutar(catalogo: Path, salida: Path, altas: Path | None = None, ruct: list[Path] = (), qedu: list[Path] = (),
              fichas: Path | None = None, anterior: Path | None = None, fecha_catalogo: str | None = None,
-             boe: list[Path] = (), guias: list[Path] = (), fecha_altas: str | None = None) -> dict:
+             boe: list[Path] = (), guias: list[Path] = (), fecha_altas: str | None = None,
+             tablas: list[Path] = ()) -> dict:
     texto = catalogo.read_text(encoding="utf-8").strip()
     filas = json.loads(texto) if texto.startswith("[") else [json.loads(l) for l in texto.split("\n") if l.strip()]
     fecha_catalogo = fecha_catalogo or datetime.fromtimestamp(catalogo.stat().st_mtime, timezone.utc).date().isoformat()
@@ -1234,6 +1317,7 @@ def ejecutar(catalogo: Path, salida: Path, altas: Path | None = None, ruct: list
     prev = _anterior(anterior)
     DESCARTES.clear()
     dominios = dominios_de_universidades(cat, r_qedu)
+    r_tablas = tablas_por_universidad(cargar_tablas(list(tablas)), por_clave, dominios)
     oficiales = []
     for c in sorted(cat):
         t = cat[c]
@@ -1246,7 +1330,7 @@ def ejecutar(catalogo: Path, salida: Path, altas: Path | None = None, ruct: list
         if motivo:
             DESCARTES[motivo] += 1
         oficiales.append(oficial(c, t, r_ruct.get(c), r_qedu.get(c, []), web, fecha_catalogo, universidades,
-                                 r_boe.get(c), r_guias.get(c), ajenos))
+                                 r_boe.get(c), r_guias.get(c), ajenos, r_tablas.get(t.get("universidad_codigo") or "")))
     programas = programas_no_oficiales(web_no, prev, dominios)
     fechas = fechas_estables(oficiales + programas, prev, hoy)
     salida.mkdir(parents=True, exist_ok=True)
@@ -1271,6 +1355,8 @@ def ejecutar(catalogo: Path, salida: Path, altas: Path | None = None, ruct: list
         "oficiales_con_plan_boe": sum(1 for c in cat if c in r_boe),
         "oficiales_con_guias": sum(1 for c in cat if c in r_guias),
         "oficiales_con_web": sum(1 for c in cat if c in web_of),
+        "oficiales_con_precio_de_tabla": sum(1 for r in oficiales if any(
+            (r["campos"].get(k) or {}).get("nota") == "tabla de precios de la universidad" for k in CONCEPTO_TABLA.values())),
         "oficiales_indexables": sum(1 for r in oficiales if r["indexable"]),
         "oficiales_faltan": dict(Counter(x for r in oficiales for x in r["datos_minimos_faltan"])),
         "oficiales_por_titularidad": {t: {"total": sum(1 for r in oficiales if r["universidad_tipo"] == t),
@@ -1301,13 +1387,15 @@ def main() -> None:
     p.add_argument("--fichas")
     p.add_argument("--boe", action="append", default=[], help="carpetas con boe_planes_masters.jsonl")
     p.add_argument("--guias", action="append", default=[], help="carpetas con guias.jsonl (guias.py)")
+    p.add_argument("--tablas", action="append", default=[], help="carpetas con precios.jsonl de tarifas.py (tablas)")
     p.add_argument("--anterior")
     p.add_argument("--fecha-catalogo", help="fecha de descarga del catálogo SIIU (por defecto, la del fichero)")
     p.add_argument("--salida", required=True)
     a = p.parse_args()
     res = ejecutar(Path(a.catalogo), Path(a.salida), Path(a.altas) if a.altas else None, [Path(x) for x in a.ruct],
                    [Path(x) for x in a.qedu], Path(a.fichas) if a.fichas else None, Path(a.anterior) if a.anterior else None,
-                   a.fecha_catalogo, [Path(x) for x in a.boe], [Path(x) for x in a.guias])
+                   a.fecha_catalogo, [Path(x) for x in a.boe], [Path(x) for x in a.guias],
+                   tablas=[Path(x) for x in a.tablas])
     print(json.dumps({k: v for k, v in res.items() if not k.startswith("cobertura")}, ensure_ascii=False, indent=1))
 
 

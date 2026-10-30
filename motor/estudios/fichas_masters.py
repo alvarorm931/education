@@ -87,7 +87,9 @@ def nombre_ingles(oficial: str) -> str | None:
     m = re.search(r"\s/\s*((?:master|m\.?sc|msc|mba|master's)\b.*)$", oficial or "", re.I)
     if not m:
         return None
-    return re.split(r"(?i)\s+(?:por|per)\s+(?:la|el|las|los|l')\s*", m.group(1))[0].strip() or None
+    ing = re.split(r"(?i)\s+(?:por|per|by)\s+(?:(?:la|el|las|los|the)\s+|l')?(?=[A-ZÁÉÍÓÚ])", m.group(1))[0]
+    # las siglas entre paréntesis («(MIM)») no suelen estar en el nombre de la página
+    return re.sub(r"\s*\([^)]*\)", "", ing).strip() or None
 
 
 def comprobar_nombre(oficial: str, extraido: str | None) -> tuple[str, float]:

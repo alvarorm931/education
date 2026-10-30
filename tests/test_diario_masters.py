@@ -61,10 +61,12 @@ def test_carpetas_por_su_forma_en_la_rama():
              "20261030T112546-t0/datos/estudios/masters/qedu/qedu_detalles_master_0_950.jsonl",
              "20261030T150000/datos/estudios/masters/boe_planes_masters.jsonl",
              "20261030T160000-t0/datos/estudios/masters/guias/tramo_0/guias.jsonl",
+             "20261030T230000-t0/datos/estudios/tarifas/lote/precios.jsonl",
              "masters-estado/conjunto/resumen.json"]
     cs = diario_masters.carpetas_en_arbol(arbol, "20261030T1000")
     assert cs == {"extracciones": ["20261030T103924"], "ruct": ["20261030T111924-t0", "20261031T010000-t3"],
-                  "qedu": ["20261030T112546-t0"], "boe": ["20261030T150000"], "guias": ["20261030T160000-t0"]}
+                  "qedu": ["20261030T112546-t0"], "boe": ["20261030T150000"], "guias": ["20261030T160000-t0"],
+                  "tablas": ["20261030T230000-t0"]}
     r = diario_masters.rutas_a_traer({"catalogo": "masters-estado/cat.json"}, cs)
     assert "20261031T010000-t3/datos/estudios/masters/ruct_memoria" in r and r[0] == "masters-estado"
     # el RUCT de antes del sello general, con el suyo; las extracciones de antes, no

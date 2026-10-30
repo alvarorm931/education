@@ -50,10 +50,11 @@ TIPOS = {  # clave del manifiesto → cómo se reconoce su carpeta en la rama
     "qedu": re.compile(r"^([^/]+)/datos/estudios/masters/qedu/"),
     "boe": re.compile(r"^([^/]+)/datos/estudios/masters/boe_planes_masters\.jsonl$"),
     "guias": re.compile(r"^([^/]+)/datos/estudios/masters/guias/.+/guias\.jsonl$"),
+    "tablas": re.compile(r"^([^/]+)/datos/estudios/tarifas/(?:.+/)?precios\.jsonl$"),
 }
 SUBRUTAS = {"extracciones": ["datos/estudios/extraccion"], "ruct": ["datos/estudios/masters/ruct", "datos/estudios/masters/ruct_memoria"],
             "qedu": ["datos/estudios/masters/qedu"], "boe": ["datos/estudios/masters/boe_planes_masters.jsonl"],
-            "guias": ["datos/estudios/masters/guias"]}
+            "guias": ["datos/estudios/masters/guias"], "tablas": ["datos/estudios/tarifas"]}
 
 
 def carpetas_en_arbol(rutas: list[str], desde: str, desde_por_tipo: dict[str, str] | None = None) -> dict[str, list[str]]:
@@ -189,7 +190,7 @@ def ejecutar(raiz: Path, salida: Path, dia: int, sello: str, max_minutos: float 
     res["conjunto"] = {k: v for k, v in conjunto_masters.ejecutar(
         raiz / m["catalogo"], salida / ESTADO / "conjunto", opcional("altas"), ruct_dirs, qedu_dirs, fichas,
         opcional("conjunto"), fecha_catalogo=m.get("fecha_catalogo"), boe=boe_dirs,
-        guias=_rutas(raiz, m.get("guias", []))).items()
+        guias=_rutas(raiz, m.get("guias", [])), tablas=_rutas(raiz, m.get("tablas", []))).items()
         if not k.startswith("cobertura")}
 
     # copia del conjunto en el almacén privado (escritura única por huella: un conjunto igual no se vuelve a guardar)
