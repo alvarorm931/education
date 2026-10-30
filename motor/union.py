@@ -351,6 +351,10 @@ def unir(procesos: list[dict], origenes: dict[str, dict], actos: list[dict], cla
             recuento[motivo] += 1
         else:
             m = motivo or ("sin_puesto_ni_cita" if not q else "sin_candidato")
+            # La convocatoria que cita es de antes de lo que hay en el archivo (enero de 2022): no está, no es que no
+            # se sepa unir
+            if not motivo and _cita_anterior_al_archivo(x, fecha):
+                m = "anterior_al_archivo"
             recuento["huerfano:" + m.split(":")[0]] += 1
             huerfanos.append({"id": x["id"], "fecha": fecha, "fuente": x.get("fuente") or "BOE",
                               "tipo": x.get("tipo_acto"), "titulo": x.get("titulo"), "url": x.get("url"),
@@ -368,6 +372,19 @@ RE_ESTABILIZACION = re.compile(r"estabiliz|consolidaci[oó]n de empleo|disposici
 RE_NUM_PLAZAS = re.compile(r"\b(\d{1,3}|una|un|dos|tres|cuatro|cinco|seis|siete|ocho|nueve|diez)\s+(?:plazas?|places|prazas)\b")
 NUMEROS = {"un": 1, "una": 1, "dos": 2, "tres": 3, "cuatro": 4, "cinco": 5, "seis": 6, "siete": 7, "ocho": 8,
            "nueve": 9, "diez": 10}
+
+
+ARCHIVO_DESDE = "2022-01-01"
+
+
+def _cita_anterior_al_archivo(x: dict, fecha: str) -> bool:
+    """El título cita una convocatoria de antes de 2022, o todos los boletines que cita el texto son de antes y de
+    los tres años previos al acto (una ley de 2015 citada con su BOE no cuenta)."""
+    fc, _ = cita_convocatoria(x.get("titulo"), fecha)
+    if fc and fc < ARCHIVO_DESDE:
+        return True
+    fechas = [c.get("fecha") for c in (x.get("citas") or []) + (x.get("boletines_citados") or []) if c.get("fecha")]
+    return bool(fechas) and max(fechas) < ARCHIVO_DESDE and _dias(max(fechas), fecha) <= VENTANA_DIAS
 
 
 def _rasgos(titulo: str | None) -> tuple[bool, int | None]:

@@ -102,3 +102,22 @@ def test_canal_rss_de_datos_abiertos(tmp_path, monkeypatch):
     assert garriga["url_html"] == "https://bop.diba.cat/anunci/" + garriga["numero_anuncio"]
     assert garriga["tipo_anuncio"].startswith("Personal | Convocatòries")
     assert garriga["convocante"]["nombre"] == "La Garriga"
+
+
+def test_un_dia_raro_no_para_la_carga(tmp_path, monkeypatch, capsys):
+    """Una excepción al leer un día queda como error_formato de ese día y la carga sigue con el anterior."""
+    import json
+    vistos = []
+
+    def falso(b, d, raiz, archivo, pausa=1.0):
+        vistos.append(d)
+        if d == date(2025, 7, 26):
+            raise TypeError("unsupported operand type(s) for /: 'NoneType' and 'int'")
+        return {"fecha": d.isoformat(), "resultado": "ok", "alertas": []}
+
+    monkeypatch.setattr(diba, "procesar_dia", falso)
+    monkeypatch.setattr(diba.time, "sleep", lambda s: None)
+    bopb.main(["--desde", "2025-07-24", "--hasta", "2025-07-27", "--salida", str(tmp_path), "--pausa", "0"])
+    assert vistos == [date(2025, 7, 27), date(2025, 7, 26), date(2025, 7, 25), date(2025, 7, 24)]
+    raro = json.loads((tmp_path / "datos" / "provinciales" / "bopb" / "dias" / "2025" / "07" / "26.json").read_text())
+    assert raro["resultado"] == "error_formato" and "TypeError" in raro["alertas"][0]

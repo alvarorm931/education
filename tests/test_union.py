@@ -91,3 +91,12 @@ def test_puesto_del_texto_cuando_el_titulo_no_lo_dice():
               "titulo": "Rivas-Vaciamadrid. Personal. Nombramiento funcionario carrera", "puesto_texto": "policia-local"}]
     recuento, huerfanos = u.unir(procesos, origenes, actos, lambda a: [a["convocante"]])
     assert [a["id"] for a in procesos[0]["actos"]][-1] == "n1" and not huerfanos
+
+
+def test_huerfano_de_convocatoria_anterior_al_archivo():
+    actos = [{"id": "z1", "fecha": "2022-02-10", "tipo_acto": "admitidos", "convocante": "soria",
+              "titulo": "Lista de admitidos de la plaza de Conserje, convocada por Resolución de 3 de noviembre de 2021"},
+             {"id": "z2", "fecha": "2022-02-10", "tipo_acto": "admitidos", "convocante": "soria",
+              "titulo": "Lista de admitidos de la plaza de Peón", "citas": [{"boletin": "BOE", "fecha": "2015-10-31"}]}]
+    _, huerfanos = u.unir([], {}, actos, lambda a: [a["convocante"]])
+    assert [h["motivo"] for h in huerfanos] == ["anterior_al_archivo", "sin_candidato"]

@@ -303,6 +303,10 @@ def main(b: Boletin, argv: list[str] | None = None) -> int:
                 inf = procesar_dia(b, d, a.salida, archivo, a.pausa)
             except (ConnectionError, TimeoutError) as e:
                 inf = {"fecha": d.isoformat(), "resultado": "fuente_inaccesible", "alertas": [str(e)]}
+            except Exception as e:  # noqa: BLE001 — un día raro no para la carga (el BOPB no pasaba del 27/07/2025)
+                inf = {"fecha": d.isoformat(), "resultado": "error_formato",
+                       "alertas": [f"{b.siglas} {d}: {type(e).__name__}: {str(e)[:200]}"]}
+                print(f"::warning::{inf['alertas'][0]}")
             if not (inf.get("resultado") == "sin_boletin" and d >= hoy):
                 escribir_json(ruta, inf)
             informes.append(inf)
