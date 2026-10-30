@@ -100,4 +100,16 @@ def test_cataluna_primera_asignacion_no_se_publica_sin_otra_comprobacion():
     filas[0]["fuente"] = {}
     cands = {"Girona": [_cand("9", "Medicina", "C9", "girona", notas={"2025-2026": 12.68})]}
     nc.unir(filas, cands)
-    assert not nc.historico(filas, cands)[0]["publicable"]
+    assert not nc.historico(filas, cands)[0]["publicable"]  # sin plazas de QEDU con que comprobar
+    cands["Girona"][0]["plazas_qedu"] = {"2025-2026": 92.0}
+    h = nc.historico(filas, cands)[0]
+    assert h["publicable"] and h["lista"] == "primera_asignacion" and h["contraste_qedu"] == {"plazas_iguales": 1}
+
+
+def test_catalan_doble_por_simultaneidad():
+    assert nc.palabras("Administració i Direcció d'Empreses", catalan=True) == nc.palabras("Administración y Dirección de Empresas")
+    cands = {"U": [_cand("1", "Criminología", "C", "barcelona"), _cand("2", "Derecho", "C", "barcelona"),
+                   _cand("3", "Criminología y Derecho", "C", "barcelona", "doble", componentes=["Criminología", "Derecho"])]}
+    x = {**_fila("Criminologia / Dret (simultaneïtat)", 9.0), "distrito": "cataluna", "lista": "primera_asignacion"}
+    nc.unir([x], cands)
+    assert x["codigo_titulo"] == "3"

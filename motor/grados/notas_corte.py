@@ -56,12 +56,76 @@ ABREVIATURAS = {"ade": "administracion direccion empresas", "cc": "ciencias", "i
                "cafyd": "ciencias actividad fisica deporte", "cafd": "ciencias actividad fisica deporte",
                "rrll": "relaciones laborales", "rrhh": "recursos humanos", "ener": "energeticos", "tecnol": "tecnologia",
                "ia": "inteligencia artificial", "gest": "gestion", "sist": "sistemas", "informac": "informacion"}
+# Palabras de los nombres de grado en catalán → castellano, para unir la oferta catalana con el catálogo (en
+# castellano). Solo cambia palabras sueltas; lo demás decide el parecido.
+CATALAN = {
+    "informacio": "informacion", "gestio": "gestion", "comunicacio": "comunicacion", "produccio": "produccion",
+    "prevencio": "prevencion", "organitzacio": "organizacion", "educacio": "educacion",
+    "activitat": "actividad", "actuarials": "actuariales", "administracio": "administracion",
+    "aeroespacial": "aeroespacial", "aeronautica": "aeronautica", "agraria": "agraria", "agricola": "agricola",
+    "agroalimentaria": "agroalimentaria", "agronomica": "agronomica", "al": "al", "alimentacio": "alimentacion",
+    "alimentaria": "alimentaria", "als": "a los", "amb": "con", "ambiental": "ambiental",
+    "ambientals": "ambientales", "anglesa": "inglesa", "anglesos": "ingleses", "animacio": "animacion",
+    "animal": "animal", "antiga": "antigua", "antropologia": "antropologia", "aplicacions": "aplicaciones",
+    "aplicada": "aplicada", "aplicades": "aplicadas", "aprenentatge": "aprendizaje", "arqueologia": "arqueologia",
+    "arquitectura": "arquitectura", "art": "arte", "artificial": "artificial", "arts": "artes",
+    "audiovisual": "audiovisual", "audiovisuals": "audiovisuales", "automatica": "automatica", "belles": "bellas",
+    "bens": "bienes", "biologia": "biologia", "biologiques": "biologicas", "biomedica": "biomedica",
+    "biomedicina": "biomedicina", "biomediques": "biomedicas", "bioquimica": "bioquimica",
+    "biosistemes": "biosistemas", "biotecnologia": "biotecnologia", "catalana": "catalana", "catalans": "catalanes",
+    "ciencia": "ciencia", "ciencies": "ciencias", "cinema": "cine", "ciutat": "ciudad", "civil": "civil",
+    "classica": "clasica", "classiques": "clasicas", "comptabilitat": "contabilidad",
+    "computacional": "computacional", "comunicacio": "comunicacion", "comunicacions": "comunicaciones",
+    "conservacio": "conservacion", "contemporania": "contemporanea", "criminologia": "criminologia",
+    "culinaries": "culinarias", "culturals": "culturales", "d": "d", "dades": "datos", "de": "de", "del": "del",
+    "desenvolupament": "desarrollo", "dietetica": "dietetica", "direccio": "direccion", "disseny": "diseno",
+    "doble": "doble", "dret": "derecho", "economia": "economia", "edificacio": "edificacion",
+    "educacio": "educacion", "electrica": "electrica", "electronica": "electronica", "els": "los",
+    "emprenedoria": "emprendimiento", "empresa": "empresa", "empreses": "empresas", "en": "en", "energia": "energia",
+    "enginyer": "ingeniero", "enginyeria": "ingenieria", "enologia": "enologia", "espanyola": "espanola",
+    "esport": "deporte", "esports": "deportes", "estadistica": "estadistica", "estudis": "estudios",
+    "farmacia": "farmacia", "filologia": "filologia", "filosofia": "filosofia", "finances": "finanzas",
+    "fisica": "fisica", "fisioterapia": "fisioterapia", "forestal": "forestal", "fotonica": "fotonica",
+    "francesa": "francesa", "gastronomiques": "gastronomicas", "genetica": "genetica", "geografia": "geografia",
+    "geologia": "geologia", "geomatica": "geomatica", "gestio": "gestion", "global": "global", "globals": "globales",
+    "grau": "grado", "hispanica": "hispanica", "historia": "historia", "hotelera": "hotelera",
+    "hoteleria": "hoteleria", "humana": "humana", "humanitats": "humanidades", "humans": "humanos", "i": "y",
+    "idiomes": "idiomas", "industrial": "industrial", "industrials": "industriales", "infantil": "infantil",
+    "infermeria": "enfermeria", "informatica": "informatica", "innovacio": "innovacion", "integral": "integral",
+    "intel": "inteligencia", "internacionals": "internacionales", "interpretacio": "interpretacion", "l": "l",
+    "la": "la", "laborals": "laborales", "les": "las", "linguistica": "linguistica", "literatura": "literatura",
+    "literatures": "literaturas", "llengua": "lengua", "llenguatges": "lenguajes", "llengues": "lenguas",
+    "logopedia": "logopedia", "mar": "mar", "maritim": "maritimo", "marqueting": "marketing",
+    "matematica": "matematica", "matematiques": "matematicas", "materials": "materiales", "mecanica": "mecanica",
+    "mecatronica": "mecatronica", "medicina": "medicina", "medieval": "medieval", "mediterranies": "mediterraneas",
+    "mestre": "maestro", "microbiologia": "microbiologia", "minera": "minera", "minerals": "minerales",
+    "mineria": "mineria", "mines": "minas", "moderna": "moderna", "modernes": "modernas", "multimedia": "multimedia",
+    "musica": "musica", "musicologia": "musicologia", "nautica": "nautica", "naval": "naval", "navals": "navales",
+    "negocis": "negocios", "nutricio": "nutricion", "obert": "abierto", "ocupacional": "ocupacional",
+    "odontologia": "odontologia", "optica": "optica", "optometria": "optometria", "organitzacio": "organizacion",
+    "paisatge": "paisaje", "paisatgisme": "paisajismo", "pedagogia": "pedagogia", "per": "por",
+    "periodisme": "periodismo", "podologia": "podologia", "politica": "politica", "politiques": "politicas",
+    "prevencio": "prevencion", "primaria": "primaria", "produccio": "produccion", "programa": "programa",
+    "psicologia": "psicologia", "publica": "publica", "publicitat": "publicidad", "publiques": "publicas",
+    "quimica": "quimica", "recursos": "recursos", "relacions": "relaciones", "restauracio": "restauracion",
+    "robotica": "robotica", "salut": "salud", "seguretat": "seguridad", "sistemes": "sistemas", "social": "social",
+    "socials": "sociales", "sociologia": "sociologia", "sostenibilitat": "sostenibilidad",
+    "sostenible": "sostenible", "superior": "superior", "teatrals": "teatrales", "tecnica": "tecnica",
+    "tecniques": "tecnicas", "tecnologia": "tecnologia", "tecnologies": "tecnologias", "teleco": "telecomunicacion",
+    "telecomunicacio": "telecomunicacion", "telematica": "telematica", "terapia": "terapia",
+    "titulacio": "titulacion", "topografia": "topografia", "traduccio": "traduccion", "treball": "trabajo",
+    "turisme": "turismo", "urbanisme": "urbanismo", "vehicles": "vehiculos", "veterinaria": "veterinaria",
+    "videojocs": "videojuegos",
+}
+
 # Lo que acompaña al grado en la misma oferta y no cambia el título: un máster encadenado o la reserva de plaza
-ANEXO_OFERTA = re.compile(r"(?i)\s*\+\s*(?:m[aá]ster|master|reserva de plaza).*$")
+ANEXO_OFERTA = re.compile(r"(?i)\s*(?:\+|,\s*grau en \+)\s*(?:m[aá]ster|master|reserva de plaza).*$")
 
 
-def palabras(nombre: str) -> frozenset[str]:
-    s = re.sub(r"\([^)]*\)", " ", sin_acentos(ANEXO_OFERTA.sub("", nombre)))
+def palabras(nombre: str, catalan: bool = False) -> frozenset[str]:
+    s = re.sub(r'\([^)]*\)|"[^"]*"|«[^»]*»', " ", sin_acentos(ANEXO_OFERTA.sub("", nombre)))
+    if catalan:
+        s = " ".join(CATALAN.get(w, w) for w in re.split(r"[\s'’,;:]+", s))
     s = re.sub(r"\b([a-z]+)\.", r"\1 ", s)
     s = " ".join(ABREVIATURAS.get(w, w) for w in re.split(r"[\s,;:]+", s))
     s = re.sub(r"\bmaestro\b|\bmagisterio\b|\bgraduado\b|\bgraduada\b", " ", s)
@@ -77,8 +141,9 @@ def partes(nombre: str) -> list[str]:
 
 
 def pistas(nombre: str) -> list[str]:
-    """Lo que va entre paréntesis («Campus Villalba», «Guadalajara», «en inglés», «Facultad Medicina UAM»)."""
-    return [x.strip() for x in re.findall(r"\(([^)]*)\)", nombre)]
+    """Lo que va entre paréntesis o comillas («Campus Villalba», «Guadalajara», «en inglés», «Facultad Medicina
+    UAM», «"Gimbernat"»)."""
+    return [y.strip() for x in re.findall(r'\(([^)]*)\)|"([^"]*)"|«([^»]*)»', nombre) for y in x if y.strip()]
 
 
 def _nota(tok: str) -> float | None:
@@ -333,6 +398,7 @@ def candidatos(catalogo: list[dict], qedu: dict, tarjetas: dict | None = None) -
                            "centro": i.get("unidad_codigo"), "unidad": i.get("unidad") or "",
                            "municipio": sin_acentos(i.get("municipio") or ""), "idioma": i.get("idioma_extranjero"),
                            "propio": i.get("unidad_modalidad") == "Centro propio",
+                           "plazas_qedu": {d["curso"]: d["plazas"]} if d.get("curso") and d.get("plazas") else {},
                            "ofertado": tarjetas is None or clave in tarjetas, "notas_qedu": notas})
     return por
 
@@ -358,15 +424,19 @@ def _es_pista(z: str, cs: list[dict]) -> bool:
 def puntuar(nombre: str, x0: dict, xs: list[dict], cs: list[dict]) -> list[tuple[float, dict, str]]:
     """Puntuación de cada candidato: parecido del nombre (grado entero, grado con variante o los dos grados de un
     doble), pistas de centro y, si el distrito publica la nota final, la nota de QEDU del mismo curso."""
+    ca = x0["distrito"] == "cataluna"
     trozos = partes(nombre)
     pist = [sin_acentos(z) for z in pistas(nombre)] + [sin_acentos(z) for z in trozos[1:] if _es_pista(z, cs)]
+    if x0.get("municipio"):
+        pist.append(sin_acentos(x0["municipio"]).replace("l'", "").strip())
     trozos = [z for z in trozos if not _es_pista(z, cs)] or trozos
-    entero = palabras(" ".join(trozos))
-    idioma = any(re.search(r"ingl|bilingu|english", z) for z in pist)
+    entero = palabras(" ".join(trozos), ca)
+    idioma = any(re.search(r"ingl|angl|bilingu|english", z) for z in pist)
     de_doble = len(trozos) >= 2 or bool(re.search(r"(?i)doble|simultane|programa conjunto|pceo", nombre))
     # «Economía-Derecho»: cada parte es un grado de la universidad → es un doble, no «Economía» con una variante
     grados = [c["palabras"] for c in cs if c["clase"] == "grado"]
-    solo_doble = len(trozos) >= 2 and all(any(_parecido(palabras(z), g) >= 0.75 for g in grados) for z in trozos)
+    solo_doble = len(trozos) >= 2 and all(any(_parecido(palabras(z, ca), g) >= 0.75 for g in grados) for z in trozos)
+    solo_doble = solo_doble or bool(re.search(r"(?i)simultane", nombre))  # «(simultaneïtat)»: doble en Cataluña
     salida = []
     for c in cs:
         variante = ""
@@ -380,7 +450,7 @@ def puntuar(nombre: str, x0: dict, xs: list[dict], cs: list[dict]) -> list[tuple
         else:
             s = _parecido(entero, c["palabras"])
             if len(trozos) >= 2:
-                s1 = _parecido(palabras(trozos[0]), c["palabras"]) - 0.1  # «Estudios de Asia y África-Árabe»
+                s1 = _parecido(palabras(trozos[0], ca), c["palabras"]) - 0.1  # «Estudios de Asia y África-Árabe»
                 if s1 > s:
                     s, variante = s1, trozos[1]
         if s < 0.6:
@@ -413,6 +483,9 @@ def unir(filas: list[dict], cands: dict[str, list[dict]]) -> Counter:
             for x in xs:
                 x["union"] = {"metodo": "codigo_del_ministerio"}
             resumen["codigo_del_ministerio"] += 1
+            continue
+        if re.search(r"(?i)\(agrupaci[oó]\)|grau obert|grado abierto", nombre):
+            resumen["agrupacion_o_grado_abierto"] += 1  # primer curso común de varios grados: no es un título
             continue
         puntos = puntuar(nombre, xs[0], xs, cands.get(univ or "", []))
         if not puntos:
@@ -469,14 +542,17 @@ def nota_del_titulo(filas: list[dict]) -> dict[tuple, dict]:
                 and x.get("convocatoria") in (None, "ordinaria", "junio") and x.get("nota") is not None:
             por[(x["codigo_titulo"], x["codigo_centro"], x["curso"])].append(x)
     return {k: {"nota": min(x["nota"] for x in xs), "ofertas": len(xs), "distrito": xs[0]["distrito"],
-                "lista": xs[0]["lista"], "fuente": xs[0]["fuente"]} for k, xs in por.items()}
+                "lista": xs[0]["lista"], "fuente": xs[0]["fuente"],
+                "plazas": sum(x["plazas"] for x in xs) if all(x.get("plazas") for x in xs) else None}
+            for k, xs in por.items()}
 
 
 def historico(filas: list[dict], cands: dict[str, list[dict]]) -> list[dict]:
     """Por título y centro: la nota de corte del cupo general por curso (la menor de sus ofertas, como QEDU) y el
     contraste con QEDU en los cursos que se solapan. Si en alguno no coincide (con una nota por encima de 5,000, que
-    es «entraron todos»), o si la nota no es la final (Cataluña da la de la primera asignación), el histórico de ese
-    título y centro no se publica (`publicable`: false)."""
+    es «entraron todos»), el histórico de ese título y centro no se publica (`publicable`: false). Si la nota no es
+    la final (Cataluña da la de la primera asignación, que no se puede contrastar con la de QEDU), solo se publica
+    si las plazas del distrito y las de QEDU coinciden en el mismo curso, y con su tipo de lista."""
     por_cod = {(c["codigo"], c["centro"]): c for cs in cands.values() for c in cs}
     por: dict[tuple, dict] = defaultdict(dict)
     for (tit, cen, curso), v in nota_del_titulo(filas).items():
@@ -487,16 +563,24 @@ def historico(filas: list[dict], cands: dict[str, list[dict]]) -> list[dict]:
         contraste = Counter()
         for curso, v in cursos.items():
             q = c["notas_qedu"].get(curso)
-            if q is not None and v["nota"] > 5:
+            if q is not None and v["nota"] > 5 and v["lista"] == "final":
                 contraste["igual" if igual_a_qedu(q, v["nota"]) else "distinta"] += 1
         finales = all(v["lista"] == "final" for v in cursos.values())
+        # sin nota final que contrastar (Cataluña): vale si las plazas del distrito coinciden con las de QEDU en el
+        # mismo curso, señal de que la oferta unida por el nombre es la misma
+        plazas_iguales = [curso for curso, v in cursos.items() if v.get("plazas") is not None
+                          and c.get("plazas_qedu", {}).get(curso) is not None
+                          and abs(c["plazas_qedu"][curso] - v["plazas"]) < 0.5]
+        if plazas_iguales:
+            contraste["plazas_iguales"] = len(plazas_iguales)
         salida.append({"codigo_titulo": tit, "codigo_centro": cen, "distrito": next(iter(cursos.values()))["distrito"],
                        "cursos": {k: {"nota": v["nota"], "ofertas": v["ofertas"], "lista": v["lista"],
                                       "fuente": v["fuente"]} for k, v in sorted(cursos.items())},
                        "contraste_qedu": dict(contraste),
                        # una nota de primera asignación (Cataluña) no se puede contrastar con la final de QEDU: no se
                        # publica hasta tener otra comprobación
-                       "publicable": finales and not contraste.get("distinta")})
+                       "publicable": not contraste.get("distinta") and (finales or bool(plazas_iguales)),
+                       "lista": "final" if finales else next(iter(cursos.values()))["lista"]})
     return salida
 
 
@@ -507,7 +591,7 @@ def contrastar(filas: list[dict], cands: dict[str, list[dict]]) -> dict:
     salida: dict = defaultdict(Counter)
     for (tit, cen, curso), v in nota_del_titulo(filas).items():
         c = por_cod.get((tit, cen))
-        if not c or curso not in c["notas_qedu"] or v["nota"] <= 5:
+        if not c or curso not in c["notas_qedu"] or v["nota"] <= 5 or v["lista"] != "final":
             continue
         igual = igual_a_qedu(c["notas_qedu"][curso], v["nota"])
         salida[v["distrito"]]["igual" if igual else "distinta"] += 1
