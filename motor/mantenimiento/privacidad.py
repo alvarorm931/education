@@ -1,7 +1,8 @@
 """Aplica las reglas de privacidad a lo que ya está guardado en la rama de datos.
 
   1. Textos (datos/**/textos/*.json): los párrafos con un nombre de persona o un documento de identidad se
-     retiran y se cuentan; las tablas con nombres pasan a guardar solo filas y cabecera.
+     retiran y se cuentan; las tablas con nombres pasan a guardar solo filas y cabecera. En los BOP, las listas
+     de personas guardadas con texto pasan a guardar solo el recuento y las citas.
   2. Títulos (cualquier campo «titulo» en datos/): el nombre de la persona se sustituye por «[persona]».
   3. Originales de boletines (archivo/{fuente}/AAAA/MM/DD/*): se retira el contenido; la huella, la URL y la
      fecha de captura siguen en archivo/indices/. Queda constancia en archivo/retirados.json.
@@ -84,6 +85,28 @@ def main(argv: list[str] | None = None) -> int:
     a = p.parse_args(argv)
     datos, archivo = a.salida / "datos", a.salida / "archivo"
     cuenta = Counter()
+
+    # Listas de personas de los BOP guardadas con texto porque al descargarlas su tipo era otro (las reglas de tipo
+    # han mejorado): pasan a guardar solo el recuento y las citas, como las demás listas.
+    from motor.autonomicos.comun import clasificar
+    from motor.extraccion.citas import citas
+    from motor.provinciales.comun import CON_TEXTO
+    titulos: dict[str, str] = {}
+    for f in (datos / "provinciales").glob("*/oposiciones/*/*/*.jsonl"):
+        for l in f.read_text(encoding="utf-8").splitlines():
+            if l.strip():
+                x = json.loads(l)
+                titulos[x["id"].replace("/", "-")] = x.get("titulo") or ""
+    for f in (datos / "provinciales").glob("*/textos/*/*/*.json"):
+        d = json.loads(f.read_text(encoding="utf-8"))
+        tit = d.get("titulo") or titulos.get(f.stem) or ""
+        if d.get("texto") and tit and clasificar(tit)["tipo_acto"] not in CON_TEXTO:
+            texto = d["texto"]
+            d.update({"texto": None, "tablas": [], "solo_recuento": True,
+                      "lineas_con_documento_de_identidad": sum(1 for l in texto.splitlines() if RE_DOCUMENTO.search(l)),
+                      "citas": citas(texto)})
+            f.write_text(json.dumps(d, ensure_ascii=False, indent=1), encoding="utf-8")
+            cuenta["listas_reducidas_a_recuento"] += 1
 
     for f in datos.rglob("textos/**/*.json"):
         d = json.loads(f.read_text(encoding="utf-8"))
