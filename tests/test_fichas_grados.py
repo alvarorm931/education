@@ -182,8 +182,11 @@ def test_indexar_tarifas_de_un_centro_adscrito(tmp_path):
 def test_precio_por_cuentas():
     from motor.grados.fichas import precio_por_cuentas as p
     assert p([2100, 10320, 172, 12420])["precio_curso"] == 10320
+    # en una fila de lista, el total con los cargos de la fila (y la enseñanza aparte)
+    r = p([2100, 10320, 172, 12420], fila=True)
+    assert r["precio_curso"] == 12420 and r["ensenanza"] == 10320
     r = p([700, 130, 8500])
-    assert r["precio_curso"] == 7800 and r["matricula_o_reserva"] == 700
+    assert r["precio_curso"] == 8500 and r["ensenanza"] == 7800 and r["matricula_o_reserva"] == 700
     assert p([1047, 1500, 11970])["metodo"] == "reserva_mas_cuotas"
     assert p([950, 1500, 4800]) is None
     # Alfonso X: total anual = reserva + matrícula + 10 cuotas

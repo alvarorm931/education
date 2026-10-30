@@ -307,7 +307,7 @@ def test_ficha_de_precios_titulo_rotulo_cifra():
 def test_total_de_la_fila_con_cuotas_reserva_y_matricula():
     from motor.grados.fichas import precio_por_cuentas
 
-    c = precio_por_cuentas([400, 526.67, 675, 700, 4740, 6515])
+    c = precio_por_cuentas([400, 526.67, 675, 700, 4740, 6515], fila=True)
     assert c["precio_curso"] == 6515 and c["metodo"] == "cuotas_mas_reserva_y_matricula" and c["ensenanza"] == 4740
 
 

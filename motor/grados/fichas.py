@@ -81,57 +81,73 @@ MAX_RAZON_CURSO = 1.6
 METODOS_POR_CREDITO = {"curso_igual_a_credito_por_60", "credito_por_60_mas_matricula", "credito_por_60_de_la_tabla"}
 
 
-def precio_por_cuentas(valores: list[float]) -> dict | None:
+def precio_por_cuentas(valores: list[float], fila: bool = False) -> dict | None:
     """Precio por curso cuando los importes de la misma página o fila cuadran entre sí, sin fiarse de su rótulo:
       - un importe es el crédito × 60 de otro (curso = 60 créditos): «172 € | 10.320 €»;
-      - un importe es el crédito × 60 más otro (la matrícula o reserva): «130 € | 700 € | 8.500 €» → 7.800 € de
-        enseñanza más 700 € de matrícula;
-      - un importe es otro (reserva) más entre 8 y 12 cuotas iguales de un tercero: «1.500 € | 1.047 € | 11.970 €».
-    Con varias soluciones (modalidades, idiomas) se da la menor («desde»)."""
+      - un importe es el crédito × 60 más otro (la matrícula o reserva): «130 € | 700 € | 8.500 €» → 8.500 € el
+        primer curso, 7.800 € de enseñanza;
+      - un importe es otro (reserva) más entre 8 y 12 cuotas iguales de un tercero: «1.500 € | 1.047 € | 11.970 €»;
+      - reserva más matrícula más las cuotas; o la enseñanza en cuotas iguales sin la matrícula.
+    `precio_curso` es lo que la fuente da como pagado en el primer curso (la enseñanza más la matrícula y los cargos
+    que vayan en la misma fila de una lista, `fila=True`); `ensenanza` es la enseñanza de un curso, que es lo que sirve
+    para el total del grado (la matrícula y los cargos pueden ser solo del primer año). Con varias soluciones
+    (modalidades, idiomas) se da la menor («desde»)."""
+    from itertools import combinations
+
     v = sorted({round(float(x), 2) for x in valores})
     creditos = [x for x in v if RANGO_PRECIO["credito"][0] <= x <= RANGO_PRECIO["credito"][1]]
     cursos = [x for x in v if RANGO_PRECIO["curso"][0] <= x <= RANGO_PRECIO["curso"][1]]
     pequenos = [x for x in v if 100 <= x <= 3500]
     cerca = lambda a, b: abs(a - b) <= max(1.0, 0.001 * b)  # noqa: E731
-    a = sorted({k for k in cursos for c in creditos if cerca(c * 60, k)})
+
+    def con_cargos(res: dict) -> dict:
+        # en una fila de una lista, el total que es la enseñanza más la reserva, la matrícula y otros cargos de la
+        # misma fila (Cardenal Herrera: 6.420 + 700 + 1.500 + 400 = 9.020 €; verificación del 30/10 por la noche)
+        if not fila:
+            return res
+        base = res["ensenanza"]
+        otros = [x for x in pequenos if abs(x - base) > 0.01]
+        totales = sorted({k for k in cursos if k > res["precio_curso"] + 1 for n in (1, 2, 3)
+                          for comb in combinations(otros, n) if abs(base + sum(comb) - k) <= 2})
+        if len(totales) == 1:
+            return {**res, "precio_curso": totales[0], "metodo": res["metodo"] + "_con_cargos_de_la_fila"}
+        return res
+
+    a = sorted({(k, k) for k in cursos for c in creditos if cerca(c * 60, k)})
     if a:
-        return {"precio_curso": a[0], "metodo": "curso_igual_a_credito_por_60", "soluciones": len(a)}
-    b = sorted({(round(c * 60, 2), k, r) for c in creditos for r in pequenos for k in cursos if cerca(c * 60 + r, k)})
+        return con_cargos({"precio_curso": a[0][0], "ensenanza": a[0][1], "metodo": "curso_igual_a_credito_por_60",
+                           "soluciones": len(a)})
+    b = sorted({(k, round(c * 60, 2), r) for c in creditos for r in pequenos for k in cursos if cerca(c * 60 + r, k)})
     if b:
-        return {"precio_curso": b[0][0], "metodo": "credito_por_60_mas_matricula", "matricula_o_reserva": b[0][2],
-                "primer_curso_con_matricula": b[0][1], "soluciones": len(b)}
+        return con_cargos({"precio_curso": b[0][0], "ensenanza": b[0][1], "metodo": "credito_por_60_mas_matricula",
+                           "matricula_o_reserva": b[0][2], "soluciones": len(b)})
     # la cuota puede venir redondeada al euro (Francisco de Vitoria: 1.500 € + 10 × 932 € = 10.820 € frente a
     # 10.815 €, cuota de 931,50 €): se admite medio euro por cuota, pero solo si nada cuadra al euro (con tantas
     # cifras, la holgura encuentra a veces sumas casuales)
     for tol in (lambda n: 2.0, lambda n: max(2.0, 0.5 * n)):  # noqa: E731
-        c = sorted({k for k in cursos for r in pequenos for m in pequenos if m != r
+        c = sorted({(k, round(k - r, 2)) for k in cursos for r in pequenos for m in pequenos if m != r
                     for n in range(8, 13) if abs(r + n * m - k) <= tol(n)})
         # el total anual es la reserva más la matrícula más 8 a 12 cuotas iguales (Alfonso X: «24.250 € | 3.000 € |
-        # 1.350 € | 10 | 1.990 €»): el precio del curso es ese total, que se paga cada año
-        d = sorted({k for k in cursos for r in pequenos for m in pequenos for q in pequenos if len({r, m, q}) == 3
-                    for n in range(8, 13) if abs(r + m + n * q - k) <= tol(n)})
-        if d and (not c or d[0] <= c[0]):
-            return {"precio_curso": d[0], "metodo": "reserva_matricula_y_cuotas", "soluciones": len(d)}
+        # 1.350 € | 10 | 1.990 €»): el precio del curso es ese total; la enseñanza, las cuotas
+        d = sorted({(k, round(k - r - m, 2)) for k in cursos for r in pequenos for m in pequenos for q in pequenos
+                    if len({r, m, q}) == 3 for n in range(8, 13) if abs(r + m + n * q - k) <= tol(n)})
+        if d and (not c or d[0][0] <= c[0][0]):
+            return {"precio_curso": d[0][0], "ensenanza": d[0][1], "metodo": "reserva_matricula_y_cuotas",
+                    "soluciones": len({x[0] for x in d})}
         if c:
-            return {"precio_curso": c[0], "metodo": "reserva_mas_cuotas", "soluciones": len(c)}
+            return {"precio_curso": c[0][0], "ensenanza": c[0][1], "metodo": "reserva_mas_cuotas",
+                    "soluciones": len({x[0] for x in c})}
     # el precio anual de la enseñanza es 8 a 12 cuotas iguales de otro importe de la fila, sin la reserva ni la
     # matrícula, que se pagan aparte (CEU San Pablo: «533,33 € | 4.800,00 €», nueve cuotas); con dos soluciones
     # distintas (precio con beca, otra modalidad) no se sabe cuál es
     mensuales = [x for x in v if RANGO_PRECIO["mensual"][0] <= x <= RANGO_PRECIO["mensual"][1]]
     e = sorted({k for k in cursos for m in mensuales for n in range(8, 13) if abs(n * m - k) <= max(2.0, 0.5 * n)})
     if len(e) == 1:
-        # el total de la fila es la enseñanza más la reserva, la matrícula y otros pagos de la misma fila (Cardenal
-        # Herrera: 9 × 526,67 € = 4.740 € de enseñanza y 4.740 + 400 + 700 + 675 = 6.515 € en total): vale el total
-        otros = [x for x in pequenos if x != e[0]]
-        from itertools import combinations
-
-        totales = sorted({k for k in cursos if k > e[0] for n in (1, 2, 3) for comb in combinations(otros, n)
-                          if abs(e[0] + sum(comb) - k) <= 2})
-        if len(totales) == 1:
-            return {"precio_curso": totales[0], "metodo": "cuotas_mas_reserva_y_matricula", "soluciones": 1,
-                    "ensenanza": e[0]}
-        return {"precio_curso": e[0], "metodo": "cuotas_iguales_sin_matricula", "soluciones": 1,
-                "nota_matricula": "la reserva y la matrícula se pagan aparte"}
+        res = {"precio_curso": e[0], "ensenanza": e[0], "metodo": "cuotas_iguales_sin_matricula", "soluciones": 1}
+        con = con_cargos(res)
+        if con is not res:
+            return {**con, "metodo": "cuotas_mas_reserva_y_matricula"}
+        return {**res, "nota_matricula": "la reserva y la matrícula se pagan aparte"}
     return None
 
 
@@ -140,7 +156,7 @@ def precio_por_cuentas_con_miles(valores: list[float], alternativas: list[tuple[
     miles («1 100 €», que se lee 100): solo una cifra a la vez, la otra lectura no puede ser el precio que sale y
     tiene que haber una sola solución entre todas las sustituciones (Alfonso X: «11.730 € | 800 € | 1 100 € | 10 983
     €» → 800 + 1.100 + 10 × 983 = 11.730)."""
-    directo = precio_por_cuentas(valores)
+    directo = precio_por_cuentas(valores, fila=True)
     if directo or not alternativas:
         return directo
     halladas = {}
@@ -149,7 +165,7 @@ def precio_por_cuentas_con_miles(valores: list[float], alternativas: list[tuple[
         if corto not in resto:
             continue
         resto[resto.index(corto)] = largo
-        c = precio_por_cuentas(resto)
+        c = precio_por_cuentas(resto, fila=True)
         if c and abs(c["precio_curso"] - largo) > 0.01:
             halladas[c["precio_curso"]] = {**c, "metodo": c["metodo"] + "_con_miles_separados_por_espacio",
                                            "importe_releido": {"leido": corto, "como": largo}}
@@ -180,14 +196,16 @@ def precio_web(f: dict) -> dict | None:
         ld_valor = None
     cursos = sorted(por_tipo.get("curso") or ())
     creditos = sorted(por_tipo.get("credito") or ())
-    curso, metodo, nota = None, None, None
+    curso, metodo, nota, ensenanza = None, None, None, None
     cruzados = [c for c in cursos for k in creditos if abs(c - k * 60) <= 0.02 * c]
     cuentas = precio_por_cuentas([i["valor"] for i in f.get("importes") or []
                                   if i.get("tipo") != "sueldo" and not i.get("beca")])
     if cruzados:
         curso, metodo = min(cruzados), "curso_igual_a_credito_por_60"
+        ensenanza = curso
     elif cuentas and (not ld_valor or abs(ld_valor - cuentas["precio_curso"]) <= 0.5):
         curso, metodo, nota = cuentas["precio_curso"], cuentas["metodo"], cuentas.get("nota_matricula")
+        ensenanza = cuentas.get("ensenanza")
     elif ld_valor and ld_valor in cursos:
         # los datos estructurados valen si la página muestra ese mismo importe: solos no (verificación del 30/10:
         # una página con «Precio: Consultar» llevaba en sus datos estructurados un «desde» de promoción)
@@ -209,6 +227,7 @@ def precio_web(f: dict) -> dict | None:
     return {
         "precio_curso": curso,
         "metodo": metodo,
+        **({"ensenanza": ensenanza} if ensenanza and curso and abs(ensenanza - curso) > 0.01 else {}),
         "nota": nota,
         "importes": {k: sorted(v) for k, v in sorted(por_tipo.items())},
         "precio_jsonld": ld_valor,
@@ -289,6 +308,8 @@ def indexar_tarifas(carpeta: Path | None) -> dict[str, dict]:
                 varios = sorted({c["precio_curso"] for c in soluciones})
                 nota_varios = (len(varios) > 1 and "la lista da varios precios para este grado (campus, modalidad o "
                                "idioma): se publica el menor, «desde»") or None
+                if cuentas and abs((cuentas.get("ensenanza") or 0) - cuentas["precio_curso"]) <= 0.01:
+                    cuentas = {k: v for k, v in cuentas.items() if k != "ensenanza"}
                 p = cuentas and {**cuentas, "url": doc["url"], **({"precios_de_la_lista": varios} if nota_varios else {}),
                                  "nota": "; ".join(x for x in (nota_varios, (cuentas or {}).get("nota_matricula"),
                                                                releido and (
@@ -793,11 +814,15 @@ def construir(catalogo: list[dict], genericos: list[dict], tarjetas: dict, detal
                              for i in t["imparticiones"] if i.get("situacion") == "Activo")
             if modalidad and presencial:
                 pweb = {**pweb, "solo_modalidad": "semipresencial" if "semipresencial" in modalidad else "a distancia"}
-        por_credito = (pweb or {}).get("metodo") in METODOS_POR_CREDITO
+        por_credito = any(((pweb or {}).get("metodo") or "").startswith(m) for m in METODOS_POR_CREDITO)
         if pweb and pweb["precio_curso"] and creditos and (t["clase"] != "doble" or por_credito):
-            # todo el grado al precio de hoy: un curso son 60 créditos (RD 822/2021 art. 5); sin subidas futuras
-            pweb = {**pweb, "precio_total_estimado": round(pweb["precio_curso"] * creditos / 60, 2),
-                    "creditos": creditos}
+            # todo el grado al precio de hoy: un curso son 60 créditos (RD 822/2021 art. 5); sin subidas futuras. Si la
+            # fuente separa la enseñanza de la matrícula y los cargos, el total es solo la enseñanza (los cargos
+            # pueden ser solo del primer año)
+            base = pweb.get("ensenanza") or pweb["precio_curso"]
+            pweb = {**pweb, "precio_total_estimado": round(base * creditos / 60, 2), "creditos": creditos,
+                    **({"nota_total": "enseñanza de todo el grado al precio de hoy; la matrícula y los demás cargos "
+                                      "van aparte"} if pweb.get("ensenanza") else {})}
         elif pweb and pweb["precio_curso"] and creditos:
             # un doble grado tiene cursos de más de 60 créditos (72, 78…) y la página da el precio de un curso: sin el
             # precio del crédito no se sabe el total (calcularlo con 60 créditos por curso lo inflaría)

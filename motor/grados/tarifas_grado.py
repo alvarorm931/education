@@ -84,7 +84,8 @@ def elegir_cc(carpeta: Path | None, ya: set[str]) -> list[dict]:
 # terceros); solo cursos 2025-2026 o posteriores. Cada documento dice su curso y la ficha lo muestra.
 URLS_CONOCIDAS = {
     # Nebrija: su página de precios (Gatsby) carga los precios de grado de sus datos de página
-    "052": ["https://www.nebrija.com/page-data/admision/precios/page-data.json"],
+    "052": ["https://www.nebrija.com/page-data/admision/precios/page-data.json",
+            "https://assets.griddo.nebrija.com/pro-www/page-data/admision/precios/page-data.json"],
     "031": ["https://www.unav.edu/admision-y-ayudas/grado/cuanto-cuesta-estudiar-en-la-universidad",
             "https://en.unav.edu/admission-and-financial-aid/degree/cuanto-cuesta-estudiar-en-la-universidad-"],
     # Universidad Europea: tablas de honorarios de grado 2025-2026 (Madrid, Valencia y Alicante, Málaga)
@@ -323,7 +324,7 @@ def lineas_json(texto: str) -> list[str]:
         elif isinstance(x, (int, float)) and not isinstance(x, bool):
             salida.append(str(x))
 
-    recorrer(json.loads(texto))
+    recorrer(json.loads(texto.lstrip("\ufeff")))
     return salida
 
 
@@ -586,6 +587,8 @@ def ejecutar(catalogo: list[dict], rastreos: Path, salida: Path, max_minutos: fl
             res["sha256"] = hashlib.sha256(r.content).hexdigest()
             res["formato"] = formato
             try:
+                if es_json and not r.text.lstrip("\ufeff \n").startswith(("{", "[")):
+                    res["formato"], es_json = "no_es_json", False  # la dirección devolvió otra cosa (la página)
                 paginas = (texto_pdf(r.content) if es_pdf else ["\n".join(lineas_json(r.text))] if es_json
                            else ["\n".join(lineas_html(r.text))])
                 res["paginas"] = len(paginas)
