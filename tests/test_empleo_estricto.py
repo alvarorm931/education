@@ -39,6 +39,11 @@ SI = [
     "REGLAMENTO BASES DE ESTABILIZACIÓN DE EMPLEO DEL AYUNTAMIENTO DE CALP.",
     "NOMBRAMIENTO AGENTES DE POLICÍA LOCAL, TURNO DE MOVILIDAD.",
     "BASES ANIMADOR/A SOCIOCULTURAL JUVENIL (C1) EXPT. 967.2024",
+    # Gallego (BOP da Coruña)
+    "Convocatoria e bases reguladoras para a creación dunha bolsa de traballo para a provisión con carácter temporal "
+    "de traballadores/as sociais no Concello de Cabanas",
+    "Nomeamento de funcionario interino administrativo, subgrupo C1, para o servizo de rexistro-padrón - DMP",
+    "Aprobación de bases para a selección de catro prazas de limpiador/a municipal do Concello de Ares",
     # Temas excluidos que también son nombres de puesto o de organismo
     "CONVOCATORIA Y BASES PROVISIÓN PUESTO JEFE/A SERVICIO URBANISMO Y OBRAS POR LIBRE DESIGNACIÓN (A1)",
     "CONVOCATORIA PARA LA PROVISIÓN DE VARIOS PUESTOS DEL PATRONATO MUNICIPAL DE LA VIVIENDA DE ALICANTE POR EL SISTEMA "
@@ -71,6 +76,9 @@ NO = [
     "BASES PROCESO DE ADMISION ESCUELA INFANTIL MUNICIPAL CURSO 24/25",
     "RELACIÓN DE OBJETOS PERDIDOS DEPOSITADOS EN LA JEFATURA DE POLICÍA LOCAL DE ALMORADÍ EN EL AÑO 2020",
     "APROBACIÓN DEFINITIVA ORDENANZA FISCAL REGULADORA DE LA TASA POR PARTICIPAR EN PRUEBAS SELECTIVAS DE PERSONAL",
+    "ANUNCIO APROBACIÓN INICIAL DE LA ORDENANZA DE FUNCIONAMIENTO DEL DRON DE POLICIA LOCAL",
+    "APROBACIÓN DEFINITIVA MODIFICACIÓN COMPLEMENTO ESPECÍFICO AGENTES Y OFICIALES POLICÍA LOCAL, Y DE PLANTILLA Y "
+    "RELACIÓN DE PUESTOS DE TRABAJO",
     "relacion provisional de entidades admitidas y excluidas de la convocatoria de subvenciones en regimen de "
     "concurrencia competitiva destinadas a entidades sin animo de lucro",
 ]

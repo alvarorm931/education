@@ -169,7 +169,9 @@ provinciales:
   - provincia: A Coruña
     url: https://bop.dacoruna.gal/bopportal/
     acceso_desde_github: "ok"
-    estado: sin_conector
+    datos_estructurados: "Día: /bopportal/cambioBoletin?fechaInput=DD/MM/AAAA (sección, entidad, número y título). robots.txt prohíbe el texto (/bopportal/publicado)"
+    estado: conector_en_pruebas
+    conector: motor/provinciales/bopcoruna.py
   - provincia: Albacete
     url: https://bop.dipualba.es/
     acceso_desde_github: "sin_respuesta_desde_github (timeout)"

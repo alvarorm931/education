@@ -49,7 +49,7 @@ RE_EMPLEO_FUERTE = re.compile(
     r"procesos? selectiv\w*|proces\w* selectiu\w*|proces\w* de seleccio|procesos? de seleccion|"
     r"procedimientos? selectiv\w*|procediment\w* selectiu\w*|"
     r"pruebas selectivas|proves selectives|probas selectivas|proves de seleccio|curso selectivo|curs selectiu|"
-    r"bolsas? (?:de )?(?:empleo|trabajo|trabajadores|emprego)|bors(?:a|es) (?:de treball|d'ocupacio|d'aspirants|de personal)|"
+    r"bolsas? (?:de )?(?:empleo|trabajo|trabajadores|emprego|traballo)|bors(?:a|es) (?:de treball|d'ocupacio|d'aspirants|de personal)|"
     r"funcionari\w*|personal laboral|laboral (?:fij|temporal)\w*|"
     r"oferta\w* (?:\w+ ){0,3}(?:de |d')?(?:empleo|ocupacio|emprego)|empleo publico|ocupacio publica|emprego publico|oep|"
     r"emplead\w* public\w*|empleats? public\w*|"
@@ -76,6 +76,7 @@ RE_PUESTO = re.compile(
     r"encargad\w*|encarregat\w*|capataz\w*|jardiner\w*|electricista\w*|fontaner\w*|albanil\w*|mecanic[oa]s?|"
     r"conductor\w*|chofer\w*|limpiador\w*|netejador\w*|cocinero\w*|cuiner\w*|monitor\w*|educador\w*|maestr[oa]s?|"
     r"mestres?|profesor\w*|professor\w*|docent\w*|psicolog[oa]s?|trabajador\w* social\w*|treballador\w* social\w*|"
+    r"traballador\w* socia\w*|conserxe\w*|axentes?|limpador\w*|condutor\w*|asesor\w* (?:xuridic|juridic)\w*|"
     r"arquitect\w*|aparejador\w*|ingenier\w*|enginyer\w*|delineant\w*|informatic[oa]s?|programador\w*|analista\w*|"
     r"letrad\w*|lletrat\w*|abogad\w*|advocat\w*|tag|tae|secretari[oa]s?|interventor\w*|tesorer[oa]s?|"
     r"tresorer[ae]?s?|recaudador\w*|inspector\w*|intendent\w*|escala\w*|subescala\w*|subgrup\w*|grupo [abce][12]?|"
@@ -115,7 +116,7 @@ RE_NO_EMPLEO_TITULO = re.compile(
     r"registro de intereses|miembros de la corporacion|corporacion municipal|membres de la corporacio|"
     r"convenios? (?:\w+ )?(?:de )?colaboracion|convenios? interadministrativ\w*|conveni\w* (?:\w+ )?(?:de )?col·laboracio|"
     r"conveni\w* interadministratiu\w*|adhesion|adhesio|acuerdo[- ]marco|acord marc|"
-    r"(?:compartir|utilizacion|uso|utilitzacio|us) (?:\w+ ){0,3}(?:bolsas?|borses?|borsa)|padrons?|padrones|objetos perdidos|"
+    r"(?:compartir|utilizacion|uso|utilitzacio|us) (?:\w+ ){0,3}(?:bolsas?|borses?|borsa)|objetos perdidos|"
     r"mesa de contratacion|mesa de contractacio|organos? de contratacion|organs? de contractacio|"
     r"unidad tecnica de valoracion|credito\w*|credits?|tresoreria|romanent|remanente\w*|"
     r"plan\w* parcial\w*|plans parcials|planeamiento|planejament|parcel\w*|reparcel\w*|estudio de detalle|"
@@ -124,7 +125,8 @@ RE_NO_EMPLEO_TITULO = re.compile(
     r"amortiza\w*|amortitza\w*)\b")
 # Cambios de organización (reglamentos, plantilla, RPT, catálogo): no son un proceso, salvo que traigan sus bases
 RE_ORGANIZACION = re.compile(
-    r"\b(reglamento\w*|reglament\w*|(?:modificacion|modificacio|aprobacion|aprovacio|valoracion|valoracio|"
+    r"\b(reglamento\w*|reglament\w*|ordenanzas?|ordenan(?:ç|c)a|ordenances|complemento especifico|complement especific|"
+    r"(?:modificacion|modificacio|aprobacion|aprovacio|valoracion|valoracio|"
     r"actualizacion|actualitzacio|correccion|exposicion|exposicio|creacion|creacio)\w* (?:\w+ ){0,4}(?:plantilla|rpt|"
     r"r\.p\.t|relacion (?:de )?(?:los )?puestos|relacio de llocs|catalogo (?:de )?puestos|puestos de trabajo|"
     r"llocs de treball)|catalogo (?:de )?puestos|plantilla (?:de )?personal(?: \w+)? (?:eventual|\d{4}|anualidad))\b")
@@ -252,9 +254,13 @@ def es_empleo_estricto(titulo: str) -> bool:
         return False
     if _seleccion_inequivoca(t):
         return True
-    if RE_NO_EMPLEO.search(t):
-        return False
     if RE_ORGANIZACION.search(t) and not RE_BASES_DE_PROCESO.search(t):
+        return False
+    fuerte = RE_EMPLEO_FUERTE.search(t)
+    if fuerte and any(m.group(0) != "personal" for m in RE_PUESTO.finditer(t)) and not (RE_AYUDAS.search(t) or
+                                                                                       RE_FISCAL.search(t)):
+        return True  # «Nomeamento de funcionario interino administrativo … rexistro-padrón»
+    if RE_NO_EMPLEO.search(t):
         return False
     puesto = RE_PUESTO.search(t)
     if RE_EMPLEO_FUERTE.search(t):

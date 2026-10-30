@@ -166,6 +166,12 @@ for c in $CONECTORES; do
       ejecutar motor.provinciales.bopcordoba --textos --salida "$S" --max-minutos "$M"
       "$G" "BOP Córdoba: textos"
       ;;
+    bopcoruna)
+      # Solo títulos: robots.txt prohíbe /bopportal/publicado (texto de cada anuncio)
+      ejecutar motor.provinciales.bopcoruna --salida "$S"
+      ejecutar motor.provinciales.bopcoruna --desde 2022-01-01 --salida "$S" --max-minutos "$M"
+      "$G" "BOP A Coruña: días"
+      ;;
     boptenerife)
       # Sin textos por anuncio: el texto solo está en el PDF del boletín completo
       ejecutar motor.provinciales.boptenerife --salida "$S"
