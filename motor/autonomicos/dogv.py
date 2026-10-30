@@ -34,7 +34,7 @@ from motor.archivo import Archivo, solo_huella_por_defecto
 from motor.autonomicos.comun import (Freno, clasificar, convocante_de_organismo, descargar_textos, es_empleo_por_titulo,
                                      es_resultado, escribir_json, escribir_jsonl, leer_jsonl)
 from motor.boe.clasificar import normalizar
-from motor.http import obtener
+from motor.http import obtener, robots_permite
 from motor.limpieza import limpiar_html
 
 FUENTE = "dogv"
@@ -259,7 +259,8 @@ def main(argv: list[str] | None = None) -> int:
                                            texto_disposicion, archivo, FUENTE, a.max_minutos, a.pausa,
                                            accept="application/json", ext="json")
         print(f"DOGV textos: {hechos} descargados, {errores} errores, {len(pend) - hechos} pendientes")
-        vacios = textos_vacios(a.salida)
+        # solo los PDF que permite el robots.txt de la fuente (el del DOGV cierra /datos/AAAA/ en algunos años)
+        vacios = [x for x in textos_vacios(a.salida) if robots_permite(x["url_pdf"])]
         def desde_pdf(contenido: bytes, x: dict) -> dict:  # conserva sección, organismo… de lo ya guardado
             previo = json.loads(ruta_texto(a.salida, x).read_text(encoding="utf-8"))
             return {**{k: previo[k] for k in ("seccion", "organismo", "tipo_documento", "cve", "fecha_disposicion")

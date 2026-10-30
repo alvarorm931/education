@@ -30,7 +30,7 @@ from motor.archivo import Archivo, solo_huella_por_defecto
 from motor.autonomicos.comun import (Freno, clasificar, convocante_de_organismo, descargar_textos, es_empleo_estricto,
                                      escribir_json, escribir_jsonl, leer_jsonl, estado_dia)
 from motor.boe.clasificar import normalizar
-from motor.http import obtener
+from motor.http import obtener, robots_permite
 from motor.limpieza import RE_DOCUMENTO, limpiar_html, texto_de
 from motor.extraccion.citas import citas
 from motor.provinciales.comun import CON_TEXTO
@@ -206,7 +206,8 @@ def main(argv: list[str] | None = None) -> int:
                                            texto_disposicion, archivo, FUENTE, a.max_minutos, a.pausa,
                                            accept="text/html", ext="html", por_registro=True)
         print(f"BOG textos: {hechos} descargados, {errores} errores, {len(pend) - hechos} pendientes")
-        solo_pdf = textos_solo_pdf(a.salida)
+        # solo los PDF que permite el robots.txt de la fuente (el del DOGV cierra /datos/AAAA/ en algunos años)
+        solo_pdf = [x for x in textos_solo_pdf(a.salida) if robots_permite(x["url_pdf"])]
         hechos, errores = descargar_textos(solo_pdf, lambda x: ruta_texto(a.salida, x), lambda x: x["url_pdf"],
                                            texto_pdf_anuncio, archivo, FUENTE, a.max_minutos, a.pausa,
                                            accept="application/pdf", ext="pdf", por_registro=True)

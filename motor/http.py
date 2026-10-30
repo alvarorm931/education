@@ -220,6 +220,15 @@ def boletin_oficial(url: str) -> str | None:
     return next((v for k, v in BOLETINES_OFICIALES.items() if u.startswith(k.lower().split("://", 1)[-1])), None)
 
 
+def robots_permite(url: str, sesion: requests.Session | None = None) -> bool:
+    """Si se puede pedir esa dirección (las mismas reglas que comprobar_robots, sin lanzar la excepción)."""
+    try:
+        comprobar_robots(url, sesion)
+    except RobotsProhibe:
+        return False
+    return True
+
+
 def comprobar_robots(url: str, sesion: requests.Session | None = None) -> None:
     from urllib.parse import urlparse
 
