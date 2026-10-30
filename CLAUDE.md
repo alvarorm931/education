@@ -52,4 +52,6 @@ El control está programado en `motor/seo/` (`python -m motor.seo.control`); el 
   resuelto o relanzado. El vigilante relanza una vez los fallos pasajeros (red, tiempo agotado, choque al subir).
 - GitHub no está disparando las programaciones (`schedule`) de este repositorio: el vigilante lanza a mano las diarias.
   Una programación nueva tiene que ser diaria («M H * * *») y el flujo tener `workflow_dispatch` con entradas por defecto.
+- Antes de subir a `main`, `python -m pytest -q` en verde, también con `MOTOR_ORIGINALES=s3`: la prueba previa del
+  motor diario y de los boletines corre todas las pruebas, y una roja de cualquier módulo para la carga del día.
 - Los fallos de tu propio módulo los arreglas tú, como siempre.
