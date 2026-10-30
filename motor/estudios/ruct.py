@@ -667,7 +667,8 @@ def resumen_memoria(m: dict) -> dict:
     }
 
 
-def ejecutar(codigos: list[str], raiz: Path, nivel: str, max_minutos: float, pausa_corte: float | None = None) -> dict:
+def ejecutar(codigos: list[str], raiz: Path, nivel: str, max_minutos: float, pausa_corte: float | None = None,
+             pausa: float = PAUSA) -> dict:
     """Lee la ficha (y con nivel «memoria» la memoria vigente) de cada código, en orden.
 
     Los originales van al archivo con la política del motor: en la rama pública solo índice y huella; enteros en el
@@ -679,7 +680,7 @@ def ejecutar(codigos: list[str], raiz: Path, nivel: str, max_minutos: float, pau
 
     pausa_corte = PAUSA_CORTE if pausa_corte is None else pausa_corte
     archivo = Archivo(raiz / "archivo", indice_por_fuente=True, solo_huella=solo_huella_por_defecto())
-    lector = LectorRegistro(archivo)
+    lector = LectorRegistro(archivo, pausa=pausa)
     destino = raiz / "datos" / "estudios" / "masters" / CARPETA[nivel]
     destino.mkdir(parents=True, exist_ok=True)
     fin = time.time() + max_minutos * 60
@@ -749,6 +750,8 @@ def main() -> None:
     p.add_argument("--pendientes-de-sondas", metavar="SELLO", nargs="?", const="",
                    help="quitar los códigos ya leídos en este nivel en la rama sondas (carpetas desde SELLO)")
     p.add_argument("--tramo", help="solo para distinguir tramos iguales en la matriz del flujo")
+    p.add_argument("--pausa", type=float, default=PAUSA,
+                   help="segundos entre peticiones de partida (el lector la sube sola si el servidor no responde)")
     p.add_argument("--salida", required=True)
     a = p.parse_args()
     if a.codigos:
@@ -764,7 +767,7 @@ def main() -> None:
         hechos = hechos_en_sondas(a.nivel, a.pendientes_de_sondas)
         codigos = [c for c in codigos if c not in hechos]
         print(f"ya leídos en sondas ({a.nivel}): {len(hechos)}; pendientes: {len(codigos)}", file=sys.stderr)
-    print(json.dumps(ejecutar(codigos, Path(a.salida), a.nivel, a.max_minutos), ensure_ascii=False))
+    print(json.dumps(ejecutar(codigos, Path(a.salida), a.nivel, a.max_minutos, pausa=a.pausa), ensure_ascii=False))
 
 
 if __name__ == "__main__":
