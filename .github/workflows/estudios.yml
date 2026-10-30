@@ -63,12 +63,12 @@ jobs:
         env:
           MODULO: ${{ inputs.modulo }}
           ARGS: ${{ matrix.args }}
-          # La clave de la API solo llega al módulo de extracción; el resto de módulos no la ven.
-          ANTHROPIC_API_KEY: ${{ inputs.modulo == 'motor.estudios.extraer' && secrets.ANTHROPIC_API_KEY || '' }}
+          # La clave de la API solo llega a los módulos que llaman a Claude (extracción y clasificación).
+          ANTHROPIC_API_KEY: ${{ (inputs.modulo == 'motor.estudios.extraer' || inputs.modulo == 'motor.estudios.clasificar') && secrets.ANTHROPIC_API_KEY || '' }}
           # Los módulos que leen webs de centros guardan el original de cada página (y la extracción, lo enviado a
           # la API y las citas) en el almacén privado de S3, con escritura única y credenciales OIDC que se renuevan
           # solas (motor/credenciales_aws.py). Nada de eso llega a la rama pública.
-          MOTOR_ORIGINALES: ${{ (inputs.modulo == 'motor.estudios.extraer' || inputs.modulo == 'motor.estudios.rastreador') && 's3' || 'huella' }}
+          MOTOR_ORIGINALES: ${{ contains(fromJSON('["motor.estudios.extraer", "motor.estudios.clasificar", "motor.estudios.rastreador"]'), inputs.modulo) && 's3' || 'huella' }}
         run: |
           case "$MODULO" in motor.estudios.*) ;; *) echo "Módulo no permitido"; exit 1;; esac
           mkdir -p out

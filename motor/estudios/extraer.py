@@ -382,7 +382,7 @@ class Guarda:
 
 
 def capturar(urls: list[str], pausa: float = 1.0, hilos: int = 12, guarda: Guarda | None = None,
-             fin: float | None = None) -> list[dict]:
+             fin: float | None = None, procesar=None) -> list[dict]:
     """Descarga cada página con el lector cortés del rastreador: robots.txt de cada servidor y una petición por
     segundo y servidor (las de un mismo servidor van en fila; servidores distintos, a la vez). Devuelve el texto
     de cada página en memoria; el original, intacto, solo va al almacén privado. Nada se escribe en disco.
@@ -420,7 +420,7 @@ def capturar(urls: list[str], pausa: float = 1.0, hilos: int = 12, guarda: Guard
                 fila.update({"sha256": hashlib.sha256(r.content).hexdigest(), "bytes": len(r.content),
                              "reserva_tdm": tdm, "url_final": r.url if r.url != u else None})
                 if not tdm:
-                    fila["texto"] = texto_de_pagina(html)
+                    fila["texto"] = (procesar or texto_de_pagina)(html)
                     if guarda is not None:
                         fila.update(guarda.original(FUENTE_PAGINAS, r.content, "html", u))
             else:
