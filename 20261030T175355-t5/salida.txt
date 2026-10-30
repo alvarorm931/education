@@ -1,0 +1,30 @@
+ya leídos en sondas (ficha): 745; pendientes: 3989
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/runner/work/education/education/motor/estudios/ruct.py", line 774, in <module>
+    main()
+  File "/home/runner/work/education/education/motor/estudios/ruct.py", line 770, in main
+    print(json.dumps(ejecutar(codigos, Path(a.salida), a.nivel, a.max_minutos, pausa=a.pausa), ensure_ascii=False))
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/education/education/motor/estudios/ruct.py", line 682, in ejecutar
+    archivo = Archivo(raiz / "archivo", indice_por_fuente=True, solo_huella=solo_huella_por_defecto())
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/education/education/motor/archivo.py", line 51, in __init__
+    self.almacen = almacen_por_defecto() if almacen == "auto" else almacen
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/education/education/motor/archivo.py", line 41, in almacen_por_defecto
+    return Almacen(region=REGION, cliente=cliente_s3(REGION))  # en GitHub, credenciales que se renuevan solas
+                                          ^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/education/education/motor/credenciales_aws.py", line 55, in cliente_s3
+    metadata=_renovar(region, rol), refresh_using=lambda: _renovar(region, rol),
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/education/education/motor/credenciales_aws.py", line 38, in _renovar
+    c = sts.assume_role_with_web_identity(RoleArn=rol, RoleSessionName=sesion, WebIdentityToken=_token_github(),
+                                                                                                ^^^^^^^^^^^^^^^
+  File "/home/runner/work/education/education/motor/credenciales_aws.py", line 27, in _token_github
+    r.raise_for_status()
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/requests/models.py", line 1167, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 503 Server Error: Service Unavailable for url: https://run-actions-3-azure-eastus.actions.githubusercontent.com/181//idtoken/b34fba92-89d1-4700-9524-ef36e372a42a/65ecfe6d-2587-5881-84b4-1c00b130b5e1?api-version=2.0&audience=sts.amazonaws.com
+codigo=1
