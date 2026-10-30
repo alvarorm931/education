@@ -187,7 +187,8 @@ provinciales:
   - provincia: Albacete
     url: https://bop.dipualba.es/
     acceso_desde_github: "sin_respuesta_desde_github (timeout)"
-    estado: sin_conector
+    estado: conector_en_pruebas
+    conector: motor/provinciales/bopalbacete.py
   - provincia: Alicante
     url: http://sede.diputacionalicante.es/consultas-bop/
     acceso_desde_github: "ok"
@@ -332,7 +333,8 @@ provinciales:
   - provincia: Salamanca
     url: https://sede.diputaciondesalamanca.gob.es/BOP/
     acceso_desde_github: "sin_respuesta_desde_github (timeout)"
-    estado: sin_conector
+    estado: conector_en_pruebas
+    conector: motor/provinciales/bopsalamanca.py
   - provincia: Santa Cruz de Tenerife
     url: http://www.bopsantacruzdetenerife.es/
     acceso_desde_github: "ok"

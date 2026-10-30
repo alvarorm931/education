@@ -122,7 +122,9 @@ RE_NO_EMPLEO_TITULO = re.compile(
     r"plan\w* parcial\w*|plans parcials|planeamiento|planejament|parcel\w*|reparcel\w*|estudio de detalle|"
     r"estudi de detall|modificacion puntual|modificacio puntual|calificacion juridica|qualificacio juridica|"
     r"emplazamiento\w*|juzgado\w*|contencioso\w*|grupos municipales|grups municipals|cargos publicos|carrecs publics|"
-    r"amortiza\w*|amortitza\w*)\b")
+    r"amortiza\w*|amortitza\w*|"
+    # Subvenciones (Base de Datos Nacional de Subvenciones) y formación para desempleados
+    r"bdns|certificados? de profesionalidad|certificats? de professionalitat)\b")
 # Cambios de organización (reglamentos, plantilla, RPT, catálogo): no son un proceso, salvo que traigan sus bases
 RE_ORGANIZACION = re.compile(
     r"\b(reglamento\w*|reglament\w*|ordenanzas?|ordenan(?:ç|c)a|ordenances|complemento especifico|complement especific|"
