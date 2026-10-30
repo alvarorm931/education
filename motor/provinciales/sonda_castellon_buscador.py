@@ -65,19 +65,21 @@ def main(argv: list[str] | None = None) -> int:
     if not filas:
         print(x[:3000])
         return 0
-    a_tag = re.search(r'<a[^>]+id="(formListBoletinAntiguos:tableBoletinesAntiguos:0:j_idt\d+)"[^>]*>', filas[0][1])
-    print("enlace fila 0:", html.unescape(a_tag.group(0))[:600] if a_tag else None)
+    cfg = re.search(r'PrimeFaces\.cw\("DataTable","widget_formListBoletinAntiguos_tableBoletinesAntiguos",(\{.*?\})\);', x, re.S)
+    print("datatable:", cfg.group(1)[:1500] if cfg else None)
+    claves = re.findall(r'<tr data-ri="\d+"[^>]*data-rk="([^"]+)"', x)
+    print("row keys:", claves[:5])
     vs = re.search(r'<update id="[^"]*ViewState[^"]*"><!\[CDATA\[([^\]]+)\]\]>', x)
-    if a_tag and vs:
-        fuente = a_tag.group(1)
+    if claves and vs:
+        tabla = "formListBoletinAntiguos:tableBoletinesAntiguos"
         c2 = {"formListBoletinAntiguos": "formListBoletinAntiguos", "javax.faces.ViewState": vs.group(1),
-              "formListBoletinAntiguos:tableBoletinesAntiguos_scrollState": "0,0"}
-        y = _ajax(s, url, c2, fuente, "formListAnunciosBolAnt")
+              tabla + "_selection": claves[0], tabla + "_instantSelection": claves[0],
+              tabla + "_scrollState": "0,0", "javax.faces.behavior.event": "rowSelect",
+              "javax.faces.partial.event": "rowSelect"}
+        y = _ajax(s, url, c2, tabla, "formListAnunciosBolAnt")
         t = " ".join(html.unescape(re.sub(r"<script.*?</script>|<[^>]+>", " ", y, flags=re.S)).split())
         print("anuncios:", t[:2500])
-        print("enlaces:", sorted(set(re.findall(r'href="([^"]+)"', y)))[:20])
-        i = y.find("formListAnunciosBolAnt")
-        print("html:", y[i:i + 2500])
+        print("enlaces:", sorted(set(re.findall(r'(?:href="|idAnuncio=)([^"&]+)', y)))[:20])
     return 0
 
 
