@@ -165,10 +165,32 @@ fuentes:
     da: >-
       URL de cada programa con su fecha de cambio (lastmod), texto del enlace (nombre), medición de lo que
       enseña sin pedir datos, PDF de tarifas y páginas de centros colaboradores
-    copias: solo en el archivo privado; en la rama pública, URL, fecha y huella
+    copias: >-
+      original intacto en el almacén privado S3 (web-centros/AAAA/MM/DD/{sha256}.html.gz o .pdf.gz, escritura
+      única); en la rama pública, URL, fecha y huella
     estado: verificada
-    conector: motor/estudios/rastreador.py
-    verificado: 2026-10-29
+    conector: motor/estudios/rastreador.py, motor/estudios/extraer.py, motor/estudios/tarifas.py
+    medido: >-
+      30/10/2026: 2.978 páginas de másters oficiales, 13.005 de centros no universitarios y 5.254 de títulos
+      propios en webs oficiales leídas en una noche; menos del 1 % vetadas por robots.txt, ninguna con reserva TDM
+    verificado: 2026-10-30
+
+  - id: claude-lote
+    nombre: API de Claude · Message Batches (Claude Haiku 5.5)
+    modulo: [masters]
+    url: https://api.anthropic.com/v1/messages/batches
+    metodo: >-
+      lote con salida estructurada o JSON compacto, sin pensamiento y esfuerzo bajo; cita literal de cada dato
+      comprobada sin IA contra la página
+    da: >-
+      campos de la ficha de cada máster (extraer.py), clasificación de proveedores (clasificar.py) y precios de
+      tarifas en PDF (tarifas.py)
+    coste: >-
+      medido el 30/10/2026: 0,0004-0,0006 $ por página de programa; 0,00013 $ por portada clasificada
+    copias: lo enviado, las respuestas y las citas, solo en el almacén privado (extraccion-masters/…)
+    clave: secreto ANTHROPIC_API_KEY de GitHub; solo lo reciben los módulos que llaman a la API
+    estado: verificada
+    verificado: 2026-10-30
 
   - id: notas-madrid
     nombre: Distrito único de Madrid · notas de corte
