@@ -232,6 +232,11 @@ def diagnostico_html(html: str) -> dict:
             # forma de las primeras líneas con cifras (a = letra, 9 = dígito, _ = espacio) y el tipo de cada celda de
             # las primeras filas de rótulos: sin texto de la página
             "formas": [forma(x)[:80] for x in visible.split("\n") if CIFRA_EUROPEA.search(x)][:3],
+            # direcciones de datos que la página carga aparte (contenido de pestañas por JavaScript): solo la URL
+            "urls_datos": sorted({u for u in re.findall(r"""["'(]((?:https?://|/)[^"'()\s<>]{3,200})["')]""", html)
+                                  if re.search(r"(?i)precio|tarifa|tasas|honorario|ajax|\.json|/api/|wp-json|"
+                                               r"admin-ajax", u) and not re.search(r"(?i)\.(?:css|png|jpe?g|svg|"
+                                                                                    r"webp|woff2?)(?:\?|$)", u)})[:15],
             "rotulos": [[tipo_rotulo(c) for c in x.split(" | ")] for x in visible.split("\n")
                         if x.count(" | ") >= 2 and not CIFRA_EUROPEA.search(x)][:3]}
 
