@@ -50,4 +50,6 @@ El control está programado en `motor/seo/` (`python -m motor.seo.control`); el 
   el enlace a la ejecución y lo que ya probaste. La conversación de estado lo revisa y anota la solución.
 - Antes de reintentar algo que falló, mira el buzón y `git show origin/vigilancia:ultimo.md`: puede estar ya
   resuelto o relanzado. El vigilante relanza una vez los fallos pasajeros (red, tiempo agotado, choque al subir).
+- GitHub no está disparando las programaciones (`schedule`) de este repositorio: el vigilante lanza a mano las diarias.
+  Una programación nueva tiene que ser diaria («M H * * *») y el flujo tener `workflow_dispatch` con entradas por defecto.
 - Los fallos de tu propio módulo los arreglas tú, como siempre.
