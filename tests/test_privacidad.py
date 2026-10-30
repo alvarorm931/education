@@ -73,3 +73,13 @@ def test_anonimizar_nombres_junto_a_documento_y_d_mayusculas():
     assert "PEREZ" not in t and "Alcaide" not in t and "Garcia" not in t and "Ayuntamiento de Lugo" in t
     assert tiene_nombre_de_persona("• D. MANUEL SIMÓN VILLAGRASA")
     assert not tiene_nombre_de_persona("D. OTRAS DISPOSICIONES")
+
+
+def test_mantenimiento_no_se_para_por_un_fichero_roto(tmp_path, capsys):
+    roto = tmp_path / "datos/provinciales/bopsevilla/textos/2025/03/BOP-SE-1.json"
+    roto.parent.mkdir(parents=True)
+    roto.write_text("")
+    bien = roto.with_name("BOP-SE-2.json")
+    bien.write_text(json.dumps({"titulo": "Bases", "texto": "Plazo.\nEl Alcalde, Juan Ejemplo Ficticio."}))
+    assert privacidad.main(["--salida", str(tmp_path), "--sin-retirar-originales"]) == 0
+    assert json.loads(bien.read_text())["texto"] == "Plazo."

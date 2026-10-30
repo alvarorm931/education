@@ -98,7 +98,10 @@ def main(argv: list[str] | None = None) -> int:
                 x = json.loads(l)
                 titulos[x["id"].replace("/", "-")] = x.get("titulo") or ""
     for f in (datos / "provinciales").glob("*/textos/*/*/*.json"):
-        d = json.loads(f.read_text(encoding="utf-8"))
+        try:
+            d = json.loads(f.read_text(encoding="utf-8"))
+        except ValueError:  # un fichero roto (p. ej. vacío) no detiene la tarea; se cuenta abajo
+            continue
         tit = d.get("titulo") or titulos.get(f.stem) or ""
         if d.get("texto") and tit and clasificar(tit)["tipo_acto"] not in CON_TEXTO:
             texto = d["texto"]
@@ -109,7 +112,11 @@ def main(argv: list[str] | None = None) -> int:
             cuenta["listas_reducidas_a_recuento"] += 1
 
     for f in datos.rglob("textos/**/*.json"):
-        d = json.loads(f.read_text(encoding="utf-8"))
+        try:
+            d = json.loads(f.read_text(encoding="utf-8"))
+        except ValueError:
+            cuenta["textos_ilegibles"] += 1
+            continue
         d, cambio = limpiar_texto_guardado(d)
         if cambio:
             f.write_text(json.dumps(d, ensure_ascii=False, indent=1), encoding="utf-8")
