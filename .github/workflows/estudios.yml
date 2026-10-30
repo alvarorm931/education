@@ -107,12 +107,16 @@ jobs:
           for d in tramos/*/; do
             n=$(basename "$d")
             cp "$d/salida.txt" "pub/$STAMP/$n.salida.txt" 2>/dev/null || true
-            if [ -d "$d/datos" ]; then cp -r "$d/datos" "pub/$STAMP/"; fi
+            # Ficheros de distintos tramos con el mismo nombre (hechos.jsonl, resumen.json…) no se pisan: se
+            # guardan numerados (fichero.~1~) y se avisa. La extracción y la clasificación ya escriben cada tramo
+            # en su propia carpeta.
+            if [ -d "$d/datos" ]; then cp -r --backup=numbered "$d/datos" "pub/$STAMP/"; fi
             # Las páginas de webs de centros no se publican: la rama es pública y son textos ajenos. Solo se sube
             # su índice (URL, fecha, huella sha256 y clave del original en el almacén privado de S3).
             rm -rf "$d/archivo/web-centros"
             if [ -d "$d/archivo" ]; then mkdir -p "pub/$STAMP/archivo"; cp -r "$d/archivo/." "pub/$STAMP/archivo/"; cat "$d/archivo/indice.jsonl" >> "pub/$STAMP/archivo/indice_todos.jsonl" 2>/dev/null || true; fi
           done
+          n_rep=$(find pub -name '*.~[0-9]*~' | wc -l); [ "$n_rep" -gt 0 ] && echo "::warning::$n_rep ficheros con el mismo nombre en varios tramos, guardados numerados"
           # GitHub rechaza ficheros de más de 100 MB: los grandes se comprimen (y se ve qué pesa)
           find pub -type f -size +90M -print -exec gzip -9 {} \;
           du -sh pub/$STAMP; find pub -type f -size +20M -exec ls -lh {} \;

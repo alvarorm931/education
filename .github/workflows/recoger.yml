@@ -33,7 +33,8 @@ jobs:
           for d in tramos/*/; do
             n=$(basename "$d")
             cp "$d/salida.txt" "pub/$STAMP/$n.salida.txt" 2>/dev/null || true
-            if [ -d "$d/datos" ]; then cp -r "$d/datos" "pub/$STAMP/"; fi
+            # cada tramo en su carpeta: con el mismo nombre de fichero (hechos.jsonl…), juntarlos los pisaría
+            if [ -d "$d/datos" ]; then mkdir -p "pub/$STAMP/$n"; cp -r "$d/datos" "pub/$STAMP/$n/"; fi
             rm -rf "$d/archivo/web-centros"
             if [ -d "$d/archivo" ]; then mkdir -p "pub/$STAMP/archivo"; cp -r "$d/archivo/." "pub/$STAMP/archivo/"; fi
           done

@@ -339,7 +339,7 @@ def main() -> None:
     elif a.orden == "entrada":
         res = entrada(Path(a.censo), [Path(x) for x in a.rastreo], Path(a.salida))
     else:
-        res = lote(Path(a.entrada), Path(a.salida) / "datos" / "estudios" / "clasificacion", a.esperar_min,
+        res = lote(Path(a.entrada), Path(a.salida) / "datos" / "estudios" / "clasificacion" / Path(a.entrada).stem, a.esperar_min,
                    a.max_minutos, a.hilos)
     print(json.dumps(res, ensure_ascii=False))
 

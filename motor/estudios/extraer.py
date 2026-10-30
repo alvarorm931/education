@@ -860,7 +860,13 @@ def main() -> None:
     p.add_argument("--id")
     p.add_argument("--salida")
     a = p.parse_args()
-    destino = Path(a.salida) / "datos" / "estudios" / "extraccion" if a.salida else None
+    # cada tramo en su carpeta (nombre de la muestra y desde dónde), para que al juntar tramos no se pisen
+    base = Path(a.salida) / "datos" / "estudios" / "extraccion" if a.salida else None
+    destino = base
+    if base is not None and a.orden == "lote":
+        destino = base / (Path(a.muestra).stem + (f"_desde{a.desde}" if a.desde else ""))
+    elif base is not None and a.orden == "retomar":
+        destino = base / ("retomado_" + Path(a.lote_json).parent.name)
     if a.orden == "lote":
         res = lote(Path(a.muestra), destino, a.esperar_min, a.max_paginas, a.desde, a.hilos, a.max_minutos)
     elif a.orden == "retomar":
