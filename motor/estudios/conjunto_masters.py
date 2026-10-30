@@ -73,6 +73,42 @@ MAX_TEXTO_ACCESO = 8000
 AÑO_ANTIGUO = 2023      # una página que solo habla de cursos de 2023 o antes está, casi seguro, sin actualizar
 
 
+# Además de lo que ya retira motor.limpieza (tratamientos, nombramientos, documentos de identidad): títulos
+# académicos delante de un nombre («Dr. Juan Pérez», «Prof.ª Ana Ruiz») y direcciones de correo, que en las memorias
+# suelen ser de personas (coordinación del máster).
+RE_TITULO_PERSONA = re.compile(r"(?<![\w.])(?:Dr|Dra|Drª|Prof|Profa|Prof\.ª|Profª)\.?\s+[A-ZÁÉÍÓÚÑ][\wáéíóúñ'-]+\s+[A-ZÁÉÍÓÚÑ]")
+RE_CORREO = re.compile(r"(?<![\w.+-])([\w.+-]+)@([\w-]+\.[\w.-]*\w)")
+# Buzones de una oficina o servicio (no de una persona): se dejan
+BUZON = re.compile(r"(?i)^(info|informacion|información|admisi[oó]n|admisiones|admissions?|admissio|administraci[oó]n|"
+                   r"secretar[ií]a|secretaria\w*|master\w*|m[aá]ster\w*|posgrado\w*|postgrado\w*|contacto|contact|"
+                   r"jefatura|escola|escuela|matr[ií]cula\w*|becas?|ayudas|comunicaci[oó]n|atenci[oó]n\w*|alumn\w*|"
+                   r"estudiantes?|students?|formaci[oó]n|formacio|cursos?|campus\w*|oficina\w*|registro|hola|"
+                   r"inscripci[oó]n\w*|inscripciones|preinscripci[oó]n|orientaci[oó]n|calidad|empleo|practicas|"
+                   r"pr[aá]cticas|online|programas?|coordinaci[oó]n\w*|direcci[oó]n|international\w*|internacional\w*)"
+                   r"([._-]\w+)*$")
+PRIVACIDAD = Counter()
+
+
+def _correo(m: re.Match) -> str:
+    if BUZON.match(m.group(1)):
+        return m.group(0)
+    PRIVACIDAD["correos_retirados"] += 1
+    return "[correo]"
+
+
+def seguro(texto: str | None) -> str | None:
+    """El texto sin datos de personas: fuera los párrafos con nombres (motor.limpieza o «Dr./Dra./Prof.» delante
+    de un nombre) y las direcciones de correo que no son el buzón de un servicio (se cuentan en PRIVACIDAD)."""
+    if not texto:
+        return texto
+    from motor.limpieza import parrafos_seguros
+
+    lineas, omitidas = parrafos_seguros(texto.split("\n"))
+    fuera = [x for x in lineas if RE_TITULO_PERSONA.search(x)]
+    PRIVACIDAD["parrafos_retirados"] += omitidas + len(fuera)
+    return "\n".join(RE_CORREO.sub(_correo, x) for x in lineas if x not in fuera) or None
+
+
 def _jsonl(ruta: Path) -> list[dict]:
     if not ruta.exists():
         return []
@@ -203,7 +239,7 @@ def _plan(plan: list[dict]) -> list[dict]:
                                for e in (m.get("evaluacion") or [])],
                 "actividades": [{"actividad": a.get("actividad"), "horas": a.get("horas"),
                                  "presencialidad": a.get("presencialidad")} for a in (m.get("actividades") or [])],
-                "contenidos": "\n".join(m.get("contenidos") or [])[:MAX_CONTENIDOS] or None,
+                "contenidos": seguro("\n".join(m.get("contenidos") or [])[:MAX_CONTENIDOS]) or None,
             })
         salida.append({"modulo": b.get("nombre"), "ects": b.get("ects"), "materias": materias})
     return salida
@@ -303,10 +339,12 @@ def campos_ruct(r: dict) -> dict[str, dict]:
         out["presencialidad_horas"] = campo(p, "calculado", url, fecha,
                                             nota="porcentaje de horas presenciales sobre las horas de las actividades de la memoria")
     acceso = (m.get("acceso") or {}).get("textos") or []
+    acceso = seguro("\n\n".join(acceso)[:MAX_TEXTO_ACCESO]) if acceso else None
     if acceso:
-        out["requisitos_acceso"] = campo("\n\n".join(acceso)[:MAX_TEXTO_ACCESO], "ruct", url, fecha)
-    if m.get("descripcion_plan"):
-        out["descripcion_plan"] = campo("\n".join(m["descripcion_plan"])[:MAX_TEXTO_ACCESO], "ruct", url, fecha)
+        out["requisitos_acceso"] = campo(acceso, "ruct", url, fecha)
+    descripcion = seguro("\n".join(m.get("descripcion_plan") or [])[:MAX_TEXTO_ACCESO])
+    if descripcion:
+        out["descripcion_plan"] = campo(descripcion, "ruct", url, fecha)
     if m.get("universidades") and len(m["universidades"]) > 1:
         out["universidades_participantes"] = campo([u.get("nombre") for u in m["universidades"]], "ruct", url, fecha)
     return out
@@ -350,7 +388,12 @@ def campos_web(f: dict) -> dict[str, dict]:
     for nombre, c in (f.get("campos") or {}).items():
         fu = fuentes[c["fuente"]] if isinstance(c.get("fuente"), int) and c["fuente"] < len(fuentes) else {}
         tipo = "tarifa" if fu.get("pagina") == "documento" else "web"
-        out[nombre] = campo(c.get("valor"), tipo, fu.get("url"), fu.get("extraido"), cita_sha256=c.get("cita_sha256"),
+        valor = c.get("valor")
+        if isinstance(valor, str) and nombre != "nombre":
+            valor = seguro(valor)
+            if not valor:
+                continue
+        out[nombre] = campo(valor, tipo, fu.get("url"), fu.get("extraido"), cita_sha256=c.get("cita_sha256"),
                             cita_nivel=c.get("cita_nivel"), curso=fu.get("curso"))
     return out
 
@@ -597,6 +640,7 @@ def ejecutar(catalogo: Path, salida: Path, altas: Path | None = None, ruct: list
         "paginas_web_antiguas": {"oficiales": sum(1 for r in oficiales if r.get("pagina_web_antigua")),
                                  "no_oficiales": sum(1 for p in programas if p.get("pagina_web_antigua"))},
         "fechas": dict(fechas),
+        "privacidad": dict(PRIVACIDAD),
         "cobertura_oficiales": cobertura(oficiales),
         "cobertura_no_oficiales": cobertura(programas),
         "fuentes": CITAS,

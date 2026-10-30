@@ -116,3 +116,10 @@ def test_limpia_numero_de_catalogo():
     assert cm._limpia_id("3 Clases teóricas") == "Clases teóricas"
     assert cm._limpia_id("SE1 Asistencia") == "Asistencia" and cm._limpia_id("MD3. Seminarios") == "Seminarios"
     assert cm._limpia_id("Estudio de casos") == "Estudio de casos"
+
+
+def test_textos_del_ruct_sin_datos_de_personas():
+    t = ("Requisitos: grado en Economía.\nCoordinadora: Dra. Ana Ruiz Gómez\nDudas: ana.ruiz@um.es\n"
+         "Solicitudes a admisiones@escuela.es\nSe valora el inglés.")
+    assert cm.seguro(t) == ("Requisitos: grado en Economía.\nDudas: [correo]\nSolicitudes a admisiones@escuela.es\n"
+                            "Se valora el inglés.")
