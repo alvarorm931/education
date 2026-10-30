@@ -88,3 +88,40 @@ def test_memoria_publicable_sin_textos_largos():
     assert mat["textos"][0]["caracteres"] == 2000 and len(mat["textos"][0]["sha256"]) == 64
     assert p["acceso"]["textos"][0]["caracteres"] == 400
     assert p["centros"][0] == {"normas_permanencia": "https://u.es/n.pdf", "plazas_total": 140.0}
+
+
+def test_plan_de_la_memoria_sin_paginas_que_no_hacen_falta(monkeypatch):
+    from motor.estudios import ruct
+    from motor.grados import ruct_grados as rg
+
+    pedidas = []
+
+    class Lector:
+        peticiones = 0
+
+        class s:
+            class cookies:
+                @staticmethod
+                def clear():
+                    pass
+
+        def get(self, url):
+            self.peticiones += 1
+            pedidas.append(url)
+            if "modulos?" in url:
+                return 200, "codModulo=1", None
+            if "datosModulo" in url:
+                return 200, "codModulo=1&codMateria=7", None
+            if "datosMateria" in url:
+                return 200, "actividadesMateria sistemasMateria datosMateria!contenidos codAsignatura=3 codAsignatura=4", None
+            return 200, "pagina", None
+
+    monkeypatch.setattr(ruct, "_comprobar", lambda p, n: True)
+    monkeypatch.setattr(ruct, "parsear_materia", lambda p: {"nombre": "x", "caracter": "Obligatoria", "ects": 6.0,
+                                                            "unidad_temporal": "Semestral", "despliegue": "1"})
+    ficha = {"nombre": "Grado", "nivel": "Grado", "memorias": [{"cod": "2500094ABCDEF", "sit": "A"}],
+             "fuente": {"url": "https://www.educacion.gob.es/ruct/estudio?x"}}
+    m = rg.leer_plan_memoria(Lector(), ficha)
+    assert m["cobertura"] == {"materias": 1, "asignaturas": 2} and m["solo_plan"]
+    assert not any(k in u for u in pedidas for k in ("actividadesMateria", "sistemasMateria", "contenidos",
+                                                      "accesoAdmision", "resultados", "datosCentro"))

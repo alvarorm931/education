@@ -11,6 +11,7 @@ asignaturas). Lo que cambia aquí:
 
 Uso:
   python -m motor.grados.ruct_grados --codigos 2500094,1500045 --nivel memoria --salida ruta/
+  python -m motor.grados.ruct_grados --codigos-fichero cods.txt --desde 0 --hasta 8 --nivel plan --salida ruta/
   python -m motor.grados.ruct_grados --muestra 24 --catalogo …/catalogo.jsonl --nivel ficha --salida ruta/
 """
 
@@ -126,6 +127,73 @@ def resumen_memoria(m: dict) -> dict:
     }
 
 
+def leer_plan_memoria(lector, ficha: dict, max_paginas: int = MAX_PAGINAS) -> dict:
+    """Solo el plan de la memoria vigente: módulos → materias → asignaturas (nombre, carácter, créditos, unidad
+    temporal y despliegue). Es lo que falta en los grados cuyo plan del BOE no se puede comprobar; las páginas de
+    actividades, evaluación, contenidos, acceso, catálogos y centros de cada memoria no se piden (en un grado son
+    más de la mitad de las peticiones, y el RUCT tarda unos 10 segundos en cada una). Mismos parsers que
+    `ruct.leer_memoria`, sin modificarlos."""
+    import re
+
+    m = ruct.memoria_vigente(ficha)
+    if not m:
+        return {"error": "sin memoria publicada"}
+    cod, nombre, avisos = m["cod"], ficha["nombre"] or "", []
+    lector.s.cookies.clear()
+    lector.get(ficha["fuente"]["url"])  # la ficha abre la sesión
+    estado, p, _ = lector.get(f"{ruct.SOL}detalles.action?cod={cod}&sit={m['sit']}&actual=menu.solicitud.basicos")
+    if estado != 200 or not ruct._comprobar(p, nombre):
+        return {"cod": cod, "error": f"memoria no disponible o de otro título (estado {estado})"}
+    inicio = lector.peticiones
+
+    def pagina(ruta: str) -> str | None:
+        if lector.peticiones > inicio + max_paginas:
+            avisos.append(f"límite de {max_paginas} páginas alcanzado")
+            return None
+        estado, pg, _ = lector.get(ruct.SOL + ruta)
+        if estado != 200:
+            avisos.append(f"{ruta[:80]}: estado {estado}")
+            return None
+        if not ruct._comprobar(pg, nombre):
+            avisos.append(f"{ruta[:80]}: el servidor devolvió otro título; descartada")
+            return None
+        return pg
+
+    memoria: dict = {"cod": cod, "regimen": ficha.get("nivel"), "solo_plan": True, "plan": [], "avisos": avisos}
+    p = pagina(f"modulos?actual=menu.solicitud.planificacion.modulos&cod={cod}")
+    modulos = sorted({int(x) for x in re.findall(r"codModulo=(\d+)", p or "")} - {0})
+    for mod in modulos or [0]:
+        pm = pagina(f"datosModulo!consulta.action?codModulo={mod}&actual=menu.solicitud.planificacion.materias") if mod \
+            else pagina(f"datosModulo?actual=menu.solicitud.planificacion.materiasSin&codModulo={mod}")
+        if not pm:
+            continue
+        info_mod = ruct.parsear_materia(pm)
+        bloque = {"modulo": mod, "nombre": info_mod["nombre"], "ects": info_mod["ects"], "materias": []}
+        materias = sorted({int(x) for x in re.findall(r"codModulo=" + str(mod) + r"&(?:amp;)?codMateria=(\d+)", pm)} |
+                          {int(x) for x in re.findall(r"codMateria=(\d+)&(?:amp;)?codModulo=" + str(mod) + r"\b", pm)})
+        for mat in materias:
+            pmat = pagina(f"datosMateria!consulta.action?codModulo={mod}&codMateria={mat}"
+                          f"&actual=menu.solicitud.planificacion.materias.datos")
+            if not pmat:
+                continue
+            materia = {**ruct.parsear_materia(pmat), "id": mat, "asignaturas": []}
+            for a in sorted({int(x) for x in re.findall(r"codAsignatura=(\d+)", pmat)}):
+                pas = pagina(f"datosAsignatura!consulta.action?codModulo={mod}&codMateria={mat}&codAsignatura={a}"
+                             f"&actual=menu.solicitud.planificacion.materias.asignatura")
+                if pas:
+                    info = ruct.parsear_materia(pas)
+                    materia["asignaturas"].append({"id": a, **{k: info[k] for k in
+                                                              ("nombre", "caracter", "ects", "unidad_temporal",
+                                                               "despliegue")}})
+            bloque["materias"].append(materia)
+        memoria["plan"].append(bloque)
+    materias = [x for b in memoria["plan"] for x in b["materias"]]
+    memoria["cobertura"] = {"materias": len(materias),
+                            "asignaturas": sum(len(x.get("asignaturas", [])) for x in materias)}
+    memoria["paginas"] = lector.peticiones - inicio + 2
+    return memoria
+
+
 def ejecutar(codigos: list[str], raiz: Path, nivel: str, max_minutos: float) -> dict:
     archivo = Archivo(raiz / "archivo", indice_por_fuente=True, solo_huella=solo_huella_por_defecto())
     lector = LectorConRobots(archivo)
@@ -166,8 +234,9 @@ def ejecutar(codigos: list[str], raiz: Path, nivel: str, max_minutos: float) -> 
         pausas = 0
         if "error" in ficha:
             errores[ficha["error"]] += 1
-        elif nivel == "memoria":
-            memoria = ruct.leer_memoria(lector, ficha, max_paginas=MAX_PAGINAS)
+        elif nivel in ("memoria", "plan"):
+            memoria = ruct.leer_memoria(lector, ficha, max_paginas=MAX_PAGINAS) if nivel == "memoria" \
+                else leer_plan_memoria(lector, ficha)
             resumenes[codigo] = resumen_memoria(memoria)
             ficha["memoria"] = sin_textos(memoria)
         (destino / f"{codigo}.json").write_text(json.dumps(ficha, ensure_ascii=False, indent=1), encoding="utf-8")
@@ -192,7 +261,8 @@ def main() -> None:
     p.add_argument("--catalogo", help="catalogo.jsonl de grados (con --muestra)")
     p.add_argument("--muestra", type=int, default=0)
     p.add_argument("--semilla", type=int, default=20261030)
-    p.add_argument("--nivel", choices=["ficha", "memoria"], default="ficha")
+    p.add_argument("--nivel", choices=["ficha", "memoria", "plan"], default="ficha",
+                   help="plan: solo módulos, materias y asignaturas de la memoria (menos de la mitad de peticiones)")
     p.add_argument("--max-minutos", type=float, default=50)
     p.add_argument("--salida", required=True)
     a = p.parse_args()
