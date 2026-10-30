@@ -7,18 +7,15 @@
   ],
   "numeros_de_diario_que_faltan": {},
   "dias_sin_procesar": [],
-  "dias_con_error": [
-   "2026-10-29",
-   "2026-10-30"
-  ],
+  "dias_con_error": [],
   "dias_lunes_a_sabado_sin_boletin": [],
-  "anuncios_sin_texto": 5257,
+  "anuncios_sin_texto": 3996,
   "diarios_por_anio": {
    "2022": 314,
    "2023": 313,
    "2024": 315,
    "2025": 315,
-   "2026": 268
+   "2026": 270
   }
  },
  "fuentes": {
@@ -62,16 +59,17 @@
   "bocant": {
    "grupo": "autonomicos",
    "informes": {
-    "ok": 263,
+    "ok": 1470,
+    "sin_boletin": 555,
     "desconocido": 5
    },
    "ultimo_boletin_leido": "2026-10-30",
    "dias_habiles_sin_boletin": 0,
-   "empleo_mediana_por_boletin": 0,
-   "empleo_ultimos_5_boletines": 26,
+   "empleo_mediana_por_boletin": 4,
+   "empleo_ultimos_5_boletines": 42,
    "recuento_bajo": false,
-   "anuncios_empleo": 1105,
-   "textos": 1105,
+   "anuncios_empleo": 11673,
+   "textos": 11673,
    "textos_pendientes": 0,
    "ultimos_errores": [
     {
@@ -100,58 +98,27 @@
      "alertas": []
     }
    ],
-   "huecos_numeracion": {
-    "2026": [
-     30,
-     31,
-     32,
-     33,
-     34,
-     35,
-     36,
-     37,
-     38,
-     39,
-     40,
-     41,
-     42,
-     43,
-     44,
-     45,
-     46,
-     47,
-     48,
-     49,
-     50,
-     51,
-     52,
-     53,
-     54,
-     55,
-     56,
-     57,
-     58,
-     59
-    ]
-   },
-   "boletines_sin_leer_por_numeracion": 178,
+   "huecos_numeracion": {},
+   "boletines_sin_leer_por_numeracion": 0,
    "alerta": false
   },
   "bocce": {
    "grupo": "autonomicos",
-   "informes": {},
-   "ultimo_boletin_leido": null,
-   "dias_habiles_sin_boletin": null,
+   "informes": {
+    "ok": 5
+   },
+   "ultimo_boletin_leido": "2026-10-30",
+   "dias_habiles_sin_boletin": 0,
    "empleo_mediana_por_boletin": null,
-   "empleo_ultimos_5_boletines": 0,
+   "empleo_ultimos_5_boletines": 4,
    "recuento_bajo": false,
-   "anuncios_empleo": 0,
-   "textos": 0,
+   "anuncios_empleo": 4,
+   "textos": 4,
    "textos_pendientes": 0,
    "ultimos_errores": [],
    "huecos_numeracion": {},
    "boletines_sin_leer_por_numeracion": 0,
-   "alerta": true
+   "alerta": false
   },
   "bocm": {
    "grupo": "autonomicos",
@@ -317,17 +284,39 @@
   "bon": {
    "grupo": "autonomicos",
    "informes": {
-    "ok": 445
+    "ok": 1276,
+    "desconocido": 4
    },
    "ultimo_boletin_leido": "2026-10-30",
    "dias_habiles_sin_boletin": 0,
    "empleo_mediana_por_boletin": 6,
    "empleo_ultimos_5_boletines": 32,
    "recuento_bajo": false,
-   "anuncios_empleo": 4489,
-   "textos": 226,
-   "textos_pendientes": 4263,
-   "ultimos_errores": [],
+   "anuncios_empleo": 11986,
+   "textos": 1593,
+   "textos_pendientes": 10393,
+   "ultimos_errores": [
+    {
+     "fecha": null,
+     "resultado": "desconocido",
+     "alertas": []
+    },
+    {
+     "fecha": null,
+     "resultado": "desconocido",
+     "alertas": []
+    },
+    {
+     "fecha": null,
+     "resultado": "desconocido",
+     "alertas": []
+    },
+    {
+     "fecha": null,
+     "resultado": "desconocido",
+     "alertas": []
+    }
+   ],
    "huecos_numeracion": {},
    "boletines_sin_leer_por_numeracion": 0,
    "alerta": false
@@ -539,8 +528,8 @@
    "empleo_ultimos_5_boletines": 13,
    "recuento_bajo": false,
    "anuncios_empleo": 2099,
-   "textos": 911,
-   "textos_pendientes": 1188,
+   "textos": 2092,
+   "textos_pendientes": 7,
    "ultimos_errores": [
     {
      "fecha": "2026-10-30",
@@ -565,8 +554,8 @@
    "empleo_ultimos_5_boletines": 19,
    "recuento_bajo": false,
    "anuncios_empleo": 3727,
-   "textos": 0,
-   "textos_pendientes": 3727,
+   "textos": 1958,
+   "textos_pendientes": 1769,
    "ultimos_errores": [],
    "huecos_numeracion": {
     "2024": [
@@ -607,8 +596,8 @@
    "empleo_ultimos_5_boletines": 5,
    "recuento_bajo": false,
    "anuncios_empleo": 1888,
-   "textos": 790,
-   "textos_pendientes": 1098,
+   "textos": 1882,
+   "textos_pendientes": 6,
    "ultimos_errores": [],
    "huecos_numeracion": {
     "2022": [
@@ -692,8 +681,8 @@
    "empleo_ultimos_5_boletines": 26,
    "recuento_bajo": false,
    "anuncios_empleo": 7949,
-   "textos": 4477,
-   "textos_pendientes": 3472,
+   "textos": 6243,
+   "textos_pendientes": 1706,
    "ultimos_errores": [],
    "huecos_numeracion": {},
    "boletines_sin_leer_por_numeracion": 0,
@@ -710,8 +699,8 @@
    "empleo_ultimos_5_boletines": 47,
    "recuento_bajo": false,
    "anuncios_empleo": 11132,
-   "textos": 2316,
-   "textos_pendientes": 8816,
+   "textos": 3390,
+   "textos_pendientes": 7742,
    "ultimos_errores": [],
    "huecos_numeracion": {},
    "boletines_sin_leer_por_numeracion": 0,
@@ -790,19 +779,42 @@
   "bopcastellon": {
    "grupo": "provinciales",
    "informes": {
-    "ok": 30
+    "ok": 356,
+    "error_formato": 2
    },
    "ultimo_boletin_leido": "2026-10-29",
    "dias_habiles_sin_boletin": 1,
    "empleo_mediana_por_boletin": 5,
    "empleo_ultimos_5_boletines": 29,
    "recuento_bajo": false,
-   "anuncios_empleo": 154,
-   "textos": 154,
+   "anuncios_empleo": 1869,
+   "textos": 1869,
    "textos_pendientes": 0,
-   "ultimos_errores": [],
-   "huecos_numeracion": {},
-   "boletines_sin_leer_por_numeracion": 0,
+   "ultimos_errores": [
+    {
+     "fecha": "2026-01-20",
+     "resultado": "error_formato",
+     "alertas": [
+      "BOP Castellón 2026-01-20: LimitReachedError: Reached maximum number of tokens per stream."
+     ]
+    },
+    {
+     "fecha": "2024-11-21",
+     "resultado": "error_formato",
+     "alertas": [
+      "BOP Castellón 2024-11-21: LimitReachedError: Reached maximum number of tokens per stream."
+     ]
+    }
+   ],
+   "huecos_numeracion": {
+    "2024": [
+     141
+    ],
+    "2026": [
+     9
+    ]
+   },
+   "boletines_sin_leer_por_numeracion": 2,
    "alerta": false
   },
   "bopciudadreal": {
@@ -817,8 +829,8 @@
    "empleo_ultimos_5_boletines": 13,
    "recuento_bajo": false,
    "anuncios_empleo": 6002,
-   "textos": 2153,
-   "textos_pendientes": 3849,
+   "textos": 3095,
+   "textos_pendientes": 2907,
    "ultimos_errores": [],
    "huecos_numeracion": {},
    "boletines_sin_leer_por_numeracion": 0,
@@ -836,8 +848,8 @@
    "empleo_ultimos_5_boletines": 20,
    "recuento_bajo": false,
    "anuncios_empleo": 6653,
-   "textos": 2322,
-   "textos_pendientes": 4331,
+   "textos": 3385,
+   "textos_pendientes": 3268,
    "ultimos_errores": [],
    "huecos_numeracion": {
     "2022": [
@@ -861,8 +873,8 @@
   "bopcoruna": {
    "grupo": "provinciales",
    "informes": {
-    "ok": 462,
-    "sin_boletin": 214,
+    "ok": 647,
+    "sin_boletin": 301,
     "fuente_inaccesible": 8
    },
    "ultimo_boletin_leido": "2026-10-30",
@@ -870,43 +882,43 @@
    "empleo_mediana_por_boletin": 4,
    "empleo_ultimos_5_boletines": 29,
    "recuento_bajo": false,
-   "anuncios_empleo": 2760,
-   "textos": 2729,
-   "textos_pendientes": 31,
+   "anuncios_empleo": 4499,
+   "textos": 4375,
+   "textos_pendientes": 124,
    "ultimos_errores": [
     {
-     "fecha": "2024-12-25",
+     "fecha": "2024-03-28",
      "resultado": "fuente_inaccesible",
      "alertas": [
-      "No se pudo descargar https://bop.dacoruna.gal/bopportal/cambioBoletin?fechaInput=25%2f12%2f2024 tras 4 intentos: HTTPSConnectionPool(host='bop.dacoruna.gal', port=443): Max retries exceeded with url: /bopportal/cambioBoletin?fechaInput=25%2F12%2F2024 (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)')))"
+      "No se pudo descargar https://bop.dacoruna.gal/bopportal/cambioBoletin?fechaInput=28%2f03%2f2024 tras 4 intentos: HTTPSConnectionPool(host='bop.dacoruna.gal', port=443): Max retries exceeded with url: /bopportal/cambioBoletin?fechaInput=28%2F03%2F2024 (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)')))"
      ]
     },
     {
-     "fecha": "2024-12-24",
+     "fecha": "2024-03-27",
      "resultado": "fuente_inaccesible",
      "alertas": [
-      "No se pudo descargar https://bop.dacoruna.gal/bopportal/cambioBoletin?fechaInput=24%2f12%2f2024 tras 4 intentos: HTTPSConnectionPool(host='bop.dacoruna.gal', port=443): Max retries exceeded with url: /bopportal/cambioBoletin?fechaInput=24%2F12%2F2024 (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)')))"
+      "No se pudo descargar https://bop.dacoruna.gal/bopportal/cambioBoletin?fechaInput=27%2f03%2f2024 tras 4 intentos: HTTPSConnectionPool(host='bop.dacoruna.gal', port=443): Max retries exceeded with url: /bopportal/cambioBoletin?fechaInput=27%2F03%2F2024 (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)')))"
      ]
     },
     {
-     "fecha": "2024-12-23",
+     "fecha": "2024-03-26",
      "resultado": "fuente_inaccesible",
      "alertas": [
-      "No se pudo descargar https://bop.dacoruna.gal/bopportal/cambioBoletin?fechaInput=23%2f12%2f2024 tras 4 intentos: HTTPSConnectionPool(host='bop.dacoruna.gal', port=443): Max retries exceeded with url: /bopportal/cambioBoletin?fechaInput=23%2F12%2F2024 (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)')))"
+      "No se pudo descargar https://bop.dacoruna.gal/bopportal/cambioBoletin?fechaInput=26%2f03%2f2024 tras 4 intentos: HTTPSConnectionPool(host='bop.dacoruna.gal', port=443): Max retries exceeded with url: /bopportal/cambioBoletin?fechaInput=26%2F03%2F2024 (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)')))"
      ]
     },
     {
-     "fecha": "2024-12-20",
+     "fecha": "2024-03-25",
      "resultado": "fuente_inaccesible",
      "alertas": [
-      "No se pudo descargar https://bop.dacoruna.gal/bopportal/cambioBoletin?fechaInput=20%2f12%2f2024 tras 4 intentos: HTTPSConnectionPool(host='bop.dacoruna.gal', port=443): Max retries exceeded with url: /bopportal/cambioBoletin?fechaInput=20%2F12%2F2024 (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)')))"
+      "No se pudo descargar https://bop.dacoruna.gal/bopportal/cambioBoletin?fechaInput=25%2f03%2f2024 tras 4 intentos: HTTPSConnectionPool(host='bop.dacoruna.gal', port=443): Max retries exceeded with url: /bopportal/cambioBoletin?fechaInput=25%2F03%2F2024 (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)')))"
      ]
     },
     {
-     "fecha": "2024-12-19",
+     "fecha": "2024-03-22",
      "resultado": "fuente_inaccesible",
      "alertas": [
-      "No se pudo descargar https://bop.dacoruna.gal/bopportal/cambioBoletin?fechaInput=19%2f12%2f2024 tras 4 intentos: HTTPSConnectionPool(host='bop.dacoruna.gal', port=443): Max retries exceeded with url: /bopportal/cambioBoletin?fechaInput=19%2F12%2F2024 (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)')))"
+      "No se pudo descargar https://bop.dacoruna.gal/bopportal/cambioBoletin?fechaInput=22%2f03%2f2024 tras 4 intentos: HTTPSConnectionPool(host='bop.dacoruna.gal', port=443): Max retries exceeded with url: /bopportal/cambioBoletin?fechaInput=22%2F03%2F2024 (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)')))"
      ]
     }
    ],
@@ -978,8 +990,8 @@
    "empleo_ultimos_5_boletines": 36,
    "recuento_bajo": false,
    "anuncios_empleo": 10144,
-   "textos": 2362,
-   "textos_pendientes": 7782,
+   "textos": 3085,
+   "textos_pendientes": 7059,
    "ultimos_errores": [
     {
      "fecha": null,
@@ -1022,24 +1034,64 @@
   "bopgranada": {
    "grupo": "provinciales",
    "informes": {
-    "ok": 703,
-    "sin_boletin": 267
+    "ok": 1199,
+    "sin_boletin": 267,
+    "error_formato": 4
    },
    "ultimo_boletin_leido": "2026-10-30",
    "dias_habiles_sin_boletin": 0,
    "empleo_mediana_por_boletin": 5,
    "empleo_ultimos_5_boletines": 47,
    "recuento_bajo": false,
-   "anuncios_empleo": 5211,
-   "textos": 1810,
-   "textos_pendientes": 3401,
-   "ultimos_errores": [],
+   "anuncios_empleo": 8592,
+   "textos": 6086,
+   "textos_pendientes": 2506,
+   "ultimos_errores": [
+    {
+     "fecha": "2024-01-10",
+     "resultado": "error_formato",
+     "alertas": [
+      "BOP Granada 2024-01-10: LimitReachedError: Reached maximum number of tokens per stream."
+     ]
+    },
+    {
+     "fecha": "2023-09-08",
+     "resultado": "error_formato",
+     "alertas": [
+      "BOP Granada 2023-09-08: LimitReachedError: Reached maximum number of tokens per stream."
+     ]
+    },
+    {
+     "fecha": "2022-09-12",
+     "resultado": "error_formato",
+     "alertas": [
+      "BOP Granada 2022-09-12: LimitReachedError: Reached maximum number of tokens per stream."
+     ]
+    },
+    {
+     "fecha": "2022-07-07",
+     "resultado": "error_formato",
+     "alertas": [
+      "BOP Granada 2022-07-07: LimitReachedError: Reached maximum number of tokens per stream."
+     ]
+    }
+   ],
    "huecos_numeracion": {
+    "2022": [
+     128,
+     174
+    ],
+    "2023": [
+     171
+    ],
+    "2024": [
+     6
+    ],
     "2025": [
      18
     ]
    },
-   "boletines_sin_leer_por_numeracion": 1,
+   "boletines_sin_leer_por_numeracion": 5,
    "alerta": false
   },
   "bopguadalajara": {
@@ -1054,8 +1106,8 @@
    "empleo_ultimos_5_boletines": 7,
    "recuento_bajo": false,
    "anuncios_empleo": 3770,
-   "textos": 1040,
-   "textos_pendientes": 2730,
+   "textos": 1610,
+   "textos_pendientes": 2160,
    "ultimos_errores": [],
    "huecos_numeracion": {
     "2022": [
@@ -1105,8 +1157,8 @@
    "empleo_ultimos_5_boletines": 7,
    "recuento_bajo": false,
    "anuncios_empleo": 4208,
-   "textos": 2413,
-   "textos_pendientes": 1795,
+   "textos": 3283,
+   "textos_pendientes": 925,
    "ultimos_errores": [],
    "huecos_numeracion": {
     "2025": [
@@ -1129,8 +1181,8 @@
    "empleo_ultimos_5_boletines": 22,
    "recuento_bajo": false,
    "anuncios_empleo": 6421,
-   "textos": 435,
-   "textos_pendientes": 5986,
+   "textos": 757,
+   "textos_pendientes": 5664,
    "ultimos_errores": [],
    "huecos_numeracion": {
     "2022": [
@@ -1164,8 +1216,8 @@
    "empleo_ultimos_5_boletines": 46,
    "recuento_bajo": false,
    "anuncios_empleo": 8428,
-   "textos": 4983,
-   "textos_pendientes": 3445,
+   "textos": 0,
+   "textos_pendientes": 8428,
    "ultimos_errores": [],
    "huecos_numeracion": {},
    "boletines_sin_leer_por_numeracion": 0,
@@ -1174,7 +1226,7 @@
   "bopleon": {
    "grupo": "provinciales",
    "informes": {
-    "ok": 667,
+    "ok": 1187,
     "sin_boletin": 199
    },
    "ultimo_boletin_leido": "2026-10-30",
@@ -1182,17 +1234,33 @@
    "empleo_mediana_por_boletin": 2,
    "empleo_ultimos_5_boletines": 11,
    "recuento_bajo": false,
-   "anuncios_empleo": 2412,
-   "textos": 2181,
-   "textos_pendientes": 231,
+   "anuncios_empleo": 4286,
+   "textos": 4005,
+   "textos_pendientes": 281,
    "ultimos_errores": [],
    "huecos_numeracion": {
+    "2022": [
+     221,
+     243,
+     244,
+     245,
+     246,
+     247,
+     248
+    ],
+    "2023": [
+     52,
+     53,
+     54,
+     55,
+     144
+    ],
     "2024": [
      95,
      96
     ]
    },
-   "boletines_sin_leer_por_numeracion": 2,
+   "boletines_sin_leer_por_numeracion": 14,
    "alerta": false
   },
   "boplleida": {
@@ -1240,22 +1308,21 @@
    "informes": {
     "ok": 961
    },
-   "ultimo_boletin_leido": "8202-12-29",
+   "ultimo_boletin_leido": "2026-10-30",
    "dias_habiles_sin_boletin": 0,
    "empleo_mediana_por_boletin": 2,
-   "empleo_ultimos_5_boletines": 13,
+   "empleo_ultimos_5_boletines": 7,
    "recuento_bajo": false,
    "anuncios_empleo": 3319,
-   "textos": 3253,
-   "textos_pendientes": 66,
+   "textos": 0,
+   "textos_pendientes": 3319,
    "ultimos_errores": [],
    "huecos_numeracion": {
     "2023": [
      220,
      236,
      272,
-     288,
-     297
+     288
     ],
     "2024": [
      17,
@@ -1287,26 +1354,36 @@
      227
     ]
    },
-   "boletines_sin_leer_por_numeracion": 28,
+   "boletines_sin_leer_por_numeracion": 27,
    "alerta": false
   },
   "bopourense": {
    "grupo": "provinciales",
    "informes": {
-    "ok": 845,
-    "sin_boletin": 389
+    "ok": 894,
+    "sin_boletin": 415
    },
    "ultimo_boletin_leido": "2026-10-30",
    "dias_habiles_sin_boletin": 0,
    "empleo_mediana_por_boletin": 2,
    "empleo_ultimos_5_boletines": 21,
    "recuento_bajo": false,
-   "anuncios_empleo": 2100,
+   "anuncios_empleo": 2296,
    "textos": 1716,
-   "textos_pendientes": 384,
+   "textos_pendientes": 580,
    "ultimos_errores": [],
    "huecos_numeracion": {
     "2023": [
+     80,
+     86,
+     92,
+     98,
+     103,
+     109,
+     114,
+     120,
+     126,
+     132,
      138,
      144,
      150,
@@ -1326,17 +1403,10 @@
      232,
      237,
      243,
-     249,
-     254,
-     265,
-     271,
-     277,
-     281,
-     287,
-     293
+     249
     ]
    },
-   "boletines_sin_leer_por_numeracion": 27,
+   "boletines_sin_leer_por_numeracion": 37,
    "alerta": false
   },
   "boppalencia": {
@@ -1350,8 +1420,8 @@
    "empleo_ultimos_5_boletines": 16,
    "recuento_bajo": false,
    "anuncios_empleo": 1042,
-   "textos": 1042,
-   "textos_pendientes": 0,
+   "textos": 1038,
+   "textos_pendientes": 4,
    "ultimos_errores": [],
    "huecos_numeracion": {
     "2024": [
@@ -1402,8 +1472,8 @@
    "empleo_ultimos_5_boletines": 20,
    "recuento_bajo": false,
    "anuncios_empleo": 4646,
-   "textos": 1761,
-   "textos_pendientes": 2885,
+   "textos": 3581,
+   "textos_pendientes": 1065,
    "ultimos_errores": [],
    "huecos_numeracion": {
     "2023": [
@@ -1447,8 +1517,8 @@
    "empleo_ultimos_5_boletines": 34,
    "recuento_bajo": false,
    "anuncios_empleo": 11285,
-   "textos": 1458,
-   "textos_pendientes": 9827,
+   "textos": 1596,
+   "textos_pendientes": 9689,
    "ultimos_errores": [],
    "huecos_numeracion": {
     "2022": [
@@ -1515,19 +1585,19 @@
   "bopt": {
    "grupo": "provinciales",
    "informes": {
-    "ok": 236,
-    "sin_boletin": 95,
-    "error_http": 9,
-    "fuente_inaccesible": 9
+    "ok": 298,
+    "sin_boletin": 114,
+    "error_http": 13,
+    "fuente_inaccesible": 22
    },
    "ultimo_boletin_leido": "2026-10-30",
    "dias_habiles_sin_boletin": 0,
    "empleo_mediana_por_boletin": 8,
    "empleo_ultimos_5_boletines": 37,
    "recuento_bajo": false,
-   "anuncios_empleo": 2402,
+   "anuncios_empleo": 2916,
    "textos": 331,
-   "textos_pendientes": 2071,
+   "textos_pendientes": 2585,
    "ultimos_errores": [
     {
      "fecha": "2026-09-23",
@@ -1581,8 +1651,8 @@
    "empleo_ultimos_5_boletines": 58,
    "recuento_bajo": false,
    "anuncios_empleo": 9252,
-   "textos": 3582,
-   "textos_pendientes": 5670,
+   "textos": 0,
+   "textos_pendientes": 9252,
    "ultimos_errores": [],
    "huecos_numeracion": {},
    "boletines_sin_leer_por_numeracion": 0,
@@ -1618,8 +1688,8 @@
    "empleo_ultimos_5_boletines": 29,
    "recuento_bajo": false,
    "anuncios_empleo": 8459,
-   "textos": 2173,
-   "textos_pendientes": 6286,
+   "textos": 3113,
+   "textos_pendientes": 5346,
    "ultimos_errores": [],
    "huecos_numeracion": {
     "2026": [
@@ -1661,17 +1731,17 @@
   "bopvalencia": {
    "grupo": "provinciales",
    "informes": {
-    "ok": 863,
-    "sin_boletin": 426
+    "ok": 1176,
+    "sin_boletin": 588
    },
    "ultimo_boletin_leido": "2026-10-30",
    "dias_habiles_sin_boletin": 0,
    "empleo_mediana_por_boletin": 5,
    "empleo_ultimos_5_boletines": 41,
    "recuento_bajo": false,
-   "anuncios_empleo": 9171,
-   "textos": 2881,
-   "textos_pendientes": 6290,
+   "anuncios_empleo": 11882,
+   "textos": 3131,
+   "textos_pendientes": 8751,
    "ultimos_errores": [],
    "huecos_numeracion": {},
    "boletines_sin_leer_por_numeracion": 0,
@@ -1707,8 +1777,8 @@
    "empleo_ultimos_5_boletines": 2,
    "recuento_bajo": false,
    "anuncios_empleo": 766,
-   "textos": 668,
-   "textos_pendientes": 98,
+   "textos": 766,
+   "textos_pendientes": 0,
    "ultimos_errores": [],
    "huecos_numeracion": {},
    "boletines_sin_leer_por_numeracion": 0,
@@ -1725,8 +1795,8 @@
    "empleo_ultimos_5_boletines": 21,
    "recuento_bajo": false,
    "anuncios_empleo": 7610,
-   "textos": 0,
-   "textos_pendientes": 7610,
+   "textos": 3648,
+   "textos_pendientes": 3962,
    "ultimos_errores": [],
    "huecos_numeracion": {
     "2024": [
@@ -1740,7 +1810,5 @@
    "alerta": false
   }
  },
- "con_alerta": [
-  "bocce"
- ]
+ "con_alerta": []
 }
