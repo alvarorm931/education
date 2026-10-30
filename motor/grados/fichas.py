@@ -77,6 +77,10 @@ RANGO_PRECIO = {"credito": (40, 450), "curso": (2500, 30000), "total": (8000, 16
 MAX_RAZON_CURSO = 1.6
 
 
+# métodos cuyo precio por curso es el precio del crédito × 60: el total del grado es el crédito × sus créditos
+METODOS_POR_CREDITO = {"curso_igual_a_credito_por_60", "credito_por_60_mas_matricula", "credito_por_60_de_la_tabla"}
+
+
 def precio_por_cuentas(valores: list[float]) -> dict | None:
     """Precio por curso cuando los importes de la misma página o fila cuadran entre sí, sin fiarse de su rótulo:
       - un importe es el crédito × 60 de otro (curso = 60 créditos): «172 € | 10.320 €»;
@@ -758,10 +762,16 @@ def construir(catalogo: list[dict], genericos: list[dict], tarjetas: dict, detal
                              for i in t["imparticiones"] if i.get("situacion") == "Activo")
             if modalidad and presencial:
                 pweb = {**pweb, "solo_modalidad": "semipresencial" if "semipresencial" in modalidad else "a distancia"}
-        if pweb and pweb["precio_curso"] and creditos:
+        por_credito = (pweb or {}).get("metodo") in METODOS_POR_CREDITO
+        if pweb and pweb["precio_curso"] and creditos and (t["clase"] != "doble" or por_credito):
             # todo el grado al precio de hoy: un curso son 60 créditos (RD 822/2021 art. 5); sin subidas futuras
             pweb = {**pweb, "precio_total_estimado": round(pweb["precio_curso"] * creditos / 60, 2),
                     "creditos": creditos}
+        elif pweb and pweb["precio_curso"] and creditos:
+            # un doble grado tiene cursos de más de 60 créditos (72, 78…) y la página da el precio de un curso: sin el
+            # precio del crédito no se sabe el total (calcularlo con 60 créditos por curso lo inflaría)
+            pweb = {**pweb, "precio_total_estimado": None, "creditos": creditos,
+                    "nota_total": "precio de un curso del doble grado; el total depende de los créditos de cada curso"}
         # pública sin precio en QEDU (los dobles nunca lo traen): si su comunidad fija un precio único para todos
         # los grados, ese es el suyo en los centros propios (los adscritos fijan el suyo); con niveles, no se deduce
         precio_norma = None

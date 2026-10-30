@@ -251,6 +251,6 @@ def test_miles_con_espacio_solo_si_cuadra():
 
 
 def test_extraer_guarda_la_lectura_con_miles_por_espacio():
-    r = tg.extraer(["Grado en Psicología 11.730 € 800 € 1 100 € 10 983 € 206 €"], G)
+    r = tg.extraer(["Grado en Psicología 11.730€ 800 €  1  100 € 10 983 € 206 €"], G)
     valores = {i["valor"]: i.get("miles_con_espacio") for i in r["grados"]["1"]}
     assert valores == {11730: None, 800: None, 100: 1100, 983: 10983, 206: None}
