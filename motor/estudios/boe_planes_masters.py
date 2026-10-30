@@ -47,7 +47,8 @@ RE_PLAN = re.compile(r"(?i)de la (?P<uni>Universi[dt]a[dt]\b.+?|Universidade\b.+
 ALIAS_UNI = {"pais vasco": "euskal herriko pais vasco", "euskal herriko pais vasco unibertsitatea": "euskal herriko pais vasco",
              "valencia": "estudi general valencia", "jaume": "castellon jaume", "carlos iii": "carlos iii madrid",
              "hernandez miguel": "elche hernandez miguel", "cataluna internacional": "catalunya internacional",
-             "vic": "catalunya central vic", "diseno": "diseno innovacion tecnologia"}
+             "vic": "catalunya central vic", "diseno": "diseno innovacion tecnologia",
+             "cataluna politecnica": "catalunya politecnica", "barcelona cataluna politecnica": "catalunya politecnica"}
 
 
 def _clave_uni(s: str) -> str:
@@ -108,8 +109,15 @@ def ids_por_nombre(resoluciones: list[dict], catalogo: list[dict]) -> dict[str, 
         if not nb:
             continue
         año = int(re.search(r"BOE-A-(\d{4})-", r["identificador"]).group(1)) if re.search(r"BOE-A-(\d{4})-", r["identificador"]) else 0
-        buenos = [t for t in por_uni.get(_clave_uni(m.group("uni")), []) if nucleos[t["codigo_ruct"]] == nb]
-        if len(buenos) == 1 and año >= año_minimo(buenos[0]["codigo_ruct"]):
+        buenos = [t for t in por_uni.get(_clave_uni(m.group("uni")), []) if nucleos[t["codigo_ruct"]] == nb
+                  and año >= año_minimo(t["codigo_ruct"])]
+        if len(buenos) > 1 and r.get("tipo") == "plan":
+            # el mismo nombre con un código antiguo y otro nuevo (título verificado otra vez): un plan nuevo es del
+            # código más reciente que ya podía existir; una modificación puede ser de cualquiera, y se deja
+            buenos.sort(key=lambda t: año_minimo(t["codigo_ruct"]), reverse=True)
+            if año_minimo(buenos[0]["codigo_ruct"]) > año_minimo(buenos[1]["codigo_ruct"]):
+                buenos = buenos[:1]
+        if len(buenos) == 1:
             out.setdefault(r["identificador"], []).append(buenos[0]["codigo_ruct"])
     return out
 

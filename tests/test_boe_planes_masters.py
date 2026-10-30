@@ -68,3 +68,15 @@ def test_union_por_nombre_universidad_exacta_traduccion_y_fecha():
            {"identificador": "BOE-A-2023-6", "tipo": "plan", "titulo": "Resolución de 2 de mayo, de la Universitat de València, "
             "por la que se corrigen errores en la de 1 de marzo, por la que se publica el plan de estudios de Máster en Física."}]
     assert bp.ids_por_nombre(res, cat) == {"BOE-A-2010-2": ["4310001"], "BOE-A-2017-3": ["4316002"], "BOE-A-2023-5": ["3500003"]}
+
+
+def test_mismo_nombre_con_codigo_antiguo_y_nuevo():
+    cat = [{"codigo_ruct": "4314001", "nombre_oficial": "Máster Universitario en Cine por la Universidad de Barcelona",
+            "universidad": "Barcelona", "situacion": "Activo"},
+           {"codigo_ruct": "3500809", "nombre_oficial": "Máster Universitario en Cine por la Universidad de Barcelona",
+            "universidad": "Barcelona", "situacion": "Activo"}]
+    t = "Resolución de 1 de marzo, de la Universidad de Barcelona, por la que se publica {} de Máster Universitario en Cine."
+    res = [{"identificador": "BOE-A-2015-1", "tipo": "plan", "titulo": t.format("el plan de estudios")},
+           {"identificador": "BOE-A-2024-2", "tipo": "plan", "titulo": t.format("el plan de estudios")},
+           {"identificador": "BOE-A-2024-3", "tipo": "plan_modif", "titulo": t.format("la modificación del plan de estudios")}]
+    assert bp.ids_por_nombre(res, cat) == {"BOE-A-2015-1": ["4314001"], "BOE-A-2024-2": ["3500809"]}
