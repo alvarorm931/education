@@ -300,9 +300,28 @@ def extraer(paginas: list[str], grados: list[dict], de_la_pagina: str | None = N
     return {"curso_documento": curso, "lineas_con_importe": con_importe, "grados": dict(precios), "muestra": muestra}
 
 
+def pedir_con_motivo(d, url: str):
+    """Pide una dirección y, si no hay respuesta, dice por qué: límite de peticiones al servidor, robots.txt que lo
+    prohíbe, robots.txt que no responde (entonces no se rastrea) o el error de conexión."""
+    from motor.estudios.rastreador import _origen
+
+    limite = lambda: getattr(d, "peticiones", 0) >= getattr(d, "max_peticiones", float("inf"))  # noqa: E731
+    if limite():
+        return None, "limite_de_peticiones_al_servidor"
+    if hasattr(d, "robots_ok_para") and not d.robots_ok_para(url):
+        rp = getattr(d, "robots", {}).get(_origen(url))
+        return None, "robots_txt_no_responde" if rp is not None and rp.disallow_all else "robots_txt_lo_prohibe"
+    antes = dict(getattr(d, "estados", {}))
+    r = d.get(url, guardar=False)
+    if r is not None:
+        return r, None
+    nuevos = [k for k, v in getattr(d, "estados", {}).items() if v > antes.get(k, 0)]
+    return None, nuevos[0] if nuevos else ("limite_de_peticiones_al_servidor" if limite() else "sin_respuesta")
+
+
 def ejecutar(catalogo: list[dict], rastreos: Path, salida: Path, max_minutos: float = 50,
              cc: Path | None = None, extra: dict[str, list[str]] | None = None, previas: Path | None = None,
-             releer: set[str] | None = None) -> dict:
+             releer: set[str] | None = None, solo: set[str] | None = None) -> dict:
     from motor.estudios.rastreador import Dominio
 
     archivo = Archivo(salida / "archivo", indice_por_fuente=True, solo_huella=solo_huella_por_defecto())
@@ -321,14 +340,18 @@ def ejecutar(catalogo: list[dict], rastreos: Path, salida: Path, max_minutos: fl
     # solo lo nuevo: las direcciones que una ejecución anterior ya pidió (con respuesta) no se vuelven a pedir
     ya = urls_previas(previas) - (releer or set())  # releer: las que cambió la forma de leerlas
     elegidos = [p for p in elegidos if p["url"] not in ya]
+    if solo:  # una ejecución dirigida: solo estas universidades o centros (código de rastreo)
+        elegidos = [p for p in elegidos if p["codigo_universidad"] in solo]
     for p in elegidos:
         if time.time() > fin:
             break
         r_url = p["url"]
         host = re.sub(r"^https?://([^/]+).*$", r"\1", r_url)
         d = dominios.setdefault(host, Dominio("https://" + host, archivo, pausa=1.0, max_peticiones=40))
-        r = d.get(r_url, guardar=False)
+        r, motivo = pedir_con_motivo(d, r_url)
         res = {**{k: v for k, v in p.items() if k != "grados_rastreo"}, "estado": r.status_code if r is not None else None, "capturado": date.today().isoformat()}
+        if motivo:
+            res["motivo"] = motivo
         es_pdf = r is not None and r.content[:4] == b"%PDF"
         es_html = r is not None and "html" in (r.headers.get("content-type") or "")
         if r is not None and r.status_code == 200 and len(r.content) <= MAX_PDF and (es_pdf or es_html):
@@ -389,11 +412,13 @@ def main() -> None:
     p.add_argument("--previas", help="carpeta con …/tarifas_grado/tarifas.jsonl de ejecuciones anteriores (no se repiten)")
     p.add_argument("--releer", action="append", default=[], help="dirección ya pedida que se vuelve a leer")
     p.add_argument("--max-minutos", type=float, default=50)
+    p.add_argument("--solo", action="append", default=[], help="código de universidad o centro (se puede repetir)")
     p.add_argument("--salida", required=True)
     a = p.parse_args()
     cat = [json.loads(x) for x in Path(a.catalogo).read_text(encoding="utf-8").splitlines() if x.strip()]
     print(json.dumps(ejecutar(cat, Path(a.rastreos), Path(a.salida), a.max_minutos, Path(a.cc) if a.cc else None,
-                              previas=Path(a.previas) if a.previas else None, releer=set(a.releer)),
+                              previas=Path(a.previas) if a.previas else None, releer=set(a.releer),
+                              solo=set(a.solo) or None),
                      ensure_ascii=False, indent=1))
 
 

@@ -156,3 +156,57 @@ def test_tabla_con_importes_sin_simbolo_de_euro():
 def test_celdas_con_parrafos_no_parten_la_fila():
     assert tg.lineas_html("<table><tr><td><p>Psicología</p></td><td><p>1.278,00</p></td></tr></table><p>Otra</p>") \
         == ["Psicología | 1.278,00", "Otra"]
+
+
+def test_motivo_cuando_no_hay_respuesta(tmp_path):
+    """Sin respuesta se dice por qué: robots.txt que lo prohíbe, que no responde, límite o error de conexión."""
+    from collections import Counter
+    from urllib.robotparser import RobotFileParser
+
+    from motor.grados import tarifas_grado as tg
+
+    class D:
+        def __init__(self, reglas, error=None, peticiones=0):
+            self.peticiones, self.max_peticiones, self.estados, self.error = peticiones, 40, Counter(), error
+            rp = RobotFileParser()
+            if reglas is None:
+                rp.disallow_all = True
+            else:
+                rp.parse(reglas)
+            self.robots = {"https://a.es": rp}
+
+        def robots_ok_para(self, url):
+            return self.robots["https://a.es"].can_fetch("motor", url)
+
+        def get(self, url, guardar=False):
+            self.estados[self.error] += 1
+            return None
+
+    assert tg.pedir_con_motivo(D(["User-agent: *", "Disallow: /Portals/"]), "https://a.es/Portals/0/t.pdf") \
+        == (None, "robots_txt_lo_prohibe")
+    assert tg.pedir_con_motivo(D(None), "https://a.es/t.pdf") == (None, "robots_txt_no_responde")
+    assert tg.pedir_con_motivo(D([], peticiones=40), "https://a.es/t.pdf") == (None, "limite_de_peticiones_al_servidor")
+    assert tg.pedir_con_motivo(D([], error="ReadTimeout"), "https://a.es/t.pdf") == (None, "ReadTimeout")
+
+
+def test_solo_algunas_universidades(tmp_path, monkeypatch):
+    import motor.estudios.rastreador as rastreador
+    from motor.grados import tarifas_grado as tg
+
+    pedidas = []
+
+    class D:
+        def __init__(self, *a, **k):
+            pass
+
+        def get(self, url, guardar=False):
+            pedidas.append(url)
+            return None
+
+    monkeypatch.setattr(rastreador, "Dominio", D)
+    monkeypatch.setattr(tg, "URLS_CONOCIDAS", {"031": ["https://a.es/1"], "072": ["https://b.es/1"]})
+    (tmp_path / "r").mkdir()
+    res = tg.ejecutar([], tmp_path / "r", tmp_path / "s", max_minutos=1, solo={"072"})
+    assert pedidas == ["https://b.es/1"] and res["pdfs_elegidos"] == 1
+    assert json.loads((tmp_path / "s/datos/estudios/grados/tarifas_grado/tarifas.jsonl").read_text())["motivo"] \
+        == "sin_respuesta"
