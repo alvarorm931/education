@@ -1,0 +1,1746 @@
+{
+ "fecha": "2026-10-30",
+ "boe": {
+  "periodo": [
+   "2022-01-01",
+   "2026-10-30"
+  ],
+  "numeros_de_diario_que_faltan": {},
+  "dias_sin_procesar": [],
+  "dias_con_error": [
+   "2026-10-29",
+   "2026-10-30"
+  ],
+  "dias_lunes_a_sabado_sin_boletin": [],
+  "anuncios_sin_texto": 5257,
+  "diarios_por_anio": {
+   "2022": 314,
+   "2023": 313,
+   "2024": 315,
+   "2025": 315,
+   "2026": 268
+  }
+ },
+ "fuentes": {
+  "boa": {
+   "grupo": "autonomicos",
+   "informes": {
+    "ok": 1215,
+    "sin_boletin": 549
+   },
+   "ultimo_boletin_leido": "2026-10-30",
+   "dias_habiles_sin_boletin": 0,
+   "empleo_mediana_por_boletin": 9,
+   "empleo_ultimos_5_boletines": 55,
+   "recuento_bajo": false,
+   "anuncios_empleo": 10389,
+   "textos": 0,
+   "textos_pendientes": 10389,
+   "ultimos_errores": [],
+   "huecos_numeracion": {},
+   "boletines_sin_leer_por_numeracion": 0,
+   "alerta": false
+  },
+  "boc": {
+   "grupo": "autonomicos",
+   "informes": {
+    "ok": 1249
+   },
+   "ultimo_boletin_leido": "2026-10-30",
+   "dias_habiles_sin_boletin": 0,
+   "empleo_mediana_por_boletin": 4,
+   "empleo_ultimos_5_boletines": 21,
+   "recuento_bajo": false,
+   "anuncios_empleo": 5101,
+   "textos": 5101,
+   "textos_pendientes": 0,
+   "ultimos_errores": [],
+   "huecos_numeracion": {},
+   "boletines_sin_leer_por_numeracion": 0,
+   "alerta": false
+  },
+  "bocant": {
+   "grupo": "autonomicos",
+   "informes": {
+    "ok": 263,
+    "desconocido": 5
+   },
+   "ultimo_boletin_leido": "2026-10-30",
+   "dias_habiles_sin_boletin": 0,
+   "empleo_mediana_por_boletin": 0,
+   "empleo_ultimos_5_boletines": 26,
+   "recuento_bajo": false,
+   "anuncios_empleo": 1105,
+   "textos": 1105,
+   "textos_pendientes": 0,
+   "ultimos_errores": [
+    {
+     "fecha": null,
+     "resultado": "desconocido",
+     "alertas": []
+    },
+    {
+     "fecha": null,
+     "resultado": "desconocido",
+     "alertas": []
+    },
+    {
+     "fecha": null,
+     "resultado": "desconocido",
+     "alertas": []
+    },
+    {
+     "fecha": null,
+     "resultado": "desconocido",
+     "alertas": []
+    },
+    {
+     "fecha": null,
+     "resultado": "desconocido",
+     "alertas": []
+    }
+   ],
+   "huecos_numeracion": {
+    "2026": [
+     30,
+     31,
+     32,
+     33,
+     34,
+     35,
+     36,
+     37,
+     38,
+     39,
+     40,
+     41,
+     42,
+     43,
+     44,
+     45,
+     46,
+     47,
+     48,
+     49,
+     50,
+     51,
+     52,
+     53,
+     54,
+     55,
+     56,
+     57,
+     58,
+     59
+    ]
+   },
+   "boletines_sin_leer_por_numeracion": 178,
+   "alerta": false
+  },
+  "bocce": {
+   "grupo": "autonomicos",
+   "informes": {},
+   "ultimo_boletin_leido": null,
+   "dias_habiles_sin_boletin": null,
+   "empleo_mediana_por_boletin": null,
+   "empleo_ultimos_5_boletines": 0,
+   "recuento_bajo": false,
+   "anuncios_empleo": 0,
+   "textos": 0,
+   "textos_pendientes": 0,
+   "ultimos_errores": [],
+   "huecos_numeracion": {},
+   "boletines_sin_leer_por_numeracion": 0,
+   "alerta": true
+  },
+  "bocm": {
+   "grupo": "autonomicos",
+   "informes": {
+    "ok": 1437,
+    "sin_boletin": 266,
+    "error_formato": 8
+   },
+   "ultimo_boletin_leido": "2026-10-30",
+   "dias_habiles_sin_boletin": 0,
+   "empleo_mediana_por_boletin": 25,
+   "empleo_ultimos_5_boletines": 102,
+   "recuento_bajo": false,
+   "anuncios_empleo": 31478,
+   "textos": 2169,
+   "textos_pendientes": 29309,
+   "ultimos_errores": [
+    {
+     "fecha": "2026-07-20",
+     "resultado": "error_formato",
+     "alertas": [
+      "BOCM 2026-07-20: no hay boletín leído en los 20 días anteriores para saber el número"
+     ]
+    },
+    {
+     "fecha": "2026-07-19",
+     "resultado": "error_formato",
+     "alertas": [
+      "BOCM 2026-07-19: no hay boletín leído en los 20 días anteriores para saber el número"
+     ]
+    },
+    {
+     "fecha": "2026-07-18",
+     "resultado": "error_formato",
+     "alertas": [
+      "BOCM 2026-07-18: no hay boletín leído en los 20 días anteriores para saber el número"
+     ]
+    },
+    {
+     "fecha": "2026-07-17",
+     "resultado": "error_formato",
+     "alertas": [
+      "BOCM 2026-07-17: no hay boletín leído en los 20 días anteriores para saber el número"
+     ]
+    },
+    {
+     "fecha": "2026-07-16",
+     "resultado": "error_formato",
+     "alertas": [
+      "BOCM 2026-07-16: no hay boletín leído en los 20 días anteriores para saber el número"
+     ]
+    }
+   ],
+   "huecos_numeracion": {
+    "2026": [
+     184,
+     185,
+     186,
+     187,
+     188,
+     189,
+     190,
+     191,
+     192,
+     193,
+     194,
+     195,
+     196,
+     197,
+     198,
+     199,
+     200,
+     201,
+     202,
+     203,
+     204,
+     205,
+     206,
+     207,
+     208,
+     209,
+     210,
+     211,
+     212,
+     213
+    ]
+   },
+   "boletines_sin_leer_por_numeracion": 74,
+   "alerta": false
+  },
+  "bocyl": {
+   "grupo": "autonomicos",
+   "informes": {
+    "ok": 58
+   },
+   "ultimo_boletin_leido": "2026-10-29",
+   "dias_habiles_sin_boletin": 1,
+   "empleo_mediana_por_boletin": 188,
+   "empleo_ultimos_5_boletines": 983,
+   "recuento_bajo": false,
+   "anuncios_empleo": 12558,
+   "textos": 8002,
+   "textos_pendientes": 4556,
+   "ultimos_errores": [],
+   "huecos_numeracion": {},
+   "boletines_sin_leer_por_numeracion": 0,
+   "alerta": false
+  },
+  "boib": {
+   "grupo": "autonomicos",
+   "informes": {
+    "ok": 831
+   },
+   "ultimo_boletin_leido": "2026-10-29",
+   "dias_habiles_sin_boletin": 1,
+   "empleo_mediana_por_boletin": 16,
+   "empleo_ultimos_5_boletines": 84,
+   "recuento_bajo": false,
+   "anuncios_empleo": 14830,
+   "textos": 6588,
+   "textos_pendientes": 8242,
+   "ultimos_errores": [],
+   "huecos_numeracion": {},
+   "boletines_sin_leer_por_numeracion": 0,
+   "alerta": false
+  },
+  "boja": {
+   "grupo": "autonomicos",
+   "informes": {
+    "ok": 1561
+   },
+   "ultimo_boletin_leido": "2026-10-30",
+   "dias_habiles_sin_boletin": 0,
+   "empleo_mediana_por_boletin": null,
+   "empleo_ultimos_5_boletines": 0,
+   "recuento_bajo": false,
+   "anuncios_empleo": 21945,
+   "textos": 0,
+   "textos_pendientes": 21945,
+   "ultimos_errores": [],
+   "huecos_numeracion": {},
+   "boletines_sin_leer_por_numeracion": 0,
+   "alerta": false
+  },
+  "bome": {
+   "grupo": "autonomicos",
+   "informes": {
+    "ok": 897
+   },
+   "ultimo_boletin_leido": "2026-10-30",
+   "dias_habiles_sin_boletin": 0,
+   "empleo_mediana_por_boletin": 2,
+   "empleo_ultimos_5_boletines": 11,
+   "recuento_bajo": false,
+   "anuncios_empleo": 2026,
+   "textos": 2043,
+   "textos_pendientes": 0,
+   "ultimos_errores": [],
+   "huecos_numeracion": {},
+   "boletines_sin_leer_por_numeracion": 0,
+   "alerta": false
+  },
+  "bon": {
+   "grupo": "autonomicos",
+   "informes": {
+    "ok": 445
+   },
+   "ultimo_boletin_leido": "2026-10-30",
+   "dias_habiles_sin_boletin": 0,
+   "empleo_mediana_por_boletin": 6,
+   "empleo_ultimos_5_boletines": 32,
+   "recuento_bajo": false,
+   "anuncios_empleo": 4489,
+   "textos": 226,
+   "textos_pendientes": 4263,
+   "ultimos_errores": [],
+   "huecos_numeracion": {},
+   "boletines_sin_leer_por_numeracion": 0,
+   "alerta": false
+  },
+  "bopa": {
+   "grupo": "autonomicos",
+   "informes": {
+    "ok": 1210,
+    "sin_boletin": 553,
+    "error_formato": 1
+   },
+   "ultimo_boletin_leido": "2026-10-30",
+   "dias_habiles_sin_boletin": 0,
+   "empleo_mediana_por_boletin": 6,
+   "empleo_ultimos_5_boletines": 46,
+   "recuento_bajo": false,
+   "anuncios_empleo": 12444,
+   "textos": 1324,
+   "textos_pendientes": 11120,
+   "ultimos_errores": [
+    {
+     "fecha": "2024-01-11",
+     "resultado": "error_formato",
+     "alertas": [
+      "BOPA 2024-01-11: página sin cabecera de boletín (posible cambio de formato)"
+     ]
+    }
+   ],
+   "huecos_numeracion": {
+    "2024": [
+     8
+    ]
+   },
+   "boletines_sin_leer_por_numeracion": 1,
+   "alerta": false
+  },
+  "bopv": {
+   "grupo": "autonomicos",
+   "informes": {
+    "ok": 1209
+   },
+   "ultimo_boletin_leido": "2026-10-30",
+   "dias_habiles_sin_boletin": 0,
+   "empleo_mediana_por_boletin": 2,
+   "empleo_ultimos_5_boletines": 33,
+   "recuento_bajo": false,
+   "anuncios_empleo": 5047,
+   "textos": 5052,
+   "textos_pendientes": 0,
+   "ultimos_errores": [],
+   "huecos_numeracion": {},
+   "boletines_sin_leer_por_numeracion": 0,
+   "alerta": false
+  },
+  "bor": {
+   "grupo": "autonomicos",
+   "informes": {},
+   "ultimo_boletin_leido": "2026-10-30",
+   "dias_habiles_sin_boletin": 0,
+   "empleo_mediana_por_boletin": null,
+   "empleo_ultimos_5_boletines": 0,
+   "recuento_bajo": false,
+   "anuncios_empleo": 1806,
+   "textos": 633,
+   "textos_pendientes": 1173,
+   "ultimos_errores": [],
+   "huecos_numeracion": {},
+   "boletines_sin_leer_por_numeracion": 0,
+   "alerta": false
+  },
+  "borm": {
+   "grupo": "autonomicos",
+   "informes": {
+    "ok": 1460,
+    "sin_boletin": 52
+   },
+   "ultimo_boletin_leido": "2026-10-30",
+   "dias_habiles_sin_boletin": 0,
+   "empleo_mediana_por_boletin": 5,
+   "empleo_ultimos_5_boletines": 31,
+   "recuento_bajo": false,
+   "anuncios_empleo": 9110,
+   "textos": 1885,
+   "textos_pendientes": 7225,
+   "ultimos_errores": [],
+   "huecos_numeracion": {},
+   "boletines_sin_leer_por_numeracion": 0,
+   "alerta": false
+  },
+  "docm": {
+   "grupo": "autonomicos",
+   "informes": {
+    "ok": 1210,
+    "sin_boletin": 50
+   },
+   "ultimo_boletin_leido": "2026-10-30",
+   "dias_habiles_sin_boletin": 0,
+   "empleo_mediana_por_boletin": 2,
+   "empleo_ultimos_5_boletines": 20,
+   "recuento_bajo": false,
+   "anuncios_empleo": 5375,
+   "textos": 3910,
+   "textos_pendientes": 1465,
+   "ultimos_errores": [],
+   "huecos_numeracion": {},
+   "boletines_sin_leer_por_numeracion": 0,
+   "alerta": false
+  },
+  "doe": {
+   "grupo": "autonomicos",
+   "informes": {
+    "ok": 1210,
+    "sin_boletin": 50
+   },
+   "ultimo_boletin_leido": "2026-10-30",
+   "dias_habiles_sin_boletin": 0,
+   "empleo_mediana_por_boletin": 1,
+   "empleo_ultimos_5_boletines": 19,
+   "recuento_bajo": false,
+   "anuncios_empleo": 5232,
+   "textos": 4934,
+   "textos_pendientes": 298,
+   "ultimos_errores": [],
+   "huecos_numeracion": {},
+   "boletines_sin_leer_por_numeracion": 0,
+   "alerta": false
+  },
+  "dog": {
+   "grupo": "autonomicos",
+   "informes": {
+    "ok": 1205,
+    "sin_boletin": 559
+   },
+   "ultimo_boletin_leido": "2026-10-30",
+   "dias_habiles_sin_boletin": 0,
+   "empleo_mediana_por_boletin": 8,
+   "empleo_ultimos_5_boletines": 75,
+   "recuento_bajo": false,
+   "anuncios_empleo": 12693,
+   "textos": 6216,
+   "textos_pendientes": 6477,
+   "ultimos_errores": [],
+   "huecos_numeracion": {
+    "2024": [
+     74
+    ],
+    "2026": [
+     204
+    ]
+   },
+   "boletines_sin_leer_por_numeracion": 2,
+   "alerta": false
+  },
+  "dogc": {
+   "grupo": "autonomicos",
+   "informes": {
+    "ok": 1209,
+    "sin_boletin": 555
+   },
+   "ultimo_boletin_leido": "2026-10-30",
+   "dias_habiles_sin_boletin": 0,
+   "empleo_mediana_por_boletin": 27,
+   "empleo_ultimos_5_boletines": 173,
+   "recuento_bajo": false,
+   "anuncios_empleo": 41022,
+   "textos": 9105,
+   "textos_pendientes": 31917,
+   "ultimos_errores": [],
+   "huecos_numeracion": {},
+   "boletines_sin_leer_por_numeracion": 0,
+   "alerta": false
+  },
+  "dogv": {
+   "grupo": "autonomicos",
+   "informes": {
+    "ok": 1234,
+    "sin_boletin": 530
+   },
+   "ultimo_boletin_leido": "2026-10-30",
+   "dias_habiles_sin_boletin": 0,
+   "empleo_mediana_por_boletin": 12,
+   "empleo_ultimos_5_boletines": 101,
+   "recuento_bajo": false,
+   "anuncios_empleo": 21232,
+   "textos": 3932,
+   "textos_pendientes": 17300,
+   "ultimos_errores": [],
+   "huecos_numeracion": {
+    "2024": [
+     9893
+    ],
+    "2025": [
+     10230
+    ]
+   },
+   "boletines_sin_leer_por_numeracion": 2,
+   "alerta": false
+  },
+  "bopalava": {
+   "grupo": "provinciales",
+   "informes": {
+    "sin_boletin": 1045,
+    "ok": 718,
+    "error_formato": 1
+   },
+   "ultimo_boletin_leido": "2026-10-28",
+   "dias_habiles_sin_boletin": 2,
+   "empleo_mediana_por_boletin": 1,
+   "empleo_ultimos_5_boletines": 13,
+   "recuento_bajo": false,
+   "anuncios_empleo": 2099,
+   "textos": 911,
+   "textos_pendientes": 1188,
+   "ultimos_errores": [
+    {
+     "fecha": "2026-10-30",
+     "resultado": "error_formato",
+     "alertas": [
+      "BOTHA 2026-10-30: página sin anuncios (posible cambio de formato)"
+     ]
+    }
+   ],
+   "huecos_numeracion": {},
+   "boletines_sin_leer_por_numeracion": 0,
+   "alerta": false
+  },
+  "bopalbacete": {
+   "grupo": "provinciales",
+   "informes": {
+    "ok": 728
+   },
+   "ultimo_boletin_leido": "2026-10-30",
+   "dias_habiles_sin_boletin": 0,
+   "empleo_mediana_por_boletin": 3,
+   "empleo_ultimos_5_boletines": 19,
+   "recuento_bajo": false,
+   "anuncios_empleo": 3727,
+   "textos": 0,
+   "textos_pendientes": 3727,
+   "ultimos_errores": [],
+   "huecos_numeracion": {
+    "2024": [
+     99
+    ]
+   },
+   "boletines_sin_leer_por_numeracion": 1,
+   "alerta": false
+  },
+  "bopalicante": {
+   "grupo": "provinciales",
+   "informes": {
+    "ok": 1202,
+    "sin_boletin": 562
+   },
+   "ultimo_boletin_leido": "2026-10-30",
+   "dias_habiles_sin_boletin": 0,
+   "empleo_mediana_por_boletin": 9,
+   "empleo_ultimos_5_boletines": 55,
+   "recuento_bajo": false,
+   "anuncios_empleo": 13122,
+   "textos": 3874,
+   "textos_pendientes": 9248,
+   "ultimos_errores": [],
+   "huecos_numeracion": {},
+   "boletines_sin_leer_por_numeracion": 0,
+   "alerta": false
+  },
+  "bopavila": {
+   "grupo": "provinciales",
+   "informes": {
+    "ok": 1209,
+    "sin_boletin": 51
+   },
+   "ultimo_boletin_leido": "2026-10-30",
+   "dias_habiles_sin_boletin": 0,
+   "empleo_mediana_por_boletin": 0,
+   "empleo_ultimos_5_boletines": 5,
+   "recuento_bajo": false,
+   "anuncios_empleo": 1888,
+   "textos": 790,
+   "textos_pendientes": 1098,
+   "ultimos_errores": [],
+   "huecos_numeracion": {
+    "2022": [
+     208
+    ],
+    "2024": [
+     37,
+     78,
+     92,
+     251
+    ]
+   },
+   "boletines_sin_leer_por_numeracion": 5,
+   "alerta": false
+  },
+  "bopb": {
+   "grupo": "provinciales",
+   "informes": {
+    "ok": 315,
+    "sin_boletin": 131,
+    "error_http": 15
+   },
+   "ultimo_boletin_leido": "2026-10-30",
+   "dias_habiles_sin_boletin": 0,
+   "empleo_mediana_por_boletin": 21,
+   "empleo_ultimos_5_boletines": 137,
+   "recuento_bajo": false,
+   "anuncios_empleo": 8450,
+   "textos": 3839,
+   "textos_pendientes": 4611,
+   "ultimos_errores": [
+    {
+     "fecha": "2026-09-24",
+     "resultado": "error_http",
+     "alertas": [
+      "BOPB 2026-09-24 página 1: HTTP 500"
+     ]
+    },
+    {
+     "fecha": "2026-09-11",
+     "resultado": "error_http",
+     "alertas": [
+      "BOPB 2026-09-11 página 1: HTTP 500"
+     ]
+    },
+    {
+     "fecha": "2026-06-24",
+     "resultado": "error_http",
+     "alertas": [
+      "BOPB 2026-06-24 página 1: HTTP 500"
+     ]
+    },
+    {
+     "fecha": "2026-05-25",
+     "resultado": "error_http",
+     "alertas": [
+      "BOPB 2026-05-25 página 1: HTTP 500"
+     ]
+    },
+    {
+     "fecha": "2026-05-01",
+     "resultado": "error_http",
+     "alertas": [
+      "BOPB 2026-05-01 página 1: HTTP 500"
+     ]
+    }
+   ],
+   "huecos_numeracion": {},
+   "boletines_sin_leer_por_numeracion": 0,
+   "alerta": false
+  },
+  "bopbadajoz": {
+   "grupo": "provinciales",
+   "informes": {
+    "ok": 1202,
+    "sin_boletin": 58
+   },
+   "ultimo_boletin_leido": "2026-10-30",
+   "dias_habiles_sin_boletin": 0,
+   "empleo_mediana_por_boletin": 4,
+   "empleo_ultimos_5_boletines": 26,
+   "recuento_bajo": false,
+   "anuncios_empleo": 7949,
+   "textos": 4477,
+   "textos_pendientes": 3472,
+   "ultimos_errores": [],
+   "huecos_numeracion": {},
+   "boletines_sin_leer_por_numeracion": 0,
+   "alerta": false
+  },
+  "bopbizkaia": {
+   "grupo": "provinciales",
+   "informes": {
+    "ok": 1206
+   },
+   "ultimo_boletin_leido": "2026-10-30",
+   "dias_habiles_sin_boletin": 0,
+   "empleo_mediana_por_boletin": 7,
+   "empleo_ultimos_5_boletines": 47,
+   "recuento_bajo": false,
+   "anuncios_empleo": 11132,
+   "textos": 2316,
+   "textos_pendientes": 8816,
+   "ultimos_errores": [],
+   "huecos_numeracion": {},
+   "boletines_sin_leer_por_numeracion": 0,
+   "alerta": false
+  },
+  "bopburgos": {
+   "grupo": "provinciales",
+   "informes": {
+    "ok": 1190,
+    "error_http": 1,
+    "desconocido": 4
+   },
+   "ultimo_boletin_leido": "2026-10-30",
+   "dias_habiles_sin_boletin": 0,
+   "empleo_mediana_por_boletin": 1,
+   "empleo_ultimos_5_boletines": 4,
+   "recuento_bajo": false,
+   "anuncios_empleo": 2227,
+   "textos": 0,
+   "textos_pendientes": 2227,
+   "ultimos_errores": [
+    {
+     "fecha": null,
+     "resultado": "error_http",
+     "alertas": [
+      "BOP Burgos 2026/208: HTTP 403"
+     ]
+    },
+    {
+     "fecha": null,
+     "resultado": "desconocido",
+     "alertas": []
+    },
+    {
+     "fecha": null,
+     "resultado": "desconocido",
+     "alertas": []
+    },
+    {
+     "fecha": null,
+     "resultado": "desconocido",
+     "alertas": []
+    },
+    {
+     "fecha": null,
+     "resultado": "desconocido",
+     "alertas": []
+    }
+   ],
+   "huecos_numeracion": {},
+   "boletines_sin_leer_por_numeracion": 0,
+   "alerta": false
+  },
+  "bopcaceres": {
+   "grupo": "provinciales",
+   "informes": {
+    "ok": 1202
+   },
+   "ultimo_boletin_leido": "2026-10-30",
+   "dias_habiles_sin_boletin": 0,
+   "empleo_mediana_por_boletin": 4,
+   "empleo_ultimos_5_boletines": 20,
+   "recuento_bajo": false,
+   "anuncios_empleo": 6407,
+   "textos": 6410,
+   "textos_pendientes": 0,
+   "ultimos_errores": [],
+   "huecos_numeracion": {
+    "2024": [
+     137
+    ]
+   },
+   "boletines_sin_leer_por_numeracion": 1,
+   "alerta": false
+  },
+  "bopcastellon": {
+   "grupo": "provinciales",
+   "informes": {
+    "ok": 30
+   },
+   "ultimo_boletin_leido": "2026-10-29",
+   "dias_habiles_sin_boletin": 1,
+   "empleo_mediana_por_boletin": 5,
+   "empleo_ultimos_5_boletines": 29,
+   "recuento_bajo": false,
+   "anuncios_empleo": 154,
+   "textos": 154,
+   "textos_pendientes": 0,
+   "ultimos_errores": [],
+   "huecos_numeracion": {},
+   "boletines_sin_leer_por_numeracion": 0,
+   "alerta": false
+  },
+  "bopciudadreal": {
+   "grupo": "provinciales",
+   "informes": {
+    "ok": 1213,
+    "sin_boletin": 551
+   },
+   "ultimo_boletin_leido": "2026-10-30",
+   "dias_habiles_sin_boletin": 0,
+   "empleo_mediana_por_boletin": 4,
+   "empleo_ultimos_5_boletines": 13,
+   "recuento_bajo": false,
+   "anuncios_empleo": 6002,
+   "textos": 2153,
+   "textos_pendientes": 3849,
+   "ultimos_errores": [],
+   "huecos_numeracion": {},
+   "boletines_sin_leer_por_numeracion": 0,
+   "alerta": false
+  },
+  "bopcordoba": {
+   "grupo": "provinciales",
+   "informes": {
+    "ok": 1196,
+    "sin_boletin": 568
+   },
+   "ultimo_boletin_leido": "2026-10-30",
+   "dias_habiles_sin_boletin": 0,
+   "empleo_mediana_por_boletin": 2,
+   "empleo_ultimos_5_boletines": 20,
+   "recuento_bajo": false,
+   "anuncios_empleo": 6653,
+   "textos": 2322,
+   "textos_pendientes": 4331,
+   "ultimos_errores": [],
+   "huecos_numeracion": {
+    "2022": [
+     106
+    ],
+    "2023": [
+     214,
+     243
+    ],
+    "2025": [
+     17,
+     67
+    ],
+    "2026": [
+     46
+    ]
+   },
+   "boletines_sin_leer_por_numeracion": 6,
+   "alerta": false
+  },
+  "bopcoruna": {
+   "grupo": "provinciales",
+   "informes": {
+    "ok": 462,
+    "sin_boletin": 214,
+    "fuente_inaccesible": 8
+   },
+   "ultimo_boletin_leido": "2026-10-30",
+   "dias_habiles_sin_boletin": 0,
+   "empleo_mediana_por_boletin": 4,
+   "empleo_ultimos_5_boletines": 29,
+   "recuento_bajo": false,
+   "anuncios_empleo": 2760,
+   "textos": 2729,
+   "textos_pendientes": 31,
+   "ultimos_errores": [
+    {
+     "fecha": "2024-12-25",
+     "resultado": "fuente_inaccesible",
+     "alertas": [
+      "No se pudo descargar https://bop.dacoruna.gal/bopportal/cambioBoletin?fechaInput=25%2f12%2f2024 tras 4 intentos: HTTPSConnectionPool(host='bop.dacoruna.gal', port=443): Max retries exceeded with url: /bopportal/cambioBoletin?fechaInput=25%2F12%2F2024 (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)')))"
+     ]
+    },
+    {
+     "fecha": "2024-12-24",
+     "resultado": "fuente_inaccesible",
+     "alertas": [
+      "No se pudo descargar https://bop.dacoruna.gal/bopportal/cambioBoletin?fechaInput=24%2f12%2f2024 tras 4 intentos: HTTPSConnectionPool(host='bop.dacoruna.gal', port=443): Max retries exceeded with url: /bopportal/cambioBoletin?fechaInput=24%2F12%2F2024 (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)')))"
+     ]
+    },
+    {
+     "fecha": "2024-12-23",
+     "resultado": "fuente_inaccesible",
+     "alertas": [
+      "No se pudo descargar https://bop.dacoruna.gal/bopportal/cambioBoletin?fechaInput=23%2f12%2f2024 tras 4 intentos: HTTPSConnectionPool(host='bop.dacoruna.gal', port=443): Max retries exceeded with url: /bopportal/cambioBoletin?fechaInput=23%2F12%2F2024 (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)')))"
+     ]
+    },
+    {
+     "fecha": "2024-12-20",
+     "resultado": "fuente_inaccesible",
+     "alertas": [
+      "No se pudo descargar https://bop.dacoruna.gal/bopportal/cambioBoletin?fechaInput=20%2f12%2f2024 tras 4 intentos: HTTPSConnectionPool(host='bop.dacoruna.gal', port=443): Max retries exceeded with url: /bopportal/cambioBoletin?fechaInput=20%2F12%2F2024 (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)')))"
+     ]
+    },
+    {
+     "fecha": "2024-12-19",
+     "resultado": "fuente_inaccesible",
+     "alertas": [
+      "No se pudo descargar https://bop.dacoruna.gal/bopportal/cambioBoletin?fechaInput=19%2f12%2f2024 tras 4 intentos: HTTPSConnectionPool(host='bop.dacoruna.gal', port=443): Max retries exceeded with url: /bopportal/cambioBoletin?fechaInput=19%2F12%2F2024 (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)')))"
+     ]
+    }
+   ],
+   "huecos_numeracion": {},
+   "boletines_sin_leer_por_numeracion": 0,
+   "alerta": false
+  },
+  "bopgipuzkoa": {
+   "grupo": "provinciales",
+   "informes": {
+    "ok": 1245,
+    "sin_boletin": 516,
+    "error_formato": 3
+   },
+   "ultimo_boletin_leido": "2026-10-30",
+   "dias_habiles_sin_boletin": 0,
+   "empleo_mediana_por_boletin": 3,
+   "empleo_ultimos_5_boletines": 30,
+   "recuento_bajo": false,
+   "anuncios_empleo": 8317,
+   "textos": 3635,
+   "textos_pendientes": 4682,
+   "ultimos_errores": [
+    {
+     "fecha": "2023-12-29",
+     "resultado": "error_formato",
+     "alertas": [
+      "BOG 2023-12-29: la página dice None"
+     ]
+    },
+    {
+     "fecha": "2023-05-02",
+     "resultado": "error_formato",
+     "alertas": [
+      "BOG 2023-05-02: la página dice None"
+     ]
+    },
+    {
+     "fecha": "2022-12-30",
+     "resultado": "error_formato",
+     "alertas": [
+      "BOG 2022-12-30: la página dice None"
+     ]
+    }
+   ],
+   "huecos_numeracion": {
+    "2023": [
+     82,
+     83,
+     127
+    ],
+    "2025": [
+     122
+    ]
+   },
+   "boletines_sin_leer_por_numeracion": 4,
+   "alerta": false
+  },
+  "bopgirona": {
+   "grupo": "provinciales",
+   "informes": {
+    "ok": 1203,
+    "fuente_inaccesible": 7,
+    "no_existe": 4
+   },
+   "ultimo_boletin_leido": "2026-10-30",
+   "dias_habiles_sin_boletin": 0,
+   "empleo_mediana_por_boletin": 7,
+   "empleo_ultimos_5_boletines": 36,
+   "recuento_bajo": false,
+   "anuncios_empleo": 10144,
+   "textos": 2362,
+   "textos_pendientes": 7782,
+   "ultimos_errores": [
+    {
+     "fecha": null,
+     "resultado": "fuente_inaccesible",
+     "alertas": [
+      "No se pudo descargar https://www.ddgi.cat/bop/mostra-bop/2025-01-01/2025/250 tras 4 intentos: Exceeded 30 redirects."
+     ]
+    },
+    {
+     "fecha": null,
+     "resultado": "no_existe",
+     "alertas": []
+    },
+    {
+     "fecha": null,
+     "resultado": "fuente_inaccesible",
+     "alertas": [
+      "No se pudo descargar https://www.ddgi.cat/bop/mostra-bop/2025-01-01/2025/254 tras 4 intentos: Exceeded 30 redirects."
+     ]
+    },
+    {
+     "fecha": null,
+     "resultado": "fuente_inaccesible",
+     "alertas": [
+      "No se pudo descargar https://www.ddgi.cat/bop/mostra-bop/2025-01-01/2025/251 tras 4 intentos: Exceeded 30 redirects."
+     ]
+    },
+    {
+     "fecha": null,
+     "resultado": "fuente_inaccesible",
+     "alertas": [
+      "No se pudo descargar https://www.ddgi.cat/bop/mostra-bop/2025-01-01/2025/252 tras 4 intentos: Exceeded 30 redirects."
+     ]
+    }
+   ],
+   "huecos_numeracion": {},
+   "boletines_sin_leer_por_numeracion": 0,
+   "alerta": false
+  },
+  "bopgranada": {
+   "grupo": "provinciales",
+   "informes": {
+    "ok": 703,
+    "sin_boletin": 267
+   },
+   "ultimo_boletin_leido": "2026-10-30",
+   "dias_habiles_sin_boletin": 0,
+   "empleo_mediana_por_boletin": 5,
+   "empleo_ultimos_5_boletines": 47,
+   "recuento_bajo": false,
+   "anuncios_empleo": 5211,
+   "textos": 1810,
+   "textos_pendientes": 3401,
+   "ultimos_errores": [],
+   "huecos_numeracion": {
+    "2025": [
+     18
+    ]
+   },
+   "boletines_sin_leer_por_numeracion": 1,
+   "alerta": false
+  },
+  "bopguadalajara": {
+   "grupo": "provinciales",
+   "informes": {
+    "ok": 1194,
+    "sin_boletin": 570
+   },
+   "ultimo_boletin_leido": "2026-10-30",
+   "dias_habiles_sin_boletin": 0,
+   "empleo_mediana_por_boletin": 2,
+   "empleo_ultimos_5_boletines": 7,
+   "recuento_bajo": false,
+   "anuncios_empleo": 3770,
+   "textos": 1040,
+   "textos_pendientes": 2730,
+   "ultimos_errores": [],
+   "huecos_numeracion": {
+    "2022": [
+     103,
+     104
+    ],
+    "2023": [
+     206,
+     207
+    ],
+    "2025": [
+     246,
+     247
+    ]
+   },
+   "boletines_sin_leer_por_numeracion": 6,
+   "alerta": false
+  },
+  "bophuelva": {
+   "grupo": "provinciales",
+   "informes": {
+    "ok": 842,
+    "sin_boletin": 387
+   },
+   "ultimo_boletin_leido": "2026-10-30",
+   "dias_habiles_sin_boletin": 0,
+   "empleo_mediana_por_boletin": 2,
+   "empleo_ultimos_5_boletines": 12,
+   "recuento_bajo": false,
+   "anuncios_empleo": 2792,
+   "textos": 852,
+   "textos_pendientes": 1940,
+   "ultimos_errores": [],
+   "huecos_numeracion": {},
+   "boletines_sin_leer_por_numeracion": 0,
+   "alerta": false
+  },
+  "bophuesca": {
+   "grupo": "provinciales",
+   "informes": {
+    "ok": 1196,
+    "sin_boletin": 568
+   },
+   "ultimo_boletin_leido": "2026-10-30",
+   "dias_habiles_sin_boletin": 0,
+   "empleo_mediana_por_boletin": 2,
+   "empleo_ultimos_5_boletines": 7,
+   "recuento_bajo": false,
+   "anuncios_empleo": 4208,
+   "textos": 2413,
+   "textos_pendientes": 1795,
+   "ultimos_errores": [],
+   "huecos_numeracion": {
+    "2025": [
+     87,
+     143
+    ]
+   },
+   "boletines_sin_leer_por_numeracion": 2,
+   "alerta": false
+  },
+  "bopjaen": {
+   "grupo": "provinciales",
+   "informes": {
+    "ok": 1204,
+    "sin_boletin": 560
+   },
+   "ultimo_boletin_leido": "2026-10-30",
+   "dias_habiles_sin_boletin": 0,
+   "empleo_mediana_por_boletin": 3,
+   "empleo_ultimos_5_boletines": 22,
+   "recuento_bajo": false,
+   "anuncios_empleo": 6421,
+   "textos": 435,
+   "textos_pendientes": 5986,
+   "ultimos_errores": [],
+   "huecos_numeracion": {
+    "2022": [
+     82
+    ],
+    "2023": [
+     86,
+     107
+    ],
+    "2024": [
+     77,
+     102
+    ],
+    "2026": [
+     61,
+     198
+    ]
+   },
+   "boletines_sin_leer_por_numeracion": 7,
+   "alerta": false
+  },
+  "boplaspalmas": {
+   "grupo": "provinciales",
+   "informes": {
+    "sin_boletin": 1001,
+    "ok": 762
+   },
+   "ultimo_boletin_leido": "2026-10-30",
+   "dias_habiles_sin_boletin": 0,
+   "empleo_mediana_por_boletin": 9,
+   "empleo_ultimos_5_boletines": 46,
+   "recuento_bajo": false,
+   "anuncios_empleo": 8428,
+   "textos": 4983,
+   "textos_pendientes": 3445,
+   "ultimos_errores": [],
+   "huecos_numeracion": {},
+   "boletines_sin_leer_por_numeracion": 0,
+   "alerta": false
+  },
+  "bopleon": {
+   "grupo": "provinciales",
+   "informes": {
+    "ok": 667,
+    "sin_boletin": 199
+   },
+   "ultimo_boletin_leido": "2026-10-30",
+   "dias_habiles_sin_boletin": 0,
+   "empleo_mediana_por_boletin": 2,
+   "empleo_ultimos_5_boletines": 11,
+   "recuento_bajo": false,
+   "anuncios_empleo": 2412,
+   "textos": 2181,
+   "textos_pendientes": 231,
+   "ultimos_errores": [],
+   "huecos_numeracion": {
+    "2024": [
+     95,
+     96
+    ]
+   },
+   "boletines_sin_leer_por_numeracion": 2,
+   "alerta": false
+  },
+  "boplleida": {
+   "grupo": "provinciales",
+   "informes": {
+    "ok": 1203,
+    "no_existe": 4
+   },
+   "ultimo_boletin_leido": "2026-10-30",
+   "dias_habiles_sin_boletin": 0,
+   "empleo_mediana_por_boletin": 5,
+   "empleo_ultimos_5_boletines": 42,
+   "recuento_bajo": false,
+   "anuncios_empleo": 7710,
+   "textos": 930,
+   "textos_pendientes": 6780,
+   "ultimos_errores": [
+    {
+     "fecha": null,
+     "resultado": "no_existe",
+     "alertas": []
+    },
+    {
+     "fecha": null,
+     "resultado": "no_existe",
+     "alertas": []
+    },
+    {
+     "fecha": null,
+     "resultado": "no_existe",
+     "alertas": []
+    },
+    {
+     "fecha": null,
+     "resultado": "no_existe",
+     "alertas": []
+    }
+   ],
+   "huecos_numeracion": {},
+   "boletines_sin_leer_por_numeracion": 0,
+   "alerta": false
+  },
+  "boplugo": {
+   "grupo": "provinciales",
+   "informes": {
+    "ok": 961
+   },
+   "ultimo_boletin_leido": "8202-12-29",
+   "dias_habiles_sin_boletin": 0,
+   "empleo_mediana_por_boletin": 2,
+   "empleo_ultimos_5_boletines": 13,
+   "recuento_bajo": false,
+   "anuncios_empleo": 3319,
+   "textos": 3253,
+   "textos_pendientes": 66,
+   "ultimos_errores": [],
+   "huecos_numeracion": {
+    "2023": [
+     220,
+     236,
+     272,
+     288,
+     297
+    ],
+    "2024": [
+     17,
+     39,
+     78,
+     80,
+     93,
+     114,
+     128,
+     131,
+     136,
+     175,
+     182,
+     221,
+     259,
+     276,
+     279,
+     296
+    ],
+    "2025": [
+     4,
+     84,
+     85,
+     129,
+     134,
+     190
+    ],
+    "2026": [
+     227
+    ]
+   },
+   "boletines_sin_leer_por_numeracion": 28,
+   "alerta": false
+  },
+  "bopourense": {
+   "grupo": "provinciales",
+   "informes": {
+    "ok": 845,
+    "sin_boletin": 389
+   },
+   "ultimo_boletin_leido": "2026-10-30",
+   "dias_habiles_sin_boletin": 0,
+   "empleo_mediana_por_boletin": 2,
+   "empleo_ultimos_5_boletines": 21,
+   "recuento_bajo": false,
+   "anuncios_empleo": 2100,
+   "textos": 1716,
+   "textos_pendientes": 384,
+   "ultimos_errores": [],
+   "huecos_numeracion": {
+    "2023": [
+     138,
+     144,
+     150,
+     156,
+     162,
+     168,
+     173,
+     179,
+     185,
+     190,
+     196,
+     202,
+     208,
+     214,
+     220,
+     226,
+     232,
+     237,
+     243,
+     249,
+     254,
+     265,
+     271,
+     277,
+     281,
+     287,
+     293
+    ]
+   },
+   "boletines_sin_leer_por_numeracion": 27,
+   "alerta": false
+  },
+  "boppalencia": {
+   "grupo": "provinciales",
+   "informes": {
+    "ok": 400
+   },
+   "ultimo_boletin_leido": "2026-10-30",
+   "dias_habiles_sin_boletin": 0,
+   "empleo_mediana_por_boletin": 1,
+   "empleo_ultimos_5_boletines": 16,
+   "recuento_bajo": false,
+   "anuncios_empleo": 1042,
+   "textos": 1042,
+   "textos_pendientes": 0,
+   "ultimos_errores": [],
+   "huecos_numeracion": {
+    "2024": [
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16,
+     17,
+     18,
+     19,
+     20,
+     21,
+     22,
+     23,
+     24,
+     25,
+     26,
+     27,
+     28,
+     29,
+     30,
+     31
+    ]
+   },
+   "boletines_sin_leer_por_numeracion": 47,
+   "alerta": false
+  },
+  "boppontevedra": {
+   "grupo": "provinciales",
+   "informes": {
+    "ok": 1209,
+    "sin_boletin": 555
+   },
+   "ultimo_boletin_leido": "2026-10-30",
+   "dias_habiles_sin_boletin": 0,
+   "empleo_mediana_por_boletin": 2,
+   "empleo_ultimos_5_boletines": 20,
+   "recuento_bajo": false,
+   "anuncios_empleo": 4646,
+   "textos": 1761,
+   "textos_pendientes": 2885,
+   "ultimos_errores": [],
+   "huecos_numeracion": {
+    "2023": [
+     106
+    ],
+    "2025": [
+     158
+    ]
+   },
+   "boletines_sin_leer_por_numeracion": 2,
+   "alerta": false
+  },
+  "bopsalamanca": {
+   "grupo": "provinciales",
+   "informes": {
+    "ok": 863,
+    "sin_boletin": 391
+   },
+   "ultimo_boletin_leido": "2026-10-30",
+   "dias_habiles_sin_boletin": 0,
+   "empleo_mediana_por_boletin": 1,
+   "empleo_ultimos_5_boletines": 2,
+   "recuento_bajo": false,
+   "anuncios_empleo": 1269,
+   "textos": 0,
+   "textos_pendientes": 1269,
+   "ultimos_errores": [],
+   "huecos_numeracion": {},
+   "boletines_sin_leer_por_numeracion": 0,
+   "alerta": false
+  },
+  "bopsevilla": {
+   "grupo": "provinciales",
+   "informes": {
+    "ok": 981,
+    "sin_boletin": 783
+   },
+   "ultimo_boletin_leido": "2026-10-30",
+   "dias_habiles_sin_boletin": 0,
+   "empleo_mediana_por_boletin": 6,
+   "empleo_ultimos_5_boletines": 34,
+   "recuento_bajo": false,
+   "anuncios_empleo": 11285,
+   "textos": 1458,
+   "textos_pendientes": 9827,
+   "ultimos_errores": [],
+   "huecos_numeracion": {
+    "2022": [
+     280,
+     284,
+     290,
+     296
+    ],
+    "2023": [
+     4,
+     10,
+     16,
+     22,
+     28,
+     34,
+     40,
+     46,
+     51,
+     57,
+     63,
+     69,
+     75,
+     79,
+     85,
+     91,
+     97,
+     102,
+     108,
+     114,
+     120,
+     126,
+     132,
+     138,
+     144,
+     150,
+     156,
+     162,
+     168,
+     174
+    ]
+   },
+   "boletines_sin_leer_por_numeracion": 55,
+   "alerta": false
+  },
+  "bopsoria": {
+   "grupo": "provinciales",
+   "informes": {
+    "sin_boletin": 1049,
+    "ok": 714
+   },
+   "ultimo_boletin_leido": "2026-10-30",
+   "dias_habiles_sin_boletin": 0,
+   "empleo_mediana_por_boletin": 0,
+   "empleo_ultimos_5_boletines": 17,
+   "recuento_bajo": false,
+   "anuncios_empleo": 755,
+   "textos": 754,
+   "textos_pendientes": 1,
+   "ultimos_errores": [],
+   "huecos_numeracion": {},
+   "boletines_sin_leer_por_numeracion": 0,
+   "alerta": false
+  },
+  "bopt": {
+   "grupo": "provinciales",
+   "informes": {
+    "ok": 236,
+    "sin_boletin": 95,
+    "error_http": 9,
+    "fuente_inaccesible": 9
+   },
+   "ultimo_boletin_leido": "2026-10-30",
+   "dias_habiles_sin_boletin": 0,
+   "empleo_mediana_por_boletin": 8,
+   "empleo_ultimos_5_boletines": 37,
+   "recuento_bajo": false,
+   "anuncios_empleo": 2402,
+   "textos": 331,
+   "textos_pendientes": 2071,
+   "ultimos_errores": [
+    {
+     "fecha": "2026-09-23",
+     "resultado": "error_http",
+     "alertas": [
+      "BOPT 2026-09-23 página 1: HTTP 500"
+     ]
+    },
+    {
+     "fecha": "2026-09-11",
+     "resultado": "error_http",
+     "alertas": [
+      "BOPT 2026-09-11 página 1: HTTP 500"
+     ]
+    },
+    {
+     "fecha": "2026-08-19",
+     "resultado": "error_http",
+     "alertas": [
+      "BOPT 2026-08-19 página 1: HTTP 500"
+     ]
+    },
+    {
+     "fecha": "2026-06-24",
+     "resultado": "error_http",
+     "alertas": [
+      "BOPT 2026-06-24 página 1: HTTP 500"
+     ]
+    },
+    {
+     "fecha": "2026-05-01",
+     "resultado": "error_http",
+     "alertas": [
+      "BOPT 2026-05-01 página 1: HTTP 500"
+     ]
+    }
+   ],
+   "huecos_numeracion": {},
+   "boletines_sin_leer_por_numeracion": 0,
+   "alerta": false
+  },
+  "boptenerife": {
+   "grupo": "provinciales",
+   "informes": {
+    "sin_boletin": 999,
+    "ok": 765
+   },
+   "ultimo_boletin_leido": "2026-10-30",
+   "dias_habiles_sin_boletin": 0,
+   "empleo_mediana_por_boletin": 9,
+   "empleo_ultimos_5_boletines": 58,
+   "recuento_bajo": false,
+   "anuncios_empleo": 9252,
+   "textos": 3582,
+   "textos_pendientes": 5670,
+   "ultimos_errores": [],
+   "huecos_numeracion": {},
+   "boletines_sin_leer_por_numeracion": 0,
+   "alerta": false
+  },
+  "bopteruel": {
+   "grupo": "provinciales",
+   "informes": {
+    "ok": 2
+   },
+   "ultimo_boletin_leido": "2026-10-30",
+   "dias_habiles_sin_boletin": 0,
+   "empleo_mediana_por_boletin": null,
+   "empleo_ultimos_5_boletines": 2,
+   "recuento_bajo": false,
+   "anuncios_empleo": 2,
+   "textos": 0,
+   "textos_pendientes": 2,
+   "ultimos_errores": [],
+   "huecos_numeracion": {},
+   "boletines_sin_leer_por_numeracion": 0,
+   "alerta": false
+  },
+  "boptoledo": {
+   "grupo": "provinciales",
+   "informes": {
+    "ok": 1204,
+    "sin_boletin": 560
+   },
+   "ultimo_boletin_leido": "2026-10-30",
+   "dias_habiles_sin_boletin": 0,
+   "empleo_mediana_por_boletin": 5,
+   "empleo_ultimos_5_boletines": 29,
+   "recuento_bajo": false,
+   "anuncios_empleo": 8459,
+   "textos": 2173,
+   "textos_pendientes": 6286,
+   "ultimos_errores": [],
+   "huecos_numeracion": {
+    "2026": [
+     10,
+     210,
+     211,
+     212,
+     213,
+     214,
+     215,
+     216,
+     217,
+     218,
+     219,
+     220,
+     221,
+     222,
+     223,
+     224,
+     225,
+     226,
+     227,
+     228,
+     229,
+     230,
+     231,
+     232,
+     233,
+     234,
+     235,
+     236,
+     237,
+     238
+    ]
+   },
+   "boletines_sin_leer_por_numeracion": 188,
+   "alerta": false
+  },
+  "bopvalencia": {
+   "grupo": "provinciales",
+   "informes": {
+    "ok": 863,
+    "sin_boletin": 426
+   },
+   "ultimo_boletin_leido": "2026-10-30",
+   "dias_habiles_sin_boletin": 0,
+   "empleo_mediana_por_boletin": 5,
+   "empleo_ultimos_5_boletines": 41,
+   "recuento_bajo": false,
+   "anuncios_empleo": 9171,
+   "textos": 2881,
+   "textos_pendientes": 6290,
+   "ultimos_errores": [],
+   "huecos_numeracion": {},
+   "boletines_sin_leer_por_numeracion": 0,
+   "alerta": false
+  },
+  "bopvalladolid": {
+   "grupo": "provinciales",
+   "informes": {
+    "ok": 1203,
+    "sin_boletin": 561
+   },
+   "ultimo_boletin_leido": "2026-10-30",
+   "dias_habiles_sin_boletin": 0,
+   "empleo_mediana_por_boletin": 2,
+   "empleo_ultimos_5_boletines": 19,
+   "recuento_bajo": false,
+   "anuncios_empleo": 4795,
+   "textos": 1054,
+   "textos_pendientes": 3741,
+   "ultimos_errores": [],
+   "huecos_numeracion": {},
+   "boletines_sin_leer_por_numeracion": 0,
+   "alerta": false
+  },
+  "bopzamora": {
+   "grupo": "provinciales",
+   "informes": {
+    "ok": 401
+   },
+   "ultimo_boletin_leido": "2026-10-30",
+   "dias_habiles_sin_boletin": 0,
+   "empleo_mediana_por_boletin": 1,
+   "empleo_ultimos_5_boletines": 2,
+   "recuento_bajo": false,
+   "anuncios_empleo": 766,
+   "textos": 668,
+   "textos_pendientes": 98,
+   "ultimos_errores": [],
+   "huecos_numeracion": {},
+   "boletines_sin_leer_por_numeracion": 0,
+   "alerta": false
+  },
+  "bopzaragoza": {
+   "grupo": "provinciales",
+   "informes": {
+    "ok": 1447
+   },
+   "ultimo_boletin_leido": "2026-10-30",
+   "dias_habiles_sin_boletin": 0,
+   "empleo_mediana_por_boletin": 4,
+   "empleo_ultimos_5_boletines": 21,
+   "recuento_bajo": false,
+   "anuncios_empleo": 7610,
+   "textos": 0,
+   "textos_pendientes": 7610,
+   "ultimos_errores": [],
+   "huecos_numeracion": {
+    "2024": [
+     11
+    ],
+    "2025": [
+     76
+    ]
+   },
+   "boletines_sin_leer_por_numeracion": 2,
+   "alerta": false
+  }
+ },
+ "con_alerta": [
+  "bocce"
+ ]
+}
