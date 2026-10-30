@@ -1,6 +1,6 @@
 # Módulo de grados (carreras): universo, fuentes medidas y ficha
 
-Versión 30/10/2026. Lo mantiene la conversación de grados. Todas las cifras salen de datos reales capturados el
+Versión 30/10/2026 (03:30). Lo mantiene la conversación de grados. Todas las cifras salen de datos reales capturados el
 29 y el 30/10/2026 (originales en la rama `sondas`, carpeta indicada en cada caso); lo que no está medido se dice.
 Código en `motor/grados/`, pruebas en `tests/test_*grados*.py`, `tests/test_qedu.py`, flujo `grados.yml`.
 Desde el 30/10/2026 (02:47) `grados.yml` guarda los originales enteros en el almacén privado S3
@@ -93,75 +93,116 @@ histórico de cinco años y los cupos salen de cada distrito (módulo de notas d
 cohorte que QEDU indique (su ayuda habla de los egresados de cuatro años antes, afiliados en marzo del último año
 disponible). Se publica con ese rótulo, nunca como «sueldo».
 
-En curso (30/10/2026): detalle e inserción de las 5.486 ofertas en cinco tramos de GitHub, una petición por
-segundo (`grados.yml`, ejecución 40986848234).
+Capturado (30/10/2026): las 5.486 tarjetas y el detalle e inserción de las ofertas por tramos de GitHub, una
+petición por segundo (`grados.yml`; tramo 0-1.100 en `sondas`, el resto en curso, ejecución 40992193837). En el
+primer tramo, 637 de 695 ofertas de públicas traen precio del crédito y ninguna de las 405 de privadas («N/D»).
+
+### SIIU: indicadores de rendimiento por universidad y ámbito
+
+Tablas PC-Axis del Ministerio (`estadisticas.ciencia.gob.es`, curso más reciente con dato), leídas por
+`motor/grados/indicadores.py`: abandono (total y en primer año), cambio de estudio, abandono del sistema,
+graduación, rendimiento, éxito, nota media del expediente, duración media y transición a máster, por universidad
+y ámbito de estudio, con la media de España del ámbito. 3.125 grados tienen indicadores; en 943 el dato es solo
+de ese grado (es el único de su universidad en el ámbito), en el resto es del ámbito en esa universidad y la ficha
+lo dice.
 
 ### BOE: planes de estudios y altas
 
 Del sumario ya capturado (2022-2026, rama `datos`): 603 planes nuevos, 942 modificaciones, 9 cambios de
 denominación con plan actualizado, 66 correcciones de errores y 26 acuerdos de carácter oficial. 72
-disposiciones publican varios planes a la vez.
+disposiciones publican varios planes a la vez. Del sumario de 2008 a 2021 (`motor/grados/boe_historico.py`,
+ejecución 40987508205) salen los planes anteriores.
 
-Muestra al azar de 40 planes nuevos y 20 modificaciones (semilla fija; textos en la versión HTML del BOE, que su
-robots.txt permite; `sondas/20261030T012640`):
+Textos (versión HTML del BOE, que su robots.txt permite; pausa de un segundo): 1.328 textos de 2022-2026, las 64
+resoluciones con varios planes y, en curso, los 813 planes que enlaza el RUCT (casi todos de 2009 a 2014).
 
-| Dato | Planes nuevos (40) | Modificaciones (20) |
-|---|---|---|
-| Tabla con asignaturas o materias | 37 | 20 |
-| A nivel de asignatura (no solo materia) | 24 | 18 |
-| Créditos en casi todas las filas | 36 | 20 |
-| Carácter (básica, obligatoria…) | 32 | 17 |
-| Curso | 22 | 7 |
-| Semestre | 12 | 5 |
-| Tabla de créditos por tipo | 39 | 20 |
-| **El listado cuadra con esa tabla** (básicas + obligatorias + prácticas + TFG) | **22** | **9** |
+El lector de tablas (`motor/grados/boe_grados.py`) saca de cada plan las asignaturas o materias con créditos,
+carácter, curso y semestre, y la tabla de créditos por tipo. Formas que reconoce, todas vistas en planes reales:
+cabecera en la segunda o tercera fila, bloques por semestre lado a lado, filas separadoras («Primer curso»,
+«Segundo semestre», «Formación básica»), celdas combinadas, columnas cambiadas de orden, «Créd.», «Org. Temp.»,
+columna del nombre sin rótulo, asignaturas escritas dentro de las celdas de un cuadro curso × semestre, tipo en
+el rótulo de la tabla, en su cabecera o en su fila de total, materias mixtas («Obligatoria / Optativa», sin un solo
+tipo) y obligatorias u optativas de mención (OBM, OPM) como optatividad. Las resoluciones con varios planes se
+separan por anexo (una tabla de créditos por tipo al comienzo de cada plan, tantas como títulos de plan en el
+texto); si no cuadran, el documento queda entero y sin título.
 
-La última fila es la comprobación que importa: si la suma de las filas coincide con la tabla de créditos del
-propio plan, el listado está completo. En los demás casos falta algo (materias en vez de asignaturas, prácticas y
-TFG fuera de la tabla, resoluciones con varios planes) y el dato se completa con otra fuente o va a revisión.
+**Comprobación.** Un plan cuenta como comprobado si la suma de sus filas coincide con su propia tabla de créditos:
+completo (básicas + obligatorias + prácticas + TFG) o, cuando las prácticas y el TFG no van en ninguna tabla, en
+básicas y obligatorias. Si la lectura directa no cuadra se prueban lecturas más prudentes (sin los tipos deducidos
+por el nombre, el rótulo o la suma; sin listas resumen que repiten otra tabla); si una cuadra, se usa y la ficha
+lo dice (`lectura: alternativa`). Nunca se completa un plan con datos inventados.
 
-Cobertura: 1.252 de los 3.265 grados activos (38 %) tienen plan o modificación publicados entre 2022 y 2026. El
-resto tiene su plan en el BOE de años anteriores. `motor/grados/boe_historico.py` recorre el sumario de 2008 a 2021
-con la misma API y guarda solo los planes, modificaciones y acuerdos de grado y de máster (prueba con las dos
-últimas semanas de junio de 2010: 15 sumarios, 65 planes de grado). En curso el 30/10/2026 (ejecución
-40987508205); después se descargan sus textos con `boe_grados textos`.
+Resultado con lo leído a las 03:25 (1.452 resoluciones, 1.593 planes contando los anexos separados):
 
-Altas: los 26 acuerdos dan 853 grados con código RUCT, nombre y universidad (todos con universidad).
+| | Leídos | Con asignaturas | Comprobados |
+|---|---|---|---|
+| Planes nuevos | 644 | 485 | 380 (59 %) |
+| Modificaciones | 900 | 621 | 464 (52 %) |
+| Cambios de denominación | 6 | 4 | 3 |
 
-### RUCT: bloqueado por su robots.txt
+Lo que no cuadra es sobre todo: planes publicados solo por materias (sin asignaturas), tablas sin carácter que no
+se pueden asignar por suma, tablas de créditos por tipo que faltan y planes por módulos. Esos planes se guardan
+igual (la ficha los enseña como materias) pero no cuentan como asignaturas comprobadas.
 
-El lector del RUCT para grados (`motor/grados/ruct_grados.py`) reutiliza los parsers de másters, pero comprueba
-robots.txt antes de cada petición. Resultado (30/10/2026): `https://www.educacion.gob.es/robots.txt` no responde,
-ni desde GitHub (tiempo agotado) ni desde el servidor de España («Empty reply from server»). Según la RFC 9309
-(2.3.1.4), un robots.txt que no se puede leer por error de red equivale a prohibirlo todo, y el motor no pide
-nada. La misma RFC permite, si sigue sin poder leerse más de 30 días, tratarlo como inexistente.
+Altas: los 26 acuerdos de 2022-2026 dan 853 grados con código RUCT, nombre y universidad.
 
-El RUCT es un registro público por norma: «tendrá carácter público y de registro administrativo» (RD 1509/2008,
-art. 1.1) y «la consulta al RUCT será pública» (art. 7). Leerlo como excepción, igual que los boletines oficiales,
-es **decisión de Álvaro**.
+### RUCT: ficha de cada título
 
-Ojo: el lector de másters (`motor/estudios/ruct.py`) abre su propia sesión y no comprueba robots.txt.
+`https://www.educacion.gob.es/robots.txt` no responde (ni desde GitHub ni desde España). Según la RFC 9309, un
+robots.txt ilegible equivale a prohibirlo todo, y el motor no pide nada a ese servidor salvo una excepción:
 
-Lo que aportaría el RUCT a grados: el identificador BOE del plan vigente de cada grado (también de los anteriores
-a 2022) y la memoria con todas las asignaturas, su semestre, las menciones, las plazas por centro y, en las
-memorias del RD 1393/2007, la evaluación por materia.
+**Decisión tomada por Claude el 30/10/2026 a las 02:51**, por mandato de Álvaro («de mí nada, sigue, hay que sacar
+toda la info»), con el mismo criterio que los boletines oficiales: el RUCT es un registro público por norma («tendrá
+carácter público y de registro administrativo», RD 1509/2008, art. 1.1; «la consulta al RUCT será pública», art.
+7). La excepción está en `motor/grados/ruct_grados.py` (`REGISTRO_PUBLICO`, `DECISION_RUCT`): vale solo para
+`www.educacion.gob.es/ruct/` y solo mientras su robots.txt no se pueda leer (si algún día responde y lo prohíbe,
+se respeta). Una petición por segundo; ante cortes del servidor, espera de dos minutos y reintento; se para si no
+vuelve. Cada resumen de ejecución anota el estado del robots.txt y la decisión. **Álvaro puede revertirla** borrando
+la excepción.
+
+Lo que da la ficha (una petición por título): créditos por tipo (obligatorios, optativos, prácticas, TFG; la
+formación básica es el resto hasta el total), fecha de verificación, curso de inicio, autorización de la
+comunidad, acreditaciones, extinción, centros e **identificador BOE de su plan** (también de los anteriores a
+2022). Tramo 0: 1.200 títulos, 1.162 con su plan en el BOE (171 de 2011, 161 de 2010, 115 de 2012…); tramos 1 y 2
+en curso (ejecución 40992324770).
+
+Las memorias de verificación (asignaturas, semestre, evaluación, plazas por centro) pesan entre 100 y 250 páginas
+por título en el RUCT; se midieron en una muestra de 6 (785 peticiones) y no se piden en masa: solo donde el BOE no
+dé asignaturas, y cuando se decida.
 
 ### Precio
 
-- Públicas: QEDU da el precio del crédito en primera matrícula de cada oferta. Las normas de las 17 comunidades y
-  la UNED para 2026-2027, con sus niveles, dónde está la lista de títulos y las bonificaciones que cambian el precio
-  real, están en `docs/fuentes-precios-grado.md` (14 de 18 abiertas; pendientes Navarra, Murcia, Castilla y León y
-  Madrid en parte).
-- Privadas: QEDU no da el precio («N/D»). Sale de las tarifas de cada universidad, igual que en másters (PDF de
-  tarifas y página del grado), con el mismo extractor con cita literal.
+- **Públicas:** QEDU da el precio del crédito en primera matrícula de cada oferta; la ficha calcula el grado
+  completo (crédito × créditos). Normas de las 17 comunidades para 2026-2027, niveles y bonificaciones en
+  `docs/fuentes-precios-grado.md`; las bonificaciones de siete comunidades (Andalucía, Extremadura, Galicia,
+  Castilla-La Mancha, La Rioja, Asturias, Baleares) y la ayuda de Castilla y León van en cada ficha de pública
+  (`motor/grados/precios.py`): 1.197 fichas.
+- **Privadas:** QEDU no da precio. Dos fuentes propias, siempre con URL y fecha:
+  1. **la página del grado** (`motor/grados/web_privadas.py`, 43 universidades privadas con web en el RUCT): se
+     une cada grado con su página por las palabras del nombre (también el nombre inglés de los bilingües) y se
+     descartan noticias, FP de grado superior, falsos «grado» («integrado») y sedes ajenas. Se leen los importes
+     con su tipo por el contexto cercano; los sueldos («28.000 € al año», «brutos anuales») no cuentan;
+  2. **los PDF y páginas de precios** de la universidad (`motor/grados/tarifas_grado.py`): los que enlazan sus
+     páginas de grado y los del sitemap con «precios», «tasas», «honorarios»… (144 documentos, 132 leídos).
+
+  Regla del precio (`fichas.precio_por_cuentas` y `precio_web`), de más a menos comprobado: un importe que es el
+  crédito × 60 de otro de la misma página (un curso son 60 créditos, RD 822/2021); crédito × 60 más la matrícula;
+  reserva más 8 a 12 cuotas iguales; el precio de los datos estructurados (schema.org) si no contradice al texto;
+  un único importe por curso; un único precio del crédito × 60. En las listas de precios solo valen cifras que
+  cuadran entre sí dentro del bloque de cada grado. Con datos estructurados y texto en desacuerdo, no se publica
+  precio.
+
+  Hoy: **245 de 1.410 grados y dobles de privadas con precio por curso** (148 de su página y 97 de sus listas de
+  precios); 34 universidades con precio en alguno. Sin precio público: la mayoría pide correo o teléfono (269
+  formularios con correo en el primer tramo). Sin ninguna URL leída: Navarra (sin sitemap; su portada no enlaza
+  los grados), Comillas (responde 421 a GitHub), UOC (403) y Ramón Llull (sus grados están en las webs de sus
+  centros).
 
 ### Lo que falta por medir
 
-- Rendimiento y abandono por título: SIIU (por universidad y rama) y datos abiertos de la Politécnica de Valencia,
-  la Complutense y Murcia (por título). Sin medir.
 - Notas de corte de cinco cursos o más por cupo: distritos (módulo de notas de corte, fase 2 de la guía).
-- Guías docentes de grado: la guía decidió no hacerlas asignatura por asignatura para carreras. La memoria del
-  RUCT da metodología y evaluación por materia, que basta para comparar.
+- Guías docentes de grado: la guía decidió no hacerlas asignatura por asignatura para carreras.
+- Una frase por asignatura (guía): se genera cuando el plan esté completo; no es un dato de fuente.
 
 ## 3. La ficha del grado
 
@@ -173,14 +214,15 @@ serían casi iguales (ley SEO). Dirección: `/universidad/{universidad}/grado/{g
 |---|---|---|---|
 | Identidad | nombre, código, universidad, pública o privada, centros, municipio | SIIU | QEDU, BOE |
 | Tipo | grado, doble grado (y sus dos grados), régimen, rama, área | SIIU | RUCT |
-| Plan | asignaturas con créditos, carácter, curso y semestre; menciones | BOE (plan vigente) | tabla de créditos del plan; RUCT |
+| Plan | asignaturas con créditos, carácter, curso y semestre; menciones | BOE (plan vigente; el que enlaza el RUCT y sus modificaciones) | tabla de créditos del plan |
 | Reparto | créditos por tipo: básica, obligatoria, optativa, prácticas, TFG | BOE | RUCT |
 | Acceso | nota de corte de dos cursos y nota media de admisión por centro | QEDU | distrito |
 | Plazas | plazas de nuevo ingreso por centro | QEDU | oferta del Ministerio |
-| Precio | €/crédito en primera matrícula y total del grado; bonificaciones | QEDU y norma autonómica / tarifa de la privada | anuario del Ministerio |
-| Empleo | afiliación, autónomos, indefinidos, cotización adecuada, base media de cotización; comparación con su ámbito | QEDU | SIIU |
+| Precio | públicas: €/crédito y grado completo en primera matrícula, bonificaciones; privadas: precio por curso de su web o su lista de precios y total estimado | QEDU y norma autonómica / web de la privada | cuentas entre cifras |
+| Empleo | afiliación, autónomos, indefinidos, cotización adecuada, base media de cotización | QEDU | SIIU |
+| Rendimiento | abandono, graduación, rendimiento, éxito, duración, transición a máster, con la media de España del ámbito | SIIU | — |
 | Modalidad | presencial, no presencial, varias; idioma extranjero | SIIU | QEDU |
-| Calidad | verificación, acreditaciones, modificaciones con fecha | RUCT (pendiente) | BOE |
+| Calidad | verificación, curso de inicio, última acreditación, extinción | RUCT | BOE |
 
 Cada dato lleva fuente, URL y fecha de captura; la fecha solo cambia si cambia el dato.
 
@@ -188,65 +230,63 @@ Cada dato lleva fuente, URL y fecha de captura; la fecha solo cambia si cambia e
 
 La ley SEO fija los del máster («asignaturas y precio») pero no los del grado. Propuesta, a decidir:
 
-- **asignaturas** comprobadas (el listado cuadra con la tabla de créditos del plan o viene del RUCT);
+- **asignaturas** comprobadas (el listado cuadra con la tabla de créditos del plan);
 - y al menos una cifra propia del grado: **nota de corte o precio**.
 
 Cuando se decida, se declara en `DATOS_MINIMOS` de `motor/seo/reglas.py` (cada módulo declara los suyos; «grado»
 ya figura como tipo de ficha en `motor/seo/control.py`): `"grado": [["asignaturas"], ["nota_corte", "precio_total",
 "precio_credito"]]`.
 
-Con lo medido, casi todos los grados de públicas lo cumplirán cuando el plan esté capturado. Los de privadas
-necesitarán su tarifa, porque QEDU no da precio y casi nunca nota. Sin esos datos, `noindex`, como en másters.
-
 ### Cómo se genera (`motor/grados/fichas.py`)
 
-Une catálogo, genérico, QEDU y plan del BOE sin pedir nada a ninguna fuente, y marca cada ficha como indexable o
-no, con el motivo. Con lo capturado el 30/10/2026 (QEDU solo con las tarjetas; BOE con la muestra de 60 planes):
-4.296 fichas activas (3.265 grados y 1.031 dobles), 4.265 con sus centros en QEDU y 2.662 con nota de corte; 372
-comparativas (245 genéricos de grado y 127 de doble grado con página). Precio, plazas e inserción entran al
-terminar los detalles de QEDU; las asignaturas, según se capturen los planes.
+Une catálogo, genérico, QEDU, indicadores del SIIU, plan del BOE, ficha del RUCT y precios de las privadas sin
+pedir nada a ninguna fuente, y marca cada ficha como indexable o no, con el motivo. Con lo capturado a las 03:25
+del 30/10/2026: 4.296 fichas activas (3.265 grados y 1.031 dobles), 4.265 con sus centros en QEDU, 2.662 con nota
+de corte, 1.288 grados con plan del BOE y **737 con asignaturas comprobadas**, 1.094 con ficha del RUCT, **442
+indexables**. El resto, `noindex` con su motivo (3.008 sin asignaturas comprobadas, 551 con plan que no cuadra,
+1.349 sin nota ni precio).
 
-## 4. Comparar
+Para rehacerlo todo desde `sondas`: bajar las carpetas con `datos/estudios/grados/` y ejecutar en orden
+`boe_grados medir` (textos y actos), `fichas`, `relaciones` y `universidades` (cada módulo explica su uso).
+
+## 4. Comparar y relacionar
 
 Lo que hoy no da nadie junto: **el mismo grado en todas las universidades, en una tabla**. Por cada genérico con
-página (`/grado/{grado}/`) y en el comparador (`/comparar/grado/{grado}/{a}-vs-{b}/`), las columnas son:
+página (`/grado/{grado}/`) y en el comparador, las columnas son nota de corte (dos cursos), plazas, modalidad,
+precio (crédito de la pública; por curso de la privada), prácticas externas y optativas, afiliación, base media de
+cotización, abandono y graduación (`comparativa.jsonl`, 372 genéricos).
 
-- acceso: nota de corte de los dos cursos y nota media de admisión;
-- plazas y modalidad;
-- precio de primera matrícula (crédito × créditos) y bonificaciones;
-- créditos por tipo, sobre todo prácticas externas y optativas, y menciones;
-- inserción: afiliación, cotización adecuada, base media de cotización e indefinidos.
+Datos propios que salen de los planes (`motor/grados/asignaturas.py` y `relaciones.py`):
 
-Dos datos propios que salen del plan de estudios:
+- **Asignaturas en común**: en cuántas universidades del mismo grado aparece cada asignatura, qué parte del plan de
+  cada una es común y cuáles solo tiene ella (95 genéricos con al menos dos planes comprobados).
+- **Buscar por asignatura** (`asignaturas_indice.jsonl`): 17.767 asignaturas distintas (nombre normalizado, sin
+  numeración), 3.559 en dos títulos o más, cada una con dónde se estudia, su tipo y su curso.
+- **Carreras parecidas** (`relaciones.jsonl`): por campo ISCED-F, ámbito, área y rama del SIIU, nombre, dobles
+  grados que las combinan y asignaturas básicas y obligatorias en común; cada relación lleva sus motivos. 244 de
+  372 genéricos con alguna; las que no tienen nada cercano quedan vacías (mejor vacío que inventado).
+- **Dobles grados que incluyen cada carrera** y los grados que forman cada doble.
+- **Universidades** (`universidades.jsonl`): grados, ramas, modalidades, plazas, nota de corte mediana, indicadores
+  del conjunto y horquilla de precios (públicas: grado completo; privadas: por curso).
 
-- **Asignaturas en común**: qué parte del plan de una universidad comparte con las demás del mismo grado y
-  cuáles solo están en ella («en Derecho de X hay 4 asignaturas que no tiene ningún otro Derecho»).
-- **Qué se estudia en primer curso**, comparado entre universidades (`/grado/{grado}/primer-curso/`).
+## 5. Siguientes pasos
 
-Esto también hace posible la búsqueda inversa por asignatura (`/carreras-con/{asignatura}/`), pero exige
-normalizar nombres de asignatura («Estadística I», «Estadística aplicada a…»). Se diseña cuando haya planes
-suficientes.
-
-## 5. Siguientes pasos, por lo que más acerca a la ficha completa
-
-1. **Decisión de Álvaro sobre el RUCT** (§2): con él, el plan vigente de todos los grados y sus memorias.
-2. **Planes anteriores a 2022**: selección del sumario 2008-2021 en curso; después, textos de esos planes y
-   tablas con la comprobación de créditos (sirve también a másters).
-3. **QEDU completo** (en curso) y, después, cruce con el catálogo y primer cuadro por genérico.
-4. **Precios**: lista de títulos por nivel de cada comunidad (anexos de `docs/fuentes-precios-grado.md`) para
-   comprobar el precio de QEDU, y tarifas de las privadas con el extractor de másters.
-5. Rendimiento y abandono por título donde haya datos abiertos; afiliación del SIIU por universidad y rama.
-6. Normalización de asignaturas y «asignaturas en común».
-7. **Privadas**: sin precio en QEDU y casi sin nota de corte, la mayoría de sus 1.410 grados y dobles activos no
-   cumplirá los datos mínimos hasta tener su tarifa. Es el hueco más grande del módulo.
+1. Terminar de leer los planes del BOE de antes de 2022 (RUCT tramos 1 y 2 y sumario 2008-2021) y medirlos.
+2. QEDU completo (en curso) para nota, plazas, precio e inserción de todas las ofertas.
+3. Memorias del RUCT solo para los grados cuyo plan del BOE no dé asignaturas (decidir alcance: ~150 peticiones por
+   título).
+4. Privadas sin precio: Navarra, Comillas, UOC, Ramón Llull y las que solo dan formulario; revisar a mano las
+   listas de precios de las que publican PDF sin formato de tabla.
+5. Decisión de Álvaro sobre los datos mínimos del grado y sobre la excepción del RUCT.
 
 ## 6. Avisos para las otras conversaciones
 
 - **Másters:** QEDU da lo mismo para másters (niveles `'MASTER','MASTERD'`): plazas, precio del crédito de las
   públicas, tasa de afiliación e inserción por título y centro (`motor/grados/qedu.py` sirve tal cual con
   `--nivel master`).
-- **Másters:** `motor/estudios/ruct.py` no comprueba robots.txt. El robots.txt de `www.educacion.gob.es` no
-  responde desde GitHub ni desde España, así que el resto del motor no pide nada a ese servidor. Pendiente de la
-  decisión de Álvaro sobre el RUCT (§2).
-- **Todas:** el catálogo SIIU y el sumario del BOE ya capturados sirven para grados sin volver a pedirlos
+- **Másters:** `motor/estudios/ruct.py` no comprueba robots.txt; la excepción del RUCT está solo en
+  `motor/grados/ruct_grados.py`. Si másters la quiere, que la lea de ahí.
+- **Másters:** `fichas.precio_por_cuentas` (crédito × 60, + matrícula, reserva + cuotas) sirve para comprobar
+  precios de máster con la regla de su número de créditos.
+- **Todas:** el catálogo SIIU y el sumario del BOE ya capturados sirven sin volver a pedirlos
   (`motor/grados/catalogo.py --originales`, `motor/grados/boe_grados.py actos`).
