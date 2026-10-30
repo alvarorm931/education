@@ -26,14 +26,15 @@ def _seguro(texto: str) -> str:
                      for l in texto.splitlines())
 
 
-def _pdf(contenido: bytes, paginas: int) -> None:
+def _pdf(contenido: bytes, paginas: int, modo: str = "plain") -> None:
     from pypdf import PdfReader
     logging.getLogger("pypdf").setLevel(logging.ERROR)
     lector = PdfReader(io.BytesIO(contenido))
     print("paginas", len(lector.pages))
     for n in range(min(paginas, len(lector.pages))):
         print(f"----- página {n + 1}")
-        print(_seguro(lector.pages[n].extract_text() or "")[:3500])
+        texto = lector.pages[n].extract_text(extraction_mode=modo) if modo == "layout" else lector.pages[n].extract_text()
+        print(_seguro(texto or "")[:3500])
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -42,13 +43,14 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--paginas", type=int, default=3)
     p.add_argument("--seguir", action="store_true")
     p.add_argument("--accept", default="application/pdf, text/html, */*")
+    p.add_argument("--layout", action="store_true", help="texto con la disposición de la página (pypdf layout)")
     p.add_argument("--salida", default=None)  # la añade prueba.yml; no se guarda nada
     a = p.parse_args(argv)
     r = obtener(a.url, accept=a.accept, intentos=2)
     tipo = r.cabeceras.get("Content-Type") or r.cabeceras.get("content-type")
     print("respuesta", r.status, tipo, len(r.contenido), r.url)
     if r.contenido[:4] == b"%PDF":
-        _pdf(r.contenido, a.paginas)
+        _pdf(r.contenido, a.paginas, "layout" if a.layout else "plain")
         return 0
     h = r.contenido.decode("utf-8", errors="replace")
     enlaces = sorted(set(re.findall(r'(?:href|src|url)\s*=\s*["\']?([^"\'\s>]+\.pdf[^"\'\s>]*)', h, re.IGNORECASE)))
