@@ -1,0 +1,20 @@
+# robots.txt for http://www.araba.eus/
+
+# http://www.baidu.com/search/spider.html
+User-agent: Baiduspider
+Disallow: /arabadok/
+
+# http://ahrefs.com/robot/
+User-agent: AhrefsBot
+Disallow: /arabadok/
+
+User-agent: *
+Disallow: /arabadok/user/
+Disallow: /arabadok/print/
+Disallow: /botha/suscriptores/
+Disallow: /botha/Busquedas/
+Disallow: /cs/
+Disallow: /*?
+Disallow: /PortalEmpleo/
+
+Sitemap: https://web.araba.eus/sitemap.xml
