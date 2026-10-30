@@ -259,7 +259,7 @@ def extraer(paginas: list[str], grados: list[dict], de_la_pagina: str | None = N
 
 
 def ejecutar(catalogo: list[dict], rastreos: Path, salida: Path, max_minutos: float = 50,
-             cc: Path | None = None, extra: dict[str, list[str]] | None = None) -> dict:
+             cc: Path | None = None, extra: dict[str, list[str]] | None = None, previas: Path | None = None) -> dict:
     from motor.estudios.rastreador import Dominio
 
     archivo = Archivo(salida / "archivo", indice_por_fuente=True, solo_huella=solo_huella_por_defecto())
@@ -275,6 +275,9 @@ def ejecutar(catalogo: list[dict], rastreos: Path, salida: Path, max_minutos: fl
     elegidos += [{**p, **de_centro.get(p["codigo_universidad"], {})}
                  for p in elegir_cc(cc, {p["url"] for p in elegidos})]
     elegidos += elegir_conocidas({p["url"] for p in elegidos}, extra)
+    # solo lo nuevo: las direcciones que una ejecución anterior ya pidió (con respuesta) no se vuelven a pedir
+    ya = urls_previas(previas)
+    elegidos = [p for p in elegidos if p["url"] not in ya]
     for p in elegidos:
         if time.time() > fin:
             break
@@ -307,18 +310,32 @@ def ejecutar(catalogo: list[dict], rastreos: Path, salida: Path, max_minutos: fl
     resumen = {
         "pdfs_elegidos": len(resultados),
         "por_origen": {o: sum(1 for x in resultados if x.get("origen") == o) for o in
-                       ("pdf_de_pagina_de_grado", "pagina_de_precios", "common_crawl")},
+                       ("pdf_de_pagina_de_grado", "pagina_de_precios", "common_crawl", "lista_conocida")},
         "leidos": sum(1 for x in resultados if x.get("paginas")),
         "con_algun_grado": sum(1 for x in resultados if x.get("grados")),
         "grados_con_importe": len({c for x in resultados for c in (x.get("grados") or {})}),
         "grados_con_importe_verosimil": len({c for x in resultados for c, v in (x.get("grados") or {}).items()
                                              if any(i["verosimil"] for i in v)}),
         "por_universidad": dict(sorted(
-            {u: len({c for x in resultados if x["universidad"] == u for c in (x.get("grados") or {})})
-             for u in {x["universidad"] for x in resultados}}.items(), key=lambda kv: -kv[1])),
+            {u: len({c for x in resultados if (x.get("universidad") or x["codigo_universidad"]) == u
+                      for c in (x.get("grados") or {})})
+             for u in {x.get("universidad") or x["codigo_universidad"] for x in resultados}}.items(),
+            key=lambda kv: -kv[1])),
     }
     (destino / "resumen.json").write_text(json.dumps(resumen, ensure_ascii=False, indent=1), encoding="utf-8")
     return resumen
+
+
+def urls_previas(carpeta: Path | None) -> set[str]:
+    """Direcciones con respuesta (de cualquier código) en los tarifas.jsonl de ejecuciones anteriores."""
+    ya: set[str] = set()
+    for f in sorted(carpeta.rglob("tarifas_grado/tarifas.jsonl")) if carpeta else []:
+        for linea in f.read_text(encoding="utf-8").splitlines():
+            if linea.strip():
+                x = json.loads(linea)
+                if x.get("estado") is not None:
+                    ya.add(x["url"])
+    return ya
 
 
 def main() -> None:
@@ -326,11 +343,13 @@ def main() -> None:
     p.add_argument("--catalogo", required=True)
     p.add_argument("--rastreos", required=True, help="carpeta con …/web_privadas/{código}.json")
     p.add_argument("--cc", help="carpeta con …/cc_precios/urls_*.jsonl (cc_precios.py)")
+    p.add_argument("--previas", help="carpeta con …/tarifas_grado/tarifas.jsonl de ejecuciones anteriores (no se repiten)")
     p.add_argument("--max-minutos", type=float, default=50)
     p.add_argument("--salida", required=True)
     a = p.parse_args()
     cat = [json.loads(x) for x in Path(a.catalogo).read_text(encoding="utf-8").splitlines() if x.strip()]
-    print(json.dumps(ejecutar(cat, Path(a.rastreos), Path(a.salida), a.max_minutos, Path(a.cc) if a.cc else None),
+    print(json.dumps(ejecutar(cat, Path(a.rastreos), Path(a.salida), a.max_minutos, Path(a.cc) if a.cc else None,
+                              previas=Path(a.previas) if a.previas else None),
                      ensure_ascii=False, indent=1))
 
 

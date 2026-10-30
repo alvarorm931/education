@@ -90,3 +90,55 @@ def test_rastreo_de_centro_lleva_sus_grados(tmp_path):
     assert [t["codigo"] for t in por["03908073491"]] == ["5"]
     assert [t["codigo"] for t in por["03908000001"]] == ["5"]
     assert [t["codigo"] for t in por["123"]] == ["6"] and "039" not in por  # pública: solo por centro
+
+
+def test_ejecutar_con_lista_conocida_sin_universidad(tmp_path, monkeypatch):
+    """Una URL de la lista conocida no trae nombre de universidad: el resumen no puede romperse por eso."""
+    import motor.estudios.rastreador as rastreador
+    from motor.grados import tarifas_grado as tg
+
+    class R:
+        status_code = 200
+        headers = {"content-type": "text/html"}
+        text = "<html><body><p>Precio del grado: 9.000 euros</p></body></html>"
+        content = text.encode()
+
+    class D:
+        def __init__(self, *a, **k):
+            pass
+
+        def get(self, url, guardar=False):
+            return R()
+
+    monkeypatch.setattr(rastreador, "Dominio", D)
+    monkeypatch.setattr(tg, "URLS_CONOCIDAS", {"031": ["https://www.unav.edu/precios"]})
+    (tmp_path / "r").mkdir()
+    res = tg.ejecutar([], tmp_path / "r", tmp_path / "s", max_minutos=1)
+    assert res["por_origen"]["lista_conocida"] == 1
+    assert "031" in res["por_universidad"]
+
+
+def test_no_se_repiten_las_direcciones_ya_pedidas(tmp_path, monkeypatch):
+    import motor.estudios.rastreador as rastreador
+    from motor.grados import tarifas_grado as tg
+
+    pedidas = []
+
+    class D:
+        def __init__(self, *a, **k):
+            pass
+
+        def get(self, url, guardar=False):
+            pedidas.append(url)
+            return None
+
+    monkeypatch.setattr(rastreador, "Dominio", D)
+    monkeypatch.setattr(tg, "URLS_CONOCIDAS", {"031": ["https://a.es/1", "https://a.es/2", "https://a.es/3"]})
+    prev = tmp_path / "p" / "datos" / "estudios" / "grados" / "tarifas_grado"
+    prev.mkdir(parents=True)
+    (prev / "tarifas.jsonl").write_text(
+        json.dumps({"url": "https://a.es/1", "estado": 200}) + "\n" + json.dumps({"url": "https://a.es/2", "estado": None})
+        + "\n", encoding="utf-8")
+    (tmp_path / "r").mkdir()
+    tg.ejecutar([], tmp_path / "r", tmp_path / "s", max_minutos=1, previas=tmp_path / "p")
+    assert pedidas == ["https://a.es/2", "https://a.es/3"]
