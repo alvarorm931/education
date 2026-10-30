@@ -80,8 +80,9 @@ TITULO_PROGRAMA = re.compile(r"m[aàá]ster|\bmba\b|posgrado|postgrado|postgrau|
                              r"experto universitario|especialista universitario|diploma de especializaci|executive|"
                              r"\bmsc\b|\bllm\b", re.I)
 # Título o enlace que empieza por el tipo de programa («Máster Universitario en…»), no por un plural de listado.
-EMPIEZA_PROGRAMA = re.compile(r"^\s*(m[aàá]ster|mba\b|executive|experto universitario|especialista universitario|"
-                              r"diploma de especializaci|postgrado en|posgrado en|postgrau en|msc\b|llm\b|masterra)", re.I)
+EMPIEZA_PROGRAMA = re.compile(r"^\s*((curso|t[ií]tulo|programa|diploma) (de |del |en )?)?(m[aàá]ster|mba\b|executive|"
+                              r"experto universitario|especialista universitario|diploma de especializaci|"
+                              r"postgrado en|posgrado en|postgrau en|msc\b|llm\b|masterra)", re.I)
 PLURAL_LISTADO = re.compile(r"^\s*(m[aàá]steres|m[aàá]sters|masters\b|postgrados|posgrados|masterrak)", re.I)
 # Señales de ficha de programa, por grupos (cuenta cada grupo una vez, en cualquiera de los idiomas).
 SENALES = {k: re.compile(v, re.I) for k, v in {
@@ -134,7 +135,8 @@ DOC_PRECIO = re.compile(r"(tarifa|precio|honorario|tasas|fees|tuition|matricula|
                         r"normativa[-_]economica|importe)[^/]*\.(pdf|xlsx?)$", re.I)
 ENLACE = re.compile(r'(?is)<a\b[^>]*?href\s*=\s*["\']([^"\'#]+)["\'][^>]*>(.*?)</a>')
 LISTADO = re.compile(r"m[aàá]ster|posgrad|postgrad|postgrau|masterra|mestrado|estudios|estudis|ikasketak|oferta|"
-                     r"titulaci|formaci|programas|programmes|programs|studies|study|degrees|t[ií]tulos", re.I)
+                     r"titulaci|formaci|programas|programmes|programs|studies|study|degrees|t[ií]tulos|cursos|"
+                     r"courses|cat[aá]logo|expertos?|especialistas?", re.I)
 MAX_LISTADOS = 8
 MAX_COLABORADORES = 4  # páginas de centros colaboradores que se abren para ver a quién enlazan
 RESERVA_PORTADA = 14  # peticiones que el recorrido de sitemaps deja libres para la portada y sus listados

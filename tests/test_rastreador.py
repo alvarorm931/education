@@ -303,3 +303,11 @@ def test_no_son_fichas_productos_listas_y_blogs():
     assert r.medir_pagina(curso, "https://x.com/p")["es_programa"]
     m = r.medir_pagina("<title>Máster en Finanzas</title><p>ECTS 60 · 9.000 €</p>", "https://x.com/p")
     assert m["espana"] and not m["espana_fuerte"]
+
+
+def test_enlaces_de_academias_que_venden_titulos_ajenos():
+    # academias colaboradoras: «Curso de Experto Universitario en …» bajo /cursos/, sin «máster» en la URL
+    assert r.enlace_a_programa("https://iddocente.com/cursos/docencia-online", "Curso de Experto Universitario en Docencia Online")
+    assert r.enlace_a_programa("https://x.es/cursos/123", "Título de Máster en Educación Inclusiva")
+    assert not r.enlace_a_programa("https://x.es/cursos/", "Cursos")
+    assert r.LISTADO.search("/cursos/") and r.LISTADO.search("/catalogo")
