@@ -123,6 +123,21 @@ def final_registro(job_id: int, lineas: int = 25) -> list[str]:
     # Lo que importa está antes de la limpieza final del trabajo («Post job cleanup»)
     corte = next((i for i, f in enumerate(limpias) if f.startswith("Post job cleanup")), len(limpias))
     utiles = [f for f in limpias[:corte] if not f.startswith(("[command]", "##[group]", "##[endgroup]"))]
+    # El paso que falla termina en su primer «##[error]»; lo de después son pasos de limpieza (if: always()).
+    primero = next((i for i, f in enumerate(utiles) if f.startswith("##[error]")), None)
+    if primero is not None:
+        utiles = utiles[:primero + 1]
+    # Fuera los bloques «shell:» / «env:» que GitHub imprime al empezar cada paso.
+    sin_ruido, en_env = [], False
+    for f in utiles:
+        if f.startswith("shell: ") or f == "env:":
+            en_env = f == "env:"
+            continue
+        if en_env and re.match(r"^\s+[A-Za-z_][A-Za-z0-9_]*: ", f):
+            continue
+        en_env = False
+        sin_ruido.append(f)
+    utiles = sin_ruido
     errores = [f for f in utiles if "##[error]" in f or re.search(r"(Traceback|Error|FAILED|fatal:)", f)]
     return (errores[-8:] + ["..."] + utiles[-lineas:]) if errores else utiles[-lineas:]
 
