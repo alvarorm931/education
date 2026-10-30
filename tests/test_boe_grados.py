@@ -193,3 +193,17 @@ def test_menciones_limpias_y_en_tablas():
         "Turismo Digital", "Sostenibilidad en Destinos", "Psicología de la Salud", "Estudios Jurídicos"]
     assert menciones("", [_t([["Módulo", "x"], ["Módulo Optativo. Mención en Operación Náutica del Buque.", "6"]])]) == [
         "Operación Náutica del Buque"]
+
+
+def test_distribucion_en_texto_y_tabla_de_asignaturas_que_no_es_distribucion():
+    from motor.grados.boe_grados import distribucion_creditos, distribucion_de_texto
+    d = distribucion_de_texto("Créditos de formación básica: 60.\nCréditos obligatorios: 126.\nCréditos optativos: 42.\n"
+                              "Trabajo final de grado: 12.\nCréditos totales: 240.")
+    assert d == {"formacion_basica": 60, "obligatorias": 126, "optativas": 42, "tfg": 12, "total": 240}
+    asignaturas = _t([["Asignatura", "ECTS"], ["Prácticas tuteladas I.", "12"], ["Optativa.", "6"],
+                      ["Trabajo fin de grado.", "6"], ["Obligatoria de enfermería.", "6"], ["Anatomía.", "6"],
+                      ["Fisiología.", "6"], ["Bioquímica.", "6"]])
+    assert distribucion_creditos([asignaturas]) is None
+    con_obs = _t([["Tipo de materias", "Créditos", "Observaciones"], ["Formación Básica", "60", ""],
+                  ["Obligatorias", "111", ""], ["Optativas", "9", ""], ["Total", "240", ""]])
+    assert distribucion_creditos([con_obs])["obligatorias"] == 111

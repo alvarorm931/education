@@ -234,23 +234,57 @@ def distribucion_creditos(tablas: list[dict]) -> dict | None:
         filas = t.get("contenido") or []
         if t.get("datos_personales") or not 3 <= len(filas) <= 12:
             continue
-        res = {}
+        res, con_tipo, con_cifra = {}, 0, 0
         for f in filas:
             if len(f) < 2:
                 continue
-            etiqueta, valor = sin_acentos_min(f[0]).strip(" ."), _num(f[-1])
+            # el número: la última celda con cifra (tras los cursos va el total; a veces sigue una de «Observaciones»
+            # vacía)
+            etiqueta = sin_acentos_min(f[0]).strip(" .")
+            valor = next((_num(c) for c in reversed(f[1:]) if _num(c) is not None), None)
             if valor is None:
                 continue
+            con_cifra += 1
             if RE_TOTAL_DIST.match(etiqueta):
                 res.setdefault("total", valor)
+                con_tipo += 1
                 continue
             tipo = tipo_caracter(f[0])
+            con_tipo += bool(tipo)
             if tipo and CLAVE_DIST[tipo] not in res:
                 res[CLAVE_DIST[tipo]] = valor
-        if len(res) >= 3 and ("obligatorias" in res or "formacion_basica" in res):
+        # casi todas sus filas con cifra son tipos o el total: si no, es una tabla de asignaturas que tiene unas
+        # «Prácticas tuteladas» o una «Optativa» entre otras
+        if len(res) >= 3 and ("obligatorias" in res or "formacion_basica" in res) and con_tipo >= 0.75 * con_cifra:
             if "total" not in res:
                 res["total_calculado"] = sum(v for k, v in res.items())
             return res
+    return None
+
+
+RE_DIST_TEXTO = re.compile(r"^\s*(?:cr[ée]ditos\s+(?:de\s+)?)?([A-Za-zÁÉÍÓÚáéíóúñ .()/-]{4,60}?)\s*:\s*(\d+(?:[.,]\d+)?)\s*"
+                           r"(?:cr[ée]ditos|ects)?\.?\s*$", re.I)
+
+
+def distribucion_de_texto(texto: str) -> dict | None:
+    """La tabla de créditos por tipo escrita como párrafos: «Formación Básica: 60.», «Créditos obligatorios: 126.»,
+    «Trabajo Fin de Grado: 6.», «Total: 240.»."""
+    res: dict = {}
+    for linea in (texto or "").split("\n"):
+        m = RE_DIST_TEXTO.match(linea)
+        if not m:
+            continue
+        etiqueta, valor = sin_acentos_min(m.group(1)).strip(" ."), _num(m.group(2))
+        if RE_TOTAL_DIST.match(etiqueta) or etiqueta in ("totales", "total creditos"):
+            res.setdefault("total", valor)
+            continue
+        tipo = tipo_caracter(etiqueta) or tipo_de_rotulo(etiqueta)
+        if tipo and CLAVE_DIST[tipo] not in res:
+            res[CLAVE_DIST[tipo]] = valor
+    if len(res) >= 3 and ("obligatorias" in res or "formacion_basica" in res):
+        if "total" not in res:
+            res["total_calculado"] = sum(res.values())
+        return res
     return None
 
 
@@ -600,7 +634,7 @@ def medir_plan(doc: dict) -> dict:
     """Medidas del plan y su comprobación contra la tabla de créditos por tipo. Si los tipos deducidos por el
     nombre («Prácticas externas», «Trabajo fin de grado» sin columna de carácter) impiden cuadrar y sin ellos
     cuadra, se quitan: unas prácticas pueden ser optativas. «filas_plan» lleva las filas con que se midió."""
-    dist = distribucion_creditos(doc.get("tablas", []))
+    dist = distribucion_creditos(doc.get("tablas", [])) or distribucion_de_texto(doc.get("texto", ""))
     filas = plan(doc.get("tablas", []), dist)
     m = _medir(filas, dist, doc)
     if not m["comprobacion"]:
