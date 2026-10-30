@@ -258,6 +258,55 @@ def indexar_planes(carpeta: Path | None) -> dict[tuple[str, str], list[dict]]:
     return salida
 
 
+def planes_por_identificador(carpeta: Path | None) -> dict[str, list[dict]]:
+    """Identificador del BOE → planes leídos (varios si la resolución trae varios planes)."""
+    salida: dict[str, list[dict]] = defaultdict(list)
+    if not carpeta:
+        return salida
+    for f in carpeta.rglob("boe_planes.jsonl"):
+        for p in _leer(f):
+            salida[p["identificador"]].append(p)
+    return salida
+
+
+# ------------------------------------------------------------------------------------------------ RUCT
+
+FUENTE_RUCT = "Ministerio de Ciencia, Innovación y Universidades. Registro de Universidades, Centros y Títulos (RUCT)"
+
+
+def indexar_ruct(carpeta: Path | None) -> dict[str, dict]:
+    """Código del título → ficha del RUCT (créditos por tipo, verificación, acreditaciones, BOE del plan).
+    Con varias capturas gana la más reciente."""
+    salida: dict[str, dict] = {}
+    if not carpeta:
+        return salida
+    for f in sorted(carpeta.rglob("ruct/[0-9]*.json"), key=lambda x: str(x)):
+        d = json.loads(f.read_text(encoding="utf-8"))
+        if d.get("codigo"):
+            salida[str(d["codigo"])] = d
+    return salida
+
+
+def resumen_ruct(d: dict | None) -> dict | None:
+    if not d:
+        return None
+    cr = d.get("creditos") or {}
+    otros = [cr.get(k) for k in ("obligatorios", "optativos", "practicas_externas", "tfm")]
+    basica = round(cr["total"] - sum(x or 0 for x in otros), 1) if cr.get("total") and any(otros) else None
+    acred = sorted(d.get("acreditaciones") or [], key=lambda a: a.get("fecha") or "")
+    return {
+        "creditos": {**{k: v for k, v in cr.items() if v is not None},
+                     **({"formacion_basica_calculada": basica} if basica and basica > 0 else {})},
+        "fecha_verificacion": d.get("fecha_verificacion"),
+        "curso_inicio": d.get("curso_inicio"),
+        "ultima_acreditacion": acred[-1] if acred else None,
+        "extincion": d.get("extincion") or [],
+        "boe_plan": ((d.get("boe") or {}).get("plan") or {}).get("identificador"),
+        "fuente": {"cita": FUENTE_RUCT, "url": (d.get("fuente") or {}).get("url"),
+                   "capturado": (d.get("fuente") or {}).get("capturado")},
+    }
+
+
 def plan_comprobado(p: dict) -> bool:
     esp = p.get("esperado_sin_optativas")
     return bool(esp) and abs((p.get("suma_sin_optativas") or 0) - esp) <= 0.5
@@ -282,7 +331,8 @@ def resumen_plan(p: dict) -> dict:
 
 
 def construir(catalogo: list[dict], genericos: list[dict], tarjetas: dict, detalles: dict,
-              planes: dict, ind: dict | None = None, web: dict | None = None) -> tuple[list[dict], list[dict]]:
+              planes: dict, ind: dict | None = None, web: dict | None = None, ruct: dict | None = None,
+              planes_id: dict | None = None) -> tuple[list[dict], list[dict]]:
     gen_de = {c: g for g in genericos for c in g["titulos"]}
     por_ambito = Counter((clave_universidad(t["universidades"][0]["nombre"]), t.get("ambito")) for t in catalogo
                          if t["situacion"] == "Activo" and t["clase"] == "grado")
@@ -297,10 +347,19 @@ def construir(catalogo: list[dict], genericos: list[dict], tarjetas: dict, detal
         centros = sorted(qedu_por_titulo.get(t["codigo"], []), key=lambda c: c["codigo"])
         # plan del BOE: el más reciente comprobado de esa universidad y ese grado; si no hay, el más reciente
         plan = None
+        r = (ruct or {}).get(t["codigo"])
         if t["clase"] == "grado":
             candidatos = []
             for u in t["universidades"]:
                 candidatos += planes.get((clave_universidad(u["nombre"]), clave_union(nombre_base(t["nombre"]))), [])
+            # el plan que enlaza el RUCT para este código (si la resolución trae varios, el de su nombre)
+            ident = ((r or {}).get("boe") or {}).get("plan", {}).get("identificador") if r else None
+            for p in (planes_id or {}).get(ident or "", []):
+                if not p.get("titulo_grado") or clave_union(nombre_base(nombre_corto(p["titulo_grado"]))) == \
+                        clave_union(nombre_base(t["nombre"])):
+                    candidatos.append({**p, "fecha": p.get("fecha") or ((r.get("boe") or {}).get("plan") or {}).get("fecha"),
+                                       "enlazado_por_ruct": True})
+            candidatos.sort(key=lambda p: p.get("fecha") or "", reverse=True)
             if candidatos:
                 plan = resumen_plan(next((p for p in candidatos if plan_comprobado(p)), candidatos[0]))
         notas = [c["nota_corte"] for c in centros if c["nota_corte"] is not None]
@@ -310,6 +369,8 @@ def construir(catalogo: list[dict], genericos: list[dict], tarjetas: dict, detal
         if not (plan and plan["comprobado"]):
             motivos.append("sin asignaturas comprobadas" if not plan else "plan sin cuadrar con su tabla de créditos")
         pweb = (web or {}).get(t["codigo"]) if t["universidad_tipo"] == "Privada" else None
+        if not creditos and r and (r.get("creditos") or {}).get("total"):
+            creditos = r["creditos"]["total"]
         if not creditos and plan and plan["comprobado"]:
             creditos = (plan.get("distribucion") or {}).get("total") or (plan.get("distribucion") or {}).get("total_calculado")
         if pweb and pweb["precio_curso"] and creditos:
@@ -337,6 +398,7 @@ def construir(catalogo: list[dict], genericos: list[dict], tarjetas: dict, detal
             "precio_web": pweb,
             "bonificacion": de_comunidad(t["universidades"][0].get("comunidad")) if t["universidad_tipo"] == "Pública" else None,
             "plan": plan,
+            "ruct": resumen_ruct(r),
             "indicadores": indicadores_de(t, ind or {}, por_ambito) if t["clase"] == "grado" else None,
             "indexable": not motivos,
             "motivos_noindex": motivos,
@@ -400,6 +462,8 @@ def resumen(fichas: list[dict], comparativa: list[dict]) -> dict:
         "con_indicadores_siiu": sum(1 for f in fichas if f.get("indicadores")),
         "indicadores_solo_de_ese_grado": sum(1 for f in fichas if f.get("indicadores")
                                             and f["indicadores"]["grados_de_la_universidad_en_el_ambito"] == 1),
+        "con_ficha_ruct": sum(1 for f in fichas if f.get("ruct")),
+        "con_creditos_por_tipo_ruct": sum(1 for f in fichas if (f.get("ruct") or {}).get("creditos")),
         "con_plan_boe": sum(1 for f in fichas if f["plan"]),
         "con_plan_comprobado": sum(1 for f in fichas if f["plan"] and f["plan"]["comprobado"]),
         "indexables": sum(1 for f in fichas if f["indexable"]),
@@ -418,13 +482,16 @@ def main() -> None:
     p.add_argument("--boe", help="carpeta con boe_actos.jsonl y boe_planes.jsonl")
     p.add_argument("--indicadores", help="carpeta con los indicadores del SIIU (abandono.jsonl, …)")
     p.add_argument("--web-privadas", help="carpeta con los rastreos de webs privadas (…/web_privadas/{código}.json)")
+    p.add_argument("--ruct", help="carpeta con las fichas del RUCT (…/ruct/{código}.json)")
     p.add_argument("--salida", required=True)
     a = p.parse_args()
     tarjetas, detalles = indexar_qedu(Path(a.qedu) if a.qedu else None)
     fichas, comparativa = construir(_leer(Path(a.catalogo)), _leer(Path(a.genericos)), tarjetas, detalles,
                                     indexar_planes(Path(a.boe) if a.boe else None),
                                     indexar_indicadores(Path(a.indicadores) if a.indicadores else None),
-                                    indexar_web_privadas(Path(a.web_privadas) if a.web_privadas else None))
+                                    indexar_web_privadas(Path(a.web_privadas) if a.web_privadas else None),
+                                    indexar_ruct(Path(a.ruct) if a.ruct else None),
+                                    planes_por_identificador(Path(a.boe) if a.boe else None))
     destino = Path(a.salida) / "datos" / "estudios" / "grados"
     destino.mkdir(parents=True, exist_ok=True)
     for nombre, datos in (("fichas.jsonl", fichas), ("comparativa.jsonl", comparativa)):
