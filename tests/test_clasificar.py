@@ -83,3 +83,15 @@ def test_aplicar_descarta_lo_que_no_es_centro_y_vale_la_ultima_legible(tmp_path)
     out = {x["id"]: x for x in map(json.loads, (tmp_path / "o/datos/estudios/censo/proveedores.jsonl").read_text().splitlines())}
     assert out["a"]["nombres"] == ["Escuela A"]
     assert (tmp_path / "o/datos/estudios/censo/agregadores.jsonl").read_text().count("b.es") == 1
+
+
+def test_peticion_con_salida_estructurada_y_nombre_plano():
+    p = c.peticion("x", "texto")
+    f = p["params"]["output_config"]["format"]
+    assert f["type"] == "json_schema" and f["schema"]["additionalProperties"] is False
+    assert set(f["schema"]["required"]) == set(f["schema"]["properties"])
+    t = c.texto_portada(PORTADA)
+    n = c.normalizar({"categoria": "agregador", "tipo_centro": "ninguno", "ambito": "espana", "vende_masters": False,
+                      "nombre": "Escuela de Finanzas Ejemplo", "cita_nombre": "Escuela de Finanzas Ejemplo",
+                      "confianza": "alta", "motivo": "x"}, t)
+    assert n["tipo_centro"] is None and n["nombre"] == "Escuela de Finanzas Ejemplo"

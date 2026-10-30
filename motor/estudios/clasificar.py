@@ -43,24 +43,39 @@ AMBITOS = {"espana", "otro_pais", "internacional"}
 
 SISTEMA = (
     "Clasificas sitios web para un censo de centros que imparten másters en España. Recibes la portada de un "
-    "sitio y títulos de páginas suyas que parecen programas. Devuelve SOLO un objeto JSON compacto en una línea: "
-    '{"categoria":…,"tipo_centro":…,"ambito":…,"vende_masters":true|false,"nombre":{"v":…,"c":…},'
-    '"confianza":"alta|media|baja","motivo":…}. '
+    "sitio y títulos de páginas suyas que parecen programas. Devuelves un objeto JSON con categoria, tipo_centro, "
+    "ambito, vende_masters, nombre, cita_nombre, confianza y motivo. "
     "categoria: «centro» si imparte y vende sus propios programas (universidad, centro adscrito, escuela de "
     "negocios, escuela de formación, academia, colegio o asociación profesional, fundación, empresa de formación, "
     "hospital o sociedad científica que forma); «agregador» si lista, compara o vende programas de otros centros "
     "(buscador, directorio, comparador, marketplace, intermediario de matrícula); «medio» si es noticias, blog, "
     "ranking, guía o revista sin programas propios; «otro» si no es un sitio de formación (tienda, empresa de otro "
     "sector, sitio personal). "
-    "tipo_centro, solo si categoria es centro: universidad | centro_adscrito | escuela_negocios | escuela_formacion "
-    "| academia | colegio_profesional | fundacion_o_asociacion | empresa | otro. "
+    "tipo_centro, si categoria es centro: universidad | centro_adscrito | escuela_negocios | escuela_formacion "
+    "| academia | colegio_profesional | fundacion_o_asociacion | empresa | otro; si no es centro, ninguno. "
     "ambito: espana (sede o público principal en España) | otro_pais | internacional (varios países, España "
     "incluida). vende_masters: true si hay másters (máster propio, executive máster, MBA, máster universitario) que "
-    "este sitio imparte o vende como suyos. nombre: nombre del centro u organización; c es una frase copiada "
-    "exactamente de la portada que lo contiene (3 a 15 palabras); si no aparece, omite nombre. motivo: 20 palabras "
+    "este sitio imparte o vende como suyos. nombre: nombre del centro u organización; cita_nombre: una frase copiada "
+    "exactamente de la portada que lo contiene (3 a 15 palabras); si no aparece, los dos vacíos. motivo: 20 palabras "
     "como máximo, tuyas. Solo lo que se ve en el texto; si dudas, confianza baja."
 )
 MAX_TOKENS = 800
+# Salida estructurada (output_config.format, json_schema): la API garantiza JSON válido con estos campos. Sin ella,
+# el 5 % de las respuestas no se podía leer (comillas de la portada dentro de la cita, sin escapar).
+ESQUEMA = {
+    "type": "object", "additionalProperties": False,
+    "required": ["categoria", "tipo_centro", "ambito", "vende_masters", "nombre", "cita_nombre", "confianza", "motivo"],
+    "properties": {
+        "categoria": {"type": "string", "enum": sorted(CATEGORIAS)},
+        "tipo_centro": {"type": "string", "enum": sorted(TIPOS | {"ninguno"})},
+        "ambito": {"type": "string", "enum": sorted(AMBITOS)},
+        "vende_masters": {"type": "boolean"},
+        "nombre": {"type": "string", "description": "vacío si no aparece"},
+        "cita_nombre": {"type": "string", "description": "frase copiada de la portada que contiene el nombre; vacía si no"},
+        "confianza": {"type": "string", "enum": ["alta", "media", "baja"]},
+        "motivo": {"type": "string", "description": "20 palabras como máximo"},
+    },
+}
 
 RE_TITULO = re.compile(r"(?is)<title[^>]*>(.*?)</title>")
 RE_META = re.compile(r'(?is)<meta\s+[^>]*(?:name|property)=["\'](description|og:site_name|og:title)["\'][^>]*>')
@@ -158,7 +173,8 @@ def peticion(cid: str, texto: str) -> dict:
     return {"custom_id": cid, "params": {
         "model": extraer.MODELO, "max_tokens": MAX_TOKENS,
         "system": [{"type": "text", "text": SISTEMA, "cache_control": {"type": "ephemeral"}}],
-        "thinking": extraer.PENSAMIENTO, "output_config": {"effort": extraer.ESFUERZO},
+        "thinking": extraer.PENSAMIENTO,
+        "output_config": {"effort": extraer.ESFUERZO, "format": {"type": "json_schema", "schema": ESQUEMA}},
         "messages": [{"role": "user", "content": texto}]}}
 
 
@@ -170,7 +186,10 @@ def normalizar(datos: dict, portada: str | None) -> dict:
            "vende_masters": datos.get("vende_masters") if isinstance(datos.get("vende_masters"), bool) else None,
            "confianza": datos.get("confianza") if datos.get("confianza") in {"alta", "media", "baja"} else None,
            "motivo": " ".join(str(datos.get("motivo") or "").split()[:20]) or None}
-    n = datos.get("nombre") if isinstance(datos.get("nombre"), dict) else {}
+    if datos.get("tipo_centro") == "ninguno" or out["categoria"] != "centro":
+        out["tipo_centro"] = None
+    n = datos.get("nombre") if isinstance(datos.get("nombre"), dict) else \
+        {"v": datos.get("nombre"), "c": datos.get("cita_nombre")}  # salida estructurada: dos campos planos
     v, c = str(n.get("v") or "").strip(), str(n.get("c") or "").strip()
     if v and c and portada:
         t = extraer._norma(portada)
