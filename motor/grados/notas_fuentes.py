@@ -306,6 +306,33 @@ def posiciones_pdf(contenido: bytes, max_paginas: int = 40) -> list[dict]:
     return salida
 
 
+def posiciones_ocr(contenido: bytes) -> list[dict]:
+    """Lo mismo que `posiciones_pdf` para un PDF de imágenes: cada palabra que lee tesseract con su posición (x del
+    borde izquierdo, texto y ancho, en píxeles a 300 ppp), agrupadas por la línea que detecta tesseract."""
+    if not (shutil.which("pdftoppm") and shutil.which("tesseract")):
+        return []
+    salida = []
+    with tempfile.TemporaryDirectory() as d:
+        pdf = Path(d) / "doc.pdf"
+        pdf.write_bytes(contenido)
+        subprocess.run(["pdftoppm", "-r", "300", "-png", str(pdf), str(Path(d) / "p")], check=True, timeout=300)
+        for i, img in enumerate(sorted(Path(d).glob("p*.png")), 1):
+            r = subprocess.run(["tesseract", str(img), "stdout", "-l", "spa", "--psm", "6", "tsv"],
+                               capture_output=True, text=True, timeout=300)
+            lineas: dict[tuple, dict] = {}
+            for fila in r.stdout.splitlines()[1:]:
+                c = fila.split("\t")
+                if len(c) < 12 or not c[11].strip():
+                    continue
+                clave = (int(c[2]), int(c[3]), int(c[4]))
+                ln = lineas.setdefault(clave, {"y": int(c[7]), "trozos": []})
+                ln["trozos"].append([int(c[6]), c[11].strip(), int(c[8])])  # x, texto, ancho
+            salida.append({"pagina": i, "ocr": True,
+                           "lineas": sorted(({"y": v["y"], "trozos": sorted(v["trozos"])} for v in lineas.values()),
+                                            key=lambda z: z["y"])})
+    return salida
+
+
 def lineas_documento(contenido: bytes, formato: str) -> tuple[list[str], int | None]:
     """Líneas de texto de un documento (PDF con la disposición de columnas; CSV/JSON/HTML tal cual)."""
     if formato == "pdf":
@@ -369,7 +396,8 @@ def medir(contenido: bytes, formato: str, filas: int = MUESTRA_FILAS) -> dict:
     salida = {"paginas": paginas, "lineas": len(lineas), "filas_con_nota": len(con_nota), "cursos_que_cita": cursos[:12],
               "cabecera": [x for x in lineas[:40] if x.strip()][:25], "muestra": guardadas[:filas]}
     if POSICIONES["activo"] and formato == "pdf" and con_nota:
-        salida["posiciones"] = posiciones_pdf(contenido)
+        ocr = bool(lineas) and "(lectura óptica)" in lineas[0]
+        salida["posiciones"] = posiciones_ocr(contenido) if ocr else posiciones_pdf(contenido)
     return salida
 
 

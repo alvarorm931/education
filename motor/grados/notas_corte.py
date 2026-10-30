@@ -447,6 +447,66 @@ def leer_ehu(lineas: list[str]) -> list[dict]:
     return [x for x in filas if not x.get("ilegible")]
 
 
+# ------------------------------------------------------------------------------------------------- Cantabria
+
+def leer_cantabria(lineas: list[str], posiciones: list[dict] | None) -> list[dict]:
+    """«Comparativa notas de corte estudios de grado. 5 últimos cursos» de la Universidad de Cantabria (PDF de
+    imagen, leído con tesseract y con la posición de cada palabra): por curso, la nota de la convocatoria ordinaria
+    (junio, o julio en 2022-2023) y la de la extraordinaria (septiembre, o julio desde 2023-2024). Las celdas vacías
+    no salen en el texto, así que cada cifra va a la columna cuyo rótulo tiene el centro más cerca; si alguna queda
+    lejos de todas o dos caen en la misma, la fila no se usa."""
+    if not posiciones or not any(p.get("ocr") for p in posiciones):
+        return []
+    filas = []
+    for pg in posiciones:
+        lns = pg.get("lineas") or []
+        cursos, cols = [], []
+        for ln in lns:
+            texto = " ".join(t[1] for t in ln["trozos"])
+            if not cursos and re.search(r"CURSO\s+20\d\d", texto):
+                cursos = [f"{a}-{a + 1}" for a in map(int, re.findall(r"CURSO\s+(20\d\d)", texto))]
+            elif cursos and not cols and re.search(r"JUNIO|JULIO", texto):
+                cols = [(t[0] + t[2] / 2, t[1]) for t in ln["trozos"] if re.match(r"JUNIO|JULIO|SEPTIEMBRE", t[1])]
+        if len(cursos) < 2 or len(cols) != 2 * len(cursos):
+            continue
+        paso = min(b[0] - a[0] for a, b in zip(cols, cols[1:]))
+        anterior = None
+        for ln in lns:
+            nums = [t for t in ln["trozos"] if re.fullmatch(r"\d{1,2},\d{3}", t[1])]
+            nombre = " ".join(t[1] for t in ln["trozos"] if t[0] + t[2] / 2 < cols[0][0] - paso / 2).strip()
+            if not nums:
+                # segunda línea de un nombre largo («Doble Grado en … y» / «Economía»)
+                if anterior and nombre and not re.search(r"CURSO|JUNIO|ESTUDIOS|Universidad", nombre):
+                    for x in anterior:
+                        x["titulacion"] += " " + nombre
+                anterior = None
+                continue
+            if not re.match(r"(?i)(doble\s+)?grado", nombre):
+                anterior = None
+                continue
+            asignadas: dict[int, float] = {}
+            valida = True
+            for t in nums:
+                c = t[0] + t[2] / 2
+                k = min(range(len(cols)), key=lambda i: abs(cols[i][0] - c))
+                if abs(cols[k][0] - c) > paso / 2 or k in asignadas:
+                    valida = False
+                    break
+                asignadas[k] = _nota(t[1])
+            if not valida:
+                anterior = None
+                continue
+            anterior = []
+            for k, nota in sorted(asignadas.items()):
+                x = {"distrito": "cantabria", "curso": cursos[k // 2], "universidad": "Cantabria", "codigo_local": None,
+                     "titulacion": nombre, "cupo": "general", "convocatoria": "ordinaria" if k % 2 == 0 else "extraordinaria",
+                     "lista": "final", "nota": nota, "sin_plazas": False, "todos_admitidos": None,
+                     "lectura": "optica"}
+                filas.append(x)
+                anterior.append(x)
+    return filas
+
+
 # ------------------------------------------------------------------------------------------------- Cataluña
 
 SIGLAS_CAT = {"UB": "Barcelona", "UAB": "Autónoma de Barcelona", "UPC": "Politécnica de Catalunya", "UPF": "Pompeu Fabra",
@@ -490,6 +550,8 @@ def leer_cataluna(lineas: list[str]) -> list[dict]:
 
 
 LECTORES = {
+    "cantabria": (leer_cantabria, lambda d: "Evoluci%C3%B3n%20Notas%20de%20Corte" in d["url"],
+                  "Universidad de Cantabria: comparativa de notas de corte de grado de los cinco últimos cursos"),
     "madrid": (leer_madrid, lambda d: d.get("formato") == "pdf", CITA_MADRID),
     "murcia": (leer_murcia, lambda d: d.get("formato") == "csv" and "datos.um.es" in d["url"],
                "Universidad de Murcia, datos abiertos: nota de corte de grado"),
@@ -502,6 +564,9 @@ LECTORES = {
     "cataluna": (leer_cataluna, lambda d: "/resource/usyn-hngc" in d["url"],
                  "Generalitat de Catalunya, datos abiertos: notas de corte de acceso a los estudios universitarios"),
 }
+
+
+CON_POSICIONES = {leer_cantabria}
 
 
 def leer_fuentes(carpetas: list[Path]) -> list[dict]:
@@ -525,7 +590,7 @@ def leer_fuentes(carpetas: list[Path]) -> list[dict]:
         leer, vale, cita = LECTORES[distrito]
         if not vale(d):
             continue
-        for fila in leer(d["muestra"]):
+        for fila in (leer(d["muestra"], d.get("posiciones")) if leer in CON_POSICIONES else leer(d["muestra"])):
             fila["fuente"] = {"cita": cita, "url": d["url"], "sha256": d["sha256"], "capturado": d.get("capturado")}
             filas.append(fila)
     # un mismo curso puede venir en dos documentos (el PDF ordinario y el de la extraordinaria): gana el último

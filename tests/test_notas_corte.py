@@ -198,3 +198,26 @@ def test_nombre_poco_parecido_no_se_une_aunque_el_centro_empuje():
     x = _fila("Derecho y Administración de Empresas (Getafe)", 11.0)
     r = nc.unir([x], cands)
     assert not x.get("codigo_titulo") and r["parecido_de_nombre_bajo"] == 1
+
+
+def test_cantabria_comparativa_por_posicion():
+    def ln(y, *ts):
+        return {"y": y, "trozos": [list(t) for t in ts]}
+
+    cab = [(800, "CURSO", 90), (900, "2024/2025", 150), (1200, "CURSO", 90), (1300, "2025/2026", 150)]
+    sub = [(820, "JUNIO", 100), (1000, "JULIO", 100), (1220, "JUNIO", 100), (1400, "JULIO", 100)]
+    pos = [{"pagina": 1, "ocr": True, "lineas": [
+        ln(100, *cab), ln(150, (50, "ESTUDIOS", 120), *sub),
+        ln(200, (50, "Grado", 80), (140, "en", 30), (180, "Medicina", 120), (830, "13,066", 80), (1230, "12,727", 80)),
+        ln(250, (50, "Grado", 80), (140, "en", 30), (180, "Física", 90), (1030, "11,470", 80)),
+        ln(300, (50, "Doble", 80), (140, "Grado", 80), (230, "en", 30), (270, "ADE", 60), (330, "y", 20),
+           (830, "12,345", 80), (1230, "11,787", 80)),
+        ln(320, (50, "Economía", 110))]}]
+    f = nc.leer_cantabria(["### página 1 (lectura óptica)"], pos)
+    med = [x for x in f if x["titulacion"] == "Grado en Medicina"]
+    assert [(x["curso"], x["convocatoria"], x["nota"]) for x in med] == [("2024-2025", "ordinaria", 13.066),
+                                                                       ("2025-2026", "ordinaria", 12.727)]
+    fis = [x for x in f if x["titulacion"] == "Grado en Física"][0]
+    assert fis["curso"] == "2024-2025" and fis["convocatoria"] == "extraordinaria"
+    assert any(x["titulacion"] == "Doble Grado en ADE y Economía" for x in f)
+    assert nc.leer_cantabria(["### página 1"], None) == []

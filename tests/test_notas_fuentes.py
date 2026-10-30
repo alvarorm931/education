@@ -130,3 +130,10 @@ def test_posicion_de_cada_cifra_en_el_pdf():
     (x0, t0), (x1, t1) = p[0]["trozos"]
     assert (t0, t1, x1 - x0) == ("Grado en Medicina", "9,817", 300.0)
     assert p[1]["trozos"][1][1] == "5,000*" and p[1]["trozos"][1][0] - p[1]["trozos"][0][0] == 200.0
+
+
+def test_posiciones_de_la_lectura_optica_sin_herramientas(monkeypatch):
+    from motor.grados import notas_fuentes as nf
+
+    monkeypatch.setattr(nf.shutil, "which", lambda _: None)
+    assert nf.posiciones_ocr(b"%PDF-1.4") == []
