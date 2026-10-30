@@ -5,8 +5,13 @@ trae «Boletín Número 126 (28/10/2026)» y el sumario por secciones (p.h5 «Se
 entidad o grupo («Ayuntamientos») y entidad («Ossa de Montiel») en span.fw-bold, y por anuncio el asunto
 (div.col-12) con el PDF de su página (servicesajax/descargararchivopaginaBOP/N).
 
+El PDF de cada anuncio es solo la página donde empieza («Ver página 7»): el texto se corta del boletín completo
+(servicesajax/descararchivobopcompleto/?a=N, «Descargar boletín completo»), que se guarda en url_pdf_boletin
+(motor/provinciales/textos.py). Para los días ya cargados, --reparar-boletin lo lee de su original en el almacén.
+
 Uso: python -m motor.provinciales.bopalbacete --salida ruta/
      python -m motor.provinciales.bopalbacete --historico --max-minutos 30 --salida ruta/
+     python -m motor.provinciales.bopalbacete --reparar-boletin --salida ruta/
 """
 
 from __future__ import annotations
@@ -28,9 +33,18 @@ def _t(s: str) -> str:
     return " ".join(html.unescape(s or "").split())
 
 
+RE_COMPLETO = re.compile(r"servicesajax/descararchivobopcompleto/\?a=(\d+)")
+
+
+def url_boletin(h: str) -> str | None:
+    m = RE_COMPLETO.search(h)
+    return f"{BASE}/servicesajax/descararchivobopcompleto/?a={m.group(1)}" if m else None
+
+
 def leer(contenido: bytes) -> dict:
     h = contenido.decode("utf-8", errors="replace")
     c = RE_CABECERA.search(h)
+    completo = url_boletin(h)
     seccion = grupo = entidad = None
     anuncios = []
     for m in RE_TOKEN.finditer(h):
@@ -45,7 +59,7 @@ def leer(contenido: bytes) -> dict:
             anuncios.append({"numero_anuncio": m.group("id"), "seccion": seccion, "grupo": grupo,
                              "entidad": entidad if grupo and grupo.lower() == "ayuntamientos" else grupo or entidad,
                              "organo": entidad if grupo and grupo.lower() != "ayuntamientos" else None,
-                             "titulo": _t(m.group("tit")), "url_pdf": m.group("pdf")})
+                             "titulo": _t(m.group("tit")), "url_pdf": m.group("pdf"), "url_pdf_boletin": completo})
     return {"numero": c.group("n") if c else None,
             "fecha": f"{c.group('a')}-{c.group('m')}-{c.group('d')}" if c else None, "anuncios": anuncios}
 
@@ -144,7 +158,54 @@ def historico(argv: list[str] | None = None) -> int:
     return 0
 
 
+def reparar_boletin(argv: list[str] | None = None) -> int:
+    """Añade url_pdf_boletin a los días cargados antes de guardarlo, leyendo el sumario original del almacén (no se
+    vuelve a pedir a la fuente)."""
+    import argparse
+    import json
+    from datetime import date
+    from pathlib import Path
+
+    from motor.almacen import Almacen, clave_original
+    from motor.autonomicos.comun import escribir_jsonl, leer_jsonl
+
+    p = argparse.ArgumentParser()
+    p.add_argument("--reparar-boletin", action="store_true")
+    p.add_argument("--salida", type=Path, default=Path("."))
+    a = p.parse_args(argv)
+    base = a.salida / "datos" / "provinciales" / FUENTE
+    almacen, hechos, sin_enlace, fallos = None, 0, 0, 0
+    for dia in sorted((base / "dias").glob("*/*/*.json"), reverse=True):
+        inf = json.loads(dia.read_text(encoding="utf-8"))
+        rel = dia.relative_to(base / "dias").with_suffix(".jsonl")
+        rutas = [base / "disposiciones" / rel, base / "oposiciones" / rel]
+        filas = [leer_jsonl(r) if r.exists() else [] for r in rutas]
+        if inf.get("resultado") != "ok" or not inf.get("sha256") or all(x.get("url_pdf_boletin") for x in filas[0]):
+            continue
+        try:
+            almacen = almacen or Almacen()
+            h = almacen.leer(clave_original(FUENTE, date.fromisoformat(inf["fecha"]), inf["sha256"], "html"))
+        except Exception as e:  # noqa: BLE001 - sin almacén (o sin ese original) se deja para otra ejecución
+            fallos += 1
+            if fallos >= 5:
+                print(f"BOP Albacete: el almacén no responde ({type(e).__name__}); se deja para otra ejecución")
+                break
+            continue
+        u = url_boletin(h.decode("utf-8", errors="replace"))
+        if not u:
+            sin_enlace += 1
+            continue
+        for r, lista in zip(rutas, filas):
+            if lista:
+                escribir_jsonl(r, [{**x, "url_pdf_boletin": u} for x in lista])
+        hechos += 1
+    print(f"BOP Albacete: boletín completo en {hechos} días; {sin_enlace} sin enlace; {fallos} sin original")
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
+    if "--reparar-boletin" in (argv if argv is not None else sys.argv[1:]):
+        return reparar_boletin(argv)
     if "--historico" in (argv if argv is not None else sys.argv[1:]):
         return historico(argv)
     return main_portada(PORTADA, argv)

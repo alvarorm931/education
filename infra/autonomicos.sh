@@ -221,6 +221,10 @@ for c in $CONECTORES; do
       # Días anteriores por los servicios del calendario de la portada, mes a mes hasta 2022
       ejecutar motor.provinciales.bopalbacete --historico --salida "$S" --max-minutos "$M"
       "$G" "BOP Albacete: histórico"
+      # Textos: el anuncio cortado del PDF del boletín completo (enlace leído del sumario original en el almacén)
+      ejecutar motor.provinciales.bopalbacete --reparar-boletin --salida "$S"
+      ejecutar motor.provinciales.textos bopalbacete --salida "$S" --max-minutos "$M"
+      "$G" "BOP Albacete: textos"
       ;;
     bopjaen)
       # El boletín del día, desde la portada

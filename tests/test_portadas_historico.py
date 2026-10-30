@@ -92,3 +92,34 @@ def test_zaragoza_texto_del_edicto():
     assert lista["texto"] is None and lista["lineas_con_documento_de_identidad"] == 1
     assert lista["citas"] == [{"boletin": "Boletín Oficial de la Provincia de Zaragoza", "numero": "120",
                                "fecha": "2026-05-28"}]
+
+
+def test_albacete_boletin_completo_y_reparar(tmp_path, monkeypatch):
+    """El enlace al boletín completo va en cada anuncio; los días ya cargados lo toman del original del almacén."""
+    import json
+
+    from motor.autonomicos.comun import escribir_jsonl, leer_jsonl
+    from motor.provinciales import bopalbacete as al
+    portada = (FIX / "bopalbacete_portada_20261028.html").read_bytes()
+    s = al.leer(portada)
+    assert {x["url_pdf_boletin"] for x in s["anuncios"]} == {
+        "https://bop.dipualba.es/servicesajax/descararchivobopcompleto/?a=22769"}
+    base = tmp_path / "datos" / "provinciales" / "bopalbacete"
+    (base / "dias" / "2026" / "10").mkdir(parents=True)
+    (base / "dias" / "2026" / "10" / "28.json").write_text(json.dumps(
+        {"fecha": "2026-10-28", "resultado": "ok", "sha256": "abc"}), encoding="utf-8")
+    for carpeta in ("disposiciones", "oposiciones"):
+        escribir_jsonl(base / carpeta / "2026" / "10" / "28.jsonl", [{"id": "BOP-ALBACETE-2026-10-28-1"}])
+    leidas = []
+
+    class Almacen:
+        def leer(self, clave):
+            leidas.append(clave)
+            return portada
+
+    monkeypatch.setattr("motor.almacen.Almacen", Almacen)
+    al.main(["--reparar-boletin", "--salida", str(tmp_path)])
+    assert leidas == ["bopalbacete/2026/10/28/abc.html.gz"]
+    assert leer_jsonl(base / "oposiciones" / "2026" / "10" / "28.jsonl")[0]["url_pdf_boletin"].endswith("?a=22769")
+    al.main(["--reparar-boletin", "--salida", str(tmp_path)])  # ya hecho: no se vuelve a leer
+    assert len(leidas) == 1

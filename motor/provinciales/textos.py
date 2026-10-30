@@ -33,7 +33,7 @@ from motor.provinciales.comun import CON_TEXTO, descargar_textos_pdf, ruta_texto
 CON_PDF_POR_ANUNCIO = {"bopzamora", "bopalava", "bopavila", "bopjaen", "bopsalamanca", "bopburgos"}
 # BOP con el PDF del boletín entero: campo con su dirección
 BOLETIN_ENTERO = {"boplugo": "url_pdf", "boppalencia": "url_pdf", "boptenerife": "url_pdf",
-                  "boplaspalmas": "url_pdf_boletin"}
+                  "boplaspalmas": "url_pdf_boletin", "bopalbacete": "url_pdf_boletin"}
 
 
 def _plano(s: str) -> str:
