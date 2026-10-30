@@ -1,11 +1,10 @@
 """Conector del Butlletí Oficial de la Província de Barcelona (BOPB): plataforma común en motor/provinciales/diba.py.
 
-Filtro de anuncios de personal: tipusAnunci=60.
+Desde el 30/10/2026, por su robots.txt, se lee el canal RSS de datos abiertos del boletín del día; los anuncios de
+personal son los de tipo «Personal | …». Sin textos: los PDF están prohibidos a los programas.
 
 Uso:
-  python -m motor.provinciales.bopb --salida ruta/                                   # ayer y hoy
-  python -m motor.provinciales.bopb --desde 2022-01-01 --max-minutos 30 --salida ruta/
-  python -m motor.provinciales.bopb --textos --max-minutos 30 --salida ruta/
+  python -m motor.provinciales.bopb --salida ruta/         # boletín del día
 """
 
 from __future__ import annotations
@@ -20,6 +19,7 @@ from motor.provinciales import diba
 
 BOLETIN = diba.Boletin(
     fuente="bopb", siglas="BOPB", base="https://bop.diba.cat", tipus_personal=60, provincia="Barcelona",
+    feed="https://bop.diba.cat/dades-obertes/butlleti-del-dia/feed",
     nombres=("Butlletí Oficial de la Província de Barcelona", "Boletín Oficial de la Provincia de Barcelona"),
     cabecera_pdf=re.compile(
         r"^(?:[AB]|Butlletí Oficial de la Província de Barcelona|Data \d{2}-\d{2}-\d{4}|CVE \d+|Pàg\. \d+-\d+|"

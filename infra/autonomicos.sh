@@ -121,12 +121,10 @@ for c in $CONECTORES; do
       "$G" "DOGC: textos"
       ;;
     bopb)
-      # Boletín provincial de Barcelona: se recorre del día más reciente hacia atrás
+      # Boletín provincial de Barcelona: robots.txt prohíbe el listado por días y los PDF; se lee el canal de datos
+      # abiertos del boletín del día (sin carga histórica ni textos)
       ejecutar motor.provinciales.bopb --salida "$S"
-      ejecutar motor.provinciales.bopb --desde 2022-01-01 --salida "$S" --max-minutos "$M"
-      "$G" "BOPB: días"
-      ejecutar motor.provinciales.bopb --textos --salida "$S" --max-minutos "$M"
-      "$G" "BOPB: textos"
+      "$G" "BOPB: boletín del día (datos abiertos)"
       ;;
     bopalicante)
       ejecutar motor.provinciales.bopalicante --salida "$S"

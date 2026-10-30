@@ -315,6 +315,7 @@ def convocante_de_organismo(organismo: str, capitales: Iterable[str] = ()) -> di
         if n.startswith(prefijo):
             nombre = (articulo[0] if articulo else "") + nombre_propio(base[len(prefijo):].strip())
             nombre = articulo_delante(nombre)
+            nombre = nombre[:1].upper() + nombre[1:]  # «Ajuntament de la Garriga» -> «La Garriga»
             if provincia:
                 prov = nombre_propio(provincia)
             elif tipo == "Diputación Provincial" or normalizar(nombre) in {normalizar(c) for c in capitales}:

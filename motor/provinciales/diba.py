@@ -12,6 +12,12 @@ Verificado el 29/10/2026 desde GitHub (también para 2022):
   - Texto: solo en PDF, {base}/anunci/descarrega-pdf/{número}. De las listas de admitidos, aprobados y
     nombramientos solo se guarda cuántas líneas traen un documento de identidad, no el texto.
   - Los anuncios se publican en la lengua del anunciante, casi siempre en catalán.
+
+robots.txt del BOPB (bop.diba.cat), leído el 30/10/2026: prohíbe /anteriors/, los PDF (/anunci/descarrega-pdf/) y
+toda dirección con «?». Por eso el BOPB se lee de sus datos abiertos: el canal RSS del boletín del día
+(/dades-obertes/butlleti-del-dia/feed, permitido), con anunciante, registro, tipo de anuncio, fecha, título y enlace
+de cada anuncio. Solo da el día en curso: lo de días anteriores ya leído se conserva. Sin texto (está en el PDF).
+El BOPT (dipta.cat) lo permite todo y sigue por los días.
 """
 
 from __future__ import annotations
@@ -28,8 +34,9 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 
 from motor.archivo import Archivo, solo_huella_por_defecto
-from motor.autonomicos.comun import (Freno, RE_NO_EMPLEO, clasificar, convocante_de_organismo, descargar_textos,
-                                     escribir_json, escribir_jsonl, leer_jsonl)
+from motor.autonomicos.comun import (Freno, RE_NO_EMPLEO, RE_PUESTO, _seleccion_inequivoca, clasificar,
+                                     convocante_de_organismo, descargar_textos, escribir_json, escribir_jsonl,
+                                     leer_jsonl)
 from motor.boe.clasificar import normalizar
 from motor.http import obtener
 from motor.provinciales.comun import CON_TEXTO, texto_pdf
@@ -55,6 +62,7 @@ class Boletin:
     provincia: str
     nombres: tuple[str, ...]
     cabecera_pdf: re.Pattern
+    feed: str | None = None  # canal RSS de datos abiertos del boletín del día (BOPB)
 
     def url_dia(self, d: date, pagina: int = 1) -> str:
         return (f"{self.base}/anteriors/{d:%Y-%m-%d}" + (f"/{pagina}" if pagina > 1 else "")
@@ -107,7 +115,10 @@ def seleccionar(b: Boletin, anuncios: list[dict]) -> list[dict]:
     viviendas, ayudas)."""
     out = []
     for x in anuncios:
-        if RE_NO_EMPLEO.search(normalizar(x["titulo"])):
+        t = normalizar(x["titulo"]).replace("´", "'")
+        # «técnico/a de comercio», «jefe de sección de vivienda»: el tema excluido es el del puesto
+        if RE_NO_EMPLEO.search(t) and not (_seleccion_inequivoca(t) or
+                                           any(m.group(0) != "personal" for m in RE_PUESTO.finditer(t))):
             continue
         amb = ambito(x["anunciante"])
         conv = convocante_de_organismo(x["anunciante"]) if amb == "local" else None
@@ -167,6 +178,64 @@ def procesar_dia(b: Boletin, d: date, raiz: Path, archivo: Archivo, pausa: float
     return informe
 
 
+RE_ITEM = re.compile(r"<item>(?P<c>.*?)</item>", re.S)
+RE_ETIQUETA = {k: re.compile(rf"<{k}>(?P<v>.*?)</{k}>", re.S) for k in ("title", "link", "description", "category")}
+RE_CANAL_FECHA = re.compile(r"<title>[^<]*del dia (?P<d>\d{2})/(?P<m>\d{2})/(?P<a>\d{4})")
+RE_FEED_DATOS = re.compile(r"Registre:</strong>\s*(?P<r>[\d-]+)\s*-\s*<strong>Tipus d.anunci:</strong>\s*(?P<t>.*?)"
+                           r"\s*-\s*<strong>Data publicaci[oó]:</strong>\s*(?P<d>\d{2})/(?P<m>\d{2})/(?P<a>\d{4})", re.S)
+
+
+def parsear_feed(b: Boletin, contenido: bytes) -> dict:
+    x = contenido.decode("utf-8", errors="replace")
+    canal = RE_CANAL_FECHA.search(x)
+    anuncios = []
+    for it in RE_ITEM.finditer(x):
+        c = it.group("c")
+        campo = {k: (r.search(c).group("v") if r.search(c) else "") for k, r in RE_ETIQUETA.items()}
+        desc = html.unescape(re.sub(r"^<!\[CDATA\[|\]\]>$", "", campo["description"].strip()))
+        datos = RE_FEED_DATOS.search(desc)
+        num = re.search(r"/anunci/(\d+)", campo["link"])
+        if not (datos and num):
+            continue  # p. ej. el elemento «Sumari d'avui»
+        parrafos = re.findall(r"<p>(.*?)</p>", desc, re.S)
+        titulo = _texto(parrafos[1]) if len(parrafos) > 1 else ""
+        anuncios.append({
+            "id": f"{b.siglas}-{datos.group('r')}", "cve": datos.group("r"), "numero_anuncio": num.group(1),
+            "anunciante": _texto(campo["title"]), "titulo": titulo,
+            "fecha": f"{datos.group('a')}-{datos.group('m')}-{datos.group('d')}",
+            "url_html": f"{b.base}/anunci/{num.group(1)}", "url_pdf": f"{b.base}/anunci/descarrega-pdf/{num.group(1)}",
+            "fuente": b.siglas, "tipo_anuncio": _texto(datos.group("t")), "categoria": _texto(campo["category"]),
+        })
+    return {"fecha": f"{canal.group('a')}-{canal.group('m')}-{canal.group('d')}" if canal else None,
+            "anuncios": anuncios}
+
+
+def procesar_feed(b: Boletin, raiz: Path, archivo: Archivo) -> dict:
+    r = obtener(b.feed, accept="application/rss+xml, text/xml")
+    if r.status != 200:
+        return {"fecha": None, "resultado": "error_http", "alertas": [f"{b.siglas} canal RSS: HTTP {r.status}"]}
+    s = parsear_feed(b, r.contenido)
+    if not s["fecha"]:
+        return {"fecha": None, "resultado": "error_formato", "alertas": [f"{b.siglas} canal RSS sin fecha"]}
+    d = date.fromisoformat(s["fecha"])
+    informe = {"fecha": s["fecha"], "status": 200, "alertas": [], "origen": "canal RSS de datos abiertos"}
+    if not s["anuncios"]:
+        informe["resultado"] = "sin_boletin"
+        return informe
+    otros = {x["fecha"] for x in s["anuncios"]} - {s["fecha"]}
+    if otros:
+        informe["alertas"].append(f"{b.siglas} {d}: anuncios con otras fechas en el canal {sorted(otros)[:3]}")
+    captura = archivo.guardar(b.fuente, d, r.contenido, b.feed, "xml", r.status, r.cabeceras)
+    filas = [{**x, "captura_sha256": captura["sha256"]} for x in s["anuncios"]]
+    personal = [x for x in filas if normalizar(x["tipo_anuncio"]).startswith("personal")]
+    empleo = seleccionar(b, personal)
+    escribir_jsonl(_ruta(b, raiz, "disposiciones", d), filas)
+    escribir_jsonl(_ruta(b, raiz, "oposiciones", d), empleo)
+    informe.update({"resultado": "ok", "disposiciones": len(filas), "anuncios_personal": len(personal),
+                    "empleo_publico": len(empleo)})
+    return informe
+
+
 def texto_disposicion(b: Boletin, contenido: bytes, con_texto: bool = True) -> dict:
     return texto_pdf(contenido, con_texto, b.cabecera_pdf)
 
@@ -204,6 +273,18 @@ def main(b: Boletin, argv: list[str] | None = None) -> int:
             a.max_minutos, a.pausa, accept="application/pdf", ext="pdf", por_registro=True)
         print(f"{b.siglas} textos: {hechos} descargados, {errores} errores, {len(pend) - hechos} pendientes")
         return 0
+
+    if b.feed:
+        # Sin listado por días (robots.txt): solo el boletín del día por su canal de datos abiertos
+        try:
+            inf = procesar_feed(b, a.salida, archivo)
+        except (ConnectionError, TimeoutError) as e:
+            inf = {"fecha": None, "resultado": "fuente_inaccesible", "alertas": [str(e)]}
+        if inf.get("fecha"):
+            escribir_json(_ruta(b, a.salida, "dias", date.fromisoformat(inf["fecha"]), "json"), inf)
+        print(f"{b.siglas} {inf.get('fecha')}: {inf['resultado']} {inf.get('empleo_publico', '')} "
+              f"{'; '.join(inf.get('alertas', []))}")
+        return 1 if inf["resultado"] in {"error_formato", "fuente_inaccesible", "error_http"} else 0
 
     inicio, informes = time.monotonic(), []
     freno = Freno()

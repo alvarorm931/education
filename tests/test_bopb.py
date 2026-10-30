@@ -82,3 +82,23 @@ def test_tarragona_misma_plataforma():
     from motor.autonomicos.comun import convocante_de_organismo
     assert convocante_de_organismo("AJUNTAMENT ALDEA, L'")["nombre"] == "L'Aldea"
     assert convocante_de_organismo("AJUNTAMENT VENDRELL, EL")["nombre"] == "El Vendrell"
+
+
+def test_canal_rss_de_datos_abiertos(tmp_path, monkeypatch):
+    # robots.txt prohíbe /anteriors/ y los PDF; el canal de datos abiertos del día está permitido.
+    from motor.archivo import Archivo
+    from motor.http import Respuesta
+    from motor.provinciales import bopb, diba
+
+    import json
+    from pathlib import Path
+    FIX = Path(__file__).parent / "fixtures"
+    cuerpo = (FIX / "bopb_feed_20261030.xml").read_bytes()
+    monkeypatch.setattr(diba, "obtener", lambda url, **k: Respuesta(url, 200, cuerpo, {}))
+    inf = diba.procesar_feed(bopb.BOLETIN, tmp_path, Archivo(tmp_path / "archivo"))
+    assert (inf["resultado"], inf["fecha"], inf["disposiciones"], inf["anuncios_personal"]) == ("ok", "2026-10-30", 159, 39)
+    filas = [json.loads(l) for l in (tmp_path / "datos/provinciales/bopb/oposiciones/2026/10/30.jsonl").read_text().splitlines()]
+    garriga = [f for f in filas if f["anunciante"] == "Ajuntament de la Garriga"][0]
+    assert garriga["url_html"] == "https://bop.diba.cat/anunci/" + garriga["numero_anuncio"]
+    assert garriga["tipo_anuncio"].startswith("Personal | Convocatòries")
+    assert garriga["convocante"]["nombre"] == "La Garriga"
