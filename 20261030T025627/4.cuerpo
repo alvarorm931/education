@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async
+	src="https://www.googletagmanager.com/gtag/js?id=UA-19275812-11"></script>
+<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag() {
+		dataLayer.push(arguments);
+	}
+	gtag('js', new Date());
+
+	gtag('config', 'UA-19275812-11');
+
+	(function(){window.incluTabOptions={incluTabVisible:!0};var i7e_e=document.createElement("script"),i7e_t=window.location.hostname,i7e_n={es:"es-ES",en:"en-GB",fr:"fr-FR",eu:"x-EU",ek:"x-EU",va:"x-VA",ca:"ca-ES",he:"he-IL",il:"he-IL"},i7e_r="es-ES";i7e_e.type="text/javascript";var i7e_i=document.getElementsByTagName("html")[0].getAttribute("lang"),i7e_s=document.getElementsByTagName("html")[0].getAttribute("xml:lang");return i7e_s===null?i7e_i===null?i7e_r="notDefined":i7e_r=i7e_n[i7e_i.substr(0,2)]:i7e_r=i7e_n[i7e_s.substr(0,2)],i7e_t=i7e_t.replace(/\./g,"--"),i7e_t+=".accesible.dip-caceres.es",i7e_e.src=document.location.protocol+"//"+i7e_t+"/inclusite/frameworks_initializer.js?lng="+i7e_r,document.getElementsByTagName("head")[0].appendChild(i7e_e),i7e_e.src})()
+</script>
+
+<style>
+	ul.tabinclusite li {
+		display: block;
+		padding: 0;
+		margin: 0;
+		width: 70px;
+		height: 170px;
+		position: relative;
+		overflow: hidden;
+		background: #fff none !important;
+		border: 1px solid #CCC !important;
+		border-left: 0px!important;
+		border-top-right-radius: 10px !important;
+		border-bottom-right-radius: 10px !important;
+		height: 90px !important;
+	}
+	
+	ul.tabinclusite li a img.logo_inclusite {
+		border: medium none;
+		height: 160px;
+		line-height: 0 !important;
+		margin: 6px 0 0 6px !important;
+		padding: 0 !important;
+		width: 50px;
+		top: -17px;
+		position: relative;
+	}
+	
+	ul.tabinclusite li a#inclu_arrow {
+		top: 35px;
+	}
+
+	.mb-2, .my-2 {
+		margin-bottom: 0.5rem!important;
+	}
+
+	.mb-3, .my-3 {
+		margin-bottom: 1rem!important;
+	}
+
+	.mb-4, .my-4 {
+		margin-bottom: 1.5rem!important;
+	}
+
+	.pt-4, .py-4 {
+		padding-top: 1.5rem!important;
+	}
+
+	.mt-5 {
+		margin-top: 3rem!important;
+	}
+</style>
+
+<meta charset="utf-8">
+<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+<title>Boletín Oficial de la Provincia de Cáceres</title>
+<meta name="author" content="Diputación de Cáceres. área de Innovación">
+<meta name="description"
+	content="Sede electrónica de la Diputación Provincial de Cáceres">
+<meta name="keywords"
+	content="Administración electrónica, sede electrónica, eadmon, Diputación de Cáceres, Diputación Provincial de Cáceres">
+<meta name="application-name" content="Sede electrónica">
+<meta name="generator"
+	content="Eclipse - Java - Struts - Hibernate - Spring - Trew@">
+<link rel="shortcut icon" href="imagenes/favicon.jpg" />
+
+<!-- Bootstrap core CSS -->
+<link rel="stylesheet" type="text/css"
+	href="bootstrap/css/bootstrap.css">
+<link href="calendar/css/responsive-calendar.css" rel="stylesheet"
+	media="screen">
+
+<!-- Custom styles for this template -->
+<!-- <link rel="stylesheet" type="text/css" href="bootstrap/examples/grid.css">
+        -->
+<link rel="stylesheet" type="text/css"
+	href="bootstrap/assets/css/bop.css">
+<link rel="stylesheet" type="text/css"
+	href="bootstrap/assets/css/sidebar.css">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans"
+	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Ubuntu"
+	rel="stylesheet">
+<script type="text/javascript" src="js/consultas.js"></script>
+
+
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+         <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+         <![endif]-->
+</head>
+
+<body>
+	<header>
+		<nav class="navbar navbar-default navbar-static-top">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed"
+						data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+						aria-controls="navbar">
+						<span class="sr-only">Menú móvil</span> <span class="icon-bar"></span>
+						<span class="icon-bar"></span> <span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="https://www.dip-caceres.es"><img
+						src="bootstrap/assets/img/logo.png" id="logo"
+						alt="Logotipo de la Diputación de Cáceres">Diputación de
+						Cáceres</a>
+				</div>
+				<div id="navbar" class="navbar-collapse collapse navbar-right">
+					<ul class="nav navbar-nav">
+						<li class="active"><a id="" href="/bop">Inicio</a></li>
+						<li><a id="ruta1" href="">Normativa</a></li>
+						<li><a id="ruta2" href="">Anunciantes</a></li>
+						<li><a id="ruta3" href="">Ayuda</a></li>
+						<li><a id="ruta4" href="">Histórico</a></li>
+						<li><a id="ruta5" href="">Búsqueda</a></li>
+					</ul>
+				</div>
+				<!--/.nav-collapse -->
+			</div>
+		</nav>
+
+	</header>
+	<div class="container">
+
+		<div class="bg-pantone32 superancho-left"></div>
+		<div class="row bop">
+			<div class="panel-heading  bg-pantone32 superancho">
+				<p>Boletín Oficial de la Provincia de Cáceres</p>
+			</div>
+		</div>
+
+		<div class="row col-xs-12 col-sm-12">&nbsp;</div>
+
+		<div class="row">
+			<div class="col-md-7">
+				<div class="row bop hidden-md hidden-lg">
+					<div class="block-main">
+						<div class="panel">
+							<div class="panel-body">
+								<img src="imagenes/logo-BOP.png" width="350"
+									 class="img-responsive center-block" alt="Boletín Oficial de la Provincia">
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Fila de presentación -->
+				<div class="row bop bg-pantone32">
+					<div id="fechaCabecera" class="col-lg-6 fechaBOPHome">
+						<img src="imagenes/boletinDiaLink.png" width="25" height="25" alt="" />
+						<span id="fechaMigaPan" style="hidden"></span>
+					</div>
+					<!--
+                        <div id="csvCabecera" class="col-lg-5 text-right margin-top-10 descarga">Descargar BOP nº 127-2016 completo</div>
+                        -->
+					<div class="col-lg-6 text-right margin-top-10 descargaBOPHome">
+						<a id="pdfCabecera" href="#"
+						   title="Descargar boletín completo en formato PDF"> <span
+								id="csvCabecera">Descargar BOP completo</span> <img
+								src="imagenes/boletinDiaDescarga.png" width="41"
+								style="margin-left: 25px" height="40"
+								alt="Logotipo PDF descarga boletín" />
+						</a>
+
+					</div>
+					<div>
+						<a id="pdfFasciculo" href="#"
+						   title="Descargar fasciculo PDF" style="display: none;"> <span
+								id="csvfasciculo">Boletín Extraordinario</span> <img
+								src="imagenes/boletinDiaDescarga.png" width="21"
+								style="margin-left: 25px;" height="20"
+								alt="Logotipo PDF descarga boletín" />
+						</a>
+					</div>
+				</div>
+				<div class="sumario">
+					<p></p>
+				</div>
+				<!-- Fila de sumario-->
+			</div>
+
+			<div class="col-md-1"></div>
+
+			<div class="col-md-4">
+				<div class="row bop hidden-xs hidden-sm">
+					<div class="block-main">
+						<div class="panel">
+							<div class="panel-body">
+								<img src="imagenes/logo-BOP.png" width="750" height="350"
+									 class="img-responsive center-block" alt="Boletín Oficial de la Provincia">
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Fila de presentación -->
+				<div class="row bop">
+					<div class="block-main">
+						<div class="panel">
+							<div class="panel-heading  bg-pantone32">
+								<span class="panel-title"></span>
+							</div>
+							<div class="panel-body">
+								<div class="responsive-calendar">
+									<div class="controls">
+										<a class="pull-left" data-go="prev"><span
+												class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></a>
+										<h4>
+											<span data-head-month></span> <span data-head-year></span>
+										</h4>
+										<a class="pull-right" data-go="next"><span
+												class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
+									</div>
+									<div class="days" data-group="days">
+										<!-- the place where days will be generated -->
+									</div>
+								</div>
+								<form class="form-horizontal" action="calendario.html" method="post">
+									<div class="form-group">
+										<label for="calendarioAnual" class="control-label col-sm-5">Calendario anual:</label>
+										<div class="col-sm-7">
+											<select class="form-control" id="calendarioAnual">
+											</select>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row bop hidden-xs">
+					<div class="block-main">
+						<div class="panel">
+							<div class="panel-heading  bg-pantone32">
+								<span class="panel-title"></span>
+							</div>
+							<div class="panel-body">
+								<h3 class="media-heading">
+									Verificar anuncios <a href="/wordpress/ayuda-el-cve-o-csv/"
+														  title="" data-toggle="popover" data-trigger="hover"
+														  data-content="Introduce el CVE o Código de Verificación electrónica en el formato que te indicamos debajo. Haz click para saber más sobre el CVE."
+														  data-original-title="Código de Verificación Electrónica"><span class="sr-only ">Ayuda</span><span
+										class="glyphicon glyphicon-question-sign"></span></a>
+								</h3>
+								<div class="form-group">
+									<div class="row">
+										<div class="col-sm-9 col-sm-offset-1">
+											<div class="input-group date" id="idCSV">
+												<label for="idCodigoVerificacion" class="sr-only">Introduce
+													código de verificación</label> <input id="idCodigoVerificacion"
+																						  type="text" class="form-control" placeholder="BOP-aaaa-yyy" />
+												<span class="input-group-addon"> <span
+														class="glyphicon glyphicon-search" id="botonBuscarNum"></span>
+										</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row bop hidden-xs">
+					<div class="block-main">
+						<div class="panel">
+							<div class="panel-heading  bg-pantone32">
+								<span class="panel-title"></span>
+							</div>
+							<div class="panel-body">
+								<h3 class="media-heading">Búsqueda por tipo</h3>
+								<ul class="nav nav-tabs">
+									<li class="active"><a data-toggle="pill" href="#tabSubvenciones">Subvenciones y ayudas</a></li>
+									<li><a data-toggle="pill" href="#tabEmpleo">Empleo público</a></li>
+									<li><a data-toggle="pill" href="#tabContratacion">Contratación</a></li>
+									<li><a data-toggle="pill" href="#tabFuncionamiento">Funcionamiento</a></li>
+								</ul>
+								<div class="tab-content">
+									<div id="tabSubvenciones" class="active tab-pane fade in"
+										 style="min-height: 220px">
+										<div class="form-group">
+											<fieldset>
+												<div class="row altura_panel">
+													<div class="col-sm-7" id="Subvenciones"></div>
+													<div class="col-sm-5" id="Subvenciones2"></div>
+												</div>
+												<div class="row">
+													<div class="col-sm-2 col-sm-offset-1 text-right">
+														<label for="ambitoTemporal1" style="padding: 5px;">Periodo</label>
+
+													</div>
+													<div class="col-sm-5">
+														<select class="form-control" id="ambitoTemporal1">
+															<option value="0" selected>Última semana</option>
+															<option value="1">Último mes</option>
+															<option value="2">Último año</option>
+														</select>
+													</div>
+													<div class="col-sm-4 text-left">
+														<button id="botonBuscarPorTipoContenido1" type="button"
+																class="btn btn-warning btnwng">Buscar</button>
+													</div>
+												</div>
+											</fieldset>
+										</div>
+									</div>
+									<div id="tabEmpleo" class="tab-pane fade"
+										 style="min-height: 220px">
+										<div class="form-group">
+											<fieldset>
+												<div class="row altura_panel">
+													<div class="col-sm-7" id="Empleo"></div>
+													<div class="col-sm-5" id="Empleo2"></div>
+												</div>
+												<div class="row">
+													<div class="col-sm-2 col-sm-offset-1 text-right">
+														<label for="ambitoTemporal2" style="padding: 5px;">Periodo</label>
+
+													</div>
+													<div class="col-sm-5">
+														<select class="form-control" id="ambitoTemporal2">
+															<option value="0" selected>Última semana</option>
+															<option value="1">Último mes</option>
+															<option value="2">Último año</option>
+														</select>
+													</div>
+													<div class="col-sm-4 text-left">
+														<button id="botonBuscarPorTipoContenido2" type="button"
+																class="btn btn-warning btnwng">Buscar</button>
+													</div>
+												</div>
+											</fieldset>
+										</div>
+									</div>
+									<div id="tabContratacion" class="tab-pane fade"
+										 style="min-height: 220px">
+										<div class="form-group">
+											<fieldset>
+												<div class="row altura_panel">
+													<div class="col-sm-7" id="Contratacion"></div>
+													<div class="col-sm-5" id="Contratacion2"></div>
+												</div>
+
+												<div class="row">
+													<div class="col-sm-2 col-sm-offset-1 text-right">
+														<label for="ambitoTemporal3" style="padding: 5px;">Periodo</label>
+
+													</div>
+													<div class="col-sm-5">
+														<select class="form-control" id="ambitoTemporal3">
+															<option value="0" selected>Última semana</option>
+															<option value="1">Último mes</option>
+															<option value="2">Último año</option>
+														</select>
+													</div>
+													<div class="col-sm-4 text-left">
+														<button id="botonBuscarPorTipoContenido3" type="button"
+																class="btn btn-warning btnwng">Buscar</button>
+													</div>
+												</div>
+											</fieldset>
+										</div>
+									</div>
+									<div id="tabFuncionamiento" class="tab-pane fade"
+										 style="min-height: 220px">
+										<div class="form-group">
+											<fieldset>
+												<div class="row altura_panel">
+													<div class="col-sm-7" id="Funcionamiento"></div>
+													<div class="col-sm-5" id="Funcionamiento2"></div>
+												</div>
+												<div class="row">
+													<div class="col-sm-2 col-sm-offset-1 text-right">
+														<label for="ambitoTemporal4" style="padding: 5px;">Periodo</label>
+
+													</div>
+													<div class="col-sm-5">
+														<select class="form-control" id="ambitoTemporal4">
+															<option value="0" selected>Última semana</option>
+															<option value="1">Último mes</option>
+															<option value="2">Último año</option>
+														</select>
+													</div>
+													<div class="col-sm-4 text-left">
+														<button id="botonBuscarPorTipoContenido4" type="button"
+																class="btn btn-warning btnwng">Buscar</button>
+													</div>
+												</div>
+											</fieldset>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row bop hidden-xs">
+					<div class="block-main">
+						<div class="panel">
+							<div class="panel-heading  bg-pantone32">
+								<span class="panel-title"></span>
+							</div>
+							<div class="panel-body">
+								<h3 class="media-heading">Búsqueda por entidad</h3>
+								<form class="form-horizontal" action="entidad.html" method="post">
+									<div class="form-group">
+										<label for="TipoEntidad" class="control-label col-sm-3">Tipo:</label>
+										<div class="col-sm-9">
+											<select class="form-control" id="TipoEntidad"
+													data-live-search="true">
+											</select>
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="GrupoEntidad" class="control-label col-sm-3">Grupo:</label>
+										<div class="col-sm-9">
+											<select class="form-control" id="GrupoEntidad"
+													data-live-search="true">
+											</select>
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="Entidad" class="control-label col-sm-3">Entidad:</label>
+										<div class="col-sm-9">
+											<select class="form-control" id="Entidad" data-live-search="true">
+											</select>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label for="ambitoTemporal" class="control-label col-sm-3">Periodo:</label>
+										<div class="col-sm-6">
+											<select class="form-control" id="ambitoTemporal">
+												<option value="0" selected>Última semana</option>
+												<option value="1">Último mes</option>
+												<option value="2">Último año</option>
+											</select>
+										</div>
+										<div class="col-sm-3">
+											<button id="botonBuscarAdv" type="button"
+													class="btn btn-warning btnwng">Buscar</button>
+										</div>
+									</div>
+
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row col-xs-12 col-sm-12">&nbsp;</div>
+		<div class="row bop mt-5 hidden-xs hidden-sm">
+			<div class="block-main">
+				<div class="panel">
+					<div class="panel-heading  bg-pantone32">
+						<span class="panel-title"></span>
+					</div>
+					<div class="panel-body">
+						<div id="slidedipcc" ></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer>
+		<div class="bg-pantone32_hover"></div>
+		<div class="bg-pantone32">
+			<div class="container">
+				<div class="row">
+					<!-- Address -->
+					<div class="col-xs-12 col-sm-6 col-md-4">
+						<div class="headline">
+							<h2 class="heading-sm">Contactar</h2>
+						</div>
+						<address class="md">
+							<span>Boletín Oficial de la Provincia de Cáceres</span><br>
+							<span class="glyphicon glyphicon-home"></span> Ronda de San
+							Francisco, 3<br> &nbsp;&nbsp;&nbsp;&nbsp;Edificio Julián
+							Murillo<br> &nbsp;&nbsp;&nbsp;&nbsp;10005 Cáceres<br> <span
+								class="glyphicon glyphicon-earphone"></span> 927 625 792 <br>
+							<!--<span class="glyphicon glyphicon-globe"></span> <a href="https://bop.dip-caceres.es">www.bop.dip-caceres.es</a> <br>-->
+							<span class="glyphicon glyphicon-envelope"></span> <a
+								href="mailto:bop@dip-caceres.es">bop@dip-caceres.es</a>
+						</address>
+					</div>
+					<!-- End Address -->
+
+					<!-- Formulario de suscripción -->
+					<div class="col-sm-6 col-md-4">
+						<div class="headline">
+							<h2>Suscripciones al BOP</h2>
+						</div>
+						<p>
+							<a href="registro.html"><button id="botonSuscribir"
+									type="button" class="btn btn-warning btnwng"
+									style="float: right; margin-left: 1em;">
+									Correo <span class="glyphicon glyphicon-envelope"></span>&nbsp;</button></a>Puede suscribirse al BOP Cáceres
+							facilitándonos su dirección de correo-e, que usaremos únicamente
+							para propósito relacionados con esta suscripción.
+						</p>
+						<div class="form-group">
+							<div class="row">
+								<div class="hidden-lg col-sm-9">
+									<label for="idCodigoVerificacion2" class="media-heading">Verificar anuncios</label>
+									<div class="input-group date" id="idCSV2">
+										<input id="idCodigoVerificacion2" type="text"
+											class="form-control" placeholder="BOP-aaaa-yyy" /> <span
+											class="input-group-addon"> <span
+											class="glyphicon glyphicon-search" id="botonBuscarNumPie"></span>
+										</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Fin ormulario de suscripción -->
+
+					<!-- About -->
+					<div class="hidden-xs hidden-sm col-md-3 col-sm-offset-1">
+						<div class="headline">
+							<h2>Créditos</h2>
+						</div>
+						<div class="row">
+							<div class="col-sm-7">
+								<p>
+									<a id="ruta0" href="">Inicio</a>
+								</p>
+								<p>
+									<a id="ruta6" href="">Normativa</a>
+								</p>
+								<p>
+									<a id="ruta7" href="">Anunciantes</a>
+								</p>
+								<p>
+									<a id="ruta8" href="">Ayuda</a>
+								</p>
+								<p>
+									<a id="ruta10" href="">Búsqueda</a>
+								</p>
+							</div>
+							<div class="col-sm-5">
+								<p class="hidden-xs">
+									<a accesskey="0" href="/wordpress/accesibilidad-y-adaptacion/">Accesibilidad</a>
+								</p>
+								<p class="hidden-xs">
+									<a href="/wordpress/informacion-legal/">Legal</a>
+								</p>
+								<p class="hidden-xs">
+									<a href="/wordpress/normativa-lopd/">Privacidad</a>
+								</p>
+								<p class="hidden-xs">
+									<a accesskey="5" href="/wordpress/mapa-del-sitio/">Mapa del
+										sitio</a>
+								</p>
+								<p class="hidden-xs">
+									<a id="ruta9" href="">Histórico</a>
+								</p>
+							</div>
+						</div>
+						<!-- End About -->
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="bg-pantone32_hover">
+			<div class="container">
+				<div class="row top-buffer-20">
+					<div class="col-md-6 col-md-offset-2">
+						<p class="text-center">Todos los derechos reservados 2018
+							Diputación de Cáceres</p>
+					</div>
+					<div class="col-md-4">
+						<!-- Social Links -->
+
+						<ul class="social-icons">
+							<li><a
+								href="https://www.facebook.com/pages/Diputación-Provincial-de-Cáceres/349881631780796"
+								data-original-title="Facebook" class="rounded-x social_facebook"><span class="sr-only">Facebook</span></a></li>
+							<li><a href="https://twitter.com/diputacioncc"
+								data-original-title="Twitter" class="rounded-x social_twitter"><span class="sr-only">Twitter</span></a></li>
+							<li><a
+								href="https://www.youtube.com/channel/UCG727crSpuWkYKkoEJ2qAjg"
+								data-original-title="Canal YouTube"
+								class="rounded-x social_youtube"><span class="sr-only">YouTube</span></a></li>
+						</ul>
+						<!-- End Social Links -->
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</footer>
+
+	<!--/copyright-->
+	<!-- /container -->
+
+	<!-- Bootstrap core JavaScript
+            ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="js/jquery-1.11.3.min.js"></script>
+	<script src="bootstrap/js/bootstrap.min.js"></script>
+	<script src='js/bxslider/jquery.bxslider.min.js?ver=4.9.4'></script>
+
+	<!-- Para calendario y date picker -->
+	<script src="calendar/js/moment.js"></script>
+	<script src="calendar/js/bootstrap-datetimepicker.min.js"></script>
+	<script src="calendar/js/es.js"></script>
+	<script src="calendar/js/responsive-calendar.js"></script>
+
+	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+	<script src="bootstrap/assets/js/docs.min.js"></script>
+	<script src="bootstrap/assets/js/ie10-viewport-bug-workaround.js"></script>
+	<script>
+		$(document).ready(
+
+				function() {
+					$('[data-toggle="popover"]').popover();
+					pintarUnCalendario(fechaActual.getFullYear(), fechaActual
+							.getMonth() + 1);
+					cargaComboAnio();
+					cargaTipos();
+					//mostrarFechaUltimoBop();
+					cargaCheckboxesTC();
+					getUrlWordPressIndex();
+					mostrarUltimoBop();
+				});
+	</script>
+
+	<script>
+		$("#emailSuscriptor").keypress(function(event) {
+			if (event.keyCode == 13) {
+				event.preventDefault();
+			}
+		});
+		// Calendarios.
+		var fechaActual = new Date();
+		fechaActual.getDate();
+		document.getElementById("calendarioAnual").oninput = function() {
+			window.location = "calendario.html?anio="
+					+ $('#calendarioAnual').val();
+		};
+		// Por Fecha:
+		/* document.getElementById("botonBuscarFecha").onclick = function() {
+			webResultadosFechaBop();
+		}; */
+
+		// Por CSV:
+		document.getElementById("botonBuscarNum").onclick = function() {
+			webResultadosNumBop();
+		};
+
+		document.getElementById("botonBuscarNumPie").onclick = function() {
+			webResultadosNumBop();
+		};
+
+		document.getElementById("botonBuscarAdv").onclick = function() {
+			webResultadosTGE();
+		};
+
+		document.getElementById("botonBuscarPorTipoContenido1").onclick = function() {
+			webResultadosTC1();
+		};
+		document.getElementById("botonBuscarPorTipoContenido2").onclick = function() {
+			webResultadosTC2();
+		};
+		document.getElementById("botonBuscarPorTipoContenido3").onclick = function() {
+			webResultadosTC3();
+		};
+		document.getElementById("botonBuscarPorTipoContenido4").onclick = function() {
+			webResultadosTC4();
+		};
+
+		document.getElementById("TipoEntidad").onchange = function() {
+			actualizarComboGrupo(document.getElementById("TipoEntidad").value);
+		};
+
+		document.getElementById("GrupoEntidad").onchange = function() {
+			actualizarComboEntidades(document.getElementById("GrupoEntidad").value);
+		};
+		//            document.getElementById("botonSuscribirDesuscribir").onclick = function() {
+		//                suscribirDesuscribirBop(document.getElementById("emailSuscriptor").value);
+		//            };
+
+		$(function() {
+			$('#fechaEntrada').datetimepicker({
+				locale : 'es',
+				format : 'DD/MM/YYYY'
+
+			});
+		});
+		$(function() {
+			$('#fechaPrevista').datetimepicker({
+				locale : 'es',
+				format : 'DD/MM/YYYY'
+			});
+		});
+		$(function() {
+			$('#datetimepicker4').datetimepicker({
+				locale : 'es',
+				format : 'DD/MM/YYYY'
+			});
+		});
+		$(function() {
+			$('#idBOPDia').datetimepicker({
+				locale : 'es',
+				format : 'DD/MM/YYYY'
+			});
+		});
+
+		function comprobarSlide() {
+			if (!$("#advpsslideshow_5").size()) {
+				window.requestAnimationFrame(comprobarSlide);
+			} else {
+				$('#advpsslideshow_5').bxSlider({
+					useCSS : 1,
+					slideMargin : 0,
+					speed : 2000,
+					mode : 'fade',
+					auto : 1,
+					autoHover : 1,
+					pause : 8000,
+					easing : 'linear',
+					controls : 0,
+					pager : 1,
+					autoControls : 0
+				});
+				$("#advpsslideshow_5 .advs-title a").hover(function() {
+					$(this).css('color', '#c4262b');
+				}, function() {
+					$(this).css('color', '#c4262b');
+				});
+				$("#advpsslideshow_5 .advps-slide").hover(function() {
+				}, function() {
+				});
+			}
+		};
+		comprobarSlide();
+	</script>
+</body>
+</html>
