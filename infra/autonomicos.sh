@@ -290,6 +290,14 @@ for c in $CONECTORES; do
       ejecutar motor.provinciales.boppalencia --paginas 70 --salida "$S" --max-minutos "$M"
       "$G" "BOP Palencia: boletines"
       ;;
+    bopsoria)
+      # Boletines del día y sumario de su ficha, con un PDF por anuncio
+      ejecutar motor.provinciales.bopsoria --salida "$S"
+      ejecutar motor.provinciales.bopsoria --desde 2022-01-01 --salida "$S" --max-minutos "$M"
+      "$G" "BOP Soria: días"
+      ejecutar motor.provinciales.bopsoria --textos --salida "$S" --max-minutos "$M"
+      "$G" "BOP Soria: textos"
+      ;;
     bopb)
       # El del día por el canal de datos abiertos; los anteriores por el listado por días y los textos en PDF (cerrados
       # en robots.txt; se leen como boletín oficial, motor/http.py)

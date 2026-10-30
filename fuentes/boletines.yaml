@@ -367,7 +367,8 @@ provinciales:
     url: http://bop.dipsoria.es/
     acceso_desde_github: "ok"
     datos_estructurados: "RSS: http://bop.dipsoria.es/index.php/mod.global/mem.rssHome"
-    estado: sin_conector
+    estado: conector_en_pruebas
+    conector: motor/provinciales/bopsoria.py
   - provincia: Tarragona
     url: https://www.dipta.cat/bopt/web/
     acceso_desde_github: "ok con el intermedio Sectigo OV R36 de motor/certificados/"

@@ -85,7 +85,7 @@ RE_PUESTO = re.compile(
     r"documentalist\w*|animador\w*|dinamitzador\w*|dinamizador\w*|aedl|adl|promotor\w*|orientador\w*|mediador\w*|"
     r"enfermer\w*|infermer\w*|medic[oa]s?|metges?|fisioterapeut\w*|logoped\w*|terapeut\w*|gerocultor\w*|cuidador\w*|"
     r"veterinari\w*|farmaceutic\w*|quimic[oa]s?|biolog[oa]s?|economista\w*|periodista\w*|traductor\w*|"
-    r"jefe\w*|cap de (?:servei|seccio|negociat|brigada|area|policia|grup)|coordinador\w*|gestor\w*|gerente\w*|"
+    r"jefe\w*|jefatura de (?:proyectos|servicio|seccion|negociado|area|unidad|obras|departamento|grupo|equipo)|cap de (?:servei|seccio|negociat|brigada|area|policia|grup)|coordinador\w*|gestor\w*|gerente\w*|"
     r"director\w* (?:de la |del |de )?(?:escuela|escola|conservatorio|museo|museu|banda|centro|area)|directiv\w*|"
     r"sanitari[oa]s?|bedel\w*|informador\w*|administrador\w*|ayudante\w*|ajudant\w*|volante\w*|personal)\b")
 # Un trámite de selección o provisión. Ni «ejercicio» (también es el año presupuestario) ni «calificación» (también
