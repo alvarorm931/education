@@ -387,6 +387,9 @@ def resumen_plan(p: dict) -> dict:
         "tipo": p.get("tipo"),
         "comprobado": plan_comprobado(p),
         "comprobacion": p.get("comprobacion") or ("completo" if plan_comprobado(p) else None),
+        "lectura": p.get("interpretacion") or "directa",
+        "enlazado_por_ruct": bool(p.get("enlazado_por_ruct")),
+        "parte": p.get("parte"),
         "distribucion": p.get("distribucion"),
         "asignaturas": [{k: f.get(k) for k in ("nombre", "modulo", "tipo", "creditos", "curso", "semestre")}
                         for f in filas],
