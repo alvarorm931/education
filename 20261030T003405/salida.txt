@@ -1,0 +1,56 @@
+boe | dia                    ok
+boe | texto                  PROHIBIDAS: https://www.boe.es/diario_boe/xml.php?id=BOE-A-2026-22000
+boja | dia                   ok
+bocm | dia                   PROHIBIDAS: https://www.bocm.es/boletin/CM_Boletin_BOCM/2026/10/28/BOCM-202610281.xml
+bocm | texto                 ok
+bocm | alternativa           ok
+bocyl | dia                  PROHIBIDAS: https://analisis.datosabiertos.jcyl.es/api/explore/v2.1/catalog/datasets/bocyl/exports/json?where=fecha_publicacion%3E%3Ddate%272026-10-01%27%20and%20fecha_publicacion%3Cdate%272026-11-01%27&order_by=fecha_publicacion%2Cpagina_inicial
+bocyl | texto                PROHIBIDAS: https://bocyl.jcyl.es/boletines/2026/10/01/xml/BOCYL-D-01102026-191-4.xml
+dogv | dia                   ok
+dogv | texto                 ok
+dog | dia                    ok
+dog | texto                  ok
+dogc | dia                   PROHIBIDAS: https://portaldogc.gencat.cat/eadop-rest/api/dogc/calendarDOGC
+dogc | texto                 PROHIBIDAS: https://portaldogc.gencat.cat/eadop-rest/api/dogc/documentDOGC
+boa | dia                    ok
+doe | dia                    ok
+doe | texto                  ok
+boib | dia                   PROHIBIDAS: https://www.caib.es/eboibfront/es/2026 https://www.caib.es/eboibfront/es/2026/12248/seccion-ii-autoridades-y-personal/473
+boib | texto                 PROHIBIDAS: https://www.caib.es/eboibfront/es/2026/12248/713302/
+borm | dia                   ok
+borm | texto                 ok
+boc | dia                    ok
+boc | texto                  ok
+bopv | dia                   ok
+bopv | texto                 ok
+docm | dia                   PROHIBIDAS: https://docm.jccm.es/docm/cambiarBoletin.do?fecha=20261028
+docm | texto                 ok
+bome | dia                   ok
+bopb | dia                   PROHIBIDAS: https://bop.diba.cat/anteriors/2026-10-28?bopb_dia%5BtipusAnunci%5D=60
+bopb | texto                 PROHIBIDAS: https://bop.diba.cat/anunci/descarrega-pdf/4005575
+bopb | alternativa           ok
+bopt | dia                   ok
+bopt | texto                 ok
+bopalicante | dia            ok
+bopalicante | texto          PROHIBIDAS: https://www.dip-alicante.es/bop2/pdftotal/2026/10/27_204/2026_008082.pdf
+bopvalencia | dia            ok
+bopvalencia | texto          ok
+bopciudadreal | dia          ok
+bopciudadreal | texto        PROHIBIDAS: https://se1.dipucr.es:4443/SIGEM_BuscadorDocsWeb/getDocument.do?entidad=005&idDocumento=1
+bopgranada | dia             ok
+bopsevilla | dia             ok
+bophuesca | dia              ok
+boptenerife | dia            ok
+bopcordoba | dia             ok
+bopcordoba | texto           ok
+bopcoruna (candidato) | dia  ok
+bopcoruna (candidato) | texto PROHIBIDAS: https://bop.dacoruna.gal/bopportal/publicado/2026/10/30/2026_0000006961.html
+boppontevedra (candidato) | dia ok
+boppontevedra (candidato) | texto PROHIBIDAS: https://boppo.depo.gal/web/boppo/detalle/-/boppo/2026/10/29/2026075016
+bopcaceres (candidato) | dia ok
+bopcaceres (candidato) | texto ok
+boptoledo (candidato) | dia  PROHIBIDAS: https://bop.diputoledo.es/webEbop/ebopCalendar.jsp
+masters: ruct                PROHIBIDAS: https://www.educacion.gob.es/ruct/listaestudios.action https://www.educacion.gob.es/ruct/estudio.action?codigoCiclo=SC&codigoTipo=M&CodigoEstudio=4310001&actual=estudios
+masters: ciencia             ok
+masters: commoncrawl         PROHIBIDAS: https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=*.esic.edu&output=json https://data.commoncrawl.org/crawl-data/CC-MAIN-2026-43/cc-index-table.paths.gz
+codigo=0
