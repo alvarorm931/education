@@ -804,6 +804,11 @@ def menciones(texto: str, tablas: list[dict] | None = None) -> list[str]:
                                for f in (t.get("contenido") or []) for c in f if "enci" in (c or "")]
     vistas = []
     for trozo in fuentes:
+        # «Op./ (Ob.Mención Ciencia Política)»: carácter de una asignatura obligatoria en una mención (sin «en»)
+        for m in re.finditer(r"\bOb\.?\s*Menci[óo]n\s+(?!en\b|de\b)([A-ZÁÉÍÓÚ][^).;:\n]{3,80})", trozo):
+            n = m.group(1).strip(" ,")
+            if n not in vistas:
+                vistas.append(n)
         for m in re.finditer(r"\bMenci[óo]n (?:en|de) ([A-ZÁÉÍÓÚ][^.;:\n]{3,90}?)(?=[.;:\n(]|\s+\d|$)", trozo):
             for parte in re.split(r"\s+y\s+Menci[óo]n (?:en|de)\s+", m.group(1)):
                 n = CORTE_MENCION.sub("", parte.strip()).strip(" ,)")
