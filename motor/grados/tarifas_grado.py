@@ -83,6 +83,8 @@ def elegir_cc(carpeta: Path | None, ya: set[str]) -> list[dict]:
 # Las del 30/10/2026 por la tarde salen de una búsqueda dirigida en el dominio de cada universidad (sin copias de
 # terceros); solo cursos 2025-2026 o posteriores. Cada documento dice su curso y la ficha lo muestra.
 URLS_CONOCIDAS = {
+    # Nebrija: su página de precios (Gatsby) carga los precios de grado de sus datos de página
+    "052": ["https://www.nebrija.com/page-data/admision/precios/page-data.json"],
     "031": ["https://www.unav.edu/admision-y-ayudas/grado/cuanto-cuesta-estudiar-en-la-universidad",
             "https://en.unav.edu/admission-and-financial-aid/degree/cuanto-cuesta-estudiar-en-la-universidad-"],
     # Universidad Europea: tablas de honorarios de grado 2025-2026 (Madrid, Valencia y Alicante, Málaga)
@@ -303,6 +305,26 @@ def _tabla_a_lineas(m: re.Match) -> str:
     import html as _html
 
     return "<div>" + "</div><div>".join(_html.escape(f, quote=False) for f in filas) + "</div>"
+
+
+def lineas_json(texto: str) -> list[str]:
+    """Líneas de los textos de un JSON de datos de página, en su orden: los que traen HTML, con lineas_html."""
+    salida: list[str] = []
+
+    def recorrer(x):
+        if isinstance(x, dict):
+            for v in x.values():
+                recorrer(v)
+        elif isinstance(x, list):
+            for v in x:
+                recorrer(v)
+        elif isinstance(x, str) and x.strip():
+            salida.extend(lineas_html(x) if "<" in x else [" ".join(x.split())])
+        elif isinstance(x, (int, float)) and not isinstance(x, bool):
+            salida.append(str(x))
+
+    recorrer(json.loads(texto))
+    return salida
 
 
 def lineas_html(html: str) -> list[str]:
@@ -554,13 +576,18 @@ def ejecutar(catalogo: list[dict], rastreos: Path, salida: Path, max_minutos: fl
             res["motivo"] = motivo
         es_pdf = r is not None and r.content[:4] == b"%PDF"
         es_html = r is not None and "html" in (r.headers.get("content-type") or "")
-        if r is not None and r.status_code == 200 and len(r.content) <= MAX_PDF and (es_pdf or es_html):
-            archivo.guardar(FUENTE, date.today(), r.content, r_url, "pdf" if es_pdf else "html", r.status_code,
+        # los datos de una página que los carga aparte (Gatsby: «/page-data/…/page-data.json», Nebrija)
+        es_json = r is not None and not es_pdf and ("json" in (r.headers.get("content-type") or "")
+                                                     or r_url.split("?")[0].endswith(".json"))
+        if r is not None and r.status_code == 200 and len(r.content) <= MAX_PDF and (es_pdf or es_html or es_json):
+            formato = "pdf" if es_pdf else "json" if es_json else "html"
+            archivo.guardar(FUENTE, date.today(), r.content, r_url, formato, r.status_code,
                             {k: v for k, v in r.headers.items() if k.lower() in {"content-type", "last-modified"}})
             res["sha256"] = hashlib.sha256(r.content).hexdigest()
-            res["formato"] = "pdf" if es_pdf else "html"
+            res["formato"] = formato
             try:
-                paginas = texto_pdf(r.content) if es_pdf else ["\n".join(lineas_html(r.text))]
+                paginas = (texto_pdf(r.content) if es_pdf else ["\n".join(lineas_json(r.text))] if es_json
+                           else ["\n".join(lineas_html(r.text))])
                 res["paginas"] = len(paginas)
                 gs = list(por_u.get(p["codigo_universidad"], []))
                 gs += [por_cod[c] for c in p.get("grados_rastreo") or [] if c in por_cod and por_cod[c] not in gs]

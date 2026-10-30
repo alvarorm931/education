@@ -315,3 +315,8 @@ def test_curso_del_nombre_del_fichero():
     assert tg.curso_de_fichero("https://docs.ie.edu/Admissions/Tasas_IE_University_27-28.pdf") == "2027-2028"
     assert tg.curso_de_fichero("https://x.es/AF_HONORARIOS_210_X_297_2026_27.pdf") == "2026-2027"
     assert tg.curso_de_fichero("https://x.es/tarifas_210_297.pdf") is None
+
+
+def test_lineas_json_de_datos_de_pagina():
+    datos = {"result": {"data": {"grados": [{"titulo": "Grado en Psicología", "html": "<p>Precio anual: 9.900 €</p>"}]}}}
+    assert tg.lineas_json(__import__("json").dumps(datos)) == ["Grado en Psicología", "Precio anual: 9.900 €"]
