@@ -33,6 +33,7 @@ RE_ULTIMO = re.compile(r'href="/bop/mostra-bop/[^/"]+/(\d{4})/(\d+)"[^>]*>\s*[Ú
 RE_CABECERA = re.compile(r"Bop n[úu]mero:\s*(?P<n>\d+)/(?P<s>\d+)\s*-\s*(?P<d>\d{2})/(?P<m>\d{2})/(?P<a>\d{4})")
 RE_TOKEN = re.compile(r'<h2 class="seccioTau">\s*(?P<sec>.*?)\s*</h2>|<li class="edicte">\s*<a href="(?P<pdf>[^"]+)"[^>]*>'
                       r"\s*(?P<num>\d+)\s*-\s*<span>(?P<ent>.*?)</span>\s*-\s*(?P<tit>.*?)\s*</a>", re.DOTALL)
+ENTIDAD_CORTADA = {"AJUNTAMENT", "CONSELL COMARCAL", "EMD", "CONSORCI", "MANCOMUNITAT", "DIPUTACIÓ"}
 RE_MUNICIPIO_DETRAS = re.compile(r"\s*\([^()]+\)\s*$")  # Lleida: «AJUNTAMENT D'AGRAMUNT (AGRAMUNT)»
 
 
@@ -73,8 +74,13 @@ def parsear_boletin(contenido: bytes) -> dict:
         if m.group("sec") is not None:
             seccion = _t(m.group("sec"))
         else:
-            anuncios.append({"numero_anuncio": m.group("num"), "seccion": seccion, "entidad": _t(m.group("ent")),
-                             "titulo": _t(m.group("tit")), "url_pdf": html.unescape(m.group("pdf"))})
+            ent, tit = _t(m.group("ent")), _t(m.group("tit"))
+            partida = re.match(r"^(.{2,80}?)-(\S.*)$", tit)
+            if partida and (ent.upper() in ENTIDAD_CORTADA or ent.upper().endswith((" DE", " DEL", " D'"))):
+                # Lleida en 2023: «<span>AJUNTAMENT</span> - D'OLIANA-Edicte de…»: el nombre sigue en el título
+                ent, tit = f"{ent} {partida.group(1).strip()}".replace("D' ", "D'"), partida.group(2).strip()
+            anuncios.append({"numero_anuncio": m.group("num"), "seccion": seccion, "entidad": ent,
+                             "titulo": tit, "url_pdf": html.unescape(m.group("pdf"))})
     return {"numero": int(c.group("n")) if c else None,
             "fecha": f"{c.group('a')}-{c.group('m')}-{c.group('d')}" if c else None, "anuncios": anuncios}
 

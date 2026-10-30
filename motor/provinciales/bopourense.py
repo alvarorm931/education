@@ -134,6 +134,7 @@ def procesar_dia(d: date, raiz: Path, archivo: Archivo, pausa: float = 1.0) -> d
               "extraordinario": b["extraordinario"], "fuente": SIGLAS, "captura_sha256": captura["sha256"]}
              for b in boletines for x in b["anuncios"]]
     empleo = seleccionar(filas)
+    por_id = {f["id"]: f for f in filas}
     textos, sin_texto = 0, 0
     for x in empleo:  # la entidad está en el texto: se pide el de cada anuncio de empleo
         ruta = _base(raiz) / "textos" / d.strftime("%Y") / d.strftime("%m") / f"{x['id']}.json"
@@ -149,6 +150,7 @@ def procesar_dia(d: date, raiz: Path, archivo: Archivo, pausa: float = 1.0) -> d
         archivo.guardar(FUENTE, d, rt.contenido, x["url_texto"], "html", rt.status, rt.cabeceras)
         t = leer_edicto(rt.contenido, x)
         x["entidad"] = t.pop("entidad")
+        por_id[x["id"]]["entidad"] = x["entidad"]  # también en disposiciones: reseleccionar parte de ellas
         if x.get("ambito") == "local":
             x["convocante"] = convocante(x["entidad"], x.get("seccion"))
         escribir_json(ruta, {"id": x["id"], "url": x["url_texto"], "fecha": d.isoformat(), **t,
@@ -165,15 +167,56 @@ def procesar_dia(d: date, raiz: Path, archivo: Archivo, pausa: float = 1.0) -> d
     return inf
 
 
+def reparar(raiz: Path, pausa: float, max_minutos: float) -> tuple[int, int]:
+    """Anuncios de empleo sin entidad (guardados antes de que pasara a disposiciones y perdida al reseleccionar):
+    se vuelve a pedir la cabecera de su texto y se completan oposiciones y disposiciones."""
+    from motor.autonomicos.comun import leer_jsonl
+    inicio, hechos, errores = time.monotonic(), 0, 0
+    for f in sorted((_base(raiz) / "oposiciones").glob("*/*/*.jsonl"), reverse=True):
+        filas = leer_jsonl(f)
+        faltan = [x for x in filas if not x.get("entidad") and x.get("url_texto")]
+        if not faltan:
+            continue
+        for x in faltan:
+            if max_minutos and (time.monotonic() - inicio) / 60 > max_minutos:
+                break
+            time.sleep(pausa)
+            try:
+                r = obtener(x["url_texto"], accept="text/html")
+            except (ConnectionError, TimeoutError):
+                errores += 1
+                continue
+            if r.status != 200:
+                errores += 1
+                continue
+            x["entidad"] = leer_edicto(r.contenido)["entidad"]
+            if x.get("ambito") == "local":
+                x["convocante"] = convocante(x["entidad"], x.get("seccion"))
+            hechos += 1
+        escribir_jsonl(f, filas)
+        fd = _base(raiz) / "disposiciones" / f.relative_to(_base(raiz) / "oposiciones")
+        ent = {x["id"]: x.get("entidad") for x in filas if x.get("entidad")}
+        if fd.exists():
+            escribir_jsonl(fd, [{**d, "entidad": ent.get(d.get("id"), d.get("entidad"))} for d in leer_jsonl(fd)])
+        if max_minutos and (time.monotonic() - inicio) / 60 > max_minutos:
+            break
+    return hechos, errores
+
+
 def main(argv: list[str] | None = None) -> int:
     hoy = datetime.now(MADRID).date()
     p = argparse.ArgumentParser()
     p.add_argument("--desde", type=date.fromisoformat, default=hoy - timedelta(days=1))
     p.add_argument("--hasta", type=date.fromisoformat, default=hoy)
     p.add_argument("--salida", type=Path, default=Path("."))
+    p.add_argument("--reparar", action="store_true", help="completar la entidad de los anuncios de empleo que no la tienen")
     p.add_argument("--max-minutos", type=float, default=0)
     p.add_argument("--pausa", type=float, default=1.0)
     a = p.parse_args(argv)
+    if a.reparar:
+        hechos, errores = reparar(a.salida, a.pausa, a.max_minutos)
+        print(f"BOP Ourense: entidad completada en {hechos} anuncios ({errores} errores)")
+        return 0
     archivo = Archivo(a.salida / "archivo", indice_por_fuente=True, solo_huella=solo_huella_por_defecto())
     inicio, informes, freno = time.monotonic(), [], Freno()
     d = a.hasta

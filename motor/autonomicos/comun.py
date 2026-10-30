@@ -162,6 +162,13 @@ PARTICULAS = {"de", "del", "la", "las", "los", "el", "y", "e", "en", "a", "o", "
 TIPOS_ENTIDAD = (
     ("ayuntamiento de ", "Ayuntamiento"),
     ("ayto. de ", "Ayuntamiento"),  # Teruel: «Ayto. de Albalate del Arzobispo»
+    ("cuadrilla de ", "Cuadrilla"),  # Álava: «Cuadrilla de Añana»
+    ("organismo autonomo local ", "Organismo Autónomo"),
+    ("organismo autonomo ", "Organismo Autónomo"),
+    ("fundacion municipal ", "Fundación Municipal"),
+    ("empresa municipal ", "Empresa Municipal"),
+    ("emd de ", "Entidad Local Menor"),  # Cataluña: entitat municipal descentralitzada
+    ("emd d'", "Entidad Local Menor"),
     ("ayto de ", "Ayuntamiento"),
     ("diputacion provincial de ", "Diputación Provincial"),
     ("diputacion de ", "Diputación Provincial"),
@@ -353,7 +360,8 @@ def convocante_de_organismo(organismo: str, capitales: Iterable[str] = ()) -> di
     for prefijo, tipo, *articulo in TIPOS_ENTIDAD:
         if n.startswith(prefijo):
             resto = base[len(prefijo):].strip()
-            if tipo in {"Mancomunidad", "Consorcio", "Patronato", "Comarca"}:
+            if tipo in {"Mancomunidad", "Consorcio", "Patronato", "Comarca", "Fundación Municipal", "Empresa Municipal",
+                        "Organismo Autónomo"}:
                 resto = re.sub(r"^(?:del?|de la|de los|de las)\s+", "", resto, flags=re.IGNORECASE) or resto
             nombre = (articulo[0] if articulo else "") + nombre_propio(resto)
             nombre = articulo_delante(nombre)

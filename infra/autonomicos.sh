@@ -277,6 +277,7 @@ for c in $CONECTORES; do
     bopourense)
       # API del portal: boletín por fecha y el texto de cada edicto de empleo (la entidad va en el texto)
       ejecutar motor.provinciales.bopourense --salida "$S"
+      ejecutar motor.provinciales.bopourense --reparar --salida "$S" --max-minutos "$M"
       ejecutar motor.provinciales.bopourense --desde 2022-01-01 --salida "$S" --max-minutos "$M"
       "$G" "BOP Ourense: días"
       ;;
