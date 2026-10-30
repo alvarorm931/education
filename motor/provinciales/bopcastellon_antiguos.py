@@ -14,6 +14,7 @@ sonda_pdf_texto.py):
   - robots.txt no responde; se lee como boletín oficial (motor/http.py).
 
 Uso: python -m motor.provinciales.bopcastellon_antiguos --max-minutos 30 --salida ruta/
+     python -m motor.provinciales.bopcastellon_antiguos --reprocesar --salida ruta/   # desde el almacén
 """
 
 from __future__ import annotations
@@ -31,7 +32,7 @@ from urllib.parse import urljoin
 import requests
 
 from motor.archivo import Archivo, solo_huella_por_defecto
-from motor.autonomicos.comun import Freno, escribir_json, escribir_jsonl
+from motor.autonomicos.comun import Freno, escribir_json, escribir_jsonl, nombre_propio
 from motor.boe.clasificar import normalizar
 from motor.extraccion.citas import citas
 from motor.http import USER_AGENT, obtener
@@ -104,6 +105,15 @@ def _seccion(lin: str) -> str:
     return _castellano(lin).replace("A YUNTAMIENTOS", "AYUNTAMIENTOS")
 
 
+def _es_entidad_local(lin: str) -> bool:
+    """Un municipio de la provincia (por cualquiera de sus nombres) o una mancomunidad o consorcio."""
+    from motor.catalogo.territorio import municipio
+    n = normalizar(lin)
+    if n.startswith(("mancomun", "consorci", "entitat local", "entidad local")):
+        return True
+    return any(municipio(parte.strip(), "12") for parte in re.split(r"\s*/\s*", lin) if parte.strip())
+
+
 def anuncios(paginas: list[str]) -> list[dict]:
     """Anuncios del cuerpo (de la página 2 en adelante): sección, entidad, asunto y texto, en el orden del boletín."""
     lineas: list[str] = []
@@ -136,10 +146,14 @@ def anuncios(paginas: list[str]) -> list[dict]:
         actual["lineas"].append(lin)
     resultado = []
     for b in bloques:
-        ls, i, entidad, sub = b["lineas"], 0, b["entidad"], None
-        local_ayto = normalizar(b["seccion"] or "").startswith(("ayuntamientos", "a yuntamientos"))
-        if ls and _mayusculas(ls[0]) and local_ayto:
+        ls, i, entidad, sub, seccion = b["lineas"], 0, b["entidad"], None, b["seccion"]
+        local_ayto = normalizar(seccion or "").startswith(("ayuntamientos", "a yuntamientos"))
+        # La entidad local va justo después del registro («ALMENARA», «PENÍSCOLA/PEÑÍSCOLA», «MANCOMUNITAT ALT
+        # MAESTRAT»); se reconoce aunque se haya perdido la cabecera de la sección
+        if ls and _mayusculas(ls[0]) and (local_ayto or _es_entidad_local(ls[0])):
             entidad, i = _castellano(ls[0]), 1
+            if not local_ayto:
+                seccion, local_ayto = "AYUNTAMIENTOS", True
         while i < len(ls) and (_mayusculas(ls[i]) or RE_EXPEDIENTE.match(ls[i])):
             if _mayusculas(ls[i]) and normalizar(ls[i]) not in TIPOS_ANUNCIO and sub is None and not local_ayto:
                 sub = ls[i]
@@ -155,7 +169,7 @@ def anuncios(paginas: list[str]) -> list[dict]:
         titulo = " ".join(" ".join(frase).split()).strip()
         if sub and len(sub) < 60:
             titulo = f"{sub.capitalize()}. {titulo}"
-        resultado.append({"numero_anuncio": b["registro"], "seccion": b["seccion"], "grupo": b["seccion"],
+        resultado.append({"numero_anuncio": b["registro"], "seccion": seccion, "grupo": seccion,
                           "entidad": entidad, "titulo": titulo_sin_nombres(titulo[:400]), "texto": "\n".join(ls)})
     return resultado
 
@@ -166,16 +180,19 @@ def es_local(x: dict) -> bool:
 
 
 def convocante(x: dict) -> dict | None:
-    e = x.get("entidad") or ""
-    if normalizar(e).startswith(("diputacion", "diputacio")):
+    e = re.split(r"\s*/\s*", x.get("entidad") or "")[-1].strip()  # «BORRIANA/BURRIANA»: el nombre en castellano
+    n = normalizar(e)
+    if n.startswith(("diputacion", "diputacio")):
         return cs.convocante({"grupo": "Diputación Provincial", "entidad": None})
-    return cs.convocante({"grupo": None, "entidad": e if normalizar(e).startswith("ayuntamiento") else
-                          f"Ayuntamiento de {e.title()}" if e else None})
+    if n.startswith(("mancomun", "consorci", "ayuntamiento", "entidad", "entitat")):
+        return cs.convocante({"grupo": None, "entidad": nombre_propio(e) if e.isupper() else e})
+    return cs.convocante({"grupo": None, "entidad": f"Ayuntamiento de {nombre_propio(e)}" if e else None})
+
+
+VERSION = "antiguos_v3"  # v3 (30/10/2026): orden de la página y entidad local tras el registro
 
 
 def procesar(b: dict, raiz: Path, archivo: Archivo) -> dict:
-    from motor.autonomicos.comun import clasificar, es_empleo_estricto
-
     d = date.fromisoformat(b["fecha"])
     r = obtener(b["url_pdf"], accept="*/*")
     inf = {"fecha": b["fecha"], "numero": b["numero"], "status": r.status, "origen": "boletines_anteriores",
@@ -185,7 +202,14 @@ def procesar(b: dict, raiz: Path, archivo: Archivo) -> dict:
         inf["alertas"].append(f"BOP Castellón {d}: PDF HTTP {r.status}")
         return inf
     captura = archivo.guardar(cs.FUENTE, d, r.contenido, b["url_pdf"], "pdf", r.status, r.cabeceras)
-    lista_a = anuncios(paginas_en_orden(r.contenido))
+    return {**inf, **leer_pdf(b, r.contenido, captura, raiz)}
+
+
+def leer_pdf(b: dict, pdf: bytes, captura: dict, raiz: Path) -> dict:
+    from motor.autonomicos.comun import clasificar, es_empleo_estricto
+
+    d = date.fromisoformat(b["fecha"])
+    lista_a = anuncios(paginas_en_orden(pdf))
     filas = [{**{k: v for k, v in x.items() if k != "texto"}, "id": f"BOPCASTELLON-{x['numero_anuncio']}",
               "fecha": b["fecha"], "boletin": b["numero"], "url_pdf_boletin": b["url_pdf"], "fuente": cs.SIGLAS,
               "captura_sha256": captura["sha256"]} for x in lista_a]
@@ -195,8 +219,15 @@ def procesar(b: dict, raiz: Path, archivo: Archivo) -> dict:
             local = es_local(x)
             empleo.append((a, {**x, "ambito": "local" if local else "otro", **clasificar(x["titulo"]),
                                "convocante": convocante(x) if local else None}))
+    # Lo que la versión anterior escribiera de este boletín se sustituye entero (también sus textos)
+    previo = cs._ruta(raiz, "oposiciones", b["fecha"], b["numero"])
+    if previo.exists():
+        for linea in previo.read_text(encoding="utf-8").splitlines():
+            if linea.strip():
+                x = json.loads(linea)
+                (cs._base(raiz) / "textos" / x["fecha"][:4] / x["fecha"][5:7] / f"{x['id']}.json").unlink(missing_ok=True)
     escribir_jsonl(cs._ruta(raiz, "disposiciones", b["fecha"], b["numero"]), filas)
-    escribir_jsonl(cs._ruta(raiz, "oposiciones", b["fecha"], b["numero"]), [x for _, x in empleo])
+    escribir_jsonl(previo, [x for _, x in empleo])
     for a, x in empleo:
         bruto = a["texto"]
         if x.get("tipo_acto") in CON_TEXTO:
@@ -207,12 +238,44 @@ def procesar(b: dict, raiz: Path, archivo: Archivo) -> dict:
                      "citas": citas(bruto)}
         ruta = cs._base(raiz) / "textos" / b["fecha"][:4] / b["fecha"][5:7] / f"{x['id']}.json"
         escribir_json(ruta, {"id": x["id"], **datos, "captura_sha256": captura["sha256"],
-                             "capturado": captura["capturado"], "url": b["url_pdf"]})
-    inf.update({"resultado": "ok", "sha256": captura["sha256"], "disposiciones": len(filas),
-                "empleo_publico": len(empleo), "textos": len(empleo)})
+                             "capturado": captura.get("capturado"), "url": b["url_pdf"]})
+    inf = {"resultado": "ok", "sha256": captura["sha256"], "capturado": captura.get("capturado"),
+           "url_pdf": b["url_pdf"], "version": VERSION, "disposiciones": len(filas),
+           "empleo_publico": len(empleo), "textos": len(empleo), "alertas": []}
     if not filas:
         inf["alertas"].append(f"BOP Castellón {d}: sin anuncios en el cuerpo (posible cambio de formato)")
     return inf
+
+
+def reprocesar(raiz: Path) -> int:
+    """Relee, desde su PDF original en el almacén (sin pedirlo a la fuente), los boletines anteriores ya cargados
+    con una versión vieja del lector."""
+    from motor.almacen import Almacen, clave_original
+    from motor.autonomicos.comun import leer_jsonl
+
+    almacen, hechos, fallos = None, 0, 0
+    for ruta in sorted((cs._base(raiz) / "boletines").glob("*/*/*.json")):
+        inf = json.loads(ruta.read_text(encoding="utf-8"))
+        if inf.get("origen") != "boletines_anteriores" or inf.get("resultado") != "ok" or inf.get("version") == VERSION:
+            continue
+        d = date.fromisoformat(inf["fecha"])
+        indice = raiz / "archivo" / "indices" / cs.FUENTE / f"{d:%Y-%m}.jsonl"
+        reg = next((x for x in (leer_jsonl(indice) if indice.exists() else []) if x.get("sha256") == inf["sha256"]), {})
+        try:
+            almacen = almacen or Almacen()
+            pdf = almacen.leer(reg.get("clave") or clave_original(cs.FUENTE, d, inf["sha256"], "pdf"))
+            b = {"fecha": inf["fecha"], "numero": inf["numero"], "url_pdf": reg.get("url") or inf.get("url_pdf")}
+            nuevo = leer_pdf(b, pdf, {"sha256": inf["sha256"], "capturado": reg.get("capturado")}, raiz)
+        except Exception as e:  # noqa: BLE001 - sin almacén (o con un PDF raro) se deja para otra ejecución
+            fallos += 1
+            print(f"BOP Castellón {inf['fecha']}: no se pudo releer ({type(e).__name__})")
+            if fallos >= 5:
+                break
+            continue
+        escribir_json(ruta, {**inf, **nuevo})
+        hechos += 1
+    print(f"BOP Castellón anteriores releídos desde el almacén: {hechos}; sin releer: {fallos}")
+    return 0
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -220,7 +283,10 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--salida", type=Path, default=Path("."))
     p.add_argument("--max-minutos", type=float, default=0)
     p.add_argument("--pausa", type=float, default=1.0)
+    p.add_argument("--reprocesar", action="store_true", help="releer desde el almacén los ya cargados")
     a = p.parse_args(argv)
+    if a.reprocesar:
+        return reprocesar(a.salida)
     archivo = Archivo(a.salida / "archivo", indice_por_fuente=True, solo_huella=solo_huella_por_defecto())
     base = cs._base(a.salida)
     # Hasta dónde llega lo ya cargado por el carrusel: lo anterior a su primer boletín
@@ -278,6 +344,11 @@ def main(argv: list[str] | None = None) -> int:
                     inf = procesar(b, a.salida, archivo)
                 except (ConnectionError, TimeoutError) as e:
                     inf = {"fecha": b["fecha"], "resultado": "fuente_inaccesible", "alertas": [str(e)]}
+                except Exception as e:  # noqa: BLE001 - un PDF raro no para la carga: queda anotado para revisarlo
+                    import traceback
+                    traceback.print_exc()
+                    inf = {"fecha": b["fecha"], "numero": b["numero"], "resultado": "error_formato",
+                           "alertas": [f"BOP Castellón {b['fecha']}: {type(e).__name__}: {e}"[:300]]}
                 escribir_json(ruta, inf)
                 informes.append(inf)
                 bien += inf["resultado"] == "ok"

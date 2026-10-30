@@ -365,6 +365,7 @@ for c in $CONECTORES; do
       "$G" "BOP Castellón: textos"
       # Boletines anteriores al carrusel: búsqueda por fechas y PDF entero leído en el orden de la página (en 2026 el
       # texto plano dejaba la cabecera de cada anuncio al final); anuncios del cuerpo por su registro
+      ejecutar motor.provinciales.bopcastellon_antiguos --reprocesar --salida "$S"
       ejecutar motor.provinciales.bopcastellon_antiguos --salida "$S" --max-minutos "$M"
       "$G" "BOP Castellón: boletines anteriores"
       ;;
