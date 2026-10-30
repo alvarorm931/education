@@ -180,7 +180,7 @@ def test_lugar_sin_procesos(web):
 
 def test_tipo_sin_declarar(web):
     raiz, man = web
-    man = [m | {"tipo": "grado"} if m["ruta"] == LUGAR else m for m in man]
+    man = [m | {"tipo": "tipo-sin-declarar"} if m["ruta"] == LUGAR else m for m in man]
     inf = control(raiz, man).ejecutar()
     assert fallos(inf, "datos_minimos", bloqueantes=True)
 

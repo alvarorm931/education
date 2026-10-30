@@ -101,6 +101,9 @@ DATOS_MINIMOS: dict[str, list[list[str]]] = {
     "proceso": [["convocante"], ["plazas"], ["plazo"]],
     "lugar": [],  # al menos un enlace a una ficha de proceso: se comprueba con los enlaces
     "master": [["asignaturas"], ["precio_total", "precio_credito"]],
+    # Grado y doble grado (decisión de Álvaro, 30/10/2026): asignaturas comprobadas contra la tabla de créditos del
+    # plan (en el doble, las de sus dos grados) y al menos una cifra propia: nota de corte o precio
+    "grado": [["asignaturas"], ["nota_corte", "precio_total", "precio_credito", "precio_curso"]],
     # Sin requisitos de datos: no son fichas
     "inicio": [],
     "listado": [],
