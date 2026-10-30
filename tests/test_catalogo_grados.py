@@ -85,6 +85,22 @@ def test_componente_del_doble_por_el_nombre_generico():
     assert [x["codigo"] for x in c["7001003"]["componentes"]] == ["2500700", "2500600"]
 
 
+def test_componente_del_doble_por_contencion_del_nombre_solo_si_es_unico():
+    c = _catalogo([
+        _t("2500800", "Grado", "Graduado o Graduada en Ingeniería Informática por la Universidad de Granada"),
+        _t("2500900", "Grado", "Graduado o Graduada en Matemáticas por la Universidad de Granada"),
+        _t("2501000", "Grado", "Graduado o Graduada en Física por la Universidad de Granada"),
+        _t("2501100", "Grado", "Graduado o Graduada en Ciencias de la Actividad Física y del Deporte por la Universidad de Granada"),
+        _t("7001004", "Programaciones Conjuntas de Estudios Oficiales", "PCEO Grado en Informática / Grado en Matemáticas"),
+        _t("7001005", "Programaciones Conjuntas de Estudios Oficiales",
+           "PCEO Grado en Actividad Física / Grado en Matemáticas"),
+    ])
+    d = c["7001004"]["componentes"]
+    assert d[0]["codigo"] == "2500800" and d[0]["union"] == "por_contencion_del_nombre"
+    # «Actividad Física» cabe en dos grados (Física y CAFYD): no se une
+    assert c["7001005"]["componentes"][0]["codigo"] is None
+
+
 def test_clave_union_tolera_variantes_de_escritura():
     assert cat.clave_union("Ingeniería de Organización Industrial") == cat.clave_union("Ingeniería en Organización Industrial")
     assert cat.clave_union("Ciencia y Tecnología de Alimentos") == cat.clave_union("Ciencia y Tecnología de los Alimentos")

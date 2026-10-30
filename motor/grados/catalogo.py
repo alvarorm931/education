@@ -266,6 +266,14 @@ def enlazar_dobles(catalogo: list[dict]) -> None:
                     encontrados |= {x for x in generico_idx.get((clave(u), clave_union(nombre_base(c["nombre"]))), set())}
                 if len(encontrados) > 1:
                     encontrados = set()
+            if not encontrados and not re.search(r"\bgrado en\b", c["nombre"], re.I):
+                # un nombre contiene al otro («Criminología» y «Criminología y Seguridad», «Informática» e «Ingeniería
+                # Informática»), solo si en la universidad hay un solo grado activo así; queda marcado para revisar
+                pc = set(clave_union(nombre_base(c["nombre"])).split())
+                cands = {g for u in posibles_u for (cu, kg), gs in generico_idx.items() if cu == clave(u)
+                         for g in gs if pc and (pc <= set(kg.split()) or set(kg.split()) <= pc)}
+                if len(cands) == 1:
+                    encontrados, c["union"] = cands, "por_contencion_del_nombre"
             # Con un plan antiguo en extinción y otro activo del mismo nombre, el doble activo va con el activo.
             activos = {c for c in encontrados if situacion.get(c) == "Activo"}
             if len(encontrados) > 1 and len(activos) == 1 and t["situacion"] == "Activo":

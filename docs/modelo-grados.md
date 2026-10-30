@@ -43,11 +43,12 @@ El universo es la unión de las tres, con el código del título como clave.
 - Por rama: Ciencias Sociales y Jurídicas 1.168, Ingeniería y Arquitectura 846, Ciencias de la Salud 500, Artes y
   Humanidades 469, Ciencias 282.
 - Por comunidad: Madrid 691, Cataluña 519, Andalucía 464, C. Valenciana 309, Castilla y León 288.
-- Cada componente de un doble grado se une con su grado simple: 1.969 de 2.055 componentes de los dobles activos
-  (96 %), por el nombre y, si no, por el nombre del genérico («Educación Primaria» = «Magisterio de Educación
-  Primaria») cuando en la universidad hay un solo grado activo con él; 5 quedan ambiguos (dos planes activos con el
-  mismo nombre en el mismo centro) y 81 sin unir por nombres distintos («Criminología» frente a «Criminología y
-  Seguridad»), que van a revisión.
+- Cada componente de un doble grado se une con su grado simple: 2.021 de 2.055 componentes de los dobles activos
+  (98 %). Primero por el nombre; si no, por el nombre del genérico («Educación Primaria» = «Magisterio de Educación
+  Primaria»), y si no, cuando un nombre contiene al otro («Informática» e «Ingeniería Informática», «Criminología» y
+  «Criminología y Seguridad»), siempre que en la universidad haya un solo grado activo así. Estas 52 uniones por
+  contención quedan marcadas (`union: por_contencion_del_nombre`) para revisarlas. 5 quedan ambiguos (dos planes
+  activos con el mismo nombre en el mismo centro) y 29 sin unir.
 
 ### Grado genérico y área
 
@@ -288,20 +289,20 @@ pedir nada a ninguna fuente, y marca cada ficha como indexable o no, con el moti
 | Con sus centros en QEDU | 4.265 |
 | Ofertas de QEDU con detalle (plazas, precio, inserción) | 5.486 de 5.486 |
 | Con nota de corte | 2.662 |
-| Con precio de primera matrícula (públicas) | 2.113 de 2.239 grados y 304 de 647 dobles de públicas |
-| De ellos, con el precio de la norma de su comunidad (QEDU no lo da) | 314 |
+| Con precio de primera matrícula (públicas) | 2.113 de 2.239 grados y 306 de 647 dobles de públicas |
+| De ellos, con el precio de la norma de su comunidad (QEDU no lo da) | 316 |
 | Privadas con precio por curso | 253 de 1.410 |
 | Con inserción laboral | 1.703 |
 | Con indicadores de rendimiento del SIIU | 3.125 |
 | Con ficha del RUCT | 3.265 |
 | Grados con plan del BOE | 3.079 de 3.265 |
 | Grados con plan comprobado | 2.233 (1.567 por asignaturas, el resto por materias) |
-| Dobles con los planes de sus dos grados comprobados | 578 |
-| **Indexables** con la propuesta de datos mínimos | **2.049** (1.722 grados y 327 dobles; 1.830 de públicas y 219 de privadas) |
+| Dobles con los planes de sus dos grados comprobados | 602 |
+| **Indexables** con la propuesta de datos mínimos | **2.065** (1.722 grados y 343 dobles; 1.846 de públicas y 219 de privadas) |
 
 El resto va con `noindex` y su motivo: 846 con plan que no
-cuadra, 639 sin plan (o doble sin los dos planes comprobados) y
-1.202 sin nota ni precio (casi todas, privadas que no publican el precio); una
+cuadra, 615 sin plan (o doble sin los dos planes comprobados) y
+1.201 sin nota ni precio (casi todas, privadas que no publican el precio); una
 ficha puede tener varios.
 
 Para rehacerlo todo desde `sondas`: bajar las carpetas con `datos/estudios/grados/` y ejecutar en orden
@@ -343,7 +344,7 @@ comprobados por asignaturas:
    solo para esos grados (unas 130 peticiones por título; decidir alcance) o la página de la universidad.
 3. Privadas sin precio: peticiones a cada universidad cuando el portal tenga dirección pública
    (`docs/estrategia-informacion-cerrada.md` §3.4); Navarra, Comillas, UOC y Ramón Llull, a mano.
-4. Precio de los dobles de públicas en comunidades con niveles por título (343 fichas sin precio): leer qué
+4. Precio de los dobles de públicas en comunidades con niveles por título (341 fichas sin precio): leer qué
    dice cada norma de los dobles (si cada asignatura paga el nivel de su grado, un doble con sus dos grados al mismo
    precio tiene ese precio) antes de deducir nada; los centros adscritos, de su web.
 5. Mantenerlo al día: BOE diario (planes y modificaciones nuevos), QEDU y SIIU cada curso, RUCT semanal
