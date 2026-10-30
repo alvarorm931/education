@@ -1,11 +1,11 @@
 {
- "fecha": "2026-10-30T02:03:28+00:00",
- "fecha_madrid": "30/10 03:03",
+ "fecha": "2026-10-30T02:05:10+00:00",
+ "fecha_madrid": "30/10 03:05",
  "ventana_horas": 6.0,
  "resumen": {
   "ejecuciones_revisadas": 116,
   "fallos": 6,
-  "fallos_pendientes": 1,
+  "fallos_pendientes": 0,
   "relanzados": 0,
   "colas_largas": 0,
   "flujos_programados_parados": [],
@@ -38,6 +38,25 @@
       "ubuntu-latest"
      ],
      "final_registro": [
+      "##[error]Process completed with exit code 1.",
+      "...",
+      "\u001b[36;1mcd rama\u001b[0m",
+      "\u001b[36;1mgit add -A\u001b[0m",
+      "\u001b[36;1mgit commit -qm \"Vigilancia $(TZ=Europe/Madrid date '+%d/%m %H:%M')\"\u001b[0m",
+      "\u001b[36;1mfor i in 1 2 3 4 5; do\u001b[0m",
+      "\u001b[36;1m  git push -q origin vigilancia && exit 0\u001b[0m",
+      "\u001b[36;1m  sleep $(( i * 5 ))\u001b[0m",
+      "\u001b[36;1m  git fetch -q --depth 1 origin vigilancia && git rebase -q origin/vigilancia || git rebase --abort\u001b[0m",
+      "\u001b[36;1mdone\u001b[0m",
+      "\u001b[36;1mecho \"::warning::No se pudo subir el estado de vigilancia\"\u001b[0m",
+      "shell: /usr/bin/bash -e {0}",
+      "env:",
+      "  AWS_DEFAULT_REGION: eu-south-2",
+      "  AWS_REGION: eu-south-2",
+      "  AWS_ACCESS_KEY_ID: ***",
+      "  AWS_SECRET_ACCESS_KEY: ***",
+      "  AWS_SESSION_TOKEN: ***",
+      "The following paths and/or pathspecs matched paths that exist",
       "outside of your sparse-checkout definition, so will not be",
       "updated in the index:",
       "historial/2026-10.jsonl",
@@ -45,24 +64,7 @@
       "hint: * Use the --sparse option.",
       "hint: * Disable or modify the sparsity rules.",
       "hint: Disable this message with \"git config set advice.updateSparsePath false\"",
-      "##[error]Process completed with exit code 1.",
-      "Post job cleanup.",
-      "Post job cleanup.",
-      "[command]/usr/bin/git version",
-      "git version 2.56.0",
-      "Temporarily overriding HOME='/home/runner/work/_temp/c565d23f-0fcc-414d-ace7-24b738d9bb39' before making global git config changes",
-      "Adding repository directory to the temporary git global config as a safe directory",
-      "[command]/usr/bin/git config --global --add safe.directory /home/runner/work/education/education",
-      "[command]/usr/bin/git config --local --name-only --get-regexp core\\.sshCommand",
-      "[command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'core\\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\"",
-      "[command]/usr/bin/git config --local --name-only --get-regexp http\\.https\\:\\/\\/github\\.com\\/\\.extraheader",
-      "http.https://github.com/.extraheader",
-      "[command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader",
-      "[command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'http\\.https\\:\\/\\/github\\.com\\/\\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\"",
-      "[command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\\.gitdir:",
-      "[command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url",
-      "Cleaning up orphan processes",
-      "##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, aws-actions/configure-aws-credentials@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/"
+      "##[error]Process completed with exit code 1."
      ]
     }
    ]
@@ -79,7 +81,7 @@
    "conclusion": "failure",
    "cuando": "30/10 02:45",
    "url": "https://github.com/alvarorm931/education/actions/runs/40987648750",
-   "superado": false,
+   "superado": true,
    "pasajero": false,
    "detalle": [
     {
@@ -92,6 +94,28 @@
       "ubuntu-latest"
      ],
      "final_registro": [
+      "ImportError while importing test module '/home/runner/work/education/education/tests/test_seo.py'.",
+      "Traceback:",
+      "E   ModuleNotFoundError: No module named 'lxml'",
+      "##[error]Process completed with exit code 2.",
+      "...",
+      "  Created wheel for motor: filename=motor-0.1.0-0.editable-py3-none-any.whl size=2873 sha256=2d429cf8edde95a3476490b520754c1f6dce7a90b1499b3f172d64787cf86206",
+      "  Stored in directory: /tmp/pip-ephem-wheel-cache-fl6lk87d/wheels/62/b7/c6/32f8ceee540a20cdf55019506a314b172007ee33c9b534abb4",
+      "Successfully built motor",
+      "Installing collected packages: urllib3, six, pypdf, pygments, pluggy, packaging, jmespath, iniconfig, idna, et-xmlfile, charset_normalizer, certifi, requests, python-dateutil, pytest, openpyxl, motor, botocore, s3transfer, boto3",
+      "",
+      "Successfully installed boto3-1.43.122 botocore-1.43.122 certifi-2026.10.23 charset_normalizer-3.5.2 et-xmlfile-2.0.0 idna-3.20 iniconfig-2.3.1 jmespath-1.1.0 motor-0.1.0 openpyxl-3.1.5 packaging-26.3 pluggy-1.7.0 pygments-2.21.0 pypdf-6.21.4 pytest-9.2.0 python-dateutil-2.9.0.post0 requests-2.34.2 s",
+      "",
+      "==================================== ERRORS ====================================",
+      "______________________ ERROR collecting tests/test_seo.py ______________________",
+      "ImportError while importing test module '/home/runner/work/education/education/tests/test_seo.py'.",
+      "Hint: make sure your test modules/packages have valid Python names.",
+      "Traceback:",
+      "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/importlib/__init__.py:90: in import_module",
+      "    return _bootstrap._gcd_import(name[level:], package, level)",
+      "           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+      "tests/test_seo.py:9: in <module>",
+      "    from motor.seo import sitemaps as sm",
       "motor/seo/sitemaps.py:18: in <module>",
       "    from lxml import etree",
       "E   ModuleNotFoundError: No module named 'lxml'",
@@ -99,24 +123,7 @@
       "ERROR tests/test_seo.py",
       "!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!",
       "1 error in 1.24s",
-      "##[error]Process completed with exit code 2.",
-      "Post job cleanup.",
-      "[command]/usr/bin/git version",
-      "git version 2.56.0",
-      "Temporarily overriding HOME='/home/runner/work/_temp/42e8c449-b77f-491e-a971-0804d04720d4' before making global git config changes",
-      "Adding repository directory to the temporary git global config as a safe directory",
-      "[command]/usr/bin/git config --global --add safe.directory /home/runner/work/education/education",
-      "[command]/usr/bin/git config --local --name-only --get-regexp core\\.sshCommand",
-      "[command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'core\\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\"",
-      "[command]/usr/bin/git config --local --name-only --get-regexp http\\.https\\:\\/\\/github\\.com\\/\\.extraheader",
-      "http.https://github.com/.extraheader",
-      "[command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader",
-      "[command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'http\\.https\\:\\/\\/github\\.com\\/\\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\"",
-      "[command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\\.gitdir:",
-      "[command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url",
-      "Evaluate and set job outputs",
-      "Cleaning up orphan processes",
-      "##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/"
+      "##[error]Process completed with exit code 2."
      ]
     }
    ]
@@ -146,6 +153,14 @@
       "ubuntu-latest"
      ],
      "final_registro": [
+      "##[error]Could not assume role with OIDC: Not authorized to perform sts:AssumeRoleWithWebIdentity",
+      "...",
+      "  LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib",
+      "Assuming role with OIDC",
+      "Assuming role with OIDC",
+      "Assuming role with OIDC",
+      "Assuming role with OIDC",
+      "Assuming role with OIDC",
       "Assuming role with OIDC",
       "Assuming role with OIDC",
       "Assuming role with OIDC",
@@ -154,7 +169,6 @@
       "Assuming role with OIDC",
       "Assuming role with OIDC",
       "##[error]Could not assume role with OIDC: Not authorized to perform sts:AssumeRoleWithWebIdentity",
-      "##[group]Run rm -rf codigo",
       "\u001b[36;1mrm -rf codigo\u001b[0m",
       "shell: /usr/bin/bash -e {0}",
       "env:",
@@ -165,12 +179,7 @@
       "  Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64",
       "  LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib",
       "  AWS_DEFAULT_REGION: eu-south-2",
-      "  AWS_REGION: eu-south-2",
-      "##[endgroup]",
-      "Post job cleanup.",
-      "Post job cleanup.",
-      "Cleaning up orphan processes",
-      "##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, aws-actions/configure-aws-credentials@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on"
+      "  AWS_REGION: eu-south-2"
      ]
     }
    ]
@@ -200,6 +209,15 @@
       "ubuntu-latest"
      ],
      "final_registro": [
+      "##[error]push 1: remote: error: GH013: Repository rule violations found for refs/heads/sondas.         remote:  remote: - GITHUB PUSH PROTECTION         remote:   —————————————————————————————————————————         remote:     Resolve the following violations before pushing again         remote:  remo",
+      "##[error]push 2: remote: error: GH013: Repository rule violations found for refs/heads/sondas.         remote:  remote: - GITHUB PUSH PROTECTION         remote:   —————————————————————————————————————————         remote:     Resolve the following violations before pushing again         remote:  remo",
+      "##[error]push 3: remote: error: GH013: Repository rule violations found for refs/heads/sondas.         remote:  remote: - GITHUB PUSH PROTECTION         remote:   —————————————————————————————————————————         remote:     Resolve the following violations before pushing again         remote:  remo",
+      "##[error]push 4: remote: error: GH013: Repository rule violations found for refs/heads/sondas.         remote:  remote: - GITHUB PUSH PROTECTION         remote:   —————————————————————————————————————————         remote:     Resolve the following violations before pushing again         remote:  remo",
+      "##[error]push 5: remote: error: GH013: Repository rule violations found for refs/heads/sondas.         remote:  remote: - GITHUB PUSH PROTECTION         remote:   —————————————————————————————————————————         remote:     Resolve the following violations before pushing again         remote:  remo",
+      "##[error]push 6: remote: error: GH013: Repository rule violations found for refs/heads/sondas.         remote:  remote: - GITHUB PUSH PROTECTION         remote:   —————————————————————————————————————————         remote:     Resolve the following violations before pushing again         remote:  remo",
+      "##[error]Process completed with exit code 1.",
+      "...",
+      "\u001b[36;1mgit remote add origin \"***github.com/alvarorm931/education.git\"\u001b[0m",
       "\u001b[36;1mgit fetch -q --depth 1 origin sondas && git reset -q FETCH_HEAD\u001b[0m",
       "\u001b[36;1mgit checkout -q -B sondas\u001b[0m",
       "\u001b[36;1mgit add \"$STAMP\" && git commit -qm \"Recoger artefactos de la ejecución $RUN\"\u001b[0m",
@@ -214,7 +232,6 @@
       "shell: /usr/bin/bash -e {0}",
       "env:",
       "  RUN: 40963881714",
-      "##[endgroup]",
       "##[notice]tamaño 50M, ficheros 305, mayor 15052204 pub/20261029T232714/datos/estudios/commoncrawl/dominios_CC-MAIN-2026-39_0_150.jsonl",
       "##[error]push 1: remote: error: GH013: Repository rule violations found for refs/heads/sondas.         remote:  remote: - GITHUB PUSH PROTECTION         remote:   —————————————————————————————————————————         remote:     Resolve the following violations before pushing again         remote:  remo",
       "##[error]push 2: remote: error: GH013: Repository rule violations found for refs/heads/sondas.         remote:  remote: - GITHUB PUSH PROTECTION         remote:   —————————————————————————————————————————         remote:     Resolve the following violations before pushing again         remote:  remo",
@@ -254,6 +271,8 @@
       "ubuntu-latest"
      ],
      "final_registro": [
+      "##[error]Process completed with exit code 1.",
+      "...",
       "remote:     Resolve the following violations before pushing again        ",
       "remote: ",
       "remote:     - Push cannot contain secrets        ",
@@ -308,6 +327,8 @@
       "ubuntu-latest"
      ],
      "final_registro": [
+      "##[error]Process completed with exit code 1.",
+      "...",
       "remote:     - Push cannot contain secrets        ",
       "remote: ",
       "remote:             ",
@@ -345,7 +366,7 @@
    "parado": false
   },
   "autonomicos.yml": {
-   "ultimo_bien": "30/10 02:41",
+   "ultimo_bien": "30/10 03:05",
    "parado": false
   },
   "seo.yml": {
