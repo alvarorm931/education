@@ -107,6 +107,18 @@ def rescatar_oficiales(paginas: dict[str, dict], hechos: dict[str, list[dict]], 
     for t in cat.values():
         if t.get("situacion", "Activo") == "Activo":
             por_univ[t.get("universidad_codigo") or ""].append(t)
+    nombres_univ = {}  # palabras del nombre corto de cada universidad del catálogo → código
+    for t in cat.values():
+        if t.get("universidad") and t.get("universidad_codigo"):
+            nombres_univ[frozenset(palabras_texto(t["universidad"]))] = t["universidad_codigo"]
+
+    def univ_de(texto: str) -> str | None:
+        """«Universidad Rey Juan Carlos» → su código; entre varias que encajan, la de nombre más largo
+        («Autònoma de Barcelona» antes que «Barcelona»)."""
+        pal = palabras_texto(texto)
+        encajan = [(len(k), c) for k, c in nombres_univ.items() if k and k <= pal]
+        return max(encajan)[1] if encajan else None
+
     salida = {}
     for url, p in paginas.items():
         if p.get("grupo") == "oficial" or p.get("pagina") == "subpagina" or p.get("no_es_programa"):
@@ -116,6 +128,10 @@ def rescatar_oficiales(paginas: dict[str, dict], hechos: dict[str, list[dict]], 
         if not nombre or not ("oficial" in tipo or "universitari" in nombre.lower()):
             continue
         univs = {r.get("universidad") for r in (censo.get(p.get("proveedor") or "") or {}).get("ruct", [])}
+        if not univs and hs.get("universidad_que_expide"):
+            # centro sin registro propio en el RUCT (adscrito con web propia): la universidad que dice la página
+            u = univ_de(str(hs["universidad_que_expide"]))
+            univs = {u} if u else set()
         mejor = None
         for u in univs:
             for t in por_univ.get(u or "", []):

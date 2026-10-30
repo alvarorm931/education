@@ -99,3 +99,23 @@ def test_gana_la_mejor_candidata_de_un_mismo_master(tmp_path):
     x = json.loads((tmp_path / "o/datos/estudios/masters/fichas.jsonl").read_text().splitlines()[0])
     assert x["comprobacion_nombre"] == "confirmado" and x["campos"]["plazas"]["valor"] == 30
     assert x["paginas"] == ["https://u.es/master-q"]
+
+
+def test_rescate_por_universidad_que_dice_la_pagina(tmp_path):
+    t = "2026-10-30T03:00:00+00:00"
+    pag = [{"url": "https://tai.es/master-animacion", "extraido": t, "grupo": "no_oficial", "proveedor": "prov-tai",
+            "pagina": "principal"}]
+    h = lambda campo, valor: {"url": "https://tai.es/master-animacion", "campo": campo, "valor": valor,
+                              "estado": "aceptado", "extraido": t, "captura_sha256": "s"}
+    _escribir(tmp_path / "e", pag, [h("nombre", "Máster Universitario en Creación de Animación Audiovisual"),
+                                    h("tipo_titulo", "máster universitario oficial"),
+                                    h("universidad_que_expide", "Universidad Rey Juan Carlos")])
+    cat = [{"codigo_ruct": "1", "universidad": "Rey Juan Carlos", "universidad_codigo": "045", "situacion": "Activo",
+            "nombre_oficial": "Máster Universitario en Creación de Animación Audiovisual por la Universidad Rey Juan Carlos"},
+           {"codigo_ruct": "2", "universidad": "Barcelona", "universidad_codigo": "001", "situacion": "Activo",
+            "nombre_oficial": "Máster Universitario en Creación de Animación Audiovisual por la Universidad de Barcelona"}]
+    (tmp_path / "c.json").write_text(json.dumps(cat))
+    (tmp_path / "p.jsonl").write_text(json.dumps({"id": "prov-tai", "ruct": []}) + "\n")
+    f.ejecutar([tmp_path / "e"], tmp_path / "o", catalogo=tmp_path / "c.json", censo=tmp_path / "p.jsonl")
+    fichas = {x["clave"]: x for x in map(json.loads, (tmp_path / "o/datos/estudios/masters/fichas.jsonl").read_text().splitlines())}
+    assert fichas["ruct:1"]["comprobacion_nombre"] == "confirmado_por_nombre" and "ruct:2" not in fichas
