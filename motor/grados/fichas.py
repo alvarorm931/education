@@ -838,7 +838,9 @@ def anadir_historico(fichas: list[dict], historico: list[dict]) -> dict:
     fuente (documento del distrito, huella y fecha de captura). Una ficha sin nota de QEDU ni precio que tenga la de su
     distrito desde 2021-2022 deja de tener ese motivo para no indexarse."""
     por = {(h["codigo_titulo"], h["codigo_centro"]): h for h in historico if h.get("publicable")}
-    fichas_con, centros_con, cinco, indexables_por_historico = set(), 0, 0, set()
+    from motor.grados.notas_corte import CUPOS_RESERVA
+
+    fichas_con, centros_con, cinco, indexables_por_historico, centros_con_cupos = set(), 0, 0, set(), 0
     for f in fichas:
         for c in f.get("centros") or []:
             h = por.get((f["codigo"], c.get("codigo")))
@@ -848,6 +850,15 @@ def anadir_historico(fichas: list[dict], historico: list[dict]) -> dict:
                                      "contraste_qedu": h["contraste_qedu"],
                                      "nota": "la menor de las ofertas del título en el centro, como QEDU; 5,000 = "
                                              "entraron todos los que lo pidieron"}
+            if h.get("otros_cupos"):
+                # cupos de reserva: misma fila del mismo documento que la del cupo general, ya contrastada con QEDU
+                c["notas_historicas"]["otros_cupos"] = {
+                    cupo: {"rotulo": CUPOS_RESERVA[cupo], "cursos": cursos}
+                    for cupo, cursos in h["otros_cupos"].items() if cupo in CUPOS_RESERVA}
+                c["notas_historicas"]["nota_otros_cupos"] = (
+                    "cada cupo de reserva tiene su propia prueba o baremo y sus notas no se comparan con las del cupo "
+                    "general; 5,000 = se admitió a todos los que lo pidieron por ese cupo")
+                centros_con_cupos += 1
             fichas_con.add(f["codigo"])
             centros_con += 1
             cinco += len(h["cursos"]) >= 5
@@ -858,7 +869,7 @@ def anadir_historico(fichas: list[dict], historico: list[dict]) -> dict:
                 f["indexable"] = not f["motivos_noindex"]
                 indexables_por_historico.add(f["codigo"])
     return {"fichas_con_notas_historicas": len(fichas_con), "centros_con_notas_historicas": centros_con,
-            "centros_con_cinco_cursos_o_mas": cinco,
+            "centros_con_cinco_cursos_o_mas": cinco, "centros_con_cupos_de_reserva": centros_con_cupos,
             "fichas_con_nota_solo_por_el_historico": len(indexables_por_historico)}
 
 

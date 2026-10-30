@@ -875,6 +875,27 @@ def nota_del_titulo(filas: list[dict]) -> dict[tuple, dict]:
             for k, xs in por.items()}
 
 
+CUPOS_RESERVA = {"titulados": "titulados universitarios", "mayores_25": "mayores de 25 años",
+                 "mayores_40": "mayores de 40 años con experiencia laboral", "mayores_45": "mayores de 45 años"}
+
+
+def notas_de_otros_cupos(filas: list[dict]) -> dict[tuple, dict]:
+    """(título, centro) → {cupo: {curso: nota}} de los cupos de reserva (titulados, mayores de 25, 40 y 45) en la
+    convocatoria ordinaria: la menor de las ofertas con nota, del mismo documento y la misma fila que la del cupo
+    general, así que la unión con el título es la misma y se publica junto a ella si esta es publicable."""
+    por: dict[tuple, list[dict]] = defaultdict(list)
+    for x in filas:
+        if x.get("codigo_titulo") and x.get("codigo_centro") and x["cupo"] in CUPOS_RESERVA \
+                and x.get("convocatoria") in (None, "ordinaria", "junio") and x.get("nota") is not None:
+            por[(x["codigo_titulo"], x["codigo_centro"], x["cupo"], x["curso"])].append(x)
+    salida: dict[tuple, dict] = defaultdict(lambda: defaultdict(dict))
+    for (tit, cen, cupo, curso), xs in sorted(por.items()):
+        salida[(tit, cen)][cupo][curso] = {
+            "nota": min(x["nota"] for x in xs), "ofertas": len(xs), "lista": xs[0]["lista"],
+            "todos_admitidos": all(x.get("todos_admitidos") for x in xs), "fuente": xs[0]["fuente"]}
+    return {k: {c: dict(v) for c, v in d.items()} for k, d in salida.items()}
+
+
 DIFERENCIA_LISTA_POSTERIOR = 0.25
 
 
@@ -903,6 +924,7 @@ def historico(filas: list[dict], cands: dict[str, list[dict]]) -> list[dict]:
     por: dict[tuple, dict] = defaultdict(dict)
     for (tit, cen, curso), v in nota_del_titulo(filas).items():
         por[(tit, cen)][curso] = v
+    cupos = notas_de_otros_cupos(filas)
     salida = []
     for (tit, cen), cursos in sorted(por.items()):
         c = por_cod.get((tit, cen)) or {"notas_qedu": {}}
@@ -927,7 +949,8 @@ def historico(filas: list[dict], cands: dict[str, list[dict]]) -> list[dict]:
                        # publica hasta tener otra comprobación
                        "publicable": not contraste.get("distinta") and (finales or bool(plazas_iguales)),
                        "lista": "final" if all(v["lista"] == "final" for v in cursos.values())
-                       else "varias" if finales else next(iter(cursos.values()))["lista"]})
+                       else "varias" if finales else next(iter(cursos.values()))["lista"],
+                       **({"otros_cupos": cupos[(tit, cen)]} if (tit, cen) in cupos else {})})
     return salida
 
 

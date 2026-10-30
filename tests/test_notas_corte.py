@@ -263,3 +263,22 @@ def test_misma_huella_gana_la_lectura_mas_completa(tmp_path, monkeypatch):
     monkeypatch.setattr(nc, "CON_POSICIONES", {lector})
     nc.leer_fuentes([tmp_path])
     assert vistos and vistos[0][0]["ocr"]
+
+
+def test_cupos_de_reserva_van_con_el_historico_del_cupo_general():
+    """Titulados y mayores de 25, 40 y 45: misma fila del mismo documento que el cupo general, así que van con su
+    histórico (y solo se publican si este es publicable); la menor de las ofertas, solo la convocatoria ordinaria."""
+    cands = {"U": [_cand("1", "Derecho", "C1", "madrid", notas={"2025-2026": 9.21})]}
+    filas = [_fila("Derecho", 9.214, codigo="0263")]
+    for cupo, nota, codigo in (("titulados", 7.5, "0263"), ("titulados", 6.9, "0273"), ("mayores_25", 6.2, "0263")):
+        filas.append({**_fila("Derecho", nota, codigo=codigo), "cupo": cupo})
+    filas.append({**_fila("Derecho", 5.1, codigo="0263"), "cupo": "mayores_45", "convocatoria": "extraordinaria"})
+    nc.unir(filas, cands)
+    h = nc.historico(filas, cands)[0]
+    assert h["otros_cupos"]["titulados"]["2025-2026"]["nota"] == 6.9
+    assert h["otros_cupos"]["titulados"]["2025-2026"]["ofertas"] == 2
+    assert set(h["otros_cupos"]) == {"titulados", "mayores_25"}  # la extraordinaria no
+    fichas = [{"codigo": "1", "centros": [{"codigo": "C1"}]}]
+    r = anadir_historico(fichas, [h])
+    oc = fichas[0]["centros"][0]["notas_historicas"]["otros_cupos"]
+    assert oc["mayores_25"]["rotulo"] == "mayores de 25 años" and r["centros_con_cupos_de_reserva"] == 1
