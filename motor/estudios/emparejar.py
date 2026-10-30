@@ -33,8 +33,11 @@ SUBPAGINAS = re.compile(r"^(acceso|admision|admisiones|profesorado|claustro|plan
                         r"asignaturas|estructura|plan-estudios|profesores|docentes|equipo-docente|noticias)$")
 # Parámetros de la URL que no distinguen un programa de otro (paginación, idioma, seguimiento): se quitan. Los demás
 # se conservan: en muchas webs el programa solo cambia en la consulta (uab.cat/…-1096480962610.html?param1=…).
-QUERY_FUERA = re.compile(r"^(utm_\w*|lang|language|idioma|hl|locale|start|limitstart|page|pagina|pag|p|sort|order|"
-                         r"orderby|ref|fbclid|gclid|mc_\w*|_ga|print|share|tab|s)$", re.I)
+QUERY_FUERA = re.compile(r"^(utm_\w*|lang|language|idioma|hl|locale|start|limitstart|page|pagina|pag|sort|order|"
+                         r"orderby|ref|fbclid|gclid|mc_\w*|_ga|print|share|tab|s)$", re.I)  # «p» no: en WordPress es la entrada
+# Tramos finales que son el contenedor de la ficha (/titulacion?id=…, /programa.php?cod=…): su consulta identifica
+# el programa y no se quita al quitar el tramo
+CONTENEDOR = re.compile(r"^(programa|titulacion|presentacion|informacion|estudio|estudios|ver|detalle|ficha)$")
 EXTENSION = re.compile(r"\.(html?|php|aspx?|jsp)$", re.I)
 # Subpáginas con lo que más falta en la ficha principal: precio, plan de estudios, acceso, horario…
 SUBPAGINA_UTIL = re.compile(r"(precio|tasas|becas|financiacion|plan|asignaturas|estructura|programa|temario|acceso|"
@@ -72,6 +75,8 @@ def raiz_programa(url: str, quitar_subpaginas: bool = True) -> str:
     partes = [p for p in u.path.split("/") if p]
     sub = False
     while quitar_subpaginas and len(partes) > 1 and SUBPAGINAS.match(EXTENSION.sub("", partes[-1].lower())):
+        if u.query and CONTENEDOR.match(EXTENSION.sub("", partes[-1].lower())):
+            break  # /estudios/titulacion?id=1 y ?id=2 son dos programas, no subpáginas de /estudios/
         partes.pop()
         sub = True
     q = "" if sub else "&".join(sorted(f"{k}={v}" for k, v in parse_qsl(u.query, keep_blank_values=True)
@@ -181,7 +186,8 @@ def emparejar(titulos: list[dict], urls: list[str], textos: dict[str, str] | Non
     real = {r: v[0] for r, v in reales.items()}
     textos = {html.unescape(u): t for u, t in textos.items()}
     texto_raiz: dict[str, str] = {}
-    for u, t in textos.items():
+    # el texto del enlace a la ficha misma antes que el de una subpágina («Plan de estudios»)
+    for u, t in sorted(textos.items(), key=lambda ut: raiz_programa(ut[0], False) != raiz_programa(ut[0])):
         texto_raiz.setdefault(raiz_programa(u), t)
     pals = [(u, palabras_texto(texto_raiz[u]) if palabras_texto(texto_raiz.get(u, "")) else palabras_url(sin_modalidad(u)))
             for u in raices]

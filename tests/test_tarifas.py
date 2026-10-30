@@ -73,3 +73,21 @@ def test_descubrir_pdfs_en_originales(tmp_path, monkeypatch):
     r = t.descubrir_en_originales([d], tmp_path / "o")
     x = json.loads((tmp_path / "o" / "precios_desde_paginas.jsonl").read_text())
     assert r["pdfs"] == 1 and x == {"dominio": "u.es", "urls": ["https://www.u.es/docs/tarifas-2026.pdf"]}
+
+
+def test_tarifas_otra_moneda_y_un_precio_por_ficha(tmp_path):
+    v = t.verificar({"precios": [{"programa": "Máster X", "importe": "150.000", "concepto": "total", "cita": "Máster X MXN 150.000"}]},
+                    "Máster X MXN 150.000")
+    assert v[0]["estado"] == "revision"
+    (tmp_path / "t").mkdir()
+    base = {"estado": "aceptado", "programa": "Máster Universitario en Abogacía", "concepto": "total", "proveedor": "p", "dominio": "u.es"}
+    precios = [{**base, "importe": 8000, "curso": "2023-2024", "url": "https://u.es/a.pdf"},
+               {**base, "importe": 9500, "curso": "2026-2027", "url": "https://u.es/b.pdf"},
+               {**base, "importe": 9500, "curso": "2026-2027", "url": "https://u.es/b.pdf"}]
+    (tmp_path / "t" / "precios.jsonl").write_text("".join(json.dumps(x) + "\n" for x in precios))
+    (tmp_path / "f.jsonl").write_text(json.dumps({"clave": "ruct:1", "grupo": "oficial", "comprobacion_nombre": "confirmado",
+                                                  "nombre_oficial": "Máster Universitario en Abogacía por la U",
+                                                  "paginas": ["https://u.es/abogacia"]}) + "\n")
+    r = t.unir([tmp_path / "t"], tmp_path / "f.jsonl", tmp_path / "o")
+    x = [json.loads(l) for l in (tmp_path / "o/datos/estudios/tarifas/precios_unidos.jsonl").read_text().splitlines()]
+    assert r["unidos"] == 1 and x[0]["importe"] == 9500

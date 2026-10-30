@@ -216,12 +216,14 @@ def verificar(datos: dict, texto: str) -> list[dict]:
     for x in (datos.get("precios") or [])[:150]:
         cita = str(x.get("cita") or "")
         n = extraer.como_numero(x.get("importe"))
-        ok = len(cita.split()) >= 2 and extraer._norma(cita) in base
+        ok = len(cita.split()) >= 2 and extraer.cita_en_texto(cita, base)
         motivo = None if ok else "cita_no_literal"
         if n is None:
             ok, motivo = False, motivo or "valor_no_numerico"
         elif ok and not extraer.numero_en_cita(n, cita):
             ok, motivo = False, "valor_no_en_cita"
+        elif ok and (extraer.MONEDA_NO_EURO.search(cita) or n > extraer.PRECIO_MAXIMO):
+            ok, motivo = False, "moneda_no_euro_o_fuera_de_rango"
         out.append({"programa": str(x.get("programa") or "")[:200], "importe": n if ok else None,
                     "importe_propuesto": None if ok else x.get("importe"), "concepto": x.get("concepto"),
                     "estado": "aceptado" if ok else "revision", "motivo": motivo,
@@ -250,7 +252,8 @@ def lote(pdfs: list[Path], censo: Path, salida: Path, esperar_min: float = 40, m
                 cid = "t" + hashlib.sha256((c["url"] + c["sha256"]).encode()).hexdigest()[:24]
                 por_id[cid] = (c, texto)
                 peticiones.append(peticion(cid, c["url"], texto))
-                enviado.append({"custom_id": cid, "url": c["url"], "sha256": c["sha256"], "texto": texto})
+                enviado.append({"custom_id": cid, "url": c["url"], "sha256": c["sha256"], "texto": texto,
+                                "proveedor": c["proveedor"], "dominio": c["dominio"]})
                 cuentas["enviados"] += 1
             f.write(json.dumps(c, ensure_ascii=False) + "\n")
     if not peticiones:
@@ -269,12 +272,17 @@ def lote(pdfs: list[Path], censo: Path, salida: Path, esperar_min: float = 40, m
         res = {**cuentas, "estado_lote": b.get("processing_status"), "id": b["id"]}
         (salida / "resumen.json").write_text(json.dumps(res, ensure_ascii=False, indent=1), encoding="utf-8")
         return res
+    return _procesar(b, por_id, salida, guarda, cuentas)
+
+
+def _procesar(b: dict, por_id: dict, salida: Path, guarda: extraer.Guarda, cuentas: Counter) -> dict:
     res = requests.get(b["results_url"], headers=extraer._cabeceras(), timeout=600)
     if guarda.activa:
         guarda.original(extraer.FUENTE_EXTRACCION, res.content, "tarifas-resultados.jsonl",
                         f"anthropic-batch:{b['id']}/tarifas-resultados")
     ahora = datetime.now(timezone.utc).isoformat(timespec="seconds")
     dolares = 0.0
+    salida.mkdir(parents=True, exist_ok=True)
     with (salida / "precios.jsonl").open("w", encoding="utf-8") as fo:
         for linea in res.text.splitlines():
             if not linea.strip():
@@ -293,8 +301,13 @@ def lote(pdfs: list[Path], censo: Path, salida: Path, esperar_min: float = 40, m
                 cuentas["no_es_tarifa"] += 1
                 continue
             cuentas["tarifas"] += 1
-            for p in verificar(datos, texto):
-                p.update({"url": c["url"], "proveedor": c["proveedor"], "dominio": c["dominio"],
+            try:
+                verificados = verificar(datos, texto)
+            except Exception as e:  # noqa: BLE001 - un documento raro no tira la tanda ya pagada
+                cuentas["error_" + type(e).__name__] += 1
+                continue
+            for p in verificados:
+                p.update({"url": c["url"], "proveedor": c.get("proveedor"), "dominio": c.get("dominio"),
                           "curso": str(datos.get("curso") or "")[:20], "captura_sha256": c["sha256"],
                           "extraido": ahora, "modelo": extraer.MODELO, "lote": b["id"]})
                 fo.write(json.dumps(p, ensure_ascii=False) + "\n")
@@ -302,6 +315,37 @@ def lote(pdfs: list[Path], censo: Path, salida: Path, esperar_min: float = 40, m
     resumen = {**cuentas, "id": b["id"], "coste_usd": round(dolares, 6), "almacen": dict(guarda.cuentas)}
     (salida / "resumen.json").write_text(json.dumps(resumen, ensure_ascii=False, indent=1), encoding="utf-8")
     return resumen
+
+
+def retomar(lote_json: Path, salida: Path, censo: Path | None = None, esperar_min: float = 30) -> dict:
+    """Recoge un lote de tarifas ya enviado (por ejemplo, si la ejecución que lo envió se cortó), con el texto
+    exacto que se envió, guardado en el almacén privado."""
+    from urllib.parse import urlparse
+
+    from motor.estudios.censo import dominio_registrado
+
+    guarda = extraer.Guarda()
+    info = json.loads(lote_json.read_text(encoding="utf-8"))
+    provs = {}
+    if censo:
+        for l in censo.read_text(encoding="utf-8").splitlines():
+            if l.strip():
+                x = json.loads(l)
+                for d in x.get("dominios", [x["dominio"]]):
+                    provs[d] = x["id"]
+    por_id = {}
+    for e in guarda.leer_jsonl(info["clave_enviado"]):
+        dom = e.get("dominio") or dominio_registrado(urlparse(e["url"]).netloc)
+        por_id[e["custom_id"]] = ({"url": e["url"], "sha256": e["sha256"], "dominio": dom,
+                                   "proveedor": e.get("proveedor") or provs.get(dom)}, e["texto"])
+    b = requests.get(f"{extraer.API}/{info['id']}", headers=extraer._cabeceras(), timeout=60).json()
+    fin = time.time() + esperar_min * 60
+    while b.get("processing_status") != "ended" and time.time() < fin:
+        time.sleep(30)
+        b = requests.get(f"{extraer.API}/{info['id']}", headers=extraer._cabeceras(), timeout=60).json()
+    if b.get("processing_status") != "ended":
+        return {"estado_lote": b.get("processing_status"), "id": info["id"]}
+    return _procesar(b, por_id, salida, guarda, Counter({"retomado": 1}))
 
 
 def unir(tarifas: list[Path], fichas: Path, salida: Path) -> dict:
@@ -328,6 +372,14 @@ def unir(tarifas: list[Path], fichas: Path, salida: Path) -> dict:
             for k in claves - {None, ""}:
                 por_prov[k].append({"clave": f["clave"], "nombre": nombre})
     cuentas, filas = Counter(), []
+    # el mismo precio puede venir de varias tandas o PDF: se queda uno por ficha y concepto, el del curso más
+    # reciente (y entre iguales, la extracción más nueva)
+    def curso(p: dict) -> int:
+        m = [int(x) for x in re.findall(r"20\d\d", str(p.get("curso") or "") + " " + p.get("url", ""))]
+        return max(m) if m else 0
+
+    precios = sorted(precios, key=lambda p: (curso(p), p.get("extraido", "")), reverse=True)
+    vistos: set = set()
     for p in precios:
         if p["estado"] != "aceptado":
             continue
@@ -337,6 +389,11 @@ def unir(tarifas: list[Path], fichas: Path, salida: Path) -> dict:
                          key=lambda x: -x[0][1])
         buenos = [(e, c) for e, c in mejores if e[0] == "confirmado"]
         if len(buenos) == 1 or (len(buenos) > 1 and buenos[0][0][1] > buenos[1][0][1]):
+            clave_ficha = (buenos[0][1]["clave"], p.get("concepto"))
+            if clave_ficha in vistos:
+                cuentas["repetidos_o_de_otro_curso"] += 1
+                continue
+            vistos.add(clave_ficha)
             cuentas["unidos"] += 1
             filas.append({**p, "ficha": buenos[0][1]["clave"], "cobertura_nombre": buenos[0][0][1]})
         else:
@@ -351,7 +408,8 @@ def unir(tarifas: list[Path], fichas: Path, salida: Path) -> dict:
 
 def main() -> None:
     a = argparse.ArgumentParser()
-    a.add_argument("orden", choices=["lote", "unir", "descubrir", "todo"])
+    a.add_argument("orden", choices=["lote", "unir", "descubrir", "todo", "retomar"])
+    a.add_argument("--lote-json")
     a.add_argument("--capturadas", action="append", default=[], help="carpetas con paginas_capturadas.jsonl")
     a.add_argument("--pdfs", action="append", default=[])
     a.add_argument("--censo")
@@ -362,6 +420,10 @@ def main() -> None:
     a.add_argument("--hilos", type=int, default=12)
     a.add_argument("--salida", required=True)
     x = a.parse_args()
+    if x.orden == "retomar":
+        print(json.dumps(retomar(Path(x.lote_json), Path(x.salida) / "datos" / "estudios" / "tarifas" / "retomado",
+                                 Path(x.censo) if x.censo else None, x.esperar_min), ensure_ascii=False))
+        return
     if x.orden in ("descubrir", "todo"):
         base = Path(x.salida) / "datos" / "estudios" / "tarifas"
         r = descubrir_en_originales([Path(p) for p in x.capturadas], base)

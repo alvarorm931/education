@@ -29,17 +29,32 @@ from motor.estudios.emparejar import palabras_nombre, palabras_texto
 from motor.estudios.extraer import LOCALE_OTRO_PAIS, NUMERICOS, PRECIO_MAXIMO, PRECIOS, como_numero
 
 CONFIRMADO, PROBABLE = 0.8, 0.5
-ORDEN_ESTADO = {"confirmado": 0, "probable_oficial": 1, "probable_sin_confirmar": 2, "distinto": 3, "sin_nombre": 4,
-                "no_es_ficha": 5, "sin_catalogo": 6}
+ORDEN_ESTADO = {"confirmado": 0, "probable_oficial": 1, "probable_sin_confirmar": 2, "otro_tipo": 3, "distinto": 3,
+                "sin_nombre": 4, "no_es_ficha": 5, "sin_catalogo": 6}
+
+
+# Palabras que dicen otro tipo de título: si están en el nombre de la página y no en el oficial, es otro programa
+# («Experto Universitario en Big Data» no es el «Máster Universitario en Big Data»).
+TIPO_DISTINTO = {"experto", "especialista", "especializacion", "curso", "cursos", "diploma", "diplomatura", "propio",
+                 "permanente", "doble", "executive", "ejecutivo", "programa", "postgrado", "posgrado", "mba", "grado",
+                 "certificado", "certificate", "titulo", "microcredencial"}
+
+
+def es_tipo_oficial(tipo: str) -> bool:
+    """«máster universitario oficial» sí; «título propio (no oficial)» o «formación permanente» no."""
+    t = (tipo or "").lower()
+    return "oficial" in t and not re.search(r"no[\s-]+oficial|propio|permanente|no universitari", t)
 
 
 def comprobar_nombre(oficial: str, extraido: str | None) -> tuple[str, float]:
-    """confirmado | probable | distinto | sin_nombre, con la parte del nombre oficial que aparece."""
+    """confirmado | probable | otro_tipo | distinto | sin_nombre, con la parte del nombre oficial que aparece."""
     if not extraido:
         return "sin_nombre", 0.0
     po, pe = palabras_nombre(oficial), palabras_texto(extraido)
     if not po:
         return "sin_nombre", 0.0
+    if (pe & TIPO_DISTINTO) - palabras_texto(oficial):
+        return "otro_tipo", round(len(po & pe) / len(po), 3)
     cobertura = len(po & pe) / len(po)
     sobrante = len(pe - po) / max(len(pe), 1)
     if cobertura >= CONFIRMADO and sobrante <= 0.4:
@@ -53,6 +68,11 @@ def _jsonl(ruta: Path) -> list[dict]:
     return [json.loads(l) for l in ruta.read_text(encoding="utf-8").splitlines() if l.strip()] if ruta.exists() else []
 
 
+def legible(p: dict) -> bool:
+    """Extracción que sirve: respuesta legible y no cortada (las antiguas no lo anotaban: se dan por buenas)."""
+    return p.get("json_legible", True) is not False and p.get("parada") != "max_tokens"
+
+
 def leer_extracciones(carpetas: list[Path]) -> tuple[dict[str, dict], dict[str, list[dict]]]:
     """(páginas por URL, hechos aceptados por URL), quedándose con la extracción más reciente de cada página."""
     paginas: dict[str, dict] = {}
@@ -64,10 +84,15 @@ def leer_extracciones(carpetas: list[Path]) -> tuple[dict[str, dict], dict[str, 
                     paginas[p["url"]] = p
                 elif previa.get("grupo") == "oficial" and p.get("grupo") != "oficial":
                     continue  # la misma página pedida también como no oficial: manda su unión a un máster oficial
-                elif p["extraido"] >= previa["extraido"] or (p.get("grupo") == "oficial" and previa.get("grupo") != "oficial"):
+                else:
+                    nueva_mejor = (p["extraido"] >= previa["extraido"] and legible(p)) or not legible(previa) \
+                        or (p.get("grupo") == "oficial" and previa.get("grupo") != "oficial")
+                    elegida = p if nueva_mejor else previa
                     if previa.get("grupo") == "oficial" and p.get("grupo") == "oficial":
-                        p = {**p, "codigos_ruct": sorted(set(previa.get("codigos_ruct") or []) | set(p.get("codigos_ruct") or []))}
-                    paginas[p["url"]] = p
+                        # los códigos RUCT de las dos tandas, en cualquier orden de lectura
+                        elegida = {**elegida, "codigos_ruct": sorted(set(previa.get("codigos_ruct") or [])
+                                                                     | set(p.get("codigos_ruct") or []))}
+                    paginas[p["url"]] = elegida
     hechos: dict[str, list[dict]] = defaultdict(list)
     for c in carpetas:
         for f in sorted(c.rglob("hechos.jsonl")):
@@ -139,7 +164,7 @@ def rescatar_oficiales(paginas: dict[str, dict], hechos: dict[str, list[dict]], 
             continue
         hs = {h["campo"]: h["valor"] for h in hechos.get(url, [])}
         nombre, tipo = str(hs.get("nombre") or ""), str(hs.get("tipo_titulo") or "").lower()
-        if not nombre or not ("oficial" in tipo or "universitari" in nombre.lower()):
+        if not nombre or not (es_tipo_oficial(tipo) or (not tipo and "universitari" in nombre.lower())):
             continue
         univs = {r.get("universidad") for r in (censo.get(p.get("proveedor") or "") or {}).get("ruct", [])}
         if not univs and hs.get("universidad_que_expide"):
@@ -228,7 +253,7 @@ def ejecutar(extracciones: list[Path], salida: Path, catalogo: Path | None = Non
                 tipo = next((str(h["valor"]) for h in hechos.get(p["url"], []) if h["campo"] == "tipo_titulo"), "")
                 rival = max((comprobar_nombre(o["nombre_oficial"], nom)[1] for o in hermanos.get(t.get("universidad_codigo"), [])
                              if o["codigo_ruct"] != codigo), default=0.0)
-                est = "probable_oficial" if "oficial" in tipo.lower() and "doble" not in (nom or "").lower() \
+                est = "probable_oficial" if es_tipo_oficial(tipo) and "doble" not in (nom or "").lower() \
                     and rival < cb else "probable_sin_confirmar"
             juicios.append((ORDEN_ESTADO.get(est, 9), -cb, p["url"], est, cb, nom))
         if juicios:

@@ -181,7 +181,7 @@ def verificar(respuesta: dict, texto: str) -> list[dict]:
         if not isinstance(dato, dict) or dato.get("valor") in (None, "", []):
             continue
         cita = dato.get("cita") or ""
-        ok = len(cita.split()) >= 2 and _norma(cita) in base
+        ok = len(cita.split()) >= 2 and cita_en_texto(cita, base)
         motivo = None if ok else "cita_no_literal"
         if campo in NUMERICOS:
             n = como_numero(dato.get("valor"))
@@ -202,38 +202,67 @@ def verificar(respuesta: dict, texto: str) -> list[dict]:
 NUMERICOS = {"creditos_ects", "plazas", "precio_total", "precio_credito", "reserva_matricula"}
 
 
+def leer_numero(t: str):
+    """Un número escrito como en España o en inglés: «9.800», «1.500,50», «45,50», «12,5», «12.5», «12,000.50».
+    Punto o coma seguidos de exactamente tres cifras son de miles; con una o dos, decimales. Si no, None."""
+    t = t.strip()
+    if re.fullmatch(r"\d+", t):
+        return int(t)
+    if re.fullmatch(r"\d{1,3}(\.\d{3})+(,\d+)?", t):  # 9.800 / 1.500,50
+        ent, _, dec = t.partition(",")
+        return float(ent.replace(".", "") + "." + dec) if dec else int(ent.replace(".", ""))
+    if re.fullmatch(r"\d{1,3}(,\d{3})+(\.\d+)?", t):  # 12,000 / 12,000.50
+        ent, _, dec = t.partition(".")
+        return float(ent.replace(",", "") + "." + dec) if dec else int(ent.replace(",", ""))
+    if re.fullmatch(r"\d+[.,]\d{1,2}", t):  # 45,50 / 12.5 / 1500,50
+        return float(t.replace(",", "."))
+    return None
+
+
 def como_numero(valor):
-    """9800, «9800», «9.800», «9.800 €», «12,50» → número; lo demás (texto, rangos, listas) → None."""
+    """9800, «9800», «9.800», «9.800 €», «1.500,50», «12,50» → número; lo demás (texto, rangos, listas) → None."""
     if isinstance(valor, bool):
         return None
     if isinstance(valor, (int, float)):
         return valor
-    t = re.sub(r"\s|€|euros?|eur|ects|cr[eé]ditos?|plazas?", "", str(valor), flags=re.I)
-    if not re.fullmatch(r"\d{1,3}([.,]\d{3})*([.,]\d{1,2})?|\d+([.,]\d{1,2})?", t):
+    t = re.sub(r"€|euros?|\beur\b|ects|cr[eé]ditos?|plazas?", "", str(valor), flags=re.I).strip()
+    t = re.sub(r"(?<=\d)[\s  ](?=\d{3}\b)", ".", t)  # «9 800» con espacio de miles
+    if re.search(r"\s", t):
         return None
-    if re.fullmatch(r"\d{1,3}([.,]\d{3})+", t):  # 9.800 / 12,000: separador de miles
-        return int(re.sub(r"[.,]", "", t))
-    m = re.fullmatch(r"(\d{1,3}(?:[.,]\d{3})*)[.,](\d{1,2})", t)
-    if m:
-        return float(re.sub(r"[.,]", "", m.group(1)) + "." + m.group(2))
-    return int(t)
+    try:
+        return leer_numero(t)
+    except ValueError:
+        return None
+
+
+RE_NUMERO_EN_TEXTO = re.compile(r"(?<![\d.,])(?:\d{1,3}(?:[.   ]\d{3})+(?:[.,]\d+)?|\d+(?:[.,]\d+)?)(?![\d])")
+
+
+def numeros_en(texto: str) -> list[float]:
+    """Los números de un texto leídos con las mismas reglas que los valores (cada uno de una sola manera)."""
+    out = []
+    for m in RE_NUMERO_EN_TEXTO.findall(texto or ""):
+        n = leer_numero(re.sub(r"[   ]", ".", m))
+        if n is not None:
+            out.append(float(n))
+    return out
 
 
 def numero_en_cita(valor, cita: str) -> bool:
-    """9800 está en «9.800 €», «9800€» o «9,800»; 60 en «60 ECTS». Valores no numéricos: no se comprueban."""
-    try:
-        v = float(str(valor).replace(",", "."))
-    except (TypeError, ValueError):
+    """9800 está en «9.800 €» o «9800€»; 60 en «60 ECTS»; 45,5 en «45,50 €» (y 4550 no). Valores no numéricos:
+    no se comprueban aquí (verificar ya los manda a revisión)."""
+    v = como_numero(valor)
+    if v is None:
         return True
-    numeros = set()
-    for m in re.findall(r"\d[\d.,\s]*\d|\d", cita):
-        m = m.replace(" ", "")
-        for cand in (m.replace(".", "").replace(",", "."), m.replace(",", ""), m.replace(".", "").replace(",", "")):
-            try:
-                numeros.add(float(cand))
-            except ValueError:
-                pass
-    return any(abs(v - n) < 0.005 for n in numeros)
+    return any(abs(float(v) - n) < 0.005 for n in numeros_en(cita))
+
+
+def cita_en_texto(cita: str, base_normalizada: str) -> bool:
+    """La cita está literalmente en el texto y no dentro de otra palabra o número («1.500 €» no vale en «11.500 €»)."""
+    c = _norma(cita)
+    if not c:
+        return False
+    return re.search(r"(?<!\w)" + re.escape(c) + r"(?!\w)", base_normalizada) is not None
 
 
 def _json_de(texto: str) -> dict:
@@ -310,13 +339,19 @@ def recoger(batch_id: str, paginas: Path, salida: Path, esperar_min: float = 50)
             cuentas["paginas"] += 1
             # una línea por página, tenga o no datos: «extraída y sin precio» no es lo mismo que «sin mirar»
             fp.write(json.dumps({"url": pagina["url"], "captura_sha256": pagina["sha256"], "extraido": ahora,
+                                 "json_legible": bool(datos),
                                  "texto_sha256": pagina.get("texto_sha256") or hashlib.sha256(texto.encode()).hexdigest(),
                                  "no_es_programa": bool(datos.get("no_es_programa")), "lote": batch_id},
                                 ensure_ascii=False) + "\n")
             if datos.get("no_es_programa"):
                 cuentas["no_programa"] += 1
                 continue
-            for h in verificar(datos, texto):
+            try:
+                verificados = verificar(datos, texto)
+            except Exception as e:  # noqa: BLE001 - una respuesta rara no tira la tanda ya pagada
+                cuentas["error_verificar_" + type(e).__name__] += 1
+                continue
+            for h in verificados:
                 h.update({"url": pagina["url"], "captura_sha256": pagina["sha256"], "modelo": MODELO,
                           "extraido": ahora, "lote": batch_id})
                 f.write(json.dumps(h, ensure_ascii=False) + "\n")
@@ -465,23 +500,28 @@ META = ("proveedor", "grupo", "codigo_ruct", "codigos_ruct", "pagina", "principa
 MIN_CARACTERES = 200  # menos texto que esto: página vacía, de aviso o que se pinta con JavaScript; no se envía
 
 
-def huellas_previas(carpetas: list[Path]) -> dict[str, str]:
-    """URL → huella de la última captura ya extraída (paginas_extraidas.jsonl de tandas anteriores)."""
-    previas: dict[str, tuple[str, str]] = {}
+def huellas_previas(carpetas: list[Path]) -> dict[str, tuple]:
+    """URL → (huella, grupo, códigos RUCT) de la última extracción buena de cada página en tandas anteriores.
+    Las respuestas ilegibles o cortadas no cuentan: esa página se vuelve a enviar aunque no haya cambiado."""
+    previas: dict[str, tuple] = {}
     for c in carpetas:
         for f in sorted(c.rglob("paginas_extraidas.jsonl")):
             for l in f.read_text(encoding="utf-8").splitlines():
-                if l.strip():
-                    x = json.loads(l)
-                    if x["url"] not in previas or x["extraido"] >= previas[x["url"]][1]:
-                        # la huella del texto (sin scripts ni marcas) no cambia con fechas o fichas de sesión
-                        previas[x["url"]] = (x.get("texto_sha256") or x["captura_sha256"], x["extraido"])
-    return {u: h for u, (h, _) in previas.items()}
+                if not l.strip():
+                    continue
+                x = json.loads(l)
+                if x.get("json_legible") is False or x.get("parada") == "max_tokens":
+                    continue
+                if x["url"] not in previas or x["extraido"] >= previas[x["url"]][3]:
+                    # la huella del texto (sin scripts ni marcas) no cambia con fechas o fichas de sesión
+                    previas[x["url"]] = (x.get("texto_sha256") or x["captura_sha256"], x.get("grupo"),
+                                         frozenset(x.get("codigos_ruct") or []), x["extraido"])
+    return previas
 
 
 def lote(muestra: Path, salida: Path, esperar_min: float = 45, max_paginas: int | None = None, desde: int = 0,
          hilos: int = 12, max_minutos: float = 52, guarda: Guarda | None = None,
-         previas: dict[str, str] | None = None) -> dict:
+         previas: dict[str, tuple] | None = None) -> dict:
     """Tanda en una ejecución: capturar, enviar el lote, esperar, comprobar citas y medir el coste real.
 
     Lo público (salida) lleva URL, huellas, valores y coste. Lo ajeno (el texto enviado, las respuestas con sus
@@ -507,7 +547,9 @@ def lote(muestra: Path, salida: Path, esperar_min: float = 45, max_paginas: int 
                 cuentas["reserva_tdm"] += 1
             elif texto is None:
                 cuentas[pg.get("motivo", "error")] += 1
-            elif previas and previas.get(pg["url"]) in (pg.get("sha256"), hashlib.sha256(texto.encode()).hexdigest()):
+            elif previas and pg["url"] in previas and previas[pg["url"]][0] in (pg.get("sha256"), hashlib.sha256(texto.encode()).hexdigest()) \
+                    and previas[pg["url"]][1] == meta.get(pg["url"], {}).get("grupo") \
+                    and set(meta.get(pg["url"], {}).get("codigos_ruct") or []) <= previas[pg["url"]][2]:
                 # misma página que la ya extraída (misma huella): sus hechos siguen vigentes, no se paga otra vez
                 cuentas["sin_cambios"] += 1
                 pg["motivo"] = "sin_cambios"
@@ -600,6 +642,7 @@ def _esperar_y_procesar(b: dict, textos: dict, meta: dict, salida: Path, guarda:
             bloques = Counter(c.get("type") for c in msg.get("content", []))
             cuentas["respuestas_con_pensamiento"] += 1 if bloques.get("thinking") else 0
             fp.write(json.dumps({"url": pagina["url"], "captura_sha256": pagina["sha256"], "extraido": ahora,
+                                 "json_legible": bool(datos),
                                  "texto_sha256": pagina.get("texto_sha256") or hashlib.sha256(texto.encode()).hexdigest(),
                                  "no_es_programa": bool(datos.get("no_es_programa")), "lote": b["id"],
                                  "uso": uso, "coste_usd": round(coste(uso), 6), "bloques": dict(bloques),
@@ -610,7 +653,12 @@ def _esperar_y_procesar(b: dict, textos: dict, meta: dict, salida: Path, guarda:
             if datos.get("no_es_programa"):
                 cuentas["no_es_programa"] += 1
                 continue
-            for h in verificar(datos, texto):
+            try:
+                verificados = verificar(datos, texto)
+            except Exception as e:  # noqa: BLE001 - una respuesta rara no tira la tanda ya pagada
+                cuentas["error_verificar_" + type(e).__name__] += 1
+                continue
+            for h in verificados:
                 h.update({"url": pagina["url"], "captura_sha256": pagina["sha256"], "modelo": MODELO,
                           "extraido": ahora, "lote": b["id"]})
                 completos.append(dict(h))  # con su cita: solo al almacén privado

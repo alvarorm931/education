@@ -334,6 +334,25 @@ def test_pagina_sin_cambios_no_se_vuelve_a_enviar(tmp_path, monkeypatch):
     prev = tmp_path / "prev"
     prev.mkdir()
     (prev / "paginas_extraidas.jsonl").write_text(js.dumps({"url": "https://x.es/m", "captura_sha256": "igual",
-                                                            "extraido": "2026-10-30T00:00:00+00:00"}) + "\n")
-    res = e.lote(tmp_path / "m.jsonl", tmp_path / "o", guarda=e.Guarda(None), previas=e.huellas_previas([prev]))
+                                                            "extraido": "2026-10-30T00:00:00+00:00"}) + "\n"
+                                                  + js.dumps({"url": "https://x.es/roto", "captura_sha256": "igual",
+                                                              "extraido": "2026-10-30T00:00:00+00:00", "json_legible": False}) + "\n")
+    previas = e.huellas_previas([prev])
+    assert "https://x.es/roto" not in previas  # respuesta ilegible: se vuelve a enviar
+    res = e.lote(tmp_path / "m.jsonl", tmp_path / "o", guarda=e.Guarda(None), previas=previas)
     assert res["sin_cambios"] == 1 and not llamadas
+    # la misma página, ahora pedida para un máster oficial: no se salta
+    (tmp_path / "m2.jsonl").write_text(js.dumps({"url": "https://x.es/m", "grupo": "oficial", "codigos_ruct": ["9"]}) + "\n")
+    monkeypatch.setenv("ANTHROPIC_API_KEY", "prueba")
+    monkeypatch.setattr(e.requests, "post", lambda *a, **k: (_ for _ in ()).throw(RuntimeError("enviado")))
+    import pytest
+    with pytest.raises(RuntimeError):
+        e.lote(tmp_path / "m2.jsonl", tmp_path / "o2", guarda=e.Guarda(None), previas=previas)
+
+
+def test_numeros_y_citas_sin_dobles_lecturas():
+    assert e.como_numero("1500,50") == 1500.5 and e.como_numero("9800,00 €") == 9800.0 and e.como_numero("12345.6") == 12345.6
+    assert not e.numero_en_cita(4550, "45,50 €") and e.numero_en_cita(45.5, "45,50 €")
+    assert not e.numero_en_cita(9.8, "9.800 €") and e.numero_en_cita(60, "Curso 2026/2027 60 ECTS")
+    assert not e.cita_en_texto("1.500 € (pago único)", e._norma("Total 11.500 € (pago único)"))
+    assert e.cita_en_texto("1.500 € (pago único)", e._norma("Total 1.500 € (pago único)"))

@@ -96,3 +96,10 @@ def test_url_real_sin_barra_inventada_y_programas_por_consulta():
     textos = {a: "Máster Universitario en Química Industrial", b: "Máster Universitario en Historia del Arte"}
     t2 = [{"codigo_ruct": "2", "nombre_oficial": "Máster Universitario en Historia del Arte por la Universitat Autònoma de Barcelona"}]
     assert e.emparejar(t2, [a, b], textos)[0]["url"] == b
+
+
+def test_consulta_que_identifica_el_programa_no_se_pierde():
+    from motor.estudios import emparejar as e
+    assert e.raiz_programa("https://u.es/estudios/titulacion?id=1") != e.raiz_programa("https://u.es/estudios/titulacion?id=2")
+    assert e.raiz_programa("https://c.es/?p=101") != e.raiz_programa("https://c.es/?p=202")
+    assert e.raiz_programa("https://u.es/master-x/asignaturas.html?cod=9") == e.raiz_programa("https://u.es/master-x/")
