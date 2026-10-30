@@ -518,13 +518,25 @@ def plan(tablas: list[dict], dist: dict | None = None) -> list[dict]:
     return resultado
 
 
-def menciones(texto: str) -> list[str]:
-    """«Mención en Educación Física», «Mención en …»: itinerarios de optatividad citados en el texto."""
+CORTE_MENCION = re.compile(r"\s+(?:al|tras|para|cuando|si|que|se|deber[áa]n?|una vez|con|mediante|cursando|"
+                           r"superando)\b.*$|\s*/\s*[A-Z][a-z].*$", re.I)
+
+
+def menciones(texto: str, tablas: list[dict] | None = None) -> list[str]:
+    """«Mención en Educación Física», «Mención en …»: itinerarios de optatividad citados en el texto o en las
+    celdas de las tablas («Módulo optativo. Mención en Operación Náutica del Buque»). Se corta lo que ya no es el
+    nombre («… al superar las asignaturas»), la traducción («/ International …») y los paréntesis sin cerrar."""
+    fuentes = [texto or ""] + [c for t in (tablas or []) if not t.get("datos_personales")
+                               for f in (t.get("contenido") or []) for c in f if "enci" in (c or "")]
     vistas = []
-    for m in re.finditer(r"\bMenci[óo]n (?:en|de) ([A-ZÁÉÍÓÚ][^.;:\n]{3,90}?)(?=[.;:\n(]|\s+\d|$)", texto or ""):
-        n = m.group(1).strip()
-        if n not in vistas:
-            vistas.append(n)
+    for trozo in fuentes:
+        for m in re.finditer(r"\bMenci[óo]n (?:en|de) ([A-ZÁÉÍÓÚ][^.;:\n]{3,90}?)(?=[.;:\n(]|\s+\d|$)", trozo):
+            for parte in re.split(r"\s+y\s+Menci[óo]n (?:en|de)\s+", m.group(1)):
+                n = CORTE_MENCION.sub("", parte.strip()).strip(" ,)")
+                if n.count("(") > n.count(")"):
+                    n = n.split("(")[0].strip()
+                if len(n) >= 4 and n not in vistas:
+                    vistas.append(n)
     return vistas
 
 
@@ -656,7 +668,7 @@ def _medir(filas: list[dict], dist: dict | None, doc: dict) -> dict:
         "basicas_obligatorias_esperado": bo_esperado,
         "con_tipo": sum(1 for f in base if f["tipo"]),
         "distribucion": dist,
-        "menciones": menciones(doc.get("texto", "")),
+        "menciones": menciones(doc.get("texto", ""), doc.get("tablas")),
         "tablas": len(doc.get("tablas", [])),
         "tablas_del_plan_retenidas_por_privacidad": sum(
             1 for t in doc.get("tablas", []) if t.get("datos_personales")

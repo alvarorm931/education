@@ -184,3 +184,12 @@ def test_cabecera_con_tipo_y_codigos_de_mencion_y_tabla_resumen_excluida():
     opt = _t([["Asignaturas optativas", "Créditos"], ["1. Psicología del deporte", "6"]])
     p = plan([resumen, opt])
     assert [(x["nombre"], x["tipo"]) for x in p] == [("1. Psicología del deporte", "optativa")]
+
+
+def test_menciones_limpias_y_en_tablas():
+    from motor.grados.boe_grados import menciones
+    assert menciones("Mención en Turismo Digital y Mención en Sostenibilidad en Destinos. Mención en Psicología de la "
+                     "Salud al superarse las asignaturas. Mención en Estudios Jurídicos / International Legal Studies.") == [
+        "Turismo Digital", "Sostenibilidad en Destinos", "Psicología de la Salud", "Estudios Jurídicos"]
+    assert menciones("", [_t([["Módulo", "x"], ["Módulo Optativo. Mención en Operación Náutica del Buque.", "6"]])]) == [
+        "Operación Náutica del Buque"]
