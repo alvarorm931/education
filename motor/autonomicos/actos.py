@@ -65,9 +65,11 @@ FUENTES: dict[str, tuple[str, tuple[str, ...]]] = {
     "bopcoruna": ("BOP-CORUNA", ("Boletín Oficial de la Provincia de A Coruña", "Boletín Oficial da Provincia da Coruña")),
     "bopavila": ("BOP-AVILA", ("Boletín Oficial de la Provincia de Ávila",)),
     "bopbadajoz": ("BOP-BADAJOZ", ("Boletín Oficial de la Provincia de Badajoz",)),
+    "bopzamora": ("BOP-ZAMORA", ("Boletín Oficial de la Provincia de Zamora",)),
+    "boptoledo": ("BOP-TOLEDO", ("Boletín Oficial de la Provincia de Toledo",)),
 }
 PROVINCIALES = {"bopb", "bopalicante", "bopvalencia", "bopt", "bopciudadreal", "bopgranada", "bopsevilla", "bophuesca",
-                "boptenerife", "bopcordoba", "bopcoruna", "boppontevedra", "bopavila", "bopbadajoz"}
+                "boptenerife", "bopcordoba", "bopcoruna", "boppontevedra", "bopavila", "bopbadajoz", "bopzamora", "boptoledo"}
 CON_PLAZO = {"convocatoria", "bases", "modificacion", "correccion", "otro", None}
 
 

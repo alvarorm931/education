@@ -154,6 +154,19 @@ for c in $CONECTORES; do
       ejecutar motor.provinciales.bopbadajoz --salida "$S"
       "$G" "BOP Badajoz: boletín del día"
       ;;
+    bopzamora)
+      # Los boletines que sigan en la portada (los 8 últimos, unas tres semanas)
+      ejecutar motor.provinciales.bopzamora --salida "$S"
+      "$G" "BOP Zamora: boletines recientes"
+      ;;
+    boptoledo)
+      # robots.txt cierra todo el servidor: se lee como boletín oficial (motor/http.py)
+      ejecutar motor.provinciales.boptoledo --salida "$S"
+      ejecutar motor.provinciales.boptoledo --desde 2022-01-01 --salida "$S" --max-minutos "$M"
+      "$G" "BOP Toledo: días"
+      ejecutar motor.provinciales.boptoledo --textos --salida "$S" --max-minutos "$M"
+      "$G" "BOP Toledo: textos"
+      ;;
     bopb)
       # El del día por el canal de datos abiertos; los anteriores por el listado por días y los textos en PDF (cerrados
       # en robots.txt; se leen como boletín oficial, motor/http.py)

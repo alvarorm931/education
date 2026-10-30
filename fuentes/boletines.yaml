@@ -362,7 +362,8 @@ provinciales:
   - provincia: Toledo
     url: http://bop.diputoledo.es/webEbop/inicio.jsp
     acceso_desde_github: "ok"
-    estado: sin_conector
+    estado: conector_en_pruebas
+    conector: motor/provinciales/boptoledo.py
   - provincia: Valencia
     url: https://bop.dival.es/bop/drvisapi.dll
     acceso_desde_github: "ok"
@@ -376,7 +377,8 @@ provinciales:
   - provincia: Zamora
     url: https://www.diputaciondezamora.es/opencms/servicios/BOP/bop/index.html
     acceso_desde_github: "ok"
-    estado: sin_conector
+    estado: conector_en_pruebas
+    conector: motor/provinciales/bopzamora.py
   - provincia: Zaragoza
     url: http://bop.dpz.es/BOPZ/
     acceso_desde_github: "sin_respuesta_desde_github (timeout)"
