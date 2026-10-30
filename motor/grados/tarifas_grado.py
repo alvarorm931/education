@@ -248,6 +248,9 @@ def diagnostico_html(html: str) -> dict:
                                   if re.search(r"(?i)precio|tarifa|tasas|honorario|ajax|\.json|/api/|wp-json|"
                                                r"admin-ajax", u) and not re.search(r"(?i)\.(?:css|png|jpe?g|svg|"
                                                                                     r"webp|woff2?)(?:\?|$)", u)})[:15],
+            "scripts": re.findall(r"(?i)<script\b[^>]*\bsrc=[\"']([^\"']{3,200})", html)[:25],
+            # pestañas o acordeones que se rellenan al pulsar: sus atributos de datos (solo nombres y valores cortos)
+            "atributos_datos": sorted({m for m in re.findall(r"(?i)\b(data-[a-z-]{2,30})=", html)})[:30],
             "rotulos": [[tipo_rotulo(c) for c in x.split(" | ")] for x in visible.split("\n")
                         if x.count(" | ") >= 2 and not CIFRA_EUROPEA.search(x)][:3]}
 
