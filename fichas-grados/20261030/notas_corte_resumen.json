@@ -1,30 +1,66 @@
 {
- "filas": 28853,
+ "filas": 74374,
  "ofertas_por_union": {
-  "nombre": 1413,
-  "sin_candidato": 276,
-  "parecido_bajo": 34,
-  "ambigua": 21,
-  "nombre_sin_centro": 101,
+  "nombre": 2262,
+  "sin_candidato": 352,
+  "parecido_de_nombre_bajo": 87,
+  "ambigua": 27,
+  "parecido_bajo": 35,
+  "nombre_sin_centro": 117,
   "agrupacion_o_grado_abierto": 21,
   "codigo_del_ministerio": 68,
-  "mismo_codigo_otro_curso": 28
+  "mismo_codigo_otro_curso": 62
  },
  "contraste_con_qedu": {
+  "andalucia": {
+   "qedu_con_plazas_libres": 68,
+   "igual": 513,
+   "lista_posterior_mas_baja": 61,
+   "distinta": 6
+  },
+  "cantabria": {
+   "igual": 33,
+   "lista_posterior_mas_baja": 3,
+   "distinta": 2
+  },
   "salamanca": {
    "igual": 29,
-   "distinta": 4
+   "qedu_con_plazas_libres": 3,
+   "lista_posterior_mas_baja": 1
   },
   "madrid": {
    "igual": 606,
-   "distinta": 45
+   "distinta": 19,
+   "lista_posterior_mas_baja": 26
   },
   "murcia": {
    "igual": 45,
-   "distinta": 19
+   "distinta": 17,
+   "lista_posterior_mas_baja": 2
   }
  },
  "por_distrito_y_curso": {
+  "andalucia 2010-2011": 2015,
+  "andalucia 2011-2012": 2295,
+  "andalucia 2012-2013": 2315,
+  "andalucia 2013-2014": 2390,
+  "andalucia 2014-2015": 2490,
+  "andalucia 2015-2016": 2530,
+  "andalucia 2016-2017": 2600,
+  "andalucia 2017-2018": 2720,
+  "andalucia 2018-2019": 2760,
+  "andalucia 2019-2020": 2860,
+  "andalucia 2020-2021": 2890,
+  "andalucia 2021-2022": 2915,
+  "andalucia 2022-2023": 2975,
+  "andalucia 2023-2024": 3020,
+  "andalucia 2024-2025": 3020,
+  "andalucia 2025-2026": 3095,
+  "cantabria 2021-2022": 48,
+  "cantabria 2022-2023": 54,
+  "cantabria 2023-2024": 52,
+  "cantabria 2024-2025": 53,
+  "cantabria 2025-2026": 54,
   "cataluna 2023-2024": 539,
   "cataluna 2024-2025": 549,
   "cataluna 2025-2026": 545,
@@ -40,13 +76,18 @@
   "murcia 2022-2023": 67,
   "murcia 2023-2024": 67,
   "murcia 2024-2025": 67,
+  "pais-vasco 2017-2018": 445,
+  "pais-vasco 2018-2019": 440,
+  "pais-vasco 2019-2020": 475,
+  "pais-vasco 2020-2021": 505,
+  "pais-vasco 2021-2022": 505,
   "salamanca 2023-2024": 106,
   "salamanca 2024-2025": 84,
   "salamanca 2026-2027": 85
  },
  "historico": {
-  "titulos_y_centros": 1040,
-  "publicables": 923,
-  "con_cinco_cursos_o_mas": 393
+  "titulos_y_centros": 1709,
+  "publicables": 1619,
+  "con_cinco_cursos_o_mas": 1004
  }
 }
