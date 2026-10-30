@@ -23,3 +23,13 @@ def test_acto_con_plazo_desde_el_propio_boletin(tmp_path):
     assert a["plazo"]["fin_estimado"] == "2026-11-26" and a["extraccion"] == "plazo_general_v3"  # 2/11 festivo en CyL
     sin = json.loads((tmp_path / "datos/autonomicos/actos/bocyl/2026/09.jsonl").read_text())
     assert sin["pendiente"] == ["texto"]
+
+
+def test_mes_sin_anuncios_se_borra(tmp_path):
+    x = {"id": "BOP-LUGO-2023-1", "fecha": "2023-12-29", "titulo": "Listado provisional de admitidos", "ambito": "local"}
+    escribir_jsonl(tmp_path / "datos/provinciales/boplugo/oposiciones/2023/12/29.jsonl", [x])
+    viejo = tmp_path / "datos/autonomicos/actos/boplugo/8202/12.jsonl"
+    escribir_jsonl(viejo, [{"id": "boplugo:BOP-LUGO-8202-1", "fecha": "8202-12-29"}])
+    assert actos.main(["--salida", str(tmp_path)]) == 0
+    assert not viejo.exists() and not viejo.parent.exists()
+    assert (tmp_path / "datos/autonomicos/actos/boplugo/2023/12.jsonl").exists()

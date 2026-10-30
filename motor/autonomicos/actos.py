@@ -226,8 +226,18 @@ def main(argv: list[str] | None = None) -> int:
         for x in actos:
             por_mes[x["fecha"][:7]].append(x)
         destino = a.salida / "datos" / "autonomicos" / "actos" / fuente
+        escritos = set()
         for mes, lista in sorted(por_mes.items()):
-            escribir_jsonl(destino / mes[:4] / f"{mes[5:]}.jsonl", sorted(lista, key=lambda x: (x["fecha"], x["id"])))
+            ruta = destino / mes[:4] / f"{mes[5:]}.jsonl"
+            escribir_jsonl(ruta, sorted(lista, key=lambda x: (x["fecha"], x["id"])))
+            escritos.add(ruta)
+        # Los actos son derivados: un mes que ya no tiene anuncios (el «8202» de Lugo, movido a su fecha) se borra
+        for viejo in destino.glob("*/*.jsonl"):
+            if viejo not in escritos:
+                viejo.unlink()
+        for carpeta in destino.iterdir():
+            if carpeta.is_dir() and not any(carpeta.iterdir()):
+                carpeta.rmdir()
         c = Counter(x["extraccion"] for x in actos)
         con_fin = sum(1 for x in actos if (x.get("plazo") or {}).get("fin_estimado"))
         print(f"{FUENTES[fuente][0]}: {len(actos)} actos, {sum(x['tiene_texto'] for x in actos)} con texto, "
