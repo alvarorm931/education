@@ -1,7 +1,10 @@
 {
  "fecha": "2026-10-26",
- "resultado": "fuente_inaccesible",
- "alertas": [
-  "No se pudo descargar https://s2.diphuelva.es/lib/bope/anuncios_bop/ajaxAnuncios.php tras 4 intentos: HTTPSConnectionPool(host='s2.diphuelva.es', port=443): Max retries exceeded with url: /lib/bope/anuncios_bop/ajaxAnuncios.php (Caused by ConnectTimeoutError(<HTTPSConnection(host='s2.diphuelva.es', port=443) at 0x7f2ae7532e10>, 'Connection to s2.diphuelva.es timed out. (connect timeout=30.0)'))"
- ]
+ "status": 200,
+ "alertas": [],
+ "resultado": "ok",
+ "numero": "206",
+ "sha256": "614e015327e3001bedaba39f2b8c78b0297844a0a37c68bc11dd12064fefbe8a",
+ "disposiciones": 11,
+ "empleo_publico": 3
 }
