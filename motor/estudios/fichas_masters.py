@@ -161,6 +161,8 @@ def componer(paginas_master: list[dict], hechos: dict[str, list[dict]]) -> dict:
                     fuentes.append({"url": h["url"], "captura_sha256": h["captura_sha256"], "extraido": h["extraido"],
                                     "pagina": p.get("pagina", "principal")})
                 campos[h["campo"]] = {"valor": h["valor"], "fuente": indice[clave], "cita_sha256": h.get("cita_sha256")}
+                if h.get("cita_nivel") not in (None, "literal"):  # sin tildes ni signos, o en trozos con «...»
+                    campos[h["campo"]]["cita_nivel"] = h["cita_nivel"]
             elif campos[h["campo"]]["valor"] != h["valor"] and h["campo"] not in ("asignaturas", "nombre"):
                 distintos.append(h["campo"])
     return {"campos": campos, "fuentes": fuentes, "campos_con_valores_distintos": sorted(set(distintos))}

@@ -173,6 +173,7 @@ def id_pagina(url: str, sha: str) -> str:
 def verificar(respuesta: dict, texto: str) -> list[dict]:
     """Un hecho por campo; solo se acepta el valor si la cita está literalmente en el texto."""
     base = _norma(texto)
+    laxa = None
     hechos = []
     for campo in CAMPOS:
         dato = respuesta.get(campo)
@@ -181,7 +182,13 @@ def verificar(respuesta: dict, texto: str) -> list[dict]:
         if not isinstance(dato, dict) or dato.get("valor") in (None, "", []):
             continue
         cita = dato.get("cita") or ""
-        ok = len(cita.split()) >= 2 and cita_en_texto(cita, base)
+        nivel = None
+        if len(cita.split()) >= 2:
+            nivel = "literal" if cita_en_texto(cita, base) else None
+            if nivel is None:
+                laxa = _laxa(base) if laxa is None else laxa
+                nivel = nivel_cita(cita, base, laxa)
+        ok = nivel is not None
         motivo = None if ok else "cita_no_literal"
         if campo in NUMERICOS:
             n = como_numero(dato.get("valor"))
@@ -195,7 +202,8 @@ def verificar(respuesta: dict, texto: str) -> list[dict]:
             ok, motivo = False, "moneda_no_euro_o_fuera_de_rango"
         hechos.append({"campo": campo, "valor": dato.get("valor") if ok else None,
                        "valor_propuesto": None if ok else dato.get("valor"),
-                       "cita": cita, "cita_verificada": ok, "estado": "aceptado" if ok else "revision", "motivo": motivo})
+                       "cita": cita, "cita_verificada": ok, "cita_nivel": nivel,
+                       "estado": "aceptado" if ok else "revision", "motivo": motivo})
     return hechos
 
 
@@ -257,12 +265,58 @@ def numero_en_cita(valor, cita: str) -> bool:
     return any(abs(float(v) - n) < 0.005 for n in numeros_en(cita))
 
 
+# Límites de una cita: ni dentro de otra palabra ni dentro de otro número («1.500» no vale en «11.500» ni en
+# «1.500,50» ni en «1.500.000»).
+_ANTES = r"(?<!\w)(?<!\d[.,])"
+_DESPUES = r"(?![.,]\d)(?!\w)"
+
+
 def cita_en_texto(cita: str, base_normalizada: str) -> bool:
     """La cita está literalmente en el texto y no dentro de otra palabra o número («1.500 €» no vale en «11.500 €»)."""
     c = _norma(cita)
     if not c:
         return False
-    return re.search(r"(?<!\w)" + re.escape(c) + r"(?!\w)", base_normalizada) is not None
+    return re.search(_ANTES + re.escape(c) + _DESPUES, base_normalizada) is not None
+
+
+def _laxa(s: str) -> str:
+    """Palabras y números sin tildes, sin separadores de tabla ni de etiqueta: «Modalidad: Online», «Modalidad |
+    Online» y «Modalidad Online» quedan iguales. Los signos que cierran o separan frases (. , ; ! ?) se conservan
+    como palabra propia («No. Incluye TFM» no es «No incluye TFM»), y el punto y la coma entre cifras siguen pegados
+    al número (un número no se parte ni se junta con otro)."""
+    s = unicodedata.normalize("NFKD", _norma(s))
+    s = "".join(ch for ch in s if not unicodedata.combining(ch))
+    s = re.sub(r"(?<=\d)([.,])(?=\d)", lambda m: m.group(1) + "\x00", s)  # protege «9.800» y «12,5»
+    s = re.sub(r"[.;!?¡¿]+(?!\x00)", " . ", s)
+    s = re.sub(r",(?!\x00)", " , ", s)
+    s = re.sub(r"[^\w\s\x00.,]|_", " ", s).replace("\x00", "")
+    return " ".join(s.split())
+
+
+MAX_HUECO_FRAGMENTOS = 300  # caracteres entre dos trozos de una cita con «...»
+
+
+def nivel_cita(cita: str, base_normalizada: str, base_laxa: str | None = None) -> str | None:
+    """Cómo está la cita en el texto: «literal»; «sin_signos» (las mismas palabras en el mismo orden, sin contar
+    tildes, signos ni separadores de tabla); «fragmentos» (cita con «...»: cada trozo, de cuatro palabras o más,
+    está entero y en orden, con menos de MAX_HUECO_FRAGMENTOS caracteres entre uno y otro); None si no está."""
+    if cita_en_texto(cita, base_normalizada):
+        return "literal"
+    laxa = base_laxa if base_laxa is not None else _laxa(base_normalizada)
+    c = _laxa(cita)
+    if len(c.split()) >= 2 and re.search(_ANTES + re.escape(c) + _DESPUES, laxa):
+        return "sin_signos"
+    trozos = [_laxa(t) for t in re.split(r"\[\s*(?:\.\.\.|…)\s*\]|\(\s*(?:\.\.\.|…)\s*\)|\.\.\.|…", cita or "")]
+    trozos = [t for t in trozos if t]
+    if len(trozos) >= 2 and all(len(t.split()) >= 4 for t in trozos):
+        pos = None
+        for t in trozos:
+            m = re.compile(_ANTES + re.escape(t) + _DESPUES).search(laxa, pos or 0)
+            if not m or (pos is not None and m.start() - pos > MAX_HUECO_FRAGMENTOS):
+                return None
+            pos = m.end()
+        return "fragmentos"
+    return None
 
 
 def _json_de(texto: str) -> dict:
@@ -617,7 +671,7 @@ def _esperar_y_procesar(b: dict, textos: dict, meta: dict, salida: Path, guarda:
                if guarda.activa else None}
     ahora = datetime.now(timezone.utc).isoformat(timespec="seconds")
     uso_total, dolares, campos = Counter(), 0.0, Counter()
-    motivos, completos = Counter(), []
+    motivos, niveles, completos = Counter(), Counter(), []
     with (salida / "hechos.jsonl").open("w", encoding="utf-8") as fh, \
             (salida / "paginas_extraidas.jsonl").open("w", encoding="utf-8") as fp:
         for linea in res.text.split("\n"):
@@ -669,6 +723,7 @@ def _esperar_y_procesar(b: dict, textos: dict, meta: dict, salida: Path, guarda:
                 h["cita_palabras"] = len(cita.split())
                 fh.write(json.dumps(h, ensure_ascii=False) + "\n")
                 campos[(h["campo"], h["estado"])] += 1
+                niveles[h.get("cita_nivel") or "ninguno"] += 1
                 if h.get("motivo"):
                     motivos[h["motivo"]] += 1
     privado["hechos_con_cita"] = guarda.jsonl(FUENTE_EXTRACCION, completos, "hechos.jsonl",
@@ -680,7 +735,7 @@ def _esperar_y_procesar(b: dict, textos: dict, meta: dict, salida: Path, guarda:
                "tokens_salida_por_pagina": round(uso_total["output_tokens"] / n),
                "hechos_aceptados": sum(v for (c, e), v in campos.items() if e == "aceptado"),
                "hechos_revision": sum(v for (c, e), v in campos.items() if e == "revision"),
-               "motivos_revision": dict(motivos),
+               "motivos_revision": dict(motivos), "niveles_cita": dict(niveles),
                "almacen": {**dict(guarda.cuentas), "claves_privadas": privado} if guarda.activa or guarda.cuentas else None,
                "por_campo": {c: {e: v for (c2, e), v in campos.items() if c2 == c} for c in CAMPOS}}
     (salida / "resumen.json").write_text(json.dumps(resumen, ensure_ascii=False, indent=1), encoding="utf-8")

@@ -356,3 +356,36 @@ def test_numeros_y_citas_sin_dobles_lecturas():
     assert not e.numero_en_cita(9.8, "9.800 €") and e.numero_en_cita(60, "Curso 2026/2027 60 ECTS")
     assert not e.cita_en_texto("1.500 € (pago único)", e._norma("Total 11.500 € (pago único)"))
     assert e.cita_en_texto("1.500 € (pago único)", e._norma("Total 1.500 € (pago único)"))
+
+
+def test_nivel_de_cita_sin_signos_y_fragmentos():
+    base = e._norma("Precio: 1.500,50 €\nIdioma | Español\nModalidad\nOnline\n¿Prácticas? No. Incluye TFM.\n"
+                    "El máster tiene un enfoque práctico con casos reales. Además se imparten clases magistrales "
+                    "por profesionales del sector.")
+    assert e.nivel_cita("1.500,50 €", base) == "literal"
+    assert e.nivel_cita("Idioma: Español", base) == "sin_signos"            # separador de tabla
+    assert e.nivel_cita("Modalidad: Online", base) == "sin_signos"           # etiqueta y valor en dos líneas
+    assert e.nivel_cita("El master tiene un enfoque practico", base) == "sin_signos"  # sin tildes
+    assert e.nivel_cita("enfoque práctico con casos reales... clases magistrales por profesionales del sector",
+                        base) == "fragmentos"
+    # lo que cambia el sentido o el número no pasa
+    assert e.nivel_cita("No incluye TFM", base) is None                      # «No. Incluye» no es «No incluye»
+    assert e.nivel_cita("Precio: 1.500", base) is None                       # 1.500 no está en 1.500,50
+    assert e.nivel_cita("casos reales... clases", base) is None              # trozos de menos de cuatro palabras
+    assert e.nivel_cita("Idioma: Inglés", base) is None
+
+
+def test_fragmentos_demasiado_separados_no_valen():
+    base = e._norma("Primera parte del texto con datos. " + "relleno " * 80 + "segunda parte con otros datos.")
+    assert e.nivel_cita("Primera parte del texto con... segunda parte con otros datos", base) is None
+
+
+def test_cita_literal_no_vale_dentro_de_un_decimal():
+    base = e._norma("Precio: 1.500,50 € y 2.000.000 de visitas")
+    assert not e.cita_en_texto("Precio: 1.500", base) and not e.cita_en_texto("2.000", base)
+
+
+def test_verificar_anota_el_nivel_de_cita():
+    h = {x["campo"]: x for x in e.verificar({"idioma": {"valor": "español", "cita": "Idioma: Español"}},
+                                            "Idioma | Español")}
+    assert h["idioma"]["estado"] == "aceptado" and h["idioma"]["cita_nivel"] == "sin_signos"
