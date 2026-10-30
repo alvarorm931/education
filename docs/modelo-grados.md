@@ -590,7 +590,7 @@ pasada sobre los mismos datos no crea ninguna.
 
 Une catálogo, genérico, QEDU, indicadores del SIIU, plan del BOE, ficha del RUCT y precios de las privadas sin
 pedir nada a ninguna fuente, y marca cada ficha como indexable o no, con el motivo. Con todo lo capturado hasta el
-30/10/2026 por la tarde:
+30/10/2026 a las 23:50:
 
 | | Fichas |
 |---|---|
