@@ -224,6 +224,18 @@ for c in $CONECTORES; do
       ejecutar motor.provinciales.boplugo --salida "$S"
       "$G" "BOP Lugo: boletín del día"
       ;;
+    bophuelva)
+      # JSON del día desde s2.diphuelva.es (robots.txt lo cierra: boletín oficial, motor/http.py). Este sistema empieza el 20/06/2023
+      ejecutar motor.provinciales.bophuelva --salida "$S"
+      ejecutar motor.provinciales.bophuelva --desde 2023-06-20 --salida "$S" --max-minutos "$M"
+      "$G" "BOP Huelva: días"
+      ;;
+    boplaspalmas)
+      # Sumario por fecha en boplaspalmas.net (robots.txt lo cierra: boletín oficial, motor/http.py)
+      ejecutar motor.provinciales.boplaspalmas --salida "$S"
+      ejecutar motor.provinciales.boplaspalmas --desde 2022-01-01 --salida "$S" --max-minutos "$M"
+      "$G" "BOP Las Palmas: días"
+      ;;
     bopb)
       # El del día por el canal de datos abiertos; los anteriores por el listado por días y los textos en PDF (cerrados
       # en robots.txt; se leen como boletín oficial, motor/http.py)

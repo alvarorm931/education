@@ -322,6 +322,11 @@ def articulo_delante(nombre: str) -> str:
 RE_PARENTESIS = re.compile(r"^(?P<nombre>.+?)\s*\((?P<provincia>[^()]+)\)\s*$")
 
 
+RE_TRATAMIENTO_ENTIDAD = re.compile(
+    r"^(?:EXCM[OA]S?\.?|EXCELENT[IÍ]SIM[OA]|IL(?:US)?TR[IÍ]SIM[OA]|ILM[OA]\.|ILTM[OA]\.|ILTRE\.|ILUSTRE|MUY ILUSTRE|"
+    r"M\.\s?I\.|M\.\s?IL\.|MOLT IL·LUSTRE)\s+", re.IGNORECASE)
+
+
 def convocante_de_organismo(organismo: str, capitales: Iterable[str] = ()) -> dict | None:
     """«AYUNTAMIENTO DE MIRANDA DE EBRO (BURGOS)» -> tipo, nombre y provincia.
 
@@ -336,10 +341,16 @@ def convocante_de_organismo(organismo: str, capitales: Iterable[str] = ()) -> di
     if provincia and not _es_provincia(provincia):
         # «Instituto Municipal de Turismo de Córdoba (IMTUR)»: entre paréntesis van las siglas, no la provincia
         siglas, provincia = provincia, None
+    t = RE_TRATAMIENTO_ENTIDAD.match(base)
+    if t:  # «EXCMO. AYUNTAMIENTO DE …», «ILUSTRE AYUNTAMIENTO DE …», «M.I. AYUNTAMIENTO DE TELDE»
+        base = base[t.end():]
     n = normalizar(base).replace("’", "'")
     for prefijo, tipo, *articulo in TIPOS_ENTIDAD:
         if n.startswith(prefijo):
-            nombre = (articulo[0] if articulo else "") + nombre_propio(base[len(prefijo):].strip())
+            resto = base[len(prefijo):].strip()
+            if tipo in {"Mancomunidad", "Consorcio", "Patronato", "Comarca"}:
+                resto = re.sub(r"^(?:del?|de la|de los|de las)\s+", "", resto, flags=re.IGNORECASE) or resto
+            nombre = (articulo[0] if articulo else "") + nombre_propio(resto)
             nombre = articulo_delante(nombre)
             nombre = nombre[:1].upper() + nombre[1:]  # «Ajuntament de la Garriga» -> «La Garriga»
             if provincia:
