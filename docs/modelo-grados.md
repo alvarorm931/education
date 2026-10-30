@@ -146,9 +146,10 @@ memorias del RD 1393/2007, la evaluación por materia.
 
 ### Precio
 
-- Públicas: QEDU da el precio del crédito en primera matrícula de cada oferta. Las normas de cada comunidad para
-  2026-2027 están en investigación (niveles de experimentalidad, lista de títulos por nivel y bonificaciones, como
-  el 99 % de Andalucía en primera matrícula aprobada).
+- Públicas: QEDU da el precio del crédito en primera matrícula de cada oferta. Las normas de las 17 comunidades y
+  la UNED para 2026-2027, con sus niveles, dónde está la lista de títulos y las bonificaciones que cambian el precio
+  real, están en `docs/fuentes-precios-grado.md` (14 de 18 abiertas; pendientes Navarra, Murcia, Castilla y León y
+  Madrid en parte).
 - Privadas: QEDU no da el precio («N/D»). Sale de las tarifas de cada universidad, igual que en másters (PDF de
   tarifas y página del grado), con el mismo extractor con cita literal.
 
@@ -230,8 +231,8 @@ suficientes.
 2. **Planes anteriores a 2022**: selección del sumario 2008-2021 en curso; después, textos de esos planes y
    tablas con la comprobación de créditos (sirve también a másters).
 3. **QEDU completo** (en curso) y, después, cruce con el catálogo y primer cuadro por genérico.
-4. **Precios**: tabla de normas 2026-2027 por comunidad (en investigación) y tarifas de las privadas con el
-   extractor de másters.
+4. **Precios**: lista de títulos por nivel de cada comunidad (anexos de `docs/fuentes-precios-grado.md`) para
+   comprobar el precio de QEDU, y tarifas de las privadas con el extractor de másters.
 5. Rendimiento y abandono por título donde haya datos abiertos; afiliación del SIIU por universidad y rama.
 6. Normalización de asignaturas y «asignaturas en común».
 7. **Privadas**: sin precio en QEDU y casi sin nota de corte, la mayoría de sus 1.410 grados y dobles activos no
