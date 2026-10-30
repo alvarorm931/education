@@ -238,7 +238,8 @@ provinciales:
   - provincia: Cáceres
     url: https://bop.dip-caceres.es/bop/index.html
     acceso_desde_github: "ok"
-    estado: sin_conector
+    estado: conector_en_pruebas
+    conector: motor/provinciales/bopcaceres.py
   - provincia: Cádiz
     url: http://www.bopcadiz.org
     acceso_desde_github: "sin_respuesta_desde_github (timeout)"

@@ -242,6 +242,12 @@ for c in $CONECTORES; do
       ejecutar motor.provinciales.bopvalladolid --desde 2022-01-01 --salida "$S" --max-minutos "$M"
       "$G" "BOP Valladolid: días"
       ;;
+    bopcaceres)
+      # Servicios JSON del portal: calendario por mes y anuncios con su texto por boletín
+      ejecutar motor.provinciales.bopcaceres --salida "$S"
+      ejecutar motor.provinciales.bopcaceres --desde 2022-01-01 --salida "$S" --max-minutos "$M"
+      "$G" "BOP Cáceres: boletines"
+      ;;
     bopb)
       # El del día por el canal de datos abiertos; los anteriores por el listado por días y los textos en PDF (cerrados
       # en robots.txt; se leen como boletín oficial, motor/http.py)

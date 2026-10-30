@@ -74,7 +74,7 @@ RE_PUESTO = re.compile(
     r"ordenanza\w*|subaltern\w*|peon\w*|peo|operari\w*|oficial\w* (?:de )?(?:primera|segunda|1a|2a|policia|"
     r"mantenimiento|servicios|obras|jardineria|electricista|fontanero|conductor|albanil|pintor|carpintero)|ofic|"
     r"encargad\w*|encarregat\w*|capataz\w*|jardiner\w*|electricista\w*|fontaner\w*|albanil\w*|mecanic[oa]s?|"
-    r"conductor\w*|chofer\w*|limpiador\w*|netejador\w*|cocinero\w*|cuiner\w*|monitor\w*|educador\w*|maestr[oa]s?|"
+    r"conductor\w*|chofer\w*|limpiador\w*|netejador\w*|cocinero\w*|cuiner\w*|monitor\w*|formador\w*|educador\w*|maestr[oa]s?|"
     r"mestres?|profesor\w*|professor\w*|docent\w*|psicolog[oa]s?|trabajador\w* social\w*|treballador\w* social\w*|"
     r"traballador\w* socia\w*|conserxe\w*|axentes?|limpador\w*|condutor\w*|asesor\w* (?:xuridic|juridic)\w*|"
     r"arquitect\w*|aparejador\w*|ingenier\w*|enginyer\w*|delineant\w*|informatic[oa]s?|programador\w*|analista\w*|"
