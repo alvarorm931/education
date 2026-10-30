@@ -228,7 +228,8 @@ provinciales:
     url: https://www.bizkaia.eus/es/bob
     acceso_desde_github: "ok"
     datos_estructurados: "RSS y datos abiertos: https://www.opendatabizkaia.eus/es"
-    estado: sin_conector
+    estado: conector_en_pruebas
+    conector: motor/provinciales/bopbizkaia.py
   - provincia: Burgos
     url: http://bopbur.diputaciondeburgos.es/
     acceso_desde_github: "sin_respuesta_desde_github (timeout)"

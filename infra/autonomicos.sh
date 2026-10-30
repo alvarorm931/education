@@ -213,6 +213,12 @@ for c in $CONECTORES; do
       ejecutar motor.provinciales.bopgipuzkoa --textos --salida "$S" --max-minutos "$M"
       "$G" "BOG Gipuzkoa: textos"
       ;;
+    bopbizkaia)
+      # Del último boletín hacia atrás: lo ya leído no se vuelve a pedir
+      ejecutar motor.provinciales.bopbizkaia --salida "$S"
+      ejecutar motor.provinciales.bopbizkaia --desde 2022-01-01 --salida "$S" --max-minutos "$M"
+      "$G" "BOB Bizkaia: boletines"
+      ;;
     bopb)
       # El del día por el canal de datos abiertos; los anteriores por el listado por días y los textos en PDF (cerrados
       # en robots.txt; se leen como boletín oficial, motor/http.py)
