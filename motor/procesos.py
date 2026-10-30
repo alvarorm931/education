@@ -346,13 +346,37 @@ def construir(actos: list[dict], hoy: date, autonomicos: list[dict] | None = Non
     # Publicaciones autonómicas: por título (para fusionar con el BOE) y lo local por boletín, fecha y municipio
     por_titulo: dict[str, list[dict]] = defaultdict(list)
     locales: dict[tuple[str, str, str], list[dict]] = defaultdict(list)
+    # La misma resolución en el BOE y en el boletín de la comunidad con otra redacción («de la Universidad de
+    # Córdoba, por la que se convoca proceso selectivo para la provisión…» y «… para el ingreso…»): mismo organismo y
+    # misma fecha de la resolución
+    por_disposicion: dict[tuple[str, str], list[dict]] = defaultdict(list)
+    from motor.union import disposicion
     for x in autonomicos:
-        if x.get("ambito") == "local":
-            for k in _municipio(x.get("convocante"), [x.get("fuente")]):
+        if x.get("ambito") == "local" or x.get("fuente") in CIUDADES_AUTONOMAS:
+            # Ceuta y Melilla son ayuntamiento y comunidad a la vez: el BOE las anuncia como locales
+            conv = x.get("convocante") if x.get("ambito") == "local" else CIUDADES_AUTONOMAS[x["fuente"]]
+            for k in _municipio(conv, [x.get("fuente")]):
                 locales[(x.get("fuente"), x.get("fecha"), k)].append(x)
-        elif es_origen(x):
+        if x.get("ambito") != "local" and es_origen(x):
             por_titulo[clave_titulo(x.get("titulo"))].append(x)
+            fd, _ = disposicion(x.get("titulo"), x.get("fecha") or "9999")
+            for k in clave_convocante(x):
+                if fd and k.startswith("orgn:"):
+                    por_disposicion[(k.split(":", 1)[1].split(":")[-1], fd)].append(x)
     usados: set[str] = set()
+
+    def gemelos_por_disposicion(a: dict) -> list[dict]:
+        fd, _ = disposicion(a.get("titulo"), a.get("fecha") or "9999")
+        if not fd or a.get("ambito") == "local":
+            return []
+        cands = {x["id"]: x for k in clave_convocante(a) if k.startswith("orgn:")
+                 for x in por_disposicion.get((k.split(":", 1)[1].split(":")[-1], fd), [])
+                 if x["id"] not in usados and abs(_dias_entre(a.get("fecha"), x.get("fecha"))) <= 60}
+        lista = list(cands.values())
+        if len(lista) > 1:
+            pa = _puestos_de(a)
+            lista = [x for x in lista if pa & _puestos_de(x)] if pa else []
+        return lista if len(lista) == 1 else []
 
     def citadas_por(a: dict) -> list[dict]:
         """Publicaciones locales del mismo convocante en el boletín y la fecha que cita el anuncio del BOE."""
@@ -383,7 +407,8 @@ def construir(actos: list[dict], hoy: date, autonomicos: list[dict] | None = Non
     procesos = []
     for a in origenes_boe:
         a = {**a, "fuente": a.get("fuente") or "BOE"}
-        gemelos = [x for x in por_titulo.get(clave_titulo(a.get("titulo")), []) if x["id"] not in usados]
+        gemelos = [x for x in por_titulo.get(clave_titulo(a.get("titulo")), []) if x["id"] not in usados] or \
+            gemelos_por_disposicion(a)
         usados.update(x["id"] for x in gemelos)
         bases_enlazadas = [x for x in citadas_por(a) if x["id"] not in usados and asignada.get(x["id"], a["id"]) == a["id"]]
         usados.update(x["id"] for x in bases_enlazadas)
@@ -398,6 +423,17 @@ def construir(actos: list[dict], hoy: date, autonomicos: list[dict] | None = Non
             # bases cuyo plazo empezará con el anuncio en el BOE, que aún no ha salido o no se ha podido enlazar
             procesos.append(_proceso(x, [], [], hoy, x["id"], solo_bases=True))
     return procesos
+
+
+CIUDADES_AUTONOMAS = {"BOME": {"tipo": "Ayuntamiento", "nombre": "Melilla", "provincia": "Melilla"},
+                      "BOCCE": {"tipo": "Ayuntamiento", "nombre": "Ceuta", "provincia": "Ceuta"}}
+
+
+def _dias_entre(a: str | None, b: str | None) -> int:
+    try:
+        return (date.fromisoformat((b or "")[:10]) - date.fromisoformat((a or "")[:10])).days
+    except ValueError:
+        return 10 ** 6
 
 
 def _puestos_de(x: dict) -> set[str]:
@@ -492,9 +528,23 @@ def clave_convocante(x: dict) -> list[str]:
     organismo normalizado."""
     claves = _municipio(x.get("convocante"), [x.get("fuente") or "BOE"]) if x.get("convocante") else []
     org = clave_titulo(x.get("organismo") or x.get("departamento"))
+    if org in GENERICOS_ORGANISMO:
+        # El BOE y el BOJA ponen todas las universidades bajo «Universidades»: la de verdad está en el título
+        org = clave_titulo(universidad_del_titulo(x.get("titulo"))) or org
     if org and x.get("ambito") != "local":
         claves.append("orgn:" + clave_organo(org, x.get("fuente")))
     return claves
+
+
+GENERICOS_ORGANISMO = {"universidades", "universitats", "universidades publicas", "universidad", "universitat"}
+RE_UNIVERSIDAD = re.compile(r"\b(Universi(?:dad|tat|dade|tatea)\b[^,;()]{2,90}?)(?=\s*,|\s+(?:por|per|pola|polo|sobre|relativ\w*|"
+                            r"referente|mediante)\b|\s*\(|\s*$)")
+
+
+def universidad_del_titulo(titulo: str | None) -> str | None:
+    """«Resolución de 12 de abril de 2023, de la Universidad de Córdoba, por la que…» -> «Universidad de Córdoba»."""
+    m = RE_UNIVERSIDAD.search(titulo or "")
+    return m.group(1).strip() if m else None
 
 
 def clave_organo(org: str, fuente: str | None) -> str:

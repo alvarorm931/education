@@ -130,3 +130,31 @@ def test_clave_de_organismo_por_boletin():
     # Las universidades convocan en el BOE y publican en su comunidad: la misma clave
     assert clave_convocante({"fuente": "BOE", "ambito": "universidad", "departamento": "Universidad de Salamanca"}) == \
         clave_convocante({"fuente": "BOCYL", "ambito": "universidad", "organismo": "Universidad de Salamanca"})
+
+
+def test_misma_resolucion_en_el_boe_y_en_su_comunidad_y_melilla():
+    """La Universidad de Córdoba publica la misma resolución en el BOE y en el BOJA con otra redacción (y el BOE y el
+    BOJA ponen «Universidades» como organismo): un solo proceso. El BOE anuncia Melilla como local y sus bases
+    salen en el BOME (autonómico)."""
+    boe = [_acto("U1", "2023-04-18", "convocatoria", ambito="universidad", departamento="UNIVERSIDADES",
+                 titulo="Resolución de 12 de abril de 2023, de la Universidad de Córdoba, por la que se convoca proceso "
+                        "selectivo para la provisión, por el sistema general de acceso libre, de plazas de Técnico "
+                        "Especialista de Laboratorio."),
+           _acto("U2", "2023-04-20", "convocatoria", ambito="universidad", departamento="UNIVERSIDADES",
+                 titulo="Resolución de 12 de abril de 2023, de la Universidad de Sevilla, por la que se convocan "
+                        "pruebas selectivas de Técnico Especialista de Laboratorio."),
+           _acto("M1", "2026-04-07", "apertura_plazo",
+                 convocante={"tipo": "Ayuntamiento", "nombre": "Melilla", "provincia": "Melilla"},
+                 boletines_citados=[{"boletin": "Boletín Oficial de la Ciudad de Melilla", "fecha": "2026-02-24",
+                                     "papel": "bases"}])]
+    autonomicos = [
+        {"id": "boja:1", "fecha": "2023-04-18", "fuente": "BOJA", "tipo_acto": "convocatoria", "ambito": "universidad",
+         "alcance": "acceso", "organismo": "Universidades",
+         "titulo": "Resolución de 12 de abril de 2023, de la Universidad de Córdoba, por la que se convoca proceso "
+                   "selectivo para el ingreso, por el sistema general de acceso libre, Grupo C1."},
+        {"id": "bome:1", "fecha": "2026-02-24", "fuente": "BOME", "tipo_acto": "convocatoria", "ambito": "autonomico",
+         "alcance": "acceso", "titulo": "Orden nº 0543 relativa a convocatoria de dos plazas de Arquitecto"}]
+    ps = {p["id"]: p for p in construir(boe, date(2026, 10, 29), autonomicos)}
+    assert set(ps) == {"boe:U1", "boe:U2", "boe:M1"}
+    assert [o["id"] for o in ps["boe:U1"]["otras_publicaciones"]] == ["boja:1"]
+    assert [o["id"] for o in ps["boe:M1"]["otras_publicaciones"]] == ["bome:1"]
