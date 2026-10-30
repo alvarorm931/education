@@ -38,7 +38,9 @@ from motor.grados.web_privadas import IMPORTE, RANGO, TIPO_IMPORTE, palabras, ti
 FUENTE = "web-centros"
 ES_TARIFA = re.compile(r"precio|tasa|tarifa|fees?\b|abono|honorari|coste|importe|matr[ií]cula", re.I)
 NO_TARIFA = re.compile(r"gu[ií]a-?docente|indicador|satisfacc|normativa|permanencia|pol[ií]tica-productos|"
-                       r"asignatura|memoria|calendario", re.I)
+                       r"asignatura|memoria|calendario|research\.|portalcientifico|investigador|/financiaciones|"
+                       r"blog|/revista/|sala-de-prensa|noticia|/tags?/|formacion-profesional|ciclos?-formativ|"
+                       r"master|posgrado|postgrado", re.I)
 CURSO_DOC = re.compile(r"\b(20[2-3]\d)\s*[-/–]\s*(?:20)?([2-3]\d)\b")
 MAX_PDF = 12_000_000
 MAX_LINEA_MUESTRA = 160
@@ -144,7 +146,16 @@ def tipo_rotulo(texto: str) -> str | None:
     return None
 
 
-def extraer(paginas: list[str], grados: list[dict]) -> dict:
+def grado_de_url(url: str, grados: list[dict]) -> str | None:
+    """El grado al que pertenece una página de precios por su dirección («…/grado-gastronomia/precios»)."""
+    from motor.grados.web_privadas import unir
+
+    union = unir(grados, [re.sub(r"/(?:precios?|tasas|tarifas?|honorarios|admisiones?[-\w]*|financiacion|"
+                                 r"precios-becas-ayudas|becas[-\w]*)/?$", "/", url)])
+    return next(iter(union)) if len(union) == 1 else None
+
+
+def extraer(paginas: list[str], grados: list[dict], de_la_pagina: str | None = None) -> dict:
     """Importes por grado de un PDF o una página de precios (una cadena por página, con saltos de línea; en las
     tablas HTML las celdas van separadas por « | » y cada importe toma el tipo del rótulo de su columna)."""
     precios: dict[str, list] = defaultdict(list)
@@ -176,6 +187,8 @@ def extraer(paginas: list[str], grados: list[dict]) -> dict:
                 codigo = grado_de(previa, grados)
                 if codigo and codigo != ultimo:
                     bloque += 1
+            if not codigo and de_la_pagina:
+                codigo = de_la_pagina  # página de precios de un solo grado: sus cifras son de ese grado
             ultimo = codigo or ultimo
             if len(muestra) < 60 and re.search(r"grado|doble|bachelor|degree", linea + " " + previa, re.I):
                 muestra.append(linea[:MAX_LINEA_MUESTRA])
@@ -232,7 +245,8 @@ def ejecutar(catalogo: list[dict], rastreos: Path, salida: Path, max_minutos: fl
             try:
                 paginas = texto_pdf(r.content) if es_pdf else ["\n".join(lineas_html(r.text))]
                 res["paginas"] = len(paginas)
-                res.update(extraer(paginas, por_u.get(p["codigo_universidad"], [])))
+                gs = por_u.get(p["codigo_universidad"], [])
+                res.update(extraer(paginas, gs, None if es_pdf else grado_de_url(r_url, gs)))
             except Exception as e:  # noqa: BLE001 - un documento roto no para el resto
                 res["error"] = f"{type(e).__name__}: {str(e)[:120]}"
         elif r is not None and r.status_code == 200:

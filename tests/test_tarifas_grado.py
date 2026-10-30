@@ -53,3 +53,10 @@ def test_elegir_cc_une_por_codigo_y_no_repite(tmp_path):
     (d / "urls_CC_0_1.jsonl").write_text("\n".join(json.dumps(x) for x in filas))
     r = tg.elegir_cc(tmp_path, {"https://u.es/ya.pdf"})
     assert [x["url"] for x in r] == ["https://u.es/precios-grados.pdf"] and r[0]["origen"] == "common_crawl"
+
+
+def test_pagina_de_precios_de_un_solo_grado():
+    url = "https://www.u.es/es/grado-psicologia/precios-becas-ayudas"
+    assert tg.grado_de_url(url, G) == "1"
+    r = tg.extraer(["Precio por crédito: 150 €\nPrecio del curso: 9.000 €"], G, "1")
+    assert {i["valor"] for i in r["grados"]["1"]} == {150, 9000}
