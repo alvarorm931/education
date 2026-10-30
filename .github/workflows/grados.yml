@@ -31,6 +31,10 @@ permissions:
 
 jobs:
   tramo:
+    # Credenciales temporales del almacén de originales por OIDC (claude/infraestructura.md); sin claves
+    permissions:
+      contents: read
+      id-token: write
     runs-on: ${{ inputs.ejecutor == 'espana' && fromJSON('["self-hosted", "espana"]') || 'ubuntu-latest' }}
     timeout-minutes: 58
     strategy:
@@ -46,7 +50,12 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: pip install -e ".[estudios]"
+      - run: pip install -e ".[estudios,almacen]"
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::369017477131:role/education-originales-github
+          aws-region: eu-south-2
+          role-session-name: grados-${{ github.run_id }}
       - name: Traer entradas de la rama sondas
         if: inputs.entrada != ''
         env:
@@ -62,6 +71,8 @@ jobs:
         env:
           MODULO: ${{ inputs.modulo }}
           ARGS: ${{ matrix.args }}
+          # Originales enteros al almacén privado (escritura única); en la rama pública solo su índice y huella
+          MOTOR_ORIGINALES: s3
         run: |
           case "$MODULO" in motor.grados.*) ;; *) echo "Módulo no permitido"; exit 1;; esac
           mkdir -p out
