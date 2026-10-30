@@ -112,6 +112,10 @@ def procesar_dia(d: date, raiz: Path, archivo: Archivo) -> dict:
         inf["alertas"].append(f"BOTHA {d}: HTTP {r.status}")
         return inf
     s = parsear_dia(r.contenido)
+    if not s["anuncios"] and s["fecha"] != d.isoformat():
+        # martes y jueves (y festivos) no hay BOTHA: la página sale sin anuncios y sin la fecha pedida
+        inf["resultado"] = "sin_boletin"
+        return inf
     if not s["anuncios"]:
         inf["resultado"] = "error_formato"
         inf["alertas"].append(f"BOTHA {d}: página sin anuncios (posible cambio de formato)")
