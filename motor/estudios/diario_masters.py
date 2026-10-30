@@ -94,7 +94,8 @@ def paginas_del_dia(extracciones: list[Path], dia: int) -> list[dict]:
             for u, p in sorted(ultima.items()) if not p.get("no_es_programa") and del_dia(u, dia)]
 
 
-def ejecutar(raiz: Path, salida: Path, dia: int, sello: str, max_minutos: float = 300, hoy: date | None = None) -> dict:
+def ejecutar(raiz: Path, salida: Path, dia: int, sello: str, max_minutos: float = 300, hoy: date | None = None,
+             solo_conjunto: bool = False) -> dict:
     from motor.estudios import conjunto_masters, extraer, fichas_masters
 
     hoy = hoy or date.today()
@@ -105,7 +106,7 @@ def ejecutar(raiz: Path, salida: Path, dia: int, sello: str, max_minutos: float 
     extracciones = _rutas(raiz, m.get("extracciones", []))
 
     # 1. webs
-    filas = paginas_del_dia(extracciones, dia)
+    filas = [] if solo_conjunto else paginas_del_dia(extracciones, dia)
     muestra = salida / "trabajo" / "diario.jsonl"
     muestra.parent.mkdir(parents=True, exist_ok=True)
     muestra.write_text("".join(json.dumps(f, ensure_ascii=False) + "\n" for f in filas), encoding="utf-8")
@@ -120,8 +121,12 @@ def ejecutar(raiz: Path, salida: Path, dia: int, sello: str, max_minutos: float 
 
     tarjetas = None
     try:
+        if solo_conjunto:
+            raise LookupError("solo conjunto")
         res["qedu_tarjetas"] = qedu_masters.tarjetas(nuevo)
         tarjetas = nuevo / "datos" / "estudios" / "masters" / "qedu" / "qedu_tarjetas_master.jsonl"
+    except LookupError:
+        pass
     except Exception as e:  # noqa: BLE001 - sin QEDU hoy, sigue lo demás
         res["qedu_error"] = f"{type(e).__name__}: {str(e)[:200]}"
     if tarjetas and tarjetas.exists():
@@ -132,7 +137,7 @@ def ejecutar(raiz: Path, salida: Path, dia: int, sello: str, max_minutos: float 
         res["qedu_detalles"] = qedu_masters.detalles(nuevo, sub, 0, None, max(5.0, min(60, (fin - time.time()) / 60 - 40)))
 
     # 3. RUCT
-    if hoy >= RUCT_DIARIO_DESDE:
+    if hoy >= RUCT_DIARIO_DESDE and not solo_conjunto:
         from motor.estudios import ruct
 
         previas = conjunto_masters.cargar_ruct(_rutas(raiz, m.get("ruct", [])))
@@ -200,10 +205,11 @@ def main() -> None:
     p.add_argument("--dia", type=int, required=True)
     p.add_argument("--sello", required=True)
     p.add_argument("--max-minutos", type=float, default=300)
+    p.add_argument("--solo-conjunto", action="store_true", help="sin pedir nada: solo rehacer fichas y conjunto")
     p.add_argument("--salida", required=True)
     a = p.parse_args()
-    print(json.dumps(ejecutar(Path(a.raiz), Path(a.salida), a.dia, a.sello, a.max_minutos), ensure_ascii=False,
-                     indent=1, default=str))
+    print(json.dumps(ejecutar(Path(a.raiz), Path(a.salida), a.dia, a.sello, a.max_minutos,
+                              solo_conjunto=a.solo_conjunto), ensure_ascii=False, indent=1, default=str))
 
 
 if __name__ == "__main__":

@@ -14,6 +14,11 @@ on:
         description: "Séptima parte que toca (0-6); vacío = la del día del año"
         required: false
         default: ""
+      solo_conjunto:
+        description: "si: no pide nada a ninguna fuente; solo rehace fichas y conjunto con lo que hay en la rama"
+        type: choice
+        options: ["no", "si"]
+        default: "no"
 
 # id-token: credenciales temporales del almacén privado por OIDC (originales, lo enviado a la API y las citas)
 permissions:
@@ -56,11 +61,13 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           MOTOR_ORIGINALES: s3
           DIA: ${{ inputs.dia }}
+          SOLO: ${{ inputs.solo_conjunto }}
         run: |
           STAMP=$(date -u +%Y%m%dT%H%M%S)-masters
           echo "STAMP=$STAMP" >> "$GITHUB_ENV"
           D=${DIA:-$(( $(date -u +%j | sed 's/^0*//') % 7 ))}
-          python -m motor.estudios.diario_masters --raiz entrada --dia "$D" --sello "$STAMP" --max-minutos 300 --salida out \
+          EXTRA=""; [ "$SOLO" = "si" ] && EXTRA="--solo-conjunto"
+          python -m motor.estudios.diario_masters --raiz entrada --dia "$D" --sello "$STAMP" --max-minutos 300 $EXTRA --salida out \
             > out.log 2>&1 || { tail -50 out.log; exit 1; }
           tail -40 out.log
       - name: Subir a sondas
