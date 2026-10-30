@@ -436,6 +436,10 @@ def comprobar_con_ruct(p: dict, r: dict) -> dict:
     return p
 
 
+HUECO_OPTATIVO = re.compile(r"^(?:asignaturas? )?(?:optativ[ao]s?|optatividad|cr[ée]ditos optativos)"
+                            r"(?:\s+(?:[IVX]+|\d+(?:\s*[-–]\s*\d+)?|\(\d+\)))?$", re.I)
+
+
 def nivel_plan(filas: list[dict]) -> str | None:
     """«asignatura» si el plan del BOE lista asignaturas; «materia» si solo publica materias (o módulos)."""
     if not filas:
@@ -460,7 +464,9 @@ def resumen_plan(p: dict) -> dict:
         "parte": p.get("parte"),
         "distribucion": p.get("distribucion"),
         "nivel": nivel_plan(filas),
-        "asignaturas": [{k: f.get(k) for k in ("nombre", "modulo", "tipo", "creditos", "curso", "semestre", "nivel")}
+        # «Optativa I», «Optativas 2-7», «Créditos optativos»: hueco del plan para optativas, no una asignatura
+        "asignaturas": [{**{k: f.get(k) for k in ("nombre", "modulo", "tipo", "creditos", "curso", "semestre", "nivel")},
+                         "hueco": bool(HUECO_OPTATIVO.match((f.get("nombre") or "").strip(" .")))}
                         for f in filas],
         "menciones": p.get("menciones") or [],
         "fuente": {"cita": FUENTE_BOE, "url": f"https://www.boe.es/diario_boe/txt.php?id={p['identificador']}"},

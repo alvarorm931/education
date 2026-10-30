@@ -200,3 +200,9 @@ def test_clave_universidad_del_boe_y_del_catalogo():
     assert clave_universidad("Universidad de las Illes Balears") == clave_universidad("Illes Balears (Les)")
     assert clave_universidad("Universidad de Vic-Universidad Central de Catalunya") == clave_universidad("Vic-Central de Catalunya")
     assert clave_universidad("Universitat de València") == clave_universidad("València (Estudi General)")
+
+
+def test_hueco_optativo_marcado():
+    p = {**PLAN, "plan": PLAN["plan"] + [{"nombre": "Optativa II", "tipo": "optativa", "creditos": 6}]}
+    a = {x["nombre"]: x["hueco"] for x in fichas.resumen_plan(p)["asignaturas"]}
+    assert a == {"Derecho Romano": False, "Derecho Civil I": False, "Optativa II": True}
