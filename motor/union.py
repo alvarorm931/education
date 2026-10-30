@@ -348,7 +348,11 @@ def unir(procesos: list[dict], origenes: dict[str, dict], actos: list[dict], cla
                      if (c.get("apertura_plazo") or "") <= fecha and _dias(c.get("apertura_plazo"), fecha) <= VENTANA_DIAS}
             cands = por_puesto_y_turno(list(cands.values()), None, t)
             cands = _por_rasgos(cands, x.get("titulo"))
-            if len(cands) == 1:
+            if len(cands) == 1 and _dias(cands[0].get("apertura_plazo"), fecha) > _plazo_normal(x.get("tipo_acto")):
+                # Una sola convocatoria de ese puesto, pero demasiado antigua para este acto: medido el 31/10/2026, una
+                # lista de admitidos que llega a más de un año de la única convocatoria acierta el 62-71 %
+                motivo, candidatos = "convocante_puesto_lejano", [cands[0]["id"]]
+            elif len(cands) == 1:
                 elegido, motivo = cands[0], "convocante_puesto"
             elif len(cands) > 1 and (r := _mas_reciente_clara(cands, fecha, x.get("tipo_acto"))):
                 elegido, motivo = r, "convocante_puesto_reciente"
@@ -380,15 +384,16 @@ def unir(procesos: list[dict], origenes: dict[str, dict], actos: list[dict], cla
                         (bolsa_x or not c.get("temporal") or not RE_BOLSA.search(normalizar(c.get("titulo") or ""))):
                     elegido, motivo = c, "convocante_unico"
         # 4c. estabilización (Ley 20/2021): una sola convocatoria de estabilización del convocante, sin puestos
-        # conocidos, en los dos años anteriores
+        # conocidos, en los dos años anteriores. Medido el 31/10/2026 quitando la cita a los actos unidos por ella,
+        # acertaba el 24 %: no se une, queda en la cola con su candidata.
         if not elegido and not (motivo or "").startswith("varios") and claves and _rasgos(x.get("titulo"))[0]:
             cands = {c["id"]: c for k in claves for c in por_convocante.get(k, [])
                      if (c.get("apertura_plazo") or "") <= fecha and _dias(c.get("apertura_plazo"), fecha) <= 2 * 366
                      and _rasgos(" ".join([c.get("titulo") or ""] + [o.get("titulo") or "" for o in
                                                                      c.get("otras_publicaciones") or []]))[0]}
             sin_puesto = [c for c in cands.values() if not puestos_proc.get(c["id"])]
-            if len(cands) == 1 and sin_puesto:
-                elegido, motivo = sin_puesto[0], "convocante_estabilizacion"
+            if len(cands) == 1 and sin_puesto and not motivo:
+                motivo, candidatos = "estabilizacion_sin_confirmar", [sin_puesto[0]["id"]]
         if elegido:
             elegido.setdefault("uniones", Counter())[motivo] += 1
             elegido["actos"].append({"id": x["id"], "fecha": fecha, "tipo": x.get("tipo_acto"),
@@ -456,6 +461,17 @@ def _por_rasgos(cands: list[dict], titulo: str | None) -> list[dict]:
     if n and len(cands) > 1:
         cands = [c for c in cands if c.get("total_plazas") in (n, None)] or cands
     return cands
+
+
+def _plazo_normal(tipo: str | None) -> int:
+    """Días tras la convocatoria en los que un acto de ese tipo sale con normalidad (medido sobre los actos unidos por
+    cita, 31/10/2026): listas, tribunal, correcciones y lo demás, un año; nombramientos, dos; resultados y exámenes,
+    los tres de la ventana."""
+    if tipo in ("aprobados", "examen"):
+        return VENTANA_DIAS
+    if tipo == "nombramiento":
+        return 2 * 366
+    return 366
 
 
 def _mas_reciente_clara(cands: list[dict], fecha: str, tipo: str | None) -> dict | None:

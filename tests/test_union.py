@@ -121,3 +121,14 @@ def test_puesto_parecido_no_une_y_deja_la_candidata():
     recuento, huerfanos = u.unir(procesos, {"bop:7": {"convocante": "teruel"}}, actos, lambda a: [a["convocante"]])
     assert not recuento.get("convocante_puesto_parecido")
     assert huerfanos[0]["motivo"] == "puesto_parecido_sin_confirmar" and huerfanos[0]["candidatos"] == ["bop:7"]
+
+
+def test_convocatoria_unica_pero_demasiado_antigua():
+    procesos = [_proc("bop:8", "Bases de una plaza de Arquitecto", "2022-02-01", ["arquitecto"], 1)]
+    actos = [{"id": "z9", "fecha": "2024-06-10", "tipo_acto": "admitidos", "convocante": "huesca",
+              "titulo": "Lista de admitidos de una plaza de Arquitecto"},
+             {"id": "z8", "fecha": "2024-06-10", "tipo_acto": "aprobados", "convocante": "huesca",
+              "titulo": "Aprobados de una plaza de Arquitecto"}]
+    recuento, huerfanos = u.unir(procesos, {"bop:8": {"convocante": "huesca"}}, actos, lambda a: [a["convocante"]])
+    assert [h["motivo"] for h in huerfanos] == ["convocante_puesto_lejano"] and huerfanos[0]["candidatos"] == ["bop:8"]
+    assert recuento["convocante_puesto"] == 1  # el de aprobados sí: puede llegar años después
