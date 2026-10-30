@@ -13,7 +13,7 @@ web_privadas.py al leer las páginas de grado: «pdf_precio»). Aquí:
    rótulos del documento («Precio por curso», «Reserva de plaza»…).
 
 Lo público lleva grado, importe, tipo, curso del documento, URL del PDF y huella de la línea; no el texto.
-La muestra de líneas con importe (para revisar el formato) solo incluye nombres de estudios y cifras.
+La muestra de líneas con importe (para revisar el formato) solo se guarda en local (MOTOR_MUESTRA=1).
 
 Uso:
   python -m motor.grados.tarifas_grado --catalogo …/catalogo.jsonl --rastreos carpeta_web_privadas --salida ruta/
@@ -25,6 +25,7 @@ import argparse
 import hashlib
 import io
 import json
+import os
 import re
 import time
 from collections import defaultdict
@@ -44,6 +45,9 @@ NO_TARIFA = re.compile(r"gu[ií]a-?docente|indicador|satisfacc|normativa|permane
 CURSO_DOC = re.compile(r"\b(20[2-3]\d)\s*[-/–]\s*(?:20)?([2-3]\d)\b")
 MAX_PDF = 12_000_000
 MAX_LINEA_MUESTRA = 160
+# Líneas literales de muestra para revisar el formato: solo en local (MOTOR_MUESTRA=1); la rama pública no lleva
+# texto de terceros (docs/estrategia-informacion-cerrada.md §2.4)
+MUESTRA = os.environ.get("MOTOR_MUESTRA") == "1"
 
 
 def elegir_cc(carpeta: Path | None, ya: set[str]) -> list[dict]:
@@ -190,8 +194,8 @@ def extraer(paginas: list[str], grados: list[dict], de_la_pagina: str | None = N
             if not codigo and de_la_pagina:
                 codigo = de_la_pagina  # página de precios de un solo grado: sus cifras son de ese grado
             ultimo = codigo or ultimo
-            if len(muestra) < 60 and re.search(r"grado|doble|bachelor|degree", linea + " " + previa, re.I):
-                muestra.append(linea[:MAX_LINEA_MUESTRA])
+            if MUESTRA and len(muestra) < 60 and re.search(r"grado|doble|bachelor|degree", linea + " " + previa, re.I):
+                muestra.append(linea[:MAX_LINEA_MUESTRA])  # solo en pruebas locales: en sondas no va texto ajeno
             if not codigo:
                 continue
             for k, m in enumerate(hallados):
