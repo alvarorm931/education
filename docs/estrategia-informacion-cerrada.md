@@ -313,20 +313,20 @@ una prueba subió 101 copias de páginas de centros a la rama pública (retirada
 La §1 medía señales con reglas sobre el texto; esto es lo extraído con cita literal comprobada
 (`docs/modelo-masters.md` §8), por ficha de máster, con todas las tandas de la noche:
 
-| Dato | Oficial pública (1.732) | Oficial privada (1.046) | Propio en web de universidad o adscrito (7.165) | Centro no universitario (17.358) |
+| Dato | Oficial pública (1.841) | Oficial privada (1.058) | Propio en web de universidad o adscrito (7.428) | Centro no universitario (17.350) |
 |---|---|---|---|---|
-| precio total | 17 % (sale del decreto) | **23 %** | **35 %** | 66 % |
-| asignaturas o módulos | 44 % | 79 % | 49 % | 63 % |
-| metodología | 44 % | 90 % | 63 % | 86 % |
-| evaluación | 15 % | 55 % | 22 % | 49 % |
-| horario | 13 % | 35 % | 32 % | 28 % |
-| plazas | 58 % | 45 % | 35 % | 8 % |
-| plazo de admisión | 21 % | 35 % | 29 % | 17 % |
-| becas y descuentos | 11 % | 63 % | 33 % | 44 % |
+| precio total | 20 % (sale del decreto) | **24 %** | **35 %** | 66 % |
+| asignaturas o módulos | 45 % | 79 % | 50 % | 63 % |
+| metodología | 46 % | 90 % | 64 % | 86 % |
+| evaluación | 16 % | 54 % | 23 % | 49 % |
+| horario | 14 % | 35 % | 32 % | 28 % |
+| plazas | 60 % | 45 % | 36 % | 8 % |
+| plazo de admisión | 22 % | 35 % | 31 % | 17 % |
+| becas y descuentos | 13 % | 63 % | 33 % | 44 % |
 
 Lectura:
 
-- **El precio es lo que se esconde**, sobre todo en las universidades privadas (77 % de sus másters
+- **El precio es lo que se esconde**, sobre todo en las universidades privadas (76 % de sus másters
   oficiales sin importe en la página) y en los propios de universidades y escuelas adscritas (65 %). Ejemplo:
   el Máster en Finanzas de ESIC da modalidad, duración y asignaturas, pero no el precio; el Máster Executive en
   Recursos Humanos del Centro Garrigues sí lo da (16.500 €).
@@ -334,10 +334,10 @@ Lectura:
   del RUCT (plazas verificadas).
 - La evaluación, el horario y el plazo faltan en más de la mitad en todos los grupos: son la segunda tanda de
   peticiones.
-- Indicador de transparencia (§5) medio: 0,50 en 27.301 másters con ficha.
+- Indicador de transparencia (§5) medio: 0,50 en 27.677 másters con ficha.
 
 **Lista de peticiones** (`peticiones.py --fichas`, `fichas-masters/20261030-todas/centros_a_pedir_desde_fichas.jsonl`):
-1.172 centros con al menos una ficha de máster; 891 tienen másters sin precio publicado (11.172 fichas; las
+1.171 centros con al menos una ficha de máster; 890 tienen másters sin precio publicado (11.356 fichas; las
 públicas no se cuentan porque su precio sale del decreto). Encabezan la lista UNIR (los 150 que tienen ficha,
 sin precio), la Internacional Valenciana, la Europea de Madrid y la Alfonso X. Orden de trabajo para cada uno,
 antes de pedir: tarifa o folleto en PDF publicado (§3.2; `tarifas.py` los busca en los enlaces de las fichas ya
