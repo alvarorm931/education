@@ -1,14 +1,17 @@
 {
- "fecha": "2026-10-30T05:30:24+00:00",
- "fecha_madrid": "30/10 06:30",
+ "fecha": "2026-10-30T05:50:33+00:00",
+ "fecha_madrid": "30/10 06:50",
  "ventana_horas": 6.0,
  "resumen": {
-  "ejecuciones_revisadas": 287,
+  "ejecuciones_revisadas": 293,
   "fallos": 4,
   "fallos_pendientes": 0,
   "relanzados": 0,
   "colas_largas": 0,
   "flujos_programados_parados": [],
+  "programaciones_lanzadas_a_mano": [
+   "seo.yml"
+  ],
   "avisos_de_fuentes": 0,
   "almacen": "ok"
  },
@@ -226,6 +229,14 @@
    "parado": false
   }
  },
+ "respaldo_programaciones": [
+  {
+   "flujo": "seo.yml",
+   "prevista": "30/10 06:23",
+   "lanzado": true
+  }
+ ],
+ "latido": "en marcha",
  "boe": {
   "ultimo_diario": {
    "fecha": "2026-10-29",
