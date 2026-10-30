@@ -30,6 +30,8 @@ from motor.http import ROBOTS_ESTADO, RobotsProhibe, _origen, comprobar_robots, 
 
 TIPO_GRADO = "G"
 MAX_PAGINAS = 900
+PAUSA_CORTE = 120   # segundos de espera cuando el servidor deja de responder
+PAUSAS_MAX = 5
 
 # Registro público por norma: «tendrá carácter público y de registro administrativo» (RD 1509/2008, art. 1.1) y «la
 # consulta al RUCT será pública» (art. 7). Su robots.txt no responde (30/10/2026: tiempo agotado desde GitHub, «Empty
@@ -112,11 +114,14 @@ def ejecutar(codigos: list[str], raiz: Path, nivel: str, max_minutos: float) -> 
     destino = raiz / "datos" / "estudios" / "grados" / "ruct"
     destino.mkdir(parents=True, exist_ok=True)
     fin = time.time() + max_minutos * 60
-    hechos, errores, seguidos, alerta = 0, Counter(), 0, None
+    hechos, errores, seguidos, alerta, pausas = 0, Counter(), 0, None, 0
     resumenes = {}
-    for codigo in codigos:
+    pendientes = list(codigos)
+    recientes_fallidos: list[str] = []
+    while pendientes:
+        codigo = pendientes.pop(0)
         if time.time() > fin:
-            alerta = f"tiempo agotado: quedan {len(codigos) - hechos} códigos"
+            alerta = f"tiempo agotado: quedan {len(pendientes) + 1} códigos"
             break
         ficha = ruct.leer_ficha(lector, codigo, tipo=TIPO_GRADO)
         if lector.prohibidas:
@@ -125,9 +130,22 @@ def ejecutar(codigos: list[str], raiz: Path, nivel: str, max_minutos: float) -> 
             break
         seguidos = seguidos + 1 if "estado 0" in ficha.get("error", "") else 0
         if seguidos >= 3:
-            alerta = "tres fichas seguidas sin respuesta del servidor; ejecución detenida"
-            print(f"ALERTA RUCT (grados): {alerta}", file=sys.stderr)
-            break
+            # El RUCT tiene cortes de minutos desde GitHub: se espera y se sigue; solo se para si no vuelve
+            pausas += 1
+            if pausas > PAUSAS_MAX:
+                alerta = f"el servidor no responde tras {PAUSAS_MAX} pausas de {PAUSA_CORTE} s; ejecución detenida"
+                print(f"ALERTA RUCT (grados): {alerta}", file=sys.stderr)
+                break
+            recientes_fallidos.append(codigo)
+            pendientes.extend(c for c in recientes_fallidos if c not in pendientes)
+            recientes_fallidos.clear()
+            seguidos = 0
+            time.sleep(PAUSA_CORTE)
+            continue
+        if "estado 0" in ficha.get("error", ""):
+            recientes_fallidos.append(codigo)
+            continue
+        pausas = 0
         if "error" in ficha:
             errores[ficha["error"]] += 1
         elif nivel == "memoria":
@@ -135,6 +153,8 @@ def ejecutar(codigos: list[str], raiz: Path, nivel: str, max_minutos: float) -> 
             resumenes[codigo] = resumen_memoria(ficha["memoria"])
         (destino / f"{codigo}.json").write_text(json.dumps(ficha, ensure_ascii=False, indent=1), encoding="utf-8")
         hechos += 1
+    if recientes_fallidos:
+        errores["sin respuesta del servidor"] += len(recientes_fallidos)
     res = {"pedidos": len(codigos), "hechos": hechos, "errores": dict(errores), "peticiones": lector.peticiones,
            "alerta": alerta, "robots_txt": lector.estado_robots(),
            "peticiones_por_excepcion_de_registro_publico": lector.excepcion_registro,

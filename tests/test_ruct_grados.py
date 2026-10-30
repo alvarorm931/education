@@ -62,3 +62,16 @@ def test_registro_publico_con_prohibicion_escrita_se_respeta(monkeypatch):
     lector = ruct_grados.LectorConRobots(archivo=None, pausa=0)
     monkeypatch.setattr(lector.s, "get", lambda *a, **k: (_ for _ in ()).throw(AssertionError("no debe pedir")))
     assert lector.get("https://www.educacion.gob.es/ruct/x")[0] == 0 and lector.excepcion_registro == 0
+
+
+def test_cortes_del_servidor_se_esperan_y_se_reintenta(monkeypatch, tmp_path):
+    monkeypatch.setattr(ruct_grados, "PAUSA_CORTE", 0)
+    respuestas = {"A": ["ok"], "B": ["corte", "ok"], "C": ["corte", "ok"], "D": ["corte", "ok"], "E": ["ok"]}
+
+    def ficha(lector, codigo, tipo="G"):
+        r = respuestas[codigo].pop(0)
+        return {"codigo": codigo, "error": "ficha no disponible (estado 0)"} if r == "corte" else {"codigo": codigo, "fuente": {}}
+
+    monkeypatch.setattr(ruct_grados.ruct, "leer_ficha", ficha)
+    res = ruct_grados.ejecutar(["A", "B", "C", "D", "E"], tmp_path, "ficha", 5)
+    assert res["hechos"] == 5 and res["alerta"] is None and not res["errores"]
