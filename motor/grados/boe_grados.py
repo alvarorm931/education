@@ -455,6 +455,14 @@ def _con_separadores(filas: list[list[str]], ancho: int, cols: dict | None = Non
         if ancho >= 2 and len(llenas) == 1 and not re.fullmatch(r"\s*\d+(?:[.,]\d+)?\s*", llenas[0]):
             _separador(llenas[0], estado)
             continue
+        if len(f) > ancho and ancho >= 2:
+            # celdas de más a la izquierda («FORMACIÓN BÁSICA» de un grupo sin columna en la cabecera): su rótulo
+            # pasa al estado y la fila se alinea con la cabecera
+            extra = len(f) - ancho
+            grupo = " ".join(c for c in f[:extra] if (c or "").strip())
+            if tipo_de_rotulo(grupo):  # solo si de verdad es un rótulo de tipo; si no, como antes (se recorta)
+                estado["tipo"] = tipo_de_rotulo(grupo)
+                f = list(f[extra:])
         if len(f) < ancho:
             f = _encajar(list(f), previa, ancho, cols)
         f = list(f[:ancho]) + [""] * (ancho - len(f))
@@ -561,7 +569,9 @@ def plan(tablas: list[dict], dist: dict | None = None, codigos: dict[str, str] |
         cab = filas[0]
         if RESUMEN.search(cab[0] or "") and len(cab) <= 3 or distribucion_creditos([t]) is not None:
             continue  # tabla de créditos por tipo: se lee aparte (distribucion_creditos)
-        filas_estado = _con_separadores(filas[1:], len(cab), _columnas(cab))
+        # columnas corregidas con las filas completas antes de encajar las cortas (créditos y carácter cambiados)
+        cols0 = _corregir_columnas(_columnas(cab), [cab] + [f for f in filas[1:] if len(f) == len(cab)])
+        filas_estado = _con_separadores(filas[1:], len(cab), cols0)
         cuerpo = [f for f, _ in filas_estado]
         cols = _corregir_columnas(_columnas(cab), [cab] + cuerpo)
         if "nombre" not in cols and "modulo" in cols:
