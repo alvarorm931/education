@@ -499,3 +499,21 @@ def test_por_que_no_distingue_robots_de_sin_respuesta():
     rp2.disallow_all = True
     d.robots["https://a.es"] = rp2
     assert e._por_que_no(d, "https://a.es/m") == "robots_ilegible"
+
+
+def test_lista_qedu_vuelve_a_etiquetar_la_pagina_ya_extraida(tmp_path):
+    import json as js
+    q = tmp_path / "q"
+    q.mkdir()
+    (q / "qedu_detalles_master_0_1.jsonl").write_text(js.dumps({"codTitula": "7", "detalle": {"enlace": "https://u.es/m7"}}) + "\n")
+    (tmp_path / "fichas.jsonl").write_text("")
+    c = tmp_path / "c"
+    c.mkdir()
+    (c / "paginas_capturadas.jsonl").write_text(js.dumps({"url": "https://u.es/m7", "estado_http": 200,
+                                                          "caracteres_texto": 900}) + "\n")
+    (c / "paginas_extraidas.jsonl").write_text(js.dumps({"url": "https://u.es/m7", "extraido": "2026-10-30T02:00:00+00:00",
+                                                          "grupo": "no_oficial", "proveedor": "p"}) + "\n")
+    res = e.lista_qedu([q], tmp_path / "fichas.jsonl", [c], tmp_path / "o")
+    x = js.loads((tmp_path / "o" / "asignadas_por_qedu" / "paginas_extraidas.jsonl").read_text())
+    assert res["paginas_asignadas_por_qedu"] == 1 and x["grupo"] == "oficial" and x["codigos_ruct"] == ["7"]
+    assert x["extraido"] == "2026-10-30T02:00:00+00:00"  # misma fecha: sus hechos siguen valiendo

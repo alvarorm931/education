@@ -1095,6 +1095,9 @@ def lista_propios_de_oficiales(censo: Path, rastreos: list[Path], paginas_oficia
     return {**cuentas, "paginas": sum(cargas), "por_tramo": cargas, "servidores": len(hosts)}
 
 
+MAX_CODIGOS_POR_ENLACE = 3  # un máster conjunto puede compartir página con dos o tres títulos; más es una portada
+
+
 def lista_qedu(qedu: list[Path], fichas: Path, capturadas: list[Path], salida: Path) -> dict:
     """Másters oficiales sin ficha web comprobada cuya web oficial da QEDU (el enlace de cada impartición): una
     fila por enlace, unida a su código RUCT desde el principio. La extracción comprueba después el nombre de la
@@ -1109,6 +1112,7 @@ def lista_qedu(qedu: list[Path], fichas: Path, capturadas: list[Path], salida: P
             if f.get("grupo") == "oficial" and f.get("comprobacion_nombre") in aceptados:
                 con_ficha.add(f.get("codigo_ruct"))
     ya = set()
+    extraidas: dict[str, dict] = {}  # la última extracción de cada página ya extraída
     for c in capturadas:
         for f in sorted(c.rglob("paginas_capturadas.jsonl")):
             for l in f.read_text(encoding="utf-8").split("\n"):
@@ -1116,6 +1120,14 @@ def lista_qedu(qedu: list[Path], fichas: Path, capturadas: list[Path], salida: P
                     x = json.loads(l)
                     if x.get("estado_http") == 200 and (x.get("caracteres_texto") or 0) >= MIN_CARACTERES:
                         ya.add(x["url"])
+        for f in sorted(c.rglob("paginas_extraidas.jsonl")):
+            for l in f.read_text(encoding="utf-8").split("\n"):
+                if l.strip():
+                    x = json.loads(l)
+                    if x.get("json_legible") is not False and (x["url"] not in extraidas
+                                                               or x["extraido"] >= extraidas[x["url"]]["extraido"]):
+                        extraidas[x["url"]] = x
+    asignar: dict[str, set] = {}
     por_url: dict[str, dict] = {}
     cuentas = Counter()
     for c in qedu:
@@ -1135,18 +1147,39 @@ def lista_qedu(qedu: list[Path], fichas: Path, capturadas: list[Path], salida: P
                 enlace = _sin_seguimiento(enlace)
                 if enlace in ya:
                     cuentas["enlace_ya_capturado"] += 1
+                    if enlace in extraidas and not extraidas[enlace].get("no_es_programa"):
+                        asignar.setdefault(enlace, set()).add(cod)
                     continue
                 fila = por_url.setdefault(enlace, {"url": enlace, "grupo": "oficial", "estado_emparejado": "qedu",
                                                    "pagina": "principal", "codigos_ruct": []})
                 if cod not in fila["codigos_ruct"]:
                     fila["codigos_ruct"].append(cod)
+    # un enlace que QEDU da para muchos títulos es la portada de posgrado del centro, no la ficha de un máster
+    genericos = {u for u, f in por_url.items() if len(f["codigos_ruct"]) > MAX_CODIGOS_POR_ENLACE}
+    cuentas["enlaces_genericos"] = len(genericos)
+    por_url = {u: f for u, f in por_url.items() if u not in genericos}
     for f in por_url.values():
         f["codigos_ruct"].sort()
         f["codigo_ruct"] = f["codigos_ruct"][0]
     salida.mkdir(parents=True, exist_ok=True)
     (salida / "oficiales_qedu.jsonl").write_text("".join(json.dumps(f, ensure_ascii=False) + "\n" for f in por_url.values()),
                                                  encoding="utf-8")
-    return {**cuentas, "enlaces": len(por_url), "codigos": len({c for f in por_url.values() for c in f["codigos_ruct"]})}
+    # Páginas ya extraídas que QEDU da como web oficial de un máster sin ficha: se vuelven a etiquetar como
+    # oficiales de ese código con la misma fecha de extracción (sus hechos siguen valiendo, sin pedir ni pagar
+    # nada). fichas_masters comprueba después el nombre de la página, como con cualquier otra.
+    asignar = {u: cs for u, cs in asignar.items() if len(cs) <= MAX_CODIGOS_POR_ENLACE}
+    carpeta = salida / "asignadas_por_qedu"
+    carpeta.mkdir(parents=True, exist_ok=True)
+    with (carpeta / "paginas_extraidas.jsonl").open("w", encoding="utf-8") as f:
+        for u, cs in sorted(asignar.items()):
+            x = extraidas[u]
+            previos = set(x.get("codigos_ruct") or []) if x.get("grupo") == "oficial" else set()
+            codigos = sorted(previos | cs)
+            f.write(json.dumps({**x, "grupo": "oficial", "codigos_ruct": codigos, "codigo_ruct": codigos[0],
+                                "estado_emparejado": "qedu", "pagina": x.get("pagina") or "principal"},
+                               ensure_ascii=False) + "\n")
+    return {**cuentas, "enlaces": len(por_url), "codigos": len({c for f in por_url.values() for c in f["codigos_ruct"]}),
+            "paginas_asignadas_por_qedu": len(asignar), "codigos_asignados_por_qedu": len({c for cs in asignar.values() for c in cs})}
 
 
 def lista_segunda_vuelta(paginas_oficiales: Path, fichas: Path, capturadas: list[Path], salida: Path,
