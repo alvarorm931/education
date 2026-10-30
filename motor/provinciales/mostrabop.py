@@ -57,6 +57,14 @@ def _t(s: str) -> str:
     return " ".join(html.unescape(re.sub(r"<[^>]+>", " ", s or "")).replace("\xa0", " ").split())
 
 
+def completar_entidad(ent: str, tit: str) -> tuple[str, str]:
+    """Lleida en 2023: «<span>AJUNTAMENT</span> - D'OLIANA-Edicte de…»: el nombre de la entidad sigue en el título."""
+    partida = re.match(r"^(.{2,80}?)-(\S.*)$", tit or "")
+    if partida and ((ent or "").upper() in ENTIDAD_CORTADA or (ent or "").upper().endswith((" DE", " DEL", " D'"))):
+        return f"{ent} {partida.group(1).strip()}".replace("D' ", "D'"), partida.group(2).strip()
+    return ent, tit
+
+
 def ultimo(contenido: bytes) -> tuple[int, int] | None:
     h = contenido.decode("utf-8", errors="replace")
     m = RE_ULTIMO.search(h)
@@ -74,11 +82,7 @@ def parsear_boletin(contenido: bytes) -> dict:
         if m.group("sec") is not None:
             seccion = _t(m.group("sec"))
         else:
-            ent, tit = _t(m.group("ent")), _t(m.group("tit"))
-            partida = re.match(r"^(.{2,80}?)-(\S.*)$", tit)
-            if partida and (ent.upper() in ENTIDAD_CORTADA or ent.upper().endswith((" DE", " DEL", " D'"))):
-                # Lleida en 2023: «<span>AJUNTAMENT</span> - D'OLIANA-Edicte de…»: el nombre sigue en el título
-                ent, tit = f"{ent} {partida.group(1).strip()}".replace("D' ", "D'"), partida.group(2).strip()
+            ent, tit = completar_entidad(_t(m.group("ent")), _t(m.group("tit")))
             anuncios.append({"numero_anuncio": m.group("num"), "seccion": seccion, "entidad": ent,
                              "titulo": tit, "url_pdf": html.unescape(m.group("pdf"))})
     return {"numero": int(c.group("n")) if c else None,
@@ -99,6 +103,9 @@ def convocante(p: Plataforma, x: dict) -> dict | None:
 def seleccionar(p: Plataforma, filas: list[dict]) -> list[dict]:
     out = []
     for x in filas:
+        ent, tit = completar_entidad(x.get("entidad"), x["titulo"])  # también al reseleccionar lo ya guardado
+        if ent != x.get("entidad"):
+            x = {**x, "entidad": ent, "titulo": tit}
         if not es_empleo_estricto(x["titulo"]):
             continue
         local = es_local(x)
