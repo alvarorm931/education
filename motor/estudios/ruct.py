@@ -18,8 +18,12 @@ Las páginas de la memoria dependen de la sesión: el servidor recuerda qué mem
 cada memoria se recorre entera y en orden dentro de su propia sesión, y cada página se comprueba contra el
 título esperado (si el servidor devuelve otra memoria, la página se descarta y se avisa).
 
+Los originales siguen la política del motor (motor/archivo.py): en la rama pública solo índice y huella; enteros en
+el almacén privado con MOTOR_ORIGINALES=s3. Antes de cada petición se mira robots.txt (ver REGISTRO_PUBLICO).
+
 Uso:
   python -m motor.estudios.ruct --codigos 4318301,3500355 --nivel memoria --salida ruta/
+  python -m motor.estudios.ruct --codigos-fichero codigos.txt --desde 0 --hasta 70 --nivel memoria --salida ruta/
   python -m motor.estudios.ruct --catalogo datos/estudios/masters/catalogo.jsonl --nivel ficha --salida ruta/
 """
 
@@ -367,10 +371,18 @@ class Lector:
         self.pausa = pausa
         self.peticiones = 0
         self.capturas: list[dict] = []
+        self._ultima = 0.0  # inicio de la última petición (reloj monótono)
+
+    def _esperar_turno(self) -> None:
+        """Una petición por segundo contando desde el inicio de la anterior (no un segundo más la respuesta)."""
+        espera = self.pausa - (time.monotonic() - self._ultima)
+        if espera > 0:
+            time.sleep(espera)
+        self._ultima = time.monotonic()
 
     def get(self, url: str, intentos: int = 3) -> tuple[int, str, dict | None]:
         for i in range(intentos):
-            time.sleep(self.pausa)
+            self._esperar_turno()
             self.peticiones += 1
             try:
                 r = self.s.get(url, timeout=40)
@@ -442,6 +454,7 @@ def leer_memoria(lector: Lector, ficha: dict, max_paginas: int = 250) -> dict:
         return p
 
     inicio = lector.peticiones
+    basicos_pagina = p
     basicos = campos(p)
     memoria: dict = {
         "cod": cod,
@@ -494,6 +507,11 @@ def leer_memoria(lector: Lector, ficha: dict, max_paginas: int = 250) -> dict:
     if p:
         memoria["resultados_aprendizaje"] = [{"codigo": f[0], "descripcion": f[1], "tipo": f[-1]}
                                              for t in tablas(p) for f in t["filas"] if len(f) >= 3]
+    # descripción del plan (estructura, coordinación, movilidad): está en el menú de las memorias que la tienen
+    if "descripcionplan" in basicos_pagina:
+        p = pagina(f"descripcionplan?actual=menu.solicitud.planificacion.descripcion&cod={cod}")
+        if p:
+            memoria["descripcion_plan"] = textos(p)
     # plan: módulos → materias → asignaturas
     p = pagina(f"modulos?actual=menu.solicitud.planificacion.modulos&cod={cod}")
     modulos = sorted({int(x) for x in re.findall(r"codModulo=(\d+)", p or "")} - {0})
@@ -546,45 +564,148 @@ def leer_memoria(lector: Lector, ficha: dict, max_paginas: int = 250) -> dict:
 # ------------------------------------------------------------------------------------------ ejecución
 
 
-def ejecutar(codigos: list[str], raiz: Path, nivel: str, max_minutos: float) -> dict:
-    archivo = Archivo(raiz / "archivo")
-    lector = Lector(archivo)
+MAX_PAGINAS = 400   # una memoria de máster de 120 créditos con muchas asignaturas pasa de 250 páginas
+PAUSA_CORTE = 120   # segundos de espera cuando el servidor deja de responder
+PAUSAS_MAX = 5
+
+# Registro público por norma: «tendrá carácter público y de registro administrativo» (RD 1509/2008, art. 1.1) y «la
+# consulta al RUCT será pública» (art. 7). Su robots.txt no responde (30/10/2026, desde GitHub y desde España) y la
+# RFC 9309 manda tratar eso como prohibido. Excepción del proyecto (la misma que en motor/grados/ruct_grados.py y
+# en los boletines oficiales): solo en estas rutas y SOLO mientras robots.txt no se pueda leer; si un día responde,
+# manda lo que diga. Una petición por segundo, identificada.
+REGISTRO_PUBLICO = BASE
+DECISION_RUCT = ("Mandato de Álvaro del 30/10/2026 a las 02:51 («de mí nada, sigue, hay que sacar toda la info»), "
+                 "con el mismo criterio que los boletines oficiales", "2026-10-30")
+
+
+class LectorRegistro(Lector):
+    """El lector del RUCT con la comprobación de robots.txt antes de cada petición."""
+
+    def __init__(self, archivo, pausa: float = PAUSA):
+        super().__init__(archivo, pausa)
+        self.prohibidas = 0
+        self.robots_error: str | None = None
+        self.excepcion_registro = 0
+
+    def get(self, url: str, intentos: int = 3):
+        from motor.http import RobotsProhibe, comprobar_robots, robots_de
+
+        try:
+            comprobar_robots(url, self.s)
+        except RobotsProhibe as e:
+            if url.startswith(REGISTRO_PUBLICO) and robots_de(url, self.s).todo_prohibido:
+                self.excepcion_registro += 1  # robots.txt ilegible, no una prohibición escrita
+            else:
+                self.prohibidas += 1
+                self.robots_error = str(e)[:300]
+                return 0, "", None
+        return super().get(url, intentos)
+
+
+def resumen_memoria(m: dict) -> dict:
+    materias = [x for b in m.get("plan", []) for x in b.get("materias", [])]
+    asignaturas = [a for x in materias for a in x.get("asignaturas", [])]
+    return {
+        "paginas": m.get("paginas"),
+        "materias": len(materias),
+        "asignaturas": len(asignaturas),
+        "materias_con_evaluacion": sum(1 for x in materias if x.get("evaluacion")),
+        "materias_con_contenidos": sum(1 for x in materias if x.get("contenidos")),
+        "centros_con_plazas": sum(1 for c in m.get("centros", []) if c.get("plazas_total")),
+        "error": m.get("error"),
+        "avisos": len(m.get("avisos", [])),
+    }
+
+
+def ejecutar(codigos: list[str], raiz: Path, nivel: str, max_minutos: float, pausa_corte: float | None = None) -> dict:
+    """Lee la ficha (y con nivel «memoria» la memoria vigente) de cada código, en orden.
+
+    Los originales van al archivo con la política del motor: en la rama pública solo índice y huella; enteros en el
+    almacén privado con MOTOR_ORIGINALES=s3. Si el servidor deja de responder se espera y se reintenta; si no vuelve
+    se para y se dice cuántos códigos quedan."""
+    from collections import Counter
+
+    from motor.archivo import solo_huella_por_defecto
+
+    pausa_corte = PAUSA_CORTE if pausa_corte is None else pausa_corte
+    archivo = Archivo(raiz / "archivo", indice_por_fuente=True, solo_huella=solo_huella_por_defecto())
+    lector = LectorRegistro(archivo)
     destino = raiz / "datos" / "estudios" / "masters" / "ruct"
     destino.mkdir(parents=True, exist_ok=True)
     fin = time.time() + max_minutos * 60
-    hechos, errores, seguidos = 0, 0, 0
-    alerta = None
-    for codigo in codigos:
+    hechos, errores, seguidos, alerta, pausas = 0, Counter(), 0, None, 0
+    resumenes: dict[str, dict] = {}
+    pendientes = list(codigos)
+    fallidos: list[str] = []
+    reintentado = False
+    while pendientes or (fallidos and not reintentado):
+        if not pendientes:  # los cortes sueltos se reintentan una vez al final
+            pendientes, fallidos, reintentado, seguidos = fallidos, [], True, 0
         if time.time() > fin:
+            alerta = f"tiempo agotado: quedan {len(pendientes)} códigos"
             break
+        codigo = pendientes.pop(0)
         ficha = leer_ficha(lector, codigo)
-        seguidos = seguidos + 1 if "estado 0" in ficha.get("error", "") else 0
-        if seguidos >= 3:  # el servidor no responde: se para en vez de agotar el tiempo
-            alerta = "ALERTA RUCT: tres fichas seguidas sin respuesta del servidor; ejecución detenida"
-            print(alerta, file=sys.stderr)
+        if lector.prohibidas:
+            alerta = f"robots.txt: {lector.robots_error}"
+            print(f"ALERTA RUCT: {alerta}", file=sys.stderr)
+            pendientes.insert(0, codigo)
             break
-        if "error" not in ficha and nivel == "memoria":
-            ficha["memoria"] = leer_memoria(lector, ficha)
-        errores += 1 if "error" in ficha else 0
+        if "estado 0" in ficha.get("error", ""):
+            seguidos += 1
+            fallidos.append(codigo)
+            if seguidos >= 3:
+                # El RUCT tiene cortes de minutos: se espera y se reintenta lo fallido; se para si no vuelve
+                pausas += 1
+                if pausas > PAUSAS_MAX:
+                    alerta = f"el servidor no responde tras {PAUSAS_MAX} pausas de {pausa_corte:.0f} s; detenida"
+                    print(f"ALERTA RUCT: {alerta}", file=sys.stderr)
+                    break
+                pendientes = fallidos + pendientes
+                fallidos, seguidos = [], 0
+                time.sleep(pausa_corte)
+            continue
+        seguidos, pausas = 0, 0
+        if "error" in ficha:
+            errores[ficha["error"]] += 1
+        elif nivel == "memoria":
+            ficha["memoria"] = leer_memoria(lector, ficha, max_paginas=MAX_PAGINAS)
+            resumenes[codigo] = resumen_memoria(ficha["memoria"])
         (destino / f"{codigo}.json").write_text(json.dumps(ficha, ensure_ascii=False, indent=1), encoding="utf-8")
         hechos += 1
-    return {"pedidos": len(codigos), "hechos": hechos, "errores": errores, "peticiones": lector.peticiones, "alerta": alerta}
+    # lo que no se llegó a leer queda anotado para la siguiente pasada
+    sin_leer = fallidos + pendientes
+    if fallidos:
+        errores["sin respuesta del servidor"] += len(fallidos)
+    res = {"pedidos": len(codigos), "hechos": hechos, "errores": dict(errores), "peticiones": lector.peticiones,
+           "alerta": alerta, "sin_leer": sin_leer,
+           "peticiones_por_excepcion_de_registro_publico": lector.excepcion_registro,
+           "decision_excepcion": DECISION_RUCT if lector.excepcion_registro else None, "memorias": resumenes}
+    (destino / f"resumen-{nivel}-{int(time.time())}.json").write_text(json.dumps(res, ensure_ascii=False, indent=1),
+                                                                      encoding="utf-8")
+    return {k: v for k, v in res.items() if k not in ("memorias", "sin_leer")} | {"sin_leer": len(sin_leer)}
 
 
 def main() -> None:
     p = argparse.ArgumentParser()
     p.add_argument("--codigos", help="códigos RUCT separados por comas")
+    p.add_argument("--codigos-fichero", help="fichero con un código por línea (en orden de prioridad)")
     p.add_argument("--catalogo", help="catalogo.jsonl: lee todos sus códigos vivos")
+    p.add_argument("--desde", type=int, default=0)
+    p.add_argument("--hasta", type=int)
     p.add_argument("--nivel", choices=["ficha", "memoria"], default="ficha")
-    p.add_argument("--max-minutos", type=float, default=25)
+    p.add_argument("--max-minutos", type=float, default=50)
     p.add_argument("--salida", required=True)
     a = p.parse_args()
     if a.codigos:
         codigos = [c.strip() for c in a.codigos.split(",") if c.strip()]
+    elif a.codigos_fichero:
+        codigos = Path(a.codigos_fichero).read_text(encoding="utf-8").split()
     elif a.catalogo:
-        codigos = [json.loads(l)["codigo_ruct"] for l in Path(a.catalogo).read_text(encoding="utf-8").splitlines()]
+        codigos = [json.loads(l)["codigo_ruct"] for l in Path(a.catalogo).read_text(encoding="utf-8").split("\n") if l.strip()]
     else:
-        sys.exit("Falta --codigos o --catalogo")
+        sys.exit("Falta --codigos, --codigos-fichero o --catalogo")
+    codigos = codigos[a.desde:a.hasta]
     print(json.dumps(ejecutar(codigos, Path(a.salida), a.nivel, a.max_minutos), ensure_ascii=False))
 
 

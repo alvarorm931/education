@@ -20,6 +20,11 @@ on:
         description: "Rutas de la rama sondas que necesita el módulo, separadas por espacios (quedan en ./entrada/)"
         required: false
         default: ""
+      por_tramo:
+        description: "si: cada tramo sube sus resultados a sondas al terminar (para usarlos sin esperar al resto)"
+        type: choice
+        options: ["no", "si"]
+        default: "no"
       ejecutor:
         description: "Dónde se ejecuta: github (servidores de GitHub) o espana (servidor propio en España; los tramos van en fila)"
         type: choice
@@ -68,7 +73,7 @@ jobs:
           # Los módulos que leen webs de centros guardan el original de cada página (y la extracción, lo enviado a
           # la API y las citas) en el almacén privado de S3, con escritura única y credenciales OIDC que se renuevan
           # solas (motor/credenciales_aws.py). Nada de eso llega a la rama pública.
-          MOTOR_ORIGINALES: ${{ contains(fromJSON('["motor.estudios.extraer", "motor.estudios.clasificar", "motor.estudios.rastreador", "motor.estudios.tarifas"]'), inputs.modulo) && 's3' || 'huella' }}
+          MOTOR_ORIGINALES: ${{ contains(fromJSON('["motor.estudios.extraer", "motor.estudios.clasificar", "motor.estudios.rastreador", "motor.estudios.tarifas", "motor.estudios.ruct", "motor.estudios.qedu_masters"]'), inputs.modulo) && 's3' || 'huella' }}
         run: |
           case "$MODULO" in motor.estudios.*) ;; *) echo "Módulo no permitido"; exit 1;; esac
           mkdir -p out
@@ -77,19 +82,44 @@ jobs:
           echo "codigo=$?" >> out/salida.txt
           tail -n 20 out/salida.txt
           echo "NOMBRE=${{ strategy.job-index }}" >> "$GITHUB_ENV"
+      - name: Subir este tramo a sondas (por_tramo=si)
+        if: always() && inputs.por_tramo == 'si'
+        env:
+          MODULO: ${{ inputs.modulo }}
+        run: |
+          # Igual que en «juntar»: las páginas de webs de centros no se publican (solo su índice)
+          rm -rf out/archivo/web-centros
+          STAMP=$(date -u +%Y%m%dT%H%M%S)-t${{ strategy.job-index }}
+          mkdir -p "pub/$STAMP" && cp -r out/. "pub/$STAMP/"
+          find pub -type f -size +90M -exec gzip -9 {} \;
+          grep -rlE '(AKIA|ASIA)[0-9A-Z]{16}|AIza[0-9A-Za-z_-]{35}|gh[pousr]_[A-Za-z0-9]{36}|xox[baprs]-[A-Za-z0-9-]{10,}|sk_live_[0-9a-zA-Z]{24,}' pub 2>/dev/null \
+            | xargs -r sed -i -E 's/(AKIA|ASIA)[0-9A-Z]{16}|AIza[0-9A-Za-z_-]{35}|gh[pousr]_[A-Za-z0-9]{36}|xox[baprs]-[A-Za-z0-9-]{10,}|sk_live_[0-9a-zA-Z]{24,}/[retirado]/g'
+          cd pub
+          git init -q && git config user.name "motor-estudios" && git config user.email "motor-estudios@users.noreply.github.com"
+          git remote add origin "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git"
+          if git fetch -q --depth 1 origin sondas; then git reset -q FETCH_HEAD; fi
+          git checkout -q -B sondas
+          git add "$STAMP" && git commit -qm "Estudios, tramo ${{ strategy.job-index }}: $MODULO"
+          for i in 1 2 3 4 5 6; do
+            git push -q origin sondas && exit 0
+            sleep $((i * 10))
+            git fetch -q --depth 1 origin sondas && git reset -q FETCH_HEAD && git add "$STAMP" \
+              && git commit -qm "Estudios, tramo ${{ strategy.job-index }}: $MODULO" || true
+          done
+          exit 1
       - uses: actions/upload-artifact@v4
-        if: always()
+        if: always() && inputs.por_tramo != 'si'
         with:
           name: tramo-${{ env.NOMBRE }}
           path: out
           retention-days: 7
       - name: Limpiar la copia local (en el servidor propio no queda nada entre ejecuciones)
         if: always() && inputs.ejecutor == 'espana'
-        run: rm -rf out entrada
+        run: rm -rf out entrada pub
 
   juntar:
     needs: tramo
-    if: always()
+    if: always() && inputs.por_tramo != 'si'
     runs-on: ubuntu-latest
     timeout-minutes: 15
     # Sin grupo de concurrencia: el grupo «rama-sondas» lo comparten otros flujos y una espera allí puede
