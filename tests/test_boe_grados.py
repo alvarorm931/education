@@ -233,3 +233,11 @@ def test_lecturas_que_quitan_lo_que_sobra_o_ponen_lo_que_falta():
     fb = _t([["Asignatura", "Créditos", "Carácter"], ["A.", "6", "FB"], ["B.", "6", "FB"]])
     m = medir_plan({"tablas": [dist, fb, sin], "texto": ""})
     assert m["comprobacion"] and {x["nombre"]: x["tipo"] for x in m["filas_plan"]}["F"] == "obligatoria"
+
+
+def test_columnas_de_modulo_con_denominacion_y_ects():
+    from motor.grados.boe_grados import _columnas
+    assert _columnas(["Denominación Módulo", "ECTS", "Denominación materia", "ECTS", "Carácter", "Curso"]) == {
+        "modulo": 0, "nombre": 2, "creditos": 3, "caracter": 4, "curso": 5}
+    c = _columnas(["ECTS módulo", "Denominación módulo", "Denominación materia", "Carácter", "ECTS"])
+    assert c["nombre"] == 2 and c["creditos"] == 4 and c["modulo"] == 1

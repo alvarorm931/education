@@ -148,6 +148,13 @@ def numero_orden(s: str | None) -> int | None:
 def _columnas(cabecera: list[str]) -> dict[str, int]:
     cols: dict[str, int] = {}
     for i, c in enumerate(cabecera):
+        if COL["modulo"].search(c or "") and COL["creditos"].search(c or ""):
+            continue  # «ECTS módulo»: los créditos del módulo entero, ni nombre ni créditos de la fila
+        # «Denominación módulo» es el módulo, no el nombre (aunque diga «denominación»)
+        if COL["modulo"].search(c or "") and not re.search(r"asignatura|materia", c or "", re.I) \
+                and not COL["creditos"].search(c or "") and "modulo" not in cols:
+            cols["modulo"] = i
+            continue
         for clave, patron in COL.items():
             if clave not in cols and patron.search(c or ""):
                 if clave == "nombre" and COL["creditos"].search(c):
