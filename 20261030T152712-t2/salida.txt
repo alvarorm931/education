@@ -1,0 +1,18 @@
+{
+ "pedidos": 741,
+ "descargados": 738,
+ "errores": 3,
+ "primeros_errores": [
+  "BOE-A-2021-4794: No se pudo descargar https://www.boe.es/diario_boe/txt.php?id=BOE-A-2021-4794 tras 4 intentos: HTTPSConnectionPool(host='www.boe.es', port=443): Max retries exceeded with url: /diario_boe/txt.php?id=B",
+  "BOE-A-2021-4795: No se pudo descargar https://www.boe.es/diario_boe/txt.php?id=BOE-A-2021-4795 tras 4 intentos: Response ended prematurely",
+  "BOE-A-2021-5321: HTTP 503"
+ ],
+ "medicion": {
+  "documentos": 738,
+  "planes": 738,
+  "con_asignaturas": 717,
+  "comprobados": 580,
+  "codigos": 738
+ }
+}
+codigo=0
