@@ -1,6 +1,6 @@
-# Vigilancia 30/10 21:04 (Madrid)
+# Vigilancia 30/10 21:20 (Madrid)
 
-- Ejecuciones revisadas (últimas 6 h): 91
+- Ejecuciones revisadas (últimas 6 h): 96
 - Fallos: 1; pendientes: 0; relanzados ahora: 0
 - Colas de más de 30 minutos: 2
 - Flujos programados parados: ninguno
@@ -21,5 +21,5 @@ https://github.com/alvarorm931/education/actions/runs/41079079352 (intento 2, wo
       BOP-GRANADA: 5211 actos, 1935 con texto, 267 con fecha de fin de plazo; {'titulo': 4305, 'plazo_general_v3': 906}
       ##[error]Process completed with exit code 1.
 
-- En cola 49 min: Boletines autonómicos https://github.com/alvarorm931/education/actions/runs/41113872721
-- En cola 52 min: Sonda de fuentes https://github.com/alvarorm931/education/actions/runs/41113365103
+- En cola 64 min: Boletines autonómicos https://github.com/alvarorm931/education/actions/runs/41113872721
+- En cola 67 min: Sonda de fuentes https://github.com/alvarorm931/education/actions/runs/41113365103
