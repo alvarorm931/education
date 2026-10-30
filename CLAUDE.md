@@ -16,6 +16,7 @@ Todo está enfocado a tráfico orgánico desde Google y desde buscadores con IA.
 - Ninguna página se publica sin pasar el control automático descrito en `docs/ley-seo.md`.
 
 Antes de proponer o programar cualquier cosa que llegue a una página pública (plantillas, anuncios, avisos, scripts, nuevas secciones), comprobar `docs/ley-seo.md`.
+El control está programado en `motor/seo/` (`python -m motor.seo.control`); el contrato que tiene que cumplir el generador de páginas, en `docs/encargo-seo.md`.
 
 ## Reglas de datos
 

@@ -1,0 +1,85 @@
+name: SEO
+
+# Control y vigilancia SEO (docs/ley-seo.md, motor/seo/).
+# - pruebas: cada cambio en motor/seo se prueba con la web de ejemplo (también con Chromium).
+# - vigilancia: cada día, sobre el sitio publicado. No hace nada hasta que exista la variable del repositorio
+#   SEO_BASE (Settings › Secrets and variables › Actions › Variables), por ejemplo https://dominio.es.
+#   Si hay alertas, abre o actualiza la incidencia «Vigilancia SEO» (GitHub avisa por correo).
+#   Claves opcionales como secretos: CRUX_API_KEY, GSC_CREDENCIALES, GSC_PROPIEDAD, BING_WEBMASTER_KEY.
+
+on:
+  push:
+    paths: ["motor/seo/**", "tests/test_seo.py", ".github/workflows/seo.yml"]
+  schedule:
+    - cron: "23 5 * * *"   # 06:23 / 07:23 en Madrid según horario, antes del motor
+  workflow_dispatch:
+    inputs:
+      tarea:
+        description: "pruebas o vigilancia"
+        type: choice
+        options: [vigilancia, pruebas]
+        default: vigilancia
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  pruebas:
+    if: github.event_name == 'push' || inputs.tarea == 'pruebas'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -e ".[dev,seo]"
+      - run: python -m playwright install --with-deps chromium
+      - run: python -m pytest tests/test_seo.py -q
+
+  vigilancia:
+    if: (github.event_name == 'schedule' || inputs.tarea == 'vigilancia') && vars.SEO_BASE != ''
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    concurrency:
+      group: vigilancia-seo
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -e ".[seo]"
+      - name: Vigilar
+        id: vigilar
+        env:
+          CRUX_API_KEY: ${{ secrets.CRUX_API_KEY }}
+          GSC_CREDENCIALES: ${{ secrets.GSC_CREDENCIALES }}
+          GSC_PROPIEDAD: ${{ secrets.GSC_PROPIEDAD }}
+          BING_WEBMASTER_KEY: ${{ secrets.BING_WEBMASTER_KEY }}
+        run: |
+          set +e
+          python -m motor.seo.vigilancia --base "${{ vars.SEO_BASE }}" --informe vigilancia.json > resumen.md
+          codigo=$?
+          cat resumen.md
+          cat resumen.md >> "$GITHUB_STEP_SUMMARY"
+          echo "codigo=$codigo" >> "$GITHUB_OUTPUT"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: vigilancia-seo
+          path: vigilancia.json
+          retention-days: 30
+      - name: Incidencia si hay alertas
+        if: steps.vigilar.outputs.codigo != '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh label create vigilancia-seo --color B60205 --description "Alertas de la vigilancia SEO" --force
+          abierta=$(gh issue list --label vigilancia-seo --state open --json number --jq '.[0].number')
+          if [ -n "$abierta" ]; then
+            gh issue comment "$abierta" --body-file resumen.md
+          else
+            gh issue create --title "Vigilancia SEO: alertas" --label vigilancia-seo --body-file resumen.md
+          fi
+          exit 1
