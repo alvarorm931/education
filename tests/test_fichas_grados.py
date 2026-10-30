@@ -161,6 +161,18 @@ def test_indexar_tarifas_prefiere_el_curso_mas_reciente(tmp_path):
     assert t["2500001"]["precio_curso"] == 9300.0 and t["2500001"]["curso_documento"] == "2026-2027"
     assert t["2500001"]["capturado"] == "2026-10-30"
     assert "2500002" not in t  # una cifra suelta con rótulo «curso» en una lista de precios no basta
+    assert "centro" not in t["2500001"]
+
+
+def test_indexar_tarifas_de_un_centro_adscrito(tmp_path):
+    from motor.grados.fichas import indexar_tarifas
+    d = tmp_path / "20261030T110000-t0" / "datos" / "estudios" / "grados" / "tarifas_grado"
+    d.mkdir(parents=True)
+    doc = {"url": "https://c.es/precios.pdf", "curso_documento": "2026-2027", "universidad": "U · Centro",
+           "centro": "08073491", "centro_adscrito": True, "grados": {"2500003": [_imp(150.0, None), _imp(9000.0, None)]}}
+    (d / "tarifas.jsonl").write_text(json.dumps(doc))
+    t = indexar_tarifas(tmp_path)["2500003"]
+    assert t["centro"] == "08073491" and t["centro_adscrito"] is True
 
 
 def test_precio_por_cuentas():

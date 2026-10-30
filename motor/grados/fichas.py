@@ -222,7 +222,9 @@ def indexar_tarifas(carpeta: Path | None) -> dict[str, dict]:
                     candidatos[cod].append({**p, "fuente": "Tarifas publicadas por la universidad",
                                             "formato": doc.get("formato") or "pdf",
                                             "curso_documento": doc.get("curso_documento"),
-                                            "universidad": doc.get("universidad"), "capturado": fecha})
+                                            "universidad": doc.get("universidad"), "capturado": fecha,
+                                            **({"centro": doc["centro"], "centro_adscrito": bool(doc.get("centro_adscrito"))}
+                                               if doc.get("centro") else {})})
     salida = {}
     for cod, ps in candidatos.items():
         ps.sort(key=lambda p: (p["precio_curso"] is not None, p.get("curso_documento") or ""), reverse=True)
@@ -533,7 +535,9 @@ def construir(catalogo: list[dict], genericos: list[dict], tarjetas: dict, detal
             pag, descartadas[t["codigo"]] = None, descartadas.get(t["codigo"], "pagina")
         pweb = {k: v for k, v in pweb.items() if k != "_titulo"} if pweb else None
         pag = {k: v for k, v in pag.items() if k != "_titulo"} if pag else None
-        ptar = (tarifas or {}).get(t["codigo"]) if t["universidad_tipo"] == "Privada" else None
+        ptar = (tarifas or {}).get(t["codigo"])
+        if ptar and t["universidad_tipo"] != "Privada" and not (ptar.get("centro_adscrito") and not precios):
+            ptar = None  # en una pública, como con la web: solo la lista de su centro adscrito y sin precio en QEDU
         if ptar and ptar["precio_curso"] and not (pweb and pweb["precio_curso"]):
             pweb = ptar  # la página del grado no da precio y el documento de precios de la universidad sí
         if not creditos and r and (r.get("creditos") or {}).get("total"):

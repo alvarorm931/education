@@ -97,9 +97,35 @@ def elegir(rastreos: Path) -> list[dict]:
                 if url in vistos or origen == "pdf_de_pagina_de_grado" and (not ES_TARIFA.search(url) or NO_TARIFA.search(url)):
                     continue
                 vistos.add(url)
-                salida.append({"universidad": d.get("universidad"), "codigo_universidad": d.get("codigo"),
-                               "web": d.get("web"), "url": url, "origen": origen})
+                x = {"universidad": d.get("universidad"), "codigo_universidad": d.get("codigo"),
+                     "web": d.get("web"), "url": url, "origen": origen}
+                if d.get("centro"):
+                    # rastreo de la web de un centro (web_privadas --por-centros): sus grados son los del centro y los
+                    # que el rastreo unió a una página suya (varios centros con la misma web)
+                    x.update(centro=d["centro"], centro_adscrito=bool(d.get("centro_adscrito")),
+                             grados_rastreo=sorted(d.get("fichas") or {}))
+                salida.append(x)
     return salida
+
+
+def grados_por_codigo(catalogo: list[dict]) -> dict[str, list[dict]]:
+    """Código de rastreo → grados activos: el de una universidad privada (3 cifras) y el de un centro de cualquier
+    universidad («{universidad}{centro}», como en web_privadas.objetivos_centros)."""
+    por: dict[str, list] = defaultdict(list)
+    for t in catalogo:
+        if t["situacion"] != "Activo" or t["clase"] not in ("grado", "doble"):
+            continue
+        for u in t["universidades"]:
+            if not u.get("codigo"):
+                continue
+            if u["tipo"] == "Privada":
+                por[u["codigo"]].append(t)
+            for i in t.get("imparticiones") or []:
+                if i.get("situacion") == "Activo" and i.get("unidad_codigo") and i.get("universidad") == u["nombre"]:
+                    clave = f"{u['codigo']}{i['unidad_codigo']}"
+                    if t not in por[clave]:
+                        por[clave].append(t)
+    return por
 
 
 BLOQUE = re.compile(r"(?is)</(?:p|li|h[1-6]|div|section|article|dt|dd|caption|table)>|<br\s*/?>")
@@ -239,16 +265,15 @@ def ejecutar(catalogo: list[dict], rastreos: Path, salida: Path, max_minutos: fl
     archivo = Archivo(salida / "archivo", indice_por_fuente=True, solo_huella=solo_huella_por_defecto())
     destino = salida / "datos" / "estudios" / "grados" / "tarifas_grado"
     destino.mkdir(parents=True, exist_ok=True)
-    por_u: dict[str, list] = defaultdict(list)
-    for t in catalogo:
-        if t["situacion"] == "Activo" and t["clase"] in ("grado", "doble"):
-            for u in t["universidades"]:
-                if u["tipo"] == "Privada" and u.get("codigo"):
-                    por_u[u["codigo"]].append(t)
+    por_u = grados_por_codigo(catalogo)
+    por_cod = {t["codigo"]: t for t in catalogo}
     fin = time.time() + max_minutos * 60
     resultados, dominios = [], {}
     elegidos = elegir(rastreos)
-    elegidos += elegir_cc(cc, {p["url"] for p in elegidos})
+    de_centro = {p["codigo_universidad"]: {k: p[k] for k in ("centro", "centro_adscrito", "grados_rastreo")}
+                 for p in elegidos if p.get("centro")}
+    elegidos += [{**p, **de_centro.get(p["codigo_universidad"], {})}
+                 for p in elegir_cc(cc, {p["url"] for p in elegidos})]
     elegidos += elegir_conocidas({p["url"] for p in elegidos}, extra)
     for p in elegidos:
         if time.time() > fin:
@@ -257,7 +282,7 @@ def ejecutar(catalogo: list[dict], rastreos: Path, salida: Path, max_minutos: fl
         host = re.sub(r"^https?://([^/]+).*$", r"\1", r_url)
         d = dominios.setdefault(host, Dominio("https://" + host, archivo, pausa=1.0, max_peticiones=40))
         r = d.get(r_url, guardar=False)
-        res = {**p, "estado": r.status_code if r is not None else None, "capturado": date.today().isoformat()}
+        res = {**{k: v for k, v in p.items() if k != "grados_rastreo"}, "estado": r.status_code if r is not None else None, "capturado": date.today().isoformat()}
         es_pdf = r is not None and r.content[:4] == b"%PDF"
         es_html = r is not None and "html" in (r.headers.get("content-type") or "")
         if r is not None and r.status_code == 200 and len(r.content) <= MAX_PDF and (es_pdf or es_html):
@@ -268,7 +293,8 @@ def ejecutar(catalogo: list[dict], rastreos: Path, salida: Path, max_minutos: fl
             try:
                 paginas = texto_pdf(r.content) if es_pdf else ["\n".join(lineas_html(r.text))]
                 res["paginas"] = len(paginas)
-                gs = por_u.get(p["codigo_universidad"], [])
+                gs = list(por_u.get(p["codigo_universidad"], []))
+                gs += [por_cod[c] for c in p.get("grados_rastreo") or [] if c in por_cod and por_cod[c] not in gs]
                 res.update(extraer(paginas, gs, None if es_pdf else grado_de_url(r_url, gs)))
             except Exception as e:  # noqa: BLE001 - un documento roto no para el resto
                 res["error"] = f"{type(e).__name__}: {str(e)[:120]}"

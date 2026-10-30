@@ -69,3 +69,24 @@ def test_listas_de_precios_conocidas_sin_repetir():
     urls = [x["url"] for x in xs]
     assert "https://otra.es/precios" in urls and "https://ya.es/precios" not in urls
     assert any(x["codigo_universidad"] == "031" for x in xs)
+
+
+def test_rastreo_de_centro_lleva_sus_grados(tmp_path):
+    d = tmp_path / "x" / "web_privadas"
+    d.mkdir(parents=True)
+    (d / "03908073491.json").write_text(json.dumps({
+        "universidad": "UPF · Tecnocampus", "codigo": "03908073491", "centro": "08073491", "centro_adscrito": True,
+        "urls_precio": ["https://tecnocampus.cat/es/precios"], "fichas": {"9": {"url": "https://tecnocampus.cat/g9"}}}))
+    p = tg.elegir(tmp_path)[0]
+    assert p["centro"] == "08073491" and p["centro_adscrito"] is True and p["grados_rastreo"] == ["9"]
+    cat = [{"codigo": "5", "clase": "grado", "situacion": "Activo",
+            "universidades": [{"nombre": "Pompeu Fabra", "codigo": "039", "tipo": "Pública"}],
+            "imparticiones": [{"universidad": "Pompeu Fabra", "unidad_codigo": "08073491", "situacion": "Activo"},
+                              {"universidad": "Pompeu Fabra", "unidad_codigo": "08000001", "situacion": "Activo"}]},
+           {"codigo": "6", "clase": "grado", "situacion": "Activo",
+            "universidades": [{"nombre": "Privada X", "codigo": "123", "tipo": "Privada"}],
+            "imparticiones": [{"universidad": "Privada X", "unidad_codigo": "08111111", "situacion": "Activo"}]}]
+    por = tg.grados_por_codigo(cat)
+    assert [t["codigo"] for t in por["03908073491"]] == ["5"]
+    assert [t["codigo"] for t in por["03908000001"]] == ["5"]
+    assert [t["codigo"] for t in por["123"]] == ["6"] and "039" not in por  # pública: solo por centro
