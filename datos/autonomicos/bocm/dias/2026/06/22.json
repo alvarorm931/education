@@ -1,7 +1,11 @@
 {
  "fecha": "2026-06-22",
- "resultado": "fuente_inaccesible",
- "alertas": [
-  "No se pudo descargar https://www.bocm.es/boletin-completo/BOCM-20260622/144 tras 4 intentos: HTTPSConnectionPool(host='www.bocm.es', port=443): Max retries exceeded with url: /boletin-completo/BOCM-20260622/144 (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.bocm.es', port=443) at 0x7f4f3e3996a0>, 'Connection to www.bocm.es timed out. (connect timeout=30.0)'))"
- ]
+ "status": 200,
+ "resultado": "ok",
+ "numero": "146",
+ "url": "https://www.bocm.es/boletin-completo/BOCM-20260622/146",
+ "sha256": "6519f9b9af2d8000c1bb5cb93f99c91d23c367401d04753ffc2f701c03481575",
+ "disposiciones": 106,
+ "empleo_publico": 36,
+ "alertas": []
 }
