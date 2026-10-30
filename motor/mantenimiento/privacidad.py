@@ -23,7 +23,7 @@ from motor.limpieza import RE_DOCUMENTO, parrafos_seguros, tiene_nombre_de_perso
 # Carpetas de originales de los conectores de boletines (los de másters no se tocan)
 FUENTES_BOLETINES = ("boe", "boja", "bocm", "bocyl", "dogv", "dog", "dogc", "boa", "doe", "boib", "borm", "boc",
                      "bopv", "docm", "bome", "bopb", "bopalicante", "bopvalencia", "bopt", "bopciudadreal", "bopgranada", "bopsevilla", "bophuesca", "boptenerife", "bopcordoba", "bopcoruna", "boppontevedra",
-                     "bopa", "bon", "bocant", "bor", "bopavila", "bopbadajoz", "bopzamora", "boptoledo", "bopburgos", "bopalava", "bopsalamanca", "bopalbacete", "bopjaen", "bopzaragoza", "bopgipuzkoa", "bopbizkaia", "boplugo", "bophuelva", "boplaspalmas", "bopvalladolid", "bopcaceres", "bopguadalajara", "bopgirona")
+                     "bopa", "bon", "bocant", "bor", "bopavila", "bopbadajoz", "bopzamora", "boptoledo", "bopburgos", "bopalava", "bopsalamanca", "bopalbacete", "bopjaen", "bopzaragoza", "bopgipuzkoa", "bopbizkaia", "boplugo", "bophuelva", "boplaspalmas", "bopvalladolid", "bopcaceres", "bopguadalajara", "bopgirona", "bopourense")
 
 
 def _tabla_segura(t: dict) -> dict:

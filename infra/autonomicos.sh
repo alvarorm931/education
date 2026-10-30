@@ -260,6 +260,12 @@ for c in $CONECTORES; do
       ejecutar motor.provinciales.bopgirona --desde 2022-01-01 --salida "$S" --max-minutos "$M"
       "$G" "BOP Girona: boletines"
       ;;
+    bopourense)
+      # API del portal: boletín por fecha y el texto de cada edicto de empleo (la entidad va en el texto)
+      ejecutar motor.provinciales.bopourense --salida "$S"
+      ejecutar motor.provinciales.bopourense --desde 2022-01-01 --salida "$S" --max-minutos "$M"
+      "$G" "BOP Ourense: días"
+      ;;
     bopb)
       # El del día por el canal de datos abiertos; los anteriores por el listado por días y los textos en PDF (cerrados
       # en robots.txt; se leen como boletín oficial, motor/http.py)

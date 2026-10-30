@@ -328,7 +328,8 @@ provinciales:
   - provincia: Ourense
     url: https://bop.depourense.es/portal/
     acceso_desde_github: "ok"
-    estado: sin_conector
+    estado: conector_en_pruebas
+    conector: motor/provinciales/bopourense.py
   - provincia: Palencia
     url: https://www.diputaciondepalencia.es/servicios/boletin-oficial-provincia
     acceso_desde_github: "ok"
