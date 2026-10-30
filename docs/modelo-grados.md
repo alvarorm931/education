@@ -224,7 +224,8 @@ por título en el RUCT; se midieron en una muestra de 6 (785 peticiones). Decidi
 piden para los 1.020 grados sin plan comprobado. El RUCT tarda unos 10 segundos por página (medido: 307 peticiones
 en 53 minutos, 5 memorias), así que se piden solo las páginas del plan (`ruct_grados.leer_plan_memoria`: módulos,
 materias y asignaturas, sin actividades, evaluación, contenidos, acceso, catálogos ni centros), por prioridad
-(165 grados sin plan, 441 publicados solo por materias y 409 que no cuadran), en 170 tramos de 6, 4 a la vez. Los
+(165 grados sin plan, 441 publicados solo por materias y 409 que no cuadran), en 170 tramos de 6, 4 a la vez
+(cancelado: el RUCT dejó de responder a GitHub, ver §5). Los
 textos largos quedan solo en el almacén privado; en `sondas` va su tamaño y su huella (`ruct_grados.sin_textos`).
 
 ### Precio
@@ -286,9 +287,9 @@ textos largos quedan solo en el almacén privado; en `sondas` va su tamaño y su
   de cada grado. Con datos estructurados y texto en desacuerdo, no se publica precio. Total del grado estimado:
   precio por curso × créditos / 60, al precio de hoy.
 
-  Resultado: **307 de 1.410 grados y dobles de privadas con precio por curso** (180 de su página y 127 de sus
-  listas de precios, 22 de ellos de la web de su centro), de 24 universidades; los 307 con total estimado. Y 11
-  grados de centros adscritos de públicas con el precio de su web. Control del título de la página: si la
+  Resultado (30/10 por la tarde): **355 de 1.410 grados y dobles de privadas con precio por curso** (180 de su
+  página y 175 de sus listas de precios, con las halladas a mano abajo), de 27 universidades; los 355 con total
+  estimado. Y 12 grados de centros adscritos de públicas con el precio de su web. Control del título de la página: si la
   dirección casa con el grado pero el título dice que es de otro estudio (un doble para un grado simple, una FP,
   otro grado, o un doble con otros grados), la página no vale para ese grado (`web_privadas.titulo_contradice`);
   un título genérico («Admisión») no contradice nada. Descartó 29 uniones, 4 con precio (por ejemplo, un doble de
@@ -313,8 +314,9 @@ textos largos quedan solo en el almacén privado; en `sondas` va su tamaño y su
 
 ### Lo que falta por medir
 
-- Notas de corte de cinco cursos o más por cupo (decisión de Álvaro: dentro de grados): Madrid, Murcia,
-  Cataluña y Salamanca hechos; el resto de distritos, ver «Notas de corte históricas» abajo.
+- Notas de corte de cinco cursos o más por cupo (decisión de Álvaro: dentro de grados): Madrid, Andalucía,
+  Cataluña, UPV/EHU (hasta 2021-2022), Cantabria, Murcia y Salamanca hechos; el resto de distritos, ver «Notas de
+  corte históricas» abajo.
 - Guías docentes de grado: la guía decidió no hacerlas asignatura por asignatura para carreras.
 - Una frase por asignatura (guía): se genera cuando el plan esté completo; no es un dato de fuente.
 
@@ -527,15 +529,15 @@ comprobados por asignaturas:
    en un solo servidor; hace falta decidir cuántos y en qué orden. El lector ya está en las fichas
    (`fichas.plan_de_memoria`: el plan de la memoria entra si el del BOE no cuadra y él sí cuadra con los créditos
    por tipo del RUCT; con una página sin leer no cuenta como comprobado).
-3. Privadas sin precio: tablas oficiales de honorarios de cada universidad (Europea, Alfonso X, CEU, Pontificia de
-   Salamanca… publican PDF que el rastreo no encontró: lista en `tarifas_grado.URLS_CONOCIDAS`); lo que no esté
-   publicado, peticiones a cada universidad cuando el portal tenga dirección pública
+3. Privadas sin precio (1.055): la Europea desde el servidor de España y Deusto (tabla que no sale
+   en el HTML); lo que no esté publicado, peticiones a cada universidad cuando el portal tenga dirección pública
    (`docs/estrategia-informacion-cerrada.md` §3.4). El índice de Common Crawl de los dominios de centros dio 710
    direcciones más y solo 3 grados con importe: esa vía está agotada.
 4. Dobles de públicas sin precio (149): resoluciones de cada programa en Salamanca; UPV y UPV/EHU, de su web.
-5. Notas de corte del resto de distritos (Galicia, Comunitat Valenciana, Canarias, Extremadura, Asturias, La Rioja,
-   Burgos, León, Cantabria, UCLM, Pública de Navarra, UPV/EHU desde 2022-2023) y la publicación de los cupos
-   distintos del general (Madrid, Andalucía y UPV/EHU ya los leen).
+5. Notas de corte del resto de distritos (Galicia, Comunitat Valenciana, Canarias, Extremadura, Asturias y La Rioja,
+   pedidas desde el servidor de España; Burgos, UCLM y UPV/EHU desde 2022-2023, que salen ilegibles; Pública de
+   Navarra, sin lista final) y la publicación de los cupos distintos del general (Madrid, Andalucía y UPV/EHU ya
+   los leen).
 6. Mantenerlo al día: BOE diario (planes y modificaciones nuevos), QEDU y SIIU cada curso, RUCT semanal
    (acreditaciones y extinciones), webs de privadas en primavera-verano, notas de corte en cada adjudicación.
 7. Generador de páginas de grado con el diseño «Noche en blanco» y el control de la ley SEO.
