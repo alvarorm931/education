@@ -195,9 +195,14 @@ dé asignaturas, y cuando se decida.
   Castilla-La Mancha, La Rioja, Asturias, Baleares) y la ayuda de Castilla y León van en cada ficha de pública
   (`motor/grados/precios.py`): 1.197 fichas. Hueco medido: QEDU no da precio a ningún doble grado de pública
   (906 ofertas, 647 fichas) y le falta a 186 ofertas de grado de públicas (50 de centros propios y 136 de
-  adscritos, que fijan su propio precio); 136 fichas de grado de públicas quedan sin precio (116 porque ningún
-  centro del título lo trae en QEDU y 20 porque el título no está en QEDU). Para los centros propios la fuente es la norma de precios de cada comunidad, por titulación o nivel de
-  experimentalidad: pendiente de leer (§5); para los adscritos, su web.
+  adscritos, que fijan su propio precio). Donde la norma de la comunidad no depende del título, el precio sale de
+  ella (`precios.PRECIO_UNICO` y `PRECIO_POR_RAMA`), solo para centros propios y con la norma, su URL y el curso en
+  la ficha (`precio_credito_norma`): precio único en Andalucía (12,62 €) y Cataluña (17,69 €); por rama en Galicia
+  y Cantabria (en un doble, solo si sus dos grados caen en el mismo precio). Antes se contrastó con QEDU: las 403
+  ofertas andaluzas con precio menos una (un grado conjunto internacional), las 348 catalanas, las 140 gallegas y
+  las 26 cántabras cuadran con la regla. Resultado: 314 fichas más con precio (304 dobles y 10 grados). En las
+  comunidades con niveles por título (Madrid, Castilla y León, C. Valenciana…) el precio de un doble no se deduce:
+  pendiente de leer qué dice cada norma de los dobles (§5).
 - **Privadas:** QEDU no da precio. Tres fuentes propias, siempre con URL y fecha:
   1. **la página del grado** (`motor/grados/web_privadas.py`, las 43 universidades privadas con web en el RUCT):
      se une cada grado con su página por las palabras del nombre (también el nombre inglés de los bilingües) y se
@@ -277,7 +282,8 @@ pedir nada a ninguna fuente, y marca cada ficha como indexable o no, con el moti
 | Con sus centros en QEDU | 4.265 |
 | Ofertas de QEDU con detalle (plazas, precio, inserción) | 5.486 de 5.486 |
 | Con nota de corte | 2.662 |
-| Con precio de primera matrícula (públicas) | 2.103 de 2.239 grados de públicas (QEDU no da precio a los 647 dobles de públicas) |
+| Con precio de primera matrícula (públicas) | 2.113 de 2.239 grados y 304 de 647 dobles de públicas |
+| De ellos, con el precio de la norma de su comunidad (QEDU no lo da) | 314 |
 | Privadas con precio por curso | 256 de 1.410 |
 | Con inserción laboral | 1.703 |
 | Con indicadores de rendimiento del SIIU | 3.125 |
@@ -285,11 +291,11 @@ pedir nada a ninguna fuente, y marca cada ficha como indexable o no, con el moti
 | Grados con plan del BOE | 3.079 de 3.265 |
 | Grados con plan comprobado | 2.233 (1.567 por asignaturas, el resto por materias) |
 | Dobles con los planes de sus dos grados comprobados | 574 |
-| **Indexables** con la propuesta de datos mínimos | **2.026** (1.717 grados y 309 dobles; 1.804 de públicas y 222 de privadas) |
+| **Indexables** con la propuesta de datos mínimos | **2.051** (1.724 grados y 327 dobles; 1.829 de públicas y 222 de privadas) |
 
 El resto va con `noindex` y su motivo: 846 con plan que no
 cuadra, 643 sin plan (o doble sin los dos planes comprobados) y
-1.311 sin nota ni precio (casi todas, privadas que no publican el precio); una
+1.199 sin nota ni precio (casi todas, privadas que no publican el precio); una
 ficha puede tener varios.
 
 Para rehacerlo todo desde `sondas`: bajar las carpetas con `datos/estudios/grados/` y ejecutar en orden
@@ -331,9 +337,12 @@ comprobados por asignaturas:
    solo para esos grados (unas 130 peticiones por título; decidir alcance) o la página de la universidad.
 3. Privadas sin precio: peticiones a cada universidad cuando el portal tenga dirección pública
    (`docs/estrategia-informacion-cerrada.md` §3.4); Navarra, Comillas, UOC y Ramón Llull, a mano.
-4. Mantenerlo al día: BOE diario (planes y modificaciones nuevos), QEDU y SIIU cada curso, RUCT semanal
+4. Precio de los dobles de públicas en comunidades con niveles por título (343 fichas sin precio): leer qué
+   dice cada norma de los dobles (si cada asignatura paga el nivel de su grado, un doble con sus dos grados al mismo
+   precio tiene ese precio) antes de deducir nada; los centros adscritos, de su web.
+5. Mantenerlo al día: BOE diario (planes y modificaciones nuevos), QEDU y SIIU cada curso, RUCT semanal
    (acreditaciones y extinciones), webs de privadas en primavera-verano.
-5. Identificadores estables de genérico y de asignatura (tabla que solo crece) antes de publicar.
+6. Identificadores estables de genérico y de asignatura (tabla que solo crece) antes de publicar.
 
 Límite conocido: 8 parejas de grados activos con el mismo nombre en la misma universidad (un título del RD
 1393/2007 que se extingue y su sucesor del RD 822/2021) pueden compartir el plan más reciente.
