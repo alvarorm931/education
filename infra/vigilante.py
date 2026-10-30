@@ -147,6 +147,73 @@ def ultimo_bien(repo: str, flujo: str) -> datetime | None:
     return fecha(runs[0].get("updated_at")) if runs else None
 
 
+CRON_DIARIO = re.compile(r'^\s*-\s*cron:\s*["\']?(\d{1,2})\s+(\d{1,2})\s+\*\s+\*\s+\*["\']?', re.M)
+NO_RESPALDAR = {"vigilante.yml", "latido.yml"}
+
+
+def respaldo_programaciones(repo: str, runs: list[dict], t0: datetime, lanzar: bool) -> list[dict]:
+    """GitHub no siempre dispara las programaciones (en repositorios nuevos puede tardar horas o días). Para cada
+    hora diaria «M H * * *» de los flujos, si ya pasaron 15 minutos y no hay ninguna ejecución de ese flujo creada
+    desde 10 minutos antes de esa hora (por ningún evento), se lanza a mano (workflow_dispatch, entradas por
+    defecto). Solo dentro de las 12 horas siguientes a la hora prevista."""
+    salida = []
+    carpeta = Path(".github/workflows")
+    if not carpeta.is_dir():
+        return salida
+    for f in sorted(carpeta.glob("*.yml")):
+        if f.name in NO_RESPALDAR:
+            continue
+        texto = f.read_text(encoding="utf-8")
+        if "workflow_dispatch" not in texto:
+            continue
+        for m in CRON_DIARIO.finditer(texto):
+            minuto, hora = int(m.group(1)), int(m.group(2))
+            prevista = t0.replace(hour=hora, minute=minuto, second=0, microsecond=0)
+            if prevista > t0:
+                prevista -= timedelta(days=1)
+            if not (timedelta(minutes=15) <= t0 - prevista <= timedelta(hours=12)):
+                continue
+            desde = (prevista - timedelta(minutes=10)).strftime("%Y-%m-%dT%H:%M:%SZ")
+            try:
+                hubo = api(f"/repos/{repo}/actions/workflows/{f.name}/runs?per_page=1&created=>={desde}").get("total_count", 0)
+            except urllib.error.HTTPError:
+                hubo = any((r.get("path", "").split("/")[-1] == f.name) and fecha(r["created_at"]) >= prevista - timedelta(minutes=10)
+                           for r in runs)
+            if hubo:
+                continue
+            item = {"flujo": f.name, "prevista": madrid(prevista), "lanzado": False}
+            if lanzar:
+                try:
+                    api(f"/repos/{repo}/actions/workflows/{f.name}/dispatches", metodo="POST", datos={"ref": "main"})
+                    item["lanzado"] = True
+                except urllib.error.HTTPError as e:
+                    item["lanzado"] = f"no se pudo: {e.code}"
+            salida.append(item)
+    return salida
+
+
+def reanimar_latido(repo: str, t0: datetime, lanzar: bool) -> str:
+    """latido.yml es una cadena que se relanza sola cada ~25 min mientras GitHub no dispare las programaciones.
+    Si la cadena se cortó (ninguna ejecución en 45 min) y las programaciones siguen sin dispararse, se relanza."""
+    if not Path(".github/workflows/latido.yml").exists():
+        return "no existe"
+    def cuantas(ruta: str) -> int:
+        return api(ruta).get("total_count", 0)
+    try:
+        hace3h = (t0 - timedelta(hours=3)).strftime("%Y-%m-%dT%H:%M:%SZ")
+        if cuantas(f"/repos/{repo}/actions/workflows/vigilante.yml/runs?event=schedule&per_page=1&created=>={hace3h}"):
+            return "no hace falta: GitHub ya dispara las programaciones"
+        hace45 = (t0 - timedelta(minutes=45)).strftime("%Y-%m-%dT%H:%M:%SZ")
+        if cuantas(f"/repos/{repo}/actions/workflows/latido.yml/runs?per_page=1&created=>={hace45}"):
+            return "en marcha"
+        if not lanzar:
+            return "cortado (sin relanzar)"
+        api(f"/repos/{repo}/actions/workflows/latido.yml/dispatches", metodo="POST", datos={"ref": "main"})
+        return "cortado: relanzado"
+    except urllib.error.HTTPError as e:
+        return f"no se pudo comprobar: {e.code}"
+
+
 def json_de_rama(repo: str, ruta: str, rama: str) -> dict | None:
     try:
         r = api(f"/repos/{repo}/contents/{ruta}?ref={rama}")
@@ -247,6 +314,9 @@ def main() -> None:
         programados[flujo] = {"ultimo_bien": madrid(ok),
                               "parado": ok is None or (t0 - ok) > timedelta(hours=horas)}
 
+    respaldos = respaldo_programaciones(repo, runs, t0, a.relanzar)
+    latido = reanimar_latido(repo, t0, a.relanzar)
+
     estado_fuentes = json_de_rama(repo, "datos/estado.json", "datos") or {}
     boe = json_de_rama(repo, "datos/boe/estado.json", "datos") or {}
     avisos_fuentes = []
@@ -267,12 +337,15 @@ def main() -> None:
             "relanzados": len(relanzados),
             "colas_largas": len(colas),
             "flujos_programados_parados": [k for k, v in programados.items() if v["parado"]],
+            "programaciones_lanzadas_a_mano": [r["flujo"] for r in respaldos if r["lanzado"] is True],
             "avisos_de_fuentes": len(avisos_fuentes),
             "almacen": None,
         },
         "fallos": fallos,
         "colas_largas": colas,
         "programados": programados,
+        "respaldo_programaciones": respaldos,
+        "latido": latido,
         "boe": {k: boe.get(k) for k in ("ultimo_diario", "ultima_ejecucion", "alertas_ultima_ejecucion")},
         "avisos_de_fuentes": avisos_fuentes,
     }
@@ -289,6 +362,9 @@ def main() -> None:
           f"- Colas de más de 30 minutos: {len(colas)}",
           f"- Flujos programados parados: {', '.join(resultado['resumen']['flujos_programados_parados']) or 'ninguno'}",
           f"- Almacén S3: {resultado['almacen']['estado']}",
+          f"- Programaciones que GitHub no disparó y se lanzaron a mano: "
+          f"{', '.join(r['flujo'] + ' (' + r['prevista'] + ')' for r in respaldos) or 'ninguna'}",
+          f"- Latido (relanza al vigilante cada ~25 min mientras GitHub no dispare programaciones): {latido}",
           f"- Avisos de fuentes: {len(avisos_fuentes)}", ""]
     for f in fallos:
         marca = "superado" if f["superado"] else ("relanzado" if f.get("relanzado") is True else "PENDIENTE")

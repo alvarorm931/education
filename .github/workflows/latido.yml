@@ -1,0 +1,40 @@
+# Latido: GitHub no está disparando los eventos programados (schedule) de este repositorio (pasa en
+# repositorios nuevos durante horas o días). Esta cadena espera ~25 min, lanza al vigilante (que a su vez
+# lanza a mano las programaciones diarias que GitHub se saltó) y se relanza a sí misma.
+# Se apaga sola en cuanto GitHub vuelve a disparar las programaciones del vigilante.
+# Para pararla a mano: Actions → Latido → «Disable workflow».
+name: Latido
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: [.github/workflows/latido.yml]
+
+permissions:
+  actions: write
+  contents: read
+
+concurrency:
+  group: latido
+  cancel-in-progress: false
+
+jobs:
+  latido:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - name: Esperar
+        run: sleep 1500
+      - name: Lanzar al vigilante y el siguiente latido
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh workflow run vigilante.yml -R "$GITHUB_REPOSITORY" --ref main
+          desde=$(date -u -d '-3 hours' +%Y-%m-%dT%H:%M:%SZ)
+          n=$(gh api "repos/$GITHUB_REPOSITORY/actions/workflows/vigilante.yml/runs?event=schedule&per_page=1&created=>=$desde" --jq .total_count || echo 0)
+          if [ "${n:-0}" -gt 0 ]; then
+            echo "::notice title=Latido::GitHub ya dispara las programaciones; el latido se detiene."
+            exit 0
+          fi
+          gh workflow run latido.yml -R "$GITHUB_REPOSITORY" --ref main
