@@ -783,7 +783,7 @@ def medir_plan(doc: dict) -> dict:
         m2 = _medir(materias, dist, doc)
         if m2["comprobacion"]:
             m = {**m, "comprobacion": m2["comprobacion"], "nivel_comprobado": "materia",
-                 "suma_sin_optativas": m2["suma_sin_optativas"]}
+                 "suma_sin_optativas": m2["suma_sin_optativas"], "cuadra_por_tipo": m2["cuadra_por_tipo"]}
     # una lectura alternativa vale si comprueba lo que la directa no, o si comprueba el plan completo cuando la
     # directa solo cuadra en básicas y obligatorias (un TFG repetido en dos tablas, por ejemplo)
     mejora = lambda m2: m2["comprobacion"] == "completo" or (m2["comprobacion"] and not m["comprobacion"])  # noqa: E731
@@ -884,6 +884,10 @@ def _medir(filas: list[dict], dist: dict | None, doc: dict) -> dict:
     bo = sum(f["creditos"] or 0 for f in base if f["tipo"] in ("basica", "obligatoria"))
     bo_esperado = (dist.get("formacion_basica", 0) + dist.get("obligatorias", 0)) if dist else None
     pe_tfg = sum(f["creditos"] or 0 for f in base if f["tipo"] in ("practicas", "tfg"))
+    # cada tipo por separado (básicas, obligatorias, prácticas y TFG): más estricto que la suma; la ficha lo dice
+    por_tipo = bool(dist) and all(
+        abs(sum(f["creditos"] or 0 for f in base if f["tipo"] == t) - (dist.get(CLAVE_DIST[t]) or 0)) <= 0.5
+        for t in ("basica", "obligatoria", "practicas", "tfg"))
     if esperado and abs(fijos - esperado) <= 0.5:
         comprobacion = "completo"
     elif bo_esperado and bo and abs(bo - bo_esperado) <= 0.5:
@@ -894,6 +898,7 @@ def _medir(filas: list[dict], dist: dict | None, doc: dict) -> dict:
         comprobacion = None
     return {
         "comprobacion": comprobacion,
+        "cuadra_por_tipo": por_tipo,
         "filas": len(filas),
         "asignaturas": len(asig),
         "con_creditos": sum(1 for f in base if f["creditos"]),
@@ -1030,6 +1035,7 @@ def cmd_medir(textos: Path, actos_fichero: Path | None, salida: Path) -> dict:
                                                     and abs(p["basicas_obligatorias"] - p["basicas_obligatorias_esperado"]) <= 0.5),
             "comprobados": cuenta(ps, lambda p: p["comprobacion"]),
             "comprobados_solo_en_basicas_y_obligatorias": cuenta(ps, lambda p: p["comprobacion"] == "basicas_y_obligatorias"),
+            "comprobados_que_cuadran_tambien_por_tipo": cuenta(ps, lambda p: p["comprobacion"] and p.get("cuadra_por_tipo")),
         }
     res["altas"] = len(altas_todas)
     res["altas_codigos_distintos"] = len({a["codigo_ruct"] for a in altas_todas})

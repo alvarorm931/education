@@ -453,6 +453,7 @@ def resumen_plan(p: dict) -> dict:
         "comprobado": plan_comprobado(p),
         "comprobacion": p.get("comprobacion") or ("completo" if plan_comprobado(p) else None),
         "lectura": p.get("interpretacion") or "directa",
+        "cuadra_por_tipo": bool(p.get("cuadra_por_tipo")),
         # «materia» cuando el plan solo cuadra contando sus materias (lista por asignaturas solo una parte)
         "nivel_comprobado": (p.get("nivel_comprobado") or nivel_plan(filas)) if plan_comprobado(p) else None,
         "enlazado_por_ruct": bool(p.get("enlazado_por_ruct")),
