@@ -139,7 +139,8 @@ completo (básicas + obligatorias + prácticas + TFG) o en básicas y obligatori
 y el TFG se toman de la tabla). Si la lectura directa no cuadra se prueban lecturas más prudentes, y solo se
 aceptan si entonces cuadra exactamente: sin los tipos deducidos (por nombre, rótulo o suma), sin una lista resumen
 que repite otra tabla, sin la única tabla que suma justo lo que sobra (itinerarios, listas a otro nivel), dando su
-tipo a la única tabla sin tipo que suma justo lo que falta, o el resto sin tipo como obligatorio. La ficha dice si
+tipo a la única tabla sin tipo que suma justo lo que falta, el resto sin tipo como obligatorio, o las asignaturas
+de un módulo de mención o itinerario sin carácter como optativas y el resto como obligatorio. La ficha dice si
 la lectura fue directa o alternativa (468 de los 3.620 comprobados). Si el plan del BOE no trae tabla que cuadre, se
 compara con los créditos por tipo de la ficha del RUCT (otra fuente oficial). Nunca se completa un plan con datos
 inventados.
@@ -192,7 +193,11 @@ dé asignaturas, y cuando se decida.
   completo (crédito × créditos). Normas de las 17 comunidades para 2026-2027, niveles y bonificaciones en
   `docs/fuentes-precios-grado.md`; las bonificaciones de siete comunidades (Andalucía, Extremadura, Galicia,
   Castilla-La Mancha, La Rioja, Asturias, Baleares) y la ayuda de Castilla y León van en cada ficha de pública
-  (`motor/grados/precios.py`): 1.197 fichas.
+  (`motor/grados/precios.py`): 1.197 fichas. Hueco medido: QEDU no da precio a ningún doble grado de pública
+  (906 ofertas, 647 fichas) y le falta a 186 ofertas de grado de públicas (50 de centros propios y 136 de
+  adscritos, que fijan su propio precio); 136 fichas de grado de públicas quedan sin precio (116 porque ningún
+  centro del título lo trae en QEDU y 20 porque el título no está en QEDU). Para los centros propios la fuente es la norma de precios de cada comunidad, por titulación o nivel de
+  experimentalidad: pendiente de leer (§5); para los adscritos, su web.
 - **Privadas:** QEDU no da precio. Tres fuentes propias, siempre con URL y fecha:
   1. **la página del grado** (`motor/grados/web_privadas.py`, las 43 universidades privadas con web en el RUCT):
      se une cada grado con su página por las palabras del nombre (también el nombre inglés de los bilingües) y se
@@ -215,7 +220,7 @@ dé asignaturas, y cuando se decida.
   precio. Total del grado estimado: precio por curso × créditos / 60, al precio de hoy.
 
   Resultado: **256 de 1.410 grados y dobles de privadas con precio por curso** (166 de su página y 90 de sus
-  listas de precios), de 20 universidades; 221 con total estimado. De las 620 privadas sin precio cuya página se
+  listas de precios), de 20 universidades; 256 con total estimado. De las 620 privadas sin precio cuya página se
   leyó, 240 tienen un formulario que pide el correo: la ficha lo dice como hecho medido («la universidad no publica
   el precio en la página del grado; su formulario pide correo»), sin juicio (`pagina_privada_sin_precio`). Sin
   ninguna página leída: Navarra (sin sitemap; su portada no enlaza los grados), Comillas (responde 421 a GitHub),
@@ -272,7 +277,7 @@ pedir nada a ninguna fuente, y marca cada ficha como indexable o no, con el moti
 | Con sus centros en QEDU | 4.265 |
 | Ofertas de QEDU con detalle (plazas, precio, inserción) | 5.486 de 5.486 |
 | Con nota de corte | 2.662 |
-| Con precio de primera matrícula (públicas) | 2.103 de 2.239 grados de públicas (los 647 dobles de públicas no traen precio en QEDU) |
+| Con precio de primera matrícula (públicas) | 2.103 de 2.239 grados de públicas (QEDU no da precio a los 647 dobles de públicas) |
 | Privadas con precio por curso | 256 de 1.410 |
 | Con inserción laboral | 1.703 |
 | Con indicadores de rendimiento del SIIU | 3.125 |
