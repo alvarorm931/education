@@ -183,6 +183,8 @@ BOLETINES_OFICIALES = {
     "https://ebop.diputaciolleida.cat/": "BOP de Lleida",
     "https://www.dip-badajoz.es/bop/": "BOP de Badajoz",
     "https://sede.diphuelva.es/": "BOP de Huelva (robots.txt no responde)",
+    "https://s2.diphuelva.es/servicios/bope_web/": "BOP de Huelva (desde el 20/06/2023)",
+    "https://s2.diphuelva.es/servicios/bop/": "BOP de Huelva (hasta el 20/06/2023)",
     "https://bop.dipcas.es/": "BOP de Castellón (robots.txt no responde)",
     "https://www.bopcadiz.org/": "BOP de Cádiz (robots.txt no responde)",
     "https://bop.dpz.es/": "BOP de Zaragoza (robots.txt no responde)",
