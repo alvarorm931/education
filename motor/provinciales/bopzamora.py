@@ -178,6 +178,10 @@ def historico(raiz: Path, archivo: Archivo, pausa: float = 1.0, max_minutos: flo
             print(f"BOP Zamora: lista {pagina} inaccesible ({e})")
             return 1
         lista = boletines_portada(r.contenido.decode("utf-8", errors="replace")) if r.status == 200 else []
+        if not lista and r.status == 200 and pagina > 1:
+            # la lista no pasa de 20 páginas (400 boletines, hasta 2024): lo anterior no se alcanza por aquí
+            estado.update({"completo": True, "nota": f"la lista acaba en la página {pagina - 1}"})
+            break
         if not lista:
             print(f"::warning::BOP Zamora: la página {pagina} de la lista no trae boletines (HTTP {r.status})")
             return 1
