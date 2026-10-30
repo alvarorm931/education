@@ -45,16 +45,41 @@ MAX_LINEA_MUESTRA = 160
 
 
 def elegir(rastreos: Path) -> list[dict]:
-    """PDF de precios citados en las páginas de grado de cada universidad (sin repetir URL)."""
+    """PDF de precios citados en las páginas de grado y páginas de precios del sitemap de cada universidad
+    (sin repetir URL)."""
     vistos, salida = set(), []
     for f in sorted(rastreos.rglob("web_privadas/[0-9]*.json")):
         d = json.loads(f.read_text(encoding="utf-8"))
-        for url in d.get("pdf_precio") or []:
-            if url in vistos or not ES_TARIFA.search(url) or NO_TARIFA.search(url):
-                continue
-            vistos.add(url)
-            salida.append({"universidad": d.get("universidad"), "codigo_universidad": d.get("codigo"),
-                           "web": d.get("web"), "url": url})
+        for origen, urls in (("pdf_de_pagina_de_grado", d.get("pdf_precio") or []),
+                             ("pagina_de_precios", d.get("urls_precio") or [])):
+            for url in urls:
+                if url in vistos or origen == "pdf_de_pagina_de_grado" and (not ES_TARIFA.search(url) or NO_TARIFA.search(url)):
+                    continue
+                vistos.add(url)
+                salida.append({"universidad": d.get("universidad"), "codigo_universidad": d.get("codigo"),
+                               "web": d.get("web"), "url": url, "origen": origen})
+    return salida
+
+
+BLOQUE = re.compile(r"(?is)</(?:p|li|h[1-6]|div|section|article|dt|dd|caption|table)>|<br\s*/?>")
+
+
+def lineas_html(html: str) -> list[str]:
+    """Texto visible de una página en líneas: una por párrafo o elemento de lista y una por fila de tabla, con las
+    celdas separadas por « | » (para leer cada importe con el rótulo de su columna)."""
+    texto = re.sub(r"(?is)<(script|style|noscript|svg|head)\b.*?</\1>", " ", html)
+    texto = re.sub(r"(?is)</t[dh]>", " | ", texto)
+    texto = re.sub(r"(?is)</tr>", "\n", texto)
+    texto = BLOQUE.sub("\n", texto)
+    texto = re.sub(r"<[^>]+>", " ", texto)
+    import html as _html
+
+    texto = _html.unescape(texto)
+    salida = []
+    for linea in texto.split("\n"):
+        linea = " ".join(linea.split()).strip(" |")
+        if linea:
+            salida.append(linea)
     return salida
 
 
@@ -103,10 +128,11 @@ def tipo_rotulo(texto: str) -> str | None:
 
 
 def extraer(paginas: list[str], grados: list[dict]) -> dict:
-    """Importes por grado de un PDF de precios."""
+    """Importes por grado de un PDF o una página de precios (una cadena por página, con saltos de línea; en las
+    tablas HTML las celdas van separadas por « | » y cada importe toma el tipo del rótulo de su columna)."""
     precios: dict[str, list] = defaultdict(list)
     con_importe, muestra, previa, rotulo = 0, [], "", None
-    curso = None
+    curso, cabecera = None, None
     for n, pagina in enumerate(paginas, 1):
         if not curso and (m := CURSO_DOC.search(pagina)):
             curso = f"{m.group(1)}-20{m.group(2)}"
@@ -114,7 +140,10 @@ def extraer(paginas: list[str], grados: list[dict]) -> dict:
             if not linea:
                 continue
             hallados = list(IMPORTE.finditer(linea))
+            celdas = [c.strip() for c in linea.split(" | ")]
             if not hallados:
+                if len(celdas) >= 2 and any(tipo_rotulo(c) for c in celdas):
+                    cabecera = celdas
                 if tipo_rotulo(linea) and len(linea) < 120:
                     rotulo = tipo_rotulo(linea)
                 if re.search(r"[A-Za-zÁÉÍÓÚáéíóú]{4}", linea):
@@ -134,7 +163,11 @@ def extraer(paginas: list[str], grados: list[dict]) -> dict:
                 valor = entero + (int(m.group(2)) / 100 if m.group(2) else 0)
                 antes = linea[hallados[k - 1].end() if k else 0:m.start()]
                 despues = linea[m.end():hallados[k + 1].start() if k + 1 < len(hallados) else len(linea)]
-                tipo = tipo_cercano(antes[-60:], despues[:40]) or (rotulo if len(hallados) == 1 else None)
+                tipo = None
+                if cabecera and len(celdas) == len(cabecera):  # columna de la tabla con su rótulo
+                    j = linea[:m.start()].count(" | ")
+                    tipo = tipo_rotulo(cabecera[j]) if j < len(cabecera) else None
+                tipo = tipo or tipo_cercano(antes[-60:], despues[:40]) or (rotulo if len(hallados) == 1 else None)
                 bajo, alto = RANGO.get(tipo, (0, 10 ** 9)) if tipo else (0, 0)
                 precios[codigo].append({"valor": valor, "tipo": tipo, "verosimil": bool(tipo) and bajo <= valor <= alto,
                                         "pagina": n, "linea_sha256": hashlib.sha256(linea.encode()).hexdigest()[:16]})
@@ -163,18 +196,21 @@ def ejecutar(catalogo: list[dict], rastreos: Path, salida: Path, max_minutos: fl
         d = dominios.setdefault(host, Dominio("https://" + host, archivo, pausa=1.0, max_peticiones=40))
         r = d.get(r_url, guardar=False)
         res = {**p, "estado": r.status_code if r is not None else None, "capturado": date.today().isoformat()}
-        if r is not None and r.status_code == 200 and len(r.content) <= MAX_PDF and r.content[:4] == b"%PDF":
-            archivo.guardar(FUENTE, date.today(), r.content, r_url, "pdf", r.status_code,
+        es_pdf = r is not None and r.content[:4] == b"%PDF"
+        es_html = r is not None and "html" in (r.headers.get("content-type") or "")
+        if r is not None and r.status_code == 200 and len(r.content) <= MAX_PDF and (es_pdf or es_html):
+            archivo.guardar(FUENTE, date.today(), r.content, r_url, "pdf" if es_pdf else "html", r.status_code,
                             {k: v for k, v in r.headers.items() if k.lower() in {"content-type", "last-modified"}})
             res["sha256"] = hashlib.sha256(r.content).hexdigest()
+            res["formato"] = "pdf" if es_pdf else "html"
             try:
-                paginas = texto_pdf(r.content)
+                paginas = texto_pdf(r.content) if es_pdf else ["\n".join(lineas_html(r.text))]
                 res["paginas"] = len(paginas)
                 res.update(extraer(paginas, por_u.get(p["codigo_universidad"], [])))
-            except Exception as e:  # noqa: BLE001 - un PDF roto no para el resto
+            except Exception as e:  # noqa: BLE001 - un documento roto no para el resto
                 res["error"] = f"{type(e).__name__}: {str(e)[:120]}"
         elif r is not None and r.status_code == 200:
-            res["error"] = "no_es_pdf_o_demasiado_grande"
+            res["error"] = "formato_no_leido_o_demasiado_grande"
         resultados.append(res)
     with (destino / "tarifas.jsonl").open("w", encoding="utf-8") as f:
         for x in resultados:
@@ -186,7 +222,9 @@ def ejecutar(catalogo: list[dict], rastreos: Path, salida: Path, max_minutos: fl
         "grados_con_importe": len({c for x in resultados for c in (x.get("grados") or {})}),
         "grados_con_importe_verosimil": len({c for x in resultados for c, v in (x.get("grados") or {}).items()
                                              if any(i["verosimil"] for i in v)}),
-        "por_universidad": {x["universidad"]: len(x.get("grados") or {}) for x in resultados},
+        "por_universidad": dict(sorted(
+            {u: len({c for x in resultados if x["universidad"] == u for c in (x.get("grados") or {})})
+             for u in {x["universidad"] for x in resultados}}.items(), key=lambda kv: -kv[1])),
     }
     (destino / "resumen.json").write_text(json.dumps(resumen, ensure_ascii=False, indent=1), encoding="utf-8")
     return resumen

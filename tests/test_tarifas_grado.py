@@ -33,3 +33,12 @@ def test_elegir_solo_pdf_de_precios(tmp_path):
         "https://u.es/precios-grados-26-27.pdf", "https://u.es/guia-docente/2026/G1.pdf",
         "https://u.es/Informe_Tasas_e_indicadores.pdf"]}))
     assert [p["url"] for p in tg.elegir(tmp_path)] == ["https://u.es/precios-grados-26-27.pdf"]
+
+
+def test_html_tabla_con_rotulos_de_columna():
+    html = ("<table><tr><th>Titulación</th><th>Reserva de plaza</th><th>Precio por curso</th></tr>"
+            "<tr><td>Grado en Psicología</td><td>500 €</td><td>9.990 €</td></tr></table>")
+    lineas = tg.lineas_html(html)
+    assert lineas[1] == "Grado en Psicología | 500 € | 9.990 €"
+    r = tg.extraer(["\n".join(lineas)], G)
+    assert [(i["valor"], i["tipo"]) for i in r["grados"]["1"]] == [(500, "reserva"), (9990, "curso")]

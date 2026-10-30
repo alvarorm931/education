@@ -43,6 +43,11 @@ NO_GRADO = re.compile(r"m[aá]ster|masters?\b|postgrado|posgrado|postgrau|doctor
                       r"jornada|webinar|open-day|puertas-abiertas|premio|convenio|acuerdo|calendario|horario|"
                       r"profesor|docente|investigaci|departamento|/prensa|comunicado|sala-de-prensa|notici|formacion-profesional|"
                       r"grado-superior|grado-medio|ciclos?-formativ|prestec|prestamo|financiaci|extinguir|alumni", re.I)
+# Páginas con los precios de todos los grados (no las de un máster, un curso o una noticia)
+PRECIO_URL = re.compile(r"precios?\b|tarifas?\b|\btasas\b|honorarios|fees\b|tuition|preus|matricula-y-precios|"
+                        r"financiacion-y-precios|precios-y-becas|coste", re.I)
+NO_PRECIO = re.compile(r"m[aá]ster|postgrado|posgrado|doctorad|noticia|/blog|curso-de|cursos/|idioma|residencia|"
+                       r"colegio-mayor|alojamiento|deporte|parking|biblioteca|/en/|/ca/|/eu/", re.I)
 # Palabras que acompañan al nombre en la ruta de una ficha de grado sin cambiar de qué grado se trata
 MARCADORES = {"grado", "grados", "grau", "graus", "doble", "dobles", "oficial", "oficiales", "estudios", "estudis",
               "universitario", "universitarios", "bachelor", "degree", "online", "distancia", "presencial",
@@ -233,6 +238,9 @@ def recorrer(universidad: dict, grados: list[dict], archivo: Archivo | None, max
         res["via"] = "portada"
     res["urls"] = len(urls)
     res["urls_grado"] = sum(1 for u in urls if es_url_grado(u))
+    # páginas de precios de toda la universidad («/precios», «/tasas-y-becas»): las lee tarifas_grado.py
+    res["urls_precio"] = [u for u in dict.fromkeys(urls) if PRECIO_URL.search(unquote(urlparse(u).path))
+                          and not NO_PRECIO.search(unquote(urlparse(u).path))][:20]
     propias = set(clave(universidad["nombre"]).split()) | {w for g in grados for i in g["imparticiones"]
                                                          for w in clave(i.get("municipio") or "").split()}
     union = unir(grados, urls, propias)
