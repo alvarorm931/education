@@ -40,7 +40,7 @@ ES_TARIFA = re.compile(r"precio|tasa|tarifa|fees?\b|abono|honorari|coste|importe
 NO_TARIFA = re.compile(r"gu[ií]a-?docente|indicador|satisfacc|normativa|permanencia|pol[ií]tica-productos|"
                        r"asignatura|memoria|calendario|research\.|portalcientifico|investigador|/financiaciones|"
                        r"blog|/revista/|sala-de-prensa|noticia|/tags?/|formacion-profesional|ciclos?-formativ|"
-                       r"master|posgrado|postgrado", re.I)
+                       r"master|posgrado|postgrado|/(?:int|pe|mx|co|ec|cl|ar|us|uk|it|fr|pt|br)/", re.I)  # otros países
 CURSO_DOC = re.compile(r"\b(20[2-3]\d)\s*[-/–]\s*(?:20)?([2-3]\d)\b")
 MAX_PDF = 12_000_000
 MAX_LINEA_MUESTRA = 160

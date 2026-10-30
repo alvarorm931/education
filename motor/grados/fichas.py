@@ -183,6 +183,10 @@ def indexar_tarifas(carpeta: Path | None) -> dict[str, dict]:
                 cuentas = min(soluciones, key=lambda c: c["precio_curso"]) if soluciones else None
                 p = cuentas and {**cuentas, "nota": None, "url": doc["url"],
                                  "importes": sorted({i["valor"] for i in importes}), "precio_jsonld": None}
+                if not p and doc.get("formato") == "html" and len(doc.get("grados") or {}) == 1:
+                    # página de precios de un solo grado: valen las reglas de la página del grado (tipo por contexto)
+                    p = precio_web({"url": doc["url"], "importes": importes})
+                    p = p if p and p["precio_curso"] else None
                 if p:
                     candidatos[cod].append({**p, "fuente": "Tarifas publicadas por la universidad",
                                             "formato": doc.get("formato") or "pdf",
