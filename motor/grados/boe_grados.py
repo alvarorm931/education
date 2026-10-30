@@ -473,7 +473,10 @@ def main() -> None:
     a.add_argument("--muestra", type=int, default=0)
     a.add_argument("--semilla", type=int, default=20261030)
     t = sub.add_parser("textos")
-    t.add_argument("--ids", required=True)
+    t.add_argument("--ids", help="identificadores separados por comas")
+    t.add_argument("--ids-fichero", help="fichero con un identificador por línea o planes_pendientes.json")
+    t.add_argument("--desde", type=int, default=0)
+    t.add_argument("--hasta", type=int)
     t.add_argument("--pausa", type=float, default=1.0)
     t.add_argument("--max-minutos", type=float, default=50)
     m = sub.add_parser("medir")
@@ -486,7 +489,12 @@ def main() -> None:
     if x.orden == "actos":
         res = cmd_actos(Path(x.sumarios), salida, x.muestra, x.semilla)
     elif x.orden == "textos":
-        res = cmd_textos([i.strip() for i in x.ids.split(",") if i.strip()], salida, x.pausa, x.max_minutos)
+        if x.ids_fichero:
+            bruto = Path(x.ids_fichero).read_text(encoding="utf-8")
+            ids = json.loads(bruto)["ids"] if bruto.lstrip().startswith("{") else bruto.split()
+        else:
+            ids = [i.strip() for i in (x.ids or "").split(",") if i.strip()]
+        res = cmd_textos(ids[x.desde:x.hasta], salida, x.pausa, x.max_minutos)
     else:
         res = cmd_medir(Path(x.textos), Path(x.actos) if x.actos else None, salida)
     print(json.dumps(res, ensure_ascii=False, indent=1))
