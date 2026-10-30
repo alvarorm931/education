@@ -334,7 +334,8 @@ provinciales:
   - provincia: Palencia
     url: https://www.diputaciondepalencia.es/servicios/boletin-oficial-provincia
     acceso_desde_github: "ok"
-    estado: sin_conector
+    estado: conector_en_pruebas
+    conector: motor/provinciales/boppalencia.py
   - provincia: Pontevedra
     url: https://boppo.depo.gal/es
     acceso_desde_github: "ok"

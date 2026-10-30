@@ -85,9 +85,10 @@ FUENTES: dict[str, tuple[str, tuple[str, ...]]] = {
     "bopgirona": ("BOP-GIRONA", ("Boletín Oficial de la Provincia de Girona",)),
     "bopourense": ("BOP-OURENSE", ("Boletín Oficial de la Provincia de Ourense",)),
     "boplleida": ("BOP-LLEIDA", ("Boletín Oficial de la Provincia de Lleida",)),
+    "boppalencia": ("BOP-PALENCIA", ("Boletín Oficial de la Provincia de Palencia",)),
 }
 PROVINCIALES = {"bopb", "bopalicante", "bopvalencia", "bopt", "bopciudadreal", "bopgranada", "bopsevilla", "bophuesca",
-                "boptenerife", "bopcordoba", "bopcoruna", "boppontevedra", "bopavila", "bopbadajoz", "bopzamora", "boptoledo", "bopburgos", "bopalava", "bopsalamanca", "bopalbacete", "bopjaen", "bopzaragoza", "bopgipuzkoa", "bopbizkaia", "boplugo", "bophuelva", "boplaspalmas", "bopvalladolid", "bopcaceres", "bopguadalajara", "bopgirona", "bopourense", "boplleida"}
+                "boptenerife", "bopcordoba", "bopcoruna", "boppontevedra", "bopavila", "bopbadajoz", "bopzamora", "boptoledo", "bopburgos", "bopalava", "bopsalamanca", "bopalbacete", "bopjaen", "bopzaragoza", "bopgipuzkoa", "bopbizkaia", "boplugo", "bophuelva", "boplaspalmas", "bopvalladolid", "bopcaceres", "bopguadalajara", "bopgirona", "bopourense", "boplleida", "boppalencia"}
 CON_PLAZO = {"convocatoria", "bases", "modificacion", "correccion", "otro", None}
 
 

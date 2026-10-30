@@ -196,6 +196,7 @@ BOLETINES_OFICIALES = {
     "https://236ws.dpteruel.es/DPT/bopt.nsf/": "BOP de Teruel",
     "https://www.araba.eus/botha/": "BOTHA (Álava)",
     "https://www.diputaciondepalencia.es/system/files/bop/": "BOP de Palencia (PDF de cada boletín)",
+    "https://www.diputaciondepalencia.es/servicios/boletin-oficial-provincia?": "BOP de Palencia (páginas de la lista)",
     "https://www.ceuta.es/ceuta/bocce/": "BOCCE (Ceuta)",
 }
 DECISION_BOLETINES = ("Álvaro", "2026-10-30")

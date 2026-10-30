@@ -284,6 +284,12 @@ for c in $CONECTORES; do
       ejecutar motor.provinciales.boplleida --textos --salida "$S" --max-minutos "$M"
       "$G" "BOP Lleida: textos"
       ;;
+    boppalencia)
+      # Sumario de la primera página del PDF de cada boletín (robots.txt cierra PDF y paginación: boletín oficial, motor/http.py)
+      ejecutar motor.provinciales.boppalencia --salida "$S"
+      ejecutar motor.provinciales.boppalencia --paginas 70 --salida "$S" --max-minutos "$M"
+      "$G" "BOP Palencia: boletines"
+      ;;
     bopb)
       # El del día por el canal de datos abiertos; los anteriores por el listado por días y los textos en PDF (cerrados
       # en robots.txt; se leen como boletín oficial, motor/http.py)
