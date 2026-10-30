@@ -65,3 +65,15 @@ def test_unir_por_convocante_y_puesto_y_por_cita():
     assert [h["id"] for h in huerfanos] == ["x3"]  # otro convocante: no se une, va a la cola
     u.fase_y_estado(procesos[0], date(2026, 10, 30))
     assert (procesos[0]["fase"], procesos[0]["estado"]) == ("admitidos_definitivo", "admitidos_definitivo")
+
+
+def test_procesos_por_anio(tmp_path):
+    """procesos y huérfanos van por años (un solo fichero pasaba de los 100 MB de GitHub) y se leen igual."""
+    from motor import procesos as pr
+    (tmp_path / "procesos.jsonl").write_text('{"id": "viejo"}\n', encoding="utf-8")
+    filas = [{"id": "a", "apertura_plazo": "2023-05-01"}, {"id": "b", "actos": [{"fecha": "2025-01-02"}]},
+             {"id": "c", "fecha": "2023-12-31"}]
+    indice = pr.escribir_por_anio(tmp_path, "procesos", filas)
+    assert set(indice) == {"2023", "2025"} and indice["2023"]["lineas"] == 2
+    assert not (tmp_path / "procesos.jsonl").exists()
+    assert [x["id"] for x in pr.leer_por_anio(tmp_path, "procesos")] == ["a", "c", "b"]

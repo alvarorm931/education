@@ -4,7 +4,10 @@ Uso:
   python -m motor.procesos --salida ruta/ [--hoy 2026-10-29]
 
 Lee datos/boe/actos/ y datos/autonomicos/actos/ y escribe:
-  datos/oposiciones/procesos.jsonl   un proceso por convocatoria de acceso, con sus actos enlazados
+  datos/oposiciones/procesos/AAAA.jsonl   un proceso por convocatoria de acceso, con sus actos enlazados, por el año
+                                          de su primera publicación (en un solo fichero pasaba de los 100 MB que
+                                          admite GitHub); procesos/indice.json dice qué hay en cada parte
+  datos/oposiciones/huerfanos/AAAA.jsonl  actos posteriores sin proceso seguro, por año
   datos/oposiciones/resumen.json     cifras del día: plazos abiertos por provincia, por puesto y por fuente
 
 Reglas:
@@ -575,8 +578,49 @@ def resumen(procesos: list[dict], hoy: date) -> dict:
                           "por_provincia": dict(por_provincia.most_common()),
                           "procesos_por_comunidad": dict(por_comunidad.most_common()), "por_puesto": dict(por_puesto.most_common(50)),
                           "por_fuente": dict(por_fuente.most_common())},
-        "aviso": "Fechas de fin estimadas con festivos nacionales; comprobar siempre en el boletín oficial.",
+        "aviso": "Fechas de fin estimadas con los festivos nacionales y de la comunidad (sin los locales); comprobar "
+                 "siempre en el boletín oficial.",
     }
+
+
+def _anio(x: dict) -> str:
+    f = x.get("apertura_plazo") or x.get("fecha") or next((a.get("fecha") for a in x.get("actos") or [] if a.get("fecha")), "")
+    return (f or "sin-fecha")[:4]
+
+
+def escribir_por_anio(destino: Path, nombre: str, filas: list[dict]) -> dict:
+    """filas -> destino/nombre/AAAA.jsonl (y nombre/indice.json). Se borra lo que ya no toca: el fichero único de
+    antes (nombre.jsonl) y los años que hayan quedado vacíos."""
+    import shutil
+    carpeta = destino / nombre
+    if carpeta.exists():
+        shutil.rmtree(carpeta)
+    (destino / f"{nombre}.jsonl").unlink(missing_ok=True)
+    carpeta.mkdir(parents=True)
+    partes: dict[str, list[str]] = defaultdict(list)
+    for x in filas:
+        partes[_anio(x)].append(json.dumps(x, ensure_ascii=False) + "\n")
+    # Un año que pase de 90 MB va por meses (GitHub no admite ficheros de más de 100 MB)
+    for anio in [a for a, l in partes.items() if sum(len(x.encode("utf-8")) for x in l) > 90_000_000]:
+        for linea in partes.pop(anio):
+            x = json.loads(linea)
+            f = x.get("apertura_plazo") or x.get("fecha") or ""
+            partes[f[:7] if len(f) >= 7 else anio].append(linea)
+    indice = {}
+    for anio, lineas in sorted(partes.items()):
+        texto = "".join(lineas)
+        (carpeta / f"{anio}.jsonl").write_text(texto, encoding="utf-8")
+        indice[anio] = {"fichero": f"{nombre}/{anio}.jsonl", "lineas": len(lineas), "bytes": len(texto.encode("utf-8"))}
+    (carpeta / "indice.json").write_text(json.dumps({"total": len(filas), "partes": indice}, ensure_ascii=False,
+                                                    indent=1), encoding="utf-8")
+    return indice
+
+
+def leer_por_anio(destino: Path, nombre: str) -> list[dict]:
+    """Lo escrito por escribir_por_anio (o el fichero único de antes)."""
+    unico = destino / f"{nombre}.jsonl"
+    ficheros = sorted((destino / nombre).glob("*.jsonl")) if (destino / nombre).exists() else ([unico] if unico.exists() else [])
+    return [json.loads(l) for f in ficheros for l in f.read_text(encoding="utf-8").splitlines() if l.strip()]
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -588,11 +632,9 @@ def main(argv: list[str] | None = None) -> int:
                                                     leer_nombramientos_boe(a.salida))
     destino = a.salida / "datos" / "oposiciones"
     destino.mkdir(parents=True, exist_ok=True)
-    (destino / "procesos.jsonl").write_text("".join(json.dumps(x, ensure_ascii=False) + "\n" for x in procesos),
-                                            encoding="utf-8")
+    escribir_por_anio(destino, "procesos", procesos)
     # Cola de huérfanos: actos posteriores que no se han podido unir con seguridad, para revisarlos
-    (destino / "huerfanos.jsonl").write_text("".join(json.dumps(x, ensure_ascii=False) + "\n" for x in huerfanos),
-                                             encoding="utf-8")
+    escribir_por_anio(destino, "huerfanos", huerfanos)
     r = resumen(procesos, a.hoy)
     oep = ofertas(leer_actos(a.salida) + leer_actos_autonomicos(a.salida), procesos)
     (destino / "ofertas.jsonl").write_text("".join(json.dumps(x, ensure_ascii=False) + "\n" for x in oep),
