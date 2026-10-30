@@ -162,6 +162,13 @@ for c in $CONECTORES; do
       ejecutar motor.provinciales.$c --textos --salida "$S" --max-minutos "$M"
       "$G" "$c: textos"
       ;;
+    bopcordoba)
+      ejecutar motor.provinciales.bopcordoba --salida "$S"
+      ejecutar motor.provinciales.bopcordoba --desde 2022-01-01 --salida "$S" --max-minutos "$M"
+      "$G" "BOP Córdoba: días"
+      ejecutar motor.provinciales.bopcordoba --textos --salida "$S" --max-minutos "$M"
+      "$G" "BOP Córdoba: textos"
+      ;;
     boptenerife)
       # Sin textos por anuncio: el texto solo está en el PDF del boletín completo
       ejecutar motor.provinciales.boptenerife --salida "$S"

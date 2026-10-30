@@ -116,7 +116,8 @@ RE_NO_EMPLEO_TITULO = re.compile(
     r"convenios? (?:\w+ )?(?:de )?colaboracion|convenios? interadministrativ\w*|conveni\w* (?:\w+ )?(?:de )?col·laboracio|"
     r"conveni\w* interadministratiu\w*|adhesion|adhesio|acuerdo[- ]marco|acord marc|"
     r"(?:compartir|utilizacion|uso|utilitzacio|us) (?:\w+ ){0,3}(?:bolsas?|borses?|borsa)|padrons?|padrones|objetos perdidos|"
-    r"mesa de contratacion|mesa de contractacio|credito\w*|credits?|tresoreria|romanent|remanente\w*|"
+    r"mesa de contratacion|mesa de contractacio|organos? de contratacion|organs? de contractacio|"
+    r"unidad tecnica de valoracion|credito\w*|credits?|tresoreria|romanent|remanente\w*|"
     r"plan\w* parcial\w*|plans parcials|planeamiento|planejament|parcel\w*|reparcel\w*|estudio de detalle|"
     r"estudi de detall|modificacion puntual|modificacio puntual|calificacion juridica|qualificacio juridica|"
     r"emplazamiento\w*|juzgado\w*|contencioso\w*|grupos municipales|grups municipals|cargos publicos|carrecs publics|"
@@ -305,6 +306,10 @@ def convocante_de_organismo(organismo: str, capitales: Iterable[str] = ()) -> di
         return None
     m = RE_PARENTESIS.match(o)
     base, provincia = (m.group("nombre"), m.group("provincia")) if m else (o, None)
+    siglas = None
+    if provincia and not _es_provincia(provincia):
+        # «Instituto Municipal de Turismo de Córdoba (IMTUR)»: entre paréntesis van las siglas, no la provincia
+        siglas, provincia = provincia, None
     n = normalizar(base).replace("’", "'")
     for prefijo, tipo, *articulo in TIPOS_ENTIDAD:
         if n.startswith(prefijo):
@@ -318,7 +323,12 @@ def convocante_de_organismo(organismo: str, capitales: Iterable[str] = ()) -> di
                 prov = None
             return {"tipo": tipo, "nombre": nombre, "provincia": prov, "organismo": o}
     return {"tipo": None, "nombre": nombre_propio(base), "provincia": nombre_propio(provincia) if provincia else None,
-            "organismo": o}
+            "organismo": o, **({"siglas": siglas} if siglas else {})}
+
+
+def _es_provincia(texto: str) -> bool:
+    from motor.catalogo.territorio import provincia  # aquí para no cargar el catálogo al importar
+    return provincia(texto) is not None
 
 
 class Freno:

@@ -236,7 +236,9 @@ provinciales:
   - provincia: Córdoba
     url: https://bop.dipucordoba.es/
     acceso_desde_github: "ok"
-    estado: sin_conector
+    datos_estructurados: "Día: /dia/DD-MM-AAAA (sección, entidad, título y PDF de cada anuncio /visor-pdf/DD-MM-AAAA/BOP-A-AAAA-N.pdf)"
+    estado: conector_en_pruebas
+    conector: motor/provinciales/bopcordoba.py
   - provincia: Cuenca
     url: https://www.dipucuenca.es/boletin-oficial-de-la-provincia
     acceso_desde_github: "http_403"
