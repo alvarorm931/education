@@ -228,7 +228,16 @@ def diagnostico_html(html: str) -> dict:
             "filas": len(re.findall(r"(?i)<tr\b", html)), "cifras_visibles": len(CIFRA_EUROPEA.findall(visible)),
             "cifras_en_scripts": len(CIFRA_EUROPEA.findall(scripts)),
             "cifras_en_plantillas": len(CIFRA_EUROPEA.findall(plantillas)),
-            "iframes": len(re.findall(r"(?i)<iframe\b", html)), "euro": "€" in visible}
+            "iframes": len(re.findall(r"(?i)<iframe\b", html)), "euro": "€" in visible,
+            # forma de las primeras líneas con cifras (a = letra, 9 = dígito, _ = espacio) y el tipo de cada celda de
+            # las primeras filas de rótulos: sin texto de la página
+            "formas": [forma(x)[:80] for x in visible.split("\n") if CIFRA_EUROPEA.search(x)][:3],
+            "rotulos": [[tipo_rotulo(c) for c in x.split(" | ")] for x in visible.split("\n")
+                        if x.count(" | ") >= 2 and not CIFRA_EUROPEA.search(x)][:3]}
+
+
+def forma(texto: str) -> str:
+    return re.sub(r"[^\W\d_]", "a", re.sub(r"\s", "_", re.sub(r"\d", "9", texto)))
 
 
 def lineas_html(html: str) -> list[str]:
