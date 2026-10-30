@@ -47,8 +47,9 @@ CONVOCANTE = {"tipo": "Ciudad Autónoma", "nombre": "Ceuta", "provincia": "Ceuta
 MESES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre",
          "noviembre", "diciembre"]
 
-RE_ANIO = re.compile(r'href="(/ceuta/component/jdownloads/viewcategory/(\d+)-(20\d\d))[?"]')
-RE_MES = re.compile(r'href="(/ceuta/component/jdownloads/viewcategory/(\d+)-(' + "|".join(MESES) + r')(?:-20\d\d)?)[?"]')
+RE_ANIO = re.compile(r'href=["\'](/ceuta/component/jdownloads/viewcategory/(\d+)-(20\d\d))[?"\']')
+# Los enlaces de los meses van entre comillas simples (href='/ceuta/…/viewcategory/1966-enero?Itemid=534')
+RE_MES = re.compile(r'href=["\'](/ceuta/component/jdownloads/viewcategory/(\d+)-(' + "|".join(MESES) + r')(?:-20\d\d)?)[?"\']')
 RE_BOLETIN = re.compile(r'/ceuta/component/jdownloads/viewdownload/(?P<cat>[\w-]+)/(?P<id>\d+)-bocce[-_](?P<num>(?:extra)?\d+)'
                         r'[-_](?P<d>\d{2})[-_](?P<m>\d{2})[-_](?P<a>\d{4})', re.IGNORECASE)
 RE_ENTRADA = re.compile(r"^(?P<n>\d{1,4})\.-\s*(?P<t>.+?)\s*P[áa]g\.?\s*(?P<p>\d+)(?:\s*[-–]\s*\d+)?\.?$", re.DOTALL)

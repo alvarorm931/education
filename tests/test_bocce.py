@@ -54,6 +54,14 @@ Boletín Oficial del Estado.
 """
 
 
+def test_pagina_real_del_anio():
+    """Página del año 2026 tal como la sirve el portal (enlaces de los meses con comillas simples)."""
+    from pathlib import Path
+    h = (Path(__file__).parent / "fixtures" / "bocce_anio_2026.html").read_bytes()
+    meses = b.meses_del_anio(h)
+    assert meses[1] == "/ceuta/component/jdownloads/viewcategory/1966-enero" and 10 in meses
+
+
 def test_portada_anio_y_mes():
     assert b.anios(PORTADA) == {2026: "/ceuta/component/jdownloads/viewcategory/1965-2026",
                                 2025: "/ceuta/component/jdownloads/viewcategory/1947-2025"}
