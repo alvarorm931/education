@@ -251,7 +251,7 @@ def test_capturar_guarda_original_salvo_reserva_tdm(monkeypatch):
     assert por["https://a.es/m1"]["clave"].startswith("web-centros/")
     assert por["https://b.es/reservada"]["reserva_tdm"] and "clave" not in por["https://b.es/reservada"]
     assert "texto" not in por["https://b.es/reservada"]
-    assert por["https://c.es/nada"]["motivo"] == "robots_o_sin_respuesta"
+    assert por["https://c.es/nada"]["motivo"] == "sin_respuesta"  # el falso no tiene robots: no respondió
     assert len(almacen.objetos) == 1  # m1 y m2 tienen el mismo contenido: una sola clave, sin sobrescribir
 
 
@@ -481,3 +481,21 @@ def test_lista_qedu_solo_oficiales_sin_ficha_y_enlaces_nuevos(tmp_path):
     assert out == [{"url": "https://u.es/m1", "grupo": "oficial", "estado_emparejado": "qedu", "pagina": "principal",
                     "codigos_ruct": ["1", "5"], "codigo_ruct": "1"}]
     assert res["ya_con_ficha"] == 1 and res["enlace_ya_capturado"] == 1 and res["sin_enlace"] == 1
+
+
+def test_por_que_no_distingue_robots_de_sin_respuesta():
+    from urllib.robotparser import RobotFileParser
+
+    class D:
+        robots = {}
+
+    d = D()
+    assert e._por_que_no(d, "https://a.es/m") == "sin_respuesta"
+    rp = RobotFileParser()
+    rp.parse(["User-agent: *", "Disallow: /privado/"])
+    d.robots["https://a.es"] = rp
+    assert e._por_que_no(d, "https://a.es/privado/m") == "robots_prohibe"
+    rp2 = RobotFileParser()
+    rp2.disallow_all = True
+    d.robots["https://a.es"] = rp2
+    assert e._por_que_no(d, "https://a.es/m") == "robots_ilegible"

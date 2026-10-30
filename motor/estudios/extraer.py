@@ -496,6 +496,28 @@ class Guarda:
 # ----------------------------------------------------------------------------------- captura cortés
 
 
+def _por_que_no(d, url: str) -> str:
+    """Por qué no hay página: robots.txt lo prohíbe (no se vuelve a pedir), robots.txt no se pudo leer o el servidor
+    no respondió (a veces solo a GitHub: se puede probar desde el servidor de España)."""
+    try:
+        from motor.estudios.rastreador import _origen
+
+        rp = d.robots.get(_origen(url))
+    except Exception:  # noqa: BLE001
+        rp = None
+    if rp is not None and getattr(rp, "disallow_all", False):
+        return "robots_ilegible"
+    if rp is not None:
+        try:
+            from motor.estudios.rastreador import AGENTE
+
+            if not rp.can_fetch(AGENTE, url):
+                return "robots_prohibe"
+        except Exception:  # noqa: BLE001
+            pass
+    return "sin_respuesta"
+
+
 # Páginas de verificación antibots: nunca se intenta pasarlas (ni con navegador). Solo marcas de esas páginas, no
 # de un formulario con reCAPTCHA (muchas fichas de máster lo llevan en su formulario de contacto).
 ANTIBOT = re.compile(r"(?i)cf-browser-verification|challenge-platform|__cf_chl|cf_chl_opt|just a moment\.\.\.|"
@@ -631,7 +653,7 @@ def capturar(urls: list[str], pausa: float = 1.0, hilos: int = 12, guarda: Guard
                 continue
             fila = {"url": u, "estado_http": getattr(r, "status_code", None)}
             if r is None:
-                fila["motivo"] = "robots_o_sin_respuesta"
+                fila["motivo"] = _por_que_no(d, u)
             elif r.status_code == 200 and "html" in (r.headers.get("content-type") or ""):
                 html = texto_de(r)
                 tdm = reserva_tdm(dict(r.headers), html)
