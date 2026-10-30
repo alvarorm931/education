@@ -316,3 +316,21 @@ def test_dominio_de_universidad_aunque_lo_compartan_interuniversitarios():
     q = {c: [{"enlace": "https://www.ucm.es/m" + c}] for c in cat}
     d = cm.dominios_de_universidades(cat, q)
     assert d["ucm.es"] == {"010"}  # una sola mención de otras (interuniversitarios) no hace el dominio suyo
+
+
+def test_precio_de_la_norma_para_publicas_sin_precio_en_qedu():
+    cat = {"codigo_ruct": "4310001", "nombre_oficial": "Máster Universitario en Economía por la Universidad Pompeu Fabra",
+           "universidad": "Pompeu Fabra", "universidad_codigo": "026", "universidad_tipo": "Pública",
+           "universidad_comunidad": "Cataluña", "situacion": "Activo", "imparticiones": []}
+    o = cm.oficial("4310001", cat, None, [{"centro": "F", "centro_codigo": "1", "precio_credito": None}], None, "2026-10-29")
+    pc = o["campos"]["precio_credito"]
+    assert pc["valor"] == 19.37 and pc["fuente"] == "norma" and "no habilitante" in pc["nota"]
+    hab = {**cat, "nombre_oficial": "Máster Universitario en Abogacía por la Universidad Pompeu Fabra"}
+    assert cm.oficial("4310002", hab, None, [], None)["campos"]["precio_credito"]["valor"] == 17.69
+    # con precio en QEDU, el de QEDU; en una privada o en una comunidad sin precio único, nada
+    q = [{"centro": "F", "centro_codigo": "1", "precio_credito": 20.5, "con_detalle": True, "curso": "2025-2026"}]
+    assert cm.oficial("4310001", cat, None, q, None)["campos"]["precio_credito"]["fuente"] == "qedu"
+    assert "precio_credito" not in cm.oficial("4310003", {**cat, "universidad_tipo": "Privada"}, None, [], None)["campos"]
+    doble = {**cat, "nombre_oficial": "PCEO Máster Universitario en Abogacía / Máster Universitario en Derecho Público"}
+    assert "precio_credito" not in cm.oficial("4310005", doble, None, [], None)["campos"]
+    assert "precio_credito" not in cm.oficial("4310004", {**cat, "universidad_comunidad": "Madrid (Comunidad de)"}, None, [], None)["campos"]

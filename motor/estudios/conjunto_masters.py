@@ -43,7 +43,8 @@ CITAS = {
     "web": "Página del propio centro",
     "tarifa": "Tarifa publicada por el propio centro",
     "guia": "Guía docente publicada por la universidad",
-    "calculado": "Cálculo del portal con datos oficiales",
+    "calculado": "Cálculo del portal con los datos que se indican",
+    "norma": "Precio público fijado por la norma de la comunidad autónoma",
 }
 URL_SIIU = "https://www.ciencia.gob.es/Ministerio/Estadisticas/SIIU/Clasificaciones.html"
 URL_QEDU = "https://www.ciencia.gob.es/qedu.html"
@@ -56,7 +57,7 @@ PRIORIDAD = {
     "modalidad": ("ruct", "catalogo", "qedu", "web"),
     "plazas": ("qedu", "ruct", "web"),
     "idioma": ("ruct", "qedu", "web"),
-    "precio_credito": ("qedu", "web", "tarifa"),
+    "precio_credito": ("qedu", "norma", "web", "tarifa"),
     "precio_total": ("web", "tarifa", "calculado"),
     "asignaturas": ("ruct", "boe", "web"),
     "evaluacion": ("ruct", "guia", "web"),
@@ -789,7 +790,7 @@ def unir(por_fuente: dict[str, dict[str, dict]]) -> dict[str, dict]:
     return out
 
 
-NOMBRE_FUENTE = {"qedu": "QEDU", "ruct": "RUCT", "catalogo": "SIIU", "web": "web del centro",
+NOMBRE_FUENTE = {"qedu": "QEDU", "norma": "norma autonómica", "ruct": "RUCT", "catalogo": "SIIU", "web": "web del centro",
                  "tarifa": "tarifa del centro", "boe": "BOE"}
 
 
@@ -797,8 +798,10 @@ def precio_calculado(campos: dict) -> dict | None:
     pc, cr = campos.get("precio_credito"), campos.get("creditos_ects")
     if not pc or not cr or not isinstance(pc.get("valor"), (int, float)) or not isinstance(cr.get("valor"), (int, float)):
         return None
-    oficial_ = pc["fuente"] == "qedu"
-    que = "precio del crédito en primera matrícula" if oficial_ else "precio del crédito que publica el centro"
+    oficial_ = pc["fuente"] in ("qedu", "norma")
+    que = ("precio del crédito en primera matrícula" if pc["fuente"] == "qedu" else
+           "precio del crédito en primera matrícula que fija la norma" if pc["fuente"] == "norma" else
+           "precio del crédito que publica el centro")
     return campo(round(pc["valor"] * cr["valor"], 2), "calculado", pc.get("url"), pc.get("capturado"),
                  nota=f"{que} ({pc['valor']:g} €, {NOMBRE_FUENTE.get(pc['fuente'], pc['fuente'])}) × {cr['valor']:g} "
                       f"créditos ({NOMBRE_FUENTE.get(cr['fuente'], cr['fuente'])}); sin tasas de secretaría ni seguro",
@@ -829,6 +832,50 @@ def datos_minimos(campos: dict) -> list[str]:
     if not any(campos.get(k) and not campos[k].get("antiguo") for k in ("precio_total", "precio_credito")):
         falta.append("precio")
     return falta
+
+
+# Precio del crédito en primera matrícula de los másteres de universidades públicas en las comunidades con un precio
+# único (sin precio por título): habilitante y resto. Solo para estudiantes de la UE y residentes (los demás pagan
+# más) y cuando QEDU no da el precio de esa impartición. Comprobado el 30/10/2026 en la copia de la norma que
+# publica una universidad de la comunidad. El resto de comunidades fija precios por título o por grupos: sin la lista
+# leída, no se calcula (docs/fuentes-precios-publicos.md).
+PRECIO_NORMA = {
+    "Cataluña": {"habilitante": 17.69, "resto": 19.37, "curso": "2026-2027",
+                 "norma": "Decreto 96/2026, de 16 de junio (Generalitat de Catalunya)",
+                 "url": "https://www.ub.edu/acad/matricula/decreto.pdf",
+                 "excluir": r"(?i)oberta de catalunya|\bUOC\b|qu[ií]mica",  # la UOC tiene su precio; Ing. Química, excepción
+                 "aviso": "estudiantes de la UE y residentes; fuera de la UE, más", "leido": "2026-10-30"},
+    "Andalucía": {"habilitante": 12.62, "resto": 13.68, "curso": "2025-2026",
+                  "norma": "Decreto 98/2023, de 2 de mayo (BOJA n.º 84, 5-5-2023), de la Junta de Andalucía",
+                  "url": "https://masteres.ugr.es/print/pdf/node/183", "excluir": None,
+                  "aviso": "la Junta bonifica el 99 % de los créditos aprobados en primera matrícula", "leido": "2026-10-30"},
+}
+# Másteres que habilitan para una profesión regulada (órdenes ministeriales de requisitos de verificación)
+RE_HABILITANTE = re.compile(
+    r"(?i)abogac[ií]a|procura\b|advocacia|profesorado de educaci[oó]n secundaria|formaci[oó]n del profesorado|"
+    r"professorat|profesor de educaci[oó]n secundaria|psicolog[ií]a general sanitaria|psicologia general sanit|"
+    r"ingenier[ií]a industrial|enginyeria industrial|ingenier[ií]a de telecomunicaci[oó]n|enginyeria de telecomunicaci|"
+    r"caminos,? canales|camins,? canals|ingenier[ií]a aeron[aá]utica|enginyeria aeron[aà]utica|"
+    r"ingenier[ií]a agron[oó]mica|enginyeria agron[oò]mica|ingenier[ií]a de montes|enginyeria de forest|"
+    r"ingenier[ií]a de minas|enginyeria de mines|ingenier[ií]a naval|enginyeria naval|"
+    r"en arquitectura(?:\s+por|\s*/|\s*$)|màster universitari en arquitectura(?:\s|$)")
+
+
+def campos_norma(cat: dict, nombre_uni: str | None, imps: list[dict], habilita: str | None) -> dict[str, dict]:
+    """Precio del crédito por la norma de la comunidad, para una pública sin precio en QEDU."""
+    n = PRECIO_NORMA.get(cat.get("universidad_comunidad") or "")
+    if not n or cat.get("universidad_tipo") != "Pública" or any(i.get("precio_credito") for i in imps):
+        return {}
+    nombre = cat.get("nombre_oficial") or ""
+    if n["excluir"] and re.search(n["excluir"], f"{nombre} {nombre_uni or ''}"):
+        return {}
+    if re.match(r"(?i)\s*PCEO\b", nombre) or len(re.findall(r"(?i)m[aáà]ster universitari", nombre)) > 1:
+        return {}  # doble máster: cada parte puede tener su precio
+    hab = habilita.lower().startswith("s") if habilita else bool(RE_HABILITANTE.search(nombre))
+    tipo = "habilitante" if hab else "resto"
+    return {"precio_credito": campo(n[tipo], "norma", n["url"], n["leido"],
+                                   nota=f"primera matrícula, curso {n['curso']}, máster {'habilitante' if hab else 'no habilitante'}; "
+                                        f"{n['norma']}; {n['aviso']}", curso=n["curso"])}
 
 
 def _sin_fecha(q: dict | None) -> dict | None:
@@ -869,6 +916,8 @@ def oficial(cod: str, cat: dict, ruct: dict | None, imps: list[dict], web: dict 
     por_fuente["tarifa"] = {k: v for k, v in w.items() if v["fuente"] == "tarifa"}
     por_fuente["calculado"] = calc
     por_fuente["guia"] = campos_guias(guias or [])
+    hab = ((por_fuente.get("ruct") or {}).get("habilita_profesion") or {}).get("valor")
+    por_fuente["norma"] = campos_norma(cat, nombre_uni, imps, hab)
     # la evaluación de la memoria sin ponderaciones (formato RD 822/2021) cede ante la de las guías, que las tienen
     ev = por_fuente.get("ruct", {}).get("evaluacion")
     if ev and not ev["valor"].get("con_ponderacion") and "evaluacion" in por_fuente["guia"]:
