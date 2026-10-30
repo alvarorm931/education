@@ -310,6 +310,22 @@ def _es_cabecera(fila: list[str]) -> bool:
         any(COL["creditos"].search(c or "") for c in fila)
 
 
+def _sin_columna_vacia(filas: list[list[str]]) -> list[list[str]]:
+    """Quita la columna separadora vacía entre dos bloques lado a lado («… | ECTS | | Curso | …»): sin rótulo en la
+    cabecera y vacía en las filas completas. Las filas que ya vienen sin ella quedan igual."""
+    i = next((k for k in range(min(3, len(filas))) if _es_cabecera(filas[k])), None)
+    if i is None:
+        return filas
+    cab = filas[i]
+    completas = [f for f in filas[i + 1:] if len(f) == len(cab)]
+    vacias = [j for j, c in enumerate(cab) if 0 < j < len(cab) - 1 and not (c or "").strip()
+              and completas and all(not (f[j] or "").strip() for f in completas)]
+    if not vacias:
+        return filas
+    quita = lambda f: [c for j, c in enumerate(f) if j not in vacias] if len(f) == len(cab) else f  # noqa: E731
+    return filas[:i] + [quita(f) for f in filas[i:]]
+
+
 def normalizar_tablas(tablas: list[dict]) -> list[dict]:
     """Prepara tablas con formas habituales en los planes del BOE:
       - la cabecera real en la segunda o tercera fila (encima, «Primer semestre | Segundo semestre»);
@@ -322,6 +338,7 @@ def normalizar_tablas(tablas: list[dict]) -> list[dict]:
         if t.get("datos_personales") or len(filas) < 2:
             salida.append(t)
             continue
+        filas = _sin_columna_vacia(filas)
         i = next((k for k in range(min(3, len(filas))) if _es_cabecera(filas[k])), None)
         if i is None:
             # «| ECTS | Tipo» con la columna del nombre sin rótulo: se le pone «Asignatura»
