@@ -26,10 +26,19 @@ from pathlib import Path
 
 from motor.archivo import Archivo, solo_huella_por_defecto
 from motor.estudios import ruct
-from motor.http import RobotsProhibe, comprobar_robots
+from motor.http import ROBOTS_ESTADO, RobotsProhibe, _origen, comprobar_robots, robots_de
 
 TIPO_GRADO = "G"
 MAX_PAGINAS = 900
+
+# Registro público por norma: «tendrá carácter público y de registro administrativo» (RD 1509/2008, art. 1.1) y «la
+# consulta al RUCT será pública» (art. 7). Su robots.txt no responde (30/10/2026: tiempo agotado desde GitHub, «Empty
+# reply from server» desde el servidor de España), y la RFC 9309 manda tratar eso como prohibido. Excepción, igual
+# que los boletines oficiales: solo en estas rutas y SOLO mientras robots.txt no se pueda leer; si un día responde,
+# manda lo que diga. Una petición por segundo, identificada, desde los ejecutores de GitHub.
+REGISTRO_PUBLICO = "https://www.educacion.gob.es/ruct/"
+DECISION_RUCT = ("Claude, por mandato de Álvaro del 30/10/2026 a las 02:51 («de mí nada, sigue, hay que sacar toda la "
+                 "info»), con el mismo criterio que los boletines oficiales", "2026-10-30")
 
 
 class LectorConRobots(ruct.Lector):
@@ -39,15 +48,22 @@ class LectorConRobots(ruct.Lector):
         super().__init__(archivo, pausa)
         self.prohibidas = 0
         self.robots_error: str | None = None
+        self.excepcion_registro = 0
 
     def get(self, url: str, intentos: int = 3):
         try:
             comprobar_robots(url, self.s)
         except RobotsProhibe as e:
-            self.prohibidas += 1
-            self.robots_error = str(e)[:300]
-            return 0, "", None
+            if url.startswith(REGISTRO_PUBLICO) and robots_de(url, self.s).todo_prohibido:
+                self.excepcion_registro += 1  # robots.txt ilegible, no una prohibición escrita
+            else:
+                self.prohibidas += 1
+                self.robots_error = str(e)[:300]
+                return 0, "", None
         return super().get(url, intentos)
+
+    def estado_robots(self) -> str | None:
+        return ROBOTS_ESTADO.get(_origen(REGISTRO_PUBLICO))
 
 
 def muestra(catalogo: list[dict], n: int, semilla: int) -> list[str]:
@@ -120,7 +136,9 @@ def ejecutar(codigos: list[str], raiz: Path, nivel: str, max_minutos: float) -> 
         (destino / f"{codigo}.json").write_text(json.dumps(ficha, ensure_ascii=False, indent=1), encoding="utf-8")
         hechos += 1
     res = {"pedidos": len(codigos), "hechos": hechos, "errores": dict(errores), "peticiones": lector.peticiones,
-           "alerta": alerta, "memorias": resumenes}
+           "alerta": alerta, "robots_txt": lector.estado_robots(),
+           "peticiones_por_excepcion_de_registro_publico": lector.excepcion_registro,
+           "decision_excepcion": DECISION_RUCT if lector.excepcion_registro else None, "memorias": resumenes}
     (destino / f"resumen-{int(time.time())}.json").write_text(json.dumps(res, ensure_ascii=False, indent=1),
                                                                encoding="utf-8")
     return res
