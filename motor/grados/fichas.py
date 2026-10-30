@@ -687,10 +687,14 @@ def resumen(fichas: list[dict], comparativa: list[dict]) -> dict:
         "con_precio": sum(1 for f in fichas if f["precio_primera_matricula"]),
         "con_precio_de_la_norma_autonomica": sum(1 for f in fichas if f.get("precio_credito_norma")),
         "privadas": sum(1 for f in fichas if f["universidad_tipo"] == "Privada"),
-        "privadas_con_pagina_y_algun_importe": sum(1 for f in fichas if f.get("precio_web")),
-        "privadas_con_precio_por_curso": sum(1 for f in fichas if (f.get("precio_web") or {}).get("precio_curso")),
-        "privadas_con_precio_total_estimado": sum(1 for f in fichas
-                                                  if (f.get("precio_web") or {}).get("precio_total_estimado")),
+        "privadas_con_pagina_y_algun_importe": sum(1 for f in fichas if f.get("precio_web")
+                                                   and f["universidad_tipo"] == "Privada"),
+        "privadas_con_precio_por_curso": sum(1 for f in fichas if (f.get("precio_web") or {}).get("precio_curso")
+                                             and f["universidad_tipo"] == "Privada"),
+        "privadas_con_precio_total_estimado": sum(1 for f in fichas if f["universidad_tipo"] == "Privada"
+                                                  and (f.get("precio_web") or {}).get("precio_total_estimado")),
+        "adscritos_de_publicas_con_precio_de_su_web": sum(1 for f in fichas if f["universidad_tipo"] != "Privada"
+                                                          and (f.get("precio_web") or {}).get("precio_curso")),
         "privadas_sin_precio_con_pagina_leida": sum(1 for f in fichas if f.get("pagina_privada_sin_precio")),
         "privadas_paginas_descartadas_por_titulo": sum(1 for f in fichas if f.get("pagina_web_descartada_por_titulo")),
         "privadas_sin_precio_que_piden_correo": sum(1 for f in fichas if (f.get("pagina_privada_sin_precio") or {})
