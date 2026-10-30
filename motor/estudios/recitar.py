@@ -207,12 +207,19 @@ def lote(carpeta: Path, salida: Path, esperar_min: float, guarda: ex.Guarda | No
 
 
 def retomar(lote_recitar: Path, raiz_entrada: Path, salida: Path, esperar_min: float,
-            guarda: ex.Guarda | None = None) -> dict:
+            guarda: ex.Guarda | None = None, carpeta: Path | None = None) -> dict:
+    """Recoge un lote ya pagado. Con «carpeta», sobre otra comprobación de la misma extracción (un retomado
+    posterior del mismo lote, con la verificación nueva): las respuestas van por página (custom_id estable) y cada
+    cita se vuelve a comprobar con verificar, así que solo se recupera lo que sigue pendiente y pasa la comprobación."""
     guarda = guarda if guarda is not None else ex.Guarda()
     info = json.loads(lote_recitar.read_text(encoding="utf-8"))
-    carpeta = Path(info["carpeta"])
-    if not carpeta.exists():
-        carpeta = raiz_entrada / Path(info["carpeta"]).relative_to("entrada")
+    if carpeta is None:
+        carpeta = Path(info["carpeta"])
+        if not carpeta.exists():
+            carpeta = raiz_entrada / Path(info["carpeta"]).relative_to("entrada")
+    origen = json.loads((carpeta / "lote.json").read_text(encoding="utf-8")).get("id")
+    if info.get("lote_origen") and origen != info["lote_origen"]:
+        sys.exit(f"La carpeta es de otro lote ({origen}), no del recitado ({info['lote_origen']})")
     _, textos, _ = preparar(carpeta, guarda)
     b = esperar(requests.get(f"{ex.API}/{info['id']}", headers=ex._cabeceras(), timeout=60).json(),
                 time.time() + esperar_min * 60)
@@ -223,7 +230,8 @@ def retomar(lote_recitar: Path, raiz_entrada: Path, salida: Path, esperar_min: f
 
 def main() -> None:
     p = argparse.ArgumentParser()
-    p.add_argument("--carpeta", help="carpeta retomado_* (con lote.json, resumen.json, hechos y páginas)")
+    p.add_argument("--carpeta", help="carpeta retomado_* (con lote.json, resumen.json, hechos y páginas); con --retomar, "
+                                     "la comprobación sobre la que aplicar el recitado ya pagado")
     p.add_argument("--retomar", help="lote_recitar.json de una ejecución anterior")
     p.add_argument("--esperar-min", type=float, default=40)
     p.add_argument("--salida", required=True)
@@ -232,7 +240,7 @@ def main() -> None:
     if a.retomar:
         lr = Path(a.retomar)
         destino = base / ("recitado_" + json.loads(lr.read_text(encoding="utf-8"))["lote_origen"][-16:])
-        res = retomar(lr, Path("entrada"), destino, a.esperar_min)
+        res = retomar(lr, Path("entrada"), destino, a.esperar_min, carpeta=Path(a.carpeta) if a.carpeta else None)
     elif a.carpeta:
         destino = base / ("recitado_" + Path(a.carpeta).name.replace("retomado_", ""))
         res = lote(Path(a.carpeta), destino, a.esperar_min)
