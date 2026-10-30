@@ -266,11 +266,31 @@ def _nombre(conv: dict | None) -> str:
     return clave_titulo((conv or {}).get("nombre"))
 
 
+RE_DIPUTACION = re.compile(r"^(?:excma\.?\s+|excelentisima\s+)?(?:diputacion|diputacio|deputacion)\s+"
+                           r"(?:provincial\s+|foral\s+)?(?:de\s+|del\s+|d'|da\s+)?(?:la\s+provincia\s+de\s+)?(?P<p>.+)$")
+
+
+def _clave_diputacion(conv: dict | None) -> str | None:
+    """«Diputación Provincial de Alicante» (BOE: tipo y nombre «Alicante») y «Diputación Provincial Alicante» (BOP, sin
+    tipo): la misma clave, la de su provincia."""
+    from motor.catalogo.territorio import provincia
+    if not conv:
+        return None
+    nombre = normalizar(conv.get("nombre") or "").strip()
+    if (conv.get("tipo") or "").startswith("Diputaci"):
+        p = provincia(conv.get("provincia")) or provincia(conv.get("nombre"))
+    elif (m := RE_DIPUTACION.match(nombre)):
+        p = provincia(m.group("p")) or provincia(conv.get("provincia"))
+    else:
+        return None
+    return f"diputacion:{p['codigo']}" if p else None
+
+
 def _municipio(conv: dict | None, fuentes: list[str], boletines: list[dict] | None = None) -> list[str]:
     """Claves del convocante para enlazar publicaciones: su código INE si se sabe sin dudas y su nombre
     normalizado («El Masnou» y «el Masnou» o «Elx/Elche» y «Elche» comparten código)."""
     u = ubicar_convocante(conv, fuentes, boletines) or {}
-    return [k for k in (u.get("codigo_ine"), _nombre(conv)) if k]
+    return [k for k in (u.get("codigo_ine"), _nombre(conv), _clave_diputacion(conv)) if k]
 
 
 def es_origen_local(x: dict) -> bool:
@@ -334,22 +354,38 @@ def construir(actos: list[dict], hoy: date, autonomicos: list[dict] | None = Non
             por_titulo[clave_titulo(x.get("titulo"))].append(x)
     usados: set[str] = set()
 
-    procesos = []
-    for a in actos:
-        if not es_origen(a):
-            continue
-        a = {**a, "fuente": a.get("fuente") or "BOE"}
-        gemelos = [x for x in por_titulo.get(clave_titulo(a.get("titulo")), []) if x["id"] not in usados]
-        usados.update(x["id"] for x in gemelos)
-        bases_enlazadas = []
+    def citadas_por(a: dict) -> list[dict]:
+        """Publicaciones locales del mismo convocante en el boletín y la fecha que cita el anuncio del BOE."""
+        out: dict[str, dict] = {}
         citados = a.get("boletines_citados") or []
         for b in citados:
             fuente = fuente_de_boletin(b.get("boletin"))
             if fuente and b.get("fecha"):
                 for k in _municipio(a.get("convocante"), ["BOE", fuente], citados):
-                    vistos = {x["id"] for x in bases_enlazadas}
-                    bases_enlazadas += [x for x in locales.get((fuente, b["fecha"], k), [])
-                                        if x["id"] not in usados and x["id"] not in vistos]
+                    for x in locales.get((fuente, b["fecha"], k), []):
+                        out.setdefault(x["id"], x)
+        return list(out.values())
+
+    # Varios anuncios del BOE que citan el mismo boletín (Benissa: tres anuncios, tres bases del mismo día): cada
+    # publicación local va con el anuncio de su puesto; si no se distingue, con el primero, como antes
+    origenes_boe = [a for a in actos if es_origen(a)]
+    pretendientes: dict[str, list[dict]] = defaultdict(list)
+    for a in origenes_boe:
+        for x in citadas_por(a):
+            pretendientes[x["id"]].append(a)
+    asignada: dict[str, str] = {}
+    for xid, lista in pretendientes.items():
+        if len(lista) > 1:
+            x = next(y for y in citadas_por(lista[0]) if y["id"] == xid)
+            if (elegido := _anuncio_del_puesto(x, lista)):
+                asignada[xid] = elegido["id"]
+
+    procesos = []
+    for a in origenes_boe:
+        a = {**a, "fuente": a.get("fuente") or "BOE"}
+        gemelos = [x for x in por_titulo.get(clave_titulo(a.get("titulo")), []) if x["id"] not in usados]
+        usados.update(x["id"] for x in gemelos)
+        bases_enlazadas = [x for x in citadas_por(a) if x["id"] not in usados and asignada.get(x["id"], a["id"]) == a["id"]]
         usados.update(x["id"] for x in bases_enlazadas)
         procesos.append(_proceso(a, sorted(citados_por.get(a["id"], []), key=lambda x: x["fecha"]),
                                  gemelos + bases_enlazadas, hoy, f"boe:{a['id']}"))
@@ -362,6 +398,33 @@ def construir(actos: list[dict], hoy: date, autonomicos: list[dict] | None = Non
             # bases cuyo plazo empezará con el anuncio en el BOE, que aún no ha salido o no se ha podido enlazar
             procesos.append(_proceso(x, [], [], hoy, x["id"], solo_bases=True))
     return procesos
+
+
+def _puestos_de(x: dict) -> set[str]:
+    from motor.union import puesto
+    pu = {p.get("puesto_clave") for p in x.get("plazas") or [] if p.get("puesto_clave")}
+    if (q := puesto(x.get("titulo"))):
+        pu.add(q)
+    return pu
+
+
+def _anuncio_del_puesto(x: dict, anuncios: list[dict]) -> dict | None:
+    """Entre varios anuncios del BOE que citan la misma publicación local, el único cuyo puesto es el de ella (la
+    misma clave o la mayor parte de las palabras)."""
+    from motor.union import _palabras
+    px = _puestos_de(x)
+    if not px:
+        return None
+    def parecido(a: dict) -> float:
+        pa = _puestos_de(a)
+        if px & pa:
+            return 1.0
+        return max((len(_palabras(k) & _palabras(q)) / len(_palabras(k) | _palabras(q))
+                    for k in px for q in pa if _palabras(k) | _palabras(q)), default=0.0)
+    puntos = [(parecido(a), a) for a in anuncios]
+    tope = max(p for p, _ in puntos)
+    mejores = [a for p, a in puntos if p == tope]
+    return mejores[0] if tope >= 0.6 and len(mejores) == 1 else None
 
 
 def _proceso(a: dict, posteriores: list[dict], otras: list[dict], hoy: date, ident: str,
@@ -430,8 +493,16 @@ def clave_convocante(x: dict) -> list[str]:
     claves = _municipio(x.get("convocante"), [x.get("fuente") or "BOE"]) if x.get("convocante") else []
     org = clave_titulo(x.get("organismo") or x.get("departamento"))
     if org and x.get("ambito") != "local":
-        claves.append("orgn:" + org)
+        claves.append("orgn:" + clave_organo(org, x.get("fuente")))
     return claves
+
+
+def clave_organo(org: str, fuente: str | None) -> str:
+    """El nombre de una consejería o dirección general no la distingue («Consejería de Sanidad» de Madrid, Cantabria,
+    Canarias o Castilla y León): va con el boletín donde publica. Las universidades no (convocan en el BOE y
+    publican las listas en el boletín de su comunidad) ni el BOE (sus departamentos son únicos)."""
+    f = fuente or "BOE"
+    return org if f == "BOE" or "universi" in org else f"{f}:{org}"
 
 
 RE_NOMBRAMIENTO_2A = re.compile(

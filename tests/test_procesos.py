@@ -95,3 +95,38 @@ def test_bases_locales_sin_anuncio_en_el_boe():
     assert ps["bopb:BOPB-2"]["estado"] == "plazo_abierto" and ps["bopb:BOPB-2"]["temporal"]
     r = resumen(list(ps.values()), date(2026, 10, 29))["enlaces_locales"]
     assert r["con_bases_enlazadas"] == 1 and r["procesos_solo_con_bases_locales"] == {"BOPB": 2}
+
+
+def test_bases_compartidas_y_diputacion():
+    """Tres anuncios del BOE citan el mismo BOP: cada bases va con el de su puesto. La diputación sin tipo en el BOP
+    («Diputación Provincial Alicante») es la del BOE («Diputación Provincial» de «Alicante»)."""
+    cita = [{"boletin": "Boletín Oficial de la Provincia de Alicante", "numero": "96", "fecha": "2022-05-23",
+             "papel": "bases"}]
+    benissa = {"tipo": "Ayuntamiento", "nombre": "Benissa", "provincia": "Alicante"}
+    boe = [_acto(f"B{i}", "2022-06-10", "apertura_plazo", convocante=benissa, boletines_citados=cita,
+                 plazas=[{"numero": 1, "puesto_clave": q}]) for i, q in
+           [(1, "profesor-musica"), (2, "profesor-ballet"), (3, "monitor-danzas-tradicionales")]]
+    boe.append(_acto("D1", "2022-06-10", "apertura_plazo", boletines_citados=cita,
+                     convocante={"tipo": "Diputación Provincial", "nombre": "Alicante", "provincia": None}))
+    loc = lambda i, t, c: {"id": i, "fecha": "2022-05-23", "fuente": "BOP-ALICANTE", "tipo_acto": "bases",
+                           "ambito": "local", "alcance": "acceso", "titulo": t, "convocante": c}
+    autonomicos = [loc("bop:3", "Bases de una plaza de Monitor de Danzas Tradicionales", benissa),
+                   loc("bop:1", "Bases de una plaza de Profesor de Música", benissa),
+                   loc("bop:2", "Bases de una plaza de Profesor de Ballet", benissa),
+                   loc("bop:9", "Bases para la selección de un Técnico Medio de Gestión Cultural",
+                       {"tipo": None, "nombre": "Diputación Provincial Alicante", "provincia": "Alicante"})]
+    ps = {p["id"]: p for p in construir(boe, date(2026, 10, 29), autonomicos)}
+    assert [o["id"] for o in ps["boe:B1"]["otras_publicaciones"]] == ["bop:1"]
+    assert [o["id"] for o in ps["boe:B2"]["otras_publicaciones"]] == ["bop:2"]
+    assert [o["id"] for o in ps["boe:B3"]["otras_publicaciones"]] == ["bop:3"]
+    assert [o["id"] for o in ps["boe:D1"]["otras_publicaciones"]] == ["bop:9"]
+
+
+def test_clave_de_organismo_por_boletin():
+    from motor.procesos import clave_convocante
+    madrid = clave_convocante({"fuente": "BOCM", "ambito": "autonomico", "organismo": "Consejería de Sanidad"})
+    cantabria = clave_convocante({"fuente": "BOC-CANT", "ambito": "autonomico", "organismo": "Consejería de Sanidad"})
+    assert madrid != cantabria
+    # Las universidades convocan en el BOE y publican en su comunidad: la misma clave
+    assert clave_convocante({"fuente": "BOE", "ambito": "universidad", "departamento": "Universidad de Salamanca"}) == \
+        clave_convocante({"fuente": "BOCYL", "ambito": "universidad", "organismo": "Universidad de Salamanca"})

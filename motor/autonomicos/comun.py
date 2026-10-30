@@ -11,6 +11,7 @@ Cada conector conoce el formato de su boletín; lo que es igual para todos vive 
 from __future__ import annotations
 
 import json
+import os
 import re
 import time
 from collections.abc import Callable, Iterable
@@ -405,7 +406,15 @@ def escribir_jsonl(ruta: Path, filas: list[dict]) -> None:
     """Escribe las filas; el nombre de una persona en el título (nombramientos, notificaciones) se sustituye."""
     ruta.parent.mkdir(parents=True, exist_ok=True)
     filas = [{**f, "titulo": titulo_sin_nombres(f["titulo"])} if f.get("titulo") else f for f in filas]
-    ruta.write_text("".join(json.dumps(f, ensure_ascii=False) + "\n" for f in filas), encoding="utf-8")
+    _escribir_atomico(ruta, "".join(json.dumps(f, ensure_ascii=False) + "\n" for f in filas))
+
+
+def _escribir_atomico(ruta: Path, texto: str) -> None:
+    """Escribe en un fichero aparte y lo pone en su sitio de una vez: si el paso se corta por tiempo a mitad de
+    escritura no queda un fichero vacío o a medias (un texto de 0 bytes de bopsevilla paraba el paso de actos)."""
+    tmp = ruta.with_name(f".{ruta.name}.tmp")
+    tmp.write_text(texto, encoding="utf-8")
+    os.replace(tmp, ruta)
 
 
 def leer_jsonl(ruta: Path) -> list[dict]:
@@ -416,7 +425,7 @@ def leer_jsonl(ruta: Path) -> list[dict]:
 
 def escribir_json(ruta: Path, datos: dict) -> None:
     ruta.parent.mkdir(parents=True, exist_ok=True)
-    ruta.write_text(json.dumps(datos, ensure_ascii=False, indent=1), encoding="utf-8")
+    _escribir_atomico(ruta, json.dumps(datos, ensure_ascii=False, indent=1))
 
 
 def descargar_textos(pendientes: list[dict], destino: Callable[[dict], Path], url: Callable[[dict], str],

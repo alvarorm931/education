@@ -149,6 +149,13 @@ USUALES = {"palma de mallorca": "07040", "castell d'aro": "17048", "platja d'aro
            "bilbo": "48020", "pamplona": "31201", "iruna": "31201"}
 
 
+# Lo que algunos boletines anteponen al nombre del municipio (el BOP de Tenerife: «Ayuntamiento de Villa de los
+# Realejos»); solo se quita si el nombre entero no es el de ningún municipio («La Villa de Don Fadrique» sí lo es)
+RE_TRATAMIENTO_MUNICIPIO = re.compile(r"^(?:(?:ayuntamiento|ajuntament|concello|udala) (?:de |d')?)?"
+                                      r"(?:(?:muy noble y muy leal |real |m\.? ?n\.? y m\.? ?l\.? )?"
+                                      r"(?:villa|ciudad|vila|ciutat|cidade|real sitio) (?:de |d'))")
+
+
 def _candidatos(nombre: str, provincia_codigo: str | None, comunidad_codigo: str | None) -> set[str]:
     por_nombre, _ = _indices()
     k = clave(nombre)
@@ -157,6 +164,8 @@ def _candidatos(nombre: str, provincia_codigo: str | None, comunidad_codigo: str
         lista = [c[0] for c in por_nombre.get(f" {k} ".replace(" y ", " i ").strip(), [])]
     if not lista and k in USUALES:
         lista = [USUALES[k]]
+    if not lista and (m := RE_TRATAMIENTO_MUNICIPIO.match(k)):  # «Villa de los Realejos» -> «Los Realejos»
+        lista = [c[0] for c in por_nombre.get(k[m.end():], [])]
     if provincia_codigo:
         lista = [c for c in lista if c[:2] == provincia_codigo]
     elif comunidad_codigo:
@@ -224,6 +233,12 @@ def ubicar_convocante(conv: dict | None, fuentes: tuple[str, ...] | list[str] = 
     if tipo == "Ayuntamiento":
         comunidad = next((COMUNIDAD_DE_FUENTE[f] for f in fuentes if f in COMUNIDAD_DE_FUENTE), None)
         m = municipio(conv.get("nombre"), prov["codigo"] if prov else None, None if prov else comunidad)
+        if not m and conv.get("organismo"):
+            # «Facheca» en el nombre y «AYUNTAMIENTO FAGECA» (el oficial) en el organismo (BOP de Alicante)
+            org = re.sub(r"^\s*(?:excmo\.?\s+|ilmo\.?\s+|m\.?\s*i\.?\s+)?(?:ayuntamiento|ajuntament|concello|udala)"
+                         r"(?:\s+(?:de|del|d')\b)?\s*", "", conv["organismo"], flags=re.IGNORECASE)
+            if org and org != conv["organismo"]:
+                m = municipio(org, prov["codigo"] if prov else None, None if prov else comunidad)
         if m:
             salida.update({"codigo_ine": m["codigo_ine"], "municipio_oficial": m["nombre_oficial"]})
             prov = prov or provincia(m["provincia"])

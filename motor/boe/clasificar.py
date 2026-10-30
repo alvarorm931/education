@@ -106,8 +106,11 @@ REGLAS_ACTO: list[tuple[str, tuple[str, ...]]] = [
                       "concurso-oposicion de ", "concurso oposicion de ", "concurs-oposicio de ")),
     ("bases", ("bases",)),
     # Al final: muchos títulos citan la oferta («en ejecución de la Oferta de Empleo Público») sin ser la oferta
+    # «ANUNCIO sobre aprobación de la oferta pública de empleo para el 2023» (DOGC): unos 2.000 títulos que quedaban
+    # como «otro» y en la cola de huérfanos (30/10/2026)
     ("oferta_empleo", ("oferta de empleo publico", "oferta publica d'ocupacio", "oferta d'ocupacio publica",
-                       "oferta de ocupacio publica", "oferta de emprego publico", "oferta publica de emprego")),
+                       "oferta de ocupacio publica", "oferta de emprego publico", "oferta publica de emprego",
+                       "oferta publica de empleo", "oferta extraordinaria de empleo", "oferta excepcional de empleo")),
 ]
 
 REGLAS_MODALIDAD: list[tuple[str, tuple[str, ...]]] = [
@@ -186,6 +189,8 @@ def alcance(titulo_norm: str, modalidad: str | None, epigrafe: str | None) -> st
     """Qué parte del producto cubre el anuncio. Fase 1: oposiciones de acceso; fuera, provisión de puestos."""
     ep = normalizar(epigrafe or "")
     if modalidad in {"libre_designacion"} or "provision de puesto" in titulo_norm or "concursos de traslados" in titulo_norm \
+            or "concurso de traslados" in titulo_norm or "concurso de traslado" in titulo_norm \
+            or RE_PROVISION_HABILITADOS.search(titulo_norm) \
             or "procedimientos de libre designacion" in ep or ep == "personal funcionario. concursos" \
             or "provisio de lloc" in titulo_norm or "concurs de trasllats" in titulo_norm \
             or "provision de posto" in titulo_norm \
@@ -200,6 +205,47 @@ def alcance(titulo_norm: str, modalidad: str | None, epigrafe: str | None) -> st
     if modalidad == "promocion_interna":
         return "promocion_interna"
     return "acceso"
+
+
+# Nombramientos accidentales, provisionales o en acumulación de los puestos reservados a habilitados nacionales
+# («se confiere nombramiento accidental para el puesto de Secretaría-Intervención»): provisión, no acceso
+RE_PROVISION_HABILITADOS = re.compile(
+    r"nombramientos? (?:accidental|provisional|en comision de servicios|interino) (?:para|en|del?) (?:el )?puesto|"
+    r"nombramientos? accidental|acumulacion de (?:las )?funciones|comision de servicios|"
+    r"nomenament (?:accidental|provisional)|acumulacio de funcions")
+# Lo que no es de ningún proceso de selección aunque hable de personal (ceses, personal eventual, plantillas,
+# relaciones de puestos, convenios, retribuciones): ni crea procesos ni se espera en ninguno
+RE_NO_SELECCION = re.compile(
+    r"\b(?:cese|ceses|cesa|cesan|cessament|cesamento)\b|personal eventual|personal de confianza|"
+    r"relacion de puestos de trabajo|relacion de los puestos de trabajo|relacio de llocs de treball|"
+    r"relacion puestos trabajo|catalogo de puestos|valoracion de puestos|\brpt\b|convenio colectivo|"
+    r"conveni col.lectiu|conveni collectiu|plantilla (?:de personal|organica|presupuestaria)|"
+    r"(?:aprobacion|modificacion) (?:inicial |definitiva )?de (?:la )?plantilla|retribuciones|"
+    r"complemento (?:especifico|de destino|de productividad)|masa salarial|calendario laboral|jubilacion|"
+    r"compatibilidad|excedencia|reingreso|permuta|segunda actividad|redistribucion de efectivos|"
+    r"delegacion de (?:competencias|atribuciones|funciones|firma)|personal emerito|emerit[oa]s?\b|"
+    r"reconocimiento de (?:servicios|trienios|grado)|adscripcion provisional|reclasificacion")
+
+
+RE_GUARDA_SELECCION = re.compile(
+    r"funcionari\w* de carrera|personal laboral fijo|personal estatutario fijo|selectiv|proces selectiu|oposici|"
+    r"concurso|concurs\b|\bbases\b|convocatori|\bplazas?\b|\bplaces?\b|\bprazas?\b|bolsa|borsa|\blistas?\b|"
+    r"\bllistes?\b|tribunal|admitid|aprobad|superado|aspirantes")
+
+
+def alcance_vigente(titulo: str | None, tipo_acto: str | None, modalidad: str | None, guardado: str | None) -> str | None:
+    """El alcance con las reglas vigentes del título: el guardado al capturar si ya dejaba fuera el anuncio (por su
+    epígrafe o apartado), y si no, el que da hoy el título; «no_seleccion» para lo que no es de ningún proceso."""
+    if guardado not in (None, "acceso"):
+        return guardado
+    t = normalizar(titulo or "")
+    if not t:
+        return guardado
+    nuevo = alcance(t, modalidad, None)
+    if nuevo == "acceso" and tipo_acto in ("otro", "nombramiento", "correccion", "modificacion") and \
+            RE_NO_SELECCION.search(t) and not RE_GUARDA_SELECCION.search(t):
+        return "no_seleccion"
+    return nuevo if guardado == "acceso" or nuevo != "acceso" else guardado
 
 
 def _numero(palabra: str) -> int | None:

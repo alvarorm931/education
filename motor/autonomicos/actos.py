@@ -22,7 +22,9 @@ from pathlib import Path
 from motor.autonomicos.comun import clasificar, convocante_de_organismo, escribir_jsonl, leer_jsonl
 from motor.boe.clasificar import normalizar
 from motor.boe.extraer import aplicar_plazas
+from motor.boe.clasificar import alcance_vigente
 from motor.catalogo.territorio import comunidad_codigo
+from motor.union import POSTERIORES, puesto, puesto_en_texto
 from motor.extraccion.citas import citas, sedes
 from motor.extraccion.plazo import VERSION as VERSION_PLAZO, extraer_plazo
 
@@ -109,29 +111,31 @@ def ruta_texto(raiz: Path, fuente: str, x: dict) -> Path:
     return _base(raiz, fuente) / "textos" / x["fecha"][:4] / x["fecha"][5:7] / f"{x['id']}.json"
 
 
+def _guardado(raiz: Path, fuente: str, x: dict) -> dict:
+    """El fichero de texto guardado del anuncio; {} si no está o está vacío o roto (un fichero de 0 bytes de
+    bopsevilla, 30/10/2026, paraba todo el paso de actos): se trata como sin texto y se vuelve a pedir."""
+    r = ruta_texto(raiz, fuente, x)
+    try:
+        return json.loads(r.read_text(encoding="utf-8")) if r.exists() else {}
+    except (ValueError, UnicodeDecodeError):
+        print(f"Aviso: texto guardado ilegible, se ignora: {r}", file=sys.stderr)
+        return {}
+
+
 def texto_de(raiz: Path, fuente: str, x: dict) -> str | None:
     if x.get("texto") is not None:  # BOJA trae el texto en el propio registro
         return x["texto"]
-    r = ruta_texto(raiz, fuente, x)
-    if r.exists():
-        return json.loads(r.read_text(encoding="utf-8")).get("texto")
-    return None
+    return _guardado(raiz, fuente, x).get("texto")
 
 
 def recuento_de(raiz: Path, fuente: str, x: dict) -> int | None:
     """En las listas de personas solo se guarda cuántas líneas traen un documento de identidad."""
-    r = ruta_texto(raiz, fuente, x)
-    if r.exists():
-        return json.loads(r.read_text(encoding="utf-8")).get("lineas_con_documento_de_identidad")
-    return None
+    return _guardado(raiz, fuente, x).get("lineas_con_documento_de_identidad")
 
 
 def citas_guardadas(raiz: Path, fuente: str, x: dict) -> list[dict] | None:
     """Citas a boletines guardadas al descargar una lista de personas (de su texto no se guarda nada más)."""
-    r = ruta_texto(raiz, fuente, x)
-    if r.exists():
-        return json.loads(r.read_text(encoding="utf-8")).get("citas")
-    return None
+    return _guardado(raiz, fuente, x).get("citas")
 
 
 def convocante_local(x: dict) -> dict | None:
@@ -158,7 +162,9 @@ def construir_acto(fuente: str, x: dict, texto: str | None, recuento: int | None
         "url": x.get("url_html") or x.get("url_pdf"),
         "url_pdf": x.get("url_pdf"),
         "titulo": x.get("titulo"),
-        "organismo": x.get("organismo"),
+        # «entidad» en los provinciales (BOB: «Departamento de Administración Pública…»): sin ella, lo foral o
+        # provincial no tenía clave de convocante y no se unía a nada
+        "organismo": x.get("organismo") or (x.get("entidad") if not x.get("convocante") else None),
         "seccion": " / ".join(p for p in (x.get("seccion"), x.get("subseccion") or x.get("apartado")) if p) or None,
         "ambito": x.get("ambito"),
         "convocante": x.get("convocante") or convocante_local(x),
@@ -171,6 +177,7 @@ def construir_acto(fuente: str, x: dict, texto: str | None, recuento: int | None
         "extraccion": "titulo",
         "pendiente": [],
     }
+    acto["alcance"] = alcance_vigente(acto["titulo"], acto["tipo_acto"], acto["modalidad"], acto["alcance"])
     if recuento is not None:
         acto["personas_en_listas"] = recuento
         return acto
@@ -181,6 +188,8 @@ def construir_acto(fuente: str, x: dict, texto: str | None, recuento: int | None
     if texto is None:
         acto["pendiente"].append("texto")
         return acto
+    if acto["tipo_acto"] in POSTERIORES and not puesto(acto["titulo"]) and (q := puesto_en_texto(texto)):
+        acto["puesto_texto"] = q  # para unirlo a su proceso (motor/union.py)
     if acto["tipo_acto"] in CON_PLAZO:
         plazo = extraer_plazo(texto, x["fecha"], nombres, comunidad_codigo(acto["convocante"], siglas, nombres))
         if plazo:

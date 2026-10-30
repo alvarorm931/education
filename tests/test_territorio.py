@@ -39,3 +39,12 @@ def test_ubicar_convocante():
     u = ubicar_convocante({"tipo": "Diputación Provincial", "nombre": "Ourense"}, ["BOE"])
     assert u["provincia"] == "Ourense" and "codigo_ine" not in u
     assert ubicar_convocante({"tipo": "Ayuntamiento", "nombre": "Arroyomolinos"}, ["BOE"]).get("provincia") is None
+
+
+def test_tratamientos_y_organismo_oficial():
+    from motor.catalogo.territorio import municipio, ubicar_convocante
+    assert municipio("Villa de los Realejos", "38")["codigo_ine"] == "38031"
+    assert municipio("La Villa de Don Fadrique", "45")["codigo_ine"] == "45186"
+    u = ubicar_convocante({"tipo": "Ayuntamiento", "nombre": "Facheca", "provincia": "Alicante",
+                           "organismo": "AYUNTAMIENTO FAGECA"})
+    assert u["codigo_ine"] == "03067"

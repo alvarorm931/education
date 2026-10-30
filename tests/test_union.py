@@ -77,3 +77,17 @@ def test_procesos_por_anio(tmp_path):
     assert set(indice) == {"2023", "2025"} and indice["2023"]["lineas"] == 2
     assert not (tmp_path / "procesos.jsonl").exists()
     assert [x["id"] for x in pr.leer_por_anio(tmp_path, "procesos")] == ["a", "c", "b"]
+
+
+def test_puesto_del_texto_cuando_el_titulo_no_lo_dice():
+    texto = ("AYUNTAMIENTO DE RIVAS-VACIAMADRID\nPersonal\nPor Decreto de Alcaldía 123/2024 se ha resuelto nombrar "
+             "funcionario de carrera, en la plaza de Agente de Policía Local, a quien ha superado el proceso.")
+    assert u.puesto_en_texto(texto) == "policia-local"
+    assert u.puesto_en_texto(None) is None
+    procesos = [_proc("bocm:1", "Bases de 2 plazas de Agente de Policía Local", "2024-01-10", ["policia-local"], 2),
+                _proc("bocm:2", "Bases de una plaza de Arquitecto", "2024-01-10", ["arquitecto"], 1)]
+    origenes = {"bocm:1": {"convocante": "rivas"}, "bocm:2": {"convocante": "rivas"}}
+    actos = [{"id": "n1", "fecha": "2024-09-10", "tipo_acto": "nombramiento", "convocante": "rivas",
+              "titulo": "Rivas-Vaciamadrid. Personal. Nombramiento funcionario carrera", "puesto_texto": "policia-local"}]
+    recuento, huerfanos = u.unir(procesos, origenes, actos, lambda a: [a["convocante"]])
+    assert [a["id"] for a in procesos[0]["actos"]][-1] == "n1" and not huerfanos

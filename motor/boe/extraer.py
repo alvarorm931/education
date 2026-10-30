@@ -26,7 +26,7 @@ from collections import Counter, defaultdict
 from datetime import date
 from pathlib import Path
 
-from motor.boe.clasificar import REGLAS_ACTO, _primera, normalizar
+from motor.boe.clasificar import REGLAS_ACTO, _primera, alcance_vigente, normalizar
 from motor.boe.texto import ruta_texto
 from motor.calendario import etiqueta, fin_de_plazo
 from motor.catalogo.territorio import comunidad_codigo
@@ -199,6 +199,7 @@ def construir_acto(anuncio: dict, texto: dict | None) -> dict:
         "extraccion": "titulo",
         "pendiente": [],
     }
+    acto["alcance"] = alcance_vigente(acto["titulo"], acto["tipo_acto"], acto["modalidad"], acto["alcance"])
     if texto is None:
         acto["pendiente"].append("texto")
         return acto
@@ -235,6 +236,9 @@ def construir_acto(anuncio: dict, texto: dict | None) -> dict:
             if not plazo or not plazo.get("fin_estimado"):
                 acto["pendiente"].append("plazo")
             aplicar_plazas(acto, cuerpo)
+        from motor.union import POSTERIORES, puesto, puesto_en_texto
+        if acto["tipo_acto"] in POSTERIORES and not puesto(acto["titulo"]) and (q := puesto_en_texto(cuerpo)):
+            acto["puesto_texto"] = q  # para unirlo a su proceso (motor/union.py)
         acto["pendiente"].append("extraccion_ia")
     return acto
 

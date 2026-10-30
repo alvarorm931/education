@@ -148,6 +148,17 @@ def puesto(titulo: str | None) -> str | None:
     return None
 
 
+def puesto_en_texto(texto: str | None) -> str | None:
+    """Puesto del principio del texto de un acto cuyo título no lo nombra («Nombramiento de funcionario de carrera»:
+    «… ha sido nombrado funcionario de carrera en la plaza de Agente de Policía Local …»). Solo la clave del puesto;
+    nada más del texto (que puede llevar nombres)."""
+    cabeza = re.sub(r"\s+", " ", (texto or "")[:2000])
+    for frase in re.split(r"(?<=[.;:])\s+", cabeza):
+        if (q := puesto(frase)):
+            return q
+    return None
+
+
 def turno(titulo: str | None) -> str | None:
     t = normalizar(titulo or "")
     if RE_PROMOCION.search(t):
@@ -196,7 +207,7 @@ def unir(procesos: list[dict], origenes: dict[str, dict], actos: list[dict], cla
     por_codigo: dict[str, list[dict]] = defaultdict(list)
     por_expediente: dict[tuple[str, str], list[dict]] = defaultdict(list)
     por_puesto: dict[tuple[str, str], list[dict]] = defaultdict(list)
-    from motor.procesos import fuente_de_boletin
+    from motor.procesos import clave_organo, fuente_de_boletin
     por_publicacion: dict[tuple[str, str], list[dict]] = defaultdict(list)  # (boletín, fecha) -> procesos
     por_convocante: dict[str, list[dict]] = defaultdict(list)
     claves_proc: dict[str, set[str]] = {}
@@ -213,7 +224,7 @@ def unir(procesos: list[dict], origenes: dict[str, dict], actos: list[dict], cla
         conv = set(clave_convocante(o)) if o else set()
         org = organo(p.get("titulo"))
         if org:
-            conv.add("org:" + org)
+            conv.add("org:" + clave_organo(org, o.get("fuente") or (p.get("fuentes") or ["BOE"])[0]))
         claves_proc[p["id"]] = conv
         f, cod = disposicion(p.get("titulo"), p.get("apertura_plazo") or "9999")
         if f:
@@ -250,8 +261,8 @@ def unir(procesos: list[dict], origenes: dict[str, dict], actos: list[dict], cla
         fecha = x.get("fecha") or ""
         claves = set(clave_convocante(x))
         if (org := organo(x.get("titulo"))):
-            claves.add("org:" + org)
-        q, t = puesto(x.get("titulo")), turno(x.get("titulo"))
+            claves.add("org:" + clave_organo(org, x.get("fuente")))
+        q, t = puesto(x.get("titulo")) or x.get("puesto_texto"), turno(x.get("titulo"))
         elegido, motivo = None, None
         # 1. referencia explícita (identificador del BOE de la convocatoria o de otro acto ya unido)
         refs = {por_acto[r]["id"]: por_acto[r] for r in x.get("refiere_a") or [] if r in por_acto}
