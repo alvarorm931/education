@@ -212,6 +212,8 @@ def tipo_caracter(c: str | None) -> str | None:
                  r"basica\w*\s*(?:/|y|,)\s*obligatori|^(?:formacion\s+)?basica\s*\(\d", s):
         return None
     codigo = re.split(r"[\s.(,;:*-]+", s.strip())[0] if s.strip() else ""
+    if re.fullmatch(r"fb\d", codigo) or re.match(r"^f\.\s*basica", s.strip()):
+        return "basica"  # «FB1», «FB2» (formación básica de rama 1 y 2), «F. básica»
     if re.sub(r"\s", "", s.strip(" .*")) in BILINGUES:  # «O/C» (obligatoria/compulsory) de los planes bilingües
         return BILINGUES[re.sub(r"\s", "", s.strip(" .*"))]
     for clave, codigos in CODIGOS_CARACTER.items():
