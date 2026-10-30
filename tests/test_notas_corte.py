@@ -126,3 +126,43 @@ def test_salamanca_grupo_general_y_tipo_de_lista():
     assert [(x["titulacion"], x["nota"], x["plazas"], x["todos_admitidos"]) for x in f] == [
         ("Biología", 9.228, 180, False), ("Antropología-Filosofía", 5.0, 10, True)]  # el doble partido, fuera
     assert f[0]["curso"] == "2026-2027" and f[0]["lista"] == "tercer_listado"
+
+
+def test_ehu_cinco_cupos_con_cifras_pegadas():
+    from motor.grados.notas_corte import _trocear_ehu, leer_ehu
+
+    assert _trocear_ehu("*   *8,0836,610   *") == ["*", "*", "8,083", "6,610", "*"]
+    assert _trocear_ehu("6,510   8,750   8,380   12,061   8,552") == ["6,510", "8,750", "8,380", "12,061", "8,552"]
+    assert _trocear_ehu("*   7,500   5,008,4788,468") == ["*", "7,500", "5,00", "8,478", "8,468"]
+    assert _trocear_ehu("8,534   6,267   *E 8,405 *") == ["8,534", "6,267", "*", "E8,405", "*"]
+    assert _trocear_ehu("*  *  -E 5,0006,790*") is None  # seis casillas: no se lee
+    lineas = [
+        "   LÍMITE DE PLAZAS Y NOTA DE CORTE  DE ADMISIÓN PARA EL CURSO 2021-22",
+        "   Nº de   M- 25   M- 45Cupo Genérico   Titulados/asExperiencia laboral",
+        "   CAMPUS DE BIZKAIA   Plazas   2% de las plazas   1% de las plazas   1% de las plazasBachillerato + FP2% de las plazas",
+        "   Grado en Medicina   200   6,694   5,125   -12,8279,380",
+        "   Grado en Historia del Arte   60   8,534   6,267   *E 8,405 *",
+        "   CAMPUS DE ALAVA   Plazas   2% de las plazas   1% de las plazas   1% de las plazasBachillerato + FP2% de las plazas",
+        "   Grado en Administración y Dirección de Empresas   110   *   *   *7,138*",
+    ]
+    f = leer_ehu(lineas)
+    g = {(x["campus"], x["titulacion"]): x for x in f if x["cupo"] == "general"}
+    med = g[("BIZKAIA", "Grado en Medicina")]
+    assert med["curso"] == "2021-2022" and med["nota"] == 12.827 and med["plazas"] == 200
+    assert med["convocatoria"] == "ordinaria" and med["municipios"] == ["leioa", "bilbao"]
+    assert [x["nota"] for x in f if x["titulacion"] == "Grado en Medicina"] == [6.694, 5.125, None, 12.827, 9.38]
+    assert [x["sin_plazas"] for x in f if x["titulacion"] == "Grado en Medicina"][2] is True
+    arte = g[("BIZKAIA", "Grado en Historia del Arte")]
+    assert arte["convocatoria"] == "extraordinaria" and arte["nota"] == 8.405
+    assert g[("ALAVA", "Grado en Administración y Dirección de Empresas")]["nota"] == 7.138
+    assert [x["todos_admitidos"] for x in f if x["campus"] == "ALAVA"] == [True, True, True, False, True]
+
+
+def test_un_doble_por_nombre_no_se_une_con_uno_de_sus_grados():
+    from motor.grados.notas_corte import palabras, puntuar
+
+    cs = [{"codigo": "1", "clase": "grado", "nombre": "Gestión de Negocios", "palabras": palabras("Gestión de Negocios"),
+           "palabras_componentes": frozenset(), "centro": "c", "unidad": "Facultad", "municipio": "bilbao",
+           "idioma": None, "propio": True, "ofertado": True, "notas_qedu": {}, "plazas_qedu": {}}]
+    x0 = {"distrito": "pais-vasco", "lista": "final"}
+    assert puntuar("Doble Grado en Gestión de Negocios + Rel. Lab. y Rec. Hum.", x0, [x0], cs) == []

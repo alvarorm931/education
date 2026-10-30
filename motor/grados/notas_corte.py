@@ -11,6 +11,9 @@ fecha de captura) y su unión con el título y el centro del Ministerio cuando s
   centro o idioma.
 - **Cataluña** (Socrata): cupo general de la preinscripción de junio con sus plazas (nota de la primera asignación,
   no la final).
+- **Universidad de Salamanca** (un PDF por curso): cupo general, con el tipo del último admitido.
+- **Universidad del País Vasco** (un PDF por curso, 2017-18 a 2021-22; desde 2022-23 los PDF son imágenes sin
+  texto): cinco cupos por campus con la marca «E» de la convocatoria extraordinaria; el campus da los municipios.
 
 Unión por nombre (pocos distritos traen el código): universidad, nombre normalizado del título y pistas de centro
 (municipio o nombre del centro entre paréntesis); si queda más de un candidato, decide la nota de QEDU del mismo
@@ -316,6 +319,80 @@ def leer_usal(lineas: list[str]) -> list[dict]:
     return filas
 
 
+# ------------------------------------------------------------------------------------------------- País Vasco
+
+CAMPUS_EHU = {"ALAVA": ["vitoria-gasteiz"], "ARABA": ["vitoria-gasteiz"],
+              "GIPUZKOA": ["donostia/san sebastian", "eibar", "elgoibar"], "BIZKAIA": ["leioa", "bilbao"]}
+# Orden de las cinco casillas en todos los cursos: mayores de 25, mayores de 45, mayores de 40 con experiencia
+# laboral, cupo general (bachillerato y FP) y titulados. Los rótulos de la cabecera salen desordenados en el texto
+# (en 2017-18 dos campus los dan con el cupo general primero), pero las cifras no: el cupo general es siempre la cuarta
+# casilla (Medicina de Bizkaia 2017-18: «5,560 * - 12,331 9,030»), y el doble de Física e Ingeniería Electrónica de
+# 2020-21 da 13,124, la nota que publicó la universidad.
+ORDEN_EHU = ["mayores_25", "mayores_45", "mayores_40", "general", "titulados"]
+
+
+def _trocear_ehu(resto: str, n: int = 5) -> list[str] | None:
+    """Las cinco casillas de una fila cuyo texto sale pegado («*8,0836,610»): todas las maneras de partirlo en n
+    valores (cifra con tres decimales, o dos si no hay otra lectura; «*», «-», «─»; «E» delante de una cifra). Solo
+    vale si hay una sola manera."""
+    s = re.sub(r"\s+", "", resto).replace("´", "")
+    lecturas: list[list[str]] = []
+
+    def partir(i: int, hechas: list[str]) -> None:
+        if len(lecturas) > 1 or len(hechas) > n:
+            return
+        if i == len(s):
+            if len(hechas) == n:
+                lecturas.append(hechas)
+            return
+        # una nota de admisión va de 5 a 14 (parte entera 5-9 o 10-14, sin cero delante): «8,0836,610» no se
+        # lee «8,08» y «36,610», ni «6,5108,750» «6,51» y «08,750»
+        for pat in (r"E?(?:1[0-4]|[5-9]),\d{3}", r"E?(?:1[0-4]|[5-9]),\d{2}", r"[*\-─]"):
+            m = re.compile(pat).match(s, i)
+            if m:
+                partir(m.end(), hechas + [m.group()])
+
+    partir(0, [])
+    return lecturas[0] if len(lecturas) == 1 else None
+
+
+def leer_ehu(lineas: list[str]) -> list[dict]:
+    """Universidad del País Vasco: «Límite de plazas y nota de corte de admisión» de cada curso (las definitivas,
+    tras la convocatoria extraordinaria), por campus, con las plazas y la nota de los cinco cupos. Leyenda del PDF:
+    «*» plazas vacantes (entraron todos), «─» sin acceso por ese cupo, «E» nota de la convocatoria extraordinaria."""
+    texto = " ".join(lineas[:12])
+    m = re.search(r"CURSO\s+(20\d\d)\s*[-/]\s*(?:20)?(\d\d)\b", texto) or re.search(r"\b(20\d\d)\s*[-/]\s*(?:20)?(\d\d)\b", texto)
+    if not m:
+        return []
+    curso = f"{m.group(1)}-20{m.group(2)}"
+    filas, campus, orden = [], None, None
+    for linea in lineas:
+        c = re.search(r"CAMPUS DE (\w+)", linea)
+        if c:
+            campus = c.group(1).upper()
+            # una cabecera con las cinco casillas: el cupo general y cuatro porcentajes de plazas
+            orden = ORDEN_EHU if (len(re.findall(r"\d% de las plazas", linea)) == 4
+                                  and "Bachillerato" in linea) else None
+            continue
+        f = re.match(r"\s*(\S.*?\S)\s{2,}(\d{1,3})\s{2,}([\d,*\-─E´\s]+?)\s*$", linea)
+        if not f or not orden or campus not in CAMPUS_EHU or not re.search(r"(?i)grado|degree|bachelor", f.group(1)):
+            continue
+        valores = _trocear_ehu(f.group(3))
+        if not valores:
+            filas.append({"distrito": "pais-vasco", "curso": curso, "titulacion": re.sub(r"\s+", " ", f.group(1)),
+                          "ilegible": True})
+            continue
+        for cupo, v in zip(orden, valores):
+            nota = _nota(v.lstrip("E")) if v[0] in "E0123456789" else None
+            filas.append({"distrito": "pais-vasco", "curso": curso,
+                          "universidad": "País Vasco/Euskal Herriko Unibertsitatea", "codigo_local": None,
+                          "titulacion": re.sub(r"\s+", " ", f.group(1)), "campus": campus,
+                          "municipios": CAMPUS_EHU[campus], "plazas": int(f.group(2)) if cupo == "general" else None,
+                          "cupo": cupo, "convocatoria": "extraordinaria" if v.startswith("E") else "ordinaria",
+                          "lista": "final", "nota": nota, "sin_plazas": v in "-─", "todos_admitidos": v == "*"})
+    return [x for x in filas if not x.get("ilegible")]
+
+
 # ------------------------------------------------------------------------------------------------- Cataluña
 
 SIGLAS_CAT = {"UB": "Barcelona", "UAB": "Autónoma de Barcelona", "UPC": "Politécnica de Catalunya", "UPF": "Pompeu Fabra",
@@ -364,6 +441,8 @@ LECTORES = {
                "Universidad de Murcia, datos abiertos: nota de corte de grado"),
     "castilla-leon": (leer_usal, lambda d: "usal.es/files/acceso/notas_corte" in d["url"] and d.get("formato") == "pdf",
                       "Universidad de Salamanca: notas de corte de grado"),
+    "pais-vasco": (leer_ehu, lambda d: "ehu.eus" in d["url"] and d.get("formato") == "pdf",
+                   "Universidad del País Vasco/Euskal Herriko Unibertsitatea: límite de plazas y nota de corte de admisión"),
     "cataluna": (leer_cataluna, lambda d: "/resource/usyn-hngc" in d["url"],
                  "Generalitat de Catalunya, datos abiertos: notas de corte de acceso a los estudios universitarios"),
 }
@@ -397,7 +476,7 @@ def leer_fuentes(carpetas: list[Path]) -> list[dict]:
     unicas: dict[tuple, dict] = {}
     for x in filas:
         unicas[(x["distrito"], x["curso"], x.get("universidad"), x["codigo_local"], x["cupo"], x.get("convocatoria"),
-                x["titulacion"])] = x
+                x["titulacion"], x.get("campus"))] = x
     return list(unicas.values())
 
 
@@ -457,6 +536,7 @@ def puntuar(nombre: str, x0: dict, xs: list[dict], cs: list[dict]) -> list[tuple
     pist = [sin_acentos(z) for z in pistas(nombre)] + [sin_acentos(z) for z in trozos[1:] if _es_pista(z, cs)]
     if x0.get("municipio"):
         pist.append(sin_acentos(x0["municipio"]).replace("l'", "").strip())
+    pist += [sin_acentos(m) for m in x0.get("municipios") or []]  # los del campus (UPV/EHU)
     trozos = [z for z in trozos if not _es_pista(z, cs)] or trozos
     entero = palabras(" ".join(trozos), ca)
     idioma = any(re.search(r"ingl|angl|bilingu|english", z) for z in pist)
@@ -465,6 +545,9 @@ def puntuar(nombre: str, x0: dict, xs: list[dict], cs: list[dict]) -> list[tuple
     grados = [c["palabras"] for c in cs if c["clase"] == "grado"]
     solo_doble = len(trozos) >= 2 and all(any(_parecido(palabras(z, ca), g) >= 0.75 for g in grados) for z in trozos)
     solo_doble = solo_doble or bool(re.search(r"(?i)simultane", nombre))  # «(simultaneïtat)»: doble en Cataluña
+    # un nombre que se presenta como doble («Doble Grado en Gestión de Negocios + Rel. Lab. y Rec. Hum.») no es uno
+    # de sus grados con una variante, aunque la abreviatura del segundo no se reconozca
+    solo_doble = solo_doble or bool(re.match(r"(?i)\s*(?:doble|double|dobles?\s+titulaci|programa conjunto|pceo)", nombre))
     salida = []
     for c in cs:
         variante = ""
@@ -505,8 +588,9 @@ def unir(filas: list[dict], cands: dict[str, list[dict]]) -> Counter:
     resumen: Counter = Counter()
     por_oferta: dict[tuple, list[dict]] = defaultdict(list)
     for x in filas:
-        por_oferta[(x["distrito"], x.get("universidad"), x["codigo_local"], x["titulacion"])].append(x)
-    for (distrito, univ, _, nombre), xs in por_oferta.items():
+        # el mismo nombre en dos campus (ADE en Álava y en Bizkaia) son dos ofertas
+        por_oferta[(x["distrito"], x.get("universidad"), x["codigo_local"], x["titulacion"], x.get("campus"))].append(x)
+    for (distrito, univ, _, nombre, _), xs in por_oferta.items():
         if xs[0].get("codigo_titulo"):
             for x in xs:
                 x["union"] = {"metodo": "codigo_del_ministerio"}
@@ -539,7 +623,7 @@ def unir(filas: list[dict], cands: dict[str, list[dict]]) -> Counter:
         resumen["nombre" if len(centros) == 1 else "nombre_sin_centro"] += 1
     # el mismo código del distrito en otro curso, con un nombre parecido (renombrado, abreviado), es la misma oferta
     por_codigo: dict[tuple, list[list[dict]]] = defaultdict(list)
-    for (distrito, univ, codigo, _), xs in por_oferta.items():
+    for (distrito, univ, codigo, _, _), xs in por_oferta.items():
         if codigo:
             por_codigo[(distrito, univ, codigo)].append(xs)
     for grupos in por_codigo.values():
