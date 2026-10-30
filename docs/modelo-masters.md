@@ -678,8 +678,8 @@ aceptados) y recitado (6.495 recuperados); desde el servidor de España, 48 pág
 - **Precio de las privadas**: 1.311 oficiales privados sin precio; en sus páginas solo 19 tenían algún precio.
   No se publica: es la información cerrada (`docs/estrategia-informacion-cerrada.md`), que solo se consigue con
   peticiones.
-- **Webs vetadas**: Sevilla y Córdoba prohíben el rastreo y la UOC da 403; UCLM, UNEX y UNICAN bloquean. Pedir
-  permiso (Álvaro).
+- **Webs vetadas**: Sevilla y Córdoba prohíben el rastreo y la UOC da 403; UCLM, UNEX y UNICAN bloquean; de las
+  escuelas de más reputación, ESADE y EADA responden 403 a nuestro lector (no se salta). Pedir permiso (Álvaro).
 
 ### Noche del 30/10/2026 (a fondo)
 
@@ -702,4 +702,13 @@ aceptados) y recitado (6.495 recuperados); desde el servidor de España, 48 pág
   España, con los públicos sin asignaturas primero (fichas y memorias ligeras), en cola detrás de los boletines.
 - **Pasada diaria**: baja y mide los planes del BOE que dan las fichas nuevas del RUCT (los que no estén ya en la
   rama), así que cada ficha nueva trae su plan al día siguiente.
+- **Orden de trabajo por reputación** (`reputacion.py`, petición de Álvaro): primero las universidades del QS 2026
+  (UB, UAB, Complutense, UAM, Navarra, UPF, UC3M, UPM, UPC, Granada), después el grupo 1 del U-Ranking 2025 y las
+  escuelas de negocio de referencia (IE, Ramon Llull/ESADE, IESE, Comillas, Deusto, CUNEF) y luego el grupo 2.
+  Las listas del RUCT de la noche van así: primero los másteres sin asignaturas, de mayor a menor reputación.
+- **Nombre en inglés**: los títulos bilingües («Gobernanza / Master in Governance») también se unen a su página
+  cuando esta solo da el nombre en inglés (UPF, IE, Comillas…).
+- **BOE**: un mismo nombre con código antiguo y nuevo en la misma universidad (título verificado otra vez): el plan
+  nuevo es del código más reciente que ya podía existir. La UPC no publica sus planes de máster en el BOE: sus
+  asignaturas solo pueden salir de la memoria del RUCT o de su web.
 
