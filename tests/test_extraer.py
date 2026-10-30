@@ -26,6 +26,7 @@ def test_peticion_de_lote():
     p = e.peticion("abc", "https://x.es/master", "texto")
     assert p["custom_id"] == "abc" and p["params"]["model"] == e.MODELO
     assert p["params"]["system"][0]["cache_control"] == {"type": "ephemeral"}
+    assert p["params"]["thinking"] == {"type": "disabled"} and p["params"]["output_config"] == {"effort": "low"}
 
 
 def test_texto_web_quita_menus_y_guarda_divs_y_schema():

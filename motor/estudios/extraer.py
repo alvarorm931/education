@@ -82,6 +82,12 @@ SISTEMA = (
     "6) Si la página no es la de un programa concreto, devuelve {\"no_es_programa\":true}."
 )
 MAX_TOKENS = 6000
+# Claude Haiku 5.5 piensa por defecto (pensamiento adaptativo, esfuerzo «medium») y ese pensamiento se cobra
+# como salida y cuenta en max_tokens: en la segunda prueba, 3.668 tokens de salida por página y 9 de 48
+# respuestas cortadas. Para copiar datos con su cita no hace falta pensar: se desactiva y se pide esfuerzo bajo
+# (https://platform.claude.com/docs/en/build-with-claude/effort, consultada el 30/10/2026).
+PENSAMIENTO = {"type": "disabled"}
+ESFUERZO = "low"
 
 
 def _norma(s: str) -> str:
@@ -148,6 +154,8 @@ def peticion(custom_id: str, url: str, texto: str) -> dict:
         "params": {
             "model": MODELO,
             "max_tokens": MAX_TOKENS,
+            "thinking": PENSAMIENTO,
+            "output_config": {"effort": ESFUERZO},
             "system": [{"type": "text", "text": SISTEMA + "\nCampos:\n" + esquema, "cache_control": {"type": "ephemeral"}}],
             "messages": [{"role": "user", "content": f"URL: {url}\n\nTEXTO DE LA PÁGINA:\n{texto}"}],
         },
@@ -395,9 +403,14 @@ def lote(muestra: Path, salida: Path, esperar_min: float = 45, max_paginas: int 
             cuentas["extraidas"] += 1
             if not datos:
                 cuentas["json_ilegible"] += 1
+            bloques = Counter(c.get("type") for c in msg.get("content", []))
+            cuentas["respuestas_con_pensamiento"] += 1 if bloques.get("thinking") else 0
             fp.write(json.dumps({"url": pagina["url"], "captura_sha256": pagina["sha256"], "extraido": ahora,
                                  "no_es_programa": bool(datos.get("no_es_programa")), "lote": b["id"],
-                                 "uso": uso, "coste_usd": round(coste(uso), 6),
+                                 "uso": uso, "coste_usd": round(coste(uso), 6), "bloques": dict(bloques),
+                                 "parada": msg.get("stop_reason"),
+                                 "caracteres_respuesta": sum(len(c.get("text", "")) for c in msg.get("content", [])
+                                                             if c.get("type") == "text"),
                                  **{k: meta.get(pagina["url"], {}).get(k) for k in ("proveedor", "grupo", "codigo_ruct")}},
                                 ensure_ascii=False) + "\n")
             if datos.get("no_es_programa"):
