@@ -17,6 +17,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 from collections import Counter
 from datetime import date, datetime, timedelta
@@ -85,6 +86,13 @@ def estado_fuente(carpeta: Path, hoy: date) -> dict:
                 numeros.setdefault(anio, set()).add(n)
             if r not in ("ok", "sin_boletin"):
                 errores.append({"fecha": fecha, "resultado": r, "alertas": (inf.get("alertas") or [])[:2]})
+    if ultimo_ok is None:
+        # Conectores sin informe por día o por boletín (BOR, por la lista paginada): la fecha del último fichero de
+        # disposiciones (disposiciones/AAAA/MM/DD….jsonl)
+        for f in (carpeta / "disposiciones").glob("*/*/*.jsonl"):
+            fecha = f"{f.parent.parent.name}-{f.parent.name}-{f.name[:2]}"
+            if re.fullmatch(r"\d{4}-\d{2}-\d{2}", fecha) and (ultimo_ok is None or fecha > ultimo_ok):
+                ultimo_ok = fecha
     empleo = sum(_lineas(f) for f in (carpeta / "oposiciones").rglob("*.jsonl"))
     textos = sum(1 for _ in (carpeta / "textos").rglob("*.json"))
     sin_noticias = dias_habiles_entre(date.fromisoformat(ultimo_ok[:10]), hoy) if ultimo_ok else None
