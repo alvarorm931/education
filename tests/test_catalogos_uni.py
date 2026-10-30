@@ -18,3 +18,10 @@ def test_emparejar_un_enlace_por_master_y_sin_ambiguedades():
 
 def test_slug_de_la_direccion():
     assert cu._slug("https://u.es/estudios/master-en-quimica-organica/") == "master en quimica organica"
+
+
+def test_probables_si_se_piden():
+    masters = [{"codigo_ruct": "4310001", "nombre": "Máster Universitario en Química Orgánica Avanzada y Catálisis por la Universidad X"}]
+    enlaces = [("https://u.es/m/1", "Química Orgánica Avanzada")]
+    assert not cu.emparejar(enlaces, masters)[0]
+    assert cu.emparejar(enlaces, masters, probables=True)[0][0]["codigo_ruct"] == "4310001"

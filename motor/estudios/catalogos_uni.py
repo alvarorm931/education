@@ -110,8 +110,9 @@ def _slug(url: str) -> str:
     return " ".join(re.split(r"[-_/.]+", urlparse(url).path.rstrip("/").rsplit("/", 1)[-1]))
 
 
-def emparejar(enlaces: list[tuple[str, str]], masters: list[dict]) -> tuple[list[dict], Counter]:
-    """Un enlace por máster: el que lo nombra («confirmado») y no nombra a otro igual de bien."""
+def emparejar(enlaces: list[tuple[str, str]], masters: list[dict], probables: bool = False) -> tuple[list[dict], Counter]:
+    """Un enlace por máster: el que lo nombra («confirmado», o «probable» con probables=True: la extracción vuelve
+    a comprobar el nombre de la página) y no nombra a otro igual de bien."""
     from motor.estudios.fichas_masters import comprobar_nombre
 
     cuentas = Counter()
@@ -121,7 +122,7 @@ def emparejar(enlaces: list[tuple[str, str]], masters: list[dict]) -> tuple[list
         for m in masters:
             for t in (texto, _slug(url)):
                 estado, cob = comprobar_nombre(m["nombre"], t)
-                if estado == "confirmado":
+                if estado == "confirmado" or (probables and estado == "probable"):
                     resultados.append((cob, m["codigo_ruct"]))
                     break
         if not resultados:
@@ -141,7 +142,8 @@ def emparejar(enlaces: list[tuple[str, str]], masters: list[dict]) -> tuple[list
     return [f for f in filas if por_url[f["url"]] == 1], cuentas
 
 
-def leer(portadas_: list[dict], navegador: bool = False, max_minutos: float = 50) -> tuple[list[dict], dict]:
+def leer(portadas_: list[dict], navegador: bool = False, max_minutos: float = 50, probables: bool = False,
+         ya: set[str] | None = None) -> tuple[list[dict], dict]:
     from motor.estudios.conjunto_masters import dominio
     from motor.estudios.rastreador import Dominio, enlaces
 
@@ -196,7 +198,8 @@ def leer(portadas_: list[dict], navegador: bool = False, max_minutos: float = 50
             cuentas["paginas_leidas"] += len(vistas)
     filas = []
     for uni, u in sorted(por_uni.items()):
-        f, c = emparejar(list(u["enlaces"].items()), list(u["masters"].values()))
+        masters = [m for m in u["masters"].values() if m["codigo_ruct"] not in (ya or set())]
+        f, c = emparejar(list(u["enlaces"].items()), masters, probables)
         cuentas.update(c)
         cuentas["universidades"] += 1
         cuentas["enlaces_vistos"] += len(u["enlaces"])
@@ -223,6 +226,8 @@ def main() -> None:
     b.add_argument("--portadas", required=True)
     b.add_argument("--navegador", action="store_true")
     b.add_argument("--max-minutos", type=float, default=50)
+    b.add_argument("--probables", action="store_true", help="acepta también nombres «probables» (la extracción los comprueba)")
+    b.add_argument("--ya", help="JSONL de una lectura anterior: sus másteres no se vuelven a buscar")
     for s in (a, b):
         s.add_argument("--salida", required=True)
     x = p.parse_args()
@@ -236,8 +241,10 @@ def main() -> None:
         (destino / "portadas.jsonl").write_text("".join(json.dumps(f, ensure_ascii=False) + "\n" for f in filas), encoding="utf-8")
         print(json.dumps({"portadas": len(filas), "masters": sum(len(f["masters"]) for f in filas)}, ensure_ascii=False))
     else:
+        ya = {json.loads(l)["codigo_ruct"] for l in Path(x.ya).read_text(encoding="utf-8").split("\n") if l.strip()} \
+            if x.ya else None
         filas, cuentas = leer([json.loads(l) for l in Path(x.portadas).read_text(encoding="utf-8").split("\n") if l.strip()],
-                              x.navegador, x.max_minutos)
+                              x.navegador, x.max_minutos, x.probables, ya)
         (destino / "oficiales_catalogo.jsonl").write_text("".join(json.dumps(f, ensure_ascii=False) + "\n" for f in filas),
                                                           encoding="utf-8")
         (destino / "resumen.json").write_text(json.dumps(cuentas, ensure_ascii=False, indent=1), encoding="utf-8")
