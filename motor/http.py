@@ -194,6 +194,7 @@ BOLETINES_OFICIALES = {
     "https://ssl4.ddgi.cat/bopV1/pdf/": "BOP de Girona (PDF de los edictos)",
     "https://www.bizkaia.eus/lehendakaritza/Bao_bob/": "BOB (PDF de los anuncios)",
     "https://236ws.dpteruel.es/DPT/bopt.nsf/": "BOP de Teruel",
+    "https://www.araba.eus/botha/": "BOTHA (Álava)",
     "https://www.ceuta.es/ceuta/bocce/": "BOCCE (Ceuta)",
 }
 DECISION_BOLETINES = ("Álvaro", "2026-10-30")
