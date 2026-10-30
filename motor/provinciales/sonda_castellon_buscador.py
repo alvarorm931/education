@@ -30,20 +30,52 @@ def describir(h: str) -> None:
             print("   etiqueta:", " ".join(html.unescape(re.sub(r"<[^>]+>", " ", et)).split())[:80])
 
 
+ANTIGUOS = "https://bop.dipcas.es/PortalBOP/boletinesAntiguos/"
+AJAX = {"Faces-Request": "partial/ajax", "X-Requested-With": "XMLHttpRequest"}
+
+
+def _ajax(s: requests.Session, url: str, campos: dict, fuente: str, render: str) -> str:
+    datos = {**campos, "javax.faces.partial.ajax": "true", "javax.faces.source": fuente,
+             "javax.faces.partial.execute": "@all", "javax.faces.partial.render": render, fuente: fuente}
+    time.sleep(1)
+    r = s.post(url, data=datos, headers={**AJAX, "Referer": ANTIGUOS}, timeout=60)
+    print("ajax", fuente, r.status_code, len(r.content))
+    return r.text
+
+
 def main(argv: list[str] | None = None) -> int:
+    """Boletines anteriores: búsqueda por fechas (enero de 2022) y anuncios del primer boletín de la lista."""
+    desde, hasta = (argv if argv is not None else sys.argv[1:]) or ["03/01/2022", "14/01/2022"]
     s = requests.Session()
     s.headers["User-Agent"] = USER_AGENT
-    comprobar_robots(URL, s)
-    r = s.get(URL, timeout=60)
-    accion, campos = campos_formulario(r.text, "buttons")
-    campos["buttons:j_idt72"] = ""
-    time.sleep(1)
-    r2 = s.post(requests.compat.urljoin(r.url, accion), data=campos, timeout=60)
-    print("buscador", r2.status_code, len(r2.content), r2.url)
-    describir(r2.text)
-    t = " ".join(html.unescape(re.sub(r"<script.*?</script>|<[^>]+>", " ", r2.text, flags=re.S)).split())
-    i = t.find("Buscador")
-    print("texto:", t[i:i + 1500])
+    comprobar_robots(ANTIGUOS, s)
+    r = s.get(ANTIGUOS, timeout=60)
+    accion, campos = campos_formulario(r.text, "buscadorForm")
+    url = requests.compat.urljoin(r.url, accion)
+    campos.update({"buscadorForm:fechaInicialAntiguo_input": desde, "buscadorForm:fechaFinalAntiguo_input": hasta})
+    x = _ajax(s, url, campos, "buscadorForm:j_idt152",
+              "formListBoletinAntiguos formListAnunciosBolAnt buscadorForm buscadorReducidaForm")
+    filas = re.findall(r'<tr data-ri="(\d+)"[^>]*>(.*?)</tr>', x, re.S)
+    print("filas", len(filas))
+    for ri, f in filas[:15]:
+        celdas = [" ".join(html.unescape(re.sub(r"<[^>]+>", " ", c)).split()) for c in re.findall(r"<td[^>]*>(.*?)</td>", f, re.S)]
+        print("  ", ri, celdas, re.findall(r'PrimeFaces\.ab\(\{s:(?:&quot;|")([^&"]+)', f)[:3],
+              re.findall(r'href="([^"]+)"', f)[:3])
+    if not filas:
+        print(x[:3000])
+        return 0
+    boton = re.findall(r'PrimeFaces\.ab\(\{s:(?:&quot;|")([^&"]+)(?:&quot;|"),f:(?:&quot;|")([^&"]+)(?:&quot;|")(?:,u:(?:&quot;|")([^&"]+))?',
+                       filas[0][1])
+    print("botón fila 0:", boton)
+    vs = re.search(r'<update id="[^"]*ViewState[^"]*"><!\[CDATA\[([^\]]+)\]\]>', x)
+    if boton and vs:
+        fuente, form, render = boton[0]
+        a2, c2 = accion, {form: form, "javax.faces.ViewState": vs.group(1)}
+        y = _ajax(s, requests.compat.urljoin(r.url, a2), c2, fuente, render or "formListAnunciosBolAnt")
+        t = " ".join(html.unescape(re.sub(r"<script.*?</script>|<[^>]+>", " ", y, flags=re.S)).split())
+        print("anuncios:", t[:3000])
+        print("enlaces:", sorted(set(re.findall(r'href="([^"]+)"', y)))[:20])
+        print("acciones:", sorted(set(re.findall(r'PrimeFaces\.ab\(\{s:(?:&quot;|")([^&"]+)', y)))[:20])
     return 0
 
 
