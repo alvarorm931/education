@@ -1,12 +1,12 @@
-# Vigilancia 30/10 09:21 (Madrid)
+# Vigilancia 30/10 09:30 (Madrid)
 
-- Ejecuciones revisadas (últimas 6 h): 288
+- Ejecuciones revisadas (últimas 6 h): 283
 - Fallos: 2; pendientes: 0; relanzados ahora: 0
 - Colas de más de 30 minutos: 0
 - Flujos programados parados: ninguno
 - Almacén S3: ok
 - Programaciones que GitHub no disparó y se lanzaron a mano: ninguna
-- Latido (relanza al vigilante cada ~25 min mientras GitHub no dispare programaciones): en marcha
+- Latido (relanza al vigilante cada ~25 min mientras GitHub no dispare programaciones): no hace falta: GitHub ya dispara las programaciones
 - Avisos de fuentes: 0
 
 ## Motor de datos · 30/10 08:07 · otra ejecución en curso: https://github.com/alvarorm931/education/actions/runs/41019168283
