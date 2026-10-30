@@ -3,7 +3,11 @@
 Formato verificado el 30/10/2026 desde GitHub: canal «Número 210 (29-10-2026)»; cada anuncio con título «AYUNTAMIENTO
 DE VELAYOS - 2101/26» (entidad y número), descripción (el asunto) y enlace a su PDF. robots.txt lo permite.
 
+Histórico: cada boletín tiene su propio canal (/bops/AAAA/DD-MM-AAAA/rss.xml, enlazado desde
+/boletin-oficial/AAAA/DD-MM-AAAA.html), con el mismo formato.
+
 Uso: python -m motor.provinciales.bopavila --salida ruta/
+     python -m motor.provinciales.bopavila --historico --desde 2022-01-01 --max-minutos 30 --salida ruta/
 """
 
 from __future__ import annotations
@@ -42,7 +46,15 @@ def seleccionar(filas: list[dict]) -> list[dict]:
     return sel(CANAL, filas)
 
 
+def url_dia(d) -> str:
+    """Canal de un día concreto (el mismo formato que el del día): /bops/AAAA/DD-MM-AAAA/rss.xml."""
+    return f"https://www.diputacionavila.es/bops/{d:%Y}/{d:%d-%m-%Y}/rss.xml"
+
+
 def main(argv: list[str] | None = None) -> int:
+    if "--historico" in (argv if argv is not None else sys.argv[1:]):
+        from motor.provinciales.canal import historico
+        return historico(CANAL, url_dia, lambda c: leer(c.decode("utf-8", errors="replace")), argv, ext="xml")
     return main_canal(CANAL, argv)
 
 

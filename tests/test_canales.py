@@ -60,3 +60,17 @@ def test_lugo_historico():
     x = boplugo.leer_nodo((FIX / "boplugo_nodo_85194.html").read_bytes(), "2026-10-29")
     assert len(x) == 11 and (x[4]["entidad"], x[4]["numero_anuncio"]) == ("CONCELLO DE MONFORTE DE LEMOS", "2026-2962")
     assert "page=3" in boplugo.url_lista(3)
+
+
+def test_badajoz_y_avila_historico():
+    from datetime import date
+    s = bopbadajoz.leer_dia((FIX / "bopbadajoz_dia_20261029.html").read_bytes())
+    assert (s["fecha"], s["numero"], len(s["anuncios"])) == ("2026-10-29", "208", 20)
+    a = s["anuncios"][0]
+    assert (a["numero_anuncio"], a["entidad"], a["grupo"]) == ("R4203/2026", "Diputación de Badajoz", "Diputaciones")
+    assert a["url_pdf"].endswith("/bopedictos/2026-10-29000000_R4203.pdf")
+    sel = bopbadajoz.seleccionar(_filas(bopbadajoz, s))
+    assert ("Don Benito", "convocatoria") in [(x["convocante"]["nombre"], x["tipo_acto"]) for x in sel]
+    assert not any("medallas" in x["titulo"] for x in sel)
+    assert bopbadajoz.url_dia(date(2026, 10, 29)).endswith("/bop/index.php?FechaSolicitada=20261029")
+    assert bopavila.url_dia(date(2026, 10, 7)) == "https://www.diputacionavila.es/bops/2026/07-10-2026/rss.xml"

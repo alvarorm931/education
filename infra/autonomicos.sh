@@ -152,13 +152,15 @@ for c in $CONECTORES; do
       "$G" "BOC Cantabria: textos"
       ;;
     bopavila)
-      # Solo el boletín del día, por su canal RSS (sin histórico por ahora)
+      # El boletín del día por su canal RSS; el histórico, por el canal propio de cada día
       ejecutar motor.provinciales.bopavila --salida "$S"
+      ejecutar motor.provinciales.bopavila --historico --desde 2022-01-01 --salida "$S" --max-minutos "$M"
       "$G" "BOP Ávila: boletín del día"
       ;;
     bopbadajoz)
-      # Solo el boletín del día, por su canal Atom (sin histórico por ahora)
+      # El boletín del día por su canal Atom; el histórico, por el sumario de cada fecha
       ejecutar motor.provinciales.bopbadajoz --salida "$S"
+      ejecutar motor.provinciales.bopbadajoz --historico --desde 2022-01-01 --salida "$S" --max-minutos "$M"
       "$G" "BOP Badajoz: boletín del día"
       ejecutar motor.provinciales.bopbadajoz --textos --salida "$S" --max-minutos "$M"
       "$G" "BOP Badajoz: textos"

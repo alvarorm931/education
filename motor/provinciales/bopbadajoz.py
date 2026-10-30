@@ -4,7 +4,11 @@ Formato verificado el 30/10/2026 desde GitHub: «Sumario de aquellos edictos que
 cada entrada con título «[4306/2026] Lista definitiva de aspirantes…», autor (la entidad: «Ahillones (Badajoz)») y
 enlace a la ficha del anuncio (/bop/ventana_anuncio.php?id_anuncio=N). El canal está permitido en robots.txt.
 
+Histórico: el sumario de cada día en /bop/index.php?FechaSolicitada=AAAAMMDD (sección, grupo, entidad y área en
+p.nivel1-4; por anuncio su número, la ficha y el PDF).
+
 Uso: python -m motor.provinciales.bopbadajoz --salida ruta/
+     python -m motor.provinciales.bopbadajoz --historico --desde 2022-01-01 --max-minutos 30 --salida ruta/
 """
 
 from __future__ import annotations
@@ -44,6 +48,43 @@ def seleccionar(filas: list[dict]) -> list[dict]:
     return sel(CANAL, filas)
 
 
+WEB = "https://www.dip-badajoz.es"
+RE_DIA = re.compile(r"id='fecha_publicacion'>\s*D[ií]a\s+(?P<d>\d{1,2}) de (?P<m>\w+) de (?P<a>\d{4})\s*</h1>"
+                    r"(?:<h3[^>]*>\s*Bolet[íi]n \w+\s+n\.º(?:&nbsp;|\s)*(?P<n>\d+))?")
+RE_TOKEN_DIA = re.compile(r'<(?:summary|p) class="nivel(?P<nivel>[1-4])"\s*>(?P<t>.*?)</(?:summary|p)>'
+                          r'|<dt>\[\s*(?P<num>R?\d+)\]</dt>\s*<dd>\s*<span><a href="(?P<href>ventana_anuncio\.php\?[^"]+)"[^>]*>'
+                          r'(?P<tit>.*?)</a></span>(?:<span class="Edicto_PDF"><a href="(?P<pdf>[^"]+)")?', re.DOTALL)
+
+
+def url_dia(d) -> str:
+    return f"{WEB}/bop/index.php?FechaSolicitada={d:%Y%m%d}"
+
+
+def leer_dia(contenido: bytes) -> dict:
+    """Sumario de un día (/bop/index.php?FechaSolicitada=AAAAMMDD): sección, grupo, entidad, área y anuncios."""
+    import html as _html
+
+    from motor.extraccion.texto_es import fecha_texto
+    h = contenido.decode("utf-8", errors="replace")
+    c = RE_DIA.search(h)
+    niveles, anuncios = {}, []
+    for m in RE_TOKEN_DIA.finditer(h, c.end() if c else 0):
+        if m.group("nivel"):
+            n = int(m.group("nivel"))
+            niveles = {k: v for k, v in niveles.items() if k < n}
+            niveles[n] = texto(m.group("t"))
+            continue
+        anio = c.group("a") if c else ""
+        n = m.group("num")
+        num = ("R" + n[1:].lstrip("0")) if n.startswith("R") else n.lstrip("0")  # «[ 04259]», «[R04203]»
+        anuncios.append({"numero_anuncio": f"{num}/{anio}", "seccion": niveles.get(1), "grupo": niveles.get(2),
+                         "entidad": niveles.get(3), "area": niveles.get(4), "titulo": texto(m.group("tit")),
+                         "url_html": f"{WEB}/bop/{_html.unescape(m.group('href'))}",
+                         "url_pdf": _html.unescape(m.group("pdf")) if m.group("pdf") else None})
+    return {"fecha": fecha_texto(c.group("d"), c.group("m"), c.group("a")) if c else None,
+            "numero": c.group("n") if c else None, "anuncios": anuncios}
+
+
 def texto_disposicion(contenido: bytes) -> dict:
     from motor.limpieza import limpiar_html, texto_de
 
@@ -64,6 +105,9 @@ def main(argv: list[str] | None = None) -> int:
     """--textos: la ficha de cada anuncio de empleo (/bop/ventana_anuncio.php, cerrada en robots.txt; se lee como
     boletín oficial, motor/http.py)."""
     argv = sys.argv[1:] if argv is None else argv
+    if "--historico" in argv:  # sumario de cada día por su fecha
+        from motor.provinciales.canal import historico
+        return historico(CANAL, url_dia, leer_dia, argv)
     if "--textos" not in argv:
         return main_canal(CANAL, argv)
     import argparse
