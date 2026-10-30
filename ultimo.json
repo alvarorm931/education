@@ -1,12 +1,12 @@
 {
- "fecha": "2026-10-30T14:11:33+00:00",
- "fecha_madrid": "30/10 15:11",
+ "fecha": "2026-10-30T14:48:13+00:00",
+ "fecha_madrid": "30/10 15:48",
  "ventana_horas": 6.0,
  "resumen": {
   "ejecuciones_revisadas": 205,
   "fallos": 1,
-  "fallos_pendientes": 0,
-  "relanzados": 1,
+  "fallos_pendientes": 1,
+  "relanzados": 0,
   "colas_largas": 6,
   "flujos_programados_parados": [],
   "programaciones_lanzadas_a_mano": [],
@@ -15,107 +15,103 @@
  },
  "fallos": [
   {
-   "flujo": "Motor de datos",
-   "fichero": "motor.yml",
-   "id": 41055944787,
+   "flujo": "Latido",
+   "fichero": "latido.yml",
+   "id": 41068408931,
    "intento": 1,
    "evento": "workflow_dispatch",
    "rama": "main",
-   "commit": "0f7bef2",
-   "titulo": "Motor de datos",
+   "commit": "b727abc",
+   "titulo": "Latido",
    "conclusion": "failure",
-   "cuando": "30/10 15:11",
-   "url": "https://github.com/alvarorm931/education/actions/runs/41055944787",
+   "cuando": "30/10 15:28",
+   "url": "https://github.com/alvarorm931/education/actions/runs/41068408931",
    "superado": false,
-   "en_curso": "https://github.com/alvarorm931/education/actions/runs/41068448230",
-   "pasajero": true,
+   "en_curso": null,
+   "pasajero": false,
    "detalle": [
     {
-     "trabajo": "motor",
+     "trabajo": "latido",
      "pasos": [
-      "Extraer actos y comprobar huecos"
+      "Lanzar al vigilante y el siguiente latido"
      ],
-     "ejecutor": "GitHub Actions 1000000875",
+     "ejecutor": "GitHub Actions 1000000965",
      "etiquetas": [
       "ubuntu-latest"
      ],
      "final_registro": [
-      "Descargados: 1500. Errores: 0",
-      "Descargados: 1500. Errores: 0",
-      "Descargados: 128. Errores: 0",
       "##[error]Process completed with exit code 1.",
       "...",
-      "remote: error: Trace: 74ecba0806311cdb0a88fb7f8fe979f8c4e0fa920bfa8ea5bf18de3a9e4f9913        ",
-      "remote: error: See https://gh.io/lfs for more information.        ",
-      "remote: error: File datos/oposiciones/procesos.jsonl is 221.98 MB; this exceeds GitHub's file size limit of 100.00 MB        ",
-      "remote: error: GH001: Large files detected. You may want to try Git Large File Storage - https://git-lfs.github.com.        ",
-      "To https://github.com/alvarorm931/education",
-      " ! [remote rejected]       datos -> datos (pre-receive hook declined)",
-      "error: failed to push some refs to 'https://github.com/alvarorm931/education'",
-      "remote: warning: File datos/oposiciones/huerfanos.jsonl is 71.29 MB; this is larger than GitHub's recommended maximum file size of 50.00 MB        ",
-      "remote: error: Trace: 87de823503406d6969ec78b4a56f3e75e630a1bce8776ac9d0f9d8c5fadc54e4        ",
-      "remote: error: See https://gh.io/lfs for more information.        ",
-      "remote: error: File datos/oposiciones/procesos.jsonl is 221.98 MB; this exceeds GitHub's file size limit of 100.00 MB        ",
-      "remote: error: GH001: Large files detected. You may want to try Git Large File Storage - https://git-lfs.github.com.        ",
-      "To https://github.com/alvarorm931/education",
-      " ! [remote rejected]       datos -> datos (pre-receive hook declined)",
-      "error: failed to push some refs to 'https://github.com/alvarorm931/education'",
-      "remote: warning: File datos/oposiciones/huerfanos.jsonl is 71.29 MB; this is larger than GitHub's recommended maximum file size of 50.00 MB        ",
-      "remote: error: Trace: 0cc33aa8b3abb9e1d5b35a4a943fa0877980cdd014c57403ccd4601e8f42b2aa        ",
-      "remote: error: See https://gh.io/lfs for more information.        ",
-      "remote: error: File datos/oposiciones/procesos.jsonl is 221.98 MB; this exceeds GitHub's file size limit of 100.00 MB        ",
-      "remote: error: GH001: Large files detected. You may want to try Git Large File Storage - https://git-lfs.github.com.        ",
-      "To https://github.com/alvarorm931/education",
-      " ! [remote rejected]       datos -> datos (pre-receive hook declined)",
-      "error: failed to push some refs to 'https://github.com/alvarorm931/education'",
-      "##[warning]Actos y control de huecos: no se pudo subir",
+      "24.04.5",
+      "LTS",
+      "Image: ubuntu-24.04",
+      "Version: 20261025.353.1",
+      "Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261025.353/images/ubuntu/Ubuntu2404-Readme.md",
+      "Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261025.353",
+      "Actions: write",
+      "Contents: read",
+      "Metadata: read",
+      "Secret source: Actions",
+      "Cache mode: write",
+      "Prepare workflow directory",
+      "Prepare all required actions",
+      "Complete job name: latido",
+      "\u001b[36;1msleep 1500\u001b[0m",
+      "\u001b[36;1mgh workflow run vigilante.yml -R \"$GITHUB_REPOSITORY\" --ref main\u001b[0m",
+      "\u001b[36;1mdesde=$(date -u -d '-3 hours' +%Y-%m-%dT%H:%M:%SZ)\u001b[0m",
+      "\u001b[36;1mn=$(gh api \"repos/$GITHUB_REPOSITORY/actions/workflows/vigilante.yml/runs?event=schedule&per_page=1&created=>=$desde\" --jq .total_count || echo 0)\u001b[0m",
+      "\u001b[36;1mif [ \"${n:-0}\" -gt 0 ]; then\u001b[0m",
+      "\u001b[36;1m  echo \"::notice title=Latido::GitHub ya dispara las programaciones; el latido se detiene.\"\u001b[0m",
+      "\u001b[36;1m  exit 0\u001b[0m",
+      "\u001b[36;1mfi\u001b[0m",
+      "\u001b[36;1mgh workflow run latido.yml -R \"$GITHUB_REPOSITORY\" --ref main\u001b[0m",
+      "could not create workflow dispatch event: HTTP 500 (https://api.github.com/repos/alvarorm931/education/actions/workflows/401287485/dispatches)",
       "##[error]Process completed with exit code 1."
      ]
     }
-   ],
-   "relanzado": true
+   ]
   }
  ],
  "colas_largas": [
   {
    "flujo": "Estudios por tramos",
    "id": 41064537986,
-   "en_cola_min": 36,
+   "en_cola_min": 73,
    "trabajos_empezados": 0,
    "url": "https://github.com/alvarorm931/education/actions/runs/41064537986"
   },
   {
    "flujo": "Boletines autonómicos",
    "id": 41062712067,
-   "en_cola_min": 49,
+   "en_cola_min": 86,
    "trabajos_empezados": 2,
    "url": "https://github.com/alvarorm931/education/actions/runs/41062712067"
   },
   {
    "flujo": "Sonda de fuentes",
    "id": 41061393230,
-   "en_cola_min": 58,
+   "en_cola_min": 95,
    "trabajos_empezados": 0,
    "url": "https://github.com/alvarorm931/education/actions/runs/41061393230"
   },
   {
    "flujo": "Boletines autonómicos",
    "id": 41061253358,
-   "en_cola_min": 59,
+   "en_cola_min": 96,
    "trabajos_empezados": 2,
    "url": "https://github.com/alvarorm931/education/actions/runs/41061253358"
   },
   {
    "flujo": "Grados por tramos",
    "id": 41061047455,
-   "en_cola_min": 61,
+   "en_cola_min": 98,
    "trabajos_empezados": 0,
    "url": "https://github.com/alvarorm931/education/actions/runs/41061047455"
   },
   {
    "flujo": "Boletines autonómicos",
    "id": 41060907312,
-   "en_cola_min": 62,
+   "en_cola_min": 99,
    "trabajos_empezados": 2,
    "url": "https://github.com/alvarorm931/education/actions/runs/41060907312"
   }
@@ -126,7 +122,7 @@
    "parado": false
   },
   "autonomicos.yml": {
-   "ultimo_bien": "30/10 14:14",
+   "ultimo_bien": "30/10 15:48",
    "parado": false
   },
   "seo.yml": {
@@ -135,14 +131,14 @@
   }
  },
  "respaldo_programaciones": [],
- "latido": "en marcha",
+ "latido": "cortado: relanzado",
  "boe": {
   "ultimo_diario": {
    "fecha": "2026-10-30",
    "numero": 270,
    "anio": 2026
   },
-  "ultima_ejecucion": "2026-10-30T13:50:17+01:00",
+  "ultima_ejecucion": "2026-10-30T15:46:10+01:00",
   "alertas_ultima_ejecucion": []
  },
  "avisos_de_fuentes": [],
