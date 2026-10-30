@@ -92,3 +92,11 @@ def test_csv_de_un_php_y_en_windows_1252():
     assert nf.formato_de(b"a;b\n", "application/octet-stream", "https://x.es/g_not_cor_anteriores_csv.php?anio=1") == "csv"
     lineas, _ = nf.lineas_documento("Almería;Grado en Física;8,5\n".encode("cp1252"), "csv")
     assert lineas[0] == "Almería;Grado en Física;8,5"
+
+
+def test_lectura_optica_solo_con_ocr_y_con_las_herramientas(monkeypatch):
+    from motor.grados import notas_fuentes as nf
+
+    assert nf.OCR["activo"] is False  # por defecto no se lee ningún PDF por lectura óptica
+    monkeypatch.setattr(nf.shutil, "which", lambda _: None)
+    assert nf.lineas_ocr(b"%PDF-1.4") is None

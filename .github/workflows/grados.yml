@@ -56,6 +56,10 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install -e ".[estudios,almacen]"
+      # lectura óptica de PDF sin texto (notas de corte de la UPV/EHU desde 2022-23), solo si el tramo la pide
+      - name: Instalar tesseract (tramos con --ocr)
+        if: contains(matrix.args, '--ocr') && inputs.ejecutor != 'espana'
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq tesseract-ocr tesseract-ocr-spa poppler-utils
       - uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: arn:aws:iam::369017477131:role/education-originales-github

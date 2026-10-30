@@ -25,6 +25,9 @@ import hashlib
 import io
 import json
 import re
+import shutil
+import subprocess
+import tempfile
 import time
 from collections import defaultdict
 from datetime import date
@@ -37,6 +40,8 @@ from motor.archivo import Archivo, solo_huella_por_defecto
 FUENTE = "notas-corte"
 MAX_DOC = 25_000_000
 MUESTRA_FILAS = 80
+# Lectura óptica (tesseract) de los PDF que son imágenes sin texto (UPV/EHU desde 2022-23); se activa con --ocr
+OCR = {"activo": False}
 NOTA = re.compile(r"(?<![\d.,])(?:1[0-4]|[5-9])[.,]\d{2,3}(?![\d.,])")
 CURSO = re.compile(r"\b(20[12]\d)\s*[-/–_]\s*(?:20)?([12]\d)\b")
 ENLACE = re.compile(r"""(?is)<a\b[^>]*?href\s*=\s*["']([^"'#]+)["'][^>]*>(.*?)</a>""")
@@ -253,6 +258,23 @@ def funciones_de_envio(html: str, base: str, pedir) -> list[dict]:
     return salida
 
 
+def lineas_ocr(contenido: bytes) -> list[str] | None:
+    """Texto de un PDF sin capa de texto por lectura óptica: cada página a 300 ppp (pdftoppm) y tesseract en español
+    con los espacios entre palabras conservados (las columnas siguen separadas). None si faltan las herramientas."""
+    if not (shutil.which("pdftoppm") and shutil.which("tesseract")):
+        return None
+    with tempfile.TemporaryDirectory() as d:
+        pdf = Path(d) / "doc.pdf"
+        pdf.write_bytes(contenido)
+        subprocess.run(["pdftoppm", "-r", "300", "-png", str(pdf), str(Path(d) / "p")], check=True, timeout=300)
+        lineas = []
+        for i, img in enumerate(sorted(Path(d).glob("p*.png")), 1):
+            r = subprocess.run(["tesseract", str(img), "stdout", "-l", "spa", "--psm", "6",
+                                "-c", "preserve_interword_spaces=1"], capture_output=True, text=True, timeout=300)
+            lineas += [f"### página {i} (lectura óptica)"] + [x.rstrip() for x in r.stdout.splitlines()]
+        return lineas
+
+
 def lineas_documento(contenido: bytes, formato: str) -> tuple[list[str], int | None]:
     """Líneas de texto de un documento (PDF con la disposición de columnas; CSV/JSON/HTML tal cual)."""
     if formato == "pdf":
@@ -267,6 +289,12 @@ def lineas_documento(contenido: bytes, formato: str) -> tuple[list[str], int | N
                 t = p.extract_text() or ""
             # se conservan los espacios: la columna de cada cifra sale de su posición en la línea
             lineas += [f"### página {i}"] + [x.rstrip() for x in t.splitlines()]
+        con_cifras = sum(1 for x in lineas if re.search(r"\d", x) and not x.startswith("### "))
+        if OCR["activo"] and con_cifras < 3 * len(lector.pages):
+            # PDF de imágenes (o de trazos) sin texto: lectura óptica
+            ocr = lineas_ocr(contenido)
+            if ocr:
+                return ocr, len(lector.pages)
         return lineas, len(lector.pages)
     try:
         texto = contenido.decode("utf-8-sig")
@@ -423,7 +451,9 @@ def main() -> None:
     p.add_argument("--max-minutos", type=float, default=50)
     p.add_argument("--filas", type=int, default=MUESTRA_FILAS, help="filas con nota que se guardan de cada documento")
     p.add_argument("--extra", action="append", default=[], help="distrito=url: un documento más que leer")
+    p.add_argument("--ocr", action="store_true", help="lectura óptica de los PDF sin texto (pdftoppm y tesseract)")
     a = p.parse_args()
+    OCR["activo"] = a.ocr
     extra: dict[str, list[str]] = defaultdict(list)
     for x in a.extra:
         k, _, u = x.partition("=")
