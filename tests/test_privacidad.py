@@ -62,3 +62,14 @@ def test_anonimizar_respuestas_de_sondas(tmp_path):
     main([str(tmp_path)])
     t = f.read_bytes().decode("cp1252")
     assert "Doña Nombre Apellido Segundo" in t and "***0000**" in t and "Don Benito" in t and "López" not in t
+
+
+def test_anonimizar_nombres_junto_a_documento_y_d_mayusculas():
+    """Casos que se escaparon el 30/10/2026: listas sin coma o en minúsculas fuera de tablas y «D. NOMBRE» en mayúsculas."""
+    from motor.limpieza import tiene_nombre_de_persona
+    from motor.mantenimiento.anonimizar import anonimizar_texto
+    t, _ = anonimizar_texto("1 PEREZ HERRERO MIRIAM ***1234**\nAlcaide Díaz, Rosa Mª ***5678**\n"
+                            "<p>2 Garcia Lopez Maria ***1234**</p><p>Ayuntamiento de Lugo</p>")
+    assert "PEREZ" not in t and "Alcaide" not in t and "Garcia" not in t and "Ayuntamiento de Lugo" in t
+    assert tiene_nombre_de_persona("• D. MANUEL SIMÓN VILLAGRASA")
+    assert not tiene_nombre_de_persona("D. OTRAS DISPOSICIONES")

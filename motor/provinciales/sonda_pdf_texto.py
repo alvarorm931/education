@@ -18,6 +18,14 @@ from urllib.parse import urljoin
 from motor.http import obtener
 
 
+
+def _seguro(texto: str) -> str:
+    """Texto para imprimir en una sonda (rama pública): sin líneas con documentos de identidad ni con nombres."""
+    from motor.limpieza import RE_DOCUMENTO, tiene_nombre_de_persona
+    return "\n".join("[línea omitida: datos de personas]" if RE_DOCUMENTO.search(l) or tiene_nombre_de_persona(l) else l
+                     for l in texto.splitlines())
+
+
 def _pdf(contenido: bytes, paginas: int) -> None:
     from pypdf import PdfReader
     logging.getLogger("pypdf").setLevel(logging.ERROR)
@@ -25,7 +33,7 @@ def _pdf(contenido: bytes, paginas: int) -> None:
     print("paginas", len(lector.pages))
     for n in range(min(paginas, len(lector.pages))):
         print(f"----- página {n + 1}")
-        print((lector.pages[n].extract_text() or "")[:3500])
+        print(_seguro(lector.pages[n].extract_text() or "")[:3500])
 
 
 def main(argv: list[str] | None = None) -> int:

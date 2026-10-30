@@ -37,6 +37,9 @@ RE_NO_PERSONA = re.compile(r"(?i)\b(ayuntamiento|ajuntament|concello|diputaci|de
                            r"universidad|universitat|seccion|sección|secció|tribunal|cuerpo|escala|grupo|plaza|plazas)")
 RE_CELDA_MAYUS = re.compile(r"(?P<i><t[dh]\b[^>]*>\s*)(?P<v>[^<>]{3,90}?)(?P<f>\s*</t[dh]>)")
 RE_LINEA = re.compile(r"[^\n]{1,400}")
+RE_SEGMENTO = re.compile(r">([^<>]+)<")
+RE_RACHA = re.compile(r"(?<![\w*&])[A-ZÁÉÍÓÚÑÜÇÀÈÒÏ][\wÁÉÍÓÚÑÜÇÀÈÒÏáéíóúñüçàèòï'’ªº.-]*,?(?:[ \t]+(?:(?:de|del|de la|y|i|DE|DEL|Y|I)[ \t]+)?"
+                      r"[A-ZÁÉÍÓÚÑÜÇÀÈÒÏ][\wÁÉÍÓÚÑÜÇÀÈÒÏáéíóúñüçàèòï'’ªº.-]*,?){1,5}")
 # Celdas de tabla con «Apellido Apellido, Nombre» en minúsculas
 RE_CELDA_NOMBRE = re.compile(r"(?P<i><t[dh]\b[^>]*>\s*)(?P<v>[A-ZÁÉÍÓÚÑ][a-záéíóúñü'’-]+(?:\s+(?:de\s+|del\s+|de\s+la\s+)?"
                              r"[A-ZÁÉÍÓÚÑ][a-záéíóúñü'’-]+){0,3},\s*[A-ZÁÉÍÓÚÑ][a-záéíóúñü'’-]+(?:\s+[A-ZÁÉÍÓÚÑ][a-záéíóúñü'’-]+)?)"
@@ -76,6 +79,7 @@ def anonimizar_texto(t: str) -> tuple[str, int]:
     t = RE_CELDA_MAYUS.sub(lambda m: m.group("i") + lista(RE_LISTA_MAYUS.fullmatch(m.group("v"))) + m.group("f")
                            if RE_LISTA_MAYUS.fullmatch(m.group("v")) else m.group(0), t)
     t = RE_LINEA.sub(lambda m: RE_LISTA_MAYUS.sub(lista, m.group(0)) if RE_DOCUMENTO.search(m.group(0)) else m.group(0), t)
+
     t = RE_CELDA_NOMBRE.sub(celda, t)
     t = RE_TRATAMIENTO_ENT.sub(entidades, t)
 
@@ -102,6 +106,23 @@ def anonimizar_texto(t: str) -> tuple[str, int]:
 
     for r in RE_DESIGNADO:
         t = r.sub(designado, t)
+    def racha(m: re.Match) -> str:
+        nonlocal n
+        palabras = [w.upper() for w in m.group(0).replace(",", " ").split()]
+        if RE_NO_PERSONA.search(m.group(0)) or set(palabras) <= {"APELLIDO", "NOMBRE", "SEGUNDO", "DNI", "NIF", "NIE",
+                                                                 "DON", "DOÑA", "D.", "DÑA.", "D.ª"}:
+            return m.group(0)
+        n += 1
+        return "APELLIDO APELLIDO NOMBRE" if m.group(0).isupper() else "Apellido Apellido, Nombre"
+
+    # Junto a un documento de identidad, cualquier racha de dos o más palabras con mayúscula es un nombre («1 PEREZ
+    # HERRERO MIRIAM ***0000**», «Alcaide Díaz, Rosa Mª ***0000**»): en el texto plano, la línea; en HTML, el texto
+    # entre etiquetas que lleva el documento (30/10/2026)
+    def con_documento(seg: str) -> str:
+        return RE_RACHA.sub(racha, seg) if RE_DOCUMENTO.search(seg) else seg
+
+    t = RE_LINEA.sub(lambda m: con_documento(m.group(0)) if "<" not in m.group(0)
+                     else RE_SEGMENTO.sub(lambda s: ">" + con_documento(s.group(1)) + "<", m.group(0)), t)
     return RE_DOCUMENTO.sub(documento, t), n
 
 

@@ -20,6 +20,14 @@ from motor.http import USER_AGENT, comprobar_robots
 BASE = "https://www.ceuta.es"
 
 
+
+def _seguro(texto: str) -> str:
+    """Texto para imprimir en una sonda (rama pública): sin líneas con documentos de identidad ni con nombres."""
+    from motor.limpieza import RE_DOCUMENTO, tiene_nombre_de_persona
+    return "\n".join("[línea omitida: datos de personas]" if RE_DOCUMENTO.search(l) or tiene_nombre_de_persona(l) else l
+                     for l in texto.splitlines())
+
+
 def main(argv: list[str] | None = None) -> int:
     cat = ((argv if argv is not None else sys.argv[1:]) or ["1982-octubre"])[0]
     s = requests.Session()
@@ -46,7 +54,7 @@ def main(argv: list[str] | None = None) -> int:
         print("paginas", len(lector.pages))
         for n in range(min(3, len(lector.pages))):
             print(f"----- página {n + 1}")
-            print((lector.pages[n].extract_text() or "")[:3000])
+            print(_seguro(lector.pages[n].extract_text() or "")[:3000])
     else:
         print(html.unescape(p.text[:500]))
     return 0

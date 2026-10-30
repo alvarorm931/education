@@ -65,9 +65,11 @@ def _es_persona(m: re.Match) -> bool:
         return False
     if m.string[max(0, m.start() - 12):m.start()].lower().rstrip().endswith(("villa de", "villa del")):
         return False  # «Villa de Don Fadrique»: un municipio
-    # «D.» seguido de mayúsculas suele ser el apartado de un sumario («D. OTRAS DISPOSICIONES»), no una persona
+    # «D.» seguido de mayúsculas suele ser el apartado de un sumario («D. OTRAS DISPOSICIONES»), no una persona; sí lo
+    # es si empieza por un nombre de pila («D. MANUEL SIMÓN VILLAGRASA», 30/10/2026)
     if m.group("t").lower() == "d." and m.group("n").split()[0].isupper():
-        return False
+        primera = _sin_tildes(m.group("n").split()[0].lower())
+        return len(m.group("n").split()) >= 2 and primera in NOMBRES_PILA and primera not in NO_NOMBRE
     if CARGOS.match(m.group("n")):
         return False
     return True
