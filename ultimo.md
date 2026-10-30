@@ -21,6 +21,6 @@ https://github.com/alvarorm931/education/actions/runs/41079079352 (intento 2, wo
       BOP-GRANADA: 5211 actos, 1935 con texto, 267 con fecha de fin de plazo; {'titulo': 4305, 'plazo_general_v3': 906}
       ##[error]Process completed with exit code 1.
 
-- En cola 46 min: Grados por tramos https://github.com/alvarorm931/education/actions/runs/41120742487
-- En cola 48 min: Prueba de conector https://github.com/alvarorm931/education/actions/runs/41120449947
+- En cola 47 min: Grados por tramos https://github.com/alvarorm931/education/actions/runs/41120742487
+- En cola 49 min: Prueba de conector https://github.com/alvarorm931/education/actions/runs/41120449947
 - En cola 54 min: Estudios por tramos https://github.com/alvarorm931/education/actions/runs/41119697629
