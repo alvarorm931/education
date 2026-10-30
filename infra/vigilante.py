@@ -92,9 +92,29 @@ def madrid(d: datetime | None) -> str | None:
         return d.strftime("%d/%m %H:%M UTC")
 
 
+class _SinRedireccion(urllib.request.HTTPRedirectHandler):
+    def redirect_request(self, *args, **kwargs):  # noqa: D401 - la redirección se sigue a mano, sin la cabecera
+        return None
+
+
 def final_registro(job_id: int, lineas: int = 25) -> list[str]:
+    """Últimas líneas del registro de un trabajo. La API redirige a un almacén que rechaza la cabecera de
+    autorización de GitHub (401), así que la redirección se sigue a mano y sin ella."""
+    url = f"{API}/repos/{os.environ['GITHUB_REPOSITORY']}/actions/jobs/{job_id}/logs"
+    req = urllib.request.Request(url, headers={"Authorization": "Bearer " + token(),
+                                               "Accept": "application/vnd.github+json",
+                                               "User-Agent": "vigilante-education"})
     try:
-        texto = api(f"/repos/{os.environ['GITHUB_REPOSITORY']}/actions/jobs/{job_id}/logs", crudo=True)
+        try:
+            urllib.request.build_opener(_SinRedireccion).open(req, timeout=60)
+            return ["(registro sin redirección: formato inesperado)"]
+        except urllib.error.HTTPError as e:
+            if e.code not in (301, 302, 303, 307, 308) or not e.headers.get("Location"):
+                raise
+            destino = e.headers["Location"]
+        with urllib.request.urlopen(urllib.request.Request(destino, headers={"User-Agent": "vigilante-education"}),
+                                    timeout=60) as r:
+            texto = r.read()
     except Exception as e:  # registro caducado o sin permiso
         return [f"(registro no disponible: {e})"]
     filas = texto.decode("utf-8", "replace").splitlines()
