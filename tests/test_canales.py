@@ -50,3 +50,13 @@ def test_lugo():
     sel = boplugo.seleccionar(filas)
     assert (sel[0]["convocante"]["nombre"], sel[0]["convocante"]["provincia"], sel[0]["tipo_acto"]) == (
         "Sarria", "Lugo", "convocatoria")
+
+
+def test_lugo_historico():
+    from motor.provinciales import boplugo
+    b = boplugo.boletines_lista((FIX / "boplugo_lista.html").read_bytes())
+    assert len(b) == 10 and b[0] == {"numero": "248", "id_nodo": "85194", "fecha": "2026-10-29",
+                                      "url": "https://deputacionlugo.gal/gl/node/85194"}
+    x = boplugo.leer_nodo((FIX / "boplugo_nodo_85194.html").read_bytes(), "2026-10-29")
+    assert len(x) == 11 and (x[4]["entidad"], x[4]["numero_anuncio"]) == ("CONCELLO DE MONFORTE DE LEMOS", "2026-2962")
+    assert "page=3" in boplugo.url_lista(3)

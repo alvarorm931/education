@@ -223,9 +223,10 @@ for c in $CONECTORES; do
       "$G" "BOB Bizkaia: textos"
       ;;
     boplugo)
-      # Canal RSS: el boletín del día (el histórico empieza al conectarlo)
+      # Canal RSS para el boletín del día; el histórico, por la lista paginada y la página de cada boletín
       ejecutar motor.provinciales.boplugo --salida "$S"
-      "$G" "BOP Lugo: boletín del día"
+      ejecutar motor.provinciales.boplugo --historico --desde 2022-01-01 --salida "$S" --max-minutos "$M"
+      "$G" "BOP Lugo: boletines"
       ;;
     bophuelva)
       # JSON del día desde s2.diphuelva.es (robots.txt lo cierra: boletín oficial, motor/http.py), desde el servidor de España: a GitHub deja de responderle. Este sistema empieza el 20/06/2023
