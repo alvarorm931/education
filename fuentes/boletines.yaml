@@ -378,7 +378,8 @@ provinciales:
   - provincia: Teruel
     url: http://www.dpteruel.es/boletines.htm
     acceso_desde_github: "http_403"
-    estado: sin_conector
+    estado: conector_en_pruebas
+    conector: motor/provinciales/bopteruel.py
   - provincia: Toledo
     url: http://bop.diputoledo.es/webEbop/inicio.jsp
     acceso_desde_github: "ok"

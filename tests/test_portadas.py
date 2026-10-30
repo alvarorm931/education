@@ -48,3 +48,17 @@ def test_zaragoza():
     assert all(x["ambito"] == "local" for x in sel)  # secciones tercera, quinta y sexta
     assert sel[0]["convocante"]["tipo"] == "Diputación Provincial" and sel[0]["tipo_acto"] == "convocatoria"
     assert {x["convocante"]["nombre"] for x in sel} >= {"Zaragoza", "Cuarte de Huerva", "Zuera"}
+
+
+def test_teruel():
+    from motor.provinciales import bopteruel
+    s = bopteruel.leer((FIX / "bopteruel_portada_20261029.html").read_bytes())
+    assert (s["fecha"], s["numero"], len(s["anuncios"])) == ("2026-10-29", "208", 19)
+    a = s["anuncios"][1]
+    assert (a["numero_anuncio"], a["entidad"], a["seccion"]) == ("2026-3143", "Comarca del Bajo Aragón",
+                                                                "Administración Local")
+    sel = bopteruel.seleccionar([{**x, "id": x["numero_anuncio"]} for x in s["anuncios"]])
+    assert (sel[0]["convocante"]["tipo"], sel[0]["convocante"]["nombre"], sel[0]["tipo_acto"]) == (
+        "Comarca", "Bajo Aragón", "bases")
+    from motor.autonomicos.comun import convocante_de_organismo
+    assert convocante_de_organismo("Ayto. de Albalate del Arzobispo")["nombre"] == "Albalate del Arzobispo"

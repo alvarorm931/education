@@ -161,6 +161,8 @@ PARTICULAS = {"de", "del", "la", "las", "los", "el", "y", "e", "en", "a", "o", "
 
 TIPOS_ENTIDAD = (
     ("ayuntamiento de ", "Ayuntamiento"),
+    ("ayto. de ", "Ayuntamiento"),  # Teruel: «Ayto. de Albalate del Arzobispo»
+    ("ayto de ", "Ayuntamiento"),
     ("diputacion provincial de ", "Diputación Provincial"),
     ("diputacion de ", "Diputación Provincial"),
     ("mancomunidad ", "Mancomunidad"),

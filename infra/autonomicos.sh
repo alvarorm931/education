@@ -299,6 +299,11 @@ for c in $CONECTORES; do
       ejecutar motor.provinciales.bopsoria --textos --salida "$S" --max-minutos "$M"
       "$G" "BOP Soria: textos"
       ;;
+    bopteruel)
+      # Solo el boletín del día, por la portada (lo anterior solo está en PDF). Solo responde desde España
+      ejecutar motor.provinciales.bopteruel --salida "$S"
+      "$G" "BOP Teruel: boletín del día"
+      ;;
     bopb)
       # El del día por el canal de datos abiertos; los anteriores por el listado por días y los textos en PDF (cerrados
       # en robots.txt; se leen como boletín oficial, motor/http.py)
