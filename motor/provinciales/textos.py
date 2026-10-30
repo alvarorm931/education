@@ -68,9 +68,27 @@ def es_pagina_de_sumario(pagina: str) -> bool:
     return con_puntos >= 4 and con_puntos >= 0.2 * len(lineas)
 
 
+def sin_entradas_de_sumario(pagina: str) -> str:
+    """Quita de una página las entradas de sumario (la línea con puntos hasta la página o «>36» y las líneas del mismo
+    asunto que la preceden): en una página con parte de sumario y parte de cuerpo, el título del sumario no se toma
+    por el comienzo del anuncio (pasaba en Tenerife y Las Palmas, 30/10/2026)."""
+    lineas = pagina.splitlines()
+    fuera = set()
+    for k, l in enumerate(lineas):
+        if RE_INDICE.search(l):
+            fuera.add(k)
+            j = k - 1
+            while j >= 0 and k - j <= 3 and lineas[j].strip() and not RE_INDICE.search(lineas[j]) \
+                    and not lineas[j].rstrip().endswith((".", ":", ";")):
+                fuera.add(j)
+                j -= 1
+    return "\n".join(l for k, l in enumerate(lineas) if k not in fuera)
+
+
 def cortar(paginas: list[str], anuncios: list[dict]) -> dict[str, tuple[str, list[int]]]:
     """Texto de cada anuncio del boletín (en su orden): de su título al del siguiente. Con «pagina», la búsqueda
     empieza en su página. Si el título no aparece, el anuncio se queda sin texto (nunca con el de otro)."""
+    paginas = [sin_entradas_de_sumario(p) for p in paginas]
     # Las páginas del sumario se dejan en blanco (con su largo) para no confundir sus títulos con los del cuerpo
     planos = [" " * len(_plano(p)) if es_pagina_de_sumario(p) else _plano(p) for p in paginas]
     inicio_pag, acumulado = [], 0

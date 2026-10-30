@@ -42,3 +42,18 @@ def test_sumario_de_albacete_no_se_toma_por_el_anuncio():
                      "• Bases específicas para cubrir la plaza de Monitor>55", "• Convocatoria de una plaza>57"])
     assert es_pagina_de_sumario(pag)
     assert not es_pagina_de_sumario("Primera.- Objeto de la convocatoria.\nSegunda.- Requisitos de los aspirantes.")
+
+
+def test_pagina_con_parte_de_sumario():
+    """En Tenerife y Las Palmas el sumario acaba a mitad de página: su línea con puntos no es el anuncio."""
+    from motor.provinciales.textos import cortar
+    pagina = ("SUMARIO\n2159757 Bases específicas y convocatoria para cubrir 5 plazas de Bombero/a Conductor "
+              "............ 3\n2159758 Lista de admitidos de Auxiliar ............ 4\nAYUNTAMIENTO DE ARRECIFE\n"
+              "Bases específicas y convocatoria para cubrir 5 plazas de Bombero/a Conductor\nPrimera.- Objeto: "
+              "cinco plazas por oposición libre.\nSegunda.- Plazo: veinte días hábiles.\n")
+    siguiente = "Lista de admitidos de Auxiliar\n1 APELLIDO APELLIDO, NOMBRE ***0000**\n"
+    cortes = cortar([pagina, siguiente], [
+        {"id": "a", "titulo": "Bases específicas y convocatoria para cubrir 5 plazas de Bombero/a Conductor"},
+        {"id": "b", "titulo": "Lista de admitidos de Auxiliar"}])
+    assert "veinte días hábiles" in cortes["a"][0] and "......" not in cortes["a"][0]
+    assert cortes["b"][0].startswith("Lista de admitidos de Auxiliar")
