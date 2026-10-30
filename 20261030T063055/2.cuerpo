@@ -1,0 +1,3377 @@
+
+
+
+
+
+
+
+<!doctype html>
+<html class="no-js" lang="es">
+<head>
+<title>Boletín Oficial de la Provincia de Zaragoza</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!--[if lt IE 9]>
+	<META content="IE=EmulateIE8" http-equiv="X-UA-Compatible"/>
+<![endif]-->
+
+<!--[if gte IE 9]>
+	<META content="IE=EDGE" http-equiv="X-UA-Compatible" />
+<![endif]-->
+<link rel="stylesheet" type="text/css" href="css/foundation.min.css" />
+<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+<link rel="stylesheet" type="text/css" href="css/foundation-icons.css" />
+<link rel="stylesheet" type="text/css" href="/BOPZ/css/mainD.css;jsessionid=9AA3903F5D4559C4891746AF6BD8DDCC" />
+<link rel="stylesheet" type="text/css" href="/BOPZ/css/portadaD.css;jsessionid=9AA3903F5D4559C4891746AF6BD8DDCC" />
+<!--[if lt IE 9]>
+	
+	<link rel="stylesheet" type="text/css" href="/BOPZ/css/mainD_ie8.css;jsessionid=9AA3903F5D4559C4891746AF6BD8DDCC" />
+	<link rel="stylesheet" type="text/css" href="css/ie8-grid-support.css" />
+	<script type="text/Javascript" src="js/modernizr.js"></script>
+
+<![endif]-->
+<script type="text/Javascript" src="js/popup.js"></script>
+<script type="text/javascript" language="Javascript1.1"> 
+
+<!-- Begin 
+
+     var bCancel = false; 
+
+    function validateLoginBean(form) {                                                                   
+        if (bCancel) 
+      return true; 
+        else 
+       return validateRequired(form); 
+   } 
+
+    function required () { 
+     this.aa = new Array("login", "Es necesario completar Login.", new Function ("varName", " return this[varName];"));
+     this.ab = new Array("password", "Es necesario completar Contraseña.", new Function ("varName", " return this[varName];"));
+    } 
+
+
+
+function validateDate(form) {
+               var bValid = true;
+               var focusField = null;
+               var i = 0;
+               var fields = new Array();
+               oDate = new DateValidations();
+               for (x in oDate) {
+                   var value = form[oDate[x][0]].value;
+                   var datePattern = oDate[x][2]("datePatternStrict");
+                   if ((form[oDate[x][0]].type == 'text' ||
+                        form[oDate[x][0]].type == 'textarea') &&
+                       (value.length > 0) &&
+                       (datePattern.length > 0)) {
+                     var MONTH = "MM";
+                     var DAY = "dd";
+                     var YEAR = "yyyy";
+                     var orderMonth = datePattern.indexOf(MONTH);
+                     var orderDay = datePattern.indexOf(DAY);
+                     var orderYear = datePattern.indexOf(YEAR);
+                     if ((orderDay < orderYear && orderDay > orderMonth)) {
+                         var iDelim1 = orderMonth + MONTH.length;
+                         var iDelim2 = orderDay + DAY.length;
+                         var delim1 = datePattern.substring(iDelim1, iDelim1 + 1);
+                         var delim2 = datePattern.substring(iDelim2, iDelim2 + 1);
+                         if (iDelim1 == orderDay && iDelim2 == orderYear) {
+                            dateRegexp = new RegExp("^(\\d{2})(\\d{2})(\\d{4})$");
+                         } else if (iDelim1 == orderDay) {
+                            dateRegexp = new RegExp("^(\\d{2})(\\d{2})[" + delim2 + "](\\d{4})$");
+                         } else if (iDelim2 == orderYear) {
+                            dateRegexp = new RegExp("^(\\d{2})[" + delim1 + "](\\d{2})(\\d{4})$");
+                         } else {
+                            dateRegexp = new RegExp("^(\\d{2})[" + delim1 + "](\\d{2})[" + delim2 + "](\\d{4})$");
+                         }
+                         var matched = dateRegexp.exec(value);
+                         if(matched != null) {
+                            if (!isValidDate(matched[2], matched[1], matched[3])) {
+                               if (i == 0) {
+                                   focusField = form[oDate[x][0]];
+                               }
+                               fields[i++] = oDate[x][1];
+                               bValid =  false;
+                            }
+                         } else {
+                            if (i == 0) {
+                                focusField = form[oDate[x][0]];
+                            }
+                            fields[i++] = oDate[x][1];
+                            bValid =  false;
+                         }
+                     } else if ((orderMonth < orderYear && orderMonth > orderDay)) {
+                         var iDelim1 = orderDay + DAY.length;
+                         var iDelim2 = orderMonth + MONTH.length;
+                         var delim1 = datePattern.substring(iDelim1, iDelim1 + 1);
+                         var delim2 = datePattern.substring(iDelim2, iDelim2 + 1);
+                         if (iDelim1 == orderMonth && iDelim2 == orderYear) {
+                             dateRegexp = new RegExp("^(\\d{2})(\\d{2})(\\d{4})$");
+                         } else if (iDelim1 == orderMonth) {
+                             dateRegexp = new RegExp("^(\\d{2})(\\d{2})[" + delim2 + "](\\d{4})$");
+                         } else if (iDelim2 == orderYear) {
+                             dateRegexp = new RegExp("^(\\d{2})[" + delim1 + "](\\d{2})(\\d{4})$");
+                         } else {
+                             dateRegexp = new RegExp("^(\\d{2})[" + delim1 + "](\\d{2})[" + delim2 + "](\\d{4})$");
+                         }
+                         var matched = dateRegexp.exec(value);
+                         if(matched != null) {
+                             if (!isValidDate(matched[1], matched[2], matched[3])) {
+                                 if (i == 0) {
+                                     focusField = form[oDate[x][0]];
+                                 }
+                                 fields[i++] = oDate[x][1];
+                                 bValid =  false;
+                              }
+                         } else {
+                             if (i == 0) {
+                                 focusField = form[oDate[x][0]];
+                             }
+                             fields[i++] = oDate[x][1];
+                             bValid =  false;
+                         }
+                     } else if ((orderMonth > orderYear && orderMonth < orderDay)) {
+                         var iDelim1 = orderYear + YEAR.length;
+                         var iDelim2 = orderMonth + MONTH.length;
+                         var delim1 = datePattern.substring(iDelim1, iDelim1 + 1);
+                         var delim2 = datePattern.substring(iDelim2, iDelim2 + 1);
+                         if (iDelim1 == orderMonth && iDelim2 == orderDay) {
+                             dateRegexp = new RegExp("^(\\d{4})(\\d{2})(\\d{2})$");
+                         } else if (iDelim1 == orderMonth) {
+                             dateRegexp = new RegExp("^(\\d{4})(\\d{2})[" + delim2 + "](\\d{2})$");
+                         } else if (iDelim2 == orderDay) {
+                             dateRegexp = new RegExp("^(\\d{4})[" + delim1 + "](\\d{2})(\\d{2})$");
+                         } else {
+                             dateRegexp = new RegExp("^(\\d{4})[" + delim1 + "](\\d{2})[" + delim2 + "](\\d{2})$");
+                         }
+                         var matched = dateRegexp.exec(value);
+                         if(matched != null) {
+                             if (!isValidDate(matched[3], matched[2], matched[1])) {
+                                 if (i == 0) {
+                                     focusField = form[oDate[x][0]];
+                                  }
+                                  fields[i++] = oDate[x][1];
+                                  bValid =  false;
+                              }
+                          } else {
+                              if (i == 0) {
+                                  focusField = form[oDate[x][0]];
+                              }
+                              fields[i++] = oDate[x][1];
+                              bValid =  false;
+                          }
+                     } else {
+                         if (i == 0) {
+                             focusField = form[oDate[x][0]];
+                         }
+                         fields[i++] = oDate[x][1];
+                         bValid =  false;
+                     }
+                  }
+               }
+               if (fields.length > 0) {
+                  focusField.focus();
+                  alert(fields.join('\n'));
+               }
+               return bValid;
+            }
+
+	    function isValidDate(day, month, year) {
+	        if (month < 1 || month > 12) {
+                    return false;
+                }
+                if (day < 1 || day > 31) {
+                    return false;
+                }
+                if ((month == 4 || month == 6 || month == 9 || month == 11) &&
+                    (day == 31)) {
+                    return false;
+                }
+                if (month == 2) {
+                    var leap = (year % 4 == 0 &&
+                               (year % 100 != 0 || year % 400 == 0));
+                    if (day>29 || (day == 29 && !leap)) {
+                        return false;
+                    }
+                }
+                return true;
+            }
+function validateMinLength(form) {
+                var isValid = true;
+                var focusField = null;
+                var i = 0;
+                var fields = new Array();
+                oMinLength = new minlength();
+                for (x in oMinLength) {
+                    var field = form[oMinLength[x][0]];
+                    
+                    if (field.type == 'text' ||
+                        field.type == 'textarea') {
+                        
+                        var iMin = parseInt(oMinLength[x][2]("minlength"));
+                        if ((trim(field.value).length > 0) && (field.value.length < iMin)) {
+                            if (i == 0) {
+                                focusField = field;
+                            }
+                            fields[i++] = oMinLength[x][1];
+                            isValid = false;
+                        }
+                    }
+                }
+                if (fields.length > 0) {
+                   focusField.focus();
+                   alert(fields.join('\n'));
+                }
+                return isValid;
+            }
+function validateIntRange(form) {
+                var isValid = true;
+                var focusField = null;
+                var i = 0;
+                var fields = new Array();
+                oRange = new intRange();
+                for (x in oRange) {
+                    var field = form[oRange[x][0]];
+                    
+                    if ((field.type == 'text' ||
+                         field.type == 'textarea') &&
+                        (field.value.length > 0)) {
+                        
+                        var iMin = parseInt(oRange[x][2]("min"));
+                        var iMax = parseInt(oRange[x][2]("max"));
+                        var iValue = parseInt(field.value);
+                        if (!(iValue >= iMin && iValue <= iMax)) {
+                            if (i == 0) {
+                                focusField = field;
+                            }
+                            fields[i++] = oRange[x][1];
+                            isValid = false;
+                        }
+                    }
+                }
+                if (fields.length > 0) {
+                    focusField.focus();
+                    alert(fields.join('\n'));
+                }
+                return isValid;
+            }
+function validateMaxLength(form) {
+                var isValid = true;
+                var focusField = null;
+                var i = 0;
+                var fields = new Array();
+                oMaxLength = new maxlength();
+                for (x in oMaxLength) {
+                    var field = form[oMaxLength[x][0]];
+                    
+                    if (field.type == 'text' ||
+                        field.type == 'textarea') {
+                        
+                        var iMax = parseInt(oMaxLength[x][2]("maxlength"));
+                        if (field.value.length > iMax) {
+                            if (i == 0) {
+                                focusField = field;
+                            }
+                            fields[i++] = oMaxLength[x][1];
+                            isValid = false;
+                        }
+                    }
+                }
+                if (fields.length > 0) {
+                   focusField.focus();
+                   alert(fields.join('\n'));
+                }
+                return isValid;
+            }
+function validateFloatRange(form) {
+                var isValid = true;
+                var focusField = null;
+                var i = 0;
+                var fields = new Array();
+                oRange = new floatRange();
+                for (x in oRange) {
+                    var field = form[oRange[x][0]];
+                    
+                    if ((field.type == 'text' ||
+                         field.type == 'textarea') &&
+                        (field.value.length > 0)) {
+                        
+                        var fMin = parseFloat(oRange[x][2]("min"));
+                        var fMax = parseFloat(oRange[x][2]("max"));
+                        var fValue = parseFloat(field.value);
+                        if (!(fValue >= fMin && fValue <= fMax)) {
+                            if (i == 0) {
+                                focusField = field;
+                            }
+                            fields[i++] = oRange[x][1];
+                            isValid = false;
+                        }
+                    }
+                }
+                if (fields.length > 0) {
+                    focusField.focus();
+                    alert(fields.join('\n'));
+                }
+                return isValid;
+            }
+function validateByte(form) {
+                var bValid = true;
+                var focusField = null;
+                var i = 0;
+                var fields = new Array();
+                oByte = new ByteValidations();
+                for (x in oByte) {
+                	var field = form[oByte[x][0]];
+                	
+                    if (field.type == 'text' ||
+                        field.type == 'textarea' ||
+                        field.type == 'select-one' ||
+						field.type == 'radio') {
+
+						var value = '';
+						// get field's value
+						if (field.type == "select-one") {
+							var si = field.selectedIndex;
+							if (si >= 0) {
+								value = field.options[si].value;
+							}
+						} else {
+							value = field.value;
+						}
+                        
+                        if (value.length > 0) {
+                            if (!isAllDigits(value)) {
+                                bValid = false;
+                                if (i == 0) {
+                                    focusField = field;
+                                }
+                                fields[i++] = oByte[x][1];
+
+                            } else {
+
+	                            var iValue = parseInt(value);
+	                            if (isNaN(iValue) || !(iValue >= -128 && iValue <= 127)) {
+	                                if (i == 0) {
+	                                    focusField = field;
+	                                }
+	                                fields[i++] = oByte[x][1];
+	                                bValid = false;
+	                            }
+                            }
+						}
+						
+                    }
+                }
+                if (fields.length > 0) {
+                   focusField.focus();
+                   alert(fields.join('\n'));
+                }
+                return bValid;
+            }
+function validateRange(form) {
+                return validateIntRange(form);
+            }
+function validateInteger(form) {
+                var bValid = true;
+                var focusField = null;
+                var i = 0;
+                var fields = new Array();
+                oInteger = new IntegerValidations();
+                for (x in oInteger) {
+                	var field = form[oInteger[x][0]];
+					if(field!=null && field!=undefined) {
+                    if (field.type == 'text' ||
+                        field.type == 'textarea' ||
+                        field.type == 'select-one' ||
+                        field.type == 'radio') {
+                        
+                        var value = '';
+						// get field's value
+						if (field.type == "select-one") {
+							var si = field.selectedIndex;
+						    if (si >= 0) {
+							    value = field.options[si].value;
+						    }
+						} else {
+							value = field.value;
+						}
+                        
+                        if (value.length > 0) {
+                        
+                            if (!isAllDigits(value)) {
+                                bValid = false;
+                                if (i == 0) {
+	                                focusField = field;
+	                            }
+						        fields[i++] = oInteger[x][1];
+						        
+                            } else {
+	                            var iValue = parseInt(value);
+	                            if (isNaN(iValue) || !(iValue >= -2147483648 && iValue <= 2147483647)) {
+	                                if (i == 0) {
+	                                    focusField = field;
+	                                }
+	                                fields[i++] = oInteger[x][1];
+	                                bValid = false;
+	                           }
+                           }
+                       }
+                    }
+                }
+                }
+                if (fields.length > 0) {
+                   focusField.focus();
+                   alert(fields.join('\n'));
+                }
+                return bValid;
+            }
+
+            function isAllDigits(argvalue) {
+                argvalue = argvalue.toString();
+                var validChars = "0123456789";
+                var startFrom = 0;
+                if (argvalue.substring(0, 2) == "0x") {
+                   validChars = "0123456789abcdefABCDEF";
+                   startFrom = 2;
+                } else if (argvalue.charAt(0) == "0") {
+                   validChars = "01234567";
+                   startFrom = 1;
+                } else if (argvalue.charAt(0) == "-") {
+                    startFrom = 1;
+                }
+                
+                for (var n = startFrom; n < argvalue.length; n++) {
+                    if (validChars.indexOf(argvalue.substring(n, n+1)) == -1) return false;
+                }
+                return true;
+            }
+function validateFloat(form) {
+                var bValid = true;
+                var focusField = null;
+                var i = 0;
+                var fields = new Array();
+                oFloat = new FloatValidations();
+                for (x in oFloat) {
+                	var field = form[oFloat[x][0]];
+                	
+                    if (field.type == 'text' ||
+                        field.type == 'textarea' ||
+                        field.type == 'select-one' ||
+                        field.type == 'radio') {
+                        
+                    	var value = '';
+						// get field's value
+						if (field.type == "select-one") {
+							var si = field.selectedIndex;
+							if (si >= 0) {
+							    value = field.options[si].value;
+							}
+						} else {
+							value = field.value;
+						}
+                        
+                        if (value.length > 0) {
+                            // remove '.' before checking digits
+                            var tempArray = value.split('.');
+                            var joinedString= tempArray.join('');
+
+                            if (!isAllDigits(joinedString)) {
+                                bValid = false;
+                                if (i == 0) {
+                                    focusField = field;
+                                }
+                                fields[i++] = oFloat[x][1];
+
+                            } else {
+	                            var iValue = parseFloat(value);
+	                            if (isNaN(iValue)) {
+	                                if (i == 0) {
+	                                    focusField = field;
+	                                }
+	                                fields[i++] = oFloat[x][1];
+	                                bValid = false;
+	                            }
+                            }
+                        }
+                    }
+                }
+                if (fields.length > 0) {
+                   focusField.focus();
+                   alert(fields.join('\n'));
+                }
+                return bValid;
+            }
+function validateRequired(form) {
+                var isValid = true;
+                var focusField = null;
+                var i = 0;
+                var fields = new Array();
+                oRequired = new required();
+                for (x in oRequired) {
+                	var field = form[oRequired[x][0]];
+                	
+                    if (field.type == 'text' ||
+                        field.type == 'textarea' ||
+                        field.type == 'file' ||
+                        field.type == 'select-one' ||
+                        field.type == 'radio' ||
+                        field.type == 'password') {
+                        
+                        var value = '';
+						// get field's value
+						if (field.type == "select-one") {
+							var si = field.selectedIndex;
+							if (si >= 0) {
+								value = field.options[si].value;
+							}
+						} else {
+							value = field.value;
+						}
+                        
+                        if (trim(value).length == 0) {
+                        
+	                        if (i == 0) {
+	                            focusField = field;
+	                        }
+	                        fields[i++] = oRequired[x][1];
+	                        isValid = false;
+                        }
+                    }
+                }
+                if (fields.length > 0) {
+                   focusField.focus();
+                   alert(fields.join('\n'));
+                }
+                return isValid;
+            }
+            
+            // Trim whitespace from left and right sides of s.
+            function trim(s) {
+                return s.replace( /^\s*/, "" ).replace( /\s*$/, "" );
+            }
+function validateShort(form) {
+                var bValid = true;
+                var focusField = null;
+                var i = 0;
+                var fields = new Array();
+                oShort = new ShortValidations();
+                for (x in oShort) {
+                	var field = form[oShort[x][0]];
+                	
+                    if (field.type == 'text' ||
+                        field.type == 'textarea' ||
+                        field.type == 'select-one' ||
+                        field.type == 'radio') {
+                        
+                        var value = '';
+						// get field's value
+						if (field.type == "select-one") {
+							var si = field.selectedIndex;
+							if (si >= 0) {
+								value = field.options[si].value;
+							}
+						} else {
+							value = field.value;
+						}
+                        
+                        if (value.length > 0) {
+                            if (!isAllDigits(value)) {
+                                bValid = false;
+                                if (i == 0) {
+                                    focusField = field;
+                                }
+                                fields[i++] = oShort[x][1];
+
+                            } else {
+                        
+	                            var iValue = parseInt(value);
+	                            if (isNaN(iValue) || !(iValue >= -32768 && iValue <= 32767)) {
+	                                if (i == 0) {
+	                                    focusField = field;
+	                                }
+	                                fields[i++] = oShort[x][1];
+	                                bValid = false;
+	                            }
+	                       }
+                       }
+                    }
+                }
+                if (fields.length > 0) {
+                   focusField.focus();
+                   alert(fields.join('\n'));
+                }
+                return bValid;
+            }
+function validateCreditCard(form) {
+                var bValid = true;
+                var focusField = null;
+                var i = 0;
+                var fields = new Array();
+                oCreditCard = new creditCard();
+                for (x in oCreditCard) {
+                    if ((form[oCreditCard[x][0]].type == 'text' ||
+                         form[oCreditCard[x][0]].type == 'textarea') &&
+                        (form[oCreditCard[x][0]].value.length > 0)) {
+                        if (!luhnCheck(form[oCreditCard[x][0]].value)) {
+                            if (i == 0) {
+                                focusField = form[oCreditCard[x][0]];
+                            }
+                            fields[i++] = oCreditCard[x][1];
+                            bValid = false;
+                        }
+                    }
+                }
+                if (fields.length > 0) {
+                    focusField.focus();
+                    alert(fields.join('\n'));
+                }
+                return bValid;
+            }
+
+            /**
+             * Reference: http://www.ling.nwu.edu/~sburke/pub/luhn_lib.pl
+             */
+            function luhnCheck(cardNumber) {
+                if (isLuhnNum(cardNumber)) {
+                    var no_digit = cardNumber.length;
+                    var oddoeven = no_digit & 1;
+                    var sum = 0;
+                    for (var count = 0; count < no_digit; count++) {
+                        var digit = parseInt(cardNumber.charAt(count));
+                        if (!((count & 1) ^ oddoeven)) {
+                            digit *= 2;
+                            if (digit > 9) digit -= 9;
+                        };
+                        sum += digit;
+                    };
+                    if (sum == 0) return false;
+                    if (sum % 10 == 0) return true;
+                };
+                return false;
+            }
+
+            function isLuhnNum(argvalue) {
+                argvalue = argvalue.toString();
+                if (argvalue.length == 0) {
+                    return false;
+                }
+                for (var n = 0; n < argvalue.length; n++) {
+                    if ((argvalue.substring(n, n+1) < "0") ||
+                        (argvalue.substring(n,n+1) > "9")) {
+                        return false;
+                    }
+                }
+                return true;
+            }
+function validateEmail(form) {
+                var bValid = true;
+                var focusField = null;
+                var i = 0;
+                var fields = new Array();
+                oEmail = new email();
+                for (x in oEmail) {
+                    if ((form[oEmail[x][0]].type == 'text' ||
+                         form[oEmail[x][0]].type == 'textarea') &&
+                        (form[oEmail[x][0]].value.length > 0)) {
+                        if (!checkEmail(form[oEmail[x][0]].value)) {
+                            if (i == 0) {
+                                focusField = form[oEmail[x][0]];
+                            }
+                            fields[i++] = oEmail[x][1];
+                            bValid = false;
+                        }
+                    }
+                }
+                if (fields.length > 0) {
+                    focusField.focus();
+                    alert(fields.join('\n'));
+                }
+                return bValid;
+            }
+
+            /**
+             * Reference: Sandeep V. Tamhankar (stamhankar@hotmail.com),
+             * http://javascript.internet.com
+             */
+            function checkEmail(emailStr) {
+               if (emailStr.length == 0) {
+                   return true;
+               }
+               var emailPat=/^(.+)@(.+)$/;
+               var specialChars="\\(\\)<>@,;:\\\\\\\"\\.\\[\\]";
+               var validChars="\[^\\s" + specialChars + "\]";
+               var quotedUser="(\"[^\"]*\")";
+               var ipDomainPat=/^(\d{1,3})[.](\d{1,3})[.](\d{1,3})[.](\d{1,3})$/;
+               var atom=validChars + '+';
+               var word="(" + atom + "|" + quotedUser + ")";
+               var userPat=new RegExp("^" + word + "(\\." + word + ")*$");
+               var domainPat=new RegExp("^" + atom + "(\\." + atom + ")*$");
+               var matchArray=emailStr.match(emailPat);
+               if (matchArray == null) {
+                   return false;
+               }
+               var user=matchArray[1];
+               var domain=matchArray[2];
+               if (user.match(userPat) == null) {
+                   return false;
+               }
+               var IPArray = domain.match(ipDomainPat);
+               if (IPArray != null) {
+                   for (var i = 1; i <= 4; i++) {
+                      if (IPArray[i] > 255) {
+                         return false;
+                      }
+                   }
+                   return true;
+               }
+               var domainArray=domain.match(domainPat);
+               if (domainArray == null) {
+                   return false;
+               }
+               var atomPat=new RegExp(atom,"g");
+               var domArr=domain.match(atomPat);
+               var len=domArr.length;
+               if ((domArr[domArr.length-1].length < 2) ||
+                   (domArr[domArr.length-1].length > 3)) {
+                   return false;
+               }
+               if (len < 2) {
+                   return false;
+               }
+               return true;
+            }
+function validateMask(form) {
+                var isValid = true;
+                var focusField = null;
+                var i = 0;
+                var fields = new Array();
+                oMasked = new mask();
+                for (x in oMasked) {
+                    var field = form[oMasked[x][0]];
+                    
+                    if ((field.type == 'text' || 
+                         field.type == 'textarea') && 
+                         (field.value.length > 0)) {
+                        
+                        if (!matchPattern(field.value, oMasked[x][2]("mask"))) {
+                            if (i == 0) {
+                                focusField = field;
+                            }
+                            fields[i++] = oMasked[x][1];
+                            isValid = false;
+                        }
+                    }
+                }
+                
+                if (fields.length > 0) {
+                   focusField.focus();
+                   alert(fields.join('\n'));
+                }
+                return isValid;
+            }
+
+            function matchPattern(value, mask) {
+               return mask.exec(value);
+            }
+
+//End --> 
+</script>
+
+ 
+
+<script language="JavaScript">
+     
+    // Usar la funcion del js
+	function abreVentana(enlace){
+		var pX,pY;
+		var longX=500;
+		var longY=350;
+		pX = (screen.width-longX)/2;
+		pY = (screen.height-longY)/2;
+		window.open('about:blank','popup','scrollbars=no,resizable=no,toolbar=no,width='+longX+',height='+longY+',left='+pX+',top='+pY);	
+	}
+	
+	
+	function abreVentanaDetalleEdicto(idEdicto){
+		var numBop = document.getElementById('listar').numBop.value;
+		var fechaPub = document.getElementById('listar').fechaPub.value;	
+		
+		var pX,pY;
+		var longX=600;
+		var longY=500;
+		pX = (screen.width-longX)/2;
+		pY = (screen.height-longY)/2;
+		window.open('obtenerContenidoEdicto.do?idEdicto=' + idEdicto +  '&numBop=' + numBop + '&fechaPub=' + fechaPub ,'detalle','scrollbars=yes,resizable=no,toolbar=no,width='+longX+',height='+longY+',left='+pX+',top='+pY);
+	}
+		
+</script>
+</head>
+<body onload="pestanya();init();">
+	<div class="row ocultarSmall" >
+		<div class="large-3 medium-3 small-0 columns">
+				<img id="imgLogo" src="img/logo.jpg"/>
+		</div>
+		<div class="large-9 medium-9 small-12 columns" style="padding-top:30px;">
+				<h2>Bolet&iacute;n Oficial de la Provincia de Zaragoza</h2>
+		</div>
+	</div>
+	<div id="nuevaCabecera" class="ocultarSmall"></div>
+
+<div style="display:none;">
+<!-- Para obtener un edicto solo necesitamos conocer el idEdicto -->
+<form name="edictoBean" method="POST" action="/BOPZ/obtenerContenidoEdicto.do;jsessionid=9AA3903F5D4559C4891746AF6BD8DDCC" id="detalleEdicto">
+	 <input type="hidden" name="idEdicto" /> 
+	 <input type="hidden" name="numBop" />
+	 <input type="hidden" name="fechaPub" /> 	 
+</form>
+</div>
+<div id="front-page" class="row">
+	<div id="areas" class="large-3 medium-3 columns menuDiv ocultarSmall">
+		
+		
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" language="Javascript1.1"> 
+
+<!-- Begin 
+
+     var bCancel = false; 
+
+    function validateLoginBean(form) {                                                                   
+        if (bCancel) 
+      return true; 
+        else 
+       return validateRequired(form); 
+   } 
+
+    function required () { 
+     this.aa = new Array("login", "Es necesario completar Login.", new Function ("varName", " return this[varName];"));
+     this.ab = new Array("password", "Es necesario completar Contraseña.", new Function ("varName", " return this[varName];"));
+    } 
+
+
+
+function validateDate(form) {
+               var bValid = true;
+               var focusField = null;
+               var i = 0;
+               var fields = new Array();
+               oDate = new DateValidations();
+               for (x in oDate) {
+                   var value = form[oDate[x][0]].value;
+                   var datePattern = oDate[x][2]("datePatternStrict");
+                   if ((form[oDate[x][0]].type == 'text' ||
+                        form[oDate[x][0]].type == 'textarea') &&
+                       (value.length > 0) &&
+                       (datePattern.length > 0)) {
+                     var MONTH = "MM";
+                     var DAY = "dd";
+                     var YEAR = "yyyy";
+                     var orderMonth = datePattern.indexOf(MONTH);
+                     var orderDay = datePattern.indexOf(DAY);
+                     var orderYear = datePattern.indexOf(YEAR);
+                     if ((orderDay < orderYear && orderDay > orderMonth)) {
+                         var iDelim1 = orderMonth + MONTH.length;
+                         var iDelim2 = orderDay + DAY.length;
+                         var delim1 = datePattern.substring(iDelim1, iDelim1 + 1);
+                         var delim2 = datePattern.substring(iDelim2, iDelim2 + 1);
+                         if (iDelim1 == orderDay && iDelim2 == orderYear) {
+                            dateRegexp = new RegExp("^(\\d{2})(\\d{2})(\\d{4})$");
+                         } else if (iDelim1 == orderDay) {
+                            dateRegexp = new RegExp("^(\\d{2})(\\d{2})[" + delim2 + "](\\d{4})$");
+                         } else if (iDelim2 == orderYear) {
+                            dateRegexp = new RegExp("^(\\d{2})[" + delim1 + "](\\d{2})(\\d{4})$");
+                         } else {
+                            dateRegexp = new RegExp("^(\\d{2})[" + delim1 + "](\\d{2})[" + delim2 + "](\\d{4})$");
+                         }
+                         var matched = dateRegexp.exec(value);
+                         if(matched != null) {
+                            if (!isValidDate(matched[2], matched[1], matched[3])) {
+                               if (i == 0) {
+                                   focusField = form[oDate[x][0]];
+                               }
+                               fields[i++] = oDate[x][1];
+                               bValid =  false;
+                            }
+                         } else {
+                            if (i == 0) {
+                                focusField = form[oDate[x][0]];
+                            }
+                            fields[i++] = oDate[x][1];
+                            bValid =  false;
+                         }
+                     } else if ((orderMonth < orderYear && orderMonth > orderDay)) {
+                         var iDelim1 = orderDay + DAY.length;
+                         var iDelim2 = orderMonth + MONTH.length;
+                         var delim1 = datePattern.substring(iDelim1, iDelim1 + 1);
+                         var delim2 = datePattern.substring(iDelim2, iDelim2 + 1);
+                         if (iDelim1 == orderMonth && iDelim2 == orderYear) {
+                             dateRegexp = new RegExp("^(\\d{2})(\\d{2})(\\d{4})$");
+                         } else if (iDelim1 == orderMonth) {
+                             dateRegexp = new RegExp("^(\\d{2})(\\d{2})[" + delim2 + "](\\d{4})$");
+                         } else if (iDelim2 == orderYear) {
+                             dateRegexp = new RegExp("^(\\d{2})[" + delim1 + "](\\d{2})(\\d{4})$");
+                         } else {
+                             dateRegexp = new RegExp("^(\\d{2})[" + delim1 + "](\\d{2})[" + delim2 + "](\\d{4})$");
+                         }
+                         var matched = dateRegexp.exec(value);
+                         if(matched != null) {
+                             if (!isValidDate(matched[1], matched[2], matched[3])) {
+                                 if (i == 0) {
+                                     focusField = form[oDate[x][0]];
+                                 }
+                                 fields[i++] = oDate[x][1];
+                                 bValid =  false;
+                              }
+                         } else {
+                             if (i == 0) {
+                                 focusField = form[oDate[x][0]];
+                             }
+                             fields[i++] = oDate[x][1];
+                             bValid =  false;
+                         }
+                     } else if ((orderMonth > orderYear && orderMonth < orderDay)) {
+                         var iDelim1 = orderYear + YEAR.length;
+                         var iDelim2 = orderMonth + MONTH.length;
+                         var delim1 = datePattern.substring(iDelim1, iDelim1 + 1);
+                         var delim2 = datePattern.substring(iDelim2, iDelim2 + 1);
+                         if (iDelim1 == orderMonth && iDelim2 == orderDay) {
+                             dateRegexp = new RegExp("^(\\d{4})(\\d{2})(\\d{2})$");
+                         } else if (iDelim1 == orderMonth) {
+                             dateRegexp = new RegExp("^(\\d{4})(\\d{2})[" + delim2 + "](\\d{2})$");
+                         } else if (iDelim2 == orderDay) {
+                             dateRegexp = new RegExp("^(\\d{4})[" + delim1 + "](\\d{2})(\\d{2})$");
+                         } else {
+                             dateRegexp = new RegExp("^(\\d{4})[" + delim1 + "](\\d{2})[" + delim2 + "](\\d{2})$");
+                         }
+                         var matched = dateRegexp.exec(value);
+                         if(matched != null) {
+                             if (!isValidDate(matched[3], matched[2], matched[1])) {
+                                 if (i == 0) {
+                                     focusField = form[oDate[x][0]];
+                                  }
+                                  fields[i++] = oDate[x][1];
+                                  bValid =  false;
+                              }
+                          } else {
+                              if (i == 0) {
+                                  focusField = form[oDate[x][0]];
+                              }
+                              fields[i++] = oDate[x][1];
+                              bValid =  false;
+                          }
+                     } else {
+                         if (i == 0) {
+                             focusField = form[oDate[x][0]];
+                         }
+                         fields[i++] = oDate[x][1];
+                         bValid =  false;
+                     }
+                  }
+               }
+               if (fields.length > 0) {
+                  focusField.focus();
+                  alert(fields.join('\n'));
+               }
+               return bValid;
+            }
+
+	    function isValidDate(day, month, year) {
+	        if (month < 1 || month > 12) {
+                    return false;
+                }
+                if (day < 1 || day > 31) {
+                    return false;
+                }
+                if ((month == 4 || month == 6 || month == 9 || month == 11) &&
+                    (day == 31)) {
+                    return false;
+                }
+                if (month == 2) {
+                    var leap = (year % 4 == 0 &&
+                               (year % 100 != 0 || year % 400 == 0));
+                    if (day>29 || (day == 29 && !leap)) {
+                        return false;
+                    }
+                }
+                return true;
+            }
+function validateMinLength(form) {
+                var isValid = true;
+                var focusField = null;
+                var i = 0;
+                var fields = new Array();
+                oMinLength = new minlength();
+                for (x in oMinLength) {
+                    var field = form[oMinLength[x][0]];
+                    
+                    if (field.type == 'text' ||
+                        field.type == 'textarea') {
+                        
+                        var iMin = parseInt(oMinLength[x][2]("minlength"));
+                        if ((trim(field.value).length > 0) && (field.value.length < iMin)) {
+                            if (i == 0) {
+                                focusField = field;
+                            }
+                            fields[i++] = oMinLength[x][1];
+                            isValid = false;
+                        }
+                    }
+                }
+                if (fields.length > 0) {
+                   focusField.focus();
+                   alert(fields.join('\n'));
+                }
+                return isValid;
+            }
+function validateIntRange(form) {
+                var isValid = true;
+                var focusField = null;
+                var i = 0;
+                var fields = new Array();
+                oRange = new intRange();
+                for (x in oRange) {
+                    var field = form[oRange[x][0]];
+                    
+                    if ((field.type == 'text' ||
+                         field.type == 'textarea') &&
+                        (field.value.length > 0)) {
+                        
+                        var iMin = parseInt(oRange[x][2]("min"));
+                        var iMax = parseInt(oRange[x][2]("max"));
+                        var iValue = parseInt(field.value);
+                        if (!(iValue >= iMin && iValue <= iMax)) {
+                            if (i == 0) {
+                                focusField = field;
+                            }
+                            fields[i++] = oRange[x][1];
+                            isValid = false;
+                        }
+                    }
+                }
+                if (fields.length > 0) {
+                    focusField.focus();
+                    alert(fields.join('\n'));
+                }
+                return isValid;
+            }
+function validateMaxLength(form) {
+                var isValid = true;
+                var focusField = null;
+                var i = 0;
+                var fields = new Array();
+                oMaxLength = new maxlength();
+                for (x in oMaxLength) {
+                    var field = form[oMaxLength[x][0]];
+                    
+                    if (field.type == 'text' ||
+                        field.type == 'textarea') {
+                        
+                        var iMax = parseInt(oMaxLength[x][2]("maxlength"));
+                        if (field.value.length > iMax) {
+                            if (i == 0) {
+                                focusField = field;
+                            }
+                            fields[i++] = oMaxLength[x][1];
+                            isValid = false;
+                        }
+                    }
+                }
+                if (fields.length > 0) {
+                   focusField.focus();
+                   alert(fields.join('\n'));
+                }
+                return isValid;
+            }
+function validateFloatRange(form) {
+                var isValid = true;
+                var focusField = null;
+                var i = 0;
+                var fields = new Array();
+                oRange = new floatRange();
+                for (x in oRange) {
+                    var field = form[oRange[x][0]];
+                    
+                    if ((field.type == 'text' ||
+                         field.type == 'textarea') &&
+                        (field.value.length > 0)) {
+                        
+                        var fMin = parseFloat(oRange[x][2]("min"));
+                        var fMax = parseFloat(oRange[x][2]("max"));
+                        var fValue = parseFloat(field.value);
+                        if (!(fValue >= fMin && fValue <= fMax)) {
+                            if (i == 0) {
+                                focusField = field;
+                            }
+                            fields[i++] = oRange[x][1];
+                            isValid = false;
+                        }
+                    }
+                }
+                if (fields.length > 0) {
+                    focusField.focus();
+                    alert(fields.join('\n'));
+                }
+                return isValid;
+            }
+function validateByte(form) {
+                var bValid = true;
+                var focusField = null;
+                var i = 0;
+                var fields = new Array();
+                oByte = new ByteValidations();
+                for (x in oByte) {
+                	var field = form[oByte[x][0]];
+                	
+                    if (field.type == 'text' ||
+                        field.type == 'textarea' ||
+                        field.type == 'select-one' ||
+						field.type == 'radio') {
+
+						var value = '';
+						// get field's value
+						if (field.type == "select-one") {
+							var si = field.selectedIndex;
+							if (si >= 0) {
+								value = field.options[si].value;
+							}
+						} else {
+							value = field.value;
+						}
+                        
+                        if (value.length > 0) {
+                            if (!isAllDigits(value)) {
+                                bValid = false;
+                                if (i == 0) {
+                                    focusField = field;
+                                }
+                                fields[i++] = oByte[x][1];
+
+                            } else {
+
+	                            var iValue = parseInt(value);
+	                            if (isNaN(iValue) || !(iValue >= -128 && iValue <= 127)) {
+	                                if (i == 0) {
+	                                    focusField = field;
+	                                }
+	                                fields[i++] = oByte[x][1];
+	                                bValid = false;
+	                            }
+                            }
+						}
+						
+                    }
+                }
+                if (fields.length > 0) {
+                   focusField.focus();
+                   alert(fields.join('\n'));
+                }
+                return bValid;
+            }
+function validateRange(form) {
+                return validateIntRange(form);
+            }
+function validateInteger(form) {
+                var bValid = true;
+                var focusField = null;
+                var i = 0;
+                var fields = new Array();
+                oInteger = new IntegerValidations();
+                for (x in oInteger) {
+                	var field = form[oInteger[x][0]];
+					if(field!=null && field!=undefined) {
+                    if (field.type == 'text' ||
+                        field.type == 'textarea' ||
+                        field.type == 'select-one' ||
+                        field.type == 'radio') {
+                        
+                        var value = '';
+						// get field's value
+						if (field.type == "select-one") {
+							var si = field.selectedIndex;
+						    if (si >= 0) {
+							    value = field.options[si].value;
+						    }
+						} else {
+							value = field.value;
+						}
+                        
+                        if (value.length > 0) {
+                        
+                            if (!isAllDigits(value)) {
+                                bValid = false;
+                                if (i == 0) {
+	                                focusField = field;
+	                            }
+						        fields[i++] = oInteger[x][1];
+						        
+                            } else {
+	                            var iValue = parseInt(value);
+	                            if (isNaN(iValue) || !(iValue >= -2147483648 && iValue <= 2147483647)) {
+	                                if (i == 0) {
+	                                    focusField = field;
+	                                }
+	                                fields[i++] = oInteger[x][1];
+	                                bValid = false;
+	                           }
+                           }
+                       }
+                    }
+                }
+                }
+                if (fields.length > 0) {
+                   focusField.focus();
+                   alert(fields.join('\n'));
+                }
+                return bValid;
+            }
+
+            function isAllDigits(argvalue) {
+                argvalue = argvalue.toString();
+                var validChars = "0123456789";
+                var startFrom = 0;
+                if (argvalue.substring(0, 2) == "0x") {
+                   validChars = "0123456789abcdefABCDEF";
+                   startFrom = 2;
+                } else if (argvalue.charAt(0) == "0") {
+                   validChars = "01234567";
+                   startFrom = 1;
+                } else if (argvalue.charAt(0) == "-") {
+                    startFrom = 1;
+                }
+                
+                for (var n = startFrom; n < argvalue.length; n++) {
+                    if (validChars.indexOf(argvalue.substring(n, n+1)) == -1) return false;
+                }
+                return true;
+            }
+function validateFloat(form) {
+                var bValid = true;
+                var focusField = null;
+                var i = 0;
+                var fields = new Array();
+                oFloat = new FloatValidations();
+                for (x in oFloat) {
+                	var field = form[oFloat[x][0]];
+                	
+                    if (field.type == 'text' ||
+                        field.type == 'textarea' ||
+                        field.type == 'select-one' ||
+                        field.type == 'radio') {
+                        
+                    	var value = '';
+						// get field's value
+						if (field.type == "select-one") {
+							var si = field.selectedIndex;
+							if (si >= 0) {
+							    value = field.options[si].value;
+							}
+						} else {
+							value = field.value;
+						}
+                        
+                        if (value.length > 0) {
+                            // remove '.' before checking digits
+                            var tempArray = value.split('.');
+                            var joinedString= tempArray.join('');
+
+                            if (!isAllDigits(joinedString)) {
+                                bValid = false;
+                                if (i == 0) {
+                                    focusField = field;
+                                }
+                                fields[i++] = oFloat[x][1];
+
+                            } else {
+	                            var iValue = parseFloat(value);
+	                            if (isNaN(iValue)) {
+	                                if (i == 0) {
+	                                    focusField = field;
+	                                }
+	                                fields[i++] = oFloat[x][1];
+	                                bValid = false;
+	                            }
+                            }
+                        }
+                    }
+                }
+                if (fields.length > 0) {
+                   focusField.focus();
+                   alert(fields.join('\n'));
+                }
+                return bValid;
+            }
+function validateRequired(form) {
+                var isValid = true;
+                var focusField = null;
+                var i = 0;
+                var fields = new Array();
+                oRequired = new required();
+                for (x in oRequired) {
+                	var field = form[oRequired[x][0]];
+                	
+                    if (field.type == 'text' ||
+                        field.type == 'textarea' ||
+                        field.type == 'file' ||
+                        field.type == 'select-one' ||
+                        field.type == 'radio' ||
+                        field.type == 'password') {
+                        
+                        var value = '';
+						// get field's value
+						if (field.type == "select-one") {
+							var si = field.selectedIndex;
+							if (si >= 0) {
+								value = field.options[si].value;
+							}
+						} else {
+							value = field.value;
+						}
+                        
+                        if (trim(value).length == 0) {
+                        
+	                        if (i == 0) {
+	                            focusField = field;
+	                        }
+	                        fields[i++] = oRequired[x][1];
+	                        isValid = false;
+                        }
+                    }
+                }
+                if (fields.length > 0) {
+                   focusField.focus();
+                   alert(fields.join('\n'));
+                }
+                return isValid;
+            }
+            
+            // Trim whitespace from left and right sides of s.
+            function trim(s) {
+                return s.replace( /^\s*/, "" ).replace( /\s*$/, "" );
+            }
+function validateShort(form) {
+                var bValid = true;
+                var focusField = null;
+                var i = 0;
+                var fields = new Array();
+                oShort = new ShortValidations();
+                for (x in oShort) {
+                	var field = form[oShort[x][0]];
+                	
+                    if (field.type == 'text' ||
+                        field.type == 'textarea' ||
+                        field.type == 'select-one' ||
+                        field.type == 'radio') {
+                        
+                        var value = '';
+						// get field's value
+						if (field.type == "select-one") {
+							var si = field.selectedIndex;
+							if (si >= 0) {
+								value = field.options[si].value;
+							}
+						} else {
+							value = field.value;
+						}
+                        
+                        if (value.length > 0) {
+                            if (!isAllDigits(value)) {
+                                bValid = false;
+                                if (i == 0) {
+                                    focusField = field;
+                                }
+                                fields[i++] = oShort[x][1];
+
+                            } else {
+                        
+	                            var iValue = parseInt(value);
+	                            if (isNaN(iValue) || !(iValue >= -32768 && iValue <= 32767)) {
+	                                if (i == 0) {
+	                                    focusField = field;
+	                                }
+	                                fields[i++] = oShort[x][1];
+	                                bValid = false;
+	                            }
+	                       }
+                       }
+                    }
+                }
+                if (fields.length > 0) {
+                   focusField.focus();
+                   alert(fields.join('\n'));
+                }
+                return bValid;
+            }
+function validateCreditCard(form) {
+                var bValid = true;
+                var focusField = null;
+                var i = 0;
+                var fields = new Array();
+                oCreditCard = new creditCard();
+                for (x in oCreditCard) {
+                    if ((form[oCreditCard[x][0]].type == 'text' ||
+                         form[oCreditCard[x][0]].type == 'textarea') &&
+                        (form[oCreditCard[x][0]].value.length > 0)) {
+                        if (!luhnCheck(form[oCreditCard[x][0]].value)) {
+                            if (i == 0) {
+                                focusField = form[oCreditCard[x][0]];
+                            }
+                            fields[i++] = oCreditCard[x][1];
+                            bValid = false;
+                        }
+                    }
+                }
+                if (fields.length > 0) {
+                    focusField.focus();
+                    alert(fields.join('\n'));
+                }
+                return bValid;
+            }
+
+            /**
+             * Reference: http://www.ling.nwu.edu/~sburke/pub/luhn_lib.pl
+             */
+            function luhnCheck(cardNumber) {
+                if (isLuhnNum(cardNumber)) {
+                    var no_digit = cardNumber.length;
+                    var oddoeven = no_digit & 1;
+                    var sum = 0;
+                    for (var count = 0; count < no_digit; count++) {
+                        var digit = parseInt(cardNumber.charAt(count));
+                        if (!((count & 1) ^ oddoeven)) {
+                            digit *= 2;
+                            if (digit > 9) digit -= 9;
+                        };
+                        sum += digit;
+                    };
+                    if (sum == 0) return false;
+                    if (sum % 10 == 0) return true;
+                };
+                return false;
+            }
+
+            function isLuhnNum(argvalue) {
+                argvalue = argvalue.toString();
+                if (argvalue.length == 0) {
+                    return false;
+                }
+                for (var n = 0; n < argvalue.length; n++) {
+                    if ((argvalue.substring(n, n+1) < "0") ||
+                        (argvalue.substring(n,n+1) > "9")) {
+                        return false;
+                    }
+                }
+                return true;
+            }
+function validateEmail(form) {
+                var bValid = true;
+                var focusField = null;
+                var i = 0;
+                var fields = new Array();
+                oEmail = new email();
+                for (x in oEmail) {
+                    if ((form[oEmail[x][0]].type == 'text' ||
+                         form[oEmail[x][0]].type == 'textarea') &&
+                        (form[oEmail[x][0]].value.length > 0)) {
+                        if (!checkEmail(form[oEmail[x][0]].value)) {
+                            if (i == 0) {
+                                focusField = form[oEmail[x][0]];
+                            }
+                            fields[i++] = oEmail[x][1];
+                            bValid = false;
+                        }
+                    }
+                }
+                if (fields.length > 0) {
+                    focusField.focus();
+                    alert(fields.join('\n'));
+                }
+                return bValid;
+            }
+
+            /**
+             * Reference: Sandeep V. Tamhankar (stamhankar@hotmail.com),
+             * http://javascript.internet.com
+             */
+            function checkEmail(emailStr) {
+               if (emailStr.length == 0) {
+                   return true;
+               }
+               var emailPat=/^(.+)@(.+)$/;
+               var specialChars="\\(\\)<>@,;:\\\\\\\"\\.\\[\\]";
+               var validChars="\[^\\s" + specialChars + "\]";
+               var quotedUser="(\"[^\"]*\")";
+               var ipDomainPat=/^(\d{1,3})[.](\d{1,3})[.](\d{1,3})[.](\d{1,3})$/;
+               var atom=validChars + '+';
+               var word="(" + atom + "|" + quotedUser + ")";
+               var userPat=new RegExp("^" + word + "(\\." + word + ")*$");
+               var domainPat=new RegExp("^" + atom + "(\\." + atom + ")*$");
+               var matchArray=emailStr.match(emailPat);
+               if (matchArray == null) {
+                   return false;
+               }
+               var user=matchArray[1];
+               var domain=matchArray[2];
+               if (user.match(userPat) == null) {
+                   return false;
+               }
+               var IPArray = domain.match(ipDomainPat);
+               if (IPArray != null) {
+                   for (var i = 1; i <= 4; i++) {
+                      if (IPArray[i] > 255) {
+                         return false;
+                      }
+                   }
+                   return true;
+               }
+               var domainArray=domain.match(domainPat);
+               if (domainArray == null) {
+                   return false;
+               }
+               var atomPat=new RegExp(atom,"g");
+               var domArr=domain.match(atomPat);
+               var len=domArr.length;
+               if ((domArr[domArr.length-1].length < 2) ||
+                   (domArr[domArr.length-1].length > 3)) {
+                   return false;
+               }
+               if (len < 2) {
+                   return false;
+               }
+               return true;
+            }
+function validateMask(form) {
+                var isValid = true;
+                var focusField = null;
+                var i = 0;
+                var fields = new Array();
+                oMasked = new mask();
+                for (x in oMasked) {
+                    var field = form[oMasked[x][0]];
+                    
+                    if ((field.type == 'text' || 
+                         field.type == 'textarea') && 
+                         (field.value.length > 0)) {
+                        
+                        if (!matchPattern(field.value, oMasked[x][2]("mask"))) {
+                            if (i == 0) {
+                                focusField = field;
+                            }
+                            fields[i++] = oMasked[x][1];
+                            isValid = false;
+                        }
+                    }
+                }
+                
+                if (fields.length > 0) {
+                   focusField.focus();
+                   alert(fields.join('\n'));
+                }
+                return isValid;
+            }
+
+            function matchPattern(value, mask) {
+               return mask.exec(value);
+            }
+
+//End --> 
+</script>
+
+
+
+<script language="JavaScript" type="text/javascript" >
+	function submitFormularioLogin() {	
+		if(validateLoginBean(document.getElementById('formularioLogin'))) {
+			document.getElementById('formularioLogin').submit();	
+		}		
+	}	
+</script>
+<div class="row ocultarSmall">
+	<div class="area large-12">
+		<h2>Boletines</h2>
+		<ul class="side-nav">
+			<li><a href="/BOPZ/portada.do;jsessionid=9AA3903F5D4559C4891746AF6BD8DDCC">Últimos&nbsp;boletines</a></li>
+			<li><a href="/BOPZ/portalBuscarEdictos.do;jsessionid=9AA3903F5D4559C4891746AF6BD8DDCC">Buscar&nbsp;edictos</a></li>
+			<li><a href="/BOPZ/buscarHistorico.do;jsessionid=9AA3903F5D4559C4891746AF6BD8DDCC">Buscar&nbsp;edictos<br/>históricos</a></li>
+		</ul>
+	</div>
+</div>
+
+
+
+<!-- Acceso con certificado -->
+
+  
+	<!-- Acceso con certificado -->
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="row ocultarSmall">
+	<div class="area medium-12">
+		<h2>Gestiones</h2>
+		<ul class="side-nav">
+<!--			<li><a style="color: gray" href="#">Normativa</a></li>-->
+			
+			
+			<li><a href="/BOPZ/portal/normativa.pdf;jsessionid=9AA3903F5D4559C4891746AF6BD8DDCC" target="_blank">Publicación de anuncios y Normativa BOPZ</a></li>
+			<li><a href="/BOPZ/cargarBuzonSugerencias.do;jsessionid=9AA3903F5D4559C4891746AF6BD8DDCC">Sugerencias</a></li>
+		</ul>
+	</div>
+</div>
+<div class="row ocultarSmall">
+	<div class="area medium-12">
+		<h2>Suscripciones</h2>
+		<ul class="side-nav">
+			<li><a href="/BOPZ/cargarAltaSuscriptor.do;jsessionid=9AA3903F5D4559C4891746AF6BD8DDCC">Registro</a></li>
+			<li><a href="/BOPZ/cargarConfirmarSuscriptor.do;jsessionid=9AA3903F5D4559C4891746AF6BD8DDCC">Gestión</a></li>
+		</ul>
+	</div>
+</div>
+	</div>
+	<div id="areas" class="large-3 medium-3 columns mostrarSmall" style="padding-left:0;padding-right:0;">
+		
+		
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" language="Javascript1.1"> 
+
+<!-- Begin 
+
+     var bCancel = false; 
+
+    function validateLoginBean(form) {                                                                   
+        if (bCancel) 
+      return true; 
+        else 
+       return validateRequired(form); 
+   } 
+
+    function required () { 
+     this.aa = new Array("login", "Es necesario completar Login.", new Function ("varName", " return this[varName];"));
+     this.ab = new Array("password", "Es necesario completar Contraseña.", new Function ("varName", " return this[varName];"));
+    } 
+
+
+
+function validateDate(form) {
+               var bValid = true;
+               var focusField = null;
+               var i = 0;
+               var fields = new Array();
+               oDate = new DateValidations();
+               for (x in oDate) {
+                   var value = form[oDate[x][0]].value;
+                   var datePattern = oDate[x][2]("datePatternStrict");
+                   if ((form[oDate[x][0]].type == 'text' ||
+                        form[oDate[x][0]].type == 'textarea') &&
+                       (value.length > 0) &&
+                       (datePattern.length > 0)) {
+                     var MONTH = "MM";
+                     var DAY = "dd";
+                     var YEAR = "yyyy";
+                     var orderMonth = datePattern.indexOf(MONTH);
+                     var orderDay = datePattern.indexOf(DAY);
+                     var orderYear = datePattern.indexOf(YEAR);
+                     if ((orderDay < orderYear && orderDay > orderMonth)) {
+                         var iDelim1 = orderMonth + MONTH.length;
+                         var iDelim2 = orderDay + DAY.length;
+                         var delim1 = datePattern.substring(iDelim1, iDelim1 + 1);
+                         var delim2 = datePattern.substring(iDelim2, iDelim2 + 1);
+                         if (iDelim1 == orderDay && iDelim2 == orderYear) {
+                            dateRegexp = new RegExp("^(\\d{2})(\\d{2})(\\d{4})$");
+                         } else if (iDelim1 == orderDay) {
+                            dateRegexp = new RegExp("^(\\d{2})(\\d{2})[" + delim2 + "](\\d{4})$");
+                         } else if (iDelim2 == orderYear) {
+                            dateRegexp = new RegExp("^(\\d{2})[" + delim1 + "](\\d{2})(\\d{4})$");
+                         } else {
+                            dateRegexp = new RegExp("^(\\d{2})[" + delim1 + "](\\d{2})[" + delim2 + "](\\d{4})$");
+                         }
+                         var matched = dateRegexp.exec(value);
+                         if(matched != null) {
+                            if (!isValidDate(matched[2], matched[1], matched[3])) {
+                               if (i == 0) {
+                                   focusField = form[oDate[x][0]];
+                               }
+                               fields[i++] = oDate[x][1];
+                               bValid =  false;
+                            }
+                         } else {
+                            if (i == 0) {
+                                focusField = form[oDate[x][0]];
+                            }
+                            fields[i++] = oDate[x][1];
+                            bValid =  false;
+                         }
+                     } else if ((orderMonth < orderYear && orderMonth > orderDay)) {
+                         var iDelim1 = orderDay + DAY.length;
+                         var iDelim2 = orderMonth + MONTH.length;
+                         var delim1 = datePattern.substring(iDelim1, iDelim1 + 1);
+                         var delim2 = datePattern.substring(iDelim2, iDelim2 + 1);
+                         if (iDelim1 == orderMonth && iDelim2 == orderYear) {
+                             dateRegexp = new RegExp("^(\\d{2})(\\d{2})(\\d{4})$");
+                         } else if (iDelim1 == orderMonth) {
+                             dateRegexp = new RegExp("^(\\d{2})(\\d{2})[" + delim2 + "](\\d{4})$");
+                         } else if (iDelim2 == orderYear) {
+                             dateRegexp = new RegExp("^(\\d{2})[" + delim1 + "](\\d{2})(\\d{4})$");
+                         } else {
+                             dateRegexp = new RegExp("^(\\d{2})[" + delim1 + "](\\d{2})[" + delim2 + "](\\d{4})$");
+                         }
+                         var matched = dateRegexp.exec(value);
+                         if(matched != null) {
+                             if (!isValidDate(matched[1], matched[2], matched[3])) {
+                                 if (i == 0) {
+                                     focusField = form[oDate[x][0]];
+                                 }
+                                 fields[i++] = oDate[x][1];
+                                 bValid =  false;
+                              }
+                         } else {
+                             if (i == 0) {
+                                 focusField = form[oDate[x][0]];
+                             }
+                             fields[i++] = oDate[x][1];
+                             bValid =  false;
+                         }
+                     } else if ((orderMonth > orderYear && orderMonth < orderDay)) {
+                         var iDelim1 = orderYear + YEAR.length;
+                         var iDelim2 = orderMonth + MONTH.length;
+                         var delim1 = datePattern.substring(iDelim1, iDelim1 + 1);
+                         var delim2 = datePattern.substring(iDelim2, iDelim2 + 1);
+                         if (iDelim1 == orderMonth && iDelim2 == orderDay) {
+                             dateRegexp = new RegExp("^(\\d{4})(\\d{2})(\\d{2})$");
+                         } else if (iDelim1 == orderMonth) {
+                             dateRegexp = new RegExp("^(\\d{4})(\\d{2})[" + delim2 + "](\\d{2})$");
+                         } else if (iDelim2 == orderDay) {
+                             dateRegexp = new RegExp("^(\\d{4})[" + delim1 + "](\\d{2})(\\d{2})$");
+                         } else {
+                             dateRegexp = new RegExp("^(\\d{4})[" + delim1 + "](\\d{2})[" + delim2 + "](\\d{2})$");
+                         }
+                         var matched = dateRegexp.exec(value);
+                         if(matched != null) {
+                             if (!isValidDate(matched[3], matched[2], matched[1])) {
+                                 if (i == 0) {
+                                     focusField = form[oDate[x][0]];
+                                  }
+                                  fields[i++] = oDate[x][1];
+                                  bValid =  false;
+                              }
+                          } else {
+                              if (i == 0) {
+                                  focusField = form[oDate[x][0]];
+                              }
+                              fields[i++] = oDate[x][1];
+                              bValid =  false;
+                          }
+                     } else {
+                         if (i == 0) {
+                             focusField = form[oDate[x][0]];
+                         }
+                         fields[i++] = oDate[x][1];
+                         bValid =  false;
+                     }
+                  }
+               }
+               if (fields.length > 0) {
+                  focusField.focus();
+                  alert(fields.join('\n'));
+               }
+               return bValid;
+            }
+
+	    function isValidDate(day, month, year) {
+	        if (month < 1 || month > 12) {
+                    return false;
+                }
+                if (day < 1 || day > 31) {
+                    return false;
+                }
+                if ((month == 4 || month == 6 || month == 9 || month == 11) &&
+                    (day == 31)) {
+                    return false;
+                }
+                if (month == 2) {
+                    var leap = (year % 4 == 0 &&
+                               (year % 100 != 0 || year % 400 == 0));
+                    if (day>29 || (day == 29 && !leap)) {
+                        return false;
+                    }
+                }
+                return true;
+            }
+function validateMinLength(form) {
+                var isValid = true;
+                var focusField = null;
+                var i = 0;
+                var fields = new Array();
+                oMinLength = new minlength();
+                for (x in oMinLength) {
+                    var field = form[oMinLength[x][0]];
+                    
+                    if (field.type == 'text' ||
+                        field.type == 'textarea') {
+                        
+                        var iMin = parseInt(oMinLength[x][2]("minlength"));
+                        if ((trim(field.value).length > 0) && (field.value.length < iMin)) {
+                            if (i == 0) {
+                                focusField = field;
+                            }
+                            fields[i++] = oMinLength[x][1];
+                            isValid = false;
+                        }
+                    }
+                }
+                if (fields.length > 0) {
+                   focusField.focus();
+                   alert(fields.join('\n'));
+                }
+                return isValid;
+            }
+function validateIntRange(form) {
+                var isValid = true;
+                var focusField = null;
+                var i = 0;
+                var fields = new Array();
+                oRange = new intRange();
+                for (x in oRange) {
+                    var field = form[oRange[x][0]];
+                    
+                    if ((field.type == 'text' ||
+                         field.type == 'textarea') &&
+                        (field.value.length > 0)) {
+                        
+                        var iMin = parseInt(oRange[x][2]("min"));
+                        var iMax = parseInt(oRange[x][2]("max"));
+                        var iValue = parseInt(field.value);
+                        if (!(iValue >= iMin && iValue <= iMax)) {
+                            if (i == 0) {
+                                focusField = field;
+                            }
+                            fields[i++] = oRange[x][1];
+                            isValid = false;
+                        }
+                    }
+                }
+                if (fields.length > 0) {
+                    focusField.focus();
+                    alert(fields.join('\n'));
+                }
+                return isValid;
+            }
+function validateMaxLength(form) {
+                var isValid = true;
+                var focusField = null;
+                var i = 0;
+                var fields = new Array();
+                oMaxLength = new maxlength();
+                for (x in oMaxLength) {
+                    var field = form[oMaxLength[x][0]];
+                    
+                    if (field.type == 'text' ||
+                        field.type == 'textarea') {
+                        
+                        var iMax = parseInt(oMaxLength[x][2]("maxlength"));
+                        if (field.value.length > iMax) {
+                            if (i == 0) {
+                                focusField = field;
+                            }
+                            fields[i++] = oMaxLength[x][1];
+                            isValid = false;
+                        }
+                    }
+                }
+                if (fields.length > 0) {
+                   focusField.focus();
+                   alert(fields.join('\n'));
+                }
+                return isValid;
+            }
+function validateFloatRange(form) {
+                var isValid = true;
+                var focusField = null;
+                var i = 0;
+                var fields = new Array();
+                oRange = new floatRange();
+                for (x in oRange) {
+                    var field = form[oRange[x][0]];
+                    
+                    if ((field.type == 'text' ||
+                         field.type == 'textarea') &&
+                        (field.value.length > 0)) {
+                        
+                        var fMin = parseFloat(oRange[x][2]("min"));
+                        var fMax = parseFloat(oRange[x][2]("max"));
+                        var fValue = parseFloat(field.value);
+                        if (!(fValue >= fMin && fValue <= fMax)) {
+                            if (i == 0) {
+                                focusField = field;
+                            }
+                            fields[i++] = oRange[x][1];
+                            isValid = false;
+                        }
+                    }
+                }
+                if (fields.length > 0) {
+                    focusField.focus();
+                    alert(fields.join('\n'));
+                }
+                return isValid;
+            }
+function validateByte(form) {
+                var bValid = true;
+                var focusField = null;
+                var i = 0;
+                var fields = new Array();
+                oByte = new ByteValidations();
+                for (x in oByte) {
+                	var field = form[oByte[x][0]];
+                	
+                    if (field.type == 'text' ||
+                        field.type == 'textarea' ||
+                        field.type == 'select-one' ||
+						field.type == 'radio') {
+
+						var value = '';
+						// get field's value
+						if (field.type == "select-one") {
+							var si = field.selectedIndex;
+							if (si >= 0) {
+								value = field.options[si].value;
+							}
+						} else {
+							value = field.value;
+						}
+                        
+                        if (value.length > 0) {
+                            if (!isAllDigits(value)) {
+                                bValid = false;
+                                if (i == 0) {
+                                    focusField = field;
+                                }
+                                fields[i++] = oByte[x][1];
+
+                            } else {
+
+	                            var iValue = parseInt(value);
+	                            if (isNaN(iValue) || !(iValue >= -128 && iValue <= 127)) {
+	                                if (i == 0) {
+	                                    focusField = field;
+	                                }
+	                                fields[i++] = oByte[x][1];
+	                                bValid = false;
+	                            }
+                            }
+						}
+						
+                    }
+                }
+                if (fields.length > 0) {
+                   focusField.focus();
+                   alert(fields.join('\n'));
+                }
+                return bValid;
+            }
+function validateRange(form) {
+                return validateIntRange(form);
+            }
+function validateInteger(form) {
+                var bValid = true;
+                var focusField = null;
+                var i = 0;
+                var fields = new Array();
+                oInteger = new IntegerValidations();
+                for (x in oInteger) {
+                	var field = form[oInteger[x][0]];
+					if(field!=null && field!=undefined) {
+                    if (field.type == 'text' ||
+                        field.type == 'textarea' ||
+                        field.type == 'select-one' ||
+                        field.type == 'radio') {
+                        
+                        var value = '';
+						// get field's value
+						if (field.type == "select-one") {
+							var si = field.selectedIndex;
+						    if (si >= 0) {
+							    value = field.options[si].value;
+						    }
+						} else {
+							value = field.value;
+						}
+                        
+                        if (value.length > 0) {
+                        
+                            if (!isAllDigits(value)) {
+                                bValid = false;
+                                if (i == 0) {
+	                                focusField = field;
+	                            }
+						        fields[i++] = oInteger[x][1];
+						        
+                            } else {
+	                            var iValue = parseInt(value);
+	                            if (isNaN(iValue) || !(iValue >= -2147483648 && iValue <= 2147483647)) {
+	                                if (i == 0) {
+	                                    focusField = field;
+	                                }
+	                                fields[i++] = oInteger[x][1];
+	                                bValid = false;
+	                           }
+                           }
+                       }
+                    }
+                }
+                }
+                if (fields.length > 0) {
+                   focusField.focus();
+                   alert(fields.join('\n'));
+                }
+                return bValid;
+            }
+
+            function isAllDigits(argvalue) {
+                argvalue = argvalue.toString();
+                var validChars = "0123456789";
+                var startFrom = 0;
+                if (argvalue.substring(0, 2) == "0x") {
+                   validChars = "0123456789abcdefABCDEF";
+                   startFrom = 2;
+                } else if (argvalue.charAt(0) == "0") {
+                   validChars = "01234567";
+                   startFrom = 1;
+                } else if (argvalue.charAt(0) == "-") {
+                    startFrom = 1;
+                }
+                
+                for (var n = startFrom; n < argvalue.length; n++) {
+                    if (validChars.indexOf(argvalue.substring(n, n+1)) == -1) return false;
+                }
+                return true;
+            }
+function validateFloat(form) {
+                var bValid = true;
+                var focusField = null;
+                var i = 0;
+                var fields = new Array();
+                oFloat = new FloatValidations();
+                for (x in oFloat) {
+                	var field = form[oFloat[x][0]];
+                	
+                    if (field.type == 'text' ||
+                        field.type == 'textarea' ||
+                        field.type == 'select-one' ||
+                        field.type == 'radio') {
+                        
+                    	var value = '';
+						// get field's value
+						if (field.type == "select-one") {
+							var si = field.selectedIndex;
+							if (si >= 0) {
+							    value = field.options[si].value;
+							}
+						} else {
+							value = field.value;
+						}
+                        
+                        if (value.length > 0) {
+                            // remove '.' before checking digits
+                            var tempArray = value.split('.');
+                            var joinedString= tempArray.join('');
+
+                            if (!isAllDigits(joinedString)) {
+                                bValid = false;
+                                if (i == 0) {
+                                    focusField = field;
+                                }
+                                fields[i++] = oFloat[x][1];
+
+                            } else {
+	                            var iValue = parseFloat(value);
+	                            if (isNaN(iValue)) {
+	                                if (i == 0) {
+	                                    focusField = field;
+	                                }
+	                                fields[i++] = oFloat[x][1];
+	                                bValid = false;
+	                            }
+                            }
+                        }
+                    }
+                }
+                if (fields.length > 0) {
+                   focusField.focus();
+                   alert(fields.join('\n'));
+                }
+                return bValid;
+            }
+function validateRequired(form) {
+                var isValid = true;
+                var focusField = null;
+                var i = 0;
+                var fields = new Array();
+                oRequired = new required();
+                for (x in oRequired) {
+                	var field = form[oRequired[x][0]];
+                	
+                    if (field.type == 'text' ||
+                        field.type == 'textarea' ||
+                        field.type == 'file' ||
+                        field.type == 'select-one' ||
+                        field.type == 'radio' ||
+                        field.type == 'password') {
+                        
+                        var value = '';
+						// get field's value
+						if (field.type == "select-one") {
+							var si = field.selectedIndex;
+							if (si >= 0) {
+								value = field.options[si].value;
+							}
+						} else {
+							value = field.value;
+						}
+                        
+                        if (trim(value).length == 0) {
+                        
+	                        if (i == 0) {
+	                            focusField = field;
+	                        }
+	                        fields[i++] = oRequired[x][1];
+	                        isValid = false;
+                        }
+                    }
+                }
+                if (fields.length > 0) {
+                   focusField.focus();
+                   alert(fields.join('\n'));
+                }
+                return isValid;
+            }
+            
+            // Trim whitespace from left and right sides of s.
+            function trim(s) {
+                return s.replace( /^\s*/, "" ).replace( /\s*$/, "" );
+            }
+function validateShort(form) {
+                var bValid = true;
+                var focusField = null;
+                var i = 0;
+                var fields = new Array();
+                oShort = new ShortValidations();
+                for (x in oShort) {
+                	var field = form[oShort[x][0]];
+                	
+                    if (field.type == 'text' ||
+                        field.type == 'textarea' ||
+                        field.type == 'select-one' ||
+                        field.type == 'radio') {
+                        
+                        var value = '';
+						// get field's value
+						if (field.type == "select-one") {
+							var si = field.selectedIndex;
+							if (si >= 0) {
+								value = field.options[si].value;
+							}
+						} else {
+							value = field.value;
+						}
+                        
+                        if (value.length > 0) {
+                            if (!isAllDigits(value)) {
+                                bValid = false;
+                                if (i == 0) {
+                                    focusField = field;
+                                }
+                                fields[i++] = oShort[x][1];
+
+                            } else {
+                        
+	                            var iValue = parseInt(value);
+	                            if (isNaN(iValue) || !(iValue >= -32768 && iValue <= 32767)) {
+	                                if (i == 0) {
+	                                    focusField = field;
+	                                }
+	                                fields[i++] = oShort[x][1];
+	                                bValid = false;
+	                            }
+	                       }
+                       }
+                    }
+                }
+                if (fields.length > 0) {
+                   focusField.focus();
+                   alert(fields.join('\n'));
+                }
+                return bValid;
+            }
+function validateCreditCard(form) {
+                var bValid = true;
+                var focusField = null;
+                var i = 0;
+                var fields = new Array();
+                oCreditCard = new creditCard();
+                for (x in oCreditCard) {
+                    if ((form[oCreditCard[x][0]].type == 'text' ||
+                         form[oCreditCard[x][0]].type == 'textarea') &&
+                        (form[oCreditCard[x][0]].value.length > 0)) {
+                        if (!luhnCheck(form[oCreditCard[x][0]].value)) {
+                            if (i == 0) {
+                                focusField = form[oCreditCard[x][0]];
+                            }
+                            fields[i++] = oCreditCard[x][1];
+                            bValid = false;
+                        }
+                    }
+                }
+                if (fields.length > 0) {
+                    focusField.focus();
+                    alert(fields.join('\n'));
+                }
+                return bValid;
+            }
+
+            /**
+             * Reference: http://www.ling.nwu.edu/~sburke/pub/luhn_lib.pl
+             */
+            function luhnCheck(cardNumber) {
+                if (isLuhnNum(cardNumber)) {
+                    var no_digit = cardNumber.length;
+                    var oddoeven = no_digit & 1;
+                    var sum = 0;
+                    for (var count = 0; count < no_digit; count++) {
+                        var digit = parseInt(cardNumber.charAt(count));
+                        if (!((count & 1) ^ oddoeven)) {
+                            digit *= 2;
+                            if (digit > 9) digit -= 9;
+                        };
+                        sum += digit;
+                    };
+                    if (sum == 0) return false;
+                    if (sum % 10 == 0) return true;
+                };
+                return false;
+            }
+
+            function isLuhnNum(argvalue) {
+                argvalue = argvalue.toString();
+                if (argvalue.length == 0) {
+                    return false;
+                }
+                for (var n = 0; n < argvalue.length; n++) {
+                    if ((argvalue.substring(n, n+1) < "0") ||
+                        (argvalue.substring(n,n+1) > "9")) {
+                        return false;
+                    }
+                }
+                return true;
+            }
+function validateEmail(form) {
+                var bValid = true;
+                var focusField = null;
+                var i = 0;
+                var fields = new Array();
+                oEmail = new email();
+                for (x in oEmail) {
+                    if ((form[oEmail[x][0]].type == 'text' ||
+                         form[oEmail[x][0]].type == 'textarea') &&
+                        (form[oEmail[x][0]].value.length > 0)) {
+                        if (!checkEmail(form[oEmail[x][0]].value)) {
+                            if (i == 0) {
+                                focusField = form[oEmail[x][0]];
+                            }
+                            fields[i++] = oEmail[x][1];
+                            bValid = false;
+                        }
+                    }
+                }
+                if (fields.length > 0) {
+                    focusField.focus();
+                    alert(fields.join('\n'));
+                }
+                return bValid;
+            }
+
+            /**
+             * Reference: Sandeep V. Tamhankar (stamhankar@hotmail.com),
+             * http://javascript.internet.com
+             */
+            function checkEmail(emailStr) {
+               if (emailStr.length == 0) {
+                   return true;
+               }
+               var emailPat=/^(.+)@(.+)$/;
+               var specialChars="\\(\\)<>@,;:\\\\\\\"\\.\\[\\]";
+               var validChars="\[^\\s" + specialChars + "\]";
+               var quotedUser="(\"[^\"]*\")";
+               var ipDomainPat=/^(\d{1,3})[.](\d{1,3})[.](\d{1,3})[.](\d{1,3})$/;
+               var atom=validChars + '+';
+               var word="(" + atom + "|" + quotedUser + ")";
+               var userPat=new RegExp("^" + word + "(\\." + word + ")*$");
+               var domainPat=new RegExp("^" + atom + "(\\." + atom + ")*$");
+               var matchArray=emailStr.match(emailPat);
+               if (matchArray == null) {
+                   return false;
+               }
+               var user=matchArray[1];
+               var domain=matchArray[2];
+               if (user.match(userPat) == null) {
+                   return false;
+               }
+               var IPArray = domain.match(ipDomainPat);
+               if (IPArray != null) {
+                   for (var i = 1; i <= 4; i++) {
+                      if (IPArray[i] > 255) {
+                         return false;
+                      }
+                   }
+                   return true;
+               }
+               var domainArray=domain.match(domainPat);
+               if (domainArray == null) {
+                   return false;
+               }
+               var atomPat=new RegExp(atom,"g");
+               var domArr=domain.match(atomPat);
+               var len=domArr.length;
+               if ((domArr[domArr.length-1].length < 2) ||
+                   (domArr[domArr.length-1].length > 3)) {
+                   return false;
+               }
+               if (len < 2) {
+                   return false;
+               }
+               return true;
+            }
+function validateMask(form) {
+                var isValid = true;
+                var focusField = null;
+                var i = 0;
+                var fields = new Array();
+                oMasked = new mask();
+                for (x in oMasked) {
+                    var field = form[oMasked[x][0]];
+                    
+                    if ((field.type == 'text' || 
+                         field.type == 'textarea') && 
+                         (field.value.length > 0)) {
+                        
+                        if (!matchPattern(field.value, oMasked[x][2]("mask"))) {
+                            if (i == 0) {
+                                focusField = field;
+                            }
+                            fields[i++] = oMasked[x][1];
+                            isValid = false;
+                        }
+                    }
+                }
+                
+                if (fields.length > 0) {
+                   focusField.focus();
+                   alert(fields.join('\n'));
+                }
+                return isValid;
+            }
+
+            function matchPattern(value, mask) {
+               return mask.exec(value);
+            }
+
+//End --> 
+</script>
+
+
+
+<script language="JavaScript" type="text/javascript" >
+	function submitFormularioLogin() {	
+		if(validateLoginBean(document.getElementById('formularioLogin'))) {
+			document.getElementById('formularioLogin').submit();	
+		}		
+	}	
+</script>
+
+
+		<nav class="top-bar" data-topbar role="navigation">
+			<ul class="title-area">
+				<li class="name">
+					<h1><a href="#">BOP de Zaragoza</a></h1>
+				</li>
+				<li class="toggle-topbar"><a href="#"><span>MENÚ</span></a></li>
+			</ul>
+			<section class="top-bar-section"> <!-- Right Nav Section -->
+			<ul class="right">
+				
+				<li class="has-form">
+		<form name="loginBean" method="post" action="/BOPZ/loginPortal.do;jsessionid=9AA3903F5D4559C4891746AF6BD8DDCC" id="formularioLogin">
+			<input type="hidden" name="internalApp" value="N" />
+				<li class="seccionMenu"><label>ACCESO DE USUARIOS</label></li>
+			<input type="text" name="login" maxlength="25" size="20" placeholder="Usuario" />
+			<input type="password" name="password" maxlength="25" size="20" placeholder="Password"/>
+				<a class="tiny alert button radius" onclick="javascript:submitFormularioLogin();"
+					href="#">Login</a>	
+		</form>
+		</li>
+	
+	
+			
+			
+
+<li class="seccionMenu"><label>ANUNCIOS PUBLICADOS</label></li>
+				<li><a href="/BOPZ/portada.do;jsessionid=9AA3903F5D4559C4891746AF6BD8DDCC">Últimos&nbsp;boletines</a></li>
+				<li><a href="/BOPZ/portalBuscarEdictos.do;jsessionid=9AA3903F5D4559C4891746AF6BD8DDCC">Buscar&nbsp;edictos</a></li>
+				<li><a href="/BOPZ/buscarHistorico.do;jsessionid=9AA3903F5D4559C4891746AF6BD8DDCC">Buscar&nbsp;edictos históricos</a></li>
+			
+				<li class="seccionMenu"><label>GESTIONES</label></li>
+			
+				<li><a href="/BOPZ/cargarRegistroUsuario.do;jsessionid=9AA3903F5D4559C4891746AF6BD8DDCC">Registrarse</a></li>
+			
+				<li><a href="/BOPZ/cargarBuzonSugerencias.do;jsessionid=9AA3903F5D4559C4891746AF6BD8DDCC">Sugerencias</a></li>
+				<li class="seccionMenu"><label>SUSCRIPCIONES</label></li>
+				<li><a href="/BOPZ/cargarAltaSuscriptor.do;jsessionid=9AA3903F5D4559C4891746AF6BD8DDCC">Registro</a></li>
+				<li><a href="/BOPZ/cargarConfirmarSuscriptor.do;jsessionid=9AA3903F5D4559C4891746AF6BD8DDCC">Gestión</a></li>
+</ul>
+
+			</section>
+		</nav>
+
+	</div>
+	
+	
+	<div class="large-9 medium-9 columns boletinesDiv">	
+		<form name="mostrarPortadaBean" method="post" action="/BOPZ/portada.do;jsessionid=9AA3903F5D4559C4891746AF6BD8DDCC?SERVICE_NAME=mostrarPortada" id="listar">
+		<input type="hidden" name="idBoletin" value="91929" id="idBoletin">
+		
+		
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/BOPZ/css/calendarioBoletines.css;jsessionid=9AA3903F5D4559C4891746AF6BD8DDCC" />
+<script language="JavaScript">
+
+function cambiaMesAnt(){
+	document.getElementById('fechaNueva').value = document.getElementById('listar').fechaMesAnterior.value;		
+	document.getElementById('listar').submit ();
+}
+
+function cambiaMesSig(){
+	document.getElementById('fechaNueva').value = document.getElementById('listar').fechaMesSiguiente.value;	
+	document.getElementById('listar').submit ();
+}
+
+function cambiaAnioAnt(){
+	document.getElementById('fechaNueva').value = document.getElementById('listar').anioAnterior.value;		
+	document.getElementById('listar').submit ();
+}
+
+function cambiaAnioSig(){
+	document.getElementById('listar').fechaNueva.value = document.getElementById('listar').anioSiguiente.value;	
+	document.getElementById('listar').submit ();
+}
+
+function verboletin(idBoletin){
+	document.getElementById('listar').fechaNueva.value = document.getElementById('listar').fechaVista.value;	
+	document.getElementById('listar').idBoletin.value = idBoletin;
+	document.getElementById('listar').submit ();
+		
+}
+
+</script>
+	<input type="hidden" name="fechaNueva" value="" id="fechaNueva">
+	
+	
+	 
+	 		
+		<a href="" target="_content"></a><div id='mesanyo' class='row'>	<div class='large-4 small-6 columns'>		<h3>&Uacute;ltimos boletines</h3>	</div>	<div class='small-6 large-8 columns button-bar'><ul class="button-group expand round">	<li>		<a class='button tiny alert flecha flechaB' onclick='cambiaMesAnt();'>			<i class='fi-arrow-left iconoF'></i>		</a>	</li>	<li>		<a class="button tiny alert flecha botonMes" href="#"><b>octubre</b></a>	</li>	<li>		<a onclick='cambiaMesSig()' class='button tiny alert flecha flechaB'>			<i class='fi-arrow-right iconoF'></i>		</a>	</li></ul><ul class="button-group expand round botoneraAnyo">	<li>		<a class='button tiny alert flecha flechaB' onclick='cambiaAnioAnt();'>			<i class='fi-arrow-left iconoF'></i></a>	</li>	<li>		<a class="button tiny alert flecha botonAnyo" href="#"><b>2026</b></a>	</li>	<li>		<a onclick='cambiaAnioSig()' class='button tiny alert flecha flechaB'>			<i class='fi-arrow-right iconoF'></i>		</a>	</li></ul></div></div><div class="row"><div class="small-12"><ul id='diasPagination' class='pagination'><li class='diaBoletin text-center' style='margin-bottom:30px'> <a href="javascript:verboletin(91929)" style='margin-bottom:3px;'>J</a><a href="javascript:verboletin(91929)">01</a></li> <li class='diaBoletin text-center' style='margin-bottom:30px'> <a href="javascript:verboletin(91949)" style='margin-bottom:3px;'>V</a><a href="javascript:verboletin(91949)">02</a></li> <li class='diaBoletin text-center' style='margin-bottom:30px'> <a href="javascript:verboletin(91989)" style='margin-bottom:3px;'>S</a><a href="javascript:verboletin(91989)">03</a></li> <li class='unavailable text-center' style='margin-bottom:30px'> <a style='margin-bottom:3px;'>D</a><a href="#">04</a></li> <li class='diaBoletin text-center' style='margin-bottom:30px'> <a href="javascript:verboletin(91969)" style='margin-bottom:3px;'>L</a><a href="javascript:verboletin(91969)">05</a></li> <li class='diaBoletin text-center' style='margin-bottom:30px'> <a href="javascript:verboletin(92009)" style='margin-bottom:3px;'>M</a><a href="javascript:verboletin(92009)">06</a></li> <li class='diaBoletin text-center' style='margin-bottom:30px'> <a href="javascript:verboletin(92029)" style='margin-bottom:3px;'>X</a><a href="javascript:verboletin(92029)">07</a></li> <li class='diaBoletin text-center' style='margin-bottom:30px'> <a href="javascript:verboletin(92050)" style='margin-bottom:3px;'>J</a><a href="javascript:verboletin(92050)">08</a></li> <li class='diaBoletin text-center' style='margin-bottom:30px'> <a href="javascript:verboletin(92049)" style='margin-bottom:3px;'>V</a><a href="javascript:verboletin(92049)">09</a></li> <li class='diaBoletin text-center' style='margin-bottom:30px'> <a href="javascript:verboletin(92069)" style='margin-bottom:3px;'>S</a><a href="javascript:verboletin(92069)">10</a></li> <li class='unavailable text-center' style='margin-bottom:30px'> <a style='margin-bottom:3px;'>D</a><a href="#">11</a></li> <li class='diaBoletin text-center' style='margin-bottom:30px'> <a href="javascript:verboletin(92089)" style='margin-bottom:3px;'>L</a><a href="javascript:verboletin(92089)">12</a></li> <li class='diaBoletin text-center' style='margin-bottom:30px'> <a href="javascript:verboletin(92090)" style='margin-bottom:3px;'>M</a><a href="javascript:verboletin(92090)">13</a></li> <li class='diaBoletin text-center' style='margin-bottom:30px'> <a href="javascript:verboletin(92109)" style='margin-bottom:3px;'>X</a><a href="javascript:verboletin(92109)">14</a></li> <li class='diaBoletin text-center' style='margin-bottom:30px'> <a href="javascript:verboletin(92129)" style='margin-bottom:3px;'>J</a><a href="javascript:verboletin(92129)">15</a></li> <li class='diaBoletin text-center' style='margin-bottom:30px'> <a href="javascript:verboletin(92169)" style='margin-bottom:3px;'>V</a><a href="javascript:verboletin(92169)">16</a></li> <li class='diaBoletin text-center' style='margin-bottom:30px'> <a href="javascript:verboletin(92149)" style='margin-bottom:3px;'>S</a><a href="javascript:verboletin(92149)">17</a></li> <li class='unavailable text-center' style='margin-bottom:30px'> <a style='margin-bottom:3px;'>D</a><a href="#">18</a></li> <li class='diaBoletin text-center' style='margin-bottom:30px'> <a href="javascript:verboletin(92189)" style='margin-bottom:3px;'>L</a><a href="javascript:verboletin(92189)">19</a></li> <li class='diaBoletin text-center' style='margin-bottom:30px'> <a href="javascript:verboletin(92209)" style='margin-bottom:3px;'>M</a><a href="javascript:verboletin(92209)">20</a></li> <li class='diaBoletin text-center' style='margin-bottom:30px'> <a href="javascript:verboletin(92229)" style='margin-bottom:3px;'>X</a><a href="javascript:verboletin(92229)">21</a></li> <li class='diaBoletin text-center' style='margin-bottom:30px'> <a href="javascript:verboletin(92249)" style='margin-bottom:3px;'>J</a><a href="javascript:verboletin(92249)">22</a></li> <li class='diaBoletin text-center' style='margin-bottom:30px'> <a href="javascript:verboletin(92269)" style='margin-bottom:3px;'>V</a><a href="javascript:verboletin(92269)">23</a></li> <li class='diaBoletin text-center' style='margin-bottom:30px'> <a href="javascript:verboletin(92289)" style='margin-bottom:3px;'>S</a><a href="javascript:verboletin(92289)">24</a></li> <li class='unavailable text-center' style='margin-bottom:30px'> <a style='margin-bottom:3px;'>D</a><a href="#">25</a></li> <li class='diaBoletin text-center' style='margin-bottom:30px'> <a href="javascript:verboletin(92270)" style='margin-bottom:3px;'>L</a><a href="javascript:verboletin(92270)">26</a></li> <li class='diaBoletin text-center' style='margin-bottom:30px'> <a href="javascript:verboletin(92309)" style='margin-bottom:3px;'>M</a><a href="javascript:verboletin(92309)">27</a></li> <li class='diaBoletin text-center' style='margin-bottom:30px'> <a href="javascript:verboletin(92329)" style='margin-bottom:3px;'>X</a><a href="javascript:verboletin(92329)">28</a></li> <li class='diaBoletin text-center' style='margin-bottom:30px'> <a href="javascript:verboletin(92349)" style='margin-bottom:3px;'>J</a><a href="javascript:verboletin(92349)">29</a></li> <li class='diaBoletin text-center' style='margin-bottom:30px'> <a href="javascript:verboletin(92369)" style='margin-bottom:3px;'>V</a><a href="javascript:verboletin(92369)">30</a></li> <li class='unavailable text-center' style='margin-bottom:30px'> <a style='margin-bottom:3px;'>S</a><a href="#">31</a></li> </ul></div></div>
+<input type="hidden" name="fechaVista" value="30/10/2026" />
+<input type="hidden" name="fechaMesSiguiente" value="30/11/2026" />
+<input type="hidden" name="fechaMesAnterior" value="30/09/2026" />
+<input type="hidden" name="anioSiguiente" value="30/10/2027" />
+<input type="hidden" name="anioAnterior" value="30/10/2025" />
+
+	 
+	
+
+ 
+	
+<div class="row">
+	<div class="large-8 medium-8 small-8 columns">
+	<h2 style="font-size:0.875rem;" class="margin2Fecha">
+	
+							
+							
+								&nbsp;
+									
+									
+									jueves 1 de octubre de 2026     		
+			   					
+										
+			   					
+			   					Nº. 226
+			   					<input type="hidden" name="numBop" value="226"/>
+			   						
+									
+									
+			   					
+												   					
+			   					<input type="hidden" name="fechaPub" value="jueves 1 de octubre de 2026" />
+			   					
+			   				
+			   			
+			   			</h2>
+	</div>
+	<div class="large-offset-1 large-3 medium-3 small-3 columns margin2 small-text-centered">		   			
+			   			
+									
+											<a target="pdf" href="./UploadServlet?ruta=Boletines\2026\226\bop.pdf" >
+											
+											<i class="fi-page-pdf iconoPdf"></i>
+										</a>
+									
+											<a target="pdf" href="./UploadServlet?ruta=Boletines\2026\226\bop.txt" >
+											
+											
+										</a>
+									
+							
+	</div>
+</div>
+<div class="row" style="margin-left:10px;margin-top:1rem;">
+	<div class="small-12 panel">
+	 
+			        			
+			  
+		             
+		       	       			
+		 		   		  		
+		    	      
+			        	  
+			        	<div class="row">
+			        		<div class="small-12">
+								<h1>BOP</h1>		        		
+			        		</div>
+			        	</div>
+			          
+					  
+		          
+			       
+				       	
+						<div class="row">
+							<div class="small-12">
+								&nbsp;<h3>Sección tercera</h3>
+							</div>
+						</div>
+				   	  
+						<div class="row">
+			        		<div class="small-12 columns">
+								<p class="parrafo" style="margin-bottom:0px">
+				      				DIPUTACIÓN PROVINCIAL DE ZARAGOZA (DPZ).- ÁREA DE  PRESIDENCIA
+				      			</p>	      			
+		      				</div>
+		      			</div>	
+			        	<div class="row">
+			        		<div class="small-offset-1 small-10 columns">
+								<p class="parrafo"><a class="enlaceEdicto" href="#" onclick="javascript:abreVentanaDetalleEdicto('899319')">
+				      				DECRETO 2854/2026.- RESOLVER ALEGACIONES PRESENTADAS Y ELEVAR ELEVAR A DEFINITIVA LA LISTA PROVISIONAL DE PERSONAS ASPIRANTES ADMITIDAS A LA CONVOCATORIA PARA LA COBERTURA POR OPOSICIÓN, EN TURNO LIBRE, DE UNA PLAZA DE OFICIAL 1.ª TALLER ESCUELA CERÁMICA DE MUEL, VACANTE EN LA PLANTILLA DE PERSONAL LABORAL DE LA DIPUTACIÓN PROVINCIAL DE ZARAGOZA, CORRESPONDIENTE A LA OFERTA DE EMPLEO PÚBLICO DE 2025 .
+				      			</a>
+				      			</p>	      			
+		      				</div>
+			        		<div class="small-1 columns">
+		      					<a href="#" onclick="javascript:abreVentanaDetalleEdicto('899319')" style="color:#C20F19;font-weight:bold;">
+		      						2
+		      					</a>
+		      				</div>
+		      			</div>	        	     		
+					       			
+		 		   		  		
+		    	      
+					  
+		          
+			       	  
+						<div class="row">
+			        		<div class="small-12 columns">
+								<p class="parrafo" style="margin-bottom:0px">
+				      				DIPUTACIÓN PROVINCIAL DE ZARAGOZA (DPZ).- ÁREA DE  PRESIDENCIA
+				      			</p>	      			
+		      				</div>
+		      			</div>	
+			        	<div class="row">
+			        		<div class="small-offset-1 small-10 columns">
+								<p class="parrafo"><a class="enlaceEdicto" href="#" onclick="javascript:abreVentanaDetalleEdicto('899322')">
+				      				DECRETO 2875/2026.- APROBAR LA MODIFICACIÓN DEL PLAN ESTRATÉGICO DE SUBVENCIONES DE LA DIPUTACIÓN PROVINCIAL DE ZARAGOZA PARA EL PERIODO 2024-2027 Y SUS ANEXOS I (CÓD. VALIDACIÓN: 7XLCSFF26GSX73G3TYST62D4T) Y II (CAPÍTULO IV-CÓD. VALIDACIÓN: MT725X5HMFXLLTZS3D9YJHJ9E Y CAPÍTULO VII-CÓD. VALIDACIÓN:  MS5742YCNYCD4P33MMWS2RK6T) ACTUALIZADOS.
+				      			</a>
+				      			</p>	      			
+		      				</div>
+			        		<div class="small-1 columns">
+		      					<a href="#" onclick="javascript:abreVentanaDetalleEdicto('899322')" style="color:#C20F19;font-weight:bold;">
+		      						3
+		      					</a>
+		      				</div>
+		      			</div>	        	     		
+					       			
+		 		   		  		
+		    	      
+					  
+		          
+			       	  
+						<div class="row">
+			        		<div class="small-12 columns">
+								<p class="parrafo" style="margin-bottom:0px">
+				      				DIPUTACIÓN PROVINCIAL DE ZARAGOZA (DPZ).- ÁREA DE  PRESIDENCIA
+				      			</p>	      			
+		      				</div>
+		      			</div>	
+			        	<div class="row">
+			        		<div class="small-offset-1 small-10 columns">
+								<p class="parrafo"><a class="enlaceEdicto" href="#" onclick="javascript:abreVentanaDetalleEdicto('899323')">
+				      				EXPOSICIÓN AL PUBLICO DE LAS LISTAS COBRATORIAS Y DE COBRO EN PERIODO VOLUNTARIO DE VALORES RECIBO DE LOS IMPUESTOS SOBRE BIENES INMUEBLES Y ACTIVIDADES ECONÓMICAS DEL EJERCICIO 2026.
+				      			</a>
+				      			</p>	      			
+		      				</div>
+			        		<div class="small-1 columns">
+		      					<a href="#" onclick="javascript:abreVentanaDetalleEdicto('899323')" style="color:#C20F19;font-weight:bold;">
+		      						5
+		      					</a>
+		      				</div>
+		      			</div>	        	     		
+					       			
+		 		   		  		
+		    	      
+					  
+		          
+			       	  
+						<div class="row">
+			        		<div class="small-12 columns">
+								<p class="parrafo" style="margin-bottom:0px">
+				      				DIPUTACIÓN PROVINCIAL DE ZARAGOZA (DPZ).- ÁREA DE CIUDADANÍA
+				      			</p>	      			
+		      				</div>
+		      			</div>	
+			        	<div class="row">
+			        		<div class="small-offset-1 small-10 columns">
+								<p class="parrafo"><a class="enlaceEdicto" href="#" onclick="javascript:abreVentanaDetalleEdicto('899318')">
+				      				DECRETO 2870/2026.- RESOLVER CON CARÁCTER DEFINITIVO EL PLAN DE SUBVENCIONES PARA LA IGUALDAD DE TODOS Y TODAS EN LOS MUNICIPIOS DE LA PROVINCIA DE ZARAGOZA, EXCLUIDA ZARAGOZA CAPITAL, EDICIÓN 2026.
+				      			</a>
+				      			</p>	      			
+		      				</div>
+			        		<div class="small-1 columns">
+		      					<a href="#" onclick="javascript:abreVentanaDetalleEdicto('899318')" style="color:#C20F19;font-weight:bold;">
+		      						7
+		      					</a>
+		      				</div>
+		      			</div>	        	     		
+					       			
+		 		   		  		
+		    	      
+					  
+		          
+			       
+				       	
+						<div class="row">
+							<div class="small-12">
+								&nbsp;<h3>Sección quinta</h3>
+							</div>
+						</div>
+				   	  
+						<div class="row">
+			        		<div class="small-12 columns">
+								<p class="parrafo" style="margin-bottom:0px">
+				      				 AYUNTAMIENTO DE ZARAGOZA
+				      			</p>	      			
+		      				</div>
+		      			</div>	
+			        	<div class="row">
+			        		<div class="small-offset-1 small-10 columns">
+								<p class="parrafo"><a class="enlaceEdicto" href="#" onclick="javascript:abreVentanaDetalleEdicto('899282')">
+				      				BASES DE LA CONVOCATORIA PARA PROVEER MEDIANTE CONCURSO GENERAL DE MÉRITOS, LA PROVISIÓN DEL PUESTO DE TRABAJO DE COORDINADOR TÉCNICO DE LA UNIVERSIDAD POPULAR DEL PATRONATO MUNICIPAL DE EDUCACIÓN Y BIBLIOTECAS (PMEB).
+
+				      			</a>
+				      			</p>	      			
+		      				</div>
+			        		<div class="small-1 columns">
+		      					<a href="#" onclick="javascript:abreVentanaDetalleEdicto('899282')" style="color:#C20F19;font-weight:bold;">
+		      						8
+		      					</a>
+		      				</div>
+		      			</div>	        	     		
+					       			
+		 		   		  		
+		    	      
+					  
+		          
+			       	  
+						<div class="row">
+			        		<div class="small-12 columns">
+								<p class="parrafo" style="margin-bottom:0px">
+				      				 AYUNTAMIENTO DE ZARAGOZA
+				      			</p>	      			
+		      				</div>
+		      			</div>	
+			        	<div class="row">
+			        		<div class="small-offset-1 small-10 columns">
+								<p class="parrafo"><a class="enlaceEdicto" href="#" onclick="javascript:abreVentanaDetalleEdicto('899304')">
+				      				NOMBRAR FUNCIONARIAS/OS EN PRÁCTICAS DE LA ESCALA ADMINISTRACIÓN ESPECIAL, SUBESCALA SERVICIOS ESPECIALES, PERSONAL DE OFICIOS C1, PLAZA/CATEGORÍA DE MAESTRA/O JARDINERA/O DE LA PLANTILLA DE PERSONAL FUNCIONARIO DEL AYUNTAMIENTO DE ZARAGOZA, INTEGRADA EN EL GRUPO/SUBGRUPO DE LA CLASIFICACIÓN PROFESIONAL, C/C1, MEDIANTE ACCESO POR EL TURNO DE PROMOCIÓN INTERNA Y EL SISTEMA SELECTIVO DE CONCURSO-OPOSICIÓN.
+				      			</a>
+				      			</p>	      			
+		      				</div>
+			        		<div class="small-1 columns">
+		      					<a href="#" onclick="javascript:abreVentanaDetalleEdicto('899304')" style="color:#C20F19;font-weight:bold;">
+		      						16
+		      					</a>
+		      				</div>
+		      			</div>	        	     		
+					       			
+		 		   		  		
+		    	      
+					  
+		          
+			       
+				       	
+						<div class="row">
+							<div class="small-12">
+								&nbsp;<h3>Sección sexta</h3>
+							</div>
+						</div>
+				   	  
+						<div class="row">
+			        		<div class="small-12 columns">
+								<p class="parrafo" style="margin-bottom:0px">
+				      				AYUNTAMIENTO DE ALAGÓN
+				      			</p>	      			
+		      				</div>
+		      			</div>	
+			        	<div class="row">
+			        		<div class="small-offset-1 small-10 columns">
+								<p class="parrafo"><a class="enlaceEdicto" href="#" onclick="javascript:abreVentanaDetalleEdicto('899316')">
+				      				EXPOSICIÓN PADRÓN DE LOS PRECIOS PÚBLICOS POR LA PRESTACIÓN DE SERVICIOS DEPORTIVOS CORRESPONDIENTE AL MES DE OCTUBRE DE 2026.
+				      			</a>
+				      			</p>	      			
+		      				</div>
+			        		<div class="small-1 columns">
+		      					<a href="#" onclick="javascript:abreVentanaDetalleEdicto('899316')" style="color:#C20F19;font-weight:bold;">
+		      						17
+		      					</a>
+		      				</div>
+		      			</div>	        	     		
+					       			
+		 		   		  		
+		    	      
+					  
+		          
+			       	  
+						<div class="row">
+			        		<div class="small-12 columns">
+								<p class="parrafo" style="margin-bottom:0px">
+				      				AYUNTAMIENTO DE CALATAYUD
+				      			</p>	      			
+		      				</div>
+		      			</div>	
+			        	<div class="row">
+			        		<div class="small-offset-1 small-10 columns">
+								<p class="parrafo"><a class="enlaceEdicto" href="#" onclick="javascript:abreVentanaDetalleEdicto('899285')">
+				      				APROBACIÓN REGLAMENTO DE RÉGIMEN INTERIOR DE LOS PROGRAMAS DE EMPLEO Y FORMACIÓN PROMOVIDOS POR EL AYUNTAMIENTO DE CALATAYUD.
+
+				      			</a>
+				      			</p>	      			
+		      				</div>
+			        		<div class="small-1 columns">
+		      					<a href="#" onclick="javascript:abreVentanaDetalleEdicto('899285')" style="color:#C20F19;font-weight:bold;">
+		      						18
+		      					</a>
+		      				</div>
+		      			</div>	        	     		
+					       			
+		 		   		  		
+		    	      
+					  
+		          
+			       	  
+						<div class="row">
+			        		<div class="small-12 columns">
+								<p class="parrafo" style="margin-bottom:0px">
+				      				AYUNTAMIENTO DE CALATAYUD
+				      			</p>	      			
+		      				</div>
+		      			</div>	
+			        	<div class="row">
+			        		<div class="small-offset-1 small-10 columns">
+								<p class="parrafo"><a class="enlaceEdicto" href="#" onclick="javascript:abreVentanaDetalleEdicto('899336')">
+				      				APROBACIÓN INICIAL MODIFICACIÓN DEL PRESUPUESTO DE 2026 MEDIANTE CRÉDITO EXTRAORDINARIO N.º 4 Y DEL ANEXO N.º 19 SUBVENCIONES NOMINATIVAS.
+				      			</a>
+				      			</p>	      			
+		      				</div>
+			        		<div class="small-1 columns">
+		      					<a href="#" onclick="javascript:abreVentanaDetalleEdicto('899336')" style="color:#C20F19;font-weight:bold;">
+		      						31
+		      					</a>
+		      				</div>
+		      			</div>	        	     		
+					       			
+		 		   		  		
+		    	      
+					  
+		          
+			       	  
+						<div class="row">
+			        		<div class="small-12 columns">
+								<p class="parrafo" style="margin-bottom:0px">
+				      				AYUNTAMIENTO DE CASPE
+				      			</p>	      			
+		      				</div>
+		      			</div>	
+			        	<div class="row">
+			        		<div class="small-offset-1 small-10 columns">
+								<p class="parrafo"><a class="enlaceEdicto" href="#" onclick="javascript:abreVentanaDetalleEdicto('899339')">
+				      				DECRETO DE ALCALDÍA NÚMERO 2026-1804, RELATIVO A NOTIFICACIÓN DE LA APROBACIÓN DE BAJA DEFINITIVA EN EL PADRÓN MUNICIPAL DE HABITANTES.
+				      			</a>
+				      			</p>	      			
+		      				</div>
+			        		<div class="small-1 columns">
+		      					<a href="#" onclick="javascript:abreVentanaDetalleEdicto('899339')" style="color:#C20F19;font-weight:bold;">
+		      						32
+		      					</a>
+		      				</div>
+		      			</div>	        	     		
+					       			
+		 		   		  		
+		    	      
+					  
+		          
+			       	  
+						<div class="row">
+			        		<div class="small-12 columns">
+								<p class="parrafo" style="margin-bottom:0px">
+				      				AYUNTAMIENTO DE CASPE
+				      			</p>	      			
+		      				</div>
+		      			</div>	
+			        	<div class="row">
+			        		<div class="small-offset-1 small-10 columns">
+								<p class="parrafo"><a class="enlaceEdicto" href="#" onclick="javascript:abreVentanaDetalleEdicto('899340')">
+				      				DECRETO DE ALCALDÍA NÚMERO 2026-1802, RELATIVO A NOTIFICACIÓN DE LA APROBACIÓN DE BAJA DEFINITIVA EN EL PADRÓN MUNICIPAL DE HABITANTES.
+				      			</a>
+				      			</p>	      			
+		      				</div>
+			        		<div class="small-1 columns">
+		      					<a href="#" onclick="javascript:abreVentanaDetalleEdicto('899340')" style="color:#C20F19;font-weight:bold;">
+		      						33
+		      					</a>
+		      				</div>
+		      			</div>	        	     		
+					       			
+		 		   		  		
+		    	      
+					  
+		          
+			       	  
+						<div class="row">
+			        		<div class="small-12 columns">
+								<p class="parrafo" style="margin-bottom:0px">
+				      				AYUNTAMIENTO DE EMBID DE ARIZA
+				      			</p>	      			
+		      				</div>
+		      			</div>	
+			        	<div class="row">
+			        		<div class="small-offset-1 small-10 columns">
+								<p class="parrafo"><a class="enlaceEdicto" href="#" onclick="javascript:abreVentanaDetalleEdicto('899341')">
+				      				APROBACIÓN INICIAL DEL PRESUPUESTO EJERCICIO 2027.
+				      			</a>
+				      			</p>	      			
+		      				</div>
+			        		<div class="small-1 columns">
+		      					<a href="#" onclick="javascript:abreVentanaDetalleEdicto('899341')" style="color:#C20F19;font-weight:bold;">
+		      						34
+		      					</a>
+		      				</div>
+		      			</div>	        	     		
+					       			
+		 		   		  		
+		    	      
+					  
+		          
+			       	  
+						<div class="row">
+			        		<div class="small-12 columns">
+								<p class="parrafo" style="margin-bottom:0px">
+				      				AYUNTAMIENTO DE FIGUERUELAS
+				      			</p>	      			
+		      				</div>
+		      			</div>	
+			        	<div class="row">
+			        		<div class="small-offset-1 small-10 columns">
+								<p class="parrafo"><a class="enlaceEdicto" href="#" onclick="javascript:abreVentanaDetalleEdicto('899321')">
+				      				APROBACIÓN INICIAL EXPEDIENTE MODIFICACIÓN DE CRÉDITOS NÚMERO 3/2026.
+				      			</a>
+				      			</p>	      			
+		      				</div>
+			        		<div class="small-1 columns">
+		      					<a href="#" onclick="javascript:abreVentanaDetalleEdicto('899321')" style="color:#C20F19;font-weight:bold;">
+		      						35
+		      					</a>
+		      				</div>
+		      			</div>	        	     		
+					       			
+		 		   		  		
+		    	      
+					  
+		          
+			       	  
+						<div class="row">
+			        		<div class="small-12 columns">
+								<p class="parrafo" style="margin-bottom:0px">
+				      				AYUNTAMIENTO DE FIGUERUELAS
+				      			</p>	      			
+		      				</div>
+		      			</div>	
+			        	<div class="row">
+			        		<div class="small-offset-1 small-10 columns">
+								<p class="parrafo"><a class="enlaceEdicto" href="#" onclick="javascript:abreVentanaDetalleEdicto('899324')">
+				      				APROBACIÓN INICIAL PROYECTO DE ORDENANZA REGULADORA DEL SERVICIO DE TAXI.
+				      			</a>
+				      			</p>	      			
+		      				</div>
+			        		<div class="small-1 columns">
+		      					<a href="#" onclick="javascript:abreVentanaDetalleEdicto('899324')" style="color:#C20F19;font-weight:bold;">
+		      						36
+		      					</a>
+		      				</div>
+		      			</div>	        	     		
+					       			
+		 		   		  		
+		    	      
+					  
+		          
+			       	  
+						<div class="row">
+			        		<div class="small-12 columns">
+								<p class="parrafo" style="margin-bottom:0px">
+				      				AYUNTAMIENTO DE FIGUERUELAS
+				      			</p>	      			
+		      				</div>
+		      			</div>	
+			        	<div class="row">
+			        		<div class="small-offset-1 small-10 columns">
+								<p class="parrafo"><a class="enlaceEdicto" href="#" onclick="javascript:abreVentanaDetalleEdicto('899325')">
+				      				APROBACIÓN INICIAL MODIFICACIÓN ORDENANZA FISCAL REGULADORA DEL IMPUESTO SOBRE VEHÍCULOS DE TRACCIÓN MECÁNICA (IVTM).
+				      			</a>
+				      			</p>	      			
+		      				</div>
+			        		<div class="small-1 columns">
+		      					<a href="#" onclick="javascript:abreVentanaDetalleEdicto('899325')" style="color:#C20F19;font-weight:bold;">
+		      						37
+		      					</a>
+		      				</div>
+		      			</div>	        	     		
+					       			
+		 		   		  		
+		    	      
+					  
+		          
+			       	  
+						<div class="row">
+			        		<div class="small-12 columns">
+								<p class="parrafo" style="margin-bottom:0px">
+				      				AYUNTAMIENTO DE FIGUERUELAS
+				      			</p>	      			
+		      				</div>
+		      			</div>	
+			        	<div class="row">
+			        		<div class="small-offset-1 small-10 columns">
+								<p class="parrafo"><a class="enlaceEdicto" href="#" onclick="javascript:abreVentanaDetalleEdicto('899337')">
+				      				APROBACIÓN INICIAL PROYECTO MODIFICACIÓN ORDENANZA REGULADORA DEL SERVICIO DE ESCUELA INFANTIL. 
+				      			</a>
+				      			</p>	      			
+		      				</div>
+			        		<div class="small-1 columns">
+		      					<a href="#" onclick="javascript:abreVentanaDetalleEdicto('899337')" style="color:#C20F19;font-weight:bold;">
+		      						38
+		      					</a>
+		      				</div>
+		      			</div>	        	     		
+					       			
+		 		   		  		
+		    	      
+					  
+		          
+			       	  
+						<div class="row">
+			        		<div class="small-12 columns">
+								<p class="parrafo" style="margin-bottom:0px">
+				      				AYUNTAMIENTO DE JAULÍN
+				      			</p>	      			
+		      				</div>
+		      			</div>	
+			        	<div class="row">
+			        		<div class="small-offset-1 small-10 columns">
+								<p class="parrafo"><a class="enlaceEdicto" href="#" onclick="javascript:abreVentanaDetalleEdicto('899298')">
+				      				APROBACIÓN INICIAL DEL PRESUPUESTO EJERCICIO 2026.
+				      			</a>
+				      			</p>	      			
+		      				</div>
+			        		<div class="small-1 columns">
+		      					<a href="#" onclick="javascript:abreVentanaDetalleEdicto('899298')" style="color:#C20F19;font-weight:bold;">
+		      						39
+		      					</a>
+		      				</div>
+		      			</div>	        	     		
+					       			
+		 		   		  		
+		    	      
+					  
+		          
+			       	  
+						<div class="row">
+			        		<div class="small-12 columns">
+								<p class="parrafo" style="margin-bottom:0px">
+				      				AYUNTAMIENTO DE LA PUEBLA DE ALFINDÉN
+				      			</p>	      			
+		      				</div>
+		      			</div>	
+			        	<div class="row">
+			        		<div class="small-offset-1 small-10 columns">
+								<p class="parrafo"><a class="enlaceEdicto" href="#" onclick="javascript:abreVentanaDetalleEdicto('899299')">
+				      				APROBACIÓN RELACIÓN PROVISIONAL DE ASPIRANTES ADMITIDOS/ EXCLUIDOS Y LA DESIGNACIÓN DEL TRIBUNAL CALIFICADOR EN CONVOCATORIA PARA LA PROVISIÓN EN PROPIEDAD DE DOS PLAZAS DE AUXILIAR ADMINISTRATIVO, DE LA PLANTILLA DE FUNCIONARIOS, MEDIANTE EL SISTEMA DE OPOSICIÓN.
+				      			</a>
+				      			</p>	      			
+		      				</div>
+			        		<div class="small-1 columns">
+		      					<a href="#" onclick="javascript:abreVentanaDetalleEdicto('899299')" style="color:#C20F19;font-weight:bold;">
+		      						40
+		      					</a>
+		      				</div>
+		      			</div>	        	     		
+					       			
+		 		   		  		
+		    	      
+					  
+		          
+			       	  
+						<div class="row">
+			        		<div class="small-12 columns">
+								<p class="parrafo" style="margin-bottom:0px">
+				      				AYUNTAMIENTO DE LA PUEBLA DE ALFINDÉN
+				      			</p>	      			
+		      				</div>
+		      			</div>	
+			        	<div class="row">
+			        		<div class="small-offset-1 small-10 columns">
+								<p class="parrafo"><a class="enlaceEdicto" href="#" onclick="javascript:abreVentanaDetalleEdicto('899335')">
+				      				CONVOCATORIA DE LA LICITACIÓN PARA LA CONCESIÓN DEMANIAL DE LA UTILIZACIÓN PRIVATIVA DEL DOMINIO PÚBLICO LOCAL MEDIANTE LA EXPLOTACIÓN DEL QUIOSCO DEL PARQUE ARAGÓN.
+				      			</a>
+				      			</p>	      			
+		      				</div>
+			        		<div class="small-1 columns">
+		      					<a href="#" onclick="javascript:abreVentanaDetalleEdicto('899335')" style="color:#C20F19;font-weight:bold;">
+		      						50
+		      					</a>
+		      				</div>
+		      			</div>	        	     		
+					       			
+		 		   		  		
+		    	      
+					  
+		          
+			       	  
+						<div class="row">
+			        		<div class="small-12 columns">
+								<p class="parrafo" style="margin-bottom:0px">
+				      				AYUNTAMIENTO DE LONGARES
+				      			</p>	      			
+		      				</div>
+		      			</div>	
+			        	<div class="row">
+			        		<div class="small-offset-1 small-10 columns">
+								<p class="parrafo"><a class="enlaceEdicto" href="#" onclick="javascript:abreVentanaDetalleEdicto('899300')">
+				      				EXPOSICIÓN PADRÓN TASA POR SERVICIO DE SUMINISTRO DE AGUA POTABLE Y POR SERVICIO DE ALCANTARILLADO, SEGUNDO TRIMESTRE 2026.
+				      			</a>
+				      			</p>	      			
+		      				</div>
+			        		<div class="small-1 columns">
+		      					<a href="#" onclick="javascript:abreVentanaDetalleEdicto('899300')" style="color:#C20F19;font-weight:bold;">
+		      						51
+		      					</a>
+		      				</div>
+		      			</div>	        	     		
+					       			
+		 		   		  		
+		    	      
+					  
+		          
+			       	  
+						<div class="row">
+			        		<div class="small-12 columns">
+								<p class="parrafo" style="margin-bottom:0px">
+				      				AYUNTAMIENTO DE LONGARES
+				      			</p>	      			
+		      				</div>
+		      			</div>	
+			        	<div class="row">
+			        		<div class="small-offset-1 small-10 columns">
+								<p class="parrafo"><a class="enlaceEdicto" href="#" onclick="javascript:abreVentanaDetalleEdicto('899315')">
+				      				BDNS (IDENTIF.): 931791.- EXTRACTO CONVOCATORIA PARA LA CONCESIÓN DE AYUDAS PARA GASTOS DE NOTARÍA Y REGISTRO A JÓVENES QUE ADQUIERAN SU PRIMERA VIVIENDA EN LONGARES, AÑO 2026.
+				      			</a>
+				      			</p>	      			
+		      				</div>
+			        		<div class="small-1 columns">
+		      					<a href="#" onclick="javascript:abreVentanaDetalleEdicto('899315')" style="color:#C20F19;font-weight:bold;">
+		      						52
+		      					</a>
+		      				</div>
+		      			</div>	        	     		
+					       			
+		 		   		  		
+		    	      
+					  
+		          
+			       	  
+						<div class="row">
+			        		<div class="small-12 columns">
+								<p class="parrafo" style="margin-bottom:0px">
+				      				AYUNTAMIENTO DE MAELLA
+				      			</p>	      			
+		      				</div>
+		      			</div>	
+			        	<div class="row">
+			        		<div class="small-offset-1 small-10 columns">
+								<p class="parrafo"><a class="enlaceEdicto" href="#" onclick="javascript:abreVentanaDetalleEdicto('899302')">
+				      				APROBACIÓN INICIAL EXPEDIENTE MODIFICACIÓN DE CRÉDITOS NÚMERO 2/2026.
+				      			</a>
+				      			</p>	      			
+		      				</div>
+			        		<div class="small-1 columns">
+		      					<a href="#" onclick="javascript:abreVentanaDetalleEdicto('899302')" style="color:#C20F19;font-weight:bold;">
+		      						53
+		      					</a>
+		      				</div>
+		      			</div>	        	     		
+					       			
+		 		   		  		
+		    	      
+					  
+		          
+			       	  
+						<div class="row">
+			        		<div class="small-12 columns">
+								<p class="parrafo" style="margin-bottom:0px">
+				      				AYUNTAMIENTO DE MAELLA
+				      			</p>	      			
+		      				</div>
+		      			</div>	
+			        	<div class="row">
+			        		<div class="small-offset-1 small-10 columns">
+								<p class="parrafo"><a class="enlaceEdicto" href="#" onclick="javascript:abreVentanaDetalleEdicto('899303')">
+				      				APROBACIÓN INICIAL EXPEDIENTE MODIFICACIÓN DE CRÉDITOS NÚMERO 1/2026.
+				      			</a>
+				      			</p>	      			
+		      				</div>
+			        		<div class="small-1 columns">
+		      					<a href="#" onclick="javascript:abreVentanaDetalleEdicto('899303')" style="color:#C20F19;font-weight:bold;">
+		      						54
+		      					</a>
+		      				</div>
+		      			</div>	        	     		
+					       			
+		 		   		  		
+		    	      
+					  
+		          
+			       	  
+						<div class="row">
+			        		<div class="small-12 columns">
+								<p class="parrafo" style="margin-bottom:0px">
+				      				AYUNTAMIENTO DE NIGÜELLA
+				      			</p>	      			
+		      				</div>
+		      			</div>	
+			        	<div class="row">
+			        		<div class="small-offset-1 small-10 columns">
+								<p class="parrafo"><a class="enlaceEdicto" href="#" onclick="javascript:abreVentanaDetalleEdicto('899301')">
+				      				DELEGACIÓN EN ALCALDESA DIVERSAS COMPETENCIAS EN MATERIA DE CONTRATACIÓN.
+				      			</a>
+				      			</p>	      			
+		      				</div>
+			        		<div class="small-1 columns">
+		      					<a href="#" onclick="javascript:abreVentanaDetalleEdicto('899301')" style="color:#C20F19;font-weight:bold;">
+		      						55
+		      					</a>
+		      				</div>
+		      			</div>	        	     		
+					       			
+		 		   		  		
+		    	      
+					  
+		          
+			       	  
+						<div class="row">
+			        		<div class="small-12 columns">
+								<p class="parrafo" style="margin-bottom:0px">
+				      				AYUNTAMIENTO DE VILLANUEVA DE HUERVA
+				      			</p>	      			
+		      				</div>
+		      			</div>	
+			        	<div class="row">
+			        		<div class="small-offset-1 small-10 columns">
+								<p class="parrafo"><a class="enlaceEdicto" href="#" onclick="javascript:abreVentanaDetalleEdicto('899320')">
+				      				APROBACIÓN DEFINITIVA DEL PRESUPUESTO EJERCICIO 2026.
+				      			</a>
+				      			</p>	      			
+		      				</div>
+			        		<div class="small-1 columns">
+		      					<a href="#" onclick="javascript:abreVentanaDetalleEdicto('899320')" style="color:#C20F19;font-weight:bold;">
+		      						56
+		      					</a>
+		      				</div>
+		      			</div>	        	     		
+					       			
+		 		   		  		
+		    	      
+					  
+		          
+			       	  
+						<div class="row">
+			        		<div class="small-12 columns">
+								<p class="parrafo" style="margin-bottom:0px">
+				      				COMARCA DE  LAS CINCO VILLAS
+				      			</p>	      			
+		      				</div>
+		      			</div>	
+			        	<div class="row">
+			        		<div class="small-offset-1 small-10 columns">
+								<p class="parrafo"><a class="enlaceEdicto" href="#" onclick="javascript:abreVentanaDetalleEdicto('899317')">
+				      				EXPOSICIÓN PADRÓN DE LA TASA DEL SERVICIO DE AYUDA A DOMICILIO DE LOS MESES DE JULIO Y AGOSTO DE 2026 Y DE LA TASA DEL SERVICIO DE TRANSPORTE SOCIAL ADAPTADO DE LOS MESES DE JULIO Y AGOSTO DE 2026.
+				      			</a>
+				      			</p>	      			
+		      				</div>
+			        		<div class="small-1 columns">
+		      					<a href="#" onclick="javascript:abreVentanaDetalleEdicto('899317')" style="color:#C20F19;font-weight:bold;">
+		      						58
+		      					</a>
+		      				</div>
+		      			</div>	        	     		
+					       			
+		 		   		  		
+		    	      
+					  
+		          
+			       	  
+						<div class="row">
+			        		<div class="small-12 columns">
+								<p class="parrafo" style="margin-bottom:0px">
+				      				FUNDACIÓN ODÓN DE BUEN
+				      			</p>	      			
+		      				</div>
+		      			</div>	
+			        	<div class="row">
+			        		<div class="small-offset-1 small-10 columns">
+								<p class="parrafo"><a class="enlaceEdicto" href="#" onclick="javascript:abreVentanaDetalleEdicto('899338')">
+				      				BDNS (IDENTIF.): 931856.- EXTRACTO DE LA SEGUNDA CONVOCATORIA DE AYUDAS DE LA FUNDACIÓN ODÓN DE BUEN PARA EL FOMENTO DE LA CIENCIA, LA TECNOLOGÍA, LA SOSTENIBILIDAD Y LA INNOVACIÓN PEDAGÓGICA DURANTE EL CURSO 2026-2027.
+				      			</a>
+				      			</p>	      			
+		      				</div>
+			        		<div class="small-1 columns">
+		      					<a href="#" onclick="javascript:abreVentanaDetalleEdicto('899338')" style="color:#C20F19;font-weight:bold;">
+		      						59
+		      					</a>
+		      				</div>
+		      			</div>	        	     		
+				
+				
+				
+	</div>
+</div>
+</form>
+</div>
+</div>
+
+<div id="footer" class="large-12 medium-6 small-6 columns">
+	<div class="row">
+		<div id="footer-logo" class="large-3 medium-3 columns">
+			<a class="left" href="/" title="Diputación Provincial de Zaragoza">
+				<img alt="Diputación Provincial de Zaragoza" src="./img/logo.jpg" id="logoFooter" width="100%"/>
+			</a>
+		</div>
+		
+		<div class="large-5 medium-5 small-6 columns">
+			<b>Diputación
+			Provincial de Zaragoza</b>
+			<p>Plaza de España 2, 50071 Zaragoza <br>
+			Correo electrónico: infodpz@dpz.es <br>
+			Teléfono: 976288800 <br>
+			</p>						
+		</div>
+		
+		<div class="large-4 medium-4 small-6 columns">
+			<b>Boletín Oficial de la Provincia</b>
+			<p>Plaza de España 2, 50071 Zaragoza <br>
+			Correo electrónico: bop@dpz.es <br>
+			Teléfono: 976288823 <br>
+			Fax: 976288947 
+			</p>						
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript" src="js/jquery-1.11.1.js"></script>
+<script type="text/javascript" src="js/foundation.min.js"></script>
+<script type="text/Javascript" src="js/placeholder.js"></script>
+<script type="text/javascript">
+function init () {
+		
+    var footer = $("#footer");
+    var pos = footer.position();
+    var height = $(window).height();
+    height = height - pos.top;
+    height = height - footer.height();
+    if (height > 0) {
+        footer.css({'margin-top': height + 'px'});
+    }
+}
+	$(document).foundation();
+</script>
+<script type="text/javascript">
+function pestanya (){
+
+	var cadena = "verboletin\\("+document.getElementById('listar').idBoletin.value+"\\)";
+	var re = new RegExp(cadena);
+	$("#diasPagination li" ).each(function() {
+		if($(this).html().search(re)!=-1) {
+			$(this).removeClass('diaBoletin');
+			$(this).addClass('current');
+		}
+	});
+	}
+</script>
+
+</body>
+</html>
