@@ -363,8 +363,10 @@ for c in $CONECTORES; do
       "$G" "BOP Castellón: boletines"
       ejecutar motor.provinciales.bopcastellon --textos --salida "$S" --max-minutos "$M"
       "$G" "BOP Castellón: textos"
-      # Boletines anteriores al carrusel (motor/provinciales/bopcastellon_antiguos.py): parado el 30/10/2026 hasta
-      # leer bien el formato de 2026 (los asuntos salían mal partidos); el de 2022 sí se lee
+      # Boletines anteriores al carrusel: búsqueda por fechas y PDF entero leído en el orden de la página (en 2026 el
+      # texto plano dejaba la cabecera de cada anuncio al final); anuncios del cuerpo por su registro
+      ejecutar motor.provinciales.bopcastellon_antiguos --salida "$S" --max-minutos "$M"
+      "$G" "BOP Castellón: boletines anteriores"
       ;;
     bopleon)
       # Ficha del boletín de cada día y su sumario en PDF (portal nuevo, desde el 17/02/2025)

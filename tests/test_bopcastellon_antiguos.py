@@ -58,6 +58,28 @@ def test_lista():
                             "url_pdf": "https://bop.dipcas.es/PortalBOP/api/descargarBoletin?idBoletin=17584&idioma=es"}]
 
 
+P_2026 = """                                            Número 27 - 3 de marzo de 2026
+
+          ADMINISTRACIÓ AUTONÒMICA / ADMINISTRACIÓN AUTONÓMICA
+VICEPRESIDENCIA PRIMERA Y CONSELLERIA DE VIVIENDA, EMPLEO, JUVENTUD E IGUALDAD /
+
+ 00762-2026
+
+                                    SERVICIO TERRITORIAL DE TRABAJO
+
+      Vista la solicitud de inscripción y publicación de las tablas salariales para el año 2026 del convenio
+ colectivo del Comercio del Metal de la provincia de Castellón.
+"""
+
+
+def test_formato_de_2026_con_disposicion():
+    a = ca.anuncios([SUMARIO, P_2026])
+    assert [(x["numero_anuncio"], x["seccion"], x["entidad"]) for x in a] == [
+        ("00762-2026", "ADMINISTRACIÓN AUTONÓMICA", "VICEPRESIDENCIA PRIMERA Y CONSELLERIA DE VIVIENDA, EMPLEO, "
+                                                     "JUVENTUD E IGUALDAD")]
+    assert a[0]["titulo"].startswith("Servicio territorial de trabajo. Vista la solicitud")
+
+
 def test_anuncios_del_cuerpo():
     a = ca.anuncios([SUMARIO, P2, P3, P4])
     assert [(x["numero_anuncio"], x["seccion"], x["entidad"]) for x in a] == [
@@ -74,7 +96,7 @@ def test_procesar(tmp_path, monkeypatch):
     from motor.archivo import Archivo
     from motor.http import Respuesta
     monkeypatch.setattr(ca, "obtener", lambda url, accept=None, **k: Respuesta(url, 200, b"%PDF-1.4", {}))
-    monkeypatch.setattr("motor.provinciales.textos.paginas_pdf", lambda c: [SUMARIO, P2, P3, P4])
+    monkeypatch.setattr(ca, "paginas_en_orden", lambda c: [SUMARIO, P2, P3, P4])
     b = {"numero": 6, "fecha": "2022-01-13", "url_pdf": "https://bop.dipcas.es/x"}
     inf = ca.procesar(b, tmp_path, Archivo(tmp_path / "archivo"))
     assert (inf["resultado"], inf["disposiciones"], inf["empleo_publico"]) == ("ok", 4, 2)

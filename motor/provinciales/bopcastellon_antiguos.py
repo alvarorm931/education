@@ -48,8 +48,8 @@ RE_CELDA = re.compile(r"<td[^>]*>(.*?)</td>", re.DOTALL)
 RE_PDF = re.compile(r"api/descargarBoletin\?idBoletin=(\d+)")
 RE_VIEWSTATE = re.compile(r'<update id="[^"]*ViewState[^"]*"><!\[CDATA\[([^\]]+)\]\]>')
 RE_REGISTRO = re.compile(r"^\d{5}-\d{4}(?:-[A-Z])?$")
-RE_RUIDO = re.compile(r"^(?:B\.O\.P\s?\.?\s*DE CASTELL[ÓO]N.*|N[úu]m\.\s*\d+.*\d{4}|\d{1,4}|CVE:.*|.*Documento firmado.*)$",
-                      re.IGNORECASE)
+RE_RUIDO = re.compile(r"^(?:B\.O\.P\s?\.?\s*DE CASTELL[ÓO]N.*|N[úu]m\.\s*\d+.*\d{4}|\d{1,4}|CVE:.*|.*Documento firmado.*|"
+                      r"N[úu]mero \d+ - \d{1,2} de \w+ de \d{4})$", re.IGNORECASE)
 RE_EXPEDIENTE = re.compile(r"^(?:N\.?\s?º\s+de\s+expediente|Expediente|Expte\.?|Exp\.)", re.IGNORECASE)
 TIPOS_ANUNCIO = {"edicto", "edicte", "anuncio", "anunci", "decreto", "decret", "resolucion", "resolucio"}
 
@@ -77,7 +77,19 @@ def _mayusculas(lin: str) -> bool:
 
 
 def _castellano(lin: str) -> str:
+    lin = lin.rstrip(" /")
     return lin.split(" / ", 1)[1].strip() if " / " in lin else lin.strip()
+
+
+def paginas_en_orden(pdf: bytes) -> list[str]:
+    """Texto de cada página en el orden en que se ve: en los boletines de 2026 el texto plano de pypdf pone la
+    cabecera del anuncio (sección, entidad, registro) al final de la página, y el modo «layout» la deja arriba."""
+    import io
+    import logging
+
+    from pypdf import PdfReader
+    logging.getLogger("pypdf").setLevel(logging.ERROR)
+    return [p.extract_text(extraction_mode="layout") or "" for p in PdfReader(io.BytesIO(pdf)).pages]
 
 
 SECCIONES = ("administracion", "ayuntamientos", "a yuntamientos", "mancomunidades", "consorcios", "entidades",
@@ -163,7 +175,6 @@ def convocante(x: dict) -> dict | None:
 
 def procesar(b: dict, raiz: Path, archivo: Archivo) -> dict:
     from motor.autonomicos.comun import clasificar, es_empleo_estricto
-    from motor.provinciales.textos import paginas_pdf
 
     d = date.fromisoformat(b["fecha"])
     r = obtener(b["url_pdf"], accept="*/*")
@@ -174,7 +185,7 @@ def procesar(b: dict, raiz: Path, archivo: Archivo) -> dict:
         inf["alertas"].append(f"BOP Castellón {d}: PDF HTTP {r.status}")
         return inf
     captura = archivo.guardar(cs.FUENTE, d, r.contenido, b["url_pdf"], "pdf", r.status, r.cabeceras)
-    lista_a = anuncios(paginas_pdf(r.contenido))
+    lista_a = anuncios(paginas_en_orden(r.contenido))
     filas = [{**{k: v for k, v in x.items() if k != "texto"}, "id": f"BOPCASTELLON-{x['numero_anuncio']}",
               "fecha": b["fecha"], "boletin": b["numero"], "url_pdf_boletin": b["url_pdf"], "fuente": cs.SIGLAS,
               "captura_sha256": captura["sha256"]} for x in lista_a]
