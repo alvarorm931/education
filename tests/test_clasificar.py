@@ -67,3 +67,19 @@ def test_lote_sin_red(tmp_path, monkeypatch):
     out = [json.loads(l) for l in (tmp_path / "out" / "clasificacion.jsonl").read_text().splitlines()]
     assert out[0]["nombre"] == "Escuela de Finanzas Ejemplo" and out[0]["apto_censo"]
     assert "Formamos" not in (tmp_path / "out" / "clasificacion.jsonl").read_text()
+
+
+def test_aplicar_descarta_lo_que_no_es_centro_y_vale_la_ultima_legible(tmp_path):
+    censo = [{"id": "a", "dominio": "a.es", "estado": "verificado", "nombres": []},
+             {"id": "b", "dominio": "b.es", "estado": "verificado", "nombres": []},
+             {"id": "c", "dominio": "c.es", "estado": "oficial", "nombres": []}]
+    (tmp_path / "p.jsonl").write_text("".join(json.dumps(x) + "\n" for x in censo))
+    c1 = [{"id": "a", "categoria": None}, {"id": "b", "categoria": "agregador", "ambito": "espana"}]
+    c2 = [{"id": "a", "categoria": "centro", "ambito": "espana", "vende_masters": True, "nombre": "Escuela A"}]
+    (tmp_path / "c1.jsonl").write_text("".join(json.dumps(x) + "\n" for x in c1))
+    (tmp_path / "c2.jsonl").write_text("".join(json.dumps(x) + "\n" for x in c2))
+    r = c.aplicar(tmp_path / "p.jsonl", [tmp_path / "c1.jsonl", tmp_path / "c2.jsonl"], tmp_path / "o")
+    assert r["verificado/None"] == 1 and r["descartado/agregador"] == 1 and r["oficial/None"] == 1
+    out = {x["id"]: x for x in map(json.loads, (tmp_path / "o/datos/estudios/censo/proveedores.jsonl").read_text().splitlines())}
+    assert out["a"]["nombres"] == ["Escuela A"]
+    assert (tmp_path / "o/datos/estudios/censo/agregadores.jsonl").read_text().count("b.es") == 1

@@ -259,9 +259,54 @@ def lote(entrada_: Path, salida: Path, esperar_min: float = 40, max_minutos: flo
     return resumen
 
 
+def aplicar(censo: Path, clasificaciones: list[Path], salida: Path) -> dict:
+    """Censo con la clasificación: los verificados que no son centro (o no son de España) pasan a «descartado»
+    con su motivo; los agregadores se listan aparte, como fuente para descubrir centros (no para publicar).
+    Si un proveedor se clasificó varias veces, vale la última clasificación legible."""
+    ultima: dict[str, dict] = {}
+    for f in clasificaciones:  # de más antigua a más reciente
+        for l in f.read_text(encoding="utf-8").splitlines():
+            if l.strip():
+                c = json.loads(l)
+                if c.get("categoria") or c["id"] not in ultima:
+                    ultima[c["id"]] = c
+    cuentas, agregadores, filas = Counter(), [], []
+    for l in censo.read_text(encoding="utf-8").splitlines():
+        if not l.strip():
+            continue
+        p = json.loads(l)
+        c = ultima.get(p["id"])
+        if p["estado"] == "verificado" and c:
+            p["clasificacion"] = {k: c.get(k) for k in ("categoria", "tipo_centro", "ambito", "vende_masters",
+                                                        "confianza", "nombre", "clasificado", "modelo", "lote")}
+            if c.get("nombre") and c["nombre"] not in p.get("nombres", []):
+                p["nombres"] = p.get("nombres", []) + [c["nombre"]]
+            if not c.get("categoria"):
+                p["motivo"] = "sin_clasificar"
+            elif c["categoria"] != "centro":
+                p["estado"], p["motivo"] = "descartado", c["categoria"]
+            elif c.get("ambito") == "otro_pais":
+                p["estado"], p["motivo"] = "descartado", "otro_pais"
+            elif c.get("vende_masters") is False:
+                p["estado"], p["motivo"] = "descartado", "sin_masters_propios"
+            if c.get("categoria") == "agregador":
+                agregadores.append({"id": p["id"], "dominio": p["dominio"], "ambito": c.get("ambito"),
+                                    "urls_programa": c.get("urls_programa")})
+        cuentas[(p["estado"], p.get("motivo"))] += 1
+        filas.append(p)
+    destino = salida / "datos" / "estudios" / "censo"
+    destino.mkdir(parents=True, exist_ok=True)
+    (destino / "proveedores.jsonl").write_text("".join(json.dumps(p, ensure_ascii=False) + "\n" for p in filas),
+                                               encoding="utf-8")
+    (destino / "agregadores.jsonl").write_text("".join(json.dumps(a, ensure_ascii=False) + "\n" for a in agregadores),
+                                               encoding="utf-8")
+    return {f"{e}/{m}": n for (e, m), n in cuentas.most_common()}
+
+
 def main() -> None:
     p = argparse.ArgumentParser()
-    p.add_argument("orden", choices=["entrada", "lote"])
+    p.add_argument("orden", choices=["entrada", "lote", "aplicar"])
+    p.add_argument("--clasificacion", action="append", default=[])
     p.add_argument("--censo")
     p.add_argument("--rastreo", action="append", default=[])
     p.add_argument("--entrada")
@@ -270,7 +315,9 @@ def main() -> None:
     p.add_argument("--hilos", type=int, default=16)
     p.add_argument("--salida", required=True)
     a = p.parse_args()
-    if a.orden == "entrada":
+    if a.orden == "aplicar":
+        res = aplicar(Path(a.censo), [Path(x) for x in a.clasificacion], Path(a.salida))
+    elif a.orden == "entrada":
         res = entrada(Path(a.censo), [Path(x) for x in a.rastreo], Path(a.salida))
     else:
         res = lote(Path(a.entrada), Path(a.salida) / "datos" / "estudios" / "clasificacion", a.esperar_min,
