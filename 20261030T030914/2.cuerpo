@@ -1,0 +1,3059 @@
+
+/* 
+ * Función de ayuda.
+ * Extraer parámetros de una url.
+ */
+function obtenerValorParametro(sParametroNombre) {
+    var sPaginaURL = window.location.search.substring(1);
+    var sURLVariables = sPaginaURL.split('&');
+    for (var i = 0; i < sURLVariables.length; i++) {
+        var sParametro = sURLVariables[i].split('=');
+        if (sParametro[0] == sParametroNombre) {
+            if (sParametro[0] == "texto") {
+                var texto = sParametro[1];
+                return decodeURIComponent(texto);
+            } else {
+                return sParametro[1];
+            }
+        }
+    }
+    return null;
+}
+
+/*
+ * Validar una direccion de email.
+ */
+function ValidateEmail(mail) 
+{
+ if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail))
+  {
+    return (1);
+  }
+    return (0);
+}
+
+//function cargaComboAnio() {
+//    var date = new Date,
+//    year = date.getFullYear(),
+//    select = document.getElementById('calendarioAnual');
+//
+//    for (var i = year; i >= 2002; i--) {
+//        var option = document.createElement('option'),
+//        yearText = document.createTextNode(i);
+//        option.appendChild(yearText);
+//        select.appendChild(option);   
+//    }
+//}
+
+function cargaComboAnioHist() {
+        $.ajax({
+        url: '/bop/services/boletineshistoricos/comboHistYear',
+        method: 'GET',
+        dataType: 'json',
+        timeout: 0, // sin tiempo de espera
+        success: function (resultado, textStatus, jqXHR) {
+            // Llamar al servicio y Cargar EVENTOS.
+            var anio = obtenerValorParametro("anio");
+            if (resultado !== null && resultado.data !== null && resultado.data.length > 0) {
+                select = document.getElementById('calendarioHist');
+                for (x in resultado.data) {
+                    var option = document.createElement('option'),
+                    yearText = document.createTextNode(resultado.data[x]);
+                    if (anio == yearText.data) {
+                        option.selected = true;
+                    }
+                    option.appendChild(yearText);
+                    select.appendChild(option);
+                }
+            }
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log("Error: cargaComboAnioHist() -> services/boletineshistoricos/comboBolHistYear", textStatus);
+        }
+    });
+}
+
+function cargaComboAnio() {
+        $.ajax({
+        url: '/bop/services/boletines/comboYear',
+        method: 'GET',
+        dataType: 'json',
+        timeout: 0, // sin tiempo de espera
+        success: function (resultado, textStatus, jqXHR) {
+            // Llamar al servicio y Cargar EVENTOS.
+            if (resultado !== null && resultado.data !== null && resultado.data.length > 0) {
+                select = document.getElementById('calendarioAnual');
+                var option = document.createElement('option'),
+                yearText = document.createTextNode("Seleccione un año");
+                option.appendChild(yearText);
+                select.appendChild(option);
+                for (x in resultado.data) {
+                    option = document.createElement('option'),
+                    yearText = document.createTextNode(resultado.data[x]);
+                    option.appendChild(yearText);
+                    select.appendChild(option);
+                }
+            }
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log("Error: cargaComboAnio() -> services/boletines/comboAnio", textStatus);
+        }
+    });
+}
+
+function cargaComboAnioII() {
+        $.ajax({
+        url: '/bop/services/boletines/comboYear',
+        method: 'GET',
+        dataType: 'json',
+        timeout: 0, // sin tiempo de espera
+        success: function (resultado, textStatus, jqXHR) {
+            // Llamar al servicio y Cargar EVENTOS.
+            var anio = obtenerValorParametro("anio");
+            if (resultado !== null && resultado.data !== null && resultado.data.length > 0) {
+                select = document.getElementById('calendarioAnual');
+                for (x in resultado.data) {
+                    var option = document.createElement('option'),
+                    yearText = document.createTextNode(resultado.data[x]);
+                    if (anio == yearText.data) {
+                        option.selected = true;
+                    }
+                    option.appendChild(yearText);
+                    select.appendChild(option);
+                }
+            }
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log("Error: cargaComboAnio() -> services/boletines/comboAnio", textStatus);
+        }
+    });
+}
+
+function cargaMes() {
+    meses = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+    addOptions("mesHist", meses);
+}
+
+ function cargaDias(mes, anyo) {
+     if (mes && mes != "null") {
+        var numDias = 31;
+        if (mes == "Abril" || mes == "Junio" || mes == "Septiembre" || mes == "Noviembre")
+            numDias = 30;
+        if (mes == "Febrero" && (anyo/4) != Math.floor(anyo/4))
+            numDias = 28;
+        if (mes == "Febrero" && (anyo/4) == Math.floor(anyo/4))
+            numDias = 29;
+        document.getElementById('diaHist').options.length = 0;
+        select = document.getElementById('diaHist');
+        var option = document.createElement("option");
+        option.text = "Seleccione un día";
+        option.value = null;
+        select.add(option);
+        for (var i = 1; i <= numDias; i++) {
+            option = document.createElement("option");
+            option.text = i;
+            option.value = i;
+            select.add(option);
+        }
+    }
+    else {
+        document.getElementById('diaHist').options.length = 0;
+    }
+    
+}
+
+function addOptions(domElement, meses) {
+    select = document.getElementById('mesHist');
+    var i = 0;
+    for (value in meses) {
+        i++;
+        var option = document.createElement("option");
+        option.text = meses[value];
+        option.value = i;
+        select.add(option);
+    }
+}
+
+function suscribirDesuscribirBop(email, validar){
+    if (ValidateEmail(email)) {
+        if (validar == 1) {
+            $.ajax({
+            url: '/bop/services/suscriptores/suscribir',
+            method: 'GET',
+            dataType: 'json',
+            data: {"email": email,"validar": validar},
+            timeout: 0, // sin tiempo de espera
+            success: function (resultado, textStatus, jqXHR) {
+                if (resultado !== null && resultado.data !== null) {
+                    if (resultado.data == true)
+                        window.alert("Se ha enviado un email a su correo electrónico para validar su suscripción al BOP.");
+                    else if (resultado.data == false) {
+                        window.alert("Ya está activa la suscripción al BOP a este correo electrónico.");
+                    }
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+            console.log("Error: suscribirDesuscribirBop() -> /services/suscriptores/suscribir", textStatus);
+            }
+        });
+    } else if (validar == 0) {
+        $.ajax({
+            url: '/bop/services/suscriptores/desuscribir',
+            method: 'GET',
+            dataType: 'json',
+            data: {"email": email,"validar": validar},
+            timeout: 0, // sin tiempo de espera
+            success: function (resultado, textStatus, jqXHR) {
+            if (resultado !== null && resultado.data !== null) {
+                if (resultado.data == true)
+                    window.alert("Se ha enviado un email a su correo electrónico para cancelar su suscripción al BOP.");
+                else
+                    window.alert("No se ha podido cancelar su suscripción al bop ya que no se encuentra activa.");
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+            console.log("Error: suscribirDesuscribirBop() -> /services/suscriptores/desuscribir", textStatus);
+            }
+        });
+    }
+                
+    }
+    else {
+        window.alert("El correo introducido es incorrecto.");
+    }
+}
+
+function getAnuncioSig(dicTipos, idAnuncio) {
+    var encontrado = false;
+    // si PosidcionId anuncio == -1 devolvemos null
+    // si PosidcionId anuncio == 1 devolvemos null
+    for (var tipo in dicTipos) {
+        for (var grupo in dicTipos[tipo]) {
+            for (var entidad in dicTipos[tipo][grupo]) {
+                for (var anuncio in dicTipos[tipo][grupo][entidad]) {
+                    var csv = dicTipos[tipo][grupo][entidad][anuncio].csv;
+                    if ((anuncio == "nombreEntidad") || (anuncio == "0")){
+                        break;
+                }
+                    if (encontrado == true){
+                        return csv;
+                    }
+                    if (csv == idAnuncio) {
+                        encontrado = true;
+                    }
+                }
+            }
+        }
+    }
+    return idAnuncio;
+}
+
+function getAnuncioAnt(dicTipos, idAnuncio) {
+// si PosidcionId anuncio == 1 devolvemos null
+    var anterior = null;
+    for (var tipo in dicTipos) {
+        for (var grupo in dicTipos[tipo]) {
+            for (var entidad in dicTipos[tipo][grupo]) {
+                if (entidad == "nombreGrupo")
+                    break;
+                else {
+                    for (var anuncio in dicTipos[tipo][grupo][entidad]) {
+                        var csv = dicTipos[tipo][grupo][entidad][anuncio].csv;
+                        if (csv == idAnuncio) {
+                            if (anterior == null)
+                                return idAnuncio; //como es el primero devuelvo el mismo;
+                                else
+                                return anterior;
+                        } else {
+                                if ((anuncio != "nombreEntidad") && (anuncio != "0"))
+                                    anterior = csv;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+/*
+ * Cargar Conternido HTML del Anuncio.
+ * Auto-Ejecutado cuando se Carga anuncio. * 
+ */
+function mostrarFicheroHtml() {
+    var idAnuncio = obtenerValorParametro("csv");
+//    var idAnuncio = JSON.parse(localStorage.getItem("idAnuncioMostrar"));
+    $.ajax({
+        url: '/bop/services/anuncios/contenidoHtmlIdAnuncio',
+        method: 'GET',
+        dataType: 'json',
+        data: {"csv": idAnuncio},
+        timeout: 0, // sin tiempo de espera
+        success: function (resultado, textStatus, jqXHR) {
+            // Mostrar contenido en la web.
+            var insercion;
+            var dicTipos = JSON.parse(localStorage.getItem("listaAnuncios"));
+            var monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+                "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+            var date = new Date(resultado.data.fechaPublicacion)
+            var y = date.getYear() + 1900
+            var m = date.getMonth() + 1;
+            var d = date.getDate();
+            var mn = monthNames[date.getMonth()];
+            var fechaTexto = d + " de " + mn + " de " + y;
+            // Añadir publicado referencia clasificado.
+            var busqueda = obtenerValorParametro("sm");
+            if (busqueda == 1) {
+                $("#anterior").hide();
+                $("#siguiente").hide();
+                $("#resulbusq").show();
+                $("#hyphen1").show();
+                $("#hyphen2").hide();
+                $("#hyphen3").hide();
+            }
+            document.getElementById("sumario").href = "sumario.html?busqueda=numBop" + "&id=" + resultado.data.idBoletin;
+                                               
+            var numAnuncioAnterior = getAnuncioAnt(dicTipos, idAnuncio);
+                if (numAnuncioAnterior == idAnuncio) {
+                    document.getElementById("anterior").href = "anuncio.html?csv=" + getAnuncioAnt(dicTipos, idAnuncio);
+                    $("#anterior").removeAttr('href');
+                } else
+                    document.getElementById("anterior").href = "anuncio.html?csv=" + getAnuncioAnt(dicTipos, idAnuncio);
+                       
+            var numAnuncioSiguiente = getAnuncioSig(dicTipos, idAnuncio);
+            if (numAnuncioSiguiente == idAnuncio) {
+                document.getElementById("siguiente").href = "anuncio.html?csv=" + getAnuncioSig(dicTipos, idAnuncio);
+                $("#siguiente").removeAttr('href');
+            } else
+                document.getElementById("siguiente").href = "anuncio.html?csv=" + getAnuncioSig(dicTipos, idAnuncio);
+            insercion = document.getElementById("enlacePdf");
+            insercion.href = "/bop/services/anuncios/contenidoPdfIdAnuncio?csv=" + idAnuncio;
+            insercion = document.getElementById("fechaMigaPan");
+            insercion.innerHTML = "<a href='/bop/sumario.html?busqueda=numBop&id=" + resultado.data.idBoletin + "'>" + fechaTexto + "</a>";
+            insercion = document.getElementById("publicadoEn");
+            insercion.innerHTML = "Publicado en: <strong>BOP Nº " + resultado.data.numBoletin + " del " + fechaTexto + "</strong>";
+            insercion = document.getElementById("referenciaMigaPan");
+            insercion.innerHTML = resultado.data.csv;
+            insercion = document.getElementById("referencia");
+            insercion.innerHTML = "Referencia: <strong>" + resultado.data.csv  + "<strong>";
+            insercion = document.getElementById("referenciaCabecera");
+            insercion.innerHTML = "<img src='imagenes/boletinDiaLink.png' width='25' height='25' alt='Icono boletín diario'> Anuncio " + resultado.data.csv;
+            insercion = document.getElementById("clasificado");
+            //insercion.innerHTML =  resultado.data.csv;
+            insercion = document.getElementById("nombreTipo");
+            insercion.innerHTML = resultado.data.nombreTipo;
+            insercion = document.getElementById("nombreGrupo");
+            insercion.innerHTML = resultado.data.nombreGrupo;
+            insercion = document.getElementById("nombreEntidad");
+            insercion.innerHTML = resultado.data.nombreEntidad;
+            insercion = document.getElementById("introduccion");
+            insercion.innerHTML = resultado.data.tituloanuncio;
+            // Lo apuntamos al div Sumario. (Contenedor padre de los anuncios).
+            insercion = document.getElementsByClassName("anuncio")[0];
+            insercion.innerHTML = resultado.data.contenidoHtml;
+            insercion = document.getElementById("fechafir");
+            if(resultado.data.fechaFirma!=null){            	
+            	var datefirm = new Date(resultado.data.fechaFirma);
+            	var monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+            		"Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+            	var y = datefirm.getYear() + 1900;
+            	var m = ("0" + (datefirm.getMonth() + 1)).slice(-2);
+            	var mn = monthNames[datefirm.getMonth()];
+            	var d = datefirm.getDate();
+            	
+            	var localidad="Cáceres";
+            	if(resultado.data.localidad!=null)
+            		localidad=resultado.data.localidad;
+            	
+            	var fechaTexto = localidad.trim()+", " + d + " de " + mn + " de " + y;
+            	var fechaTexto2 = d + "/" + m + "/" + y;
+            	insercion.innerHTML = fechaTexto;
+            }
+            insercion = document.getElementById("cargofir");
+            insercion.innerHTML = resultado.data.cargoFirmante;
+            insercion = document.getElementById("nombrefir");
+            insercion.innerHTML = resultado.data.nombreFirmante;
+            document.title = "Boletín Oficial de la Provincia de Cáceres: Anuncio " +  resultado.data.csv + " del día " + fechaTexto2 +", BOP Nº " + resultado.data.numBoletin;
+            
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log("Error: mostrarFicheroHtml() -> /services/anuncios/contenidoHtmlIdAnuncio", textStatus);
+        }
+    });
+    
+    $.ajax({
+        url: '/bop/services/FichAnexos/anexosAnuncio',
+        method: 'GET',
+        dataType: 'json',
+        data: {"csv": idAnuncio},
+        timeout: 0, // sin tiempo de espera
+        success: function (resultado, textStatus, jqXHR) {
+            // Cargar enlaces adjuntos
+            if (resultado !== null && resultado.data !== null && resultado.data.length > 0) {
+                var insercion;
+                insercion = document.getElementById("anexosContainerHeader");
+//                var h = document.createElement("h4");
+//                var t = document.createTextNode("Documentación anexa");
+//                h.appendChild(t);
+//                insercion.appendChild(h);
+                var u = document.createElement("div");
+                var lista = resultado.data;
+                for (var item in lista) {
+                    var i = document.createElement("img");
+                    i.setAttribute("src","imagenes/puntoPDF.gif");
+                    i.setAttribute("alt","Icono PDF");
+                    i.setAttribute("title","Descargar anexo en PDF");
+//                    var z = document.createElement("span");
+                    var l = document.createElement("a");
+                    l.setAttribute("href","/bop/services/FichAnexos/contenidoPdfAnexo?idAnexo=" + lista[item].idAnexo);
+                    t = document.createTextNode("Documentación anexa");
+                    l.appendChild(t);
+                    u.appendChild(l);
+                    u.appendChild(i);
+//                    u.appendChild(z);
+                }
+                insercion.appendChild(u);
+                insercion = document.getElementById("anexosContainerFooter");
+                /*Duplicarh y u paraque se muetre tb abajo, cambiarlos en la dos lienas de abajo y descomentar*/
+                //insercion.appendChild(h);
+                //insercion.appendChild(u);
+            }
+           
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log("Error: mostrarFicheroHtml() -> /bop/services/FichAnexos/anexosAnuncio", textStatus);
+        }
+    });
+}
+
+/*
+ * cargarCombos()
+ * 
+ */
+function cargaCombos() {
+    var tipo = obtenerValorParametro("tipo");
+    var grupo = obtenerValorParametro("grupo");
+    $.ajax({
+        url: '/bop/services/listas/tipos',
+        method: 'GET',
+        dataType: 'json',
+        timeout: 0, // sin tiempo de espera
+        success: function (resultado, textStatus, jqXHR) {
+            if (resultado !== null && resultado.data !== null && resultado.data.length > 0) {
+                var lista = resultado.data;
+                // Añadir elemento vacio al principio
+                var z = document.createElement("option");
+                z.setAttribute("value", -1);
+                var t = document.createTextNode("---");
+                z.appendChild(t);
+                document.getElementById("TipoEntidad").appendChild(z);
+                for (var item in lista.sort()) {
+                    var z = document.createElement("option");
+                    z.setAttribute("value", lista[item].id);
+                    var t = document.createTextNode(lista[item].descripcion);
+                    z.appendChild(t);
+                    document.getElementById("TipoEntidad").appendChild(z);
+                }
+                
+                if (tipo && tipo != "null") {
+                    $('#TipoEntidad').val(tipo);
+                    actualizarComboGrupo(tipo);
+                }
+            }
+            
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log("Error: cargaCombos() -> /services/listas/tipos", textStatus);
+        }});
+    if (tipo != null) {
+        $.ajax({
+        url: '/bop/services/listas/grupos',
+        method: 'GET',
+        dataType: 'json',
+        timeout: 0, // sin tiempo de espera
+        success: function (resultado, textStatus, jqXHR) {
+            if (resultado !== null && resultado.data !== null && resultado.data.length > 0) {
+                var lista = resultado.data;
+                // Añadir elemento vacio al principio
+                var z = document.createElement("option");
+                z.setAttribute("value", -1);
+                var t = document.createTextNode("---");
+                z.appendChild(t);
+                document.getElementById("GrupoEntidad").appendChild(z);
+                for (var item in lista.sort()) {
+                    var z = document.createElement("option");
+                    z.setAttribute("value", lista[item].id);
+                    var t = document.createTextNode(lista[item].descripcion);
+                    z.appendChild(t);
+                    document.getElementById("GrupoEntidad").appendChild(z);
+                }
+            }
+            if (grupo && grupo != "null") {
+                actualizarComboEntidades(grupo);
+            }
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log("Error: cargaCombos() -> /services/listas/grupos", textStatus);
+        }
+    });
+    }
+    if (grupo != null) {
+        $.ajax({
+        url: '/bop/services/listas/entidades',
+        method: 'GET',
+        dataType: 'json',
+        timeout: 0, // sin tiempo de espera
+        success: function (resultado, textStatus, jqXHR) {
+            if (resultado !== null && resultado.data !== null && resultado.data.length > 0) {
+                var lista = resultado.data;
+                // Añadir elemento vacio al principio
+                var z = document.createElement("option");
+                z.setAttribute("value", -1);
+                var t = document.createTextNode("---");
+                z.appendChild(t);
+                document.getElementById("Entidad").appendChild(z);
+                for (var item in lista.sort()) {
+                    var z = document.createElement("option");
+                    z.setAttribute("value", lista[item].id);
+                    var t = document.createTextNode(lista[item].descripcion);
+                    z.appendChild(t);
+                    document.getElementById("Entidad").appendChild(z);
+                }
+                var entidad = obtenerValorParametro("entidad");
+                if (entidad != null) {
+                    $('#Entidad').val(entidad);
+                }
+            }
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log("Error: cargaCombos() -> /services/listas/entidades", textStatus);
+        }
+    });
+    }
+}
+
+function cargaTipos() {
+    $.ajax({
+        url: '/bop/services/listas/tipos',
+        method: 'GET',
+        dataType: 'json',
+        timeout: 0, // sin tiempo de espera
+        success: function (resultado, textStatus, jqXHR) {
+            if (resultado !== null && resultado.data !== null && resultado.data.length > 0) {
+                var lista = resultado.data;
+                // Añadir elemento vacio al principio
+                var z = document.createElement("option");
+                z.setAttribute("value", -1);
+                var t = document.createTextNode("---");
+                z.appendChild(t);
+                document.getElementById("TipoEntidad").appendChild(z);
+                for (var item in lista.sort()) {
+                    var z = document.createElement("option");
+                    z.setAttribute("value", lista[item].id);
+                    var t = document.createTextNode(lista[item].descripcion);
+                    z.appendChild(t);
+                    document.getElementById("TipoEntidad").appendChild(z);
+                }
+                var tipo = obtenerValorParametro("tipo");
+                if (tipo != null) {
+                    $('#TipoEntidad').val(tipo);
+                    actualizarComboGrupo(tipo);
+                }
+            }
+            
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log("Error: cargaCombos() -> /services/listas/tipos", textStatus);
+        }
+    });
+}
+
+function actualizarComboGrupo(idTipo) {
+    $.ajax({
+        url: '/bop/services/listas/gruposByTipo',
+        method: 'GET',
+        dataType: 'json',
+        data: {"idTipo": idTipo},
+        timeout: 0, // sin tiempo de espera
+        success: function (resultado, textStatus, jqXHR) {
+            // Vaciamos el Combo.
+                var i;
+                for (i = document.getElementById("GrupoEntidad").options.length - 1; i >= 0; i--)
+                {
+                    document.getElementById("GrupoEntidad").remove(i);
+                }
+                for (i = document.getElementById("Entidad").options.length - 1; i >= 0; i--)
+                {
+                    document.getElementById("Entidad").remove(i);
+                }
+            if (resultado !== null && resultado.data !== null && resultado.data.length > 0) {
+                var lista = resultado.data;
+                // Añadir elemento vacio al principio
+                var z = document.createElement("option");
+                z.setAttribute("value", -1);
+                var t = document.createTextNode("---");
+                z.appendChild(t);
+                //document.getElementById("GrupoEntidad").empty();
+                document.getElementById("GrupoEntidad").appendChild(z);
+                
+                for (var item in lista.sort()) {
+                    var z = document.createElement("option");
+                    z.setAttribute("value", lista[item].id);
+                    var t = document.createTextNode(lista[item].descripcion);
+                    z.appendChild(t);
+                    document.getElementById("GrupoEntidad").appendChild(z);
+                }
+            }
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log("Error: actualizarComboGrupo() -> /services/listas/gruposByTipo", textStatus);
+        }});
+}
+
+function actualizarComboEntidades(idGrupo) {
+    $.ajax({
+        url: '/bop/services/listas/entidadesByGrupo',
+        method: 'GET',
+        dataType: 'json',
+        data: {"idGrupo": idGrupo},
+        timeout: 0, // sin tiempo de espera
+        success: function (resultado, textStatus, jqXHR) {
+            // Vaciamos el Combo.
+            var i;
+            for (i = document.getElementById("Entidad").options.length - 1; i >= 0; i--) {
+                document.getElementById("Entidad").remove(i);
+            }
+            if (resultado !== null && resultado.data !== null && resultado.data.length > 0) {
+                var lista = resultado.data;
+                //document.getElementById("Entidad").empty();
+                // Añadir elemento vacio al principio
+                var z = document.createElement("option");
+                z.setAttribute("value", -1);
+                var t = document.createTextNode("---");
+                z.appendChild(t);
+
+                document.getElementById("Entidad").appendChild(z);
+                for (var item in lista.sort()) {
+                    var z = document.createElement("option");
+                    z.setAttribute("value", lista[item].id);
+                    var t = document.createTextNode(lista[item].descripcion);
+                    z.appendChild(t);
+                    document.getElementById("Entidad").appendChild(z);
+                }
+                var entidad = obtenerValorParametro("entidad");
+                if (entidad != null) {
+                    $('#Entidad').val(entidad);
+                }
+            }
+            $('#GrupoEntidad').val(idGrupo);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log("Error: actualizarComboEntidades() -> /services/listas/entidadesByGrupo", textStatus);
+        }});
+}
+
+/*
+ * cargaCheckboxesTC()
+ */
+function cargaCheckboxesTC() {
+
+    $.ajax({
+        url: '/bop/services/busquedaRapida/temasContenidos',
+        method: 'GET',
+        dataType: 'json',
+        timeout: 0, // sin tiempo de espera
+        success: function (resultado, textStatus, jqXHR) {
+            if (resultado !== null && resultado.data !== null && resultado.data.length > 0) {
+                var listaSubv = [];
+                var listaEmpl = []
+                var listaCont = [];
+                var listaFunc = [];
+                var lista = resultado.data;
+                var cont = 0;
+                for (var item in lista.sort()) {
+                    switch (lista[item].nombreTema) {
+                        case "Subvenciones": 
+                            listaSubv[listaSubv.length] = lista[item];
+                            break;
+                        case "Empleo": 
+                            listaEmpl[listaEmpl.length] = lista[item];
+                            break;
+                        case "Contratacion": 
+                            listaCont[listaCont.length] = lista[item];
+                            break;
+                        case "Funcionamiento": 
+                            listaFunc[listaFunc.length] = lista[item];
+                            break;  
+                    }
+                }
+                cont = 0;
+                for (var item in listaSubv.sort()) {
+                    var z = document.createElement("input");
+                    z.setAttribute("type", "checkbox");
+                    z.setAttribute("class", "tipoc");
+                    z.setAttribute("name", "Subvenciones");
+                    z.setAttribute("value", listaSubv[item].idTipoContenido);
+                    z.setAttribute("id", "listaSubv"+listaSubv[item].idTipoContenido);
+                    var y = document.createElement("label");
+                    y.setAttribute("for", "listaSubv"+listaSubv[item].idTipoContenido);
+                    y.appendChild(z);
+                    var t = document.createTextNode(listaSubv[item].tipoContenido);
+                    y.appendChild(t);
+                    var x = document.createElement("div");
+                    x.setAttribute("class", "checkbox");
+                    x.appendChild(y)
+                    if (listaSubv.length < 6) {
+                    	document.getElementById(listaSubv[item].nombreTema).appendChild(x);
+                    }
+                    else {
+                        if (cont == 0) {
+                            document.getElementById(listaSubv[item].nombreTema).appendChild(x);
+                            cont=1;
+                        } else {
+                            document.getElementById(listaSubv[item].nombreTema+"2").appendChild(x);
+                            cont=0;
+                        }
+                    }
+                                        
+                }
+                cont = 0;
+                for (var item in listaEmpl.sort()) {
+                    var z = document.createElement("input");
+                    z.setAttribute("type", "checkbox");
+                    z.setAttribute("class", "tipoc");
+                    z.setAttribute("name", "Empleo");
+                    z.setAttribute("value", listaEmpl[item].idTipoContenido);
+                    z.setAttribute("id", "listaEmpl"+listaEmpl[item].idTipoContenido);
+                    var y = document.createElement("label");
+                    y.setAttribute("for", "listaEmpl"+listaEmpl[item].idTipoContenido);
+                    y.appendChild(z);
+                    var t = document.createTextNode(listaEmpl[item].tipoContenido);
+                    y.appendChild(t);
+                    var x = document.createElement("div");
+                    x.setAttribute("class", "checkbox");
+                    x.appendChild(y)
+                    if (listaEmpl.length < 6) {
+                    	document.getElementById(listaEmpl[item].nombreTema).appendChild(x);
+                    }
+                    else {
+                        if (cont == 0) {
+                            document.getElementById(listaEmpl[item].nombreTema).appendChild(x);
+                            cont=1;
+                        } else {
+                            document.getElementById(listaEmpl[item].nombreTema+"2").appendChild(x);
+                            cont=0;
+                        }
+                    }
+                                        
+                }
+
+
+                cont = 0;
+                for (var item in listaCont.sort()) {
+                    var z = document.createElement("input");
+                    z.setAttribute("type", "checkbox");
+                    z.setAttribute("class", "tipoc");
+                    z.setAttribute("name", "Contratacion");
+                    z.setAttribute("value", listaCont[item].idTipoContenido);
+                    z.setAttribute("id", "listaCont"+listaCont[item].idTipoContenido);
+                    var y = document.createElement("label");
+                    y.setAttribute("for", "listaCont"+listaCont[item].idTipoContenido);
+                    y.appendChild(z);
+                    var t = document.createTextNode(listaCont[item].tipoContenido);
+                    y.appendChild(t);
+                    var x = document.createElement("div");
+                    x.setAttribute("class", "checkbox");
+                    x.appendChild(y)
+                    if (listaCont.length < 6) {
+                    	document.getElementById(listaCont[item].nombreTema).appendChild(x);
+                    }
+                    else {
+                        if (cont == 0) {
+                            document.getElementById(listaCont[item].nombreTema).appendChild(x);
+                            cont=1;
+                        } else {
+                            document.getElementById(listaCont[item].nombreTema+"2").appendChild(x);
+                            cont=0;
+                        }
+                    }
+                                        
+                }
+                
+                cont = 0;
+                for (var item in listaFunc.sort()) {
+                    var z = document.createElement("input");
+                    z.setAttribute("type", "checkbox");
+                    z.setAttribute("class", "tipoc");
+                    z.setAttribute("name", "Funcionamiento");
+                    z.setAttribute("value", listaFunc[item].idTipoContenido);
+                    z.setAttribute("id", "listaFunc"+listaFunc[item].idTipoContenido);
+                    var y = document.createElement("label");
+                    y.setAttribute("for", "listaFunc"+listaFunc[item].idTipoContenido);
+                    y.appendChild(z);
+                    var t = document.createTextNode(listaFunc[item].tipoContenido);
+                    y.appendChild(t);
+                    var x = document.createElement("div");
+                    x.setAttribute("class", "checkbox");
+                    x.appendChild(y)
+                    if (listaFunc.length < 6) {
+                    	document.getElementById(listaFunc[item].nombreTema).appendChild(x);
+                    }
+                    else {
+                        if (cont == 0) {
+                            document.getElementById(listaFunc[item].nombreTema).appendChild(x);
+                            cont=1;
+                        } else {
+                            document.getElementById(listaFunc[item].nombreTema+"2").appendChild(x);
+                            cont=0;
+                        }
+                    }
+                                        
+                }
+                
+                 
+                    
+            }
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log("Error: cargaCheckboxesTC() -> /services/busquedaRapida/temasContenidos", textStatus);
+        }});
+}
+
+function cargaTexto() {
+    var texto = obtenerValorParametro("texto");
+    if (texto) {
+        $('#textoLibre').val(texto);
+    }
+}
+
+function cargaSelectGroup() {
+    $.ajax({
+        url: '/bop/services/busquedaRapida/temasContenidos',
+        method: 'GET',
+        dataType: 'json',
+        timeout: 0, // sin tiempo de espera
+        success: function (resultado, textStatus, jqXHR) {
+            if (resultado !== null && resultado.data !== null && resultado.data.length > 0) {
+                var tipos = obtenerValorParametro("tipos");
+                if (tipos != null) {
+                    var res = tipos.split("_");
+                    res.shift();
+                }              
+                var lista = resultado.data;
+                var sel = document.getElementById('tipoContenido');
+                var aux = "";
+                var optgroup = null;
+                for (var i = 0; i < lista.length; i++) {                   
+                    if (aux != lista[i].nombreTema) {
+                        optgroup = document.createElement('optgroup');
+                        optgroup.innerHTML = lista[i].nombreTema;
+                        optgroup.value = lista[i].nombreTema;
+                        optgroup.label = lista[i].nombreTema;
+                        sel.appendChild(optgroup);
+                        aux = lista[i].nombreTema;
+                    }
+                    var opt = document.createElement('option');
+                    opt.innerHTML = lista[i].tipoContenido;
+                    opt.value = lista[i].idTipoContenido;
+                    if (tipos != null) {
+                        for (var j = 0; j < res.length; j++) {
+                            if (res[j] == lista[i].idTipoContenido) {
+                                opt.selected = true;
+                            }    
+                        }
+                    }       
+                    optgroup.appendChild(opt);                    
+                }              
+            }
+            var fechaDesde = obtenerValorParametro("desde");
+            if (fechaDesde) {
+                var anioD = String(fechaDesde).substring(6, 10);
+                var diaD = String(fechaDesde).substring(0, 2);
+                var mesD = String(fechaDesde).substring(3, 5);
+                var desde =  mesD + '/' + diaD + '/' + anioD;
+                $('#fechaIn').val(desde);
+            }
+            var fechaHasta = obtenerValorParametro("hasta");
+            if (fechaHasta) {
+                var anioH = String(fechaHasta).substring(6, 10);
+                var diaH = String(fechaHasta).substring(0, 2);
+                var mesH = String(fechaHasta).substring(3, 5);          
+                var hasta =  mesH + '/' + diaH + '/' + anioH;
+                $('#fechaOut').val(hasta);
+            }
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log("Error: cargaCheckboxesTC() -> /services/busquedaRapida/temasContenidos", textStatus);
+        }
+    });
+}
+
+/*
+ * Llamadas a la web de resultados mediante los Botones de Buscar.
+ * Botón Buscar por número de Bop. * 
+ */
+function webResultadosNumBop() {
+    var busqueda = "numBop";
+    var texto = $('#idCodigoVerificacion').val();
+    $.ajax({
+        url: '/bop/services/anuncios/anuncioByCsv',
+        method: 'GET',
+        dataType: 'json',
+        data: {"csv": texto},
+        timeout: 0, // sin tiempo de espera
+        success: function (resultado, textStatus, jqXHR) {
+            if (resultado !== null && resultado.data !== null && resultado.data.csv !== null && resultado.data.csv !== 0) {
+                var date = new Date(resultado.data.fechaPublicacion);
+                var y = date.getYear() + 1900;
+                var m = date.getMonth() + 1;
+                var d = date.getDate();
+                var fechaTexto = d + "/" + m + "/" + y;
+                window.location = "anuncio.html?csv=" + resultado.data.csv;
+            }
+            else {
+                window.alert("No se han encontrado resultados con esos criterios de Búsqueda");
+            }
+
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+             window.alert("No se han encontrado resultados con esos criterios de Búsqueda");
+        }});
+}
+
+// :Botón Buscar por fecha de Bop.
+function webResultadosFechaBop() {
+    var busqueda = "fechaBop";
+    var fecha = $('#idBOPDia').val();
+    window.location = "sumario.html?busqueda=" + busqueda + "&fecha=" + fecha;
+}
+
+// :Boton Buscar TipoGrupoEntidad.
+function webResultadosTGE() {
+    var busqueda = "tge";
+    var tipo = $('#TipoEntidad').val();
+    var grupo = $('#GrupoEntidad').val();
+    var entidad = $('#Entidad').val();
+    // Fecha Actual.
+    var fechaActual = new Date();
+    // Campo DESDE:
+    var fechaFinal = new Date();
+    var ambitoTemporal = $('#ambitoTemporal').val();
+    if (ambitoTemporal == 0) { // Última Semana.
+        fechaFinal.setDate(fechaActual.getDate() - 7);
+    } else if (ambitoTemporal == 1) { // Último Més.
+        fechaFinal.setMonth(fechaActual.getMonth() - 1);
+    } else if (ambitoTemporal == 2) { // Último Año.
+        fechaFinal.setYear(fechaActual.getYear() - 1 + 1900);
+    }
+    // Campo DESDE.
+    var m = ("0" + (fechaFinal.getMonth() + 1)).slice(-2);
+    var y = fechaFinal.getYear() + 1900;
+    var desde = m + "/" + ("0" + (fechaFinal.getDate())).slice(-2) + "/" + y;
+    // Campo HASTA (Fecha de Hoy):
+    var m = ("0" + (fechaActual.getMonth() + 1)).slice(-2);
+    var y = fechaActual.getYear() + 1900;
+    var hasta = m + "/" + ("0" + (fechaActual.getDate())).slice(-2) + "/" + y;
+    var start = 0;
+    var limit = 20;
+    window.location = "resultados.html?busqueda=" + busqueda
+            + "&tipo=" + tipo
+            + "&grupo=" + grupo
+            + "&entidad=" + entidad
+            + "&desde=" + desde
+            + "&hasta=" + hasta
+            + "&start=" + start
+            + "&limit=" + limit;
+}
+
+// :Boton Buscar Búsqueda avanzada.
+function busquedaAvanzada() {
+    var busqueda = "ba";
+    var texto = $('#textoLibre').val();
+    var tipo = $('#TipoEntidad').val();
+    var grupo = $('#GrupoEntidad').val();
+    var entidad = $('#Entidad').val();
+    var tipoc = $('#tipoContenido').val();
+    var start = 0;
+    var limit = 20;
+    var tipos = "";
+    for (var item in tipoc) {
+        tipos = tipos + "_" + tipoc[item];
+    }
+    // Fecha Actual.
+    if ($('#fechaIn').val() != null && $('#fechaIn').val() != "") {
+        var fechaOrigen = $('#fechaIn').val();
+        var anio = String(fechaOrigen).substring(6, 10);
+        var dia = String(fechaOrigen).substring(0, 2);
+        var mes = String(fechaOrigen).substring(3, 5);
+    //    var fechaPublic = {"fechaPublic": mes + '/' + dia + '/' + anio};
+        var desde = mes + '/' + dia + '/' + anio;
+    // Campo DESDE:
+    }
+    else {
+        var desde = "";
+    }
+    if ($('#fechaOut').val() != null && $('#fechaOut').val() != "") {
+        var fechaFinal = $('#fechaOut').val();
+        var anio = String(fechaFinal).substring(6, 10);
+        var dia = String(fechaFinal).substring(0, 2);
+        var mes = String(fechaFinal).substring(3, 5);
+        var hasta =  mes + '/' + dia + '/' + anio;
+    }
+    else {
+        var hasta = "";
+    }
+    window.location = "resultados.html?busqueda=" + busqueda
+            + "&texto=" + texto
+            + "&tipo=" + tipo
+            + "&grupo=" + grupo
+            + "&entidad=" + entidad
+            + "&tipos=" + tipos
+            + "&desde=" + desde
+            + "&hasta=" + hasta
+            + "&start=" + start
+            + "&limit=" + limit;
+}
+
+// :Boton Buscar TipoEntidad1.
+function webResultadosTC1() {
+    var busqueda = "tc";
+    var encontrado = false;
+    var tipos = "";
+    var tipoc = $(".tipoc");
+    for (var item in tipoc) {
+        if (tipoc[item].checked) {
+            tipos = tipos + "_" + tipoc[item].defaultValue;
+            encontrado = true;
+        }
+    }
+    // Fecha Actual.
+    var fechaActual = new Date();
+    // Campo DESDE:
+    var fechaFinal = new Date();
+    var ambitoTemporal = $('#ambitoTemporal1').val();
+    if (ambitoTemporal == 0) { // Última Semana.
+        fechaFinal.setDate(fechaActual.getDate() - 7);
+    } else if (ambitoTemporal == 1) { // Último Més.
+        fechaFinal.setMonth(fechaActual.getMonth() - 1);
+    } else if (ambitoTemporal == 2) { // Último Año.
+        fechaFinal.setYear(fechaActual.getYear() - 1 + 1900);
+    }
+    var m = ("0" + (fechaFinal.getMonth() + 1)).slice(-2);
+    var y = fechaFinal.getYear() + 1900;
+    var desde = m + "/" + ("0" + (fechaFinal.getDate())).slice(-2) + "/" + y;
+    // Campo HASTA (Fecha de Hoy):
+    var m = ("0" + (fechaActual.getMonth() + 1)).slice(-2);
+    var y = fechaActual.getYear() + 1900;
+    var hasta = m + "/" + ("0" + (fechaActual.getDate())).slice(-2) + "/" + y;
+    var start = 0;
+    var limit = 20;
+    if (encontrado == true) {
+        window.location = "resultados.html?busqueda=" + busqueda
+            + "&tipos=" + tipos
+            + "&desde=" + desde
+            + "&hasta=" + hasta
+            + "&start=" + start
+            + "&limit=" + limit;
+//        document.getElementById('fechaMigaPan').innerHTML = fechaMiga;
+    } else {
+        window.alert("No se ha seleccionado ningún criterio de búsqueda.");
+    }
+}
+
+// :Boton Buscar TipoEntidad2.
+function webResultadosTC2() {
+    var busqueda = "tc";
+    var encontrado = false;
+    var tipos = "";
+    var tipoc = document.getElementsByClassName("tipoc");
+    for (var item in tipoc) {
+        if (tipoc[item].checked) {
+            tipos = tipos + "_" + tipoc[item].defaultValue;
+            encontrado = true;
+        }
+    }
+    // Fecha Actual.
+    var fechaActual = new Date();
+    // Campo DESDE:
+    var fechaFinal = new Date();
+    var ambitoTemporal = $('#ambitoTemporal2').val();
+    if (ambitoTemporal == 0) { // Última Semana.
+        fechaFinal.setDate(fechaActual.getDate() - 7);
+    } else if (ambitoTemporal == 1) { // Último Més.
+        fechaFinal.setMonth(fechaActual.getMonth() - 1);
+    } else if (ambitoTemporal == 2) { // Último Año.
+        fechaFinal.setYear(fechaActual.getYear() - 1 + 1900);
+    }
+    var m = ("0" + (fechaFinal.getMonth() + 1)).slice(-2);
+    var y = fechaFinal.getYear() + 1900;
+    var desde = m + "/" + ("0" + (fechaFinal.getDate())).slice(-2) + "/" + y;
+    // Campo HASTA (Fecha de Hoy):
+    var m = ("0" + (fechaActual.getMonth() + 1)).slice(-2);
+    var y = fechaActual.getYear() + 1900;
+    var hasta = m + "/" + ("0" + (fechaActual.getDate())).slice(-2) + "/" + y;
+    var start = 0;
+    var limit = 20;
+    if (encontrado == true) {
+        window.location = "resultados.html?busqueda=" + busqueda
+            + "&tipos=" + tipos
+            + "&desde=" + desde
+            + "&hasta=" + hasta
+            + "&start=" + start
+            + "&limit=" + limit;
+//        document.getElementById('fechaMigaPan').innerHTML = fechaMiga;
+    } else {
+        window.alert("No se ha seleccionado ningún criterio de búsqueda.");
+    }
+}
+
+// :Boton Buscar TipoEntidad3.
+function webResultadosTC3() {
+    var busqueda = "tc";
+    var encontrado = false;
+    var tipos = "";
+    var tipoc = document.getElementsByClassName("tipoc");
+    for (var item in tipoc) {
+        if (tipoc[item].checked) {
+            tipos = tipos + "_" + tipoc[item].defaultValue;
+            encontrado = true;
+        }
+    }
+    // Fecha Actual.
+    var fechaActual = new Date();
+    // Campo DESDE:
+    var fechaFinal = new Date();
+    var ambitoTemporal = $('#ambitoTemporal3').val();
+    if (ambitoTemporal == 0) { // Última Semana.
+        fechaFinal.setDate(fechaActual.getDate() - 7);
+    } else if (ambitoTemporal == 1) { // Último Més.
+        fechaFinal.setMonth(fechaActual.getMonth() - 1);
+    } else if (ambitoTemporal == 2) { // Último Año.
+        fechaFinal.setYear(fechaActual.getYear() - 1 + 1900);
+    }
+    var m = ("0" + (fechaFinal.getMonth() + 1)).slice(-2);
+    var y = fechaFinal.getYear() + 1900;
+    var desde = m + "/" + ("0" + (fechaFinal.getDate())).slice(-2) + "/" + y;
+    // Campo HASTA (Fecha de Hoy):
+    var m = ("0" + (fechaActual.getMonth() + 1)).slice(-2);
+    var y = fechaActual.getYear() + 1900;
+    var hasta = m + "/" + ("0" + (fechaActual.getDate())).slice(-2) + "/" + y;
+    var start = 0;
+    var limit = 20;
+    if (encontrado == true) {
+        window.location = "resultados.html?busqueda=" + busqueda
+            + "&tipos=" + tipos
+            + "&desde=" + desde
+            + "&hasta=" + hasta
+            + "&start=" + start
+            + "&limit=" + limit;
+//        document.getElementById('fechaMigaPan').innerHTML = fechaMiga;
+    } else {
+        window.alert("No se ha seleccionado ningún criterio de búsqueda.");
+    }
+}
+
+// :Boton Buscar TipoEntidad4.
+function webResultadosTC4() {
+    var busqueda = "tc";
+    var encontrado = false;
+    var tipos = "";
+    var tipoc = document.getElementsByClassName("tipoc");
+    for (var item in tipoc) {
+        if (tipoc[item].checked) {
+            tipos = tipos + "_" + tipoc[item].defaultValue;
+            encontrado = true;
+        }
+    }
+    // Fecha Actual.
+    var fechaActual = new Date();
+    // Campo DESDE:
+    var fechaFinal = new Date();
+    var ambitoTemporal = $('#ambitoTemporal4').val();
+    if (ambitoTemporal == 0) { // Última Semana.
+        fechaFinal.setDate(fechaActual.getDate() - 7);
+    } else if (ambitoTemporal == 1) { // Último Més.
+        fechaFinal.setMonth(fechaActual.getMonth() - 1);
+    } else if (ambitoTemporal == 2) { // Último Año.
+        fechaFinal.setYear(fechaActual.getYear() - 1 + 1900);
+    }
+    var m = ("0" + (fechaFinal.getMonth() + 1)).slice(-2);
+    var y = fechaFinal.getYear() + 1900;
+    var desde = m + "/" + ("0" + (fechaFinal.getDate())).slice(-2) + "/" + y;
+    // Campo HASTA (Fecha de Hoy):
+    var m = ("0" + (fechaActual.getMonth() + 1)).slice(-2);
+    var y = fechaActual.getYear() + 1900;
+    var hasta = m + "/" + ("0" + (fechaActual.getDate())).slice(-2) + "/" + y;
+    var start = 0;
+    var limit = 20;
+    if (encontrado == true) {
+        window.location = "resultados.html?busqueda=" + busqueda
+            + "&tipos=" + tipos
+            + "&desde=" + desde
+            + "&hasta=" + hasta
+            + "&start=" + start
+            + "&limit=" + limit;
+//        document.getElementById('fechaMigaPan').innerHTML = fechaMiga;
+    } else {
+        window.alert("No se ha seleccionado ningún criterio de búsqueda.");
+    }
+}
+
+/*Obtenemos la fecha del breadcumb de la página Publico_Resultados_2*/
+function fechaBCPubResul2() {
+    var monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+        "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+    var date = new Date();
+    var ye = date.getYear() + 1900
+    var mo = date.getMonth() + 1;
+    var day = date.getDate();
+    var mn = monthNames[date.getMonth()];
+    var fechaMiga = day + " de " + mn + " de " + ye;
+}
+
+/*
+ * Cargar Web de Resultados.
+ * Auto-Ejecutado cuando se Carga sumario.
+ */
+function webResultadosCargar(idBOP) {
+    var busqueda = obtenerValorParametro("busqueda");
+    if (busqueda == null) {
+    	var resultados=document.getElementById("resultados");
+    	if(resultados!=null)
+    		resultados.style.display = "none";
+    	var textoIni=document.getElementById("textoIni");
+    	if(textoIni!=null)
+    		textoIni.style.display = "";
+    	
+    	if(resultados==null && textoIni==null){
+    		busqueda = "fechaBop";
+    	}
+    }
+    if(idBOP != undefined){
+        loadAnunciosAnunciantes(idBOP, true);
+    }else if (busqueda == "numBop") {
+        var idBoletin = obtenerValorParametro("id");
+        loadAnunciosAnunciantes(idBoletin);
+    } else if (busqueda == "fechaBop") {
+        var fechaBop = obtenerValorParametro("fecha");
+        loadBopFecha(fechaBop);
+    } else if (busqueda == "tge") {
+    	document.getElementById("resultados").style.display = "";
+    	document.getElementById("textoIni").style.display = "none";
+        var tipo = obtenerValorParametro("tipo");
+        var grupo = obtenerValorParametro("grupo");
+        var entidad = obtenerValorParametro("entidad");
+        var desde = obtenerValorParametro("desde");
+        var hasta = obtenerValorParametro("hasta");
+        if (grupo == "null") {
+            grupo = -1;
+        }
+        if (entidad == "null") {
+            entidad = -1;
+        }
+        var start = obtenerValorParametro("start");
+        var limit = obtenerValorParametro("limit");
+        loadAnunciosTipoGrupoEntidad(tipo, grupo, entidad, desde, hasta, start, limit);
+    } else if (busqueda == "tc") {
+    	document.getElementById("resultados").style.display = "";
+    	document.getElementById("textoIni").style.display = "none";
+        var tipos = obtenerValorParametro("tipos");
+        var desde = obtenerValorParametro("desde");
+        var hasta = obtenerValorParametro("hasta");
+        var start = obtenerValorParametro("start");
+        var limit = obtenerValorParametro("limit");
+        loadAnunciosTipoContenido(tipos, desde, hasta, start, limit);
+    } else if (busqueda == "ba") {
+    	document.getElementById("resultados").style.display = "";
+    	document.getElementById("textoIni").style.display = "none";
+        var texto = obtenerValorParametro("texto");
+        var tipo = obtenerValorParametro("tipo");
+        var grupo = obtenerValorParametro("grupo");
+        if (grupo == "null") {
+            grupo = -1;
+        }
+        var entidad = obtenerValorParametro("entidad");
+        if (entidad == "null") {
+            entidad = -1;
+        }
+        var tipos = obtenerValorParametro("tipos");
+        var desde = obtenerValorParametro("desde");
+        var hasta = obtenerValorParametro("hasta");
+        var start = obtenerValorParametro("start");
+        var limit = obtenerValorParametro("limit");
+        loadAnunciosBusqAvanzada(texto, tipo, grupo, entidad, tipos, desde, hasta, start, limit);
+    }
+}
+
+function loadAnunciosAnunciantes(idBoletin, grande) {
+    $.ajax({
+        url: '/bop/services/anuncios/anunciosAnunciantes',
+        method: 'GET',
+        dataType: 'json',
+        data: {"idBoletin": idBoletin},
+        timeout: 0,
+        success: function (resultado, textStatus, jqXHR) {
+            if (resultado !== null && resultado.data !== null && resultado.data.length > 0) {
+                var monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+                    "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+                var dataAnunciosAnunciantes = resultado.data;
+                // Establecemos un formato Natural para Mostrar la fecha.               
+                var date = new Date(dataAnunciosAnunciantes[0].fechaPublicacion)
+                var y = date.getYear() + 1900
+                var m = ("0" + (date.getMonth() + 1)).slice(-2);
+                var d = date.getDate();
+                var mn = monthNames[date.getMonth()];
+                var fechaTexto = d + "/" + m + "/" + y;
+                var fechaMiga = d + " de " + mn + " de " + y;
+                var codigoVerificacion = dataAnunciosAnunciantes[0].tituloAnuncio.substring(0, 12);
+                document.getElementById('fechaMigaPan').innerHTML = fechaMiga;
+                document.getElementById('fechaCabecera').innerHTML = "<img src='imagenes/boletinDiaLink.png' width='25' height='25' alt=''/> " + fechaMiga;
+                document.getElementById('csvCabecera').innerHTML = "Descargar B.O.P. Nº " + dataAnunciosAnunciantes[0].numBop + " completo   ";
+                document.getElementById('pdfCabecera').href = "/bop/services/boletines/contenidoPdfIdBolentin?idBoletin=" + idBoletin ;
+                document.title = "Boletín Oficial de la Provincia de Cáceres: Boletín Nº " + dataAnunciosAnunciantes[0].numBop + ", del día "+ fechaTexto;
+                //alert(y+" "+m+" "+d);
+                //if(y=='2019' && m=='04' && d=='24'){
+                if(dataAnunciosAnunciantes[0].csvFasciculo!=null){
+                	document.getElementById('pdfFasciculo').href = "/bop/services/anuncios/contenidoPdfFasciculo?csv="+dataAnunciosAnunciantes[0].csvFasciculo;
+                	document.getElementById("pdfFasciculo").style.display = "";
+                }else{
+                	/*var node = document.getElementById("pdfFasciculo");
+                	node.parentNode.removeChild(node);*/
+                	document.getElementById("pdfFasciculo").style.display = "none";
+                }
+                //document.getElementById('pdfCabecera').href = "#";
+                mostrarAnunciosAnunciantes(dataAnunciosAnunciantes, grande);
+            }
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log("Error: loadAnunciosAnunciantes() -> /services/anuncios/anunciosAnunciantes", textStatus);
+        }
+    });
+}
+
+function loadBopFecha(fechaOrigen) {
+	if(fechaOrigen==null){
+		fechaOrigen= new Date();		
+		var anio = fechaOrigen.getFullYear();
+	    var dia = fechaOrigen.getDay();
+	    var mes = fechaOrigen.getMonth();
+	}else{
+		var anio = String(fechaOrigen).substring(6, 10);
+	    var dia = String(fechaOrigen).substring(0, 2);
+	    var mes = String(fechaOrigen).substring(3, 5);
+	}
+// Ajustar la fecha al formato.    
+    var fechaPublic = {"fechaPublic": mes + '/' + dia + '/' + anio};
+    $.ajax({
+        url: '/bop/services/anuncios/fechaPublicacion',
+        method: 'GET',
+        dataType: 'json',
+        //jsonData:fecha,
+        data: fechaPublic,
+        timeout: 0, // sin tiempo de espera
+        success: function (resultado, textStatus, jqXHR) {
+            if (resultado !== null && resultado.data !== null && resultado.data.length > 0) {
+                var dataAnunciosAnunciantes = resultado.data;
+                mostrarAnunciosAnunciantes(dataAnunciosAnunciantes);
+                // Establecemos un formato Natural para Mostrar la fecha.               
+                var date = new Date(dataAnunciosAnunciantes[0].fechaPublicacion);
+                var monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+                    "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+                var y = date.getYear() + 1900;
+                var m = ("0" + (date.getMonth() + 1)).slice(-2);
+                var mn = monthNames[date.getMonth()];
+                var d = date.getDate();
+                var fechaTexto = d + " de " + mn + " de " + y;
+                var fechaTexto2 = d + "/" + m + "/" + y;
+                var codigoVerificacion = dataAnunciosAnunciantes[0].tituloAnuncio.substring(0, 12);
+                document.getElementById('fechaCabecera').innerHTML = "<img src='imagenes/boletinDiaLink.png' width='25' height='25' alt=''/> " + fechaTexto;
+                document.getElementById('csvCabecera').innerHTML = "Descargar " + codigoVerificacion + "   ";
+                document.getElementById('pdfCabecera').href = "/bop/services/boletines/contenidoPdfIdBolentin?idBoletin=" + dataAnunciosAnunciantes[0].idboletin;
+                document.title = "Boletín Oficial de la Provincia de Cáceres: Boletín Nº " + dataAnunciosAnunciantes[0].numBop + ", del día "+ fechaTexto2;
+            }
+            else {
+                window.alert("No se han encontrado resultados con esos criterios de Búsqueda");
+                window.location = "index.html";
+                               
+            }
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log("Error: loadBopFecha() -> /services/anuncios/fechaPublicacion", textStatus);
+        }});
+}
+
+function loadAnunciosTipoGrupoEntidad(tipo, grupo, entidad, desde, hasta, start, limit) {
+    var dto = {tipo: tipo, grupo: grupo, entidad: entidad, desde: desde, hasta: hasta, start: start, limit: limit};
+
+    $.ajax({
+        url: '/bop/services/anuncios/anunciosTipoGrupoEntidad',
+        method: 'GET',
+        dataType: 'json',
+        data: dto,
+        timeout: 0, // sin tiempo de espera
+        success: function (resultado, textStatus, jqXHR) {
+            if (resultado !== null && resultado.data !== null && resultado.data.length > 0) {
+                var dataAnunciosAnunciantes = resultado.data;
+                mostrarAnunciosAnunciantesPorFecha(dataAnunciosAnunciantes);
+                $("#btnCSV").show();
+                $('.pag_bottom').bootpag({
+                    total: resultado.total,
+                    page: 1,
+                    maxVisible: 20,
+                    leaps: true,
+                    firstLastUse: true,
+                    first: '←',
+                    last: '→',
+                    wrapClass: 'pagination',
+                    activeClass: 'active',
+                    disabledClass: 'disabled',
+                    nextClass: 'next',
+                    prevClass: 'prev',
+                    lastClass: 'last',
+                    firstClass: 'first'
+                }).on("page", function(event, num){
+                     // or some ajax content loading...
+                });
+            }
+            else {
+            	$("#textoIni").hide();
+            	$("#resultados").show();
+                $('#contEnc').text("No se han obtenido resultados.");
+                $("#btnCSV").hide();
+            }
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log("Error: loadAnunciosTipoGrupoEntidad() -> /services/anuncios/anunciosTipoGrupoEntidad", textStatus);
+            $("#btnCSV").hide();
+        }
+    });
+}
+
+function loadAnunciosTipoContenido(tipos, desde, hasta, start, limit) {
+    var dto = {tipos: tipos, desde: desde, hasta: hasta, start: start, limit: limit};
+    $.ajax({
+        url: '/bop/services/anuncios/anunciosTipoContenido',
+        method: 'GET',
+        dataType: 'json',
+        data: dto,
+        timeout: 0, // sin tiempo de espera
+        success: function (resultado, textStatus, jqXHR) {
+            if (resultado !== null && resultado.data !== null && resultado.data.length > 0) {
+                var dataAnunciosAnunciantes = resultado.data;
+                mostrarAnunciosAnunciantesPorFecha(dataAnunciosAnunciantes);
+                $("#btnCSV").show();
+                $('.pag_bottom').bootpag({
+                    total: resultado.total,
+                    page: 1,
+                    maxVisible: 20,
+                    leaps: true,
+                    firstLastUse: true,
+                    first: '←',
+                    last: '→',
+                    wrapClass: 'pagination',
+                    activeClass: 'active',
+                    disabledClass: 'disabled',
+                    nextClass: 'next',
+                    prevClass: 'prev',
+                    lastClass: 'last',
+                    firstClass: 'first'
+                }).on("page", function(event, num){
+                     // or some ajax content loading...
+                });
+            }
+            else {
+            	$("#textoIni").hide();
+            	$("#resultados").show();
+                $('#contEnc').text("No se han obtenido resultados.");
+                $("#btnCSV").hide();
+            }
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log("Error: loadAnunciosTipoContenido() -> /services/anuncios/anunciosTipoContenido", textStatus);
+            $("#btnCSV").hide();
+        }
+    });
+}
+
+function loadAnunciosBusqAvanzada(texto, tipo, grupo, entidad, tipos, desde, hasta, start, limit) {
+    
+    var dto = {};
+    if (texto) {
+        dto.texto = texto;
+    }
+    if (tipo && tipo != "null") {
+        dto.tipo = tipo;
+    }
+    if (grupo && grupo != "null") {
+        dto.grupo = grupo;
+    }
+    if (entidad && entidad != "null") {
+        dto.entidad = entidad;
+    }
+    if (tipos) {
+        dto.tipos = tipos;
+    }
+    if(desde) {
+        dto.desde = desde;
+    }
+    if(hasta) {
+        dto.hasta = hasta;
+    }
+    if (start) {
+        dto.start = start;
+    }
+    if (limit) {
+        dto.limit = limit;
+    }
+    $.ajax({
+        url: '/bop/services/anuncios/busquedaAvanzada',
+        method: 'GET',
+        dataType: 'json',
+        data: dto,
+        timeout: 0, // sin tiempo de espera
+        success: function (resultado, textStatus, jqXHR) {
+            if (resultado !== null && resultado.data !== null && resultado.data.length > 0) {
+                var dataAnunciosAnunciantes = resultado.data;
+                mostrarAnunciosAnunciantesPorFecha(dataAnunciosAnunciantes);
+                $("#btnCSV").show();
+                //Paginación
+                $('.pag_bottom').bootpag({
+                    total: resultado.total,
+                    page: 1,
+                    maxVisible: 20,
+                    leaps: true,
+                    firstLastUse: true,
+                    first: '←',
+                    last: '→',
+                    wrapClass: 'pagination',
+                    activeClass: 'active',
+                    disabledClass: 'disabled',
+                    nextClass: 'next',
+                    prevClass: 'prev',
+                    lastClass: 'last',
+                    firstClass: 'first'
+                }).on("page", function(event, num){
+                     // or some ajax content loading...
+                });
+            }
+            else {
+            	$("#textoIni").hide();
+            	$("#resultados").show();
+                $('#contEnc').text("No se han obtenido resultados.");
+                $("#btnCSV").hide();
+            }
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log("Error: loadAnunciosBusqAvanzada() -> /services/anuncios/busquedaAvanzada", textStatus);
+            $("#btnCSV").hide();
+        }
+    });
+}
+
+function paginacion(num) { var busqueda = obtenerValorParametro("busqueda");
+    var start = (num - 1) * 20;
+    if (busqueda == "tge") {
+        var tipo = obtenerValorParametro("tipo");
+        var grupo = obtenerValorParametro("grupo");
+        var entidad = obtenerValorParametro("entidad");
+        var desde = obtenerValorParametro("desde");
+        var hasta = obtenerValorParametro("hasta");
+        if (grupo == "null") {
+            grupo = -1;
+        }
+        if (entidad == "null") {
+            entidad = -1;
+        }
+        var limit = obtenerValorParametro("limit");
+        loadAnunciosTipoGrupoEntidadPag(tipo, grupo, entidad, desde, hasta, start, limit, num);
+    } else if (busqueda == "tc") {
+        var tipos = obtenerValorParametro("tipos");
+        var desde = obtenerValorParametro("desde");
+        var hasta = obtenerValorParametro("hasta");
+        var limit = obtenerValorParametro("limit");
+        loadAnunciosTipoContenidoPag(tipos, desde, hasta, start, limit, num);
+    } else if (busqueda == "ba") {
+        var texto = obtenerValorParametro("texto");
+        var tipo = obtenerValorParametro("tipo");
+        var grupo = obtenerValorParametro("grupo");
+        if (grupo == "null") {
+            grupo = -1;
+        }
+        var entidad = obtenerValorParametro("entidad");
+        if (entidad == "null") {
+            entidad = -1;
+        }
+        var tipos = obtenerValorParametro("tipos");
+        var desde = obtenerValorParametro("desde");
+        var hasta = obtenerValorParametro("hasta");
+        var limit = obtenerValorParametro("limit");
+        loadAnunciosBusqAvanzadaPag(texto, tipo, grupo, entidad, tipos, desde, hasta, start, limit, num);
+    }
+}
+
+function loadAnunciosBusqAvanzadaPag(texto, tipo, grupo, entidad, tipos, desde, hasta, start, limit, num) {
+    
+    var dto = {};
+    if (texto) {
+        dto.texto = texto;
+    }
+    if (tipo && tipo != "null") {
+        dto.tipo = tipo;
+    }
+    if (grupo && grupo != "null") {
+        dto.grupo = grupo;
+    }
+    if (entidad && entidad != "null") {
+        dto.entidad = entidad;
+    }
+    if (tipos) {
+        dto.tipos = tipos;
+    }
+    if(desde) {
+        dto.desde = desde;
+    }
+    if(hasta) {
+        dto.hasta = hasta;
+    }
+    if (start) {
+        dto.start = start;
+    }
+    if (limit) {
+        dto.limit = limit;
+    }
+    var num = num;
+    $.ajax({
+        url: '/bop/services/anuncios/busquedaAvanzada',
+        method: 'GET',
+        dataType: 'json',
+        data: dto,
+        timeout: 0, // sin tiempo de espera
+        success: function (resultado, textStatus, jqXHR) {
+            if (resultado !== null && resultado.data !== null && resultado.data.length > 0) {
+                var dataAnunciosAnunciantes = resultado.data;
+                mostrarAnunciosAnunciantesPorFecha(dataAnunciosAnunciantes);
+                $("#btnCSV").show();
+                //Paginación
+                $('.pag_bottom').bootpag({
+                    total: resultado.total,
+                    page: num,
+                    maxVisible: 20,
+                    leaps: true,
+                    firstLastUse: true,
+                    first: '←',
+                    last: '→',
+                    wrapClass: 'pagination',
+                    activeClass: 'active',
+                    disabledClass: 'disabled',
+                    nextClass: 'next',
+                    prevClass: 'prev',
+                    lastClass: 'last',
+                    firstClass: 'first'
+                }).on("page", function(event, num){
+                     // or some ajax content loading...
+                });
+            }
+            else {
+            	$("#textoIni").hide();
+            	$("#resultados").show();
+                $('#contEnc').text("No se han obtenido resultados.");
+                $("#btnCSV").hide();
+            }
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log("Error: loadAnunciosBusqAvanzada() -> /services/anuncios/busquedaAvanzada", textStatus);
+            $("#btnCSV").hide();
+        }
+    });
+}
+
+function loadAnunciosTipoContenidoPag(tipos, desde, hasta, start, limit, num) {
+    var dto = {tipos: tipos, desde: desde, hasta: hasta, start: start, limit: limit};
+    $.ajax({
+        url: '/bop/services/anuncios/anunciosTipoContenido',
+        method: 'GET',
+        dataType: 'json',
+        data: dto,
+        timeout: 0, // sin tiempo de espera
+        success: function (resultado, textStatus, jqXHR) {
+            if (resultado !== null && resultado.data !== null && resultado.data.length > 0) {
+                var dataAnunciosAnunciantes = resultado.data;
+                mostrarAnunciosAnunciantesPorFecha(dataAnunciosAnunciantes);
+                $("#btnCSV").show();
+                $('.pag_bottom').bootpag({
+                    total: resultado.total,
+                    page: num,
+                    maxVisible: 20,
+                    leaps: true,
+                    firstLastUse: true,
+                    first: '←',
+                    last: '→',
+                    wrapClass: 'pagination',
+                    activeClass: 'active',
+                    disabledClass: 'disabled',
+                    nextClass: 'next',
+                    prevClass: 'prev',
+                    lastClass: 'last',
+                    firstClass: 'first'
+                }).on("page", function(event, num){
+                     // or some ajax content loading...
+                });
+            }
+            else {
+            	$("#textoIni").hide();
+            	$("#resultados").show();
+                $('#contEnc').text("No se han obtenido resultados.");
+                $("#btnCSV").hide();
+            }
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log("Error: loadAnunciosTipoContenido() -> /services/anuncios/anunciosTipoContenido", textStatus);
+            $("#btnCSV").hide();
+        }
+    });
+}
+
+function loadAnunciosTipoGrupoEntidadPag(tipo, grupo, entidad, desde, hasta, start, limit, num) {
+    var dto = {tipo: tipo, grupo: grupo, entidad: entidad, desde: desde, hasta: hasta, start: start, limit: limit};
+    $.ajax({
+        url: '/bop/services/anuncios/anunciosTipoGrupoEntidad',
+        method: 'GET',
+        dataType: 'json',
+        data: dto,
+        timeout: 0, // sin tiempo de espera
+        success: function (resultado, textStatus, jqXHR) {
+            if (resultado !== null && resultado.data !== null && resultado.data.length > 0) {
+                var dataAnunciosAnunciantes = resultado.data;
+                mostrarAnunciosAnunciantesPorFecha(dataAnunciosAnunciantes);
+                $("#btnCSV").show();
+                $('.pag_bottom').bootpag({
+                    total: resultado.total,
+                    page: num,
+                    maxVisible: 20,
+                    leaps: true,
+                    firstLastUse: true,
+                    first: '←',
+                    last: '→',
+                    wrapClass: 'pagination',
+                    activeClass: 'active',
+                    disabledClass: 'disabled',
+                    nextClass: 'next',
+                    prevClass: 'prev',
+                    lastClass: 'last',
+                    firstClass: 'first'
+                }).on("page", function(event, num){
+                     // or some ajax content loading...
+                });
+            }
+            else {
+            	$("#textoIni").hide();
+            	$("#resultados").show();
+                $('#contEnc').text("No se han obtenido resultados.");
+                $("#btnCSV").hide();
+            }
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log("Error: loadAnunciosTipoGrupoEntidad() -> /services/anuncios/anunciosTipoGrupoEntidad", textStatus);
+            $("#btnCSV").hide();
+        }
+    });
+}
+
+// pintarCalAnio se llama en el onload de Publico_Cal.
+// Pinta los 12 calendarios de un año.
+// Parametro año por URL.
+function pintarCalAnio() {
+    var fechaActual = new Date();
+    var anio = obtenerValorParametro("anio");
+    fechaActual.setDate(1);
+    fechaActual.setFullYear(obtenerValorParametro("anio"));
+    for (mes = 0; mes < 12; mes++) {
+        fechaActual.setMonth(mes);
+//            pintarCalendariosBolHist(fechaActual);
+        pintarCalendarios(fechaActual);
+    }
+}
+
+// Pinta el calendario de un més y año pasados como parámetro.
+function pintarCalendarios(fecha) {
+    var anio = fecha.getFullYear();
+    var mes = fecha.getMonth() + 1;
+    var eventos = {};
+    // Formato Eventos: eventos["2017-01-11"] = {"url": "#"};
+    // Solicitar Boletines del mes/año para Rellenar eventos.
+    $.ajax({
+        url: '/bop/services/boletines/bopMesCalendario',
+        method: 'GET',
+        dataType: 'json',
+        data: {"mes":mes, "anio":anio},
+        timeout: 0, // sin tiempo de espera
+        success: function (resultado, textStatus, jqXHR) {
+
+            // Llamar al servicio y Cargar EVENTOS.
+            if (resultado !== null && resultado.data !== null && resultado.data.length > 0) {
+                for (x in resultado.data) {
+//                    var clave = anio + "-" + mes + "-" + resultado.data[x].diaBop;
+                    var clave = anio + "-";
+                    if (mes < 10)
+                        clave = clave + "0";
+                    clave = clave + mes + "-";
+                    if (resultado.data[x].diaBop < 10)
+                        clave = clave + "0";
+                    clave = clave + resultado.data[x].diaBop;
+                    // Añadir llamada a servicio en cada evento del calendario.
+                    eventos[clave] = {"url": "sumario.html?busqueda=numBop" + "&id=" + resultado.data[x].idBoletin};
+                }
+            }
+
+            $("#mes" + mes).responsiveCalendar({
+                time: anio + "-" + mes,
+                allRows: true,
+                activateNonCurrentMonths: true,
+                translateMonths: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
+                events: eventos});
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log("Error: pintarCalendarios() -> /services/boletines/bopMes", textStatus);
+        }
+    });
+}
+
+function pintarCalHistAnio() {
+    var anio = obtenerValorParametro("anio");
+    if(anio==null)
+    	anio='2001';
+//    fechaActual.setFullYear(obtenerValorParametro("anio"));
+    for (mes = 0; mes < 12; mes++) {
+//        fechaActual.setMonth(mes);
+        pintarCalendariosBolHist(mes +1, anio);
+    }
+}
+
+function pintarCalendariosBolHist(mes, anio) {
+//    var anio = fecha.getFullYear();
+//    var mes = fecha.getMonth() + 1;
+    var dto = {};
+    if (anio) {
+        dto.anio = anio;
+    }
+    if (mes && mes != "null") {
+        dto.mes = mes;
+    }
+    var eventos = {};
+    // Formato Eventos: eventos["2017-01-11"] = {"url": "#"};
+    // Solicitar Boletines del mes/año para Rellenar eventos.
+    $.ajax({
+        url: '/bop/services/boletineshistoricos/bopMes',
+        method: 'GET',
+        dataType: 'json',
+        data: dto,
+        timeout: 0, // sin tiempo de espera
+        success: function (resultado, textStatus, jqXHR) {
+            // Llamar al servicio y Cargar EVENTOS.
+            if (resultado !== null && resultado.data !== null && resultado.data.length > 0) {
+                for (x in resultado.data) {
+//                    var clave = anio + "-" + mes + "-" + resultado.data[x].diaBop;
+                    var clave = anio + "-";
+                    if (mes < 10)
+                        clave = clave + "0";
+                    clave = clave + mes + "-";
+                    if (resultado.data[x].diaBop < 10)
+                        clave = clave + "0";
+                    clave = clave + resultado.data[x].diaBop;
+                    // Añadir llamada a servicio en cada evento del calendario.                 
+                    eventos[clave] = {"url": "/bop/services/boletineshistoricos/contenidoPdfIdBoletin?idBoletin=" + resultado.data[x].id};
+                }
+            }
+
+            $("#mes" + mes).responsiveCalendar({
+                time: anio + "-" + mes,
+                allRows: true,
+                activateNonCurrentMonths: true,
+                newWindow: true,
+                translateMonths: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
+                events: eventos});
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log("Error: pintarCalendariosBolHist() -> /services/boletines/bopMes", textStatus);
+        }
+    });
+}
+
+// Pinta un calendario de un més y año pasados como parámetro.
+function pintarUnCalendario(anio, mes) {
+// var anio = fecha.getFullYear();
+//var mes = fecha.getMonth() + 1;
+    var eventos = {};
+    // Solicitar Boletines del mes/año para Rellenar eventos.
+    $.ajax({
+        url: '/bop/services/boletines/bopMes',
+        method: 'GET',
+        dataType: 'json',
+        data: {"mes":mes, "anio":anio},
+        timeout: 0, // sin tiempo de espera
+        success: function (resultado, textStatus, jqXHR) {
+
+            // Cargar EVENTOS via servicio.
+            if (resultado !== null && resultado.data !== null && resultado.data.length > 0) {
+                for (x in resultado.data) {
+//                  var clave = anio + "-" + mes + "-" + resultado.data[x].diaBop;
+                    var clave = anio + "-";
+                    if (mes < 10)
+                        clave = clave + "0";
+                    clave = clave + mes + "-";
+                    if (resultado.data[x].diaBop < 10)
+                        clave = clave + "0";
+                    clave = clave + resultado.data[x].diaBop;
+                    // Añadir llamada a servicio en cada evento del calendario.
+                    eventos[clave] = {"url": "sumario.html?busqueda=numBop" + "&id=" + resultado.data[x].idBoletin};
+                }
+            } else if (resultado.total == -1) {
+                window.alert("La fecha de su sistema no coincide con la fecha actual, revise su configuración de fecha y hora.");
+            }
+
+            $(".responsive-calendar").responsiveCalendar({
+                time: anio + "-" + (mes),
+                allRows: false,
+                activateNonCurrentMonths: false,
+                newWindow: false,
+                translateMonths: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
+                events: eventos});
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log("Error: pintarUnCalendario() -> /services/boletines/bopMes", textStatus);
+        }});
+    $(function () {
+        $('#fechaEntrada').datetimepicker({
+            locale: 'es',
+            format: 'DD/MM/YYYY'
+        });
+    });
+    $(function () {
+        $('#fechaPrevista').datetimepicker({
+            locale: 'es',
+            format: 'DD/MM/YYYY'
+        });
+    });
+    $(function () {
+        $('#idBOPDia').datetimepicker({
+            locale: 'es',
+            format: 'DD/MM/YYYY'
+        });
+    });
+    $(function () {
+        $('#idBOP').datetimepicker({
+            locale: 'es',
+            format: 'DD/MM/YYYY'
+        });
+    });
+}
+
+
+function mostrarFechaUltimoBop() {
+     $.ajax({
+        url: '/bop/services/boletines/ultimoBop',
+        method: 'GET',
+        dataType: 'json',
+//        data: {mes, anio},
+        timeout: 0, // sin tiempo de espera
+        success: function (resultado, textStatus, jqXHR) {
+
+            // Cargar EVENTOS via servicio.
+            if (resultado !== null && resultado.data !== null) {
+                $('#fUltimoBop').html(resultado.data.fecha);
+                $('#fUltimoBop').attr('href','sumario.html?busqueda=numBop&id='+resultado.data.idBoletin);
+                $('#fechaMigaPan').html(resultado.data.fecha);
+            }
+        }
+   });
+}
+
+function mostrarUltimoBop() {
+     $.ajax({
+        url: '/bop/services/boletines/ultimoBop',
+        method: 'GET',
+        dataType: 'json',
+//        data: {mes, anio},
+        timeout: 0, // sin tiempo de espera
+        success: function (resultado, textStatus, jqXHR) {
+
+            // Cargar EVENTOS via servicio.
+            if (resultado !== null && resultado.data !== null) {
+                var idUltimoBOP = resultado.data.idBoletin;
+                webResultadosCargar(idUltimoBOP);
+            }
+        }
+   });
+}
+
+function repintarUnCalendario(anio, mes) {
+// var anio = fecha.getFullYear();
+//var mes = fecha.getMonth() + 1;
+    var eventos = {};
+    // Solicitar Boletines del mes/año para Rellenar eventos.
+    $.ajax({
+        url: '/bop/services/boletines/bopMesAntSig',
+        method: 'GET',
+        dataType: 'json',
+        data: {"mes":mes, "anio":anio},
+        timeout: 0, // sin tiempo de espera
+        success: function (resultado, textStatus, jqXHR) {
+
+            // Cargar EVENTOS via servicio.
+            if (resultado !== null && resultado.data !== null && resultado.data.length > 0) {
+                for (x in resultado.data) {
+//                  var clave = anio + "-" + mes + "-" + resultado.data[x].diaBop;
+                    var clave = anio + "-";
+                    if (mes < 10)
+                        clave = clave + "0";
+                    clave = clave + mes + "-";
+                    if (resultado.data[x].diaBop < 10)
+                        clave = clave + "0";
+                    clave = clave + resultado.data[x].diaBop;
+                    // Añadir llamada a servicio en cada evento del calendario.
+                    eventos[clave] = {"url": "sumario.html?busqueda=numBop" + "&id=" + resultado.data[x].idBoletin};
+                }
+            }
+
+            $(".responsive-calendar").responsiveCalendar('edit', eventos);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log("Error: repintarUnCalendario() -> /services/boletines/bopMes", textStatus);
+        }
+    });
+    $(function () {
+        $('#fechaEntrada').datetimepicker({
+            locale: 'es',
+            format: 'DD/MM/YYYY'
+        });
+    });
+    $(function () {
+        $('#fechaPrevista').datetimepicker({
+            locale: 'es',
+            format: 'DD/MM/YYYY'
+        });
+    });
+    $(function () {
+        $('#idBOPDia').datetimepicker({
+            locale: 'es',
+            format: 'DD/MM/YYYY'
+        });
+    });
+    $(function () {
+        $('#idBOP').datetimepicker({
+            locale: 'es',
+            format: 'DD/MM/YYYY'
+        });
+    });
+}
+function mostrarAnunciosAnunciantes(dataAnunciosAnunciantes, grande) {
+// Función que recoge un JSON con la lista de los anuncios, 
+// los estructura y los añade a la web.
+
+// ESTRUCTURAS Utilizadas:
+//     
+//     dicTipos[idTipoEntidad]    >> Sección; Adm.Local, Adm.Autonómica ...
+//     dicGrupos[idGrupoEntidad]  >> SubSección: Provincias, Aytos ...
+//     dicEntidades[idEntidad]    >> SubsubSec: DipProv.CC, Ayto de Cachorrilla ...
+//     dicAnuncios[id]            >> DATOS del Anuncio.
+
+// ÁRBOL que crearemos:
+//     
+//     dicTipos = {
+//        nombreTipo:"",
+//        dicGrupos : {
+//            nombreGrupo:"",
+//            dicEntidades:{
+//                nombreEntidad:"",
+//                dicAnuncios:{
+//                    id,titulo,linkHtml,linkPdf,pos
+//                }
+//            }
+//        }
+//    }
+
+// ESTRUCTURA del HTML final.
+//
+//<div class="sumario">
+//    <section>             // N0
+//        <h1>              // tipo
+//        <section>         // N1
+//            <h2>          // grupo
+//            <section>     // N2
+//                <h3>      // Entidad
+//                <ul>
+//                    <li>
+//                        <a href="#" class="tituloAnuncio" title="Enlace a anuncio versión HTML"> tituloAnuncio </a>
+//                        <a href="#" class="iconoAnuncio"><img src="imagenes/puntoPDF.gif" class="img-responsive" alt="Icono PDF firmado" title="Descargar anuncio original firmado"></a>
+//                    </li>
+//                </ul>
+//            </section> 
+//        </section>
+//    </section>
+//</div>
+
+// <!> POR HACER:
+//  - Añadir <section> de los niveles N1 & N2.
+
+// Preparación de la respuesta JSON de la consulta:
+// Recorre (dataAnunciosAnunciantes) y va añadiendo los anuncios en una estructura de árbol.
+
+    // Árbol raíz con los anuncios.
+    var dicTipos = {};
+
+    // Anuncios destacados de la diputación.
+    var hayDiputacion = false;
+    var dicAnunciosDiputacion = {};
+
+    // Referencia a la tupla(anuncio) actual.
+    var tupla;
+
+    // Lista con los Ids.
+    var lista;
+
+    var pos = 0;
+    // Recorrer el JSON:
+    var tam = dataAnunciosAnunciantes.length;
+
+    for (x in dataAnunciosAnunciantes) {
+// Actualizar referencia a tupla actual.
+        tupla = dataAnunciosAnunciantes[x];
+        // Crear los datos del Anuncio.
+        pos = pos + 1;
+        if (pos == tam) {
+            pos = -1;
+        }
+        var anuncio = {
+            id: tupla.idAnuncio,
+            csv: tupla.csv,
+            titulo: tupla.tituloAnuncio,
+            linkHtml: "#html",
+            linkPdf: "#pdf",
+            posicion: pos
+        }
+        
+        
+        //intercambiamos los "pesos" de los id para que Provincia salga antes que Municipios
+        if (tupla.idGrupoEntidad== 1)
+            tupla.idGrupoEntidad= 2;
+        else
+            if(tupla.idGrupoEntidad== 2)
+               tupla.idGrupoEntidad= 1;
+        
+
+            // Si No se encuentra la Seccion (Tipo):
+            if (dicTipos[tupla.idTipoEntidad] == null) {
+                // Creamos el nuevo diccionario de Grupos(SubSec).
+                var tmpDicGrupos = {};
+                // Añadimos el campo para el Título del tipo.
+                tmpDicGrupos["nombreTipo"] = tupla.nombreTipoEntidad;
+                // Creamos el nuevo diccionario de Entidades.
+                var tmpDicEntidades = {};
+                // Añadimos el campo para el Título del grupo.
+                tmpDicEntidades["nombreGrupo"] = tupla.nombreGrupoEntidad;
+                // Creamos el nuevo diccionario de Anuncios.
+                var tmpDicAnuncios = {};
+                // Añadimos el campo para el Título de la entidad.
+                tmpDicAnuncios["nombreEntidad"] = tupla.nombreEntidad;
+                // Cargamos los datos del anuncio.
+                tmpDicAnuncios[tupla.idAnuncio] = anuncio;
+                // Añadimos Anuncio a Entidades.
+                tmpDicEntidades[tupla.idEntidad] = tmpDicAnuncios;
+                // Añadimos Entidad a Grupo.
+                tmpDicGrupos[tupla.idGrupoEntidad] = tmpDicEntidades;
+                // Añadimos Grupo a Tipos.
+                dicTipos[tupla.idTipoEntidad] = tmpDicGrupos;
+            } // Si No se encuentra la Subseccion (Grupo):
+            else if (dicTipos[tupla.idTipoEntidad][tupla.idGrupoEntidad] == null) {
+                // Tratamiento de las Entidades.
+                var tmpDicEntidades = {};
+                tmpDicEntidades["nombreGrupo"] = tupla.nombreGrupoEntidad;
+                // Tratamiento de los Anuncios.
+                var tmpDicAnuncios = {};
+                tmpDicAnuncios["nombreEntidad"] = tupla.nombreEntidad;
+                // Añadimos al Árbol (dicTipos)
+                tmpDicAnuncios[tupla.idAnuncio] = anuncio;
+                tmpDicEntidades[tupla.idEntidad] = tmpDicAnuncios;
+                dicTipos[tupla.idTipoEntidad][tupla.idGrupoEntidad] = tmpDicEntidades;
+            } // Si No se encuentra la Entidad:
+            else if (dicTipos[tupla.idTipoEntidad][tupla.idGrupoEntidad][tupla.idEntidad] == null) {
+                // Tratamiento de los Anuncios.
+                var tmpDicAnuncios = {};
+                tmpDicAnuncios["nombreEntidad"] = tupla.nombreEntidad;
+                // Añadimos al Árbol (dicTipos)
+                tmpDicAnuncios[tupla.idAnuncio] = anuncio;
+                dicTipos[tupla.idTipoEntidad][tupla.idGrupoEntidad][tupla.idEntidad] = tmpDicAnuncios;
+            } // Si Solo falta el anuncio.
+            else {
+                dicTipos[tupla.idTipoEntidad][tupla.idGrupoEntidad][tupla.idEntidad][tupla.idAnuncio] = anuncio;
+            }
+        
+    }
+// guardar extructura.
+    localStorage.setItem("listaAnuncios", JSON.stringify(dicTipos));
+// Presentación de los Anuncios:
+// Recorre el árbol y va añadiendo sus elementos al Html.
+
+// Titulos de las Secciones.
+    var txTipo, txGrupo, txEntidad;
+    // Variable que sigue el punto de insercción en el Html.
+    var insercion;
+    // Lo apuntamos al div Sumario. (Contenedor padre de los anuncios).
+    insercion = document.getElementsByClassName("sumario")[0];
+    // Vaciamos el sumario de los posibles datos anteriores.
+    insercion.innerHTML = "";
+    // Pintar los Anuncios de la diputación de cáceres.
+    // Recorremos el Árbol de anuncios.
+    for (var tipo in dicTipos) {
+// Crear la Seccion del Tipo Nivel 0.
+//        var seccion = document.createElement("section");
+        var preInsert = insercion;
+//        insercion = insercion.appendChild(seccion);
+        // Asignar el título <h1> de Tipo.
+        txTipo = dicTipos[tipo]["nombreTipo"];
+        var cabecera = document.createElement("h1");
+        var text = document.createTextNode(txTipo);
+        cabecera.appendChild(text);
+        insercion.appendChild(cabecera);
+        if (txTipo == "Sección I - Administración Local") {
+      
+        }
+        for (var grupo in dicTipos[tipo]) {
+// Obviamos el elemento del título.
+            if (grupo == "nombreTipo")
+                continue;
+            // Asignar el título <h2> del Grupo.
+            txGrupo = dicTipos[tipo][grupo]["nombreGrupo"];
+            var cabecera = document.createElement("h2");
+            var text = document.createTextNode(txGrupo);
+            
+            cabecera.appendChild(text);
+            insercion.appendChild(cabecera);
+            for (var entidad in dicTipos[tipo][grupo]) {
+                // Obviamos el elemento del título.
+                if (entidad == "nombreGrupo")
+                    continue;
+                // Título de Entidad.
+                txEntidad = dicTipos[tipo][grupo][entidad]["nombreEntidad"];
+                var cabecera = document.createElement("h3");
+                var text = document.createTextNode(txEntidad);
+                cabecera.appendChild(text);
+                insercion.appendChild(cabecera);
+                // Creamos la Lista <ul>.
+                var lista = document.createElement("ul");
+                for (var anuncio in dicTipos[tipo][grupo][entidad]) {
+                    // Obviamos el elemento del título.
+                    if (anuncio == "nombreEntidad")
+                        continue;
+                    // Crear Anuncio:
+                    // Creamos el Elemento <li>, con el contenido del anuncio.
+                    var elemento = document.createElement("li");
+                    // Link al html del anuncio.
+                    var enlace = document.createElement("a");
+                    var text = document.createTextNode(dicTipos[tipo][grupo][entidad][anuncio]["titulo"]);
+                    enlace.setAttribute("href", "anuncio.html?csv=" + dicTipos[tipo][grupo][entidad][anuncio].csv);
+                    enlace.setAttribute("class", "tituloAnuncio");
+                    enlace.setAttribute("title", "Enlace a anuncio versión HTML.");
+                    enlace.appendChild(text);
+                    elemento.appendChild(enlace);
+                    // Link al Pdf del anuncio.
+                    enlace = document.createElement("a");
+                    enlace.setAttribute("class", "iconoAnuncio");
+                    enlace.setAttribute("href", "/bop/services/anuncios/contenidoPdfIdAnuncio?csv=" + dicTipos[tipo][grupo][entidad][anuncio].csv);
+                    imagenPDf = document.createElement("img");
+                    if(grande == undefined)
+                        imagenPDf.setAttribute("src", "imagenes/puntoPDF.gif");
+                    else
+                        imagenPDf.setAttribute("src", "imagenes/puntoPDFbig.png");
+                    imagenPDf.setAttribute("class", "img-responsive");
+                    imagenPDf.setAttribute("alt", "Icono Pdf firmado.");
+                    imagenPDf.setAttribute("title", "Enlace a anuncio versión PDF.");
+                    enlace.appendChild(imagenPDf);
+                    elemento.appendChild(enlace);
+                    // Añadimos el <li>
+                    lista.appendChild(elemento);
+                }
+                // Añadimos a la lista <ul>
+                insercion.appendChild(lista);
+            }
+        }
+        insercion = preInsert;
+    }
+}
+
+function mostrarAnunciosAnunciantesPorFecha(dataAnunciosAnunciantes) {
+// Función que recoge un JSON con la lista de los anuncios, 
+// los estructura y los añade a la web.
+
+// ESTRUCTURAS Utilizadas:
+//      
+//     dicFechas[fechaAnuncio]
+//     dicTipos[idTipoentidad]    >> Sección; Adm.Local, Adm.Autonómica ...
+//     dicGrupos[idGrupoEntidad]  >> SubSección: Provincias, Aytos ...
+//     dicEntidades[idEntidad]    >> SubsubSec: DipProv.CC, Ayto de Cachorrilla ...
+//     dicAnuncios[id]            >> DATOS del Anuncio.
+//     anuncio
+
+// ÁRBOL que crearemos:
+//    dicFechas = {
+//        nombreFecha : "",
+//        dicTipos = {
+//            nombreTipo: "",
+//            dicGrupos: {
+//                nombreGrupo: "",
+//                dicEntidades: {
+//                    nombreEntidad: "",
+//                    dicAnuncios: {
+//                       anuncio: { id, titulo, linkHtml, linkPdf }
+//                    }
+//                }
+//            }
+//        }
+//    }
+
+
+// Árbol raíz con los anuncios por fecha.
+    var dicFechas = {};
+    // Referencia a la tupla(anuncio) actual.
+    var tupla;
+    // Mostrar la salida del servicio.
+
+    // Recorrer el JSON:
+    for (x in dataAnunciosAnunciantes) {
+// Actualizar referencia a tupla actual.
+        tupla = dataAnunciosAnunciantes[x];
+        // Crear los datos del Anuncio.
+        var anuncio = {
+            id: tupla.idAnuncio,
+            csv: tupla.csv,
+            titulo: tupla.tituloAnuncio,
+            linkHtml: "#html",
+            linkPdf: "#pdf"
+        }
+
+// Establecemos un formato Natural para Mostrar la fecha.
+        var monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+                    "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+        var date = new Date(tupla.fechaPublicacion);
+        var y = date.getYear() + 1900;
+        var m = date.getMonth() + 1;
+        var d = date.getDate();
+        var mn = monthNames[date.getMonth()];
+        var fechaTexto = d + " de " + mn + " de " + y;
+        // Crear la estructura: Fecha/Tipo/Grupo/Entidad/Anuncio.
+
+        // Si No se encuentra la entrada de la Fecha..
+        // ..creamos todos.
+        if (dicFechas[tupla.fechaPublicacion] == null) {
+// Creamos el diccionario de Tipos.
+            var tmpDicTipos = {};
+            // Añadimos el campo para el Título de Fecha.
+            tmpDicTipos["nombreFecha"] = fechaTexto;
+            // Creamos diccionario de Grupos.
+            var tmpDicGrupos = {};
+            // Añadimos el campo para el Título del tipo.
+            tmpDicGrupos["nombreTipo"] = tupla.nombreTipoEntidad;
+            // Creamos el nuevo diccionario de Entidades.
+            var tmpDicEntidades = {};
+            // Añadimos el campo para el Título del grupo.
+            tmpDicEntidades["nombreGrupo"] = tupla.nombreGrupoEntidad;
+            // Creamos el nuevo diccionario de Anuncios.
+            var tmpDicAnuncios = {};
+            // Añadimos el campo para el Título de la entidad.
+            tmpDicAnuncios["nombreEntidad"] = tupla.nombreEntidad;
+            // Añadimos al Árbol:
+            // Cargamos los datos del anuncio.
+            tmpDicAnuncios[tupla.idAnuncio] = anuncio;
+            // Añadimos Anuncio a Entidades.
+            tmpDicEntidades[tupla.idEntidad] = tmpDicAnuncios;
+            // Añadimos Entidad a Grupo.
+            tmpDicGrupos[tupla.idGrupoEntidad] = tmpDicEntidades;
+            // Añadimos Grupo a Tipos.
+            tmpDicTipos[tupla.idTipoEntidad] = tmpDicGrupos;
+            // Añadimos Tipos a Fechas.
+            dicFechas[tupla.fechaPublicacion] = tmpDicTipos;
+            // Si no se encuentra el Tipo:
+        } else if (dicFechas[tupla.fechaPublicacion][tupla.idTipoEntidad] == null) {
+            var tmpDicGrupos = {};
+            // Añadimos el campo para el Título del tipo.
+            tmpDicGrupos["nombreTipo"] = tupla.nombreTipoEntidad;
+            // Creamos el nuevo diccionario de Entidades.
+            var tmpDicEntidades = {};
+            // Añadimos el campo para el Título del grupo.
+            tmpDicEntidades["nombreGrupo"] = tupla.nombreGrupoEntidad;
+            // Creamos el nuevo diccionario de Anuncios.
+            var tmpDicAnuncios = {};
+            // Añadimos el campo para el Título de la entidad.
+            tmpDicAnuncios["nombreEntidad"] = tupla.nombreEntidad;
+            // Añadimos al Árbol
+            tmpDicAnuncios[tupla.idAnuncio] = anuncio;
+            tmpDicEntidades[tupla.idEntidad] = tmpDicAnuncios;
+            tmpDicGrupos[tupla.idGrupoEntidad] = tmpDicEntidades;
+            // tmpDicTipos[tupla.idTipoEntidad] = tmpDicGrupos;
+            dicFechas[tupla.fechaPublicacion][tupla.idTipoEntidad] = tmpDicGrupos; //tmpDicTipos;
+
+            // Si no se encuentra el Grupo:
+        } else if (dicFechas[tupla.fechaPublicacion][tupla.idTipoEntidad][tupla.idGrupoEntidad] == null) {
+// Tratamiento de las Entidades.
+            var tmpDicEntidades = {};
+            tmpDicEntidades["nombreGrupo"] = tupla.nombreGrupoEntidad;
+            // Tratamiento de los Anuncios.
+            var tmpDicAnuncios = {};
+            tmpDicAnuncios["nombreEntidad"] = tupla.nombreEntidad;
+            // Añadimos al Árbol
+            tmpDicAnuncios[tupla.idAnuncio] = anuncio;
+            tmpDicEntidades[tupla.idEntidad] = tmpDicAnuncios;
+            //tmpDicGrupos[tupla.idGrupoEntidad] = tmpDicEntidades;
+            dicFechas[tupla.fechaPublicacion][tupla.idTipoEntidad][tupla.idGrupoEntidad] = tmpDicEntidades; //tmpDicGrupos;
+
+            // Si no se encuetra la Entidad.
+        } else if (dicFechas[tupla.fechaPublicacion][tupla.idTipoEntidad][tupla.idGrupoEntidad][tupla.idEntidad] == null) {
+// Tratamiento de los Anuncios.
+            var tmpDicAnuncios = {};
+            tmpDicAnuncios["nombreEntidad"] = tupla.nombreEntidad;
+            // Añadimos al Árbol
+            tmpDicAnuncios[tupla.idAnuncio] = anuncio;
+            dicFechas[tupla.fechaPublicacion][tupla.idTipoEntidad][tupla.idGrupoEntidad][tupla.idEntidad] = tmpDicAnuncios;
+            // Solo falta el anuncio.
+        } else if (dicFechas[tupla.fechaPublicacion][tupla.idTipoEntidad][tupla.idGrupoEntidad][tupla.idEntidad][tupla.idAnuncio] == null) {
+// Añadimos al Árbol
+            dicFechas[tupla.fechaPublicacion][tupla.idTipoEntidad][tupla.idGrupoEntidad][tupla.idEntidad][tupla.idAnuncio] = anuncio;
+        }
+
+    }
+// Presentación de los Anuncios:
+// Recorre el árbol y va añadiendo sus elementos al Html.
+// Titulos de las Secciones.
+    var txFecha, txTipo, txGrupo, txEntidad;
+    // Variable que sigue el punto de insercción en el Html.
+    var insercion;
+    // Lo apuntamos al div Sumario. (Contenedor padre de los anuncios).
+    //insercion = document.getElementsByClassName("sumario")[0];
+    insercion = document.getElementById("resultados");
+    // Vaciamos el sumario de los posibles datos anteriores.
+    insercion.innerHTML = "";
+    var fechaOrdenada = [];
+    for (var f in dicFechas) {
+        fechaOrdenada.push(f);
+    }
+    fechaOrdenada.sort();
+    fechaOrdenada.reverse();
+    // TODO: ADAPTAR el FOR para usar las fechas ordenadas que acabamos de crear
+    // Recorremos el Árbol de anuncios.
+    for (var i = 0; i < fechaOrdenada.length; i += 1) {
+        var fecha = fechaOrdenada[i];
+        //for (var fecha in fechaOrdenada) {
+        // Crear la Seccion.
+//        var seccion = document.createElement("section");
+        var preInsert = insercion;
+//        insercion = insercion.appendChild(seccion);
+        // Asignar el título <h1> de Fecha.
+        txFecha = dicFechas[fecha]["nombreFecha"];
+        var cabecera = document.createElement("h1");
+        var text = document.createTextNode(txFecha);
+        cabecera.appendChild(text);
+        insercion.appendChild(cabecera);
+        for (var tipo in dicFechas[fecha]) {
+// Obviamos el elemento del título.
+            if (tipo == "nombreFecha")
+                continue;
+            // Crear la Seccion.
+//            var seccion = document.createElement("section");
+            var preInsert = insercion;
+//            insercion = insercion.appendChild(seccion);
+            // Asignar el título <h1> de Tipo.
+            txTipo = dicFechas[fecha][tipo]["nombreTipo"];
+            /*Comentamos estas 4 líneas para no mostrar las Secciones*/
+//            var cabecera = document.createElement("h1");
+//            var text = document.createTextNode(txTipo);
+//            cabecera.appendChild(text);
+//            insercion.appendChild(cabecera);
+            for (var grupo in dicFechas[fecha][tipo]) {
+// Obviamos el elemento del título.
+                if (grupo == "nombreTipo")
+                    continue;
+                // Asignar el título <h2> del Grupo.
+//                txGrupo = dicFechas[fecha][tipo][grupo]["nombreGrupo"];
+//                var cabecera = document.createElement("h2");
+//                var text = document.createTextNode(txGrupo);
+//                cabecera.appendChild(text);
+//                insercion.appendChild(cabecera);
+                for (var entidad in dicFechas[fecha][tipo][grupo]) {
+// Obviamos el elemento del título.
+                    if (entidad == "nombreGrupo")
+                        continue;
+                    // Título de Entidad.
+                    txEntidad = dicFechas[fecha][tipo][grupo][entidad]["nombreEntidad"];
+                    var cabecera = document.createElement("h3");
+                    var text = document.createTextNode(txEntidad);
+                    cabecera.appendChild(text);
+                    insercion.appendChild(cabecera);
+                    // Creamos la Lista <ul>.
+                    var lista = document.createElement("ul");
+                    for (var anuncio in dicFechas[fecha][tipo][grupo][entidad]) {
+// Obviamos el elemento del título.
+                        if (anuncio == "nombreEntidad")
+                            continue;
+                        // Crear Anuncio:
+                        // Creamos el Elemento <li>, con el contenido del anuncio.
+                        var elemento = document.createElement("li");
+                        // Link al html del anuncio.
+                        var enlace = document.createElement("a");
+                        var text = document.createTextNode(dicFechas[fecha][tipo][grupo][entidad][anuncio]["titulo"]);
+                        enlace.setAttribute("href", "anuncio.html?csv=" + dicFechas[fecha][tipo][grupo][entidad][anuncio].csv + "&sm=" + 1);
+                        enlace.setAttribute("class", "tituloAnuncio");
+                        enlace.setAttribute("title", "Enlace a anuncio versión HTML.");
+                        enlace.appendChild(text);
+                        elemento.appendChild(enlace);
+                        // Link al Pdf del anuncio.
+                        enlace = document.createElement("a");
+                        enlace.setAttribute("class", "iconoAnuncio");
+                        enlace.setAttribute("href", "/bop/services/anuncios/contenidoPdfIdAnuncio?csv=" + dicFechas[fecha][tipo][grupo][entidad][anuncio].csv);
+                        imagenPDf = document.createElement("img");
+                        imagenPDf.setAttribute("src", "imagenes/puntoPDF.gif");
+                        imagenPDf.setAttribute("class", "img-responsive");
+                        imagenPDf.setAttribute("alt", "Icono Pdf firmado.");
+                        imagenPDf.setAttribute("title", "Enlace a anuncio versión PDF.");
+                        enlace.appendChild(imagenPDf);
+                        elemento.appendChild(enlace);
+                        // Añadimos el <li>
+                        lista.appendChild(elemento);
+                    }
+// Añadimos a la lista <ul>
+                    insercion.appendChild(lista);
+                }
+            }
+            insercion = preInsert;
+        }
+    }
+}
+
+function getUrlWordPressIndex() {
+    $.ajax({
+        url: '/bop/services/anuncios/urlwordpress',
+        method: 'GET',
+        dataType: 'json',
+        timeout: 0, // sin tiempo de espera
+        success: function (resultado, textStatus, jqXHR) {
+            if (resultado !== null && resultado.data !== null && resultado.data.length > 0) {
+                $('#ruta1').attr('href', resultado.data + 'normativa-reglamento/');
+                $('#ruta2').attr('href', resultado.data + 'anunciantes-autorizaciones/');
+                $('#ruta3').attr('href', resultado.data + 'el-anuncio/');
+                $('#ruta4').attr('href', 'busqueda.html');
+                $('#ruta5').attr('href', 'resultados.html');
+                $('#ruta6').attr('href', resultado.data + 'normativa-reglamento/');
+                $('#ruta7').attr('href', resultado.data + 'anunciantes-autorizaciones/');
+                $('#ruta8').attr('href', resultado.data + 'el-anuncio/');
+                $('#ruta9').attr('href', 'busqueda.html');
+                $('#ruta10').attr('href', 'resultados.html');                
+                $("#slidedipcc").load(resultado.data + ' #advps_container5.advps-slide-container');
+            }
+            
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log("Error: getUrlWordPress() -> /services/urlwordpress", textStatus);
+        }
+    });
+}
+
+function getUrlWordPressAnuncio() {
+    $.ajax({
+        url: '/bop/services/anuncios/urlwordpress',
+        method: 'GET',
+        dataType: 'json',
+        timeout: 0, // sin tiempo de espera
+        success: function (resultado, textStatus, jqXHR) {
+            if (resultado !== null && resultado.data !== null && resultado.data.length > 0) {
+                $('#ruta1').attr('href', resultado.data + 'normativa-reglamento/');
+                $('#ruta2').attr('href', resultado.data + 'anunciantes-autorizaciones/');
+                $('#ruta3').attr('href', resultado.data + 'el-anuncio/');
+                $('#ruta4').attr('href', 'busqueda.html');
+                $('#ruta5').attr('href', 'resultados.html');
+                $('#ruta6').attr('href', resultado.data + 'normativa-reglamento/');
+                $('#ruta7').attr('href', resultado.data + 'anunciantes-autorizaciones/');
+                $('#ruta8').attr('href', resultado.data + 'el-anuncio/');
+                $('#ruta9').attr('href', 'busqueda.html');
+                $('#ruta10').attr('href', 'resultados.html');                
+                $("#slidedipcc").load(resultado.data + ' #advps_container5.advps-slide-container');
+            }           
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log("Error: getUrlWordPress() -> /services/urlwordpress", textStatus);
+        }
+    });
+}
+
+function getUrlWordPressResultados() {
+    $.ajax({
+        url: '/bop/services/anuncios/urlwordpress',
+        method: 'GET',
+        dataType: 'json',
+        timeout: 0, // sin tiempo de espera
+        success: function (resultado, textStatus, jqXHR) {
+            if (resultado !== null && resultado.data !== null && resultado.data.length > 0) {
+                $('#ruta1').attr('href', resultado.data + 'normativa-reglamento/');
+                $('#ruta2').attr('href', resultado.data + 'anunciantes-autorizaciones/');
+                $('#ruta3').attr('href', resultado.data + 'el-anuncio/');
+                $('#ruta4').attr('href', 'busqueda.html');
+                $('#ruta5').attr('href', 'resultados.html');
+                $('#ruta6').attr('href', 'busqueda.html');
+                $('#ruta7').attr('href', resultado.data + 'anunciantes-autorizaciones/');
+                $('#ruta8').attr('href', resultado.data + 'el-anuncio/');
+            }
+            
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log("Error: getUrlWordPress() -> /services/urlwordpress", textStatus);
+        }
+    });
+}
+
+function getUrlWordPresSumario() {
+    $.ajax({
+        url: '/bop/services/anuncios/urlwordpress',
+        method: 'GET',
+        dataType: 'json',
+        timeout: 0, // sin tiempo de espera
+        success: function (resultado, textStatus, jqXHR) {
+            if (resultado !== null && resultado.data !== null && resultado.data.length > 0) {
+                $('#ruta1').attr('href', resultado.data + 'normativa-reglamento/');
+                $('#ruta2').attr('href', resultado.data + 'anunciantes-autorizaciones/');
+                $('#ruta3').attr('href', resultado.data + 'el-anuncio/');
+                $('#ruta4').attr('href', 'busqueda.html');
+                $('#ruta5').attr('href', 'resultados.html');
+                $('#ruta6').attr('href', 'busqueda.html');
+                $('#ruta7').attr('href', resultado.data + 'anunciantes-autorizaciones/');
+                $('#ruta8').attr('href', resultado.data + 'el-anuncio/');
+            }
+            
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log("Error: getUrlWordPress() -> /services/urlwordpress", textStatus);
+        }
+    });
+}
+
+function getUrlWordPresSuscripciones() {
+    $.ajax({
+        url: '/bop/services/anuncios/urlwordpress',
+        method: 'GET',
+        dataType: 'json',
+        timeout: 0, // sin tiempo de espera
+        success: function (resultado, textStatus, jqXHR) {
+            if (resultado !== null && resultado.data !== null && resultado.data.length > 0) {
+                $('#ruta1').attr('href', resultado.data + 'normativa-reglamento/');
+                $('#ruta2').attr('href', resultado.data + 'anunciantes-autorizaciones/');
+                $('#ruta3').attr('href', resultado.data + 'el-anuncio/');
+                $('#ruta4').attr('href', 'busqueda.html');
+                $('#ruta5').attr('href', 'resultados.html');
+                $('#ruta6').attr('href', 'busqueda.html');
+                $('#ruta7').attr('href', resultado.data + 'anunciantes-autorizaciones/');
+                $('#ruta8').attr('href', resultado.data + 'el-anuncio/');
+            }
+            
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log("Error: getUrlWordPress() -> /services/urlwordpress", textStatus);
+        }
+    });
+}
+
+function getUrlWordPresHistorico() {
+    $.ajax({
+        url: '/bop/services/anuncios/urlwordpress',
+        method: 'GET',
+        dataType: 'json',
+        timeout: 0, // sin tiempo de espera
+        success: function (resultado, textStatus, jqXHR) {
+            if (resultado !== null && resultado.data !== null && resultado.data.length > 0) {
+                $('#ruta1').attr('href', resultado.data + 'normativa-reglamento/');
+                $('#ruta2').attr('href', resultado.data + 'anunciantes-autorizaciones/');
+                $('#ruta3').attr('href', resultado.data + 'el-anuncio/');
+                $('#ruta4').attr('href', 'busqueda.html');
+                $('#ruta5').attr('href', 'resultados.html');
+                $('#ruta6').attr('href', 'busqueda.html');
+                $('#ruta7').attr('href', resultado.data + 'anunciantes-autorizaciones/');
+                $('#ruta8').attr('href', resultado.data + 'el-anuncio/');
+            }
+            
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log("Error: getUrlWordPress() -> /services/urlwordpress", textStatus);
+        }
+    });
+}
+
+function cleanForm() {
+    $('#Entidad').val("");
+    $('#TipoEntidad').val("");
+    $('#GrupoEntidad').val("");
+    $('#textoLibre').val("");
+    $('#fechaIn').val("");
+    $('#fechaOut').val("");
+    $('#tipoContenido').val("");
+}
+function cleanEmail() {
+    $('#emailSuscriptor').val("");
+}
+
+function controlFiltros() {
+    var busqueda = "ba";
+    var texto = $('#textoLibre').val();
+    var tipo = $('#TipoEntidad').val();
+    var grupo = $('#GrupoEntidad').val();
+    var entidad = $('#Entidad').val();
+    var tipoc = $('#tipoContenido').val();
+    var tipos = "";
+    for (var item in tipoc) {
+        tipos = tipos + "_" + tipoc[item];
+    }
+    // Fecha Actual.
+    if ($('#fechaIn').val() != null && $('#fechaIn').val() != "") {
+        var fechaOrigen = $('#fechaIn').val();
+        var anio = String(fechaOrigen).substring(6, 10);
+        var dia = String(fechaOrigen).substring(0, 2);
+        var mes = String(fechaOrigen).substring(3, 5);
+    //    var fechaPublic = {"fechaPublic": mes + '/' + dia + '/' + anio};
+        var desde = mes + '/' + dia + '/' + anio;
+    // Campo DESDE:
+    }
+    else {
+        var desde = "";
+    }
+    if ($('#fechaOut').val() != null && $('#fechaOut').val() != "") {
+        var fechaFinal = $('#fechaOut').val();
+        var anio = String(fechaFinal).substring(6, 10);
+        var dia = String(fechaFinal).substring(0, 2);
+        var mes = String(fechaFinal).substring(3, 5);
+        var hasta =  mes + '/' + dia + '/' + anio;
+    }
+    else {
+        var hasta = "";
+    }
+    var flag = false;
+    if (texto) {
+        flag = true;
+    }
+    if (tipo && tipo != "null") {
+        flag = true;
+    }
+    if (grupo && grupo != "null") {
+        flag = true;
+    }
+    if (entidad && entidad != "null") {
+        flag = true;
+    }
+    if (tipos) {
+        flag = true;
+    }
+    if(desde) {
+        flag = true;
+    }
+    if(hasta) {
+        flag = true;
+    }
+    if (flag == true) {
+        busquedaAvanzada();
+    } else if (flag == false) {
+        window.alert("Debe añadir al menos un criterio de búsqueda"); 
+    }
+}
+
+function activarSuscripcion() {
+    var token = obtenerValorParametro("token");
+    $.ajax({
+        url: '/bop/services/suscriptores/activar',
+        method: 'GET',
+        dataType: 'json',
+        data: {"token": token},
+        timeout: 0, // sin tiempo de espera
+        success: function (resultado, textStatus, jqXHR) {
+            if (resultado.success == true) {
+                    
+            } else{
+                if (resultado.success == false && resultado.msg != null) {
+                    window.alert("Ha introducido un token inválido");
+                } else {
+                    window.alert("Se ha producido un error al tramitar su suscripción");
+                }  
+            } 
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log("Error: activarSuscripcion() -> /services/suscripcion", textStatus);
+        }
+    });
+}
+
+function desactivarSuscripcion() {
+    var token = obtenerValorParametro("token");
+    $.ajax({
+        url: '/bop/services/suscriptores/desactivar',
+        method: 'GET',
+        dataType: 'json',
+        data: {"token": token},
+        timeout: 0, // sin tiempo de espera
+        success: function (resultado, textStatus, jqXHR) {
+            if (resultado.success == true) {
+                    
+            } else{
+                if (resultado.success == false && resultado.msg != null) {
+                    window.alert("Ha introducido un token inválido");
+                } else {
+                    window.alert("Se ha producido un error al tramitar su suscripción");
+                }  
+            } 
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log("Error: desactivarSuscripcion() -> /services/suscripcion", textStatus);
+        }
+    });
+}
+
+function reportAnunciosCsv() {
+    var busqueda = obtenerValorParametro("busqueda");
+    if (busqueda == "numBop") {
+        var numBoletin = obtenerValorParametro("num");
+//        loadAnunciosAnunciantes(numBoletin);
+    } else if (busqueda == "fechaBop") {
+        var fechaBop = obtenerValorParametro("fecha");
+//        loadBopFecha(fechaBop);
+    } else if (busqueda == "tge") {
+        var tipo = obtenerValorParametro("tipo");
+        var grupo = obtenerValorParametro("grupo");
+        var entidad = obtenerValorParametro("entidad");
+        var desde = obtenerValorParametro("desde");
+        var hasta = obtenerValorParametro("hasta");
+        if (grupo == "null") {
+            grupo = -1;
+        }
+        if (entidad == "null") {
+            entidad = -1;
+        }
+        loadAnunciosTipoGrupoEntidadCSV(tipo, grupo, entidad, desde, hasta);
+    } else if (busqueda == "tc") {
+        var tipos = obtenerValorParametro("tipos");
+        var desde = obtenerValorParametro("desde");
+        var hasta = obtenerValorParametro("hasta");
+        loadAnunciosTipoContenidoCsv(tipos, desde, hasta);
+    } else if (busqueda == "ba") {
+        var texto = obtenerValorParametro("texto");
+        var tipo = obtenerValorParametro("tipo");
+        var grupo = obtenerValorParametro("grupo");
+        if (grupo == "null") {
+            grupo = -1;
+        }
+        var entidad = obtenerValorParametro("entidad");
+        if (entidad == "null") {
+            entidad = -1;
+        }
+        var tipos = obtenerValorParametro("tipos");
+        var desde = obtenerValorParametro("desde");
+        var hasta = obtenerValorParametro("hasta");
+        loadAnunciosBusqAvanzadaCSV(texto, tipo, grupo, entidad, tipos, desde, hasta);
+    }
+
+//    $.ajax({
+//        url: '/bop/services/anuncios/report/csv',
+//        method: 'GET',
+//        dataType: 'json',
+//        data: {"dataAnunciosAnunciantes": dataAnunciosAnunciantes},
+//        timeout: 0, // sin tiempo de espera
+//        success: function (resultado, textStatus, jqXHR) {
+//            
+//        },
+//        error: function (jqXHR, textStatus, errorThrown) {
+//            console.log("Error: reportAnunciosCsv() -> /services/anuncios/report/csv", textStatus);
+//        }
+//    });
+}
+
+function loadAnunciosTipoGrupoEntidadCSV(tipo, grupo, entidad, desde, hasta) {
+    var dto = {tipo: tipo, grupo: grupo, entidad: entidad, desde: desde, hasta: hasta};
+    $.ajax({
+        url: '/bop/services/anuncios/anunciosTGE/report/csv',
+        method: 'POST',
+        data: dto,
+        timeout: 0, // sin tiempo de espera
+        success: function (resultado, textStatus, jqXHR) {
+            if (resultado !== null) {
+//                if (resultado.success == true) {
+//                    var csv = JSON.parse(json.replace(/"([\w]+)":/g, function ($0, $1) { return ('"' + $1.toLowerCase() + '":'); }));
+                    downloadFile('Listado_Anuncios.csv', resultado);
+//                } if (resultado.success == false && resultado.msg != null) {
+//                    window.alert("La consulta no ha devuelto ningún resultado");
+//                } else {
+//                    window.alert("Se ha producido un error al generar el csv");
+//                } 
+            }
+            else {
+                window.alert("La consulta no ha devuelto ningún resultado")
+//                $('#contEnc').text("No se han obtenido resultados.");
+            }
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log("Error: loadAnunciosTipoGrupoEntidadCSV", textStatus, errorThrown, jqXHR);
+        }
+    });
+}
+
+function loadAnunciosTipoContenidoCsv(tipos, desde, hasta) {
+    var dto = {tipos: tipos, desde: desde, hasta: hasta};
+    $.ajax({
+        url: '/bop/services/anuncios/anunciosTC/report/csv',
+        method: 'POST',
+        data: dto,
+        timeout: 0, // sin tiempo de espera
+        success: function (resultado, textStatus, jqXHR) {
+            if (resultado !== null) {
+//                if (resultado.success == true) {
+//                    var csv = JSON.parse(json.replace(/"([\w]+)":/g, function ($0, $1) { return ('"' + $1.toLowerCase() + '":'); }));
+                    downloadFile('Listado_Anuncios.csv', resultado);
+//                } if (resultado.success == false && resultado.msg != null) {
+//                    window.alert("La consulta no ha devuelto ningún resultado");
+//                } else {
+//                    window.alert("Se ha producido un error al generar el csv");
+//                } 
+            }
+            else {
+                window.alert("La consulta no ha devuelto ningún resultado")
+//                $('#contEnc').text("No se han obtenido resultados.");
+            }
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log("Error: loadAnunciosTipoContenidoCsv", textStatus, errorThrown, jqXHR);
+        }
+    });
+}
+
+function loadAnunciosBusqAvanzadaCSV(texto, tipo, grupo, entidad, tipos, desde, hasta) {
+    
+    var dto = {};
+    if (texto) {
+        dto.texto = texto;
+    }
+    if (tipo && tipo != "null") {
+        dto.tipo = tipo;
+    }
+    if (grupo && grupo != "null") {
+        dto.grupo = grupo;
+    }
+    if (entidad && entidad != "null") {
+        dto.entidad = entidad;
+    }
+    if (tipos) {
+        dto.tipos = tipos;
+    }
+    if(desde) {
+        dto.desde = desde;
+    }
+    if(hasta) {
+        dto.hasta = hasta;
+    }
+    $.ajax({
+        url: '/bop/services/anuncios/ba/report/csv',
+        method: 'POST',
+        data: dto,
+        timeout: 0, // sin tiempo de espera
+        success: function (resultado, textStatus, jqXHR) {
+            if (resultado !== null) {
+//                if (resultado.success == true) {
+//                    var csv = JSON.parse(json.replace(/"([\w]+)":/g, function ($0, $1) { return ('"' + $1.toLowerCase() + '":'); }));
+                    downloadFile('Listado_Anuncios.csv', resultado);
+//                } if (resultado.success == false && resultado.msg != null) {
+//                    window.alert("La consulta no ha devuelto ningún resultado");
+//                } else {
+//                    window.alert("Se ha producido un error al generar el csv");
+//                } 
+            }
+            else {
+                window.alert("La consulta no ha devuelto ningún resultado")
+//                $('#contEnc').text("No se han obtenido resultados.");
+            }
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log("Error: loadAnunciosBusqAvanzadaCSV", textStatus, errorThrown, jqXHR);
+        }
+    });
+}
+
+ function downloadFile(fileName, csv) {
+    if (navigator.userAgent.indexOf('MSIE') !== -1
+        || navigator.appVersion.indexOf('Trident/') > 0) {
+        var IEwindow = window.open("", "", "Width=0px; Height=0px");
+        IEwindow.document.write('sep=,\r\n' + csv);
+        IEwindow.document.close();
+        IEwindow.document.execCommand('SaveAs', true, fileName);
+        IEwindow.close();
+    } else {
+        var aLink = document.createElement('a');
+        var evt = document.createEvent("MouseEvents");
+        evt.initMouseEvent("click", true, true, window,
+            0, 0, 0, 0, 0, false, false, false, false, 0, null);
+        aLink.download = fileName;
+        aLink.href = 'data:text/csv;charset=UTF-8,' + encodeURIComponent(csv);
+        aLink.dispatchEvent(evt);
+    }
+}
+
+function loadTemplateMail() {
+    var numBoletin = obtenerValorParametro("num");
+    $.ajax({
+        url: '/bop/services/boletines/mail',
+        method: 'GET',
+        dataType: 'json',
+        data: {"numBoletin": numBoletin},
+        timeout: 0,
+        success: function (resultado, textStatus, jqXHR) {
+            if (resultado !== null && resultado.data !== null) {
+//                var monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+//                    "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+//                var dataAnunciosAnunciantes = resultado.data;
+//                // Establecemos un formato Natural para Mostrar la fecha.               
+//                var date = new Date(dataAnunciosAnunciantes[0].fechaPublicacion)
+//                var y = date.getYear() + 1900
+//                var m = ("0" + (date.getMonth() + 1)).slice(-2);
+//                var d = date.getDate();
+//                var mn = monthNames[date.getMonth()];
+//                var fechaTexto = d + "/" + m + "/" + y;
+//                var fechaMiga = d + " de " + mn + " de " + y;
+//                var codigoVerificacion = dataAnunciosAnunciantes[0].tituloAnuncio.substring(0, 12);
+//                document.getElementById('fechaMigaPan').innerHTML = fechaMiga;
+//                document.getElementById('fechaCabecera').innerHTML = "<img src='imagenes/boletinDiaLink.png' width='25' height='25' alt=''/> " + fechaMiga;
+//                document.getElementById('csvCabecera').innerHTML = "Descargar B.O.P. " + numBoletin + " completo   ";
+                var anuncios = resultado.data.anuncios;
+                if (anuncios != null) {
+                    var lista = document.getElementById("listaanuncios");
+                    for (var i = 0; i < anuncios.length; i++) {
+                        var elemento = document.createElement("li");
+                        var enlace = document.createElement("a");
+                        var text = document.createTextNode(anuncios[i].nombreTipoEntidad + " - " + anuncios[i].nombreGrupoEntidad  + " - " + anuncios[i].nombreEntidad);
+                        enlace.setAttribute("href", resultado.data.url + "anuncio.html?csv=" + anuncios[i].csv);
+                        enlace.setAttribute("target", "_blank");
+                        enlace.setAttribute("title", "Enlace a anuncio en la aplicación del B.O.P.");
+                        enlace.appendChild(text);
+                        elemento.appendChild(enlace);
+                        text = document.createTextNode(anuncios[i].tituloAnuncio);
+                        var parrafo = document.createElement("p");
+                        parrafo.appendChild(text);
+                        elemento.appendChild(parrafo);
+                        lista.appendChild(elemento);
+                        elemento = document.createElement("br");
+                        lista.appendChild(elemento);
+                        console.log("CREADA LA LISTA");
+                    }
+                }
+//                <li>\n"
+//                <p><a href='" + enlaceCsv + "'>" + tge +"</a></p>\n"
+//                <p>" + titulo +"</p>\n"
+//                </li><br/>\n
+                
+                document.getElementById('enlbop').href = resultado.data.url + "sumario.html?busqueda=numBop&id=" + resultado.data.idBoletin;
+                document.getElementById('desbop').href = resultado.data.url + "services/boletines/contenidoPdfIdBolentin?idBoletin=" + resultado.data.idBoletin;
+                document.getElementById('desbop').innerHTML = "Descarga del boletín: " + resultado.data.fecha + " - B.O.P. nº " + resultado.data.idBoletin;
+                document.getElementById('cabhr').href = resultado.data.url;
+                
+            }
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log("Error: loadTemplateMail() -> /services/boletin/loadTemplateMail", textStatus);
+        }
+    });
+}
