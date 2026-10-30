@@ -1,13 +1,13 @@
 {
- "fecha": "2026-10-30T02:05:10+00:00",
- "fecha_madrid": "30/10 03:05",
+ "fecha": "2026-10-30T02:47:01+00:00",
+ "fecha_madrid": "30/10 03:47",
  "ventana_horas": 6.0,
  "resumen": {
-  "ejecuciones_revisadas": 116,
+  "ejecuciones_revisadas": 138,
   "fallos": 6,
   "fallos_pendientes": 0,
   "relanzados": 0,
-  "colas_largas": 0,
+  "colas_largas": 1,
   "flujos_programados_parados": [],
   "avisos_de_fuentes": 0,
   "almacen": "ok"
@@ -359,7 +359,14 @@
    ]
   }
  ],
- "colas_largas": [],
+ "colas_largas": [
+  {
+   "flujo": "Grados por tramos",
+   "id": 40987508205,
+   "en_cola_min": 64,
+   "url": "https://github.com/alvarorm931/education/actions/runs/40987508205"
+  }
+ ],
  "programados": {
   "motor.yml": {
    "ultimo_bien": "30/10 00:08",

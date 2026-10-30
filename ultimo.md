@@ -1,8 +1,8 @@
-# Vigilancia 30/10 03:05 (Madrid)
+# Vigilancia 30/10 03:47 (Madrid)
 
-- Ejecuciones revisadas (últimas 6 h): 116
+- Ejecuciones revisadas (últimas 6 h): 138
 - Fallos: 6; pendientes: 0; relanzados ahora: 0
-- Colas de más de 30 minutos: 0
+- Colas de más de 30 minutos: 1
 - Flujos programados parados: ninguno
 - Almacén S3: ok
 - Avisos de fuentes: 0
@@ -79,3 +79,4 @@ https://github.com/alvarorm931/education/actions/runs/40963881714 (intento 2, wo
       Cleaning up orphan processes
       ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/download-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
 
+- En cola 64 min: Grados por tramos https://github.com/alvarorm931/education/actions/runs/40987508205
