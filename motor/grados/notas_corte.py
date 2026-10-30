@@ -507,6 +507,63 @@ def leer_cantabria(lineas: list[str], posiciones: list[dict] | None) -> list[dic
     return filas
 
 
+# ------------------------------------------------------------------------------------------------- Burgos
+
+CUPOS_UBU = ["general", "titulados", "mayores_25", "mayores_40_45", "discapacidad", "deportistas"]
+
+
+def leer_ubu(lineas: list[str], posiciones: list[dict] | None) -> list[dict]:
+    """«Notas de corte (evolución por cursos)» de la Universidad de Burgos: plazas, titulación y, por cupo (general,
+    titulados, mayores de 25, de 40 y 45, discapacidad, deportistas), la nota de seis cursos. Las celdas vacías
+    (sin solicitudes) no salen en el texto y el PDF escribe cada fila en un solo bloque, así que se lee como imagen
+    (`notas_fuentes`, OCR_SIEMPRE) y cada cifra va a la columna del año cuyo rótulo tiene el centro más cerca. El
+    asterisco («5,000*») es que el último admitido era de un cupo no prioritario: entraron todos los prioritarios."""
+    if not posiciones or not any(p.get("ocr") for p in posiciones):
+        return []
+    filas = []
+    for pg in posiciones:
+        lns = pg.get("lineas") or []
+        cols = []
+        for ln in lns:
+            anios = [t for t in ln["trozos"] if re.fullmatch(r"20[12]\d", t[1])]
+            if len(anios) >= 12:
+                cols = [(t[0] + t[2] / 2, int(t[1])) for t in anios]
+                break
+        grupo = len({c[1] for c in cols})  # años por cupo (seis)
+        if not cols or len(cols) % grupo or len(cols) // grupo > len(CUPOS_UBU):
+            continue
+        paso = min(b[0] - a[0] for a, b in zip(cols, cols[1:]))
+        for ln in lns:
+            ts = ln["trozos"]
+            if not ts or not re.fullmatch(r"\d{1,3}", ts[0][1]):
+                continue  # las filas empiezan por las plazas
+            nombre = " ".join(t[1] for t in ts[1:] if t[0] + t[2] / 2 < cols[0][0] - paso / 2).strip()
+            if not re.match(r"(?i)(doble\s+)?grado", nombre):
+                continue
+            valores, valida = {}, True
+            for j, t in enumerate(ts):
+                m = re.fullmatch(r"(\d{1,2},\d{3})(\*?)", t[1])
+                if not m:
+                    continue
+                ast = bool(m.group(2)) or (j + 1 < len(ts) and ts[j + 1][1] == "*")
+                c = t[0] + t[2] / 2
+                k = min(range(len(cols)), key=lambda i: abs(cols[i][0] - c))
+                if abs(cols[k][0] - c) > paso / 2 or k in valores:
+                    valida = False
+                    break
+                valores[k] = (_nota(m.group(1)), ast)
+            if not valida or not valores:
+                continue
+            for k, (nota, ast) in sorted(valores.items()):
+                anio = cols[k][1]
+                filas.append({"distrito": "burgos", "curso": f"{anio}-{anio + 1}", "universidad": "Burgos",
+                              "codigo_local": None, "titulacion": nombre, "plazas": int(ts[0][1]) if k < grupo else None,
+                              "cupo": CUPOS_UBU[k // grupo], "convocatoria": None, "lista": "final",
+                              "nota": nota, "sin_plazas": False, "todos_admitidos": ast,
+                              "tipo_ultimo_admitido": "no prioritario" if ast else None, "lectura": "optica"})
+    return filas
+
+
 # ------------------------------------------------------------------------------------------------- Cataluña
 
 SIGLAS_CAT = {"UB": "Barcelona", "UAB": "Autónoma de Barcelona", "UPC": "Politécnica de Catalunya", "UPF": "Pompeu Fabra",
@@ -555,8 +612,10 @@ LECTORES = {
     "madrid": (leer_madrid, lambda d: d.get("formato") == "pdf", CITA_MADRID),
     "murcia": (leer_murcia, lambda d: d.get("formato") == "csv" and "datos.um.es" in d["url"],
                "Universidad de Murcia, datos abiertos: nota de corte de grado"),
-    "castilla-leon": (leer_usal, lambda d: "usal.es/files/acceso/notas_corte" in d["url"] and d.get("formato") == "pdf",
-                      "Universidad de Salamanca: notas de corte de grado"),
+    "castilla-leon": [(leer_usal, lambda d: "usal.es/files/acceso/notas_corte" in d["url"] and d.get("formato") == "pdf",
+                       "Universidad de Salamanca: notas de corte de grado"),
+                      (leer_ubu, lambda d: "ubu.es/sites/default/files/portal_page/files/notas_de_corte" in d["url"],
+                       "Universidad de Burgos: notas de corte (evolución por cursos)")],
     "andalucia": (leer_andalucia, lambda d: "g_not_cor_anteriores_csv.php" in d["url"] and d.get("formato") == "csv",
                   CITA_ANDALUCIA),
     "pais-vasco": (leer_ehu, lambda d: "ehu.eus" in d["url"] and d.get("formato") == "pdf",
@@ -566,7 +625,7 @@ LECTORES = {
 }
 
 
-CON_POSICIONES = {leer_cantabria}
+CON_POSICIONES = {leer_cantabria, leer_ubu}
 
 
 def leer_fuentes(carpetas: list[Path]) -> list[dict]:
@@ -587,9 +646,11 @@ def leer_fuentes(carpetas: list[Path]) -> list[dict]:
     for (distrito, _), (_, d) in sorted(docs.items()):
         if distrito not in LECTORES:
             continue
-        leer, vale, cita = LECTORES[distrito]
-        if not vale(d):
+        lectores = LECTORES[distrito] if isinstance(LECTORES[distrito], list) else [LECTORES[distrito]]
+        elegido = next(((leer, cita) for leer, vale, cita in lectores if vale(d)), None)
+        if not elegido:
             continue
+        leer, cita = elegido
         for fila in (leer(d["muestra"], d.get("posiciones")) if leer in CON_POSICIONES else leer(d["muestra"])):
             fila["fuente"] = {"cita": cita, "url": d["url"], "sha256": d["sha256"], "capturado": d.get("capturado")}
             filas.append(fila)

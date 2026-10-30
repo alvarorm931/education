@@ -221,3 +221,19 @@ def test_cantabria_comparativa_por_posicion():
     assert fis["curso"] == "2024-2025" and fis["convocatoria"] == "extraordinaria"
     assert any(x["titulacion"] == "Doble Grado en ADE y Economía" for x in f)
     assert nc.leer_cantabria(["### página 1"], None) == []
+
+
+def test_burgos_evolucion_por_posicion():
+    anios = [(1000 + i * 100, str(2021 + i % 6), 40) for i in range(12)]
+    pos = [{"pagina": 1, "ocr": True, "lineas": [
+        {"y": 50, "trozos": [[100, "2026/27", 60], [300, "TITULACIÓN", 90]] + [list(a) for a in anios]},
+        {"y": 100, "trozos": [[100, "85", 20], [300, "Grado", 50], [360, "en", 20], [390, "Enfermería", 90],
+                              [1000, "11,576", 50], [1100, "11,012", 50], [1500, "11,048", 50], [1600, "8,130", 50]]},
+        {"y": 120, "trozos": [[100, "95", 20], [300, "Grado", 50], [360, "en", 20], [390, "Derecho", 70],
+                              [1000, "7,221", 50], [1046, "*", 8]]}]}]
+    f = nc.leer_ubu(["### página 1 (lectura óptica)"], pos)
+    enf = [(x["curso"], x["cupo"], x["nota"]) for x in f if x["titulacion"] == "Grado en Enfermería"]
+    assert enf == [("2021-2022", "general", 11.576), ("2022-2023", "general", 11.012),
+                   ("2026-2027", "general", 11.048), ("2021-2022", "titulados", 8.13)]
+    der = [x for x in f if x["titulacion"] == "Grado en Derecho"][0]
+    assert der["todos_admitidos"] and der["plazas"] == 95 and der["distrito"] == "burgos"

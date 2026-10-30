@@ -42,6 +42,9 @@ MAX_DOC = 25_000_000
 MUESTRA_FILAS = 80
 # Lectura óptica (tesseract) de los PDF que son imágenes sin texto (UPV/EHU desde 2022-23); se activa con --ocr
 OCR = {"activo": False}
+# PDF de texto que se leen como imagen (con --ocr): sus tablas escriben cada fila en un solo bloque de texto y solo
+# la lectura óptica da la posición de cada cifra
+OCR_SIEMPRE = ("ubu.es/sites/default/files/portal_page/files/notas_de_corte",)
 # Posición de cada fragmento de texto de los PDF con notas (tablas con celdas vacías); se activa con --posiciones
 POSICIONES = {"activo": False}
 NOTA = re.compile(r"(?<![\d.,])(?:1[0-4]|[5-9])[.,]\d{2,3}(?![\d.,])")
@@ -333,8 +336,9 @@ def posiciones_ocr(contenido: bytes) -> list[dict]:
     return salida
 
 
-def lineas_documento(contenido: bytes, formato: str) -> tuple[list[str], int | None]:
-    """Líneas de texto de un documento (PDF con la disposición de columnas; CSV/JSON/HTML tal cual)."""
+def lineas_documento(contenido: bytes, formato: str, forzar_ocr: bool = False) -> tuple[list[str], int | None]:
+    """Líneas de texto de un documento (PDF con la disposición de columnas; CSV/JSON/HTML tal cual). Con
+    `forzar_ocr`, un PDF de texto se lee también como imagen (tablas que escriben una fila entera en un bloque)."""
     if formato == "pdf":
         from pypdf import PdfReader
 
@@ -348,7 +352,7 @@ def lineas_documento(contenido: bytes, formato: str) -> tuple[list[str], int | N
             # se conservan los espacios: la columna de cada cifra sale de su posición en la línea
             lineas += [f"### página {i}"] + [x.rstrip() for x in t.splitlines()]
         con_cifras = sum(1 for x in lineas if re.search(r"\d", x) and not x.startswith("### "))
-        if OCR["activo"] and con_cifras < 3 * len(lector.pages):
+        if OCR["activo"] and (forzar_ocr or con_cifras < 3 * len(lector.pages)):
             # PDF de imágenes (o de trazos) sin texto: lectura óptica
             ocr = lineas_ocr(contenido)
             if ocr:
@@ -378,7 +382,7 @@ def formato_de(contenido: bytes, cabecera: str, url: str) -> str:
     return "html" if "html" in cabecera else "otro"
 
 
-def medir(contenido: bytes, formato: str, filas: int = MUESTRA_FILAS) -> dict:
+def medir(contenido: bytes, formato: str, filas: int = MUESTRA_FILAS, forzar_ocr: bool = False) -> dict:
     if formato == "xlsx":
         from openpyxl import load_workbook
 
@@ -387,7 +391,7 @@ def medir(contenido: bytes, formato: str, filas: int = MUESTRA_FILAS) -> dict:
                   for fila in h.iter_rows(values_only=True)]
         paginas = None
     else:
-        lineas, paginas = lineas_documento(contenido, formato)
+        lineas, paginas = lineas_documento(contenido, formato, forzar_ocr)
     # en CSV y JSON cada línea es un registro (la nota va pegada a su separador): valen todas las que tienen cifras
     con_nota = [x for x in lineas if NOTA.search(x) or formato in ("csv", "json", "xlsx") and re.search(r"\d[.,]\d", x)]
     # con muchas filas pedidas se guarda el documento entero (rótulos de universidad, curso y columnas incluidos)
@@ -484,7 +488,7 @@ def ejecutar(salida: Path, solo: list[str] | None = None, max_minutos: float = 5
             if r is not None and r.status_code == 200 and len(r.content) <= MAX_DOC:
                 formato = formato_de(r.content, (r.headers.get("content-type") or "").lower(), u)
                 try:
-                    medida = medir(r.content, formato, filas)
+                    medida = medir(r.content, formato, filas, any(z in u for z in OCR_SIEMPRE))
                 except Exception as e:  # noqa: BLE001 - un documento roto no para el resto
                     medida = {"error": f"{type(e).__name__}: {str(e)[:160]}"}
                 if DNI.search("\n".join(medida.get("muestra") or []) + "\n".join(medida.get("cabecera") or [])):
