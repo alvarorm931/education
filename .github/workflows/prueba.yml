@@ -64,7 +64,15 @@ jobs:
           git remote add origin "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git"
           if git fetch -q --depth 1 origin sondas; then git reset -q FETCH_HEAD; fi
           git checkout -q -B sondas
-          git add "$STAMP" && git commit -qm "Prueba ${{ inputs.modulo }}" && git push -q origin sondas
+          git add "$STAMP" && git commit -qm "Prueba ${{ inputs.modulo }}"
+          # Otras ejecuciones suben a la vez a «sondas» (grados, másters): si gana otra, se rehace encima y se reintenta
+          for i in 1 2 3 4 5; do
+            git push -q origin sondas && exit 0
+            sleep $((i * 5))
+            git fetch -q --depth 1 origin sondas && git reset -q FETCH_HEAD
+            git add "$STAMP" && git commit -qm "Prueba ${{ inputs.modulo }}"
+          done
+          exit 1
       - name: Borrar la copia local (lleva el token de esta ejecución)
         if: always()
         run: rm -rf prueba
