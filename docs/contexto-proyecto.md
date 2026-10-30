@@ -43,7 +43,10 @@ ventanas al entrar, Core Web Vitals en verde, robots de búsqueda y de IA permit
 - Datos en la rama `datos` (no mezclar con `main`). Pruebas de conectores y sondas en la rama `sondas`.
 - Ejecución en GitHub Actions: `motor.yml` (BOE, extracción y procesos) dos veces al día; `autonomicos.yml`
   (un trabajo por boletín autonómico o provincial, en paralelo, `infra/autonomicos.sh`) una vez al día;
-  `mantenimiento.yml`, `prueba.yml` y `sonda.yml` bajo demanda. En repositorios públicos los ejecutores estándar no
+  `mantenimiento.yml`, `prueba.yml` y `sonda.yml` bajo demanda. `extraccion.yml` es el único flujo que recibe el
+  secreto `ANTHROPIC_API_KEY` (solo en el paso que llama a la API): tanda de prueba de la extracción de fichas de
+  másters con Claude Haiku en lote (`motor/ia/prueba_extraccion.py`). Haiku 5.5 razona por defecto y ese
+  razonamiento cuenta dentro de `max_tokens`: para extraer datos con cita se envía `thinking: {"type": "disabled"}`. En repositorios públicos los ejecutores estándar no
   consumen minutos de pago (docs.github.com, «GitHub Actions billing»); límites: 6 horas por trabajo y 20 trabajos
   a la vez en el plan gratuito.
 - El espacio de trabajo de Claude no llega a las webs de las fuentes: todo se prueba desde GitHub (sondas y pruebas;
@@ -54,12 +57,18 @@ ventanas al entrar, Core Web Vitals en verde, robots de búsqueda y de IA permit
   textos de anuncios en descarga, registro de 62 boletines.
 - Conectores autonómicos (`motor/autonomicos/`, 14): BOJA, BOCM, BOCYL, DOGV, DOG, DOGC, BOA, DOE, BOIB, BORM,
   BOC, BOPV, DOCM y BOME, con piezas comunes en `comun.py`. Faltan Asturias, Navarra, Cantabria, La Rioja y Ceuta
-  (bloquean a GitHub). Provinciales (`motor/provinciales/`, 7): Barcelona y Tarragona (plataforma común `diba.py`), Valencia
-  (portal JSF con sesión), Alicante (servicio JSON), Ciudad Real, Granada y Sevilla (plataforma común `saga.py`).
-  Siguientes por número de bases citadas en el BOE: Málaga (bloquea a GitHub), Tenerife, Badajoz, Bizkaia, Córdoba,
-  A Coruña, Zaragoza, Toledo, Castellón. Intermedios TLS que faltan en algunos servidores: `motor/certificados/`.
+  (bloquean a GitHub). Provinciales (`motor/provinciales/`, 10): Barcelona y Tarragona (plataforma común `diba.py`), Valencia
+  (portal JSF con sesión), Alicante (servicio JSON), Ciudad Real, Granada, Sevilla y Huesca (plataforma común
+  `saga.py`), Santa Cruz de Tenerife y Córdoba. Siguientes por número de bases citadas en el BOE: Málaga (bloquea a
+  GitHub), Badajoz, Bizkaia, A Coruña, Zaragoza, Toledo, Castellón, Pontevedra, Cáceres.
+- Selección por título en los BOP sin sección de personal (`es_empleo_estricto` en `motor/autonomicos/comun.py`):
+  expresión inequívoca, o puesto con nombre y trámite de selección, menos asuntos ajenos; revisada sobre 55.368
+  títulos reales (`tests/test_empleo_estricto.py`). Las expresiones que solo se usan en selección mandan sobre las
+  exclusiones por tema («técnico de comercio», «jefe de sección de urbanismo»). Intermedios TLS que faltan en algunos servidores: `motor/certificados/`.
 - Vigilancia: `motor/estado.py` escribe `datos/estado.json` (por fuente: último boletín leído, días hábiles sin
-  noticias, errores) y avisa si una lleva más de 3 días hábiles parada. Todos los conectores paran tras 8 fallos
+  noticias, errores, huecos en la numeración de los boletines) y avisa si una lleva más de 3 días hábiles parada.
+  Los huecos de numeración destaparon boletines que no se leían: extraordinarios del BOC, números del BOA y del DOG
+  en sábado o domingo, extraordinarios del BOCM (solo en su página HTML; pendiente). Todos los conectores paran tras 8 fallos
   seguidos y lo reintentan en la siguiente ejecución.
 - Catálogo territorial (`motor/catalogo/territorio.py`): 52 provincias y 8.132 municipios del INE (2026); cada
   proceso lleva provincia, comunidad y código INE del convocante cuando es inequívoco.
