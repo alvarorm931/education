@@ -76,6 +76,30 @@ def test_bonificacion_por_comunidad_solo_en_publicas():
     assert fichas.construir(cat, GEN, TARJ, DET, {})[0][0]["bonificacion"] is None
 
 
+def test_precio_de_la_norma_solo_con_precio_unico_y_centro_propio_sin_precio_en_qedu():
+    import copy
+    det = copy.deepcopy(DET)
+    det[("2500828", "28027001")]["detalle"]["precio_credito"] = None
+    cat = _cat()
+    cat[0]["universidades"][0]["comunidad"] = "Cataluña"
+    f = fichas.construir(cat, GEN, TARJ, det, {})[0][0]
+    assert f["precio_credito_norma"]["precio_credito"] == 17.69 and f["precio_primera_matricula"] == round(17.69 * 240, 2)
+    assert f["precio_credito_norma"]["url"].startswith("https://")
+    # con niveles por título (Madrid) no se deduce
+    cat[0]["universidades"][0]["comunidad"] = "Madrid (Comunidad de)"
+    f = fichas.construir(cat, GEN, TARJ, det, {})[0][0]
+    assert f["precio_credito_norma"] is None and f["precio_primera_matricula"] is None
+    # un centro adscrito fija su precio
+    cat[0]["universidades"][0]["comunidad"] = "Andalucía"
+    tarj = copy.deepcopy(TARJ)
+    tarj[("2500828", "28027001")]["tipoCentro"] = "Adscrito"
+    assert fichas.construir(cat, GEN, tarj, det, {})[0][0]["precio_credito_norma"] is None
+    # QEDU manda cuando da precio
+    cat[0]["universidades"][0]["comunidad"] = "Cataluña"
+    f = fichas.construir(cat, GEN, TARJ, DET, {})[0][0]
+    assert f["precio_credito_norma"] is None and f["precio_primera_matricula"] == round(16.92 * 240, 2)
+
+
 def _imp(valor, tipo):
     return {"valor": valor, "tipo": tipo, "verosimil": True, "contexto_sha256": "x"}
 

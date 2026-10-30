@@ -43,6 +43,25 @@ BONIFICACIONES = {
                      "créditos; no ser becario del Ministerio",
         "norma": "Acuerdo del Consell de Govern de 3-7-2026 (BOIB 84, 4-7-2026), anexo 5", "curso": "2026-2027"},
 }
+# Comunidades con un solo precio del crédito en primera matrícula para todos sus grados (universidades públicas,
+# centros propios). Se usa solo donde QEDU no da precio (sobre todo dobles grados); antes se contrastó con QEDU.
+PRECIO_UNICO = {
+    "Andalucía": {
+        "precio_credito": 12.62, "curso": "2026-2027",
+        "norma": "Decreto 98/2023 (BOJA 84, 5-5-2023): precio único de primera matrícula de grado; sigue vigente en "
+                 "2026-2027 (disposición final primera)",
+        "url": "https://oficinadeposgrado.uca.es/wp-content/uploads/2023/05/BOJA_84_23-de-mayo.pdf",
+        "capturado": "2026-10-30",
+        "contraste": "QEDU 2025-2026: 402 de las 403 ofertas con precio de centros propios de las públicas andaluzas "
+                     "están a 12,62 €/crédito; la otra es un grado conjunto internacional"},
+    "Cataluña": {
+        "precio_credito": 17.69, "curso": "2026-2027",
+        "norma": "Decreto 96/2026 (DOGC 9689, 18-6-2026): precio único de primera matrícula de grado",
+        "url": "https://www.upf.edu/documents/d/graus/decret-preus-2026-27-pdf",
+        "capturado": "2026-10-30",
+        "contraste": "QEDU 2025-2026: las 348 ofertas con precio de centros propios de las siete públicas catalanas "
+                     "están a 17,69 €/crédito"},
+}
 # Ayudas que no rebajan el precio pero devuelven lo pagado (se muestran aparte, como ayuda)
 AYUDAS = {
     "Castilla y León": {
@@ -61,3 +80,9 @@ def de_comunidad(comunidad: str | None) -> dict | None:
     if comunidad in AYUDAS:
         return {"tipo": "ayuda", **AYUDAS[comunidad]}
     return None
+
+
+def precio_unico(comunidad: str | None) -> dict | None:
+    """Precio único del crédito de grado en primera matrícula de la comunidad, con su norma (o None si la comunidad
+    fija varios niveles: entonces depende del título y no se deduce)."""
+    return dict(PRECIO_UNICO[comunidad]) if comunidad in PRECIO_UNICO else None

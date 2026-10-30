@@ -30,7 +30,7 @@ from pathlib import Path
 from motor.grados.asignaturas import comparar
 from motor.grados.catalogo import clave, clave_union, nombre_corto
 from motor.grados.generico import nombre_base
-from motor.grados.precios import de_comunidad
+from motor.grados.precios import de_comunidad, precio_unico
 
 FUENTE_QEDU = "Ministerio de Ciencia, Innovación y Universidades. QEDU"
 URL_QEDU = "https://www.ciencia.gob.es/qedu.html"
@@ -521,7 +521,18 @@ def construir(catalogo: list[dict], genericos: list[dict], tarjetas: dict, detal
             # todo el grado al precio de hoy: un curso son 60 créditos (RD 822/2021 art. 5); sin subidas futuras
             pweb = {**pweb, "precio_total_estimado": round(pweb["precio_curso"] * creditos / 60, 2),
                     "creditos": creditos}
-        if not notas and not precios and not (pweb and pweb["precio_curso"]):
+        # pública sin precio en QEDU (los dobles nunca lo traen): si su comunidad fija un precio único para todos
+        # los grados, ese es el suyo en los centros propios (los adscritos fijan el suyo); con niveles, no se deduce
+        precio_norma = None
+        if not precios and creditos and t["universidad_tipo"] == "Pública" \
+                and not re.search(r"\bjoint\b|conjunto internacional", t.get("nombre_oficial") or "", re.I):
+            propio = any(c.get("tipo_centro") == "Propio" for c in centros) if centros else any(
+                i.get("unidad_modalidad") == "Centro propio" and i.get("situacion") == "Activo"
+                for i in t.get("imparticiones") or [])
+            pu = precio_unico(t["universidades"][0].get("comunidad")) if propio else None
+            if pu:
+                precio_norma = {**pu, "centros": "propios", "creditos": creditos}
+        if not notas and not precios and not precio_norma and not (pweb and pweb["precio_curso"]):
             motivos.append("sin nota de corte ni precio")
         fichas.append({
             "codigo": t["codigo"],
@@ -538,7 +549,10 @@ def construir(catalogo: list[dict], genericos: list[dict], tarjetas: dict, detal
             "idioma_extranjero": sorted({i["idioma_extranjero"] for i in t["imparticiones"]
                                          if (i["idioma_extranjero"] or "").startswith("Sí")}),
             "centros": centros,
-            "precio_primera_matricula": round(min(precios) * creditos, 2) if precios and creditos else None,
+            "precio_primera_matricula": round(min(precios) * creditos, 2) if precios and creditos
+            else round(precio_norma["precio_credito"] * creditos, 2) if precio_norma else None,
+            # de dónde sale el precio cuando no es de QEDU: la norma de precios de la comunidad
+            "precio_credito_norma": precio_norma,
             "precio_web": pweb,
             # privada sin precio: su página del grado y lo que pide su formulario (hecho medido, sin juicio)
             "pagina_privada_sin_precio": (paginas or {}).get(t["codigo"])
@@ -613,6 +627,7 @@ def resumen(fichas: list[dict], comparativa: list[dict]) -> dict:
         "con_centros_qedu": sum(1 for f in fichas if f["centros"]),
         "con_nota_de_corte": sum(1 for f in fichas if any(c["nota_corte"] is not None for c in f["centros"])),
         "con_precio": sum(1 for f in fichas if f["precio_primera_matricula"]),
+        "con_precio_de_la_norma_autonomica": sum(1 for f in fichas if f.get("precio_credito_norma")),
         "privadas": sum(1 for f in fichas if f["universidad_tipo"] == "Privada"),
         "privadas_con_pagina_y_algun_importe": sum(1 for f in fichas if f.get("precio_web")),
         "privadas_con_precio_por_curso": sum(1 for f in fichas if (f.get("precio_web") or {}).get("precio_curso")),
