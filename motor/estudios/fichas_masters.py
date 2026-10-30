@@ -88,7 +88,7 @@ def _valor(hs: list[dict], campo: str):
 def componer(paginas_master: list[dict], hechos: dict[str, list[dict]]) -> dict:
     """Campos de la ficha desde la principal y, si falta, las subpáginas; con su fuente y avisos de conflicto."""
     orden = sorted(paginas_master, key=lambda p: (p.get("pagina") == "subpagina", p["url"]))
-    campos, distintos = {}, []
+    campos, distintos, fuentes, indice = {}, [], [], {}
     for p in orden:
         for h in hechos.get(p["url"], []):
             if h["campo"] in NUMERICOS:
@@ -98,13 +98,17 @@ def componer(paginas_master: list[dict], hechos: dict[str, list[dict]]) -> dict:
                 if h["campo"] in PRECIOS and n > PRECIO_MAXIMO:  # otra moneda (es-CO…) o mala lectura
                     continue
                 h = {**h, "valor": n}
-            v = {"valor": h["valor"], "url": h["url"], "captura_sha256": h["captura_sha256"],
-                 "extraido": h["extraido"], "cita_sha256": h.get("cita_sha256"), "pagina": p.get("pagina", "principal")}
             if h["campo"] not in campos:
-                campos[h["campo"]] = v
+                # la fuente (URL, captura, fecha) va una vez por página en «fuentes»; cada campo apunta a la suya
+                clave = (h["url"], h["captura_sha256"])
+                if clave not in indice:
+                    indice[clave] = len(fuentes)
+                    fuentes.append({"url": h["url"], "captura_sha256": h["captura_sha256"], "extraido": h["extraido"],
+                                    "pagina": p.get("pagina", "principal")})
+                campos[h["campo"]] = {"valor": h["valor"], "fuente": indice[clave], "cita_sha256": h.get("cita_sha256")}
             elif campos[h["campo"]]["valor"] != h["valor"] and h["campo"] not in ("asignaturas", "nombre"):
                 distintos.append(h["campo"])
-    return {"campos": campos, "campos_con_valores_distintos": sorted(set(distintos))}
+    return {"campos": campos, "fuentes": fuentes, "campos_con_valores_distintos": sorted(set(distintos))}
 
 
 def rescatar_oficiales(paginas: dict[str, dict], hechos: dict[str, list[dict]], cat: dict[str, dict],
@@ -221,7 +225,7 @@ def ejecutar(extracciones: list[Path], salida: Path, catalogo: Path | None = Non
         if estado in ("confirmado", "probable_oficial", "confirmado_por_nombre"):
             ficha.update(componer(ps, hechos))
         else:
-            ficha.update({"campos": {}, "campos_con_valores_distintos": []})
+            ficha.update({"campos": {}, "fuentes": [], "campos_con_valores_distintos": []})
         if t:  # fuente oficial: el catálogo del Ministerio (SIIU/RUCT)
             fuente = {"fuente": "catalogo_siiu", "url": (t.get("fuente") or {}).get("url"),
                       "capturado": (t.get("fuente") or {}).get("capturado")}

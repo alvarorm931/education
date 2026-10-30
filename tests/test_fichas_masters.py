@@ -39,7 +39,9 @@ def test_ficha_oficial_une_principal_y_subpagina_y_rechaza_pagina_de_otro_master
     fichas = {x["clave"]: x for x in map(json.loads, (tmp_path / "o/datos/estudios/masters/fichas.jsonl").read_text().splitlines())}
     uno = fichas["ruct:1"]
     assert uno["comprobacion_nombre"] == "confirmado"
-    assert uno["campos"]["precio_total"]["valor"] == 2400 and uno["campos"]["precio_total"]["pagina"] == "subpagina"
+    precio = uno["campos"]["precio_total"]
+    assert precio["valor"] == 2400 and uno["fuentes"][precio["fuente"]]["pagina"] == "subpagina"
+    assert uno["fuentes"][precio["fuente"]]["url"] == "https://u.es/m/precios"
     assert uno["oficiales"]["tipo_titulo"]["valor"] == "máster universitario oficial"
     assert fichas["ruct:2"]["comprobacion_nombre"] == "distinto" and fichas["ruct:2"]["campos"] == {}
     assert r["oficial_confirmado"] == 1 and r["oficial_distinto"] == 1
