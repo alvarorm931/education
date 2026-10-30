@@ -1,6 +1,6 @@
-# Vigilancia 30/10 13:46 (Madrid)
+# Vigilancia 30/10 13:47 (Madrid)
 
-- Ejecuciones revisadas (últimas 6 h): 141
+- Ejecuciones revisadas (últimas 6 h): 144
 - Fallos: 2; pendientes: 0; relanzados ahora: 0
 - Colas de más de 30 minutos: 4
 - Flujos programados parados: ninguno
@@ -33,7 +33,7 @@ https://github.com/alvarorm931/education/actions/runs/41018014171 (intento 1, wo
       2 failed, 586 passed, 1 skipped in 50.77s
       ##[error]Process completed with exit code 1.
 
-- En cola 33 min: Prueba de conector https://github.com/alvarorm931/education/actions/runs/41053708492
-- En cola 33 min: Sonda de fuentes https://github.com/alvarorm931/education/actions/runs/41053644182
-- En cola 36 min: Boletines autonómicos https://github.com/alvarorm931/education/actions/runs/41053362726
-- En cola 315 min: Boletines autonómicos https://github.com/alvarorm931/education/actions/runs/41020598739
+- En cola 34 min: Prueba de conector https://github.com/alvarorm931/education/actions/runs/41053708492
+- En cola 35 min: Sonda de fuentes https://github.com/alvarorm931/education/actions/runs/41053644182
+- En cola 37 min: Boletines autonómicos https://github.com/alvarorm931/education/actions/runs/41053362726
+- En cola 316 min: Boletines autonómicos https://github.com/alvarorm931/education/actions/runs/41020598739
