@@ -36,3 +36,9 @@ def test_candidatos_sin_subpaginas():
                           "https://www.unir.net/artes/master-cine/plan-de-estudios/",
                           "https://www.unir.net/artes/master-danza/"]}
     assert pe.candidatos(info, 5) == ["https://www.unir.net/artes/master-cine/", "https://www.unir.net/artes/master-danza/"]
+
+
+def test_sin_razonamiento_y_max_tokens():
+    reqs = [{"custom_id": "a", "params": {"model": "claude-haiku-5-5", "max_tokens": 3000}}]
+    r = pe.ajustar(reqs, razonamiento=False, max_tokens=8000)[0]["params"]
+    assert r["thinking"] == {"type": "disabled"} and r["max_tokens"] == 8000

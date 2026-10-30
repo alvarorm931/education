@@ -46,6 +46,7 @@ UMBRAL_TOKENS = 100_000  # por encima, Haiku 5.5 cobra la entrada a 0,25 $/MTok 
 DOMINIOS = ("www.unir.net", "www.esic.edu", "www.eae.es", "www.nebrija.com", "www.eoi.es", "www.cef.es",
             "www.obsbusiness.school", "www.structuralia.com", "www.ucam.edu", "www.ucavila.es",
             "www.iebschool.com", "www.isdi.education", "www.eude.es", "www.upm.es")
+LISTADOS = ("opiniones", "collections", "course-category", "categoria", "category", "testimonios")
 SUBPAGINA = ("acceso", "plan-de-estudios", "salidas-profesionales", "admision", "becas", "precio", "precios",
              "profesorado", "contacto", "metodologia", "titulacion", "requisitos", "faq", "opiniones")
 
@@ -55,7 +56,7 @@ def candidatos(info: dict, n: int) -> list[str]:
     vistos, out = set(), []
     for u in info.get("programas") or []:
         tramos = [t for t in urlparse(u).path.split("/") if t]
-        if not tramos or tramos[-1].lower() in SUBPAGINA or u in vistos:
+        if not tramos or tramos[-1].lower() in SUBPAGINA or u in vistos or any(t.lower() in LISTADOS for t in tramos):
             continue
         if rastreador.es_programa(u):
             vistos.add(u)
@@ -107,8 +108,22 @@ def _api(metodo: str, url: str, **kw) -> requests.Response:
     return r
 
 
-def enviar(lote: Path) -> dict:
-    reqs = [json.loads(l) for l in lote.read_text(encoding="utf-8").splitlines() if l.strip()]
+def ajustar(reqs: list[dict], razonamiento: bool, max_tokens: int | None) -> list[dict]:
+    """Claude Haiku 5.5 razona por defecto (razonamiento adaptativo, esfuerzo «medium») y ese razonamiento cuenta
+    dentro de max_tokens: en la primera prueba (30/10/2026) se comió los 3.000 tokens en 16 de 20 páginas y no
+    quedó respuesta. Para copiar datos con su cita no hace falta: se desactiva (permitido en Haiku 5.5 hasta el
+    esfuerzo «high», https://platform.claude.com/docs/en/build-with-claude/effort)."""
+    for r in reqs:
+        if not razonamiento:
+            r["params"]["thinking"] = {"type": "disabled"}
+        if max_tokens:
+            r["params"]["max_tokens"] = max_tokens
+    return reqs
+
+
+def enviar(lote: Path, razonamiento: bool = False, max_tokens: int | None = None) -> dict:
+    reqs = ajustar([json.loads(l) for l in lote.read_text(encoding="utf-8").splitlines() if l.strip()],
+                   razonamiento, max_tokens)
     return _api("POST", extraer.API, json={"requests": reqs}).json()
 
 
@@ -143,7 +158,7 @@ def recoger(b: dict, paginas: dict[str, dict], salida: Path) -> dict:
     """Suma el uso de cada petición y comprueba las citas (si están las páginas)."""
     r = _api("GET", b["results_url"], timeout=300)
     uso_total = {k: 0 for k in PRECIO}
-    filas, hechos, tipos = [], [], {}
+    filas, hechos, tipos, tipos_bloque = [], [], {}, {}
     for linea in r.text.splitlines():
         x = json.loads(linea)
         tipo = x["result"]["type"]
@@ -155,6 +170,8 @@ def recoger(b: dict, paginas: dict[str, dict], salida: Path) -> dict:
         msg = x["result"]["message"]
         uso = {k: int(msg.get("usage", {}).get(k) or 0) for k in PRECIO}
         crudo = "".join(c.get("text", "") for c in msg.get("content", []))
+        for c in msg.get("content", []):
+            tipos_bloque[c.get("type")] = tipos_bloque.get(c.get("type"), 0) + 1
         for k in uso_total:
             uso_total[k] += uso[k]
         p = paginas.get(x["custom_id"])
@@ -179,7 +196,8 @@ def recoger(b: dict, paginas: dict[str, dict], salida: Path) -> dict:
     total = coste(uso_total)
     por_pagina = total / len(ok) if ok else 0
     resumen = {
-        "lote": b["id"], "modelo": extraer.MODELO, "estado": b.get("processing_status"),
+        "lote": b["id"], "modelo": extraer.MODELO,
+        "tipos_de_bloque": tipos_bloque, "estado": b.get("processing_status"),
         "creado": b.get("created_at"), "terminado": b.get("ended_at"), "cuentas": b.get("request_counts"),
         "resultados": tipos, "tokens": uso_total, "coste_usd": round(total, 4),
         "coste_por_pagina_usd": round(por_pagina, 6),
@@ -208,6 +226,8 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--maximo", type=int, default=20)
     p.add_argument("--esperar-min", type=float, default=75)
     p.add_argument("--recoger", help="id de un lote ya enviado")
+    p.add_argument("--con-razonamiento", action="store_true", help="dejar el razonamiento adaptativo por defecto")
+    p.add_argument("--max-tokens", type=int, default=8000)
     p.add_argument("--paginas-dir", type=Path, default=Path("/tmp/paginas-prueba"),
                    help="dónde quedan las páginas (fuera de lo que se publica)")
     p.add_argument("--salida", type=Path, required=True)
@@ -233,9 +253,10 @@ def main(argv: list[str] | None = None) -> int:
         "".join(json.dumps({k: x[k] for k in ("url", "sha256", "dominio", "reserva_tdm", "caracteres_visibles")},
                            ensure_ascii=False) + "\n" for x in paginas), encoding="utf-8")
     print(f"Páginas: {len(paginas)}; peticiones: {prep}")
-    b = enviar(a.paginas_dir / "lote.jsonl")
+    b = enviar(a.paginas_dir / "lote.jsonl", a.con_razonamiento, a.max_tokens)
     (destino / "lote.json").write_text(json.dumps({"id": b["id"], "enviado": b.get("created_at"),
-                                                   "peticiones": prep["peticiones"]}), encoding="utf-8")
+                                                   "peticiones": prep["peticiones"], "razonamiento": a.con_razonamiento,
+                                                   "max_tokens": a.max_tokens}), encoding="utf-8")
     print(f"Lote enviado: {b['id']}")
     b = esperar(b["id"], a.esperar_min)
     if b.get("processing_status") != "ended":
