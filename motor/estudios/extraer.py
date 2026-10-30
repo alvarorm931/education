@@ -435,7 +435,8 @@ def capturar(urls: list[str], pausa: float = 1.0, hilos: int = 12, guarda: Guard
 
 # ----------------------------------------------------------------------------- tanda de extracción
 
-META = ("proveedor", "grupo", "codigo_ruct", "codigos_ruct")
+META = ("proveedor", "grupo", "codigo_ruct", "codigos_ruct", "pagina", "principal")
+MIN_CARACTERES = 200  # menos texto que esto: página vacía, de aviso o que se pinta con JavaScript; no se envía
 
 
 def lote(muestra: Path, salida: Path, esperar_min: float = 45, max_paginas: int | None = None, desde: int = 0,
@@ -465,6 +466,10 @@ def lote(muestra: Path, salida: Path, esperar_min: float = 45, max_paginas: int 
                 cuentas["reserva_tdm"] += 1
             elif texto is None:
                 cuentas[pg.get("motivo", "error")] += 1
+            elif len(texto) < MIN_CARACTERES:
+                cuentas["sin_texto_suficiente"] += 1
+                pg["motivo"] = "sin_texto_suficiente"
+                pg["caracteres_texto"] = len(texto)
             else:
                 cid = id_pagina(pg["url"], pg["sha256"])
                 textos[cid] = (pg, texto)
@@ -599,19 +604,25 @@ def lista_oficiales(paginas_oficiales: Path, salida: Path, estados: tuple[str, .
         cuentas[x.get("estado")] += 1
         if x.get("estado") not in estados or not x.get("url"):
             continue
-        f = por_url.setdefault(x["url"], {"url": x["url"], "grupo": "oficial", "estado_emparejado": x["estado"],
-                                          "codigos_ruct": []})
-        f["codigos_ruct"].append(x["codigo_ruct"])
-        if x["estado"] == "unido":
-            f["estado_emparejado"] = "unido"
-    filas = sorted(por_url.values(), key=lambda f: (f["estado_emparejado"] != "unido", f["url"]))
+        for u, tipo in [(x["url"], "principal")] + [(s, "subpagina") for s in x.get("subpaginas", [])]:
+            f = por_url.setdefault(u, {"url": u, "grupo": "oficial", "estado_emparejado": x["estado"], "pagina": tipo,
+                                       "codigos_ruct": [], **({"principal": x["url"]} if tipo == "subpagina" else {})})
+            if x["codigo_ruct"] not in f["codigos_ruct"]:
+                f["codigos_ruct"].append(x["codigo_ruct"])
+            if x["estado"] == "unido":
+                f["estado_emparejado"] = "unido"
+            if tipo == "principal":
+                f["pagina"] = "principal"
+                f.pop("principal", None)
+    filas = sorted(por_url.values(), key=lambda f: (f["estado_emparejado"] != "unido", f["pagina"] != "principal", f["url"]))
     for f in filas:
         f["codigo_ruct"] = f["codigos_ruct"][0]
     salida.parent.mkdir(parents=True, exist_ok=True)
     salida.write_text("".join(json.dumps(f, ensure_ascii=False) + "\n" for f in filas), encoding="utf-8")
     return {"masters": dict(cuentas), "urls": len(filas),
             "urls_unido": sum(1 for f in filas if f["estado_emparejado"] == "unido"),
-            "urls_con_varios_codigos": sum(1 for f in filas if len(f["codigos_ruct"]) > 1)}
+            "urls_con_varios_codigos": sum(1 for f in filas if len(f["codigos_ruct"]) > 1),
+            "subpaginas": sum(1 for f in filas if f["pagina"] == "subpagina")}
 
 
 def main() -> None:

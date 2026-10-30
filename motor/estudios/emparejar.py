@@ -13,12 +13,13 @@ Uso:
 from __future__ import annotations
 
 import argparse
+import html
 import json
 import re
 import unicodedata
 from collections import Counter
 from pathlib import Path
-from urllib.parse import unquote, urlparse
+from urllib.parse import parse_qsl, unquote, urlparse
 
 from motor.estudios.censo import dominio_registrado
 
@@ -28,7 +29,18 @@ semipresencial distancia mu mba degree in of and the by""".split())
 SUBPAGINAS = re.compile(r"^(acceso|admision|admisiones|profesorado|claustro|plan-de-estudios|programa|temario|salidas|"
                         r"salidas-profesionales|precio|precios|becas|financiacion|metodologia|titulacion|investigacion|"
                         r"practicas|calidad|horarios?|calendario|requisitos|matricula|preinscripcion|faq|opiniones|"
-                        r"presentacion|competencias|objetivos|informacion|contacto|documentacion|guias?-docentes?)$")
+                        r"presentacion|competencias|objetivos|informacion|contacto|documentacion|guias?-docentes?|"
+                        r"asignaturas|estructura|plan-estudios|profesores|docentes|equipo-docente|noticias)$")
+# Parámetros de la URL que no distinguen un programa de otro (paginación, idioma, seguimiento): se quitan. Los demás
+# se conservan: en muchas webs el programa solo cambia en la consulta (uab.cat/…-1096480962610.html?param1=…).
+QUERY_FUERA = re.compile(r"^(utm_\w*|lang|language|idioma|hl|locale|start|limitstart|page|pagina|pag|p|sort|order|"
+                         r"orderby|ref|fbclid|gclid|mc_\w*|_ga|print|share|tab|s)$", re.I)
+EXTENSION = re.compile(r"\.(html?|php|aspx?|jsp)$", re.I)
+# Subpáginas con lo que más falta en la ficha principal: precio, plan de estudios, acceso, horario…
+SUBPAGINA_UTIL = re.compile(r"(precio|tasas|becas|financiacion|plan|asignaturas|estructura|programa|temario|acceso|"
+                            r"admision|requisitos|preinscripcion|matricula|metodologia|evaluacion|horario|calendario|"
+                            r"practicas|plazas)", re.I)
+MAX_SUBPAGINAS = 6
 MODALIDADES = re.compile(r"[-_](presencial|semipresencial|online|a-distancia|distancia|virtual|hibrido|blended)$")
 UMBRAL = 0.75
 MARGEN = 0.15
@@ -47,18 +59,51 @@ def palabras_nombre(nombre: str) -> set[str]:
 
 
 def palabras_url(url: str) -> set[str]:
-    partes = [p for p in urlparse(url).path.split("/") if p]
+    partes = [EXTENSION.sub("", p) for p in urlparse(url).path.split("/") if p]
     tramo = " ".join(partes[-2:]) if partes else ""
     return {w for w in re.findall(r"[a-z0-9]+", _plano(tramo)) if w not in VACIAS and len(w) > 1}
 
 
-def raiz_programa(url: str) -> str:
-    """Quita las subpáginas habituales de una ficha (/acceso, /profesorado, /plan-de-estudios…)."""
+def raiz_programa(url: str, quitar_subpaginas: bool = True) -> str:
+    """Forma normalizada de la ficha para compararla: sin subpáginas habituales (/acceso, /profesorado,
+    /asignaturas.html…), con «/» final y solo con los parámetros que distinguen un programa. Es una clave de
+    comparación, no una dirección que exista: para pedir la página se usa `url_real`."""
     u = urlparse(url)
     partes = [p for p in u.path.split("/") if p]
-    while len(partes) > 1 and SUBPAGINAS.match(partes[-1].lower()):
+    sub = False
+    while quitar_subpaginas and len(partes) > 1 and SUBPAGINAS.match(EXTENSION.sub("", partes[-1].lower())):
         partes.pop()
-    return f"{u.scheme}://{u.netloc}/" + "/".join(partes) + "/"
+        sub = True
+    q = "" if sub else "&".join(sorted(f"{k}={v}" for k, v in parse_qsl(u.query, keep_blank_values=True)
+                                       if not QUERY_FUERA.match(k)))
+    return f"{u.scheme}://{u.netloc}/" + "/".join(partes) + "/" + (f"?{q}" if q else "")
+
+
+def url_real(raiz: str, originales: list[str]) -> tuple[str, bool]:
+    """(URL, deducida). La de la ficha misma si se encontró; si solo se vieron sus subpáginas (/acceso,
+    /plan-de-estudios…), la carpeta de la que cuelgan cuando es una carpeta (sin extensión ni consulta); si no,
+    la subpágina más corta. Nunca una dirección con «/» añadida detrás de «.html»."""
+    if not originales:
+        return raiz, True
+    exactas = [u for u in originales if raiz_programa(u, False) == raiz]
+    if exactas:
+        return min(exactas, key=lambda u: ("?" in u and "?" not in raiz, len(u), u)), False
+    camino = urlparse(raiz).path.rstrip("/").rsplit("/", 1)[-1]
+    if "?" not in raiz and not EXTENSION.search(camino):
+        return raiz, True
+    return min(originales, key=lambda u: (len(u), u)), False
+
+
+def subpaginas_utiles(raiz: str, originales: list[str], principal: str | None) -> list[str]:
+    """Subpáginas de la ficha con datos que la principal no suele traer (precio, plan, acceso, horario…)."""
+    out = []
+    for u in sorted(set(originales), key=lambda u: (len(u), u)):
+        if u == principal or raiz_programa(u, False) == raiz:
+            continue
+        ultimo = EXTENSION.sub("", urlparse(u).path.rstrip("/").rsplit("/", 1)[-1])
+        if SUBPAGINA_UTIL.search(ultimo) and not re.search(r"(?i)(cod)?asignatura=", u):
+            out.append(u)
+    return out[:MAX_SUBPAGINAS]
 
 
 def sin_modalidad(url: str) -> str:
@@ -92,7 +137,7 @@ def misma_ficha(a: str, b: str) -> bool:
     odontologia.ucm.es/…/master-x-plazas)."""
     if not a or not b:
         return False
-    x, y = sin_idioma(a).rstrip("/"), sin_idioma(b).rstrip("/")
+    x, y = EXTENSION.sub("", sin_idioma(a).rstrip("/")), EXTENSION.sub("", sin_idioma(b).rstrip("/"))
     if x == y or x.startswith(y + "/") or y.startswith(x + "/"):
         return True
     if dominio_registrado(a) != dominio_registrado(b):
@@ -126,7 +171,15 @@ def emparejar(titulos: list[dict], urls: list[str], textos: dict[str, str] | Non
     """textos: URL → texto del enlace que lleva a ella («Máster Universitario en …»). Cuando lo hay, se
     compara con el nombre oficial en vez de la URL (muchas webs usan URL opacas: ?id=3329, /1371206754147/)."""
     textos = textos or {}
-    raices = sorted({raiz_programa(u) for u in urls if not HOST_OTRO_PAIS.match(urlparse(u).netloc)})
+    originales: dict[str, list[str]] = {}
+    for u in urls:
+        u = html.unescape(u)  # «&amp;» de los enlaces y sitemaps
+        if not HOST_OTRO_PAIS.match(urlparse(u).netloc):
+            originales.setdefault(raiz_programa(u), []).append(u)
+    raices = sorted(originales)
+    reales = {r: url_real(r, v) for r, v in originales.items()}
+    real = {r: v[0] for r, v in reales.items()}
+    textos = {html.unescape(u): t for u, t in textos.items()}
     texto_raiz: dict[str, str] = {}
     for u, t in textos.items():
         texto_raiz.setdefault(raiz_programa(u), t)
@@ -140,7 +193,10 @@ def emparejar(titulos: list[dict], urls: list[str], textos: dict[str, str] | Non
         # la misma ficha en varias modalidades o idiomas no es un empate: son la misma oferta
         if puntos:
             iguales = [u for p, u in puntos if p == mejor[0] and misma_ficha(u, mejor[1])]
-            mejor = (mejor[0], min(iguales, key=lambda u: (bool(SUFIJO_SUBPAGINA.search(urlparse(u).path.rstrip("/"))),
+            # entre raíces empatadas, antes la que tiene página propia que la que solo se vio por sus subpáginas
+            mejor = (mejor[0], min(iguales, key=lambda u: (reales.get(u, ("", True))[1],
+                                                           raiz_programa(real.get(u, u), False) != u,
+                                                           bool(SUFIJO_SUBPAGINA.search(urlparse(u).path.rstrip("/"))),
                                                            bool(IDIOMA.search(u)) and not re.search(r"/(es|cas|esp)(/|$)", u),
                                                            not urlparse(u).netloc.startswith("www."), len(u))))
         rivales = [p for p, u in puntos if not misma_ficha(u, mejor[1] or "")]
@@ -158,10 +214,14 @@ def emparejar(titulos: list[dict], urls: list[str], textos: dict[str, str] | Non
             estado = "dudoso"  # varias páginas igual de buenas (idiomas, modalidades): revisar
         else:
             estado = "sin_pagina"
+        url = real.get(mejor[1], mejor[1]) if estado != "sin_pagina" else None
         salida.append({"codigo_ruct": t["codigo_ruct"], "nombre_oficial": t["nombre_oficial"], "estado": estado,
-                       "url": mejor[1] if estado != "sin_pagina" else None, "puntuacion": mejor[0],
-                       "urls_modalidad": modalidades if estado == "unido" and len(modalidades) > 1 else [],
-                       "alternativas": [{"url": u, "puntuacion": p} for p, u in puntos[1:]]})
+                       "url": url, "puntuacion": mejor[0],
+                       "url_es_subpagina": bool(url) and raiz_programa(url, False) != mejor[1],
+                       "url_deducida": bool(url) and reales.get(mejor[1], ("", True))[1],
+                       "subpaginas": subpaginas_utiles(mejor[1], originales.get(mejor[1], []), url) if url else [],
+                       "urls_modalidad": [real.get(u, u) for u in modalidades] if estado == "unido" and len(modalidades) > 1 else [],
+                       "alternativas": [{"url": real.get(u, u), "puntuacion": p} for p, u in puntos[1:]]})
     return salida
 
 

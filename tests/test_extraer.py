@@ -64,6 +64,7 @@ def test_lote_completo_sin_red(tmp_path, monkeypatch):
         {"url": urls[0], "estado_http": 200, "sha256": "abc", "html": pagina, "reserva_tdm": False},
         {"url": "https://y.es/m", "estado_http": 200, "sha256": "def", "html": pagina, "reserva_tdm": True}])
     monkeypatch.setenv("ANTHROPIC_API_KEY", "prueba")
+    monkeypatch.setattr(e, "MIN_CARACTERES", 10)  # páginas de prueba cortas
     enviado = {}
 
     class R:
@@ -172,6 +173,7 @@ def test_lote_guarda_lo_ajeno_solo_en_el_almacen_y_se_puede_retomar(tmp_path, mo
         return [fila]
 
     monkeypatch.setattr(e, "capturar", capturar)
+    monkeypatch.setattr(e, "MIN_CARACTERES", 10)
     enviado = {}
     _api_simulada(monkeypatch, ["in_progress"] * 1000, enviado)  # no termina en esta ejecución
     (tmp_path / "m.jsonl").write_text(js.dumps({"url": "https://x.es/master", "codigos_ruct": ["4310000"]}) + "\n")
@@ -208,15 +210,16 @@ def test_guarda_no_insiste_tras_cinco_fallos():
 def test_lista_oficiales_une_codigos_por_url(tmp_path):
     import json as js
 
-    filas = [{"codigo_ruct": "1", "estado": "unido", "url": "https://u.es/m"},
+    filas = [{"codigo_ruct": "1", "estado": "unido", "url": "https://u.es/m", "subpaginas": ["https://u.es/m/precios"]},
              {"codigo_ruct": "2", "estado": "dudoso", "url": "https://u.es/m"},
              {"codigo_ruct": "3", "estado": "dudoso", "url": "https://v.es/m"},
              {"codigo_ruct": "4", "estado": "sin_pagina", "url": None}]
     (tmp_path / "p.jsonl").write_text("".join(js.dumps(f) + "\n" for f in filas))
     r = e.lista_oficiales(tmp_path / "p.jsonl", tmp_path / "m.jsonl")
-    assert r["urls"] == 2 and r["urls_unido"] == 1 and r["urls_con_varios_codigos"] == 1
+    assert r["urls"] == 3 and r["urls_unido"] == 2 and r["urls_con_varios_codigos"] == 1 and r["subpaginas"] == 1
     m = [js.loads(l) for l in (tmp_path / "m.jsonl").read_text().splitlines()]
-    assert m[0]["codigos_ruct"] == ["1", "2"] and m[0]["estado_emparejado"] == "unido"
+    assert m[0]["codigos_ruct"] == ["1", "2"] and m[0]["estado_emparejado"] == "unido" and m[0]["pagina"] == "principal"
+    assert m[1]["url"] == "https://u.es/m/precios" and m[1]["principal"] == "https://u.es/m"
 
 
 def test_capturar_guarda_original_salvo_reserva_tdm(monkeypatch):
@@ -250,3 +253,14 @@ def test_capturar_guarda_original_salvo_reserva_tdm(monkeypatch):
     assert "texto" not in por["https://b.es/reservada"]
     assert por["https://c.es/nada"]["motivo"] == "robots_o_sin_respuesta"
     assert len(almacen.objetos) == 1  # m1 y m2 tienen el mismo contenido: una sola clave, sin sobrescribir
+
+
+def test_pagina_sin_texto_no_se_envia(tmp_path, monkeypatch):
+    import json as js
+    monkeypatch.setattr(e, "capturar", lambda urls, **kw: [
+        {"url": urls[0], "estado_http": 200, "sha256": "a", "reserva_tdm": False, "texto": "Cargando…"}])
+    llamadas = []
+    monkeypatch.setattr(e.requests, "post", lambda *a, **k: llamadas.append(1))
+    (tmp_path / "m.jsonl").write_text(js.dumps({"url": "https://x.es/m"}) + "\n")
+    res = e.lote(tmp_path / "m.jsonl", tmp_path / "o", guarda=e.Guarda(None))
+    assert res["sin_texto_suficiente"] == 1 and not llamadas

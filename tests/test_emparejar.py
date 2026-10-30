@@ -29,8 +29,8 @@ def test_empareja_por_texto_del_enlace_si_la_url_es_opaca():
     textos = {urls[0]: "Máster Universitario en Ingeniería Informática",
               urls[1]: "Máster Universitario en Derecho de las Telecomunicaciones, Protección de Datos y Sociedad de la Información"}
     r = {x["codigo_ruct"]: x for x in e.emparejar(titulos, urls, textos)}
-    assert r["4310001"]["estado"] == "unido" and r["4310001"]["url"].endswith("1371210340413/")
-    assert r["4310002"]["url"].endswith("1371212345678/")
+    assert r["4310001"]["estado"] == "unido" and r["4310001"]["url"] == urls[0]  # la dirección real, tal cual
+    assert r["4310002"]["url"] == urls[1]
     assert all(x["estado"] == "sin_pagina" for x in e.emparejar(titulos, urls))  # sin textos, la URL no dice nada
 
 
@@ -40,8 +40,8 @@ def test_tramos_pegados_e_idiomas():
          {"codigo_ruct": "2", "nombre_oficial": "Máster Universitario en Lengua Española por la Universidad Complutense de Madrid"}]
     urls = ["https://www.ucm.es/estudios/master-antropologiafisica", "https://www.ucm.es/estudios/master-lenguaespanola"]
     r = {x["codigo_ruct"]: x for x in e.emparejar(t, urls)}
-    assert r["2"]["estado"] == "unido" and r["2"]["url"].endswith("master-lenguaespanola/")
-    assert r["1"]["url"] is None or r["1"]["url"].endswith("master-antropologiafisica/")
+    assert r["2"]["estado"] == "unido" and r["2"]["url"] == urls[1]
+    assert r["1"]["url"] is None or r["1"]["url"] == urls[0]
     t2 = [{"codigo_ruct": "3", "nombre_oficial": "Máster Universitario en Advocacia i Procura por la Universitat Jaume I"}]
     urls2 = ["https://www.uji.es/es/masters/advocacia-procura/", "https://www.uji.es/ca/masters/advocacia-procura/",
              "https://www.uji.es/en/masters/advocacia-procura/"]
@@ -78,3 +78,21 @@ def test_ejecutar_con_censo_rastreo_y_commoncrawl(tmp_path):
     (tmp_path / "cc" / "urls_x.jsonl").write_text(json.dumps({"dominio": "ucm.es", "urls": ["https://www.ucm.es/estudios/master-lenguaespanola"]}))
     res = e.ejecutar(tmp_path / "cat.jsonl", tmp_path / "censo.jsonl", [tmp_path / "r"], tmp_path / "out", tmp_path / "cc")
     assert res == {"unido": 1, "sin_urls_de_la_universidad": 1}
+
+
+def test_url_real_sin_barra_inventada_y_programas_por_consulta():
+    """La unión devolvía la clave normalizada («….html/»), que da 404 o una página vacía: ahora, la URL encontrada."""
+    from motor.estudios import emparejar as e
+    t = [{"codigo_ruct": "1", "nombre_oficial": "Máster Universitario en Ingeniería Industrial por la Universidad Nacional de Educación a Distancia"}]
+    urls = ["https://www.uned.es/estudios/masteres/master-universitario-en-ingenieria-industrial.html",
+            "https://www.uned.es/estudios/masteres/master-universitario-en-ingenieria-industrial/asignaturas.html?codAsignatura=1"]
+    x = e.emparejar(t, urls)[0]
+    assert x["estado"] in {"unido", "dudoso"} and x["url"] == urls[0] and not x["url_es_subpagina"]
+    # mismo camino, programa distinto en la consulta: no se mezclan; la paginación sí se quita
+    a = "https://www.uab.cat/web/estudiar/masters/informacion-general/-1096480962610.html?param1=1345716413004"
+    b = "https://www.uab.cat/web/estudiar/masters/informacion-general/-1096480962610.html?param1=1345740334958"
+    assert e.raiz_programa(a) != e.raiz_programa(b)
+    assert e.raiz_programa("https://x.es/master-y?start=20") == e.raiz_programa("https://x.es/master-y?start=40")
+    textos = {a: "Máster Universitario en Química Industrial", b: "Máster Universitario en Historia del Arte"}
+    t2 = [{"codigo_ruct": "2", "nombre_oficial": "Máster Universitario en Historia del Arte por la Universitat Autònoma de Barcelona"}]
+    assert e.emparejar(t2, [a, b], textos)[0]["url"] == b
