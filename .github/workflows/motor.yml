@@ -59,9 +59,10 @@ jobs:
           git add -A
           git diff --cached --quiet && exit 0
           git commit -qm "$1"
-          for i in 1 2 3 4 5 6 7 8; do
+          # Con muchas cargas de boletines subiendo a la vez, hasta 16 intentos (unos 9 minutos en total)
+          for i in $(seq 1 16); do
             git push -q origin datos && exit 0
-            sleep $(( i * 4 + RANDOM % 7 ))
+            sleep $(( (i < 8 ? i : 8) * 4 + RANDOM % 7 ))
             git fetch -q --depth 100 origin datos && git rebase -q origin/datos || { git rebase --abort; echo "::warning::$1: la subida choca con otra"; exit 1; }
           done
           echo "::warning::$1: no se pudo subir"
@@ -88,7 +89,8 @@ jobs:
             RESTA=$(( (FIN - $(date +%s)) / 60 ))
             [ "$RESTA" -lt 1 ] && break
             python -m motor.boe.texto --pendientes --salida salida --max 1500 --max-minutos "$RESTA" | tee tanda.txt | tail -n 3 || true
-            ./guardar.sh "BOE: textos de anuncios"
+            # Si la subida choca, la tanda queda guardada en local y sube con la siguiente: no se para la pasada
+            ./guardar.sh "BOE: textos de anuncios" || echo "::warning::BOE textos: la subida se reintenta con la siguiente tanda"
             grep -q "Documentos a descargar: 0" tanda.txt && break
           done
 

@@ -7,7 +7,9 @@ proceso»), por este orden y solo cuando el candidato es único:
   2. cita de la convocatoria en el título: «convocado por Resolución de 15 de julio de 2026» (u «Orden
      HFP/123/2026») del mismo órgano convocante; si hay varias de ese día, la del mismo puesto;
   3. número de expediente o de proceso («proceso selectivo 154CO/22») del mismo convocante;
-  4. convocante + puesto (+ turno, si consta), con la convocatoria anterior al acto y de los tres años previos.
+  4. convocante + puesto (+ turno, si consta), con la convocatoria anterior al acto y de los tres años previos;
+     sin puesto en el título, la única convocatoria del convocante en el año anterior (listas, tribunal, examen y
+     resultados).
 
 Lo que no se une con seguridad va a la cola de huérfanos con el motivo; nunca se descarta. Cada unión guarda cómo
 se ha hecho («motivo»), para poder revisarla y rehacerla.
@@ -64,6 +66,7 @@ RE_LIBRE = re.compile(r"\b(?:turno libre|acceso libre|torn lliure|acc[eé]s lliu
 RE_PROVISIONAL = re.compile(r"\bprovisional")
 RE_DEFINITIVA = re.compile(r"\bdefinitiv")
 VENTANA_DIAS = 3 * 366
+UNICO_TIPOS = {"admitidos", "tribunal", "examen", "aprobados"}
 
 
 def fecha_iso(d: str, m: str, a: str | None, cod: str | None, ref: str) -> str | None:
@@ -301,6 +304,13 @@ def unir(procesos: list[dict], origenes: dict[str, dict], actos: list[dict], cla
             mejores = _por_rasgos(por_puesto_y_turno(mejores, None, t), x.get("titulo"))
             if len(mejores) == 1:
                 elegido, motivo = mejores[0], "convocante_puesto_parecido"
+        # 4b'. sin puesto en el título: si el convocante tiene una sola convocatoria en el año anterior al acto, y el
+        # acto es de los que siguen pronto a la convocatoria (listas, tribunal, examen, resultados)
+        if not elegido and not motivo and not q and claves and x.get("tipo_acto") in UNICO_TIPOS:
+            cands = {c["id"]: c for k in claves for c in por_convocante.get(k, [])
+                     if (c.get("apertura_plazo") or "") <= fecha and _dias(c.get("apertura_plazo"), fecha) <= 366}
+            if len(cands) == 1:
+                elegido, motivo = next(iter(cands.values())), "convocante_unico"
         # 4c. estabilización (Ley 20/2021): una sola convocatoria de estabilización del convocante, sin puestos
         # conocidos, en los dos años anteriores
         if not elegido and not (motivo or "").startswith("varios") and claves and _rasgos(x.get("titulo"))[0]:
