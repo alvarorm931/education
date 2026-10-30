@@ -1,13 +1,13 @@
 {
- "fecha": "2026-10-30T11:53:34+00:00",
- "fecha_madrid": "30/10 12:53",
+ "fecha": "2026-10-30T11:55:57+00:00",
+ "fecha_madrid": "30/10 12:55",
  "ventana_horas": 6.0,
  "resumen": {
-  "ejecuciones_revisadas": 124,
+  "ejecuciones_revisadas": 127,
   "fallos": 1,
   "fallos_pendientes": 0,
   "relanzados": 0,
-  "colas_largas": 2,
+  "colas_largas": 3,
   "flujos_programados_parados": [],
   "programaciones_lanzadas_a_mano": [],
   "avisos_de_fuentes": 0,
@@ -82,16 +82,23 @@
   {
    "flujo": "Grados por tramos",
    "id": 41043133281,
-   "en_cola_min": 68,
+   "en_cola_min": 70,
    "trabajos_empezados": 0,
    "url": "https://github.com/alvarorm931/education/actions/runs/41043133281"
   },
   {
    "flujo": "Prueba de conector",
    "id": 41042887699,
-   "en_cola_min": 70,
+   "en_cola_min": 72,
    "trabajos_empezados": 0,
    "url": "https://github.com/alvarorm931/education/actions/runs/41042887699"
+  },
+  {
+   "flujo": "Estudios por tramos",
+   "id": 41042630495,
+   "en_cola_min": 74,
+   "trabajos_empezados": 2,
+   "url": "https://github.com/alvarorm931/education/actions/runs/41042630495"
   }
  ],
  "programados": {
@@ -109,7 +116,7 @@
   }
  },
  "respaldo_programaciones": [],
- "latido": "cortado: relanzado",
+ "latido": "en marcha",
  "boe": {
   "ultimo_diario": {
    "fecha": "2026-10-30",
