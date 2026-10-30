@@ -145,7 +145,10 @@ RE_CONTEXTO_NO_EMPLEO = re.compile(
     r"vicepresident\w*|calles?|carrers?|espacios publicos|denominacion\w*|honores|honors|medallas?|cronista\w*|"
     r"predilect\w*|adoptiv\w*|organos colegiados|organs col·legiats|organs collegiats|vehiculos?|vehicles?|"
     r"terrass\w*|terrazas?|veladores?|reduccion horaria|reduccio horaria|organismo autonomo|organisme autonom|"
-    r"portavoc\w*|aparcament\w*|parquing\w*|parking|organos?|organs?)\b")
+    r"portavoc\w*|aparcament\w*|parquing\w*|parking|organos?|organs?|"
+    # Plazas de ganado o de instalaciones («instalación porcina de cebo, ampliación hasta 5212 plazas», BON)
+    r"impacto ambiental|autorizacion ambiental|instalacion\w* (?:porcin|ganader|avicol|bovin)\w*|"
+    r"explotacion\w* (?:porcin|ganader|avicol|bovin)\w*|ugm|cabezas de ganado)\b")
 
 RE_RESULTADO = re.compile(
     r"\b(funcionari[oa]s? de carrera|personal laboral fijo|proceso selectivo|pruebas selectivas|aspirantes|"
@@ -169,6 +172,8 @@ TIPOS_ENTIDAD = (
     ("cabildo insular de ", "Cabildo Insular"),
     ("consell insular de ", "Consell Insular"),
     ("patronato ", "Patronato"),
+    ("concejo de ", "Concejo"),  # Navarra
+    ("parroquia rural de ", "Parroquia Rural"),  # Asturias
     # Catalán y valenciano
     ("ajuntament del ", "Ayuntamiento", "el "),
     ("ajuntament dels ", "Ayuntamiento", "els "),

@@ -85,3 +85,20 @@ def test_boletines_oficiales(monkeypatch):
         http.comprobar_robots("https://www.uncentro.es/master")  # webs que no son boletines: robots.txt manda
     assert http.boletin_oficial("https://BOP.DIBA.CAT/anuncis") == "BOP de Barcelona"
     assert all(k.startswith("https://") and (k.endswith("/") or "/api/" in k) for k in http.BOLETINES_OFICIALES)
+
+
+def test_documentos_retirados_por_privacidad(monkeypatch):
+    """Aunque el boletín se lea como boletín oficial, un documento que su robots.txt cierra por su código no se pide."""
+    import pytest
+
+    from motor import http
+    from motor.robots import Robots
+
+    monkeypatch.setitem(http._ROBOTS, "https://miprincipado.asturias.es", Robots(
+        "User-agent: *\nDisallow: *.pdf$\n"
+        "Disallow: */bopa/disposiciones?p_p_id=pa_sede_bopa_web_portlet_SedeBopaDispositionWeb*p_r_p_dispositionText=2016-02858*\n"))
+    http.comprobar_robots("https://miprincipado.asturias.es/bopa/2026/10/29/2026-08847.pdf")
+    with pytest.raises(http.RobotsProhibe):
+        http.comprobar_robots("https://miprincipado.asturias.es/bopa/2016/03/01/2016-02858.pdf")
+    with pytest.raises(http.RobotsProhibe):  # el resto del servidor sigue con su robots.txt
+        http.comprobar_robots("https://miprincipado.asturias.es/otra/cosa.pdf")

@@ -80,8 +80,10 @@ REGLAS_ACTO: list[tuple[str, tuple[str, ...]]] = [
     ("examen", ("fecha de celebracion", "fecha, hora y lugar", "lugar, fecha y hora", "primer ejercicio",
                 "data de realitzacio", "data, hora i lloc", "lloc, data i hora", "primer exercici",
                 "data, hora e lugar", "lugar, data e hora", "primeiro exercicio")),
+    # «Concurso-oposición de dos plazas de animador/a» (anuncio de convocatoria de una entidad local en el BON)
     ("convocatoria", ("se convoca", "convocatoria", "convoca proceso", "convoca concurso", "proceso selectivo",
-                      "es convoca", "es convoquen", "proces selectiu", "proces de seleccio", "convocase")),
+                      "es convoca", "es convoquen", "proces selectiu", "proces de seleccio", "convocase",
+                      "concurso-oposicion de ", "concurso oposicion de ", "concurs-oposicio de ")),
     ("bases", ("bases",)),
     # Al final: muchos títulos citan la oferta («en ejecución de la Oferta de Empleo Público») sin ser la oferta
     ("oferta_empleo", ("oferta de empleo publico", "oferta publica d'ocupacio", "oferta d'ocupacio publica",

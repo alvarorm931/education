@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import os
 import ssl
+import re
 import tempfile
 import time
 from dataclasses import dataclass, field
@@ -176,8 +177,21 @@ BOLETINES_OFICIALES = {
     "https://bop.dipucr.es/": "BOP de Ciudad Real",
     "https://se1.dipucr.es:4443/SIGEM_BuscadorDocsWeb/": "BOP de Ciudad Real (PDF)",
     "https://bop.diputoledo.es/": "BOP de Toledo",
+    "https://miprincipado.asturias.es/bopa/": "BOPA (textos)",
 }
 DECISION_BOLETINES = ("Álvaro", "2026-10-30")
+# Documentos concretos que el boletín cierra en su robots.txt para proteger datos de personas (el BOPA tiene más de 600
+# reglas con el código de la disposición): esos se respetan siempre, también en los boletines de la lista anterior.
+CODIGO_DOCUMENTO = {"https://miprincipado.asturias.es": re.compile(r"(?<![\d-])(\d{4}-\d{5})(?![\d])")}
+
+
+def retirado_por_privacidad(url: str, sesion: requests.Session | None = None) -> str | None:
+    """La regla de robots.txt que cierra ese documento concreto (por su código), si la hay."""
+    patron = CODIGO_DOCUMENTO.get(_origen(url))
+    m = patron.search(url) if patron else None
+    if not m:
+        return None
+    return next((ruta for permite, ruta, _ in robots_de(url, sesion).reglas if not permite and m.group(1) in ruta), None)
 
 
 def boletin_oficial(url: str) -> str | None:
@@ -189,7 +203,12 @@ def boletin_oficial(url: str) -> str | None:
 def comprobar_robots(url: str, sesion: requests.Session | None = None) -> None:
     from urllib.parse import urlparse
 
-    if urlparse(url).path == "/robots.txt" or _origen(url) in EXCEPCIONES_ROBOTS or boletin_oficial(url):
+    if urlparse(url).path == "/robots.txt" or _origen(url) in EXCEPCIONES_ROBOTS:
+        return
+    if boletin_oficial(url):
+        regla = retirado_por_privacidad(url, sesion)
+        if regla:
+            raise RobotsProhibe(f"robots.txt de {_origen(url)} cierra este documento concreto ({regla})")
         return
     permitido, regla = robots_de(url, sesion).regla(url)
     if not permitido:
