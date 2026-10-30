@@ -517,7 +517,9 @@ def leer_ubu(lineas: list[str], posiciones: list[dict] | None) -> list[dict]:
     titulados, mayores de 25, de 40 y 45, discapacidad, deportistas), la nota de seis cursos. Las celdas vacías
     (sin solicitudes) no salen en el texto y el PDF escribe cada fila en un solo bloque, así que se lee como imagen
     (`notas_fuentes`, OCR_SIEMPRE) y cada cifra va a la columna del año cuyo rótulo tiene el centro más cerca. El
-    asterisco («5,000*») es que el último admitido era de un cupo no prioritario: entraron todos los prioritarios."""
+    asterisco («5,000*») es que el último admitido era de un cupo no prioritario: entraron todos los prioritarios.
+    A 30/10/2026 la lectura óptica de esa tabla sale ilegible y este lector no da filas: queda para una lectura a
+    más resolución."""
     if not posiciones or not any(p.get("ocr") for p in posiciones):
         return []
     filas = []

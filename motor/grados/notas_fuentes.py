@@ -43,8 +43,9 @@ MUESTRA_FILAS = 80
 # Lectura óptica (tesseract) de los PDF que son imágenes sin texto (UPV/EHU desde 2022-23); se activa con --ocr
 OCR = {"activo": False}
 # PDF de texto que se leen como imagen (con --ocr): sus tablas escriben cada fila en un solo bloque de texto y solo
-# la lectura óptica da la posición de cada cifra
-OCR_SIEMPRE = ("ubu.es/sites/default/files/portal_page/files/notas_de_corte",)
+# la lectura óptica daría la posición de cada cifra. Probado con la evolución de Burgos el 30/10: a 300 ppp la tabla
+# apaisada de letra pequeña y celdas coloreadas sale ilegible («222», «2020» por 2022), así que no se usa.
+OCR_SIEMPRE: tuple[str, ...] = ()
 # Posición de cada fragmento de texto de los PDF con notas (tablas con celdas vacías); se activa con --posiciones
 POSICIONES = {"activo": False}
 NOTA = re.compile(r"(?<![\d.,])(?:1[0-4]|[5-9])[.,]\d{2,3}(?![\d.,])")
