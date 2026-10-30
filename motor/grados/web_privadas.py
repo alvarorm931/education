@@ -63,7 +63,15 @@ SEDES = {"madrid", "valencia", "canaria", "canarias", "andalucia", "sevilla", "m
 RANGO = {"credito": (40, 450), "curso": (2500, 30000), "mensual": (200, 3500), "reserva": (100, 3500),
          "total": (8000, 160000)}
 IDIOMA_EXTRANJERO = re.compile(r"/(en|ca|eu|gl|fr|de|it|pt|va)(/|$)|/english/", re.I)
-IMPORTE = re.compile(r"(\d{1,3}(?:[.\s]\d{3})+|\d{3,6})(?:,(\d{2}))?\s?(?:€|euros?\b|EUR\b)", re.I)
+# «9.990 €», «9.990,00 euros» y, en las páginas en inglés, «€9,990» o «€ 9,990.00»
+IMPORTE = re.compile(r"(?:(?P<e>\d{1,3}(?:[.\s]\d{3})+|\d{3,6})(?:,(?P<d>\d{2}))?\s?(?:€|euros?\b|EUR\b))|"
+                     r"(?:(?:€|EUR)\s?(?P<e2>\d{1,3}(?:[.,]\d{3})+|\d{3,6})(?:\.(?P<d2>\d{2}))?(?![\d.,]\d))", re.I)
+
+
+def valor_importe(m: re.Match) -> float:
+    entero = int(re.sub(r"[.,\s]", "", m.group("e") or m.group("e2")))
+    dec = m.group("d") or m.group("d2")
+    return entero + int(dec) / 100 if dec else entero
 TIPO_IMPORTE = [
     # sueldos y salidas («un sueldo medio de 28.000 € al año»): no son precios; sin rango, nunca verosímiles
     ("sueldo", re.compile(r"salari|sueldo|retribuci|cobra[nr]?\b|ganar|brutos?\b|n[óo]mina|empleabilidad", re.I)),
@@ -159,8 +167,7 @@ def importes(html: str) -> list[dict]:
     salida = []
     hallados = list(IMPORTE.finditer(visible))
     for n, m in enumerate(hallados):
-        entero = int(re.sub(r"[.\s]", "", m.group(1)))
-        valor = entero + (int(m.group(2)) / 100 if m.group(2) else 0)
+        valor = valor_importe(m)
         # contexto: lo que hay entre el importe anterior y el siguiente (como mucho 90 caracteres antes y 40 después)
         inicio = max(hallados[n - 1].end() if n else 0, m.start() - 90)
         fin = min(hallados[n + 1].start() if n + 1 < len(hallados) else len(visible), m.end() + 40)

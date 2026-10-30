@@ -33,7 +33,7 @@ from pathlib import Path
 
 from motor.archivo import Archivo, solo_huella_por_defecto
 from motor.grados.generico import nombre_base
-from motor.grados.web_privadas import IMPORTE, RANGO, TIPO_IMPORTE, palabras, tipo_cercano
+from motor.grados.web_privadas import IMPORTE, RANGO, TIPO_IMPORTE, palabras, tipo_cercano, valor_importe
 
 FUENTE = "web-centros"
 ES_TARIFA = re.compile(r"precio|tasa|tarifa|fees?\b|abono|honorari|coste|importe|matr[ií]cula", re.I)
@@ -182,8 +182,7 @@ def extraer(paginas: list[str], grados: list[dict]) -> dict:
             if not codigo:
                 continue
             for k, m in enumerate(hallados):
-                entero = int(re.sub(r"[.\s]", "", m.group(1)))
-                valor = entero + (int(m.group(2)) / 100 if m.group(2) else 0)
+                valor = valor_importe(m)
                 antes = linea[hallados[k - 1].end() if k else 0:m.start()]
                 despues = linea[m.end():hallados[k + 1].start() if k + 1 < len(hallados) else len(linea)]
                 tipo = None

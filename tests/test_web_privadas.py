@@ -67,3 +67,8 @@ def test_unir_usa_el_nombre_en_ingles_de_los_titulos_bilingues():
 def test_importes_no_toma_sueldos_por_precios():
     imp = wp.importes("<p>Un ingeniero tiene un sueldo medio de 28.000 € al año.</p><p>Precio por curso: 5.990 €</p>")
     assert [(i["valor"], i["tipo"], i["verosimil"]) for i in imp] == [(28000, "sueldo", False), (5990, "curso", True)]
+
+
+def test_importes_en_formato_ingles():
+    imp = wp.importes("<p>Tuition fee: €24,900 per year. Reservation: €1,500.</p>")
+    assert [i["valor"] for i in imp] == [24900, 1500]
