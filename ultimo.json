@@ -1,10 +1,10 @@
 {
- "fecha": "2026-10-30T07:56:18+00:00",
- "fecha_madrid": "30/10 08:56",
+ "fecha": "2026-10-30T08:21:28+00:00",
+ "fecha_madrid": "30/10 09:21",
  "ventana_horas": 6.0,
  "resumen": {
-  "ejecuciones_revisadas": 304,
-  "fallos": 3,
+  "ejecuciones_revisadas": 288,
+  "fallos": 2,
   "fallos_pendientes": 0,
   "relanzados": 0,
   "colas_largas": 0,
@@ -100,63 +100,6 @@
      "etiquetas": null,
      "final_registro": [
       "Falló sin ningún trabajo fallido: error en la definición del flujo (matriz vacía, YAML, permisos de la ejecución). Ver la página."
-     ]
-    }
-   ]
-  },
-  {
-   "flujo": "Vigilante",
-   "fichero": "vigilante.yml",
-   "id": 40988823872,
-   "intento": 1,
-   "evento": "push",
-   "rama": "main",
-   "commit": "e1ed9dc",
-   "titulo": "Vigilante de infraestructura cada 30 minutos y regla del buzón de inc…",
-   "conclusion": "failure",
-   "cuando": "30/10 02:57",
-   "url": "https://github.com/alvarorm931/education/actions/runs/40988823872",
-   "superado": true,
-   "en_curso": null,
-   "pasajero": false,
-   "detalle": [
-    {
-     "trabajo": "vigilar",
-     "pasos": [
-      "Subir a la rama vigilancia"
-     ],
-     "ejecutor": "GitHub Actions 1000000275",
-     "etiquetas": [
-      "ubuntu-latest"
-     ],
-     "final_registro": [
-      "##[error]Process completed with exit code 1.",
-      "...",
-      "\u001b[36;1m  git worktree add -q -B vigilancia rama origin/vigilancia\u001b[0m",
-      "\u001b[36;1melse\u001b[0m",
-      "\u001b[36;1m  git worktree add -q --orphan -b vigilancia rama\u001b[0m",
-      "\u001b[36;1mfi\u001b[0m",
-      "\u001b[36;1mcp informe/ultimo.json informe/ultimo.md rama/\u001b[0m",
-      "\u001b[36;1mmkdir -p rama/historial\u001b[0m",
-      "\u001b[36;1mpython3 -c \"import json;d=json.load(open('informe/ultimo.json'));print(json.dumps({'fecha':d['fecha'],**d['resumen']},ensure_ascii=False))\" >> rama/historial/$(date -u +%Y-%m).jsonl\u001b[0m",
-      "\u001b[36;1mcd rama\u001b[0m",
-      "\u001b[36;1mgit add -A\u001b[0m",
-      "\u001b[36;1mgit commit -qm \"Vigilancia $(TZ=Europe/Madrid date '+%d/%m %H:%M')\"\u001b[0m",
-      "\u001b[36;1mfor i in 1 2 3 4 5; do\u001b[0m",
-      "\u001b[36;1m  git push -q origin vigilancia && exit 0\u001b[0m",
-      "\u001b[36;1m  sleep $(( i * 5 ))\u001b[0m",
-      "\u001b[36;1m  git fetch -q --depth 1 origin vigilancia && git rebase -q origin/vigilancia || git rebase --abort\u001b[0m",
-      "\u001b[36;1mdone\u001b[0m",
-      "\u001b[36;1mecho \"::warning::No se pudo subir el estado de vigilancia\"\u001b[0m",
-      "The following paths and/or pathspecs matched paths that exist",
-      "outside of your sparse-checkout definition, so will not be",
-      "updated in the index:",
-      "historial/2026-10.jsonl",
-      "hint: If you intend to update such entries, try one of the following:",
-      "hint: * Use the --sparse option.",
-      "hint: * Disable or modify the sparsity rules.",
-      "hint: Disable this message with \"git config set advice.updateSparsePath false\"",
-      "##[error]Process completed with exit code 1."
      ]
     }
    ]

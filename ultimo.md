@@ -1,7 +1,7 @@
-# Vigilancia 30/10 08:56 (Madrid)
+# Vigilancia 30/10 09:21 (Madrid)
 
-- Ejecuciones revisadas (últimas 6 h): 304
-- Fallos: 3; pendientes: 0; relanzados ahora: 0
+- Ejecuciones revisadas (últimas 6 h): 288
+- Fallos: 2; pendientes: 0; relanzados ahora: 0
 - Colas de más de 30 minutos: 0
 - Flujos programados parados: ninguno
 - Almacén S3: ok
@@ -25,16 +25,4 @@ https://github.com/alvarorm931/education/actions/runs/41018014171 (intento 1, wo
 https://github.com/alvarorm931/education/actions/runs/40995655119 (intento 1, workflow_dispatch, f26c916, pasajero: False)
 - (ninguno) · pasos: ? · ejecutor: None
       Falló sin ningún trabajo fallido: error en la definición del flujo (matriz vacía, YAML, permisos de la ejecución). Ver la página.
-
-## Vigilante · 30/10 02:57 · superado
-https://github.com/alvarorm931/education/actions/runs/40988823872 (intento 1, push, e1ed9dc, pasajero: False)
-- vigilar · pasos: Subir a la rama vigilancia · ejecutor: GitHub Actions 1000000275
-      outside of your sparse-checkout definition, so will not be
-      updated in the index:
-      historial/2026-10.jsonl
-      hint: If you intend to update such entries, try one of the following:
-      hint: * Use the --sparse option.
-      hint: * Disable or modify the sparsity rules.
-      hint: Disable this message with "git config set advice.updateSparsePath false"
-      ##[error]Process completed with exit code 1.
 
