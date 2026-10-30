@@ -239,6 +239,9 @@ def importes(html: str) -> list[dict]:
         rango = RANGO.get(tipo)
         verosimil = bool(rango and rango[0] <= valor <= rango[1])
         salida.append({"valor": valor, "tipo": tipo, "verosimil": verosimil,
+                       # «Desde 3.060 €/año»: un mínimo o una promoción, no el precio del curso
+                       **({"desde": True} if re.search(r"(?i)\b(?:desde|a partir de|from)\s*$", antes.strip()[-25:])
+                          else {}),
                        "contexto_sha256": hashlib.sha256(contexto.encode()).hexdigest()[:16]})
     return salida[:40]
 

@@ -120,9 +120,13 @@ def precio_web(f: dict) -> dict | None:
     Un único precio por crédito sin otra cifra que lo confirme no se publica (queda entre los candidatos).
     Si los datos estructurados y el texto no coinciden, no se publica precio (solo los candidatos)."""
     por_tipo: dict[str, set] = defaultdict(set)
+    desde = [i for i in f.get("importes") or [] if i.get("desde")]
     for i in f.get("importes") or []:
-        if i.get("verosimil") and i.get("tipo") in RANGO_PRECIO:
+        if i.get("verosimil") and i.get("tipo") in RANGO_PRECIO and not i.get("desde"):
             por_tipo[i["tipo"]].add(round(float(i["valor"]), 2))
+    if desde and not por_tipo:
+        return {"precio_curso": None, "metodo": None, "url": f.get("url"), "precio_jsonld": None,
+                "importes": {}, "nota": "la página solo da un importe «desde» (mínimo o promoción): no se publica precio"}
     ld = f.get("precio_jsonld") or {}
     ld_valor = _num(ld.get("precio")) if (ld.get("moneda") or "EUR").upper() == "EUR" else None
     if ld_valor and not RANGO_PRECIO["curso"][0] <= ld_valor <= RANGO_PRECIO["curso"][1]:

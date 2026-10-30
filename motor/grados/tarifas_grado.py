@@ -28,7 +28,7 @@ import json
 import os
 import re
 import time
-from collections import defaultdict
+from collections import Counter, defaultdict
 from datetime import date
 from pathlib import Path
 
@@ -296,12 +296,15 @@ def extraer(paginas: list[str], grados: list[dict], de_la_pagina: str | None = N
     # tablas cuyas celdas dan el importe sin «€» («1.278,00»): valen si la página habla de euros y la tabla tiene
     # cabecera con rótulos de importe (matrícula, plazos, total…)
     euros = bool(re.search(r"€|\beuros?\b", " ".join(paginas), re.I))
+    curso_linea, cursos_de_importes = None, Counter()  # el curso escrito más cerca (antes) de cada importe
     for n, pagina in enumerate(paginas, 1):
         if not curso and (m := CURSO_DOC.search(pagina)):
             curso = f"{m.group(1)}-20{m.group(2)}"
         for linea in (x.strip() for x in pagina.split("\n")):
             if not linea:
                 continue
+            if m := list(CURSO_DOC.finditer(linea)):
+                curso_linea = f"{m[-1].group(1)}-20{m[-1].group(2)}"
             if cabecera and euros and " | " in linea:
                 linea = re.sub(r"(?<=\| )(\d{1,3}(?:\.\d{3})*,\d{2})(?= \||$)", r"\1 €", linea)
             hallados = list(IMPORTE.finditer(linea))
@@ -343,6 +346,12 @@ def extraer(paginas: list[str], grados: list[dict], de_la_pagina: str | None = N
                 precios[codigo].append({"valor": valor, "tipo": tipo, "verosimil": bool(tipo) and bajo <= valor <= alto,
                                         "pagina": n, "bloque": bloque,
                                         "linea_sha256": hashlib.sha256(linea.encode()).hexdigest()[:16]})
+                if curso_linea:
+                    cursos_de_importes[curso_linea] += 1
+    # una página que cita varios cursos («becas 2026-2027», «importe anual previsto 2027-2028»): vale el que va
+    # escrito antes de sus importes; si no hay, el primero del documento
+    if cursos_de_importes:
+        curso = cursos_de_importes.most_common(1)[0][0]
     return {"curso_documento": curso, "lineas_con_importe": con_importe, "grados": dict(precios), "muestra": muestra}
 
 

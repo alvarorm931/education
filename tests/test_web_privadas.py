@@ -131,3 +131,12 @@ def test_pagina_de_otra_sede_de_la_misma_universidad():
     ue = {"universidades": [{"nombre": "Europea de Valencia"}],
           "imparticiones": [{"unidad_codigo": "03000001", "municipio": "ALICANTE", "situacion": "Activo"}]}
     assert sede_ajena(ue, "https://u.es/grado-x-valencia") is None  # el nombre de la universidad
+
+
+def test_importe_desde_no_es_precio_del_curso():
+    from motor.grados.fichas import precio_web
+    from motor.grados.web_privadas import importes
+    imp = importes("<p>Promociones: Desde 3.060 €/año</p>")
+    assert imp[0]["desde"]
+    p = precio_web({"url": "x", "importes": imp, "precio_jsonld": {"precio": 3060, "moneda": "EUR"}})
+    assert p["precio_curso"] is None and "desde" in p["nota"]
