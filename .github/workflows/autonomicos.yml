@@ -43,7 +43,8 @@ jobs:
           python-version: "3.12"
       - name: Instalar y probar
         run: |
-          pip install -e ".[dev,almacen]"
+          # Todos los extras de pyproject.toml: las pruebas de otras partes (SEO, másters) también tienen que pasar
+          pip install -e ".[$(python -c "import tomllib; print(','.join(tomllib.load(open('pyproject.toml', 'rb'))['project']['optional-dependencies']))")]"
           python -m pytest -q
       - id: lista
         env:
