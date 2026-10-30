@@ -469,12 +469,16 @@ RE_LEYENDA = re.compile(r"(?<![\w/])([A-ZÑ]{1,4}(?:\s?/\s?[A-ZÑ]{1,4})?)\s*[:=
                         r"([A-Za-zÁÉÍÓÚÜÑáéíóúüñ][A-Za-zÁÉÍÓÚÜÑáéíóúüñ .]{2,60}?)(?=\s*[,;.)]|\s+[A-ZÑ]{1,4}\s*[:=]|$)")
 
 
+RE_LEYENDA_PAR = re.compile(r"\(([A-ZÑ]{1,4})\)\s*([A-Za-zÁÉÍÓÚÜÑáéíóúüñ][A-Za-zÁÉÍÓÚÜÑáéíóúüñ .]{2,60}?)(?=\s*[,;.]|\s*\(|$)")
+
+
 def leyenda(doc: dict) -> dict[str, str]:
     """Códigos de carácter que define el propio plan: «FB: Formación Básica, O: Obligatoria, P: Optativa, TF: Trabajo
     Fin de Grado» → {"fb": "basica", "o": "obligatoria", "p": "optativa", "tf": "tfg"}. Solo los que el texto o las
     tablas definen; un código definido de dos formas distintas no se usa."""
     trozos = [doc.get("texto") or ""] + [c for t in doc.get("tablas") or [] if not t.get("datos_personales")
-                                          for f in (t.get("contenido") or []) for c in f if ":" in (c or "") or "=" in (c or "")]
+                                          for f in (t.get("contenido") or []) for c in f
+                                          if re.search(r"[:=]|\([A-Z]{1,4}\)", c or "")]
     vistos: dict[str, set] = {}
     # tablas que definen los códigos en filas: «F | Formación Básica | 60»
     for t in doc.get("tablas") or []:
@@ -484,7 +488,7 @@ def leyenda(doc: dict) -> dict[str, str]:
                 if tipo and len(f[1] or "") > 4:
                     vistos.setdefault(f[0].strip(" .").lower(), set()).add(tipo)
     for trozo in trozos:
-        for m in RE_LEYENDA.finditer(trozo):
+        for m in list(RE_LEYENDA.finditer(trozo)) + list(RE_LEYENDA_PAR.finditer(trozo)):  # «P: Optativa», «(OP) Optativas»
             codigo = re.sub(r"\s", "", m.group(1)).lower()
             tipo = tipo_caracter(m.group(2)) or tipo_de_rotulo(m.group(2))
             if tipo:
