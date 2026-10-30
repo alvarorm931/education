@@ -1,0 +1,937 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="es_ES" xmlns="http://www.w3.org/1999/xhtml"><head id="j_idt2"><link type="text/css" rel="stylesheet" href="/PortalBOP/javax.faces.resource/theme.css.xhtml;jsessionid=70A1407AC7D931D3E318E1417625BBB2?ln=primefaces-saga&amp;v=12.0.0&amp;e=12.0.0" /><link type="text/css" rel="stylesheet" href="/PortalBOP/javax.faces.resource/primeicons/primeicons.css.xhtml;jsessionid=70A1407AC7D931D3E318E1417625BBB2?ln=primefaces&amp;v=12.0.0&amp;e=12.0.0" /><link type="text/css" rel="stylesheet" href="/PortalBOP/javax.faces.resource/components.css.xhtml;jsessionid=70A1407AC7D931D3E318E1417625BBB2?ln=primefaces&amp;v=12.0.0&amp;e=12.0.0" /><script type="text/javascript" src="/PortalBOP/javax.faces.resource/jquery/jquery.js.xhtml;jsessionid=70A1407AC7D931D3E318E1417625BBB2?ln=primefaces&amp;v=12.0.0&amp;e=12.0.0"></script><script type="text/javascript" src="/PortalBOP/javax.faces.resource/core.js.xhtml;jsessionid=70A1407AC7D931D3E318E1417625BBB2?ln=primefaces&amp;v=12.0.0&amp;e=12.0.0"></script><script type="text/javascript" src="/PortalBOP/javax.faces.resource/components.js.xhtml;jsessionid=70A1407AC7D931D3E318E1417625BBB2?ln=primefaces&amp;v=12.0.0&amp;e=12.0.0"></script><script type="text/javascript" src="/PortalBOP/javax.faces.resource/jquery/jquery-plugins.js.xhtml;jsessionid=70A1407AC7D931D3E318E1417625BBB2?ln=primefaces&amp;v=12.0.0&amp;e=12.0.0"></script><script type="text/javascript" src="/PortalBOP/javax.faces.resource/watermark/watermark.js.xhtml;jsessionid=70A1407AC7D931D3E318E1417625BBB2?ln=primefaces&amp;v=12.0.0&amp;e=12.0.0"></script><script type="text/javascript" src="/PortalBOP/javax.faces.resource/touch/touchswipe.js.xhtml;jsessionid=70A1407AC7D931D3E318E1417625BBB2?ln=primefaces&amp;v=12.0.0&amp;e=12.0.0"></script><link type="text/css" rel="stylesheet" href="/PortalBOP/javax.faces.resource/css/frameworkWeb.css.xhtml;jsessionid=70A1407AC7D931D3E318E1417625BBB2?ln=framework-1.1.4" /><link type="text/css" rel="stylesheet" href="/PortalBOP/javax.faces.resource/css/portalBOP.css.xhtml;jsessionid=70A1407AC7D931D3E318E1417625BBB2?ln=1.2.21" /><script type="text/javascript">if(window.PrimeFaces){PrimeFaces.settings.locale='es_ES';PrimeFaces.settings.viewId='/boletines/boletin.xhtml';PrimeFaces.settings.contextPath='/PortalBOP';PrimeFaces.settings.cookiesSecure=false;}</script>
+	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	    <link rel="shortcut icon" type="image/x-icon" href="/PortalBOP/javax.faces.resource/img/favicon.ico.xhtml?ln=1.2.21" />
+	    <title>BOP
+	    </title>
+	    
+	    <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,600,600i,700,700i,800,800i&amp;subset=latin-ext" rel="stylesheet" type="text/css" />
+	    	<script type="text/javascript">
+	      		//<![CDATA[
+					if (typeof console == 'undefined') {
+						console = {log: function() {}};
+					}
+					
+					function evitarMostarDialogoCargando() {
+						$('body').data('evitar_mostrar_dialogo_cargando', true); 
+					}
+					
+					function mostarDialogoCargando() {
+						var evitar_mostrar_dialogo_cargando = $('body').data('evitar_mostrar_dialogo_cargando');
+						
+						if (evitar_mostrar_dialogo_cargando == null || !evitar_mostrar_dialogo_cargando) {
+							//En los filtros de cabecera no mostramos el loading de cargando
+							if ($('.ui-datatable table thead tr th .ui-inputfield.ui-inputtext:focus').length == 0) {
+								if ($('#loadingDialog').length > 0) {
+									$('#loadingDialog').addClass('invisible');
+									PF('loadingDialog').show();
+								}
+							}
+						}
+						
+						$('body').data('evitar_mostrar_dialogo_cargando', false); 
+					}
+					
+					function ajaxErrorHanler(event) {
+						if (event.currentTarget.status = 401) {
+							window.location = 'https://bop.dipcas.es/PortalBOP';
+						} else {
+							ocultarDialogoCargando();
+						}
+					}
+					
+					function evitarCierreDialogoCargando() {
+						$('body').data('evitar_cierre_dialogo_cargando', true); 
+					}
+					
+					function ocultarDialogoCargando() {
+						var evitar_cierre_dialogo_cargando = $('body').data('evitar_cierre_dialogo_cargando');
+						
+						if (evitar_cierre_dialogo_cargando == null || !evitar_cierre_dialogo_cargando) {
+							if ($('#loadingDialog').length > 0) {
+								PF('loadingDialog').hide()
+							}
+						}
+						
+						$('body').data('evitar_mostrar_dialogo_cargando', false); 
+						$('body').data('evitar_cierre_dialogo_cargando', false); 
+					}
+					
+					$(function() {
+						$('.ui-inplace-content input').livequery(function(){
+							$(this).keypress(function(event) {
+								var charCode = (event.which) ? event.which : event.keyCode;
+								if (charCode == 13) {
+									event.preventDefault();
+								}
+							});
+						}, function() {
+							$(this).unbind('keypress'); 
+						});
+						
+						$('.ui-growl-item-container').livequery(function(){
+							if ($(this).children('.ui-growl-item').children('.ui-growl-image.ui-growl-image-info').length > 0) {
+								$(this).addClass('info');
+							} else if ($(this).children('.ui-growl-item').children('.ui-growl-image.ui-growl-image-warn').length > 0) {
+								$(this).addClass('warn');
+							} else if ($(this).children('.ui-growl-item').children('.ui-growl-image.ui-growl-image-error').length > 0) {
+								$(this).addClass('error');
+							} else if ($(this).children('.ui-growl-item').children('.ui-growl-image.ui-growl-image-fatal').length > 0) {
+								$(this).addClass('fatal');
+							}
+						});
+						
+						$('.ui-datatable table thead tr th .ui-inputfield.ui-inputtext').livequery(function(){
+							$(this).focus(function(event) {
+								$(this).trigger('keypress');
+							});
+							
+							$(this).keydown(function(event) {
+								if ($('#loadingDialog_modal').length > 0) {
+									var input_value = $(this).val();
+								
+									var lower_case = true;
+									if (input_value != '') {
+										var last_character = input_value.substr(-1);
+										lower_case = (last_character == last_character.toLowerCase());
+									}
+									
+									var charCode = (event.which) ? event.which : event.keyCode;
+									if (charCode == 8 || charCode == 127) {
+										if (input_value != '') {
+											input_value = input_value.substr(0, input_value.length - 1);
+											$(this).val(input_value)
+										}
+									} else {
+										var strCharacter = String.fromCharCode(charCode);
+										if (strCharacter != null && strCharacter != '') {
+											if (lower_case) {
+												strCharacter = strCharacter.toLowerCase();
+											}
+										
+											$(this).val(input_value + strCharacter)
+										}
+									}
+								}
+							});
+						}, function() {
+							$(this).unbind('focus');
+							$(this).unbind('keydown');
+						});
+						
+						$('#loadingDialog_modal').livequery(function(){
+							var timeout_loading_dialog = setTimeout(function(){
+								$('#loadingDialog').removeClass('invisible');
+								$('#loadingDialog_modal').addClass('visible');
+								
+								$('body').data('timeout_loading_dialog', null); 
+							}, 2000);
+						
+							$('body').data('timeout_loading_dialog', timeout_loading_dialog);
+						}, function() {
+							var timeout_loading_dialog = $('body').data('timeout_loading_dialog');
+							
+							if (timeout_loading_dialog != null) {
+								clearTimeout(timeout_loading_dialog);
+							}
+						});
+				   	});
+				   	
+				   	function showNotificationBar() {
+				   		PF('notificationBar').show();
+				   	}
+				   	
+				   	function hideNotificationBar() {
+				   		PF('notificationBar').hide();
+				   	}
+				   	
+				   	function crearCaminoMigasYPieCabecera(){
+				   		//primer nivel
+				   		var textoPieCabecera = "";
+				   		var menuPrincipalSelected = $(".menuCabeceraSelected")[0];
+				   		if(menuPrincipalSelected != null && menuPrincipalSelected !='undefined'){
+				   			var url = $("a.menuCabeceraSelected").attr("href");
+				   			var nombre = $("a.menuCabeceraSelected span").text();
+				   			$( "#migas ul" ).append( "<li><a href='" +url+ "'>" +nombre+ "</a></li>" );
+				   			textoPieCabecera = nombre;
+				   		}
+				   		//segundo nivel
+				   		var menuSelected = $(".menuSelected")[0];
+				   		if(menuSelected != null && menuSelected !='undefined'){
+				   			var url = $("a.menuSelected").attr("href");
+				   			var nombre = $("a.menuSelected span").text();
+				   			$( "#migas ul" ).append( "<li><a href='" +url+ "'>" +nombre+ "</a></li>" );
+				   			textoPieCabecera = nombre;
+				   		}
+				   		$("#pieCabecera span").text(textoPieCabecera);
+				   	}
+				   	
+				    function toggleInputSearchLupa(){
+		      			$(".inputSearchLupa").toggle();
+		      			$(".idioma").toggle();
+		      		  }         
+				   	
+				    jQuery(document).ready(function() {
+				    	crearCaminoMigasYPieCabecera();
+				    	toggleInputSearchLupa();
+	      				$(".idioma").toggle();
+				    });
+				//]]>
+    		</script><script type="text/javascript" src="/PortalBOP/javax.faces.resource/js/primefacesLocales.js.xhtml;jsessionid=70A1407AC7D931D3E318E1417625BBB2?ln=framework-1.1.4"></script><script type="text/javascript" src="/PortalBOP/javax.faces.resource/js/jquery.livequery.js.xhtml;jsessionid=70A1407AC7D931D3E318E1417625BBB2?ln=framework-1.1.4"></script><script type="text/javascript" src="/PortalBOP/javax.faces.resource/primefaces-extensions.js.xhtml;jsessionid=70A1407AC7D931D3E318E1417625BBB2?ln=primefaces-extensions&amp;v=12.0.0&amp;e=12.0.0"></script><script type="text/javascript" src="/PortalBOP/javax.faces.resource/js/markerclusterer_packed.js.xhtml;jsessionid=70A1407AC7D931D3E318E1417625BBB2?ln=framework-1.1.4"></script><script type="text/javascript" src="/PortalBOP/javax.faces.resource/js/oms.min.js.xhtml;jsessionid=70A1407AC7D931D3E318E1417625BBB2?ln=framework-1.1.4"></script>
+    		
+    		<script src="https://insuit.net/i4tservice/insuit-app.js"></script><script type="text/javascript" src="/PortalBOP/javax.faces.resource/js/miniapplet.js.xhtml;jsessionid=70A1407AC7D931D3E318E1417625BBB2?ln=1.2.21"></script>
+		
+		<script type="text/javascript">
+	      		//<![CDATA[
+			MiniApplet.cargarMiniApplet('https://bop.dipcas.es/PortalBOP');
+	    	
+			
+			function firmaFakeAcceso() {
+				if ($('input[id$=":instanciaBase64"]').val() != '') {
+					//Framework.ajaxStatusOnStart();
+				
+					try {
+						var params = 'headless=true\n';
+						params +=    'expPolicy=FirmaAGE\n';
+						//params +=    'format=XAdES Detached\n';
+						//params +=    'filters=nonexpired:;qualified:';
+						params +=    'filters=nonexpired';
+	 					MiniApplet.sign($('input[id$=":instanciaBase64"]').val(), 'SHA1withRSA', 'XAdES', params, enviarFirmaFake, mostrarErrorDuranteFirmaFake);
+	 				} catch (exception) {
+	 					console.log(exception);
+	 					mostrarErrorDuranteFirma();
+	 				}
+				}
+			}
+			
+			function enviarFirmaFake(intanciaFirmada) {
+				$('input[id$=":instanciaBase64"]').val('');
+				$('input[id$=":instanciaBase64Firmado"]').val(intanciaFirmada);
+				
+				rcEnviarInstanciaFirmadaProceso();
+			}
+			
+			function mostrarErrorDuranteFirmaFake(type, message) {
+				//Framework.ajaxStatusOnSuccess();
+			
+ 				var msgAlertError = "Error en el proceso de acceso con certificado";
+ 		    	if (message != null && (type == null || type != 'java.lang.Exception')) {
+ 		    		msgAlertError += '\n' + message;
+ 		    	}
+ 		    	alert(msgAlertError);
+ 		    	
+		    	$('input[id$=":instanciaBase64Firmado"]').val();
+ 			}
+	      		 
+				//]]>
+    	</script></head><body><div id="cabeceraPrincipal" class="ui-outputpanel ui-widget "><div id="cabecera" class="ui-outputpanel ui-widget">
+				<div id="inclusite">
+				</div>
+				<h1><a href="?application.home%3F%3F%3F">BOP</a>
+					
+				</h1><div id="accionesCabecera" class="ui-outputpanel ui-widget">
+					<ul>
+						<li class="idioma"><a id="j_idt36" href="#" class="ui-commandlink ui-widget" onclick="PrimeFaces.ab({s:&quot;j_idt36&quot;});return false;" title="Castellano"><span class="localeSelected">Castellano</span></a><script id="j_idt36_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandLink","widget_j_idt36",{id:"j_idt36"});});</script>
+						</li>
+						<li class="idioma"><a id="j_idt39" href="#" class="ui-commandlink ui-widget" onclick="PrimeFaces.ab({s:&quot;j_idt39&quot;});return false;" title="Castellano"><span class="">Valencià</span></a><script id="j_idt39_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandLink","widget_j_idt39",{id:"j_idt39"});});</script>
+						</li>
+						<li>
+<form id="j_idt42" name="j_idt42" method="post" action="/PortalBOP/buscador/;jsessionid=70A1407AC7D931D3E318E1417625BBB2" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="j_idt42" value="j_idt42" />
+<script id="j_idt42:j_idt43" type="text/javascript">remoteSearchInput = function() {return PrimeFaces.ab({s:"j_idt42:j_idt43",f:"j_idt42",u:"accionesCabecera",pa:arguments[0]});}</script><input id="j_idt42:searchInput" name="j_idt42:searchInput" type="text" class="ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all inputSearchLupa" onkeypress="if (event.keyCode == 13) { remoteSearchInput(); return false; }" /><script id="j_idt42:searchInput_s" type="text/javascript">$(function(){PrimeFaces.cw("InputText","widget_j_idt42_searchInput",{id:"j_idt42:searchInput"});});</script><script id="j_idt42:j_idt44_s" type="text/javascript">$(function(){PrimeFaces.cw("Watermark","widget_j_idt42_j_idt44",{id:"j_idt42:j_idt44",value:"Escriba y pulse Enter",target:"j_idt42:searchInput"});});</script><button id="j_idt42:j_idt45" name="j_idt42:j_idt45" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only custom-icon-button lupaButton" onclick="PrimeFaces.bcn(this,event,[function(event){toggleInputSearchLupa(); return false;},function(event){PrimeFaces.ab({s:&quot;j_idt42:j_idt45&quot;,f:&quot;j_idt42&quot;,u:&quot;accionesCabecera&quot;});return false;}]);" title="Buscar" type="submit"><span class="ui-button-icon-left ui-icon ui-c pi pi-search pi-1_7x"></span><span class="ui-button-text ui-c">Buscar</span></button><script id="j_idt42:j_idt45_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandButton","widget_j_idt42_j_idt45",{id:"j_idt42:j_idt45"});});</script><input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:0" value="6406314869779015863:-4454352219289984807" autocomplete="off" />
+</form>
+						</li>
+					</ul></div></div><div id="menuCabecera" class="ui-outputpanel ui-widget"><div id="logoMenu" class="ui-outputpanel ui-widget"><a href="http://www.dipcas.es" class="logoImage"></a></div>
+<form id="formMenuCabecera" name="formMenuCabecera" method="post" action="/PortalBOP/buscador/;jsessionid=70A1407AC7D931D3E318E1417625BBB2" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="formMenuCabecera" value="formMenuCabecera" />
+
+		
+			<script src="https://www.googletagmanager.com/gtag/js?id=UA-127397200-4" async="async"></script>
+			<script>
+				  window.dataLayer = window.dataLayer || [];
+				  function gtag(){dataLayer.push(arguments);}
+				  gtag('js', new Date());
+				  gtag('config', 'UA-127397200-4');
+			</script><div id="formMenuCabecera:j_idt49" class="ui-menu ui-menubar ui-megamenu ui-widget ui-widget-content ui-corner-all ui-helper-clearfix"><div tabindex="0" class="ui-helper-hidden-accessible"></div><ul role="menubar" class="ui-menu-list ui-helper-reset"><li class="ui-menuitem ui-widget ui-corner-all" role="none"><a tabindex="-1" role="menuitem" class="ui-menuitem-link ui-corner-all " href="/PortalBOP/informacion/"><span class="ui-menuitem-text">Información</span></a></li><li class="ui-menuitem ui-widget ui-corner-all" role="none"><a tabindex="-1" role="menuitem" class="ui-menuitem-link ui-corner-all menuCabeceraSelected" href="/PortalBOP/buscador/"><span class="ui-menuitem-text">Buscador</span></a></li><li class="ui-menuitem ui-widget ui-corner-all" role="none"><a tabindex="-1" role="menuitem" class="ui-menuitem-link ui-corner-all " href="/PortalBOP/login"><span class="ui-menuitem-text">Publicador</span></a></li><li class="ui-menuitem ui-widget ui-corner-all" role="none"><a tabindex="-1" role="menuitem" class="ui-menuitem-link ui-corner-all " href="/PortalBOP/loginSuscriptor"><span class="ui-menuitem-text">Suscriptor</span></a></li><li class="ui-menuitem ui-widget ui-corner-all" role="none"><a tabindex="-1" role="menuitem" class="ui-menuitem-link ui-corner-all " href="/PortalBOP/contacta/"><span class="ui-menuitem-text">Contacta</span></a></li></ul></div><script id="formMenuCabecera:j_idt49_s" type="text/javascript">$(function(){PrimeFaces.cw("MegaMenu","widget_formMenuCabecera_j_idt49",{id:"formMenuCabecera:j_idt49",autoDisplay:true,delay:0});});</script><input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:1" value="6406314869779015863:-4454352219289984807" autocomplete="off" />
+</form></div><div id="pieCabecera" class="ui-outputpanel ui-widget">
+				<span>
+					
+				</span></div></div><div id="migas" class="ui-outputpanel ui-widget">
+			<ul>
+				<li class="inicio"><span>Inicio</span>
+				</li>
+			</ul>
+			<div id="zonaMigas">
+		<div id="busquedaAvanzada"> 
+		</div>
+			</div></div><div id="submenu" class="ui-outputpanel ui-widget"><span id="globalMessages"></span><script id="globalMessages_s" type="text/javascript">$(function(){PrimeFaces.cw("Growl","globalMessages",{id:"globalMessages",sticky:false,life:10000,escape:true,keepAlive:false,msgs:[]});});</script></div><div id="content" class="ui-outputpanel ui-widget">
+<form id="formSideBar" name="formSideBar" method="post" action="/PortalBOP/buscador/;jsessionid=70A1407AC7D931D3E318E1417625BBB2" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="formSideBar" value="formSideBar" />
+<div id="formSideBar:j_idt61" class="ui-panel ui-widget ui-widget-content ui-corner-all sidebar" data-widget="widget_formSideBar_j_idt61"><div id="formSideBar:j_idt61_content" class="ui-panel-content ui-widget-content">
+				<div class="titulo">Buscador
+				</div></div></div><script id="formSideBar:j_idt61_s" type="text/javascript">$(function(){PrimeFaces.cw("Panel","widget_formSideBar_j_idt61",{id:"formSideBar:j_idt61"});});</script><input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:2" value="6406314869779015863:-4454352219289984807" autocomplete="off" />
+</form><div id="center">	
+			
+			<script type="text/javascript">
+			
+			</script>
+<form id="buttons" name="buttons" method="post" action="/PortalBOP/buscador/;jsessionid=70A1407AC7D931D3E318E1417625BBB2" class="formVisible" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="buttons" value="buttons" />
+<table id="buttons:j_idt67" class="ui-panelgrid ui-widget panelWithoutBorder" role="grid"><tbody><tr class="ui-widget-content ui-panelgrid-odd"><td role="gridcell" class="ui-panelgrid-cell"><button id="buttons:j_idt70" name="buttons:j_idt70" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only button left" onclick="PrimeFaces.ab({s:&quot;buttons:j_idt70&quot;,f:&quot;buttons&quot;,u:&quot;busquedaBoletinesForm&quot;});return false;" type="submit"><span class="ui-button-text ui-c">Último Boletín</span></button><script id="buttons:j_idt70_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandButton","widget_buttons_j_idt70",{id:"buttons:j_idt70"});});</script></td><td role="gridcell" class="ui-panelgrid-cell"><button id="buttons:j_idt72" name="buttons:j_idt72" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only button left" onclick="PrimeFaces.ab({s:&quot;buttons:j_idt72&quot;,f:&quot;buttons&quot;});return false;" type="submit"><span class="ui-button-text ui-c">Buscador de boletines</span></button><script id="buttons:j_idt72_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandButton","widget_buttons_j_idt72",{id:"buttons:j_idt72"});});</script></td></tr></tbody></table><input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:3" value="6406314869779015863:-4454352219289984807" autocomplete="off" />
+</form><div id="j_idt73" class="ui-outputpanel ui-widget panelWithoutBorder">
+<form id="busquedaBoletinesForm" name="busquedaBoletinesForm" method="post" action="/PortalBOP/buscador/;jsessionid=70A1407AC7D931D3E318E1417625BBB2" class="carousel" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="busquedaBoletinesForm" value="busquedaBoletinesForm" />
+<div id="busquedaBoletinesForm:j_idt74" class="ui-carousel ui-widget carousel ui-carousel-horizontal"><div class="ui-carousel-header">Boletines anteriores</div><div class="ui-carousel-content"><div class="ui-carousel-container"><button class="ui-carousel-prev ui-link" type="button"><span class="ui-carousel-prev-icon pi pi-chevron-left"></span></button><div class="ui-carousel-items-content" style="height:auto"><div class="ui-carousel-items-container ui-items-hidden"><div class="ui-carousel-item"><a id="busquedaBoletinesForm:j_idt74:0:j_idt75" href="#" class="ui-commandlink ui-widget" onclick="PrimeFaces.ab({s:&quot;busquedaBoletinesForm:j_idt74:0:j_idt75&quot;,f:&quot;busquedaBoletinesForm&quot;,u:&quot;busquedaBoletinesForm&quot;});return false;"><table class="boletinSelected">
+<tbody>
+<tr>
+<td><span class="text">Nº 131</span></td>
+</tr>
+<tr>
+<td><span class="text">jueves 29</span></td>
+</tr>
+<tr>
+<td><span class="text">Octubre</span></td>
+</tr>
+<tr>
+<td><span class="text">2026</span></td>
+</tr>
+</tbody>
+</table>
+</a><script id="busquedaBoletinesForm:j_idt74:0:j_idt75_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandLink","widget_busquedaBoletinesForm_j_idt74_0_j_idt75",{id:"busquedaBoletinesForm:j_idt74:0:j_idt75"});});</script></div><div class="ui-carousel-item"><a id="busquedaBoletinesForm:j_idt74:1:j_idt75" href="#" class="ui-commandlink ui-widget" onclick="PrimeFaces.ab({s:&quot;busquedaBoletinesForm:j_idt74:1:j_idt75&quot;,f:&quot;busquedaBoletinesForm&quot;,u:&quot;busquedaBoletinesForm&quot;});return false;"><table class="">
+<tbody>
+<tr>
+<td><span class="text">Nº 130</span></td>
+</tr>
+<tr>
+<td><span class="text">martes 27</span></td>
+</tr>
+<tr>
+<td><span class="text">Octubre</span></td>
+</tr>
+<tr>
+<td><span class="text">2026</span></td>
+</tr>
+</tbody>
+</table>
+</a><script id="busquedaBoletinesForm:j_idt74:1:j_idt75_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandLink","widget_busquedaBoletinesForm_j_idt74_1_j_idt75",{id:"busquedaBoletinesForm:j_idt74:1:j_idt75"});});</script></div><div class="ui-carousel-item"><a id="busquedaBoletinesForm:j_idt74:2:j_idt75" href="#" class="ui-commandlink ui-widget" onclick="PrimeFaces.ab({s:&quot;busquedaBoletinesForm:j_idt74:2:j_idt75&quot;,f:&quot;busquedaBoletinesForm&quot;,u:&quot;busquedaBoletinesForm&quot;});return false;"><table class="">
+<tbody>
+<tr>
+<td><span class="text">Nº 129</span></td>
+</tr>
+<tr>
+<td><span class="text">sábado 24</span></td>
+</tr>
+<tr>
+<td><span class="text">Octubre</span></td>
+</tr>
+<tr>
+<td><span class="text">2026</span></td>
+</tr>
+</tbody>
+</table>
+</a><script id="busquedaBoletinesForm:j_idt74:2:j_idt75_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandLink","widget_busquedaBoletinesForm_j_idt74_2_j_idt75",{id:"busquedaBoletinesForm:j_idt74:2:j_idt75"});});</script></div><div class="ui-carousel-item"><a id="busquedaBoletinesForm:j_idt74:3:j_idt75" href="#" class="ui-commandlink ui-widget" onclick="PrimeFaces.ab({s:&quot;busquedaBoletinesForm:j_idt74:3:j_idt75&quot;,f:&quot;busquedaBoletinesForm&quot;,u:&quot;busquedaBoletinesForm&quot;});return false;"><table class="">
+<tbody>
+<tr>
+<td><span class="text">Nº 128</span></td>
+</tr>
+<tr>
+<td><span class="text">jueves 22</span></td>
+</tr>
+<tr>
+<td><span class="text">Octubre</span></td>
+</tr>
+<tr>
+<td><span class="text">2026</span></td>
+</tr>
+</tbody>
+</table>
+</a><script id="busquedaBoletinesForm:j_idt74:3:j_idt75_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandLink","widget_busquedaBoletinesForm_j_idt74_3_j_idt75",{id:"busquedaBoletinesForm:j_idt74:3:j_idt75"});});</script></div><div class="ui-carousel-item"><a id="busquedaBoletinesForm:j_idt74:4:j_idt75" href="#" class="ui-commandlink ui-widget" onclick="PrimeFaces.ab({s:&quot;busquedaBoletinesForm:j_idt74:4:j_idt75&quot;,f:&quot;busquedaBoletinesForm&quot;,u:&quot;busquedaBoletinesForm&quot;});return false;"><table class="">
+<tbody>
+<tr>
+<td><span class="text">Nº 127</span></td>
+</tr>
+<tr>
+<td><span class="text">martes 20</span></td>
+</tr>
+<tr>
+<td><span class="text">Octubre</span></td>
+</tr>
+<tr>
+<td><span class="text">2026</span></td>
+</tr>
+</tbody>
+</table>
+</a><script id="busquedaBoletinesForm:j_idt74:4:j_idt75_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandLink","widget_busquedaBoletinesForm_j_idt74_4_j_idt75",{id:"busquedaBoletinesForm:j_idt74:4:j_idt75"});});</script></div><div class="ui-carousel-item"><a id="busquedaBoletinesForm:j_idt74:5:j_idt75" href="#" class="ui-commandlink ui-widget" onclick="PrimeFaces.ab({s:&quot;busquedaBoletinesForm:j_idt74:5:j_idt75&quot;,f:&quot;busquedaBoletinesForm&quot;,u:&quot;busquedaBoletinesForm&quot;});return false;"><table class="">
+<tbody>
+<tr>
+<td><span class="text">Nº 126</span></td>
+</tr>
+<tr>
+<td><span class="text">sábado 17</span></td>
+</tr>
+<tr>
+<td><span class="text">Octubre</span></td>
+</tr>
+<tr>
+<td><span class="text">2026</span></td>
+</tr>
+</tbody>
+</table>
+</a><script id="busquedaBoletinesForm:j_idt74:5:j_idt75_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandLink","widget_busquedaBoletinesForm_j_idt74_5_j_idt75",{id:"busquedaBoletinesForm:j_idt74:5:j_idt75"});});</script></div><div class="ui-carousel-item"><a id="busquedaBoletinesForm:j_idt74:6:j_idt75" href="#" class="ui-commandlink ui-widget" onclick="PrimeFaces.ab({s:&quot;busquedaBoletinesForm:j_idt74:6:j_idt75&quot;,f:&quot;busquedaBoletinesForm&quot;,u:&quot;busquedaBoletinesForm&quot;});return false;"><table class="">
+<tbody>
+<tr>
+<td><span class="text">Nº 125</span></td>
+</tr>
+<tr>
+<td><span class="text">jueves 15</span></td>
+</tr>
+<tr>
+<td><span class="text">Octubre</span></td>
+</tr>
+<tr>
+<td><span class="text">2026</span></td>
+</tr>
+</tbody>
+</table>
+</a><script id="busquedaBoletinesForm:j_idt74:6:j_idt75_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandLink","widget_busquedaBoletinesForm_j_idt74_6_j_idt75",{id:"busquedaBoletinesForm:j_idt74:6:j_idt75"});});</script></div><div class="ui-carousel-item"><a id="busquedaBoletinesForm:j_idt74:7:j_idt75" href="#" class="ui-commandlink ui-widget" onclick="PrimeFaces.ab({s:&quot;busquedaBoletinesForm:j_idt74:7:j_idt75&quot;,f:&quot;busquedaBoletinesForm&quot;,u:&quot;busquedaBoletinesForm&quot;});return false;"><table class="">
+<tbody>
+<tr>
+<td><span class="text">Nº 124</span></td>
+</tr>
+<tr>
+<td><span class="text">martes 13</span></td>
+</tr>
+<tr>
+<td><span class="text">Octubre</span></td>
+</tr>
+<tr>
+<td><span class="text">2026</span></td>
+</tr>
+</tbody>
+</table>
+</a><script id="busquedaBoletinesForm:j_idt74:7:j_idt75_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandLink","widget_busquedaBoletinesForm_j_idt74_7_j_idt75",{id:"busquedaBoletinesForm:j_idt74:7:j_idt75"});});</script></div><div class="ui-carousel-item"><a id="busquedaBoletinesForm:j_idt74:8:j_idt75" href="#" class="ui-commandlink ui-widget" onclick="PrimeFaces.ab({s:&quot;busquedaBoletinesForm:j_idt74:8:j_idt75&quot;,f:&quot;busquedaBoletinesForm&quot;,u:&quot;busquedaBoletinesForm&quot;});return false;"><table class="">
+<tbody>
+<tr>
+<td><span class="text">Nº 123</span></td>
+</tr>
+<tr>
+<td><span class="text">lunes 12</span></td>
+</tr>
+<tr>
+<td><span class="text">Octubre</span></td>
+</tr>
+<tr>
+<td><span class="text">2026</span></td>
+</tr>
+</tbody>
+</table>
+</a><script id="busquedaBoletinesForm:j_idt74:8:j_idt75_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandLink","widget_busquedaBoletinesForm_j_idt74_8_j_idt75",{id:"busquedaBoletinesForm:j_idt74:8:j_idt75"});});</script></div><div class="ui-carousel-item"><a id="busquedaBoletinesForm:j_idt74:9:j_idt75" href="#" class="ui-commandlink ui-widget" onclick="PrimeFaces.ab({s:&quot;busquedaBoletinesForm:j_idt74:9:j_idt75&quot;,f:&quot;busquedaBoletinesForm&quot;,u:&quot;busquedaBoletinesForm&quot;});return false;"><table class="">
+<tbody>
+<tr>
+<td><span class="text">Nº 122</span></td>
+</tr>
+<tr>
+<td><span class="text">sábado 10</span></td>
+</tr>
+<tr>
+<td><span class="text">Octubre</span></td>
+</tr>
+<tr>
+<td><span class="text">2026</span></td>
+</tr>
+</tbody>
+</table>
+</a><script id="busquedaBoletinesForm:j_idt74:9:j_idt75_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandLink","widget_busquedaBoletinesForm_j_idt74_9_j_idt75",{id:"busquedaBoletinesForm:j_idt74:9:j_idt75"});});</script></div><div class="ui-carousel-item"><a id="busquedaBoletinesForm:j_idt74:10:j_idt75" href="#" class="ui-commandlink ui-widget" onclick="PrimeFaces.ab({s:&quot;busquedaBoletinesForm:j_idt74:10:j_idt75&quot;,f:&quot;busquedaBoletinesForm&quot;,u:&quot;busquedaBoletinesForm&quot;});return false;"><table class="">
+<tbody>
+<tr>
+<td><span class="text">Nº 121</span></td>
+</tr>
+<tr>
+<td><span class="text">jueves 08</span></td>
+</tr>
+<tr>
+<td><span class="text">Octubre</span></td>
+</tr>
+<tr>
+<td><span class="text">2026</span></td>
+</tr>
+</tbody>
+</table>
+</a><script id="busquedaBoletinesForm:j_idt74:10:j_idt75_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandLink","widget_busquedaBoletinesForm_j_idt74_10_j_idt75",{id:"busquedaBoletinesForm:j_idt74:10:j_idt75"});});</script></div><div class="ui-carousel-item"><a id="busquedaBoletinesForm:j_idt74:11:j_idt75" href="#" class="ui-commandlink ui-widget" onclick="PrimeFaces.ab({s:&quot;busquedaBoletinesForm:j_idt74:11:j_idt75&quot;,f:&quot;busquedaBoletinesForm&quot;,u:&quot;busquedaBoletinesForm&quot;});return false;"><table class="">
+<tbody>
+<tr>
+<td><span class="text">Nº 120</span></td>
+</tr>
+<tr>
+<td><span class="text">martes 06</span></td>
+</tr>
+<tr>
+<td><span class="text">Octubre</span></td>
+</tr>
+<tr>
+<td><span class="text">2026</span></td>
+</tr>
+</tbody>
+</table>
+</a><script id="busquedaBoletinesForm:j_idt74:11:j_idt75_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandLink","widget_busquedaBoletinesForm_j_idt74_11_j_idt75",{id:"busquedaBoletinesForm:j_idt74:11:j_idt75"});});</script></div><div class="ui-carousel-item"><a id="busquedaBoletinesForm:j_idt74:12:j_idt75" href="#" class="ui-commandlink ui-widget" onclick="PrimeFaces.ab({s:&quot;busquedaBoletinesForm:j_idt74:12:j_idt75&quot;,f:&quot;busquedaBoletinesForm&quot;,u:&quot;busquedaBoletinesForm&quot;});return false;"><table class="">
+<tbody>
+<tr>
+<td><span class="text">Nº 119</span></td>
+</tr>
+<tr>
+<td><span class="text">sábado 03</span></td>
+</tr>
+<tr>
+<td><span class="text">Octubre</span></td>
+</tr>
+<tr>
+<td><span class="text">2026</span></td>
+</tr>
+</tbody>
+</table>
+</a><script id="busquedaBoletinesForm:j_idt74:12:j_idt75_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandLink","widget_busquedaBoletinesForm_j_idt74_12_j_idt75",{id:"busquedaBoletinesForm:j_idt74:12:j_idt75"});});</script></div><div class="ui-carousel-item"><a id="busquedaBoletinesForm:j_idt74:13:j_idt75" href="#" class="ui-commandlink ui-widget" onclick="PrimeFaces.ab({s:&quot;busquedaBoletinesForm:j_idt74:13:j_idt75&quot;,f:&quot;busquedaBoletinesForm&quot;,u:&quot;busquedaBoletinesForm&quot;});return false;"><table class="">
+<tbody>
+<tr>
+<td><span class="text">Nº 118</span></td>
+</tr>
+<tr>
+<td><span class="text">jueves 01</span></td>
+</tr>
+<tr>
+<td><span class="text">Octubre</span></td>
+</tr>
+<tr>
+<td><span class="text">2026</span></td>
+</tr>
+</tbody>
+</table>
+</a><script id="busquedaBoletinesForm:j_idt74:13:j_idt75_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandLink","widget_busquedaBoletinesForm_j_idt74_13_j_idt75",{id:"busquedaBoletinesForm:j_idt74:13:j_idt75"});});</script></div><div class="ui-carousel-item"><a id="busquedaBoletinesForm:j_idt74:14:j_idt75" href="#" class="ui-commandlink ui-widget" onclick="PrimeFaces.ab({s:&quot;busquedaBoletinesForm:j_idt74:14:j_idt75&quot;,f:&quot;busquedaBoletinesForm&quot;,u:&quot;busquedaBoletinesForm&quot;});return false;"><table class="">
+<tbody>
+<tr>
+<td><span class="text">Nº 117</span></td>
+</tr>
+<tr>
+<td><span class="text">martes 29</span></td>
+</tr>
+<tr>
+<td><span class="text">Septiembre</span></td>
+</tr>
+<tr>
+<td><span class="text">2026</span></td>
+</tr>
+</tbody>
+</table>
+</a><script id="busquedaBoletinesForm:j_idt74:14:j_idt75_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandLink","widget_busquedaBoletinesForm_j_idt74_14_j_idt75",{id:"busquedaBoletinesForm:j_idt74:14:j_idt75"});});</script></div><div class="ui-carousel-item"><a id="busquedaBoletinesForm:j_idt74:15:j_idt75" href="#" class="ui-commandlink ui-widget" onclick="PrimeFaces.ab({s:&quot;busquedaBoletinesForm:j_idt74:15:j_idt75&quot;,f:&quot;busquedaBoletinesForm&quot;,u:&quot;busquedaBoletinesForm&quot;});return false;"><table class="">
+<tbody>
+<tr>
+<td><span class="text">Nº 116</span></td>
+</tr>
+<tr>
+<td><span class="text">sábado 26</span></td>
+</tr>
+<tr>
+<td><span class="text">Septiembre</span></td>
+</tr>
+<tr>
+<td><span class="text">2026</span></td>
+</tr>
+</tbody>
+</table>
+</a><script id="busquedaBoletinesForm:j_idt74:15:j_idt75_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandLink","widget_busquedaBoletinesForm_j_idt74_15_j_idt75",{id:"busquedaBoletinesForm:j_idt74:15:j_idt75"});});</script></div><div class="ui-carousel-item"><a id="busquedaBoletinesForm:j_idt74:16:j_idt75" href="#" class="ui-commandlink ui-widget" onclick="PrimeFaces.ab({s:&quot;busquedaBoletinesForm:j_idt74:16:j_idt75&quot;,f:&quot;busquedaBoletinesForm&quot;,u:&quot;busquedaBoletinesForm&quot;});return false;"><table class="">
+<tbody>
+<tr>
+<td><span class="text">Nº 115</span></td>
+</tr>
+<tr>
+<td><span class="text">jueves 24</span></td>
+</tr>
+<tr>
+<td><span class="text">Septiembre</span></td>
+</tr>
+<tr>
+<td><span class="text">2026</span></td>
+</tr>
+</tbody>
+</table>
+</a><script id="busquedaBoletinesForm:j_idt74:16:j_idt75_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandLink","widget_busquedaBoletinesForm_j_idt74_16_j_idt75",{id:"busquedaBoletinesForm:j_idt74:16:j_idt75"});});</script></div><div class="ui-carousel-item"><a id="busquedaBoletinesForm:j_idt74:17:j_idt75" href="#" class="ui-commandlink ui-widget" onclick="PrimeFaces.ab({s:&quot;busquedaBoletinesForm:j_idt74:17:j_idt75&quot;,f:&quot;busquedaBoletinesForm&quot;,u:&quot;busquedaBoletinesForm&quot;});return false;"><table class="">
+<tbody>
+<tr>
+<td><span class="text">Nº 114</span></td>
+</tr>
+<tr>
+<td><span class="text">martes 22</span></td>
+</tr>
+<tr>
+<td><span class="text">Septiembre</span></td>
+</tr>
+<tr>
+<td><span class="text">2026</span></td>
+</tr>
+</tbody>
+</table>
+</a><script id="busquedaBoletinesForm:j_idt74:17:j_idt75_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandLink","widget_busquedaBoletinesForm_j_idt74_17_j_idt75",{id:"busquedaBoletinesForm:j_idt74:17:j_idt75"});});</script></div><div class="ui-carousel-item"><a id="busquedaBoletinesForm:j_idt74:18:j_idt75" href="#" class="ui-commandlink ui-widget" onclick="PrimeFaces.ab({s:&quot;busquedaBoletinesForm:j_idt74:18:j_idt75&quot;,f:&quot;busquedaBoletinesForm&quot;,u:&quot;busquedaBoletinesForm&quot;});return false;"><table class="">
+<tbody>
+<tr>
+<td><span class="text">Nº 113</span></td>
+</tr>
+<tr>
+<td><span class="text">sábado 19</span></td>
+</tr>
+<tr>
+<td><span class="text">Septiembre</span></td>
+</tr>
+<tr>
+<td><span class="text">2026</span></td>
+</tr>
+</tbody>
+</table>
+</a><script id="busquedaBoletinesForm:j_idt74:18:j_idt75_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandLink","widget_busquedaBoletinesForm_j_idt74_18_j_idt75",{id:"busquedaBoletinesForm:j_idt74:18:j_idt75"});});</script></div><div class="ui-carousel-item"><a id="busquedaBoletinesForm:j_idt74:19:j_idt75" href="#" class="ui-commandlink ui-widget" onclick="PrimeFaces.ab({s:&quot;busquedaBoletinesForm:j_idt74:19:j_idt75&quot;,f:&quot;busquedaBoletinesForm&quot;,u:&quot;busquedaBoletinesForm&quot;});return false;"><table class="">
+<tbody>
+<tr>
+<td><span class="text">Nº 112</span></td>
+</tr>
+<tr>
+<td><span class="text">jueves 17</span></td>
+</tr>
+<tr>
+<td><span class="text">Septiembre</span></td>
+</tr>
+<tr>
+<td><span class="text">2026</span></td>
+</tr>
+</tbody>
+</table>
+</a><script id="busquedaBoletinesForm:j_idt74:19:j_idt75_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandLink","widget_busquedaBoletinesForm_j_idt74_19_j_idt75",{id:"busquedaBoletinesForm:j_idt74:19:j_idt75"});});</script></div><div class="ui-carousel-item"><a id="busquedaBoletinesForm:j_idt74:20:j_idt75" href="#" class="ui-commandlink ui-widget" onclick="PrimeFaces.ab({s:&quot;busquedaBoletinesForm:j_idt74:20:j_idt75&quot;,f:&quot;busquedaBoletinesForm&quot;,u:&quot;busquedaBoletinesForm&quot;});return false;"><table class="">
+<tbody>
+<tr>
+<td><span class="text">Nº 111</span></td>
+</tr>
+<tr>
+<td><span class="text">martes 15</span></td>
+</tr>
+<tr>
+<td><span class="text">Septiembre</span></td>
+</tr>
+<tr>
+<td><span class="text">2026</span></td>
+</tr>
+</tbody>
+</table>
+</a><script id="busquedaBoletinesForm:j_idt74:20:j_idt75_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandLink","widget_busquedaBoletinesForm_j_idt74_20_j_idt75",{id:"busquedaBoletinesForm:j_idt74:20:j_idt75"});});</script></div><div class="ui-carousel-item"><a id="busquedaBoletinesForm:j_idt74:21:j_idt75" href="#" class="ui-commandlink ui-widget" onclick="PrimeFaces.ab({s:&quot;busquedaBoletinesForm:j_idt74:21:j_idt75&quot;,f:&quot;busquedaBoletinesForm&quot;,u:&quot;busquedaBoletinesForm&quot;});return false;"><table class="">
+<tbody>
+<tr>
+<td><span class="text">Nº 110</span></td>
+</tr>
+<tr>
+<td><span class="text">sábado 12</span></td>
+</tr>
+<tr>
+<td><span class="text">Septiembre</span></td>
+</tr>
+<tr>
+<td><span class="text">2026</span></td>
+</tr>
+</tbody>
+</table>
+</a><script id="busquedaBoletinesForm:j_idt74:21:j_idt75_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandLink","widget_busquedaBoletinesForm_j_idt74_21_j_idt75",{id:"busquedaBoletinesForm:j_idt74:21:j_idt75"});});</script></div><div class="ui-carousel-item"><a id="busquedaBoletinesForm:j_idt74:22:j_idt75" href="#" class="ui-commandlink ui-widget" onclick="PrimeFaces.ab({s:&quot;busquedaBoletinesForm:j_idt74:22:j_idt75&quot;,f:&quot;busquedaBoletinesForm&quot;,u:&quot;busquedaBoletinesForm&quot;});return false;"><table class="">
+<tbody>
+<tr>
+<td><span class="text">Nº 109</span></td>
+</tr>
+<tr>
+<td><span class="text">jueves 10</span></td>
+</tr>
+<tr>
+<td><span class="text">Septiembre</span></td>
+</tr>
+<tr>
+<td><span class="text">2026</span></td>
+</tr>
+</tbody>
+</table>
+</a><script id="busquedaBoletinesForm:j_idt74:22:j_idt75_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandLink","widget_busquedaBoletinesForm_j_idt74_22_j_idt75",{id:"busquedaBoletinesForm:j_idt74:22:j_idt75"});});</script></div><div class="ui-carousel-item"><a id="busquedaBoletinesForm:j_idt74:23:j_idt75" href="#" class="ui-commandlink ui-widget" onclick="PrimeFaces.ab({s:&quot;busquedaBoletinesForm:j_idt74:23:j_idt75&quot;,f:&quot;busquedaBoletinesForm&quot;,u:&quot;busquedaBoletinesForm&quot;});return false;"><table class="">
+<tbody>
+<tr>
+<td><span class="text">Nº 108</span></td>
+</tr>
+<tr>
+<td><span class="text">martes 08</span></td>
+</tr>
+<tr>
+<td><span class="text">Septiembre</span></td>
+</tr>
+<tr>
+<td><span class="text">2026</span></td>
+</tr>
+</tbody>
+</table>
+</a><script id="busquedaBoletinesForm:j_idt74:23:j_idt75_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandLink","widget_busquedaBoletinesForm_j_idt74_23_j_idt75",{id:"busquedaBoletinesForm:j_idt74:23:j_idt75"});});</script></div><div class="ui-carousel-item"><a id="busquedaBoletinesForm:j_idt74:24:j_idt75" href="#" class="ui-commandlink ui-widget" onclick="PrimeFaces.ab({s:&quot;busquedaBoletinesForm:j_idt74:24:j_idt75&quot;,f:&quot;busquedaBoletinesForm&quot;,u:&quot;busquedaBoletinesForm&quot;});return false;"><table class="">
+<tbody>
+<tr>
+<td><span class="text">Nº 107</span></td>
+</tr>
+<tr>
+<td><span class="text">sábado 05</span></td>
+</tr>
+<tr>
+<td><span class="text">Septiembre</span></td>
+</tr>
+<tr>
+<td><span class="text">2026</span></td>
+</tr>
+</tbody>
+</table>
+</a><script id="busquedaBoletinesForm:j_idt74:24:j_idt75_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandLink","widget_busquedaBoletinesForm_j_idt74_24_j_idt75",{id:"busquedaBoletinesForm:j_idt74:24:j_idt75"});});</script></div><div class="ui-carousel-item"><a id="busquedaBoletinesForm:j_idt74:25:j_idt75" href="#" class="ui-commandlink ui-widget" onclick="PrimeFaces.ab({s:&quot;busquedaBoletinesForm:j_idt74:25:j_idt75&quot;,f:&quot;busquedaBoletinesForm&quot;,u:&quot;busquedaBoletinesForm&quot;});return false;"><table class="">
+<tbody>
+<tr>
+<td><span class="text">Nº 106</span></td>
+</tr>
+<tr>
+<td><span class="text">jueves 03</span></td>
+</tr>
+<tr>
+<td><span class="text">Septiembre</span></td>
+</tr>
+<tr>
+<td><span class="text">2026</span></td>
+</tr>
+</tbody>
+</table>
+</a><script id="busquedaBoletinesForm:j_idt74:25:j_idt75_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandLink","widget_busquedaBoletinesForm_j_idt74_25_j_idt75",{id:"busquedaBoletinesForm:j_idt74:25:j_idt75"});});</script></div><div class="ui-carousel-item"><a id="busquedaBoletinesForm:j_idt74:26:j_idt75" href="#" class="ui-commandlink ui-widget" onclick="PrimeFaces.ab({s:&quot;busquedaBoletinesForm:j_idt74:26:j_idt75&quot;,f:&quot;busquedaBoletinesForm&quot;,u:&quot;busquedaBoletinesForm&quot;});return false;"><table class="">
+<tbody>
+<tr>
+<td><span class="text">Nº 105</span></td>
+</tr>
+<tr>
+<td><span class="text">martes 01</span></td>
+</tr>
+<tr>
+<td><span class="text">Septiembre</span></td>
+</tr>
+<tr>
+<td><span class="text">2026</span></td>
+</tr>
+</tbody>
+</table>
+</a><script id="busquedaBoletinesForm:j_idt74:26:j_idt75_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandLink","widget_busquedaBoletinesForm_j_idt74_26_j_idt75",{id:"busquedaBoletinesForm:j_idt74:26:j_idt75"});});</script></div><div class="ui-carousel-item"><a id="busquedaBoletinesForm:j_idt74:27:j_idt75" href="#" class="ui-commandlink ui-widget" onclick="PrimeFaces.ab({s:&quot;busquedaBoletinesForm:j_idt74:27:j_idt75&quot;,f:&quot;busquedaBoletinesForm&quot;,u:&quot;busquedaBoletinesForm&quot;});return false;"><table class="">
+<tbody>
+<tr>
+<td><span class="text">Nº 104</span></td>
+</tr>
+<tr>
+<td><span class="text">sábado 29</span></td>
+</tr>
+<tr>
+<td><span class="text">Agosto</span></td>
+</tr>
+<tr>
+<td><span class="text">2026</span></td>
+</tr>
+</tbody>
+</table>
+</a><script id="busquedaBoletinesForm:j_idt74:27:j_idt75_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandLink","widget_busquedaBoletinesForm_j_idt74_27_j_idt75",{id:"busquedaBoletinesForm:j_idt74:27:j_idt75"});});</script></div><div class="ui-carousel-item"><a id="busquedaBoletinesForm:j_idt74:28:j_idt75" href="#" class="ui-commandlink ui-widget" onclick="PrimeFaces.ab({s:&quot;busquedaBoletinesForm:j_idt74:28:j_idt75&quot;,f:&quot;busquedaBoletinesForm&quot;,u:&quot;busquedaBoletinesForm&quot;});return false;"><table class="">
+<tbody>
+<tr>
+<td><span class="text">Nº 103</span></td>
+</tr>
+<tr>
+<td><span class="text">jueves 27</span></td>
+</tr>
+<tr>
+<td><span class="text">Agosto</span></td>
+</tr>
+<tr>
+<td><span class="text">2026</span></td>
+</tr>
+</tbody>
+</table>
+</a><script id="busquedaBoletinesForm:j_idt74:28:j_idt75_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandLink","widget_busquedaBoletinesForm_j_idt74_28_j_idt75",{id:"busquedaBoletinesForm:j_idt74:28:j_idt75"});});</script></div><div class="ui-carousel-item"><a id="busquedaBoletinesForm:j_idt74:29:j_idt75" href="#" class="ui-commandlink ui-widget" onclick="PrimeFaces.ab({s:&quot;busquedaBoletinesForm:j_idt74:29:j_idt75&quot;,f:&quot;busquedaBoletinesForm&quot;,u:&quot;busquedaBoletinesForm&quot;});return false;"><table class="">
+<tbody>
+<tr>
+<td><span class="text">Nº 102</span></td>
+</tr>
+<tr>
+<td><span class="text">martes 25</span></td>
+</tr>
+<tr>
+<td><span class="text">Agosto</span></td>
+</tr>
+<tr>
+<td><span class="text">2026</span></td>
+</tr>
+</tbody>
+</table>
+</a><script id="busquedaBoletinesForm:j_idt74:29:j_idt75_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandLink","widget_busquedaBoletinesForm_j_idt74_29_j_idt75",{id:"busquedaBoletinesForm:j_idt74:29:j_idt75"});});</script></div></div></div><button class="ui-carousel-next ui-link" type="button"><span class="ui-carousel-next-icon pi pi-chevron-right"></span></button></div><ul class="ui-carousel-indicators ui-reset"></ul></div></div><script id="busquedaBoletinesForm:j_idt74_s" type="text/javascript">$(function(){PrimeFaces.cw("Carousel","widget_busquedaBoletinesForm_j_idt74",{id:"busquedaBoletinesForm:j_idt74",numVisible:10});});</script><div id="busquedaBoletinesForm:resultadoBusquedaBoletines" class="ui-outputpanel ui-widget panelWithBorder"><table id="busquedaBoletinesForm:j_idt85" class="ui-panelgrid ui-widget panelWithoutBorder, tituloBoletinBusqueda" role="grid"><tbody><tr class="ui-widget-content ui-panelgrid-odd"><td role="gridcell" class="ui-panelgrid-cell columnLabelTabGeneral"><label id="busquedaBoletinesForm:j_idt88" class="ui-outputlabel ui-widget labelFormulario">Sumario BOP Nº 131</label></td><td role="gridcell" class="ui-panelgrid-cell"><label id="busquedaBoletinesForm:j_idt90" class="ui-outputlabel ui-widget">29/10/2026</label></td><td role="gridcell" class="ui-panelgrid-cell columnaBoton"><span id="busquedaBoletinesForm:j_idt92" class="ui-linkbutton linkDownloadFileCurrentBoletinIcon ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only"><a href="https://bop.dipcas.es/PortalBOP/api/descargarBoletin?idBoletin=27059&amp;idioma=es"><span class="ui-button-icon-left ui-icon ui-c pi pi-file-pdf pi-1_7x"></span><span class="ui-button-text ui-c">ui-button</span></a></span><script id="busquedaBoletinesForm:j_idt92_s" type="text/javascript">$(function(){PrimeFaces.cw("LinkButton","widget_busquedaBoletinesForm_j_idt92",{id:"busquedaBoletinesForm:j_idt92"});});</script></td></tr></tbody></table><div id="busquedaBoletinesForm:j_idt93:0:j_idt94" class="ui-accordion ui-widget ui-helper-reset ui-hidden-container titulo1" role="tablist" data-widget="widget_busquedaBoletinesForm_j_idt93_0_j_idt94"><div id="busquedaBoletinesForm:j_idt93:0:j_idt94:j_idt95_header" class="ui-accordion-header ui-helper-reset ui-state-default ui-state-active ui-corner-top" role="tab" aria-expanded="true" aria-selected="true" tabindex="0"><span class="ui-icon ui-icon-triangle-1-s"></span>ADMINISTRACIÓ AUTONÒMICA / ADMINISTRACIÓN AUTONÓMICA</div><div id="busquedaBoletinesForm:j_idt93:0:j_idt94:j_idt95" class="ui-accordion-content ui-helper-reset ui-widget-content" role="tabpanel" aria-hidden="false"><span class="titulo2">VICEPRESIDENCIA PRIMERA Y CONSELLERIA DE VIVIENDA, EMPLEO, JUVENTUD E IGUALDAD</span>
+										<br />
+									   		<br /><br /><span id="busquedaBoletinesForm:j_idt93:0:j_idt94:j_idt96:0:j_idt99:0:j_idt104" class="ui-linkbutton linkDownloadFileCurrentAnuncioIcon ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only"><a href="https://bop.dipcas.es/PortalBOP/api/descargarAnuncio?idAnuncio=168528&amp;idioma=es"><span class="ui-button-icon-left ui-icon ui-c pi pi-file-pdf pi-1_7x"></span><span class="ui-button-text ui-c">ui-button</span></a></span><script id="busquedaBoletinesForm:j_idt93:0:j_idt94:j_idt96:0:j_idt99:0:j_idt104_s" type="text/javascript">$(function(){PrimeFaces.cw("LinkButton","widget_busquedaBoletinesForm_j_idt93_0_j_idt94_j_idt96_0_j_idt99_0_j_idt104",{id:"busquedaBoletinesForm:j_idt93:0:j_idt94:j_idt96:0:j_idt99:0:j_idt104"});});</script><span class="titulo4">Resolución y acta por la que se prorroga el Convenio Colectivo para las Empresas de Transporte de Viajeros por Carretera y Urbanos de la provincia de Castellón, código 12000645011978</span>
+											<br />
+										<br /></div><input id="busquedaBoletinesForm:j_idt93:0:j_idt94_active" name="busquedaBoletinesForm:j_idt93:0:j_idt94_active" type="hidden" autocomplete="off" value="0" /></div><script id="busquedaBoletinesForm:j_idt93:0:j_idt94_s" type="text/javascript">$(function(){PrimeFaces.cw("AccordionPanel","widget_busquedaBoletinesForm_j_idt93_0_j_idt94",{id:"busquedaBoletinesForm:j_idt93:0:j_idt94"});});</script><div id="busquedaBoletinesForm:j_idt93:1:j_idt94" class="ui-accordion ui-widget ui-helper-reset ui-hidden-container titulo1" role="tablist" data-widget="widget_busquedaBoletinesForm_j_idt93_1_j_idt94"><div id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt95_header" class="ui-accordion-header ui-helper-reset ui-state-default ui-state-active ui-corner-top" role="tab" aria-expanded="true" aria-selected="true" tabindex="0"><span class="ui-icon ui-icon-triangle-1-s"></span>ADMINISTRACIÓ LOCAL / ADMINISTRACIÓN LOCAL</div><div id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt95" class="ui-accordion-content ui-helper-reset ui-widget-content" role="tabpanel" aria-hidden="false"><span class="titulo2">Diputació Provincial de Castelló / Diputación Provincial de Castellón</span>
+										<br />
+									   		<br /><br /><span id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:0:j_idt99:0:j_idt104" class="ui-linkbutton linkDownloadFileCurrentAnuncioIcon ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only"><a href="https://bop.dipcas.es/PortalBOP/api/descargarAnuncio?idAnuncio=168724&amp;idioma=es"><span class="ui-button-icon-left ui-icon ui-c pi pi-file-pdf pi-1_7x"></span><span class="ui-button-text ui-c">ui-button</span></a></span><script id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:0:j_idt99:0:j_idt104_s" type="text/javascript">$(function(){PrimeFaces.cw("LinkButton","widget_busquedaBoletinesForm_j_idt93_1_j_idt94_j_idt96_0_j_idt99_0_j_idt104",{id:"busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:0:j_idt99:0:j_idt104"});});</script><span class="titulo4">Aprobación modificación 11 del Plan Estratégico de Subvenciones 2026 de la Diputación Provincial de Castellón</span>
+											<br />
+									   		<br /><br /><span id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:0:j_idt99:1:j_idt104" class="ui-linkbutton linkDownloadFileCurrentAnuncioIcon ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only"><a href="https://bop.dipcas.es/PortalBOP/api/descargarAnuncio?idAnuncio=168723&amp;idioma=es"><span class="ui-button-icon-left ui-icon ui-c pi pi-file-pdf pi-1_7x"></span><span class="ui-button-text ui-c">ui-button</span></a></span><script id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:0:j_idt99:1:j_idt104_s" type="text/javascript">$(function(){PrimeFaces.cw("LinkButton","widget_busquedaBoletinesForm_j_idt93_1_j_idt94_j_idt96_0_j_idt99_1_j_idt104",{id:"busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:0:j_idt99:1:j_idt104"});});</script><span class="titulo4">Extracto modificación cuantías subvención Ayuntamientos en materia de Gobierno Abierto</span>
+											<br />
+									   		<br /><br /><span id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:0:j_idt99:2:j_idt104" class="ui-linkbutton linkDownloadFileCurrentAnuncioIcon ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only"><a href="https://bop.dipcas.es/PortalBOP/api/descargarAnuncio?idAnuncio=168696&amp;idioma=es"><span class="ui-button-icon-left ui-icon ui-c pi pi-file-pdf pi-1_7x"></span><span class="ui-button-text ui-c">ui-button</span></a></span><script id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:0:j_idt99:2:j_idt104_s" type="text/javascript">$(function(){PrimeFaces.cw("LinkButton","widget_busquedaBoletinesForm_j_idt93_1_j_idt94_j_idt96_0_j_idt99_2_j_idt104",{id:"busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:0:j_idt99:2:j_idt104"});});</script><span class="titulo4">APROBACIÓN PROVISIONAL PLA EXTRAORDINARI + ESPORT </span>
+											<br />
+									   		<br /><br /><span id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:0:j_idt99:3:j_idt104" class="ui-linkbutton linkDownloadFileCurrentAnuncioIcon ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only"><a href="https://bop.dipcas.es/PortalBOP/api/descargarAnuncio?idAnuncio=168706&amp;idioma=es"><span class="ui-button-icon-left ui-icon ui-c pi pi-file-pdf pi-1_7x"></span><span class="ui-button-text ui-c">ui-button</span></a></span><script id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:0:j_idt99:3:j_idt104_s" type="text/javascript">$(function(){PrimeFaces.cw("LinkButton","widget_busquedaBoletinesForm_j_idt93_1_j_idt94_j_idt96_0_j_idt99_3_j_idt104",{id:"busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:0:j_idt99:3:j_idt104"});});</script><span class="titulo4">APROBACIÓN INICIAL EXPEDIENTE ´7/2026 DE CRÉDITOS EXTRAORDINARIOS Y SUPLEMENTOS DE CRÉDITOS</span>
+											<br />
+									   		<br /><br /><span id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:0:j_idt99:4:j_idt104" class="ui-linkbutton linkDownloadFileCurrentAnuncioIcon ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only"><a href="https://bop.dipcas.es/PortalBOP/api/descargarAnuncio?idAnuncio=168701&amp;idioma=es"><span class="ui-button-icon-left ui-icon ui-c pi pi-file-pdf pi-1_7x"></span><span class="ui-button-text ui-c">ui-button</span></a></span><script id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:0:j_idt99:4:j_idt104_s" type="text/javascript">$(function(){PrimeFaces.cw("LinkButton","widget_busquedaBoletinesForm_j_idt93_1_j_idt94_j_idt96_0_j_idt99_4_j_idt104",{id:"busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:0:j_idt99:4:j_idt104"});});</script><span class="titulo4">Modificación presupuestaria 1/2026</span>
+											<br />
+									   		<br /><br /><span id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:0:j_idt99:5:j_idt104" class="ui-linkbutton linkDownloadFileCurrentAnuncioIcon ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only"><a href="https://bop.dipcas.es/PortalBOP/api/descargarAnuncio?idAnuncio=168697&amp;idioma=es"><span class="ui-button-icon-left ui-icon ui-c pi pi-file-pdf pi-1_7x"></span><span class="ui-button-text ui-c">ui-button</span></a></span><script id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:0:j_idt99:5:j_idt104_s" type="text/javascript">$(function(){PrimeFaces.cw("LinkButton","widget_busquedaBoletinesForm_j_idt93_1_j_idt94_j_idt96_0_j_idt99_5_j_idt104",{id:"busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:0:j_idt99:5:j_idt104"});});</script><span class="titulo4">MODIFICACIÓN BASES Y CONCESIÓN DE SUBVENCIONES CICLOS/CONCIERTOS DE MÚSICA, EJERCICIO 2026</span>
+											<br />
+									   		<br /><br /><span id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:0:j_idt99:6:j_idt104" class="ui-linkbutton linkDownloadFileCurrentAnuncioIcon ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only"><a href="https://bop.dipcas.es/PortalBOP/api/descargarAnuncio?idAnuncio=168695&amp;idioma=es"><span class="ui-button-icon-left ui-icon ui-c pi pi-file-pdf pi-1_7x"></span><span class="ui-button-text ui-c">ui-button</span></a></span><script id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:0:j_idt99:6:j_idt104_s" type="text/javascript">$(function(){PrimeFaces.cw("LinkButton","widget_busquedaBoletinesForm_j_idt93_1_j_idt94_j_idt96_0_j_idt99_6_j_idt104",{id:"busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:0:j_idt99:6:j_idt104"});});</script><span class="titulo4">ASIGNACIÓN FONDO COOPERACIÓN MUNICIPIOS TURÍSTICOS, EJERCICIO 2026</span>
+											<br />
+									   		<br /><br /><span id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:0:j_idt99:7:j_idt104" class="ui-linkbutton linkDownloadFileCurrentAnuncioIcon ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only"><a href="https://bop.dipcas.es/PortalBOP/api/descargarAnuncio?idAnuncio=168708&amp;idioma=es"><span class="ui-button-icon-left ui-icon ui-c pi pi-file-pdf pi-1_7x"></span><span class="ui-button-text ui-c">ui-button</span></a></span><script id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:0:j_idt99:7:j_idt104_s" type="text/javascript">$(function(){PrimeFaces.cw("LinkButton","widget_busquedaBoletinesForm_j_idt93_1_j_idt94_j_idt96_0_j_idt99_7_j_idt104",{id:"busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:0:j_idt99:7:j_idt104"});});</script><span class="titulo4">APROBACIÓN CONCRECIÓN BASES REGULADORAS BONO DIPUCOMERÇ</span>
+											<br />
+										<br /><span class="titulo2">Ajuntaments / Ayuntamientos</span>
+										<br /><br /><span class="titulo3">AJUNTAMENT D'ALMASSORA</span>
+									   		<br /><br /><span id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:0:j_idt104" class="ui-linkbutton linkDownloadFileCurrentAnuncioIcon ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only"><a href="https://bop.dipcas.es/PortalBOP/api/descargarAnuncio?idAnuncio=168707&amp;idioma=es"><span class="ui-button-icon-left ui-icon ui-c pi pi-file-pdf pi-1_7x"></span><span class="ui-button-text ui-c">ui-button</span></a></span><script id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:0:j_idt104_s" type="text/javascript">$(function(){PrimeFaces.cw("LinkButton","widget_busquedaBoletinesForm_j_idt93_1_j_idt94_j_idt96_1_j_idt99_0_j_idt104",{id:"busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:0:j_idt104"});});</script><span class="titulo4">EDICTO RELATIVO DELEGACIÓN FIRMA ALCALDESA CELEBRACIÓN MATRIMONIO CIVIL EXPTE 64/2026/ALCMAT</span>
+											<br />
+									   		<br /><br /><span id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:1:j_idt104" class="ui-linkbutton linkDownloadFileCurrentAnuncioIcon ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only"><a href="https://bop.dipcas.es/PortalBOP/api/descargarAnuncio?idAnuncio=168709&amp;idioma=es"><span class="ui-button-icon-left ui-icon ui-c pi pi-file-pdf pi-1_7x"></span><span class="ui-button-text ui-c">ui-button</span></a></span><script id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:1:j_idt104_s" type="text/javascript">$(function(){PrimeFaces.cw("LinkButton","widget_busquedaBoletinesForm_j_idt93_1_j_idt94_j_idt96_1_j_idt99_1_j_idt104",{id:"busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:1:j_idt104"});});</script><span class="titulo4">EDICTO RELATIVO DELEGACIÓN FIRMA ALCALDESA CELEBRACIÓN MATRIMONIO CIVIL EXPTE 12/2026/ALCMAT</span>
+											<br /><br /><span class="titulo3">AJUNTAMENT D'ARES DEL MAESTRAT</span>
+									   		<br /><br /><span id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:2:j_idt104" class="ui-linkbutton linkDownloadFileCurrentAnuncioIcon ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only"><a href="https://bop.dipcas.es/PortalBOP/api/descargarAnuncio?idAnuncio=168508&amp;idioma=es"><span class="ui-button-icon-left ui-icon ui-c pi pi-file-pdf pi-1_7x"></span><span class="ui-button-text ui-c">ui-button</span></a></span><script id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:2:j_idt104_s" type="text/javascript">$(function(){PrimeFaces.cw("LinkButton","widget_busquedaBoletinesForm_j_idt93_1_j_idt94_j_idt96_1_j_idt99_2_j_idt104",{id:"busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:2:j_idt104"});});</script><span class="titulo4">Aprobación definitiva de la modificación de la Ordenanza fiscal reguladora de la tasa por el uso de instalaciones municipales</span>
+											<br />
+									   		<br /><br /><span id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:3:j_idt104" class="ui-linkbutton linkDownloadFileCurrentAnuncioIcon ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only"><a href="https://bop.dipcas.es/PortalBOP/api/descargarAnuncio?idAnuncio=168510&amp;idioma=es"><span class="ui-button-icon-left ui-icon ui-c pi pi-file-pdf pi-1_7x"></span><span class="ui-button-text ui-c">ui-button</span></a></span><script id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:3:j_idt104_s" type="text/javascript">$(function(){PrimeFaces.cw("LinkButton","widget_busquedaBoletinesForm_j_idt93_1_j_idt94_j_idt96_1_j_idt99_3_j_idt104",{id:"busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:3:j_idt104"});});</script><span class="titulo4">Aprovació definitiva de l'Ordenança municipal reguladora del trànsit, la circulació i l'estacionament del municipi d'Ares del Maestrat (Castelló)</span>
+											<br /><br /><span class="titulo3">AJUNTAMENT DE BARRACAS</span>
+									   		<br /><br /><span id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:4:j_idt104" class="ui-linkbutton linkDownloadFileCurrentAnuncioIcon ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only"><a href="https://bop.dipcas.es/PortalBOP/api/descargarAnuncio?idAnuncio=168721&amp;idioma=es"><span class="ui-button-icon-left ui-icon ui-c pi pi-file-pdf pi-1_7x"></span><span class="ui-button-text ui-c">ui-button</span></a></span><script id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:4:j_idt104_s" type="text/javascript">$(function(){PrimeFaces.cw("LinkButton","widget_busquedaBoletinesForm_j_idt93_1_j_idt94_j_idt96_1_j_idt99_4_j_idt104",{id:"busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:4:j_idt104"});});</script><span class="titulo4">APROBACION DEFINITIVA MODIFICACION DE CREDITOS 9/2026</span>
+											<br /><br /><span class="titulo3">AJUNTAMENT DE BENICARLÓ</span>
+									   		<br /><br /><span id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:5:j_idt104" class="ui-linkbutton linkDownloadFileCurrentAnuncioIcon ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only"><a href="https://bop.dipcas.es/PortalBOP/api/descargarAnuncio?idAnuncio=168685&amp;idioma=es"><span class="ui-button-icon-left ui-icon ui-c pi pi-file-pdf pi-1_7x"></span><span class="ui-button-text ui-c">ui-button</span></a></span><script id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:5:j_idt104_s" type="text/javascript">$(function(){PrimeFaces.cw("LinkButton","widget_busquedaBoletinesForm_j_idt93_1_j_idt94_j_idt96_1_j_idt99_5_j_idt104",{id:"busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:5:j_idt104"});});</script><span class="titulo4">Anuncio de aprobación del precios públicos de las entradas del ciclo de teatro familiar Bocabadats 2026</span>
+											<br />
+									   		<br /><br /><span id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:6:j_idt104" class="ui-linkbutton linkDownloadFileCurrentAnuncioIcon ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only"><a href="https://bop.dipcas.es/PortalBOP/api/descargarAnuncio?idAnuncio=168715&amp;idioma=es"><span class="ui-button-icon-left ui-icon ui-c pi pi-file-pdf pi-1_7x"></span><span class="ui-button-text ui-c">ui-button</span></a></span><script id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:6:j_idt104_s" type="text/javascript">$(function(){PrimeFaces.cw("LinkButton","widget_busquedaBoletinesForm_j_idt93_1_j_idt94_j_idt96_1_j_idt99_6_j_idt104",{id:"busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:6:j_idt104"});});</script><span class="titulo4">Anuncio aprobación definitiva  Modificación presupuestaria 04-26</span>
+											<br /><br /><span class="titulo3">AJUNTAMENT DE BETXÍ</span>
+									   		<br /><br /><span id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:7:j_idt104" class="ui-linkbutton linkDownloadFileCurrentAnuncioIcon ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only"><a href="https://bop.dipcas.es/PortalBOP/api/descargarAnuncio?idAnuncio=168705&amp;idioma=es"><span class="ui-button-icon-left ui-icon ui-c pi pi-file-pdf pi-1_7x"></span><span class="ui-button-text ui-c">ui-button</span></a></span><script id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:7:j_idt104_s" type="text/javascript">$(function(){PrimeFaces.cw("LinkButton","widget_busquedaBoletinesForm_j_idt93_1_j_idt94_j_idt96_1_j_idt99_7_j_idt104",{id:"busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:7:j_idt104"});});</script><span class="titulo4">Aprobación Definitiva de la Modificación Plan Estratégico de Subvenciones</span>
+											<br />
+									   		<br /><br /><span id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:8:j_idt104" class="ui-linkbutton linkDownloadFileCurrentAnuncioIcon ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only"><a href="https://bop.dipcas.es/PortalBOP/api/descargarAnuncio?idAnuncio=168704&amp;idioma=es"><span class="ui-button-icon-left ui-icon ui-c pi pi-file-pdf pi-1_7x"></span><span class="ui-button-text ui-c">ui-button</span></a></span><script id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:8:j_idt104_s" type="text/javascript">$(function(){PrimeFaces.cw("LinkButton","widget_busquedaBoletinesForm_j_idt93_1_j_idt94_j_idt96_1_j_idt99_8_j_idt104",{id:"busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:8:j_idt104"});});</script><span class="titulo4">Aprobación Definitiva Modificación de Crédito - Suplemento de Crédito 02/2026</span>
+											<br /><br /><span class="titulo3">AJUNTAMENT DE BORRIANA/BURRIANA</span>
+									   		<br /><br /><span id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:9:j_idt104" class="ui-linkbutton linkDownloadFileCurrentAnuncioIcon ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only"><a href="https://bop.dipcas.es/PortalBOP/api/descargarAnuncio?idAnuncio=168714&amp;idioma=es"><span class="ui-button-icon-left ui-icon ui-c pi pi-file-pdf pi-1_7x"></span><span class="ui-button-text ui-c">ui-button</span></a></span><script id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:9:j_idt104_s" type="text/javascript">$(function(){PrimeFaces.cw("LinkButton","widget_busquedaBoletinesForm_j_idt93_1_j_idt94_j_idt96_1_j_idt99_9_j_idt104",{id:"busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:9:j_idt104"});});</script><span class="titulo4">Extracto bases selección para la constitución de una bolsa de trabajo de peón/a de cementerio</span>
+											<br /><br /><span class="titulo3">AJUNTAMENT DE CABANES</span>
+									   		<br /><br /><span id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:10:j_idt104" class="ui-linkbutton linkDownloadFileCurrentAnuncioIcon ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only"><a href="https://bop.dipcas.es/PortalBOP/api/descargarAnuncio?idAnuncio=168698&amp;idioma=es"><span class="ui-button-icon-left ui-icon ui-c pi pi-file-pdf pi-1_7x"></span><span class="ui-button-text ui-c">ui-button</span></a></span><script id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:10:j_idt104_s" type="text/javascript">$(function(){PrimeFaces.cw("LinkButton","widget_busquedaBoletinesForm_j_idt93_1_j_idt94_j_idt96_1_j_idt99_10_j_idt104",{id:"busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:10:j_idt104"});});</script><span class="titulo4">ANUNCIO MODIFICACIÓN PRECIO PÚBLICO POR EL USO DE LAS PISTAS DE PÁDEL</span>
+											<br /><br /><span class="titulo3">AJUNTAMENT DE CASTELLÓ DE LA PLANA</span>
+									   		<br /><br /><span id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:11:j_idt104" class="ui-linkbutton linkDownloadFileCurrentAnuncioIcon ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only"><a href="https://bop.dipcas.es/PortalBOP/api/descargarAnuncio?idAnuncio=168694&amp;idioma=es"><span class="ui-button-icon-left ui-icon ui-c pi pi-file-pdf pi-1_7x"></span><span class="ui-button-text ui-c">ui-button</span></a></span><script id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:11:j_idt104_s" type="text/javascript">$(function(){PrimeFaces.cw("LinkButton","widget_busquedaBoletinesForm_j_idt93_1_j_idt94_j_idt96_1_j_idt99_11_j_idt104",{id:"busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:11:j_idt104"});});</script><span class="titulo4">Nombramiento en propiedad de varios funcionarios/as</span>
+											<br /><br /><span class="titulo3">AJUNTAMENT DE CATÍ</span>
+									   		<br /><br /><span id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:12:j_idt104" class="ui-linkbutton linkDownloadFileCurrentAnuncioIcon ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only"><a href="https://bop.dipcas.es/PortalBOP/api/descargarAnuncio?idAnuncio=168684&amp;idioma=es"><span class="ui-button-icon-left ui-icon ui-c pi pi-file-pdf pi-1_7x"></span><span class="ui-button-text ui-c">ui-button</span></a></span><script id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:12:j_idt104_s" type="text/javascript">$(function(){PrimeFaces.cw("LinkButton","widget_busquedaBoletinesForm_j_idt93_1_j_idt94_j_idt96_1_j_idt99_12_j_idt104",{id:"busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:12:j_idt104"});});</script><span class="titulo4">Anuncio aprobación definitiva modificación de crédito núm. 3_2026.10</span>
+											<br /><br /><span class="titulo3">AJUNTAMENT DE CHÓVAR</span>
+									   		<br /><br /><span id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:13:j_idt104" class="ui-linkbutton linkDownloadFileCurrentAnuncioIcon ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only"><a href="https://bop.dipcas.es/PortalBOP/api/descargarAnuncio?idAnuncio=168716&amp;idioma=es"><span class="ui-button-icon-left ui-icon ui-c pi pi-file-pdf pi-1_7x"></span><span class="ui-button-text ui-c">ui-button</span></a></span><script id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:13:j_idt104_s" type="text/javascript">$(function(){PrimeFaces.cw("LinkButton","widget_busquedaBoletinesForm_j_idt93_1_j_idt94_j_idt96_1_j_idt99_13_j_idt104",{id:"busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:13:j_idt104"});});</script><span class="titulo4">Aprobación definitiva de la modificación de créditos n.º 3/2026.05 del Presupuesto Municipal</span>
+											<br /><br /><span class="titulo3">AJUNTAMENT DE COSTUR</span>
+									   		<br /><br /><span id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:14:j_idt104" class="ui-linkbutton linkDownloadFileCurrentAnuncioIcon ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only"><a href="https://bop.dipcas.es/PortalBOP/api/descargarAnuncio?idAnuncio=168530&amp;idioma=es"><span class="ui-button-icon-left ui-icon ui-c pi pi-file-pdf pi-1_7x"></span><span class="ui-button-text ui-c">ui-button</span></a></span><script id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:14:j_idt104_s" type="text/javascript">$(function(){PrimeFaces.cw("LinkButton","widget_busquedaBoletinesForm_j_idt93_1_j_idt94_j_idt96_1_j_idt99_14_j_idt104",{id:"busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:14:j_idt104"});});</script><span class="titulo4">Agua potable 3º trimestre 2026: Notificación colectiva de Liquidaciones y Anuncio de Cobranza</span>
+											<br /><br /><span class="titulo3">AJUNTAMENT DE ESPADILLA</span>
+									   		<br /><br /><span id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:15:j_idt104" class="ui-linkbutton linkDownloadFileCurrentAnuncioIcon ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only"><a href="https://bop.dipcas.es/PortalBOP/api/descargarAnuncio?idAnuncio=168693&amp;idioma=es"><span class="ui-button-icon-left ui-icon ui-c pi pi-file-pdf pi-1_7x"></span><span class="ui-button-text ui-c">ui-button</span></a></span><script id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:15:j_idt104_s" type="text/javascript">$(function(){PrimeFaces.cw("LinkButton","widget_busquedaBoletinesForm_j_idt93_1_j_idt94_j_idt96_1_j_idt99_15_j_idt104",{id:"busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:15:j_idt104"});});</script><span class="titulo4">Inicial modificación de la Ordenanza fiscal de la tasa por distribución de agua</span>
+											<br /><br /><span class="titulo3">AJUNTAMENT DE FUENTE LA REINA</span>
+									   		<br /><br /><span id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:16:j_idt104" class="ui-linkbutton linkDownloadFileCurrentAnuncioIcon ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only"><a href="https://bop.dipcas.es/PortalBOP/api/descargarAnuncio?idAnuncio=168720&amp;idioma=es"><span class="ui-button-icon-left ui-icon ui-c pi pi-file-pdf pi-1_7x"></span><span class="ui-button-text ui-c">ui-button</span></a></span><script id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:16:j_idt104_s" type="text/javascript">$(function(){PrimeFaces.cw("LinkButton","widget_busquedaBoletinesForm_j_idt93_1_j_idt94_j_idt96_1_j_idt99_16_j_idt104",{id:"busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:16:j_idt104"});});</script><span class="titulo4">ANUNCIO ELECCIÓN JUEZ DE PAZ TITULAR</span>
+											<br /><br /><span class="titulo3">AJUNTAMENT DE JÉRICA</span>
+									   		<br /><br /><span id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:17:j_idt104" class="ui-linkbutton linkDownloadFileCurrentAnuncioIcon ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only"><a href="https://bop.dipcas.es/PortalBOP/api/descargarAnuncio?idAnuncio=168680&amp;idioma=es"><span class="ui-button-icon-left ui-icon ui-c pi pi-file-pdf pi-1_7x"></span><span class="ui-button-text ui-c">ui-button</span></a></span><script id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:17:j_idt104_s" type="text/javascript">$(function(){PrimeFaces.cw("LinkButton","widget_busquedaBoletinesForm_j_idt93_1_j_idt94_j_idt96_1_j_idt99_17_j_idt104",{id:"busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:17:j_idt104"});});</script><span class="titulo4">MODIFICACION DE CREDITOS 3/2026.03</span>
+											<br /><br /><span class="titulo3">AJUNTAMENT DE LA POBLA TORNESA</span>
+									   		<br /><br /><span id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:18:j_idt104" class="ui-linkbutton linkDownloadFileCurrentAnuncioIcon ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only"><a href="https://bop.dipcas.es/PortalBOP/api/descargarAnuncio?idAnuncio=168713&amp;idioma=es"><span class="ui-button-icon-left ui-icon ui-c pi pi-file-pdf pi-1_7x"></span><span class="ui-button-text ui-c">ui-button</span></a></span><script id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:18:j_idt104_s" type="text/javascript">$(function(){PrimeFaces.cw("LinkButton","widget_busquedaBoletinesForm_j_idt93_1_j_idt94_j_idt96_1_j_idt99_18_j_idt104",{id:"busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:18:j_idt104"});});</script><span class="titulo4">Aprobación definitiva modificación  de crédito nº 05/2026.</span>
+											<br />
+									   		<br /><br /><span id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:19:j_idt104" class="ui-linkbutton linkDownloadFileCurrentAnuncioIcon ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only"><a href="https://bop.dipcas.es/PortalBOP/api/descargarAnuncio?idAnuncio=168712&amp;idioma=es"><span class="ui-button-icon-left ui-icon ui-c pi pi-file-pdf pi-1_7x"></span><span class="ui-button-text ui-c">ui-button</span></a></span><script id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:19:j_idt104_s" type="text/javascript">$(function(){PrimeFaces.cw("LinkButton","widget_busquedaBoletinesForm_j_idt93_1_j_idt94_j_idt96_1_j_idt99_19_j_idt104",{id:"busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:19:j_idt104"});});</script><span class="titulo4">Aprobación definitiva modificación de crédito nº 07/2026.</span>
+											<br /><br /><span class="titulo3">AJUNTAMENT DE LA VILAVELLA</span>
+									   		<br /><br /><span id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:20:j_idt104" class="ui-linkbutton linkDownloadFileCurrentAnuncioIcon ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only"><a href="https://bop.dipcas.es/PortalBOP/api/descargarAnuncio?idAnuncio=168677&amp;idioma=es"><span class="ui-button-icon-left ui-icon ui-c pi pi-file-pdf pi-1_7x"></span><span class="ui-button-text ui-c">ui-button</span></a></span><script id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:20:j_idt104_s" type="text/javascript">$(function(){PrimeFaces.cw("LinkButton","widget_busquedaBoletinesForm_j_idt93_1_j_idt94_j_idt96_1_j_idt99_20_j_idt104",{id:"busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:20:j_idt104"});});</script><span class="titulo4">Aprobación definitiva de la modificación de crédito 3.2026.03</span>
+											<br /><br /><span class="titulo3">AJUNTAMENT DE L'ALCORA</span>
+									   		<br /><br /><span id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:21:j_idt104" class="ui-linkbutton linkDownloadFileCurrentAnuncioIcon ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only"><a href="https://bop.dipcas.es/PortalBOP/api/descargarAnuncio?idAnuncio=168710&amp;idioma=es"><span class="ui-button-icon-left ui-icon ui-c pi pi-file-pdf pi-1_7x"></span><span class="ui-button-text ui-c">ui-button</span></a></span><script id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:21:j_idt104_s" type="text/javascript">$(function(){PrimeFaces.cw("LinkButton","widget_busquedaBoletinesForm_j_idt93_1_j_idt94_j_idt96_1_j_idt99_21_j_idt104",{id:"busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:21:j_idt104"});});</script><span class="titulo4">Edicte modificació bases agent policia local</span>
+											<br /><br /><span class="titulo3">AJUNTAMENT DE MONCOFA</span>
+									   		<br /><br /><span id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:22:j_idt104" class="ui-linkbutton linkDownloadFileCurrentAnuncioIcon ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only"><a href="https://bop.dipcas.es/PortalBOP/api/descargarAnuncio?idAnuncio=168722&amp;idioma=es"><span class="ui-button-icon-left ui-icon ui-c pi pi-file-pdf pi-1_7x"></span><span class="ui-button-text ui-c">ui-button</span></a></span><script id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:22:j_idt104_s" type="text/javascript">$(function(){PrimeFaces.cw("LinkButton","widget_busquedaBoletinesForm_j_idt93_1_j_idt94_j_idt96_1_j_idt99_22_j_idt104",{id:"busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:22:j_idt104"});});</script><span class="titulo4">Anuncio convocatoria subvenciones premios a la excelencia académica. Curso 2025/2026</span>
+											<br /><br /><span class="titulo3">AJUNTAMENT DE NULES</span>
+									   		<br /><br /><span id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:23:j_idt104" class="ui-linkbutton linkDownloadFileCurrentAnuncioIcon ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only"><a href="https://bop.dipcas.es/PortalBOP/api/descargarAnuncio?idAnuncio=168686&amp;idioma=es"><span class="ui-button-icon-left ui-icon ui-c pi pi-file-pdf pi-1_7x"></span><span class="ui-button-text ui-c">ui-button</span></a></span><script id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:23:j_idt104_s" type="text/javascript">$(function(){PrimeFaces.cw("LinkButton","widget_busquedaBoletinesForm_j_idt93_1_j_idt94_j_idt96_1_j_idt99_23_j_idt104",{id:"busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:23:j_idt104"});});</script><span class="titulo4">Publicacion Cuenta General 2025</span>
+											<br /><br /><span class="titulo3">AJUNTAMENT D'ORPESA/OROPESA DEL MAR</span>
+									   		<br /><br /><span id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:24:j_idt104" class="ui-linkbutton linkDownloadFileCurrentAnuncioIcon ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only"><a href="https://bop.dipcas.es/PortalBOP/api/descargarAnuncio?idAnuncio=168687&amp;idioma=es"><span class="ui-button-icon-left ui-icon ui-c pi pi-file-pdf pi-1_7x"></span><span class="ui-button-text ui-c">ui-button</span></a></span><script id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:24:j_idt104_s" type="text/javascript">$(function(){PrimeFaces.cw("LinkButton","widget_busquedaBoletinesForm_j_idt93_1_j_idt94_j_idt96_1_j_idt99_24_j_idt104",{id:"busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:24:j_idt104"});});</script><span class="titulo4">APROBACIÓN INICIAL PROPUESTA ACUERDO CUENTA GENERAL 2025 (EXP. 2026/8617M)</span>
+											<br /><br /><span class="titulo3">AYUNTAMIENTO DE SANT MATEU</span>
+									   		<br /><br /><span id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:25:j_idt104" class="ui-linkbutton linkDownloadFileCurrentAnuncioIcon ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only"><a href="https://bop.dipcas.es/PortalBOP/api/descargarAnuncio?idAnuncio=168692&amp;idioma=es"><span class="ui-button-icon-left ui-icon ui-c pi pi-file-pdf pi-1_7x"></span><span class="ui-button-text ui-c">ui-button</span></a></span><script id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:25:j_idt104_s" type="text/javascript">$(function(){PrimeFaces.cw("LinkButton","widget_busquedaBoletinesForm_j_idt93_1_j_idt94_j_idt96_1_j_idt99_25_j_idt104",{id:"busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:25:j_idt104"});});</script><span class="titulo4">aprobacion mutacion demanial externa</span>
+											<br /><br /><span class="titulo3">AJUNTAMENT DE SEGORBE</span>
+									   		<br /><br /><span id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:26:j_idt104" class="ui-linkbutton linkDownloadFileCurrentAnuncioIcon ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only"><a href="https://bop.dipcas.es/PortalBOP/api/descargarAnuncio?idAnuncio=168522&amp;idioma=es"><span class="ui-button-icon-left ui-icon ui-c pi pi-file-pdf pi-1_7x"></span><span class="ui-button-text ui-c">ui-button</span></a></span><script id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:26:j_idt104_s" type="text/javascript">$(function(){PrimeFaces.cw("LinkButton","widget_busquedaBoletinesForm_j_idt93_1_j_idt94_j_idt96_1_j_idt99_26_j_idt104",{id:"busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:26:j_idt104"});});</script><span class="titulo4">Liquidaciones Tasa Conservatorio</span>
+											<br /><br /><span class="titulo3">AJUNTAMENT DE TODOLELLA</span>
+									   		<br /><br /><span id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:27:j_idt104" class="ui-linkbutton linkDownloadFileCurrentAnuncioIcon ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only"><a href="https://bop.dipcas.es/PortalBOP/api/descargarAnuncio?idAnuncio=168678&amp;idioma=es"><span class="ui-button-icon-left ui-icon ui-c pi pi-file-pdf pi-1_7x"></span><span class="ui-button-text ui-c">ui-button</span></a></span><script id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:27:j_idt104_s" type="text/javascript">$(function(){PrimeFaces.cw("LinkButton","widget_busquedaBoletinesForm_j_idt93_1_j_idt94_j_idt96_1_j_idt99_27_j_idt104",{id:"busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:27:j_idt104"});});</script><span class="titulo4">ANUNCIO APROBACION INCIAL </span>
+											<br /><br /><span class="titulo3">AJUNTAMENT DE TORRECHIVA</span>
+									   		<br /><br /><span id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:28:j_idt104" class="ui-linkbutton linkDownloadFileCurrentAnuncioIcon ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only"><a href="https://bop.dipcas.es/PortalBOP/api/descargarAnuncio?idAnuncio=168725&amp;idioma=es"><span class="ui-button-icon-left ui-icon ui-c pi pi-file-pdf pi-1_7x"></span><span class="ui-button-text ui-c">ui-button</span></a></span><script id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:28:j_idt104_s" type="text/javascript">$(function(){PrimeFaces.cw("LinkButton","widget_busquedaBoletinesForm_j_idt93_1_j_idt94_j_idt96_1_j_idt99_28_j_idt104",{id:"busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:28:j_idt104"});});</script><span class="titulo4">Elección Juez de Paz</span>
+											<br /><br /><span class="titulo3">AJUNTAMENT DE VILAR DE CANES</span>
+									   		<br /><br /><span id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:29:j_idt104" class="ui-linkbutton linkDownloadFileCurrentAnuncioIcon ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only"><a href="https://bop.dipcas.es/PortalBOP/api/descargarAnuncio?idAnuncio=168703&amp;idioma=es"><span class="ui-button-icon-left ui-icon ui-c pi pi-file-pdf pi-1_7x"></span><span class="ui-button-text ui-c">ui-button</span></a></span><script id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:29:j_idt104_s" type="text/javascript">$(function(){PrimeFaces.cw("LinkButton","widget_busquedaBoletinesForm_j_idt93_1_j_idt94_j_idt96_1_j_idt99_29_j_idt104",{id:"busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:29:j_idt104"});});</script><span class="titulo4">Aprobacion inicial modificacion creditos 3/2026.4</span>
+											<br /><br /><span class="titulo3">AJUNTAMENT DE VINARÒS</span>
+									   		<br /><br /><span id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:30:j_idt104" class="ui-linkbutton linkDownloadFileCurrentAnuncioIcon ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only"><a href="https://bop.dipcas.es/PortalBOP/api/descargarAnuncio?idAnuncio=168673&amp;idioma=es"><span class="ui-button-icon-left ui-icon ui-c pi pi-file-pdf pi-1_7x"></span><span class="ui-button-text ui-c">ui-button</span></a></span><script id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:30:j_idt104_s" type="text/javascript">$(function(){PrimeFaces.cw("LinkButton","widget_busquedaBoletinesForm_j_idt93_1_j_idt94_j_idt96_1_j_idt99_30_j_idt104",{id:"busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:30:j_idt104"});});</script><span class="titulo4">EDICTO PUBLICACIÓN INICIAL MODIFICACIÓN PRESUPUESTARIA NÚM. 41/2026</span>
+											<br />
+									   		<br /><br /><span id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:31:j_idt104" class="ui-linkbutton linkDownloadFileCurrentAnuncioIcon ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only"><a href="https://bop.dipcas.es/PortalBOP/api/descargarAnuncio?idAnuncio=168672&amp;idioma=es"><span class="ui-button-icon-left ui-icon ui-c pi pi-file-pdf pi-1_7x"></span><span class="ui-button-text ui-c">ui-button</span></a></span><script id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:31:j_idt104_s" type="text/javascript">$(function(){PrimeFaces.cw("LinkButton","widget_busquedaBoletinesForm_j_idt93_1_j_idt94_j_idt96_1_j_idt99_31_j_idt104",{id:"busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:1:j_idt99:31:j_idt104"});});</script><span class="titulo4">EDICTO PUBLICACIÓN INICIAL MODIFICACIÓN PRESUPUESTARIA NÚM. 39/2026</span>
+											<br />
+										<br /><span class="titulo2">Consorcis / Consorcios</span>
+										<br />
+									   		<br /><br /><span id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:2:j_idt99:0:j_idt104" class="ui-linkbutton linkDownloadFileCurrentAnuncioIcon ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only"><a href="https://bop.dipcas.es/PortalBOP/api/descargarAnuncio?idAnuncio=168719&amp;idioma=es"><span class="ui-button-icon-left ui-icon ui-c pi pi-file-pdf pi-1_7x"></span><span class="ui-button-text ui-c">ui-button</span></a></span><script id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:2:j_idt99:0:j_idt104_s" type="text/javascript">$(function(){PrimeFaces.cw("LinkButton","widget_busquedaBoletinesForm_j_idt93_1_j_idt94_j_idt96_2_j_idt99_0_j_idt104",{id:"busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:2:j_idt99:0:j_idt104"});});</script><span class="titulo4">Anuncio autorización cuantía adicional si+reciclas</span>
+											<br />
+									   		<br /><br /><span id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:2:j_idt99:1:j_idt104" class="ui-linkbutton linkDownloadFileCurrentAnuncioIcon ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only"><a href="https://bop.dipcas.es/PortalBOP/api/descargarAnuncio?idAnuncio=168718&amp;idioma=es"><span class="ui-button-icon-left ui-icon ui-c pi pi-file-pdf pi-1_7x"></span><span class="ui-button-text ui-c">ui-button</span></a></span><script id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:2:j_idt99:1:j_idt104_s" type="text/javascript">$(function(){PrimeFaces.cw("LinkButton","widget_busquedaBoletinesForm_j_idt93_1_j_idt94_j_idt96_2_j_idt99_1_j_idt104",{id:"busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:2:j_idt99:1:j_idt104"});});</script><span class="titulo4">Anuncio Modificación Presupuestaria 6-2026 Crédito extraordinario</span>
+											<br />
+									   		<br /><br /><span id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:2:j_idt99:2:j_idt104" class="ui-linkbutton linkDownloadFileCurrentAnuncioIcon ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only"><a href="https://bop.dipcas.es/PortalBOP/api/descargarAnuncio?idAnuncio=168717&amp;idioma=es"><span class="ui-button-icon-left ui-icon ui-c pi pi-file-pdf pi-1_7x"></span><span class="ui-button-text ui-c">ui-button</span></a></span><script id="busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:2:j_idt99:2:j_idt104_s" type="text/javascript">$(function(){PrimeFaces.cw("LinkButton","widget_busquedaBoletinesForm_j_idt93_1_j_idt94_j_idt96_2_j_idt99_2_j_idt104",{id:"busquedaBoletinesForm:j_idt93:1:j_idt94:j_idt96:2:j_idt99:2:j_idt104"});});</script><span class="titulo4">Anuncio Modificación Presupuestaria 1-2026 Suplemento de crédito</span>
+											<br />
+										<br /></div><input id="busquedaBoletinesForm:j_idt93:1:j_idt94_active" name="busquedaBoletinesForm:j_idt93:1:j_idt94_active" type="hidden" autocomplete="off" value="0" /></div><script id="busquedaBoletinesForm:j_idt93:1:j_idt94_s" type="text/javascript">$(function(){PrimeFaces.cw("AccordionPanel","widget_busquedaBoletinesForm_j_idt93_1_j_idt94",{id:"busquedaBoletinesForm:j_idt93:1:j_idt94"});});</script><div id="busquedaBoletinesForm:j_idt93:2:j_idt94" class="ui-accordion ui-widget ui-helper-reset ui-hidden-container titulo1" role="tablist" data-widget="widget_busquedaBoletinesForm_j_idt93_2_j_idt94"><div id="busquedaBoletinesForm:j_idt93:2:j_idt94:j_idt95_header" class="ui-accordion-header ui-helper-reset ui-state-default ui-state-active ui-corner-top" role="tab" aria-expanded="true" aria-selected="true" tabindex="0"><span class="ui-icon ui-icon-triangle-1-s"></span>ALTRES ENTITATS I ANUNCIS PARTICULARS / OTRAS ENTIDADES Y ANUNCIOS PARTICULARES</div><div id="busquedaBoletinesForm:j_idt93:2:j_idt94:j_idt95" class="ui-accordion-content ui-helper-reset ui-widget-content" role="tabpanel" aria-hidden="false"><span class="titulo2">Altres Entitats i anuncis particulars / Otras entidades y anuncios particulares</span>
+										<br />
+									   		<br /><br /><span id="busquedaBoletinesForm:j_idt93:2:j_idt94:j_idt96:0:j_idt99:0:j_idt104" class="ui-linkbutton linkDownloadFileCurrentAnuncioIcon ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only"><a href="https://bop.dipcas.es/PortalBOP/api/descargarAnuncio?idAnuncio=168567&amp;idioma=es"><span class="ui-button-icon-left ui-icon ui-c pi pi-file-pdf pi-1_7x"></span><span class="ui-button-text ui-c">ui-button</span></a></span><script id="busquedaBoletinesForm:j_idt93:2:j_idt94:j_idt96:0:j_idt99:0:j_idt104_s" type="text/javascript">$(function(){PrimeFaces.cw("LinkButton","widget_busquedaBoletinesForm_j_idt93_2_j_idt94_j_idt96_0_j_idt99_0_j_idt104",{id:"busquedaBoletinesForm:j_idt93:2:j_idt94:j_idt96:0:j_idt99:0:j_idt104"});});</script><span class="titulo4">Convocatoria Junta General</span>
+											<br />
+									   		<br /><br /><span id="busquedaBoletinesForm:j_idt93:2:j_idt94:j_idt96:0:j_idt99:1:j_idt104" class="ui-linkbutton linkDownloadFileCurrentAnuncioIcon ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only"><a href="https://bop.dipcas.es/PortalBOP/api/descargarAnuncio?idAnuncio=168671&amp;idioma=es"><span class="ui-button-icon-left ui-icon ui-c pi pi-file-pdf pi-1_7x"></span><span class="ui-button-text ui-c">ui-button</span></a></span><script id="busquedaBoletinesForm:j_idt93:2:j_idt94:j_idt96:0:j_idt99:1:j_idt104_s" type="text/javascript">$(function(){PrimeFaces.cw("LinkButton","widget_busquedaBoletinesForm_j_idt93_2_j_idt94_j_idt96_0_j_idt99_1_j_idt104",{id:"busquedaBoletinesForm:j_idt93:2:j_idt94:j_idt96:0:j_idt99:1:j_idt104"});});</script><span class="titulo4">Modificación de presupuesto nº 3/2026</span>
+											<br />
+									   		<br /><br /><span id="busquedaBoletinesForm:j_idt93:2:j_idt94:j_idt96:0:j_idt99:2:j_idt104" class="ui-linkbutton linkDownloadFileCurrentAnuncioIcon ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only"><a href="https://bop.dipcas.es/PortalBOP/api/descargarAnuncio?idAnuncio=168529&amp;idioma=es"><span class="ui-button-icon-left ui-icon ui-c pi pi-file-pdf pi-1_7x"></span><span class="ui-button-text ui-c">ui-button</span></a></span><script id="busquedaBoletinesForm:j_idt93:2:j_idt94:j_idt96:0:j_idt99:2:j_idt104_s" type="text/javascript">$(function(){PrimeFaces.cw("LinkButton","widget_busquedaBoletinesForm_j_idt93_2_j_idt94_j_idt96_0_j_idt99_2_j_idt104",{id:"busquedaBoletinesForm:j_idt93:2:j_idt94:j_idt96:0:j_idt99:2:j_idt104"});});</script><span class="titulo4">Modificación del presupuesto del Consorcio n.º 2/2026.</span>
+											<br />
+									   		<br /><br /><span id="busquedaBoletinesForm:j_idt93:2:j_idt94:j_idt96:0:j_idt99:3:j_idt104" class="ui-linkbutton linkDownloadFileCurrentAnuncioIcon ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only"><a href="https://bop.dipcas.es/PortalBOP/api/descargarAnuncio?idAnuncio=168679&amp;idioma=es"><span class="ui-button-icon-left ui-icon ui-c pi pi-file-pdf pi-1_7x"></span><span class="ui-button-text ui-c">ui-button</span></a></span><script id="busquedaBoletinesForm:j_idt93:2:j_idt94:j_idt96:0:j_idt99:3:j_idt104_s" type="text/javascript">$(function(){PrimeFaces.cw("LinkButton","widget_busquedaBoletinesForm_j_idt93_2_j_idt94_j_idt96_0_j_idt99_3_j_idt104",{id:"busquedaBoletinesForm:j_idt93:2:j_idt94:j_idt96:0:j_idt99:3:j_idt104"});});</script><span class="titulo4">BASES XXXI V CONCURSO “FESTES DE CASTELLÓ” 2027</span>
+											<br />
+									   		<br /><br /><span id="busquedaBoletinesForm:j_idt93:2:j_idt94:j_idt96:0:j_idt99:4:j_idt104" class="ui-linkbutton linkDownloadFileCurrentAnuncioIcon ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only"><a href="https://bop.dipcas.es/PortalBOP/api/descargarAnuncio?idAnuncio=168682&amp;idioma=es"><span class="ui-button-icon-left ui-icon ui-c pi pi-file-pdf pi-1_7x"></span><span class="ui-button-text ui-c">ui-button</span></a></span><script id="busquedaBoletinesForm:j_idt93:2:j_idt94:j_idt96:0:j_idt99:4:j_idt104_s" type="text/javascript">$(function(){PrimeFaces.cw("LinkButton","widget_busquedaBoletinesForm_j_idt93_2_j_idt94_j_idt96_0_j_idt99_4_j_idt104",{id:"busquedaBoletinesForm:j_idt93:2:j_idt94:j_idt96:0:j_idt99:4:j_idt104"});});</script><span class="titulo4">BASES XXXI V CONCURSO “CARROS ENGALANADOS” 2027</span>
+											<br />
+									   		<br /><br /><span id="busquedaBoletinesForm:j_idt93:2:j_idt94:j_idt96:0:j_idt99:5:j_idt104" class="ui-linkbutton linkDownloadFileCurrentAnuncioIcon ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only"><a href="https://bop.dipcas.es/PortalBOP/api/descargarAnuncio?idAnuncio=168683&amp;idioma=es"><span class="ui-button-icon-left ui-icon ui-c pi pi-file-pdf pi-1_7x"></span><span class="ui-button-text ui-c">ui-button</span></a></span><script id="busquedaBoletinesForm:j_idt93:2:j_idt94:j_idt96:0:j_idt99:5:j_idt104_s" type="text/javascript">$(function(){PrimeFaces.cw("LinkButton","widget_busquedaBoletinesForm_j_idt93_2_j_idt94_j_idt96_0_j_idt99_5_j_idt104",{id:"busquedaBoletinesForm:j_idt93:2:j_idt94:j_idt96:0:j_idt99:5:j_idt104"});});</script><span class="titulo4"> BASES XXXIX CONCURSO “LLIBRETS” 2027</span>
+											<br />
+										<br /></div><input id="busquedaBoletinesForm:j_idt93:2:j_idt94_active" name="busquedaBoletinesForm:j_idt93:2:j_idt94_active" type="hidden" autocomplete="off" value="0" /></div><script id="busquedaBoletinesForm:j_idt93:2:j_idt94_s" type="text/javascript">$(function(){PrimeFaces.cw("AccordionPanel","widget_busquedaBoletinesForm_j_idt93_2_j_idt94",{id:"busquedaBoletinesForm:j_idt93:2:j_idt94"});});</script></div><input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:4" value="6406314869779015863:-4454352219289984807" autocomplete="off" />
+</form></div></div></div><div id="cierrePie" class="ui-outputpanel ui-widget">
+			<div class="mascara">
+			</div>
+			<div class="logo"><img id="j_idt110" src="/PortalBOP/javax.faces.resource/img/logoNegativo.png.xhtml;jsessionid=70A1407AC7D931D3E318E1417625BBB2?ln=1.2.21" alt="" ismap="false" />
+			</div></div>
+		
+		<div id="footer">
+			<div class="footerInferior">
+				<div class="redes">
+		<ul>
+			<li>
+				<a class="facebook" target="_blank" href="https://www.facebook.com/dipcas"></a>
+			</li>
+			<li>
+				<a class="twitter" target="_blank" href="https://twitter.com/#!/dipcas"></a>
+			</li>
+			<li>
+				<a class="youtube" target="_blank" href="https://www.youtube.com/user/prensadipcas"></a>
+			</li>
+			<li>
+				<a class="flickr" target="_blank" href="https://www.flickr.com/photos/diputacion/"></a>
+			</li>
+		</ul>
+				</div>
+				<div class="menuPie">
+			<ul>
+                 <li>
+                     <a href="http://www.dipcas.es/es/contacto.html">Contacto
+					</a>
+                 </li>
+                 <li>
+                     <a href="http://www.dipcas.es/es/aviso-legal.html">Aviso Legal                           
+					</a>
+                 </li>
+                 <li>
+                     <a href="http://www.dipcas.es/es/accesibilidad.html">Accesibilidad
+					</a>
+                 </li>
+                 <li>
+                     <a href="http://www.dipcas.es/es/buzon-de-sugerencias.html">Buzón de sugerencias                           
+					</a>
+                 </li>
+                 <li>
+                     <a href="http://www.dipcas.es/es/mapa-web.html">Mapa web
+					</a>
+                 </li>
+                 <li>
+                     <a href="https://intranet.dipcas.es/">Intranet  
+					</a>
+                 </li>
+			</ul>
+				</div>
+			</div>
+		</div><div id="j_idt129" class="ui-confirm-dialog ui-dialog ui-widget ui-widget-content ui-corner-all ui-shadow ui-hidden-container"><div class="ui-dialog-titlebar ui-widget-header ui-helper-clearfix ui-corner-top"><span id="j_idt129_title" class="ui-dialog-title"></span></div><div class="ui-dialog-content ui-widget-content" id="j_idt129_content"><span class="ui-icon ui-confirm-dialog-severity"></span><span class="ui-confirm-dialog-message"></span></div><div class="ui-dialog-buttonpane ui-dialog-footer ui-widget-content ui-helper-clearfix">
+			<div class="buttons">
+				<div class="buttonsContent"><button id="j_idt131" name="j_idt131" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only button left ui-confirmdialog-yes" onclick="PrimeFaces.ab({s:&quot;j_idt131&quot;});return false;" type="submit"><span class="ui-button-text ui-c">Aceptar</span></button><script id="j_idt131_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandButton","widget_j_idt131",{id:"j_idt131"});});</script><button id="j_idt132" name="j_idt132" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only button left ui-confirmdialog-no" onclick="PrimeFaces.ab({s:&quot;j_idt132&quot;});return false;" type="submit"><span class="ui-button-text ui-c">Cancelar</span></button><script id="j_idt132_s" type="text/javascript">$(function(){PrimeFaces.cw("CommandButton","widget_j_idt132",{id:"j_idt132"});});</script>
+				</div>
+			</div></div></div><script id="j_idt129_s" type="text/javascript">$(function(){PrimeFaces.cw("ConfirmDialog","widget_j_idt129",{id:"j_idt129",global:true});});</script><div id="j_idt135"></div><script id="j_idt135_s" type="text/javascript">$(function(){PrimeFaces.cw("AjaxStatus","widget_j_idt135",{id:"j_idt135",delay:0,start:function(){mostarDialogoCargando()},error:function(){ajaxErrorHanler(event)},success:function(){ocultarDialogoCargando()}});});</script><div id="loadingDialog" class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-shadow ui-hidden-container"><div class="ui-dialog-content ui-widget-content" id="loadingDialog_content"><img id="j_idt136" src="/PortalBOP/javax.faces.resource/img/loading.gif.xhtml;jsessionid=70A1407AC7D931D3E318E1417625BBB2?ln=framework-1.1.4" alt="" ismap="false" />
+		    
+		    <div>Cargando...
+		    </div></div></div><script id="loadingDialog_s" type="text/javascript">$(function(){PrimeFaces.cw("Dialog","loadingDialog",{id:"loadingDialog",draggable:false,resizable:false,modal:true});});</script></body>
+</html>

@@ -308,6 +308,13 @@ for c in $CONECTORES; do
       ejecutar motor.provinciales.bopteruel --salida "$S"
       "$G" "BOP Teruel: boletín del día"
       ;;
+    bopcastellon)
+      # Último boletín y los del carrusel del buscador (unos dos meses y medio, portal JSF con sesión)
+      ejecutar motor.provinciales.bopcastellon --salida "$S" --max-minutos "$M"
+      "$G" "BOP Castellón: boletines"
+      ejecutar motor.provinciales.bopcastellon --textos --salida "$S" --max-minutos "$M"
+      "$G" "BOP Castellón: textos"
+      ;;
     bopb)
       # El del día por el canal de datos abiertos; los anteriores por el listado por días y los textos en PDF (cerrados
       # en robots.txt; se leen como boletín oficial, motor/http.py)

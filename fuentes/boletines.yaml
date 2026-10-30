@@ -247,7 +247,8 @@ provinciales:
   - provincia: Castellón
     url: http://bop.dipcas.es/PortalBOP/boletin.do
     acceso_desde_github: "ok"
-    estado: sin_conector
+    estado: conector_en_pruebas
+    conector: motor/provinciales/bopcastellon.py
   - provincia: Ciudad Real
     url: https://bop.dipucr.es/
     acceso_desde_github: "ok con el intermedio GlobalSign GCC R6 AlphaSSL 2025 de motor/certificados/"
