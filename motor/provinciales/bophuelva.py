@@ -28,6 +28,7 @@ from motor.autonomicos.comun import (Freno, clasificar, convocante_de_organismo,
                                      escribir_jsonl)
 from motor.boe.clasificar import normalizar
 from motor.http import obtener
+from motor.provinciales.comun import descargar_textos_pdf
 
 FUENTE = "bophuelva"
 SIGLAS = "BOP-HUELVA"
@@ -117,10 +118,15 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--desde", type=date.fromisoformat, default=hoy - timedelta(days=1))
     p.add_argument("--hasta", type=date.fromisoformat, default=hoy)
     p.add_argument("--salida", type=Path, default=Path("."))
+    p.add_argument("--textos", action="store_true", help="descargar los PDF de los anuncios de empleo")
     p.add_argument("--max-minutos", type=float, default=0)
     p.add_argument("--pausa", type=float, default=1.0)
     a = p.parse_args(argv)
     archivo = Archivo(a.salida / "archivo", indice_por_fuente=True, solo_huella=solo_huella_por_defecto())
+    if a.textos:
+        hechos, errores, pendientes = descargar_textos_pdf(_base(a.salida), FUENTE, archivo, a.max_minutos, a.pausa)
+        print(f"BOP Huelva textos: {hechos} descargados, {errores} errores, {pendientes} pendientes")
+        return 0
     inicio, informes, freno = time.monotonic(), [], Freno()
     d, desde = a.hasta, max(a.desde, INICIO)
     while d >= desde:

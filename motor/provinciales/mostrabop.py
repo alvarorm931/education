@@ -27,6 +27,7 @@ from motor.autonomicos.comun import (Freno, clasificar, convocante_de_organismo,
                                      escribir_jsonl)
 from motor.boe.clasificar import normalizar
 from motor.http import obtener
+from motor.provinciales.comun import descargar_textos_pdf
 
 RE_ULTIMO = re.compile(r'href="/bop/mostra-bop/[^/"]+/(\d{4})/(\d+)"[^>]*>\s*[ÚU]ltim')
 RE_CABECERA = re.compile(r"Bop n[úu]mero:\s*(?P<n>\d+)/(?P<s>\d+)\s*-\s*(?P<d>\d{2})/(?P<m>\d{2})/(?P<a>\d{4})")
@@ -144,10 +145,15 @@ def main(p: Plataforma, argv: list[str] | None = None) -> int:
     ap.add_argument("--desde", type=date.fromisoformat, default=None,
                     help="primer año del histórico (sin ella, solo lo nuevo hasta lo ya leído)")
     ap.add_argument("--salida", type=Path, default=Path("."))
+    ap.add_argument("--textos", action="store_true", help="descargar los PDF de los anuncios de empleo")
     ap.add_argument("--max-minutos", type=float, default=0)
     ap.add_argument("--pausa", type=float, default=1.0)
     a = ap.parse_args(argv)
     archivo = Archivo(a.salida / "archivo", indice_por_fuente=True, solo_huella=solo_huella_por_defecto())
+    if a.textos:
+        hechos, errores, pendientes = descargar_textos_pdf(_base(p, a.salida), p.fuente, archivo, a.max_minutos, a.pausa)
+        print(f"{p.siglas} textos: {hechos} descargados, {errores} errores, {pendientes} pendientes")
+        return 0
     try:
         r = obtener(p.portada, accept="text/html")
         actual = ultimo(r.contenido) if r.status == 200 else None

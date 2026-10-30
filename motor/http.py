@@ -186,12 +186,15 @@ BOLETINES_OFICIALES = {
     "https://s2.diphuelva.es/servicios/bope_web/": "BOP de Huelva (desde el 20/06/2023)",
     "https://s2.diphuelva.es/servicios/bop/": "BOP de Huelva (hasta el 20/06/2023)",
     "https://s2.diphuelva.es/lib/bope/": "BOP de Huelva (sumarios por fecha)",
+    "https://s2.diphuelva.es/portalweb/bope/": "BOP de Huelva (PDF de los anuncios)",
     "https://bop.dipcas.es/": "BOP de Castellón (robots.txt no responde)",
     "https://www.bopcadiz.org/": "BOP de Cádiz (robots.txt no responde)",
     "https://bop.dpz.es/": "BOP de Zaragoza (robots.txt no responde)",
     "https://www.ddgi.cat/bop/": "BOP de Girona",
+    "https://ssl4.ddgi.cat/bopV1/pdf/": "BOP de Girona (PDF de los edictos)",
+    "https://www.bizkaia.eus/lehendakaritza/Bao_bob/": "BOB (PDF de los anuncios)",
     "https://236ws.dpteruel.es/DPT/bopt.nsf/": "BOP de Teruel",
-    "https://www.ceuta.es/ceuta/bocce": "BOCCE (Ceuta)",
+    "https://www.ceuta.es/ceuta/bocce/": "BOCCE (Ceuta)",
 }
 DECISION_BOLETINES = ("Álvaro", "2026-10-30")
 # Documentos concretos que el boletín cierra en su robots.txt para proteger datos de personas (el BOPA tiene más de 600
@@ -211,7 +214,7 @@ def retirado_por_privacidad(url: str, sesion: requests.Session | None = None) ->
 def boletin_oficial(url: str) -> str | None:
     """Nombre del boletín si url es de un boletín oficial que se lee aunque su robots.txt lo cierre."""
     u = url.lower().split("://", 1)[-1]  # da igual http o https
-    return next((v for k, v in BOLETINES_OFICIALES.items() if u.startswith(k.split("://", 1)[-1])), None)
+    return next((v for k, v in BOLETINES_OFICIALES.items() if u.startswith(k.lower().split("://", 1)[-1])), None)
 
 
 def comprobar_robots(url: str, sesion: requests.Session | None = None) -> None:

@@ -218,6 +218,8 @@ for c in $CONECTORES; do
       ejecutar motor.provinciales.bopbizkaia --salida "$S"
       ejecutar motor.provinciales.bopbizkaia --desde 2022-01-01 --salida "$S" --max-minutos "$M"
       "$G" "BOB Bizkaia: boletines"
+      ejecutar motor.provinciales.bopbizkaia --textos --salida "$S" --max-minutos "$M"
+      "$G" "BOB Bizkaia: textos"
       ;;
     boplugo)
       # Canal RSS: el boletín del día (el histórico empieza al conectarlo)
@@ -229,6 +231,8 @@ for c in $CONECTORES; do
       ejecutar motor.provinciales.bophuelva --salida "$S"
       ejecutar motor.provinciales.bophuelva --desde 2023-06-20 --salida "$S" --max-minutos "$M"
       "$G" "BOP Huelva: días"
+      ejecutar motor.provinciales.bophuelva --textos --salida "$S" --max-minutos "$M"
+      "$G" "BOP Huelva: textos"
       ;;
     boplaspalmas)
       # Sumario por fecha en boplaspalmas.net (robots.txt lo cierra: boletín oficial, motor/http.py)
@@ -241,6 +245,8 @@ for c in $CONECTORES; do
       ejecutar motor.provinciales.bopvalladolid --salida "$S"
       ejecutar motor.provinciales.bopvalladolid --desde 2022-01-01 --salida "$S" --max-minutos "$M"
       "$G" "BOP Valladolid: días"
+      ejecutar motor.provinciales.bopvalladolid --textos --salida "$S" --max-minutos "$M"
+      "$G" "BOP Valladolid: textos"
       ;;
     bopcaceres)
       # Servicios JSON del portal: calendario por mes y anuncios con su texto por boletín
@@ -253,12 +259,16 @@ for c in $CONECTORES; do
       ejecutar motor.provinciales.bopguadalajara --salida "$S"
       ejecutar motor.provinciales.bopguadalajara --desde 2022-01-01 --salida "$S" --max-minutos "$M"
       "$G" "BOP Guadalajara: días"
+      ejecutar motor.provinciales.bopguadalajara --textos --salida "$S" --max-minutos "$M"
+      "$G" "BOP Guadalajara: textos"
       ;;
     bopgirona)
       # Número a número (robots.txt cierra /bop: boletín oficial, motor/http.py)
       ejecutar motor.provinciales.bopgirona --salida "$S"
       ejecutar motor.provinciales.bopgirona --desde 2022-01-01 --salida "$S" --max-minutos "$M"
       "$G" "BOP Girona: boletines"
+      ejecutar motor.provinciales.bopgirona --textos --salida "$S" --max-minutos "$M"
+      "$G" "BOP Girona: textos"
       ;;
     bopourense)
       # API del portal: boletín por fecha y el texto de cada edicto de empleo (la entidad va en el texto)
@@ -271,6 +281,8 @@ for c in $CONECTORES; do
       ejecutar motor.provinciales.boplleida --salida "$S"
       ejecutar motor.provinciales.boplleida --desde 2022-01-01 --salida "$S" --max-minutos "$M"
       "$G" "BOP Lleida: boletines"
+      ejecutar motor.provinciales.boplleida --textos --salida "$S" --max-minutos "$M"
+      "$G" "BOP Lleida: textos"
       ;;
     bopb)
       # El del día por el canal de datos abiertos; los anteriores por el listado por días y los textos en PDF (cerrados
