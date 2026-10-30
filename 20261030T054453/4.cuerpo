@@ -1,0 +1,186 @@
+Sitemap: https://www.diputaciondezamora.es/opencms/sitemap.xml
+
+User-agent: *
+# Reglas generales sin fecha
+Disallow: /detalle/busqueda/*
+Disallow: /servicios/BOP/busqueda-en-el-bop/*
+
+# Bloqueo completo de los boletines de 2010; no incluye anuncios/2010/
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/2010/*
+
+# Documentos por fecha ascendente; anuncios asociados por ano y numero de BOP
+# 2004-10-06
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/2004/20041006-120.pdf
+
+# 2004-10-22
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/2004/20041022-127.pdf
+
+# 2006-01-06
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/2006/20060106-03.pdf
+
+# 2007-09-12
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/2007/20070912-110.pdf
+
+# 2007-10-08
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/2007/20071008-121.pdf
+
+# 2008-01-14
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/2008/20080114-6.pdf
+
+# 2008-08-29
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/2008/20080829-104.pdf
+
+# 2008-09-10
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/2008/20080910-109.pdf
+
+# 2008-10-08
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/2008/20081008-121.pdf
+
+# 2008-10-27
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/2008/20081027-129.pdf
+
+# 2008-11-19
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/2008/20081119-139.pdf
+
+# 2008-12-03
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/2008/20081203-145.pdf
+
+# 2009-01-21
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/2009/20090121-09.pdf
+
+# 2009-02-04
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/2009/20090204-15.pdf
+
+# 2009-02-25
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/2009/20090225-24.pdf
+
+# 2009-03-27
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/2009/20090327-37.pdf
+
+# 2009-05-20
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/2009/20090520-59.pdf
+
+# 2009-09-18
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/2009/20090918-108.pdf
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/anuncios/2009/108/200904440.pdf
+
+# 2009-10-19
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/2009/20091019-120.pdf
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/anuncios/2009/120/200904672.pdf
+
+# 2010-02-10
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/2010/20100210-16.pdf
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/anuncios/2010/16/201000562.pdf
+
+# 2010-03-26
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/2010/20100326-35.pdf
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/anuncios/2010/35/201001763.pdf
+
+# 2010-04-20
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/2010/20100420-45-e.pdf
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/anuncios/2010/45/201001921.pdf
+
+# 2010-05-28
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/2010/20100528-61.pdf
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/anuncios/2010/61/201002977.pdf
+
+# 2010-10-13
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/anuncios/2010/121/201004562.pdf
+
+# 2010-10-15
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/2010/20101015-122.pdf
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/anuncios/2010/122/201005158.pdf
+
+# 2011-02-04
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/2011/20110204-16.pdf
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/anuncios/2011/16/201100323.pdf
+
+# 2011-03-04
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/2011/20110304-28.pdf
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/anuncios/2011/28/201100950.pdf
+
+# 2011-04-06
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/2011/20110406-44.pdf
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/anuncios/2011/44/201101382.pdf
+
+# 2011-04-18
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/2011/20110418-49.pdf
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/anuncios/2011/49/201101855.pdf
+
+# 2011-05-20
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/2011/20110520-63.pdf
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/anuncios/2011/63/201102388.pdf
+
+# 2011-06-17
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/2011/20110617-74.pdf
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/anuncios/2011/74/201102838.pdf
+
+# 2011-07-05
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/2011/20110705-81.pdf
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/anuncios/2011/81/201103113.pdf
+
+# 2011-10-26
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/2011/20111026-131.pdf
+
+# 2012-08-03
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/2012/20120803-92.pdf
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/anuncios/2012/92/201203225.pdf
+
+# 2012-10-05
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/2012/20121005-118.pdf
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/anuncios/2012/118/201203845.pdf
+
+# 2013-03-08
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/2013/20130308-29.pdf
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/anuncios/2013/29/201300941.pdf
+
+# 2013-11-25
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/2013/20131125-143.pdf
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/anuncios/2013/143/201304048.pdf
+
+# 2013-12-11
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/2013/20131211-149.pdf
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/anuncios/2013/149/201304256.pdf
+
+# 2014-04-04
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/2014/20140404-42.pdf
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/anuncios/2014/42/201401063.pdf
+
+# 2014-04-25
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/2014/20140425-49.pdf
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/anuncios/2014/49/201401469.pdf
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/anuncios/2014/49/201401482.pdf
+
+# 2015-03-05
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/anuncios/2015/30/201500822.pdf
+
+# 2015-03-06
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/2015/20150306-31.pdf
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/anuncios/2015/31/201500948.pdf
+
+# 2016-01-20
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/2016/20160120-7.pdf
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/anuncios/2016/7/201600132.pdf
+
+# 2016-03-11
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/2016/20160311-29.pdf
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/anuncios/2016/29/201600775.pdf
+
+# 2018-09-24
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/anuncios/2018/109/201802378.pdf
+
+# 2018-10-03
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/2018/20181003-113.pdf
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/anuncios/2018/113/201802800.pdf
+
+# 2018-11-14
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/2018/20181114-130.pdf
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/anuncios/2018/130/201803129.pdf
+
+# 2020-09-11
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/anuncios/2020/107/202002225.pdf
+
+# 2026-07-22
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/2026/20260722-85.pdf
+Disallow: /servicios/BOP/.Archivos/documentos/BOP/anuncios/2026/85/202601833.pdf
+
