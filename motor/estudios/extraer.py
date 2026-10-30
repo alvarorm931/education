@@ -903,7 +903,11 @@ MONEDA_NO_EURO = re.compile(r"(?i)(\$|US\s?D|\bUSD\b|\bCOP\b|\bMXN\b|\bARS\b|\bC
                             r"\bpesos?\b|\bsoles\b|\bd[oó]lares?\b|£|\bGBP\b|\bCHF\b)")
 PRECIO_MAXIMO = 100_000  # un máster de más de 100.000 € es casi siempre otra moneda o un error de lectura
 RUTA_NO_FICHA = re.compile(r"(?i)/(blog|noticias?|news|actualidad|eventos?|events?|agenda|landing|prensa|press|"
-                           r"tag|etiqueta|categor[ií]a|category|author|autor|wp-content|feed)/")
+                           r"tag|etiqueta|categor[ií]a|category|author|autor|wp-content|feed|"
+                           # dentro del aula o del material de un curso: lecciones, adjuntos, temas, aula virtual
+                           r"lecciones|lessons?|lecci[oó]n|attachment|adjuntos?|materiales|material-didactico|"
+                           r"classroom|f-classroom|aula-virtual|campus-virtual|temas?|unidad-\d+|modulo-\d+-tema)/"
+                           r"|__trashed|/(?:feed|amp|print|imprimir)/?$")
 
 
 def _orden_ficha(u: str) -> tuple:
