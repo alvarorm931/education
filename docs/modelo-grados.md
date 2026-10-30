@@ -43,9 +43,11 @@ El universo es la unión de las tres, con el código del título como clave.
 - Por rama: Ciencias Sociales y Jurídicas 1.168, Ingeniería y Arquitectura 846, Ciencias de la Salud 500, Artes y
   Humanidades 469, Ciencias 282.
 - Por comunidad: Madrid 691, Cataluña 519, Andalucía 464, C. Valenciana 309, Castilla y León 288.
-- Cada componente de un doble grado se une con su grado simple: 1.955 de 2.055 componentes de los dobles activos
-  (95 %); 5 quedan ambiguos (dos planes activos con el mismo nombre en el mismo centro) y 95 sin unir por nombres
-  distintos («Primaria» frente a «Maestro en Educación Primaria»), que van a revisión.
+- Cada componente de un doble grado se une con su grado simple: 1.969 de 2.055 componentes de los dobles activos
+  (96 %), por el nombre y, si no, por el nombre del genérico («Educación Primaria» = «Magisterio de Educación
+  Primaria») cuando en la universidad hay un solo grado activo con él; 5 quedan ambiguos (dos planes activos con el
+  mismo nombre en el mismo centro) y 81 sin unir por nombres distintos («Criminología» frente a «Criminología y
+  Seguridad»), que van a revisión.
 
 ### Grado genérico y área
 
@@ -294,11 +296,11 @@ pedir nada a ninguna fuente, y marca cada ficha como indexable o no, con el moti
 | Con ficha del RUCT | 3.265 |
 | Grados con plan del BOE | 3.079 de 3.265 |
 | Grados con plan comprobado | 2.233 (1.567 por asignaturas, el resto por materias) |
-| Dobles con los planes de sus dos grados comprobados | 574 |
-| **Indexables** con la propuesta de datos mínimos | **2.048** (1.722 grados y 326 dobles; 1.829 de públicas y 219 de privadas) |
+| Dobles con los planes de sus dos grados comprobados | 578 |
+| **Indexables** con la propuesta de datos mínimos | **2.049** (1.722 grados y 327 dobles; 1.830 de públicas y 219 de privadas) |
 
 El resto va con `noindex` y su motivo: 846 con plan que no
-cuadra, 643 sin plan (o doble sin los dos planes comprobados) y
+cuadra, 639 sin plan (o doble sin los dos planes comprobados) y
 1.202 sin nota ni precio (casi todas, privadas que no publican el precio); una
 ficha puede tener varios.
 

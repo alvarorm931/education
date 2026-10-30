@@ -75,6 +75,16 @@ def test_doble_grado_unido_con_sus_grados():
     assert [x["codigo"] for x in c["7001002"]["componentes"]] == ["2500500", "2500100"]
 
 
+def test_componente_del_doble_por_el_nombre_generico():
+    c = _catalogo([
+        _t("2500600", "Grado", "Graduado o Graduada en Maestro en Educación Primaria por la Universidad de Granada"),
+        _t("2500700", "Grado", "Graduado o Graduada en Maestro en Educación Infantil por la Universidad de Granada"),
+        _t("7001003", "Programaciones Conjuntas de Estudios Oficiales",
+           "PCEO Grado en Educación Infantil / Grado en Educación Primaria"),
+    ])
+    assert [x["codigo"] for x in c["7001003"]["componentes"]] == ["2500700", "2500600"]
+
+
 def test_clave_union_tolera_variantes_de_escritura():
     assert cat.clave_union("Ingeniería de Organización Industrial") == cat.clave_union("Ingeniería en Organización Industrial")
     assert cat.clave_union("Ciencia y Tecnología de Alimentos") == cat.clave_union("Ciencia y Tecnología de los Alimentos")

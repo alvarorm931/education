@@ -237,6 +237,12 @@ def enlazar_dobles(catalogo: list[dict]) -> None:
             # nombre entero, parte en castellano de los bilingües y sin «(Plan nuevo)» y similares
             for v in variantes_nombre(t["nombre"]):
                 indice[(clave(u["nombre"]), clave_union(v))].add(t["codigo"])
+    from motor.grados.generico import nombre_base  # aquí: generico importa este módulo
+    generico_idx: dict[tuple[str, str], set[str]] = defaultdict(set)
+    for t in catalogo:
+        if t["clase"] == "grado" and t["situacion"] == "Activo":
+            for u in t["universidades"]:
+                generico_idx[(clave(u["nombre"]), clave_union(nombre_base(t["nombre"])))].add(t["codigo"])
     todas = {clave(u["nombre"]): u["nombre"] for t in catalogo for u in t["universidades"]}
     for t in catalogo:
         if t["clase"] != "doble":
@@ -253,6 +259,13 @@ def enlazar_dobles(catalogo: list[dict]) -> None:
                     encontrados |= indice.get((clave(u), clave_union(n)), set())
                 if encontrados:
                     break
+            if not encontrados:
+                # con el nombre del grado genérico («Educación Primaria» = «Maestro en Educación Primaria»), solo
+                # entre los grados activos y solo si hay uno
+                for u in posibles_u:
+                    encontrados |= {x for x in generico_idx.get((clave(u), clave_union(nombre_base(c["nombre"]))), set())}
+                if len(encontrados) > 1:
+                    encontrados = set()
             # Con un plan antiguo en extinción y otro activo del mismo nombre, el doble activo va con el activo.
             activos = {c for c in encontrados if situacion.get(c) == "Activo"}
             if len(encontrados) > 1 and len(activos) == 1 and t["situacion"] == "Activo":
