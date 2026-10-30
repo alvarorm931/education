@@ -191,7 +191,16 @@ def formularios(html: str, base: str) -> list[dict]:
                       for v, t in OPCION.findall(c)][:200] for n, c in SELECT.findall(cuerpo)}
         salida.append({"accion": urljoin(base, unescape(accion.group(1))) if accion else base,
                        "metodo": (metodo.group(1) if metodo else "get").lower(),
-                       "listas": listas, "campos": sorted(set(INPUT.findall(cuerpo)))})
+                       "atributos": re.sub(r"\s+", " ", attrs).strip()[:300],
+                       "listas": listas, "campos": sorted(set(INPUT.findall(cuerpo))),
+                       # botones y entradas con sus atributos (sin valores de usuario): para saber cómo se envía
+                       "controles": [re.sub(r"\s+", " ", x)[:200] for x in
+                                     re.findall(r"(?is)<(?:button|input)\b[^>]*>", cuerpo)][:30]})
+    # funciones de la página que envían formularios (para reproducir la consulta)
+    if salida:
+        salida[0]["scripts"] = [re.sub(r"\s+", " ", x)[:300] for x in
+                                re.findall(r"(?is)[^\n;{}]*(?:submit|\.action|location\.href|ajax|fetch\()[^\n;{}]*",
+                                           " ".join(re.findall(r"(?is)<script\b[^>]*>(.*?)</script>", html)))][:20]
     return salida
 
 
