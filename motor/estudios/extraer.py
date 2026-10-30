@@ -70,13 +70,18 @@ CAMPOS = {
     "salidas": "salidas profesionales que declara el centro",
 }
 SISTEMA = (
-    "Eres un extractor de datos para un portal informativo. Lees la página web de un programa de posgrado "
-    "y devuelves SOLO JSON. Reglas: 1) Solo lo que dice el texto; nada inventado ni deducido. "
-    "2) Para cada campo: {\"valor\": ..., \"cita\": \"frase literal copiada exactamente del texto, de 3 a 40 "
-    "palabras\"}. 3) Si un dato no aparece, el campo es null. 4) Importes en euros como número. "
-    "5) «asignaturas» es una lista de {\"nombre\", \"creditos\"} y su cita es la de la primera. "
-    "6) Si la página no es la de un programa concreto, devuelve {\"no_es_programa\": true}."
+    "Eres un extractor de datos para un portal informativo. Lees la página web de un programa de posgrado y "
+    "devuelves SOLO un objeto JSON compacto, sin saltos de línea ni texto fuera del JSON. Reglas: "
+    "1) Solo lo que dice el texto; nada inventado ni deducido. "
+    "2) Incluye SOLO los campos que aparecen en el texto; los que no aparecen no se escriben. "
+    "3) Cada campo es {\"v\": valor, \"c\": \"cita\"}, donde la cita es una frase copiada exactamente del texto, "
+    "de 3 a 25 palabras, que contiene el dato. "
+    "4) Importes en euros como número. Textos (metodología, evaluación, requisitos, horario…) de 30 palabras como "
+    "máximo; listas de 8 elementos como máximo. "
+    "5) «asignaturas» es una lista de [nombre, créditos o null], hasta 80, y su cita es la de la primera. "
+    "6) Si la página no es la de un programa concreto, devuelve {\"no_es_programa\":true}."
 )
+MAX_TOKENS = 6000
 
 
 def _norma(s: str) -> str:
@@ -142,7 +147,7 @@ def peticion(custom_id: str, url: str, texto: str) -> dict:
         "custom_id": custom_id,
         "params": {
             "model": MODELO,
-            "max_tokens": 3000,
+            "max_tokens": MAX_TOKENS,
             "system": [{"type": "text", "text": SISTEMA + "\nCampos:\n" + esquema, "cache_control": {"type": "ephemeral"}}],
             "messages": [{"role": "user", "content": f"URL: {url}\n\nTEXTO DE LA PÁGINA:\n{texto}"}],
         },
@@ -159,6 +164,8 @@ def verificar(respuesta: dict, texto: str) -> list[dict]:
     hechos = []
     for campo in CAMPOS:
         dato = respuesta.get(campo)
+        if isinstance(dato, dict) and "v" in dato:  # formato compacto {"v": …, "c": …}
+            dato = {"valor": dato.get("v"), "cita": dato.get("c")}
         if not isinstance(dato, dict) or dato.get("valor") in (None, "", []):
             continue
         cita = dato.get("cita") or ""

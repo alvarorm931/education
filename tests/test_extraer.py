@@ -99,3 +99,8 @@ def test_lote_completo_sin_red(tmp_path, monkeypatch):
     assert "<html" not in capt  # la página no se guarda
     hechos = (tmp_path / "out" / "hechos.jsonl").read_text()
     assert "Precio total" not in hechos and "cita_sha256" in hechos  # ni la cita
+
+
+def test_verificar_formato_compacto():
+    h = e.verificar({"creditos_ects": {"v": 60, "c": "60 créditos ECTS"}}, "Son 60 créditos ECTS en total")[0]
+    assert h["estado"] == "aceptado" and h["valor"] == 60
