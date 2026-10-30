@@ -91,6 +91,8 @@ class RobotsProhibe(ConnectionError):
 
 
 _ROBOTS: dict[str, Robots] = {}
+ROBOTS_ESTADO: dict[str, str] = {}  # cómo se leyó cada robots.txt (para la auditoría y los avisos)
+ROBOTS_TEXTO: dict[str, str] = {}   # su texto, como prueba de lo que decía ese día
 
 
 def _origen(url: str) -> str:
@@ -104,26 +106,40 @@ def robots_de(url: str, sesion: requests.Session | None = None) -> Robots:
     """Reglas del servidor de url (se leen una vez por ejecución)."""
     origen = _origen(url)
     if origen not in _ROBOTS:
-        http = sesion or requests.Session()
-        reglas = None
-        for intento in range(2):
-            try:
-                r = http.get(origen + "/robots.txt", headers={"User-Agent": USER_AGENT}, timeout=20,
-                             verify=paquete_ca())
-            except requests.RequestException:
-                time.sleep(2)
-                continue
-            tipo = (r.headers.get("content-type") or "").lower()
-            if r.status_code >= 500:
-                time.sleep(2)
-                continue
-            reglas = Robots(r.text) if r.status_code == 200 and "html" not in tipo else Robots()
-            break
+        reglas, estado = None, "sin intentos"
+        # Con la sesión del conector y, si falla la conexión, con la de cifrados TLS compatibles (DOGC)
+        for http in [sesion or requests.Session(), sesion_tls_compatible()]:
+            for _ in range(2):
+                try:
+                    r = http.get(origen + "/robots.txt", headers={"User-Agent": USER_AGENT}, timeout=20,
+                                 verify=paquete_ca())
+                except requests.RequestException as e:
+                    estado = f"error de conexión: {type(e).__name__}"
+                    time.sleep(2)
+                    continue
+                tipo = (r.headers.get("content-type") or "").lower()
+                if r.status_code >= 500:
+                    estado = f"HTTP {r.status_code}"
+                    time.sleep(2)
+                    continue
+                if r.status_code == 200 and "html" not in tipo:
+                    reglas, estado = Robots(r.text), "HTTP 200"
+                    ROBOTS_TEXTO[origen] = r.text[:100_000]
+                else:
+                    reglas, estado = Robots(), f"HTTP {r.status_code}{' (HTML)' if 'html' in tipo else ''}: sin reglas"
+                break
+            if reglas is not None:
+                break
         _ROBOTS[origen] = reglas if reglas is not None else Robots(todo_prohibido=True)
+        ROBOTS_ESTADO[origen] = estado
     return _ROBOTS[origen]
 
 
 def comprobar_robots(url: str, sesion: requests.Session | None = None) -> None:
+    from urllib.parse import urlparse
+
+    if urlparse(url).path == "/robots.txt":
+        return
     permitido, regla = robots_de(url, sesion).regla(url)
     if not permitido:
         raise RobotsProhibe(f"robots.txt de {_origen(url)} no permite {url} ({regla})")

@@ -15,44 +15,21 @@ import json
 import sys
 from pathlib import Path
 from urllib.parse import urlparse
-from motor.http import obtener
-from motor.robots import Robots
-
-
-def robots_de(origen: str) -> tuple[Robots, dict]:
-    try:
-        r = obtener(origen + "/robots.txt", accept="text/plain", intentos=2, limite_total=60)
-    except (ConnectionError, TimeoutError) as e:
-        # sin respuesta: se trata como prohibido hasta poder leerlo (RFC 9309, 2.3.1.4)
-        return Robots(todo_prohibido=True), {"estado": "sin_respuesta", "error": str(e)[:200]}
-    tipo = (r.cabeceras.get("content-type") or r.cabeceras.get("Content-Type") or "").lower()
-    if r.status >= 500:
-        return Robots(todo_prohibido=True), {"estado": f"http_{r.status}", "regla": "error de servidor: no se rastrea"}
-    if r.status != 200 or "html" in tipo:
-        return Robots(), {"estado": f"http_{r.status}" if r.status != 200 else "html",
-                          "regla": "sin robots.txt: todo permitido"}
-    texto = r.contenido.decode("utf-8", errors="replace")
-    lineas = texto.splitlines()
-    return Robots(texto), {"estado": "ok", "lineas": len(lineas), "texto": texto[:20000],
-                "disallow": [l.strip() for l in lineas if l.lower().startswith("disallow")][:40]}
+from motor import http
 
 
 def auditar(urls: dict[str, list[str]]) -> dict:
-    cache: dict[str, tuple[Robots, dict]] = {}
+    """Con el mismo lector de robots.txt que usa el motor en cada descarga (motor/http.py)."""
     out = {}
     for fuente, lista in urls.items():
         filas = []
         for u in lista:
-            p = urlparse(u)
-            origen = f"{p.scheme}://{p.netloc}"
-            if origen not in cache:
-                cache[origen] = robots_de(origen)
-            rp, info = cache[origen]
-            ok, regla = rp.regla(u)
-            filas.append({"url": u, "permitida": ok, "regla": regla,
-                          "robots": info["estado"]})
+            ok, regla = http.robots_de(u).regla(u)
+            filas.append({"url": u, "permitida": ok, "regla": regla, "robots": http.ROBOTS_ESTADO.get(http._origen(u))})
         out[fuente] = {"todas_permitidas": all(f["permitida"] for f in filas), "urls": filas}
-    return {"fuentes": out, "robots": {o: i for o, (_, i) in cache.items()}}
+    textos = {o: {"estado": http.ROBOTS_ESTADO.get(o), "reglas": len(r.reglas), "texto": http.ROBOTS_TEXTO.get(o)}
+              for o, r in http._ROBOTS.items()}
+    return {"fuentes": out, "robots": textos}
 
 
 def main(argv: list[str] | None = None) -> int:
