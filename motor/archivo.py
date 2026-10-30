@@ -35,9 +35,10 @@ def almacen_por_defecto():
     """El almacén S3 si MOTOR_ORIGINALES=s3; si no, ninguno."""
     if os.environ.get("MOTOR_ORIGINALES") != "s3":
         return None
-    from motor.almacen import Almacen
+    from motor.almacen import REGION, Almacen
+    from motor.credenciales_aws import cliente_s3
 
-    return Almacen()
+    return Almacen(region=REGION, cliente=cliente_s3(REGION))  # en GitHub, credenciales que se renuevan solas
 
 
 class Archivo:

@@ -25,9 +25,12 @@ autonomicos:
   - id: BOPA
     nombre: Boletín Oficial del Principado de Asturias
     comunidad: Asturias
-    url: https://sede.asturias.es/servicios-del-bopa
+    url: https://miprincipado.asturias.es/bopa
     acceso_desde_github: "sin_respuesta_desde_github (timeout)"
-    estado: sin_conector
+    acceso_desde_espana: "ok (30/10/2026)"
+    datos_estructurados: "Sumario por fecha /bopa-sumario?…p_r_p_summaryDate=DD/MM/AAAA; texto en HTML por código. robots.txt cierra textos y PDF en general y más de 600 documentos concretos por datos de personas (esos no se piden)"
+    estado: conector_en_pruebas
+    conector: motor/autonomicos/bopa.py
     nota: "Comunidad uniprovincial: también publica lo local"
   - id: BOIB
     nombre: Butlletí Oficial de les Illes Balears
@@ -52,7 +55,10 @@ autonomicos:
     comunidad: Cantabria
     url: https://boc.cantabria.es/boces/
     acceso_desde_github: "sin_respuesta_desde_github (timeout)"
-    estado: sin_conector
+    acceso_desde_espana: "ok (30/10/2026)"
+    datos_estructurados: "Sumario por fecha boletines.do?boton=Buscar&boletinBean.fecBolString=DD/MM/AAAA&boletinBean.tipoBol=0 (1 = extraordinario, también por número); boletín completo en XML con los textos (verXmlAction.do?idBlob=N)"
+    estado: conector_en_pruebas
+    conector: motor/autonomicos/bocant.py
     nota: "Comunidad uniprovincial: también publica lo local"
   - id: DOCM
     nombre: Diario Oficial de Castilla-La Mancha
@@ -127,9 +133,12 @@ autonomicos:
   - id: BON
     nombre: Boletín Oficial de Navarra
     comunidad: Navarra
-    url: http://www.navarra.es/home_es/Actualidad/BON/
+    url: https://bon.navarra.es/es/
     acceso_desde_github: "sin_respuesta_desde_github (timeout)"
-    estado: sin_conector
+    acceso_desde_espana: "ok (30/10/2026)"
+    datos_estructurados: "Boletín por número /es/boletin/-/sumario/AAAA/N (ámbito, sección, subsección, entidad local); texto en HTML /es/anuncio/-/texto/AAAA/N/K"
+    estado: conector_en_pruebas
+    conector: motor/autonomicos/bon.py
     nota: "Comunidad uniprovincial: también publica lo local"
   - id: BOPV
     nombre: Boletín Oficial del País Vasco

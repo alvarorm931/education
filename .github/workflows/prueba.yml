@@ -17,9 +17,15 @@ on:
         type: choice
         options: [github, espana]
         default: github
+      originales:
+        description: "Originales: huella (solo huella, como siempre) o s3 (al almacén privado)"
+        type: choice
+        options: [huella, s3]
+        default: huella
 
 permissions:
   contents: write
+  id-token: write
 
 concurrency:
   group: rama-sondas
@@ -34,11 +40,12 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: pip install -e .
+      - run: pip install -q -e ".[almacen]"
       - name: Ejecutar
         env:
           MODULO: ${{ inputs.modulo }}
           ARGS: ${{ inputs.argumentos }}
+          MOTOR_ORIGINALES: ${{ inputs.originales }}
         run: |
           case "$MODULO" in motor.*) ;; *) echo "Módulo no permitido"; exit 1;; esac
           STAMP=$(date -u +%Y%m%dT%H%M%S)

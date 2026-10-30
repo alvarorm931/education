@@ -1,0 +1,114 @@
+name: Boletín (trabajo común)
+
+# Un boletín autonómico o provincial: lo nuevo, la carga histórica pendiente y los textos (infra/autonomicos.sh).
+# Lo llama autonomicos.yml, en los ejecutores de GitHub o en el servidor de España (las fuentes que no responden a
+# GitHub). Los originales van al almacén privado S3 (MOTOR_ORIGINALES=s3, motor/archivo.py) con credenciales
+# temporales por OIDC que se renuevan solas (motor/credenciales_aws.py); a la rama pública «datos» solo van los datos.
+
+on:
+  workflow_call:
+    inputs:
+      conector:
+        type: string
+        required: true
+      minutos:
+        type: string
+        default: "60"
+      ejecutor:
+        description: "github o espana"
+        type: string
+        default: github
+
+permissions:
+  contents: write
+  id-token: write
+
+jobs:
+  boletin:
+    runs-on: ${{ inputs.ejecutor == 'espana' && fromJSON('["self-hosted", "espana"]') || 'ubuntu-latest' }}
+    timeout-minutes: 350
+    concurrency:
+      group: autonomico-${{ inputs.conector }}
+      cancel-in-progress: false
+    env:
+      MINUTOS: ${{ inputs.minutos }}
+      MOTOR_ORIGINALES: s3
+    steps:
+      # En el servidor propio la carpeta de trabajo se conserva entre ejecuciones: se empieza de cero
+      - name: Limpiar restos de ejecuciones anteriores
+        if: inputs.ejecutor == 'espana'
+        run: |
+          if [ -d .git ]; then git worktree remove --force salida 2>/dev/null || true; git worktree prune; fi
+          rm -rf salida guardar.sh
+
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Instalar
+        run: pip install -q -e ".[almacen]"
+
+      - name: Preparar rama de datos
+        run: |
+          git config user.name "motor-datos"
+          git config user.email "motor-datos@users.noreply.github.com"
+          git fetch --depth 1 origin datos
+          git worktree add -B datos salida origin/datos
+          cat > guardar.sh <<'EOF'
+          #!/usr/bin/env bash
+          # Guarda y sube lo que haya cambiado. Si la subida choca con otra, reintenta tras rebase.
+          cd salida
+          git add -A
+          git diff --cached --quiet && exit 0
+          git commit -qm "$1"
+          for i in 1 2 3 4 5 6 7 8; do
+            git push -q origin datos && exit 0
+            sleep $(( i * 4 + RANDOM % 7 ))
+            git fetch -q --depth 100 origin datos && git rebase -q origin/datos || { git rebase --abort; echo "::warning::$1: la subida choca con otra"; exit 1; }
+          done
+          echo "::warning::$1: no se pudo subir"
+          exit 1
+          EOF
+          chmod +x guardar.sh
+
+      - name: Conector
+        run: bash infra/autonomicos.sh salida "$MINUTOS" "${{ inputs.conector }}" ./guardar.sh
+
+      - name: Resumen legible por la API
+        if: always()
+        env:
+          B: ${{ inputs.conector }}
+        run: |
+          python - <<'EOF'
+          import json, os, pathlib
+          b = os.environ["B"]
+          d = pathlib.Path("salida/datos/autonomicos") / b
+          if not d.exists():
+              d = pathlib.Path("salida/datos/provinciales") / b
+          informes = sum(len(list((d / c).rglob("*.json"))) for c in ("dias", "meses", "boletines"))
+          empleo = sum(1 for f in (d / "oposiciones").rglob("*.jsonl") for l in f.open(encoding="utf-8") if l.strip())
+          textos = len(list((d / "textos").rglob("*.json")))
+          # Originales guardados hoy en el almacén S3 (o fallos), según los índices de capturas
+          nuevos = fallos = 0
+          for f in pathlib.Path("salida/archivo/indices").glob(f"{b}*/*.jsonl"):
+              for l in f.open(encoding="utf-8"):
+                  r = json.loads(l)
+                  nuevos += bool(r.get("clave") and r.get("nuevo"))
+                  fallos += bool(r.get("fallo_almacen"))
+          linea = (f"{b}: {informes} días o boletines con informe, {empleo} anuncios de empleo, {textos} textos; "
+                   f"almacén S3: {nuevos} originales nuevos en total, {fallos} fallos")
+          with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as s:
+              s.write(linea + "\n")
+          print(f"::notice title=Resumen {b}::{linea}")
+          EOF
+
+      - name: Limpiar la copia local (servidor propio)
+        if: always() && inputs.ejecutor == 'espana'
+        run: |
+          git worktree remove --force salida 2>/dev/null || true
+          git worktree prune
+          git branch -D datos 2>/dev/null || true
+          rm -rf salida guardar.sh
+          git reflog expire --expire=now --all && git gc --prune=now --quiet || true

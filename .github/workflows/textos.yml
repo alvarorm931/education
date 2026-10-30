@@ -9,6 +9,7 @@ on:
 
 permissions:
   contents: write
+  id-token: write   # credenciales temporales del almacén S3 de originales (OIDC)
 
 concurrency:
   group: rama-datos
@@ -18,12 +19,14 @@ jobs:
   textos:
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    env:
+      MOTOR_ORIGINALES: s3   # originales al almacén privado S3, nunca a la rama pública
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: pip install -e .
+      - run: pip install -e ".[almacen]"
       - name: Preparar rama de datos
         run: |
           git config user.name "motor-boe"

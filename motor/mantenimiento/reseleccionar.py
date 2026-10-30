@@ -24,7 +24,8 @@ def _selectores() -> dict:
         return importlib.import_module(nombre)
 
     sel = {}
-    for f in ("boc", "bocyl", "boib", "bome", "bopv", "borm", "docm", "doe", "dog", "dogc", "dogv"):
+    for f in ("boc", "bocyl", "boib", "bome", "bopv", "borm", "docm", "doe", "dog", "dogc", "dogv", "bopa", "bon",
+              "bocant"):
         sel[f] = ("autonomicos", mod(f"motor.autonomicos.{f}").seleccionar)
     for f in ("bopalicante", "bopciudadreal", "bopvalencia", "boptenerife", "bopcordoba", "bopcoruna", "boppontevedra"):
         sel[f] = ("provinciales", mod(f"motor.provinciales.{f}").seleccionar)

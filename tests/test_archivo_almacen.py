@@ -58,3 +58,25 @@ def test_fallo_del_almacen_no_para_el_motor(tmp_path):
 def test_almacen_solo_si_se_pide(tmp_path, monkeypatch):
     monkeypatch.delenv("MOTOR_ORIGINALES", raising=False)
     assert Archivo(tmp_path).almacen is None
+
+
+def test_credenciales_se_renuevan_en_github(monkeypatch):
+    """En GitHub Actions el cliente pide credenciales a STS con el token OIDC y las renueva antes de caducar."""
+    from datetime import datetime, timedelta, timezone
+
+    from motor import credenciales_aws as c
+
+    monkeypatch.setenv("ACTIONS_ID_TOKEN_REQUEST_URL", "https://token.invalid/?x=1")
+    monkeypatch.setenv("ACTIONS_ID_TOKEN_REQUEST_TOKEN", "t")
+    llamadas = []
+
+    def renovar(region, rol):
+        llamadas.append(rol)
+        caduca = datetime.now(timezone.utc) + timedelta(minutes=5 if len(llamadas) == 1 else 60)
+        return {"access_key": f"AK{len(llamadas)}", "secret_key": "s", "token": "t", "expiry_time": caduca.isoformat()}
+
+    monkeypatch.setattr(c, "_renovar", renovar)
+    s3 = c.cliente_s3()
+    credenciales = s3._request_signer._credentials
+    assert credenciales.get_frozen_credentials().access_key == "AK2"  # a 5 minutos de caducar: se renueva
+    assert llamadas == [c.ROL, c.ROL]

@@ -128,8 +128,8 @@ RE_ORGANIZACION = re.compile(
     r"\b(reglamento\w*|reglament\w*|ordenanzas?|ordenan(?:ç|c)a|ordenances|complemento especifico|complement especific|"
     r"(?:modificacion|modificacio|aprobacion|aprovacio|valoracion|valoracio|"
     r"actualizacion|actualitzacio|correccion|exposicion|exposicio|creacion|creacio)\w* (?:\w+ ){0,4}(?:plantilla|rpt|"
-    r"r\.p\.t|relacion (?:de )?(?:los )?puestos|relacio de llocs|catalogo (?:de )?puestos|puestos de trabajo|"
-    r"llocs de treball)|catalogo (?:de )?puestos|plantilla (?:de )?personal(?: \w+)? (?:eventual|\d{4}|anualidad))\b")
+    r"r\.p\.t|relacion (?:de )?(?:los )?puestos|relacio de llocs|catalogo (?:de )?puestos|puestos? de trabajo|"
+    r"llocs? de treball)|catalogo (?:de )?puestos|plantilla (?:de )?personal(?: \w+)? (?:eventual|\d{4}|anualidad))\b")
 RE_BASES_DE_PROCESO = re.compile(r"\b(bases|convoca\w*|procesos? selectiv\w*|proces\w* selectiu\w*|estabiliza\w*|"
                                  r"estabilitza\w*|provision|provisio)\b")
 # Sin un puesto con nombre, «plazas» o «nombramiento» pueden ser de otra cosa
@@ -172,6 +172,7 @@ TIPOS_ENTIDAD = (
     ("cabildo insular de ", "Cabildo Insular"),
     ("consell insular de ", "Consell Insular"),
     ("patronato ", "Patronato"),
+    ("concejo abierto de ", "Concejo Abierto"),  # Cantabria
     ("concejo de ", "Concejo"),  # Navarra
     ("parroquia rural de ", "Parroquia Rural"),  # Asturias
     # Catalán y valenciano

@@ -3,7 +3,8 @@ name: Boletines autonómicos
 # Boletines de las comunidades con conector: Andalucía (BOJA), Madrid (BOCM), Castilla y León (BOCYL),
 # Comunitat Valenciana (DOGV), Galicia (DOG), Cataluña (DOGC), Aragón (BOA), Extremadura (DOE),
 # Illes Balears (BOIB), Región de Murcia (BORM), Canarias (BOC), País Vasco (BOPV), Castilla-La Mancha (DOCM)
-# y Melilla (BOME); y provinciales: Barcelona (BOPB), Tarragona (BOPT), Alicante, Valencia, Ciudad Real, Granada, Sevilla, Huesca, Santa Cruz de Tenerife, Córdoba, A Coruña y Pontevedra.
+# Melilla (BOME), y Asturias (BOPA), Navarra (BON) y Cantabria (BOC), que solo responden desde España y van en el
+# servidor propio; y provinciales: Barcelona (BOPB), Tarragona (BOPT), Alicante, Valencia, Ciudad Real, Granada, Sevilla, Huesca, Santa Cruz de Tenerife, Córdoba, A Coruña y Pontevedra.
 #
 # Un trabajo por boletín, en paralelo: cada uno pide a su propia fuente (una petición por segundo como mucho),
 # escribe solo en su carpeta de la rama «datos» y su propio índice de originales, así que las subidas no chocan
@@ -11,6 +12,7 @@ name: Boletines autonómicos
 # El repositorio es público: los ejecutores estándar de GitHub no consumen minutos de pago
 # (https://docs.github.com/en/billing/concepts/product-billing/github-actions). Límite: 6 horas por trabajo.
 # Primero lo del día, luego la carga histórica pendiente y después los textos; todo es reanudable.
+# Los originales van al almacén privado S3 (boletin.yml); a la rama «datos» solo van los datos y la huella.
 
 on:
   schedule:
@@ -22,16 +24,18 @@ on:
         default: "60"
       conectores:
         description: "Conectores, separados por espacios"
-        default: "boja bocm bocyl dogv dog dogc boa doe boib borm boc bopv docm bome bopb bopalicante bopvalencia bopt bopciudadreal bopgranada bopsevilla bophuesca boptenerife bopcordoba bopcoruna boppontevedra"
+        default: "boja bocm bocyl dogv dog dogc boa doe boib borm boc bopv docm bome bopb bopalicante bopvalencia bopt bopciudadreal bopgranada bopsevilla bophuesca boptenerife bopcordoba bopcoruna boppontevedra bopa bon bocant"
 
 permissions:
   contents: write
+  id-token: write   # credenciales temporales del almacén S3 de originales (OIDC)
 
 jobs:
   preparar:
     runs-on: ubuntu-latest
     outputs:
       lista: ${{ steps.lista.outputs.lista }}
+      lista_espana: ${{ steps.lista.outputs.lista_espana }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -39,17 +43,23 @@ jobs:
           python-version: "3.12"
       - name: Instalar y probar
         run: |
-          pip install -e ".[dev]"
+          pip install -e ".[dev,almacen]"
           python -m pytest -q
       - id: lista
         env:
-          CONECTORES: ${{ inputs.conectores || 'boja bocm bocyl dogv dog dogc boa doe boib borm boc bopv docm bome bopb bopalicante bopvalencia bopt bopciudadreal bopgranada bopsevilla bophuesca boptenerife bopcordoba bopcoruna boppontevedra' }}
-        run: python -c "import json, os; print('lista=' + json.dumps(os.environ['CONECTORES'].split()))" >> "$GITHUB_OUTPUT"
+          CONECTORES: ${{ inputs.conectores || 'boja bocm bocyl dogv dog dogc boa doe boib borm boc bopv docm bome bopb bopalicante bopvalencia bopt bopciudadreal bopgranada bopsevilla bophuesca boptenerife bopcordoba bopcoruna boppontevedra bopa bon bocant' }}
+          # Solo responden desde España (sondas del 30/10/2026): van al servidor propio
+          ESPANA: "bopa bon bocant"
+        run: |
+          python - >> "$GITHUB_OUTPUT" <<'EOF'
+          import json, os
+          todos, espana = os.environ["CONECTORES"].split(), set(os.environ["ESPANA"].split())
+          print("lista=" + json.dumps([c for c in todos if c not in espana]))
+          print("lista_espana=" + json.dumps([c for c in todos if c in espana]))
+          EOF
 
   boletin:
     needs: preparar
-    runs-on: ubuntu-latest
-    timeout-minutes: 350
     strategy:
       fail-fast: false
       # El plan gratuito admite 20 trabajos a la vez en todo el repositorio (también los de másters):
@@ -57,63 +67,23 @@ jobs:
       max-parallel: 10
       matrix:
         conector: ${{ fromJSON(needs.preparar.outputs.lista) }}
-    concurrency:
-      group: autonomico-${{ matrix.conector }}
-      cancel-in-progress: false
-    env:
-      MINUTOS: ${{ inputs.minutos || '60' }}
-    steps:
-      - uses: actions/checkout@v4
+    uses: ./.github/workflows/boletin.yml
+    with:
+      conector: ${{ matrix.conector }}
+      minutos: ${{ inputs.minutos || '60' }}
+      ejecutor: github
 
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-
-      - name: Instalar
-        run: pip install -e .
-
-      - name: Preparar rama de datos
-        run: |
-          git config user.name "motor-datos"
-          git config user.email "motor-datos@users.noreply.github.com"
-          git fetch --depth 1 origin datos
-          git worktree add -B datos salida origin/datos
-          cat > guardar.sh <<'EOF'
-          #!/usr/bin/env bash
-          # Guarda y sube lo que haya cambiado. Si la subida choca con otra, reintenta tras rebase.
-          cd salida
-          git add -A
-          git diff --cached --quiet && exit 0
-          git commit -qm "$1"
-          for i in 1 2 3 4 5 6 7 8; do
-            git push -q origin datos && exit 0
-            sleep $(( i * 4 + RANDOM % 7 ))
-            git fetch -q --depth 100 origin datos && git rebase -q origin/datos || { git rebase --abort; echo "::warning::$1: la subida choca con otra"; exit 1; }
-          done
-          echo "::warning::$1: no se pudo subir"
-          exit 1
-          EOF
-          chmod +x guardar.sh
-
-      - name: Conector
-        run: bash infra/autonomicos.sh salida "$MINUTOS" "${{ matrix.conector }}" ./guardar.sh
-
-      - name: Resumen legible por la API
-        if: always()
-        env:
-          B: ${{ matrix.conector }}
-        run: |
-          python - <<'EOF'
-          import os, pathlib
-          b = os.environ["B"]
-          d = pathlib.Path("salida/datos/autonomicos") / b
-          if not d.exists():
-              d = pathlib.Path("salida/datos/provinciales") / b
-          informes = sum(len(list((d / c).rglob("*.json"))) for c in ("dias", "meses", "boletines"))
-          empleo = sum(1 for f in (d / "oposiciones").rglob("*.jsonl") for l in f.open(encoding="utf-8") if l.strip())
-          textos = len(list((d / "textos").rglob("*.json")))
-          linea = f"{b}: {informes} días o boletines con informe, {empleo} anuncios de empleo, {textos} textos"
-          with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as s:
-              s.write(linea + "\n")
-          print(f"::notice title=Resumen {b}::{linea}")
-          EOF
+  # Boletines que no responden a los servidores de GitHub (fuera de España): en el servidor propio, de uno en uno
+  boletin-espana:
+    needs: preparar
+    if: needs.preparar.outputs.lista_espana != '[]'
+    strategy:
+      fail-fast: false
+      max-parallel: 1
+      matrix:
+        conector: ${{ fromJSON(needs.preparar.outputs.lista_espana) }}
+    uses: ./.github/workflows/boletin.yml
+    with:
+      conector: ${{ matrix.conector }}
+      minutos: ${{ inputs.minutos || '60' }}
+      ejecutor: espana

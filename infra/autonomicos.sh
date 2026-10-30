@@ -122,6 +122,28 @@ for c in $CONECTORES; do
       ejecutar motor.autonomicos.dogc --textos --salida "$S" --max-minutos "$M"
       "$G" "DOGC: textos"
       ;;
+    # Solo responden desde España: van en el trabajo del servidor propio (autonomicos.yml, «boletin-espana»)
+    bopa)
+      ejecutar motor.autonomicos.bopa --salida "$S"
+      ejecutar motor.autonomicos.bopa --desde 2022-01-01 --salida "$S" --max-minutos "$M"
+      "$G" "BOPA: días"
+      ejecutar motor.autonomicos.bopa --textos --salida "$S" --max-minutos "$M"
+      "$G" "BOPA: textos"
+      ;;
+    bon)
+      ejecutar motor.autonomicos.bon --salida "$S"
+      ejecutar motor.autonomicos.bon --desde-anio 2022 --hasta-anio "$((Y - 1))" --salida "$S" --max-minutos "$M"
+      "$G" "BON: boletines"
+      ejecutar motor.autonomicos.bon --textos --salida "$S" --max-minutos "$M"
+      "$G" "BON: textos"
+      ;;
+    bocant)
+      ejecutar motor.autonomicos.bocant --salida "$S"
+      ejecutar motor.autonomicos.bocant --desde 2022-01-01 --salida "$S" --max-minutos "$M"
+      "$G" "BOC Cantabria: boletines"
+      ejecutar motor.autonomicos.bocant --textos --salida "$S" --max-minutos "$M"
+      "$G" "BOC Cantabria: textos"
+      ;;
     bopb)
       # El del día por el canal de datos abiertos; los anteriores por el listado por días y los textos en PDF (cerrados
       # en robots.txt; se leen como boletín oficial, motor/http.py)
