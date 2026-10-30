@@ -1,3 +1,5 @@
+import json
+
 from motor.grados import fichas
 
 
@@ -72,3 +74,39 @@ def test_bonificacion_por_comunidad_solo_en_publicas():
     assert fichas.construir(cat, GEN, TARJ, DET, {})[0][0]["bonificacion"]["norma"].startswith("Decreto 72/2026")
     cat[0]["universidad_tipo"] = "Privada"
     assert fichas.construir(cat, GEN, TARJ, DET, {})[0][0]["bonificacion"] is None
+
+
+def _imp(valor, tipo):
+    return {"valor": valor, "tipo": tipo, "verosimil": True, "contexto_sha256": "x"}
+
+
+def test_precio_web_prefiere_curso_que_cuadra_con_el_credito_y_no_se_fia_del_jsonld_que_no_cuadra():
+    from motor.grados.fichas import precio_web
+    f = {"url": "https://u.es/grado/farmacia", "precio_jsonld": {"precio": 15000, "moneda": "EUR"},
+         "importes": [_imp(230.0, "credito"), _imp(13800.0, "curso"), _imp(950.0, "reserva")]}
+    p = precio_web(f)
+    assert p["precio_curso"] == 13800.0 and p["metodo"] == "curso_igual_a_credito_por_60"
+    # datos estructurados que contradicen al texto y sin crédito que desempate: sin precio, con nota
+    p = precio_web({"url": "x", "precio_jsonld": {"precio": 2880, "moneda": "EUR"}, "importes": [_imp(4800.0, "curso")]})
+    assert p["precio_curso"] is None and "distintos" in p["nota"]
+
+
+def test_precio_web_resto_de_casos():
+    from motor.grados.fichas import precio_web
+    assert precio_web({"url": "x", "precio_jsonld": {"precio": 3060, "moneda": "EUR"}, "importes": []})["metodo"] == "datos_estructurados"
+    p = precio_web({"url": "x", "importes": [_imp(9000.0, "curso"), _imp(9900.0, "curso")]})
+    assert p["precio_curso"] == 9000.0 and "desde" in p["nota"]
+    assert precio_web({"url": "x", "importes": [_imp(6000.0, "curso"), _imp(15000.0, "curso")]})["precio_curso"] is None
+    assert precio_web({"url": "x", "importes": [_imp(213.0, "credito")]})["precio_curso"] == 12780.0
+    assert precio_web({"url": "x", "importes": [_imp(1400.0, "mensual")]})["precio_curso"] is None
+    assert precio_web({"url": "x", "importes": []}) is None
+
+
+def test_indexar_web_privadas_gana_el_rastreo_mas_reciente(tmp_path):
+    from motor.grados.fichas import indexar_web_privadas
+    for carpeta, url, imp in (("20261030T010000-t0", "https://u.es/a", [_imp(9000.0, "curso")]),
+                              ("20261030T030000-t0", "https://u.es/b", [])):
+        d = tmp_path / carpeta / "datos" / "estudios" / "grados" / "web_privadas"
+        d.mkdir(parents=True)
+        (d / "123.json").write_text(json.dumps({"universidad": "U", "fichas": {"2500001": {"url": url, "importes": imp}}}))
+    assert indexar_web_privadas(tmp_path) == {}

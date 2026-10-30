@@ -4,7 +4,8 @@ Entradas (todas opcionales salvo el catálogo):
   - catálogo SIIU (catalogo.jsonl)                     → identidad, centros, modalidad, idioma, rama, área;
   - grados genéricos (genericos.jsonl)                 → a qué genérico pertenece cada título;
   - QEDU: tarjetas y detalles (qedu_*.jsonl)           → nota de corte, plazas, precio, inserción por centro;
-  - BOE: actos y planes (boe_actos.jsonl, boe_planes.jsonl) → plan de estudios con su comprobación de créditos.
+  - BOE: actos y planes (boe_actos.jsonl, boe_planes.jsonl) → plan de estudios con su comprobación de créditos;
+  - webs de las universidades privadas (web_privadas/{código}.json) → precio publicado por la propia universidad.
 
 Salidas:
   - fichas.jsonl: una por grado o doble grado activo (título × universidad), con sus centros dentro;
@@ -52,6 +53,82 @@ def clave_universidad(nombre: str | None) -> str:
     u = clave(nombre)
     u = re.sub(r"^(universidad|universitat|universidade|unibertsitatea)( de| d| del| da| dels)? ", "", u)
     return " ".join(w for w in u.split() if w not in {"de", "del", "la", "les", "i", "y"})
+
+
+# --------------------------------------------------------------------------------- precios de privadas
+
+FUENTE_WEB = "Web oficial de la universidad"
+# Importe por tipo que se acepta como precio (€); fuera de esto no es un precio de grado
+RANGO_PRECIO = {"credito": (40, 450), "curso": (2500, 30000), "total": (8000, 160000), "mensual": (200, 3500),
+                "reserva": (100, 3500)}
+# Varios importes «por curso» en la misma página que se separan más de esto: no se sabe cuál es (otro grado,
+# otra modalidad, con o sin descuento) y no se publica un precio, solo los candidatos
+MAX_RAZON_CURSO = 1.6
+
+
+def precio_web(f: dict) -> dict | None:
+    """Precio de un grado privado desde su página: importes por tipo y un precio por curso orientativo.
+
+    Orden (gana lo más comprobado; un curso a tiempo completo son 60 créditos, RD 822/2021 art. 5):
+      1. un importe por curso que coincide (±2 %) con el precio del crédito × 60 de la misma página;
+      2. el precio de los datos estructurados (schema.org «offers») si el texto no da otro importe por curso;
+      3. los importes por curso del texto si no se separan más de MAX_RAZON_CURSO («desde» el menor) y no
+         contradicen a los datos estructurados;
+      4. un único precio por crédito × 60.
+    Si los datos estructurados y el texto no coinciden, no se publica precio (solo los candidatos)."""
+    por_tipo: dict[str, set] = defaultdict(set)
+    for i in f.get("importes") or []:
+        if i.get("verosimil") and i.get("tipo") in RANGO_PRECIO:
+            por_tipo[i["tipo"]].add(round(float(i["valor"]), 2))
+    ld = f.get("precio_jsonld") or {}
+    ld_valor = _num(ld.get("precio")) if (ld.get("moneda") or "EUR").upper() == "EUR" else None
+    if ld_valor and not RANGO_PRECIO["curso"][0] <= ld_valor <= RANGO_PRECIO["curso"][1]:
+        ld_valor = None
+    cursos = sorted(por_tipo.get("curso") or ())
+    creditos = sorted(por_tipo.get("credito") or ())
+    curso, metodo, nota = None, None, None
+    cruzados = [c for c in cursos for k in creditos if abs(c - k * 60) <= 0.02 * c]
+    if cruzados:
+        curso, metodo = min(cruzados), "curso_igual_a_credito_por_60"
+    elif ld_valor and (not cursos or ld_valor in cursos):
+        curso, metodo = ld_valor, "datos_estructurados"
+    elif cursos and not ld_valor and cursos[-1] / cursos[0] <= MAX_RAZON_CURSO:
+        curso, metodo = cursos[0], "texto_por_curso"
+        if len(cursos) > 1:
+            nota = f"la página muestra {len(cursos)} importes por curso; se toma el menor («desde»)"
+    elif not cursos and not ld_valor and len(creditos) == 1:
+        curso, metodo = round(creditos[0] * 60, 2), "credito_por_60"
+    elif ld_valor and cursos:
+        nota = "los datos estructurados y el texto de la página dan importes distintos: no se publica precio"
+    if not curso and not por_tipo and not ld_valor:
+        return None
+    return {
+        "precio_curso": curso,
+        "metodo": metodo,
+        "nota": nota,
+        "importes": {k: sorted(v) for k, v in sorted(por_tipo.items())},
+        "precio_jsonld": ld_valor,
+        "url": f.get("url"),
+    }
+
+
+def indexar_web_privadas(carpeta: Path | None) -> dict[str, dict]:
+    """código → precio de la web de su universidad privada. Con varios rastreos gana el más reciente (las
+    carpetas de sondas empiezan por la fecha); la fecha de captura es la del rastreo."""
+    salida: dict[str, dict] = {}
+    if not carpeta:
+        return salida
+    for f in sorted(carpeta.rglob("web_privadas/[0-9]*.json"), key=lambda x: str(x)):
+        d = json.loads(f.read_text(encoding="utf-8"))
+        m = re.search(r"(\d{4})(\d{2})(\d{2})T\d{6}", str(f))
+        fecha = f"{m.group(1)}-{m.group(2)}-{m.group(3)}" if m else None
+        for cod, fi in (d.get("fichas") or {}).items():
+            p = precio_web(fi)
+            if p:
+                salida[cod] = {**p, "fuente": FUENTE_WEB, "universidad": d.get("universidad"), "capturado": fecha}
+            elif cod in salida and salida[cod]["url"] != fi.get("url"):
+                del salida[cod]  # el rastreo nuevo lleva a otra página sin precio: el viejo ya no vale
+    return salida
 
 
 # --------------------------------------------------------------------------------------------- QEDU
@@ -203,7 +280,7 @@ def resumen_plan(p: dict) -> dict:
 
 
 def construir(catalogo: list[dict], genericos: list[dict], tarjetas: dict, detalles: dict,
-              planes: dict, ind: dict | None = None) -> tuple[list[dict], list[dict]]:
+              planes: dict, ind: dict | None = None, web: dict | None = None) -> tuple[list[dict], list[dict]]:
     gen_de = {c: g for g in genericos for c in g["titulos"]}
     por_ambito = Counter((clave_universidad(t["universidades"][0]["nombre"]), t.get("ambito")) for t in catalogo
                          if t["situacion"] == "Activo" and t["clase"] == "grado")
@@ -230,7 +307,8 @@ def construir(catalogo: list[dict], genericos: list[dict], tarjetas: dict, detal
         motivos = []
         if not (plan and plan["comprobado"]):
             motivos.append("sin asignaturas comprobadas" if not plan else "plan sin cuadrar con su tabla de créditos")
-        if not notas and not precios:
+        pweb = (web or {}).get(t["codigo"]) if t["universidad_tipo"] == "Privada" else None
+        if not notas and not precios and not (pweb and pweb["precio_curso"]):
             motivos.append("sin nota de corte ni precio")
         fichas.append({
             "codigo": t["codigo"],
@@ -248,6 +326,7 @@ def construir(catalogo: list[dict], genericos: list[dict], tarjetas: dict, detal
                                          if (i["idioma_extranjero"] or "").startswith("Sí")}),
             "centros": centros,
             "precio_primera_matricula": round(min(precios) * creditos, 2) if precios and creditos else None,
+            "precio_web": pweb,
             "bonificacion": de_comunidad(t["universidades"][0].get("comunidad")) if t["universidad_tipo"] == "Pública" else None,
             "plan": plan,
             "indicadores": indicadores_de(t, ind or {}, por_ambito) if t["clase"] == "grado" else None,
@@ -265,6 +344,7 @@ def construir(catalogo: list[dict], genericos: list[dict], tarjetas: dict, detal
                     "tipo": f["universidad_tipo"], "centro": c.get("centro"), "provincia": c.get("provincia"),
                     "nota_corte": c.get("nota_corte"), "nota_corte_anterior": c.get("nota_corte_anterior"),
                     "plazas": c.get("plazas"), "precio_credito": c.get("precio_credito"),
+                    "precio_curso_web": (f.get("precio_web") or {}).get("precio_curso"),
                     "afiliacion": (c.get("insercion") or {}).get("tasa_afiliacion"),
                     "base_media_cotizacion": (c.get("insercion") or {}).get("base_media_cotizacion"),
                     "practicas_externas": ((f["plan"] or {}).get("distribucion") or {}).get("practicas_externas"),
@@ -300,6 +380,11 @@ def resumen(fichas: list[dict], comparativa: list[dict]) -> dict:
         "con_centros_qedu": sum(1 for f in fichas if f["centros"]),
         "con_nota_de_corte": sum(1 for f in fichas if any(c["nota_corte"] is not None for c in f["centros"])),
         "con_precio": sum(1 for f in fichas if f["precio_primera_matricula"]),
+        "privadas": sum(1 for f in fichas if f["universidad_tipo"] == "Privada"),
+        "privadas_con_pagina_y_algun_importe": sum(1 for f in fichas if f.get("precio_web")),
+        "privadas_con_precio_por_curso": sum(1 for f in fichas if (f.get("precio_web") or {}).get("precio_curso")),
+        "privadas_precio_por_metodo": dict(Counter((f.get("precio_web") or {}).get("metodo") for f in fichas
+                                                   if (f.get("precio_web") or {}).get("precio_curso"))),
         "con_bonificacion_o_ayuda": sum(1 for f in fichas if f.get("bonificacion")),
         "con_insercion": sum(1 for f in fichas if any(c.get("insercion") for c in f["centros"])),
         "con_indicadores_siiu": sum(1 for f in fichas if f.get("indicadores")),
@@ -322,12 +407,14 @@ def main() -> None:
     p.add_argument("--qedu", help="carpeta con qedu_tarjetas_*.jsonl y qedu_detalles_*.jsonl")
     p.add_argument("--boe", help="carpeta con boe_actos.jsonl y boe_planes.jsonl")
     p.add_argument("--indicadores", help="carpeta con los indicadores del SIIU (abandono.jsonl, …)")
+    p.add_argument("--web-privadas", help="carpeta con los rastreos de webs privadas (…/web_privadas/{código}.json)")
     p.add_argument("--salida", required=True)
     a = p.parse_args()
     tarjetas, detalles = indexar_qedu(Path(a.qedu) if a.qedu else None)
     fichas, comparativa = construir(_leer(Path(a.catalogo)), _leer(Path(a.genericos)), tarjetas, detalles,
                                     indexar_planes(Path(a.boe) if a.boe else None),
-                                    indexar_indicadores(Path(a.indicadores) if a.indicadores else None))
+                                    indexar_indicadores(Path(a.indicadores) if a.indicadores else None),
+                                    indexar_web_privadas(Path(a.web_privadas) if a.web_privadas else None))
     destino = Path(a.salida) / "datos" / "estudios" / "grados"
     destino.mkdir(parents=True, exist_ok=True)
     for nombre, datos in (("fichas.jsonl", fichas), ("comparativa.jsonl", comparativa)):
