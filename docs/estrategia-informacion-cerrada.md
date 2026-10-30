@@ -280,13 +280,27 @@ con unas 90.000 URL de programa. Lo que se cuela: agregadores y blogs con fichas
 países y productos con «master» en el nombre. 35 vetan nuestro agente en `robots.txt` y 5 reservan la
 minería de datos (TDM): solo se enlazan.
 
-**Segundo barrido, en marcha** (10.462 objetivos): 7.187 candidatos nuevos del índice anterior de Common
-Crawl (CC-MAIN-2026-39), 1.589 centros enlazados desde páginas de «colaboradores» de universidades y
-escuelas, y los 1.686 verificados del primero con las reglas nuevas.
+**Segundo barrido (30/10/2026)**, 10.462 objetivos:
+
+- Los 1.686 verificados del primero, con las reglas nuevas: siguen 1.131 (67 %); el resto eran listas,
+  blogs, productos o webs de otros países.
+- 7.187 candidatos nuevos del índice anterior de Common Crawl (CC-MAIN-2026-39) y 1.589 centros enlazados
+  desde páginas de colaboradores: 379 verificados más.
+- **Censo final**: 335 proveedores oficiales (161 con fichas medidas en su web), **1.503 verificados** con
+  90.875 URL de programa, y 18.401 candidatos descartados con su motivo (16.376 sin fichas de programa, 612
+  sin respuesta, 559 fuera de España, 128 vetan nuestro agente) o aún sin rastrear (726).
+- **Precisión medida a mano** en 60 verificados al azar del censo final: 40 reales (67 %). Estimación:
+  unos 1.000 proveedores reales no oficiales (entre 800 y 1.200). Lo que se cuela ya no son productos sino
+  portales y revistas del sector, blogs, páginas de colegios profesionales o despachos que hablan de un
+  máster ajeno y sedes latinoamericanas: lo separará la extracción (`no_es_programa`) o una clasificación
+  con Claude.
+- **Lo que se escapa**: academias que venden expertos y másters de formación permanente bajo /cursos/ y con
+  títulos «Curso de Experto Universitario en …» (colaboradoras de la Isabel I). Corregido en el rastreador
+  para el próximo barrido.
 
 **Cobertura frente a listas independientes** (53 proveedores conocidos): 49 en el censo y 40 verificados.
-Faltan CEF, ThePowerMBA y ESH, que no aparecen en ninguno de los dos índices de Common Crawl: hará falta
-una lista de semillas mantenida a mano para los que el índice no ve.
+Faltan CEF, ThePowerMBA, ESH y Saera, que no aparecen en ninguno de los dos índices de Common Crawl ni en
+las páginas de colaboradores: hará falta una lista de semillas mantenida a mano para los que el índice no ve.
 
 **Fallos encontrados al revisar el barrido y corregidos el mismo día**: se rastreaba el dominio desnudo
 («ub.es») en vez de la web real; las redirecciones a otro dominio (uab.es → uab.cat, ehu.es → ehu.eus)

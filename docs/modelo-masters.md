@@ -202,9 +202,10 @@ protegida y la ley del proyecto prohíbe copiar. Solo se usa la web de cada cent
   posgrado con el patrón amplio. Se descartan otros países, páginas sueltas, agregadores y dominios sin
   ninguna URL que nombre un programa (12.275 solo en el primero): quedan 17.630 candidatos, más 1.589
   centros enlazados desde páginas de colaboradores de universidades y escuelas.
-- **Verificación en su web, primer índice completo** (10.955 candidatos): 1.332 con fichas de programa y
-  señal de España tras los filtros; precisión medida a mano (60 al azar, 47 pasan los filtros): 77 %. Estimación: unos 1.000 (850-1.200 por el margen de la muestra)
-  proveedores reales no oficiales y unas 90.000 URL de programa. El segundo barrido (10.462) está en marcha.
+- **Verificación en su web, dos barridos** (10.955 y 10.462 objetivos): **1.503 proveedores no oficiales
+  verificados** con 90.875 URL de programa; precisión medida a mano en 60 al azar, 67 %: unos 1.000 reales
+  (800-1.200). 18.401 candidatos descartados con motivo o pendientes. Detalle en
+  `docs/estrategia-informacion-cerrada.md` §9. Censo publicado en sondas: `censo-masters/20261030-final/`.
 - **Webs oficiales** (340): 293 responden; 232 con fichas (55.899 URL de programa); vetan el rastreo
   Sevilla, Córdoba y otros tres, y la UOC devuelve 403. Cada máster oficial con su página: 1.576 de 4.347
   unidos, 820 dudosos.
