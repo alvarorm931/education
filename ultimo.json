@@ -1,9 +1,9 @@
 {
- "fecha": "2026-10-30T23:48:27+00:00",
- "fecha_madrid": "31/10 00:48",
+ "fecha": "2026-10-30T23:50:38+00:00",
+ "fecha_madrid": "31/10 00:50",
  "ventana_horas": 6.0,
  "resumen": {
-  "ejecuciones_revisadas": 167,
+  "ejecuciones_revisadas": 168,
   "fallos": 1,
   "fallos_pendientes": 0,
   "relanzados": 0,
@@ -77,21 +77,21 @@
   {
    "flujo": "Estudios por tramos",
    "id": 41140514779,
-   "en_cola_min": 60,
+   "en_cola_min": 62,
    "trabajos_empezados": 0,
    "url": "https://github.com/alvarorm931/education/actions/runs/41140514779"
   },
   {
    "flujo": "Sonda de fuentes",
    "id": 41131341263,
-   "en_cola_min": 140,
+   "en_cola_min": 142,
    "trabajos_empezados": 0,
    "url": "https://github.com/alvarorm931/education/actions/runs/41131341263"
   },
   {
    "flujo": "Estudios por tramos",
    "id": 41119697629,
-   "en_cola_min": 229,
+   "en_cola_min": 231,
    "trabajos_empezados": 1,
    "url": "https://github.com/alvarorm931/education/actions/runs/41119697629"
   }
@@ -111,7 +111,16 @@
   }
  },
  "respaldo_programaciones": [],
- "programaciones_tardias_canceladas": [],
+ "programaciones_tardias_canceladas": [
+  {
+   "flujo": "autonomicos.yml",
+   "id": 41070595583,
+   "prevista": "30/10 08:17",
+   "disparada": "30/10 15:17",
+   "ya_lanzada": "https://github.com/alvarorm931/education/actions/runs/41020598739",
+   "cancelada": true
+  }
+ ],
  "latido": "en marcha",
  "boe": {
   "ultimo_diario": {

@@ -1,12 +1,12 @@
-# Vigilancia 31/10 00:48 (Madrid)
+# Vigilancia 31/10 00:50 (Madrid)
 
-- Ejecuciones revisadas (últimas 6 h): 167
+- Ejecuciones revisadas (últimas 6 h): 168
 - Fallos: 1; pendientes: 0; relanzados ahora: 0
 - Colas de más de 30 minutos: 3
 - Flujos programados parados: ninguno
 - Almacén S3: ok
 - Programaciones que GitHub no disparó y se lanzaron a mano: ninguna
-- Programaciones que GitHub disparó tarde y repetían la del día (canceladas): ninguna
+- Programaciones que GitHub disparó tarde y repetían la del día (canceladas): autonomicos.yml de las 30/10 08:17, disparada a las 30/10 15:17
 - Latido (relanza al vigilante cada ~25 min mientras GitHub no dispare programaciones): en marcha
 - Avisos de fuentes: 0
 
@@ -22,6 +22,6 @@ https://github.com/alvarorm931/education/actions/runs/41120449947 (intento 1, wo
       hint: See the 'Note about fast-forwards' in 'git push --help' for details.
       ##[error]Process completed with exit code 1.
 
-- En cola 60 min: Estudios por tramos https://github.com/alvarorm931/education/actions/runs/41140514779
-- En cola 140 min: Sonda de fuentes https://github.com/alvarorm931/education/actions/runs/41131341263
-- En cola 229 min: Estudios por tramos https://github.com/alvarorm931/education/actions/runs/41119697629
+- En cola 62 min: Estudios por tramos https://github.com/alvarorm931/education/actions/runs/41140514779
+- En cola 142 min: Sonda de fuentes https://github.com/alvarorm931/education/actions/runs/41131341263
+- En cola 231 min: Estudios por tramos https://github.com/alvarorm931/education/actions/runs/41119697629
