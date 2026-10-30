@@ -377,6 +377,11 @@ está en la cita). El nombre extraído de la página se compara con el del RUCT 
 En las privadas el precio es el dato que más se esconde (23 %): es la lista de peticiones al centro. En
 las públicas el precio sale de los decretos (`docs/fuentes-precios-publicos.md`), no de la página.
 
+**Control independiente de la extracción**: la modalidad sacada de la página coincide con la del catálogo
+oficial del Ministerio (presencial, a distancia, semipresencial, varias) en el 93,3 % de 1.970 másters
+oficiales con ficha; parte del 6,7 % restante son cambios reales (la web anuncia una modalidad nueva o el
+catálogo es de febrero). Es la cifra de referencia para vigilar que la extracción no empeora.
+
 **Segunda vuelta**: para los másters sin ficha comprobada se extraen sus siguientes candidatas (puntuación de
 0,5 o más); el nombre extraído hace de verificador, así que una candidata floja no contamina: o confirma el
 nombre del RUCT o se descarta. 1.179 páginas para 794 másters.
@@ -423,21 +428,26 @@ lista-propios-oficiales` toma las fichas de máster de esas webs que no son la p
 ## 9. Siguientes pasos
 
 Ordenados por lo que más acerca a tener, para cada máster, lo que hoy se da solo al registrarse
-(`docs/estrategia-informacion-cerrada.md`).
+(`docs/estrategia-informacion-cerrada.md`). Estado al 30/10/2026 de madrugada.
 
-1. **Cerrar el censo**: hecho el 30/10/2026 con dos índices de Common Crawl y los colaboradores (1.503
-   verificados, unos 1.000 reales). Queda: rastrear los 726 pendientes con las reglas nuevas de academias
-   (/cursos/, «Curso de Experto Universitario»), una lista de semillas a mano para los que Common Crawl no
-   ve (CEF, ThePowerMBA, ESH, Saera) y separar portales y blogs con la extracción o una clasificación.
-2. **Extracción con cita** de las páginas de programa de los proveedores verificados (`extraer.py`, lote de
-   Claude Haiku). Necesita la clave `ANTHROPIC_API_KEY` como secreto de GitHub y el archivo privado de
-   originales (R2): la rama del repositorio es pública y no guarda páginas ajenas.
-3. **Seguimiento por campo** (`seguimiento.py`) sobre lo extraído: qué campos están tras el registro en
-   cada máster y lista de peticiones por centro.
-4. **Oficiales**: unir cada título del RUCT con su página (1.576 unidos y 820 dudosos; usar el resultado de la
-   extracción para descartar lo que no es ficha), fichas y memorias
-   del RUCT de los 4.347 activos, precio por crédito de los 19 decretos y QEDU (según su ayuda, precio y
-   plazas solo de públicas), guías docentes por plataforma (SIGMA DOA primero).
-5. **Peticiones** a centros cuando el portal tenga dirección pública; peticiones formales a universidades
-   públicas (Ley 19/2013) y al Ministerio (Ley 37/2007).
-6. Becas, Excel de oferta de plazas, másters habilitantes y profesiones reguladas.
+1. **Cerrar las tandas en marcha**: no oficiales (tanda 2 adaptativa y la cola de los 22 centros con más de
+   330 fichas), propios en webs oficiales (tanda 2 y la cola de las webs con más de 340), tercera vuelta de los
+   oficiales (48 universidades por debajo del 70 %) y tarifas en PDF. Después, solo se extrae lo que cambia
+   (fecha de última modificación del sitemap o huella distinta).
+2. **Precio de las públicas** desde los decretos (`docs/fuentes-precios-publicos.md`): precio por crédito de la
+   comunidad × créditos, con la condición de habilitante del RUCT. No se publica un precio calculado sin la
+   norma leída y la categoría del título comprobada.
+3. **Memorias del RUCT** (plazas verificadas, plan con asignaturas, evaluación ponderada) para los oficiales,
+   en el servidor de España, repartidas en noches.
+4. **Oficiales que siguen sin página** (1.876): Sevilla y Córdoba vetan el rastreo y la UOC da 403 (pedir
+   permiso); UB, UPM, UPV, UC3M, UAM, Murcia, A Coruña, UPF y otras grandes tienen catálogos con URL opacas o
+   que se pintan con JavaScript: la tercera vuelta las lee y las asigna por el nombre; lo que quede, conector
+   por universidad o el lector con navegador del servidor de España.
+5. **Descubrimiento**: los 187 agregadores sirven para encontrar centros que el índice no ve (solo el nombre y
+   la web del centro, nunca sus fichas); ESH, Saera y ThePowerMBA necesitan lector con JavaScript.
+6. **Peticiones** (`peticiones.py --fichas`): 825 centros con másters sin precio publicado; primero tarifas en
+   PDF y memorias, después la petición cuando el portal tenga dirección pública.
+7. Másters oficiales que venden centros no universitarios con web propia (642 fichas «máster universitario
+   oficial» fuera de las webs del RUCT): ya se asignan por la universidad que dice la página; revisar los que
+   no encajan.
+8. Becas, Excel de oferta de plazas, másters habilitantes y profesiones reguladas.
