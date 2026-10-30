@@ -309,3 +309,9 @@ def test_total_de_la_fila_con_cuotas_reserva_y_matricula():
 
     c = precio_por_cuentas([400, 526.67, 675, 700, 4740, 6515])
     assert c["precio_curso"] == 6515 and c["metodo"] == "cuotas_mas_reserva_y_matricula" and c["ensenanza"] == 4740
+
+
+def test_curso_del_nombre_del_fichero():
+    assert tg.curso_de_fichero("https://docs.ie.edu/Admissions/Tasas_IE_University_27-28.pdf") == "2027-2028"
+    assert tg.curso_de_fichero("https://x.es/AF_HONORARIOS_210_X_297_2026_27.pdf") == "2026-2027"
+    assert tg.curso_de_fichero("https://x.es/tarifas_210_297.pdf") is None

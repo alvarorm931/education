@@ -45,6 +45,16 @@ NO_TARIFA = re.compile(r"gu[ií]a-?docente|indicador|satisfacc|normativa|permane
                        r"master|posgrado|postgrado|/(?:int|pe|mx|co|ec|cl|ar|us|uk|it|fr|pt|br)/", re.I)  # otros países
 CURSO_DOC = re.compile(r"\b(20[2-3]\d)\s*[-/–]\s*(?:20)?([2-3]\d)\b")
 MAX_PDF = 12_000_000
+
+
+def curso_de_fichero(url: str) -> str | None:
+    """El curso del nombre del fichero si el texto no lo dice («Tasas_IE_University_27-28.pdf» → 2027-2028): solo
+    dos años seguidos, del 20 al 39."""
+    nombre = url.split("?")[0].rstrip("/").rsplit("/", 1)[-1]
+    for a, b in re.findall(r"(?<!\d)(?:20)?([23]\d)[-_](?:20)?([23]\d)(?!\d)", nombre):
+        if int(b) == int(a) + 1:
+            return f"20{a}-20{b}"
+    return None
 MAX_LINEA_MUESTRA = 160
 # Líneas literales de muestra para revisar el formato: solo en local (MOTOR_MUESTRA=1); la rama pública no lleva
 # texto de terceros (docs/estrategia-informacion-cerrada.md §2.4)
@@ -552,6 +562,8 @@ def ejecutar(catalogo: list[dict], rastreos: Path, salida: Path, max_minutos: fl
                 gs = list(por_u.get(p["codigo_universidad"], []))
                 gs += [por_cod[c] for c in p.get("grados_rastreo") or [] if c in por_cod and por_cod[c] not in gs]
                 res.update(extraer(paginas, gs, grado_de_fichero(r_url, gs) if es_pdf else grado_de_url(r_url, gs)))
+                if not res.get("curso_documento") and (c := curso_de_fichero(r_url)):
+                    res["curso_documento"], res["curso_por_el_nombre_del_fichero"] = c, True
                 if es_html and not res.get("lineas_con_importe"):
                     res["diagnostico"] = diagnostico_html(r.text)
             except Exception as e:  # noqa: BLE001 - un documento roto no para el resto
