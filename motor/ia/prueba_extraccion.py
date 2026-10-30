@@ -25,6 +25,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import re
 import sys
 import time
 from datetime import datetime, timezone
@@ -121,6 +122,19 @@ def esperar(batch_id: str, minutos: float) -> dict:
         time.sleep(30)
 
 
+def diagnostico(crudo: str) -> dict:
+    """Qué ocupa la respuesta, sin guardar su texto: caracteres por campo (en orden) y si va en bloque de código."""
+    claves = [(m.start(), m.group(1)) for m in re.finditer(r'"(\w+)"\s*:\s*[\[{n]', crudo)
+              if m.group(1) in extraer.CAMPOS or m.group(1) == "no_es_programa"]
+    tramos = {}
+    for i, (ini, k) in enumerate(claves):
+        fin = claves[i + 1][0] if i + 1 < len(claves) else len(crudo)
+        tramos[k] = tramos.get(k, 0) + fin - ini
+    return {"caracteres": len(crudo), "bloque_de_codigo": crudo.lstrip().startswith("```"),
+            "campos_empezados": len(tramos), "caracteres_por_campo": tramos,
+            "asignaturas_elementos": crudo.count('"nombre"')}
+
+
 def coste(uso: dict) -> float:
     return sum(uso.get(k, 0) * p for k, p in PRECIO.items()) / 1_000_000
 
@@ -140,6 +154,7 @@ def recoger(b: dict, paginas: dict[str, dict], salida: Path) -> dict:
             continue
         msg = x["result"]["message"]
         uso = {k: int(msg.get("usage", {}).get(k) or 0) for k in PRECIO}
+        crudo = "".join(c.get("text", "") for c in msg.get("content", []))
         for k in uso_total:
             uso_total[k] += uso[k]
         p = paginas.get(x["custom_id"])
@@ -149,6 +164,7 @@ def recoger(b: dict, paginas: dict[str, dict], salida: Path) -> dict:
                 "no_es_programa": bool(datos.get("no_es_programa")), "json_valido": bool(datos)}
         prompt = uso["input_tokens"] + uso["cache_creation_input_tokens"] + uso["cache_read_input_tokens"]
         fila["supera_100k"] = prompt > UMBRAL_TOKENS
+        fila["diagnostico"] = diagnostico(crudo)
         if p and datos and not datos.get("no_es_programa"):
             texto = extraer.texto_de_pagina(Path(p["ruta"]).read_text(encoding="utf-8"))
             hs = extraer.verificar(datos, texto)
