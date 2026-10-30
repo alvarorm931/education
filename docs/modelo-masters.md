@@ -670,7 +670,7 @@ aceptados) y recitado (6.495 recuperados); desde el servidor de España, 48 pág
 (386 más tienen un robots.txt que no contesta ni desde allí: no se piden).
 
 **Lo que queda y por qué:**
-- **RUCT**: desde GitHub responde a unas 70 fichas por hora (604 oficiales con ficha; quedan unas 4.200, ~40 h,
+- **RUCT**: desde GitHub responde a unas 70 fichas por hora (686 oficiales con ficha a las 18:00; quedan unas 4.100, ~40 h,
   en fila). Las memorias (unas 50 páginas cada una) solo son viables desde el servidor de España, que comparten
   todas las conversaciones: lo decide Álvaro (buzón de incidencias). Lo que la memoria añadiría ya lo cubren en
   gran parte el BOE (asignaturas) y QEDU (plazas, modalidad); faltan las plazas verificadas y la evaluación
