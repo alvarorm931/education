@@ -63,7 +63,7 @@ PRIORIDAD = {
     "evaluacion": ("ruct", "guia", "web"),
     "metodologia": ("ruct", "web"),
     "requisitos_acceso": ("ruct", "web"),
-    "habilita_profesion": ("ruct", "web"),
+    "habilita_profesion": ("ruct", "boe", "web"),
     "practicas": ("ruct", "web"),
     "tfm": ("ruct", "web"),
     "universidad_que_expide": ("catalogo", "boe", "web"),
@@ -861,6 +861,56 @@ RE_HABILITANTE = re.compile(
     r"en arquitectura(?:\s+por|\s*/|\s*$)|màster universitari en arquitectura(?:\s|$)")
 
 
+# Títulos que habilitan para una profesión regulada, con la norma que fija sus requisitos (enlace comprobado el
+# 30/10/2026). El nombre tiene que ser el de la profesión, no uno que la contenga («Ingeniería Industrial y
+# Automática» no es el máster habilitante). Las demás ingenierías habilitantes (Caminos, Aeronáutica, Agronómica,
+# Montes, Minas, Naval) quedan sin marcar hasta comprobar el enlace de su orden.
+HABILITACIONES = [
+    (r"(el |la )?((acceso|pr[aá]ctica|ejercicio)( a| al| de)?( el| la| las)? (ejercicio de (la )?|profesiones de |profesi[oó]n de (la )?)?)?"
+     r"(la )?(abogac[ií]a|advocacia)( i| y)?( de| a)?( la)?( procura)?",
+     "Abogado y Procurador de los Tribunales (con el examen estatal de acceso)", "Ley 34/2006, de 30 de octubre",
+     "https://www.boe.es/eli/es/l/2006/10/30/34/con"),
+    (r"(formaci[oó]n del? )?profesorado (de|en) (la )?(educaci[oó]n |ense[nñ]anza )?secundaria.*|formaci[oó]n del profesorado|"
+     r"profesor de educaci[oó]n secundaria.*|(formaci[oó] del )?professorat d.(educaci[oó] )?secund.*",
+     "Profesor de Educación Secundaria, Bachillerato, Formación Profesional e Idiomas", "Orden ECI/3858/2007, de 27 de diciembre",
+     "https://www.boe.es/eli/es/o/2007/12/27/eci3858"),
+    (r"psicolog[ií]a general sanitaria|psicologia general sanitaria", "Psicólogo General Sanitario",
+     "Orden ECD/1070/2013, de 12 de junio", "https://boe.gob.es/boe/dias/2013/06/14/pdfs/BOE-A-2013-6412.pdf"),
+    (r"ingenier[ií]a industrial|enginyeria industrial", "Ingeniero Industrial", "Orden CIN/311/2009, de 9 de febrero",
+     "https://www.boe.es/eli/es/o/2009/02/09/cin311"),
+    (r"ingenier[ií]a de telecomunicaci[oó]n|enginyeria de telecomunicaci[oó]", "Ingeniero de Telecomunicación",
+     "Orden CIN/355/2009, de 9 de febrero",
+     "https://www.upc.edu/sga/es/shared/fitxers-normatives/LegislacioEstatal/habilitacions-professionals/ordre-cin-355-2009_enginyer-de-telecomunicacio"),
+    (r"arquitectura", "Arquitecto", "Orden EDU/2075/2010, de 29 de julio", "https://www.uma.es/media/files/Orden_EDU_2075_2010.pdf"),
+]
+
+
+def _nucleo_nombre(nombre: str | None) -> str:
+    n = re.split(r"(?i)\s+(?:por|per)\s+(?:la|las|el|los|l')\s*", nombre or "")[0].split("/")[0]
+    n = re.sub(r"(?i)^\s*(m[aáà]ster|master)\s+(universitari[oa]?\s+)?(oficial\s+)?(en|de|in|d')\s*", "", n)
+    n = re.sub(r"\([^)]*\)", " ", n)
+    return " ".join(re.sub(r"[^\w\s']", " ", n.lower()).split())
+
+
+def habilitacion(nombre: str | None) -> tuple[str, str, str] | None:
+    """(profesión, norma, url) si el título es el máster habilitante de una profesión regulada."""
+    if re.match(r"(?i)\s*PCEO\b", nombre or ""):
+        return None
+    n = _nucleo_nombre(nombre)
+    for patron, profesion, norma, url in HABILITACIONES:
+        if re.fullmatch(patron, n):
+            return profesion, norma, url
+    return None
+
+
+def campos_habilitacion(nombre: str | None) -> dict[str, dict]:
+    h = habilitacion(nombre)
+    if not h:
+        return {}
+    return {"habilita_profesion": campo(f"Sí: {h[0]}", "boe", h[2], "2026-10-30",
+                                        nota=f"por el nombre del título, que es el de la profesión regulada ({h[1]})")}
+
+
 def campos_norma(cat: dict, nombre_uni: str | None, imps: list[dict], habilita: str | None) -> dict[str, dict]:
     """Precio del crédito por la norma de la comunidad, para una pública sin precio en QEDU."""
     n = PRECIO_NORMA.get(cat.get("universidad_comunidad") or "")
@@ -918,6 +968,7 @@ def oficial(cod: str, cat: dict, ruct: dict | None, imps: list[dict], web: dict 
     por_fuente["guia"] = campos_guias(guias or [])
     hab = ((por_fuente.get("ruct") or {}).get("habilita_profesion") or {}).get("valor")
     por_fuente["norma"] = campos_norma(cat, nombre_uni, imps, hab)
+    por_fuente.setdefault("boe", {}).update(campos_habilitacion(cat.get("nombre_oficial")))
     # la evaluación de la memoria sin ponderaciones (formato RD 822/2021) cede ante la de las guías, que las tienen
     ev = por_fuente.get("ruct", {}).get("evaluacion")
     if ev and not ev["valor"].get("con_ponderacion") and "evaluacion" in por_fuente["guia"]:

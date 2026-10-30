@@ -334,3 +334,17 @@ def test_precio_de_la_norma_para_publicas_sin_precio_en_qedu():
     doble = {**cat, "nombre_oficial": "PCEO Máster Universitario en Abogacía / Máster Universitario en Derecho Público"}
     assert "precio_credito" not in cm.oficial("4310005", doble, None, [], None)["campos"]
     assert "precio_credito" not in cm.oficial("4310004", {**cat, "universidad_comunidad": "Madrid (Comunidad de)"}, None, [], None)["campos"]
+
+
+def test_habilitacion_solo_con_el_nombre_de_la_profesion():
+    h = cm.habilitacion
+    assert h("Máster Universitario en Acceso a la Profesión de la Abogacía y la Procura por la Universidad X")[1].startswith("Ley 34/2006")
+    assert h("Máster Universitario en Profesorado de Educación Secundaria Obligatoria y Bachillerato por la Universidad X")
+    assert h("Màster Universitari en Formació del Professorat d'Educació Secundària Obligatòria i Batxillerat per la Universitat X")
+    assert h("Máster Universitario en Ingeniería Industrial por la Universidad X")[0] == "Ingeniero Industrial"
+    for n in ("Máster Universitario en Ingeniería Industrial y Automática", "Máster Universitario en Arquitectura del Paisaje",
+              "Máster Universitario en Abogacía Internacional", "PCEO Máster Universitario en Abogacía / Máster Universitario en X",
+              "Máster Universitario en Investigación en Formación del Profesorado y Tecnología Educativa"):
+        assert h(n) is None, n
+    c = cm.campos_habilitacion("Máster Universitario en Psicología General Sanitaria por la Universidad X")["habilita_profesion"]
+    assert c["valor"] == "Sí: Psicólogo General Sanitario" and c["fuente"] == "boe" and c["url"].startswith("https://")
