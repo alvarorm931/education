@@ -294,3 +294,11 @@ def test_cabecera_entre_el_grado_y_sus_filas():
     paginas = ["Grado en Psicología\nConcepto | Importe\nReserva de plaza | 500 €\nDocencia anual | 9.500 €"]
     r = tg.extraer(paginas, G)
     assert {i["valor"] for i in r["grados"]["1"]} == {500, 9500}
+
+
+def test_ficha_de_precios_titulo_rotulo_cifra():
+    paginas = ["Grado en Psicología\nReserva de plaza\n500 €\nPrecio total\n9.500 €\n"
+               "Grado en Derecho\nReserva de plaza\n400 €\nPrecio total\n8.400 €"]
+    r = tg.extraer(paginas, G)
+    assert {i["valor"] for i in r["grados"]["1"]} == {500, 9500}
+    assert {i["valor"] for i in r["grados"]["4"]} == {400, 8400}

@@ -391,6 +391,7 @@ def extraer(paginas: list[str], grados: list[dict], de_la_pagina: str | None = N
     curso, cabecera = None, None
     bloque, ultimo = 0, None
     sin_grado, formas_sin_grado = 0, []
+    grado_titulo, desde_titulo = None, 99
     # tablas cuyas celdas dan el importe sin «€» («1.278,00»): valen si la página habla de euros y la tabla tiene
     # cabecera con rótulos de importe (matrícula, plazos, total…)
     euros = bool(re.search(r"€|\beuros?\b", " ".join(paginas), re.I))
@@ -417,9 +418,13 @@ def extraer(paginas: list[str], grados: list[dict], de_la_pagina: str | None = N
                     rotulo = tipo_rotulo(linea)
                 # el nombre de la línea de encima: no vale una celda de solo unidades («60 ECTS», «240 créditos») ni la
                 # cabecera de la tabla («Concepto | Importe») que va entre el nombre del grado y sus filas
-                if re.search(r"[A-Za-zÁÉÍÓÚáéíóú]{4}", SOLO_UNIDADES.sub(" ", linea)) and \
-                        not ((es_cabecera or " | " in linea) and not grado_de(linea, grados)):
+                con_letras = re.search(r"[A-Za-zÁÉÍÓÚáéíóú]{4}", SOLO_UNIDADES.sub(" ", linea))
+                del_grado = grado_de(linea, grados) if con_letras else None
+                if con_letras and not ((es_cabecera or " | " in linea) and not del_grado):
                     previa = linea
+                if del_grado:  # el nombre del grado como título de su ficha de precios (USJ: título, rótulo, cifra)
+                    grado_titulo, desde_titulo = del_grado, 0
+                desde_titulo += 1
                 continue
             con_importe += 1
             texto_sin = IMPORTE.sub(" ", linea)
@@ -433,6 +438,10 @@ def extraer(paginas: list[str], grados: list[dict], de_la_pagina: str | None = N
                 bloque += 1  # cada línea con nombre de grado abre un bloque; las de solo cifras que siguen, también suyas
             elif not re.search(r"[A-Za-zÁÉÍÓÚáéíóú]{4}", texto_sin) or solo_rotulo:
                 codigo = grado_de(previa, grados)
+                # la línea de encima es solo el rótulo de la cifra («Precio total»): vale el grado del título de
+                # encima si está cerca (como mucho 12 líneas)
+                if not codigo and grado_titulo and desde_titulo <= 12 and (tipo_rotulo(previa) or len(previa) < 40):
+                    codigo = grado_titulo
                 if codigo and codigo != ultimo:
                     bloque += 1
             if not codigo and de_la_pagina:
