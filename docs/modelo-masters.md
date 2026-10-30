@@ -457,6 +457,23 @@ esencial se ve sin dar datos (indicador de transparencia medio 0,50). Peticiones
 decreto). Todo en la rama `sondas`, `fichas-masters/20261030-todas/` (fichas en gzip, estado por campo,
 peticiones y resúmenes).
 
+### Tarifas en PDF (`tarifas.py`)
+
+Common Crawl apenas ve PDF de precios (554 en 76 dominios, casi todos ajenos a másters). La fuente buena son
+las propias fichas: de los originales guardados de 47.656 páginas salen 1.782 enlaces a PDF de precios, tarifas,
+matrícula o folleto en 225 dominios. Leídos 1.360 (103 de más de 10 MB y 80 vetados o caídos se dejan); 371 son
+tarifas o folletos con precio: 2.970 importes aceptados con cita y número comprobados, 554 a revisión, 0,52 $.
+Solo 213 se unen sin ambigüedad a una ficha del mismo centro por el nombre (los demás son programas que aún no
+tienen ficha o nombres que encajan en varias): rellenan el precio de las fichas que no lo daban, como
+documento público, sin pisar nunca el de la página. Lo que no se une es la siguiente pista para crear fichas.
+
+### Almacén y respeto a las webs
+
+53.421 páginas guardadas intactas en el almacén privado (más PDF, lo enviado a la API y las respuestas), con
+escritura única; 669 páginas no se leyeron por `robots.txt` o por no responder (1,2 %); ninguna web pidió
+reserva de minería (TDM). Una petición por segundo y servidor en todo momento: las tandas que tocaban los
+mismos servidores se lanzaron una detrás de otra.
+
 ### Fallos de proceso encontrados esta noche
 
 1. La clave normalizada de la unión se usaba como dirección (arriba).
