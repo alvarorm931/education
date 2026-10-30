@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/runner/work/education/education/motor/provinciales/boplugo.py", line 102, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/runner/work/education/education/motor/provinciales/boplugo.py", line 97, in main
+    return historico(argv)
+           ^^^^^^^^^
+NameError: name 'historico' is not defined
+codigo=1
