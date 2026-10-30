@@ -756,6 +756,28 @@ def fichas_proximas(altas: list[dict], catalogo: list[dict], planes: dict, ruct:
     return salida
 
 
+def anadir_historico(fichas: list[dict], historico: list[dict]) -> dict:
+    """Pone en cada centro de cada ficha su histórico de notas de corte del cupo general (notas_corte.py), solo el
+    publicable: nota final de su distrito que coincide con QEDU en los cursos que se solapan. Cada curso lleva su
+    fuente (documento del distrito, huella y fecha de captura)."""
+    por = {(h["codigo_titulo"], h["codigo_centro"]): h for h in historico if h.get("publicable")}
+    fichas_con, centros_con, cinco = set(), 0, 0
+    for f in fichas:
+        for c in f.get("centros") or []:
+            h = por.get((f["codigo"], c.get("codigo")))
+            if not h:
+                continue
+            c["notas_historicas"] = {"cupo": "general", "distrito": h["distrito"], "cursos": h["cursos"],
+                                     "contraste_qedu": h["contraste_qedu"],
+                                     "nota": "la menor de las ofertas del título en el centro, como QEDU; 5,000 = "
+                                             "entraron todos los que lo pidieron"}
+            fichas_con.add(f["codigo"])
+            centros_con += 1
+            cinco += len(h["cursos"]) >= 5
+    return {"fichas_con_notas_historicas": len(fichas_con), "centros_con_notas_historicas": centros_con,
+            "centros_con_cinco_cursos_o_mas": cinco}
+
+
 def main() -> None:
     p = argparse.ArgumentParser()
     p.add_argument("--catalogo", required=True)
@@ -766,6 +788,7 @@ def main() -> None:
     p.add_argument("--web-privadas", help="carpeta con los rastreos de webs privadas (…/web_privadas/{código}.json)")
     p.add_argument("--ruct", help="carpeta con las fichas del RUCT (…/ruct/{código}.json)")
     p.add_argument("--tarifas", help="carpeta con los precios de PDF y páginas de precios (…/tarifas_grado/tarifas.jsonl)")
+    p.add_argument("--notas", help="historico.jsonl de notas_corte.py (notas de corte de cada distrito por curso)")
     p.add_argument("--salida", required=True)
     a = p.parse_args()
     tarjetas, detalles = indexar_qedu(Path(a.qedu) if a.qedu else None)
@@ -779,6 +802,7 @@ def main() -> None:
                                     planes_por_identificador(Path(a.boe) if a.boe else None),
                                     indexar_tarifas(Path(a.tarifas) if a.tarifas else None),
                                     indexar_paginas_privadas(Path(a.web_privadas) if a.web_privadas else None))
+    hist = anadir_historico(fichas, _leer(Path(a.notas))) if a.notas else {}
     altas_f = Path(a.boe) / "boe_altas.jsonl" if a.boe else None
     proximas = fichas_proximas(_leer(altas_f), catalogo, indexar_planes(Path(a.boe), conocidas),
                                indexar_ruct(Path(a.ruct) if a.ruct else None)) if altas_f and altas_f.exists() else []
@@ -790,6 +814,7 @@ def main() -> None:
             for x in datos:
                 f.write(json.dumps(x, ensure_ascii=False) + "\n")
     res = resumen(fichas, comparativa)
+    res.update(hist)
     res["proximas"] = len(proximas)
     res["proximas_con_plan_del_boe"] = sum(1 for x in proximas if x["plan"])
     (destino / "fichas_resumen.json").write_text(json.dumps(res, ensure_ascii=False, indent=1), encoding="utf-8")
