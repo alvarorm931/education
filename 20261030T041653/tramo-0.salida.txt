@@ -1,0 +1,25 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/runner/work/education/education/motor/estudios/tarifas.py", line 443, in <module>
+    main()
+  File "/home/runner/work/education/education/motor/estudios/tarifas.py", line 424, in main
+    print(json.dumps(retomar(Path(x.lote_json), Path(x.salida) / "datos" / "estudios" / "tarifas" / "retomado",
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/education/education/motor/estudios/tarifas.py", line 337, in retomar
+    for e in guarda.leer_jsonl(info["clave_enviado"]):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/education/education/motor/estudios/extraer.py", line 439, in leer_jsonl
+    return [json.loads(l) for l in self.almacen.leer(clave).decode("utf-8").splitlines() if l.strip()]
+            ^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/json/decoder.py", line 338, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/json/decoder.py", line 354, in raw_decode
+    obj, end = self.scan_once(s, idx)
+               ^^^^^^^^^^^^^^^^^^^^^^
+json.decoder.JSONDecodeError: Unterminated string starting at: line 1 column 227 (char 226)
+codigo=1
