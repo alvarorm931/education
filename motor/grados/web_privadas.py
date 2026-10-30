@@ -20,6 +20,7 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import html as html_mod
 import json
 import re
 import sys
@@ -115,6 +116,39 @@ def objetivos_nombre(g: dict) -> list[set[str]]:
         if otro:
             salida.append(otro)
     return [o for o in salida if o]
+
+
+# abreviaturas que las universidades usan en el título de la página
+ABREVIATURAS = {"cafyd": "ciencias actividad fisica deporte", "cafd": "ciencias actividad fisica deporte",
+                "ade": "administracion direccion empresas", "ia": "inteligencia artificial",
+                "rrii": "relaciones internacionales"}
+GENERICAS_NOMBRE = {"grado", "ciencia", "estudio", "bachelor", "degree", "doble", "en", "de", "y"}
+NOMBRA_PROGRAMA = re.compile(r"\bgrados?\b|\bdobles?\b|\bdegrees?\b|\bbachelors?\b|\bgraus?\b|titulaci", re.I)
+OTRO_ESTUDIO = re.compile(r"\bfp\b|formaci[oó]n profesional|reconocimientos?\b|\bdouble\b|\bdobles?\b", re.I)
+
+
+def titulo_contradice(g: dict, titulo: str | None) -> bool:
+    """El título de la página dice que es de otro estudio: un doble grado o una FP para un grado simple, o un
+    título que nombra un programa sin ninguna palabra propia del grado (en un doble, de alguno de sus dos grados).
+    Un título genérico («Admisión», «Presentación») no contradice nada: entonces vale la dirección."""
+    if not titulo:
+        return False
+    t = html_mod.unescape(html_mod.unescape(titulo))
+    pal = palabras(t)
+    for abr, exp in ABREVIATURAS.items():
+        if abr in set(re.findall(r"[a-z]+", t.lower())):
+            pal |= palabras(exp)
+    if g["clase"] != "doble" and OTRO_ESTUDIO.search(t):
+        return True
+    if g["clase"] == "doble" and re.search(r"\bfp\b|formaci[oó]n profesional|reconocimientos?\b", t, re.I):
+        return True
+    if not NOMBRA_PROGRAMA.search(t):
+        return False
+    if g["clase"] == "doble" and g.get("componentes"):
+        partes = [palabras(nombre_base(c["nombre"])) - GENERICAS_NOMBRE for c in g["componentes"]]
+    else:
+        partes = [set().union(*objetivos_nombre(g)) - GENERICAS_NOMBRE] if objetivos_nombre(g) else []
+    return any(p and not (p & pal) for p in partes)
 
 
 def es_url_grado(url: str) -> bool:

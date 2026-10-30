@@ -224,10 +224,14 @@ dé asignaturas, y cuando se decida.
   cuadran entre sí dentro del bloque de cada grado. Con datos estructurados y texto en desacuerdo, no se publica
   precio. Total del grado estimado: precio por curso × créditos / 60, al precio de hoy.
 
-  Resultado: **256 de 1.410 grados y dobles de privadas con precio por curso** (166 de su página y 90 de sus
-  listas de precios), de 20 universidades; 256 con total estimado. De las 620 privadas sin precio cuya página se
-  leyó, 240 tienen un formulario que pide el correo: la ficha lo dice como hecho medido («la universidad no publica
-  el precio en la página del grado; su formulario pide correo»), sin juicio (`pagina_privada_sin_precio`). Sin
+  Resultado: **253 de 1.410 grados y dobles de privadas con precio por curso** (162 de su página y 91 de sus
+  listas de precios), de 20 universidades; los 253 con total estimado. Control del título de la página: si la
+  dirección casa con el grado pero el título dice que es de otro estudio (un doble para un grado simple, una FP,
+  otro grado, o un doble con otros grados), la página no vale para ese grado (`web_privadas.titulo_contradice`);
+  un título genérico («Admisión») no contradice nada. Descartó 29 uniones, 4 con precio (por ejemplo, un doble de
+  Economía con Finanzas tomado por el de Economía y ADE). De las 601 privadas sin precio cuya página se leyó, 235
+  tienen un formulario que pide el correo: la ficha lo dice como hecho medido («la universidad no publica el
+  precio en la página del grado; su formulario pide correo»), sin juicio (`pagina_privada_sin_precio`). Sin
   ninguna página leída: Navarra (sin sitemap; su portada no enlaza los grados), Comillas (responde 421 a GitHub),
   UOC (403) y Ramón Llull (sus grados están en las webs de sus centros).
 
@@ -284,18 +288,18 @@ pedir nada a ninguna fuente, y marca cada ficha como indexable o no, con el moti
 | Con nota de corte | 2.662 |
 | Con precio de primera matrícula (públicas) | 2.113 de 2.239 grados y 304 de 647 dobles de públicas |
 | De ellos, con el precio de la norma de su comunidad (QEDU no lo da) | 314 |
-| Privadas con precio por curso | 256 de 1.410 |
+| Privadas con precio por curso | 253 de 1.410 |
 | Con inserción laboral | 1.703 |
 | Con indicadores de rendimiento del SIIU | 3.125 |
 | Con ficha del RUCT | 3.265 |
 | Grados con plan del BOE | 3.079 de 3.265 |
 | Grados con plan comprobado | 2.233 (1.567 por asignaturas, el resto por materias) |
 | Dobles con los planes de sus dos grados comprobados | 574 |
-| **Indexables** con la propuesta de datos mínimos | **2.051** (1.724 grados y 327 dobles; 1.829 de públicas y 222 de privadas) |
+| **Indexables** con la propuesta de datos mínimos | **2.048** (1.722 grados y 326 dobles; 1.829 de públicas y 219 de privadas) |
 
 El resto va con `noindex` y su motivo: 846 con plan que no
 cuadra, 643 sin plan (o doble sin los dos planes comprobados) y
-1.199 sin nota ni precio (casi todas, privadas que no publican el precio); una
+1.202 sin nota ni precio (casi todas, privadas que no publican el precio); una
 ficha puede tener varios.
 
 Para rehacerlo todo desde `sondas`: bajar las carpetas con `datos/estudios/grados/` y ejecutar en orden

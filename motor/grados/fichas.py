@@ -31,6 +31,7 @@ from motor.grados.asignaturas import comparar
 from motor.grados.catalogo import clave, clave_union, nombre_corto
 from motor.grados.generico import nombre_base
 from motor.grados.precios import de_comunidad, precio_por_rama, precio_unico
+from motor.grados.web_privadas import titulo_contradice
 
 FUENTE_QEDU = "Ministerio de Ciencia, Innovación y Universidades. QEDU"
 URL_QEDU = "https://www.ciencia.gob.es/qedu.html"
@@ -163,7 +164,8 @@ def indexar_web_privadas(carpeta: Path | None) -> dict[str, dict]:
         for cod, fi in (d.get("fichas") or {}).items():
             p = precio_web(fi)
             if p:
-                salida[cod] = {**p, "fuente": FUENTE_WEB, "universidad": d.get("universidad"), "capturado": fecha}
+                salida[cod] = {**p, "fuente": FUENTE_WEB, "universidad": d.get("universidad"), "capturado": fecha,
+                               "_titulo": fi.get("titulo")}
             elif cod in salida and salida[cod]["url"] != fi.get("url"):
                 del salida[cod]  # el rastreo nuevo lleva a otra página sin precio: el viejo ya no vale
     return salida
@@ -185,7 +187,7 @@ def indexar_paginas_privadas(carpeta: Path | None) -> dict[str, dict]:
                 salida[cod] = {"url": fi.get("url"), "formulario_pide_correo": bool(fi.get("formulario_pide_correo")),
                                "formulario_pide_telefono": bool(fi.get("formulario_pide_telefono")),
                                "da_algun_importe": any(i.get("verosimil") for i in fi.get("importes") or []),
-                               "capturado": fecha}
+                               "capturado": fecha, "_titulo": fi.get("titulo")}
     return salida
 
 
@@ -479,6 +481,7 @@ def construir(catalogo: list[dict], genericos: list[dict], tarjetas: dict, detal
         qedu_por_titulo[tit].append(centro_qedu(t, detalles.get((tit, cen))))
     fichas = []
     rama_de = {t["codigo"]: (t.get("rama"), t["nombre"]) for t in catalogo if t.get("clase") == "grado"}
+    descartadas: dict[str, str] = {}
     for t in catalogo:
         if t["situacion"] != "Activo" or t["clase"] not in ("grado", "doble"):
             continue
@@ -511,6 +514,15 @@ def construir(catalogo: list[dict], genericos: list[dict], tarjetas: dict, detal
         if not (plan and plan["comprobado"]):
             motivos.append("sin asignaturas comprobadas" if not plan else "plan sin cuadrar con su tabla de créditos")
         pweb = (web or {}).get(t["codigo"]) if t["universidad_tipo"] == "Privada" else None
+        # la dirección casaba con el grado, pero el título de la página dice que es de otro estudio (un doble, una
+        # FP, otro grado): esa página no vale para este grado
+        pag = (paginas or {}).get(t["codigo"]) if t["universidad_tipo"] == "Privada" else None
+        if pweb and titulo_contradice(t, pweb.get("_titulo")):
+            pweb, descartadas[t["codigo"]] = None, "precio"
+        if pag and titulo_contradice(t, pag.get("_titulo")):
+            pag, descartadas[t["codigo"]] = None, descartadas.get(t["codigo"], "pagina")
+        pweb = {k: v for k, v in pweb.items() if k != "_titulo"} if pweb else None
+        pag = {k: v for k, v in pag.items() if k != "_titulo"} if pag else None
         ptar = (tarifas or {}).get(t["codigo"]) if t["universidad_tipo"] == "Privada" else None
         if ptar and ptar["precio_curso"] and not (pweb and pweb["precio_curso"]):
             pweb = ptar  # la página del grado no da precio y el documento de precios de la universidad sí
@@ -565,7 +577,9 @@ def construir(catalogo: list[dict], genericos: list[dict], tarjetas: dict, detal
             "precio_credito_norma": precio_norma,
             "precio_web": pweb,
             # privada sin precio: su página del grado y lo que pide su formulario (hecho medido, sin juicio)
-            "pagina_privada_sin_precio": (paginas or {}).get(t["codigo"])
+            # la página que casaba por la dirección y su título dice que es de otro estudio (no se usa)
+            "pagina_web_descartada_por_titulo": descartadas.get(t["codigo"]),
+            "pagina_privada_sin_precio": pag
             if t["universidad_tipo"] == "Privada" and not (pweb and pweb.get("precio_curso")) else None,
             "bonificacion": de_comunidad(t["universidades"][0].get("comunidad")) if t["universidad_tipo"] == "Pública" else None,
             "plan": plan,
@@ -644,6 +658,7 @@ def resumen(fichas: list[dict], comparativa: list[dict]) -> dict:
         "privadas_con_precio_total_estimado": sum(1 for f in fichas
                                                   if (f.get("precio_web") or {}).get("precio_total_estimado")),
         "privadas_sin_precio_con_pagina_leida": sum(1 for f in fichas if f.get("pagina_privada_sin_precio")),
+        "privadas_paginas_descartadas_por_titulo": sum(1 for f in fichas if f.get("pagina_web_descartada_por_titulo")),
         "privadas_sin_precio_que_piden_correo": sum(1 for f in fichas if (f.get("pagina_privada_sin_precio") or {})
                                                     .get("formulario_pide_correo")),
         "privadas_precio_por_fuente": dict(Counter((f.get("precio_web") or {}).get("fuente") for f in fichas

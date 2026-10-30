@@ -72,3 +72,19 @@ def test_importes_no_toma_sueldos_por_precios():
 def test_importes_en_formato_ingles():
     imp = wp.importes("<p>Tuition fee: €24,900 per year. Reservation: €1,500.</p>")
     assert [i["valor"] for i in imp] == [24900, 1500]
+
+
+def test_titulo_que_contradice_la_union_por_direccion():
+    from motor.grados.web_privadas import titulo_contradice
+    g = {"clase": "grado", "nombre": "Fisioterapia"}
+    assert titulo_contradice(g, "Proceso de Admisión Grado en Enfermería | UPSA")
+    assert titulo_contradice(g, "Doble grado en Podología + Fisioterapia")
+    assert not titulo_contradice(g, "Grado en Fisioterapia | UPSA")
+    assert not titulo_contradice(g, "Admisión")  # genérico: vale la dirección
+    assert titulo_contradice({"clase": "grado", "nombre": "Animación"}, "FP en Videojuegos | Universidad Europea")
+    doble = {"clase": "doble", "nombre": "X", "componentes": [{"nombre": "Economía"},
+                                                            {"nombre": "Administración y Dirección de Empresas"}]}
+    assert titulo_contradice(doble, "Doble Grado en Economía + Finanzas y Contabilidad")
+    assert not titulo_contradice(doble, "Doble Grado en ADE y Economía | X")
+    assert not titulo_contradice({"clase": "grado", "nombre": "Ingeniería Informática"},
+                                 "Grado en Ingenier&iacute;a Inform&aacute;tica - Universidad Europea")
