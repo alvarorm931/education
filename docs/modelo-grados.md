@@ -1,6 +1,6 @@
 # Módulo de grados (carreras): universo, fuentes medidas y ficha
 
-Versión 30/10/2026 (tarde). Lo mantiene la conversación de grados. Todas las cifras salen de datos reales capturados el
+Versión 30/10/2026 (noche). Lo mantiene la conversación de grados. Todas las cifras salen de datos reales capturados el
 29 y el 30/10/2026 (originales en la rama `sondas`, carpeta indicada en cada caso); lo que no está medido se dice.
 Código en `motor/grados/`, pruebas en `tests/test_*grados*.py`, `tests/test_qedu.py`, flujo `grados.yml`.
 Desde el 30/10/2026 (02:47) `grados.yml` guarda los originales enteros en el almacén privado S3
@@ -213,16 +213,16 @@ interna («doble-estudio-inglese-…»); la dirección pública es la de `identi
 grado, no el de un curso. El precio de la UPSA sale de su lista de Salamanca y Nutrición tiene también un centro
 en Madrid (Salus Infirmorum) que esa lista no nombra: sin comprobar para Madrid.
 
-Resultado con todo lo leído (30/10/2026, 08:00, hora de España):
+Resultado con todo lo leído (30/10/2026, 23:30, hora de España, tras la tercera revisión):
 
 | | Leídos | Con asignaturas | Con curso | Comprobados | Y además tipo a tipo |
 |---|---|---|---|---|---|
-| Planes nuevos | 3.532 | 2.591 | 2.302 | 2.132 (60 %) | 1.830 |
-| Modificaciones | 2.226 | 1.596 | 1.058 | 1.315 (59 %) | 1.165 |
+| Planes nuevos | 3.532 | 2.591 | 2.331 | 2.145 (61 %) | 1.841 |
+| Modificaciones | 2.226 | 1.596 | 1.104 | 1.318 (59 %) | 1.165 |
 | Cambios de denominación | 20 | 16 | 15 | 12 | 11 |
 | Correcciones de errores | 402 | 144 | 106 | 55 | 40 |
 
-De los 1.400 planes nuevos que no cuadran: publicados solo por materias, sin asignaturas (418); tablas sin carácter
+De los 1.400 planes nuevos que no cuadraban a las 08:00 (hoy son 1.387): publicados solo por materias, sin asignaturas (418); tablas sin carácter
 que no se puede asignar de forma comprobable (329); diferencias de una o dos asignaturas, 12 créditos o menos
 (186); otras diferencias (298); sin tabla de créditos por tipo (92) y sin tabla de plan legible (77). Esos planes
 se guardan igual (la ficha los enseña, marcados como no comprobados) pero no cuentan como asignaturas comprobadas.
@@ -594,8 +594,10 @@ comprobados por asignaturas:
    las 11:30 del 30/10 el RUCT no responde a GitHub (tiempo agotado en cada petición; 5 de 6 memorias del primer
    tramo vacías), así que se canceló la tanda de 170 tramos. **Desde el servidor de España sí responde** (prueba de
    las 13:30: la memoria de Ingeniería en Sistemas de Información, 63 páginas en unos siete minutos, 37 asignaturas,
-   plan comprobado con los créditos del RUCT, 186 = 186). Ese servidor lo comparten todas las conversaciones: los
-   165 grados sin ningún plan serían unas 19 horas y los 1.020, unas 120; lo decide Álvaro. El lector ya está en las fichas
+   plan comprobado con los créditos del RUCT, 186 = 186). Ese servidor lo comparten todas las conversaciones y el
+   buzón de incidencias pide una sola lectura del RUCT a la vez en todo el proyecto: la noche del 30/10 lee másters;
+   las de grados (los 165 grados sin ningún plan, 28 tandas de 6 de una en una, unas 19 horas; los 1.020 serían
+   unas 120) se lanzan en cuanto termine (Álvaro: «sigue a saco»). El lector ya está en las fichas
    (`fichas.plan_de_memoria`: el plan de la memoria entra si el del BOE no cuadra y él sí cuadra con los créditos
    por tipo del RUCT; con una página sin leer no cuenta como comprobado).
 3. Privadas sin precio (1.056): la Europea retiró sus PDF de 2025-2026 (404 también desde el
@@ -616,7 +618,8 @@ comprobados por asignaturas:
 7. Generador de páginas de grado con el diseño «Noche en blanco» y el control de la ley SEO.
 
 Límite conocido: 8 parejas de grados activos con el mismo nombre en la misma universidad (un título del RD
-1393/2007 que se extingue y su sucesor del RD 822/2021) pueden compartir el plan más reciente.
+1393/2007 que se extingue y su sucesor del RD 822/2021) pueden compartir el plan más reciente, salvo que el texto
+del BOE declare el código del título («Código Titulación: …»), que desde el 30/10 se respeta.
 
 ## 6. Avisos para las otras conversaciones
 
@@ -636,3 +639,9 @@ Límite conocido: 8 parejas de grados activos con el mismo nombre en la misma un
   usa «tipo-sin-declarar».
 - **Todas las que lean listas oficiales:** `motor/grados/notas_fuentes.PERSONAS` y `DNI` filtran las listas de
   personas antes de pedirlas o guardarlas; sirven para cualquier rastreo que siga enlaces de una sede.
+- **Másters (precios de privadas):** cuatro reglas de la tercera revisión de grados que valen igual para másters:
+  los datos estructurados de una página solo valen si su texto muestra el mismo importe; un importe «desde» no es
+  el precio; una página o lista cuya dirección nombra otra sede (`web_privadas.sede_ajena`) no vale para el
+  centro; y `tarifas_grado.pedir_con_motivo` dice por qué no respondió cada dirección (robots.txt, límite, error).
+- **Másters (planes del BOE):** `boe_grados.codigos_en_texto` lee el «Código Titulación» que declara el texto: un
+  plan con el código de otro título no es de este.
