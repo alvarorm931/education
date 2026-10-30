@@ -378,13 +378,18 @@ def extraer(paginas: list[str], grados: list[dict], de_la_pagina: str | None = N
                     tipo = tipo_rotulo(cabecera[j]) if j < len(cabecera) else None
                 tipo = tipo or tipo_cercano(antes[-60:], despues[:40]) or (rotulo if len(hallados) == 1 else None)
                 bajo, alto = RANGO.get(tipo, (1, 0)) if tipo else (1, 0)
-                # «1 100 €»: el espacio normal no separa miles (también «10 983 €», diez cuotas de 983 €); se guarda la
-                # otra lectura y solo vale si con ella cuadran las cifras del bloque (fichas.precio_por_cuentas)
-                miles = (re.search(r"(?<![\d.,])(\d{1,2})\s{1,3}$", antes)
+                # «1 100 €» o «1. 100 €» (el texto del PDF parte la cifra): el espacio normal no separa miles (también
+                # «10 983 €», diez cuotas de 983 €); se guarda la otra lectura y solo vale si con ella cuadran las cifras
+                # del bloque (fichas.precio_por_cuentas_con_miles)
+                miles = (re.search(r"(?<![\d.,])(\d{1,2})(?:\s{0,2}\.\s{0,2}|\s{1,3})$", antes)
                          if re.fullmatch(r"\d{3}", m.group("e") or "") and not m.group("d") else None)
                 precios[codigo].append({"valor": valor, "tipo": tipo, "verosimil": bool(tipo) and bajo <= valor <= alto,
                                         "pagina": n, "bloque": bloque,
                                         **({"miles_con_espacio": int(miles.group(1)) * 1000 + valor} if miles else {}),
+                                        # forma de lo que precede a una cifra de tres dígitos (9 = dígito, _ = espacio, a = letra),
+                                        # sin texto: para ver cómo parte el PDF las cifras
+                                        **({"antes_forma": re.sub(r"[^\W\d_]", "a", re.sub(r"\s", "_", re.sub(r"\d", "9", antes[-5:])))}
+                                           if re.fullmatch(r"\d{3}", m.group("e") or "") else {}),
                                         "linea_sha256": hashlib.sha256(linea.encode()).hexdigest()[:16]})
                 if curso_linea:
                     cursos_de_importes[curso_linea] += 1
