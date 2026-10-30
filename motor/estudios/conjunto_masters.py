@@ -863,8 +863,8 @@ RE_HABILITANTE = re.compile(
 
 # Títulos que habilitan para una profesión regulada, con la norma que fija sus requisitos (enlace comprobado el
 # 30/10/2026). El nombre tiene que ser el de la profesión, no uno que la contenga («Ingeniería Industrial y
-# Automática» no es el máster habilitante). Las demás ingenierías habilitantes (Caminos, Aeronáutica, Agronómica,
-# Montes, Minas, Naval) quedan sin marcar hasta comprobar el enlace de su orden.
+# Automática» no es el máster habilitante). Agronómica y Montes quedan sin marcar hasta comprobar el enlace de su
+# orden.
 HABILITACIONES = [
     (r"(el |la )?((acceso|pr[aá]ctica|ejercicio)( a| al| de)?( el| la| las)? (ejercicio de (la )?|profesiones de |profesi[oó]n de (la )?)?)?"
      r"(la )?(abogac[ií]a|advocacia)( i| y)?( de| a)?( la)?( procura)?",
@@ -882,6 +882,15 @@ HABILITACIONES = [
      "Orden CIN/355/2009, de 9 de febrero",
      "https://www.upc.edu/sga/es/shared/fitxers-normatives/LegislacioEstatal/habilitacions-professionals/ordre-cin-355-2009_enginyer-de-telecomunicacio"),
     (r"arquitectura", "Arquitecto", "Orden EDU/2075/2010, de 29 de julio", "https://www.uma.es/media/files/Orden_EDU_2075_2010.pdf"),
+    (r"ingenier[ií]a de caminos,? canales y puertos|enginyeria de camins,? canals i ports", "Ingeniero de Caminos, Canales y Puertos",
+     "Orden CIN/309/2009, de 9 de febrero", "https://boe.es/boe/dias/2009/02/18/pdfs/BOE-A-2009-2738.pdf"),
+    (r"ingenier[ií]a de minas|enginyeria de mines", "Ingeniero de Minas", "Orden CIN/310/2009, de 9 de febrero",
+     "https://boe.es/boe/dias/2009/02/18/pdfs/BOE-A-2009-2739.pdf"),
+    (r"ingenier[ií]a aeron[aá]utica|enginyeria aeron[aà]utica", "Ingeniero Aeronáutico", "Orden CIN/312/2009, de 9 de febrero",
+     "https://boe.es/boe/dias/2009/02/18/pdfs/BOE-A-2009-2741.pdf"),
+    (r"ingenier[ií]a naval( y oce[aá]nica)?|enginyeria naval( i oce[aà]nica)?", "Ingeniero Naval y Oceánico",
+     "Orden CIN/354/2009, de 9 de febrero",
+     "https://www.upc.edu/sga/ca/shared/fitxers-normatives/LegislacioEstatal/habilitacions-professionals/ordre-cin-354-2009_enginyer-naval-i-oceanic/view"),
 ]
 
 
