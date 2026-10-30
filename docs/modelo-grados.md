@@ -194,26 +194,33 @@ dé asignaturas, y cuando se decida.
   `docs/fuentes-precios-grado.md`; las bonificaciones de siete comunidades (Andalucía, Extremadura, Galicia,
   Castilla-La Mancha, La Rioja, Asturias, Baleares) y la ayuda de Castilla y León van en cada ficha de pública
   (`motor/grados/precios.py`): 1.197 fichas.
-- **Privadas:** QEDU no da precio. Dos fuentes propias, siempre con URL y fecha:
-  1. **la página del grado** (`motor/grados/web_privadas.py`, 43 universidades privadas con web en el RUCT): se
-     une cada grado con su página por las palabras del nombre (también el nombre inglés de los bilingües) y se
-     descartan noticias, FP de grado superior, falsos «grado» («integrado») y sedes ajenas. Se leen los importes
-     con su tipo por el contexto cercano; los sueldos («28.000 € al año», «brutos anuales») no cuentan;
-  2. **los PDF y páginas de precios** de la universidad (`motor/grados/tarifas_grado.py`): los que enlazan sus
-     páginas de grado y los del sitemap con «precios», «tasas», «honorarios»… (144 documentos, 132 leídos).
+- **Privadas:** QEDU no da precio. Tres fuentes propias, siempre con URL y fecha:
+  1. **la página del grado** (`motor/grados/web_privadas.py`, las 43 universidades privadas con web en el RUCT):
+     se une cada grado con su página por las palabras del nombre (también el nombre inglés de los bilingües) y se
+     descartan noticias, FP de grado superior, falsos «grado» («integrado») y sedes ajenas. 765 páginas de grado
+     leídas. Se leen los importes con su tipo por el contexto cercano (también en formato inglés, «€24,900»); los
+     sueldos («28.000 € al año», «brutos anuales») no cuentan;
+  2. **las páginas y PDF de precios** de la universidad (`motor/grados/tarifas_grado.py`): los que enlazan sus
+     páginas de grado y los del sitemap con «precios», «tasas», «honorarios»…; una página de precios de un solo
+     grado (por su dirección) atribuye sus cifras a ese grado; fuera páginas de investigación, blogs, másters,
+     FP y de otros países;
+  3. **el índice de Common Crawl** (`motor/grados/cc_precios.py`, solo metadatos de URL, como el censo de
+     másters): URL de precios de los dominios de cada universidad que su web ya no enlaza. 268 halladas; se leen
+     con el paso 2, con robots.txt.
 
   Regla del precio (`fichas.precio_por_cuentas` y `precio_web`), de más a menos comprobado: un importe que es el
   crédito × 60 de otro de la misma página (un curso son 60 créditos, RD 822/2021); crédito × 60 más la matrícula;
   reserva más 8 a 12 cuotas iguales; el precio de los datos estructurados (schema.org) si no contradice al texto;
   un único importe por curso; un único precio del crédito × 60. En las listas de precios solo valen cifras que
   cuadran entre sí dentro del bloque de cada grado. Con datos estructurados y texto en desacuerdo, no se publica
-  precio.
+  precio. Total del grado estimado: precio por curso × créditos / 60, al precio de hoy.
 
-  Hoy: **245 de 1.410 grados y dobles de privadas con precio por curso** (148 de su página y 97 de sus listas de
-  precios); 34 universidades con precio en alguno. Sin precio público: la mayoría pide correo o teléfono (269
-  formularios con correo en el primer tramo). Sin ninguna URL leída: Navarra (sin sitemap; su portada no enlaza
-  los grados), Comillas (responde 421 a GitHub), UOC (403) y Ramón Llull (sus grados están en las webs de sus
-  centros).
+  Resultado: **256 de 1.410 grados y dobles de privadas con precio por curso** (166 de su página y 90 de sus
+  listas de precios), de 20 universidades; 221 con total estimado. De las 620 privadas sin precio cuya página se
+  leyó, 240 tienen un formulario que pide el correo: la ficha lo dice como hecho medido («la universidad no publica
+  el precio en la página del grado; su formulario pide correo»), sin juicio (`pagina_privada_sin_precio`). Sin
+  ninguna página leída: Navarra (sin sitemap; su portada no enlaza los grados), Comillas (responde 421 a GitHub),
+  UOC (403) y Ramón Llull (sus grados están en las webs de sus centros).
 
 ### Lo que falta por medir
 
