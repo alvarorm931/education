@@ -191,6 +191,8 @@ def verificar(respuesta: dict, texto: str) -> list[dict]:
                 dato["valor"] = n
         if ok and campo in NUMERICOS and not numero_en_cita(dato.get("valor"), cita):
             ok, motivo = False, "valor_no_en_cita"  # cita literal, pero el número no sale de ella
+        if ok and campo in PRECIOS and (MONEDA_NO_EURO.search(cita) or dato.get("valor", 0) > PRECIO_MAXIMO):
+            ok, motivo = False, "moneda_no_euro_o_fuera_de_rango"
         hechos.append({"campo": campo, "valor": dato.get("valor") if ok else None,
                        "valor_propuesto": None if ok else dato.get("valor"),
                        "cita": cita, "cita_verificada": ok, "estado": "aceptado" if ok else "revision", "motivo": motivo})
@@ -649,6 +651,13 @@ def lista_oficiales(paginas_oficiales: Path, salida: Path, estados: tuple[str, .
 
 
 RE_MASTER = re.compile(r"(?i)(m[aá]ster|masters?|mba|postgrado|posgrado)")
+# Versiones de la web para otro país (es-CO, es-MX, en-US…): precios en otra moneda y oferta que no es de España.
+LOCALE_OTRO_PAIS = re.compile(r"(?i)/(es|en|pt|fr)[-_](ar|bo|cl|co|cr|cu|do|ec|gt|hn|mx|ni|pa|pe|pr|py|sv|uy|ve|us|br|"
+                              r"419|latam|la)(/|$)|/(mexico|colombia|peru|chile|argentina|ecuador|latam|latinoamerica)/")
+PRECIOS = {"precio_total", "precio_credito", "reserva_matricula"}
+MONEDA_NO_EURO = re.compile(r"(?i)(\$|US\s?D|\bUSD\b|\bCOP\b|\bMXN\b|\bARS\b|\bCLP\b|\bPEN\b|\bS/\.|"
+                            r"\bpesos?\b|\bsoles\b|\bd[oó]lares?\b|£|\bGBP\b|\bCHF\b)")
+PRECIO_MAXIMO = 100_000  # un máster de más de 100.000 € es casi siempre otra moneda o un error de lectura
 RUTA_NO_FICHA = re.compile(r"(?i)/(blog|noticias?|news|actualidad|eventos?|events?|agenda|landing|prensa|press|"
                            r"tag|etiqueta|categor[ií]a|category|author|autor|wp-content|feed)/")
 
@@ -678,7 +687,8 @@ def _no_es_ficha_por_url(u: str) -> bool:
     from motor.estudios.rastreador import NO_FICHA
 
     ruta = urlparse(u).path
-    return bool(RUTA_NO_FICHA.search(ruta + "/")) or bool(NO_FICHA.search(re.sub(r"[-_/]+", " ", ruta)))
+    return bool(RUTA_NO_FICHA.search(ruta + "/")) or bool(LOCALE_OTRO_PAIS.search(ruta + "/")) \
+        or bool(NO_FICHA.search(re.sub(r"[-_/]+", " ", ruta)))
 
 
 def lista_no_oficiales(clasificacion: Path, rastreos: list[Path], salida: Path, por_proveedor: int = 30,

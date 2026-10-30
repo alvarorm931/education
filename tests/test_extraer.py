@@ -315,3 +315,10 @@ def test_valores_numericos():
     assert h["estado"] == "revision" and h["motivo"] == "valor_no_numerico"
     h = e.verificar({"precio_total": {"v": "9.800 €", "c": "Precio total: 9.800 €"}}, "Precio total: 9.800 €")[0]
     assert h["estado"] == "aceptado" and h["valor"] == 9800
+
+
+def test_precio_en_otra_moneda_o_version_de_otro_pais():
+    h = e.verificar({"precio_total": {"v": 13307700, "c": "Precio: $13.307.700 COP"}}, "Precio: $13.307.700 COP")[0]
+    assert h["estado"] == "revision" and h["motivo"] == "moneda_no_euro_o_fuera_de_rango"
+    assert e._no_es_ficha_por_url("https://www.medicapanamericana.com/es-CO/formacion/master-en-urologia")
+    assert not e._no_es_ficha_por_url("https://www.medicapanamericana.com/es/formacion/master-en-urologia")

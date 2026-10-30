@@ -23,9 +23,10 @@ import json
 import re
 from collections import Counter, defaultdict
 from pathlib import Path
+from urllib.parse import urlparse
 
 from motor.estudios.emparejar import palabras_nombre, palabras_texto
-from motor.estudios.extraer import NUMERICOS, como_numero
+from motor.estudios.extraer import LOCALE_OTRO_PAIS, NUMERICOS, PRECIO_MAXIMO, PRECIOS, como_numero
 
 CONFIRMADO, PROBABLE = 0.8, 0.5
 ORDEN_ESTADO = {"confirmado": 0, "probable_oficial": 1, "probable_sin_confirmar": 2, "distinto": 3, "sin_nombre": 4,
@@ -86,6 +87,8 @@ def componer(paginas_master: list[dict], hechos: dict[str, list[dict]]) -> dict:
             if h["campo"] in NUMERICOS:
                 n = como_numero(h["valor"])
                 if n is None:  # hechos de antes de la comprobación de tipo («no indicado» como precio)
+                    continue
+                if h["campo"] in PRECIOS and n > PRECIO_MAXIMO:  # otra moneda (es-CO…) o mala lectura
                     continue
                 h = {**h, "valor": n}
             v = {"valor": h["valor"], "url": h["url"], "captura_sha256": h["captura_sha256"],
@@ -232,6 +235,9 @@ def ejecutar(extracciones: list[Path], salida: Path, catalogo: Path | None = Non
             continue
         if p.get("no_es_programa"):
             res["no_oficial_no_es_ficha"] += 1
+            continue
+        if LOCALE_OTRO_PAIS.search(urlparse(p["url"]).path + "/"):
+            res["no_oficial_version_otro_pais"] += 1  # es-CO, es-MX…: oferta y precios de otro país
             continue
         c = clas.get(p.get("proveedor") or "", {})
         ficha = {"clave": f"url:{p['url']}", "grupo": "no_oficial", "url": p["url"], "proveedor": p.get("proveedor"),
