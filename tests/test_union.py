@@ -100,3 +100,14 @@ def test_huerfano_de_convocatoria_anterior_al_archivo():
               "titulo": "Lista de admitidos de la plaza de Peón", "citas": [{"boletin": "BOE", "fecha": "2015-10-31"}]}]
     _, huerfanos = u.unir([], {}, actos, lambda a: [a["convocante"]])
     assert [h["motivo"] for h in huerfanos] == ["anterior_al_archivo", "sin_candidato"]
+
+
+def test_mas_formas_de_nombrar_el_puesto():
+    assert u.puesto("Nombramiento y toma de posesión como Administrativo del Ayuntamiento de Numancia") == "administrativo"
+    assert u.puesto("LISTADO DEFINITIVO ADMITIDOS Y EXCLUIDOS TRABAJADOR/A SOCIAL CTA") == "trabajador-social"
+    assert u.puesto("Nomenament d'administratives. Decret d'Alcaldia núm. 2026-1134.") == "administrativo"
+    assert u.puesto("Nombramiento de funcionario de carrera, Técnico Medio Ambiente, A2 (Estabilización).") == \
+        "tecnico-medio-ambiente"
+    assert u.puesto("relació de persones admeses i excloses per a la convocatòria d'una plaça de peó/na") == "peon"
+    assert u.puesto("LISTADO DEFINITIVO DE ADMITIDOS/AS Y EXCLUIDOS/AS") is None
+    assert u.puesto("Nombramiento de funcionarios de carrera.") is None

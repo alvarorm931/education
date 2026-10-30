@@ -74,7 +74,8 @@ TRADUCCION = {
     "informatic": "informatico", "delineant": "delineante", "cuiner": "cocinero",
     "cuinera": "cocinero", "ajudant": "ayudante", "vigilant": "vigilante", "mitja": "medio", "mitjana": "medio",
     "persoal": "personal", "condutor": "conductor", "condutora": "conductor", "educadora": "educador",
-    "auxiliars": "auxiliar", "oficials": "oficial", "brigada": "brigada", "socials": "social", "general": "general",
+    "auxiliars": "auxiliar", "oficials": "oficial", "administratives": "administrativo", "administratius": "administrativo",
+    "tecniques": "tecnico", "tecnica": "tecnico", "conserges": "conserje", "netejadores": "limpiador", "brigada": "brigada", "socials": "social", "general": "general",
     "policies": "policia", "policia": "policia", "local": "local", "locals": "local", "superiors": "superior",
     "biblioteca": "biblioteca", "escoleta": "escuela infantil", "llar": "escuela", "infants": "infantil",
 }
@@ -82,7 +83,7 @@ TRADUCCION = {
 GRUPO_POR_SUBESCALA_AG = {"tecnica": "A1", "gestion": "A2", "administrativa": "C1", "auxiliar": "C2",
                           "subalterna": "AP"}
 
-RE_GENERO = re.compile(r"(?<=\w)/(?:a|as|o|os|la|las|va|ra|ora|era|ana|ària|aria|essa|ina|iva|ica|ua|ra)\b|"
+RE_GENERO = re.compile(r"(?<=\w)/(?:a|as|o|os|la|las|va|ra|ora|era|ana|ària|aria|essa|ina|iva|ica|ua|ra|na)\b|"
                        r"\((?:a|as|o|os)\)|(?<=\w)\(a\)")
 RE_ESPECIALIDAD = re.compile(r"\(([^)]*especialidad[^)]*)\)", re.IGNORECASE)
 RE_GRUPO = re.compile(r"\b(?:sub)?grupo\s+(A1|A2|B|C1|C2|AP|E)\b", re.IGNORECASE)

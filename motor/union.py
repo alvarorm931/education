@@ -44,7 +44,7 @@ RE_ORGANO = re.compile(rf"^\s*{_TIPO}\s*(?:{_COD})?,?\s+de\s+\d{{1,2}}\s+de\s+\w
 RE_EXPEDIENTE = re.compile(r"\b(?:expediente|expedient|exp\.|proceso selectivo|procés selectiu|proceso)\s*"
                            r"(?:n[º°o.]*\s*|n[úu]m(?:ero)?\.?\s*)?(?P<e>\d{1,4}[A-Z]{1,6}/\d{2,4}|\d{4}/[A-Z0-9_]+/\d{3,8}|"
                            r"[A-Z]{1,6}[-/]\d{1,5}[-/]\d{2,4})\b", re.IGNORECASE)
-RE_PUESTO = re.compile(r"\b(?P<k>plazas?|puestos?|categor[ií]as?|cuerpos?|escalas?|places?|prazas?|llocs?|bolsas? de trabajo|"
+RE_PUESTO = re.compile(r"\b(?P<k>plazas?|puestos?|categor[ií]as?|cuerpos?|escalas?|places?|pla[çc]a|prazas?|llocs?|bolsas? de trabajo|"
                        r"bolsas? de empleo|borsas? de treball|listas? de reserva|bolsas?)\s+(?:de\s+|d'\s*|del\s+|da\s+|do\s+)?"
                        r"(?:(?:una|un|dos|tres|\d+)\s+(?:plazas?\s+de\s+)?)?(?P<p>[^,.;:()]{3,90})", re.IGNORECASE)
 # Otras formas de nombrar el puesto en un título: entre paréntesis tras el acto, tras «funcionario de carrera»,
@@ -55,6 +55,16 @@ RE_PUESTO_2 = re.compile(r"(?:funcionari[oa]s?|personal funcionario|personal lab
                          r"|(?:selecci[oó]n|cobertura|provisi[oó]n|contrataci[oó]n)\s+(?:de|d')\s+(?:un|una|dos|tres|\d+)\s+"
                          r"(?:plazas?\s+de\s+)?(?P<q>[^,.;:()]{3,80})"
                          r"|\((?P<r>[A-ZÁÉÍÓÚÑa-záéíóúñ][^()]{3,80})\)", re.IGNORECASE)
+# Y aún otras: «toma de posesión como Administrativo», «Nomenament d'administratives», «funcionario de carrera,
+# Técnico Medio Ambiente, A2», «LISTADO DEFINITIVO ADMITIDOS Y EXCLUIDOS TRABAJADOR/A SOCIAL»
+RE_PUESTO_3 = re.compile(
+    r"(?i:(?:nombramiento|nombrad[oa]s?|toma de posesi[oó]n|contratad[oa]s?|nomenament|nomeamento)\b[^,.;:]{0,60}?\s"
+    r"(?:como|com a|com|coma)\s+)(?P<p>[A-ZÁÉÍÓÚÑa-záéíóúñ][^,.;:()]{3,80})"
+    r"|(?i:\b(?:nomenament|nomeamento|nombramiento)\s+(?:d'|de\s+)(?!(?:un|una|el|la|los|las|personal|funcionari\w*|"
+    r"laboral|interin\w*|carrera)\b))(?P<q>[a-záéíóúàèòçñA-ZÁÉÍÓÚÀÈÒÇÑ][^,.;:()]{3,60})"
+    r"|(?i:funcionari[oa]s?\s+de\s+carrera\s*,\s*)(?P<r>[A-ZÁÉÍÓÚÑ][^,.;:()]{3,80})"
+    r"|\b(?:EXCLUIDOS|EXCLUIDAS|EXCLOSOS|EXCLOSES)(?:/AS|/ES)?\s+(?:PARA\s+|DE\s+)?(?:LA\s+)?(?:PLAZA\s+DE\s+)?"
+    r"(?P<s>[A-ZÁÉÍÓÚÑ][A-ZÁÉÍÓÚÑ/ ]{3,60}?)\s*(?:\b[A-Z]{2,4})?$")
 RE_NO_PUESTO = re.compile(r"^(?:\d|expte|exp\b|bop|boe|cr\.|oep|turno|libre|promoci|estabiliz|discapacidad|reserva|"
                           r"provisional|definitiv|a1|a2|c1|c2|subgrupo|grupo|jaen|jaén|ja[eé]n|[a-z]{1,3}$)", re.IGNORECASE)
 RE_CORTE_PUESTO = re.compile(r"\s+(?:por|mediante|en|para|del|de la|de las|de los|con|vacantes?|incluid[ao]s?|"
@@ -132,7 +142,7 @@ RE_ANTES_PUESTO = re.compile(r"^(?:(?:interin[oa]s?|interines|temporal(?:es)?|ev
 RE_NO_ES_PUESTO = re.compile(r"^(?:que-se-relacionan|que-se-indican|que-se-citan|dentro|por|carreira|carrera|num-\d+|"
                              r"numero-\d+|n-\d+|efectos?-.*|aspirantes?(?:-.*)?|persona.*|resolucion-.*|decreto-.*|"
                              r"orden-.*|area-\d+|op\d+.*|correccion-errores|interin.*|temporal|temporal-.*|"
-                             r"extraordinaria|basicas|empresa-publica|varias-categorias|categorias|diversas|varias)$")
+                             r"extraordinaria|basicas|empresa-publica|varias-categorias|categorias|diversas|varias|excluido.*|admitido.*)$")
 
 
 def _clave_puesto(p: str, cuerpo: bool = False) -> str | None:
@@ -156,6 +166,9 @@ def puesto(titulo: str | None) -> str | None:
             return c
     for m in RE_PUESTO_2.finditer(titulo or ""):
         if (c := _clave_puesto(m.group("p") or m.group("q") or m.group("r"))):
+            return c
+    for m in RE_PUESTO_3.finditer(titulo or ""):
+        if (c := _clave_puesto(m.group("p") or m.group("q") or m.group("r") or m.group("s"))):
             return c
     return None
 
