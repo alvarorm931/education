@@ -252,7 +252,19 @@ def cancelar_programaciones_tardias(repo: str, t0: datetime, actuar: bool) -> li
             prevista = max(candidatas)
             if creada - prevista < RETRASO_DUPLICADO:
                 continue
-            lanzada = [o for o in recientes if o["id"] != r["id"] and o.get("event") == "workflow_dispatch"
+            rango = (f"{(prevista - timedelta(minutes=10)).strftime('%Y-%m-%dT%H:%M:%SZ')}.."
+                     f"{creada.strftime('%Y-%m-%dT%H:%M:%SZ')}")
+            entre = []
+            try:
+                for pagina in (1, 2, 3):   # las conversaciones lanzan muchas tandas a mano: hasta 300 en el rango
+                    lote = api(f"/repos/{repo}/actions/workflows/{f.name}/runs?event=workflow_dispatch&per_page=100"
+                               f"&page={pagina}&created={rango}").get("workflow_runs", [])
+                    entre += lote
+                    if len(lote) < 100:
+                        break
+            except urllib.error.HTTPError:
+                continue
+            lanzada = [o for o in entre if o["id"] != r["id"] and o.get("event") == "workflow_dispatch"
                        and (o.get("triggering_actor") or {}).get("login") == "github-actions[bot]"
                        and prevista - timedelta(minutes=10) <= fecha(o["created_at"]) <= creada
                        and o.get("conclusion") not in ("failure", "cancelled", "timed_out", "startup_failure")]
