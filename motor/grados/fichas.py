@@ -33,6 +33,7 @@ from motor.grados.generico import nombre_base
 from motor.grados.precios import de_comunidad
 
 FUENTE_QEDU = "Ministerio de Ciencia, Innovación y Universidades. QEDU"
+URL_QEDU = "https://www.ciencia.gob.es/qedu.html"
 FUENTE_SIIU = "Ministerio de Ciencia, Innovación y Universidades. SIIU"
 FUENTE_BOE = "Agencia Estatal Boletín Oficial del Estado"
 
@@ -230,7 +231,8 @@ def centro_qedu(t: dict, d: dict | None) -> dict:
         "creditos": det.get("creditos"),
         "modalidad": det.get("modalidad"),
         "insercion": {k: v for k, v in ins.items() if v is not None} or None,
-        "fuente": {"cita": FUENTE_QEDU, "capturado": ((d or {}).get("fuente") or t.get("fuente") or {}).get("capturado")},
+        "fuente": {"cita": FUENTE_QEDU, "url": URL_QEDU,
+                   "capturado": ((d or {}).get("fuente") or t.get("fuente") or {}).get("capturado")},
     }
 
 
@@ -274,8 +276,10 @@ def indexar_indicadores(carpeta: Path | None) -> dict[tuple[str, str], dict]:
                 ambito = x.get("Ámbito de estudio")
                 actual = salida[(cu, ambito)].get(k)
                 if actual is None or (x["Periodo"], x["Indicador"]) > (actual["curso"], actual["indicador"]):
+                    fu = x.get("fuente") or {}
                     salida[(cu, ambito)][k] = {"valor": round(x["valor"], 2), "curso": x["Periodo"],
-                                               "indicador": x["Indicador"]}
+                                               "indicador": x["Indicador"], "url": fu.get("url"),
+                                               "capturado": fu.get("capturado")}
     return salida
 
 
@@ -358,7 +362,7 @@ def resumen_ruct(d: dict | None) -> dict | None:
     basica = round(cr["total"] - sum(x or 0 for x in otros), 1) if cr.get("total") and any(otros) else None
     acred = sorted(d.get("acreditaciones") or [], key=lambda a: a.get("fecha") or "")
     return {
-        "creditos": {**{k: v for k, v in cr.items() if v is not None},
+        "creditos": {**{{"tfm": "tfg"}.get(k, k): v for k, v in cr.items() if v is not None},  # en grado es el TFG
                      **({"formacion_basica_calculada": basica} if basica and basica > 0 else {})},
         "fecha_verificacion": d.get("fecha_verificacion"),
         "curso_inicio": d.get("curso_inicio"),
@@ -379,6 +383,14 @@ def plan_comprobado(p: dict) -> bool:
     return bool(esp) and abs((p.get("suma_sin_optativas") or 0) - esp) <= 0.5
 
 
+def nivel_plan(filas: list[dict]) -> str | None:
+    """«asignatura» si el plan del BOE lista asignaturas; «materia» si solo publica materias (o módulos)."""
+    if not filas:
+        return None
+    asig = sum(1 for f in filas if f.get("nivel") == "asignatura")
+    return "asignatura" if asig >= 0.5 * len(filas) else "materia"
+
+
 def resumen_plan(p: dict) -> dict:
     filas = p.get("plan") or []
     return {
@@ -391,7 +403,8 @@ def resumen_plan(p: dict) -> dict:
         "enlazado_por_ruct": bool(p.get("enlazado_por_ruct")),
         "parte": p.get("parte"),
         "distribucion": p.get("distribucion"),
-        "asignaturas": [{k: f.get(k) for k in ("nombre", "modulo", "tipo", "creditos", "curso", "semestre")}
+        "nivel": nivel_plan(filas),
+        "asignaturas": [{k: f.get(k) for k in ("nombre", "modulo", "tipo", "creditos", "curso", "semestre", "nivel")}
                         for f in filas],
         "menciones": p.get("menciones") or [],
         "fuente": {"cita": FUENTE_BOE, "url": f"https://www.boe.es/diario_boe/txt.php?id={p['identificador']}"},
@@ -504,7 +517,8 @@ def construir(catalogo: list[dict], genericos: list[dict], tarjetas: dict, detal
         filas.sort(key=lambda x: (x["nota_corte"] is None, -(x["nota_corte"] or 0)))
         # asignaturas comparadas: solo con planes comprobados (la suma cuadra con su tabla de créditos)
         planes_ok = {f["codigo"]: f["plan"]["asignaturas"] for f in fichas
-                     if f["generico"] and f["generico"]["id"] == gid and f["plan"] and f["plan"]["comprobado"]}
+                     if f["generico"] and f["generico"]["id"] == gid and f["plan"] and f["plan"]["comprobado"]
+                     and f["plan"].get("nivel") == "asignatura"}  # materias y asignaturas no se comparan entre sí
         cuadro = comparar(planes_ok) if len(planes_ok) >= 2 else None
         if cuadro:
             for c, v in cuadro["por_titulo"].items():
@@ -542,6 +556,8 @@ def resumen(fichas: list[dict], comparativa: list[dict]) -> dict:
         "con_creditos_por_tipo_ruct": sum(1 for f in fichas if (f.get("ruct") or {}).get("creditos")),
         "con_plan_boe": sum(1 for f in fichas if f["plan"]),
         "con_plan_comprobado": sum(1 for f in fichas if f["plan"] and f["plan"]["comprobado"]),
+        "con_plan_comprobado_de_asignaturas": sum(1 for f in fichas if f["plan"] and f["plan"]["comprobado"]
+                                                 and f["plan"].get("nivel") == "asignatura"),
         "indexables": sum(1 for f in fichas if f["indexable"]),
         "motivos_noindex": dict(Counter(m for f in fichas for m in f["motivos_noindex"])),
         "comparativas": len(comparativa),
