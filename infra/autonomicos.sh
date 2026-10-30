@@ -166,6 +166,11 @@ for c in $CONECTORES; do
       ejecutar motor.provinciales.bopcordoba --textos --salida "$S" --max-minutos "$M"
       "$G" "BOP Córdoba: textos"
       ;;
+    boppontevedra)
+      # Solo el boletín del día, por la portada: robots.txt prohíbe fichas, descargas y PDF
+      ejecutar motor.provinciales.boppontevedra --salida "$S"
+      "$G" "BOP Pontevedra: boletín del día"
+      ;;
     bopcoruna)
       # Solo títulos: robots.txt prohíbe /bopportal/publicado (texto de cada anuncio)
       ejecutar motor.provinciales.bopcoruna --salida "$S"

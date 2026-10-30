@@ -26,7 +26,7 @@ def _selectores() -> dict:
     sel = {}
     for f in ("boc", "bocyl", "boib", "bome", "bopv", "borm", "docm", "doe", "dog", "dogc", "dogv"):
         sel[f] = ("autonomicos", mod(f"motor.autonomicos.{f}").seleccionar)
-    for f in ("bopalicante", "bopciudadreal", "bopvalencia", "boptenerife", "bopcordoba", "bopcoruna"):
+    for f in ("bopalicante", "bopciudadreal", "bopvalencia", "boptenerife", "bopcordoba", "bopcoruna", "boppontevedra"):
         sel[f] = ("provinciales", mod(f"motor.provinciales.{f}").seleccionar)
     diba, saga = mod("motor.provinciales.diba"), mod("motor.provinciales.saga")
     for f in ("bopb", "bopt"):

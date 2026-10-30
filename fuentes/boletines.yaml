@@ -310,7 +310,9 @@ provinciales:
   - provincia: Pontevedra
     url: https://boppo.depo.gal/es
     acceso_desde_github: "ok"
-    estado: sin_conector
+    datos_estructurados: "Portada /es con el sumario del último boletín (administración, organismo, entidad y título). robots.txt prohíbe fichas, descargas y PDF; sin histórico"
+    estado: conector_en_pruebas
+    conector: motor/provinciales/boppontevedra.py
   - provincia: Salamanca
     url: https://sede.diputaciondesalamanca.gob.es/BOP/
     acceso_desde_github: "sin_respuesta_desde_github (timeout)"
