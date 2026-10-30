@@ -681,3 +681,25 @@ aceptados) y recitado (6.495 recuperados); desde el servidor de España, 48 pág
 - **Webs vetadas**: Sevilla y Córdoba prohíben el rastreo y la UOC da 403; UCLM, UNEX y UNICAN bloquean. Pedir
   permiso (Álvaro).
 
+### Noche del 30/10/2026 (a fondo)
+
+- **Precio por la norma autonómica** (`PRECIO_NORMA`): en las públicas de Cataluña (Decreto 96/2026, 2026-2027:
+  17,69 € habilitante / 19,37 € resto, estudiantes de la UE) y Andalucía (Decreto 98/2023: 12,62 / 13,68, con la
+  bonificación del 99 %), si QEDU no da el precio de la impartición. Solo comunidades con precio único; sin la UOC,
+  Ingeniería Química ni dobles másteres. Habilitante: el dato de la memoria o el nombre del título.
+- **Habilita para una profesión regulada** (`HABILITACIONES`): abogacía y procura (Ley 34/2006, con el examen de
+  acceso), profesorado de secundaria (Orden ECI/3858/2007), psicología general sanitaria (Orden ECD/1070/2013),
+  ingeniería industrial (CIN/311/2009) y de telecomunicación (CIN/355/2009) y arquitectura (EDU/2075/2010), con el
+  enlace a la norma; solo si el nombre del título es el de la profesión. Las demás ingenierías habilitantes
+  quedan sin marcar hasta comprobar el enlace de su orden.
+- **Catálogos de másteres de cada universidad** (`catalogos_uni.py`): QEDU da para muchos títulos la portada de
+  másteres de la universidad, no la ficha. Se leen esas 85 portadas (y hasta 12 listados que cuelgan de cada una;
+  pintadas con el navegador si no traen enlaces) y se toma el enlace cuyo texto es el nombre de un máster sin
+  página. Primera vuelta: 271 páginas (186 fichas de programa, 2.495 datos). Segunda vuelta con nombres «probables»,
+  que la extracción vuelve a comprobar.
+- **No oficiales**: fuera las versiones para otro país o en otra lengua (`/es-lat/`, `/en-intl/`, `/it/`…).
+- **RUCT**: la lectura lenta desde GitHub se paró (686 oficiales con ficha) y queda una sola, en el servidor de
+  España, con los públicos sin asignaturas primero (fichas y memorias ligeras), en cola detrás de los boletines.
+- **Pasada diaria**: baja y mide los planes del BOE que dan las fichas nuevas del RUCT (los que no estén ya en la
+  rama), así que cada ficha nueva trae su plan al día siguiente.
+
