@@ -55,7 +55,7 @@ PRIORIDAD = {
     "idioma": ("ruct", "qedu", "web"),
     "precio_credito": ("qedu", "web", "tarifa"),
     "precio_total": ("web", "tarifa", "calculado"),
-    "asignaturas": ("ruct", "web"),
+    "asignaturas": ("ruct", "boe", "web"),
     "evaluacion": ("ruct", "web"),
     "metodologia": ("ruct", "web"),
     "requisitos_acceso": ("ruct", "web"),
@@ -188,6 +188,35 @@ def cargar_qedu(carpetas: list[Path]) -> dict[str, list[dict]]:
             "con_detalle": bool(det),
         })
     return out
+
+
+def cargar_boe_planes(carpetas: list[Path]) -> dict[str, dict]:
+    """código → plan publicado en el BOE (boe_planes_masters.py), el único del documento o el comprobado."""
+    out: dict[str, dict] = {}
+    for c in carpetas:
+        for f in sorted(c.rglob("boe_planes_masters.jsonl")):
+            for d in _jsonl(f):
+                planes = [p for p in d.get("planes") or [] if p.get("filas_plan")]
+                if len(planes) != 1:  # varios planes en una resolución: sin saber cuál es cuál, ninguno
+                    continue
+                for cod in d.get("codigos_ruct") or []:
+                    out[cod] = {**planes[0], "identificador": d["identificador"], "url": d.get("url"),
+                                "capturado": d.get("capturado"), "fecha_publicacion": d.get("fecha_publicacion")}
+    return out
+
+
+def campos_boe(plan: dict | None) -> dict[str, dict]:
+    if not plan:
+        return {}
+    tipo = {"basica": "Básica", "obligatoria": "Obligatoria", "optativa": "Optativa", "practicas": "Prácticas externas",
+            "tfg": "Trabajo fin de máster"}
+    filas = [{"nombre": f.get("nombre"), "caracter": tipo.get(f.get("tipo")) or f.get("caracter"), "ects": f.get("creditos"),
+              "curso": f.get("curso"), "semestre": f.get("semestre"), "modulo": f.get("modulo")}
+             for f in plan["filas_plan"] if f.get("nombre")]
+    nota = ("plan publicado en el BOE" + (f" el {plan['fecha_publicacion'][:4]}" if plan.get("fecha_publicacion") else "")
+            + ("; la suma de créditos cuadra con su tabla" if plan.get("comprobacion") else "; sin comprobar la suma"))
+    return {"asignaturas": campo(filas, "boe", plan.get("url"), plan.get("capturado"), nota=nota,
+                                 comprobado=plan.get("comprobacion"))} if filas else {}
 
 
 def cargar_web(fichas: Path) -> tuple[dict[str, dict], list[dict]]:
@@ -458,7 +487,8 @@ def datos_minimos(campos: dict) -> list[str]:
 
 
 def oficial(cod: str, cat: dict, ruct: dict | None, imps: list[dict], web: dict | None,
-            fecha_catalogo: str | None = None, universidades: dict[str, str] | None = None) -> dict:
+            fecha_catalogo: str | None = None, universidades: dict[str, str] | None = None,
+            plan_boe: dict | None = None) -> dict:
     url_cat = (cat.get("fuente") or {}).get("url") or URL_SIIU
     fecha_cat = (cat.get("fuente") or {}).get("capturado") or fecha_catalogo
     nombre_uni = (universidades or {}).get(cat.get("universidad_codigo") or "") or \
@@ -471,6 +501,7 @@ def oficial(cod: str, cat: dict, ruct: dict | None, imps: list[dict], web: dict 
         calc = {k: v for k, v in r.items() if v["fuente"] == "calculado"}
     else:
         calc = {}
+    por_fuente.setdefault("boe", {}).update(campos_boe(plan_boe))
     por_fuente["qedu"] = campos_qedu(imps)
     pres = sorted({i.get("presencialidad") for i in cat.get("imparticiones") or [] if i.get("presencialidad")})
     por_fuente["catalogo"] = {
@@ -568,7 +599,8 @@ def _anterior(carpeta: Path | None) -> dict[str, dict]:
 
 
 def ejecutar(catalogo: Path, salida: Path, altas: Path | None = None, ruct: list[Path] = (), qedu: list[Path] = (),
-             fichas: Path | None = None, anterior: Path | None = None, fecha_catalogo: str | None = None) -> dict:
+             fichas: Path | None = None, anterior: Path | None = None, fecha_catalogo: str | None = None,
+             boe: list[Path] = ()) -> dict:
     texto = catalogo.read_text(encoding="utf-8").strip()
     filas = json.loads(texto) if texto.startswith("[") else [json.loads(l) for l in texto.split("\n") if l.strip()]
     fecha_catalogo = fecha_catalogo or datetime.fromtimestamp(catalogo.stat().st_mtime, timezone.utc).date().isoformat()
@@ -576,6 +608,7 @@ def ejecutar(catalogo: Path, salida: Path, altas: Path | None = None, ruct: list
     todos = {t["codigo_ruct"] for t in filas}
     r_ruct = cargar_ruct(list(ruct))
     r_qedu = cargar_qedu(list(qedu))
+    r_boe = cargar_boe_planes(list(boe))
     # nombre completo de cada universidad (el catálogo da «Sevilla»; QEDU, «Universidad de Sevilla»)
     universidades = {}
     for c, imps in r_qedu.items():
@@ -600,8 +633,8 @@ def ejecutar(catalogo: Path, salida: Path, altas: Path | None = None, ruct: list
                     "fuente": {"url": f"https://www.boe.es/buscar/doc.php?id={a.get('boe')}", "capturado": a.get("fecha")}})
     web_of, web_no = cargar_web(fichas) if fichas else ({}, [])
     hoy = _hoy()
-    oficiales = [oficial(c, cat[c], r_ruct.get(c), r_qedu.get(c, []), web_of.get(c), fecha_catalogo, universidades)
-                 for c in sorted(cat)]
+    oficiales = [oficial(c, cat[c], r_ruct.get(c), r_qedu.get(c, []), web_of.get(c), fecha_catalogo, universidades,
+                         r_boe.get(c)) for c in sorted(cat)]
     por_programa: dict[str, list[dict]] = defaultdict(list)
     for f in web_no:
         por_programa[f.get("programa") or f.get("clave")].append(f)
@@ -627,6 +660,7 @@ def ejecutar(catalogo: Path, salida: Path, altas: Path | None = None, ruct: list
         "oficiales_con_ruct_memoria": sum(1 for c in cat if isinstance((r_ruct.get(c) or {}).get("memoria"), dict)
                                           and not r_ruct[c]["memoria"].get("error")),
         "oficiales_en_qedu": sum(1 for c in cat if r_qedu.get(c)),
+        "oficiales_con_plan_boe": sum(1 for c in cat if c in r_boe),
         "oficiales_con_web": sum(1 for c in cat if c in web_of),
         "oficiales_indexables": sum(1 for r in oficiales if r["indexable"]),
         "oficiales_faltan": dict(Counter(x for r in oficiales for x in r["datos_minimos_faltan"])),
@@ -655,13 +689,14 @@ def main() -> None:
     p.add_argument("--ruct", action="append", default=[])
     p.add_argument("--qedu", action="append", default=[])
     p.add_argument("--fichas")
+    p.add_argument("--boe", action="append", default=[], help="carpetas con boe_planes_masters.jsonl")
     p.add_argument("--anterior")
     p.add_argument("--fecha-catalogo", help="fecha de descarga del catálogo SIIU (por defecto, la del fichero)")
     p.add_argument("--salida", required=True)
     a = p.parse_args()
     res = ejecutar(Path(a.catalogo), Path(a.salida), Path(a.altas) if a.altas else None, [Path(x) for x in a.ruct],
                    [Path(x) for x in a.qedu], Path(a.fichas) if a.fichas else None, Path(a.anterior) if a.anterior else None,
-                   a.fecha_catalogo)
+                   a.fecha_catalogo, [Path(x) for x in a.boe])
     print(json.dumps({k: v for k, v in res.items() if not k.startswith("cobertura")}, ensure_ascii=False, indent=1))
 
 

@@ -51,6 +51,7 @@ jobs:
           rutas += [f"{x}/datos/estudios/extraccion" for x in m.get("extracciones", [])]
           rutas += [f"{x}/datos/estudios/masters/{c}" for x in m.get("ruct", []) for c in ("ruct", "ruct_memoria")]
           rutas += [f"{x}/datos/estudios/masters/qedu" for x in m.get("qedu", [])]
+          rutas += [f"{x}/datos/estudios/masters/boe_planes_masters.jsonl" for x in m.get("boe", [])]
           print("\n".join(dict.fromkeys(rutas)))
           EOF
           while read -r r; do git archive FETCH_HEAD "$r" 2>/dev/null | tar -x -C entrada 2>/dev/null || true; done < rutas.txt

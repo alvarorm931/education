@@ -127,3 +127,22 @@ def test_textos_del_ruct_sin_datos_de_personas():
          "Solicitudes a admisiones@escuela.es\nSe valora el inglés.")
     assert cm.seguro(t) == ("Requisitos: grado en Economía.\nDudas: [correo]\nSolicitudes a admisiones@escuela.es\n"
                             "Se valora el inglés.")
+
+
+def test_asignaturas_del_boe_si_no_hay_memoria(tmp_path):
+    t = _escribir(tmp_path)
+    f = t / "ruct" / "datos" / "estudios" / "masters" / "ruct" / "4310193.json"
+    d = json.loads(f.read_text())
+    d.pop("memoria")
+    f.write_text(json.dumps(d))
+    b = t / "boe"
+    b.mkdir()
+    (b / "boe_planes_masters.jsonl").write_text(json.dumps({
+        "identificador": "BOE-A-2011-1220", "codigos_ruct": ["4310193"], "url": "https://www.boe.es/x",
+        "fecha_publicacion": "20110122", "capturado": "2026-10-30T13:00:00+00:00",
+        "planes": [{"comprobacion": "completo", "filas_plan": [{"nombre": "Finanzas", "tipo": "obligatoria", "creditos": 6}]}]}) + "\n")
+    cm.ejecutar(t / "cat.json", t / "out", ruct=[t / "ruct"], qedu=[t / "qedu"], fichas=t / "fichas.jsonl",
+                fecha_catalogo="2026-10-29", boe=[b])
+    c = _leer(t / "out" / "masters_oficiales.jsonl.gz")[0]["campos"]
+    assert c["asignaturas"]["fuente"] == "boe" and c["asignaturas"]["valor"][0]["caracter"] == "Obligatoria"
+    assert c["asignaturas"]["comprobado"] == "completo" and "2011" in c["asignaturas"]["nota"]

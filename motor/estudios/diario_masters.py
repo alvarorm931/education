@@ -129,7 +129,7 @@ def ejecutar(raiz: Path, salida: Path, dia: int, sello: str, max_minutos: float 
     qedu_dirs = _rutas(raiz, m.get("qedu", [])) + ([nuevo] if (nuevo / "datos" / "estudios" / "masters" / "qedu").exists() else [])
     res["conjunto"] = {k: v for k, v in conjunto_masters.ejecutar(
         raiz / m["catalogo"], salida / ESTADO / "conjunto", opcional("altas"), ruct_dirs, qedu_dirs, fichas,
-        opcional("conjunto")).items() if not k.startswith("cobertura")}
+        opcional("conjunto"), boe=_rutas(raiz, m.get("boe", []))).items() if not k.startswith("cobertura")}
 
     # 5. manifiesto nuevo: lo de hoy se añade a sus listas
     m2 = dict(m)
