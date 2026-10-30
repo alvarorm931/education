@@ -24,7 +24,10 @@ def test_firmas_y_tribunales_son_personas():
               "el Dr. Juan García López, catedrático", "1 PÉREZ GARCÍA, ANA", "CALDERÓN MARTÍN, MARÍA DEL CARMEN jueves",
               "Pamplona, 24 de julio de 2026.–Martín Larraza Quintana, vicerrector de Investigación.",
               "Ana Herrera Alcaldessa", "Suplente: Eva Real Barrero.", "PATRICIA ESTÉVEZ MOSTEIRO.- Non abona a taxa",
-              "El Alcalde, Fdo.: Álvaro Regidor Reyes.", "Titular: Dª. Virginia Bejarano Martínez"):
+              "El Alcalde, Fdo.: Álvaro Regidor Reyes.", "Titular: Dª. Virginia Bejarano Martínez",
+              "Vocal 3:Asuncion Edith Navarro Anton, profesora", "Josep Prat Pla Alcalde",
+              "Presidente titular Arroyo Aparicio, Alicia Catedratica de Universidad UNED",
+              "Vocal número 3: Miren Meoki Plaza, representante de las trabajadoras"):
         assert tiene_nombre_de_persona(t), t
 
 

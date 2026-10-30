@@ -169,7 +169,7 @@ ANTES_NO_PERSONA = {"c/", "c/.", "calle", "c.", "avda", "avda.", "av", "av.", "a
                     "escultor", "maestro", "mestre", "profesor", "beca", "programa", "proyecto", "edificio", "sala",
                     "grupo", "conservatorio", "museo", "museu", "casa", "centros", "iea", "eoi", "cep", "epa", "cfa",
                     "esc.", "inst."}
-DESPUES_NO_PERSONA = {"kalea", "kalean", "etorbidea", "plaza", "plazan", "enparantza", "bidea", "ikastetxea",
+DESPUES_NO_PERSONA = {"kalea", "kalean", "etorbidea", "enparantza", "bidea", "ikastetxea",
                       "institutua", "ikastola", "fundazioa", "s.l.", "s.a.", "sl", "sa", "slu"}
 NO_APELLIDO = NO_PERSONA | (NO_NOMBRE - {"real", "peon", "peón"}) | {"roja", "vermella", "gorria", "boreal", "ayuntamiento", "concello",
                                        "ajuntament", "udala", "provincia", "comunidad", "junta", "gobierno", "govern",
@@ -181,7 +181,7 @@ NO_APELLIDO = NO_PERSONA | (NO_NOMBRE - {"real", "peon", "peón"}) | {"roja", "v
                                        "estatal", "espanol", "espanola", "espanyol", "espanyola", "catalan", "catala",
                                        "catalana", "gallego", "galega", "vasco", "vasca", "internacional", "mundial",
                                        "publico", "publica", "public", "superior", "central", "regional", "comarcal",
-                                       "insular", "foral", "plan", "pla", "programa", "proyecto", "projecte",
+                                       "insular", "foral", "plan", "programa", "proyecto", "projecte",
                                        "proxecto", "sostenibilidad", "sostibilidade", "estrategia", "fondo", "fons"}
 # Nombres de pila que también son palabras corrientes («al amparo de», «la Cruz», «el Rosario»): tras un artículo o
 # una contracción no se toman por nombre
@@ -237,7 +237,8 @@ RE_CABECERA_NOMBRES = re.compile(r"(?i)nombre y apellidos|apellidos y nombre|nom
 
 
 def _nombre_suelto(texto: str) -> bool:
-    toks = re.findall(r"[^\s—–]+|[—–]", texto or "")
+    # «Vocal 3:Asuncion …», «Fdo.:Nombre»: los dos puntos pegados separan palabras
+    toks = re.findall(r"[^\s—–]+|[—–]", re.sub(r"([:;])(?=[^\s\d/])", r"\1 ", texto or ""))
     nucleos = [_nucleo(t) for t in toks]
     solo_nombre = (2 <= len(toks) <= 7 and bool(nucleos[-1]) and _es_apellido(nucleos[-1])
                    and all(RE_PALABRA_NOMBRE.match(n) or n.lower() in PARTICULAS or RE_INICIAL.match(n) for n in nucleos if n))
@@ -306,6 +307,9 @@ def _nombre_suelto(texto: str) -> bool:
             previo = toks[i - 2] + previo
         p = _sin_tildes(previo.lower())
         solo = solo_nombre and not any(_nucleo(t).strip("0123456789.ºª") for t in toks[:i])
+        # «Vocal número 3: Nombre Apellido Plaza, …»: tras dos puntos con un puesto de tribunal poco antes
+        if previo.endswith(":") and RE_TRIBUNAL.search(" ".join(toks[max(0, i - 5):i])):
+            return True
         if p in FIRMA_ANTES or (previo[-1:] in ",:" and CARGOS.match(_nucleo(previo).split("-")[-1])) or solo:
             return True
         # «Ana Herrera Alcaldessa», o bajo una cabecera «Nombre y apellidos»
@@ -318,6 +322,9 @@ def _nombre_suelto(texto: str) -> bool:
 # Apellidos y nombre en las listas de tribunales: «Vocal 1 suplente: Gil González, Ana Belén», «Sutil Barrigón, María»
 RE_APELLIDOS_NOMBRE = re.compile(
     rf"(?<![\w])(?P<a>{_PAL}(?:\s+(?:de|del|de\s+la|y|i)\s+|\s+){_PAL}),\s+(?P<p>{_PAL})(?:\s+(?:(?:de|del|de\s+la|de\s+las|de\s+los)\s+)?{_PAL})?(?=\s*$|\s*[.;)]|\s+[{_MAY}]\.)")
+# con un puesto de tribunal delante, aunque siga el cargo («Presidente titular Arroyo Aparicio, Alicia Catedrática»)
+RE_APELLIDOS_NOMBRE_TRIBUNAL = re.compile(
+    rf"(?<![\w])(?P<a>{_PAL}(?:\s+(?:de|del|de\s+la|y|i)\s+|\s+){_PAL}),\s+(?P<p>{_PAL})(?![\w’'-])")
 # en mayúsculas basta con la forma («CALDERÓN MARTÍN, MARÍA DEL CARMEN jueves…», «MARCOS DEL CANO,JOSÉ DANIEL»)
 _PALM = rf"[{_MAY}Ü][{_MAY}Ü’'-]+"
 RE_APELLIDOS_NOMBRE_MAY = re.compile(
@@ -327,13 +334,14 @@ RE_TRIBUNAL = re.compile(r"(?i)\b(?:vocal|presidente|presidenta|president|secret
 
 
 def _apellidos_y_nombre(texto: str) -> bool:
-    for m in [*RE_APELLIDOS_NOMBRE.finditer(texto or ""), *RE_APELLIDOS_NOMBRE_MAY.finditer(texto or "")]:
+    for m in [*RE_APELLIDOS_NOMBRE.finditer(texto or ""), *RE_APELLIDOS_NOMBRE_MAY.finditer(texto or ""),
+              *(RE_APELLIDOS_NOMBRE_TRIBUNAL.finditer(texto or "") if RE_TRIBUNAL.search(texto or "") else [])]:
         apellidos = [_sin_tildes(w.lower()) for w in m.group("a").split() if w.lower() not in PARTICULAS]
         if not _es_pila(m.group("p")) or any(a in NO_APELLIDO or CARGOS.match(a) for a in apellidos):
             continue
         if _sin_tildes(m.group("a").lower()) in MUNICIPIOS:
             continue
-        if (m.re is RE_APELLIDOS_NOMBRE_MAY or RE_TRIBUNAL.search(texto[:m.start()])
+        if (m.re is RE_APELLIDOS_NOMBRE_MAY or RE_TRIBUNAL.search(texto[max(0, m.start() - 60):m.start()])
                 or not texto[:m.start()].strip(" -–•·0123456789.ºª)")):
             return True
     return False
