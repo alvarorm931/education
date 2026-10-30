@@ -1,0 +1,46 @@
+name: Diagnóstico del acceso OIDC a AWS
+
+# El 30/10/2026 la prueba del almacén falló al asumir el rol: «Not authorized to perform
+# sts:AssumeRoleWithWebIdentity». Este flujo muestra las afirmaciones (claims) del token OIDC que GitHub entrega a
+# AWS — sin mostrar el token, que es una credencial — y repite la petición a STS con la región de España y con el
+# punto global, para comparar con la política de confianza del rol. No guarda ni escribe nada.
+
+on:
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  diagnostico:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Afirmaciones del token y respuesta de STS
+        env:
+          ROL: arn:aws:iam::369017477131:role/education-originales-github
+        run: |
+          TOKEN=$(curl -fsS -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=sts.amazonaws.com" | jq -r .value)
+          echo "::add-mask::$TOKEN"
+          RESUMEN=$(python3 - "$TOKEN" <<'EOF'
+          import base64, json, sys
+          carga = sys.argv[1].split(".")[1]
+          d = json.loads(base64.urlsafe_b64decode(carga + "=" * (-len(carga) % 4)))
+          campos = ["iss", "aud", "sub", "ref", "ref_type", "repository", "repository_owner", "repository_id",
+                    "repository_owner_id", "event_name", "job_workflow_ref", "environment", "runner_environment"]
+          print(json.dumps({k: d.get(k) for k in campos}, ensure_ascii=False))
+          EOF
+          )
+          echo "$RESUMEN" | jq .
+          echo "::notice title=Token OIDC::$RESUMEN"
+          for R in eu-south-2 us-east-1; do
+            if SALIDA=$(aws sts assume-role-with-web-identity --region "$R" --role-arn "$ROL" \
+                 --role-session-name diagnostico --web-identity-token "$TOKEN" \
+                 --query 'AssumedRoleUser.Arn' --output text 2>&1); then
+              echo "::notice title=STS $R::rol asumido: $SALIDA"
+            else
+              echo "::warning title=STS $R::$(echo "$SALIDA" | tr '\n' ' ' | cut -c1-400)"
+            fi
+          done
