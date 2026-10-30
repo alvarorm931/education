@@ -113,12 +113,21 @@ def sin_entradas_de_sumario(pagina: str) -> str:
     for k, l in enumerate(lineas):
         if RE_INDICE.search(l):
             fuera.add(k)
+            # Una entrada que acaba en número de página puede ocupar más líneas (en Tenerife, títulos largos que
+            # empiezan por el número de registro, «224574 Anuncio relativo a…»): hasta ocho, y se para en esa línea
+            maximo = 8 if RE_PAGINA_FINAL.search(l) else 3
             j = k - 1
-            while j >= 0 and k - j <= 3 and lineas[j].strip() and not RE_INDICE.search(lineas[j]) \
+            while j >= 0 and k - j <= maximo and lineas[j].strip() and not RE_INDICE.search(lineas[j]) \
                     and not lineas[j].rstrip().endswith((".", ":", ";")):
                 fuera.add(j)
+                if maximo > 3 and RE_REGISTRO_INICIAL.match(lineas[j]):
+                    break
                 j -= 1
     return "\n".join(l for k, l in enumerate(lineas) if k not in fuera)
+
+
+RE_PAGINA_FINAL = re.compile(r"(?:\.|…)\s?\d{1,6}\s*$")
+RE_REGISTRO_INICIAL = re.compile(r"^\s*\d{4,7}\s+\S")
 
 
 def cortar(paginas: list[str], anuncios: list[dict]) -> dict[str, tuple[str, list[int]]]:

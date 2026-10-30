@@ -110,3 +110,19 @@ def test_titulos_que_empiezan_igual_en_un_mismo_boletin():
     assert "arquitecto." in c["a"][0] and "Texto del arquitecto" in c["a"][0] and "gestión" not in c["a"][0]
     assert "Texto del técnico de gestión" in c["b"][0] and "delineante" not in c["b"][0].lower()
     assert "Texto del delineante" in c["c"][0]
+
+
+def test_entrada_de_sumario_larga_de_tenerife():
+    """Doce recursos de alzada con el mismo comienzo de título: la entrada de sumario ocupa cinco líneas y empieza por
+    el número de registro; entera fuera, no solo sus tres últimas líneas (30/10/2026)."""
+    from motor.provinciales.textos import sin_entradas_de_sumario
+    pagina = ("CABILDO INSULAR DE TENERIFE\n224574 Anuncio relativo a información pública, a fin de comunicar, a los\n"
+              "posibles interesados en el Recurso de Alzada interpuesto por la persona\naspirante en la convocatoria "
+              "pública para la cobertura de una plaza de\nTécnico de Administración General, Grupo A, Subgrupo A1, "
+              "de la Escala de\nAdministración General .... 31443\nANUNCIO\nPrimera línea del cuerpo.\n")
+    limpio = sin_entradas_de_sumario(pagina)
+    assert "224574" not in limpio and "Recurso de Alzada" not in limpio
+    assert limpio.startswith("CABILDO INSULAR DE TENERIFE") and "Primera línea del cuerpo." in limpio
+    # una línea de formulario con puntos no se lleva más de tres líneas del cuerpo
+    form = "Uno\nDos\nTres\nCuatro\nCinco\nD./D.ª ..............................., con DNI ............"
+    assert sin_entradas_de_sumario(form).startswith("Uno\nDos")
