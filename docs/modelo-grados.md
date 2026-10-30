@@ -225,7 +225,7 @@ piden para los 1.020 grados sin plan comprobado. El RUCT tarda unos 10 segundos 
 en 53 minutos, 5 memorias), así que se piden solo las páginas del plan (`ruct_grados.leer_plan_memoria`: módulos,
 materias y asignaturas, sin actividades, evaluación, contenidos, acceso, catálogos ni centros), por prioridad
 (165 grados sin plan, 441 publicados solo por materias y 409 que no cuadran), en 170 tramos de 6, 4 a la vez
-(cancelado: el RUCT dejó de responder a GitHub, ver §5). Los
+(cancelado: el RUCT dejó de responder a GitHub; desde el servidor de España responde, ver §5). Los
 textos largos quedan solo en el almacén privado; en `sondas` va su tamaño y su huella (`ruct_grados.sin_textos`).
 
 ### Precio
@@ -415,8 +415,9 @@ Ministerio).
     2021-2026 con celdas vacías; el PDF escribe cada fila en un solo bloque de texto, así que ni el texto ni la
     posición de los bloques dicen la columna: haría falta leerlo como imagen), León (solo 2025-2026, que ya da
     QEDU), UCLM (la lectura óptica de su tabla sale ilegible), UPV/EHU desde
-    2022-2023 (imágenes), Comunitat Valenciana, Galicia, Extremadura, ULPGC, Asturias y La Rioja (sin acceso desde
-    GitHub: pedidos desde el servidor de España) y Zaragoza (licencia).
+    2022-2023 (imágenes), Comunitat Valenciana (solo la primera adjudicación de 2026-2027), Galicia y Asturias
+    (su robots.txt no responde ni desde GitHub ni desde el servidor de España: no se pide nada), ULPGC y Extremadura
+    (403 desde los dos), La Rioja (429) y Zaragoza (licencia).
 
 ## 3. La ficha del grado
 
@@ -524,9 +525,10 @@ comprobados por asignaturas:
 2. Planes que no cuadran (sobre todo publicados solo por materias o sin carácter por asignatura): memorias del RUCT
    de los 1.020 grados sin plan comprobado (decidido por Álvaro), solo las páginas del plan. **Parado:** desde
    las 11:30 del 30/10 el RUCT no responde a GitHub (tiempo agotado en cada petición; 5 de 6 memorias del primer
-   tramo vacías), así que se canceló la tanda de 170 tramos. Se prueba desde el servidor de España, que comparten
-   todas las conversaciones: a unos 10 segundos por página y 70 páginas por grado, los 1.020 serían unas 200 horas
-   en un solo servidor; hace falta decidir cuántos y en qué orden. El lector ya está en las fichas
+   tramo vacías), así que se canceló la tanda de 170 tramos. **Desde el servidor de España sí responde** (prueba de
+   las 13:30: la memoria de Ingeniería en Sistemas de Información, 63 páginas en unos siete minutos, 37 asignaturas,
+   plan comprobado con los créditos del RUCT, 186 = 186). Ese servidor lo comparten todas las conversaciones: los
+   165 grados sin ningún plan serían unas 19 horas y los 1.020, unas 120; lo decide Álvaro. El lector ya está en las fichas
    (`fichas.plan_de_memoria`: el plan de la memoria entra si el del BOE no cuadra y él sí cuadra con los créditos
    por tipo del RUCT; con una página sin leer no cuenta como comprobado).
 3. Privadas sin precio (1.055): la Europea desde el servidor de España y Deusto (tabla que no sale
@@ -534,9 +536,10 @@ comprobados por asignaturas:
    (`docs/estrategia-informacion-cerrada.md` §3.4). El índice de Common Crawl de los dominios de centros dio 710
    direcciones más y solo 3 grados con importe: esa vía está agotada.
 4. Dobles de públicas sin precio (149): resoluciones de cada programa en Salamanca; UPV y UPV/EHU, de su web.
-5. Notas de corte del resto de distritos (Galicia, Comunitat Valenciana, Canarias, Extremadura, Asturias y La Rioja,
-   pedidas desde el servidor de España; Burgos, UCLM y UPV/EHU desde 2022-2023, que salen ilegibles; Pública de
-   Navarra, sin lista final) y la publicación de los cupos distintos del general (Madrid, Andalucía y UPV/EHU ya
+5. Notas de corte del resto de distritos. Tampoco responden desde el servidor de España (prueba de las 13:29): CiUG
+   de Galicia y Universidad de Oviedo (su robots.txt no contesta, así que no se pide nada), ULPGC y Extremadura
+   (403), La Rioja (429); la Comunitat Valenciana solo deja la primera adjudicación de 2026-2027 de la UV.
+   Ilegibles: Burgos, UCLM y UPV/EHU desde 2022-2023. Pública de Navarra: sin lista final y la publicación de los cupos distintos del general (Madrid, Andalucía y UPV/EHU ya
    los leen).
 6. Mantenerlo al día: BOE diario (planes y modificaciones nuevos), QEDU y SIIU cada curso, RUCT semanal
    (acreditaciones y extinciones), webs de privadas en primavera-verano, notas de corte en cada adjudicación.
