@@ -1,6 +1,6 @@
 # Módulo de grados (carreras): universo, fuentes medidas y ficha
 
-Versión 30/10/2026 (mediodía). Lo mantiene la conversación de grados. Todas las cifras salen de datos reales capturados el
+Versión 30/10/2026 (tarde). Lo mantiene la conversación de grados. Todas las cifras salen de datos reales capturados el
 29 y el 30/10/2026 (originales en la rama `sondas`, carpeta indicada en cada caso); lo que no está medido se dice.
 Código en `motor/grados/`, pruebas en `tests/test_*grados*.py`, `tests/test_qedu.py`, flujo `grados.yml`.
 Desde el 30/10/2026 (02:47) `grados.yml` guarda los originales enteros en el almacén privado S3
@@ -338,27 +338,62 @@ Ministerio).
   centro.
   - Lectores: Madrid (las dos tablas del PDF: la completa de once columnas y la de la Autónoma, con los grupos 1, 2
     y 6 y celdas vacías; cada cifra a su columna por el orden o por su posición; lo dudoso se descarta),
-    Universidad de Murcia (CSV con códigos del Ministerio), Cataluña (Socrata) y Salamanca (grupo general con el
-    tipo del último admitido).
+    Universidad de Murcia (CSV con códigos del Ministerio), Cataluña (Socrata), Salamanca (grupo general con el
+    tipo del último admitido), **Andalucía** y **UPV/EHU** (abajo).
+  - **Andalucía (Distrito Único Andaluz):** el botón «Descargar» de la consulta de notas de años anteriores envía el
+    formulario a `g_not_cor_anteriores_csv.php` (lo dice su función `BuscarPeticiones` en
+    `libportal/js/g_funcs_js_nca.js`; `notas_fuentes` ya busca en los .js del sitio la función de cada botón). Un
+    CSV por curso, de 2010-2011 a 2025-2026, con las nueve universidades públicas, el código de la petición
+    (título y centro), el nombre del centro y cinco cupos (general, titulados, mayores de 25, 40 y 45). Son las
+    definitivas de la convocatoria ordinaria (última lista de admitidos, en noviembre, según la propia página).
+    Tras la cifra del cupo general puede ir «PREF» o «N.P.» (último admitido preferente o no); se guarda tal cual.
+    La página no indica licencia; es información pública de la Junta (Ley 37/2007).
+  - **UPV/EHU:** un PDF por curso de 2017-2018 a 2021-2022, por campus (Álava, Gipuzkoa, Bizkaia: el campus da los
+    municipios para elegir centro), plazas y cinco cupos con su leyenda («*» plazas vacantes, «─» sin acceso, «E»
+    nota de la extraordinaria). Las cifras salen pegadas en el texto («*8,0836,610»): se parte cada fila en cinco
+    casillas de todas las maneras posibles con notas de 5 a 14 y solo vale si hay una sola. El orden de las
+    casillas es el mismo en todos los cursos aunque los rótulos salgan desordenados (comprobado con la cifra que
+    publicó la universidad: doble de Física e Ingeniería Electrónica 2020-2021, 13,124). Desde 2022-2023 los PDF
+    son imágenes: la lectura óptica (`notas_fuentes --ocr`, tesseract) confunde cifras y bordes de tabla y no se
+    usa.
   - Unión: universidad, nombre normalizado (siglas como «ADE», «CC.», «Ing.»; en Cataluña, un diccionario de
     palabras del catalán), dobles escritos «A-B», «A / B» o con «(simultaneïtat)», campus o centro entre paréntesis
-    o comillas, municipio, centro propio cuando el nombre no cita ninguno, el título que se oferta frente al que se
-    extingue y, si el distrito da la nota final, la nota de QEDU del mismo curso. El mismo código del distrito en
-    otro curso con un nombre parecido es la misma oferta.
+    o comillas, municipio, nombre del centro (Andalucía; con sus abreviaturas «E.T.S.», «F.», «CC.»), centro propio
+    cuando el nombre no cita ninguno, el título que se oferta frente al que se extingue y, si el distrito da la nota
+    final, la nota de QEDU del mismo curso. El mismo código del distrito en otro curso con un nombre parecido es la
+    misma oferta.
+  - **Corrección del 30/10 por la tarde:** el centro y la universidad empujaban la puntuación y algunos nombres poco
+    parecidos se unían mal (un doble sin «+» con uno de sus grados: «Derecho y Administración de Empresas» con
+    «Administración de Empresas»; un título ya extinguido de 2010 con el activo más parecido). Ahora el nombre
+    tiene que parecerse al menos 0,8 al del catálogo salvo que QEDU confirme la nota, y un nombre que empieza por
+    «Doble» nunca se une con uno de sus grados. Se pierden algunas uniones buenas (Traducción e Interpretación por
+    idiomas, nombres catalanes mal traducidos: 87 ofertas), que quedan sin publicar.
   - Nota del título en el centro: la menor de sus ofertas (menciones, grupos de idioma, títulos con máster), que es
-    como la da QEDU. Comprobado: coincide con QEDU en 606 de 651 cursos de Madrid, 45 de 64 de Murcia y 29 de 33
-    de Salamanca (con nota por encima de 5,000; QEDU redondea o trunca a dos decimales). Revisión a mano de 6 notas
-    de 2021-2022 de Madrid al azar contra el PDF oficial: 5 exactas y 1 sin poder confirmar.
-  - Se publica (`historico.jsonl`, `publicable`) el histórico de un título y centro que no contradice a QEDU en
-    ningún curso; si ninguna de sus notas es la final (Cataluña), solo si sus plazas coinciden con las de QEDU.
-    Cada curso lleva su documento, huella, fecha de captura y tipo de lista.
-  - Resultado (30/10/2026): 1.040 títulos y centros con histórico, 923 publicables, 393 con cinco cursos o más;
-    876 centros de 815 fichas lo llevan ya (`centros[].notas_historicas`).
-  - Pendiente: distrito único andaluz (la consulta por formulario aún no devuelve resultados: falta el campo de
-    envío), Burgos (tabla acumulada con celdas vacías y columnas desplazadas: hace falta la posición real de cada
-    cifra en el PDF), León, Cantabria, UCLM, Pública de Navarra, UPV/EHU (PDF de imagen desde 2022-2023), Comunitat
-    Valenciana (solo un curso accesible), Galicia, Extremadura, ULPGC y La Rioja (sin acceso desde GitHub) y
-    Zaragoza (licencia).
+    como la da QEDU.
+  - Contraste con QEDU en los cursos que se solapan (nota por encima de 5,000; QEDU redondea o trunca a dos
+    decimales): además de «igual», dos diferencias que no indican una unión equivocada sino que QEDU toma la nota en
+    otro momento del proceso: la del distrito es la de la última lista y queda por debajo de la de QEDU (menos de un
+    cuarto de punto), o QEDU da 5,000 porque al final quedaron plazas libres. Cualquier otra es «distinta».
+
+    | Distrito | Igual | Lista posterior más baja | QEDU con plazas libres | Distinta |
+    |---|---|---|---|---|
+    | Andalucía | 513 | 61 | 68 | 6 |
+    | Madrid | 606 | 26 | — | 19 |
+    | Murcia | 45 | 2 | — | 17 |
+    | Salamanca | 29 | 1 | 3 | — |
+
+    Revisión a mano de 6 notas de 2021-2022 de Madrid al azar contra el PDF oficial: 5 exactas y 1 sin poder
+    confirmar; de la UPV/EHU, 6 al azar contra su línea del PDF: las 6 exactas.
+  - Se publica (`historico.jsonl`, `publicable`) el histórico de un título y centro sin ninguna «distinta»; si
+    ninguna de sus notas es la final (Cataluña), solo si sus plazas coinciden con las de QEDU. Cada curso lleva su
+    documento, huella, fecha de captura y tipo de lista. Una ficha sin nota de QEDU ni precio que tenga la de su
+    distrito desde 2021-2022 deja de tener ese motivo para no indexarse.
+  - Resultado (30/10/2026, tarde): 1.675 títulos y centros con histórico, 1.587 publicables, 972 con cinco cursos
+    o más; 1.537 centros de 1.398 fichas lo llevan ya (`centros[].notas_historicas`), 931 con cinco cursos o más.
+  - Pendiente: Pública de Navarra (una lista por adjudicación, sin lista final declarada), Burgos (tabla acumulada
+    con celdas vacías: hace falta la posición real de cada cifra en el PDF), León, Cantabria, UCLM, UPV/EHU desde
+    2022-2023 (imágenes), Comunitat Valenciana, Galicia, Extremadura, ULPGC, Asturias y La Rioja (sin acceso desde
+    GitHub: pedidos desde el servidor de España) y Zaragoza (licencia).
 
 ## 3. La ficha del grado
 
@@ -403,7 +438,7 @@ pasada sobre los mismos datos no crea ninguna.
 
 Une catálogo, genérico, QEDU, indicadores del SIIU, plan del BOE, ficha del RUCT y precios de las privadas sin
 pedir nada a ninguna fuente, y marca cada ficha como indexable o no, con el motivo. Con todo lo capturado hasta el
-30/10/2026 a mediodía:
+30/10/2026 por la tarde:
 
 | | Fichas |
 |---|---|
@@ -414,17 +449,17 @@ pedir nada a ninguna fuente, y marca cada ficha como indexable o no, con el moti
 | Con precio de primera matrícula (públicas) | 2.113 de 2.239 grados y 498 de 647 dobles de públicas |
 | De ellos, con el precio de la norma de su comunidad (QEDU no lo da) | 508 |
 | Privadas con precio por curso | 307 de 1.410 (y 11 centros adscritos de públicas con el precio de su web) |
-| Con histórico de notas de corte comprobado | 815 (876 centros; 354 con cinco cursos o más) |
+| Con histórico de notas de corte comprobado | 1.398 (1.537 centros; 931 con cinco cursos o más) |
 | Con inserción laboral | 1.703 |
 | Con indicadores de rendimiento del SIIU | 3.125 |
 | Con ficha del RUCT | 3.265 |
-| Grados con plan del BOE | 3.095 de 3.265 |
+| Grados con plan del BOE | 3.098 de 3.265 |
 | Grados con plan comprobado | 2.245 (1.595 por asignaturas, el resto por materias) |
 | Dobles con los planes de sus dos grados comprobados | 599 |
 | **Indexables** con los datos mínimos decididos | **2.118** (1.735 grados y 383 dobles; 1.886 de públicas y 232 de privadas) |
 
-El resto va con `noindex` y su motivo: 850 con plan que no
-cuadra, 602 sin plan (o doble sin los dos planes comprobados) y
+El resto va con `noindex` y su motivo: 853 con plan que no
+cuadra, 599 sin plan (o doble sin los dos planes comprobados) y
 1.101 sin nota ni precio (casi todas, privadas que no publican el precio); una
 ficha puede tener varios.
 
@@ -464,14 +499,22 @@ comprobados por asignaturas:
 1. **Decisiones de Álvaro:** la excepción del RUCT (§2), que tomó Claude y se puede revertir; Zaragoza (licencia
    no comercial de sus datos abiertos de notas de corte).
 2. Planes que no cuadran (sobre todo publicados solo por materias o sin carácter por asignatura): memorias del RUCT
-   de los 1.020 grados sin plan comprobado (decidido por Álvaro), solo las páginas del plan, en marcha desde las
-   12:54 (170 tramos, 4 a la vez; más de un día); después, su lector para las fichas.
-3. Privadas sin precio: peticiones a cada universidad cuando el portal tenga dirección pública
-   (`docs/estrategia-informacion-cerrada.md` §3.4); Comillas y UOC desde el servidor de España; Navarra con su
-   lista de precios conocida (`tarifas_grado.URLS_CONOCIDAS`).
+   de los 1.020 grados sin plan comprobado (decidido por Álvaro), solo las páginas del plan. **Parado:** desde
+   las 11:30 del 30/10 el RUCT no responde a GitHub (tiempo agotado en cada petición; 5 de 6 memorias del primer
+   tramo vacías), así que se canceló la tanda de 170 tramos. Se prueba desde el servidor de España, que comparten
+   todas las conversaciones: a unos 10 segundos por página y 70 páginas por grado, los 1.020 serían unas 200 horas
+   en un solo servidor; hace falta decidir cuántos y en qué orden. El lector ya está en las fichas
+   (`fichas.plan_de_memoria`: el plan de la memoria entra si el del BOE no cuadra y él sí cuadra con los créditos
+   por tipo del RUCT; con una página sin leer no cuenta como comprobado).
+3. Privadas sin precio: tablas oficiales de honorarios de cada universidad (Europea, Alfonso X, CEU, Pontificia de
+   Salamanca… publican PDF que el rastreo no encontró: lista en `tarifas_grado.URLS_CONOCIDAS`); lo que no esté
+   publicado, peticiones a cada universidad cuando el portal tenga dirección pública
+   (`docs/estrategia-informacion-cerrada.md` §3.4). El índice de Common Crawl de los dominios de centros dio 710
+   direcciones más y solo 3 grados con importe: esa vía está agotada.
 4. Dobles de públicas sin precio (149): resoluciones de cada programa en Salamanca; UPV y UPV/EHU, de su web.
-5. Notas de corte del resto de distritos (andaluz, Burgos, León, Cantabria, UCLM, Pública de Navarra, UPV/EHU…) y
-   de los cupos distintos del general (Madrid ya los lee: grupos 2 a 6).
+5. Notas de corte del resto de distritos (Galicia, Comunitat Valenciana, Canarias, Extremadura, Asturias, La Rioja,
+   Burgos, León, Cantabria, UCLM, Pública de Navarra, UPV/EHU desde 2022-2023) y la publicación de los cupos
+   distintos del general (Madrid, Andalucía y UPV/EHU ya los leen).
 6. Mantenerlo al día: BOE diario (planes y modificaciones nuevos), QEDU y SIIU cada curso, RUCT semanal
    (acreditaciones y extinciones), webs de privadas en primavera-verano, notas de corte en cada adjudicación.
 7. Generador de páginas de grado con el diseño «Noche en blanco» y el control de la ley SEO.
