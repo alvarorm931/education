@@ -295,3 +295,25 @@ def test_bloques_lado_a_lado_que_no_empiezan_por_el_nombre():
             ["1.º", "1.º", "Lengua.", "FB", "6", "", "1.º", "2.º", "Historia.", "FB", "6"]])
     p = {x["nombre"]: x for x in plan([t])}
     assert p["Lengua"]["semestre"] == 1 and p["Historia"]["semestre"] == 2 and p["Historia"]["tipo"] == "basica"
+
+
+def test_revision_independiente_tfg_totales_semestres_y_llamadas():
+    from motor.grados.boe_grados import medir_plan, plan
+    dist = _t([["Tipo de materia", "Créditos"], ["Formación básica.", "12"], ["Obligatorias.", "6"],
+               ["Prácticas externas.", "6"], ["Trabajo fin de grado.", "6"], ["Total.", "30"]])
+    tabla = _t([["Asignatura", "Créditos", "Carácter", "Semestre"],
+                ["Álgebra (1)", "6", "Básica", "1"], ["Cálculo", "6", "Básica", "2"],
+                ["Física", "6", "Obligatoria", "3"], ["Practicum", "6", "Obligatoria", "7 u 8"],
+                ["Trabajo Fin de Grado", "6", "Obligatoria", "8"], ["Total", "30", "", ""]])
+    m = medir_plan({"tablas": [dist, tabla], "texto": ""})
+    filas = {x["nombre"]: x for x in m["filas_plan"]}
+    assert set(filas) == {"Álgebra", "Cálculo", "Física", "Practicum", "Trabajo Fin de Grado"}  # sin «Total» ni «(1)»
+    # el practicum y el TFG con carácter «Obligatoria» van a su tipo porque la tabla de créditos los separa
+    assert filas["Practicum"]["tipo"] == "practicas" and filas["Trabajo Fin de Grado"]["tipo"] == "tfg"
+    # semestres del 1 al 8: el 1 y el 2 son de primero; «7 u 8» es de cuarto, sin semestre
+    assert (filas["Álgebra"]["curso"], filas["Álgebra"]["semestre"]) == (1, 1)
+    assert (filas["Practicum"]["curso"], filas["Practicum"]["semestre"]) == (4, None)
+    assert m["comprobacion"] == "completo"
+    # una fila con la mitad de los créditos del grado no es una asignatura
+    t2 = _t([["Asignatura", "Créditos", "Carácter"], ["A.", "6", "Básica"], ["–", "20", "Obligatoria"]])
+    assert [x["nombre"] for x in plan([t2], {"total": 30.0, "formacion_basica": 6.0})] == ["A"]

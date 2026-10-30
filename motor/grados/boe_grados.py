@@ -115,6 +115,10 @@ COL = {
     "semestre": re.compile(r"semestre|cuatrimestre|trimestre|temporal|\btemp\b|periodo|duraci", re.I),
 }
 TOTAL = re.compile(r"^(total|suma)", re.I)
+# llamada de nota pegada al nombre: «Proyectos de Luminotecnia (1)», «Prácticas Académicas Externas (*)»
+RE_LLAMADA = re.compile(r"\s*(?:\(\s*(?:\d{1,2}|\*+|[a-z])\s*\)|\*+)$")
+# varios cursos o semestres en una celda: «1 y 2», «1.º y 2.º», «7 u 8», «2.º, 3.º y 4.º»
+RE_VARIOS = re.compile(r"\d\s*\.?\s*[ºª°o]?\s*(?:y|u|o|,|-|–|/)\s*\d", re.I)
 TIPOS_CREDITO = [
     ("formacion_basica", re.compile(r"formaci[óo]n b[áa]sica|^b[áa]sic|^fb$", re.I)),
     ("obligatorias", re.compile(r"obligatori|^ob$|^o$", re.I)),
@@ -592,13 +596,27 @@ def plan(tablas: list[dict], dist: dict | None = None, codigos: dict[str, str] |
             pies = {tipo_de_rotulo(f[cols["nombre"]]) for f in cuerpo if TOTAL.match((f[cols["nombre"]] or "").strip())}
             pies.discard(None)
             tipo_tabla = pies.pop() if len(pies) == 1 else None
-        salida = []
+        salida, semestre_global = [], False
         for f, estado in filas_estado:
-            nombre = (f[cols["nombre"]] or "").strip().rstrip(" .")
+            nombre = RE_LLAMADA.sub("", (f[cols["nombre"]] or "").strip().rstrip(" .")).strip()
             if not nombre or TOTAL.match(nombre) or nombre.lower() == (cab[cols["nombre"]] or "").lower():
                 continue
+            if any(TOTAL.match((c or "").strip()) for c in f):
+                continue  # fila de total cuyo nombre heredó la celda combinada de la fila de arriba
+            creditos = _num(f[cols["creditos"]]) if "creditos" in cols else None
+            if creditos and dist and dist.get("total") and creditos >= 0.5 * dist["total"]:
+                continue  # ninguna asignatura vale la mitad del grado: es un total o un rótulo
             curso = numero_orden(f[cols["curso"]]) if "curso" in cols else None
             semestre = numero_orden(f[cols["semestre"]]) if "semestre" in cols else None
+            if "curso" in cols and RE_VARIOS.search(f[cols["curso"]] or ""):
+                curso = None  # «1.º y 2.º»: la materia se reparte en dos cursos
+            if "semestre" in cols and RE_VARIOS.search(f[cols["semestre"]] or ""):
+                vals = sorted({int(v) for v in re.findall(r"\d+", f[cols["semestre"]])})
+                semestre = None  # «1 y 2», «7 u 8»: anual o a elegir; el literal queda en periodo_literal
+                if not curso and vals and all(v > 2 for v in vals) and len({(v + 1) // 2 for v in vals}) == 1:
+                    curso = (vals[0] + 1) // 2
+            elif semestre and semestre > 2 and not curso:
+                semestre_global = True  # semestres numerados del 1 al 8
             if "curso_semestre" in cols:
                 partes = re.findall(r"\d+", f[cols["curso_semestre"]] or "")
                 curso = int(partes[0]) if partes else curso
@@ -619,7 +637,7 @@ def plan(tablas: list[dict], dist: dict | None = None, codigos: dict[str, str] |
                 "tipo_por_rotulo": not tipo_caracter(caracter)
                 and not (codigos or {}).get(re.sub(r"\s", "", (caracter or "").lower()))
                 and bool(estado["tipo"] or tipo_tabla or tipo_de_rotulo(modulo or estado["modulo"])),
-                "creditos": _num(f[cols["creditos"]]) if "creditos" in cols else None,  # hay planes sin ECTS por asignatura
+                "creditos": creditos,  # hay planes sin ECTS por asignatura
                 "curso": curso,
                 "semestre": semestre,
                 "periodo_literal": f[cols["semestre"]] if "semestre" in cols else None,
@@ -627,6 +645,10 @@ def plan(tablas: list[dict], dist: dict | None = None, codigos: dict[str, str] |
                 "tabla": n,
                 "fila_literal": f,
             })
+        if semestre_global:
+            for x in salida:  # en una tabla con semestres del 1 al 8, los semestres 1 y 2 son de primero
+                if not x["curso"] and x["semestre"] in (1, 2) and not RE_VARIOS.search(x.get("periodo_literal") or ""):
+                    x["curso"] = 1
         if salida:
             por_tabla.append((0, len(salida), n, salida))
     # tablas sin ningún tipo: si su suma es la de un tipo que ninguna otra tabla trae, son de ese tipo
@@ -659,6 +681,11 @@ def plan(tablas: list[dict], dist: dict | None = None, codigos: dict[str, str] |
     # y el resto, obligatorias solo si su suma es exactamente la de obligatorias de la tabla de créditos
     basicas = _basicas_por_ambito(tablas)
     for x in resultado:
+        # el practicum y el TFG con carácter «Obligatoria» van a su tipo si la tabla de créditos los separa
+        por_nombre = tipo_de_rotulo(x["nombre"])
+        if x["tipo"] == "obligatoria" and por_nombre in ("tfg", "practicas") and dist \
+                and dist.get(CLAVE_DIST[por_nombre]):
+            x["tipo"], x["tipo_por_nombre_y_tabla_de_creditos"] = por_nombre, True
         if not x["tipo"]:
             por_nombre = tipo_de_rotulo(x["nombre"])
             if por_nombre in ("tfg", "practicas", "optativa"):
@@ -757,13 +784,17 @@ def medir_plan(doc: dict) -> dict:
         if m2["comprobacion"]:
             m = {**m, "comprobacion": m2["comprobacion"], "nivel_comprobado": "materia",
                  "suma_sin_optativas": m2["suma_sin_optativas"]}
-    if not m["comprobacion"]:
+    # una lectura alternativa vale si comprueba lo que la directa no, o si comprueba el plan completo cuando la
+    # directa solo cuadra en básicas y obligatorias (un TFG repetido en dos tablas, por ejemplo)
+    mejora = lambda m2: m2["comprobacion"] == "completo" or (m2["comprobacion"] and not m["comprobacion"])  # noqa: E731
+    if m["comprobacion"] != "completo":
         for alt in _alternativas(filas, dist):
             m2 = _medir(alt, dist, doc)
-            if m2["comprobacion"]:
+            if mejora(m2):
                 filas, m = alt, {**m2, "interpretacion": "alternativa"}
-                break
-    if not m["comprobacion"] and m["esperado_sin_optativas"] and m["suma_sin_optativas"] > m["esperado_sin_optativas"]:
+                if m["comprobacion"] == "completo":
+                    break
+    if m["comprobacion"] != "completo" and m["esperado_sin_optativas"] and m["suma_sin_optativas"] > m["esperado_sin_optativas"]:
         # sobran créditos: si los sobrantes son exactamente los de una sola tabla (una lista repetida con otros
         # nombres, las obligatorias de una mención), sin esa tabla
         exceso = m["suma_sin_optativas"] - m["esperado_sin_optativas"]
@@ -773,9 +804,9 @@ def medir_plan(doc: dict) -> dict:
         if len(iguales) == 1:
             alt = [x for x in filas if x["tabla"] != iguales[0]]
             m2 = _medir(alt, dist, doc)
-            if m2["comprobacion"]:
+            if mejora(m2):
                 filas, m = alt, {**m2, "interpretacion": "alternativa"}
-    if not m["comprobacion"] and dist and m["esperado_sin_optativas"] and m["suma_sin_optativas"] < m["esperado_sin_optativas"]:
+    if m["comprobacion"] != "completo" and dist and m["esperado_sin_optativas"] and m["suma_sin_optativas"] < m["esperado_sin_optativas"]:
         # faltan créditos de un tipo y una sola tabla sin tipo suma exactamente lo que falta: es de ese tipo
         base = [x for x in filas if x["nivel"] == "asignatura"] or filas
         falta = {t: dist.get(c, 0) - sum(x["creditos"] or 0 for x in base if x["tipo"] == t)
@@ -790,7 +821,7 @@ def medir_plan(doc: dict) -> dict:
             alt = [{**x, "tipo": t, "tipo_por_lo_que_falta": True} if not x["tipo"] and x["tabla"] == n else x
                    for x in filas]
             m2 = _medir(alt, dist, doc)
-            if m2["comprobacion"]:
+            if mejora(m2):
                 filas, m = alt, {**m2, "interpretacion": "alternativa"}
     m["filas_plan"] = filas
     return m
