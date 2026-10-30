@@ -22,6 +22,9 @@ on:
       minutos:
         description: "Minutos máximos por boletín para la carga histórica y, aparte, para los textos"
         default: "60"
+      minutos_espana:
+        description: "Lo mismo para los boletines del servidor de España, que van de uno en uno"
+        default: "30"
       conectores:
         description: "Conectores, separados por espacios"
         default: "boja bocm bocyl dogv dog dogc boa doe boib borm boc bopv docm bome bopb bopalicante bopvalencia bopt bopciudadreal bopgranada bopsevilla bophuesca boptenerife bopcordoba bopcoruna boppontevedra bopavila bopbadajoz bopzamora boptoledo bopalava bopzaragoza bopjaen bopalbacete bopsalamanca bopgipuzkoa bopbizkaia boplugo bophuelva boplaspalmas bopvalladolid bopa bon bocant bopburgos bor"
@@ -86,5 +89,6 @@ jobs:
     uses: ./.github/workflows/boletin.yml
     with:
       conector: ${{ matrix.conector }}
-      minutos: ${{ inputs.minutos || '60' }}
+      # De uno en uno: con menos minutos por boletín la tanda entera cabe en la mañana
+      minutos: ${{ inputs.minutos_espana || '30' }}
       ejecutor: espana
