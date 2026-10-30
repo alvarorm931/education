@@ -405,13 +405,57 @@ programa (4.110 páginas no eran ficha), **5.928 programas de máster distintos*
 
 **Tanda 2**, adaptativa: solo los centros cuyas primeras fichas fueron másters de verdad (al menos el 30 % o
 tres), hasta 300 fichas más cada uno, y los 28 centros que entraron con los reintentos de clasificación:
-15.089 páginas.
+15.089 páginas, 14.534 enviadas (el 29 % no eran ficha).
 
 **Títulos propios en las webs oficiales.** Las escuelas adscritas y las universidades venden másters propios
 que no están en el RUCT (Máster en Finanzas de ESIC, Máster Executive en Recursos Humanos del Centro
 Garrigues, los del IEB): ni la unión oficial ni la lista de no oficiales los recogía. `extraer.py
 lista-propios-oficiales` toma las fichas de máster de esas webs que no son la página de un oficial unido:
 34.131 fichas candidatas en 220 webs; primera tanda, 5.254 (hasta 40 por web).
+
+Después vinieron la tanda 2 de propios (hasta 300 fichas más por web, solo las webs cuyas primeras fichas
+eran másters), la tanda 3 de no oficiales (los 8 centros grandes con másters de verdad: Euroinnova, ISFAP,
+Esneca, Formación Continua, INESEM, Structuralia, ISEIE, EOI) y la **tercera vuelta de los oficiales**: las
+48 universidades con menos del 70 % de sus másters con ficha (UB, UPM, UPV, UC3M, UAM, Murcia, A Coruña,
+UPF…), donde las URL son códigos opacos: se leen sus páginas de programa y la ficha se asigna por el nombre
+extraído. También se buscan ya los 387 másters aprobados en el BOE después del catálogo de febrero.
+
+### Resultado de la noche (todas las tandas)
+
+| | |
+|---|---|
+| Páginas pedidas / enviadas a la API | 52.857 / 49.273 |
+| Datos aceptados con cita literal comprobada / a revisión | 392.163 / 17.868 |
+| Coste de la API (extracción; la clasificación, 0,20 $ más) | 20,33 $ |
+| Respuestas ilegibles | menos del 0,1 % |
+
+**Másters oficiales con ficha comprobada: 2.779 de 4.734 (59 %)** (4.347 del catálogo y 387 altas del BOE):
+2.162 con el nombre del RUCT en su página unida por URL, 187 casi iguales que la página declara oficiales y
+430 encontrados por el nombre en otras páginas de su universidad o de su centro adscrito. 1.726 de públicas
+y 1.053 de privadas.
+
+**Másters no oficiales y títulos propios: 20.193 programas de máster distintos** (proveedor + nombre + tipo):
+15.590 de 913 centros no universitarios y 4.603 títulos propios en webs de 177 universidades y centros
+adscritos. Además, 3.360 fichas de otros títulos (expertos, cursos).
+
+Lo que publica cada grupo en su ficha (con cita comprobada):
+
+| Dato | Oficial pública (1.726) | Oficial privada (1.053) | Propio en web universitaria (6.393 fichas) | Centro no universitario (17.385 fichas) |
+|---|---|---|---|---|
+| precio total | 17 % | **22 %** | **35 %** | 68 % |
+| asignaturas o módulos | 45 % | 79 % | 51 % | 63 % |
+| metodología | 45 % | 90 % | 66 % | 86 % |
+| evaluación | 15 % | 54 % | 24 % | 49 % |
+| horario | 13 % | 34 % | 33 % | 28 % |
+| plazas | 58 % | 44 % | 35 % | 8 % |
+| plazo de admisión | 21 % | 35 % | 28 % | 17 % |
+| becas y descuentos | 11 % | 63 % | 34 % | 44 % |
+
+Estado por campo de cada máster (`seguimiento.py --fichas`): de 26.557 másters con ficha, la mitad de lo
+esencial se ve sin dar datos (indicador de transparencia medio 0,50). Peticiones (`peticiones.py --fichas`):
+884 centros con másters sin precio publicado (10.381 fichas; las públicas no cuentan, su precio es del
+decreto). Todo en la rama `sondas`, `fichas-masters/20261030-todas/` (fichas en gzip, estado por campo,
+peticiones y resúmenes).
 
 ### Fallos de proceso encontrados esta noche
 
@@ -423,6 +467,12 @@ lista-propios-oficiales` toma las fichas de máster de esas webs que no son la p
    salida estructurada, 0 de 28 en el reintento.
 4. Un oficial unido a un listado o a la portada hacía que todo el sitio pareciera «ya unido» y se perdían
    los propios (Centro Garrigues): ahora solo cuenta la misma ficha o sus subpáginas.
+5. 38 precios eran texto («no indicado») y pasaban la comprobación: los campos numéricos exigen ya un número.
+6. Precios en pesos colombianos de la versión es-CO de una web española: fuera las versiones de otro país, las
+   citas con otra moneda y los importes de más de 100.000 €.
+7. Una misma página pedida como oficial y como no oficial perdía su unión al máster oficial: manda la oficial.
+8. Con varias páginas candidatas para un máster decidía la primera; ahora gana la que confirma el nombre, y un
+   nombre parecido no vale si encaja igual en otro máster de la misma universidad.
 
 ## 9. Siguientes pasos
 
@@ -438,7 +488,7 @@ Ordenados por lo que más acerca a tener, para cada máster, lo que hoy se da so
    norma leída y la categoría del título comprobada.
 3. **Memorias del RUCT** (plazas verificadas, plan con asignaturas, evaluación ponderada) para los oficiales,
    en el servidor de España, repartidas en noches.
-4. **Oficiales que siguen sin página** (1.876): Sevilla y Córdoba vetan el rastreo y la UOC da 403 (pedir
+4. **Oficiales que siguen sin ficha** (1.955 de 4.734): Sevilla y Córdoba vetan el rastreo y la UOC da 403 (pedir
    permiso); UB, UPM, UPV, UC3M, UAM, Murcia, A Coruña, UPF y otras grandes tienen catálogos con URL opacas o
    que se pintan con JavaScript: la tercera vuelta las lee y las asigna por el nombre; lo que quede, conector
    por universidad o el lector con navegador del servidor de España.
