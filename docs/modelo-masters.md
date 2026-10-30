@@ -596,16 +596,50 @@ valor, fuente, URL y fecha de captura; manda la fuente oficial (`PRIORIDAD`) y l
 alternativas si dicen otra cosa (plazas: QEDU del curso, con las verificadas de la memoria aparte y lo que dice
 la web como alternativa). Lo calculado se dice: precio total = precio del crédito × créditos, solo si no hay uno
 publicado; presencialidad = horas presenciales de las actividades de la memoria. **Fecha estable**: con
-`--anterior`, el dato que no cambia conserva su fecha de captura y solo cambia «revisado». Datos mínimos de la
-ley SEO (asignaturas y precio) e `indexable`. Aviso de página web antigua (solo habla de cursos de 2023 o antes).
-Privacidad: los textos de la memoria y de las webs pierden los párrafos con nombres de personas (motor.limpieza,
-más «Dr./Dra./Prof.» delante de un nombre) y los correos personales («[correo]»; los buzones de un servicio,
-como admisiones@ o info@, se dejan).
+`--anterior`, el dato que no cambia (ni su fuente) conserva su fecha de captura; la fecha de la pasada va solo en
+`resumen.json`, así que un conjunto sin cambios es el mismo fichero. Datos mínimos de la ley SEO (asignaturas y
+precio) e `indexable`. Aviso de página web antigua (solo habla de cursos de 2023 o antes).
+Privacidad: los textos de la memoria, las guías y las webs (también dentro de listas) pierden los párrafos con
+nombres de personas (motor.limpieza; «Dr. Pérez», «Prof.ª Ana Ruiz»; «Coordinación: Nombre Apellido», «a cargo
+de…», con nombre de pila; también cuando el PDF parte la mención en dos líneas) y los correos personales
+(«[correo]»; los buzones de un servicio, como admisiones@ o master.biologia@, se dejan; master.juan@, no).
+
+### Revisión independiente del conjunto (30/10/2026, tarde)
+
+Un agente que no había visto el trabajo revisó el conjunto con sus propios scripts. Lo corregido:
+
+- **Citas** (`extraer.verificar`): un número en una cita a trozos tiene que estar en un trozo; en una tabla, en
+  la celda de su línea («numero_de_otra_celda»); un total por debajo de 300 € no es un precio de máster; un valor
+  corto (modalidad, idioma, sí/no) tiene que estar en su cita («valor_no_en_cita», con sinónimos). Las guías,
+  igual con el porcentaje. Todas las tandas pagadas se vuelven a comprobar sin pagar (`retomar`) y el recitado se
+  aplica a la comprobación nueva (`recitar --retomar … --carpeta`).
+- **BOE por nombre**: la universidad tiene que ser la misma con clave exacta («Autónoma de Barcelona» no es
+  «Barcelona»; alias del BOE: UPV/EHU, Jaume I, Carlos III, Miguel Hernández, Vic, UDIT…), el nombre el mismo sin
+  la traducción tras «/» ni siglas, sin correcciones de errores y nunca un plan publicado antes de que el código
+  pudiera existir (35xxxxx desde 2022; 43xxxxx por tramos desde 2008). 2.960 → 4.695 resoluciones unidas; las 377
+  que se quitan eran de otra universidad, de otro código o correcciones. Cada documento vale con su última
+  medición.
+- **Webs de otra universidad**: fuera la ficha web que dice que expide el título otra universidad, la que está en
+  el dominio oficial de otra (dominios de los enlaces de QEDU; para los interuniversitarios valen todas las del
+  nombre) y la «probable» que no está en un dominio de la suya.
+- **Precios**: fuera totales por debajo de 300 € o iguales al precio del crédito y créditos fuera de 5-1.000 €;
+  con precio oficial del crédito, si el total de la web no cabe (fuera de la mitad al doble), manda el calculado
+  y el de la web queda como alternativa; el calculado dice si sale del precio oficial («primera matrícula», QEDU)
+  o del que publica el centro; un precio de un curso de 2023 o antes no cuenta para indexar.
+- **Asignaturas**: al menos tres de verdad (sin TFM, prácticas, bloques de optativas u obligatorias ni cabeceras;
+  un «Módulo 3. Evaluación y tratamiento» con nombre de contenido sí cuenta); fuera «No se indica» y filas de una
+  letra o solo números.
+- **Modalidad de QEDU** como la da su detalle (código 2 = «semipresencial o a distancia»; 4 y -1 = «varias»).
+- **Guías** con pesos que no caben en el 100 % (sistemas repetidos, convocatoria extraordinaria mezclada), fuera.
+- **No oficiales**: fuera las páginas de másters oficiales (tipo oficial o «Máster Universitario» sin «propio»),
+  las versiones de otro país y las noticias o blogs; uno por dominio y nombre; el identificador de la pasada
+  anterior si alguna de sus páginas ya lo tenía.
+- **Altas del BOE** con fuente BOE y fecha de lectura (no la de publicación), universidad por su clave.
 
 ### Pasada diaria (`diario_masters.py`, `masters-diario.yml`)
 
 A las 02:17 (Madrid), una séptima parte de todo: las páginas ya extraídas (si su texto no cambió, no se paga), el
-detalle de QEDU de las imparticiones del día (y sus tarjetas, una petición) y, desde el 3/11, la ficha del RUCT de
+detalle de QEDU de las imparticiones del día (y sus tarjetas, una petición) y, desde el 15/11, la ficha del RUCT de
 los títulos del día y su memoria si cambió. Después, fichas y conjunto con el conjunto anterior: la fecha de cada
 dato solo cambia si cambia el dato. Las carpetas de resultados se buscan por su forma en la rama (también las de
 las ejecuciones largas); `sondas:masters-estado/` guarda el manifiesto (entradas fijas) y el conjunto. Sin

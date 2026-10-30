@@ -51,7 +51,9 @@ URL_QEDU = "https://www.ciencia.gob.es/qedu.html"
 # Qué fuente manda en cada campo (la primera que lo tiene). Las demás quedan como alternativas si dicen otra cosa.
 PRIORIDAD = {
     "creditos_ects": ("ruct", "qedu", "catalogo", "web"),
-    "modalidad": ("ruct", "qedu", "catalogo", "web"),
+    # el catálogo (SIIU) dice la modalidad de cada impartición registrada; QEDU solo «semipresencial o a distancia»
+    # o «varias modalidades» cuando no es presencial
+    "modalidad": ("ruct", "catalogo", "qedu", "web"),
     "plazas": ("qedu", "ruct", "web"),
     "idioma": ("ruct", "qedu", "web"),
     "precio_credito": ("qedu", "web", "tarifa"),

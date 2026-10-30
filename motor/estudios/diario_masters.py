@@ -169,7 +169,8 @@ def ejecutar(raiz: Path, salida: Path, dia: int, sello: str, max_minutos: float 
     qedu_dirs = _rutas(raiz, m.get("qedu", [])) + ([nuevo] if (nuevo / "datos" / "estudios" / "masters" / "qedu").exists() else [])
     res["conjunto"] = {k: v for k, v in conjunto_masters.ejecutar(
         raiz / m["catalogo"], salida / ESTADO / "conjunto", opcional("altas"), ruct_dirs, qedu_dirs, fichas,
-        opcional("conjunto"), boe=_rutas(raiz, m.get("boe", [])), guias=_rutas(raiz, m.get("guias", []))).items()
+        opcional("conjunto"), fecha_catalogo=m.get("fecha_catalogo"), boe=_rutas(raiz, m.get("boe", [])),
+        guias=_rutas(raiz, m.get("guias", []))).items()
         if not k.startswith("cobertura")}
 
     # copia del conjunto en el almacén privado (escritura única por huella: un conjunto igual no se vuelve a guardar)
