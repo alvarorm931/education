@@ -1,0 +1,278 @@
+#
+# robots.txt
+#
+# This file is to prevent the crawling and indexing of certain parts
+# of your site by web crawlers and spiders run by sites like Yahoo!
+# and Google. By telling these "robots" where not to go on your site,
+# you save bandwidth and server resources.
+#
+# This file will be ignored unless it is at the root of your host:
+# Used:    http://example.com/robots.txt
+# Ignored: http://example.com/site/robots.txt
+#
+# For more information about the robots.txt standard, see:
+# http://www.robotstxt.org/wc/robots.html
+#
+# For syntax checking, see:
+# http://www.sxw.org.uk/computing/robots/check.html
+
+User-agent: *
+Crawl-delay: 10
+# Directories
+Disallow: /includes/
+Disallow: /misc/
+Disallow: /modules/
+Disallow: /profiles/
+Disallow: /scripts/
+Disallow: /themes/
+# Files
+Disallow: /CHANGELOG.txt
+Disallow: /cron.php
+Disallow: /INSTALL.mysql.txt
+Disallow: /INSTALL.pgsql.txt
+Disallow: /install.php
+Disallow: /INSTALL.txt
+Disallow: /LICENSE.txt
+Disallow: /MAINTAINERS.txt
+Disallow: /update.php
+Disallow: /UPGRADE.txt
+Disallow: /xmlrpc.php
+# Paths (clean URLs)
+Disallow: /admin/
+Disallow: /comment/reply/
+Disallow: /filter/tips/
+Disallow: /logout/
+Disallow: /node/add/
+Disallow: /search/
+Disallow: /user/register/
+Disallow: /user/password/
+Disallow: /user/login/
+# Paths (no clean URLs)
+Disallow: /?q=admin/
+Disallow: /?q=comment/reply/
+Disallow: /?q=filter/tips/
+Disallow: /?q=logout/
+Disallow: /?q=node/add/
+Disallow: /?q=search/
+Disallow: /?q=user/password/
+Disallow: /?q=user/register/
+Disallow: /?q=user/login/
+#
+Disallow: /system/files/private/publicado/bopbur-2012-035/bopbur-2011-107-anuncio-201103699.pdf
+Disallow: /sites/default/files/private/publicado/bopbur-2011-107/bopbur-2011-107-anuncio-201103669.pdf
+Disallow: /sites/default/files/private/publicado/bopbur-2011-107/bopbur-2011-107.pdf
+Disallow: /system/files/private/publicado/bopbur-2012-035/bopbur-2012-035-anuncio-201200684.pdf
+Disallow: /sites/default/files/private/publicado/bopbur-2012-035/bopbur-2012-035-anuncio-201200684.pdf
+Disallow: /sites/default/files/private/publicado/bopbur-2012-035/bopbur-2012-035.pdf
+Disallow: /system/files/private/publicado/bopbur-2011-107/bopbur-2011-107.pdf
+#
+Disallow: /system/files/private/publicado/bopbur-2014-202/bopbur-2014-202-anuncio-201407193.pdf
+Disallow: /system/files/private/publicado/bopbur-2014-202/bopbur-2014-202.pdf
+#
+Disallow: /sites/default/files/private/publicado/bopbur-2014-202/bopbur-2014-202-anuncio-201407193.pdf
+Disallow: /sites/default/files/private/publicado/bopbur-2014-202/bopbur-2014-202.pdf
+#
+Disallow: /sites/default/files/private/publicado/bopbur-2013-165/bopbur-2013-165-anuncio-201306653.pdf
+Disallow: /sites/default/files/private/publicado/bopbur-2013-165/bopbur-2013-165.pdf
+Disallow: /system/files/private/publicado/bopbur-2013-165/bopbur-2013-165-anuncio-201306653.pdf
+Disallow: /system/files/private/publicado/bopbur-2013-165/bopbur-2013-165.pdf
+#
+Disallow: /system/files/private/publicado/bopbur-2014-210/bopbur-2014-210-anuncio-201407472.pdf
+Disallow: /system/files/private/publicado/bopbur-2014-210/bopbur-2014-210.pdf
+Disallow: /sites/default/files/private/publicado/bopbur-2014-210/bopbur-2014-210-anuncio-201407472.pdf
+Disallow: /sites/default/files/private/publicado/bopbur-2014-210/bopbur-2014-210.pdf 
+#
+Disallow: /system/files/private/publicado/bopbur-2013-172/bopbur-2013-172-anuncio-201306846.pdf
+Disallow: /system/files/private/publicado/bopbur-2013-172/bopbur-2013-172.pdf
+Disallow: /sites/default/files/private/publicado/bopbur-2013-172/bopbur-2013-172-anuncio-201306846.pdf
+Disallow: /sites/default/files/private/publicado/bopbur-2013-172/bopbur-2013-172.pdf 
+#
+Disallow: /system/files/private/publicado/bopbur-2011-229/bopbur-2011-229-anuncio-201107528.pdf
+Disallow: /system/files/private/publicado/bopbur-2011-229/bopbur-2011-229.pdf
+Disallow: /sites/default/files/private/publicado/bopbur-2011-229/bopbur-2011-229-anuncio-201107528.pdf
+Disallow: /sites/default/files/private/publicado/bopbur-2011-229/bopbur-2011-229.pdf
+#
+Disallow: /system/files/private/publicado/bopbur-2014-080/bopbur-2014-080-anuncio-201402840.pdf
+Disallow: /system/files/private/publicado/bopbur-2014-080/bopbur-2014-080.pdf
+Disallow: /sites/default/files/private/publicado/bopbur-2014-080/bopbur-2014-080-anuncio-201402840.pdf
+Disallow: /sites/default/files/private/publicado/bopbur-2014-080/bopbur-2014-080.pdf
+#
+Disallow: /system/files/private/publicado/bopbur-2015-018/bopbur-2015-018-anuncio-201500305.pdf
+Disallow: /system/files/private/publicado/bopbur-2015-018/bopbur-2015-018.pdf
+Disallow: /sites/default/files/private/publicado/bopbur-2015-018/bopbur-2015-018-anuncio-201500305.pdf
+Disallow: /sites/default/files/private/publicado/bopbur-2015-018/bopbur-2015-018.pdf
+#
+Disallow: /system/files/private/publicado/bopbur-2013-115/bopbur-2013-115-anuncio-201304749.pdf
+Disallow: /system/files/private/publicado/bopbur-2013-115/bopbur-2013-115.pdf
+Disallow: /sites/default/files/private/publicado/bopbur-2013-115/bopbur-2013-115-anuncio-201304749.pdf
+Disallow: /sites/default/files/private/publicado/bopbur-2013-115/bopbur-2013-115.pdf
+#
+Disallow: /system/files/private/publicado/bopbur-2015-002/bopbur-2015-002-anuncio-201409239.pdf
+Disallow: /system/files/private/publicado/bopbur-2015-002/bopbur-2015-002.pdf
+Disallow: /sites/default/files/private/publicado/bopbur-2015-002/bopbur-2015-002-anuncio-201409239.pdf
+Disallow: /sites/default/files/private/publicado/bopbur-2015-002/bopbur-2015-002.pdf
+#
+Disallow: /system/files/private/publicado/bopbur-2011-023/bopbur-2011-023-anuncio-201100542.pdf
+Disallow: /system/files/private/publicado/bopbur-2011-023/bopbur-2011-023.pdf
+Disallow: /sites/default/files/private/publicado/bopbur-2011-074/bopbur-2011-074-anuncio-201102142.pdf
+Disallow: /sites/default/files/private/publicado/bopbur-2011-074/bopbur-2011-074.pdf
+#
+Disallow: /system/files/private/publicado/bopbur-2013-089/bopbur-2013-089-anuncio-201303671.pdf
+Disallow: /system/files/private/publicado/bopbur-2013-089/bopbur-2013-089.pdf
+Disallow: /sites/default/files/private/publicado/bopbur-2013-089/bopbur-2013-089-anuncio-201303671.pdf
+Disallow: /sites/default/files/private/publicado/bopbur-2013-089/bopbur-2013-089.pdf
+#
+Disallow: /system/files/private/publicado/bopbur-2012-230/bopbur-2012-230-anuncio-201206982.pdf
+Disallow: /system/files/private/publicado/bopbur-2012-230/bopbur-2012-230.pdf
+Disallow: /sites/default/files/private/publicado/bopbur-2012-230/bopbur-2012-230-anuncio-201206982.pdf
+Disallow: /sites/default/files/private/publicado/bopbur-2012-230/bopbur-2012-230.pdf
+#
+Disallow: /system/files/private/publicado/bopbur-2014-243/bopbur-2014-243-anuncio-201409103.pdf
+Disallow: /system/files/private/publicado/bopbur-2014-243/bopbur-2014-243.pdf
+#
+Disallow: /sites/default/files/private/publicado/bopbur-2014-243/bopbur-2014-243-anuncio-201409103.pdf
+Disallow: /sites/default/files/private/publicado/bopbur-2014-243/bopbur-2014-243.pdf
+#
+Disallow: /system/files/private/publicado/bopbur-2015-171/bopbur-2015-171-anuncio-201505756.pdf
+Disallow: /system/files/private/publicado/bopbur-2015-171/bopbur-2015-171.pdf
+# 
+Disallow: /sites/default/files/private/publicado/bopbur-2015-171/bopbur-2015-171-anuncio-201505756.pdf
+Disallow: /sites/default/files/private/publicado/bopbur-2015-171/bopbur-2015-171.pdf
+#
+Disallow: /system/files/private/publicado/bopbur-2011-074/bopbur-2011-074-anuncio-201102142.pdf
+Disallow: /system/files/private/publicado/bopbur-2011-074/bopbur-2011-074.pdf
+Disallow: /sites/default/files/private/publicado/bopbur-2011-074/bopbur-2011-074-anuncio-201102142.pdf
+Disallow: /sites/default/files/private/publicado/bopbur-2011-074/bopbur-2011-074.pdf
+#
+Disallow: /system/files/private/publicado/bopbur-2011-113/bopbur-2011-113-anuncio-201103887.pdf
+Disallow: /system/files/private/publicado/bopbur-2011-113/bopbur-2011-113.pdf
+Disallow: /sites/default/files/private/publicado/bopbur-2011-113/bopbur-2011-113-anuncio-201103887.pdf
+Disallow: /sites/default/files/private/publicado/bopbur-2011-113/bopbur-2011-113.pdf
+#
+Disallow: /system/files/private/publicado/bopbur-2013-192/bopbur-2013-192-anuncio-201307628.pdf
+Disallow: /system/files/private/publicado/bopbur-2013-192/bopbur-2013-192.pdf
+Disallow: /sites/default/files/private/publicado/bopbur-2013-192/bopbur-2013-192-anuncio-201307628.pdf
+Disallow: /sites/default/files/private/publicado/bopbur-2013-192/bopbur-2013-192.pdf
+#
+Disallow: /system/files/private/publicado/bopbur-2017-121/bopbur-2017-121-anuncio-201703692.pdf
+Disallow: /system/files/private/publicado/bopbur-2017-121/bopbur-2017-121.pdf
+Disallow: /sites/default/files/private/publicado/bopbur-2017-121/bopbur-2017-121-anuncio-201703692.pdf
+Disallow: /sites/default/files/private/publicado/bopbur-2017-121/bopbur-2017-121.pdf
+#
+Disallow: /system/files/private/publicado/bopbur-2017-206/bopbur-2017-206-anuncio-201705804.pdf
+Disallow: /system/files/private/publicado/bopbur-2017-206/bopbur-2017-206.pdf
+Disallow: /sites/default/files/private/publicado/bopbur-2017-206/bopbur-2017-206-anuncio-201705804.pdf
+Disallow: /sites/default/files/private/publicado/bopbur-2017-206/bopbur-2017-206.pdf
+#
+Disallow: /system/files/private/publicado/bopbur-2011-087/bopbur-2011-087-anuncio-201102949.pdf
+Disallow: /system/files/private/publicado/bopbur-2011-087/bopbur-2011-087.pdf
+Disallow: /sites/default/files/private/publicado/bopbur-2011-087/bopbur-2011-087-anuncio-201102949.pdf
+Disallow: /sites/default/files/private/publicado/bopbur-2011-087/bopbur-2011-087.pdf
+#
+Disallow: /system/files/private/publicado/bopbur-2011-226/bopbur-2011-226-anuncio-201107415.pdf
+Disallow: /system/files/private/publicado/bopbur-2011-226/bopbur-2011-226.pdf
+Disallow: /sites/default/files/private/publicado/bopbur-2011-226/bopbur-2011-226-anuncio-201107415.pdf
+Disallow: /sites/default/files/private/publicado/bopbur-2011-226/bopbur-2011-226.pdf
+#
+#Disallow: /system/files/private/publicado/bopbur-2019-022/bopbur-2019-022-anuncio-201900373.pdf
+#Disallow: /system/files/private/publicado/bopbur-2019-022/bopbur-2019-022.pdf
+#Disallow: /sites/default/files/private/publicado/bopbur-2019-022/bopbur-2019-022-anuncio-201900373.pdf
+#Disallow: /sites/default/files/private/publicado/bopbur-2019-022/bopbur-2019-022.pdf
+#
+Disallow: /system/files/private/publicado/bopbur-2013-164/bopbur-2011-226-anuncio-201306662.pdf
+Disallow: /system/files/private/publicado/bopbur-2013-164/bopbur-2011-226.pdf
+Disallow: /sites/default/files/private/publicado/bopbur-2013-164/bopbur-2013-164-anuncio-201306662.pdf
+Disallow: /sites/default/files/private/publicado/bopbur-2013-164/bopbur-22013-164.pdf
+#
+Disallow: /system/files/private/publicado/bopbur-2018-113/bopbur-2018-113-anuncio-201803291.pdf
+Disallow: /system/files/private/publicado/bopbur-2018-113/bopbur-2018-113.pdf
+Disallow: /sites/default/files/private/publicado/bopbur-2018-113/bopbur-2018-113-anuncio-201803291.pdf
+Disallow: /sites/default/files/private/publicado/bopbur-2018-113/bopbur-2018-113.pdf
+#
+Disallow: /system/files/private/publicado/bopbur-2018-078/bopbur-2018-078-anuncio-201802258.pdf
+Disallow: /system/files/private/publicado/bopbur-2018-078/bopbur-2018-078.pdf
+Disallow: /sites/default/files/private/publicado/bopbur-2018-078/bopbur-2018-078-anuncio-201802258.pdf
+Disallow: /sites/default/files/private/publicado/bopbur-2018-078/bopbur-2018-078.pdf
+#
+Disallow: /system/files/private/publicado/bopbur-2014-221/bopbur-2014-221-anuncio-201407904.pdf
+Disallow: /system/files/private/publicado/bopbur-2014-221/bopbur-2014-221.pdf
+Disallow: /sites/default/files/private/publicado/bopbur-2014-221/bopbur-2014-221-anuncio-201407904.pdf
+Disallow: /sites/default/files/private/publicado/bopbur-2014-221/bopbur-2014-221.pdf
+#
+Disallow: /sites/default/files/bops/BOP_2010-05-25.pdf
+#
+Disallow: /system/files/private/publicado/bopbur-2011-051/bopbur-2011-051-anuncio-201101210.pdf
+Disallow: /system/files/private/publicado/bopbur-2011-051/bopbur-2011-051.pdf
+Disallow: /sites/default/files/private/publicado/bopbur-2011-051/bopbur-2011-051-anuncio-201101210.pdf
+Disallow: /sites/default/files/private/publicado/bopbur-2011-051/bopbur-2011-051.pdf
+#
+Disallow: /system/files/private/publicado/bopbur-2014-188/bopbur-2014-188-anuncio-201406655.pdf
+Disallow: /system/files/private/publicado/bopbur-2014-188/bopbur-2014-188.pdf
+Disallow: /sites/default/files/private/publicado/bopbur-2014-188/bopbur-2014-188-anuncio-201406655.pdf
+Disallow: /sites/default/files/private/publicado/bopbur-2014-188/bopbur-2014-188.pdf
+#
+Disallow: /system/files/private/publicado/bopbur-2019-022/bopbur-2019-022-anuncio-201900373.pdf
+Disallow: /system/files/private/publicado/bopbur-2019-022/bopbur-2019-022.pdf
+Disallow: /sites/default/files/private/publicado/bopbur-2019-022/bopbur-2019-022-anuncio-201900373.pdf
+Disallow: /sites/default/files/private/publicado/bopbur-2019-022/bopbur-2019-022.pdf
+Disallow: /sites/default/files/bops/BOP_2009-09-08.pdf
+#
+Disallow: /system/files/private/publicado/bopbur-2021-174/bopbur-2021-174-anuncio-202105194.pdf
+Disallow: /system/files/private/publicado/bopbur-2021-174/bopbur-2021-174.pdf
+Disallow: /sites/default/files/private/publicado/bopbur-2021-174/bopbur-2021-174-anuncio-202105194.pdf
+Disallow: /sites/default/files/private/publicado/bopbur-2021-174/bopbur-2021-174.pdf
+#
+Disallow: /system/files/private/publicado/bopbur-2014-081/bopbur-2014-081-anuncio-201402919.pdf
+Disallow: /system/files/private/publicado/bopbur-2014-081/bopbur-2014-081.pdf
+Disallow: /sites/default/files/private/publicado/bopbur-2014-081/bopbur-2014-081-anuncio-201402919.pdf
+Disallow: /sites/default/files/private/publicado/bopbur-2014-081/bopbur-2014-081.pdf 
+#
+Disallow: /sites/default/files/bops/BOP_2008-04-07.pdf
+Disallow: /sites/default/files/bops/BOP_2007-09-20.pdf
+#
+Disallow: /sites/default/files/bops/BOP_2009-10-27.pdf
+Disallow: /system/files/private/publicado/bopbur-2012-110/bopbur-2012-110.pdf
+Disallow: /system/files/private/publicado/bopbur-2012-110/bopbur-2012-110-anuncio-201203401.pdf
+Disallow: /system/files/private/publicado/bopbur-2012-153/bopbur-2012-153.pdf
+Disallow: /system/files/private/publicado/bopbur-2012-153/bopbur-2012-153-anuncio-201204607.pdf
+Disallow: /system/files/private/publicado/bopbur-2013-094/bopbur-2013-094.pdf
+Disallow: /system/files/private/publicado/bopbur-2013-094/bopbur-2013-094-anuncio-201303866.pdf 
+#
+Disallow: /sites/default/files/bops/BOP_2007-07-23.pdf
+Disallow: /sites/default/files/bops/BOP_2007-11-15.pdf
+#
+Disallow: /system/files/private/publicado/bopbur-2012-226/bopbur-2012-226.pdf
+Disallow: /system/files/private/publicado/bopbur-2012-226/bopbur-2012-226-anuncio-201206752.pdf
+Disallow: /system/files/private/publicado/bopbur-2012-077/bopbur-2012-077.pdf
+Disallow: /system/files/private/publicado/bopbur-2012-077/bopbur-2012-077-anuncio-201202199.pdf
+Disallow: /system/files/private/publicado/bopbur-2012-156/bopbur-2012-156.pdf
+Disallow: /system/files/private/publicado/bopbur-2012-156/bopbur-2012-156-anuncio-201204830.pdf
+Disallow: /system/files/private/publicado/bopbur-2013-031/bopbur-2013-031.pdf
+Disallow: /system/files/private/publicado/bopbur-2013-031/bopbur-2013-031-anuncio-201300972_1.pdf
+Disallow: /system/files/private/publicado/bopbur-2013-076/bopbur-2013-076.pdf
+Disallow: /system/files/private/publicado/bopbur-2013-076/bopbur-2013-076-anuncio-2013-076.pdf
+Disallow: /system/files/private/publicado/bopbur-2013-013/bopbur-2013-013.pdf
+Disallow: /system/files/private/publicado/bopbur-2013-013/bopbur-2013-013-anuncio-201300108.pdf
+Disallow: /sites/default/files/bops/BOP_2007-05-02.pdf
+#
+Disallow: /system/files/private/publicado/bopbur-2011-241/bopbur-2011-241.pdf
+Disallow: /system/files/private/publicado/bopbur-2011-241/bopbur-2011-241-anuncio-201107663.pdf
+Disallow: /system/files/private/publicado/bopbur-2011-243/bopbur-2011-243.pdf
+Disallow: /system/files/private/publicado/bopbur-2011-243/bopbur-2011-243-anuncio-201107681.pdf
+Disallow: /system/files/private/publicado/bopbur-2013-024/bopbur-2013-024.pdf
+Disallow: /system/files/private/publicado/bopbur-2013-024/bopbur-2013-024-anuncio-201300476.pdf
+Disallow: /system/files/private/publicado/bopbur-2013-221/bopbur-2013-221.pdf
+Disallow: /system/files/private/publicado/bopbur-2013-221/bopbur-2013-221-anuncio-201308507.pdf
+Disallow: /system/files/private/publicado/bopbur-2014-024/bopbur-2014-024.pdf
+Disallow: /system/files/private/publicado/bopbur-2014-024/bopbur-2014-024-anuncio-201400307.pdf
+Disallow: /sites/default/files/bops/BOP_2008-12-11.pdf 
+#
+Disallow: /sites/default/files/bops/BOP_2009-10-21.pdf
+Disallow: /sites/default/files/bops/BOP_2010-02-18.pdf
+Disallow: /sites/default/files/bops/BOP_2010-06-09.pdf
+#
+Disallow: /system/files/private/publicado/bopbur-2014-040/bopbur-2014-040.pdf
+Disallow: /system/files/private/publicado/bopbur-2014-040/bopbur-2014-040-anuncio-201401127.pdf
+#
+Disallow: /system/files/private/publicado/bopbur-2015-091/bopbur-2015-091.pdf
+Disallow: /system/files/private/publicado/bopbur-2015-091/bopbur-2015-091-anuncio-201503703.pdf

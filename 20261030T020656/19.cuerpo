@@ -1,0 +1,218 @@
+Sitemap: https://www.dpteruel.es/DPTweb/sitemap_index.xml
+
+User-agent: *
+Disallow: /cgi-bin/
+Disallow: /directorio.htm/
+Disallow: /DPT/solicitudesweb.nsf/
+Disallow: /DPT/Patronato.nsf/
+Disallow: /DPT/SMS.nsf/
+Disallow: /DPT/WEBDAV.nsf/
+Disallow: /DPT/HelpDesk.nsf/
+Disallow: /DPT/agendacorporativa.nsf/
+Disallow: /DPT/AgendaPe.nsf/
+Disallow: /DPT/Anuncios_old.nsf/
+Disallow: /DPT/biblioteca.nsf/
+Disallow: /DPT/internos.nsf/
+Disallow: /DPT/Libretad.nsf/
+Disallow: /estatico/videos/
+Disallow: /estatico/zonaprivadatic/
+Disallow: /estatico/recursos/
+Disallow: /estatico/boletines/
+Disallow: /estatico/boletines/*/*.pdf
+Disallow: /DPT/bopt.nsf/0/
+
+# en www no indexamos el boletin
+
+User-agent: *
+Disallow: /DPTweb/wp-admin/
+Disallow: /DPTweb/author/
+Allow: /DPTweb/wp-admin/admin-ajax.php
+
+
+ 
+# Bloqueo basico para todos los bots y crawlers
+# puede dar problemas por bloqueo de recursos en GWT
+User-agent: *
+Allow: /DPTweb/wp-content/uploads/*
+Allow: /DPTweb/wp-content/*.js
+Allow: /DPTweb/wp-content/*.css
+Allow: /DPTweb/wp-includes/*.js
+Allow: /DPTweb/wp-includes/*.css
+Disallow: /DPTweb/author/*
+Disallow: /DPTweb/cgi-bin
+Disallow: /DPTweb/wp-content/plugins/ 
+Disallow: /DPTweb/wp-content/themes/ 
+Disallow: /DPTweb/wp-includes/ 
+Disallow: /DPTweb/*/attachment/
+Disallow: /DPTweb/tag/*/page/
+Disallow: /DPTweb/tag/*/feed/
+Disallow: /DPTweb/page/
+Disallow: /DPTweb/comments/
+Disallow: /DPTweb/xmlrpc.php
+Disallow: /DPTweb/?attachment_id*
+ 
+# Bloqueo de las URL dinamicas
+Disallow: /DPTweb/*?
+ 
+ 
+#Bloqueo de busquedas
+User-agent: *
+Disallow: /DPTweb/?s= 
+Disallow: /DPTweb/search
+ 
+ 
+# Bloqueo de trackbacks
+User-agent: *
+Disallow: /DPTweb/trackback
+Disallow: /DPTweb/*trackback
+Disallow: /DPTweb/*trackback*
+Disallow: /DPTweb/*/trackback
+ 
+ 
+# Bloqueo de feeds para crawlers
+User-agent: *
+Allow: /DPTweb/feed/$ 
+Disallow: /DPTweb/feed/ 
+Disallow: /DPTweb/comments/feed/
+Disallow: /DPTweb/*/feed/$ 
+Disallow: /DPTweb/*/feed/rss/$ 
+Disallow: /DPTweb/*/trackback/$ 
+Disallow: /DPTweb/*/*/feed/$ 
+Disallow: /DPTweb/*/*/feed/rss/$ 
+Disallow: /DPTweb/*/*/trackback/$ 
+Disallow: /DPTweb/*/*/*/feed/$ 
+Disallow: /DPTweb/*/*/*/feed/rss/$ 
+Disallow: /DPTweb/*/*/*/trackback/$
+ 
+ 
+# Ralentizamos algunos bots que se suelen volver locos
+User-agent: noxtrumbot
+Crawl-delay: 20
+User-agent: msnbot
+Crawl-delay: 20
+User-agent: Slurp
+Crawl-delay: 20
+ 
+ 
+# Bloqueo de bots y crawlers poco utiles
+User-agent: MSIECrawler
+Disallow: / 
+User-agent: WebCopier 
+Disallow: / 
+User-agent: HTTrack 
+Disallow: / 
+User-agent: Microsoft.URL.Control 
+Disallow: / 
+User-agent: libwww 
+Disallow: / 
+User-agent: Orthogaffe 
+Disallow: / 
+User-agent: UbiCrawler 
+Disallow: / 
+User-agent: DOC 
+Disallow: / 
+User-agent: Zao 
+Disallow: / 
+User-agent: sitecheck.internetseer.com 
+Disallow: / 
+User-agent: Zealbot 
+Disallow: / 
+User-agent: MSIECrawler 
+Disallow: / 
+User-agent: SiteSnagger 
+Disallow: / 
+User-agent: WebStripper 
+Disallow: / 
+User-agent: WebCopier 
+Disallow: / 
+User-agent: Fetch 
+Disallow: / 
+User-agent: Offline Explorer 
+Disallow: / 
+User-agent: Teleport 
+Disallow: / 
+User-agent: TeleportPro 
+Disallow: / 
+User-agent: WebZIP 
+Disallow: / 
+User-agent: linko 
+Disallow: / 
+User-agent: HTTrack 
+Disallow: / 
+User-agent: Microsoft.URL.Control 
+Disallow: / 
+User-agent: Xenu 
+Disallow: / 
+User-agent: larbin 
+Disallow: / 
+User-agent: libwww 
+Disallow: / 
+User-agent: ZyBORG 
+Disallow: / 
+User-agent: Download Ninja 
+Disallow: / 
+User-agent: wget 
+Disallow: / 
+User-agent: grub-client 
+Disallow: / 
+User-agent: k2spider 
+Disallow: / 
+User-agent: NPBot 
+Disallow: / 
+User-agent: WebReaper 
+Disallow: /
+ 
+ 
+# Previene problemas de recursos bloqueados en Google Webmaster Tools
+User-Agent: Googlebot
+Allow: .css
+Allow: .js
+
+# 14 junio 2018
+Disallow: /estatico/boletines/2018/15junio.pdf
+Disallow: /estatico/boletines/2011/21marzo.pdf
+Disallow: /estatico/boletines/2011/21marzo.pdf
+Disallow: /estatico/boletines/2009/20agosto.pdf
+Disallow: /estatico/boletines/2009/20agosto.pdf
+#19sept 2018
+Disallow: /estatico/boletines/2010/05agosto.pdf
+Disallow: /estatico/boletines/2010/20agosto.pdf
+Disallow: /estatico/boletines/2012/06agosto.pdf
+Disallow: /estatico/boletines/2014/06octubre.pdf
+#27abril 2020
+Disallow: /estatico/boletines/2010/22noviembre.pdf
+#29 enero 2021
+Disallow: /estatico/boletines/2011/14enero.pdf
+Disallow: /estatico/boletines/2011/17febrero.pdf
+Disallow: /estatico/boletines/2011/21marzo.pdf#page=4
+Disallow: /estatico/boletines/2012/20septiembre.pdf
+Disallow: /estatico/boletines/2012/20diciembre.pdf
+#2022
+Disallow: /estatico/boletines/2012/02abril.pdf
+#2023
+Disallow: /estatico/boletines/2021/16junio.pdf
+#2025
+Disallow: /estatico/boletines/2024/31mayo.pdf
+#2026
+Disallow: /estatico/boletines/2009/29octubre.pdf
+Disallow: /estatico/boletines/2006/05diciembre.pdf
+Disallow: /estatico/boletines/2006/07agosto.pdf
+Disallow: /estatico/boletines/2008/05diciembre.pdf
+Disallow: /estatico/boletines/2008/07abril.pdf
+Disallow: /estatico/boletines/2008/22septiembre.pdf
+Disallow: /estatico/boletines/2009/05junio.pdf
+Disallow: /estatico/boletines/2009/20octubre.pdf
+Disallow: /estatico/boletines/2009/21mayo.pdf
+Disallow: /estatico/boletines/2010/05abril.pdf
+Disallow: /estatico/boletines/2010/05febrero.pdf
+Disallow: /estatico/boletines/2010/05octubre.pdf
+Disallow: /estatico/boletines/2011/20abril.pdf
+Disallow: /estatico/boletines/2013/06mayo.pdf
+Disallow: /estatico/boletines/2014/05febrero.pdf
+Disallow: /estatico/boletines/2014/05septiembre.pdf
+Disallow: /estatico/boletines/2015/20marzo.pdf
+Disallow: /estatico/boletines/2015/31marzo.pdf
+Disallow: /estatico/boletines/2010/01febrero.pdf
+Disallow: /estatico/boletines/2015/22abril.pdf
+Disallow: /estatico/boletines/2015/28abril.pdf
+Disallow: /estatico/boletines/2016/22marzo.pdf

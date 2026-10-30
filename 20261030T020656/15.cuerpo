@@ -1,0 +1,23 @@
+User-agent: *           # directed to all spiders, not just Scooter
+
+Disallow: /sede/herramientaBOP/documentos/
+Disallow: /opencms/opencms/sede/herramientaBOP/documentos/
+Disallow: /herramientaBOP/documentos/
+Disallow: /opencms/export/sites/default/sede/herramientaBOP/documentos/
+Disallow: /documentacion/
+Disallow: /opencms/opencms/sede/documentacion/
+Disallow: /documentacion/bop/
+Disallow: /opencms/opencms/sede/documentacion/bop/
+Disallow: *.pdf$
+
+User-agent: Amazonbot             # Amazon's user agent
+Disallow: /          # disallow this directory
+
+User-agent: barkrowler
+Disallow: /          # disallow this directory
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
