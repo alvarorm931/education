@@ -1,0 +1,43 @@
+name: SEO, análisis bajo demanda
+
+# Ejecuta un módulo de motor/seo (competencia, dominio…) en los servidores de GitHub y deja el resultado como
+# artefacto de la ejecución. No usa la rama sondas ni su cola, para no cancelar ni ser cancelado por las pruebas
+# de las demás conversaciones.
+
+on:
+  workflow_dispatch:
+    inputs:
+      modulo:
+        description: "Módulo de motor.seo (por ejemplo motor.seo.competencia)"
+        required: true
+      argumentos:
+        description: "Argumentos (se añade --salida automáticamente)"
+        required: false
+
+permissions:
+  contents: read
+
+jobs:
+  analisis:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -e ".[seo]"
+      - name: Ejecutar
+        env:
+          MODULO: ${{ inputs.modulo }}
+          ARGS: ${{ inputs.argumentos }}
+        run: |
+          case "$MODULO" in motor.seo.*) ;; *) echo "Solo módulos de motor.seo"; exit 1;; esac
+          mkdir -p salida
+          python -m "$MODULO" $ARGS --salida salida 2>&1 | tee salida/salida.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: seo-analisis
+          path: salida/
+          retention-days: 14
