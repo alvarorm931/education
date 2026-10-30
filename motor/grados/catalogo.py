@@ -99,8 +99,10 @@ def variantes_nombre(nombre: str) -> list[str]:
 
 RE_POR = re.compile(r"\s+por\s+(?:la|el|las|los|les|l')\s*(?=Universi|Escuela|Escola|Facultad|Universitat|Mondrag|IE\b|"
                     r"Centro|CEU|Pontificia|Deusto|Comillas|UNED|ESIC|CUNEF|Abat|Loyola|Nebrija|EAE|Fundaci)", re.I)
-RE_PREFIJO = re.compile(r"^(?:Graduado o Graduada|Graduada o Graduado|Graduat o Graduada|Grado|Grau)\s+(?:en|in)\s+",
-                        re.I)
+# «Graduado o Graduada en X», y en los planes del BOE anteriores a 2015 «Graduado en X», «Graduado/a en X» o
+# «Graduado Maestro en Educación Infantil»
+RE_PREFIJO = re.compile(r"^(?:(?:Graduado o Graduada|Graduada o Graduado|Graduat o Graduada|Graduad[oa](?:/a)?|Grado|Grau)"
+                        r"\s+(?:en|in)\s+|Graduad[oa](?:\s+o\s+Graduad[oa])?\s+(?=Maestr))", re.I)
 
 
 def nombre_corto(nombre_oficial: str) -> str:

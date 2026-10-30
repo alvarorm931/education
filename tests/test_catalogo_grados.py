@@ -80,3 +80,10 @@ def test_clave_union_tolera_variantes_de_escritura():
     assert cat.clave_union("Ciencia y Tecnología de Alimentos") == cat.clave_union("Ciencia y Tecnología de los Alimentos")
     assert cat.clave_union("CC Ambientales") == cat.clave_union("Ciencias Ambientales")
     assert cat.clave_union("Derecho") != cat.clave_union("Criminología")
+
+
+def test_nombre_corto_de_los_planes_antiguos_del_boe():
+    from motor.grados.catalogo import nombre_corto
+    assert nombre_corto("Graduado en Contabilidad y Finanzas") == "Contabilidad y Finanzas"
+    assert nombre_corto("Graduado/a en Derecho por la Universidad de Murcia") == "Derecho"
+    assert nombre_corto("Graduado Maestro en Educación Infantil") == "Maestro en Educación Infantil"
