@@ -46,14 +46,44 @@ def es_tipo_oficial(tipo: str) -> bool:
     return "oficial" in t and not re.search(r"no[\s-]+oficial|propio|permanente|no universitari", t)
 
 
+# Catalán, gallego y valenciano → raíz común con el castellano del RUCT («Investigació» / «Investigación»,
+# «Ciutadania» / «Ciudadanía»): terminaciones habituales y raíz de 6 letras en las palabras largas.
+TERMINACIONES = [("itzacio", "izacion"), ("acio", "acion"), ("ecio", "ecion"), ("icio", "icion"), ("ccio", "ccion"),
+                 ("sio", "sion"), ("itat", "idad"), ("tat", "dad"), ("encia", "encia"), ("ncia", "ncia"),
+                 ("cions", "ciones"), ("cion", "cion"), ("ions", "iones"), ("ais", "ales"), ("ns", "nes")]
+CODIGO = __import__("re").compile(r"^[a-z]?\d+[a-z0-9]*$|^m[0-9a-z]{3,5}$")
+
+
+def raiz(w: str) -> str:
+    for a, b in TERMINACIONES:
+        if w.endswith(a):
+            w = w[: -len(a)] + b
+            break
+    return w[:6] if len(w) >= 6 else w
+
+
+def raices(palabras: set[str]) -> set[str]:
+    return {raiz(w) for w in palabras if not CODIGO.match(w)}
+
+
+def ajuste(oficial: str, extraido: str | None) -> tuple[float, float]:
+    """(parte del nombre oficial que está en el de la página, menos la parte de la página que sobra): para elegir
+    entre dos másters que encajan («Derecho Penal» y «Derecho Penal Económico» ante «Derecho Penal Económico»)."""
+    po, pe = raices(palabras_nombre(oficial)), raices(palabras_texto(extraido or ""))
+    if not po or not pe:
+        return (0.0, -1.0)
+    return (round(len(po & pe) / len(po), 3), -round(len(pe - po) / len(pe), 3))
+
+
 def comprobar_nombre(oficial: str, extraido: str | None) -> tuple[str, float]:
-    """confirmado | probable | otro_tipo | distinto | sin_nombre, con la parte del nombre oficial que aparece."""
+    """confirmado | probable | otro_tipo | distinto | sin_nombre, con la parte del nombre oficial que aparece.
+    Se comparan raíces (vale el nombre en catalán, gallego o valenciano) y no cuentan los códigos («- M2503»)."""
     if not extraido:
         return "sin_nombre", 0.0
-    po, pe = palabras_nombre(oficial), palabras_texto(extraido)
+    po, pe = raices(palabras_nombre(oficial)), raices(palabras_texto(extraido))
     if not po:
         return "sin_nombre", 0.0
-    if (pe & TIPO_DISTINTO) - palabras_texto(oficial):
+    if (palabras_texto(extraido) & TIPO_DISTINTO) - palabras_texto(oficial):
         return "otro_tipo", round(len(po & pe) / len(po), 3)
     cobertura = len(po & pe) / len(po)
     sobrante = len(pe - po) / max(len(pe), 1)
@@ -171,14 +201,16 @@ def rescatar_oficiales(paginas: dict[str, dict], hechos: dict[str, list[dict]], 
             # centro sin registro propio en el RUCT (adscrito con web propia): la universidad que dice la página
             u = univ_de(str(hs["universidad_que_expide"]))
             univs = {u} if u else set()
-        mejor = None
+        candidatos = []
         for u in univs:
             for t in por_univ.get(u or "", []):
                 est, cob = comprobar_nombre(t["nombre_oficial"], nombre)
-                if est == "confirmado" and (mejor is None or cob > mejor[1]):
-                    mejor = (t["codigo_ruct"], cob)
-        if mejor:
-            salida[url] = mejor
+                if est == "confirmado":
+                    candidatos.append((ajuste(t["nombre_oficial"], nombre), t["codigo_ruct"], cob))
+        candidatos.sort(reverse=True)
+        # sin empate: si dos másters encajan igual de bien, no se adivina
+        if candidatos and (len(candidatos) == 1 or candidatos[0][0] > candidatos[1][0]):
+            salida[url] = (candidatos[0][1], candidatos[0][2])
     return salida
 
 
@@ -270,6 +302,11 @@ def ejecutar(extracciones: list[Path], salida: Path, catalogo: Path | None = Non
                 est, cb = "no_es_ficha", 0.0
             else:
                 est, cb = comprobar_nombre(t.get("nombre_oficial", ""), nom) if t else ("sin_catalogo", 0.0)
+            if est == "confirmado" and t:
+                propio_ajuste = ajuste(t.get("nombre_oficial", ""), nom)
+                if any(ajuste(o["nombre_oficial"], nom) > propio_ajuste
+                       for o in hermanos.get(t.get("universidad_codigo"), []) if o["codigo_ruct"] != codigo):
+                    est = "probable_sin_confirmar"  # la página es de otro máster de la misma universidad
             if est == "probable":
                 # nombre parecido pero no igual (doble máster, programa ejecutivo…): solo vale si la página
                 # dice que es un máster universitario oficial y ningún otro máster de la misma universidad se

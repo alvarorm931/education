@@ -141,3 +141,11 @@ def test_tarifa_pdf_rellena_sin_pisar_la_pagina():
     assert n == 1 and fichas[0]["campos"]["precio_total"]["valor"] == 9000
     b = fichas[1]
     assert b["campos"]["precio_total"]["valor"] == 7500 and b["fuentes"][0]["pagina"] == "documento"
+
+
+def test_nombre_en_catalan_y_master_mas_ajustado():
+    assert f.comprobar_nombre("Máster Universitario en Investigación sobre el Cáncer por la Universidad de Barcelona",
+                              "Màster en Investigació sobre el Càncer")[0] == "confirmado"
+    assert f.comprobar_nombre("Máster Universitario en Filosofía Analítica por la U", "Filosofía Analítica - M2503")[0] == "confirmado"
+    assert f.ajuste("Máster Universitario en Derecho Penal Económico por la U", "Máster en Derecho Penal Económico") > \
+        f.ajuste("Máster Universitario en Derecho Penal por la U", "Máster en Derecho Penal Económico")
