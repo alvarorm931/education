@@ -191,12 +191,13 @@ def lineas_documento(contenido: bytes, formato: str) -> tuple[list[str], int | N
 
         lector = PdfReader(io.BytesIO(contenido))
         lineas = []
-        for p in lector.pages:
+        for i, p in enumerate(lector.pages, 1):
             try:
                 t = p.extract_text(extraction_mode="layout") or ""
             except Exception:  # noqa: BLE001 - versiones de pypdf sin modo de disposición
                 t = p.extract_text() or ""
-            lineas += [re.sub(r"[ \t]{3,}", "   ", x).rstrip() for x in t.splitlines()]
+            # se conservan los espacios: la columna de cada cifra sale de su posición en la línea
+            lineas += [f"### página {i}"] + [x.rstrip() for x in t.splitlines()]
         return lineas, len(lector.pages)
     texto = contenido.decode("utf-8", errors="replace")
     if formato == "html":
@@ -231,9 +232,11 @@ def medir(contenido: bytes, formato: str, filas: int = MUESTRA_FILAS) -> dict:
         lineas, paginas = lineas_documento(contenido, formato)
     # en CSV y JSON cada línea es un registro (la nota va pegada a su separador): valen todas las que tienen cifras
     con_nota = [x for x in lineas if NOTA.search(x) or formato in ("csv", "json", "xlsx") and re.search(r"\d[.,]\d", x)]
+    # con muchas filas pedidas se guarda el documento entero (rótulos de universidad, curso y columnas incluidos)
+    guardadas = [x for x in lineas if x.strip()] if filas >= 10_000 else con_nota
     cursos = sorted({f"{a}-{int(b) + 2000 if len(b) == 2 else b}" for a, b in CURSO.findall(" ".join(lineas[:400]))})
     return {"paginas": paginas, "lineas": len(lineas), "filas_con_nota": len(con_nota), "cursos_que_cita": cursos[:12],
-            "cabecera": [x for x in lineas[:40] if x.strip()][:25], "muestra": con_nota[:filas]}
+            "cabecera": [x for x in lineas[:40] if x.strip()][:25], "muestra": guardadas[:filas]}
 
 
 def ejecutar(salida: Path, solo: list[str] | None = None, max_minutos: float = 50, filas: int = MUESTRA_FILAS,
