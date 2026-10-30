@@ -57,3 +57,17 @@ def test_pagina_con_parte_de_sumario():
         {"id": "b", "titulo": "Lista de admitidos de Auxiliar"}])
     assert "veinte días hábiles" in cortes["a"][0] and "......" not in cortes["a"][0]
     assert cortes["b"][0].startswith("Lista de admitidos de Auxiliar")
+
+
+def test_sumario_de_tenerife_con_pocos_puntos():
+    """En el BOP de Tenerife hay entradas de sumario con dos a cuatro puntos antes de la página (30/10/2026)."""
+    from motor.provinciales.textos import cortar, sin_entradas_de_sumario
+    pagina = ("201838 Anuncio relativo a ampliación plazo de la plaza Ayudante Técnico .... 28971\n"
+              "11132 Anuncio relativo a la contratación de personal Laboral Fijo .. 31443\n"
+              "AYUNTAMIENTO DE ARONA\nAnuncio relativo a la contratación de personal Laboral Fijo\n"
+              "Primera.- Objeto: dos plazas.\n")
+    assert "31443" not in sin_entradas_de_sumario(pagina) and "Primera.- Objeto" in sin_entradas_de_sumario(pagina)
+    c = cortar([pagina], [{"id": "a", "titulo": "Anuncio relativo a la contratación de personal Laboral Fijo"}])
+    assert c["a"][0].startswith("Anuncio relativo a la contratación") and "Primera.- Objeto" in c["a"][0]
+    # una línea del cuerpo que acaba en cifras sin puntos no es sumario
+    assert "artículo 3 de la Ley 39/2015" in sin_entradas_de_sumario("según el artículo 3 de la Ley 39/2015\nOtra.")

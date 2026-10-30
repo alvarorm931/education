@@ -51,8 +51,10 @@ def test_texto_sin_datos_personales():
     t = bopv.texto_disposicion((FIX / "bopv_2604553.html").read_bytes())
     assert t["seccion"] == "AUTORIDADES Y PERSONAL" and t["organismo"] == "UNIVERSIDAD DEL PAÍS VASCO"
     assert t["titulo"].startswith("RESOLUCIÓN de 14 de octubre de 2026, del rector")
-    assert "***3642**" not in t["texto"] and t["parrafos_omitidos_por_datos_personales"] == 1
-    assert t["texto"].startswith("El candidato propuesto dispone de 20 días hábiles")
+    assert "***3642**" not in t["texto"] and t["parrafos_omitidos_por_datos_personales"] == 2
+    # del párrafo con la persona y su documento queda solo lo que no la nombra (30/10/2026); la firma, fuera
+    assert t["texto"].startswith("Departamento: Geografía") and "El candidato propuesto dispone de 20 días" in t["texto"]
+    assert "MIRANDONA" not in t["texto"] and t["texto"].endswith("El vicerrector de Personal Docente e Investigador,")
 
 
 def test_procesar_boletin(tmp_path, monkeypatch):

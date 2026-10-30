@@ -46,8 +46,9 @@ def paginas_pdf(contenido: bytes) -> list[str]:
     return [p.extract_text() or "" for p in PdfReader(io.BytesIO(contenido)).pages]
 
 
-# Líneas de un sumario: puntos hasta la página o, en el BOP de Albacete, «• Asunto>36» (30/10/2026)
-RE_INDICE = re.compile(r"\.{5,}|…{2,}|(?:\. ){4,}|\S\s?>\s?\d{1,4}\s*$")
+# Líneas de un sumario: puntos hasta la página o, en el BOP de Albacete, «• Asunto>36» (30/10/2026); en el de
+# Tenerife también dos a cuatro puntos y la página al final («… Ayudante Técnico .... 28971», «… temporalidad .. 31443»)
+RE_INDICE = re.compile(r"\.{5,}|…{2,}|(?:\. ){4,}|\S\s?>\s?\d{1,4}\s*$|(?:\s\.{2,4}|…)\s?\d{2,6}\s*$")
 
 
 def _posicion(plano: str, titulo: str, desde: int) -> int:

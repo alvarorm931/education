@@ -23,7 +23,9 @@ def test_seleccion_y_texto():
     assert len(emp) == 5
     assert {boa.ambito(x) for x in emp} == {"autonomico", "universidad", "local"}
     texto, omitidos = boa.texto_limpio(filas[9]["Texto"])
-    assert texto.startswith("La Junta de Gobierno Local") and "&quot;" not in texto and omitidos == 0
+    assert texto.startswith("La Junta de Gobierno Local") and "&quot;" not in texto
+    # la firma de la alcaldesa (nombre sin tratamiento) se retira desde el 30/10/2026
+    assert omitidos == 1 and "Alcaldesa-Presidenta," not in texto
     assert len(texto.split("\n")) > 3   # los párrafos llegan separados por dos espacios
 
 

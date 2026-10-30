@@ -45,7 +45,7 @@ def limpiar_texto_guardado(d: dict) -> tuple[dict, bool]:
         d["titulo"] = t
     if d.get("texto"):
         guardados, omitidos = parrafos_seguros(d["texto"].split("\n"))
-        if omitidos:
+        if omitidos or "\n".join(guardados) != d["texto"]:  # también si solo se quitó un pie de firma electrónica
             d["texto"] = "\n".join(guardados)
             d["parrafos_omitidos_por_datos_personales"] = d.get("parrafos_omitidos_por_datos_personales", 0) + omitidos
             cambio = True
