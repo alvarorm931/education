@@ -8,42 +8,60 @@ from motor.http import Respuesta
 F = Path(__file__).parent / "fixtures"
 
 
-def test_url_por_fecha():
-    assert bocm.url_sumario(date(2026, 10, 29)).endswith("/2026/10/29/BOCM-202610291.xml")
+def test_url_del_boletin_completo():
+    assert bocm.url_completo(date(2026, 10, 29), 260) == "https://www.bocm.es/boletin-completo/BOCM-20261029/260"
 
 
-def test_sumario_real():
-    s = bocm.parsear_sumario((F / "bocm_sumario_20261029.xml").read_bytes())
-    assert s["numero"] == "260" and s["fecha"] == "2026-10-29"
-    assert len(s["disposiciones"]) >= 90
+def test_boletin_completo_html():
+    # robots.txt prohíbe el sumario XML; el boletín completo en HTML da lo mismo (comprobado contra el XML del 28/10)
+    s = bocm.parsear_completo((F / "bocm_completo_20261029_260.html").read_bytes())
+    assert s["numero"] == "260" and s["fecha"] == "2026-10-29" and len(s["disposiciones"]) == 96
     alc = [d for d in s["disposiciones"] if d["titulo"].startswith("Alcobendas. Ofertas de empleo")][0]
-    assert bocm.es_empleo_publico(alc) and bocm.ambito(alc) == "local"
+    assert bocm.es_empleo_publico(alc) and bocm.ambito(alc) == "local" and alc["organismo"] == "ALCOBENDAS"
     assert bocm.municipio_y_materia(alc["titulo"]) == ("Alcobendas", "Ofertas de empleo", "Proceso selectivo")
+    assert alc["url_xml"].startswith("https://www.bocm.es/boletin/CM_Orden_BOCM/2026/10/29/BOCM-20261029-")
     urbanismo = [d for d in s["disposiciones"] if "Urbanismo" in d["titulo"]][0]
     assert not bocm.es_empleo_publico(urbanismo)
+    s28 = bocm.parsear_completo((F / "bocm_completo_20261028_258.html").read_bytes())
+    d1 = s28["disposiciones"][0]
+    assert (d1["id"], d1["seccion"], d1["apartado"]) == ("BOCM-20261028-1", "I. COMUNIDAD DE MADRID",
+                                                         "B) Autoridades y Personal")
+    assert d1["titulo"].startswith("Puesto libre designación Orden de 19 de octubre de 2026")
 
 
-def test_dia_real_extremo_a_extremo(tmp_path, monkeypatch):
-    contenido = (F / "bocm_sumario_20261029.xml").read_bytes()
-    monkeypatch.setattr(bocm, "obtener", lambda url, **kw: Respuesta(url, 200, contenido, {}))
-    inf = bocm.procesar_dia(date(2026, 10, 29), tmp_path, bocm.Archivo(tmp_path / "archivo"))
-    assert inf["resultado"] == "ok" and inf["numero"] == "260" and inf["empleo_publico"] > 20
-    filas = [json.loads(l) for l in (tmp_path / "datos/autonomicos/bocm/oposiciones/2026/10/29.jsonl").read_text().splitlines()]
-    assert {f["ambito"] for f in filas} <= {"local", "autonomico", "universidad", "otro"}
-    assert any(f["municipio"] == "Alcobendas" for f in filas)
+def _servidor(paginas):
+    def obtener(url, **kw):
+        return Respuesta(url, 200, paginas[url], {}) if url in paginas else Respuesta(url, 404, b"", {})
+    return obtener
 
 
-def test_fecha_equivocada_es_error(tmp_path, monkeypatch):
-    contenido = (F / "bocm_sumario_20261029.xml").read_bytes()
-    monkeypatch.setattr(bocm, "obtener", lambda url, **kw: Respuesta(url, 200, contenido, {}))
-    inf = bocm.procesar_dia(date(2026, 10, 28), tmp_path, bocm.Archivo(tmp_path / "archivo"))
-    assert inf["resultado"] == "error_formato"
+def test_numero_desde_el_dia_anterior_y_extraordinario(tmp_path, monkeypatch):
+    # El 28/10 salió el 258 y, aparte, el extraordinario 259; el 29/10, el 260.
+    dias = tmp_path / "datos/autonomicos/bocm/dias/2026/10"
+    dias.mkdir(parents=True)
+    (dias / "27.json").write_text(json.dumps({"fecha": "2026-10-27", "resultado": "ok", "numero": "257"}))
+    paginas = {bocm.url_completo(date(2026, 10, 28), 258): (F / "bocm_completo_20261028_258.html").read_bytes(),
+               bocm.url_completo(date(2026, 10, 29), 260): (F / "bocm_completo_20261029_260.html").read_bytes(),
+               bocm.url_completo(date(2026, 10, 28), 259): (F / "bocm_completo_20261028_258.html").read_bytes()
+               .replace(b"BOCM - N\xc2\xba 258", b"BOCM - N\xc2\xba 259")}
+    monkeypatch.setattr(bocm, "obtener", _servidor(paginas))
+    archivo = bocm.Archivo(tmp_path / "archivo")
+    inf = bocm.procesar_dia(date(2026, 10, 28), tmp_path, archivo)
+    assert inf["resultado"] == "ok" and inf["numero"] == "258"
+    (dias / "28.json").write_text(json.dumps(inf))
+    inf = bocm.procesar_dia(date(2026, 10, 29), tmp_path, archivo)
+    assert inf["numero"] == "260" and inf["extraordinarios"] == [{"numero": 259, "fecha": "2026-10-28", "resultado": "ok"}]
+    assert (dias / "28-259.json").exists()
+    assert (tmp_path / "datos/autonomicos/bocm/disposiciones/2026/10/28-259.jsonl").exists()
 
 
-def test_sin_boletin(tmp_path, monkeypatch):
-    monkeypatch.setattr(bocm, "obtener", lambda url, **kw: Respuesta(url, 404, b"", {}))
+def test_domingo_sin_peticiones(tmp_path, monkeypatch):
+    monkeypatch.setattr(bocm, "obtener", lambda *a, **k: (_ for _ in ()).throw(AssertionError("no debe pedir")))
+    dias = tmp_path / "datos/autonomicos/bocm/dias/2026/10"
+    dias.mkdir(parents=True)
+    (dias / "24.json").write_text(json.dumps({"fecha": "2026-10-24", "resultado": "ok", "numero": "255"}))
     inf = bocm.procesar_dia(date(2026, 10, 25), tmp_path, bocm.Archivo(tmp_path / "archivo"))
-    assert inf["resultado"] == "sin_boletin" and inf["alertas"] == []  # domingo
+    assert inf["resultado"] == "sin_boletin" and inf["alertas"] == []
 
 
 def test_texto_disposicion_real():
