@@ -121,3 +121,12 @@ def test_rescate_por_universidad_que_dice_la_pagina(tmp_path):
     f.ejecutar([tmp_path / "e"], tmp_path / "o", catalogo=tmp_path / "c.json", censo=tmp_path / "p.jsonl")
     fichas = {x["clave"]: x for x in map(json.loads, (tmp_path / "o/datos/estudios/masters/fichas.jsonl").read_text().splitlines())}
     assert fichas["ruct:1"]["comprobacion_nombre"] == "confirmado_por_nombre" and "ruct:2" not in fichas
+
+
+def test_altas_del_boe_entran_en_el_catalogo():
+    cat = {"1": {"codigo_ruct": "1", "universidad": "Cardenal Herrera-CEU", "universidad_codigo": "080",
+                 "universidad_tipo": "Privada", "situacion": "Activo", "nombre_oficial": "x"}}
+    n = f.con_altas(cat, [{"codigo_ruct": "4317450", "nombre": "Máster Universitario en Dirección y Gestión en Enfermería",
+                           "universidad": "Universidad Cardenal Herrera-CEU", "boe": "BOE-A-2022-619", "fecha": "2022-01-15"},
+                          {"codigo_ruct": "1", "nombre": "repetido"}])
+    assert n == 1 and cat["4317450"]["universidad_codigo"] == "080" and "boe.es" in cat["4317450"]["fuente"]["url"]

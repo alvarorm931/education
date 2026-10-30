@@ -157,8 +157,32 @@ def rescatar_oficiales(paginas: dict[str, dict], hechos: dict[str, list[dict]], 
     return salida
 
 
+def con_altas(cat: dict[str, dict], altas: list[dict]) -> int:
+    """Añade al catálogo (de febrero) los másters aprobados después que publica el BOE (boe_masters.py), con la
+    universidad por su nombre («Universidad Cardenal Herrera-CEU» → su código del catálogo)."""
+    univs: dict[frozenset, dict] = {}
+    for t in cat.values():
+        if t.get("universidad") and t.get("universidad_codigo"):
+            univs[frozenset(palabras_texto(t["universidad"]))] = t
+    n = 0
+    for a in altas:
+        if a.get("codigo_ruct") in cat or not a.get("nombre"):
+            continue
+        pal = palabras_texto(a.get("universidad") or "")
+        encajan = [(len(k), t) for k, t in univs.items() if k and k <= pal]
+        u = max(encajan, key=lambda x: x[0])[1] if encajan else {}
+        cat[a["codigo_ruct"]] = {
+            "codigo_ruct": a["codigo_ruct"], "nombre_oficial": f"{a['nombre']} por la {a.get('universidad') or ''}".strip(),
+            "situacion": "Activo", "universidad": u.get("universidad"), "universidad_codigo": u.get("universidad_codigo"),
+            "universidad_tipo": u.get("universidad_tipo"), "rama": None,
+            "fuente": {"url": f"https://www.boe.es/diario_boe/txt.php?id={a.get('boe')}", "capturado": a.get("fecha")},
+            "origen": "boe_alta"}
+        n += 1
+    return n
+
+
 def ejecutar(extracciones: list[Path], salida: Path, catalogo: Path | None = None,
-             clasificacion: Path | None = None, censo: Path | None = None) -> dict:
+             clasificacion: Path | None = None, censo: Path | None = None, altas: Path | None = None) -> dict:
     paginas, hechos = leer_extracciones(extracciones)
     cat = {}
     if catalogo:
@@ -167,6 +191,8 @@ def ejecutar(extracciones: list[Path], salida: Path, catalogo: Path | None = Non
         cat = {t["codigo_ruct"]: t for t in filas}
     clas = {c["id"]: c for c in _jsonl(clasificacion)} if clasificacion else {}
     res, fichas = Counter(), []
+    if altas:
+        res["altas_boe_en_catalogo"] = con_altas(cat, _jsonl(altas))
 
     provs = {x["id"]: x for x in _jsonl(censo)} if censo else {}
     rescatadas = rescatar_oficiales(paginas, hechos, cat, provs) if cat and provs else {}
@@ -294,10 +320,12 @@ def main() -> None:
     p.add_argument("--catalogo")
     p.add_argument("--clasificacion")
     p.add_argument("--censo", help="proveedores.jsonl: une a sus másters oficiales las páginas propias con su nombre")
+    p.add_argument("--altas", help="boe_altas.jsonl: másters aprobados después del catálogo")
     p.add_argument("--salida", required=True)
     a = p.parse_args()
     print(json.dumps(ejecutar([Path(x) for x in a.extraccion], Path(a.salida), Path(a.catalogo) if a.catalogo else None,
-                              Path(a.clasificacion) if a.clasificacion else None, Path(a.censo) if a.censo else None),
+                              Path(a.clasificacion) if a.clasificacion else None, Path(a.censo) if a.censo else None,
+                              Path(a.altas) if a.altas else None),
                      ensure_ascii=False, indent=1))
 
 
