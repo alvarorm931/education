@@ -248,6 +248,12 @@ for c in $CONECTORES; do
       ejecutar motor.provinciales.bopcaceres --desde 2022-01-01 --salida "$S" --max-minutos "$M"
       "$G" "BOP Cáceres: boletines"
       ;;
+    bopguadalajara)
+      # Lista por fecha (categoría General) y ficha del boletín con su sumario
+      ejecutar motor.provinciales.bopguadalajara --salida "$S"
+      ejecutar motor.provinciales.bopguadalajara --desde 2022-01-01 --salida "$S" --max-minutos "$M"
+      "$G" "BOP Guadalajara: días"
+      ;;
     bopb)
       # El del día por el canal de datos abiertos; los anteriores por el listado por días y los textos en PDF (cerrados
       # en robots.txt; se leen como boletín oficial, motor/http.py)

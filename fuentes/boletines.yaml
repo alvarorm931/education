@@ -282,7 +282,8 @@ provinciales:
   - provincia: Guadalajara
     url: http://boletin.dguadalajara.es/
     acceso_desde_github: "ok"
-    estado: sin_conector
+    estado: conector_en_pruebas
+    conector: motor/provinciales/bopguadalajara.py
   - provincia: Huelva
     url: https://sede.diphuelva.es/servicios/bop
     acceso_desde_github: "ok"
