@@ -61,6 +61,8 @@ def _es_persona(m: re.Match) -> bool:
     frase = f"{m.group('t')} {m.group('n')}".lower()
     if any(frase.startswith(x) for x in MUNICIPIOS_CON_TRATAMIENTO):
         return False
+    if m.string[max(0, m.start() - 12):m.start()].lower().rstrip().endswith(("villa de", "villa del")):
+        return False  # «Villa de Don Fadrique»: un municipio
     # «D.» seguido de mayúsculas suele ser el apartado de un sumario («D. OTRAS DISPOSICIONES»), no una persona
     if m.group("t").lower() == "d." and m.group("n").split()[0].isupper():
         return False
@@ -89,13 +91,49 @@ NO_NOMBRE = {"agente", "agent", "auxiliar", "técnico", "técnica", "tecnico", "
              "presidència", "concejalía", "plaza", "plaça", "praza", "puesto", "lloc", "posto", "cuerpo", "cos",
              "escala", "subescala", "grupo", "grup", "boletín", "butlletí", "real", "orden", "resolución", "decreto",
              "ley", "mancomunidad", "consorcio", "entidad", "empresa", "sociedad", "fundación", "universidad",
-             "excmo", "excma", "ilmo", "ilma", "el", "la", "los", "las", "les", "els"}
+             "excmo", "excma", "ilmo", "ilma", "el", "la", "los", "las", "les", "els", "primer", "primera", "segundo",
+             "segunda", "tercer", "tercera", "cuarto", "cuarta", "quinto", "quinta", "teniente", "tenienta", "tinent",
+             "concejal", "concejala", "regidor", "regidora", "alcalde", "alcaldesa", "vocal", "presidente",
+             "presidenta", "vicepresidente", "vicepresidenta", "diputado", "diputada", "consejero", "consejera"}
+
+
+# Palabras que no forman parte de un nombre de persona: si aparecen, lo que hay detrás del acto es una institución,
+# un cuerpo o un lugar («personal laboral fijo de Administración y Servicios», «Televisión Autonómica de Aragón»)
+NO_PERSONA = {"administracion", "administracio", "administracions", "servicios", "servicio", "serveis", "servizos",
+              "universidad", "universitat", "universidade", "hospital", "televisión", "television", "radio", "general",
+              "especial", "autonomica", "autonomico", "local", "municipal", "provincial", "profesional", "laboral",
+              "escuela", "escola", "instituto", "institut", "centro", "centre", "fundacion", "fundacio", "sociedad",
+              "consorcio", "consorci", "agencia", "agencia", "oficina", "area", "seccion", "departamento", "unidad",
+              "cuerpo", "escala", "subescala", "categoria", "grupo", "plaza", "plazas", "puesto", "puestos", "xxi",
+              "sl", "sa", "slu", "s.l", "s.a", "policia", "bomberos", "salud", "sanitario", "enfermeria", "medicina"}
+
+
+def _nombres_pila() -> set[str]:
+    try:
+        from pathlib import Path as _Path
+        t = (_Path(__file__).parent / "catalogo" / "datos" / "nombres_pila.txt").read_text(encoding="utf-8")
+    except OSError:
+        return set()
+    return {w for l in t.splitlines() if not l.startswith("#") for w in l.split()}
+
+
+NOMBRES_PILA = _nombres_pila()
 
 
 def _es_designado(m: re.Match) -> bool:
+    """Sin tratamiento delante solo se da por persona si empieza por un nombre de pila frecuente y no trae palabras de
+    institución: «Monitor de Musculación» o «Entidades Locales» no son personas."""
     n = m.group("n")
-    primera = n.split()[0].lower().strip(".,")
-    return not (primera in NO_NOMBRE or CARGOS.match(n) or n.isupper())
+    primera = _sin_tildes(n.split()[0].lower().strip(".,"))
+    if primera in NO_NOMBRE or CARGOS.match(n) or n.isupper() or primera not in NOMBRES_PILA:
+        return False
+    palabras = {_sin_tildes(w.lower().strip(".,")) for w in n.split()}
+    return not (palabras & NO_PERSONA)
+
+
+def _sin_tildes(t: str) -> str:
+    import unicodedata
+    return "".join(c for c in unicodedata.normalize("NFKD", t) if not unicodedata.combining(c))
 
 
 def tiene_nombre_de_persona(texto: str) -> bool:

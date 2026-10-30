@@ -34,5 +34,9 @@ def test_nombre_sin_tratamiento_junto_al_nombramiento():
     for t in ("Se acuerda nombrar a la persona aspirante con mayor puntuación.",
               "Nombrar funcionario de carrera a Agente de la Policía Local al aspirante propuesto.",
               "Se nombra a la Comisión de Valoración formada por los siguientes miembros.",
-              "Nombramiento de funcionarios de carrera (Oficiales de Vías Públicas, Recursos Materiales y Servicios)."):
+              "Nombramiento de funcionarios de carrera (Oficiales de Vías Públicas, Recursos Materiales y Servicios).",
+              "Contratación de personal laboral fijo de Administración y Servicios de la Universidad de Cádiz, por",
+              "Se acuerda contratar a Monitor de Musculación, para el polideportivo",
+              "Delegación en el Primer Teniente de Alcalde, para la celebración",
+              "Ayuntamiento de La Villa de Don Fadrique. Bases de una plaza de auxiliar"):
         assert not tiene_nombre_de_persona(t), t
