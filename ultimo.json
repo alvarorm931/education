@@ -1,76 +1,19 @@
 {
- "fecha": "2026-10-30T06:22:52+00:00",
- "fecha_madrid": "30/10 07:22",
+ "fecha": "2026-10-30T06:28:55+00:00",
+ "fecha_madrid": "30/10 07:28",
  "ventana_horas": 6.0,
  "resumen": {
-  "ejecuciones_revisadas": 314,
-  "fallos": 5,
+  "ejecuciones_revisadas": 315,
+  "fallos": 4,
   "fallos_pendientes": 0,
-  "relanzados": 1,
-  "colas_largas": 2,
+  "relanzados": 0,
+  "colas_largas": 1,
   "flujos_programados_parados": [],
   "programaciones_lanzadas_a_mano": [],
   "avisos_de_fuentes": 0,
   "almacen": "ok"
  },
  "fallos": [
-  {
-   "flujo": "Prueba de conector",
-   "fichero": "prueba.yml",
-   "id": 41013623895,
-   "intento": 1,
-   "evento": "workflow_dispatch",
-   "rama": "main",
-   "commit": "a9c3ffb",
-   "titulo": "Prueba de conector",
-   "conclusion": "failure",
-   "cuando": "30/10 07:22",
-   "url": "https://github.com/alvarorm931/education/actions/runs/41013623895",
-   "superado": false,
-   "pasajero": true,
-   "detalle": [
-    {
-     "trabajo": "prueba",
-     "pasos": [
-      "Subir a la rama sondas"
-     ],
-     "ejecutor": "GitHub Actions 1000000590",
-     "etiquetas": [
-      "ubuntu-latest"
-     ],
-     "final_registro": [
-      "##[error]Process completed with exit code 1.",
-      "...",
-      "  PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig",
-      "  Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64",
-      "  Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64",
-      "  Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64",
-      "  LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib",
-      "  STAMP: 20261030T062154",
-      "To https://github.com/alvarorm931/education.git",
-      " ! [rejected]          sondas -> sondas (fetch first)",
-      "error: failed to push some refs to 'https://github.com/alvarorm931/education.git'",
-      "hint: Updates were rejected because the remote contains work that you do not",
-      "hint: have locally. This is usually caused by another repository pushing to",
-      "hint: the same ref. If you want to integrate the remote changes, use",
-      "hint: 'git pull' before pushing again.",
-      "hint: See the 'Note about fast-forwards' in 'git push --help' for details.",
-      "##[error]Process completed with exit code 1.",
-      "\u001b[36;1mrm -rf prueba\u001b[0m",
-      "shell: /usr/bin/bash -e {0}",
-      "env:",
-      "  pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64",
-      "  PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig",
-      "  Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64",
-      "  Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64",
-      "  Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64",
-      "  LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib",
-      "  STAMP: 20261030T062154"
-     ]
-    }
-   ],
-   "relanzado": true
-  },
   {
    "flujo": "Boletines autonómicos",
    "fichero": "autonomicos.yml",
@@ -124,6 +67,13 @@
      "final_registro": [
       "##[error]Process completed with exit code 1.",
       "...",
+      "\u001b[36;1m  git worktree add -q -B vigilancia rama origin/vigilancia\u001b[0m",
+      "\u001b[36;1melse\u001b[0m",
+      "\u001b[36;1m  git worktree add -q --orphan -b vigilancia rama\u001b[0m",
+      "\u001b[36;1mfi\u001b[0m",
+      "\u001b[36;1mcp informe/ultimo.json informe/ultimo.md rama/\u001b[0m",
+      "\u001b[36;1mmkdir -p rama/historial\u001b[0m",
+      "\u001b[36;1mpython3 -c \"import json;d=json.load(open('informe/ultimo.json'));print(json.dumps({'fecha':d['fecha'],**d['resumen']},ensure_ascii=False))\" >> rama/historial/$(date -u +%Y-%m).jsonl\u001b[0m",
       "\u001b[36;1mcd rama\u001b[0m",
       "\u001b[36;1mgit add -A\u001b[0m",
       "\u001b[36;1mgit commit -qm \"Vigilancia $(TZ=Europe/Madrid date '+%d/%m %H:%M')\"\u001b[0m",
@@ -133,13 +83,6 @@
       "\u001b[36;1m  git fetch -q --depth 1 origin vigilancia && git rebase -q origin/vigilancia || git rebase --abort\u001b[0m",
       "\u001b[36;1mdone\u001b[0m",
       "\u001b[36;1mecho \"::warning::No se pudo subir el estado de vigilancia\"\u001b[0m",
-      "shell: /usr/bin/bash -e {0}",
-      "env:",
-      "  AWS_DEFAULT_REGION: eu-south-2",
-      "  AWS_REGION: eu-south-2",
-      "  AWS_ACCESS_KEY_ID: ***",
-      "  AWS_SECRET_ACCESS_KEY: ***",
-      "  AWS_SESSION_TOKEN: ***",
       "The following paths and/or pathspecs matched paths that exist",
       "outside of your sparse-checkout definition, so will not be",
       "updated in the index:",
@@ -239,7 +182,18 @@
      "final_registro": [
       "##[error]Could not assume role with OIDC: Not authorized to perform sts:AssumeRoleWithWebIdentity",
       "...",
-      "  LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib",
+      "  allow-prereleases: false",
+      "  freethreaded: false",
+      "(node:2378) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.",
+      "(Use `node --trace-deprecation ...` to show where the warning was created)",
+      "Successfully set up CPython (3.12.15)",
+      "\u001b[36;1mpip install -q -e \"./codigo[almacen]\"\u001b[0m",
+      "with:",
+      "  role-to-assume: arn:aws:iam::369017477131:role/education-originales-github",
+      "  aws-region: eu-south-2",
+      "  role-session-name: prueba-almacen-40985002326",
+      "  audience: sts.amazonaws.com",
+      "  output-env-credentials: true",
       "Assuming role with OIDC",
       "Assuming role with OIDC",
       "Assuming role with OIDC",
@@ -252,18 +206,7 @@
       "Assuming role with OIDC",
       "Assuming role with OIDC",
       "Assuming role with OIDC",
-      "##[error]Could not assume role with OIDC: Not authorized to perform sts:AssumeRoleWithWebIdentity",
-      "\u001b[36;1mrm -rf codigo\u001b[0m",
-      "shell: /usr/bin/bash -e {0}",
-      "env:",
-      "  pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64",
-      "  PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig",
-      "  Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64",
-      "  Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64",
-      "  Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64",
-      "  LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib",
-      "  AWS_DEFAULT_REGION: eu-south-2",
-      "  AWS_REGION: eu-south-2"
+      "##[error]Could not assume role with OIDC: Not authorized to perform sts:AssumeRoleWithWebIdentity"
      ]
     }
    ]
@@ -272,17 +215,10 @@
  "colas_largas": [
   {
    "flujo": "Sonda de fuentes",
-   "id": 41010771696,
-   "en_cola_min": 31,
+   "id": 41010906257,
+   "en_cola_min": 36,
    "trabajos_empezados": 0,
-   "url": "https://github.com/alvarorm931/education/actions/runs/41010771696"
-  },
-  {
-   "flujo": "Boletines autonómicos",
-   "id": 41008945432,
-   "en_cola_min": 51,
-   "trabajos_empezados": 2,
-   "url": "https://github.com/alvarorm931/education/actions/runs/41008945432"
+   "url": "https://github.com/alvarorm931/education/actions/runs/41010906257"
   }
  ],
  "programados": {

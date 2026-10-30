@@ -1,25 +1,13 @@
-# Vigilancia 30/10 07:22 (Madrid)
+# Vigilancia 30/10 07:28 (Madrid)
 
-- Ejecuciones revisadas (últimas 6 h): 314
-- Fallos: 5; pendientes: 0; relanzados ahora: 1
-- Colas de más de 30 minutos: 2
+- Ejecuciones revisadas (últimas 6 h): 315
+- Fallos: 4; pendientes: 0; relanzados ahora: 0
+- Colas de más de 30 minutos: 1
 - Flujos programados parados: ninguno
 - Almacén S3: ok
 - Programaciones que GitHub no disparó y se lanzaron a mano: ninguna
 - Latido (relanza al vigilante cada ~25 min mientras GitHub no dispare programaciones): en marcha
 - Avisos de fuentes: 0
-
-## Prueba de conector · 30/10 07:22 · relanzado
-https://github.com/alvarorm931/education/actions/runs/41013623895 (intento 1, workflow_dispatch, a9c3ffb, pasajero: True)
-- prueba · pasos: Subir a la rama sondas · ejecutor: GitHub Actions 1000000590
-      env:
-        pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
-        PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
-        Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
-        Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
-        Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
-        LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
-        STAMP: 20261030T062154
 
 ## Boletines autonómicos · 30/10 04:41 · superado
 https://github.com/alvarorm931/education/actions/runs/40995655119 (intento 1, workflow_dispatch, f26c916, pasajero: False)
@@ -53,14 +41,13 @@ https://github.com/alvarorm931/education/actions/runs/40987648750 (intento 1, wo
 ## Prueba del almacén de originales · 30/10 02:19 · superado
 https://github.com/alvarorm931/education/actions/runs/40985002326 (intento 1, workflow_dispatch, 86fe8bb, pasajero: False)
 - prueba · pasos: Run aws-actions/configure-aws-credentials@v4 · ejecutor: GitHub Actions 1000000242
-        pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
-        PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
-        Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
-        Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
-        Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
-        LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
-        AWS_DEFAULT_REGION: eu-south-2
-        AWS_REGION: eu-south-2
+      Assuming role with OIDC
+      Assuming role with OIDC
+      Assuming role with OIDC
+      Assuming role with OIDC
+      Assuming role with OIDC
+      Assuming role with OIDC
+      Assuming role with OIDC
+      ##[error]Could not assume role with OIDC: Not authorized to perform sts:AssumeRoleWithWebIdentity
 
-- En cola 31 min: Sonda de fuentes https://github.com/alvarorm931/education/actions/runs/41010771696
-- En cola 51 min: Boletines autonómicos https://github.com/alvarorm931/education/actions/runs/41008945432
+- En cola 36 min: Sonda de fuentes https://github.com/alvarorm931/education/actions/runs/41010906257
