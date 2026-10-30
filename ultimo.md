@@ -1,11 +1,11 @@
-# Vigilancia 30/10 08:18 (Madrid)
+# Vigilancia 30/10 08:31 (Madrid)
 
-- Ejecuciones revisadas (últimas 6 h): 324
+- Ejecuciones revisadas (últimas 6 h): 318
 - Fallos: 4; pendientes: 1; relanzados ahora: 0
 - Colas de más de 30 minutos: 0
 - Flujos programados parados: ninguno
 - Almacén S3: ok
-- Programaciones que GitHub no disparó y se lanzaron a mano: ninguna
+- Programaciones que GitHub no disparó y se lanzaron a mano: autonomicos.yml (30/10 08:17)
 - Latido (relanza al vigilante cada ~25 min mientras GitHub no dispare programaciones): en marcha
 - Avisos de fuentes: 0
 
