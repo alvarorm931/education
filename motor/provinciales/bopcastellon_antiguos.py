@@ -228,6 +228,10 @@ def main(argv: list[str] | None = None) -> int:
         print("::warning::BOP Castellón anteriores: sin formulario de búsqueda (posible cambio de formato)")
         return 1
     url = urljoin(r.url or ANTIGUOS, accion)
+    # El identificador del botón «Buscar» lo genera JSF (hoy «buscadorForm:j_idt152»): se toma de la página
+    boton = re.search(r'<button id="(buscadorForm:j_idt\d+)"[^>]*>\s*<span[^>]*>\s*Buscar',
+                      r.contenido.decode("utf-8", errors="replace"))
+    boton = boton.group(1) if boton else "buscadorForm:j_idt152"
     inicio, informes, freno, parar = time.monotonic(), [], Freno(), False
     while hasta >= INICIO and not parar:
         desde = max(hasta.replace(day=1), INICIO)
@@ -238,8 +242,8 @@ def main(argv: list[str] | None = None) -> int:
             time.sleep(a.pausa)
             datos = {**campos, "buscadorForm:fechaInicialAntiguo_input": f"{desde:%d/%m/%Y}",
                      "buscadorForm:fechaFinalAntiguo_input": f"{hasta:%d/%m/%Y}",
-                     "javax.faces.partial.ajax": "true", "javax.faces.source": "buscadorForm:j_idt152",
-                     "javax.faces.partial.execute": "@all", "buscadorForm:j_idt152": "buscadorForm:j_idt152",
+                     "javax.faces.partial.ajax": "true", "javax.faces.source": boton,
+                     "javax.faces.partial.execute": "@all", boton: boton,
                      "javax.faces.partial.render": "formListBoletinAntiguos formListAnunciosBolAnt buscadorForm"}
             rr = obtener(url, accept="application/xml", sesion=s, formulario=datos, cabeceras_extra=AJAX)
             x = rr.contenido.decode("utf-8", errors="replace")
