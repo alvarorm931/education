@@ -213,6 +213,63 @@ def respaldo_programaciones(repo: str, runs: list[dict], t0: datetime, lanzar: b
     return salida
 
 
+RETRASO_DUPLICADO = timedelta(minutes=60)
+
+
+def cancelar_programaciones_tardias(repo: str, t0: datetime, actuar: bool) -> list[dict]:
+    """GitHub dispara a veces una programación con horas de retraso (el 30/10, de 5 a 7 horas), cuando el respaldo ya
+    lanzó la de ese día. Esa segunda ejecución repite la carga diaria y, en el servidor de España (un solo
+    ejecutor), duplica horas de trabajo. Si una ejecución `schedule` sin terminar llega 60 minutos o más tarde que su
+    hora, y el vigilante ya lanzó la de esa hora (`github-actions[bot]`, sin fallar ni cancelarse), se cancela.
+    Cancelar no borra nada: todo lo que ya subió se queda y la carga es reanudable."""
+    salida = []
+    carpeta = Path(".github/workflows")
+    if not carpeta.is_dir():
+        return salida
+    desde12 = (t0 - timedelta(hours=12)).strftime("%Y-%m-%dT%H:%M:%SZ")
+    for f in sorted(carpeta.glob("*.yml")):
+        if f.name in NO_RESPALDAR:
+            continue
+        horas = [(int(m.group(2)), int(m.group(1))) for m in CRON_DIARIO.finditer(f.read_text(encoding="utf-8"))]
+        if not horas:
+            continue
+        try:
+            recientes = api(f"/repos/{repo}/actions/workflows/{f.name}/runs?per_page=100&created=>={desde12}"
+                            ).get("workflow_runs", [])
+        except urllib.error.HTTPError:
+            continue
+        for r in recientes:
+            if r.get("event") != "schedule" or r.get("status") == "completed":
+                continue
+            creada = fecha(r["created_at"])
+            # La hora programada que le toca: la más reciente anterior a su creación (hoy o ayer).
+            candidatas = []
+            for h, mi in horas:
+                p = creada.replace(hour=h, minute=mi, second=0, microsecond=0)
+                if p > creada:
+                    p -= timedelta(days=1)
+                candidatas.append(p)
+            prevista = max(candidatas)
+            if creada - prevista < RETRASO_DUPLICADO:
+                continue
+            lanzada = [o for o in recientes if o["id"] != r["id"] and o.get("event") == "workflow_dispatch"
+                       and (o.get("triggering_actor") or {}).get("login") == "github-actions[bot]"
+                       and prevista - timedelta(minutes=10) <= fecha(o["created_at"]) <= creada
+                       and o.get("conclusion") not in ("failure", "cancelled", "timed_out", "startup_failure")]
+            if not lanzada:
+                continue
+            item = {"flujo": f.name, "id": r["id"], "prevista": madrid(prevista), "disparada": madrid(creada),
+                    "ya_lanzada": lanzada[0]["html_url"], "cancelada": False}
+            if actuar:
+                try:
+                    api(f"/repos/{repo}/actions/runs/{r['id']}/cancel", metodo="POST", datos={})
+                    item["cancelada"] = True
+                except urllib.error.HTTPError as e:
+                    item["cancelada"] = f"no se pudo: {e.code}"
+            salida.append(item)
+    return salida
+
+
 def reanimar_latido(repo: str, t0: datetime, lanzar: bool) -> str:
     """latido.yml es una cadena que se relanza sola cada ~25 min mientras GitHub no dispare las programaciones.
     Si la cadena se cortó (ninguna ejecución en 45 min) y las programaciones siguen sin dispararse, se relanza."""
@@ -344,6 +401,7 @@ def main() -> None:
                               "parado": ok is None or (t0 - ok) > timedelta(hours=horas)}
 
     respaldos = respaldo_programaciones(repo, runs, t0, a.relanzar)
+    tardias = cancelar_programaciones_tardias(repo, t0, a.relanzar)
     latido = reanimar_latido(repo, t0, a.relanzar)
 
     estado_fuentes = json_de_rama(repo, "datos/estado.json", "datos") or {}
@@ -374,6 +432,7 @@ def main() -> None:
         "colas_largas": colas,
         "programados": programados,
         "respaldo_programaciones": respaldos,
+        "programaciones_tardias_canceladas": tardias,
         "latido": latido,
         "boe": {k: boe.get(k) for k in ("ultimo_diario", "ultima_ejecucion", "alertas_ultima_ejecucion")},
         "avisos_de_fuentes": avisos_fuentes,
@@ -393,6 +452,8 @@ def main() -> None:
           f"- Almacén S3: {resultado['almacen']['estado']}",
           f"- Programaciones que GitHub no disparó y se lanzaron a mano: "
           f"{', '.join(r['flujo'] + ' (' + r['prevista'] + ')' for r in respaldos) or 'ninguna'}",
+          f"- Programaciones que GitHub disparó tarde y repetían la del día (canceladas): "
+          f"{', '.join(t['flujo'] + ' de las ' + t['prevista'] + ', disparada a las ' + t['disparada'] for t in tardias) or 'ninguna'}",
           f"- Latido (relanza al vigilante cada ~25 min mientras GitHub no dispare programaciones): {latido}",
           f"- Avisos de fuentes: {len(avisos_fuentes)}", ""]
     for f in fallos:
