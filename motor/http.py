@@ -1,4 +1,11 @@
-"""Descargas educadas: identificadas, con reintentos limitados y sin martillear a las fuentes."""
+"""Descargas educadas: identificadas, con reintentos limitados, sin martillear a las fuentes y dentro de lo que
+permite su robots.txt.
+
+robots.txt (RFC 9309): antes de la primera petición a un servidor se lee el suyo (con la misma sesión que usa el
+conector) y no se pide nada que prohíba a nuestro agente. Si no se puede leer por un error de servidor o de red,
+se trata como prohibido (RFC 9309, 2.3.1.4); un 4xx o una página HTML en su lugar es que no hay reglas. Una
+dirección prohibida lanza RobotsProhibe (un ConnectionError: los conectores lo anotan como fuente inaccesible y
+paran tras varios seguidos). Auditoría de todas las fuentes: motor/robots_auditoria.py."""
 
 from __future__ import annotations
 
@@ -12,6 +19,8 @@ from pathlib import Path
 
 import requests
 from requests.adapters import HTTPAdapter
+
+from motor.robots import Robots
 
 USER_AGENT = "PortalEstudiosOposiciones/0.1 (motor de datos publicos; peticiones moderadas)"
 REINTENTABLES = {429, 500, 502, 503, 504}
@@ -77,6 +86,49 @@ def sesion_tls_compatible(cifrados: str = "DEFAULT") -> requests.Session:
     return s
 
 
+class RobotsProhibe(ConnectionError):
+    """La dirección está prohibida para nuestro agente en el robots.txt del servidor."""
+
+
+_ROBOTS: dict[str, Robots] = {}
+
+
+def _origen(url: str) -> str:
+    from urllib.parse import urlparse
+
+    p = urlparse(url)
+    return f"{p.scheme}://{p.netloc}".lower()
+
+
+def robots_de(url: str, sesion: requests.Session | None = None) -> Robots:
+    """Reglas del servidor de url (se leen una vez por ejecución)."""
+    origen = _origen(url)
+    if origen not in _ROBOTS:
+        http = sesion or requests.Session()
+        reglas = None
+        for intento in range(2):
+            try:
+                r = http.get(origen + "/robots.txt", headers={"User-Agent": USER_AGENT}, timeout=20,
+                             verify=paquete_ca())
+            except requests.RequestException:
+                time.sleep(2)
+                continue
+            tipo = (r.headers.get("content-type") or "").lower()
+            if r.status_code >= 500:
+                time.sleep(2)
+                continue
+            reglas = Robots(r.text) if r.status_code == 200 and "html" not in tipo else Robots()
+            break
+        _ROBOTS[origen] = reglas if reglas is not None else Robots(todo_prohibido=True)
+    return _ROBOTS[origen]
+
+
+def comprobar_robots(url: str, sesion: requests.Session | None = None) -> None:
+    permitido, regla = robots_de(url, sesion).regla(url)
+    if not permitido:
+        raise RobotsProhibe(f"robots.txt de {_origen(url)} no permite {url} ({regla})")
+
+
 @dataclass
 class Respuesta:
     url: str
@@ -107,6 +159,7 @@ def obtener(
     if accept:
         cabeceras["Accept"] = accept
     http = sesion or requests.Session()
+    comprobar_robots(url, http)
     ultimo_error: Exception | None = None
     for intento in range(intentos):
         try:

@@ -164,3 +164,15 @@ def test_turno_restringido_no_es_acceso_libre():
     a = construir_acto({"identificador": "X", "fecha": "2026-10-01", "ambito": "local", "tipo_acto": "convocatoria"},
                        {"texto": t, "tablas": [], "referencias": []})
     assert a["plazas"][0]["turno"] == "restringido" and a["alcance"] == "promocion_interna" and a["pendiente"] == []
+
+
+def test_texto_desde_html_permitido():
+    # robots.txt del BOE: XML prohibido, HTML permitido. El HTML debe dar lo mismo que el XML.
+    from motor.boe.texto import texto_plano_html
+    d = texto_plano_html((Path(__file__).parent / "fixtures" / "boe_txt_BOE-A-2026-21007.html").read_bytes())
+    assert d["titulo"].startswith("Resolución de 2 de octubre de 2026, de la Diputación Foral de Álava")
+    assert (d["fecha_publicacion"], d["departamento"], d["rango"]) == ("20261009", "Administración Local", "Resolución")
+    assert "nuevo plazo de presentación de solicitudes de veinte días hábiles" in d["texto"]
+    assert d["referencias"] == [{"sentido": "anteriores", "referencia": "BOE-A-2026-12456", "relacion": "AMPLÍA",
+                                 "texto": "el plazo de presentación de solicitudes en el proceso selectivo convocado por "
+                                          "Resolución de 22 de mayo de 2026"}]

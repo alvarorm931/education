@@ -56,6 +56,12 @@ jobs:
             case "$u" in
               POST:*) R="${u#POST:}"; URL="${R%%|*}"; EXTRA=(-X POST --data "${R#*|}") ;;
             esac
+            # robots.txt: lo que el servidor no permite a nuestro agente no se pide (motor/robots.py)
+            if ! (cd ../codigo && python -c "import sys; from motor.http import comprobar_robots; comprobar_robots(sys.argv[1])" "$URL") 2> "$STAMP/$i.robots.txt"; then
+              echo "000 robots.txt-no-permite 0 $URL" > "$STAMP/$i.estado.txt"
+              echo "$i $u" >> "$STAMP/indice.txt"
+              continue
+            fi
             curl -sS -L --max-time 25 --connect-timeout 10 -A "PortalEstudiosOposiciones/0.1 (motor de datos publicos; peticiones moderadas)" \
               "${EXTRA[@]}" -D "$STAMP/$i.cabeceras.txt" -o "$STAMP/$i.cuerpo" -w "%{http_code} %{content_type} %{size_download} %{url_effective}\n" "$URL" \
               > "$STAMP/$i.estado.txt" 2>&1 || true

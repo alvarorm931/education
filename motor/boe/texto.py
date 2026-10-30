@@ -1,4 +1,8 @@
-"""Texto completo de cada disposición del BOE (documento XML de cada BOE-A), sin datos personales.
+"""Texto completo de cada disposición del BOE, sin datos personales.
+
+Desde el 30/10/2026 se lee la versión HTML (txt.php): el robots.txt del BOE prohíbe a los programas automáticos
+el XML («Disallow: /diario_boe/xml.php?») y permite el HTML en castellano, salvo los documentos concretos que
+retira (esos no se piden: lo comprueba motor/http.py). El XML de las descargas anteriores se sigue leyendo igual.
 
 Uso:
   python -m motor.boe.texto --ids BOE-A-2026-20413,BOE-A-2026-20626 --salida ruta/
@@ -27,12 +31,22 @@ from zoneinfo import ZoneInfo
 from motor.archivo import Archivo, solo_huella_por_defecto
 from motor.http import obtener
 
-URL_XML = "https://www.boe.es/diario_boe/xml.php?id={id}"
+URL_XML = "https://www.boe.es/diario_boe/xml.php?id={id}"   # solo para leer capturas antiguas
+URL_HTML = "https://www.boe.es/diario_boe/txt.php?id={id}"
 RE_ID = re.compile(r"^BOE-[AB]-\d{4}-\d+$")
 FUENTE = "boe-texto"
 MADRID = ZoneInfo("Europe/Madrid")
 
-from motor.limpieza import CABECERA_PERSONAL, RE_DOCUMENTO, tiene_nombre_de_persona, titulo_sin_nombres  # noqa: E402
+from motor.limpieza import (CABECERA_PERSONAL, RE_DOCUMENTO, limpiar_html, texto_de, tiene_nombre_de_persona,  # noqa: E402
+                            titulo_sin_nombres)
+
+RE_TITULO_HTML = re.compile(r'<h3 class="documento-tit">(.*?)</h3>', re.S)
+RE_DD = re.compile(r"<dt>\s*(?P<k>[^<]+?)\s*:?\s*</dt>\s*<dd>(?P<v>.*?)</dd>", re.S)
+RE_TEXTO_HTML = re.compile(r'<div id="textoxslt">(.*?)</div>\s*<!-- #textoxslt -->', re.S)
+RE_ANALISIS = re.compile(r'<div id="analisis"[^>]*>(.*?)(?:<p class="linkSubir"|<!-- \.pool -->)', re.S)
+RE_LI = re.compile(r"<li>(.*?)</li>", re.S)
+RE_REF = re.compile(r"\(Ref\.\s*<a [^>]*>(BOE-[A-Z]-\d{4}-\d+)</a>\)", re.S)
+RE_RELACION = re.compile(r"^(?P<rel>[A-ZÁÉÍÓÚÜÑ][A-ZÁÉÍÓÚÜÑ ,]+?)\s+(?=[a-záéíóúñ«(\d])")
 
 
 def _limpio(nodo: ET.Element) -> str:
@@ -99,6 +113,46 @@ def texto_plano(xml: bytes) -> dict:
     }
 
 
+def texto_plano_html(html: bytes | str) -> dict:
+    """Lo mismo que texto_plano() desde la versión HTML del documento (txt.php)."""
+    h = html.decode("utf-8", errors="replace") if isinstance(html, bytes) else html
+    titulo = RE_TITULO_HTML.search(h)
+    meta = {texto_de(m.group("k")).lower(): texto_de(m.group("v")) for m in RE_DD.finditer(h)}
+    cuerpo = RE_TEXTO_HTML.search(h)
+    limpio = limpiar_html(cuerpo.group(1)) if cuerpo else {"texto": "", "tablas": [],
+                                                            "parrafos_omitidos_por_datos_personales": 0}
+    rango = fecha = None
+    referencias = []
+    a = RE_ANALISIS.search(h)
+    if a:
+        bloque = a.group(1)
+        primera = bloque.split("<h5>", 1)[0]
+        for li in RE_LI.findall(primera):
+            t = texto_de(li)
+            if t.startswith("Rango:"):
+                rango = t.split(":", 1)[1].strip()
+            elif t.startswith("Fecha de publicación:"):
+                d = re.search(r"(\d{2})/(\d{2})/(\d{4})", t)
+                fecha = f"{d.group(3)}{d.group(2)}{d.group(1)}" if d else None
+        for sentido, etiqueta in (("anteriores", "Referencias anteriores"), ("posteriores", "Referencias posteriores")):
+            m = re.search(rf"<h5>{etiqueta}</h5>\s*<ul[^>]*>(.*?)</ul>", bloque, re.S)
+            for li in RE_LI.findall(m.group(1)) if m else []:
+                ref = RE_REF.search(li)
+                t = texto_de(RE_REF.sub("", li)).rstrip(" .")
+                rel = RE_RELACION.match(t)
+                referencias.append({"sentido": sentido, "referencia": ref.group(1) if ref else None,
+                                    "relacion": rel.group("rel").strip() if rel else None,
+                                    "texto": t[rel.end():].strip() if rel else t})
+    return {
+        "titulo": titulo_sin_nombres(texto_de(titulo.group(1))) if titulo else None,
+        "fecha_publicacion": fecha,
+        "departamento": meta.get("departamento"),
+        "rango": rango,
+        **limpio,
+        "referencias": referencias,
+    }
+
+
 def ruta_texto(raiz: Path, ident: str, fecha: str) -> Path:
     """fecha: AAAA-MM-DD o AAAAMMDD."""
     f = fecha.replace("-", "")
@@ -141,17 +195,16 @@ def _inverso(fecha: str) -> str:
 
 
 def descargar(ident: str, raiz: Path, archivo: Archivo) -> str:
-    url = URL_XML.format(id=ident)
-    resp = obtener(url, accept="application/xml")
+    url = URL_HTML.format(id=ident)
+    resp = obtener(url, accept="text/html")
     if resp.status != 200:
         return f"HTTP {resp.status}"
-    try:
-        datos = texto_plano(resp.contenido)
-    except ET.ParseError as e:
-        return f"XML no válido ({e})"
+    datos = texto_plano_html(resp.contenido)
+    if not datos["titulo"] or not (datos["texto"] or datos["tablas"] or datos["parrafos_omitidos_por_datos_personales"]):
+        return "HTML sin título o sin texto (posible cambio de formato)"
     fp = datos.get("fecha_publicacion") or ""
     fecha = date(int(fp[:4]), int(fp[4:6]), int(fp[6:8])) if len(fp) == 8 else datetime.now(MADRID).date()
-    captura = archivo.guardar(FUENTE, fecha, resp.contenido, url, "xml", resp.status, resp.cabeceras)
+    captura = archivo.guardar(FUENTE, fecha, resp.contenido, url, "html", resp.status, resp.cabeceras)
     destino = ruta_texto(raiz, ident, fecha.isoformat())
     destino.parent.mkdir(parents=True, exist_ok=True)
     destino.write_text(json.dumps({"identificador": ident, **datos, "captura_sha256": captura["sha256"],
