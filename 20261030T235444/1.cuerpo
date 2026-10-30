@@ -1,0 +1,219 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta property="og:title"
+	content="Sede electrónica Diputación de Huelva" />
+<meta property="og:type" content="government" />
+<meta property="og:url" content="http://s2.diphuelva.es" />
+<meta property="og:image"
+	content="http://s2.diphuelva.es/comun/imagenes/corporativa/logoPortada.png" />
+<meta property="og:site_name"
+	content="Sede Electrónica Diputación de Huelva" />
+<meta property="fb:admins" content="100002595467010" />
+<meta property="fb:admins" content="100002595467010" />
+<meta name="Description"
+	content="Sede Electrónica de la Diputación de Huelva" />
+<title>Diputación de Huelva :: </title>
+<link rel="shortcut icon" href="/favicon.ico">
+			<link rel="stylesheet" type="text/css" href="/css/general.css" />
+<link rel="stylesheet" type="text/css" href="/comun/css/menuPrincipal.css" />
+<script type="text/javascript" src="/comunJS/prototype.js"></script>
+<script type="text/javascript" src="/js/navegacion.js"></script>
+<script type="text/javascript" src="/js/sede.js"></script>
+
+	</head>
+	<body>
+<div id="paginaContenido">
+<!--[if lt IE 9]>
+<link rel="stylesheet" type="text/css" href="/comunCSS/Formulario-ie.css">
+<![endif]-->
+<script type="text/javascript" language="JavaScript" src="/comunJS/Formulario.js"></script>
+<script type="text/javascript" language="JavaScript" src="/comunJS/Capa.js"></script>
+<script type="text/javascript" language="JavaScript" src="/comunJS/barras.js"></script>
+<link rel="stylesheet" type="text/css" href="/comunCSS/Formulario.css "  charset="ISO-8859-1"/>
+<link rel="stylesheet" type="text/css" href="/css/contenidos.css" />
+<!-- link rel="stylesheet" type="text/css" href="/css/general.css" /-->
+<link rel="stylesheet" type="text/css" href="/comun/css/servicios.css" />
+
+<script type="text/javascript">
+function fechaSeleccionada(fecha)
+{
+	var dia = fecha[0].getDate().toString();
+	if (dia.length<2)
+		dia = "0" + dia;
+	var mes = fecha[0].getMonth() + 1
+	var mes = mes.toString() ;
+	if (mes.length<2)
+		mes = "0" + mes;
+	var ano = fecha[0].getFullYear();
+	var nuevaFecha = dia + '/' + mes + '/' + ano;
+	window.location.href="/servicios/bop/busqueda/?fecha=" + nuevaFecha;
+}
+
+function abreBop(bop,search)
+{
+	var sCadena = "/compartido/bop/boletines/" + bop + "#search=" +  search;
+  abreVentana(sCadena,'',1000,700,true);
+}
+
+
+function abreVentana(url,nombre,ancho,alto,centrar)
+{
+  var pos_x,pos_y;
+  if (centrar)
+  {
+    pos_x=(screen.width-ancho)/2;
+    pos_y=(screen.height-alto)/2;
+  }  
+  window.open(url,nombre,'scrollbars=yes,toolbar=no,location=no,directories=no,'+
+              'status=no,menubar=no,resizable=no,width=' + ancho +
+              ',height=' + alto +
+              (centrar?',top=' + pos_y + ',left=' + pos_x:''));
+}
+
+</script>
+<div id="contenido">
+	<div id="columna5">
+		<div id="titulo"><h3><div>Boletín Oficial de la Provincia de Huelva<span id ="fechaBoletin">Boletín del día 19/06/2023</span></div></h3></div>
+		<div id="cuadroResultadoBusqueda"><div id="cuadroResultadoBop"><!-- FORMULARIO boletin -->
+<form name="boletin" id="_frm_0" action="" method="GET" onsubmit="return validarFormulario(this,'',true,event);" >
+<table  class="frmDiphuelva" align="center">
+          <tr>
+            <td align="center" colspan="1"><iframe id="iFramePDF" name="boletin.pdf" src="/comunJS/pdfjs/web/viewer.html?file=%2Fportalweb%2Fbop%2Fboletines%2F20230619-1.pdf" width="650px" height="800px">Error en mostrar el PDF</iframe></td>
+          </tr>
+  </table>
+</form>
+<!-- FIN DEL FORMULARIO boletin -->
+<!-- Inicialización del formulario -->
+<script type="text/javascript">
+  frm = new Formulario(0,'boletin');
+  // Si es el primer formulario de la página, vamos a programar su inicialización.
+  if (frm.orden == 0) addLoadEvent(_frmInicio);
+</script>
+</div></div>
+  </div>
+  <div id="columna6">
+		<div id="titulo"><h3>Calendario</h3></div>
+		<div id="calendario">            <td align="center"  colspan="0" >
+            <link rel="stylesheet" type="text/css" href="/comunCSS/calendario/jscal2.css" />
+            <link rel="stylesheet" type="text/css" href="/comunCSS/calendario/border-radius.css" />
+            <link rel="stylesheet" type="text/css" href="/comunCSS/calendario/diputacion/diputacion.css" />
+            <script type="text/javascript" src="/comunJS/calendario/jscal2.js"></script>
+            <script type="text/javascript" src="/comunJS/calendario/lang/es.js"></script>
+            <script>
+            window.__cal_desact = function(fecha)
+            {
+              var desactivadas = {};
+              fecha = Calendar.dateToInt(fecha);
+              return fecha in desactivadas;
+            }
+
+            window.__cal_marcada = function(fecha, desde, hasta)
+            {
+              var dia = Calendar.dateToInt(fecha);
+              if ((dia < desde) || (dia > hasta)) return null;
+              var marcadas = {};
+              return marcadas[dia];
+            }
+
+            window.__cal_selfecha = function(cal)
+            {
+              // 1- Deseleccionamos las fechas desactivadas.
+              var fechas = cal.selection.getDates();
+              for (var i = 0; i < fechas.length; ++i)
+              {
+                if (cal.isDisabled(fechas[i]))
+                  cal.selection.unselect(fechas[i]);
+              }
+
+              // 2.- Calculamos el total de días seleccionados en todos los calendarios.
+              var id  = cal.args.cont.substring(6,7);
+              var multiple = (__cal_sel[id].cals > 1)
+              var diasSel = 0;
+              for(var i=1; i<=__cal_sel[id].cals; i++)
+              {
+                if(!multiple)
+                  objCal = eval('__o__cal_' + id);
+                else                  objCal = eval('__o__cal_' + id + '_' + i);
+                diasSel += objCal.selection.countDays();
+              }
+
+              // 3.- Si el total supera el máximo, hay que deseleccionar.
+              if ((__cal_sel[id].max >= 0)&&(diasSel>__cal_sel[id].max))
+              {
+                var fechasSel=cal.selection.getDates();
+                for(i=0; i<=(diasSel - __cal_sel[id].max);i++)
+                  cal.selection.unselect(fechasSel[fechasSel.length-i]);
+                diasSel = __cal_sel[id].max;
+              }
+              __cal_sel[id].total = diasSel;
+
+              // 4.- Actualizamos el contador visual.
+              if (__cal_sel[id].div != '')
+              {
+                oDiv = document.getElementById(__cal_sel[id].div);
+                if (oDiv.tagName == 'INPUT')
+                  oDiv.value = diasSel;
+                else
+                  oDiv.innerHTML=diasSel;
+              }
+
+              // 5.- Actualizamos el campo hidden con el contenido de las fechas seleccionadas.
+              var aFechas = new Array();
+              for(var i=1; i<=__cal_sel[id].cals; i++)
+              {
+                if(multiple)
+                  objCal = eval('__o__cal_' + id + '_' + i);
+                else
+                  objCal = eval('__o__cal_' + id);
+                var aAux = objCal.selection.getDates();
+                for (var j=0; j<aAux.length; j++)
+                  aFechas[aFechas.length] = Calendar.printDate(aAux[j],'%Y-%m-%d');
+              }
+              var oCampo = document.getElementById(cal.args.nombre);
+              oCampo.value=aFechas.join(',');
+              // 6.- Si el calendario tiene asociada una acción, la ejecutamos pasándole la fecha
+              fechaSeleccionada(fechas);
+            }
+            window.__cal_sel = new Array();
+            </script>
+            <style>
+            .__calMes
+            {
+    	        float: left;
+    	        margin: 2px;
+            }
+            </style>
+              <div id="__cal_1" class="__calMes"></div>
+              <script>
+              __o__cal_1 = Calendar.setup({
+                                cont:          "__cal_1",
+                                weekNumbers:   false,
+                                selectionType: Calendar.SEL_SINGLE,
+																 date:					20261031,
+                                min:           20010102,
+                                max:           20261231,
+                                titleFormat:   "%B %Y",
+                                bottomBar:     false,
+                                disabled:      __cal_desact,
+                                onSelect:      function() { __cal_selfecha(this); },
+                                nombre:        'calenda'
+                              });
+              </script>
+              <script>__cal_sel[1] = {max: -1,cals: 1,total: 0,div: ''};</script>
+              <input type='hidden' name='calenda' id='calenda' />
+            </td>
+</div>
+ 		<div id="cajaBusquedaBop">	<form action="/servicios/bop/busquedaAvanzada/" name="busqueda" method="GET">
+											<div class="lineaBusqueda"><div class="etiqueta">Anunciante:</div>   <input class="caja" type="text" value="" name="anunciante"  ></div>
+											<div class="lineaBusqueda"><div class="etiqueta">Asunto:</div>   <input class="caja" type="text" name="asunto" value=""></div>
+											<div class="lineaBusqueda"><div class="etiqueta">Fecha Desde:</div> <input class="caja" type="text" name="desde" style="font-family:Arial; font-size:11pt; width: 80px;"value=""></div>
+											<div class="lineaBusqueda"><div class="etiqueta">Fecha Hasta:</div>	<input class="caja" type="text" name="hasta" style="font-family:Arial; font-size:11pt; width: 80px;" value=""></div>
+											<div class="lineaBusqueda"><span class="etiquetaLarga">  El formato de la fecha debe ser (dd/mm/aaaa)</span></div>
+											<div class="lineaBusqueda"><input type="submit" value="Buscar" style="font-family:Arial; font-size:10pt; float:right;"></div>
+										</form></div>
+ 		<div id="cajaTeselaBop"><a href="https://sede.diphuelva.es/opencms/opencms/system/modules/gsede/elements/contenedores/BOP.html" target="_parent">	 <div class="tesela" style="width:160px;height:160px;top:15px;left:0px; " ><img class="imgTesela" src="/compartido/bop/Imagenes/ordenanzas2.jpg" alt="Nuevo BOP" title="Nuevo BOP" /><div class="txtTesela conImagen" style="height: 25%;color: rgb(255, 255, 255);"><div class="SI">Boletines posteriores a 19/06/2023</div></div></div></a><a href="http://www.diphuelva.es/servicios/bop" target="_blank">	 <div class="tesela" style="width:160px;height:160px;top:15px;left:165px; " ><img class="imgTesela" src="/comun/imagenes/servicios/BOP_Old.png" alt="Acceso a Boletines anteriores a 2000" title="Acceso a Boletines anteriores a 2000" /><div class="txtTesela conImagen" style="height: 25%;color: rgb(255, 255, 255);"><div class="SI">BOP anteriores a 2000</div></div></div></a><a href="/sede/contenidos/3554_Ayuda-sobre-el-uso" target="_self">	 <div class="tesela" style="width:160px;height:160px;top:180px;left:0px; " ><img class="imgTesela" src="/compartido/bop/Imagenes/ayudaBop.jpg" alt="Ayuda sobre el uso" title="Ayuda sobre el uso" /><div class="txtTesela conImagen" style="height: 25%;color: rgb(255, 255, 255);"><div class="SI">Ayuda sobre el uso</div></div></div></a></div>
+	</div>
+</div></div>
+</body>
+</html>
