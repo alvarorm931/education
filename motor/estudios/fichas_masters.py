@@ -77,9 +77,38 @@ def ajuste(oficial: str, extraido: str | None) -> tuple[float, float]:
     return (round(len(po & pe) / len(po), 3), -round(len(pe - po) / len(pe), 3))
 
 
+INGLES_VACIAS = {"master", "masters", "in", "of", "and", "the", "for", "on", "degree", "msc", "ma", "mba", "programme",
+                 "program", "university", "official", "research", "s", "to", "a", "an", "with", "at"}
+RANGO = {"confirmado": 4, "probable": 3, "otro_tipo": 2, "distinto": 1, "sin_nombre": 0}
+
+
+def nombre_ingles(oficial: str) -> str | None:
+    """«Máster Universitario en Gobernanza / Master in Governance por la Universidad…» → «Master in Governance»."""
+    m = re.search(r"\s/\s*((?:master|m\.?sc|msc|mba|master's)\b.*)$", oficial or "", re.I)
+    if not m:
+        return None
+    return re.split(r"(?i)\s+(?:por|per)\s+(?:la|el|las|los|l')\s*", m.group(1))[0].strip() or None
+
+
 def comprobar_nombre(oficial: str, extraido: str | None) -> tuple[str, float]:
     """confirmado | probable | otro_tipo | distinto | sin_nombre, con la parte del nombre oficial que aparece.
-    Se comparan raíces (vale el nombre en catalán, gallego o valenciano) y no cuentan los códigos («- M2503»)."""
+    Se comparan raíces (vale el nombre en catalán, gallego o valenciano) y no cuentan los códigos («- M2503»).
+    Si el título oficial trae su nombre en inglés tras «/» y la página lo da en inglés, también vale ese."""
+    r = _comprobar(oficial, extraido)
+    ing = nombre_ingles(oficial)
+    if ing and extraido and r[0] != "confirmado":
+        po = {w for w in re.findall(r"[a-z0-9]+", ing.lower()) if w not in INGLES_VACIAS and len(w) > 1}
+        pe = {w for w in re.findall(r"[a-z0-9]+", extraido.lower()) if w not in INGLES_VACIAS and len(w) > 1}
+        if po and pe:
+            cob, sob = len(po & pe) / len(po), len(pe - po) / len(pe)
+            e = ("confirmado" if cob >= CONFIRMADO and sob <= 0.4 else "probable" if cob >= PROBABLE else "distinto",
+                 round(cob, 3))
+            if RANGO[e[0]] > RANGO[r[0]]:
+                return e
+    return r
+
+
+def _comprobar(oficial: str, extraido: str | None) -> tuple[str, float]:
     if not extraido:
         return "sin_nombre", 0.0
     po, pe = raices(palabras_nombre(oficial)), raices(palabras_texto(extraido))

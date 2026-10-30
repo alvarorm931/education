@@ -164,3 +164,12 @@ def test_es_master_con_limite_de_palabra():
         assert not fm.RE_ES_MASTER.search(no), no
     for si in ("Máster en Finanzas", "Màster en Dret", "Masters in Management", "Executive MBA"):
         assert fm.RE_ES_MASTER.search(si), si
+
+
+def test_nombre_en_ingles_del_titulo_bilingue():
+    from motor.estudios.fichas_masters import comprobar_nombre, nombre_ingles
+    o = "Máster Universitario en Finanzas / Master in Finance por la CUNEF Universidad"
+    assert nombre_ingles(o) == "Master in Finance"
+    assert comprobar_nombre(o, "Master in Finance")[0] == "confirmado"
+    assert comprobar_nombre(o, "Master in Management")[0] == "distinto"
+    assert comprobar_nombre("Máster Universitario en Química por la Universidad de Oviedo", "Master in Chemistry")[0] == "distinto"
