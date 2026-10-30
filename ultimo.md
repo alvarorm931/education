@@ -1,14 +1,16 @@
-# Vigilancia 30/10 04:41 (Madrid)
+# Vigilancia 30/10 05:16 (Madrid)
 
-- Ejecuciones revisadas (últimas 6 h): 192
-- Fallos: 7; pendientes: 1; relanzados ahora: 0
-- Colas de más de 30 minutos: 2
+- Ejecuciones revisadas (últimas 6 h): 241
+- Fallos: 6; pendientes: 0; relanzados ahora: 0
+- Colas de más de 30 minutos: 1
 - Flujos programados parados: ninguno
 - Almacén S3: ok
 - Avisos de fuentes: 0
 
-## Boletines autonómicos · 30/10 04:41 · PENDIENTE
+## Boletines autonómicos · 30/10 04:41 · superado
 https://github.com/alvarorm931/education/actions/runs/40995655119 (intento 1, workflow_dispatch, f26c916, pasajero: False)
+- (ninguno) · pasos: ? · ejecutor: None
+      Falló sin ningún trabajo fallido: error en la definición del flujo (matriz vacía, YAML, permisos de la ejecución). Ver la página.
 
 ## Vigilante · 30/10 02:57 · superado
 https://github.com/alvarorm931/education/actions/runs/40988823872 (intento 1, push, e1ed9dc, pasajero: False)
@@ -70,17 +72,4 @@ https://github.com/alvarorm931/education/actions/runs/40972663354 (intento 1, wo
       Cleaning up orphan processes
       ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/download-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
 
-## Estudios por tramos · 30/10 00:19 · superado
-https://github.com/alvarorm931/education/actions/runs/40963881714 (intento 2, workflow_dispatch, 9a06824, pasajero: False)
-- juntar · pasos: Subir a la rama sondas · ejecutor: GitHub Actions 1000000179
-      To https://github.com/alvarorm931/education.git
-       ! [remote rejected] sondas -> sondas (push declined due to repository rule violations)
-      error: failed to push some refs to 'https://github.com/alvarorm931/education.git'
-      error: cannot rebase: You have unstaged changes.
-      error: Please commit or stash them.
-      ##[error]Process completed with exit code 1.
-      Cleaning up orphan processes
-      ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/download-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
-
-- En cola 68 min: Grados por tramos https://github.com/alvarorm931/education/actions/runs/40992324770
-- En cola 70 min: Grados por tramos https://github.com/alvarorm931/education/actions/runs/40992193837
+- En cola 105 min: Grados por tramos https://github.com/alvarorm931/education/actions/runs/40992193837
