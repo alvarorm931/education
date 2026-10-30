@@ -205,7 +205,14 @@ def reprocesar(raiz: Path) -> int:
                 break
             continue
         b = {"fecha": inf["fecha"], "numero": inf["numero"], "url_pdf": reg.get("url") or inf.get("url_pdf")}
-        escribir_json(dia, {**inf, **leer_pdf(b, pdf, {"sha256": inf["sha256"], "capturado": reg.get("capturado")}, raiz)})
+        try:
+            nuevo = leer_pdf(b, pdf, {"sha256": inf["sha256"], "capturado": reg.get("capturado")}, raiz)
+        except Exception as e:  # noqa: BLE001 - se anota y se sigue con el siguiente
+            import traceback
+            traceback.print_exc()
+            print(f"::warning::BOP Granada {inf['fecha']}: no se pudo releer ({type(e).__name__}: {e})"[:300])
+            continue
+        escribir_json(dia, {**inf, **nuevo})
         hechos += 1
     print(f"BOP Granada anteriores releídos desde el almacén: {hechos}; sin original: {fallos}")
     return 0
@@ -277,6 +284,11 @@ def main(argv: list[str] | None = None) -> int:
                     inf = procesar(b, a.salida, archivo)
                 except (ConnectionError, TimeoutError) as e:
                     inf = {"fecha": b["fecha"], "resultado": "fuente_inaccesible", "alertas": [str(e)]}
+                except Exception as e:  # noqa: BLE001 - un PDF raro no para la carga: queda anotado para revisarlo
+                    import traceback
+                    traceback.print_exc()
+                    inf = {"fecha": b["fecha"], "numero": b["numero"], "resultado": "error_formato",
+                           "alertas": [f"BOP Granada {b['fecha']}: {type(e).__name__}: {e}"[:300]]}
                 escribir_json(ruta, inf)
                 informes.append(inf)
                 bien += inf["resultado"] == "ok"

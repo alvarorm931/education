@@ -277,6 +277,11 @@ def main(argv: list[str] | None = None) -> int:
                     inf = procesar_boletin(b, a.salida, archivo)
                 except (ConnectionError, TimeoutError) as e:
                     inf = {**b, "resultado": "fuente_inaccesible", "alertas": [str(e)]}
+                except Exception as e:  # noqa: BLE001 - un PDF raro no para la carga: queda anotado para revisarlo
+                    import traceback
+                    traceback.print_exc()
+                    inf = {"fecha": b["fecha"], "numero": b["numero"], "resultado": "error_formato",
+                           "alertas": [f"BOCCE {b['fecha']}: {type(e).__name__}: {e}"[:300]]}
                 escribir_json(ruta, inf)
                 informes.append(inf)
                 bien += inf["resultado"] == "ok"
