@@ -239,6 +239,28 @@ def _plazo_salida(plazo: dict) -> dict | None:
                                       "calendario", "de_acto", "cita") if plazo.get(k) is not None}
 
 
+RE_GRUPO_TITULO = re.compile(r"\b(?:sub)?grupo\s+(?:profesional\s+)?(A1|A2|B|C1|C2|AP|E)\b", re.IGNORECASE)
+SISTEMA_DE_MODALIDAD = {"concurso_oposicion": "concurso-oposición", "oposicion": "oposición", "concurso": "concurso",
+                        "libre_designacion": "libre designación"}
+
+
+def _rasgos_proceso(a: dict, otras: list[dict]) -> tuple[str | None, str | None, str | None]:
+    """Sistema, turno y grupo del proceso: de sus plazas (texto) o, si no constan, de los títulos de la convocatoria y
+    de sus bases. None si no se sabe: nunca se supone."""
+    from motor.union import turno
+    plazas = a.get("plazas") or []
+    titulos = " ".join([a.get("titulo") or ""] + [o.get("titulo") or "" for o in otras])
+    sistema = next((p.get("sistema") for p in plazas if p.get("sistema")), None)
+    if not sistema:
+        mod = [x.get("modalidad") for x in [a, *otras] if x.get("modalidad") in SISTEMA_DE_MODALIDAD]
+        sistema = SISTEMA_DE_MODALIDAD[mod[0]] if mod else None
+    t = next((p.get("turno") for p in plazas if p.get("turno")), None) or turno(titulos)
+    grupos = sorted({p.get("grupo") for p in plazas if p.get("grupo")})
+    if not grupos:
+        grupos = sorted({g.upper() for g in RE_GRUPO_TITULO.findall(titulos)})
+    return sistema, t, ", ".join(grupos) or None
+
+
 def _ref(x: dict) -> dict:
     return {"id": x["id"], "fecha": x["fecha"], "tipo": x.get("tipo_acto"), "fuente": x.get("fuente") or "BOE",
             "url": x.get("url")}
@@ -320,9 +342,13 @@ def _proceso(a: dict, posteriores: list[dict], otras: list[dict], hoy: date, ide
     conv = ubicar_convocante(a.get("convocante"), [f for f in [*fuentes, *citadas] if f],
                              a.get("boletines_citados")) or {}
     comunidad = conv.get("comunidad") or (comunidad_de_fuentes(fuentes) if a.get("ambito") == "autonomico" else None)
+    sistema, turno_, grupo_ = _rasgos_proceso(a, otras)
     return {
         "id": ident,
         "estado": estado,
+        "sistema": sistema,
+        "turno": turno_,
+        "grupo": grupo_,
         "ambito": a.get("ambito"),
         "convocante": conv,
         "provincia": conv.get("provincia"),
@@ -398,6 +424,41 @@ def construir_y_unir(actos: list[dict], hoy: date, autonomicos: list[dict] | Non
     return procesos, dict(recuento), huerfanos
 
 
+def cobertura(procesos: list[dict]) -> dict:
+    """Control del modelo: cada anuncio local del BOE debe tener sus bases localizadas en el boletín que cita. Por
+    boletín citado: cuántas bases cita el BOE, cuántas están enlazadas y si el boletín tiene conector."""
+    con_conector = set(NOMBRE_FUENTE)
+    por_boletin: dict[str, Counter] = defaultdict(Counter)
+    sin_localizar: dict[str, list[str]] = defaultdict(list)
+    sin_cita = 0
+    for p in procesos:
+        if not p["id"].startswith("boe:") or p.get("ambito") != "local":
+            continue
+        bases = [b for b in p.get("bases") or [] if b.get("papel") == "bases"]
+        if not bases:
+            sin_cita += 1
+            continue
+        enlazadas = {o.get("fuente") for o in p.get("otras_publicaciones") or []}
+        for b in bases[:1]:
+            f = fuente_de_boletin(b.get("boletin")) or f"sin identificar: {b.get('boletin')}"
+            c = por_boletin[f]
+            c["citadas"] += 1
+            if f in enlazadas:
+                c["enlazadas"] += 1
+            elif len(sin_localizar[f]) < 20:
+                sin_localizar[f].append(p["id"])
+    filas = {f: {"citadas": c["citadas"], "enlazadas": c["enlazadas"],
+                 "porcentaje": round(100 * c["enlazadas"] / c["citadas"], 1) if c["citadas"] else None,
+                 "conector": f in con_conector, "ejemplos_sin_localizar": sin_localizar.get(f, [])[:10]}
+             for f, c in sorted(por_boletin.items(), key=lambda kv: -kv[1]["citadas"])}
+    citadas = sum(v["citadas"] for v in filas.values())
+    enlazadas = sum(v["enlazadas"] for v in filas.values())
+    return {"anuncios_locales_con_cita_de_bases": citadas, "con_bases_localizadas": enlazadas,
+            "sin_cita_de_bases": sin_cita,
+            "citas_a_boletines_sin_conector": sum(v["citadas"] for v in filas.values() if not v["conector"]),
+            "por_boletin": filas}
+
+
 def resumen(procesos: list[dict], hoy: date) -> dict:
     abiertos = [p for p in procesos if p["estado"] == "plazo_abierto"]
     por_provincia, por_comunidad, por_puesto, por_fuente = Counter(), Counter(), Counter(), Counter()
@@ -445,6 +506,9 @@ def main(argv: list[str] | None = None) -> int:
     (destino / "huerfanos.jsonl").write_text("".join(json.dumps(x, ensure_ascii=False) + "\n" for x in huerfanos),
                                              encoding="utf-8")
     r = resumen(procesos, a.hoy)
+    cob = cobertura(procesos)
+    (destino / "cobertura.json").write_text(json.dumps(cob, ensure_ascii=False, indent=1), encoding="utf-8")
+    r["cobertura_bases"] = {k: v for k, v in cob.items() if k != "por_boletin"}
     r["uniones"] = {"actos_unidos": sum(v for k, v in uniones.items() if not k.startswith("huerfano:")),
                     "huerfanos": len(huerfanos), "por_motivo": dict(sorted(uniones.items(), key=lambda kv: -kv[1])),
                     "procesos_con_actos_posteriores": sum(1 for p in procesos if len(p.get("actos") or []) > 1),

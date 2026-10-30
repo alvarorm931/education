@@ -24,6 +24,7 @@ from pathlib import Path
 from motor.archivo import Archivo, solo_huella_por_defecto
 from motor.autonomicos.comun import escribir_json, leer_jsonl
 from motor.boe.clasificar import normalizar
+from motor.extraccion.citas import citas
 from motor.http import obtener
 from motor.limpieza import RE_DOCUMENTO, limpiar_texto
 from motor.provinciales.comun import CON_TEXTO, descargar_textos_pdf, ruta_texto_pdf
@@ -154,7 +155,8 @@ def textos_boletin_entero(raiz: Path, fuente: str, archivo: Archivo, max_minutos
                 datos = {"titulo": x.get("titulo"), **{k: v for k, v in limpiar_texto(bruto).items() if k != "titulo"}}
             else:
                 datos = {"titulo": x.get("titulo"), "texto": None, "tablas": [], "solo_recuento": True,
-                         "lineas_con_documento_de_identidad": sum(1 for l in bruto.splitlines() if RE_DOCUMENTO.search(l))}
+                         "lineas_con_documento_de_identidad": sum(1 for l in bruto.splitlines() if RE_DOCUMENTO.search(l)),
+                         "citas": citas(bruto)}
             escribir_json(ruta_texto_pdf(base, x), {"id": x["id"], **datos, "paginas": pags,
                                                     "captura_sha256": captura["sha256"],
                                                     "capturado": captura["capturado"], "url": url})

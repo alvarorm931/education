@@ -10,6 +10,7 @@ from __future__ import annotations
 import io
 import re
 
+from motor.extraccion.citas import citas
 from motor.limpieza import RE_DOCUMENTO, limpiar_texto
 
 # Tipos de acto con texto útil (plazo, plazas, requisitos); los demás traen listas de personas
@@ -25,7 +26,8 @@ def texto_pdf(contenido: bytes, con_texto: bool = True, cabeceras: re.Pattern | 
     bruto = "\n".join(p.extract_text() or "" for p in PdfReader(io.BytesIO(contenido)).pages)
     if not con_texto:
         return {"titulo": None, "texto": None, "tablas": [], "solo_recuento": True,
-                "lineas_con_documento_de_identidad": sum(1 for l in bruto.splitlines() if RE_DOCUMENTO.search(l))}
+                "lineas_con_documento_de_identidad": sum(1 for l in bruto.splitlines() if RE_DOCUMENTO.search(l)),
+                "citas": citas(bruto)}  # las publicaciones que cita (no son datos de personas)
     return {"titulo": None, **limpiar_texto(bruto, cabeceras)}
 
 

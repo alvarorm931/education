@@ -21,6 +21,7 @@ from pathlib import Path
 
 from motor.autonomicos.comun import clasificar, escribir_jsonl, leer_jsonl
 from motor.boe.extraer import aplicar_plazas
+from motor.extraccion.citas import citas
 from motor.extraccion.plazo import VERSION as VERSION_PLAZO, extraer_plazo
 
 # fuente -> (siglas, nombres con los que el propio boletín se cita en los textos)
@@ -121,6 +122,14 @@ def recuento_de(raiz: Path, fuente: str, x: dict) -> int | None:
     return None
 
 
+def citas_guardadas(raiz: Path, fuente: str, x: dict) -> list[dict] | None:
+    """Citas a boletines guardadas al descargar una lista de personas (de su texto no se guarda nada más)."""
+    r = ruta_texto(raiz, fuente, x)
+    if r.exists():
+        return json.loads(r.read_text(encoding="utf-8")).get("citas")
+    return None
+
+
 def construir_acto(fuente: str, x: dict, texto: str | None, recuento: int | None = None) -> dict:
     siglas, nombres = FUENTES[fuente]
     acto = {
@@ -147,6 +156,8 @@ def construir_acto(fuente: str, x: dict, texto: str | None, recuento: int | None
     if recuento is not None:
         acto["personas_en_listas"] = recuento
         return acto
+    if texto is not None and (c := citas(texto)):
+        acto["citas"] = c
     if texto is None:
         acto["pendiente"].append("texto")
         return acto
@@ -167,7 +178,10 @@ def actos_de_fuente(raiz: Path, fuente: str) -> list[dict]:
     for f in sorted((_base(raiz, fuente) / "oposiciones").rglob("*.jsonl")):
         for x in leer_jsonl(f):
             if x.get("id") and x.get("fecha"):
-                actos.append(construir_acto(fuente, x, texto_de(raiz, fuente, x), recuento_de(raiz, fuente, x)))
+                acto = construir_acto(fuente, x, texto_de(raiz, fuente, x), recuento_de(raiz, fuente, x))
+                if "personas_en_listas" in acto and (c := citas_guardadas(raiz, fuente, x)):
+                    acto["citas"] = c
+                actos.append(acto)
     return actos
 
 

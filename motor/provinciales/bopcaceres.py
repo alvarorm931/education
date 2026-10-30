@@ -33,6 +33,7 @@ from motor.autonomicos.comun import (Freno, clasificar, convocante_de_organismo,
 from motor.boe.clasificar import normalizar
 from motor.http import obtener, robots_de
 from motor.limpieza import RE_DOCUMENTO, limpiar_html, texto_de
+from motor.extraccion.citas import citas
 from motor.provinciales.comun import CON_TEXTO
 
 FUENTE = "bopcaceres"
@@ -92,7 +93,8 @@ def texto_anuncio(x: dict) -> dict:
     if x.get("tipo_acto") not in CON_TEXTO:
         lineas = [texto_de(b) for b in re.split(r"</(?:p|tr|li)>", x["_html"])]
         return {"titulo": x["titulo"], "texto": None, "tablas": [], "solo_recuento": True,
-                "lineas_con_documento_de_identidad": sum(1 for l in lineas if RE_DOCUMENTO.search(l))}
+                "lineas_con_documento_de_identidad": sum(1 for l in lineas if RE_DOCUMENTO.search(l)),
+                "citas": citas("\n".join(lineas))}
     return {"titulo": x["titulo"], **limpiar_html(x["_html"])}
 
 

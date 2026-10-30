@@ -2,7 +2,8 @@
 proceso al que pertenecen. Sigue el modelo de oposiciones (docs/modelo-oposiciones.md, «Unión de actos con su
 proceso»), por este orden y solo cuando el candidato es único:
 
-  1. referencia explícita: el acto cita el identificador del BOE de la convocatoria o de otro acto ya unido;
+  1. referencia explícita: el acto cita el identificador del BOE de la convocatoria o de otro acto ya unido, o su
+     texto cita el boletín y la fecha en que salieron las bases o la convocatoria (motor/extraccion/citas.py);
   2. cita de la convocatoria en el título: «convocado por Resolución de 15 de julio de 2026» (u «Orden
      HFP/123/2026») del mismo órgano convocante; si hay varias de ese día, la del mismo puesto;
   3. número de expediente o de proceso («proceso selectivo 154CO/22») del mismo convocante;
@@ -152,6 +153,22 @@ def turno(titulo: str | None) -> str | None:
     return None
 
 
+RE_EXAMEN = re.compile(rf"(?:ejercicio|examen|prueba|exercici|exame|proba)\w*[^.;]{{0,80}}?(?:el\s+|o\s+|del\s+)?"
+                       rf"(?:d[ií]a\s+)?(?:\w+,?\s+)?{_FECHA}", re.IGNORECASE)
+
+
+def fecha_examen(titulo: str | None, fecha_acto: str) -> str | None:
+    """Fecha de un ejercicio que da el propio título («… y fecha del primer ejercicio el 15 de noviembre de 2026»),
+    si es posterior a la publicación."""
+    m = RE_EXAMEN.search(titulo or "")
+    if not m:
+        return None
+    f = fecha_iso(m.group("d"), m.group("m"), m.group("a"), None, fecha_acto)
+    if f and f < fecha_acto:  # sin año explícito: «el 15 de enero» publicado en diciembre es del año siguiente
+        f = fecha_iso(m.group("d"), m.group("m"), m.group("a") or str(int(fecha_acto[:4]) + 1), None, fecha_acto)
+    return f if f and f >= fecha_acto else None
+
+
 def fase_de(acto: dict) -> str | None:
     f = FASE.get(acto.get("tipo_acto") or acto.get("tipo"))
     if f == "admitidos":
@@ -175,6 +192,8 @@ def unir(procesos: list[dict], origenes: dict[str, dict], actos: list[dict], cla
     por_codigo: dict[str, list[dict]] = defaultdict(list)
     por_expediente: dict[tuple[str, str], list[dict]] = defaultdict(list)
     por_puesto: dict[tuple[str, str], list[dict]] = defaultdict(list)
+    from motor.procesos import fuente_de_boletin
+    por_publicacion: dict[tuple[str, str], list[dict]] = defaultdict(list)  # (boletín, fecha) -> procesos
     por_convocante: dict[str, list[dict]] = defaultdict(list)
     claves_proc: dict[str, set[str]] = {}
     puestos_proc: dict[str, set[str]] = {}
@@ -184,6 +203,9 @@ def unir(procesos: list[dict], origenes: dict[str, dict], actos: list[dict], cla
             por_acto[a["id"]] = p
         for a in p.get("otras_publicaciones") or []:
             por_acto.setdefault(a["id"], p)
+        for a in (p.get("actos") or [])[:1] + (p.get("otras_publicaciones") or []):
+            if a.get("fecha"):
+                por_publicacion[(a.get("fuente") or "BOE", a["fecha"])].append(p)
         conv = set(clave_convocante(o)) if o else set()
         org = organo(p.get("titulo"))
         if org:
@@ -231,6 +253,20 @@ def unir(procesos: list[dict], origenes: dict[str, dict], actos: list[dict], cla
         refs = {por_acto[r]["id"]: por_acto[r] for r in x.get("refiere_a") or [] if r in por_acto}
         if len(refs) == 1:
             elegido, motivo = next(iter(refs.values())), "referencia"
+        # 1b. cita en el texto del boletín, número y fecha donde salieron las bases o la convocatoria
+        if not elegido:
+            vistos: dict[str, dict] = {}
+            for c in (x.get("citas") or []) + (x.get("boletines_citados") or []):
+                b = c.get("boletin") or ""
+                fuente = "BOE" if re.sub(r"[.\s]", "", b).upper() == "BOE" or "del estado" in normalizar(b) else \
+                    fuente_de_boletin(b) or (x.get("fuente") if re.sub(r"[.\s]", "", b).upper().startswith("BOP") else None)
+                if not fuente or not c.get("fecha") or c["fecha"] > fecha:
+                    continue
+                for cand in mismo_convocante(por_publicacion.get((fuente, c["fecha"]), []), claves):
+                    vistos[cand["id"]] = cand
+            cands = por_puesto_y_turno(list(vistos.values()), q, t)
+            if len(cands) == 1:
+                elegido, motivo = cands[0], "cita_boletin"
         # 2. cita de la convocatoria en el título
         if not elegido:
             fc, cod = cita_convocatoria(x.get("titulo"), fecha)
@@ -281,7 +317,8 @@ def unir(procesos: list[dict], origenes: dict[str, dict], actos: list[dict], cla
                                      "fuente": x.get("fuente") or "BOE", "url": x.get("url"), "union": motivo,
                                      **({"fase": fase_de(x)} if fase_de(x) else {}),
                                      **({"personas_en_listas": x["personas_en_listas"]}
-                                        if x.get("personas_en_listas") is not None else {})})
+                                        if x.get("personas_en_listas") is not None else {}),
+                                     **({"fecha_examen": fe} if (fe := fecha_examen(x.get("titulo"), fecha)) else {})})
             por_acto[x["id"]] = elegido
             recuento[motivo] += 1
         else:
@@ -385,6 +422,9 @@ def fase_y_estado(p: dict, hoy: date) -> None:
     resultados agregados que se conozcan."""
     if (r := resultados(p)):
         p["resultados"] = r
+    examenes = sorted({a["fecha_examen"] for a in p.get("actos") or [] if a.get("fecha_examen")})
+    if examenes:
+        p["fechas_examen"] = examenes
     fases = [(a.get("fecha") or "", a.get("fase") or fase_de(a)) for a in p.get("actos") or []]
     fases = [(f, x) for f, x in fases if x]
     if not fases:

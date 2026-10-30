@@ -32,6 +32,7 @@ from motor.autonomicos.comun import (Freno, clasificar, convocante_de_organismo,
 from motor.boe.clasificar import normalizar
 from motor.http import obtener
 from motor.limpieza import RE_DOCUMENTO, limpiar_html, texto_de
+from motor.extraccion.citas import citas
 from motor.provinciales.comun import CON_TEXTO
 
 FUENTE = "bopgipuzkoa"
@@ -144,7 +145,8 @@ def texto_disposicion(contenido: bytes, x: dict | None = None) -> dict:
     if x is not None and x.get("tipo_acto") not in CON_TEXTO:
         lineas = [texto_de(b) for b in re.split(r"</(?:p|tr|li)>", cuerpo)]
         return {"titulo": None, "texto": None, "tablas": [], "solo_recuento": True,
-                "lineas_con_documento_de_identidad": sum(1 for l in lineas if RE_DOCUMENTO.search(l))}
+                "lineas_con_documento_de_identidad": sum(1 for l in lineas if RE_DOCUMENTO.search(l)),
+                "citas": citas("\n".join(lineas))}
     return {"titulo": None, **limpiar_html(cuerpo)}
 
 
