@@ -141,21 +141,21 @@ aceptan si entonces cuadra exactamente: sin los tipos deducidos (por nombre, ró
 que repite otra tabla, sin la única tabla que suma justo lo que sobra (itinerarios, listas a otro nivel), dando su
 tipo a la única tabla sin tipo que suma justo lo que falta, el resto sin tipo como obligatorio, o las asignaturas
 de un módulo de mención o itinerario sin carácter como optativas y el resto como obligatorio. La ficha dice si
-la lectura fue directa o alternativa (468 de los 3.620 comprobados). Si el plan del BOE no trae tabla que cuadre, se
+la lectura fue directa o alternativa (473 de los 3.625 comprobados). Si el plan del BOE no trae tabla que cuadre, se
 compara con los créditos por tipo de la ficha del RUCT (otra fuente oficial). Nunca se completa un plan con datos
 inventados.
 
-Resultado con todo lo leído (30/10/2026, 06:00):
+Resultado con todo lo leído (30/10/2026, 07:30, hora de España):
 
 | | Leídos | Con asignaturas | Con curso | Comprobados |
 |---|---|---|---|---|
-| Planes nuevos | 3.496 | 2.551 | 2.137 | 2.177 (62 %) |
-| Modificaciones | 2.231 | 1.599 | 972 | 1.378 (62 %) |
+| Planes nuevos | 3.496 | 2.551 | 2.137 | 2.179 (62 %) |
+| Modificaciones | 2.231 | 1.599 | 972 | 1.381 (62 %) |
 | Cambios de denominación | 20 | 16 | 15 | 11 |
 | Correcciones de errores | 391 | 139 | 95 | 54 |
 
-De los 1.319 planes nuevos que no cuadran: publicados solo por materias, sin asignaturas (401); tablas sin carácter
-que no se puede asignar de forma comprobable (336); diferencias de una o dos asignaturas, 12 créditos o menos
+De los 1.317 planes nuevos que no cuadran: publicados solo por materias, sin asignaturas (401); tablas sin carácter
+que no se puede asignar de forma comprobable (334); diferencias de una o dos asignaturas, 12 créditos o menos
 (115); otras diferencias (296); sin tabla de créditos por tipo (90) y sin tabla de plan legible (81). Esos planes
 se guardan igual (la ficha los enseña, marcados como no comprobados) pero no cuentan como asignaturas comprobadas.
 
