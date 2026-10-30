@@ -160,6 +160,7 @@ def test_ehu_cinco_cupos_con_cifras_pegadas():
     assert arte["convocatoria"] == "extraordinaria" and arte["nota"] == 8.405
     assert g[("ALAVA", "Grado en Administración y Dirección de Empresas")]["nota"] == 7.138
     assert [x["todos_admitidos"] for x in f if x["campus"] == "ALAVA"] == [True, True, True, False, True]
+    assert leer_ehu(["### página 1 (lectura óptica)"] + lineas) == []
 
 
 def test_un_doble_por_nombre_no_se_une_con_uno_de_sus_grados():

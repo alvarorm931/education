@@ -410,6 +410,10 @@ def leer_ehu(lineas: list[str]) -> list[dict]:
     """Universidad del País Vasco: «Límite de plazas y nota de corte de admisión» de cada curso (las definitivas,
     tras la convocatoria extraordinaria), por campus, con las plazas y la nota de los cinco cupos. Leyenda del PDF:
     «*» plazas vacantes (entraron todos), «─» sin acceso por ese cupo, «E» nota de la convocatoria extraordinaria."""
+    if any("(lectura óptica)" in x for x in lineas[:3]):
+        # desde 2022-23 los PDF son imágenes: la lectura óptica confunde cifras y bordes de tabla («84%», «1omo») y
+        # el orden de las casillas cambia (cupo general primero); no se usa hasta poder contrastarla
+        return []
     texto = " ".join(lineas[:12])
     m = re.search(r"CURSO\s+(20\d\d)\s*[-/]\s*(?:20)?(\d\d)\b", texto) or re.search(r"\b(20\d\d)\s*[-/]\s*(?:20)?(\d\d)\b", texto)
     if not m:
