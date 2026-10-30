@@ -222,9 +222,12 @@ for c in $CONECTORES; do
       "$G" "BOP Jaén: histórico"
       ;;
     bopzaragoza)
-      # Solo el boletín del día, desde la portada
+      # El boletín del día, desde la portada
       ejecutar motor.provinciales.bopzaragoza --salida "$S"
       "$G" "BOP Zaragoza: boletín del día"
+      # Días anteriores por el calendario de la portada (formulario de portada.do), mes a mes hasta 2022
+      ejecutar motor.provinciales.bopzaragoza --historico --salida "$S" --max-minutos "$M"
+      "$G" "BOP Zaragoza: histórico"
       ;;
     bopgipuzkoa)
       # Desde el servidor de España: a GitHub deja de responderle tras unos cientos de peticiones

@@ -6,6 +6,7 @@ por anuncio, el asunto (a.enlaceEdicto, abreVentanaDetalleEdicto('N')). El núme
 (Boletines\\AAAA\\NNN\\bop.pdf) y la fecha, de la cabecera.
 
 Uso: python -m motor.provinciales.bopzaragoza --salida ruta/
+     python -m motor.provinciales.bopzaragoza --historico --max-minutos 30 --salida ruta/
 """
 
 from __future__ import annotations
@@ -42,7 +43,9 @@ def leer(contenido: bytes) -> dict:
         elif m.group("ent") is not None:
             entidad = re.sub(r"\s*\((?:DPZ)\)", "", _t(m.group("ent"))).split(".-")[0].strip()
         elif seccion:
-            anuncios.append({"numero_anuncio": m.group("id"), "seccion": seccion, "entidad": entidad,
+            # Se marca aquí lo local (secciones tercera, quinta y sexta) para que la selección común lo vea
+            sec_local = f"{seccion} (administración local)" if es_local({"seccion": seccion}) else seccion
+            anuncios.append({"numero_anuncio": m.group("id"), "seccion": sec_local, "entidad": entidad,
                              "titulo": _t(m.group("tit")), "url_pdf": None})
     return {"numero": n.group("n") if n else None,
             "fecha": fecha_texto(f.group("d"), f.group("m"), f.group("a")) if f else None, "anuncios": anuncios}
@@ -60,11 +63,105 @@ FUENTE, SIGLAS, NOMBRES = PORTADA.fuente, PORTADA.siglas, PORTADA.nombres
 
 
 def seleccionar(filas: list[dict]) -> list[dict]:
-    filas = [{**x, "seccion": f"{x['seccion']} (administración local)" if es_local(x) else x["seccion"]} for x in filas]
+    filas = [{**x, "seccion": f"{x['seccion']} (administración local)"
+              if es_local(x) and "administración local" not in (x.get("seccion") or "") else x["seccion"]}
+             for x in filas]
     return sel_portada(PORTADA, filas)
 
 
+PORTADA_DO = BASE + "portada.do?SERVICE_NAME=mostrarPortada"
+RE_ID = re.compile(r"verboletin\((\d+)\)")
+
+
+def ids_del_mes(contenido: bytes) -> list[str]:
+    return sorted(set(RE_ID.findall(contenido.decode("latin-1", errors="replace"))), key=int)
+
+
+def historico(argv: list[str] | None = None) -> int:
+    """Días anteriores por el calendario de la portada (formulario de portada.do, verificado desde España el
+    30/10/2026): con fechaNueva=01/MM/AAAA da los boletines de ese mes (verboletin(id)); con idBoletin, ese boletín
+    con el mismo sumario que la portada. Mes a mes hacia atrás hasta enero de 2022; lo hecho queda en historico.json."""
+    import argparse
+    import json
+    import time
+    from datetime import date, datetime
+    from pathlib import Path
+    from zoneinfo import ZoneInfo
+
+    from motor.archivo import Archivo, solo_huella_por_defecto
+    from motor.autonomicos.comun import Freno, escribir_json
+    from motor.http import obtener
+    from motor.provinciales.portadas import _guardar
+
+    a = argparse.ArgumentParser()
+    a.add_argument("--historico", action="store_true")
+    a.add_argument("--salida", type=Path, default=Path("."))
+    a.add_argument("--max-minutos", type=float, default=0)
+    a.add_argument("--pausa", type=float, default=1.0)
+    a.add_argument("--hoy", type=date.fromisoformat, default=None)
+    args = a.parse_args(argv)
+    archivo = Archivo(args.salida / "archivo", indice_por_fuente=True, solo_huella=solo_huella_por_defecto())
+    ruta_estado = args.salida / "datos" / "provinciales" / FUENTE / "historico.json"
+    estado = json.loads(ruta_estado.read_text(encoding="utf-8")) if ruta_estado.exists() else {"ids": {}, "meses": []}
+    hoy = args.hoy or datetime.now(ZoneInfo("Europe/Madrid")).date()
+    inicio, freno, hechos = time.monotonic(), Freno(), 0
+    anio, mes = hoy.year, hoy.month
+    try:
+        while (anio, mes) >= (2022, 1):
+            clave_mes = f"{anio}-{mes:02d}"
+            if clave_mes in estado["meses"]:
+                anio, mes = (anio, mes - 1) if mes > 1 else (anio - 1, 12)
+                continue
+            if args.max_minutos and (time.monotonic() - inicio) / 60 > args.max_minutos:
+                print("Tiempo agotado; se continúa en la siguiente ejecución")
+                break
+            fecha_mes = f"01/{mes:02d}/{anio}"
+            time.sleep(args.pausa)
+            r = obtener(PORTADA_DO, accept="text/html", formulario={"idBoletin": "", "fechaNueva": fecha_mes})
+            ids = ids_del_mes(r.contenido) if r.status == 200 else []
+            if not ids:
+                print(f"::warning::BOPZ {clave_mes}: el calendario no trae boletines (HTTP {r.status})")
+                break
+            completo = True
+            for ident in ids:
+                if ident in estado["ids"]:
+                    continue
+                if args.max_minutos and (time.monotonic() - inicio) / 60 > args.max_minutos:
+                    completo = False
+                    break
+                time.sleep(args.pausa)
+                rb = obtener(PORTADA_DO, accept="text/html", formulario={"idBoletin": ident, "fechaNueva": fecha_mes})
+                s = leer(rb.contenido) if rb.status == 200 else {}
+                if not s.get("fecha") or not s.get("anuncios"):
+                    inf = {"resultado": "error_formato", "alertas": [f"BOPZ boletín {ident}: sin fecha o sin anuncios"]}
+                    completo = False
+                else:
+                    inf = _guardar(PORTADA, s, rb, f"{PORTADA_DO}#idBoletin={ident}", args.salida, archivo, "historico")
+                    estado["ids"][ident] = s["fecha"]
+                    hechos += 1
+                print(f"BOPZ {ident} {s.get('fecha')}: {inf['resultado']} {inf.get('empleo_publico', '')}")
+                if freno.anotar(inf):
+                    completo = False
+                    break
+            # Un mes ya cerrado con todos sus boletines leídos no se vuelve a pedir
+            if completo and (anio, mes) < (hoy.year, hoy.month):
+                estado["meses"].append(clave_mes)
+            escribir_json(ruta_estado, estado)
+            if not completo:
+                break
+            anio, mes = (anio, mes - 1) if mes > 1 else (anio - 1, 12)
+    except (ConnectionError, TimeoutError) as e:
+        print(f"BOPZ: fuente inaccesible ({e})")
+        escribir_json(ruta_estado, estado)
+        return 1
+    escribir_json(ruta_estado, estado)
+    print(f"BOPZ histórico: {hechos} boletines nuevos; meses completos: {len(estado['meses'])}")
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
+    if "--historico" in (argv if argv is not None else sys.argv[1:]):
+        return historico(argv)
     return main_portada(PORTADA, argv)
 
 
