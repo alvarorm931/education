@@ -3,8 +3,9 @@
 Formato verificado el 30/10/2026 desde España (sonda motor/autonomicos/sonda_ceuta.py):
   - https://www.ceuta.es/ceuta/bocce enlaza una categoría de jDownloads por año
     (/ceuta/component/jdownloads/viewcategory/1965-2026); cada año, una por mes (…/viewcategory/1982-octubre), y cada
-    mes, sus boletines (…/viewdownload/1982-octubre/23305-bocce-6665-30-10-2026, «BOCCE_Extra51_28-10-2026» los
-    extraordinarios). El PDF se descarga por …/finish/<mes>/<boletín>.
+    mes, sus boletines, con el enlace de descarga del PDF (…/finish/1869-enero/21119-bocce-6162-04-01-2022,
+    «BOCCE_Extra51_28-10-2026» los extraordinarios). Igual en 2022 y 2024 (sonda del 30/10/2026, 21:38). Cada página
+    trae además el recuadro de últimas descargas, con los del mes en curso (…/viewdownload/…): no cuentan.
   - El PDF empieza por el SUMARIO: secciones en mayúsculas («DISPOSICIONES GENERALES CIUDAD DE CEUTA», «CIUDAD
     AUTONOMA DE CEUTA») y cada anuncio «101.- Extracto de la convocatoria… Pág.1367» (el título puede ocupar varias
     líneas). En el cuerpo, cada anuncio empieza por su número («101.-TituloES: …»): de ahí sale su texto.
@@ -50,8 +51,11 @@ MESES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto
 RE_ANIO = re.compile(r'href=["\'](/ceuta/component/jdownloads/viewcategory/(\d+)-(20\d\d))[?"\']')
 # Los enlaces de los meses van entre comillas simples (href='/ceuta/…/viewcategory/1966-enero?Itemid=534')
 RE_MES = re.compile(r'href=["\'](/ceuta/component/jdownloads/viewcategory/(\d+)-(' + "|".join(MESES) + r')(?:-20\d\d)?)[?"\']')
-RE_BOLETIN = re.compile(r'/ceuta/component/jdownloads/viewdownload/(?P<cat>[\w-]+)/(?P<id>\d+)-bocce[-_](?P<num>(?:extra)?\d+)'
-                        r'[-_](?P<d>\d{2})[-_](?P<m>\d{2})[-_](?P<a>\d{4})', re.IGNORECASE)
+# La lista de cada mes enlaza la descarga (…/finish/1869-enero/21119-bocce-6162-04-01-2022); el recuadro de últimas
+# descargas, la ficha (…/viewdownload/…). «bocce-trib421» es el Boletín Tributario (padrones y notificaciones de
+# tributos, sin empleo público): no se lee.
+RE_BOLETIN = re.compile(r'/ceuta/component/jdownloads/(?:viewdownload|finish)/(?P<cat>[\w-]+)/(?P<id>\d+)-bocce[-_]'
+                        r'(?P<num>(?:extra|trib)?\d+)[-_](?P<d>\d{2})[-_](?P<m>\d{2})[-_](?P<a>\d{4})', re.IGNORECASE)
 RE_ENTRADA = re.compile(r"^(?P<n>\d{1,4})\.-\s*(?P<t>.+?)\s*P[áa]g\.?\s*(?P<p>\d+)(?:\s*[-–]\s*\d+)?\.?$", re.DOTALL)
 RE_INICIO_ENTRADA = re.compile(r"^\d{1,4}\.-")
 RE_PIE = re.compile(r"Plaza de [ÁA]frica\s*S/N\s*(\d+)\s*$", re.MULTILINE)
@@ -76,6 +80,8 @@ def boletines_del_mes(contenido: bytes, categoria: str | None = None) -> list[di
         if categoria and m.group("cat") != categoria:
             continue
         num = m.group("num").lower()
+        if num.startswith("trib"):
+            continue
         vistos.setdefault(m.group("id"), {
             "id_descarga": m.group("id"), "categoria": m.group("cat"),
             "numero": ("Extra " + num[5:]) if num.startswith("extra") else num,
@@ -215,6 +221,8 @@ def procesar_boletin(b: dict, raiz: Path, archivo: Archivo) -> dict:
                 "empleo_publico": len(empleo), "paginas": len(paginas)})
     if not filas:
         inf["alertas"].append(f"BOCCE {b['numero']} {b['fecha']}: sumario sin anuncios (posible cambio de formato)")
+        if not b["extraordinario"]:  # un ordinario siempre trae anuncios: no se da por leído y su mes sigue abierto
+            inf["resultado"] = "sin_anuncios"
     return inf
 
 

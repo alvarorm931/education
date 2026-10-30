@@ -76,6 +76,23 @@ def test_portada_anio_y_mes():
                                    "23305-bocce-6665-30-10-2026?Itemid=0")
 
 
+def test_mes_de_2022_con_enlaces_de_descarga():
+    """Página de enero de 2022 (sonda desde España del 30/10/2026): la lista del mes enlaza «finish», con el recuadro de
+    últimas descargas (octubre de 2026) y el Boletín Tributario, que no se lee."""
+    h = ('<a href="/ceuta/component/jdownloads/viewdownload/1982-octubre/23305-bocce-6665-30-10-2026?Itemid=">x</a>'
+         '<a href="/ceuta/component/jdownloads/finish/1869-enero/21157-bocce-6169-28-01-2022?Itemid=534"><img></a> '
+         '<a target="_blank" href="/ceuta/component/jdownloads/finish/1869-enero/21157-bocce-6169-28-01-2022?Itemid=534"'
+         ' class="jd_download_url">BOCCE_6169_28-01-2022</a>'
+         '<a href="/ceuta/component/jdownloads/finish/1869-enero/21156-bocce-extra04-27-01-2022?Itemid=534">x</a>'
+         '<a href="/ceuta/component/jdownloads/finish/1869-enero/21145-bocce-trib421-20-01-2022?Itemid=534">x</a>'
+         '<a href="/ceuta/component/jdownloads/finish/1869-enero/21119-bocce-6162-04-01-2022?Itemid=534">x</a>').encode()
+    lista = b.boletines_del_mes(h, "1869-enero")
+    assert [(x["numero"], x["fecha"]) for x in lista] == [("6162", "2022-01-04"), ("Extra 04", "2022-01-27"),
+                                                          ("6169", "2022-01-28")]
+    assert lista[0]["url_pdf"] == ("https://www.ceuta.es/ceuta/component/jdownloads/finish/1869-enero/"
+                                   "21119-bocce-6162-04-01-2022?Itemid=0")
+
+
 def test_sumario_y_textos():
     paginas = [SUMARIO, CUERPO_1, CUERPO_2]
     entradas, desde = b.sumario(paginas)
