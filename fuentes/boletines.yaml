@@ -202,7 +202,8 @@ provinciales:
     url: http://www.araba.eus/botha/Inicio/SGBO5001.aspx
     acceso_desde_github: "ok"
     datos_estructurados: "XML por anuncio: Boletines/AAAA/NNN/AAAA_NNN_NNNNN_C.xml"
-    estado: sin_conector
+    estado: conector_en_pruebas
+    conector: motor/provinciales/bopalava.py
   - provincia: Ávila
     url: https://www.diputacionavila.es/boletin-oficial/
     acceso_desde_github: "ok"

@@ -252,10 +252,20 @@ def es_empleo_por_titulo(titulo: str) -> bool:
 RE_GENERO_TITULO = re.compile(r"/(?:as?|es|os?|da|ra|na|la)\b")
 
 
+# «Administrativo» que no es un puesto: entidades («Junta Administrativa de Anda», concejos de Álava) y trámites
+# («autorización administrativa previa», «vía contencioso-administrativa»)
+RE_ADMINISTRATIVO_NO_PUESTO = re.compile(
+    r"\b(juntas? administrativas?|autorizaci\w+ administrativ\w+|via administrativa|sancion\w* administrativ\w*|"
+    r"unidad\w* administrativ\w*|contencioso[- ]administrativ\w*|procedimientos? administrativ\w*|"
+    r"expedientes? administrativ\w*|concesion\w* administrativ\w*|silencio administrativo|"
+    r"actos? administrativ\w*|resolucion\w* administrativ\w*)\b")
+
+
 def es_empleo_estricto(titulo: str) -> bool:
     """Selección por título en boletines sin sección de personal (todos los anuncios mezclados)."""
     t = normalizar(titulo or "").replace("_", " ").replace("´", "'").replace("`", "'").replace("’", "'")
     t = RE_GENERO_TITULO.sub("", t)  # «treballador/a social», «técnico/a medio/a»
+    t = RE_ADMINISTRATIVO_NO_PUESTO.sub(" ", t)
     if RE_NO_EMPLEO_TITULO.search(t):
         return False
     if _seleccion_inequivoca(t):

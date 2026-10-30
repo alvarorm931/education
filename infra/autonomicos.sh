@@ -179,6 +179,11 @@ for c in $CONECTORES; do
       ejecutar motor.provinciales.bopburgos --desde-anio 2022 --hasta-anio "$((Y - 1))" --salida "$S" --max-minutos "$M"
       "$G" "BOP Burgos: boletines"
       ;;
+    bopalava)
+      ejecutar motor.provinciales.bopalava --salida "$S"
+      ejecutar motor.provinciales.bopalava --desde 2022-01-01 --salida "$S" --max-minutos "$M"
+      "$G" "BOTHA: días"
+      ;;
     bopb)
       # El del día por el canal de datos abiertos; los anteriores por el listado por días y los textos en PDF (cerrados
       # en robots.txt; se leen como boletín oficial, motor/http.py)
