@@ -32,3 +32,11 @@ def test_patrones_por_curso():
 
 def test_nota_no_confunde_fechas_ni_enteros():
     assert nf.NOTA.findall("Medicina 13,456 plazas 180 el 15.07.2026") == ["13,456"]
+
+
+def test_nunca_listas_de_personas():
+    html = ('<a href="/sede/tablon-electronico/AdmisionGrado2026/07-15/Lista_1_2026_admision_publicar.report.pdf">'
+            'Lista 1</a><a href="/notas_corte/2026/NOTASDECORTE2026-15julio.pdf">Notas de corte</a>'
+            '<a href="/x/Lista_1_2026_espera_publicar.pdf">Lista de espera</a>')
+    assert [u for u, _ in nf.enlaces(html, "https://u.es/")] == ["https://u.es/notas_corte/2026/NOTASDECORTE2026-15julio.pdf"]
+    assert nf.DNI.search("GARCÍA LÓPEZ, ANA ***1234** 9,876") and not nf.DNI.search("Medicina 0051 13,456")

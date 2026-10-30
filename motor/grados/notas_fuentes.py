@@ -42,6 +42,11 @@ CURSO = re.compile(r"\b(20[12]\d)\s*[-/–_]\s*(?:20)?([12]\d)\b")
 ENLACE = re.compile(r"""(?is)<a\b[^>]*?href\s*=\s*["']([^"'#]+)["'][^>]*>(.*?)</a>""")
 DOC = re.compile(r"(?i)\.(pdf|csv|xlsx?|json)(?:$|[?;])|/files/|/documents/|\.ashx|download|/resource/")
 DE_NOTAS = re.compile(r"(?i)nota|corte|tall|admis|chamamento|llamamiento|adjudic|asignaci|cupo|plazas|preinscrip")
+# Listas de personas (admitidos, lista de espera, excluidos, tablón de la sede): nunca se piden ni se guardan
+# (CLAUDE.md: de las listas de admitidos solo se cuenta). Si un documento trae DNI o NIE, tampoco se guarda.
+PERSONAS = re.compile(r"(?i)(?:lista|listado)s?[_ -]?\d|espera|admitid|excluid|tabl[oó]n|/sede/|adjudicad[oa]s|"
+                      r"seleccionad|nominal")
+DNI = re.compile(r"\b\d{8}[A-HJ-NP-TV-Z]\b|\*{3}\d{4}\*{1,3}|\b[XYZ]\d{7}[A-Z]\b")
 
 # Semillas por distrito: páginas índice (se leen sus enlaces y formularios) y ficheros oficiales ya localizados.
 # «patrones»: ficheros con la dirección de un curso, para los cursos que no enlaza ninguna página.
@@ -158,7 +163,8 @@ def enlaces(html: str, base: str) -> list[tuple[str, str]]:
         texto = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", unescape(texto))).strip()
         if url in vistos or not url.startswith("http"):
             continue
-        if DOC.search(url) and (DE_NOTAS.search(url) or DE_NOTAS.search(texto)):
+        if DOC.search(url) and (DE_NOTAS.search(url) or DE_NOTAS.search(texto)) \
+                and not (PERSONAS.search(url) or PERSONAS.search(texto)):
             vistos.add(url)
             salida.append((url, texto[:120]))
     return salida
@@ -279,19 +285,26 @@ def ejecutar(salida: Path, solo: list[str] | None = None, max_minutos: float = 5
             if time.time() > fin:
                 res["sin_tiempo"] = True
                 break
+            if PERSONAS.search(u):
+                res["documentos"].append({"url": u, "origen": origen, "omitido": "lista_de_personas"})
+                continue
             r = pedir(u)
             doc = {"url": u, "origen": origen, "estado": r.status_code if r is not None else None}
             if r is not None and r.status_code == 200 and len(r.content) <= MAX_DOC:
                 formato = formato_de(r.content, (r.headers.get("content-type") or "").lower(), u)
+                try:
+                    medida = medir(r.content, formato, filas)
+                except Exception as e:  # noqa: BLE001 - un documento roto no para el resto
+                    medida = {"error": f"{type(e).__name__}: {str(e)[:160]}"}
+                if DNI.search("\n".join(medida.get("muestra") or []) + "\n".join(medida.get("cabecera") or [])):
+                    # trae identificadores de personas: ni original ni filas
+                    res["documentos"].append({**doc, "omitido": "datos_de_personas"})
+                    continue
                 archivo.guardar(FUENTE, date.today(), r.content, u, formato if formato != "otro" else "bin",
                                 r.status_code, {k: v for k, v in r.headers.items()
                                                 if k.lower() in {"content-type", "last-modified"}})
                 doc.update(formato=formato, bytes=len(r.content), sha256=hashlib.sha256(r.content).hexdigest(),
-                           ultima_modificacion=r.headers.get("last-modified"))
-                try:
-                    doc.update(medir(r.content, formato, filas))
-                except Exception as e:  # noqa: BLE001 - un documento roto no para el resto
-                    doc["error"] = f"{type(e).__name__}: {str(e)[:160]}"
+                           ultima_modificacion=r.headers.get("last-modified"), **medida)
             res["documentos"].append(doc)
         (destino / f"{clave}.json").write_text(json.dumps(res, ensure_ascii=False, indent=1), encoding="utf-8")
         resumen[clave] = {"indices_leidos": sum(1 for i in res["indices"] if i["estado"] == 200),
