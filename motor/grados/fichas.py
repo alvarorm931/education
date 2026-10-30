@@ -451,6 +451,8 @@ def resumen_plan(p: dict) -> dict:
         "comprobado": plan_comprobado(p),
         "comprobacion": p.get("comprobacion") or ("completo" if plan_comprobado(p) else None),
         "lectura": p.get("interpretacion") or "directa",
+        # «materia» cuando el plan solo cuadra contando sus materias (lista por asignaturas solo una parte)
+        "nivel_comprobado": (p.get("nivel_comprobado") or nivel_plan(filas)) if plan_comprobado(p) else None,
         "enlazado_por_ruct": bool(p.get("enlazado_por_ruct")),
         "parte": p.get("parte"),
         "distribucion": p.get("distribucion"),
@@ -591,7 +593,7 @@ def construir(catalogo: list[dict], genericos: list[dict], tarjetas: dict, detal
         # asignaturas comparadas: solo con planes comprobados (la suma cuadra con su tabla de créditos)
         planes_ok = {f["codigo"]: f["plan"]["asignaturas"] for f in fichas
                      if f["generico"] and f["generico"]["id"] == gid and f["plan"] and f["plan"]["comprobado"]
-                     and f["plan"].get("nivel") == "asignatura"}  # materias y asignaturas no se comparan entre sí
+                     and f["plan"].get("nivel_comprobado") == "asignatura"}  # materias y asignaturas no se comparan
         cuadro = comparar(planes_ok) if len(planes_ok) >= 2 else None
         if cuadro:
             for c, v in cuadro["por_titulo"].items():
@@ -636,7 +638,7 @@ def resumen(fichas: list[dict], comparativa: list[dict]) -> dict:
                                                      and len(f.get("planes_componentes") or []) >= 2
                                                      and all(x["comprobado"] for x in f["planes_componentes"])),
         "con_plan_comprobado_de_asignaturas": sum(1 for f in fichas if f["plan"] and f["plan"]["comprobado"]
-                                                 and f["plan"].get("nivel") == "asignatura"),
+                                                 and f["plan"].get("nivel_comprobado") == "asignatura"),
         "indexables": sum(1 for f in fichas if f["indexable"]),
         "motivos_noindex": dict(Counter(m for f in fichas for m in f["motivos_noindex"])),
         "comparativas": len(comparativa),

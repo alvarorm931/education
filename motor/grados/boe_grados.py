@@ -646,6 +646,15 @@ def medir_plan(doc: dict) -> dict:
     dist = distribucion_creditos(doc.get("tablas", [])) or distribucion_de_texto(doc.get("texto", ""))
     filas = plan(doc.get("tablas", []), dist)
     m = _medir(filas, dist, doc)
+    if not m["comprobacion"] and any(x["nivel"] == "asignatura" for x in filas) \
+            and any(x["nivel"] != "asignatura" for x in filas):
+        # plan que lista por asignaturas solo una parte (las optativas, la formación básica) y el resto por
+        # materias: se comprueba al nivel de materia, y la ficha lo dice
+        materias = [x for x in filas if x["nivel"] != "asignatura"]
+        m2 = _medir(materias, dist, doc)
+        if m2["comprobacion"]:
+            m = {**m, "comprobacion": m2["comprobacion"], "nivel_comprobado": "materia",
+                 "suma_sin_optativas": m2["suma_sin_optativas"]}
     if not m["comprobacion"]:
         for alt in _alternativas(filas, dist):
             m2 = _medir(alt, dist, doc)

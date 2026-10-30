@@ -40,7 +40,7 @@ def asignaturas_por_generico(fichas: list[dict]) -> dict[str, set[str]]:
     salida: dict[str, set[str]] = defaultdict(set)
     for f in fichas:
         g, p = f.get("generico"), f.get("plan")
-        if g and p and p.get("comprobado"):
+        if g and p and p.get("comprobado") and p.get("nivel_comprobado", "asignatura") == "asignatura":
             for a in p.get("asignaturas") or []:
                 if a.get("tipo") in ("basica", "obligatoria") and a.get("nombre") and a.get("nivel", "asignatura") == "asignatura":
                     salida[g["id"]].add(clave_asignatura(a["nombre"]))
@@ -151,7 +151,7 @@ def indice_asignaturas(fichas: list[dict]) -> list[dict]:
     donde: dict[str, dict] = defaultdict(dict)
     for f in fichas:
         p = f.get("plan")
-        if not (p and p.get("comprobado")):
+        if not (p and p.get("comprobado") and p.get("nivel_comprobado", "asignatura") == "asignatura"):
             continue
         for a in p.get("asignaturas") or []:
             if not a.get("nombre") or a.get("nivel", "asignatura") != "asignatura":

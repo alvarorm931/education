@@ -241,3 +241,13 @@ def test_columnas_de_modulo_con_denominacion_y_ects():
         "modulo": 0, "nombre": 2, "creditos": 3, "caracter": 4, "curso": 5}
     c = _columnas(["ECTS módulo", "Denominación módulo", "Denominación materia", "Carácter", "ECTS"])
     assert c["nombre"] == 2 and c["creditos"] == 4 and c["modulo"] == 1
+
+
+def test_plan_por_materias_con_optativas_por_asignaturas_se_comprueba_por_materias():
+    from motor.grados.boe_grados import medir_plan
+    dist = _t([["Tipo de materia", "Créditos"], ["Formación básica.", "12"], ["Obligatorias.", "12"],
+               ["Optativas.", "6"], ["Total.", "30"]])
+    materias = _t([["Materia", "Créditos", "Carácter"], ["Matemáticas.", "12", "FB"], ["Física.", "12", "OB"]])
+    optativas = _t([["Asignatura", "Créditos", "Carácter"], ["Astronomía.", "6", "OP"]])
+    m = medir_plan({"tablas": [dist, materias, optativas], "texto": ""})
+    assert m["comprobacion"] == "completo" and m["nivel_comprobado"] == "materia"
