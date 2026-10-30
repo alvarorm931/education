@@ -233,3 +233,24 @@ def test_celdas_de_unidades_no_son_el_nombre_de_la_linea_de_encima():
     gs = [{"codigo": "1", "clase": "grado", "nombre": "Fisioterapia", "nombre_oficial": "Graduado en Fisioterapia"}]
     r = tg.extraer(["CURSO 2027-2028\nFisioterapia\n60 ECTS\n240 ECTS\n147,50€"], gs)
     assert [i["valor"] for i in r["grados"]["1"]] == [147.5]
+
+
+def test_miles_con_espacio_solo_si_cuadra():
+    from motor.grados.fichas import precio_por_cuentas, precio_por_cuentas_con_miles
+
+    # Alfonso X 2026-2027: «11.730 € 800 € 1 100 € 10 983 € 206 €» se lee 11.730, 800, 100, 983, 206
+    valores = [11730, 800, 100, 983, 206]
+    assert precio_por_cuentas(valores) is None
+    c = precio_por_cuentas_con_miles(valores, [(100, 1100), (983, 10983)])
+    assert c["precio_curso"] == 11730 and c["importe_releido"] == {"leido": 100, "como": 1100}
+    assert c["metodo"].endswith("_con_miles_separados_por_espacio")
+    # si con la otra lectura tampoco cuadra, nada
+    assert precio_por_cuentas_con_miles([11730, 800, 100, 983], [(100, 5100)]) is None
+    # la otra lectura no puede ser el precio que sale
+    assert precio_por_cuentas_con_miles([172, 320], [(320, 10320)]) is None
+
+
+def test_extraer_guarda_la_lectura_con_miles_por_espacio():
+    r = tg.extraer(["Grado en Psicología 11.730 € 800 € 1 100 € 10 983 € 206 €"], G)
+    valores = {i["valor"]: i.get("miles_con_espacio") for i in r["grados"]["1"]}
+    assert valores == {11730: None, 800: None, 100: 1100, 983: 10983, 206: None}

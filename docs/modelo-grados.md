@@ -213,7 +213,7 @@ interna («doble-estudio-inglese-…»); la dirección pública es la de `identi
 grado, no el de un curso. El precio de la UPSA sale de su lista de Salamanca y Nutrición tiene también un centro
 en Madrid (Salus Infirmorum) que esa lista no nombra: sin comprobar para Madrid.
 
-**Cuarta revisión independiente (30/10/2026, medianoche).** Otro revisor, otras 12 fichas al azar (sin repetir las
+**Cuarta revisión independiente (30/10/2026 por la noche).** Otro revisor, otras 12 fichas al azar (sin repetir las
 anteriores). QEDU, los precios de las públicas y los históricos contrastados (Huelva 8 cursos, Granada 3, Salamanca
 1) cuadran; los precios de CEU Fernando III y Francisco de Vitoria, también. Errores comprobados y corrección:
 
@@ -230,7 +230,7 @@ curso que el BOE da y la ficha no en León (Marketing) y Extremadura (Periodismo
 Primaria (UFV). En Hespérides, ADE y otro grado, el RUCT registra modificaciones posteriores al BOE leído sin BOE
 nuevo: riesgo de plan desactualizado, sin confirmar (las memorias del RUCT lo resolverán).
 
-Resultado con todo lo leído (31/10/2026, 00:30, hora de España, tras las dos revisiones de la noche):
+Resultado con todo lo leído (30/10/2026, 22:30, hora de España, tras las dos revisiones de la noche):
 
 | | Leídos | Con asignaturas | Con curso | Comprobados | Y además tipo a tipo |
 |---|---|---|---|---|---|
@@ -337,7 +337,7 @@ textos largos quedan solo en el almacén privado; en `sondas` va su tamaño y su
   de cada grado. Con datos estructurados y texto en desacuerdo, no se publica precio. Total del grado estimado:
   precio por curso × créditos / 60, al precio de hoy.
 
-  Resultado (31/10 de madrugada, tras las dos revisiones de la noche y la relectura de las webs de universidades y
+  Resultado (30/10 por la noche, tras las dos revisiones de la noche y la relectura de las webs de universidades y
   centros con las reglas nuevas): **358 de 1.410 grados y dobles de privadas con precio por curso**
   (159 de su página y 199 de sus listas de precios), de 27 universidades; todos con total estimado. Quedan
   sin precio por las reglas nuevas 15 fichas cuyo importe solo estaba en los datos estructurados, 5 con un importe

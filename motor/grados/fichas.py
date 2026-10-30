@@ -109,6 +109,27 @@ def precio_por_cuentas(valores: list[float]) -> dict | None:
     return None
 
 
+def precio_por_cuentas_con_miles(valores: list[float], alternativas: list[tuple[float, float]]) -> dict | None:
+    """Como precio_por_cuentas, y si no cuadra, con la otra lectura de un importe escrito con el espacio normal entre
+    miles («1 100 €», que se lee 100): solo una cifra a la vez, la otra lectura no puede ser el precio que sale y
+    tiene que haber una sola solución entre todas las sustituciones (Alfonso X: «11.730 € | 800 € | 1 100 € | 10 983
+    €» → 800 + 1.100 + 10 × 983 = 11.730)."""
+    directo = precio_por_cuentas(valores)
+    if directo or not alternativas:
+        return directo
+    halladas = {}
+    for corto, largo in alternativas:
+        resto = list(valores)
+        if corto not in resto:
+            continue
+        resto[resto.index(corto)] = largo
+        c = precio_por_cuentas(resto)
+        if c and abs(c["precio_curso"] - largo) > 0.01:
+            halladas[c["precio_curso"]] = {**c, "metodo": c["metodo"] + "_con_miles_separados_por_espacio",
+                                           "importe_releido": {"leido": corto, "como": largo}}
+    return next(iter(halladas.values())) if len(halladas) == 1 else None
+
+
 def precio_web(f: dict) -> dict | None:
     """Precio de un grado privado desde su página: importes por tipo y un precio por curso orientativo.
 
@@ -227,12 +248,20 @@ def indexar_tarifas(carpeta: Path | None) -> dict[str, dict]:
                 # bloque (la línea del grado y las de solo cifras que la siguen) cuadran entre sí; entre bloques,
                 # la menor
                 por_bloque: dict = defaultdict(list)
+                miles: dict = defaultdict(list)
                 for i in importes:
                     if i.get("tipo") != "sueldo":
                         por_bloque[i.get("bloque", i.get("linea_sha256"))].append(i["valor"])
-                soluciones = [c for c in (precio_por_cuentas(v) for v in por_bloque.values()) if c]
+                        if i.get("miles_con_espacio"):
+                            miles[i.get("bloque", i.get("linea_sha256"))].append((i["valor"], i["miles_con_espacio"]))
+                soluciones = [c for c in (precio_por_cuentas_con_miles(v, miles.get(b) or [])
+                                          for b, v in por_bloque.items()) if c]
                 cuentas = min(soluciones, key=lambda c: c["precio_curso"]) if soluciones else None
-                p = cuentas and {**cuentas, "nota": None, "url": doc["url"],
+                releido = (cuentas or {}).get("importe_releido")
+                p = cuentas and {**cuentas, "url": doc["url"],
+                                 "nota": releido and (f"el documento escribe los miles con un espacio; "
+                                                      f"{releido['leido']:,.0f} € se lee {releido['como']:,.0f} € porque solo "
+                                                      f"así cuadran las cifras del grado").replace(",", "."),
                                  "importes": sorted({i["valor"] for i in importes}), "precio_jsonld": None}
                 if not p and (doc.get("lectura") or lecturas.get(doc["url"])) == "importe_anual_mayor_de_la_linea":
                     # documento comprobado a mano (tarifas_grado.LECTURA_CONOCIDA): cada grado da en su línea el
