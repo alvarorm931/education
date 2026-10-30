@@ -151,3 +151,8 @@ def test_tabla_con_importes_sin_simbolo_de_euro():
     assert sorted(i["valor"] for i in r["grados"]["1"]) == [639.0, 1278.0, 6390.0]
     # sin la palabra «euros» en la página, las cifras sueltas no se toman por importes
     assert not tg.extraer([paginas[0].replace("Importes en euros\n", "")], G, None)["grados"]
+
+
+def test_celdas_con_parrafos_no_parten_la_fila():
+    assert tg.lineas_html("<table><tr><td><p>Psicología</p></td><td><p>1.278,00</p></td></tr></table><p>Otra</p>") \
+        == ["Psicología | 1.278,00", "Otra"]

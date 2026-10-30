@@ -170,6 +170,8 @@ def lineas_html(html: str) -> list[str]:
     """Texto visible de una página en líneas: una por párrafo o elemento de lista y una por fila de tabla, con las
     celdas separadas por « | » (para leer cada importe con el rótulo de su columna)."""
     texto = re.sub(r"(?is)<(script|style|noscript|svg|head)\b.*?</\1>", " ", html)
+    # los párrafos o saltos dentro de una celda («<td><p>Trabajo Social</p></td>») no parten la fila
+    texto = re.sub(r"(?is)<tr\b.*?</tr>", lambda m: BLOQUE.sub(" ", m.group()), texto)
     texto = re.sub(r"(?is)</t[dh]>", " | ", texto)
     texto = re.sub(r"(?is)</tr>", "\n", texto)
     texto = BLOQUE.sub("\n", texto)
