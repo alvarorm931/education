@@ -50,7 +50,7 @@ URL_QEDU = "https://www.ciencia.gob.es/qedu.html"
 
 # Qué fuente manda en cada campo (la primera que lo tiene). Las demás quedan como alternativas si dicen otra cosa.
 PRIORIDAD = {
-    "creditos_ects": ("ruct", "catalogo", "web"),
+    "creditos_ects": ("ruct", "qedu", "catalogo", "web"),
     "modalidad": ("ruct", "qedu", "catalogo", "web"),
     "plazas": ("qedu", "ruct", "web"),
     "idioma": ("ruct", "qedu", "web"),
@@ -436,6 +436,9 @@ def campos_qedu(imps: list[dict]) -> dict[str, dict]:
     if precios:
         out["precio_credito"] = campo(precios[0] if len(precios) == 1 else {"desde": precios[0], "hasta": precios[-1]},
                                       "qedu", URL_QEDU, fecha, nota="primera matrícula, curso " + str(con[0].get("curso")))
+    creditos = sorted({i["creditos"] for i in con if i.get("creditos")})
+    if len(creditos) == 1:
+        out["creditos_ects"] = campo(creditos[0], "qedu", URL_QEDU, fecha)
     plazas = [i["plazas"] for i in con if i.get("plazas")]
     if plazas:
         out["plazas"] = campo(sum(plazas), "qedu", URL_QEDU, fecha, nota="plazas ofertadas en el curso, suma de centros")
