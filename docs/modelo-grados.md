@@ -539,8 +539,8 @@ comprobados por asignaturas:
 5. Notas de corte del resto de distritos. Tampoco responden desde el servidor de España (prueba de las 13:29): CiUG
    de Galicia y Universidad de Oviedo (su robots.txt no contesta, así que no se pide nada), ULPGC y Extremadura
    (403), La Rioja (429); la Comunitat Valenciana solo deja la primera adjudicación de 2026-2027 de la UV.
-   Ilegibles: Burgos, UCLM y UPV/EHU desde 2022-2023. Pública de Navarra: sin lista final y la publicación de los cupos distintos del general (Madrid, Andalucía y UPV/EHU ya
-   los leen).
+   Ilegibles: Burgos, UCLM y UPV/EHU desde 2022-2023. Pública de Navarra: sin lista final. Falta también publicar
+   los cupos distintos del general (Madrid, Andalucía y UPV/EHU ya los leen).
 6. Mantenerlo al día: BOE diario (planes y modificaciones nuevos), QEDU y SIIU cada curso, RUCT semanal
    (acreditaciones y extinciones), webs de privadas en primavera-verano, notas de corte en cada adjudicación.
 7. Generador de páginas de grado con el diseño «Noche en blanco» y el control de la ley SEO.
