@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ca"><head id="j_idt2">
+            <meta charset="utf-8" />
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <title>BOP - Butlletí Oficial de la Província de Girona</title>
+            <link href="/bop/resources/css/bop.css?versio=20220922" rel="stylesheet" />
+            <link href="/bop/resources/css/bootstrap.css?versio=20220922" rel="stylesheet" />
+            <link href="/bop/resources/css/bootstrap-datepicker.min.css?versio=20220922" rel="stylesheet" />
+            <link href="/bop/resources/css/estils.css?versio=20220922" rel="stylesheet" />
+            <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet" type="text/css" />
+            <script type="text/javascript" src="/bop/resources/js/jquery-3.6.0.min.js"></script>
+            <script type="text/javascript" src="/bop/resources/js/general.js?versio=20220922"></script>
+            <script type="text/javascript" src="/bop/resources/js/bootstrap-datepicker.min.js?versio=20220922"></script>
+            <script type="text/javascript" src="/bop/resources/locales/bootstrap-datepicker.ca.min.js?versio=20220922"></script>
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    var quinMenuActiu = "ultim-numero";
+                            $('ul.menu-principal li.' + quinMenuActiu).addClass('active');
+                });
+            </script>
+            <!-- Matomo -->
+            <script>
+                var _paq = window._paq = window._paq || [];
+                /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+                _paq.push(['trackPageView']);
+                _paq.push(['enableLinkTracking']);
+                (function () {
+                    var u = "https://matomo.ddgi.cat/";
+                    _paq.push(['setTrackerUrl', u + 'matomo.php']);
+                    _paq.push(['setSiteId', '12']);
+                    var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+                    g.async = true;
+                    g.src = u + 'matomo.js';
+                    s.parentNode.insertBefore(g, s);
+                })();
+            </script>
+            <!-- End Matomo Code --></head><body>
+            <header>
+                <div class="container">
+                    <div class="badge_DDGI">
+                        <a href="https://www.ddgi.cat/web" title="Portal web de la Diputació de Girona" target="_blank"> 
+                            <img src="https://www.ddgi.cat/ddgi/docNivell/web/badge/Diputacio_de_Girona_x1.png" srcset="https://www.ddgi.cat/ddgi/docNivell/web/badge/Diputacio_de_Girona_x2.png 2x" alt="Diputació de Girona" />
+                        </a>
+                    </div>
+                    <nav class="navbar navbar-md">
+                        <div class="navbar-header"> 
+                            <a class="navbar-brand" href="http://www.ddgi.cat/bop"> 
+                                <img src="/bop/resources/img/bop-ddgi.jpg" alt="BOP Diputació de Girona" />
+                            </a>
+                            <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                <span class="icon-bar"></span> 
+                                <span class="icon-bar"></span> 
+                                <span class="icon-bar"></span> 
+                            </a> 
+                        </div>
+
+                        <div class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav navbar-right menu-principal">
+                                <li class="ultim-numero">
+                                    <a href="/bop/mostra-bop/2026-10-30/2026/209" class="">
+                                        Últim número
+                                    </a>
+                                </li>
+                                <li class="consultar">
+                                    <a href="/bop/cerca">
+                                        Cercador
+                                    </a>
+                                </li>
+                                <li class="publicar">
+                                    <a href="/bop/publicar">
+                                        Publicar
+                                    </a>
+                                </li>
+                                <li class="verificar">
+                                    <a href="/bop/verificar">
+                                        Verificador
+                                    </a>
+                                </li>
+                                <li class="subscripcio">
+                                    <a href="/bop/subscripcio">
+                                        Subscripció
+                                    </a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Idioma
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <ul>
+                                            <li>
+                                                <a class="dropdown-item" href="/bop/idioma/ca">
+                                                    Català
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" href="/bop/idioma/es">
+                                                    Castellà
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </header>
+
+
+            <div class="container">
+                <div class="row titol titol-principal">
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('.row.titol.titol-principal').hide();
+            });
+        </script>
+                </div>
+            <div class="row titol">
+                <div class="col-6">
+                        <img src="/bop/resources/img/boptot.jpg" class="imatge" alt="BOP número 1/0 - 03/01/2022" />
+                        <h1>
+                            Bop número: 1/0 - 03/01/2022
+                        </h1>
+                </div>
+            </div>
+
+            <div class="aplicacio">
+                    <section>
+                        <h2 class="seccioTau">
+                            Administració local - Ajuntaments
+                        </h2>
+                        <ul>
+                                <li class="edicte">
+                                    <a href="https://ssl4.ddgi.cat/bopV1/pdf/2022/1/20221011279.pdf" target="new" class="linkAjuda">
+                                        11279 - <span>AJUNTAMENT DE CANET D'ADRI</span> - Aprovació definitiva del pressupost general per a l'exercici 2022
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ssl4.ddgi.cat/bopV1/pdf/2022/1/20221011285.pdf" target="new" class="linkAjuda">
+                                        11285 - <span>AJUNTAMENT DE CASSÀ DE LA SELVA</span> - Aprovació inicial de la plantilla i la RLT de l'Ajuntament de Cassà de la Selva i la Mercantil Gestió de Serveis Municipals SL per a l'exercici 2022
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ssl4.ddgi.cat/bopV1/pdf/2022/1/20221011289.pdf" target="new" class="linkAjuda">
+                                        11289 - <span>AJUNTAMENT DE FORTIÀ</span> - Aprovació definitiva de l'expedient de modificació de crèdit núm. 4/2021
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ssl4.ddgi.cat/bopV1/pdf/2022/1/20221011093.pdf" target="new" class="linkAjuda">
+                                        11093 - <span>AJUNTAMENT DE GARRIGOLES</span> - Informació pública d'un projecte d'actuació específica en sòl no urbanitzable
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ssl4.ddgi.cat/bopV1/pdf/2022/1/20221011240.pdf" target="new" class="linkAjuda">
+                                        11240 - <span>AJUNTAMENT DE LLAGOSTERA</span> - Extracte de l'acord de la Junta de Govern Local de l'Ajuntament de Llagostera d'1 de desembre de 2021, de convocatòria anticipada de les subvencions per al consum en activitats econòmiques del municipi de Llagostera (Convocatòria BDNS 603362)
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ssl4.ddgi.cat/bopV1/pdf/2022/1/20221011092.pdf" target="new" class="linkAjuda">
+                                        11092 - <span>AJUNTAMENT DE LLANARS</span> - Aprovació inicial de dues ordenances municipals
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ssl4.ddgi.cat/bopV1/pdf/2022/1/20221011277.pdf" target="new" class="linkAjuda">
+                                        11277 - <span>AJUNTAMENT DE MONTAGUT I OIX</span> - Extracte de l'acord del Ple de l'Ajuntament de Montagut i Oix de 28 d'octubre de 2021, de convocatòria de subvencions destinades a les activitats econòmiques de Montagut i Oix amb motiu de la situació generada pel Covid-19, mitjançant el procediment de concurrència competitiva (Convocatòria BDNS 603286)
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ssl4.ddgi.cat/bopV1/pdf/2022/1/20221011282.pdf" target="new" class="linkAjuda">
+                                        11282 - <span>AJUNTAMENT DE PAU</span> - Delegació de funcions de l'alcalde
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ssl4.ddgi.cat/bopV1/pdf/2022/1/20221011090.pdf" target="new" class="linkAjuda">
+                                        11090 - <span>AJUNTAMENT DE RIBES DE FRESER</span> - Aprovació del Pla de disposició de fons
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ssl4.ddgi.cat/bopV1/pdf/2022/1/20221011268.pdf" target="new" class="linkAjuda">
+                                        11268 - <span>AJUNTAMENT DE RIBES DE FRESER</span> - Aprovació inicial del pressupost i la plantilla per a l'exercici 2022
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ssl4.ddgi.cat/bopV1/pdf/2022/1/20221011270.pdf" target="new" class="linkAjuda">
+                                        11270 - <span>AJUNTAMENT DE RIBES DE FRESER</span> - Aprovació inicial de l'expedient de modificació de crèdit 13/2021
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ssl4.ddgi.cat/bopV1/pdf/2022/1/20221011271.pdf" target="new" class="linkAjuda">
+                                        11271 - <span>AJUNTAMENT DE RIBES DE FRESER</span> - Exposició pública del Projecte executiu de renovació de l'enllumenat públic dels nuclis agregats del municipi de Ribes de Freser
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ssl4.ddgi.cat/bopV1/pdf/2022/1/20221011272.pdf" target="new" class="linkAjuda">
+                                        11272 - <span>AJUNTAMENT DE RIBES DE FRESER</span> - Exposició pública del projecte de "Renovació de l'enllumenat públic del municipi de Ribes de Freser"
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ssl4.ddgi.cat/bopV1/pdf/2022/1/20221011287.pdf" target="new" class="linkAjuda">
+                                        11287 - <span>AJUNTAMENT DE SANT GREGORI</span> - Correcció d'errors d'un edicte
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ssl4.ddgi.cat/bopV1/pdf/2022/1/20221011231.pdf" target="new" class="linkAjuda">
+                                        11231 - <span>AJUNTAMENT DE VILAMACOLUM</span> - Aprovació inicial de la modificació i la creació de les ordenances per a l'exercici 2022
+                                    </a>
+                                </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2 class="seccioTau">
+                            Administració local - Consells comarcals
+                        </h2>
+                        <ul>
+                                <li class="edicte">
+                                    <a href="https://ssl4.ddgi.cat/bopV1/pdf/2022/1/20221011288.pdf" target="new" class="linkAjuda">
+                                        11288 - <span>CONSELL COMARCAL DEL GIRONÈS</span> - Aprovació definitiva de l'establiment de diverses ordenances de preus públics
+                                    </a>
+                                </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2 class="seccioTau">
+                            Administració local - Diputació
+                        </h2>
+                        <ul>
+                                <li class="edicte">
+                                    <a href="https://ssl4.ddgi.cat/bopV1/pdf/2022/1/20221011252.pdf" target="new" class="linkAjuda">
+                                        11252 - <span>DIPUTACIÓ DE GIRONA</span> - Aprovació definitiva del projecte d'obres d'extensió de la infraestructura de la xarxa de fibra òptica de Corçà a Monells i accés a Millars
+                                    </a>
+                                </li>
+                                <li class="edicte">
+                                    <a href="https://ssl4.ddgi.cat/bopV1/pdf/2022/1/20221011254.pdf" target="new" class="linkAjuda">
+                                        11254 - <span>DIPUTACIÓ DE GIRONA</span> - Aprovació definitiva del projecte constructiu de la infraestructura de la xarxa de fibra òptica des de Boadella a Biure
+                                    </a>
+                                </li>
+                        </ul>
+                    </section>
+            </div>
+            </div>
+
+
+            <footer id="footer">
+                <div class="footer-top">
+                    <div class="container">
+                        <div class="col">
+                            <div class="footer1_DDGI">
+                                <address>
+                                    <span class="footer_titol">Diputació de Girona</span> <span class="footer_subtitol">Secretaria General </span> <span>Pujada de Sant Martí, 4</span> <span>17004 Girona</span> <span>Tel.: 972 185 000</span> <span><a href="mailto:bop@ddgi.cat">bop@ddgi.cat</a></span> <span><a href="https://www.ddgi.cat/web" title="Portal web de la Diputació de Girona" target="_blank">www.ddgi.cat</a></span>
+                                </address>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="footer2_DDGI">
+                                <a href="https://www.ddgi.cat/web/nivell/5164/agenda-2030" title="Agenda 2030" target="_blank">
+                                    <img alt="DDGI 2030 ODS 8, 10 i 16" width="176" src="https://www.ddgi.cat/ddgi/docNivell/web/ods/svg/cg3/ODS_Secretaria.svg" />
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col"> </div>
+                        <div class="col">
+                            <div class="footer4_DDGI">
+                                <div class="footer_DGII_menu">
+                                    <span class="footer_titol">Menú</span>
+                                    <ul>
+
+
+
+                                        <li>   <a href="/bop">
+                                                Últim número
+                                            </a></li>
+                                        <li>  <a href="/bop/cerca" title="Cercador">
+                                                Cercador del BOP
+                                            </a></li>
+                                        <li>  <a href="/bop/publicar">
+                                                Publicar al BOP
+                                            </a></li>
+                                        <li>  <a href="/bop/verificar">
+                                                Verificador BOP
+                                            </a></li>
+                                        <li> <a href="/bop/subscripcio">
+                                                Subscripció
+                                            </a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <div class="container">
+                        <div class="col">
+                            <div class="footer_DDGI_logo"> <a href="https://www.ddgi.cat/web" title="Portal web de la Diputació de Girona" target="_blank"> <img alt="Diputació de Girona" src="https://www.ddgi.cat/ddgi/docNivell/web/footer/Diputacio_Girona_200_anys.svg" /> </a> </div>
+                        </div>
+                        <div class="col">
+                            <div class="footer_DDGI_links">
+                                <ul>
+                                    <li><a href="https://www.ddgi.cat/web/nivell/379/s-/Avis+Legal" target="_blank">Avís legal</a></li>
+                                    <li><a href="https://www.ddgi.cat/web/nivell/380/s-/Proteccio-de-dades" target="_blank">Protecció de dades</a> </li>
+                                    <li> <a href="https://www.ddgi.cat/web/nivell/381/s-/Accessibilitat" target="_blank">Accessibilitat</a> </li>
+                                    <li> <a href="https://www.ddgi.cat/web/nivell/5897/politica-de-galetes" target="_blank">Política de galetes</a> </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer></body>
+</html>
