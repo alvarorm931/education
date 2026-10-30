@@ -1,7 +1,7 @@
 """Textos de los anuncios de empleo de los BOP sin descarga propia de textos. Mismas reglas que el resto: en listas de
 personas (fuera de CON_TEXTO) solo el recuento de líneas con documento de identidad.
 
-  - Con un PDF por anuncio (url_pdf): Zamora, BOTHA, Ávila, Jaén y Salamanca.
+  - Con un PDF por anuncio (url_pdf): Zamora, BOTHA, Ávila, Jaén, Salamanca y Burgos.
   - Con el PDF del boletín entero: Lugo y Palencia (página de cada anuncio), Tenerife y Las Palmas (sin página: se
     busca el título). Se descarga el boletín una vez y se corta el texto de cada anuncio de empleo desde su título
     hasta el título del anuncio siguiente; si no se encuentra el título, sin texto (nunca el de otro anuncio).
@@ -30,7 +30,7 @@ from motor.limpieza import RE_DOCUMENTO, limpiar_texto
 from motor.provinciales.comun import CON_TEXTO, descargar_textos_pdf, ruta_texto_pdf
 
 # BOP con un PDF por anuncio y sin descarga de textos en su conector
-CON_PDF_POR_ANUNCIO = {"bopzamora", "bopalava", "bopavila", "bopjaen", "bopsalamanca"}
+CON_PDF_POR_ANUNCIO = {"bopzamora", "bopalava", "bopavila", "bopjaen", "bopsalamanca", "bopburgos"}
 # BOP con el PDF del boletín entero: campo con su dirección
 BOLETIN_ENTERO = {"boplugo": "url_pdf", "boppalencia": "url_pdf", "boptenerife": "url_pdf",
                   "boplaspalmas": "url_pdf_boletin"}

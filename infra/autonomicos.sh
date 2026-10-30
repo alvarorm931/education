@@ -191,6 +191,9 @@ for c in $CONECTORES; do
       ejecutar motor.provinciales.bopburgos --salida "$S"
       ejecutar motor.provinciales.bopburgos --desde-anio 2022 --hasta-anio "$((Y - 1))" --salida "$S" --max-minutos "$M"
       "$G" "BOP Burgos: boletines"
+      # Textos: el PDF de cada anuncio de empleo (motor/provinciales/textos.py)
+      ejecutar motor.provinciales.textos bopburgos --salida "$S" --max-minutos "$M"
+      "$G" "BOP Burgos: textos"
       ;;
     bopalava)
       ejecutar motor.provinciales.bopalava --salida "$S"
