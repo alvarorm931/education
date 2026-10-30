@@ -1,0 +1,449 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta property="og:title"
+	content="Sede electrónica Diputación de Huelva" />
+<meta property="og:type" content="government" />
+<meta property="og:url" content="http://s2.diphuelva.es" />
+<meta property="og:image"
+	content="http://s2.diphuelva.es/comun/imagenes/corporativa/logoPortada.png" />
+<meta property="og:site_name"
+	content="Sede Electrónica Diputación de Huelva" />
+<meta property="fb:admins" content="100002595467010" />
+<meta property="fb:admins" content="100002595467010" />
+<meta name="Description"
+	content="Sede Electrónica de la Diputación de Huelva" />
+<title>Diputación de Huelva :: </title>
+<link rel="shortcut icon" href="/favicon.ico">
+			<link rel="stylesheet" type="text/css" href="/css/general.css" />
+<link rel="stylesheet" type="text/css" href="/comun/css/menuPrincipal.css" />
+<script type="text/javascript" src="/comunJS/prototype.js"></script>
+<script type="text/javascript" src="/js/navegacion.js"></script>
+<script type="text/javascript" src="/js/sede.js"></script>
+
+	</head>
+	<body>
+<div id="paginaContenido">
+<link rel="stylesheet" type="text/css" href="/css/contenidos.css" />
+<link rel="stylesheet" type="text/css" href="/comun/css/servicios.css" />
+<link rel="stylesheet" type="text/css" href="/comun/css/Bope.css" />
+
+<!-- Bootstrap CSS font-awesome -->
+<link
+	ref="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
+	rel="stylesheet">
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" type="text/css"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+	integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+	crossorigin="anonymous">
+
+
+<script type="text/javascript" src="/comunJS/prototype.js"></script>
+<script type="text/javascript" src="/comunJS/listas.js"></script>
+<script type="text/javascript" src="/comunJS/ventanas.js"></script>
+<script type="text/javascript" src="/comunJS/Formulario.js"></script>
+<script type="text/javascript" src="/comunJS/Capa.js"></script>
+
+
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<!--  <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script> -->
+<script type="text/javascript"
+	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+	integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+	crossorigin="anonymous"></script>
+<script type="text/javascript"
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+	integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+	crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript">
+
+window.addEventListener("resize", function() {
+		medicion();
+  }); 
+
+/*window.addEventListener("DOMContentLoaded", function() {
+
+		cargarAnuncios(function(){
+			medicion();
+		});
+  }); 
+*/
+
+
+var jsonGlobal;
+
+
+
+function DescargarPDF(trabajoFirma)
+{
+	window.open(
+			  '/portalweb/bope/anuncios/'+trabajoFirma,
+			  '_blank' // <- This is what makes it open in a new window.
+			);
+	}
+
+function DesactivarDescargaAnuncio(fechaSeleccionada)
+{
+	if (fechaSeleccionada != '2025-12-31')
+		return;
+
+	var documentos = ['Anuncio_338594_BOP-249_2025.pdf', 'Anuncio_338519_BOP-249_2025.pdf', 'Anuncio_338516_BOP-249_2025.pdf', 'Anuncio_338504_BOP-249_2025.pdf', 'Anuncio_338499_BOP-249_2025.pdf'];
+	var aviso = 'Descarga no disponible. Use Verifica y el informe de firma.';
+
+	for (var j = 0; j < documentos.length; j++)
+	{
+		var documento = documentos[j];
+		var selector = '#anunciosNuevos input[onclick*=\"' + documento + '\"], #anunciosNuevos a[href*=\"' + documento + '\"]';
+		var enlaces = document.querySelectorAll(selector);
+
+		for (var i = 0; i < enlaces.length; i++)
+		{
+			enlaces[i].removeAttribute('onclick');
+			enlaces[i].setAttribute('title', aviso);
+			enlaces[i].style.opacity = '0.4';
+			enlaces[i].style.cursor = 'not-allowed';
+			enlaces[i].style.pointerEvents = 'none';
+			if (enlaces[i].tagName == 'A')
+				enlaces[i].href = 'javascript:void(0);';
+		}
+	}
+}
+
+
+function cargarAnuncios(tipo,fecha = 0)
+{
+	var vtipo =tipo;
+	console.log("Tipo de peticiï¿½n:"+ vtipo);
+
+	var fe = new Date(fecha);
+	var ft = new Date("2023-06-20");
+	
+	var fecha_elegida = fecha;
+	console.log("Realizamos la llamada con la fecha seleccionada en el calendario: " + fecha_elegida);
+	enEspera('Cargando los anuncios del '+ fecha_elegida +' ,  Espere, por favor...');
+			
+	//Realizamos la peticiï¿½n conjunta para todos las tipos de peticiï¿½n.
+	new Ajax.Request('/lib/bope/anuncios_bop/ajaxAnuncios.php',
+		{
+			method : 'post',
+ 			parameters: 
+ 				{    
+  				tipo : vtipo,
+  				fecha : fecha_elegida
+				},
+		  	onSuccess:function (transport) 
+		  	{
+	  		  if(vtipo == 2)
+	  		  {
+					
+						var obj = JSON.parse(transport.responseText);
+						jsonGlobal = obj;
+						
+						fecha = obj.fecha_actual;
+						fecha_selecionada = obj.fecha_elegida;
+				
+						var fecha_formateada = new Date(fecha_selecionada);
+						var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+						//$("fechaBoletin").innerHTML = "<div class=\"hijo\"><p>Bolet&iacuten del  " + fecha_formateada.toLocaleDateString('es-ES',options) + "</p></div>";
+						if (fecha_selecionada=='2023-11-06') {
+							$("fechaBoletin").innerHTML = "<div class=\"hijo\"><p>Por motivos técnicos, el boletín de hoy no está disponible como es habitual. Pulse&nbsp;<a target='_blank' style='color:#fff;text-decoration:underline;' href='https://s2.diphuelva.es/portalweb/bope/anuncios/Bop_210.pdf'>aquí</a></p></div>";
+						}
+						else if (fecha_selecionada=='2024-04-25') {
+							$("fechaBoletin").innerHTML = "<div class=\"hijo\"><p>Bolet&iacuten del  " + fecha_formateada.toLocaleDateString('es-ES',options) + "</p><p>Por error técnico, el anuncio de Consejería de Industria, Energía y Minas que aparece en el Sumario no se corresponde con el real, que es el que aparece a continuación.</p></div>";
+						}
+						else if (fecha_selecionada=='2025-11-11') {
+							$("fechaBoletin").innerHTML = "<div class=\"hijo\"><p>Bolet&iacuten del  " + fecha_formateada.toLocaleDateString('es-ES',options) + "</p><p>En el sumario del Boletín 215 de 11/11/2025 aparece por error técnico 12/11/2025, siendo la fecha correcta la de la firma.</p></div>";
+						}
+						else if (fecha_selecionada=='2025-12-31') {
+							$("fechaBoletin").innerHTML = "<div class=\"hijo\"><p>Bolet&iacuten del  " + fecha_formateada.toLocaleDateString('es-ES',options) + "</p><p>Debido a un error en la cola de firmas, la fecha de la misma no se corresponde con la del boletín que sería 31/12/2025. En el sumario aparecen unos anuncios cuyo número de boletín al descargarlo no se corresponde con el real. Deberá descargarse por Verifica usando el informe.</p></div>";
+						}
+						else 
+							$("fechaBoletin").innerHTML = "<div class=\"hijo\"><p>Bolet&iacuten del  " + fecha_formateada.toLocaleDateString('es-ES',options) + "</p></div>";
+					 	if(obj.TieneAnuncios)
+					 	{
+					 	
+			 				$("sum").style.visibility = "visible";
+							$("resultadoAnuncios").style.visibility = "visible";
+							$("resultadoAnuncios").style.display = "block";
+					 	
+					 		//$("resultadoAnuncios").show();
+			  			$("listadoSeccionesAvan").style.visibility = "visible";
+							$("listadoSeccionesAvan").innerHTML = obj.CodigoCompletoSecciones;						  			
+
+							fecha_publicacion = obj.fecha_publicacion;
+							num_bop = obj.Indice.num_bop;
+							var nombre_documento = obj.Indice.documento;
+				 		 
+							$("presentacion_boletin").innerHTML= "<div class=\"hijo sumario\"><p>Sumario <input type=\"image\" name=\"descargaSumario\" src='/comunIMG/iconos/24x24/pdf.png' onClick=\" DescargarSumario('"+ nombre_documento + "')\"></p></div> <div class=\"hijo\"></div></div>";
+					
+							var codigo = '';
+					 		for (var i in obj.Anuncios) 
+					 		{
+								if (obj.Anuncios.hasOwnProperty(i)) 
+								{
+				 					console.log(obj.Anuncios[i].id_anuncio);
+				 					codigo = codigo + obj.Anuncios[i].codigo ;
+				 		    }
+							}
+					 		$("anunciosNuevos").innerHTML = obj.CodigoCompletoAnuncios;
+					 		DesactivarDescargaAnuncio(fecha_selecionada);
+					 		$("anuncios2").hide();
+						} 
+						else 
+						{
+							if (fecha_selecionada!='2023-11-06') 
+							{
+								$("presentacion_boletin").innerHTML= "";
+								$("sum").style.visibility = "hidden";
+								$("listadoSeccionesAvan").style.visibility = "hidden";
+								//$("resultadoAnuncios").style.visibility = "hidden";
+								$("resultadoAnuncios").style.display = "none";
+								$("anuncios2").show();
+								console.log("1: fe: " + fe + ". ft: " + ft);
+			  				if (fe < ft)
+					  		{
+						  		console.log("Soy menor");
+			  					$("anuncios2").innerHTML="<p style='font-size: 25px; color: black; text-align: center; font-style: oblique;  background-color: #dfdfdf; padding: 20px;'>Para consultar boletines anteriores a 20/06/2023 pulse <a href=\"https://s2.diphuelva.es/servicios/bop\">aquí</a> y elija otra vez la fecha deseada.</p>";
+			  				}
+			  				else
+					  		{
+						  		console.log("Soy mayor");
+									$("anuncios2").innerHTML = "<p style='font-size: 25px; color: black; text-align: center; font-style: oblique;  background-color: #dfdfdf; padding: 20px;'>No hay anuncios para el d&iacutea seleccionado.</p>";
+								}
+							}
+							else
+							{
+								$("listadoSeccionesAvan").style.visibility = "hidden";
+								$("resultadoAnuncios").style.display = "none";
+							}
+						}
+		  		}  
+		  		finEspera();
+		  		medicion();
+		  	},
+		  	onFailure:function(transport) 
+		  	{
+		  		finEspera();
+		  		console.log("Fallo en la peticion");
+		  		//$("link_Sumario").hide();
+		  		//$("resultadoAnuncios").hide();
+		  		$("anuncios2").show();
+		  		console.log("2: fe: " + fe + ". ft: " + ft);
+		  		if (fe < ft)
+		  		{
+			  		console.log("Soy menor");
+  					$("anuncios2").innerHTML="<p style='font-size: 25px; color: black; text-align: center; font-style: oblique;  background-color: #dfdfdf; padding: 20px;'>Para consultar boletines anteriores a 20/06/2023 pulse <a href=\"https://s2.diphuelva.es/servicios/bop\">aquí</a> y elija otra vez la fecha deseada.</p>";
+  				}
+		  		else
+		  		{
+			  		console.log("Soy mayor");
+						$("anuncios2").innerHTML = "<p style='font-size: 25px; color: black; text-align: center; font-style: oblique;  background-color: #dfdfdf; padding: 20px;'>No hay anuncios para el d&iacutea seleccionado.</p>";
+					}
+		  	}
+			});
+
+	
+}
+
+
+
+function enviarFecha(fecha)
+{
+	var dia = fecha[0].getDate().toString();
+	if (dia.length<2)
+		dia = "0" + dia;
+	var mes = fecha[0].getMonth() + 1
+	var mes = mes.toString() ;
+	if (mes.length<2)
+		mes = "0" + mes;
+	var ano = fecha[0].getFullYear();
+	var nuevaFecha = ano + '-' + mes + '-' + dia;
+	
+	var vtipo =2;
+	
+	cargarAnuncios(vtipo,nuevaFecha);
+}
+
+function DescargarSumario(documento)
+{
+	window.open(
+	 '/portalweb/bope/anuncios/'+documento,
+	  '_blank'
+	);
+}
+
+
+  function medicion() {
+
+    const targetFrame = window.top;
+
+    var altura = document.body.scrollHeight;
+
+    targetFrame.postMessage(altura, "https://sede.diphuelva.es");
+
+    // Para rehacer los enlaces ancla
+    var enlaces = document.querySelectorAll('a[href^="#"]'); // Obtén todos los enlaces con atributo href que comienza con "#"
+
+    enlaces.forEach(function(enlace) {
+      enlace.addEventListener('click', function(event) {
+        event.preventDefault(); // Evita el comportamiento predeterminado del enlace
+
+        var elementoDestino = document.querySelector(this.getAttribute('href'));
+
+        if (elementoDestino) {
+          elementoDestino.scrollIntoView({
+            behavior : 'smooth'
+          }); // Desplázate al elemento destino de manera suave
+        }
+      });
+    });
+
+  }
+
+</script>
+
+<!--  PRESENTACION DE LOS ANUNCIOS  -->
+<div id="contenido">
+
+
+	<div class="jumbotron">
+		<div class="row">
+			<div class="col-md-12">
+				<h1 class="display-4">Búsqueda por calendario</h1>
+				<hr class="my-4">
+				<div id="calendario2">            <td align="center"  colspan="0" >
+            <link rel="stylesheet" type="text/css" href="/comunCSS/calendario/jscal2.css" />
+            <link rel="stylesheet" type="text/css" href="/comunCSS/calendario/border-radius.css" />
+            <link rel="stylesheet" type="text/css" href="/comunCSS/calendario/diputacion/diputacion.css" />
+            <script type="text/javascript" src="/comunJS/calendario/jscal2.js"></script>
+            <script type="text/javascript" src="/comunJS/calendario/lang/es.js"></script>
+            <script>
+            window.__cal_desact = function(fecha)
+            {
+              var desactivadas = {};
+              fecha = Calendar.dateToInt(fecha);
+              return fecha in desactivadas;
+            }
+
+            window.__cal_marcada = function(fecha, desde, hasta)
+            {
+              var dia = Calendar.dateToInt(fecha);
+              if ((dia < desde) || (dia > hasta)) return null;
+              var marcadas = {};
+              return marcadas[dia];
+            }
+
+            window.__cal_selfecha = function(cal)
+            {
+              // 1- Deseleccionamos las fechas desactivadas.
+              var fechas = cal.selection.getDates();
+              for (var i = 0; i < fechas.length; ++i)
+              {
+                if (cal.isDisabled(fechas[i]))
+                  cal.selection.unselect(fechas[i]);
+              }
+
+              // 2.- Calculamos el total de días seleccionados en todos los calendarios.
+              var id  = cal.args.cont.substring(6,7);
+              var multiple = (__cal_sel[id].cals > 1)
+              var diasSel = 0;
+              for(var i=1; i<=__cal_sel[id].cals; i++)
+              {
+                if(!multiple)
+                  objCal = eval('__o__cal_' + id);
+                else                  objCal = eval('__o__cal_' + id + '_' + i);
+                diasSel += objCal.selection.countDays();
+              }
+
+              // 3.- Si el total supera el máximo, hay que deseleccionar.
+              if ((__cal_sel[id].max >= 0)&&(diasSel>__cal_sel[id].max))
+              {
+                var fechasSel=cal.selection.getDates();
+                for(i=0; i<=(diasSel - __cal_sel[id].max);i++)
+                  cal.selection.unselect(fechasSel[fechasSel.length-i]);
+                diasSel = __cal_sel[id].max;
+              }
+              __cal_sel[id].total = diasSel;
+
+              // 4.- Actualizamos el contador visual.
+              if (__cal_sel[id].div != '')
+              {
+                oDiv = document.getElementById(__cal_sel[id].div);
+                if (oDiv.tagName == 'INPUT')
+                  oDiv.value = diasSel;
+                else
+                  oDiv.innerHTML=diasSel;
+              }
+
+              // 5.- Actualizamos el campo hidden con el contenido de las fechas seleccionadas.
+              var aFechas = new Array();
+              for(var i=1; i<=__cal_sel[id].cals; i++)
+              {
+                if(multiple)
+                  objCal = eval('__o__cal_' + id + '_' + i);
+                else
+                  objCal = eval('__o__cal_' + id);
+                var aAux = objCal.selection.getDates();
+                for (var j=0; j<aAux.length; j++)
+                  aFechas[aFechas.length] = Calendar.printDate(aAux[j],'%Y-%m-%d');
+              }
+              var oCampo = document.getElementById(cal.args.nombre);
+              oCampo.value=aFechas.join(',');
+              // 6.- Si el calendario tiene asociada una acción, la ejecutamos pasándole la fecha
+              enviarFecha(fechas);
+            }
+            window.__cal_sel = new Array();
+            </script>
+            <style>
+            .__calMes
+            {
+    	        float: left;
+    	        margin: 2px;
+            }
+            </style>
+              <div id="__cal_1" class="__calMes"></div>
+              <script>
+              __o__cal_1 = Calendar.setup({
+                                cont:          "__cal_1",
+                                weekNumbers:   false,
+                                selectionType: Calendar.SEL_SINGLE,
+																 date:					20261030,
+                                min:           20010102,
+                                max:           20261231,
+                                titleFormat:   "%B %Y",
+                                bottomBar:     false,
+                                disabled:      __cal_desact,
+                                onSelect:      function() { __cal_selfecha(this); },
+                                nombre:        'calenda'
+                              });
+              </script>
+              <script>__cal_sel[1] = {max: -1,cals: 1,total: 0,div: ''};</script>
+              <input type='hidden' name='calenda' id='calenda' />
+            </td>
+</div>
+			</div>
+		</div>
+	</div>
+	<div class="link_Sumario" id="sum">
+		<div id="fechaBoletin"></div>
+		<div id="presentacion_boletin"></div>
+	</div>
+	<div id="resultadoAnuncios">
+		<div id="listadoSeccionesAvan"></div>
+		<div id="anunciosAvan">
+			<div id="anunciosNuevos"></div>
+		</div>
+	</div>
+	<br>
+
+	<div id="anuncios2">
+		<p
+			style="font-size: 25px; color: black; text-align: center; font-style: oblique; background-color: #dfdfdf; padding: 20px;">Seleccione
+			la fecha deseada en el calendario</p>
+	</div></div>
+</body>
+</html>

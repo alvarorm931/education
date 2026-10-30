@@ -1,0 +1,939 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta property="og:title"
+	content="Sede electrónica Diputación de Huelva" />
+<meta property="og:type" content="government" />
+<meta property="og:url" content="http://s2.diphuelva.es" />
+<meta property="og:image"
+	content="http://s2.diphuelva.es/comun/imagenes/corporativa/logoPortada.png" />
+<meta property="og:site_name"
+	content="Sede Electrónica Diputación de Huelva" />
+<meta property="fb:admins" content="100002595467010" />
+<meta property="fb:admins" content="100002595467010" />
+<meta name="Description"
+	content="Sede Electrónica de la Diputación de Huelva" />
+<title>Diputación de Huelva :: </title>
+<link rel="shortcut icon" href="/favicon.ico">
+			<link rel="stylesheet" type="text/css" href="/css/general.css" />
+<link rel="stylesheet" type="text/css" href="/comun/css/menuPrincipal.css" />
+<script type="text/javascript" src="/comunJS/prototype.js"></script>
+<script type="text/javascript" src="/js/navegacion.js"></script>
+<script type="text/javascript" src="/js/sede.js"></script>
+
+	</head>
+	<body>
+<div id="paginaContenido">
+<link rel="stylesheet" type="text/css" href="/css/contenidos.css" />
+<link rel="stylesheet" type="text/css" href="/comun/css/servicios.css" />
+<link rel="stylesheet" type="text/css" href="/comun/css/Bope.css" />
+
+<!-- Bootstrap CSS font-awesome -->
+<link href="/comun/css/font-awesome.min.css" rel="stylesheet">
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" type="text/css"
+	href="/comun/css/bootstrap.min.css">
+<!--  	integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+//	crossorigin="anonymous">-->
+
+
+<script type="text/javascript" src="/comunJS/prototype.js"></script>
+<script type="text/javascript" src="/comunJS/listas.js"></script>
+<script type="text/javascript" src="/comunJS/ventanas.js"></script>
+<script type="text/javascript" src="/comunJS/Formulario.js"></script>
+<script type="text/javascript" src="/comunJS/Capa.js"></script>
+
+
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<!-- script type="text/javascript"
+	src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+	integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+	crossorigin="anonymous"></script>
+<script type="text/javascript"
+	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+	integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+	crossorigin="anonymous"></script>
+<script type="text/javascript"
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+	integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+	crossorigin="anonymous"></script> 
+
+<script>jQuery.noConflict();</script>-->
+
+<script type="text/javascript">
+  window.addEventListener("resize", function() {
+    medicion();
+  });
+
+  window.addEventListener("DOMContentLoaded", function() {
+
+    cargarAnuncios(function() {
+      medicion();
+    });
+  });
+
+  var jsonGlobal;
+
+  function DescargarPDF(trabajoFirma) {
+
+    /*
+    var fr = document.getElementById("frDocumento");
+    if (fr)
+      fr.src = "/lib/bope/anuncios_bop/anuncioBop-doc.php?trabajofirma="+trabajoFirma;
+     */
+
+    // window.location.href = "/portalweb/bope/anuncios/443.pdf";
+    window.open(
+    //'/portalweb/bope/anuncios/443.pdf',
+    '/portalweb/bope/anuncios/' + trabajoFirma, '_blank');
+  }
+
+  function cargarAnuncios(callback) {
+    // Tipo1: "Ultimo Bop";
+    // Tipo2: "Busqueda por calendario";
+    // Tipo3: "Busqueda avanzada";
+    var vtipo = 1;
+    var fecha = 0;
+    //console.log("Tipo de petición:" + vtipo);
+
+    if (vtipo == 3) {
+      //console.log("Busqueda AVANZADA");
+
+      var vSeccion = document.getElementsByName("select_Seccion")[0].value;
+      var vCategoria = document.getElementsByName("select_Categoria")[0].value;
+      var vEntidad = document.getElementsByName("select_Entidad")[0].value;
+
+      //console.log("Sección: " + vSeccion);
+      //console.log("Categoría: " + vCategoria);
+      //console.log("Entidad: " + vEntidad);
+
+      var vEtiqueta = document.getElementsByName("select_Etiqueta")[0].value;
+      var vPClave = document.getElementsByName("pclave")[0].value;
+
+      //console.log("Etiqueta: " + vEtiqueta);
+      //console.log("PClave: " + vPClave);
+
+      var vFecha_Desde = document.getElementsByName("desde")[0].value;
+      var vFecha_Hasta = document.getElementsByName("hasta")[0].value;
+
+      //console.log("Fecha_desde: " + vFecha_Desde);
+      //console.log("Fecha_hasta: " + vFecha_Hasta);
+
+      if ((vSeccion == -1) && (vCategoria == -1) && (vEntidad == -1) && (vEtiqueta == 0) && (vPClave == "")
+          && (vFecha_Desde == 0) && (vFecha_Hasta == 0))
+      //if( (vSeccion == -1) && (vCategoria == -1) && (vEntidad == -1) && (vEtiqueta == 0) && (vFecha_Desde == 0) && (vFecha_Hasta == 0 ) )
+      {
+        //console.log("No realiza la Búsqueda");
+        alert("Para realizar la búsqueda avanzada necesitaría seleccionar al menos un criterio de búsqueda");
+      } else {
+        if ((vFecha_Desde == 0) && (vFecha_Hasta != 0)) {
+
+          alert("Si filtras por fecha, la fecha de inicio es obligatoria")
+
+        } else {
+          if (vFecha_Hasta == 0) {
+            var fecha_01 = new Date();
+            var mes = fecha_01.getMonth() + 1;
+            var fecha_elegida = fecha_01.getFullYear() + "-" + mes + "-" + fecha_01.getDate();
+            vFecha_Hasta = fecha_elegida;
+          }
+          if (vPClave != "") {
+            if (confirm("Dicha b\u00FAsqueda tardará algo más.\u00BFDeseas seguir con ella?")) {
+              enEspera("Cargando los anuncios de la búsqueda avanzada,  Espere, por favor...");
+              //Realizamos la peticiÃ³n conjunta para todos las tipos de peticiÃ³n.
+              new Ajax.Request(
+                  '/lib/bope/anuncios_bop/ajaxAnuncios.php',
+                  {
+                    method : 'post',
+                    parameters : {
+                      tipo : vtipo,
+                      Seccion : vSeccion,
+                      Categoria : vCategoria,
+                      Entidad : vEntidad,
+                      Etiqueta : vEtiqueta,
+                      PClave : vPClave,
+                      Fecha_Desde : vFecha_Desde,
+                      Fecha_Hasta : vFecha_Hasta
+                    },
+                    onSuccess : function(transport) {
+
+                      //Ver mensaje de error del AJAX
+                      //$("anuncios2").innerHTML= transport.responseText;
+
+                      var obj = JSON.parse(transport.responseText);
+                      jsonGlobal = obj;
+
+                      //console.log("----- RESPUESTA CORRECTA ------");
+
+                      if (obj.TieneAnuncios) {
+                        $("listadoSecciones").innerHTML = obj.CodigoCompletoSecciones;
+                        elem = document.getElementById("listadoSecciones");
+                        elem.style.display = "block";
+                        $("anuncios").innerHTML = obj.CodigoCompletoAnuncios;
+                      } else {
+                        $("anuncios").innerHTML = "No hay anuncios con los criterios de búsqueda seleccionados.";
+                      }
+
+                      //console.log(obj);
+                      //fecha = obj.fecha_actual;
+                      //fecha_publicacion = obj.fecha_publicacion;
+                      //fecha_selecionada = obj.fecha_elegida;
+                      //num_bop = obj.Indice.num_bop;
+
+                      //$("presentacion_boletin").innerHTML= "Sumario del Boletï¿½n nï¿½ " + num_bop + ": <input type=\"image\" name=\"descargaSumario\" src='/comun/imagenes/iconos/Bope_pdf.png' onClick='DescargarSumario()'>";
+                      $("fechaBoletin").innerHTML = "Anuncios de la búsqueda avanzada";
+
+                      //$("presentacion_boletin").innerHTML = " " ;
+                      $("presentacion_boletin").innerHTML = "<div class=\"hijo\"> <p> <input type=\"image\" name=\"descargaSumario\" src='/comun/imagenes/iconos/json.png' onClick='descargarJSON()'> </p> <p> Datos Abiertos: </p></div>";
+
+                      finEspera();
+                    },
+                    onFailure : function(transport) {
+                      //console.log("------- NOOOO RESPUESTA -----");
+                      $("anuncios").innerHTML = "<h2>No tenemos anuncios para los criterios seleccionados.</h2>";
+                      finEspera();
+                    }
+                  });
+
+            } else {
+
+            }
+          } else {
+
+            enEspera("Cargando los anuncios de la búsqueda avanzada,  Espere, por favor...");
+            //Realizamos la peticiï¿½n conjunta para todos las tipos de peticiï¿½n.
+            new Ajax.Request(
+                '/lib/bope/anuncios_bop/ajaxAnuncios.php',
+                {
+                  method : 'post',
+                  parameters : {
+                    tipo : vtipo,
+                    Seccion : vSeccion,
+                    Categoria : vCategoria,
+                    Entidad : vEntidad,
+                    Etiqueta : vEtiqueta,
+                    PClave : vPClave,
+                    Fecha_Desde : vFecha_Desde,
+                    Fecha_Hasta : vFecha_Hasta
+                  },
+                  onSuccess : function(transport) {
+
+                    //Ver mensaje de error del AJAX
+                    //$("anuncios2").innerHTML= transport.responseText;
+
+                    var obj = JSON.parse(transport.responseText);
+                    jsonGlobal = obj;
+
+                    //console.log("----- RESPUESTA CORRECTA ------");
+
+                    if (obj.TieneAnuncios) {
+                      $("listadoSecciones").innerHTML = obj.CodigoCompletoSecciones;
+                      $("anuncios").innerHTML = obj.CodigoCompletoAnuncios;
+                    } else {
+                      $("anuncios").innerHTML = "No hay anuncios con los criterios de búsqueda seleccionados.";
+                    }
+
+                    //console.log(obj);
+                    //fecha = obj.fecha_actual;
+                    //fecha_publicacion = obj.fecha_publicacion;
+                    //fecha_selecionada = obj.fecha_elegida;
+                    //num_bop = obj.Indice.num_bop;
+
+                    //$("presentacion_boletin").innerHTML= "Sumario del Boletï¿½n nï¿½ " + num_bop + ": <input type=\"image\" name=\"descargaSumario\" src='/comun/imagenes/iconos/Bope_pdf.png' onClick='DescargarSumario()'>";
+                    $("fechaBoletin").innerHTML = "Anuncios de la búsqueda avanzada";
+
+                    //$("presentacion_boletin").innerHTML = " " ;
+                    $("presentacion_boletin").innerHTML = "<div class=\"hijo\"> Datos Abiertos: <input type=\"image\" name=\"descargaSumario\" src='/comun/imagenes/iconos/json.png' onClick=\" descargarJSON() \"> </div>";
+
+                    finEspera();
+                  },
+                  onFailure : function(transport) {
+                    //console.log("------- NOOOO RESPUESTA -----");
+                    $("anuncios").innerHTML = "<h2>No tenemos anuncios para los criterios seleccionados.</h2>";
+                    finEspera();
+                  }
+                });
+          }//Fin de comprobacion busqueda por palabra. 
+        } // Fin del else de la comprobacion de fecha
+      }
+    } //Fin tipo 3
+
+    //Si la busqueda no es del tipo avanzada.
+    else {
+      if (fecha == 0) {
+        //console.log("Realizamos la llamada con la fecha actual 'Último BOP'");
+        var fecha_01 = new Date();
+        var mes = fecha_01.getMonth() + 1;
+        var mesLiteral = mes.toString();
+        var fecha_elegida;
+        if (mesLiteral.length == 1)
+          var fecha_elegida = fecha_01.getFullYear() + "-0" + mes + "-" + fecha_01.getDate();
+        else
+          var fecha_elegida = fecha_01.getFullYear() + "-" + mes + "-" + fecha_01.getDate();
+        //Para probar el último BOP con una fecha a mano.
+        //fecha_elegida = "18-09-2020"
+
+        //console.log("Fecha_Elegida: " + fecha_elegida);
+        enEspera('Cargando últimos anuncios publicados,  Espere, por favor...');
+
+      } else {
+        var fecha_elegida = fecha;
+        //console.log("Realizamos la llamada con la fecha seleccionada en el calendario 'Último BOP'");
+        enEspera('Cargando los anuncios del ' + fecha_elegida + ' ,  Espere, por favor...');
+      }
+
+      //Realizamos la petición conjunta para todos las tipos de petición.
+      new Ajax.Request(
+          '/lib/bope/anuncios_bop/ajaxAnuncios.php',
+          {
+            method : 'post',
+            parameters : {
+              tipo : vtipo,
+              fecha : fecha_elegida
+            },
+            onSuccess : function(transport) {
+
+              // Si la respuesta es del tipo 1 (ULTIMO BOP)	 	
+              if (vtipo == 1) {
+                //Ver mensaje de error del AJAX 
+                $("anuncios").innerHTML = transport.responseText;
+
+                var obj = JSON.parse(transport.responseText);
+                jsonGlobal = obj;
+
+                //console.log(obj);
+                fecha = obj.fecha_actual;
+                //Probar fecha para el ultimo BOP, (Simular el día que queremos);
+                //fecha = "2020-09-18";
+                fecha_publicacion = obj.fecha_publicacion;
+                fecha_selecionada = obj.fecha_elegida;
+                num_bop = obj.Indice.num_bop;
+                var nombre_documento = obj.Indice.documento;
+
+                //                $("presentacion_boletin").innerHTML = "<div class=\"hijo sumario\"><p> Sumario </p><input type=\"image\" name=\"descargaSumario\" src='/comunIMG/iconos/24x24/pdf.png' onClick=\" DescargarSumario('"
+                //                    + nombre_documento + "')\"> </div> <div class=\"hijo\"></div>";
+                $("presentacion_boletin").innerHTML = "<div class=\"hijo sumario\"><span> Sumario </span><a href=\"javascript:DescargarSumario('"
+                    + nombre_documento + "')\"><img src='/comunIMG/iconos/24x24/pdf.png'></a></div>";
+                //$("presentacion_boletin").innerHTML = "Datos Abiertos: <input type=\"image\" name=\"descargaSumario\" src='/comun/imagenes/iconos/Bope_pdf.png' onClick='descargarJSON()'>";
+
+                if (fecha != fecha_publicacion) {
+                  var fecha_formateada = new Date(fecha_publicacion);
+                  var anoComprueba = fecha_formateada.getFullYear(); 
+                  var options = {
+                    year : 'numeric',
+                    month : '2-digit',
+                    day : 'numeric'
+                  };
+                  $("fechaBoletin").innerHTML = "<div class=\"hijo\"><p>No hay publicación hoy. El último BOP es el número "
+                      + num_bop + ": " + fecha_formateada.toLocaleDateString('es-ES', options) + "</p></div>";
+                  //$("fechaBoletin").innerHTML = "<br>BOLETï¿½N OFICIAL DE LA PROVINCIA: " +fecha_formateada.toLocaleString('es-ES', options) ;
+                } else if (num_bop=='210' && anoComprueba == 2023) {
+                  $("fechaBoletin").innerHTML ="Por motivos técnicos, el boletín de hoy no está disponible como es habitual. Pulse&nbsp;<a target='_blank' style='color:#fff;text-decoration:underline;' href='https://s2.diphuelva.es/portalweb/bope/anuncios/Bop_210.pdf'>aquí</a>";
+                } else {
+                  var fecha_formateada = new Date(fecha_publicacion);
+                  var options = {
+                    year : 'numeric',
+                    month : '2-digit',
+                    day : 'numeric'
+                  };
+                  $("fechaBoletin").innerHTML = "<div class=\"hijo\"><p>BOP número. " + num_bop + ": "
+                      + fecha_formateada.toLocaleString('es-ES', options) + "</p></div>";
+                }
+                //$("TITULO_PRESENTACION_2").innerHTML = "Fecha Actual: " + fecha +"<br> Fecha ï¿½ltima Publicaciï¿½n: "+ fecha_publicacion +"<br> Fecha Seleccionada: "+ fecha_selecionada ;
+
+                var codigo = '';
+                for ( var i in obj.Anuncios) {
+                  if (obj.Anuncios.hasOwnProperty(i)) {
+                    //console.log(obj.Anuncios[i].id_anuncio);
+                    codigo = codigo + obj.Anuncios[i].codigo;
+                  }
+                }
+
+                //Pruebas con el anuncio completo, el siguientes es por individual.
+                //$("anuncios").innerHTML= codigo;
+                $("listadoSecciones").style.visibility = "visible";
+                $("listadoSecciones").innerHTML = obj.CodigoCompletoSecciones;
+                $("anuncios").innerHTML = obj.CodigoCompletoAnuncios;
+                ini();
+
+              }//Fin respuesta Tipo = 1  
+
+              // Si la respuesta es del tipo 2 (BUSQUEDA POR CALENDARIO)	  		
+              if (vtipo == 2) {
+
+                //Ver mensaje de error del AJAX 
+                //$("anuncios2").innerHTML= transport.responseText;
+
+                var obj = JSON.parse(transport.responseText);
+                jsonGlobal = obj;
+
+                //console.log(obj);
+                fecha = obj.fecha_actual;
+                fecha_selecionada = obj.fecha_elegida;
+
+                var fecha_formateada = new Date(fecha_selecionada);
+                var options = {
+                  weekday : 'long',
+                  year : 'numeric',
+                  month : 'long',
+                  day : 'numeric'
+                };
+                if (fecha_selecionada == "2025-12-31")
+                  $("fechaBoletin").innerHTML = "<div class=\"hijo\"><p>Bolet&iacuten del  " + fecha_formateada.toLocaleDateString('es-ES', options) + "</p><p>En el sumario aparecen unos anuncios cuyo número de boletín al descargarlo no se corresponde con el real. Deberá descargarse por Verifica usando el informe de firma.</p></div>";
+                else
+                  $("fechaBoletin").innerHTML = "Boletin del  " + fecha_formateada.toLocaleDateString('es-ES', options);
+
+                //$("TITULO_PRESENTACION_2").innerHTML = "Fecha Actual: " + fecha +"<br> Fecha ï¿½ltima Publicaciï¿½n: "+ fecha_publicacion +"<br> Fecha Seleccionada: "+ fecha_selecionada ;
+
+                if (obj.TieneAnuncios) {
+
+                  fecha_publicacion = obj.fecha_publicacion;
+                  num_bop = obj.Indice.num_bop;
+                  var nombre_documento = obj.Indice.documento;
+
+                  //$("presentacion_boletin").innerHTML= "Sumario del Boletín nº " + num_bop + ": <input type=\"image\" name=\"descargaSumario\" src='/comun/imagenes/iconos/Bope_pdf.png' onClick='DescargarSumario()'>";
+                  $("presentacion_boletin").innerHTML = "<div class=\"hijo\"> Sumario del Boletín nº "
+                      + num_bop
+                      + ": <input type=\"image\" name=\"descargaSumario\" src='/comun/imagenes/iconos/Bope_pdf.png' onClick=\" DescargarSumario('"
+                      + nombre_documento
+                      + "')\"> </div> <div class=\"hijo\"> Datos Abiertos: <input type=\"image\" name=\"descargaSumario\" src='/comun/imagenes/iconos/json.png' onClick='descargarJSON()'></div>";
+
+                  var codigo = '';
+                  for ( var i in obj.Anuncios) {
+                    if (obj.Anuncios.hasOwnProperty(i)) {
+                      //console.log(obj.Anuncios[i].id_anuncio);
+                      codigo = codigo + obj.Anuncios[i].codigo;
+                    }
+                  }
+                  //$("anuncios2").innerHTML= codigo;
+                  $("listadoSecciones").style.visibility = "visible";
+                  $("listadoSecciones").innerHTML = obj.CodigoCompletoSecciones;
+                  $("anuncios").innerHTML = obj.CodigoCompletoAnuncios;
+                } else {
+                  //$("presentacion_boletin").innerHTML= "";
+                  $("presentacion_boletin").innerHTML = "<div class=\"hijo\"> Datos Abiertos: <input type=\"image\" name=\"descargaSumario\" src='/comun/imagenes/iconos/json.png' onClick='descargarJSON()'> </div>";
+                  $("anuncios").innerHTML = "No hay anuncios para el día seleccionado.";
+                }
+              }//Fin respuesta Tipo = 2  
+
+              finEspera();
+            },
+
+            onFailure : function(transport) {
+              finEspera();
+              //console.log("Fallo en la peticion");
+              $("anuncios").innerHTML = "<h2>No tenemos anuncios para el dí­a seleccionado.</h2>";
+            }
+          });
+
+      //$("anuncios2").innerHTML= 'Se carga desde la respuesta del Ajax';
+
+    } // Final Else Comprobar tipo 3.
+
+    setTimeout(function() {
+      // Llamada de retorno después de completar la carga Ajax
+      callback();
+    }, 500);
+
+  }
+
+  function enviarFecha(fecha) {
+    var dia = fecha[0].getDate().toString();
+    if (dia.length < 2)
+      dia = "0" + dia;
+    var mes = fecha[0].getMonth() + 1
+    var mes = mes.toString();
+    if (mes.length < 2)
+      mes = "0" + mes;
+    var ano = fecha[0].getFullYear();
+    var nuevaFecha = ano + '-' + mes + '-' + dia;
+
+    //Hacemos la peticiï¿½n cambiando el tipo por el tipo 2
+    // Tipo1: "Ultimo Bop";
+    // Tipo2: "Busqueda por calendario";
+    // Tipo3: "Busqueda avanzada";
+    var vtipo = 2;
+
+    cargarAnuncios(vtipo, nuevaFecha);
+
+  }
+
+  function DescargarSumario(documento) {
+
+    window.open('/portalweb/bope/anuncios/' + documento, '_blank');
+  }
+
+  function busquedaPorEntidad() {
+
+    var frm = document.forms['busqueda_Avanzada'];
+
+    //console.log("------- BUSQUEDA POR ENTIDAD -------- ");
+
+    var seccion = frm.select_Seccion.value;
+    //var seccion = document.getElementById("select_seccion");
+    var div_seccion = document.getElementById("div_seccion");
+
+    var categoria = frm.select_Categoria.value;
+    //var categoria = document.getElementById("select_categoria");
+    var div_categoria = document.getElementById("div_categorias");
+
+    var entidad = frm.select_Entidad.value;
+    //var entidad = document.getElementById("select_entidad");
+
+    //console.log("Seccion: " + seccion);
+    //console.log("Categoria: " + categoria);
+    //console.log("Entidad: " + entidad);
+
+    if (seccion == -1) {
+      //No pone le valor ni el disabled a 0
+      //seccion.value = 0;
+      //seccion.disabled  = true;
+      mostrarZonaFormulario('zonaSeccion', false);
+      //div_seccion.style.display = "none";
+
+      //categoria.value = 0;
+      //categoria.disabled = true;
+      mostrarZonaFormulario('zonaCategoria', false);
+      //div_categoria.style.display = "none";
+    }
+
+    if (entidad == -1) {
+
+      /* $frm->add(new CampoMarca("Mostrar zona adicional", "chkZona", false, "mostrarZonaFormulario('masDatos',this.checked)"));
+      $filaNN = new FilaFormulario();
+      $zona1 = new ZonaFormulario("masDatos", "Mï¿½s datos", false);
+      $zona1->add(new CampoTexto("Otro dato:", "otro", "Otro dato", 20, 40));
+      $filaNN->addCampo($zona1); */
+      mostrarZonaFormulario('zonaSeccion', true);
+      mostrarZonaFormulario('zonaCategoria', true);
+
+      //div_seccion.style.display = "inline-grid";
+      //div_categoria.style.display = "inline-grid";
+    }
+
+    if (categoria != -1) {
+      //div_categoria.style.display = "inline-grid";
+      mostrarZonaFormulario('zonaCategoria', true);
+    }
+
+    //alert("Busqueda por entidad, se desabilitan las secciones y categorias");
+  }
+
+  function busquedaPorCategoria() {
+
+    var seccion = document.getElementById("select_seccion");
+    var categoria = document.getElementById("select_categoria");
+
+    if (seccion.value == -1) {
+      //No pone le valor ni el disabled a -1
+      seccion.value = -1;
+      seccion.disabled = true;
+
+    }
+
+    if (categoria.value == -1) {
+      seccion.disabled = false;
+    }
+
+  }
+
+  function llamadaAjax(valor) {
+    alert("el Valor seleccionado es: " + valor);
+
+  }
+
+  function CargarCategorias(seccion) {
+
+    var frm = document.forms['busqueda_Avanzada'];
+    var seccion = seccion;
+    var categoria = frm.select_Categoria;
+    var entidad = frm.select_Entidad;
+    var seccion_2 = frm.select_Seccion;
+
+    //console.log("seccion: " + seccion);
+    //console.log("Categoria: " + categoria.value);
+    //console.log("Entidad: " + entidad.value);
+    //console.log("Seccion_2: " + seccion_2.value);
+
+    liBorrarTodos(categoria);
+    liBorrarTodos(entidad);
+    categoria.disabled = false;
+    entidad.disabled = false;
+
+    //enEspera('Cargando Categorias Espere, por favor...');
+
+    new Ajax.Request('/lib/bope/anuncios_bop/ajaxBusquedaAvanzada.php', {
+      evalScripts : true,
+      parameters : {
+        accion : 'CargarCategorias',
+        seccion : seccion
+      },
+
+      onSuccess : function(tr) {
+
+        if (!tr.responseJSON.error) {
+          if (tr.responseJSON.tieneCategorias) {
+            var categorias = tr.responseJSON.categorias;
+
+            liInsertarOpcion(categoria, -1, "Seleccione una categorÃ­a");
+            liInsertarOpcion(entidad, -1, "Seleccione una entidad");
+
+            for (var i = 0; i < categorias.length; i++) {
+              liInsertarOpcion(categoria, categorias[i].codigo, categorias[i].descripcion);
+            }
+
+          } else {
+            liInsertarOpcion(categoria, -1, tr.responseJSON.mensaje);
+            categoria.disabled = true;
+
+            if (tr.responseJSON.tieneEntidades) {
+              var entidades = tr.responseJSON.entidades;
+              liInsertarOpcion(entidad, -1, "Seleccione una entidad");
+              for (var i = 0; i < entidades.length; i++) {
+                liInsertarOpcion(entidad, entidades[i].codigo, entidades[i].descripcion);
+              }
+            } else {
+              liInsertarOpcion(entidad, -1, tr.responseJSON.mensaje2);
+              entidad.disabled = true;
+            }
+
+          }
+        }
+
+      },
+      onFailure : function(tr) {
+        //  finEspera();
+        alert(tr.responseText);
+      }
+    });
+
+    //Si dejamos la seccion a -1 tendremos que rellenar todas las entidades y las categorias.	    
+    if (seccion_2.value == -1) {
+
+      entidad.disabled = false;
+      categoria.disabled = false;
+
+      new Ajax.Request('/lib/bope/anuncios_bop/ajaxBusquedaAvanzada.php', {
+        evalScripts : true,
+        parameters : {
+          accion : 'CargarTodasLasEntidades',
+        },
+
+        onSuccess : function(tr) {
+
+          if (!tr.responseJSON.error) {
+
+            //Cargamos todas las categorias
+            if (tr.responseJSON.tieneCategorias) {
+
+              liBorrarTodos(categoria);
+              categoria.disabled = false;
+              var categorias = tr.responseJSON.categorias;
+              liInsertarOpcion(categoria, -1, "Seleccione una categoria");
+              for (var i = 0; i < categorias.length; i++) {
+                liInsertarOpcion(categoria, categorias[i].codigo, categorias[i].descripcion);
+              }
+
+            } else {
+              liInsertarOpcion(categoria, -1, tr.responseJSON.mensajeCategorias);
+              categoria.disabled = true;
+            }
+
+            //Cargamos todas las entidades
+            if (tr.responseJSON.tieneEntidades) {
+
+              liBorrarTodos(entidad);
+              entidad.disabled = false;
+              var entidades = tr.responseJSON.entidades;
+              liInsertarOpcion(entidad, -1, "Seleccione una entidad");
+              for (var i = 0; i < entidades.length; i++) {
+                liInsertarOpcion(entidad, entidades[i].codigo, entidades[i].descripcion);
+              }
+
+            } else {
+              liInsertarOpcion(entidad, -1, tr.responseJSON.mensajeEntidades);
+              entidad.disabled = true;
+            }
+
+          }
+        },
+        onFailure : function(tr) {
+          //  finEspera();
+          alert(tr.responseText);
+        }
+      });
+
+    }
+
+  }
+
+  function CargarEntidades(categoria) {
+
+    //console.log("entra en cargar entidades");
+
+    var frm = document.forms['busqueda_Avanzada'];
+    var seccion = frm.select_Seccion;
+    //var seccion = document.getElementById("select_seccion");
+
+    var div_seccion = document.getElementById("div_seccion");
+
+    var entidad = frm.select_Entidad;
+    //var entidad = document.getElementById("select_entidad");
+
+    entidad.disabled = false;
+
+    liBorrarTodos(entidad);
+
+    new Ajax.Request('/lib/bope/anuncios_bop/ajaxBusquedaAvanzada.php', {
+      evalScripts : true,
+      parameters : {
+        accion : 'CargarEntidades',
+        categoria : categoria
+      },
+
+      onSuccess : function(tr) {
+
+        if (!tr.responseJSON.error) {
+          if (tr.responseJSON.tieneEntidades) {
+            var entidades = tr.responseJSON.entidades;
+            liInsertarOpcion(entidad, -1, "Seleccione una entidad");
+            for (var i = 0; i < entidades.length; i++) {
+              liInsertarOpcion(entidad, entidades[i].codigo, entidades[i].descripcion);
+            }
+          } else {
+            liInsertarOpcion(entidad, -1, tr.responseJSON.mensaje);
+            entidad.disabled = true;
+          }
+        }
+        /*
+        var categorias = tr.responseJSON.familias;
+        liInsertarOpcion(cbFamilias,-1, "[Seleccione una familia de procedimientos]");
+        for (i = 0; i<familias.length; i++)
+          liInsertarOpcion(cbFamilias,familias[i].codigo,familias[i].descripcion);
+         */
+
+      },
+      onFailure : function(tr) {
+        //  finEspera();
+        alert(tr.responseText);
+      }
+    });
+
+    if (seccion.value == -1) {
+      seccion.value = -1;
+      //seccion.disabled  = true;
+      //div_seccion.style.display = "none";	
+      mostrarZonaFormulario('zonaSeccion', false);
+    }
+
+    if (categoria.value == -1) {
+      //seccion.disabled = false;
+      //div_seccion.style.display = "inline-grid";
+      mostrarZonaFormulario('zonaSeccion', true);
+
+      //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+      new Ajax.Request('/lib/bope/anuncios_bop/ajaxBusquedaAvanzada.php', {
+        evalScripts : true,
+        parameters : {
+          accion : 'CargarTodasLasEntidades',
+        },
+
+        onSuccess : function(tr) {
+
+          if (!tr.responseJSON.error) {
+
+            //Cargamos todas las categorias
+            if (tr.responseJSON.tieneCategorias) {
+
+              liBorrarTodos(categoria);
+              categoria.disabled = false;
+              var categorias = tr.responseJSON.categorias;
+              liInsertarOpcion(categoria, -1, "Seleccione una categoria");
+              for (var i = 0; i < categorias.length; i++) {
+                liInsertarOpcion(categoria, categorias[i].codigo, categorias[i].descripcion);
+              }
+
+            } else {
+              liInsertarOpcion(categoria, -1, tr.responseJSON.mensajeCategorias);
+              categoria.disabled = true;
+            }
+
+            //Cargamos todas las entidades
+            if (tr.responseJSON.tieneEntidades) {
+
+              liBorrarTodos(entidad);
+              entidad.disabled = false;
+              var entidades = tr.responseJSON.entidades;
+              liInsertarOpcion(entidad, -1, "Seleccione una entidad");
+              for (var i = 0; i < entidades.length; i++) {
+                liInsertarOpcion(entidad, entidades[i].codigo, entidades[i].descripcion);
+              }
+
+            } else {
+              liInsertarOpcion(entidad, -1, tr.responseJSON.mensajeEntidades);
+              entidad.disabled = true;
+            }
+
+          }
+        },
+        onFailure : function(tr) {
+          //  finEspera();
+          alert(tr.responseText);
+        }
+      });
+
+      /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    }
+
+  }
+
+  function descargarJSON() {
+    var obj = jsonGlobal;
+
+    //Tenemos que tratar el Json Recogido, ya que no son necesarios tantos datos. 
+    var objeto = {}; //OBJETO
+    var datos = [];
+
+    var anuncios = new Array();
+    var categorias = new Array();
+    var secciones = new Array();
+    var global = new Array();
+
+    ///////////////////// PRUEBAS CON EL NUEVO ARRAY //////////////////////////////////////////
+
+    /*
+    for (s of obj.SeccCatAnuncios) {
+    		for (c of s.Categorias){
+    				for (a of c.Anuncios){
+    				//console.log (a.Titulo);
+    				anuncios.push({
+     						"Titulo" : a.Titulo,
+     						"csv" : a.csv
+    				})
+    				}
+    			//console.log (c.Nombre);
+    			categorias.push({
+     						"Nombre" : c.Nombre,
+     						"Anuncios" : anuncios
+    				})
+    		}
+    		//console.log (s.Nombre);		
+    		secciones.push({
+     						"Nombre" : s.Nombre,
+     						"Anuncios" : categorias
+    				})	
+    } 
+    
+    
+     */
+
+    ///////////////////////////////////////////////////////////////////////////////////////
+    // Recorremos los anuncios y creamos el Array
+    /* for (x of obj.Anuncios) {
+     			anuncios.push({
+     						"idAnuncio" : x.id_anuncio,
+     						"Titulo" : x.titulo
+    				})
+    } 
+     */
+
+    datos.push({
+      "Fecha" : obj.fecha_elegida,
+      "Num Bop" : obj.Indice.num_bop,
+      "url_pdf" : "https://des-s2.diphuelva.es/portalweb/bope/anuncios/" + obj.Indice.documento,
+      //"Anuncios" : anuncios,
+      //"Secciones:" : secciones
+      "Anuncios" : obj.SeccCatAnuncios
+    })
+
+    objeto.datos = datos;
+    //console.log(JSON.stringify(objeto.datos));
+
+    // Código para Descargar el JSON.
+    downloadObjectAsJson(objeto, 'Datos_Abiertos');
+  }
+
+  function descargarJSONAnuncio(obj, nombreAnuncio) {
+    downloadObjectAsJson(obj, 'Datos_Abiertos');
+  }
+
+  function downloadObjectAsJson(exportObj, exportName) {
+    var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(exportObj));
+    var downloadAnchorNode = document.createElement('a');
+    downloadAnchorNode.setAttribute("href", dataStr);
+    downloadAnchorNode.setAttribute("download", exportName + ".json");
+    document.body.appendChild(downloadAnchorNode); // required for firefox
+    downloadAnchorNode.click();
+    downloadAnchorNode.remove();
+  }
+
+  function enlacePadre() {
+    window.top.location.href = "https://des-sede.diphuelva.es/opencms/opencms/sede#";
+  }
+
+  function ini() {
+    for (i = 0; ele = document.getElementsByClassName('anuncio_izq')[i]; i++)
+      if (ele.onclick != undefined)
+        ele.style.cursor = 'pointer';
+  }
+
+  function medicion() {
+
+    const targetFrame = window.top;
+
+    var altura = document.body.scrollHeight;
+
+    targetFrame.postMessage(altura, "https://sede.diphuelva.es");
+
+    // Para rehacer los enlaces ancla
+    var enlaces = document.querySelectorAll('a[href^="#"]'); // Obtén todos los enlaces con atributo href que comienza con "#"
+
+    enlaces.forEach(function(enlace) {
+      enlace.addEventListener('click', function(event) {
+        event.preventDefault(); // Evita el comportamiento predeterminado del enlace
+
+        var elementoDestino = document.querySelector(this.getAttribute('href'));
+
+        if (elementoDestino) {
+          elementoDestino.scrollIntoView({
+            behavior : 'smooth'
+          }); // Desplázate al elemento destino de manera suave
+        }
+      });
+    });
+
+  }
+</script>
+
+
+
+
+
+<!--  PRESENTACION DE LOS ANUNCIOS  -->
+
+<h3></h3>
+
+
+
+<div id="TITULO_PRESENTACION_2"></div>
+
+
+<div class="link_Sumario">
+	<div id="fechaBoletin"></div>
+	<div id="presentacion_boletin"></div>
+</div>
+
+
+<div id="resultadoAnuncios">
+	<div id="listadoSecciones"></div>
+	<div id="anuncios"></div>
+</div>
+
+
+
+
+
+</div>
+</body>
+</html>
