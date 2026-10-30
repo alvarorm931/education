@@ -293,7 +293,8 @@ provinciales:
   - provincia: Jaén
     url: http://bop.dipujaen.es/
     acceso_desde_github: "http_500"
-    estado: sin_conector
+    estado: conector_en_pruebas
+    conector: motor/provinciales/bopjaen.py
   - provincia: Las Palmas
     url: http://www.boplaspalmas.com
     acceso_desde_github: "ok"
@@ -389,4 +390,5 @@ provinciales:
   - provincia: Zaragoza
     url: http://bop.dpz.es/BOPZ/
     acceso_desde_github: "sin_respuesta_desde_github (timeout)"
-    estado: sin_conector
+    estado: conector_en_pruebas
+    conector: motor/provinciales/bopzaragoza.py

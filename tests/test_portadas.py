@@ -27,3 +27,24 @@ def test_albacete():
     sel = _sel(bopalbacete, r)
     assert [(x["convocante"]["nombre"], x["convocante"]["provincia"]) for x in sel] == [
         ("Ossa de Montiel", "Albacete"), ("Villamalea", "Albacete")]
+
+
+def test_jaen():
+    from motor.provinciales import bopjaen
+
+    r = bopjaen.leer((FIX / "bopjaen_portada_20261030.html").read_bytes())
+    assert (r["numero"], r["fecha"], len(r["anuncios"])) == ("213", "2026-10-30", 19)
+    sel = _sel(bopjaen, r)
+    assert sel[0]["convocante"]["nombre"] == "Alcaudete" and sel[0]["tipo_acto"] == "admitidos"
+    assert {x["convocante"]["nombre"] for x in sel} == {"Alcaudete", "Canena", "Jaén", "Vilches"}
+
+
+def test_zaragoza():
+    from motor.provinciales import bopzaragoza
+
+    r = bopzaragoza.leer((FIX / "bopzaragoza_portada_20261030.html").read_bytes())
+    assert (r["numero"], r["fecha"], len(r["anuncios"])) == ("251", "2026-10-30", 55)
+    sel = _sel(bopzaragoza, r)
+    assert all(x["ambito"] == "local" for x in sel)  # secciones tercera, quinta y sexta
+    assert sel[0]["convocante"]["tipo"] == "Diputación Provincial" and sel[0]["tipo_acto"] == "convocatoria"
+    assert {x["convocante"]["nombre"] for x in sel} >= {"Zaragoza", "Cuarte de Huerva", "Zuera"}

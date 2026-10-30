@@ -61,6 +61,7 @@ REGLAS_ACTO: list[tuple[str, tuple[str, ...]]] = [
                       "novo prazo de presentacion")),
     ("normativa", ("normas procedimentales", "por la que se establecen las normas")),
     ("admitidos", ("admitidos y excluidos", "admitidas y excluidas", "lista provisional", "lista definitiva",
+                   "listado provisional", "listado definitivo",
                    "relacion provisional", "relacion definitiva de aspirantes admitidos",
                    "admeses i excloses", "admesos i exclosos", "admesos i excloses", "admeses i exclosos",
                    "llista provisional", "llista definitiva", "llistat provisional", "llistat definitiu",

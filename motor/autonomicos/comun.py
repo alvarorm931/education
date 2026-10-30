@@ -204,9 +204,12 @@ TIPOS_ENTIDAD = (
 )
 
 
+RE_GENERO_TITULO = re.compile(r"/(?:as?|es|os?|da|ra|na|la)\b")
+
+
 def clasificar(titulo: str, apartado: str | None = None) -> dict:
     """Tipo de acto, modalidad y alcance con las mismas reglas que se aplican al BOE."""
-    t = normalizar(titulo or "")
+    t = RE_GENERO_TITULO.sub("", normalizar(titulo or ""))  # «admitidos/as y excluidos/as»
     modalidad = _primera(REGLAS_MODALIDAD, t)
     return {"tipo_acto": _primera(REGLAS_ACTO, t) or "otro", "modalidad": modalidad,
             "alcance": alcance(t, modalidad, apartado)}
@@ -251,7 +254,6 @@ def es_empleo_por_titulo(titulo: str) -> bool:
     return bool(RE_EMPLEO_LOCAL.search(t)) and not RE_NO_EMPLEO.search(t)
 
 
-RE_GENERO_TITULO = re.compile(r"/(?:as?|es|os?|da|ra|na|la)\b")
 
 
 # «Administrativo» que no es un puesto: entidades («Junta Administrativa de Anda», concejos de Álava) y trámites
