@@ -1,6 +1,6 @@
-# Vigilancia 30/10 22:41 (Madrid)
+# Vigilancia 30/10 22:55 (Madrid)
 
-- Ejecuciones revisadas (últimas 6 h): 108
+- Ejecuciones revisadas (últimas 6 h): 114
 - Fallos: 1; pendientes: 0; relanzados ahora: 0
 - Colas de más de 30 minutos: 2
 - Flujos programados parados: ninguno
@@ -21,5 +21,5 @@ https://github.com/alvarorm931/education/actions/runs/41120449947 (intento 1, wo
       hint: See the 'Note about fast-forwards' in 'git push --help' for details.
       ##[error]Process completed with exit code 1.
 
-- En cola 56 min: Boletines autonómicos https://github.com/alvarorm931/education/actions/runs/41125671517
-- En cola 94 min: Grados por tramos https://github.com/alvarorm931/education/actions/runs/41120742487
+- En cola 70 min: Boletines autonómicos https://github.com/alvarorm931/education/actions/runs/41125671517
+- En cola 108 min: Grados por tramos https://github.com/alvarorm931/education/actions/runs/41120742487
