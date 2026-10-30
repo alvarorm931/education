@@ -308,6 +308,12 @@ def construir(catalogo: list[dict], genericos: list[dict], tarjetas: dict, detal
         if not (plan and plan["comprobado"]):
             motivos.append("sin asignaturas comprobadas" if not plan else "plan sin cuadrar con su tabla de créditos")
         pweb = (web or {}).get(t["codigo"]) if t["universidad_tipo"] == "Privada" else None
+        if not creditos and plan and plan["comprobado"]:
+            creditos = (plan.get("distribucion") or {}).get("total") or (plan.get("distribucion") or {}).get("total_calculado")
+        if pweb and pweb["precio_curso"] and creditos:
+            # todo el grado al precio de hoy: un curso son 60 créditos (RD 822/2021 art. 5); sin subidas futuras
+            pweb = {**pweb, "precio_total_estimado": round(pweb["precio_curso"] * creditos / 60, 2),
+                    "creditos": creditos}
         if not notas and not precios and not (pweb and pweb["precio_curso"]):
             motivos.append("sin nota de corte ni precio")
         fichas.append({
@@ -383,6 +389,8 @@ def resumen(fichas: list[dict], comparativa: list[dict]) -> dict:
         "privadas": sum(1 for f in fichas if f["universidad_tipo"] == "Privada"),
         "privadas_con_pagina_y_algun_importe": sum(1 for f in fichas if f.get("precio_web")),
         "privadas_con_precio_por_curso": sum(1 for f in fichas if (f.get("precio_web") or {}).get("precio_curso")),
+        "privadas_con_precio_total_estimado": sum(1 for f in fichas
+                                                  if (f.get("precio_web") or {}).get("precio_total_estimado")),
         "privadas_precio_por_metodo": dict(Counter((f.get("precio_web") or {}).get("metodo") for f in fichas
                                                    if (f.get("precio_web") or {}).get("precio_curso"))),
         "con_bonificacion_o_ayuda": sum(1 for f in fichas if f.get("bonificacion")),
