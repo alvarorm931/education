@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/motor/runner/_trabajo/education/education/codigo/motor/http.py", line 215, in comprobar_robots
+    raise RobotsProhibe(f"robots.txt de {_origen(url)} no permite {url} ({regla})")
+motor.http.RobotsProhibe: robots.txt de https://ckan.larioja.org no permite https://ckan.larioja.org/api/3/action/package_search?q=*:*&rows=2&sort=metadata_created%20desc (robots.txt no disponible)
