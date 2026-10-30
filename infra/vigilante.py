@@ -209,6 +209,10 @@ def main() -> None:
             cola = final_registro(j["id"])
             detalle.append({"trabajo": j["name"], "pasos": pasos, "ejecutor": j.get("runner_name"),
                             "etiquetas": j.get("labels"), "final_registro": cola})
+        if not malos:
+            detalle.append({"trabajo": "(ninguno)", "pasos": [], "ejecutor": None, "etiquetas": None,
+                            "final_registro": ["Falló sin ningún trabajo fallido: error en la definición del flujo "
+                                               "(matriz vacía, YAML, permisos de la ejecución). Ver la página."]})
         texto = "\n".join(l for d in detalle for l in d["final_registro"])
         pasajero = bool(PASAJERO.search(texto)) and not NO_RELANZAR.search(texto)
         f = {"flujo": r["name"], "fichero": flujo, "id": r["id"], "intento": r.get("run_attempt"),
