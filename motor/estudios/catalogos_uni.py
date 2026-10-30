@@ -213,6 +213,9 @@ def leer(portadas_: list[dict], navegador: bool = False, max_minutos: float = 50
     return filas, dict(cuentas)
 
 
+T0 = time.time()
+
+
 def main() -> None:
     p = argparse.ArgumentParser()
     sub = p.add_subparsers(dest="orden", required=True)
@@ -228,6 +231,8 @@ def main() -> None:
     b.add_argument("--max-minutos", type=float, default=50)
     b.add_argument("--probables", action="store_true", help="acepta también nombres «probables» (la extracción los comprueba)")
     b.add_argument("--ya", help="JSONL de una lectura anterior: sus másteres no se vuelven a buscar")
+    b.add_argument("--y-extraer", action="store_true",
+                   help="extrae después las páginas halladas en la misma ejecución (webs que solo responden a este servidor)")
     for s in (a, b):
         s.add_argument("--salida", required=True)
     x = p.parse_args()
@@ -248,7 +253,14 @@ def main() -> None:
         (destino / "oficiales_catalogo.jsonl").write_text("".join(json.dumps(f, ensure_ascii=False) + "\n" for f in filas),
                                                           encoding="utf-8")
         (destino / "resumen.json").write_text(json.dumps(cuentas, ensure_ascii=False, indent=1), encoding="utf-8")
-        print(json.dumps(cuentas, ensure_ascii=False, indent=1))
+        print(json.dumps(cuentas, ensure_ascii=False, indent=1), flush=True)
+        if x.y_extraer and filas:
+            from motor.estudios import extraer
+
+            res = extraer.lote(destino / "oficiales_catalogo.jsonl", destino.parent / "oficiales_catalogo_universidad",
+                               esperar_min=25, hilos=8, max_minutos=max(10.0, 55 - (time.time() - T0) / 60),
+                               navegador=x.navegador)
+            print(json.dumps({"extraccion": res}, ensure_ascii=False))
 
 
 if __name__ == "__main__":

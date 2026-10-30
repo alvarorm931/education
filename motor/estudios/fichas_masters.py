@@ -56,7 +56,27 @@ TERMINACIONES = [("itzacio", "izacion"), ("acio", "acion"), ("ecio", "ecion"), (
 CODIGO = __import__("re").compile(r"^[a-z]?\d+[a-z0-9]*$|^m(?=[0-9a-z]*\d)[0-9a-z]{3,5}$")
 
 
+def _grafia(w: str) -> str:
+    """Grafías del catalán que el castellano escribe de otra forma («llenguatge» / «lenguaje», «clàssica» /
+    «clásica»); se aplica a los dos nombres, así que entre dos nombres en castellano no cambia nada."""
+    if w.startswith("ll"):
+        w = w[1:]
+    return w.replace("tg", "j").replace("ss", "s").replace("ny", "n")
+
+
+def _a_un_cambio(a: str, b: str) -> bool:
+    """Palabras largas a una letra de distancia («ciutadania» / «ciudadania», «humans» / «humanos»)."""
+    if len(a) < 5 or len(b) < 5 or abs(len(a) - len(b)) > 1 or a == b:
+        return a == b
+    if len(a) == len(b):
+        return sum(x != y for x, y in zip(a, b)) == 1
+    corta, larga = (a, b) if len(a) < len(b) else (b, a)
+    i = next((k for k in range(len(corta)) if corta[k] != larga[k]), len(corta))
+    return corta[i:] == larga[i + 1:]
+
+
 def raiz(w: str) -> str:
+    w = _grafia(w)
     for a, b in TERMINACIONES:
         if w.endswith(a):
             w = w[: -len(a)] + b
@@ -110,16 +130,32 @@ def comprobar_nombre(oficial: str, extraido: str | None) -> tuple[str, float]:
     return r
 
 
+def _comunes(po_w: set[str], pe_w: set[str]) -> tuple[set[str], set[str]]:
+    """Raíces del nombre oficial que están en el de la página y raíces de la página que sobran: iguales, o la palabra
+    entera a una letra de distancia (catalán, gallego y valenciano frente al castellano del RUCT)."""
+    po_w = {w for w in po_w if not CODIGO.match(w)}
+    pe_w = {w for w in pe_w if not CODIGO.match(w)}
+    pe_r = {raiz(w) for w in pe_w}
+    po_r = {raiz(w) for w in po_w}
+    pe_g = [_grafia(w) for w in pe_w]
+    po_g = [_grafia(w) for w in po_w]
+    comunes = {raiz(w) for w in po_w if raiz(w) in pe_r or any(_a_un_cambio(_grafia(w), v) for v in pe_g)}
+    sobran = {raiz(w) for w in pe_w if raiz(w) not in po_r and not any(_a_un_cambio(_grafia(w), v) for v in po_g)}
+    return comunes, sobran
+
+
 def _comprobar(oficial: str, extraido: str | None) -> tuple[str, float]:
     if not extraido:
         return "sin_nombre", 0.0
-    po, pe = raices(palabras_nombre(oficial)), raices(palabras_texto(extraido))
+    po_w, pe_w = palabras_nombre(oficial), palabras_texto(extraido)
+    po, pe = raices(po_w), raices(pe_w)
     if not po:
         return "sin_nombre", 0.0
+    comunes, sobran = _comunes(po_w, pe_w)
     if (palabras_texto(extraido) & TIPO_DISTINTO) - palabras_texto(oficial):
-        return "otro_tipo", round(len(po & pe) / len(po), 3)
-    cobertura = len(po & pe) / len(po)
-    sobrante = len(pe - po) / max(len(pe), 1)
+        return "otro_tipo", round(len(comunes) / len(po), 3)
+    cobertura = len(comunes) / len(po)
+    sobrante = len(sobran) / max(len(pe), 1)
     if cobertura >= CONFIRMADO and sobrante <= 0.4:
         return "confirmado", round(cobertura, 3)
     if cobertura >= PROBABLE:
