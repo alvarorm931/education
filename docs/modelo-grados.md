@@ -146,9 +146,9 @@ deducidos (por nombre, rótulo o suma), sin una lista resumen que repite otra ta
 justo lo que sobra (itinerarios, listas a otro nivel), dando su tipo a la única tabla sin tipo que suma justo lo que
 falta, el resto sin tipo como obligatorio, o las asignaturas de un módulo de mención o itinerario sin carácter como
 optativas y el resto como obligatorio. Una lectura que comprueba el plan completo gana a la que solo cuadra en
-básicas y obligatorias. La ficha dice si la lectura fue directa o alternativa (448 de los 3.473 comprobados) y si
-además cuadra **tipo a tipo** (básicas, obligatorias, prácticas y TFG por separado, `cuadra_por_tipo`): 3.013 de
-los 3.473. Si el plan del BOE no trae tabla que cuadre, se compara con los créditos por tipo de la ficha del RUCT
+básicas y obligatorias. La ficha dice si la lectura fue directa o alternativa (448 de los 3.476 comprobados) y si
+además cuadra **tipo a tipo** (básicas, obligatorias, prácticas y TFG por separado, `cuadra_por_tipo`): 3.015 de
+los 3.476. Los cursos y semestres en números romanos («III-IV», «X») se leen como números. Si el plan del BOE no trae tabla que cuadre, se compara con los créditos por tipo de la ficha del RUCT
 (otra fuente oficial). Nunca se completa un plan con datos inventados.
 
 **Dos revisiones independientes (30/10/2026).** Dos revisores que no habían visto el lector compararon fila a fila
@@ -165,26 +165,25 @@ los 3.473. Si el plan del BOE no trae tabla que cuadre, se compara con los créd
   créditos de obligatorias sin leer y 64 de optativas leídas como obligatorias cuadraba en el total) y filas
   «Créditos totales» leídas como asignaturas. Corregido: ningún tipo puede pasar de su tabla de créditos y, en el
   nivel de básicas y obligatorias, las dos sumas tienen que ser exactas; las filas de totales se descartan.
-- Efecto neto de las dos: comprobados, de 3.625 a 3.473 (salen los que cuadraban por compensación o con los tipos
-  cambiados); de ellos, los que cuadran también tipo a tipo, de 1.960 (medidos igual antes de corregir) a 3.013.
+- Efecto neto de las dos: comprobados, de 3.625 a 3.476 (salen los que cuadraban por compensación o con los tipos
+  cambiados); de ellos, los que cuadran también tipo a tipo, de 1.960 (medidos igual antes de corregir) a 3.015.
 - Queda abierto (solo afecta a optativas o al curso, no a la comprobación): tablas con dos semestres lado a lado
   de las que se lee solo el bloque izquierdo (visto en la UOC: con la regla nueva ese plan ya no cuenta como
-  comprobado), cursos que solo dice el texto encima de cada tabla («Primer curso») o semestres en números romanos
-  (I a X), optativas perdidas al descartar una tabla repetida y variantes de nombre («Idioma moderno II» e «Idioma
+  comprobado), cursos que solo dice el texto encima de cada tabla («Primer curso»), optativas perdidas al descartar una tabla repetida y variantes de nombre («Idioma moderno II» e «Idioma
   moderno II: Inglés II»).
 
 Resultado con todo lo leído (30/10/2026, 08:00, hora de España):
 
 | | Leídos | Con asignaturas | Con curso | Comprobados | Y además tipo a tipo |
 |---|---|---|---|---|---|
-| Planes nuevos | 3.496 | 2.551 | 2.154 | 2.093 (60 %) | 1.799 |
-| Modificaciones | 2.231 | 1.599 | 984 | 1.314 (59 %) | 1.163 |
+| Planes nuevos | 3.496 | 2.551 | 2.176 | 2.095 (60 %) | 1.800 |
+| Modificaciones | 2.231 | 1.599 | 990 | 1.314 (59 %) | 1.164 |
 | Cambios de denominación | 20 | 16 | 15 | 12 | 11 |
-| Correcciones de errores | 391 | 139 | 96 | 54 | 40 |
+| Correcciones de errores | 391 | 139 | 96 | 55 | 40 |
 
-De los 1.403 planes nuevos que no cuadran: publicados solo por materias, sin asignaturas (419); tablas sin carácter
+De los 1.401 planes nuevos que no cuadran: publicados solo por materias, sin asignaturas (418); tablas sin carácter
 que no se puede asignar de forma comprobable (339); diferencias de una o dos asignaturas, 12 créditos o menos
-(176); otras diferencias (295); sin tabla de créditos por tipo (93) y sin tabla de plan legible (81). Esos planes
+(176); otras diferencias (295); sin tabla de créditos por tipo (92) y sin tabla de plan legible (81). Esos planes
 se guardan igual (la ficha los enseña, marcados como no comprobados) pero no cuentan como asignaturas comprobadas.
 
 Menciones: 692 planes y modificaciones las citan, en el texto o en las tablas.
@@ -321,11 +320,11 @@ pedir nada a ninguna fuente, y marca cada ficha como indexable o no, con el moti
 | Con indicadores de rendimiento del SIIU | 3.125 |
 | Con ficha del RUCT | 3.265 |
 | Grados con plan del BOE | 3.079 de 3.265 |
-| Grados con plan comprobado | 2.215 (1.568 por asignaturas, el resto por materias) |
+| Grados con plan comprobado | 2.218 (1.568 por asignaturas, el resto por materias) |
 | Dobles con los planes de sus dos grados comprobados | 593 |
 | **Indexables** con la propuesta de datos mínimos | **2.038** (1.705 grados y 333 dobles; 1.824 de públicas y 214 de privadas) |
 
-El resto va con `noindex` y su motivo: 864 con plan que no
+El resto va con `noindex` y su motivo: 861 con plan que no
 cuadra, 624 sin plan (o doble sin los dos planes comprobados) y
 1.201 sin nota ni precio (casi todas, privadas que no publican el precio); una
 ficha puede tener varios.
