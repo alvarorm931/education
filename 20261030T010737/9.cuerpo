@@ -1,0 +1,59 @@
+# If the Joomla site is installed within a folder such as at
+# e.g. www.example.com/joomla/ the robots.txt file MUST be
+# moved to the site root at e.g. www.example.com/robots.txt
+# AND the joomla folder name MUST be prefixed to the disallowed
+# path, e.g. the Disallow rule for the /administrator/ folder
+# MUST be changed to read Disallow: /joomla/administrator/
+#
+# For more information about the robots.txt standard, see:
+# http://www.robotstxt.org/orig.html
+#
+# For syntax checking, see:
+# http://www.sxw.org.uk/computing/robots/check.html
+
+User-agent: *
+Disallow: /administrator/
+Disallow: /cache/
+Disallow: /cli/
+Disallow: /components/
+Disallow: /images/
+Disallow: /includes/
+Disallow: /installation/
+Disallow: /language/
+Disallow: /libraries/
+Disallow: /logs/
+Disallow: /media/
+Disallow: /modules/
+Disallow: /plugins/
+Disallow: /templates/
+Disallow: /tmp/
+Disallow: /ceuta/administrator/
+Disallow: /ceuta/cache/
+Disallow: /ceuta/cli/
+Disallow: /ceuta/components/
+Disallow: /ceuta/images/
+Disallow: /ceuta/includes/
+Disallow: /ceuta/installation/
+Disallow: /ceuta/language/
+Disallow: /ceuta/libraries/
+Disallow: /ceuta/logs/
+Disallow: /ceuta/media/
+Disallow: /ceuta/modules/
+Disallow: /ceuta/plugins/
+Disallow: /ceuta/templates/
+Disallow: /ceuta/tmp/
+Disallow: /jdownloads/BOCCE/
+Disallow: /ceuta/jdownloads/BOCCE/
+Disallow: /ceuta/documentos/finish/327-febrero/1782-bocce-5025-11-02-2011
+Disallow: /documentos/finish/327-febrero/1782-bocce-5025-11-02-2011
+Disallow: /ceuta/documentos/finish/420-agosto/2828-bocce-tributos-2-05-08-2004
+Disallow: /documentos/finish/420-agosto/2828-bocce-tributos-2-05-08-2004
+Disallow: /ceuta/component/jdownloads/finish/601-julio/4021-bocce-3326-05-07-1990
+Disallow: /ceuta/component/jdownloads/finish/1487-agosto/7907-bocce-trib219-20-08-2013
+Disallow: /ceuta/component/jdownloads/finish/349-diciembre/2047-bocce-4900-01-12-2009
+Disallow: /ceuta/component/jdownloads/finish/1550-julio/8924-bocce-5698-25-07-2017
+Disallow: /ceuta/component/jdownloads/finish/1535-noviembre/8664-bocce-5629-25-11-2016
+Disallow: /documentos/finish/1535-noviembre/8664-bocce-5629-25-11-2016
+Disallow: /ceuta/component/jdownloads/finish/1533-septiembre/8618-bocce-extra27-08-09-2016
+Disallow: /documentos/finish/1533-septiembre/8618-bocce-extra27-08-09-2016
+Disallow: /ceuta/component/jdownloads/finish/1544-enero/8759-bocce-5646-24-01-2017
