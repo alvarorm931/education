@@ -8,13 +8,18 @@ Formato verificado el 30/10/2026 desde GitHub:
     Local»), grupo («Ayuntamientos», «Mancomunidades»), entidad («- Ayuntamiento de Bembibre») y los asuntos,
     separados por una línea en blanco. Cada asunto enlaza la ficha del anuncio (/publica/buscador-anuncios/anuncio/…/),
     un enlace por línea: los enlaces seguidos iguales son el mismo anuncio.
-  - Lo anterior al 17/02/2025 está en el buscador antiguo (boletines anteriores): no se lee.
+  - Lo anterior al 17/02/2025, en «boletines anteriores» (verificado el 30/10/2026): POST a
+    /publica/boletines-anteriores/resultados-bop-anteriores/ con BusquedaInicial=«desde:AAAA-MM-DD|hasta:AAAA-MM-DD|»
+    devuelve la lista (hasta 15) con el PDF del boletín entero («BOP 3/2022», «Boletín núm. 3 de 05/01/2022»). El
+    PDF empieza por el sumario: secciones en mayúsculas, grupos («Ayuntamientos»), entidades y asuntos con puntos
+    hasta la página. El texto de cada anuncio de empleo se corta del mismo PDF (motor/provinciales/textos.py).
   - robots.txt solo cierra PDF concretos de boletines antiguos (2005-2011).
 
 Uso:
   python -m motor.provinciales.bopleon --salida ruta/                       # ayer y hoy
   python -m motor.provinciales.bopleon --desde 2025-02-17 --max-minutos 30 --salida ruta/
   python -m motor.provinciales.bopleon --textos --max-minutos 30 --salida ruta/
+  python -m motor.provinciales.bopleon --antiguos --max-minutos 30 --salida ruta/   # del 16/02/2025 a 2022
 """
 
 from __future__ import annotations
@@ -250,6 +255,157 @@ def procesar_dia(d: date, raiz: Path, archivo: Archivo, pausa: float = 1.0) -> d
     return inf
 
 
+ANTIGUOS = WEB + "/publica/boletines-anteriores/resultados-bop-anteriores/"
+INICIO_ANTIGUOS = date(2022, 1, 1)
+RE_ANTIGUO = re.compile(r'<a href="(?P<url>/export/sites/bop/publica/boletines-anteriores/\.galleries/Boletines-Anteriores/'
+                        r'[^"]+\.pdf)"[^>]*title="BOP (?P<n>\d+)/(?P<a>\d{4})".*?Bolet[íi]n n[úu]m\.\s*\d+\s*de\s*'
+                        r'(?P<d>\d{2})/(?P<m>\d{2})/(?P<a2>\d{4})', re.DOTALL)
+RE_ENTRADA_ANT = re.compile(r"^(?P<t>.*?\S)\s*(?:\.{3,}|…+)\s*(?P<p>\d{1,4})\s*$|^(?P<t2>.*?[a-záéíóúñ)])\s+(?P<p2>\d{1,4})\s*$")
+RE_CABECERA_ANT = re.compile(r"^(?:S\s?U\s?M\s?A\s?R\s?I\s?O|Edita:|Tel[ée]fono:|P[áa]gina web:|E-mail:|"
+                             r"\w+, \d{1,2} de \w+ de \d{4}|Bolet[íi]n Oficial de la Provincia de Le[óo]n|"
+                             r"www\.dipuleon\.es|N[úu]mero \d+)", re.IGNORECASE)
+GRUPOS_ANT = {"ayuntamientos", "mancomunidades de municipios", "mancomunidades", "juntas vecinales",
+              "entidades locales menores", "consorcios", "comunidades de regantes", "juntas electorales",
+              "juzgados de lo social", "juzgados de primera instancia", "juzgados de primera instancia e instruccion",
+              "juzgados de instruccion", "otras entidades", "diputacion provincial"}
+
+
+def lista_antiguos(contenido: bytes) -> list[dict]:
+    h = contenido.decode("utf-8", errors="replace")
+    vistos = {}
+    for m in RE_ANTIGUO.finditer(h):
+        vistos.setdefault(m.group("url"), {"numero": int(m.group("n")), "url_pdf": WEB + html.unescape(m.group("url")),
+                                           "fecha": f"{m.group('a2')}-{m.group('m')}-{m.group('d')}"})
+    return sorted(vistos.values(), key=lambda b: (b["fecha"], b["numero"]))
+
+
+def sumario_antiguo(paginas: list[str]) -> list[dict]:
+    """Asuntos del sumario del PDF de un boletín anterior a 2025 (texto plano de pypdf): las páginas anteriores a la
+    primera que citan los asuntos."""
+    total = len(paginas)
+    entradas, seccion, grupo, entidad, pendiente = [], None, None, None, ""
+    for k, texto in enumerate(paginas[:6]):
+        if entradas and k + 1 >= min(e["pagina"] for e in entradas):
+            break
+        for linea in texto.splitlines():
+            lin = " ".join(linea.split())
+            if not lin or RE_CABECERA_ANT.match(lin):
+                continue
+            m = RE_ENTRADA_ANT.match(lin)
+            pag = int(m.group("p") or m.group("p2")) if m else None
+            if m and 0 < pag <= total:
+                titulo = " ".join(f"{pendiente} {m.group('t') or m.group('t2')}".split()).strip(" .")
+                entradas.append({"seccion": seccion, "grupo": grupo, "entidad": entidad, "titulo": titulo,
+                                 "pagina": pag})
+                pendiente = ""
+            elif lin.upper() == lin and len(lin) > 3 and not re.search(r"\d", lin):
+                seccion, grupo, entidad, pendiente = lin.title(), None, None, ""
+            elif normalizar(lin) in GRUPOS_ANT:
+                grupo, entidad, pendiente = lin, None, ""
+            elif len(lin) >= 85:  # el comienzo de un asunto que sigue en la línea siguiente
+                pendiente = f"{pendiente} {lin}"
+            else:
+                entidad, pendiente = lin, ""
+    return entradas
+
+
+def procesar_antiguo(b: dict, raiz: Path, archivo: Archivo) -> dict:
+    from motor.extraccion.citas import citas
+    from motor.limpieza import RE_DOCUMENTO, limpiar_texto
+    from motor.provinciales.comun import CON_TEXTO
+    from motor.provinciales.textos import cortar, paginas_pdf
+
+    d = date.fromisoformat(b["fecha"])
+    r = obtener(b["url_pdf"], accept="application/pdf")
+    inf = {"fecha": b["fecha"], "numero": b["numero"], "status": r.status, "origen": "boletines_anteriores",
+           "alertas": []}
+    if r.status != 200 or r.contenido[:4] != b"%PDF":
+        inf["resultado"] = "error_http"
+        inf["alertas"].append(f"BOP León {d}: PDF HTTP {r.status}")
+        return inf
+    captura = archivo.guardar(FUENTE, d, r.contenido, b["url_pdf"], "pdf", r.status, r.cabeceras)
+    paginas = paginas_pdf(r.contenido)
+    filas = [{**x, "numero_anuncio": f"{b['numero']}-{i:03d}", "id": f"BOPLEON-{d.year}-{b['numero']}-{i:03d}",
+              "fecha": b["fecha"], "boletin": b["numero"], "url_boletin": b["url_pdf"], "url_pdf_boletin": b["url_pdf"],
+              "fuente": SIGLAS, "captura_sha256": captura["sha256"]}
+             for i, x in enumerate(sumario_antiguo(paginas), 1)]
+    empleo = seleccionar(filas)
+    escribir_jsonl(_ruta(raiz, "disposiciones", d), filas)
+    escribir_jsonl(_ruta(raiz, "oposiciones", d), empleo)
+    # Texto de los anuncios de empleo, cortado del propio PDF; de las listas de personas solo recuento y citas
+    textos = 0
+    if empleo:
+        cortes = cortar(paginas, filas)
+        for x in empleo:
+            if x["id"] not in cortes:
+                continue
+            bruto, pags = cortes[x["id"]]
+            if x.get("tipo_acto") in CON_TEXTO:
+                datos = {"titulo": x["titulo"], **limpiar_texto(bruto)}
+            else:
+                datos = {"titulo": x["titulo"], "texto": None, "tablas": [], "solo_recuento": True,
+                         "lineas_con_documento_de_identidad": sum(1 for l in bruto.splitlines() if RE_DOCUMENTO.search(l)),
+                         "citas": citas(bruto)}
+            escribir_json(ruta_texto_pdf(_base(raiz), x), {"id": x["id"], **datos, "paginas": pags,
+                                                          "captura_sha256": captura["sha256"],
+                                                          "capturado": captura["capturado"], "url": b["url_pdf"]})
+            textos += 1
+    inf.update({"resultado": "ok", "sha256": captura["sha256"], "disposiciones": len(filas),
+                "empleo_publico": len(empleo), "textos": textos})
+    if not filas:
+        inf["alertas"].append(f"BOP León {d}: sumario sin anuncios (posible cambio de formato)")
+    return inf
+
+
+def antiguos(raiz: Path, archivo: Archivo, pausa: float, max_minutos: float) -> int:
+    """Boletines anteriores al portal nuevo, de diez en diez días hacia atrás desde el 16/02/2025."""
+    inicio, informes, freno = time.monotonic(), [], Freno()
+    ruta_hist = _base(raiz) / "antiguos.json"
+    hist = json.loads(ruta_hist.read_text(encoding="utf-8")) if ruta_hist.exists() else {"tramos_completos": []}
+    completos = set(hist["tramos_completos"])
+    hasta, parar = INICIO - timedelta(days=1), False
+    while hasta >= INICIO_ANTIGUOS and not parar:
+        desde = max(hasta - timedelta(days=9), INICIO_ANTIGUOS)
+        clave = f"{desde}/{hasta}"
+        if clave not in completos:
+            if max_minutos and (time.monotonic() - inicio) / 60 > max_minutos:
+                break
+            time.sleep(pausa)
+            r = obtener(ANTIGUOS, accept="text/html", formulario={
+                "busqueda": "", "fechaDesde": "", "fechaHasta": "", "BusquedaInicial": f"desde:{desde}|hasta:{hasta}|"})
+            lista = lista_antiguos(r.contenido) if r.status == 200 else []
+            if r.status != 200:
+                print(f"::warning::BOP León anteriores {clave}: HTTP {r.status}")
+                break
+            bien = 0
+            for b in reversed(lista):
+                ruta = _ruta(raiz, "dias", date.fromisoformat(b["fecha"]), "json")
+                if ruta.exists() and json.loads(ruta.read_text(encoding="utf-8")).get("resultado") == "ok":
+                    bien += 1
+                    continue
+                if max_minutos and (time.monotonic() - inicio) / 60 > max_minutos:
+                    parar = True
+                    break
+                time.sleep(pausa)
+                try:
+                    inf = procesar_antiguo(b, raiz, archivo)
+                except (ConnectionError, TimeoutError) as e:
+                    inf = {"fecha": b["fecha"], "resultado": "fuente_inaccesible", "alertas": [str(e)]}
+                escribir_json(ruta, inf)
+                informes.append(inf)
+                bien += inf["resultado"] == "ok"
+                print(f"BOP León {b['fecha']} (anterior): {inf['resultado']} {inf.get('empleo_publico', '')}")
+                if freno.anotar(inf):
+                    parar = True
+                    break
+            if lista and bien == len(lista) and len(lista) < 15:
+                completos.add(clave)
+        hasta = desde - timedelta(days=1)
+    escribir_json(ruta_hist, {"tramos_completos": sorted(completos)})
+    print(f"BOP León anteriores: {len(informes)} boletines procesados")
+    return 1 if any(i.get("resultado") in {"error_formato", "fuente_inaccesible"} for i in informes) else 0
+
+
 def main(argv: list[str] | None = None) -> int:
     hoy = datetime.now(MADRID).date()
     p = argparse.ArgumentParser()
@@ -259,8 +415,11 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--max-minutos", type=float, default=0)
     p.add_argument("--pausa", type=float, default=1.0)
     p.add_argument("--textos", action="store_true", help="PDF de cada anuncio de empleo (por su ficha)")
+    p.add_argument("--antiguos", action="store_true", help="boletines anteriores al 17/02/2025 (PDF entero)")
     a = p.parse_args(argv)
     archivo = Archivo(a.salida / "archivo", indice_por_fuente=True, solo_huella=solo_huella_por_defecto())
+    if a.antiguos:
+        return antiguos(a.salida, archivo, a.pausa, a.max_minutos)
     if a.textos:
         resueltos = resolver_pdfs(a.salida, a.pausa, a.max_minutos / 2 if a.max_minutos else 0)
         hechos, errores, pendientes = descargar_textos_pdf(_base(a.salida), FUENTE, archivo,
