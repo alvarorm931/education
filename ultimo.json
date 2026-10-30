@@ -1,19 +1,76 @@
 {
- "fecha": "2026-10-30T06:15:41+00:00",
- "fecha_madrid": "30/10 07:15",
+ "fecha": "2026-10-30T06:22:52+00:00",
+ "fecha_madrid": "30/10 07:22",
  "ventana_horas": 6.0,
  "resumen": {
-  "ejecuciones_revisadas": 307,
-  "fallos": 4,
+  "ejecuciones_revisadas": 314,
+  "fallos": 5,
   "fallos_pendientes": 0,
-  "relanzados": 0,
-  "colas_largas": 1,
+  "relanzados": 1,
+  "colas_largas": 2,
   "flujos_programados_parados": [],
   "programaciones_lanzadas_a_mano": [],
   "avisos_de_fuentes": 0,
   "almacen": "ok"
  },
  "fallos": [
+  {
+   "flujo": "Prueba de conector",
+   "fichero": "prueba.yml",
+   "id": 41013623895,
+   "intento": 1,
+   "evento": "workflow_dispatch",
+   "rama": "main",
+   "commit": "a9c3ffb",
+   "titulo": "Prueba de conector",
+   "conclusion": "failure",
+   "cuando": "30/10 07:22",
+   "url": "https://github.com/alvarorm931/education/actions/runs/41013623895",
+   "superado": false,
+   "pasajero": true,
+   "detalle": [
+    {
+     "trabajo": "prueba",
+     "pasos": [
+      "Subir a la rama sondas"
+     ],
+     "ejecutor": "GitHub Actions 1000000590",
+     "etiquetas": [
+      "ubuntu-latest"
+     ],
+     "final_registro": [
+      "##[error]Process completed with exit code 1.",
+      "...",
+      "  PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig",
+      "  Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64",
+      "  Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64",
+      "  Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64",
+      "  LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib",
+      "  STAMP: 20261030T062154",
+      "To https://github.com/alvarorm931/education.git",
+      " ! [rejected]          sondas -> sondas (fetch first)",
+      "error: failed to push some refs to 'https://github.com/alvarorm931/education.git'",
+      "hint: Updates were rejected because the remote contains work that you do not",
+      "hint: have locally. This is usually caused by another repository pushing to",
+      "hint: the same ref. If you want to integrate the remote changes, use",
+      "hint: 'git pull' before pushing again.",
+      "hint: See the 'Note about fast-forwards' in 'git push --help' for details.",
+      "##[error]Process completed with exit code 1.",
+      "\u001b[36;1mrm -rf prueba\u001b[0m",
+      "shell: /usr/bin/bash -e {0}",
+      "env:",
+      "  pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64",
+      "  PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig",
+      "  Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64",
+      "  Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64",
+      "  Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64",
+      "  LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib",
+      "  STAMP: 20261030T062154"
+     ]
+    }
+   ],
+   "relanzado": true
+  },
   {
    "flujo": "Boletines autonómicos",
    "fichero": "autonomicos.yml",
@@ -214,9 +271,16 @@
  ],
  "colas_largas": [
   {
+   "flujo": "Sonda de fuentes",
+   "id": 41010771696,
+   "en_cola_min": 31,
+   "trabajos_empezados": 0,
+   "url": "https://github.com/alvarorm931/education/actions/runs/41010771696"
+  },
+  {
    "flujo": "Boletines autonómicos",
    "id": 41008945432,
-   "en_cola_min": 44,
+   "en_cola_min": 51,
    "trabajos_empezados": 2,
    "url": "https://github.com/alvarorm931/education/actions/runs/41008945432"
   }
