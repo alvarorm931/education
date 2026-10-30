@@ -496,8 +496,73 @@ class Guarda:
 # ----------------------------------------------------------------------------------- captura cortés
 
 
+# Páginas de verificación antibots: nunca se intenta pasarlas (ni con navegador). Solo marcas de esas páginas, no
+# de un formulario con reCAPTCHA (muchas fichas de máster lo llevan en su formulario de contacto).
+ANTIBOT = re.compile(r"(?i)cf-browser-verification|challenge-platform|__cf_chl|cf_chl_opt|just a moment\.\.\.|"
+                     r"attention required! \| cloudflare|_incapsula_resource|incapsula incident|awswaf|"
+                     r"captcha-delivery\.com|px-captcha|perimeterx|verify you are human|are you a robot|"
+                     r"ddos-guard|sucuri website firewall|request unsuccessful")
+FUENTE_RENDER = "web-centros-render"
+NAVEGADORES_A_LA_VEZ = 4
+PAUSA_RENDER = 3.0  # segundos entre dos páginas pintadas del mismo servidor (cada una trae varias peticiones)
+
+
+class Navegador:
+    """Chromium sin cabeza para las páginas que solo se pintan con JavaScript, uno por hilo (Playwright no se
+    comparte entre hilos). Cada petición de la página pasa por el robots.txt de su servidor; no se cargan
+    imágenes, vídeo, fuentes ni estilos (no hacen falta para el texto). No pasa verificaciones antibots: si la
+    página pintada es una, se descarta."""
+
+    def __init__(self):
+        from playwright.sync_api import sync_playwright
+
+        from motor.http import USER_AGENT as UA
+
+        self._pw = sync_playwright().start()
+        self._navegador = self._pw.chromium.launch()
+        self._contexto = self._navegador.new_context(user_agent=UA, locale="es-ES")
+        self.bloqueadas = 0
+
+    def html(self, url: str, espera_ms: int = 30000) -> str | None:
+        from motor.http import robots_de
+
+        pagina = self._contexto.new_page()
+
+        def ruta(r):
+            pet = r.request
+            if pet.resource_type in ("image", "media", "font", "stylesheet"):
+                return r.abort()
+            try:
+                permitido = robots_de(pet.url).permite(pet.url)
+            except Exception:  # noqa: BLE001 - sin robots legible no se pide
+                permitido = False
+            if not permitido:
+                self.bloqueadas += 1
+                return r.abort()
+            return r.continue_()
+
+        pagina.route("**/*", ruta)
+        try:
+            try:
+                pagina.goto(url, wait_until="networkidle", timeout=espera_ms)
+            except Exception:  # noqa: BLE001 - si no llega a «quieta», vale lo que haya pintado
+                pass
+            contenido = pagina.content()
+        except Exception:  # noqa: BLE001
+            contenido = None
+        finally:
+            pagina.close()
+        return contenido
+
+    def cerrar(self) -> None:
+        try:
+            self._navegador.close()
+        finally:
+            self._pw.stop()
+
+
 def capturar(urls: list[str], pausa: float = 1.0, hilos: int = 12, guarda: Guarda | None = None,
-             fin: float | None = None, procesar=None) -> list[dict]:
+             fin: float | None = None, procesar=None, navegador: bool = False) -> list[dict]:
     """Descarga cada página con el lector cortés del rastreador: robots.txt de cada servidor y una petición por
     segundo y servidor (las de un mismo servidor van en fila; servidores distintos, a la vez). Devuelve el texto
     de cada página en memoria; el original, intacto, solo va al almacén privado. Nada se escribe en disco.
@@ -511,12 +576,50 @@ def capturar(urls: list[str], pausa: float = 1.0, hilos: int = 12, guarda: Guard
     for u in dict.fromkeys(urls):
         por_host.setdefault(urlparse(u).netloc, []).append(u)
 
+    import threading
+
+    turnos_navegador = threading.BoundedSemaphore(NAVEGADORES_A_LA_VEZ)
+
+    def pintar(estado: dict, u: str, html: str) -> str | None:
+        """Texto de la página pintada con el navegador, si la estática no da texto y no es una verificación."""
+        if ANTIBOT.search(html or ""):
+            estado["antibot"] = True
+            return None
+        if estado.get("nav") is None:
+            turnos_navegador.acquire()
+            try:
+                estado["nav"] = Navegador()
+            except Exception as e:  # noqa: BLE001 - sin navegador se sigue con lo estático
+                turnos_navegador.release()
+                estado["nav"] = False
+                estado["error"] = f"{type(e).__name__}: {str(e)[:120]}"
+        if not estado["nav"]:
+            return None
+        espera = PAUSA_RENDER - (time.time() - estado.get("ultima", 0))
+        if espera > 0:
+            time.sleep(espera)
+        estado["ultima"] = time.time()
+        pintado = estado["nav"].html(u)
+        if not pintado or ANTIBOT.search(pintado):
+            estado["antibot"] = bool(pintado)
+            return None
+        return pintado
+
     def servidor(host: str, lista: list[str]) -> list[dict]:
         filas = []
         try:
             d = Dominio(f"https://{host}", None, pausa=pausa, max_peticiones=len(lista) + 6)
         except Exception as e:  # noqa: BLE001
             return [{"url": u, "motivo": f"error_{type(e).__name__}"} for u in lista]
+        estado: dict = {}
+        try:
+            return _servidor(d, lista, filas, estado)
+        finally:
+            if estado.get("nav"):
+                estado["nav"].cerrar()
+                turnos_navegador.release()
+
+    def _servidor(d, lista: list[str], filas: list[dict], estado: dict) -> list[dict]:
         for u in lista:
             if fin is not None and time.time() > fin:
                 filas.append({"url": u, "motivo": "sin_tiempo"})
@@ -538,6 +641,20 @@ def capturar(urls: list[str], pausa: float = 1.0, hilos: int = 12, guarda: Guard
                     fila["texto"] = (procesar or texto_de_pagina)(html)
                     if guarda is not None:
                         fila.update(guarda.original(FUENTE_PAGINAS, r.content, "html", u))
+                    if navegador and len(fila["texto"]) < MIN_CARACTERES:
+                        estado.pop("antibot", None)
+                        pintado = pintar(estado, u, html)
+                        if pintado:
+                            texto_pintado = (procesar or texto_de_pagina)(pintado)
+                            fila["caracteres_estatico"] = len(fila["texto"])
+                            if len(texto_pintado) > len(fila["texto"]):
+                                fila.update({"texto": texto_pintado, "pintada": True,
+                                             "pintada_sha256": hashlib.sha256(pintado.encode()).hexdigest()})
+                                if guarda is not None:
+                                    guardada = guarda.original(FUENTE_RENDER, pintado.encode(), "html", u)
+                                    fila["clave_pintada"] = guardada.get("clave")
+                        elif estado.get("antibot"):
+                            fila["antibot"] = True
             else:
                 fila["motivo"] = "no_html_o_error"
             filas.append(fila)
@@ -575,7 +692,7 @@ def huellas_previas(carpetas: list[Path]) -> dict[str, tuple]:
 
 def lote(muestra: Path, salida: Path, esperar_min: float = 45, max_paginas: int | None = None, desde: int = 0,
          hilos: int = 12, max_minutos: float = 52, guarda: Guarda | None = None,
-         previas: dict[str, tuple] | None = None) -> dict:
+         previas: dict[str, tuple] | None = None, navegador: bool = False, pausa: float = 1.0) -> dict:
     """Tanda en una ejecución: capturar, enviar el lote, esperar, comprobar citas y medir el coste real.
 
     Lo público (salida) lleva URL, huellas, valores y coste. Lo ajeno (el texto enviado, las respuestas con sus
@@ -588,7 +705,8 @@ def lote(muestra: Path, salida: Path, esperar_min: float = 45, max_paginas: int 
                                           if l.strip())}.values())
     filas = filas[desde:desde + max_paginas] if max_paginas else filas[desde:]
     meta = {f["url"]: {k: f[k] for k in META if f.get(k) is not None} for f in filas}
-    paginas = capturar([f["url"] for f in filas], hilos=hilos, guarda=guarda, fin=fin_total - 10 * 60)
+    paginas = capturar([f["url"] for f in filas], pausa=pausa, hilos=hilos, guarda=guarda, fin=fin_total - 10 * 60,
+                       navegador=navegador)
     salida.mkdir(parents=True, exist_ok=True)
     peticiones, textos, enviado, cuentas = [], {}, [], Counter()
     with (salida / "paginas_capturadas.jsonl").open("w", encoding="utf-8") as f:
@@ -608,7 +726,7 @@ def lote(muestra: Path, salida: Path, esperar_min: float = 45, max_paginas: int 
                 cuentas["sin_cambios"] += 1
                 pg["motivo"] = "sin_cambios"
             elif len(texto) < MIN_CARACTERES:
-                cuentas["sin_texto_suficiente"] += 1
+                cuentas["sin_texto_suficiente_antibot" if pg.get("antibot") else "sin_texto_suficiente"] += 1
                 pg["motivo"] = "sin_texto_suficiente"
                 pg["caracteres_texto"] = len(texto)
             else:
@@ -619,6 +737,7 @@ def lote(muestra: Path, salida: Path, esperar_min: float = 45, max_paginas: int 
                 enviado.append({"custom_id": cid, "url": pg["url"], "sha256": pg["sha256"], "texto": texto,
                                 **meta.get(pg["url"], {})})
                 cuentas["enviadas"] += 1
+                cuentas["enviadas_pintadas"] += 1 if pg.get("pintada") else 0
                 pg["caracteres_texto"] = len(texto)
             f.write(json.dumps({k: v for k, v in pg.items() if k != "html"}, ensure_ascii=False) + "\n")
     cuentas["minutos_captura"] = round((time.time() - t0) / 60, 1)
@@ -1091,6 +1210,10 @@ def main() -> None:
     p.add_argument("--hilos", type=int, default=12, help="servidores a la vez (cada uno, una petición por segundo)")
     p.add_argument("--max-minutos", type=float, default=52, help="tope de la ejecución entera")
     p.add_argument("--lote-json", help="retomar: lote.json de la ejecución que envió el lote")
+    p.add_argument("--pausa", type=float, default=1.0,
+                   help="lote: segundos entre dos peticiones al mismo servidor (más para los que responden 429)")
+    p.add_argument("--navegador", action="store_true",
+                   help="lote: las páginas sin texto en el HTML se pintan con Chromium (JavaScript), sin pasar antibots")
     p.add_argument("--previas", action="append", default=[],
                    help="lote: carpetas de tandas anteriores; las páginas con la misma huella no se vuelven a enviar")
     p.add_argument("--paginas-oficiales", help="lista-oficiales: paginas_oficiales.jsonl de emparejar.py")
@@ -1108,7 +1231,8 @@ def main() -> None:
         destino = base / ("retomado_" + json.loads(Path(a.lote_json).read_text(encoding="utf-8"))["id"][-16:])
     if a.orden == "lote":
         res = lote(Path(a.muestra), destino, a.esperar_min, a.max_paginas, a.desde, a.hilos, a.max_minutos,
-                   previas=huellas_previas([Path(x) for x in a.previas]) if a.previas else None)
+                   previas=huellas_previas([Path(x) for x in a.previas]) if a.previas else None,
+                   navegador=a.navegador, pausa=a.pausa)
     elif a.orden == "retomar":
         res = retomar(Path(a.lote_json), destino, a.esperar_min)
     elif a.orden == "lista-no-oficiales":

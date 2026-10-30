@@ -53,6 +53,9 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install -q -e ".[estudios,almacen]"
+      - name: Chromium para las páginas que solo se pintan con JavaScript (extracción con --navegador)
+        if: contains(matrix.args, '--navegador')
+        run: pip install -q "playwright>=1.45" && python -m playwright install --with-deps chromium
       - name: Traer entradas de la rama sondas
         if: inputs.entrada != ''
         env:

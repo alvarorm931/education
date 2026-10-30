@@ -389,3 +389,72 @@ def test_verificar_anota_el_nivel_de_cita():
     h = {x["campo"]: x for x in e.verificar({"idioma": {"valor": "español", "cita": "Idioma: Español"}},
                                             "Idioma | Español")}
     assert h["idioma"]["estado"] == "aceptado" and h["idioma"]["cita_nivel"] == "sin_signos"
+
+
+def test_capturar_con_navegador_pinta_lo_que_solo_sale_con_javascript_y_no_pasa_antibots(monkeypatch):
+    from motor.estudios import rastreador
+
+    class Resp:
+        def __init__(self, url, html):
+            self.url, self.status_code, self.content = url, 200, html.encode()
+            self.headers = {"content-type": "text/html"}
+            self.encoding, self.apparent_encoding, self.text = "utf-8", "utf-8", html
+
+    estaticas = {
+        "https://a.es/spa": '<html><body><div id="app"></div><script src="/app.js"></script></body></html>',
+        "https://a.es/llena": "<html><body><p>" + "Precio total: 9.800 €. " * 20 + "</p></body></html>",
+        "https://b.es/reto": '<html><head><title>Just a moment...</title></head><body><script src="/cdn-cgi/challenge-platform/x.js"></script></body></html>',
+    }
+
+    class DominioFalso:
+        def __init__(self, base, archivo, pausa=1.0, max_peticiones=80):
+            pass
+
+        def get(self, url):
+            return Resp(url, estaticas[url])
+
+    pintadas = []
+
+    class NavegadorFalso:
+        def __init__(self):
+            self.bloqueadas = 0
+
+        def html(self, url):
+            pintadas.append(url)
+            return "<html><body><h1>Máster en Datos</h1><p>" + "Plan de estudios con 60 ECTS. " * 10 + "</p></body></html>"
+
+        def cerrar(self):
+            pass
+
+    monkeypatch.setattr(rastreador, "Dominio", DominioFalso)
+    monkeypatch.setattr(e, "Navegador", NavegadorFalso)
+    monkeypatch.setattr(e, "PAUSA_RENDER", 0)
+    almacen = AlmacenFalso()
+    filas = {f["url"]: f for f in e.capturar(list(estaticas), hilos=2, guarda=e.Guarda(almacen), navegador=True)}
+    assert pintadas == ["https://a.es/spa"]  # ni la que ya tiene texto ni la verificación antibot
+    spa = filas["https://a.es/spa"]
+    assert spa["pintada"] and "Máster en Datos" in spa["texto"] and spa["clave_pintada"].startswith("web-centros-render/")
+    assert spa["clave"].startswith("web-centros/")  # el original estático también se guarda
+    assert filas["https://b.es/reto"].get("antibot") and not filas["https://b.es/reto"].get("pintada")
+    assert not filas["https://a.es/llena"].get("pintada")
+
+
+def test_sin_navegador_no_se_pinta(monkeypatch):
+    from motor.estudios import rastreador
+
+    class Resp:
+        url, status_code, content = "https://a.es/spa", 200, b"<html><body><div id=app></div></body></html>"
+        headers = {"content-type": "text/html"}
+        encoding = apparent_encoding = "utf-8"
+        text = "<html><body><div id=app></div></body></html>"
+
+    class DominioFalso:
+        def __init__(self, *a, **k):
+            pass
+
+        def get(self, url):
+            return Resp()
+
+    monkeypatch.setattr(rastreador, "Dominio", DominioFalso)
+    monkeypatch.setattr(e, "Navegador", lambda: (_ for _ in ()).throw(AssertionError("no debe abrir navegador")))
+    assert not e.capturar(["https://a.es/spa"], guarda=e.Guarda(None))[0].get("pintada")
