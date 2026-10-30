@@ -215,6 +215,7 @@ def indexar_tarifas(carpeta: Path | None) -> dict[str, dict]:
     candidatos: dict[str, list] = defaultdict(list)
     if not carpeta:
         return {}
+    from motor.grados.tarifas_grado import CURSO_CONOCIDO as cursos_conocidos
     from motor.grados.tarifas_grado import LECTURA_CONOCIDA as lecturas  # capturas anteriores a la regla
     for f in sorted(carpeta.rglob("tarifas_grado/tarifas.jsonl"), key=lambda x: str(x)):
         m = re.search(r"(\d{4})(\d{2})(\d{2})T\d{6}", str(f))
@@ -246,9 +247,12 @@ def indexar_tarifas(carpeta: Path | None) -> dict[str, dict]:
                     p = precio_web({"url": doc["url"], "importes": importes})
                     p = p if p and p["precio_curso"] else None
                 if p:
+                    conocido = cursos_conocidos.get(doc["url"]) or {}
+                    if conocido.get("nota"):
+                        p = {**p, "nota": conocido["nota"]}
                     candidatos[cod].append({**p, "fuente": "Tarifas publicadas por la universidad",
                                             "formato": doc.get("formato") or "pdf",
-                                            "curso_documento": doc.get("curso_documento"),
+                                            "curso_documento": conocido.get("curso") or doc.get("curso_documento"),
                                             "universidad": doc.get("universidad"), "capturado": fecha,
                                             **({"centro": doc["centro"], "centro_adscrito": bool(doc.get("centro_adscrito"))}
                                                if doc.get("centro") else {})})

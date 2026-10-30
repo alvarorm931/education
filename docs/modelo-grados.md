@@ -181,6 +181,38 @@ modificaciones más con curso. Si el plan del BOE no trae tabla que cuadre, se c
 - Queda abierto (solo afecta a optativas, no a la comprobación): optativas perdidas al descartar una tabla repetida y variantes de nombre («Idioma moderno II» e «Idioma
   moderno II: Inglés II»).
 
+**Tercera revisión independiente (30/10/2026 por la noche).** Un revisor sin acceso al código comparó 12 fichas
+publicables al azar (5 grados de públicas, 4 de privadas con precio, 2 dobles y 1 con cupos de reserva) con sus
+fuentes (informe local en `trabajo/verificacion/informe.md`). QEDU coincidía campo a campo en los 16 centros, los
+precios de las públicas cuadraban en las 7 fichas y el histórico de Madrid cuadraba en todo. Errores comprobados en
+9 de las 12, todos corregidos:
+
+| Error | Corrección |
+|---|---|
+| Celda del carácter combinada en varias filas (Salamanca, Ciencia Política): 19 asignaturas con el nombre de la primera fila del bloque y sin tipo | `boe_grados._encajar`: si por la izquierda el nombre sería el de la fila anterior y poniendo la celda que falta en la columna del carácter la fila conserva el suyo, vale eso. Menciones escritas «Ob.Mención X» |
+| «Taller de Trabajo Fin de Grado» (Obligatoria) contado como TFG (Nebrija) | el TFG y el practicum por nombre solo pasan a su tipo sin pasar de la tabla de créditos, salvo que el nombre sea el propio TFG o practicum (varios practicum de itinerario); la misma asignatura repetida en otra tabla no cuenta dos veces |
+| Sin curso: tablas «Primer semestre \| Segundo semestre» … «Séptimo \| Octavo» y párrafos «Curso 1.º» (Nebrija, URJC) | ordinales hasta «duodécimo»; «Curso 1.º» y «1.º Curso» como encabezado; semestres 1 y 2 de primero si otra tabla del plan numera por encima de 2 |
+| Plan de otro título con el mismo nombre (USAL, Información y Documentación: el plan nuevo 1500661 en la ficha del 2500163) | `boe_grados.codigos_en_texto` («Código Titulación: 1500661»): un plan que declara el código de otro título no se usa |
+| Básicas listadas por materia y por asignatura, sumadas dos veces (Economía, Filología Hispánica de Granada) | `fichas.sin_niveles_repetidos`: si las asignaturas de un tipo suman lo mismo que sus materias, quedan las asignaturas |
+| Errata del cuadro de créditos del BOE (Medicina, CEU: TFG 6 y optativas 8; las filas del mismo BOE y el RUCT, 8 y 6) | `fichas.corregir_distribucion`: vale el reparto del RUCT si las filas lo confirman; el del BOE queda en `distribucion_boe` con la nota |
+| Dos notas para el mismo curso: QEDU 5,00 y el distrito 8,032 (Economía, Granada; la UGR confirma 8,032) | la nota de QEDU que el distrito publica distinta como final queda aparte (`nota_corte_anterior_qedu_no_usada`): 341 centros |
+| Precio solo de los datos estructurados de la página, con «Precio: Consultar» a la vista (Hespérides) | los datos estructurados valen solo si el texto muestra el mismo importe; los importes «desde» / «a partir de» no son precio del curso |
+| Comparación de asignaturas: nombres bilingües («Dermatología/Dermatology») sin emparejar; optativas sin tipo contadas como fijas | `asignaturas.sin_traduccion` y solo tipos fijos (básica, obligatoria, prácticas, TFG) |
+
+Encontrado aparte en la misma revisión de privadas: la página de ADE de ESIC **Zaragoza** daba precio a la ADE de
+**Pozuelo**. `web_privadas.sede_ajena`: una página o lista de precios cuya dirección nombra una sede de otra provincia
+que las de los centros del grado no vale para él; si el grado está en varias provincias y la página es de una,
+el precio lleva `solo_sede`.
+
+Efecto en los planes del BOE (misma entrada, código anterior frente al nuevo): 16 planes y modificaciones más
+comprobados, 11 más que cuadran tipo a tipo, ninguno menos; 29 planes y 46 modificaciones más con curso. Quedan
+sin corregir (leves): el curso de dos materias «3 y 4» de Estudios Ingleses (Granada) y las alternativas de
+«Lengua Clásica» que el BOE da junto a «Lengua Latina I». Aviso para el generador: `generico.id` es una clave
+interna («doble-estudio-inglese-…»); la dirección pública es la de `identificadores.json`
+(`/grado/estudios-ingleses-y-filologia-hispanica/`). `precio_primera_matricula` es el de todos los créditos del
+grado, no el de un curso. El precio de la UPSA sale de su lista de Salamanca y Nutrición tiene también un centro
+en Madrid (Salus Infirmorum) que esa lista no nombra: sin comprobar para Madrid.
+
 Resultado con todo lo leído (30/10/2026, 08:00, hora de España):
 
 | | Leídos | Con asignaturas | Con curso | Comprobados | Y además tipo a tipo |
@@ -280,8 +312,9 @@ textos largos quedan solo en el almacén privado; en `sondas` va su tamaño y su
 
   Regla del precio (`fichas.precio_por_cuentas` y `precio_web`), de más a menos comprobado: un importe que es el
   crédito × 60 de otro de la misma página (un curso son 60 créditos, RD 822/2021); crédito × 60 más la matrícula;
-  reserva más 8 a 12 cuotas iguales; el precio de los datos estructurados (schema.org) si no contradice al texto;
-  un único importe por curso. Un precio del crédito suelto, sin otra cifra de la página que lo confirme, ya no se
+  reserva más 8 a 12 cuotas iguales; el precio de los datos estructurados (schema.org) solo si el texto de la página
+  muestra el mismo importe (desde el 30/10 por la noche); un único importe por curso. Un importe «desde» o «a partir
+  de» no es el precio del curso. Un precio del crédito suelto, sin otra cifra de la página que lo confirme, ya no se
   publica: revisados a mano los 7 que había, 2 eran una reserva de 350 € leída como crédito (Mediterrani, 21.000 €
   al año en lugar de unos 6.000). En las listas de precios solo valen cifras que cuadran entre sí dentro del bloque
   de cada grado. Con datos estructurados y texto en desacuerdo, no se publica precio. Total del grado estimado:
@@ -564,7 +597,8 @@ comprobados por asignaturas:
 7. Generador de páginas de grado con el diseño «Noche en blanco» y el control de la ley SEO.
 
 Límite conocido: 8 parejas de grados activos con el mismo nombre en la misma universidad (un título del RD
-1393/2007 que se extingue y su sucesor del RD 822/2021) pueden compartir el plan más reciente.
+1393/2007 que se extingue y su sucesor del RD 822/2021) pueden compartir el plan más reciente, salvo que el texto
+del BOE declare el código del título («Código Titulación: …»), que desde el 30/10 se respeta.
 
 ## 6. Avisos para las otras conversaciones
 

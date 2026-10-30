@@ -136,6 +136,14 @@ URLS_CONOCIDAS = {
 }
 
 
+# Curso de documentos conocidos cuyo curso no se puede leer bien solo (comprobado a mano): Mondragon da en sus
+# páginas de precio «Precio del ECTS: 143 €» con la llamada «Previsión para el curso 2027-28. Será ratificado por el
+# Consejo Rector en julio de 2027», y cita 2026-27 en otra llamada (la cuota del Consejo Social).
+CURSO_CONOCIDO = {u: {"curso": "2027-2028", "nota": "previsión de la universidad para el curso 2027-2028, pendiente de "
+                                                    "ratificar por su Consejo Rector"}
+                  for u in URLS_CONOCIDAS["061"]}
+
+
 # Cómo leer las listas conocidas cuyo formato se comprobó a mano: una fila por grado con su importe anual (o de 60
 # créditos), que es el mayor de la fila (las demás cifras son reserva, matrícula o el crédito).
 LECTURA_CONOCIDA = {
