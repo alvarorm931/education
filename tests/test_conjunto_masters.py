@@ -146,3 +146,22 @@ def test_asignaturas_del_boe_si_no_hay_memoria(tmp_path):
     c = _leer(t / "out" / "masters_oficiales.jsonl.gz")[0]["campos"]
     assert c["asignaturas"]["fuente"] == "boe" and c["asignaturas"]["valor"][0]["caracter"] == "Obligatoria"
     assert c["asignaturas"]["comprobado"] == "completo" and "2011" in c["asignaturas"]["nota"]
+
+
+def test_evaluacion_de_las_guias_si_la_memoria_no_la_pondera(tmp_path):
+    t = _escribir(tmp_path)
+    f = t / "ruct" / "datos" / "estudios" / "masters" / "ruct" / "4310193.json"
+    d = json.loads(f.read_text())
+    d["memoria"]["plan"][0]["materias"][0]["evaluacion"] = []  # formato RD 822/2021: solo el catálogo
+    f.write_text(json.dumps(d))
+    gd = t / "guias"
+    gd.mkdir()
+    (gd / "guias.jsonl").write_text(json.dumps({
+        "url": "https://www.um.es/guia/1.pdf", "codigos_ruct": ["4310193"], "asignatura": "Finanzas Corporativas",
+        "creditos": 6, "extraido": "2026-10-30T14:00:00+00:00", "metodologia": ["Clases"],
+        "evaluacion": [{"sistema": "Examen", "min": 60, "max": 60}, {"sistema": "Trabajos", "min": 40, "max": 40}]}) + "\n")
+    cm.ejecutar(t / "cat.json", t / "out", ruct=[t / "ruct"], qedu=[t / "qedu"], fichas=t / "fichas.jsonl",
+                fecha_catalogo="2026-10-29", guias=[gd])
+    c = _leer(t / "out" / "masters_oficiales.jsonl.gz")[0]["campos"]
+    assert c["evaluacion"]["fuente"] == "guia" and c["evaluacion"]["valor"]["sistemas"][0]["sistema"] == "Examen"
+    assert c["evaluacion_por_asignatura"]["valor"][0]["sistemas"][1] == {"sistema": "Trabajos", "min": 40, "max": 40}

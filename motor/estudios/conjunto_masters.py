@@ -42,6 +42,7 @@ CITAS = {
     "boe": "Agencia Estatal Boletín Oficial del Estado",
     "web": "Página del propio centro",
     "tarifa": "Tarifa publicada por el propio centro",
+    "guia": "Guía docente publicada por la universidad",
     "calculado": "Cálculo del portal con datos oficiales",
 }
 URL_SIIU = "https://www.ciencia.gob.es/Ministerio/Estadisticas/SIIU/Clasificaciones.html"
@@ -56,7 +57,7 @@ PRIORIDAD = {
     "precio_credito": ("qedu", "web", "tarifa"),
     "precio_total": ("web", "tarifa", "calculado"),
     "asignaturas": ("ruct", "boe", "web"),
-    "evaluacion": ("ruct", "web"),
+    "evaluacion": ("ruct", "guia", "web"),
     "metodologia": ("ruct", "web"),
     "requisitos_acceso": ("ruct", "web"),
     "habilita_profesion": ("ruct", "web"),
@@ -217,6 +218,44 @@ def campos_boe(plan: dict | None) -> dict[str, dict]:
             + ("; la suma de créditos cuadra con su tabla" if plan.get("comprobacion") else "; sin comprobar la suma"))
     return {"asignaturas": campo(filas, "boe", plan.get("url"), plan.get("capturado"), nota=nota,
                                  comprobado=plan.get("comprobacion"))} if filas else {}
+
+
+def cargar_guias(carpetas: list[Path]) -> dict[str, list[dict]]:
+    """código → guías docentes leídas (guias.py), una por URL (la última)."""
+    por_url: dict[str, dict] = {}
+    for c in carpetas:
+        for f in sorted(c.rglob("guias.jsonl")):
+            for g in _jsonl(f):
+                if g.get("evaluacion") and (g["url"] not in por_url or g["extraido"] >= por_url[g["url"]]["extraido"]):
+                    por_url[g["url"]] = g
+    out: dict[str, list[dict]] = defaultdict(list)
+    for g in por_url.values():
+        for cod in g.get("codigos_ruct") or []:
+            out[cod].append(g)
+    return out
+
+
+def campos_guias(gs: list[dict]) -> dict[str, dict]:
+    if not gs:
+        return {}
+    gs = sorted(gs, key=lambda g: g.get("asignatura") or "")
+    fecha = max(g.get("extraido") or "" for g in gs) or None
+    por_asig = [{"asignatura": g.get("asignatura"), "ects": g.get("creditos"), "curso": g.get("curso_academico") or None,
+                 "sistemas": [{"sistema": x["sistema"], "min": x["min"], "max": x["max"]} for x in g["evaluacion"]],
+                 "metodologia": g.get("metodologia") or None, "url": g["url"]} for g in gs]
+    por = {}
+    for g in gs:
+        for x in g["evaluacion"]:
+            k = x["sistema"].strip().lower()
+            y = por.setdefault(k, {"sistema": x["sistema"].strip(), "min": x["min"], "max": x["max"], "materias": 0})
+            y["min"], y["max"], y["materias"] = min(y["min"], x["min"]), max(y["max"], x["max"]), y["materias"] + 1
+    url = gs[0]["url"] if len(gs) == 1 else None
+    return {
+        "evaluacion_por_asignatura": campo(por_asig, "guia", url, fecha, nota=f"{len(gs)} guías docentes"),
+        "evaluacion": campo({"sistemas": sorted(por.values(), key=lambda x: -x["materias"]), "con_ponderacion": True,
+                             "por": "asignatura"}, "guia", url, fecha,
+                            nota="sistemas de las guías docentes leídas, con el peso mínimo y máximo que les dan"),
+    }
 
 
 def cargar_web(fichas: Path) -> tuple[dict[str, dict], list[dict]]:
@@ -488,7 +527,7 @@ def datos_minimos(campos: dict) -> list[str]:
 
 def oficial(cod: str, cat: dict, ruct: dict | None, imps: list[dict], web: dict | None,
             fecha_catalogo: str | None = None, universidades: dict[str, str] | None = None,
-            plan_boe: dict | None = None) -> dict:
+            plan_boe: dict | None = None, guias: list[dict] | None = None) -> dict:
     url_cat = (cat.get("fuente") or {}).get("url") or URL_SIIU
     fecha_cat = (cat.get("fuente") or {}).get("capturado") or fecha_catalogo
     nombre_uni = (universidades or {}).get(cat.get("universidad_codigo") or "") or \
@@ -514,6 +553,12 @@ def oficial(cod: str, cat: dict, ruct: dict | None, imps: list[dict], web: dict 
     por_fuente["web"] = {k: v for k, v in w.items() if v["fuente"] == "web"}
     por_fuente["tarifa"] = {k: v for k, v in w.items() if v["fuente"] == "tarifa"}
     por_fuente["calculado"] = calc
+    por_fuente["guia"] = campos_guias(guias or [])
+    # la evaluación de la memoria sin ponderaciones (formato RD 822/2021) cede ante la de las guías, que las tienen
+    ev = por_fuente.get("ruct", {}).get("evaluacion")
+    if ev and not ev["valor"].get("con_ponderacion") and "evaluacion" in por_fuente["guia"]:
+        por_fuente["ruct"] = {k: v for k, v in por_fuente["ruct"].items() if k != "evaluacion"}
+        por_fuente["ruct_catalogo"] = {"evaluacion": ev}
     campos = unir(por_fuente)
     if "precio_total" not in campos:
         pc = precio_calculado(campos)
@@ -600,7 +645,7 @@ def _anterior(carpeta: Path | None) -> dict[str, dict]:
 
 def ejecutar(catalogo: Path, salida: Path, altas: Path | None = None, ruct: list[Path] = (), qedu: list[Path] = (),
              fichas: Path | None = None, anterior: Path | None = None, fecha_catalogo: str | None = None,
-             boe: list[Path] = ()) -> dict:
+             boe: list[Path] = (), guias: list[Path] = ()) -> dict:
     texto = catalogo.read_text(encoding="utf-8").strip()
     filas = json.loads(texto) if texto.startswith("[") else [json.loads(l) for l in texto.split("\n") if l.strip()]
     fecha_catalogo = fecha_catalogo or datetime.fromtimestamp(catalogo.stat().st_mtime, timezone.utc).date().isoformat()
@@ -609,6 +654,7 @@ def ejecutar(catalogo: Path, salida: Path, altas: Path | None = None, ruct: list
     r_ruct = cargar_ruct(list(ruct))
     r_qedu = cargar_qedu(list(qedu))
     r_boe = cargar_boe_planes(list(boe))
+    r_guias = cargar_guias(list(guias))
     # nombre completo de cada universidad (el catálogo da «Sevilla»; QEDU, «Universidad de Sevilla»)
     universidades = {}
     for c, imps in r_qedu.items():
@@ -634,7 +680,7 @@ def ejecutar(catalogo: Path, salida: Path, altas: Path | None = None, ruct: list
     web_of, web_no = cargar_web(fichas) if fichas else ({}, [])
     hoy = _hoy()
     oficiales = [oficial(c, cat[c], r_ruct.get(c), r_qedu.get(c, []), web_of.get(c), fecha_catalogo, universidades,
-                         r_boe.get(c)) for c in sorted(cat)]
+                         r_boe.get(c), r_guias.get(c)) for c in sorted(cat)]
     por_programa: dict[str, list[dict]] = defaultdict(list)
     for f in web_no:
         por_programa[f.get("programa") or f.get("clave")].append(f)
@@ -661,6 +707,7 @@ def ejecutar(catalogo: Path, salida: Path, altas: Path | None = None, ruct: list
                                           and not r_ruct[c]["memoria"].get("error")),
         "oficiales_en_qedu": sum(1 for c in cat if r_qedu.get(c)),
         "oficiales_con_plan_boe": sum(1 for c in cat if c in r_boe),
+        "oficiales_con_guias": sum(1 for c in cat if c in r_guias),
         "oficiales_con_web": sum(1 for c in cat if c in web_of),
         "oficiales_indexables": sum(1 for r in oficiales if r["indexable"]),
         "oficiales_faltan": dict(Counter(x for r in oficiales for x in r["datos_minimos_faltan"])),
@@ -690,13 +737,14 @@ def main() -> None:
     p.add_argument("--qedu", action="append", default=[])
     p.add_argument("--fichas")
     p.add_argument("--boe", action="append", default=[], help="carpetas con boe_planes_masters.jsonl")
+    p.add_argument("--guias", action="append", default=[], help="carpetas con guias.jsonl (guias.py)")
     p.add_argument("--anterior")
     p.add_argument("--fecha-catalogo", help="fecha de descarga del catálogo SIIU (por defecto, la del fichero)")
     p.add_argument("--salida", required=True)
     a = p.parse_args()
     res = ejecutar(Path(a.catalogo), Path(a.salida), Path(a.altas) if a.altas else None, [Path(x) for x in a.ruct],
                    [Path(x) for x in a.qedu], Path(a.fichas) if a.fichas else None, Path(a.anterior) if a.anterior else None,
-                   a.fecha_catalogo, [Path(x) for x in a.boe])
+                   a.fecha_catalogo, [Path(x) for x in a.boe], [Path(x) for x in a.guias])
     print(json.dumps({k: v for k, v in res.items() if not k.startswith("cobertura")}, ensure_ascii=False, indent=1))
 
 
