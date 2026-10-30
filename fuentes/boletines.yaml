@@ -204,12 +204,14 @@ provinciales:
     url: https://www.diputacionavila.es/boletin-oficial/
     acceso_desde_github: "ok"
     datos_estructurados: "RSS: https://www.diputacionavila.es/bop/rss.xml"
-    estado: sin_conector
+    estado: conector_en_pruebas
+    conector: motor/provinciales/bopavila.py
   - provincia: Badajoz
     url: http://www.dip-badajoz.es/bop/
     acceso_desde_github: "ok"
     datos_estructurados: "Atom: https://www.dip-badajoz.es/canales/atom_xml_bop.php?c=1&u=1"
-    estado: sin_conector
+    estado: conector_en_pruebas
+    conector: motor/provinciales/bopbadajoz.py
   - provincia: Barcelona
     url: http://bop.diba.cat
     acceso_desde_github: "ok"

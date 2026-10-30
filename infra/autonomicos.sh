@@ -144,6 +144,16 @@ for c in $CONECTORES; do
       ejecutar motor.autonomicos.bocant --textos --salida "$S" --max-minutos "$M"
       "$G" "BOC Cantabria: textos"
       ;;
+    bopavila)
+      # Solo el boletín del día, por su canal RSS (sin histórico por ahora)
+      ejecutar motor.provinciales.bopavila --salida "$S"
+      "$G" "BOP Ávila: boletín del día"
+      ;;
+    bopbadajoz)
+      # Solo el boletín del día, por su canal Atom (sin histórico por ahora)
+      ejecutar motor.provinciales.bopbadajoz --salida "$S"
+      "$G" "BOP Badajoz: boletín del día"
+      ;;
     bopb)
       # El del día por el canal de datos abiertos; los anteriores por el listado por días y los textos en PDF (cerrados
       # en robots.txt; se leen como boletín oficial, motor/http.py)
