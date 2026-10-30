@@ -474,6 +474,15 @@ peticiones y resúmenes).
 8. Con varias páginas candidatas para un máster decidía la primera; ahora gana la que confirma el nombre, y un
    nombre parecido no vale si encaja igual en otro máster de la misma universidad.
 
+**Revisión independiente** (otra instancia sin ver el trabajo, solo el código, con pruebas sobre casos difíciles):
+11 fallos confirmados y corregidos el mismo día. Los más graves: un «Experto Universitario en X», un «Máster
+Propio en X» o un «Curso de X» confirmaban el «Máster Universitario en X»; «título propio (no oficial)»
+contaba como oficial porque contiene «oficial»; los números se aceptaban con cualquiera de las dos lecturas del
+separador (4.550 por «45,50 €», 9,8 por «9.800 €»); la cita valía dentro de otro número («1.500 €» dentro de
+«11.500 €»); «1500,50» rompía una tanda ya pagada; las tarifas no miraban la moneda ni repetían precio por
+curso. Todas las tandas de la noche se vuelven a comprobar con las reglas nuevas sin pagar otra vez
+(`extraer.py retomar`: el texto enviado está en el almacén y las respuestas del lote siguen en la API 29 días).
+
 ## 9. Siguientes pasos
 
 Ordenados por lo que más acerca a tener, para cada máster, lo que hoy se da solo al registrarse
