@@ -329,27 +329,49 @@ textos largos quedan solo en el almacén privado; en `sondas` va su tamaño y su
 
   Regla del precio (`fichas.precio_por_cuentas` y `precio_web`), de más a menos comprobado: un importe que es el
   crédito × 60 de otro de la misma página (un curso son 60 créditos, RD 822/2021); crédito × 60 más la matrícula;
-  reserva más 8 a 12 cuotas iguales; el precio de los datos estructurados (schema.org) solo si el texto de la página
-  muestra el mismo importe (desde el 30/10 por la noche); un único importe por curso. Un importe «desde» o «a partir
-  de» no es el precio del curso. Un precio del crédito suelto, sin otra cifra de la página que lo confirme, ya no se
+  reserva más 8 a 12 cuotas iguales, o reserva más matrícula más las cuotas (si nada cuadra al euro, se admite la
+  cuota redondeada al euro, medio euro por cuota: Francisco de Vitoria, 1.500 € + 10 × 932 € frente a 10.815 €); el
+  precio anual de la enseñanza en 8 a 12 cuotas iguales de otra cifra de la fila, solo si sale una única solución
+  (CEU San Pablo: 9 × 533,33 € = 4.800 €; la ficha dice que la reserva y la matrícula se pagan aparte), y si la fila
+  trae además un total que es esa enseñanza más la reserva, la matrícula y otros pagos de la fila, vale ese total
+  (Cardenal Herrera: 4.740 + 400 + 700 + 675 = 6.515 €); el precio de los datos estructurados (schema.org) solo si el
+  texto de la página muestra el mismo importe; un único importe por curso. Un importe «desde» o «a partir de» no es
+  el precio del curso, y tampoco el de una fila o un texto con beca o descuento («Becas Marqués de Lozoya», «con la
+  beca…»; «sin descuento» sí vale). Un precio del crédito suelto, sin otra cifra de la página que lo confirme, no se
   publica: revisados a mano los 7 que había, 2 eran una reserva de 350 € leída como crédito (Mediterrani, 21.000 €
   al año en lugar de unos 6.000). En las listas de precios solo valen cifras que cuadran entre sí dentro del bloque
-  de cada grado. Con datos estructurados y texto en desacuerdo, no se publica precio. Total del grado estimado:
-  precio por curso × créditos / 60, al precio de hoy.
+  de cada grado; si la lista da varios precios para el mismo título (campus, modalidad, idioma), se publica el menor
+  como «desde» y la ficha lo dice con todos los precios (`precios_de_la_lista`). Con datos estructurados y texto en
+  desacuerdo, no se publica precio. Total del grado estimado: precio por curso × créditos / 60, al precio de hoy;
+  en un doble grado solo si el precio sale del precio del crédito (sus cursos pasan de 60 créditos, 72 o 78, y con
+  el precio de un curso el total no se sabe: la ficha lo dice en `nota_total`).
 
-  Resultado (30/10 por la noche, tras las dos revisiones de la noche y la relectura de las webs de universidades y
-  centros con las reglas nuevas): **358 de 1.410 grados y dobles de privadas con precio por curso**
-  (159 de su página y 199 de sus listas de precios), de 27 universidades; todos con total estimado. Quedan
-  sin precio por las reglas nuevas 15 fichas cuyo importe solo estaba en los datos estructurados, 5 con un importe
-  «desde» y 1 con la página de otra sede; entran los de las listas nuevas. Y 12 grados de centros adscritos de
+  Lectura de las listas (`tarifas_grado.extraer`, 30/10 por la noche): las tablas HTML se leen con un lector de HTML
+  (Deusto omite los cierres de celda y de fila, que el estándar permite); las celdas sin «€» valen si la cabecera
+  rotula columnas de dinero («MATRÍCULA», «8 PLAZOS ENSEÑANZA», «TOTAL») y la cifra lleva céntimos; una fila sin
+  grado («Concepto | Importe») no tapa el nombre del grado de encima; en las fichas de precios con título, rótulo y
+  cifra (San Jorge) la cifra es del grado del título si está como mucho 12 líneas más arriba; y una cifra que el texto
+  del PDF parte en dos («1. 100 €», Alfonso X) se toma entera solo si así cuadran las cifras de su fila, con nota (23
+  fichas). Una página de precios sin ningún importe leído guarda un diagnóstico sin texto (tablas, filas, cifras a
+  la vista y en scripts, forma de sus líneas y direcciones de datos que carga aparte), y una línea con importe que no
+  se une con ningún grado, su forma (letras como «a», dígitos como «9»): así se vio que Nebrija carga sus precios
+  de grado aparte (la página no los trae) y que la tabla de Deusto sí estaba en el HTML.
+
+  Resultado (30/10, 23:45, con las reglas nuevas, la relectura de las listas de las 45 privadas y sus centros y la de
+  sus páginas de grado): **501 de 1.410 grados y dobles de privadas con precio por curso** (159 de su página y 342 de
+  sus listas de precios), de 28 universidades (antes de estas reglas, 358 de 27). Entran sobre todo San Pablo-CEU
+  (74), Francisco de Vitoria (53), Deusto (32), San Jorge (27) y Alfonso X (22). 46 llevan varios precios de la
+  lista («desde»). De los 87 dobles con precio, 10 tienen total estimado (los demás, el precio de un curso). Y 15
+  grados de centros adscritos de
   públicas con el precio de su web. Control del título de la página: si la
   dirección casa con el grado pero el título dice que es de otro estudio (un doble para un grado simple, una FP,
   otro grado, o un doble con otros grados), la página no vale para ese grado (`web_privadas.titulo_contradice`);
   un título genérico («Admisión») no contradice nada. Descartó 29 uniones, 4 con precio (por ejemplo, un doble de
-  Economía con Finanzas tomado por el de Economía y ADE). De las 601 privadas sin precio cuya página se leyó, 235
+  Economía con Finanzas tomado por el de Economía y ADE). De las 478 privadas sin precio cuya página se leyó, 197
   tienen un formulario que pide el correo: la ficha lo dice como hecho medido («la universidad no publica el
   precio en la página del grado; su formulario pide correo»), sin juicio (`pagina_privada_sin_precio`). Sin
-  ninguna página leída: Navarra (sin sitemap; su portada no enlaza los grados), Comillas (responde 421 a GitHub),
+  ninguna página leída: Navarra (sin sitemap; su portada no enlaza los grados; su lista de precios sí se lee), Comillas (responde 421 a
+  GitHub; desde el servidor de España responde, pero no tiene sitemap legible y su portada no enlaza ningún grado),
   UOC (403) y Ramón Llull (sus grados están en las webs de sus centros).
 
 - **Listas oficiales de precios halladas a mano (30/10 por la tarde)**, para las privadas sin precio: una búsqueda
@@ -361,9 +383,8 @@ textos largos quedan solo en el almacén privado; en `sondas` va su tamaño y su
   a mano con un único importe anual por grado (`tarifas_grado.LECTURA_CONOCIDA`; con dos importes en la fila, como
   presencial y semipresencial, no se publica). Sin leer: la Europea (sus PDF de 2025-2026 dan 404 también desde el
   servidor de España, así que ya no están; la tabla 2026-2027 solo aparece en copias de terceros, que no son
-  fuente), Católica de Valencia (publica su tabla de honorarios de grado 2026-2027 en PDF, pero su robots.txt prohíbe
-  esa ruta: no se pide) y Deusto (su tabla de tasas no sale en el HTML que se descarga; las celdas sin «€» ya se
-  leen). No publican tabla de precios en su web (búsqueda del 30/10): VIU, UOC (remite al decreto), UDIMA (solo el
+  fuente) y Católica de Valencia (publica su tabla de honorarios de grado 2026-2027 en PDF, pero su robots.txt
+  prohíbe esa ruta: no se pide). Deusto, que no se leía, ya se lee (su tabla omite los cierres de celda). No publican tabla de precios en su web (búsqueda del 30/10): VIU, UOC (remite al decreto), UDIMA (solo el
   precio a efectos de beca, que no es el de venta), CUNEF y otras; ver `docs/estrategia-informacion-cerrada.md` §3.4.
 - **Segunda búsqueda dirigida (30/10 por la noche)**, 20 privadas con pocos precios, solo en su dominio:
   - Leídas y añadidas a `URLS_CONOCIDAS`: Camilo José Cela (tarifario de grados 2026-2027 y las fichas de precio
@@ -375,16 +396,18 @@ textos largos quedan solo en el almacén privado; en `sondas` va su tamaño y su
     rastreo de su web, que responde 421 a GitHub y se pide desde el servidor de España).
   - Resultado: Camilo José Cela 18 de 81 grados con precio, Alfonso X 5 de 46, Mondragon 8 de 19, UIE 6 de 6,
     Euneiz 5 de 11 (tabla del precio del crédito por titulación, comprobada a mano: `LECTURA_CONOCIDA`,
-    «credito_por_60_de_la_tabla»), Abat Oliba 2 de 15. Alfonso X: el texto del PDF escribe «1 100 €» (miles con
-    espacio) y «10 983 €» (10 cuotas de 983 €) igual; desde el 30/10 el espacio normal no separa miles, así que la
-    matrícula sale 100 € y la fila no cuadra: no se publica (23 grados de su lista, sin precio).
+    «credito_por_60_de_la_tabla»), Abat Oliba 2 de 15. Alfonso X: el texto del PDF parte
+    «1.100 €» en «1.» y «100 €»; desde el 30/10 por la noche se toma entera solo si así cuadra la fila (23 grados de
+    Alfonso X y Mare Nostrum con precio).
   - No publican precio: UNIR («consulta precios con tu asesor»), Villanueva («consultar precio»), UEMC, Europea del
     Atlántico, Fernando Pessoa-Canarias, Atlántico Medio y UTAMED.
   - Publican, pero no se puede usar: Católica de Valencia (su robots.txt prohíbe la ruta del PDF), IQS (un precio
     por crédito para todos los grados, sin grado por línea; sus fichas, prohibidas por robots.txt), Esade (un único
     importe de primer curso para todos los grados, sin curso), UCAV (precio por crédito por tramos de créditos, no
     por grado), La Salle, Blanquerna y UVic (páginas en inglés cuyos nombres no casan con los del catálogo), Isabel I
-    (el importe se carga con JavaScript), San Jorge (su web da error) y la Europea (2025-2026 retirado, 404).
+    (el importe se carga con JavaScript), Nebrija (su página de precios carga los de grado aparte: la página no
+    los trae; sus fichas de grado sí dan precio) y la Europea (2025-2026 retirado, 404). San Jorge, que daba error,
+    ya se lee (27 grados con precio).
 
 - **Por qué no responde una dirección** (`tarifas_grado.pedir_con_motivo`, desde el 30/10): cada dirección sin
   respuesta lleva `motivo` (robots.txt que lo prohíbe, robots.txt que no responde —entonces no se rastrea—, límite
@@ -560,7 +583,7 @@ pedir nada a ninguna fuente, y marca cada ficha como indexable o no, con el moti
 | Con nota de corte | 2.532 |
 | Con precio de primera matrícula (públicas) | 2.113 de 2.239 grados y 498 de 647 dobles de públicas |
 | De ellos, con el precio de la norma de su comunidad (QEDU no lo da) | 508 |
-| Privadas con precio por curso | 358 de 1.410 (y 12 centros adscritos de públicas con el precio de su web) |
+| Privadas con precio por curso | 501 de 1.410 (y 15 centros adscritos de públicas con el precio de su web) |
 | Con histórico de notas de corte comprobado | 1.430 (1.569 centros; 963 con cinco cursos o más; 1.030 con los cupos de reserva) |
 | Con inserción laboral | 1.703 |
 | Con indicadores de rendimiento del SIIU | 3.125 |
@@ -568,11 +591,11 @@ pedir nada a ninguna fuente, y marca cada ficha como indexable o no, con el moti
 | Grados con plan del BOE | 3.095 de 3.265 |
 | Grados con plan comprobado | 2.145 (1.536 por asignaturas, el resto por materias) |
 | Dobles con los planes de sus dos grados comprobados | 557 |
-| **Indexables** con los datos mínimos decididos | **2.035** (1.690 grados y 345 dobles; 1.775 de públicas y 260 de privadas) |
+| **Indexables** con los datos mínimos decididos | **2.138** (1.747 grados y 391 dobles; 1.775 de públicas y 363 de privadas) |
 
 El resto va con `noindex` y su motivo: 950 con plan que no
 cuadra, 644 sin plan (o doble sin los dos planes comprobados) y
-1.050 sin nota ni precio (casi todas, privadas que no publican el precio); una
+907 sin nota ni precio (casi todas, privadas que no publican el precio); una
 ficha puede tener varios.
 
 Para rehacerlo todo desde `sondas`: bajar las carpetas con `datos/estudios/grados/` y ejecutar en orden
@@ -622,10 +645,12 @@ comprobados por asignaturas:
    `trabajo/memorias_prioridad_v2.txt`). El lector ya está en las fichas
    (`fichas.plan_de_memoria`: el plan de la memoria entra si el del BOE no cuadra y él sí cuadra con los créditos
    por tipo del RUCT; con una página sin leer no cuenta como comprobado).
-3. Privadas sin precio (1.052): la Europea retiró sus PDF de 2025-2026 (404 también desde el
+3. Privadas sin precio (909): la Europea retiró sus PDF de 2025-2026 (404 también desde el
    servidor de España, 30/10) y la tabla 2026-2027 solo aparece en copias de terceros, que no son fuente; Católica de
-   Valencia publica su tabla 2026-2027 en una ruta que su robots.txt prohíbe (no se pide); Deusto, tabla que no sale
-   en el HTML; lo que no esté publicado, peticiones a cada universidad cuando el portal tenga dirección pública
+   Valencia publica su tabla 2026-2027 en una ruta que su robots.txt prohíbe (no se pide); Nebrija carga los precios
+   de grado de su página de precios aparte (la página no los trae; se buscará la dirección de esos datos); Comillas,
+   sin sitemap ni enlaces a sus grados en la portada; lo que no esté publicado, peticiones a cada universidad cuando
+   el portal tenga dirección pública
    (`docs/estrategia-informacion-cerrada.md` §3.4). El índice de Common Crawl de los dominios de centros dio 710
    direcciones más y solo 3 grados con importe: esa vía está agotada.
 4. Dobles de públicas sin precio (149): resoluciones de cada programa en Salamanca; UPV y UPV/EHU, de su web.
@@ -667,3 +692,7 @@ del BOE declare el código del título («Código Titulación: …»), que desde
   centro; y `tarifas_grado.pedir_con_motivo` dice por qué no respondió cada dirección (robots.txt, límite, error).
 - **Másters (planes del BOE):** `boe_grados.codigos_en_texto` lee el «Código Titulación» que declara el texto: un
   plan con el código de otro título no es de este.
+- **Másters (listas de precios):** `tarifas_grado.lineas_html` lee las tablas con un lector de HTML (cierres de celda
+  omitidos), `tarifas_grado.diagnostico_html` dice sin texto por qué una página de precios no dio importes, y
+  `fichas.precio_por_cuentas` admite ya la cuota redondeada al euro, la enseñanza en cuotas iguales sin la matrícula
+  y el total de la fila con reserva y matrícula; las filas con beca no son precio.
