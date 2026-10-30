@@ -298,6 +298,19 @@ textos largos quedan solo en el almacén privado; en `sondas` va su tamaño y su
   ninguna página leída: Navarra (sin sitemap; su portada no enlaza los grados), Comillas (responde 421 a GitHub),
   UOC (403) y Ramón Llull (sus grados están en las webs de sus centros).
 
+- **Listas oficiales de precios halladas a mano (30/10 por la tarde)**, para las privadas sin precio: una búsqueda
+  dirigida en el dominio de cada universidad (sin copias de terceros), en `tarifas_grado.URLS_CONOCIDAS`. Leídas:
+  Pontificia de Salamanca (2026-2027, 14 grados), IE (tasa anual 2027-2028, 15), Cardenal Herrera (Valencia,
+  Elche y Castellón; la dirección fija ya sirve el curso 2027-2028), Alfonso X (online 2025-2026 y Mare Nostrum
+  2026-2027) y Mondragon (patrón por grado). Dos lecturas nuevas: el total anual como reserva + matrícula + 8 a 12
+  cuotas iguales (`fichas.precio_por_cuentas`, «reserva_matricula_y_cuotas»), y las listas cuyo formato se comprobó
+  a mano con un único importe anual por grado (`tarifas_grado.LECTURA_CONOCIDA`; con dos importes en la fila, como
+  presencial y semipresencial, no se publica). Sin leer: la Europea (sus PDF dan 404 a GitHub: se piden desde el
+  servidor de España) y Deusto (su tabla de tasas no sale en el HTML que se descarga; las celdas sin «€» ya se
+  leen). No publican tabla de precios en su web (búsqueda del 30/10): Católica de Valencia, VIU, UOC (remite al
+  decreto), UDIMA (solo el precio a efectos de beca, que no es el de venta), CUNEF, ESIC y otras; ver
+  `docs/estrategia-informacion-cerrada.md` §3.4.
+
 ### Lo que falta por medir
 
 - Notas de corte de cinco cursos o más por cupo (decisión de Álvaro: dentro de grados): Madrid, Murcia,
