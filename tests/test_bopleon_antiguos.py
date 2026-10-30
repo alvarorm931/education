@@ -82,3 +82,32 @@ def test_procesar_antiguo_textos_sin_nombres(tmp_path, monkeypatch):
     lista = json.loads((base / "BOPLEON-2022-3-003.json").read_text(encoding="utf-8"))
     assert lista["texto"] is None and "GARCIA" not in json.dumps(lista, ensure_ascii=False)
     assert lista["citas"][0]["fecha"] == "2021-10-20"
+
+
+def test_reprocesar_desde_el_almacen(tmp_path, monkeypatch):
+    """Los días leídos con una versión vieja se releen del original del almacén, sin pedirlos a la fuente."""
+    import json
+
+    from motor.autonomicos.comun import escribir_json, escribir_jsonl
+    dia = tmp_path / "datos" / "provinciales" / "bopleon" / "dias" / "2022" / "01" / "05.json"
+    escribir_json(dia, {"fecha": "2022-01-05", "numero": 3, "origen": "boletines_anteriores", "resultado": "ok",
+                        "sha256": "abc"})
+    escribir_jsonl(tmp_path / "archivo" / "indices" / "bopleon" / "2022-01.jsonl",
+                   [{"sha256": "abc", "clave": "bopleon/2022/01/05/abc.pdf.gz", "url": "https://bop.dipuleon.es/x.pdf",
+                     "capturado": "2026-10-30T14:00:00+00:00"}])
+    leidas = []
+
+    class Almacen:
+        def leer(self, clave):
+            leidas.append(clave)
+            return b"%PDF-1.4"
+
+    monkeypatch.setattr("motor.almacen.Almacen", Almacen)
+    monkeypatch.setattr("motor.provinciales.textos.paginas_pdf", lambda c: [SUMARIO_1, SUMARIO_2] + CUERPO)
+    monkeypatch.setattr(le, "obtener", lambda *a, **k: (_ for _ in ()).throw(AssertionError("no se pide a la fuente")))
+    le.main(["--reprocesar-antiguos", "--salida", str(tmp_path)])
+    inf = json.loads(dia.read_text(encoding="utf-8"))
+    assert leidas == ["bopleon/2022/01/05/abc.pdf.gz"] and inf["version"] == le.VERSION_ANTIGUOS
+    assert inf["empleo_publico"] == 2 and inf["capturado"] == "2026-10-30T14:00:00+00:00"
+    le.main(["--reprocesar-antiguos", "--salida", str(tmp_path)])  # ya al día: no se vuelve a leer
+    assert len(leidas) == 1

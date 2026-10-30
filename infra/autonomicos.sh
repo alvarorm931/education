@@ -370,6 +370,7 @@ for c in $CONECTORES; do
       ejecutar motor.provinciales.bopleon --desde 2025-02-17 --salida "$S" --max-minutos "$M"
       "$G" "BOP León: boletines"
       # Boletines anteriores al 17/02/2025: lista por fechas y PDF entero (sumario y textos del mismo PDF)
+      ejecutar motor.provinciales.bopleon --reprocesar-antiguos --salida "$S"
       ejecutar motor.provinciales.bopleon --antiguos --salida "$S" --max-minutos "$M"
       "$G" "BOP León: boletines anteriores"
       ejecutar motor.provinciales.bopleon --textos --salida "$S" --max-minutos "$M"

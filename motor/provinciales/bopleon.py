@@ -264,6 +264,8 @@ RE_ENTRADA_ANT = re.compile(r"^(?P<t>.*?\S)\s*(?:\.{3,}|…+)\s*(?P<p>\d{1,4})\s
 RE_CABECERA_ANT = re.compile(r"^(?:S\s?U\s?M\s?A\s?R\s?I\s?O|Edita:|Tel[ée]fono:|P[áa]gina web:|E-mail:|"
                              r"\w+, \d{1,2} de \w+ de \d{4}|Bolet[íi]n Oficial de la Provincia de Le[óo]n|"
                              r"www\.dipuleon\.es|N[úu]mero \d+)", re.IGNORECASE)
+RE_DIPUTACION_ANT = re.compile(r"^(?:EXCMA\.?\s+|EXCELENT[ÍI]SIMA\s+)?DIPUTACI[ÓO]N\s+(?:PROVINCIAL\s+)?DE\s+LE[ÓO]N$",
+                               re.IGNORECASE)
 GRUPOS_ANT = {"ayuntamientos", "mancomunidades de municipios", "mancomunidades", "juntas vecinales",
               "entidades locales menores", "consorcios", "comunidades de regantes", "juntas electorales",
               "juzgados de lo social", "juzgados de primera instancia", "juzgados de primera instancia e instruccion",
@@ -298,8 +300,12 @@ def sumario_antiguo(paginas: list[str]) -> list[dict]:
                 entradas.append({"seccion": seccion, "grupo": grupo, "entidad": entidad, "titulo": titulo,
                                  "pagina": pag})
                 pendiente = ""
+            elif RE_DIPUTACION_ANT.match(lin):  # «EXCMA. DIPUTACIÓN PROVINCIAL DE LEÓN»: lo local de la Diputación
+                seccion, grupo, entidad, pendiente = "Administración Local", "Diputación", "Diputación Provincial de León", ""
             elif lin.upper() == lin and len(lin) > 3 and not re.search(r"\d", lin):
                 seccion, grupo, entidad, pendiente = lin.title(), None, None, ""
+            elif normalizar(lin) in {"anuncio", "anuncios", "edicto", "edictos"}:
+                continue
             elif normalizar(lin) in GRUPOS_ANT:
                 grupo, entidad, pendiente = lin, None, ""
             elif len(lin) >= 85:  # el comienzo de un asunto que sigue en la línea siguiente
@@ -309,12 +315,10 @@ def sumario_antiguo(paginas: list[str]) -> list[dict]:
     return entradas
 
 
-def procesar_antiguo(b: dict, raiz: Path, archivo: Archivo) -> dict:
-    from motor.extraccion.citas import citas
-    from motor.limpieza import RE_DOCUMENTO, limpiar_texto
-    from motor.provinciales.comun import CON_TEXTO
-    from motor.provinciales.textos import cortar, paginas_pdf
+VERSION_ANTIGUOS = "antiguos_v2"  # v2 (30/10/2026): la Diputación como entidad local; «Anuncio» no es una entidad
 
+
+def procesar_antiguo(b: dict, raiz: Path, archivo: Archivo) -> dict:
     d = date.fromisoformat(b["fecha"])
     r = obtener(b["url_pdf"], accept="application/pdf")
     inf = {"fecha": b["fecha"], "numero": b["numero"], "status": r.status, "origen": "boletines_anteriores",
@@ -324,7 +328,18 @@ def procesar_antiguo(b: dict, raiz: Path, archivo: Archivo) -> dict:
         inf["alertas"].append(f"BOP León {d}: PDF HTTP {r.status}")
         return inf
     captura = archivo.guardar(FUENTE, d, r.contenido, b["url_pdf"], "pdf", r.status, r.cabeceras)
-    paginas = paginas_pdf(r.contenido)
+    return {**inf, **_leer_pdf_antiguo(b, r.contenido, captura, raiz)}
+
+
+def _leer_pdf_antiguo(b: dict, pdf: bytes, captura: dict, raiz: Path) -> dict:
+    """Sumario, selección y textos de un boletín anterior a 2025 a partir de su PDF entero."""
+    from motor.extraccion.citas import citas
+    from motor.limpieza import RE_DOCUMENTO, limpiar_texto
+    from motor.provinciales.comun import CON_TEXTO
+    from motor.provinciales.textos import cortar, paginas_pdf
+
+    d = date.fromisoformat(b["fecha"])
+    paginas = paginas_pdf(pdf)
     filas = [{**x, "numero_anuncio": f"{b['numero']}-{i:03d}", "id": f"BOPLEON-{d.year}-{b['numero']}-{i:03d}",
               "fecha": b["fecha"], "boletin": b["numero"], "url_boletin": b["url_pdf"], "url_pdf_boletin": b["url_pdf"],
               "fuente": SIGLAS, "captura_sha256": captura["sha256"]}
@@ -348,13 +363,47 @@ def procesar_antiguo(b: dict, raiz: Path, archivo: Archivo) -> dict:
                          "citas": citas(bruto)}
             escribir_json(ruta_texto_pdf(_base(raiz), x), {"id": x["id"], **datos, "paginas": pags,
                                                           "captura_sha256": captura["sha256"],
-                                                          "capturado": captura["capturado"], "url": b["url_pdf"]})
+                                                          "capturado": captura.get("capturado"), "url": b["url_pdf"]})
             textos += 1
-    inf.update({"resultado": "ok", "sha256": captura["sha256"], "disposiciones": len(filas),
-                "empleo_publico": len(empleo), "textos": textos})
+    inf = {"resultado": "ok", "sha256": captura["sha256"], "capturado": captura.get("capturado"),
+           "url_pdf": b["url_pdf"], "version": VERSION_ANTIGUOS, "disposiciones": len(filas),
+           "empleo_publico": len(empleo), "textos": textos, "alertas": []}
     if not filas:
         inf["alertas"].append(f"BOP León {d}: sumario sin anuncios (posible cambio de formato)")
     return inf
+
+
+def reprocesar_antiguos(raiz: Path) -> int:
+    """Vuelve a leer, desde su original en el almacén (sin pedirlo a la fuente), los boletines anteriores ya
+    cargados con una versión vieja del lector."""
+    from motor.almacen import Almacen, clave_original
+    from motor.autonomicos.comun import leer_jsonl
+
+    almacen, hechos, fallos = None, 0, 0
+    for dia in sorted((_base(raiz) / "dias").glob("*/*/*.json")):
+        inf = json.loads(dia.read_text(encoding="utf-8"))
+        if inf.get("origen") != "boletines_anteriores" or inf.get("resultado") != "ok" \
+                or inf.get("version") == VERSION_ANTIGUOS:
+            continue
+        d = date.fromisoformat(inf["fecha"])
+        indice = raiz / "archivo" / "indices" / FUENTE / f"{d:%Y-%m}.jsonl"
+        reg = next((x for x in (leer_jsonl(indice) if indice.exists() else []) if x.get("sha256") == inf["sha256"]), {})
+        try:
+            almacen = almacen or Almacen()
+            pdf = almacen.leer(reg.get("clave") or clave_original(FUENTE, d, inf["sha256"], "pdf"))
+        except Exception as e:  # noqa: BLE001 - sin almacén se deja para otra ejecución
+            fallos += 1
+            if fallos >= 5:
+                print(f"BOP León: el almacén no responde ({type(e).__name__}); se deja para otra ejecución")
+                break
+            continue
+        url = reg.get("url") or inf.get("url_pdf")
+        nuevo = _leer_pdf_antiguo({"fecha": inf["fecha"], "numero": inf["numero"], "url_pdf": url}, pdf,
+                                  {"sha256": inf["sha256"], "capturado": reg.get("capturado")}, raiz)
+        escribir_json(dia, {**inf, **nuevo})
+        hechos += 1
+    print(f"BOP León anteriores releídos desde el almacén: {hechos}; sin original: {fallos}")
+    return 0
 
 
 def antiguos(raiz: Path, archivo: Archivo, pausa: float, max_minutos: float) -> int:
@@ -416,8 +465,11 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--pausa", type=float, default=1.0)
     p.add_argument("--textos", action="store_true", help="PDF de cada anuncio de empleo (por su ficha)")
     p.add_argument("--antiguos", action="store_true", help="boletines anteriores al 17/02/2025 (PDF entero)")
+    p.add_argument("--reprocesar-antiguos", action="store_true", help="releer desde el almacén los ya cargados")
     a = p.parse_args(argv)
     archivo = Archivo(a.salida / "archivo", indice_por_fuente=True, solo_huella=solo_huella_por_defecto())
+    if a.reprocesar_antiguos:
+        return reprocesar_antiguos(a.salida)
     if a.antiguos:
         return antiguos(a.salida, archivo, a.pausa, a.max_minutos)
     if a.textos:
