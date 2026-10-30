@@ -14,7 +14,8 @@ los ficheros oficiales conocidos de cada distrito (investigados el 30/10/2026, d
 La fase 2 (notas_corte.py) lee cada formato y une cada fila con su título y centro del catálogo.
 
 Uso:
-  python -m motor.grados.notas_fuentes --salida ruta/ [--solo madrid,cataluna] [--max-minutos 50]
+  python -m motor.grados.notas_fuentes --salida ruta/ [--solo madrid,cataluna] [--max-minutos 50] [--filas 80]
+                                       [--extra distrito=url …]
 """
 
 from __future__ import annotations
@@ -218,7 +219,7 @@ def formato_de(contenido: bytes, cabecera: str, url: str) -> str:
     return "html" if "html" in cabecera else "otro"
 
 
-def medir(contenido: bytes, formato: str) -> dict:
+def medir(contenido: bytes, formato: str, filas: int = MUESTRA_FILAS) -> dict:
     if formato == "xlsx":
         from openpyxl import load_workbook
 
@@ -228,13 +229,15 @@ def medir(contenido: bytes, formato: str) -> dict:
         paginas = None
     else:
         lineas, paginas = lineas_documento(contenido, formato)
-    con_nota = [x for x in lineas if NOTA.search(x)]
+    # en CSV y JSON cada línea es un registro (la nota va pegada a su separador): valen todas las que tienen cifras
+    con_nota = [x for x in lineas if NOTA.search(x) or formato in ("csv", "json", "xlsx") and re.search(r"\d[.,]\d", x)]
     cursos = sorted({f"{a}-{int(b) + 2000 if len(b) == 2 else b}" for a, b in CURSO.findall(" ".join(lineas[:400]))})
     return {"paginas": paginas, "lineas": len(lineas), "filas_con_nota": len(con_nota), "cursos_que_cita": cursos[:12],
-            "cabecera": [x for x in lineas[:40] if x.strip()][:25], "muestra": con_nota[:MUESTRA_FILAS]}
+            "cabecera": [x for x in lineas[:40] if x.strip()][:25], "muestra": con_nota[:filas]}
 
 
-def ejecutar(salida: Path, solo: list[str] | None = None, max_minutos: float = 50) -> dict:
+def ejecutar(salida: Path, solo: list[str] | None = None, max_minutos: float = 50, filas: int = MUESTRA_FILAS,
+             extra: dict[str, list[str]] | None = None) -> dict:
     from motor.estudios.rastreador import Dominio
 
     archivo = Archivo(salida / "archivo", indice_por_fuente=True, solo_huella=solo_huella_por_defecto())
@@ -254,7 +257,7 @@ def ejecutar(salida: Path, solo: list[str] | None = None, max_minutos: float = 5
             continue
         res = {"distrito": clave, "nombre": s["nombre"], "capturado": date.today().isoformat(), "indices": [],
                "documentos": []}
-        candidatos: dict[str, str] = {u: "conocido" for u in s.get("ficheros", [])}
+        candidatos: dict[str, str] = {u: "conocido" for u in s.get("ficheros", []) + (extra or {}).get(clave, [])}
         for p in s.get("patrones", []):
             for u in cursos_patron(p):
                 candidatos.setdefault(u, "patron")
@@ -283,7 +286,7 @@ def ejecutar(salida: Path, solo: list[str] | None = None, max_minutos: float = 5
                 doc.update(formato=formato, bytes=len(r.content), sha256=hashlib.sha256(r.content).hexdigest(),
                            ultima_modificacion=r.headers.get("last-modified"))
                 try:
-                    doc.update(medir(r.content, formato))
+                    doc.update(medir(r.content, formato, filas))
                 except Exception as e:  # noqa: BLE001 - un documento roto no para el resto
                     doc["error"] = f"{type(e).__name__}: {str(e)[:160]}"
             res["documentos"].append(doc)
@@ -301,8 +304,14 @@ def main() -> None:
     p.add_argument("--salida", required=True)
     p.add_argument("--solo", help="distritos separados por comas")
     p.add_argument("--max-minutos", type=float, default=50)
+    p.add_argument("--filas", type=int, default=MUESTRA_FILAS, help="filas con nota que se guardan de cada documento")
+    p.add_argument("--extra", action="append", default=[], help="distrito=url: un documento más que leer")
     a = p.parse_args()
-    print(json.dumps(ejecutar(Path(a.salida), a.solo.split(",") if a.solo else None, a.max_minutos),
+    extra: dict[str, list[str]] = defaultdict(list)
+    for x in a.extra:
+        k, _, u = x.partition("=")
+        extra[k].append(u)
+    print(json.dumps(ejecutar(Path(a.salida), a.solo.split(",") if a.solo else None, a.max_minutos, a.filas, extra),
                      ensure_ascii=False, indent=1))
 
 
