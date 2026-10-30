@@ -1,15 +1,15 @@
-# Vigilancia 30/10 23:06 (Madrid)
+# Vigilancia 30/10 23:30 (Madrid)
 
-- Ejecuciones revisadas (últimas 6 h): 124
+- Ejecuciones revisadas (últimas 6 h): 140
 - Fallos: 1; pendientes: 0; relanzados ahora: 0
-- Colas de más de 30 minutos: 4
+- Colas de más de 30 minutos: 2
 - Flujos programados parados: ninguno
 - Almacén S3: ok
 - Programaciones que GitHub no disparó y se lanzaron a mano: ninguna
 - Latido (relanza al vigilante cada ~25 min mientras GitHub no dispare programaciones): en marcha
 - Avisos de fuentes: 0
 
-## Prueba de conector · 30/10 22:26 · otra ejecución en curso: https://github.com/alvarorm931/education/actions/runs/41131303391
+## Prueba de conector · 30/10 22:26 · superado
 https://github.com/alvarorm931/education/actions/runs/41120449947 (intento 1, workflow_dispatch, 05434bb, pasajero: False)
 - prueba · pasos: Subir a la rama sondas · ejecutor: motor-espana
        ! [rejected]          sondas -> sondas (fetch first)
@@ -21,7 +21,5 @@ https://github.com/alvarorm931/education/actions/runs/41120449947 (intento 1, wo
       hint: See the 'Note about fast-forwards' in 'git push --help' for details.
       ##[error]Process completed with exit code 1.
 
-- En cola 38 min: Sonda de fuentes https://github.com/alvarorm931/education/actions/runs/41131341263
-- En cola 38 min: Prueba de conector https://github.com/alvarorm931/education/actions/runs/41131303391
-- En cola 81 min: Boletines autonómicos https://github.com/alvarorm931/education/actions/runs/41125671517
-- En cola 119 min: Grados por tramos https://github.com/alvarorm931/education/actions/runs/41120742487
+- En cola 61 min: Sonda de fuentes https://github.com/alvarorm931/education/actions/runs/41131341263
+- En cola 151 min: Estudios por tramos https://github.com/alvarorm931/education/actions/runs/41119697629
