@@ -60,3 +60,12 @@ def test_pagina_de_precios_de_un_solo_grado():
     assert tg.grado_de_url(url, G) == "1"
     r = tg.extraer(["Precio por crédito: 150 €\nPrecio del curso: 9.000 €"], G, "1")
     assert {i["valor"] for i in r["grados"]["1"]} == {150, 9000}
+
+
+def test_listas_de_precios_conocidas_sin_repetir():
+    from motor.grados.tarifas_grado import elegir_conocidas
+    ya = {"https://ya.es/precios"}
+    xs = elegir_conocidas(ya, {"999": ["https://ya.es/precios", "https://otra.es/precios"]})
+    urls = [x["url"] for x in xs]
+    assert "https://otra.es/precios" in urls and "https://ya.es/precios" not in urls
+    assert any(x["codigo_universidad"] == "031" for x in xs)

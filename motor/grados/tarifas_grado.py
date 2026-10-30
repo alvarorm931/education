@@ -67,6 +67,24 @@ def elegir_cc(carpeta: Path | None, ya: set[str]) -> list[dict]:
     return salida
 
 
+# Listas de precios que cada universidad publica fuera de lo que enlazan sus páginas de grado o su sitemap, halladas
+# a mano en su web oficial (código de universidad del RUCT → URL). Se leen igual que las demás, con robots.txt.
+URLS_CONOCIDAS = {
+    "031": ["https://www.unav.edu/admision-y-ayudas/grado/cuanto-cuesta-estudiar-en-la-universidad",
+            "https://en.unav.edu/admission-and-financial-aid/degree/cuanto-cuesta-estudiar-en-la-universidad-"],
+}
+
+
+def elegir_conocidas(ya: set[str], extra: dict[str, list[str]] | None = None) -> list[dict]:
+    salida = []
+    for cod, urls in {**URLS_CONOCIDAS, **(extra or {})}.items():
+        for u in urls:
+            if u not in ya:
+                ya.add(u)
+                salida.append({"codigo_universidad": cod, "url": u, "origen": "lista_conocida"})
+    return salida
+
+
 def elegir(rastreos: Path) -> list[dict]:
     """PDF de precios citados en las páginas de grado y páginas de precios del sitemap de cada universidad
     (sin repetir URL)."""
@@ -215,7 +233,7 @@ def extraer(paginas: list[str], grados: list[dict], de_la_pagina: str | None = N
 
 
 def ejecutar(catalogo: list[dict], rastreos: Path, salida: Path, max_minutos: float = 50,
-             cc: Path | None = None) -> dict:
+             cc: Path | None = None, extra: dict[str, list[str]] | None = None) -> dict:
     from motor.estudios.rastreador import Dominio
 
     archivo = Archivo(salida / "archivo", indice_por_fuente=True, solo_huella=solo_huella_por_defecto())
@@ -231,6 +249,7 @@ def ejecutar(catalogo: list[dict], rastreos: Path, salida: Path, max_minutos: fl
     resultados, dominios = [], {}
     elegidos = elegir(rastreos)
     elegidos += elegir_cc(cc, {p["url"] for p in elegidos})
+    elegidos += elegir_conocidas({p["url"] for p in elegidos}, extra)
     for p in elegidos:
         if time.time() > fin:
             break
