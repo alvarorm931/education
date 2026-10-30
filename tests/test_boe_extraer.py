@@ -82,7 +82,7 @@ def test_consorcio_alicante_mixto_es_acceso():
 def test_olula_todo_promocion_interna_sale_del_alcance():
     a = _acto("BOE-A-2026-21902")
     assert a["alcance"] == "promocion_interna"
-    assert a["plazo"]["fin_estimado"] == "2026-11-18"
+    assert a["plazo"]["fin_estimado"] == "2026-11-19"  # 2/11 festivo en Andalucía (BOE-A-2025-21667)
 
 
 def test_sin_texto_queda_pendiente():

@@ -1,12 +1,30 @@
 """Cómputo de plazos administrativos (Ley 39/2015, art. 30).
 
-Por ahora solo con festivos nacionales: el resultado es una fecha ESTIMADA. Los festivos autonómicos
-y locales se añadirán desde las resoluciones anuales de días inhábiles.
+Con la comunidad autónoma, se usan sus festivos de la relación anual de fiestas laborales del BOE
+(motor/catalogo/datos/festivos.json, motor/mantenimiento/festivos.py); sin ella, o para un año que aún no está, los
+nacionales. Los festivos locales no se conocen: el resultado sigue siendo una fecha ESTIMADA.
 """
 
 from __future__ import annotations
 
+import json
 from datetime import date, timedelta
+from functools import lru_cache
+from pathlib import Path
+
+
+@lru_cache(maxsize=1)
+def _festivos_boe() -> dict[str, dict[str, frozenset[date]]]:
+    try:
+        datos = json.loads((Path(__file__).parent / "catalogo" / "datos" / "festivos.json").read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return {}
+    return {anio: {c: frozenset(date.fromisoformat(x["fecha"]) for x in v) for c, v in a["comunidades"].items()}
+            for anio, a in datos.get("anios", {}).items()}
+
+
+def hay_festivos_de(anio: int, comunidad: str | None) -> bool:
+    return bool(comunidad) and comunidad in _festivos_boe().get(str(anio), {})
 
 
 def domingo_de_pascua(anio: int) -> date:
@@ -31,11 +49,18 @@ def festivos_nacionales(anio: int) -> set[date]:
     return dias
 
 
-def es_habil(d: date) -> bool:
-    return d.weekday() < 5 and d not in festivos_nacionales(d.year)
+def festivos(anio: int, comunidad: str | None = None) -> set[date] | frozenset[date]:
+    """Festivos de la comunidad (código INE, «13» Madrid) ese año; sin comunidad o sin datos, los nacionales."""
+    if hay_festivos_de(anio, comunidad):
+        return _festivos_boe()[str(anio)][comunidad]
+    return festivos_nacionales(anio)
 
 
-def fin_de_plazo(publicacion: date, dias: int, tipo: str) -> date:
+def es_habil(d: date, comunidad: str | None = None) -> bool:
+    return d.weekday() < 5 and d not in festivos(d.year, comunidad)
+
+
+def fin_de_plazo(publicacion: date, dias: int, tipo: str, comunidad: str | None = None) -> date:
     """Plazo que empieza el día siguiente a la publicación.
 
     tipo 'habiles': se cuentan solo días hábiles (sin sábados, domingos ni festivos).
@@ -46,16 +71,16 @@ def fin_de_plazo(publicacion: date, dias: int, tipo: str) -> date:
         contados = 0
         while contados < dias:
             d += timedelta(days=1)
-            if es_habil(d):
+            if es_habil(d, comunidad):
                 contados += 1
         return d
     d = publicacion + timedelta(days=dias)
-    while not es_habil(d):
+    while not es_habil(d, comunidad):
         d += timedelta(days=1)
     return d
 
 
-def fin_de_plazo_meses(publicacion: date, meses: int) -> date:
+def fin_de_plazo_meses(publicacion: date, meses: int, comunidad: str | None = None) -> date:
     """Plazo en meses (art. 30.4): termina el mismo día de la publicación en el mes de vencimiento; si ese mes no
     tiene ese día, el último día del mes. Si el último día es inhábil, pasa al primer hábil siguiente (art. 30.5)."""
     import calendar
@@ -63,6 +88,14 @@ def fin_de_plazo_meses(publicacion: date, meses: int) -> date:
     total = publicacion.month - 1 + meses
     anio, mes = publicacion.year + total // 12, total % 12 + 1
     d = date(anio, mes, min(publicacion.day, calendar.monthrange(anio, mes)[1]))
-    while not es_habil(d):
+    while not es_habil(d, comunidad):
         d += timedelta(days=1)
     return d
+
+
+def etiqueta(publicacion: date, comunidad: str | None) -> str:
+    """Qué calendario se ha usado, para que la fecha se publique como estimada y diga por qué."""
+    if hay_festivos_de(publicacion.year, comunidad):
+        from motor.catalogo.territorio import COMUNIDADES
+        return f"festivos de {COMUNIDADES.get(comunidad, comunidad)} (BOE; sin los locales, estimado)"
+    return "festivos nacionales (estimado)"

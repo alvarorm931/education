@@ -236,3 +236,17 @@ def comunidad_de_fuentes(fuentes: tuple[str, ...] | list[str]) -> str | None:
     """Comunidad del boletín autonómico, para los procesos de ámbito autonómico."""
     cod = next((COMUNIDAD_DE_FUENTE[f] for f in fuentes if f in COMUNIDAD_DE_FUENTE), None)
     return COMUNIDADES[cod] if cod else None
+
+
+def comunidad_codigo(convocante: dict | None = None, siglas: str | None = None,
+                     boletines: tuple[str, ...] | list[str] = ()) -> str | None:
+    """Código INE de la comunidad para los festivos de un plazo: la del convocante (por su provincia), la del boletín
+    autonómico o la provincia del boletín provincial (por su nombre). None si no se sabe (se cuentan los nacionales)."""
+    if convocante and (p := provincia(convocante.get("provincia"))):
+        return p["comunidad_codigo"]
+    if siglas in COMUNIDAD_DE_FUENTE:
+        return COMUNIDAD_DE_FUENTE[siglas]
+    for b in boletines:
+        if (p := provincia_de_boletin(b)):
+            return p["comunidad_codigo"]
+    return None

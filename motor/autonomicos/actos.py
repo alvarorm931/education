@@ -22,6 +22,7 @@ from pathlib import Path
 from motor.autonomicos.comun import clasificar, convocante_de_organismo, escribir_jsonl, leer_jsonl
 from motor.boe.clasificar import normalizar
 from motor.boe.extraer import aplicar_plazas
+from motor.catalogo.territorio import comunidad_codigo
 from motor.extraccion.citas import citas, sedes
 from motor.extraccion.plazo import VERSION as VERSION_PLAZO, extraer_plazo
 
@@ -181,7 +182,7 @@ def construir_acto(fuente: str, x: dict, texto: str | None, recuento: int | None
         acto["pendiente"].append("texto")
         return acto
     if acto["tipo_acto"] in CON_PLAZO:
-        plazo = extraer_plazo(texto, x["fecha"], nombres)
+        plazo = extraer_plazo(texto, x["fecha"], nombres, comunidad_codigo(acto["convocante"], siglas, nombres))
         if plazo:
             acto["plazo"] = plazo
             acto["extraccion"] = VERSION_PLAZO

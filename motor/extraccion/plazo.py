@@ -33,9 +33,9 @@ from datetime import date, timedelta
 
 from motor.boe.clasificar import normalizar
 from motor.extraccion.texto_es import MESES, numero
-from motor.calendario import fin_de_plazo, fin_de_plazo_meses
+from motor.calendario import etiqueta, fin_de_plazo, fin_de_plazo_meses
 
-VERSION = "plazo_general_v2"
+VERSION = "plazo_general_v3"  # v3 (30/10/2026): festivos de la comunidad del convocante
 
 L = r"a-záéíóúñàèòïüç·"  # letras de castellano, catalán y gallego
 RE_FRASE = re.compile(r"(?<=[.;])\s+(?=[«(A-ZÁÉÍÓÚÑÀÈÒ0-9])")
@@ -163,11 +163,13 @@ def _boletines(f: str, desde: int = 0) -> list[str]:
     return list(dict.fromkeys(n for _, _, n in menciones))
 
 
-def extraer_plazo(texto: str, publicacion: str, boletin_propio: str | tuple[str, ...]) -> dict | None:
+def extraer_plazo(texto: str, publicacion: str, boletin_propio: str | tuple[str, ...],
+                  comunidad: str | None = None) -> dict | None:
     """Plazo de solicitudes del texto.
 
     publicacion: fecha ISO del boletín propio; boletin_propio: su nombre (o sus nombres: «Diari Oficial de la
-    Generalitat de Catalunya» y «Diario Oficial de la Generalitat de Cataluña» son el mismo).
+    Generalitat de Catalunya» y «Diario Oficial de la Generalitat de Cataluña» son el mismo); comunidad: código INE
+    de la comunidad del convocante, para contar con sus festivos.
     """
     pub = date.fromisoformat(publicacion)
     propios = {normalizar(b) for b in ((boletin_propio,) if isinstance(boletin_propio, str) else boletin_propio)}
@@ -227,9 +229,8 @@ def extraer_plazo(texto: str, publicacion: str, boletin_propio: str | tuple[str,
     else:
         return res
     if res["tipo"] == "meses":
-        fin = fin_de_plazo_meses(base, res["meses"])
+        fin = fin_de_plazo_meses(base, res["meses"], comunidad)
     else:
-        fin = fin_de_plazo(base, res["dias"], res["tipo"])
-    res.update({"fin_estimado": fin.isoformat(), "fin_exacto": False,
-                "calendario": "festivos nacionales (estimado)"})
+        fin = fin_de_plazo(base, res["dias"], res["tipo"], comunidad)
+    res.update({"fin_estimado": fin.isoformat(), "fin_exacto": False, "calendario": etiqueta(base, comunidad)})
     return res

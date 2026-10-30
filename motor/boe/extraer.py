@@ -28,7 +28,8 @@ from pathlib import Path
 
 from motor.boe.clasificar import REGLAS_ACTO, _primera, normalizar
 from motor.boe.texto import ruta_texto
-from motor.calendario import fin_de_plazo
+from motor.calendario import etiqueta, fin_de_plazo
+from motor.catalogo.territorio import comunidad_codigo
 from motor.catalogo.puestos import grupo, normalizar_puesto
 from motor.extraccion.plazas import extraer_plazas
 from motor.extraccion.plazo import VERSION as VERSION_PLAZO, extraer_plazo
@@ -140,8 +141,10 @@ def extraer_local(texto: str, fecha_boe: str) -> dict:
             plazo = {"dias": n, "tipo": tipo, "cuenta_desde": "BOE" if desde_boe else "otro", "cita": l}
             if n and desde_boe:
                 pub = date.fromisoformat(fecha_boe)
-                plazo["fin_estimado"] = fin_de_plazo(pub, n, tipo).isoformat()
-                plazo["calendario"] = "festivos nacionales (estimado)"
+                # Festivos de la comunidad del boletín provincial que publica las bases (anuncio local)
+                ccaa = comunidad_codigo(boletines=[x["boletin"] for x in res["boletines_citados"]])
+                plazo["fin_estimado"] = fin_de_plazo(pub, n, tipo, ccaa).isoformat()
+                plazo["calendario"] = etiqueta(pub, ccaa)
             res["plazo"] = plazo
 
     if not res["plazas"]:
