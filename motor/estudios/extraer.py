@@ -1045,7 +1045,7 @@ def main() -> None:
     if base is not None and a.orden == "lote":
         destino = base / (Path(a.muestra).stem + (f"_desde{a.desde}" if a.desde else ""))
     elif base is not None and a.orden == "retomar":
-        destino = base / ("retomado_" + Path(a.lote_json).parent.name)
+        destino = base / ("retomado_" + json.loads(Path(a.lote_json).read_text(encoding="utf-8"))["id"][-16:])
     if a.orden == "lote":
         res = lote(Path(a.muestra), destino, a.esperar_min, a.max_paginas, a.desde, a.hilos, a.max_minutos,
                    previas=huellas_previas([Path(x) for x in a.previas]) if a.previas else None)
