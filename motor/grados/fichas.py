@@ -110,7 +110,7 @@ def precio_web(f: dict) -> dict | None:
       2. el precio de los datos estructurados (schema.org «offers») si el texto no da otro importe por curso;
       3. los importes por curso del texto si no se separan más de MAX_RAZON_CURSO («desde» el menor) y no
          contradicen a los datos estructurados;
-      4. un único precio por crédito × 60.
+    Un único precio por crédito sin otra cifra que lo confirme no se publica (queda entre los candidatos).
     Si los datos estructurados y el texto no coinciden, no se publica precio (solo los candidatos)."""
     por_tipo: dict[str, set] = defaultdict(set)
     for i in f.get("importes") or []:
@@ -136,7 +136,9 @@ def precio_web(f: dict) -> dict | None:
         if len(cursos) > 1:
             nota = f"la página muestra {len(cursos)} importes por curso; se toma el menor («desde»)"
     elif not cursos and not ld_valor and len(creditos) == 1:
-        curso, metodo = round(creditos[0] * 60, 2), "credito_por_60"
+        # un precio por crédito suelto, sin otra cifra que lo confirme: no se publica. Medido el 30/10/2026: 2 de
+        # 7 eran otra cosa (350 € de una reserva leídos como crédito, 21.000 € al año en vez de unos 6.000)
+        nota = "solo un precio por crédito, sin otra cifra de la página que lo confirme: no se publica precio"
     elif ld_valor and cursos:
         nota = "los datos estructurados y el texto de la página dan importes distintos: no se publica precio"
     if not curso and not por_tipo and not ld_valor:

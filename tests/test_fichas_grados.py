@@ -131,7 +131,7 @@ def test_precio_web_resto_de_casos():
     p = precio_web({"url": "x", "importes": [_imp(9000.0, "curso"), _imp(9900.0, "curso")]})
     assert p["precio_curso"] == 9000.0 and "desde" in p["nota"]
     assert precio_web({"url": "x", "importes": [_imp(6000.0, "curso"), _imp(15000.0, "curso")]})["precio_curso"] is None
-    assert precio_web({"url": "x", "importes": [_imp(213.0, "credito")]})["precio_curso"] == 12780.0
+    assert precio_web({"url": "x", "importes": [_imp(213.0, "credito")]})["precio_curso"] is None  # crédito suelto
     assert precio_web({"url": "x", "importes": [_imp(1400.0, "mensual")]})["precio_curso"] is None
     assert precio_web({"url": "x", "importes": []}) is None
 
@@ -254,3 +254,8 @@ def test_fichas_proximas_de_altas_que_no_estan_en_el_catalogo():
     assert [x["codigo"] for x in xs] == ["2599999"]
     assert xs[0]["estado"] == "nuevo" and xs[0]["plan"]["comprobado"] and not xs[0]["indexable"]
     assert xs[0]["alta"]["url"].endswith("BOE-A-2")
+
+
+def test_precio_por_credito_suelto_no_se_publica():
+    p = fichas.precio_web({"url": "https://c.es/g", "importes": [{"valor": 350.0, "tipo": "credito", "verosimil": True}]})
+    assert p["precio_curso"] is None and p["importes"] == {"credito": [350.0]} and "no se publica" in p["nota"]
