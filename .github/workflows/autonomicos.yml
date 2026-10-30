@@ -50,7 +50,7 @@ jobs:
         env:
           CONECTORES: ${{ inputs.conectores || 'boja bocm bocyl dogv dog dogc boa doe boib borm boc bopv docm bome bopb bopalicante bopvalencia bopt bopciudadreal bopgranada bopsevilla bophuesca boptenerife bopcordoba bopcoruna boppontevedra bopavila bopbadajoz bopzamora boptoledo bopa bon bocant bor' }}
           # Solo responden desde España (sondas del 30/10/2026): van al servidor propio
-          ESPANA: "bopa bon bocant bor"
+          ESPANA: "bopa bon bocant bopburgos bor"
         run: |
           python - >> "$GITHUB_OUTPUT" <<'EOF'
           import json, os

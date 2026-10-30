@@ -230,7 +230,8 @@ provinciales:
   - provincia: Burgos
     url: http://bopbur.diputaciondeburgos.es/
     acceso_desde_github: "sin_respuesta_desde_github (timeout)"
-    estado: sin_conector
+    estado: conector_en_pruebas
+    conector: motor/provinciales/bopburgos.py
   - provincia: Cáceres
     url: https://bop.dip-caceres.es/bop/index.html
     acceso_desde_github: "ok"
