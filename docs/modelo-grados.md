@@ -3,6 +3,8 @@
 Versión 30/10/2026. Lo mantiene la conversación de grados. Todas las cifras salen de datos reales capturados el
 29 y el 30/10/2026 (originales en la rama `sondas`, carpeta indicada en cada caso); lo que no está medido se dice.
 Código en `motor/grados/`, pruebas en `tests/test_*grados*.py`, `tests/test_qedu.py`, flujo `grados.yml`.
+Desde el 30/10/2026 (02:47) `grados.yml` guarda los originales enteros en el almacén privado S3
+(`MOTOR_ORIGINALES=s3`, escritura única); en la rama pública queda solo su índice con la clave y la huella.
 
 ## 1. El universo: cuántos grados hay
 
