@@ -169,8 +169,10 @@ def procesar_dia(d: date, raiz: Path, archivo: Archivo) -> dict:
         # Página sin fecha: se guarda el original para poder estudiarla y no se da por buena
         captura = archivo.guardar(FUENTE, d, r.contenido, url, "html", r.status, r.cabeceras)
         informe["sha256"] = captura["sha256"]
-        if d.weekday() >= 5 and not s["disposiciones"]:
-            informe.update({"resultado": "sin_boletin", "nota": "fin de semana: página sin sumario"})
+        if not s["disposiciones"]:
+            # Sin fecha y sin sumario: no hubo diario ese día (fin de semana o festivo, como el 6 de enero o el
+            # 1 de noviembre). Antes contaba como error y, al repetirse seguidos, frenaba la carga histórica.
+            informe.update({"resultado": "sin_boletin", "nota": "página sin sumario"})
         else:
             informe["resultado"] = "error_formato"
             informe["alertas"].append(f"DOCM {d}: sumario sin fecha (posible cambio de formato)")

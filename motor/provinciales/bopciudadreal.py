@@ -128,7 +128,9 @@ def procesar_dia(d: date, raiz: Path, archivo: Archivo) -> dict:
     s = parsear_dia(r.contenido)
     if s["fecha"] != d.isoformat():
         # Sin boletín ese día el portal enseña otro (o la portada)
-        informe["resultado"] = "sin_boletin" if s["fecha"] or d.weekday() >= 5 else "error_formato"
+        # sin fecha ni anuncios en día laborable: festivo (6 de enero, 1 de noviembre...), no un cambio de formato
+        informe["resultado"] = ("sin_boletin" if s["fecha"] or d.weekday() >= 5 or not s.get("anuncios")
+                                else "error_formato")
         if informe["resultado"] == "error_formato":
             informe["alertas"].append(f"BOP Ciudad Real {d}: página sin fecha (posible cambio de formato)")
         return informe
