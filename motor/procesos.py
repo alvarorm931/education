@@ -356,15 +356,43 @@ def clave_convocante(x: dict) -> list[str]:
     return claves
 
 
-def construir_y_unir(actos: list[dict], hoy: date, autonomicos: list[dict] | None = None) -> tuple[list[dict], dict, list[dict]]:
-    """Procesos con sus actos posteriores unidos (motor/union.py). Devuelve (procesos, recuento, huérfanos)."""
+RE_NOMBRAMIENTO_2A = re.compile(
+    r"(?:nombra\w*|nombramiento).{0,120}(?:funcionari\w* de carrera|personal estatutario fijo|personal laboral fijo|"
+    r"proceso selectivo|pruebas selectivas)|(?:funcionari\w* de carrera|personal estatutario fijo).{0,80}nombra\w*")
+
+
+def leer_nombramientos_boe(raiz: Path) -> list[dict]:
+    """Nombramientos de la sección II.A del BOE que cierran un proceso selectivo («se nombra personal funcionario de
+    carrera del Cuerpo…»). Se leen de los sumarios ya guardados; el título va sin nombres de personas."""
+    from motor.boe.clasificar import ambito
+    from motor.limpieza import titulo_sin_nombres
+    out = []
+    for f in sorted((raiz / "datos" / "boe" / "sumarios").glob("*/*/*.jsonl")):
+        for l in f.read_text(encoding="utf-8").splitlines():
+            if '"2A"' not in l:
+                continue
+            x = json.loads(l)
+            if x.get("seccion_codigo") != "2A" or not RE_NOMBRAMIENTO_2A.search(normalizar(x.get("titulo") or "")):
+                continue
+            out.append({"id": x["identificador"] if "identificador" in x else x.get("id"), "fecha": x["fecha"],
+                        "fuente": "BOE", "titulo": titulo_sin_nombres(x.get("titulo") or ""),
+                        "departamento": x.get("departamento"), "ambito": ambito(x.get("departamento")),
+                        "tipo_acto": "nombramiento", "alcance": "acceso", "convocante": None,
+                        "url": x.get("url_html") or x.get("url")})
+    return [x for x in out if x["id"]]
+
+
+def construir_y_unir(actos: list[dict], hoy: date, autonomicos: list[dict] | None = None,
+                     extra: list[dict] | None = None) -> tuple[list[dict], dict, list[dict]]:
+    """Procesos con sus actos posteriores unidos (motor/union.py). Devuelve (procesos, recuento, huérfanos).
+    extra: actos que no crean procesos y solo se unen (nombramientos de la sección II.A del BOE)."""
     from motor.union import fase_y_estado, unir
     autonomicos = autonomicos or []
     procesos = construir(actos, hoy, autonomicos)
     por_id = {a["id"]: a for a in actos}
     por_id.update({x["id"]: x for x in autonomicos})
     origenes = {p["id"]: por_id.get(p["actos"][0]["id"]) for p in procesos if p.get("actos")}
-    recuento, huerfanos = unir(procesos, origenes, actos + autonomicos, clave_convocante)
+    recuento, huerfanos = unir(procesos, origenes, actos + autonomicos + (extra or []), clave_convocante)
     for p in procesos:
         fase_y_estado(p, hoy)
     return procesos, dict(recuento), huerfanos
@@ -407,7 +435,8 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--salida", type=Path, default=Path("."))
     p.add_argument("--hoy", type=date.fromisoformat, default=datetime.now(MADRID).date())
     a = p.parse_args(argv)
-    procesos, uniones, huerfanos = construir_y_unir(leer_actos(a.salida), a.hoy, leer_actos_autonomicos(a.salida))
+    procesos, uniones, huerfanos = construir_y_unir(leer_actos(a.salida), a.hoy, leer_actos_autonomicos(a.salida),
+                                                    leer_nombramientos_boe(a.salida))
     destino = a.salida / "datos" / "oposiciones"
     destino.mkdir(parents=True, exist_ok=True)
     (destino / "procesos.jsonl").write_text("".join(json.dumps(x, ensure_ascii=False) + "\n" for x in procesos),
