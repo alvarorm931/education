@@ -51,7 +51,9 @@ def es_tipo_oficial(tipo: str) -> bool:
 TERMINACIONES = [("itzacio", "izacion"), ("acio", "acion"), ("ecio", "ecion"), ("icio", "icion"), ("ccio", "ccion"),
                  ("sio", "sion"), ("itat", "idad"), ("tat", "dad"), ("encia", "encia"), ("ncia", "ncia"),
                  ("cions", "ciones"), ("cion", "cion"), ("ions", "iones"), ("ais", "ales"), ("ns", "nes")]
-CODIGO = __import__("re").compile(r"^[a-z]?\d+[a-z0-9]*$|^m[0-9a-z]{3,5}$")
+# códigos de título que no cuentan como palabras («M2503», «3500004», «mu45»): con alguna cifra. Sin cifras son
+# palabras de verdad («moda», «minas», «museos», «mundus»: «Gestión de la Moda» no es «Gestión de Museos»)
+CODIGO = __import__("re").compile(r"^[a-z]?\d+[a-z0-9]*$|^m(?=[0-9a-z]*\d)[0-9a-z]{3,5}$")
 
 
 def raiz(w: str) -> str:
@@ -168,6 +170,13 @@ def componer(paginas_master: list[dict], hechos: dict[str, list[dict]]) -> dict:
     return {"campos": campos, "fuentes": fuentes, "campos_con_valores_distintos": sorted(set(distintos))}
 
 
+# «Máster», «Màster», «Masters», «MBA»; no «Scrum Master», «Mastering», «MasterClass», «Masterchef», «Master Plan»
+RE_ES_MASTER = __import__("re").compile(r"(?i)(?<!scrum )(?<!scrum-)\bm[aàá]ster(?:es|s)?\b(?!\s*(?:class|chef|plan|card)\b)|\bmba\b")
+# noticias, agendas y planes antiguos: no son la ficha vigente del máster aunque lleven su nombre
+URL_NO_VIGENTE = __import__("re").compile(r"(?i)/20\d\d/\d{1,2}/\d{1,2}/|/(noticias?|news|actualidad|agenda|eventos?|"
+                                           r"blog|prensa|plansanteriors|planes?-anteriores?|historico|extinguid)")
+
+
 def rescatar_oficiales(paginas: dict[str, dict], hechos: dict[str, list[dict]], cat: dict[str, dict],
                        censo: dict[str, dict]) -> dict[str, tuple[str, float]]:
     """URL → (código RUCT, cobertura) de las páginas extraídas como no oficiales o títulos propios que son, por su
@@ -192,7 +201,8 @@ def rescatar_oficiales(paginas: dict[str, dict], hechos: dict[str, list[dict]], 
 
     salida = {}
     for url, p in paginas.items():
-        if p.get("grupo") == "oficial" or p.get("pagina") == "subpagina" or p.get("no_es_programa"):
+        if p.get("grupo") == "oficial" or p.get("pagina") == "subpagina" or p.get("no_es_programa") \
+                or URL_NO_VIGENTE.search(url):
             continue
         hs = {h["campo"]: h["valor"] for h in hechos.get(url, [])}
         nombre, tipo = str(hs.get("nombre") or ""), str(hs.get("tipo_titulo") or "").lower()
@@ -375,7 +385,7 @@ def ejecutar(extracciones: list[Path], salida: Path, catalogo: Path | None = Non
         ficha["programa"] = "prog-" + hashlib.sha256(
             f"{p.get('proveedor')}|{' '.join(sorted(palabras_texto(nombre)))}|{tipo.lower()}".encode()).hexdigest()[:12] \
             if nombre else None
-        ficha["es_master"] = bool(re.search(r"(?i)m[aá]ster|\bmba\b", f"{tipo} {nombre}")) or \
+        ficha["es_master"] = bool(RE_ES_MASTER.search(f"{tipo} {nombre}")) or \
             (not nombre and bool(re.search(r"(?i)m[aá]ster|\bmba\b", p["url"])))
         res["no_oficial_ficha"] += 1
         programas.add(ficha["programa"]) if ficha["programa"] else None

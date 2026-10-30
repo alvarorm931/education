@@ -149,3 +149,18 @@ def test_nombre_en_catalan_y_master_mas_ajustado():
     assert f.comprobar_nombre("Máster Universitario en Filosofía Analítica por la U", "Filosofía Analítica - M2503")[0] == "confirmado"
     assert f.ajuste("Máster Universitario en Derecho Penal Económico por la U", "Máster en Derecho Penal Económico") > \
         f.ajuste("Máster Universitario en Derecho Penal por la U", "Máster en Derecho Penal Económico")
+
+
+def test_palabras_que_empiezan_por_m_no_son_codigos():
+    from motor.estudios import fichas_masters as fm
+    assert fm.comprobar_nombre("Máster Universitario en Gestión de la Moda", "Máster en Gestión de Museos")[0] != "confirmado"
+    assert fm.comprobar_nombre("Máster Universitario en Ingeniería de Minas", "Máster en Ingeniería de Montes")[0] != "confirmado"
+    assert fm.comprobar_nombre("Máster Universitario en Finanzas", "Máster en Finanzas - M2503")[0] == "confirmado"
+
+
+def test_es_master_con_limite_de_palabra():
+    from motor.estudios import fichas_masters as fm
+    for no in ("Curso de Scrum Master", "Mastering Excel", "MasterClass de cocina", "Masterchef Junior"):
+        assert not fm.RE_ES_MASTER.search(no), no
+    for si in ("Máster en Finanzas", "Màster en Dret", "Masters in Management", "Executive MBA"):
+        assert fm.RE_ES_MASTER.search(si), si

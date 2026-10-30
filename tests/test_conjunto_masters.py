@@ -33,7 +33,9 @@ def _escribir(tmp_path):
                               "despliegue": {"1": 6.0}, "asignaturas": [],
                               "evaluacion": [{"sistema": "Examen:", "ponderacion_min": 50.0, "ponderacion_max": 70.0}],
                               "actividades": [{"actividad": "Clases", "horas": 45, "presencialidad": 100.0},
-                                              {"actividad": "Estudio", "horas": 105, "presencialidad": 0.0}]}]}]}}
+                                              {"actividad": "Estudio", "horas": 105, "presencialidad": 0.0}]},
+                             {"nombre": "Valoración de Empresas", "caracter": "Obligatoria", "ects": 6.0},
+                             {"nombre": "Mercados Financieros", "caracter": "Obligatoria", "ects": 6.0}]}]}}
     (r / "4310193.json").write_text(json.dumps(ficha))
     (r / "resumen-memoria-1.json").write_text("{}")
     q = tmp_path / "qedu"
@@ -57,7 +59,7 @@ def _escribir(tmp_path):
                    {"url": "https://esc.es/m", "extraido": "2026-10-30T03:00:00+00:00", "pagina": "principal"},
                    {"url": "https://esc.es/tarifas.pdf", "extraido": "2026-10-30T04:00:00+00:00", "pagina": "documento", "curso": "2026-2027"}],
                "campos": {"nombre": {"valor": "Máster en Marketing", "fuente": 0},
-                          "asignaturas": {"valor": "Marketing digital; Analítica", "fuente": 0},
+                          "asignaturas": {"valor": "Marketing digital; Analítica; Comercio electrónico", "fuente": 0},
                           "precio_total": {"valor": 9800, "fuente": 1},
                           "fecha_inicio": {"valor": "octubre de 2022", "fuente": 0}}}]
     (tmp_path / "fichas.jsonl").write_text("".join(json.dumps(f) + "\n" for f in fichas))
@@ -140,7 +142,10 @@ def test_asignaturas_del_boe_si_no_hay_memoria(tmp_path):
     (b / "boe_planes_masters.jsonl").write_text(json.dumps({
         "identificador": "BOE-A-2011-1220", "codigos_ruct": ["4310193"], "url": "https://www.boe.es/x",
         "fecha_publicacion": "20110122", "capturado": "2026-10-30T13:00:00+00:00",
-        "planes": [{"comprobacion": "completo", "filas_plan": [{"nombre": "Finanzas", "tipo": "obligatoria", "creditos": 6}]}]}) + "\n")
+        "planes": [{"comprobacion": "completo", "filas_plan": [{"nombre": "Finanzas", "tipo": "obligatoria", "creditos": 6},
+                                                              {"nombre": "Contabilidad", "tipo": "obligatoria", "creditos": 6},
+                                                              {"nombre": "Fiscalidad", "tipo": "optativa", "creditos": 6},
+                                                              {"nombre": "1", "tipo": "optativa", "creditos": 6}]}]}) + "\n")
     cm.ejecutar(t / "cat.json", t / "out", ruct=[t / "ruct"], qedu=[t / "qedu"], fichas=t / "fichas.jsonl",
                 fecha_catalogo="2026-10-29", boe=[b])
     c = _leer(t / "out" / "masters_oficiales.jsonl.gz")[0]["campos"]
@@ -165,3 +170,106 @@ def test_evaluacion_de_las_guias_si_la_memoria_no_la_pondera(tmp_path):
     c = _leer(t / "out" / "masters_oficiales.jsonl.gz")[0]["campos"]
     assert c["evaluacion"]["fuente"] == "guia" and c["evaluacion"]["valor"]["sistemas"][0]["sistema"] == "Examen"
     assert c["evaluacion_por_asignatura"]["valor"][0]["sistemas"][1] == {"sistema": "Trabajos", "min": 40, "max": 40}
+
+
+def test_privacidad_en_listas_lineas_partidas_y_cargos():
+    assert cm.seguro("Coordinación: Ana Ruiz Gil") is None and cm.seguro("A cargo de Juan Pérez") is None
+    assert cm.seguro("Dr. Pérez imparte la asignatura") is None and cm.seguro("Dra. M. López") is None
+    assert cm.seguro("Prof. Titular de Universidad") == "Prof. Titular de Universidad"
+    assert cm.seguro("Coordinador Académico") == "Coordinador Académico"
+    assert cm.seguro("El máster lo coordina el\nDr.\nPérez y otros\nPlazas: 30") == "El máster lo coordina el\nPlazas: 30"
+    assert cm.seguro("Escribe a master.juan@ucm.es") == "Escribe a [correo]"
+    assert cm.seguro("Escribe a master.biologia@ucm.es") == "Escribe a master.biologia@ucm.es"
+    assert cm.seguro_valor([["Dr. Gómez", 3], ["Álgebra", 6]]) == [["Álgebra", 6]]
+    assert cm.seguro_valor([{"sistema": "Examen", "min": 50}, {"sistema": "Profesora Ana Ruiz", "min": 50}]) == \
+        [{"sistema": "Examen", "min": 50}]
+
+
+def test_asignaturas_validas_y_precios_imposibles():
+    assert cm.asignaturas_validas([["No se indica", None], ["TFM", 12], ["Prácticas externas", 6]]) is None
+    assert cm.asignaturas_validas(["Obligatorias (OB)", "Optativas (OP)", "Prácticas Académicas Externas", "Módulo I"]) is None
+    # módulos con nombre de contenido sí cuentan (así presentan su plan muchos títulos propios)
+    assert cm.asignaturas_validas(["Módulo 1. Fundamentos de ecografía", "Módulo 2. Ecografía abdominal",
+                                   "Módulo de Robótica", "MÓDULO 7. PROYECTO FIN DE MASTER"])
+    assert not cm.es_asignatura_real("Módulo común (conocimientos teóricos)") and cm.es_asignatura_real("Optativa: Marketing")
+    assert cm.asignaturas_validas("Álgebra; Cálculo; Estadística") == ["Álgebra", "Cálculo", "Estadística"]
+    assert cm.asignaturas_validas([["Álgebra", 6], ["1", 6], ["Cálculo", 6], ["Estadística", 6]]) == \
+        [["Álgebra", 6], ["Cálculo", 6], ["Estadística", 6]]
+    f = {"fuentes": [{"url": "https://u.es/m", "extraido": "2026-10-30T00:00:00+00:00"},
+                     {"url": "https://u.es/t.pdf", "pagina": "documento", "curso": "2022-2023"}],
+         "campos": {"precio_total": {"valor": 45, "fuente": 0}, "precio_credito": {"valor": 45, "fuente": 0},
+                    "reserva_matricula": {"valor": 300, "fuente": 1}}}
+    w = cm.campos_web(f)
+    assert "precio_total" not in w and w["precio_credito"]["valor"] == 45 and w["reserva_matricula"]["antiguo"]
+    # un total de la web que no cabe con el precio oficial del crédito: manda el calculado
+    c = {"precio_credito": cm.campo(30.0, "qedu", None, None), "creditos_ects": cm.campo(60, "ruct", None, None),
+         "precio_total": cm.campo(18000, "web", "https://u.es/m", None)}
+    cm.poner_precio_calculado(c)
+    assert c["precio_total"]["fuente"] == "calculado" and c["precio_total"]["valor"] == 1800
+    assert c["precio_total"]["alternativas"][0]["valor"] == 18000 and "primera matrícula" in c["precio_total"]["nota"]
+    c = {"precio_credito": cm.campo(150.0, "web", None, None), "creditos_ects": cm.campo(60, "ruct", None, None)}
+    cm.poner_precio_calculado(c)
+    assert c["precio_total"]["base"] == "web" and "primera matrícula" not in c["precio_total"]["nota"]
+    assert cm.datos_minimos({"asignaturas": 1, "precio_total": {"valor": 9000, "antiguo": True}}) == ["precio"]
+
+
+def test_web_de_otra_universidad_fuera():
+    dominios = {"us.es": {"001"}, "uco.es": {"002"}}
+    web = {"comprobacion_nombre": "confirmado", "paginas": ["https://www.uco.es/m"],
+           "campos": {"universidad_que_expide": {"valor": "Universidad de Córdoba"}}}
+    claves = {cm.clave_universidad(x) for x in ("Sevilla", "Córdoba")}
+    assert cm.filtrar_web(web, {"001"}, dominios, cm.clave_universidad("Sevilla"), claves)[2] == "web_expide_otra_universidad"
+    web["campos"] = {}
+    assert cm.filtrar_web(web, {"001"}, dominios, "sevilla", claves)[2] == "web_en_dominio_de_otra_universidad"
+    assert cm.filtrar_web(web, {"001", "002"}, dominios, "sevilla", claves)[0] is web  # interuniversitario
+    probable = {"comprobacion_nombre": "probable_oficial", "paginas": ["https://www.escuela.com/m"], "campos": {}}
+    assert cm.filtrar_web(probable, {"001"}, dominios, "sevilla", claves)[2] == "web_probable_fuera_de_su_universidad"
+    assert cm.universidades_del_nombre("Máster Universitario en X por la Universidad de A Coruña y la Universidad "
+                                       "de Vigo") == ["a coruna", "vigo"]
+
+
+def test_no_oficiales_filtrados_unidos_y_con_id_estable():
+    def f(clave, prog, url, nombre, **campos):
+        return {"clave": clave, "programa": prog, "url": url, "dominio": "esc.es", "es_master": True,
+                "fuentes": [{"url": url, "extraido": "2026-10-30T00:00:00+00:00"}],
+                "campos": {"nombre": {"valor": nombre, "fuente": 0}, **{k: {"valor": v, "fuente": 0} for k, v in campos.items()}}}
+    web = [f("u1", "p1", "https://esc.es/es/master-marketing", "Máster en Marketing", precio_total=9000),
+           f("u2", "p2", "https://esc.es/en/master-marketing", "Máster en Marketing"),
+           f("u3", "p3", "https://esc.es/mx/master-x", "Máster en X"),
+           f("u4", "p4", "https://esc.es/m-y", "Máster en Y", sedes=["Bogotá"]),
+           f("u5", "p5", "https://esc.es/blog/mejores-masters", "Máster en Z"),
+           f("u6", "p6", "https://esc.es/mu", "Máster Universitario en Derecho"),
+           f("u7", "p7", "https://esc.es/mp", "Máster de Formación Permanente en Derecho", sedes=["Madrid", "Bogotá"])]
+    prev = {"p2": {"id": "p2"}}
+    out = cm.programas_no_oficiales(web, prev)
+    assert [r["id"] for r in out] == ["p2", "p7"]
+    assert out[0]["campos"]["precio_total"]["valor"] == 9000 and out[0]["otras_paginas"]
+    assert cm.DESCARTES["no_oficial_otro_pais"] == 2 and cm.DESCARTES["no_oficial_parece_master_oficial"] == 1
+
+
+def test_modalidad_de_qedu_y_boe_solo_cuadra_si_completo():
+    assert cm.MODALIDAD_QEDU["2"] == "semipresencial o a distancia" and cm.MODALIDAD_QEDU["4"] == "varias modalidades"
+    plan = {"comprobacion": "basicas_y_obligatorias", "fecha_publicacion": "20200101",
+            "filas_plan": [{"nombre": n, "tipo": "obligatoria", "creditos": 6} for n in ("Álgebra", "Cálculo", "Física", "x")]}
+    a = cm.campos_boe(plan)["asignaturas"]
+    assert "cuadran las básicas y obligatorias" in a["nota"] and len(a["valor"]) == 3
+
+
+def test_guias_con_pesos_que_no_suman_fuera():
+    g = {"url": "u", "asignatura": "A", "extraido": "2026", "evaluacion": [{"sistema": "Examen", "min": 70, "max": 70},
+                                                                         {"sistema": "Trabajo", "min": 50, "max": 50}]}
+    assert cm.campos_guias([g]) == {}
+    g["evaluacion"][1] = {"sistema": "Trabajo", "min": 30, "max": 30}
+    assert cm.campos_guias([g])["evaluacion"]["valor"]["sistemas"][0]["sistema"] == "Examen"
+
+
+def test_alta_del_boe_con_su_fuente_y_su_fecha_de_captura(tmp_path):
+    t = _escribir(tmp_path)
+    (t / "altas.jsonl").write_text(json.dumps({"codigo_ruct": "4319999", "nombre": "Máster Universitario en Bolsa",
+                                               "universidad": "Universidad de Murcia", "boe": "BOE-A-2026-1",
+                                               "fecha": "2026-01-15"}) + "\n")
+    cm.ejecutar(t / "cat.json", t / "out", altas=t / "altas.jsonl", fichas=t / "fichas.jsonl", fecha_catalogo="2026-10-29")
+    o = next(r for r in _leer(t / "out" / "masters_oficiales.jsonl.gz") if r["codigo_ruct"] == "4319999")
+    c = o["campos"]["tipo_titulo"]
+    assert c["fuente"] == "boe" and c["url"].endswith("BOE-A-2026-1") and c["capturado"] == "2026-10-29"
+    assert o["comunidad"] == "Región de Murcia" and o["universidad_tipo"] == "Pública"  # universidad por su clave

@@ -48,3 +48,23 @@ def test_union_por_nombre_y_universidad_solo_si_es_unica():
             "Universidad de Extremadura, por la que se publica el plan de estudios de Máster Universitario en Comercio Internacional."},
            {"identificador": "BOE-A-2025-2", "tipo": "otro", "titulo": "Convenio con la Universidad de Murcia"}]
     assert bp.ids_por_nombre(res, cat) == {"BOE-A-2025-1": ["1"]}
+
+
+def test_union_por_nombre_universidad_exacta_traduccion_y_fecha():
+    cat = [{"codigo_ruct": "4310001", "nombre_oficial": "Máster Universitario en Química por la Universidad de Barcelona",
+            "universidad": "Barcelona", "situacion": "Activo"},
+           {"codigo_ruct": "4316002", "nombre_oficial": "Máster Universitario en Gestión de Talento / Master in Talent "
+            "Management por la Universidad Pontificia Comillas", "universidad": "Pontificia Comillas", "situacion": "Activo"},
+           {"codigo_ruct": "3500003", "nombre_oficial": "Máster Universitario en Física por la Universitat de València",
+            "universidad": "València (Estudi General)", "situacion": "Activo"}]
+    t = "Resolución de 1 de marzo, de la {}, por la que se publica el plan de estudios de {}."
+    res = [{"identificador": "BOE-A-2010-1", "tipo": "plan", "titulo": t.format("Universidad Autónoma de Barcelona", "Máster en Química")},
+           {"identificador": "BOE-A-2010-2", "tipo": "plan", "titulo": t.format("Universidad de Barcelona", "Máster en Química")},
+           {"identificador": "BOE-A-2017-3", "tipo": "plan", "titulo": t.format("Universidad Pontificia Comillas",
+                                                                               "Máster en Gestión de Talento/Talent Management")},
+           # el plan de 2012 es de un código anterior: los 35xxxxx no existían
+           {"identificador": "BOE-A-2012-4", "tipo": "plan", "titulo": t.format("Universitat de València", "Máster en Física")},
+           {"identificador": "BOE-A-2023-5", "tipo": "plan_modif", "titulo": t.format("Universitat de València", "Máster en Física")},
+           {"identificador": "BOE-A-2023-6", "tipo": "plan", "titulo": "Resolución de 2 de mayo, de la Universitat de València, "
+            "por la que se corrigen errores en la de 1 de marzo, por la que se publica el plan de estudios de Máster en Física."}]
+    assert bp.ids_por_nombre(res, cat) == {"BOE-A-2010-2": ["4310001"], "BOE-A-2017-3": ["4316002"], "BOE-A-2023-5": ["3500003"]}

@@ -70,6 +70,18 @@ ESQUEMA = {
         "metodologia": {"type": "array", "items": {"type": "string"}},
     },
 }
+RE_PORCENTAJE = re.compile(r"(?<![\d.,])(\d{1,3}(?:[.,]\d{1,2})?)\s*(?:%|por\s*ciento|percent)", re.I)
+RE_RANGO_PORCENTAJE = re.compile(r"(?<![\d.,])(\d{1,3}(?:[.,]\d{1,2})?)\s*(?:%\s*)?(?:-|–|a|y|al)\s*\d{1,3}(?:[.,]\d{1,2})?\s*(?:%|por\s*ciento)", re.I)
+
+
+def porcentaje_en_cita(v: float, cita: str) -> bool:
+    """El peso sale de la cita como porcentaje («40 %», «40%», «40 por ciento», o el primero de «30-50 %»): «test
+    de 40 preguntas: 60 %» da 60, no 40; «mínimo 5 sobre 10» no da nada."""
+    nums = [float(x.replace(",", ".")) for x in RE_PORCENTAJE.findall(cita or "")]
+    nums += [float(x.replace(",", ".")) for x in RE_RANGO_PORCENTAJE.findall(cita or "")]
+    return any(abs(v - n) < 0.005 for n in nums)
+
+
 RE_PESO = re.compile(r"^\s*(\d{1,3}(?:[.,]\d+)?)\s*%?\s*(?:[-–a]\s*(\d{1,3}(?:[.,]\d+)?)\s*%?)?\s*$")
 
 
@@ -209,7 +221,7 @@ def verificar(datos: dict, texto: str) -> dict:
         if nivel is None:
             cuentas["cita_no_literal"] += 1
             continue
-        if a is None or not all(extraer.numero_en_cita(v, cita) for v in {a, b}):
+        if a is None or not all(porcentaje_en_cita(v, cita) for v in {a, b}):
             cuentas["peso_no_en_cita"] += 1
             continue
         sistemas.append({"sistema": str(x.get("sistema") or "")[:160], "min": a, "max": b, "cita_nivel": nivel,

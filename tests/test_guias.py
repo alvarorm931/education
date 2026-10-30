@@ -36,3 +36,10 @@ def test_verificar_solo_lo_citado():
 def test_ruta_con_puntos_se_normaliza():
     out = g.enlaces_de_guia('<a href="/content/../master/guiadocent/pdf/esp/1/x.pdf">Guía docente</a>', "https://www.upc.edu/m")
     assert out == ["https://www.upc.edu/master/guiadocent/pdf/esp/1/x.pdf"]
+
+
+def test_el_peso_tiene_que_ser_un_porcentaje_de_la_cita():
+    assert g.porcentaje_en_cita(60, "Test de 40 preguntas: 60 %") and not g.porcentaje_en_cita(40, "Test de 40 preguntas: 60 %")
+    assert not g.porcentaje_en_cita(10, "Nota mínima 5 sobre 10") and not g.porcentaje_en_cita(2, "Examen de 2 horas, 50 %")
+    assert g.porcentaje_en_cita(30, "Trabajos: 30-50 %") and g.porcentaje_en_cita(50, "Trabajos: 30-50 %")
+    assert g.porcentaje_en_cita(40, "un 40 por ciento de la nota")

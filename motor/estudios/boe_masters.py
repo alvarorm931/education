@@ -185,7 +185,7 @@ def ejecutar(sumarios: Path, salida: Path, textos: Path | None) -> dict:
             doc = json.loads(ruta.read_text(encoding="utf-8"))
             if a["tipo"] == "oficialidad":
                 for x in altas(doc.get("texto", "")):
-                    altas_todas.append({**x, "boe": a["identificador"], "fecha": a["fecha"]})
+                    altas_todas.append({**x, "boe": a["identificador"], "fecha": a["fecha"], "capturado": doc.get("capturado")})
             else:
                 asig = asignaturas(doc.get("tablas", []))
                 planes.append({"identificador": a["identificador"], "tipo": a["tipo"], "asignaturas": asig})

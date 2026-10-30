@@ -42,36 +42,74 @@ RE_PLAN = re.compile(r"(?i)de la (?P<uni>Universi[dt]a[dt]\b.+?|Universidade\b.+
                      r".*?plan(?:es)? de estudios? (?:de|del) (?:t[íi]tulo (?:oficial )?de )?(?P<nombre>M[áa]ster\b.+?)\.?\s*$")
 
 
+# Nombres cortos o en otra lengua con que el BOE llama a universidades del catálogo (clave ya normalizada → clave del
+# catálogo); medidos en los títulos de 2008-2026 que no casaban con ninguna universidad
+ALIAS_UNI = {"pais vasco": "euskal herriko pais vasco", "euskal herriko pais vasco unibertsitatea": "euskal herriko pais vasco",
+             "valencia": "estudi general valencia", "jaume": "castellon jaume", "carlos iii": "carlos iii madrid",
+             "hernandez miguel": "elche hernandez miguel", "cataluna internacional": "catalunya internacional",
+             "vic": "catalunya central vic", "diseno": "diseno innovacion tecnologia"}
+
+
 def _clave_uni(s: str) -> str:
+    """Clave exacta de universidad: sin «Universidad de», artículos ni paréntesis, palabras ordenadas («CEU Cardenal
+    Herrera» = «Cardenal Herrera-CEU») y los alias del BOE. «Autónoma de Barcelona» y «Barcelona» siguen distintas."""
     import unicodedata
 
     s = unicodedata.normalize("NFKD", (s or "").lower())
     s = "".join(c for c in s if not unicodedata.combining(c))
-    s = re.sub(r"\b(universidad|universitat|universidade|unibertsitatea|de|del|la|las|los|d|l|i|y|e)\b", " ", s)
-    return " ".join(re.findall(r"[a-z0-9]+", s))
+    s = re.sub(r"\([^)]*\)", " ", s)
+    s = re.sub(r"\b(universidad|universitat|universidade|unibertsitatea|de|del|la|las|los|les|el|els|d|l|i|y|e)\b", " ", s)
+    k = " ".join(sorted(set(re.findall(r"[a-z0-9]+", s))))
+    return ALIAS_UNI.get(k, k)
+
+
+def _nucleo(nombre: str) -> set[str]:
+    """Raíces del nombre sin «Máster (Universitario) en» ni «por la Universidad …» (ni el código del título)."""
+    from motor.estudios.fichas_masters import palabras_nombre, raices
+
+    n = re.split(r"(?i)\s+por\s+(?:la|las|el|los)\s+", nombre or "")[0]
+    n = re.sub(r"\([^)]*\)", " ", n.split("/")[0])  # sin la traducción tras «/» ni las siglas entre paréntesis
+    return raices(palabras_nombre(n))
+
+
+# Primer año en que se pudo publicar el plan de un código: los 35xxxxx son del RD 822/2021 (desde 2022); los
+# 43xxxxx se numeraron en orden desde 2008 (primeras cifras del RUCT, medidas en las fichas del 29-30/10/2026,
+# redondeadas a la baja para no descartar nada posible)
+AÑO_MINIMO = {"35": 2022, "4310": 2008, "4311": 2009, "4312": 2009, "4313": 2010, "4314": 2012, "4315": 2014,
+              "4316": 2015, "4317": 2017, "4318": 2019}
+
+
+def año_minimo(codigo: str) -> int:
+    for pref in sorted(AÑO_MINIMO, key=len, reverse=True):
+        if codigo.startswith(pref):
+            return AÑO_MINIMO[pref]
+    return 2008
 
 
 def ids_por_nombre(resoluciones: list[dict], catalogo: list[dict]) -> dict[str, list[str]]:
-    """Planes y modificaciones de plan del BOE (2022-2026) unidos al código por universidad y nombre: solo si un
-    único máster activo de esa universidad tiene ese nombre confirmado (fichas_masters.comprobar_nombre)."""
-    from motor.estudios.fichas_masters import comprobar_nombre
-
+    """Planes y modificaciones de plan del BOE unidos al código por universidad y nombre: la misma universidad
+    (clave exacta: «Autónoma de Barcelona» no es «Barcelona»), el mismo nombre (las mismas raíces, sin «Máster
+    Universitario en» ni «por la Universidad …») y un único máster activo que encaje; nunca un plan publicado
+    antes de que el código pudiera existir. Las correcciones de errores no cuentan."""
     por_uni: dict[str, list[dict]] = {}
     for t in catalogo:
         if t.get("situacion") == "Activo":
             por_uni.setdefault(_clave_uni(t.get("universidad")), []).append(t)
+    nucleos = {t["codigo_ruct"]: _nucleo(t.get("nombre_oficial") or "") for ts in por_uni.values() for t in ts}
     out: dict[str, list[str]] = {}
     for r in resoluciones:
-        if r.get("tipo") not in ("plan", "plan_modif"):
+        titulo = r.get("titulo") or ""
+        if r.get("tipo") not in ("plan", "plan_modif") or re.search(r"(?i)corrig|correcci[oó]n de errores|errata", titulo):
             continue
-        m = RE_PLAN.search(r.get("titulo") or "")
+        m = RE_PLAN.search(titulo)
         if not m:
             continue
-        cu = _clave_uni(m.group("uni"))
-        candidatos = [t for k, ts in por_uni.items() if k and (k == cu or k in cu or cu in k) for t in ts]
-        buenos = [t for t in candidatos if comprobar_nombre(t["nombre_oficial"], m.group("nombre"))[0] == "confirmado"
-                  and comprobar_nombre(m.group("nombre"), t["nombre_oficial"])[0] == "confirmado"]
-        if len(buenos) == 1:
+        nb = _nucleo(m.group("nombre"))
+        if not nb:
+            continue
+        año = int(re.search(r"BOE-A-(\d{4})-", r["identificador"]).group(1)) if re.search(r"BOE-A-(\d{4})-", r["identificador"]) else 0
+        buenos = [t for t in por_uni.get(_clave_uni(m.group("uni")), []) if nucleos[t["codigo_ruct"]] == nb]
+        if len(buenos) == 1 and año >= año_minimo(buenos[0]["codigo_ruct"]):
             out.setdefault(r["identificador"], []).append(buenos[0]["codigo_ruct"])
     return out
 

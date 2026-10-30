@@ -517,3 +517,45 @@ def test_lista_qedu_vuelve_a_etiquetar_la_pagina_ya_extraida(tmp_path):
     x = js.loads((tmp_path / "o" / "asignadas_por_qedu" / "paginas_extraidas.jsonl").read_text())
     assert res["paginas_asignadas_por_qedu"] == 1 and x["grupo"] == "oficial" and x["codigos_ruct"] == ["7"]
     assert x["extraido"] == "2026-10-30T02:00:00+00:00"  # misma fecha: sus hechos siguen valiendo
+
+
+def test_simbolos_que_cambian_el_sentido_cuentan():
+    base = e._norma("Nota media < 7 para acceder. Descuento del 500 % no aplicable.")
+    assert e.nivel_cita("Nota media > 7 para acceder", base) is None
+    assert e.nivel_cita("Descuento del 500 € no aplicable", base) is None
+
+
+def test_fragmentos_no_se_saltan_una_negacion():
+    base = e._norma("El título es un máster oficial que no habilita para el ejercicio de la profesión de abogado.")
+    assert e.nivel_cita("El título es un máster oficial... habilita para el ejercicio de la profesión", base) is None
+
+
+def test_numero_de_otra_celda_de_la_tabla():
+    texto = "Precio del crédito | Precio total\n45 € | 2.700 €"
+    h = {x["campo"]: x for x in e.verificar({"precio_total": {"valor": 45, "cita": "Precio total 45 €"}}, texto)}
+    assert h["precio_total"]["estado"] == "revision" and h["precio_total"]["motivo"] in ("numero_de_otra_celda", "precio_total_demasiado_bajo")
+    texto2 = "Concepto | Importe\nPrecio total | 2.700 €"
+    h2 = {x["campo"]: x for x in e.verificar({"precio_total": {"valor": 2700, "cita": "Precio total | 2.700 €"}}, texto2)}
+    assert h2["precio_total"]["estado"] == "aceptado"
+    texto3 = "Precio del crédito | 45 €\nPrecio total | 2.700 €"
+    h3 = {x["campo"]: x for x in e.verificar({"precio_credito": {"valor": 45, "cita": "Precio del crédito 45 €"}}, texto3)}
+    assert h3["precio_credito"]["estado"] == "aceptado"
+    texto4 = "Créditos | Precio\n60 | 2.700 €"
+    h4 = {x["campo"]: x for x in e.verificar({"creditos_ects": {"valor": 60, "cita": "Precio 60"}}, texto4)}
+    assert h4["creditos_ects"]["estado"] == "revision"
+
+
+def test_precio_total_minimo():
+    h = {x["campo"]: x for x in e.verificar({"precio_total": {"valor": 0, "cita": "Precio: 0 € sesión informativa"}},
+                                            "Precio: 0 € sesión informativa")}
+    assert h["precio_total"]["motivo"] == "precio_total_demasiado_bajo"
+
+
+def test_valor_tiene_que_salir_de_la_cita_en_campos_cortos():
+    texto = "Modalidad: 100 % en línea. Se imparte en castellano. Sede: Madrid."
+    resp = {"modalidad": {"valor": "online", "cita": "Modalidad: 100 % en línea"},
+            "idioma": {"valor": "español", "cita": "Se imparte en castellano"},
+            "sedes": {"valor": "Barcelona", "cita": "Sede: Madrid"}}
+    h = {x["campo"]: x for x in e.verificar(resp, texto)}
+    assert h["modalidad"]["estado"] == "aceptado" and h["idioma"]["estado"] == "aceptado"
+    assert h["sedes"]["estado"] == "revision" and h["sedes"]["motivo"] == "valor_no_en_cita"

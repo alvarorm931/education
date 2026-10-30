@@ -198,8 +198,16 @@ def verificar(respuesta: dict, texto: str) -> list[dict]:
                 dato["valor"] = n
         if ok and campo in NUMERICOS and not numero_en_cita(dato.get("valor"), cita):
             ok, motivo = False, "valor_no_en_cita"  # cita literal, pero el número no sale de ella
+        if ok and campo in NUMERICOS and nivel == "fragmentos":
+            ok, motivo = False, "numero_en_fragmentos"  # un número no se da por citado a trozos
+        if ok and campo in NUMERICOS and not numero_en_su_linea(dato.get("valor"), cita, texto):
+            ok, motivo = False, "numero_de_otra_celda"  # la etiqueta de una fila de tabla con el número de otra
         if ok and campo in PRECIOS and (MONEDA_NO_EURO.search(cita) or dato.get("valor", 0) > PRECIO_MAXIMO):
             ok, motivo = False, "moneda_no_euro_o_fuera_de_rango"
+        if ok and campo == "precio_total" and dato.get("valor", 0) < PRECIO_TOTAL_MINIMO:
+            ok, motivo = False, "precio_total_demasiado_bajo"  # un precio por crédito, una tasa o una sesión gratuita
+        if ok and campo in VALOR_EN_CITA and not valor_en_cita(dato.get("valor"), cita):
+            ok, motivo = False, "valor_no_en_cita"  # la cita está, pero no dice ese valor
         hechos.append({"campo": campo, "valor": dato.get("valor") if ok else None,
                        "valor_propuesto": None if ok else dato.get("valor"),
                        "cita": cita, "cita_verificada": ok, "cita_nivel": nivel,
@@ -208,6 +216,65 @@ def verificar(respuesta: dict, texto: str) -> list[dict]:
 
 
 NUMERICOS = {"creditos_ects", "plazas", "precio_total", "precio_credito", "reserva_matricula"}
+PRECIO_TOTAL_MINIMO = 300  # por debajo, casi siempre es el precio de un crédito, una tasa o una sesión gratuita
+# campos cortos cuyo valor tiene que salir de la cita (en los largos, metodología o salidas, el valor resume la cita)
+VALOR_EN_CITA = {"modalidad", "idioma", "tipo_titulo", "universidad_que_expide", "centro_que_imparte", "sedes",
+                 "duracion", "fecha_inicio", "horario", "habilita_profesion", "practicas", "tfm"}
+VACIAS_VALOR = {"de", "del", "la", "las", "los", "el", "en", "por", "para", "con", "y", "o", "u", "a", "al", "un", "una",
+                "master", "masters", "universitario", "universitaria", "oficial", "titulo", "modalidad", "idioma",
+                "universidad", "sede", "sedes", "centro", "curso", "duracion", "horario", "si", "no"}
+
+
+def valor_en_cita(valor, cita: str) -> bool:
+    """Alguna palabra con contenido del valor (o su número) está en la cita. «online» en «100 % online»,
+    «inglés» en «Se imparte en inglés»; «presencial» no está en «Modalidad: online»."""
+    if isinstance(valor, (int, float)) or valor is None:
+        return True
+    texto = valor if isinstance(valor, str) else " ".join(map(str, valor)) if isinstance(valor, list) else str(valor)
+    palabras = [w for w in _laxa(texto).split() if len(w) >= 3 and w not in VACIAS_VALOR and not w.isdigit()]
+    numeros = [w for w in _laxa(texto).split() if w.isdigit()]
+    if not palabras and not numeros:
+        return True  # «Sí», «No»: nada que buscar
+    c = set(_laxa(cita).split())
+    raiz = lambda w: w[:5]  # noqa: E731 - «presencial» y «presencialidad»
+    raices = {raiz(w) for w in c}
+
+    def esta(w: str) -> bool:
+        grupo = next((g for g in SINONIMOS if w in g or raiz(w) in {raiz(x) for x in g}), {w})
+        return any(x in c or raiz(x) in raices for x in grupo)
+
+    return any(esta(w) for w in palabras) or any(n in c for n in numeros)
+
+
+# el modelo normaliza («en línea» → «online», «castellano» → «español»): cuenta cualquiera del grupo
+SINONIMOS = [
+    {"online", "linea", "distancia", "virtual", "remoto", "remota", "elearning", "learning", "telematica", "telematico", "no"},
+    {"semipresencial", "blended", "hibrida", "hibrido", "mixta", "mixto", "semi"},
+    {"presencial", "presencialidad", "aula", "campus", "face"},
+    {"espanol", "castellano", "spanish", "espanyol"},
+    {"ingles", "english", "angles"},
+    {"catalan", "catala", "valenciano", "valencia"},
+    {"gallego", "galego"}, {"euskera", "vasco", "euskara"}, {"frances", "french", "frances"},
+    {"ano", "anos", "anual", "year", "years"}, {"mes", "meses", "mensual", "months"},
+    {"semestre", "semestres", "cuatrimestre", "cuatrimestres", "semester"},
+]
+
+
+def numero_en_su_linea(valor, cita: str, texto: str) -> bool:
+    """En una tabla («Precio del crédito | Precio total» y debajo «45 € | 2.700 €») la cita no puede juntar la
+    etiqueta de una celda con el número de otra: la línea del texto que trae el número debe traer también alguna
+    palabra de la cita, salvo que no sea una fila de tabla."""
+    v = como_numero(valor)
+    if v is None:
+        return True
+    palabras = {w for w in _laxa(cita).split() if len(w) >= 4 and not any(ch.isdigit() for ch in w)}
+    lineas = [l for l in (texto or "").split("\n") if any(abs(float(v) - n) < 0.005 for n in numeros_en(l))]
+    if not lineas:
+        return True  # el número está repartido en varias líneas: lo decide la cita
+    for l in lineas:
+        if " | " not in l or not palabras or palabras & set(_laxa(l).split()):
+            return True
+    return False
 
 
 def leer_numero(t: str):
@@ -289,7 +356,9 @@ def _laxa(s: str) -> str:
     s = re.sub(r"(?<=\d)([.,])(?=\d)", lambda m: m.group(1) + "\x00", s)  # protege «9.800» y «12,5»
     s = re.sub(r"[.;!?¡¿]+(?!\x00)", " . ", s)
     s = re.sub(r",(?!\x00)", " , ", s)
-    s = re.sub(r"[^\w\s\x00.,]|_", " ", s).replace("\x00", "")
+    # %, €, $, <, >, ≤, ≥ y + cambian el sentido o la unidad («> 7» no es «< 7»; «500 €» no es «500 %»): palabra propia
+    s = re.sub(r"([%€$<>≤≥+])", r" \1 ", s)
+    s = re.sub(r"[^\w\s\x00.,%€$<>≤≥+]|_", " ", s).replace("\x00", "")
     return " ".join(s.split())
 
 
@@ -314,9 +383,15 @@ def nivel_cita(cita: str, base_normalizada: str, base_laxa: str | None = None) -
             m = re.compile(_ANTES + re.escape(t) + _DESPUES).search(laxa, pos or 0)
             if not m or (pos is not None and m.start() - pos > MAX_HUECO_FRAGMENTOS):
                 return None
+            # lo que se salta la cita no puede llevar una negación ni una salvedad («… oficial no habilita …»)
+            if pos is not None and NEGACION.search(laxa[pos:m.start()]):
+                return None
             pos = m.end()
         return "fragmentos"
     return None
+
+
+NEGACION = re.compile(r"(?<!\w)(no|ni|sin|nunca|excepto|salvo|tampoco|not|without|except)(?!\w)")
 
 
 def _json_de(texto: str) -> dict:
@@ -919,7 +994,11 @@ def lista_oficiales(paginas_oficiales: Path, salida: Path, estados: tuple[str, .
 RE_MASTER = re.compile(r"(?i)(m[aá]ster|masters?|mba|postgrado|posgrado)")
 # Versiones de la web para otro país (es-CO, es-MX, en-US…): precios en otra moneda y oferta que no es de España.
 LOCALE_OTRO_PAIS = re.compile(r"(?i)/(es|en|pt|fr)[-_](ar|bo|cl|co|cr|cu|do|ec|gt|hn|mx|ni|pa|pe|pr|py|sv|uy|ve|us|br|"
-                              r"419|latam|la)(/|$)|/(mexico|colombia|peru|chile|argentina|ecuador|latam|latinoamerica)/")
+                              r"419|latam|la)(/|$)|/(mexico|colombia|peru|chile|argentina|ecuador|latam|latinoamerica)/|"
+                              # «universidadviu.com/int/maestria-…», «…/mx/…»: versión para otro país; «maestría» es el
+                              # nombre del máster en América
+                              r"^(?:https?://[^/]+)?/(int|mx|co|ar|cl|pe|ec|bo|py|uy|ve|gt|hn|sv|ni|cr|pa|do|pr|us|br)(/|$)|"
+                              r"/maestrias?[-_/]")
 PRECIOS = {"precio_total", "precio_credito", "reserva_matricula"}
 MONEDA_NO_EURO = re.compile(r"(?i)(\$|US\s?D|\bUSD\b|\bCOP\b|\bMXN\b|\bARS\b|\bCLP\b|\bPEN\b|\bS/\.|"
                             r"\bpesos?\b|\bsoles\b|\bd[oó]lares?\b|£|\bGBP\b|\bCHF\b)")
