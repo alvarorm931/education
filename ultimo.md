@@ -1,8 +1,8 @@
-# Vigilancia 31/10 08:46 (Madrid)
+# Vigilancia 31/10 09:10 (Madrid)
 
-- Ejecuciones revisadas (últimas 6 h): 98
+- Ejecuciones revisadas (últimas 6 h): 118
 - Fallos: 0; pendientes: 0; relanzados ahora: 0
-- Colas de más de 30 minutos: 1
+- Colas de más de 30 minutos: 0
 - Flujos programados parados: ninguno
 - Almacén S3: ok
 - Programaciones que GitHub no disparó y se lanzaron a mano: ninguna
@@ -11,4 +11,3 @@
 - Ficheros de la rama datos de más de 80 MB (GitHub rechaza más de 100): ninguno
 - Avisos de fuentes: 0
 
-- En cola 44 min: Sonda de fuentes https://github.com/alvarorm931/education/actions/runs/41178953236

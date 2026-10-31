@@ -1,28 +1,20 @@
 {
- "fecha": "2026-10-31T07:46:18+00:00",
- "fecha_madrid": "31/10 08:46",
+ "fecha": "2026-10-31T08:10:23+00:00",
+ "fecha_madrid": "31/10 09:10",
  "ventana_horas": 6.0,
  "resumen": {
-  "ejecuciones_revisadas": 98,
+  "ejecuciones_revisadas": 118,
   "fallos": 0,
   "fallos_pendientes": 0,
   "relanzados": 0,
-  "colas_largas": 1,
+  "colas_largas": 0,
   "flujos_programados_parados": [],
   "programaciones_lanzadas_a_mano": [],
   "avisos_de_fuentes": 0,
   "almacen": "ok"
  },
  "fallos": [],
- "colas_largas": [
-  {
-   "flujo": "Sonda de fuentes",
-   "id": 41178953236,
-   "en_cola_min": 44,
-   "trabajos_empezados": 0,
-   "url": "https://github.com/alvarorm931/education/actions/runs/41178953236"
-  }
- ],
+ "colas_largas": [],
  "programados": {
   "motor.yml": {
    "ultimo_bien": "31/10 00:33",
