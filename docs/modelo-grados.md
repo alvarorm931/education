@@ -733,7 +733,8 @@ del BOE declare el código del título («Código Titulación: …»), que desde
   de QEDU que encuentra (`universidades.setdefault`). Si esa impartición es de un máster interuniversitario, el
   código recibe el nombre de la socia, así que los 54 másters de Alcalá salen como Autónoma de Madrid, los 56 de
   Cádiz como Almería y los 15 de La Rioja como Lleida, y esas tres universidades desaparecen del conjunto. Aparte,
-  39 altas del BOE de másters interuniversitarios están puestas en Comillas o en la Pontificia de Salamanca aunque
-  su nombre oficial no las menciona. Arreglo posible: el nombre más frecuente por código, comprobando que contiene
-  el nombre corto del catálogo. Comprobación hecha desde grados, sin tocar su código:
-  `trabajo/scripts_masters/ranking.py`.
+  39 altas del BOE de másters interuniversitarios están puestas, casi todas, en Comillas o en la Pontificia de
+  Salamanca, aunque su nombre oficial no las menciona. Arreglo posible: el nombre más frecuente por código,
+  comprobando que contiene el nombre corto del catálogo. Comprobado desde grados, sin tocar su código, cruzando
+  `masters_oficiales.jsonl.gz` con `entradas/catalogo_final.json` (`universidad_codigo` 029, 005 y 045) por código
+  del RUCT.
