@@ -168,12 +168,14 @@ def ejecuciones(repo: str, desde: datetime) -> list[dict]:
 
 
 def ultimo_bien(repo: str, flujo: str) -> datetime | None:
+    """Última ejecución terminada bien. «skipped» también cuenta: el flujo corrió y sus trabajos se saltaron a
+    propósito (el SEO, mientras no exista la variable SEO_BASE)."""
     try:
-        r = api(f"/repos/{repo}/actions/workflows/{flujo}/runs?status=success&per_page=1")
+        r = api(f"/repos/{repo}/actions/workflows/{flujo}/runs?status=completed&per_page=30")
     except urllib.error.HTTPError:
         return None
-    runs = r.get("workflow_runs", [])
-    return fecha(runs[0].get("updated_at")) if runs else None
+    buenas = [x for x in r.get("workflow_runs", []) if x.get("conclusion") in ("success", "skipped")]
+    return max((fecha(x.get("updated_at")) for x in buenas), default=None)
 
 
 CRON_DIARIO = re.compile(r'^\s*-\s*cron:\s*["\']?(\d{1,2})\s+(\d{1,2})\s+\*\s+\*\s+\*["\']?', re.M)
@@ -319,8 +321,9 @@ def reponer_desplazadas(repo: str, runs: list[dict], actuar: bool, grupos: dict[
 
     Se reconoce porque se canceló sin ningún trabajo justo cuando se creó otra ejecución del mismo grupo. Solo se
     miran las lanzadas con workflow_dispatch y en su primer intento. Se relanza una vez, con las mismas entradas,
-    salvo que la sustituya otra del mismo flujo que no se canceló, que quien la lanzó ya la haya relanzado, o que en
-    el grupo haya otra esperando (la tiraría a ella; se vuelve a mirar en la pasada siguiente)."""
+    salvo que la sustituya otra ejecución posterior del mismo flujo que no se canceló (esté en marcha, esperando o ya
+    terminada), que quien la lanzó ya la haya relanzado, o que en el grupo haya otra esperando (la tiraría a ella; se
+    vuelve a mirar en la pasada siguiente)."""
     grupos = grupos_de_concurrencia() if grupos is None else grupos
     grupo = lambda r: grupos.get((r.get("path") or "").split("/")[-1])
     actor = lambda r: (r.get("triggering_actor") or {}).get("login")
@@ -343,7 +346,11 @@ def reponer_desplazadas(repo: str, runs: list[dict], actuar: bool, grupos: dict[
             continue
         item = {"flujo": c.get("name"), "id": c["id"], "url": c.get("html_url"), "lanzada": madrid(creada),
                 "desplazada_por": quien[0].get("html_url"), "relanzada": False}
-        if any(o.get("path") == c.get("path") and o.get("conclusion") != "cancelled" for o in quien):
+        # Cualquier ejecución posterior del mismo flujo que no se canceló la sustituye (la que la desplazó o una
+        # lanzada después). El 31/10 a las 15:46 se relanzó el motor del respaldo sin ver que ya corría otro motor
+        # lanzado a mano después: la conversación tuvo que cancelarlo.
+        if any(o["id"] != c["id"] and o.get("path") == c.get("path") and fecha(o["created_at"]) > creada
+               and o.get("conclusion") != "cancelled" for o in runs):
             item["relanzada"] = "no hace falta: la sustituye otra del mismo flujo"
         elif any(o["id"] != c["id"] and o.get("path") == c.get("path") and actor(o) == actor(c)
                  and o.get("event") == "workflow_dispatch" and fecha(o["created_at"]) > fin for o in runs):

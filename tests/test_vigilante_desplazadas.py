@@ -87,3 +87,25 @@ def test_ignora_las_canceladas_que_llegaron_a_empezar_o_sin_otra_cerca(v, monkey
     runs[1]["created_at"] = "2026-10-31T12:29:50Z"
     monkeypatch.setattr(v, "api", lambda ruta, **k: {"jobs": [{"started_at": "2026-10-31T12:01:00Z"}]})
     assert v.reponer_desplazadas("o/r", runs, actuar=True, grupos=GRUPOS) == []
+
+
+def test_no_relanza_si_otra_posterior_del_mismo_flujo_sigue_en_marcha(v):
+    # 31/10: el motor del respaldo (1) lo desplazó un motor a mano (2), que a su vez desplazó otro (3, en marcha).
+    # Aunque el que la desplazó acabó cancelado, la sustituye el 3.
+    runs = [run(1, "motor.yml", "workflow_dispatch", "completed", "cancelled", "2026-10-31T13:57:43Z",
+                "2026-10-31T14:03:18Z", actor="github-actions[bot]"),
+            run(2, "motor.yml", "workflow_dispatch", "completed", "cancelled", "2026-10-31T14:03:16Z",
+                "2026-10-31T14:18:29Z", actor="otra"),
+            run(3, "motor.yml", "workflow_dispatch", "in_progress", None, "2026-10-31T14:18:27Z",
+                "2026-10-31T14:44:59Z", actor="otra")]
+    r = v.reponer_desplazadas("o/r", runs, actuar=True, grupos=GRUPOS)
+    assert [d["relanzada"] for d in r if d["id"] == 1] == ["no hace falta: la sustituye otra del mismo flujo"]
+    assert not any(m == "POST" for m, _ in v.llamadas)
+
+
+def test_ultimo_bien_cuenta_las_saltadas(v, monkeypatch):
+    monkeypatch.setattr(v, "api", lambda ruta, **k: {"workflow_runs": [
+        {"conclusion": "skipped", "updated_at": "2026-10-31T10:58:00Z"},
+        {"conclusion": "failure", "updated_at": "2026-10-31T11:00:00Z"},
+        {"conclusion": "success", "updated_at": "2026-10-30T12:27:50Z"}]})
+    assert v.madrid(v.ultimo_bien("o/r", "seo.yml")) == v.madrid(v.fecha("2026-10-31T10:58:00Z"))
