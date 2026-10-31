@@ -1,57 +1,19 @@
 {
- "fecha": "2026-10-31T05:39:30+00:00",
- "fecha_madrid": "31/10 06:39",
+ "fecha": "2026-10-31T06:04:35+00:00",
+ "fecha_madrid": "31/10 07:04",
  "ventana_horas": 6.0,
  "resumen": {
-  "ejecuciones_revisadas": 48,
-  "fallos": 1,
-  "fallos_pendientes": 1,
+  "ejecuciones_revisadas": 49,
+  "fallos": 0,
+  "fallos_pendientes": 0,
   "relanzados": 0,
   "colas_largas": 0,
   "flujos_programados_parados": [],
-  "programaciones_lanzadas_a_mano": [
-   "seo.yml"
-  ],
+  "programaciones_lanzadas_a_mano": [],
   "avisos_de_fuentes": 0,
   "almacen": "ok"
  },
- "fallos": [
-  {
-   "flujo": "Motor de datos",
-   "fichero": "motor.yml",
-   "id": 41146163155,
-   "intento": 2,
-   "evento": "workflow_dispatch",
-   "rama": "main",
-   "commit": "94424c2",
-   "titulo": "Motor de datos",
-   "conclusion": "failure",
-   "cuando": "31/10 02:20",
-   "url": "https://github.com/alvarorm931/education/actions/runs/41146163155",
-   "superado": false,
-   "en_curso": null,
-   "pasajero": false,
-   "detalle": [
-    {
-     "trabajo": "motor",
-     "pasos": [
-      "Avisar si hay huecos o errores"
-     ],
-     "ejecutor": "GitHub Actions 1000001423",
-     "etiquetas": [
-      "ubuntu-latest"
-     ],
-     "final_registro": [
-      "##[error]Huecos en el BOE: {\"dias_con_error\": [\"2026-10-31\"]}",
-      "##[error]Process completed with exit code 1.",
-      "...",
-      "##[error]Huecos en el BOE: {\"dias_con_error\": [\"2026-10-31\"]}",
-      "##[error]Process completed with exit code 1."
-     ]
-    }
-   ]
-  }
- ],
+ "fallos": [],
  "colas_largas": [],
  "programados": {
   "motor.yml": {
@@ -67,13 +29,7 @@
    "parado": false
   }
  },
- "respaldo_programaciones": [
-  {
-   "flujo": "seo.yml",
-   "prevista": "31/10 06:23",
-   "lanzado": true
-  }
- ],
+ "respaldo_programaciones": [],
  "programaciones_tardias_canceladas": [],
  "ficheros_de_mas_de_80_mb": [],
  "latido": "en marcha",
