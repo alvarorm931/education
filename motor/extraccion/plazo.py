@@ -212,6 +212,26 @@ def extraer_plazo(texto: str, publicacion: str, boletin_propio: str | tuple[str,
     return primera
 
 
+# Nombre genérico del boletín propio, sin la provincia o la comunidad («… desde el siguiente al de la publicación en el
+# Boletín Oficial de la Provincia», en el propio BOP)
+GENERICOS_PROPIOS = ("boletin oficial de la provincia", "butlleti oficial de la provincia", "boletin oficial da provincia",
+                     "diari oficial de la generalitat", "boletin oficial de la comunidad")
+
+
+def _es_propio(nombre: str, propios: set[str]) -> bool:
+    """El boletín citado es el propio: con el mismo nombre, con otra forma del nombre («Boletín Oficial Cantabria»,
+    «Boletín Oficial de la Junta de Castilla y León») o con el nombre genérico de su clase («Boletín Oficial de la
+    Provincia» en un BOP). (31/10/2026: unos 600 procesos de 2025-2026 se quedaban sin fecha de fin por eso.)"""
+    n = normalizar(nombre)
+    if n in propios:
+        return True
+    from motor.procesos import fuente_de_boletin  # aquí: procesos importa la extracción
+    f = fuente_de_boletin(nombre)
+    if f and any(fuente_de_boletin(p) == f for p in propios):
+        return True
+    return n in GENERICOS_PROPIOS and any(p.startswith(n + " ") for p in propios)
+
+
 def _plazo_de_frase(f: str, pub: date, propios: set[str], comunidad: str | None) -> dict | None:
     res: dict = {"cita": f, "metodo": VERSION}
 
@@ -255,7 +275,7 @@ def _plazo_de_frase(f: str, pub: date, propios: set[str], comunidad: str | None)
         res["inicio"] = inicio.isoformat()
     elif boletines:
         res["cuenta_desde"] = " o ".join(boletines)
-        if not {normalizar(b) for b in boletines} <= propios:
+        if not all(_es_propio(b, propios) for b in boletines):
             return res  # cuenta desde otro boletín (o desde el último de varios): sin fecha de fin
         base = pub
     elif RE_DESDE_PUBLICACION.search(f):

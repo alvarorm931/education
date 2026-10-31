@@ -179,3 +179,15 @@ def test_la_frase_con_fecha_de_fin_antes_que_la_incompleta():
          "partir del día siguiente al de la publicación de este anuncio en el Boletín Oficial de la Provincia de Sevilla.")
     r = extraer_plazo(t, "2026-10-15", "Boletín Oficial de la Provincia de Sevilla")
     assert r["dias"] == 10 and r["fin_estimado"]
+
+
+def test_boletin_propio_con_otro_nombre_o_generico():
+    t = ("El plazo de presentación de solicitudes será de diez días hábiles, contados a partir del día siguiente al de la "
+         "publicación de esta convocatoria en el Boletín Oficial Cantabria.")
+    assert extraer_plazo(t, "2025-05-07", "Boletín Oficial de Cantabria")["fin_estimado"]
+    t = ("El plazo de presentación de instancias será de diez días hábiles, a contar desde el siguiente al de la publicación "
+         "de este anuncio en el Boletín Oficial de la Provincia.")
+    assert extraer_plazo(t, "2026-03-02", "Boletín Oficial de la Provincia de Sevilla")["fin_estimado"]
+    # en un boletín autonómico, «el Boletín Oficial de la Provincia» es otro boletín
+    r = extraer_plazo(t, "2026-03-02", "Diari Oficial de la Generalitat de Catalunya")
+    assert r["dias"] == 10 and not r.get("fin_estimado")
