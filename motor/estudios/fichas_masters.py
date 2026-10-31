@@ -307,10 +307,11 @@ def rescatar_oficiales(paginas: dict[str, dict], hechos: dict[str, list[dict]], 
         nombre, tipo = str(hs.get("nombre") or ""), str(hs.get("tipo_titulo") or "").lower()
         dice_oficial = es_tipo_oficial(tipo) or (not tipo and "universitari" in nombre.lower())
         prov = censo.get(p.get("proveedor") or "") or {}
-        # en la web de la propia universidad (IE, Navarra…), el nombre entero del RUCT basta aunque la página no
-        # diga «oficial», si tampoco dice que sea otro tipo de título
-        web_de_universidad = any(str(x).startswith("universidad") for x in prov.get("tipos") or []) \
-            and not NO_OFICIAL_TIPO.search(tipo)
+        # en la web de la propia universidad o de su centro propio (IE, IESE…), el nombre entero del RUCT en inglés
+        # basta aunque la página no diga «oficial», si tampoco dice que sea otro tipo de título. En castellano no:
+        # «Máster en X» sin «Universitario» es el título propio (RD 822/2021), no el «Máster Universitario en X»
+        web_de_universidad = any(str(x).startswith("universidad") or x == "centro_propio" for x in prov.get("tipos") or []) \
+            and not NO_OFICIAL_TIPO.search(tipo) and not re.search(r"(?i)\bm[aáà]ster(es)?\s+(en|de|del|d')\b", nombre)
         if not nombre or not (dice_oficial or web_de_universidad):
             continue
         univs = {r.get("universidad") for r in prov.get("ruct", [])}

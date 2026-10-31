@@ -214,3 +214,19 @@ def test_en_la_web_de_la_universidad_basta_el_nombre_entero_y_se_suman_sus_pagin
     assert mim["comprobacion_nombre"] == "confirmado_por_nombre"
     assert mim["campos"]["precio_total"]["valor"] == 43300 and mim["campos"]["plazas"]["valor"] == 120
     assert any(x["grupo"] == "no_oficial" and "executive" in x.get("url", "") for x in fichas)
+
+
+def test_master_en_castellano_sin_universitario_es_titulo_propio(tmp_path):
+    # en la web de una universidad, «Máster en Marketing Digital» (sin «Universitario») es el título propio
+    t = "2026-10-31T16:00:00+00:00"
+    pag = [{"url": "https://www.esic.edu/master-marketing-digital", "extraido": t, "grupo": "no_oficial",
+            "proveedor": "prov-esic", "pagina": "principal"}]
+    hs = [{"url": pag[0]["url"], "campo": "nombre", "valor": "Máster en Marketing Digital", "estado": "aceptado",
+           "extraido": t, "captura_sha256": "s"}]
+    _escribir(tmp_path / "e", pag, hs)
+    (tmp_path / "c.json").write_text(json.dumps([{"codigo_ruct": "1", "universidad_codigo": "042", "situacion": "Activo",
+        "nombre_oficial": "Máster Universitario en Marketing Digital por ESIC Universidad"}]))
+    (tmp_path / "p.jsonl").write_text(json.dumps({"id": "prov-esic", "tipos": ["universidad_privada"],
+                                                  "ruct": [{"universidad": "042"}]}) + "\n")
+    r = f.ejecutar([tmp_path / "e"], tmp_path / "o", catalogo=tmp_path / "c.json", censo=tmp_path / "p.jsonl")
+    assert r["paginas_rescatadas_como_oficiales"] == 0
