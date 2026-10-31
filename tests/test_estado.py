@@ -40,3 +40,8 @@ def test_textos_dentro_del_anuncio_cuentan(tmp_path):
     op.write_text(json.dumps({"id": "a", "texto": "Bases"}) + "\n" + json.dumps({"id": "b", "texto": None}) + "\n")
     e = estado_fuente(tmp_path, date(2026, 10, 31))
     assert (e["anuncios_empleo"], e["textos"], e["textos_pendientes"]) == (2, 1, 1)
+
+
+def test_numero_suelto_mal_leido_no_hace_huecos():
+    from motor.estado import huecos_numeracion
+    assert huecos_numeracion({"2026": (set(range(1, 210)) - {10}) | {397}}) == {"2026": [10]}

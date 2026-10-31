@@ -49,6 +49,16 @@ def _numero(inf: dict) -> int | None:
     return int(n) if n.isdigit() and 0 < int(n) < 100000 else None
 
 
+def _sin_sueltos(serie: list[int], salto: int = 30) -> list[int]:
+    """Sin los números sueltos de los extremos, a más de `salto` del siguiente: un número mal leído («397» en un
+    boletín de mayo del BOP de Toledo, que va por el 209 en octubre) hacía ver 188 boletines sin leer."""
+    while len(serie) >= 3 and serie[-1] - serie[-2] > salto:
+        serie = serie[:-1]
+    while len(serie) >= 3 and serie[1] - serie[0] > salto:
+        serie = serie[1:]
+    return serie
+
+
 def huecos_numeracion(numeros: dict[str, set[int]]) -> dict:
     """Números que faltan entre el primero y el último leídos de cada año y serie. Hay boletines con dos series
     (BOME: ordinarios 59xx-64xx correlativos de un año a otro y extraordinarios 1, 2, 3… cada año; BOJA:
@@ -58,8 +68,8 @@ def huecos_numeracion(numeros: dict[str, set[int]]) -> dict:
         series = ([n for n in ns if n < 500], [n for n in ns if 500 <= n < 1000], [n for n in ns if n >= 1000])
         faltan = []
         for serie in series:
+            serie = _sin_sueltos(sorted(serie))
             if len(serie) >= 2:
-                serie = sorted(serie)
                 faltan += sorted(set(range(serie[0], serie[-1] + 1)) - set(serie))
         if faltan:
             huecos[anio] = faltan
