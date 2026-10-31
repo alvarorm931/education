@@ -43,7 +43,8 @@ PASAJERO = re.compile(
     re.I,
 )
 # Nunca se relanza aunque parezca pasajero: requiere a una persona.
-NO_RELANZAR = re.compile(r"(GH013|push protection|secret|permission denied|not authorized|accessdenied|403 forbidden)", re.I)
+NO_RELANZAR = re.compile(r"(GH013|push protection|secret|permission denied|not authorized|accessdenied|403 forbidden|"
+                         r"a password is required|sudo:|no space left on device)", re.I)
 
 # Flujos programados que deben haber terminado bien hace menos de este número de horas.
 PROGRAMADOS = {"motor.yml": 26, "autonomicos.yml": 26, "seo.yml": 26}
@@ -123,13 +124,22 @@ def final_registro(job_id: int, lineas: int = 25) -> list[str]:
     # Lo que importa está antes de la limpieza final del trabajo («Post job cleanup»)
     corte = next((i for i, f in enumerate(limpias) if f.startswith("Post job cleanup")), len(limpias))
     tramo = limpias[:corte]
-    # Solo cuenta el paso que falla: empieza en su cabecera «##[group]Run …» y termina en su primer «##[error]».
-    # Lo de antes son otros pasos (un `git push` rechazado y reintentado con éxito no es el error, y hacía que
-    # un fallo de verdad pareciera pasajero); lo de después, pasos de limpieza (if: always()).
-    primero = next((i for i, f in enumerate(tramo) if f.startswith("##[error]")), None)
-    if primero is not None:
-        inicio = max((i for i in range(primero) if tramo[i].startswith("##[group]Run ")), default=0)
-        tramo = tramo[inicio:primero + 1]
+    # Solo cuentan los pasos con error: cada paso empieza en su cabecera «##[group]Run …». Se juntan los que
+    # tienen algún «##[error]», cada uno hasta su último error. Lo de los pasos que terminaron bien no cuenta (un
+    # `git push` rechazado y reintentado con éxito hacía pasar por pasajero un fallo real), ni lo de después del
+    # último error (pasos de limpieza).
+    cabeceras = [i for i, f in enumerate(tramo) if f.startswith("##[group]Run ")]
+    if any(f.startswith("##[error]") for f in tramo):
+        bloques = []
+        limites = (cabeceras or [0]) + [len(tramo)]
+        if cabeceras and cabeceras[0] > 0:
+            limites = [0] + limites
+        for a_, b_ in zip(limites, limites[1:]):
+            trozo = tramo[a_:b_]
+            errores_trozo = [i for i, f in enumerate(trozo) if f.startswith("##[error]")]
+            if errores_trozo:
+                bloques += trozo[:errores_trozo[-1] + 1][-12:]
+        tramo = bloques
     utiles = [f for f in tramo if not f.startswith(("[command]", "##[group]", "##[endgroup]"))]
     # Fuera los bloques «shell:» / «env:» que GitHub imprime al empezar cada paso.
     sin_ruido, en_env = [], False
