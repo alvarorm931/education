@@ -9,7 +9,7 @@
   "dias_sin_procesar": [],
   "dias_con_error": [],
   "dias_lunes_a_sabado_sin_boletin": [],
-  "anuncios_sin_texto": 3731,
+  "anuncios_sin_texto": 3723,
   "diarios_por_anio": {
    "2022": 314,
    "2023": 313,
@@ -170,8 +170,8 @@
    "empleo_ultimos_5_boletines": 82,
    "recuento_bajo": false,
    "anuncios_empleo": 32876,
-   "textos": 9194,
-   "textos_pendientes": 23682,
+   "textos": 11183,
+   "textos_pendientes": 21693,
    "ultimos_errores": [
     {
      "fecha": "2026-07-20",
@@ -224,8 +224,8 @@
    "empleo_ultimos_5_boletines": 983,
    "recuento_bajo": false,
    "anuncios_empleo": 12558,
-   "textos": 10219,
-   "textos_pendientes": 2339,
+   "textos": 12561,
+   "textos_pendientes": 0,
    "ultimos_errores": [],
    "huecos_numeracion": {},
    "boletines_sin_leer_por_numeracion": 0,
@@ -242,8 +242,8 @@
    "empleo_ultimos_5_boletines": 109,
    "recuento_bajo": false,
    "anuncios_empleo": 14855,
-   "textos": 13747,
-   "textos_pendientes": 1108,
+   "textos": 14855,
+   "textos_pendientes": 0,
    "ultimos_errores": [],
    "huecos_numeracion": {},
    "boletines_sin_leer_por_numeracion": 0,
@@ -403,8 +403,8 @@
    "empleo_ultimos_5_boletines": 31,
    "recuento_bajo": false,
    "anuncios_empleo": 9114,
-   "textos": 2285,
-   "textos_pendientes": 6829,
+   "textos": 2483,
+   "textos_pendientes": 6631,
    "ultimos_errores": [],
    "huecos_numeracion": {},
    "boletines_sin_leer_por_numeracion": 0,
@@ -460,8 +460,8 @@
    "empleo_ultimos_5_boletines": 75,
    "recuento_bajo": false,
    "anuncios_empleo": 12693,
-   "textos": 6447,
-   "textos_pendientes": 6246,
+   "textos": 8886,
+   "textos_pendientes": 3807,
    "ultimos_errores": [],
    "huecos_numeracion": {
     "2024": [
@@ -621,8 +621,8 @@
    "empleo_ultimos_5_boletines": 137,
    "recuento_bajo": false,
    "anuncios_empleo": 28090,
-   "textos": 8673,
-   "textos_pendientes": 19417,
+   "textos": 11030,
+   "textos_pendientes": 17060,
    "ultimos_errores": [
     {
      "fecha": "2026-09-24",
@@ -914,8 +914,8 @@
    "empleo_ultimos_5_boletines": 13,
    "recuento_bajo": false,
    "anuncios_empleo": 6002,
-   "textos": 4271,
-   "textos_pendientes": 1731,
+   "textos": 6001,
+   "textos_pendientes": 1,
    "ultimos_errores": [],
    "huecos_numeracion": {},
    "boletines_sin_leer_por_numeracion": 0,
@@ -1075,8 +1075,8 @@
    "empleo_ultimos_5_boletines": 36,
    "recuento_bajo": false,
    "anuncios_empleo": 10144,
-   "textos": 4314,
-   "textos_pendientes": 5830,
+   "textos": 5334,
+   "textos_pendientes": 4810,
    "ultimos_errores": [
     {
      "fecha": null,
@@ -1191,8 +1191,8 @@
    "empleo_ultimos_5_boletines": 7,
    "recuento_bajo": false,
    "anuncios_empleo": 3770,
-   "textos": 3161,
-   "textos_pendientes": 609,
+   "textos": 3770,
+   "textos_pendientes": 0,
    "ultimos_errores": [],
    "huecos_numeracion": {
     "2022": [
@@ -1214,37 +1214,45 @@
   "bophuelva": {
    "grupo": "provinciales",
    "informes": {
-    "ok": 842,
-    "sin_boletin": 921,
-    "sin_anuncios": 2
+    "ok": 1204,
+    "sin_boletin": 560,
+    "error_http": 1
    },
    "ultimo_boletin_leido": "2026-10-30",
    "dias_habiles_sin_boletin": 0,
    "empleo_mediana_por_boletin": 2,
    "empleo_ultimos_5_boletines": 12,
    "recuento_bajo": false,
-   "anuncios_empleo": 2792,
-   "textos": 2277,
-   "textos_pendientes": 515,
+   "anuncios_empleo": 3969,
+   "textos": 3302,
+   "textos_pendientes": 667,
    "ultimos_errores": [
     {
-     "fecha": "2023-05-02",
-     "resultado": "sin_anuncios",
+     "fecha": "2022-08-01",
+     "resultado": "error_http",
      "alertas": [
-      "BOP-HUELVA 2023-05-02: PDF sin asuntos en el sumario (posible cambio de formato)",
-      "BOP-HUELVA 2023-05-02: PDF sin asuntos en el sumario (posible cambio de formato)"
-     ]
-    },
-    {
-     "fecha": "2023-04-19",
-     "resultado": "sin_anuncios",
-     "alertas": [
-      "BOP-HUELVA 2023-04-19: PDF sin asuntos en el sumario (posible cambio de formato)"
+      "BOP-HUELVA 2022-08-01: PDF HTTP 200 (https://s2.diphuelva.es/portalweb/bop/boletines/20220801-1.pdf)"
      ]
     }
    ],
-   "huecos_numeracion": {},
-   "boletines_sin_leer_por_numeracion": 0,
+   "huecos_numeracion": {
+    "2022": [
+     6,
+     28,
+     82,
+     98,
+     147,
+     184,
+     186,
+     188
+    ],
+    "2023": [
+     19,
+     73,
+     81
+    ]
+   },
+   "boletines_sin_leer_por_numeracion": 11,
    "alerta": false
   },
   "bophuesca": {
@@ -1567,41 +1575,8 @@
    "textos": 1038,
    "textos_pendientes": 4,
    "ultimos_errores": [],
-   "huecos_numeracion": {
-    "2024": [
-     2,
-     3,
-     4,
-     5,
-     6,
-     7,
-     8,
-     9,
-     10,
-     11,
-     12,
-     13,
-     14,
-     15,
-     16,
-     17,
-     18,
-     19,
-     20,
-     21,
-     22,
-     23,
-     24,
-     25,
-     26,
-     27,
-     28,
-     29,
-     30,
-     31
-    ]
-   },
-   "boletines_sin_leer_por_numeracion": 47,
+   "huecos_numeracion": {},
+   "boletines_sin_leer_por_numeracion": 0,
    "alerta": false
   },
   "boppontevedra": {
@@ -1652,59 +1627,20 @@
   "bopsevilla": {
    "grupo": "provinciales",
    "informes": {
-    "ok": 981,
-    "sin_boletin": 784
+    "ok": 1038,
+    "sin_boletin": 727
    },
    "ultimo_boletin_leido": "2026-10-30",
    "dias_habiles_sin_boletin": 0,
    "empleo_mediana_por_boletin": 6,
    "empleo_ultimos_5_boletines": 34,
    "recuento_bajo": false,
-   "anuncios_empleo": 11284,
+   "anuncios_empleo": 11746,
    "textos": 2424,
-   "textos_pendientes": 8860,
+   "textos_pendientes": 9322,
    "ultimos_errores": [],
-   "huecos_numeracion": {
-    "2022": [
-     280,
-     284,
-     290,
-     296
-    ],
-    "2023": [
-     4,
-     10,
-     16,
-     22,
-     28,
-     34,
-     40,
-     46,
-     51,
-     57,
-     63,
-     69,
-     75,
-     79,
-     85,
-     91,
-     97,
-     102,
-     108,
-     114,
-     120,
-     126,
-     132,
-     138,
-     144,
-     150,
-     156,
-     162,
-     168,
-     174
-    ]
-   },
-   "boletines_sin_leer_por_numeracion": 55,
+   "huecos_numeracion": {},
+   "boletines_sin_leer_por_numeracion": 0,
    "alerta": false
   },
   "bopsoria": {
@@ -1729,19 +1665,19 @@
   "bopt": {
    "grupo": "provinciales",
    "informes": {
-    "ok": 514,
-    "sin_boletin": 211,
-    "error_http": 24,
-    "fuente_inaccesible": 7
+    "ok": 711,
+    "sin_boletin": 269,
+    "fuente_inaccesible": 51,
+    "error_http": 31
    },
    "ultimo_boletin_leido": "2026-10-30",
    "dias_habiles_sin_boletin": 0,
    "empleo_mediana_por_boletin": 8,
    "empleo_ultimos_5_boletines": 37,
    "recuento_bajo": false,
-   "anuncios_empleo": 5204,
+   "anuncios_empleo": 7224,
    "textos": 911,
-   "textos_pendientes": 4293,
+   "textos_pendientes": 6313,
    "ultimos_errores": [
     {
      "fecha": "2026-09-23",
@@ -1773,9 +1709,9 @@
     },
     {
      "fecha": "2026-05-01",
-     "resultado": "error_http",
+     "resultado": "fuente_inaccesible",
      "alertas": [
-      "BOPT 2026-05-01 página 1: HTTP 500"
+      "No se pudo descargar https://www.dipta.cat/bopt/web/anteriors/2026-05-01?bopb_dia%5BtipusAnunci%5D=23 tras 4 intentos: HTTPSConnectionPool(host='www.dipta.cat', port=443): Max retries exceeded with url: /bopt/web/anteriors/2026-05-01?bopb_dia%5BtipusAnunci%5D=23 (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.dipta.cat', port=443) at 0x7f548426e2d0>, 'Connection to www.dipta.cat timed out. (connect timeout=30.0)'))"
      ]
     }
    ],
@@ -1833,52 +1769,22 @@
    "empleo_ultimos_5_boletines": 29,
    "recuento_bajo": false,
    "anuncios_empleo": 8459,
-   "textos": 5249,
-   "textos_pendientes": 3210,
+   "textos": 8355,
+   "textos_pendientes": 104,
    "ultimos_errores": [],
    "huecos_numeracion": {
     "2026": [
-     10,
-     210,
-     211,
-     212,
-     213,
-     214,
-     215,
-     216,
-     217,
-     218,
-     219,
-     220,
-     221,
-     222,
-     223,
-     224,
-     225,
-     226,
-     227,
-     228,
-     229,
-     230,
-     231,
-     232,
-     233,
-     234,
-     235,
-     236,
-     237,
-     238
+     10
     ]
    },
-   "boletines_sin_leer_por_numeracion": 188,
+   "boletines_sin_leer_por_numeracion": 1,
    "alerta": false
   },
   "bopvalencia": {
    "grupo": "provinciales",
    "informes": {
-    "ok": 1207,
-    "sin_boletin": 554,
-    "fuente_inaccesible": 3,
+    "ok": 1208,
+    "sin_boletin": 556,
     "error_formato": 1
    },
    "ultimo_boletin_leido": "2026-10-30",
@@ -1886,36 +1792,15 @@
    "empleo_mediana_por_boletin": 10,
    "empleo_ultimos_5_boletines": 69,
    "recuento_bajo": false,
-   "anuncios_empleo": 12597,
-   "textos": 3940,
-   "textos_pendientes": 8657,
+   "anuncios_empleo": 12604,
+   "textos": 3957,
+   "textos_pendientes": 8647,
    "ultimos_errores": [
     {
      "fecha": "2026-10-12",
      "resultado": "error_formato",
      "alertas": [
       "BOP Valencia 2026-10-12: respuesta sin anuncios y sin el aviso de que no hay resultados"
-     ]
-    },
-    {
-     "fecha": "2026-10-09",
-     "resultado": "fuente_inaccesible",
-     "alertas": [
-      "No se pudo descargar https://bop.dival.es/bop/xhtml/portal.xhtml tras 4 intentos: HTTPSConnectionPool(host='bop.dival.es', port=443): Max retries exceeded with url: /bop/xhtml/portal.xhtml (Caused by ConnectTimeoutError(<HTTPSConnection(host='bop.dival.es', port=443) at 0x7f8dfdbd48f0>, 'Connection to bop.dival.es timed out. (connect timeout=30.0)'))"
-     ]
-    },
-    {
-     "fecha": "2026-08-28",
-     "resultado": "fuente_inaccesible",
-     "alertas": [
-      "No se pudo descargar https://bop.dival.es/bop/xhtml/portal.xhtml tras 4 intentos: HTTPSConnectionPool(host='bop.dival.es', port=443): Max retries exceeded with url: /bop/xhtml/portal.xhtml (Caused by ConnectTimeoutError(<HTTPSConnection(host='bop.dival.es', port=443) at 0x7f8dfdbd6a20>, 'Connection to bop.dival.es timed out. (connect timeout=30.0)'))"
-     ]
-    },
-    {
-     "fecha": "2026-06-24",
-     "resultado": "fuente_inaccesible",
-     "alertas": [
-      "No se pudo descargar https://bop.dival.es/bop/xhtml/portal.xhtml tras 4 intentos: HTTPSConnectionPool(host='bop.dival.es', port=443): Max retries exceeded with url: /bop/xhtml/portal.xhtml (Caused by ConnectTimeoutError(<HTTPSConnection(host='bop.dival.es', port=443) at 0x7f8dffc9de20>, 'Connection to bop.dival.es timed out. (connect timeout=30.0)'))"
      ]
     }
    ],
