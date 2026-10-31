@@ -28,10 +28,10 @@ def v(monkeypatch):
 GRUPOS = {"motor.yml": "rama-datos", "mantenimiento.yml": "rama-datos"}
 
 
-def run(i, flujo, evento, estado, conclusion, creada, fin, actor="alvarorm931", intento=1):
+def run(i, flujo, evento, estado, conclusion, creada, fin, actor="alvarorm931", intento=1, sha="abc"):
     return {"id": i, "name": flujo, "path": f".github/workflows/{flujo}", "event": evento, "status": estado,
             "conclusion": conclusion, "created_at": creada, "updated_at": fin, "run_attempt": intento,
-            "triggering_actor": {"login": actor}, "html_url": f"https://x/{i}"}
+            "triggering_actor": {"login": actor}, "html_url": f"https://x/{i}", "head_sha": sha}
 
 
 def test_grupo_de_concurrencia_solo_a_nivel_de_flujo(tmp_path, v):
@@ -46,7 +46,7 @@ def test_relanza_la_tanda_que_tiro_una_programacion_tardia(v):
                 "2026-10-31T12:51:50Z", "2026-10-31T13:03:38Z"),
             run(2, "motor.yml", "schedule", "completed", "cancelled", "2026-10-31T13:03:36Z", "2026-10-31T13:04:04Z"),
             run(3, "motor.yml", "workflow_dispatch", "in_progress", None, "2026-10-31T11:18:06Z", "2026-10-31T13:00:00Z")]
-    r = v.reponer_desplazadas("o/r", runs, actuar=True, grupos=GRUPOS)
+    r = v.reponer_desplazadas("o/r", runs, actuar=True, grupos=GRUPOS, cabeza="abc")
     assert [d["id"] for d in r] == [1] and r[0]["relanzada"] is True
     assert ("POST", "/repos/o/r/actions/runs/1/rerun") in v.llamadas
 
@@ -109,3 +109,12 @@ def test_ultimo_bien_cuenta_las_saltadas(v, monkeypatch):
         {"conclusion": "failure", "updated_at": "2026-10-31T11:00:00Z"},
         {"conclusion": "success", "updated_at": "2026-10-30T12:27:50Z"}]})
     assert v.madrid(v.ultimo_bien("o/r", "seo.yml")) == v.madrid(v.fecha("2026-10-31T10:58:00Z"))
+
+
+def test_no_relanza_con_codigo_viejo(v):
+    runs = [run(1, "mantenimiento.yml", "workflow_dispatch", "completed", "cancelled",
+                "2026-10-31T12:51:50Z", "2026-10-31T13:03:38Z", sha="viejo"),
+            run(2, "motor.yml", "schedule", "completed", "cancelled", "2026-10-31T13:03:36Z", "2026-10-31T13:04:04Z")]
+    r = v.reponer_desplazadas("o/r", runs, actuar=True, grupos=GRUPOS, cabeza="nuevo")
+    assert r[0]["relanzada"].startswith("no: el código cambió")
+    assert not any(m == "POST" for m, _ in v.llamadas)

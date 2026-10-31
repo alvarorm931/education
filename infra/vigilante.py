@@ -313,7 +313,8 @@ def grupos_de_concurrencia(carpeta: Path = Path(".github/workflows")) -> dict[st
     return salida
 
 
-def reponer_desplazadas(repo: str, runs: list[dict], actuar: bool, grupos: dict[str, str] | None = None) -> list[dict]:
+def reponer_desplazadas(repo: str, runs: list[dict], actuar: bool, grupos: dict[str, str] | None = None,
+                        cabeza: str | None = "") -> list[dict]:
     """Con `concurrency` (sin cancel-in-progress), GitHub deja una sola ejecución esperando por grupo: si llega otra,
     cancela la que esperaba, sin que haya empezado. Así, una programación que GitHub dispara tarde (y que luego se
     cancela por repetida) o una del respaldo puede tirar una tanda que una conversación dejó esperando, o al revés.
@@ -322,9 +323,15 @@ def reponer_desplazadas(repo: str, runs: list[dict], actuar: bool, grupos: dict[
     Se reconoce porque se canceló sin ningún trabajo justo cuando se creó otra ejecución del mismo grupo. Solo se
     miran las lanzadas con workflow_dispatch y en su primer intento. Se relanza una vez, con las mismas entradas,
     salvo que la sustituya otra ejecución posterior del mismo flujo que no se canceló (esté en marcha, esperando o ya
-    terminada), que quien la lanzó ya la haya relanzado, o que en el grupo haya otra esperando (la tiraría a ella; se
-    vuelve a mirar en la pasada siguiente)."""
+    terminada), que quien la lanzó ya la haya relanzado, que en el grupo haya otra esperando (la tiraría a ella; se
+    vuelve a mirar en la pasada siguiente) o que `main` haya cambiado desde que se lanzó (el «Re-run» repetiría el
+    código viejo: solo se avisa en el informe). `cabeza` es el commit de main ("" para pedirlo; None para no mirarlo)."""
     grupos = grupos_de_concurrencia() if grupos is None else grupos
+    if cabeza == "":
+        try:
+            cabeza = api(f"/repos/{repo}/commits/main").get("sha")
+        except Exception:
+            cabeza = None
     grupo = lambda r: grupos.get((r.get("path") or "").split("/")[-1])
     actor = lambda r: (r.get("triggering_actor") or {}).get("login")
     salida = []
@@ -357,6 +364,10 @@ def reponer_desplazadas(repo: str, runs: list[dict], actuar: bool, grupos: dict[
             item["relanzada"] = "no hace falta: ya la relanzó quien la lanzó"
         elif any(grupo(o) == g and o.get("status") in ("pending", "waiting", "requested") for o in runs):
             item["relanzada"] = "aún no: hay otra esperando en el grupo"
+        elif cabeza is not None and c.get("head_sha") and c["head_sha"] != cabeza:
+            # Un «Re-run» repite el commit con el que se lanzó; si main ha cambiado, correría código viejo (31/10,
+            # aviso de oposiciones). Entonces no se relanza: lo ve quien la lanzó en el informe.
+            item["relanzada"] = "no: el código cambió desde que se lanzó; que la relance quien la lanzó"
         elif actuar:
             try:
                 api(f"/repos/{repo}/actions/runs/{c['id']}/rerun", metodo="POST", datos={})
