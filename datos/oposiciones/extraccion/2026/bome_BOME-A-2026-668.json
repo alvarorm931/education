@@ -5,18 +5,18 @@
   "fuente": "BOME",
   "url": "https://bomemelilla.es/bome/BOME-B-2026-6387/articulo/668",
   "fecha": "2026-06-12",
-  "huella": "5bf83521f3fa48b0094a6e5c655c6d83d54b3a4b0b96477a7f49df4eac5fd4c4"
+  "huella": "7227dcf6741e23043960829dbba2d69dc4be8973b864cefa62dfe9d8eadc0208"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T08:17:53+00:00",
- "lote": "msgbatch_01BrnYw6KkevFx7at547B5g8",
+ "extraido": "2026-10-31T11:20:09+00:00",
+ "lote": "msgbatch_01MXXMFvrqAAHficSS2SFuRZ",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
    "valor": [
-    "Ordenanza"
+    "Ordenanzas"
    ],
-   "cita": "CONVOCATORIA DE UNA BOLSA TEMPORAL DE TRABAJO DE ORDENANZAS EN PROYECTO MELILLA S.A.U.",
+   "cita": "la categoría de Ordenanza en el Convenio Colectivo de PROYECTO MELILLA S.A.U., en vigor",
    "nivel": "literal"
   },
   "vinculo": {
@@ -29,38 +29,54 @@
    "cita": "El proceso selectivo consistirá en una única prueba obligatoria y eliminatoria de carácter teórico.",
    "nivel": "literal"
   },
-  "otros_requisitos": {
-   "valor": "Tener cumplidos dieciocho años y no exceder de la edad máxima de jubilación forzosa. Poseer capacidad funcional necesaria. Tener nacionalidad española, de un Estado miembro de la UE o cumplir requisitos de acceso al empleo público.",
-   "cita": "Tener cumplidos dieciocho años y no exceder de la edad máxima de jubilación forzosa.",
+  "titulacion": {
+   "valor": "Certificado de escolaridad, Educación Primaria o equivalente",
+   "cita": "Estar en posesión del nivel de formación equivalente a Educación Primaria, Certificado de Escolaridad o equivalente.",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "diez (10) días naturales, contados desde el día siguiente al de la publicación de la convocatoria en el BOME",
-   "cita": "El plazo de presentación de solicitudes será de diez (10) días naturales, contados a partir del día siguiente al de la publicación",
-   "nivel": "sin_signos"
+   "valor": "diez (10) días naturales, contados desde el día siguiente a la publicación de la convocatoria en el BOME",
+   "cita": "El plazo de presentación de solicitudes será de diez (10) días naturales , contados a partir del día siguiente",
+   "nivel": "literal"
   },
   "presentacion": {
-   "valor": "A través del registro electrónico disponible en la web www.promesa.net",
+   "valor": "Registro electrónico disponible en www.promesa.net; solicitud según Anexo II",
    "cita": "Las solicitudes podrán presentarse: A través del registro electrónico disponible en la web www.promesa.net",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Tablón de anuncios de Proyecto Melilla, S.A.U. (calle La Dalia 36) y web www.promesa.net; en su caso, Boletín de la Ciudad",
-   "cita": "se realizará mediante su inserción en el tablón de anuncios de Proyecto Melilla, SAU sitas en Calle la Dalia, 36 de Melilla",
+   "valor": "Tablón de anuncios de Proyecto Melilla, S.A.U. y web www.promesa.net; en su caso, Boletín de la Ciudad",
+   "cita": "se realizará mediante su inserción en el tablón de anuncios de Proyecto Melilla, SAU sitas en Calle la Dalia",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Prueba teórica tipo test de 50 preguntas con 4 respuestas, solo una correcta, en 60 minutos, calificada de 0 a 50 (mínimo 30 para superar)"
+    "Cuestionario tipo test de 50 preguntas con cuatro respuestas, una correcta, en 60 minutos (0 a 50 puntos; 30 para superar)"
    ],
    "cita": "consistirá en un cuestionario tipo test de cincuenta (50) preguntas, con cuatro respuestas alternativas",
    "nivel": "literal"
   },
   "bolsa": {
-   "valor": "sí, bolsa temporal de trabajo de Ordenanzas para cubrir necesidades temporales de personal laboral, máximo 50 integrantes, vigencia de tres años prorrogable tres años más",
+   "valor": "sí, para cubrir necesidades temporales de personal laboral (sustituciones por incapacidad temporal, acumulación de tareas, incremento de actividad); vigencia de tres años prorrogable tres años más; máximo de 50 integrantes",
    "cita": "Los aspirantes que superen el proceso selectivo formarán parte de la bolsa de trabajo, ordenados según la puntuación obtenida, hasta alcanzar un máximo de cincuenta (50) integrantes.",
    "nivel": "literal"
   }
  },
- "rechazados": {}
+ "rechazados": {
+  "otros_requisitos": {
+   "motivo": "cita_no_literal",
+   "valor": "Permiso de conducción tipo B; dieciocho años cumplidos; no exceder la edad máxima de jubilación forzosa; capacidad funcional; nacionalidad española, de la UE o requisitos de acceso al empleo público",
+   "cita": "Estar en posesión del permiso de conducción tipo B. Tener cumplidos dieciocho años y no exceder de la edad máxima de jubilación forzosa."
+  },
+  "tasa_euros": {
+   "motivo": "cita_no_literal",
+   "valor": 0,
+   "cita": ""
+  },
+  "temas": {
+   "motivo": "valor_no_en_cita",
+   "valor": 6,
+   "cita": "Organización básica de Proyecto Melilla S.A.U. Funciones básicas del puesto de ordenanza. Atención al público"
+  }
+ }
 }

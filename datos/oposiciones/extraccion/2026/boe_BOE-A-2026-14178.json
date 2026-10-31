@@ -1,53 +1,120 @@
 {
  "proceso": "boe:BOE-A-2026-14178",
  "documento": {
-  "id": "dogc:1047723",
-  "fuente": "DOGC",
-  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1047723",
-  "fecha": "2026-06-22",
-  "huella": "9e27222bb517c7a5910f749b0ed066ad33a4f1bbef81abc21842fe822a07c2f1"
+  "id": "bopt:BOPT-2026-05527",
+  "fuente": "BOPT",
+  "url": "https://www.dipta.cat/bopt/web/anunci/361108/placa-de-vigilant-municipal-2-bases-i-convocatoria-ajuntament-espluga-de-francoli-l",
+  "fecha": "2026-06-12",
+  "huella": "346c9b0cf289b6eb3cc75f505a78da2cd82c9de0c6d7797283ce7e271e700c00"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T07:51:51+00:00",
- "lote": "msgbatch_01NvbwpQGcC9vt1x7nWayvXt",
+ "extraido": "2026-10-31T11:20:09+00:00",
+ "lote": "msgbatch_01MXXMFvrqAAHficSS2SFuRZ",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
-   "valor": "Vigilante",
-   "cita": "Denominación de la plaza según plantilla: Vigilante",
-   "nivel": "literal"
-  },
-  "grupo": {
-   "valor": "AP",
-   "cita": "Grupo de clasificación: AP",
+   "valor": [
+    "Vigilant municipal"
+   ],
+   "cita": "CONVOCATÒRIA I BASES DEL PROCÉS SELECTIU MITJANÇANT CONCURS OPOSICIÓ, TORN LLIURE, DE DUES PLACES DE PERSONAL FUNCIONARI DE CARRERA, VIGILANT MUNICIPAL",
    "nivel": "literal"
   },
   "vinculo": {
    "valor": "funcionario de carrera",
-   "cita": "Régimen jurídico: funcionarial Carácter: de carrera",
+   "cita": "dues places de personal funcionari de carrera, vigilant municipal",
    "nivel": "literal"
   },
   "sistema": {
    "valor": "concurso-oposición",
-   "cita": "Sistema de selección: concurso-oposición",
+   "cita": "mitjançant concurs-oposició, torn lliure, de dues places de vigilant municipal",
    "nivel": "literal"
   },
-  "plazas_total": {
+  "plazas_turno_libre": {
    "valor": 2,
-   "cita": "Número de plazas convocadas: 2",
+   "cita": "CONVOCATÒRIA I BASES DEL PROCÉS SELECTIU MITJANÇANT CONCURS OPOSICIÓ, TORN LLIURE, DE DUES PLACES",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Certificado de escolaridad o título equivalente o superior",
+   "cita": "Estar en possessió del Certificat d’escolaritat o un altre títol equivalent o superior.",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española; mayoría de edad y no superar edad máxima de jubilación; no condenado por delito ni inhabilitado; capacidad funcional; permiso de conducir clase B",
+   "cita": "Tenir la nacionalitat espanyola, d’acord amb les lleis vigents.",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Català, nivell intermedi B2",
+   "cita": "Posseir el Certificat de nivell intermedi de català (B2) de la Direcció General de Política Lingüística",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Ninguna mencionada en el texto",
+   "cita": "no procedirà cap devolució dels drets d’examen en els supòsits d’exclusió per causa imputable",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "20 días hábiles contados a partir del día siguiente a la última publicación de este anuncio en el DOGC o BOE",
-   "cita": "El plazo para presentar solicitudes finaliza a los 20 días hábiles contados a partir del día siguiente a la última publicación",
+   "valor": "20 días hábiles desde el día siguiente a la publicación del extracto de la convocatoria en el DOGC o BOE",
+   "cita": "El termini per presentar les sol·licituds és de 20 dies hàbils a partir de l’endemà de la publicació",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Registro electrónico del Ente con certificado digital o firma electrónica; presencial en la OAC",
+   "cita": "Electrònicament: al registre electrònic de l’Ens, a través del següent enllaç",
+   "nivel": "sin_signos"
+  },
+  "publicaciones": {
+   "valor": "Seu electrónica del Ayuntamiento y BOPT; extracto en DOGC y BOE",
+   "cita": "es publicarà al Butlletí Oficial de la Província de Tarragona, a la Seu Electrònica i al Portal de Transparència",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Titulaciones (máx. 1 punto); cursos de formación (máx. 2 puntos); experiencia profesional (máx. 4 puntos)",
+   "cita": "C.3. Experiència professional d'acord amb el següent barem i que en cap cas pot ser superior a 4 punts",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Periodo de prácticas de 3 meses como funcionario en prácticas",
+   "cita": "El període de pràctiques es realitzarà sota la supervisió del/de la cap de la unitat administrativa",
    "nivel": "literal"
   }
  },
  "rechazados": {
-  "plazas_turno_libre": {
-   "motivo": "valor_no_en_cita",
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "AP",
+   "cita": "de l'escala d'administració especial, Subescala de Serveis Especials, grup AP, classe Policia Local"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
    "valor": 2,
-   "cita": "Turno: libre"
+   "cita": "dues places de vigilant municipal, amb caràcter de personal funcionarial de carrera"
+  },
+  "tasa_euros": {
+   "motivo": "cita_no_literal",
+   "valor": 21,
+   "cita": "Els drets d'examen d’aquesta convocatòria es fixen en la quantitat de 21,00 €"
+  },
+  "ejercicios": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Fase de conocimiento de catalán (apto/no apto, si procede)",
+    "Prueba psicotécnica (eliminatoria)",
+    "Prueba teórica de conocimiento del municipio (test de 10 preguntas, 0-10)",
+    "Prueba práctica escrita (0-20)"
+   ],
+   "cita": "Consistirà en la realització de les següents proves: B.1. Prova psicotècnica. De caràcter obligatori i eliminatori."
+  },
+  "temas": {
+   "motivo": "cita_no_literal",
+   "valor": 11,
+   "cita": "ANNEX III.- TEMARI 1. La Constitució Espanyola de 1978 ... 11. L’Ordenança municipal reguladora"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, para cubrir futuras necesidades de personal temporal",
+   "cita": "Totes les persones que superin la prova psicotècnica i la prova teòrica ... seran incloses en una borsa d’ocupació"
   }
  }
 }

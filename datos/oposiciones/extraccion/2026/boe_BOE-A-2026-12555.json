@@ -1,55 +1,116 @@
 {
  "proceso": "boe:BOE-A-2026-12555",
  "documento": {
-  "id": "dogc:1044718",
-  "fuente": "DOGC",
-  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1044718",
-  "fecha": "2026-05-20",
-  "huella": "3b1a84b40e59e8158c8dbd032d8163651768ebab5f01e00aed6b2f6cbadb926a"
+  "id": "bopt:BOPT-2026-04223",
+  "fuente": "BOPT",
+  "url": "https://www.dipta.cat/bopt/web/anunci/359701/placa-d-administratiu-iva-1-bases-i-convocatoria-ajuntament-maso-la",
+  "fecha": "2026-05-12",
+  "huella": "5e3ca08040140bfd32c96e71da007d8f4af8607aa84846e10df6e5ef2983fb30"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T07:51:52+00:00",
- "lote": "msgbatch_01NvbwpQGcC9vt1x7nWayvXt",
+ "extraido": "2026-10-31T11:20:08+00:00",
+ "lote": "msgbatch_01MXXMFvrqAAHficSS2SFuRZ",
  "no_son_bases": false,
  "campos": {
-  "denominacion": {
-   "valor": [
-    "Auxiliar Administratiu/iva"
-   ],
-   "cita": "Denominació de la plaça segons plantilla: Auxiliar Administratiu/iva",
-   "nivel": "literal"
-  },
   "grupo": {
    "valor": "C1",
-   "cita": "Grup de classificació: C1",
-   "nivel": "literal"
-  },
-  "vinculo": {
-   "valor": "funcionario de carrera",
-   "cita": "Règim jurídic: funcionarial Caràcter: de carrera",
+   "cita": "enquadrada en el Grup C, subgrup C1, mitjançant concurs-oposició, torn lliure",
    "nivel": "literal"
   },
   "sistema": {
    "valor": "concurso-oposición",
-   "cita": "Sistema de selecció: concurs oposició",
+   "cita": "mitjançant concurs-oposició, torn lliure, vacant a la plantilla de personal",
    "nivel": "literal"
   },
-  "plazas_total": {
-   "valor": 1,
-   "cita": "Nombre de places convocades: 1",
+  "titulacion": {
+   "valor": "Batxillerat, FPII o equivalent",
+   "cita": "Posseir el títol de Batxillerat, FPII o equivalent, i estar en condicions de tenir l'acreditació",
+   "nivel": "sin_signos"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalitat espanyola o de la UE (o aplicació de lliure circulació); capacitat funcional; setze anys i no excedir l'edat de jubilació; no haver estat separat del servei ni inhabilitat per a càrrecs públics.",
+   "cita": "Haver complert setze anys i no excedir, en el seu cas, de l'edat màxima de jubilació forçosa fixada per la llei.",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 30,
+   "cita": "es fixa la quantitat de 30 € en concepte de taxa per drets d'examen",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Persones amb discapacitat igual o superior al 33%; demandants d'ocupació amb requisits; reducció del 95% per a famílies nombroses.",
+   "cita": "Estan exemptes del pagament de la taxa les persones aspirants amb discapacitat igual o superior al 33%.",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "20 días hábiles a partir del día siguiente a la última publicación del anuncio en el DOGC o BOE",
-   "cita": "El termini per presentar sol·licituds finalitza als 20 dies hàbils comptats a partir de l'endemà",
+   "valor": "20 dies hàbils a partir de l'endemà de la darrera publicació de l'extracte de la convocatòria en el DOGC o BOE",
+   "cita": "El termini per presentar sol·licituds és de 20 dies hàbils a partir de l'endemà",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Preferentment electrònicament al registre electrònic de l'Ens amb certificat digital; també presencialment al Registre General, Carrer Major, 15.",
+   "cita": "Preferentment les instàncies es presentaran electrònicament: al registre electrònic de l'Ens.",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Seu electrònica de l'Ens i BOPT; extracte al DOGC i BOE; web corporativa a efectes informatius",
+   "cita": "La present convocatòria es publicarà al Butlletí Oficial de la Província de Tarragona, a la Seu electrònica",
+   "nivel": "sin_signos"
+  },
+  "ejercicios": {
+   "valor": [
+    "Primer exercici: test de 30 preguntes amb 3 respostes alternatives sobre el temari (eliminatori, mínim 5)",
+    "Segon exercici: preguntes curtes sobre supòsits pràctics relacionats amb les funcions del lloc (eliminatori, mínim 5)"
+   ],
+   "cita": "1r exercici: Aquesta prova consisteix en la realització d'un test de 30 preguntes amb 3 respostes alternatives",
+   "nivel": "literal"
+  },
+  "temas": {
+   "valor": 40,
+   "cita": "Tema 40. La protecció de dades de caràcter personal i la garantia dels drets digitals.",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Entrevista fins a 3 punts; experiència laboral fins a 3 punts (0,40 per any en administració pública i 0,20 per any en empresa privada); formació fins a 3 punts; coneixement d'anglès B1 0,50 punts.",
+   "cita": "Entrevista (no eliminatòria) (màxim 3 punts): Es farà una entrevista a les persones aspirants",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, per cobrir vacants temporals del mateix subgrup/categoria, durant 2 anys prorrogables fins a 5",
+   "cita": "Totes les persones que superin el primer exercici (tes t) d'aquest procés selectiu i no resultin nomenades, formaran part de la borsa de treball.",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "sí, periodo de pràctiques establert (la no superació és causa d'exclusió de la borsa)",
+   "cita": "No superar el perí ode de pràctiques establert.",
    "nivel": "literal"
   }
  },
  "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Administratiu/iva",
+   "cita": "ha resolt convocar procés per a la selecció d'una plaça de personal funcionari de carrera, Administratiu/iva"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "convocar procés per a la selecció d'una plaça de personal funcionari de carrera"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 1,
+   "cita": "selecció, mitjançant concurs-oposició, torn lliure, d'una plaça d'administratiu/iva"
+  },
   "plazas_turno_libre": {
    "motivo": "valor_no_en_cita",
    "valor": 1,
-   "cita": "Torn: lliure"
+   "cita": "mitjançant concurs-oposició, torn lliure, vacant a la plantilla de personal"
+  },
+  "idioma_cooficial": {
+   "motivo": "cita_no_literal",
+   "valor": "Català nivell C1 (certificat de suficiència o equivalent); castellà nivell C2 només per a aspirants no espanyols i no originaris de països hispanoparlants",
+   "cita": "Posseir el certificat de nivell C1, de suficiència de català expedit per l'òrgan competent"
   }
  }
 }

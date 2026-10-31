@@ -5,13 +5,20 @@
   "fuente": "BOPV",
   "url": "https://www.euskadi.eus/web01-bopv/es/bopv2/datos/2026/10/2604576a.shtml",
   "fecha": "2026-10-30",
-  "huella": "42ec841dbfa40ab9687d0d4f1d7b809962ead5723512e59ca041f67abee75b1a"
+  "huella": "953901162561233e7518de810904fecf50b4b6d391f1886a641fa64fdf6a8b2e"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T08:03:52+00:00",
- "lote": "msgbatch_013xFoLdqcGqWcqkzh7qrdGg",
+ "extraido": "2026-10-31T11:20:06+00:00",
+ "lote": "msgbatch_01MXXMFvrqAAHficSS2SFuRZ",
  "no_son_bases": false,
  "campos": {
+  "denominacion": {
+   "valor": [
+    "médico/a (puesto funcional de facultativo/a especialista médico/a cuidados paliativos)"
+   ],
+   "cita": "la categoría de médico/a (puesto funcional de facultativo/a especialista médico/a cuidados paliativos) del grupo profesional",
+   "nivel": "literal"
+  },
   "grupo": {
    "valor": "A1",
    "cita": "Grupo A1: 25 euros.",
@@ -29,12 +36,12 @@
   },
   "plazas_total": {
    "valor": 1,
-   "cita": "a) Convocatoria de turno libre: 1 destino.",
+   "cita": "Convocatoria de turno libre: 1 destino.",
    "nivel": "literal"
   },
   "plazas_turno_libre": {
    "valor": 1,
-   "cita": "Acceso general: 1.",
+   "cita": "a) Convocatoria de turno libre: 1 destino.",
    "nivel": "literal"
   },
   "plazas_discapacidad": {
@@ -42,9 +49,19 @@
    "cita": "Cupo de reserva para personas con discapacidad-otras discapacidades: 0.",
    "nivel": "literal"
   },
+  "titulacion": {
+   "valor": "licenciado/a o equivalente en medicina y cirugía y la de cualquier especialidad requerida para el desempeño del puesto funcional",
+   "cita": "la titulación de licenciado/a o equivalente en medicina y cirugía y de la de cualquier especialidad requerida",
+   "nivel": "literal"
+  },
   "otros_requisitos": {
-   "valor": "Cumplir los requisitos del puesto establecidos en la normativa vigente, mantenerlos hasta la toma de posesión, y los requisitos generales de las bases generales",
+   "valor": "Cumplir los requisitos del puesto establecidos en la normativa vigente, y los requisitos generales de las bases generales que deben mantenerse hasta la toma de posesión.",
    "cita": "En todo caso, deberán cumplirse los requisitos del puesto al que se opte establecidos por lo dispuesto en la normativa vigente.",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Euskera: PL2 o PL1 valorados como mérito (18 y 9 puntos)",
+   "cita": "3) Euskera: – PL2: 18 puntos. – PL1: 9 puntos.",
    "nivel": "literal"
   },
   "tasa_euros": {
@@ -58,54 +75,44 @@
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Según la base 10.3 de la Resolución 120/2026 de las bases generales",
+   "valor": "Según lo previsto en la base 10.3 de la Resolución 120/2026 de las bases generales",
    "cita": "de acuerdo con lo previsto en la base 10.3 de la Resolución 120/2026",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial del País Vasco y página web de Osakidetza",
+   "cita": "la batería que se facilitará con una antelación de al menos 12 semanas en la página web de Osakidetza",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Primer ejercicio teórico: preguntas con respuestas alternativas sobre el programa (65 %)",
-    "Segundo ejercicio práctico: cuestionario tras exposición de uno o varios casos prácticos (35 %)"
+    "Primer ejercicio teórico: preguntas con respuestas alternativas sobre el temario (65 %)",
+    "Segundo ejercicio práctico: cuestionario tras exposición de casos prácticos (35 %)"
    ],
-   "cita": "Primer ejercicio teórico: consistirá en la contestación de preguntas con respuestas alternativas",
+   "cita": "a) Primer ejercicio teórico: consistirá en la contestación de preguntas con respuestas alternativas",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Experiencia profesional hasta 60 puntos; formación, docencia e investigación hasta 20 puntos; euskera hasta 18 puntos",
+   "cita": "1) Experiencia profesional (máximo 60 puntos).",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "no",
+   "cita": "Tercero.– Aprobar la relación de destinos ofertados mediante el Anexo II",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "presentar certificado de colegiación en la toma de posesión; sin periodo de prácticas indicado",
+   "cita": "Certificado de colegiación.",
    "nivel": "literal"
   }
  },
  "rechazados": {
-  "denominacion": {
-   "motivo": "cita_no_literal",
-   "valor": "Médico/a (puesto funcional de facultativo/a especialista médico/a cuidados paliativos), grupo profesional de facultativos/as médicos/as y técnicos/as, Osakidetza-Servicio vasco de salud",
-   "cita": "convocatoria de destinos de la categoría de médico/a (puesto funcional de facultativo/a especialista médico/a cuidados paliativos)"
-  },
-  "titulacion": {
-   "motivo": "cita_no_literal",
-   "valor": "Licenciado/a o equivalente en medicina y cirugía y la especialidad requerida para el puesto funcional, o título del Real Decreto 853/1993 según Anexo I del Decreto 186/2005",
-   "cita": "estar en posesión de la titulación de licenciado/a o equivalente en medicina y cirugía y de la de cualquier especialidad requerida"
-  },
-  "publicaciones": {
-   "motivo": "cita_no_literal",
-   "valor": "Boletín Oficial del País Vasco (BOPV) y página web de Osakidetza",
-   "cita": "la prueba se incluirá en el mismo cuestionario, facilitándose la batería en la página web de Osakidetza"
-  },
   "temas": {
    "motivo": "cita_no_literal",
-   "valor": 44,
-   "cita": "Temario común de 19 temas y temario específico de 25 temas"
-  },
-  "meritos": {
-   "motivo": "cita_no_literal",
-   "valor": "Experiencia profesional (máx. 60 pts), formación, docencia e investigación (máx. 20 pts), euskera (PL2 18 pts, PL1 9 pts)",
-   "cita": "Se valorarán los méritos alegados y acreditados según el baremo de méritos que se acompaña como Anexo III"
-  },
-  "bolsa": {
-   "motivo": "cita_no_literal",
-   "valor": "no se indica",
-   "cita": ""
-  },
-  "practicas_o_curso": {
-   "motivo": "cita_no_literal",
-   "valor": "no se indica",
-   "cita": ""
+   "valor": 45,
+   "cita": "Temario común (19 temas) y temario específico (25 temas)"
   }
  }
 }

@@ -5,33 +5,23 @@
   "fuente": "BOPV",
   "url": "https://www.euskadi.eus/web01-bopv/es/bopv2/datos/2026/10/2604581a.shtml",
   "fecha": "2026-10-30",
-  "huella": "12eb1b5318e537036682226eff45948e3f81e64546011179ed8ddc92158fc3d0"
+  "huella": "bed1fe284cb143a2d0485dd4978b09ea3fced2bd8f262759cae26c2b4e7cba83"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T08:03:34+00:00",
- "lote": "msgbatch_013xFoLdqcGqWcqkzh7qrdGg",
+ "extraido": "2026-10-31T11:20:07+00:00",
+ "lote": "msgbatch_01MXXMFvrqAAHficSS2SFuRZ",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
    "valor": [
     "médico/a (puesto funcional de facultativo/a especialista médico/a pediatra-EAP)"
    ],
-   "cita": "categoría de médico/a (puesto funcional de facultativo/a especialista médico/a pediatra-EAP) del grupo profesional de facultativos/as",
-   "nivel": "literal"
-  },
-  "grupo": {
-   "valor": "A1",
-   "cita": "Grupo A1: 25 euros.",
+   "cita": "categoría de médico/a (puesto funcional de facultativo/a especialista médico/a pediatra-EAP) del grupo profesional de facultativos/as médicos/as",
    "nivel": "literal"
   },
   "vinculo": {
-   "valor": "personal laboral fijo",
+   "valor": "personal estatutario fijo",
    "cita": "para la adquisición del vínculo estatutario fijo en Osakidetza-Servicio vasco de salud",
-   "nivel": "literal"
-  },
-  "sistema": {
-   "valor": "concurso-oposición",
-   "cita": "Son objeto de esta convocatoria los destinos de la categoría de médico/a",
    "nivel": "literal"
   },
   "plazas_total": {
@@ -49,8 +39,13 @@
    "cita": "Cupo de reserva para personas con discapacidad-otras discapacidades: 2.",
    "nivel": "literal"
   },
+  "titulacion": {
+   "valor": "licenciado/a o equivalente en medicina y cirugía y especialista en pediatría",
+   "cita": "la titulación de licenciado/a o equivalente en medicina y cirugía y de la especialidad en pediatría",
+   "nivel": "literal"
+  },
   "otros_requisitos": {
-   "valor": "Cumplir los requisitos del puesto establecidos por la normativa vigente y los requisitos exigidos en las bases generales, manteniéndolos hasta la toma de posesión.",
+   "valor": "Cumplir los requisitos del puesto establecidos en la normativa vigente, y mantenerlos hasta la toma de posesión; además de los requisitos de las bases generales.",
    "cita": "En todo caso, deberán cumplirse los requisitos del puesto al que se opte establecidos por lo dispuesto en la normativa vigente.",
    "nivel": "literal"
   },
@@ -67,37 +62,37 @@
   "ejercicios": {
    "valor": [
     "Fase de oposición: cuestionario escrito de preguntas sobre el programa del Anexo IV",
-    "Fase de concurso: valoración de méritos según baremo del Anexo III"
+    "Fase de concurso: valoración de méritos según el baremo del Anexo III"
    ],
    "cita": "La prueba consistirá en la contestación por escrito en el plazo máximo que se fije, de un cuestionario",
    "nivel": "literal"
   },
+  "temas": {
+   "valor": 19,
+   "cita": "19. Ley 53/1984, de 26 de diciembre, de Incompatibilidades del personal al servicio de las Administraciones Públicas.",
+   "nivel": "sin_signos"
+  },
   "meritos": {
-   "valor": "Experiencia profesional (máx. 60 puntos); formación, docencia e investigación (máx. 20 puntos); euskera (PL2 18 puntos, PL1 9 puntos).",
-   "cita": "3) Euskera: – PL2: 18 puntos. – PL1: 9 puntos.",
+   "valor": "Experiencia profesional (máx. 60 pts); formación, docencia e investigación (máx. 20 pts); euskera (PL2 18 pts, PL1 9 pts)",
+   "cita": "Experiencia profesional (máximo 60 puntos). Se computará el tiempo de servicios",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "no",
+   "cita": "Se valorarán los méritos alegados y acreditados en la forma y plazo establecidos",
    "nivel": "literal"
   },
   "practicas_o_curso": {
    "valor": "no",
-   "cita": "Toma de posesión. Además de la documentación mencionada en la base 20",
+   "cita": "Además de la documentación mencionada en la base 20 de las bases generales",
    "nivel": "literal"
   }
  },
  "rechazados": {
-  "titulacion": {
+  "sistema": {
    "motivo": "cita_no_literal",
-   "valor": "licenciado/a o equivalente en medicina y cirugía y titulación de especialista en pediatría",
-   "cita": "La titulación exigida para el acceso a la categoría de médico/a es la titulación de licenciado/a"
-  },
-  "temas": {
-   "motivo": "valor_no_en_cita",
-   "valor": 19,
-   "cita": "Temario común del grupo profesional de facultativos/as médicos/as y técnicos/as"
-  },
-  "bolsa": {
-   "motivo": "cita_no_literal",
-   "valor": "no",
-   "cita": "Los destinos convocados se proveen en esta convocatoria, sin mención a bolsa."
+   "valor": "concurso-oposición",
+   "cita": "Fase de oposición. Fase de concurso. Se valorarán los méritos alegados y acreditados"
   }
  }
 }

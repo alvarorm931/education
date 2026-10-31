@@ -5,71 +5,76 @@
   "fuente": "DOGC",
   "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1050319",
   "fecha": "2026-07-20",
-  "huella": "4cdb75c9ecdd945975ae6b890886e2e50c57c8b08bf5c2e18b698b4c302e7099"
+  "huella": "9a4be8d2c83c6d10c12d83ad8b22233e66e5b154913266a13795b45dee307d58"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T07:52:00+00:00",
- "lote": "msgbatch_01NvbwpQGcC9vt1x7nWayvXt",
+ "extraido": "2026-10-31T11:20:12+00:00",
+ "lote": "msgbatch_01MXXMFvrqAAHficSS2SFuRZ",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
-   "valor": "terapeuta ocupacional (B1)",
-   "cita": "convoca 1 plaza de la categoría profesional de terapeuta ocupacional (B1) en régimen de personal laboral fijo",
+   "valor": [
+    "terapeuta ocupacional (B1)"
+   ],
+   "cita": "plaza de la categoría profesional de terapeuta ocupacional (B1) en régimen de personal laboral fijo",
    "nivel": "literal"
   },
   "grupo": {
    "valor": "B1",
-   "cita": "convocar el proceso de selección de nuevo acceso, mediante el sistema de concurso oposición, para proveer una plaza de la categoría profesional de terapeuta ocupacional (B1)",
+   "cita": "categoría profesional de terapeuta ocupacional (B1)",
    "nivel": "literal"
   },
   "vinculo": {
    "valor": "personal laboral fijo",
-   "cita": "Se convoca 1 plaza de la categoría profesional de terapeuta ocupacional (B1) en régimen de personal laboral fijo",
+   "cita": "en régimen de personal laboral fijo del Departamento de Derechos Sociales e Inclusión",
    "nivel": "literal"
   },
   "sistema": {
    "valor": "concurso-oposición",
-   "cita": "mediante el sistema de concurso oposición, para proveer una plaza de la categoría profesional de terapeuta ocupacional",
+   "cita": "mediante el sistema de concurso oposición, para proveer una plaza",
    "nivel": "literal"
   },
   "plazas_total": {
    "valor": 1,
-   "cita": "Se convoca 1 plaza de la categoría profesional de terapeuta ocupacional (B1) en régimen de personal laboral fijo",
+   "cita": "Se convoca 1 plaza de la categoría profesional de terapeuta ocupacional",
    "nivel": "literal"
   },
   "titulacion": {
-   "valor": "título universitario de diplomatura o grado en Terapia ocupacional",
+   "valor": "Diplomatura o grado en Terapia ocupacional",
    "cita": "título universitario de diplomatura o grado en Terapia ocupacional",
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Nacionalidad española o de Estado miembro de la UE u otros supuestos legales; haber cumplido 16 años y no superar la edad de jubilación forzosa; capacidad funcional; no haber sido separado del servicio ni inhabilitado; no ser personal laboral fijo de la categoría en la Generalitat; C1 de catalán",
-   "cita": "Tener la nacionalidad española o ser nacional de alguno de los otros estados miembros de la Unión Europea",
+   "valor": "Nacionalidad española o de otro Estado miembro de la UE u otros supuestos; haber cumplido 16 años y no superar la edad de jubilación forzosa; capacidad funcional; no haber sido separado del servicio ni inhabilitado.",
+   "cita": "Haber cumplido 16 años y no superar la edad establecida para la jubilación forzosa",
    "nivel": "literal"
   },
   "idioma_cooficial": {
-   "valor": "catalán, nivel C1 o superior",
+   "valor": {
+    "lengua": "catalán",
+    "nivel": "C1"
+   },
    "cita": "Disponer del nivel de conocimientos de lengua catalana de suficiencia C1 o superior",
    "nivel": "literal"
   },
   "tasa_euros": {
    "valor": 56.7,
-   "cita": "Tasa general: 56,70 euros.",
+   "cita": "a) Tasa general: 56,70 euros.",
    "nivel": "literal"
   },
   "exenciones_tasa": {
-   "valor": "Exentas las personas en situación de desempleo sin prestación, las personas jubiladas no superada la edad de jubilación forzosa, y las que acrediten discapacidad igual o superior al 33%; bonificaciones para familias monoparentales o numerosas y víctimas de violencia machista",
-   "cita": "Están exentas de realizar el pago de la tasa, con la justificación documental de su situación, las personas aspirantes que, dentro del plazo",
+   "valor": "Exentas las personas en desempleo sin prestación, las jubiladas no forzosas y las que acrediten discapacidad igual o superior al 33%; bonificación para familias monoparentales o numerosas y víctimas de violencia machista.",
+   "cita": "Están exentas de realizar el pago de la tasa, con la justificación documental de su situación",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
    "valor": "10 días hábiles desde el día siguiente a la publicación de la convocatoria en el DOGC",
-   "cita": "Las solicitudes de participación deberán dirigirse al órgano convocante y presentarse en el plazo de 10 días hábiles",
+   "cita": "presentarse en el plazo de 10 días hábiles a contar desde el día siguiente al de la publicación",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Formulario habilitado en el portal Trámites (tramits.gencat.cat), de uso obligatorio; registro electrónico automático",
-   "cita": "se debe cumplimentar y presentar el formulario habilitado que está disponible en el portal Trámites del web de la Generalitat",
+   "valor": "Formulario obligatorio del portal Trámites de la Generalitat (tramits.gencat.cat), registro automático en el Registro general electrónico.",
+   "cita": "formulario habilitado que está disponible en el portal Trámites del web de la Generalitat de Catalunya",
    "nivel": "literal"
   },
   "publicaciones": {
@@ -79,13 +84,13 @@
   },
   "ejercicios": {
    "valor": [
-    "Primer ejercicio obligatorio y eliminatorio: cuestionario tipo test de 50 preguntas sobre conocimientos generales (0-20 puntos, mínimo 10)",
-    "Segundo ejercicio obligatorio y eliminatorio: supuesto práctico tipo test de 20 preguntas (0-30 puntos, mínimo 15)",
-    "Prueba de catalán obligatoria y eliminatoria para quien no esté exento: comprensión lectora, expresión escrita y oral (apto/no apto)",
-    "Prueba de castellano para aspirantes sin nacionalidad española no exentos (apto/no apto)",
-    "Fase de concurso de méritos, no eliminatoria, hasta 50 puntos"
+    "Primer ejercicio: 50 preguntas tipo test sobre conocimientos generales (eliminatorio, 0-20 puntos, mínimo 10)",
+    "Segundo ejercicio: 20 preguntas tipo test sobre supuesto práctico (eliminatorio, 0-30 puntos, mínimo 15)",
+    "Prueba de conocimientos de lengua catalana (nivel C1, eliminatoria, apto/no apto)",
+    "Prueba de lengua castellana para personas sin nacionalidad española (apto/no apto)",
+    "Fase de concurso: méritos hasta 50 puntos"
    ],
-   "cita": "Primer ejercicio: conocimientos generales. De carácter obligatorio y eliminatorio.",
+   "cita": "Consistirá en responder un cuestionario de 50 preguntas tipo test, más 5 de reserva",
    "nivel": "literal"
   },
   "temas": {
@@ -94,13 +99,13 @@
    "nivel": "literal"
   },
   "meritos": {
-   "valor": "Titulaciones académicas hasta 10 puntos; cursos de formación hasta 10 puntos; certificados ACTIC hasta 2,5 puntos; experiencia profesional y otros méritos hasta el máximo de 50 puntos en concurso",
+   "valor": "Titulaciones académicas hasta 10 puntos; cursos de formación hasta 10 puntos; certificados ACTIC hasta 2,5 puntos; experiencia profesional y otros méritos en la fase de concurso con puntuación máxima de 50 puntos.",
    "cita": "Se valorarán los méritos y las capacidades que se indican, con una puntuación máxima de 50 puntos.",
    "nivel": "literal"
   },
   "bolsa": {
-   "valor": "sí, quienes superen la fase de oposición sin obtener plaza pasan al bloque 2 de la bolsa de trabajo de personal laboral del Departamento",
-   "cita": "las personas que superen la fase de oposición de esta convocatoria y no hayan obtenido plaza pasarán a formar parte del bloque 2 de la bolsa de trabajo",
+   "valor": "sí, las personas que superen la fase de oposición sin obtener plaza pasan al bloque 2 de la bolsa de trabajo de personal laboral del Departamento",
+   "cita": "pasarán a formar parte del bloque 2 de la bolsa de trabajo de personal laboral del mencionado Departamento",
    "nivel": "literal"
   },
   "practicas_o_curso": {

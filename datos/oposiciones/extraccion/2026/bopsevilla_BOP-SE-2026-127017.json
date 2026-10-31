@@ -5,13 +5,20 @@
   "fuente": "BOP-SEVILLA",
   "url": "https://bopsevilla.dipusevilla.es/publica/buscador-anuncios/anuncio/Bases-de-la-convocatoria-para-la-creacion-de-una-bolsa-de-trabajo-extraordinaria-para-la-contratacion-laboral-temporal-en-la-categoria-de-Auxiliar-de-Ayuda-a-Domicilio/",
   "fecha": "2026-07-03",
-  "huella": "1d2b620797c584595d250af0adf898f4512ce1449c87b034a4135734d63f3e4f"
+  "huella": "98fa2fe700e918edacc4079cf40de3fed0e1b4bb348bb06565422f5f6125068b"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T08:18:19+00:00",
- "lote": "msgbatch_01BrnYw6KkevFx7at547B5g8",
+ "extraido": "2026-10-31T11:20:09+00:00",
+ "lote": "msgbatch_01MXXMFvrqAAHficSS2SFuRZ",
  "no_son_bases": false,
  "campos": {
+  "denominacion": {
+   "valor": [
+    "Auxiliar de Ayuda a Domicilio"
+   ],
+   "cita": "BOLSA EXTRAORDINARIA DE EMPLEO DE AUXILIARES DE AYUDA A DOMICILIO PARA LA PRESTACIÓN DEL SERVICIO DEL AYUNTAMIENTO DE PRUNA",
+   "nivel": "literal"
+  },
   "grupo": {
    "valor": "C2",
    "cita": "Grupo C2: 20,00 euros",
@@ -19,7 +26,7 @@
   },
   "vinculo": {
    "valor": "laboral temporal",
-   "cita": "Las personas seleccionadas serán contratadas en régimen laboral temporal conforme al artículo 15 del R.D.L. 2/2015",
+   "cita": "Las personas seleccionadas serán contratadas en régimen laboral temporal conforme al artículo 15",
    "nivel": "literal"
   },
   "sistema": {
@@ -33,8 +40,8 @@
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Nacionalidad española o requisitos del art. 57 TREBEP; capacidad funcional; tener cumplidos dieciséis años y no exceder la edad de jubilación forzosa; no haber sido separado del servicio; aceptar carácter itinerante y disponibilidad en fines de semana o festivos",
-   "cita": "Tener cumplidos dieciséis años y no exceder de la edad de jubilación forzosa",
+   "valor": "Nacionalidad española o requisitos del art. 57 TREBEP; capacidad funcional; tener cumplidos dieciséis años y no exceder la edad de jubilación forzosa; no haber sido separado del servicio ni inhabilitado; aceptar carácter itinerante y disponibilidad en fines de semana o festivos",
+   "cita": "Tener cumplidos tener cumplidos dieciséis años y no exceder de la edad de jubilación forzosa",
    "nivel": "literal"
   },
   "tasa_euros": {
@@ -42,51 +49,54 @@
    "cita": "Grupo C2: 20,00 euros",
    "nivel": "literal"
   },
+  "exenciones_tasa": {
+   "valor": "No procede devolución de la tasa aunque el aspirante resulte excluido",
+   "cita": "No procederá la devolución del importe abonado en concepto de tasa por derechos de inscripción",
+   "nivel": "literal"
+  },
   "plazo_solicitudes": {
-   "valor": "Diez días hábiles desde el día siguiente a la publicación del anuncio en el Boletín Oficial de la Provincia de Sevilla",
+   "valor": "DIEZ DÍAS hábiles desde el día siguiente al de la publicación del anuncio en el BOP de Sevilla",
    "cita": "en el plazo de DIEZ DÍAS hábiles, contados desde el día siguiente al de la publicación del anuncio en el Boletín Oficial de la Provincia de Sevilla",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Registro General del Ayuntamiento o cualquiera de las formas del artículo 16.4 de la Ley 39/2015",
+   "valor": "Registro General del Ayuntamiento o cualquiera de las formas del art. 16.4 de la Ley 39/2015, con modelo Anexo I",
    "cita": "se presentarán en el Registro General de este Ayuntamiento o en cualquiera de las formas previstas en el artículo 16.4",
    "nivel": "literal"
   },
   "publicaciones": {
    "valor": "Tablón de anuncios del Ayuntamiento y web municipal",
-   "cita": "se procederá a la publicación en el tablón de anuncios del Ayuntamiento y en la web municipal de la lista provisional",
+   "cita": "se procederá a la publicación en el tablón de anuncios del Ayuntamiento y en la web municipal",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Fase de concurso de méritos"
+    "Fase de concurso de méritos (formación complementaria, máximo 20 puntos; experiencia laboral, máximo 30 puntos)"
    ],
    "cita": "El procedimiento de selección de los/as aspirantes constará de una fase consistente en un concurso de méritos.",
    "nivel": "literal"
   },
   "meritos": {
-   "valor": "Formación complementaria (máx. 20 puntos) y experiencia laboral (máx. 30 puntos), con cursos, meses de servicio en Administración local, otras Administraciones y empresa privada",
-   "cita": "Formación complementaria: (máximo 20 puntos): Cursos impartidos por Administraciones Públicas",
-   "nivel": "sin_signos"
+   "valor": "Formación complementaria máximo 20 puntos; experiencia laboral máximo 30 puntos (Administración local 0,10 por mes hasta 18; otras Administraciones 0,05 por mes hasta 15; empresa privada 0,02 por mes hasta 12)",
+   "cita": "Cursos impartidos por Administraciones Públicas relacionados directamente con el contenido del puesto",
+   "nivel": "literal"
   },
   "bolsa": {
-   "valor": "sí, bolsa extraordinaria de empleo para contratación laboral temporal por necesidades urgentes del servicio de Ayuda a Domicilio",
+   "valor": "sí, bolsa extraordinaria de empleo para contrataciones laborales temporales por necesidades urgentes del servicio, vigencia 2 años prorrogables hasta 6",
    "cita": "La Bolsa Extraordinaria tendrá como finalidad asegurar la disponibilidad de personal de forma inmediata",
    "nivel": "literal"
   }
  },
  "rechazados": {
-  "denominacion": {
-   "motivo": "cita_no_literal",
-   "valor": [
-    "Auxiliar de Ayuda a Domicilio"
-   ],
-   "cita": "Bases de la convocatoria para la creación de una bolsa de trabajo extraordinaria para la contratación laboral temporal en la categoría de Auxiliar de Ayuda a Domicilio"
-  },
   "plazas_discapacidad": {
    "motivo": "valor_no_numerico",
    "valor": "5%",
    "cita": "El 5% de la contratación resultante de la presente Bolsa extraordinaria irá destinada a personas con discapacidad"
+  },
+  "practicas_o_curso": {
+   "motivo": "cita_no_literal",
+   "valor": "no aparece",
+   "cita": ""
   }
  }
 }

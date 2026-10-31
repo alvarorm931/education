@@ -1,62 +1,114 @@
 {
  "proceso": "boe:BOE-A-2026-12762",
  "documento": {
-  "id": "dogc:1046146",
-  "fuente": "DOGC",
-  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1046146",
-  "fecha": "2026-06-04",
-  "huella": "ce991f812c5e9a514c9983ca29f923a7581eaec7bc2170a8e4b3752b09dee4b4"
+  "id": "bopt:BOPT-2026-04929",
+  "fuente": "BOPT",
+  "url": "https://www.dipta.cat/bopt/web/anunci/360486/placa-de-tecnic-a-mitja-ana-de-turisme-1-bases-i-convocatoria-ajuntament-montblanc",
+  "fecha": "2026-05-29",
+  "huella": "b620b5812875613ea8dc68759fcdb66d48f14004cf9d3442c7f1bb41036ca90d"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T08:17:57+00:00",
- "lote": "msgbatch_01BrnYw6KkevFx7at547B5g8",
+ "extraido": "2026-10-31T11:20:09+00:00",
+ "lote": "msgbatch_01MXXMFvrqAAHficSS2SFuRZ",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
-   "valor": "tècnic mig de turisme",
-   "cita": "convocar el procés selectiu mitjançant concurs-oposició, torn lliure, d'una plaça de tècnic mig de turisme",
+   "valor": "Tècnic Mig de Turisme",
+   "cita": "convocar el procés selectiu mitjançant concurs-oposició, torn lliure, d’una plaça de tècnic mig de turisme",
    "nivel": "literal"
   },
   "grupo": {
    "valor": "A2",
-   "cita": "amb caràcter de personal laboral, del grup A, subgrup A2",
-   "nivel": "literal"
-  },
-  "vinculo": {
-   "valor": "laboral temporal",
-   "cita": "amb caràcter de personal laboral, del grup A, subgrup A2",
+   "cita": "del grup A, subgrup A2, d’acord amb les bases que tot seguit es transcriuen",
    "nivel": "literal"
   },
   "sistema": {
-   "valor": "concurso-oposición",
-   "cita": "convocar el procés selectiu mitjançant concurs-oposició, torn lliure, d'una plaça",
+   "valor": "concurs-oposició",
+   "cita": "la selecció, mitjançant concurs-oposició, torn lliure, d’una plaça de Tècnic Mig de Turisme",
    "nivel": "literal"
   },
   "plazas_total": {
    "valor": 1,
-   "cita": "convocar el procés selectiu mitjançant concurs-oposició, torn lliure, d'una plaça de tècnic mig",
+   "cita": "la selecció, mitjançant concurs-oposició, torn lliure, d’una plaça de Tècnic Mig de Turisme",
    "nivel": "literal"
   },
   "plazas_turno_libre": {
    "valor": 1,
-   "cita": "concurs-oposició, torn lliure, d'una plaça de tècnic mig de turisme",
+   "cita": "concurs-oposició, torn lliure, d’una plaça de tècnic mig de turisme",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 44.29,
+   "cita": "d’acord amb l’ordenança fiscal núm. 17, es fixa la quantitat de 44,29 € en concepte de taxa per drets d’examen",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "20 dies naturals a comptar des de l'endemà de la publicació de l'extracte d'aquesta convocatòria al Diari Oficial de la Generalitat de Catalunya",
-   "cita": "El termini per a la presentació de sol·licituds és de 20 dies naturals a comptar des de l'endemà de la publicació",
+   "valor": "Vint dies naturals a partir de l’endemà de la darrera publicació de l’extracte de la convocatòria en el DOGC",
+   "cita": "El termini per presentar sol·licituds és de vint dies naturals a partir de l’endemà de la darrera publicació",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "preferentment de forma electrònica a través de la seu de l'ens o presencialment al Registre General de l'Ajuntament de Montblanc (Plaça Major, 1 de Montblanc) de 9:00h a 14:00h",
-   "cita": "Les instàncies s'han de presentar preferentment de forma electrònica a través de la seu de l'ens o presencialment",
-   "nivel": "literal"
+   "valor": "Preferentment electrònicament al registre electrònic de l'Ens amb certificat digital o signatura; també presencialment al Registre General o per altres formes de l'article 16.4 de la Llei 39/2015",
+   "cita": "Preferentment les instàncies es presentaran electrònicament al registre electrònic de l’Ens. Caldrà fer-ho amb certificat digital",
+   "nivel": "sin_signos"
   },
   "publicaciones": {
-   "valor": "Butlletí Oficial de la Província de Tarragona, Seu electrònica i Portal de Transparència de l'Ajuntament de Montblanc (www.montblanc.cat)",
-   "cita": "publicada íntegrament en el Butlletí Oficial de la Província de Tarragona (BOPT) amb data 29 de maig de 2026",
+   "valor": "Seu electrònica de l'Ens i BOPT (llistes d'admesos i excloses, tribunal, anuncis del procés)",
+   "cita": "La llista de persones aspirants admeses i excloses es publicarà a la Seu electrònica de l’Ens i al BOPT",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Període de prova",
+   "cita": "No superar el període de prova establert.",
    "nivel": "literal"
   }
  },
- "rechazados": {}
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "personal laboral fijo",
+   "cita": "amb caràcter de personal laboral, del grup A, subgrup A2 vacant a la plantilla"
+  },
+  "titulacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Grau o diplomatura universitària o equivalent, preferentment en Turisme, màrqueting o Comunicació",
+   "cita": "Estar en possessió de la titulació de grau o diplomatura universitària o equivalent preferentment en Turisme"
+  },
+  "otros_requisitos": {
+   "motivo": "cita_no_literal",
+   "valor": "Nacionalitat espanyola o de la UE (o els supòsits assimilats); capacitat funcional; tenir setze anys i no excedir l'edat de jubilació forçosa; no estar separat ni inhabilitat per a l'ocupació pública; no tenir condemna ferma per delictes contra la llibertat i indemnitat sexual",
+   "cita": "Tenir la nacionalitat espanyola, d’acord amb les lleis vigents, o tenir la nacionalitat de qualsevol dels estats membres"
+  },
+  "idioma_cooficial": {
+   "motivo": "cita_no_literal",
+   "valor": "Català C1 (o equivalent; en cas contrari, prova d'aptitud); castellà C2 només per a aspirants no hispanoparlants sense acreditació",
+   "cita": "Posseir el certificat de nivell C1 de català expedit per l’òrgan competent o alguna de les titulacions equivalents"
+  },
+  "ejercicios": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Fase de llengües (català i, si escau, castellà): apte/no apte",
+    "1r exercici: test de 40 preguntes sobre el temari, eliminatori (mínim 5)",
+    "2n exercici: 5 preguntes curtes de coneixements, eliminatori (mínim 5)",
+    "3r exercici: dos supòsits pràctics d'entre tres proposats, eliminatori (mínim 5 cadascun)",
+    "Fase de concurs: valoració de mèrits"
+   ],
+   "cita": "1er exercici, tipus test: Aquesta prova consisteix en la realització d’un test de 40 preguntes"
+  },
+  "temas": {
+   "motivo": "valor_no_en_cita",
+   "valor": 36,
+   "cita": "TEMARI ESPECÍFIC 1. Història i patrimoni monumental de Montblanc"
+  },
+  "meritos": {
+   "motivo": "cita_no_literal",
+   "valor": "Experiència laboral (màx. 5 punts); formació relacionada amb les funcions (màx. 5 punts); coneixement de llengües (anglès, francès, alemany o italià) i certificats ACTIC",
+   "cita": "Experiència laboral (màx. 5 punts): Per serveis prestats a l’Administració Pública en un lloc de treball tècnic de turisme"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, per a cobrir necessitats de contractació temporal; vigència de 2 anys prorrogable un any més",
+   "cita": "La borsa tindrà una vigència de 2 anys des de la seva constitució, podent-se prorrogar per un any més."
+  }
+ }
 }

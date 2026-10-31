@@ -5,24 +5,24 @@
   "fuente": "BOP-BADAJOZ",
   "url": "https://www.dip-badajoz.es/bop/ventana_anuncio.php?id_anuncio=163496&FechaSolicitada=20260713000000",
   "fecha": "2026-07-13",
-  "huella": "891d5defb1faf702ba2b83284864bec85c6f1175b8309afca6ffcfce7cc2e6c6"
+  "huella": "d2c7a4533bd0f24d40af4bbc6037d41fc492c53f7b7c977a8d2a6f8215d1a78b"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T07:51:45+00:00",
- "lote": "msgbatch_01NvbwpQGcC9vt1x7nWayvXt",
+ "extraido": "2026-10-31T11:20:11+00:00",
+ "lote": "msgbatch_01MXXMFvrqAAHficSS2SFuRZ",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
    "valor": [
     "Administrativo/a"
    ],
-   "cita": "para el puesto de Administrativo/a, para los supuestos de jubilación o ausencia de sus titulares",
+   "cita": "bolsa de funcionarios interinos para el puesto de Administrativo/a",
    "nivel": "literal"
   },
   "grupo": {
    "valor": "C1",
-   "cita": "Grupo C. Subgrupo C1. Jornada completa.",
-   "nivel": "sin_signos"
+   "cita": "Subgrupo C1.",
+   "nivel": "literal"
   },
   "vinculo": {
    "valor": "funcionario interino",
@@ -34,47 +34,42 @@
    "cita": "El procedimiento de selección será el de concurso-oposición.",
    "nivel": "literal"
   },
-  "plazas_turno_libre": {
-   "valor": 1,
-   "cita": "creación de una bolsa de funcionarios interinos, para el puesto de Administrativo/a",
-   "nivel": "literal"
-  },
   "titulacion": {
-   "valor": "Título de Bachiller o Técnico o título equivalente",
+   "valor": "Bachiller o Técnico o título equivalente",
    "cita": "Estar en posesión del título de Bachiller o Técnico o título equivalente",
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Nacionalidad española o de Estados de la UE (o vínculo previsto legalmente); capacidad funcional; tener cumplidos 16 años y no exceder la edad de jubilación forzosa; no haber sido separado del servicio público ni inhabilitado.",
+   "valor": "Nacionalidad española o de Estado miembro de la UE (o equiparados), capacidad funcional, tener cumplidos 16 años y no exceder la edad de jubilación forzosa, no estar separado del servicio ni inhabilitado.",
    "cita": "Tener cumplidos dieciséis años y no exceder, en su caso, de la edad máxima de jubilación forzosa.",
    "nivel": "literal"
   },
   "tasa_euros": {
    "valor": 12.29,
-   "cita": "se fijan en la cantidad de 12,29 €, cuyo importe se hará efectivo dentro del plazo de presentación de instancias",
+   "cita": "se fijan en la cantidad de 12,29 €, cuyo importe se hará efectivo dentro del plazo",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "veinte días hábiles desde el siguiente al de la publicación del anuncio en el BOP de Badajoz (o hasta el primer día hábil siguiente si concluye en sábado, domingo o festivo)",
-   "cita": "el plazo de veinte días hábiles contado desde el siguiente al de la publicación de este anuncio en el Boletín Oficial de la Provincia de Badajoz",
+   "valor": "veinte días hábiles desde el siguiente al de la publicación del anuncio en el BOP de Badajoz",
+   "cita": "plazo de veinte días hábiles contado desde el siguiente al de la publicación de este anuncio",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "En el Registro del Ayuntamiento de Fuente de Cantos o por los medios del artículo 16.4 de la Ley 39/2015 (incluido correo en sobre abierto para sellado).",
-   "cita": "Las solicitudes y documentación se presentarán en el Registro del Ayuntamiento de Fuente de Cantos o por los medios previstos",
+   "valor": "Registro del Ayuntamiento de Fuente de Cantos o por los medios previstos en el artículo 16.4 de la Ley 39/2015",
+   "cita": "Las solicitudes y documentación se presentarán en el Registro del Ayuntamiento de Fuente de Cantos",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Sede electrónica del Ayuntamiento de Fuente de Cantos y tablón de anuncios; las convocatorias y listas de admitidos se publican en el BOP de Badajoz",
-   "cita": "El resultado de cada uno de los ejercicios será publicado en la sede electrónica del Ayuntamiento de Fuente de Cantos",
+   "valor": "BOP de Badajoz, sede electrónica del Ayuntamiento de Fuente de Cantos y tablón de anuncios",
+   "cita": "se publicarán en el Boletín Oficial de la Provincia de Badajoz (BOP)",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Primer ejercicio: test de 50 preguntas con cuatro respuestas, una hora, mínimo 5 puntos",
-    "Segundo ejercicio: supuesto(s) práctico(s), máximo 45 minutos, de 0 a 10 puntos, mínimo 5 puntos"
+    "Primer ejercicio: test de 50 preguntas con cuatro respuestas alternativas, una hora, mínimo 5 puntos",
+    "Segundo ejercicio: supuesto práctico en máximo 45 minutos, de 0 a 10 puntos, mínimo 5"
    ],
-   "cita": "Consistirá en contestar por escrito, en un tiempo máximo de una hora, un test de 50 preguntas",
+   "cita": "Primer ejercicio: Prueba de conocimientos: Consistirá en contestar por escrito, en un tiempo máximo de una hora",
    "nivel": "literal"
   },
   "temas": {
@@ -83,18 +78,13 @@
    "nivel": "literal"
   },
   "meritos": {
-   "valor": "Experiencia: 0,15 p/mes en entidades locales y 0,10 p/mes en otras administraciones (máx. 6). Formación: 0,01 p/hora de curso (máx. 4).",
-   "cita": "Por cada mes completo, o fracción superior a quince días, de servicios prestados en el ámbito de una entidad local",
+   "valor": "Experiencia profesional (máx. 6 puntos): 0,15 por mes en entidad local y 0,10 en otras administraciones. Formación (máx. 4 puntos): 0,01 por hora de curso.",
+   "cita": "La máxima puntuación a obtener en este apartado es de 6 puntos.",
    "nivel": "literal"
   },
   "bolsa": {
-   "valor": "Sí, para posibles llamamientos en supuestos de vacantes o jubilaciones de puestos de igual categoría, con duración mínima de un año y máxima de cuatro",
+   "valor": "sí, para posibles llamamientos en supuestos de vacantes o jubilaciones de puestos de igual categoría y hasta su cobertura en propiedad",
    "cita": "el resto de aspirantes constituirán la bolsa, siendo ordenados por su puntuación",
-   "nivel": "literal"
-  },
-  "practicas_o_curso": {
-   "valor": "No consta",
-   "cita": "La persona seleccionada tomará posesión del puesto en el plazo de un mes a contar desde la notificación del nombramiento.",
    "nivel": "literal"
   }
  },
@@ -102,7 +92,7 @@
   "plazas_total": {
    "motivo": "valor_no_en_cita",
    "valor": 1,
-   "cita": "Por resolución de Alcaldía 2026-394 de 7 de julio de corriente, se aprobaron las bases"
+   "cita": "para el puesto de Administrativo/a, para los supuestos de jubilación o ausencia de sus titulares"
   }
  }
 }

@@ -5,30 +5,35 @@
   "fuente": "BOE",
   "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-14828",
   "fecha": "2026-07-08",
-  "huella": "979e5b1eb25b304e316f1120c97dde0d698ed65d4fd4775f7c13992498623844"
+  "huella": "82587295a6cac713f03c97502f0c841dec1acd810a7319784a49635731798097"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T07:52:05+00:00",
- "lote": "msgbatch_01NvbwpQGcC9vt1x7nWayvXt",
+ "extraido": "2026-10-31T11:20:07+00:00",
+ "lote": "msgbatch_01MXXMFvrqAAHficSS2SFuRZ",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
    "valor": [
-    "Personal laboral fijo grupo II",
-    "Personal laboral fijo grupo III",
-    "Personal laboral fijo grupo IVA"
+    "Personal técnico de gestión y administración y servicios laboral Grupo II",
+    "Grupo III",
+    "Grupo IVA"
    ],
    "cita": "Se convocan un total de 8 puestos de trabajo (2 G.II; 5 G.III y 1 G. IVA) vacantes de personal laboral fijo",
    "nivel": "literal"
   },
   "grupo": {
-   "valor": "II, III, IVA",
+   "valor": "II, III y IV-A",
+   "cita": "Se convocan un total de 8 puestos de trabajo (2 G.II; 5 G.III y 1 G. IVA) vacantes de personal laboral fijo",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
    "cita": "Se convocan un total de 8 puestos de trabajo (2 G.II; 5 G.III y 1 G. IVA) vacantes de personal laboral fijo",
    "nivel": "literal"
   },
   "sistema": {
    "valor": "concurso-oposición",
-   "cita": "procedimiento selectivo de concurso-oposición libre, para la adjudicación de los puestos de trabajo",
+   "cita": "convocar procedimiento selectivo de concurso-oposición libre, para la adjudicación de los puestos de trabajo",
    "nivel": "literal"
   },
   "plazas_total": {
@@ -37,70 +42,70 @@
    "nivel": "literal"
   },
   "titulacion": {
-   "valor": "Grupo II: Diplomado universitario o equivalente; Grupo III: Bachiller, Técnico Superior o equivalente; Grupo IVA: Técnico, Graduado en Educación Secundaria o equivalente",
-   "cita": "Grupo III: Técnicos Especialistas. Estar en posesión del título de Bachiller, Técnico Superior, o titulación equivalente",
-   "nivel": "sin_signos"
+   "valor": "Grupo II: Diplomado Universitario, Arquitecto o Ingeniero Técnico (primer ciclo); Grupo III: Bachiller o Técnico Superior; Grupo IVA: Técnico o Graduado en Educación Secundaria",
+   "cita": "Estar en posesión del título de Bachiller, Técnico Superior, o titulación equivalente oficialmente reconocida por el Ministerio",
+   "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Requisitos generales de acceso a empleos públicos (artículos 56 y 57 del EBEP): nacionalidad, capacidad funcional, mayoría de edad no exigida pero sí 16 años cumplidos, no separación de la función pública",
-   "cita": "Tener cumplidos dieciséis años y no exceder, en su caso, de la edad legal de jubilación",
+   "valor": "Nacionalidad (española, UE u otros supuestos legales), capacidad funcional, tener 16 años y no exceder la edad de jubilación, no estar separado ni inhabilitado para empleo público",
+   "cita": "Tener cumplidos dieciséis años y no exceder, en su caso, de la edad legal de jubilación.",
    "nivel": "literal"
   },
   "tasa_euros": {
-   "valor": 33,
+   "valor": 55,
    "cita": "Los derechos de examen serán de 55 euros para las plazas de Grupo II y de 33 euros para cada una de las plazas de Grupo III y Grupo IVA",
    "nivel": "literal"
   },
   "exenciones_tasa": {
-   "valor": "Discapacidad igual o superior al 33 por ciento; demandantes de empleo con requisitos; familias numerosas (exención o bonificación); víctimas de violencia de género",
+   "valor": "Discapacidad igual o superior al 33 %, demandantes de empleo que cumplan requisitos, familias numerosas (100 % o 50 %) y víctimas de violencia de género",
    "cita": "Estarán exentos de este pago las personas aspirantes que acrediten alguno de los siguientes extremos",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "veinte días naturales desde el día siguiente a la publicación de la convocatoria en el BOE",
+   "valor": "veinte días naturales contados a partir del día siguiente al de publicación de la convocatoria en el BOE",
    "cita": "El plazo de presentación de solicitudes será de veinte días naturales contados a partir del día siguiente",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Exclusivamente a través de la Sede Electrónica de la Universidad de Salamanca (https://sede.usal.es), con certificado de firma electrónica",
+   "valor": "Exclusivamente a través de la Sede Electrónica de la Universidad de Salamanca (sede.usal.es), con certificado de firma electrónica",
    "cita": "La presentación de solicitudes se efectuará exclusivamente a través de la Sede Electrónica de la Universidad de Salamanca",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Tablón de Anuncios de la Sede Electrónica de la Universidad de Salamanca, web del Servicio de PTGAS y Boletín Oficial de Castilla y León",
+   "valor": "Tablón de anuncios de la Sede Electrónica de la Universidad de Salamanca y página web del Servicio de PTGAS; resolución de listas en el Boletín Oficial de Castilla y León",
    "cita": "Los actos sucesivos a la presente convocatoria serán publicados en el Tablón de Anuncios de la Sede Electrónica",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Primer ejercicio: parte A y parte B (eliminatorio)",
-    "Segundo ejercicio (eliminatorio)",
-    "Fase de concurso (méritos, 40% de la puntuación total)"
+    "Primer ejercicio: parte A y parte B (tipo test y/o teórico-práctico, según anexo II)",
+    "Segundo ejercicio según anexo II",
+    "Fase de concurso: méritos profesionales y formación (40 % de la puntuación total)"
    ],
-   "cita": "Es necesario superar el segundo ejercicio para poder participar en la fase de concurso",
+   "cita": "Los ejercicios, tanto teóricos como prácticos que, en su caso, realizaran las personas aspirantes, se especifican en el anexo II",
    "nivel": "literal"
   },
   "meritos": {
-   "valor": "Experiencia profesional y formación: 0,25 puntos por mes de servicios en puestos similares de grupos superiores en la Universidad; titulaciones académicas hasta 5 puntos; formación hasta 5 puntos",
-   "cita": "Titulación oficial superior a la requerida para el acceso al puesto de trabajo en las pruebas selectivas",
+   "valor": "Fase de concurso (40 % del total): experiencia profesional, titulaciones académicas (hasta 5 puntos) y formación (hasta 5 puntos)",
+   "cita": "El baremo de méritos aplicable a los puestos de cada uno de los Grupos, Categorías y Especialidades constituirá un 40% de la puntuación total",
    "nivel": "literal"
   },
   "bolsa": {
-   "valor": "sí, bolsa de empleo/lista de espera para contrataciones temporales de puestos de tareas similares",
+   "valor": "Sí, para contrataciones temporales en los campus de Ávila, Béjar, Salamanca/Villamayor y Zamora, si el aspirante lo solicita",
    "cita": "Si desea optar a la bolsa de empleo, deberá indicarlo marcando «Sí» en el botón correspondiente de la solicitud",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "no consta",
+   "cita": "Las personas aspirantes que superen el concurso-oposición, en el plazo de veinte días naturales",
    "nivel": "literal"
   }
  },
  "rechazados": {
-  "vinculo": {
-   "motivo": "cita_no_literal",
-   "valor": "personal laboral fijo",
-   "cita": "plazas de personal laboral. Se convocan un total de 8 puestos de trabajo vacantes de personal laboral fijo"
-  },
-  "practicas_o_curso": {
-   "motivo": "cita_no_literal",
-   "valor": "no",
-   "cita": ""
+  "temas": {
+   "motivo": "valor_no_numerico",
+   "valor": "Temario común de 4 temas más temario específico por grupo y especialidad en los anexos IV y V (sin número único)",
+   "cita": "Estas pruebas se realizarán conforme a los temarios que para cada Grupo, Categoría y Especialidad figuran en el anexo IV y anexo V."
   }
  }
 }

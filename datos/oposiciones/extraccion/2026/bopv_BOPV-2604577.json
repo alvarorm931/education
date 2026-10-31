@@ -5,16 +5,18 @@
   "fuente": "BOPV",
   "url": "https://www.euskadi.eus/web01-bopv/es/bopv2/datos/2026/10/2604577a.shtml",
   "fecha": "2026-10-30",
-  "huella": "8777da7fe0febce0913834b259670ffa49abc563107d2f8e23e0229210679809"
+  "huella": "dc0bf42ffd16123335a9dcfab58bf109bf8450f79c2196ab4b8c9ab3e3e06264"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T08:03:39+00:00",
- "lote": "msgbatch_013xFoLdqcGqWcqkzh7qrdGg",
+ "extraido": "2026-10-31T11:20:09+00:00",
+ "lote": "msgbatch_01MXXMFvrqAAHficSS2SFuRZ",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
-   "valor": "médico/a (puesto funcional facultativo/a especialista médico/a de familia-EAP)",
-   "cita": "categoría de médico/a (puesto funcional de facultativo/a especialista médico/a de familia-EAP)",
+   "valor": [
+    "Médico/a (puesto funcional facultativo/a especialista médico/a de familia-EAP)"
+   ],
+   "cita": "categoría de médico/a (puesto funcional de facultativo/a especialista médico/a de familia-EAP) del grupo profesional de facultativos/as",
    "nivel": "literal"
   },
   "grupo": {
@@ -24,22 +26,17 @@
   },
   "vinculo": {
    "valor": "personal estatutario fijo",
-   "cita": "para la adquisición del vínculo estatutario fijo en Osakidetza-Servicio vasco de salud",
+   "cita": "adquisición del vínculo estatutario fijo en Osakidetza-Servicio vasco de salud",
    "nivel": "literal"
   },
   "sistema": {
    "valor": "concurso-oposición",
-   "cita": "Se valorarán los méritos alegados y acreditados en la forma y plazo establecidos",
-   "nivel": "literal"
-  },
-  "plazas_total": {
-   "valor": 128,
-   "cita": "b) Convocatoria de turno libre: 128 destinos.",
+   "cita": "3.3.– Fase de concurso. Se valorarán los méritos alegados y acreditados",
    "nivel": "literal"
   },
   "plazas_turno_libre": {
-   "valor": 119,
-   "cita": "Acceso general: 119.",
+   "valor": 128,
+   "cita": "b) Convocatoria de turno libre: 128 destinos.",
    "nivel": "literal"
   },
   "plazas_promocion_interna": {
@@ -52,9 +49,14 @@
    "cita": "Cupo de reserva para personas con discapacidad-otras discapacidades: 9.",
    "nivel": "literal"
   },
+  "titulacion": {
+   "valor": "Licenciatura o equivalente en medicina y cirugía y la especialidad requerida para el desempeño del puesto funcional, o títulos del Real Decreto 853/1993",
+   "cita": "La titulación exigida para el acceso a la categoría de médico/a (puesto funcional de facultativo/a especialista médico/a de familia-EAP) es la titulación de licenciado/a",
+   "nivel": "literal"
+  },
   "otros_requisitos": {
-   "valor": "Cumplir los requisitos del puesto establecidos en la normativa vigente, así como los requisitos exigidos en las bases generales, al último día del plazo de presentación de solicitudes y hasta la toma de posesión.",
-   "cita": "En todo caso, deberán cumplirse los requisitos del puesto al que se opte establecidos por lo dispuesto en la normativa vigente.",
+   "valor": "Cumplir los requisitos del puesto establecidos en la normativa vigente, y los requisitos generales de las bases generales, manteniéndolos hasta la toma de posesión.",
+   "cita": "deberán cumplirse los requisitos del puesto al que se opte establecidos por lo dispuesto en la normativa vigente.",
    "nivel": "literal"
   },
   "tasa_euros": {
@@ -64,48 +66,38 @@
   },
   "plazo_solicitudes": {
    "valor": "Desde el 2 de noviembre hasta las 14:00 horas del 27 de noviembre de 2026",
-   "cita": "desde el día 2 de noviembre hasta las 14:00 horas del día 27 de noviembre de 2026",
-   "nivel": "literal"
-  },
-  "publicaciones": {
-   "valor": "Página web de Osakidetza (batería de preguntas); Boletín Oficial del País Vasco (adjudicación de destinos)",
-   "cita": "se facilitará con una antelación de al menos 12 semanas en la página web de Osakidetza",
-   "nivel": "literal"
-  },
-  "ejercicios": {
-   "valor": [
-    "Cuestionario escrito de preguntas sobre las materias del programa del Anexo IV (fase de oposición)",
-    "Valoración de méritos según baremo del Anexo III (fase de concurso)"
-   ],
-   "cita": "La prueba consistirá en la contestación por escrito en el plazo máximo que se fije, de un cuestionario de preguntas",
+   "cita": "Establecer como plazo para presentar la solicitud de participación en la presente convocatoria desde el día 2 de noviembre",
    "nivel": "literal"
   },
   "meritos": {
-   "valor": "Experiencia profesional (máx. 60 puntos); formación, docencia e investigación (máx. 20 puntos); euskera (PL2 18 puntos, PL1 9 puntos)",
+   "valor": "Experiencia profesional (máx. 60 puntos); formación, docencia e investigación (máx. 20 puntos); euskera (PL2: 18 puntos; PL1: 9 puntos).",
    "cita": "2) Formación, docencia e investigación (máximo, 20 puntos).",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "no",
+   "cita": "Tercero.– Aprobar la relación de destinos ofertados mediante el Anexo II",
    "nivel": "literal"
   }
  },
  "rechazados": {
-  "titulacion": {
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 130,
+   "cita": "Acceso general: 119. Cupo de reserva para personas con discapacidad-otras discapacidades: 9."
+  },
+  "ejercicios": {
    "motivo": "cita_no_literal",
-   "valor": "licenciado/a o equivalente en medicina y cirugía y la especialidad requerida para el desempeño del puesto funcional, o títulos del Real Decreto 853/1993",
-   "cita": "estar en posesión de la titulación de licenciado/a o equivalente en medicina y cirugía"
+   "valor": [
+    "Cuestionario escrito de preguntas sobre las materias del programa del Anexo IV (respuestas incorrectas sin penalización)",
+    "Fase de concurso: valoración de méritos según baremo del Anexo III"
+   ],
+   "cita": ""
   },
   "temas": {
-   "motivo": "valor_no_en_cita",
-   "valor": 43,
-   "cita": "II.– TEMARIO ESPECÍFICO. A) Conceptos generales necesarios para la práctica clínica en AP."
-  },
-  "bolsa": {
    "motivo": "cita_no_literal",
-   "valor": "no",
-   "cita": "Sin mención de bolsa o lista de espera en el texto"
-  },
-  "practicas_o_curso": {
-   "motivo": "cita_no_literal",
-   "valor": "no",
-   "cita": "Sin mención de periodo de prácticas o curso selectivo en el texto"
+   "valor": 49,
+   "cita": "I.– TEMARIO COMÚN ... 19.– Ley 53/1984, de 26 de diciembre, de Incompatibilidades"
   }
  }
 }

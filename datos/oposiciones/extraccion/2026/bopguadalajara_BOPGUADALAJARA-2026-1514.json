@@ -5,26 +5,31 @@
   "fuente": "BOP-GUADALAJARA",
   "url": "https://boletin.dguadalajara.es/boletin/pdf/pdf2026_1514.pdf",
   "fecha": "2026-06-10",
-  "huella": "a9339de77bbf99d5aff1262d832c3c700b504009105fd359531b034de972056a"
+  "huella": "a2da985fd4e7089d663bb3561078499551d48e572a376e2bbd2716c94ccd591c"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T08:18:23+00:00",
- "lote": "msgbatch_01BrnYw6KkevFx7at547B5g8",
+ "extraido": "2026-10-31T11:20:10+00:00",
+ "lote": "msgbatch_01MXXMFvrqAAHficSS2SFuRZ",
  "no_son_bases": false,
  "campos": {
-  "denominacion": {
-   "valor": "Contratación laboral temporal de personas desempleadas y en exclusión social (Programa de Apoyo Activo al Empleo) para la ejecución de proyectos de mantenimiento de red viaria e instalaciones municipales",
-   "cita": "CONTRATACIÓN LABORAL TEMPORAL DE PERSONAS DESEMPLEADAS Y EN EXCLUISÓN SOCIAL EN EL MARCO DEL PROGRAMA DE APOYO ACTIVO AL EMPLEO",
-   "nivel": "literal"
-  },
   "vinculo": {
    "valor": "laboral temporal",
    "cita": "la contratación laboral temporal, por un período de 180 días, de 7 trabajadores/as",
    "nivel": "literal"
   },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "Las contrataciones se llevarán a cabo previa convocatoria y realización del oportuno proceso de selección",
+   "nivel": "literal"
+  },
   "plazas_total": {
    "valor": 7,
-   "cita": "la contratación laboral temporal, por un período de 180 días, de 7 trabajadores/as",
+   "cita": "contratación laboral temporal, por un período de 180 días, de 7 trabajadores/as",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Demandantes de empleo no ocupados inscritos en oficinas de empleo de Castilla-La Mancha, pertenecientes a colectivos vulnerables o en exclusión social; 25 % reservado a exclusión social (7 % de ellos con discapacidad ≥33 %) y 15 % a víctimas de violencia de género; al menos 55 % mujeres",
+   "cita": "Las contrataciones deberán formalizarse con personas incluidas en alguno de los siguientes colectivos vulnerables",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
@@ -33,49 +38,43 @@
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Registro del Ayuntamiento de 9,00 a 14 horas o procedimiento del artículo 16.4 de la Ley 39/2015, dirigida al Alcalde-Presidente",
-   "cita": "se presentarán, conforme al modelo que consta en el anexo I a las presentes bases, en el Registro del Ayuntamiento de 9,00 a 14 horas",
+   "valor": "Registro del Ayuntamiento de 9:00 a 14:00 horas o procedimiento del artículo 16.4 de la Ley 39/2015, conforme al modelo del anexo I",
+   "cita": "se presentarán, conforme al modelo que consta en el anexo I a las presentes bases, en el Registro del Ayuntamiento",
    "nivel": "literal"
   },
   "publicaciones": {
    "valor": "Sede electrónica y página web del Ayuntamiento",
-   "cita": "Las bases del proceso selectivo, así como la correspondiente convocatoria, se publicará en la sede electrónica y en la página web del Ayuntamiento.",
+   "cita": "se publicará en la sede electrónica y en la página web del Ayuntamiento",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Valoración de méritos por la Comisión Local de Selección",
-    "Acción formativa previa: Operaciones auxiliares de albañilería, de fábricas y cubiertas (EOCB0208)"
+    "Valoración de méritos mediante baremo (méritos sociolaborales, renta, responsabilidades familiares, discapacidad)"
    ],
-   "cita": "La acción formativa que se llevará a cabo se denomina OPERACIONES AUXILIARES DE ALBAÑILERÍA, DE FÁBRICAS Y CUBIERTAS (EOCB0208)",
-   "nivel": "literal"
-  },
-  "meritos": {
-   "valor": "Tiempo en desempleo (máx. 3,2 puntos), renta per cápita familiar (máx. 5 puntos), responsabilidades familiares (máx. 2 puntos), situación de cuidador de dependiente (1 punto), discapacidad (máx. 1 punto); máximo total 12,20 puntos",
    "cita": "Los aspirantes admitidos conforme a lo referido en la cláusula quinta serán valorados hasta un máximo de 12,20 puntos",
    "nivel": "literal"
   },
+  "meritos": {
+   "valor": "Tiempo en desempleo (máx. 3,2 pts), renta per cápita familiar (máx. 5 pts), responsabilidades familiares (máx. 2 pts), situación de dependencia o cuidado (1 pt), discapacidad (máx. 1 pt); total máximo 12,20 puntos",
+   "cita": "serán valorados hasta un máximo de 12,20 puntos de acuerdo con las siguientes circunstancias",
+   "nivel": "literal"
+  },
   "bolsa": {
-   "valor": "sí, para supuestos de vacante, sustitución, baja temporal o renuncia de los aspirantes seleccionados",
+   "valor": "sí, para cubrir vacantes, sustituciones, bajas temporales o renuncias de los seleccionados",
    "cita": "Las personas aspirantes no seleccionados, pasarán a formar parte, por el orden de puntuación a una Bolsa de trabajo",
    "nivel": "literal"
   },
   "practicas_o_curso": {
-   "valor": "Periodo de prueba de un mes",
+   "valor": "Periodo de prueba de un mes; formación previa a la contratación (operaciones auxiliares de albañilería, de fábricas y cubiertas)",
    "cita": "Las personas contratadas quedarán sometidas a un periodo de prueba de un mes",
    "nivel": "literal"
   }
  },
  "rechazados": {
-  "sistema": {
+  "denominacion": {
    "motivo": "cita_no_literal",
-   "valor": "concurso",
-   "cita": "Valoración de méritos: aspirantes admitidos valorados hasta un máximo de 12,20 puntos"
-  },
-  "otros_requisitos": {
-   "motivo": "cita_no_literal",
-   "valor": "Pertenecer a colectivos vulnerables o en exclusión social, estar inscrito como demandante de empleo no ocupado en Castilla-La Mancha, no padecer enfermedad que impida el ejercicio de funciones, no haber sido separado de servicio público ni inhabilitado.",
-   "cita": "Quienes padezcan enfermedad o defecto físico que impida el ejercicio de las correspondientes funciones"
+   "valor": "Contratación laboral temporal de 7 trabajadores para proyectos de mantenimiento de red viaria e instalaciones municipales (programa de apoyo activo al empleo)",
+   "cita": "contratación de 7 trabajadores/as para la ejecución de los proyectos denominados Mantenimiento de red viaria e instalaciones municipales"
   }
  }
 }

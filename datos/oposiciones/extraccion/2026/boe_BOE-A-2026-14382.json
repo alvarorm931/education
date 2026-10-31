@@ -5,36 +5,43 @@
   "fuente": "BOP-GRANADA",
   "url": "https://bop.dipgra.es/publica/buscador-anuncios/anuncio/Bases-especificas-y-convocatoria-seleccion-una-plaza-de-Psicologo-plantilla-de-funcionarios-OEP-2025/",
   "fecha": "2026-05-11",
-  "huella": "8d6994c79f39568b285f332a063c102ede8ce4504775cc0c10c123689a9bc8e2"
+  "huella": "57c6bc44c7037dc0a49b33d72a661a01d2493881c4abfb2000c3d34b8a344980"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T07:51:49+00:00",
- "lote": "msgbatch_01NvbwpQGcC9vt1x7nWayvXt",
+ "extraido": "2026-10-31T11:20:12+00:00",
+ "lote": "msgbatch_01MXXMFvrqAAHficSS2SFuRZ",
  "no_son_bases": false,
  "campos": {
+  "denominacion": {
+   "valor": [
+    "PSICÓLOGO"
+   ],
+   "cita": "Denominación: PSICÓLOGO Nº de plazas : 1 Número : 3903",
+   "nivel": "literal"
+  },
   "grupo": {
    "valor": "A1",
-   "cita": "Escala Administración Especial, Subescala Técnica, Técnicos Superiores, Grupo A, Subgrupo A1",
+   "cita": "Subescala Técnica, Técnicos superiores, Grupo A, Subgrupo A1.",
    "nivel": "sin_signos"
   },
   "vinculo": {
    "valor": "funcionario de carrera",
-   "cita": "Relación jurídica : funcionario de carrera",
+   "cita": "Relación jurídica : funcionario de carrera.",
    "nivel": "literal"
   },
   "sistema": {
    "valor": "oposición",
-   "cita": "Selección: Oposición",
+   "cita": "Selección: Oposición.",
    "nivel": "literal"
   },
   "plazas_total": {
    "valor": 1,
-   "cita": "Nº de plazas : 1 Número : 3903",
+   "cita": "Denominación: PSICÓLOGO Nº de plazas : 1 Número : 3903",
    "nivel": "literal"
   },
   "plazas_turno_libre": {
    "valor": 1,
-   "cita": "para la provisión mediante el sistema de oposición , en turno libre, de 1 plaza",
+   "cita": "la provisión mediante el sistema de oposición , en turno libre, de 1 plaza",
    "nivel": "literal"
   },
   "titulacion": {
@@ -43,8 +50,8 @@
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Certificación negativa del Registro Central de delincuentes sexuales; en su caso, certificado negativo de antecedentes penales del país de origen si tiene otra nacionalidad",
-   "cita": "Certificación negativa del Registro Central de delincuentes sexuales. El/La persona aspirante seleccionado/a",
+   "valor": "Certificación negativa del Registro Central de delincuentes sexuales; si es extranjero con otra nacionalidad, certificado de antecedentes penales de su país, traducido y legalizado.",
+   "cita": "Certificación negativa del Registro Central de delincuentes sexuales. El/La persona aspirante seleccionado/a cuando sea llamado/a para realizar nombramiento",
    "nivel": "literal"
   },
   "tasa_euros": {
@@ -53,25 +60,35 @@
    "nivel": "literal"
   },
   "exenciones_tasa": {
-   "valor": "Tarifa de 20 euros para personas con discapacidad; reducción del 100 % para desempleados con antigüedad mínima de seis meses y del 50 % con antigüedad inferior a seis meses",
+   "valor": "Tarifa de 20 euros para personas con discapacidad, con documentación acreditativa; desempleados con reducción del 100% (inscritos 6 meses o más) o del 50% (menos de 6 meses).",
    "cita": "Tarifa para personas con discapacidad: 20 euros. De be aportar documentación acreditativa.",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "veinte días hábiles desde el siguiente a la publicación de la convocatoria en el Boletín Oficial del Estado",
-   "cita": "Plazo de presentación de solicitudes: veinte días hábiles desde el siguiente a la publicación",
+   "valor": "Veinte días hábiles desde el siguiente a la publicación de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "Plazo de presentación de solicitudes: veinte días hábiles desde el siguiente a la publicación de la convocatoria en el Boletín Oficial del Estado.",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Web municipal www.motril.es, Oferta de Empleo Público, tablón electrónico y sede electrónica del Ayuntamiento; convocatoria en el BOE",
+   "cita": "Igualmente se publicará en la web municipal www.mot ril.es, Oferta de Empleo Público y en el tablón ele ctrónico de este Ayuntamiento",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Oposición en turno libre según bases específicas y bases generales"
+    "Oposición (ejercicios no detallados en las bases específicas; ver bases generales)"
    ],
+   "cita": "Selección: Oposición.",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Sin concurso de méritos en este proceso",
    "cita": "Selección: Oposición.",
    "nivel": "literal"
   },
   "bolsa": {
    "valor": "no",
-   "cita": "Selección: Oposición. Relación jurídica : funcionario de carrera.",
+   "cita": "Selección: Oposición.",
    "nivel": "literal"
   },
   "temas": {
@@ -81,25 +98,10 @@
   }
  },
  "rechazados": {
-  "denominacion": {
-   "motivo": "cita_no_literal",
-   "valor": "PSICÓLOGO",
-   "cita": "Aprobar las siguientes bases específicas que regirán la convocatoria para la provisión mediante el sistema de oposición"
-  },
   "presentacion": {
    "motivo": "cita_no_literal",
-   "valor": "Sede electrónica del Ayuntamiento de Motril, trámite «Solicitud de acceso a empleo público», o lugares del art. 16.4 de la Ley 39/2015",
-   "cita": "En la sede electrónica del Ayuntamiento de Motril https://sede.motril.es/ seleccionando en el catálogo de trámites"
-  },
-  "publicaciones": {
-   "motivo": "cita_no_literal",
-   "valor": "Boletín Oficial del Estado (convocatoria), web municipal www.motril.es, tablón electrónico y sede electrónica del Ayuntamiento",
-   "cita": "Igualmente se publicará en la web municipal www.motril.es, Oferta de Empleo Público y en el tablón electrónico"
-  },
-  "practicas_o_curso": {
-   "motivo": "cita_no_literal",
-   "valor": "no consta en el texto",
-   "cita": "Esta convocatoria se regula además de por estas bases específicas, por las bases generales"
+   "valor": "Sede electrónica del Ayuntamiento de Motril, en el catálogo de trámites «Solicitud de acceso a empleo público», o en los lugares del art. 16.4 de la Ley 39/2015",
+   "cita": "En la sede electrónica del Ayuntamiento de Motril https://sede.motril.es/ seleccionando en el catálogo de trámites «Solicitud de acceso a empleo público»"
   }
  }
 }

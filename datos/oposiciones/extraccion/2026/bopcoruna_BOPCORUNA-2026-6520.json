@@ -5,24 +5,24 @@
   "fuente": "BOP-CORUNA",
   "url": "https://bop.dacoruna.gal/bopportal/publicado/2026/10/14/2026_0000006520.html",
   "fecha": "2026-10-14",
-  "huella": "c2d644046fd381ff989cfa69a9eba5b29238ef3536c801a873a5972dd0d0500d"
+  "huella": "1a39df1f3265859532caf6cd8042118066776b378d3eff056312326b8c67fffe"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T08:03:34+00:00",
- "lote": "msgbatch_013xFoLdqcGqWcqkzh7qrdGg",
+ "extraido": "2026-10-31T11:20:06+00:00",
+ "lote": "msgbatch_01MXXMFvrqAAHficSS2SFuRZ",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
    "valor": [
     "auxiliar administrativo/a"
    ],
-   "cita": "Bases de convocatoria para elaborar unha bolsa de emprego temporal de auxiliares administrativos/as no Concello de Zas.",
+   "cita": "Convocatoria para a realización dunha bolsa de funcionarios interinos para a cobertura de postos de auxiliar administrativo",
    "nivel": "literal"
   },
-  "grupo": {
-   "valor": "E / agrupaciones profesionales",
-   "cita": "Bases de convocatoria para elaborar unha bolsa de emprego temporal de auxiliares administrativos/as no Concello de Zas.",
-   "nivel": "literal"
+  "vinculo": {
+   "valor": "funcionario interino",
+   "cita": "elaboración dunha bolsa de emprego temporal de auxiliares administrativos/as como funcionarios/as interinos",
+   "nivel": "sin_signos"
   },
   "sistema": {
    "valor": "oposición",
@@ -35,44 +35,46 @@
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Nacionalidad española o de otro Estado con acceso al empleo público, tener cumplidos 16 años, no estar separado ni inhabilitado para empleo público, y capacidad funcional para las tareas.",
+   "valor": "Nacionalidad española o de otro Estado que permita el acceso al empleo público; cumplir 16 años y no superar la edad de jubilación; no estar separado ni inhabilitado; capacidad funcional para el desempeño de las tareas.",
    "cita": "Ter cumprido os dezaseis anos, e non superar a idade máxima de xubilación.",
    "nivel": "literal"
   },
   "idioma_cooficial": {
-   "valor": {
-    "idioma": "gallego",
-    "nivel": "Celga 3 o equivalente, o en su defecto prueba de gallego"
-   },
+   "valor": "Galego, nivel Celga 3 o equivalente (si no se acredita, prueba de galego)",
    "cita": "Acreditación documental de posuír o título de Celga 3 ou equivalente",
    "nivel": "literal"
   },
   "tasa_euros": {
    "valor": 3,
-   "cita": "Ter ingresado na conta ES73 2080 0083 9130 40002837 a nome do Concello de Zas a taxa por dereitos de exame por importe de TRES (3) €",
+   "cita": "por importe de TRES (3) € previsto na ordenanza municipal",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Devolución del importe solo si no se presta el servicio por causas no imputables al sujeto pasivo, si los ingresos se declaran indebidos o si se modifican sustancialmente las bases.",
+   "cita": "So procederá a devolución do importe satisfeito polo/a aspirante cando por causas non imputables ao suxeito pasivo",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "diez días hábiles",
-   "cita": "No prazo de dez días hábiles, a contar do seguinte do anuncio no B.O.P., os interesados en participar",
+   "valor": "Diez días hábiles a contar desde el siguiente al anuncio en el BOP",
+   "cita": "No prazo de dez días hábiles, a contar do seguinte do anuncio no B.O.P.",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Rexistro del Concello o por cualquiera de los sistemas del art. 16.4 de la Ley 39/2015",
-   "cita": "Tales instancias presentaranse no Rexistro do Concello ou a través de calquera dos sistemas previstos no art.º 16.4 da Lei 39/2015",
+   "valor": "En el Registro del Concello o por cualquiera de los sistemas previstos en el art. 16.4 de la Ley 39/2015, mediante modelo del Anexo II",
+   "cita": "Tales instancias presentaranse no Rexistro do Concello ou a través de calquera dos sistemas previstos no art.º 16.4",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "BOP, sede electrónica https://sede.concellodezas.gal y taboleiro de anuncios del Concello",
+   "valor": "BOP, sede electrónica https://sede.concellodezas.gal y tablón de anuncios del Concello",
    "cita": "serán obxecto de publicación en Boletín Oficial da Provincia (BOP), na sede electrónica do concello",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Primer ejercicio: test de 40 preguntas y parte práctica escrita (eliminatorio, mínimo 10 puntos, máximo 20 entre ambas partes)",
-    "Segundo ejercicio: prueba de gallego (apto/no apto), salvo acreditación con Celga 3"
+    "Primer ejercicio: test de 40 preguntas (eliminatorio, 0 a 10) y parte práctica de preguntas cortas (0 a 10); mínimo 10 puntos entre ambas; 2 horas",
+    "Segundo ejercicio: prueba de gallego mediante traducción de un texto (apto/no apto)"
    ],
-   "cita": "Primeiro exercicio: Exame tipo test e práctico",
+   "cita": "Consistirá na realización dun exame que constará de 2 partes escritas",
    "nivel": "literal"
   },
   "temas": {
@@ -81,16 +83,16 @@
    "nivel": "literal"
   },
   "bolsa": {
-   "valor": "sí, bolsa de emprego temporal de auxiliares administrativos/as como funcionarios/as interinos, con vigencia de tres años",
+   "valor": "sí, bolsa de emprego temporal de auxiliares administrativos/as para nombramientos de funcionarios interinos, con vigencia de tres años",
    "cita": "A Bolsa de Emprego creada coa presente convocatoria terá vixencia de tres anos",
    "nivel": "literal"
   }
  },
  "rechazados": {
-  "vinculo": {
+  "grupo": {
    "motivo": "cita_no_literal",
-   "valor": "funcionario interino",
-   "cita": "para a elaboración dunha bolsa de emprego integrada por persoas suscecptibles de seren nomeadas persoal funcionario interino"
+   "valor": "E / agrupaciones profesionales",
+   "cita": "Esta convocatoria no se indica grupo; no aparece en el texto"
   }
  }
 }

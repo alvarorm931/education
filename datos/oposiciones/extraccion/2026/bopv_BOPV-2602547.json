@@ -5,48 +5,53 @@
   "fuente": "BOPV",
   "url": "https://www.euskadi.eus/web01-bopv/es/bopv2/datos/2026/06/2602547a.shtml",
   "fecha": "2026-06-11",
-  "huella": "45bb7ddaef705824b0038122cb04e050b0809133c182318d440c758d40f12196"
+  "huella": "357cf8104db920d5561e87af450d435e6c33ba0a04eb2cced0c2b1369e200529"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T08:18:12+00:00",
- "lote": "msgbatch_01BrnYw6KkevFx7at547B5g8",
+ "extraido": "2026-10-31T11:20:11+00:00",
+ "lote": "msgbatch_01MXXMFvrqAAHficSS2SFuRZ",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
    "valor": [
     "Profesorado Titular de Universidad"
    ],
-   "cita": "Categoría: Profesorado Titular de Universidad. Área de Conocimiento: Antropología Física.",
+   "cita": "Profesorado Titular de Universidad. Área de Conocimiento: Antropología Física.",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "A1",
+   "cita": "Estar en posesión del título de doctora o doctor.",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "adquirirá la condición de funcionaria o funcionario del Cuerpo de Profesores titulares.",
    "nivel": "literal"
   },
   "sistema": {
-   "valor": "concurso",
-   "cita": "Este concurso se regirá por lo dispuesto en la Ley Orgánica 2/2023",
+   "valor": "concurso-oposición",
+   "cita": "Los Concursos objeto de esta convocatoria serán resueltos por las correspondientes Comisiones de Selección.",
    "nivel": "literal"
   },
   "plazas_total": {
    "valor": 1,
-   "cita": "N.º de la plaza: 1. Código: TUC8/1 – D00163-21. Categoría: Profesorado Titular de Universidad.",
+   "cita": "N.º de la plaza: 1. Código: TUC8/1 – D00163-21.",
    "nivel": "literal"
   },
   "plazas_turno_libre": {
    "valor": 1,
-   "cita": "N.º de la plaza: 1. Código: TUC8/1 – D00163-21. Categoría: Profesorado Titular de Universidad.",
+   "cita": "N.º de la plaza: 1. Código: TUC8/1 – D00163-21.",
    "nivel": "literal"
   },
   "titulacion": {
-   "valor": "Título de doctora o doctor",
-   "cita": "a) Estar en posesión del título de doctora o doctor.",
+   "valor": "Doctora o doctor",
+   "cita": "Estar en posesión del título de doctora o doctor.",
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Nacionalidad española o de Estado miembro de la UE u otros a los que aplique la libre circulación; capacidad funcional; tener 16 años cumplidos y no exceder la edad de jubilación forzosa (70 años); no haber sido separado de la Administración; acreditación emitida por la ANECA.",
-   "cita": "b) Disponer de la acreditación correspondiente emitida por la Agencia Nacional de Evaluación de la Calidad y Acreditación (ANECA).",
-   "nivel": "literal"
-  },
-  "idioma_cooficial": {
-   "valor": "Conocimiento de euskera: nivel C1 del Marco Común Europeo de Referencia para las Lenguas, preceptivo en plazas con perfil lingüístico que implique euskera",
-   "cita": "Que se acreditará conforme a lo establecido en la Resolución del vicerrector de Euskera de 5 de junio de 2022",
+   "valor": "Tener cumplidos dieciséis años y no exceder de la edad máxima de jubilación forzosa (70 años). Acreditación emitida por ANECA. Acreditar conocimiento de euskera nivel C1 cuando sea preceptivo, y capacidad docente en lengua no oficial cuando sea requisito lingüístico.",
+   "cita": "Tener cumplidos dieciséis años y no exceder, en su caso, de la edad máxima de jubilación forzosa (70 años).",
    "nivel": "literal"
   },
   "tasa_euros": {
@@ -55,26 +60,31 @@
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "Plazo de presentación de solicitudes según convocatoria; no se indica fecha de inicio ni número de días en el texto",
-   "cita": "Las solicitudes para participar en estas pruebas selectivas se ajustarán al modelo que se adjunta como Anexo III",
+   "valor": "Plazo no especificado en el texto; la presentación se realiza desde la publicación de la convocatoria",
+   "cita": "Desde la publicación de la convocatoria hasta el día y fecha señalados por la Comisión de Selección",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Por sede electrónica, según Ley 39/2015 y el Reglamento de funcionamiento y actuación por medios electrónicos de la UPV/EHU",
+   "valor": "Por sede electrónica, mediante el modelo del Anexo III, junto con la documentación exigida",
    "cita": "Las solicitudes se presentarán por sede electrónica, en virtud de lo establecido en el artículo 14.2 e)",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Página web de la UPV/EHU; Boletín Oficial del Estado y Boletín Oficial del País Vasco (nombramientos)",
+   "valor": "Página web de la UPV/EHU y Boletín Oficial del Estado y Boletín Oficial del País Vasco (nombramiento)",
    "cita": "Esta propuesta será publicada en la página web de la UPV/EHU.",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Primera prueba: presentación y discusión con la Comisión de los méritos, formación, proyecto docente e investigador",
-    "Segunda prueba: exposición y debate de un tema de la especialidad elegido libremente por el candidato"
+    "Presentación y discusión con la Comisión de los méritos, historial y proyecto docente e investigador (parte en cada lengua del perfil)",
+    "Exposición y debate de un tema libremente elegido de la especialidad o área de conocimiento"
    ],
    "cita": "La primera prueba consistirá en la presentación y discusión con la Comisión de Selección de los méritos invocados",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Estar acreditada o acreditado en categoría superior: 20 puntos adicionales. Conocimiento de euskera: hasta 11 puntos (no requisito) o 2,2 puntos (preceptivo).",
+   "cita": "Estar acreditada o acreditado de acuerdo al Real Decreto 678/2023, de 18 de julio",
    "nivel": "literal"
   },
   "bolsa": {
@@ -83,21 +93,16 @@
    "nivel": "literal"
   },
   "practicas_o_curso": {
-   "valor": "Toma de posesión en el plazo de 20 días desde la publicación en el BOE; la plaza debe desempeñarse durante al menos dos años antes de participar en otro concurso",
+   "valor": "Toma de posesión en el plazo de 20 días desde la publicación en el BOE; la plaza debe desempeñarse durante dos años antes de participar en un nuevo concurso",
    "cita": "En el plazo máximo de 20 días, a contar desde el siguiente a la publicación en el Boletín Oficial del Estado",
    "nivel": "literal"
   }
  },
  "rechazados": {
-  "vinculo": {
+  "idioma_cooficial": {
    "motivo": "cita_no_literal",
-   "valor": "funcionario de carrera",
-   "cita": "la persona candidatura propuesta deberá tomar posesión de su destino, momento en el que adquirirá la condición de funcionaria o funcionario del Cuerpo de Profesores titulares."
-  },
-  "meritos": {
-   "motivo": "cita_no_literal",
-   "valor": "Acreditación estatal en campo de conocimiento y categoría superior: 20 puntos adicionales; conocimiento de euskera hasta 11 puntos (2,2 si es preceptivo)",
-   "cita": "a) Estar acreditada o acreditado de acuerdo al Real Decreto 678/2023 ... 20 puntos adicionales."
+   "valor": "Euskera, nivel C1 del Marco Común Europeo de Referencia para las Lenguas, cuando sea preceptivo",
+   "cita": "el conocimiento de euskera, que se acreditará conforme a lo establecido en la Resolución del vicerrector de Euskera"
   }
  }
 }

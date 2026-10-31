@@ -1,0 +1,65 @@
+{
+ "proceso": "boe:BOE-A-2026-14389",
+ "documento": {
+  "id": "bocm:BOCM-20260602-70",
+  "fuente": "BOCM",
+  "url": "https://www.bocm.es/bocm-20260602-70",
+  "fecha": "2026-06-02",
+  "huella": "49659c5b8c1c24d718100d01326620fdb3678b33481a52e00c846cb29702bd81"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T11:20:12+00:00",
+ "lote": "msgbatch_01MXXMFvrqAAHficSS2SFuRZ",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "A2",
+   "cita": "grupo A, subgrupo A2, y se convocan por el sistema selectivo de oposición en turno libre",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "para la provisión, en régimen de personal funcionario de carrera del Ayuntamiento de Leganés",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "se convocan por el sistema selectivo de oposición en turno libre, con creación de bolsa de trabajo",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles, contados a partir del día siguiente al de la publicación del correspondiente anuncio de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes de participación será de veinte días hábiles, contados a partir del día siguiente",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "tablón de anuncios y edictos electrónico del Ayuntamiento, plataforma de gestión de procesos selectivos y web municipal (Recursos Humanos/Procesos Selectivos)",
+   "cita": "publicado en el tablón de anuncios y edictos electrónico del Ayuntamiento de Leganés y en la plataforma de gestión de procesos selectivos",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, bolsa de trabajo",
+   "cita": "se convocan por el sistema selectivo de oposición en turno libre, con creación de bolsa de trabajo",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Educador infantil"
+   ],
+   "cita": "se convocan diez plazas de la categoría educador infantil vacantes en la plantilla de personal funcionario"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 10,
+   "cita": "se convocan por el sistema selectivo de oposición en turno libre, con creación de bolsa de trabajo"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 10,
+   "cita": "se convocan por el sistema selectivo de oposición en turno libre, con creación de bolsa de trabajo"
+  }
+ }
+}

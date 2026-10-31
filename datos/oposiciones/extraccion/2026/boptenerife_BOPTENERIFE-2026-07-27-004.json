@@ -1,0 +1,70 @@
+{
+ "proceso": "boptenerife:BOPTENERIFE-2026-07-27-004",
+ "documento": {
+  "id": "boptenerife:BOPTENERIFE-2026-07-27-004",
+  "fuente": "BOP-TENERIFE",
+  "url": "http://www.bopsantacruzdetenerife.es/bopsc2/sumario.php?codigopub=1&fecha_mas_reciente=2026-07-27",
+  "fecha": "2026-07-27",
+  "huella": "2ac6a776aaba8ec71d3672c740882d0c887e2fe225842f75ef46c5563c4d5bf9"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T11:20:11+00:00",
+ "lote": "msgbatch_01MXXMFvrqAAHficSS2SFuRZ",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "provisión de los puestos de trabajo vacantes en la Relación de Puestos de Trabajo",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "mediante el procedimiento de concurso ordinario y concurso específico de los puestos de trabajo vacantes",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 13,
+   "cita": "TOTAL PUESTOS OFERTADOS 13",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "QUINCE (15) DÍAS HÁBILES, a contar a partir del día siguiente a la publicación del extracto de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "presentarán su solicitud de participación en el plazo de QUINCE (15) DÍAS HÁBILES, a contar a partir del día siguiente",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Exclusivamente por vía telemática, a través de la Sede electrónica del Cabildo Insular de Tenerife, con firma electrónica",
+   "cita": "presentar la solicitud de participación facilitada por la Corporación, exclusivamente por vía telemática, a través de la Sede electrónica",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de anuncios de la Sede electrónica del Excmo. Cabildo Insular de Tenerife (https://sede.tenerife.es/es), además del BOP y extracto en BOE",
+   "cita": "Igualmente, se anunciarán en el Tablón de anuncios de la Sede electrónica del Excmo. Cabildo Insular de Tenerife todos los anuncios",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "no se establece",
+   "cita": "provisión con carácter definitivo mediante el procedimiento de concurso ordinario y concurso específico",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "TÉCNICO/A DE RELACIONES LABORALES"
+   ],
+   "cita": "vinculadas a las plazas TÉCNICO/A DE RELACIONES LABORALES, de la Plantilla de Personal Funcionario del Excmo."
+  },
+  "meritos": {
+   "motivo": "cita_no_literal",
+   "valor": "Méritos específicos (máx. 3), grado personal (máx. 1), trabajo desarrollado (máx. 2), cursos de formación y perfeccionamiento (máx. 2), antigüedad (máx. 1)",
+   "cita": "Méritos específicos 3 b) Grado personal reconocido 1 c) Trabajo desarrollado 2 d) Cursos de formación y perfeccionamiento 2 e) Antigüedad 1"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "no",
+   "cita": "Anuncios que se refieren a la provisión de puestos mediante concurso ordinario y específico"
+  }
+ }
+}

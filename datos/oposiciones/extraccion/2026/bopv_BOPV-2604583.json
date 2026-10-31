@@ -5,18 +5,18 @@
   "fuente": "BOPV",
   "url": "https://www.euskadi.eus/web01-bopv/es/bopv2/datos/2026/10/2604583a.shtml",
   "fecha": "2026-10-30",
-  "huella": "d1d7c9fe199888b0e6b3ae2afc5ef3b43bf6a21791a6aa7cd5ab56fc2d2c31c3"
+  "huella": "cf6c0dd8effe107ffbda36c44f2b6efb8247682760f38dce82c32896f0e46ba7"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T08:03:31+00:00",
- "lote": "msgbatch_013xFoLdqcGqWcqkzh7qrdGg",
+ "extraido": "2026-10-31T11:20:09+00:00",
+ "lote": "msgbatch_01MXXMFvrqAAHficSS2SFuRZ",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
    "valor": [
     "inmunólogo/a (puesto funcional de facultativo/a especialista médico/a – técnico/a inmunología)"
    ],
-   "cita": "categoría de inmunólogo/a (puesto funcional de facultativo/a especialista médico/a – técnico/a inmunología)",
+   "cita": "en la categoría de inmunólogo/a (puesto funcional de facultativo/a especialista médico/a – técnico/a inmunología)",
    "nivel": "literal"
   },
   "grupo": {
@@ -26,7 +26,7 @@
   },
   "vinculo": {
    "valor": "personal laboral fijo",
-   "cita": "para la adquisición del vínculo estatutario fijo en Osakidetza-Servicio vasco de salud",
+   "cita": "para la adquisición del vínculo estatutario fijo en la categoría de inmunólogo/a",
    "nivel": "literal"
   },
   "sistema": {
@@ -36,12 +36,12 @@
   },
   "plazas_total": {
    "valor": 3,
-   "cita": "Convocatoria de turno libre: 3 destinos.",
+   "cita": "a) Convocatoria de turno libre: 3 destinos.",
    "nivel": "literal"
   },
   "plazas_turno_libre": {
    "valor": 3,
-   "cita": "Acceso general: 3.",
+   "cita": "Convocatoria de turno libre: 3 destinos.",
    "nivel": "literal"
   },
   "plazas_discapacidad": {
@@ -54,55 +54,55 @@
    "cita": "licenciado/a en medicina, biología, bioquímica o titulación equivalente y de la especialidad de inmunología",
    "nivel": "literal"
   },
-  "otros_requisitos": {
-   "valor": "Cumplir los requisitos del puesto establecidos en la normativa vigente, y mantenerlos hasta la toma de posesión del destino adjudicado.",
-   "cita": "En todo caso, deberán cumplirse los requisitos del puesto al que se opte establecidos por lo dispuesto en la normativa vigente.",
-   "nivel": "literal"
-  },
   "tasa_euros": {
    "valor": 25,
    "cita": "Grupo A1: 25 euros.",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "Desde el 2 de noviembre hasta las 14:00 horas del 27 de noviembre de 2026",
+   "valor": "desde el 2 de noviembre hasta las 14:00 horas del 27 de noviembre de 2026",
    "cita": "desde el día 2 de noviembre hasta las 14:00 horas del día 27 de noviembre de 2026",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Página web de Osakidetza y Boletín Oficial del País Vasco",
-   "cita": "con una antelación de al menos 12 semanas en la página web de Osakidetza",
+   "valor": "Boletín Oficial del País Vasco y página web de Osakidetza",
+   "cita": "publicación en el Boletín Oficial del País Vasco de la resolución de la directora general",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Primer ejercicio teórico: preguntas con respuestas alternativas sobre el programa del Anexo IV (65 %)",
-    "Segundo ejercicio práctico: cuestionario tras exposición de uno o varios casos prácticos (35 %)"
+    "Primer ejercicio teórico: preguntas con respuestas alternativas sobre el programa",
+    "Segundo ejercicio práctico: cuestionario tras exposición de casos prácticos"
    ],
    "cita": "Primer ejercicio teórico: consistirá en la contestación de preguntas con respuestas alternativas",
    "nivel": "literal"
   },
   "meritos": {
-   "valor": "Experiencia profesional (máx. 60 puntos); formación, docencia e investigación (máx. 20 puntos); euskera (PL2 18 puntos, PL1 9 puntos)",
-   "cita": "2) Formación, docencia e investigación (máximo, 20 puntos).",
+   "valor": "Experiencia profesional hasta 60 puntos; formación, docencia e investigación hasta 20 puntos; euskera PL2 18 puntos y PL1 9 puntos",
+   "cita": "Experiencia profesional (máximo 60 puntos).",
    "nivel": "literal"
   }
  },
  "rechazados": {
-  "temas": {
+  "presentacion": {
    "motivo": "cita_no_literal",
-   "valor": 29,
-   "cita": "Temario común de 19 temas y temario específico de 25 temas"
+   "valor": "no consta en el texto",
+   "cita": "no consta en el texto"
+  },
+  "temas": {
+   "motivo": "valor_no_en_cita",
+   "valor": 21,
+   "cita": "II.– TEMARIO ESPECÍFICO."
   },
   "bolsa": {
    "motivo": "cita_no_literal",
    "valor": "no",
-   "cita": "Con el proceso selectivo no se menciona la creación de bolsa o lista de espera."
+   "cita": "no consta en el texto"
   },
   "practicas_o_curso": {
    "motivo": "cita_no_literal",
    "valor": "no",
-   "cita": "no consta periodo de prácticas ni curso selectivo en el texto"
+   "cita": "no consta en el texto"
   }
  }
 }

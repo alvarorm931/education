@@ -1,0 +1,50 @@
+{
+ "proceso": "bocm:BOCM-20260806-42",
+ "documento": {
+  "id": "bocm:BOCM-20260806-42",
+  "fuente": "BOCM",
+  "url": "https://www.bocm.es/bocm-20260806-42",
+  "fecha": "2026-08-06",
+  "huella": "a818eacc466d4a65453be48f4b6b45f7175e27ad93463ddcc23c94609b599495"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T11:20:08+00:00",
+ "lote": "msgbatch_01MXXMFvrqAAHficSS2SFuRZ",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Técnico/a de Administración General"
+   ],
+   "cita": "plazas de funcionario/a de carrera, Administración General, subescala Técnica, denominación Técnico/a de Administración General",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "plazas de funcionario/a de carrera, Administración General, subescala Técnica",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mediante el sistema de concurso-oposición, en sesión ordinaria celebrada en fecha 24 de julio de 2026",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles a partir del día siguiente a la publicación del extracto de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "Plazo de presentación de solicitudes: 20 días hábiles a partir del día siguiente a la publicación del extracto",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_promocion_interna": {
+   "motivo": "valor_no_numerico",
+   "valor": "turno restringido-promoción interna",
+   "cita": "en régimen de turno restringido-promoción interna, mediante el sistema de concurso-oposición"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "sede electrónica del Ayuntamiento de Fuenlabrada, tablón de anuncios electrónico y página web www.ayto-fuenlabrada.es, con anuncios en el BOCM y en el BOE",
+   "cita": "Las bases íntegras se encuentran expuestas en el tablón de anuncios electrónico desde el día 28 de julio de 2026"
+  }
+ }
+}

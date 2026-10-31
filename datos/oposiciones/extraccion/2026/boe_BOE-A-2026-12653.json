@@ -5,11 +5,11 @@
   "fuente": "BOCYL",
   "url": "https://bocyl.jcyl.es/html/2026/06/04/html/BOCYL-D-04062026-106-38.do",
   "fecha": "2026-06-04",
-  "huella": "15bf9f8191bfcb1f022dae4709741a2aace33ff5e613ec1de9d0053e89be7bfc"
+  "huella": "305f5125dd61f40348cbb45e1c171e0751d99afcaad3caebb40843d7b2fccbd2"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T07:51:45+00:00",
- "lote": "msgbatch_01NvbwpQGcC9vt1x7nWayvXt",
+ "extraido": "2026-10-31T11:20:06+00:00",
+ "lote": "msgbatch_01MXXMFvrqAAHficSS2SFuRZ",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
@@ -26,22 +26,22 @@
   },
   "vinculo": {
    "valor": "funcionario de carrera",
-   "cita": "para el nombramiento de un auxiliar-administrativo funcionario/a de carrera de este ayuntamiento",
+   "cita": "nombramiento de un auxiliar-administrativo funcionario/a de carrera de este ayuntamiento",
    "nivel": "literal"
   },
   "sistema": {
    "valor": "concurso-oposición",
-   "cita": "por el sistema de concurso-oposición y aprobado modificación y corrección de las bases",
+   "cita": "Procedimiento Selección Concurso-Oposición.",
    "nivel": "literal"
   },
   "plazas_total": {
    "valor": 1,
-   "cita": "número de vacantes 1; denominación Auxiliar Administrativo",
+   "cita": "número de vacantes 1; denominación Auxiliar Administrativo.",
    "nivel": "literal"
   },
   "plazas_turno_libre": {
    "valor": 1,
-   "cita": "número de vacantes 1; denominación Auxiliar Administrativo",
+   "cita": "número de vacantes 1; denominación Auxiliar Administrativo.",
    "nivel": "literal"
   },
   "titulacion": {
@@ -50,18 +50,18 @@
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Nacionalidad española o acceso conforme a la normativa de libre circulación; capacidad funcional; tener cumplidos 16 años y no exceder la edad de jubilación forzosa; no haber sido separado del servicio público ni inhabilitado; no incurrir en incompatibilidad",
-   "cita": "Tener la nacionalidad española, sin perjuicio de lo dispuesto a continuación",
+   "valor": "Nacionalidad española o de Estados de la UE según la base segunda; capacidad funcional; tener cumplidos dieciséis años; no haber sido separado del servicio público; no incurrir en incompatibilidad",
+   "cita": "Tener cumplidos dieciséis años y no exceder, en su caso, de la edad máxima de jubilación forzosa.",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
    "valor": "veinte días naturales desde el día siguiente a la publicación del anuncio en el Boletín Oficial del Estado",
-   "cita": "en el plazo de veinte días naturales contados a partir del día siguiente al de la publicación del anuncio de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "que será de veinte días naturales a contar desde el día siguiente a la publicación de este anuncio en el Boletín Oficial del Estado.",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Registro Electrónico General del Ayuntamiento o lugares del artículo 16.4 de la Ley 39/2015",
-   "cita": "se presentarán en el Registro Electrónico General del Noceda del Bierzo o en alguno de los lugares previstos",
+   "valor": "Registro Electrónico General del Ayuntamiento o lugares del artículo 16.4 de la Ley 39/2015, mediante instancia (Anexo I)",
+   "cita": "se presentarán en el Registro Electrónico General del Noceda del Bierzo o en alguno de los lugares previstos en el artículo 16.4",
    "nivel": "literal"
   },
   "publicaciones": {
@@ -71,11 +71,25 @@
   },
   "ejercicios": {
    "valor": [
-    "Primer ejercicio: cuestionario tipo test de 25 preguntas, 50 minutos, máximo 20 puntos",
-    "Segundo ejercicio: supuesto práctico escrito de índole administrativa, máximo 10 puntos",
-    "Fase de concurso: méritos de formación, experiencia y otros, máximo 20 puntos"
+    "Primer ejercicio: cuestionario tipo test de 25 preguntas sobre el temario, 50 minutos, máximo 20 puntos",
+    "Segundo ejercicio: supuestos prácticos administrativos y contables por escrito, máximo 10 puntos"
    ],
-   "cita": "Ejercicio primero. (Puntuación máxima 20 puntos) Consistirá en contestar, por escrito, a un cuestionario compuesto por 25 preguntas tipo test",
+   "cita": "El primer ejercicio de la fase de oposición tendrá una puntuación máxima de 20 puntos. El segundo ejercicio",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Formación hasta 4 puntos; experiencia profesional hasta 6 puntos (0,20 por mes completo); otros méritos del puesto hasta 10 puntos (aplicaciones informáticas y gestión del padrón)",
+   "cita": "Otros méritos directamente relacionados con la características y funciones del puesto, hasta un máximo de 10 puntos",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "no",
+   "cita": "Contra la convocatoria y sus bases, que agotan la vía administrativa",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "no",
+   "cita": "Una vez terminada la calificación y consideradas las reclamaciones presentadas, el Tribunal hará pública la relación de aspirantes",
    "nivel": "literal"
   },
   "temas": {
@@ -84,16 +98,5 @@
    "nivel": "contado"
   }
  },
- "rechazados": {
-  "meritos": {
-   "motivo": "cita_no_literal",
-   "valor": "Formación hasta 4 puntos; experiencia profesional hasta 6 puntos (0,20 por mes completo); otros méritos directamente relacionados con el puesto hasta 10 puntos",
-   "cita": "Hasta un máximo de 20 puntos. Los méritos a tener en cuenta en esta fase, se valorarán exclusivamente"
-  },
-  "bolsa": {
-   "motivo": "cita_no_literal",
-   "valor": "no",
-   "cita": "no consta en el texto la creación de bolsa o lista de espera"
-  }
- }
+ "rechazados": {}
 }

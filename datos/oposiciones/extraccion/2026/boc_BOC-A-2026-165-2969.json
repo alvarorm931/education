@@ -5,22 +5,17 @@
   "fuente": "BOC",
   "url": "https://www.gobiernodecanarias.org/boc/2026/165/2969.html",
   "fecha": "2026-08-18",
-  "huella": "50b9cb9a46edaf4a9adf9117c6b34a2e13ad3dd46ff4b8ecf51cd9fc6ea54f02"
+  "huella": "5c9454a151a2c5a15d485456236338258fb2b471ed956097216ad079f6fbf3b2"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T08:03:43+00:00",
- "lote": "msgbatch_013xFoLdqcGqWcqkzh7qrdGg",
+ "extraido": "2026-10-31T11:20:08+00:00",
+ "lote": "msgbatch_01MXXMFvrqAAHficSS2SFuRZ",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
    "valor": [
     "Titulado Medio, especialidad Informática"
    ],
-   "cita": "Cobertura de dos (2) puestos vacantes, grupo profesional Titulado Medio, especialidad Informática, nivel retributivo 2",
-   "nivel": "literal"
-  },
-  "grupo": {
-   "valor": "Titulado Medio",
    "cita": "grupo profesional Titulado Medio, especialidad Informática, nivel retributivo 2",
    "nivel": "literal"
   },
@@ -31,21 +26,21 @@
   },
   "sistema": {
    "valor": "concurso-oposición",
-   "cita": "la selección, mediante concurso-oposición restringido, para la cobertura de dos (2) puestos vacantes",
+   "cita": "selección, mediante concurso-oposición restringido, para la cobertura de dos (2) puestos vacantes",
    "nivel": "literal"
   },
   "plazas_total": {
    "valor": 2,
-   "cita": "la selección, mediante concurso-oposición restringido, para la cobertura de dos (2) puestos vacantes",
+   "cita": "selección, mediante concurso-oposición restringido, para la cobertura de dos (2) puestos vacantes",
    "nivel": "literal"
   },
   "titulacion": {
-   "valor": "Ingeniería Técnica o Diplomatura o equivalente",
+   "valor": "Ingeniería Técnica o Diplomatura o equivalente, o en condiciones de obtenerlo en el plazo de presentación de solicitudes",
    "cita": "estar en posesión titulación oficial de Ingeniería Técnica o Diplomatura o equivalente",
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Ostentar la condición de PAS Laboral fijo de la Universidad de La Laguna; no encontrarse en suspensión del contrato por cargo público representativo o privación de libertad sin sentencia firme, ni en excedencia salvo las excepciones previstas",
+   "valor": "Ostentar la condición de PAS Laboral fijo de la Universidad de La Laguna; no encontrarse en suspensión del contrato por cargo público representativo o privación de libertad sin sentencia firme, ni en excedencia salvo excepciones",
    "cita": "Ostentar la condición de PAS Laboral fijo de la Universidad de La Laguna",
    "nivel": "literal"
   },
@@ -62,20 +57,20 @@
   "ejercicios": {
    "valor": [
     "Primera parte: cuestionario teórico de preguntas con respuestas alternativas (0 a 10, 40%)",
-    "Segunda parte: prueba y/o supuesto práctico (0 a 10, 60%)",
-    "Fase de concurso: servicios prestados en la ULL y formación (40% del total)"
+    "Segunda parte: prueba y/o supuesto práctico (60%)",
+    "Fase de concurso: méritos (40% del total), no eliminatoria"
    ],
-   "cita": "La segunda parte del ejercicio será de carácter práctico. Consistirá en una prueba y/o supuesto práctico",
+   "cita": "La primera parte del ejercicio será de carácter teórico. Consistirá en contestar a un cuestionario compuesto por preguntas con respuestas alternativas",
    "nivel": "literal"
   },
   "meritos": {
-   "valor": "Servicios prestados en la ULL: máximo 3 puntos; formación específica y transversal: máximo 1 punto. Fase no eliminatoria con un peso del 40% del total",
-   "cita": "La valoración de esta fase será del 40% del total del proceso selectivo, de acuerdo con el siguiente baremo",
+   "valor": "Servicios en la ULL (máx. 3 puntos); formación específica y transversal (máx. 1 punto); no eliminatoria; fase de concurso 40% del total",
+   "cita": "La valoración de esta fase será del 40% del total del proceso selectivo",
    "nivel": "literal"
   },
   "bolsa": {
-   "valor": "no",
-   "cita": "Siempre que el Tribunal haya propuesto una lista de personas aprobadas de igual número de aspirantes que el de plazas convocadas",
+   "valor": false,
+   "cita": "En caso de persistir el empate",
    "nivel": "literal"
   },
   "temas": {
@@ -85,15 +80,25 @@
   }
  },
  "rechazados": {
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "Titulado Medio",
+   "cita": "puestos pertenecen al grupo profesional Titulado Medio, especialidad Informática, nivel retributivo 2"
+  },
+  "plazas_turno_libre": {
+   "motivo": "cita_no_literal",
+   "valor": 0,
+   "cita": "convocatoria restringida, para la adjudicación de las plazas vacantes o de nueva creación"
+  },
+  "tasa_euros": {
+   "motivo": "valor_no_en_cita",
+   "valor": 0,
+   "cita": "Para ser admitido al proceso selectivo, será necesario reunir los requisitos establecidos en la convocatoria"
+  },
   "publicaciones": {
    "motivo": "cita_no_literal",
-   "valor": "Tablón de anuncios electrónico de la ULL (sede.ull.es) y web de convocatorias de PAS Laboral de la ULL",
-   "cita": "se publicarán en el tablón de anuncios electrónico de la ULL y en la dirección web"
-  },
-  "practicas_o_curso": {
-   "motivo": "cita_no_literal",
-   "valor": "no",
-   "cita": "Ninguna mención a periodo de prácticas o curso selectivo en las bases"
+   "valor": "Tablón de anuncios electrónico de la ULL y dirección web https://www.ull.es/portal/convocatorias/categorias/convocatorias-de-pas-laboral/",
+   "cita": "se publicará conjuntamente en el tablón de anuncios electrónico de la ULL y en la dirección web ya indicada"
   }
  }
 }

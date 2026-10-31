@@ -5,21 +5,23 @@
   "fuente": "DOGC",
   "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1046460",
   "fecha": "2026-06-08",
-  "huella": "7d284580debcb5d8a8a4b9e3f1b9014089617be88c132c43463f9d8d032d02f5"
+  "huella": "a00cd15fdb8d54a33780861277b53c83c1ae3e793e9fde4531a0ae5c68e04243"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T07:51:54+00:00",
- "lote": "msgbatch_01NvbwpQGcC9vt1x7nWayvXt",
+ "extraido": "2026-10-31T11:20:06+00:00",
+ "lote": "msgbatch_01MXXMFvrqAAHficSS2SFuRZ",
  "no_son_bases": false,
  "campos": {
+  "denominacion": {
+   "valor": [
+    "mosso/a de la escala básica del Cuerpo de Mossos d'Esquadra"
+   ],
+   "cita": "Se abre la convocatoria para cubrir 1.587 plazas de la categoría de mosso/a de la escala básica del Cuerpo de Mossos d'Esquadra",
+   "nivel": "literal"
+  },
   "grupo": {
    "valor": "C1",
    "cita": "mosso/a de la escala básica del Cuerpo de Mossos d'Esquadra (grupo C, subgrupo C1)",
-   "nivel": "literal"
-  },
-  "vinculo": {
-   "valor": "funcionario de carrera",
-   "cita": "tener la nacionalidad española de acuerdo con la legislación vigente",
    "nivel": "literal"
   },
   "sistema": {
@@ -29,7 +31,7 @@
   },
   "plazas_total": {
    "valor": 1587,
-   "cita": "se abre la convocatoria para cubrir 1.587 plazas de la categoría de mosso/a",
+   "cita": "Se abre la convocatoria para cubrir 1.587 plazas de la categoría de mosso/a",
    "nivel": "literal"
   },
   "titulacion": {
@@ -38,13 +40,8 @@
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Nacionalidad española; 18 años y no superar la edad de jubilación forzosa; aptitud psicofísica; sin antecedentes penales ni inhabilitación; no separada por expediente disciplinario; compromiso de llevar armas; permiso de conducir clase B en vigor.",
-   "cita": "Tener el permiso de conducir vehículos de la clase B, en vigor, o permisos equivalentes según la normativa aplicable",
-   "nivel": "literal"
-  },
-  "idioma_cooficial": {
-   "valor": "catalán, nivel de suficiencia C1 (exento acreditando C1 o superior)",
-   "cita": "Los participantes tienen que poseer los conocimientos de nivel de suficiencia de catalán (C1), equivalente o superior",
+   "valor": "Nacionalidad española; haber cumplido 18 años y no superar la edad de jubilación forzosa; aptitud psicofísica; no tener antecedentes penales; no haber sido separado del servicio por expediente disciplinario; compromiso de llevar armas; permiso de conducir clase B.",
+   "cita": "Tener la nacionalidad española de acuerdo con la legislación vigente.",
    "nivel": "literal"
   },
   "tasa_euros": {
@@ -53,8 +50,8 @@
    "nivel": "literal"
   },
   "exenciones_tasa": {
-   "valor": "Exentas las personas inscritas como desempleadas en el SOC o SEPE que no perciban prestación económica por desempleo; bonificaciones para familias monoparentales o numerosas y víctimas de violencia machista (32,55 y 23,25 euros).",
-   "cita": "Están exentas de pagar la tasa de inscripción las personas que, dentro del plazo de presentación de solicitudes de participación, cumplan las dos condiciones siguientes",
+   "valor": "Exentas las personas inscritas como desempleadas sin percibir ninguna prestación económica por desempleo; bonificaciones para familias monoparentales o numerosas y víctimas de violencia machista.",
+   "cita": "Están exentas de pagar la tasa de inscripción las personas que, dentro del plazo de presentación de solicitudes de participación, cumplan las dos condiciones",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
@@ -68,59 +65,56 @@
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "DOGC; tablón electrónico de la Generalitat (tauler.gencat.cat) para actuaciones del tribunal",
+   "valor": "DOGC, tablón electrónico de la Generalitat (tauler.gencat.cat) y lugares indicados en las resoluciones",
    "cita": "el tribunal calificador, con carácter general, tiene que publicar las actuaciones que requieren notificación a los participantes a través del tablón electrónico",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Primera prueba: subprueba de conocimientos (test 30 preguntas, 35 min, obligatoria y eliminatoria)",
-    "Primera prueba: subprueba aptitudinal (test 80 preguntas, 35 min, eliminatoria)",
-    "Primera prueba: subprueba de idiomas (voluntaria, no eliminatoria, máx. 3 puntos)",
-    "Segunda prueba: física (circuito de agilidad, presión sobre banco, course navette)",
+    "Primera prueba: subprueba de conocimientos (test de 30 preguntas) y subprueba aptitudinal (test de 80 preguntas), más subprueba voluntaria de idiomas",
+    "Segunda prueba: física (circuito de agilidad, presión sobre banco y course navette)",
     "Tercera prueba: adecuación psicoprofesional (test de competencias y entrevista)",
-    "Cuarta prueba: conocimientos de lengua catalana (apto/no apto)",
-    "Comprobación de causas de exclusión por falta de aptitud psicofísica"
+    "Cuarta prueba: conocimientos de lengua catalana (nivel C1)"
    ],
    "cita": "La fase de oposición consta de cuatro pruebas obligatorias. La puntuación máxima de esta fase es de 33 puntos.",
    "nivel": "literal"
   },
   "meritos": {
-   "valor": "Fase de concurso, máximo 4,5 puntos; competencias en tecnologías de la información y la comunicación (ACTIC) entre otros méritos; los detalles se desarrollan en las bases 6.2.1 a 6.2.3.",
+   "valor": "Fase de concurso, con 4,5 puntos como máximo; méritos incluidos en las bases 6.2.1, 6.2.2 y 6.2.3, entre ellos competencias en tecnologías de la información y la comunicación (ACTIC).",
    "cita": "En esta fase los méritos se valoran con 4,5 puntos como máximo.",
    "nivel": "literal"
-  },
-  "practicas_o_curso": {
-   "valor": "fase de formación y fase de prácticas tras la oposición y el concurso",
-   "cita": "Tercera fase: formación. Cuarta fase: prácticas.",
-   "nivel": "sin_signos"
   }
  },
  "rechazados": {
-  "denominacion": {
+  "vinculo": {
    "motivo": "cita_no_literal",
-   "valor": "mosso/a de la escala básica del Cuerpo de Mossos d'Esquadra",
-   "cita": "convocar 1.587 plazas de la categoría de mosso/a de la escala básica del Cuerpo de Mossos d'Esquadra"
+   "valor": "funcionario de carrera",
+   "cita": "el nombramiento como funcionario o funcionaria de carrera"
   },
   "plazas_turno_libre": {
    "motivo": "valor_no_en_cita",
    "valor": 953,
    "cita": "de las cuales 634 se reservan para ser provistas por mujeres"
   },
-  "plazas_discapacidad": {
-   "motivo": "cita_no_literal",
+  "plazas_promocion_interna": {
+   "motivo": "valor_no_en_cita",
    "valor": 0,
-   "cita": "no aparece"
+   "cita": "Se abre la convocatoria para cubrir 1.587 plazas de la categoría de mosso/a"
   },
-  "temas": {
-   "motivo": "cita_no_literal",
-   "valor": "no aparece",
-   "cita": "no aparece"
+  "plazas_discapacidad": {
+   "motivo": "valor_no_en_cita",
+   "valor": 0,
+   "cita": "Se abre la convocatoria para cubrir 1.587 plazas de la categoría de mosso/a"
   },
   "bolsa": {
    "motivo": "cita_no_literal",
-   "valor": "no aparece",
-   "cita": "no aparece"
+   "valor": "no",
+   "cita": "no consta en el texto"
+  },
+  "practicas_o_curso": {
+   "motivo": "cita_no_literal",
+   "valor": "fase de formación y fase de prácticas tras la oposición, con nombramiento como funcionario de carrera",
+   "cita": "La convocatoria consta de las cuatro fases que se describen a continuación: Tercera fase: formación. Cuarta fase: prácticas."
   }
  }
 }

@@ -1,0 +1,116 @@
+{
+ "proceso": "bopb:BOPB-202610100959",
+ "documento": {
+  "id": "bopb:BOPB-202610100959",
+  "fuente": "BOPB",
+  "url": "https://bop.diba.cat/anunci/3951713/bases-i-convocatoria-del-proces-selectiu-per-a-la-provisio-com-a-personal-funcionari-de-carrera-mitjancant-el-sistema-de-concurs-oposicio-d-una-placa-de-l-escala-d-administracio-especial-subescala-tecnica-classe-diplomada-categoria-arquitecte-a-tecnic-a-ajuntament-de-calella",
+  "fecha": "2026-06-04",
+  "huella": "507362820270026d67f7ba37811a591aa58a7a7068e36c970497eef3a56f88c6"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T11:20:10+00:00",
+ "lote": "msgbatch_01MXXMFvrqAAHficSS2SFuRZ",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "TAE ARQUITECTE/A TÈCNIC/A"
+   ],
+   "cita": "Denominació TAE ARQUITECTE/A TÈCNIC/A Escala: ADMINISTRACIÓ ESPECIAL",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "A2",
+   "cita": "grup de titulació A, subgrup A2, reservada al torn de promoció interna",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "provisió com a personal funcionari de carrera, mitjançant el sistema de concurs oposició",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "concurs oposició, d’una plaça de l’escala d’administració especial",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Titulació universitària oficial d'arquitecte tècnic o la que habiliti per a l'exercici de la professió reglada d'arquitecte tècnic",
+   "cita": "Titulació universitària oficial d'arquitecte tècnic o aquella que habiliti per a l'exercici de la professió reglada",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Ser personal funcionari de carrera de l'Ajuntament de Calella en plaça del grup C1, antiguitat mínima de dos anys y en servicio activo o especiales; nacionalidad o libre circulación; 16 años y no superar la edad de jubilación forzosa.",
+   "cita": "Ser personal funcionari de carrera de l’Ajuntament de Calella en una plaça del grup C1, tenir una antiguitat mínima de dos anys",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Català nivell C1 (suficiència) del MECR; castellà nivell C1 solo para quien no acredite nacionalidad española",
+   "cita": "Nivell C1 (suficiència) del marc europeu comú de referència per a les llengües (MECR)",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 18,
+   "cita": "Les persones aspirants hauran de satisfer una taxa d’un import de 18,00 € en concepte de drets d’examen.",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "10 días hábiles a contar desde el día siguiente a la publicación de las bases en el BOPB",
+   "cita": "El termini per presentar sol·licituds és de deu (10) dies hàbils comptadors a partir de l’endemà de la publicació",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Preferentemente por la sede electrónica del Ayuntamiento de Calella; presencial en el Registro General; o por cualquier otro medio del art. 16.4 Ley 39/2015",
+   "cita": "Preferentment, per la seu electrònica de l’Ajuntament de Calella, amb certificat digital o signatura electrònica",
+   "nivel": "sin_signos"
+  },
+  "meritos": {
+   "valor": "Experiencia profesional hasta 5 puntos (0,20 por mes); formación reglada hasta 4 puntos; formación continua hasta 4 puntos (0,015 por hora); idiomas hasta 2 puntos",
+   "cita": "FASE DE CONCURS 15 PUNTS MÀXIM EXPERIENCIA PROFESSIONAL I SERVEIS PRESTATS (MÀXIM 6 PUNTS)",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "Sí, para cubrir con carácter temporal necesidades de personal de esta categoría, con vigencia de dos años",
+   "cita": "Les persones candidates que no siguin nomenades, i que hagin superat la fase d’oposició, s’inclouran en una borsa de treball",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Período de prácticas de 3 meses, obligatorio y eliminatorio",
+   "cita": "El període de pràctiques, amb una durada de 3 mesos, és obligatori, eliminatori i forma part del procés selectiu.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "mitjançant el sistema de concurs oposició per promoció interna"
+  },
+  "plazas_promocion_interna": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "reservada al torn de promoció interna"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Tablón de edictos municipal, portal de procesos selectivos de www.calella.cat y BOPB",
+   "cita": "La llista de persones aspirants admeses i excloses es publicarà al tauler d’edictes municipal i al portal de processos selectius"
+  },
+  "ejercicios": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Fase oposición: redacción, presentación y defensa de un proyecto técnico (0-50 puntos, mínimo 25)",
+    "Prueba de conocimientos de catalán (apto/no apto); castellano solo para no nacionales",
+    "Fase concurso: méritos (15 puntos máximo)",
+    "Entrevista personal opcional (4 puntos)",
+    "Período de prácticas de 3 meses, apto/no apto"
+   ],
+   "cita": "Fase d’oposició constarà d’un exercici únic de caràcter obligatori i eliminatori, consistent en la redacció, presentació i defensa pública"
+  },
+  "temas": {
+   "motivo": "valor_no_en_cita",
+   "valor": 60,
+   "cita": "ANNEX I. TEMARI Planejament, Gestió Urbanística i Intervenció Municipal"
+  }
+ }
+}

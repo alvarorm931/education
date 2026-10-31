@@ -1,16 +1,106 @@
 {
  "proceso": "boe:BOE-A-2026-13708",
  "documento": {
-  "id": "dogc:1047448",
-  "fuente": "DOGC",
-  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1047448",
-  "fecha": "2026-06-18",
-  "huella": "c97c58a41d1a175081dc8b759c32ee93cc861dcdeb295159154ab83882eb7f08"
+  "id": "bopt:BOPT-2026-04361",
+  "fuente": "BOPT",
+  "url": "https://www.dipta.cat/bopt/web/anunci/359859/borsa-de-treball-de-tecnic-a-mitja-ana-de-ciberseguretat-infraestructures-informatiques-innovacio-i-tecnologia-bases-i-convocatoria-conv-26-018-diputacio-tarragona-persones-i-talent",
+  "fecha": "2026-05-15",
+  "huella": "4a31827c58c2b7e2707ab34fac87408b83eb9bd379508788156c24a5865ce5b0"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T07:52:05+00:00",
- "lote": "msgbatch_01NvbwpQGcC9vt1x7nWayvXt",
- "no_son_bases": true,
- "campos": {},
- "rechazados": {}
+ "extraido": "2026-10-31T11:20:10+00:00",
+ "lote": "msgbatch_01MXXMFvrqAAHficSS2SFuRZ",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "A2",
+   "cita": "DE TÈCNIC/A MITJÀ/ANA DE CIBERSEGURETAT (A2- A2L), PER A LA UNITAT D’INFRAESTRUCTURES INFORMÀTIQUES",
+   "nivel": "sin_signos"
+  },
+  "vinculo": {
+   "valor": "otro",
+   "cita": "constitució d’una borsa de treball, de caràcter ordinari",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "El procés selectiu estarà dividit en dues fases, en la primera es realitzarà un supòsit pràctic",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Grau en Enginyeria Informàtica, Grau en Enginyeria en Telecomunicacions, Grau en Enginyeria Telemàtica, Grau en Ciberseguretat o equivalent",
+   "cita": "Grau en Enginyeria Informàtica - Grau en Enginyeria en Telecomunicacions - Grau en Enginyeria Telemàtica - Grau en Ciberseguretat - o equivalent",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Certificat de nivell de suficiència de català (C1). Les persones no espanyoles i no originàries de països de llengua oficial castellana han d'acreditar castellà de nivell C2.",
+   "cita": "Posseir el certificat de nivell de suficiència de català (C1) expedit per l’òrgan competent",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "català, nivell C1",
+   "cita": "Posseir el certificat de nivell de suficiència de català (C1) expedit per l’òrgan competent",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 15,
+   "cita": "fixen els drets per accedir a aquesta convocatòria en la quantitat de 15 euros",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Persones amb discapacitat igual o superior al 33%; demandants de treball amb requisits; membres de família nombrosa (bonificació 50% o 100%).",
+   "cita": "Les persones amb discapacitat igual o superior al 33 per 100.",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 dies hàbils a comptar de l’endemà de la publicació de l’anunci de la convocatòria en el Butlletí Oficial de la Província",
+   "cita": "Termini de presentació de sol·licituds: 20 dies hàbils a comptar de l’endemà de la publicació",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Seu electrònica de la Diputació de Tarragona o registres de l'article 16.4 de la Llei 39/2015; presencial a les oficines d'assistència en matèria de registre",
+   "cita": "La sol·licitud es podrà presentar per mitjans electrònics a través de la Seu electrònica de la Diputació de Tarragona",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Prova pràctica escrita sobre supòsit pràctic (eliminatòria, 0-60 punts, mínim 30)",
+    "Prova de llengua catalana (apte/no apte)",
+    "Prova de llengua castellana per a aspirants estrangers sense nacionalitat espanyola (apte/no apte)",
+    "Test psicotècnic (fins a 10 punts)",
+    "Entrevista (fins a 20 punts)"
+   ],
+   "cita": "Consisteix en la realització d’un supòsit pràctic escrit relacionat amb les funcions, el perfil professional",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, borsa de treball ordinària de tècnic/a mitjà/ana de ciberseguretat per a la Unitat d’Infraestructures Informàtiques",
+   "cita": "crear una llista de reserva de tècnic/a mitjà/ana de ciberseguretat (A2/A2L)",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Tècnic/a mitjà/ana de ciberseguretat"
+   ],
+   "cita": "PROCÉS SELECTIU PER A LA CONSTITUCIÓ D’UNA BORSA DE TREBALL, DE CARÀCTER ORDINARI, DE TÈCNIC/A MITJÀ/ANA DE CIBERSEGURETAT (A2- A2L)"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Exposició al tauler d'anuncis de la Seu electrònica i al web de la Diputació",
+   "cita": "la llista de persones admeses i excloses es farà pública mitjançant la seva exposició al tauler d’anuncis de la Seu electrònica i al web"
+  },
+  "temas": {
+   "motivo": "valor_no_en_cita",
+   "valor": 5,
+   "cita": "Tema 1. Normativa, governança i marcs de referència en ciberseguretat."
+  },
+  "practicas_o_curso": {
+   "motivo": "cita_no_literal",
+   "valor": "Període de pràctiques o prova en cas de nomenament o contractació, segons el règim jurídic",
+   "cita": "En cas de nomenament o contractació, es preveu, depenen del règim jurídic, d’un període de pràctiques o prova."
+  }
+ }
 }

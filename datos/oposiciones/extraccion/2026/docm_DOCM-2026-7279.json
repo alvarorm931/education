@@ -5,11 +5,11 @@
   "fuente": "DOCM",
   "url": "https://docm.jccm.es/portaldocm/verArchivoHtml.do?ruta=2026/10/14/html/2026_7279.html&tipo=rutaDocm",
   "fecha": "2026-10-14",
-  "huella": "dd1b0a5ac95c60e0886c3f41e73ff901745fcfd0599cab9965e97b8ca8910169"
+  "huella": "67f7f7ab0514a3e82c8cf23d210c601b3356956964eb43be250a041a2f906154"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T07:39:46+00:00",
- "lote": "msgbatch_013q7o24qMms8ZNZdwMNkW1L",
+ "extraido": "2026-10-31T11:20:08+00:00",
+ "lote": "msgbatch_01MXXMFvrqAAHficSS2SFuRZ",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
@@ -21,7 +21,12 @@
   },
   "grupo": {
    "valor": "A1",
-   "cita": "Grupo A, Subgrupo A1, Nivel 25",
+   "cita": "personal funcionario interino del Grupo A, Subgrupo A1, Nivel 25",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario interino",
+   "cita": "cubrir con personal funcionario interino las plazas vacantes que resulten necesarias",
    "nivel": "literal"
   },
   "sistema": {
@@ -35,63 +40,52 @@
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Nacionalidad española o de un Estado miembro de la UE (o acceso por tratados internacionales), tener cumplidos 16 años, no exceder la edad de jubilación forzosa, capacidad funcional, no haber sido separado del servicio por expediente disciplinario ni hallarse inhabilitado. Título con antelación mínima de 3 años.",
-   "cita": "Tener cumplidos dieciséis años de edad y no exceder de la edad máxima de jubilación forzosa.",
+   "valor": "Nacionalidad española o de un Estado miembro de la UE (o supuestos asimilados); tener cumplidos 16 años y no exceder la edad máxima de jubilación forzosa; capacidad funcional; no haber sido separado del servicio por expediente disciplinario ni hallarse inhabilitado",
+   "cita": "Tener la nacionalidad española o la de un Estado miembro de la Unión Europea.",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 29.25,
+   "cita": "la cantidad a pagar a 29,25 € (veintinueve euros con veinticinco céntimos de euro)",
    "nivel": "literal"
   },
   "exenciones_tasa": {
-   "valor": "Exentos: demandantes de empleo desempleados al menos un mes antes de la convocatoria; discapacidad igual o superior al 33 por ciento; familias numerosas de carácter especial. Familias numerosas de categoría general: 8,36 €.",
-   "cita": "Estarán exentas del pago de la tasa, según lo dispuesto en el artículo 368.4 de la Ley 9/2012",
+   "valor": "Exención para demandantes de empleo no ocupados, discapacidad igual o superior al 33 %, y familias numerosas de carácter especial; familias numerosas de categoría general con bonificación del 80 % (8,36 €)",
+   "cita": "Las personas que presenten la solicitud de participación y además pertenezcan a familias numerosas de categoría general",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
    "valor": "quince días naturales desde el siguiente al de publicación de la convocatoria en el Diario Oficial de Castilla-La Mancha",
-   "cita": "El plazo para la presentación de solicitudes será de quince días naturales, contados a partir del siguiente al de la publicación",
+   "cita": "El plazo para la presentación de solicitudes será de quince días naturales, contados a partir del siguiente",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Exclusivamente por vía electrónica, mediante la aplicación del Portal del Empleo Público de la Junta de Comunidades de Castilla-La Mancha",
+   "valor": "Exclusivamente por vía electrónica, mediante la aplicación del Portal del Empleo Público y pago electrónico de la tasa",
    "cita": "Las solicitudes de participación se presentarán exclusivamente por vía electrónica.",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Portal del Empleo Público (empleopublico.castillalamancha.es), tablón de anuncios de la sede electrónica (jccm.es) y web del Iriaf (iriaf.castillalamancha.es); el DOCM publicará las listas provisionales y definitivas de admitidos",
+   "valor": "Portal del Empleo Público (empleopublico.castillalamancha.es), tablón de anuncios de la sede electrónica (jccm.es) y web del Iriaf (iriaf.castillalamancha.es)",
    "cita": "Todos los actos de desarrollo del concurso se harán públicos en el Portal del Empleo Público",
    "nivel": "literal"
   },
+  "ejercicios": {
+   "valor": [
+    "Concurso: valoración de méritos profesionales, producción científica y otros méritos curriculares"
+   ],
+   "cita": "El proceso selectivo se realizará por el sistema de concurso.",
+   "nivel": "literal"
+  },
   "meritos": {
-   "valor": "Méritos profesionales (0-40 puntos, 2,5 por año de experiencia); producción científica (0-30 puntos); otros méritos curriculares (0-30 puntos)",
+   "valor": "Méritos profesionales hasta 40 puntos (2,5 por año); producción científica hasta 30 puntos; otros méritos curriculares hasta 30 puntos",
    "cita": "a) Méritos profesionales. Experiencia profesional en puestos de trabajo relacionados con las tareas descritas en el Anexo II",
    "nivel": "literal"
   },
   "bolsa": {
-   "valor": "sí, bolsa de trabajo para cubrir con personal funcionario interino las plazas vacantes que resulten necesarias de Doctor/a Investigador/a",
-   "cita": "al objeto de cubrir con personal funcionario interino las plazas vacantes que resulten necesarias.",
+   "valor": "sí, bolsa de trabajo para cubrir con personal funcionario interino las plazas vacantes de Doctor/a Investigador/a que resulten necesarias",
+   "cita": "al objeto de cubrir con personal funcionario interino las plazas vacantes que resulten necesarias",
    "nivel": "literal"
   }
  },
- "rechazados": {
-  "vinculo": {
-   "motivo": "cita_no_literal",
-   "valor": "funcionario interino",
-   "cita": "para la constitución de una bolsa de trabajo con personal funcionario interino"
-  },
-  "tasa_euros": {
-   "motivo": "cita_no_literal",
-   "valor": 29.25,
-   "cita": "Se aplicará una bonificación del treinta por ciento sobre la cuantía correspondiente de la tasa, ascendiendo la cantidad a pagar a 29,25 €"
-  },
-  "ejercicios": {
-   "motivo": "cita_no_literal",
-   "valor": [
-    "Concurso: valoración de méritos profesionales, producción científica y otros méritos curriculares"
-   ],
-   "cita": ""
-  },
-  "practicas_o_curso": {
-   "motivo": "cita_no_literal",
-   "valor": "no consta periodo de prácticas ni curso selectivo",
-   "cita": ""
-  }
- }
+ "rechazados": {}
 }

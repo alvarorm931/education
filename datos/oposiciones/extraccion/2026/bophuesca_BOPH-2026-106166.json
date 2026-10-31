@@ -5,20 +5,13 @@
   "fuente": "BOP-HUESCA",
   "url": "https://bop.dphuesca.es/publica/buscador-anuncios/anuncio/Convocatoria-y-bases-para-la-creacion-mediante-concurso-de-una-bolsa-de-trabajo-para-la-cobertura-de-operario-a-de-servicios-multiples-para-cubrir-las-necesidades-que-se-produzcan/",
   "fecha": "2026-06-08",
-  "huella": "66e4399d8de085bb1e501ca93e808ece4cc63484932e9551b102c0c51404cba1"
+  "huella": "7d6cfeca12c314e951c29ef70a5894cf6677c5dc18001d12b58f6bc8968a1e8f"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T08:18:12+00:00",
- "lote": "msgbatch_01BrnYw6KkevFx7at547B5g8",
+ "extraido": "2026-10-31T11:20:10+00:00",
+ "lote": "msgbatch_01MXXMFvrqAAHficSS2SFuRZ",
  "no_son_bases": false,
  "campos": {
-  "denominacion": {
-   "valor": [
-    "OPERARIO/A DE SERVICIOS MULTIPLES"
-   ],
-   "cita": "bolsa de trabajo de OPERARIO/A DE SERVICIOS MULTIPLES, para cubrir las necesidades",
-   "nivel": "literal"
-  },
   "grupo": {
    "valor": "Agrupaciones Profesionales",
    "cita": "El puesto de trabajo es equivalente al de Agrupaciones Profesionales.",
@@ -26,12 +19,12 @@
   },
   "vinculo": {
    "valor": "laboral temporal",
-   "cita": "Las retribuciones serán las establecidas en las Tablas Salariales correspondientes al Convenio Colectivo",
+   "cita": "Para cubrir las necesidades que se produzcan en los supuestos de vacante, ausencia o enfermedad.",
    "nivel": "literal"
   },
   "sistema": {
    "valor": "concurso",
-   "cita": "la creación, por concurso de méritos, de una bolsa de trabajo",
+   "cita": "El sistema de selección es concurso de méritos puro, sin carácter eliminatorio.",
    "nivel": "literal"
   },
   "titulacion": {
@@ -40,48 +33,55 @@
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Ser español (con excepciones del art. 57.2 TREBEP); tener cumplidos 16 años y no superar la edad de jubilación forzosa; no padecer enfermedad incompatible; no estar inhabilitado; estar en posesión del permiso de conducir B1.",
-   "cita": "Tener cumplidos los 16 años y no superar la edad de jubilación forzosa.",
+   "valor": "Ser español o en los términos del art. 57.2 TREBEP; tener cumplidos 16 años y no superar la edad de jubilación forzosa; no padecer enfermedad o limitación incompatible; no estar inhabilitado; permiso de conducir B1.",
+   "cita": "Estar en posesión del permiso de conducir B1.",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "diez días hábiles a contar desde el día siguiente a la publicación del anuncio en el BOP",
-   "cita": "se abre el plazo de presentación de solicitudes, que será de diez días hábiles a contar desde el día siguiente",
+   "valor": "diez días hábiles a contar desde el día siguiente a la publicación de este anuncio en el Boletín Oficial de la Provincia",
+   "cita": "se abre el plazo de presentación de solicitudes, que será de diez días hábiles a contar desde el día siguiente a la publicación",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Registro Electrónico General del Ayuntamiento o lugares del artículo 16.4 de la Ley 39/2015",
-   "cita": "se presentarán en el Registro Electrónico General de este Ayuntamiento o en alguno de los lugares previstos",
-   "nivel": "literal"
-  },
-  "publicaciones": {
-   "valor": "Tablón de anuncios de la Corporación y sede electrónica del Ayuntamiento (https://gistain.sedipualba.es/)",
-   "cita": "será expuesta en el tablón de anuncios de la Corporación y en la sede electrónica del Ayuntamiento de Gistain",
+   "valor": "Registro Electrónico General del Ayuntamiento o lugares del art. 16.4 Ley 39/2015, dirigidas a la Alcaldía",
+   "cita": "se presentarán en el Registro Electrónico General de este Ayuntamiento o en alguno de los lugares previstos en el artículo 16.4",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Concurso de méritos puro, sin carácter eliminatorio (experiencia, formación y carnés)"
+    "Valoración de méritos (concurso de méritos puro, sin carácter eliminatorio)"
    ],
    "cita": "El sistema de selección es concurso de méritos puro, sin carácter eliminatorio.",
    "nivel": "literal"
   },
   "meritos": {
-   "valor": "Experiencia profesional máximo 15 puntos (1 punto/año en Administración pública, máximo 10; 0,5 punto/año en empresa privada, máximo 5); formación máximo 5 puntos; carnés oficiales máximo 5 puntos (0,5 por carné)",
+   "valor": "Experiencia profesional hasta 15 puntos (Administración 1,00/año máx. 10; empresa privada 0,50/año máx. 5); formación hasta 5 puntos; carnés oficiales hasta 5 puntos (0,50 por carné). Puntuación máxima total 25.",
    "cita": "La puntuación máxima total es de 25 puntos, distribuidos en los tres apartados siguientes:",
    "nivel": "literal"
   },
   "bolsa": {
-   "valor": "sí, para cubrir vacantes, ausencias o enfermedad; vigencia de dos años prorrogable por otros dos",
-   "cita": "La vigencia de las bolsas será de dos años, finalizados los cuales podrá prorrogarse",
+   "valor": "sí, para cubrir vacantes de carácter temporal (vacante, ausencia o enfermedad); vigencia de dos años prorrogable hasta dos más",
+   "cita": "La vigencia de las bolsas será de dos años, finalizados los cuales podrá prorrogarse, por un plazo no superior a dos años",
    "nivel": "literal"
   }
  },
  "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Operario/a de servicios múltiples"
+   ],
+   "cita": "Creación de una bolsa de trabajo de OPERARIO/A DE SERVICIOS MULTIPLES, para cubrir las necesidades que se produzcan"
+  },
   "tasa_euros": {
    "motivo": "valor_no_en_cita",
    "valor": 0,
-   "cita": "Es objeto de la presente convocatoria es la creación, por concurso de méritos"
+   "cita": "Las solicitudes (Anexo I), requiriendo tomar parte en el correspondiente proceso de selección"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Tablón de anuncios de la Corporación y sede electrónica https://gistain.sedipualba.es/",
+   "cita": "se expondrá en el tablón de anuncios de la Corporación y en la sede electrónica del Ayuntamiento de Gistain"
   }
  }
 }

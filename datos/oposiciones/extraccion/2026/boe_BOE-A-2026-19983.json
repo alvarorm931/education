@@ -5,11 +5,11 @@
   "fuente": "BOE",
   "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-19983",
   "fecha": "2026-09-26",
-  "huella": "2f49a71f13b775a24813f0a6d1f1dca0bbe572ee5e7bc5fa3933698e6298eece"
+  "huella": "2812d3699851f2fda304d9b0c2202fd0d8dd425db4f9c2aba3a2c1f27f589ddb"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T07:39:47+00:00",
- "lote": "msgbatch_013q7o24qMms8ZNZdwMNkW1L",
+ "extraido": "2026-10-31T11:20:12+00:00",
+ "lote": "msgbatch_01MXXMFvrqAAHficSS2SFuRZ",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
@@ -19,17 +19,22 @@
   },
   "grupo": {
    "valor": "C1",
-   "cita": "una plaza de la Escala Técnica Básica de Laboratorios (Informática) de la Universitat Jaume I de Castelló, grupo C, subgrupo C1.",
+   "cita": "grupo C, subgrupo C1.",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "Undécima. Nombramiento de personal funcionario de carrera.",
    "nivel": "literal"
   },
   "sistema": {
    "valor": "oposición",
-   "cita": "el procedimiento de selección es el de oposición. Consta de dos ejercicios obligatorios y eliminatorios",
+   "cita": "El procedimiento de selección es el de oposición.",
    "nivel": "literal"
   },
   "plazas_total": {
    "valor": 1,
-   "cita": "selección de personal, mediante el sistema de oposición, para cubrir una plaza de la Escala Técnica Básica",
+   "cita": "para cubrir una plaza de la Escala Técnica Básica de Laboratorios (Informática)",
    "nivel": "literal"
   },
   "titulacion": {
@@ -38,8 +43,8 @@
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Nacionalidad española o de otro Estado en las condiciones previstas; capacidad funcional; edad mínima de 16 años y no exceder la edad máxima de jubilación forzosa; no haber sido separado del servicio ni inhabilitado",
-   "cita": "tener cumplidos dieciséis años y no exceder, en su caso, de la edad máxima de jubilación forzosa",
+   "valor": "Nacionalidad española o de otro Estado en las condiciones previstas; tener cumplidos dieciséis años y no exceder de la edad de jubilación forzosa; capacidad funcional; no haber sido separado de la función pública ni inhabilitado.",
+   "cita": "tener cumplidos dieciséis años y no exceder, en su caso, de la edad máxima de jubilación forzosa.",
    "nivel": "literal"
   },
   "idioma_cooficial": {
@@ -53,26 +58,23 @@
    "nivel": "literal"
   },
   "exenciones_tasa": {
-   "valor": "Bonificación del 50% (7,50 euros) para familia numerosa o monoparental de categoría general; exención para familia numerosa o monoparental de categoría especial, víctimas de violencia sobre la mujer, discapacidad igual o superior al 33 por ciento y exclusión social",
-   "cita": "Los miembros de una familia numerosa de categoría general o de una familia monoparental de categoría general disfrutan de una bonificación del cincuenta por ciento",
+   "valor": "Bonificación del 50 % para familias numerosas o monoparentales de categoría general; exención para familias de categoría especial, víctimas de violencia sobre la mujer, personas con discapacidad igual o superior al 33 por ciento y personas en exclusión social.",
+   "cita": "Tienen exención del pago de la tasa: a) Los miembros de una familia numerosa de categoría especial",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles contados a partir del siguiente al de la publicación de esta convocatoria en el BOE",
+   "cita": "El plazo de presentación de solicitudes es de veinte días hábiles contados a partir del siguiente",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Por vía electrónica, a través del Registro Electrónico de la Universitat Jaume I intermediando el tablón TAO-UJI, con certificado digital o DNI electrónico",
+   "valor": "Por vía electrónica, a través del Registro Electrónico de la Universitat Jaume I intermediando el tablón TAO-UJI (código 22777), con certificado digital o DNI electrónico.",
    "cita": "Las solicitudes se tienen que presentar por vía electrónica.",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Tablón de anuncios oficial de la Universitat Jaume I (TAO-UJI), apartado Convocatorias PTGAS",
-   "cita": "esta convocatoria, así como los actos que se derivan de la ejecución, se tienen que publicar en el tablón de anuncios oficial de la Universitat Jaume I",
-   "nivel": "literal"
-  },
-  "ejercicios": {
-   "valor": [
-    "Primer ejercicio: prueba tipo test de hasta 100 preguntas, 0 a 30 puntos, mínimo 15 para superar",
-    "Segundo ejercicio: supuesto práctico escrito o prueba práctica, máximo dos horas, 0 a 70 puntos, mínimo 35 para superar"
-   ],
-   "cita": "Consiste a una prueba tipo test con un máximo de 100 preguntas",
+   "valor": "Tablón de anuncios oficial de la Universitat Jaume I (TAO-UJI); la publicación en el BOE es la referencia para plazos y la del DOGV es informativa.",
+   "cita": "esta convocatoria, así como los actos que se derivan de la ejecución, se tienen que publicar en el tablón de anuncios oficial",
    "nivel": "literal"
   },
   "temas": {
@@ -82,25 +84,15 @@
   }
  },
  "rechazados": {
-  "vinculo": {
-   "motivo": "cita_no_literal",
-   "valor": "funcionario de carrera",
-   "cita": "Undécima. Nombramiento de personal funcionario de carrera de la Escala Técnica Básica de Laboratorios (Informática)."
-  },
   "plazas_turno_libre": {
    "motivo": "valor_no_en_cita",
    "valor": 1,
    "cita": "por el sistema general de acceso libre, en la Escala Técnica Básica de Laboratorios"
   },
-  "plazo_solicitudes": {
+  "practicas_o_curso": {
    "motivo": "cita_no_literal",
-   "valor": "veinte días hábiles desde el siguiente a la publicación de la convocatoria en el BOE",
-   "cita": "El plazo de presentación de solicitudes es de veinte días hábiles contados a partir del siguiente al de la publicación de esta convocatoria en el BOE."
-  },
-  "bolsa": {
-   "motivo": "cita_no_literal",
-   "valor": "no",
-   "cita": "se publicará la lista definitiva con la relación del personal aprobado y su puntuación total"
+   "valor": "no consta",
+   "cita": "no aparece en el texto"
   }
  }
 }

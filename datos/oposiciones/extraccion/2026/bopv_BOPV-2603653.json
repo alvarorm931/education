@@ -5,11 +5,11 @@
   "fuente": "BOPV",
   "url": "https://www.euskadi.eus/web01-bopv/es/bopv2/datos/2026/08/2603653a.shtml",
   "fecha": "2026-08-19",
-  "huella": "9fc302eeb9fa72e5e971abb947d11d619eb1c7ab2cb7046228456b1ffd5be6dd"
+  "huella": "3fa859f83f7620e30639c49d3ba7c0cc980effa8fba20ea0805110472ad3761c"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T08:03:48+00:00",
- "lote": "msgbatch_013xFoLdqcGqWcqkzh7qrdGg",
+ "extraido": "2026-10-31T11:20:09+00:00",
+ "lote": "msgbatch_01MXXMFvrqAAHficSS2SFuRZ",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
@@ -18,19 +18,10 @@
     "Escala Administrativa del Cuerpo Administrativo",
     "Escala de Delineación de Obras e Instalaciones del Cuerpo de Ayudantes Técnicos",
     "Escala de Informática de Gestión del Cuerpo de Ayudantes Técnicos",
+    "Escala de Pesca del Cuerpo de Ayudantes Técnicos",
     "Escala de Semillas del Cuerpo de Ayudantes Técnicos"
    ],
-   "cita": "Se convocan 117 plazas de la Agrupación Profesional de Personal de Apoyo de la Administración general",
-   "nivel": "literal"
-  },
-  "grupo": {
-   "valor": "E / agrupaciones profesionales",
-   "cita": "Se convocan 117 plazas de la Agrupación Profesional de Personal de Apoyo de la Administración general",
-   "nivel": "literal"
-  },
-  "vinculo": {
-   "valor": "funcionario de carrera",
-   "cita": "Los procesos selectivos de acceso a los cuerpos y escalas de la Administración general",
+   "cita": "Se convocan los procesos selectivos de acceso a los cuerpos y escalas de la Administración general de la Comunidad Autónoma de Euskadi",
    "nivel": "literal"
   },
   "sistema": {
@@ -38,24 +29,29 @@
    "cita": "El sistema de selección será el de concurso-oposición.",
    "nivel": "literal"
   },
-  "plazas_promocion_interna": {
-   "valor": 145,
-   "cita": "b.) turno de promoción interna vertical. Modalidad de acceso general: 145",
+  "plazas_total": {
+   "valor": 117,
+   "cita": "Se convocan 117 plazas de la Agrupación Profesional de Personal de Apoyo",
+   "nivel": "literal"
+  },
+  "plazas_discapacidad": {
+   "valor": 5,
+   "cita": "b) Modalidad de acceso para personas con discapacidad: 5",
    "nivel": "literal"
   },
   "titulacion": {
-   "valor": "título de bachiller, título de técnico/técnica en formación profesional o equivalente (Escala Administrativa); no se exige titulación para la Agrupación Profesional de Personal de Apoyo",
-   "cita": "las titulaciones para el acceso a la Escala Administrativa del Cuerpo de Administrativo son el título de bachiller",
+   "valor": "No se exige titulación para el acceso a la Agrupación Profesional de Personal de Apoyo",
+   "cita": "no se exige titulación para el acceso a la Agrupación Profesional de Personal de Apoyo.",
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Cumplir los requisitos generales del apartado 3.3 de las bases generales; para promoción interna, hallarse en servicio activo en la Escala Auxiliar Administrativa y haber completado dos años de servicios como funcionario de carrera.",
+   "valor": "Cumplir requisitos generales del apartado 3.3 de las bases generales; personas con discapacidad, requisitos del apartado 4.1 de las bases generales",
    "cita": "Quienes aspiren a las plazas deben cumplir los requisitos establecidos con carácter general en el apartado 3.3",
    "nivel": "literal"
   },
   "idioma_cooficial": {
-   "valor": "euskera: perfiles lingüísticos 1, 2, 3 y 4 según puesto y fecha de preceptividad",
-   "cita": "los perfiles lingüísticos de euskera 2, 3 y 4. El conocimiento del euskera es requisito",
+   "valor": "Euskera perfiles lingüísticos 1 y 2 como requisito de provisión de puestos",
+   "cita": "pueden ser requisitos de provisión los perfiles lingüísticos de euskera 1 y 2",
    "nivel": "literal"
   },
   "tasa_euros": {
@@ -70,43 +66,43 @@
   },
   "ejercicios": {
    "valor": [
-    "Fase de oposición, puntuación máxima 100 puntos (diseño según apartado 11 de las bases generales)",
-    "Fase de concurso, puntuación máxima 45 puntos"
+    "Fase de oposición (100 puntos máximo), diseño según apartado 11 de las bases generales",
+    "Fase de concurso (45 puntos máximo): experiencia, titulaciones y euskera"
    ],
    "cita": "La puntuación máxima alcanzable en la fase de oposición es de 100 puntos.",
    "nivel": "literal"
   },
   "meritos": {
-   "valor": "Experiencia: 0,45 puntos por mes, máximo 27 puntos. Titulaciones: 10,80 o 7,2 puntos por título, máximo 18 puntos. Conocimiento de euskera según baremo, solo en puestos sin preceptividad vencida.",
-   "cita": "Esta experiencia se valorará a razón 0,45 puntos por mes trabajado hasta un máximo de 27 puntos.",
+   "valor": "Experiencia hasta 27 puntos (0,45 por mes); titulaciones hasta 18 puntos; conocimiento de euskera según baremo",
+   "cita": "La puntuación máxima alcanzable en la fase de concurso es de 45 puntos",
    "nivel": "literal"
   }
  },
  "rechazados": {
-  "plazas_total": {
-   "motivo": "valor_no_en_cita",
-   "valor": 1000,
-   "cita": "Se convocan 117 plazas de la Agrupación Profesional de Personal de Apoyo de la Administración general"
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "A2",
+   "cita": "Las bases mencionan agrupaciones y cuerpos sin indicar grupo de clasificación en el texto"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "oferta de empleo público de personal funcionario de carrera de la Administración general"
   },
   "plazas_turno_libre": {
    "motivo": "valor_no_en_cita",
-   "valor": 1000,
+   "valor": 117,
    "cita": "todas ellas por el turno libre, de acuerdo con la siguiente distribución"
-  },
-  "plazas_discapacidad": {
-   "motivo": "valor_no_en_cita",
-   "valor": 8,
-   "cita": "b) Modalidad de acceso para personas con discapacidad: 5"
   },
   "temas": {
    "motivo": "valor_no_en_cita",
    "valor": 30,
    "cita": "6.– Temario. 1.– Constitución: derechos y libertades fundamentales"
   },
-  "practicas_o_curso": {
+  "bolsa": {
    "motivo": "cita_no_literal",
-   "valor": "no consta en el texto de las bases específicas",
-   "cita": "Sin cita: el texto no contiene referencia a prácticas ni curso selectivo"
+   "valor": "no",
+   "cita": "Las bases no establecen la creación de bolsa o lista de espera"
   }
  }
 }

@@ -5,21 +5,21 @@
   "fuente": "BOP-GRANADA",
   "url": "https://bop.dipgra.es/publica/buscador-anuncios/anuncio/APROBACION-BASES-CONVOCATORIA-CONSTITUCION-BOLSA-DE-EMPLEO-Y-CONVOCATORIA-PROCESO-SELECTIVO/",
   "fecha": "2026-09-25",
-  "huella": "caf02c5306018cc2186ced1a6f6c69985b04f15932f2a2916b1b740fe259ac5c"
+  "huella": "c433fa2a1306d2815d2a4d8803c9423a457eeb460bfd34a885e1484f9936d35b"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T08:03:37+00:00",
- "lote": "msgbatch_013xFoLdqcGqWcqkzh7qrdGg",
+ "extraido": "2026-10-31T11:20:13+00:00",
+ "lote": "msgbatch_01MXXMFvrqAAHficSS2SFuRZ",
  "no_son_bases": false,
  "campos": {
   "grupo": {
    "valor": "C1",
-   "cita": "Grupo C, subgrupo 1, (funcionario interino).",
+   "cita": "Grupo C, subgrupo 1, (funcionario interino)",
    "nivel": "literal"
   },
   "vinculo": {
    "valor": "funcionario interino",
-   "cita": "para el nombramiento de personal funcionario interino, con el fin de atender necesidades urgentes e inaplazables",
+   "cita": "para el nombramiento de personal funcionario interino, con el fin de atender necesidades urgentes",
    "nivel": "literal"
   },
   "titulacion": {
@@ -28,41 +28,51 @@
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Nacionalidad española (art. 107 Ley 5/2023); capacidad funcional; tener cumplidos dieciséis años y no exceder la edad de jubilación forzosa; no haber sido separado del servicio por procedimiento disciplinario.",
-   "cita": "Tener cumplidos dieciséis años y no exceder, en su caso,de la edad máxima de jubilación forzosa.",
+   "valor": "Nacionalidad española (sin perjuicio del art. 107 Ley 5/2023); tener cumplidos 16 años y no exceder la edad de jubilación forzosa; no haber sido separado del servicio público ni inhabilitado",
+   "cita": "a) Tener la nacionalidad española, sin perjuicio de lo dispuesto en el artículo 107 de la Ley 5/2023.",
    "nivel": "literal"
   },
   "tasa_euros": {
    "valor": 50,
-   "cita": "Haber abonado la correspondiente tasa de inscripción en la convocatoria por importe de 50 euros",
+   "cita": "por importe de 50 euros o acreditar estar exento de su pago",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Exentos de pago según la Ordenanza fiscal reguladora de tasa por derechos de examen (BOP Granada nº 177 de 18 de septiembre de 2023)",
+   "cita": "o acreditar estar exento de su pago, de conformidad con lo establecido en la Ordenanza fiscal",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "Diez días hábiles desde el día siguiente a la publicación del anuncio de la convocatoria en el Boletín Oficial de la Provincia de Granada",
-   "cita": "en el plazo de DIEZ (10) DÍAS HÁBILES contados a partir del día siguiente al de la publicación del anuncio",
+   "valor": "DIEZ (10) DÍAS HÁBILES contados a partir del día siguiente al de la publicación del anuncio de la convocatoria en el Boletín Oficial de la Provincia de Granada",
+   "cita": "en el plazo de DIEZ (10) DÍAS HÁBILES contados a partir del día siguiente al de la publicación",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Registro Electrónico General del Ayuntamiento o en los lugares previstos en el artículo 16.4 de la Ley 39/2015, dirigidas a la Alcaldía",
-   "cita": "se presentarán en el Registro Electrónico General de este Ayuntamiento o en alguno de los lugares previstos",
+   "valor": "Registro Electrónico General del Ayuntamiento o en alguno de los lugares previstos en el artículo 16.4 de la Ley 39/2015",
+   "cita": "se presentarán en el Registro Electrónico General de este Ayuntamiento o en alguno de los lugares",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Primer ejercicio: tipo test de 50 preguntas (más 5 de reserva) sobre el temario, 60 minutos, 0 a 60 puntos, mínimo 30 para superar",
-    "Segundo ejercicio: supuesto(s) práctico(s) o cuestionario de tipo práctico sobre materias específicas, 60 minutos, 0 a 40 puntos, mínimo 20 para superar"
+    "Primer ejercicio: tipo test de 50 preguntas (más 5 de reserva), 60 puntos, eliminatorio, 60 minutos",
+    "Segundo ejercicio: supuesto práctico o cuestionario, 40 puntos, eliminatorio, 60 minutos"
    ],
-   "cita": "El proceso selectivo constará de dos ejercicios, ambos obligatorios y eliminatorios, con la puntuación total de 100 puntos.",
+   "cita": "El proceso selectivo constará de dos ejercicios, ambos obligatorios y eliminatorios, con la puntuación total de 100 puntos",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "No se valoran méritos en el concurso; el sistema es oposición libre",
+   "cita": "el procedimiento de selección de los aspirantes se realizará por el sistema de oposición libre",
    "nivel": "literal"
   },
   "bolsa": {
-   "valor": "sí, para la cobertura de futuras necesidades temporales de personal funcionario interino en puestos de Administrativo; vigencia máxima de tres años",
-   "cita": "Esta bolsa de empleo tendrá una vigencia máxima de tres años desde su aprobación.",
+   "valor": "sí, para cubrir futuras necesidades temporales de personal funcionario interino en puestos de Administrativo",
+   "cita": "Concluido el proceso selectivo y constituida la bolsa de empleo esta se ordenará de mayor a menor puntuación",
    "nivel": "literal"
   },
   "practicas_o_curso": {
-   "valor": "no previsto en el texto",
-   "cita": "El nombramiento derivado de este proceso de selección en ningún caso dará lugar al reconocimiento de la condición de personal funcionario de carrera.",
+   "valor": "no se indica",
+   "cita": "El nombramiento derivado de este proceso de selección en ningún caso dará lugar al reconocimiento de la condición de personal funcionario de carrera",
    "nivel": "literal"
   }
  },
@@ -70,24 +80,24 @@
   "denominacion": {
    "motivo": "cita_no_literal",
    "valor": [
-    "Administrativo/a, Escala de Administración General, Subescala Administrativa"
+    "Administrativo, Escala de Administración General, Subescala Administrativa"
    ],
-   "cita": "Administrativo, Escala de Administración General, Subescala administrativa, Grupo C, subgrupo l, (funcionario interino)."
+   "cita": "Administrativo, Escala de Administración General, Subescala administrative, Grupo C, subgrupo l"
   },
   "sistema": {
    "motivo": "cita_no_literal",
    "valor": "oposición",
-   "cita": "mediante el sistema selectivo de oposición libre para plaza/puesto de administrativo"
+   "cita": "el sistema selectivo de oposición libre para plaza/puesto de administrativo"
   },
   "publicaciones": {
    "motivo": "cita_no_literal",
-   "valor": "Sede electrónica del Ayuntamiento de Torre Cardela (https://torrecardela.sedelectronica.es)",
+   "valor": "Sede electrónica del Ayuntamiento de Torre Cardela (https://torrecardela.sedelectronica.es), tablón de anuncios",
    "cita": "Tablón de Anuncios de la sede electrónica del Ayuntamiento de Torre Cardela"
   },
   "temas": {
-   "motivo": "cita_no_literal",
+   "motivo": "valor_no_en_cita",
    "valor": 41,
-   "cita": "Materias comunes y específicas (ANEXO III) con temas numerados hasta el 41"
+   "cita": "MATERIAS COMUNES l. La Constitución Española de 1978"
   }
  }
 }

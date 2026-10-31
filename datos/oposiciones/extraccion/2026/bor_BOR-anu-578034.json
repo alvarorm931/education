@@ -5,19 +5,17 @@
   "fuente": "BOR",
   "url": "https://web.larioja.org/bor-portada/boranuncio?n=anu-578034",
   "fecha": "2026-06-17",
-  "huella": "274e57e26fa763bd683b7496bb0858ee456bba7c5d022d22abd8410937dea9a4"
+  "huella": "3a69d84df7c570a270d71ceeba3b1f9fe963cf2a42ed0d4ee7ca86a91eac514f"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T07:51:43+00:00",
- "lote": "msgbatch_01NvbwpQGcC9vt1x7nWayvXt",
+ "extraido": "2026-10-31T11:20:10+00:00",
+ "lote": "msgbatch_01MXXMFvrqAAHficSS2SFuRZ",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
-   "valor": [
-    "Cuerpo Facultativo Superior de Administración Especial (Ingeniero/a de Montes)"
-   ],
-   "cita": "una (1) plaza vacante del Cuerpo Facultativo Superior de Administración Especial (Ingeniero/a de Montes)",
-   "nivel": "literal"
+   "valor": "Cuerpo Facultativo Superior de Administración Especial (Ingeniero/a de Montes)",
+   "cita": "convocan pruebas selectivas para la provisión de plazas vacantes del Cuerpo Facultativo Superior de Administración Especial (Ingeniero/a de Montes)",
+   "nivel": "sin_signos"
   },
   "grupo": {
    "valor": "A1",
@@ -36,12 +34,7 @@
   },
   "plazas_total": {
    "valor": 1,
-   "cita": "convocan pruebas selectivas para cubrir una (1) plaza vacante del Cuerpo",
-   "nivel": "literal"
-  },
-  "plazas_turno_libre": {
-   "valor": 1,
-   "cita": "una (1) plaza del Cuerpo Facultativo Superior de Administración Especial (Ingeniero/a de Montes), por el sistema de acceso libre",
+   "cita": "Se convocan pruebas selectivas para cubrir una (1) plaza vacante del Cuerpo",
    "nivel": "literal"
   },
   "titulacion": {
@@ -50,7 +43,7 @@
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Nacionalidad española (con equiparaciones para UE y cónyuges); tener cumplidos dieciséis años y no exceder la edad de jubilación forzosa; no padecer enfermedad incompatible; no haber sido separado del servicio público ni inhabilitado.",
+   "valor": "Nacionalidad española o acceso previsto por tratados; tener cumplidos dieciséis años y no exceder la edad máxima de jubilación forzosa; no padecer enfermedad incompatible con las funciones; no haber sido separado del servicio público ni inhabilitado.",
    "cita": "Tener cumplidos dieciséis años de edad y no exceder la edad máxima de jubilación forzosa.",
    "nivel": "literal"
   },
@@ -60,7 +53,7 @@
    "nivel": "literal"
   },
   "exenciones_tasa": {
-   "valor": "Exentas: discapacidad igual o superior al 33%, desempleados con requisitos, víctimas de violencia de género y sus hijos menores de 25 años. Bonificación del 50% a familias numerosas de categoría general; exención total en categoría especial.",
+   "valor": "Exentas personas con discapacidad igual o superior al 33%, demandantes de empleo con requisitos, mujeres víctimas de violencia de género; bonificación del 50% para familias numerosas de categoría general.",
    "cita": "Las personas con un grado de discapacidad igual o superior al 33% estarán exentas.",
    "nivel": "literal"
   },
@@ -71,30 +64,30 @@
   },
   "presentacion": {
    "valor": "Solicitud exclusivamente electrónica a través de la aplicación disponible en www.larioja.org/empleopublico, ruta Oposiciones, Administración General, Procesos Selectivos OEP 2025.",
-   "cita": "Las solicitudes de participación se cumplimentarán exclusivamente por medios electrónicos",
+   "cita": "Las solicitudes de participación se cumplimentarán exclusivamente por medios electrónicos, a través de la aplicación informática",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Boletín Oficial de La Rioja y tablón de anuncios virtual de la Sede Electrónica, con información en www.larioja.org/empleopublico",
+   "valor": "Boletín Oficial de La Rioja y tablón de anuncios virtual de la Sede Electrónica; información en www.larioja.org/empleopublico",
    "cita": "publicará resolución declarando aprobada la lista provisional de personas aspirantes admitidas y excluidas",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Primer ejercicio: cuestionario de 100 preguntas tipo test (25 generales y 75 específicas) en 100 minutos, valorado de 0 a 20 puntos",
-    "Segundo ejercicio: desarrollo escrito de tres temas del programa específico en tres horas, valorado de 0 a 40 puntos",
-    "Tercer ejercicio: resolución de uno o varios supuestos prácticos en tres horas, valorado de 0 a 40 puntos"
+    "Primer ejercicio: cuestionario de 100 preguntas tipo test en 100 minutos, puntuación 0 a 20, mínimo 10 puntos",
+    "Segundo ejercicio: desarrollo escrito de tres temas sorteados en tres horas, puntuación 0 a 40, mínimo 20 puntos",
+    "Tercer ejercicio: resolución de supuestos prácticos en tres horas, puntuación 0 a 40, mínimo 20 puntos"
    ],
-   "cita": "Consistirá en contestar por escrito un cuestionario de cien (100) preguntas, con cuatro respuestas alternativas",
-   "nivel": "literal"
-  },
-  "meritos": {
-   "valor": "No se valoran méritos en concurso; el proceso es de oposición.",
-   "cita": "El procedimiento de selección de las personas aspirantes será el de oposición.",
+   "cita": "La oposición consistirá en la realización de los siguientes ejercicios",
    "nivel": "literal"
   }
  },
  "rechazados": {
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "por el sistema de acceso libre"
+  },
   "temas": {
    "motivo": "valor_no_en_cita",
    "valor": 80,
@@ -102,13 +95,8 @@
   },
   "bolsa": {
    "motivo": "cita_no_literal",
-   "valor": "sí, lista de espera para la provisión interina o temporal de plazas de igual o análogo contenido profesional",
+   "valor": "sí, lista de espera para provisión interina o temporal de plazas de igual o análogo contenido profesional",
    "cita": "podrá ser incluidas en lista de espera para la provisión interina o temporal de plazas de igual o análogo contenido profesional"
-  },
-  "practicas_o_curso": {
-   "motivo": "cita_no_literal",
-   "valor": "no consta",
-   "cita": ""
   }
  }
 }

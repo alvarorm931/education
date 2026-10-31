@@ -5,16 +5,16 @@
   "fuente": "BOR",
   "url": "https://web.larioja.org/bor-portada/boranuncio?n=anu-580516",
   "fecha": "2026-10-30",
-  "huella": "cdc42cfa09a8df3e19a94089e6dd47330dbd6e072574253f4ec9803b3ee68de8"
+  "huella": "f7abb1671985eed5cb4eae0a960d67d4676064f74232936068f383a169fa2e9b"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T08:03:40+00:00",
- "lote": "msgbatch_013xFoLdqcGqWcqkzh7qrdGg",
+ "extraido": "2026-10-31T11:20:09+00:00",
+ "lote": "msgbatch_01MXXMFvrqAAHficSS2SFuRZ",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
    "valor": "Cuerpo Facultativo Superior de Administración Especial (Escala Sanitaria: Técnico Superior Sanitario)",
-   "cita": "convocan pruebas selectivas para la provisión de plazas vacantes del Cuerpo Facultativo Superior de Administración Especial",
+   "cita": "Cuerpo Facultativo Superior de Administración Especial (Escala Sanitaria: Técnico Superior Sanitario)",
    "nivel": "literal"
   },
   "grupo": {
@@ -34,7 +34,12 @@
   },
   "plazas_total": {
    "valor": 4,
-   "cita": "Se convocan pruebas selectivas para cubrir cuatro (4) plazas vacantes",
+   "cita": "Se convocan pruebas selectivas para cubrir cuatro (4) plazas vacantes del Cuerpo",
+   "nivel": "literal"
+  },
+  "plazas_turno_libre": {
+   "valor": 4,
+   "cita": "Se convocan pruebas selectivas para cubrir cuatro (4) plazas vacantes del Cuerpo",
    "nivel": "literal"
   },
   "titulacion": {
@@ -43,65 +48,65 @@
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Nacionalidad española o de los supuestos equiparados; edad mínima 16 años y no exceder la jubilación forzosa; no padecer enfermedad incompatible; no estar inhabilitado; permiso de conducción B",
-   "cita": "Estar en posesión del permiso de conducción B.",
+   "valor": "Nacionalidad española o de Estados con libre circulación; 16 años y no exceder edad de jubilación forzosa; no padecer enfermedad incompatible; no estar inhabilitado; permiso de conducción B",
+   "cita": "Tener cumplidos dieciséis años de edad y no exceder la edad máxima de jubilación forzosa.",
    "nivel": "literal"
   },
   "tasa_euros": {
    "valor": 30.49,
-   "cita": "la tasa por inscripción en las pruebas de acceso a la función pública será satisfecha en el plazo establecido en la base 4.1 en la cuantía ordinaria de 30,49 euros",
+   "cita": "la cuantía ordinaria de 30,49 euros, de conformidad con lo dispuesto en la Ley 6/2002",
    "nivel": "literal"
   },
   "exenciones_tasa": {
-   "valor": "Discapacidad igual o superior al 33%; demandantes de empleo un mes con requisitos; familias numerosas (exención categoría especial, bonificación 50% general); víctimas de violencia de género y sus hijos menores de 25",
+   "valor": "Exentos: discapacidad igual o superior al 33%; demandantes de empleo con requisitos; familias numerosas de categoría especial (100%) y general (50%); mujeres víctimas de violencia de género",
    "cita": "Las personas con un grado de discapacidad igual o superior al 33% estarán exentas.",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "veinte (20) días hábiles desde el día siguiente a la publicación de la convocatoria en el Boletín Oficial de La Rioja",
-   "cita": "deberán presentarse en el plazo de veinte (20) días hábiles, contados a partir del día siguiente",
+   "valor": "veinte días hábiles, contados desde el día siguiente al de publicación de la convocatoria en el BOR",
+   "cita": "plazo de veinte (20) días hábiles, contados a partir del día siguiente al de la publicación",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Exclusivamente por medios electrónicos, a través de la aplicación disponible en www.larioja.org/empleopublico",
-   "cita": "Las solicitudes de participación se cumplimentarán exclusivamente por medios electrónicos, a través de la aplicación informática",
+   "valor": "Electrónicamente a través de la aplicación disponible en www.larioja.org/empleopublico",
+   "cita": "Las solicitudes de participación se cumplimentarán exclusivamente por medios electrónicos",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Boletín Oficial de La Rioja y, a efectos informativos, en www.larioja.org/empleopublico",
-   "cita": "publicará resolución declarando aprobada la relación provisional de personas aspirantes admitidas y excluidas en el Boletín Oficial de La Rioja",
+   "valor": "Boletín Oficial de La Rioja y, a efectos informativos, www.larioja.org/empleopublico",
+   "cita": "publicará resolución declarando aprobada la relación provisional de personas aspirantes admitidas",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Primer ejercicio: cuestionario de 100 preguntas tipo test (0 a 20 puntos, mínimo 10)",
-    "Segundo ejercicio: desarrollo escrito de un tema sorteado, dos horas (0 a 40 puntos, mínimo 20)",
-    "Tercer ejercicio: resolución de supuestos prácticos, tres horas (0 a 40 puntos, mínimo 20)",
-    "Cuarto ejercicio voluntario: traducción directa de inglés o francés (0 a 2,5 puntos)"
+    "Primer ejercicio: cuestionario tipo test de 100 preguntas (eliminatorio, 0-20 puntos, mínimo 10)",
+    "Segundo ejercicio: desarrollo escrito de un tema sorteado, 2 horas (eliminatorio, 0-40 puntos, mínimo 20)",
+    "Tercer ejercicio: resolución de supuestos prácticos, 3 horas (eliminatorio, 0-40 puntos, mínimo 20)",
+    "Cuarto ejercicio voluntario: traducción de inglés o francés (0-2,5 puntos)"
    ],
-   "cita": "Primer ejercicio: Consistirá en contestar por escrito un cuestionario de cien (100) preguntas",
+   "cita": "Consistirá en contestar por escrito un cuestionario de cien (100) preguntas",
    "nivel": "literal"
   },
-  "meritos": {
-   "valor": "No se valoran méritos en concurso; el cuarto ejercicio voluntario de idiomas puntúa hasta 2,5 puntos (C1 2,5; B2 2; B1 1,5; A2 1; A1 0,5)",
-   "cita": "La puntuación máxima a valorar será de 2,5 puntos.",
+  "temas": {
+   "valor": 80,
+   "cita": "80. Modelos de Acreditación y Evaluación de la Calidad asistencial en las organizaciones Sanitarias.",
    "nivel": "literal"
   }
  },
  "rechazados": {
-  "plazas_turno_libre": {
-   "motivo": "valor_no_en_cita",
-   "valor": 4,
-   "cita": "prevé la convocatoria de dos (2) plazas por el sistema de acceso de turno libre"
-  },
-  "temas": {
+  "meritos": {
    "motivo": "cita_no_literal",
-   "valor": 80,
-   "cita": "Parte Específica 1. ... 80. Modelos de Acreditación y Evaluación de la Calidad asistencial"
+   "valor": "No se valoran méritos de concurso; en la fase de oposición, el cuarto ejercicio voluntario de idiomas puntúa hasta 2,5 puntos según nivel MCER",
+   "cita": "Solo podrá valorarse un único idioma (inglés o francés)"
   },
   "bolsa": {
    "motivo": "cita_no_literal",
-   "valor": "no consta",
+   "valor": "no",
+   "cita": "Con el proceso se crea una bolsa o lista de espera"
+  },
+  "practicas_o_curso": {
+   "motivo": "cita_no_literal",
+   "valor": "no consta en el texto extraído",
    "cita": ""
   }
  }
