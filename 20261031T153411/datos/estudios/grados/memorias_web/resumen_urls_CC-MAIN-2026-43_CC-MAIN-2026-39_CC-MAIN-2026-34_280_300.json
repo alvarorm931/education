@@ -1,0 +1,18 @@
+{
+ "crawls": [
+  "CC-MAIN-2026-43",
+  "CC-MAIN-2026-39",
+  "CC-MAIN-2026-34"
+ ],
+ "ficheros_leidos": 55,
+ "errores": [
+  "part-00288-613c35b3-6c54-48c6-8b12-0c082d329687.c000.zstd.parquet: InvalidInputException: Invalid Input Error: Required module 'pytz' failed to import, due to the following Python exception:",
+  "part-00296-613c35b3-6c54-48c6-8b12-0c082d329687.c000.zstd.parquet: HTTPException: HTTP Error: HTTP GET error on 'https://data.commoncrawl.org/cc-index/table/cc-main/warc/crawl=CC-MAI",
+  "part-00297-613c35b3-6c54-48c6-8b12-0c082d329687.c000.zstd.parquet: HTTPException: HTTP Error: HTTP GET error on 'https://data.commoncrawl.org/cc-index/table/cc-main/warc/crawl=CC-MAI",
+  "part-00298-613c35b3-6c54-48c6-8b12-0c082d329687.c000.zstd.parquet: HTTPException: HTTP Error: HTTP GET error on 'https://data.commoncrawl.org/cc-index/table/cc-main/warc/crawl=CC-MAI",
+  "part-00299-613c35b3-6c54-48c6-8b12-0c082d329687.c000.zstd.parquet: HTTPException: HTTP Error: HTTP GET error on 'https://data.commoncrawl.org/cc-index/table/cc-main/warc/crawl=CC-MAI"
+ ],
+ "dominios": 107,
+ "urls": 0,
+ "por_universidad": {}
+}
