@@ -53,3 +53,18 @@ def test_titulo_generico_del_bocm_toma_el_tipo_del_texto():
     # un título que ya dice lo que es no se toca
     a = construir_acto("bocm", {**x, "titulo": "Getafe. Ofertas de empleo. Bases generales"}, lista)
     assert "tipo_por_texto" not in a
+
+
+def test_categoria_del_bocm_fuera_del_titulo():
+    from motor.autonomicos.actos import construir_acto
+    x = {"id": "BOCM-20260504-61", "fecha": "2026-05-04", "ambito": "universidad",
+         "titulo": "Concurso cuerpos docentes Resolución de 22 de abril de 2026, de la Universidad Rey Juan Carlos, por la "
+                   "que se convocan concursos de acceso a plazas de los Cuerpos Docentes Universitarios"}
+    a = construir_acto("bocm", x, None)
+    assert a["titulo"].startswith("Resolución de 22 de abril de 2026") and a["categoria"] == "Concurso cuerpos docentes"
+    assert a["tipo_acto"] == "convocatoria"
+    from motor.union import disposicion
+    assert disposicion(a["titulo"], a["fecha"])[0] == "2026-04-22"
+    # los títulos locales del BOCM no llevan categoría delante
+    x = {"id": "BOCM-20260223-64", "fecha": "2026-02-23", "titulo": "Rivas-Vaciamadrid. Ofertas de empleo. Proceso selectivo"}
+    assert "categoria" not in construir_acto("bocm", x, None)

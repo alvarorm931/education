@@ -190,8 +190,27 @@ RE_NOMBRA = re.compile(r"(?i)\bse\s+nombra\b|\bnombrar\s+(?:a|como)\b|nombramien
                        r"\bha\s+sido\s+nombrad|\btoma\s+de\s+posesi")
 
 
+# El BOCM pone delante del título oficial la categoría del anuncio («Puesto libre designación Orden 657/2026, de 23 de
+# abril, de la Consejera…», «Aspirantes proceso selectivo Resolución de…», «Concurso cuerpos docentes Resolución de…»;
+# 21.000 de 32.000 títulos). Sin ella, el título es el de la disposición, como en el BOE: así se reconoce la misma
+# resolución en los dos boletines (fecha y órgano de la disposición) y el puesto no lleva palabras de la categoría.
+RE_CATEGORIA_BOCM = re.compile(
+    r"^(?P<p>[A-ZÁÉÍÓÚ][\wáéíóúñ]*(?: [\wáéíóúñ.]+){0,5}?) (?=(?:RESOLUCIÓN|Resolución|ORDEN|Orden|DECRETO|Decreto|"
+    r"ACUERDO|Acuerdo|CORRECCIÓN|Corrección|EXTRACTO|Extracto|ANUNCIO|Anuncio)\b)")
+
+
+def titulo_y_categoria(fuente: str, titulo: str | None) -> tuple[str | None, str | None]:
+    if fuente == "bocm" and titulo and (m := RE_CATEGORIA_BOCM.match(titulo)):
+        return titulo[m.end():], m.group("p")
+    return titulo, None
+
+
 def construir_acto(fuente: str, x: dict, texto: str | None, recuento: int | None = None) -> dict:
     siglas, nombres = FUENTES[fuente]
+    titulo, categoria = titulo_y_categoria(fuente, x.get("titulo"))
+    tipo = clasificar(titulo)["tipo_acto"] if titulo else x.get("tipo_acto")
+    if categoria and tipo == "otro":
+        tipo = clasificar(x["titulo"])["tipo_acto"]  # la categoría lo dice («Aspirantes proceso selectivo …»)
     acto = {
         "id": f"{fuente}:{x['id']}",
         "fecha": x["fecha"],
@@ -199,7 +218,8 @@ def construir_acto(fuente: str, x: dict, texto: str | None, recuento: int | None
         "boletin": x.get("boletin"),
         "url": x.get("url_html") or x.get("url_pdf"),
         "url_pdf": x.get("url_pdf"),
-        "titulo": x.get("titulo"),
+        "titulo": titulo,
+        **({"categoria": categoria} if categoria else {}),
         # «entidad» en los provinciales (BOB: «Departamento de Administración Pública…»): sin ella, lo foral o
         # provincial no tenía clave de convocante y no se unía a nada
         "organismo": x.get("organismo") or (x.get("entidad") if not x.get("convocante") else None),
@@ -208,7 +228,7 @@ def construir_acto(fuente: str, x: dict, texto: str | None, recuento: int | None
         "convocante": x.get("convocante") or convocante_local(x),
         # Con las reglas vigentes (motor/boe/clasificar.py), no con las del día de la captura: así una mejora de
         # las reglas se aplica a todo el histórico sin volver a seleccionar
-        "tipo_acto": clasificar(x.get("titulo") or "")["tipo_acto"] if x.get("titulo") else x.get("tipo_acto"),
+        "tipo_acto": tipo,
         "alcance": x.get("alcance"),
         "modalidad": x.get("modalidad"),
         "tiene_texto": texto is not None,
