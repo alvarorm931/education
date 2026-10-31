@@ -291,6 +291,28 @@ def test_plan_de_la_memoria_del_ruct_se_comprueba_con_sus_creditos():
     assert not plan_comprobado(plan_de_memoria(r))  # una página sin leer: no se da por comprobado
 
 
+def test_plan_de_la_memoria_que_solo_llega_a_materias():
+    from motor.grados.fichas import plan_comprobado, plan_de_memoria
+
+    def mat(nombre, caracter, ects, sem, asignaturas=()):
+        return {"nombre": nombre, "caracter": caracter, "ects": ects, "despliegue": {str(sem): ects},
+                "asignaturas": list(asignaturas)}
+
+    r = {"codigo": "1", "creditos": {"total": 30.0, "optativos": 6.0}, "fecha_verificacion": "2022-01-01",
+         "fuente": {"url": "https://www.educacion.gob.es/ruct/estudio?codigo=1", "capturado": "2026-10-31"},
+         "memoria": {"cod": "1y", "avisos": [], "plan": [{"modulo": 1, "nombre": "Único", "materias": [
+             mat("Matemáticas", "Básica", 12.0, 1), mat("Física", "Obligatoria", 6.0, 3),
+             mat("Optatividad", "Optativa", 6.0, 7),
+             mat("Proyectos", "Mixto", 6.0, 8, [{"nombre": "TFG", "caracter": "Trabajo Fin de Grado", "ects": 6.0,
+                                                 "despliegue": {"8": 6.0}}])]}]}}
+    p = plan_de_memoria(r)
+    assert plan_comprobado(p) and p["suma_sin_optativas"] == 24.0
+    assert [f["nivel"] for f in p["plan"]] == ["materia", "materia", "materia", "asignatura"]
+    assert p["plan"][0]["materia"] is None and p["plan"][3]["materia"] == "Proyectos" and p["plan"][1]["curso"] == 2
+    r["memoria"]["plan"][0]["materias"][1]["caracter"] = "Mixto"  # materia hoja sin carácter claro: sin comprobar
+    assert not plan_comprobado(plan_de_memoria(r))
+
+
 def test_lista_conocida_con_importe_anual(tmp_path):
     import json as _json
 
@@ -350,3 +372,32 @@ def test_titulo_en_extincion_en_todas_sus_universidades():
     assert en_extincion({"universidades": [{"nombre": "Zaragoza"}]}, r)
     assert en_extincion({"universidades": [{"nombre": "Zaragoza"}, {"nombre": "Lleida"}]}, r) is None
     assert en_extincion({"universidades": [{"nombre": "Zaragoza"}]}, {}) is None
+
+
+def test_plan_de_la_memoria_con_materias_repetidas_en_ingles_y_practicas_optativas():
+    from motor.grados.fichas import _en_ingles, plan_comprobado, plan_de_memoria
+
+    assert _en_ingles("Artificial Vision") and _en_ingles("Virtual Reality and Augmented Reality")
+    assert not _en_ingles("Visión Artificial") and not _en_ingles("Marketing de Videojuegos")
+    assert not _en_ingles("Estadística I") and not _en_ingles("Prácticas Externas")
+
+    def mat(nombre, caracter, ects):
+        return {"nombre": nombre, "caracter": caracter, "ects": ects, "despliegue": {"1": ects}}
+
+    r = {"codigo": "1", "creditos": {"total": 30.0, "optativos": 6.0, "obligatorios": 12.0, "practicas_externas": 0.0,
+                                     "tfm": 6.0},
+         "fuente": {"url": "https://www.educacion.gob.es/ruct/estudio?codigo=1", "capturado": "2026-10-31"},
+         "memoria": {"cod": "1z", "avisos": [], "plan": [
+             {"modulo": 1, "nombre": "Núcleo", "ects": 18.0, "materias": [
+                 mat("Estadística", "Básica", 6.0), mat("Visión Artificial", "Obligatoria", 6.0),
+                 mat("Artificial Vision", "Obligatoria", 6.0), mat("Redes", "Obligatoria", 6.0)]},
+             {"modulo": 2, "nombre": "Final", "ects": 18.0, "materias": [
+                 mat("Prácticas Externas", "Prácticas Externas", 6.0), mat("Optativa", "Optativa", 6.0),
+                 mat("Trabajo Fin de Grado", "Trabajo Fin de Grado / Máster", 6.0)]}]}}
+    p = plan_de_memoria(r)
+    assert [f["nombre"] for f in p["plan"]][:3] == ["Estadística", "Visión Artificial", "Redes"]
+    # básicas 6, obligatorias 12 y TFG 6 cuadran uno a uno; los 6 de prácticas son optativos (el RUCT da 0)
+    assert plan_comprobado(p) and p["comprobacion"] == "con_creditos_por_tipo_del_ruct"
+    assert any("inglés" in n for n in p["notas"]) and any("prácticas son optativos" in n for n in p["notas"])
+    r["memoria"]["plan"][0]["ects"] = 24.0  # el módulo sí suma las dos: la de inglés no es una repetición
+    assert not plan_comprobado(plan_de_memoria(r))

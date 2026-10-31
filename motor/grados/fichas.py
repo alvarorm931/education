@@ -674,6 +674,46 @@ def _tipo_memoria(caracter: str | None) -> str | None:
     return TIPO_MEMORIA.get(c) or ("tfg" if c.startswith("trabajo fin") else None)
 
 
+_ES = {"de", "del", "la", "el", "los", "las", "y", "e", "en", "para", "con", "a", "al", "i", "d", "da", "do", "eta"}
+_EN = {"and", "of", "the", "for", "to", "in", "with", "on", "an"}
+
+
+def _en_ingles(nombre: str | None) -> bool:
+    """Nombre en inglés: alguna palabra vacía inglesa y ninguna española; o, sin palabras vacías, sin tildes ni eñes
+    y con alguna palabra que no es española («Artificial Vision», «Videogame Marketing»)."""
+    n = (nombre or "").lower()
+    pal = re.findall(r"[a-záéíóúüñàèòïç']+", n)
+    if not pal or set(pal) & _ES:
+        return False
+    if set(pal) & _EN:
+        return True
+    return not re.search(r"[áéíóúñàèòïç]", n) and any(re.search(
+        r"(?:ing|ity|ment|ics|vision|videogame|games?|cloud|design|production|reality|technologies|programming|"
+        r"intelligence|security|processing|learning|data|english)$", w) for w in pal)
+
+
+def _sin_versiones_en_ingles(materias: list[dict], ects_modulo: float | None) -> tuple[list[dict], list[str]]:
+    """Materias de un módulo que repiten en inglés la de al lado (mismo carácter y créditos, número siguiente):
+    la memoria las da como grupo en otra lengua, no como créditos de más. Solo se quitan si así la suma del módulo
+    da justo sus créditos (31/10: «Visión Artificial» y «Artificial Vision», 6 + 6 en un módulo de 108)."""
+    def ects(x):
+        hs = x.get("asignaturas") or [x]
+        return sum(h.get("ects") or 0 for h in hs)
+
+    total = sum(ects(x) for x in materias)
+    if not ects_modulo or total <= ects_modulo + 0.5:
+        return materias, []
+    dobles = []
+    for i, x in enumerate(materias):
+        prev = materias[i - 1] if i else None
+        if prev is not None and _en_ingles(x.get("nombre")) and not _en_ingles(prev.get("nombre")) \
+                and x.get("caracter") == prev.get("caracter") and ects(x) == ects(prev):
+            dobles.append(i)
+    if dobles and abs(total - sum(ects(materias[i]) for i in dobles) - ects_modulo) <= 0.5:
+        return [x for i, x in enumerate(materias) if i not in dobles], [materias[i].get("nombre") for i in dobles]
+    return materias, []
+
+
 def plan_de_memoria(r: dict | None) -> dict | None:
     """Plan de la memoria vigente del RUCT (módulos, materias y asignaturas con carácter, ECTS y semestre) con la
     misma forma que un plan del BOE. Se comprueba con los créditos por tipo de la ficha del propio RUCT: básicas +
@@ -683,25 +723,45 @@ def plan_de_memoria(r: dict | None) -> dict | None:
     if not m.get("plan") or m.get("error"):
         return None
     filas, incompleto = [], bool([a for a in m.get("avisos") or [] if "estado" in a or "límite" in a])
+    en_ingles = []
     for b in m["plan"]:
-        for x in b.get("materias") or []:
-            for a in x.get("asignaturas") or []:
+        materias, quitadas = _sin_versiones_en_ingles(b.get("materias") or [], b.get("ects"))
+        en_ingles += quitadas
+        for x in materias:
+            # una materia sin asignaturas es la unidad del plan (memorias que solo llegan a materias, muy comunes en
+            # el RD 822/2021: el 31/10, 2 de las 5 primeras memorias leídas); con asignaturas, cuentan ellas
+            hojas = [(a, "asignatura") for a in x.get("asignaturas") or []] or [(x, "materia")]
+            for a, nivel in hojas:
                 tipo = _tipo_memoria(a.get("caracter"))
                 sem = sorted(int(k) for k, v in (a.get("despliegue") or {}).items() if str(k).isdigit() and v)
                 incompleto = incompleto or not tipo or not a.get("ects")
-                filas.append({"nombre": a.get("nombre"), "modulo": b.get("nombre"), "materia": x.get("nombre"),
+                filas.append({"nombre": a.get("nombre"), "modulo": b.get("nombre"),
+                              "materia": x.get("nombre") if nivel == "asignatura" else None,
                               "tipo": tipo, "creditos": a.get("ects"),
                               "curso": (sem[0] + 1) // 2 if sem else None, "semestre": sem[0] if sem else None,
-                              "nivel": "asignatura"})
+                              "nivel": nivel})
     if not filas:
         return None
     cr = (r or {}).get("creditos") or {}
     fijos = sum(f["creditos"] or 0 for f in filas if f["tipo"] in ("basica", "obligatoria", "practicas", "tfg"))
     esperado = cr["total"] - cr["optativos"] if cr.get("total") and cr.get("optativos") is not None else None
     cuadra = bool(esperado) and not incompleto and abs(fijos - esperado) <= 0.5
+    comprobacion, notas = ("con_creditos_del_ruct" if cuadra else None), []
+    por_tipo = {t: sum(f["creditos"] or 0 for f in filas if f["tipo"] == t) for t in ("basica", "obligatoria", "practicas", "tfg")}
+    tfg_ruct = cr.get("tfg") if cr.get("tfg") is not None else cr.get("tfm")
+    if not cuadra and esperado and not incompleto and None not in (cr.get("obligatorios"), cr.get("practicas_externas"), tfg_ruct):
+        # prácticas de más: el RUCT cuenta como optativos los créditos de prácticas que no son obligatorias. Vale si
+        # básicas, obligatorias y TFG cuadran uno a uno con el RUCT (31/10: 12 de prácticas en un grado con 0)
+        basica_ruct = cr["total"] - cr["optativos"] - cr["obligatorios"] - cr["practicas_externas"] - tfg_ruct
+        if abs(por_tipo["basica"] - basica_ruct) <= 0.5 and abs(por_tipo["obligatoria"] - cr["obligatorios"]) <= 0.5 \
+                and abs(por_tipo["tfg"] - tfg_ruct) <= 0.5 and por_tipo["practicas"] > cr["practicas_externas"] + 0.5:
+            comprobacion = "con_creditos_por_tipo_del_ruct"
+            notas.append(f"{por_tipo['practicas'] - cr['practicas_externas']:g} créditos de prácticas son optativos")
+    if en_ingles:
+        notas.append("no se cuentan dos veces las materias que el plan repite en inglés: " + ", ".join(en_ingles))
     fuente = (r.get("fuente") or {})
     return {"identificador": None, "origen": "memoria_ruct", "memoria": m.get("cod"), "fecha": r.get("fecha_verificacion"),
-            "plan": filas, "comprobacion": "con_creditos_del_ruct" if cuadra else None,
+            "plan": filas, "comprobacion": comprobacion, **({"notas": notas} if notas else {}),
             # incompleta (páginas sin leer, asignaturas sin carácter): sin cifra esperada, así no cuenta como comprobada
             "esperado_sin_optativas": None if incompleto else esperado, "suma_sin_optativas": fijos, "incompleta": incompleto,
             "fuente": {"cita": FUENTE_RUCT + ", memoria de verificación vigente", "url": fuente.get("url"),
