@@ -42,7 +42,9 @@ SIGLAS = "BOP-ALMERIA"
 MADRID = ZoneInfo("Europe/Madrid")
 APP = "https://app.dipalme.org/bop/publico.zul"
 NOMBRES = ("Boletín Oficial de la Provincia de Almería",)
-SECCIONES_LOCALES = ("administracion local", "diputacion", "otras entidades", "entidades locales")
+# «Anuncios en general y comunicaciones oficiales» trae también las convocatorias de empresas y consorcios públicos
+# (Gestión de Aguas del Levante Almeriense); el filtro de empleo deja fuera juntas de regantes y subastas
+SECCIONES_LOCALES = ("administracion local", "diputacion", "otras entidades", "entidades locales", "anuncios en general")
 RE_BOLETIN = re.compile(r"^(?P<a>\d{4})/(?P<n>\d{1,4})$")
 RE_EDICTO = re.compile(r"^(?P<n>\d{1,6})-(?P<a>\d{4})$")
 RE_PAGINAS = re.compile(r"\[\s*(?P<de>\d+)\s*-\s*(?P<a>\d+)\s*/\s*(?P<total>\d+)\s*\]")
