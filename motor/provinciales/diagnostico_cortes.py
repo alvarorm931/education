@@ -39,6 +39,7 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("fuente", choices=sorted(t.BOLETIN_ENTERO))
     p.add_argument("fecha", type=date.fromisoformat)
     p.add_argument("--paginas", type=int, default=4, help="páginas del cuerpo que se imprimen (las primeras)")
+    p.add_argument("--crudas", default="", help="páginas (1,5,9) cuyo texto con disposición se imprime tal cual")
     p.add_argument("--salida", type=Path, default=Path("diagnostico"))
     a = p.parse_args(argv)
     conector = importlib.import_module(f"motor.provinciales.{a.fuente}")
@@ -85,9 +86,16 @@ def main(argv: list[str] | None = None) -> int:
             print("    comienzo del texto:", _seguro(" ".join(corte[0].split())[:240]))
             print("    final del texto:", _seguro(" ".join(corte[0].split())[-160:]))
     cuerpo = [n for n in range(len(paginas)) if n + 1 not in sumario]
-    for n in cuerpo[:a.paginas]:
+    for n in cuerpo[:a.paginas] if not a.crudas else []:
         print(f"----- página {n + 1} (sin entradas de sumario)")
         print(_seguro(limpias[n])[:3000])
+    if a.crudas:
+        from pypdf import PdfReader
+        import io
+        lector = PdfReader(io.BytesIO(r.contenido))
+        for n in [int(x) for x in a.crudas.split(",") if x.strip()]:
+            print(f"----- página {n} con disposición, tal cual")
+            print(_seguro(lector.pages[n - 1].extract_text(extraction_mode="layout") or "")[:6000])
     print(json.dumps({"empleo": len(empleo), "con_texto": sum(1 for e in empleo if e["id"] in cortes)}))
     return 0
 
