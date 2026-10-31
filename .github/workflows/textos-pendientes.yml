@@ -22,7 +22,7 @@ on:
         description: "Conectores de los servidores de GitHub, separados por espacios"
         default: "dogc bocm dogv bopsevilla bopvalencia bopalicante boptenerife boib bopbizkaia borm bopgirona dog boptoledo bocyl boplaspalmas bopcordoba bopciudadreal bopb bopt bopguadalajara"
       conectores_espana:
-        description: "Conectores del servidor de España, separados por espacios"
+        description: "Conectores del servidor de España, separados por espacios («ninguno» para no usarlo)"
         default: "bopa bon boplleida bopjaen bopgipuzkoa bopzaragoza bopvalladolid"
 
 permissions:
@@ -52,7 +52,7 @@ jobs:
           python - >> "$GITHUB_OUTPUT" <<'EOF'
           import json, os
           print("lista=" + json.dumps(os.environ["CONECTORES"].split()))
-          print("lista_espana=" + json.dumps(os.environ["ESPANA"].split()))
+          print("lista_espana=" + json.dumps([c for c in os.environ["ESPANA"].split() if c != "ninguno"]))
           EOF
 
   boletin:
