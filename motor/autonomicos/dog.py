@@ -52,7 +52,9 @@ RE_TOKEN = re.compile(
     r'|<li class="dog-toc-sumario">(?P<item>.*?)</li>'
     r'|<p class="dog-pagina">(?P<pagina>.*?)</p>', re.DOTALL)
 RE_A = re.compile(r'<a href="(?P<href>[^"]+)"[^>]*>(?P<titulo>.*?)</a>', re.DOTALL)
-RE_STORY = re.compile(r'<div class="story">(.*?)(?:<nav id="navegacionInferior"|</main>)', re.DOTALL)
+# Hasta 2023 la página no tiene <main> y la navegación inferior es un div («<div id="navegacionInferior"»)
+RE_STORY = re.compile(r'<div class="story">(.*?)(?:<(?:nav|div) id="navegacionInferior"|</main>|<div id="footer")',
+                      re.DOTALL)
 
 
 def url_indice(d: date, n: int) -> str:

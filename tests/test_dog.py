@@ -69,3 +69,13 @@ def test_ultimo_numero_desde_informes(tmp_path):
     dog.escribir_json(dog._ruta(tmp_path, "dias", date(2026, 10, 28), "json"), {"resultado": "ok", "numero": 206})
     assert dog.ultimo_numero(tmp_path, DIA) == (206, date(2026, 10, 28))
     assert dog.ultimo_numero(tmp_path, date(2026, 1, 1)) is None
+
+
+def test_texto_de_las_paginas_antiguas():
+    """Hasta 2023 la página del anuncio no tiene <main> y la navegación inferior es un div (sonda del 31/10/2026)."""
+    from motor.autonomicos import dog
+    h = ('<div class="dog-cabecera">DOG</div><div class="story"><p class="dog-base-sangria">Convocada la provisión de '
+         'un puesto de trabajo.</p></div><div id="navegacionInferior"><a>Ir al siguiente</a></div>'
+         '<div id="footer">Xunta de Galicia</div>').encode()
+    t = dog.texto_disposicion(h)
+    assert t["texto"].startswith("Convocada la provisión") and "siguiente" not in t["texto"]
