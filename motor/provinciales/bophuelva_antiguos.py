@@ -36,7 +36,7 @@ from datetime import date, timedelta
 from pathlib import Path
 
 from motor.archivo import Archivo, solo_huella_por_defecto
-from motor.autonomicos.comun import Freno, escribir_json, escribir_jsonl, estado_dia, nombre_propio
+from motor.autonomicos.comun import Freno, escribir_json, escribir_jsonl, estado_dia, leer_jsonl, nombre_propio
 from motor.boe.clasificar import normalizar
 from motor.extraccion.citas import citas
 from motor.http import obtener
@@ -46,7 +46,7 @@ from motor.provinciales.comun import CON_TEXTO, ruta_texto_pdf
 
 INICIO = date(2022, 1, 1)
 FIN = bh.INICIO - timedelta(days=1)  # 19/06/2023: desde el 20 está el sistema nuevo (bophuelva.py)
-VERSION = "pdf_dia_v2"  # v2 (31/10/2026): el enlace al PDF va codificado en el visor («file=%2Fportalweb%2Fbop…»)
+VERSION = "pdf_dia_v3"  # v2 (31/10/2026): el enlace al PDF va codificado en el visor («file=%2Fportalweb%2Fbop…»); v3: municipios bajo «AYUNTAMIENTOS» y textos sin el asunto siguiente
 WEB = bh.WEB
 
 _MESES = r"(?:enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|setiembre|octubre|noviembre|diciembre)"
@@ -62,7 +62,7 @@ RE_NUMERO_BOLETIN = re.compile(rf"(?i){_FECHA}\s+N[úu]mero\s+(?P<n>\d{{1,4}})")
 # «ADMINISTRACIÓN LOCAL», «ADMINISTRACIÓN ELECTORAL» (suplementos de elecciones), «JUNTA DE ANDALUCÍA»…
 RE_SECCION = re.compile(r"^(?:ADMINISTRACI[ÓO]N(?:\s+[A-ZÁÉÍÓÚÑ]+(?:\s+(?:DE|DEL|LA|DE LA)?\s*[A-ZÁÉÍÓÚÑ]+){0,3})?|"
                         r"JUNTA DE ANDALUC[ÍI]A|ANUNCIOS(?: PARTICULARES| OFICIALES)?|"
-                        r"OTR[OA]S ANUNCIOS|OTRAS ADMINISTRACIONES|OTRAS ENTIDADES|DIPUTACI[ÓO]N PROVINCIAL)$")
+                        r"OTR[OA]S ANUNCIOS|OTRAS ADMINISTRACIONES|OTRAS ENTIDADES|DIPUTACI[ÓO]N PROVINCIAL|AYUNTAMIENTOS|JUNTAS ELECTORALES|MANCOMUNIDADES|ENTIDADES LOCALES(?: AUT[ÓO]NOMAS)?)$")
 RE_ENTIDAD_SUMARIO = re.compile(r"^\s*[–—-]\s+(?P<e>\S.*)$")
 # puntos hasta la página, o uno solo con dos espacios («…de empleo temporal .  5173»)
 RE_FIN_ASUNTO = re.compile(r"^(?P<t>.*?)(?:\s*(?:[.…·]\s*){2,}|\s*[.…·]\s{2,})\s*(?P<p>\d{1,5})\s*$")
@@ -172,6 +172,10 @@ def _clave_entidad(e: str | None) -> str:
     return " ".join(re.sub(r"[^a-z0-9ñ ]+", " ", n).split())
 
 
+RE_TIPO_ENTIDAD = re.compile(r"^(?:AYUNTAMIENTO|MANCOMUNIDAD|ENTIDAD|CONSORCIO|EXCM|ILMO|ILTRE|PATRONATO|INSTITUTO|"
+                             r"ORGANISMO|EMPRESA|FUNDACI|SOCIEDAD|AGENCIA|COMUNIDAD|JUNTA|DIPUTACI|E\.?L\.?A)")
+
+
 def cuerpo(paginas: list[str]) -> tuple[list[tuple[int, str]], list[dict]]:
     """Líneas del cuerpo con su página del boletín (sin cabeceras ni pies) y los comienzos de anuncio que se ven:
     una entidad en mayúsculas (una o dos líneas) seguida del tipo («RESOLUCIÓN», «ANUNCIO»…)."""
@@ -185,7 +189,10 @@ def cuerpo(paginas: list[str]) -> tuple[list[tuple[int, str]], list[dict]]:
                 continue
             lineas.append((num, " ".join(sin_ligaduras(lin).split())))
     comienzos = []
+    seccion = None
     for i, (num, lin) in enumerate(lineas):
+        if RE_SECCION.match(lin):
+            seccion = lin
         if not RE_TIPO.match(lin) or i == 0:
             continue
         j = i - 1
@@ -197,8 +204,11 @@ def cuerpo(paginas: list[str]) -> tuple[list[tuple[int, str]], list[dict]]:
         ini = j + 1
         if comienzos and comienzos[-1]["linea"] >= ini:
             continue
-        comienzos.append({"linea": ini, "pagina": lineas[ini][0],
-                          "entidad": " ".join(l for _, l in lineas[ini:i])})
+        entidad = " ".join(l for _, l in lineas[ini:i])
+        # bajo «AYUNTAMIENTOS» el cuerpo solo nombra el municipio («CARTAYA»), y el sumario dice «Ayuntamiento de…»
+        if seccion == "AYUNTAMIENTOS" and not RE_TIPO_ENTIDAD.match(entidad):
+            entidad = "AYUNTAMIENTO DE " + entidad
+        comienzos.append({"linea": ini, "pagina": lineas[ini][0], "entidad": entidad})
     return lineas, comienzos
 
 
@@ -358,6 +368,44 @@ def _de_version_anterior(ruta: Path) -> bool:
     return inf.get("nota") == "sin PDF" and inf.get("version") != VERSION
 
 
+def _releer(ruta: Path) -> dict | None:
+    """Informe de un día leído con una versión anterior en el que no casaron todos los asuntos: se vuelve a leer
+    desde el PDF del almacén, sin pedirlo a la fuente."""
+    try:
+        inf = json.loads(ruta.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return None
+    if inf.get("resultado") != "ok" or inf.get("version") == VERSION or inf.get("origen") != "pdf_dia":
+        return None
+    return inf if (inf.get("casados") or 0) < (inf.get("disposiciones") or 0) else None
+
+
+def releer_desde_almacen(d: date, raiz: Path, anterior: dict) -> dict | None:
+    """Vuelve a leer el día con los PDF ya guardados; None si alguno no está en el almacén."""
+    from motor.provinciales.textos import original_guardado
+    urls = [b["url_pdf"] for b in anterior.get("boletines") or []] or [anterior.get("url_pdf")]
+    guardados = [(u, original_guardado(raiz, bh.FUENTE + "-boletin", d.isoformat(), u)) for u in urls if u]
+    if not guardados or any(g is None for _, g in guardados):
+        return None
+    # los textos de la lectura anterior se quitan: los que no salgan ahora no deben quedarse con el corte viejo
+    previos = bh._ruta(raiz, "oposiciones", d)
+    if previos.exists():
+        for x in leer_jsonl(previos):
+            if x.get("id", "").startswith(f"BOPHUELVA-{d.isoformat()}-"):
+                ruta_texto_pdf(bh._base(raiz), x).unlink(missing_ok=True)
+    informes, orden = [], 0
+    for u, (pdf, captura) in guardados:
+        inf = leer_pdf(d, u, pdf, captura, raiz, orden)
+        orden += inf["disposiciones"]
+        informes.append(inf)
+    if len(informes) == 1:
+        return {**informes[0], "nota": "releído desde el almacén"}
+    total = {k: sum(i.get(k, 0) for i in informes) for k in ("disposiciones", "empleo_publico", "textos", "comienzos", "casados")}
+    return {**informes[0], **total, "nota": "releído desde el almacén",
+            "boletines": [{k: i.get(k) for k in ("url_pdf", "numero", "sha256", "disposiciones")} for i in informes],
+            "alertas": [x for i in informes for x in i.get("alertas", [])]}
+
+
 def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser()
     p.add_argument("--salida", type=Path, default=Path("."))
@@ -373,6 +421,15 @@ def main(argv: list[str] | None = None) -> int:
         hecho, reintento = estado_dia(ruta)
         if hecho and _de_version_anterior(ruta):
             hecho = False  # leído con la v1, que no veía el enlace al PDF
+        if hecho and (anterior := _releer(ruta)):
+            try:
+                nuevo = releer_desde_almacen(d, a.salida, anterior)
+            except Exception as e:  # noqa: BLE001 - se queda la lectura anterior
+                nuevo = None
+                print(f"::warning::{bh.SIGLAS} {d}: no se pudo releer desde el almacén: {type(e).__name__}")
+            if nuevo:
+                escribir_json(ruta, nuevo)
+                informes.append(nuevo)
         if d.weekday() >= 5 and not hecho:
             escribir_json(ruta, {"fecha": d.isoformat(), "resultado": "sin_boletin", "nota": "fin de semana",
                                  "alertas": []})

@@ -180,3 +180,19 @@ def test_texto_sin_el_del_asunto_siguiente_que_no_se_vio():
     sin_almendro = [c for c in comienzos if "ALMENDRO" not in c["entidad"]]
     tramos = h.tramos_de_texto(asuntos, sin_almendro, lineas, h.casar(asuntos, sin_almendro))
     assert 1 not in tramos and 2 not in tramos and 0 in tramos
+
+
+def test_municipios_bajo_ayuntamientos_y_relectura(tmp_path):
+    pags = [p.replace("AYUNTAMIENTO DE CARTAYA\nANUNCIO\nAprobación", "AYUNTAMIENTOS\nCARTAYA\nANUNCIO\nAprobación", 1)
+            .replace("AYUNTAMIENTO DE CARTAYA\nANUNCIO\nBases", "CARTAYA\nANUNCIO\nBases") for p in PAGINAS]
+    asuntos = h.sumario(pags)
+    lineas, comienzos = h.cuerpo(pags)
+    assert [c["entidad"] for c in comienzos][-2:] == ["AYUNTAMIENTO DE CARTAYA", "AYUNTAMIENTO DE CARTAYA"]
+    assert h.casar(asuntos, comienzos) == {i: i for i in range(6)}
+    r = tmp_path / "d.json"
+    r.write_text(json.dumps({"resultado": "ok", "origen": "pdf_dia", "version": "pdf_dia_v2", "casados": 4,
+                             "disposiciones": 9}))
+    assert h._releer(r)
+    r.write_text(json.dumps({"resultado": "ok", "origen": "pdf_dia", "version": h.VERSION, "casados": 4,
+                             "disposiciones": 9}))
+    assert h._releer(r) is None
