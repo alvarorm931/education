@@ -1,0 +1,868 @@
+<!doctype html>
+<html lang="es">
+    <head>
+    	<title>Boletín número 100 del año 2022</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="description" content="">
+		<meta name="keywords" content="">
+		<meta name="robots" content="index, follow">
+		<meta name="theme-color" content="#005c90"/>
+		<meta name="revisit-after" content="7 days">
+		<meta name="google-site-verification" content="8urOn-5l6QC1atVkebmfQ1IPmlHytv2wf6styzrZMRE" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link rel="manifest" href="/manifest.json">
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <!-- Place favicon.ico in the root directory -->
+
+		<script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+ 		<script>window.jQuery || document.write('<script src="/export/system/modules/es.dipucadiz.template/resources/js/jquery-3.4.1.min.js"><\/script>')</script>
+		<script defer src="/export/system/modules/es.dipucadiz.template/resources/js/visible.js"></script>
+		<script defer src="/export/system/modules/es.dipucadiz.menu/resources/js/Menu_F.js"></script>
+		<link rel="stylesheet" media="screen" href="/export/system/modules/es.dipucadiz.template/resources/css/styles.css" />
+        <link rel="stylesheet" media="screen" href="/export/system/modules/es.dipucadiz.template/resources/css/custom.css" />
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" crossorigin="anonymous">
+		<link rel="stylesheet" media="screen" href="/export/system/modules/es.dipucadiz.template/resources/css/dipufont.css" />
+		<link rel="stylesheet" media="print" href="/export/system/modules/es.dipucadiz.template/resources/css/print.css">
+    </head>
+    <body>
+    	<!--[if lt IE 8]>
+            <p class="browserupgrade">Est� usando una versi�n <strong>descatalogada</strong> de Internet Explorer. Por favor <a href="http://browsehappy.com/">actualice su navegador</a> para mejorar su experiencia.</p>
+        <![endif]-->
+        <h1>Boletín número 100 del año 2022</h1>
+        
+    	<div class="wrapper">
+    		<div class="header self_clear">
+				<div  id="header" ><div class="row self_clear bg-none">
+
+	<div class="col col-12-np" ><div class="menu_f">
+		<div class="staticMenu">
+					<div class="menu_box">
+						<div class="menu_wrapper">
+							<div class="enlaces">
+									<ul>
+										<li><a href="https://sede.dipucadiz.es" rel="nofollow noopener noreferrer" target="_blank" title="">Sede Electrónica</a></li>
+										</ul>
+								</div>
+							<div class="redes">
+								<a href="https://twitter.com/apcadiz" aria-label="URL de acceso al perfil de twitter" target="_blank" rel="nofollow noopener noreferrer">
+										<i class="fab fa-twitter" aria-hidden="true" title="URL de acceso al perfil de twitter"></i>
+										<p style="font-size: 0">URL de acceso al perfil de twitter</p>
+									</a> 
+								<a href="https://www.facebook.com/prensacadiz/?ref=br_rs" aria-label="URL de acceso al perfil de Facebook" target="_blank" rel="nofollow noopener noreferrer">
+										<i class="fab fa-facebook-f" aria-hidden="true" title="URL de acceso al perfil de Facebook"></i>
+										<p style="font-size: 0">URL de acceso al perfil de Facebook</p>
+									</a> 
+								<a href="https://www.youtube.com/user/PrensaCadiz" aria-label="URL de acceso al perfil de youtube" target="_blank" rel="nofollow noopener noreferrer">
+										<i class="fab fa-youtube" aria-hidden="true" title="URL de acceso al perfil de youtube"></i>
+										<p style="font-size: 0">URL de acceso al perfil de youtube</p>
+									</a> 
+								</div>
+							</div>
+					</div>
+				</div>
+			</div>
+<div id="mainMenu" class="menu_f horizontal stickyOnTop">
+		<div class="horizontalMenu">
+							<div id="main-logo">
+								<div class="menuLogoWrapper">
+											<a href="/">
+												<img src="/export/sites/default/.galerias/cabeceras/portada.png" alt="Imagen de portada de la Diputación" />
+											</a>
+										</div>
+									</div>
+							<div class="menu_box">
+								<div class="menu_wrapper">
+									<div id="side_burger">
+										<button aria-label="Menú Burger" type="button" class="">
+											<span></span>
+											<span></span>
+											<span></span>
+										</button>
+									</div>
+									<div id="search">
+										<div id="search_box">
+											<div class="search-open">
+												<form class="form-inline" name="searchFormHeader" action="/buscador/" method="post">
+													<div class="input-group animated fadeInDown" id="searchContentHeader">
+														<span class="input-group-btn">
+															<button aria-label="Icono de buscar" class="btn-u" type="button" onclick="this.form.submit(); return false;"><i class="icon-search"></i></button>
+														</span>
+														<input aria-label="Buscar" type="text" name="q" class="form-control" placeholder="Buscar" id="searchWidgetAutoCompleteHeader" />
+														<span id="close-search" class="close-button icon-desplegable-open-xl toggled"></span>
+													</div>
+												</form>
+											</div>
+										</div>
+										<i id="searchIcon" class="fas fa-search" aria-hidden="true"></i>
+									</div>
+									<script>
+											var current = null;
+											var currentSub = null;
+											
+											function checkMenu(elto) {
+												$('#mainMenu').toggleClass("open");
+												if(current != null){
+													current.parent().removeClass("active"); 
+													current = null;
+												} else if(elto != null && !elto.is(current)){
+													current = elto;
+													current.parent().addClass("active");
+												} else {
+													current = null;
+												}
+											}
+											
+											function checkSubmenu(elto) {
+												if(currentSub != null){
+													currentSub.parent().removeClass("toggled"); 
+													currentSub = null;
+												} else if(elto != null && !elto.is(current)) {
+													currentSub = elto;
+													currentSub.parent().addClass("toggled");
+												} else {
+													currentSub = null;
+												}
+												return false;
+											}
+										</script>
+										<div class="enlaces">
+											<ul>
+												<li>
+														<a href="/"  target="_self" title="">Inicio</a>
+															<!-- Desarrollo de los submenus -->
+														</li>
+													<li>
+														<a href="/boletin/"  target="_self" title="">Buscador</a>
+															<!-- Desarrollo de los submenus -->
+														</li>
+													<li>
+														<a href="/informacion/"  target="_self" title="">Información</a>
+															<!-- Desarrollo de los submenus -->
+														</li>
+													<li>
+														<a href="/contacto/"  target="_self" title="">Contacto</a>
+															<!-- Desarrollo de los submenus -->
+														</li>
+													</ul>
+										</div>
+									</div>
+							</div>
+						</div>
+
+						<script>
+							$(document).ready(function() {
+								$('.dropdown-toggle').click(function(){
+									return false;
+									//$('.dropdown-toggle .dropdown-menu').css('display', 'block');
+								});
+								
+								$('#side_burger button').click(function(){
+									$('#side_burger button').toggleClass("toggled");
+									$('#mainMenu .enlaces').toggleClass("toggled");
+									$('#mainMenu').toggleClass("open");
+								});
+							});
+						</script>
+					<div id="horizontalMenuFiller"></div>
+		</div>
+</div></div>
+</div></div>
+			<div class="page self_clear">
+				<div  id="page" ></div></div>
+			<div class="page_full self_clear">
+				<div  id="page2" ><div class="row self_clear bg-none">
+
+	<div class="col col-12-np" ><div class="Boletin_F">
+		<div class="top-image r-box r-box-65_23" style="background-image: url(/.galerias/bopca.jpg)">
+					<div class="social-list">
+						
+
+
+
+
+
+
+<div id="social">
+	
+    <div id="overlay"></div>
+	<div id="return">
+		<a href="#return" aria-label="Volver a la página anterior" id="return-bt"><i class="fa fa-angle-left"></i><span>Volver</span></a>
+	</div>
+	<div id="share_div" >
+		<div id="share">
+			<div>
+				<i class="icon-share"></i>
+			</div>
+		</div>	
+	</div>
+	<div id="icons_div">
+		<div class="delicious">
+			<a href="#return" aria-label="Compartir en Delicious" title="Compartir en Delicious" id="delicious-bt">
+				<i class="fab fa-delicious"></i>
+				<p style="font-size: 0">Compartir en Delicious</p>
+			</a>
+		</div>
+		<div class="facebook">
+			<a href="#return" aria-label="Compartir en Facebook" title="Compartir en Facebook" id="facebook-bt">
+				<i class="fab fa-facebook-f"></i>
+				<p style="font-size: 0">Compartir en Facebook</p>
+			</a>
+		</div>
+		
+		<div class="linkedin">
+			<a href="#return" aria-label="Compartir en LinkedIn" title="Compartir en LinkedIn" id="linkedin-bt">
+				<i class="fab fa-linkedin"></i>
+				<p style="font-size: 0">Compartir en LinkedIn</p>
+			</a>
+		</div>
+		<div class="twitter"> 	
+			<a href="#return" aria-label="Compartir en Twitter" title="Compartir en Twitter" id="twitter-bt">
+				<i class="fab fa-twitter"></i>
+				<p style="font-size: 0">Compartir en Twitter</p>
+			</a>
+		</div>
+	</div>
+</div>
+
+<script>
+	$(function() {
+		$('#return-bt').click(function(){
+			window.history.back();
+			return false;
+		});
+		
+		function share(type){
+			var width  = 575,
+				height = 400,
+				left   = ($(window).width() - width) / 2,
+				top    = ($(window).height() - height) / 2,
+				url    = "",
+				title  = "",
+				opts   = 'satatus=1' +
+						 ',width='   + width +
+						 ',height='  + height +
+						 ',top='     + top +
+						 ',left='    + left;
+			var realUrl = window.location.href;
+			if(type === 'delicious') {
+				url = 'http://delicious.com/save?v=5&amp;noui&amp;jump=close&amp;url='+realUrl +'&amp;title='+'Buscador','delicious', 'toolbar=no,width=550,height=550';
+				title = 'Delicious';
+			} else if(type === 'facebook') {
+				url = 'http://www.facebook.com/sharer.php?u='+realUrl +'&t=Buscador';
+				title = 'Facebook';
+			} else if(type === 'google') {
+				url = 'https://m.google.com/app/plus/x/?v=compose&content=http://www.google.es','gplusshare','width=575,height=400,left='+(screen.availWidth/2-225)+',top='+(screen.availHeight/2-150)+'';
+				title = 'Google';
+			} else if(type === 'linkedin') {
+				url = 'http://www.linkedin.com/shareArticle?mini=true&url='+realUrl +'&title=Buscador';
+				title = 'Linked In';
+			} else if(type === 'twitter') {
+				url = 'http://twitter.com/home?status=Buscador - ' +realUrl;
+				title = 'Twitter';
+			}
+				
+			var win = window.open(url, title, opts);
+			
+			var pollTimer = window.setInterval(function() {
+			    if (win.closed !== false) { // !== is required for compatibility with Opera
+			        window.clearInterval(pollTimer);
+			        $('#share_div .text').text('');
+			        $('#share').click();
+			        $('#share_div').addClass('complete');
+			        $('#share>div').html('<i class="fa fa-check"></i>');
+			        setTimeout(function(){
+			        	$('#share_div .text').text('Ok!');
+			        }, 1200);
+			        var restoreTimer = window.setInterval(function() {
+			        	window.clearInterval(restoreTimer);
+			        	$('#share_div .text').text('');
+			        	$('#share_div').removeClass('complete');
+				        $('#share>div').html('<i class="icon-share"></i>');
+				        setTimeout(function(){
+				        	$('#share_div .text').text('Compartir');	
+				        }, 1100)
+			        }, 2000);
+			    }
+			}, 200);
+			
+			return false;
+		}
+		
+		$('#delicious-bt').click(function(){
+			share('delicious');
+		});
+		
+		$('#facebook-bt').click(function(){
+			share('facebook');
+		});
+		
+		$('#google-bt').click(function() {
+			share('google');
+		});
+		
+		$('#linkedin-bt').click(function() {
+			share('linkedin');
+		});
+		
+		$('#twitter-bt').click(function() {
+			share('twitter');
+		});
+		
+		$('#share').click(function() {
+			$('#icons_div').toggleClass('active');	
+			$('#share').toggleClass('active');
+			$('#overlay').toggleClass('active');
+			if($('#icons_div').hasClass('active')){
+				$('#share>div').html('<i class="fa fa-times"></i>');
+			} else {
+				$('#share>div').html('<i class="icon-share"></i>');
+			}
+		});
+	});
+</script></div>
+				</div>
+				
+				<div class="breadcrumbs_f bloque">
+	<div class="breadcrumbs_content">
+		<ul class="breadcrumb">
+			<li><a href="/index.html">Portada</a></li>
+			<li>
+						<a href="/boletin/">Buscador</a>
+					</li>
+				</ul>
+	</div>
+</div><div class="content detail-page">
+					<div class="left col col-8">
+						<p class="fecha">
+							Fri May 27 08:00:00 CEST 2022<span><i class="fas fa-caret-right"></i><a href="https://www.bopcadiz.es/.boletines_pdf/2022/05_mayo/SU-100_27-05-22.pdf" tabindex="0">Sumario PDF</a></span>
+							<span><i class="fas fa-caret-right"></i><a href="https://www.bopcadiz.es/.boletines_pdf/2022/05_mayo/BOP100_27-05-22.pdf" tabindex="0">Boletín PDF</a></span>
+							<span class="print"><a role="button" aria-label="imprimir" title="imprimir" onclick="window.print();" aria-pressed="false" tabindex="0"><i class="fas fa-print"></i></a></span>
+						</p>
+						<h2 >Boletín número 100 del año 2022</h2>
+						<div ><h3>JUNTA DE ANDALUCIA</h3>
+<p><a href="/export/sites/default/.boletines_pdf/2022/05_mayo/BOP100_27-05-22.pdf#page=0" target="_blank" rel="noopener noreferrer"><strong> 76.702/21.- Consejería de Hacienda y Financiación Europea. Cádiz.</strong> Petición de instalación eléctrica por Edistribución Redes Digitales, S.L. para mejorar la calidad de suministro de la C/ Cañada Miraflores, Avda. Reina Sofía y Calle del Bajete, t.m. de Jerez de la Frontera. Referencia A.T.: 14734/21.</a></p>
+<p><a href="/export/sites/default/.boletines_pdf/2022/05_mayo/BOP100_27-05-22.pdf#page=1" target="_blank" rel="noopener noreferrer"><strong> 45.358.- Consejería de Hacienda y Financiación Europea. Cádiz.</strong> Autorización de instalación eléctrica de alta tensión a Edistribución Redes Digitales, S.L. para desmontaje, junto con dos apoyos existentes, del tramo de línea aérea S/C entre el apoyo A145882 existente y el centro de transformación intemperie PT-25760 Pago de Lima, t.m. de Jerez de la Frontera. Expediente: AT - 14746/21.</a></p>
+<p><a href="/export/sites/default/.boletines_pdf/2022/05_mayo/BOP100_27-05-22.pdf#page=2" target="_blank" rel="noopener noreferrer"><strong> 48.236.- Consejería de Hacienda y Financiación Europea. Cádiz.</strong> Autorización de instalación eléctrica de alta tensión a Energía Eléctrica de Olvera, S.L.U. para proyecto de aumento de potencia de 100 KV AS a 250 KV AS en CT Metalol, t.m. de Olvera. Expediente: AT - 15051/22.</a></p>
+<h3>DIPUTACION PROVINCIAL DE CADIZ</h3>
+<p><a href="/export/sites/default/.boletines_pdf/2022/05_mayo/BOP100_27-05-22.pdf#page=2" target="_blank" rel="noopener noreferrer"><strong> 51.831.- Área de Servicios Económicos, Hacienda y Recaudación.</strong> Servicio de Recaudación y Gestión Tributaria. Zona de la Sierra. Oficina de Olvera. Cobranza en periodo voluntario de los recibos correspondientes al municipio de Zahara de la Sierra, de la tasa por servicio de recogida de basuras, 2º trimestre 2022 y de mercado de abastos, 1º semestre 2022.</a></p>
+<p><a href="/export/sites/default/.boletines_pdf/2022/05_mayo/BOP100_27-05-22.pdf#page=2" target="_blank" rel="noopener noreferrer"><strong> 52.005.- Área de Presidencia.</strong> Secretaría General. Aprobación inicial del expediente de modificación presupuestaria nº 43/2022, de créditos extraordinarios y suplemento de crédito del presupuesto en vigor de esta Corporación.</a></p>
+<p><a href="/export/sites/default/.boletines_pdf/2022/05_mayo/BOP100_27-05-22.pdf#page=3" target="_blank" rel="noopener noreferrer"><strong> 52.011.- Área de Presidencia.</strong> Secretaría General. Aprobación inicial del expediente de modificación presupuestaria nº 44/2022, de créditos extraordinarios y suplemento de crédito del presupuesto en vigor de esta Corporación.</a></p>
+<p><a href="/export/sites/default/.boletines_pdf/2022/05_mayo/BOP100_27-05-22.pdf#page=3" target="_blank" rel="noopener noreferrer"><strong> 52.058.- Área de Empleo.</strong> Instituto de Empleo y Desarrollo Socioeconómico y Tecnológico. (IEDT). Convocatoria para la selección de participantes en itinerario formativo Operaciones Auxiliares de Servicios Administrativos y Generales en Vejer y ayudas a la for-mación, en el marco del Proyecto Pórtico Dipuform@. Identificador BDNS: 627785.</a></p>
+<p><a href="/export/sites/default/.boletines_pdf/2022/05_mayo/BOP100_27-05-22.pdf#page=10" target="_blank" rel="noopener noreferrer"><strong> 52.059.- Área de Empleo.</strong> Instituto de Empleo y Desarrollo Socioeconómico y Tecnológico. (IEDT). Convocatoria para la selección de participantes en itinerario Prestación de Servicios Bibliotecarios en Vejer y ayudas a la formación, en el marco del Proyecto Pórtico Dipuform@. Identificador BDNS: 627786.</a></p>
+<p><a href="/export/sites/default/.boletines_pdf/2022/05_mayo/BOP100_27-05-22.pdf#page=18" target="_blank" rel="noopener noreferrer"><strong> 52.377.- Área de Servicios Económicos, Hacienda y Recaudación.</strong> Servicio de Recaudación y Gestión Tributaria. Departamento de Gestión, Inspección y Sanciones. Aprobación de la lista cobratoria del impuesto sobre bienes inmuebles de naturaleza rústica de 2022 de Paterna de Rivera.</a></p>
+<p><a href="/export/sites/default/.boletines_pdf/2022/05_mayo/BOP100_27-05-22.pdf#page=18" target="_blank" rel="noopener noreferrer"><strong> 52.467.- Área de Servicios Económicos, Hacienda y Recaudación.</strong> Servicio de Recaudación y Gestión Tributaria. Departamento de Gestión, Inspección y Sanciones. Aprobación de la lista cobratoria del impuesto sobre bienes inmuebles de naturaleza rústica de 2022 de Olvera.</a></p>
+<p><a href="/export/sites/default/.boletines_pdf/2022/05_mayo/BOP100_27-05-22.pdf#page=19" target="_blank" rel="noopener noreferrer"><strong> 52.480.- Área de Servicios Económicos, Hacienda y Recaudación.</strong> Servicio de Recaudación y Gestión Tributaria. Departamento de Gestión, Inspección y Sanciones. Aprobación de la lista cobratoria del impuesto sobre bienes inmuebles de naturaleza rústica de 2022 de Espera.</a></p>
+<p><a href="/export/sites/default/.boletines_pdf/2022/05_mayo/BOP100_27-05-22.pdf#page=19" target="_blank" rel="noopener noreferrer"><strong> 53.434.- Área de Presidencia.</strong> Secretaría General. Aprobación definitiva del expediente de Modificación Presupuestaria nº 35/2022, de Créditos Extraordinarios y Suplemento de Crédito del Presupuesto en vigor.</a></p>
+<p><a href="/export/sites/default/.boletines_pdf/2022/05_mayo/BOP100_27-05-22.pdf#page=19" target="_blank" rel="noopener noreferrer"><strong> 53.437.- Área de Presidencia.</strong> Secretaría General. Aprobación definitiva del expediente de Modificación Presupuestaria nº 30/2022, de Créditos Extraordinarios y Suplemento de Crédito del Presupuesto en vigor.</a></p>
+<h3>ADMINISTRACION LOCAL</h3>
+<p><a href="/export/sites/default/.boletines_pdf/2022/05_mayo/BOP100_27-05-22.pdf#page=19" target="_blank" rel="noopener noreferrer"><strong> 50.540.- Ayuntamiento de Benalup-Casas Viejas.</strong> Aprobación de la oferta de empleo público para la estabilización de empleo temporal.</a></p>
+<p><a href="/export/sites/default/.boletines_pdf/2022/05_mayo/BOP100_27-05-22.pdf#page=20" target="_blank" rel="noopener noreferrer"><strong> 51.057.- Ayuntamiento de Jimena de la Frontera.</strong> Aprobación de la oferta de empleo público para la estabilización de empleo temporal.</a></p>
+<p><a href="/export/sites/default/.boletines_pdf/2022/05_mayo/BOP100_27-05-22.pdf#page=20" target="_blank" rel="noopener noreferrer"><strong> 51.933.- Ayuntamiento de La Línea de la Concepción.</strong> Aprobación inicial del Plan Municipal contra el cambio climático (PMCC).</a></p>
+<p><a href="/export/sites/default/.boletines_pdf/2022/05_mayo/BOP100_27-05-22.pdf#page=20" target="_blank" rel="noopener noreferrer"><strong> 52.179.- Ayuntamiento de Algeciras.</strong> Cuenta general de 2021.</a></p>
+<p><a href="/export/sites/default/.boletines_pdf/2022/05_mayo/BOP100_27-05-22.pdf#page=20" target="_blank" rel="noopener noreferrer"><strong> 52.394.- Ayuntamiento de Barbate.</strong> Aprobación inicial del borrador de Convenio Urbanístico de Ejecución Z2 Huertos del Pradillo, suscrito entre el Ayuntamiento y Dunas de Bolonia S.L. y Blue Grey S.L.</a></p>
+<p><a href="/export/sites/default/.boletines_pdf/2022/05_mayo/BOP100_27-05-22.pdf#page=20" target="_blank" rel="noopener noreferrer"><strong> 52.409.- Ayuntamiento de Bornos.</strong> Aprobación inicial del presupuesto general para 2022, de sus bases de ejecución y de la plantilla de personal.</a></p>
+<p><a href="/export/sites/default/.boletines_pdf/2022/05_mayo/BOP100_27-05-22.pdf#page=20" target="_blank" rel="noopener noreferrer"><strong> 52.488.- Ayuntamiento de Bornos.</strong> Aprobación definitiva de la ordenanza reguladora del uso de los Huertos de Ocio en el término municipal.</a></p>
+<p><a href="/export/sites/default/.boletines_pdf/2022/05_mayo/BOP100_27-05-22.pdf#page=25" target="_blank" rel="noopener noreferrer"><strong> 52.757.- Ayuntamiento de Conil de la Frontera.</strong> Aprobación inicial del expediente nº 13 de modificación del presupuesto muni-cipal prorrogado para el año 2022 mediante la concesión de créditos extraordinarios y suplementos de créditos .</a></p>
+<p><a href="/export/sites/default/.boletines_pdf/2022/05_mayo/BOP100_27-05-22.pdf#page=26" target="_blank" rel="noopener noreferrer"><strong> 53.058.- Ayuntamiento de Los Barrios.</strong> Aprobación definitiva del presupuesto general para 2022 y de la plantilla de personal.</a></p>
+<p><a href="/export/sites/default/.boletines_pdf/2022/05_mayo/BOP100_27-05-22.pdf#page=27" target="_blank" rel="noopener noreferrer"><strong> 54.210.- Ayuntamiento de Rota.</strong> Aprobación de la oferta de empleo público 2021.</a></p>
+<p><a href="/export/sites/default/.boletines_pdf/2022/05_mayo/BOP100_27-05-22.pdf#page=28" target="_blank" rel="noopener noreferrer"><strong> 54.575.- Ayuntamiento de Sanlúcar de Barrameda.</strong> Gerencia Municipal de Urbanismo. Aprobación de la modificación de la plantilla de personal.</a></p>
+<p><a href="/export/sites/default/.boletines_pdf/2022/05_mayo/BOP100_27-05-22.pdf#page=28" target="_blank" rel="noopener noreferrer"><strong> 54.584.- Ayuntamiento de Sanlúcar de Barrameda.</strong> Gerencia Municipal de Urbanismo. Aprobación de la modificación del catálogo de puestos de trabajo.</a></p>
+<p><a href="/export/sites/default/.boletines_pdf/2022/05_mayo/BOP100_27-05-22.pdf#page=29" target="_blank" rel="noopener noreferrer"><strong> 54.610.- Ayuntamiento de Sanlúcar de Barrameda.</strong> Gerencia Municipal de Urbanismo. Aprobación de la oferta de empleo público para la estabilización de empleo temporal.</a></p>
+<p><a href="/export/sites/default/.boletines_pdf/2022/05_mayo/BOP100_27-05-22.pdf#page=30" target="_blank" rel="noopener noreferrer"><strong> 54.742.- Ayuntamiento de San Roque.</strong> Aprobación de la oferta de empleo público para la estabilización de empleo temporal.</a></p>
+<h3>VARIOS</h3>
+<p><a href="/export/sites/default/.boletines_pdf/2022/05_mayo/BOP100_27-05-22.pdf#page=30" target="_blank" rel="noopener noreferrer"><strong> 52.135.- Actividades de Limpieza y Gestión, S.A. Algeciras.</strong> Aprobación de la oferta de empleo público para la estabilización de empleo temporal.</a></p>
+<p><a href="/export/sites/default/.boletines_pdf/2022/05_mayo/BOP100_27-05-22.pdf#page=31" target="_blank" rel="noopener noreferrer"><strong> 54.043.- Corporación Municipal de Jerez, S.A. COMUJESA. Jerez de la Frontera.</strong> Aprobación de la oferta de empleo público para la estabilización de empleo temporal.</a></p>
+<p><a href="/export/sites/default/.boletines_pdf/2022/05_mayo/BOP100_27-05-22.pdf#page=31" target="_blank" rel="noopener noreferrer"><strong> 54.092.- Centro Especial de Empleo Torre de la Merced, S.L.U. Rota.</strong> Aprobación de la oferta de empleo público para la estabilización de empleo temporal. .</a></p></div>
+					</div>
+					<div class="right col col-4">
+						<div class="evento_W  lista_l">
+							<div class="Titulo">
+								<h2>Calendario de boletines</h2>
+							</div>
+							<div class="calendarioWrapper">
+								<div id="sicalendario" class="agenda agendaServicio  lists">
+									<form id="form">
+										<select name="mes" id="mes" title="Mes" aria-label="Indique el mes a consultar">
+											<option value="01">Enero</option>
+											<option value="02">Febrero</option>
+											<option value="03">Marzo</option>
+											<option value="04">Abril</option>
+											<option value="05">Mayo</option>
+											<option value="06">Junio</option>
+											<option value="07">Julio</option>
+											<option value="08">Agosto</option>
+											<option value="09">Septiembre</option>
+											<option value="10">Octubre</option>
+											<option value="11">Noviembre</option>
+											<option value="12">Diciembre</option>
+										</select>
+										<select name="anno" id="anno" title="Año" aria-label="Indique el año a consultar">
+											<option value="2001">2001</option>
+											<option value="2002">2002</option>
+											<option value="2003">2003</option>
+											<option value="2004">2004</option>
+											<option value="2005">2005</option>
+											<option value="2006">2006</option>
+											<option value="2007">2007</option>
+											<option value="2008">2008</option>
+											<option value="2009">2009</option>
+											<option value="2010">2010</option>
+											<option value="2011">2011</option>
+											<option value="2012">2012</option>
+											<option value="2013">2013</option>
+											<option value="2014">2014</option>
+											<option value="2015">2015</option>
+											<option value="2016">2016</option>
+											<option value="2017">2017</option>
+											<option value="2018">2018</option>
+											<option value="2019">2019</option>
+											<option value="2020">2020</option>
+											<option value="2021">2021</option>
+											<option value="2022">2022</option>
+											<option value="2023">2023</option>
+											<option value="2024">2024</option>
+											<option value="2025">2025</option>
+											<option value="2026">2026</option>
+										</select>
+										<button type="submit">
+											<i class="fa fa-arrow-circle-right fa-lg"></i>
+										</button>
+									</form>
+									<script>
+										entradas = new Object();
+									</script>
+									<div id="pr"></div>
+									<p class="masEventos"><a title="Ver todas las entradas del boletín" href="/system/modules/es.dipucadiz.bop/formatters/BOP_F-formatter.jsp"><span class="fa fa-plus"></span> Todas las entradas del boletín</a></p>
+								</div>
+
+								<div id="data">
+									<script>
+	entradas = new Object();
+	entradas.dFri Oct 30 08:00:00 CET 2026 = "element_0";entradas.dThu Oct 29 08:00:00 CET 2026 = "element_1";entradas.dWed Oct 28 08:00:00 CET 2026 = "element_2";entradas.dTue Oct 27 08:00:00 CET 2026 = "element_3";entradas.dMon Oct 26 08:00:00 CET 2026 = "element_4";entradas.dFri Oct 23 08:00:00 CEST 2026 = "element_5";entradas.dThu Oct 22 08:00:00 CEST 2026 = "element_6";entradas.dWed Oct 21 08:00:00 CEST 2026 = "element_7";entradas.dTue Oct 20 08:00:00 CEST 2026 = "element_8";entradas.dMon Oct 19 08:00:00 CEST 2026 = "element_9";entradas.dFri Oct 16 08:00:00 CEST 2026 = "element_10";entradas.dThu Oct 15 08:00:00 CEST 2026 = "element_11";entradas.dWed Oct 14 08:00:00 CEST 2026 = "element_12";entradas.dTue Oct 13 08:00:00 CEST 2026 = "element_13";entradas.dMon Oct 12 08:00:00 CEST 2026 = "element_14";entradas.dFri Oct 09 08:00:00 CEST 2026 = "element_15";entradas.dThu Oct 08 08:00:00 CEST 2026 = "element_16";entradas.dTue Oct 06 08:00:00 CEST 2026 = "element_17";entradas.dMon Oct 05 08:00:00 CEST 2026 = "element_18";entradas.dFri Oct 02 08:00:00 CEST 2026 = "element_19";entradas.dThu Oct 01 08:00:00 CEST 2026 = "element_20";entradas.dWed Sep 30 08:00:00 CEST 2026 = "element_21";entradas.dTue Sep 29 08:00:00 CEST 2026 = "element_22";entradas.dMon Sep 28 08:00:00 CEST 2026 = "element_23";entradas.dFri Sep 25 08:00:00 CEST 2026 = "element_24";entradas.dThu Sep 24 08:00:00 CEST 2026 = "element_25";entradas.dWed Sep 23 08:00:00 CEST 2026 = "element_26";entradas.dTue Sep 22 08:00:00 CEST 2026 = "element_27";entradas.dMon Sep 21 08:00:00 CEST 2026 = "element_28";entradas.dFri Sep 18 08:00:00 CEST 2026 = "element_29";entradas.dThu Sep 17 08:00:00 CEST 2026 = "element_30";entradas.dWed Sep 16 08:00:00 CEST 2026 = "element_31";entradas.dTue Sep 15 08:00:00 CEST 2026 = "element_32";entradas.dMon Sep 14 08:00:00 CEST 2026 = "element_33";entradas.dFri Sep 11 08:00:00 CEST 2026 = "element_34";entradas.dThu Sep 10 08:00:00 CEST 2026 = "element_35";entradas.dWed Sep 09 08:00:00 CEST 2026 = "element_36";entradas.dTue Sep 08 08:00:00 CEST 2026 = "element_37";entradas.dMon Sep 07 08:00:00 CEST 2026 = "element_38";entradas.dFri Sep 04 08:00:00 CEST 2026 = "element_39";entradas.dThu Sep 03 08:00:00 CEST 2026 = "element_40";entradas.dWed Sep 02 08:00:00 CEST 2026 = "element_41";entradas.dTue Sep 01 08:00:00 CEST 2026 = "element_42";entradas.dMon Aug 31 08:00:00 CEST 2026 = "element_43";entradas.dFri Aug 28 08:00:00 CEST 2026 = "element_44";entradas.dThu Aug 27 08:00:00 CEST 2026 = "element_45";entradas.dWed Aug 26 08:00:00 CEST 2026 = "element_46";entradas.dTue Aug 25 08:00:00 CEST 2026 = "element_47";entradas.dMon Aug 24 08:00:00 CEST 2026 = "element_48";entradas.dFri Aug 21 08:00:00 CEST 2026 = "element_49";</script>
+
+<!-- Creamos la coleccion de div emergentes -->
+<div class="contenidoEventos">
+	<div id="sicalendarioData">
+		<div id="element_00" style="display:none" class="resumenEventos">
+			<h3 style="color:white">No hay eventos disponibles para el día de hoy</h3>
+			<p class="descripcionEvento">Puede consultar el calendario para comprobar la disponibilidad de eventos en próximas fechas.</p>
+		</div>
+	
+		<div id="element_0" style="display:none" class="resumenEventos">
+							<h3><a href='/boletin/Boletin-numero-210-del-ano-2026/'>Boletín número 210 del año 2026</a></h3>
+							<p class="fechaEvento"><span>Fecha:</span> Fri Oct 30 08:00:00 CET 2026</p>
+
+				</div>
+						<div id="element_1" style="display:none" class="resumenEventos">
+							<h3><a href='/boletin/Boletin-numero-209-del-ano-2026/'>Boletín número 209 del año 2026</a></h3>
+							<p class="fechaEvento">Thu Oct 29 08:00:00 CET 2026</p>
+							<p class="lugarEvento"></p>
+				</div>
+						<div id="element_2" style="display:none" class="resumenEventos">
+							<h3><a href='/boletin/Boletin-numero-208-del-ano-2026/'>Boletín número 208 del año 2026</a></h3>
+							<p class="fechaEvento">Wed Oct 28 08:00:00 CET 2026</p>
+							<p class="lugarEvento"></p>
+				</div>
+						<div id="element_3" style="display:none" class="resumenEventos">
+							<h3><a href='/boletin/Boletin-numero-207-del-ano-2026/'>Boletín número 207 del año 2026</a></h3>
+							<p class="fechaEvento">Tue Oct 27 08:00:00 CET 2026</p>
+							<p class="lugarEvento"></p>
+				</div>
+						<div id="element_4" style="display:none" class="resumenEventos">
+							<h3><a href='/boletin/Boletin-numero-206-del-ano-2026/'>Boletín número 206 del año 2026</a></h3>
+							<p class="fechaEvento">Mon Oct 26 08:00:00 CET 2026</p>
+							<p class="lugarEvento"></p>
+				</div>
+						<div id="element_5" style="display:none" class="resumenEventos">
+							<h3><a href='/boletin/Boletin-numero-205-del-ano-2026/'>Boletín número 205 del año 2026</a></h3>
+							<p class="fechaEvento">Fri Oct 23 08:00:00 CEST 2026</p>
+							<p class="lugarEvento"></p>
+				</div>
+						<div id="element_6" style="display:none" class="resumenEventos">
+							<h3><a href='/boletin/Boletin-numero-204-del-ano-2026/'>Boletín número 204 del año 2026</a></h3>
+							<p class="fechaEvento">Thu Oct 22 08:00:00 CEST 2026</p>
+							<p class="lugarEvento"></p>
+				</div>
+						<div id="element_7" style="display:none" class="resumenEventos">
+							<h3><a href='/boletin/Boletin-numero-203-del-ano-2026/'>Boletín número 203 del año 2026</a></h3>
+							<p class="fechaEvento">Wed Oct 21 08:00:00 CEST 2026</p>
+							<p class="lugarEvento"></p>
+				</div>
+						<div id="element_8" style="display:none" class="resumenEventos">
+							<h3><a href='/boletin/Boletin-numero-202-del-ano-2026/'>Boletín número 202 del año 2026</a></h3>
+							<p class="fechaEvento">Tue Oct 20 08:00:00 CEST 2026</p>
+							<p class="lugarEvento"></p>
+				</div>
+						<div id="element_9" style="display:none" class="resumenEventos">
+							<h3><a href='/boletin/Boletin-numero-201-del-ano-2026/'>Boletín número 201 del año 2026</a></h3>
+							<p class="fechaEvento">Mon Oct 19 08:00:00 CEST 2026</p>
+							<p class="lugarEvento"></p>
+				</div>
+						<div id="element_10" style="display:none" class="resumenEventos">
+							<h3><a href='/boletin/Boletin-numero-200-del-ano-2026/'>Boletín número 200 del año 2026</a></h3>
+							<p class="fechaEvento">Fri Oct 16 08:00:00 CEST 2026</p>
+							<p class="lugarEvento"></p>
+				</div>
+						<div id="element_11" style="display:none" class="resumenEventos">
+							<h3><a href='/boletin/Boletin-numero-199-del-ano-2026/'>Boletín número 199 del año 2026</a></h3>
+							<p class="fechaEvento">Thu Oct 15 08:00:00 CEST 2026</p>
+							<p class="lugarEvento"></p>
+				</div>
+						<div id="element_12" style="display:none" class="resumenEventos">
+							<h3><a href='/boletin/Boletin-numero-198-del-ano-2026/'>Boletín número 198 del año 2026</a></h3>
+							<p class="fechaEvento">Wed Oct 14 08:00:00 CEST 2026</p>
+							<p class="lugarEvento"></p>
+				</div>
+						<div id="element_13" style="display:none" class="resumenEventos">
+							<h3><a href='/boletin/Boletin-numero-197-del-ano-2026/'>Boletín número 197 del año 2026</a></h3>
+							<p class="fechaEvento">Tue Oct 13 08:00:00 CEST 2026</p>
+							<p class="lugarEvento"></p>
+				</div>
+						<div id="element_14" style="display:none" class="resumenEventos">
+							<h3><a href='/boletin/Boletin-numero-196-del-ano-2026/'>Boletín número 196 del año 2026</a></h3>
+							<p class="fechaEvento">Mon Oct 12 08:00:00 CEST 2026</p>
+							<p class="lugarEvento"></p>
+				</div>
+						<div id="element_15" style="display:none" class="resumenEventos">
+							<h3><a href='/boletin/Boletin-numero-195-del-ano-2026/'>Boletín número 195 del año 2026</a></h3>
+							<p class="fechaEvento">Fri Oct 09 08:00:00 CEST 2026</p>
+							<p class="lugarEvento"></p>
+				</div>
+						<div id="element_16" style="display:none" class="resumenEventos">
+							<h3><a href='/boletin/Boletin-numero-194-del-ano-2026/'>Boletín número 194 del año 2026</a></h3>
+							<p class="fechaEvento">Thu Oct 08 08:00:00 CEST 2026</p>
+							<p class="lugarEvento"></p>
+				</div>
+						<div id="element_17" style="display:none" class="resumenEventos">
+							<h3><a href='/boletin/Boletin-numero-193-del-ano-2026/'>Boletín número 193 del año 2026</a></h3>
+							<p class="fechaEvento">Tue Oct 06 08:00:00 CEST 2026</p>
+							<p class="lugarEvento"></p>
+				</div>
+						<div id="element_18" style="display:none" class="resumenEventos">
+							<h3><a href='/boletin/Boletin-numero-192-del-ano-2026/'>Boletín número 192 del año 2026</a></h3>
+							<p class="fechaEvento">Mon Oct 05 08:00:00 CEST 2026</p>
+							<p class="lugarEvento"></p>
+				</div>
+						<div id="element_19" style="display:none" class="resumenEventos">
+							<h3><a href='/boletin/Boletin-numero-191-del-ano-2026/'>Boletín número 191 del año 2026</a></h3>
+							<p class="fechaEvento">Fri Oct 02 08:00:00 CEST 2026</p>
+							<p class="lugarEvento"></p>
+				</div>
+						<div id="element_20" style="display:none" class="resumenEventos">
+							<h3><a href='/boletin/Boletin-numero-190-del-ano-2026/'>Boletín número 190 del año 2026</a></h3>
+							<p class="fechaEvento">Thu Oct 01 08:00:00 CEST 2026</p>
+							<p class="lugarEvento"></p>
+				</div>
+						<div id="element_21" style="display:none" class="resumenEventos">
+							<h3><a href='/boletin/Boletin-numero-189-del-ano-2026/'>Boletín número 189 del año 2026</a></h3>
+							<p class="fechaEvento">Wed Sep 30 08:00:00 CEST 2026</p>
+							<p class="lugarEvento"></p>
+				</div>
+						<div id="element_22" style="display:none" class="resumenEventos">
+							<h3><a href='/boletin/Boletin-numero-188-del-ano-2026/'>Boletín número 188 del año 2026</a></h3>
+							<p class="fechaEvento">Tue Sep 29 08:00:00 CEST 2026</p>
+							<p class="lugarEvento"></p>
+				</div>
+						<div id="element_23" style="display:none" class="resumenEventos">
+							<h3><a href='/boletin/Boletin-numero-187-del-ano-2026/'>Boletín número 187 del año 2026</a></h3>
+							<p class="fechaEvento">Mon Sep 28 08:00:00 CEST 2026</p>
+							<p class="lugarEvento"></p>
+				</div>
+						<div id="element_24" style="display:none" class="resumenEventos">
+							<h3><a href='/boletin/Boletin-numero-186-del-ano-2026/'>Boletín número 186 del año 2026</a></h3>
+							<p class="fechaEvento">Fri Sep 25 08:00:00 CEST 2026</p>
+							<p class="lugarEvento"></p>
+				</div>
+						<div id="element_25" style="display:none" class="resumenEventos">
+							<h3><a href='/boletin/Boletin-numero-185-del-ano-2026/'>Boletín número 185 del año 2026</a></h3>
+							<p class="fechaEvento">Thu Sep 24 08:00:00 CEST 2026</p>
+							<p class="lugarEvento"></p>
+				</div>
+						<div id="element_26" style="display:none" class="resumenEventos">
+							<h3><a href='/boletin/Boletin-numero-184-del-ano-2026/'>Boletín número 184 del año 2026</a></h3>
+							<p class="fechaEvento">Wed Sep 23 08:00:00 CEST 2026</p>
+							<p class="lugarEvento"></p>
+				</div>
+						<div id="element_27" style="display:none" class="resumenEventos">
+							<h3><a href='/boletin/Boletin-numero-183-del-ano-2026/'>Boletín número 183 del año 2026</a></h3>
+							<p class="fechaEvento">Tue Sep 22 08:00:00 CEST 2026</p>
+							<p class="lugarEvento"></p>
+				</div>
+						<div id="element_28" style="display:none" class="resumenEventos">
+							<h3><a href='/boletin/Boletin-numero-182-del-ano-2026/'>Boletín número 182 del año 2026</a></h3>
+							<p class="fechaEvento">Mon Sep 21 08:00:00 CEST 2026</p>
+							<p class="lugarEvento"></p>
+				</div>
+						<div id="element_29" style="display:none" class="resumenEventos">
+							<h3><a href='/boletin/Boletin-numero-181-del-ano-2026/'>Boletín número 181 del año 2026</a></h3>
+							<p class="fechaEvento">Fri Sep 18 08:00:00 CEST 2026</p>
+							<p class="lugarEvento"></p>
+				</div>
+						<div id="element_30" style="display:none" class="resumenEventos">
+							<h3><a href='/boletin/Boletin-numero-180-del-ano-2026/'>Boletín número 180 del año 2026</a></h3>
+							<p class="fechaEvento">Thu Sep 17 08:00:00 CEST 2026</p>
+							<p class="lugarEvento"></p>
+				</div>
+						<div id="element_31" style="display:none" class="resumenEventos">
+							<h3><a href='/boletin/Boletin-numero-179-del-ano-2026/'>Boletín número 179 del año 2026</a></h3>
+							<p class="fechaEvento">Wed Sep 16 08:00:00 CEST 2026</p>
+							<p class="lugarEvento"></p>
+				</div>
+						<div id="element_32" style="display:none" class="resumenEventos">
+							<h3><a href='/boletin/Boletin-numero-178-del-ano-2026/'>Boletín número 178 del año 2026</a></h3>
+							<p class="fechaEvento">Tue Sep 15 08:00:00 CEST 2026</p>
+							<p class="lugarEvento"></p>
+				</div>
+						<div id="element_33" style="display:none" class="resumenEventos">
+							<h3><a href='/boletin/Boletin-numero-177-del-ano-2026/'>Boletín número 177 del año 2026</a></h3>
+							<p class="fechaEvento">Mon Sep 14 08:00:00 CEST 2026</p>
+							<p class="lugarEvento"></p>
+				</div>
+						<div id="element_34" style="display:none" class="resumenEventos">
+							<h3><a href='/boletin/Boletin-numero-176-del-ano-2026/'>Boletín número 176 del año 2026</a></h3>
+							<p class="fechaEvento">Fri Sep 11 08:00:00 CEST 2026</p>
+							<p class="lugarEvento"></p>
+				</div>
+						<div id="element_35" style="display:none" class="resumenEventos">
+							<h3><a href='/boletin/Boletin-numero-175-del-ano-2026/'>Boletín número 175 del año 2026</a></h3>
+							<p class="fechaEvento">Thu Sep 10 08:00:00 CEST 2026</p>
+							<p class="lugarEvento"></p>
+				</div>
+						<div id="element_36" style="display:none" class="resumenEventos">
+							<h3><a href='/boletin/Boletin-numero-174-del-ano-2026/'>Boletín número 174 del año 2026</a></h3>
+							<p class="fechaEvento">Wed Sep 09 08:00:00 CEST 2026</p>
+							<p class="lugarEvento"></p>
+				</div>
+						<div id="element_37" style="display:none" class="resumenEventos">
+							<h3><a href='/boletin/Boletin-numero-173-del-ano-2026/'>Boletín número 173 del año 2026</a></h3>
+							<p class="fechaEvento">Tue Sep 08 08:00:00 CEST 2026</p>
+							<p class="lugarEvento"></p>
+				</div>
+						<div id="element_38" style="display:none" class="resumenEventos">
+							<h3><a href='/boletin/Boletin-numero-172-del-ano-2026/'>Boletín número 172 del año 2026</a></h3>
+							<p class="fechaEvento">Mon Sep 07 08:00:00 CEST 2026</p>
+							<p class="lugarEvento"></p>
+				</div>
+						<div id="element_39" style="display:none" class="resumenEventos">
+							<h3><a href='/boletin/Boletin-numero-171-del-ano-2026/'>Boletín número 171 del año 2026</a></h3>
+							<p class="fechaEvento">Fri Sep 04 08:00:00 CEST 2026</p>
+							<p class="lugarEvento"></p>
+				</div>
+						<div id="element_40" style="display:none" class="resumenEventos">
+							<h3><a href='/boletin/Boletin-numero-170-del-ano-2026/'>Boletín número 170 del año 2026</a></h3>
+							<p class="fechaEvento">Thu Sep 03 08:00:00 CEST 2026</p>
+							<p class="lugarEvento"></p>
+				</div>
+						<div id="element_41" style="display:none" class="resumenEventos">
+							<h3><a href='/boletin/Boletin-numero-169-del-ano-2026/'>Boletín número 169 del año 2026</a></h3>
+							<p class="fechaEvento">Wed Sep 02 08:00:00 CEST 2026</p>
+							<p class="lugarEvento"></p>
+				</div>
+						<div id="element_42" style="display:none" class="resumenEventos">
+							<h3><a href='/boletin/Boletin-numero-168-del-ano-2026/'>Boletín número 168 del año 2026</a></h3>
+							<p class="fechaEvento">Tue Sep 01 08:00:00 CEST 2026</p>
+							<p class="lugarEvento"></p>
+				</div>
+						<div id="element_43" style="display:none" class="resumenEventos">
+							<h3><a href='/boletin/Boletin-numero-167-del-ano-2026/'>Boletín número 167 del año 2026</a></h3>
+							<p class="fechaEvento">Mon Aug 31 08:00:00 CEST 2026</p>
+							<p class="lugarEvento"></p>
+				</div>
+						<div id="element_44" style="display:none" class="resumenEventos">
+							<h3><a href='/boletin/Boletin-numero-166-del-ano-2026/'>Boletín número 166 del año 2026</a></h3>
+							<p class="fechaEvento">Fri Aug 28 08:00:00 CEST 2026</p>
+							<p class="lugarEvento"></p>
+				</div>
+						<div id="element_45" style="display:none" class="resumenEventos">
+							<h3><a href='/boletin/Boletin-numero-165-del-ano-2026/'>Boletín número 165 del año 2026</a></h3>
+							<p class="fechaEvento">Thu Aug 27 08:00:00 CEST 2026</p>
+							<p class="lugarEvento"></p>
+				</div>
+						<div id="element_46" style="display:none" class="resumenEventos">
+							<h3><a href='/boletin/Boletin-numero-164-del-ano-2026/'>Boletín número 164 del año 2026</a></h3>
+							<p class="fechaEvento">Wed Aug 26 08:00:00 CEST 2026</p>
+							<p class="lugarEvento"></p>
+				</div>
+						<div id="element_47" style="display:none" class="resumenEventos">
+							<h3><a href='/boletin/Boletin-numero-163-del-ano-2026/'>Boletín número 163 del año 2026</a></h3>
+							<p class="fechaEvento">Tue Aug 25 08:00:00 CEST 2026</p>
+							<p class="lugarEvento"></p>
+				</div>
+						<div id="element_48" style="display:none" class="resumenEventos">
+							<h3><a href='/boletin/Boletin-numero-162-del-ano-2026/'>Boletín número 162 del año 2026</a></h3>
+							<p class="fechaEvento">Mon Aug 24 08:00:00 CEST 2026</p>
+							<p class="lugarEvento"></p>
+				</div>
+						<div id="element_49" style="display:none" class="resumenEventos">
+							<h3><a href='/boletin/Boletin-numero-161-del-ano-2026/'>Boletín número 161 del año 2026</a></h3>
+							<p class="fechaEvento">Fri Aug 21 08:00:00 CEST 2026</p>
+							<p class="lugarEvento"></p>
+				</div>
+		</div>
+</div></div>
+
+								</div>
+							<script src="/export/system/modules/es.dipucadiz.bop/resources/js/rcalendar.js"></script>
+							<script>
+								var calendar;
+
+								$( document ).ready(function() {
+									var date = new Date();
+									let year = date.getFullYear();
+									let month = parseInt(date.getMonth())+1;
+									if(month < 10) {
+										month =  '0' + month;
+									}
+									$("#anno option[value=" +year +"]").attr('selected','selected');
+									$("#mes option[value=" +month +"]").attr('selected','selected');
+									calendarInit("", "");
+								});
+
+								function loadCalData(){
+									var jqxhr = $.get("/system/modules/es.dipucadiz.bop/elements/innerquery.jsp?anno=" +$("#anno").val() +"&mes=" +$("#mes").val(), function() {
+
+									}).done(function(data) {
+										$("#data").empty();
+										$("#data").html(data);
+										var div = $('#pr');
+										div.empty();
+										calendarInit($("#mes").val() -1, $("#anno").val());
+									}).fail(function() {
+
+									}).always(function() {
+
+									});
+								}
+
+								$("#form").submit(function(){
+									loadCalData();
+									return false;
+								});
+							</script>
+						</div>
+					</div>
+				</div>
+
+			</div>
+</div></div>
+</div></div> 
+			<div class="page self_clear">
+				<div  id="page3" ></div></div>
+			<div class="page_full self_clear">
+				<div  id="page4" ></div></div> 
+			<div class="footer self_clear">
+				<div  id="footer" ><div class="row self_clear bg-none">
+
+	<div class="col col-4" ><div class="Banner_F">
+		<a href="http://www.dipucadiz.es/" class="notitle">
+					<img class="imagenPrincipal " src="/export/sites/default/.galerias/logo_dipu_blanco_small.png_541957993.png" alt="logo_dipu_blanco_small" />
+				</a>
+
+				</div>
+<div class="pagina_f_nopadding detail-page content-box"  >
+		<div class="Texto" >
+						<p class="specialFooterText" style="margin-top: 1rem; margin-left: 3.5rem; color: #fff; font-size: 1rem;">Plaza de España s/n<br />11006. Cádiz</p></div>
+				</div>
+</div><div class="col col-4" ><div class="pagina_f_nopadding detail-page content-box"  >
+		<div class="Titulo">
+						<h2 >Información</h2>
+					</div>
+				<div class="Texto" >
+						<div style="color: white;">
+<p><strong>La remisión de la documentación para la publicación en el BOP deberá hacerse a:</strong></p>
+<ul>
+<li>DIPUTACIÓN PROVINCIAL DE CADIZ</li>
+<li>Avda. Cuatro de Diciembre de 1977 - 11071.- Cádiz</li>
+<li>Teléfonos: 956 240 172/174/296/652</li>
+</ul>
+<p><strong>Las consultas relativas a su publicación deberán hacerse a:</strong></p>
+<ul>
+<li>Administración del BOLETIN OFICIAL DE LA PROVINCIA.</li>
+<li>Calle Ancha Num. 6 – 11001 Cádiz</li>
+<li>Email: <a href="mailto:boletin@bopcadiz.org">boletin@bopcadiz.org</a></li>
+<li>Teléfonos: 956 213 861 – 956 212 370</li>
+</ul>
+</div></div>
+				</div>
+</div><div class="col col-4" ><div class="Banner_F">
+		<a href="/" class="notitle">
+					<img class="imagenPrincipal " src="/export/sites/default/.galerias/APC_BOP_small.png_541957993.png" alt="APC_BOP_small" />
+				</a>
+
+				</div>
+</div></div>
+</div></div>
+			<div class="bottom_footer self_clear">
+				<div  id="bottom_footer" ><div class="row self_clear bg-none">
+
+	<div class="col col-4" ><div class="pagina_f_nopadding detail-page content-box"  >
+		<div class="Texto" >
+						<p><a class="logoEpicPie" style="height: 35px; line-height: 35px; margin: 20px 0; color: #fff; text-decoration: none; white-space: nowrap;" href="https://www.dipucadiz.es/epicsa/"> EPICSA</a></p></div>
+				</div>
+</div><div class="col col-8" ><div class="menu_f_pie">
+		<div class="redes">
+					<a href="https://twitter.com/apcadiz" target="_blank" rel="nofollow noopener noreferrer" aria-label="URL de acceso al perfil de twitter">
+							<i class="fab fa-twitter" aria-hidden="true" title="URL de acceso al perfil de twitter"></i>
+							<p style="font-size: 0">URL de acceso al perfil de twitter</p>
+						</a> 
+					<a href="https://www.facebook.com/prensacadiz/?ref=br_rs" target="_blank" rel="nofollow noopener noreferrer" aria-label="URL de acceso al perfil de facebook"> 
+							<i class="fab fa-facebook-f" aria-hidden="true" title="URL de acceso al perfil de facebook"></i>
+							<p style="font-size: 0">URL de acceso al perfil de facebook</p>
+						</a> 
+					<a href="https://www.youtube.com/user/PrensaCadiz" target="_blank" rel="nofollow noopener noreferrer" aria-label="URL de acceso al perfil de youtube">
+							<i class="fab fa-youtube" aria-hidden="true" title="URL de acceso al perfil de youtube"></i>
+							<p style="font-size: 0">URL de acceso al perfil de youtube</p>
+						</a> 
+					</div>
+				<div class="enlaces">
+						<ul>
+							<li><a href="/privacidad/"  target="_self" title="">Privacidad</a></li>
+							<li><a href="/mapa-web/"  target="_self" title="">Mapa Web</a></li>
+							<li><a href="/accesibilidad/"  target="_self" title="">Accesibilidad</a></li>
+							<li><a href="/aviso-legal/"  target="_self" title="">Aviso Legal</a></li>
+							</ul>
+					</div>
+				<script>
+					var currentFootMenu = null;
+
+					function checkFootmenu(elto) {
+						if(elto != null && !elto.is(currentFootMenu)) {
+							if(currentFootMenu != null){
+								currentFootMenu.parent().removeClass("toggled"); 
+							}
+							currentFootMenu = elto;
+							currentFootMenu.parent().addClass("toggled");
+						} else {
+							currentFootMenu.parent().removeClass("toggled"); 
+							currentFootMenu = null;
+						}
+						return false;
+					}
+				</script>
+			</div>
+</div></div>
+</div></div>
+    	</div>
+    
+		<script>
+			navigator.serviceWorker.getRegistrations().then(function(registrations) {
+			 	for(let registration of registrations) {
+					registration.unregister()
+				} 
+			});
+		</script>
+		
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-1517833-41"></script>
+		<script>
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
+
+		  gtag('config', 'UA-1517833-41');
+		</script>
+
+    </body>
+</html>
