@@ -852,19 +852,27 @@ def ofertas(actos: list[dict], procesos: list[dict]) -> list[dict]:
     return sorted(por_clave.values(), key=lambda o: (o["anio"], str(o["convocante"])))
 
 
+INICIO_ARCHIVO = "2022-01-01"
+
+
 def cobertura(procesos: list[dict]) -> dict:
     """Control del modelo: cada anuncio local del BOE debe tener sus bases localizadas en el boletín que cita. Por
     boletín citado: cuántas bases cita el BOE, cuántas están enlazadas y si el boletín tiene conector."""
     con_conector = set(NOMBRE_FUENTE)
     por_boletin: dict[str, Counter] = defaultdict(Counter)
     sin_localizar: dict[str, list[str]] = defaultdict(list)
-    sin_cita = 0
+    sin_cita = anteriores = 0
     for p in procesos:
         if not p["id"].startswith("boe:") or p.get("ambito") != "local":
             continue
         bases = [b for b in p.get("bases") or [] if b.get("papel") == "bases"]
         if not bases:
             sin_cita += 1
+            continue
+        if (bases[0].get("fecha") or "9999") < INICIO_ARCHIVO:
+            # Bases de antes de 2022, fuera del archivo a propósito (unas 400 citas de los anuncios de 2022): no se
+            # cuentan como bases sin localizar
+            anteriores += 1
             continue
         enlazadas = {o.get("fuente") for o in p.get("otras_publicaciones") or []}
         for b in bases[:1]:
@@ -882,7 +890,7 @@ def cobertura(procesos: list[dict]) -> dict:
     citadas = sum(v["citadas"] for v in filas.values())
     enlazadas = sum(v["enlazadas"] for v in filas.values())
     return {"anuncios_locales_con_cita_de_bases": citadas, "con_bases_localizadas": enlazadas,
-            "sin_cita_de_bases": sin_cita,
+            "sin_cita_de_bases": sin_cita, "citas_a_bases_anteriores_al_archivo": anteriores,
             "citas_a_boletines_sin_conector": sum(v["citadas"] for v in filas.values() if not v["conector"]),
             "por_boletin": filas}
 
