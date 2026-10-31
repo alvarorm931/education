@@ -792,6 +792,30 @@ def leer_por_anio(destino: Path, nombre: str) -> list[dict]:
     return [json.loads(l) for f in ficheros for l in f.read_text(encoding="utf-8").splitlines() if l.strip()]
 
 
+def anadir_datos_de_bases(procesos: list[dict], carpeta: Path) -> int:
+    """Datos de las bases extraídos con su cita (motor/ia/bases.py, datos/oposiciones/extraccion/): van en el proceso
+    como «datos_bases» con el documento del que salen. Solo los valores con la cita comprobada."""
+    if not carpeta.is_dir():
+        return 0
+    from motor.ia.bases import nombre_fichero
+    por_nombre = {f.stem: f for f in carpeta.glob("[0-9]*/*.json")}
+    n = 0
+    for p in procesos:
+        f = por_nombre.get(nombre_fichero(p["id"]))
+        if not f:
+            continue
+        try:
+            e = json.loads(f.read_text(encoding="utf-8"))
+        except ValueError:
+            continue
+        if e.get("no_son_bases") or not e.get("campos"):
+            continue
+        p["datos_bases"] = {"documento": e.get("documento"), "extraido": e.get("extraido"), "modelo": e.get("modelo"),
+                            "campos": {k: {"valor": v.get("valor"), "cita": v.get("cita")} for k, v in e["campos"].items()}}
+        n += 1
+    return n
+
+
 def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser()
     p.add_argument("--salida", type=Path, default=Path("."))
@@ -801,10 +825,12 @@ def main(argv: list[str] | None = None) -> int:
                                                     leer_nombramientos_boe(a.salida))
     destino = a.salida / "datos" / "oposiciones"
     destino.mkdir(parents=True, exist_ok=True)
+    con_bases = anadir_datos_de_bases(procesos, destino / "extraccion")
     escribir_por_anio(destino, "procesos", procesos)
     # Cola de huérfanos: actos posteriores que no se han podido unir con seguridad, para revisarlos
     escribir_por_anio(destino, "huerfanos", huerfanos)
     r = resumen(procesos, a.hoy)
+    r["procesos_con_datos_de_bases"] = con_bases
     oep = ofertas(leer_actos(a.salida) + leer_actos_autonomicos(a.salida), procesos)
     (destino / "ofertas.jsonl").write_text("".join(json.dumps(x, ensure_ascii=False) + "\n" for x in oep),
                                            encoding="utf-8")

@@ -195,3 +195,15 @@ def test_bases_sin_cita_solo_las_mas_recientes():
     ps = {p["id"]: p for p in construir(boe, date(2026, 10, 29), autonomicos)}
     assert sorted(o["id"] for o in ps["boe:B1"]["otras_publicaciones"]) == ["bopb:2", "dogc:2"]
     assert "dogc:1" in ps
+
+
+def test_datos_de_las_bases_en_el_proceso(tmp_path):
+    import json
+    from motor.procesos import anadir_datos_de_bases
+    f = tmp_path / "2026" / "boe_BOE-A-2026-1.json"
+    f.parent.mkdir(parents=True)
+    f.write_text(json.dumps({"proceso": "boe:BOE-A-2026-1", "documento": {"id": "x", "url": "u"}, "no_son_bases": False,
+                             "campos": {"tasa_euros": {"valor": 15, "cita": "15,00 euros", "nivel": "literal"}}}))
+    ps = [{"id": "boe:BOE-A-2026-1"}, {"id": "boe:BOE-A-2026-2"}]
+    assert anadir_datos_de_bases(ps, tmp_path) == 1
+    assert ps[0]["datos_bases"]["campos"] == {"tasa_euros": {"valor": 15, "cita": "15,00 euros"}} and "datos_bases" not in ps[1]
