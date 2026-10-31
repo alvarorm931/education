@@ -136,26 +136,67 @@ def sumario_pdf(paginas: list[str]) -> list[dict]:
     return out
 
 
-def entidades_del_pdf(pdf: bytes, edictos: list[dict]) -> dict[str, str]:
-    """Entidad de cada edicto (por id) según el sumario en castellano del PDF del boletín entero, casando su asunto
-    (sumarioCas) con la entrada del sumario por las primeras letras."""
-    from motor.provinciales.textos import paginas_pdf
-    return entidades_de_paginas(paginas_pdf(pdf), edictos)
+# Cada edicto (las dos versiones, gallego y castellano) acaba con su registro («R. 180»); cabecera de página con las
+# letras separadas («2 B o l e t í n O f i c i a l P r o v i n c i a d e O u r e n s e n . º 2 4 · L u n s…»)
+RE_FIN_EDICTO = re.compile(r"(?m)^[ \t]*R\.\s?\d{1,6}[ \t]*$")
+RE_CABECERA_PAGINA = re.compile(r"(?i)^\s*\d{0,4}\s*B\s?o\s?l\s?e\s?t\s?[íi]\s?n\s+O\s?f\s?i\s?c\s?i\s?a\s?l\b.*$|^\s*\d{1,4}\s*$")
+
+
+def _indice_en_sumario(x: dict, entradas: list[dict]) -> int | None:
+    from motor.provinciales.textos import _plano
+    t = _plano(x.get("titulo") or "").replace(" ", "")[:50]
+    if len(t) < 15:
+        return None
+    cands = [k for k, e in enumerate(entradas) if (u := _plano(e["titulo"]).replace(" ", "")[:50]) and
+             min(len(u), len(t)) >= 15 and u[:min(len(u), len(t))] == t[:min(len(u), len(t))]]
+    return cands[0] if len(cands) == 1 else None
+
+
+def leer_pdf_boletin(pdf: bytes, edictos: list[dict]) -> dict[str, dict]:
+    """Del PDF del boletín entero, para cada edicto (por id): {"entidad", "bruto"}. La entidad sale del sumario en
+    castellano; el texto, del cuerpo con las columnas en orden de lectura, partido por el registro con que acaba cada
+    edicto: el trozo k es el edicto k del sumario. Si no salen tantos trozos como entradas, sin texto."""
+    from motor.provinciales.textos import paginas_pdf, paginas_pdf_columnas
+    return leer_paginas_boletin(paginas_pdf(pdf), paginas_pdf_columnas(pdf), edictos)
+
+
+def leer_paginas_boletin(llanas: list[str], columnas: list[str], edictos: list[dict]) -> dict[str, dict]:
+    entradas = sumario_pdf(llanas)
+    if not entradas:
+        return {}
+    sumario = {n for n, pag in enumerate(llanas[:3]) if any(RE_LINEA_SUMARIO.search(l) for l in pag.splitlines())}
+    cuerpo = "\n".join(pag for n, pag in enumerate(columnas) if n > max(sumario, default=0))
+    trozos = RE_FIN_EDICTO.split(cuerpo)[:-1]
+    out = {}
+    for x in edictos:
+        k = _indice_en_sumario(x, entradas)
+        if k is None:
+            continue
+        e = entradas[k]
+        out[x["id"]] = {"entidad": _entidad_del_sumario(e["entidad"]) if e["entidad"] else None,
+                        "bruto": trozos[k] if len(trozos) == len(entradas) else None}
+    return out
 
 
 def entidades_de_paginas(paginas: list[str], edictos: list[dict]) -> dict[str, str]:
-    from motor.provinciales.textos import _plano
-    entradas = [e for e in sumario_pdf(paginas) if e["entidad"]]
+    entradas = sumario_pdf(paginas)
     out = {}
     for x in edictos:
-        t = _plano(x.get("titulo") or "").replace(" ", "")[:50]
-        if len(t) < 15:
-            continue
-        cands = [e for e in entradas if (u := _plano(e["titulo"]).replace(" ", "")[:50]) and
-                 min(len(u), len(t)) >= 15 and u[:min(len(u), len(t))] == t[:min(len(u), len(t))]]
-        if len({e["entidad"] for e in cands}) == 1:
-            out[x["id"]] = _entidad_del_sumario(cands[0]["entidad"])
+        k = _indice_en_sumario(x, entradas)
+        if k is not None and entradas[k]["entidad"]:
+            out[x["id"]] = _entidad_del_sumario(entradas[k]["entidad"])
     return out
+
+
+def texto_guardable(bruto: str, x: dict) -> dict:
+    """Texto limpio de un edicto de empleo; de las listas de personas, solo el recuento."""
+    from motor.limpieza import limpiar_texto
+    if x.get("tipo_acto") not in CON_TEXTO:
+        return {"titulo": x.get("titulo"), "texto": None, "tablas": [], "solo_recuento": True,
+                "lineas_con_documento_de_identidad": sum(1 for l in bruto.splitlines() if RE_DOCUMENTO.search(l)),
+                "citas": citas(bruto)}
+    return {"titulo": x.get("titulo"), **{k: v for k, v in limpiar_texto(bruto, RE_CABECERA_PAGINA).items()
+                                         if k != "titulo"}}
 
 
 def es_local(x: dict) -> bool:
@@ -220,11 +261,13 @@ def procesar_dia(d: date, raiz: Path, archivo: Archivo, pausa: float = 1.0) -> d
     for b in boletines:
         sin_maquetar = [x for x in empleo if x["boletin"] == b["numero"] and not x.get("maquetado", True)]
         if sin_maquetar and b.get("id_boletin"):
-            for xid, ent in entidades_pdf_boletin(b["id_boletin"], d, sin_maquetar, archivo, pausa).items():
+            for xid, res in pdf_boletin(b["id_boletin"], d, sin_maquetar, archivo, pausa).items():
                 x = next(y for y in sin_maquetar if y["id"] == xid)
-                x["entidad"] = por_id[xid]["entidad"] = ent
-                if x.get("ambito") == "local":
-                    x["convocante"] = convocante(ent, x.get("seccion"))
+                if res.get("entidad"):
+                    x["entidad"] = por_id[xid]["entidad"] = res["entidad"]
+                    if x.get("ambito") == "local":
+                        x["convocante"] = convocante(res["entidad"], x.get("seccion"))
+                textos += guardar_texto_pdf(raiz, x, res)
     for x in empleo:  # la entidad está en el texto: se pide el de cada anuncio de empleo
         if not x.get("maquetado", True):
             sin_texto += 1
@@ -259,7 +302,8 @@ def procesar_dia(d: date, raiz: Path, archivo: Archivo, pausa: float = 1.0) -> d
     return inf
 
 
-def entidades_pdf_boletin(id_boletin, d: date, edictos: list[dict], archivo: Archivo, pausa: float) -> dict[str, str]:
+def pdf_boletin(id_boletin, d: date, edictos: list[dict], archivo: Archivo, pausa: float) -> dict[str, dict]:
+    """leer_pdf_boletin() del boletín pedido a la API, con la captura del PDF en cada resultado."""
     url = url_boletin_pdf(id_boletin)
     try:
         time.sleep(pausa)
@@ -268,11 +312,23 @@ def entidades_pdf_boletin(id_boletin, d: date, edictos: list[dict], archivo: Arc
         return {}
     if r.status != 200 or r.contenido[:4] != b"%PDF":
         return {}
-    archivo.guardar(FUENTE + "-boletin", d, r.contenido, url, "pdf", r.status, r.cabeceras)
+    captura = archivo.guardar(FUENTE + "-boletin", d, r.contenido, url, "pdf", r.status, r.cabeceras)
     try:
-        return entidades_del_pdf(r.contenido, edictos)
+        res = leer_pdf_boletin(r.contenido, edictos)
     except Exception:  # noqa: BLE001 - un PDF mal formado no para la carga
         return {}
+    return {k: {**v, "url": url, "captura_sha256": captura["sha256"], "capturado": captura.get("capturado")}
+            for k, v in res.items()}
+
+
+def guardar_texto_pdf(raiz: Path, x: dict, res: dict) -> bool:
+    if not res.get("bruto"):
+        return False
+    ruta = _base(raiz) / "textos" / x["fecha"][:4] / x["fecha"][5:7] / f"{x['id']}.json"
+    escribir_json(ruta, {"id": x["id"], "url": res["url"], "fecha": x["fecha"], **texto_guardable(res["bruto"], x),
+                         "captura_sha256": res["captura_sha256"], "capturado": res.get("capturado"),
+                         "de": "PDF del boletín entero"})
+    return True
 
 
 def reparar(raiz: Path, pausa: float, max_minutos: float) -> tuple[int, int]:
@@ -283,7 +339,10 @@ def reparar(raiz: Path, pausa: float, max_minutos: float) -> tuple[int, int]:
     archivo = Archivo(raiz / "archivo", indice_por_fuente=True, solo_huella=solo_huella_por_defecto())
     for f in sorted((_base(raiz) / "oposiciones").glob("*/*/*.jsonl"), reverse=True):
         filas = leer_jsonl(f)
-        faltan = [x for x in filas if not x.get("entidad") and x.get("url_texto") and not x.get("sin_entidad_en_pdf")]
+        faltan = [x for x in filas if x.get("url_texto") and (
+            (not x.get("entidad") and not x.get("sin_entidad_en_pdf")) or
+            (x.get("maquetado") is False and not x.get("sin_texto_en_pdf") and not (
+                _base(raiz) / "textos" / x["fecha"][:4] / x["fecha"][5:7] / f"{x['id']}.json").exists()))]
         if not faltan:
             continue
         # Sin saber si el boletín estaba maquetado (lo guardado antes del 31/10): se pregunta a la API por el día
@@ -301,17 +360,19 @@ def reparar(raiz: Path, pausa: float, max_minutos: float) -> tuple[int, int]:
                     x["maquetado"], x["id_boletin"] = b["maquetado"], b["id_boletin"]
         for num in {x.get("boletin") for x in faltan if x.get("maquetado") is False and x.get("id_boletin")}:
             grupo = [x for x in faltan if x.get("boletin") == num and x.get("maquetado") is False]
-            ents = entidades_pdf_boletin(grupo[0]["id_boletin"], date.fromisoformat(grupo[0]["fecha"]), grupo,
-                                         archivo, pausa)
+            res_pdf = pdf_boletin(grupo[0]["id_boletin"], date.fromisoformat(grupo[0]["fecha"]), grupo, archivo, pausa)
             for x in grupo:
-                if x["id"] in ents:
-                    x["entidad"] = ents[x["id"]]
+                res = res_pdf.get(x["id"]) or {}
+                if res.get("entidad") and not x.get("entidad"):
+                    x["entidad"] = res["entidad"]
                     if x.get("ambito") == "local":
                         x["convocante"] = convocante(x["entidad"], x.get("seccion"))
                     hechos += 1
-                else:
+                elif not x.get("entidad"):
                     x["sin_entidad_en_pdf"] = True  # no se vuelve a pedir el PDF por él
                     errores += 1
+                if not guardar_texto_pdf(raiz, x, res):
+                    x["sin_texto_en_pdf"] = True
         for x in [y for y in faltan if y.get("maquetado", True) and not y.get("entidad")]:
             if max_minutos and (time.monotonic() - inicio) / 60 > max_minutos:
                 break
@@ -345,9 +406,27 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--hasta", type=date.fromisoformat, default=hoy)
     p.add_argument("--salida", type=Path, default=Path("."))
     p.add_argument("--reparar", action="store_true", help="completar la entidad de los anuncios de empleo que no la tienen")
+    p.add_argument("--probar-pdf", type=date.fromisoformat, help="(prueba.yml) lo que sale del PDF del boletín de ese día")
     p.add_argument("--max-minutos", type=float, default=0)
     p.add_argument("--pausa", type=float, default=1.0)
     a = p.parse_args(argv)
+    if a.probar_pdf:
+        from motor.provinciales.sonda_pdf_texto import _seguro
+        from motor.provinciales.textos import paginas_pdf, paginas_pdf_columnas
+        r = obtener(url_dia(a.probar_pdf), accept="application/json")
+        for b in leer_dia(r.contenido):
+            ed = [{**x, "id": x["numero_anuncio"], **clasificar(x["titulo"])} for x in b["anuncios"]]
+            rp = obtener(url_boletin_pdf(b["id_boletin"]), accept="application/pdf")
+            llanas, cols = paginas_pdf(rp.contenido), paginas_pdf_columnas(rp.contenido)
+            entradas = sumario_pdf(llanas)
+            print(f"boletín {b['numero']} maquetado={b['maquetado']} edictos={len(ed)} entradas={len(entradas)} "
+                  f"registros={len(RE_FIN_EDICTO.findall(chr(10).join(cols)))}")
+            for k, v in leer_paginas_boletin(llanas, cols, ed).items():
+                x = next(y for y in ed if y["id"] == k)
+                bruto = " ".join((v.get("bruto") or "").split())
+                print(f"- {k} | {v.get('entidad')} | {x['tipo_acto']} | {_seguro(x['titulo'][:90])}")
+                print("    comienzo:", _seguro(bruto[:200]), "\n    final:", _seguro(bruto[-150:]))
+        return 0
     if a.reparar:
         hechos, errores = reparar(a.salida, a.pausa, a.max_minutos)
         print(f"BOP Ourense: entidad completada en {hechos} anuncios ({errores} errores)")

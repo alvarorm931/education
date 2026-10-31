@@ -79,3 +79,27 @@ def test_entidad_del_sumario_del_pdf():
     assert (c["nombre"], c["provincia"]) == ("A Rúa", "Ourense")
     b = o.leer_dia((FIX / "bopourense_20220103.json").read_bytes())[0]
     assert b["maquetado"] is False and b["id_boletin"] == 67594
+
+
+def test_textos_del_pdf_del_boletin_entero():
+    cuerpo = [
+        "2 B o l e t í n O f i c i a l P r o v i n c i a d e O u r e n s e n . º 2 4 · L u n s , 3 0 x a n e i r o 2 0 2 3\n"
+        "I. DIPUTACIÓN PROVINCIAL DE OURENSE\nServizo de Xestión Tributaria\nExposición pública dos padróns.\n"
+        "Exposición pública de los padrones y listas cobratorias.\nR. 180",
+        "3 B o l e t í n O f i c i a l\nBarbadás\nAnuncio\nConvocatoria e bases de selección (en galego).\n"
+        "Anuncio\nConvocatoria y bases de selección del proceso selectivo para la provisión, mediante interinidad, "
+        "del puesto de trabajo de secretaría.\nR. 181\nChandrexa de Queixa\nAnuncio\nCorrección de errores en la "
+        "convocatoria.\nR. 182\nRúa (A)\nEdicto\nPadrón de la tasa.\nR. 183"]
+    edictos = [{"id": "E1", "tipo_acto": "convocatoria",
+                "titulo": "Convocatoria y bases de selección del proceso selectivo para la provisión, mediante "
+                          "interinidad, del puesto de trabajo reservado"},
+               {"id": "E2", "tipo_acto": "correccion",
+                "titulo": "Corrección de errores en la convocatoria del proceso de selección para cubrir una plaza"}]
+    res = o.leer_paginas_boletin([SUMARIO_2023] + cuerpo, [SUMARIO_2023] + cuerpo, edictos)
+    assert res["E1"]["entidad"] == "Ayuntamiento de Barbadás" and "secretaría" in res["E1"]["bruto"]
+    assert "Chandrexa" not in res["E1"]["bruto"] and "Corrección de errores" in res["E2"]["bruto"]
+    t = o.texto_guardable(res["E1"]["bruto"], edictos[0])
+    assert "B o l e t í n" not in t["texto"] and "secretaría" in t["texto"]
+    # Si no salen tantos trozos como entradas del sumario, sin texto (nunca el de otro edicto)
+    res = o.leer_paginas_boletin([SUMARIO_2023] + cuerpo[:1], [SUMARIO_2023] + cuerpo[:1], edictos)
+    assert res["E1"]["bruto"] is None and res["E1"]["entidad"] == "Ayuntamiento de Barbadás"
