@@ -294,6 +294,9 @@ for c in $CONECTORES; do
       "$G" "BOP Huelva: días"
       ejecutar motor.provinciales.bophuelva --textos --salida "$S" --max-minutos "$M"
       "$G" "BOP Huelva: textos"
+      # Antes del 20/06/2023: el PDF del boletín entero de cada día (servicios/bop/busqueda/?fecha=DD/MM/AAAA)
+      ejecutar motor.provinciales.bophuelva_antiguos --salida "$S" --max-minutos "$M"
+      "$G" "BOP Huelva: boletines anteriores"
       ;;
     boplaspalmas)
       # Sumario por fecha en boplaspalmas.net (robots.txt lo cierra: boletín oficial, motor/http.py)

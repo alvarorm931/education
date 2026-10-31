@@ -296,6 +296,8 @@ provinciales:
     acceso_desde_github: "ok"
     estado: conector_en_pruebas
     conector: motor/provinciales/bophuelva.py
+    conector_anteriores: motor/provinciales/bophuelva_antiguos.py
+    anteriores: "Hasta el 19/06/2023, PDF del boletín entero de cada día en s2.diphuelva.es/portalweb/bop/boletines/AAAAMMDD-1.pdf (página del día servicios/bop/busqueda/?fecha=DD/MM/AAAA); solo desde España"
   - provincia: Huesca
     url: http://bop.dphuesca.es/
     acceso_desde_github: "ok"
