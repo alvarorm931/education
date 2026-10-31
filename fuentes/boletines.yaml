@@ -245,9 +245,10 @@ provinciales:
     estado: conector_en_pruebas
     conector: motor/provinciales/bopcaceres.py
   - provincia: Cádiz
-    url: http://www.bopcadiz.org
-    acceso_desde_github: "sin_respuesta_desde_github (timeout)"
-    estado: sin_conector
+    url: https://www.bopcadiz.es
+    acceso_desde_github: "ok (31/10/2026; la dirección antigua www.bopcadiz.org no responde)"
+    estado: conector_en_pruebas
+    conector: motor/provinciales/bopcadiz.py
   - provincia: Castellón
     url: http://bop.dipcas.es/PortalBOP/boletin.do
     acceso_desde_github: "ok"

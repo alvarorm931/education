@@ -365,6 +365,13 @@ for c in $CONECTORES; do
       ejecutar motor.provinciales.bopteruel_antiguos --salida "$S" --max-minutos "$M"
       "$G" "BOP Teruel: boletines anteriores"
       ;;
+    bopcadiz)
+      # Página de cada boletín por su número y texto de cada anuncio de empleo cortado del PDF por su registro
+      ejecutar motor.provinciales.bopcadiz --salida "$S" --max-minutos "$M"
+      "$G" "BOP Cádiz: boletines del año"
+      ejecutar motor.provinciales.bopcadiz --historico --salida "$S" --max-minutos "$M"
+      "$G" "BOP Cádiz: años anteriores"
+      ;;
     bopcastellon)
       # Último boletín y los del carrusel del buscador (unos dos meses y medio, portal JSF con sesión)
       ejecutar motor.provinciales.bopcastellon --salida "$S" --max-minutos "$M"

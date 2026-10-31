@@ -27,7 +27,7 @@ def _selectores() -> dict:
     for f in ("boc", "bocyl", "boib", "bome", "bopv", "borm", "docm", "doe", "dog", "dogc", "dogv", "bopa", "bon",
               "bocant", "bor", "bocce"):
         sel[f] = ("autonomicos", mod(f"motor.autonomicos.{f}").seleccionar)
-    for f in ("bopalicante", "bopciudadreal", "bopvalencia", "boptenerife", "bopcordoba", "bopcoruna", "boppontevedra", "bopavila", "bopbadajoz", "bopzamora", "boptoledo", "bopburgos", "bopalava", "bopsalamanca", "bopalbacete", "bopjaen", "bopzaragoza", "bopgipuzkoa", "bopbizkaia", "boplugo", "bophuelva", "boplaspalmas", "bopvalladolid", "bopcaceres", "bopguadalajara", "bopgirona", "bopourense", "boplleida", "boppalencia", "bopsoria", "bopteruel", "bopcastellon", "bopleon"):
+    for f in ("bopalicante", "bopciudadreal", "bopvalencia", "boptenerife", "bopcordoba", "bopcoruna", "boppontevedra", "bopavila", "bopbadajoz", "bopzamora", "boptoledo", "bopburgos", "bopalava", "bopsalamanca", "bopalbacete", "bopjaen", "bopzaragoza", "bopgipuzkoa", "bopbizkaia", "boplugo", "bophuelva", "boplaspalmas", "bopvalladolid", "bopcaceres", "bopguadalajara", "bopgirona", "bopourense", "boplleida", "boppalencia", "bopsoria", "bopteruel", "bopcastellon", "bopleon", "bopcadiz"):
         sel[f] = ("provinciales", mod(f"motor.provinciales.{f}").seleccionar)
     diba, saga = mod("motor.provinciales.diba"), mod("motor.provinciales.saga")
     for f in ("bopb", "bopt"):
