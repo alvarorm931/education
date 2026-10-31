@@ -15,6 +15,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 from collections import Counter, defaultdict
 from pathlib import Path
@@ -153,6 +154,42 @@ def convocante_local(x: dict) -> dict | None:
     return convocante_de_organismo(nombre)
 
 
+# Títulos que no dicen qué es el anuncio («Getafe. Ofertas de empleo. Proceso selectivo», «… Convocatoria proceso
+# selectivo»: unos 6.600 del BOCM desde 2022). Todos salían como convocatoria, y uno de cada cuatro con texto es una
+# lista, un tribunal o unos aprobados: un proceso de más y un acto sin unir a su convocatoria. El tipo sale entonces
+# del comienzo del texto, tras el título (31/10/2026).
+RE_TITULO_GENERICO = re.compile(
+    r"(?i)\bOfertas de empleo\.\s*(?:Convocatorias?\s+)?(?:procesos?\s+selectivos?|convocatorias?)\.?\s*$")
+
+
+def tipo_por_texto(titulo: str, texto: str) -> str | None:
+    """Tipo de acto que dice el comienzo del texto de un anuncio con título genérico, si es de los posteriores a la
+    convocatoria (listas, tribunal, aprobados, nombramientos…); None si no lo dice o es una convocatoria."""
+    plano = " ".join((texto or "").split())
+    i = plano.find(titulo)
+    resto = plano[i + len(titulo):] if i >= 0 else plano
+    tipo = clasificar(resto[:350])["tipo_acto"] if resto.strip() else None
+    inicio = resto[:250]
+    # Solo lo que el comienzo dice con claridad (muestra del BOCM, 31/10/2026): «aprobadas las bases», «se convocan
+    # cuatro plazas… aprobado» o «bolsa para la contratación o nombramiento de interinos» no son aprobados ni
+    # nombramientos, y unas bases que hablan de su corrección más abajo no son una corrección
+    if tipo == "aprobados" and not RE_APROBADOS.search(inicio):
+        return None
+    if tipo == "nombramiento" and (not RE_NOMBRA.search(inicio) or re.search(r"(?i)\bbolsa\b", inicio)):
+        return None
+    if tipo in ("correccion", "modificacion") and not re.search(r"(?i)correcci|rectificaci|modific", resto[:150]):
+        return None
+    if tipo in ("desierta",) and re.search(r"(?i)\bbases\b", inicio):
+        return None
+    return tipo if tipo in POSTERIORES and tipo != "otro" else None
+
+
+RE_APROBADOS = re.compile(r"(?i)(?:relaci[oó]n|lista|listado)\s+(?:definitiva\s+|provisional\s+)?de\s+(?:las\s+)?(?:personas\s+)?"
+                          r"(?:aspirantes\s+)?aprobad|han\s+superado|propuesta\s+de\s+nombramiento|puntuaci[oó]n(?:es)?\s+final")
+RE_NOMBRA = re.compile(r"(?i)\bse\s+nombra\b|\bnombrar\s+(?:a|como)\b|nombramiento\s+(?:como|de)\s+(?:personal\s+)?funcionari|"
+                       r"\bha\s+sido\s+nombrad|\btoma\s+de\s+posesi")
+
+
 def construir_acto(fuente: str, x: dict, texto: str | None, recuento: int | None = None) -> dict:
     siglas, nombres = FUENTES[fuente]
     acto = {
@@ -178,6 +215,9 @@ def construir_acto(fuente: str, x: dict, texto: str | None, recuento: int | None
         "extraccion": "titulo",
         "pendiente": [],
     }
+    if (texto and acto["tipo_acto"] in ("convocatoria", "otro") and RE_TITULO_GENERICO.search(acto["titulo"] or "")
+            and (t := tipo_por_texto(acto["titulo"], texto))):
+        acto["tipo_acto"], acto["tipo_por_texto"] = t, True
     acto["alcance"] = alcance_vigente(acto["titulo"], acto["tipo_acto"], acto["modalidad"], acto["alcance"])
     if recuento is not None:
         acto["personas_en_listas"] = recuento

@@ -33,3 +33,23 @@ def test_mes_sin_anuncios_se_borra(tmp_path):
     assert actos.main(["--salida", str(tmp_path)]) == 0
     assert not viejo.exists() and not viejo.parent.exists()
     assert (tmp_path / "datos/autonomicos/actos/boplugo/2023/12.jsonl").exists()
+
+
+def test_titulo_generico_del_bocm_toma_el_tipo_del_texto():
+    from motor.autonomicos.actos import construir_acto
+    x = {"id": "BOCM-20260223-64", "fecha": "2026-02-23", "titulo": "Rivas-Vaciamadrid. Ofertas de empleo. Proceso selectivo",
+         "ambito": "local", "organismo": "Rivas-Vaciamadrid", "seccion": "AYUNTAMIENTOS"}
+    lista = ("III. ADMINISTRACIÓN LOCAL AYUNTAMIENTO DE RIVAS-VACIAMADRID OFERTAS DE EMPLEO 64Rivas-Vaciamadrid. "
+             "Ofertas de empleo. Proceso selectivo Relación provisional de personas admitidas y excluidas del proceso de "
+             "selección para la cobertura de 2 plazas de Oficial/a Policía Local en promoción interna.")
+    a = construir_acto("bocm", x, lista)
+    assert a["tipo_acto"] == "admitidos" and a["tipo_por_texto"]
+    bases = ("III. ADMINISTRACIÓN LOCAL AYUNTAMIENTO DE ALGETE OFERTAS DE EMPLEO 43Rivas-Vaciamadrid. Ofertas de empleo. "
+             "Proceso selectivo Por Resolución de Alcaldía se han aprobado las bases específicas que regirán el proceso "
+             "selectivo para cubrir una plaza de Técnico de Gestión. El plazo de presentación de solicitudes será de "
+             "veinte días naturales a contar desde el siguiente al de la publicación en el «Boletín Oficial del Estado».")
+    a = construir_acto("bocm", x, bases)
+    assert a["tipo_acto"] == "convocatoria" and "tipo_por_texto" not in a
+    # un título que ya dice lo que es no se toca
+    a = construir_acto("bocm", {**x, "titulo": "Getafe. Ofertas de empleo. Bases generales"}, lista)
+    assert "tipo_por_texto" not in a
