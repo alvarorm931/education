@@ -1,0 +1,162 @@
+{
+ "dia": 3,
+ "sello": "20261031T142855-masters",
+ "paginas_del_dia": 0,
+ "fichas": {
+  "altas_boe_en_catalogo": 387,
+  "paginas_rescatadas_como_oficiales": 2518,
+  "oficial_confirmado": 2429,
+  "oficial_probable_sin_confirmar": 170,
+  "oficial_confirmado_por_nombre": 560,
+  "oficial_otro_tipo": 36,
+  "oficial_probable_oficial": 146,
+  "oficial_no_es_ficha": 186,
+  "oficial_sin_nombre": 10,
+  "oficial_distinto": 16,
+  "oficial_sin_pagina": 1,
+  "no_oficial_no_es_ficha": 21087,
+  "no_oficial_ficha": 31696,
+  "no_oficial_master": 27682,
+  "no_oficial_otro_titulo": 4014,
+  "no_oficial_version_otro_pais": 695,
+  "campos_desde_tarifas_pdf": 159,
+  "no_oficial_programas": 27175,
+  "no_oficial_programas_master": 23582,
+  "fichas": 35250,
+  "campos_por_grupo": {
+   "oficial": {
+    "asignaturas": 1798,
+    "centro_que_imparte": 2018,
+    "creditos_ects": 2649,
+    "descuentos_becas": 1022,
+    "duracion": 1964,
+    "evaluacion": 900,
+    "fecha_inicio": 1264,
+    "habilita_profesion": 872,
+    "horario": 683,
+    "idioma": 1976,
+    "metodologia": 1984,
+    "modalidad": 2432,
+    "nombre": 3135,
+    "plazas": 1783,
+    "plazo_admision": 863,
+    "practicas": 1639,
+    "precio_credito": 483,
+    "precio_total": 747,
+    "proceso_admision": 1612,
+    "requisitos_acceso": 2219,
+    "reserva_matricula": 217,
+    "salidas": 2205,
+    "sedes": 1616,
+    "tfm": 1790,
+    "tipo_titulo": 2853,
+    "universidad_que_expide": 2259
+   },
+   "no_oficial": {
+    "asignaturas": 19290,
+    "centro_que_imparte": 16598,
+    "creditos_ects": 15170,
+    "descuentos_becas": 13938,
+    "duracion": 24586,
+    "evaluacion": 14552,
+    "fecha_inicio": 13282,
+    "habilita_profesion": 8304,
+    "horario": 9585,
+    "idioma": 10419,
+    "metodologia": 26491,
+    "modalidad": 25026,
+    "nombre": 31478,
+    "plazas": 5242,
+    "plazo_admision": 6987,
+    "practicas": 7608,
+    "precio_credito": 689,
+    "precio_total": 18798,
+    "proceso_admision": 7409,
+    "requisitos_acceso": 20124,
+    "reserva_matricula": 3374,
+    "salidas": 22790,
+    "sedes": 8845,
+    "tfm": 10260,
+    "tipo_titulo": 28424,
+    "universidad_que_expide": 18335
+   }
+  }
+ },
+ "conjunto": {
+  "generado": "2026-10-31T14:30:41+00:00",
+  "oficiales": 4734,
+  "oficiales_con_ruct_ficha": 1656,
+  "oficiales_con_ruct_memoria": 62,
+  "oficiales_en_qedu": 4356,
+  "oficiales_con_plan_boe": 3612,
+  "oficiales_con_guias": 178,
+  "oficiales_con_web": 3135,
+  "oficiales_con_precio_de_tabla": 122,
+  "oficiales_indexables": 2972,
+  "oficiales_faltan": {
+   "precio": 1541,
+   "asignaturas": 782
+  },
+  "oficiales_por_titularidad": {
+   "Pública": {
+    "total": 3113,
+    "indexables": 2622
+   },
+   "Privada": {
+    "total": 1606,
+    "indexables": 350
+   }
+  },
+  "programas_no_oficiales": 20184,
+  "programas_master": 20184,
+  "programas_indexables": 8933,
+  "paginas_web_antiguas": {
+   "oficiales": 49,
+   "no_oficiales": 382
+  },
+  "fechas": {
+   "sin_cambios": 326668,
+   "retirados": 3,
+   "nuevos": 1068,
+   "cambiados": 268
+  },
+  "descartes": {
+   "web_expide_otra_universidad": 117,
+   "precio_total_web_incoherente": 31,
+   "precio_tabla_ambiguo": 35,
+   "guias_pesos_incoherentes": 279,
+   "asignaturas_web_insuficientes": 808,
+   "precio_total_privada_es_matricula": 5,
+   "web_probable_fuera_de_su_universidad": 11,
+   "web_en_dominio_de_otra_universidad": 12,
+   "no_oficial_parece_master_oficial": 3386,
+   "no_oficial_otro_pais": 542,
+   "no_oficial_no_es_pagina_de_programa": 2,
+   "no_oficial_unidos_por_dominio_y_nombre": 604,
+   "precio_credito_imposible": 2
+  },
+  "privacidad": {
+   "parrafos_retirados": 178,
+   "correos_retirados": 13
+  },
+  "fuentes": {
+   "catalogo": "Ministerio de Ciencia, Innovación y Universidades. Sistema Integrado de Información Universitaria (SIIU)",
+   "ruct": "Ministerio de Ciencia, Innovación y Universidades. Registro de Universidades, Centros y Títulos (RUCT)",
+   "qedu": "Ministerio de Ciencia, Innovación y Universidades. Qué Estudiar y Dónde en la Universidad (QEDU)",
+   "boe": "Agencia Estatal Boletín Oficial del Estado",
+   "web": "Página del propio centro",
+   "tarifa": "Tarifa publicada por el propio centro",
+   "guia": "Guía docente publicada por la universidad",
+   "calculado": "Cálculo del portal con los datos que se indican",
+   "norma": "Precio público fijado por la norma de la comunidad autónoma"
+  }
+ },
+ "conjunto_almacen": {
+  "masters_oficiales.jsonl.gz": {
+   "clave": "conjunto-masters/2026/10/31/846c2a87794713260a5aba6c4680f73caa99aa95e06f82626e0cabe192946beb.jsonl.gz"
+  },
+  "programas_no_oficiales.jsonl.gz": {
+   "clave": "conjunto-masters/2026/10/31/a25ee2ce62c83ebb0b83e70d5911f8a5bf4934deabdcc7c31305b0557f239c64.jsonl.gz"
+  }
+ }
+}
