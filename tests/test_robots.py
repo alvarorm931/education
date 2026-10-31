@@ -85,6 +85,7 @@ def test_boletines_oficiales(monkeypatch):
         http.comprobar_robots("https://www.uncentro.es/master")  # webs que no son boletines: robots.txt manda
     assert http.boletin_oficial("https://BOP.DIBA.CAT/anuncis") == "BOP de Barcelona"
     assert http.boletin_oficial("http://bop.diputoledo.es/webEbop/inicio.jsp") == "BOP de Toledo"
+    assert http.boletin_oficial("https://s2.diphuelva.es/portalweb/bop/boletines/20230619-1.pdf").startswith("BOP de Huelva")
     assert all(k.startswith("https://") and (k.endswith(("/", "?")) or "/api/" in k) for k in http.BOLETINES_OFICIALES)
 
 

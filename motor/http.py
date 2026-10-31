@@ -187,6 +187,7 @@ BOLETINES_OFICIALES = {
     "https://s2.diphuelva.es/servicios/bop/": "BOP de Huelva (hasta el 20/06/2023)",
     "https://s2.diphuelva.es/lib/bope/": "BOP de Huelva (sumarios por fecha)",
     "https://s2.diphuelva.es/portalweb/bope/": "BOP de Huelva (PDF de los anuncios)",
+    "https://s2.diphuelva.es/portalweb/bop/boletines/": "BOP de Huelva (PDF de cada boletín hasta el 20/06/2023)",
     "https://bop.dipcas.es/": "BOP de Castellón (robots.txt no responde)",
     "https://www.bopcadiz.org/": "BOP de Cádiz (robots.txt no responde)",
     "https://bop.dpz.es/": "BOP de Zaragoza (robots.txt no responde)",
