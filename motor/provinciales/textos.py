@@ -259,19 +259,36 @@ def columnas_en_orden(texto: str) -> str:
     if not inicios:
         return texto
     corte, _ = max(((c, sum(n for c2, n in inicios.items() if abs(c2 - c) <= 2)) for c in inicios), key=lambda x: x[1])
-    if sum(n for c, n in inicios.items() if abs(c - corte) <= 2) < 3:
+    # Dos columnas solo si muchas líneas tienen el hueco en el mismo sitio: en una página a toda la anchura, el texto
+    # justificado deja huecos sueltos que pueden coincidir en dos o tres líneas
+    con_hueco = sum(n for c, n in inicios.items() if abs(c - corte) <= 2)
+    if con_hueco < max(5, 0.2 * sum(1 for l in lineas if l.strip())):
         return texto
 
-    def partes(l: str) -> tuple[str, str] | None:
-        """(izquierda, derecha) si la línea respeta el hueco; None si lo cruza."""
+    def clase(l: str) -> tuple[str, tuple[str, str] | None]:
+        """«partida» (con su izquierda y derecha), «ancha» (cruza el hueco) o «dudosa» (hueco de solo dos espacios)."""
         if len(l) < corte - 1:
-            return l.strip(), ""
+            return "partida", (l.strip(), "")
         if not l[:corte - 2].strip():
-            return "", l.strip()
-        for m in re.finditer(r"\S( {2,})(?=\S)", l):
-            if abs(m.end() - corte) <= 2:
-                return l[:m.start() + 1].strip(), l[m.end():].strip()
-        return None
+            return "partida", ("", l.strip())
+        # Un hueco que pasa por el comienzo de la columna derecha (las líneas centradas de una cabecera empiezan más
+        # a la derecha; el texto justificado o una sangría mueven el comienzo unas letras)
+        huecos = [m for m in re.finditer(r"\S( {2,})(?=\S)", l)
+                  if m.start(1) <= corte - 2 and m.end() >= corte - 1 or corte - 4 <= m.end() <= corte + 2]
+        if not huecos:
+            return "ancha", None
+        m = min(huecos, key=lambda m: (len(m.group(1)) < 3, abs(m.end() - corte)))
+        par = (l[:m.start() + 1].strip(), l[m.end():].strip())
+        return ("partida" if len(m.group(1)) >= 3 else "dudosa"), par
+
+    clases = [clase(l) for l in lineas]
+    # Una línea con un hueco de solo dos espacios es de dos columnas salvo que las de al lado crucen el hueco
+    utiles = [k for k, l in enumerate(lineas) if l.strip()]
+    for pos, k in enumerate(utiles):
+        if clases[k][0] != "dudosa":
+            continue
+        vecinas = [clases[utiles[p]][0] for p in (pos - 1, pos + 1) if 0 <= p < len(utiles)]
+        clases[k] = ("ancha", None) if vecinas and all(v == "ancha" for v in vecinas) else ("partida", clases[k][1])
 
     def volcar(filas: list[tuple[str, str]], antes_de_ancha: bool) -> list[str]:
         """Izquierda y luego derecha. Antes de un tramo a toda la anchura, las filas que siguen a la última con texto
@@ -287,13 +304,12 @@ def columnas_en_orden(texto: str) -> str:
         return ([i for i, d in cabeza if i or not d] + [d for _, d in filas if d] + [i for i, _ in cola])
 
     salida, filas = [], []
-    for l in lineas:
-        p = partes(l)
-        if p is None:
+    for l, (tipo, p) in zip(lineas, clases):
+        if tipo == "ancha":
             salida += volcar(filas, True) + [l.strip()]
             filas = []
             continue
-        filas.append(p)
+        filas.append(p if l.strip() else ("", ""))
     salida += volcar(filas, False)
     return "\n".join(salida)
 
@@ -304,8 +320,9 @@ def paginas_pdf_columnas(contenido: bytes) -> list[str]:
     return [columnas_en_orden(p.extract_text(extraction_mode="layout") or "") for p in PdfReader(io.BytesIO(contenido)).pages]
 
 
-def entradas_sumario(paginas: list[str]) -> list[tuple[str, str]]:
-    """(registro, asunto) de cada entrada del sumario, en su orden: empieza con el registro y acaba en la página."""
+def entradas_sumario(paginas: list[str], con_pagina: bool = False) -> list[tuple]:
+    """(registro, asunto[, página del boletín]) de cada entrada del sumario, en su orden: empieza con el registro y
+    acaba en los puntos y la página."""
     out, actual = [], None
     for pag in paginas:
         for l in pag.splitlines():
@@ -316,10 +333,27 @@ def entradas_sumario(paginas: list[str]) -> list[tuple[str, str]]:
                 actual = [m.group(1), m.group(2)]
             elif actual is not None and l.strip():
                 actual[1] += " " + l.strip()
-            if actual is not None and RE_FIN_ENTRADA.search(l):
-                out.append((actual[0], RE_FIN_ENTRADA.sub("", actual[1]).rstrip(" .…")))
+            fin = RE_FIN_ENTRADA.search(l) if actual is not None else None
+            if fin:
+                asunto = RE_FIN_ENTRADA.sub("", actual[1]).rstrip(" .…")
+                pagina = int(re.search(r"(\d{3,6})\s*$", l).group(1))
+                out.append((actual[0], asunto, pagina) if con_pagina else (actual[0], asunto))
                 actual = None
     return out
+
+
+def primera_pagina(paginas: list[str]) -> int | None:
+    """Número de página del boletín que corresponde a la página 1 del PDF (la numeración sigue la del año): la más
+    repetida entre las páginas cuyo número sale solo en una de sus primeras líneas."""
+    from collections import Counter
+    bases = Counter()
+    for n, pag in enumerate(paginas, 1):
+        for l in [x for x in pag.splitlines() if x.strip()][:3]:
+            m = re.match(r"^\s*(\d{3,6})\s*$", l)
+            if m:
+                bases[int(m.group(1)) - n + 1] += 1
+                break
+    return bases.most_common(1)[0][0] if bases else None
 
 
 def _parecido(a: str, b: str) -> bool:
@@ -331,13 +365,14 @@ def _parecido(a: str, b: str) -> bool:
 def cortar_por_registro(paginas: list[str], anuncios: list[dict]) -> dict[str, tuple[str, list[int]]]:
     """Texto de cada anuncio: de la línea con su registro a la cabecera del anuncio siguiente. El registro sale del
     sumario del PDF, casando cada asunto con su entrada en el mismo orden. Sin registro o sin su línea, sin texto."""
-    sumario = entradas_sumario(paginas)
+    sumario = entradas_sumario(paginas, con_pagina=True)
     registro, j = {}, 0
     for x in anuncios:
         for k in range(j, min(j + 4, len(sumario))):
             if _parecido(x.get("titulo") or "", sumario[k][1]):
                 registro[x["id"]], j = sumario[k][0], k + 1
                 break
+    base = primera_pagina(paginas)
     lineas, pagina_de = [], []
     for n, pag in enumerate(paginas, 1):
         for l in pag.splitlines():
@@ -348,6 +383,12 @@ def cortar_por_registro(paginas: list[str], anuncios: list[dict]) -> dict[str, t
     for k, reg in marcas:
         posicion.setdefault(reg, k)
     siguientes = {k: (marcas[i + 1][0] if i + 1 < len(marcas) else len(lineas)) for i, (k, _) in enumerate(marcas)}
+    # Anuncios del sumario cuya línea de registro no se encuentra (p. ej. la mezcla con la otra columna): el anuncio
+    # anterior no puede llegar a su página, porque se llevaría su texto
+    perdidos = sorted(p - base + 1 for r, _, p in sumario if r not in posicion) if base else []
+    inicio_pag = {}
+    for k, n in enumerate(pagina_de):
+        inicio_pag.setdefault(n, k)
     out = {}
     for x in anuncios:
         reg = registro.get(x["id"])
@@ -355,14 +396,23 @@ def cortar_por_registro(paginas: list[str], anuncios: list[dict]) -> dict[str, t
             continue
         ini = posicion[reg]
         fin = siguientes[ini]
+        pag_ini, pag_fin = pagina_de[ini], pagina_de[min(fin, len(lineas)) - 1]
+        dentro = [p for p in perdidos if pag_ini <= p <= pag_fin]
+        if dentro and dentro[0] == pag_ini:
+            continue  # empieza en la misma página que uno perdido: no se sabe dónde acaba (mejor sin texto)
+        if dentro:
+            fin = inicio_pag.get(dentro[0], fin)
         if fin < len(lineas):
             # Fuera la cabecera del anuncio siguiente: «ANUNCIO» y, antes, su órgano, servicio y sección (líneas sin
             # punto final), como mucho doce
             f = fin - 1
+            while f > ini and not lineas[f].strip():
+                f -= 1
             if f > ini and RE_ENCABEZADO.match(lineas[f]):
                 f -= 1
-                tope = max(ini + 1, f - 12)
-                while f > tope and lineas[f].strip() and not lineas[f].rstrip().endswith((".", ":", ";", ")")):
+                vistas = 0
+                while f > ini + 1 and vistas < 12 and not lineas[f].rstrip().endswith((".", ":", ";", ")")):
+                    vistas += bool(lineas[f].strip())  # las líneas en blanco de la disposición no cuentan
                     f -= 1
                 fin = f + 1
         else:

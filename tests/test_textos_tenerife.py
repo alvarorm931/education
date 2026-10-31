@@ -68,3 +68,17 @@ def test_corte_por_registro():
     assert a2.startswith("La Dirección Insular") and a2.rstrip().endswith("aspirantes admitidos.")
     assert "CABILDO" not in a2 and cortes["A2"][1] == [2]
     assert "Mieles" in cortes["A3"][0]
+
+
+def test_no_se_lleva_el_texto_de_un_anuncio_sin_registro_encontrado():
+    sumario = ("SUMARIO\n2100001 Anuncio relativo a las bases de una plaza de Auxiliar Administrativo del Ayuntamiento "
+               "....... 101\n2100002 Anuncio relativo a la oferta de empleo público del Organismo Autónomo de Deportes "
+               "....... 102\n")
+    p2 = "101\nAYUNTAMIENTO DE ARONA\nANUNCIO\n4649 2100001\nPrimera. Objeto de las bases de la plaza.\nSegunda."
+    # La línea de registro del segundo no se reconoce (mezclada con otra cosa)
+    p3 = "102\nAYUNTAMIENTO DE ARONA\nANUNCIO\n4650 2100002 texto pegado\nSe aprueba la oferta de empleo público."
+    anuncios = [{"id": "B1", "titulo": "Anuncio relativo a las bases de una plaza de Auxiliar Administrativo"},
+                {"id": "B2", "titulo": "Anuncio relativo a la oferta de empleo público del Organismo Autónomo"}]
+    cortes = t.cortar_por_registro([sumario, p2, p3], anuncios)
+    assert t.primera_pagina([sumario, p2, p3]) == 100
+    assert set(cortes) == {"B1"} and "oferta" not in cortes["B1"][0] and cortes["B1"][1] == [2]
