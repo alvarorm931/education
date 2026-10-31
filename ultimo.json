@@ -1,9 +1,9 @@
 {
- "fecha": "2026-10-31T02:43:16+00:00",
- "fecha_madrid": "31/10 03:43",
+ "fecha": "2026-10-31T02:48:32+00:00",
+ "fecha_madrid": "31/10 03:48",
  "ventana_horas": 6.0,
  "resumen": {
-  "ejecuciones_revisadas": 156,
+  "ejecuciones_revisadas": 149,
   "fallos": 2,
   "fallos_pendientes": 1,
   "relanzados": 0,
@@ -41,17 +41,10 @@
      ],
      "final_registro": [
       "##[error]Huecos en el BOE: {\"dias_con_error\": [\"2026-10-31\"]}",
+      "##[error]Process completed with exit code 1.",
       "...",
-      "\u001b[36;1mpython - <<'EOF'\u001b[0m",
-      "\u001b[36;1mimport json, sys\u001b[0m",
-      "\u001b[36;1mh = json.load(open(\"salida/datos/boe/huecos.json\"))\u001b[0m",
-      "\u001b[36;1mproblemas = {k: v for k, v in h.items() if k in (\"numeros_de_diario_que_faltan\", \"dias_sin_procesar\", \"dias_con_error\") and v}\u001b[0m",
-      "\u001b[36;1mif problemas:\u001b[0m",
-      "\u001b[36;1m    print(\"::error::Huecos en el BOE: \" + json.dumps(problemas, ensure_ascii=False)[:500])\u001b[0m",
-      "\u001b[36;1m    sys.exit(1)\u001b[0m",
-      "\u001b[36;1mprint(\"Sin huecos en el BOE. Anuncios sin texto:\", h.get(\"anuncios_sin_texto\"))\u001b[0m",
-      "\u001b[36;1mEOF\u001b[0m",
-      "##[error]Huecos en el BOE: {\"dias_con_error\": [\"2026-10-31\"]}"
+      "##[error]Huecos en el BOE: {\"dias_con_error\": [\"2026-10-31\"]}",
+      "##[error]Process completed with exit code 1."
      ]
     }
    ]
@@ -85,32 +78,24 @@
      ],
      "final_registro": [
       "##[error]error: Could not read cc3ceda89f6183a93e20fff3392f1bca9ed4c0af",
+      "Error: Installation process exited with code: 1",
+      "##[error]Process completed with exit code 1.",
+      "##[error]Process completed with exit code 1.",
       "...",
-      "  persist-credentials: true",
-      "  clean: true",
-      "  sparse-checkout-cone-mode: true",
-      "  fetch-depth: 1",
-      "  fetch-tags: false",
-      "  show-progress: true",
-      "  lfs: false",
-      "  submodules: false",
-      "  set-safe-directory: true",
-      "  allow-unsafe-pr-checkout: false",
-      "Syncing repository: alvarorm931/education",
-      "Working directory is '/home/motor/runner/_trabajo/education/education'",
-      "git version 2.43.0",
-      "Temporarily overriding HOME='/home/motor/runner/_trabajo/_temp/2eac3d8c-bd21-474f-bff1-c025840ac3dc' before making global git config changes",
-      "Adding repository directory to the temporary git global config as a safe directory",
-      "https://github.com/alvarorm931/education",
-      "refs/heads/main",
-      "HEAD is now at 814ab3c699 CLAUDE.md: pytest en verde antes de subir, también con MOTOR_ORIGINALES=s3",
-      "Deleted branch main (was 814ab3c699).",
-      "Removing motor.egg-info/",
-      "Removing motor/__pycache__/",
-      "Removing motor/autonomicos/__pycache__/",
-      "Removing motor/boe/__pycache__/",
-      "HEAD is now at 814ab3c699 CLAUDE.md: pytest en verde antes de subir, también con MOTOR_ORIGINALES=s3",
-      "##[error]error: Could not read cc3ceda89f6183a93e20fff3392f1bca9ed4c0af"
+      "##[error]error: Could not read cc3ceda89f6183a93e20fff3392f1bca9ed4c0af",
+      "  Python_ROOT_DIR: /home/motor/runner/_trabajo/_tool/Python/3.12.16/x64",
+      "  Python2_ROOT_DIR: /home/motor/runner/_trabajo/_tool/Python/3.12.16/x64",
+      "  Python3_ROOT_DIR: /home/motor/runner/_trabajo/_tool/Python/3.12.16/x64",
+      "  LD_LIBRARY_PATH: /home/motor/runner/_trabajo/_tool/Python/3.12.16/x64/lib",
+      "Installing dependencies...",
+      "Switching to root user to install dependencies...",
+      "sudo: a terminal is required to read the password; either use the -S option to read from standard input or configure an askpass helper",
+      "sudo: a password is required",
+      "Failed to install browsers",
+      "Error: Installation process exited with code: 1",
+      "##[error]Process completed with exit code 1.",
+      "cp: cannot stat 'out/.': No such file or directory",
+      "##[error]Process completed with exit code 1."
      ]
     }
    ]

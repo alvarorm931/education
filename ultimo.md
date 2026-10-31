@@ -1,6 +1,6 @@
-# Vigilancia 31/10 03:43 (Madrid)
+# Vigilancia 31/10 03:48 (Madrid)
 
-- Ejecuciones revisadas (últimas 6 h): 156
+- Ejecuciones revisadas (últimas 6 h): 149
 - Fallos: 2; pendientes: 1; relanzados ahora: 0
 - Colas de más de 30 minutos: 0
 - Flujos programados parados: ninguno
@@ -14,24 +14,21 @@
 ## Motor de datos · 31/10 02:20 · PENDIENTE
 https://github.com/alvarorm931/education/actions/runs/41146163155 (intento 2, workflow_dispatch, 94424c2, pasajero: False)
 - motor · pasos: Avisar si hay huecos o errores · ejecutor: GitHub Actions 1000001423
-      [36;1mh = json.load(open("salida/datos/boe/huecos.json"))[0m
-      [36;1mproblemas = {k: v for k, v in h.items() if k in ("numeros_de_diario_que_faltan", "dias_sin_procesar", "dias_con_error") and v}[0m
-      [36;1mif problemas:[0m
-      [36;1m    print("::error::Huecos en el BOE: " + json.dumps(problemas, ensure_ascii=False)[:500])[0m
-      [36;1m    sys.exit(1)[0m
-      [36;1mprint("Sin huecos en el BOE. Anuncios sin texto:", h.get("anuncios_sin_texto"))[0m
-      [36;1mEOF[0m
       ##[error]Huecos en el BOE: {"dias_con_error": ["2026-10-31"]}
+      ##[error]Process completed with exit code 1.
+      ...
+      ##[error]Huecos en el BOE: {"dias_con_error": ["2026-10-31"]}
+      ##[error]Process completed with exit code 1.
 
 ## Estudios por tramos · 31/10 02:57 · superado
 https://github.com/alvarorm931/education/actions/runs/41140514779 (intento 1, workflow_dispatch, 0e7f07e, pasajero: False)
 - tramo (leer --portadas entrada/masters-estado/entradas/portadas/portadas_ub.jsonl --navegador --p... · pasos: Chromium para las páginas que solo se pintan con JavaScript (extracción con --navegador), Subir este tramo a sondas (por_tramo=si) · ejecutor: motor-espana
-      HEAD is now at 814ab3c699 CLAUDE.md: pytest en verde antes de subir, también con MOTOR_ORIGINALES=s3
-      Deleted branch main (was 814ab3c699).
-      Removing motor.egg-info/
-      Removing motor/__pycache__/
-      Removing motor/autonomicos/__pycache__/
-      Removing motor/boe/__pycache__/
-      HEAD is now at 814ab3c699 CLAUDE.md: pytest en verde antes de subir, también con MOTOR_ORIGINALES=s3
-      ##[error]error: Could not read cc3ceda89f6183a93e20fff3392f1bca9ed4c0af
+      Switching to root user to install dependencies...
+      sudo: a terminal is required to read the password; either use the -S option to read from standard input or configure an askpass helper
+      sudo: a password is required
+      Failed to install browsers
+      Error: Installation process exited with code: 1
+      ##[error]Process completed with exit code 1.
+      cp: cannot stat 'out/.': No such file or directory
+      ##[error]Process completed with exit code 1.
 
