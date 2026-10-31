@@ -1,13 +1,13 @@
 {
- "fecha": "2026-10-31T01:57:29+00:00",
- "fecha_madrid": "31/10 02:57",
+ "fecha": "2026-10-31T02:18:10+00:00",
+ "fecha_madrid": "31/10 03:18",
  "ventana_horas": 6.0,
  "resumen": {
-  "ejecuciones_revisadas": 169,
-  "fallos": 3,
+  "ejecuciones_revisadas": 159,
+  "fallos": 2,
   "fallos_pendientes": 1,
   "relanzados": 0,
-  "colas_largas": 1,
+  "colas_largas": 0,
   "flujos_programados_parados": [],
   "programaciones_lanzadas_a_mano": [],
   "avisos_de_fuentes": 0,
@@ -114,65 +114,9 @@
      ]
     }
    ]
-  },
-  {
-   "flujo": "Prueba de conector",
-   "fichero": "prueba.yml",
-   "id": 41120449947,
-   "intento": 1,
-   "evento": "workflow_dispatch",
-   "rama": "main",
-   "commit": "05434bb",
-   "titulo": "Prueba de conector",
-   "conclusion": "failure",
-   "cuando": "30/10 22:26",
-   "url": "https://github.com/alvarorm931/education/actions/runs/41120449947",
-   "superado": true,
-   "en_curso": null,
-   "pasajero": true,
-   "detalle": [
-    {
-     "trabajo": "prueba",
-     "pasos": [
-      "Subir a la rama sondas"
-     ],
-     "ejecutor": "motor-espana",
-     "etiquetas": [
-      "self-hosted",
-      "espana"
-     ],
-     "final_registro": [
-      "##[error]Process completed with exit code 1.",
-      "...",
-      "\u001b[36;1mcd prueba\u001b[0m",
-      "\u001b[36;1mgit init -q && git config user.name \"motor-prueba\" && git config user.email \"motor-prueba@users.noreply.github.com\"\u001b[0m",
-      "\u001b[36;1mgit remote add origin \"***github.com/alvarorm931/education.git\"\u001b[0m",
-      "\u001b[36;1mif git fetch -q --depth 1 origin sondas; then git reset -q FETCH_HEAD; fi\u001b[0m",
-      "\u001b[36;1mgit checkout -q -B sondas\u001b[0m",
-      "\u001b[36;1mgit add \"$STAMP\" && git commit -qm \"Prueba motor.provinciales.sonda_pdf_texto\" && git push -q origin sondas\u001b[0m",
-      "To https://github.com/alvarorm931/education.git",
-      " ! [rejected]          sondas -> sondas (fetch first)",
-      "error: failed to push some refs to 'https://github.com/alvarorm931/education.git'",
-      "hint: Updates were rejected because the remote contains work that you do not",
-      "hint: have locally. This is usually caused by another repository pushing to",
-      "hint: the same ref. If you want to integrate the remote changes, use",
-      "hint: 'git pull' before pushing again.",
-      "hint: See the 'Note about fast-forwards' in 'git push --help' for details.",
-      "##[error]Process completed with exit code 1."
-     ]
-    }
-   ]
   }
  ],
- "colas_largas": [
-  {
-   "flujo": "Estudios por tramos",
-   "id": 41119697629,
-   "en_cola_min": 358,
-   "trabajos_empezados": 2,
-   "url": "https://github.com/alvarorm931/education/actions/runs/41119697629"
-  }
- ],
+ "colas_largas": [],
  "programados": {
   "motor.yml": {
    "ultimo_bien": "31/10 00:33",
