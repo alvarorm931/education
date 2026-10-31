@@ -1,4 +1,4 @@
-# Vigilancia 31/10 01:47 (Madrid)
+# Vigilancia 31/10 01:51 (Madrid)
 
 - Ejecuciones revisadas (últimas 6 h): 175
 - Fallos: 1; pendientes: 0; relanzados ahora: 0
@@ -8,6 +8,7 @@
 - Programaciones que GitHub no disparó y se lanzaron a mano: ninguna
 - Programaciones que GitHub disparó tarde y repetían la del día (canceladas): ninguna
 - Latido (relanza al vigilante cada ~25 min mientras GitHub no dispare programaciones): en marcha
+- Ficheros de la rama datos de más de 80 MB (GitHub rechaza más de 100): ninguno
 - Avisos de fuentes: 0
 
 ## Prueba de conector · 30/10 22:26 · superado
@@ -22,5 +23,5 @@ https://github.com/alvarorm931/education/actions/runs/41120449947 (intento 1, wo
       hint: See the 'Note about fast-forwards' in 'git push --help' for details.
       ##[error]Process completed with exit code 1.
 
-- En cola 119 min: Estudios por tramos https://github.com/alvarorm931/education/actions/runs/41140514779
-- En cola 288 min: Estudios por tramos https://github.com/alvarorm931/education/actions/runs/41119697629
+- En cola 123 min: Estudios por tramos https://github.com/alvarorm931/education/actions/runs/41140514779
+- En cola 292 min: Estudios por tramos https://github.com/alvarorm931/education/actions/runs/41119697629
