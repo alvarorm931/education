@@ -221,20 +221,36 @@ def main(b: Boletin, argv: list[str] | None = None) -> int:
     archivo = Archivo(a.salida / "archivo", indice_por_fuente=True, solo_huella=solo_huella_por_defecto())
 
     if a.textos:
-        inicio, hechos, errores = time.monotonic(), 0, 0
+        from collections import Counter
+        from motor.autonomicos.comun import MAX_FALLOS_SEGUIDOS_TEXTOS
+        inicio, hechos, errores, seguidos = time.monotonic(), 0, 0, 0
+        tipos: Counter = Counter()
+        ejemplo: dict[str, str] = {}
         pend = textos_pendientes(b, a.salida)
         for x in pend:
             if a.max_minutos and (time.monotonic() - inicio) / 60 > a.max_minutos:
                 break
+            if seguidos >= MAX_FALLOS_SEGUIDOS_TEXTOS:
+                tipos["parado por fallos seguidos"] += 1  # la fuente no da los textos: no se insiste
+                break
             try:
                 pdf, url_pdf, det = descargar_texto(b, x)
                 if pdf is None:
-                    errores += 1
+                    tipo = "sin PDF en el detalle" if det or url_pdf is None else "PDF no descargado"
+                    errores, seguidos = errores + 1, seguidos + 1
+                    tipos[tipo] += 1
+                    ejemplo.setdefault(tipo, f"{x['url_html']} {str(det)[:100]}")
+                    time.sleep(a.pausa)
                     continue
                 datos = texto_pdf(pdf, x.get("tipo_acto") in CON_TEXTO, b.cabecera_pdf)
-            except Exception:  # red caída o PDF ilegible: no detiene la carga, queda pendiente
-                errores += 1
+            except Exception as e:  # red caída o PDF ilegible: no detiene la carga, queda pendiente
+                tipo = type(e).__name__
+                errores, seguidos = errores + 1, seguidos + 1
+                tipos[tipo] += 1
+                ejemplo.setdefault(tipo, f"{x['url_html']}: {str(e)[:150]}")
+                time.sleep(a.pausa)
                 continue
+            seguidos = 0
             captura = archivo.guardar(b.fuente + "-texto", date.fromisoformat(x["fecha"]), pdf, url_pdf, "pdf", 200)
             escribir_json(ruta_texto(b, a.salida, x), {"id": x["id"], **datos, "detalle": det,
                                                         "captura_sha256": captura["sha256"],
@@ -242,6 +258,10 @@ def main(b: Boletin, argv: list[str] | None = None) -> int:
             hechos += 1
             time.sleep(a.pausa)
         print(f"{b.siglas} textos: {hechos} descargados, {errores} errores, {len(pend) - hechos} pendientes")
+        if errores:
+            print(f"::warning title={b.fuente} textos::{hechos} descargados, {errores} fallos: "
+                  + "; ".join(f"{t} ×{n}" + (f" (p. ej. {ejemplo[t]})" if t in ejemplo else "")
+                              for t, n in tipos.most_common(4)))
         return 0
 
     inicio, informes = time.monotonic(), []
