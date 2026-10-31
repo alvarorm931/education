@@ -68,3 +68,23 @@ def test_texto_disposicion_real():
     d = bocm.texto_disposicion((F / "bocm_disposicion_72.xml").read_bytes())
     assert "13 de noviembre de 2026" in d["texto"]
     assert "Oferta de Empleo Público del Ayuntamiento de Alcobendas del año 2024" in d["texto"]
+
+
+def test_huecos_no_se_buscan_cada_dia(tmp_path, monkeypatch):
+    """Un número que falta y no aparece no se vuelve a buscar en 30 días, y entre petición y petición hay pausa."""
+    import json
+    from datetime import date
+    from motor.archivo import Archivo
+    from motor.autonomicos import bocm
+    for d, n in (("2026-10-05", 190), ("2026-10-07", 192)):
+        r = tmp_path / "datos" / "autonomicos" / "bocm" / "dias" / "2026" / "10" / f"{d[-2:]}.json"
+        r.parent.mkdir(parents=True, exist_ok=True)
+        r.write_text(json.dumps({"fecha": d, "resultado": "ok", "numero": str(n)}))
+    pedidas, pausas = [], []
+    monkeypatch.setattr(bocm, "leer_boletin", lambda d, n, *a, **k: pedidas.append((d, n)))
+    monkeypatch.setattr(bocm.time, "sleep", lambda s: pausas.append(s))
+    a = Archivo(tmp_path / "a", solo_huella=True)
+    res = bocm.rellenar_huecos(tmp_path, a, hoy=date(2026, 10, 31))
+    assert res == [{"numero": 191, "fecha": None, "resultado": "no_encontrado"}] and len(pedidas) == 3 == len(pausas)
+    assert bocm.rellenar_huecos(tmp_path, a, hoy=date(2026, 11, 10)) == [] and len(pedidas) == 3
+    assert len(bocm.rellenar_huecos(tmp_path, a, hoy=date(2026, 12, 1))) == 1 and len(pedidas) == 6

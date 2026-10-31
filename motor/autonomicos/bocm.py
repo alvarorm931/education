@@ -235,6 +235,7 @@ def buscar_perdidos(numeros, desde: date, hasta: date, raiz: Path, archivo: Arch
         x = desde
         while x <= hasta:
             inf = leer_boletin(x, m, raiz, archivo, sufijo=f"-{m}")
+            time.sleep(PAUSA_HUECOS)  # sin pausa, la búsqueda de huecos hacía que el servidor dejara de responder
             if inf is not None:
                 escribir = _ruta(raiz, "dias", x, "json", sufijo=f"-{m}")
                 escribir.parent.mkdir(parents=True, exist_ok=True)
@@ -248,7 +249,11 @@ def buscar_perdidos(numeros, desde: date, hasta: date, raiz: Path, archivo: Arch
     return hallados
 
 
-def rellenar_huecos(raiz: Path, archivo: Archivo, max_minutos: float = 0) -> list[dict]:
+PAUSA_HUECOS = 1.0
+DIAS_ENTRE_BUSQUEDAS = 30  # un número que no aparece no se vuelve a buscar hasta pasado este plazo
+
+
+def rellenar_huecos(raiz: Path, archivo: Archivo, max_minutos: float = 0, hoy: date | None = None) -> list[dict]:
     """Números que faltan en lo ya leído (estado.huecos_numeracion): se buscan entre el día del anterior y el del
     siguiente. Así se recuperan los extraordinarios de antes del 30/10/2026 (el XML por fecha no los daba)."""
     from motor.estado import huecos_numeracion
@@ -258,16 +263,29 @@ def rellenar_huecos(raiz: Path, archivo: Archivo, max_minutos: float = 0) -> lis
         inf = json.loads(f.read_text(encoding="utf-8"))
         if inf.get("resultado") == "ok" and str(inf.get("numero") or "").isdigit():
             leidos.setdefault(inf["fecha"][:4], {})[int(inf["numero"])] = date.fromisoformat(inf["fecha"])
+    hoy = hoy or datetime.now(MADRID).date()
+    ruta_buscados = _base(raiz) / "huecos_buscados.json"
+    buscados = json.loads(ruta_buscados.read_text(encoding="utf-8")) if ruta_buscados.exists() else {}
     inicio, res = time.monotonic(), []
-    for anio, faltan in huecos_numeracion({a: set(v) for a, v in leidos.items()}).items():
-        for m in faltan:
-            if max_minutos and (time.monotonic() - inicio) / 60 > max_minutos:
-                return res
-            antes = max((n for n in leidos[anio] if n < m), default=None)
-            despues = min((n for n in leidos[anio] if n > m), default=None)
-            if antes is None or despues is None:
-                continue
-            res += buscar_perdidos([m], leidos[anio][antes], leidos[anio][despues], raiz, archivo)
+    try:
+        for anio, faltan in huecos_numeracion({a: set(v) for a, v in leidos.items()}).items():
+            for m in faltan:
+                if max_minutos and (time.monotonic() - inicio) / 60 > max_minutos:
+                    return res
+                clave = f"{anio}-{m}"
+                if clave in buscados and (hoy - date.fromisoformat(buscados[clave])).days < DIAS_ENTRE_BUSQUEDAS:
+                    continue
+                antes = max((n for n in leidos[anio] if n < m), default=None)
+                despues = min((n for n in leidos[anio] if n > m), default=None)
+                if antes is None or despues is None:
+                    continue
+                hallado = buscar_perdidos([m], leidos[anio][antes], leidos[anio][despues], raiz, archivo)
+                res += hallado
+                if hallado and hallado[0]["resultado"] == "no_encontrado":
+                    buscados[clave] = hoy.isoformat()
+    finally:
+        ruta_buscados.parent.mkdir(parents=True, exist_ok=True)
+        ruta_buscados.write_text(json.dumps(buscados, ensure_ascii=False, indent=1, sort_keys=True), encoding="utf-8")
     return res
 
 
@@ -307,7 +325,7 @@ def descargar_textos(raiz: Path, archivo: Archivo, max_minutos: float, pausa: fl
         nonlocal errores, seguidos
         errores, seguidos = errores + 1, seguidos + 1
         tipos[tipo] += 1
-        ejemplo.setdefault(tipo, detalle[:200])
+        ejemplo.setdefault(tipo, detalle[:300])
         time.sleep(pausa)
         return seguidos >= MAX_FALLOS_SEGUIDOS
 
@@ -317,7 +335,8 @@ def descargar_textos(raiz: Path, archivo: Archivo, max_minutos: float, pausa: fl
         try:
             r = obtener(x["url_xml"], accept="application/xml")
         except ConnectionError as e:
-            if fallo(type(e).__name__, f"{x['url_xml']}: {e}"):
+            from motor.http import ROBOTS_ESTADO
+            if fallo(type(e).__name__, f"robots.txt leído así: {ROBOTS_ESTADO.get(WEB)}; {x['url_xml']}: {e}"):
                 break
             continue
         if r.status != 200:

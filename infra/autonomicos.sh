@@ -32,10 +32,11 @@ for c in $CONECTORES; do
       ejecutar motor.autonomicos.bocm --salida "$S"
       ejecutar motor.autonomicos.bocm --desde 2022-01-01 --saltar-existentes --salida "$S" --max-minutos "$M"
       "$G" "BOCM: boletines"
-      ejecutar motor.autonomicos.bocm --huecos --salida "$S" --max-minutos 10
-      "$G" "BOCM: números que faltaban"
+      # Textos antes que los huecos: la búsqueda de huecos hace muchas peticiones seguidas
       ejecutar motor.autonomicos.bocm --textos --salida "$S" --max-minutos "$M"
       "$G" "BOCM: textos"
+      ejecutar motor.autonomicos.bocm --huecos --salida "$S" --max-minutos 10
+      "$G" "BOCM: números que faltaban"
       ;;
     bocyl)
       ejecutar motor.autonomicos.bocyl --salida "$S"
