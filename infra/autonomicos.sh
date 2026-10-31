@@ -14,8 +14,18 @@ S="$1"; M="$2"; CONECTORES="$3"; G="${4:-true}"
 Y=$(TZ=Europe/Madrid date +%Y)
 
 ejecutar() {
+  # Si el paso acaba con error, sus últimas líneas salen como aviso de GitHub (los registros no se pueden leer por la API)
   echo "+ python -m $*"
-  python -m "$@" 2>&1 | tail -n 8 || true
+  local salida codigo
+  salida=$(python -m "$@" 2>&1)
+  codigo=$?
+  # Los avisos del propio paso («::warning::…») salen todos; del resto, las últimas líneas
+  printf '%s\n' "$salida" | grep '^::' || true
+  printf '%s\n' "$salida" | grep -v '^::' | tail -n 8
+  if [ "$codigo" -ne 0 ]; then
+    echo "::warning title=$1 (código $codigo)::$(printf '%s' "$salida" | tail -n 4 | tr '\n' ' ' | cut -c1-700)"
+  fi
+  return 0
 }
 
 for c in $CONECTORES; do

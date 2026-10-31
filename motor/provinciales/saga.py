@@ -257,7 +257,7 @@ def main(b: Boletin, argv: list[str] | None = None) -> int:
                                                         "capturado": captura["capturado"], "url": url_pdf})
             hechos += 1
             time.sleep(a.pausa)
-        print(f"{b.siglas} textos: {hechos} descargados, {errores} errores, {len(pend) - hechos} pendientes")
+        print(f"::notice title={b.fuente} textos::{hechos} descargados, {errores} errores, {len(pend) - hechos} pendientes")
         if errores:
             print(f"::warning title={b.fuente} textos::{hechos} descargados, {errores} fallos: "
                   + "; ".join(f"{t} ×{n}" + (f" (p. ej. {ejemplo[t]})" if t in ejemplo else "")
