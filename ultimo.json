@@ -1,13 +1,13 @@
 {
- "fecha": "2026-10-31T01:52:59+00:00",
- "fecha_madrid": "31/10 02:52",
+ "fecha": "2026-10-31T01:57:29+00:00",
+ "fecha_madrid": "31/10 02:57",
  "ventana_horas": 6.0,
  "resumen": {
-  "ejecuciones_revisadas": 173,
-  "fallos": 2,
+  "ejecuciones_revisadas": 169,
+  "fallos": 3,
   "fallos_pendientes": 1,
   "relanzados": 0,
-  "colas_largas": 2,
+  "colas_largas": 1,
   "flujos_programados_parados": [],
   "programaciones_lanzadas_a_mano": [],
   "avisos_de_fuentes": 0,
@@ -52,6 +52,65 @@
       "\u001b[36;1mprint(\"Sin huecos en el BOE. Anuncios sin texto:\", h.get(\"anuncios_sin_texto\"))\u001b[0m",
       "\u001b[36;1mEOF\u001b[0m",
       "##[error]Huecos en el BOE: {\"dias_con_error\": [\"2026-10-31\"]}"
+     ]
+    }
+   ]
+  },
+  {
+   "flujo": "Estudios por tramos",
+   "fichero": "estudios.yml",
+   "id": 41140514779,
+   "intento": 1,
+   "evento": "workflow_dispatch",
+   "rama": "main",
+   "commit": "0e7f07e",
+   "titulo": "Estudios por tramos",
+   "conclusion": "failure",
+   "cuando": "31/10 02:57",
+   "url": "https://github.com/alvarorm931/education/actions/runs/41140514779",
+   "superado": true,
+   "en_curso": null,
+   "pasajero": false,
+   "detalle": [
+    {
+     "trabajo": "tramo (leer --portadas entrada/masters-estado/entradas/portadas/portadas_ub.jsonl --navegador --p...",
+     "pasos": [
+      "Chromium para las páginas que solo se pintan con JavaScript (extracción con --navegador)",
+      "Subir este tramo a sondas (por_tramo=si)"
+     ],
+     "ejecutor": "motor-espana",
+     "etiquetas": [
+      "self-hosted",
+      "espana"
+     ],
+     "final_registro": [
+      "##[error]error: Could not read cc3ceda89f6183a93e20fff3392f1bca9ed4c0af",
+      "...",
+      "  persist-credentials: true",
+      "  clean: true",
+      "  sparse-checkout-cone-mode: true",
+      "  fetch-depth: 1",
+      "  fetch-tags: false",
+      "  show-progress: true",
+      "  lfs: false",
+      "  submodules: false",
+      "  set-safe-directory: true",
+      "  allow-unsafe-pr-checkout: false",
+      "Syncing repository: alvarorm931/education",
+      "Working directory is '/home/motor/runner/_trabajo/education/education'",
+      "git version 2.43.0",
+      "Temporarily overriding HOME='/home/motor/runner/_trabajo/_temp/2eac3d8c-bd21-474f-bff1-c025840ac3dc' before making global git config changes",
+      "Adding repository directory to the temporary git global config as a safe directory",
+      "https://github.com/alvarorm931/education",
+      "refs/heads/main",
+      "HEAD is now at 814ab3c699 CLAUDE.md: pytest en verde antes de subir, también con MOTOR_ORIGINALES=s3",
+      "Deleted branch main (was 814ab3c699).",
+      "Removing motor.egg-info/",
+      "Removing motor/__pycache__/",
+      "Removing motor/autonomicos/__pycache__/",
+      "Removing motor/boe/__pycache__/",
+      "HEAD is now at 814ab3c699 CLAUDE.md: pytest en verde antes de subir, también con MOTOR_ORIGINALES=s3",
+      "##[error]error: Could not read cc3ceda89f6183a93e20fff3392f1bca9ed4c0af"
      ]
     }
    ]
@@ -108,15 +167,8 @@
  "colas_largas": [
   {
    "flujo": "Estudios por tramos",
-   "id": 41140514779,
-   "en_cola_min": 185,
-   "trabajos_empezados": 0,
-   "url": "https://github.com/alvarorm931/education/actions/runs/41140514779"
-  },
-  {
-   "flujo": "Estudios por tramos",
    "id": 41119697629,
-   "en_cola_min": 353,
+   "en_cola_min": 358,
    "trabajos_empezados": 2,
    "url": "https://github.com/alvarorm931/education/actions/runs/41119697629"
   }
