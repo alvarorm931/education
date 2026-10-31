@@ -1,0 +1,77 @@
+{
+ "pedidas": 5,
+ "enviadas": 5,
+ "enviadas_pintadas": 0,
+ "minutos_captura": 0.1,
+ "minutos_lote": 5.5,
+ "extraidas": 5,
+ "respuestas_con_pensamiento": 0,
+ "no_es_programa": 4,
+ "id": "msgbatch_01FwvMdW32yveWvRkJktmx6f",
+ "uso_tokens": {
+  "input_tokens": 20082,
+  "output_tokens": 319,
+  "cache_creation_input_tokens": 0,
+  "cache_read_input_tokens": 4730
+ },
+ "coste_usd": 0.001108,
+ "coste_usd_por_pagina": 0.000222,
+ "tokens_entrada_por_pagina": 4016,
+ "tokens_salida_por_pagina": 64,
+ "hechos_aceptados": 5,
+ "hechos_revision": 1,
+ "motivos_revision": {
+  "cita_no_literal": 1
+ },
+ "niveles_cita": {
+  "literal": 5,
+  "ninguno": 1
+ },
+ "almacen": {
+  "nuevos": 8,
+  "claves_privadas": {
+   "resultados": "extraccion-masters/2026/10/31/cea8085ac36b4a9ad813812a218e041b1fb6d8013ad3ad6c931f9993914b15b9.resultados.jsonl.gz",
+   "hechos_con_cita": "extraccion-masters/2026/10/31/dfd245645dc7bdd6d56143901e9ceb39f42602aa82f4e01c25c80a1e649f815a.hechos.jsonl.gz"
+  }
+ },
+ "por_campo": {
+  "nombre": {
+   "aceptado": 1
+  },
+  "tipo_titulo": {},
+  "universidad_que_expide": {
+   "aceptado": 1
+  },
+  "centro_que_imparte": {},
+  "creditos_ects": {},
+  "duracion": {},
+  "modalidad": {
+   "revision": 1
+  },
+  "sedes": {
+   "aceptado": 1
+  },
+  "idioma": {
+   "aceptado": 1
+  },
+  "fecha_inicio": {},
+  "plazo_admision": {},
+  "horario": {},
+  "plazas": {},
+  "precio_total": {},
+  "precio_credito": {},
+  "reserva_matricula": {},
+  "descuentos_becas": {},
+  "requisitos_acceso": {
+   "aceptado": 1
+  },
+  "proceso_admision": {},
+  "asignaturas": {},
+  "practicas": {},
+  "tfm": {},
+  "metodologia": {},
+  "evaluacion": {},
+  "habilita_profesion": {},
+  "salidas": {}
+ }
+}
