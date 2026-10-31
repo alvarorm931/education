@@ -225,7 +225,30 @@ def verificar(respuesta: dict, texto: str) -> tuple[dict, dict]:
                 continue
             valor = num
         aceptados[campo] = {"valor": valor, "cita": cita, "nivel": nivel}
+    if "temas" not in aceptados and (contados := temas_contados(texto)):
+        aceptados["temas"] = contados
+        rechazados.pop("temas", None)
     return aceptados, rechazados
+
+
+RE_TEMA = re.compile(r"(?im)^\s*(?:tema|gaia)\s*(?:n[úu]m\.?|n\.?\s?º)?\s*(\d{1,3})\s*[.\-:–ºª)]")
+
+
+def temas_contados(texto: str) -> dict | None:
+    """Número de temas contando los «Tema 1.», «Tema 2.»… del temario (sin IA): el último de una serie que empieza en
+    1 y en la que están casi todos; la cita es la línea del último tema."""
+    nums = [(int(m.group(1)), m.start()) for m in RE_TEMA.finditer(texto or "")]
+    vistos = {n for n, _ in nums}
+    if 1 not in vistos:
+        return None
+    n = 1
+    while n + 1 in vistos or (n + 2 in vistos and n + 3 in vistos):
+        n += 1
+    if n < 3 or len({k for k in vistos if k <= n}) < 0.8 * n:
+        return None
+    pos = max(p for k, p in nums if k == n)
+    linea = " ".join(texto[pos:pos + 200].split("\n", 1)[0].split())
+    return {"valor": n, "cita": linea[:160], "nivel": "contado"}
 
 
 UNIDADES = {"un": 1, "una": 1, "uno": 1, "dos": 2, "tres": 3, "cuatro": 4, "cinco": 5, "seis": 6, "siete": 7, "ocho": 8,

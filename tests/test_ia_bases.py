@@ -67,3 +67,13 @@ def test_recorte_guarda_el_final():
     t = "A" * 60_000 + "TEMARIO" + "B" * 40_000
     r = b.recortar(t)
     assert len(r) < b.MAX_CARACTERES + 10 and r.startswith("A") and r.endswith("B")
+
+
+def test_temas_contados_sin_ia():
+    texto = "ANEXO I. TEMARIO\n" + "\n".join(f"Tema {k}. Materia número {k} del temario." for k in range(1, 21)) + \
+        "\nANEXO II\nTema 3. Referencia suelta"
+    t = b.temas_contados(texto)
+    assert t["valor"] == 20 and t["cita"].startswith("Tema 20.") and t["nivel"] == "contado"
+    assert b.temas_contados("Tema 1. Única materia") is None
+    acept, _ = b.verificar({}, texto)
+    assert acept["temas"]["valor"] == 20
