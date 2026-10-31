@@ -244,3 +244,19 @@ def test_nombre_del_boletin_sin_la_frase_siguiente():
          "reguladoras que regirán la convocatoria:")
     r = extraer_plazo(t, "2026-02-02", "Boletín Oficial de la Provincia de Teruel")
     assert r["cuenta_desde"] == "Boletín Oficial de la Provincia de Teruel" and r["fin_estimado"]
+
+
+def test_boletin_en_minusculas_y_diari_de_la_provincia():
+    t = ("Mediante el presente anuncio, se inicia el plazo de presentación de solicitudes, que será de DIEZ DÍAS HÁBILES, "
+         "contados a partir del siguiente a aquél en el que se publique el presente anuncio en el boletín oficial de la "
+         "provincia.")
+    r = extraer_plazo(t, "2026-06-01", "Boletín Oficial de la Provincia de Huelva")
+    assert r["cuenta_desde"] == "Boletín Oficial de la Provincia" and r["fin_estimado"]
+    t = ("PLAZO DE PRESENTACIÓN DE SOLICITUDES: veinte días hábiles a contar desde el día siguiente al de la publicación "
+         "de la convocatoria en el boletín oficial del estado.")
+    r = extraer_plazo(t, "2026-06-01", "Boletín Oficial de la Provincia de Granada")
+    assert r["cuenta_desde"] == "Boletín Oficial del Estado" and not r.get("fin_estimado")
+    t = ("Les sol·licituds s'han de presentar dins el termini de 10 dies hàbils, comptats a partir de l'endemà de la "
+         "publicació de l'anunci de la convocatòria al Diari Oficial de la Província de Barcelona.")
+    bopb = ("Butlletí Oficial de la Província de Barcelona", "Boletín Oficial de la Provincia de Barcelona")
+    assert extraer_plazo(t, "2026-06-01", bopb)["fin_estimado"]

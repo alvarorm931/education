@@ -210,7 +210,8 @@ PROVINCIA_A_FUENTE = {
     "malaga": "BOP-MALAGA", "almeria": "BOP-ALMERIA", "cadiz": "BOP-CADIZ", "cuenca": "BOP-CUENCA",
     "segovia": "BOP-SEGOVIA",
 }
-RE_PROVINCIA_CITA = re.compile(r"^(?:boletin(?:es)? (?:oficial(?:es)? )?|butlleti oficial |diario oficial )"
+RE_PROVINCIA_CITA = re.compile(r"^(?:boletin(?:es)? (?:oficial(?:es)? )?|butlleti oficial |diario oficial |diari oficial "
+                               r"(?=(?:de\s+)?(?:la\s+)?provincia)|bop (?=de\s))"
                                r"(?:de\s+|del\s+|de la\s+|la\s+)*(?:(?:provincial|provincia|diputacion provincial|"
                                r"territorio historico|comunidad|ciudad autonoma|principado|region)\s*(?:\(bop\)\s*)?"
                                r"(?:de\s+|del\s+|de la\s+|d'\s*)*)?(?P<p>[a-z ]+?)\s*$")

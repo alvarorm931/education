@@ -110,6 +110,13 @@ def test_resoluciones_del_proceso_no_son_convocatorias():
         "Resolución de 7 de abril de 2026, de la Universidad Autónoma de Madrid, por la que se publica la convocatoria de pruebas selectivas": "convocatoria",
         "Convocatoria para la constitución de una bolsa de empleo derivada del proceso selectivo de Auxiliar": "convocatoria",
         "Anuncio por el que se hace pública la fecha de apertura del plazo de presentación de solicitudes de la bolsa": "convocatoria",
+        "DESISTIMIENTO DE BASES Y DE LA CONVOCATORIA DEL PROCESO SELECTIVO PARA LA PROVISIÓN DE 7 PLAZAS": "anulacion",
+        "Desistiment del procés selectiu d'una plaça d'administratiu/va de gestió": "anulacion",
+        "Resolución por la que se acepta el desistimiento de un aspirante": "otro",
+        "Corrección error material en las bases de la convocatoria para la constitución de una bolsa": "correccion",
+        "Resolución n.º 2026-3447 por la cual se rectifican las bases de la convocatoria del proceso selectivo": "correccion",
+        "Rectificació de les bases reguladores de la convocatòria que han de regir el procés de selecció": "correccion",
+        "Modificación de la causa de exclusión de aspirante de la convocatoria para cubrir 6 plazas": "admitidos",
     }
     for titulo, tipo in casos.items():
         assert clasificar_titulo(titulo)["tipo_acto"] == tipo, titulo

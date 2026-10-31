@@ -191,7 +191,8 @@ def _candidata(f: str) -> int:
     if any(x in ventana for x in EXCLUIR):
         return 0
     plazo = any(x in n for x in ("plazo", "termini", "prazo"))
-    solicitud = any(x in n for x in ("solicitud", "instancia", "sol·licitud", "sollicitud", "instanci"))
+    solicitud = any(x in n for x in ("solicitud", "instancia", "sol·licitud", "sollicitud", "instanci",
+                                     "plazo de inscripcion", "termini d'inscripcio", "prazo de inscricion"))
     if plazo and solicitud:
         return 1
     # Sin una de las dos palabras, solo si no habla de otra cosa (documentación de los aprobados, recursos,
@@ -209,7 +210,7 @@ EXCLUIR_SIN_SOLICITUD = ("documentaci", "documents", "recurr", "reposici", "recu
                          "incorporaci", "alega", "reclama", "subsana", "toma de", "presa de", "tribunal", "aprobad",
                          "seleccionad", "propuest", "lista", "relacion", "llista", "relacio")
 RE_PUBLICACION_CONVOCATORIA = re.compile(
-    r"publicaci[oó]n?\s+(?:\w+\s+){0,3}?(?:de\s+la\s+convocatoria|de\s+las\s+bases|del\s+extracto|"
+    r"publicaci[oó]n?\s+(?:\w+\s+){0,3}?(?:de\s+(?:la|esta|la\s+presente)\s+convocatoria|de\s+las\s+bases|del\s+extracto|"
     r"del\s+anuncio\s+de\s+(?:la\s+)?convocatoria|de\s+la\s+convocat[oò]ria|de\s+les\s+bases|"
     r"de\s+l'anunci\s+de\s+(?:la\s+)?convocat[oò]ria|da\s+convocatoria|das\s+bases)", re.IGNORECASE)
 
@@ -219,6 +220,12 @@ PARTICULAS_FINALES = re.compile(r"(?:\s+(?:de|del|la|las|les|los|i|y))+$")
 
 RE_UNION = re.compile(r"^[\s»\"”,]*(?:o|y|i|e|u|ou|y/o|o\s+bien)\s+(?:en\s+|a\s+)?(?:el|la|al|o|a)?\s*[«\"“]?$",
                       re.IGNORECASE)
+
+
+# Los nombres genéricos escritos en minúscula («… en el boletín oficial de la provincia», «… del estado»)
+RE_BOLETIN_GENERICO = re.compile(
+    r"\b(?:(?P<estado>bolet[ií]n\s+oficial\s+del\s+estado)|(?P<prov>bolet[ií]n\s+oficial\s+de\s+la\s+provincia|"
+    r"butllet[ií]\s+oficial\s+de\s+la\s+prov[ií]ncia|bolet[ií]n\s+oficial\s+da\s+provincia))\b", re.IGNORECASE)
 
 
 def _menciones(f: str) -> list[tuple[int, int, str]]:
@@ -231,6 +238,11 @@ def _menciones(f: str) -> list[tuple[int, int, str]]:
             vistos[k] = (m.start(), m.end(), nombre)
     for m in RE_SIGLAS.finditer(f):
         vistos.setdefault(normalizar(SIGLAS[m.group(1)]), (m.start(), m.end(), SIGLAS[m.group(1)]))
+    for m in RE_BOLETIN_GENERICO.finditer(f):
+        if any(i < m.end() and m.start() < j for i, j, _ in vistos.values()):
+            continue  # ya está con su nombre completo
+        nombre = "Boletín Oficial del Estado" if m.group("estado") else "Boletín Oficial de la Provincia"
+        vistos.setdefault(normalizar(nombre) + f"@{m.start()}", (m.start(), m.end(), nombre))
     return sorted(vistos.values())
 
 
