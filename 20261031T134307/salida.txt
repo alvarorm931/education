@@ -1,0 +1,189 @@
+===== 200 1919 https://app.dipalme.org/bop/publico.zul None
+cookies: ['JSESSIONID', 'TS01298662', 'TS01aca090']
+zul citados: ['publico.zul', 'publicoValidar.zul']
+pdf citados: []
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+
+<script type="text/javascript" src="/bop/zkau/web/eaef3a57/js/zk.wpd;jsessionid=C19EE860ED9B06FB4DC94ED80EEF5C2E" charset="UTF-8"></script>
+<script type="text/javascript" src="/bop/zkau/web/eaef3a57/js/zul.lang.wpd;jsessionid=C19EE860ED9B06FB4DC94ED80EEF5C2E" charset="UTF-8"></script>
+<script type="text/javascript" src="/bop/zkau/web/eaef3a57/js/zkbind.wpd;jsessionid=C19EE860ED9B06FB4DC94ED80EEF5C2E" charset="UTF-8"></script>
+<!-- ZK 9.5.0.2 EE 2020112410 -->
+<script class="z-runonce" type="text/javascript">
+zkopt({ppos:'center,center'});
+</script>
+<link rel="stylesheet" type="text/css" href="/bop/zkau/web/eaef3a57/_zkiju-silvertail/zul/css/zk.wcs;jsessionid=C19EE860ED9B06FB4DC94ED80EEF5C2E"/>
+<link rel="stylesheet" type="text/css" href="/bop/zkau/web/eaef3a57/silvertail/zkmax/css/tablet.css.dsp;jsessionid=C19EE860ED9B06FB4DC94ED80EEF5C2E" disabled/>
+</head>
+<body>
+<div id="kYFQ_" class="z-temp"><div id="zk_proc" class="z-loading"><div class="z-loading-indicator"><span class="z-loading-icon"></span>Procesando...</div></div></div>
+<script id="kYFQ0" type="text/javascript" src="/bop/zkau/web/eaef3a57/js/dipalme.js;jsessionid=C19EE860ED9B06FB4DC94ED80EEF5C2E">
+</script>
+
+<script class="z-runonce" type="text/javascript">
+zk.themeName='silvertail';zkmx(
+[0,'kYFQ_',{dt:'z_to6',cu:'\x2Fbop\x3Bjsessionid\x3DC19EE860ED9B06FB4DC94ED80EEF5C2E',uu:'\x2Fbop\x2Fzkau\x3Bjsessionid\x3DC19EE860ED9B06FB4DC94ED80EEF5C2E',rsu:'\x2Fbop\x2Fzkau\x3Bjsessionid\x3DC19EE860ED9B06FB4DC94ED80EEF5C2E',ru:'\x2Fpublico.zul'},{},[
+['zul.utl.Script','kYFQ0',{},{},[]],
+['zul.utl.Script','kYFQ1',{},{},[]]]],9);
+
+		window.location.replace(controlarHTTPS('publico.zul', 'publicoValidar.zul'));
+	
+
+</script>
+<noscript>
+<div class="noscript"><p>Sorry, JavaScript must be enabled.<br/>Change your browser options, then <a href="">try again</a>.</p></div>
+</noscript>
+
+</body>
+</html>
+----- script /bop/zkau/web/eaef3a57/js/dipalme.js;jsessionid=C19EE860ED9B06FB4DC94ED80EEF5C2E (2245)
+var urlInicial = '';
+
+function controlarTimeout() {
+	window.location.replace(urlInicial);
+}
+
+function controlarHTTPS(zul, richlet) {
+	var url = window.location.href;
+	var parametros = '';
+	if (url.indexOf('?') > 0) {
+		parametros = url.split('?')[1];
+		url = url.split('?')[0];
+		parametros = '?' + parametros;
+		if (window.location.protocol == 'https:') {
+			parametros = parametros + '&';
+		}
+	} else {
+		if (window.location.protocol == 'https:') {
+			parametros = '?';
+		}
+	}
+	if (url.indexOf(zul) > 0) {
+		url = url.replace(zul, richlet);
+	} else {
+//		if (!url.endsWith('/')) {
+		if (url.lastIndexOf('/') != (url.length - 1)) {
+			url = url + '/';
+		}
+		url = url + richlet;
+	}
+	url = url + parametros;
+	if (window.location.protocol == 'https:') {
+		url = url + 'protocolo=https';
+	}
+	if (window.location.port) {
+		if (url.indexOf('?') > 0) {
+			url = url + '&';
+		} else {
+			url = url + '?';
+		}
+		url = url + 'puerto=' + window.location.port;
+	}
+	if (url.indexOf('?') > 0) {
+		url = url + '&';
+	} else {
+		url = url + '?';
+	}
+	url = url + "urlInicial=" + encodeURIComponent(window.location.href);
+	//alert(url);
+//	try {
+//		window.RTCPeerConnection = window.RTCPeerConnection
+//				|| window.mozRTCPeerConnection
+//				|| window.webkitRTCPeerConnection; //compatibility for firefox and chrome
+//		if (window.RTCPeerConnection) {
+//			var pc = new RTCPeerConnection({
+//				iceServers : []
+//			}), noop = function() {
+//			};
+//			pc.createDataChannel(''); //create a bogus data channel
+//			pc.createOffer(pc.setLocalDescription.bind(pc), noop); // create offer and set local description
+//			pc.onicecandidate = function(ice) { //listen for candidate events
+//				if (ice && ice.candidate && ice.candidate.candidate) {
+//					var ip = /([0-9]{1,3}(\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/
+//							.exec(ice.candidate.candidate)[1];
+//					console.log('my IP: ', ip);
+//					if (url.indexOf('?') > 0) {
+//						url = url + '&';
+//					} else {
+//						url = url + '?';
+//					}
+//					url = url + 'ip=' + ip;//.replace('.', '-');
+//					pc.onicecandidate = noop;
+//				}
+//			}
+//		}
+//	} catch (e) {
+//		console.log(e);
+//	}
+	return url;
+}
+
+
+===== 500 5594 https://app.dipalme.org/bop/publicoValidar.zul None
+cookies: ['JSESSIONID', 'TS01298662', 'TS01aca090']
+zul citados: []
+pdf citados: []
+<!doctype html><html lang="es"><head><title>Estado HTTP 500 – Internal Server Error</title><style type="text/css">h1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} h2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} h3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} body {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} b {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} p {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;} a {color:black;} a.name {color:black;} .line {height:1px;background-color:#525D76;border:none;}</style></head><body><h1>Estado HTTP 500 – Internal Server Error</h1><hr class="line" /><p><b>Tipo</b> Informe de Excepción</p><p><b>Descripción</b> El servidor encontró un error interno que hizo que no pudiera rellenar este requerimiento.</p><p><b>excepción</b></p><pre>java.lang.NullPointerException
+	org.dipalme.bop.mvvm.BopViewModel.getFondo(BopViewModel.java:113)
+	sun.reflect.GeneratedMethodAccessor879.invoke(Unknown Source)
+	sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	java.lang.reflect.Method.invoke(Method.java:498)
+	org.zkoss.zel.BeanELResolver.getValue(BeanELResolver.java:104)
+	org.zkoss.zel.CompositeELResolver.getValue(CompositeELResolver.java:66)
+	org.zkoss.zel.CompositeELResolver.getValue(CompositeELResolver.java:66)
+	org.zkoss.xel.zel.XelELResolver.getValue(XelELResolver.java:99)
+	org.zkoss.bind.xel.zel.BindELResolver.getValue(BindELResolver.java:125)
+	org.zkoss.zel.impl.parser.AstValue.getValue(AstValue.java:188)
+	org.zkoss.zel.impl.ValueExpressionImpl.getValue(ValueExpressionImpl.java:184)
+	org.zkoss.zkmax.bind.impl.ValueExpressionImplEx.getValue(ValueExpressionImplEx.java:52)
+	org.zkoss.xel.zel.ELXelExpression.evaluate(ELXelExpression.java:41)
+	org.zkoss.zkmax.bind.impl.BindEvaluatorXImplEx$LazyBindXelExpression.evaluate(BindEvaluatorXImplEx.java:128)
+	org.zkoss.bind.impl.BindEvaluatorXImpl.getValue(BindEvaluatorXImpl.java:49)
+	org.zkoss.bind.impl.LoadPropertyBindingImpl.load(LoadPropertyBindingImpl.java:58)
+	org.zkoss.bind.impl.PropertyBindingHandler.doLoadBinding(PropertyBindingHandler.java:140)
+	org.zkoss.bind.impl.PropertyBindingHandler.doLoad(PropertyBindingHandler.java:341)
+	org.zkoss.bind.impl.BinderImpl.loadComponentProperties0(BinderImpl.java:2537)
+	org.zkoss.bind.impl.BinderImpl.loadComponent0(BinderImpl.java:2504)
+	org.zkoss.bind.impl.BinderImpl.loadComponent0(BinderImpl.java:2509)
+	org.zkoss.bind.impl.BinderImpl.loadComponent0(BinderImpl.java:2509)
+	org.zkoss.bind.impl.BinderImpl.loadComponent0(BinderImpl.java:2509)
+	org.zkoss.bind.impl.BinderImpl.loadComponent0(BinderImpl.java:2509)
+	org.zkoss.bind.impl.BinderImpl.loadComponent0(BinderImpl.java:2509)
+	org.zkoss.bind.impl.BinderImpl.loadComponent(BinderImpl.java:2439)
+	org.zkoss.bind.BindComposer$BinderKeeper$Loader.load(BindComposer.java:615)
+	org.zkoss.bind.BindComposer$BinderKeeper.loadComponentForAllBinders(BindComposer.java:591)
+	org.zkoss.bind.BindComposer.doAfterCompose(BindComposer.java:245)
+	org.zkoss.zk.ui.impl.UiEngineImpl.doAfterCompose(UiEngineImpl.java:625)
+	org.zkoss.zk.ui.impl.UiEngineImpl.execCreateChild0(UiEngineImpl.java:950)
+	org.zkoss.zk.ui.impl.UiEngineImpl.execCreateChild(UiEngineImpl.java:897)
+	org.zkoss.zk.ui.impl.UiEngineImpl.execCreate0(UiEngineImpl.java:784)
+	org.zkoss.zk.ui.impl.UiEngineImpl.execCreate(UiEngineImpl.java:748)
+	org.zkoss.zk.ui.impl.UiEngineImpl.createComponents(UiEngineImpl.java:1151)
+	org.zkoss.zk.ui.impl.AbstractExecution.createComponents0(AbstractExecution.java:346)
+	org.zkoss.zk.ui.impl.AbstractExecution.createComponents(AbstractExecution.java:307)
+	org.zkoss.zk.ui.Executions.createComponents(Executions.java:176)
+	org.dipalme.zk.componente.Util.crearZul(Util.java:1014)
+	org.dipalme.zk.mvvm.PublicoValidarViewModel.afterCompose(PublicoValidarViewModel.java:27)
+	sun.reflect.GeneratedMethodAccessor915.invoke(Unknown Source)
+	sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	java.lang.reflect.Method.invoke(Method.java:498)
+	org.zkoss.bind.impl.ParamCall.call(ParamCall.java:172)
+	org.zkoss.bind.impl.AbstractAnnotatedMethodInvoker.invokeMethod(AbstractAnnotatedMethodInvoker.java:112)
+	org.zkoss.bind.impl.AbstractAnnotatedMethodInvoker.invokeMethod(AbstractAnnotatedMethodInvoker.java:78)
+	org.zkoss.bind.BindComposer.doAfterCompose(BindComposer.java:240)
+	org.zkoss.zk.ui.impl.UiEngineImpl.doAfterCompose(UiEngineImpl.java:625)
+	org.zkoss.zk.ui.impl.UiEngineImpl.execCreateChild0(UiEngineImpl.java:950)
+	org.zkoss.zk.ui.impl.UiEngineImpl.execCreateChild(UiEngineImpl.java:897)
+	org.zkoss.zk.ui.impl.UiEngineImpl.execCreate0(UiEngineImpl.java:784)
+	org.zkoss.zk.ui.impl.UiEngineImpl.execCreate(UiEngineImpl.java:748)
+	org.zkoss.zk.ui.impl.UiEngineImpl.execNewPage0(UiEngineImpl.java:469)
+	org.zkoss.zk.ui.impl.UiEngineImpl.execNewPage(UiEngineImpl.java:377)
+	org.zkoss.zk.ui.http.DHtmlLayoutServlet.process(DHtmlLayoutServlet.java:220)
+	org.zkoss.zk.ui.http.DHtmlLayoutServlet.doGet(DHtmlLayoutServlet.java:146)
+	javax.servlet.http.HttpServlet.service(HttpServlet.java:634)
+	javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
+	org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+</pre><p><b>nota</b> La traza completa de la causa de este error se encuentra en los archivos de registro del servidor.</p><hr class="line" /><h3>Apache Tomcat/9.0.16</h3></body></html>
+codigo=0
