@@ -55,14 +55,19 @@ RE_INICIO_EXPLICITO = re.compile(
     rf"(?:a\s+partir\s+del|desde\s+el|des\s+del|a\s+partir\s+do|desde\s+o)\s+d[ií]a\s+(?P<d>\d{{1,2}}){_DE}(?P<m>[{L}]+)"
     r"(?:\s+de\s+(?P<a>\d{4}))?", re.IGNORECASE)
 RE_FIN_EXPLICITO = re.compile(
-    r"(?:finaliza\w*|finalitza\w*|termina\w*|concluy\w*|concluir\w*|conclou\w*|vence\w*|remata\w*|acabar[aà]\w*)"
+    r"\b(?:finaliza\w*|finalitza\w*|termina\w*|concluy\w*|concluir\w*|conclou\w*|vence\w*|remata\w*|acabar[aà]\w*)"
     rf"[^.;]{{0,60}}?\b(?:el|o)\s+(?:d[ií]a\s+)?(?P<d>\d{{1,2}}){_DE}(?P<m>[{L}]+)(?:\s+de\s+(?P<a>\d{{4}}))?",
     re.IGNORECASE)
 RE_BOLETIN = re.compile(r"[«\"“](?P<b>(?:Boletín|Bolet[ií]n|Diario|Diari|Butlletí)[^»\"”]{3,80})[»\"”]")
+# Palabras que empiezan la frase siguiente cuando el PDF perdió el punto («… de la Provincia de Teruel Se adjuntan…»)
+_COMIENZOS_DE_FRASE = (r"(?:Se|En|Contra|Que|Para|Por|Con|Asimismo|Dich[oa]s?|Lo|Si|No|Tras|Durante|Mediante|Cuando|"
+                       r"Igualmente|También|Esta|Este|Estas|Estos|Una?|Es|Será|Serán|Quienes|Los\s+aspirantes|"
+                       r"Las\s+(?:bases|solicitudes|instancias|personas))\b")
 # Nombre del boletín sin comillas, como lo escriben muchos boletines autonómicos y provinciales
 RE_BOLETIN_LIBRE = re.compile(
     r"\b(?P<b>(?:Bolet[ií]n|Diario|Diari|Butllet[ií])\s+Oficial"
-    r"(?:\s+(?:de\s+la|de\s+las|de\s+les|de\s+los|del|dels|de|da|do)?\s*[A-ZÁÉÍÓÚÑÀÈÒ][\wÀ-ÿ·'’/-]*"
+    r"(?:\s+(?:de\s+la|de\s+las|de\s+les|de\s+los|del|dels|de|da|do)?\s*(?!" + _COMIENZOS_DE_FRASE + r")"
+    r"[A-ZÁÉÍÓÚÑÀÈÒ][\wÀ-ÿ·'’/-]*"
     r"(?:\s+(?:de|del|la|las|les|los|i|y)\b)*)+)")
 SIGLAS = {
     "BOE": "Boletín Oficial del Estado", "DOGC": "Diari Oficial de la Generalitat de Catalunya",
@@ -94,7 +99,9 @@ EXCLUIR = ("subsan", "esmen", "emenda", "renuncia", "recurso de", "recurso potes
            "aportar la documentacion", "aportar la documentacio", "desempleadas durante", "presentar la documentacion",
            "presentar la documentacio", "dentro del plazo de presentacion de instancias y", "declaracion responsable",
            "declaracio responsable", "fecha de finalizacion del plazo", "finalizacion del plazo", "terminacion del plazo",
-           "una vez recibidas las solicitudes")
+           "una vez recibidas las solicitudes", "solicitudes de revision", "solicitud de revision", "plazo para resolver",
+           "plazo de resolucion", "plazo maximo para resolver", "plazo de vigencia", "periodo de vigencia", "vigencia de la bolsa", "vigencia de las bolsas", "vigencia de la lista", "termini per resoldre",
+           "sollicituds de revisio", "sol·licituds de revisio")
 PREFERIR = ("presentacion de solicitudes", "presentacion de las solicitudes", "solicitudes se presentaran",
             "solicitudes deberan presentarse", "presentacion de instancias", "plazo de presentacion",
             "presentacio de sol·licituds", "presentacio de les sol·licituds", "presentacio d'instancies",
@@ -109,15 +116,26 @@ RE_ABREVIATURA_FINAL = re.compile(
     r"[a-záéíóúñ])\.$")
 
 
+# Tratamientos y abreviaturas tras los que un salto de línea no acaba la frase («dirigidas al Sr.⏎Alcalde…»); las
+# letras sueltas no, porque «… del Anexo I.⏎» acaba un párrafo.
+RE_ABREVIATURA_DE_LINEA = re.compile(
+    r"(?i)(?:^|[\s(«\"“])(?:sr|sra|sres|sras|srs|excmo|excma|excmos|ilmo|ilma|ilmos|iltre|dña|dª|dr|dra|dres|núm|num|"
+    r"nº|art|arts|apdo|apdos|avda|pág|págs)\.$")
+
+
 def frases(texto: str) -> list[str]:
-    out = []
+    out: list[str] = []
     for p in (texto or "").split("\n"):
-        trozos = [f.strip() for f in RE_FRASE.split(p) if f.strip()]
-        for t in trozos:
-            if out and out[-1][-1:] == "." and RE_ABREVIATURA_FINAL.search(out[-1][-12:]) and not out[-1].endswith("etc."):
+        linea: list[str] = []  # las letras sueltas solo juntan trozos de la misma línea
+        for t in (f.strip() for f in RE_FRASE.split(p) if f.strip()):
+            if linea and linea[-1][-1:] == "." and RE_ABREVIATURA_FINAL.search(linea[-1][-12:]) \
+                    and not linea[-1].endswith("etc."):
+                linea[-1] = linea[-1] + " " + t
+            elif not linea and out and RE_ABREVIATURA_DE_LINEA.search(out[-1][-12:]):
                 out[-1] = out[-1] + " " + t
             else:
-                out.append(t)
+                linea.append(t)
+        out += linea
     return out
 
 
@@ -139,6 +157,22 @@ RE_PUBLICACION_DE = re.compile(
     r"de\s+la\s+convocat[oò]ria|de\s+les\s+bases|de\s+l'anunci|d'aquest\s+anunci|d'aquesta\s+resoluci[oó]|del\s+present|"
     r"da\s+convocatoria|das\s+bases|deste\s+anuncio|desta\s+resoluci[oó]n)|a\s+esta\s+publicaci[oó]n|su\s+publicaci[oó]n|"
     r"la\s+seva\s+publicaci[oó]|s[uú]a\s+publicaci[oó]n", re.IGNORECASE)
+
+
+RE_DONDE_DICE = re.compile(r"(?i)\b(?:donde\s+(?:dice|pone|figura)|onde\s+d[ií]|on\s+diu|on\s+hi\s+diu)\b")
+RE_DEBE_DECIR = re.compile(r"(?i)\b(?:debe\s+decir|deber[aá]\s+decir|ha\s+de\s+dir|debe\s+dicir|ha\s+de\s+dicir|"
+                           r"debe\s+figurar|queda\s+redactad)")
+
+
+def _texto_corregido(texto: str, f: str, i: int) -> bool:
+    """La frase (que empieza en la posición i del texto) es el texto que una corrección sustituye («Donde dice:
+    “El plazo… en el BOE”. Debe decir: …»)."""
+    if i < 0:
+        return False
+    antes = texto[max(0, i - 120):i + min(len(f), 200)]
+    ultimo_dice = max((m.end() for m in RE_DONDE_DICE.finditer(antes)), default=-1)
+    ultimo_debe = max((m.end() for m in RE_DEBE_DECIR.finditer(antes)), default=-1)
+    return ultimo_dice > ultimo_debe
 
 
 def _candidata(f: str) -> int:
@@ -232,17 +266,31 @@ def extraer_plazo(texto: str, publicacion: str, boletin_propio: str | tuple[str,
     """
     pub = date.fromisoformat(publicacion)
     propios = {normalizar(b) for b in ((boletin_propio,) if isinstance(boletin_propio, str) else boletin_propio)}
-    candidatas = [(f, k) for f in frases(texto) if (k := _candidata(f))]
+    candidatas, cursor = [], 0
+    for f in frases(texto):
+        i = texto.find(f[:60], cursor)
+        cursor = i + 1 if i >= 0 else cursor
+        corregida = False
+        if RE_DONDE_DICE.search(f) and (debe := list(RE_DEBE_DECIR.finditer(f))):
+            f, corregida = f[debe[-1].end():].lstrip(" :“\"«"), True  # «Donde dice: … debe decir: “…”» en una frase
+        if (k := _candidata(f)) and (corregida or not _texto_corregido(texto, f, i)):
+            candidatas.append((f, k))
     if not candidatas:
         return None
     candidatas.sort(key=lambda fk: (fk[1], 0 if any(x in normalizar(fk[0]) for x in PREFERIR) else 1))
     # Por clase de frase (ver _candidata): la primera que da la fecha de fin; si ninguna, la primera que da el plazo.
     # Una frase de una clase peor solo cuenta si ninguna de las mejores da el plazo
+    # La primera frase que da la fecha de fin o dice desde qué boletín cuenta: si cuenta desde otro (el BOE), no
+    # tiene fecha de fin a propósito y no se busca otra frase que la dé («solicitudes de revisión… tres días» o «el
+    # plazo para resolver las solicitudes» no son el plazo; revisión del 31/10/2026). Las que no dicen desde cuándo
+    # cuentan, solo si ninguna otra lo dice
     for clase in (1, 2, 3):
         primera = None
         for f, _ in [fk for fk in candidatas if fk[1] == clase][:8]:
             r = _plazo_de_frase(f, pub, propios, comunidad)
-            if r and r.get("fin_estimado"):
+            if not r:
+                continue
+            if r.get("fin_estimado") or r.get("cuenta_desde"):
                 return r
             primera = primera or r
         if primera:

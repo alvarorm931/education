@@ -208,3 +208,39 @@ def test_frases_sin_plazo_o_sin_solicitud():
               "El presente acuerdo podrá ser recurrido potestativamente en reposición en el plazo de un mes a contar desde "
               "el día siguiente al de su publicación."):
         assert extraer_plazo(t, "2026-03-02", boib) is None, t
+
+
+def test_correccion_donde_dice_debe_decir():
+    t = ("Se realiza la siguiente corrección.\nDonde dice:\nSiendo el plazo de presentación de instancias de veinte días "
+         "hábiles contados desde el siguiente al de la publicación de este anuncio en el Boletín Oficial del Estado.\n"
+         "Debe decir:\nSiendo el plazo de presentación de instancias de veinte días hábiles contados desde el siguiente "
+         "al de la publicación de este anuncio en el Boletín Oficial de la Provincia.")
+    r = extraer_plazo(t, "2026-07-15", "Boletín Oficial de la Provincia de Badajoz")
+    assert r["cuenta_desde"] == "Boletín Oficial de la Provincia" and r["fin_estimado"]
+    t = ("Forma e prazo de presentación de instancias, onde dí: “no prazo de vinte días naturais contados desde o día "
+         "seguinte ao da publicación no Boletín Oficial do Estado”, debe dicir: “O prazo de presentación de solicitudes "
+         "será de vinte días naturais contados desde o día seguinte ao da publicación no Boletín Oficial da Provincia”.")
+    r = extraer_plazo(t, "2026-03-02", "Boletín Oficial da Provincia da Coruña")
+    assert r and "Estado" not in r["cuenta_desde"]
+
+
+def test_tratamiento_al_final_de_linea_y_vigencia():
+    t = ("Las instancias solicitando tomar parte en el concurso-oposición, dirigidas al Sr.\nAlcalde-Presidente del "
+         "Ayuntamiento, se presentarán en el Registro General durante el plazo de diez días naturales, contados a partir "
+         "del siguiente al de la publicación de la convocatoria en el Boletín Oficial de la Provincia.")
+    assert extraer_plazo(t, "2026-05-15", "Boletín Oficial de la Provincia de Zamora")["fin_estimado"]
+    t = ("Quienes deseen concursar presentarán sus solicitudes en el Registro General, o en la forma establecida en la "
+         "Ley 30/1992 –cuya vigencia deriva de la disposición derogatoria única de la Ley 39/2015– en el plazo de veinte "
+         "días naturales contados a partir del siguiente al de la publicación del presente acuerdo en el «Boletín Oficial "
+         "del Estado».")
+    assert extraer_plazo(t, "2025-12-01", "Boletín Oficial del Estado")["fin_estimado"]
+    t = "La vigencia de la bolsa será de dos años a contar desde la publicación de la lista en el Boletín Oficial del Estado."
+    assert extraer_plazo(t, "2025-12-01", "Boletín Oficial del Estado") is None
+
+
+def test_nombre_del_boletin_sin_la_frase_siguiente():
+    t = ("Se abre el plazo de presentación de solicitudes, que será de veinte días naturales a contar desde el día "
+         "siguiente a la publicación de este anuncio en Boletín Oficial de la Provincia de Teruel Se adjuntan las bases "
+         "reguladoras que regirán la convocatoria:")
+    r = extraer_plazo(t, "2026-02-02", "Boletín Oficial de la Provincia de Teruel")
+    assert r["cuenta_desde"] == "Boletín Oficial de la Provincia de Teruel" and r["fin_estimado"]
