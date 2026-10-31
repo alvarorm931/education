@@ -1,17 +1,15 @@
 {
- "fecha": "2026-10-31T11:05:19+00:00",
- "fecha_madrid": "31/10 12:05",
+ "fecha": "2026-10-31T11:17:09+00:00",
+ "fecha_madrid": "31/10 12:17",
  "ventana_horas": 6.0,
  "resumen": {
-  "ejecuciones_revisadas": 158,
+  "ejecuciones_revisadas": 157,
   "fallos": 0,
   "fallos_pendientes": 0,
   "relanzados": 0,
   "colas_largas": 1,
   "flujos_programados_parados": [],
-  "programaciones_lanzadas_a_mano": [
-   "extraccion-bases.yml"
-  ],
+  "programaciones_lanzadas_a_mano": [],
   "avisos_de_fuentes": 0,
   "almacen": "ok"
  },
@@ -20,7 +18,7 @@
   {
    "flujo": "Grados por tramos",
    "id": 41188372738,
-   "en_cola_min": 104,
+   "en_cola_min": 116,
    "trabajos_empezados": 1,
    "url": "https://github.com/alvarorm931/education/actions/runs/41188372738"
   }
@@ -39,23 +37,17 @@
    "parado": false
   }
  },
- "respaldo_programaciones": [
-  {
-   "flujo": "extraccion-bases.yml",
-   "prevista": "31/10 11:41",
-   "lanzado": true
-  }
- ],
+ "respaldo_programaciones": [],
  "programaciones_tardias_canceladas": [],
  "ficheros_de_mas_de_80_mb": [],
  "latido": "en marcha",
  "boe": {
   "ultimo_diario": {
-   "fecha": "2026-10-30",
-   "numero": 270,
+   "fecha": "2026-10-31",
+   "numero": 271,
    "anio": 2026
   },
-  "ultima_ejecucion": "2026-10-31T08:12:47+01:00",
+  "ultima_ejecucion": "2026-10-31T12:07:19+01:00",
   "alertas_ultima_ejecucion": []
  },
  "avisos_de_fuentes": [],
