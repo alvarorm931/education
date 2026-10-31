@@ -35,3 +35,11 @@ def test_pagina_de_precio_nieta_de_la_ficha():
 def test_muestra_cero_no_divide_por_cero():
     from motor.estudios.rastreador import _repartida
     assert _repartida(["a", "b"], 0) == []
+
+
+def test_sin_subdominios_de_campana_ni_paginas_generales():
+    res = {"base_final": "https://www.ie.edu",
+           "programas": ["https://quiz.ie.edu/masters-programs-ie/?_gl=1*abc", "https://www.ie.edu/admissions/masters/admissions-test/",
+                         "https://www.ie.edu/masters/master-in-finance/?utm_source=x", "https://www.ie.edu/masters/master-in-finance/"],
+           "subpaginas_precio": []}
+    assert [x["url"] for x in escuelas.filas(res, "ie.edu")] == ["https://www.ie.edu/masters/master-in-finance/"]

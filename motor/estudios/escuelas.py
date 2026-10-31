@@ -35,6 +35,9 @@ ESCUELAS = {
 }
 BLOQUEADAS = {"esade.edu": "403 a nuestro lector", "eada.edu": "403 a nuestro lector"}
 
+RE_SEGUIMIENTO = re.compile(r"(?i)[?&](_gl|utm_[a-z]+|gclid|fbclid|_ga)=")
+RE_GENERICA = re.compile(r"(?i)/(admissions?|admision|admisiones|blog|news|noticias|events?|eventos|alumni|faculty|"
+                         r"profesorado|stories|quiz)(/|$)")
 RE_MASTER_URL = re.compile(r"(?i)m[aàá]ster|\bmba\b|[-_/]mba[-_/]|\bmsc\b|[-_/]msc[-_/]|[-_/]mim[-_/]|\bllm\b|[-_/]llm[-_/]")
 
 
@@ -44,7 +47,11 @@ def filas(res: dict, dominio: str, max_paginas: int = 300) -> list[dict]:
     from motor.estudios.censo import dominio_registrado, id_proveedor
 
     prov = id_proveedor(dominio_registrado(dominio))
-    progs = [u for u in res.get("programas") or [] if RE_MASTER_URL.search(urlparse(u).path)]
+    principal = urlparse(res.get("base_final") or f"https://www.{dominio}").netloc
+    # fichas de la web principal (no subdominios de concursos o campañas), sin parámetros de seguimiento ni
+    # páginas generales de admisión, noticias o profesorado
+    progs = [u for u in res.get("programas") or [] if RE_MASTER_URL.search(urlparse(u).path)
+             and urlparse(u).netloc == principal and not RE_SEGUIMIENTO.search(u) and not RE_GENERICA.search(urlparse(u).path)]
     precio = list(res.get("subpaginas_precio") or [])
     out, vistos = [], set()
     # cada ficha con sus páginas de precio detrás, para no quedarse con fichas sin precio si se llega al tope
