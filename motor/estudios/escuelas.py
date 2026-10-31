@@ -49,8 +49,11 @@ def filas(res: dict, dominio: str, max_paginas: int = 300) -> list[dict]:
     out, vistos = [], set()
     # cada ficha con sus páginas de precio detrás, para no quedarse con fichas sin precio si se llega al tope
     por_raiz: dict[str, list[str]] = {}
+    raices = {urlparse(u).path.rstrip("/") for u in progs}
     for u in precio:
-        por_raiz.setdefault(urlparse(u).path.rstrip("/").rsplit("/", 1)[0], []).append(u)
+        padre = urlparse(u).path.rstrip("/").rsplit("/", 1)[0]
+        raiz = padre if padre in raices else padre.rsplit("/", 1)[0]
+        por_raiz.setdefault(raiz, []).append(u)
     for u in progs:
         for x in [u] + por_raiz.get(urlparse(u).path.rstrip("/"), []):
             if x not in vistos and len(out) < max_paginas:
@@ -68,7 +71,7 @@ def ejecutar(dominio: str, salida: Path, max_paginas: int = 300, max_minutos: fl
     if dominio in BLOQUEADAS:
         return {"dominio": dominio, "no_se_lee": BLOQUEADAS[dominio]}
     e = ESCUELAS[dominio]
-    res = rastrear(e["web"], None, max_urls=60000, muestra=0, max_peticiones=220, profundo=True,
+    res = rastrear(e["web"], None, max_urls=60000, muestra=2, max_peticiones=220, profundo=True,
                    listados=e.get("listados") or [])
     destino = salida / "datos" / "estudios" / "extraccion" / f"escuela_{dominio.replace('.', '_')}"
     destino.mkdir(parents=True, exist_ok=True)

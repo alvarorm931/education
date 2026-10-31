@@ -634,9 +634,16 @@ def rastrear(base: str, archivo: Archivo | None, max_urls: int = 60000, muestra:
         res["programas_lastmod"] = {u: fechas[u] for u in candidatas if u in fechas}
         res["textos_programa"] = {u: d.textos[u] for u in candidatas if u in d.textos}
         # páginas de precio y admisión que cuelgan de una ficha («/master-in-finance/admissions-fees»)
+        # (hija de la ficha o nieta: «/mba/admissions/tuition-financing»)
         raices_prog = {urlparse(u).path.rstrip("/") for u in candidatas}
+
+        def cuelga(u: str) -> bool:
+            ruta = urlparse(u).path.rstrip("/")
+            padre = ruta.rsplit("/", 1)[0]
+            return padre in raices_prog or padre.rsplit("/", 1)[0] in raices_prog
+
         res["subpaginas_precio"] = sorted({u for u in paginas if d.propio(u) and SUBPAGINA_PRECIO.search(
-            urlparse(u).path.rstrip("/").rsplit("/", 1)[-1]) and urlparse(u).path.rstrip("/").rsplit("/", 1)[0] in raices_prog})[:400]
+            urlparse(u).path.rstrip("/").rsplit("/", 1)[-1]) and cuelga(u)})[:400]
         res["documentos_precio"] = sorted({u for u in paginas if DOC_PRECIO.search(u) and d.propio(u)
                                            and not NOTICIA.search(urlparse(u).path)})[:100]
         res["muestra"] = medidas
@@ -655,6 +662,8 @@ def rastrear(base: str, archivo: Archivo | None, max_urls: int = 60000, muestra:
 
 
 def _repartida(urls: list[str], n: int) -> list[str]:
+    if n <= 0:
+        return []
     if len(urls) <= n:
         return urls
     paso = len(urls) / n
