@@ -1,0 +1,83 @@
+name: Limpiar historial (datos de personas)
+
+# Sustituye el historial de las ramas datos y sondas por un solo commit con su contenido de ahora mismo.
+# El repositorio es público y esas ramas guardan, en commits antiguos, datos de personas que ya se retiraron o se
+# limpiaron (originales del 29/10, textos limpiados por la tarea de privacidad, respuestas de sondas con nombres).
+# Decisión de Álvaro del 31/10/2026; lo lanza él (Actions > este flujo > Run workflow, escribiendo la confirmación).
+#
+# - El contenido actual no cambia: el commit nuevo lleva exactamente el mismo árbol que la punta de la rama.
+# - La sustitución es atómica (--force-with-lease): si otra ejecución sube a la rama justo entonces, se reintenta
+#   con la punta nueva, así que nunca se pierde lo que se acaba de subir.
+# - Las ejecuciones que estén subiendo a datos en ese momento pueden fallar una vez al reintentar su subida (su
+#   «rebase» choca); no reponen nada antiguo. Se relanzan.
+# - GitHub sigue sirviendo los commits antiguos por su identificador hasta que los limpia: después hay que pedirlo
+#   a su soporte (lo prepara la conversación de estado).
+
+on:
+  workflow_dispatch:
+    inputs:
+      ramas:
+        description: "Ramas, separadas por espacios (solo datos, sondas o prueba-historial)"
+        default: "datos sondas"
+      confirmar:
+        description: "Escribe BORRAR-HISTORIAL para confirmar"
+        required: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: limpiar-historial
+  cancel-in-progress: false
+
+jobs:
+  limpiar:
+    if: inputs.confirmar == 'BORRAR-HISTORIAL'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      RAMAS: ${{ inputs.ramas }}
+      GH_TOKEN: ${{ github.token }}
+      REPO: ${{ github.repository }}
+    steps:
+      - name: Sustituir el historial por un solo commit con el contenido actual
+        run: |
+          set -eu
+          git init -q h && cd h
+          git config user.name "vigilante"
+          git config user.email "vigilante@users.noreply.github.com"
+          git remote add origin "https://x-access-token:${GH_TOKEN}@github.com/${REPO}.git"
+          : > ../resultado.md
+          for b in $RAMAS; do
+            case "$b" in datos|sondas|prueba-historial) ;; *) echo "Rama no permitida: $b" >&2; exit 1 ;; esac
+            hecho=""
+            for i in $(seq 1 20); do
+              # Solo la punta y sus árboles, sin el contenido de los ficheros: el árbol ya está en GitHub
+              git fetch -q --depth 1 --filter=blob:none origin "+refs/heads/$b:refs/remotes/origin/$b"
+              T=$(git rev-parse "refs/remotes/origin/$b")
+              ARBOL=$(git rev-parse "$T^{tree}")
+              C=$(git commit-tree "$ARBOL" -m "Rama $b: historial sustituido por su contenido del $(date -u +%Y-%m-%dT%H:%M:%SZ)
+
+          El historial anterior guardaba datos de personas ya retirados (decisión de Álvaro del 31/10/2026).
+          Contenido idéntico al de $T.")
+              if git push -q --force-with-lease="refs/heads/$b:$T" origin "$C:refs/heads/$b"; then
+                hecho=1
+                break
+              fi
+              echo "La rama $b cambió mientras tanto: se reintenta con la punta nueva"
+              sleep $((i * 3))
+            done
+            [ -n "$hecho" ] || { echo "No se pudo sustituir $b tras 20 intentos" >&2; exit 1; }
+            # Comprobación con la API (en un clon superficial todo commit parece no tener padres): el commit nuevo
+            # no tiene padres y su árbol es el de la punta anterior
+            PADRES=$(gh api "repos/$REPO/commits/$C" --jq '.parents | length')
+            ARBOL_C=$(gh api "repos/$REPO/git/commits/$C" --jq '.tree.sha')
+            AHORA=$(gh api "repos/$REPO/commits/$b" --jq '.sha')
+            if [ "$PADRES" = 0 ] && [ "$ARBOL_C" = "$ARBOL" ]; then
+              echo "- $b: antes $T, ahora $C, sin historial y con el mismo contenido (punta actual $AHORA)" | tee -a ../resultado.md
+            else
+              echo "- $b: comprobación fallida (padres $PADRES, árbol $ARBOL_C frente a $ARBOL)" | tee -a ../resultado.md
+              exit 1
+            fi
+          done
+          cat ../resultado.md >> "$GITHUB_STEP_SUMMARY"

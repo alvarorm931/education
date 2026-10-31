@@ -68,10 +68,10 @@ def test_anonimizar_nombres_junto_a_documento_y_d_mayusculas():
     """Casos que se escaparon el 30/10/2026: listas sin coma o en minúsculas fuera de tablas y «D. NOMBRE» en mayúsculas."""
     from motor.limpieza import tiene_nombre_de_persona
     from motor.mantenimiento.anonimizar import anonimizar_texto
-    t, _ = anonimizar_texto("1 PEREZ HERRERO MIRIAM ***1234**\nAlcaide Díaz, Rosa Mª ***5678**\n"
+    t, _ = anonimizar_texto("1 GOMEZ SANZ LAURA ***1234**\nMoreno Vidal, Rosa Mª ***5678**\n"
                             "<p>2 Garcia Lopez Maria ***1234**</p><p>Ayuntamiento de Lugo</p>")
-    assert "PEREZ" not in t and "Alcaide" not in t and "Garcia" not in t and "Ayuntamiento de Lugo" in t
-    assert tiene_nombre_de_persona("• D. MANUEL SIMÓN VILLAGRASA")
+    assert "GOMEZ" not in t and "Moreno" not in t and "Garcia" not in t and "Ayuntamiento de Lugo" in t
+    assert tiene_nombre_de_persona("• D. MANUEL RUIZ GARCÍA")
     assert not tiene_nombre_de_persona("D. OTRAS DISPOSICIONES")
 
 

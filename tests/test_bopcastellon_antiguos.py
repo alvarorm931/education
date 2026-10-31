@@ -28,7 +28,7 @@ Aprobar lista provisional aspirantes bolsa INGENIERO AMBIENTAL
 Recursos Humanos
 Personal
 El Ilmo. Sr. Presidente ha resuelto aprobar la lista provisional de aspirantes:
-1 PEREZ HERRERO MIRIAM ***0000**
+1 GOMEZ SANZ LAURA ***0000**
 Conceder el plazo de diez días naturales para reclamaciones, según el Boletín Oficial de la Provincia de Castellón núm. 150, de 16 de diciembre de 2021.
 """
 P4 = """ B.O.P . DE CASTELLÓN DE LA PLANA
@@ -105,5 +105,5 @@ def test_procesar(tmp_path, monkeypatch):
     assert [(x["tipo_acto"], (x["convocante"] or {}).get("nombre")) for x in op] == [
         ("admitidos", "Castellón"), ("convocatoria", "Artana")]
     lista = json.loads((base / "textos" / "2022" / "01" / "BOPCASTELLON-00089-2022-U.json").read_text(encoding="utf-8"))
-    assert lista["texto"] is None and "PEREZ" not in json.dumps(lista, ensure_ascii=False)
+    assert lista["texto"] is None and "GOMEZ" not in json.dumps(lista, ensure_ascii=False)
     assert lista["citas"][0]["fecha"] == "2021-12-16"

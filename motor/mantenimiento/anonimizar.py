@@ -115,8 +115,8 @@ def anonimizar_texto(t: str) -> tuple[str, int]:
         n += 1
         return "APELLIDO APELLIDO NOMBRE" if m.group(0).isupper() else "Apellido Apellido, Nombre"
 
-    # Junto a un documento de identidad, cualquier racha de dos o más palabras con mayúscula es un nombre («1 PEREZ
-    # HERRERO MIRIAM ***0000**», «Alcaide Díaz, Rosa Mª ***0000**»): en el texto plano, la línea; en HTML, el texto
+    # Junto a un documento de identidad, cualquier racha de dos o más palabras con mayúscula es un nombre («1 GOMEZ
+    # SANZ LAURA ***0000**», «Moreno Vidal, Rosa Mª ***0000**», nombres inventados): en el texto plano, la línea; en HTML, el texto
     # entre etiquetas que lleva el documento (30/10/2026)
     def con_documento(seg: str) -> str:
         return RE_RACHA.sub(racha, seg) if RE_DOCUMENTO.search(seg) else seg
