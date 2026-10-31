@@ -343,3 +343,19 @@ def test_recurso_contencioso_partido_en_otra_frase_no_es_plazo():
     t = ("Contra este acuerdo se puede interponer RECURS. CONTENCIÓS ADMINISTRATIU davant la Secció del contenciós "
          "administratiu del Tribunal d’Instància de Barcelona, en el termini de dos mesos.")
     assert extraer_plazo(t, "2026-08-10", "Butlletí Oficial de la Província de Barcelona") is None
+
+
+def test_hasta_una_fecha_y_frases_de_solicitudes_con_documentacion():
+    t = ("Las solicitudes de participación se podrán presentar desde el día siguiente al de la publicación de esta "
+         "resolución en el Diario Oficial de Galicia hasta el 4 de septiembre de 2026, ambos días incluidos.")
+    r = extraer_plazo(t, "2026-08-04", "Diario Oficial de Galicia")
+    assert r["fin_estimado"] == "2026-09-04" and r["fin_exacto"]
+    assert extraer_plazo("La bolsa estará vigente hasta el 31 de diciembre de 2027.", "2026-10-01",
+                         "Boletín Oficial de la Región de Murcia") is None
+    t = ("Las solicitudes y la documentación anexa que contenga la justificación de los requisitos y méritos alegados "
+         "deberán presentarse en los registros del Área Sanitaria, en el plazo de 20 días hábiles a contar desde el día "
+         "siguiente al de la publicación de este anuncio en el Diario Oficial de Galicia.")
+    assert extraer_plazo(t, "2026-05-11", "Diario Oficial de Galicia")["fin_estimado"]
+    t = ("Tercer.- OBRIR un nou termini de presentació de sol·licituds de 20 dies naturals a comptar des de l'endemà de "
+         "la publicació d'aquesta esmena al DOGC, d'acord amb les bases comunes reguladores del procés selectiu.")
+    assert extraer_plazo(t, "2026-05-12", "Diari Oficial de la Generalitat de Catalunya")["fin_estimado"] == "2026-06-01"

@@ -132,3 +132,36 @@ def test_resoluciones_del_tribunal_y_de_exclusion_del_dog():
     }
     for titulo, tipo in casos.items():
         assert clasificar_titulo(titulo)["tipo_acto"] == tipo, titulo
+
+
+def test_lo_que_no_es_de_personal_no_crea_procesos():
+    from motor.boe.clasificar import alcance_vigente, clasificar
+    for t in ("Bases reguladoras de participación en la “X Ruta de los Belenes de Mazarrón” del 18 de diciembre de 2026",
+              "Anuncio sobre aprobación inicial de las bases del concurso para la obtención de la marca Girona Excel·lent",
+              "ANUNCIO de la convocatoria de la asamblea general ordinaria.",
+              "Resolución por la que se convoca para el levantamiento de actas previas a la ocupación de las fincas",
+              "ACUERDO del Pleno del Ayuntamiento de Peromingo, por el que se convoca concurso para la venta forzosa de inmueble.",
+              "Edicto sobre aprobación de las bases técnicas para las obras de acondicionamiento de la calle Carib",
+              "Orden SAL/2/2026 por la que se convoca la concesión de compensaciones extraordinarias para personal de Atención Primaria"):
+        c = clasificar({"titulo": t})
+        assert alcance_vigente(t, c["tipo_acto"], c.get("modalidad"), "acceso") == "no_seleccion", t
+    for t in ("Plaça d'administratiu/iva - Subvencions Educatives i Convenis. Rectificació de les bases.",
+              "Convocatòria i oferta de treball de tècnic/a mitjà/ana de Programes Subvencionats (Medi Ambient).",
+              "Bases del concurs lliure per a la selecció de dos llocs de treball de peó de brigada (ajut del SOC)",
+              "Bolsa de trabajo de Oficial de obras de mantenimiento"):
+        c = clasificar({"titulo": t})
+        assert alcance_vigente(t, c["tipo_acto"], c.get("modalidad"), "acceso") != "no_seleccion", t
+
+
+def test_resoluciones_del_proceso_que_salian_como_convocatoria():
+    from motor.boe.clasificar import clasificar
+    casos = {
+        "Resolución de 7 de octubre de 2026, por la que se hace pública la adjudicación de una plaza de profesorado lector": "aprobados",
+        "RESOLUCIÓN de 15 de mayo de 2026, de modificación de las personas integrantes del órgano técnico de selección": "tribunal",
+        "Resolución de 28 de abril de 2026, por la que se rectifica error material en la convocatoria": "correccion",
+        "Rectificación del error material en la publicación referente al proceso selectivo de policía local": "correccion",
+        "Resolución PRE/126/2026, por la que se suspende la realización de la segunda prueba del proceso de selección": "modificacion",
+        "Resolución de 10/03/2026, por la que se anuncia el lugar, día y hora de inicio de las actuaciones": "examen",
+    }
+    for t, tipo in casos.items():
+        assert clasificar({"titulo": t})["tipo_acto"] == tipo, t

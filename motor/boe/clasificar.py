@@ -49,7 +49,11 @@ REGLAS_ACTO: list[tuple[str, tuple[str, ...]]] = [
                     "rectificacion bases", "es rectifiquen les bases", "rectificacio de les bases",
                     "rectificanse as bases", "rectificacion das bases",
                     "correccio d'errade", "correccio d'error", "correccio de les bases", "rectificacio d'error",
-                    "correccion de erros", "correccion das bases")),
+                    "correccion de erros", "correccion das bases",
+                    # «… por la que se rectifica error material…», «Rectificación del error material…» (31/10/2026)
+                    "rectifica error", "rectifica el error", "rectificacion del error", "rectifica un error",
+                    "rectifiquen errors", "rectifica l'error", "rectificacio de l'error", "rectificase o erro",
+                    "rectificacion do erro")),
     ("desierta", ("desierta", "desierto", "deserta", "desert")),
     ("anulacion", ("deja sin efecto", "se anula", "anulacion de la convocatoria", "desistimiento de bases",
                    "desistimiento de las bases", "desistimiento de la convocatoria", "desistimiento del proceso",
@@ -65,7 +69,11 @@ REGLAS_ACTO: list[tuple[str, tuple[str, ...]]] = [
                       "es modifiquen les bases", "ampliacio del termini", "obertura d'un nou termini",
                       "nou termini de presentacio",
                       "modificacion da convocatoria", "modificacion das bases", "ampliacion do prazo",
-                      "novo prazo de presentacion")),
+                      "novo prazo de presentacion",
+                      # «… se suspende la realización de la segunda prueba», «modificación de la base 6.ª…»
+                      "se suspende la realizacion", "suspension de la realizacion", "es suspen la realitzacio",
+                      "modificacion de las bases", "modificacion de la base ", "se modifican las bases",
+                      "se modifica la base ", "modificacio de la base ", "es modifica la base ")),
     ("normativa", ("normas procedimentales", "por la que se establecen las normas")),
     ("admitidos", ("admitidos y excluidos", "admitidas y excluidas", "lista provisional", "lista definitiva",
                    "admision y exclusion", "admisiones y exclusion", "lista de admitidos", "relacion de admitidos",
@@ -115,13 +123,18 @@ REGLAS_ACTO: list[tuple[str, tuple[str, ...]]] = [
                    "barem definitiu", "barem provisional", "valoracion definitiva", "valoracion provisional",
                    "acta de valoracion", "acta de constitucion y valoracion", "resultado de la valoracion",
                    "adjudicacion de plazas", "adjudicacion definitiva de", "adjudicacion provisional de",
+                   # «… por la que se hace pública la adjudicación de una plaza de profesorado lector» (DOGC)
+                   "publica la adjudicacion", "de adjudicacion de una plaza", "adjudicacion de una plaza",
+                   "adjudicacion de la plaza", "fa publica l'adjudicacio", "adjudicacio d'una placa",
+                   "adjudicacio de la placa",
                    "adjudicacio de places", "publicacion adxudicacion", "adxudicacion de postos de traballo",
                    "constitucion de lista de espera", "constitucion lista de espera", "constitucion de la lista de espera",
                    "lista de espera definitiva", "lista de espera provisional", "listaxe de espera definitiva",
                    "aprobacion definitiva listaxe", "integrantes de la bolsa", "composicion de la bolsa",
                    "integrants de la borsa", "composicio de la borsa")),
     # Antes que «nombramiento»: «por la que se nombran los miembros del Tribunal», «nombramiento del tribunal»
-    ("tribunal", ("nombran los miembros del tribunal", "nombra a los miembros del tribunal", "nombran los tribunales",
+    ("tribunal", ("organo tecnico de seleccion", "integrantes del organo", "integrantes del tribunal",
+                  "integrantes de la comision de seleccion", "membres de l'organ", "nombran los miembros del tribunal", "nombra a los miembros del tribunal", "nombran los tribunales",
                   "nombramiento del tribunal", "nombramiento de los miembros del tribunal", "nombramiento de tribunal",
                   "nombra el tribunal", "designacion del tribunal", "modificacion del tribunal", "asesores especialistas",
                   "designacion de asesores", "nomenament del tribunal", "nomenament dels membres", "es nomena el tribunal",
@@ -162,6 +175,7 @@ REGLAS_ACTO: list[tuple[str, tuple[str, ...]]] = [
                   "composicion do tribunal", "comissio de valoracio", "comision de valoracion",
                   "designacio de membres", "designacion de miembros", "designacion de los miembros")),
     ("examen", ("fecha de celebracion", "fecha, hora y lugar", "lugar, fecha y hora", "primer ejercicio",
+                "lugar, dia y hora", "dia, hora y lugar", "se anuncia el lugar", "lloc, dia i hora",
                 "data de realitzacio", "data, hora i lloc", "lloc, data i hora", "primer exercici",
                 "data, hora e lugar", "lugar, data e hora", "primeiro exercicio")),
     # Resoluciones del tribunal que no dicen qué publican («RESOLUCIÓN…, del tribunal nombrado para calificar el
@@ -299,6 +313,33 @@ RE_NO_SELECCION = re.compile(
     r"reconocimiento de (?:servicios|trienios|grado)|adscripcion provisional|reclasificacion")
 
 
+# Lo que ni siquiera es de personal y se colaba por «bases», «concurso» o «convocatoria» (muestra de procesos de 2026
+# sin plazo, 31/10/2026): «Bases reguladoras de participación en la X Ruta de los Belenes», «concurso para la obtención
+# de la marca…», «convocatoria de la asamblea general», «levantamiento de actas previas a la ocupación de las fincas»,
+# «concurso para la venta forzosa de inmueble», «bases técnicas para las obras…», «Sandbox de Innovación Urbana»,
+# «concesión de compensaciones extraordinarias…»
+RE_NO_EMPLEO = re.compile(
+    r"\b(?:subvencio|subvenci|ajuts?\b|ayudas?\b|axudas?\b|premios?\b|premis?\b|asamblea general|assemblea general|"
+    r"asemblea xeral|venta (?:forzosa )?de (?:inmueble|parcela|finca|solar|vivienda)|alienacio|enajenacion|"
+    r"ocupacion de (?:las )?fincas|actas previas|expropiaci|bases tecnicas|obras de|licitaci|"
+    r"contrato de (?:obras|servicios|suministro)|contracte de (?:serveis|obres|subministrament)|"
+    r"concesion de (?:compensaciones|ayudas|subvenciones|licencias?|uso|la explotacion|premios)|sandbox|belenes|"
+    r"ruta de los|obtencion de la marca|segell de qualitat|concurso de (?:ideas|carteles|fotografia|pintura|disfraces|"
+    r"relatos|escaparates|cortometrajes|poesia|narrativa|dibujo|belenes|carrozas)|concurs de (?:cartells|fotografia|"
+    r"pintura|disfresses|relats|idees)|certamen|\bbecas?\b|\bbeques?\b|\bbolsas? de estudio|ordenanza|tasa por|"
+    r"impuesto|padron|cobranza|presupuesto general|modificacion presupuestaria|evaluacion ambiental|planeamiento|"
+    r"plan (?:general|parcial) de|estudio de detalle|proyecto de urbanizacion|aprovechamiento|caza|pesca|pastos)")
+RE_GUARDA_EMPLEO = re.compile(
+    r"selectiv|proces selectiu|proces de seleccio|proceso de seleccion|oposici|\bplazas?\b|\bplaces?\b|\bprazas?\b|"
+    r"\bplaza\b|\bbolsas?\b(?! de estudio)|\bborsa\b|personal (?:laboral|funcionari|estatutari|docent|investigador|"
+    r"tecnic|interino)|funcionari|contratacion (?:laboral|temporal|de personal)|puestos? de trabajo|categoria profesional|"
+    r"profesorado|professorat|\bbecari|interin|\bempleo\b|ocupacio\b|emprego|\bplacas?\b|treball|traballo|seleccio\b|"
+    r"seleccion de|seleccion del|\bpeon|\bpeo\b|operari|auxiliar|administrativ|administratiu|(?<!bases )\btecnic|monitor|conserje|"
+    r"socorrista|policia|bomber|educador|profesor|professor|limpiador|netejador|arquitect|ingenier|enginyer|"
+    r"trabajador social|treballador social|psicolog|enfermer|infermer|medic|celador|zelador|vigilant|guarda\b|"
+    r"oficial de|oficial \d|subalterno|ordenanza de|ordenanzas de")
+
+
 RE_GUARDA_SELECCION = re.compile(
     r"funcionari\w* de carrera|personal laboral fijo|personal estatutario fijo|selectiv|proces selectiu|oposici|"
     r"concurso|concurs\b|\bbases\b|convocatori|\bplazas?\b|\bplaces?\b|\bprazas?\b|bolsa|borsa|\blistas?\b|"
@@ -313,6 +354,8 @@ def alcance_vigente(titulo: str | None, tipo_acto: str | None, modalidad: str | 
     t = normalizar(titulo or "")
     if not t:
         return guardado
+    if RE_NO_EMPLEO.search(t) and not RE_GUARDA_EMPLEO.search(t):
+        return "no_seleccion"
     nuevo = alcance(t, modalidad, None)
     if nuevo == "acceso" and tipo_acto in ("otro", "nombramiento", "correccion", "modificacion") and \
             RE_NO_SELECCION.search(t) and not RE_GUARDA_SELECCION.search(t):

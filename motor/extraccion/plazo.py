@@ -68,6 +68,11 @@ RE_FIN_EXPLICITO = re.compile(
     r"\b(?:finaliza\w*|finalitza\w*|termina\w*|concluy\w*|concluir\w*|conclou\w*|vence\w*|remata\w*|acabar[aà]\w*)"
     rf"[^.;]{{0,60}}?\b(?:el|o)\s+(?:d[ií]a\s+)?(?P<d>\d{{1,2}}){_DE}(?P<m>[{L}]+)(?:\s+de\s+(?P<a>\d{{4}}))?",
     re.IGNORECASE)
+# «Las solicitudes… se podrán presentar desde el día siguiente al de la publicación… hasta el 4 de septiembre de 2026»
+RE_HASTA_FECHA = re.compile(
+    rf"\b(?:hasta|fins|ata)\s+(?:el|al|o)\s+(?:d[ií]a\s+)?(?P<d>\d{{1,2}}){_DE}(?P<m>[{L}]+)(?:\s+de\s+(?P<a>\d{{4}}))?",
+    re.IGNORECASE)
+RE_PRESENTAR = re.compile(r"(?i)present|solicitud|instanci|sol·licitud|sol\.licitud")
 RE_COMIENZO_EXPLICITO = re.compile(
     r"\b(?:comenzar\w*|comienza\w*|empezar\w*|empieza\w*|iniciar\w*|inicia\w*|començar\w*|comença\w*|abrir[aá]\w*|"
     r"s'obrir[aà]|comezar\w*|comeza\w*)"
@@ -206,13 +211,21 @@ def _candidata(f: str) -> int:
     siguiente al de la publicación de la convocatoria en el BOIB», tras el título «Plazo»)."""
     n = normalizar(f).replace("l·l", "l·l").replace("l.l", "l·l")
     m = (RE_DIAS.search(f) or _duracion_sin_tipo(f) or RE_MESES.search(f) or RE_INTERVALO.search(f)
-         or RE_FIN_EXPLICITO.search(f))
+         or RE_FIN_EXPLICITO.search(f) or _hasta(f))
     if not m:
         return 0
     # Lo que excluye se mira hasta poco después del plazo: una frase larga puede seguir con otra cosa («… y contendrán
     # los requisitos… de la provisión de plazas de nombramiento discrecional», CGPJ)
     ventana = normalizar(f[:m.end() + 200]).replace("l.l", "l·l")
-    if any(x in ventana for x in EXCLUIR):
+    excluye = [x for x in EXCLUIR if x in ventana]
+    # Las palabras de la documentación no excluyen la frase cuyo sujeto son las solicitudes («Las solicitudes y la
+    # documentación… que contenga la justificación de los requisitos… deberán presentarse… en el plazo de 20 días
+    # hábiles»), ni las de enmienda la que abre un plazo nuevo de solicitudes («OBRIR un nou termini de presentació de
+    # sol·licituds… des de l'endemà de la publicació d'aquesta esmena»)
+    if excluye and all(x in EXCLUIR_BLANDOS for x in excluye) and (RE_SUJETO_SOLICITUDES.search(ventana) or
+                                                                   RE_NUEVO_PLAZO.search(ventana)):
+        excluye = []
+    if excluye:
         return 0
     plazo = any(x in n for x in ("plazo", "termini", "prazo"))
     solicitud = any(x in n for x in ("solicitud", "instancia", "sol·licitud", "sollicitud", "instanci",
@@ -229,6 +242,13 @@ def _candidata(f: str) -> int:
     return 3 if plazo and RE_PUBLICACION_CONVOCATORIA.search(f) else 0
 
 
+EXCLUIR_BLANDOS = ("esmen", "emenda", "justificacion", "justificacio", "acreditativ", "declaracion responsable",
+                   "declaracio responsable", "aportar la documentacion", "aportar la documentacio",
+                   "presentar la documentacion", "presentar la documentacio")
+RE_SUJETO_SOLICITUDES = re.compile(
+    r"^\W*(?:[\w.]{1,6}[.)\-–]+\s*)*(?:las|les|as|los)\s+(?:solicitudes|instancias|sol·licituds|instancies|"
+    r"solicitudes de participacion)\b")
+RE_NUEVO_PLAZO = re.compile(r"(?:nou|nuevo|novo)\s+(?:termini|plazo|prazo)\s+de\s+presentaci")
 EXCLUIR_SIN_SOLICITUD = ("documentaci", "documents", "recurr", "reposici", "recus", "contrato", "contracte", "licitaci",
                          "expresiones de interes", "cese", "opcion", "errores", "acredit", "juramento", "formalizaci",
                          "incorporaci", "alega", "reclama", "subsana", "toma de", "presa de", "tribunal", "aprobad",
@@ -237,6 +257,12 @@ RE_PUBLICACION_CONVOCATORIA = re.compile(
     r"publicaci[oó]n?\s+(?:\w+\s+){0,3}?(?:de\s+(?:la|esta|la\s+presente)\s+convocatoria|de\s+las\s+bases|del\s+extracto|"
     r"del\s+anuncio\s+de\s+(?:la\s+)?convocatoria|de\s+la\s+convocat[oò]ria|de\s+les\s+bases|"
     r"de\s+l'anunci\s+de\s+(?:la\s+)?convocat[oò]ria|da\s+convocatoria|das\s+bases)", re.IGNORECASE)
+
+
+def _hasta(f: str) -> re.Match | None:
+    """«… se podrán presentar … hasta el 4 de septiembre de 2026»: la fecha final tras hablar de presentar."""
+    m = RE_HASTA_FECHA.search(f)
+    return m if m and RE_PRESENTAR.search(f[:m.start()]) and normalizar(m.group("m")) in MESES else None
 
 
 def _meses(f: str) -> re.Match | None:
@@ -450,6 +476,14 @@ def _plazo_de_frase(f: str, pub: date, propios: set[str], comunidad: str | None)
             d0 = RE_DIAS.search(f)
             if d0 and numero(d0.group("n")):
                 res["dias"] = numero(d0.group("n"))
+            return res
+
+    m = _hasta(f) if not RE_DIAS.search(f) else None
+    if m:
+        fin = _fecha(m.group("d"), m.group("m"), m.group("a"), pub)
+        if fin and fin >= pub:
+            res.update({"tipo": "fechas", "fin_estimado": fin.isoformat(), "fin_exacto": True,
+                        "cuenta_desde": "fechas del texto"})
             return res
 
     dias = next((d for d in RE_DIAS.finditer(f) if numero(d.group("n"))), None)
