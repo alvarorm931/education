@@ -28,6 +28,7 @@ Uso: python -m motor.provinciales.bophuelva_antiguos --max-minutos 30 --salida r
 from __future__ import annotations
 
 import argparse
+import json
 import re
 import sys
 import time
@@ -45,7 +46,7 @@ from motor.provinciales.comun import CON_TEXTO, ruta_texto_pdf
 
 INICIO = date(2022, 1, 1)
 FIN = bh.INICIO - timedelta(days=1)  # 19/06/2023: desde el 20 está el sistema nuevo (bophuelva.py)
-VERSION = "pdf_dia_v1"
+VERSION = "pdf_dia_v2"  # v2 (31/10/2026): el enlace al PDF va codificado en el visor («file=%2Fportalweb%2Fbop…»)
 WEB = bh.WEB
 
 _MESES = r"(?:enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|setiembre|octubre|noviembre|diciembre)"
@@ -75,7 +76,9 @@ def url_dia(d: date) -> str:
 
 def enlaces_pdf(contenido: bytes, d: date) -> list[str]:
     """Los PDF del boletín de ese día que enlaza su página (en su orden; sin repetir)."""
-    texto = contenido.decode("utf-8", errors="replace")
+    from urllib.parse import unquote
+    # el visor lleva la dirección codificada: «viewer.html?file=%2Fportalweb%2Fbop%2Fboletines%2F20230619-1.pdf»
+    texto = unquote(contenido.decode("latin-1", errors="replace"))
     vistos = []
     for m in re.finditer(rf"(?:https?://s2\.diphuelva\.es)?/portalweb/bop/boletines/{d:%Y%m%d}-(\d+)\.pdf", texto):
         u = f"{WEB}/portalweb/bop/boletines/{d:%Y%m%d}-{m.group(1)}.pdf"
@@ -305,7 +308,8 @@ def procesar_dia(d: date, raiz: Path, archivo: Archivo, pausa: float) -> dict:
                 "alertas": [f"{bh.SIGLAS} {d}: página del día HTTP {r.status}"]}
     pdfs = enlaces_pdf(r.contenido, d)
     if not pdfs:
-        return {"fecha": d.isoformat(), "status": 200, "resultado": "sin_boletin", "nota": "sin PDF", "alertas": []}
+        return {"fecha": d.isoformat(), "status": 200, "resultado": "sin_boletin", "nota": "sin PDF", "version": VERSION,
+                "alertas": []}
     informes, orden = [], 0
     for u in pdfs:
         time.sleep(pausa)
@@ -330,6 +334,14 @@ def procesar_dia(d: date, raiz: Path, archivo: Archivo, pausa: float) -> dict:
             "alertas": [a for i in informes for a in i.get("alertas", [])]}
 
 
+def _de_version_anterior(ruta: Path) -> bool:
+    try:
+        inf = json.loads(ruta.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return False
+    return inf.get("nota") == "sin PDF" and inf.get("version") != VERSION
+
+
 def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser()
     p.add_argument("--salida", type=Path, default=Path("."))
@@ -343,6 +355,8 @@ def main(argv: list[str] | None = None) -> int:
     while d >= a.desde:
         ruta = bh._ruta(a.salida, "dias", d, "json")
         hecho, reintento = estado_dia(ruta)
+        if hecho and _de_version_anterior(ruta):
+            hecho = False  # leído con la v1, que no veía el enlace al PDF
         if d.weekday() >= 5 and not hecho:
             escribir_json(ruta, {"fecha": d.isoformat(), "resultado": "sin_boletin", "nota": "fin de semana",
                                  "alertas": []})

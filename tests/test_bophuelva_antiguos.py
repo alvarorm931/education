@@ -127,6 +127,10 @@ def test_dia_completo(tmp_path):
     html = (b'<html><body><iframe src="/visor/?file=/portalweb/bop/boletines/20230619-1.pdf"></iframe>'
             b'<a href="https://s2.diphuelva.es/portalweb/bop/boletines/20230619-1.pdf">PDF</a></body></html>')
     assert mod.enlaces_pdf(html, d) == ["https://s2.diphuelva.es/portalweb/bop/boletines/20230619-1.pdf"]
+    # como lo da el portal: la dirección codificada en el visor
+    visor = (b'<iframe id="iFramePDF" name="boletin.pdf" src="/comunJS/pdfjs/web/viewer.html?file=%2Fportalweb%2Fbop'
+             b'%2Fboletines%2F20230619-1.pdf" width="650px">')
+    assert mod.enlaces_pdf(visor, d) == ["https://s2.diphuelva.es/portalweb/bop/boletines/20230619-1.pdf"]
 
     def obtener(url, **k):
         if "busqueda" in url:

@@ -20,6 +20,17 @@ from motor.provinciales.diagnostico_cortes import _desde_datos
 from motor.provinciales.sonda_pdf_texto import _seguro
 
 
+def _indice(fuente: str, fecha: str, salida: Path) -> None:
+    import urllib.request
+    from motor.provinciales.diagnostico_cortes import RAMA
+    ruta = f"archivo/indices/{fuente}-boletin/{fecha[:7]}.jsonl"
+    with urllib.request.urlopen(urllib.request.Request(RAMA + ruta, headers={"User-Agent": "motor-education-sonda"}),
+                                timeout=60) as r:
+        contenido = r.read()
+    (salida / ruta).parent.mkdir(parents=True, exist_ok=True)
+    (salida / ruta).write_bytes(contenido)
+
+
 def _instalar(paquete: str) -> bool:
     r = subprocess.run([sys.executable, "-m", "pip", "install", "-q", paquete], capture_output=True, text=True)
     return r.returncode == 0
@@ -27,19 +38,25 @@ def _instalar(paquete: str) -> bool:
 
 def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser()
-    p.add_argument("fuente", choices=sorted(t.BOLETIN_ENTERO))
+    p.add_argument("fuente")
     p.add_argument("fecha")
     p.add_argument("--paginas", default="1,2")
+    p.add_argument("--url", help="el PDF por su dirección (con el índice de capturas de fuente-boletin de ese mes)")
     p.add_argument("--salida", type=Path, default=Path("sonda"))
     a = p.parse_args(argv)
-    _desde_datos(a.fuente, a.fecha, a.salida)
-    campo = t.BOLETIN_ENTERO[a.fuente]
-    base = a.salida / "datos" / "provinciales" / a.fuente
-    filas = [x for f in (base / "oposiciones").rglob("*.jsonl") for x in leer_jsonl(f)]
-    if not filas:
-        print("sin anuncios de empleo ese día")
-        return 0
-    url = filas[0][campo].split("#")[0]
+    filas = []
+    if a.url:
+        _indice(a.fuente, a.fecha, a.salida)
+        url = a.url
+    else:
+        _desde_datos(a.fuente, a.fecha, a.salida)
+        campo = t.BOLETIN_ENTERO[a.fuente]
+        base = a.salida / "datos" / "provinciales" / a.fuente
+        filas = [x for f in (base / "oposiciones").rglob("*.jsonl") for x in leer_jsonl(f)]
+        if not filas:
+            print("sin anuncios de empleo ese día")
+            return 0
+        url = filas[0][campo].split("#")[0]
     guardado = t.original_guardado(a.salida, a.fuente + "-boletin", a.fecha, url)
     if not guardado:
         print("el PDF no está en el almacén:", url)
