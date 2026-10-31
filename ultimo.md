@@ -1,12 +1,12 @@
-# Vigilancia 31/10 17:02 (Madrid)
+# Vigilancia 31/10 17:09 (Madrid)
 
-- Ejecuciones revisadas (últimas 6 h): 145
+- Ejecuciones revisadas (últimas 6 h): 146
 - Fallos: 1; pendientes: 0; relanzados ahora: 0
 - Colas de más de 30 minutos: 1
-- Flujos programados parados: seo.yml
+- Flujos programados parados: ninguno
 - Almacén S3: ok
 - Programaciones que GitHub no disparó y se lanzaron a mano: ninguna
-- Programaciones que GitHub disparó tarde y repetían la del día (canceladas): extraccion-bases.yml de las 31/10 11:41, disparada a las 31/10 16:51
+- Programaciones que GitHub disparó tarde y repetían la del día (canceladas): ninguna
 - Tandas que otra del mismo grupo de concurrencia sacó de la espera: ninguna
 - Latido (relanza al vigilante cada ~25 min mientras GitHub no dispare programaciones): en marcha
 - Ficheros de la rama datos de más de 80 MB (GitHub rechaza más de 100): ninguno
@@ -24,4 +24,4 @@ https://github.com/alvarorm931/education/actions/runs/41210060505 (intento 1, wo
       fatal: couldn't find remote ref refs/heads/prueba-historial
       ##[error]Process completed with exit code 128.
 
-- En cola 53 min: Boletines autonómicos https://github.com/alvarorm931/education/actions/runs/41213532071
+- En cola 60 min: Boletines autonómicos https://github.com/alvarorm931/education/actions/runs/41213532071
