@@ -1,0 +1,50 @@
+{
+ "proceso": "dogv:490787",
+ "documento": {
+  "id": "dogv:490787",
+  "fuente": "DOGV",
+  "url": "https://dogv.gva.es/datos/2026/09/18/pdf/2026_29460_es.pdf",
+  "fecha": "2026-09-18",
+  "huella": "2f448b3cfd9e25bc6880b635ec2061a0d22a58af5194b95e32531d2d3d979b1d"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T07:28:42+00:00",
+ "lote": "msgbatch_01QUU3nKnMRQfp1xxi4asvKD",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "trabajador o trabajadora social"
+   ],
+   "cita": "para la provisión en propiedad de dos plazas de trabajador o trabajadora sociales mediante el sistema de concurso-oposición por turno libre",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mediante el sistema de concurso-oposición por turno libre, vacantes en la plantilla de personal del Ayuntamiento de Bétera",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 2,
+   "cita": "para la provisión en propiedad de dos plazas de trabajador o trabajadora sociales",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "diez días hábiles a contar desde el día siguiente a la publicación de este anuncio en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes será de diez días hábiles a contar desde el día siguiente a la publicación",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia de Valencia",
+   "cita": "aparecen íntegramente publicadas las bases que han de regir la convocatoria para la selección de las plazas",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 2,
+   "cita": "mediante el sistema de concurso-oposición por turno libre, vacantes en la plantilla"
+  }
+ }
+}

@@ -1,0 +1,102 @@
+{
+ "proceso": "bopcastellon:BOPCASTELLON-168496",
+ "documento": {
+  "id": "bopcastellon:BOPCASTELLON-168496",
+  "fuente": "BOP-CASTELLON",
+  "url": "https://bop.dipcas.es/PortalBOP/api/descargarAnuncio?idAnuncio=168496&idioma=es",
+  "fecha": "2026-10-17",
+  "huella": "91eb33b349379fce663132fcab3af1216ddbbafb433cd770e10db032efda2672"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T07:28:35+00:00",
+ "lote": "msgbatch_01QUU3nKnMRQfp1xxi4asvKD",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "C1",
+   "cita": "escala básica grupo C, subgrupo C1 por el sistema de oposición",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "cubrir en propiedad una plaza de agente de policía local",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "subgrupo C1 por el sistema de oposición",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española; no inhabilitación ni separación del servicio; carecer de antecedentes penales; edad entre 18 y 40 años; declaración jurada para portar armas; permisos de conducción de vehículos y motocicletas; no sufrir enfermedad o defecto físico incapacitante; altura mínima de 1,65 m hombres y 1,58 m mujeres.",
+   "cita": "Tener al menos dieciocho años de edad y no exceder de los cuarenta años de edad",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Registro Electrónico General del Ayuntamiento o lugares del artículo 16.4 de la Ley 39/2015",
+   "cita": "se presentarán en el Registro Electrónico General de este Ayuntamiento o en alguno de los lugares previstos en el artículo 16.4",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia, sede electrónica del Ayuntamiento, extracto en el Diari Oficial de la Generalitat Valenciana y convocatoria en el Boletín Oficial del Estado",
+   "cita": "Se publicarán íntegramente en el Boletín Oficial de la Provincia así como en la sede electrónica de este Ayuntamiento",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Prueba de aptitud física (eliminatoria, apto/no apto)",
+    "Prueba de aptitud psicotécnica (eliminatoria, apto/no apto)",
+    "Ejercicio tipo test de 50 preguntas (0 a 50 puntos, mínimo 25)",
+    "Ejercicio práctico sobre un caso (0 a 50 puntos, mínimo 25)",
+    "Ejercicio de conocimiento del valenciano (0 a 4 puntos, no eliminatorio)",
+    "Reconocimiento médico (eliminatorio, apto/no apto)"
+   ],
+   "cita": "Pruebas de aptitud física (anexo V del Decreto 179/2021)",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "agente de policía local"
+   ],
+   "cita": "convocar en propiedad una plaza de agente de policía local perteneciente a la escala de administración Especial"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 1,
+   "cita": "cubrir en propiedad una plaza de agente de policía local vacante"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "el procedimiento de oposición por turno libre"
+  },
+  "titulacion": {
+   "motivo": "cita_no_literal",
+   "valor": "la titulación académica exigible a cada escala o, en su caso, la equivalente para el grupo",
+   "cita": "Estar en posesión de la titulación académica exigible a cada escala o, en su caso, la equivalente"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "diez días hábiles desde el día siguiente a la publicación del anuncio de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "en el plazo de diez días hábiles contados a partir del día siguiente al de la publicación del anuncio de la convocatoria en el Boletín Oficial del Estado"
+  },
+  "temas": {
+   "motivo": "valor_no_en_cita",
+   "valor": 40,
+   "cita": "Temario. Grupo C1. Agente Grupo I. Derecho constitucional"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, bolsa de trabajo para nombramientos de funcionarios interinos",
+   "cita": "El Tribunal propondrá la constitución de una bolsa de trabajo para el nombramiento como funcionarios/as interinos/as"
+  },
+  "practicas_o_curso": {
+   "motivo": "cita_no_literal",
+   "valor": "curso selectivo en el IVASPE de contenido teórico-práctico, con período de prácticas de doce semanas en el municipio",
+   "cita": "un período de prácticas de doce semanas en el municipio correspondiente"
+  }
+ }
+}

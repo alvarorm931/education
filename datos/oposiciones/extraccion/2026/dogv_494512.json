@@ -1,0 +1,100 @@
+{
+ "proceso": "dogv:494512",
+ "documento": {
+  "id": "dogv:494512",
+  "fuente": "DOGV",
+  "url": "https://dogv.gva.es/datos/2026/10/28/pdf/2026_33185_es.pdf",
+  "fecha": "2026-10-28",
+  "huella": "eda4cffdc25f643582d6f0034e712026c4a83ab62e01060b2de641d8a42971f4"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T07:28:34+00:00",
+ "lote": "msgbatch_01QUU3nKnMRQfp1xxi4asvKD",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Investigador/a no doctor/a (Anexo I)",
+    "Investigador/a doctor/a sénior (Anexo II)",
+    "Investigador/a no doctor/a (Anexo III)"
+   ],
+   "cita": "Oferta pública de un puesto de trabajo de investigador/a no doctor/a.",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "A1",
+   "cita": "Grupo: A. Subgrupo: A1.",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "para cubrir diversos puestos de personal laboral para las líneas de investigación",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "mediante el sistema de concurso.",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Anexo I: Grado/licenciatura en Odontología; Anexo II: Doctor/a; Anexo III: Grado/licenciatura en Física",
+   "cita": "Titulación: Grado /licenciatura en Odontología.",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española o de país de la UE (o con permiso de trabajo y residencia en la contratación); tener al menos 16 años; no padecer enfermedad incompatible; no estar inhabilitado para funciones públicas.",
+   "cita": "Tener cumplidos, al menos, 16 años el día en que finaliza el plazo de presentación de solicitudes.",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Nivel acreditado según tablas de equivalencias de la Universitat de València cuando se exija",
+   "cita": "Cuando se exija como requisito un nivel de idioma, se utilizará para su evaluación la Tabla de equivalencias",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Diez días hábiles a partir del siguiente hábil al de la publicación de la resolución en el DOGV",
+   "cita": "El plazo de presentación de las solicitudes será de diez días hábiles a partir del siguiente hábil",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Solicitud electrónica obligatoria a través de la sede/web del Servei de Recursos Humans PTGAS-PI",
+   "cita": "Deberán presentar la solicitud, junto con el currículo y los documentos que acrediten los méritos alegados, obligatoriamente, a través de la solicitud electrónica",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "DOGV (referencia para plazos), tablón oficial de anuncios y página web del Servei de Recursos Humans PTGAS-PI",
+   "cita": "Esta convocatoria se publicará en el Diari Oficial de la Generalitat Valenciana (DOGV), en el Tablón de anuncios de la Universitat de València",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Concurso: valoración de méritos curriculares",
+    "Entrevista (en su caso)"
+   ],
+   "cita": "El proceso selectivo constará de un concurso que consistirá en la valoración de los méritos curriculares",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Anexo I: nota media expediente, becas, premios, publicaciones (hasta 1,70), congresos, máster y experiencia (hasta 3); Anexo II: producción científica (40), méritos preferentes (20), proyectos (15), transferencia (15), estancias (10); Anexo III: similar al Anexo I",
+   "cita": "Producción científica (hasta 40 puntos): la dirección de tesis, publicación de artículos científicos",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, para cubrir llamamientos mientras dure la línea de investigación",
+   "cita": "Las bolsas de trabajo que deriven de estos procesos selectivos permanecerán vigentes mientras dure la línea de investigación",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 3,
+   "cita": "Convocar la oferta pública de diferentes plazas de este organismo con contrato laboral"
+  },
+  "tasa_euros": {
+   "motivo": "cita_no_literal",
+   "valor": 0,
+   "cita": "Las bases no establecen importe de tasa por derechos de examen."
+  }
+ }
+}

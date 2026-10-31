@@ -1,0 +1,58 @@
+{
+ "proceso": "dogc:1057880",
+ "documento": {
+  "id": "dogc:1057880",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1057880",
+  "fecha": "2026-10-28",
+  "huella": "7b725acf59a381b9e7940a85e81c5b318581f33a883c5a72c8b1615af0ad12d3"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T07:28:33+00:00",
+ "lote": "msgbatch_01QUU3nKnMRQfp1xxi4asvKD",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "encarregat d'obres",
+   "cita": "convocar el procés de selecció d'una plaça vacant d'encarregat d'obres, grup C1",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "grup C1, com a personal laboral fix pel sistema",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "pel sistema de concurs oposició lliure i constitució d'una borsa",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "procés de selecció d'una plaça vacant d'encarregat d'obres",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "10 días hábiles a contar desde el día siguiente a la publicación de esta convocatoria en el DOGC",
+   "cita": "en el termini de 10 dies hàbils a comptar de l'endemà de la publicació",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "registro general del Ayuntamiento o por cualquier otro medio legalmente establecido, dirigidas a la Alcaldía",
+   "cita": "al registre general de l'Ajuntament o per qualsevol altre mitjà legalment establert",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, para contrataciones temporales destinadas a cubrir vacantes o sustituciones en el puesto dentro de la misma categoría",
+   "cita": "constitució d'una borsa de treball per a contractacions temporals destinades a cobrir vacants",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "C1",
+   "cita": "encarregat d'obres, grup C1, com a personal laboral fix"
+  }
+ }
+}

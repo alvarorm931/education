@@ -1,0 +1,50 @@
+{
+ "proceso": "dog:DOG-20261028-AnuncioG0900-231026-0001",
+ "documento": {
+  "id": "dog:DOG-20261028-AnuncioG0900-231026-0001",
+  "fuente": "DOG",
+  "url": "https://www.xunta.gal/dog/Publicados/2026/20261028/AnuncioG0900-231026-0001_es.html",
+  "fecha": "2026-10-28",
+  "huella": "66ff28a02c9532cc93f6b405655e83541e36fc00bdf092e8adde33a6e06c3b43"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T07:28:45+00:00",
+ "lote": "msgbatch_01QUU3nKnMRQfp1xxi4asvKD",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Personal directivo profesional de la Corporación de Servicios Audiovisuales de Galicia"
+   ],
+   "cita": "mediante convocatoria pública se procederá a la selección de personal directivo profesional",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "otro",
+   "cita": "sociedad mercantil pública autonómica del artículo 102 de la Ley 16/2010",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "se procederá a la selección de personal directivo profesional",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Cinco días naturales desde el día siguiente a la publicación del anuncio",
+   "cita": "comenzará el día siguiente al de la publicación del presente anuncio y tendrá una duración de cinco días naturales",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Plazo de presentación de solicitudes; no se especifican sede ni registro en el anuncio",
+   "cita": "El plazo de presentación de solicitudes comenzará el día siguiente al de la publicación del presente anuncio",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Página web de la corporación (http://www.csag.gal/)",
+   "cita": "Todas las publicaciones y notificaciones que se originen a partir de este momento se harán públicas en la indicada página web"
+  }
+ }
+}

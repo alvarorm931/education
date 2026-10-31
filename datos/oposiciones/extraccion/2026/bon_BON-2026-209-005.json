@@ -1,0 +1,104 @@
+{
+ "proceso": "bon:BON-2026-209-005",
+ "documento": {
+  "id": "bon:BON-2026-209-005",
+  "fuente": "BON",
+  "url": "https://bon.navarra.es/es/anuncio/-/texto/2026/209/5",
+  "fecha": "2026-10-20",
+  "huella": "6742ea693b4ca5a07e853e9e44a20590e9683f47d54aa438768c7d92e50d1d12"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T07:28:34+00:00",
+ "lote": "msgbatch_01QUU3nKnMRQfp1xxi4asvKD",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Profesor/a Permanente Laboral, área de conocimiento Didáctica de las matemáticas (plaza 5990)",
+    "Profesor/a Permanente Laboral, área de conocimiento Trabajo Social y Servicios Sociales (plaza 6458)"
+   ],
+   "cita": "Plaza número 5990. Área de conocimiento: Didáctica de las matemáticas.",
+   "nivel": "sin_signos"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "Aprobar la convocatoria de concurso de acceso a 2 plazas de Profesorado Permanente Laboral",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "El concurso de acceso constará de dos pruebas de carácter oral.",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 2,
+   "cita": "Aprobar la convocatoria de concurso de acceso a 2 plazas de Profesorado Permanente Laboral",
+   "nivel": "literal"
+  },
+  "plazas_turno_libre": {
+   "valor": 2,
+   "cita": "Aprobar la convocatoria de concurso de acceso a 2 plazas de Profesorado Permanente Laboral",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Acreditación para Profesor/a Permanente Laboral (o acreditación vigente de Profesor/a Contratado/a Doctor/a, o acreditación para cualquier cuerpo docente universitario)",
+   "cita": "Estar acreditada/o para las plazas de Profesor y Profesora Permanente Laboral.",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española, de la UE o de Estado con libre circulación de trabajadores (o familiares según normativa); tener 16 años y no exceder la edad máxima de jubilación forzosa; no padecer enfermedad que impida el desempeño; no haber sido separado de la Administración ni inhabilitado; conocimiento adecuado de castellano si procede.",
+   "cita": "No padecer enfermedad ni estar afectada/o por limitación física o psíquica que impida el desempeño de las funciones correspondientes a las plazas convocadas.",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Euskera, nivel C1 (plaza 6458)",
+   "cita": "Capacitación lingüística: Euskera (C1).",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 41.6,
+   "cita": "La tasa por la prestación de los servicios necesarios para la realización del proceso selectivo será de 41,60 euros.",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Personas con discapacidad reconocida de grado igual o superior al 33 por ciento; personas inscritas como desempleadas con al menos un mes de antelación a la publicación de la convocatoria.",
+   "cita": "Las personas con discapacidad reconocida de grado igual o superior al 33 por ciento.",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Treinta días hábiles contados a partir del siguiente al de la publicación de la convocatoria en el Boletín Oficial de Navarra (improrrogable)",
+   "cita": "El plazo de presentación de las solicitudes finaliza a los treinta días hábiles contados a partir del siguiente",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Primera prueba: exposición pública ante la comisión de hasta dos horas y debate de hasta dos horas sobre méritos y proyectos",
+    "Segunda prueba: exposición pública de un tema del programa del proyecto docente de hasta una hora y debate de hasta una hora"
+   ],
+   "cita": "El concurso de acceso constará de dos pruebas de carácter oral.",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Historial académico docente, historial investigador, otros méritos (incluida gestión universitaria), proyecto docente y proyecto investigador; baremo del anexo I del Reglamento; puntuación mínima de cada prueba de al menos la mitad de la máxima",
+   "cita": "Estos criterios responderán al baremo establecido en el anexo I del Reglamento de acceso",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, para la lista ordenada de suplentes propuesta por la comisión, que sustituye a quienes no formalicen contrato",
+   "cita": "se procederá al llamamiento de la persona aspirante siguiente en orden de la relación de suplentes propuesta",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Telemática a través de la sede electrónica de la UPNA (sedeelectronica.unavarra.es), apartado PDI-Recursos Humanos, Concurso Profesor Permanente Laboral",
+   "cita": "Quienes deseen tomar parte deberán presentar su solicitud de forma telemática a través de la sede electrónica"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Tablón electrónico oficial de la Universidad Pública de Navarra (unavarra.es, convocatorias PDI) y Boletín Oficial de Navarra",
+   "cita": "las publicaciones se realizarán en el siguiente enlace de la web de la Universidad Pública de Navarra"
+  }
+ }
+}

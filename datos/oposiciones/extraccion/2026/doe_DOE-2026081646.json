@@ -1,0 +1,48 @@
+{
+ "proceso": "doe:DOE-2026081646",
+ "documento": {
+  "id": "doe:DOE-2026081646",
+  "fuente": "DOE",
+  "url": "https://doe.juntaex.es/otrosFormatos/html.php?xml=2026081646&anio=2026&doe=1930o",
+  "fecha": "2026-10-06",
+  "huella": "e875938867af47db48bd3a489114a548952adb537ef44ba8a182b342eb5cfde1"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T07:28:46+00:00",
+ "lote": "msgbatch_01QUU3nKnMRQfp1xxi4asvKD",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "Agente de la Policía Local, Escala de Administración Especial, Subescala de Servicios Especiales, Clase Policía Local, Escala Básica, Categoría Agente",
+   "cita": "una plaza de Agente de la Policía Local, encuadrada en la Escala de Administración Especial, Subescala de Servicios Especiales",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "E / agrupaciones profesionales",
+   "cita": "Clase Policía Local, Escala Básica, Categoría Agente",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "vacante en la plantilla de personal funcionario del Ayuntamiento de Santa Amalia",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "por el sistema de acceso de movilidad y el sistema de selección de concurso de méritos",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles a contar desde el siguiente a la publicación del anuncio de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "el plazo de presentación de solicitudes será de veinte días hábiles a contar desde el siguiente a la publicación del anuncio",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 1,
+   "cita": "para la provisión de una plaza de Agente de la Policía Local"
+  }
+ }
+}

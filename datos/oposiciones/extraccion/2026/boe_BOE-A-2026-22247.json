@@ -1,0 +1,106 @@
+{
+ "proceso": "boe:BOE-A-2026-22247",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2026-7884",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2026/10/15_196/2026_007884.pdf",
+  "fecha": "2026-10-15",
+  "huella": "b42368d431f5c9398767bd47491ffcea95f187f8f9b625c3b44ff25608699178"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T07:28:45+00:00",
+ "lote": "msgbatch_01QUU3nKnMRQfp1xxi4asvKD",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "C1",
+   "cita": "Grupo C, Subgrupo C1 de clasificación profesional",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "plantilla de personal funcionario de este Ayuntamiento",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "El procedimiento selectivo será el de OPOSICIÓN por turno libre.",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "provisión, en propiedad, de 1 plaza de AGENTE DE LA POLICÍA LOCAL",
+   "nivel": "literal"
+  },
+  "plazas_turno_libre": {
+   "valor": 1,
+   "cita": "cubrir en propiedad una plaza de Agente de Policía Local por turno libre",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Título de Bachiller o técnico o, en su caso, de la titulación equivalente",
+   "cita": "Estar en posesión del título de Bachiller o técnico o, en su caso, de la titulación equivalente",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española; no inhabilitado ni separado del servicio; carecer de antecedentes penales; 18 años y no exceder de edad de jubilación; estatura mínima 1,65 m hombres y 1,58 m mujeres; permisos de conducción B y A2.",
+   "cita": "Tener una estatura mínima de 1'65 metros los hombres y 1'58 metros las mujeres.",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 125,
+   "cita": "la justificación del pago de la tasa que será de 125 €",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles desde el día siguiente a la publicación del extracto de la convocatoria en el BOE",
+   "cita": "durante el plazo de 20 días hábiles, contados a partir del siguiente a la publicación del extracto",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Electrónica a través de la sede electrónica municipal, o presencial en los Registros Generales del Ayuntamiento",
+   "cita": "La tramitación de las instancias es electrónica. El modelo de instancia... se presentará a través de la sede electrónica",
+   "nivel": "fragmentos"
+  },
+  "publicaciones": {
+   "valor": "BOP de Alicante, tablón de anuncios, página web y sede electrónica municipal; extracto en BOE y DOGV",
+   "cita": "Las listas provisionales se publicarán en el BOPA, siendo el resto de los anuncios publicados exclusivamente en el tablón de anuncios",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Pruebas de aptitud física (eliminatoria, Apto/No apto)",
+    "Prueba de aptitud psicotécnica (eliminatoria, Apto/No apto)",
+    "Ejercicio escrito tipo test de 50 preguntas (0 a 50 puntos)",
+    "Ejercicio práctico sobre un caso (0 a 50 puntos)",
+    "Reconocimiento médico (eliminatorio, Apto/No apto)"
+   ],
+   "cita": "Las pruebas de selección para el turno libre constarán de las siguientes fases y ejercicios",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, bolsa de trabajo temporal para futuros nombramientos interinos con los aspirantes que no obtengan plaza",
+   "cita": "Todos los aspirantes del turno libre que, habiendo superado el proceso de selección, no obtuvieran plaza, serán incluidos en una bolsa",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Curso de formación teórico-práctico selectivo en el IVASPE con periodo de prácticas de doce semanas en Daya Nueva",
+   "cita": "un periodo de prácticas de doce semanas en el municipio de Daya Nueva",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Agente de Policía Local"
+   ],
+   "cita": "provisión en propiedad de 1 plaza de Agente de Policía Local por turno libre"
+  },
+  "temas": {
+   "motivo": "cita_no_literal",
+   "valor": 40,
+   "cita": "ANEXO II Ejercicios y temarios A.2. Temario. Grupo C1. Agente"
+  }
+ }
+}

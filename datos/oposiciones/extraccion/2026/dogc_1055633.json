@@ -1,0 +1,60 @@
+{
+ "proceso": "dogc:1055633",
+ "documento": {
+  "id": "dogc:1055633",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1055633",
+  "fecha": "2026-10-02",
+  "huella": "c92f2a528aa0bb8fdf4df7160eb3f6020ea27c192d89a645472b7595c49f4062"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T07:28:43+00:00",
+ "lote": "msgbatch_01QUU3nKnMRQfp1xxi4asvKD",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "administratiu/va"
+   ],
+   "cita": "places vacants d'administratiu/va en règim funcionarial de carrera",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C1",
+   "cita": "pertanyents al subgrup de classificació C1 del personal funcionari",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "places vacants d'administratiu/va en règim funcionarial de carrera",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "procés selectiu per a la cobertura definitiva de 10 places vacants",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 10,
+   "cita": "procés selectiu per a la cobertura definitiva de 10 places vacants",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "e-TAULER del Consell Comarcal del Bages i seu web (https://www.ccbages.cat/administracio/processos-de-seleccio/)",
+   "cita": "Els anuncis successius sobre el procés selectiu es publicaran únicament a l'e-TAULER del Consell Comarcal del Bages",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 10,
+   "cita": "en torn lliure i amb adscripció definitiva al lloc de treball"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "20 dies naturals, a comptar des del dia següent al de la publicació de l'anunci de la convocatòria al BOE",
+   "cita": "El termini per a la presentació d'instàncies és de 20 dies naturals, a comptar des del dia següent"
+  }
+ }
+}
