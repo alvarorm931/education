@@ -138,6 +138,9 @@ LISTADO = re.compile(r"m[aàá]ster|posgrad|postgrad|postgrau|masterra|mestrado|
                      r"titulaci|formaci|programas|programmes|programs|studies|study|degrees|t[ií]tulos|cursos|"
                      r"courses|cat[aá]logo|expertos?|especialistas?", re.I)
 MAX_LISTADOS = 8
+SUBPAGINA_PRECIO = re.compile(r"(?i)^(admissions?[-_]?(and[-_])?fees|fees([-_]and[-_]\w+)?|tuition([-_]and)?([-_]\w+)?|precios?|"
+                              r"honorarios|tasas|financiaci[oó]n|becas[-_]y[-_]financiaci[oó]n|admisi[oó]n[-_]y[-_]becas|"
+                              r"admissions?|admisi[oó]n|price|pricing|costs?)$")
 MAX_COLABORADORES = 4  # páginas de centros colaboradores que se abren para ver a quién enlazan
 RESERVA_PORTADA = 14  # peticiones que el recorrido de sitemaps deja libres para la portada y sus listados
 GUIA = re.compile(r"gu[ií]a|folleto|brochure|dossier|programa|plan de estudios|syllabus", re.I)
@@ -630,6 +633,10 @@ def rastrear(base: str, archivo: Archivo | None, max_urls: int = 60000, muestra:
         res["programas"] = candidatas
         res["programas_lastmod"] = {u: fechas[u] for u in candidatas if u in fechas}
         res["textos_programa"] = {u: d.textos[u] for u in candidatas if u in d.textos}
+        # páginas de precio y admisión que cuelgan de una ficha («/master-in-finance/admissions-fees»)
+        raices_prog = {urlparse(u).path.rstrip("/") for u in candidatas}
+        res["subpaginas_precio"] = sorted({u for u in paginas if d.propio(u) and SUBPAGINA_PRECIO.search(
+            urlparse(u).path.rstrip("/").rsplit("/", 1)[-1]) and urlparse(u).path.rstrip("/").rsplit("/", 1)[0] in raices_prog})[:400]
         res["documentos_precio"] = sorted({u for u in paginas if DOC_PRECIO.search(u) and d.propio(u)
                                            and not NOTICIA.search(urlparse(u).path)})[:100]
         res["muestra"] = medidas

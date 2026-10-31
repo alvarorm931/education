@@ -189,3 +189,28 @@ def test_subpagina_enlazada_solo_si_es_de_ese_master():
     assert not subpagina_valida(general, "https://u.es/m/finanzas", oficial, hechos)
     hechos = {general["url"]: [{"campo": "nombre", "valor": "Máster Universitario en Finanzas"}]}
     assert subpagina_valida(general, "https://u.es/m/finanzas", oficial, hechos)
+
+
+def test_en_la_web_de_la_universidad_basta_el_nombre_entero_y_se_suman_sus_paginas(tmp_path):
+    # IE: la página no dice «oficial», pero está en la web de la universidad y da el nombre entero del título;
+    # la de precio y admisión, con el mismo nombre, aporta el precio. Un «Executive» con nombre parecido, no.
+    t = "2026-10-31T16:00:00+00:00"
+    pag = [{"url": u, "extraido": t, "grupo": "no_oficial", "proveedor": "prov-ie", "pagina": "principal"}
+           for u in ("https://www.ie.edu/masters/master-in-management/", "https://www.ie.edu/masters/master-in-management/admissions-fees",
+                     "https://www.ie.edu/exec/executive-master-in-management/")]
+    h = lambda url, campo, valor: {"url": url, "campo": campo, "valor": valor, "estado": "aceptado", "extraido": t,
+                                   "captura_sha256": "s"}
+    hs = [h(pag[0]["url"], "nombre", "Master in Management"), h(pag[0]["url"], "plazas", 120),
+          h(pag[1]["url"], "nombre", "Master in Management"), h(pag[1]["url"], "precio_total", 43300),
+          h(pag[2]["url"], "nombre", "Executive Master in Management"), h(pag[2]["url"], "tipo_titulo", "executive program")]
+    _escribir(tmp_path / "e", pag, hs)
+    (tmp_path / "c.json").write_text(json.dumps([{"codigo_ruct": "3500704", "universidad_codigo": "057", "situacion": "Activo",
+        "nombre_oficial": "Máster Universitario en Gestión / Master in Management (MIM) por la IE Universidad"}]))
+    (tmp_path / "p.jsonl").write_text(json.dumps({"id": "prov-ie", "tipos": ["universidad_privada"],
+                                                  "ruct": [{"universidad": "057"}]}) + "\n")
+    f.ejecutar([tmp_path / "e"], tmp_path / "o", catalogo=tmp_path / "c.json", censo=tmp_path / "p.jsonl")
+    fichas = [json.loads(l) for l in (tmp_path / "o/datos/estudios/masters/fichas.jsonl").read_text().splitlines()]
+    mim = next(x for x in fichas if x["clave"] == "ruct:3500704")
+    assert mim["comprobacion_nombre"] == "confirmado_por_nombre"
+    assert mim["campos"]["precio_total"]["valor"] == 43300 and mim["campos"]["plazas"]["valor"] == 120
+    assert any(x["grupo"] == "no_oficial" and "executive" in x.get("url", "") for x in fichas)

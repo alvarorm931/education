@@ -272,6 +272,10 @@ def subpagina_valida(p: dict, principal: str, nombre_oficial: str, hechos: dict[
     return bool(nombre_oficial) and comprobar_nombre(nombre_oficial, nom)[0] == "confirmado"
 
 
+NO_OFICIAL_TIPO = re.compile(r"propio|permanente|no[\s-]+oficial|executive|ejecutiv|curso|experto|"
+                                           r"especialista|diploma|certific|programa|short|open")
+
+
 def rescatar_oficiales(paginas: dict[str, dict], hechos: dict[str, list[dict]], cat: dict[str, dict],
                        censo: dict[str, dict]) -> dict[str, tuple[str, float]]:
     """URL → (código RUCT, cobertura) de las páginas extraídas como no oficiales o títulos propios que son, por su
@@ -301,9 +305,15 @@ def rescatar_oficiales(paginas: dict[str, dict], hechos: dict[str, list[dict]], 
             continue
         hs = {h["campo"]: h["valor"] for h in hechos.get(url, [])}
         nombre, tipo = str(hs.get("nombre") or ""), str(hs.get("tipo_titulo") or "").lower()
-        if not nombre or not (es_tipo_oficial(tipo) or (not tipo and "universitari" in nombre.lower())):
+        dice_oficial = es_tipo_oficial(tipo) or (not tipo and "universitari" in nombre.lower())
+        prov = censo.get(p.get("proveedor") or "") or {}
+        # en la web de la propia universidad (IE, Navarra…), el nombre entero del RUCT basta aunque la página no
+        # diga «oficial», si tampoco dice que sea otro tipo de título
+        web_de_universidad = any(str(x).startswith("universidad") for x in prov.get("tipos") or []) \
+            and not NO_OFICIAL_TIPO.search(tipo)
+        if not nombre or not (dice_oficial or web_de_universidad):
             continue
-        univs = {r.get("universidad") for r in (censo.get(p.get("proveedor") or "") or {}).get("ruct", [])}
+        univs = {r.get("universidad") for r in prov.get("ruct", [])}
         if not univs and hs.get("universidad_que_expide"):
             # centro sin registro propio en el RUCT (adscrito con web propia): la universidad que dice la página
             u = univ_de(str(hs["universidad_que_expide"]))
@@ -312,7 +322,7 @@ def rescatar_oficiales(paginas: dict[str, dict], hechos: dict[str, list[dict]], 
         for u in univs:
             for t in por_univ.get(u or "", []):
                 est, cob = comprobar_nombre(t["nombre_oficial"], nombre)
-                if est == "confirmado":
+                if est == "confirmado" and (dice_oficial or cob >= 0.99):
                     candidatos.append((ajuste(t["nombre_oficial"], nombre), t["codigo_ruct"], cob))
         candidatos.sort(reverse=True)
         # sin empate: si dos másters encajan igual de bien, no se adivina
@@ -438,7 +448,8 @@ def ejecutar(extracciones: list[Path], salida: Path, catalogo: Path | None = Non
         rescate = sorted((u for u, (c, _) in rescatadas.items() if c == codigo), key=lambda u: -rescatadas[u][1])
         if estado not in ("confirmado", "probable_oficial") and rescate:
             # la página propia no era la ficha (o no había): vale la rescatada por el nombre
-            ps, url_buena = [paginas[rescate[0]]], rescate[0]
+            # todas las páginas rescatadas para ese máster (la ficha y la de precio y admisión): manda la mejor
+            ps, url_buena = [paginas[u] for u in rescate], rescate[0]
             nombre_ext = next((h["valor"] for h in hechos.get(rescate[0], []) if h["campo"] == "nombre"), None)
             estado, cob = "confirmado_por_nombre", rescatadas[rescate[0]][1]
         res["oficial_" + estado] += 1
