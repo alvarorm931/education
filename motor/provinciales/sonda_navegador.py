@@ -46,6 +46,9 @@ def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser()
     p.add_argument("url")
     p.add_argument("--pulsar", default="", help="textos separados por comas (guion bajo = espacio)")
+    p.add_argument("--selector", default="", help="selector CSS de un elemento que se pulsa tras los textos "
+                                                  "(el primero), p. ej. img[src*=miniatura]")
+    p.add_argument("--html", action="store_true", help="imprime también el HTML de la página al final")
     p.add_argument("--caracteres", type=int, default=6000)
     p.add_argument("--espera", type=int, default=6000, help="milisegundos tras cargar")
     p.add_argument("--salida", default="sonda")
@@ -76,6 +79,27 @@ def main(argv: list[str] | None = None) -> int:
                 _volcar(pagina, f"tras pulsar «{texto}»", a.caracteres)
             except Exception as e:  # noqa: BLE001 - se sigue con el siguiente
                 print(f"no se pudo pulsar «{texto}»: {type(e).__name__}: {str(e)[:200]}")
+        if a.selector:
+            nuevas: list[str] = []
+            ctx.on("page", lambda pg: nuevas.append("ventana " + pg.url))
+            pagina.on("download", lambda d: nuevas.append("descarga " + d.url))
+            antes = len(peticiones)
+            try:
+                el = pagina.locator(a.selector).first
+                print("elemento:", el.evaluate("e => e.outerHTML.slice(0, 600)"))
+                el.click(timeout=15000)
+                pagina.wait_for_timeout(a.espera)
+                for pg in ctx.pages[1:]:
+                    nuevas.append("ventana abierta " + pg.url)
+                print("tras pulsar el selector:", nuevas)
+                for r in peticiones[antes:]:
+                    print("   nueva petición:", r[:400])
+                _volcar(pagina, "tras pulsar el selector", 2000)
+            except Exception as e:  # noqa: BLE001
+                print(f"no se pudo pulsar {a.selector}: {type(e).__name__}: {str(e)[:300]}")
+        if a.html:
+            print("===== HTML")
+            print(_seguro(pagina.content())[:30000])
         print("===== peticiones de la página:", len(peticiones))
         for r in peticiones[:150]:
             if "/zkau/web/" in r and r.startswith("GET"):
