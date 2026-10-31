@@ -351,6 +351,10 @@ def columnas_en_orden(texto: str) -> str:
             salida += volcar(filas, True) + [l.strip()]
             filas = []
             continue
+        if p and re.fullmatch(r"\d{1,5}", p[0]) and (m := re.match(r"(\d{5,8})(?!\d)(.*)", p[1])):
+            # Tenerife 2022-2024: el número del anuncio a la izquierda y el registro al borde de la columna, que la
+            # disposición pega al texto de la otra («1344 … 127489TURÍSTICO»): se rehace la línea «1344 127489»
+            p = (f"{p[0]} {m.group(1)}", m.group(2).strip())
         filas.append(p if l.strip() else ("", ""))
     salida += volcar(filas, False)
     return "\n".join(salida)

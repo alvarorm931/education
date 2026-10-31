@@ -103,3 +103,15 @@ def test_corte_por_titulo_coherente(tmp_path):
     assert t.revisar_cortes(tmp_path, "boplaspalmas") == 1
     d = json.loads(f.read_text())
     assert d["texto"] is None and d["corte_dudoso"] and d["captura_sha256"] == "a"
+
+
+def test_registro_pegado_a_la_otra_columna():
+    filas = ["III. ADMINISTRACIÓN LOCAL".ljust(66) + "de la Base de Datos Nacional de Subvenciones (BDNS)"]
+    filas += ["texto de la izquierda de la página número " + str(k) for k in range(1, 4)]
+    filas = [f.ljust(66) + "texto de la derecha que sigue " + str(k) for k, f in enumerate(filas)]
+    filas += ["ANUNCIO".center(40).ljust(66) + "“SUBVENCIONES DE MEJORA AL SECTOR",
+              "1344".ljust(66) + "127489TURÍSTICO DE LA ISLA DE EL HIERRO, EN",
+              "  SUBVENCIONES DE MEJORA AL SECTOR".ljust(66) + "RÉGIMEN DE CONCURRENCIA COMPETITIVA”."]
+    lineas = t.columnas_en_orden("\n".join(filas)).splitlines()
+    assert "1344 127489" in lineas and "TURÍSTICO DE LA ISLA DE EL HIERRO, EN" in lineas
+    assert lineas.index("1344 127489") < lineas.index("SUBVENCIONES DE MEJORA AL SECTOR")
