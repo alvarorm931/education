@@ -1,0 +1,76 @@
+name: Extracción de las bases (oposiciones)
+
+# Datos de las bases de cada proceso (requisitos, tasa, plazo, ejercicios, temas, méritos…) con Claude Haiku en lote
+# y la cita literal de cada dato comprobada sin IA (motor/ia/bases.py). Los textos son de boletines oficiales y ya
+# están limpios de datos de personas; el resultado va a la rama de datos (datos/oposiciones/extraccion/) con su
+# documento de origen, y el uso y el coste de cada lote a datos/oposiciones/extraccion/lotes/.
+# La clave ANTHROPIC_API_KEY (secreto de GitHub) solo llega al paso que llama a la API.
+
+on:
+  workflow_dispatch:
+    inputs:
+      n:
+        description: "Procesos por lote"
+        default: "40"
+      estados:
+        description: "Estados de los procesos, separados por comas (vacío: todos)"
+        default: "plazo_abierto"
+      esperar_min:
+        description: "Minutos de espera al lote"
+        default: "50"
+      retomar:
+        description: "Id de un lote ya enviado que no terminó a tiempo (solo recoger)"
+        default: ""
+
+permissions:
+  contents: write
+
+concurrency:
+  group: extraccion-bases
+  cancel-in-progress: false
+
+jobs:
+  lote:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -q -e .
+      - name: Preparar rama de datos
+        run: |
+          git config user.name "motor-datos"
+          git config user.email "motor-datos@users.noreply.github.com"
+          git fetch --depth 1 origin datos
+          git worktree add -B datos salida origin/datos
+      - name: Lote
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          N: ${{ inputs.n }}
+          ESTADOS: ${{ inputs.estados }}
+          ESPERAR: ${{ inputs.esperar_min }}
+          RETOMAR: ${{ inputs.retomar }}
+        run: |
+          set -o pipefail
+          if [ -n "$RETOMAR" ]; then
+            python -m motor.ia.bases retomar --datos salida --salida salida \
+              --lote-json "salida/datos/oposiciones/extraccion/lotes/pendiente-$RETOMAR.json" --esperar-min "$ESPERAR" 2>&1 | tail -n 40
+          else
+            python -m motor.ia.bases lote --datos salida --salida salida --trabajo trabajo --n "$N" --estados "$ESTADOS" \
+              --esperar-min "$ESPERAR" 2>&1 | tail -n 40
+          fi
+      - name: Guardar
+        if: always()
+        run: |
+          cd salida
+          git add datos/oposiciones/extraccion
+          git diff --cached --quiet && exit 0
+          git commit -qm "Extracción de las bases"
+          for i in 1 2 3 4 5 6 7 8; do
+            git push -q origin datos && exit 0
+            sleep $(( i * 4 + RANDOM % 7 ))
+            git fetch -q --depth 100 origin datos && git rebase -q origin/datos || { git rebase --abort; exit 1; }
+          done
+          exit 1
