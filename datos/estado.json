@@ -3,11 +3,13 @@
  "boe": {
   "periodo": [
    "2022-01-01",
-   "2026-10-30"
+   "2026-10-31"
   ],
   "numeros_de_diario_que_faltan": {},
   "dias_sin_procesar": [],
-  "dias_con_error": [],
+  "dias_con_error": [
+   "2026-10-31"
+  ],
   "dias_lunes_a_sabado_sin_boletin": [],
   "anuncios_sin_texto": 3996,
   "diarios_por_anio": {
@@ -105,19 +107,56 @@
   "bocce": {
    "grupo": "autonomicos",
    "informes": {
-    "ok": 5
+    "ok": 542,
+    "sin_anuncios": 4
    },
    "ultimo_boletin_leido": "2026-10-30",
    "dias_habiles_sin_boletin": 0,
-   "empleo_mediana_por_boletin": null,
+   "empleo_mediana_por_boletin": 1,
    "empleo_ultimos_5_boletines": 4,
    "recuento_bajo": false,
-   "anuncios_empleo": 4,
-   "textos": 4,
-   "textos_pendientes": 0,
-   "ultimos_errores": [],
-   "huecos_numeracion": {},
-   "boletines_sin_leer_por_numeracion": 0,
+   "anuncios_empleo": 631,
+   "textos": 448,
+   "textos_pendientes": 183,
+   "ultimos_errores": [
+    {
+     "fecha": "2026-09-22",
+     "resultado": "sin_anuncios",
+     "alertas": [
+      "BOCCE 6654 2026-09-22: sumario sin anuncios (posible cambio de formato)"
+     ]
+    },
+    {
+     "fecha": "2026-09-15",
+     "resultado": "sin_anuncios",
+     "alertas": [
+      "BOCCE 6652 2026-09-15: sumario sin anuncios (posible cambio de formato)"
+     ]
+    },
+    {
+     "fecha": "2026-09-11",
+     "resultado": "sin_anuncios",
+     "alertas": [
+      "BOCCE 6651 2026-09-11: sumario sin anuncios (posible cambio de formato)"
+     ]
+    },
+    {
+     "fecha": "2026-09-08",
+     "resultado": "sin_anuncios",
+     "alertas": [
+      "BOCCE 6650 2026-09-08: sumario sin anuncios (posible cambio de formato)"
+     ]
+    }
+   ],
+   "huecos_numeracion": {
+    "2026": [
+     6650,
+     6651,
+     6652,
+     6654
+    ]
+   },
+   "boletines_sin_leer_por_numeracion": 4,
    "alerta": false
   },
   "bocm": {
@@ -626,8 +665,8 @@
    "empleo_ultimos_5_boletines": 137,
    "recuento_bajo": false,
    "anuncios_empleo": 8450,
-   "textos": 3839,
-   "textos_pendientes": 4611,
+   "textos": 5855,
+   "textos_pendientes": 2595,
    "ultimos_errores": [
     {
      "fecha": "2026-09-24",
@@ -874,8 +913,8 @@
    "grupo": "provinciales",
    "informes": {
     "ok": 890,
-    "sin_boletin": 415,
-    "fuente_inaccesible": 8
+    "sin_boletin": 420,
+    "fuente_inaccesible": 16
    },
    "ultimo_boletin_leido": "2026-10-30",
    "dias_habiles_sin_boletin": 0,
@@ -883,8 +922,8 @@
    "empleo_ultimos_5_boletines": 29,
    "recuento_bajo": false,
    "anuncios_empleo": 6900,
-   "textos": 4375,
-   "textos_pendientes": 2525,
+   "textos": 6877,
+   "textos_pendientes": 23,
    "ultimos_errores": [
     {
      "fecha": "2023-04-06",
@@ -1596,8 +1635,8 @@
    "empleo_ultimos_5_boletines": 37,
    "recuento_bajo": false,
    "anuncios_empleo": 2916,
-   "textos": 331,
-   "textos_pendientes": 2585,
+   "textos": 570,
+   "textos_pendientes": 2346,
    "ultimos_errores": [
     {
      "fecha": "2026-09-23",
@@ -1731,17 +1770,17 @@
   "bopvalencia": {
    "grupo": "provinciales",
    "informes": {
-    "ok": 1176,
-    "sin_boletin": 588
+    "sin_boletin": 1614,
+    "ok": 150
    },
    "ultimo_boletin_leido": "2026-10-30",
    "dias_habiles_sin_boletin": 0,
-   "empleo_mediana_por_boletin": 5,
-   "empleo_ultimos_5_boletines": 41,
+   "empleo_mediana_por_boletin": 10,
+   "empleo_ultimos_5_boletines": 69,
    "recuento_bajo": false,
-   "anuncios_empleo": 11882,
+   "anuncios_empleo": 12471,
    "textos": 3131,
-   "textos_pendientes": 8751,
+   "textos_pendientes": 9340,
    "ultimos_errores": [],
    "huecos_numeracion": {},
    "boletines_sin_leer_por_numeracion": 0,
