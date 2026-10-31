@@ -286,6 +286,28 @@ def cancelar_programaciones_tardias(repo: str, t0: datetime, actuar: bool) -> li
     return salida
 
 
+LIMITE_AVISO_FICHERO = 80 * 1024 * 1024   # GitHub rechaza ficheros de más de 100 MB al subir
+
+
+CARPETAS_AGREGADOS = ("datos", "datos/oposiciones", "datos/oposiciones/procesos", "datos/oposiciones/huerfanos",
+                      "datos/boe", "datos/autonomicos", "datos/provinciales")
+
+
+def ficheros_grandes(repo: str, rama: str = "datos") -> list[dict]:
+    """Ficheros de la rama de datos que pasan de 80 MB (GitHub rechaza la subida a partir de 100 MB). Se miran las
+    carpetas donde están los ficheros agregados (los que crecen); las de cada día o cada boletín son pequeñas."""
+    salida = []
+    for carpeta in CARPETAS_AGREGADOS:
+        try:
+            entradas = api(f"/repos/{repo}/contents/{carpeta}?ref={rama}")
+        except urllib.error.HTTPError:
+            continue
+        for e in entradas if isinstance(entradas, list) else []:
+            if e.get("type") == "file" and e.get("size", 0) > LIMITE_AVISO_FICHERO:
+                salida.append({"fichero": e["path"], "mb": round(e["size"] / 1048576, 1)})
+    return salida
+
+
 def reanimar_latido(repo: str, t0: datetime, lanzar: bool) -> str:
     """latido.yml es una cadena que se relanza sola cada ~25 min mientras GitHub no dispare las programaciones.
     Si la cadena se cortó (ninguna ejecución en 45 min) y las programaciones siguen sin dispararse, se relanza."""
@@ -418,6 +440,7 @@ def main() -> None:
 
     respaldos = respaldo_programaciones(repo, runs, t0, a.relanzar)
     tardias = cancelar_programaciones_tardias(repo, t0, a.relanzar)
+    grandes = ficheros_grandes(repo)
     latido = reanimar_latido(repo, t0, a.relanzar)
 
     estado_fuentes = json_de_rama(repo, "datos/estado.json", "datos") or {}
@@ -449,6 +472,7 @@ def main() -> None:
         "programados": programados,
         "respaldo_programaciones": respaldos,
         "programaciones_tardias_canceladas": tardias,
+        "ficheros_de_mas_de_80_mb": grandes,
         "latido": latido,
         "boe": {k: boe.get(k) for k in ("ultimo_diario", "ultima_ejecucion", "alertas_ultima_ejecucion")},
         "avisos_de_fuentes": avisos_fuentes,
@@ -471,6 +495,8 @@ def main() -> None:
           f"- Programaciones que GitHub disparó tarde y repetían la del día (canceladas): "
           f"{', '.join(t['flujo'] + ' de las ' + t['prevista'] + ', disparada a las ' + t['disparada'] for t in tardias) or 'ninguna'}",
           f"- Latido (relanza al vigilante cada ~25 min mientras GitHub no dispare programaciones): {latido}",
+          f"- Ficheros de la rama datos de más de 80 MB (GitHub rechaza más de 100): "
+          f"{', '.join(g['fichero'] + ' (' + str(g['mb']) + ' MB)' for g in grandes) or 'ninguno'}",
           f"- Avisos de fuentes: {len(avisos_fuentes)}", ""]
     for f in fallos:
         marca = ("superado" if f["superado"] else "relanzado" if f.get("relanzado") is True
