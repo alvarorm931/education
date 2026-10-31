@@ -81,7 +81,7 @@ jobs:
           # Los módulos que leen webs de centros guardan el original de cada página (y la extracción, lo enviado a
           # la API y las citas) en el almacén privado de S3, con escritura única y credenciales OIDC que se renuevan
           # solas (motor/credenciales_aws.py). Nada de eso llega a la rama pública.
-          MOTOR_ORIGINALES: ${{ contains(fromJSON('["motor.estudios.extraer", "motor.estudios.clasificar", "motor.estudios.rastreador", "motor.estudios.tarifas", "motor.estudios.ruct", "motor.estudios.qedu_masters", "motor.estudios.recitar", "motor.estudios.boe_planes_masters", "motor.estudios.guias"]'), inputs.modulo) && 's3' || 'huella' }}
+          MOTOR_ORIGINALES: ${{ contains(fromJSON('["motor.estudios.extraer", "motor.estudios.clasificar", "motor.estudios.rastreador", "motor.estudios.tarifas", "motor.estudios.ruct", "motor.estudios.qedu_masters", "motor.estudios.recitar", "motor.estudios.boe_planes_masters", "motor.estudios.guias", "motor.estudios.catalogos_uni", "motor.estudios.escuelas"]'), inputs.modulo) && 's3' || 'huella' }}
         run: |
           case "$MODULO" in motor.estudios.*) ;; *) echo "Módulo no permitido"; exit 1;; esac
           mkdir -p out
