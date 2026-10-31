@@ -1,0 +1,30 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/runner/work/education/education/motor/provinciales/diagnostico_cortes.py", line 104, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/runner/work/education/education/motor/provinciales/diagnostico_cortes.py", line 61, in main
+    paginas = t.paginas_pdf_columnas(r.contenido) if por_registro else t.paginas_pdf(r.contenido)
+                                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/education/education/motor/provinciales/textos.py", line 106, in paginas_pdf
+    return [p.extract_text() or "" for p in PdfReader(io.BytesIO(contenido)).pages]
+            ^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/pypdf/_page.py", line 2324, in extract_text
+    return self._extract_text(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/pypdf/_page.py", line 1936, in _extract_text
+    for operands, operator in content.operations:
+                              ^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/pypdf/generic/_data_structures.py", line 1641, in operations
+    self._parse_content_stream(BytesIO(self._data))
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/pypdf/generic/_data_structures.py", line 1496, in _parse_content_stream
+    self._check_limits(parsing_budget=parsing_budget, token_decrement=1)
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/pypdf/generic/_data_structures.py", line 1471, in _check_limits
+    raise LimitReachedError("Reached maximum number of tokens per stream.")
+pypdf.errors.LimitReachedError: Reached maximum number of tokens per stream.
+BOP Las Palmas 2026-10-30: ok 13
+Días procesados: 1. Alertas: 0
+disposiciones 52, de empleo 13
+pdf 200 8704946 https://www.boplaspalmas.net/boletines/2026/30-10-26/30-10-26.pdf
+codigo=1
