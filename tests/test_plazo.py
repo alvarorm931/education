@@ -359,3 +359,10 @@ def test_hasta_una_fecha_y_frases_de_solicitudes_con_documentacion():
     t = ("Tercer.- OBRIR un nou termini de presentació de sol·licituds de 20 dies naturals a comptar des de l'endemà de "
          "la publicació d'aquesta esmena al DOGC, d'acord amb les bases comunes reguladores del procés selectiu.")
     assert extraer_plazo(t, "2026-05-12", "Diari Oficial de la Generalitat de Catalunya")["fin_estimado"] == "2026-06-01"
+
+
+def test_boletin_en_mayusculas_y_el_resto_en_minusculas():
+    t = ("El plazo de presentación de solicitudes será de veinte días hábiles contados a partir del siguiente a la "
+         "publicación de este anuncio en el BOLETÍN OFICIAL de la Comunidad de Madrid.")
+    r = extraer_plazo(t, "2026-10-01", "Boletín Oficial de la Comunidad de Madrid")
+    assert r["cuenta_desde"] == "Boletín Oficial de la Comunidad de Madrid" and r["fin_estimado"] == "2026-10-30"

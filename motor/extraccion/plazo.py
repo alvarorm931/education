@@ -338,6 +338,12 @@ def _menciones(f: str) -> list[tuple[int, int, str]]:
             base = "Butlletí Oficial de la Província" if k == "butlleti oficial" else "Boletín Oficial de la Provincia"
             nombre = f"{base} de {c.group('p')}" if c.group("p") else base
             k, fin = normalizar(nombre), m.end() + c.end()
+        elif k in ("boletin oficial", "butlleti oficial", "diari oficial", "diario oficial") and m.group("b").isupper() \
+                and (c := RE_BOLETIN_LIBRE.match(_titulo(m.group("b")) + f[m.end():m.end() + 120])) and \
+                len(c.group("b")) > len(m.group("b")):
+            # «BOLETÍN OFICIAL de la Comunidad de Madrid»: el resto del nombre, en minúsculas
+            nombre = PARTICULAS_FINALES.sub("", " ".join(c.group("b").split()))
+            k, fin = normalizar(nombre), m.end() + len(c.group("b")) - len(m.group("b"))
         if k not in vistos or m.start() < vistos[k][0]:
             vistos[k] = (m.start(), fin, nombre)
     for m in RE_SIGLAS.finditer(f):
