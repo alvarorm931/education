@@ -1,10 +1,10 @@
 {
- "fecha": "2026-10-31T04:23:57+00:00",
- "fecha_madrid": "31/10 05:23",
+ "fecha": "2026-10-31T04:49:08+00:00",
+ "fecha_madrid": "31/10 05:49",
  "ventana_horas": 6.0,
  "resumen": {
-  "ejecuciones_revisadas": 85,
-  "fallos": 2,
+  "ejecuciones_revisadas": 61,
+  "fallos": 1,
   "fallos_pendientes": 1,
   "relanzados": 0,
   "colas_largas": 0,
@@ -44,57 +44,6 @@
       "##[error]Process completed with exit code 1.",
       "...",
       "##[error]Huecos en el BOE: {\"dias_con_error\": [\"2026-10-31\"]}",
-      "##[error]Process completed with exit code 1."
-     ]
-    }
-   ]
-  },
-  {
-   "flujo": "Estudios por tramos",
-   "fichero": "estudios.yml",
-   "id": 41140514779,
-   "intento": 1,
-   "evento": "workflow_dispatch",
-   "rama": "main",
-   "commit": "0e7f07e",
-   "titulo": "Estudios por tramos",
-   "conclusion": "failure",
-   "cuando": "31/10 02:57",
-   "url": "https://github.com/alvarorm931/education/actions/runs/41140514779",
-   "superado": true,
-   "en_curso": null,
-   "pasajero": false,
-   "detalle": [
-    {
-     "trabajo": "tramo (leer --portadas entrada/masters-estado/entradas/portadas/portadas_ub.jsonl --navegador --p...",
-     "pasos": [
-      "Chromium para las páginas que solo se pintan con JavaScript (extracción con --navegador)",
-      "Subir este tramo a sondas (por_tramo=si)"
-     ],
-     "ejecutor": "motor-espana",
-     "etiquetas": [
-      "self-hosted",
-      "espana"
-     ],
-     "final_registro": [
-      "##[error]error: Could not read cc3ceda89f6183a93e20fff3392f1bca9ed4c0af",
-      "Error: Installation process exited with code: 1",
-      "##[error]Process completed with exit code 1.",
-      "##[error]Process completed with exit code 1.",
-      "...",
-      "##[error]error: Could not read cc3ceda89f6183a93e20fff3392f1bca9ed4c0af",
-      "  Python_ROOT_DIR: /home/motor/runner/_trabajo/_tool/Python/3.12.16/x64",
-      "  Python2_ROOT_DIR: /home/motor/runner/_trabajo/_tool/Python/3.12.16/x64",
-      "  Python3_ROOT_DIR: /home/motor/runner/_trabajo/_tool/Python/3.12.16/x64",
-      "  LD_LIBRARY_PATH: /home/motor/runner/_trabajo/_tool/Python/3.12.16/x64/lib",
-      "Installing dependencies...",
-      "Switching to root user to install dependencies...",
-      "sudo: a terminal is required to read the password; either use the -S option to read from standard input or configure an askpass helper",
-      "sudo: a password is required",
-      "Failed to install browsers",
-      "Error: Installation process exited with code: 1",
-      "##[error]Process completed with exit code 1.",
-      "cp: cannot stat 'out/.': No such file or directory",
       "##[error]Process completed with exit code 1."
      ]
     }
