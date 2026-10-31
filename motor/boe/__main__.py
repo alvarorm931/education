@@ -83,6 +83,12 @@ def _procesar_dia(d: date, raiz: Path, archivo: Archivo, estado: dict) -> dict:
     informe = {"fecha": d.isoformat(), "status": resp.status, "sha256": captura["sha256"], "alertas": []}
     laborable = d.weekday() < 6  # el BOE sale de lunes a sábado
 
+    ahora = datetime.now(MADRID)
+    if d == ahora.date() and ahora.hour < 9 and resp.status in (404, 500, 502, 503):
+        # El sumario del día sale hacia las 7:30: pedido antes (un motor de madrugada), el BOE da 404 o 500. No es un
+        # hueco: se vuelve a pedir en la siguiente pasada (31/10/2026, 02:20, un HTTP 500 paraba el aviso de huecos)
+        informe["resultado"] = "pendiente_publicacion"
+        return informe
     if resp.status == 404:
         informe["resultado"] = "sin_boletin"
         if laborable:

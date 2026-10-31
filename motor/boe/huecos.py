@@ -53,6 +53,8 @@ def main(argv: list[str] | None = None) -> int:
         elif i.get("resultado") == "sin_boletin":
             if d.weekday() < 6:
                 sin_boletin_laborable.append(d.isoformat())
+        elif i.get("resultado") == "pendiente_publicacion":
+            pass  # pedido de madrugada, antes de que salga: se vuelve a pedir
         else:
             con_error.append(d.isoformat())
         d += timedelta(days=1)

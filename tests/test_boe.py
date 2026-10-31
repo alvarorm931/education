@@ -215,3 +215,21 @@ def test_un_fallo_pasajero_no_borra_un_dia_ya_leido(tmp_path, monkeypatch):
     monkeypatch.setattr(boe, "obtener", lambda url, accept=None: Respuesta(url, 500, b"error", {}))
     inf = boe.procesar_dia(date(2026, 10, 29), tmp_path, Archivo(tmp_path / "archivo"), {})
     assert inf["resultado"] == "ok" and json.loads(ruta.read_text())["oposiciones"] == 216
+
+
+def test_sumario_de_hoy_pedido_de_madrugada(tmp_path, monkeypatch):
+    """A las 02:20 el BOE del día aún no ha salido y da HTTP 500: no es un hueco, se vuelve a pedir."""
+    import datetime as dt
+    from motor.archivo import Archivo
+    from motor.boe import __main__ as boe
+
+    class Reloj(dt.datetime):
+        @classmethod
+        def now(cls, tz=None):
+            return dt.datetime(2026, 10, 31, 2, 20, tzinfo=tz)
+
+    monkeypatch.setattr(boe, "datetime", Reloj)
+    monkeypatch.setattr(boe, "obtener", lambda url, accept=None: Respuesta(url, 500, b"error", {}))
+    inf = boe.procesar_dia(date(2026, 10, 31), tmp_path, Archivo(tmp_path / "archivo"), {})
+    assert inf["resultado"] == "pendiente_publicacion"
+    assert boe.procesar_dia(date(2026, 10, 30), tmp_path, Archivo(tmp_path / "archivo"), {})["resultado"] == "error_http"
