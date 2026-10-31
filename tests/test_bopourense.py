@@ -32,3 +32,50 @@ def test_edicto():
     c = o.convocante(t["entidad"], "IV. ENTIDADES LOCALES")
     assert (c["nombre"], c["provincia"]) == ("A Arnoia", "Ourense")
     assert o.convocante(None, "I. DIPUTACIÓN PROVINCIAL DE OURENSE")["tipo"] == "Diputación Provincial"
+
+
+# Sumario del PDF del boletín entero del 30/01/2023 (sin maquetar: los edictos no tienen texto propio)
+SUMARIO_2023 = """Dep. legal: OR-1/1958 · Franqueo concertado 30/2
+Boletín oficial
+provincia de ourense
+n.º 24 · luns, 30 xaneiro 2023
+suMario
+i. deputación provincial de ourense
+Exposición pública dos padróns e listas cobratorias da taxa ........... 2
+iv. entidades locais
+Barbadás
+Convocatoria e bases de selección do proceso selectivo
+para a provisión, mediante interinidade, do posto de traballo .............. 3
+I. DIPUTACIÓN PROVINCIAL DE OURENSE
+Exposición pública de los padrones y listas cobratorias de la tasa
+por el suministro de agua ........... 2
+IV . ENTIDADES LOCALES
+Barbadás
+Convocatoria y bases de selección del proceso selectivo
+para la provisión, mediante interinidad, del puesto de trabajo
+reservado a funcionarios/as de Administración Local ............. 15
+Chandrexa de Queixa
+Corrección de errores en la convocatoria del proceso de selección
+para cubrir una plaza de auxiliar administrativo/a .................................... 27
+Rúa (A)
+Exposición pública del padrón de la tasa por el servicio ...................... 28
+"""
+
+
+def test_entidad_del_sumario_del_pdf():
+    e = o.sumario_pdf([SUMARIO_2023])
+    assert [(x["entidad"], x["pagina"]) for x in e] == [(None, 2), ("Barbadás", 15), ("Chandrexa de Queixa", 27),
+                                                       ("Rúa (A)", 28)]
+    edictos = [{"id": "E1", "titulo": "Convocatoria y bases de selección del proceso selectivo para la provisión, "
+                                      "mediante interinidad, del puesto de trabajo reservado"},
+               {"id": "E2", "titulo": "Corrección de errores en la convocatoria del proceso de selección para cubrir "
+                                      "una plaza de auxiliar administrativo/a"},
+               {"id": "E3", "titulo": "Exposición pública del padrón de la tasa por el servicio de suministro"},
+               {"id": "E4", "titulo": "Otro asunto que no está"}]
+    ents = o.entidades_de_paginas([SUMARIO_2023], edictos)
+    assert ents == {"E1": "Ayuntamiento de Barbadás", "E2": "Ayuntamiento de Chandrexa de Queixa",
+                    "E3": "Ayuntamiento de A Rúa"}
+    c = o.convocante(ents["E3"], "IV. ENTIDADES LOCALES")
+    assert (c["nombre"], c["provincia"]) == ("A Rúa", "Ourense")
+    b = o.leer_dia((FIX / "bopourense_20220103.json").read_bytes())[0]
+    assert b["maquetado"] is False and b["id_boletin"] == 67594

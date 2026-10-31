@@ -10,6 +10,10 @@ Formato verificado el 30/10/2026 desde GitHub (también para 2022):
   - Para los edictos de empleo se pide su texto (para saber la entidad y guardar el texto limpio); en nombramientos,
     listas y resultados solo se guarda la entidad y se cuenta, porque el texto nombra a las personas.
   - robots.txt no existe (la dirección devuelve la página de la aplicación).
+  - Comprobado el 31/10/2026: los boletines «sin maquetar» (maquetadosn «N», hasta 2023) no tienen el texto de cada
+    edicto en HTML ni en PDF (la API responde 500 «No se encontro el fichero»). Solo está el PDF del boletín entero,
+    /portalapi/api/boletin/descargar/ID/idioma/es, bilingüe y con sumario: de él sale la entidad de cada edicto (el
+    nombre que encabeza sus asuntos en el sumario en castellano). Sin el texto (el cuerpo no repite el asunto).
 
 Uso:
   python -m motor.provinciales.bopourense --salida ruta/                                  # ayer y hoy
@@ -53,6 +57,10 @@ def url_edicto(id_edicto: int | str, idioma: str = "es") -> str:
     return f"{API}/edicto/descargar/html/{id_edicto}/{idioma}"
 
 
+def url_boletin_pdf(id_boletin: int | str) -> str:
+    return f"{API}/boletin/descargar/{id_boletin}/idioma/es"
+
+
 def leer_dia(contenido: bytes) -> list[dict]:
     """Boletines del día (el ordinario y, si lo hay, el extraordinario)."""
     out = []
@@ -60,6 +68,7 @@ def leer_dia(contenido: bytes) -> list[dict]:
         b = x.get("boletin") or {}
         f = b.get("fechaPublicacion") or ""
         out.append({"numero": b.get("numeroBop"), "extraordinario": b.get("excepcional") == "S",
+                    "id_boletin": b.get("id"), "maquetado": b.get("maquetadosn") != "N",
                     "fecha": f"{f[:4]}-{f[4:6]}-{f[6:8]}" if len(f) == 8 else None,
                     "anuncios": [{"numero_anuncio": str(e["id"]), "seccion": (e.get("seccion") or {}).get("nombre"),
                                   "titulo": " ".join((e.get("sumarioCas") or e.get("sumario") or "").split()),
@@ -79,6 +88,74 @@ def leer_edicto(contenido: bytes, x: dict | None = None) -> dict:
                 "lineas_con_documento_de_identidad": sum(1 for l in lineas if RE_DOCUMENTO.search(l)),
                 "citas": citas("\n".join(lineas))}
     return {"entidad": entidad, "titulo": None, **limpiar_html(h)}
+
+
+RE_LINEA_SUMARIO = re.compile(r"(?:\.\s?){3,}\s*(\d{1,4})\s*$")
+RE_SECCION_CASTELLANO = re.compile(r"^\s*([IVX]+)\s?\.\s+([A-ZÁÉÍÓÚÑÜ][A-ZÁÉÍÓÚÑÜ ,.]+?)\s*$")
+TIPOS_ENTIDAD = ("ayuntamiento", "concello", "mancomun", "consorcio", "comunidad", "comunidade", "diputacion",
+                 "deputacion", "instituto", "organismo", "xunta", "entidad", "agrupacion", "junta", "parroquia")
+
+
+def _entidad_del_sumario(nombre: str) -> str:
+    """«Rúa (A)» -> «Ayuntamiento de A Rúa»; lo que ya dice qué es (mancomunidad, consorcio…), tal cual."""
+    nombre = " ".join(nombre.split())
+    m = re.match(r"^(.*?)\s*\((A|O|As|Os)\)$", nombre)
+    if m:
+        nombre = f"{m.group(2)} {m.group(1)}"
+    return nombre if normalizar(nombre).startswith(TIPOS_ENTIDAD) else f"Ayuntamiento de {nombre}"
+
+
+def sumario_pdf(paginas: list[str]) -> list[dict]:
+    """Entradas del sumario en castellano del PDF del boletín: {seccion, entidad, titulo, pagina}. El sumario va
+    primero en gallego (secciones en minúscula) y luego en castellano (en mayúsculas); en las entidades locales cada
+    entidad encabeza sus asuntos y cada asunto acaba en puntos y la página."""
+    out, seccion, entidad, actual, en_castellano = [], None, None, [], False
+    for pag in paginas[:3]:
+        for linea in pag.splitlines():
+            l = " ".join(linea.split())
+            if not l:
+                continue
+            m = RE_SECCION_CASTELLANO.match(l)
+            if m:
+                en_castellano, seccion, entidad, actual = True, f"{m.group(1)}. {m.group(2).strip()}", None, []
+                continue
+            if not en_castellano:
+                continue
+            fin = RE_LINEA_SUMARIO.search(l)
+            if fin:
+                actual.append(RE_LINEA_SUMARIO.sub("", l))
+                out.append({"seccion": seccion, "entidad": entidad, "titulo": " ".join(actual).strip(" ."),
+                            "pagina": int(fin.group(1))})
+                actual = []
+            elif not actual and len(l) <= 45 and not l.endswith(".") and "entidades locales" in normalizar(seccion):
+                entidad = l
+            else:
+                actual.append(l)
+        if out and not any(RE_LINEA_SUMARIO.search(l) for l in pag.splitlines()):
+            break
+    return out
+
+
+def entidades_del_pdf(pdf: bytes, edictos: list[dict]) -> dict[str, str]:
+    """Entidad de cada edicto (por id) según el sumario en castellano del PDF del boletín entero, casando su asunto
+    (sumarioCas) con la entrada del sumario por las primeras letras."""
+    from motor.provinciales.textos import paginas_pdf
+    return entidades_de_paginas(paginas_pdf(pdf), edictos)
+
+
+def entidades_de_paginas(paginas: list[str], edictos: list[dict]) -> dict[str, str]:
+    from motor.provinciales.textos import _plano
+    entradas = [e for e in sumario_pdf(paginas) if e["entidad"]]
+    out = {}
+    for x in edictos:
+        t = _plano(x.get("titulo") or "").replace(" ", "")[:50]
+        if len(t) < 15:
+            continue
+        cands = [e for e in entradas if (u := _plano(e["titulo"]).replace(" ", "")[:50]) and
+                 min(len(u), len(t)) >= 15 and u[:min(len(u), len(t))] == t[:min(len(u), len(t))]]
+        if len({e["entidad"] for e in cands}) == 1:
+            out[x["id"]] = _entidad_del_sumario(cands[0]["entidad"])
+    return out
 
 
 def es_local(x: dict) -> bool:
@@ -133,16 +210,29 @@ def procesar_dia(d: date, raiz: Path, archivo: Archivo, pausa: float = 1.0) -> d
         return inf
     captura = archivo.guardar(FUENTE, d, r.contenido, url, "json", r.status, r.cabeceras)
     filas = [{**x, "id": f"BOPOURENSE-{x['numero_anuncio']}", "fecha": d.isoformat(), "boletin": b["numero"],
-              "extraordinario": b["extraordinario"], "fuente": SIGLAS, "captura_sha256": captura["sha256"]}
+              "extraordinario": b["extraordinario"], "id_boletin": b.get("id_boletin"), "maquetado": b.get("maquetado", True),
+              "fuente": SIGLAS, "captura_sha256": captura["sha256"]}
              for b in boletines for x in b["anuncios"]]
     empleo = seleccionar(filas)
     por_id = {f["id"]: f for f in filas}
     textos, sin_texto = 0, 0
+    # Boletines sin maquetar: la entidad, del sumario del PDF del boletín entero (los edictos no tienen texto propio)
+    for b in boletines:
+        sin_maquetar = [x for x in empleo if x["boletin"] == b["numero"] and not x.get("maquetado", True)]
+        if sin_maquetar and b.get("id_boletin"):
+            for xid, ent in entidades_pdf_boletin(b["id_boletin"], d, sin_maquetar, archivo, pausa).items():
+                x = next(y for y in sin_maquetar if y["id"] == xid)
+                x["entidad"] = por_id[xid]["entidad"] = ent
+                if x.get("ambito") == "local":
+                    x["convocante"] = convocante(ent, x.get("seccion"))
     for x in empleo:  # la entidad está en el texto: se pide el de cada anuncio de empleo
+        if not x.get("maquetado", True):
+            sin_texto += 1
+            continue
         ruta = _base(raiz) / "textos" / d.strftime("%Y") / d.strftime("%m") / f"{x['id']}.json"
         try:
             time.sleep(pausa)
-            rt = obtener(x["url_texto"], accept="text/html")
+            rt = obtener(x["url_texto"], accept="text/html", intentos=2)
         except (ConnectionError, TimeoutError):
             sin_texto += 1
             continue
@@ -169,22 +259,65 @@ def procesar_dia(d: date, raiz: Path, archivo: Archivo, pausa: float = 1.0) -> d
     return inf
 
 
+def entidades_pdf_boletin(id_boletin, d: date, edictos: list[dict], archivo: Archivo, pausa: float) -> dict[str, str]:
+    url = url_boletin_pdf(id_boletin)
+    try:
+        time.sleep(pausa)
+        r = obtener(url, accept="application/pdf", intentos=2)
+    except (ConnectionError, TimeoutError):
+        return {}
+    if r.status != 200 or r.contenido[:4] != b"%PDF":
+        return {}
+    archivo.guardar(FUENTE + "-boletin", d, r.contenido, url, "pdf", r.status, r.cabeceras)
+    try:
+        return entidades_del_pdf(r.contenido, edictos)
+    except Exception:  # noqa: BLE001 - un PDF mal formado no para la carga
+        return {}
+
+
 def reparar(raiz: Path, pausa: float, max_minutos: float) -> tuple[int, int]:
     """Anuncios de empleo sin entidad (guardados antes de que pasara a disposiciones y perdida al reseleccionar):
     se vuelve a pedir la cabecera de su texto y se completan oposiciones y disposiciones."""
     from motor.autonomicos.comun import leer_jsonl, estado_dia
     inicio, hechos, errores = time.monotonic(), 0, 0
+    archivo = Archivo(raiz / "archivo", indice_por_fuente=True, solo_huella=solo_huella_por_defecto())
     for f in sorted((_base(raiz) / "oposiciones").glob("*/*/*.jsonl"), reverse=True):
         filas = leer_jsonl(f)
-        faltan = [x for x in filas if not x.get("entidad") and x.get("url_texto")]
+        faltan = [x for x in filas if not x.get("entidad") and x.get("url_texto") and not x.get("sin_entidad_en_pdf")]
         if not faltan:
             continue
-        for x in faltan:
+        # Sin saber si el boletín estaba maquetado (lo guardado antes del 31/10): se pregunta a la API por el día
+        if any("maquetado" not in x for x in faltan):
+            time.sleep(pausa)
+            try:
+                rd = obtener(url_dia(date.fromisoformat(faltan[0]["fecha"])), accept="application/json", intentos=2)
+                bols = leer_dia(rd.contenido) if rd.status == 200 else []
+            except (ConnectionError, TimeoutError, ValueError):
+                bols = []
+            info = {b["numero"]: b for b in bols}
+            for x in faltan:
+                b = info.get(x.get("boletin"))
+                if b:
+                    x["maquetado"], x["id_boletin"] = b["maquetado"], b["id_boletin"]
+        for num in {x.get("boletin") for x in faltan if x.get("maquetado") is False and x.get("id_boletin")}:
+            grupo = [x for x in faltan if x.get("boletin") == num and x.get("maquetado") is False]
+            ents = entidades_pdf_boletin(grupo[0]["id_boletin"], date.fromisoformat(grupo[0]["fecha"]), grupo,
+                                         archivo, pausa)
+            for x in grupo:
+                if x["id"] in ents:
+                    x["entidad"] = ents[x["id"]]
+                    if x.get("ambito") == "local":
+                        x["convocante"] = convocante(x["entidad"], x.get("seccion"))
+                    hechos += 1
+                else:
+                    x["sin_entidad_en_pdf"] = True  # no se vuelve a pedir el PDF por él
+                    errores += 1
+        for x in [y for y in faltan if y.get("maquetado", True) and not y.get("entidad")]:
             if max_minutos and (time.monotonic() - inicio) / 60 > max_minutos:
                 break
             time.sleep(pausa)
             try:
-                r = obtener(x["url_texto"], accept="text/html")
+                r = obtener(x["url_texto"], accept="text/html", intentos=2)
             except (ConnectionError, TimeoutError):
                 errores += 1
                 continue
