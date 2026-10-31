@@ -179,3 +179,19 @@ def test_bases_sin_cita_del_mismo_ayuntamiento_y_puesto():
     ps = {p["id"]: p for p in construir(boe, date(2026, 10, 29), autonomicos)}
     assert [o["id"] for o in ps["boe:B1"]["otras_publicaciones"]] == ["dogc:1"]
     assert "dogc:2" in ps and not ps["boe:A1"]["otras_publicaciones"] and not ps["boe:A2"]["otras_publicaciones"]
+
+
+def test_bases_sin_cita_solo_las_mas_recientes():
+    """Dos convocatorias del mismo ayuntamiento y puesto antes de un solo anuncio del BOE: solo la última es suya (y su
+    repetición en otro boletín); la anterior queda como proceso aparte."""
+    conv = {"tipo": "Ayuntamiento", "nombre": "Santa Margarida i els Monjos", "provincia": "Barcelona"}
+    boe = [_acto("B1", "2022-09-24", "apertura_plazo", convocante=conv,
+                 plazas=[{"numero": 2, "puesto_clave": "policia-local"}])]
+    loc = lambda i, f, fu: {"id": i, "fecha": f, "fuente": fu, "tipo_acto": "convocatoria", "ambito": "local",
+                            "alcance": "acceso", "convocante": conv,
+                            "titulo": "ANUNCIO sobre las bases de dos plazas de agente de la policía local"}
+    autonomicos = [loc("dogc:1", "2022-04-02", "DOGC"), loc("dogc:2", "2022-09-02", "DOGC"),
+                   loc("bopb:2", "2022-08-30", "BOPB")]
+    ps = {p["id"]: p for p in construir(boe, date(2026, 10, 29), autonomicos)}
+    assert sorted(o["id"] for o in ps["boe:B1"]["otras_publicaciones"]) == ["bopb:2", "dogc:2"]
+    assert "dogc:1" in ps

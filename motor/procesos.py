@@ -430,6 +430,18 @@ def construir(actos: list[dict], hoy: date, autonomicos: list[dict] | None = Non
             lista = [a for a in lista if all(p.get("turno") in (None, t) for p in a.get("plazas") or [])] or lista
         if len(lista) == 1:
             sin_cita[lista[0]["id"]].append(x)
+    # Y al revés: si a un anuncio del BOE le salen varias bases del mismo ayuntamiento y puesto, solo son suyas las
+    # más recientes de cada boletín, y de otros boletines solo las de esas fechas (repeticiones de las mismas bases);
+    # las de antes son de otra convocatoria y quedan como proceso aparte (revisión del 31/10/2026)
+    for aid, lista in sin_cita.items():
+        if len(lista) < 2:
+            continue
+        ultima: dict[str, dict] = {}
+        for x in lista:
+            if x.get("fuente") not in ultima or (x.get("fecha") or "") > (ultima[x.get("fuente")].get("fecha") or ""):
+                ultima[x.get("fuente")] = x
+        reciente = max((x.get("fecha") or "") for x in ultima.values())
+        sin_cita[aid] = [x for x in ultima.values() if abs(_dias_entre(x.get("fecha"), reciente)) <= 60]
 
     gemelas_exactas = {x["id"] for a in origenes_boe for x in por_titulo.get(clave_titulo(a.get("titulo")), [])}
     procesos = []
