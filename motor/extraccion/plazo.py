@@ -58,7 +58,7 @@ RE_MESES = re.compile(r"\b(?P<n>un|una|unha|dos|dous|dues|duas|tres|cuatro|quatr
                       re.IGNORECASE)
 _DE = r"(?:\s+de\s+|\s+d[\'’]\s*)"  # «de octubre», «d'octubre»
 RE_INTERVALO = re.compile(
-    rf"\b(?:del?|des\s+del|do)\s+(?:d[ií]a\s+)?(?P<d1>\d{{1,2}})(?:{_DE}(?P<m1>[{L}]+))?(?:\s+de\s+(?P<a1>\d{{4}}))?\s+"
+    rf"\b(?:del?|des\s+del|desde\s+el|do)\s+(?:d[ií]a\s+)?(?P<d1>\d{{1,2}})(?:{_DE}(?P<m1>[{L}]+))?(?:\s+de\s+(?P<a1>\d{{4}}))?\s+"
     rf"(?:al|hasta\s+el|fins\s+al|fins\s+el|ao|ata\s+o)\s+(?:d[ií]a\s+)?(?P<d2>\d{{1,2}}){_DE}(?P<m2>[{L}]+)"
     r"(?:\s+de\s+(?P<a2>\d{4}))?", re.IGNORECASE)
 RE_INICIO_EXPLICITO = re.compile(
@@ -93,17 +93,25 @@ SIGLAS = {
     "BORM": "Boletín Oficial de la Región de Murcia", "BOPV": "Boletín Oficial del País Vasco",
     "BOIB": "Butlletí Oficial de les Illes Balears", "DOCM": "Diario Oficial de Castilla-La Mancha",
     "BOME": "Boletín Oficial de la Ciudad de Melilla", "BOCCE": "Boletín Oficial de la Ciudad de Ceuta",
-    "BOPB": "Butlletí Oficial de la Província de Barcelona",
+    "BOPB": "Butlletí Oficial de la Província de Barcelona", "BOPT": "Butlletí Oficial de la Província de Tarragona",
 }
+# El BOP por sus siglas: «BOP de Barcelona», «BOP DE LUGO», «en el BOP» (el de la provincia: el propio en un BOP)
+_PALABRA_PROVINCIA = r"[A-ZÁÉÍÓÚÑ][A-Za-zÁÉÍÓÚÑáéíóúñ'’-]+"
+RE_BOP_CORTO = re.compile(
+    rf"\bBOP\b(?:\s+(?:de|DE|da|DA|del|DEL|d['’])\s*(?:(?:la|LA)\s+)?(?:(?:Provincia|PROVINCIA|Província|provincia)\s+"
+    rf"(?:de|DE|da|DA|d['’])\s*)?(?P<prov>{_PALABRA_PROVINCIA}(?:\s+(?:de\s+|DE\s+)?{_PALABRA_PROVINCIA}){{0,3}}))?")
 RE_SIGLAS = re.compile(r"\b(" + "|".join(sorted(SIGLAS, key=len, reverse=True)) + r")\b")
 RE_DESDE_PUBLICACION = re.compile(
     r"(?:siguiente|siguientes)\s+(?:al?\s+)?(?:de\s+)?(?:la\s+)?(?:fecha\s+de\s+)?(?:su\s+)?(?:la\s+)?publicaci[oó]n|"
     r"desde\s+(?:el\s+d[ií]a\s+)?(?:siguiente\s+)?(?:a|al)?\s*(?:la\s+)?(?:su\s+)?publicaci[oó]n|"
     r"endem[aà]\s+(?:de\s+la\s+|de\s+)?(?:seva\s+|la\s+seva\s+)?publicaci[oó]|"
     r"seg[uü]ents?\s+(?:al|a\s+la|a)\s+(?:de\s+la\s+)?(?:seva\s+)?publicaci[oó]|"
-    r"seguinte\s+(?:ao|á|a)\s+(?:da\s+|de\s+)?(?:súa\s+|sua\s+)?publicaci[oó]n", re.IGNORECASE)
+    r"seguinte\s+(?:ao|á|a)\s+(?:da\s+|de\s+)?(?:súa\s+|sua\s+)?publicaci[oó]n|"
+    r"a\s+partir\s+d[ae]\s+(?:la\s+|súa\s+|sua\s+)?publicaci[oó]n?|"
+    r"(?:siguiente|seg[uü]ent|endem[aà])[^.;]{0,40}?(?:publicaci[oó]|inserci[oó]|aparezca|aparegui|se\s+publique|"
+    r"es\s+publiqui)", re.IGNORECASE)
 
-EXCLUIR = ("subsan", "esmen", "emenda", "renuncia", "recurso de", "recurso potestativo", "recurso contencioso",
+EXCLUIR = ("subsan", "contencios", "jutjat", "juzgado de lo", "sala de lo", "esmen", "emenda", "renuncia", "recurso de", "recurso potestativo", "recurso contencioso",
            "interponer recurso", "recurs de", "recurs potestatiu", "recurs contencios", "demanda", "reclamacion",
            "reclamacio", "legacion", "han superado", "han superat", "superado la fase", "superat la fase",
            "expirado el plazo", "finalizado el plazo", "terminado el plazo", "concluido el plazo",
@@ -264,18 +272,58 @@ RE_BOLETIN_GENERICO = re.compile(
     r"butllet[ií]\s+oficial\s+de\s+la\s+prov[ií]ncia|bolet[ií]n\s+oficial\s+da\s+provincia))\b", re.IGNORECASE)
 
 
+def _provincia_sin_comienzo(prov: str) -> str:
+    """«Barcelona Les» -> «Barcelona»: quita lo que ya es la frase siguiente o el resto del texto."""
+    palabras = prov.split()
+    for k in range(1, len(palabras)):
+        if re.match(_COMIENZOS_DE_FRASE, palabras[k]) or palabras[k].lower() in ("i", "y", "o", "en", "el", "la"):
+            return " ".join(palabras[:k])
+    return prov
+
+
+# «… en el «Boletín Oficial» de la provincia de Toledo»: la provincia va fuera de las comillas
+RE_COLA_PROVINCIA = re.compile(
+    r"^[»\"”]?\s*(?:de\s+la|de|da)\s+(?:provincia|Provincia|PROVINCIA|província|Província)"
+    r"(?:\s+(?:de|da|d['’])\s*(?P<p>[A-ZÁÉÍÓÚÑ][\wáéíóúñ-]+(?:\s+(?:de\s+)?[A-ZÁÉÍÓÚÑ][\wáéíóúñ-]+){0,2}))?")
+# El nombre en mayúsculas («… en el BOLETÍN OFICIAL DE LA COMUNIDAD DE MADRID»)
+RE_BOLETIN_MAYUSCULAS = re.compile(
+    r"\b(?P<b>(?:BOLET[IÍ]N|DIARIO|DIARI|BUTLLET[IÍ])\s+OFICIAL(?:\s+(?:DE\s+LA|DE\s+LAS|DE\s+LES|DE\s+LOS|DEL|DELS|"
+    r"DE|DA|DO|D['’])?\s*(?!(?:ANUNCIO|EDICTO|ANUNCI|EDICTE|EN|Y|I|O)\b)[A-ZÁÉÍÓÚÑÀÈÒ][A-ZÁÉÍÓÚÑÀÈÒ·'’/-]+)*)")
+_PARTICULAS_MINUSCULA = {"de", "del", "la", "las", "les", "los", "dels", "da", "do", "d'", "d’"}
+
+
+def _titulo(nombre: str) -> str:
+    """«BOLETÍN OFICIAL DE LA COMUNIDAD DE MADRID» -> «Boletín Oficial de la Comunidad de Madrid»."""
+    return " ".join(w.lower() if w.lower() in _PARTICULAS_MINUSCULA else w.capitalize() for w in nombre.split())
+
+
 def _menciones(f: str) -> list[tuple[int, int, str]]:
     """Boletines citados en la frase, con su posición: entre comillas, sin comillas o por sus siglas."""
     vistos: dict[str, tuple[int, int, str]] = {}
-    for m in list(RE_BOLETIN.finditer(f)) + list(RE_BOLETIN_LIBRE.finditer(f)):
+    for m in list(RE_BOLETIN.finditer(f)) + list(RE_BOLETIN_LIBRE.finditer(f)) + list(RE_BOLETIN_MAYUSCULAS.finditer(f)):
         nombre = PARTICULAS_FINALES.sub("", " ".join(m.group("b").split()))
+        if nombre.isupper():
+            nombre = _titulo(nombre)
         k = normalizar(nombre)
         # el final sin las partículas que se quitan del nombre («… de Catalunya i/o BOE»: la «i» es la unión)
         fin = m.end() - (len(m.group("b")) - len(PARTICULAS_FINALES.sub("", m.group("b"))))
+        if k in ("boletin oficial", "butlleti oficial", "diari oficial", "diario oficial") and \
+                (c := RE_COLA_PROVINCIA.match(f[m.end() - (1 if f[m.end() - 1:m.end()] in "»\"”" else 0):])):
+            base = "Butlletí Oficial de la Província" if k == "butlleti oficial" else "Boletín Oficial de la Provincia"
+            nombre = f"{base} de {c.group('p')}" if c.group("p") else base
+            k, fin = normalizar(nombre), m.end() + c.end()
         if k not in vistos or m.start() < vistos[k][0]:
             vistos[k] = (m.start(), fin, nombre)
     for m in RE_SIGLAS.finditer(f):
         vistos.setdefault(normalizar(SIGLAS[m.group(1)]), (m.start(), m.end(), SIGLAS[m.group(1)]))
+    for m in RE_BOP_CORTO.finditer(f):
+        if any(i < m.end() and m.start() < j for i, j, _ in vistos.values()):
+            continue
+        prov = m.group("prov")
+        # «BOP de Barcelona»; sin la provincia («en el BOP»), el genérico, que en un BOP es el propio
+        prov = _provincia_sin_comienzo(prov) if prov else None
+        nombre = f"BOP de {_titulo(prov) if prov.isupper() else prov}" if prov else "Boletín Oficial de la Provincia"
+        vistos.setdefault(normalizar(nombre) + f"@{m.start()}", (m.start(), m.end(), nombre))
     for m in RE_BOLETIN_GENERICO.finditer(f):
         if any(i < m.end() and m.start() < j for i, j, _ in vistos.values()):
             continue  # ya está con su nombre completo
@@ -284,12 +332,15 @@ def _menciones(f: str) -> list[tuple[int, int, str]]:
     return sorted(vistos.values())
 
 
+RE_PUBLICACION_PALABRA = re.compile(r"publicaci[oó]n?|inserci[oó]n?|aparezca|aparegui", re.IGNORECASE)
+
+
 def _boletines(f: str, desde: int = 0) -> list[str]:
     """Boletín desde el que cuenta el plazo. Si tras la duración se lee «publicación ... en el X», es X (y los que
     vayan unidos a él: «en el BOE o en el BOJA»); si no, todos los citados en la frase. El fin solo se calcula
     si todos son el propio."""
     menciones = _menciones(f)
-    pub = re.compile(r"publicaci[oó]n?", re.IGNORECASE).search(f, desde)
+    pub = RE_PUBLICACION_PALABRA.search(f, desde)
     if pub:
         siguientes = [m for m in menciones if pub.start() < m[0] <= pub.end() + 160]
         if siguientes:
@@ -355,6 +406,8 @@ def extraer_plazo(texto: str, publicacion: str, boletin_propio: str | tuple[str,
 GENERICOS_PROPIOS = ("boletin oficial de la provincia", "butlleti oficial de la provincia", "boletin oficial da provincia",
                      "diari oficial de la generalitat", "boletin oficial de la comunidad")
 
+GENERICOS_PROVINCIALES = ("boletin oficial de la provincia", "butlleti oficial de la provincia", "boletin oficial da provincia")
+
 
 def _es_propio(nombre: str, propios: set[str]) -> bool:
     """El boletín citado es el propio: con el mismo nombre, con otra forma del nombre («Boletín Oficial Cantabria»,
@@ -367,6 +420,8 @@ def _es_propio(nombre: str, propios: set[str]) -> bool:
     f = fuente_de_boletin(nombre)
     if f and any(fuente_de_boletin(p) == f for p in propios):
         return True
+    if n in GENERICOS_PROVINCIALES:  # «Boletín Oficial de la Provincia» en el Butlletí de Tarragona
+        return any(p.startswith(g + " ") for p in propios for g in GENERICOS_PROVINCIALES)
     return n in GENERICOS_PROPIOS and any(p.startswith(n + " ") for p in propios)
 
 

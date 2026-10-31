@@ -213,9 +213,9 @@ PROVINCIA_A_FUENTE = {
 }
 RE_PROVINCIA_CITA = re.compile(r"^(?:boletin(?:es)? (?:oficial(?:es)? )?|butlleti oficial |diario oficial |diari oficial "
                                r"(?=(?:de\s+)?(?:la\s+)?provincia)|bop (?=de\s))"
-                               r"(?:de\s+|del\s+|de la\s+|la\s+)*(?:(?:provincial|provincia|diputacion provincial|"
+                               r"(?:de\s+|del\s+|de la\s+|la\s+|da\s+|do\s+)*(?:(?:provincial|provincia|diputacion provincial|"
                                r"territorio historico|comunidad|ciudad autonoma|principado|region)\s*(?:\(bop\)\s*)?"
-                               r"(?:de\s+|del\s+|de la\s+|d'\s*)*)?(?P<p>[a-z ]+?)\s*$")
+                               r"(?:de\s+|del\s+|de la\s+|d'\s*|da\s+)*)?(?P<p>[a-z ]+?)\s*$")
 OTRAS_CITAS = (("comunidad de madrid", "BOCM"), ("castilla y leon", "BOCYL"), ("illes balears", "BOIB"),
                ("islas baleares", "BOIB"), ("generalitat valenciana", "DOGV"), ("generalidad valenciana", "DOGV"),
                ("comunidad valenciana", "DOGV"), ("comunitat valenciana", "DOGV"), ("generalitat de catalunya", "DOGC"),

@@ -319,3 +319,10 @@ def test_plazo_desde_la_publicacion_enlazada_de_ese_boletin():
     dogc = _acto("dogc:1", "2026-08-03", "convocatoria", fuente="DOGC")  # sin texto: sin plazo propio
     p = _proceso(a, [], [dogc], date(2026, 8, 20), "boe:BOE-A-2026-15714")
     assert p["plazo"]["cuenta_desde_fecha"] == "2026-08-03" and p["estado"] == "plazo_abierto"
+
+
+def test_boletin_en_gallego_y_por_siglas():
+    from motor.procesos import fuente_de_boletin
+    assert fuente_de_boletin("Boletín Oficial da Provincia de Pontevedra") == "BOP-PONTEVEDRA"
+    assert fuente_de_boletin("BOP de Lugo") == "BOP-LUGO"
+    assert fuente_de_boletin("BOP de Barcelona") == "BOPB"

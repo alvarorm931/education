@@ -306,3 +306,40 @@ def test_fechas_de_comienzo_y_fin_escritas():
          "enero de 2027.")
     r = extraer_plazo(t, "2026-03-10", "Butlletí Oficial de les Illes Balears", "04")
     assert r["inicio"] == "2027-01-04" and r["fin_estimado"] == "2027-01-24" and r["fin_exacto"]
+
+
+def test_boletin_por_siglas_en_mayusculas_o_con_la_provincia_fuera_de_las_comillas():
+    casos = [
+        ("El plazo de presentación de solicitudes será de diez días hábiles contados a partir del día siguiente al de la "
+         "publicación del anuncio de la convocatoria en el “Boletín Oficial” de la provincia de Toledo.",
+         "Boletín Oficial de la Provincia de Toledo", "2026-08-24"),
+        ("El plazo de presentación de las instancias será de 10 días hábiles contados desde el siguiente a aquel en que "
+         "aparezca publicado el presente anuncio en el BOLETÍN OFICIAL DE LA COMUNIDAD DE MADRID.",
+         "Boletín Oficial de la Comunidad de Madrid", "2026-08-24"),
+        ("El plazo de presentación de solicitudes de participación será de veinte días hábiles, contados a partir del "
+         "siguiente al que aparezca este anuncio de convocatoria.", "Boletín Oficial de la Comunidad de Madrid",
+         "2026-09-07"),
+        ("El termini de presentació de sol·licituds serà de quinze dies hàbils comptadors des del següent dia hàbil a la "
+         "publicació de l’anunci en el BOP de Barcelona.",
+         ("Butlletí Oficial de la Província de Barcelona", "Boletín Oficial de la Provincia de Barcelona"), "2026-08-31"),
+        ("Prazo para presentación de solicitudes: 5 días hábiles a partir da publicación do presente anuncio BOP DE LUGO.",
+         "Boletín Oficial de la Provincia de Lugo", "2026-08-17"),
+        ("Pel caràcter urgent de la selecció, el termini per presentar sol·licituds serà de deu dies hàbils, computats "
+         "des de la publicació de la convocatòria en el BOPT, sense perjudici de la seva publicació a la Seu Electrònica.",
+         "Butlletí Oficial de la Província de Tarragona", "2026-08-24"),
+        ("Siendo el plazo de presentación de instancias de diez días hábiles contados desde el siguiente al de la "
+         "inserción del presente anuncio en el BOLETÍN OFICIAL de la Provincia de Jaén.",
+         "Boletín Oficial de la Provincia de Jaén", "2026-08-24"),
+    ]
+    for t, propio, fin in casos:
+        assert extraer_plazo(t, "2026-08-10", propio)["fin_estimado"] == fin, t
+    t = ("El plazo de presentación de solicitudes será de veinte (20) días naturales, desde el 25 de agosto al 13 de "
+         "septiembre de 2026 ambos inclusive.")
+    r = extraer_plazo(t, "2026-08-10", "Boletín Oficial de Canarias")
+    assert r["inicio"] == "2026-08-25" and r["fin_estimado"] == "2026-09-13"
+
+
+def test_recurso_contencioso_partido_en_otra_frase_no_es_plazo():
+    t = ("Contra este acuerdo se puede interponer RECURS. CONTENCIÓS ADMINISTRATIU davant la Secció del contenciós "
+         "administratiu del Tribunal d’Instància de Barcelona, en el termini de dos mesos.")
+    assert extraer_plazo(t, "2026-08-10", "Butlletí Oficial de la Província de Barcelona") is None
