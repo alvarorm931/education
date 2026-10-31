@@ -488,6 +488,7 @@ def cortar_por_registro(paginas: list[str], anuncios: list[dict]) -> dict[str, t
 # de Créditos número 52/2026 ........ 18639»; «2202972A», «2202972B»… para las partes de uno) y en el cuerpo cada
 # anuncio acaba con su registro con puntos, solo en su línea y a la derecha («2.198.627»)
 RE_ENTRADA_SUMARIO_FINAL = re.compile(r"^\s*(\d{6,8})([A-Z])?\s+(?!Bolet[íi]n Oficial)(\S.*)$")
+RE_NUMERO_ANUNCIO = re.compile(r"^\s*\d{1,2}\.\d{3}\s*$|^\s*\d{1,3}\s*$")
 RE_MARCA_FINAL = re.compile(r"^\s*(\d{1,3}(?:\.\d{3}){1,2})(?:\s?[-/]?\s?([A-Z]))?\s*$")
 
 
@@ -552,6 +553,9 @@ def cortar_por_registro_final(paginas: list[str], anuncios: list[dict]) -> dict[
         por_registro[r].append(k)
         if letra:
             por_letra.setdefault((r, letra), k)
+    # Comienzo de cada anuncio en el cuerpo: su número («3.466») en la línea siguiente a «ANUNCIO» o «EDICTO»
+    comienzos = [k for k, l in enumerate(lineas) if RE_NUMERO_ANUNCIO.match(l)
+                 and any(RE_ENCABEZADO.match(lineas[j]) for j in (k - 1, k - 2) if j >= 0)]
     marca_de, usadas = {}, defaultdict(int)
     for i, (r, _, _) in enumerate(sumario):
         if letras[i] and (r, letras[i]) in por_letra:
@@ -572,12 +576,24 @@ def cortar_por_registro_final(paginas: list[str], anuncios: list[dict]) -> dict[
         previo = i - 1
         while previo >= 0 and marca_de.get(previo, -1) == fin:
             previo -= 1  # partes que comparten la misma marca
-        if previo >= 0:
-            if previo not in marca_de or marca_de[previo] >= fin:
-                continue
-            ini = marca_de[previo] + 1
+        # El comienzo: tras la marca del asunto anterior del sumario o en el número del propio anuncio («ANUNCIO» /
+        # «3.466»). El número vale aunque falten las marcas de los anteriores si, desde la última marca conocida,
+        # hay tantos números como anuncios del sumario (si no, el último número podría ser el de otro)
+        fin_previo = marca_de.get(previo) if previo >= 0 else -1
+        if fin_previo is not None and fin_previo >= fin:
+            continue  # el cuerpo no va en el orden del sumario
+        j = previo
+        while j >= 0 and (j not in marca_de or marca_de[j] >= fin):
+            j -= 1
+        desde = marca_de[j] if j >= 0 else -1
+        esperados = len({sumario[k][0] for k in range(j + 1, i + 1)})
+        entre = [k for k in comienzos if desde < k < fin]
+        if entre and len(entre) == esperados:
+            ini = entre[-1]
+        elif fin_previo is not None:
+            ini = fin_previo + 1
         else:
-            ini = 0
+            continue  # sin la marca del anterior ni el número del anuncio, no se sabe dónde empieza
         out[x["id"]] = ("\n".join(lineas[ini:fin]), sorted(set(pagina_de[ini:fin + 1])))
     return out
 

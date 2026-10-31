@@ -86,10 +86,15 @@ def test_corte_por_registro_final():
     assert "Boletín Oficial de la Provincia" not in limpio and "2.200.508" not in limpio and "3.468" not in limpio
 
 
-def test_sin_la_marca_del_anterior_no_hay_texto():
+def test_sin_la_marca_del_anterior_empieza_en_su_numero():
     sin_marca = [p.replace("2.196.984", "") for p in PAGINAS]
     cortes = t.cortar_por_registro_final(sin_marca, ANUNCIOS)
-    assert "LP-2" not in cortes and "LP-3" not in cortes  # el texto de LP-3 empezaría en el de LP-2
+    assert "LP-2" not in cortes  # sin su marca, no se sabe dónde acaba
+    # LP-3 empieza en su número de anuncio («ANUNCIO» / «3.468»), sin el texto de LP-2
+    assert cortes["LP-3"][0].lstrip().startswith("3.468") and "Agente de Medio Ambiente" not in cortes["LP-3"][0]
+    # sin el número tampoco, ya no se sabe dónde empieza
+    sin_numero = [p.replace("3.468", "") for p in sin_marca]
+    assert "LP-3" not in t.cortar_por_registro_final(sin_numero, ANUNCIOS)
     assert "LP-1" in cortes and "LP-6" in cortes
 
 
