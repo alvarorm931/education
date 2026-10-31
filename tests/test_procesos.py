@@ -309,3 +309,13 @@ def test_plazo_desde_la_fecha_del_boletin_que_cita_el_boe():
     p = _proceso(a, [], [], date(2026, 4, 21), "boe:BOE-A-2026-8091")
     assert p["plazo"]["cuenta_desde_fecha"] == "2026-03-30" and p["plazo"]["fin_estimado"] == "2026-04-29"  # Viernes Santo y Lunes de Pascua (Cataluña)
     assert p["estado"] == "plazo_abierto"
+
+
+def test_plazo_desde_la_publicacion_enlazada_de_ese_boletin():
+    from motor.procesos import _proceso
+    a = _acto("BOE-A-2026-15714", "2026-08-10", "apertura_plazo", fuente="BOE",
+              plazo={"dias": 20, "tipo": "habiles", "cuenta_desde": "Diari Oficial de la Generalitat de Catalunya"},
+              convocante={"tipo": "Ayuntamiento", "nombre": "Sabadell", "provincia": "Barcelona"})
+    dogc = _acto("dogc:1", "2026-08-03", "convocatoria", fuente="DOGC")  # sin texto: sin plazo propio
+    p = _proceso(a, [], [dogc], date(2026, 8, 20), "boe:BOE-A-2026-15714")
+    assert p["plazo"]["cuenta_desde_fecha"] == "2026-08-03" and p["estado"] == "plazo_abierto"

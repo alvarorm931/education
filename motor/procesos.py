@@ -576,7 +576,7 @@ def _anuncio_del_puesto(x: dict, anuncios: list[dict]) -> dict | None:
     return mejores[0] if tope >= 0.6 and len(mejores) == 1 else None
 
 
-def _plazo_desde_cita(a: dict, plazo: dict) -> dict:
+def _plazo_desde_cita(a: dict, plazo: dict, otras: list[dict] | None = None) -> dict:
     """El plazo cuenta desde otro boletín y el anuncio dice cuándo salió allí («Se ha publicado, asimismo, un extracto
     de la convocatoria en el «Diari Oficial de la Generalitat de Catalunya» número 9635, de 30 de marzo de 2026. El
     plazo… a contar desde el siguiente al de la publicación en el DOGC»): la fecha de fin sale de esa fecha. Unos 190
@@ -590,6 +590,11 @@ def _plazo_desde_cita(a: dict, plazo: dict) -> dict:
                      if b.get("fecha") and fuente_de_boletin(b.get("boletin")) == desde
                      and b.get("papel") in (None, "extracto", "bases", "convocatoria", "anuncio")
                      and b["fecha"] <= (a.get("fecha") or "9999")})
+    if not fechas:
+        # o la fecha de la publicación de ese boletín que va con el proceso (el anuncio del DOGC enlazado por
+        # municipio y puesto, aunque su texto no se haya leído todavía)
+        fechas = sorted({x["fecha"] for x in otras or [] if x.get("fuente") == desde and x.get("fecha")
+                         and x.get("tipo_acto") in ("convocatoria", "bases") and x["fecha"] <= (a.get("fecha") or "9999")})
     if len(fechas) != 1:
         return plazo  # sin fecha, o varias publicaciones en ese boletín: no se sabe cuál abre el plazo
     base = date.fromisoformat(fechas[0])
@@ -618,7 +623,7 @@ def _proceso(a: dict, posteriores: list[dict], otras: list[dict], hoy: date, ide
                 plazo = {**x["plazo"], "de_acto": x["id"]}
                 break
     if not plazo.get("fin_estimado") and (plazo.get("dias") or plazo.get("meses")):
-        plazo = _plazo_desde_cita(a, plazo)
+        plazo = _plazo_desde_cita(a, plazo, otras)
     for x in posteriores:  # una corrección o modificación posterior puede abrir un plazo nuevo
         if x.get("tipo_acto") in ("modificacion", "correccion") and (x.get("plazo") or {}).get("fin_estimado"):
             plazo = {**x["plazo"], "de_acto": x["id"]}
