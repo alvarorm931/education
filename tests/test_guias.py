@@ -43,3 +43,26 @@ def test_el_peso_tiene_que_ser_un_porcentaje_de_la_cita():
     assert not g.porcentaje_en_cita(10, "Nota mínima 5 sobre 10") and not g.porcentaje_en_cita(2, "Examen de 2 horas, 50 %")
     assert g.porcentaje_en_cita(30, "Trabajos: 30-50 %") and g.porcentaje_en_cita(50, "Trabajos: 30-50 %")
     assert g.porcentaje_en_cita(40, "un 40 por ciento de la nota")
+
+
+def test_descubrir_desde_la_lista_de_paginas_sin_las_ya_leidas(tmp_path, monkeypatch):
+    import json
+    from motor.estudios import extraer, guias
+
+    pag = tmp_path / "paginas.jsonl"
+    pag.write_text(json.dumps({"url": "https://www.u.es/master-x/plan", "clave": "k", "codigos_ruct": ["4310001"]}) + "\n")
+    (tmp_path / "ya.txt").write_text("https://www.u.es/guias/A.pdf\n")
+
+    class Almacen:
+        def leer(self, clave):
+            return (b'<a href="/guias/A.pdf">Gu\xc3\xada docente A</a><a href="/guias/B.pdf">Gu\xc3\xada docente B</a>')
+
+    class G:
+        activa = True
+        almacen = Almacen()
+
+    monkeypatch.setattr(extraer, "Guarda", G)
+    r = guias.descubrir([], tmp_path / "o", paginas=pag, excluir=tmp_path / "ya.txt")
+    filas = [json.loads(l) for l in (tmp_path / "o" / "guias_descubiertas.jsonl").read_text().splitlines()]
+    assert [f["url"] for f in filas] == ["https://www.u.es/guias/B.pdf"] and filas[0]["codigos_ruct"] == ["4310001"]
+    assert r["ya_leidas"] == 1

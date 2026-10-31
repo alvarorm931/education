@@ -126,11 +126,22 @@ def enlaces_de_guia(html: str, url: str) -> list[str]:
     return out
 
 
-def descubrir(capturadas: list[Path], salida: Path, hilos: int = 16) -> dict:
-    """Las guías enlazadas desde las páginas de máster oficial ya leídas (con su código RUCT)."""
+def descubrir(capturadas: list[Path], salida: Path, hilos: int = 16, paginas: Path | None = None,
+              excluir: Path | None = None) -> dict:
+    """Las guías enlazadas desde las páginas de máster oficial ya leídas (con su código RUCT).
+
+    paginas: JSONL {url, clave, codigos_ruct} con todas las páginas de cada máster oficial del conjunto (también
+    las unidas por el nombre y sus subpáginas de plan), en lugar de buscarlas en las carpetas de extracción.
+    excluir: guías ya leídas (una URL por línea): no se vuelven a pedir."""
     from concurrent.futures import ThreadPoolExecutor
 
     claves, meta = {}, {}
+    if paginas:
+        for x in tarifas_jsonl(paginas):
+            if x.get("clave") and x.get("codigos_ruct"):
+                claves[x["url"]] = x["clave"]
+                meta[x["url"]] = sorted(set(meta.get(x["url"], [])) | set(x["codigos_ruct"]))
+    ya = set(excluir.read_text(encoding="utf-8").split()) if excluir and excluir.exists() else set()
     for c in capturadas:
         for f in sorted(c.rglob("paginas_capturadas.jsonl")):
             for x in tarifas_jsonl(f):
@@ -160,6 +171,9 @@ def descubrir(capturadas: list[Path], salida: Path, hilos: int = 16) -> dict:
             cuentas["paginas_con_guias"] += bool(guias)
             for cod in meta[url]:
                 for g in guias:
+                    if g in ya:
+                        cuentas["ya_leidas"] += 1
+                        continue
                     if g not in por_master[cod]:
                         por_master[cod].append(g)
     filas = []
@@ -351,11 +365,21 @@ def main() -> None:
     p.add_argument("--max-minutos", type=float, default=55)
     p.add_argument("--hilos", type=int, default=16)
     p.add_argument("--navegador", action="store_true", help="lote: guías en HTML que se pintan con JavaScript")
+    p.add_argument("--paginas", help="descubrir: JSONL {url, clave, codigos_ruct} de las páginas de cada máster oficial")
+    p.add_argument("--excluir", help="descubrir: guías ya leídas (una URL por línea)")
+    p.add_argument("--y-leer", action="store_true", help="descubrir y leer las guías halladas en la misma ejecución")
     p.add_argument("--salida", required=True)
     a = p.parse_args()
     base = Path(a.salida) / "datos" / "estudios" / "masters" / "guias"
     if a.orden == "descubrir":
-        res = descubrir([Path(x) for x in a.capturadas], base)
+        t0 = time.time()
+        res = descubrir([Path(x) for x in a.capturadas], base, paginas=Path(a.paginas) if a.paginas else None,
+                        excluir=Path(a.excluir) if a.excluir else None)
+        print(json.dumps(res, ensure_ascii=False), flush=True)
+        if a.y_leer and res.get("guias_a_pedir"):
+            res = {"descubrir": res, "lote": lote(base / "guias_descubiertas.jsonl", base / "tramo_0", 0, a.hasta,
+                                                 a.esperar_min, a.max_minutos - (time.time() - t0) / 60, a.hilos,
+                                                 navegador=a.navegador)}
     elif a.orden == "lote":
         res = lote(Path(a.guias), base / f"tramo_{a.desde}", a.desde, a.hasta, a.esperar_min, a.max_minutos, a.hilos,
                    navegador=a.navegador)
