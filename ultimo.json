@@ -1,13 +1,13 @@
 {
- "fecha": "2026-10-31T15:36:21+00:00",
- "fecha_madrid": "31/10 16:36",
+ "fecha": "2026-10-31T15:45:58+00:00",
+ "fecha_madrid": "31/10 16:45",
  "ventana_horas": 6.0,
  "resumen": {
-  "ejecuciones_revisadas": 137,
+  "ejecuciones_revisadas": 139,
   "fallos": 1,
   "fallos_pendientes": 0,
   "relanzados": 0,
-  "colas_largas": 1,
+  "colas_largas": 2,
   "flujos_programados_parados": [
    "seo.yml"
   ],
@@ -58,9 +58,16 @@
  ],
  "colas_largas": [
   {
+   "flujo": "Boletines autonómicos",
+   "id": 41213532071,
+   "en_cola_min": 36,
+   "trabajos_empezados": 2,
+   "url": "https://github.com/alvarorm931/education/actions/runs/41213532071"
+  },
+  {
    "flujo": "Prueba de conector",
    "id": 41208605878,
-   "en_cola_min": 90,
+   "en_cola_min": 99,
    "trabajos_empezados": 0,
    "url": "https://github.com/alvarorm931/education/actions/runs/41208605878"
   }
@@ -107,7 +114,7 @@
    "numero": 271,
    "anio": 2026
   },
-  "ultima_ejecucion": "2026-10-31T16:26:11+01:00",
+  "ultima_ejecucion": "2026-10-31T16:40:41+01:00",
   "alertas_ultima_ejecucion": []
  },
  "avisos_de_fuentes": [],
