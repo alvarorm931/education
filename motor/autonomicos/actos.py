@@ -154,6 +154,10 @@ def convocante_local(x: dict) -> dict | None:
     return convocante_de_organismo(nombre)
 
 
+# Asambleas de comunidades de usuarios de aguas y juntas de accionistas que algunos boletines seleccionaban como empleo
+# («ANUNCIO de la convocatoria de la asamblea general ordinaria», DOG): no son actos de ningún proceso
+from motor.autonomicos.dog import RE_ASAMBLEA  # noqa: E402
+
 # Títulos que no dicen qué es el anuncio («Getafe. Ofertas de empleo. Proceso selectivo», «… Convocatoria proceso
 # selectivo»: unos 6.600 del BOCM desde 2022). Todos salían como convocatoria, y uno de cada cuatro con texto es una
 # lista, un tribunal o unos aprobados: un proceso de más y un acto sin unir a su convocatoria. El tipo sale entonces
@@ -267,7 +271,7 @@ def actos_de_fuente(raiz: Path, fuente: str) -> list[dict]:
     actos = []
     for f in sorted((_base(raiz, fuente) / "oposiciones").rglob("*.jsonl")):
         for x in leer_jsonl(f):
-            if x.get("id") and x.get("fecha"):
+            if x.get("id") and x.get("fecha") and not RE_ASAMBLEA.search(normalizar(x.get("titulo") or "")):
                 acto = construir_acto(fuente, x, texto_de(raiz, fuente, x), recuento_de(raiz, fuente, x))
                 if "personas_en_listas" in acto and (c := citas_guardadas(raiz, fuente, x)):
                     acto["citas"] = c

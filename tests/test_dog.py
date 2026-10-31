@@ -79,3 +79,13 @@ def test_texto_de_las_paginas_antiguas():
          '<div id="footer">Xunta de Galicia</div>').encode()
     t = dog.texto_disposicion(h)
     assert t["texto"].startswith("Convocada la provisión") and "siguiente" not in t["texto"]
+
+
+def test_asambleas_de_comunidades_de_aguas_no_son_empleo():
+    from motor.autonomicos.dog import es_empleo_publico
+    x = {"seccion": "VI. Anuncios", "subseccion": "Otros anuncios", "titulo": "ANUNCIO de la convocatoria de la asamblea general ordinaria."}
+    assert not es_empleo_publico(x)
+    from motor.autonomicos.comun import clasificar
+    t = ("RESOLUCIÓN de 21 de enero de 2022 por la que se convoca para la elección de destino provisional a las "
+         "personas aspirantes que superaron el proceso selectivo para el ingreso en el cuerpo superior")
+    assert clasificar(t)["tipo_acto"] == "aprobados"

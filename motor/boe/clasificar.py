@@ -133,6 +133,9 @@ REGLAS_ACTO: list[tuple[str, tuple[str, ...]]] = [
                    "s'adjudiquen destinacions", "adxudicanse destinos", "se adxudica destino",
                    "se constituye la bolsa", "es constitueix la borsa", "constituese a bolsa", "se aprueba la bolsa",
                    "bolsa de empleo derivada", "lista de espera derivada", "s'aprova la borsa", "aprobase a bolsa",
+                   # DOG: «… por la que se convoca para la elección de destino a las personas aspirantes que superaron…»
+                   "para la eleccion de destino", "para la eleccion de destinos", "eleccion de plaza",
+                   "para a eleccion de destino", "que superaron el proceso", "que superaron los procesos",
                    # DOG: «… por la que se hace pública una relación complementaria…», «… excluye a personas aspirantes»
                    "se hace publica la relacion", "se hace publica una relacion", "se hacen publicas las relaciones",
                    "fai publica a relacion", "fai publica unha relacion")),

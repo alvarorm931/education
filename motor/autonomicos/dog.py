@@ -117,6 +117,10 @@ def ambito(x: dict) -> str:
     return "autonomico"
 
 
+RE_ASAMBLEA = re.compile(r"\b(?:asamblea|asemblea) general\b|\bjunta general (?:ordinaria|extraordinaria)\b|"
+                         r"\bcomunidade? de (?:usuarios|regantes|augas|aguas)\b")
+
+
 def es_empleo_publico(x: dict) -> bool:
     s = normalizar(x.get("seccion") or "")
     t = x.get("titulo") or ""
@@ -126,6 +130,9 @@ def es_empleo_publico(x: dict) -> bool:
         return es_resultado(t)
     if s.startswith("vi."):
         sub = normalizar(x.get("subseccion") or "")
+        # «ANUNCIO de la convocatoria de la asamblea general ordinaria» de las comunidades de usuarios de aguas
+        if RE_ASAMBLEA.search(normalizar(t)):
+            return False
         return ("administracion local" in sub or "otros anuncios" in sub) and \
             (es_empleo_por_titulo(t) or es_resultado(t))
     return False
