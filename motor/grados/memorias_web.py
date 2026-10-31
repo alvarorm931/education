@@ -81,7 +81,16 @@ def buscar_cc(crawls: list[str], desde: int, hasta: int, salida: Path, max_minut
     fin = time.time() + max_minutos * 60
     urls, hechos, errores = {}, 0, []
     for crawl in crawls:
-        for f in ficheros(crawl)[desde:hasta]:
+        lista = None
+        for intento in range(4):  # la lista de ficheros del crawl también falla a veces (Common Crawl frena)
+            try:
+                lista = ficheros(crawl)[desde:hasta]
+                break
+            except Exception as e:  # noqa: BLE001
+                if intento == 3:
+                    errores.append(f"{crawl}: lista de ficheros: {type(e).__name__}: {str(e)[:100]}")
+                time.sleep(20 * (intento + 1))
+        for f in lista or []:
             if time.time() > fin:
                 break
             for intento in range(3):  # Common Crawl corta a veces con un error HTTP: dos reintentos con espera
