@@ -358,7 +358,11 @@ def _respuesta_json(crudo: str) -> dict | None:
 
 def preparar(raiz: Path, n: int, estados: set[str], carpeta: Path, excluir: set[str] | None = None,
              nombre: str = "lote") -> tuple[Path, Path]:
-    elegidos = elegir(raiz, n, estados, excluir)
+    return escribir_lote(raiz, elegir(raiz, n, estados, excluir), carpeta, nombre)
+
+
+def escribir_lote(raiz: Path, elegidos: list[tuple[dict, dict]], carpeta: Path,
+                  nombre: str = "lote") -> tuple[Path, Path]:
     carpeta.mkdir(parents=True, exist_ok=True)
     lote, indice = carpeta / f"{nombre}.jsonl", carpeta / f"indice-{nombre}.json"
     filas, info = [], {}
@@ -496,14 +500,12 @@ def varios_lotes(a: argparse.Namespace, lotes: Path) -> int:
     print(f"Resultados retirados porque su texto cambió: {retirar_caducados(a.datos)}")
     estados = set() if a.estados.strip() == "todos" else {e for e in a.estados.split(",") if e}
     recoger_pendientes(a.datos, a.salida, lotes, 0)
-    elegidos: set[str] = set()
+    # una sola pasada por los procesos (leer los textos es lo lento) y se reparte en lotes
+    todos = elegir(a.datos, a.n * a.lotes, estados)
     enviados = 0
-    for k in range(a.lotes):
-        lote, ruta_indice = preparar(a.datos, a.n, estados, a.trabajo, excluir=elegidos, nombre=f"lote{k}")
-        if not lote.read_text(encoding="utf-8").strip():
-            break
-        _, _, indice = enviar(lote, ruta_indice, lotes)
-        elegidos |= {i["proceso"] for i in indice.values()}
+    for k in range(0, len(todos), a.n):
+        lote, ruta_indice = escribir_lote(a.datos, todos[k:k + a.n], a.trabajo, nombre=f"lote{k // a.n}")
+        enviar(lote, ruta_indice, lotes)
         lote.unlink()
         enviados += 1
     quedan = recoger_pendientes(a.datos, a.salida, lotes, a.esperar_min)

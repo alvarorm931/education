@@ -67,6 +67,16 @@ jobs:
             python -m motor.ia.bases lote --datos salida --salida salida --trabajo trabajo --n "$N" --estados "$ESTADOS" \
               --esperar-min "$ESPERAR" --lotes "$LOTES" 2>&1 | tail -n 60
           fi
+      # Copia de seguridad de los lotes enviados sin recoger (solo ids, rutas y huellas; ningún texto): si la subida
+      # a datos fallara, se recogen con «retomar» desde aquí
+      - name: Copia de los lotes pendientes
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lotes-pendientes-${{ github.run_id }}
+          path: salida/datos/oposiciones/extraccion/lotes/pendiente-*.json
+          if-no-files-found: ignore
+          retention-days: 30
       - name: Guardar
         if: always()
         run: |
@@ -77,6 +87,18 @@ jobs:
           for i in 1 2 3 4 5 6 7 8; do
             git push -q origin datos && exit 0
             sleep $(( i * 4 + RANDOM % 7 ))
-            git fetch -q --depth 100 origin datos && git rebase -q origin/datos || { git rebase --abort; exit 1; }
+            git fetch -q --depth 100 origin datos
+            if ! git rebase -q origin/datos; then
+              # La rama cambió de historia (se sustituyó por un solo commit) o chocó: se pone esta carpeta, que solo
+              # escribe este flujo, sobre la punta nueva. Los ficheros «pendiente-» no se pueden perder: sin ellos,
+              # los lotes ya pagados no se recogen.
+              git rebase --abort || true
+              rm -rf /tmp/extraccion && cp -a datos/oposiciones/extraccion /tmp/extraccion
+              git reset -q --hard origin/datos
+              rm -rf datos/oposiciones/extraccion && mkdir -p datos/oposiciones && cp -a /tmp/extraccion datos/oposiciones/extraccion
+              git add -A datos/oposiciones/extraccion
+              git diff --cached --quiet && exit 0
+              git commit -qm "Extracción de las bases"
+            fi
           done
           exit 1
