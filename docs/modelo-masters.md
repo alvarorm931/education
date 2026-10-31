@@ -756,3 +756,15 @@ Correcciones del mismo día al revisar el ranking por ticket medio: la guía de 
 solo la matrícula de cada máster (va como reserva, nunca como precio total), y en las privadas un total de menos de
 25 € por crédito, o un crédito por debajo de 25 €, es la matrícula, no el precio. Conjunto rehecho a las 15:38:
 2.972 oficiales indexables (públicas 2.622, privadas 350).
+
+### Escuelas de negocio de referencia a fondo (31/10/2026, tarde)
+
+Álvaro echa en falta IE, IESE y las demás escuelas de referencia en el ranking. No estaban porque ninguno de sus
+másteres tenía precio en lo leído (y IESE no es universidad: su MBA oficial es de la Universidad de Navarra).
+`escuelas.py` las lee a fondo, en orden de reputación (IE, IESE, CUNEF, Comillas, Deusto, ESIC, EAE, EOI, ISDI,
+Navarra): sitemap y listados de cada web, direcciones de Common Crawl cuando el sitemap se queda corto (IE),
+todas sus fichas de máster, MBA o MSc y las páginas de precio y admisión que cuelgan de ellas o que enlaza cada
+ficha (segunda vuelta sobre el original guardado), extraídas con el navegador. Originales al almacén privado.
+ESADE y EADA responden 403 y no se fuerzan (carta de permiso). Los másteres oficiales de la propia universidad se
+unen a su página por el nombre entero del título en inglés aunque la página no diga «oficial»; en castellano,
+«Máster en X» sin «Universitario» es título propio y no se une.
