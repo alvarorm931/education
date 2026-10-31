@@ -610,13 +610,13 @@ pedir nada a ninguna fuente, y marca cada ficha como indexable o no, con el moti
 | Con inserción laboral | 1.703 |
 | Con indicadores de rendimiento del SIIU | 3.125 |
 | Con ficha del RUCT | 3.265 |
-| Grados con plan del BOE | 3.095 de 3.265 |
-| Grados con plan comprobado | 2.145 (1.536 por asignaturas, el resto por materias) |
-| Dobles con los planes de sus dos grados comprobados | 557 |
-| **Indexables** con los datos mínimos decididos | **2.181** (1.766 grados y 415 dobles; 1.775 de públicas y 406 de privadas) |
+| Grados con plan del BOE | 3.109 de 3.265 |
+| Grados con plan comprobado | 2.156 (1.544 por asignaturas, el resto por materias) |
+| Dobles con los planes de sus dos grados comprobados | 560 |
+| **Indexables** con los datos mínimos decididos | **2.192** (1.774 grados y 418 dobles; 1.785 de públicas y 407 de privadas) |
 
-El resto va con `noindex` y su motivo: 950 con plan que no
-cuadra, 644 sin plan (o doble sin los dos planes comprobados) y
+El resto va con `noindex` y su motivo: 953 con plan que no
+cuadra, 627 sin plan (o doble sin los dos planes comprobados) y
 857 sin nota ni precio (casi todas, privadas que no publican el precio); una
 ficha puede tener varios.
 
@@ -635,10 +635,10 @@ Datos propios que salen de los planes (`motor/grados/asignaturas.py` y `relacion
 comprobados por asignaturas:
 
 - **Asignaturas en común**: en cuántas universidades del mismo grado aparece cada asignatura, qué parte del plan de
-  cada una es común y cuáles solo tiene ella (153 genéricos con al menos dos
+  cada una es común y cuáles solo tiene ella (154 genéricos con al menos dos
   planes comparables).
-- **Buscar por asignatura** (`asignaturas_indice.jsonl`): 34.865 asignaturas distintas
-  (nombre normalizado, sin numeración), 7.908 en dos títulos o más, cada una
+- **Buscar por asignatura** (`asignaturas_indice.jsonl`): 35.073 asignaturas distintas
+  (nombre normalizado, sin numeración), 7.959 en dos títulos o más, cada una
   con dónde se estudia, su tipo y su curso. TFG, optativas, prácticas y practicum van marcados como huecos del plan
   (19), sin página propia.
 - **Carreras parecidas** (`relaciones.jsonl`): por campo ISCED-F, ámbito, área y rama del SIIU, nombre, dobles
@@ -670,13 +670,30 @@ comprobados por asignaturas:
    plan comprobado con los créditos del RUCT, 186 = 186). Ese servidor lo comparten todas las conversaciones y el
    buzón de incidencias pide una sola lectura del RUCT a la vez en todo el proyecto: la noche del 30/10 leyó
    másters; las de grados (los 164 grados sin ningún plan y los 88 cuyo plan vigente no cuadra, 42 tandas de 6 de
-   una en una; los 1.020 serían unas 170; lista en `trabajo/memorias_prioridad_v2.txt`) **corren desde las 11:10
-   del 31/10** (ejecución 41188372738). A las 15:24, 2 tandas terminadas y la tercera en curso: cada una tarda de
-   46 a 51 minutos, más las esperas cuando los boletines diarios ocupan el servidor, así que acabará el 2/11. Las
-   tandas van de una en una aunque el servidor gane ejecutores: más a la vez serían varias lecturas del RUCT. El
+   una en una; los 1.020 serían unas 170; lista en `trabajo/memorias_prioridad_v2.txt`) corrieron de las 11:10 a
+   las 16:55 del 31/10 (ejecución 41188372738: 4 tandas y 13 memorias). A las 17:03 se relanzaron con otro orden
+   (ejecución 41217917534): primero los 865 grados que pasan a indexables si su plan cuadra, porque tienen nota de
+   corte o precio (de los 234 que quedaban en la fila anterior, 98 eran privadas sin precio). Van en lotes de 24
+   tandas; el primero acaba el 1/11 por la noche o el 2/11 de madrugada. Cada tanda tarda de 46 a 51 minutos, más
+   las esperas cuando los boletines diarios ocupan el servidor. Las tandas van de una en una aunque el servidor gane
+   ejecutores: más a la vez serían varias lecturas del RUCT. El
    RUCT va lento (238 y 290 peticiones por tanda, unos 10 segundos cada una), así que una tanda no siempre lee sus
    6 memorias antes de su límite de 42 minutos: la primera leyó 3 y la segunda 5. Los códigos que quedan sin leer se apuntan en
-   `trabajo/memorias_pendientes.txt` y se relanzan al final. El lector ya está en las fichas
+   `trabajo/memorias_pendientes.txt` y se relanzan al final. **Revisión de las 8 primeras (31/10, 16:40):**
+   ninguna cuadraba, porque el plan de la memoria solo contaba asignaturas. Muchas memorias llegan solo a materias,
+   algunas repiten en inglés la misma materia (para el grupo en inglés) y otras ponen como prácticas créditos que el
+   RUCT cuenta como optativos. Ahora la materia sin asignaturas cuenta como unidad del plan; la versión en inglés no
+   se cuenta, si así el módulo suma justo sus créditos; y las prácticas de más se admiten si básicas, obligatorias y
+   TFG cuadran uno a uno con el RUCT. Así quedan 5 de 8 comprobadas. De las otras 3, una tiene una página sin leer y
+   dos dan por tipo cifras distintas de las del RUCT. **En paralelo** (`motor/grados/memorias_web.py`): muchas
+   universidades publican en su web el PDF de la memoria que genera la aplicación del Ministerio, con el código del
+   título en cada página y el plan por niveles. Se buscan en Common Crawl y se leen desde GitHub, sin pasar por el
+   RUCT. Primera pasada (31/10, tres crawls): 398 PDF candidatos, 356 leídos, 71 con el código del título y 51 con
+   el plan por niveles (también 18 de másters). Un PDF solo vale si es la memoria vigente: la fecha de su cabecera
+   no puede ser anterior en más de 60 días a la de la memoria vigente del RUCT, que va en su código. Cinco grados
+   ganan así plan comprobado (Derecho, Periodismo, Comunicación Audiovisual y Matemáticas y Computación de la
+   Carlos III, e Ingeniería de Organización Industrial de Jaén). Con todo, 2.192 indexables (antes, 2.181). El lector
+   ya está en las fichas
    (`fichas.plan_de_memoria`: el plan de la memoria entra si el del BOE no cuadra y él sí cuadra con los créditos
    por tipo del RUCT; con una página sin leer no cuenta como comprobado).
 3. Privadas sin precio (859): la Europea retiró sus PDF de 2025-2026 (404 también desde el
@@ -742,3 +759,7 @@ del BOE declare el código del título («Código Titulación: …»), que desde
   comprobando que contiene el nombre corto del catálogo. Comprobado desde grados, sin tocar su código, cruzando
   `masters_oficiales.jsonl.gz` con `entradas/catalogo_final.json` (`universidad_codigo` 029, 005 y 045) por código
   del RUCT.
+- **Másters (memorias de la web):** `motor/grados/memorias_web.py` lee el PDF de la memoria que genera la
+  aplicación del Ministerio (niveles 1, 2 y 3, con carácter, ECTS y despliegue) y su código y fecha de cabecera.
+  En la primera pasada salieron 18 memorias de máster (códigos 43…), con su plan, en `sondas`
+  (`*/datos/estudios/grados/memorias_web/memorias_*.jsonl`). Sirve sin cambios para másters.
