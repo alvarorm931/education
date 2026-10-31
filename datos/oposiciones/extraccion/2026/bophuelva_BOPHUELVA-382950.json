@@ -1,0 +1,50 @@
+{
+ "proceso": "bophuelva:BOPHUELVA-382950",
+ "documento": {
+  "id": "bophuelva:BOPHUELVA-382950",
+  "fuente": "BOP-HUELVA",
+  "url": "https://s2.diphuelva.es/portalweb/bope/anuncios/Anuncio_382950_BOP-206_2026.pdf",
+  "fecha": "2026-10-26",
+  "huella": "1b849cab02c2939d693948985f1c1b97c334bdf0d4017dd3bca32fb2bb43ae44"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T08:03:48+00:00",
+ "lote": "msgbatch_013xFoLdqcGqWcqkzh7qrdGg",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "bolsa de trabajo de carácter laboral temporal, de Agente de Igualdad",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Agente de Igualdad del Centro Municipal de Información a la mujer"
+   ],
+   "cita": "para la constitución de una bolsa de trabajo de carácter laboral temporal, de Agente de Igualdad del Centro Municipal"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "se aprueban las bases y se convoca el proceso selectivo"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "10 días hábiles, a contar del día siguiente al de la publicación del anuncio en el BOP de Huelva",
+   "cita": "El plazo para presentar solicitudes será de 10 días hábiles, a contar del día siguiente"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Sede electrónica del Ayuntamiento de Valverde del Camino",
+   "cita": "Los sucesivos anuncios de esta convocatoria se publicarán en la sede electrónica del Ayuntamiento"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, para cubrir posibles vacantes y situaciones de derecho a reserva del puesto de trabajo de la titular",
+   "cita": "constitución de una bolsa de trabajo de carácter laboral temporal, al objeto de cubrir posibles vacantes"
+  }
+ }
+}

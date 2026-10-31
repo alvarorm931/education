@@ -1,0 +1,87 @@
+{
+ "proceso": "boib:BOIB-2026-721030",
+ "documento": {
+  "id": "boib:BOIB-2026-721030",
+  "fuente": "BOIB",
+  "url": "https://www.caib.es/eboibfront/es/2026/12346/721030/bases-especificas-que-han-de-regir-los-procesos-se",
+  "fecha": "2026-10-17",
+  "huella": "3616d4c49a6dac3b1d3880b2f4427116277448a4418ae12df6eb2fe3b5be520c"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T08:03:44+00:00",
+ "lote": "msgbatch_013xFoLdqcGqWcqkzh7qrdGg",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Arquitecto/a",
+    "Delineante",
+    "Notificador/a",
+    "Ayudante protección animal",
+    "Maestro"
+   ],
+   "cita": "ARQUITECTO/A. SUBGRUPO A1, POR EL TURNO LIBRE, INCLUIDAS EN LA OFERTA DE EMPLEO PÚBLICO DEL AÑO 2025",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "A1",
+   "cita": "ARQUITECTO/A. SUBGRUPO A1, POR EL TURNO LIBRE, INCLUIDAS EN LA OFERTA DE EMPLEO PÚBLICO DEL AÑO 2025",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "el sistema selectivo que seguirán las convocatorias es el concurso-oposición libre",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 3,
+   "cita": "PARA CUBRIR TRES (3) PLAZAS DE LA ESCALA DE ADMINISTRACIÓN ESPECIAL",
+   "nivel": "literal"
+  },
+  "plazas_discapacidad": {
+   "valor": 1,
+   "cita": "* 1 plaza reservada a personas con discapacidad.",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Acreditar conocimiento de la lengua catalana determinado reglamentariamente para cada plaza",
+   "cita": "deben acreditar el conocimiento de la lengua catalana determinado reglamentariamente para cada plaza",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "No consta en el texto",
+   "cita": "El pago de la tasa se realizará de conformidad con lo dispuesto en la base séptima de las bases generales.",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Primer ejercicio teórico-práctico sobre materias específicas (0-45 puntos, mínimo 22,5)",
+    "Segundo ejercicio tipo test sobre materias comunes (0-15 puntos, mínimo 7,5)"
+   ],
+   "cita": "La fase de oposición estará compuesta por dos ejercicios. Un primer ejercicio teórico-práctico",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Experiencia profesional previa (17 puntos), competencia en catalán (3 puntos), méritos académicos (10 puntos), cursos de formación (10 puntos)",
+   "cita": "Los 40 puntos de la fase de concurso se distribuirán entre los siguientes 5 méritos y sus respectivos subméritos",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, bolsa de trabajo para personal funcionario interino",
+   "cita": "este proceso selectivo generará bolsa de trabajo.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "plazas de personal funcionario de la escala de Administración Especial, subescala técnica, clase técnica superior"
+  },
+  "temas": {
+   "motivo": "valor_no_en_cita",
+   "valor": 70,
+   "cita": "Materias comunes. 1. La Constitución española de 1978."
+  }
+ }
+}

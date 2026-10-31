@@ -1,0 +1,55 @@
+{
+ "proceso": "bopt:BOPT-2026-07802",
+ "documento": {
+  "id": "bopt:BOPT-2026-07802",
+  "fuente": "BOPT",
+  "url": "https://www.dipta.cat/bopt/web/anunci/363462/placa-d-auxiliar-de-servei-de-vigilancia-1-bases-i-convocatoria-ajuntament-asco",
+  "fecha": "2026-08-25",
+  "huella": "04a1150677c2f183ad1dedb795e73779c86ff7124ac51bacf49f95d133bc7746"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T08:03:52+00:00",
+ "lote": "msgbatch_013xFoLdqcGqWcqkzh7qrdGg",
+ "no_son_bases": false,
+ "campos": {
+  "publicaciones": {
+   "valor": "Sede electrónica del Ayuntamiento de Ascó (http://asco.eadministracio.cat)",
+   "cita": "es publicaran a la seu electrònica de l'Ajuntament http://asco.eadministracio.cat",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "auxiliar de servei de vigilància"
+   ],
+   "cita": "selecció, pel sistema de concurs oposició, d'una plaça d'auxiliar de servei de vigilància"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "personal laboral fijo",
+   "cita": "vacant a la plantilla de personal laboral de l'Ajuntament d'Ascó"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "selecció, pel sistema de concurs oposició, d'una plaça d'auxiliar de servei de vigilància"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 1,
+   "cita": "selecció, pel sistema de concurs oposició, d'una plaça d'auxiliar de servei de vigilància"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "20 días hábiles desde el día siguiente a la publicación del anuncio en el DOGC",
+   "cita": "s'obre el termini de presentació de sol·licituds, que serà de 20 dies hàbils a comptar des de l'endemà"
+  },
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Las bases se consultan mediante enlace; las sucesivas publicaciones se harán en la sede electrónica del Ayuntamiento",
+   "cita": "Els successius anuncis d'aquesta convocatòria es publicaran a la seu electrònica de l'Ajuntament"
+  }
+ }
+}

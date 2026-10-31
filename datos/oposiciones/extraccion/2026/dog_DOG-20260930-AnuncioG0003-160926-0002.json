@@ -1,0 +1,52 @@
+{
+ "proceso": "dog:DOG-20260930-AnuncioG0003-160926-0002",
+ "documento": {
+  "id": "dog:DOG-20260930-AnuncioG0003-160926-0002",
+  "fuente": "DOG",
+  "url": "https://www.xunta.gal/dog/Publicados/2026/20260930/AnuncioG0003-160926-0002_es.html",
+  "fecha": "2026-09-30",
+  "huella": "707f44bb751df0ff466752552b910350676414a03d95bcdce41dd8ede03e12fa"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T08:03:41+00:00",
+ "lote": "msgbatch_013xFoLdqcGqWcqkzh7qrdGg",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "personal estatutario fijo",
+   "cita": "movilidad interna de personal estatutario fijo de las categorías",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "convocatoria de concurso de movilidad interna de personal estatutario fijo",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "quince (15) días naturales a partir del día siguiente al de su publicación en el Diario Oficial de Galicia",
+   "cita": "El plazo de presentación de solicitudes será de quince (15) días naturales a partir del día siguiente",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "tablones de anuncios del Hospital Público de Cee y página web del espacio del profesional",
+   "cita": "Las bases íntegras de la presente convocatoria estarán expuestas en los tablones de anuncios",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "personal sanitario diplomado",
+    "personal sanitario de formación profesional",
+    "personal de gestión y servicios"
+   ],
+   "cita": "convocatoria de concurso de movilidad interna de personal estatutario fijo de las categorías de personal sanitario diplomado"
+  },
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "formulario electrónico en la oficina virtual del profesional; impreso, presentación en el Registro del Hospital Público de Cee o en otros registros legales",
+   "cita": "Las solicitudes se ajustarán necesariamente al formulario electrónico existente en la oficina virtual del profesional"
+  }
+ }
+}

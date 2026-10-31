@@ -1,0 +1,50 @@
+{
+ "proceso": "bophuelva:BOPHUELVA-373793",
+ "documento": {
+  "id": "bophuelva:BOPHUELVA-373793",
+  "fuente": "BOP-HUELVA",
+  "url": "https://s2.diphuelva.es/portalweb/bope/anuncios/Anuncio_373793_BOP-184_2026.pdf",
+  "fecha": "2026-09-24",
+  "huella": "0cd6cb293996059e8aeea6c34918531212414c5ee1917f508be185db090c4b35"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T08:03:33+00:00",
+ "lote": "msgbatch_013xFoLdqcGqWcqkzh7qrdGg",
+ "no_son_bases": false,
+ "campos": {
+  "sistema": {
+   "valor": "otro",
+   "cita": "constitución de una bolsa de Peón de Oficios Varios",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "DIEZ DÍAS HÁBILES, contados a partir del siguiente a aquél en el que se publique el presente anuncio",
+   "cita": "el plazo de presentación de solicitudes, que será de DIEZ DÍAS HÁBILES",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de Anuncios de la Sede Electrónica del Ayuntamiento de Isla Cristina",
+   "cita": "El contenido íntegro de las bases se encuentra en el Tablón de Anuncios de la Sede Electrónica",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Peón de Oficios Varios"
+   ],
+   "cita": "una bolsa de Peón de Oficios Varios, a destinada a atender las necesidades temporales"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "otro",
+   "cita": "una bolsa de Peón de Oficios Varios, a destinada a atender las necesidades temporales"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, bolsa para atender las necesidades temporales de personal en los distintos servicios del Ayuntamiento, con excepción del Servicio Municipal de Obras",
+   "cita": "la constitución de una bolsa de Peón de Oficios Varios, a destinada a atender las necesidades temporales"
+  }
+ }
+}

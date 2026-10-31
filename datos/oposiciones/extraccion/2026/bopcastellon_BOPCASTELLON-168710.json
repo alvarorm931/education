@@ -1,0 +1,108 @@
+{
+ "proceso": "bopcastellon:BOPCASTELLON-168710",
+ "documento": {
+  "id": "bopcastellon:BOPCASTELLON-168710",
+  "fuente": "BOP-CASTELLON",
+  "url": "https://bop.dipcas.es/PortalBOP/api/descargarAnuncio?idAnuncio=168710&idioma=es",
+  "fecha": "2026-10-29",
+  "huella": "0d5e9fcf7199bf40c46067b280ac20295de06e218562f581cd47883eeaf0fb55"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T08:03:44+00:00",
+ "lote": "msgbatch_013xFoLdqcGqWcqkzh7qrdGg",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Agente de Policía Local"
+   ],
+   "cita": "tres plazas de agente de la Policía Local, pertenecientes a la escala de Administración Especial",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C1",
+   "cita": "clasificadas en el grupo C, subgrupo C1",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "proveer en propiedad tres plazas de agente de la Policía Local",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "2 mediante oposición por turno libre y 1 mediante concurso por turno de movilidad",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 3,
+   "cita": "proveer en propiedad tres plazas de agente de la Policía Local",
+   "nivel": "literal"
+  },
+  "plazas_turno_libre": {
+   "valor": 2,
+   "cita": "2 mediante oposición por turno libre y 1 mediante concurso por turno de movilidad",
+   "nivel": "literal"
+  },
+  "plazas_promocion_interna": {
+   "valor": 1,
+   "cita": "1 mediante concurso por turno de movilidad",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "título académico exigido",
+   "cita": "el título académico exigido",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Turno movilidad: ser funcionario de carrera de la escala de Administración Especial de la categoría; dos años de servicios efectivos en propiedad; no suspendido ni inhabilitado; permisos de conducción B y A2; servicio activo un año antes del fin del plazo.",
+   "cita": "Estar en posesión de los permisos de conducción de las clases B y A2",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Valenciano: certificados de nivel A1 a C2 valorados como mérito (hasta 4 puntos)",
+   "cita": "Se valorará el conocimiento del valenciano según los niveles especificados en la Orden 7/2017",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Desde la publicación del extracto de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "la data d'aquest últim anunci la que servirà per al còmput del termini de presentació d'instàncies",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Telemáticamente mediante el modelo normalizado de instancia de la sede electrónica del Ayuntamiento",
+   "cita": "lo deben solicitar telemáticamente, utilizando el modelo de instancia normalizado de la sede electrónica",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Prueba psicomédica (reconocimiento médico y prueba psicotécnica), obligatoria y eliminatoria",
+    "Valoración de méritos (concurso de movilidad, máximo 40 puntos)"
+   ],
+   "cita": "Prueba psicomédica. Obligatoria y eliminatoria. Previamente a la valoración de los méritos",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Máximo 40 puntos: servicios prestados (12), titulaciones académicas (5), idiomas (5, valenciano hasta 4 y otros idiomas hasta 1), cursos de formación (15), premios y distinciones (2) y otros méritos (1).",
+   "cita": "La puntuación máxima a alcanzar de 40 puntos.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Boletín Oficial de la Provincia de Castellón y sede electrónica del Ayuntamiento",
+   "cita": "publicar el text íntegre de la modificació de les bases reguladores de les proves selectives en el Butlletí Oficial de la Província de Castelló i en la seu electrònica"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "no",
+   "cita": "Con el proceso no se menciona la creación de bolsa o lista de espera."
+  },
+  "practicas_o_curso": {
+   "motivo": "cita_no_literal",
+   "valor": "no",
+   "cita": "No aparece en el texto periodo de prácticas ni curso selectivo."
+  }
+ }
+}

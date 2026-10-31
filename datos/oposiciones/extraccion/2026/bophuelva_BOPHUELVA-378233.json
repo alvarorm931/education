@@ -1,0 +1,105 @@
+{
+ "proceso": "bophuelva:BOPHUELVA-378233",
+ "documento": {
+  "id": "bophuelva:BOPHUELVA-378233",
+  "fuente": "BOP-HUELVA",
+  "url": "https://s2.diphuelva.es/portalweb/bope/anuncios/Anuncio_378233_BOP-191_2026.pdf",
+  "fecha": "2026-10-05",
+  "huella": "38936b13f4349b47dce50459afc2ba3fecdc3b38a724c56d6c82e7af9abce260"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T08:03:40+00:00",
+ "lote": "msgbatch_013xFoLdqcGqWcqkzh7qrdGg",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "C1",
+   "cita": "se encuadran en el Grupo C, Subgrupo C1",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "provisión como persona funcionaria de carrera, mediante el sistema de acceso de turno libre",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 2,
+   "cita": "dos (2) plazas, F.3.27 y F.3.32, vacantes en la plantilla",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 200,
+   "cita": "derechos de examen que ascienden a 200 euros",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Policía Local (plazas F.3.27 y F.3.32)"
+   ],
+   "cita": "dos plazas de Policía Local vacantes en la plantilla"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "oposición",
+   "cita": "mediante el procedimiento de selección de oposición, de dos (2) plazas"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 2,
+   "cita": "mediante el sistema de acceso de turno libre"
+  },
+  "titulacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Bachiller, Técnico o equivalente",
+   "cita": "Estar en posesión del título de Bachiller, Técnico o equivalente."
+  },
+  "otros_requisitos": {
+   "motivo": "cita_no_literal",
+   "valor": "Nacionalidad española; tener cumplidos 18 años y no haber cumplido la edad de jubilación forzosa; permisos de conducción A2 y B; compromiso de portar armas; no haber sido separado del servicio ni inhabilitado; no tener antecedentes penales por delitos dolosos; abonar tasas.",
+   "cita": "Poseer la nacionalidad española. Tener cumplidos dieciocho años y no haber cumplido la edad de jubilación forzosa."
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "veinte días hábiles desde el siguiente al de la publicación en el BOE de la convocatoria",
+   "cita": "En el plazo de veinte días hábiles a contar desde el siguiente al de la publicación en el BOE"
+  },
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Registro General del ayuntamiento o conforme al art. 16 de la Ley 39/2015",
+   "cita": "Las solicitudes se presentarán en el Registro General del ayuntamiento o conforme a lo dispuesto en el art. 16"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "sede electrónica del ayuntamiento y Boletín Oficial de la Provincia",
+   "cita": "Los resultados de cada uno de los ejercicios... se publicarán en la sede electrónica del ayuntamiento."
+  },
+  "ejercicios": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Aptitud física (eliminatoria, apto/no apto)",
+    "Examen médico (apto/no apto)",
+    "Prueba psicotécnica",
+    "Conocimientos: cuestionario de 100 preguntas y caso práctico"
+   ],
+   "cita": "Primera prueba: aptitud física. Segunda prueba: examen médico."
+  },
+  "temas": {
+   "motivo": "cita_no_literal",
+   "valor": 45,
+   "cita": "Estos temas versarán sobre el temario contenido en el Anexo IV"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "no",
+   "cita": "el órgano de selección podrá proponer al respectivo ayuntamiento el nombramiento de personal funcionario en prácticas de la siguiente persona en orden de prelación"
+  },
+  "practicas_o_curso": {
+   "motivo": "cita_no_literal",
+   "valor": "curso de ingreso en el Instituto de Emergencias y Seguridad Pública de Andalucía seguido de prácticas en plantilla de tres meses",
+   "cita": "la duración de las prácticas en plantillas será de tres meses, debiendo iniciarse en el plazo máximo de un mes"
+  }
+ }
+}

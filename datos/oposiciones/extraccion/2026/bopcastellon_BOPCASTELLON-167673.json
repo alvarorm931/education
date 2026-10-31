@@ -1,0 +1,60 @@
+{
+ "proceso": "bopcastellon:BOPCASTELLON-167673",
+ "documento": {
+  "id": "bopcastellon:BOPCASTELLON-167673",
+  "fuente": "BOP-CASTELLON",
+  "url": "https://bop.dipcas.es/PortalBOP/api/descargarAnuncio?idAnuncio=167673&idioma=es",
+  "fecha": "2026-08-25",
+  "huella": "66acb759039a42fe9a4f38c578ab63c4e8404ecdbf9511385be374f8e5c9b378"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T08:03:43+00:00",
+ "lote": "msgbatch_013xFoLdqcGqWcqkzh7qrdGg",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "constitución de una bolsa de trabajo temporal de Coordinador de Instalaciones deportivas",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "mediante el sistema de oposición",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles, contados a partir del siguiente al de la publicación del anuncio de convocatoria en el Boletín Oficial de la Provincia de Castelló",
+   "cita": "en el plazo de veinte días hábiles, contados a partir del siguiente al de la publicación de este anuncio de convocatoria",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de Anuncios del Ayuntamiento de Castelló y página web www.castello.es (Sección de Recursos Humanos)",
+   "cita": "que se encuentran expuestas en el Tablón de Anuncios del Ayuntamiento de Castelló y en la página web www.castello.es",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, bolsa de trabajo temporal de Coordinador de Instalaciones deportivas",
+   "cita": "para la constitución de una bolsa de trabajo temporal de Coordinador de Instalaciones deportivas",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Coordinador de Instalaciones deportivas"
+   ],
+   "cita": "Convocar pruebas selectivas para la constitución de una bolsa de trabajo temporal de Coordinador de Instalaciones deportivas"
+  },
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "C2",
+   "cita": "Convocar pruebas selectivas para la constitución de una bolsa de trabajo temporal de Coordinador de Instalaciones deportivas, subgrupo C2"
+  },
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Registro General o Registros de la Junta de Distrito del Ayuntamiento, o en la forma prevista en el artículo 16.4 de la Ley 39/2015",
+   "cita": "Los/as interesados/as podrán presentar la Solicitud de Admisión a Pruebas Selectivas en el Registro General o en los Registros de la Junta de Distrito"
+  }
+ }
+}

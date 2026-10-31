@@ -1,0 +1,48 @@
+{
+ "proceso": "bopb:BOPB-202610136581",
+ "documento": {
+  "id": "bopb:BOPB-202610136581",
+  "fuente": "BOPB",
+  "url": "https://bop.diba.cat/anunci/3986862/correccio-del-punt-11-5-de-les-bases-especifiques-reguladores-del-proces-de-seleccio-d-agents-de-la-policia-local-ajuntament-de-malgrat-de-mar",
+  "fecha": "2026-09-08",
+  "huella": "36b7fe0258db2c9c712aeaf7ce9619a2d62313d825852a605fb5dfbd1a5c6e4a"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T08:03:34+00:00",
+ "lote": "msgbatch_013xFoLdqcGqWcqkzh7qrdGg",
+ "no_son_bases": false,
+ "campos": {
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mitjançant concurs oposició i torn lliure",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 3,
+   "cita": "procés de selecció de 3 places d’agent de Policia Local",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Correcció del punt 11.5 de les bases: la causa d'exclusió mèdica per tatuatges visibles es substitueix per la flexibilització del criteri. Els tatuatges es permetran, excepte quan el seu contingut sigui contrari als principis, valors i competències del Codi d'ètica de la Policia de Catalunya.",
+   "cita": "Flexibilització del criteri sobre els tatuatges i s’estableix que aquests es permetran, excepte quan el seu contingut sigui contrari als principis",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Butlletí Oficial de la Província de Barcelona",
+   "cita": "En el Butlletí Oficial de la Província de Barcelona, de data 13 d ’agost de 2026",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Agent de Policia Local",
+   "cita": "aprovació de les bases específiques reguladores del procés de selecció de 3 places d’agent de Policia Local"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 3,
+   "cita": "mitjançant concurs oposició i torn lliure"
+  }
+ }
+}

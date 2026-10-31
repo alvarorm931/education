@@ -1,0 +1,50 @@
+{
+ "proceso": "bopt:BOPT-2026-08446",
+ "documento": {
+  "id": "bopt:BOPT-2026-08446",
+  "fuente": "BOPT",
+  "url": "https://www.dipta.cat/bopt/web/anunci/364154/borsa-de-treball-d-auxiliar-administratiu-iva-rectificacio-de-les-bases-ajuntament-aldover",
+  "fecha": "2026-09-10",
+  "huella": "a6b0449c7e308b1716e7e17880d9a4886392aaf8329d6519756584774af1b162"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T08:03:38+00:00",
+ "lote": "msgbatch_013xFoLdqcGqWcqkzh7qrdGg",
+ "no_son_bases": false,
+ "campos": {
+  "plazo_solicitudes": {
+   "valor": "10 días hábiles a partir del día siguiente a la publicación de la convocatoria en el BOPT",
+   "cita": "El termini per presentar sol·licituds és de 10 dies hàbils a partir de l’ende mà de la publicació de la convocatòria en el BOPT",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Sede electrónica del Ayuntamiento o BOPT, con efectos del primer día del plazo si se presentan antes de la publicación en el BOPT",
+   "cita": "Les sol·licituds que es presentin des de la publicació de la convocatòria a la Seu electrònica de l’Ens abans que es publiqui al BOPT",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Auxiliar administratiu"
+   ],
+   "cita": "constitució d'una borsa de treball d'auxiliar administratiu, personal funcionari interí"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario interino",
+   "cita": "personal funcionari interí, per concurs oposició de l'Ajuntament d'Aldover"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "personal funcionari interí, per concurs oposició de l'Ajuntament d'Aldover"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, bolsa de trabajo de auxiliar administrativo",
+   "cita": "constitució d'una borsa de treball d'auxiliar administratiu, personal funcionari interí"
+  }
+ }
+}

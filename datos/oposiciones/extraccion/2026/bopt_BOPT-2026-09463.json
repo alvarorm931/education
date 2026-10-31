@@ -1,0 +1,112 @@
+{
+ "proceso": "bopt:BOPT-2026-09463",
+ "documento": {
+  "id": "bopt:BOPT-2026-09463",
+  "fuente": "BOPT",
+  "url": "https://www.dipta.cat/bopt/web/anunci/365264/placa-d-agutzil-a-1-bases-i-convocatoria-ajuntament-mont-ral",
+  "fecha": "2026-10-13",
+  "huella": "b2b51d24832b125d102c9c1181891e5d5ab39298fc201d3b795a0b3be4c75277"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T08:03:47+00:00",
+ "lote": "msgbatch_013xFoLdqcGqWcqkzh7qrdGg",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "Agutzil",
+   "cita": "convocar procés per a la selecció d'una plaça de personal laboral fix, enquadrada en el Grup AP, agutzil",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "AP",
+   "cita": "enquadrada en el Grup AP, agutzil, mitjançant concurs-oposició, torn lliure",
+   "nivel": "sin_signos"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mitjançant concurs-oposició, torn lliure, vacant a la plantilla",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "No s'exigeix cap titulació prevista al sistema educatiu",
+   "cita": "f) No s’exigeix cap titulació prevista al sistema educatiu.",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalitat espanyola o de la UE (o d'aplicació la lliure circulació); setze anys i no excedir edat de jubilació; no separat ni inhabilitat per a càrrecs públics; capacitat funcional; permís de conducció B en vigor.",
+   "cita": "h) Estar en possessió del permís de conducció de la classe B, en vigor.",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Català: Bàsic (A2) o equivalent",
+   "cita": "Posseir el certificat de nivell de català: Bàsic (A2) o equivalent de català",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 dies hàbils a partir de l'endemà de la publicació de l'extracte de la convocatòria en el DOGC",
+   "cita": "El termini per presentar sol·licituds és de 20 dies hàbils a partir de l’endemà de la publicació de l’extracte",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Preferentment electrònicament al registre electrònic de l'Ens amb certificat digital o signatura electrònica; també presencialment al Registre General",
+   "cita": "Preferentment les instàncies es presentaran electrònicament: al registre electrònic de l’Ens.",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Seu electrònica de l'Ens i BOPT; a efectes informatius també web corporativa",
+   "cita": "La resta de publicacions del procés selectiu es realitzarà a la Seu electrònica de l’Ens",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Concurs-oposició: fase prèvia de coneixements de llengua catalana (eliminatòria) i castellana si escau",
+    "1r exercici: test de preguntes curtes sobre el temari (eliminatori, 5 per superar)",
+    "Fase de concurs: entrevista (no eliminatòria, màx. 1,5 punts), experiència laboral (màx. 2), formació (màx. 1,5)"
+   ],
+   "cita": "1er exercici: Aquesta prova consisteix en la realització d’un exercici pràctic amb preguntes curtes",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Entrevista (no eliminatòria) màx. 1,5; experiència laboral màx. 2 (0,50/any en administracions públiques; 0,30/any en privades); formació relacionada màx. 1,5",
+   "cita": "EXPERIÈNCIA LABORAL (MÀX. 2 PUNTS): L’antiguitat en serveis prestats es valora a raó de 0,50 punts",
+   "nivel": "sin_signos"
+  },
+  "temas": {
+   "valor": 10,
+   "cita": "Tema 10.- Igualtat entre dones i homes, violència masclista ni igualta t i no-discriminació LGTBI. Cal recuperar-los.",
+   "nivel": "contado"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "personal laboral fixo",
+   "cita": "una plaça de personal laboral fix, enquadrada en el Grup AP"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 1,
+   "cita": "selecció, mitjançant concurs-oposició, torn lliure, d'una plaça de Agutzil"
+  },
+  "plazas_turno_libre": {
+   "motivo": "cita_no_literal",
+   "valor": 1,
+   "cita": "mitjançant concurs-oposició, torn lliure, d'una plaça de Agutzil"
+  },
+  "plazas_discapacidad": {
+   "motivo": "valor_no_en_cita",
+   "valor": 0,
+   "cita": "Torn reserva discapacitats: No"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, bossa de treball per a futures contractacions de personal temporal, vigència 2 anys",
+   "cita": "Constituïda la borsa, com a mitjans de crida a les persones candidates per a cobrir futures contractacions"
+  },
+  "practicas_o_curso": {
+   "motivo": "cita_no_literal",
+   "valor": "Període de prova de 2 mesos",
+   "cita": "El període de prova es realitzarà sota la supervisió del cap de la unitat administrativa"
+  }
+ }
+}

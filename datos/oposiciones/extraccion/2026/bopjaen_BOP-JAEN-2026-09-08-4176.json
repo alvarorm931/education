@@ -1,0 +1,58 @@
+{
+ "proceso": "bopjaen:BOP-JAEN-2026-09-08-4176",
+ "documento": {
+  "id": "bopjaen:BOP-JAEN-2026-09-08-4176",
+  "fuente": "BOP-JAEN",
+  "url": "https://bop.dipujaen.es/descargarws.dip?fechaBoletin=2026-09-08&numeroEdicto=4176&boletinSuplemento=0&ejercicioBop=2026&tipo=bop&anioExpedienteEdicto=2026",
+  "fecha": "2026-09-08",
+  "huella": "8925e0183f91e42bd91387a014e0d2b3ae58d410a89d3bc53cb571e45cac557d"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T08:03:36+00:00",
+ "lote": "msgbatch_013xFoLdqcGqWcqkzh7qrdGg",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "Policía Local",
+   "cita": "para cubrir una plaza de Policía Local vacante en la plantilla de personal funcionario",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C1",
+   "cita": "perteneciente a la Escala de Administración Especial, Subescala de Servicios Especiales, Clase de Policía Local",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "mediante el sistema de oposición libre",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "para cubrir una plaza de Policía Local vacante en la plantilla de personal funcionario",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "El plazo empezará a contar cuando se produzca la publicación del correspondiente anuncio en el Boletín Oficial del Estado",
+   "cita": "El plazo para presentar las instancias empezará a contar cuando se produzca la publicación del correspondiente anuncio en el Boletín Oficial del Estado.",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Sede Electrónica y Portal de Transparencia del Ayto. de Arjonilla, Área Empleo, y página web municipal",
+   "cita": "Las Bases íntegras que regulan la convocatoria se podrá acceder y consultar las mismas en la Sede Electrónica y Portal de Transparencia",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "plaza vacante en la plantilla de personal funcionario de este Ayuntamiento"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "mediante el sistema de oposición libre"
+  }
+ }
+}

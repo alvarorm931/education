@@ -1,0 +1,65 @@
+{
+ "proceso": "dogc:1057357",
+ "documento": {
+  "id": "dogc:1057357",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1057357",
+  "fecha": "2026-10-21",
+  "huella": "2c37298f79679feac3cb1d0539e3079cb9968e89cf82336f7a0183ee91c07d35"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T08:03:49+00:00",
+ "lote": "msgbatch_013xFoLdqcGqWcqkzh7qrdGg",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "TÈCNIC/A ADMINISTRACIÓ ESPECIAL (ENGINYER)"
+   ],
+   "cita": "plaça de TÈCNIC/A ADMINISTRACIÓ ESPECIAL (ENGINYER), número 7 de la plantilla, grup A1",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "A1",
+   "cita": "grup A1, personal funcionari",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "grup A1, personal funcionari",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "pel sistema d'oposició torn lliure",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles, contados a partir del día siguiente de la última de las publicaciones",
+   "cita": "El termini improrrogable per presentar les sol·licituds és de 20 dies hàbils",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Las posteriores publicaciones se harán en la página web municipal",
+   "cita": "Les posteriors publicacions es faran a la pàgina web municipal.",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, para constituir una bolsa de trabajo",
+   "cita": "i constitució d'una borsa de treball",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 1,
+   "cita": "una plaça de TÈCNIC/A ADMINISTRACIÓ ESPECIAL (ENGINYER)"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "pel sistema d'oposició torn lliure"
+  }
+ }
+}

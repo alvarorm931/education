@@ -1,0 +1,48 @@
+{
+ "proceso": "dogv:495029",
+ "documento": {
+  "id": "dogv:495029",
+  "fuente": "DOGV",
+  "url": "https://dogv.gva.es/datos/2026/10/30/pdf/2026_33702_es.pdf",
+  "fecha": "2026-10-30",
+  "huella": "e389ae034880f7d0b0ea1ed2de73bfd62d055382819781abc681e210cf33cc9b"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T08:03:46+00:00",
+ "lote": "msgbatch_013xFoLdqcGqWcqkzh7qrdGg",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "agente de policía local",
+   "cita": "para la cobertura en propiedad de una plaza de agente de policía local, de naturaleza funcionarial",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "para la cobertura en propiedad de una plaza de agente de policía local, de naturaleza funcionarial",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "mediante el sistema de concurso por turno libre, vacante en la plantilla de personal del Ayuntamiento",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "para la cobertura en propiedad de una plaza de agente de policía local",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "diez días hábiles a contar desde el día siguiente a la publicación de este anuncio en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes será de diez días hábiles a contar desde el día siguiente a la publicación",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "mediante el sistema de concurso por turno libre, vacante en la plantilla de personal del Ayuntamiento"
+  }
+ }
+}

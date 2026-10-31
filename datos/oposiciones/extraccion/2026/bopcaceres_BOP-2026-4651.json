@@ -1,0 +1,65 @@
+{
+ "proceso": "bopcaceres:BOP-2026-4651",
+ "documento": {
+  "id": "bopcaceres:BOP-2026-4651",
+  "fuente": "BOP-CACERES",
+  "url": "https://bop.dip-caceres.es/bop/services/anuncios/contenidoPdfIdAnuncio?csv=BOP-2026-4651",
+  "fecha": "2026-10-06",
+  "huella": "85d56546d6fcb488481c6968dab090df77bf93bdc3499a612f98a337e229dbb8"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T08:03:38+00:00",
+ "lote": "msgbatch_013xFoLdqcGqWcqkzh7qrdGg",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Auxiliar Administrativo"
+   ],
+   "cita": "21 de Auxiliar Administrativo del Grupo C, Subgrupo C2.",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C2",
+   "cita": "21 de Auxiliar Administrativo del Grupo C, Subgrupo C2.",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "la selección del personal funcionario de carrera y laboral fijo.",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "la provisión a través del procedimiento de concurso-oposición y por el turno libre",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 21,
+   "cita": "21 de Auxiliar Administrativo del Grupo C, Subgrupo C2.",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "apertura del plazo de presentación de solicitudes de participación",
+   "cita": "a la apertura del plazo de presentación de solicitudes de participación.",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia de Cáceres y extracto en el Boletín Oficial del Estado",
+   "cita": "a través de anuncio en el Boletín Oficial de la Provincia de Cáceres, así como su extracto en el Boletín Oficial del Estado",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_turno_libre": {
+   "motivo": "cita_no_literal",
+   "valor": 19,
+   "cita": "Códigos de plazas: 19, 32, 104, 125, 171, 191, 205,. 243, 287, 347, 361, 496, 625, 657, 1083, 1096, 1308, 1580, y 1668 para el turno libre"
+  },
+  "plazas_discapacidad": {
+   "motivo": "valor_no_en_cita",
+   "valor": 2,
+   "cita": "Códigos de plazas: 1724 y 697 para el turno de discapacidad."
+  }
+ }
+}

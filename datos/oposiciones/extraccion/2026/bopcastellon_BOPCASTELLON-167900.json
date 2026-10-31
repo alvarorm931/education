@@ -1,0 +1,75 @@
+{
+ "proceso": "bopcastellon:BOPCASTELLON-167900",
+ "documento": {
+  "id": "bopcastellon:BOPCASTELLON-167900",
+  "fuente": "BOP-CASTELLON",
+  "url": "https://bop.dipcas.es/PortalBOP/api/descargarAnuncio?idAnuncio=167900&idioma=es",
+  "fecha": "2026-09-12",
+  "huella": "e460fa0be15924aa3e0ede15666f4d2d4277f72428ad9f36e70216c3cc6d7ecb"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T08:03:52+00:00",
+ "lote": "msgbatch_013xFoLdqcGqWcqkzh7qrdGg",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Técnico/a de Gestión de Administración General"
+   ],
+   "cita": "la cobertura en propiedad de 6 plazas de Técnico/a de Gestión de Administración General, por turno libre y sistema concurso",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "para la cobertura en propiedad de 6 plazas de Técnico/a de Gestión de Administración General, por turno libre y sistema concurso",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 6,
+   "cita": "la cobertura en propiedad de 6 plazas de Técnico/a de Gestión de Administración General",
+   "nivel": "literal"
+  },
+  "plazas_turno_libre": {
+   "valor": 6,
+   "cita": "6 plazas de Técnico/a de Gestión de Administración General, por turno libre y sistema concurso",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Titulación académica exigida (no especificada en el extracto)",
+   "cita": "Titulación académica exigida o justificante de haber pagado los derechos de expedición",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Certificado de conocimiento de valenciano expedido u homologado por la Junta Calificadora, con el nivel exigible fijado en el artículo 20 del D.3/17",
+   "cita": "Certificado expedido u homologado por la Junta Calificadora de Conocimientos de Valenciano, acreditativo del nivel exigible",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "No es un proceso de solicitudes: requerimiento de documentación en 10 días hábiles desde la publicación del anuncio en el BOP",
+   "cita": "en plazo de 10 días hábiles a partir de la publicación del presente anuncio en el BOP de Castellón",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Documentación se aporta o se autoriza a la Administración para su obtención a través de la plataforma de interoperatividad",
+   "cita": "se aportarán o se autorizará a esta Administración Local para su obtención a través de la plataforma de interoperatividad",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia de Castellón (BOP)",
+   "cita": "publicación del presente anuncio en el BOP de Castellón",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, se constituye una bolsa de empleo",
+   "cita": "en cuanto a la constitución de la Bolsa de empleo, que pone fin a la vía administrativa",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "otros_requisitos": {
+   "motivo": "cita_no_literal",
+   "valor": "Documento nacional de identidad, documento acreditativo de la nacionalidad, y declaración jurada de no haber sido separado del servicio de ninguna Administración Pública ni hallarse incurso en incapacidad o incompatibilidad",
+   "cita": "Documento nacional de identidad o equivalente acreditativo de la identidad. Documento acreditativo de la nacionalidad."
+  }
+ }
+}

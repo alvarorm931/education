@@ -1,0 +1,53 @@
+{
+ "proceso": "boib:BOIB-2026-718580",
+ "documento": {
+  "id": "boib:BOIB-2026-718580",
+  "fuente": "BOIB",
+  "url": "https://www.caib.es/eboibfront/es/2026/12312/718580/convocatoria-por-el-sistema-de-concurso-oposicion-",
+  "fecha": "2026-08-08",
+  "huella": "72d3261b639238d201e21cbd3ca0257eb99120f8aaf412e273c292f3d05a8e38"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T08:03:52+00:00",
+ "lote": "msgbatch_013xFoLdqcGqWcqkzh7qrdGg",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "fisioterapeuta",
+    "enfermero/a",
+    "psicólogo/a",
+    "educador/a social"
+   ],
+   "cita": "para cubrir puestos vacantes y/o necesidades de personal de fisioterapeuta, enfermero/a, psicólogo/a y educador/a social",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "en régimen laboral temporal o funcionario/a interino/a para la Residencia Geriátrica Asistida",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "diez (10) días hábiles, contados a partir del día siguiente al de la publicación del anuncio de la convocatoria en el BOIB",
+   "cita": "Se abre el plazo para la presentación de solicitudes de diez (10) días hábiles, contados a partir del día siguiente",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "web municipal oposicions.ajmao.org",
+   "cita": "pueden ser consultadas mediante la web municipal: oposicions.ajmao.org",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, bolsa de trabajo para cubrir puestos vacantes y/o necesidades de personal",
+   "cita": "para la constitución de una bolsa de trabajo para cubrir puestos vacantes",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "Convocatoria por el sistema de concurso oposición"
+  }
+ }
+}

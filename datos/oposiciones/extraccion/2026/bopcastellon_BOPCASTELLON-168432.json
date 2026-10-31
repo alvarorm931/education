@@ -1,0 +1,85 @@
+{
+ "proceso": "bopcastellon:BOPCASTELLON-168432",
+ "documento": {
+  "id": "bopcastellon:BOPCASTELLON-168432",
+  "fuente": "BOP-CASTELLON",
+  "url": "https://bop.dipcas.es/PortalBOP/api/descargarAnuncio?idAnuncio=168432&idioma=es",
+  "fecha": "2026-10-15",
+  "huella": "1078bac09d52254751765b9bcfc13dc38016947b72790a65791a9262cb2fffed"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T08:03:38+00:00",
+ "lote": "msgbatch_013xFoLdqcGqWcqkzh7qrdGg",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Sargento",
+    "Cabo"
+   ],
+   "cita": "provisión temporal de puestos de Sargento y Cabo por turno de mejora de empleo",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "B",
+   "cita": "Está encuadrado en el Grupo B, Escala de Administración Especial",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Valoración de méritos",
+    "Memoria (si aplica)",
+    "Fase de entrevista profesional"
+   ],
+   "cita": "valoración consolidada de méritos, memoria (si aplica) y fase de entrevista profesional",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, bolsa de trabajo para cubrir provisionalmente los puestos de Sargento y Cabo, vigente hasta la formalización de la bolsa del proceso de promoción interna",
+   "cita": "Finalizado el proceso, la Comisión de Valoración emitirá propuesta de constitución de bolsa de trabajo",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "reservado a funcionarios de carrera del Consorcio Provincial de Bomberos de Castellón"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso",
+   "cita": "Valoración de títulos académicos y formación y experiencia profesional sin fase de oposición"
+  },
+  "titulacion": {
+   "motivo": "cita_no_literal",
+   "valor": "titulación del grupo B; se admitirá cualquier título oficial de Técnico Superior o equivalente",
+   "cita": "se admitirá estar en posesión de cualquier título oficial de Técnico Superior o equivalente"
+  },
+  "otros_requisitos": {
+   "motivo": "cita_no_literal",
+   "valor": "Tener plaza consolidada en una categoría inferior a la plaza solicitada y ser funcionario de carrera del Consorcio",
+   "cita": "Tener plaza consolidada en una categoría inferior a la plaza/as solicitadas al puesto que aspira"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "diez días hábiles, contados a partir del siguiente al de la publicación de la circular",
+   "cita": "en el plazo de diez días hábiles, contados a partir del siguiente al de la publicación de esta circular"
+  },
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Instancia en la sede electrónica del Consorcio, con documentación de méritos al departamento administrativo",
+   "cita": "Deberán solicitarlo mediante instancia en la sede electrónica del Consorcio Provincial de Bomberos de Castellón"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "No consta en el texto",
+   "cita": "Constitución de bolsa de trabajo ordenada en función de la puntuación total alcanzada"
+  },
+  "meritos": {
+   "motivo": "cita_no_literal",
+   "valor": "Experiencia profesional máx. 10 puntos; títulos académicos y formación máx. 3 puntos; valenciano máx. 1 punto; idiomas comunitarios máx. 0,7 puntos",
+   "cita": "Experiencia profesional. Máximo 10 puntos; Valoración de títulos académicos y formación. Máximo 3 puntos"
+  }
+ }
+}

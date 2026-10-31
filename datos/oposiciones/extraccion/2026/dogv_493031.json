@@ -1,0 +1,116 @@
+{
+ "proceso": "dogv:493031",
+ "documento": {
+  "id": "dogv:493031",
+  "fuente": "DOGV",
+  "url": "https://dogv.gva.es/datos/2026/10/16/pdf/2026_31704_es.pdf",
+  "fecha": "2026-10-16",
+  "huella": "486682ab94e4680472067be2cadd2a3af2e57224698108ff76880ae305a43e33"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T08:03:43+00:00",
+ "lote": "msgbatch_013xFoLdqcGqWcqkzh7qrdGg",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "jefe/a de equipo (grupo M1)",
+    "técnico/a (grupo E)"
+   ],
+   "cita": "dos bolsas extraordinarias de empleo temporal en el departamento de Mecánica Escénica, una para el grupo profesional M1 y otra para el grupo profesional E",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "M1 y E",
+   "cita": "una para el grupo profesional M1 y otra para el grupo profesional E, mediante el sistema de concurso-oposición",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "cada contratación supondrá la celebración de un contrato laboral que se efectuará con relación a un solo puesto",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 2,
+   "cita": "Convocar el proceso común de selección para la constitución de dos bolsas de empleo temporal, una por cada grupo profesional",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "M1: Título de Técnico Superior Artista Fallero y Construcción de Escenografías, certificado profesional ARTU0110, o Bachiller con formación específica de 180 horas; E: ESO con formación específica de 180 horas",
+   "cita": "Título de Técnico Superior Artista Fallero y Construcción de Escenografías o título equivalente",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad o residencia legal (con autorización de trabajo si procede), capacidad legal, mayor de 16 años y no jubilado, capacidad física y psíquica, no inhabilitado, no despedido disciplinariamente por Les Arts",
+   "cita": "Tener capacidad legal para contratar la prestación de su trabajo, de acuerdo con lo previsto en el artículo 7 del Estatuto de los Trabajadores",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 15,
+   "cita": "El importe de los derechos de participación será de 15,00 euros para el proceso de constitución de la bolsa del grupo profesional M1",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Demandantes de empleo seis meses, familias numerosas (especial exento, general 50%), víctimas de violencia sobre la mujer, discapacidad igual o superior al 33 %, exclusión social y personal fijo de Les Arts",
+   "cita": "Las personas con discapacidad igual o superior al 33 %. Esta condición se acreditará mediante un certificado actualizado",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Exclusivamente por medios electrónicos a través del portal de empleo de Les Arts (https://lesarts.convoca.online/)",
+   "cita": "La presentación de solicitudes e inscripción se realizará exclusivamente por medios electrónicos, atendiendo a la capacidad técnica",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Portal de empleo de Les Arts (https://lesarts.convoca.online/), web de Les Arts y Diari Oficial de la Generalitat Valenciana para la constitución de las bolsas",
+   "cita": "La constitución de cada bolsa de empleo temporal se publicará en la plataforma de empleo de Les Arts y en el Diari Oficial",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Oposición (60 %): primer ejercicio tipo test de 30 preguntas para grupo E, máximo 6 puntos",
+    "Oposición grupo M1: primer ejercicio tipo test de 30 preguntas, máximo 4 puntos",
+    "Oposición grupo M1: segundo ejercicio cuestionario psicométrico de competencias, máximo 2 puntos",
+    "Concurso (40 %): méritos formativos y profesionales, máximo 4 puntos"
+   ],
+   "cita": "La fase de oposición se valorará sobre 6 puntos en ambos grupos, debiendo obtener una puntuación mínima de 3",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Formativos máx. 1,50 (titulación 0,40, cursos 0,40, idiomas 0,50, prácticas 0,20); profesionales máx. 2,50 (experiencia por meses en Les Arts y otras entidades)",
+   "cita": "Experiencia profesional (5). Puntuación máxima: 2,50 puntos.",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, para constituir bolsas de empleo temporal de cada grupo profesional; con puntuación mínima de 5 para formar parte",
+   "cita": "Para formar parte de las bolsas se deberá haber obtenido una puntuación igual o superior a 5.",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Periodo de prueba según normativa laboral y convenio de Les Arts; formación interna específica de 100 horas",
+   "cita": "El personal que resulte contratado temporalmente estará sujeto al periodo de prueba establecido en la normativa laboral y convenio de Les Arts",
+   "nivel": "literal"
+  },
+  "temas": {
+   "valor": 9,
+   "cita": "Tema 9. Artes escénicas:",
+   "nivel": "contado"
+  }
+ },
+ "rechazados": {
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "se convocar el proceso común de selección para la constitución de dos bolsas de empleo temporal por el sistema de selección de concurso-oposición"
+  },
+  "idioma_cooficial": {
+   "motivo": "cita_no_literal",
+   "valor": "Valenciano: puntúa en el concurso según nivel acreditado (A1 a C2), no es requisito de acceso",
+   "cita": "Certificado de nivel A1 (inicial) Valenciano"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "diez días hábiles desde el día siguiente a la publicación de la convocatoria en el DOGV",
+   "cita": "El plazo para la presentación de solicitudes será de diez días hábiles y empezará a contar a partir del día siguiente a la publicación"
+  }
+ }
+}

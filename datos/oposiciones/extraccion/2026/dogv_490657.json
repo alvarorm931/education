@@ -1,0 +1,83 @@
+{
+ "proceso": "dogv:490657",
+ "documento": {
+  "id": "dogv:490657",
+  "fuente": "DOGV",
+  "url": "https://dogv.gva.es/datos/2026/09/18/pdf/2026_29330_es.pdf",
+  "fecha": "2026-09-18",
+  "huella": "f7883ba4e867fe6d940d3ef5038681874c5b3b61301218562724293e2239c5fa"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T08:03:44+00:00",
+ "lote": "msgbatch_013xFoLdqcGqWcqkzh7qrdGg",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Personal tecnólogo superior en proyectos de investigación"
+   ],
+   "cita": "Esta oferta tiene por objeto la selección de personal tecnólogo superior en el marco de los proyectos",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Licenciatura, ingeniería, arquitectura, grado o equivalente",
+   "cita": "Estar en posesión o en condiciones de obtener el título de licenciatura, ingeniería, arquitectura, grado o equivalente.",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española o situación del artículo 57 EBEP; cumplir 16 años y no exceder edad de jubilación forzosa; capacidades físicas y psíquicas; no estar inhabilitado para funciones similares.",
+   "cita": "Tener cumplidos 16 años y no exceder de la edad máxima de jubilación forzosa.",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Conocimiento adecuado de cualquiera de las lenguas oficiales de la Comunitat Valenciana",
+   "cita": "Tener un conocimiento adecuado de cualquiera de las lenguas oficiales de la Comunitat Valenciana para el desempeño del puesto de trabajo.",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Diez días hábiles desde el siguiente a la publicación de la convocatoria en el DOGV",
+   "cita": "presentarán la correspondiente solicitud en el plazo de diez días hábiles, contados a partir del siguiente al de la publicación",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Electrónicamente a través de la sede electrónica de la Universidad de Alicante, con certificado digital, Cl@ve o usuario UA",
+   "cita": "Dicha solicitud que se formalizará a través de la sede electrónica de la Universidad de Alicante, https://seuelectronica.ua.es/",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Sede electrónica de la Universidad de Alicante (expediente del aspirante) y página web del Servicio de Selección de Personal",
+   "cita": "las publicaciones detalladas en estas bases... se realizarán en la sede electrónica, en el apartado «Otros documentos generales»",
+   "nivel": "fragmentos"
+  },
+  "ejercicios": {
+   "valor": [
+    "Valoración de méritos del currículum (fase de baremo)",
+    "Entrevista personal de 0 a 5 puntos"
+   ],
+   "cita": "La comisión valorará los méritos alegados por el personal aspirante en sus currículos",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, la comisión podrá constituir una bolsa de trabajo para cubrir renuncias, ausencias, bajas o nuevas necesidades del mismo proyecto o de la LIF",
+   "cita": "La comisión encargada de la resolución de este proceso podrá acordar la constitución de una bolsa de trabajo",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "laboral temporal",
+   "cita": "seleccion para cubrir puestos de trabajo contratados en régimen laboral en los proyectos de investigación"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "Sexta. Sistema de selección con dos fases 6.1. Baremación de méritos 6.2. Entrevista personal"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "El primer proyecto en el que se va a colaborar, así como el número de plazas y características del puesto de trabajo convocado, figura en el anexo I"
+  }
+ }
+}

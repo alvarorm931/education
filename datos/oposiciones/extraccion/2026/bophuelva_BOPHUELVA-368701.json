@@ -1,0 +1,53 @@
+{
+ "proceso": "bophuelva:BOPHUELVA-368701",
+ "documento": {
+  "id": "bophuelva:BOPHUELVA-368701",
+  "fuente": "BOP-HUELVA",
+  "url": "https://s2.diphuelva.es/portalweb/bope/anuncios/Anuncio_368701_BOP-152_2026.pdf",
+  "fecha": "2026-08-10",
+  "huella": "92acadcf85029d0ef2537762912b6961e79bb6bf911f0f9245adc0b8e0a0e6e1"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T08:03:32+00:00",
+ "lote": "msgbatch_013xFoLdqcGqWcqkzh7qrdGg",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "Administrativo de secretaría",
+   "cita": "para cubrir una plaza como funcionario Interino, administrativo de secretaria",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario interino",
+   "cita": "para cubrir una plaza como funcionario Interino, administrativo de secretaria",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "Número de vacantes: 1. Puesto: Administrativo de secretaria.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "C1",
+   "cita": "Grupo: C; Subgrupo C1; Escala de Administración General"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "diez días hábiles, contados a partir del siguiente al de la publicación del Anuncio del contenido integro de la Convocatoria y Bases",
+   "cita": "que será de diez días hábiles, contados a partir del siguiente al de la publicación"
+  },
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Plazo de presentación de solicitudes; el texto no especifica el medio de presentación",
+   "cita": "Mediante el presente anuncio se inicia el plazo de presentación de solicitudes"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Tablón de Anuncios y Sede Electrónica del Ayuntamiento de La Palma del Condado",
+   "cita": "en el Tablón de Anuncios y en la Sede Electrónica del Ayuntamiento de la Palma del Condado"
+  }
+ }
+}

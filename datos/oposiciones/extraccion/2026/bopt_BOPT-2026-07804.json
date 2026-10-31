@@ -1,0 +1,55 @@
+{
+ "proceso": "bopt:BOPT-2026-07804",
+ "documento": {
+  "id": "bopt:BOPT-2026-07804",
+  "fuente": "BOPT",
+  "url": "https://www.dipta.cat/bopt/web/anunci/363484/borsa-de-treball-d-oficial-a-primera-de-paleteria-bases-i-convocatoria-ajuntament-asco",
+  "fecha": "2026-08-25",
+  "huella": "96919fa457e2f3f4de9adc1cd731a763efec9aef22540279d0b92dab3c723500"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T08:03:45+00:00",
+ "lote": "msgbatch_013xFoLdqcGqWcqkzh7qrdGg",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Oficial primera de paleteria"
+   ],
+   "cita": "borsa de treball d’oficial primera de paleteria (C2)",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C2",
+   "cita": "borsa de treball d’oficial primera de paleteria (C2)",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días naturales desde el día siguiente a la publicación en el DOGC",
+   "cita": "s'obre el termini de presentació de sol·licituds, que serà de 20 dies naturals",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Sede electrónica del Ayuntamiento (http://asco.eadministracio.cat)",
+   "cita": "es publicaran a la seu electrònica de l'Ajuntament http://asco.eadministracio.cat",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "otro",
+   "cita": "per la selecció, pel sistema de concurs oposició, d’una borsa de treball"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "per la selecció, pel sistema de concurs oposició, d’una borsa de treball"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, borsa de treball para oficial primera de paleteria",
+   "cita": "la selecció ... d’una borsa de treball d’oficial primera de paleteria"
+  }
+ }
+}

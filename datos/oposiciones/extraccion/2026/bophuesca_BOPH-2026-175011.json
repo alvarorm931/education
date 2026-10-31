@@ -1,0 +1,53 @@
+{
+ "proceso": "bophuesca:BOPH-2026-175011",
+ "documento": {
+  "id": "bophuesca:BOPH-2026-175011",
+  "fuente": "BOP-HUESCA",
+  "url": "https://bop.dphuesca.es/publica/buscador-anuncios/anuncio/Convocatoria-concurso-oposicion-tiempo-parcial-Educador-de-Adultos-Curso-2026-2027/",
+  "fecha": "2026-09-14",
+  "huella": "3d5e30e385baaa68709e3aa175ebdf90ecbafb277654dc5ea7b69a866d140d54"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T08:03:34+00:00",
+ "lote": "msgbatch_013xFoLdqcGqWcqkzh7qrdGg",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "Educador de adultos",
+   "cita": "Convocatoria de selección mediante concurso-oposición para la contratación a tiempo parcial de un Educador de adultos",
+   "nivel": "sin_signos"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "se efectúa convocatoria de selección mediante concurso-oposición para la contratación a tiempo parcial",
+   "nivel": "sin_signos"
+  },
+  "plazo_solicitudes": {
+   "valor": "5 días hábiles a contar desde el día siguiente a la publicación de este anuncio en el Boletín Oficial de la Provincia",
+   "cita": "se abre el plazo de presentación de solicitudes, que será de 5 días hábiles a contar desde el día siguiente a la publicación",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, para crear una bolsa de empleo",
+   "cita": "así como para la creación de una bolsa de empleo",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "A2",
+   "cita": "funcionario interino, grupo A2, nivel 20"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario interino",
+   "cita": "funcionario interino, grupo A2, nivel 20, así como para la creación de una bolsa de empleo"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "sede electrónica https://fonz.sedipualba.es/ y tablón de anuncios de la Entidad",
+   "cita": "Las bases de esta convocatoria se publicarán íntegramente en la sede electrónica https://fonz.sedipualba.es/ y en el tablón de anuncios de la Entidad."
+  }
+ }
+}

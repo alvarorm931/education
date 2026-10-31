@@ -5,16 +5,18 @@
   "fuente": "BOA",
   "url": "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VERDOC&BASE=BOLE&SEC=BUSQUEDA_AVANZADA&DOCN=007962148",
   "fecha": "2026-10-30",
-  "huella": "2bff2f9ba465dd170312e86d8b02c95724c34d9931a760528b6fac5b1837e4d9"
+  "huella": "3459fb9545771db031a2c8ea8b5748556a5ba688bca6884d29cdd74e14f4c40e"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T07:28:34+00:00",
- "lote": "msgbatch_01QUU3nKnMRQfp1xxi4asvKD",
+ "extraido": "2026-10-31T08:03:51+00:00",
+ "lote": "msgbatch_013xFoLdqcGqWcqkzh7qrdGg",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
-   "valor": "Técnico de Desarrollo/Analista Programador",
-   "cita": "mediante oposición libre, 1 plaza de Técnico de Desarrollo/Analista Programador vacante en la plantilla",
+   "valor": [
+    "Técnico de Desarrollo/Analista Programador"
+   ],
+   "cita": "la provisión, mediante oposición libre, una plaza de Técnico de Desarrollo/Analista Programador (C1)",
    "nivel": "literal"
   },
   "grupo": {
@@ -22,14 +24,9 @@
    "cita": "Técnico de Desarrollo/Analista Programador (C1), encuadrada en la Escala de Administración Especial",
    "nivel": "literal"
   },
-  "vinculo": {
-   "valor": "funcionario de carrera",
-   "cita": "la provisión, mediante oposición libre, una plaza de Técnico de Desarrollo/Analista Programador (C1)",
-   "nivel": "literal"
-  },
   "sistema": {
    "valor": "oposición",
-   "cita": "para proveer, mediante oposición libre, 1 plaza de Técnico de Desarrollo/Analista Programador",
+   "cita": "mediante oposición libre, 1 plaza de Técnico de Desarrollo/Analista Programador vacante",
    "nivel": "literal"
   },
   "plazas_total": {
@@ -37,18 +34,13 @@
    "cita": "mediante oposición libre, 1 plaza de Técnico de Desarrollo/Analista Programador vacante",
    "nivel": "literal"
   },
-  "plazas_turno_libre": {
-   "valor": 1,
-   "cita": "mediante oposición libre, 1 plaza de Técnico de Desarrollo/Analista Programador vacante",
-   "nivel": "literal"
-  },
   "titulacion": {
-   "valor": "Título de Bachiller, Técnico o equivalente, o estar en condiciones de obtenerlo al terminar el plazo de instancias",
+   "valor": "Bachiller, Técnico o equivalente",
    "cita": "Estar en posesión del título de Bachiller, Técnico o equivalente o estar en condiciones de obtenerlo",
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Ser español (con excepciones del art. 57.2 TREBEP), tener cumplidos 16 años y no superar la edad de jubilación forzosa, no padecer enfermedad o defecto físico incapacitante, no haber sido separado de la Administración ni inhabilitado",
+   "valor": "Ser español (salvo lo previsto en el art. 57.2 del TREBEP); tener cumplidos 16 años y no superar la edad de jubilación forzosa; no padecer enfermedad o defecto físico que impida el desempeño de las funciones; no haber sido separado del servicio ni tener inhabilitación.",
    "cita": "Ser español, sin perjuicio de lo dispuesto sobre el acceso al empleo público de nacionales de otros Estados",
    "nivel": "literal"
   },
@@ -58,26 +50,18 @@
    "nivel": "sin_signos"
   },
   "plazo_solicitudes": {
-   "valor": "veinte días hábiles desde el siguiente al de publicación del anuncio de la convocatoria en el Boletín Oficial del Estado",
+   "valor": "veinte días hábiles, contados a partir del siguiente al que aparezca publicado el anuncio de la convocatoria en el Boletín Oficial del Estado",
    "cita": "Las instancias se presentarán durante el plazo de veinte días hábiles, contados a partir del siguiente",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Modalidad electrónica (certificado digital, DNI electrónico o Cl@ve, sede del Portal del Empleado) o presencial/papel en oficinas de registro de la Diputación",
+   "valor": "Modalidad electrónica (certificado digital, DNI electrónico o Cl@ve) a través del Portal del Empleado, o presencial/papel en oficinas de registro de la Diputación",
    "cita": "Desde la propia convocatoria está disponible, además, el acceso a las dos modalidades de presentación",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Boletín Oficial de la Provincia de Huesca y portal web institucional www.dphuesca.es/convocatoriaempleo",
-   "cita": "será expuesta en el portal web institucional (www.dphuesca.es/convocatoriaempleo), concediéndose un plazo de diez días hábiles",
-   "nivel": "literal"
-  },
-  "ejercicios": {
-   "valor": [
-    "Primer ejercicio: cuestionario de 90 preguntas tipo test (más 10 de reserva) sobre el anexo I, 90 minutos, eliminatorio (mín. 50 puntos)",
-    "Segundo ejercicio: desarrollo y resolución de uno o varios supuestos prácticos, máximo dos horas, eliminatorio (mín. 50 puntos)"
-   ],
-   "cita": "Consistirá en responder a un cuestionario de 90 preguntas tipo test y 10 preguntas de reservas",
+   "valor": "Portal web de la Diputación (www.dphuesca.es/convocatoriaempleo), BOP de Huesca y sede institucional",
+   "cita": "La presente convocatoria, así como los actos que se deriven de su ejecución, se publicará en portal web",
    "nivel": "literal"
   },
   "temas": {
@@ -85,21 +69,30 @@
    "cita": "Tema 43. Inteligencia artificial aplicada al desarrollo de software y a la Administración Pública",
    "nivel": "literal"
   },
-  "meritos": {
-   "valor": "No se valoran méritos en el proceso selectivo; solo para las listas de espera: 0,015 puntos por mes de servicios prestados en la Diputación, máximo 10 años",
-   "cita": "valoración de servicios prestados en la correspondiente escala o clase de especialidad en la Diputación Provincial de Huesca",
-   "nivel": "literal"
-  },
   "bolsa": {
-   "valor": "sí, listas de espera derivadas del proceso selectivo (aspirantes que superen algún ejercicio o que hayan presentado servicios prestados)",
+   "valor": "sí, listas de espera derivadas del proceso selectivo para cubrir vacantes",
    "cita": "se generarán listas de espera derivadas del presente proceso selectivo",
-   "nivel": "literal"
-  },
-  "practicas_o_curso": {
-   "valor": "Toma de posesión en 30 días hábiles tras publicación del nombramiento; no se menciona periodo de prácticas ni curso selectivo",
-   "cita": "el opositor nombrado deberá tomar posesión en el plazo de treinta días hábiles",
    "nivel": "literal"
   }
  },
- "rechazados": {}
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "plaza vacante en la plantilla de personal funcionario de la Diputación Provincial de Huesca"
+  },
+  "ejercicios": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Primer ejercicio: cuestionario de 90 preguntas tipo test (más 10 de reserva) sobre el anexo I, 90 minutos, eliminatorio (mínimo 50 puntos)",
+    "Segundo ejercicio: supuesto(s) práctico(s) relacionados con las funciones, máximo dos horas, eliminatorio (mínimo 50 puntos)"
+   ],
+   "cita": ""
+  },
+  "practicas_o_curso": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, toma de posesión en 30 días hábiles tras el nombramiento; las bases mencionan funcionarios de carrera/prácticas, sin detallar duración del periodo",
+   "cita": "el Tribunal no podrá proponer el acceso a la condición de funcionarios carrera/prácticas"
+  }
+ }
 }

@@ -1,0 +1,40 @@
+{
+ "proceso": "bopcastellon:BOPCASTELLON-167893",
+ "documento": {
+  "id": "bopcastellon:BOPCASTELLON-167893",
+  "fuente": "BOP-CASTELLON",
+  "url": "https://bop.dipcas.es/PortalBOP/api/descargarAnuncio?idAnuncio=167893&idioma=es",
+  "fecha": "2026-09-05",
+  "huella": "3c0f6445c6290bd3be859a8c069767890cb6bd44690bba194a79f42e53c16ac8"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T08:03:31+00:00",
+ "lote": "msgbatch_013xFoLdqcGqWcqkzh7qrdGg",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Auxiliar Administrativo/a"
+   ],
+   "cita": "Rectificar el error material del Anexo I (Temario) de las Bases específicas para la provisión en propiedad de once plazas de Auxiliar Administrativo/a",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 11,
+   "cita": "provisión en propiedad de once plazas de Auxiliar Administrativo/a del Ayuntamiento de Benicàssim",
+   "nivel": "literal"
+  },
+  "temas": {
+   "valor": 8,
+   "cita": "reestructurando los temas 3 y 8, que quedan redactados con el siguiente tenor literal",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "concluye el 10 de septiembre",
+   "cita": "no supone la apertura de un nuevo plazo de presentación de instancias ni ampliación el mismo, el cual concluye el 10 de septiembre"
+  }
+ }
+}
