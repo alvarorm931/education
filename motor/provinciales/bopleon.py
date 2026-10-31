@@ -72,15 +72,17 @@ def ficha(contenido: bytes) -> dict:
 def _paginas_y_enlaces(pdf: bytes) -> tuple[list[list[str]], list[str]]:
     from pypdf import PdfReader
     logging.getLogger("pypdf").setLevel(logging.ERROR)
-    lector = PdfReader(io.BytesIO(pdf))
+    from motor.pdf import limites_boletin
     paginas, enlaces = [], []
-    for p in lector.pages:
-        paginas.append((p.extract_text(extraction_mode="layout") or "").splitlines())
-        for a in p.get("/Annots") or []:
-            o = a.get_object()
-            uri = (o.get("/A") or {}).get("/URI")
-            if uri and "/buscador-anuncios/anuncio/" in uri and (not enlaces or enlaces[-1] != uri):
-                enlaces.append(str(uri))
+    with limites_boletin():
+        lector = PdfReader(io.BytesIO(pdf))
+        for p in lector.pages:
+            paginas.append((p.extract_text(extraction_mode="layout") or "").splitlines())
+            for a in p.get("/Annots") or []:
+                o = a.get_object()
+                uri = (o.get("/A") or {}).get("/URI")
+                if uri and "/buscador-anuncios/anuncio/" in uri and (not enlaces or enlaces[-1] != uri):
+                    enlaces.append(str(uri))
     return paginas, enlaces
 
 

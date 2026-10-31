@@ -29,12 +29,14 @@ def _seguro(texto: str) -> str:
 def _pdf(contenido: bytes, paginas: int, modo: str = "plain") -> None:
     from pypdf import PdfReader
     logging.getLogger("pypdf").setLevel(logging.ERROR)
-    lector = PdfReader(io.BytesIO(contenido))
-    print("paginas", len(lector.pages))
-    for n in range(min(paginas, len(lector.pages))):
-        print(f"----- página {n + 1}")
-        texto = lector.pages[n].extract_text(extraction_mode=modo) if modo == "layout" else lector.pages[n].extract_text()
-        print(_seguro(texto or "")[:3500])
+    from motor.pdf import limites_boletin
+    with limites_boletin():
+        lector = PdfReader(io.BytesIO(contenido))
+        print("paginas", len(lector.pages))
+        for n in range(min(paginas, len(lector.pages))):
+            print(f"----- página {n + 1}")
+            texto = lector.pages[n].extract_text(extraction_mode=modo) if modo == "layout" else lector.pages[n].extract_text()
+            print(_seguro(texto or "")[:3500])
 
 
 def main(argv: list[str] | None = None) -> int:

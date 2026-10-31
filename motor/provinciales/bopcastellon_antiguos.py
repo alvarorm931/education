@@ -85,12 +85,8 @@ def _castellano(lin: str) -> str:
 def paginas_en_orden(pdf: bytes) -> list[str]:
     """Texto de cada página en el orden en que se ve: en los boletines de 2026 el texto plano de pypdf pone la
     cabecera del anuncio (sección, entidad, registro) al final de la página, y el modo «layout» la deja arriba."""
-    import io
-    import logging
-
-    from pypdf import PdfReader
-    logging.getLogger("pypdf").setLevel(logging.ERROR)
-    return [p.extract_text(extraction_mode="layout") or "" for p in PdfReader(io.BytesIO(pdf)).pages]
+    from motor.pdf import paginas
+    return paginas(pdf, layout=True)
 
 
 SECCIONES = ("administracion", "ayuntamientos", "a yuntamientos", "mancomunidades", "consorcios", "entidades",

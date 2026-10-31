@@ -113,9 +113,8 @@ def seleccionar(disposiciones: list[dict]) -> list[dict]:
 
 
 def paginas_pdf(contenido: bytes) -> list[str]:
-    from pypdf import PdfReader
-    logging.getLogger("pypdf").setLevel(logging.ERROR)
-    return [p.extract_text() or "" for p in PdfReader(io.BytesIO(contenido)).pages]
+    from motor.pdf import paginas
+    return paginas(contenido)
 
 
 def textos_por_registro(paginas: list[str]) -> dict[str, str]:

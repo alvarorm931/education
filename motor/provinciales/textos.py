@@ -101,9 +101,8 @@ def _plano(s: str) -> str:
 
 
 def paginas_pdf(contenido: bytes) -> list[str]:
-    from pypdf import PdfReader
-    logging.getLogger("pypdf").setLevel(logging.ERROR)
-    return [p.extract_text() or "" for p in PdfReader(io.BytesIO(contenido)).pages]
+    from motor.pdf import paginas
+    return paginas(contenido)
 
 
 # Líneas de un sumario: puntos hasta la página o, en el BOP de Albacete, «• Asunto>36» (30/10/2026); en el de
@@ -361,9 +360,8 @@ def columnas_en_orden(texto: str) -> str:
 
 
 def paginas_pdf_columnas(contenido: bytes) -> list[str]:
-    from pypdf import PdfReader
-    logging.getLogger("pypdf").setLevel(logging.ERROR)
-    return [columnas_en_orden(p.extract_text(extraction_mode="layout") or "") for p in PdfReader(io.BytesIO(contenido)).pages]
+    from motor.pdf import paginas
+    return [columnas_en_orden(t) for t in paginas(contenido, layout=True)]
 
 
 def entradas_sumario(paginas: list[str], con_pagina: bool = False) -> list[tuple]:
@@ -490,6 +488,15 @@ def original_guardado(raiz: Path, fuente: str, fecha: str, url: str) -> tuple[by
     return (contenido, {"sha256": reg["sha256"], "capturado": reg.get("capturado")}) if contenido[:4] == b"%PDF" else None
 
 
+# Fallos de la última pasada de textos_boletin_entero por tipo, con un ejemplo de cada uno (para el aviso de main)
+FALLOS_BOLETIN: dict[str, list] = {}
+
+
+def _fallo_boletin(tipo: str, fecha: str, detalle: str) -> None:
+    n, ejemplo = FALLOS_BOLETIN.get(tipo, (0, f"{fecha}: {detalle[:160]}"))
+    FALLOS_BOLETIN[tipo] = [n + 1, ejemplo]
+
+
 def textos_boletin_entero(raiz: Path, fuente: str, archivo: Archivo, max_minutos: float, pausa: float) -> tuple[int, int, int]:
     base = raiz / "datos" / "provinciales" / fuente
     campo = BOLETIN_ENTERO[fuente]
@@ -499,6 +506,7 @@ def textos_boletin_entero(raiz: Path, fuente: str, archivo: Archivo, max_minutos
             if x.get(campo) and not ruta_texto_pdf(base, x).exists():
                 pendientes[(x[campo].split("#")[0], x["fecha"])].append(x)
     inicio, hechos, errores = time.monotonic(), 0, 0
+    FALLOS_BOLETIN.clear()
     for (url, fecha), lista in pendientes.items():
         if max_minutos and (time.monotonic() - inicio) / 60 > max_minutos:
             break
@@ -515,11 +523,13 @@ def textos_boletin_entero(raiz: Path, fuente: str, archivo: Archivo, max_minutos
             time.sleep(pausa)
             try:
                 r = obtener(url, accept="application/pdf, */*")
-            except (ConnectionError, TimeoutError):
+            except (ConnectionError, TimeoutError) as e:
                 errores += len(lista)
+                _fallo_boletin(f"conexión ({type(e).__name__})", fecha, str(e))
                 continue
             if r.status != 200 or r.contenido[:4] != b"%PDF":
                 errores += len(lista)
+                _fallo_boletin(f"HTTP {r.status}" if r.status != 200 else "no es un PDF", fecha, url)
                 continue
             contenido = r.contenido
             captura = archivo.guardar(fuente + "-boletin", date.fromisoformat(fecha), r.contenido, url, "pdf",
@@ -529,12 +539,14 @@ def textos_boletin_entero(raiz: Path, fuente: str, archivo: Archivo, max_minutos
                 cortes = cortar_por_registro(paginas_pdf_columnas(contenido), todas)
             else:
                 cortes = cortar(paginas_pdf(contenido), todas)
-        except Exception:  # un PDF mal formado no detiene la carga
+        except Exception as e:  # noqa: BLE001 - un PDF mal formado no detiene la carga, pero se dice
             errores += len(lista)
+            _fallo_boletin(f"lectura del PDF ({type(e).__name__})", fecha, str(e))
             continue
         for x in lista:
             if x["id"] not in cortes:
                 errores += 1
+                _fallo_boletin("anuncio sin corte", fecha, x["id"])
                 continue
             bruto, pags = cortes[x["id"]]
             if x.get("tipo_acto") in CON_TEXTO:
@@ -573,6 +585,10 @@ def main(argv: list[str] | None = None) -> int:
         hechos, errores, pendientes = descargar_textos_pdf(a.salida / "datos" / "provinciales" / a.fuente, a.fuente,
                                                            archivo, a.max_minutos, a.pausa, accept="application/pdf, */*")
     print(f"{a.fuente} textos: {hechos} descargados, {errores} errores, {pendientes} pendientes")
+    if a.fuente in BOLETIN_ENTERO and FALLOS_BOLETIN:
+        detalle = "; ".join(f"{t}: {n} (p. ej. {e})" for t, (n, e) in sorted(FALLOS_BOLETIN.items(), key=lambda kv: -kv[1][0]))
+        nivel = "warning" if any(not t.startswith("anuncio sin corte") for t in FALLOS_BOLETIN) else "notice"
+        print(f"::{nivel} title={a.fuente} textos del boletín entero::{hechos} textos; fallos: {detalle}"[:3900])
     return 0
 
 

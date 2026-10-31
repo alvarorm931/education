@@ -90,12 +90,11 @@ def main(argv: list[str] | None = None) -> int:
         print(f"----- página {n + 1} (sin entradas de sumario)")
         print(_seguro(limpias[n])[:3000])
     if a.crudas:
-        from pypdf import PdfReader
-        import io
-        lector = PdfReader(io.BytesIO(r.contenido))
+        from motor.pdf import paginas as paginas_pdf
+        crudas = paginas_pdf(r.contenido, layout=True)
         for n in [int(x) for x in a.crudas.split(",") if x.strip()]:
             print(f"----- página {n} con disposición, tal cual")
-            print(_seguro(lector.pages[n - 1].extract_text(extraction_mode="layout") or "")[:6000])
+            print(_seguro(crudas[n - 1])[:6000])
     print(json.dumps({"empleo": len(empleo), "con_texto": sum(1 for e in empleo if e["id"] in cortes)}))
     return 0
 

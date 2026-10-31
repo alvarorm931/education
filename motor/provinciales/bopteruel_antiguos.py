@@ -59,9 +59,8 @@ def enlace_pdf(contenido: bytes, base: str) -> str | None:
 
 
 def paginas(pdf: bytes) -> list[str]:
-    from pypdf import PdfReader
-    logging.getLogger("pypdf").setLevel(logging.ERROR)
-    return [p.extract_text() or "" for p in PdfReader(io.BytesIO(pdf)).pages]
+    from motor.pdf import paginas as paginas_pdf
+    return paginas_pdf(pdf)
 
 
 def _mayusculas(lin: str) -> bool:

@@ -127,8 +127,8 @@ def anonimizar_texto(t: str) -> tuple[str, int]:
 
 
 def _texto_pdf(b: bytes) -> str:
-    from pypdf import PdfReader
-    return "\n".join(p.extract_text() or "" for p in PdfReader(io.BytesIO(b)).pages)
+    from motor.pdf import paginas
+    return "\n".join(paginas(b))
 
 
 def anonimizar_fichero(f: Path) -> int:

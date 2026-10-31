@@ -69,13 +69,15 @@ def texto_sumario(pdf: bytes, paginas: int = 4) -> str:
     from pypdf import PdfReader
     if pdf[:4] != b"%PDF":
         raise ValueError("no es un PDF")
-    r = PdfReader(io.BytesIO(pdf))
+    from motor.pdf import limites_boletin
     partes = []
-    for p in r.pages[:paginas]:  # las páginas del sumario son las que traen «…… 67» al final de las líneas
-        t = p.extract_text() or ""
-        if partes and not any(RE_PAGINA.search(l) for l in t.splitlines()):
-            break
-        partes.append(t)
+    with limites_boletin():
+        r = PdfReader(io.BytesIO(pdf))
+        for p in r.pages[:paginas]:  # las páginas del sumario son las que traen «…… 67» al final de las líneas
+            t = p.extract_text() or ""
+            if partes and not any(RE_PAGINA.search(l) for l in t.splitlines()):
+                break
+            partes.append(t)
     return "\n".join(partes)
 
 

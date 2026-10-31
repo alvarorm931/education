@@ -92,9 +92,8 @@ def boletines_del_mes(contenido: bytes, categoria: str | None = None) -> list[di
 
 
 def paginas_pdf(pdf: bytes) -> list[str]:
-    from pypdf import PdfReader
-    logging.getLogger("pypdf").setLevel(logging.ERROR)
-    return [p.extract_text() or "" for p in PdfReader(io.BytesIO(pdf)).pages]
+    from motor.pdf import paginas
+    return paginas(pdf)
 
 
 def numero_de_pagina(texto: str) -> int | None:
