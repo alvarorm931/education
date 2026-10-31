@@ -132,7 +132,13 @@ REGLAS_ACTO: list[tuple[str, tuple[str, ...]]] = [
                    "se adjudica destino", "se adjudican destinos", "adjudicacion de destinos", "s'adjudica destinacio",
                    "s'adjudiquen destinacions", "adxudicanse destinos", "se adxudica destino",
                    "se constituye la bolsa", "es constitueix la borsa", "constituese a bolsa", "se aprueba la bolsa",
-                   "bolsa de empleo derivada", "lista de espera derivada", "s'aprova la borsa", "aprobase a bolsa")),
+                   "bolsa de empleo derivada", "lista de espera derivada", "s'aprova la borsa", "aprobase a bolsa",
+                   # DOG: «… por la que se hace pública una relación complementaria…», «… excluye a personas aspirantes»
+                   "se hace publica la relacion", "se hace publica una relacion", "se hacen publicas las relaciones",
+                   "fai publica a relacion", "fai publica unha relacion")),
+    ("admitidos", ("excluye a personas aspirantes", "excluye a una persona aspirante", "se excluye a", "exclue a persoas")),
+    ("examen", ("se hace publica la fecha", "se hacen publicos la fecha", "se hacen publicas la fecha", "se hacen publicos el lugar",
+                "se hace publico el lugar", "fai publica a data", "fanse publicos a data")),
     ("tribunal", ("tribunal calificador", "composicion del tribunal", "tribunal que ha de juzgar", "comision de seleccion",
                   "composicion nominal del tribunal", "composicio nominal del tribunal", "composicion nominal de la comision",
                   "miembros del tribunal", "membres del tribunal", "membros do tribunal",
@@ -144,6 +150,10 @@ REGLAS_ACTO: list[tuple[str, tuple[str, ...]]] = [
     ("examen", ("fecha de celebracion", "fecha, hora y lugar", "lugar, fecha y hora", "primer ejercicio",
                 "data de realitzacio", "data, hora i lloc", "lloc, data i hora", "primer exercici",
                 "data, hora e lugar", "lugar, data e hora", "primeiro exercicio")),
+    # Resoluciones del tribunal que no dicen qué publican («RESOLUCIÓN…, del tribunal nombrado para calificar el
+    # proceso selectivo…», DOG): después de las fechas de examen y de los resultados
+    ("tribunal", ("del tribunal nombrado para", "del tribunal designado para", "do tribunal nomeado para",
+                  "do tribunal designado para", "del tribunal encargado de")),
     # «Concurso-oposición de dos plazas de animador/a» (anuncio de convocatoria de una entidad local en el BON)
     ("convocatoria", ("se convoca", "convocatoria", "convoca proceso", "convoca concurso", "proceso selectivo",
                       "es convoca", "es convoquen", "proces selectiu", "proces de seleccio", "convocase",

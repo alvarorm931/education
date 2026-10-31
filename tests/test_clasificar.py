@@ -111,3 +111,15 @@ def test_resoluciones_del_proceso_no_son_convocatorias():
     }
     for titulo, tipo in casos.items():
         assert clasificar_titulo(titulo)["tipo_acto"] == tipo, titulo
+
+
+def test_resoluciones_del_tribunal_y_de_exclusion_del_dog():
+    from motor.autonomicos.comun import clasificar as clasificar_titulo
+    casos = {
+        "RESOLUCIÓN de 24 de septiembre de 2026, del tribunal nombrado para calificar el proceso selectivo para el ingreso en el cuerpo de ayudantes": "tribunal",
+        "RESOLUCIÓN de 12 de septiembre de 2023, del tribunal encargado de calificar el proceso selectivo, por la que se hace pública la fecha del segundo ejercicio": "examen",
+        "RESOLUCIÓN de 10 de marzo de 2026 por la que se hace pública una relación complementaria de personas aspirantes que superaron el proceso": "aprobados",
+        "RESOLUCIÓN de 28 de enero de 2026 por la que se excluye a personas aspirantes en el proceso selectivo": "admitidos",
+    }
+    for titulo, tipo in casos.items():
+        assert clasificar_titulo(titulo)["tipo_acto"] == tipo, titulo
