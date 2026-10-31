@@ -95,7 +95,8 @@ def analizar_html(html: bytes, url: str) -> dict:
     for el in arbol.xpath("//script | //style | //noscript | //template"):
         el.drop_tree()
     cuerpo = arbol.find("body")
-    texto = re.sub(r"\s+", " ", cuerpo.text_content() if cuerpo is not None else "").strip()
+    # itertext con espacios: text_content() junta las celdas de una tabla en una sola palabra
+    texto = re.sub(r"\s+", " ", " ".join(cuerpo.itertext()) if cuerpo is not None else "").strip()
     crudo = html.decode("utf-8", errors="replace")
     tipos = []
     for bloque in re.findall(r'<script[^>]+application/ld\+json[^>]*>(.*?)</script>', crudo, re.S | re.I):

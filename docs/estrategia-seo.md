@@ -126,7 +126,7 @@ Estimación a partir de una muestra de sus archivos de sitemap (media de direcci
 | aprendemas.com | 356.496 | 0 de 68.557 | cursos por provincia, área y modalidad, en España y México |
 | emagister.com | 182.264 | todas | cursos, temáticas y oposiciones por provincia |
 | adams.es | 33.497 | 3.928 de 7.178 | academia; el sitemap incluye imágenes |
-| convenioslaborales.com | 32.760 | todas | calendario laboral por municipio y año, convenios |
+| convenioslaborales.com | 32.760 (recuento exacto del 31/10: 14.326; ver `docs/modelo-convenioslaborales.md`) | todas | calendario laboral por municipio y año, convenios |
 | opositatest.com | 27.117 | todas | calendarios y esquemas por oposición |
 | redopositor.com | 21.222 | 16.146 de 17.685 | una página por convocatoria, tienda |
 | yaq.es | 20.625 | 406 de 11.250 | grados y másters por universidad |
@@ -172,7 +172,7 @@ RedOpositor es el único que ya usa `JobPosting` en las convocatorias. Por tanto
 
 ### El modelo de referencia: convenioslaborales.com
 
-Hace exactamente lo que el proyecto quiere copiar «por detrás»: unas 32.760 direcciones, todas con `lastmod`, sin `changefreq` ni `priority`, servidas por Cloudflare, y una página por municipio y año para el calendario laboral (`/calendario-laboral/2026/araba/erriberagoitia/`, unas 800 palabras). Funciona porque cada municipio tiene de verdad un dato distinto: sus fiestas locales. La lección es directa: la página por municipio solo es legítima cuando el municipio aporta un dato propio. En calendario laboral lo aporta siempre; en oposiciones, solo cuando ha convocado (por eso el umbral).
+Hace exactamente lo que el proyecto quiere copiar «por detrás»: 14.326 direcciones (recuento exacto del 31/10/2026; la estimación de este documento, 32.760, salía de una muestra sesgada), todas con `lastmod`, sin `changefreq` ni `priority`, servidas por Cloudflare, y una página por municipio y año para el calendario laboral (`/calendario-laboral/2026/araba/erriberagoitia/`, unas 1.650 palabras; el primer recuento, unas 800, juntaba las celdas de las tablas). Su anatomía completa, con lo que copiamos y lo que no, está en `docs/modelo-convenioslaborales.md`. Funciona porque cada municipio tiene de verdad un dato distinto: sus fiestas locales. La lección es directa: la página por municipio solo es legítima cuando el municipio aporta un dato propio. En calendario laboral lo aporta siempre; en oposiciones, solo cuando ha convocado (por eso el umbral).
 
 ### Lo que se concluye
 
