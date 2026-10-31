@@ -814,8 +814,38 @@ def anadir_datos_de_bases(procesos: list[dict], carpeta: Path) -> int:
             continue
         p["datos_bases"] = {"documento": e.get("documento"), "extraido": e.get("extraido"), "modelo": e.get("modelo"),
                             "campos": {k: {"valor": v.get("valor"), "cita": v.get("cita")} for k, v in e["campos"].items()}}
+        completar_con_bases(p)
         n += 1
     return n
+
+
+RE_GRUPO_BASES = re.compile(r"\b(A1|A2|C1|C2|B|AP|E)\b")
+
+
+def completar_con_bases(p: dict) -> None:
+    """Grupo, sistema y número de plazas que el anuncio no daba, desde los datos de las bases (con su cita). Se dice
+    de dónde salen (`desde_bases`) y no se cambia lo que ya venía del anuncio."""
+    c = (p.get("datos_bases") or {}).get("campos") or {}
+    desde = []
+    if not p.get("total_plazas") and isinstance((c.get("plazas_total") or {}).get("valor"), (int, float)) \
+            and 0 < c["plazas_total"]["valor"] < 10000:
+        p["total_plazas"] = int(c["plazas_total"]["valor"])
+        desde.append("total_plazas")
+    if not p.get("grupo") and (g := c.get("grupo")):
+        texto = str(g.get("valor") or "").upper().replace("SUBGRUPO", " ").replace("GRUPO", " ")
+        if "AGRUPACION" in normalizar(texto).upper() or "AGRUPACIÓN" in texto:
+            p["grupo"] = "AP"
+        elif (m := RE_GRUPO_BASES.findall(texto)):
+            p["grupo"] = ", ".join(dict.fromkeys("AP" if x == "E" else x for x in m))
+        if p.get("grupo"):
+            desde.append("grupo")
+    if not p.get("sistema") and (sv := normalizar(str((c.get("sistema") or {}).get("valor") or ""))):
+        p["sistema"] = ("concurso-oposicion" if "concurso" in sv and "oposicion" in sv else
+                        "oposicion" if "oposicion" in sv else "concurso" if "concurso" in sv else None)
+        if p.get("sistema"):
+            desde.append("sistema")
+    if desde:
+        p["desde_bases"] = desde
 
 
 def main(argv: list[str] | None = None) -> int:

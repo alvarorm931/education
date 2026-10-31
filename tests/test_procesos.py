@@ -207,3 +207,20 @@ def test_datos_de_las_bases_en_el_proceso(tmp_path):
     ps = [{"id": "boe:BOE-A-2026-1"}, {"id": "boe:BOE-A-2026-2"}]
     assert anadir_datos_de_bases(ps, tmp_path) == 1
     assert ps[0]["datos_bases"]["campos"] == {"tasa_euros": {"valor": 15, "cita": "15,00 euros"}} and "datos_bases" not in ps[1]
+
+
+def test_completar_con_bases():
+    from motor.procesos import completar_con_bases
+    p = {"id": "x", "total_plazas": None, "grupo": None, "sistema": None,
+         "datos_bases": {"campos": {"plazas_total": {"valor": 2}, "grupo": {"valor": "Subgrupo C2"},
+                                    "sistema": {"valor": "Concurso-oposición libre"}}}}
+    completar_con_bases(p)
+    assert (p["total_plazas"], p["grupo"], p["sistema"]) == (2, "C2", "concurso-oposicion")
+    assert p["desde_bases"] == ["total_plazas", "grupo", "sistema"]
+    q = {"id": "y", "total_plazas": 5, "grupo": "A1", "sistema": "oposicion",
+         "datos_bases": {"campos": {"plazas_total": {"valor": 2}, "grupo": {"valor": "E / agrupaciones profesionales"}}}}
+    completar_con_bases(q)
+    assert (q["total_plazas"], q["grupo"]) == (5, "A1") and "desde_bases" not in q
+    r = {"id": "z", "datos_bases": {"campos": {"grupo": {"valor": "Agrupaciones Profesionales"}}}}
+    completar_con_bases(r)
+    assert r["grupo"] == "AP"
