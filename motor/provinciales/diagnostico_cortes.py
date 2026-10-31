@@ -34,6 +34,34 @@ def _mejor_prefijo(compacto: "t._Compacto", palabras: list[str]) -> tuple[int, i
     return mejor, pos
 
 
+RAMA = "https://raw.githubusercontent.com/alvarorm931/education/datos/"
+API = "https://api.github.com/repos/alvarorm931/education/contents/"
+
+
+def _desde_datos(fuente: str, fecha: str, salida: Path) -> None:
+    """Los ficheros del día de la rama de datos (pública) que hacen falta para cortar sus textos: disposiciones,
+    anuncios de empleo y el índice de capturas del boletín entero (con la clave del PDF en el almacén)."""
+    import urllib.request
+
+    def bajar(url: str) -> bytes:
+        with urllib.request.urlopen(urllib.request.Request(url, headers={"User-Agent": "motor-education-diagnostico"}),
+                                    timeout=60) as r:
+            return r.read()
+    anio, mes, dia = fecha[:4], fecha[5:7], fecha[8:10]
+    for carpeta in ("disposiciones", "oposiciones"):
+        ruta = f"datos/provinciales/{fuente}/{carpeta}/{anio}/{mes}"
+        lista = json.loads(bajar(f"{API}{ruta}?ref=datos"))
+        for f in lista:
+            if f.get("name", "").startswith(dia) and f["name"].endswith(".jsonl"):
+                destino = salida / ruta / f["name"]
+                destino.parent.mkdir(parents=True, exist_ok=True)
+                destino.write_bytes(bajar(RAMA + ruta + "/" + f["name"]))
+    indice = f"archivo/indices/{fuente}-boletin/{anio}-{mes}.jsonl"
+    destino = salida / indice
+    destino.parent.mkdir(parents=True, exist_ok=True)
+    destino.write_bytes(bajar(RAMA + indice))
+
+
 def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser()
     p.add_argument("fuente", choices=sorted(t.BOLETIN_ENTERO))
@@ -41,10 +69,16 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--paginas", type=int, default=4, help="páginas del cuerpo que se imprimen (las primeras)")
     p.add_argument("--crudas", default="", help="páginas (1,5,9) cuyo texto con disposición se imprime tal cual")
     p.add_argument("--salida", type=Path, default=Path("diagnostico"))
+    p.add_argument("--almacen", action="store_true",
+                   help="sin pedir nada a la fuente: los anuncios de la rama de datos y el PDF del almacén S3 (para los "
+                        "boletines que solo responden desde España; prueba.yml con originales=s3)")
     a = p.parse_args(argv)
-    conector = importlib.import_module(f"motor.provinciales.{a.fuente}")
     d = a.fecha.isoformat()
-    conector.main(["--desde", d, "--hasta", d, "--salida", str(a.salida)])
+    if a.almacen:
+        _desde_datos(a.fuente, d, a.salida)
+    else:
+        conector = importlib.import_module(f"motor.provinciales.{a.fuente}")
+        conector.main(["--desde", d, "--hasta", d, "--salida", str(a.salida)])
     base = a.salida / "datos" / "provinciales" / a.fuente
     campo = t.BOLETIN_ENTERO[a.fuente]
     empleo = [x for f in (base / "oposiciones").rglob("*.jsonl") for x in leer_jsonl(f)]
@@ -53,7 +87,15 @@ def main(argv: list[str] | None = None) -> int:
     if not empleo:
         return 0
     url = empleo[0][campo].split("#")[0]
-    r = t.obtener(url, accept="application/pdf, */*")
+    if a.almacen:
+        guardado = t.original_guardado(a.salida, a.fuente + "-boletin", d, url)
+        if not guardado:
+            print("el PDF no está en el almacén:", url)
+            return 0
+        from motor.http import Respuesta
+        r = Respuesta(url, 200, guardado[0], {})
+    else:
+        r = t.obtener(url, accept="application/pdf, */*")
     print("pdf", r.status, len(r.contenido), url)
     if r.contenido[:4] != b"%PDF":
         return 0
