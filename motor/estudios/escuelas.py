@@ -22,7 +22,8 @@ from urllib.parse import urlparse
 
 # dominio → web de partida y listados que conviene recorrer (en orden de reputación)
 ESCUELAS = {
-    "ie.edu": {"web": "https://www.ie.edu", "listados": ["https://www.ie.edu/masters/", "https://www.ie.edu/business-school/programs/"]},
+    "ie.edu": {"web": "https://www.ie.edu", "listados": ["https://www.ie.edu/masters/sitemap/", "https://www.ie.edu/masters/",
+                                                         "https://www.ie.edu/business-school/programs/"]},
     "iese.edu": {"web": "https://www.iese.edu", "listados": ["https://www.iese.edu/programs/"]},
     "cunef.edu": {"web": "https://www.cunef.edu", "listados": ["https://www.cunef.edu/estudios/"]},
     "comillas.edu": {"web": "https://www.comillas.edu", "listados": ["https://www.comillas.edu/postgrados/"]},
@@ -70,6 +71,41 @@ def filas(res: dict, dominio: str, max_paginas: int = 300) -> list[dict]:
     return out
 
 
+def segunda_vuelta(destino: Path, dominio: str, max_paginas: int = 200) -> list[dict]:
+    """Las páginas de precio y de plan enlazadas desde las fichas leídas a las que les falta el precio (en el
+    original guardado): muchas escuelas no las ponen en el sitemap («/master-in-finance/admissions-fees»)."""
+    from motor.estudios import extraer
+    from motor.estudios.censo import dominio_registrado, id_proveedor
+
+    guarda = extraer.Guarda()
+    if not guarda.activa:
+        return []
+    leer = lambda n: [json.loads(l) for f in destino.glob(n) for l in f.read_text(encoding="utf-8").split("\n") if l.strip()]
+    claves = {x["url"]: x["clave"] for x in leer("paginas_capturadas.jsonl") if x.get("clave")}
+    hechos: dict[str, set] = {}
+    for h in leer("hechos.jsonl"):
+        if h.get("estado") == "aceptado":
+            hechos.setdefault(h["url"], set()).add(h["campo"])
+    fichas = [x["url"] for x in leer("paginas_extraidas.jsonl") if not x.get("no_es_programa")]
+    prov = id_proveedor(dominio_registrado(dominio))
+    ya, out = set(claves), []
+    for u in fichas:
+        faltan = [c for c, campos in (("precio", {"precio_total", "precio_credito"}), ("asignaturas", {"asignaturas"}))
+                  if not hechos.get(u, set()) & campos]
+        if not faltan or u not in claves:
+            continue
+        try:
+            html = guarda.almacen.leer(claves[u]).decode("utf-8", "replace")
+        except Exception:  # noqa: BLE001
+            continue
+        for s_ in extraer.subpaginas_enlazadas(html, u, faltan):
+            if s_ not in ya and len(out) < max_paginas:
+                ya.add(s_)
+                out.append({"url": s_, "grupo": "no_oficial", "proveedor": prov, "pagina": "principal",
+                            "estado_emparejado": "escuela_enlazada"})
+    return out
+
+
 def ejecutar(dominio: str, salida: Path, max_paginas: int = 300, max_minutos: float = 52, navegador: bool = True) -> dict:
     from motor.estudios import extraer
     from motor.estudios.rastreador import rastrear
@@ -90,8 +126,19 @@ def ejecutar(dominio: str, salida: Path, max_paginas: int = 300, max_minutos: fl
     muestra = destino / "escuela.jsonl"
     muestra.write_text("".join(json.dumps(f, ensure_ascii=False) + "\n" for f in fs), encoding="utf-8")
     if fs:
-        resumen["lote"] = extraer.lote(muestra, destino, esperar_min=25, hilos=4,
-                                       max_minutos=max(10.0, max_minutos - (time.time() - t0) / 60), navegador=navegador)
+        resumen["lote"] = extraer.lote(muestra, destino, esperar_min=20, hilos=4,
+                                       max_minutos=max(10.0, (max_minutos - (time.time() - t0) / 60) * 0.55), navegador=navegador)
+        # segunda vuelta: precio y plan enlazados desde las fichas leídas
+        f2 = segunda_vuelta(destino, dominio)
+        resumen["segunda_vuelta"] = len(f2)
+        quedan = max_minutos - (time.time() - t0) / 60
+        if f2 and quedan > 12:
+            d2 = destino.parent / f"{destino.name}_enlazadas"
+            d2.mkdir(parents=True, exist_ok=True)
+            m2 = d2 / "escuela_enlazadas.jsonl"
+            m2.write_text("".join(json.dumps(f, ensure_ascii=False) + "\n" for f in f2), encoding="utf-8")
+            resumen["lote_enlazadas"] = extraer.lote(m2, d2, esperar_min=15, hilos=4, max_minutos=quedan - 2,
+                                                     navegador=navegador)
     (destino / "resumen_escuela.json").write_text(json.dumps(resumen, ensure_ascii=False, indent=1), encoding="utf-8")
     return resumen
 

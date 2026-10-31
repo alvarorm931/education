@@ -43,3 +43,27 @@ def test_sin_subdominios_de_campana_ni_paginas_generales():
                          "https://www.ie.edu/masters/master-in-finance/?utm_source=x", "https://www.ie.edu/masters/master-in-finance/"],
            "subpaginas_precio": []}
     assert [x["url"] for x in escuelas.filas(res, "ie.edu")] == ["https://www.ie.edu/masters/master-in-finance/"]
+
+
+def test_segunda_vuelta_con_las_paginas_de_precio_enlazadas(tmp_path, monkeypatch):
+    import json
+    from motor.estudios import extraer
+
+    u = "https://www.ie.edu/masters/master-in-finance/"
+    (tmp_path / "paginas_capturadas.jsonl").write_text(json.dumps({"url": u, "clave": "k"}) + "\n")
+    (tmp_path / "paginas_extraidas.jsonl").write_text(json.dumps({"url": u}) + "\n")
+    (tmp_path / "hechos.jsonl").write_text(json.dumps({"url": u, "campo": "nombre", "valor": "Master in Finance",
+                                                       "estado": "aceptado"}) + "\n")
+
+    class Almacen:
+        def leer(self, clave):
+            return b'<a href="/masters/master-in-finance/admissions-fees">Admissions & Fees</a><a href="/blog/x">x</a>'
+
+    class G:
+        activa = True
+        almacen = Almacen()
+
+    monkeypatch.setattr(extraer, "Guarda", G)
+    fs = escuelas.segunda_vuelta(tmp_path, "ie.edu")
+    assert [x["url"] for x in fs] == ["https://www.ie.edu/masters/master-in-finance/admissions-fees"]
+    assert fs[0]["grupo"] == "no_oficial" and fs[0]["proveedor"] == "prov-4a48f430b0"
