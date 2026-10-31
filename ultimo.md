@@ -1,6 +1,6 @@
-# Vigilancia 31/10 17:43 (Madrid)
+# Vigilancia 31/10 17:53 (Madrid)
 
-- Ejecuciones revisadas (últimas 6 h): 164
+- Ejecuciones revisadas (últimas 6 h): 167
 - Fallos: 1; pendientes: 0; relanzados ahora: 0
 - Colas de más de 30 minutos: 2
 - Flujos programados parados: ninguno
@@ -24,5 +24,5 @@ https://github.com/alvarorm931/education/actions/runs/41210060505 (intento 1, wo
       fatal: couldn't find remote ref refs/heads/prueba-historial
       ##[error]Process completed with exit code 128.
 
-- En cola 39 min: Grados por tramos https://github.com/alvarorm931/education/actions/runs/41217917534
-- En cola 94 min: Boletines autonómicos https://github.com/alvarorm931/education/actions/runs/41213532071
+- En cola 49 min: Grados por tramos https://github.com/alvarorm931/education/actions/runs/41217917534
+- En cola 104 min: Boletines autonómicos https://github.com/alvarorm931/education/actions/runs/41213532071
