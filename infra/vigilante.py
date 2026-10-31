@@ -122,11 +122,15 @@ def final_registro(job_id: int, lineas: int = 25) -> list[str]:
     limpias = [re.sub(r"^\d{4}-\d\d-\d\dT[\d:.]+Z ", "", f)[:300] for f in filas if f.strip()]
     # Lo que importa está antes de la limpieza final del trabajo («Post job cleanup»)
     corte = next((i for i, f in enumerate(limpias) if f.startswith("Post job cleanup")), len(limpias))
-    utiles = [f for f in limpias[:corte] if not f.startswith(("[command]", "##[group]", "##[endgroup]"))]
-    # El paso que falla termina en su primer «##[error]»; lo de después son pasos de limpieza (if: always()).
-    primero = next((i for i, f in enumerate(utiles) if f.startswith("##[error]")), None)
+    tramo = limpias[:corte]
+    # Solo cuenta el paso que falla: empieza en su cabecera «##[group]Run …» y termina en su primer «##[error]».
+    # Lo de antes son otros pasos (un `git push` rechazado y reintentado con éxito no es el error, y hacía que
+    # un fallo de verdad pareciera pasajero); lo de después, pasos de limpieza (if: always()).
+    primero = next((i for i, f in enumerate(tramo) if f.startswith("##[error]")), None)
     if primero is not None:
-        utiles = utiles[:primero + 1]
+        inicio = max((i for i in range(primero) if tramo[i].startswith("##[group]Run ")), default=0)
+        tramo = tramo[inicio:primero + 1]
+    utiles = [f for f in tramo if not f.startswith(("[command]", "##[group]", "##[endgroup]"))]
     # Fuera los bloques «shell:» / «env:» que GitHub imprime al empezar cada paso.
     sin_ruido, en_env = [], False
     for f in utiles:
