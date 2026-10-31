@@ -1,0 +1,96 @@
+{
+ "proceso": "borm:BORM-2026-2080",
+ "documento": {
+  "id": "borm:BORM-2026-2080",
+  "fuente": "BORM",
+  "url": "https://www.borm.es/#/home/anuncio/12-05-2026/2080",
+  "fecha": "2026-05-12",
+  "huella": "94407d723b70f6234b652c698e4d05f58da89ac775e05d0c3d57720e82751044"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T16:02:33+00:00",
+ "lote": "msgbatch_01FSJZeLpoe4xdpp6Wi1V3FY",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "Catedráticos de Universidad (concurso de méritos, promoción interna). Plazas 78/2026 Biología Celular, 79/2026 Fisiología, 80/2026 Medicina Legal y Forense",
+   "cita": "concurso de méritos reservado a plazas de promoción interna para el acceso a plazas vacantes del cuerpo de Catedráticos de Universidad",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "A1",
+   "cita": "Catedráticos de Universidad",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "funcionario o funcionaria docente de carrera (Catedrático de Universidad)",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "convocar el presente concurso de méritos reservado a plazas de promoción interna",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 48.61,
+   "cita": "Los derechos de examen serán de 48,61 euros.",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Exentas las personas participantes que acrediten discapacidad con grado igual o superior al 33%, en el plazo de presentación de solicitudes.",
+   "cita": "Estarán exentas del pago de los derechos de examen las personas participantes que acrediten tener una discapacidad con un grado igual o superior al 33%",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Quince días hábiles desde el día siguiente a la publicación de la convocatoria en el BOE",
+   "cita": "El plazo de presentación de solicitudes será de quince días hábiles, contados a partir del día siguiente a la publicación de la convocatoria en el Boletín Oficial del Estado.",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Telemática a través de la aplicación CONVOCUM PDI (convocum.um.es), con firma electrónica mediante la pasarela de firma de la Universidad de Murcia",
+   "cita": "La presentación y registro de la solicitud se realizará por vía telemática a través de la propia aplicación web CONVOCUM PDI",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Lugar de realización de las pruebas y aplicación CONVOCUM PDI; relación de participantes directamente publicada",
+   "cita": "Las calificaciones de la prueba se publicarán en el lugar donde se realicen las pruebas y en la aplicación «CONVOCUM PDI».",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Prueba única: exposición oral de méritos y defensa del proyecto de investigación (máximo una hora)",
+    "Debate con la comisión (máximo dos horas)"
+   ],
+   "cita": "La prueba será pública y consistirá, en plazas de profesorado catedrático de universidad, en la exposición oral",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Experiencia docente, investigadora, de transferencia e intercambio de conocimiento, y proyecto de investigación, según baremo del Anexo 1 del Reglamento (horquillas por perfil de plaza)",
+   "cita": "deberá valorarse la experiencia docente y la experiencia investigadora de cada participante, incluyendo la de transferencia",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Toma de posesión en plazo máximo de veinte días hábiles desde la publicación del nombramiento en el BOE; desempeño de la plaza al menos dos años antes de participar en nuevo concurso",
+   "cita": "La plaza obtenida tras el concurso de acceso deberá desempeñarse durante dos años, al menos",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 3,
+   "cita": "Plaza número: 78/2026; Plaza número: 79/2026; Plaza número: 80/2026"
+  },
+  "plazas_promocion_interna": {
+   "motivo": "valor_no_en_cita",
+   "valor": 3,
+   "cita": "concurso de méritos reservado a plazas de promoción interna"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "no",
+   "cita": "no aparece mención a bolsa o lista de espera"
+  }
+ }
+}
