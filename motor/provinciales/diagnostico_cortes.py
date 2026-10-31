@@ -39,6 +39,7 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("fuente", choices=sorted(t.BOLETIN_ENTERO))
     p.add_argument("fecha", type=date.fromisoformat)
     p.add_argument("--paginas", type=int, default=4, help="páginas del cuerpo que se imprimen (las primeras)")
+    p.add_argument("--crudas", default="", help="páginas (1,5,9) cuyo texto con disposición se imprime tal cual")
     p.add_argument("--salida", type=Path, default=Path("diagnostico"))
     a = p.parse_args(argv)
     conector = importlib.import_module(f"motor.provinciales.{a.fuente}")
@@ -56,10 +57,16 @@ def main(argv: list[str] | None = None) -> int:
     print("pdf", r.status, len(r.contenido), url)
     if r.contenido[:4] != b"%PDF":
         return 0
-    paginas = t.paginas_pdf(r.contenido)
+    por_registro = a.fuente in t.POR_REGISTRO
+    paginas = t.paginas_pdf_columnas(r.contenido) if por_registro else t.paginas_pdf(r.contenido)
     todas = sorted([x for x in todas if (x.get(campo) or "").split("#")[0] == url],
                    key=lambda x: (x.get("pagina") or 0, x.get("orden") or 0))
-    cortes = t.cortar(paginas, todas)
+    if por_registro:
+        cortes = t.cortar_por_registro(paginas, todas)
+        marcas = sum(1 for pg in paginas for l in pg.splitlines() if t.RE_MARCA_REGISTRO.match(l))
+        print(f"sumario: {len(t.entradas_sumario(paginas))} entradas; cuerpo: {marcas} líneas de registro")
+    else:
+        cortes = t.cortar(paginas, todas)
     limpias = [t.sin_entradas_de_sumario(pg) for pg in paginas]
     sumario = [n + 1 for n, pg in enumerate(limpias) if t.es_pagina_de_sumario(pg)]
     print(f"páginas {len(paginas)}; tomadas por sumario: {sumario[:40]}")
@@ -77,10 +84,18 @@ def main(argv: list[str] | None = None) -> int:
             print("    cuerpo donde más se parece:", _seguro(plano[max(pos - 60, 0):pos + 240]))
         if es_empleo and corte:
             print("    comienzo del texto:", _seguro(" ".join(corte[0].split())[:240]))
+            print("    final del texto:", _seguro(" ".join(corte[0].split())[-160:]))
     cuerpo = [n for n in range(len(paginas)) if n + 1 not in sumario]
-    for n in cuerpo[:a.paginas]:
+    for n in cuerpo[:a.paginas] if not a.crudas else []:
         print(f"----- página {n + 1} (sin entradas de sumario)")
         print(_seguro(limpias[n])[:3000])
+    if a.crudas:
+        from pypdf import PdfReader
+        import io
+        lector = PdfReader(io.BytesIO(r.contenido))
+        for n in [int(x) for x in a.crudas.split(",") if x.strip()]:
+            print(f"----- página {n} con disposición, tal cual")
+            print(_seguro(lector.pages[n - 1].extract_text(extraction_mode="layout") or "")[:6000])
     print(json.dumps({"empleo": len(empleo), "con_texto": sum(1 for e in empleo if e["id"] in cortes)}))
     return 0
 
