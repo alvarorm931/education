@@ -738,3 +738,21 @@ aceptados) y recitado (6.495 recuperados); desde el servidor de España, 48 pág
   oficiales indexables (públicas 2.482 de 3.113, privadas 342 de 1.606), 114 con precio de la tabla de su
   universidad; Navarra pasa de 3 a 35. Una asignatura repetida en la tabla del plan cuenta ya una vez: 15 másteres
   con dos asignaturas distintas repetidas dejan de ser indexables (9 de la UB).
+
+### Decisiones de Álvaro (31/10/2026, 15:20)
+
+«Sí a todo»:
+- **Ley SEO**: se mantiene; un máster sin precio no se indexa.
+- **Peticiones de precio** a las privadas que no lo publican (lista de `peticiones.py`): cuando el portal tenga su
+  dominio público, desde la cuenta genérica del portal.
+- **Precio de 2024-2025** vale para indexar, enseñando siempre el curso; los de 2023-2024 o antes, no.
+- **Permisos de lectura**: cartas a Sevilla, Córdoba, UOC, Castilla-La Mancha, Extremadura, Cantabria, ESADE y
+  EADA (borrador en Word entregado a Álvaro; las firma él y faltan el correo de destino y el de contacto).
+- **Servidor de España**: más ejecutores, librerías de Chromium y borrado de las 19 listas de personas del
+  almacén: los hace Álvaro con la conversación de estado. En cuanto Chromium funcione allí, se relanza la UB.
+- **Agregadores**: se valora legalmente si su listado puede usarse solo para descubrir centros.
+
+Correcciones del mismo día al revisar el ranking por ticket medio: la guía de admisión 2026-2027 de la Alfonso X da
+solo la matrícula de cada máster (va como reserva, nunca como precio total), y en las privadas un total de menos de
+25 € por crédito, o un crédito por debajo de 25 €, es la matrícula, no el precio. Conjunto rehecho a las 15:38:
+2.972 oficiales indexables (públicas 2.622, privadas 350).
