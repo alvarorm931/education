@@ -1,13 +1,13 @@
 {
- "fecha": "2026-10-31T15:45:58+00:00",
- "fecha_madrid": "31/10 16:45",
+ "fecha": "2026-10-31T16:02:30+00:00",
+ "fecha_madrid": "31/10 17:02",
  "ventana_horas": 6.0,
  "resumen": {
-  "ejecuciones_revisadas": 139,
+  "ejecuciones_revisadas": 145,
   "fallos": 1,
   "fallos_pendientes": 0,
   "relanzados": 0,
-  "colas_largas": 2,
+  "colas_largas": 1,
   "flujos_programados_parados": [
    "seo.yml"
   ],
@@ -60,16 +60,9 @@
   {
    "flujo": "Boletines autonómicos",
    "id": 41213532071,
-   "en_cola_min": 36,
+   "en_cola_min": 53,
    "trabajos_empezados": 2,
    "url": "https://github.com/alvarorm931/education/actions/runs/41213532071"
-  },
-  {
-   "flujo": "Prueba de conector",
-   "id": 41208605878,
-   "en_cola_min": 99,
-   "trabajos_empezados": 0,
-   "url": "https://github.com/alvarorm931/education/actions/runs/41208605878"
   }
  ],
  "programados": {
@@ -87,7 +80,16 @@
   }
  },
  "respaldo_programaciones": [],
- "programaciones_tardias_canceladas": [],
+ "programaciones_tardias_canceladas": [
+  {
+   "flujo": "extraccion-bases.yml",
+   "id": 41216811783,
+   "prevista": "31/10 11:41",
+   "disparada": "31/10 16:51",
+   "ya_lanzada": "https://github.com/alvarorm931/education/actions/runs/41195400610",
+   "cancelada": true
+  }
+ ],
  "desplazadas_de_la_espera": [
   {
    "flujo": "Motor de datos",
