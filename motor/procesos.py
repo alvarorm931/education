@@ -321,7 +321,7 @@ def _plazo_salida(plazo: dict) -> dict | None:
     if not plazo:
         return None
     return {k: plazo.get(k) for k in ("dias", "meses", "tipo", "inicio", "fin_estimado", "fin_exacto", "cuenta_desde",
-                                      "calendario", "de_acto", "cita") if plazo.get(k) is not None}
+                                      "cuenta_desde_fecha", "calendario", "de_acto", "cita") if plazo.get(k) is not None}
 
 
 RE_GRUPO_TITULO = re.compile(r"\b(?:sub)?grupo\s+(?:profesional\s+)?(A1|A2|B|C1|C2|AP|E)\b", re.IGNORECASE)
@@ -576,6 +576,30 @@ def _anuncio_del_puesto(x: dict, anuncios: list[dict]) -> dict | None:
     return mejores[0] if tope >= 0.6 and len(mejores) == 1 else None
 
 
+def _plazo_desde_cita(a: dict, plazo: dict) -> dict:
+    """El plazo cuenta desde otro boletín y el anuncio dice cuándo salió allí («Se ha publicado, asimismo, un extracto
+    de la convocatoria en el «Diari Oficial de la Generalitat de Catalunya» número 9635, de 30 de marzo de 2026. El
+    plazo… a contar desde el siguiente al de la publicación en el DOGC»): la fecha de fin sale de esa fecha. Unos 190
+    anuncios locales del BOE de 2026 se quedaban sin fecha de fin por eso (sobre todo de Cataluña)."""
+    from motor.calendario import etiqueta, fin_de_plazo, fin_de_plazo_meses
+    from motor.catalogo.territorio import comunidad_codigo
+    desde = fuente_de_computo(plazo.get("cuenta_desde"))
+    if not desde:
+        return plazo
+    fechas = sorted({b["fecha"] for b in a.get("boletines_citados") or []
+                     if b.get("fecha") and fuente_de_boletin(b.get("boletin")) == desde
+                     and b.get("papel") in (None, "extracto", "bases", "convocatoria", "anuncio")
+                     and b["fecha"] <= (a.get("fecha") or "9999")})
+    if len(fechas) != 1:
+        return plazo  # sin fecha, o varias publicaciones en ese boletín: no se sabe cuál abre el plazo
+    base = date.fromisoformat(fechas[0])
+    comunidad = comunidad_codigo(a.get("convocante"), None, [b.get("boletin") for b in a.get("boletines_citados") or []])
+    fin = fin_de_plazo_meses(base, plazo["meses"], comunidad) if plazo.get("meses") else \
+        fin_de_plazo(base, plazo["dias"], plazo.get("tipo") or "habiles", comunidad)
+    return {**plazo, "fin_estimado": fin.isoformat(), "fin_exacto": False, "calendario": etiqueta(base, comunidad),
+            "cuenta_desde_fecha": fechas[0], "de_cita": True}
+
+
 def _proceso(a: dict, posteriores: list[dict], otras: list[dict], hoy: date, ident: str,
              solo_bases: bool = False) -> dict:
     plazo = a.get("plazo") or {}
@@ -593,6 +617,8 @@ def _proceso(a: dict, posteriores: list[dict], otras: list[dict], hoy: date, ide
                     not del_boe and not plazo.get("dias") and not plazo.get("meses"):
                 plazo = {**x["plazo"], "de_acto": x["id"]}
                 break
+    if not plazo.get("fin_estimado") and (plazo.get("dias") or plazo.get("meses")):
+        plazo = _plazo_desde_cita(a, plazo)
     for x in posteriores:  # una corrección o modificación posterior puede abrir un plazo nuevo
         if x.get("tipo_acto") in ("modificacion", "correccion") and (x.get("plazo") or {}).get("fin_estimado"):
             plazo = {**x["plazo"], "de_acto": x["id"]}

@@ -290,3 +290,22 @@ def test_plazo_que_aun_no_ha_empezado():
               plazo={"tipo": "fechas", "inicio": "2027-01-04", "fin_estimado": "2027-01-24", "fin_exacto": True})
     assert _proceso(a, [], [], date(2026, 10, 31), "boib:1")["estado"] == "plazo_por_abrir"
     assert _proceso(a, [], [], date(2027, 1, 10), "boib:1")["estado"] == "plazo_abierto"
+
+
+def test_plazo_desde_la_fecha_del_boletin_que_cita_el_boe():
+    from motor.boe.extraer import extraer_local
+    from motor.procesos import _proceso
+    texto = ("En el «Boletín Oficial de la Provincia de Barcelona», de 11 de marzo de 2026, se han publicado las bases "
+             "que han de regir la convocatoria para proveer:\nUna plaza de Técnico/a Medio/a, por el sistema de "
+             "concurso-oposición, en turno libre.\nSe ha publicado, asimismo, un extracto de la convocatoria en el «Diari "
+             "Oficial de la Generalitat de Catalunya» número 9635, de 30 de marzo de 2026.\nEl plazo de presentación de "
+             "solicitudes será de veinte días hábiles a contar desde el siguiente al de la publicación en el «Diari "
+             "Oficial de la Generalitat de Catalunya».")
+    loc = extraer_local(texto, "2026-04-20")
+    assert loc["plazo"]["cuenta_desde"] == "Diari Oficial de la Generalitat de Catalunya"
+    a = _acto("BOE-A-2026-8091", "2026-04-20", "apertura_plazo", fuente="BOE", plazo=loc["plazo"],
+              boletines_citados=loc["boletines_citados"],
+              convocante={"tipo": "Ayuntamiento", "nombre": "Sabadell", "provincia": "Barcelona"})
+    p = _proceso(a, [], [], date(2026, 4, 21), "boe:BOE-A-2026-8091")
+    assert p["plazo"]["cuenta_desde_fecha"] == "2026-03-30" and p["plazo"]["fin_estimado"] == "2026-04-29"  # Viernes Santo y Lunes de Pascua (Cataluña)
+    assert p["estado"] == "plazo_abierto"

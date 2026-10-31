@@ -139,6 +139,14 @@ def extraer_local(texto: str, fecha_boe: str) -> dict:
             tipo = "habiles" if normalizar(m.group("tipo")) == "habiles" else "naturales"
             desde_boe = "boletin oficial del estado" in normalizar(l)
             plazo = {"dias": n, "tipo": tipo, "cuenta_desde": "BOE" if desde_boe else "otro", "cita": l}
+            if not desde_boe:
+                # el boletín desde el que cuenta («… desde el siguiente al de la publicación en el «Diari Oficial de la
+                # Generalitat de Catalunya»»): con él y la fecha que cita el anuncio, el proceso calcula el fin
+                from motor.extraccion.plazo import _menciones
+                otros = list(dict.fromkeys(nm for _, _, nm in _menciones(l)
+                                           if normalizar(nm) != "boletin oficial del estado"))
+                if len(otros) == 1:
+                    plazo["cuenta_desde"] = otros[0]
             if n and desde_boe:
                 pub = date.fromisoformat(fecha_boe)
                 # Festivos de la comunidad del boletín provincial que publica las bases (anuncio local)
