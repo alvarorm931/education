@@ -99,6 +99,7 @@ NOMBRE_FUENTE = {
     "BOP-CASTELLON": "Boletín Oficial de la Provincia de Castellón",
     "BOP-LEON": "Boletín Oficial de la Provincia de León",
     "BOP-CADIZ": "Boletín Oficial de la Provincia de Cádiz",
+    "BOP-ALMERIA": "Boletín Oficial de la Provincia de Almería",
 }
 # Cómo citan los anuncios del BOE a cada boletín autonómico (para enlazar las bases íntegras)
 BOLETIN_A_FUENTE = {

@@ -385,6 +385,16 @@ for c in $CONECTORES; do
       ejecutar motor.provinciales.textos bopalbacete --solo-almacen --salida "$S" --max-minutos "$M"
       "$G" "BOP Albacete: textos del almacén"
       ;;
+    bopalmeria)
+      # Aplicación ZK que solo funciona con JavaScript: la lista de cada día con un navegador sin pantalla
+      # (Playwright); el PDF de cada anuncio, por su dirección fija (motor/provinciales/bopalmeria.py)
+      python -m pip install -q playwright && python -m playwright install --with-deps chromium > /dev/null 2>&1 || true
+      ejecutar motor.provinciales.bopalmeria --salida "$S"
+      ejecutar motor.provinciales.bopalmeria --desde 2022-01-01 --salida "$S" --max-minutos "$M"
+      "$G" "BOP Almería: días"
+      ejecutar motor.provinciales.bopalmeria --textos --salida "$S" --max-minutos "$M"
+      "$G" "BOP Almería: textos"
+      ;;
     bopcadiz)
       # Página de cada boletín por su número y texto de cada anuncio de empleo cortado del PDF por su registro
       ejecutar motor.provinciales.bopcadiz --salida "$S" --max-minutos "$M"

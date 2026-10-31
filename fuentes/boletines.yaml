@@ -200,9 +200,11 @@ provinciales:
     estado: conector_en_pruebas
     conector: motor/provinciales/bopalicante.py
   - provincia: Almería
-    url: http://www.dipalme.org/Servicios/cmsdipro/index.nsf/bop_view.xsp?p=dipalme
-    acceso_desde_github: "ok"
-    estado: sin_conector
+    url: https://app.dipalme.org/bop/publico.zul
+    acceso_desde_github: "ok (aplicación ZK: solo con navegador sin pantalla)"
+    datos_estructurados: "Lista por fecha de publicación en la aplicación ZK (Playwright); PDF de cada anuncio en /bop/services/manager/edicto/AAAA/NNNN/anuncio.pdf"
+    estado: conector_en_pruebas
+    conector: motor/provinciales/bopalmeria.py
   - provincia: Araba/Álava
     url: http://www.araba.eus/botha/Inicio/SGBO5001.aspx
     acceso_desde_github: "ok"
