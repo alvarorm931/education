@@ -5,18 +5,18 @@
   "fuente": "BOP-TOLEDO",
   "url": "https://bop.diputoledo.es/webEbop/DocGet?id=24044501;0&insert_number=1773&insert_year=2024",
   "fecha": "2024-04-09",
-  "huella": "77b00cf08ec976ed5b0c3919e203903efed751911c9feb0f59666b003eb37da4"
+  "huella": "68f2105dfa3b11a3112f21156ad3361dda2d4defd696c0af771694ea056618c1"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:53:48+00:00",
- "lote": "msgbatch_01EQ4R6PVKpEwTXzXwPCmspm",
+ "extraido": "2026-10-31T15:25:24+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
    "valor": [
     "Socorrista acuático"
    ],
-   "cita": "Denominación Socorrista acuático Régimen Laboral temporal Unidad/Área Deportes Categoría profesional C2",
+   "cita": "Denominación Socorrista acuático Régimen Laboral temporal Unidad/Área Deportes",
    "nivel": "literal"
   },
   "grupo": {
@@ -35,47 +35,53 @@
    "nivel": "literal"
   },
   "titulacion": {
-   "valor": "Título de Graduado en Educación Secundaria Obligatoria; para acreditar la titulación como socorrista, título de Socorrista acuático debidamente actualizado y en vigor",
-   "cita": "Titulación exigible 1. Título de Graduado en Educación Secundaria Obligatoria. 2. Para acreditar la titulación como socorrista",
+   "valor": "Título de Graduado en Educación Secundaria Obligatoria y título de Socorrista acuático debidamente actualizado y en vigor",
+   "cita": "Estar en posesión de la siguiente titulación: 1. Título de Graduado en Educación Secundaria Obligatoria.",
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Nacionalidad española (sin perjuicio del art. 57 TREBEP); capacidad funcional; tener cumplidos dieciséis años y no exceder la edad máxima de jubilación forzosa; no haber sido separado del servicio de ninguna Administración Pública ni inhabilitado",
+   "valor": "Nacionalidad española (sin perjuicio del art. 57 TREBEP), capacidad funcional para el desempeño de las tareas, tener cumplidos dieciséis años y no exceder la edad máxima de jubilación, no haber sido separado del servicio público ni inhabilitado.",
    "cita": "Tener la nacionalidad española, sin perjuicio de lo dispuesto en el artículo 57 del texto refundido",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "diez días hábiles a contar a partir del siguiente al de la publicación de las presentes bases en el Boletín Oficial de la provincia de Toledo",
-   "cita": "el plazo de diez días hábiles a contar a partir del siguiente al de la publicación de las presentes bases",
+   "valor": "diez días hábiles a contar desde el día siguiente a la publicación del anuncio en el Boletín Oficial de la provincia de Toledo",
+   "cita": "se abre el plazo de presentación de solicitudes, que será de diez días hábiles a contar desde el día siguiente",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Registro Electrónico General del Ayuntamiento o lugares del artículo 16.4 de la Ley 39/2015, dirigidas a la Alcaldesa-Presidenta, conforme al Anexo 1",
+   "valor": "Registro Electrónico General del Ayuntamiento o lugares del artículo 16.4 de la Ley 39/2015, dirigidas a la Alcaldesa-Presidenta",
    "cita": "se presentarán en el Registro Electrónico General de este Ayuntamiento o en alguno de los lugares previstos en el artículo 16.4",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Sede electrónica del Ayuntamiento (http://camunas.sedelectronica.es), tablón de anuncios físico y electrónico y página web municipal",
+   "valor": "Sede electrónica del Ayuntamiento (camunas.sedelectronica.es) y tablón de anuncios físico y electrónico",
    "cita": "Las bases íntegras se publicarán, igualmente, en la sede electrónica de este Ayuntamiento",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Fase de concurso: valoración de formación, cursos de formación y perfeccionamiento y experiencia"
+    "Fase de concurso: valoración de formación, cursos de formación y experiencia"
    ],
-   "cita": "Sistema de selección por concurso. a) Formación: hasta un máximo de 4 puntos.",
+   "cita": "8.1. Sistema de selección por concurso.",
    "nivel": "literal"
   },
   "meritos": {
-   "valor": "Formación hasta 4 puntos (titulaciones superiores: TAFAD 2, Diplomatura Educación Física/Magisterio 3, Licenciado o Graduado en Ciencias de la Actividad Física y del Deporte 4); cursos de actividades acuáticas hasta 2 puntos (0,10 por hora); experiencia hasta 4 puntos (0,20 por mes en Administración Pública; 0,10 por mes en entidades privadas o clubes)",
-   "cita": "Hasta un máximo de 4 puntos. Titulaciones superiores a la exigida en la convocatoria",
-   "nivel": "literal"
-  },
-  "bolsa": {
-   "valor": "sí, bolsa de trabajo para futuras contrataciones temporales y necesidades urgentes de socorrista durante la temporada de verano 2024; vigencia máxima de 2 años, prorrogable un año",
-   "cita": "Esta bolsa de empleo tendrá una vigencia máxima de 2 años, prorrogable por un año más",
+   "valor": "Formación hasta 4 puntos (titulaciones superiores); cursos de actividades acuáticas hasta 2 puntos (0,10 por hora); experiencia hasta 4 puntos (0,20 por mes en Administración Pública; 0,10 por mes en entidades privadas)",
+   "cita": "Formación: hasta un máximo de 4 puntos. Titulaciones superiores a la exigida en la convocatoria",
    "nivel": "literal"
   }
  },
- "rechazados": {}
+ "rechazados": {
+  "tasa_euros": {
+   "motivo": "cita_no_literal",
+   "valor": 0,
+   "cita": "no se menciona tasa; el proceso no establece importe de derechos de examen en el texto"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, para cubrir necesidades temporales y urgentes de socorrista durante la temporada de verano; vigencia máxima de 2 años, prorrogable un año",
+   "cita": "Todas las personas que superen el proceso de selección serán incluidas en una bolsa de trabajo"
+  }
+ }
 }

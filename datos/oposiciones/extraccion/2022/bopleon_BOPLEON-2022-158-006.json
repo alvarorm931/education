@@ -1,0 +1,65 @@
+{
+ "proceso": "bopleon:BOPLEON-2022-158-006",
+ "documento": {
+  "id": "bopleon:BOPLEON-2022-158-006",
+  "fuente": "BOP-LEON",
+  "url": null,
+  "fecha": "2022-08-18",
+  "huella": "af141965d0c0b8bc33d2c25da5c9f43c12f8038694ce600dd4e22dd5a3e4d95e"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T15:25:47+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "A1",
+   "cita": "clasificadas dentro del grupo a, subgrupo a1, y dotadas con el sueldo",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "proceso selectivo de estabilización del empleo temporal para la provisión de 5 plazas",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "para la provisión, mediante concurso-oposición, de 6 plazas de Técnico/a administración general",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 5,
+   "cita": "para la provisión de 5 plazas de Técnico/a de administración general del ayuntamiento de León",
+   "nivel": "literal"
+  },
+  "plazas_discapacidad": {
+   "valor": 1,
+   "cita": "una se reservará para ser cubierta por el turno de personas con discapacidad, con un grado igual o superior al 33 %",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Las plazas reservadas a personas con discapacidad requieren grado igual o superior al 33 %, o tener legalmente tal consideración.",
+   "cita": "una se reservará para ser cubierta por el turno de personas con discapacidad, con un grado igual o superior al 33 %",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Técnico/a de administración general"
+   ],
+   "cita": "modificar la base primera de las bases reguladoras del proceso selectivo de estabilización del empleo temporal para la provisión de 5 plazas"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 4,
+   "cita": "incluyendo una de tales plazas en el turno libre, y la otra en el turno de discapacidad"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Tablón de edictos del ayuntamiento de León y boletines oficiales en los que inicialmente se publicaron las bases y la convocatoria",
+   "cita": "Publicar la presente resolución, en el tablón de edictos del ayuntamiento de León, así como en los mismos Boletines oficiales"
+  }
+ }
+}

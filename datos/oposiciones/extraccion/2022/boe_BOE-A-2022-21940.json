@@ -5,20 +5,13 @@
   "fuente": "BOP-TOLEDO",
   "url": "https://bop.diputoledo.es/webEbop/DocGet?id=22124670;0&insert_number=6291&insert_year=2022",
   "fecha": "2022-12-09",
-  "huella": "ffa618034a9fed8c75bc3bcb7c0815d6f4cc28caad3b230c49b7418b3132401f"
+  "huella": "e908eb87b09e5f1a46c00a2ac02b6210df0ce4667c7607c6f9a9ae4a3e46eebd"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:56:19+00:00",
- "lote": "msgbatch_014eT3dLLVopBnuVgQ4syWD9",
+ "extraido": "2026-10-31T15:25:25+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
-  "denominacion": {
-   "valor": [
-    "Auxiliar Administrativo"
-   ],
-   "cita": "3 plazas de Auxiliar Administrativo de la Subescala Auxiliar de Administración General de este Ayuntamiento",
-   "nivel": "literal"
-  },
   "grupo": {
    "valor": "C2",
    "cita": "clasificada en el Subgrupo C2 de los establecidos en el artículo 76",
@@ -26,26 +19,26 @@
   },
   "sistema": {
    "valor": "concurso",
-   "cita": "y el procedimiento de concurso",
+   "cita": "por el sistema específico de estabilización del empleo temporal de larga duración y el procedimiento de concurso",
    "nivel": "literal"
   },
   "titulacion": {
-   "valor": "Graduado en Educación Secundaria Obligatoria o equivalente",
+   "valor": "Graduado en Educación Secundaria Obligatoria o equivalente, o estar en condiciones de obtenerlo",
    "cita": "Estar en posesión del título de Graduado en Educación Secundaria Obligatoria o equivalente, o estar en condiciones de obtenerlo",
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Nacionalidad española o de Estado miembro de la UE u otro asimilado; tener cumplidos 16 años y no exceder la edad de jubilación forzosa; capacidad funcional; no haber sido separado del servicio público ni inhabilitado; no haber sido condenado por delitos contra la libertad e indemnidad sexual",
+   "valor": "Nacionalidad española o de un Estado miembro de la Unión Europea; tener cumplidos 16 años y no exceder la edad de jubilación forzosa; capacidad funcional; no haber sido separado del servicio público ni inhabilitado; no haber sido condenado por delitos contra la libertad sexual",
    "cita": "Tener cumplidos 16 años de edad y no exceder de la edad máxima de jubilación forzosa",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "Veinte días hábiles desde el siguiente al de la publicación de la convocatoria en el Boletín Oficial del Estado",
+   "valor": "veinte días hábiles desde el siguiente al de la publicación de la convocatoria en el Boletín Oficial del Estado",
    "cita": "El plazo de presentación de solicitudes será de veinte días hábiles contados a partir del siguiente al de la publicación de la convocatoria en el Boletín Oficial del Estado",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Boletín Oficial de la provincia de Toledo y Tablón Edictal del Ayuntamiento de Toledo (sede.toledo.es)",
+   "valor": "Boletín Oficial de la provincia de Toledo y Tablón Edictal del Ayuntamiento de Toledo (sede electrónica)",
    "cita": "Dicha resolución se publicará en el Boletín Oficial de la provincia de Toledo y en el Tablón Edictal del Ayuntamiento de Toledo",
    "nivel": "literal"
   },
@@ -53,21 +46,28 @@
    "valor": [
     "Concurso: valoración de méritos (experiencia, formación y participación en procesos selectivos), hasta 50 puntos"
    ],
-   "cita": "El procedimiento de selección será el de concurso y consistirá en la valoración de los méritos",
-   "nivel": "literal"
-  },
-  "meritos": {
-   "valor": "Experiencia hasta 40 puntos (0,095 puntos/mes en cualquier Administración; 0,278 puntos/mes en el Ayuntamiento de Toledo); formación hasta 5 puntos (0,012 puntos por hora lectiva); participación en procesos selectivos hasta 5 puntos (2 puntos por prueba superada)",
-   "cita": "la valoración de los méritos recogidos en la Base 6.2, hasta un máximo 50 puntos",
+   "cita": "El procedimiento de selección será el de concurso y consistirá en la valoración de los méritos recogidos en la Base 6.2, hasta un máximo 50 puntos",
    "nivel": "literal"
   },
   "bolsa": {
-   "valor": "sí, los funcionarios interinos que cesen se integran en el primer lugar de la Bolsa de Trabajo de Auxiliar Administrativo",
+   "valor": "sí, para integrar en primer lugar a los funcionarios interinos que cesen como consecuencia del proceso selectivo en la Bolsa de Trabajo de Auxiliar Administrativo",
    "cita": "se integrarán en el primer lugar de la Bolsa de Trabajo existente para los puestos de trabajo de Auxiliar Administrativo",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "No se establece periodo de prácticas ni curso selectivo; tras la aprobación se presentan documentos y se toma posesión en 10 días naturales desde la notificación del nombramiento",
+   "cita": "Los aspirantes nombrados funcionarios deberán tomar posesión de su puesto de trabajo en el plazo de diez días naturales",
    "nivel": "literal"
   }
  },
  "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Auxiliar Administrativo"
+   ],
+   "cita": "Se convoca el proceso selectivo para cubrir 3 plazas de Auxiliar Administrativo de la Subescala Auxiliar de Administración General"
+  },
   "vinculo": {
    "motivo": "cita_no_literal",
    "valor": "funcionario de carrera",
@@ -76,7 +76,7 @@
   "plazas_total": {
    "motivo": "cita_no_literal",
    "valor": 3,
-   "cita": "Se convoca el proceso selectivo para cubrir 3 plazas de Auxiliar Administrativo"
+   "cita": "se convoca el proceso selectivo para cubrir 3 plazas de Auxiliar Administrativo"
   },
   "plazas_turno_libre": {
    "motivo": "valor_no_en_cita",
@@ -90,18 +90,18 @@
   },
   "exenciones_tasa": {
    "motivo": "cita_no_literal",
-   "valor": "Exentos los aspirantes que fueran desempleados a la fecha de publicación de la convocatoria, acreditándolo con certificado del servicio público de empleo",
-   "cita": "los aspirantes que tuvieran la condición de desempleados a la fecha de publicación de la convocatoria estarán exentos del pago de la tasa"
+   "valor": "Exentos los aspirantes que tuvieran la condición de desempleados a la fecha de publicación de la convocatoria, acreditándolo con certificado del servicio público de empleo",
+   "cita": "los aspirantes que tuvieran la condición de desempleados a la fecha de publicación de la convocatoria del proceso selectivo estarán exentos"
   },
   "presentacion": {
    "motivo": "cita_no_literal",
-   "valor": "Telemáticamente en el Registro Electrónico de la Sede del Ayuntamiento (sede.toledo.es) con certificado electrónico, o presencialmente en las Oficinas de Asistencia en materia de Registro",
-   "cita": "A través del Registro Electrónico del Ayuntamiento de Toledo, para cuyo acceso será imprescindible disponer de certificado electrónico"
+   "valor": "Telemáticamente a través del Registro Electrónico de la Sede del Ayuntamiento de Toledo (con certificado electrónico) o presencialmente en las Oficinas de Asistencia en materia de Registro",
+   "cita": "A través del Registro Electrónico del Ayuntamiento de Toledo (https://sede.toledo.es), para cuyo acceso será imprescindible disponer de certificado electrónico"
   },
-  "practicas_o_curso": {
+  "meritos": {
    "motivo": "cita_no_literal",
-   "valor": "no se indica",
-   "cita": ""
+   "valor": "Experiencia hasta 40 puntos (0,095 puntos/mes en cualquier Administración; 0,278 puntos/mes en el Ayuntamiento de Toledo); formación hasta 5 puntos (0,012 puntos por hora lectiva); participación en procesos selectivos hasta 5 puntos (2 puntos por prueba superada)",
+   "cita": "Se valorarán, hasta un máximo de 40 puntos, los servicios prestados con carácter temporal como AUXILIAR ADMINISTRATIVO"
   }
  }
 }

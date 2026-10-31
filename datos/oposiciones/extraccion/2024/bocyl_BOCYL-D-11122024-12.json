@@ -5,11 +5,11 @@
   "fuente": "BOCYL",
   "url": "https://bocyl.jcyl.es/html/2024/12/11/html/BOCYL-D-11122024-12.do",
   "fecha": "2024-12-11",
-  "huella": "f7557d736c83f6451379ba17eb7c23583ed96107c66a529f7dcc3e09c442aefb"
+  "huella": "6747ed2b2ead25e31d955ebca87c9588e6579f6cea31d2232f00ad2ba2d983e7"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:50:01+00:00",
- "lote": "msgbatch_018TPQE8scQozfAUdc1n8RyC",
+ "extraido": "2026-10-31T15:25:28+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
@@ -40,7 +40,7 @@
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Tener cumplidos dieciséis años; no exceder la edad máxima de jubilación forzosa; nacionalidad española, de la UE o familiar con derecho; no padecer enfermedad incompatible; no haber sido separado del servicio público.",
+   "valor": "Tener cumplidos dieciséis años y no exceder la edad máxima de jubilación forzosa; nacionalidad española, comunitaria o de familiares con derecho a libre circulación; no padecer enfermedad incompatible; no haber sido separado del servicio público.",
    "cita": "Tener cumplidos dieciséis años y no exceder, en su caso, de la edad máxima de jubilación forzosa",
    "nivel": "literal"
   },
@@ -50,38 +50,43 @@
    "nivel": "literal"
   },
   "exenciones_tasa": {
-   "valor": "Discapacidad igual o superior al 33 por ciento (exención); familias numerosas (exención o bonificación 50%); víctimas de terrorismo y de violencia de género; demandantes de empleo sin rechazar ofertas y sin rentas superiores al SMI.",
+   "valor": "Exentos aspirantes con discapacidad igual o superior al 33 por ciento; bonificación para familias numerosas; víctimas de terrorismo y de violencia de género; demandantes de empleo que cumplan condiciones.",
    "cita": "Los aspirantes con discapacidad igual o superior al 33 por ciento estarán exentos de dicho pago",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "diez días naturales desde la publicación de la Resolución en el Boletín Oficial de Castilla y León",
-   "cita": "Podrán presentarse en el plazo de diez días naturales, contados a partir de la publicación de la presente Resolución",
+   "valor": "diez días naturales desde la publicación de la resolución en el Boletín Oficial de Castilla y León",
+   "cita": "Podrán presentarse en el plazo de diez días naturales, contados a partir de la publicación",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Registro General de la Universidad de León, registros auxiliares de los campus de Vegazana y Ponferrada, o en la forma del artículo 16 de la Ley 39/2015",
-   "cita": "en el Registro General de la Universidad de León (Avenida de la Facultad, 25, León) y en los Registros Auxiliares",
+   "valor": "Registro General de la Universidad de León, Registros Auxiliares de los Campus de Vegazana y Ponferrada, o en la forma del artículo 16 de la Ley 39/2015",
+   "cita": "en el Registro General de la Universidad de León (Avenida de la Facultad, 25, León)",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Web de la Universidad de León (listas de admitidos y excluidos y resoluciones)",
-   "cita": "La convocatoria íntegra se halla expuesta en la página Web de la Universidad",
+   "valor": "Web de la Universidad de León (listas de admitidos y excluidos y resoluciones de la Comisión)",
+   "cita": "se expondrán las listas de admitidos y excluidos y todas las resoluciones de la Comisión de Selección",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Primer ejercicio: test teórico eliminatorio sobre temario y funciones de la plaza (0 a 35 puntos)",
-    "Segundo ejercicio: supuestos teórico-prácticos o pruebas prácticas eliminatorio (0 a 35 puntos)",
-    "Fase de concurso: méritos según baremo (0 a 30 puntos)"
+    "Primer ejercicio: teórico, tipo test con 4 respuestas, eliminatorio, calificado de 0 a 35 puntos",
+    "Segundo ejercicio: práctico o teórico-práctico, eliminatorio, calificado de 0 a 35 puntos",
+    "Fase de concurso: calificada de 0 a 30 puntos según baremo"
    ],
    "cita": "Primer ejercicio: Teórico eliminatorio. El ejercicio versará sobre los temas recogidos en el Anexo IV",
    "nivel": "literal"
   },
   "meritos": {
-   "valor": "Antigüedad y experiencia (hasta 60 puntos), formación: titulación oficial específica (hasta 20), formación específica (hasta 15) y formación general de especial interés (hasta 5); el concurso vale 30 puntos.",
-   "cita": "c) Fase de concurso: se calificará de 0 a 30 puntos, y en ella se valorarán los méritos previstos en el Baremo",
+   "valor": "Antigüedad y experiencia (hasta 60 puntos); formación: titulación oficial específica (hasta 20), formación específica (hasta 15), formación general de especial interés (hasta 5); puntuación máxima de la fase de concurso 30 puntos en esta convocatoria",
+   "cita": "Puntuación máxima de la fase de concurso de traslados: 100 puntos, que serán prorrateados",
    "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, para la contratación laboral temporal de la categoría y especialidad",
+   "cita": "Quienes superen este proceso selectivo, integrarán ... la Bolsa de trabajo de esta categoría y especialidad",
+   "nivel": "fragmentos"
   },
   "temas": {
    "valor": 44,
@@ -90,10 +95,10 @@
   }
  },
  "rechazados": {
-  "bolsa": {
+  "practicas_o_curso": {
    "motivo": "cita_no_literal",
-   "valor": "sí, para la contratación temporal de la categoría y especialidad",
-   "cita": "Quienes superen este proceso selectivo, integrarán, por su orden de calificación total del proceso selectivo, la Bolsa de trabajo"
+   "valor": "no previsto",
+   "cita": "no aparece en el texto"
   }
  }
 }

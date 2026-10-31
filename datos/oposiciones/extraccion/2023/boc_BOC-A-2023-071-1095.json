@@ -5,11 +5,11 @@
   "fuente": "BOC",
   "url": "https://www.gobiernodecanarias.org/boc/2023/071/014.html",
   "fecha": "2023-04-12",
-  "huella": "df8005a9c749ceff56752a15a1512d418f18480351da3d0b80c4f3c85a42a568"
+  "huella": "0767fea8a8f5733ee11f1013087650019805f71a8fabbb2cc272a6b83e7e1bde"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:59:24+00:00",
- "lote": "msgbatch_012nGabRM1G4b7cEKJh1Bcx1",
+ "extraido": "2026-10-31T15:25:28+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
@@ -32,7 +32,7 @@
   },
   "vinculo": {
    "valor": "funcionario de carrera",
-   "cita": "las bases generales para cubrir las plazas de funcionarios de carrera y personal laboral fijo",
+   "cita": "Para la cobertura, por turno libre, mediante concurso de méritos, de una (1) plaza de Arquitecto Técnico",
    "nivel": "literal"
   },
   "sistema": {
@@ -40,26 +40,17 @@
    "cita": "Para la cobertura, por turno libre, mediante concurso de méritos, de una (1) plaza de Arquitecto Técnico",
    "nivel": "literal"
   },
-  "plazas_total": {
-   "valor": 1,
-   "cita": "Para la cobertura, por turno libre, mediante concurso de méritos, de una (1) plaza de Arquitecto Técnico",
-   "nivel": "literal"
-  },
-  "plazas_turno_libre": {
-   "valor": 1,
-   "cita": "Para la cobertura, por turno libre, mediante concurso de méritos, de una (1) plaza de Arquitecto Técnico",
-   "nivel": "literal"
-  },
-  "otros_requisitos": {
-   "valor": "Las bases generales se publicaron en el BOP de Santa Cruz de Tenerife n.º 136, de 11 de noviembre de 2022",
-   "cita": "Habiéndose publicado en el Boletín Oficial de la Provincia de Santa Cruz de Tenerife n.º 136, de fecha 11 de noviembre de 2022",
-   "nivel": "literal"
-  },
   "plazo_solicitudes": {
-   "valor": "20 días hábiles, a contar desde el siguiente al de publicación de la convocatoria en el Boletín Oficial del Estado",
-   "cita": "El plazo de presentación de solicitudes será de 20 días hábiles, a contar desde el siguiente al de publicación de la convocatoria en el Boletín Oficial del Estado.",
+   "valor": "20 días hábiles desde el siguiente al de publicación de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes será de 20 días hábiles, a contar desde el siguiente al de publicación",
    "nivel": "literal"
   }
  },
- "rechazados": {}
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 10,
+   "cita": "una (1) plaza de Arquitecto Técnico, Grupo de Clasificación A, Subgrupo A2, como personal funcionario"
+  }
+ }
 }

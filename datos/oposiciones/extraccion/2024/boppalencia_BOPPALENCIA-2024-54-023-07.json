@@ -5,16 +5,16 @@
   "fuente": "BOP-PALENCIA",
   "url": "https://www.diputaciondepalencia.es/system/files/bop/2024/20240503-bop-54-Ordinario.pdf",
   "fecha": "2024-05-03",
-  "huella": "53b1f690a3e84777c5e3cf8ec887109df5fcfe3683cdc05e074fcd5f44dadc7d"
+  "huella": "3b042ab523486a1b3225cf6607dad6011b0aac90f3412a642f8dd3d61824fe3f"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:54:19+00:00",
- "lote": "msgbatch_01HRnX7cDVMkRZD7mBamCmLu",
+ "extraido": "2026-10-31T15:25:16+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
    "valor": "Auxiliar Administrativo",
-   "cita": "CONVOCATORIA PARA LA CONTRATACIÓN COMO FUNCIONARIO INTERINO, MEDIANTE EL PROCEDIMIENTO DE CONCURSO- OPOSICIÓN, DE UNA PLAZA DE AUXILIAR ADMINISTRATIVO",
+   "cita": "contratación como funcionario interino, mediante el procedimiento de concurso-oposición, de una plaza de auxiliar administrativo",
    "nivel": "literal"
   },
   "grupo": {
@@ -24,22 +24,17 @@
   },
   "vinculo": {
    "valor": "funcionario interino",
-   "cita": "CONVOCATORIA PARA LA CONTRATACIÓN COMO FUNCIONARIO INTERINO, MEDIANTE EL PROCEDIMIENTO DE CONCURSO- OPOSICIÓN",
+   "cita": "contratación como funcionario interino, mediante el procedimiento de concurso-oposición",
    "nivel": "literal"
   },
   "sistema": {
    "valor": "concurso-oposición",
-   "cita": "MEDIANTE EL PROCEDIMIENTO DE CONCURSO- OPOSICIÓN, DE UNA PLAZA DE AUXILIAR ADMINISTRATIVO",
+   "cita": "mediante el sistema concurso-oposición, de UNA PLAZA de auxiliar administrativo",
    "nivel": "literal"
   },
   "plazas_total": {
    "valor": 1,
-   "cita": "concurso-oposición, de UNA PLAZA de auxiliar administrativo, de Administración General",
-   "nivel": "literal"
-  },
-  "plazas_turno_libre": {
-   "valor": 1,
-   "cita": "concurso-oposición, de UNA PLAZA de auxiliar administrativo, de Administración General",
+   "cita": "mediante el sistema concurso-oposición, de UNA PLAZA de auxiliar administrativo",
    "nivel": "literal"
   },
   "titulacion": {
@@ -48,46 +43,51 @@
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Nacionalidad española (con excepciones del artículo 57 EBEP), capacidad funcional, tener cumplidos dieciséis años, no exceder la edad máxima de jubilación forzosa, no estar separado del servicio ni inhabilitado para empleos públicos",
+   "valor": "Nacionalidad española (salvo art. 57 EBEP), capacidad funcional, tener cumplidos dieciséis años sin exceder la edad de jubilación, no haber sido separado del servicio público ni inhabilitado",
    "cita": "Tener la nacionalidad española, sin perjuicio de lo dispuesto en el artículo 57",
    "nivel": "literal"
   },
+  "idioma_cooficial": {
+   "valor": "Conocimiento del castellano para nacionales de otros países de la UE",
+   "cita": "deberá acreditarse que la titulación esté convalidada por el MEC y el conocimiento del castellano",
+   "nivel": "literal"
+  },
   "plazo_solicitudes": {
-   "valor": "cinco días hábiles contados a partir del día siguiente al de la publicación del anuncio en el BOP",
-   "cita": "el plazo para la presentación de solicitudes será de cinco días hábiles contados a partir del día siguiente",
+   "valor": "5 días hábiles desde el día siguiente a la publicación del anuncio en el BOP",
+   "cita": "será de 5 días hábiles a contar desde el día siguiente a la publicación de este anuncio en el BOLETÍN OFICIAL DE LA PROVINCIA",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Registro General del Ayuntamiento de Osorno la Mayor, en horario de 10:00 a 14:30, o en cualquiera de los lugares del artículo 16 de la Ley 39/2015; sede electrónica para descargar el modelo",
+   "valor": "Registro General del Ayuntamiento o en cualquier lugar del artículo 16 de la Ley 39/2015; modelo en sede electrónica",
    "cita": "se presentarán, preferentemente, en el Registro General del Ayuntamiento de Osorno, en horario de 10:00 a 14:30 horas",
    "nivel": "literal"
   },
   "publicaciones": {
    "valor": "Boletín Oficial de la Provincia, tablón de anuncios y sede electrónica del Ayuntamiento",
-   "cita": "se hará pública en el BOLETÍN OFICIAL DE LA PROVINCIA, tablón de anuncios y en la sede electrónica del Ayuntamiento",
+   "cita": "Esta resolución se hará pública en el BOLETÍN OFICIAL DE LA PROVINCIA, tablón de anuncios y en la sede electrónica del Ayuntamiento",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Ejercicio teórico: cuestionario de 30 preguntas tipo test sobre el programa (30 minutos), eliminatorio, 0 a 15 puntos, mínimo 7,5",
-    "Ejercicio práctico sobre temas del programa, eliminatorio, 0 a 15 puntos, mínimo 7,5"
+    "Ejercicio teórico: cuestionario de 30 preguntas tipo test sobre el temario (0-15 puntos, mínimo 7,5)",
+    "Ejercicio práctico sobre temas del programa (0-15 puntos, mínimo 7,5)"
    ],
-   "cita": "consistirá en contestar un cuestionario de 30 preguntas que versarán sobre el contenido del Programa",
+   "cita": "Consistirá en contestar un cuestionario de 30 preguntas que versarán sobre el contenido del Programa",
    "nivel": "literal"
   },
   "meritos": {
-   "valor": "Experiencia profesional hasta 4,75 puntos; formación hasta 5,25 puntos; titulación académica hasta 1 punto; manejo de plataformas GESTIONA y ACCEDE hasta 9 puntos",
-   "cita": "Por manejo de plataformas y programas informáticos: (hasta 9 puntos)",
+   "valor": "Experiencia profesional hasta 4,75 puntos; formación hasta 5,25 puntos; titulación hasta 1 punto; manejo de plataformas GESTIONA y ACCEDE hasta 9 puntos (fase de concurso máximo 20 puntos)",
+   "cita": "pudiendo obtener hasta un máximo de 20 puntos. El Tribunal calificará",
    "nivel": "literal"
   },
   "bolsa": {
-   "valor": "sí, bolsa de empleo con los aspirantes que superen el proceso y no resulten seleccionados, para cubrir vacantes temporalmente; vigencia máxima de 3 años",
+   "valor": "Sí, bolsa de empleo con los aspirantes que superen el proceso y no resulten seleccionados, para futuros llamamientos temporales; vigencia máxima de 3 años",
    "cita": "Se constituirá una bolsa de empleo con las personas que superen el proceso selectivo y no resulten seleccionadas",
    "nivel": "literal"
   },
   "practicas_o_curso": {
-   "valor": "no",
-   "cita": "El aspirante tomará posesión en el plazo de diez días hábiles",
+   "valor": "No se menciona",
+   "cita": "El aspirante propuesto aportará ante la Administración, dentro del plazo de diez días hábiles",
    "nivel": "literal"
   }
  },
@@ -95,7 +95,7 @@
   "temas": {
    "motivo": "valor_no_en_cita",
    "valor": 20,
-   "cita": "Tema 1.- Los principios de actuación de la Administración Pública"
+   "cita": "ANEXO I TEMARIO Tema 1.- Los principios de actuación de la Administración Pública"
   }
  }
 }

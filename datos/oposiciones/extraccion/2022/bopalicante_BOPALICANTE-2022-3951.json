@@ -1,0 +1,48 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2022-3951",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2022-3951",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2022/06/06_106/2022_003951.pdf",
+  "fecha": "2022-06-06",
+  "huella": "4300c30d295feaa885ad7a757ea9fbab6df77ccfa81370af7c46ade06291d710"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T15:25:36+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "bolsa de trabajo temporal ya existente en el Ayuntamiento de Rojales",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "peón de obras y servicios",
+    "peón de jardinería",
+    "peón de limpieza viaria",
+    "peón de deportes"
+   ],
+   "cita": "ampliación de la bolsa de trabajo temporal ya existente en el Ayuntamiento de Rojales de plazas de peón"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "10 días hábiles a contar desde el día siguiente a la publicación de este anuncio en el Boletín Oficial de la Provincia de Alicante",
+   "cita": "el plazo de presentación de solicitudes, que será de 10 días hábiles a contar desde el día siguiente a la publicación"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "sede web oficial del Ayuntamiento de Rojales y tablón de edictos de la Corporación",
+   "cita": "encontrándose las bases íntegras de la convocatoria en la página web oficial del Ayuntamiento"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, bolsa de trabajo temporal de peones de obras y servicios, jardinería, limpieza viaria y deportes",
+   "cita": "ampliación de la bolsa de trabajo temporal ya existente en el Ayuntamiento de Rojales"
+  }
+ }
+}

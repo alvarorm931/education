@@ -5,16 +5,16 @@
   "fuente": "BOP-VALENCIA",
   "url": "https://bop.dival.es/bop/downloads?anuncioNumReg=2022/15683&lang=va",
   "fecha": "2022-12-23",
-  "huella": "9d003aebd6b97038aca0652026fa9789b3384b87d00a74100cc55dabc20c8cc0"
+  "huella": "0b64209e61af92832177e010397f6c68aabe42a18afebf3c079d5cd760b4fc04"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:59:16+00:00",
- "lote": "msgbatch_012nGabRM1G4b7cEKJh1Bcx1",
+ "extraido": "2026-10-31T15:25:41+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "vinculo": {
    "valor": "funcionario de carrera",
-   "cita": "per a la cobertura en propietat de varies places en virtut de la Llei 20/201",
+   "cita": "Funcionarial A2 Administració especial Tècnic mitjà en informàtica 28/08/2017",
    "nivel": "literal"
   },
   "sistema": {
@@ -24,11 +24,16 @@
   },
   "plazas_total": {
    "valor": 1,
-   "cita": "per a la provisió en propietat d’una plaça funcionarial de tècnic mitjà en informàtica A2",
+   "cita": "per a la provisió en propietat d'una plaça funcionarial de tècnic mitjà en informàtica",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Tenir més de 16 anys i no excedir de l'edat de jubilació. Nacionalitat espanyola o de país UE o en els termes de l'art. 57 EBEP. Capacitat funcional. No haver sigut separat del servei d'AAPP. Haver satisfet la taxa.",
+   "cita": "Tenir més de 16 anys i no excedir de l'edat de jubilació.",
    "nivel": "literal"
   },
   "idioma_cooficial": {
-   "valor": "Coneixement de valencià valorat: B1, B2, C1 o C2 (como mérito)",
+   "valor": "Coneixement de valencià valorat en fase de concurs: B1 (0,5), B2 (1), C1 (1,5), C2 (2) punts",
    "cita": "Els coneixements de valencià es valoraran segons el nivell de certificat de la Junta Qualificadora",
    "nivel": "literal"
   },
@@ -38,23 +43,36 @@
    "nivel": "literal"
   },
   "exenciones_tasa": {
-   "valor": "Demandantes de empleo abonan 5 euros, aportando certificado del SERVEF de desocupación y declaración jurada de no percibir pensión o prestación.",
-   "cita": "Els aspirants que acrediten estar en situació de demandants d’ocupació abonaran únicament 5 euros.",
+   "valor": "Demandants d'ocupació abonen 5 euros, aportant certificat SERVEF de desocupació i declaració jurada de no percebre pensió o prestació",
+   "cita": "Els aspirants que acrediten estar en situació de demandants d'ocupació abonaran únicament 5 euros.",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "10 días hábiles desde la publicación de la convocatoria de cada proceso selectivo en el BOE",
+   "valor": "10 dies hàbils des de la publicació de la convocatòria de cada procès selectiu al BOE",
    "cita": "El termini de presentació d'instàncies serà de 10 dies hàbils des de la publicació de la convocatòria",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Registro general del Ayuntamiento de Carlet o cualquier forma admitida por el procedimiento administrativo común, preferentemente telemática, mediante instancia del Anexo II",
-   "cita": "es presentaran en el registre general de l’Ajuntament de Carlet i en qualsevol de les formes admeses",
+   "valor": "Registre general de l'Ajuntament de Carlet o qualsevol forma admesa per la normativa de Procediment Administratiu Comú, preferentment telemàtica, amb la instància de l'annex",
+   "cita": "es presentaran en el registre general de l'Ajuntament de Carlet i en qualsevol de les formes admeses",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Primer exercici: qüestionari escrit de 50 preguntes tipus test amb 4 alternatives, penalització d'un terç, 80 minuts, 0 a 40 punts",
+    "Segon exercici: supòsit pràctic a elegir entre dos, durada màxima de dos hores i 30 minuts, 0 a 20 punts"
+   ],
+   "cita": "Segon exercici.- consistirà en la realització d'un supòsit pràctic, a elegir entre dos",
    "nivel": "literal"
   },
   "meritos": {
-   "valor": "Méritos profesionales hasta 32 puntos (experiencia), exámenes superados hasta 2, cursos de formación hasta 2, valenciano hasta 2 y titulación hasta 2 (fase de concurso de 40 puntos)",
+   "valor": "Fase de concurs màxim 40 punts: mèrits professionals 32 punts (0,40 per mes a Carlet); exercicis superats 2; cursos de formació 2; valencià 2; titulació 2",
    "cita": "Consistirà en la valoració dels mèrits al·legats i acreditats documentalment per els/per les candidats/as, fins a un màxim de 40 punts",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "no consta",
+   "cita": "Transcorregut el termini de presentació de la documentació",
    "nivel": "literal"
   },
   "temas": {
@@ -67,45 +85,27 @@
   "denominacion": {
    "motivo": "cita_no_literal",
    "valor": "Tècnic mitjà en informàtica",
-   "cita": "Places afectades per article 2.1 Llei 20/2021 RÈGIM GRUP ESCALA SUBESCALA Funcionarial A2 Administració especial Tècnic mitjà en informàtica"
+   "cita": "Places afectades per article 2.1 Llei 20/2021 de 29 de desembre RÈGIM GRUP ESCALA SUBESCALA"
   },
   "grupo": {
    "motivo": "cita_no_literal",
    "valor": "A2",
-   "cita": "Places afectades per article 2.1 Llei 20/2021 RÈGIM GRUP ESCALA SUBESCALA Funcionarial A2"
+   "cita": "Places afectades per article 2.1 Llei 20/2021 de 29 de desembre RÈGIM GRUP ESCALA SUBESCALA"
   },
   "titulacion": {
    "motivo": "cita_no_literal",
-   "valor": "Diplomatura Universitària, Enginyeria Tècnica, Grau o equivalent, d’informàtica",
-   "cita": "Estar en possessió o en condicions d'obtindre el Títol de Diplomatura Universitària, Enginyeria Tècnica, Grau o equivalent, d’informàtica."
-  },
-  "otros_requisitos": {
-   "motivo": "cita_no_literal",
-   "valor": "Tener más de 16 años y no exceder la edad de jubilación; nacionalidad española o de Estado miembro UE u otro en los términos del art. 57 EBEP; capacidad funcional; no haber sido separado del servicio por expediente disciplinario; no ser funcionario de carrera del mismo cuerpo, escala o categoría.",
-   "cita": "Tenir més de 16 anys i no excedir de l’edat de jubilació. Tenir nacionalitat espanyola o ser nacional d’un dels països membres"
+   "valor": "Diplomatura Universitària, Enginyeria Tècnica, Grau o equivalent, d'informàtica",
+   "cita": "Estar en possessió o en condicions d'obtindre el Títol de Diplomatura Universitària, Enginyeria Tècnica, Grau o equivalent"
   },
   "publicaciones": {
    "motivo": "cita_no_literal",
-   "valor": "Tablón de Anuncios Electrónico y Portal de Transparencia del Ayuntamiento de Carlet, además del BOP de Valencia",
-   "cita": "Aquestes bases generals seran publicades al Tauler d’Anuncis Electrònic i al Portal de Transparència de l’Ajuntament de Carlet"
-  },
-  "ejercicios": {
-   "motivo": "cita_no_literal",
-   "valor": [
-    "Fase de oposición (60 puntos, no eliminatoria; mínimo 20 puntos): primer ejercicio, cuestionario tipo test de 50 preguntas (hasta 40 puntos)",
-    "Segundo ejercicio: supuesto práctico a elegir entre dos, duración máxima dos horas y 30 minutos (hasta 20 puntos)"
-   ],
-   "cita": "Primer exercici: consistirà a respondre per escrit un qüestionari amb 50 preguntes amb 4 respostes"
+   "valor": "Tauler d'Anuncis Electrònic i Portal de Transparència de l'Ajuntament de Carlet, i BOP de València",
+   "cita": "Aquestes bases generals seran publicades al Tauler d'Anuncis Electrònic i al Portal de Transparència"
   },
   "bolsa": {
    "motivo": "cita_no_literal",
-   "valor": "sí, para nombramientos interinos/temporales de la categoría; los participantes con más de 50 puntos se integran en una bolsa de trabajo temporal",
-   "cita": "Els participants en els processos selectius de la base novena i dècima que hagen obtingut una puntuació superior a 50 punts, s’integraran en una borsa de treball temporal"
-  },
-  "practicas_o_curso": {
-   "motivo": "cita_no_literal",
-   "valor": "no consta",
-   "cita": "no aparece en el texto"
+   "valor": "sí, borsa de treball temporal per a nomenaments interins/temporals de la categoria professional, si la puntuació supera 50 punts",
+   "cita": "Els participants en els processos selectius de la base novena i dècima que hagen obtingut una puntuació superior a 50 punts"
   }
  }
 }

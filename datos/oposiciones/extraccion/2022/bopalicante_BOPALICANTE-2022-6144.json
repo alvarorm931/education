@@ -1,0 +1,93 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2022-6144",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2022-6144",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2022/08/18_156/2022_006144.pdf",
+  "fecha": "2022-08-18",
+  "huella": "38f7aef9424793b88d2683dddb18180361f26b18fab6e80b67340df46a64d7de"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T15:25:26+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
+ "no_son_bases": false,
+ "campos": {
+  "sistema": {
+   "valor": "concurso",
+   "cita": "La selecció de les persones integrants de la borsa es realitzarà per concurs de mèrits.",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Mestre/a en Educació Infantil; Professor/a d'EGB especialista en preescolar; Tècnic especialista en Jardí d'Infància; Tècnic Superior en Educació Infantil",
+   "cita": "Estar en possessió d'alguna de les següents titulacions: Mestre/a en Educació Infantil.",
+   "nivel": "sin_signos"
+  },
+  "idioma_cooficial": {
+   "valor": "Título de conocimientos de valenciano (Grau Elemental de la JQCV)",
+   "cita": "Tindre el títol de coneixements de valencià (Grau Elemental de la JQCV).",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón electrónico de anuncios del Ayuntamiento y sede electrónica municipal",
+   "cita": "Tots els anuncis de tràmits posteriors es publicaran en el Tauló electrònic d'Anuncis de l'Ajuntament.",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Concurso de méritos: experiencia profesional (máx. 5 puntos)",
+    "Formación complementaria y conocimientos de valenciano (máx. 3 puntos)"
+   ],
+   "cita": "La màxima puntuació a obtindre en el concurs serà de: 8 punts.",
+   "nivel": "sin_signos"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Educador/a d'Educació Infantil"
+   ],
+   "cita": "Constitució d'una Borsa de Treball d'EDUCADOR/A D'EDUCACIÓ INFANTIL, assimilats al grup C, subgrup C1"
+  },
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "C1",
+   "cita": "assimilats al grup C, subgrup C1"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "otro",
+   "cita": "constitució d'una Borsa de Treball d'EDUCADOR/A D'EDUCACIÓ INFANTIL"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 0,
+   "cita": "Amb la relació de persones aspirants que obtinguen un mínim de 4 punts, es formarà la borsa de treball"
+  },
+  "otros_requisitos": {
+   "motivo": "cita_no_literal",
+   "valor": "Nacionalidad española (sin perjuicio del art. 57 TREBEP); 16 años cumplidos y no exceder edad máxima de jubilación forzosa; no haber sido separado del servicio ni inhabilitado; no padecer enfermedad o defecto que impida el ejercicio de las funciones.",
+   "cita": "Tindre la nacionalitat espanyola, sense perjudici del que disposa l'article 57"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "Diez días naturales desde el día siguiente a la publicación del anuncio en el Butlletí Oficial de la Província",
+   "cita": "el termini de presentació de sol·licituds, que serà de deu dies naturals, a comptar des de l'endemà a la publicació"
+  },
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Registro Electrónico General del Ayuntamiento o en los lugares del art. 16.4 de la Ley 39/2015",
+   "cita": "es presentaran en el Registre Electrònic General d'aquest Ajuntament o en algun dels llocs previstos en l'article 16.4"
+  },
+  "meritos": {
+   "motivo": "cita_no_literal",
+   "valor": "Experiencia profesional en Educación Infantil: 0,30 puntos por mes en Administración Pública y 0,15 en empresa privada (máx. 5 puntos); formación complementaria (máx. 2 puntos, másteres 1 punto y cursos 0,005 puntos por hora hasta 1 punto); conocimientos de valenciano (máx. 1 punto); total máximo 8 puntos",
+   "cita": "A) MÈRITS PROFESSIONALS O NIVELL D'EXPERIÈNCIA. (Màxima puntuació possible acumulable: 5 punts)"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "Sí, para cubrir posibles vacantes temporales de educador/a de educación infantil",
+   "cita": "constitució d'una borsa d'ocupació temporal per a cobrir les possibles vacants"
+  }
+ }
+}

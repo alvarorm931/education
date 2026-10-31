@@ -1,0 +1,55 @@
+{
+ "proceso": "boe:BOE-A-2022-8412",
+ "documento": {
+  "id": "boe:BOE-A-2022-8412",
+  "fuente": "BOE",
+  "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2022-8412",
+  "fecha": "2022-05-23",
+  "huella": "c7c923dc7bda79bda16f23886e04350b744b38888b370e72241cc8edfc68ed10"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T15:25:20+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "laboral fijo",
+   "cita": "en régimen laboral con carácter fijo, correspondiente al Grupo I del Convenio Colectivo",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días naturales, contados a partir del siguiente al de su publicación en el BOE o BOJA que publique en último lugar la convocatoria",
+   "cita": "El plazo de presentación de solicitudes será de veinte días naturales, contados a partir del siguiente al de su publicación",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "inscripción telemática mediante solicitud (modelo 761) en los medios electrónicos de la página web de Recursos Humanos de la Universidad de Sevilla, adjuntando la documentación requerida",
+   "cita": "deberán inscribirse telemáticamente, cumplimentando la solicitud (modelo 761) a través de los medios electrónicos habilitados para ello",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "página web de Recursos Humanos de la Universidad de Sevilla",
+   "cita": "Los sucesivos anuncios referentes a esta convocatoria se publicarán únicamente en la página web de Recursos Humanos de la Universidad de Sevilla",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Titulado/a Superior (Perfil: Responsable de Proyección Institucional, Internacionalización y Protocolo de la Universidad de Sevilla), código 155"
+   ],
+   "cita": "provisión por acceso libre y mediante el sistema de concurso-oposición, de una plaza de Titulado/a Superior (Perfil: Responsable de Proyección Institucional, Internacionalización y Protocolo de la Universidad de Sevilla)"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "por acceso libre y mediante el sistema de concurso-oposición, de una plaza de Titulado/a Superior"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 1,
+   "cita": "para la provisión por acceso libre y mediante el sistema de concurso-oposición, de una plaza de Titulado/a Superior"
+  }
+ }
+}

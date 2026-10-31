@@ -5,26 +5,26 @@
   "fuente": "BOP-SEVILLA",
   "url": "https://bopsevilla.dipusevilla.es/publica/buscador-anuncios/anuncio/Bases-y-convocatoria-del-proceso-selectivo-para-la-provision-de-una-plaza-de-laboral-de-Tecnico-de-Cultura-en-el-marco-del-proceso-de-estabilizacion-de-empleo-temporal-de-Espartinas-Organismo-Autonomo/",
   "fecha": "2024-12-31",
-  "huella": "7b84d797695ed3153efcf7de4efda09c1c53dd20056dbb432cc8594388eb4a90"
+  "huella": "4562217a337f12aa67d35f3a6cc6e60703186b490b6b8fc57ad1724fc8d3ec28"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:45:48+00:00",
- "lote": "msgbatch_017vJZdAmjTkBDdH14aLEdCv",
+ "extraido": "2026-10-31T15:25:16+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
    "valor": "Técnico de Cultura",
-   "cita": "provisión en propiedad, mediante procedimiento extraordinario de consolidación y estabilización de empleo temporal, de una plaza de personal laboral fijo",
+   "cita": "la provisión en propiedad de una (1) plaza de Técnico de Cultura (laboral fijo)",
    "nivel": "literal"
   },
   "grupo": {
    "valor": "A2",
-   "cita": "La plaza convocada corresponde al Grupo A Subgrupo A2 de titulación",
+   "cita": "Grupo A Subgrupo A2 de titulación de los previstos en el articulo 76",
    "nivel": "literal"
   },
   "vinculo": {
    "valor": "personal laboral fijo",
-   "cita": "una (1) plaza de Técnico de Cultura (laboral fijo), del Organismo Autónomo Local del Ayuntamiento de Espartinas",
+   "cita": "Técnico de Cultura (laboral fijo), del Organismo Autónomo Local",
    "nivel": "literal"
   },
   "sistema": {
@@ -43,45 +43,46 @@
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Nacionalidad española o requisitos del art. 57 TREBEP; tener cumplidos 16 años y no exceder de la edad de jubilación forzosa; capacidad funcional; no haber sido separado de la función pública por expediente disciplinario; no hallarse incurso en causa de incapacidad",
-   "cita": "Tener la nacionalidad española o cumplir los requisitos establecidos en el artículo 57 del Texto Refundido",
+   "valor": "Nacionalidad española o requisitos del art. 57 TREBEP; 16 años y no exceder edad de jubilación forzosa; capacidad funcional; no separación de la función pública ni inhabilitación; no incapacidad.",
+   "cita": "Tener cumplidos los 16 años y no exceder, en su caso, de la edad mínima de jubilación forzosa",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Las previstas en el artículo 6 de la Ordenanza fiscal reguladora de la tasa por derechos de examen",
+   "cita": "el sujeto pasivo sea una de las personas a que se refiere el artículo 6 de la citada ordenanza (exenciones y bonificaciones)",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "veinte días hábiles desde el día siguiente a la publicación del extracto de la convocatoria en el BOE",
-   "cita": "Veinte días hábiles a contar desde el día siguiente de la publicación del extracto de la convocatoria en el Boletín Oficial del Estado.",
+   "valor": "Veinte días hábiles desde el día siguiente a la publicación del extracto de la convocatoria en el BOE",
+   "cita": "Veinte días hábiles a contar desde el día siguiente de la publicación del extracto de la convocatoria en el Boletín Oficial del Estado",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Registro Electrónico General del Ayuntamiento o lugares del art. 16.4 Ley 39/2015, dirigida a la Alcaldía-Presidencia",
-   "cita": "se presentarán en el Registro Electrónico General de este Ayuntamiento o en alguno de los lugares previstos",
+   "valor": "Registro Electrónico General del Ayuntamiento o lugares del art. 16.4 Ley 39/2015, dirigida a la Alcaldía-Presidencia, con Anexo I",
+   "cita": "se presentarán en el Registro Electrónico General de este Ayuntamiento o en alguno de los lugares previstos en el artículo 16.4",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Tablón de Anuncios de la Sede Electrónica del Ayuntamiento y página web www.espartinas.es",
+   "valor": "Tablón de Anuncios de la Sede Electrónica del Ayuntamiento y página web www.espartinas.es; BOP, BOJA y extracto en BOE",
    "cita": "Los sucesivos anuncios relativos a la lista de admitidos, composición del tribunal, resultado de las pruebas, serán publicados",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Fase de concurso: méritos profesionales y académicos, hasta 100 puntos, eliminatoria con mínimo 50 puntos"
+    "Fase de concurso: méritos profesionales y académicos, máximo 100 puntos",
+    "Mínimo 50 puntos para superar la fase de concurso"
    ],
-   "cita": "La fase de concurso tendrá carácter eliminatorio para superar el proceso de consolidación",
-   "nivel": "literal"
-  },
-  "meritos": {
-   "valor": "Experiencia profesional hasta 51 puntos (0,70 por mes en la plaza; 0,40 por mes en otras categorías del sector público); formación hasta 49 puntos",
    "cita": "Se valorará hasta un máximo de 100 puntos, donde se tendrán en cuenta méritos profesionales y académicos",
    "nivel": "literal"
   },
-  "bolsa": {
-   "valor": "sí, para posibles renuncias, sustituciones, permisos, incapacidad temporal o situaciones análogas; vigencia de dos periodos lectivos prorrogable",
-   "cita": "El presente proceso selectivo genera bolsa de empleo.",
+  "meritos": {
+   "valor": "Experiencia profesional (máx. 51 pts; 0,70 pts/mes en la plaza; 0,40 pts/mes en otras categorías) y formación (máx. 49 pts)",
+   "cita": "En ningún caso la puntuación por experiencia profesional podrá exceder de 51 puntos",
    "nivel": "literal"
   },
-  "practicas_o_curso": {
-   "valor": "Toma de posesión en 3 días hábiles o 1 mes con cambio de residencia tras publicación en BOP; sin periodo de prácticas indicado",
-   "cita": "El plazo para tomar posesión/formalización del contrato de trabajo será de tres días hábiles",
+  "bolsa": {
+   "valor": "sí, para posibles renuncias, sustituciones, permisos, incapacidad temporal o situaciones análogas",
+   "cita": "El presente proceso selectivo genera bolsa de empleo.",
    "nivel": "literal"
   }
  },

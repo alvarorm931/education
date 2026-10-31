@@ -5,35 +5,21 @@
   "fuente": "BOB",
   "url": "http://www.bizkaia.eus/lehendakaritza/Bao_bob/2022/12/29/II-6091_cas.pdf",
   "fecha": "2022-12-29",
-  "huella": "5e10dd98f6dc18db5c39f755d11e1d4f872b1737bbfbe485f00fc60d6ceae3f5"
+  "huella": "2b74fc7a4a2947567b8b01ad34ffa5212eb7e0dfe68b7bd3cd6a24890923cc79"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:59:08+00:00",
- "lote": "msgbatch_012nGabRM1G4b7cEKJh1Bcx1",
+ "extraido": "2026-10-31T15:25:23+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
-  "denominacion": {
-   "valor": [
-    "Gizarte langilea",
-    "Aukera berdintasuneko teknikaria",
-    "Administrari laguntzailea"
-   ],
-   "cita": "IZENA PLAZA KOPURUA LOTUTAKO LANPOSTU KOPURUA",
-   "nivel": "literal"
-  },
-  "grupo": {
-   "valor": "A2",
-   "cita": "Aukera Berdintasuneko Teknikariaren A2 azpitaldean egindako zerbitzuengatik",
-   "nivel": "literal"
-  },
   "vinculo": {
    "valor": "laboral temporal",
-   "cita": "Mungialdeko Gizarte Zerbitzuen Mankomunitateko aldi baterako langileek “Egonkortasunerako datuen ziurtagiria” aurkeztu beharko dute",
+   "cita": "Aldi baterako enplegua egonkortzeko salbuespenezko hautaketa-prozesu guztiak arautuko",
    "nivel": "literal"
   },
   "sistema": {
    "valor": "concurso",
-   "cita": "Aldi baterako enplegua egonkortzeko salbuespenezko deialdiaren prozesua lehiaketa-sistemaren arabera artikulatuko da.",
+   "cita": "El proceso de la convocatoria excepcional de estabilización de empleo temporal de larga duración",
    "nivel": "literal"
   },
   "titulacion": {
@@ -42,69 +28,83 @@
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Tener cumplidos dieciséis años y no exceder, en su caso, de la edad máxima de jubilación forzosa; nacionalidad española o de Estado miembro de la UE; capacidad funcional para el desempeño de las tareas.",
-   "cita": "Tener cumplidos dieciséis años y no exceder, en su caso, de la edad máxima de jubilación forzosa.",
+   "valor": "Nacionalidad o derecho a libre circulación, capacidad funcional, tener 16 años y no exceder edad de jubilación, no haber sido separado de la Administración, perfil lingüístico de euskera según puesto, colegiación cuando proceda",
+   "cita": "Tener la nacionalidad española o la nacionalidad de alguno de los Estados miembros de la Unión Europea",
    "nivel": "literal"
   },
   "idioma_cooficial": {
-   "valor": "Euskera, perfil lingüístico 2 (preceptivo en el puesto de Auxiliar Administrativo/a)",
+   "valor": "Euskera, perfil lingüístico 2 (preceptivo)",
    "cita": "En el puesto de trabajo asociado a la plaza objeto de esta convocatoria tiene asignado un perfil lingüístico de euskera 2.",
    "nivel": "literal"
   },
   "tasa_euros": {
    "valor": 6,
-   "cita": "El importe de la tasa por la inscripción en las convocatorias para la selección de personal de plazas del subgrupo C2 es: 6 euros.",
+   "cita": "el importe de la tasa por la inscripción en las convocatorias para la selección de personal de plazas del subgrupo C2 es: 6 euros.",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "20 días hábiles desde el siguiente al de la publicación del extracto de la convocatoria en el Boletín Oficial del Estado",
-   "cita": "Deberán presentarse en el plazo de veinte (20) días hábiles a partir del siguiente al de la publicación del extracto",
-   "nivel": "literal"
-  },
-  "presentacion": {
-   "valor": "Electrónica en sede electrónica www.mungialde.eus o presencial en la sede de la Mancomunidad (cita previa)",
-   "cita": "a) Eskaera elektronikoa egoitza elektronikoan: www.mungialde.eus",
+   "valor": "20 días hábiles desde el siguiente a la publicación del extracto en el Boletín Oficial del Estado",
+   "cita": "deberán presentarse en el plazo de veinte (20) días hábiles a partir del siguiente al de la publicación",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Tablón de anuncios y página web de la Mancomunidad Mungialde de Servicios Sociales, además de los boletines oficiales correspondientes",
-   "cita": "Las convocatorias de procesos selectivos serán publicadas, en los boletines oficiales correspondientes y, además, en el tablón de anuncios y la página web",
-   "nivel": "literal"
-  },
-  "ejercicios": {
-   "valor": [
-    "Primera parte: concurso de méritos (autovaloración), no eliminatorio, mínimo 25% de puntos",
-    "Segunda parte: prueba de euskera, obligatoria y eliminatoria (Apto/No apto)"
-   ],
-   "cita": "Primera parte, el concurso: consistirá en el examen y valoración de los méritos alegados y acreditados",
+   "valor": "Boletines oficiales correspondientes, tablón de anuncios y página web de la Mancomunidad",
+   "cita": "serán publicadas, en los boletines oficiales correspondientes y, además, en el tablón de anuncios y la página web",
    "nivel": "literal"
   },
   "bolsa": {
    "valor": "no",
    "cita": "Del presente proceso selectivo no se creará bolsa de empleo.",
    "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "no",
+   "cita": "Prozesu honetatik ez da enplegupoltsarik sortuko.",
+   "nivel": "literal"
   }
  },
  "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Gizarte langilea",
+    "Aukera berdintasuneko teknikaria",
+    "Administrari laguntzailea"
+   ],
+   "cita": "Plaza Lotutako lanpostu kopurua Hizkuntza-eskakizuna Destino-osagarria Gizarte langilea"
+  },
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "A2",
+   "cita": "Teknikari Aukera Berdintasuneko Teknikariaren A2 azpitaldean"
+  },
   "plazas_total": {
    "motivo": "valor_no_en_cita",
-   "valor": 3,
+   "valor": 4,
    "cita": "Se convoca 1 plaza de Auxiliar Administrativo/a, Subgrupo C2, por el turno libre"
   },
   "plazas_turno_libre": {
    "motivo": "valor_no_en_cita",
-   "valor": 3,
+   "valor": 4,
    "cita": "En este proceso se contempla únicamente un turno libre."
   },
-  "exenciones_tasa": {
+  "presentacion": {
    "motivo": "cita_no_literal",
-   "valor": "Pagos fraccionados por subsanación de exención alegada: el impago solo es subsanable si deriva de error sobre condiciones de la exención alegada.",
-   "cita": "Únicamente será subsanable el impago o pago incompleto cuando sea consecuencia del error de la persona solicitante."
+   "valor": "Sede electrónica www.mungialde.eus o presencial en la sede de la Mancomunidad, previa cita",
+   "cita": "Solicitud electrónica en sede electrónica: www.mungialde.eus; solicitud presencial en la sede de la Mancomunidad"
+  },
+  "ejercicios": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Primera parte: concurso de méritos (autovaloración)",
+    "Segunda parte: prueba de euskera, eliminatoria"
+   ],
+   "cita": "El proceso selectivo se articula mediante concurso de méritos y prueba de euskera de carácter eliminatorio"
   },
   "meritos": {
    "motivo": "cita_no_literal",
-   "valor": "Experiencia general hasta 60 puntos (0,01096 por día); experiencia específica hasta 20 puntos (0,00366 por día); titulaciones y cursos hasta 20 puntos (1 punto por hora); euskera 4 a 16 puntos según perfil.",
-   "cita": "a.1. Esperientzia orokorra: gehienez 60 puntu emango dira, baremo honen arabera"
+   "valor": "Experiencia general hasta 60 puntos (0,01096 por día); experiencia específica hasta 20 puntos (0,00366 por día); titulaciones y formación hasta 20 puntos (1 punto por hora de curso); euskera hasta 16 puntos",
+   "cita": "Experiencia: gehienez 80 puntu. Titulazioak. Gehienez ere 20 puntu emango zaizkie merezimendu hauei"
   }
  }
 }

@@ -5,11 +5,11 @@
   "fuente": "BOP-LASPALMAS",
   "url": null,
   "fecha": "2026-10-02",
-  "huella": "1eccabc1f9d1f3c0e12db41330695020f72b742865a3ca16df023dc73a6efa84"
+  "huella": "bfed95863bcc6f9386f7be41cb6f60d0d8da4c76e3496e907c5395d46e833688"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T07:28:47+00:00",
- "lote": "msgbatch_01QUU3nKnMRQfp1xxi4asvKD",
+ "extraido": "2026-10-31T15:25:30+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
@@ -27,7 +27,7 @@
   },
   "vinculo": {
    "valor": "funcionario de carrera",
-   "cita": "Bases específicas de selección por la que se regirá el proceso selectivo",
+   "cita": "Denominación del puesto: Cabo de Bomberos. Vínculo: Funcionario.",
    "nivel": "literal"
   },
   "sistema": {
@@ -41,7 +41,7 @@
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Carné de conducir C + E; título de Patrón para Navegación Básica; certificado de primeros auxilios; certificación de carecer de antecedentes penales o tenerlos cancelados.",
+   "valor": "Carné de conducir C + E; título de Patrón para Navegación Básica; certificado de primeros auxilios; certificación del Registro de Penados y Rebeldes de carecer de antecedentes penales o tenerlos cancelados",
    "cita": "Estar en posesión del carnet de conducir C + E. Estar en posesión del título de Patrón para Navegación Básica.",
    "nivel": "sin_signos"
   },
@@ -56,37 +56,44 @@
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Telemáticamente a través de la sede electrónica del Cabildo de Fuerteventura (cabildofuer.convoca.online)",
-   "cita": "deberán presentarán su solicitud telemáticamente a través de la sede electrónica del Cabildo de Fuerteventura",
+   "valor": "Telemáticamente a través de la sede electrónica del Cabildo de Fuerteventura (https://cabildofuer.convoca.online)",
+   "cita": "deberán presentarán su solicitud telemáticamente a través de la sede electrónica del Cabildo",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia de Las Palmas, tablón de anuncios y página web de la Corporación (www.cabildofuer.es)",
+   "cita": "publicación en el tablón de Anuncios y en la página web de la Corporación www.cabildofuer.es",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Prueba de aptitud física (eliminatoria, apto/no apto)",
-    "Prueba teórica: test de 60 preguntas en 70 minutos (0 a 10 puntos)",
-    "Prueba práctica: supuesto práctico en 90 minutos (0 a 10 puntos)",
-    "Reconocimiento médico (apto/no apto)",
-    "Fase de concurso (méritos: experiencia y formación)",
-    "Curso selectivo de formación de 200 horas (apto/no apto)",
-    "Período de prácticas"
+    "Prueba de aptitud física (apto/no apto)",
+    "Prueba teórica tipo test de 60 preguntas (0 a 10 puntos)",
+    "Supuesto práctico escrito (0 a 10 puntos)",
+    "Reconocimiento médico (apto/no apto)"
    ],
    "cita": "Constará de las siguientes pruebas en el siguiente orden y cada uno de ellos carácter eliminatorio.",
    "nivel": "literal"
   },
   "meritos": {
-   "valor": "Experiencia profesional máximo 1,50 puntos (0,04 por mes en Administración Pública; 0,03 por mes en sector privado); méritos formativos máximo 0,50 puntos (cursos de 0,20 a 0,50 según horas).",
+   "valor": "Experiencia profesional hasta 1,50 puntos (0,04 por mes en Administración Pública; 0,03 en sector privado); méritos formativos hasta 0,50 puntos",
    "cita": "La puntuación máxima que se puede obtener por este concepto de experiencia profesional será de 1,50 puntos",
    "nivel": "literal"
   },
   "bolsa": {
-   "valor": "sí, lista de reserva específica de Cabo y de Agente de Seguridad y Emergencias para nombramientos interinos",
+   "valor": "sí, lista de reserva específica de Cabo de Seguridad y Emergencias y de Agente de Seguridad y Emergencias para nombramientos interinos",
    "cita": "se confeccionará una lista de reserva, específica de Cabo de Seguridad y Emergencias y de Agente de Seguridad y Emergencias",
    "nivel": "literal"
   },
   "practicas_o_curso": {
-   "valor": "Curso selectivo de formación de 200 horas (apto/no apto) y período de prácticas como funcionario en prácticas",
-   "cita": "Curso selectivo de formación que tendrán como objetivo el de alcanzar las competencias",
+   "valor": "Curso selectivo de formación de 200 horas, obligatorio y eliminatorio, seguido de periodo de prácticas",
+   "cita": "con una duración de doscientas (200) horas, a impartir preferentemente en las instalaciones del Servicio",
    "nivel": "literal"
+  },
+  "temas": {
+   "valor": 90,
+   "cita": "Tema 90. Elaboración de informes técnicos.",
+   "nivel": "contado"
   }
  },
  "rechazados": {
@@ -98,12 +105,7 @@
   "plazas_turno_libre": {
    "motivo": "valor_no_en_cita",
    "valor": 5,
-   "cita": "por el sistema de concurso-oposición y turno libre, de cuatro (4) plazas"
-  },
-  "publicaciones": {
-   "motivo": "cita_no_literal",
-   "valor": "Boletín Oficial de la Provincia de Las Palmas, tablón de anuncios y página web de la Corporación (www.cabildofuer.es)",
-   "cita": "publicarán en el Boletín Oficial de la Provincia y en el Tablón de Anuncios de la Corporación"
+   "cita": "por el sistema de concurso-oposición y turno libre, de cuatro (4) plazas de Agente"
   }
  }
 }

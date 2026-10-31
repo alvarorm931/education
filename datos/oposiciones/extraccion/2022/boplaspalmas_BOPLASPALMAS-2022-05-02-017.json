@@ -1,0 +1,66 @@
+{
+ "proceso": "boplaspalmas:BOPLASPALMAS-2022-05-02-017",
+ "documento": {
+  "id": "boplaspalmas:BOPLASPALMAS-2022-05-02-017",
+  "fuente": "BOP-LASPALMAS",
+  "url": null,
+  "fecha": "2022-05-02",
+  "huella": "6b813458e8674925d6caad7e88453cc21389e811eb195f0063e64c9a4d8b731f"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T15:25:19+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Técnico de Administración General (TAG Urbanismo, número 1510003)",
+    "Oficial de Policía Local"
+   ],
+   "cita": "Técnico de Administración General (TAG Urbanismo, número 1510003), incluida en la Oferta de Empleo Público, año 2020",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C1",
+   "cita": "Subgrupo C1, para su provisión por el sistema de promoción interna",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Bachiller Superior, Formación Profesional de Segundo Grado, Ciclo Formativo de Grado Superior o equivalentes, o en condiciones de obtenerlo",
+   "cita": "Estar en posesión del título de Bachiller Superior, Formación Profesional de Segundo Grado, Ciclo Formativo de Grado Superior o equivalentes",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia de Las Palmas, Boletín Oficial de Canarias, tablón de anuncios electrónico en la sede electrónica del Ayuntamiento y extracto en el Boletín Oficial del Estado",
+   "cita": "publicarán íntegramente en el Boletín Oficial de la Provincia de Las Palmas, en el Boletín Oficial de Canarias y en el tablón de anuncios electrónico en la sede electrónica",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "la provisión en propiedad, mediante el sistema de concurso-oposición, de tres (3) plazas de Oficial Policía"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "la provisión en propiedad, mediante el sistema de concurso-oposición, de tres (3) plazas de Oficial Policía"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 3,
+   "cita": "la provisión en propiedad, mediante el sistema de concurso-oposición, de tres (3) plazas de Oficial Policía"
+  },
+  "plazas_promocion_interna": {
+   "motivo": "valor_no_en_cita",
+   "valor": 3,
+   "cita": "para su provisión por el sistema de promoción interna, conforme a lo dispuesto en el Decreto 178/2006"
+  },
+  "otros_requisitos": {
+   "motivo": "cita_no_literal",
+   "valor": "Tener la nacionalidad española. Ser funcionario/a de carrera del empleo de Policía Local del Ayuntamiento de Tías, con una antigüedad mínima de dos años, al término del plazo de presentación de solicitudes.",
+   "cita": "Tener la nacionalidad española. Ser funcionario/a de carrera del empleo de Policía Local del Ayuntamiento de Tías, con una antigüedad mínima de dos años"
+  }
+ }
+}

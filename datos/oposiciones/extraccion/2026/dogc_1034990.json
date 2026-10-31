@@ -5,11 +5,11 @@
   "fuente": "DOGC",
   "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1034990",
   "fecha": "2026-01-22",
-  "huella": "a832bac12b952fe51b62d18a5046ef935b62d1f8188c95450b378e8669555971"
+  "huella": "ba3b744a9586a42bd6181a2ce7e3abfec342c88a76a5aa9f95212a1d483adde8"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:42:07+00:00",
- "lote": "msgbatch_01W17mR271uYfWYL6CuSdriL",
+ "extraido": "2026-10-31T15:25:48+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
@@ -22,11 +22,6 @@
   "grupo": {
    "valor": "A1",
    "cita": "grupo A, subgrupo A1",
-   "nivel": "literal"
-  },
-  "vinculo": {
-   "valor": "funcionario de carrera",
-   "cita": "Ser personal funcionario de carrera de la escala técnica de control y contabilidad del cuerpo de intervención",
    "nivel": "literal"
   },
   "sistema": {
@@ -50,12 +45,12 @@
    "nivel": "literal"
   },
   "titulacion": {
-   "valor": "Titulación oficial del nivel universitario de grado, doctorado, licenciatura, ingeniería o arquitectura",
+   "valor": "Título oficial universitario de grado, doctorado, licenciatura, ingeniería o arquitectura",
    "cita": "Estar en posesión de la titulación oficial del nivel universitario de grado, doctorado, licenciatura, ingeniería o arquitectura.",
    "nivel": "literal"
   },
   "idioma_cooficial": {
-   "valor": "Catalán, nivel de suficiencia C1",
+   "valor": "catalán nivel C1 (suficiencia)",
    "cita": "Tener los conocimientos de lengua catalana de nivel de suficiencia (C1)",
    "nivel": "literal"
   },
@@ -65,7 +60,7 @@
    "nivel": "literal"
   },
   "exenciones_tasa": {
-   "valor": "Exentas las personas en desempleo sin prestación, jubiladas y con discapacidad igual o superior al 33%; bonificación del 30% (50,45 €) y del 50% (36,10 €) para familias monoparentales o numerosas y víctimas de violencia machista.",
+   "valor": "Exentos: desempleados sin prestación, jubilados y discapacidad igual o superior al 33%. Bonificación 30% (familia monoparental/numerosa general) y 50% (categoría especial o víctimas de violencia machista)",
    "cita": "Las personas aspirantes que se encuentren en alguna de las situaciones siguientes están exentas de realizar el pago de la tasa",
    "nivel": "literal"
   },
@@ -84,47 +79,53 @@
    "cita": "Las publicaciones oficiales relativas a la convocatoria se realizan a través del Tablero electrónico de la Generalitat de Catalunya.",
    "nivel": "sin_signos"
   },
+  "ejercicios": {
+   "valor": [
+    "Primera prueba (eliminatoria, 0-20): primer ejercicio, preguntas escritas de derecho constitucional, administrativo y civil; segundo ejercicio, desarrollo escrito de un tema genérico",
+    "Segunda prueba (eliminatoria, 0-30): primer ejercicio escrito de hacienda, presupuesto y control; segundo ejercicio, exposición oral de cuatro temas",
+    "Tercera prueba (eliminatoria, 0-30): supuestos prácticos escritos y prueba oral sobre su ejecución",
+    "Cuarta prueba (obligatoria): evaluación de conocimientos de lengua catalana",
+    "Fase de concurso de méritos"
+   ],
+   "cita": "Esta fase se superará con la puntuación mínima establecida para cada prueba",
+   "nivel": "literal"
+  },
   "meritos": {
-   "valor": "Méritos valorados en la fase de concurso; puntuación máxima detallada en la base 7.4 (no transcrita en el texto aportado)",
+   "valor": "Fase de concurso con puntuación máxima de 20 puntos para libre acceso y 40 para promoción interna",
    "cita": "La puntuación máxima que se puede obtener en esta fase es de 80 puntos para el turno libre y de 60 puntos para el turno de promoción interna.",
    "nivel": "literal"
   },
-  "bolsa": {
-   "valor": "no",
-   "cita": "Hasta la resolución de esta convocatoria, no se pueden amortizar, transformar ni modificar sustancialmente las plazas convocadas",
+  "practicas_o_curso": {
+   "valor": "Curso selectivo de formación de mínimo 30 horas (valorado apto/no apto) con nombramiento como funcionarios en prácticas, con retribución equivalente al sueldo del subgrupo A1",
+   "cita": "tendrán que realizar y superar un curso selectivo de formación, que tendrá una duración mínima de 30 horas.",
    "nivel": "literal"
   }
  },
  "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "nombrados funcionarios y funcionarias del cuerpo de intervención de la Generalitat de Catalunya"
+  },
   "plazas_discapacidad": {
    "motivo": "valor_no_en_cita",
    "valor": 2,
-   "cita": "4 plazas, de las que 1 se reserva para personas con discapacidad"
+   "cita": "Turno de libre acceso: 4 plazas, de las que 1 se reserva para personas con discapacidad."
   },
   "otros_requisitos": {
    "motivo": "cita_no_literal",
-   "valor": "Nacionalidad española o de otro Estado miembro de la UE (con las excepciones previstas); 16 años y no exceder la edad de jubilación; capacidad funcional; no haber sido separado del servicio ni inhabilitado.",
+   "valor": "Nacionalidad española o de la UE (con extensiones); 16 años y no exceder la edad de jubilación; capacidad funcional; no haber sido separado del servicio ni inhabilitado; promoción interna: ser funcionario de carrera de la escala técnica de control y contabilidad con 4 años de antigüedad",
    "cita": "Tener tener cumplidos los 16 años y no exceder, si procede, la edad máxima de jubilación forzosa legalmente establecida."
   },
-  "ejercicios": {
-   "motivo": "cita_no_literal",
-   "valor": [
-    "Primera prueba (obligatoria y eliminatoria): dos ejercicios, resolución por escrito de preguntas y desarrollo escrito de un tema genérico",
-    "Segunda prueba (obligatoria y eliminatoria): resolución escrita de ocho preguntas y exposición oral de cuatro temas extraídos al azar",
-    "Tercera prueba (obligatoria y eliminatoria): resolución escrita de cuatro supuestos prácticos y prueba oral sobre su ejecución",
-    "Cuarta prueba (obligatoria): evaluación de conocimientos y acreditación de méritos"
-   ],
-   "cita": ""
-  },
   "temas": {
-   "motivo": "cita_no_literal",
-   "valor": 113,
-   "cita": "I. Derecho constitucional (30 temas); II. Derecho administrativo (37 temas); III. Derecho civil y mercantil (26 temas)"
+   "motivo": "valor_no_numerico",
+   "valor": "30 + 37 + 26 + 18 + 18 + 24 + 41 + 25 (apartados I a VIII)",
+   "cita": "I. Derecho constitucional y organización política y administrativa (30 temas)"
   },
-  "practicas_o_curso": {
+  "bolsa": {
    "motivo": "cita_no_literal",
-   "valor": "Curso selectivo de formación de al menos 30 horas, calificado como apto o no apto; las personas admitidas son nombradas funcionarias en prácticas",
-   "cita": "Las personas aspirantes que cumplan los requisitos de la convocatoria tendrán que realizar y superar un curso selectivo de formación, que tendrá una duración mínima de 30 horas."
+   "valor": "no",
+   "cita": "Pero la norma no menciona la creación de bolsa"
   }
  }
 }

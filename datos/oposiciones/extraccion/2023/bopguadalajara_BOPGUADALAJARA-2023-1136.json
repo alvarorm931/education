@@ -5,26 +5,28 @@
   "fuente": "BOP-GUADALAJARA",
   "url": "https://boletin.dguadalajara.es/boletin/pdf/pdf2023_1136.pdf",
   "fecha": "2023-03-31",
-  "huella": "d4fd5d304870b28a22402f7a2d0e7f6430c274ed77481792e827fd70eae5def2"
+  "huella": "c81bcfcac2975989c3e402388fedf1c53a7265ed5d1997f57a86c890b91d1055"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:56:34+00:00",
- "lote": "msgbatch_0167qWfLXqjGo8Hv43cM3LuM",
+ "extraido": "2026-10-31T15:25:45+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
-   "valor": "Oficial de Oficios (Albañilería)",
-   "cita": "creación de una bolsa de trabajo de OFICIAL DE OFICIOS ALBAÑILERÍA PARA LOS CENTROS COMARCALES DE SIGÜENZA Y MOLINA DE ARAGÓN",
+   "valor": [
+    "OFICIAL DE OFICIOS ALBAÑILERÍA PARA LOS CENTROS COMARCALES DE SIGÜENZA Y MOLINA DE ARAGÓN"
+   ],
+   "cita": "BOLSA DE TRABAJO DE OFICIAL DE OFICIOS ALBAÑILERÍA PARA LOS CENTROS COMARCALES DE SIGÜENZA Y MOLINA DE ARAGÓN",
    "nivel": "literal"
   },
   "grupo": {
    "valor": "C2",
-   "cita": "grupo de clasificación profesional C, subgrupo C2",
+   "cita": "La plaza de OFICIAL DE OFICIOS (ALBAÑILERÍA) está integrada en la escala de Administración Especial",
    "nivel": "literal"
   },
   "vinculo": {
    "valor": "laboral temporal",
-   "cita": "nombramiento, con carácter temporal, del personal que sea necesario para la cobertura provisional de vacantes",
+   "cita": "para el nombramiento, con carácter temporal, del personal que sea necesario para la cobertura provisional de vacantes",
    "nivel": "literal"
   },
   "sistema": {
@@ -37,25 +39,30 @@
    "cita": "la cantidad de ocho euros con cincuenta y nueve céntimos (8,59€), en concepto de tasa por la participación",
    "nivel": "literal"
   },
+  "exenciones_tasa": {
+   "valor": "Los desempleados más de seis meses en el último año abonan la mitad: 4,29 euros",
+   "cita": "los sujetos pasivos que acrediten hallarse en situación de desempleo por período superior a seis meses en el último año",
+   "nivel": "literal"
+  },
   "plazo_solicitudes": {
-   "valor": "Diez días naturales desde el siguiente a la publicación de la convocatoria en el Boletín Oficial de la Provincia",
+   "valor": "Diez días naturales desde el siguiente a la publicación de la convocatoria en el BOP",
    "cita": "en el plazo de diez días naturales, contados a partir del siguiente a aquél en que aparezca publicada la respectiva convocatoria",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Preferentemente de forma telemática; también en la forma del artículo 16 de la Ley 39/2015",
+   "valor": "Preferentemente de forma telemática; también según el artículo 16 de la Ley 39/2015",
    "cita": "debidamente cumplimentadas y preferentemente de forma telemática, en el plazo de diez días naturales",
    "nivel": "literal"
   },
   "publicaciones": {
    "valor": "Boletín Oficial de la Provincia, tablón de anuncios y sede electrónica de la Diputación",
-   "cita": "que será publicada en el Boletín Oficial de la Provincia, Tablón de Anuncios y sede electrónica de esta Corporación",
+   "cita": "será publicada en el Boletín Oficial de la Provincia, Tablón de Anuncios y sede electrónica de esta Corporación",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Fase de concurso (no eliminatoria, hasta 30 puntos)",
-    "Fase de oposición: prueba práctica obligatoria y eliminatoria (hasta 90 puntos)"
+    "Ejercicio único obligatorio y eliminatorio con parte teórica y parte práctica",
+    "Prueba práctica relacionada con el temario y las funciones de la plaza"
    ],
    "cita": "La oposición constará de un ejercicio (con una parte teórica y otra práctica), de carácter obligatorio y eliminatorio",
    "nivel": "literal"
@@ -65,32 +72,32 @@
    "cita": "TEMA 11. PREVENCIÓN DE RIESGOS LABORALES. CARTA DE SERVICIOS DE CENTROS COMARCALES.",
    "nivel": "literal"
   },
+  "meritos": {
+   "valor": "Antigüedad hasta 18 puntos; cursos de formación hasta 9 puntos; titulación complementaria hasta 3 puntos; fase de concurso no eliminatoria, 30 puntos máximo",
+   "cita": "hasta un máximo de 18,00 puntos, a razón de: Servicios prestados en la misma plaza",
+   "nivel": "literal"
+  },
   "bolsa": {
-   "valor": "Sí, bolsa de trabajo para cubrir vacantes, sustituciones, programas o exceso de tareas, válida hasta nuevas pruebas selectivas",
-   "cita": "Se formará una bolsa de trabajo integrada por todos aquellos aspirantes que hubieran superado el ejercicio de la fase de oposición.",
+   "valor": "sí, bolsa de trabajo para cubrir vacantes, sustituciones, programas o exceso de tareas",
+   "cita": "La bolsa de trabajo será válida hasta la celebración de las próximas pruebas selectivas",
    "nivel": "literal"
   }
  },
  "rechazados": {
   "titulacion": {
    "motivo": "cita_no_literal",
-   "valor": "Graduado en Educación Secundaria Obligatoria, Graduado Escolar, Formación Profesional de primer Grado, o equivalente, o en condiciones de obtenerlo dentro del plazo de presentación de solicitudes",
-   "cita": "Estar en posesión del título de Graduado en Educación Secundaria Obligatoria o título de Graduado Escolar"
+   "valor": "Graduado en Educación Secundaria Obligatoria o título de Graduado Escolar, Formación Profesional de primer Grado, o equivalente",
+   "cita": "Estar en posesión del título de Graduado en Educación Secundaria Obligatoria"
   },
   "otros_requisitos": {
    "motivo": "cita_no_literal",
    "valor": "Estar en posesión del permiso de conducir tipo B",
    "cita": "Estar en posesión del permiso de conducir tipo B"
   },
-  "exenciones_tasa": {
+  "practicas_o_curso": {
    "motivo": "cita_no_literal",
-   "valor": "Sujetos pasivos en desempleo por periodo superior a seis meses en el último año abonarán la mitad, 4,29 euros",
-   "cita": "los sujetos pasivos que acrediten hallarse en situación de desempleo por período superior a seis meses en el último año, abonarán la mitad de ésta"
-  },
-  "meritos": {
-   "motivo": "cita_no_literal",
-   "valor": "Antigüedad hasta 18 puntos; cursos de formación hasta 9 puntos; titulación complementaria hasta 3 puntos",
-   "cita": "Antigüedad: Se valorará por meses de servicio completos, hasta un máximo de 18,00 puntos"
+   "valor": "no consta",
+   "cita": "Las bases no contienen periodo de prácticas ni curso selectivo."
   }
  }
 }

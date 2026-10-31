@@ -1,0 +1,87 @@
+{
+ "proceso": "boib:BOIB-2022-659773",
+ "documento": {
+  "id": "boib:BOIB-2022-659773",
+  "fuente": "BOIB",
+  "url": "https://www.caib.es/eboibfront/es/2022/11554/659773/convocatoria-y-bases-bolsa-de-trabajo-para-proveer",
+  "fecha": "2022-04-16",
+  "huella": "03542a0c0b8d7290668d80cc30c7aec9a1eb2b8e1990331307d42a786f88e9a3"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T15:25:39+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "C1",
+   "cita": "Grupo de clasificación C1, categoría de policía del Ayuntamiento de Valldemossa",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario interino",
+   "cita": "bolsa de trabajo de personal funcionario interino corresponden a la escala",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "la selección de las personas aspirantes se efectuará mediante concurso",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Título de bachillerato, técnico o equivalente, o estar en condiciones de obtenerlo en la fecha en que finalice el plazo de presentación de solicitudes",
+   "cita": "Estar en posesión del título de bachillerato, técnico o equivalente, o estar en condiciones de obtenerlo",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Catalán, nivel B2 (nivel avanzado)",
+   "cita": "Estar en posesión del nivel B2 (nivel avanzado) del conocimiento de la lengua catalana",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "10 días hábiles desde el día siguiente de la publicación de la convocatoria en el Boletín Oficial de las Islas Baleares",
+   "cita": "El plazo de presentación de solicitudes será de 10 días hábiles desde el día siguiente de la publicación",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "En el registro de entrada del Ayuntamiento de Valldemossa o en cualquiera de las formas previstas en la Ley 39/2015; modelo disponible en la sede electrónica",
+   "cita": "se tienen que presentar en el registro de entrada del Ayuntamiento de Valldemossa o en cualquier de las formas",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de anuncios y página web del Ayuntamiento (sede electrónica valldemossa.sedelectronica.es) y Boletín Oficial de las Islas Baleares",
+   "cita": "La convocatoria se tienen que publicar en el Boletín Oficial de las Islas Baleares y en la página web del Ayuntamiento",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Concurso: valoración de méritos según baremo (Anexo 1)"
+   ],
+   "cita": "la selección de las personas aspirantes se efectuará mediante concurso",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Curso de capacitación de la EBAP: nota x 0,8, máximo 8 puntos. Servicios prestados como policía local o turístico en Baleares: 0,5 puntos por mes, máximo 32 puntos",
+   "cita": "Por cada mes completo de servicios prestados y reconocidos como policía local o turístico en las Islas Baleares",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "Sí, bolsa de trabajo para proveer con personal funcionario interino necesidades urgentes en la policía local, con vigencia máxima de 2 años",
+   "cita": "la duración máxima de vigencia de la bolsa es de 2 años",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Policía del Ayuntamiento de Valldemossa (bolsa de trabajo de personal funcionario interino, escala de Administración Especial, subescala de Servicios Especiales, clase policía local)"
+   ],
+   "cita": "constituir una bolsa de trabajo de personal funcionario interino corresponden a la escala de Administración Especial"
+  },
+  "otros_requisitos": {
+   "motivo": "cita_no_literal",
+   "valor": "Nacionalidad española; 18 años cumplidos; diploma de aptitud del curso de formación básica de policía local; no padecer enfermedad o defecto físico incompatible; no haber sido separado del servicio ni inhabilitado; sin antecedentes penales por delitos dolosos; permisos de conducción A2 y B en vigor; compromiso de llevar armas mediante declaración jurada",
+   "cita": "Tener la nacionalidad española. Tener dieciocho años cumplidos."
+  }
+ }
+}

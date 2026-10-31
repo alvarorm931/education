@@ -5,11 +5,11 @@
   "fuente": "BOP-HUELVA",
   "url": "https://s2.diphuelva.es/portalweb/bope/anuncios/Anuncio_304549_BOP-93_2025.pdf",
   "fecha": "2025-05-19",
-  "huella": "540961bc624e12ada64a336c4f0d2d85024ad998eabfd39f6d489330ad4a0882"
+  "huella": "ab95364ae3183848c24da327cafc6012d1c763bc5ac4870c74ba9c38324959f3"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:43:02+00:00",
- "lote": "msgbatch_01XofVwxKEhyEjSzGog6wsD4",
+ "extraido": "2026-10-31T15:25:46+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
@@ -23,19 +23,24 @@
    "cita": "DENOMINACIÓN PLAZA TÉCNICO/A SUBVENCONES ADMINISTRATIVO/A",
    "nivel": "literal"
   },
+  "grupo": {
+   "valor": "A2 / C1 / C2",
+   "cita": "Grupo A C Subgrupo A2 C1 Nivel Complemento de Destino 22 18",
+   "nivel": "literal"
+  },
   "vinculo": {
    "valor": "funcionario de carrera",
    "cita": "PERSONAL FUNCIONARIO DE CARRERA: DENOMINACIÓN PLAZA TÉCNICO/A SUBVENCONES",
    "nivel": "literal"
   },
   "sistema": {
-   "valor": "oposición",
+   "valor": "concurso-oposición | oposición",
    "cita": "Sistema de acceso Concurso-Oposición libre Oposición libre Grupo A C",
    "nivel": "literal"
   },
   "titulacion": {
-   "valor": "Grado, Licenciatura o Diplomatura o titulación equivalente (Técnico/a Subvenciones); Bachiller o Técnico FP de segundo grado (Administrativo/a); Graduado en ESO o equivalente (Oficiales 1ª)",
-   "cita": "Grado, Licenciatura o Diplomatura o titulación equivalente de acuerdo a la normativa vigente",
+   "valor": "Grado, Licenciatura o Diplomatura o titulación equivalente (Técnico/a Subvenciones); Bachiller o Técnico FP de segundo grado (Administrativo/a); Graduado/a en ESO, EGB o FP de primer grado (Oficiales 1ª)",
+   "cita": "Titulación exigida Grado, Licenciatura o Diplomatura o titulación equivalente de acuerdo a la normativa vigente",
    "nivel": "literal"
   },
   "otros_requisitos": {
@@ -45,7 +50,7 @@
   },
   "idioma_cooficial": {
    "valor": "no consta",
-   "cita": "Acreditar conocimiento de inglés de nivel C1: estar en posesión del pertinente certificado",
+   "cita": "Otros requisitos Acreditar conocimiento de inglés de nivel C1",
    "nivel": "literal"
   },
   "tasa_euros": {
@@ -60,30 +65,30 @@
   },
   "ejercicios": {
    "valor": [
-    "Primero: test de 40 preguntas sobre temario común (60 min), eliminatorio",
-    "Segundo: test de 90 preguntas sobre temario específico (120 min), eliminatorio",
-    "Tercero: supuesto práctico escrito sobre temario específico, eliminatorio"
+    "Primero: test de 40 preguntas (Técnico/a Subvenciones), eliminatorio",
+    "Segundo: test de 90 preguntas sobre temario específico, eliminatorio",
+    "Tercero: supuesto práctico escrito, eliminatorio"
    ],
-   "cita": "Consistirá en la contestación, por escrito, de un cuestionario tipo test de 40 preguntas",
+   "cita": "Primero: Consistirá en la contestación, por escrito, de un cuestionario tipo test de 40 preguntas",
    "nivel": "literal"
   },
   "temas": {
    "valor": 60,
-   "cita": "Tema 60.- La igualdad de género: marco jurídico de referencia",
+   "cita": "Tema 60.- La igualdad de género: marco jurídico de referencia.",
    "nivel": "literal"
   },
   "bolsa": {
-   "valor": "sí, para cubrir bajas laborales, permisos, renuncias, bajas por incapacidad temporal o permanente, despido o situaciones similares",
+   "valor": "sí, bolsa de empleo con los aspirantes que superen el proceso, para cubrir bajas, permisos, renuncias y situaciones similares",
    "cita": "formando el resto de los aspirantes que hayan superado el proceso selectivo una bolsa de empleo",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "no consta",
+   "cita": "Los candidatos deberán acudir provistos del DNI o, en su defecto, pasaporte",
    "nivel": "literal"
   }
  },
  "rechazados": {
-  "grupo": {
-   "motivo": "cita_no_literal",
-   "valor": "A2 / C1 / C2",
-   "cita": "Grupo A Subgrupo A2 C1 Nivel Complemento de Destino 22 18"
-  },
   "plazas_total": {
    "motivo": "valor_no_en_cita",
    "valor": 6,
@@ -96,13 +101,13 @@
   },
   "presentacion": {
    "motivo": "cita_no_literal",
-   "valor": "preferentemente en el Registro telemático de la Sede Electrónica del Ayuntamiento, mediante modelo normalizado (Anexo I)",
-   "cita": "deberán presentar preferentemente su solicitud en el Registro telemático de la Sede Electrónica"
+   "valor": "Registro telemático de la Sede Electrónica del Ayuntamiento, preferentemente; también según art. 16.4 Ley 39/2015",
+   "cita": "preferentemente su solicitud en el Registro telemático de la Sede Electrónica"
   },
   "publicaciones": {
    "motivo": "cita_no_literal",
-   "valor": "Boletín Oficial de la Provincia de Huelva; Tablón de Anuncios de la Sede Electrónica y página web del Ayuntamiento",
-   "cita": "Igualmente las bases se publicarán íntegramente en el Tablón de Anuncios de la Sede Electrónica"
+   "valor": "Boletín Oficial de la Provincia de Huelva, Tablón de Anuncios de la Sede Electrónica y página web del Ayuntamiento (apartado Empleo)",
+   "cita": "Igualmente las bases se publicarán íntegramente en el Tablón de Anuncios de la Sede Electrónica y en la página web del Ayuntamiento"
   },
   "meritos": {
    "motivo": "cita_no_literal",

@@ -1,0 +1,60 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2022-5989",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2022-5989",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2022/08/16_154/2022_005989.pdf",
+  "fecha": "2022-08-16",
+  "huella": "d3ce01f105f8b382cc982fe913ae394553477f72cccae50b81017fd75a2eca98"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T15:25:16+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "funcionario interino",
+   "cita": "puesto de trabajo de Dinamizador/a de Juventud con carácter interino",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Comenzará a partir del día siguiente a la publicación de este edicto",
+   "cita": "El plazo de presentación de solicitudes comenzará a partir del día siguiente a la publicación de este edicto.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Dinamizador/a de Juventud"
+   ],
+   "cita": "convocatoria para la creación de una bolsa de empleo temporal, por sistema de oposición para un puesto de trabajo de Dinamizador/a de Juventud"
+  },
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "B",
+   "cita": "Dinamizador/a de Juventud con carácter interino (ejecución programa temporal del Plan de Municipalización de Políticas Integrales de Juventud del IVAJ encuadrado en el grupo B)"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "oposición",
+   "cita": "creación de una bolsa de empleo temporal, por sistema de oposición para un puesto de trabajo"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 1,
+   "cita": "convocatoria para la creación de una bolsa de empleo temporal, por sistema de oposición para un puesto de trabajo"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Tablón de Anuncios electrónico y Portal de Transparencia del Ayuntamiento de Finestrat",
+   "cita": "Las bases de selección se encuentran publicadas íntegramente, en el Tablón de Anuncios electrónico y en el Portal de Transparencia"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, bolsa de empleo temporal para cubrir el puesto de Dinamizador/a de Juventud con carácter interino",
+   "cita": "creación de una bolsa de empleo temporal, por sistema de oposición para un puesto de trabajo"
+  }
+ }
+}

@@ -5,11 +5,11 @@
   "fuente": "BOIB",
   "url": "https://www.caib.es/eboibfront/es/2025/12163/706101/convocatoria-de-una-plaza-de-tecnico-a-medio-a-de-",
   "fecha": "2025-09-25",
-  "huella": "da7f3b43d94426a0b63e8c79ce9bd2a70081273e3a48d84417f5f43e6f8ec47f"
+  "huella": "e32f1f4298d990e3903c813bcef346dab43bc021cb6296e36f53296a9af9ec57"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:42:44+00:00",
- "lote": "msgbatch_01XofVwxKEhyEjSzGog6wsD4",
+ "extraido": "2026-10-31T15:25:27+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
@@ -24,9 +24,14 @@
    "cita": "SUBGRUPO: A2",
    "nivel": "literal"
   },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "una plaza de Técnico/a medio/a de Recursos Humanos, vacante y dotada presupuestariamente",
+   "nivel": "literal"
+  },
   "sistema": {
    "valor": "concurso-oposición",
-   "cita": "PROCEDIMIENTO DE SELECCIÓN: Concurso-oposición libre",
+   "cita": "mediante el sistema de concurso-oposición",
    "nivel": "literal"
   },
   "plazas_total": {
@@ -34,14 +39,9 @@
    "cita": "NÚMERO DE PLAZAS: 1",
    "nivel": "literal"
   },
-  "plazas_turno_libre": {
-   "valor": 1,
-   "cita": "PROVISIÓN DEFINITIVA DE UNA PLAZA DE TÉCNICO/A DE RECURSOS HUMANOS, POR TURNO LIBRE",
-   "nivel": "literal"
-  },
   "otros_requisitos": {
-   "valor": "Nacionalidad española o de la UE; 16 años cumplidos y no exceder la edad de jubilación forzosa; no padecer enfermedad que impida las funciones; no estar separado de empleo público; no estar inhabilitado; no estar sometido a incapacidad específica; satisfacer los derechos de examen",
-   "cita": "Tener cumplidos los 16 años y no exceder, en su caso, de la edad máxima de jubilación forzosa, para el acceso al empleo público.",
+   "valor": "Nacionalidad española o de la UE; tener cumplidos 16 años y no exceder la edad de jubilación forzosa; no padecer enfermedad que impida las funciones; no haber sido separado de la función pública; no estar inhabilitado para funciones públicas",
+   "cita": "No padecer ninguna enfermedad ni disminución física o psíquica que impida el ejercicio de las correspondientes funciones.",
    "nivel": "literal"
   },
   "idioma_cooficial": {
@@ -55,27 +55,32 @@
    "nivel": "literal"
   },
   "exenciones_tasa": {
-   "valor": "Bonificación del 50 % para miembros de familias numerosas; exentos las personas con discapacidad igual o superior al 33 %",
+   "valor": "Bonificación del 50 % para miembros de familias numerosas; exentas las personas con discapacidad igual o superior al 33 %",
    "cita": "bonificación del 50 % para miembros de familias numerosas y exentos de pago las personas con discapacidad igual o superior al 33 %",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "Veinte días hábiles contados desde el día siguiente al de la publicación del anuncio en extracto en el Boletín Oficial del Estado",
+   "valor": "Veinte días hábiles desde el día siguiente a la publicación del anuncio en extracto en el Boletín Oficial del Estado",
    "cita": "dentro del plazo de veinte días hábiles contados a partir del día siguiente al de la publicación del anuncio en extracto",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Registro General presencial o electrónico, o medios del art. 16.4 Ley 39/2015; solicitud electrónica por la sede electrónica del Ayuntamiento de Manacor",
-   "cita": "Las solicitudes se deben presentar en el Registro General de forma presencial o electrónica",
+   "valor": "Registro General presencial o electrónico, o medios del art. 16.4 Ley 39/2015; electrónicamente a través de la sede electrónica del Ayuntamiento de Manacor",
+   "cita": "Para presentar la solicitud electrónicamente se debe hacer a través de la sede electrónica del Ayuntamiento de Manacor",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de anuncios de la sede electrónica del Ayuntamiento de Manacor; BOIB; extracto en BOE y prensa local",
+   "cita": "Los sucesivos anuncios, así como todas las notificaciones e incidencias producidas durante el proceso selectivo se publicarán en el tablón de anuncios",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Primer ejercicio: test de 50 preguntas (40 evaluables), 60 minutos, máximo 30 puntos, eliminatorio",
-    "Segundo ejercicio: desarrollo escrito de dos temas elegidos entre cuatro por sorteo, 120 minutos, máximo 20 puntos, eliminatorio",
-    "Tercer ejercicio: supuesto práctico vinculado al temario y al puesto, máximo 20 puntos, eliminatorio"
+    "Primer ejercicio: test de 50 preguntas (40 evaluables), 60 minutos, eliminatorio, máximo 30 puntos",
+    "Segundo ejercicio: desarrollo escrito de dos temas elegidos entre cuatro por sorteo, 120 minutos, eliminatorio, máximo 20 puntos",
+    "Tercer ejercicio: ejercicio práctico sobre el puesto, eliminatorio, máximo 20 puntos"
    ],
-   "cita": "Primer ejercicio (obligatorio y eliminatorio) Puntuación máxima: 30 puntos.",
+   "cita": "Consistirá en responder un cuestionario tipo test de un total de 50 preguntas con cuatro respuestas alternativas",
    "nivel": "literal"
   },
   "temas": {
@@ -84,36 +89,31 @@
    "nivel": "literal"
   },
   "meritos": {
-   "valor": "Experiencia profesional hasta 15 puntos; titulaciones académicas hasta 6 puntos; cursos de formación hasta 6,5 puntos; conocimientos de catalán hasta 2,5 puntos (fase de concurso máximo 30 puntos)",
-   "cita": "FASE DE CONCURSO: Puntuación máxima: 30 puntos",
+   "valor": "Experiencia profesional hasta 15 puntos; titulaciones académicas hasta 6 puntos; cursos de formación hasta 6,5 puntos; conocimientos de catalán hasta 2,50 puntos. Fase de concurso máxima 30 puntos",
+   "cita": "Puntuación máxima de este apartado: 15 puntos.",
    "nivel": "literal"
   },
   "bolsa": {
-   "valor": "Sí; bolsa de trabajo extraordinaria para sustituciones, bajas, vacaciones, permisos y licencias como personal funcionario interino; vigencia máxima de 3 años desde su publicación en el BOIB",
-   "cita": "El resto de personas candidatas pasarán a formar parte de una bolsa de trabajo",
+   "valor": "sí, bolsa de trabajo para sustituir bajas, vacaciones, permisos, licencias o nombramientos de personal funcionario interino, con vigencia máxima de 3 años",
+   "cita": "El resto de personas candidatas pasarán a formar parte de una bolsa de trabajo, por orden de puntuación",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "No consta",
+   "cita": "Antes de tomar posesión de la plaza, la persona interesada deberá hacer constar que no ocupa ninguna plaza",
    "nivel": "literal"
   }
  },
  "rechazados": {
-  "vinculo": {
-   "motivo": "cita_no_literal",
-   "valor": "funcionario de carrera",
-   "cita": "convocar una plaza de técnico/a de Recursos Humanos, por turno libre, de personal funcionario de carrera"
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "POR TURNO LIBRE, DE PERSONAL FUNCIONARIO DE CARRERA DEL AYUNTAMIENTO DE MANACOR"
   },
   "titulacion": {
    "motivo": "cita_no_literal",
    "valor": "Diplomatura o Grado en Derecho, Relaciones Laborales y Recursos Humanos, ADE, Economía, Gestión Pública o equivalente, relacionada con las funciones del puesto",
-   "cita": "Estar en disposición de la titulación universitaria de diplomatura o de Grado en Derecho, Relaciones Laborales y Recursos Humanos, ADE, Economía, Gestión Pública o equivalente"
-  },
-  "publicaciones": {
-   "motivo": "cita_no_literal",
-   "valor": "Tablón de anuncios de la sede electrónica del Ayuntamiento de Manacor; BOIB; BOE (extracto); prensa local",
-   "cita": "Los sucesivos anuncios... se publicarán en el tablón de anuncios de la sede electrónica del Ayuntamiento de Manacor."
-  },
-  "practicas_o_curso": {
-   "motivo": "cita_no_literal",
-   "valor": "No se prevé",
-   "cita": "No consta periodo de prácticas ni curso selectivo en las bases"
+   "cita": "Estar en disposición de la titulación universitaria de diplomatura o de Grado en Derecho, Relaciones Laborales y Recursos Humanos"
   }
  }
 }

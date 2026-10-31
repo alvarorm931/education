@@ -1,0 +1,55 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2022-2937",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2022-2937",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2022/05/11_88/2022_002937.pdf",
+  "fecha": "2022-05-11",
+  "huella": "cc7cf09f171434d3975a34aa7c1aa857080ccff087b6b8b788b1b1fefe24c980"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T15:25:37+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "C1",
+   "cita": "correspondiéndoles el Nivel C1 de titulación",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "la provisión en propiedad de seis plazas de Agente de Policía Local",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "provisión en propiedad de seis plazas de Agente de Policía Local, Escala de Administración Especial",
+   "nivel": "sin_signos"
+  },
+  "plazas_total": {
+   "valor": 6,
+   "cita": "la provisión en propiedad de seis plazas de Agente de Policía Local",
+   "nivel": "literal"
+  },
+  "plazas_turno_libre": {
+   "valor": 3,
+   "cita": "3 plaza por turno movilidad y 3 plaza por turno libre",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Agente de Policía Local"
+   ],
+   "cita": "modificación de las bases para la provisión en propiedad de 2 plazas de agente de policía local"
+  },
+  "plazas_promocion_interna": {
+   "motivo": "valor_no_en_cita",
+   "valor": 0,
+   "cita": "1 plaza por turno movilidad y 1 plaza por turno libre"
+  }
+ }
+}

@@ -1,0 +1,55 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2022-5990",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2022-5990",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2022/08/16_154/2022_005990.pdf",
+  "fecha": "2022-08-16",
+  "huella": "cf1a687179d1d7eac6dc66a855de5cea4a16b8a8e4cf6c386332fe4c3ddfd0bb"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T15:25:39+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Mantenimiento y Control del Hogar del Jubilado"
+   ],
+   "cita": "para un puesto de trabajo de naturaleza laboral de Mantenimiento y Control del Hogar del Jubilado",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "AP",
+   "cita": "encuadrado dentro del grupo AP, nivel 14",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Comenzará a partir del día siguiente a la publicación de este edicto",
+   "cita": "El plazo de presentación de solicitudes comenzará a partir del día siguiente a la publicación de este edicto.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "laboral temporal",
+   "cita": "constitución de una bolsa de empleo temporal, por sistema de oposición para un puesto de trabajo de naturaleza laboral"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "oposición",
+   "cita": "constitución de una bolsa de empleo temporal, por sistema de oposición para un puesto"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Tablón de Anuncios electrónico y Portal de Transparencia del Ayuntamiento de Finestrat",
+   "cita": "Las bases de selección se encuentran publicadas íntegramente, en el Tablón de Anuncios electrónico y en el Portal de Transparencia"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, bolsa de empleo temporal para cubrir el puesto de Mantenimiento y Control del Hogar del Jubilado",
+   "cita": "constitución de una bolsa de empleo temporal, por sistema de oposición para un puesto de trabajo"
+  }
+ }
+}

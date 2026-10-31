@@ -5,11 +5,11 @@
   "fuente": "BOE",
   "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2022-24478",
   "fecha": "2022-12-31",
-  "huella": "ce95ffa5bf9b4c917b36c6d406111cb5f52b898987b52e64edeb8da0f333ad66"
+  "huella": "7d36af650a8d932c8000d19ddc4a96056ff1a8c420c06d7a0b8b08f55706021a"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:55:51+00:00",
- "lote": "msgbatch_014eT3dLLVopBnuVgQ4syWD9",
+ "extraido": "2026-10-31T15:25:39+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
@@ -20,28 +20,33 @@
    "nivel": "literal"
   },
   "vinculo": {
-   "valor": "laboral temporal",
+   "valor": "otro",
    "cita": "por el sistema de estabilización de empleo temporal comprendida en el Real Decreto 408/2022",
    "nivel": "literal"
   },
   "sistema": {
    "valor": "concurso",
-   "cita": "Los procesos selectivos se realizarán mediante el sistema de concurso, con las valoraciones y puntuaciones que se especifican en el Anexo I.",
+   "cita": "Los procesos selectivos se realizarán mediante el sistema de concurso",
    "nivel": "literal"
   },
   "plazas_total": {
    "valor": 1,
-   "cita": "Una plaza de la Escala Especialista Técnico de Organismos Autónomos a Extinguir, especialidad Sanidad y Consumo",
+   "cita": "Una plaza de la Escala Especialista Técnico de Organismos Autónomos a Extinguir",
+   "nivel": "literal"
+  },
+  "plazas_turno_libre": {
+   "valor": 1,
+   "cita": "Una plaza de la Escala Especialista Técnico de Organismos Autónomos a Extinguir",
    "nivel": "literal"
   },
   "titulacion": {
    "valor": "Título de Bachiller o Técnico",
-   "cita": "estar en posesión o en condiciones de obtener Título de Bachiller o Técnico",
+   "cita": "deberán estar en posesión o en condiciones de obtener Título de Bachiller o Técnico",
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Posesión o condiciones de obtener Título de Bachiller o Técnico; homologación o equivalencia para titulaciones extranjeras; cumplir requisitos de la Orden HFP/688/2017 en el día de finalización del plazo y hasta la toma de posesión.",
-   "cita": "Además de los requisitos enumerados en la Orden HFP/688/2017, de 20 de julio, los aspirantes deberán estar en posesión o en condiciones de obtener Título de Bachiller o Técnico",
+   "valor": "Requisitos de la Orden HFP/688/2017; titulaciones extranjeras con credencial de homologación o certificado de equivalencia; posesión de requisitos al finalizar el plazo de solicitudes y hasta la toma de posesión",
+   "cita": "deberán poseer en el día de finalización del plazo de presentación de solicitudes y mantener hasta el momento de la toma de posesión",
    "nivel": "literal"
   },
   "tasa_euros": {
@@ -50,58 +55,48 @@
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "Veinte días hábiles contados a partir del día siguiente a la publicación de la convocatoria en el BOE",
+   "valor": "Veinte días hábiles desde el día siguiente a la publicación de la convocatoria en el BOE",
    "cita": "dispondrán de un plazo de veinte días hábiles contados a partir del día siguiente al de la fecha de publicación de esta convocatoria en el Boletín Oficial del Estado",
    "nivel": "literal"
   },
-  "presentacion": {
-   "valor": "Telemáticamente mediante el servicio Inscripción en Pruebas Selectivas del Punto de Acceso General, modelo 790, con certificado electrónico o cl@ve",
-   "cita": "la presentación de la instancia de solicitud y documentación ... deberá realizarse por vía electrónica haciendo uso del servicio de Inscripción en Pruebas Selectivas del Punto de Acceso General",
-   "nivel": "fragmentos"
-  },
   "publicaciones": {
-   "valor": "Punto de Acceso General (https://administracion.gob.es) y portal del Ministerio de Sanidad (https://www.sanidad.gob.es); lista de admitidos y excluidos y relación de aprobados en el BOE",
-   "cita": "La presente convocatoria se publicará, entre otros, en el Punto de Acceso General (https://administracion.gob.es) y en el portal del Ministerio de Sanidad",
+   "valor": "Punto de Acceso General (administracion.gob.es), portal del Ministerio de Sanidad (sanidad.gob.es) y Boletín Oficial del Estado",
+   "cita": "La presente convocatoria se publicará, entre otros, en el Punto de Acceso General",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Concurso de méritos profesionales y académicos (fase de concurso única)"
+    "Fase de concurso: méritos profesionales (60 %) y méritos académicos y de superación de ejercicios selectivos (40 %)"
    ],
    "cita": "El proceso selectivo de estabilización de empleo público temporal consistirá en un concurso de méritos profesionales y académicos.",
    "nivel": "literal"
   },
   "meritos": {
-   "valor": "Méritos profesionales hasta 60 puntos (0,5 por mes en funciones idénticas; 0,255 por mes en funciones diferentes). Académicos hasta 40 puntos: 20 por superación de ejercicios de la Escala de Ayudantes de Investigación; hasta 20 por cursos de formación (5 por curso).",
-   "cita": "La puntuación máxima a alcanzar será de 100 puntos de acuerdo con el siguiente baremo",
+   "valor": "Méritos profesionales hasta 60 puntos (0,5 puntos por mes en funciones idénticas, hasta 60; 0,255 puntos por mes en funciones diferentes, hasta 30,6). Académicos hasta 40 puntos (20 por superación de ejercicios de la Escala de Ayudantes de Investigación; hasta 20 por cursos)",
+   "cita": "La puntuación será de 0,5 puntos por mes de servicio hasta un máximo de 60 puntos (100%)",
    "nivel": "literal"
   },
   "bolsa": {
    "valor": "no",
-   "cita": "Finalizado el proceso selectivo, se publicará en el Boletín Oficial del Estado la relación de aspirantes que lo hayan superado, por orden de puntuación.",
+   "cita": "El tribunal no podrá proponer el acceso a la condición de funcionario de un número superior de aprobados al de plazas convocadas.",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "no",
+   "cita": "deberán presentar a la Subsecretaría de Sanidad la documentación requerida para su nombramiento como funcionarios de carrera",
    "nivel": "literal"
   }
  },
  "rechazados": {
-  "grupo": {
-   "motivo": "cita_no_literal",
-   "valor": "Sin dato en el texto",
-   "cita": ""
-  },
-  "plazas_turno_libre": {
-   "motivo": "valor_no_en_cita",
-   "valor": 1,
-   "cita": "Forma de acceso, se consignará la letra «E» para las personas aspirantes del sistema general de acceso libre de estabilización."
-  },
   "exenciones_tasa": {
    "motivo": "cita_no_literal",
-   "valor": "Discapacidad igual o superior al 33 %; demandantes de empleo con requisitos; familias numerosas (100 % categoría especial, 50 % general); víctimas del terrorismo.",
+   "valor": "Exentos: discapacidad igual o superior al 33 %; demandantes de empleo con requisitos de rentas; víctimas del terrorismo. Familias numerosas: exención 100 % categoría especial y 50 % general",
    "cita": "Estarán exentos del pago de la tasa por derechos de concurso: a) Las personas con un grado de discapacidad igual o superior al 33 por ciento"
   },
-  "practicas_o_curso": {
+  "presentacion": {
    "motivo": "cita_no_literal",
-   "valor": "Sin dato en el texto",
-   "cita": ""
+   "valor": "Por vía electrónica, modelo 790, a través del servicio de Inscripción en Pruebas Selectivas del Punto de Acceso General",
+   "cita": "la presentación de la instancia de solicitud y documentación deberá realizarse por vía electrónica"
   }
  }
 }

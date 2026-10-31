@@ -5,26 +5,28 @@
   "fuente": "BOP-TOLEDO",
   "url": "https://bop.diputoledo.es/webEbop/DocGet?id=23026573;0&insert_number=1273&insert_year=2023",
   "fecha": "2023-02-14",
-  "huella": "8e6858a81d5938ea9795a21e4703a7d7da2ea41eede06ea5c8aa4bc1f569cd67"
+  "huella": "8e81890ac5e82963e76b0cfa97d6dad5b2b719892163fad6183483c619691fab"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:56:46+00:00",
- "lote": "msgbatch_0167qWfLXqjGo8Hv43cM3LuM",
+ "extraido": "2026-10-31T15:25:46+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
-   "valor": "Arquitectos (A1)",
-   "cita": "aprobaron las bases y la convocatoria para la constitución de la bolsa de trabajo temporal de Arquitectos (A1)",
+   "valor": [
+    "Arquitectos (A1)"
+   ],
+   "cita": "constitución de la bolsa de trabajo temporal de Arquitectos (A1), como personal laboral, media jornada",
    "nivel": "literal"
   },
   "grupo": {
    "valor": "A1",
-   "cita": "la bolsa de trabajo temporal de Arquitectos (A1), como personal laboral, media jornada",
+   "cita": "bolsa de trabajo temporal de Arquitectos (A1), como personal laboral, media jornada",
    "nivel": "literal"
   },
   "vinculo": {
    "valor": "laboral temporal",
-   "cita": "la bolsa de trabajo temporal de Arquitectos (A1), como personal laboral, media jornada del Ayuntamiento de Pepino",
+   "cita": "constitución de la bolsa de trabajo temporal de Arquitectos (A1), como personal laboral, media jornada",
    "nivel": "literal"
   },
   "sistema": {
@@ -33,58 +35,63 @@
    "nivel": "literal"
   },
   "titulacion": {
-   "valor": "Título de Arquitecto o aquel que habilite para el ejercicio de la profesión regulada de Arquitecto",
+   "valor": "Arquitecto o título que habilite para el ejercicio de la profesión regulada de Arquitecto",
    "cita": "Estar en posesión o en condiciones de obtenerlo por haber completado los estudios correspondientes del título de Arquitecto",
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Nacionalidad española o de Estado miembro de la UE; capacidad funcional; tener cumplidos 16 años y no exceder la edad máxima de jubilación forzosa; no haber sido separado del servicio de las Administraciones Públicas mediante expediente disciplinario.",
-   "cita": "Tener la nacionalidad española o de alguno de los Estados miembros de la Unión Europea, de conformidad con lo dispuesto en el art. 57",
+   "valor": "Nacionalidad española o de Estado miembro de la UE; capacidad funcional; tener cumplidos 16 años y no exceder la edad máxima de jubilación forzosa; no haber sido separado del servicio de las Administraciones Públicas ni inhabilitado",
+   "cita": "Tener la nacionalidad española o de alguno de los Estados miembros de la Unión Europea, de conformidad con lo dispuesto",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Página web del Ayuntamiento (www.aytopepino.com) y tablón de edictos del mismo",
-   "cita": "publicará la convocatoria del presente proceso selectivo para constituir la correspondiente Bolsa en la página web del Excmo. Ayuntamiento de Pepino",
+   "valor": "Página web del Ayuntamiento de Pepino (www.aytopepino.com) y tablón de edictos del mismo",
+   "cita": "publicará la convocatoria del presente proceso selectivo para constituir la correspondiente Bolsa en la página web",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Única prueba: cuestionario tipo test de 70 preguntas más cinco de reserva, eliminatorio, puntuación máxima 10 puntos, mínimo 5 para superar"
+    "Prueba tipo test teórica de 70 preguntas más cinco de reserva, eliminatoria, puntuación máxima 10, mínimo 5 puntos"
    ],
-   "cita": "Única prueba.- Será de carácter teórico y consistirá en contestar por escrito un cuestionario tipo test de 70 preguntas",
+   "cita": "consistirá en contestar por escrito un cuestionario tipo test de 70 preguntas con respuestas alternativas",
+   "nivel": "literal"
+  },
+  "temas": {
+   "valor": 30,
+   "cita": "Tema 30.- Cubiertas planas e inclinadas. Definición y tipologías constructivas.",
    "nivel": "literal"
   },
   "meritos": {
-   "valor": "No se valoran méritos en concurso; la ordenación se hace por la puntuación de la prueba tipo test y, en caso de empate, sorteo del Tribunal",
-   "cita": "El orden de clasificación se obtendrá aplicando, por orden, los siguientes criterios: 1º.- Puntuación obtenida en la prueba tipo test.",
+   "valor": "No se valoran méritos; la ordenación se realiza según la puntuación de la prueba tipo test, con sorteo en caso de empate",
+   "cita": "La ordenación de las personas integrantes de la Bolsa de Trabajo se realizará respetando en todo caso las puntuaciones",
    "nivel": "literal"
   },
   "bolsa": {
-   "valor": "sí, bolsa de trabajo temporal de Arquitectos (A1) para contrataciones temporales de media jornada",
-   "cita": "la constitución de la bolsa de trabajo temporal de Arquitectos (A1), como personal laboral, media jornada",
-   "nivel": "literal"
-  },
-  "practicas_o_curso": {
-   "valor": "no consta",
-   "cita": "Lo s aspirantes podrán recusarlos cuando concurra alguna de dichas circunstancias.",
+   "valor": "sí, bolsa de trabajo temporal para Arquitectos (A1), media jornada",
+   "cita": "constitución de la bolsa de trabajo temporal de Arquitectos (A1), como personal laboral, media jornada",
    "nivel": "literal"
   }
  },
  "rechazados": {
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 0,
+   "cita": "para constituir la correspondiente Bolsa en la página web del Excmo. Ayuntamiento"
+  },
+  "tasa_euros": {
+   "motivo": "cita_no_literal",
+   "valor": 0,
+   "cita": "Las solicitudes para participar en el proceso selectivo se dirigirán al Alcalde-Presidente"
+  },
   "plazo_solicitudes": {
    "motivo": "cita_no_literal",
-   "valor": "CINCO días hábiles a contar desde el siguiente a la publicación del anuncio en el tablón de edictos",
+   "valor": "cinco días hábiles",
    "cita": "El plazo de presentación es de CINCO días hábiles a contar desde el siguiente a la publicación del anuncio en el tablón de edictos"
   },
   "presentacion": {
    "motivo": "cita_no_literal",
-   "valor": "Preferentemente por vía telemática en la sede electrónica del Ayuntamiento de Pepino; también en la forma del artículo 16 de la Ley 39/2015",
+   "valor": "Preferentemente por vía telemática en la sede electrónica del Excmo. Ayuntamiento de Pepino; también en las formas del artículo 16 de la Ley 39/2015",
    "cita": "se presentarán preferentemente por vía telemática en la sede electrónica del Excmo. Ayuntamiento de Pepino"
-  },
-  "temas": {
-   "motivo": "cita_no_literal",
-   "valor": 30,
-   "cita": "Tema 1.- La Constitución Española de 1978. Tema 30.- Cubiertas planas e inclinadas. Definición y tipologías constructivas."
   }
  }
 }

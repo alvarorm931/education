@@ -5,11 +5,11 @@
   "fuente": "BOP-PALENCIA",
   "url": "https://www.diputaciondepalencia.es/system/files/bop/2024/20240429-bop-52-Ordinario.pdf",
   "fecha": "2024-04-29",
-  "huella": "5d76df95c94823b34aa0b531bd022b66b6cc5c7240b746145257ed2b3ada6e0e"
+  "huella": "13927a81895102bf26e0b08cdd8d1c64a0cbcdb2dc83bb8bb1c915c53ab75345"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:54:31+00:00",
- "lote": "msgbatch_01HRnX7cDVMkRZD7mBamCmLu",
+ "extraido": "2026-10-31T15:25:25+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
@@ -20,6 +20,11 @@
   "grupo": {
    "valor": "C2",
    "cita": "Subgrupo asimilado: C2 Titulación exigible: Graduado escolar, Formación Profesional de primer grado, o equivalente.",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "contrato de sustitución hasta que se cubra la plaza reglamentariamente",
    "nivel": "literal"
   },
   "sistema": {
@@ -38,39 +43,39 @@
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Nacionalidad española (sin perjuicio del art. 57 TREBEP); capacidad funcional; tener cumplidos 16 años y no exceder la edad de jubilación forzosa; no estar inhabilitado ni separado de la Administración; permiso de conducir clase B",
+   "valor": "Nacionalidad española (con excepciones del art. 57 TREBEP), capacidad funcional, tener cumplidos 16 años y no exceder la edad de jubilación forzosa, permiso de conducir clase B",
    "cita": "Estar en posesión del permiso de conducir clase B.",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
    "valor": "DIEZ DÍAS HÁBILES contados a partir del día siguiente al de la publicación de la convocatoria en el BOLETÍN OFICIAL DE LA PROVINCIA",
-   "cita": "en el plazo de DIEZ DÍAS HÁBILES contados a partir del día siguiente al de la publicación de la convocatoria en el BOLETÍN OFICIAL DE LA PROVINCIA de Palencia",
+   "cita": "en el plazo de DIEZ DÍAS HÁBILES contados a partir del día siguiente al de la publicación de la convocatoria en el BOLETÍN OFICIAL DE LA PROVINCIA",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Preferentemente por vía electrónica en el Registro electrónico del Ayuntamiento o en la sede electrónica (guardo.sedelectronica.es); también en papel en el Registro General o según art. 16 Ley 39/2015",
-   "cita": "Las solicitudes se presentarán preferentemente por vía electrónica.",
+   "valor": "Registro de entrada del Ayuntamiento, Sede Electrónica (https://guardo.sedelectronica.es/) o procedimiento del artículo 16.4 de la Ley 39/2015",
+   "cita": "se presentarán en el Registro de entrada de este Ayuntamiento, en la Sede Electrónica (https://guardo.sedelectronica.es/)",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "BOP de Palencia, tablón de edictos del Ayuntamiento y tablón de anuncios de la sede electrónica (guardo.sedelectronica.es)",
-   "cita": "Las presentes bases serán publicadas en el BOLETÍN OFICIAL DE LA PROVINCIA de Palencia, así como en el Tablón de edictos del Ayuntamiento de Guardo",
+   "valor": "BOLETÍN OFICIAL DE LA PROVINCIA, Tablón de edictos del Ayuntamiento y Tablón de Anuncios de la sede electrónica",
+   "cita": "mediante publicidad en el BOLETÍN OFICIAL DE LA PROVINCIA, Tablón de Anuncios del Ayuntamiento y en la sede electrónica municipal",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Ejercicio único: test de 30 preguntas más 5 de reserva, con tres respuestas alternativas, en 45 minutos (puntuación máxima 10; eliminados los que no lleguen a 5)"
+    "Ejercicio único: test de 30 preguntas más 5 de reserva, 45 minutos, tres respuestas alternativas"
    ],
    "cita": "Consistirá en responder en un tiempo de 45 minutos un cuestionario tipo test de 30 preguntas",
    "nivel": "literal"
   },
   "meritos": {
-   "valor": "Sin fase de concurso; el sistema es solo oposición",
-   "cita": "El sistema selectivo es el de oposición.",
+   "valor": "No se valoran méritos; el proceso es únicamente oposición",
+   "cita": "El procedimiento de selección de los aspirantes se realizará mediante oposición.",
    "nivel": "literal"
   },
   "bolsa": {
-   "valor": "sí, para futuros llamamientos interinos con los aspirantes que superen el proceso sin propuesta de contratación, por orden de puntuación",
+   "valor": "sí, para futuros llamamientos interinos de los aspirantes que superaron el proceso sin propuesta de contratación",
    "cita": "podrá ser utilizada por el Ayuntamiento de Guardo para atender futuros llamamientos interinos",
    "nivel": "literal"
   },
@@ -81,15 +86,15 @@
   }
  },
  "rechazados": {
-  "vinculo": {
+  "tasa_euros": {
    "motivo": "cita_no_literal",
-   "valor": "laboral temporal",
-   "cita": "contratación como personal laboral temporal (contrato de sustitución hasta que se cubra la plaza reglamentariamente)"
+   "valor": 0,
+   "cita": "no aparece importe de tasa de derechos de examen en las bases"
   },
   "practicas_o_curso": {
    "motivo": "cita_no_literal",
-   "valor": "no consta",
-   "cita": "Lo previsto en las bases no menciona periodo de prácticas ni curso selectivo"
+   "valor": "no se prevé periodo de prácticas ni curso selectivo",
+   "cita": "no aparece periodo de prácticas ni curso selectivo en las bases"
   }
  }
 }

@@ -5,121 +5,116 @@
   "fuente": "BOPB",
   "url": "https://bop.diba.cat/anunci/3745700/bases-reguladores-del-proces-selectiu-de-quatre-places-d-oficial-de-segona-incloses-en-l-oferta-publica-d-ocupacio-per-a-l-any-2023-ajuntament-d-abrera",
   "fecha": "2025-03-25",
-  "huella": "263e0484274e1942cb9d51b7428b59d8e3ac154e662e9d4833d1eb2b59839beb"
+  "huella": "cb4e25efc772960ee38deeeb5ab4cb246bfa2946f5b07262f6a70c023205845e"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:46:09+00:00",
- "lote": "msgbatch_017vJZdAmjTkBDdH14aLEdCv",
+ "extraido": "2026-10-31T15:25:21+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
+  "denominacion": {
+   "valor": [
+    "Oficial de segona"
+   ],
+   "cita": "categoria Oficial de Segona",
+   "nivel": "literal"
+  },
   "vinculo": {
-   "valor": "personal laboral fix",
+   "valor": "personal laboral fijo",
    "cita": "Classe de personal: Laboral fix",
    "nivel": "literal"
   },
+  "plazas_total": {
+   "valor": 4,
+   "cita": "quatre (4) places d'Oficial de segona",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Formación Profesional de Primer Grado, Graduado escolar/ESO o equivalente, o en condiciones de obtenerla",
+   "cita": "La titulació requerida per garantir les competències per dur a terme les funcions del lloc de treball és de Formació Professional de Primer Grau",
+   "nivel": "literal"
+  },
   "otros_requisitos": {
-   "valor": "Nacionalidad; edad mínima 16 años; capacidad funcional; carnet de conducir B; no estar separado del servicio de Administración pública ni inhabilitado; conocimiento de catalán nivel B1; castellano para personas extranjeras no hispanohablantes",
+   "valor": "Tener 16 años cumplidos antes de finalizar el plazo; capacidad funcional; carnet de conducir B; nacionalidad conforme a la base 3.1; no estar separado ni inhabilitado.",
    "cita": "Estar en possessió del carnet de conducció de vehicles (B)",
    "nivel": "literal"
   },
   "idioma_cooficial": {
-   "valor": "catalán nivel B1",
-   "cita": "Tenir coneixements de llengua catalana de nivell B1",
+   "valor": "Catalán nivel B1 (o prueba de conocimientos); castellano para personas extranjeras no hispanohablantes",
+   "cita": "Tenir coneixements de llengua catalana de nivell B1, d’acord amb el marc europeu",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "veinte días hábiles desde el día siguiente a la última publicación del anuncio de la convocatoria en el BOPB, DOGC o BOE",
-   "cita": "El termini de presentació de sol·licituds serà de vint dies hàbils a comptar a partir de l'endemà de la darrera publicació",
+   "valor": "Veinte días hábiles a contar desde el día siguiente a la última publicación de la convocatoria en el BOPB, DOGC o BOE",
+   "cita": "El termini per a la presentació de sol·licituds serà de vint dies hàbils a comptar a partir de l’endemà",
    "nivel": "literal"
   },
+  "meritos": {
+   "valor": "Fase de concurso: méritos presentados tras superar la oposición, con documentación acreditativa; la puntuación concreta no aparece en el texto extraído",
+   "cita": "Les persones aspirants que hagin superat la fase d’oposició, disposaran d’un termini de 5 dies hàbils",
+   "nivel": "sin_signos"
+  },
   "practicas_o_curso": {
-   "valor": "periodo de prueba de 2 meses",
-   "cita": "Es fixarà un període de proves de 2 mesos d'acord amb el que estableix l'article 54",
+   "valor": "Periodo de prueba de 2 meses bajo tutoría del responsable de la unidad",
+   "cita": "Es fixarà un període de proves de 2 mesos d’acord amb el que estableix l’article 54",
    "nivel": "literal"
   }
  },
  "rechazados": {
-  "denominacion": {
-   "motivo": "cita_no_literal",
-   "valor": [
-    "Oficial de segona"
-   ],
-   "cita": "Categoria Oficial de Segona D1 (equivalent al subgrup de classificació C2)"
-  },
   "grupo": {
    "motivo": "cita_no_literal",
    "valor": "C2",
-   "cita": "Oficial de segona D1 (equivalent al subgrup de classificació C2)"
+   "cita": "equivalente al subgrupo de clasificación C2"
   },
   "sistema": {
    "motivo": "cita_no_literal",
    "valor": "concurso-oposición",
    "cita": "pel sistema de concurs oposició amb constitució de borsa de treball"
   },
-  "plazas_total": {
-   "motivo": "cita_no_literal",
-   "valor": 4,
-   "cita": "selecció de quatre (4) places d'Oficial de segona"
-  },
   "plazas_turno_libre": {
    "motivo": "cita_no_literal",
    "valor": 4,
-   "cita": "El sistema de selecció és de concurs oposició i s'articula en torn lliure"
-  },
-  "plazas_discapacidad": {
-   "motivo": "cita_no_literal",
-   "valor": 0,
-   "cita": "no se reserva plaza para personas con discapacidad"
-  },
-  "titulacion": {
-   "motivo": "cita_no_literal",
-   "valor": "Formació Professional de Primer Grau, Graduat escolar/ESO o equivalent",
-   "cita": "La titulació requerida és de Formació Professional de Primer Grau, Graduat escolar/ESO o equivalent"
+   "cita": "s’article 2 sistema de selecció concurs oposició s’articula en torn lliure"
   },
   "tasa_euros": {
    "motivo": "cita_no_literal",
    "valor": 35,
-   "cita": "les persones aspirants hauran d'abonar en concepte de taxa d'inscripció (taxa drets d'examen) l'import corresponent de 35€"
+   "cita": "les persones aspirants hauran d'abonar en concepte de taxa d'inscripció l'import corresponent de 35€"
   },
   "exenciones_tasa": {
    "motivo": "cita_no_literal",
-   "valor": "Exención para personas demandantes de empleo en situación de desempleo, con certificado DARDO y certificado del SEPE de no ser beneficiario de prestaciones por desempleo",
-   "cita": "figurar com a demandants d'ocupació (article 5.3 de l'Ordenança fiscal)"
+   "valor": "Exentos quienes figuren como demandantes de empleo y no perciben prestación por desempleo, mediante certificado de la oficina de trabajo",
+   "cita": "figurar com a demandants d’ocupació, la persona sol·licitant haurà de remetre els documents acreditatius"
   },
   "presentacion": {
    "motivo": "cita_no_literal",
-   "valor": "Preferentemente en el registro electrónico del Ayuntamiento o de las administraciones públicas; presencial en el registro municipal, Correos, representaciones diplomáticas u oficinas de asistencia en materia de registros",
-   "cita": "Preferentment en el registre electrònic de l'Ajuntament o en el registre electrònic de les administracions públiques"
+   "valor": "Preferentemente en el registro electrónico del Ayuntamiento o de las administraciones públicas; presencial, correos o representaciones consulares",
+   "cita": "Preferentment en el registre electrònic de l’Ajuntament o en el registre electrònic de les administracions públiques"
   },
   "publicaciones": {
    "motivo": "cita_no_literal",
-   "valor": "Tablón de anuncios de la sede electrónica, web municipal, BOPB, DOGC y BOE",
-   "cita": "al tauler d'anuncis de la seu electrònica de l'ajuntament d'Abrera i al web de l'ajuntament d'Abrera"
+   "valor": "Tablón de anuncios de la sede electrónica, web municipal y BOPB; anuncio de convocatoria también en DOGC y BOE",
+   "cita": "es farà al butlletí oficial de la província de Barcelona, al tauler d’anuncis de la seu electrònica"
   },
   "ejercicios": {
    "motivo": "cita_no_literal",
    "valor": [
-    "Primera prueba: test de conocimientos generales y específicos, 30 preguntas, eliminatoria (0-20 puntos)",
-    "Segunda prueba: supuestos prácticos o tareas manuales, eliminatoria (0-30 puntos)",
-    "Tercera prueba: conocimientos de catalán y castellano, apto/no apto, eliminatoria",
-    "Cuarta prueba: test de personalidad y competencias más entrevista, eliminatoria (20 puntos)"
+    "Prueba de conocimientos generales y específicos tipo test (30 preguntas, 45 min)",
+    "Supuestos prácticos (máx. 120 min)",
+    "Prueba de conocimientos de catalán y, en su caso, castellano",
+    "Prueba de competencias profesionales y entrevista personal"
    ],
-   "cita": "Primera prova. Prova de coneixements generals i específics. De caràcter obligatori i eliminatori"
+   "cita": "Consistirà a respondre per escrit un qüestionari elaborat pel tribunal qualificador, tipus test, amb 4 respostes"
   },
   "temas": {
-   "motivo": "cita_no_literal",
+   "motivo": "valor_no_en_cita",
    "valor": 27,
-   "cita": "ANNEX I – TEMARI Temari 1. El municipi d'Abrera ... 27. Normes de seguretat i higiene"
-  },
-  "meritos": {
-   "motivo": "cita_no_literal",
-   "valor": "Valoración de méritos en la fase de concurso, presentados tras superar la oposición en plazo de 5 días hábiles; la puntuación máxima no consta en el texto",
-   "cita": "Les persones aspirants que hagin superat la fase d'oposició disposaran d'un termini de 5 dies hàbils"
+   "cita": "ANNEX I – TEMARI Temari 1. El municipi d’Abrera"
   },
   "bolsa": {
    "motivo": "cita_no_literal",
-   "valor": "sí, para cubrir sustituciones, bajas, vacantes temporales y acumulación de tareas de oficial de segunda, con vigencia de 2 años",
-   "cita": "es crea una borsa de treball que l'Ajuntament utilitzarà per cobrir les vacants temporals"
+   "valor": "Sí, bolsa de trabajo para cubrir vacantes temporales, sustituciones e interinidades de oficial de segunda",
+   "cita": "s’incorporaran a una borsa de treball que l’Ajuntament utilitzarà per cobrir les vacants temporals"
   }
  }
 }

@@ -5,18 +5,16 @@
   "fuente": "BOP-GUADALAJARA",
   "url": "https://boletin.dguadalajara.es/boletin/pdf/pdf2023_1137.pdf",
   "fecha": "2023-03-31",
-  "huella": "7189d0ec3e9e11a707ae60cd2fca267371c7f41e747eb62221a600d9491f8e64"
+  "huella": "ea4b8c8e929d81711778c31f7173fdb5472b8a16209dd7cabe556257f11b23d2"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:56:54+00:00",
- "lote": "msgbatch_0167qWfLXqjGo8Hv43cM3LuM",
+ "extraido": "2026-10-31T15:25:35+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
-   "valor": [
-    "Oficial de Oficios (Albañilería)"
-   ],
-   "cita": "LA PLAZA DE OFICIAL DE OFICIOS (ALBAÑILERÍA) ESTÁ INTEGRADA EN LA ESCALA DE ADMINISTRACIÓN ESPECIAL",
+   "valor": "Oficial de Oficios (Albañilería)",
+   "cita": "plaza de OFICIAL DE OFICIOS (ALBAÑILERÍA) está integrada en la escala de Administración Especial",
    "nivel": "literal"
   },
   "grupo": {
@@ -24,13 +22,13 @@
    "cita": "grupo de clasificación profesional C, subgrupo C2",
    "nivel": "literal"
   },
-  "sistema": {
-   "valor": "concurso-oposición",
-   "cita": "El proceso de selección constará de dos fases: concurso y oposición.",
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "nombramiento, con carácter temporal, del personal que sea necesario para la cobertura provisional de vacantes",
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Estar en posesión del permiso de conducir tipo B",
+   "valor": "Estar en posesión del permiso de conducir tipo B.",
    "cita": "Estar en posesión del permiso de conducir tipo Bb.",
    "nivel": "literal"
   },
@@ -40,58 +38,58 @@
    "nivel": "literal"
   },
   "exenciones_tasa": {
-   "valor": "Desempleados por periodo superior a seis meses en el último año abonan la mitad (4,29 euros)",
-   "cita": "los sujetos pasivos que acrediten hallarse en situación de desempleo por período superior a seis meses en el último año",
+   "valor": "Los sujetos pasivos en situación de desempleo por período superior a seis meses en el último año abonarán la mitad de la tasa, es decir, 4,29 euros.",
+   "cita": "abonarán la mitad de ésta, es decir, cuatro euros con veintinueve céntimos (4,29€)",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "Diez días naturales desde el siguiente a la publicación de la convocatoria en el BOP",
+   "valor": "Diez días naturales, contados a partir del siguiente a la publicación de la convocatoria en el Boletín Oficial de la Provincia",
    "cita": "en el plazo de diez días naturales, contados a partir del siguiente a aquél en que aparezca publicada",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Preferentemente de forma telemática; también según artículo 16 de la Ley 39/2015",
-   "cita": "preferentemente de forma telemática, en el plazo de diez días naturales",
+   "valor": "Preferentemente de forma telemática, mediante instancia (Anexo I) en la sede electrónica de la Diputación o en la forma del artículo 16 de la Ley 39/2015",
+   "cita": "debidamente cumplimentadas y preferentemente de forma telemática",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Boletín Oficial de la Provincia, tablón de anuncios y sede electrónica de la Diputación",
+   "valor": "Boletín Oficial de la Provincia, Tablón de Anuncios y sede electrónica de la Diputación Provincial",
    "cita": "será publicada en el Boletín Oficial de la Provincia, Tablón de Anuncios y sede electrónica de esta Corporación",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Fase de oposición: ejercicio práctico con parte teórica y otra práctica, obligatorio y eliminatorio",
-    "Fase de concurso: méritos valorados tras la oposición, no eliminatoria"
+    "Fase de oposición (75%, hasta 90 puntos): prueba práctica obligatoria y eliminatoria, con parte teórica y otra práctica",
+    "Fase de concurso (25%, hasta 30 puntos): antigüedad, cursos de formación, titulación complementaria"
    ],
    "cita": "La oposición constará de un ejercicio (con una parte teórica y otra práctica), de carácter obligatorio y eliminatorio",
    "nivel": "literal"
   },
-  "temas": {
-   "valor": 11,
-   "cita": "TEMA 11. PREVENCIÓN DE RIESGOS LABORALES. CARTA DE SERVICIOS DE CENTROS COMARCALES.",
-   "nivel": "literal"
-  },
   "bolsa": {
-   "valor": "Sí, bolsa de trabajo temporal de Oficial de Oficios Albañilería válida hasta nuevas pruebas o nueva bolsa",
-   "cita": "Se formará una bolsa de trabajo integrada por todos aquellos aspirantes que hubieran superado el ejercicio de la fase de oposición.",
+   "valor": "Sí, bolsa de trabajo temporal para cubrir vacantes provisionales, sustituciones transitorias, ejecución de programas o exceso o acumulación de tareas",
+   "cita": "para el nombramiento, con carácter temporal, del personal que sea necesario para la cobertura provisional de vacantes",
    "nivel": "literal"
   }
  },
  "rechazados": {
-  "vinculo": {
+  "sistema": {
    "motivo": "cita_no_literal",
-   "valor": "laboral temporal",
-   "cita": "bolsa de trabajo temporal para el nombramiento, con carácter temporal, del personal"
+   "valor": "concurso-oposición",
+   "cita": "Fase de concurso y oposición. El proceso de selección constará de dos fases: concurso y oposición."
   },
   "titulacion": {
    "motivo": "cita_no_literal",
-   "valor": "Graduado en Educación Secundaria Obligatoria, Graduado Escolar, Formación Profesional de primer Grado, o equivalente, o en condiciones de obtenerlo",
-   "cita": "Estar en posesión del título de Graduado en Educación Secundaria Obligatoria o título de Graduado Escolar"
+   "valor": "Graduado en Educación Secundaria Obligatoria o título de Graduado Escolar, Formación Profesional de primer Grado, o equivalente",
+   "cita": "Estar en posesión del título de Graduado en Educación Secundaria Obligatoria"
+  },
+  "temas": {
+   "motivo": "valor_no_en_cita",
+   "valor": 11,
+   "cita": "TEMA 1. EL MUNICIPIO Y LA PROVINCIA EN EL RÉGIMEN LOCAL: ORGANIZACIÓN Y COMPETENCIAS."
   },
   "meritos": {
    "motivo": "cita_no_literal",
-   "valor": "Antigüedad hasta 18 puntos; cursos de formación hasta 9 puntos; titulación complementaria hasta 3 puntos; fase de concurso con máximo 30 puntos",
+   "valor": "Antigüedad hasta 18 puntos; cursos de formación y perfeccionamiento hasta 9 puntos; titulación complementaria hasta 3 puntos",
    "cita": "Antigüedad: Se valorará por meses de servicio completos, hasta un máximo de 18,00 puntos"
   }
  }

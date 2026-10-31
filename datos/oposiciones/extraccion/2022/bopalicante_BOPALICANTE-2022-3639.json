@@ -1,0 +1,85 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2022-3639",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2022-3639",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2022/05/30_101/2022_003639.pdf",
+  "fecha": "2022-05-30",
+  "huella": "60ad9d5b356c376b3c00abfce2fb45a8de516597bfa2f9346a8ac5cc07122eea"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T15:25:31+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Oficiales de Obras / Vías Públicas / Jardinería – Forestal",
+    "Peones de cometidos varios",
+    "Operario/a de Limpieza",
+    "Conserjes"
+   ],
+   "cita": "6 Oficiales de Obras / Vías Públicas / Jardinería – Forestal. 24 Peones de cometidos varios. 10 Operario/a de Limpieza. 10 Conserjes.",
+   "nivel": "sin_signos"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "La selección de los aspirantes se hará mediante el sistema selectivo de concurso de méritos.",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Estar inscrito en el servicio público de empleo con una antigüedad mínima de 1 mes ininterrumpido como demandante de empleo; no percibir prestaciones o subsidios por desempleo; ser español o nacional de Estado de la UE o con residencia legal y permiso de trabajo. Oficiales y Operarios de Limpieza: permiso de conducir B.",
+   "cita": "Estar inscrito en el servicio público de empleo con una antigüedad mínima de 1 mes ininterrumpido, como demandante de empleo.",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Registro General de Entrada del Ayuntamiento o en los registros del art. 16.4 de la Ley 39/2015",
+   "cita": "La presentación de solicitudes podrá hacerse en el Registro General de Entrada del Ayuntamiento",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Concurso de méritos"
+   ],
+   "cita": "El procedimiento de selección se realizará por concurso de méritos",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Periodo de prueba de 15 días en el contrato de trabajo",
+   "cita": "Se establecerá en el contrato de trabajo un periodo de prueba de 15 días.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "laboral temporal",
+   "cita": "contratación temporal de personal inscrito en el Servicio Público de Empleo"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 46,
+   "cita": "6 Oficiales de Obras / Vías Públicas / Jardinería – Forestal. 24 Peones de cometidos varios."
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "10 días hábiles, contados a partir del siguiente al de la publicación de las bases en el Boletín Oficial de la Provincia y Tablón de Edictos del Ayuntamiento",
+   "cita": "dentro del plazo de 10 días hábiles, contados a partir del siguiente al de la publicación"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Tablón de edictos del Ayuntamiento y página web",
+   "cita": "Todos los anuncios de trámites posteriores se publicarán en el tablón de edictos del Ayuntamiento y página web."
+  },
+  "meritos": {
+   "motivo": "cita_no_literal",
+   "valor": "Inscripción como demandante (0,5 puntos/mes, máximo 10); ayuda de Servicios Sociales en 2021 (10); familia numerosa (10); cónyuge e hijos demandantes sin prestaciones (10 a 20); vivienda habitual hipotecada o alquilada en Xàbia (10); familia monoparental (10); dependiente o discapacidad igual o superior al 33% (10 por miembro); servicios prestados (máximo 5 puntos)",
+   "cita": "Por estar inscrito como demandante de empleo: 0,5 puntos por cada mes completo de inscripción, con un máximo de 10 puntos."
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, para cubrir posibles vacantes con el resto de aspirantes",
+   "cita": "Con el resto de aspirantes se formarán bolsas de trabajo para cubrir posibles vacantes."
+  }
+ }
+}

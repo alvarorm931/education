@@ -1,0 +1,50 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2022-2428",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2022-2428",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2022/04/21_75/2022_002428.pdf",
+  "fecha": "2022-04-21",
+  "huella": "04319ba167142052b4213d2595ad0f39b638a42afd8ff647b6f1808c3175368c"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T15:25:27+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
+ "no_son_bases": false,
+ "campos": {
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mediante procedimiento concurso-oposición",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de edictos municipal y sede electrónica del Ayuntamiento",
+   "cita": "Los sucesivos anuncios relacionados con la presente convocatoria se publicarán únicamente en el tablón de edictos municipal",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Peón"
+   ],
+   "cita": "la constitución de una bolsa de trabajo temporal de Peón de este Ayuntamiento"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "laboral temporal",
+   "cita": "bolsa de trabajo temporal de Peón de este Ayuntamiento"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "10 días naturales, contados a partir del día siguiente al de la publicación del presente anuncio en el Boletín Oficial de la Provincia",
+   "cita": "El plazo de presentación de instancias será de 10 días naturales, contados a partir del día siguiente"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, bolsa de trabajo temporal de Peón",
+   "cita": "para la constitución de una bolsa de trabajo temporal de Peón"
+  }
+ }
+}

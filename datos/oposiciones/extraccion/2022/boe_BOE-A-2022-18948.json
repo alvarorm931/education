@@ -5,23 +5,16 @@
   "fuente": "BOP-TOLEDO",
   "url": "https://bop.diputoledo.es/webEbop/DocGet?id=22114017;0&insert_number=5639&insert_year=2022",
   "fecha": "2022-11-09",
-  "huella": "9027ecf1725da006a2c43a14631e7deeb0ab1376e5e6ae8e49e8a203291c513d"
+  "huella": "bbca6e016f214e92ffc86e791ad4282fea2229c9fb7232f5a9c86859863a7d1c"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:57:33+00:00",
- "lote": "msgbatch_01B4ETF5xB4buYCHqPiHTXzF",
+ "extraido": "2026-10-31T15:25:47+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
-   "valor": [
-    "Peón"
-   ],
-   "cita": "Cuatro plazas de Peón, personal laboral fijo, vacantes en la plantilla",
-   "nivel": "literal"
-  },
-  "grupo": {
-   "valor": "Agrupaciones Profesionales",
-   "cita": "Grupo: Agrupaciones Profesionales. Número de plazas. Cuatro.",
+   "valor": "Peón",
+   "cita": "Número de plazas. Cuatro. Denominación: Peón.",
    "nivel": "literal"
   },
   "vinculo": {
@@ -39,33 +32,23 @@
    "cita": "Número de plazas. Cuatro.",
    "nivel": "literal"
   },
-  "titulacion": {
-   "valor": "Ninguna específica; el requisito es tener 16 años y no exceder la edad de jubilación",
-   "cita": "c) Edad: Tener cumplidos dieciséis años y no exceder de la edad de jubilación forzosa.",
-   "nivel": "literal"
-  },
-  "otros_requisitos": {
-   "valor": "Nacionalidad española o de un Estado miembro de la UE (o extensiones previstas); capacidad funcional; no estar separado ni inhabilitado; aceptar las bases.",
-   "cita": "a) Nacionalidad: Tener nacionalidad española o de un estado miembro de la Unión Europea.",
-   "nivel": "literal"
-  },
   "tasa_euros": {
    "valor": 40,
    "cita": "El importe de los derechos por participación en el proceso selectivo es de 40,00 euros",
    "nivel": "literal"
   },
   "exenciones_tasa": {
-   "valor": "Devolución de los derechos de examen solo si el aspirante es excluido por falta de requisitos, previa petición en el plazo de un mes",
+   "valor": "Los derechos de examen serán devueltos, únicamente, previa petición del interesado/a en el plazo de un mes a contar desde la publicación de la lista definitiva de aspirantes admitidos y excluidos, en el caso de ser excluidos",
    "cita": "Los derechos de examen serán devueltos, únicamente, previa petición del interesado/a en el plazo de un mes",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "Diez días hábiles desde el día siguiente a la publicación del anuncio de la convocatoria en el BOE",
+   "valor": "diez días hábiles contados a partir del día siguiente al de la publicación del anuncio de la convocatoria en el Boletín Oficial del Estado",
    "cita": "en el plazo de diez días hábiles contados a partir del día siguiente al de la publicación del anuncio de la convocatoria en el",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "En el Registro de entrada del Ayuntamiento o según el artículo 16.4 de la Ley 39/2015, dirigidas al Alcalde-Presidente",
+   "valor": "Registro de entrada del Ayuntamiento, o por los medios del artículo 16.4 de la Ley 39/2015, mediante modelo del anexo II",
    "cita": "Las mismas se presentarán en el Registro de entrada de este Ayuntamiento, o realizarse con arreglo a lo dispuesto en el artículo 16.4",
    "nivel": "literal"
   },
@@ -74,44 +57,29 @@
    "cita": "se publicará en el \"Boletín Oficial\" de la provincia de Toledo, en el tablón de edictos del Ayuntamiento y en la página web",
    "nivel": "literal"
   },
-  "bolsa": {
-   "valor": "no",
-   "cita": "Dicha relación se elevará al Presidente de la Corporación, que la publicará, una vez realizado el nombramiento.",
+  "ejercicios": {
+   "valor": [
+    "Concurso de valoración de méritos (máximo 100 puntos): experiencia profesional y formación"
+   ],
+   "cita": "La selección de los aspirantes a que esta convocatoria se refiere se realizará por el procedimiento de concurso de valoración de méritos",
    "nivel": "literal"
   },
-  "practicas_o_curso": {
+  "meritos": {
+   "valor": "Experiencia profesional (máximo 60 puntos) y formación y otros méritos (máximo 40 puntos), incluidos cursos de prevención de riesgos, carné de productos fitosanitarios (20), carné B1 (10) y cursos de hasta 7 puntos",
+   "cita": "a) Experiencia profesional (máximo 60 puntos): 1) Por servicios prestados en el Ayuntamiento de Villaluenga de la Sagra",
+   "nivel": "literal"
+  },
+  "bolsa": {
    "valor": "no",
-   "cita": "La formalización del contrato del aspirante que hubiese superado el proceso selectivo se llevará a efecto en la fecha señalada por el decreto",
+   "cita": "Estabilización de empleo temporal de larga duración",
    "nivel": "literal"
   }
  },
  "rechazados": {
-  "plazas_turno_libre": {
-   "motivo": "valor_no_en_cita",
-   "valor": 0,
-   "cita": "Sistema de selección: Concurso. Estabilización de empleo temporal de larga duración"
-  },
-  "plazas_discapacidad": {
-   "motivo": "valor_no_en_cita",
-   "valor": 0,
-   "cita": "Sistema de selección: Concurso. Estabilización de empleo temporal de larga duración"
-  },
-  "ejercicios": {
+  "practicas_o_curso": {
    "motivo": "cita_no_literal",
-   "valor": [
-    "Concurso de valoración de méritos: experiencia profesional (máximo 60 puntos) y formación y otros méritos (máximo 40 puntos)"
-   ],
-   "cita": "La selección se realizará por el procedimiento de concurso de valoración de méritos"
-  },
-  "temas": {
-   "motivo": "valor_no_en_cita",
-   "valor": 0,
-   "cita": "La selección de los aspirantes a que esta convocatoria se refiere se realizará por el procedimiento de concurso de valoración de méritos"
-  },
-  "meritos": {
-   "motivo": "cita_no_literal",
-   "valor": "Experiencia profesional máximo 60 puntos (0,50 por mes en el Ayuntamiento hasta 40; 0,25 por mes en otras Administraciones o empresas hasta 20). Formación y otros méritos máximo 40 puntos (cursos PRL 10, carné fitosanitarios 20, carné B1 10, cursos de 4 a 7 puntos).",
-   "cita": "Por servicios prestados en el Ayuntamiento de Villaluenga de la Sagra, en la plaza objeto de la convocatoria, 0,50 puntos por cada mes completo"
+   "valor": "no",
+   "cita": "no consta periodo de prácticas ni curso selectivo"
   }
  }
 }

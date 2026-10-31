@@ -5,31 +5,36 @@
   "fuente": "BOP-ZARAGOZA",
   "url": null,
   "fecha": "2024-12-30",
-  "huella": "4e0ec8945d177be68c11731ba2866f20480178a47198fac516f994d6ee4d0ef0"
+  "huella": "352f3da18d0e969cd99bfd2c835ff23b32facac8629810f90df9f5cd8f15ec30"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:49:45+00:00",
- "lote": "msgbatch_018TPQE8scQozfAUdc1n8RyC",
+ "extraido": "2026-10-31T15:25:16+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
+  "denominacion": {
+   "valor": "oficial de 1.ª mantenimiento",
+   "cita": "cobertura, por oposición en turno libre, de una plaza de oficial 1.ª mantenimiento, personal laboral",
+   "nivel": "literal"
+  },
   "vinculo": {
    "valor": "personal laboral fijo",
-   "cita": "la plaza de oficial de 1.ª de mantenimiento para su cobertura por personal fijo",
+   "cita": "convocar nuevamente la plaza de oficial de 1.ª de mantenimiento para su cobertura por personal fijo",
    "nivel": "literal"
   },
   "sistema": {
    "valor": "oposición",
-   "cita": "cobertura, por oposición en turno libre, de una plaza de oficial",
+   "cita": "El sistema de selección será por oposición, que constará de tres ejercicios de carácter eliminatorio",
    "nivel": "literal"
   },
   "plazas_total": {
    "valor": 1,
-   "cita": "cobertura, por oposición en turno libre, de una plaza de oficial",
+   "cita": "cobertura, por oposición en turno libre, de una plaza de oficial 1.ª mantenimiento",
    "nivel": "literal"
   },
   "plazas_turno_libre": {
    "valor": 1,
-   "cita": "cobertura, por oposición en turno libre, de una plaza de oficial",
+   "cita": "cobertura, por oposición en turno libre, de una plaza de oficial 1.ª mantenimiento",
    "nivel": "literal"
   },
   "titulacion": {
@@ -38,57 +43,45 @@
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Nacionalidad española, de la UE o extranjero con residencia legal; 16 años cumplidos y no exceder edad de jubilación forzosa; capacidad funcional; no estar separado de la Administración ni inhabilitado; carné de conducir clase B.",
-   "cita": "Estar en posesión del carné de conducir clase B en el momento en que finalice el plazo",
+   "valor": "Nacionalidad española, de un Estado de la UE o extranjero con residencia legal; 16 años cumplidos y no exceder edad de jubilación; capacidad funcional; no separado de la Administración; carné de conducir clase B.",
+   "cita": "Estar en posesión del carné de conducir clase B en el momento en que finalice el plazo de presentación de documentos.",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "veinte días hábiles, contados a partir del día siguiente al de la publicación de la convocatoria en el BOPZ",
-   "cita": "El plazo de presentación de instancias será de veinte días hábiles, contados a partir del día siguiente",
+   "valor": "veinte días hábiles desde el día siguiente a la publicación de la convocatoria en el BOPZ",
+   "cita": "El plazo de presentación de instancias será de veinte días hábiles, contados a partir del día siguiente al de la publicación",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Presencial en el Registro de la Ciudad Escolar Pignatelli (calle Jarque de Moncayo, 23), en registros de otras administraciones, oficinas de correos y representaciones diplomáticas",
-   "cita": "En Registro de la Ciudad Escolar Pignatelli (calle Jarque de Moncayo, 23) en horas hábiles",
-   "nivel": "literal"
-  },
-  "publicaciones": {
-   "valor": "Tablón de anuncios de la Residencia y página web www.residenciapignatelli.es; BOPZ para listas de admitidos y resultados",
-   "cita": "la exposición, incluyendo las bases de la convocatoria en el tablón de anuncios de esta Residencia y en la página web",
+   "valor": "Presencial en el Registro de la Ciudad Escolar Pignatelli, en registros de administraciones públicas o en oficinas de correos",
+   "cita": "En Registro de la Ciudad Escolar Pignatelli (calle Jarque de Moncayo, 23) en horas hábiles de oficina",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Primer ejercicio: test de cultura general, hasta 60 preguntas, eliminatorio con mínimo 5,00 puntos",
-    "Segundo ejercicio: test de conocimientos sobre funciones y temario, hasta 60 preguntas, eliminatorio con mínimo 5,00 puntos",
-    "Tercer ejercicio: supuestos prácticos relativos a las tareas del puesto, hasta una hora y cuarto, mínimo 10,00 puntos"
+    "Primer ejercicio: test de cultura general, 60 preguntas con penalización, mínimo 5,00 puntos",
+    "Segundo ejercicio: test sobre funciones y temario, 60 preguntas con penalización, mínimo 5,00 puntos",
+    "Tercer ejercicio: supuesto práctico sobre tareas propias del puesto, mínimo 10,00 puntos sobre 20"
    ],
-   "cita": "tres ejercicios de carácter eliminatorio y de realización obligatoria",
+   "cita": "Consistirá en la realización de un cuestionario que adoptará la forma test, sobre conocimientos de cultura general",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "no se menciona",
+   "cita": "Finalizada la oposición, el tribunal hará pública en el tablón de anuncios de la CEP",
    "nivel": "literal"
   },
   "temas": {
    "valor": 20,
-   "cita": "Tema 20. Principios generales de la actuación de los poderes públicos aragoneses en materia de igualdad",
-   "nivel": "literal"
+   "cita": "Tema 20. Principios generales de la actuación de los poderes públicos aragoneses en materia de igualdad de oportunidades entre hombres y mujeres.",
+   "nivel": "contado"
   }
  },
  "rechazados": {
-  "denominacion": {
+  "publicaciones": {
    "motivo": "cita_no_literal",
-   "valor": [
-    "Oficial de 1.ª mantenimiento"
-   ],
-   "cita": "una plaza de oficial 1.ª mantenimiento, personal laboral, de la Residencia"
-  },
-  "grupo": {
-   "motivo": "cita_no_literal",
-   "valor": "Agrupaciones profesionales",
-   "cita": "plaza de oficial 1.ª mantenimiento, personal laboral, de la Residencia"
-  },
-  "bolsa": {
-   "motivo": "cita_no_literal",
-   "valor": "no",
-   "cita": "no se encuentra mención a bolsa o lista de espera en las bases"
+   "valor": "BOPZ, tablón de anuncios y página web de la Residencia",
+   "cita": "se fija como medio de comunicación de las publicaciones la exposición, incluyendo las bases de la convocatoria en el tablón de anuncios"
   }
  }
 }

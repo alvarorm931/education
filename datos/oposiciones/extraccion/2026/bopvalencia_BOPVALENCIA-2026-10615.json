@@ -5,12 +5,51 @@
   "fuente": "BOP-VALENCIA",
   "url": "https://bop.dival.es/bop/downloads?anuncioNumReg=2026/10615&lang=va",
   "fecha": "2026-08-21",
-  "huella": "0e3590eb983cc26a9d88d362dfe4c19c7958eb0fd906e984e0238dfe31528578"
+  "huella": "81eca5b95e079ad145ad54e16b21691ff5eac952c164d425d15c957f6441ba40"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T08:03:51+00:00",
- "lote": "msgbatch_013xFoLdqcGqWcqkzh7qrdGg",
- "no_son_bases": true,
- "campos": {},
- "rechazados": {}
+ "extraido": "2026-10-31T15:25:49+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Enginyer/a Tècnic/a Industrial"
+   ],
+   "cita": "Constituir una borsa de treball d'Enginyer/a Tècnic/a Industrial, subgrup A2, derivada de l'oposició lliure",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "A2",
+   "cita": "subgrup A2, incloses en l'Oferta d'Ocupació Pública dels anys 2021 i 2022",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "l'oposició lliure per a la selecció de tres places d'Enginyer/a Tècnic/a Industrial",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 3,
+   "cita": "l'oposició lliure per a la selecció de tres places d'Enginyer/a Tècnic/a Industrial",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia núm. 227 y extracto en el BOE núm. 298",
+   "cita": "publicades en el Butlletí Oficial de la Província núm. 227 de data 25 de novembre de 2024",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, para cubrir las necesidades imprescindibles de personal Enginyer/a Tècnic/a Industrial, Subgrup A2, que se produzcan en esta Corporación",
+   "cita": "constitució d'una borsa de treball derivada de l'oposició lliure per a la selecció de tres places",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "escala d'Administració Especial, subescala Tècnica, Classe Tècnic/a Mitjà/ana, subgrup A2"
+  }
+ }
 }

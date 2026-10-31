@@ -5,21 +5,16 @@
   "fuente": "BOE",
   "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2025-21076",
   "fecha": "2025-10-20",
-  "huella": "a17e6aee8d661c9b47c0a5d450114601740e77a20f042db28b858b06fa5e6987"
+  "huella": "57e8c47d08c484928e9a7b5d4b3d3da239f3bb931bd18f70583221b5d3480e1a"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:41:20+00:00",
- "lote": "msgbatch_01UNq3BNhPPHoTK3TEJzun1h",
+ "extraido": "2026-10-31T15:25:29+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
-  "denominacion": {
-   "valor": "técnica/o económica/o",
-   "cita": "aprobar la convocatoria para la provisión, mediante procedimiento de ingreso, por el sistema de oposición, de seis plazas del puesto de trabajo de técnica/o económica/o, nivel A",
-   "nivel": "literal"
-  },
   "grupo": {
    "valor": "A",
-   "cita": "seis plazas del puesto de trabajo de técnica/o económica/o, nivel A, al servicio de la Universidad",
+   "cita": "plazas del puesto de trabajo de técnica/o económica/o, nivel A",
    "nivel": "literal"
   },
   "vinculo": {
@@ -30,6 +25,11 @@
   "sistema": {
    "valor": "oposición",
    "cita": "provisión, mediante procedimiento de ingreso, por el sistema de oposición, de seis plazas",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 6,
+   "cita": "provisión, mediante oposición, de seis plazas vacantes del puesto de trabajo",
    "nivel": "literal"
   },
   "plazas_turno_libre": {
@@ -48,8 +48,8 @@
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Nacionalidad española, de otro Estado miembro de la UE o de Estado con libre circulación de trabajadores; tener 16 años y no exceder la edad de jubilación forzosa; capacidad física y psíquica; no estar inhabilitado para funciones públicas. Turno promoción: ser funcionario de la UPNA, pertenecer a igual o inferior nivel y tener 5 años de antigüedad en las Administraciones públicas.",
-   "cita": "Tener cumplidos dieciséis años y no exceder, en su caso, de la edad máxima de jubilación forzosa",
+   "valor": "Nacionalidad española, de un Estado miembro de la UE o de Estado con libre circulación de trabajadores; tener cumplidos dieciséis años y no exceder la edad de jubilación forzosa; capacidad física y psíquica; no estar inhabilitado ni suspendido para funciones públicas.",
+   "cita": "Tener cumplidos dieciséis años y no exceder, en su caso, de la edad máxima de jubilación forzosa.",
    "nivel": "literal"
   },
   "tasa_euros": {
@@ -58,23 +58,28 @@
    "nivel": "literal"
   },
   "exenciones_tasa": {
-   "valor": "Personas con discapacidad reconocida de grado igual o superior al 33 por 100, y personas inscritas como demandantes de empleo durante al menos un mes anterior a la publicación de la convocatoria.",
+   "valor": "Personas con discapacidad reconocida igual o superior al 33 por 100; personas inscritas como demandantes de empleo al menos un mes antes de la publicación de la convocatoria.",
    "cita": "Estarán exentas del pago de la tasa: a) Las personas con discapacidad reconocida, de grado igual o superior al 33 por 100.",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "veinte días naturales contados desde el día siguiente a la publicación en el Boletín Oficial de Navarra",
-   "cita": "El plazo de veinte días naturales contados a partir del día siguiente al de su publicación en el «Boletín Oficial de Navarra»",
+   "valor": "veinte días naturales contados a partir del día siguiente al de su publicación en el «Boletín Oficial de Navarra»",
+   "cita": "deberá realizarse en el plazo de veinte días naturales contados a partir del día siguiente al de su publicación en el «Boletín Oficial de Navarra»",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Telemática a través de la sede electrónica de la Universidad Pública de Navarra, botón «Iniciar trámite»",
+   "cita": "presentar y formalizar adecuadamente su solicitud de forma telemática a través de la sede electrónica de la Universidad Pública de Navarra",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
     "Primera prueba: cuestionario tipo test sobre el temario (máximo 90 minutos), 0 a 20 puntos, eliminatoria",
-    "Segunda prueba, primer ejercicio: supuestos prácticos escritos (máximo 4 horas), 0 a 25 puntos, eliminatorio",
-    "Segunda prueba, segundo ejercicio: supuestos prácticos con Microsoft Excel (máximo 4 horas), 0 a 25 puntos, eliminatorio",
+    "Segunda prueba, primer ejercicio: supuestos prácticos por escrito (máximo 4 horas), 0 a 25 puntos",
+    "Segunda prueba, segundo ejercicio: supuestos prácticos con Microsoft Excel (máximo 4 horas), 0 a 25 puntos",
     "Tercera prueba: preguntas y/o supuestos teórico-prácticos de la parte específica (máximo 4 horas), 0 a 30 puntos, eliminatoria"
    ],
-   "cita": "La oposición constará de las siguientes pruebas",
+   "cita": "La oposición constará de las siguientes pruebas: 7.2.3.1 Primera prueba. Consistirá en contestar por escrito a un cuestionario de preguntas",
    "nivel": "literal"
   },
   "temas": {
@@ -83,25 +88,20 @@
    "nivel": "literal"
   },
   "bolsa": {
-   "valor": "sí, relación de aspirantes a la contratación temporal con quienes no obtengan plaza (lista de aprobados sin plaza y lista de no aprobados sin plaza)",
+   "valor": "sí, para constituir listas de aspirantes a la contratación temporal con aspirantes que no obtengan plaza",
    "cita": "constituir, con los aspirantes que no obtengan plaza en el procedimiento selectivo de ingreso, una relación de aspirantes a la contratación temporal",
    "nivel": "literal"
   }
  },
  "rechazados": {
-  "plazas_total": {
-   "motivo": "valor_no_en_cita",
-   "valor": 6,
-   "cita": "Tres plazas en el turno libre. Tres plazas en el turno de promoción."
-  },
-  "presentacion": {
+  "denominacion": {
    "motivo": "cita_no_literal",
-   "valor": "Telemática, a través de la sede electrónica de la Universidad Pública de Navarra, botón «Iniciar trámite» del procedimiento de la convocatoria",
-   "cita": "deberá realizarse de forma telemática a través de la sede electrónica de la Universidad Pública de Navarra"
+   "valor": "técnica/o económica/o",
+   "cita": "convocatoria para la provisión, mediante oposición, de seis plazas vacantes del puesto de trabajo de técnica/o económica/o"
   },
   "publicaciones": {
    "motivo": "cita_no_literal",
-   "valor": "Tablón Electrónico de la Universidad Pública de Navarra; además Boletín Oficial de Navarra y Boletín Oficial del Estado para las publicaciones previstas",
+   "valor": "Tablón Electrónico de la Universidad Pública de Navarra; además «Boletín Oficial de Navarra» y «Boletín Oficial del Estado» en los casos previstos",
    "cita": "las publicaciones a que dé lugar este proceso selectivo se realizarán en el siguiente enlace del Tablón Electrónico de la Universidad Pública de Navarra"
   }
  }

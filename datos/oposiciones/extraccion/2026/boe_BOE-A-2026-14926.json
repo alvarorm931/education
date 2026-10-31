@@ -5,18 +5,16 @@
   "fuente": "BOP-TOLEDO",
   "url": "https://bop.diputoledo.es/webEbop/DocGet?id=26062963;0&insert_number=2987&insert_year=2026",
   "fecha": "2026-07-01",
-  "huella": "b33141d3d1b2ae1c53c78a691c97b8a4eb9c501c182b20f40a605207bb7c39e1"
+  "huella": "ef680e16a1c9873ddc857acea1305fc775769988db3df2f5d259152e0bee1b1e"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T07:52:06+00:00",
- "lote": "msgbatch_01NvbwpQGcC9vt1x7nWayvXt",
+ "extraido": "2026-10-31T15:25:46+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
-   "valor": [
-    "Peón encargado del punto limpio"
-   ],
-   "cita": "Denominación Peón encargado del punto limpio",
+   "valor": "Peón encargado del punto limpio",
+   "cita": "Denominación Peón encargado del punto limpio Jornada Completa",
    "nivel": "literal"
   },
   "grupo": {
@@ -26,7 +24,7 @@
   },
   "vinculo": {
    "valor": "personal laboral fijo",
-   "cita": "PRIMERA. OBJETO DE LA CONVOCATORIA. 1.1.- Es objeto de las presentes bases y su consiguiente convocatoria la provisión de una plaza de personal laboral fijo",
+   "cita": "BASES DE LA CONVOCATORIA PARA LA COBERTURA DE UNA PLAZA DE PERSONAL LABORAL FIJO",
    "nivel": "literal"
   },
   "sistema": {
@@ -34,19 +32,9 @@
    "cita": "El sistema selectivo elegido es el de concurso-oposición libre.",
    "nivel": "literal"
   },
-  "plazas_total": {
-   "valor": 1,
-   "cita": "PARA LA COBERTURA DE UNA PLAZA DE PERSONAL LABORAL FIJO, EN LA CATEGORÍA DE PEON ENCARGADO DEL PUNTO LIMPIO",
-   "nivel": "literal"
-  },
-  "plazas_turno_libre": {
-   "valor": 1,
-   "cita": "PARA LA COBERTURA DE UNA PLAZA DE PERSONAL LABORAL FIJO, EN LA CATEGORÍA DE PEON ENCARGADO DEL PUNTO LIMPIO",
-   "nivel": "literal"
-  },
   "otros_requisitos": {
-   "valor": "Nacionalidad española (art. 57 TREBEP); tener cumplidos 16 años y no exceder la edad de jubilación forzosa; capacidad funcional; permiso de conducción B en vigor o en condiciones de obtenerlo; no estar incurso en incompatibilidades ni inhabilitación.",
-   "cita": "c) Tener cumplidos dieciséis años y no exceder de la edad de jubilación forzosa. d) Estar en posesión del permiso de conducción de vehículos de la clase B",
+   "valor": "Nacionalidad española (sin perjuicio del art. 57 TREBEP), tener 16 años cumplidos y no exceder la edad de jubilación forzosa, permiso de conducción B en vigor o en condiciones de obtenerlo, capacidad funcional para el puesto.",
+   "cita": "Tener cumplidos dieciséis años y no exceder de la edad de jubilación forzosa.",
    "nivel": "literal"
   },
   "tasa_euros": {
@@ -55,22 +43,13 @@
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "Veinte días hábiles, contados desde el día siguiente al de la publicación del anuncio de la convocatoria en el BOE",
+   "valor": "Veinte días hábiles desde el día siguiente a la publicación del anuncio de la convocatoria en el BOE",
    "cita": "El plazo de presentación de solicitudes será de veinte días (20) hábiles, contados a partir del día siguiente",
    "nivel": "literal"
   },
-  "ejercicios": {
-   "valor": [
-    "Primer ejercicio: prueba teórica tipo test de 20 preguntas (+5 de reserva), 30 minutos, 10 puntos",
-    "Segundo ejercicio: prueba práctica por escrito con supuestos, 1 hora, 20 puntos",
-    "Fase de concurso: formación y experiencia, máximo 10 puntos"
-   ],
-   "cita": "PRIMER EJERCICIO Prueba teórica (10 puntos) Consistirá en responder por escrito, en un tiempo máximo de treinta (30) minutos",
-   "nivel": "literal"
-  },
   "bolsa": {
-   "valor": "sí, bolsa de trabajo para contrataciones temporales en caso de ausencia, vacante o enfermedad",
-   "cita": "Concluido el proceso selectivo, se confeccionará una bolsa de trabajo con aquellos aspirantes que hayan superado al menos un ejercicio",
+   "valor": "sí, bolsa de trabajo para contrataciones temporales por ausencia, vacante o enfermedad",
+   "cita": "se confeccionará una bolsa de trabajo con aquellos aspirantes que hayan superado al menos un ejercicio",
    "nivel": "literal"
   },
   "practicas_o_curso": {
@@ -80,6 +59,21 @@
   }
  },
  "rechazados": {
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 1,
+   "cita": "la provisión de una plaza de personal laboral fijo en la categoría de Peón encargado del punto limpio"
+  },
+  "plazas_turno_libre": {
+   "motivo": "cita_no_literal",
+   "valor": 1,
+   "cita": "la provisión de una plaza de personal laboral fijo en la categoría de Peón encargado del punto limpio"
+  },
+  "plazas_discapacidad": {
+   "motivo": "valor_no_en_cita",
+   "valor": 0,
+   "cita": "Las personas aspirantes que concurran por el turno de discapacidad o que presenten alguna limitación funcional"
+  },
   "titulacion": {
    "motivo": "cita_no_literal",
    "valor": "Certificado de Escolaridad o equivalente",
@@ -87,18 +81,27 @@
   },
   "exenciones_tasa": {
    "motivo": "cita_no_literal",
-   "valor": "Demandantes de empleo durante al menos un mes anterior a la publicación de la convocatoria; personas con discapacidad igual o superior al 33%.",
+   "valor": "Demandantes de empleo durante al menos un mes anterior a la publicación; personas con discapacidad igual o superior al 33%.",
    "cita": "Las personas que figuren como demandantes de empleo durante el plazo, al menos, de un mes anterior"
   },
   "presentacion": {
    "motivo": "cita_no_literal",
-   "valor": "Registro General del Ayuntamiento (Plaza de la Constitución nº1), sede electrónica o formas del art. 16.4 Ley 39/2015",
+   "valor": "Registro General del Ayuntamiento, sede electrónica o formas del art. 16.4 Ley 39/2015",
    "cita": "La presentación de solicitudes podrá hacerse directamente en el Registro General del Ayuntamiento de Nambroca"
   },
   "publicaciones": {
    "motivo": "cita_no_literal",
-   "valor": "Tablón de anuncios municipal, sede electrónica del Ayuntamiento (http://nambroca.sedelectronica.es) y Boletín Oficial de la provincia de Toledo",
+   "valor": "Boletín Oficial de la provincia de Toledo, tablón de anuncios y sede electrónica del Ayuntamiento (http://nambroca.sedelectronica.es)",
    "cita": "se publicarán en el Tablón de Anuncios municipal y en la sede electrónica de la Corporación"
+  },
+  "ejercicios": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Primer ejercicio: prueba teórica tipo test de 20 preguntas más 5 de reserva, 30 minutos (10 puntos, eliminatorio)",
+    "Segundo ejercicio: prueba práctica escrita sobre supuestos prácticos, 1 hora (20 puntos, eliminatorio)",
+    "Fase de concurso: méritos, máximo 10 puntos (no eliminatoria)"
+   ],
+   "cita": "El primer ejercicio consistirá en responder por escrito, en un tiempo máximo de treinta (30) minutos"
   },
   "temas": {
    "motivo": "cita_no_literal",
@@ -107,8 +110,8 @@
   },
   "meritos": {
    "motivo": "cita_no_literal",
-   "valor": "Formación hasta 4 puntos (cursos relacionados, FP o grado medio relacionado 3 puntos); experiencia hasta 6 puntos (Ayuntamientos 0,30 por mes hasta 3; otras AAPP 0,25 hasta 2; empresa privada 0,20 hasta 1)",
-   "cita": "Esta fase se valorará con un máximo de 10 puntos. a) Formación (hasta 4 puntos)"
+   "valor": "Formación específica (hasta 4 puntos) y experiencia en puestos similares en Ayuntamientos (0,30/mes, máx. 3), otras administraciones (0,25/mes, máx. 2) y empresa privada (0,20/mes, máx. 1), máximo 6 puntos",
+   "cita": "Esta fase se valorará con un máximo de 10 puntos. Formación (hasta 4 puntos)"
   }
  }
 }

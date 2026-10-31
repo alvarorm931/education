@@ -5,16 +5,18 @@
   "fuente": "BOCYL",
   "url": "https://bocyl.jcyl.es/html/2025/11/06/html/BOCYL-D-06112025-26.do",
   "fecha": "2025-11-06",
-  "huella": "776a10893b927e83df9d5ad1fa8989cdcdf17bce09fef43e706da2bc59513dd7"
+  "huella": "4183a59344394f0d48e088d056fe9b7b82b2237562b6e366bb41632ef1caadd0"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:41:18+00:00",
- "lote": "msgbatch_01UNq3BNhPPHoTK3TEJzun1h",
+ "extraido": "2026-10-31T15:25:36+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
-   "valor": "Oficial del Servicio de Obras",
-   "cita": "se convoca son tres de Oficial del Servicio de Obras",
+   "valor": [
+    "Oficial del Servicio de Obras"
+   ],
+   "cita": "tres plazas de Oficial del Servicio de Obras, vacantes en la Plantilla de Personal Funcionario",
    "nivel": "literal"
   },
   "grupo": {
@@ -37,19 +39,9 @@
    "cita": "cubrir en propiedad tres plazas de Oficial del Servicio de Obras",
    "nivel": "literal"
   },
-  "plazas_turno_libre": {
-   "valor": 3,
-   "cita": "cubrir en propiedad tres plazas de Oficial del Servicio de Obras",
-   "nivel": "literal"
-  },
   "titulacion": {
    "valor": "Graduado en Educación Secundaria Obligatoria o equivalente, o en condiciones de obtenerlo",
    "cita": "Estar en posesión de la titulación de Graduado en Educación Secundaria Obligatoria o equivalente",
-   "nivel": "literal"
-  },
-  "otros_requisitos": {
-   "valor": "Ser funcionario de carrera del Ayuntamiento de Ávila en plaza de Agrupaciones Profesionales (antiguo Grupo E), con antigüedad mínima de dos años; cumplir las condiciones para ejercer las funciones; no haber sido separado del servicio por expediente disciplinario ni hallarse inhabilitado.",
-   "cita": "Ostentar la condición de funcionario de carrera del Excmo. Ayuntamiento de Ávila, en plaza clasificada en Agrupaciones Profesionales",
    "nivel": "literal"
   },
   "tasa_euros": {
@@ -58,28 +50,41 @@
    "nivel": "literal"
   },
   "exenciones_tasa": {
-   "valor": "Exentos: víctimas de terrorismo y familiares, familias numerosas de categoría especial, víctimas de violencia machista. Reducción del 50%: familias numerosas de categoría general, trabajadores afectados por ERTE COVID y unidades familiares en teletrabajo.",
+   "valor": "Exentos: víctimas de terrorismo, familias numerosas de categoría especial y víctimas de violencia machista. Reducción del 50%: familias numerosas de categoría general, trabajadores afectados por ERTE COVID y unidades familiares en teletrabajo empadronadas en Ávila desde 14/03/2020.",
    "cita": "no se exigirá el pago de los derechos a: Las víctimas de terrorismo así como sus hijos y cónyuges",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "veinte días naturales, contados a partir del siguiente al de publicación del extracto de la convocatoria en el Boletín Oficial del Estado",
+   "valor": "veinte días naturales desde el siguiente a la publicación del extracto de la convocatoria en el BOE",
    "cita": "El plazo de presentación de instancias será de veinte días naturales, contados a partir del siguiente al de publicación del extracto",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Registro General del Ayuntamiento o por la vía del artículo 16 de la Ley 39/2015; electrónicamente a través de la Sede Electrónica del Ayuntamiento de Ávila (sede.avila.es) con DNI electrónico o certificado digital",
+   "cita": "Quienes dispongan de DNI electrónico o certificado digital para su identificación electrónica, podrán presentar las solicitudes a través de la Sede Electrónica",
    "nivel": "literal"
   },
   "publicaciones": {
    "valor": "Tablón de Anuncios de la Corporación, página web institucional (www.avila.es) y Boletín Oficial de la Provincia",
-   "cita": "se hará pública en el Tablón de Anuncios de la Corporación, en la página web institucional",
+   "cita": "se hará pública en el Tablón de Anuncios de la Corporación, en la página web institucional (www.avila.es)",
    "nivel": "literal"
   },
-  "meritos": {
-   "valor": "Fase de concurso (no eliminatoria, máximo 10 puntos en total aproximado): experiencia laboral hasta 4,00; formación hasta 3,00; cultura profesional hasta 2,00; valoración del trabajo profesional hasta 1,00.",
-   "cita": "Experiencia laboral (Hasta un máximo de 4,00 puntos)",
+  "ejercicios": {
+   "valor": [
+    "Primera prueba: cuestionario de 50 preguntas tipo test con tres respuestas alternativas, eliminatoria (mínimo 5,00 puntos)",
+    "Segunda prueba: pruebas prácticas de Albañilería, Cerrajería y Fontanería, eliminatoria (mínimo 5,00 puntos)"
+   ],
+   "cita": "Primera prueba: Tendrá carácter eliminatorio y consistirá en responder por escrito, durante el tiempo que determine el tribunal",
    "nivel": "literal"
   },
   "bolsa": {
-   "valor": "no",
-   "cita": "Las plazas que se convocan",
+   "valor": "sí, para cubrir renuncias del aspirante propuesto antes de su nombramiento o toma de posesión",
+   "cita": "el órgano municipal correspondiente podrá requerir del Tribunal relación complementaria de los aspirantes que sigan",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "no consta",
+   "cita": "Los aspirantes nombrados deberán tomar posesión de su cargo en el plazo de un mes",
    "nivel": "literal"
   },
   "temas": {
@@ -89,23 +94,20 @@
   }
  },
  "rechazados": {
-  "presentacion": {
-   "motivo": "cita_no_literal",
-   "valor": "Registro General del Ayuntamiento, o por la vía del artículo 16 de la Ley 39/2015, o electrónicamente a través de la Sede Electrónica del Ayuntamiento de Ávila (http://sede.avila.es)",
-   "cita": "Quienes dispongan de DNI electrónico o certificado digital podrán presentar las solicitudes a través de la Sede Electrónica"
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 0,
+   "cita": "Ostentar la condición de funcionario de carrera del Excmo. Ayuntamiento de Ávila"
   },
-  "ejercicios": {
+  "otros_requisitos": {
    "motivo": "cita_no_literal",
-   "valor": [
-    "Primera prueba: cuestionario de 50 preguntas tipo test con tres respuestas alternativas (eliminatoria)",
-    "Segunda prueba: pruebas prácticas de albañilería, cerrajería y fontanería (eliminatoria)"
-   ],
-   "cita": "responder por escrito, durante el tiempo que determine el tribunal, a un cuestionario de 50 preguntas tipo test"
+   "valor": "Ostentar la condición de funcionario de carrera del Ayuntamiento de Ávila en plaza de Agrupaciones Profesionales (equivalente al anterior Grupo E, categorías Ayudante u Operario) con antigüedad mínima de dos años; no haber sido separado por expediente disciplinario ni hallarse inhabilitado.",
+   "cita": "con una antigüedad mínima de dos años. No haber sido separado mediante expediente disciplinario del servicio"
   },
-  "practicas_o_curso": {
+  "meritos": {
    "motivo": "cita_no_literal",
-   "valor": "no consta en el texto",
-   "cita": ""
+   "valor": "Fase de concurso no eliminatoria, máximo 10 puntos: experiencia laboral (hasta 4,00), formación (hasta 3,00), cultura profesional (hasta 2,00) y valoración del trabajo profesional (hasta 1,00).",
+   "cita": "Experiencia laboral (Hasta un máximo de 4,00 puntos) Formación (Hasta un máximo de 3,00 puntos)"
   }
  }
 }

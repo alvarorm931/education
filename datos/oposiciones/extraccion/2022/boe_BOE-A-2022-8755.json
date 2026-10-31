@@ -1,0 +1,104 @@
+{
+ "proceso": "boe:BOE-A-2022-8755",
+ "documento": {
+  "id": "bopcordoba:BOPCORDOBA-2022-1270",
+  "fuente": "BOP-CORDOBA",
+  "url": "https://bop.dipucordoba.es/dia/22-04-2022",
+  "fecha": "2022-04-22",
+  "huella": "ab2c908ed97e221bf19c4583b51664069e8df3adafac6e2ea09b712e0b06fd59"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T15:25:25+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Periodista",
+    "Técnico/a Medio de Deportes",
+    "Técnico/a Medio de Cultura"
+   ],
+   "cita": "Periodista -Objeto: 1 plaza.",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "el sistema de selección será el concurso conforme a la disposición adicional sexta",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Periodista: Licenciatura en Ciencias de la Información o Grado en Periodismo; Técnico/a Medio de Deportes: Diplomado/a o Grado en Ciencias de la Actividad Física y del Deporte; Técnico/a Medio de Cultura: Diplomado/a o Grado en las ramas de Artes, Humanidades, Ciencias Sociales o Ciencias Jurídicas",
+   "cita": "Titulación: Licenciatura en Ciencias de la Información o Grado en Periodismo.",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española o de Estado miembro de la UE en los términos legales; capacidad funcional; tener cumplidos 16 años y no exceder la edad máxima de jubilación forzosa; no haber sido separado del servicio ni inhabilitado.",
+   "cita": "Tener la nacionalidad española, sin perjuicio de lo dispuesto en el artículo 57",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 23,
+   "cita": "Importe de la tasa por derechos de examen: 23 €.",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Exentos: discapacidad igual o superior al 33%, demandantes de empleo con rentas inferiores al IPREM, familias numerosas de categoría especial y víctimas del terrorismo. Bonificación del 50% para familias numerosas de categoría general.",
+   "cita": "Estarán exentas del pago de la tasa por derechos de examen: Las personas con discapacidad en un grado igual o superior al 33%",
+   "nivel": "sin_signos"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles desde el siguiente al de la publicación del anuncio de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "en el plazo de veinte días hábiles a contar desde el siguiente al de la publicación del anuncio de la convocatoria",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia de Córdoba, tablón de edictos de la Sede Electrónica de la Diputación y web de la Diputación (de carácter informativo)",
+   "cita": "se publicarán íntegramente en el Boletín Oficial de la Provincia de Córdoba y en el tablón de edictos de la Sede Electrónica",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Concurso: valoración de méritos (experiencia profesional, antigüedad y formación), con calificación máxima de 100 puntos"
+   ],
+   "cita": "el sistema de selección será el concurso conforme a la disposición adicional sexta",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Experiencia profesional hasta 81 puntos; antigüedad en las Administraciones Públicas hasta 9 puntos; asistencia o impartición de cursos de formación hasta 10 puntos",
+   "cita": "Se valorará la experiencia profesional, con un máximo de 81 puntos",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "no consta",
+   "cita": "Tener cumplidos dieciséis años",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "personal laboral fijo",
+   "cita": "se establecen las plazas de personal laboral incluidas en la Oferta de Estabilización de 2020"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 3,
+   "cita": "Periodista -Objeto: 1 plaza. Técnico/a Medio de Deportes -Objeto: 1 plaza."
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 3,
+   "cita": "Técnico/a Medio de Cultura -Objeto: 1 plaza."
+  },
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Telemática en la Sede Electrónica de la Diputación (www.dipucordoba.es/tramites) o presencial en el Registro de la Diputación, Plaza de Colón 15, Córdoba, o por Correos",
+   "cita": "Las personas aspirantes deberán dirigir sus solicitudes a la Presidencia de la Diputación de Córdoba"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "no",
+   "cita": "no consta en el texto una bolsa o lista de espera; se refiere solo a la relación complementaria de aspirantes en caso de renuncias"
+  }
+ }
+}

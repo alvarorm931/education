@@ -5,21 +5,28 @@
   "fuente": "BOR",
   "url": "https://web.larioja.org/bor-portada/boranuncio?n=anu-576090",
   "fecha": "2026-03-23",
-  "huella": "22344161386ba3b0b540a5df2a40a3e94138b6d66fb72d76a4ea1f4e4e2dcd3e"
+  "huella": "56c41a58637a1c97874a75535bbefd625fad7e5e12655f47147a712c16eeec19"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:40:22+00:00",
- "lote": "msgbatch_01E3wiYcGL8Lzho48bXWLyyb",
+ "extraido": "2026-10-31T15:25:29+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
+  "denominacion": {
+   "valor": [
+    "Programador/a"
+   ],
+   "cita": "para la cobertura de una plaza de Programador/a. Escala de Administración Especial, Subescala Técnica",
+   "nivel": "literal"
+  },
   "grupo": {
    "valor": "A2",
-   "cita": "Grupo/Subgrupo A,A2, en turno libre",
+   "cita": "Grupo A, Subgrupo A2",
    "nivel": "literal"
   },
   "vinculo": {
    "valor": "funcionario de carrera",
-   "cita": "cubrir mediante personal funcionario de carrera una plaza de Programador/a",
+   "cita": "provisión en propiedad como funcionario/a de carrera, por el procedimiento de Oposición",
    "nivel": "literal"
   },
   "sistema": {
@@ -32,18 +39,13 @@
    "cita": "una plaza de Programador, de la Plantilla de personal funcionario",
    "nivel": "literal"
   },
-  "plazas_turno_libre": {
-   "valor": 1,
-   "cita": "provisión en propiedad como funcionario/a de carrera, por el procedimiento de Oposición (turno Libre), de una plaza",
-   "nivel": "literal"
-  },
   "titulacion": {
    "valor": "Título Universitario Oficial de Grado o Título Universitario Oficial de Primer Ciclo (Diplomados Universitarios, Arquitectos Técnicos e Ingenieros Técnicos, u oficialmente equivalente)",
    "cita": "Estar en posesión de Título Universitario Oficial de Grado o Título Universitario Oficial de Primer Ciclo",
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Tener cumplidos 16 años de edad y no haber alcanzado la edad para la jubilación forzosa. Nacionalidad española, de un Estado miembro de la UE u otros supuestos previstos. Capacidad funcional para las tareas de la plaza.",
+   "valor": "Tener cumplidos 16 años de edad y no haber alcanzado la edad para la jubilación forzosa. Nacionalidad española, de Estado miembro de la UE o de los previstos en tratados internacionales. Capacidad funcional para las tareas de la plaza.",
    "cita": "Tener cumplidos 16 años de edad y no haber alcanzado la edad para la jubilación forzosa.",
    "nivel": "literal"
   },
@@ -53,57 +55,55 @@
    "nivel": "literal"
   },
   "exenciones_tasa": {
-   "valor": "Personas aspirantes en situación de desempleo que lo justifiquen mediante certificado: deberán pagar 1,07 euros.",
-   "cita": "Aquellas personas aspirantes que en el momento de la solicitud se encuentren en situación de desempleo y lo justifiquen mediante certificado emitido al efecto, deberán acompañar documento acreditativo del pago de la cantidad de 1,07 Euros.",
+   "valor": "Personas aspirantes en situación de desempleo que lo justifiquen mediante certificado: pagan 1,07 euros.",
+   "cita": "Aquellas personas aspirantes que en el momento de la solicitud se encuentren en situación de desempleo y lo justifiquen mediante certificado emitido al efecto",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
    "valor": "veinte días hábiles, contados a partir del siguiente a la publicación del extracto de la convocatoria en el Boletín Oficial del Estado",
-   "cita": "Las instancias deberán presentarse dentro del plazo de veinte días hábiles, contados a partir del siguiente a la publicación del extracto",
+   "cita": "Las instancias deberán presentarse dentro del plazo de veinte días hábiles, contados a partir del siguiente",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Registro General del Ayuntamiento o Registro Auxiliar de la Dirección General del Conocimiento y Competencias Profesionales, en horario de 9 a 14 h, o en la forma del artículo 16 de la Ley 39/2015",
-   "cita": "a través del Registro General del Ayuntamiento o del Registro Auxiliar de la Dirección General del Conocimiento",
+   "valor": "Registro General del Ayuntamiento o Registro Auxiliar de la Dirección General del Conocimiento y Competencias Profesionales, o en la forma del artículo 16 de la Ley 39/2015",
+   "cita": "a través del Registro General del Ayuntamiento o del Registro Auxiliar de la Dirección General",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Tablón de anuncios de la Dirección General del Conocimiento y Competencias Profesionales, web municipal www.logrono.es y Boletín Oficial de La Rioja",
+   "valor": "Boletín Oficial de La Rioja, tablón de anuncios de la Dirección General del Conocimiento y Competencias Profesionales y web municipal (www.logrono.es)",
    "cita": "Tanto la convocatoria como sus Bases se publicarán íntegramente en el Boletín Oficial de La Rioja",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Primer ejercicio: cuestionario tipo test de 125 preguntas (120 evaluables), 135 minutos, mínimo 5 puntos",
-    "Segundo ejercicio: desarrollo escrito de cuatro temas extraídos al azar, 3 horas, mínimo 5 puntos",
-    "Tercer ejercicio: supuestos prácticos o teórico-prácticos, 3 horas, mínimo 5 puntos"
+    "Primer ejercicio: cuestionario tipo test de 125 preguntas (120 evaluables), 135 minutos, mínimo 5 puntos, eliminatorio",
+    "Segundo ejercicio: desarrollo por escrito de cuatro temas extraídos al azar, 3 horas, mínimo 5 puntos, eliminatorio",
+    "Tercer ejercicio: supuestos prácticos o teórico-prácticos por escrito, 3 horas, mínimo 5 puntos, eliminatorio"
    ],
    "cita": "La Oposición consistirá en la realización de tres ejercicios, todos ellos obligatorios y eliminatorios.",
-   "nivel": "literal"
-  },
-  "temas": {
-   "valor": 125,
-   "cita": "cuestionario tipo test, que versará sobre el Temario adjunto en el Anexo, de ciento veinticinco (125) preguntas",
    "nivel": "literal"
   },
   "bolsa": {
    "valor": "no",
    "cita": "Tras la realización del ejercicio, el Tribunal hará pública en la página Web",
    "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "no",
+   "cita": "La persona aspirante propuesta presentará en el Ayuntamiento de Logroño, dentro del plazo de veinte días hábiles",
+   "nivel": "literal"
   }
  },
  "rechazados": {
-  "denominacion": {
+  "plazas_turno_libre": {
    "motivo": "cita_no_literal",
-   "valor": [
-    "Programador/a"
-   ],
-   "cita": "convocatoria para cubrir una plaza de Programador/a. Escala de Administración Especial"
+   "valor": 1,
+   "cita": "una plaza de Programador (Turno Libre)"
   },
-  "practicas_o_curso": {
+  "temas": {
    "motivo": "cita_no_literal",
-   "valor": "no consta",
-   "cita": "Tendrá lugar en la toma de posesión"
+   "valor": 125,
+   "cita": "Primer ejercicio: cuestionario tipo test de ciento veinticinco (125) preguntas"
   }
  }
 }

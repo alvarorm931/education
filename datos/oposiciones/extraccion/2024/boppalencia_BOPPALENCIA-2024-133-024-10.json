@@ -5,11 +5,11 @@
   "fuente": "BOP-PALENCIA",
   "url": "https://www.diputaciondepalencia.es/system/files/bop/2024/20241104-bop-133-Ordinario.pdf",
   "fecha": "2024-11-04",
-  "huella": "13f6b5dbcebd06e740c7a8c337982a535741c92adda65898e376a03d3690c29c"
+  "huella": "859f4e61a0fcd03856e870522c922e84fa541ee4fd2fc3f4505ced8301c3c38e"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:50:09+00:00",
- "lote": "msgbatch_01LpyYajgKGX9NyHT1uvynbR",
+ "extraido": "2026-10-31T15:25:48+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
@@ -34,18 +34,13 @@
    "cita": "se realizará a través del sistema de concurso de méritos",
    "nivel": "literal"
   },
-  "plazas_total": {
-   "valor": 1,
-   "cita": "la provisión de una plaza de Técnico de Grado Medio en materia deportiva",
-   "nivel": "literal"
-  },
   "titulacion": {
-   "valor": "Grado universitario",
-   "cita": "Estar en posesión o en condiciones de obtener en la fecha de finalización del plazo de presentación de solicitudes el título universitario de Grado",
+   "valor": "Título universitario de Grado",
+   "cita": "Estar en posesión o en condiciones de obtener en la fecha de finalización del plazo de presentación de solicitudes el título universitario de Grado.",
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Nacionalidad española o de la UE (o con derecho de libre circulación), tener 16 años y no exceder la edad de jubilación forzosa, capacidad funcional, no haber sido separado de la Administración ni inhabilitado.",
+   "valor": "Nacionalidad española o de otro Estado UE (o equivalente); tener cumplidos 16 años y no exceder la edad de jubilación forzosa; capacidad funcional; no haber sido separado del servicio ni inhabilitado.",
    "cita": "Tener cumplidos los 16 años y no exceder, en su caso, de la edad máxima de jubilación forzosa.",
    "nivel": "literal"
   },
@@ -55,35 +50,35 @@
    "nivel": "literal"
   },
   "exenciones_tasa": {
-   "valor": "Bonificación del 50% para discapacidad igual o superior al 33%, víctimas del terrorismo y víctimas de violencia de género; 75% para personas desempleadas con 6 meses de antigüedad como demandantes y familias numerosas.",
-   "cita": "Bonificación del 75% € por participante para: Personas desempleadas que figuren en los Servicios Públicos de Empleo",
-   "nivel": "sin_signos"
+   "valor": "Bonificación del 50% para discapacidad igual o superior al 33%, víctimas del terrorismo y víctimas de violencia de género; bonificación del 75% para desempleados con 6 meses de antigüedad como demandantes y familias numerosas.",
+   "cita": "Bonificación del 75% € por participante para: - Personas desempleadas que figuren en los Servicios Públicos de Empleo",
+   "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "10 días hábiles desde la publicación del anuncio de la convocatoria en el Boletín Oficial del Estado",
+   "valor": "10 días hábiles contados a partir de la publicación del anuncio de esta convocatoria en el Boletín Oficial del Estado",
    "cita": "en el plazo de 10 días hábiles contados a partir de la publicación del anuncio de esta convocatoria en el Boletín Oficial del Estado",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Formulario de inscripción en la web del PMD; presentación en el Registro del Patronato (Plaza Mariano Timón s/n) o en la sede electrónica https://sede.pmdpalencia.com/",
+   "valor": "Formulario de inscripción en la web del PMD; registro del Patronato en Plaza Mariano Timón s/n o sede electrónica del Patronato",
    "cita": "La solicitud deberá presentarse en el Registro del Patronato Municipal de Deportes de Palencia en la Plaza Mariano Timón",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "BOP de Palencia, Tablón Electrónico de Anuncios del Patronato y página web https://www.pmdpalencia.com/",
-   "cita": "En el Tablón Electrónico de Anuncios del Patronato Municipal de Deportes de Palencia se publicará toda la información relativa a la convocatoria",
+   "valor": "BOP de Palencia, tablón electrónico de anuncios y web del Patronato Municipal de Deportes (www.pmdpalencia.com)",
+   "cita": "Toda la información relativa al proceso de la convocatoria se publicará en la página web oficial dedicada expresamente al Empleo público",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Valoración de méritos (concurso)"
+    "Concurso de méritos: valoración de servicios prestados (hasta 80 puntos) y otros méritos (hasta 20 puntos)"
    ],
-   "cita": "Una vez baremados los méritos correspondientes al concurso, el Tribunal calificador hará pública",
+   "cita": "Supondrá una puntuación máxima total de 100 puntos, dividiéndose en servicios prestados y otros méritos",
    "nivel": "literal"
   },
   "meritos": {
-   "valor": "Servicios prestados hasta 80 puntos (1 punto por mes en el PMD; 0,25 por mes en otras Administraciones); otros méritos hasta 20 (formación hasta 14, titulación 3, idiomas comunitarios 3)",
-   "cita": "a) Servicios prestados. (80 puntos máximo) Se valorarán los servicios prestados como funcionario interino",
+   "valor": "Servicios prestados hasta 80 puntos (1 punto/mes en el PMD; 0,25 puntos/mes en otras Administraciones); formación hasta 14 puntos; titulación superior hasta 3 puntos; idiomas comunitarios hasta 3 puntos",
+   "cita": "a) Servicios prestados. (80 puntos máximo) Se valorarán los servicios prestados como funcionario interino, laboral temporal",
    "nivel": "literal"
   },
   "bolsa": {
@@ -92,10 +87,16 @@
    "nivel": "literal"
   },
   "practicas_o_curso": {
-   "valor": "no",
+   "valor": "no consta",
    "cita": "Concluido el proceso selectivo, los aspirantes propuestos que lo hubieran superado dispondrán de un plazo de veinte días hábiles",
    "nivel": "literal"
   }
  },
- "rechazados": {}
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "la provisión, mediante el sistema de concurso de méritos, de TÉCNICO DE GRADO MEDIO"
+  }
+ }
 }

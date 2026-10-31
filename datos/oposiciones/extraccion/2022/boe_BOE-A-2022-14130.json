@@ -1,0 +1,105 @@
+{
+ "proceso": "boe:BOE-A-2022-14130",
+ "documento": {
+  "id": "bopciudadreal:BOPCIUDADREAL-2022-2388",
+  "fuente": "BOP-CIUDADREAL",
+  "url": "https://bop.dipucr.es/bop/2022/08/01",
+  "fecha": "2022-08-01",
+  "huella": "bdfe871de63ffa994636f0466c05cb9e043cf32ecd15e01f8d83b823fa17b060"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T15:25:30+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "E",
+   "cita": "GRUPO DE CLASIFICACIÓN CATEGORÍA LABORAL VACANTES FECHA DE ADSCRIPCIÓN Grupo E TAQUILLERA",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "Oferta Excepcional de Empleo Público de estabilización de empleo temporal, enmarcada en la Ley 20/2021",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Para la plaza de monitor deportivo (grupo C2), estar en posesión del título de Graduado en Educación Secundaria Obligatoria o equivalente",
+   "cita": "Para la plaza de monitor deportivo (grupo C2), estar en posesión del título de Graduado en Educación Secundaria Obligatoria o equivalente",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Abonan 1 euro los desempleados sin prestación contributiva en el último mes; exentos los aspirantes con discapacidad igual o superior al 33 por 100",
+   "cita": "Estarán exentos del pago de derechos de examen los aspirantes con discapacidad igual o superior al 33 por 100",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Concurso de méritos: experiencia profesional en el puesto (máx. 40 puntos)",
+    "Concurso de méritos: experiencia profesional general (máx. 20 puntos)",
+    "Concurso de méritos: formación complementaria (máx. 40 puntos)"
+   ],
+   "cita": "Méritos que se computan (máximo 100 puntos): 1.- Experiencia profesional en el puesto objeto de la convocatoria (máximo 40 puntos)",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "TAQUILLERA",
+    "MONITOR DEPORTIVO"
+   ],
+   "cita": "Categoría laboral TAQUILLERA y MONITOR DEPORTIVO en la tabla de vacantes del Anexo I"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso",
+   "cita": "el sistema selectivo para la provisión de las plazas contempladas en el Anexo I de la presente Resolución, será el de Concurso de méritos"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 2,
+   "cita": "Personal laboral: GRUPO DE CLASIFICACIÓN CATEGORÍA LABORAL VACANTES FECHA DE ADSCRIPCIÓN Grupo E TAQUILLERA 1"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 2,
+   "cita": "Personal laboral: GRUPO DE CLASIFICACIÓN CATEGORÍA LABORAL VACANTES FECHA DE ADSCRIPCIÓN Grupo E TAQUILLERA 1"
+  },
+  "plazas_discapacidad": {
+   "motivo": "valor_no_en_cita",
+   "valor": 0,
+   "cita": "Personal laboral: GRUPO DE CLASIFICACIÓN CATEGORÍA LABORAL VACANTES FECHA DE ADSCRIPCIÓN Grupo E TAQUILLERA 1"
+  },
+  "otros_requisitos": {
+   "motivo": "cita_no_literal",
+   "valor": "Ser español, nacional de la UE o extranjero residente en España; capacidad funcional; tener 16 años cumplidos y no exceder la edad máxima de jubilación forzosa; no haber sido separado del servicio por expediente disciplinario ni estar inhabilitado",
+   "cita": "Ser español, nacional de uno de los estados miembros de la Unión Europea o extranjero residente en España"
+  },
+  "tasa_euros": {
+   "motivo": "cita_no_literal",
+   "valor": 10,
+   "cita": "ascienden 1,00 euro para desempleados y de 10,00 euros para los empleados"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "veinte días naturales desde el día siguiente a la publicación de las bases en el BOP",
+   "cita": "plazo máximo establecido de veinte días naturales a contar desde el día siguiente a la publicación en el BOP"
+  },
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Registro General del Patronato de lunes a viernes de 9 a 14:00, o en la forma del art. 16.4 de la Ley 39/2015",
+   "cita": "Las instancias se podrán presentar tanto en el Registro General del Patronato de lunes a viernes de 9 a 14:00"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "BOP de Ciudad Real, tablón de anuncios del Patronato y página web del PMD",
+   "cita": "Los anuncios se publicarán en el Boletín Oficial de la provincia y en la página web del PMD"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, para integrar a los aspirantes que no superen el proceso y tengan más del 10% de la puntuación del concurso (taquillero y monitor deportivo)",
+   "cita": "se integrarán en el orden que corresponda según su puntuación, en la bolsa de nueva creación"
+  }
+ }
+}

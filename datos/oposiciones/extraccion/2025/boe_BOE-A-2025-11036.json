@@ -5,11 +5,11 @@
   "fuente": "BOE",
   "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2025-11036",
   "fecha": "2025-06-03",
-  "huella": "d2a4412d5bc77d12f896331bdd9b34469a6b7d7c79fa47b99ba64c6af0b49b15"
+  "huella": "25c731b73f64a965213f72217e7177607348c5da33ad22718782caffd08edf76"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:45:09+00:00",
- "lote": "msgbatch_016re6aGcimwSVmdrWa6qBd9",
+ "extraido": "2026-10-31T15:25:27+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
@@ -24,12 +24,12 @@
   },
   "vinculo": {
    "valor": "funcionario de carrera",
-   "cita": "Para la admisión a la realización del proceso selectivo, las personas aspirantes deberán poseer",
+   "cita": "mantener hasta el momento de la toma de posesión como personal funcionario de carrera los siguientes requisitos",
    "nivel": "literal"
   },
   "sistema": {
    "valor": "concurso-oposición",
-   "cita": "por el sistema de concurso-oposición. El número de plazas ofertadas es de una",
+   "cita": "por el sistema de concurso-oposición. El número de plazas ofertadas es de una.",
    "nivel": "literal"
   },
   "plazas_total": {
@@ -37,44 +37,43 @@
    "cita": "El número de plazas ofertadas es de una.",
    "nivel": "literal"
   },
-  "plazas_turno_libre": {
-   "valor": 1,
-   "cita": "El número de plazas ofertadas es de una.",
-   "nivel": "literal"
-  },
   "titulacion": {
    "valor": "Graduado, Licenciado, Ingeniero o Arquitecto o equivalentes",
-   "cita": "la titulación de Graduado, Licenciado, Ingeniero o Arquitecto o equivalentes",
+   "cita": "Estar en posesión o en condiciones de obtener, una vez pagada las tasas del título, la titulación de Graduado, Licenciado, Ingeniero o Arquitecto",
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Nacionalidad española o de Estado miembro de la UE (con excepciones); tener 16 años cumplidos y no exceder la edad máxima de jubilación; capacidad funcional; no separación por expediente disciplinario ni inhabilitación; conocimiento adecuado del español",
+   "valor": "Nacionalidad española, de Estado miembro de la UE o de Estado aplicable por libre circulación; tener cumplidos dieciséis años y no exceder la edad máxima de jubilación; capacidad funcional; no estar separado del servicio ni inhabilitado; conocimiento adecuado del español.",
    "cita": "Tener cumplidos dieciséis años y no exceder, en su caso, la edad máxima de jubilación.",
    "nivel": "literal"
   },
-  "idioma_cooficial": {
-   "valor": "No se exige",
-   "cita": "La lengua oficial en la que tendrá lugar el desarrollo de las pruebas será el español.",
-   "nivel": "literal"
-  },
   "exenciones_tasa": {
-   "valor": "Exentos: discapacidad igual o superior al 33 %, familia numerosa de categoría especial, víctimas del terrorismo y víctimas de violencia de género. Bonificaciones: desempleo (75 %), Carné Joven (20 %), familia numerosa general (75 %); no acumulables",
+   "valor": "Exentos: discapacidad igual o superior al 33 %, familia numerosa de categoría especial, víctimas del terrorismo y víctimas de violencia de género. Bonificaciones del 75 % (desempleo, familia numerosa general) y 20 % (Carné Joven), no acumulables.",
    "cita": "Estarán exentas del pago de esta tasa las personas que acrediten cualquiera de las siguientes circunstancias",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "Quince días hábiles desde el día siguiente a la publicación de la convocatoria en el BOE",
-   "cita": "El plazo de presentación de solicitudes será de quince días hábiles contados a partir del siguiente al de la publicación de esta convocatoria",
+   "valor": "quince días hábiles contados a partir del siguiente al de la publicación de la convocatoria en el BOE",
+   "cita": "El plazo de presentación de solicitudes será de quince días hábiles contados a partir del siguiente al de la publicación",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Telemáticamente a través de la sede electrónica de la UPCT, trámite «Participación en procesos selectivos» (https://sede.upct.es/tramites)",
-   "cita": "deberán hacerlo presentando la solicitud a través de la sede electrónica de la Universidad Politécnica de Cartagena",
+   "valor": "A través de la sede electrónica de la Universidad Politécnica de Cartagena (https://sede.upct.es/tramites), trámite «Participación en procesos selectivos», identificándose con certificado electrónico, Cl@ve o usuario y contraseña.",
+   "cita": "Deberán hacerlo presentando la solicitud a través de la sede electrónica de la Universidad Politécnica de Cartagena",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Tablón Oficial Electrónico de la Universidad y https://www.upct.es/convocatorias; resoluciones de admitidos en el BORM",
-   "cita": "se publicará en el «Boletín Oficial de la Región de Murcia» y en la que, además de declarar aprobada la lista de admitidos y excluidos",
+   "valor": "Tablón Oficial Electrónico de la Universidad y https://www.upct.es/convocatorias; resoluciones de admitidos y nombramientos en el Boletín Oficial de la Región de Murcia",
+   "cita": "La relación de personas aprobadas se publicará en el Tablón Oficial Electrónico de la Universidad",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Primer ejercicio (eliminatorio): parte tipo test de 45 preguntas sobre la parte general (0-7 puntos) y desarrollo escrito de dos temas de la parte específica (0-18 puntos)",
+    "Segundo ejercicio (eliminatorio): supuesto o prueba práctica a elegir de dos, de 0 a 25 puntos",
+    "Tercer ejercicio (eliminatorio): mediación lingüística de español a inglés nivel C1, sin diccionario, de 0 a 10 puntos"
+   ],
+   "cita": "Tercer ejercicio: Se valorará de 0 a 10 puntos. Tendrá carácter eliminatorio",
    "nivel": "literal"
   },
   "temas": {
@@ -83,30 +82,15 @@
    "nivel": "literal"
   },
   "meritos": {
-   "valor": "Experiencia profesional últimos cinco años, máximo 40 puntos; titulación superior (MECES), máximo 3 puntos",
-   "cita": "La puntuación máxima de esta fase será de 40 puntos y constituirá el 40 % del total de la puntuación de la prueba selectiva.",
+   "valor": "Experiencia profesional de los últimos cinco años hasta 40 puntos; titulación superior (MECES) hasta 3 puntos; máximo total de la fase de concurso 40 puntos",
+   "cita": "La puntuación máxima de esta fase será de 40 puntos y constituirá el 40 % del total de la puntuación",
    "nivel": "literal"
   },
   "bolsa": {
-   "valor": "sí, lista de espera para interinidades hasta la celebración de nuevas pruebas selectivas",
-   "cita": "Con el fin de atender las necesidades urgentes que se produzcan hasta la celebración de nuevas pruebas selectivas, se procederá a constituir una lista de espera",
+   "valor": "sí, lista de espera para interinidades con las personas que superen la fase de oposición o obtengan un 40 % de la puntuación máxima, para atender necesidades urgentes hasta nuevas pruebas",
+   "cita": "se procederá a constituir una lista de espera con las personas aspirantes que hayan superado la fase de oposición",
    "nivel": "literal"
   }
  },
- "rechazados": {
-  "plazas_discapacidad": {
-   "motivo": "valor_no_en_cita",
-   "valor": 0,
-   "cita": "El número de plazas ofertadas es de una."
-  },
-  "ejercicios": {
-   "motivo": "cita_no_literal",
-   "valor": [
-    "Primer ejercicio, eliminatorio: primera parte, test de 45 preguntas (0-7 puntos); segunda parte, desarrollo escrito de dos temas de la parte específica (0-18 puntos); lectura pública",
-    "Segundo ejercicio, eliminatorio: supuesto o prueba práctica, de 0 a 25 puntos, con lectura pública",
-    "Tercer ejercicio, eliminatorio: mediación lingüística en inglés de nivel C1, de 0 a 10 puntos"
-   ],
-   "cita": "El primer ejercicio tendrá carácter eliminatorio y está dividido en dos partes a realizar el mismo día"
-  }
- }
+ "rechazados": {}
 }

@@ -5,11 +5,11 @@
   "fuente": "BOP-TOLEDO",
   "url": "https://bop.diputoledo.es/webEbop/DocGet?id=22103647;0&insert_number=5271&insert_year=2022",
   "fecha": "2022-10-26",
-  "huella": "bf173f3c0bf6d470b28e447db5953d1d6d0a2511bac44a48a27ca958bbd5ccde"
+  "huella": "f358f3d7891cf34ed3b8882d6dca219cb5c73a2299fbd53657d636e226a0d7e8"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:57:22+00:00",
- "lote": "msgbatch_01B4ETF5xB4buYCHqPiHTXzF",
+ "extraido": "2026-10-31T15:25:46+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
@@ -17,63 +17,59 @@
    "cita": "la creación de una bolsa de trabajo para la contratación temporal, de carácter laboral, de conserje de edificios municipales",
    "nivel": "literal"
   },
-  "grupo": {
-   "valor": "E / agrupaciones profesionales",
-   "cita": "Aprobar la convocatoria para la creación de una bolsa de trabajo",
-   "nivel": "literal"
-  },
   "vinculo": {
    "valor": "laboral temporal",
-   "cita": "Los contratos de trabajo serán de carácter laboral temporal de acuerdo con la legislación laboral aplicable",
+   "cita": "contratación temporal, de carácter laboral, de conserje de edificios municipales",
    "nivel": "literal"
   },
   "sistema": {
    "valor": "concurso",
-   "cita": "procedimiento de selección de los/as aspirantes será el de concurso de conformidad con el artículo 48",
+   "cita": "el procedimiento de selección de los/as aspirantes será el de concurso de conformidad con el artículo 48",
    "nivel": "literal"
   },
   "titulacion": {
    "valor": "Graduado Escolar como mínimo o equivalente a efectos laborales",
-   "cita": "Estar en posesión del Graduado Escolar como mínimo o equivalente a efectos laborales",
+   "cita": "Estar en posesión del Graduado Escolar como mínimo o equivalente a efectos laborales.",
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Nacionalidad española (sin perjuicio del art. 39 Ley 4/2011); capacidad funcional; tener cumplidos 16 años y no exceder la edad de jubilación forzosa; no haber sido separado del servicio por expediente disciplinario ni inhabilitado; no incurrir en incompatibilidad",
-   "cita": "Tener cumplidos dieciséis años y no exceder de la edad de jubilación forzosa, salvo que por ley se establezca otra edad máxima",
+   "valor": "Nacionalidad española (sin perjuicio del art. 39 de la Ley 4/2011); capacidad funcional; tener cumplidos 16 años y no exceder la edad de jubilación forzosa; no haber sido separado del servicio ni inhabilitado; no incurrir en incompatibilidades",
+   "cita": "Tener la nacionalidad española, sin perjuicio de lo dispuesto en el artículo 39 de la Ley 4/2011",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
    "valor": "diez días naturales contados a partir del día siguiente al de la publicación del anuncio en el Boletín Oficial de la provincia de Toledo",
-   "cita": "El plazo de presentación de las solicitudes será de diez días naturales contados a partir del día siguiente al de la publicación",
+   "cita": "El plazo de presentación de las solicitudes será de diez días naturales contados a partir del día siguiente",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Registro General del Ayuntamiento de Recas (horario 9:00 a 14:00) o en la forma del artículo 16.4 de la Ley 39/2015, dirigidas al Sr. Alcalde-Presidente",
+   "valor": "Registro General del Ayuntamiento de Recas en horario de 9:00 a 14:00 horas, o en la forma del artículo 16.4 de la Ley 39/2015",
    "cita": "Las instancias se presentarán en el Registro General del Ayuntamiento de Recas o en la forma que determina el artículo 16.4",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Tablón de anuncios del Ayuntamiento y página web municipal (www.recas.es); extracto en el BOP de Toledo",
-   "cita": "Publicar extracto de la convocatoria en el BOP de la provincia de Toledo, y de forma integra en la página web municipal",
+   "valor": "Tablón de anuncios del Ayuntamiento y página web del Ayuntamiento de Recas (www.recas.es)",
+   "cita": "publicada en el tablón de anuncios del Ayuntamiento y en la página web del Ayuntamiento de Recas",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Concurso: valoración de méritos (experiencia, formación y discapacidad)"
+    "Concurso: valoración de méritos (experiencia hasta 4,20 puntos y formación hasta 2,80 puntos)"
    ],
    "cita": "El procedimiento de selección de los/as aspirantes será el de concurso",
    "nivel": "literal"
   },
-  "meritos": {
-   "valor": "Experiencia: 0,10 p/mes en Administración Local, 0,05 en otras AAPP, 0,02 en empresa privada (máx. 4,20). Formación (máx. 2,80). Discapacidad igual o superior al 33%: 0,50",
-   "cita": "Por cada mes de servicios prestados en la Administración Local, en puestos de igual o similar característica",
-   "nivel": "literal"
-  },
   "bolsa": {
-   "valor": "sí, para contrataciones temporales (sustituciones, acumulación de tareas o necesidades urgentes e inaplazables)",
+   "valor": "Sí, para contrataciones temporales por sustituciones, acumulación de tareas o necesidades urgentes e inaplazables",
    "cita": "Dicha bolsa se utilizará para la realización de contrataciones temporales y no permanentes",
    "nivel": "literal"
   }
  },
- "rechazados": {}
+ "rechazados": {
+  "meritos": {
+   "motivo": "cita_no_literal",
+   "valor": "Experiencia en la Administración Local (0,10 puntos por mes), otras Administraciones Públicas (0,05 por mes) y empresa privada (0,02 por mes), máximo 4,20 puntos; formación hasta 2,80 puntos; discapacidad igual o superior al 33%: 0,50 puntos",
+   "cita": "Por cada mes de servicios prestados en la Administración Local, en puestos de igual o similar característica, 0,10 puntos"
+  }
+ }
 }

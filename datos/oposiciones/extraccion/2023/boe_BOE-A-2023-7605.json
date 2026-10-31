@@ -5,16 +5,21 @@
   "fuente": "BOP-CIUDADREAL",
   "url": "https://bop.dipucr.es/bop/2023/02/08",
   "fecha": "2023-02-08",
-  "huella": "cc032020ee3644eb53d527a9f99bfddb4113c0d9ebede48e5fe4b697d19dbd13"
+  "huella": "d4a597b16591e0e3ad954cad704dc862b1c3caaac06817d0c4c13d04c30ed885"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:56:56+00:00",
- "lote": "msgbatch_0167qWfLXqjGo8Hv43cM3LuM",
+ "extraido": "2026-10-31T15:25:22+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
    "valor": "Monitor Viento Metal",
-   "cita": "Denominación: Monitor Viento Metal.",
+   "cita": "Monitor Viento Metal, de naturaleza laboral, incluida en la OEP del Ayuntamiento de Villamanrique",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C1",
+   "cita": "Monitor Viento Metal, grupo de clasificación C, subgrupo C1",
    "nivel": "literal"
   },
   "vinculo": {
@@ -33,8 +38,8 @@
    "nivel": "literal"
   },
   "titulacion": {
-   "valor": "Ciclo Formativo en Instrumentos de Viento Metal o equivalente o en todo caso, suficiente o habilitante para el ejercicio de las funciones del puesto.",
-   "cita": "Poseer un Ciclo Formativo en Instrumentos de Viento Metal o equivalente o en todo caso, suficiente o habilitante para el ejercicio de las funciones del puesto.",
+   "valor": "Ciclo Formativo en Instrumentos de Viento Metal o equivalente o en todo caso, suficiente o habilitante para el ejercicio de las funciones del puesto",
+   "cita": "Poseer un Ciclo Formativo en Instrumentos de Viento Metal o equivalente o en todo caso, suficiente o habilitante",
    "nivel": "literal"
   },
   "otros_requisitos": {
@@ -43,26 +48,26 @@
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "Instancia para participar en el proceso selectivo según Anexo I; el plazo no figura en el texto aportado.",
-   "cita": "Para ser admitidos en el proceso de selección (ANEXO I INSTANCIA DE SOLICITUD) y formar parte de este, los aspirantes deben cumplir los requisitos",
+   "valor": "No consta en el texto extractado",
+   "cita": "Para ser admitidos en el proceso de selección (ANEXO I INSTANCIA DE SOLICITUD) y formar parte de este",
    "nivel": "literal"
   },
   "meritos": {
-   "valor": "Experiencia profesional hasta 70 puntos (1,10 por mes en el Ayuntamiento de Villamanrique; 0,80 por mes en otras entidades locales; 0,55 por mes en otras AAPP y sector público). Méritos académicos hasta 30 puntos (cursos: 0,50 puntos por hora de formación).",
-   "cita": "EXPERIENCIA PROFESIONAL: Hasta un máximo de 70 puntos.",
-   "nivel": "literal"
-  },
-  "practicas_o_curso": {
-   "valor": "no figura en el texto",
-   "cita": "Tipo de procedimiento.",
+   "valor": "Experiencia profesional hasta 70 puntos (1,10 por mes en el Ayuntamiento de Villamanrique; 0,80 en otras entidades locales; 0,55 en otras AAPP y Sector Público). Méritos académicos hasta 30 puntos (cursos: 0,50 puntos por hora de formación)",
+   "cita": "Experiencia profesional por servicios prestados como personal funcionario o laboral, en la plaza objeto de las presentes bases",
    "nivel": "literal"
   }
  },
  "rechazados": {
-  "grupo": {
+  "presentacion": {
    "motivo": "cita_no_literal",
-   "valor": "C1",
-   "cita": "Grupo de clasificación: C. Subgrupo de clasificación: C2."
+   "valor": "Instancia (Anexo I) firmada, dirigida al Ayuntamiento; medios electrónicos o notificación en domicilio",
+   "cita": "Medio preferente de notificación: medios electrónicos o notificación en el domicilio indicado"
+  },
+  "practicas_o_curso": {
+   "motivo": "cita_no_literal",
+   "valor": "No consta en el texto extractado",
+   "cita": "Las bases no contienen periodo de prácticas ni curso selectivo en el texto transcrito"
   }
  }
 }

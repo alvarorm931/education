@@ -5,11 +5,11 @@
   "fuente": "BOCM",
   "url": "https://www.bocm.es/bocm-20260928-1",
   "fecha": "2026-09-28",
-  "huella": "33a50dd0645171931f42d312395b2e503cbad1daacd2f19f0276d0ae633d9f71"
+  "huella": "7daca4d513103f5d9a420d8b4a6e9d4c73a42be2197e7812a6519f7483175cbd"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:41:35+00:00",
- "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
+ "extraido": "2026-10-31T15:25:39+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
@@ -29,7 +29,7 @@
   },
   "plazas_total": {
    "valor": 9,
-   "cita": "Se convocan pruebas selectivas para la cobertura de nueve (9) plazas",
+   "cita": "Se convocan pruebas selectivas para la cobertura de nueve (9) plazas en el Cuerpo",
    "nivel": "literal"
   },
   "plazas_discapacidad": {
@@ -38,17 +38,17 @@
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Grado de discapacidad igual o superior al 33 por 100 para concurrir por el cupo de discapacidad; requisitos generales de la Orden 290/2018 a la fecha de finalización del plazo de solicitudes",
+   "valor": "Grado de discapacidad igual o superior al 33 por 100 para el cupo de discapacidad; requisitos de la base 6.1 de la Orden 290/2018 que deben poseerse hasta la toma de posesión",
    "cita": "deberán tener legalmente reconocido un grado de discapacidad igual o superior al 33 por 100",
    "nivel": "literal"
   },
   "tasa_euros": {
    "valor": 21.11,
-   "cita": "que asciende a 21,11 euros",
+   "cita": "asciende a 21,11 euros",
    "nivel": "literal"
   },
   "exenciones_tasa": {
-   "valor": "Miembros de familias numerosas de categoría general: 10,55 euros; resto de exenciones según base octava.2 de la Orden 290/2018",
+   "valor": "Familias numerosas de categoría general: 10,55 euros; resto de exenciones totales según base octava.2 de la Orden 290/2018",
    "cita": "Para quienes sean miembros de familias numerosas de categoría general, el importe de la tasa será de 10,55 euros.",
    "nivel": "literal"
   },
@@ -58,25 +58,30 @@
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Electrónica a través del Registro Electrónico General de la Comunidad de Madrid o página web del proceso",
+   "valor": "Electrónicamente a través del Registro Electrónico General de la Comunidad de Madrid, mediante certificado electrónico reconocido",
    "cita": "Las solicitudes se presentarán electrónicamente, junto con la documentación que debe acompañarlas, a través del Registro Electrónico General",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Sede Electrónica de la Comunidad de Madrid y página web del proceso selectivo; BOCM para resoluciones de admitidos y excluidos y de aprobados",
+   "cita": "La publicación del anuncio de celebración del segundo y, en su caso, sucesivos ejercicios",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Primer ejercicio: test de 50 preguntas más 5 de reserva, 55 minutos, eliminatorio (mínimo 5 puntos)",
-    "Segundo ejercicio: supuesto práctico escrito, 60 minutos, eliminatorio (mínimo 5 puntos)"
+    "Primer ejercicio: cuestionario tipo test de 50 preguntas (+5 de reserva), 4 respuestas, 55 minutos, eliminatorio con mínimo 5 puntos",
+    "Segundo ejercicio: supuesto práctico escrito desglosado en preguntas, 60 minutos, eliminatorio con mínimo 5 puntos"
    ],
-   "cita": "Consistirá en contestar por escrito un cuestionario tipo test propuesto por el órgano de selección",
+   "cita": "Consistirá en contestar por escrito un cuestionario tipo test propuesto por el órgano de selección, compuesto por cincuenta (50) preguntas",
    "nivel": "literal"
   },
   "meritos": {
-   "valor": "No se valoran méritos en el concurso; el sistema es de oposición",
+   "valor": "No se valoran méritos en concurso; el proceso es de oposición",
    "cita": "El sistema de selección será el de oposición.",
    "nivel": "literal"
   },
   "bolsa": {
-   "valor": "Sí, lista de espera de personal funcionario interino con aspirantes que obtengan al menos el 80 % de la calificación del primer ejercicio y no superen el proceso",
+   "valor": "sí, lista de espera de personal funcionario interino con aspirantes que obtengan como mínimo el 80 % de la calificación del primer ejercicio y no superen el proceso",
    "cita": "se procederá a la constitución y aprobación de una lista de espera de personal funcionario interino",
    "nivel": "literal"
   }
@@ -94,13 +99,18 @@
   },
   "titulacion": {
    "motivo": "cita_no_literal",
-   "valor": "Bachiller, título de Técnico en Formación Profesional o titulación o estudios equivalentes",
+   "valor": "Bachiller o título de Técnico en Formación Profesional o cualquier otra titulación o estudios equivalentes",
    "cita": "estar en posesión o en condiciones de obtener el título Bachiller o título de Técnico en Formación Profesional"
   },
-  "publicaciones": {
+  "temas": {
+   "motivo": "valor_no_numerico",
+   "valor": "Ver Anexo de la convocatoria (no incluido en el texto)",
+   "cita": "Estas preguntas versarán sobre los temas incluidos en el temario del programa de la oposición que obra como Anexo."
+  },
+  "practicas_o_curso": {
    "motivo": "cita_no_literal",
-   "valor": "BOCM y Sede Electrónica de la Comunidad de Madrid o página web del proceso",
-   "cita": "la publicación del anuncio de celebración del segundo y sucesivos ejercicios se efectuará en la Sede Electrónica de la Comunidad de Madrid"
+   "valor": "No aparece en el texto",
+   "cita": ""
   }
  }
 }

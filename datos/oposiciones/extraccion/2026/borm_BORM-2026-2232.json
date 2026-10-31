@@ -5,17 +5,17 @@
   "fuente": "BORM",
   "url": "https://www.borm.es/#/home/anuncio/19-05-2026/2232",
   "fecha": "2026-05-19",
-  "huella": "a78254f7a95d940484da0b7f40b956ae954b37b2ad9fb6126413eecf22053b4b"
+  "huella": "477be8cdcc1ef43a31b29bfba33afeba3c038f80670f9dc9c16a9d8ede626e47"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:41:35+00:00",
- "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
+ "extraido": "2026-10-31T15:25:37+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
    "valor": [
-    "Profesorado Permanente Laboral Pediatría (plaza 1/2026-PV)",
-    "Profesorado Permanente Laboral Microbiología (plaza 2/2026-PV)"
+    "Profesorado permanente laboral, plaza 1/2026-PV (Pediatría)",
+    "Profesorado permanente laboral, plaza 2/2026-PV (Microbiología)"
    ],
    "cita": "Plaza Número: 1/2026-PV Número de Puestos: 1 Área/especialidad de Conocimiento: Pediatría",
    "nivel": "literal"
@@ -30,13 +30,13 @@
    "cita": "convoca concurso-oposición para la provisión de plazas de profesorado permanente laboral",
    "nivel": "literal"
   },
-  "titulacion": {
-   "valor": "Doctorado",
-   "cita": "Titulación: Doctorado Título Especialista: Pediatría y Áreas Específicas",
+  "plazas_turno_libre": {
+   "valor": 2,
+   "cita": "Plaza Número: 2/2026-PV Número de Puestos: 1 Área/especialidad de Conocimiento: Microbiología",
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Cumplir requisitos de los artículos 7, 8 y 10 del Reglamento regulador y estar en posesión del Título de Especialista Sanitario en la Especialidad de la plaza convocada.",
+   "valor": "Estar en posesión del Título de Especialista Sanitario en la Especialidad de la plaza convocada; requisitos de los artículos 7, 8 y 10 del Reglamento regulador.",
    "cita": "Estar en posesión del Título de Especialista Sanitario en la Especialidad de la plaza convocada.",
    "nivel": "literal"
   },
@@ -47,40 +47,35 @@
   },
   "exenciones_tasa": {
    "valor": "Exentas las personas aspirantes con discapacidad igual o superior al 33%.",
-   "cita": "Están exentas del pago de la tasa las personas aspirantes que acrediten la condición de discapacitada con un grado igual o superior al treinta y tres por ciento",
+   "cita": "Están exentas del pago de la tasa las personas aspirantes que acrediten la condición de discapacitada con un grado igual o superior al treinta y tres por ciento (33%).",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "Quince días hábiles desde el siguiente a la publicación en el BORM",
+   "valor": "Quince días hábiles desde el siguiente a la publicación de la convocatoria en el BORM.",
    "cita": "El plazo de presentación de solicitudes será de quince días hábiles, contados a partir del siguiente a la publicación",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Telemática a través de la aplicación CONVOCUM PDI (convocum.um.es), con firma electrónica",
-   "cita": "La presentación y registro de la solicitud se realizará por vía telemática a través de la propia aplicación web",
+   "valor": "Telemática a través de la aplicación CONVOCUM PDI (convocum.um.es), con firma electrónica.",
+   "cita": "La presentación y registro de la solicitud se realizará por vía telemática a través de la propia aplicación web CONVOCUM PDI",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Lugar de realización de las pruebas y aplicación CONVOCUM PDI",
+   "valor": "En el lugar donde se realicen las pruebas y en la aplicación CONVOCUM PDI.",
    "cita": "Las calificaciones de esta primera prueba se publicarán en el lugar donde se realicen las pruebas y en la aplicación «CONVOCUM PDI».",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Primera prueba: historial académico, docente e investigador, proyectos docente e investigador y experiencia asistencial, con exposición y debate (eliminatoria, 50% mínimo), valor triple",
-    "Segunda prueba: exposición oral de un tema del proyecto docente elegido libremente, con debate"
+    "Primera prueba: exposición oral de méritos y defensa del proyecto docente y de investigación (máx. 1 h) y debate (máx. 1 h); valor triple",
+    "Segunda prueba: exposición oral de un tema del proyecto docente (máx. 1 h) y debate (máx. 1 h 30 min)"
    ],
-   "cita": "En la modalidad de concurso-oposición a plazas de profesorado permanente laboral, la selección se basará en la realización de dos pruebas",
+   "cita": "La primera prueba será pública y consistirá en la exposición oral por el/la concursante, en un tiempo máximo de una hora",
    "nivel": "literal"
   },
-  "meritos": {
-   "valor": "Baremo del Anexo 1 del Reglamento regulador, incluido en la primera prueba (valor triple), con criterios y horquillas por perfil de plaza",
-   "cita": "Dicha valoración, que tendrá un valor triple del valor asignado a la segunda prueba, se realizará con base en los criterios generales y horquillas",
-   "nivel": "literal"
-  },
-  "bolsa": {
+  "practicas_o_curso": {
    "valor": "no",
-   "cita": "Estar en posesión del Título de Especialista Sanitario en la Especialidad de la plaza convocada.",
+   "cita": "En ningún caso, el/la concursante seleccionado/a podrá comenzar a trabajar sin estar suscrito el contrato correspondiente.",
    "nivel": "literal"
   }
  },
@@ -88,7 +83,17 @@
   "plazas_total": {
    "motivo": "valor_no_en_cita",
    "valor": 2,
-   "cita": "Número de Puestos: 1 Área/especialidad de Conocimiento: Pediatría Tipo de Contrato"
+   "cita": "Número de Puestos: 1 Área/especialidad de Conocimiento: Pediatría"
+  },
+  "titulacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Doctorado",
+   "cita": "Tipo de Contrato: Profesor/a Permanente Laboral Titulación: Doctorado Título Especialista: Pediatría"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "no",
+   "cita": "Vinculadas al Hospital Universitario; no se menciona creación de bolsa o lista de espera."
   }
  }
 }

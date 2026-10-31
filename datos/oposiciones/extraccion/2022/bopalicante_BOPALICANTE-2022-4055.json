@@ -1,0 +1,50 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2022-4055",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2022-4055",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2022/06/17_115/2022_004055.pdf",
+  "fecha": "2022-06-17",
+  "huella": "186cec20c5cd73f2023522049349fe8e30dd95613e5f9b0777bb904cc248d4ee"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T15:25:28+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Agente de Policía Local"
+   ],
+   "cita": "CONSTITUCIO DE BORSA DE TREBALL TEMPORAL ESPECIFICA AGENTS DE POLICIA LOCAL",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "constitució de borsa de treball temporal específica agents de policia local",
+   "nivel": "sin_signos"
+  },
+  "plazo_solicitudes": {
+   "valor": "Diez días hábiles contados a partir del día hábil siguiente al de la publicación del extracto de esta convocatoria en el BOP de Alicante",
+   "cita": "El període de presentació d'instàncies serà de deu dies hàbils comptats a partir del dia hàbil següent",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Sede electrónica - Tablón de Anuncios del Ayuntamiento de Muro de Alcoy y web www.vilademuro.net (ocupación pública)",
+   "cita": "Les bases de la convocatòria estaran a disposició dels interessats a la seu electrònica- Tauler d'Anuncis",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "oposición",
+   "cita": "procés de selecció per a la constitució de borsa de treball temporal, específica d'agents de policia local, mitjançant oposició"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, bolsa de trabajo temporal específica de agentes de policía local",
+   "cita": "constitució de borsa de treball temporal, específica d'agents de policia local"
+  }
+ }
+}

@@ -5,11 +5,11 @@
   "fuente": "BOP-PALENCIA",
   "url": "https://www.diputaciondepalencia.es/system/files/bop/2026/20260629-bop-77-Ordinario.pdf",
   "fecha": "2026-06-29",
-  "huella": "bc94db423fa1018ddaf8e3586448a4735b9bdc25af2fe857172edf29b2e00ea9"
+  "huella": "c999ede0ce90d7a6bc8de7d1d0087a725c638df1982aaa07ec7432232cb1701c"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T07:51:48+00:00",
- "lote": "msgbatch_01NvbwpQGcC9vt1x7nWayvXt",
+ "extraido": "2026-10-31T15:25:47+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "grupo": {
@@ -19,17 +19,12 @@
   },
   "vinculo": {
    "valor": "funcionario de carrera",
-   "cita": "la provisión como funcionario, por el procedimiento de concurso-oposición libre, de dos plazas",
+   "cita": "provisión como funcionario, por el procedimiento de concurso-oposición libre, de dos plazas",
    "nivel": "literal"
   },
   "sistema": {
    "valor": "concurso-oposición",
-   "cita": "la provisión como funcionario, por el procedimiento de concurso-oposición libre, de dos plazas",
-   "nivel": "literal"
-  },
-  "plazas_total": {
-   "valor": 2,
-   "cita": "BASES Y CONVOCATORIA PARA LA SELECCIÓN DE DOS PLAZAS DE ADMINISTRATIVO",
+   "cita": "provisión como funcionario, por el procedimiento de concurso-oposición libre, de dos plazas",
    "nivel": "literal"
   },
   "plazas_turno_libre": {
@@ -38,13 +33,13 @@
    "nivel": "literal"
   },
   "titulacion": {
-   "valor": "Bachiller o Técnico o cualquier otra titulación académica equivalente requerida para el ingreso en el Grupo de Clasificación C1",
+   "valor": "Bachiller, Técnico o cualquier otra titulación académica equivalente requerida para el Grupo C1",
    "cita": "Estar en posesión o en condiciones de obtener la titulación de Bachiller o Técnico o cualquier otra titulación académica equivalente",
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Ser español o nacional de la UE, o extranjero con residencia legal en España; tener cumplidos 16 años y no exceder la edad máxima de jubilación forzosa; poseer la capacidad funcional exigida; no haber sido separado del servicio de ninguna Administración Pública mediante expediente disciplinario ni hallarse inhabilitado.",
-   "cita": "Ser español, nacional de uno de los estados miembros de la Unión Europea o persona de otra nacionalidad a la que se apliquen los Tratados",
+   "valor": "Nacionalidad española, de Estado miembro de la UE o con residencia legal conforme al artículo 57 del TREBEP; tener cumplidos 16 años y no exceder la edad de jubilación forzosa; capacidad funcional; no haber sido separado del servicio ni inhabilitado.",
+   "cita": "Tener cumplidos 16 años y no exceder, en su caso, de la edad máxima de jubilación forzosa.",
    "nivel": "literal"
   },
   "tasa_euros": {
@@ -53,54 +48,48 @@
    "nivel": "literal"
   },
   "exenciones_tasa": {
-   "valor": "Bonificación del 100 % a participantes con discapacidad igual o superior al 33 %, documentalmente justificada; bonificación del 50 % a demandantes de empleo inscritos en la Oficina de Empleo con al menos un mes de antigüedad.",
+   "valor": "Bonificación del 100 % para discapacidad igual o superior al 33 %; bonificación del 50 % para demandantes de empleo inscritos en la Oficina de Empleo con al menos un mes de antigüedad.",
    "cita": "Se aplicará una bonificación del 100 % a los participantes con una discapacidad igual o superior al 33 %, documentalmente justificada.",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
    "valor": "veinte días hábiles contados a partir del día siguiente al de la publicación del anuncio de la convocatoria en el Boletín Oficial del Estado",
-   "cita": "se presentarán en el plazo de veinte días hábiles contados a partir del día siguiente al de la publicación del anuncio",
+   "cita": "se presentarán en el plazo de veinte días hábiles contados a partir del día siguiente al de la publicación del anuncio de la convocatoria en el Boletín Oficial del Estado.",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Telemáticamente a través del procedimiento electrónico específico «Solicitud de participación en Proceso Selectivo» en la Sede Electrónica del Ayuntamiento de Villamuriel de Cerrato, con certificado digital o DNI electrónico.",
+   "valor": "Electrónicamente a través del procedimiento 'Solicitud de participación en Proceso Selectivo' de la Sede Electrónica del Ayuntamiento, con certificado digital o DNI electrónico.",
    "cita": "Las instancias para tomar parte en la convocatoria se presentarán a través del procedimiento electrónico especifico habilitado en la Sede Electrónica",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Tablón de anuncios de la Sede Electrónica del Ayuntamiento de Villamuriel de Cerrato, web municipal y Boletín Oficial de la Provincia; el anuncio de la convocatoria en el Boletín Oficial del Estado.",
+   "valor": "Tablón de anuncios de la Sede Electrónica del Ayuntamiento de Villamuriel de Cerrato, Boletín Oficial de la Provincia de Palencia, web municipal y BOE para el anuncio de convocatoria.",
    "cita": "Las actuaciones derivadas del proceso selectivo, se publicarán en el tablón de anuncios la Sede Electrónica del Ayuntamiento",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Primer ejercicio: test de 50 preguntas con cuatro alternativas (60 minutos), obligatorio y eliminatorio",
-    "Segundo ejercicio: desarrollo escrito de dos temas (dos horas), obligatorio y eliminatorio",
-    "Tercer ejercicio: resolución por escrito de supuestos prácticos (dos horas), obligatorio y eliminatorio",
-    "Fase de concurso: valoración de méritos, máximo 10 puntos"
+    "Primer ejercicio: test de 50 preguntas con cuatro alternativas (obligatorio y eliminatorio), 60 minutos",
+    "Segundo ejercicio: desarrollo escrito de dos temas, uno del Bloque II y uno del Bloque III, en dos horas (eliminatorio)",
+    "Tercer ejercicio: resolución por escrito de supuestos prácticos en dos horas (eliminatorio)"
    ],
-   "cita": "Consistirá en la realización de un cuestionario tipo test formado por un máximo de 50 preguntas",
-   "nivel": "literal"
-  },
-  "meritos": {
-   "valor": "Experiencia profesional (máx. 5 puntos); formación (máx. 3 puntos); exámenes de procesos selectivos aprobados (máx. 2 puntos). Máximo total de 10 puntos.",
-   "cita": "El máximo de puntuación a obtener en el presente baremo será de 10 puntos.",
-   "nivel": "literal"
-  },
-  "bolsa": {
-   "valor": "sí, para cubrir nombramientos interinos de la plaza ofertada con los aspirantes que aprobaron algún ejercicio eliminatorio sin obtener plaza",
-   "cita": "Concluido el procedimiento, se confeccionará una bolsa de empleo con los aspirantes que habiendo aprobado",
-   "nivel": "literal"
-  },
-  "practicas_o_curso": {
-   "valor": "no se menciona periodo de prácticas ni curso selectivo; tras la propuesta, toma de posesión en el plazo de un mes desde la notificación del nombramiento",
-   "cita": "La toma de posesión de las personas nombradas definitivamente como funcionarios de carrera se efectuará en el plazo de un mes",
+   "cita": "El proceso selectivo constara de dos fases, una de oposición y otra fase de concurso.",
    "nivel": "literal"
   },
   "temas": {
    "valor": 14,
-   "cita": "Tema 14.– La Ley 19/2013 de 9 de diciembre de Transparencia, acceso a la información pública y buen gobierno: objeto. Transparencia en la actividad pública. La ",
-   "nivel": "contado"
+   "cita": "Tema 14.– La Prevención de Riesgos Laborales: Régimen Jurídico.",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Experiencia profesional (máx. 5 puntos); formación (máx. 3 puntos); exámenes de procesos selectivos aprobados (máx. 2 puntos). Máximo total 10 puntos.",
+   "cita": "El máximo de puntuación a obtener en el presente baremo será de 10 puntos.",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, bolsa de empleo con los aspirantes que aprobaron algún ejercicio eliminatorio sin obtener plaza, para nombramientos interinos",
+   "cita": "Concluido el procedimiento, se confeccionará una bolsa de empleo con los aspirantes que habiendo aprobado alguno de los ejercicios",
+   "nivel": "literal"
   }
  },
  "rechazados": {
@@ -110,6 +99,16 @@
     "Administrativo de la Administración General (Escala de Administración General, Subescala Administrativa, Nivel 18)"
    ],
    "cita": "dos plazas de Administrativo encuadradas en la Escala de Administración General; Subescala: Administrativa, Nivel 18"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 2,
+   "cita": "es objeto de las presentes bases la provisión como funcionario de dos plazas de Administrativo"
+  },
+  "practicas_o_curso": {
+   "motivo": "cita_no_literal",
+   "valor": "No consta",
+   "cita": ""
   }
  }
 }

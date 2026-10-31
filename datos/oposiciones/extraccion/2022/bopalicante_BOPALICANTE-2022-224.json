@@ -1,0 +1,50 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2022-224",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2022-224",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2022/01/21_14/2022_000224.pdf",
+  "fecha": "2022-01-21",
+  "huella": "487e3796c0379f0fdee93e00ec4dad6ae43ede174c839370dd2a7957c77018ab"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T15:24:12+00:00",
+ "lote": "msgbatch_01QGBJzFrJk89N3kyh4ZuSEx",
+ "no_son_bases": false,
+ "campos": {
+  "sistema": {
+   "valor": "concurso",
+   "cita": "Por decreto de la alcaldía número 37/2022, de fecha 14 de enero de 2021, se han aprobado las bases",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "10 días hábiles, contados a partir del día siguiente al de la publicación del presente anuncio en el Boletín Oficial de la Provincia",
+   "cita": "El plazo de presentación de instancias será 10 días hábiles, contados a partir del día siguiente al de la publicación",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "tablón de edictos electrónico y página web del Ayuntamiento de Rojales",
+   "cita": "Los sucesivos anuncios relacionados con la presente convocatoria se publicarán en el tablón de edictos electrónico y en la página web",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Arquitecto técnico"
+   ],
+   "cita": "para la provisión temporal de puestos de trabajo de arquitecto técnico"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "laboral temporal",
+   "cita": "constitución de una bolsa de empleo para provisión temporal de puestos de trabajo"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, para la provisión temporal de puestos de trabajo de arquitecto técnico",
+   "cita": "convocatoria para la constitución de una bolsa de empleo para provisión temporal de puestos de trabajo"
+  }
+ }
+}

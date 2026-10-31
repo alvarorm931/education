@@ -1,0 +1,55 @@
+{
+ "proceso": "doe:DOE-2022080517",
+ "documento": {
+  "id": "doe:DOE-2022080517",
+  "fuente": "DOE",
+  "url": "https://doe.juntaex.es/otrosFormatos/html.php?xml=2022080517&anio=2022&doe=850o",
+  "fecha": "2022-05-05",
+  "huella": "2899de3971c2eb4e2cec0a3824072f8ed3aa53534b509388b562c40d8be2e1c2"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T15:25:46+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Agente de la Policía Local"
+   ],
+   "cita": "dos plazas de Agente de la Policía Local, vacantes en la plantilla de funcionarios",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C1",
+   "cita": "Escala Básica mediante el sistema de movilidad",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "vacantes en la plantilla de funcionarios de este Ayuntamiento",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 2,
+   "cita": "proveer dos plazas de Agente de la Policía Local, vacantes en la plantilla",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles a contar desde el siguiente al de la publicación de esta resolución en el BOE",
+   "cita": "El plazo de presentación de solicitudes será de 20 días hábiles a contar desde el siguiente",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia, Tablón de Anuncios de la corporación y área de actualidad/empleo de su página web",
+   "cita": "se harán públicos en el Boletín Oficial de la Provincia, Tablón de Anuncios de la corporación",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso",
+   "cita": ""
+  }
+ }
+}

@@ -5,12 +5,97 @@
   "fuente": "BOCYL",
   "url": "https://bocyl.jcyl.es/html/2023/01/24/html/BOCYL-D-24012023-7.do",
   "fecha": "2023-01-24",
-  "huella": "cbd09d9529b5a3df25db8785ba88c74f0f185d10285e87e2b8f90c12067ed2e7"
+  "huella": "705fb90bd049410362493f570f0c860674ce952194079fcca55185403883cd09"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:56:35+00:00",
- "lote": "msgbatch_0167qWfLXqjGo8Hv43cM3LuM",
- "no_son_bases": true,
- "campos": {},
- "rechazados": {}
+ "extraido": "2026-10-31T15:25:28+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "Profesores Titulares de Universidad, plaza K096K01/RP01015 Álgebra-Facultad de Ciencias",
+   "cita": "Plaza K096K01/RP01015 / Álgebra-FAC CIENCIAS (VA) C/C/E PROFESORES TITULARES DE UNIVERSIDAD",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "ha resuelto convocar a concurso la plaza que se detalla en el Anexo I",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Doctor",
+   "cita": "Estar en posesión del título de Doctor.",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española o de Estado miembro UE (o familiares con derecho); edad mínima 16 años y no haber alcanzado la jubilación; capacidad funcional; no estar separado/inhabilitado; ser o haber sido personal investigador doctor con certificado I3; acreditación para Profesor Titular de Universidad en la rama de conocimiento correspondiente.",
+   "cita": "Ser o haber sido personal investigador doctor y haber obtenido el certificado I3 dentro del marco del Programa Ramón y Cajal",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 40,
+   "cita": "deberán abonar a la Universidad de Valladolid la cantidad de 40 euros en concepto de derechos de examen",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Veinte días hábiles desde el siguiente al de la publicación de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "en el plazo de veinte días hábiles contados a partir del siguiente al de la publicación de esta convocatoria en el Boletín Oficial del Estado",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Registro Electrónico General de la Universidad de Valladolid, desde la sede electrónica (sede.uva.es), dirigidas al Rector",
+   "cita": "las solicitudes de participación se presentarán en el Registro Electrónico General de la Universidad de Valladolid",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón Electrónico de Anuncios y web de la Universidad de Valladolid (empleo), y Boletín Oficial de Castilla y León",
+   "cita": "Las listas serán expuestas en el Tablón Electrónico de Anuncios de la Universidad de Valladolid",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Primera prueba: exposición oral de méritos y del proyecto docente e investigador (45-90 min), con debate posterior (máx. 2 h); eliminatoria si no obtiene al menos tres votos",
+    "Segunda prueba: exposición oral de un tema libremente elegido de los planes de estudio (45-90 min), con debate posterior (máx. 2 h)"
+   ],
+   "cita": "La primera prueba consistirá en la exposición oral por la persona concursante, durante un tiempo mínimo de cuarenta y cinco minutos y máximo de noventa",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Valoración según criterios específicos fijados por la Comisión de Acceso conforme al Acuerdo del Consejo de Gobierno de 24 de julio de 2008; se valoran historial docente, académico e investigador, y proyecto docente e investigador.",
+   "cita": "Asimismo, se adjuntará un ejemplar de las publicaciones y los documentos acreditativos de lo consignado en el mismo.",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "no",
+   "cita": "Los miembros de las Comisiones de Acceso tendrán derecho al percibo de asistencias",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Toma de posesión en el plazo máximo de veinte días desde el día siguiente a la publicación del nombramiento en el BOE",
+   "cita": "En el plazo máximo de veinte días, a contar desde el día siguiente al de la publicación del nombramiento en el Boletín Oficial del Estado",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "A1",
+   "cita": "Plaza de cuerpo docente universitario con dedicación C08"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "Convocar a concurso la plaza destinada a la incorporación de personal investigador doctor"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "ha resuelto convocar a concurso la plaza que se detalla en el Anexo I"
+  },
+  "exenciones_tasa": {
+   "motivo": "cita_no_literal",
+   "valor": "Personas con discapacidad igual o superior al 33 %; miembros de familias numerosas reconocidas; víctimas de terrorismo; mujeres víctimas de violencia de género.",
+   "cita": "Estarán exentas del pago de esta tasa las personas con discapacidad igual o superior al 33 por 100"
+  }
+ }
 }

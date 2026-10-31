@@ -5,11 +5,11 @@
   "fuente": "BOP-TOLEDO",
   "url": "https://bop.diputoledo.es/webEbop/DocGet?id=26062989;0&insert_number=3025&insert_year=2026",
   "fecha": "2026-07-03",
-  "huella": "8db78925d5a895ef103ed86a9c673cdd24f79482a0b45c92086b94c9955b811c"
+  "huella": "371124b1ecbaede126c578f8abaed42dd70d53598bef5f61572b17d6eed051de"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T08:18:11+00:00",
- "lote": "msgbatch_01BrnYw6KkevFx7at547B5g8",
+ "extraido": "2026-10-31T15:25:45+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
@@ -34,45 +34,28 @@
    "cita": "PROCEDIMIENTO DE SELECCIÓN: CONCURSO. El procedimiento de selección de los aspirantes se desarrollará en una única fase de concurso.",
    "nivel": "literal"
   },
-  "plazas_total": {
-   "valor": 1,
-   "cita": "Siendo necesaria la existencia de un técnico municipal, Arquitecto Superior, se convoca la formación de una bolsa",
-   "nivel": "literal"
-  },
   "titulacion": {
    "valor": "Arquitecto, máster habilitante para la profesión de arquitectura, formación profesional equivalente o cumplir los requisitos para su obtención",
-   "cita": "Poseer la titulación de Arquitecto, máster habilitante para la profesión de arquitectura, formación profesional equivalente o cumplir los requisitos",
+   "cita": "Poseer la titulación de Arquitecto, máster habilitante para la profesión de arquitectura, formación profesional equivalente",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "Diez días naturales contados a partir del día siguiente al de la publicación de la convocatoria en la sede electrónica del Ayuntamiento",
-   "cita": "en el plazo de diez días naturales contados a partir del día siguiente al de la publicación de la convocatoria en la sede electrónica",
+   "valor": "diez días naturales contados a partir del día siguiente al de la publicación de la convocatoria en la sede electrónica del Ayuntamiento",
+   "cita": "en el plazo de diez días naturales contados a partir del día siguiente al de la publicación de la convocatoria",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Registro Electrónico General del Ayuntamiento o en los lugares del artículo 16.4 de la Ley 39/2015, dirigidas al Sr. Alcalde-Presidente",
+   "valor": "Registro Electrónico General del Ayuntamiento o lugares del artículo 16.4 de la Ley 39/2015, dirigidas al Sr. Alcalde-Presidente",
    "cita": "se presentarán en el Registro Electrónico General de este Ayuntamiento o en alguno de los lugares previstos en el artículo 16.4",
    "nivel": "literal"
   },
-  "publicaciones": {
-   "valor": "Sede electrónica del Ayuntamiento (http://ugena.sedelectronica.es) y tablón de anuncios",
-   "cita": "Las bases íntegras se publicarán, al menos, en la sede electrónica del Ayuntamiento [http://ugena.sedelectronica.es] y en el tablón de anuncios",
-   "nivel": "sin_signos"
-  },
-  "ejercicios": {
-   "valor": [
-    "Concurso de valoración de méritos (fase única)"
-   ],
-   "cita": "El procedimiento de selección de los aspirantes se desarrollará en una única fase de concurso.",
-   "nivel": "literal"
-  },
   "bolsa": {
-   "valor": "sí, bolsa de empleo para cubrir vacantes temporalmente por necesidades del servicio, bajas por enfermedad, maternidad, etc., con vigencia de tres años",
+   "valor": "sí, para cubrir vacantes temporalmente por necesidades de servicio, bajas por enfermedad, maternidad, etc. Vigencia de tres años",
    "cita": "Se constituirá una bolsa de empleo con las personas que superen el proceso selectivo a fin de que pueda ser utilizada en futuros llamamientos",
    "nivel": "literal"
   },
   "practicas_o_curso": {
-   "valor": "no aplica",
+   "valor": "no aparece en el texto",
    "cita": "El nombramiento derivado de este proceso de selección en ningún caso dará lugar al reconocimiento de la condición de funcionario de carrera.",
    "nivel": "literal"
   }
@@ -80,13 +63,18 @@
  "rechazados": {
   "otros_requisitos": {
    "motivo": "cita_no_literal",
-   "valor": "Nacionalidad española (sin perjuicio del art. 39 de la Ley 4/2011 de Castilla-La Mancha); capacidad funcional; tener cumplidos 16 años y no exceder la edad de jubilación forzosa; no haber sido separado de la Administración por expediente disciplinario ni inhabilitado",
-   "cita": "Tener la nacionalidad española, sin perjuicio de lo dispuesto en el artículo 39 de la Ley 4/2011, de 10 de marzo, del Empleo Público de Castilla-La Mancha."
+   "valor": "Nacionalidad española (sin perjuicio del art. 39 de la Ley 4/2011); capacidad funcional; tener cumplidos 16 años y no exceder la edad de jubilación forzosa; no haber sido separado del servicio de Administraciones públicas ni inhabilitado",
+   "cita": "Tener la nacionalidad española, sin perjuicio de lo dispuesto en el artículo 39 de la Ley 4/2011, de 10 de marzo"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Sede electrónica del Ayuntamiento (http://ugena.sedelectronica.es) y tablón de anuncios",
+   "cita": "Las bases íntegras se publicarán, al menos, en la sede electrónica del Ayuntamiento y en el tablón de anuncios, para mayor difusión."
   },
   "meritos": {
    "motivo": "cita_no_literal",
-   "valor": "Experiencia profesional hasta 6 puntos (0,20 por mes como Técnico Municipal Arquitecto en Ayuntamientos; 0,15 por mes en urbanismo en otras Administraciones); formación hasta 4 puntos (cursos relacionados y titulaciones de nivel superior); puntuación total 10 puntos",
-   "cita": "Experiencia profesional. Máximo de 6 puntos. Los servicios prestados como Tecnico Municipal Arquitecto en Ayuntamientos a razón de 0,20 puntos por mes"
+   "valor": "Experiencia profesional (máx. 6 puntos): 0,20 por mes como Técnico Municipal Arquitecto en Ayuntamientos y 0,15 por mes en urbanismo en otras Administraciones. Formación (máx. 4 puntos): cursos relacionados y titulaciones superiores (1,50 y 2,00 puntos por titulación)",
+   "cita": "El sistema será el de concurso de valoración de méritos con una puntuación de 10 puntos"
   }
  }
 }

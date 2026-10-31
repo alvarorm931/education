@@ -1,0 +1,55 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2022-2199",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2022-2199",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2022/04/19_73/2022_002199.pdf",
+  "fecha": "2022-04-19",
+  "huella": "0d2339ac39eb6edacca837530f063bd80c05981d4c04038edd78204a0c4cf09f"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T15:25:27+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "A2",
+   "cita": "Técnico Medio de Administración, Grupo A, Subgrupo A2",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Comienza a partir del día siguiente a la publicación de este edicto",
+   "cita": "El plazo de presentación de solicitudes comenzará a partir del día siguiente a la publicación de este edicto.",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, bolsa de empleo temporal para cubrir con carácter interino el puesto de Técnico Medio de Administración",
+   "cita": "para la creación de una base de empleo temporal para cubrir con carácter interino",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Técnico Medio de Administración"
+   ],
+   "cita": "Bases Reguladoras de la convocatoria para la creación de una base de empleo temporal para cubrir con carácter interino, mediante el sistema de concurso-oposición, el puesto de trabajo de Técnico Medio de Administración"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario interino",
+   "cita": "para cubrir con carácter interino, mediante el sistema de concurso-oposición, el puesto de trabajo de Técnico Medio"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "para cubrir con carácter interino, mediante el sistema de concurso-oposición, el puesto de trabajo"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Tablón de Anuncios electrónico y Portal de Transparencia del Ayuntamiento de Finestrat",
+   "cita": "Las bases de selección se publicarán íntegramente, en el Tablón de Anuncios electrónico y en el Portal de Transparencia"
+  }
+ }
+}

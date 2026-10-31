@@ -5,33 +5,43 @@
   "fuente": "BOP-TOLEDO",
   "url": "https://bop.diputoledo.es/webEbop/DocGet?id=24065750;0&insert_number=3036&insert_year=2024",
   "fecha": "2024-06-12",
-  "huella": "ca6418de93d1453b0ce06c70e6762a1b7e833279c51bbccf21729751799bcd93"
+  "huella": "19eb258ab5048c63c3952da4f8de144a2df02ea9fdf6efb826c86d06dddad038"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:54:13+00:00",
- "lote": "msgbatch_01HRnX7cDVMkRZD7mBamCmLu",
+ "extraido": "2026-10-31T15:25:46+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
    "valor": [
     "ADMINISTRATIVO"
    ],
-   "cita": "constitución de una bolsa de ADMINISTRATIVO (clasificada en el subgrupo C1) de la plantilla de personal del Patronato Deportivo Municipal",
+   "cita": "En el apartado referido a la “denominación” se expresará “ADMINISTRATIVO”.",
    "nivel": "literal"
   },
   "grupo": {
    "valor": "C1",
-   "cita": "ADMINISTRATIVO (clasificada en el subgrupo C1) de la plantilla de personal del Patronato Deportivo Municipal",
+   "cita": "ADMINISTRATIVO (clasificado en el subgrupo C1) de la plantilla de personal del Patronato Deportivo Municipal",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "otro",
+   "cita": "constitución de una bolsa de trabajo para la cobertura de necesidades que pudieran producirse en el puesto de trabajo",
    "nivel": "literal"
   },
   "sistema": {
-   "valor": "oposición",
-   "cita": "Test de conocimientos. Consistirá en responder en el plazo máximo de sesenta minutos a un cuestionario de 50 preguntas",
+   "valor": "concurso-oposición",
+   "cita": "La selección de los aspirantes se realizará por el procedimiento de concurso-oposición.",
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Nacionalidad española o de Estado miembro de la UE (o residencia legal); tener cumplidos 16 años y no exceder la edad de jubilación forzosa; capacidad funcional; no estar separado ni inhabilitado; no tener condena por delitos sexuales ni trata de seres humanos.",
+   "valor": "Nacionalidad española o de un Estado miembro de la Unión Europea (con extensiones previstas en la norma); tener cumplidos 16 años y no exceder la edad máxima de jubilación forzosa; capacidad funcional; no haber sido separado del servicio ni inhabilitado; no condena por delitos sexuales ni trata.",
    "cita": "Tener cumplidos 16 años de edad y no exceder de la edad máxima de jubilación forzosa.",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 10.53,
+   "cita": "El importe de los derechos por participación en los procesos selectivos es de 10,53 €.",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
@@ -40,49 +50,44 @@
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Sede electrónica del PDM (https://sede.patronatodeportivotoledo.com/), presencialmente en oficinas centrales del PDM (Avda. General Villalba, 1, Toledo) o en otras formas del art. 16 Ley 39/2015",
+   "valor": "Telemáticamente a través del Registro Electrónico del PDM (sede.patronatodeportivotoledo.com, con certificado electrónico), presencialmente en las oficinas centrales del PDM o por otras formas del art. 16.4 de la Ley 39/2015",
    "cita": "Telemáticamente. A través del Registro Electrónico del Patronato Deportivo Municipal de Toledo (https://sede.patronatodeportivotoledo.com/)",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Boletín Oficial de la Provincia de Toledo y Tablón de Anuncios del PDM de Toledo (sede electrónica)",
+   "valor": "Boletín Oficial de la Provincia de Toledo y Tablón de Anuncios del PDM (sede.patronatodeportivotoledo.com)",
    "cita": "Dicha resolución se publicará en el Boletín Oficial de la Provincia de Toledo y en el Tablón de Anuncios del PDM de Toledo",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Ejercicio único y eliminatorio: test de 50 preguntas más 5 de reserva, 60 minutos, 0 a 15 puntos (mínimo 7,5)",
-    "Fase de concurso: méritos hasta 5 puntos (titulación, cursos y experiencia profesional)"
+    "Fase de oposición: test de conocimientos de 50 preguntas (más 5 de reserva) en 60 minutos, 0 a 15 puntos, mínimo 7,5",
+    "Fase de concurso: titulación, cursos de formación y experiencia profesional, hasta 5 puntos"
    ],
    "cita": "Consistirá en responder en el plazo máximo de sesenta minutos a un cuestionario de 50 preguntas, más 5 de reserva",
-   "nivel": "literal"
-  },
-  "meritos": {
-   "valor": "Fase de concurso, máximo 5 puntos: titulación hasta 0,5; cursos de formación hasta 0,5; experiencia profesional en contratación administrativa hasta 4 (0,08 puntos por mes trabajado)",
-   "cita": "Consistirá en la valoración de los siguientes méritos, hasta una puntuación máxima de 5 puntos.",
-   "nivel": "literal"
-  },
-  "bolsa": {
-   "valor": "sí, bolsa de trabajo para cobertura temporal de necesidades que pudieran producirse en el puesto de Administrativo",
-   "cita": "La Bolsa de trabajo se constituirá con los aspirantes aprobados en la prueba selectiva por el orden de puntuación alcanzado",
    "nivel": "literal"
   }
  },
  "rechazados": {
-  "vinculo": {
-   "motivo": "cita_no_literal",
-   "valor": "personal laboral fijo",
-   "cita": "Tribunal Calificador únicos, compuesto por cuatro miembros, titulares y suplentes, todos ellos funcionarios de carrera o personal laboral fijo"
-  },
   "titulacion": {
    "motivo": "cita_no_literal",
    "valor": "Bachiller, Formación Profesional de Grado medio o equivalentes",
    "cita": "Estar en posesión del título académico de Bachiller, Formación Profesional de Grado medio o equivalentes."
   },
   "temas": {
-   "motivo": "cita_no_literal",
+   "motivo": "valor_no_en_cita",
    "valor": 17,
-   "cita": "ANEXO I PROGRAMA DE MATERIAS 1.- El Patronato Deportivo Municipal. Constitución."
+   "cita": "ANEXO I PROGRAMA DE MATERIAS 1.- El Patronato Deportivo Municipal."
+  },
+  "meritos": {
+   "motivo": "cita_no_literal",
+   "valor": "Titulación hasta 0,5 puntos; cursos de formación hasta 0,5 puntos; experiencia profesional en contratación administrativa en el sector público hasta 4 puntos (0,08 por mes trabajado).",
+   "cita": "Experiencia profesional. (Máximo 4 puntos). Por haber prestado servicios de administrativo en el Área de Contratación Administrativa"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, bolsa de trabajo para la cobertura temporal de necesidades que pudieran producirse en el puesto de ADMINISTRATIVO",
+   "cita": "constitución de una bolsa de trabajo para la cobertura temporal de necesidades que pudieran producirse en el puesto de trabajo de ADMINISTRATIVO"
   }
  }
 }

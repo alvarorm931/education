@@ -1,0 +1,62 @@
+{
+ "proceso": "bopalava:BOTHA-2022-01481",
+ "documento": {
+  "id": "bopalava:BOTHA-2022-01481",
+  "fuente": "BOTHA",
+  "url": "http://www.araba.eus/botha/Boletines/2022/062/2022_062_01481_C.pdf",
+  "fecha": "2022-05-30",
+  "huella": "a11f5d8ed7da7a410a8039c966f37f345e6b0edeac5191643d09faa17af7db34"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T15:25:23+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Operario de servicios múltiples (aguas)",
+    "Operario de servicios múltiples",
+    "Auxiliar administrativo (biblioteca)"
+   ],
+   "cita": "Aprobación de la oferta de empleo público de plazas sometidas a convocatoria excepcional de estabilización de empleo temporal",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "E",
+   "cita": "Categoría: Subalterna. Grupo E. Titulación: Certificado escolaridad o equivalente.",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "PERSONAL LABORAL Operario de servicios múltiples (aguas): Puestos:1.",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "Forma de provisión: Concurso. Categoría: Subalterna. Grupo E.",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Dedicación plena en las plazas de operario y parcial (43,7 por ciento) en la de auxiliar administrativo de biblioteca",
+   "cita": "Dedicación: parcial (43,7 por ciento). Perfil lingüístico: 2.",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Perfil lingüístico 1 (Operarios), sin fecha de preceptividad; Perfil lingüístico 2 (Auxiliar administrativo), con fecha de preceptividad 1 de enero de 2022",
+   "cita": "Perfil lingüístico: 2. Fecha de preceptividad: 1 de enero de 2022.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 4,
+   "cita": "Operario de servicios múltiples (aguas): Puestos:1. Operario de servicios múltiples: Puestos: 2."
+  },
+  "titulacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Certificado escolaridad o equivalente (Operarios); Graduado Escolar, Formación Profesional de primer grado o equivalente (Auxiliar administrativo)",
+   "cita": "Titulación: Certificado escolaridad o equivalente. Titulación: Graduado Escolar, Formación Profesional de primer grado o equivalente."
+  }
+ }
+}

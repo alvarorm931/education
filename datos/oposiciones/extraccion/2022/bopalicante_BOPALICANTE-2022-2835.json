@@ -1,0 +1,63 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2022-2835",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2022-2835",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2022/05/11_88/2022_002835.pdf",
+  "fecha": "2022-05-11",
+  "huella": "9f6eb0aee1318c119f4c4bb105ed0b3c204ff4c19dc91ad5a4e4996769f78188"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T15:25:45+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "A1",
+   "cita": "PSICOLOGO/A A1 Administración Especial",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "PSICOLOGO/A",
+    "EDUCADOR/A SOCIAL",
+    "TRABAJADOR/A SOCIAL",
+    "TENICO/A INTEGRACIÓN SOCIAL"
+   ],
+   "cita": "cuatro bolsas de empleo a fin de disponer de un mecanismo"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "otro",
+   "cita": "creación de cuatro bolsas de empleo a fin de disponer"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "no"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "veinte días hábiles contados a partir del día siguiente al de la publicación del anuncio",
+   "cita": "será de veinte días hábiles contados a partir del día siguiente al de la publicación"
+  },
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "no especificado en el anuncio; remite a las bases específicas",
+   "cita": "El texto íntegro de las bases específicas reguladoras de la convocatoria estará a disposición"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Tablón de Edictos de la sede electrónica del Ayuntamiento y página web del Ayuntamiento",
+   "cita": "estará a disposición de los interesados en el Tablón de Edictos de la sede electrónica"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, para cubrir necesidades esenciales que puedan surgir en el Departamento de Bienestar Social",
+   "cita": "creación de cuatro bolsas de empleo a fin de disponer de un mecanismo que dé cobertura legal"
+  }
+ }
+}

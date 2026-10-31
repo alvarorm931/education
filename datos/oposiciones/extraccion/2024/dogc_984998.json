@@ -5,11 +5,11 @@
   "fuente": "DOGC",
   "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=984998",
   "fecha": "2024-05-06",
-  "huella": "e73e1b8382efe4c0165aaf9faaf5f2a5fe22a14cf872c23f36dc6122f1d9593f"
+  "huella": "b0e676f060b9706f690bba727af25534d40c9092bc547cb6f35ae903f6526f64"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:54:19+00:00",
- "lote": "msgbatch_01HRnX7cDVMkRZD7mBamCmLu",
+ "extraido": "2026-10-31T15:25:26+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
@@ -43,13 +43,13 @@
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Personal laboral fijo del CAT112 en situación de activo, excedencia voluntaria u otra suspensión del contrato, con plazo de reingreso cumplido y que reúna los requisitos de las bases y la relación de puestos de trabajo.",
+   "valor": "Personal laboral fijo del CAT112 en activo, excedencia voluntaria o suspensión del contrato, con plazo de reingreso cumplido y que reúna los requisitos de las bases.",
    "cita": "Puede participar en este concurso de cambio de destino el personal laboral fijo del CAT112 que esté en situación de activo",
    "nivel": "literal"
   },
   "idioma_cooficial": {
-   "valor": "Catalán, certificado de suficiencia C1",
-   "cita": "Certificado de suficiencia de lengua catalana (C1)",
+   "valor": "Catalán, certificado de suficiencia (C1)",
+   "cita": "Certificado de suficiencia de lengua catalana (C1).",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
@@ -58,38 +58,39 @@
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Formulario anexo 2 y documentación por la petición genérica de la Generalidad de Cataluña, indicando el destinatario CAT112 y asunto '02.2024-CD112'",
+   "valor": "Formulario del anexo 2 junto con la documentación, por la petición genérica de la Generalidad de Cataluña indicando el destinatario CAT112, asunto 02.2024-CD112",
    "cita": "Esta documentación se puede presentar por los siguientes canales, indicando en el asunto “02.2024-CD112”",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Web del CAT112 y Diari Oficial de la Generalitat de Catalunya (DOGC)",
-   "cita": "El contenido de estas bases y de la convocatoria se publica en el Diario Oficial de la Generalidad de Cataluña (DOGC) y en la web del CAT112.",
+   "valor": "Web del CAT112 (https://112.gencat.cat/ca/inici/) y DOGC",
+   "cita": "La lista provisional y la lista definitiva de personas admitidas y excluidas, se publicarán en la web del CAT112",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Fase de adecuación del perfil al puesto de trabajo: entrevista competencial (máximo 30 puntos)",
-    "Fase de concurso: valoración de méritos (máximo 60 puntos)"
+    "Prueba acreditativa de conocimientos de lengua catalana (solo para quien no esté exento)",
+    "Entrevista de competencias ante el Órgano Técnico de Selección, máximo una hora (30 puntos, eliminatoria)"
    ],
-   "cita": "Se valorarán las competencias especificadas en el punto 3.2 del presente Anexo mediante una entrevista competencial.",
+   "cita": "La entrevista se realizará ante el Órgano Técnico de Selección que realizará una entrevista competencial, de una duración máxima de una hora",
    "nivel": "literal"
   },
   "meritos": {
-   "valor": "Experiencia profesional hasta 35 puntos; titulaciones académicas oficiales hasta 10 puntos; formación y perfeccionamiento hasta 14 puntos; méritos específicos hasta 15 puntos; lengua catalana hasta 7 puntos",
-   "cita": "La experiencia y la capacidad profesionales se valorarán hasta 35 puntos, contados de la siguiente forma",
-   "nivel": "literal"
-  },
-  "bolsa": {
-   "valor": "no",
-   "cita": "Esta lista definitiva quedará reflejada en una resolución del órgano convocante",
-   "nivel": "literal"
-  },
-  "practicas_o_curso": {
-   "valor": "Período de prueba de 6 meses para el grupo A",
-   "cita": "por el grupo A es de 6 meses.",
+   "valor": "Concurso hasta 60 puntos: experiencia profesional hasta 35; titulaciones oficiales hasta 10; formación y perfeccionamiento hasta 14; méritos específicos (ISO 9001 y 22301) hasta 15 (ver también catalán hasta 7)",
+   "cita": "Esta fase tendrá una puntuación máxima de 60 puntos.",
    "nivel": "literal"
   }
  },
- "rechazados": {}
+ "rechazados": {
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "no",
+   "cita": "Con el proceso se elabora una relación de candidatos ordenada por puntuación, pero se trata de la adjudicación de una única plaza"
+  },
+  "practicas_o_curso": {
+   "motivo": "cita_no_literal",
+   "valor": "Periodo de prueba de 6 meses para el grupo A",
+   "cita": "el personal laboral fijo debe superar, si procede, un período de prueba que, según el VI Convenio por el grupo A es de 6 meses."
+  }
+ }
 }

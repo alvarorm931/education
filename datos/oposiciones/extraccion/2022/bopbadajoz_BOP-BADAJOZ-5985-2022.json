@@ -5,13 +5,18 @@
   "fuente": "BOP-BADAJOZ",
   "url": "https://www.dip-badajoz.es/bop/ventana_anuncio.php?id_anuncio=140941&FechaSolicitada=20221228000000",
   "fecha": "2022-12-28",
-  "huella": "ba63c897065b07451064f4fa3d820661e155dc33f4b2b370a021678b0956dac9"
+  "huella": "b4d92201c3960925ddac864ff88c996cf0a5f309bf1eac395c04ea0c86770f6c"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:55:55+00:00",
- "lote": "msgbatch_014eT3dLLVopBnuVgQ4syWD9",
+ "extraido": "2026-10-31T15:25:33+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
+  "grupo": {
+   "valor": "C2",
+   "cita": "Jornada completa, Complemento de destino 16",
+   "nivel": "literal"
+  },
   "vinculo": {
    "valor": "funcionario de carrera",
    "cita": "provisión en propiedad de una plaza de funcionario de carrera dentro del proceso de estabilización",
@@ -22,50 +27,50 @@
    "cita": "El sistema selectivo elegido es de concurso.",
    "nivel": "literal"
   },
-  "plazas_total": {
-   "valor": 1,
-   "cita": "provisión en propiedad de una plaza de funcionario de carrera dentro del proceso de estabilización",
-   "nivel": "literal"
-  },
   "titulacion": {
    "valor": "Graduado Escolar, Bachiller Elemental, Enseñanza Secundaria Obligatoria – LOGSE, Formación Profesional de primer grado o equivalente",
-   "cita": "Graduado Escolar, Bachiller Elemental, Enseñanza Secundaria Obligatoria – LOGSE, Formación Profesional de primer grado o equivalente.",
+   "cita": "estar en condiciones de obtenerla, antes de que finalice el plazo de presentación de instancias, en concreto",
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Nacionalidad española o de un Estado miembro de la Unión Europea; capacidad funcional; tener cumplidos dieciséis años y no exceder la edad de jubilación forzosa; no haber sido separado del servicio por expediente disciplinario; estar en posesión o en condiciones de obtener el Permiso de Conducir B.",
-   "cita": "Estar en posesión o en condiciones de obtenerlo, antes que finalice el plazo de presentación de instancias del Permiso de Conducir B.",
+   "valor": "Nacionalidad española o de un Estado miembro de la UE; capacidad funcional; tener cumplidos 16 años y no exceder la edad de jubilación forzosa; no haber sido separado del servicio ni inhabilitado; permiso de conducir B.",
+   "cita": "Tener cumplidos dieciséis años y no exceder de la edad de jubilación forzosa.",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
    "valor": "veinte días hábiles, contados a partir del día siguiente al de la publicación del anuncio de la convocatoria en el Boletín Oficial del Estado",
-   "cita": "El plazo de presentación de solicitudes será de veinte días hábiles, contados a partir del día siguiente al de la publicación del anuncio de la convocatoria en el Boletín Oficial del Estado.",
+   "cita": "El plazo de presentación de solicitudes será de veinte días hábiles, contados a partir del día siguiente al de la publicación",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Solicitud según anexo I dirigida a la Alcaldía-Presidencia, en las formas previstas en el artículo 16.4 de la Ley 39/2015, acompañada de DNI, permiso de conducir, títulos y documentación de méritos.",
+   "valor": "Solicitud según anexo I dirigida a la Alcaldía-Presidencia, por cualquiera de las formas del artículo 16.4 de la Ley 39/2015",
    "cita": "La presentación de solicitudes podrá hacerse con arreglo a las formas previstas en el artículo 16.4 de la ley 39/2015",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Boletín Oficial de la Provincia, tablón de anuncios del Ayuntamiento, web municipal y sede electrónica municipal",
-   "cita": "tendrá la consideración de sede electrónica la página web del Ayuntamiento, así como en el tablón de anuncios municipal",
+   "valor": "Boletín Oficial de la Provincia, tablón de anuncios del Ayuntamiento, sede electrónica municipal y web municipal",
+   "cita": "tendrá la consideración de sede electrónica la página web del Ayuntamiento, así como en el tablón de anuncios municipal y en la sede electrónica.",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
     "Fase de concurso: valoración de méritos (experiencia, formación y titulación)"
    ],
-   "cita": "Fase de concurso: El Tribunal valorará los méritos alegados y justificados documentalmente por las personas aspirantes.",
+   "cita": "El sistema selectivo elegido es de concurso.",
    "nivel": "literal"
   },
   "meritos": {
-   "valor": "Experiencia (máx. 6,00 puntos); Formación (máx. 4,00 puntos), incluyendo cursos y titulación; la Tarjeta de Identificación Profesional de Guarda Rural vale 1 punto",
-   "cita": "Serán objeto de puntuación los siguientes méritos y circunstancias, conforme a las siguientes tablas:",
+   "valor": "Experiencia hasta 6 puntos (0,30 por mes como funcionario, 0,20 como laboral); formación hasta 4 puntos; titulación (postgrado 2, grado 1,5, diplomatura 1, FP superior 0,75, bachillerato 0,5); Tarjeta de Guarda Rural 1 punto",
+   "cita": "Experiencia (máximo 6,00 puntos): Por cada mes en el desempeño de puestos de trabajo en la administración pública",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "no",
+   "cita": "Quienes no subsanen los defectos dentro del plazo señalado, justificando el derecho a su admisión, serán definitivamente excluidos del proceso selectivo.",
    "nivel": "literal"
   },
   "practicas_o_curso": {
-   "valor": "no aparece periodo de prácticas ni curso selectivo en el texto",
+   "valor": "Toma de posesión o incorporación en el plazo de un mes desde la publicación del nombramiento",
    "cita": "Una vez publicado el nombramiento de funcionario, éste deberá tomar posesión o incorporarse en el plazo de un mes.",
    "nivel": "literal"
   }
@@ -73,33 +78,15 @@
  "rechazados": {
   "denominacion": {
    "motivo": "cita_no_literal",
-   "valor": "Guardería Rural",
-   "cita": "provisión en propiedad de una plaza de Guardería Rural, Administración Especial, de acuerdo"
+   "valor": [
+    "Guardería Rural, Administración Especial"
+   ],
+   "cita": "provisión en propiedad de una plaza de Guardería Rural, Administración Especial"
   },
-  "grupo": {
+  "plazas_total": {
    "motivo": "cita_no_literal",
-   "valor": "E / agrupaciones profesionales",
-   "cita": "provisión en propiedad de una plaza de Guardería Rural, Administración Especial, de acuerdo"
-  },
-  "plazas_turno_libre": {
-   "motivo": "valor_no_en_cita",
-   "valor": 0,
-   "cita": "provisión en propiedad de una plaza de funcionario de carrera dentro del proceso de estabilización"
-  },
-  "tasa_euros": {
-   "motivo": "cita_no_literal",
-   "valor": 0,
-   "cita": "no aparece importe de tasa en el texto"
-  },
-  "temas": {
-   "motivo": "cita_no_literal",
-   "valor": 0,
-   "cita": "no aparece número de temas en el texto"
-  },
-  "bolsa": {
-   "motivo": "cita_no_literal",
-   "valor": "no",
-   "cita": "no aparece mención a bolsa o lista de espera en el texto"
+   "valor": 1,
+   "cita": "provisión en propiedad de una plaza de Guardería Rural, Administración Especial"
   }
  }
 }

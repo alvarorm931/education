@@ -5,16 +5,38 @@
   "fuente": "BOP-CIUDADREAL",
   "url": "https://bop.dipucr.es/bop/2022/12/23",
   "fecha": "2022-12-23",
-  "huella": "87b717df53ae5b2d5e62b7d6296dc14060fd33c0b3d412eb182b9a38960b733e"
+  "huella": "c730d18bf3c46341cf51ebbfd8a21bedbccc7faa4b4f201a778d77d8b9c82c55"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:55:42+00:00",
- "lote": "msgbatch_014eT3dLLVopBnuVgQ4syWD9",
+ "extraido": "2026-10-31T15:25:39+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
+  "denominacion": {
+   "valor": [
+    "Arquitecto/a",
+    "Abogado/a Centro de la Mujer",
+    "Pedagogo-coordinador C. Atención Temprana",
+    "Director Centro Azuer",
+    "Psicólogo Centro Mujer",
+    "Psicólogo PRIS",
+    "Arqueólogo",
+    "Administrativo",
+    "Auxiliar administrativo",
+    "Bibliotecario",
+    "Operario del cementerio"
+   ],
+   "cita": "Plazas asimiladas al grupo de titulación A1 (7 plazas)",
+   "nivel": "sin_signos"
+  },
   "grupo": {
-   "valor": "C1, C2 y agrupaciones profesionales (según plaza); A1 y A2 para personal laboral",
-   "cita": "Grupo C- Subgrupo Titulación C1- Subescala Administrativa",
+   "valor": "A1, A2, C1, C2, agrupaciones profesionales",
+   "cita": "PLAZAS ASIMILADAS AL GRUPO DE TITULACION A2 (36 plazas)",
+   "nivel": "sin_signos"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "PERSONAL LABORAL PLAZAS ASIMILADAS AL GRUPO DE TITULACION A1 (7 plazas)",
    "nivel": "literal"
   },
   "sistema": {
@@ -22,13 +44,8 @@
    "cita": "el sistema de selección será el de concurso e incluirá aquellas plazas de naturaleza estructural",
    "nivel": "literal"
   },
-  "plazas_total": {
-   "valor": 4,
-   "cita": "PERSONAL FUNCIONARIO (4 plazas) ESCALA: ADMINISTRACIÓN GENERAL (2 plazas)",
-   "nivel": "literal"
-  },
   "publicaciones": {
-   "valor": "Tablón de edictos y página web del Ayuntamiento de Daimiel; Boletín Oficial de la Provincia de Ciudad Real",
+   "valor": "tablón de anuncios y página web del Ayuntamiento de Daimiel",
    "cita": "Esta resolución se publicará en el tablón de anuncios y pagina web del Ayuntamiento de Daimiel",
    "nivel": "literal"
   },
@@ -41,52 +58,25 @@
   },
   "bolsa": {
    "valor": "no",
-   "cita": "Los puestos vacantes se adjudicarán de acuerdo con las peticiones de los interesados según el orden obtenido",
-   "nivel": "literal"
-  },
-  "practicas_o_curso": {
-   "valor": "no consta",
-   "cita": "La toma de posesión como funcionarios/as de carrera o la formalización del contrato de trabajo del personal laboral fijo",
+   "cita": "Los méritos alegados se valorarán hasta un máximo de 100 puntos",
    "nivel": "literal"
   }
  },
  "rechazados": {
-  "denominacion": {
-   "motivo": "cita_no_literal",
-   "valor": [
-    "Administrativo",
-    "Auxiliar administrativo",
-    "Bibliotecario",
-    "Operario del cementerio",
-    "Arquitecto/a",
-    "Abogado/a Centro de la Mujer",
-    "Pedagogo–coordinador C. Atención Temprana",
-    "Director Centro Azuer",
-    "Psicólogo Centro Mujer",
-    "Psicólogo PRIS",
-    "Arqueólogo"
-   ],
-   "cita": "Plazas que se convocarán en virtud de lo establecido en las Disposiciones Adicionales Sexta y Octava de Ley 20/2021"
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 52,
+   "cita": "PERSONAL FUNCIONARIO (4 plazas) ESCALA: ADMINISTRACIÓN GENERAL (2 plazas)"
   },
-  "vinculo": {
+  "plazas_turno_libre": {
    "motivo": "cita_no_literal",
-   "valor": "funcionario de carrera",
-   "cita": "Procesos extraordinarios de estabilización para cubrir las plazas incluidas en la Oferta de empleo extraordinaria"
-  },
-  "titulacion": {
-   "motivo": "cita_no_literal",
-   "valor": "Título de Bachiller, Técnico o equivalente (C1); Graduado en ESO, FP Básica o equivalente (C2); según plaza",
-   "cita": "Título de Bachiller, Técnico o equivalente. Título de Bachiller, Técnico o equivalente."
-  },
-  "otros_requisitos": {
-   "motivo": "cita_no_literal",
-   "valor": "Ser español o nacional de la UE o extranjero residente en las condiciones del art. 57 TREBEP; capacidad funcional; tener cumplidos 16 años y no exceder la edad máxima de jubilación forzosa; no haber sido separado del servicio público ni inhabilitado; estar en posesión de la titulación exigida",
-   "cita": "Para ser admitidos/as en el proceso selectivo los/las aspirantes deberán reunir los siguientes requisitos"
+   "valor": 52,
+   "cita": "Las plazas que se convocarán en virtud de lo establecido en las Disposiciones Adicionales Sexta y Octava"
   },
   "plazo_solicitudes": {
    "motivo": "cita_no_literal",
-   "valor": "veinte días hábiles a contar desde el día siguiente a la publicación del extracto de la convocatoria en el Boletín Oficial del Estado",
-   "cita": "el plazo de presentación de las solicitudes será de veinte días hábiles a contar desde el día siguiente"
+   "valor": "veinte días hábiles a contar desde el día siguiente a la publicación del extracto de la convocatoria en el BOE",
+   "cita": "el plazo de presentación de las solicitudes será de veinte días hábiles a contar desde el día siguiente a la publicación"
   },
   "presentacion": {
    "motivo": "cita_no_literal",
@@ -95,8 +85,13 @@
   },
   "meritos": {
    "motivo": "cita_no_literal",
-   "valor": "Méritos profesionales hasta 60 puntos (servicios prestados; 0,0166 puntos por día en el Ayuntamiento); méritos académicos hasta 40 puntos (formación 0,1 punto por hora, superación de procesos selectivos, titulación superior distinta a la requerida)",
+   "valor": "Méritos profesionales hasta 60 puntos (servicios prestados) y méritos académicos hasta 40 puntos (formación, superación de procesos selectivos, titulación superior distinta)",
    "cita": "Los méritos alegados se valorarán hasta un máximo de 100 puntos, conforme a los siguientes criterios"
+  },
+  "practicas_o_curso": {
+   "motivo": "cita_no_literal",
+   "valor": "no",
+   "cita": "se procederá, según corresponda, a su nombramiento como funcionarios de carrera"
   }
  }
 }

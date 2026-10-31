@@ -5,12 +5,31 @@
   "fuente": "BOP-CIUDADREAL",
   "url": "https://bop.dipucr.es/bop/2022/10/21",
   "fecha": "2022-10-21",
-  "huella": "b4ee72f08b8052d35415bd4eeee7f3bd64e9ca72df050c739f48a1fca9b12b12"
+  "huella": "86f93e055491879b25d99cd550dbedc9fa89484fdfb6ea7c41710dce5fc5532c"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:57:19+00:00",
- "lote": "msgbatch_01B4ETF5xB4buYCHqPiHTXzF",
- "no_son_bases": true,
- "campos": {},
- "rechazados": {}
+ "extraido": "2026-10-31T15:25:31+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
+ "no_son_bases": false,
+ "campos": {
+  "publicaciones": {
+   "valor": "Página web www.daimiel.es y sede electrónica del Ayuntamiento",
+   "cita": "Las bases y el resto de información podrán consultarse en la página web: www.daimiel.es ; y en su sede electrónica.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Monitores para la impartición de Talleres de Teatro (infantil, juvenil y de adultos)"
+   ],
+   "cita": "selección de Monitores para la impartición de Talleres de Teatro, infantil, juvenil y de adultos"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "diez días naturales a partir del siguiente a la publicación del anuncio en el BOP de Ciudad Real",
+   "cita": "El plazo de presentación de solicitudes será de diez días naturales a partir del siguiente a la publicación"
+  }
+ }
 }

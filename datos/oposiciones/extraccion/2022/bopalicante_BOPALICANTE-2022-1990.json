@@ -1,0 +1,99 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2022-1990",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2022-1990",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2022/04/06_67/2022_001990.pdf",
+  "fecha": "2022-04-06",
+  "huella": "c1b7bf0a0411c309898c24f44c9aa83f50111e616eaa9274149a5c24bb0c4ec5"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T15:25:23+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "AA.PP.",
+   "cita": "Grupo: AA.PP.",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "SISTEMA CONCURSO MÉRITOS",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "No se exige titulación",
+   "cita": "Titulación exigible: No se exige titulación Carnet de conducir",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "5 días hábiles desde el día siguiente a la publicación de la convocatoria en el BOP de Alicante",
+   "cita": "El plazo de presentación de solicitudes será de 5 días hábiles, a contar a partir del día siguiente a la publicación",
+   "nivel": "sin_signos"
+  },
+  "presentacion": {
+   "valor": "Presencialmente en el Registro General del Ayuntamiento o telemáticamente a través de la sede electrónica municipal",
+   "cita": "La presentación de solicitudes podrá hacerse presencialmente en el Registro General del Ayuntamiento",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de anuncios y web del Ayuntamiento, sede electrónica municipal",
+   "cita": "se publicará en la web y el Tablón de anuncios de este Ayuntamiento una lista con los/as candidatos/as admitidos/as",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Concurso de valoración de méritos"
+   ],
+   "cita": "se acudirá como procedimiento selectivo al concurso que consistirá en la valoración de méritos",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Peones/as de mantenimiento",
+    "Peones/as de limpieza",
+    "Peones/as forestales"
+   ],
+   "cita": "BOLSA 001: Peones/as de mantenimiento, BOLSA 002: Peones/as de limpieza, BOLSA 003: Peones/as forestales"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "personal laboral temporal",
+   "cita": "Se acudirá a las presentes Bolsa de Empleo para la selección de personal laboral temporal y de funcionarios interinos"
+  },
+  "otros_requisitos": {
+   "motivo": "cita_no_literal",
+   "valor": "Ser español/a o extranjero/a con residencia legal, tener cumplidos 16 años, no haber sido separado del servicio de Administraciones Públicas, no padecer enfermedad que impida las funciones; carnet de conducir B para bolsas 001 y 003",
+   "cita": "Tener cumplidos 16 años de edad. No se exige titulación mínima."
+  },
+  "tasa_euros": {
+   "motivo": "valor_no_en_cita",
+   "valor": 20,
+   "cita": "en concepto de tasa por derechos de examen o acreditación de la exención de la misma"
+  },
+  "exenciones_tasa": {
+   "motivo": "cita_no_literal",
+   "valor": "Demandantes de empleo durante al menos un mes con rentas inferiores al SMI; personas con discapacidad igual o superior al 33 por 100; bonificación del 50% para familias numerosas",
+   "cita": "Estarán exentas del pago de la tasa, las personas que figuren como demandantes de empleo"
+  },
+  "meritos": {
+   "motivo": "cita_no_literal",
+   "valor": "Experiencia profesional máximo 20 puntos; titulaciones académicas máximo 10 puntos; formación complementaria máximo 5 puntos; conocimiento de valenciano máximo 1 punto; mínimo para acceder 1,5 puntos",
+   "cita": "Se establece un mínimo de puntuación para acceder a la bolsa de 1,5 PUNTOS."
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, para la selección de personal laboral temporal y funcionarios interinos en el Ayuntamiento de Senija",
+   "cita": "Se acudirá a las presentes Bolsa de Empleo para la selección de personal laboral temporal y de funcionarios interinos"
+  },
+  "practicas_o_curso": {
+   "motivo": "cita_no_literal",
+   "valor": "no aparece en el texto",
+   "cita": ""
+  }
+ }
+}

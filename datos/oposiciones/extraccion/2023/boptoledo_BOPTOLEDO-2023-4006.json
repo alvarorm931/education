@@ -5,23 +5,23 @@
   "fuente": "BOP-TOLEDO",
   "url": "https://bop.diputoledo.es/webEbop/DocGet?id=23079303;0&insert_number=4006&insert_year=2023",
   "fecha": "2023-07-19",
-  "huella": "ecda29901af173e98ba098a3ce644945edde835ac5f169ee0fc59811a858f34b"
+  "huella": "735477906972bc70176909cab2dfa60f96078636fc37cb322428109d575cdf74"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:59:08+00:00",
- "lote": "msgbatch_012nGabRM1G4b7cEKJh1Bcx1",
+ "extraido": "2026-10-31T15:25:46+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
    "valor": [
     "Auxiliar Administrativo"
    ],
-   "cita": "una plaza de Auxiliar Ad ministrativo a tiempo parcial (20 horas semanales)",
+   "cita": "una plaza de Auxiliar Administrativo a tiempo parcial (20 horas semanales)",
    "nivel": "literal"
   },
   "grupo": {
    "valor": "E / agrupaciones profesionales",
-   "cita": "Las bases y convocatoria para cubrir, por turno libre y mediante concurso, una plaza de auxiliar administrativo",
+   "cita": "Auxiliar Administrativo a tiempo parcial (20 horas semanales)",
    "nivel": "literal"
   },
   "vinculo": {
@@ -36,7 +36,7 @@
   },
   "plazas_total": {
    "valor": 1,
-   "cita": "una plaza de Auxiliar Ad ministrativo a tiempo parcial (20 horas semanales)",
+   "cita": "una plaza de Auxiliar Administrativo a tiempo parcial (20 horas semanales)",
    "nivel": "literal"
   },
   "plazas_turno_libre": {
@@ -46,12 +46,12 @@
   },
   "titulacion": {
    "valor": "Título de Graduado Escolar, Enseñanza Secundaria Obligatoria, Formación Profesional de primer grado o equivalente",
-   "cita": "Estar en posesión del Título de Graduado Escolar, Enseñanza Secundaria Obligatoria, Formación Profesional de primer grado o equivalente",
+   "cita": "Estar en posesión del Título de Graduado Escolar, Enseñanza Secundaria Obligatoria, Formación Profesional de primer grado",
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Nacionalidad española o de otro Estado miembro de la UE; 16 años cumplidos y no exceder la edad de jubilación forzosa; no haber sido separado del servicio por expediente disciplinario; no padecer enfermedad que impida el desempeño; conocimiento adecuado del castellano",
-   "cita": "Tener cumplidos dieciséis años y no exceder, en su caso, de la edad máxima de jubilación forzosa",
+   "valor": "Nacionalidad española o de otro Estado miembro de la UE; tener 16 años y no exceder la edad de jubilación forzosa; no haber sido separado del servicio; no padecer enfermedad que impida las tareas; conocimiento adecuado del castellano; no incurrir en causas de incapacidad o incompatibilidad",
+   "cita": "Tener nacionalidad española o nacional de un Estado miembro de la Unión Europea",
    "nivel": "literal"
   },
   "tasa_euros": {
@@ -59,45 +59,39 @@
    "cita": "que ascienden a veinte euros (20,00 €) conforme a la Ordenanza fiscal reguladora de la Tasa por derechos de examen",
    "nivel": "literal"
   },
-  "plazo_solicitudes": {
-   "valor": "20 días hábiles contados a partir del siguiente a la publicación del anuncio de convocatoria en el «Boletín Oficial del Estado»",
-   "cita": "dentro del plazo de 20 días hábile s contados a partir del siguiente a aquel en que aparezca la publicación",
-   "nivel": "literal"
-  },
   "publicaciones": {
    "valor": "Boletín Oficial de la provincia de Toledo, tablón edictal y página web del Ayuntamiento (www.noblejas.es)",
-   "cita": "publicándose en el Boletín Oficial de la provincia de Toledo, tablón edictal y página web del Excmo. Ayuntamiento de Noblejas",
+   "cita": "publicándose en el Boletín Oficial de la provincia de Toledo, tablón edictal y página web del Excmo. Ayuntamiento",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Fase de concurso: experiencia profesional (máximo 7 puntos) y experiencia en programa Absis (máximo 3 puntos)",
-    "Formación y otros méritos (máximo 10 puntos)"
+    "Fase de concurso de méritos (valoración de méritos profesionales y formación)"
    ],
-   "cita": "Se valorarán los méritos de acuerdo al siguiente baremo",
+   "cita": "consistirá en la calificación de los méritos alegados en el momento de la solicitud de participación",
    "nivel": "literal"
   },
-  "bolsa": {
-   "valor": "no",
-   "cita": "Terminado el Concurso, el Tribunal Calificador hará pública, en la web www.noblejas.es",
-   "nivel": "literal"
-  },
-  "practicas_o_curso": {
-   "valor": "no aparece",
-   "cita": "Las personas aspirantes aprobadas y propuestas para contratación dispondrán de un plazo de 10 días hábiles",
+  "meritos": {
+   "valor": "Experiencia profesional (máx. 7 puntos): servicios en el Ayuntamiento de Noblejas 0,20 puntos/mes completo, en otras entidades locales 0,10 y en otras AAPP 0,05; experiencia en programa Absis (máx. 3 puntos) 0,05 puntos/mes. Formación y otros méritos (máx. 10 puntos): cursos de formación de 0,50 a 3,00 puntos (máx. 8) y cursos transversales 1 punto por curso (máx. 2)",
+   "cita": "Servicios prestados en el Ayuntamiento de Noblejas en la plaza objeto de la convocatoria a tiempo completo: 0,20 puntos por mes completo",
    "nivel": "literal"
   }
  },
  "rechazados": {
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "20 días hábiles contados a partir del siguiente a la publicación del anuncio de convocatoria en el «Boletín Oficial del Estado»",
+   "cita": "dentro del plazo de 20 días hábiles contados a partir del siguiente a aquel en que aparezca la publicación"
+  },
   "presentacion": {
    "motivo": "cita_no_literal",
-   "valor": "Registro General del Ayuntamiento, registro electrónico, oficinas de Correos, representaciones diplomáticas o consulares y oficinas de asistencia en materia de registros",
+   "valor": "Registro General del Ayuntamiento, registro electrónico, oficinas de Correos, representaciones diplomáticas o consulares de España y oficinas de asistencia en materia de registros",
    "cita": "Las instancias se presentarán en el Registro General del Ayuntamiento, dentro del plazo de 20 días hábiles"
   },
-  "meritos": {
+  "practicas_o_curso": {
    "motivo": "cita_no_literal",
-   "valor": "Experiencia profesional hasta 7 puntos (0,20 por mes en el Ayuntamiento de Noblejas; 0,10 en otras entidades locales; 0,05 en otras Administraciones); uso del programa Absis hasta 3 puntos; formación hasta 8 puntos; formación transversal hasta 2 puntos. Calificación máxima 20 puntos",
-   "cita": "A.1.1) Servicios prestados en el Ayuntamiento de Noblejas en la plaza objeto de la convocatoria a tiempo completo: 0,20 puntos por mes completo"
+   "valor": "No se menciona",
+   "cita": ""
   }
  }
 }

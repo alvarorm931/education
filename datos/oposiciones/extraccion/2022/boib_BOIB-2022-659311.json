@@ -1,0 +1,108 @@
+{
+ "proceso": "boib:BOIB-2022-659311",
+ "documento": {
+  "id": "boib:BOIB-2022-659311",
+  "fuente": "BOIB",
+  "url": "https://www.caib.es/eboibfront/es/2022/11548/659311/resolucion-del-gerente-territorial-del-hospital-un",
+  "fecha": "2022-04-02",
+  "huella": "0229ffde5212f3c23643702daf067f970c47cc351e4377bec0104d0652c9b360"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T15:25:46+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Facultativo Especialista de Área de Oncología Médica"
+   ],
+   "cita": "Aprobar la convocatoria de un procedimiento especial de selección de personal estatutario temporal del Servicio de Salud de las Islas Baleares para cubrir dos plazas de la categoría de Facultativo Especialista de Área de Oncología Médica",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "procedimiento especial de selección de personal estatutario temporal del Servicio de Salud de las Islas Baleares",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 2,
+   "cita": "para cubrir dos plazas de la categoría de Facultativo Especialista de Área de Oncología Médica",
+   "nivel": "literal"
+  },
+  "plazas_turno_libre": {
+   "valor": 2,
+   "cita": "para cubrir dos plazas de la categoría de Facultativo Especialista de Área de Oncología Médica",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Titulación requerida para acceder a la categoría de Facultativo Especialista de Área de Oncología Médica",
+   "cita": "Tener la titulación requerida para acceder a la categoría o estar condiciones de obtenerla dentro del plazo de presentación de solicitudes",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española, de la UE/EEE o derecho de libre circulación; capacidad funcional; tener 16 años y no exceder la edad de jubilación forzosa; no estar inhabilitado; no incurrir en incompatibilidad",
+   "cita": "Tener cumplidos 16 años y no exceder de la edad de jubilación forzosa",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Exento de conocimientos de catalán; valorable hasta 5 puntos",
+   "cita": "Eximir el cumplimiento de los requisitos de conocimientos de catalán, en aplicación de lo que prevé el punto 3 de la disposición transitoria segunda",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Personas con discapacidad igual o superior al 33 % no pagan la tasa",
+   "cita": "Las personas con alguna discapacidad igual o superior al 33 % no tienen que abonar la tasa",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Diez días hábiles desde el día siguiente a la publicación de la resolución en el BOIB",
+   "cita": "disponen de diez días hábiles para presentar la solicitud, contadores a partir del día siguiente de la publicación",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Web del Servicio de Salud (ibsalut.es) y Boletín Oficial de las Islas Baleares",
+   "cita": "Ordenar que se publique esta resolución en el Boletín Oficial de las Islas Baleares y en el web del Servicio de Salud",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Experiencia profesional hasta 45 puntos (servicios en la misma categoría y en otras categorías en instituciones sanitarias públicas, cargos directivos); conocimientos de catalán hasta 5 puntos",
+   "cita": "La puntuación máxima para el apartado de méritos es de 50 puntos",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, la lista con la puntuación final puede usarse como bolsa específica para llamamientos de la categoría convocada",
+   "cita": "la lista de candidatos con la puntuación final obtenida en el proceso de la convocatoria se podrá utilizar como bolsa específica",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "A1",
+   "cita": "Grupo o subgrupo de clasificación no consta"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "Esta convocatoria consta de una fase de concurso y de una prueba teórico-práctica"
+  },
+  "plazas_discapacidad": {
+   "motivo": "valor_no_en_cita",
+   "valor": 0,
+   "cita": "Las personas con alguna discapacidad igual o superior al 33 % no tienen que abonar la tasa"
+  },
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Oficina en Materia de Registro y oficinas auxiliares del Servicio de Salud o cualquier vía del artículo 16.4 de la Ley 39/2015",
+   "cita": "La solicitud y sus anexos se tienen que presentar en la Oficina en Materia de Registro y las oficinas auxiliares del Servicio de Salud"
+  },
+  "ejercicios": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Memoria teórico-práctica escrita (hasta 30 puntos)",
+    "Entrevista personal para exponer y defender la memoria (hasta 20 puntos)"
+   ],
+   "cita": "la prueba teórico-práctica se valorará hasta un máximo de 30 puntos y la entrevista personal, para exponer y defender la memoria, se valorará hasta un máximo de 20 puntos"
+  }
+ }
+}

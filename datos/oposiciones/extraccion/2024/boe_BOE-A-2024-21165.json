@@ -5,16 +5,21 @@
   "fuente": "DOGC",
   "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=996332",
   "fecha": "2024-10-04",
-  "huella": "5cb817b859abaeb0f920f31663fc7ce762375bc4fd42dbc64b139402d6689687"
+  "huella": "1c1172a20d5a134d5cc1ba6923b5c1d1602e78ad2f77813ed3e9b573096ad0ff"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:50:23+00:00",
- "lote": "msgbatch_01LpyYajgKGX9NyHT1uvynbR",
+ "extraido": "2026-10-31T15:25:34+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
+  "grupo": {
+   "valor": "C2",
+   "cita": "laboral del grup C2, pel sistema de concurs oposició amb constitució de borsa de treball",
+   "nivel": "literal"
+  },
   "vinculo": {
    "valor": "personal laboral fijo",
-   "cita": "reservat a personal laboral fix",
+   "cita": "Classe de personal: Laboral fix",
    "nivel": "literal"
   },
   "sistema": {
@@ -27,18 +32,13 @@
    "cita": "Número de places: 1",
    "nivel": "literal"
   },
-  "titulacion": {
-   "valor": "Formació Professional de Primer Grau, Graduat escolar/ESO o equivalent, o en condicions d'obtenir-la en la data de finalització del termini d'admissió d'instàncies",
-   "cita": "La titulació requerida per garantir les competències per dur a terme les funcions del lloc de treball és de Formació Professional de Primer Grau",
-   "nivel": "literal"
-  },
   "otros_requisitos": {
-   "valor": "Nacionalitat (UE o aplicable), 16 anys complerts i no excedir l'edat de jubilació, capacitat funcional, carnet de conduir B, no estar separat del servei ni inhabilitat, i els requisits d'incompatibilitats",
+   "valor": "Tenir 16 anys complerts abans del termini de presentació i no excedir l'edat de jubilació forçosa; capacitat funcional per al lloc; carnet de conduir classe B; nacionalitat espanyola o de la UE, amb les excepcions previstes; no estar separat del servei de cap administració pública",
    "cita": "Haver complert 16 anys abans del termini de presentació d'instàncies i no excedir, en el seu cas, de l'edat màxima de jubilació forçosa",
    "nivel": "literal"
   },
   "idioma_cooficial": {
-   "valor": "Català nivell B2 (o prova eliminatòria d'apte/no apte); castellà per a aspirants estrangers no exempts",
+   "valor": "Català nivell B2 (es pot acreditar amb certificat o superar una prova); castellà per a aspirants estrangers no acreditats",
    "cita": "Tenir coneixements de llengua catalana de nivell B2, d'acord amb el marc europeu comú de referència",
    "nivel": "literal"
   },
@@ -48,44 +48,38 @@
    "nivel": "literal"
   },
   "exenciones_tasa": {
-   "valor": "Exempció si la persona figura com a demandant d'ocupació i acredita atur sense prestacions (DARDO i certificat del SEPE)",
+   "valor": "Exempció per a persones demandants d'ocupació sense prestació per atur, acreditant-ho amb DARDO i certificat del SEPE",
    "cita": "En el cas que l'import de la taxa sigui zero, per concórrer la circumstància determinant de l'exempció del pagament de la taxa, figurar com a demandants d'ocupació",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "Vint dies hàbils a comptar des de l'endemà de la darrera publicació de l'anunci de la convocatòria en BOPB, DOGC o BOE",
-   "cita": "serà de vint dies hàbils a comptar a partir de l'endemà de la darrera publicació del corresponent anunci",
+   "valor": "Vint dies hàbils a comptar a partir de l'endemà de la darrera publicació de l'anunci de la convocatòria en el BOPB, DOGC o BOE",
+   "cita": "El termini de presentació de sol·licituds serà de vint dies hàbils a comptar a partir de l'endemà de la darrera publicació",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Preferentment per registre electrònic; també presencial al registre municipal, Correus, representacions diplomàtiques i oficines d'assistència en matèria de registres",
+   "valor": "Preferentment pel registre electrònic de l'Ajuntament; també presencial, per correu certificat amb comunicació prèvia, o a les oficines previstes a l'article 16.4 de la Llei 39/2015",
    "cita": "Preferentment en el registre electrònic de l'Ajuntament o en el registre electrònic de les administracions públiques",
-   "nivel": "literal"
-  },
-  "publicaciones": {
-   "valor": "Tauler d'anuncis de la seu electrònica i web municipal; anunci de convocatòria al BOPB, DOGC i BOE",
-   "cita": "es publicarà al tauler d'anuncis de la seu electrònica de la corporació i a la pàgina web de l'Ajuntament",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Prova de coneixements generals i específics, tipus test de 30 preguntes (eliminatòria, 0-20 punts)",
-    "Supòsits pràctics (eliminatòria, 0-30 punts)",
-    "Prova de llengua catalana i castellana (apte/no apte)",
-    "Acreditació de competències professionals: test de personalitat i entrevista (0-20 punts)",
-    "Fase de concurs: experiència professional i formació (màxim 30 punts)"
+    "Prova de coneixements generals i específics tipus test (30 preguntes, 45 minuts, eliminatòria, mínim 10 punts, màx 20)",
+    "Supòsits pràctics o tasques manuals (màx 120 minuts, eliminatòria, mínim 15 punts, màx 30)",
+    "Coneixements de llengua catalana (apte/no apte) i de castellà per a estrangers",
+    "Acreditació de competències professionals: test de personalitat i entrevista (màx 20 punts, mínim 10)"
    ],
-   "cita": "Primera prova. Prova de coneixements generals i específics. De caràcter obligatori i eliminatori",
+   "cita": "Prova de coneixements generals i específics. De caràcter obligatori i eliminatori",
    "nivel": "literal"
   },
   "meritos": {
-   "valor": "Experiència professional fins a 15 punts (0,5 punts per trimestre en administracions públiques C2) i formació; fase de concurs màxim 30 punts",
-   "cita": "La puntuació màxima d'aquesta fase és de 30 punts.",
+   "valor": "Experiència en oficial de primera de brigada del cicle de l'aigua a l'Administració (0,5 punts/trimestre, màx 15) i en el sector privat o públic (0,25 punts/trimestre, màx 15); fase de concurs de màxim 30 punts",
+   "cita": "La puntuació màxima d'aquesta fase és de 30 punts",
    "nivel": "literal"
   },
   "bolsa": {
-   "valor": "Sí, per cobrir vacants temporals, substitucions i necessitats temporals d'oficial de primera, amb vigència de 2 anys",
-   "cita": "s'incorporaran a una borsa de treball que l'Ajuntament utilitzarà per cobrir les vacants temporals que es produeixin",
+   "valor": "Sí, per cobrir vacants temporals, substitucions i necessitats temporals, amb una vigència de 2 anys",
+   "cita": "La vigència d'aquesta borsa de treball tindrà una durada de 2 anys a comptar des de la data de la resolució de contractació",
    "nivel": "literal"
   },
   "practicas_o_curso": {
@@ -100,15 +94,20 @@
    "valor": "Oficial de primera de brigada (servei d'aigua), categoria Tècnic/a especialista/Oficial de primera",
    "cita": "Oficial de primera de brigada destinada al servei d'aigua, de la plantilla de personal laboral, laboral del grup C2"
   },
-  "grupo": {
-   "motivo": "cita_no_literal",
-   "valor": "C2",
-   "cita": "Laboral grup C2 i categoria Tècnic/a especialista/Oficial de Primera"
-  },
   "plazas_turno_libre": {
-   "motivo": "cita_no_literal",
+   "motivo": "valor_no_en_cita",
    "valor": 1,
-   "cita": "el sistema de concurs oposició lliure, d'una (1) plaça"
+   "cita": "s'articula en torn lliure, com s'estableix per l'Oferta Pública d'Ocupació de l'any 2023"
+  },
+  "titulacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Formació Professional de Primer Grau, Graduat escolar/ESO o equivalent, o en condicions d'obtenir-la en la data de finalització del termini d'admissió d'instàncies",
+   "cita": "La titulació requerida és de Formació Professional de Primer Grau, Graduat escolar/ESO o equivalent"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Tauler d'anuncis de la seu electrònica, web municipal i BOPB; anunci de convocatòria també al DOGC i BOE",
+   "cita": "es publicarà al butlletí oficial de la província de Barcelona, al tauler d'anuncis de la seu electrònica"
   },
   "temas": {
    "motivo": "valor_no_en_cita",

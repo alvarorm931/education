@@ -5,11 +5,11 @@
   "fuente": "BOCM",
   "url": "https://www.bocm.es/bocm-20251212-1",
   "fecha": "2025-12-12",
-  "huella": "3c9799bb5f67fc3d07bd62322981652d0c13794d6abf1bc32048fbe07ea2ad84"
+  "huella": "cfc18c8325d27c12e6a88242ff1d5bb7aac3c59cdefd38ed72dbbf88b5bdd9a8"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:41:06+00:00",
- "lote": "msgbatch_01UNq3BNhPPHoTK3TEJzun1h",
+ "extraido": "2026-10-31T15:25:16+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
@@ -37,39 +37,44 @@
    "cita": "se reservan dos (2) plaza del total de las convocadas por el turno libre",
    "nivel": "literal"
   },
+  "titulacion": {
+   "valor": "Grado, Licenciatura, Ingeniería o Arquitectura, o cualquier otra titulación o estudios equivalentes, más formación preventiva de nivel superior en las tres especialidades",
+   "cita": "estar en posesión o en condiciones de obtener, en la fecha de finalización del plazo de presentación de solicitudes, el título de Grado",
+   "nivel": "literal"
+  },
   "otros_requisitos": {
-   "valor": "Formación para el desempeño de las funciones preventivas de nivel superior en las tres especialidades: Seguridad en el Trabajo, Higiene Industrial, Ergonomía y Psicosociología Aplicada, según el Real Decreto 39/1997",
+   "valor": "Cumplir los requisitos de la base 6.1 de la Orden 290/2018; formación de nivel superior en Seguridad en el Trabajo, Higiene Industrial, Ergonomía y Psicosociología Aplicada; discapacidad igual o superior al 33 por 100 para el cupo",
    "cita": "poseer la formación para el desempeño de las funciones preventivas de nivel superior correspondiente a las tres especialidades",
    "nivel": "literal"
   },
   "tasa_euros": {
    "valor": 52.91,
-   "cita": "que asciende a 52,91 euros",
+   "cita": "asciende a 52,91 euros. Para quienes sean miembros de familias numerosas de categoría general",
    "nivel": "literal"
   },
   "exenciones_tasa": {
-   "valor": "Miembros de familias numerosas de categoría general: 26,45 euros",
+   "valor": "Familias numerosas de categoría general: 26,45 euros; exenciones totales según base octava.2 de la Orden 290/2018",
    "cita": "Para quienes sean miembros de familias numerosas de categoría general, el importe de la tasa será de 26,45 euros.",
    "nivel": "literal"
   },
+  "plazo_solicitudes": {
+   "valor": "Veinte días hábiles desde el siguiente a la publicación de la orden en el BOCM",
+   "cita": "El plazo de presentación de solicitudes de este proceso selectivo será de veinte días hábiles",
+   "nivel": "literal"
+  },
   "presentacion": {
-   "valor": "Electrónicamente a través del Registro Electrónico General de la Comunidad de Madrid o Sede Electrónica",
+   "valor": "Telemáticamente a través del Registro Electrónico General de la Comunidad de Madrid, con certificado electrónico reconocido",
    "cita": "Las solicitudes se presentarán electrónicamente, junto con la documentación que debe acompañarlas, a través del Registro Electrónico General",
    "nivel": "literal"
   },
-  "meritos": {
-   "valor": "No se valoran méritos en concurso",
-   "cita": "El sistema de selección será el de oposición.",
+  "publicaciones": {
+   "valor": "BOCM; Sede Electrónica de la Comunidad de Madrid y página web del proceso selectivo",
+   "cita": "se efectuará en la Sede Electrónica de la Comunidad de Madrid, cuya URL es https://sede.comunidad.madrid",
    "nivel": "literal"
   },
   "bolsa": {
-   "valor": "Sí, lista de espera de personal funcionario interino con aspirantes que obtengan al menos el 80% de la calificación del primer ejercicio y no superen el proceso",
+   "valor": "sí, lista de espera de personal funcionario interino para los aspirantes con al menos el 80% de la calificación del primer ejercicio que no superen el proceso",
    "cita": "se procederá a la constitución y aprobación de una lista de espera de personal funcionario interino",
-   "nivel": "literal"
-  },
-  "practicas_o_curso": {
-   "valor": "No especificado",
-   "cita": "tomando posesión según lo dispuesto en la base decimosexta de la mencionada Orden",
    "nivel": "literal"
   }
  },
@@ -77,41 +82,21 @@
   "vinculo": {
    "motivo": "cita_no_literal",
    "valor": "funcionario de carrera",
-   "cita": "serán nombrados personal funcionario de carrera del Cuerpo de Técnicos Superiores Especialistas"
+   "cita": "nombrados personal funcionario de carrera del Cuerpo de Técnicos Superiores Especialistas"
   },
   "plazas_turno_libre": {
    "motivo": "valor_no_en_cita",
    "valor": 20,
    "cita": "se reservan dos (2) plaza del total de las convocadas por el turno libre"
   },
-  "titulacion": {
-   "motivo": "cita_no_literal",
-   "valor": "Grado, Licenciatura, Ingeniería o Arquitectura, o cualquier otra titulación o estudios equivalentes",
-   "cita": "estar en posesión o en condiciones de obtener el título de Grado, Licenciatura, Ingeniería o Arquitectura"
-  },
-  "plazo_solicitudes": {
-   "motivo": "cita_no_literal",
-   "valor": "Veinte días hábiles, contados desde el siguiente a la publicación de la orden en el BOCM",
-   "cita": "El plazo de presentación de solicitudes será de veinte días hábiles, contados a partir del siguiente a la publicación"
-  },
-  "publicaciones": {
-   "motivo": "cita_no_literal",
-   "valor": "Boletín Oficial de la Comunidad de Madrid y Sede Electrónica o página web del proceso",
-   "cita": "la publicación del anuncio de celebración del segundo y sucesivos ejercicios, así como la de la lista de personas aprobadas, se efectuará en la Sede Electrónica"
-  },
   "ejercicios": {
    "motivo": "cita_no_literal",
    "valor": [
-    "Primer ejercicio: test de 100 preguntas más 5 de reserva, 4 respuestas, 105 minutos, eliminatorio (mínimo 5 puntos)",
-    "Segundo ejercicio: desarrollo escrito de dos temas extraídos al azar, 3 horas, eliminatorio (mínimo 5 puntos)",
-    "Tercer ejercicio: supuesto práctico escrito, 2 horas, eliminatorio (mínimo 5 puntos)"
+    "Primer ejercicio: test de 100 preguntas más 5 de reserva, con 4 respuestas alternativas, 105 minutos (eliminatorio, mínimo 5 puntos)",
+    "Segundo ejercicio: desarrollo escrito de dos temas extraídos al azar, 3 horas (eliminatorio, mínimo 5 puntos)",
+    "Tercer ejercicio: un supuesto práctico por escrito, 2 horas (eliminatorio, mínimo 5 puntos)"
    ],
    "cita": "El primer ejercicio consistirá en contestar por escrito un cuestionario tipo test"
-  },
-  "temas": {
-   "motivo": "cita_no_literal",
-   "valor": "No especificado",
-   "cita": "Dos temas extraídos al azar entre los que componen el temario específico del programa"
   }
  }
 }

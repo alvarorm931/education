@@ -5,12 +5,44 @@
   "fuente": "BOP-VALENCIA",
   "url": "https://bop.dival.es/bop/downloads?anuncioNumReg=2026/10604&lang=va",
   "fecha": "2026-08-21",
-  "huella": "883b9247f51afe25558ab21a065a364e7a0bb3cc578675ac48916773eb8403bd"
+  "huella": "6aeac4f4cdd36b266c8cee42e35fa35293fd4c4785610b6fff2e144693086734"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T11:20:07+00:00",
- "lote": "msgbatch_01MXXMFvrqAAHficSS2SFuRZ",
- "no_son_bases": true,
- "campos": {},
- "rechazados": {}
+ "extraido": "2026-10-31T15:25:43+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
+ "no_son_bases": false,
+ "campos": {
+  "sistema": {
+   "valor": "oposición",
+   "cita": "derivada de l'oposició lliure per a la selecció d'una plaça d'Enginyer/a Tècnic/a de Muntanyes",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "derivada de l'oposició lliure per a la selecció d'una plaça d'Enginyer/a Tècnic/a de Muntanyes",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Butlletí Oficial de la Província núm. 121 de data 23 de juny de 2023 i extracte de les mateixes en el BOE núm. 163 de data 10 de juny de 2023",
+   "cita": "van ser publicades en el Butlletí Oficial de la Província núm. 121 de data 23 de juny de 2023",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí: cubrir las necesidades imprescindibles de personal Enginyer/a Tècnic/a de Muntanyes, Subgrup A2, que es produïsquen en esta Corporació",
+   "cita": "s'estima necessari la constitució d'una borsa de treball, a fi de cobrir les necessitats imprescindibles de personal",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Enginyer/a Tècnic/a de Muntanyes",
+   "cita": "Constitució d'una borsa de treball d'Enginyer/a Tècnic/a de Muntanyes, subgrup A2"
+  },
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "A2",
+   "cita": "Enginyer/a Tècnic/a de Muntanyes, corresponent a l'escala d'Administració Especial, subescala Tècnica, Classe Tècnic/a Mitjà/a, subgrup A2"
+  }
+ }
 }

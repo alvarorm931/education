@@ -1,0 +1,45 @@
+{
+ "proceso": "boe:BOE-A-2022-12207",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2022-4731",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2022/07/08_128/2022_004731.pdf",
+  "fecha": "2022-07-08",
+  "huella": "b12f91c44ad76add86add5c95f79d61a303b53de121fff5e0282cec75db38856"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T15:25:26+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
+ "no_son_bases": false,
+ "campos": {
+  "sistema": {
+   "valor": "concurso",
+   "cita": "por el sistema de concurso de méritos de cinco plazas de Auxiliar Radio Municipal",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 5,
+   "cita": "concurso de méritos de cinco plazas de Auxiliar Radio Municipal, con adscripción al área de Medios",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Auxiliar Radio Municipal"
+   ],
+   "cita": "convocatoria para la provisión con carácter de personal laboral fijo, por el sistema de concurso de méritos de cinco plazas de Auxiliar Radio Municipal"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "personal laboral fijo",
+   "cita": "provisión con carácter de personal laboral fijo, por el sistema de concurso de méritos"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Tablón de Anuncios y página web del Ayuntamiento de Monóvar",
+   "cita": "publicado en el Tablón de Anuncios y en la página web del Ayuntamiento de Monóvar"
+  }
+ }
+}

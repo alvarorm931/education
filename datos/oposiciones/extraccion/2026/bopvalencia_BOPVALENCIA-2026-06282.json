@@ -5,18 +5,18 @@
   "fuente": "BOP-VALENCIA",
   "url": "https://bop.dival.es/bop/downloads?anuncioNumReg=2026/06282&lang=va",
   "fecha": "2026-05-27",
-  "huella": "9800b855268ac72b11573140f93654beab8a3a162d51a623f7ec2c4ffa0f42d1"
+  "huella": "9432e947266a3be31f87694e4ee43d8d3685ffd8de4450e43dbf4f9e3da1bc5a"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:41:54+00:00",
- "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
+ "extraido": "2026-10-31T15:25:26+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
    "valor": [
     "Tècnic/a Auxiliar de Serveis Culturals"
    ],
-   "cita": "constitució d'una borsa de treball de tècnic/a auxiliar de serveis culturals",
+   "cita": "constituir una borsa de treball de tècnic/a auxiliar de serveis culturals, subgrup C1",
    "nivel": "literal"
   },
   "grupo": {
@@ -24,23 +24,18 @@
    "cita": "subgrup C1, incloses en l'Oferta Pública d'Ocupació",
    "nivel": "literal"
   },
-  "vinculo": {
-   "valor": "otro",
-   "cita": "Constituir una borsa de treball de Tècnic/a Auxiliar de Serveis Culturals, subgrup C1",
-   "nivel": "literal"
-  },
   "publicaciones": {
-   "valor": "Butlletí Oficial de la Província de València (BOP)",
-   "cita": "Constituir una borsa de treball de Tècnic/a Auxiliar de Serveis Culturals, subgrup C1",
-   "nivel": "literal"
-  },
-  "bolsa": {
-   "valor": "sí, para cubrir las necesidades imprescindibles de personal Técnico/a Auxiliar de Servicios Culturals, Subgrupo C1, que se produzcan en la Corporación",
-   "cita": "constitució d'una borsa de treball, a fi de cobrir les necessitats imprescindibles de personal",
+   "valor": "Boletín Oficial de la Provincia (BOP) y extracto en el BOE; la constitución de la bolsa se publica en el BOP",
+   "cita": "publicades en el Butlletí Oficial de la Província núm. 121 de data 23 de juny de 2023",
    "nivel": "literal"
   }
  },
  "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "otro",
+   "cita": "constituir una borsa de treball, a fi de cobrir les necessitats imprescindibles de personal"
+  },
   "sistema": {
    "motivo": "cita_no_literal",
    "valor": "oposición",
@@ -49,7 +44,12 @@
   "plazas_total": {
    "motivo": "cita_no_literal",
    "valor": 3,
-   "cita": "oposició lliure per a la selecció de tres places de Tècnic/a Auxiliar"
+   "cita": "oposició lliure per a la selecció de tres places de Tècnic/a Auxiliar de Serveis Culturals"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, para cubrir necesidades imprescindibles de personal Técnico/a Auxiliar de Serveis Culturals, subgrupo C1, que se produzcan en la Corporación",
+   "cita": "constituir una borsa de treball, a fi de cobrir les necessitats imprescindibles de personal Tècnic/a Auxiliar"
   }
  }
 }

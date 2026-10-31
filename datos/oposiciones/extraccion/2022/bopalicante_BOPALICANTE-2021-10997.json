@@ -1,0 +1,53 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2021-10997",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2021-10997",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2022/01/05_3/2021_010997.pdf",
+  "fecha": "2022-01-05",
+  "huella": "f2268be1f008d450033742fc885adc9f25e508eafeb9c23a17254c94edad763f"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T15:24:11+00:00",
+ "lote": "msgbatch_01QGBJzFrJk89N3kyh4ZuSEx",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "Limpiador/a",
+   "cita": "la creación y constitución de una Bolsa de Trabajo para la provisión temporal de puestos de trabajo de Limpiador/a",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "para la provisión temporal de puestos de trabajo de Limpiador/a",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "la creación y constitución de una Bolsa de Trabajo para la provisión temporal de puestos",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Página web del Ayuntamiento (teuladamoraira.sedelectronica.es) y Servicio de Información y Tramitación del Ayuntamiento",
+   "cita": "en la página web del Ayuntamiento teuladamoraira.sedelectronica.es, así como en el Servicio de Información y Tramitación",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, para la provisión temporal de puestos de Limpiador/a",
+   "cita": "creación y constitución de una Bolsa de Trabajo para la provisión temporal de puestos",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "Agrupación profesional",
+   "cita": "perteneciente al grupo de Agrupación profesional, escala Administración especial, subescala servicios especiales"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "veinte días naturales, contados a partir del siguiente a la publicación del extracto de la convocatoria en el BOP de Alicante",
+   "cita": "El plazo de presentación de instancias será de veinte días naturales, contados a partir del siguiente"
+  }
+ }
+}

@@ -1,0 +1,106 @@
+{
+ "proceso": "borm:BORM-2025-2067",
+ "documento": {
+  "id": "borm:BORM-2025-2067",
+  "fuente": "BORM",
+  "url": "https://www.borm.es/#/home/anuncio/08-05-2025/2067",
+  "fecha": "2025-05-08",
+  "huella": "92032397f5b900cd51e3fff2460516bd9aff56816abf3dae8483908226a0de1d"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T15:25:26+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "Cuerpo de Técnicos Tributarios de la Administración Pública Regional",
+   "cita": "Convocar pruebas selectivas para acceso al Cuerpo de Técnicos Tributarios de la Administración Pública Regional.",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "Nombramiento como personal funcionario de carrera y toma de posesión.",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "pruebas selectivas de acceso libre, por el sistema de oposición, para cubrir 12 plazas",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 12,
+   "cita": "pruebas selectivas de acceso libre, por el sistema de oposición, para cubrir 12 plazas",
+   "nivel": "literal"
+  },
+  "plazas_discapacidad": {
+   "valor": 1,
+   "cita": "De éstas, 1 se reserva para el turno de personas con discapacidad.",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Ingeniero Técnico, Diplomado Universitario, Arquitecto Técnico o Grado o en condiciones de obtenerla",
+   "cita": "Estar en posesión de la titulación de Ingeniero Técnico, Diplomado Universitario, Arquitecto Técnico o Grado",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española; permiso de conducir clase B; tener cumplidos dieciséis años y no exceder la edad máxima de jubilación forzosa; discapacidad igual o superior al 33% para el turno de discapacidad",
+   "cita": "Estar en posesión de la nacionalidad española. Estar en posesión del permiso de conducir clase B.",
+   "nivel": "sin_signos"
+  },
+  "exenciones_tasa": {
+   "valor": "Discapacidad igual o superior al 33%; familia numerosa categoría especial; víctima del terrorismo; víctima de violencia de género",
+   "cita": "Están exentas del pago de la tasa las personas que cumplan cualquiera de las siguientes condiciones",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles desde el día siguiente al de publicación de la Orden en el BORM",
+   "cita": "El plazo de presentación de solicitudes será de 20 días hábiles a partir del día siguiente",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Telemáticamente a través de la sede electrónica de la Administración Pública de la CARM, procedimiento 2120",
+   "cita": "deberá presentar su solicitud a través de la sede electrónica de la Administración Pública de la Comunidad Autónoma",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Región de Murcia y página del procedimiento en la sede electrónica de la CARM",
+   "cita": "cuya composición será publicado en el Boletín Oficial de la Región de Murcia",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Primer ejercicio: test de 100 preguntas en 2 horas, eliminatorio (mínimo 5 puntos)",
+    "Segundo ejercicio: dos partes escritas, eliminatorio (mínimo 10 puntos y 5 en cada parte)"
+   ],
+   "cita": "Consistirá en un cuestionario tipo test, de 100 preguntas con respuestas alternativas",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Calificación de la fase de oposición (máximo 40 puntos) y experiencia en la Administración Pública Regional (máximo 60 puntos), para la lista de espera",
+   "cita": "La calificación obtenida en los ejercicios de la fase de oposición se valorará de modo proporcional",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, lista de espera para la selección de personal interino del Cuerpo",
+   "cita": "Derivada de este proceso selectivo se constituirá una lista de espera para la selección del personal interino",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Período de prácticas según la base decimotercera de la Orden de 17 de junio de 2004 y posible acción formativa de la Escuela de Formación e Innovación",
+   "cita": "Finalizado el proceso selectivo y tras la toma de posesión, la Orden de nombramiento como personal funcionario de carrera podrá recoger",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "A2",
+   "cita": "Titulación exigida: Ingeniero Técnico, Diplomado Universitario, Arquitecto Técnico o Grado"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 11,
+   "cita": "De éstas, 1 se reserva para el turno de personas con discapacidad."
+  }
+ }
+}

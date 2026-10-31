@@ -5,18 +5,18 @@
   "fuente": "BOB",
   "url": "http://www.bizkaia.eus/lehendakaritza/Bao_bob/2022/10/24/II-4550_cas.pdf",
   "fecha": "2022-10-24",
-  "huella": "492e8e0207f0e0e9f4b40123f3f16de9c2f1b83751076a4f5923a155980b1494"
+  "huella": "49d71c8a80c7df2062730952e3ce4c7fd573998fbb4c34f475eca824575463a7"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:57:07+00:00",
- "lote": "msgbatch_01B4ETF5xB4buYCHqPiHTXzF",
+ "extraido": "2026-10-31T15:25:22+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
    "valor": [
     "Auxiliar Administrativo/a"
    ],
-   "cita": "Convocatoria de concurso-oposición libre para provisión como personal funcionario de carrera de una plaza de Auxiliar Administrativo/a",
+   "cita": "una plaza de Auxiliar Administrativo/a y constitución de bolsa de trabajo",
    "nivel": "literal"
   },
   "grupo": {
@@ -26,7 +26,7 @@
   },
   "vinculo": {
    "valor": "funcionario de carrera",
-   "cita": "provisión en propiedad, como personal funcionario de carrera, mediante el procedimiento de Concurso-oposición libre",
+   "cita": "provisión como personal funcionario de carrera de una plaza de Auxiliar Administrativo/a",
    "nivel": "literal"
   },
   "sistema": {
@@ -39,13 +39,18 @@
    "cita": "Se convoca una plaza de Auxiliar Administrativo/a (Grupo C, subgrupo C2 de titulación)",
    "nivel": "literal"
   },
+  "plazas_turno_libre": {
+   "valor": 1,
+   "cita": "Se convoca una plaza de Auxiliar Administrativo/a (Grupo C, subgrupo C2 de titulación), por el sistema de acceso libre",
+   "nivel": "literal"
+  },
   "titulacion": {
    "valor": "Graduado/a en Educación Secundaria Obligatoria, Graduado/a en Educación Secundaria, Graduado/a Escolar, Bachiller Elemental, FP Básica",
    "cita": "la titulación requerida es: Graduado/a en Educación Secundaria Obligatoria, Graduado/a en Educación Secundaria",
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Nacionalidad española o de Estado miembro de la UE (o aplicación de libre circulación); tener cumplidos 16 años y no haber alcanzado la edad de jubilación forzosa; capacidad funcional; no haber sido separado de la Administración ni inhabilitado.",
+   "valor": "Nacionalidad española o de Estado miembro de la UE (o aplicación de libre circulación); tener cumplidos 16 años y no haber alcanzado la edad de jubilación forzosa; capacidad funcional; no haber sido separado de la Administración por expediente disciplinario ni inhabilitado",
    "cita": "Tener cumplidos 16 años de edad y no haber alcanzado la edad de jubilación forzosa",
    "nivel": "literal"
   },
@@ -60,50 +65,40 @@
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "A través de la página web del ayuntamiento (trámites de inscripción en la oferta pública de empleo y bolsas de trabajo); también en los lugares del artículo 16.4 de la Ley 39/2015",
+   "valor": "A través de la página web del Ayuntamiento de Arrieta; también en los lugares del artículo 16.4 de la Ley 39/2015",
    "cita": "Las instancias se presentarán a través de la página web del ayuntamiento de Arrieta",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Tablón de edictos de la Corporación, web del Ayuntamiento y tablón de anuncios; el anuncio de la convocatoria en el BOB",
+   "valor": "Tablón de edictos de la Corporación y web del Ayuntamiento de Arrieta",
    "cita": "Dicha resolución se hará pública en el tablón de edictos de la Corporación y en la web del Ayuntamiento de Arrieta",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Primer ejercicio: test de 40 preguntas con cuatro alternativas (máx. 20 puntos, eliminatorio con mínimo 10)",
-    "Segundo ejercicio: test de 20 preguntas sobre temario y supuestos prácticos (máx. 35 puntos, mínimo 17,50)",
-    "Tercer ejercicio: acreditación del perfil lingüístico PL2 de euskera (apto/no apto)"
+    "Primer ejercicio: test de 40 preguntas con cuatro alternativas (máximo 20 puntos, eliminatorio)",
+    "Segundo ejercicio: test de 20 preguntas sobre temario y supuestos prácticos (máximo 35 puntos, eliminatorio)",
+    "Tercer ejercicio: acreditación del perfil lingüístico PL2 de euskera (apto/no apto, eliminatorio)"
    ],
-   "cita": "Consistirá en contestar, durante el tiempo máximo que se determine por el Tribunal, a un cuestionario tipo test de 40 preguntas",
-   "nivel": "literal"
-  },
-  "temas": {
-   "valor": 29,
-   "cita": "Tema 29. Norma Foral 5/2006, de 29 de diciembre, General Presupuestaria del Territorio Histórico de Bizkaia.",
+   "cita": "La fase de oposición constará de tres (3) ejercicios, obligatorios y eliminatorios",
    "nivel": "literal"
   },
   "meritos": {
-   "valor": "Experiencia profesional hasta 30 puntos (0,20 por mes como Auxiliar Administrativo en la Administración); formación complementaria hasta 10 puntos (0,10 por hora); conocimientos informáticos hasta 2 puntos (1 por Word avanzado, 1 por Excel avanzado).",
-   "cita": "Por servicios prestados en la Administración Pública como Auxiliar Administrativo/a, con vínculo laboral o funcionarial directo",
+   "valor": "Experiencia profesional en la Administración Pública como Auxiliar Administrativo/a, 0,20 puntos por mes (máximo 30); formación complementaria (máximo 10); conocimientos informáticos Word y Excel avanzado (máximo 2)",
+   "cita": "Experiencia profesional, con un máximo de 30 puntos. Por servicios prestados en la Administración Pública como Auxiliar Administrativo/a",
    "nivel": "literal"
   },
   "bolsa": {
    "valor": "Sí, bolsa de trabajo para cubrir sustituciones, vacantes temporales, programas temporales y acumulación de tareas",
-   "cita": "Formando la bolsa de trabajo con la lista de espera de los/as candidatos/as elevada por el tribunal",
-   "nivel": "literal"
-  },
-  "practicas_o_curso": {
-   "valor": "Toma de posesión en el plazo de 30 días hábiles desde la notificación del nombramiento",
-   "cita": "deberá tomar posesión de sus cargos, en el plazo de 30 días hábiles, contados desde el siguiente al que sea notificado el nombramiento",
+   "cita": "Esta bolsa de trabajo, a la que podrá acudirse directamente",
    "nivel": "literal"
   }
  },
  "rechazados": {
-  "plazas_turno_libre": {
-   "motivo": "cita_no_literal",
-   "valor": 1,
-   "cita": "Se convoca una plaza de Auxiliar Administrativo/a por el sistema de acceso libre mediante concurso-oposición"
+  "temas": {
+   "motivo": "valor_no_en_cita",
+   "valor": 29,
+   "cita": "Parte cuarta hacienda Pública y Derecho Tributario Tema 25"
   }
  }
 }

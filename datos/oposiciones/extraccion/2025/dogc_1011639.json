@@ -5,17 +5,15 @@
   "fuente": "DOGC",
   "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1011639",
   "fecha": "2025-04-14",
-  "huella": "e88e62e3aa17d096b5ddb299578720c3128b924111ca31dea375df3b10581f9a"
+  "huella": "36cbde7cfbd52a5deade60b8802f4a2438dc097d512388d40af181e4daa2efe0"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:45:57+00:00",
- "lote": "msgbatch_017vJZdAmjTkBDdH14aLEdCv",
+ "extraido": "2026-10-31T15:25:22+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
-   "valor": [
-    "Responsable d'Arxiu i Gestió documental de la Gerència de Serveis Generals"
-   ],
+   "valor": "Responsable d'Arxiu i Gestió documental de la Gerència de Serveis Generals",
    "cita": "Un lloc de treball de Responsable d'Arxiu i Gestió documental de la Gerència de Serveis Generals",
    "nivel": "literal"
   },
@@ -26,11 +24,26 @@
   },
   "sistema": {
    "valor": "concurso",
-   "cita": "provisió definitiva per concurs de mèrits d'un lloc de treball",
+   "cita": "convocatòria interadministrativa per a la provisió definitiva per concurs",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "Un lloc de treball de Responsable d'Arxiu i Gestió documental de la Gerència de Serveis Generals",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Fotocòpia de la seva titulació acadèmica",
+   "cita": "Fotocòpia de la seva titulació acadèmica.",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Pertànyer al grup, subgrup i categories indicats a l'annex I; haver transcorregut un mínim de dos anys des de la presa de possessió de l'últim lloc obtingut amb caràcter definitiu; no estar en suspensió d'ocupació; certificat de nivell C1 de català o exempció.",
+   "cita": "Haver transcorregut un mínim de dos anys des de la presa de possessió de l'últim lloc obtingut amb caràcter definitiu",
    "nivel": "literal"
   },
   "idioma_cooficial": {
-   "valor": "català C1 (antic C) o superior",
+   "valor": "Català, nivell C1 (antic C) o superior de la Direcció General de Política Lingüística o equivalent",
    "cita": "Estar en possessió del certificat de nivell de suficiència de català C1 (antic C) o superior",
    "nivel": "literal"
   },
@@ -40,39 +53,40 @@
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Per mitjans electrònics: registre electrònic de la seu electrònica o intranet municipal; també en suport paper a les OAC",
+   "valor": "Per mitjans electrònics: intranet municipal (Selecció i Provisió > Concurs) o seu electrònica, mitjançant sol·licitud telemàtica",
    "cita": "Les persones interessades hauran de presentar la seva sol·licitud, el seu currículum i la documentació acreditativa dels mèrits al·legats, per mitjans electrònics",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Intranet municipal i Seu electrònica",
-   "cita": "es publicaran a la intranet municipal i a la Seu electrònica",
-   "nivel": "literal"
-  },
-  "ejercicios": {
-   "valor": [
-    "Primera fase: valoració de mèrits generals (fins a 23 punts en total amb la segona fase)",
-    "Segona fase: memòria o prova/supòsit pràctic (fins a 12 punts, mínim 4)",
-    "Prova de valoració de competències professionals mitjançant entrevista (fins a 6 punts)"
-   ],
-   "cita": "La segona fase consistirà en la comprovació i valoració dels mèrits i capacitats específics",
+   "valor": "Llista provisional i definitiva d'admesos i exclosos, convocatòria de proves i resultats: intranet municipal i Seu electrònica; llista provisional de mèrits: intranet municipal",
+   "cita": "La llista provisional i la llista definitiva de persones admeses i excloses, així com la convocatòria de proves",
    "nivel": "literal"
   },
   "meritos": {
-   "valor": "Antiguitat (1 punt màxim), grau personal (1 punt), nivell del lloc (1 punt), cursos de formació (2 punts), mèrits complementaris (6 punts)",
-   "cita": "Es valoraran treballs realitzats a les diferents Administracions en els darrers 10 anys",
-   "nivel": "literal"
-  },
-  "bolsa": {
-   "valor": "no",
-   "cita": "Aquestes bases contemplen",
-   "nivel": "literal"
-  },
-  "practicas_o_curso": {
-   "valor": "Presa de possessió en el termini de 3 dies a partir del dia següent al cessament",
-   "cita": "La presa de possessió en la nova destinació es durà a terme en un termini de 3 dies",
+   "valor": "Primera fase: antiguitat (0,10 per any, màx. 1), grau personal (màx. 1), nivell del lloc (màx. 1), cursos de formació (màx. 2), mèrits complementaris (màx. 6). Total 23 punts amb segona fase.",
+   "cita": "Els mèrits i capacitats de les persones candidates es valoraran fins a 23 punts",
    "nivel": "literal"
   }
  },
- "rechazados": {}
+ "rechazados": {
+  "ejercicios": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Primera fase: valoració de mèrits generals (antiguitat, grau, nivell del lloc, cursos, mèrits complementaris), màxim 11 punts",
+    "Segona fase: memòria (anàlisi de funcions i proposta de millora) o prova o supòsit pràctic, fins a 12 punts",
+    "Segona fase: entrevista de valoració de competències professionals, fins a 6 punts"
+   ],
+   "cita": "Segona fase: memòria o prova o supòsit pràctic relacionat amb les funcions pròpies del lloc"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "no",
+   "cita": "Com que no es menciona cap bolsa en les bases, no s'inclou"
+  },
+  "practicas_o_curso": {
+   "motivo": "cita_no_literal",
+   "valor": "no",
+   "cita": "Cessament i presa de possessió de la nova destinació"
+  }
+ }
 }

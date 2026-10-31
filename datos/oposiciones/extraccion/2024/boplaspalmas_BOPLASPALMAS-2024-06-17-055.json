@@ -5,33 +5,38 @@
   "fuente": "BOP-LASPALMAS",
   "url": null,
   "fecha": "2024-06-17",
-  "huella": "b40752ddd8f4c5f9a044f43bec67856ccb452f5be5ef60b8a148d12b8b5f1b41"
+  "huella": "cc35149c608f243ec789f9f3d685f26de2f9dd5d775dea557f0dffc222dcb44c"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:54:32+00:00",
- "lote": "msgbatch_01HRnX7cDVMkRZD7mBamCmLu",
+ "extraido": "2026-10-31T15:25:42+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
    "valor": [
-    "Arquitecto"
+    "Arquitecto/a"
    ],
-   "cita": "plaza de Arquitecto, de la Escala de Administración Especial, Subescala Técnica",
+   "cita": "UNA (1) plaza encuadrada en la Escala de Administración Especial, Subescala Técnica, Grupo A, Subgrupo A1",
    "nivel": "literal"
   },
   "grupo": {
    "valor": "A1",
-   "cita": "Grupo A, Subgrupo A1, con el carácter de funcionario de carrera",
+   "cita": "Grupo A, Subgrupo A1",
    "nivel": "literal"
   },
   "vinculo": {
    "valor": "funcionario de carrera",
-   "cita": "con el carácter de funcionario de carrera, turno libre",
+   "cita": "con el carácter de funcionario de carrera, turno libre y mediante el sistema de concurso-oposición",
    "nivel": "literal"
   },
   "sistema": {
    "valor": "concurso-oposición",
-   "cita": "mediante el sistema de concurso-oposición del Ayuntamiento de Santa Lucía de Tirajana",
+   "cita": "Sistema de Concurso-Oposición. Turno Libre.",
+   "nivel": "sin_signos"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "UNA (1) plaza encuadrada en la Escala de Administración Especial",
    "nivel": "literal"
   },
   "titulacion": {
@@ -39,19 +44,14 @@
    "cita": "Se precisará estar en posesión del título de Licenciatura en Arquitectura o Grado universitario equivalente.",
    "nivel": "literal"
   },
-  "otros_requisitos": {
-   "valor": "Nacionalidad española o de los supuestos equiparados; capacidad funcional; tener cumplidos 16 años y no exceder la edad máxima de jubilación; no haber sido separado del servicio ni inhabilitado; en extranjeros, conocimiento adecuado del castellano.",
-   "cita": "Tener cumplidos 16 años y no exceder, en su caso, de la edad máxima de jubilación forzosa.",
+  "idioma_cooficial": {
+   "valor": "No consta requisito de lengua cooficial",
+   "cita": "deberán tener un conocimiento adecuado del castellano",
    "nivel": "literal"
   },
   "tasa_euros": {
    "valor": 36,
-   "cita": "La tasa por derechos de examen es de 36,00 euros, todo ello de conformidad",
-   "nivel": "literal"
-  },
-  "exenciones_tasa": {
-   "valor": "Exentos los aspirantes con discapacidad igual o superior al 33 por 100 y los demandantes de empleo que cumplan los requisitos de antigüedad, no rechazo de oferta y carencia de rentas.",
-   "cita": "quedarán exentos del pago de la tasa: a) Los/as aspirantes con discapacidad igual o superior al 33 por 100",
+   "cita": "La tasa por derechos de examen es de 36,00 euros",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
@@ -60,56 +60,60 @@
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Preferentemente a través de la plataforma Convoca (santaluciagc.convoca.online) con cl@ve PIN o certificado digital; también por cualquiera de los medios del artículo 16.4 de la Ley 39/2015.",
+   "valor": "Preferentemente a través de la plataforma Convoca (santaluciagc.convoca.online); también por los medios del artículo 16.4 de la Ley 39/2015",
    "cita": "PREFERENTEMENTE se presentarán las solicitudes de participación en el proceso selectivo a través de la plataforma digital Convoca",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Boletín Oficial de la Provincia, tablón de anuncios del Ayuntamiento, web municipal y Plataforma Convoca; extracto en el BOE y en el boletín autonómico",
-   "cita": "se hará público en el Boletín Oficial de la Provincia, en el Tablón de Anuncios del Ayuntamiento y en la web municipal",
+   "valor": "Boletín Oficial de la Provincia, tablón de anuncios del Ayuntamiento y web municipal; extracto en BOC y BOE",
+   "cita": "El texto íntegro de estas Bases se hará público en el Boletín Oficial de la Provincia, en el Tablón de Anuncios",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Primer ejercicio: test de 80 preguntas (más 5 de reserva) con tres respuestas, 100 minutos, eliminatorio",
+    "Primer ejercicio: test de 80 preguntas (más 5 de reserva) sobre materias comunes y específicas, 100 minutos, eliminatorio",
     "Segundo ejercicio: desarrollo escrito de hasta 20 preguntas de la parte específica, 90 minutos, eliminatorio",
-    "Tercer ejercicio: supuesto práctico sobre la parte general y/o específica, dos horas, eliminatorio",
-    "Fase de concurso: valoración de méritos, máximo 4 puntos, no eliminatoria"
+    "Tercer ejercicio: supuesto práctico relacionado con la parte general y/o específica, dos horas, eliminatorio"
    ],
-   "cita": "PRIMER EJERCICIO: El primer ejercicio consistirá en la contestación de un cuestionario tipo test de ochenta (80) preguntas",
+   "cita": "El primer ejercicio consistirá en la contestación de un cuestionario tipo test de ochenta (80) preguntas",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, lista de reserva para nombramientos interinos en la misma categoría",
+   "cita": "El proceso también permitirá la constitución de una lista de reserva para nombramientos interinos",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Toma de posesión como funcionario en prácticas",
+   "cita": "deben mantenerse en el momento de la toma de posesión como funcionario en prácticas",
    "nivel": "literal"
   },
   "temas": {
    "valor": 90,
    "cita": "Tema 90. Ley 7/2022, de 8 de abril, de Residuos y Suelos contaminados para una economía circular.",
-   "nivel": "literal"
-  },
-  "meritos": {
-   "valor": "Antigüedad hasta 1 punto; experiencia profesional hasta 3 puntos; conocimientos, cursos y formación académica hasta 3 puntos; máximo total de la fase de concurso 4 puntos.",
-   "cita": "En este caso la calificación final vendrá determinada por la suma de la puntuación obtenida en la fase de oposición",
-   "nivel": "literal"
-  },
-  "bolsa": {
-   "valor": "Sí, lista de reserva para nombramientos interinos en la misma categoría",
-   "cita": "El proceso también permitirá la constitución de una lista de reserva para nombramientos interinos",
-   "nivel": "literal"
-  },
-  "practicas_o_curso": {
-   "valor": "Toma de posesión como funcionario en prácticas tras el nombramiento",
-   "cita": "deben mantenerse en el momento de la toma de posesión como funcionario en prácticas.",
-   "nivel": "literal"
+   "nivel": "contado"
   }
  },
  "rechazados": {
-  "plazas_total": {
-   "motivo": "valor_no_en_cita",
-   "valor": 1,
-   "cita": "cubrir en propiedad, con carácter de funcionario de carrera, mediante turno libre"
-  },
   "plazas_turno_libre": {
    "motivo": "valor_no_en_cita",
    "valor": 1,
-   "cita": "cubrir en propiedad, con carácter de funcionario de carrera, mediante turno libre"
+   "cita": "por el turno libre mediante el sistema de concurso-oposición"
+  },
+  "otros_requisitos": {
+   "motivo": "cita_no_literal",
+   "valor": "Nacionalidad española o de los supuestos equiparados; capacidad funcional para las tareas; tener cumplidos 16 años y no exceder la edad de jubilación forzosa; no haber sido separado del servicio ni inhabilitado.",
+   "cita": "Tener la nacionalidad española. Poseer la capacidad funcional para el desempeño de las tareas inherentes a la plaza"
+  },
+  "exenciones_tasa": {
+   "motivo": "cita_no_literal",
+   "valor": "Aspirantes con discapacidad igual o superior al 33 por 100; demandantes de empleo con los requisitos de antigüedad, no rechazo de ofertas y carencia de rentas.",
+   "cita": "quedarán exentos del pago de la tasa: Los/as aspirantes con discapacidad igual o superior al 33 por 100"
+  },
+  "meritos": {
+   "motivo": "cita_no_literal",
+   "valor": "Antigüedad (máx. 1 punto); experiencia profesional (máx. 3 puntos); conocimientos, cursos, formación académica (máx. 3 puntos); fase de concurso máxima de 4 puntos en total",
+   "cita": "La fase de concurso no podrá exceder de 4 puntos"
   }
  }
 }

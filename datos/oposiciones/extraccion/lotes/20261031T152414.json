@@ -1,0 +1,49 @@
+{
+ "lote": "msgbatch_01QGBJzFrJk89N3kyh4ZuSEx",
+ "estado": "ended",
+ "resultados": {
+  "processing": 0,
+  "succeeded": 1001,
+  "errored": 0,
+  "canceled": 0,
+  "expired": 0
+ },
+ "tokens": {
+  "input_tokens": 9953957,
+  "output_tokens": 1022098,
+  "cache_creation_input_tokens": 2064,
+  "cache_read_input_tokens": 1030968
+ },
+ "coste_usd": 0.76379,
+ "procesos": 1001,
+ "campos_aceptados": 9371,
+ "campos_rechazados": 1654,
+ "aceptados_por_campo": {
+  "plazo_solicitudes": 737,
+  "sistema": 731,
+  "denominacion": 715,
+  "vinculo": 698,
+  "publicaciones": 673,
+  "presentacion": 635,
+  "otros_requisitos": 620,
+  "titulacion": 612,
+  "bolsa": 612,
+  "ejercicios": 583,
+  "meritos": 513,
+  "grupo": 473,
+  "plazas_total": 428,
+  "practicas_o_curso": 300,
+  "tasa_euros": 275,
+  "exenciones_tasa": 233,
+  "temas": 183,
+  "idioma_cooficial": 183,
+  "plazas_turno_libre": 132,
+  "plazas_discapacidad": 25,
+  "plazas_promocion_interna": 10
+ },
+ "no_son_bases": 179,
+ "errores": 5,
+ "modelo": "claude-haiku-5-5",
+ "precios": "https://platform.claude.com/docs/en/about-claude/pricing (30/10/2026)",
+ "coste_por_proceso_usd": 0.000763
+}

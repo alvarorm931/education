@@ -5,13 +5,26 @@
   "fuente": "BOPV",
   "url": "https://www.euskadi.eus/web01-bopv/es/bopv2/datos/2026/09/2603750a.shtml",
   "fecha": "2026-09-01",
-  "huella": "f65539710d01115b0a485f0dfcba2b45a2f7b0ed85ed621533e2221376f15c07"
+  "huella": "7f41a5d4c72303b1940c107eb3f927ba7b3ef241f97ed9389627a0873a1b8cd7"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T11:20:07+00:00",
- "lote": "msgbatch_01MXXMFvrqAAHficSS2SFuRZ",
+ "extraido": "2026-10-31T15:25:47+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
+  "denominacion": {
+   "valor": [
+    "Cocinero/a",
+    "Personal de limpieza"
+   ],
+   "cita": "Se convocan 55 plazas. La distribución de estas plazas por categoría y turno es la siguiente",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "E / agrupaciones profesionales",
+   "cita": "Convocar los procesos selectivos para la provisión de plazas de personal laboral fijo",
+   "nivel": "literal"
+  },
   "vinculo": {
    "valor": "personal laboral fijo",
    "cita": "Convocar los procesos selectivos para la provisión de plazas de personal laboral fijo pertenecientes a las categorías laborales",
@@ -19,7 +32,7 @@
   },
   "sistema": {
    "valor": "concurso-oposición",
-   "cita": "el procedimiento de selección será el de concurso-oposición en sus correspondientes turnos: libre y discapacidad",
+   "cita": "mediante concurso-oposición, para la provisión de plazas de personal laboral fijo",
    "nivel": "literal"
   },
   "plazas_total": {
@@ -27,88 +40,70 @@
    "cita": "Se convocan 55 plazas. La distribución de estas plazas por categoría y turno es la siguiente",
    "nivel": "literal"
   },
-  "plazas_discapacidad": {
-   "valor": 7,
-   "cita": "Las plazas que se convocan para el turno de reserva de discapacidad, suponen un 7 % del total de plazas aprobadas",
-   "nivel": "literal"
-  },
   "otros_requisitos": {
-   "valor": "Nacionalidad de un Estado miembro de la UE (con excepciones); tener 16 años cumplidos y no haber alcanzado la edad de jubilación forzosa; no padecer enfermedad incompatible; no haber sido separada del servicio de Administraciones Públicas; no haber sido condenada por delitos sexuales; no ser personal laboral fijo en la categoría.",
+   "valor": "Nacionalidad de un Estado miembro de la UE (con extensiones a cónyuges y descendientes), tener 16 años cumplidos y no superar la edad de jubilación forzosa, no padecer enfermedad ni limitación incompatible con las funciones, no haber sido separado de la Administración ni inhabilitado, no tener condena firme por delitos contra la libertad sexual, y no ser personal laboral fijo en la categoría a la que se concurre",
    "cita": "Tener cumplidos 16 años y no haber alcanzado la edad de jubilación forzosa",
-   "nivel": "literal"
-  },
-  "idioma_cooficial": {
-   "valor": "no se exige conocimiento de euskera como requisito",
-   "cita": "Decreto 47/2012, de 3 de abril, de reconocimiento de los estudios oficiales realizados en euskera",
    "nivel": "literal"
   },
   "tasa_euros": {
    "valor": 8.18,
-   "cita": "el importe a abonar será de 8,18 euros",
+   "cita": "El pago de la tasa deberá efectuarse dentro del plazo de presentación de solicitudes y el importe a abonar será de 8,18 euros.",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "No se indican exenciones ni reducciones de la tasa en el texto",
+   "cita": "No procederá la devolución de esta tasa en los supuestos de exclusión de las pruebas selectivas por causa imputable a la persona interesada",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
    "valor": "Desde el 21 de septiembre de 2026 hasta el 19 de octubre de 2026",
-   "cita": "El plazo de solicitud iniciará el 21 de septiembre de 2026 y finalizará el 19 de octubre de 2026",
-   "nivel": "literal"
-  },
-  "presentacion": {
-   "valor": "Solo por vía electrónica a través del Portal del Empleo Público, con identificación electrónica; también en centros KZgunea",
-   "cita": "Las solicitudes se presentarán por vía electrónica, conforme establece el artículo 15.1.d) del Decreto 91/2023",
+   "cita": "El plazo de solicitud iniciará el 21 de septiembre de 2026 y finalizará el 19 de octubre de 2026.",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Portal del Empleo Público (euskadi.eus/empleo-publico) y BOPV para nombramientos y listas definitivas de seleccionadas",
-   "cita": "Dicha resolución se publicará en el Portal del Empleo Público en la dirección electrónica https://www.euskadi.eus/empleo-publico/",
+   "valor": "Portal del Empleo Público (euskadi.eus/empleo-publico); los nombramientos del Tribunal y las listas definitivas de seleccionados se publican también en el BOPV",
+   "cita": "La presentación desde el Portal del Empleo Público permitirá la cumplimentación electrónica de los siguientes trámites",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Fase de oposición: cuestionario de 20 preguntas tipo test (10 de temario general y 10 de temario específico), calificación de 0 a 20 puntos, eliminatorio con mínimo de 10 puntos",
-    "Fase de concurso: valoración de méritos, máximo 20 puntos, no eliminatoria"
+    "Cuestionario escrito de 20 preguntas con respuestas alternativas, en un máximo de dos horas, en dos ejercicios de 10 preguntas cada uno (teórico general y teórico-práctico específico); calificación de 0 a 20, eliminatorio con mínimo 10 puntos",
+    "Fase de concurso (méritos), no eliminatoria, máximo 20 puntos"
    ],
-   "cita": "La fase de oposición consistirá en la realización de una prueba de carácter obligatorio y eliminatorio",
+   "cita": "Consistirá en la contestación, por escrito, de un cuestionario de 20 preguntas con respuestas alternativas",
    "nivel": "literal"
   },
   "meritos": {
-   "valor": "Fase de concurso no eliminatoria, máximo 20 puntos; ponderación 45 % concurso y 55 % oposición; baremo en anexos según categoría",
-   "cita": "La puntuación máxima que puede obtener cada aspirante por la valoración de sus méritos es de 20 puntos",
+   "valor": "Fase de concurso no eliminatoria, con puntuación máxima de 20 puntos, ponderada al 45 % en la puntuación final; el baremo concreto figura en los anexos de cada categoría",
+   "cita": "La puntuación máxima que puede obtener cada aspirante por la valoración de sus méritos es de 20 puntos.",
    "nivel": "literal"
   },
   "bolsa": {
-   "valor": "sí, para mantener listas existentes de personal de cocina y limpieza, y lista de contrato relevo para quienes superen la oposición sin plaza",
-   "cita": "A las personas que superen el proceso selectivo sin haber obtenido plaza se les otorgarán 365 puntos en listas",
+   "valor": "Sí: se mantienen las listas existentes de personal de cocina y limpieza, a quienes superen el proceso sin plaza se les otorgan 365 puntos en listas; además se crea una lista de contrato relevo",
+   "cita": "A las personas que superen el proceso selectivo sin haber obtenido plaza se les otorgarán 365 puntos en listas.",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "No se menciona periodo de prácticas ni curso selectivo",
+   "cita": "Quienes, en los días establecidos y salvo casos de fuerza mayor, no suscriban el contrato, perderán todos los derechos",
    "nivel": "literal"
   }
  },
  "rechazados": {
-  "denominacion": {
-   "motivo": "cita_no_literal",
-   "valor": [
-    "Cocinero/a",
-    "Personal de limpieza"
-   ],
-   "cita": "Se convocan los procesos selectivos para la provisión de plazas de personal laboral fijo pertenecientes a las categorías laborales de cocina y limpieza"
+  "plazas_discapacidad": {
+   "motivo": "valor_no_numerico",
+   "valor": "7 % del total de plazas aprobadas",
+   "cita": "Las plazas que se convocan para el turno de reserva de discapacidad, suponen un 7 % del total de plazas aprobadas"
   },
-  "grupo": {
+  "presentacion": {
    "motivo": "cita_no_literal",
-   "valor": "E / agrupaciones profesionales",
-   "cita": "El texto no indica grupo de clasificación de forma expresa"
-  },
-  "titulacion": {
-   "motivo": "cita_no_literal",
-   "valor": "no especificada",
-   "cita": "Requisitos de participación. Requisitos generales. Las personas que aspiren a ser admitidas en el proceso selectivo"
+   "valor": "Solicitud electrónica a través del Portal del Empleo Público (euskadi.eus/empleo-publico), con identificación mediante certificado electrónico; también en los centros KZgunea",
+   "cita": "Las solicitudes se presentarán por vía electrónica, a través del Portal del Empleo Público en la dirección electrónica"
   },
   "temas": {
    "motivo": "cita_no_literal",
-   "valor": 21,
-   "cita": "TEMARIO ESPECIFICO ... 21.– Comunicación y trabajo en equipo en cocina"
-  },
-  "practicas_o_curso": {
-   "motivo": "cita_no_literal",
-   "valor": "no consta",
-   "cita": "El texto no indica periodo de prácticas ni curso selectivo"
+   "valor": "21 temas (temario general de 4 temas y temario específico de 17)",
+   "cita": "TEMARIO GENERAL 1.– La Comunidad Autónoma del País Vasco. TEMARIO ESPECIFICO 1.– Concepto de cocina"
   }
  }
 }

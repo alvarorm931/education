@@ -5,11 +5,11 @@
   "fuente": "DOGV",
   "url": "https://dogv.gva.es/datos/2025/04/16/pdf/2025_11523_es.pdf",
   "fecha": "2025-04-16",
-  "huella": "8b95491b2a4556bc7388d31063bdb1ddff1b3a5a16d6b32e89386cc2ef7774bb"
+  "huella": "f519b95ae9d68ab2078ad7a78b53ad00911513c3d048a400e1ffcd7ca28a0841"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:45:54+00:00",
- "lote": "msgbatch_017vJZdAmjTkBDdH14aLEdCv",
+ "extraido": "2026-10-31T15:25:19+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
@@ -22,11 +22,6 @@
    "cita": "Grupo: C2",
    "nivel": "literal"
   },
-  "vinculo": {
-   "valor": "funcionario de carrera",
-   "cita": "Pueden participar en esta convocatoria los funcionarios de carrera de la Generalitat",
-   "nivel": "literal"
-  },
   "sistema": {
    "valor": "concurso",
    "cita": "Forma de provisión: concurso.",
@@ -37,59 +32,57 @@
    "cita": "en la plantilla hay un puesto del grupo C2, correspondiente a la administración general",
    "nivel": "literal"
   },
-  "titulacion": {
-   "valor": "Cuerpo C2-01-01 o equivalente en otras instituciones de la Generalitat",
-   "cita": "Requisitos: – Cuerpo C2-01-01 o equivalente en otras instituciones de la Generalitat.",
+  "otros_requisitos": {
+   "valor": "Cuerpo C2-01-01 o equivalente en otras instituciones de la Generalitat. Personal con destino definitivo: dos años de permanencia mínima en su puesto definitivo.",
+   "cita": "Cuerpo C2-01-01 o equivalente en otras instituciones de la Generalitat.",
    "nivel": "literal"
   },
   "idioma_cooficial": {
    "valor": "Certificado C1 de valenciano",
-   "cita": "Requisitos: – Cuerpo C2-01-01 o equivalente en otras instituciones de la Generalitat. – Certificado C1 de valenciano.",
+   "cita": "Certificado C1 de valenciano.",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "quince días hábiles desde el día siguiente a la publicación en el DOGV",
+   "valor": "quince días hábiles, a contar desde el día siguiente a la publicación de esta convocatoria en el Diari Oficial de la Generalitat Valenciana",
    "cita": "en el plazo de quince días hábiles, a contar desde el día siguiente a la publicación de esta convocatoria",
    "nivel": "literal"
   },
+  "presentacion": {
+   "valor": "Registro Electrónico de la Acadèmia Valenciana de la Llengua, trámite «Solicitud de asuntos diversos», adjuntando copia digital del DNI y documentación de méritos",
+   "cita": "Las solicitudes se presentarán en el Registro Electrónico de la Acadèmia Valenciana de la Llengua",
+   "nivel": "literal"
+  },
   "publicaciones": {
-   "valor": "página web de la Acadèmia Valenciana de la Llengua y Diari Oficial de la Generalitat Valenciana",
+   "valor": "página web de la Acadèmia Valenciana de la Llengua (propuesta de resolución) y Diari Oficial de la Generalitat Valenciana (resolución)",
    "cita": "La Comisión de Valoración elaborará la propuesta de resolución y la expondrá en la página web de la Acadèmia Valenciana de la Llengua",
    "nivel": "literal"
   },
-  "ejercicios": {
-   "valor": [
-    "Valoración de méritos por concurso (baremo de la base cuarta)"
-   ],
-   "cita": "La evaluación de los méritos de los concursantes se debe hacer de acuerdo con lo establecido en la presente base",
-   "nivel": "literal"
-  },
   "meritos": {
-   "valor": "Antigüedad y pertenencia al cuerpo (hasta 20 p.), carrera profesional (hasta 5 p.), formación (hasta 16 p.), desempeño de puestos (hasta 5 p.) y víctimas de terrorismo o violencia de género (10 p.); máximo total 56 puntos",
+   "valor": "Antigüedad hasta 10 puntos, pertenencia al cuerpo hasta 10, carrera profesional hasta 5, formación hasta 16, desempeño hasta 5 y víctimas de terrorismo o violencia de género 10; máximo total 56 puntos",
    "cita": "La puntuación máxima que se puede obtener por todos los apartados es de 56 puntos.",
    "nivel": "literal"
   },
   "bolsa": {
    "valor": "no",
-   "cita": "Adjudicación de destinos",
+   "cita": "Convocar, para su provisión, el puesto de trabajo que se detalla en la base primera de esta resolución",
    "nivel": "literal"
   },
   "practicas_o_curso": {
    "valor": "no",
-   "cita": "En la resolución de esta convocatoria se indicará expresamente la fecha de comienzo de los plazos para la toma de posesión.",
+   "cita": "Convocar, para su provisión, el puesto de trabajo que se detalla en la base primera de esta resolución",
    "nivel": "literal"
   }
  },
  "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "Puede participar en esta convocatoria los funcionarios de carrera de la Generalitat del mismo grupo y sector"
+  },
   "plazas_turno_libre": {
    "motivo": "valor_no_en_cita",
    "valor": 1,
    "cita": "Convocar, para su provisión, el puesto de trabajo que se detalla en la base primera"
-  },
-  "presentacion": {
-   "motivo": "cita_no_literal",
-   "valor": "Registro Electrónico de la Acadèmia Valenciana de la Llengua, trámite «Solicitud de asuntos diversos»",
-   "cita": "Las solicitudes se presentarán en el Registro Electrónico de la Acadèmia Valenciana de la Llengua por medio del trámite «Solicitud de asuntos diversos»"
   }
  }
 }

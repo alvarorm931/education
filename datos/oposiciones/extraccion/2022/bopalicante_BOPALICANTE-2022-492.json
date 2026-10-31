@@ -1,0 +1,75 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2022-492",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2022-492",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2022/02/04_24/2022_000492.pdf",
+  "fecha": "2022-02-04",
+  "huella": "a7df9ed101554802d19b93c2d8df6617d4ee35eefb71d5f2c7704c9263c2d0d7"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T15:24:13+00:00",
+ "lote": "msgbatch_01QGBJzFrJk89N3kyh4ZuSEx",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Técnico/a de Administración General"
+   ],
+   "cita": "PARA LA PROVISION EN PROPIEDAD DE 7 PLAZAS DE TÉCNICO/A DE ADMINISTRACIÓN GENERAL",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "A2",
+   "cita": "plaza del Grupo A2 en la Escala de Administración Especial",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Promoción interna: antigüedad de al menos 2 años prestando servicios efectivos en el Ayuntamiento de Elche, en plaza del Grupo A2 en la Escala de Administración Especial, y hallarse en servicio activo en este Ayuntamiento",
+   "cita": "deberán tener una antigüedad de al menos 2 años, prestando servicios efectivos en el Ayuntamiento de Elche",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "la provisión en propiedad, mediante el sistema selectivo de concurso-oposición, de 7 plazas"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "mediante el sistema selectivo de concurso-oposición, de 7 plazas"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 7,
+   "cita": "la provisión en propiedad, mediante el sistema selectivo de concurso-oposición, de 7 plazas"
+  },
+  "plazas_turno_libre": {
+   "motivo": "cita_no_literal",
+   "valor": 6,
+   "cita": "siendo seis por turno libre, y una por promoción interna"
+  },
+  "plazas_promocion_interna": {
+   "motivo": "cita_no_literal",
+   "valor": 1,
+   "cita": "siendo seis por turno libre, y una por promoción interna"
+  },
+  "plazas_discapacidad": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "reservada a diversidad funcional física y/o sensorial en grado igual o superior al 33%"
+  },
+  "titulacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Título universitario de Grado o titulación equivalente, conforme al sistema vigente de titulaciones, o en condiciones de obtenerlo en la fecha de finalización del plazo de presentación de instancias",
+   "cita": "Estar en posesión del título universitario de Grado o titulación equivalente, conforme al sistema vigente de titulaciones"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Edictos publicados en el Boletín Oficial de la Provincia",
+   "cita": "Lo que se hace público para conocimiento de los interesados y a los efectos legales oportunos."
+  }
+ }
+}

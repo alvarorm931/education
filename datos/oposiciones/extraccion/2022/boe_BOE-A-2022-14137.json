@@ -1,0 +1,109 @@
+{
+ "proceso": "boe:BOE-A-2022-14137",
+ "documento": {
+  "id": "bocant:BOC-2022-6335",
+  "fuente": "BOC-CANT",
+  "url": "https://boc.cantabria.es/boces/verAnuncioAction.do?idAnuBlob=375184",
+  "fecha": "2022-08-18",
+  "huella": "1bbb3ff579d35059d736651f11712d5d7d1976c528fdb4a367c659e27b3e21e3"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T15:25:23+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "C1",
+   "cita": "Subgrupo de titulación C1, vacante en la plantilla del Ayuntamiento de Reocín",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "provisión en propiedad, como funcionario de carrera, por el procedimiento de oposición libre",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "una (1) plaza de Policía Local, encuadrada en la Escala de Administración Especial",
+   "nivel": "literal"
+  },
+  "plazas_turno_libre": {
+   "valor": 1,
+   "cita": "una (1) plaza de Policía Local, encuadrada en la Escala de Administración Especial",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Título de bachiller, técnico, formación profesional de segundo grado o equivalente",
+   "cita": "Estar en posesión del título de bachiller, técnico, formación profesional de segundo grado o equivalente.",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española; 16 años cumplidos y no exceder la edad de jubilación forzosa; permiso de conducir clase B y clase A o A2; estatura mínima de 1,65 m hombres y 1,60 m mujeres; compromiso de portar armas; no haber sido separado del servicio ni inhabilitado; capacidad funcional para el puesto",
+   "cita": "Tener una estatura mínima de 1,65 metros los hombres y 1,60 metros las mujeres.",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 15,
+   "cita": "justificante acreditativo de haber abonado los derechos de examen (15,00 €)",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Exención de pago para personas demandantes de empleo, acreditada con justificante o papeleta actualizada de demandante de empleo en el instituto de empleo",
+   "cita": "justificante o papeleta actualizada de ser demandante de empleo en el correspondiente instituto de empleo",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días naturales contados desde el día siguiente a la publicación del anuncio de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "en el plazo máximo de VEINTE (20) DÍAS naturales contados a partir del día siguiente al de la publicación del anuncio de la convocatoria en el Boletín Oficial del Estado",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Registro General del Ayuntamiento de Reocín o en la forma prevista en el artículo 16 de la Ley 39/2015, modelo ANEXO V en sede electrónica",
+   "cita": "deberá ser presentada, junto con la restante documentación preceptiva, en el Registro General del Ayuntamiento de Reocín",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de Cantabria, tablón de anuncios y página web del Ayuntamiento de Reocín; convocatoria en el Boletín Oficial del Estado",
+   "cita": "será anunciada en el Boletín Oficial de Cantabria y tablón de anuncios del Ayuntamiento de Reocín y página web municipal",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Primer ejercicio: prueba teórica, test de 50 preguntas en 60 minutos (eliminatorio, mínimo 5 puntos)",
+    "Segundo ejercicio: prueba de supuestos prácticos de 2 horas (eliminatorio, mínimo 5 puntos)",
+    "Tercer ejercicio: pruebas de aptitud física (eliminatorio, mínimo 5 puntos)",
+    "Cuarto ejercicio: pruebas psicotécnicas (apto/no apto)",
+    "Quinto ejercicio: reconocimiento médico (apto/no apto)"
+   ],
+   "cita": "Primer ejercicio: Prueba teórica. Consistirá en contestar un cuestionario tipo test de 50 preguntas",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, lista de reserva de aspirantes que superen todos los ejercicios para cubrir renuncias antes del nombramiento o toma de posesión, válida solo para esta convocatoria",
+   "cita": "una lista de reserva a efectos de poder efectuar nombramiento para los casos en que se produzca renuncia de los propuestos",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Nombramiento como funcionarios en prácticas y realización del curso básico de formación teórico-práctico en la Escuela Autonómica de Policía Local, con prácticas en el lugar que determine el Ayuntamiento",
+   "cita": "debiendo realizar el curso básico de formación teórico-práctico previsto en el artículo 19 de la Ley de Cantabria 5/2000",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Policía Local",
+   "cita": "provisión, en propiedad, mediante el sistema de oposición libre, de una plaza de Policía Local"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "oposición",
+   "cita": "provisión en propiedad, mediante el sistema de oposición libre, de una plaza"
+  },
+  "temas": {
+   "motivo": "valor_no_numerico",
+   "valor": "Los que figuran en el Anexo II",
+   "cita": "versarán sobre los temas que figuran en el Anexo II"
+  }
+ }
+}

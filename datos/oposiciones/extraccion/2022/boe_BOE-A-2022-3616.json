@@ -1,0 +1,50 @@
+{
+ "proceso": "boe:BOE-A-2022-3616",
+ "documento": {
+  "id": "boe:BOE-A-2022-3616",
+  "fuente": "BOE",
+  "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2022-3616",
+  "fecha": "2022-03-08",
+  "huella": "933115307e780d2135ffc179f083d92cb798bf02074aa46d904a912ccab65817"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T15:24:08+00:00",
+ "lote": "msgbatch_01QGBJzFrJk89N3kyh4ZuSEx",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Cuerpo de Maestros"
+   ],
+   "cita": "El número de plazas que se convocan es de 905, correspondientes al Cuerpo de Maestros",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 905,
+   "cita": "El número de plazas que se convocan es de 905, correspondientes al Cuerpo de Maestros",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "desde las 0:00 del 1 de marzo hasta las 13:00 horas del 22 de marzo de 2022",
+   "cita": "El plazo de presentación de solicitudes y documentación será desde las 0:00 del 1 de marzo hasta las 13:00 horas del 22 de marzo de 2022.",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "formulario web en la sede electrónica de la Comunidad Autónoma de la Región de Murcia (http://sed.carm.es), número de procedimiento 843",
+   "cita": "deberán cumplimentar una solicitud, dirigida a la Consejera de Educación, a través del formulario web que está disponible en la sede electrónica",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "A2",
+   "cita": ""
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "oposición",
+   "cita": ""
+  }
+ }
+}

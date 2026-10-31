@@ -1,0 +1,77 @@
+{
+ "proceso": "boptoledo:BOPTOLEDO-2022-4165",
+ "documento": {
+  "id": "boptoledo:BOPTOLEDO-2022-4165",
+  "fuente": "BOP-TOLEDO",
+  "url": "https://bop.diputoledo.es/webEbop/DocGet?id=22082522;0&insert_number=4165&insert_year=2022",
+  "fecha": "2022-08-23",
+  "huella": "db8609fbc89474c6a1e418bdbb192c1e681635137847dadff83fef9476e5f512"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T15:25:18+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Plazas cuyo sistema selectivo es el concurso de la Oferta de Empleo Público Extraordinaria 2022 del Ayuntamiento de Talavera de la Reina"
+   ],
+   "cita": "Aprobar las Bases generales por la que se regirán los procesos selectivos para la provisión, en régimen de funcionario de carera, de las plazas cuyo sistema selectivo es el concurso",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "El sistema de selección será por el sistema general de acceso libre y concurso",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española o de la UE; tener 16 años y no exceder la edad de jubilación forzosa; capacidad funcional; no estar incurso en incapacidad o incompatibilidad; no haber sido separado de la Administración ni inhabilitado.",
+   "cita": "Tener la nacionalidad española o de un Estado miembro de la Unión Europea",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Exentos los aspirantes inscritos como demandantes de empleo, salvo oposición expresa en la solicitud.",
+   "cita": "Estarán exentos de abonar los derechos de examen las personas aspirantes que acrediten estar inscritos como demandantes de empleo",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Veinte días hábiles desde el día siguiente a la publicación de la convocatoria en extracto en el BOE",
+   "cita": "El plazo de presentación de solicitudes será de veinte días hábiles contados a partir del día siguiente",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Presencial en la Oficina de Atención al Ciudadano o telemática a través del registro electrónico (sede.talavera.org) con certificado electrónico, o en otras formas del art. 16 Ley 39/2015",
+   "cita": "Telemáticamente. A través del registro electrónico del Ayuntamiento de Talavera de la Reina",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Página web del Ayuntamiento (www.talavera.es), Tablón de edictos de la Sede Electrónica y BOP de Toledo",
+   "cita": "Todos los actos de desarrollo del proceso selectivo se harán públicos en la página web del Ayuntamiento",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Concurso: valoración de méritos (experiencia profesional, títulos académicos y formación)"
+   ],
+   "cita": "El sistema de selección será por turno libre y concurso, con los méritos y puntuaciones que se especifican en el Anexo l.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "para la provisión, en régimen de funcionario de carrera, de las plazas cuyo sistema selectivo es el concurso"
+  },
+  "meritos": {
+   "motivo": "cita_no_literal",
+   "valor": "Experiencia profesional hasta 65 puntos; títulos académicos oficiales hasta 10 puntos; formación hasta 25 puntos.",
+   "cita": "Experiencia profesional (máximo 65 puntos). Títulos académicos oficiales (máximo 10 puntos). Formación (máximo 25 puntos)."
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "no",
+   "cita": "Plazas convocadas por el sistema de concurso; no se menciona creación de bolsa de empleo"
+  }
+ }
+}

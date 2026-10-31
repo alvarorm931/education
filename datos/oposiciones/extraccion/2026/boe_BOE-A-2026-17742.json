@@ -5,18 +5,18 @@
   "fuente": "BOR",
   "url": "https://web.larioja.org/bor-portada/boranuncio?n=anu-578977",
   "fecha": "2026-08-04",
-  "huella": "3fa286659da900f011e79e73c8be1f48086676b9942b24d53b82aa83e88d5614"
+  "huella": "8006f10ad53e33a971fe6b4db670960e2f59aabb842bedb7671b414c99d8362b"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T07:39:53+00:00",
- "lote": "msgbatch_013q7o24qMms8ZNZdwMNkW1L",
+ "extraido": "2026-10-31T15:25:29+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
    "valor": [
-    "Peón de Parques y Jardines"
+    "Peón de parques y jardines"
    ],
-   "cita": "dos plazas de Peón de Parques y Jardines vacantes en la Plantilla de Personal Funcionario de este Ayuntamiento",
+   "cita": "Subescala de Servicios Especiales, Personal de Oficios, Grupo E/AP: Agrupaciones Profesionales",
    "nivel": "literal"
   },
   "grupo": {
@@ -31,27 +31,32 @@
   },
   "sistema": {
    "valor": "concurso-oposición",
-   "cita": "provisión como funcionario de carrera, por el procedimiento de concurso-oposición",
+   "cita": "El procedimiento de selección será el de concurso-oposición, consistente en la realización de dos ejercicios",
    "nivel": "literal"
   },
   "plazas_total": {
    "valor": 2,
-   "cita": "dos plazas de Peón de Parques y Jardines vacantes en la Plantilla de Personal Funcionario",
+   "cita": "dos plazas de Peón de parques y jardines vacantes en la Plantilla",
    "nivel": "literal"
   },
   "plazas_turno_libre": {
    "valor": 2,
-   "cita": "dos plazas de Peón de Parques y Jardines vacantes en la Plantilla de Personal Funcionario",
+   "cita": "provisión, con funcionario de carrera, de dos plazas de Peón de Parques y Jardines",
    "nivel": "literal"
   },
   "titulacion": {
    "valor": "Certificado de Escolaridad o equivalente",
-   "cita": "Estar en posesión de una titulación mínima de Certificado de Escolaridad o equivalente, expedido por el Ministerio de Educación",
+   "cita": "titulación mínima de Certificado de Escolaridad o equivalente, expedido por el Ministerio de Educación",
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Nacionalidad española o de Estado miembro de la UE (o de aplicación la libre circulación de trabajadores); tener cumplidos 16 años y no exceder la edad de jubilación forzosa; capacidad funcional; no haber sido separado del servicio público ni inhabilitado.",
+   "valor": "Nacionalidad española o de Estado de la UE (o cónyuge/descendientes en los supuestos legales); tener cumplidos 16 años y no exceder la edad de jubilación forzosa; capacidad funcional; no haber sido separado del servicio ni inhabilitado",
    "cita": "Tener cumplidos 16 años y no exceder, en su caso, de la edad máxima de jubilación forzosa.",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "No se exige conocimiento de lengua cooficial; se exige prueba de castellano a aspirantes de Estados cuyo idioma oficial no sea el castellano",
+   "cita": "realizarán con carácter previo a la realización del primer ejercicio de la fase de oposición una prueba",
    "nivel": "literal"
   },
   "tasa_euros": {
@@ -59,56 +64,55 @@
    "cita": "que se fijan en 14,60 euros",
    "nivel": "literal"
   },
+  "exenciones_tasa": {
+   "valor": "No constan en el texto",
+   "cita": "Haber abonado la Tasa a la que se refiere la Base 3.3.",
+   "nivel": "literal"
+  },
   "plazo_solicitudes": {
-   "valor": "Veinte días hábiles desde el siguiente al de la publicación del extracto de la convocatoria en el Boletín Oficial del Estado",
-   "cita": "dentro del plazo de veinte días hábiles contados a partir del siguiente al de la publicación del extracto de la convocatoria en el Boletín Oficial del Estado",
+   "valor": "veinte días hábiles desde el siguiente al de la publicación del extracto de la convocatoria en el BOE",
+   "cita": "dentro del plazo de veinte días hábiles contados a partir del siguiente al de la publicación del extracto",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Instancia dirigida a la Alcaldesa-Presidenta, en registros del Ayuntamiento, Correos (sobre abierto) o procedimiento del artículo 16 de la Ley 39/2015",
+   "valor": "Instancia dirigida a la Alcaldesa-Presidenta, según modelo Anexo II, presentada en registros del Ayuntamiento u otros según Ley 39/2015 y Correos",
    "cita": "Las personas interesadas podrán presentar instancia dirigida a la Alcaldesa-Presidenta del Ayuntamiento de Arnedo",
-   "nivel": "literal"
-  },
-  "publicaciones": {
-   "valor": "Boletín Oficial de La Rioja, Tablón de anuncios y sede electrónica del Ayuntamiento de Arnedo",
-   "cita": "se publicará en el Boletín Oficial de La Rioja (BOR), en el Tablón de Anuncios y en la Sede Electrónica del Ayuntamiento de Arnedo",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Primer ejercicio: test teórico-práctico de 25 preguntas (75 minutos), hasta 10 puntos, eliminatorio con mínimo de 5",
-    "Segundo ejercicio: prueba práctica sobre materias específicas (máximo 2,5 horas), hasta 10 puntos, eliminatorio con mínimo de 5",
-    "Fase de concurso de méritos, hasta 10 puntos, no eliminatoria"
+    "Primer ejercicio: tipo test de 25 preguntas con cuatro respuestas, 75 minutos, máximo 10 puntos",
+    "Segundo ejercicio: prueba práctica sobre materias específicas, máximo 2,5 horas, máximo 10 puntos"
    ],
    "cita": "Consistirá en el desarrollo de un ejercicio obligatorio teórico-práctico en formato tipo test de 25 preguntas",
    "nivel": "literal"
   },
+  "meritos": {
+   "valor": "Méritos profesionales hasta 7 puntos (servicios en Administración 0,15 por mes, máximo 4; empresa privada 0,10 por mes, máximo 3); formación hasta 1,5 puntos",
+   "cita": "Servicios prestados en la Administración Pública en una plaza/puesto de Peón de Parques y Jardines",
+   "nivel": "literal"
+  },
   "bolsa": {
-   "valor": "sí, lista de espera para nombramiento de funcionarios interinos de Peón de parques y jardines, con vigencia inicial de cinco años",
-   "cita": "Concluido el proceso selectivo, el Tribunal calificador procederá a confeccionar una lista de espera de nombramiento de funcionarios interinos",
+   "valor": "sí, lista de espera para nombramiento de funcionarios interinos para el puesto de Peón de parques y jardines, con validez inicial de cinco años",
+   "cita": "Concluido el proceso selectivo, el Tribunal calificador procederá a confeccionar una lista de espera",
    "nivel": "literal"
   },
   "practicas_o_curso": {
-   "valor": "Periodo de prueba de un mes para las relaciones de interinidad derivadas de la bolsa",
-   "cita": "las relaciones de interinidad a que dé lugar la bolsa formada conforme a este procedimiento, se someterán a un periodo de prueba de un mes",
+   "valor": "No constan en el texto; se somete a periodo de prueba de un mes solo a las relaciones de interinidad derivadas de la bolsa",
+   "cita": "las relaciones de interinidad a que dé lugar la bolsa formada conforme a este procedimiento, se someterán a un periodo de prueba de un mes.",
    "nivel": "literal"
+  },
+  "temas": {
+   "valor": 7,
+   "cita": "Tema 7.- Seguridad e higiene: Uniformidad, elementos de higiene, elementos de seguridad en el uso de la maquinaria. Condiciones de seguridad de las herramientas",
+   "nivel": "contado"
   }
  },
  "rechazados": {
-  "exenciones_tasa": {
+  "publicaciones": {
    "motivo": "cita_no_literal",
-   "valor": "No constan en el texto.",
-   "cita": "Solo se menciona el pago de la tasa por derechos de examen de 14,60 euros."
-  },
-  "temas": {
-   "motivo": "valor_no_en_cita",
-   "valor": 7,
-   "cita": "Tema 1.- Tareas de jardinería. Tejidos vegetales. El suelo: función, principales labores de mantenimiento."
-  },
-  "meritos": {
-   "motivo": "cita_no_literal",
-   "valor": "Servicios en la Administración en plaza de Peón de Parques y Jardines (0,15 puntos/mes, máximo 4); servicios en empresa privada (0,10 puntos/mes, máximo 3); cursos de formación (máximo 1,5); titulación superior (1,5). Máximo total 10 puntos.",
-   "cita": "Servicios prestados en la Administración Pública en una plaza/puesto de Peón de Parques y Jardines a razón de 0,15 puntos por cada mes"
+   "valor": "Boletín Oficial de La Rioja, Tablón de anuncios y sede electrónica del Ayuntamiento de Arnedo",
+   "cita": "se publicarán en el Boletín Oficial de La Rioja (BOR), en el Tablón de Anuncios y en la Sede Electrónica del Ayuntamiento de Arnedo"
   }
  }
 }

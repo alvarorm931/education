@@ -5,43 +5,26 @@
   "fuente": "BOP-TOLEDO",
   "url": "https://bop.diputoledo.es/webEbop/DocGet?id=23079302;0&insert_number=4005&insert_year=2023",
   "fecha": "2023-07-19",
-  "huella": "8482878455c3d218d6256439ba375d3be40729f0a3acffb3966d47b99c601b3c"
+  "huella": "a4512cd0c64056f552bd089cc6126575eefe9f48fa13d8a97383ef66f9526f5d"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:59:10+00:00",
- "lote": "msgbatch_012nGabRM1G4b7cEKJh1Bcx1",
+ "extraido": "2026-10-31T15:25:45+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
-   "valor": [
-    "Auxiliar Administrativo"
-   ],
-   "cita": "una plaza de Auxiliar Administrativo a tiempo completo",
+   "valor": "Auxiliar Administrativo",
+   "cita": "una plaza de Auxiliar Administrativo del Excmo. Ayuntamiento de Noblejas, en régimen de personal laboral fijo",
    "nivel": "literal"
   },
   "grupo": {
    "valor": "C2",
-   "cita": "BASES GENERALES POR LAS QUE SE REGIRÁ LA CONVOCATORIA DE UNA PLAZA DE AUXILIAR ADMINISTRATIVO",
+   "cita": "Auxiliar Administrativo del Excmo. Ayuntamiento de Noblejas, en régimen de personal laboral fijo",
    "nivel": "literal"
   },
   "vinculo": {
    "valor": "personal laboral fijo",
-   "cita": "en régimen de personal laboral fijo, mediante proceso extraordinario de consolidación",
-   "nivel": "literal"
-  },
-  "sistema": {
-   "valor": "concurso",
-   "cita": "mediante el sistema de acceso libre y a través del procedimiento de Concurso de Méritos",
-   "nivel": "literal"
-  },
-  "plazas_total": {
-   "valor": 1,
-   "cita": "una plaza de Auxiliar Administrativo a tiempo completo, correspondiente a la Oferta",
-   "nivel": "literal"
-  },
-  "plazas_turno_libre": {
-   "valor": 1,
-   "cita": "para cubrir, por turno libre y mediante concurso, una plaza de auxiliar administrativo",
+   "cita": "en régimen de personal laboral fijo, mediante proceso extraordinario de consolidación de empleo temporal",
    "nivel": "literal"
   },
   "titulacion": {
@@ -50,17 +33,12 @@
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Nacionalidad española o de un Estado miembro de la UE; tener cumplidos 16 años y no exceder la edad de jubilación forzosa; no haber sido separado del servicio por expediente disciplinario; no padecer enfermedad que impida las tareas; conocimiento adecuado del castellano",
-   "cita": "Tener nacionalidad española o nacional de un Estado miembro de la Unión Europea",
+   "valor": "Nacionalidad española o de Estado miembro de la UE; 16 años cumplidos y no exceder edad de jubilación; no separación disciplinaria ni inhabilitación; no padecer enfermedad incapacitante; conocimiento adecuado del castellano",
+   "cita": "Tener cumplidos dieciséis años y no exceder, en su caso, de la edad máxima de jubilación forzosa",
    "nivel": "literal"
   },
   "tasa_euros": {
    "valor": 20,
-   "cita": "que ascienden a veinte euros (20,00 €) conforme a la Ordenanza fiscal reguladora",
-   "nivel": "literal"
-  },
-  "exenciones_tasa": {
-   "valor": "No consta en las bases",
    "cita": "que ascienden a veinte euros (20,00 €) conforme a la Ordenanza fiscal reguladora de la Tasa por derechos de examen",
    "nivel": "literal"
   },
@@ -70,17 +48,32 @@
    "nivel": "literal"
   },
   "meritos": {
-   "valor": "Experiencia profesional máximo 7 puntos (servicios en el Ayuntamiento, otras entidades locales y Administraciones); experiencia en programa Absis máximo 3 puntos; formación y otros méritos máximo 10 puntos",
-   "cita": "Méritos profesionales (Máximo 10 puntos). A.1) Experiencia Profesional: máximo 7 puntos.",
+   "valor": "Experiencia profesional hasta 7 puntos (0,053 por mes en el Ayuntamiento de Noblejas, 0,027 en otras entidades locales, 0,020 en otras Administraciones); experiencia en programa Absis hasta 3 puntos; formación y otros méritos hasta 10 puntos",
+   "cita": "A) Méritos profesionales (Máximo 10 puntos). A.1) Experiencia Profesional: máximo 7 puntos.",
    "nivel": "literal"
   },
-  "bolsa": {
+  "practicas_o_curso": {
    "valor": "no",
-   "cita": "La calificación final será la suma de las puntuaciones obtenidas en la Fase de Concurso",
+   "cita": "Las contrataciones se harán efectivas en el plazo de un mes, a contar desde el día siguiente",
    "nivel": "literal"
   }
  },
  "rechazados": {
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso",
+   "cita": "por el sistema de concurso de méritos, dentro de un proceso extraordinario"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 1,
+   "cita": "convocar, por turno libre y mediante concurso, una plaza de auxiliar administrativo a tiempo completo"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "mediante el sistema de acceso libre y a través del procedimiento de Concurso de Méritos"
+  },
   "plazo_solicitudes": {
    "motivo": "cita_no_literal",
    "valor": "20 días hábiles contados a partir del siguiente a la publicación del anuncio de convocatoria en el Boletín Oficial del Estado",
@@ -88,15 +81,20 @@
   },
   "presentacion": {
    "motivo": "cita_no_literal",
-   "valor": "Registro General del Ayuntamiento, registro electrónico, oficinas de Correos, representaciones diplomáticas y oficinas de asistencia en materia de registros",
+   "valor": "Registro General del Ayuntamiento, registro electrónico, oficinas de Correos, representaciones diplomáticas o consulares y oficinas de asistencia en materia de registros",
    "cita": "Las instancias se presentarán en el Registro General del Ayuntamiento, dentro del plazo de 20 días hábiles"
   },
   "ejercicios": {
    "motivo": "cita_no_literal",
    "valor": [
-    "Fase de concurso: valoración de méritos profesionales (máximo 10 puntos) y de formación y otros méritos (máximo 10 puntos)"
+    "Concurso de méritos: valoración de méritos alegados con el baremo establecido"
    ],
-   "cita": "El procedimiento de selección se realizará a través del Sistema de Concurso de méritos"
+   "cita": ""
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "no",
+   "cita": "Terminado el Concurso, el Tribunal Calificador hará pública la relación de personas aspirantes aprobadas"
   }
  }
 }

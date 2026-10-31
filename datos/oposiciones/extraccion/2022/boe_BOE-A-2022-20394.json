@@ -5,20 +5,13 @@
   "fuente": "BOP-ALICANTE",
   "url": "https://www.dip-alicante.es/bop2/pdftotal/2022/10/21_201/2022_007518.pdf",
   "fecha": "2022-10-21",
-  "huella": "b8f9ad38d722de0f4a13f450be1187a4c9bceceff2575bdec86b22d3a2c313ea"
+  "huella": "b6db0e5449cb288b8e94b69b541f33d4bccae508a918faff735bc7bae9fc90a3"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:57:05+00:00",
- "lote": "msgbatch_01B4ETF5xB4buYCHqPiHTXzF",
+ "extraido": "2026-10-31T15:25:28+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
-  "denominacion": {
-   "valor": [
-    "Técnico/a de Gestión de Recursos Humanos"
-   ],
-   "cita": "PARA LA PROVISIÓN, EN PROPIEDAD, DE UNA PLAZA DE TÉCNICO/A DE GESTIÓN DE RECURSOS HUMANOS",
-   "nivel": "literal"
-  },
   "sistema": {
    "valor": "concurso-oposición",
    "cita": "El procedimiento selectivo será el de CONCURSO-OPOSICIÓN.",
@@ -29,37 +22,54 @@
    "cita": "el importe de 40 euros en concepto de derechos de examen",
    "nivel": "literal"
   },
+  "publicaciones": {
+   "valor": "BOP de Alicante (bases), BOE y DOGV (anuncio extracto), tablón de anuncios del Ayuntamiento y página web municipal (sucesivos anuncios)",
+   "cita": "Los sucesivos anuncios relativos a la convocatoria se publicarán únicamente en el Tablón de Anuncios del Ayuntamiento y su página web.",
+   "nivel": "literal"
+  },
+  "temas": {
+   "valor": 70,
+   "cita": "Tema 70. La función directiva. Sus particularidades en la gestión pública.",
+   "nivel": "literal"
+  },
   "meritos": {
-   "valor": "Servicios prestados hasta 3 puntos (0,25 por mes como Técnico de Gestión); titulación académica hasta 0,5 puntos; cursos de formación hasta 2 puntos; conocimiento del valenciano hasta 1 punto; máximo total de la fase de concurso 6,5 puntos.",
+   "valor": "Servicios prestados como funcionario (máx. 3 pts, 0,25 por mes); titulación académica adicional (máx. 0,5); cursos de formación (máx. 2); conocimiento del valenciano (máx. 1); fase de concurso máxima 6,5 puntos",
    "cita": "La puntuación máxima de esta fase será de 6,5 puntos.",
    "nivel": "literal"
   },
-  "practicas_o_curso": {
-   "valor": "No consta en el texto",
-   "cita": "Transcurrido el plazo de presentación de documentos, la Alcaldía procederá al nombramiento, como funcionario/a de carrera",
-   "nivel": "sin_signos"
+  "bolsa": {
+   "valor": "sí, bolsa de trabajo para nombramientos interinos, vigencia de tres años prorrogables tácitamente",
+   "cita": "Constituida la bolsa de trabajo, quedarán anuladas las anteriores si las hubiera",
+   "nivel": "literal"
   }
  },
  "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Técnico/a de Gestión de Recursos Humanos"
+   ],
+   "cita": "BASES PARA LA COBERTURA EN PROPIEDAD DE UNA PLAZA DE TÉCNICO/A DE GESTIÓN DE RECURSOS HUMANOS"
+  },
   "grupo": {
    "motivo": "cita_no_literal",
    "valor": "A2",
-   "cita": "perteneciente a la Escala de Administración Especial, Subescala Técnica, subgrupo A2"
+   "cita": "Escala de Administración Especial, Subescala Técnica, subgrupo A2."
   },
   "vinculo": {
    "motivo": "cita_no_literal",
    "valor": "funcionario de carrera",
-   "cita": "la provisión, en propiedad, de una (1) plaza DE TÉCNICO DE GESTIÓN DE RECURSOS HUMANOS"
+   "cita": "provisión, en propiedad, de una (1) plaza DE TÉCNICO DE GESTIÓN DE RECURSOS HUMANOS"
   },
   "plazas_total": {
    "motivo": "cita_no_literal",
    "valor": 1,
-   "cita": "para la provisión, en propiedad, de una (1) plaza DE TÉCNICO DE GESTIÓN"
+   "cita": "para la provisión, en propiedad, de una (1) plaza DE TÉCNICO DE GESTIÓN DE RECURSOS HUMANOS"
   },
   "plazas_turno_libre": {
    "motivo": "valor_no_en_cita",
    "valor": 1,
-   "cita": "CONCURSO OPOSICIÓN TURNO LIBRE"
+   "cita": "SISTEMA DE CONCURSO OPOSICIÓN TURNO LIBRE"
   },
   "titulacion": {
    "motivo": "cita_no_literal",
@@ -68,53 +78,38 @@
   },
   "otros_requisitos": {
    "motivo": "cita_no_literal",
-   "valor": "Nacionalidad española o de Estado miembro de la UE o aplicación de libre circulación; no inhabilitación para funciones públicas; carecer de antecedentes penales; haber cumplido 16 años y no exceder edad de jubilación forzosa; capacidad funcional para el puesto.",
-   "cita": "Haber cumplido dieciséis años y no exceder, en su caso, la edad máxima de jubilación forzosa."
-  },
-  "idioma_cooficial": {
-   "motivo": "cita_no_literal",
-   "valor": "Valenciano, con certificados de nivel A1 a C2 valorados en la fase de concurso",
-   "cita": "Por conocimiento del valenciano: (hasta un máximo de 1 punto)"
+   "valor": "Nacionalidad española o de Estado miembro de la UE (o aplicación de libre circulación); no estar inhabilitado ni separado del servicio; carecer de antecedentes penales; haber cumplido 16 años y no exceder la edad de jubilación forzosa; capacidad funcional para el puesto.",
+   "cita": "Carecer de antecedentes penales. Haber cumplido dieciséis años y no exceder, en su caso, la edad máxima de jubilación forzosa."
   },
   "exenciones_tasa": {
    "motivo": "cita_no_literal",
-   "valor": "No consta exención ni reducción de la tasa en el texto",
-   "cita": "El impago de los derechos de examen dará lugar a la exclusión de la persona aspirante"
+   "valor": "Las personas aspirantes con discapacidad igual o superior al 33 por 100 son admitidas en igualdad de condiciones; el texto no indica exención de tasa.",
+   "cita": "serán admitidas las personas con discapacidad en igualdad de condiciones que los demás aspirantes."
   },
   "plazo_solicitudes": {
    "motivo": "cita_no_literal",
    "valor": "20 días hábiles desde el día siguiente a la publicación de la convocatoria en el Boletín Oficial del Estado",
-   "cita": "durante el plazo de 20 días hábiles contados a partir del día siguiente al de la publicación de la convocatoria"
+   "cita": "durante el plazo de 20 días hábiles contados a partir del día siguiente al de la publicación de la convocatoria en el Boletín Oficial del Estado."
   },
   "presentacion": {
    "motivo": "cita_no_literal",
-   "valor": "Modelo normalizado de instancia dirigido a la Alcaldía-Presidencia, por Registro General, sede electrónica municipal o lugares del art. 16 de la Ley 39/2015",
+   "valor": "Registro General de Entrada del Ayuntamiento, sede electrónica municipal o lugares del art. 16 de la Ley 39/2015, mediante modelo normalizado de instancia",
    "cita": "deberá presentarse por Registro General de Entrada del Ayuntamiento de Castalla o sede electrónica municipal"
-  },
-  "publicaciones": {
-   "motivo": "cita_no_literal",
-   "valor": "Tablón de Anuncios del Ayuntamiento y página web municipal (www.castalla.es); BOP de Alicante, BOE y DOGV para bases y anuncio extracto",
-   "cita": "En el Tablón de Anuncios del Ayuntamiento y en la página web municipal se publicarán íntegramente las Bases"
   },
   "ejercicios": {
    "motivo": "cita_no_literal",
    "valor": [
-    "Primer ejercicio: test de 50 preguntas con cuatro respuestas, una hora, obligatorio y eliminatorio (mínimo 5 puntos)",
-    "Segundo ejercicio: desarrollo escrito de dos temas extraídos al azar, dos horas, obligatorio y eliminatorio (mínimo 5 puntos)",
-    "Tercer ejercicio: supuesto práctico de Recursos Humanos, tres horas, obligatorio y eliminatorio (mínimo 5 puntos)",
-    "Fase de concurso: máximo 6,5 puntos, solo para quienes superen la oposición"
+    "Primer ejercicio: test de 50 preguntas con cuatro respuestas en una hora, obligatorio y eliminatorio (mínimo 5 puntos)",
+    "Segundo ejercicio: desarrollo escrito de dos temas en dos horas, obligatorio y eliminatorio (mínimo 5 puntos)",
+    "Tercer ejercicio: supuesto práctico en tres horas, obligatorio y eliminatorio (mínimo 5 puntos)",
+    "Fase de concurso: méritos, máximo 6,5 puntos"
    ],
-   "cita": "Consistirá en contestar por escrito, durante un periodo máximo de una hora, un cuestionario de 50 preguntas"
+   "cita": "Consistirá en contestar por escrito, durante un periodo máximo de una hora, un cuestionario de 50 preguntas con cuatro respuestas alternativas"
   },
-  "temas": {
-   "motivo": "valor_no_en_cita",
-   "valor": 70,
-   "cita": "Tema1. La Constitución Española de 1978. Estructura y contenido esencial."
-  },
-  "bolsa": {
+  "practicas_o_curso": {
    "motivo": "cita_no_literal",
-   "valor": "sí, bolsa de trabajo para nombramientos interinos, con vigencia de tres años prorrogables tácitamente",
-   "cita": "Formarán parte de la bolsa por el orden de puntuación obtenido aquellos aspirantes que hubieran superado los dos primeros ejercicios"
+   "valor": "no regulado en el texto",
+   "cita": ""
   }
  }
 }

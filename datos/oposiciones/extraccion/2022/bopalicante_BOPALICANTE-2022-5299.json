@@ -1,0 +1,55 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2022-5299",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2022-5299",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2022/07/20_136/2022_005299.pdf",
+  "fecha": "2022-07-20",
+  "huella": "1080ef88d4d59b896d6c846e019fe2f877f76bb2b0275e3d6b7581a2d69f06ef"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T15:25:16+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Secretaría-Intervención Mancomunidad Bajo Segura"
+   ],
+   "cita": "Denominación Secretaría-Intervención Mancomunidad Bajo Segura",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "A1",
+   "cita": "Grupo/Subgrupo A1 Clasificación/Escala/Subescala Secretaría/Interven ción",
+   "nivel": "sin_signos"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "reservado a funcionario de administración local con habilitación de carácter nacional",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Solicitudes presentadas por funcionarios interesados que cumplan los requisitos; bases disponibles en la sede electrónica y Tablón de Anuncios de la Mancomunidad",
+   "cita": "estará a disposición de los interesados en la sede electrónica de esta Mancomunidad",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Sede electrónica y Tablón de Anuncios de la Mancomunidad",
+   "cita": "estará a disposición de los interesados en la sede electrónica de esta Mancomunidad",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso",
+   "cita": "provisión del puesto de trabajo reservado a funcionario de administración local con habilitación"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "10 días para la presentación de solicitudes por parte de los funcionarios interesados",
+   "cita": "Se establece un plazo de 10 días para la presentación de solicitudes por parte de los funcionarios interesados"
+  }
+ }
+}

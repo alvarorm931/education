@@ -1,0 +1,50 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2022-3747",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2022-3747",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2022/06/01_103/2022_003747.pdf",
+  "fecha": "2022-06-01",
+  "huella": "5c8d44195661570a5bb6a7cde811344210084946796016a9c7ad0d79014c9716"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T15:25:37+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
+ "no_son_bases": false,
+ "campos": {
+  "plazo_solicitudes": {
+   "valor": "15 días naturales, contando a partir del siguiente a la publicación del extracto de la convocatoria en el Boletín Oficial de la Provincia",
+   "cita": "El plazo de presentación de instancias será de 15 días naturales, contando a partir del siguiente",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Educadores (Grupo I.3)"
+   ],
+   "cita": "para la creación una Bolsa de Trabajo de Educadores (Grupo I.3) Subsidiaria"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "otro",
+   "cita": "creación una Bolsa de Trabajo de Educadores (Grupo I.3) Subsidiaria de la existente"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "otro",
+   "cita": "Dichas Bases estarán a disposición de los interesados en la página web"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "página web del Ayuntamiento de Villajoyosa, apartado ofertas de empleo",
+   "cita": "Dichas Bases estarán a disposición de los interesados en la página web del Ayuntamiento"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, bolsa de trabajo subsidiaria de la existente, al servicio del O.A.L. Parra Conca",
+   "cita": "creación una Bolsa de Trabajo de Educadores (Grupo I.3) Subsidiaria de la existente, al servicio del O.A.L."
+  }
+ }
+}

@@ -1,0 +1,43 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2022-1132",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2022-1132",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2022/03/04_44/2022_001132.pdf",
+  "fecha": "2022-03-04",
+  "huella": "592a0baf8054c801875a9839df52454966e7f0c323d04515d9c83762c0d0e448"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T15:24:11+00:00",
+ "lote": "msgbatch_01QGBJzFrJk89N3kyh4ZuSEx",
+ "no_son_bases": false,
+ "campos": {
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "provisión en propiedad, mediante el sistema selectivo de concurso-oposición de 2 plazas de Ayudante/a de Albañilería",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 2,
+   "cita": "provisión en propiedad, mediante el sistema selectivo de concurso-oposición de 2 plazas de Ayudante/a de Albañilería",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "AYUDANTE/A DE ALBAÑILERÍA",
+   "cita": "tramitación de plazas de AYUDANTE/A DE ALBAÑILERÍA, pertenecientes a las Ofertas de Empleo Público de 2017 y 2019"
+  },
+  "plazas_turno_libre": {
+   "motivo": "cita_no_literal",
+   "valor": 2,
+   "cita": "por el turno libre, pertenecientes a las Ofertas de Empleo Público de los años 2017, 2019"
+  },
+  "plazas_discapacidad": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "/1280008/ correspondiente a la OPE 2017, queda reservada para el turno de discapacidad."
+  }
+ }
+}

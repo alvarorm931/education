@@ -5,15 +5,17 @@
   "fuente": "BOE",
   "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2025-22903",
   "fecha": "2025-11-12",
-  "huella": "d05e9eefd9e422b0d9f2350f8173c3ebb4329c37b5bd6974902837c1880f7846"
+  "huella": "961b992a9c012d7d38b20d9f3e2ce1461c13660812f98d027d35cf32994dcf6e"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:41:18+00:00",
- "lote": "msgbatch_01UNq3BNhPPHoTK3TEJzun1h",
+ "extraido": "2026-10-31T15:25:16+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
-   "valor": "Escala de Gestión de la Universidad Politécnica de Cartagena",
+   "valor": [
+    "Escala de Gestión de la Universidad Politécnica de Cartagena"
+   ],
    "cita": "convocar pruebas selectivas para el ingreso en la Escala de Gestión, de la Universidad Politécnica de Cartagena",
    "nivel": "literal"
   },
@@ -29,7 +31,7 @@
   },
   "sistema": {
    "valor": "concurso-oposición",
-   "cita": "Se convocan pruebas selectivas para el ingreso en la Escala de Gestión de la Universidad Politécnica de Cartagena (subgrupo A2), por el sistema de concurso-oposición",
+   "cita": "por el sistema de concurso-oposición. El número de plazas ofertadas es de cinco.",
    "nivel": "literal"
   },
   "plazas_total": {
@@ -44,58 +46,70 @@
   },
   "titulacion": {
    "valor": "Graduado, Diplomado, Ingeniero o Arquitecto técnicos o equivalente",
-   "cita": "Estar en posesión o en condiciones de obtener, una vez pagada las tasas del título, la titulación de Graduado, Diplomado, Ingeniero o Arquitecto técnicos",
+   "cita": "la titulación de Graduado, Diplomado, Ingeniero o Arquitecto técnicos o equivalente",
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Nacionalidad española o de Estado de la UE (con los supuestos de libre circulación previstos), tener cumplidos dieciséis años y no exceder la edad máxima de jubilación, capacidad funcional, no estar separado del servicio por expediente disciplinario, y conocimiento adecuado del español",
-   "cita": "Tener cumplidos dieciséis años y no exceder, en su caso, la edad máxima de jubilación.",
+   "valor": "Nacionalidad española, de Estado miembro de la UE o de los previstos por la libre circulación de trabajadores; tener 16 años cumplidos y no exceder la edad máxima de jubilación; capacidad funcional; no inhabilitación; conocimiento adecuado del español.",
+   "cita": "Poseer un conocimiento adecuado del español. En su caso, se podrá exigir la superación de una prueba que lo acredite.",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "No se exige lengua cooficial",
+   "cita": "conocimiento adecuado del español",
    "nivel": "literal"
   },
   "exenciones_tasa": {
-   "valor": "Discapacidad igual o superior al 33 por ciento, familias numerosas de categoría especial, víctimas del terrorismo y víctimas de violencia de género; bonificaciones del 75 % para desempleados y familias numerosas generales, y del 20 % para Carné Joven",
+   "valor": "Exentos: discapacidad igual o superior al 33 %, familias numerosas categoría especial, víctimas del terrorismo y víctimas de violencia de género. Bonificación 75 % desempleo, familias numerosas general; 20 % Carné Joven.",
    "cita": "Estarán exentas del pago de esta tasa las personas que acrediten cualquiera de las siguientes circunstancias",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "quince días hábiles desde el siguiente al de la publicación de la convocatoria en el BOE",
-   "cita": "El plazo de presentación de solicitudes será de quince días hábiles contados a partir del siguiente al de la publicación de esta convocatoria en el «Boletín Oficial del Estado».",
+   "valor": "Quince días hábiles desde el siguiente a la publicación de la convocatoria en el BOE",
+   "cita": "El plazo de presentación de solicitudes será de quince días hábiles contados a partir del siguiente al de la publicación",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Telemáticamente a través de la sede electrónica de la UPCT, trámite «Participación en procesos selectivos», con certificado electrónico, Cl@ve o usuario y contraseña",
+   "valor": "A través de la sede electrónica de la UPCT, trámite «Participación en procesos selectivos», con certificado electrónico, Cl@ve o usuario y contraseña.",
    "cita": "deberán hacerlo presentando la solicitud a través de la sede electrónica de la Universidad Politécnica de Cartagena",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Tablón Oficial Electrónico de la Universidad, dirección https://www.upct.es/convocatorias, y Boletín Oficial de la Región de Murcia para resoluciones de admisión y nombramiento",
-   "cita": "la relación de personas aprobadas se publicará en el Tablón Oficial Electrónico de la Universidad",
+   "valor": "Tablón Oficial Electrónico de la Universidad y web https://www.upct.es/convocatorias; resoluciones también en el BORM",
+   "cita": "se publicará en el «Boletín Oficial de la Región de Murcia» y en la que",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Primer ejercicio (eliminatorio): test de 90 preguntas con cuatro respuestas, 135 minutos, 0 a 30 puntos",
-    "Segundo ejercicio (eliminatorio): supuesto práctico a elegir de dos, lectura pública, 180 minutos, 0 a 30 puntos",
-    "Tercer ejercicio (no eliminatorio): mediación lingüística de español a inglés, nivel B2, 60 minutos, 0 a 10 puntos"
+    "Primer ejercicio: cuestionario de 90 preguntas tipo test, eliminatorio, 0 a 30 puntos",
+    "Segundo ejercicio: supuesto práctico a elegir de dos, lectura pública, eliminatorio, 0 a 30 puntos",
+    "Tercer ejercicio: mediación lingüística en inglés nivel B2, no eliminatorio, 0 a 10 puntos",
+    "Fase de concurso: méritos, máximo 30 puntos"
    ],
    "cita": "Primer ejercicio: Tendrá carácter eliminatorio. Consistirá en contestar a un cuestionario de 90 preguntas tipo test",
    "nivel": "literal"
   },
-  "temas": {
-   "valor": 55,
-   "cita": "Tema 55. Los Recursos Humanos dedicados a la investigación en el ámbito de La Ley 14/2011",
-   "nivel": "literal"
-  },
   "meritos": {
-   "valor": "Experiencia profesional de los últimos cinco años, máximo 30 puntos; titulación superior a la exigida (MECES), máximo 3 puntos; fase de concurso máxima de 30 puntos",
-   "cita": "La puntuación máxima de esta fase será de 30 puntos y constituirá el 30 % del total de la puntuación de la prueba selectiva.",
+   "valor": "Experiencia profesional últimos cinco años, máximo 30 puntos; titulación superior (MECES), máximo 3 puntos.",
+   "cita": "Experiencia profesional durante los últimos cinco años, con un máximo de 30 puntos",
    "nivel": "literal"
   },
   "bolsa": {
-   "valor": "sí, lista de espera para necesidades urgentes de interinidades hasta nuevas pruebas selectivas",
-   "cita": "Con el fin de atender las necesidades urgentes que se produzcan hasta la celebración de nuevas pruebas selectivas, se procederá a constituir una lista de espera",
+   "valor": "Sí, lista de espera para interinidades ante necesidades urgentes hasta nuevas pruebas selectivas",
+   "cita": "procederá a constituir una lista de espera con las personas aspirantes",
    "nivel": "literal"
+  },
+  "temas": {
+   "valor": 55,
+   "cita": "Tema 55. Los Recursos Humanos dedicados a la investigación en el ámbito de La Ley 14/2011, de 1 de junio, de la Ciencia, la Tecnología y la Innovación. La carre",
+   "nivel": "contado"
   }
  },
- "rechazados": {}
+ "rechazados": {
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 4,
+   "cita": "Del total de plazas convocadas se reserva una para ser cubierta por persona con un grado de discapacidad"
+  }
+ }
 }

@@ -1,0 +1,45 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2022-1905",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2022-1905",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2022/04/04_65/2022_001905.pdf",
+  "fecha": "2022-04-04",
+  "huella": "5dd9ba94010e285ad645fd5fd3e28910d3d70b55eba69905566c910a27105773"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T15:25:37+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
+ "no_son_bases": false,
+ "campos": {
+  "plazas_total": {
+   "valor": 7,
+   "cita": "CON DOTACIÓN DE SIETE PLAZAS FIJAS EN PUESTO DE TRABAJO DE PEÓN MULTISERVICIOS",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "diez días naturales contados a partir del día siguiente al de la publicación del anuncio de la convocatoria en el Boletín Oficial de la Provincia de Alicante",
+   "cita": "El plazo de presentación de solicitudes para tomar parte de la citada prueba selectiva será de diez días naturales",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Peón multiservicios"
+   ],
+   "cita": "BASES PARA LA CONSTITUCIÓN DE PROCESO SELECTIVO PARA EL INGRESO COMO PERSONAL FIJO CON DOTACIÓN DE SIETE PLAZAS DE PEÓN MULTISERVICIOS"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "personal laboral fijo",
+   "cita": "INGRESO COMO PERSONAL FIJO CON DOTACIÓN DE SIETE PLAZAS DE PEÓN MULTISERVICIOS"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Tablón de Edictos de la sede electrónica del Ayuntamiento de Guardamar del Segura y página web del Ayuntamiento de Guardamar del Segura (www.guardamardelsegura.es)",
+   "cita": "estará a disposición de los interesados en el Tablón de Edictos de la sede electrónica del Ayuntamiento"
+  }
+ }
+}

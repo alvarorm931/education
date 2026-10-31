@@ -5,97 +5,103 @@
   "fuente": "BOB",
   "url": "http://www.bizkaia.eus/lehendakaritza/Bao_bob/2025/11/12/II-6596_cas.pdf",
   "fecha": "2025-11-12",
-  "huella": "3248673b3cf9c31fd92bf3ef26137b93fc6abafeca92bdc2bd370ad54b6b2162"
+  "huella": "490b8c1091bc42341827143d4390483a3d6206a92202e93cf78b2935b018d220"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:42:40+00:00",
- "lote": "msgbatch_01W17mR271uYfWYL6CuSdriL",
+ "extraido": "2026-10-31T15:25:20+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
-   "valor": "Operario",
-   "cita": "Denominación Operario Nº de vacantes 1 Sistema de selección Concurso -oposición",
+   "valor": "Operario/a",
+   "cita": "Bases que han de regir la convocatoria del proceso selectivo de una (1) plaza de Operario por el sistema de concurso-oposición libre",
    "nivel": "literal"
   },
   "grupo": {
    "valor": "AP",
-   "cita": "Grupo AP Subgrupo Servicios especiales Escala Administración Especial",
+   "cita": "Grupo AP Subgrupo Servicios especiales Escala Administración Especial Subescala Personal de oficios",
    "nivel": "literal"
   },
   "vinculo": {
    "valor": "funcionario de carrera",
-   "cita": "la provisión como funcionario de carrera, mediante el sistema de concurso-oposición libre",
+   "cita": "provisión como funcionario de carrera, mediante el sistema de concurso-oposición libre, de una plaza de Operario",
    "nivel": "literal"
   },
   "sistema": {
    "valor": "concurso-oposición",
-   "cita": "el sistema de concurso-oposición libre, y la convocatoria de dicho proceso selectivo",
+   "cita": "provisión como funcionario de carrera, mediante el sistema de concurso-oposición libre, de una plaza de Operario",
    "nivel": "literal"
   },
   "plazas_total": {
    "valor": 1,
-   "cita": "Aprobar las Bases reguladoras de las pruebas selectivas para proveer en propiedad una plaza vacante de Operario/Operaria",
-   "nivel": "literal"
-  },
-  "plazas_turno_libre": {
-   "valor": 1,
-   "cita": "una plaza vacante de Operario/Operaria por turno libre mediante concurso oposición",
+   "cita": "Nº de vacantes 1 Sistema de selección Concurso -oposición",
    "nivel": "literal"
   },
   "titulacion": {
    "valor": "Graduado escolar",
-   "cita": "Estar en posesión del Título de Graduado Escolar. Las personas aspirantes con titulaciones",
+   "cita": "Titulación exigida Graduado escolar Permiso de conducir B Perfil Lingüístico 1",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad de un Estado miembro de la UE o asimilado; cumplir 16 años y no exceder la edad máxima de jubilación forzosa; no haber sido separado del servicio público ni inhabilitado; permiso de conducir B; formular solicitud previa (Anexo II).",
+   "cita": "Estar en posesión del permiso de conducir B.",
    "nivel": "literal"
   },
   "idioma_cooficial": {
-   "valor": "Perfil lingüístico 1 de euskera, sin fecha de preceptividad",
-   "cita": "Perfil Lingüístico 1 Fecha de preceptividad El Tribunal no podrá declarar seleccionados",
+   "valor": "Perfil lingüístico 1 de euskera sin fecha de preceptividad (valorable como mérito, no requisito indispensable)",
+   "cita": "no se considera requisito indispensable para el acceso ni desempeño del mismo, dado que no existe fecha de preceptividad",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "20 días hábiles desde el siguiente a la publicación del extracto en el BOE",
-   "cita": "en el plazo de (20) veinte días hábiles contados a partir del día siguiente al de la publicación del anuncio",
+   "valor": "20 días hábiles desde el día siguiente a la publicación del extracto de la convocatoria en el BOE",
+   "cita": "Deberán presentarse en el plazo de veinte (20) días hábiles a partir del siguiente al de la publicación del extracto de la convocatoria",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Sede electrónica www.derio.eus o presencialmente en el registro Gertuan (Herriko plaza, 3)",
+   "valor": "Sede electrónica www.derio.eus o presencialmente en el registro Gertuan (Herriko plaza, 3, Derio)",
    "cita": "Solicitud electrónica en sede electrónica: www.derio.eus En caso de optar por la presentación electrónica",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Boletín Oficial de Bizkaia, sede electrónica y página web del Ayuntamiento y tablón de anuncios",
-   "cita": "se publicarán en el «Boletín Oficial de Bizkaia» y en la sede electrónica de este Ayuntamiento",
+   "valor": "Boletín Oficial de Bizkaia, sede electrónica www.derio.eus y, en su caso, tablón de anuncios del Ayuntamiento",
+   "cita": "se publicarán en el «Boletín Oficial de Bizkaia» y en la sede electrónica de este Ayuntamiento www.derio.eus",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Primer ejercicio: cuestionario de preguntas tipo test y/o respuestas breves sobre temario general y específico (0-10, eliminatorio con 5)",
-    "Segundo ejercicio: pruebas prácticas relacionadas con el temario específico (0-30, eliminatorio con 15)"
+    "Primer ejercicio: cuestionario de preguntas tipo test y/o respuestas breves sobre temario general y específico (0-10, mínimo 5)",
+    "Segundo ejercicio: prueba práctica escrita o de desempeño sobre temario específico (0-30, mínimo 15)",
+    "Fase de concurso (no eliminatoria): méritos alegados y acreditados, máximo 13 puntos"
    ],
-   "cita": "La fase de oposición consta de dos (2) ejercicios, obligatorios y eliminatorios para todas las personas aspirantes.",
+   "cita": "Consistirá en resolver una o varias pruebas prácticas, que podrán materializarse tanto por escrito, como en algún supuesto de desempeño",
    "nivel": "literal"
   },
   "meritos": {
-   "valor": "Experiencia profesional hasta 6 puntos; formación complementaria hasta 4 puntos; perfil lingüístico 1 de euskera 3 puntos; máximo total de la fase de concurso 13 puntos",
+   "valor": "Experiencia profesional hasta 6 puntos (1 punto por año completo de servicios en oficios de brigada); formación complementaria hasta 4 puntos (0,06 puntos/hora de cursos hasta 3, y 1 punto carné C); perfil lingüístico 1 de euskera 3 puntos. Máximo fase de concurso 13 puntos.",
    "cita": "La puntuación máxima de la fase de concurso de méritos no superará los 13 puntos.",
    "nivel": "literal"
   },
   "bolsa": {
-   "valor": "Sí, bolsa de trabajo para necesidades temporales de personal, vigencia de tres años prorrogable",
+   "valor": "Sí, bolsa de trabajo para cubrir necesidades temporales de personal, vigencia de tres años prorrogable anualmente",
    "cita": "Del resultado del presente proceso selectivo se confeccionará bolsa de trabajo",
    "nivel": "literal"
   }
  },
  "rechazados": {
-  "otros_requisitos": {
+  "plazas_turno_libre": {
    "motivo": "cita_no_literal",
-   "valor": "Nacionalidad de Estado miembro UE o aplicable libre circulación; capacidad funcional; tener 16 años y no exceder la edad de jubilación forzosa; permiso de conducir B.",
-   "cita": "Estar en posesión del permiso de conducir B. No hallarse incurso en causa legal de incapacidad o incompatibilidad"
+   "valor": 1,
+   "cita": "Operario por turno libre mediante concurso oposición"
   },
   "temas": {
-   "motivo": "cita_no_literal",
+   "motivo": "valor_no_en_cita",
    "valor": 15,
-   "cita": "ANEXO II TEMARIO ESPECÍFICO Tema 5 ... Tema 15: Prevención de Riesgos Laborales"
+   "cita": "Anexo I TEMARIO GENERAL Tema 1: La Constitución Española de 1978: Principios generales."
+  },
+  "practicas_o_curso": {
+   "motivo": "cita_no_literal",
+   "valor": "No consta",
+   "cita": "Toma de posesión: plazo de un (1) mes a contar desde el día siguiente al de la notificación del nombramiento."
   }
  }
 }

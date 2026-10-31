@@ -1,0 +1,43 @@
+{
+ "proceso": "boib:BOIB-2022-657066",
+ "documento": {
+  "id": "boib:BOIB-2022-657066",
+  "fuente": "BOIB",
+  "url": "https://www.caib.es/eboibfront/es/2022/11511/657066/resolucion-de-10-de-enero-de-2022-de-la-universida",
+  "fecha": "2022-01-15",
+  "huella": "9be48011d125f38760aeb86ad1b0cd4f19a625bb9e2ebcf28505dd0251c290f5"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T15:24:10+00:00",
+ "lote": "msgbatch_01QGBJzFrJk89N3kyh4ZuSEx",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "convocatoria a concurso de acceso en el Boletín Oficial del Estado de las plazas de los cuerpos de funcionarios docentes universitarios",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "comunica la convocatoria a concurso de acceso en el Boletín Oficial del Estado",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días naturales a partir del siguiente al de la publicación de esta convocatoria en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes será de veinte días naturales a partir del siguiente",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial del Estado",
+   "cita": "Las bases íntegras de la convocatoria aparecerán publicadas en el Boletín Oficial del Estado.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 17,
+   "cita": "Número de concurso: 1/2022 hasta Número de concurso: 17/2022"
+  }
+ }
+}

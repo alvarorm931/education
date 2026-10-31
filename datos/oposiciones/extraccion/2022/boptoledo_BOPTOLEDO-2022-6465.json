@@ -5,11 +5,11 @@
   "fuente": "BOP-TOLEDO",
   "url": "https://bop.diputoledo.es/webEbop/DocGet?id=22124844;0&insert_number=6465&insert_year=2022",
   "fecha": "2022-12-22",
-  "huella": "8d8e40bfe299deba0c5c4ada7fdb9fb087f80e553f75c19d7b2810b95cbe9163"
+  "huella": "9c88d5386d38a989996b2514cddde12196579e328b69192cc592d2f56ec061c4"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:56:05+00:00",
- "lote": "msgbatch_014eT3dLLVopBnuVgQ4syWD9",
+ "extraido": "2026-10-31T15:25:45+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
@@ -19,34 +19,34 @@
    "cita": "CATEGORÍA LABORAL VACANTES JORNADA FORMA PROVISIÓN Auxiliar Ayuda a Domicilio 12 PARCIAL CONCURSO",
    "nivel": "literal"
   },
-  "vinculo": {
-   "valor": "personal laboral fijo",
-   "cita": "la regulación de la convocatoria y proceso de selección de personal funcionario de carrera y personal laboral fijo",
-   "nivel": "literal"
-  },
   "plazas_total": {
    "valor": 12,
-   "cita": "Auxiliar Ayuda a Domicilio 12 PARCIAL CONCURSO",
+   "cita": "CATEGORÍA LABORAL VACANTES JORNADA FORMA PROVISIÓN Auxiliar Ayuda a Domicilio 12 PARCIAL CONCURSO",
    "nivel": "literal"
   },
   "titulacion": {
-   "valor": "Cualificación profesional de atención sociosanitaria a personas en el domicilio, creada por el Real Decreto 295/2004, de 20 de febrero, u otras titulaciones o certificados de profesionalidad admitidos",
-   "cita": "Cualificación profesional de atención sociosanitaria a personas en el domicilio, creada por el Real Decreto 295/2004, de 20 de febrero.",
+   "valor": "Cualificación profesional de atención sociosanitaria a personas en el domicilio, creada por el Real Decreto 295/2004, de 20 de febrero",
+   "cita": "Cualificación profesional de atención sociosanitaria a personas en el domicilio, creada por el Real Decreto 295/2004",
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Nacionalidad española (sin perjuicio del art. 57 TREBEP); capacidad funcional; tener cumplidos dieciséis años y no exceder de la edad máxima de jubilación forzosa; no haber sido separado del servicio por expediente disciplinario ni inhabilitado",
+   "valor": "Nacionalidad española (con excepciones del art. 57 TREBEP), capacidad funcional, tener 16 años cumplidos y no exceder la edad máxima de jubilación forzosa, no haber sido separado del servicio ni inhabilitado.",
    "cita": "Tener la nacionalidad española sin perjuicio de lo dispuesto en el artículo 57",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "veinte días hábiles contados a partir del día siguiente al de la publicación del anuncio de la convocatoria en el Boletín Oficial del Estado",
-   "cita": "en el plazo de veinte días hábiles contados a partir del día siguiente al de la publicación del anuncio",
+   "valor": "Veinte días hábiles contados a partir del día siguiente al de la publicación del anuncio de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "que será de veinte días hábiles a contar desde el día siguiente a la publicación de este anuncio en el Boletín Oficial del Estado",
    "nivel": "literal"
   },
   "presentacion": {
    "valor": "Registro Electrónico General del Ayuntamiento o en los lugares previstos en el artículo 16.4 de la Ley 39/2015",
    "cita": "se presentarán en el Registro Electrónico General de este Ayuntamiento o en alguno de los lugares previstos",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia de Toledo, sede electrónica del Ayuntamiento y, en su caso, tablón de anuncios",
+   "cita": "Asimismo, se publicarán en la sede electrónica del este Ayuntamiento",
    "nivel": "literal"
   },
   "ejercicios": {
@@ -56,27 +56,27 @@
    "cita": "El procedimiento de selección de las personas aspirantes se realizará a través del Sistema de Concurso de méritos",
    "nivel": "literal"
   },
-  "bolsa": {
-   "valor": "sí, para quienes no superen el proceso pero obtengan 30 puntos o más, para formar bolsas de personal interino o laboral temporal",
-   "cita": "Las personas que no superen el proceso selectivo, se incluirán en bolsas de personal funcionario interino o de personal laboral temporal",
+  "meritos": {
+   "valor": "Méritos profesionales (máx. 60): 0,40 puntos por mes en la plaza convocante, 0,20 en otra entidad local, 0,10 en el resto del sector público. Formación (máx. 40): cursos según horas (0,03 a 0,05 por hora); titulación superior a la exigida 5,00 puntos.",
+   "cita": "Por cada mes de servicios a tiempo completo, en la plaza a cubrir en la administración convocante. 0,40",
    "nivel": "literal"
   },
   "practicas_o_curso": {
-   "valor": "periodo de prueba según la normativa laboral",
+   "valor": "Periodo de prueba que corresponda según la normativa laboral",
    "cita": "Podrá establecerse la superación del período de prueba que corresponda de acuerdo con la normativa laboral",
    "nivel": "literal"
   }
  },
  "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "personal laboral fijo",
+   "cita": "proceso de estabilización de empleo temporal, para cubrir varias plazas de personal laboral para el Ayuntamiento"
+  },
   "sistema": {
    "motivo": "cita_no_literal",
    "valor": "concurso",
-   "cita": "Las presentes bases regulan el proceso mediante sistema de concurso de méritos"
-  },
-  "plazas_turno_libre": {
-   "motivo": "cita_no_literal",
-   "valor": 12,
-   "cita": "Dado el número de vacantes, no se prevé la reserva de un cupo para ser cubiertas entre personas"
+   "cita": "mediante sistema de concurso, se abre el plazo de presentación de solicitudes"
   },
   "plazas_discapacidad": {
    "motivo": "cita_no_literal",
@@ -88,10 +88,10 @@
    "valor": 20,
    "cita": "que ascienden a veinte euros (20,00 €)"
   },
-  "publicaciones": {
+  "bolsa": {
    "motivo": "cita_no_literal",
-   "valor": "Boletín Oficial de la Provincia de Toledo, sede electrónica del Ayuntamiento (https://sevillejadelajara.sedelectronica.es) y, en su caso, tablón de anuncios; extracto en el BOE",
-   "cita": "Las bases íntegras se publicarán en el Boletín Oficial de la Provincia y en la sede electrónica de este Ayuntamiento"
+   "valor": "sí, para quienes no superen el proceso con al menos 30 puntos, para formar bolsas de personal laboral temporal o interino",
+   "cita": "en dichas bolsas se integrarán aquellos candidatos que hayan obtenido una puntuación igual o superior a 30 puntos"
   }
  }
 }

@@ -1,0 +1,50 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2022-5079",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2022-5079",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2022/07/13_131/2022_005079.pdf",
+  "fecha": "2022-07-13",
+  "huella": "358ec9344ea9be540e70b6cf2b7976aa13e55891c4d60a4e49276b27d0621f46"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T15:25:25+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
+ "no_son_bases": false,
+ "campos": {
+  "plazo_solicitudes": {
+   "valor": "diez días naturales contados a partir del día siguiente al de la publicación del presente anuncio en el BOP de Alicante",
+   "cita": "plazo de presentación de solicitudes para tomar parte en el proceso selectivo será de diez días naturales",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Peón de limpieza de edificios públicos"
+   ],
+   "cita": "PROCESO SELECTIVO PARA LA PROVISIÓN COMO PERSONAL FIJO DISCONTINUO, DE 15 PUESTOS DE TRABAJO DE PEÓN DE LIMPIEZA DE EDIFICIOS PUBLICOS"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "personal laboral fijo",
+   "cita": "PERSONAL LABORAL FIJO/DISCONTINUO PEON LIMPIEZA EDIFICIOS PUBLICOS EN GESNET"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "oposición",
+   "cita": "BASES DEL PROCESO SELECTIVO PARA LA PROVISIÓN COMO PERSONAL FIJO DISCONTINUO"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 15,
+   "cita": "PROVISIÓN COMO PERSONAL FIJO DISCONTINUO, DE 15 PUESTOS DE TRABAJO DE PEÓN"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Tablón de Edictos de la sede electrónica del Ayuntamiento de Guardamar del Segura y página web del Ayuntamiento (www.guardamardelsegura.es)",
+   "cita": "estará a disposición de los interesados en el Tablón de Edictos de la sede electrónica del Ayuntamiento"
+  }
+ }
+}

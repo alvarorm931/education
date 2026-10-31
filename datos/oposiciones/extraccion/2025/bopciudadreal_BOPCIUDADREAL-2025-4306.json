@@ -5,11 +5,11 @@
   "fuente": "BOP-CIUDADREAL",
   "url": "https://bop.dipucr.es/bop/2025/12/10",
   "fecha": "2025-12-10",
-  "huella": "a4213ce04ba555e75c37db1cff7c3f9701d6238de74e0d1471865a36b190958a"
+  "huella": "093218a3964b5bf9c4e4285bd36238e18f7b7cea41673c2cc91770d13a61f240"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:41:23+00:00",
- "lote": "msgbatch_01UNq3BNhPPHoTK3TEJzun1h",
+ "extraido": "2026-10-31T15:25:18+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "vinculo": {
@@ -23,56 +23,56 @@
    "nivel": "literal"
   },
   "titulacion": {
-   "valor": "Título de Bachillerato o Técnico de FP, o equivalente",
+   "valor": "Bachillerato o Técnico de FP, o equivalente",
    "cita": "Estar en posesión del título de Bachillerato o Técnico de FP, o equivalente",
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Nacionalidad española o de Estado miembro de la UE; capacidades físicas y psíquicas; tener cumplidos 16 años y no exceder la edad de jubilación forzosa; no haber sido separado mediante expediente disciplinario; conocimiento del castellano si no se posee nacionalidad española",
+   "valor": "Nacionalidad española o de Estado miembro de la UE; capacidades físicas y psíquicas; tener cumplidos 16 años y no exceder la edad de jubilación forzosa; no haber sido separado por expediente disciplinario ni inhabilitado; condición de personal laboral fijo desempeñando funciones funcionariales antes del EBEP",
    "cita": "Poseer la nacionalidad española o de algunos de los Estados miembros de la Unión Europea",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "no exigido",
+   "cita": "aspirantes que no posean la nacionalidad española y de su origen no se desprenda el conocimiento del castellano",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
    "valor": "3 días naturales desde el siguiente a la publicación del extracto de la convocatoria en el BOE",
-   "cita": "dentro del plazo de 3 días naturales, contados a partir del siguiente de la publicación del extracto",
+   "cita": "dentro del plazo de 3 días naturales, contados a partir del siguiente de la publicación del extracto de la convocatoria en el Boletín Oficial del Estado",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Boletín Oficial de la Provincia, tablones de anuncios del ayuntamiento y sede electrónica; extracto en el BOE",
-   "cita": "que se publicará en el Boletín Oficial de la Provincia y en los tablones de anuncios del ayuntamiento",
-   "nivel": "literal"
-  },
-  "meritos": {
-   "valor": "Servicios prestados hasta 4 puntos; formación y perfeccionamiento hasta 1 punto; fase de concurso máximo 5 puntos",
-   "cita": "Fase de concurso (hasta un máximo de 5 puntos). Solamente se procederá a puntuar la fase de concurso",
+   "valor": "Boletín Oficial de la Provincia y tablones de anuncios del ayuntamiento; sede electrónica",
+   "cita": "se publicará en el Boletín Oficial de la Provincia y en los tablones de anuncios del ayuntamiento",
    "nivel": "literal"
   },
   "bolsa": {
-   "valor": "sí, para cubrir la plaza si renuncian seleccionados, mediante relación complementaria de aspirantes",
-   "cita": "podrá requerir del tribunal relación complementaria de los aspirantes que sigan a los propuestos",
+   "valor": "sí, para sustituir a aspirantes que renuncien antes del nombramiento",
+   "cita": "el órgano convocante podrá requerir del tribunal relación complementaria de los aspirantes que sigan a los propuestos",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "no se indica",
+   "cita": "abriéndose un plazo de un mes para proceder a la correspondiente toma de posesión",
    "nivel": "literal"
   }
  },
  "rechazados": {
   "denominacion": {
    "motivo": "cita_no_literal",
-   "valor": "Administrativo, Escala de Administración Local, Subescala C",
-   "cita": "plaza de administrativo, encuadrada en la Escala de Administración Local, Subescala C"
+   "valor": "Plaza de administrativo, Escala de Administración Local, Subescala C",
+   "cita": "para cubrir en propiedad una plaza de administrativo, mediante el procedimiento de funcionarización"
   },
   "grupo": {
    "motivo": "cita_no_literal",
    "valor": "C1",
-   "cita": "dotada con el suelo correspondiente al Subgrupo C1"
+   "cita": "dotada con el sueldo correspondiente al Subgrupo C1 de los previstos en el artículo 76"
   },
   "plazas_total": {
    "motivo": "cita_no_literal",
    "valor": 1,
-   "cita": "cubrir en propiedad una plaza de administrativo"
-  },
-  "tasa_euros": {
-   "motivo": "cita_no_literal",
-   "valor": 0,
-   "cita": "Sin tasa de examen: no aparece importe alguno en el texto"
+   "cita": "para cubrir en propiedad una plaza de administrativo, mediante el procedimiento de funcionarización"
   },
   "presentacion": {
    "motivo": "cita_no_literal",
@@ -82,19 +82,20 @@
   "ejercicios": {
    "motivo": "cita_no_literal",
    "valor": [
-    "Ejercicio tipo test de 60 preguntas más 6 de reserva, 75 minutos, sobre temario del Anexo I (eliminatorio, mínimo 5 puntos)"
+    "Ejercicio tipo test de 60 preguntas más 6 de reserva, eliminatorio, máximo dos horas, 75 minutos",
+    "Calificación mínima de 5 puntos para aprobar"
    ],
    "cita": "Consistirá en la resolución de un test en el tiempo que determine el tribunal, no superior a dos horas"
   },
   "temas": {
    "motivo": "valor_no_en_cita",
    "valor": 45,
-   "cita": "Anexo I TEMARIO. 1. Estado social y democrático"
+   "cita": "ANEXO I TEMARIO. 1. Estado social y democrático"
   },
-  "practicas_o_curso": {
+  "meritos": {
    "motivo": "cita_no_literal",
-   "valor": "no",
-   "cita": "no se establece periodo de prácticas ni curso selectivo en el texto"
+   "valor": "Servicios prestados hasta 4 puntos (0,10 por mes en Administración Local como administrativo; 0,05 en otras); cursos de formación hasta 1 punto",
+   "cita": "Por servicios prestados (hasta 4 puntos): Sólo serán valorados aquellos servicios que estén debidamente acreditados"
   }
  }
 }

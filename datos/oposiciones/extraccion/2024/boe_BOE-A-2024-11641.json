@@ -5,20 +5,13 @@
   "fuente": "BOP-CADIZ",
   "url": "https://www.bopcadiz.es/boletin/Boletin-numero-062-del-ano-2024",
   "fecha": "2024-04-02",
-  "huella": "05ff035a26ea4f5aebbb82103264b076171827b8f441a75b1c7cfbe5e0b68ddc"
+  "huella": "eeb87e22cdb3a9e3488137f85cbc93f30284a1f738b95cbd91acda4e136cfab4"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:54:13+00:00",
- "lote": "msgbatch_01HRnX7cDVMkRZD7mBamCmLu",
+ "extraido": "2026-10-31T15:25:35+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
-  "denominacion": {
-   "valor": [
-    "Técnico/a Superior de Educación Infantil"
-   ],
-   "cita": "TRES PLAZAS DE TÉCNICO/A SUPERIOR EN EDUCACIÓN INFANTIL, PERSONAL LABORAL",
-   "nivel": "literal"
-  },
   "grupo": {
    "valor": "C1",
    "cita": "Grupo C, Subgrupo C1",
@@ -34,24 +27,14 @@
    "cita": "el procedimiento de selección de las personas aspirantes será el de Oposición Libre",
    "nivel": "literal"
   },
-  "plazas_total": {
-   "valor": 3,
-   "cita": "tres plazas de Técnico/a Superior en Educación Infantil, personal laboral",
-   "nivel": "literal"
-  },
-  "plazas_turno_libre": {
-   "valor": 3,
-   "cita": "provisión mediante contrato laboral fijo, por el procedimiento de Oposición Libre, de tres plazas",
-   "nivel": "literal"
-  },
   "titulacion": {
    "valor": "Técnico/a Superior en Educación Infantil o equivalente",
    "cita": "Estar en posesión titulación de Técnico/a Superior en Educación Infantil o equivalente",
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Nacionalidad española (art. 57 TREBEP); tener 16 años cumplidos y no exceder la edad máxima de jubilación; capacidad funcional; no haber sido separado del servicio de las Administraciones Públicas por expediente disciplinario ni inhabilitado; no incurrir en incapacidad o incompatibilidad para la Administración Local.",
-   "cita": "Tener la nacionalidad española, sin perjuicio de lo dispuesto en el artículo 57",
+   "valor": "Nacionalidad española (art. 57 TREBEP); tener cumplidos 16 años y no exceder la edad máxima de jubilación; capacidad funcional; no haber sido separado del servicio de Administraciones Públicas ni inhabilitado; no incurrir en incapacidad o incompatibilidad para la Administración Local.",
+   "cita": "Tener la nacionalidad española, sin perjuicio de lo dispuesto en el artículo 57 del Real Decreto Legislativo 5/2015",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
@@ -67,7 +50,7 @@
   "ejercicios": {
    "valor": [
     "Primer ejercicio: test de 80 preguntas más 10 de reserva sobre el temario, 2 horas, eliminatorio (0-10, mínimo 5)",
-    "Segundo ejercicio: test de 40 preguntas más 5 de reserva sobre un caso práctico, 1 hora, eliminatorio (0-10, mínimo 5)"
+    "Segundo ejercicio: test de 40 preguntas más 5 de reserva sobre caso práctico, 1 hora, eliminatorio (0-10, mínimo 5)"
    ],
    "cita": "Primer ejercicio: Contestar por escrito, en el plazo máximo de 2 horas, un cuestionario tipo test de 80 preguntas",
    "nivel": "literal"
@@ -77,18 +60,40 @@
    "cita": "Tema 30. El educador, un profesional de la educación.",
    "nivel": "literal"
   },
+  "meritos": {
+   "valor": "No se valoran méritos en concurso; el proceso es de oposición libre.",
+   "cita": "Sistema de oposición libre",
+   "nivel": "literal"
+  },
   "bolsa": {
-   "valor": "sí, para contrataciones de personal laboral temporal o nombramientos de funcionarios/as interinos/as, con las personas aprobadas sin plaza",
-   "cita": "Del resultado del presente proceso selectivo se confeccionará una Bolsa de Trabajo para contrataciones",
+   "valor": "sí, para contrataciones de personal laboral temporal o nombramientos de funcionarios interinos con las personas que superen las pruebas sin obtener plaza",
+   "cita": "Del resultado del presente proceso selectivo se confeccionará una Bolsa de Trabajo",
    "nivel": "literal"
   },
   "practicas_o_curso": {
    "valor": "no consta",
-   "cita": "Finalizadas las pruebas selectivas, el Órgano de Selección hará pública",
+   "cita": "Dentro del plazo de veinte días naturales, contado desde el día siguiente",
    "nivel": "literal"
   }
  },
  "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Técnico/a Superior de Educación Infantil"
+   ],
+   "cita": "convocatoria de tres plazas de Técnico/a Superior en Educación Infantil"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 3,
+   "cita": "la provisión de tres plazas de Técnico/a Superior de Educación Infantil"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 3,
+   "cita": "el procedimiento de selección de las personas aspirantes será el de Oposición Libre"
+  },
   "tasa_euros": {
    "motivo": "valor_no_en_cita",
    "valor": 0,
@@ -96,8 +101,8 @@
   },
   "presentacion": {
    "motivo": "cita_no_literal",
-   "valor": "Oficina de Asistencia en Materia de Registro del Ayuntamiento de Bornos, Plaza Alcalde José González núm. 1, o Sede Electrónica (https://sede.bornos.es)",
-   "cita": "La presentación de la solicitud se realizará en la Oficina de Asistencia en Materia de Registro del Ayuntamiento"
+   "valor": "Oficina de Asistencia en Materia de Registro del Ayuntamiento de Bornos, a través de la Sede Electrónica (https://sede.bornos.es) o medios del artículo 16 de la Ley 39/2015",
+   "cita": "se realizará en la Oficina de Asistencia en Materia de Registro del Ayuntamiento de Bornos, a través de la Sede Electrónica"
   }
  }
 }

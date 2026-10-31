@@ -5,21 +5,26 @@
   "fuente": "BOPV",
   "url": "https://www.euskadi.eus/web01-bopv/es/bopv2/datos/2023/01/2300243a.shtml",
   "fecha": "2023-01-16",
-  "huella": "be1d15d2358193688ca4c001ad12496009416f1d4a46eaa5709cac11ec4e73ea"
+  "huella": "d0da2891863e0d6b222b939108b882ea979d65285fd97975307eff3950a0c53b"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:56:46+00:00",
- "lote": "msgbatch_0167qWfLXqjGo8Hv43cM3LuM",
+ "extraido": "2026-10-31T15:25:47+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
+  "grupo": {
+   "valor": "C1",
+   "cita": "Agente de la Escala Básica de los Cuerpos de Policía del País Vasco y Servicios de Policía Local",
+   "nivel": "literal"
+  },
   "vinculo": {
    "valor": "funcionario de carrera",
-   "cita": "nombramiento como funcionario o funcionaria de carrera con la categoría de Agente de la Escala Básica",
+   "cita": "procedimiento selectivo para ingreso en la Categoría de Agente de la Escala Básica",
    "nivel": "literal"
   },
   "sistema": {
    "valor": "concurso-oposición",
-   "cita": "mediante el sistema de concurso-oposición libre",
+   "cita": "mediante el sistema de concurso-oposición libre, que se complementará",
    "nivel": "literal"
   },
   "titulacion": {
@@ -28,8 +33,8 @@
    "nivel": "literal"
   },
   "idioma_cooficial": {
-   "valor": "Euskera: perfil lingüístico 2 (B2) para plazas con preceptividad vencida; se valora nivel B2 con 60 puntos y C1 con 80 puntos",
-   "cita": "Nivel B-2 del Marco Común Europeo de Referencia para las Lenguas aprobado por el Consejo de Europa: 60 puntos.",
+   "valor": "Perfil lingüístico 2 (Nivel B-2) para plazas con fecha de preceptividad vencida; valoración del euskera hasta 80 puntos (B-2: 60; C-1: 80)",
+   "cita": "estar en posesión de perfil lingüístico 2, o superior, o superar las pruebas de acreditación",
    "nivel": "literal"
   },
   "tasa_euros": {
@@ -42,29 +47,23 @@
    "cita": "El plazo de presentación de solicitudes será de 20 días hábiles, a contar desde el siguiente al de la publicación",
    "nivel": "literal"
   },
-  "ejercicios": {
-   "valor": [
-    "Primera prueba: psicotécnica eliminatoria (0-120 puntos), cuatro ejercicios tipo test",
-    "Segunda prueba: conocimientos, cuestionario tipo test (0-150 puntos)",
-    "Tercera prueba: psicotécnica de personalidad (0-150 puntos)",
-    "Cuarta prueba: aptitud física (0-80 puntos)",
-    "Quinta prueba: entrevista personal (0-50 puntos)"
-   ],
-   "cita": "La oposición consistirá en la sucesiva celebración de las siguientes pruebas",
+  "publicaciones": {
+   "valor": "Tablón de Anuncios de la Academia Vasca de Policía y Emergencias; también en tablones o webs de las Corporaciones Locales y en la web de la Academia",
+   "cita": "las publicaciones se realizarán en el en el Tablón de Anuncios de la Academia Vasca de Policía y Emergencias",
    "nivel": "literal"
   },
   "meritos": {
-   "valor": "Concurso de hasta 160 puntos: titulaciones oficiales (hasta 70); idiomas inglés, francés y alemán (hasta 70); servicios como Agente en Policía Local o Ertzaintza, 0,05 puntos por día (hasta 20)",
+   "valor": "Hasta 160 puntos: titulaciones oficiales (máx. 70), idiomas inglés, francés y alemán (máx. 70), servicios como Agente de Policía Local o Ertzaintza (máx. 20)",
    "cita": "La fase de concurso consistirá en la valoración de los méritos hasta un total de 160 puntos",
    "nivel": "literal"
   },
   "bolsa": {
-   "valor": "sí, bolsa de agentes interinos de policía local para quienes aprueben sin plaza",
-   "cita": "las personas que hayan aprobado el procedimiento selectivo, y no hayan obtenido plaza en el mismo, podrán ser incorporadas a la bolsa",
+   "valor": "sí, bolsa de agentes interinos de policía local para aspirantes que aprueben sin plaza",
+   "cita": "podrán ser incorporadas a la bolsa de agentes interinos e interinas de policía local vigente",
    "nivel": "literal"
   },
   "practicas_o_curso": {
-   "valor": "Curso de formación obligatorio y eliminatorio seguido de periodo de prácticas, sin superar en conjunto 30 meses",
+   "valor": "Curso de formación obligatorio y eliminatorio seguido de período de prácticas; duración conjunta máxima de 30 meses",
    "cita": "El curso de formación y el período de prácticas no podrán simultanearse en su desarrollo, sin que la duración de cada uno de ellos, ni la acumulada de ambos, pueda exceder de 30 meses.",
    "nivel": "literal"
   }
@@ -76,32 +75,32 @@
     "Agente de la Escala Básica de los Cuerpos de Policía del País Vasco (Ertzaintza y Policía Local)",
     "Agente de la Escala Básica de Servicios de Policía Local"
    ],
-   "cita": "Se convoca procedimiento selectivo para ingreso en la Categoría de Agente de la Escala Básica de los Cuerpos de Policía del País Vasco"
+   "cita": "convoca procedimiento selectivo para ingreso en la Categoría de Agente de la Escala Básica de los Cuerpos de Policía del País Vasco"
   },
   "plazas_total": {
    "motivo": "valor_no_en_cita",
    "valor": 212,
    "cita": "Se convocan 127 plazas del cuerpo de la Ertzaintza, 83 plazas de los Cuerpos de Policía Local, y 2 plazas para los Servicios de Policía Local"
   },
-  "plazas_promocion_interna": {
+  "plazas_turno_libre": {
    "motivo": "valor_no_en_cita",
-   "valor": 0,
-   "cita": "Se convoca procedimiento selectivo, mediante el sistema de concurso-oposición libre"
+   "valor": 212,
+   "cita": "Se convocan 127 plazas del cuerpo de la Ertzaintza, 83 plazas de los Cuerpos de Policía Local, y 2 plazas para los Servicios de Policía Local"
   },
   "otros_requisitos": {
    "motivo": "cita_no_literal",
-   "valor": "Nacionalidad española; edad entre 18 años y menos de 38 (compensable con servicios en cuerpos de Policía del País Vasco); permisos de conducción (clase B, y A2, A, C1+E o E según plaza); perfil lingüístico 2 para plazas con preceptividad vencida; no haber sido condenado por delito doloso",
+   "valor": "Nacionalidad española; 18 años y no haber cumplido 38 (compensable con servicios en cuerpos de Policía del País Vasco); no estar incursa en el cuadro de exclusiones médicas; no haber sido condenada por delito doloso ni separada del servicio; compromiso de portar armas; permisos de conducción según plaza",
    "cita": "Tener la nacionalidad española. Tener 18 años de edad y no haber cumplido la edad de 38 años"
   },
   "presentacion": {
    "motivo": "cita_no_literal",
-   "valor": "Modelo oficial disponible en la web de la Academia Vasca de Policía y Emergencias (www.arkauteakademia.eus)",
-   "cita": "Las solicitudes se cumplimentarán en el modelo oficial y normalizado que se encontrará disponible en la página web"
+   "valor": "Modelo oficial disponible en la web de la Academia Vasca de Policía y Emergencias (www.arkauteakademia.eus); pago de tasa en entidades colaboradoras",
+   "cita": "Las solicitudes... se cumplimentarán en el modelo oficial y normalizado que se encontrará disponible en la página web"
   },
-  "publicaciones": {
-   "motivo": "cita_no_literal",
-   "valor": "Tablón de Anuncios de la Academia Vasca de Policía y Emergencias, y tablones o páginas web de las Corporaciones Locales y de la propia Academia",
-   "cita": "las publicaciones se realizarán en el Tablón de Anuncios de la Academia Vasca de Policía y Emergencias"
+  "temas": {
+   "motivo": "valor_no_numerico",
+   "valor": "Ver Anexo II",
+   "cita": "La determinación de los contenidos se realizará de acuerdo a lo recogido en el temario que se adjunta como Anexo II."
   }
  }
 }

@@ -5,26 +5,28 @@
   "fuente": "BOE",
   "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2025-22072",
   "fecha": "2025-11-01",
-  "huella": "05c0752238158497eca85b4fa215aaf932a29067fa58ccabc5b18b5fd9a31585"
+  "huella": "95bb753877a0a7d685f63ee728eaaacf09e652c222bb1f32d05c4198aed03079"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:41:02+00:00",
- "lote": "msgbatch_01UNq3BNhPPHoTK3TEJzun1h",
+ "extraido": "2026-10-31T15:25:44+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
-   "valor": "Técnica/o Auxiliar de Archivos",
-   "cita": "provisión, mediante oposición, de una plaza vacante del puesto de trabajo de Técnica/o Auxiliar de Archivos",
+   "valor": [
+    "Técnica/o Auxiliar de Archivos"
+   ],
+   "cita": "una plaza del puesto de trabajo de Técnica/o Auxiliar de Archivos, nivel C, al servicio de la Universidad Pública de Navarra",
    "nivel": "literal"
   },
   "grupo": {
    "valor": "C",
-   "cita": "de régimen funcionarial y nivel C, por turno libre",
+   "cita": "de régimen funcionarial y nivel C, por turno libre, al servicio de la Universidad Pública de Navarra",
    "nivel": "literal"
   },
   "vinculo": {
    "valor": "funcionario de carrera",
-   "cita": "nombrará funcionario de la Universidad Pública de Navarra, para desempeñar el puesto de trabajo",
+   "cita": "nombrará funcionario de la Universidad Pública de Navarra, para desempeñar el puesto de trabajo de Técnica/o Auxiliar de Archivos",
    "nivel": "literal"
   },
   "sistema": {
@@ -37,14 +39,19 @@
    "cita": "provisión, mediante oposición, de una plaza vacante del puesto de trabajo de Técnica/o Auxiliar de Archivos",
    "nivel": "literal"
   },
+  "plazas_turno_libre": {
+   "valor": 1,
+   "cita": "de una plaza vacante del puesto de trabajo de Técnica/o Auxiliar de Archivos, de régimen funcionarial y nivel C, por turno libre",
+   "nivel": "literal"
+  },
   "titulacion": {
    "valor": "Título de Bachiller o Formación Profesional de Segundo Grado, o título declarado equivalente",
-   "cita": "Estar en posesión del título de Bachiller o Formación Profesional de Segundo Grado, o título declarado equivalente",
+   "cita": "Estar en posesión del título de Bachiller o Formación Profesional de Segundo Grado, o título declarado equivalente a alguno de los anteriores",
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Nacionalidad española, de otro Estado de la UE o de Estado con libre circulación de trabajadores (con extensión a cónyuges y descendientes); tener 16 años y no exceder la edad de jubilación forzosa; capacidad física y psíquica; no estar inhabilitado ni suspendido para funciones públicas",
-   "cita": "Tener cumplidos dieciséis años y no exceder, en su caso, de la edad máxima de jubilación forzosa",
+   "valor": "Tener la nacionalidad española, de otro Estado miembro de la Unión Europea o de un Estado con libre circulación de trabajadores; tener cumplidos dieciséis años y no exceder de la edad de jubilación forzosa; capacidad física y psíquica; no estar inhabilitado para funciones públicas.",
+   "cita": "Tener cumplidos dieciséis años y no exceder, en su caso, de la edad máxima de jubilación forzosa.",
    "nivel": "literal"
   },
   "tasa_euros": {
@@ -53,23 +60,31 @@
    "nivel": "literal"
   },
   "exenciones_tasa": {
-   "valor": "Personas con discapacidad reconocida igual o superior al 33 por 100; personas inscritas como demandantes de empleo al menos un mes antes de la publicación de la convocatoria",
+   "valor": "Personas con discapacidad reconocida igual o superior al 33 por 100; personas inscritas como demandantes de empleo al menos un mes antes de la publicación de la convocatoria.",
    "cita": "Estarán exentas del pago de la tasa: a) Las personas con discapacidad reconocida, de grado igual o superior al 33 por 100.",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "Veinte días naturales contados a partir del día siguiente al de la publicación en el «Boletín Oficial de Navarra»",
+   "valor": "Veinte días naturales desde el día siguiente a la publicación en el «Boletín Oficial de Navarra»",
    "cita": "deberá realizarse en el plazo de veinte días naturales contados a partir del día siguiente al de su publicación en el «Boletín Oficial de Navarra»",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Telemática a través de la sede electrónica de la Universidad Pública de Navarra, botón «Iniciar trámite»",
+   "valor": "Telemática a través de la sede electrónica de la Universidad Pública de Navarra, botón «Iniciar trámite».",
    "cita": "deberán presentar y formalizar adecuadamente su solicitud de forma telemática a través de la sede electrónica de la Universidad Pública de Navarra",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Tablón Electrónico Oficial de la Universidad Pública de Navarra (enlace indicado), además de «Boletín Oficial de Navarra» y «Boletín Oficial del Estado» en los casos previstos",
+   "valor": "Tablón Electrónico Oficial de la Universidad Pública de Navarra, además del «Boletín Oficial de Navarra» y «Boletín Oficial del Estado» en los casos previstos",
    "cita": "se realizarán en el siguiente enlace del Tablón Electrónico Oficial de la Universidad Pública de Navarra",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Primera prueba: cuestionario tipo test sobre Parte general y Específica (0 a 40 puntos, eliminatoria)",
+    "Segunda prueba: preguntas y/o supuestos teórico-prácticos de la Parte específica, por sistema de plicas (0 a 60 puntos, eliminatoria)"
+   ],
+   "cita": "La oposición constará de las siguientes pruebas: 7.2.3.1 Primera prueba. Consistirá en contestar por escrito a un cuestionario de preguntas tipo test",
    "nivel": "literal"
   },
   "temas": {
@@ -77,35 +92,16 @@
    "cita": "Tema 26. Conservación y prevención: factores de degradación y medidas preventivas. Restauración de documentos.",
    "nivel": "literal"
   },
-  "meritos": {
-   "valor": "No se valoran méritos; el proceso es de oposición",
-   "cita": "Las pruebas serán eliminatorias. Quedarán eliminados los aspirantes que no obtengan, al menos, la mitad de la puntuación máxima",
-   "nivel": "literal"
-  },
   "bolsa": {
-   "valor": "sí, bolsa de aspirantes a la contratación temporal con quienes no obtengan plaza",
-   "cita": "se constituirán las siguientes listas de aspirantes a la contratación con aquellas personas aspirantes que hayan participado en el proceso selectivo",
+   "valor": "sí, lista de aspirantes a la contratación temporal con quienes no obtengan plaza",
+   "cita": "constituir, con los aspirantes que no obtengan plaza en el procedimiento selectivo de ingreso, una relación de aspirantes a la contratación temporal",
    "nivel": "literal"
   },
   "practicas_o_curso": {
-   "valor": "No se menciona periodo de prácticas ni curso selectivo",
-   "cita": "Nombrará funcionario de la Universidad Pública de Navarra, para desempeñar el puesto de trabajo",
+   "valor": "no",
+   "cita": "Asimismo, es objeto de la presente convocatoria constituir",
    "nivel": "literal"
   }
  },
- "rechazados": {
-  "plazas_turno_libre": {
-   "motivo": "valor_no_en_cita",
-   "valor": 1,
-   "cita": "de régimen funcionarial y nivel C, por turno libre, al servicio de la Universidad Pública de Navarra"
-  },
-  "ejercicios": {
-   "motivo": "cita_no_literal",
-   "valor": [
-    "Primera prueba: cuestionario tipo test sobre Parte general y Específica del temario (0 a 40 puntos)",
-    "Segunda prueba: preguntas y/o supuestos teórico-prácticos de la Parte específica, por plicas (0 a 60 puntos)"
-   ],
-   "cita": "La oposición constará de las siguientes pruebas: Primera prueba. Consistirá en contestar por escrito a un cuestionario de preguntas tipo test"
-  }
- }
+ "rechazados": {}
 }

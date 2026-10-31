@@ -5,12 +5,48 @@
   "fuente": "BOCM",
   "url": "https://www.bocm.es/bocm-20250109-13",
   "fecha": "2025-01-09",
-  "huella": "b3e9e1887d99ba7ce027a0c04531eda043cd6bd1b960a24a2dbe05eb8e12257a"
+  "huella": "a2dca21bf561167c93dbba6f6a52fa55b8a25ad83ca5b733ca15a302e5f555d0"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:50:01+00:00",
- "lote": "msgbatch_018TPQE8scQozfAUdc1n8RyC",
- "no_son_bases": true,
- "campos": {},
- "rechazados": {}
+ "extraido": "2026-10-31T15:25:35+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Urología (Hospital Universitario Ramón y Cajal)",
+    "Medicina (Hospital Universitario Ramón y Cajal)",
+    "Medicina (Hospital Universitario Príncipe de Asturias)"
+   ],
+   "cita": "Área de Conocimiento: Urología. Vinculada al Hospital Universitario “Ramón y Cajal”.",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "por la que se convocan concursos de acceso a plazas de los cuerpos docentes universitarios",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días naturales a partir del siguiente al de la publicación de la citada Resolución conjunta en el “Boletín Oficial del Estado”",
+   "cita": "será de 20 días naturales a partir del siguiente al de la publicación de la citada Resolución conjunta en el “Boletín Oficial del Estado”",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Instancias según el modelo de la Resolución, dirigidas al Rector de la Universidad de Alcalá (plaza San Diego, sin número, 28801 Alcalá de Henares, Madrid)",
+   "cita": "debiendo dirigirse éstas al Rector de la Universidad de Alcalá (plaza San Diego, sin número, 28801 Alcalá de Henares, Madrid).",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 3,
+   "cita": "Número de plazas: Una. Código: Z060/DMD222."
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 3,
+   "cita": "Hospitales Universitarios de la Comunidad de Madrid (Turno libre/Oferta de Empleo Público de 2024)"
+  }
+ }
 }

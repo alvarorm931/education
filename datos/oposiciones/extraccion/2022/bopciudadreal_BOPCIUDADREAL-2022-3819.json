@@ -5,12 +5,36 @@
   "fuente": "BOP-CIUDADREAL",
   "url": "https://bop.dipucr.es/bop/2022/12/01",
   "fecha": "2022-12-01",
-  "huella": "9812540eed430afeb2344ec4c08472639d5f739374534fe3374595c024fd6468"
+  "huella": "7380aed85bbf81a7ee4dcd8d2c501bee4f0919a7a1cf4c067897c01cf24f498e"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:57:07+00:00",
- "lote": "msgbatch_01B4ETF5xB4buYCHqPiHTXzF",
- "no_son_bases": true,
- "campos": {},
- "rechazados": {}
+ "extraido": "2026-10-31T15:25:42+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
+ "no_son_bases": false,
+ "campos": {
+  "publicaciones": {
+   "valor": "Página web www.daimiel.es y sede electrónica del Ayuntamiento de Daimiel",
+   "cita": "Las bases y el resto de información podrán consultarse en la página web: www.daimiel.es ; y en su sede electrónica.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Oficial de Albañilería"
+   ],
+   "cita": "constitución de una bolsa de empleo de Oficiales de Albañilería, en el Ayuntamiento de Daimiel"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "diez días naturales a partir del siguiente a la publicación de este anuncio en el Boletín Oficial de la Provincia de Ciudad Real",
+   "cita": "El plazo de presentación de solicitudes será de diez días naturales a partir del siguiente a la publicación de este anuncio"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, bolsa de empleo de Oficiales de Albañilería",
+   "cita": "convocatoria para constitución de una bolsa de empleo de Oficiales de Albañilería, en el Ayuntamiento de Daimiel"
+  }
+ }
 }

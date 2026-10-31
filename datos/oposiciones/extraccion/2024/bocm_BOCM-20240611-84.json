@@ -5,12 +5,68 @@
   "fuente": "BOCM",
   "url": "https://www.bocm.es/bocm-20240611-84",
   "fecha": "2024-06-11",
-  "huella": "53b7f9f5919d5d4522ea800e2a1ca699fd4baacbadddb3ca5e41d952c5b0f44f"
+  "huella": "b9fd92e2c269a5ffee50132499240accdd9957e85751e2a4d5ad1c0ba95e5c39"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:54:38+00:00",
- "lote": "msgbatch_01HRnX7cDVMkRZD7mBamCmLu",
- "no_son_bases": true,
- "campos": {},
- "rechazados": {}
+ "extraido": "2026-10-31T15:25:26+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Policía del cuerpo de Policía Local"
+   ],
+   "cita": "para la provisión de 6 plazas de policía del cuerpo de Policía Local, del Ayuntamiento de Valdemoro",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "de acceso libre, mediante concurso-oposición, cuya convocatoria fue publicada",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 6,
+   "cita": "para la provisión de 6 plazas de policía del cuerpo de Policía Local",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Titulación requerida; acreditable mediante superación de la prueba de acceso a Universidad para mayores de 25 años más título complementario de equivalencia con Bachillerato a efectos profesionales",
+   "cita": "en caso de aportar la superación de la prueba de acceso a Universidad para mayores de 25 años, debe aportarse también el título que lo complementa",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Aportar anverso y reverso del DNI y del carnet de conducir",
+   "cita": "Debe aportarse anverso y reverso del DNI y del carnet de conducir.",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 37.04,
+   "cita": "La tasa para participación en este proceso es de 37,04 euros, según lo recogido",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Tasa reducida en situación de desempleo, presentando justificante de estar en dicha situación y de no cobrar prestación",
+   "cita": "salvo tasa reducida en situación de desempleo, en cuyo caso se deben presentar los dos justificantes",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Sede electrónica (www.valdemoro.es) y tablón de edictos del Ayuntamiento; extracto de listas en el Boletín Oficial de la Comunidad de Madrid",
+   "cita": "listas que figurarán en la sede electrónica (página web www.valdemoro.es ), así como en el tablón de edictos",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 6,
+   "cita": "de acceso libre, mediante concurso-oposición, cuya convocatoria fue publicada"
+  },
+  "ejercicios": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Primer ejercicio de la fase de oposición: prueba psicotécnica"
+   ],
+   "cita": "el primer ejercicio de la fase de oposición (prueba psicotécnica), serán publicadas en la sede electrónica"
+  }
+ }
 }

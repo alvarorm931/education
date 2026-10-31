@@ -1,0 +1,104 @@
+{
+ "proceso": "boe:BOE-A-2022-11888",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2022-4846",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2022/07/04_124/2022_004846.pdf",
+  "fecha": "2022-07-04",
+  "huella": "b7cffd8a1407a9b3dd76ed3e35a13d40ead0d5c70860058766bc7378a3c84ce1"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T15:25:24+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "como personal funcionario de carrera, y constitución de bolsa de empleo",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "El proceso selectivo se realizará mediante el sistema de oposición libre.",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "provisión en propiedad de una plaza vacante de administrativo",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española (sin perjuicio del art. 57 TREBEP); tener cumplidos 16 años y no exceder la edad máxima de jubilación forzosa; capacidad física y psíquica; no haber sido separado del servicio ni inhabilitado.",
+   "cita": "Tener la nacionalidad española, sin perjuicio de lo dispuesto en el artículo 57",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 20,
+   "cita": "deberán abonar en concepto de derechos de examen la cantidad de 20,00 euros",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Bonificación del 50% para sujetos pasivos con discapacidad reconocida igual o superior al 33%, acreditada con certificado de minusvalía o discapacidad.",
+   "cita": "tendrán una bonificación del 50% de la tasa los sujetos pasivos que tengan reconocida una discapacidad igual o superior al 33%",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Registro General del Ayuntamiento de La Romana o Sede Electrónica (firma electrónica); en otros registros, copia al correo laromana@aytolaromana.es",
+   "cita": "Las solicitudes deberán ser presentadas a través de cualquiera de las formas previstas en el artículo 16.4 de la Ley 39/2015",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Primer ejercicio: cuestionario tipo test de 50 preguntas (10 puntos), eliminatorio, mínimo 5 puntos",
+    "Segundo ejercicio, parte 1: desarrollo teórico por escrito de cinco preguntas (10 puntos)",
+    "Segundo ejercicio, parte 2: supuesto práctico elegido entre dos propuestos (10 puntos)"
+   ],
+   "cita": "consistirá en la realización de 2 ejercicios, de carácter obligatorio y eliminatorio cada uno de ellos",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Administrativo/a de Administración General"
+   ],
+   "cita": "provisión en propiedad de una plaza funcionarial de Administrativo/a de Administración General"
+  },
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "C1",
+   "cita": "Grupo C, Subgrupo C1, vacante en la plantilla del Ayuntamiento de La Romana"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "El proceso selectivo se realizará mediante el sistema de oposición libre."
+  },
+  "titulacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Título de Bachiller o equivalente",
+   "cita": "Estar en posesión del título de Bachiller o equivalente."
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "20 días hábiles desde el día siguiente a la publicación del extracto de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "plazo de 20 días hábiles contados a partir del día siguiente al de la publicación del extracto"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Boletín Oficial de la Provincia de Alicante, Tablón de Anuncios del Ayuntamiento y Sede Electrónica del Ayuntamiento de La Romana",
+   "cita": "se publicarán íntegramente en el Boletín Oficial de la Provincia de Alicante, en el Tablón de Anuncios"
+  },
+  "temas": {
+   "motivo": "cita_no_literal",
+   "valor": 40,
+   "cita": "Anexo I y Anexo II: Materias comunes (16 temas) y específicas (24 temas)"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, bolsa de trabajo con los aspirantes que, habiendo superado la oposición, no hayan sido propuestos por existir una única vacante",
+   "cita": "Se constituirá una bolsa de trabajo con los aspirantes que, habiendo superado la oposición"
+  }
+ }
+}

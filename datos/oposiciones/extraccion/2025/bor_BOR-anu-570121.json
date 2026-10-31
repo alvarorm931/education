@@ -5,21 +5,23 @@
   "fuente": "BOR",
   "url": "https://web.larioja.org/bor-portada/boranuncio?n=anu-570121",
   "fecha": "2025-06-11",
-  "huella": "bacdc45cf08da3d37ecd04ca7f6374ac4d7982802c0544cfd857a8299e636476"
+  "huella": "711bad71bbcafea7b61b6c3091f3e3368cf67c605b903a9536b243a8fd2b6172"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:45:34+00:00",
- "lote": "msgbatch_016re6aGcimwSVmdrWa6qBd9",
+ "extraido": "2026-10-31T15:25:45+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
-   "valor": "Técnico de Administración General (ampliación de bolsa)",
-   "cita": "Convocatoria para proceso selectivo de ampliación de la bolsa de empleo de Técnico de Administración General",
+   "valor": [
+    "Técnico de Administración General"
+   ],
+   "cita": "ampliación de la bolsa de empleo de Técnico de Administración General (Escala Administración General, Subescala Técnica, Grupo A, Subgrupo A1)",
    "nivel": "literal"
   },
   "grupo": {
    "valor": "A1",
-   "cita": "Escala de Administración General, Subescala Técnica, Grupo A, Subgrupo A1",
+   "cita": "Grupo A, Subgrupo A1, nivel Complemento Destino 26",
    "nivel": "literal"
   },
   "vinculo": {
@@ -29,17 +31,22 @@
   },
   "sistema": {
    "valor": "concurso-oposición",
-   "cita": "Convocatoria para proceso selectivo de ampliación de la bolsa de empleo de Técnico de Administración General",
+   "cita": "procedimiento de selección, mediante concurso-oposición, para la ampliación de la bolsa de empleo vigente",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Título universitario de formación jurídica (Grado en Derecho, Ciencias Políticas y Gestión Pública, etc.) y/o económica (Grado en Economía, ADE, Ciencias Actuariales y Financieras, Ciencias Políticas y de la Administración, etc.) para el ingreso en el subgrupo A1",
+   "cita": "estar en posesión, o en condiciones de obtener al momento en que termine el plazo de presentación de instancias, de la titulación universitaria exigida",
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Nacionalidad española o de Estado miembro de la UE (o los supuestos asimilados); capacidad funcional; tener cumplidos 16 años y no superar la edad máxima de jubilación forzosa; no haber sido separado de la Administración por expediente disciplinario ni inhabilitado.",
-   "cita": "Ser español, o nacional de uno de los Estados miembros de la Unión Europea, o nacional de aquellos Estados",
+   "valor": "Nacionalidad española o de Estado miembro de la UE (o los supuestos equiparados); capacidad funcional; tener cumplidos dieciséis años y no superar la edad de jubilación forzosa; no haber sido separado del servicio ni inhabilitado.",
+   "cita": "Tener cumplidos los dieciséis años de edad y no haber alcanzado la edad máxima de jubilación forzosa",
    "nivel": "literal"
   },
   "tasa_euros": {
    "valor": 14.6,
-   "cita": "que se fijan en 14,60 euros",
+   "cita": "por derechos de examen, que se fijan en 14,60 euros",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
@@ -48,26 +55,31 @@
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Registro General de la Oficina de Atención Ciudadana, Sede Electrónica del Ayuntamiento (sede.arnedo.es) o procedimientos de la Ley 39/2015 (Correos, otros registros)",
-   "cita": "Igualmente, podrá presentarse de forma telemática a través de la Sede Electrónica del Ayuntamiento de Arnedo",
+   "valor": "Registro General de la Oficina de Atención Ciudadana, Sede Electrónica del Ayuntamiento (sede.arnedo.es) o procedimientos del artículo 16 de la Ley 39/2015",
+   "cita": "podrá presentarse de forma telemática a través de la Sede Electrónica del Ayuntamiento de Arnedo",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Tablón de Anuncios de la Corporación en la sede electrónica del Ayuntamiento y página web municipal",
+   "valor": "Tablón de Anuncios de la Corporación ubicado en la sede electrónica del Ayuntamiento y página web municipal",
    "cita": "Tablón de Anuncios de la Corporación ubicado en la sede electrónica del Ayuntamiento",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Fase de oposición: ejercicio teórico-práctico eliminatorio (hasta 20 puntos; mínimo 10)",
-    "Fase de concurso: valoración de méritos (hasta 10 puntos), solo para quien supere la oposición"
+    "Fase de oposición: ejercicio teórico-práctico obligatorio y eliminatorio, máximo 20 puntos, mínimo 10 para superarlo, duración máxima tres horas",
+    "Fase de concurso (tras superar la oposición): máximo 10 puntos, no eliminatorio"
    ],
-   "cita": "consistirá en la realización de un ejercicio teórico práctico, que puede abarcar diversas cuestiones o temáticas",
+   "cita": "Consistirá en la realización de un ejercicio teórico práctico, que puede abarcar diversas cuestiones o temáticas",
    "nivel": "literal"
   },
   "meritos": {
-   "valor": "Servicios en Administración Local como TAG (0,08 puntos/mes, máx. 4); servicios en otras Administraciones (0,05 puntos/mes, máx. 2); cursos de formación (máx. 4)",
+   "valor": "Servicios en la Administración Local como Técnico de Administración General: hasta 4 puntos (0,08 por mes); servicios en otras Administraciones: hasta 2 puntos (0,05 por mes); cursos de formación: hasta 4 puntos",
    "cita": "A) Servicios prestados en la Administración Local como Técnico de Administración General (valor máximo 4 puntos)",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, para ampliar la bolsa de empleo vigente de Técnico de Administración General para necesidades temporales",
+   "cita": "ampliación de la bolsa ordenada de trabajo vigente de Técnico de Administración General",
    "nivel": "literal"
   },
   "practicas_o_curso": {
@@ -82,15 +94,10 @@
   }
  },
  "rechazados": {
-  "titulacion": {
-   "motivo": "cita_no_literal",
-   "valor": "Título universitario de Grado en Derecho o Economía (formación jurídica y/o económica, Grado o licenciatura equivalente)",
-   "cita": "deberán estar en posesión de la titulación universitaria exigida para el ingreso en los Cuerpos o escalas clasificados en el subgrupo A1"
-  },
-  "bolsa": {
-   "motivo": "cita_no_literal",
-   "valor": "sí, para ampliar la bolsa de empleo de Técnico de Administración General para necesidades temporales de funcionario interino",
-   "cita": "ampliación de la vigente bolsa de empleo de Técnico de Administración General"
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 0,
+   "cita": "ampliación de la bolsa ordenada de trabajo vigente de Técnico de Administración General"
   }
  }
 }

@@ -1,0 +1,45 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2022-3282",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2022-3282",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2022/05/18_93/2022_003282.pdf",
+  "fecha": "2022-05-18",
+  "huella": "6cd4edaca8e3dfe1f14959904732a46e559f4861df96b6a7c4f926f7d204d8ea"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T15:25:22+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Monitor/a de Tiempo Libre"
+   ],
+   "cita": "creación de una bolsa de trabajo de Monitor/a de Tiempo Libre por el sistema selectivo",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "creación de una bolsa de trabajo de Monitor/a de Tiempo Libre por el sistema selectivo de concurso-oposición",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "diez días hábiles a partir del siguiente al de la publicación del anuncio de la convocatoria en el BOP de Alicante",
+   "cita": "El plazo de presentación de solicitudes será de diez días hábiles a partir del siguiente al de la publicación"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "sede electrónica del Ayuntamiento de Pinoso",
+   "cita": "Las bases íntegras y el modelo de solicitud de la convocatoria pueden consultarse en la sede electrónica del Ayuntamiento"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, para crear una bolsa de trabajo de Monitor/a de Tiempo Libre",
+   "cita": "aprobaron las bases que han de regir el proceso selectivo para la creación de una bolsa de trabajo"
+  }
+ }
+}

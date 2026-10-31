@@ -5,21 +5,23 @@
   "fuente": "BOP-TOLEDO",
   "url": "https://bop.diputoledo.es/webEbop/DocGet?id=23037168;0&insert_number=1891&insert_year=2023",
   "fecha": "2023-03-24",
-  "huella": "703ee74f5b46c7bcc9f4bb472b0074e1cf07dd420d3d440da74cc66ef1cc42d3"
+  "huella": "38cb9746c6012b7be04a5c8354659159ec1374bbf0eb28e6e071e26eaf46275e"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:56:55+00:00",
- "lote": "msgbatch_0167qWfLXqjGo8Hv43cM3LuM",
+ "extraido": "2026-10-31T15:25:26+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
-   "valor": "Trabajador Social",
-   "cita": "la contratación de un Trabajador Social, como personal laboral, por el sistema de concurso - oposición",
+   "valor": [
+    "Trabajador Social (personal laboral)"
+   ],
+   "cita": "contratación de un Trabajador Social, como personal laboral, por el sistema de concurso - oposición",
    "nivel": "literal"
   },
   "vinculo": {
    "valor": "laboral temporal",
-   "cita": "la contratación de un Trabajador Social, como personal laboral",
+   "cita": "contratación de un Trabajador Social, como personal laboral, por el sistema de concurso - oposición",
    "nivel": "literal"
   },
   "sistema": {
@@ -29,26 +31,26 @@
   },
   "plazas_total": {
    "valor": 1,
-   "cita": "la contratación de un Trabajador Social, como personal laboral, por el sistema de concurso",
+   "cita": "contratación de un Trabajador Social, como personal laboral, por el sistema de concurso - oposición",
    "nivel": "literal"
   },
   "titulacion": {
    "valor": "Diplomado o Graduado en Trabajo Social",
-   "cita": "Estar en posesión del título de Diplomado o Graduado en TRABAJO SOCIAL, en la fecha en que finalice el plazo",
+   "cita": "Estar en posesión del título de Diplomado o Graduado en TRABAJO SOCIAL, en la fecha",
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Nacionalidad española o de Estado miembro de la UE; capacidad funcional; tener cumplidos dieciséis años; no estar inhabilitado; carné de conducir clase B y vehículo propio",
-   "cita": "Disponer de carnet de conducir clase B y vehículo propio.",
+   "valor": "Nacionalidad española o de Estado miembro de la UE; capacidad funcional; tener cumplidos 16 años y no exceder la edad máxima de jubilación forzosa; no estar inhabilitado; carné de conducir clase B y vehículo propio",
+   "cita": "f) Disponer de carnet de conducir clase B y vehículo propio.",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "20 días naturales desde el siguiente a la publicación del extracto de la convocatoria en el Boletín Oficial de la Provincia de Toledo",
+   "valor": "20 días naturales, contados desde el siguiente a la publicación del extracto de la convocatoria en el Boletín Oficial de la Provincia de Toledo",
    "cita": "dentro del plazo de 20 días naturales, contados a partir del siguiente de la publicación del extracto",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Dirigidas a la alcaldía, en el Registro General del Ayuntamiento o en los lugares del artículo 16.4 de la Ley 39/2015",
+   "valor": "Dirigidas a la alcaldía; presentación en el Registro General del Ayuntamiento o en los lugares del artículo 16.4 de la Ley 39/2015",
    "cita": "se dirigirán a la alcaldía de este ayuntamiento, debiendo presentarse en el Registro General del mismo",
    "nivel": "literal"
   },
@@ -59,43 +61,33 @@
   },
   "ejercicios": {
    "valor": [
-    "Ejercicio tipo test de 40 preguntas con cuatro respuestas, máximo 60 minutos, eliminatorio",
-    "Fase de concurso: méritos hasta 5 puntos, tras superar la oposición"
+    "Fase de oposición: cuestionario tipo test de 40 preguntas con cuatro respuestas alternativas, máximo 60 minutos",
+    "Fase de concurso: valoración de méritos, tras superar la oposición"
    ],
    "cita": "Consistirá en responder a un cuestionario tipo test de 40 preguntas con cuatro respuestas alternativas",
    "nivel": "literal"
   },
+  "temas": {
+   "valor": 31,
+   "cita": "Tema 31. Marco normativo de la atención a mujeres. Los Planes de Igualdad en Castilla La Mancha.",
+   "nivel": "literal"
+  },
   "meritos": {
-   "valor": "Demandantes de empleo 1 punto; cursos relacionados hasta 3 puntos (0,10 cada uno); Doctor en Trabajo Social 0,75; Máster relacionado 0,25; máximo 5 puntos",
-   "cita": "La puntuación máxima a alcanzar en la fase de concurso será de 5 puntos",
+   "valor": "Demandantes de empleo 1 punto; cursos relacionados con el puesto 0,10 por curso hasta 3 puntos; título de Doctor en Trabajo Social 0,75; máster relacionado con el Trabajo Social 0,25; máximo total 5 puntos",
+   "cita": "La puntuación máxima a alcanzar en la fase de concurso será de 5 puntos, valorándose los méritos",
    "nivel": "literal"
   },
   "bolsa": {
-   "valor": "sí, bolsa de trabajo con las personas aprobadas",
+   "valor": "sí, se confeccionará una bolsa de trabajo con las personas aprobadas",
    "cita": "Así mismo, se confeccionará la correspondiente bolsa de trabajo con las personas aprobadas.",
    "nivel": "literal"
   }
  },
  "rechazados": {
-  "grupo": {
-   "motivo": "cita_no_literal",
-   "valor": "no consta",
-   "cita": ""
-  },
   "tasa_euros": {
-   "motivo": "cita_no_literal",
-   "valor": 0,
-   "cita": ""
-  },
-  "temas": {
    "motivo": "valor_no_en_cita",
-   "valor": 30,
-   "cita": "Tema 1. Evolución histórica del Trabajo Social"
-  },
-  "practicas_o_curso": {
-   "motivo": "cita_no_literal",
-   "valor": "no consta",
-   "cita": ""
+   "valor": 0,
+   "cita": "contratación de un Trabajador Social, como personal laboral, por el sistema de concurso - oposición"
   }
  }
 }

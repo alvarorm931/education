@@ -5,28 +5,16 @@
   "fuente": "BOP-ALICANTE",
   "url": "https://www.dip-alicante.es/bop2/pdftotal/2025/06/04_105/2025_003961.pdf",
   "fecha": "2025-06-04",
-  "huella": "37842957ca9356b95bdd1b83d6e53ff35b0e5705ae00973f8cf6e868e65bfe8d"
+  "huella": "526811d688e177832cbdaedb2a6b115b6a354cee9ddbd0964620c53974b2ac61"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:45:32+00:00",
- "lote": "msgbatch_016re6aGcimwSVmdrWa6qBd9",
+ "extraido": "2026-10-31T15:25:47+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
-  "denominacion": {
-   "valor": [
-    "Personal de neteja (personal laboral fix)"
-   ],
-   "cita": "Denominació de la plaça Personal de neteja Règim Personal laboral Fix",
-   "nivel": "literal"
-  },
   "grupo": {
    "valor": "AP/E",
    "cita": "Categoria professional AP/E Titulació exigible Certificat d'escolaritat",
-   "nivel": "literal"
-  },
-  "vinculo": {
-   "valor": "personal laboral fijo",
-   "cita": "Règim Personal laboral Fix Unitat/Àrea Administració Especial",
    "nivel": "literal"
   },
   "sistema": {
@@ -45,64 +33,69 @@
    "nivel": "literal"
   },
   "titulacion": {
-   "valor": "Certificado de escolaridad o equivalente",
+   "valor": "Certificado de escolaridad o equivalente y carnet de conducir B",
    "cita": "Titulació exigible Certificat d'escolaritat o equivalent i carnet de conducció B",
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Nacionalidad española (con excepciones del art. 57 EBEP), capacidad funcional, 16 años cumplidos sin exceder edad de jubilación, no haber sido separado de la Administración ni inhabilitado, y permiso de conducir tipo B",
+   "valor": "Tener la nacionalidad española; tener cumplidos dieciséis años y no exceder de la edad máxima de jubilación forzosa; capacidad funcional para las tareas; no haber sido separado por expediente disciplinario ni inhabilitado; permiso de conducir tipo B",
    "cita": "Tenir la nacionalitat espanyola sense perjudici del que es disposa en l'article 57",
    "nivel": "literal"
   },
   "idioma_cooficial": {
-   "valor": "Valenciano valorado en la fase de concurso hasta 1 punto según nivel (A2 a C2)",
-   "cita": "Valencià, certificat per organisme oficial o equivalent homologat Puntuació màxima",
-   "nivel": "literal"
-  },
-  "exenciones_tasa": {
-   "valor": "No se indican exenciones en el texto",
-   "cita": "L'import en concepte de drets d'examen, per a ser admès, ve determinat en l'ordenança fiscal",
+   "valor": "Valenciano, valorado como mérito: A2 o conocimientos orales 0,20 puntos; B1 0,40; B2 0,5; C1 0,75; C2 1 punto",
+   "cita": "Valencià, certificat per organisme oficial o equivalent homologat Puntuació màxima: fins a 1 punts",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "Diez días hábiles desde el día siguiente a la publicación del anuncio de la convocatoria en el Boletín Oficial del Estado",
+   "valor": "diez días hábiles desde el día siguiente a la publicación del anuncio de la convocatoria en el Boletín Oficial del Estado",
    "cita": "en el termini de deu dies hàbils comptats a partir de l'endemà al de la publicació de l'anunci",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Registro Electrónico General del Ayuntamiento o lugares del artículo 16.4 de la Ley 39/2015",
-   "cita": "es presentaran en el Registre Electrònic General d'aquest Ajuntament o en algun dels llocs",
+   "valor": "Registro Electrónico General del Ayuntamiento o lugares del art. 16.4 Ley 39/2015",
+   "cita": "es presentaran en el Registre Electrònic General d'aquest Ajuntament o en algun dels llocs previstos en l'article 16.4",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Fase de oposición: ejercicio único teórico tipo test de 40 preguntas en 60 minutos (máx. 70 puntos)",
-    "Fase de concurso: méritos profesionales, académicos y valenciano (máx. 30 puntos)"
+    "Ejercicio único teórico: test de 40 preguntas con cuatro respuestas alternativas en 60 minutos (máximo 70 puntos, mínimo 35)",
+    "Fase de concurso: méritos profesionales (hasta 28 puntos), académicos (hasta 2) y valenciano (hasta 1)"
    ],
    "cita": "Consistirà a contestar en un temps màxim de seixanta minuts un test de quaranta preguntes",
    "nivel": "literal"
   },
-  "temas": {
-   "valor": 14,
-   "cita": "14. Ordenança de gestió de residus.",
-   "nivel": "literal"
-  },
   "meritos": {
-   "valor": "Servicios prestados: 0,70 puntos por mes en la Administración Local (hasta 28 puntos en total); formación y valenciano hasta 2 puntos (valenciano hasta 1 punto)",
-   "cita": "Serveis prestats com a personal funcionari interí en el cos o escala o com a personal laboral",
+   "valor": "Servicios como interino o laboral temporal en la Administración Local: 0,70 puntos por mes (hasta 28 puntos en total de méritos profesionales); cursos y formación (hasta 2 puntos); valenciano (hasta 1 punto)",
+   "cita": "0,70 punts per mes treballat. Serveis prestats com a personal funcionari interí",
+   "nivel": "sin_signos"
+  },
+  "bolsa": {
+   "valor": "no",
+   "cita": "El nomenament derivat d'aquest procés de selecció en cap cas donarà lloc al reconeixement de la condició de funcionari de carrera",
    "nivel": "literal"
   }
  },
  "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Personal de neteja",
+   "cita": "Denominación de la plaza Personal de neteja Règim Personal laboral Fix"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "personal laboral fijo",
+   "cita": "Denominación de la plaza Personal de neteja Règim Personal laboral Fix"
+  },
   "publicaciones": {
    "motivo": "cita_no_literal",
-   "valor": "Boletín Oficial de la Provincia, sede electrónica https://valldegallinera.sedelectronica.es y tablón de anuncios del Ayuntamiento",
+   "valor": "Boletín Oficial de la Provincia, sede electrónica del Ayuntamiento (valldegallinera.sedelectronica.es) y tablón de anuncios",
    "cita": "les bases de la convocatòria es publicaran en el Butlletí Oficial de la Província i en la seu electrònica"
   },
-  "bolsa": {
+  "temas": {
    "motivo": "cita_no_literal",
-   "valor": "no",
-   "cita": "no se menciona bolsa de empleo en el texto"
+   "valor": 23,
+   "cita": "14. Ordenança de gestió de residus. Parte A y B del temario"
   }
  }
 }

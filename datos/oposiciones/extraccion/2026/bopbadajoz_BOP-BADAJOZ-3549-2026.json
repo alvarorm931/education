@@ -5,26 +5,28 @@
   "fuente": "BOP-BADAJOZ",
   "url": "https://www.dip-badajoz.es/bop/ventana_anuncio.php?id_anuncio=164276&FechaSolicitada=20260911000000",
   "fecha": "2026-09-11",
-  "huella": "0c83bb43b85dd80d6fd546a9a1002aa1a4551a7c354f33742a8476276317e19f"
+  "huella": "914750417da236002053f2fc92f1294cbd36cd5f5f7105c480296d1d8741ad40"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T07:39:45+00:00",
- "lote": "msgbatch_013q7o24qMms8ZNZdwMNkW1L",
+ "extraido": "2026-10-31T15:25:22+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
-  "grupo": {
-   "valor": "A2",
-   "cita": "Grupo A2, Nivel 20.",
+  "denominacion": {
+   "valor": [
+    "Gerente para la Dinamización Comercial"
+   ],
+   "cita": "una plaza temporal de Gerente para la Dinamización Comercial, funcionario/a interino/a, por el sistema de oposición",
    "nivel": "literal"
   },
   "vinculo": {
    "valor": "funcionario interino",
-   "cita": "provisión de una plaza temporal de Gerente para la Dinamización Comercial, funcionario/a interino/a, por el sistema de oposición",
+   "cita": "Nombramiento de funcionario interino.",
    "nivel": "literal"
   },
   "sistema": {
    "valor": "oposición",
-   "cita": "funcionario/a interino/a, por el sistema de oposición, se abre el plazo",
+   "cita": "por el sistema de oposición",
    "nivel": "literal"
   },
   "plazas_total": {
@@ -38,47 +40,47 @@
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "diez días hábiles desde el día siguiente a la publicación del anuncio en el Boletín Oficial de la Provincia de Badajoz",
-   "cita": "será de diez días hábiles a contar desde el día siguiente a la publicación de este anuncio",
+   "valor": "10 días hábiles desde el día siguiente a la publicación del anuncio en el BOP de Badajoz",
+   "cita": "se abre el plazo de presentación de solicitudes, que será de diez días hábiles a contar desde el día siguiente a la publicación",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Registro general del Ayuntamiento de Azuaga, o en la forma del artículo 16 de la Ley 39/2015, remitiendo justificante al correo secretaria@azuaga.badajoz.es",
+   "valor": "Registro general del Ayuntamiento, o en la forma del artículo 16 de la Ley 39/2015 con remisión del justificante al correo secretaria@azuaga.badajoz.es",
    "cita": "podrán presentarse en el registro general de este Ayuntamiento, en el plazo de 10 días hábiles",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Sede electrónica y tablón de anuncios municipal del Ayuntamiento de Azuaga",
+   "valor": "Sede electrónica y tablón de anuncios municipal",
    "cita": "Dicha lista se publicará en la sede electrónica y tablón de anuncios municipal",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Presentación y defensa de un proyecto (fase de oposición)"
+    "Presentación y defensa de un proyecto (hasta 5 puntos estructura y contenido; hasta 5 puntos defensa pública)"
    ],
    "cita": "Consistirá en la presentación y defensa de un proyecto en el que los candidatos deberán desarrollar",
    "nivel": "literal"
   },
   "bolsa": {
-   "valor": "sí, para cubrir bajas, vacaciones, ausencias, renuncias en el puesto de Gerente para Dinamización Comercial",
-   "cita": "A esta bolsa de trabajo podrá acudirse directamente cuando resulte necesario para cubrir posibles bajas",
+   "valor": "sí, para cubrir bajas, vacaciones, ausencias o renuncias en el puesto de Gerente para Dinamización Comercial, vigente hasta la finalización del programa",
+   "cita": "Esta bolsa permanecerá vigente hasta la finalización del programa.",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Compromiso de realizar posteriormente los cursos de formación específicos que imparta Extremadura Avante",
+   "cita": "Compromiso de realizar posteriormente los cursos de formación específicos que imparta Extremadura Avante",
    "nivel": "literal"
   }
  },
  "rechazados": {
-  "denominacion": {
-   "motivo": "cita_no_literal",
-   "valor": "Gerente para la Dinamización Comercial",
-   "cita": "se aprueba por decreto las bases y la convocatoria para la provisión de una plaza temporal de Gerente para la Dinamización Comercial"
-  },
   "titulacion": {
    "motivo": "cita_no_literal",
-   "valor": "Diplomado en Empresariales, Licenciatura en Economía, Licenciatura en Dirección y Administración de Empresas, Licenciatura en Marketing e Investigación de Mercados, o grado equivalente en administración y dirección de empresas, economía, publicidad y relaciones públicas, marketing e investigación de mercados y comercio",
+   "valor": "Diplomado en Empresariales, Licenciatura en Economía, Licenciatura en Dirección y Administración de Empresas o Licenciatura en Marketing e Investigación de Mercados, o grado equivalente en administración y dirección de empresas, economía, publicidad y relaciones públicas, marketing e investigación de mercados y comercio",
    "cita": "Deberá estar en posesión de cualquiera de las siguientes titulaciones: Titulación universitaria: Diplomado en Empresariales"
   },
   "otros_requisitos": {
    "motivo": "cita_no_literal",
-   "valor": "Residencia legal en España, capacidad funcional, tener cumplidos 16 años y no exceder la edad de jubilación forzosa, no estar inhabilitado para funciones similares, y compromiso de realizar cursos de formación específicos de Extremadura Avante",
+   "valor": "Residencia legal en España; capacidad funcional; tener cumplidos 16 años y no exceder la edad de jubilación forzosa; no estar inhabilitado; compromiso de realizar cursos de formación de Extremadura Avante",
    "cita": "Tener residencia legal en España. Poseer la capacidad funcional para el desempeño de las tareas."
   }
  }

@@ -5,11 +5,11 @@
   "fuente": "BOP-CIUDADREAL",
   "url": "https://bop.dipucr.es/bop/2023/09/27",
   "fecha": "2023-09-27",
-  "huella": "6a6c74a1d7b845c0a28884020ade705cec2e3b3b65adc376ba4e9933b221a2bc"
+  "huella": "9199e2764afdd2ea21dbd3fbfe54da3d265d358d5d76660a156f839c80d75b8b"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:57:56+00:00",
- "lote": "msgbatch_01SjfjDqJRwL6bpTvJz2YfVg",
+ "extraido": "2026-10-31T15:25:22+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
@@ -21,29 +21,30 @@
   },
   "vinculo": {
    "valor": "otro",
-   "cita": "constitución de una bolsa de empleo de Operario de Instalaciones Deportivas",
-   "nivel": "literal"
-  },
-  "sistema": {
-   "valor": "otro",
-   "cita": "constitución de una bolsa de empleo de Operario de Instalaciones Deportivas",
+   "cita": "constitución de una bolsa de empleo de Operario de Instalaciones Deportivas, en el Ayuntamiento de Daimiel",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
    "valor": "diez días naturales a partir del siguiente a la publicación de este anuncio en el Boletín Oficial de la Provincia de Ciudad Real",
-   "cita": "El plazo de presentación de solicitudes será de diez días naturales a partir del siguiente a la publicación de este anuncio en el Boletín Oficial de la Provincia de Ciudad Real.",
+   "cita": "El plazo de presentación de solicitudes será de diez días naturales a partir del siguiente a la publicación de este anuncio",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Página web www.daimiel.es y sede electrónica del Ayuntamiento",
+   "valor": "página web www.daimiel.es y sede electrónica del Ayuntamiento",
    "cita": "Las bases y el resto de información podrán consultarse en la página web: www.daimiel.es ; y en su sede electrónica.",
    "nivel": "literal"
   },
   "bolsa": {
-   "valor": "sí, bolsa de empleo para Operario de Instalaciones Deportivas",
-   "cita": "convocatoria para constitución de una bolsa de empleo de Operario de Instalaciones Deportivas",
+   "valor": "sí, para la constitución de una bolsa de empleo de Operario de Instalaciones Deportivas",
+   "cita": "constitución de una bolsa de empleo de Operario de Instalaciones Deportivas, en el Ayuntamiento de Daimiel",
    "nivel": "literal"
   }
  },
- "rechazados": {}
+ "rechazados": {
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "no inferido"
+  }
+ }
 }

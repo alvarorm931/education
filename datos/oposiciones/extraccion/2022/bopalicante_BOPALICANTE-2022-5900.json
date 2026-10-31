@@ -1,0 +1,50 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2022-5900",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2022-5900",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2022/08/26_162/2022_005900.pdf",
+  "fecha": "2022-08-26",
+  "huella": "d3232d8f174e48503e4fa84be6e7c84d945d394c696f14d9f7cfcbf697e55372"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T15:25:31+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
+ "no_son_bases": false,
+ "campos": {
+  "sistema": {
+   "valor": "concurso",
+   "cita": "Por Decreto de Alcaldía nº 2022-0928 de fecha 1 de agosto de 2022, se acuerda aprobar la ampliación",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Profesores/as y Monitores/as de la Escuela de Música y Danza (especialidades de Guitarra y Tuba)"
+   ],
+   "cita": "convocatoria y bases para la constitución de una Bolsa de Empleo para puestos de Trabajo Temporal de Profesores/as y Monitores/as"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "laboral temporal",
+   "cita": "Bolsa de Empleo para puestos de Trabajo Temporal de Profesores/as y Monitores/as de la Escuela de Música y Danza"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "desde el día siguiente de publicación de este edicto en el Boletín Oficial de la Provincia de Alicante",
+   "cita": "por la que se abre un nuevo plazo para la presentación de solicitudes desde el día siguiente de publicación de este edicto"
+  },
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Instancia oficial de solicitud disponible en el Registro General del Ayuntamiento y en la sede electrónica www.elpoblenoudebenitatxell.com",
+   "cita": "la instancia oficial de solicitud para participar en las pruebas está a disposición de todas las personas interesadas en el Registro General"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, bolsa de empleo para puestos de trabajo temporal de profesores/as y monitores/as de la Escuela de Música y Danza",
+   "cita": "para la constitución de una Bolsa de Empleo para puestos de Trabajo Temporal de Profesores/as y Monitores/as"
+  }
+ }
+}

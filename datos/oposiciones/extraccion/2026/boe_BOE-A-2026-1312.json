@@ -5,41 +5,36 @@
   "fuente": "BOP-PONTEVEDRA",
   "url": "https://boppo.depo.gal/web/boppo/detalle/-/boppo/2025/12/12/2025080021",
   "fecha": "2025-12-12",
-  "huella": "bfec52822228b5fd8638567a5622ce2aeccb7e32e4a29109f34d5fbbcbb1a481"
+  "huella": "a737ded401f7ef35135ca91849b824053b9ba3bce0914162592f7d5718dc0037"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:42:40+00:00",
- "lote": "msgbatch_01W17mR271uYfWYL6CuSdriL",
+ "extraido": "2026-10-31T15:25:18+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
-   "valor": "Oficial 3º Servizo de Augas",
-   "cita": "CONVOCATORIA E BASES REGULADORAS DO PROCESO SELECTIVO PARA A COBERTURA POR OPOSICIÓN, EN QUENDA LIBRE, DUNHA PRAZA VACANTE DE OFICIAL 3º SERVIZO DE AUGAS",
-   "nivel": "literal"
-  },
-  "grupo": {
-   "valor": "agrupación profesional",
-   "cita": "que figura como vacante no cadro de persoal/RPT do concello de Silleda",
+   "valor": "Oficial 3º Servizo de Augas (persoal laboral fixo, agrupación profesional)",
+   "cita": "COBERTURA POR OPOSICIÓN, EN QUENDA LIBRE, DUNHA PRAZA VACANTE DE OFICIAL 3º SERVIZO DE AUGAS, PERSOAL LABORAL FIXO",
    "nivel": "literal"
   },
   "vinculo": {
-   "valor": "personal laboral fixo",
-   "cita": "dunha (1) praza de OFICIAL 3º SERVIZO DE AUGAS, persoal laboral fixo, agrupación profesional",
+   "valor": "personal laboral fijo",
+   "cita": "Persoal laboral fixo, tal e como se detalla no cadro seguinte",
    "nivel": "literal"
   },
   "sistema": {
    "valor": "oposición",
-   "cita": "para a cobertura definitiva, mediante oposición, en quenda libre",
+   "cita": "O proceso selectivo será o de oposición. Cada exercicio da oposición terá carácter obrigatorio e eliminatorio",
    "nivel": "literal"
   },
   "plazas_total": {
    "valor": 1,
-   "cita": "dunha (1) praza de OFICIAL 3º SERVIZO DE AUGAS, persoal laboral fixo",
+   "cita": "dunha (1) praza de OFICIAL 3º SERVIZO DE AUGAS, persoal laboral fixo, agrupación profesional",
    "nivel": "literal"
   },
   "plazas_turno_libre": {
    "valor": 1,
-   "cita": "mediante oposición, en quenda libre, dunha (1) praza",
+   "cita": "en quenda libre, dunha (1) praza de OFICIAL 3º SERVIZO DE AUGAS",
    "nivel": "literal"
   },
   "titulacion": {
@@ -48,43 +43,48 @@
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Ter cumpridos 16 anos e non exceder a idade de xubilación forzosa; nacionalidade española o equivalente UE o residencia legal; permiso de condución clase B; capacidade funcional; non ter sido separado do servizo público por expediente disciplinario.",
+   "valor": "Idade: 16 anos cumpridos, sen exceder a idade máxima de xubilación forzosa; nacionalidade española o comunitaria, con excepcións; permiso de condución clase B; capacidade funcional; non ter sido separado do servizo público; galego CELGA 2 o equivalente.",
    "cita": "Ter cumpridos os 16 anos de idade e non exceder da idade máxima de xubilación forzosa.",
    "nivel": "literal"
   },
   "idioma_cooficial": {
-   "valor": "Galego: certificado CELGA 2 (ou superior) ou equivalente, o bien superar proba específica de lingua galega",
+   "valor": "Galego, CELGA 2 (ou superior) o equivalente; quen non o acredite fará una proba específica",
    "cita": "Estar en posesión do certificado CELGA 2 (ou superior) ou equivalente, debidamente homologado",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "20 días hábiles desde o día seguinte á publicación do anuncio de la convocatoria no Boletín Oficial del Estado",
+   "valor": "20 días hábiles desde el siguiente a la publicación del anuncio de la convocatoria en el BOE",
    "cita": "será de VINTE (20) DÍAS HÁBILES contados desde o seguinte ao de publicación do anuncio da convocatoria no Boletín Oficial del Estado",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Rexistro xeral do concello (Rúa Progreso 41, Silleda) ou Sede Electrónica do Concello de Silleda",
-   "cita": "no rexistro xeral do concello (Rúa Progreso, núm. 41, Silleda), ou de forma telemática na Sede Electrónica",
+   "valor": "Rexistro xeral do Concello (Rúa Progreso, 41, Silleda) o sede electrónica do Concello de Silleda",
+   "cita": "no rexistro xeral do concello (Rúa Progreso, núm. 41, Silleda), ou de forma telemática na Sede Electrónica do Concello de Silleda",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Taboleiro de anuncios electrónico do concello; BOP Pontevedra",
+   "valor": "Taboleiro de anuncios electrónico do Concello; anuncios de convocatoria no BOP de Pontevedra",
    "cita": "publicará no taboleiro de anuncios electrónico do concello",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Primeiro exercicio obrigatorio e eliminatorio: test de 40 preguntas máis 5 de reserva, 90 minutos",
-    "Segundo exercicio obrigatorio e eliminatorio: exame práctico de capacitación, máximo 90 minutos",
-    "Terceiro exercicio: proba de coñecemento da lingua galega, apto ou non apto, salvo exención CELGA 2"
+    "Primeiro: test de 40 preguntas más 5 de reserva, 90 minutos, obligatorio y eliminatorio (0-20, mínimo 10)",
+    "Segundo: exame práctico de capacitación, máximo 90 minutos, obligatorio y eliminatorio (0-35, mínimo 17,50)",
+    "Terceiro: proba de coñecemento da lingua galega, tradución, 30 minutos, APTO/NON APTO (exentos quen acredite CELGA 2)"
    ],
-   "cita": "A oposición constará de tres exercicios, eliminatorios cada un deles",
+   "cita": "Primeiro exercicio. Obrigatorio e eliminatorio. Consistirá na contestación por escrito, no prazo máximo de 90 minutos",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "no",
+   "cita": "Non obstante, na acta da última sesión do tribunal, incluirase unha relación complementaria",
    "nivel": "literal"
   },
   "temas": {
    "valor": 9,
-   "cita": "TEMA 9. Medidas de protección. Equipos de protección individual.",
-   "nivel": "literal"
+   "cita": "TEMA 9. Medidas de protección. Equipos de protección individual. Métodos xerais de protección de accidentes.",
+   "nivel": "contado"
   }
  },
  "rechazados": {}

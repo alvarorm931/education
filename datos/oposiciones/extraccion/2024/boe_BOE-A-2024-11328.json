@@ -5,104 +5,97 @@
   "fuente": "BOP-ALICANTE",
   "url": "https://www.dip-alicante.es/bop2/pdftotal/2024/04/23_77/2024_002742.pdf",
   "fecha": "2024-04-23",
-  "huella": "80f33d37a0831da68616b298a87aa29f44b07a89c4d2f05e3f153f40beddd9ea"
+  "huella": "785cb284e5def200720f5174baa9fb80840f4a5367df1b34810d0e4389907a5c"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:54:33+00:00",
- "lote": "msgbatch_01HRnX7cDVMkRZD7mBamCmLu",
+ "extraido": "2026-10-31T15:25:16+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
+  "grupo": {
+   "valor": "C1",
+   "cita": "dotada amb les retribucions bàsiques corresponents al grup C1",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "cobertura en propietat d'una plaça d'administratiu, pel sistema de concurs oposició",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "cobertura en propietat d'una plaça d'administratiu, pel sistema de concurs oposició",
+   "nivel": "literal"
+  },
   "titulacion": {
-   "valor": "Bachiller o equivalente, o en condiciones de obtenerlo al finalizar el plazo de presentación de instancias",
-   "cita": "Estar en possessió del títol de batxiller, o equivalent, o en condicions d'obtindre-ho",
+   "valor": "Título de bachiller o equivalente, o en condiciones de obtenerlo en la fecha en que finalice el plazo de presentación de instancias",
+   "cita": "Estar en possessió del títol de batxiller, o equivalent, o en condicions d'obtindre-ho en la data",
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Nacionalidad española o condiciones de acceso de nacionales de otros estados; capacidad funcional; tener 16 años y no exceder la edad máxima de jubilación; no haber sido separado de la Administración pública ni inhabilitado.",
-   "cita": "Posseir la nacionalitat espanyola o reunir les condicions d'accés a l'ocupació pública",
+   "valor": "Nacionalidad española o condiciones de acceso de nacionales de otros estados; capacidad funcional; tener 16 años cumplidos y no exceder la edad máxima de jubilación forzosa; no haber sido separado de la Administración pública ni inhabilitado",
+   "cita": "Tindre compliments setze anys i no excedir, si és el cas, de l'edat màxima de jubilació forçosa",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Coneixement del valencià valorat en fase de concurso: Grado Superior/Certificado de Capacitación/Maestro 5 puntos; Grado Medio 3; Grado Elemental 2; conocimiento oral 1",
+   "cita": "Coneixement del Valencià: Es valorarà fins a un màxim de 5 punts",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "Plazo de presentación de instancias, cuyo cómputo se inicia tras la publicación de las bases (plazo no indicado en el texto)",
-   "cita": "Les instàncies per a prendre part en la present convocatòria es dirigiran al Sr.",
+   "valor": "Plazo de presentación de instancias (no especificado en días en el texto)",
+   "cita": "Les instàncies per a prendre part en la present convocatòria es dirigiran al Sr. alcalde-president",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Preferentemente en la Sede Electrónica del Ayuntamiento (valldegallinera.sedelectronica.es) o en el Registro General del Ayuntamiento",
+   "valor": "Preferentemente en la Sede Electrónica del Ayuntamiento; también en el Registro General del Ayuntamiento",
    "cita": "Les instàncies es presentaran preferentment en la Seu Electrònica de l'Ajuntament de La Vall de Gallinera",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Primer ejercicio: prueba tipo test de 30 preguntas con cuatro opciones, 60 minutos, eliminatorio (mínimo 15 puntos)",
-    "Segundo ejercicio: supuesto práctico escrito en 90 minutos, eliminatorio (mínimo 15 puntos)"
+    "Primer ejercicio: prueba tipo test de 30 preguntas con cuatro opciones (60 minutos), eliminatorio, mínimo 15 puntos",
+    "Segundo ejercicio: supuesto práctico a elegir entre dos (90 minutos), eliminatorio, mínimo 15 puntos"
    ],
-   "cita": "La fase d'oposició estarà composta de 2 exercicis obligatoris i eliminatoris",
+   "cita": "Consistirà a respondre per escrit a un qüestionari de 30 preguntes amb quatre opcions de resposta",
    "nivel": "literal"
   },
   "meritos": {
-   "valor": "Servicios prestados hasta 20 puntos; cursos de formación hasta 10 puntos; otras titulaciones hasta 5 puntos; conocimiento de valenciano hasta 5 puntos (fase de concurso de 40 puntos máximo)",
-   "cita": "Es valorarà fins a un màxim de 5 punts, prèvia acreditació d'estar en possessió del certificat",
+   "valor": "Servicios prestados (máx. 20 puntos); cursos de formación (máx. 10 puntos); otras titulaciones (máx. 5 puntos); conocimiento del valenciano (máx. 5 puntos). Fase de concurso total 40 puntos",
+   "cita": "Es valorarà fins a un màxim de 20 punts la prestació dels següents servicis",
    "nivel": "literal"
   },
   "bolsa": {
-   "valor": "No consta",
-   "cita": "Només passaran a la fase de concurs aquelles persones aspirants que hagen superat la fase d'oposició.",
+   "valor": "sí, para constituir bolsa en el procedimiento de selección",
+   "cita": "procediment de selecció i constitució de bossa",
    "nivel": "literal"
   }
  },
  "rechazados": {
   "denominacion": {
    "motivo": "cita_no_literal",
-   "valor": [
-    "Administrativo/a"
-   ],
-   "cita": "cobertura en propiedad de una plaza de administrativo, por el sistema de concurso-oposición"
-  },
-  "grupo": {
-   "motivo": "cita_no_literal",
-   "valor": "C1",
-   "cita": "grupo C1 de los previstos en el artículo 76 del Real Decreto legislativo 5/2015"
-  },
-  "vinculo": {
-   "motivo": "cita_no_literal",
-   "valor": "funcionario de carrera",
-   "cita": "cobertura en propiedad de una plaza de administrativo"
+   "valor": "Plaza de Administrativo, Escala de Administración General, Subescala Administrativa",
+   "cita": "cobertura en propiedad d'una plaça d'administratiu, mitjançant el sistema de concurs-oposició"
   },
   "sistema": {
    "motivo": "cita_no_literal",
    "valor": "concurso-oposición",
-   "cita": "mediante el sistema de concurso-oposición"
-  },
-  "plazas_total": {
-   "motivo": "cita_no_literal",
-   "valor": 1,
-   "cita": "cobertura en propiedad de una plaça d'administratiu"
-  },
-  "plazas_turno_libre": {
-   "motivo": "valor_no_en_cita",
-   "valor": 1,
-   "cita": "El procés selectiu es realitza mitjançant concurs oposició lliure"
-  },
-  "plazas_discapacidad": {
-   "motivo": "valor_no_en_cita",
-   "valor": 0,
-   "cita": "les persones amb discapacitat en igualtat de condicions que els altres aspirants"
+   "cita": "mitjançant el sistema de concurs-oposició, que tot seguit es transcriuen"
   },
   "publicaciones": {
    "motivo": "cita_no_literal",
-   "valor": "Tablón de anuncios de la sede electrónica del Ayuntamiento, Boletín Oficial de la Provincia y Boletín Oficial del Estado",
+   "valor": "Tablón de anuncios de la sede electrónica del Ayuntamiento, Boletín Oficial de la Provincia y, en su caso, Boletín Oficial del Estado",
    "cita": "es publicarà en el tauler d'anuncis de la seu electrònica de l'Ajuntament de la Vall de Gallinera"
   },
   "temas": {
    "motivo": "valor_no_en_cita",
    "valor": 40,
-   "cita": "ANNEX I TEMA 1. La Constitució Espanyola de 1978."
+   "cita": "ANNEX I TEMA 1. La Constitució Espanyola de 1978"
   },
   "practicas_o_curso": {
    "motivo": "cita_no_literal",
-   "valor": "No consta",
-   "cita": "Plazo de presentación de documentos en veinte días hábiles tras la publicación de la relación de aprobados"
+   "valor": "no especificado",
+   "cita": "no aparece periodo de prácticas en el texto"
   }
  }
 }

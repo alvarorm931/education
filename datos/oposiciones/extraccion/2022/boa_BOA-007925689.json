@@ -1,0 +1,86 @@
+{
+ "proceso": "boa:BOA-007925689",
+ "documento": {
+  "id": "boa:BOA-007925689",
+  "fuente": "BOA",
+  "url": "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VERDOC&BASE=BOLE&SEC=BUSQUEDA_AVANZADA&DOCN=007925689",
+  "fecha": "2022-06-30",
+  "huella": "c2919436acf36410fa17ba54c053aac6f16a382579c5ac2894ba9ffe09657bd0"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T15:25:23+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "Cuerpo de Catedráticos de Universidad",
+   "cita": "para el ingreso en el Cuerpo de Catedráticos de Universidad, con arreglo a las siguientes",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "convocar concurso de acceso, por el sistema de turno libre, para el ingreso",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 39.98,
+   "cita": "Haber efectuado el pago de treinta y nueve euros con noventa y ocho céntimos (39,98 ) en concepto de derechos de participación.",
+   "nivel": "sin_signos"
+  },
+  "exenciones_tasa": {
+   "valor": "Discapacidad igual o superior al 33 por ciento; familias numerosas (exención total categoría especial, bonificación 50 por ciento general); víctimas del terrorismo; demandantes de empleo con requisitos",
+   "cita": "Tendrán exención del pago: Las personas con un grado de discapacidad igual o superior al 33 por ciento",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días naturales desde el día siguiente a la publicación de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes es de veinte días naturales contados a partir del día siguiente al de la publicación",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Formulario oficial electrónico en https://sede.unizar.es/solicita, con certificado electrónico, Cl@ve o claves NIP; documentación adjunta en formato electrónico",
+   "cita": "Las solicitudes, dirigidas al rector de la Universidad, se presentarán en el formulario oficial electrónico habilitado al efecto.",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón oficial electrónico de la Universidad (e-TOUZ), Boletín Oficial de Aragón y web de recursos humanos",
+   "cita": "Todos los actos administrativos en relación con el procedimiento que así lo requieran, se publicarán en el tablón oficial electrónico",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Acto de presentación con entrega de proyecto docente, proyecto investigador y currículum",
+    "Entrevista pública: exposición de hasta 60 minutos y debate con la comisión de hasta tres horas"
+   ],
+   "cita": "El concurso de acceso constará de una única prueba, consistente en una entrevista, realizada en sesión pública",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "No se valoran méritos con puntuación máxima; la comisión evalúa currículo, proyecto docente e investigador y propuesta de actuación académica",
+   "cita": "permita valorar su historial académico, docente e investigador y su proyecto docente e investigador",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "no",
+   "cita": "Los nombramientos propuestos por la correspondiente comisión de acceso serán efectuados por el rector",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "no",
+   "cita": "para adquirir la condición de funcionario de carrera, el candidato propuesto deberá prestar acto de acatamiento",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "la presente convocatoria establece el acceso a plazas de cuerpos docentes universitarios"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "La plaza convocada es la que figura en el anexo I de la presente Resolución."
+  }
+ }
+}

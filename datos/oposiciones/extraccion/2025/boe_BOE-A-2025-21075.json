@@ -5,16 +5,16 @@
   "fuente": "BOE",
   "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2025-21075",
   "fecha": "2025-10-20",
-  "huella": "e3d7ae9cc75f59cb93e7e8f6b8ad8da8e881cbb16b122416f607ae16e12a02ad"
+  "huella": "9a026d1907c6aa33acbfe16f2716bcf58634a6e568a1757d6ae74c0ae3b89eed"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:41:11+00:00",
- "lote": "msgbatch_01UNq3BNhPPHoTK3TEJzun1h",
+ "extraido": "2026-10-31T15:25:36+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
    "valor": "Oficial Laboratorio (Electrónica)",
-   "cita": "provisión, mediante oposición, de dos plazas vacantes del puesto de trabajo de Oficial Laboratorio (Electrónica)",
+   "cita": "provisión, mediante procedimiento de ingreso, por el sistema de oposición, de dos plazas del puesto de trabajo de Oficial Laboratorio (Electrónica)",
    "nivel": "literal"
   },
   "grupo": {
@@ -22,9 +22,19 @@
    "cita": "de régimen funcionarial y nivel C, al servicio de la Universidad Pública de Navarra",
    "nivel": "literal"
   },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "nombrará personal funcionario de la Universidad Pública de Navarra, para desempeñar el puesto de trabajo de Oficial Laboratorio",
+   "nivel": "literal"
+  },
   "sistema": {
    "valor": "oposición",
    "cita": "provisión, mediante procedimiento de ingreso, por el sistema de oposición, de dos plazas",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 2,
+   "cita": "Aprobar la convocatoria para la provisión, mediante procedimiento de ingreso, por el sistema de oposición, de dos plazas",
    "nivel": "literal"
   },
   "plazas_turno_libre": {
@@ -38,13 +48,13 @@
    "nivel": "literal"
   },
   "titulacion": {
-   "valor": "Título de Bachiller o Formación Profesional de Segundo Grado, o título declarado equivalente",
-   "cita": "Estar en posesión del título de Bachiller o Formación Profesional de Segundo Grado, o título declarado equivalente",
+   "valor": "Bachiller o Formación Profesional de Segundo Grado, o título declarado equivalente",
+   "cita": "Estar en posesión del título de Bachiller o Formación Profesional de Segundo Grado, o título declarado equivalente a alguno de los anteriores",
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Nacionalidad española, de Estado miembro de la UE o de Estado con tratados de libre circulación; tener 16 años y no exceder la edad de jubilación forzosa; capacidad física y psíquica; no estar inhabilitado para funciones públicas",
-   "cita": "Tener cumplidos dieciséis años y no exceder, en su caso, de la edad máxima de jubilación forzosa",
+   "valor": "Nacionalidad española, de Estado miembro de la UE o de Estado con tratados de libre circulación; tener 16 años cumplidos y no exceder la edad de jubilación forzosa; capacidad física y psíquica; no estar inhabilitado para funciones públicas.",
+   "cita": "Tener cumplidos dieciséis años y no exceder, en su caso, de la edad máxima de jubilación forzosa.",
    "nivel": "literal"
   },
   "tasa_euros": {
@@ -52,19 +62,32 @@
    "cita": "La tasa por la prestación de los servicios necesarios para la realización del proceso selectivo será de 26 euros.",
    "nivel": "literal"
   },
+  "exenciones_tasa": {
+   "valor": "Personas con discapacidad reconocida de grado igual o superior al 33 por 100; personas inscritas como demandantes de empleo al menos un mes antes de la publicación.",
+   "cita": "Estarán exentas del pago de la tasa: a) Las personas con discapacidad reconocida, de grado igual o superior al 33 por 100.",
+   "nivel": "literal"
+  },
   "plazo_solicitudes": {
-   "valor": "Veinte días naturales desde el día siguiente a la publicación en el Boletín Oficial de Navarra",
+   "valor": "Veinte días naturales contados a partir del día siguiente al de publicación en el Boletín Oficial de Navarra",
    "cita": "deberá realizarse en el plazo de veinte días naturales contados a partir del día siguiente al de su publicación en el «Boletín Oficial de Navarra»",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Telemática a través de la sede electrónica de la Universidad Pública de Navarra, botón «Iniciar trámite»",
+   "valor": "Telemática a través de la sede electrónica de la Universidad Pública de Navarra, botón «Iniciar trámite», adjuntando documentación escaneada",
    "cita": "deberán presentar y formalizar adecuadamente su solicitud de forma telemática a través de la sede electrónica de la Universidad Pública de Navarra",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Tablón Electrónico de la Universidad Pública de Navarra (enlace indicado), además del BON y BOE cuando se indica",
+   "valor": "Tablón Electrónico de la Universidad Pública de Navarra (y BON y BOE en los casos previstos)",
    "cita": "se realizarán en el siguiente enlace del Tablón Electrónico de la Universidad Pública de Navarra",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Primera prueba: test de preguntas con alternativas, partes General y Específica, máximo 40 puntos, eliminatoria",
+    "Segunda prueba: ejercicios teórico, práctico y/o teórico-práctico de la Parte Específica, máximo 60 puntos, eliminatoria"
+   ],
+   "cita": "Primera prueba. Consistirá en contestar por escrito a un cuestionario de preguntas tipo test con varias alternativas de respuesta para cada pregunta",
    "nivel": "literal"
   },
   "temas": {
@@ -72,45 +95,22 @@
    "cita": "Tema 41. Señalización en los lugares de trabajo: colores de seguridad.",
    "nivel": "literal"
   },
+  "meritos": {
+   "valor": "Ninguno: el sistema de selección es oposición sin fase de concurso de méritos",
+   "cita": "Los empates que se produzcan se dirimirán a favor de quienes obtengan mayor puntuación en la segunda prueba.",
+   "nivel": "literal"
+  },
   "bolsa": {
-   "valor": "sí, para constituir lista de aspirantes a la contratación temporal con quienes no obtengan plaza",
-   "cita": "constituir, con los aspirantes que no obtengan plaza en el procedimiento selectivo de ingreso, una relación de aspirantes a la contratación temporal",
+   "valor": "sí, lista de aspirantes a la contratación temporal con aprobados sin plaza y con aspirantes que no hayan resultado aprobados sin plaza",
+   "cita": "se constituirán las siguientes listas de aspirantes a la contratación con aquellas personas aspirantes que hayan participado en el proceso selectivo",
    "nivel": "literal"
   }
  },
  "rechazados": {
-  "vinculo": {
-   "motivo": "cita_no_literal",
-   "valor": "funcionario de carrera",
-   "cita": "Universidad Pública de Navarra, Puesto de trabajo de Oficial Laboratorio (Electrónica) de régimen funcionarial"
-  },
-  "plazas_total": {
-   "motivo": "valor_no_en_cita",
-   "valor": 2,
-   "cita": "Una plaza en el turno libre. Una plaza en el turno de promoción."
-  },
-  "exenciones_tasa": {
-   "motivo": "cita_no_literal",
-   "valor": "Personas con discapacidad reconocida igual o superior al 33 por 100; personas inscritas como demandantes de empleo al menos un mes antes de la publicación",
-   "cita": "Estarán exentas del pago de la tasa: Las personas con discapacidad reconocida, de grado igual o superior al 33 por 100."
-  },
-  "ejercicios": {
-   "motivo": "cita_no_literal",
-   "valor": [
-    "Primera prueba: test con varias alternativas sobre Partes General y Específica, eliminatoria (0-40 puntos), máximo dos horas",
-    "Segunda prueba: ejercicios teórico, práctico y/o teórico-práctico de la Parte Específica, eliminatoria (0-60 puntos), máximo tres horas"
-   ],
-   "cita": "La oposición constará de las siguientes pruebas: Primera prueba. Consistirá en contestar por escrito a un cuestionario de preguntas tipo test"
-  },
-  "meritos": {
-   "motivo": "cita_no_literal",
-   "valor": "No se valoran méritos en el concurso; el sistema es oposición",
-   "cita": "Sistema de oposición con dos pruebas eliminatorias; no se contemplan méritos de concurso"
-  },
   "practicas_o_curso": {
    "motivo": "cita_no_literal",
-   "valor": "no",
-   "cita": "Nombramiento de personal funcionario de la Universidad Pública de Navarra para desempeñar el puesto de trabajo"
+   "valor": "no se establece periodo de prácticas ni curso selectivo",
+   "cita": "Se abrirá un plazo de diez días hábiles para la presentación de la documentación que acredite estar en posesión de los siguientes requisitos"
   }
  }
 }

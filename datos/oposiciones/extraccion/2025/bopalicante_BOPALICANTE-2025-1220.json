@@ -5,11 +5,11 @@
   "fuente": "BOP-ALICANTE",
   "url": "https://www.dip-alicante.es/bop2/pdftotal/2025/02/21_36/2025_001220.pdf",
   "fecha": "2025-02-21",
-  "huella": "ff1a3c7434ac774a7c953e4f622dd467f79870dc06d9f2623bc244183b3772e3"
+  "huella": "adb0b69356980d9aad30347de7235ea6d6fa18814c55de6ef400c4c969464acd"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:46:49+00:00",
- "lote": "msgbatch_01MQzQCLMZKxUrrPMAj7dr53",
+ "extraido": "2026-10-31T15:25:27+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
@@ -19,7 +19,12 @@
   },
   "grupo": {
    "valor": "A2",
-   "cita": "Grup/Subgrup A2 – FUNCIONARI INTERÍ DE PROGRAMA CD: 23",
+   "cita": "Grup/Subgrup A2 – FUNCIONARI INTERÍ DE PROGRAMA CD: 23 C.E. 9.122,01 € ANUALS",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario interino",
+   "cita": "la plaça d´un funcionari interí per a programa temporal",
    "nivel": "literal"
   },
   "sistema": {
@@ -33,26 +38,22 @@
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "diez días hábiles a contar desde el día siguiente a la publicación de este anuncio en el Boletín Oficial de la Provincia",
-   "cita": "serà de deu dies hàbils a comptar des de l'endemà a la publicació d'aquest anunci en el Butlletí Oficial de la Província",
+   "valor": "deu dies hàbils a comptar des de l'endemà a la publicació d'aquest anunci en el Butlletí Oficial de la Província",
+   "cita": "el termini de presentació de sol·licituds, que serà de deu dies hàbils a comptar des de l'endemà",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Sede electrónica del Ayuntamiento de La Vall de Gallinera y Tablón de Anuncios",
-   "cita": "Tots els següents anuncis relacionats amb aquesta convocatòria es publicaran a la seu electrònica d’aquest ajuntament",
+   "valor": "Seu electrònica de l'Ajuntament (https://valldegallinera.sedelectronica.es) i Tauler d'Anuncis",
+   "cita": "Tots els següents anuncis relacionats amb aquesta convocatòria es publicaran a la seu electrònica d'aquest ajuntament",
    "nivel": "literal"
   },
-  "bolsa": {
-   "valor": "no",
-   "cita": "Els següents anuncis relacionats amb aquesta convocatòria es publicaran a la seu electrònica",
+  "ejercicios": {
+   "valor": [
+    "Oposició (sin detalle de ejercicios en el anuncio; consultar las bases publicadas en la sede electrónica)"
+   ],
+   "cita": "Sistema de selecció Oposició S'obri el termini de presentació de sol·licituds",
    "nivel": "literal"
   }
  },
- "rechazados": {
-  "vinculo": {
-   "motivo": "cita_no_literal",
-   "valor": "funcionario interino",
-   "cita": "la plaça d´un funcionari interí per a desenvolupar el programa de treball temporal"
-  }
- }
+ "rechazados": {}
 }

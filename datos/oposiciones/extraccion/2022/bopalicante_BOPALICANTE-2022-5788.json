@@ -1,0 +1,48 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2022-5788",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2022-5788",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2022/08/05_148/2022_005788.pdf",
+  "fecha": "2022-08-05",
+  "huella": "79e0f75054c7af00dbabb60bb9a876d3c0433417b42b25d7332e0eba4f34f8f1"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T15:25:33+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
+ "no_son_bases": false,
+ "campos": {
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mediante el procedimiento concurso -oposición.",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de edictos municipal y sede electrónica del Ayuntamiento",
+   "cita": "Los sucesivos anuncios relacionados con la presente convocatoria se publicarán únicamente en el tablón de edictos municipal",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Técnico/a de Administración General (TAG) - bolsa de trabajo temporal",
+   "cita": "Bases Específicas Reguladoras de la Convocatoria 22/18 para la constitución de una bolsa de trabajo temporal de Técnico/a de Administración General"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "laboral temporal",
+   "cita": "para la constitución de una bolsa de trabajo temporal de Técnico/a de Administración General"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "10 días naturales, contados a partir del día siguiente al de la publicación del anuncio en el Boletín Oficial de la Provincia",
+   "cita": "El plazo de presentación de instancias será de 10 días naturales, contados a partir del día siguiente"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, bolsa de trabajo temporal de Técnico/a de Administración General",
+   "cita": "para la constitución de una bolsa de trabajo temporal de Técnico/a de Administración General"
+  }
+ }
+}

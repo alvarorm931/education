@@ -5,64 +5,57 @@
   "fuente": "BOP-TOLEDO",
   "url": "https://bop.diputoledo.es/webEbop/DocGet?id=22103819;0&insert_number=5439&insert_year=2022",
   "fecha": "2022-11-02",
-  "huella": "08736cca1c966c7ab6ea34887af78f6deba467420cbb25aa49400c93724b12d4"
+  "huella": "dda866e3492e8cc61e1a2141c5b489aa529961e054f3c7436e0abbee24027d1e"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:57:27+00:00",
- "lote": "msgbatch_01B4ETF5xB4buYCHqPiHTXzF",
+ "extraido": "2026-10-31T15:25:45+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
    "valor": [
     "Gerocultor/ra/Auxiliar Enfermería"
    ],
-   "cita": "Bases para la ampliación de la Bolsa de empleo para Gerocultor/ra/ Auxiliar Enfermería",
-   "nivel": "literal"
-  },
-  "vinculo": {
-   "valor": "laboral temporal",
-   "cita": "RÉGIMEN DE CONTRATACIÓN LABORAL DE CARÁCTER TEMPORAL DEL AYUNTAMIENTO DE CARMENA",
+   "cita": "BASES QUE HAN DE REGIR LA CONVOCATORIA PARA LA AMPLIACIÓN DE LA BOLSA DE EMPLEO PARA EL PUESTO DE GEROCULTOR/RA/AUXILIAR ENFERMERÍA",
    "nivel": "literal"
   },
   "sistema": {
    "valor": "concurso",
-   "cita": "proceso selectivo, mediante concurso, para la ampliación de la Bolsa de Empleo",
+   "cita": "el proceso de selección de los aspirantes, será el concurso de méritos",
    "nivel": "sin_signos"
   },
   "otros_requisitos": {
-   "valor": "Nacionalidad española o de la UE (o residencia legal según art. 57.4 Ley 7/2007); tener 18 años y no exceder edad máxima de jubilación forzosa; capacidad funcional; no haber sido separado del servicio público ni inhabilitado",
+   "valor": "Nacionalidad española o de la UE (o con residencia legal conforme al art. 57.4 Ley 7/2007); tener 18 años y no exceder la edad de jubilación forzosa; capacidad funcional; no haber sido separado del servicio de las AAPP ni estar inhabilitado",
    "cita": "Tener cumplidos dieciocho años y no exceder de la edad máxima de jubilación forzosa",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "diez días hábiles desde el día siguiente a la publicación de las bases en el Boletín Oficial de la provincia de Toledo",
-   "cita": "dentro del plazo de diez días hábiles, a contar desde el día siguiente al de la publicación de estas bases",
+   "valor": "diez días hábiles desde el día siguiente a la publicación de las bases en el BOP de Toledo",
+   "cita": "dentro del plazo de diez días hábiles, a contar desde el día siguiente al de la publicación",
    "nivel": "sin_signos"
   },
   "presentacion": {
-   "valor": "Registro general del Ayuntamiento o en cualquiera de las formas del artículo 16.4 de la Ley 39/2015",
-   "cita": "en el registro general del Ayuntamiento o en cualquiera de las formas que determina el artículo 16.4 de la Ley 39/2015",
+   "valor": "En el registro general del Ayuntamiento o en cualquiera de las formas del artículo 16.4 de la Ley 39/2015",
+   "cita": "en el registro general del Ayuntamiento o en cualquiera de las formas que determina el artículo 16.4",
    "nivel": "literal"
   },
-  "ejercicios": {
-   "valor": [
-    "Concurso de méritos: experiencia profesional y méritos académicos (cursos)"
-   ],
-   "cita": "El proceso de selección de los aspirantes, será el concurso de méritos.",
-   "nivel": "sin_signos"
-  },
   "meritos": {
-   "valor": "Experiencia en entidad pública 0,20 puntos/mes (máx. 5); en entidad privada 0,15 puntos/año (máx. 3); cursos de formación según horas (máx. 2 puntos)",
-   "cita": "Por haber desempeñado el puesto en una entidad pública 0,20 puntos por cada mes, con un máximo de 5 puntos.",
+   "valor": "Experiencia profesional: 0,20 puntos por mes en entidad pública (máx. 5) y 0,15 puntos por año en entidad privada (máx. 3). Méritos académicos: cursos de 10 a más de 300 horas de 0,10 a 0,60 puntos; máximo 2 puntos",
+   "cita": "Por haber desempeñado el puesto en una entidad pública 0,20 puntos por cada mes, con un máximo de 5 puntos",
    "nivel": "sin_signos"
   },
   "bolsa": {
-   "valor": "sí, para cubrir de forma temporal necesidades por vacante temporal, sustitución transitoria, programas temporales o exceso de tareas",
-   "cita": "La Bolsa de Empleo permanecerá en vigor hasta que formalmente así se indique en una convocatoria posterior.",
+   "valor": "sí, para la contratación temporal (ampliación de la Bolsa de Empleo) por las circunstancias de vacante, sustitución, programas temporales o exceso de tareas",
+   "cita": "La Bolsa de Empleo permanecerá en vigor hasta que formalmente así se indique en una convocatoria posterior",
    "nivel": "literal"
   }
  },
  "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "laboral temporal",
+   "cita": "contratación en régimen de derecho laboral, con carácter temporal"
+  },
   "titulacion": {
    "motivo": "cita_no_literal",
    "valor": "Técnico (grado medio) en Cuidados Auxiliares de Enfermería, o de Técnico Auxiliar de Atención a Personas en situación de Dependencia, o de Técnico en Atención Sociosanitaria",
@@ -70,8 +63,13 @@
   },
   "publicaciones": {
    "motivo": "cita_no_literal",
-   "valor": "Tablón de anuncios del Ayuntamiento y página web; anuncios en el Boletín Oficial de la provincia de Toledo",
-   "cita": "Tras la publicación de las presentes Bases en el Boletín Oficial de la provincia de Toledo, los sucesivos anuncios del proceso selectivo se harán públicos en el tablón de Anuncios del Ayuntamiento y en la página Web."
+   "valor": "Tablón de anuncios del Ayuntamiento y página web del Ayuntamiento",
+   "cita": "los sucesivos anuncios del proceso selectivo se harán públicos en el tablón de Anuncios del Ayuntamiento y en la página Web"
+  },
+  "practicas_o_curso": {
+   "motivo": "cita_no_literal",
+   "valor": "no aparece en el texto",
+   "cita": "no aparece"
   }
  }
 }

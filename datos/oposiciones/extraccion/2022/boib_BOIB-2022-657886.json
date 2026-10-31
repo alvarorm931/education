@@ -1,0 +1,92 @@
+{
+ "proceso": "boib:BOIB-2022-657886",
+ "documento": {
+  "id": "boib:BOIB-2022-657886",
+  "fuente": "BOIB",
+  "url": "https://www.caib.es/eboibfront/es/2022/11527/657886/resolucion-de-la-gerente-de-la-fundacion-de-atenci",
+  "fecha": "2022-02-17",
+  "huella": "12d61e63068a01448c8244b756c849707d0066c0baf6896a9f4142522e707b5e"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T15:24:09+00:00",
+ "lote": "msgbatch_01QGBJzFrJk89N3kyh4ZuSEx",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "cubrir las necesidades de contratación temporal de personal de la categoría de AUXILIAR TÉCNICO/A SOCIOSANITARIO/A",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "La selección se hará mediante el procedimiento de concurso de méritos, de acuerdo con el baremo",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Técnico/a en atención a personas en situación de dependencia, Técnico/a en cuidados de auxiliares de enfermería, o títulos de formación profesional oficiales equivalentes (grado medio)",
+   "cita": "Estar en posesión de alguna de las titulaciones siguientes: - Titulo de formación profesional de grado medio de técnico/a en atención a personas en situación de dependencia",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española, de la UE o en las condiciones del art. 57 TREBEP; 16 años cumplidos y no haber llegado a la edad de jubilación; capacidad física y psíquica para las funciones; no haber sido separado del servicio de ninguna Administración pública ni inhabilitado.",
+   "cita": "Tener 16 años cumplidos y no haber llegado a la edad de jubilación.",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "catalán, nivel B1 o equivalente",
+   "cita": "Estar en posesión del certificado de conocimientos de lengua catalana nivel B1 o equivalente.",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "diez días naturales desde el día siguiente a la publicación de la convocatoria en el BOIB",
+   "cita": "El plazo de presentación de las solicitudes es de diez días naturales, a contar desde el día siguiente a la fecha de publicación",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Presencial en la sede de la Fundación (Avda. Gabriel Alomar, 33, Palma), Servicio de Tutela (C/ Morlá, 13), oficinas de Inca y Manacor, de lunes a viernes 9-14 h, o por correo ordinario.",
+   "cita": "Las solicitudes se presentarán, de lunes a viernes, de las 9:00 horas a las 14:00 horas, en los lugares siguientes",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de anuncios y página web de la Fundación (listas de admitidos/excluidos y valoraciones)",
+   "cita": "se publicarán en el tablón de anuncios y en la página web de la Fundación las relaciones provisionales de personas admitidas y excluidas",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Concurso de méritos (sin ejercicios escritos)"
+   ],
+   "cita": "La selección se hará mediante el procedimiento de concurso de méritos, de acuerdo con el baremo",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Experiencia profesional hasta 50 puntos; méritos académicos y formación hasta 40; docencia hasta 3; publicaciones hasta 1; idiomas hasta 1; conocimientos de catalán hasta 5. Total máximo 100 puntos.",
+   "cita": "La puntuación máxima es de 100 puntos.",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, para contrataciones temporales de Auxiliar Técnico/a Sociosanitario/a en Mallorca, vigente tres años",
+   "cita": "La bolsa estará vigente durante un plazo de tres años desde la fecha de publicación de las valoraciones definitivas",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "AUXILIAR TÉCNICO/A SOCIOSANITARIO/A"
+   ],
+   "cita": "constituir una bolsa de trabajo para cubrir temporalmente puestos de trabajo de la categoría de AUXILIAR TÉCNICO/A SOCIOSANITARIO/A"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 0,
+   "cita": "constituir una bolsa de trabajo para cubrir las necesidades de contratación temporal"
+  },
+  "plazas_discapacidad": {
+   "motivo": "valor_no_numerico",
+   "valor": "7% del total de los puestos de trabajo de la Fundación",
+   "cita": "se ofrecerá a las personas con discapacidad igual o superior al 33% el 7% del total de los puestos de trabajo"
+  }
+ }
+}

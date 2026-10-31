@@ -5,21 +5,21 @@
   "fuente": "DOE",
   "url": "https://doe.juntaex.es/otrosFormatos/html.php?xml=2024064110&anio=2024&doe=2490o",
   "fecha": "2024-12-26",
-  "huella": "5319a6e00b166985da914046582d0d30b01b47f3085bd88d7a8ac408cb9a2faf"
+  "huella": "c4f73d8aae1209594086f003476492865b466768dae2588fb6688f2056ef0ec6"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:49:47+00:00",
- "lote": "msgbatch_018TPQE8scQozfAUdc1n8RyC",
+ "extraido": "2026-10-31T15:25:47+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
    "valor": "Facultativo/a Especialista de Área",
-   "cita": "se convoca proceso selectivo para cubrir 230 plazas básicas, por el sistema de concurso oposición en la categoría de Facultativo/a Especialista de Área",
+   "cita": "Se convoca proceso selectivo para cubrir 230 plazas básicas, por el sistema de concurso oposición en la categoría de Facultativo/a Especialista de Área",
    "nivel": "literal"
   },
   "vinculo": {
    "valor": "personal estatutario fijo",
-   "cita": "la condición de personal estatutario fijo del Servicio Extremeño de Salud antes de su toma de posesión",
+   "cita": "la condición de personal estatutario fijo del Servicio Extremeño de Salud",
    "nivel": "literal"
   },
   "sistema": {
@@ -32,9 +32,14 @@
    "cita": "Se convoca proceso selectivo para cubrir 230 plazas básicas, por el sistema de concurso oposición",
    "nivel": "literal"
   },
+  "titulacion": {
+   "valor": "Titulación de especialista según anexo I",
+   "cita": "En el anexo I de esta resolución se clasifican las plazas que se convocan por especialidades y turnos de acceso con expresión del requisito de titulación imprescindible",
+   "nivel": "literal"
+  },
   "otros_requisitos": {
-   "valor": "Nacionalidad de Estado miembro de la UE o familiares; exención de nacionalidad para extracomunitarios en especialidades médicas; discapacidad igual o superior al 33% para el turno de discapacidad",
-   "cita": "Para ser admitidos a la realización del presente proceso selectivo, los aspirantes deberán reunir los siguientes requisitos",
+   "valor": "Nacionalidad (con excepciones), cumplir edad y capacidad funcional; acreditar discapacidad en turno reservado; participar en un solo turno",
+   "cita": "Todos los requisitos establecidos anteriormente deberán cumplirse en la fecha en que finalice el plazo de presentación de instancias",
    "nivel": "literal"
   },
   "tasa_euros": {
@@ -43,21 +48,31 @@
    "nivel": "literal"
   },
   "exenciones_tasa": {
-   "valor": "Bonificación del 50% (19,26 euros) para desempleados al menos tres meses; exención para discapacidad, víctimas de terrorismo y violencia de género",
+   "valor": "Bonificación del 50% (19,26 euros) para desempleados al menos tres meses; exención para grado de discapacidad, víctimas de terrorismo y violencia de género",
    "cita": "El importe de la tasa se bonificará en un 50% para los aspirantes que se encuentren en situación legal de desempleo",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "veinte días hábiles desde el día siguiente a la publicación en el DOE",
-   "cita": "El plazo de presentación de solicitudes será de veinte días hábiles contados a partir del día siguiente al de la fecha de publicación",
+   "valor": "veinte días hábiles desde el día siguiente a la publicación en el Diario Oficial de Extremadura",
+   "cita": "El plazo de presentación de solicitudes será de veinte días hábiles contados a partir del día siguiente",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Telemáticamente a través del Portal de Selección de Personal del Servicio Extremeño de Salud, con firma digital",
+   "cita": "No se admitirá ninguna solicitud que no haya sido cumplimentada, generada, tramitada y registrada exclusivamente a través de la mencionada plataforma tecnológica",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Portal de Selección de Personal del SES (apartado Publicaciones) y Diario Oficial de Extremadura",
+   "cita": "Todas las publicaciones de convocatorias, anexos, listados, resoluciones y cualquier otro acto administrativo relacionado con la gestión del proceso selectivo",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Fase de oposición: examen de 60 puntos sobre el temario de la categoría",
-    "Fase de concurso: méritos valorados hasta 40 puntos"
+    "Fase de oposición: ejercicio sobre el temario (60 puntos)",
+    "Fase de concurso: baremo de méritos (40 puntos)"
    ],
-   "cita": "la puntuación máxima del proceso selectivo es de 100 puntos, distribuidos de forma que a la fase de oposición le corresponden 60 puntos",
+   "cita": "La puntuación máxima del proceso selectivo es de 100 puntos, distribuidos de forma que a la fase de oposición le corresponden 60 puntos",
    "nivel": "literal"
   },
   "temas": {
@@ -66,7 +81,7 @@
    "nivel": "literal"
   },
   "meritos": {
-   "valor": "Fase de concurso, puntuación máxima 40 puntos: estudios de licenciatura o grado (1,5), estudios oficiales de posgrado (1,5), formación continuada, experiencia profesional, publicaciones y docencia (5)",
+   "valor": "Expediente de licenciatura/grado (1,5), posgrado oficial (1,5), formación continuada, experiencia profesional, publicaciones y docencia; puntuación máxima 40",
    "cita": "La puntuación máxima total será de 40 puntos.",
    "nivel": "literal"
   },
@@ -76,31 +91,5 @@
    "nivel": "literal"
   }
  },
- "rechazados": {
-  "plazas_promocion_interna": {
-   "motivo": "valor_no_numerico",
-   "valor": "sin cifra en el texto",
-   "cita": "Las plazas correspondientes al turno de promoción interna no podrán, en ningún caso, acumularse a las de turno libre"
-  },
-  "plazas_discapacidad": {
-   "motivo": "valor_no_numerico",
-   "valor": "sin cifra en el texto",
-   "cita": "Las plazas que queden sin cubrir de las reservadas para el turno de discapacidad se acumularán a las ofertadas en el turno libre"
-  },
-  "presentacion": {
-   "motivo": "cita_no_literal",
-   "valor": "Telemática a través del Portal de Selección de Personal del Servicio Extremeño de Salud, con firma digital y pago en la Pasarela de Pagos de la Junta",
-   "cita": "Las solicitudes se cumplimentarán, generarán y registrarán exclusivamente a través de la plataforma telemática del portal"
-  },
-  "publicaciones": {
-   "motivo": "cita_no_literal",
-   "valor": "Portal de Selección de Personal del SES (apartado Publicaciones) y Diario Oficial de Extremadura",
-   "cita": "Todas las publicaciones de convocatorias, anexos, listados, resoluciones se realizarán a través del apartado Publicaciones del Portal"
-  },
-  "practicas_o_curso": {
-   "motivo": "cita_no_literal",
-   "valor": "no",
-   "cita": "Tras aprobar"
-  }
- }
+ "rechazados": {}
 }

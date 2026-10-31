@@ -5,58 +5,62 @@
   "fuente": "BOP-CORDOBA",
   "url": "https://bop.dipucordoba.es/dia/09-05-2023",
   "fecha": "2023-05-09",
-  "huella": "9c932c98391a36865645ce03f92ae4a3f9512642322c67d776526faa000a2672"
+  "huella": "8f329ec6ffe0b2581eca7900d29e3b9e9ed0e444b1000104272915651beab614"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:59:09+00:00",
- "lote": "msgbatch_012nGabRM1G4b7cEKJh1Bcx1",
+ "extraido": "2026-10-31T15:25:33+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
    "valor": [
     "Oficial de primera electromecánico de vehículos"
    ],
-   "cita": "provisión en propiedad por promoción externa, de 3 PLAZAS DE OFICIAL DE PRIMERA ELECTROMECÁNICO DE VEHÍCULOS",
+   "cita": "3 PLAZAS DE OFICIAL DE PRIMERA ELECTROMECÁNICO DE VEHÍCULOS, MEDIANTE UN SISTEMA DE SELECCIÓN CONCURSO-OPOSICIÓN",
    "nivel": "literal"
   },
   "vinculo": {
    "valor": "personal laboral fijo",
-   "cita": "provisión en propiedad por promoción externa, de 3 PLAZAS DE OFICIAL DE PRIMERA ELECTROMECÁNICO DE VEHÍCULOS",
-   "nivel": "literal"
-  },
-  "sistema": {
-   "valor": "concurso-oposición",
-   "cita": "mediante un sistema de selección concurso-oposición, correspondientes a la Tasa de Reposición 2021",
+   "cita": "la provisión en propiedad por promoción externa, de 3 PLAZAS",
    "nivel": "literal"
   },
   "plazas_total": {
    "valor": 3,
-   "cita": "provisión en propiedad por promoción externa, de 3 PLAZAS DE OFICIAL DE PRIMERA ELECTROMECÁNICO DE VEHÍCULOS",
+   "cita": "la provisión en propiedad por promoción externa, de 3 PLAZAS DE OFICIAL",
    "nivel": "literal"
   },
   "titulacion": {
-   "valor": "Técnico en Electromecánica de Vehículos (FP Grado Medio) o equivalentes, o Técnico Superior en Automoción (FP Grado Superior) o equivalentes",
-   "cita": "Título de Formación Profesional de Grado Medio “Técnico en Electromecánica de Vehículos” o equivalentes.",
-   "nivel": "literal"
+   "valor": "Título de Formación Profesional de Grado Medio Técnico en Electromecánica de Vehículos o equivalentes, o Título de Formación Profesional Grado Superior Automoción o equivalentes",
+   "cita": "Poseer alguno de los siguientes títulos: Título de Formación Profesional de Grado Medio Técnico en Electromecánica de Vehículos",
+   "nivel": "sin_signos"
   },
   "otros_requisitos": {
-   "valor": "Haber cumplido 16 años; permiso de conducir C en vigor; nacionalidad española, de Estado miembro de la UE o permiso de residencia y trabajo; capacidad funcional para el puesto; no haber sido separado del servicio ni sancionado por falta grave o muy grave",
-   "cita": "Haber cumplido la edad de 16 años, siempre que también se cumpla con el resto de los requisitos exigidos.",
+   "valor": "Haber cumplido 16 años; permiso de conducir C en vigor; nacionalidad española, de Estado miembro de la UE o permiso de residencia y trabajo; capacidad funcional para el puesto; no haber sido separado ni sancionado en Administración Pública",
+   "cita": "Haber cumplido la edad de 16 años, siempre que también se cumpla con el resto de los requisitos exigidos",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "quince días naturales contados a partir del día siguiente al de la publicación de esta convocatoria en el Boletín Oficial de la Provincia de Córdoba",
+   "valor": "quince días naturales contados a partir del día siguiente al de la publicación en el BOP de Córdoba",
    "cita": "El plazo de presentación de solicitudes será de quince días naturales contados a partir del día siguiente",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "En la sede principal de la Empresa Municipal SADECO, Avenida Medina Azahara nº 4 (entrada por calle Le Corbusier s/n)",
-   "cita": "La solicitud se presentará en la sede principal de la Empresa Municipal Saneamientos de Córdoba",
+   "valor": "Solicitud firmada según modelo oficial, con fotocopias compulsadas, presentada en la sede principal de SADECO, Avenida Medina Azahara nº 4",
+   "cita": "La solicitud se presentará en la sede principal de la Empresa Municipal Saneamientos de Córdoba, sita en Avenida Medina Azahara",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Tablón de anuncios y web de SADECO (www.sadeco.es); convocatoria y bases también en el Boletín Oficial de la Provincia de Córdoba",
+   "valor": "Tablón de anuncios y web de SADECO (www.sadeco.es); convocatoria en el Boletín Oficial de la Provincia de Córdoba",
    "cita": "se expondrán en la página web y en el tablón de anuncios de la sede principal de la Empresa",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Prueba teórica: cuestionario de 45 preguntas con tres respuestas alternativas, 1 hora máximo, hasta 2 puntos",
+    "Prueba práctica: tres ejercicios prácticos, dos horas máximo, hasta 4,5 puntos",
+    "Fase de concurso: méritos, hasta 3,5 puntos"
+   ],
+   "cita": "Consistirá en la contestación por escrito, durante 1 hora como máximo, de un cuestionario de cuarenta y cinco (45) preguntas",
    "nivel": "literal"
   },
   "practicas_o_curso": {
@@ -66,39 +70,35 @@
   }
  },
  "rechazados": {
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "agrupaciones profesionales",
+   "cita": "ausente"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "mediante un sistema de selección concurso-oposición en promoción externa"
+  },
   "plazas_turno_libre": {
    "motivo": "valor_no_en_cita",
    "valor": 0,
-   "cita": "provisión en propiedad por promoción externa, de 3 PLAZAS DE OFICIAL DE PRIMERA ELECTROMECÁNICO DE VEHÍCULOS"
+   "cita": "la provisión en propiedad por promoción externa, de 3 PLAZAS DE OFICIAL"
   },
   "plazas_promocion_interna": {
    "motivo": "valor_no_en_cita",
    "valor": 0,
-   "cita": "provisión en propiedad por promoción externa, de 3 PLAZAS DE OFICIAL DE PRIMERA ELECTROMECÁNICO DE VEHÍCULOS"
-  },
-  "plazas_discapacidad": {
-   "motivo": "valor_no_en_cita",
-   "valor": 0,
-   "cita": "provisión en propiedad por promoción externa, de 3 PLAZAS DE OFICIAL DE PRIMERA ELECTROMECÁNICO DE VEHÍCULOS"
-  },
-  "ejercicios": {
-   "motivo": "cita_no_literal",
-   "valor": [
-    "Prueba teórica: cuestionario de 45 preguntas con tres respuestas alternativas (1 hora máximo), hasta 2 puntos",
-    "Prueba práctica: tres ejercicios prácticos por escrito (2 horas máximo), hasta 4,5 puntos",
-    "Fase de concurso: méritos baremados en el Anexo I, hasta 3,5 puntos"
-   ],
-   "cita": ""
+   "cita": "la provisión en propiedad por promoción externa, de 3 PLAZAS DE OFICIAL"
   },
   "meritos": {
    "motivo": "cita_no_literal",
-   "valor": "Experiencia profesional hasta 2,50 puntos (0,05 por mes en administración local o empresas municipales; 0,0375 otras entidades públicas; 0,025 entidades privadas); tarjeta de cualificación del conductor (CAP) en vigor hasta 1 punto",
-   "cita": "Se valorará este apartado con un máximo de 1,00 punto. La tarjeta de cualificación del conductor"
+   "valor": "Experiencia profesional como oficial de primera o segunda mecánico o electromecánico de vehículos, hasta 2,50 puntos; tarjeta de cualificación del conductor (CAP) en vigor, 1 punto",
+   "cita": "Cada mes de servicios prestados desempeñando funciones de oficial de primera mecánico o electromecánico de vehículos"
   },
   "bolsa": {
    "motivo": "cita_no_literal",
-   "valor": "sí, bolsa de trabajo temporal de trabajadores/as especializados/as de SADECO con hasta diez personas candidatas",
-   "cita": "incorporación en la bolsa de trabajo temporal de TRABAJADORES/AS ESPECIALIZADOS/AS de SADECO, de hasta diez personas candidatas"
+   "valor": "sí, bolsa de trabajo temporal de trabajadores/as especializados/as de SADECO con las diez primeras personas candidatas",
+   "cita": "Incorporación en la bolsa de trabajo temporal de TRABAJADORES/AS ESPECIALIZADOS/AS de SADECO, de hasta diez personas candidatas"
   }
  }
 }

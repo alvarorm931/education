@@ -1,0 +1,53 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2022-4593",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2022-4593",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2022/06/29_121/2022_004593.pdf",
+  "fecha": "2022-06-29",
+  "huella": "fa56bd09f7250eaf9d2ba736cef33173efedb39c351f69d9ac6b1a49e98dc281"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T15:25:20+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "B",
+   "cita": "técnico dinamizador/a de juventud (Grupo B)",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "10 días hábiles, a contar desde el día siguiente a la publicación del extracto de la convocatoria en el BOPA",
+   "cita": "El plazo de presentación de instancias será de 10 días hábiles, a contar desde el día siguiente a la publicación del extracto",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de anuncios de la Sede Electrónica del Ayuntamiento y extracto en el Boletín Oficial de la Provincia de Alicante",
+   "cita": "Efectuar la publicación de las presentes Bases en el tablón de anuncios de la Sede Electrónica de este Ayuntamiento",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Técnico dinamizador/a de juventud (bolsa de trabajo)",
+   "cita": "bolsa de trabajo para nombramiento o contratación temporal de técnico dinamizador/a de juventud (Grupo B)"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "laboral temporal",
+   "cita": "nombramiento o contratación temporal de técnico dinamizador/a de juventud"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "oposición",
+   "cita": "bases específicas que han de regir el proceso selectivo para la constitución de una bolsa"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, para nombramiento o contratación temporal de técnico dinamizador/a de juventud",
+   "cita": "proceso selectivo para la constitución de una bolsa de trabajo para nombramiento o contratación temporal"
+  }
+ }
+}

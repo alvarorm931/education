@@ -5,16 +5,18 @@
   "fuente": "BOB",
   "url": "http://www.bizkaia.eus/lehendakaritza/Bao_bob/2026/05/26/II-2735_cas.pdf",
   "fecha": "2026-05-26",
-  "huella": "c30e41563624e43fc3a589c1ccde65d5375de1649b9e0552a9e2ab6992ba5492"
+  "huella": "fbc47563ab4cedc971248c1dc514325aac4422c4b14bd00a085cfe658199c7f2"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:41:32+00:00",
- "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
+ "extraido": "2026-10-31T15:25:27+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
-   "valor": "Director/a de Recursos Humanos y Seguridad Ciudadana",
-   "cita": "Director/a de Recursos Humanos y Seguridad Ciudadana, del Ayuntamiento de Santurtzi",
+   "valor": [
+    "Director/a de Recursos Humanos y Seguridad Ciudadana"
+   ],
+   "cita": "puesto de trabajo de Director/a de Recursos Humanos y Seguridad Ciudadana, reseñado con el código 70700100",
    "nivel": "literal"
   },
   "grupo": {
@@ -29,47 +31,56 @@
   },
   "sistema": {
    "valor": "concurso",
-   "cita": "procedimiento de Libre designación, del puesto de trabajo de Director/a de Recursos Humanos",
+   "cita": "Procedimiento de Libre designación, del puesto de trabajo de Director/a",
    "nivel": "literal"
   },
   "titulacion": {
-   "valor": "Titulación correspondiente al Subgrupo de clasificación A1 (o haber abonado los derechos para su expedición)",
-   "cita": "Estar en posesión, o haber abonado los derechos para su expedición, de la titulación correspondiente al Subgrupo de clasificación.",
+   "valor": "Titulación correspondiente al Subgrupo de clasificación A1",
+   "cita": "Estar en posesión, o haber abonado los derechos para su expedición, de la titulación correspondiente al Subgrupo",
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Pertenecer a la subescala Técnica de la escala de Administración General o Especial (o equivalentes); estar en situación de servicio activo o en situación que permita participar en provisión de puestos",
+   "valor": "Pertenecer a la subescala Técnica de la escala de Administración General o Especial, según el artículo 167 del Real Decreto Legislativo 781/86",
    "cita": "Pertenecer a la subescala Técnica de la escala de Administración General o Especial, según el artículo 167",
    "nivel": "literal"
   },
   "idioma_cooficial": {
-   "valor": "Euskera, perfil lingüístico 4, sin fecha de preceptividad",
+   "valor": "Perfil lingüístico 4 de euskera, sin fecha de preceptividad",
    "cita": "Perfil lingüístico: 4, sin fecha de preceptividad.",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
    "valor": "15 días hábiles desde el siguiente al de la publicación del anuncio de la convocatoria en el Boletín Oficial del País Vasco",
-   "cita": "El plazo de presentación de solicitudes será de 15 días hábiles, contados a partir del siguiente",
+   "cita": "El plazo de presentación de solicitudes será de 15 días hábiles, contados a partir del siguiente al de la publicación",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Modelo oficial de instancia general en el Servicio de Atención Ciudadana, en los lugares del art. 16.4 de la Ley 39/2015 o por Internet en la web del Ayuntamiento",
+   "valor": "Servicio de Atención Ciudadana del Ayuntamiento de Santurtzi, en los lugares del artículo 16.4 de la Ley 39/2015, o por Internet en la web del Ayuntamiento",
    "cita": "Podrán asimismo, presentarse por Internet en el apartado trámites/solicitud de instancia general",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Resolución del procedimiento en el Boletín Oficial de Bizkaia",
+   "valor": "Boletín Oficial de Bizkaia (resolución del procedimiento)",
    "cita": "La resolución del procedimiento se publicará en el «Boletín Oficial de Bizkaia».",
    "nivel": "literal"
   },
+  "ejercicios": {
+   "valor": [
+    "Valoración del Curriculum Vitae y la Memoria",
+    "Defensa oral de la Memoria (opcional, 30 minutos)",
+    "Entrevista de competencias (opcional)"
+   ],
+   "cita": "el Órgano técnico de provisión realizará las siguientes pruebas: a) Valoración del Curriculum Vitae y la Memoria.",
+   "nivel": "literal"
+  },
   "meritos": {
-   "valor": "Valoración conjunta del currículum vitae, la memoria y, en su caso, las entrevistas; criterios cualitativos con rúbrica de niveles alto, medio, básico o insuficiente; sin puntuación máxima",
-   "cita": "La valoración se realizará mediante criterios cualitativos estructurados",
+   "valor": "Valoración conjunta del currículum vitae, la memoria y, en su caso, las entrevistas; sin puntuación numérica, mediante criterios cualitativos y rúbrica de niveles alto, medio, básico o insuficiente",
+   "cita": "La valoración se realizará mediante criterios cualitativos estructurados que permitan apreciar el nivel de idoneidad",
    "nivel": "literal"
   },
   "bolsa": {
    "valor": "no",
-   "cita": "designación discrecional de la persona que deba cubrir el puesto de trabajo",
+   "cita": "La propuesta de nombramiento deberá motivarse tomando en consideración",
    "nivel": "literal"
   }
  },
@@ -77,21 +88,7 @@
   "plazas_total": {
    "motivo": "valor_no_en_cita",
    "valor": 1,
-   "cita": "El Ayuntamiento de Santurtzi convoca el puesto de trabajo que se describe en el Anexo"
-  },
-  "ejercicios": {
-   "motivo": "cita_no_literal",
-   "valor": [
-    "Valoración del Curriculum Vitae y la Memoria",
-    "Defensa oral de la Memoria (opcional, máximo 30 minutos)",
-    "Entrevista de competencias"
-   ],
-   "cita": "la valoración del Curriculum Vitae y la Memoria, realizará las siguientes pruebas"
-  },
-  "practicas_o_curso": {
-   "motivo": "cita_no_literal",
-   "valor": "no",
-   "cita": "Estar en posesión de la titulación correspondiente"
+   "cita": "convoca el puesto de trabajo que se describe en el Anexo de las presentes Bases"
   }
  }
 }

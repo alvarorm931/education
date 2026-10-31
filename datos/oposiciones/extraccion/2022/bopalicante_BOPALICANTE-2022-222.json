@@ -1,0 +1,50 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2022-222",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2022-222",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2022/01/25_16/2022_000222.pdf",
+  "fecha": "2022-01-25",
+  "huella": "6339430146c8de1de9599d00fa6d84f8d8c11a1119b9dd2dc99ce0ad4d06c710"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T15:24:12+00:00",
+ "lote": "msgbatch_01QGBJzFrJk89N3kyh4ZuSEx",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "otro",
+   "cita": "bolsa de trabajo para la provisión temporal del puesto de Oficial de la Policía Local",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "otro",
+   "cita": "mediante el sistema de mejora de empleo",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "10 días hábiles, contados a partir del día siguiente al de la publicación del presente anuncio en el Boletín Oficial de la Provincia",
+   "cita": "El plazo de presentación de instancias será 10 días hábiles, contados a partir del día siguiente al de la publicación",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "tablón de edictos electrónico y página web del Ayuntamiento de Rojales",
+   "cita": "Los sucesivos anuncios relacionados con la presente convocatoria se publicarán en el tablón de edictos electrónico",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Oficial de la Policía Local"
+   ],
+   "cita": "constitución de una bolsa de trabajo para la provisión temporal del puesto de Oficial de la Policía Local"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, para la provisión temporal del puesto de Oficial de la Policía Local",
+   "cita": "convocatoria para la constitución de una bolsa de trabajo para la provisión temporal"
+  }
+ }
+}

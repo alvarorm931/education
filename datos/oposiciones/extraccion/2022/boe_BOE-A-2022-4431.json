@@ -1,0 +1,106 @@
+{
+ "proceso": "boe:BOE-A-2022-4431",
+ "documento": {
+  "id": "boc:BOC-A-2022-042-685",
+  "fuente": "BOC",
+  "url": "https://www.gobiernodecanarias.org/boc/2022/042/020.html",
+  "fecha": "2022-03-01",
+  "huella": "d51db8eea3a107d9cef57ad510d99073c3b30de63be7afb4c0e2c9d83979e923"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T15:25:28+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "C1",
+   "cita": "Grupo C, Subgrupo C1",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "provisión en propiedad, mediante el sistema de oposición, de nueve (9) plazas",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "provisión en propiedad, mediante el sistema de oposición, de nueve (9) plazas",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 9,
+   "cita": "provisión en propiedad, mediante el sistema de oposición, de nueve (9) plazas",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Bachiller, Formación Profesional de 2º Grado o equivalente",
+   "cita": "Estar en posesión del título de Bachiller, Formación Profesional de 2º Grado o equivalente.",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española; mayor de edad sin exceder la edad para segunda actividad; sin inhabilitación; carecer de antecedentes penales; permiso de conducción B y A2; compromiso de portar armas; índice de corpulencia máximo 28; estatura mínima 1,65 m hombres y 1,52 m mujeres",
+   "cita": "Tener la nacionalidad española.",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 17,
+   "cita": "los derechos de examen serán de 17 euros",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles desde el siguiente al de la publicación del anuncio en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes será de veinte días hábiles",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Solicitud en modelo Anexo II dirigida al Sr. Alcalde-Presidente, con resguardo de pago y documentación adjunta",
+   "cita": "Las solicitudes requiriendo tomar parte en las pruebas de acceso, se cumplimentarán en el modelo que figura como Anexo II",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia de Santa Cruz de Tenerife, página web municipal y tablón de anuncios del Ayuntamiento",
+   "cita": "se harán públicos en el Boletín Oficial de la Provincia de Santa Cruz de Tenerife, página web, y en el tablón de anuncios",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Aptitud física (eliminatoria, apto/no apto)",
+    "Psicotécnica (eliminatoria, apto/no apto)",
+    "Conocimientos: test de 50 preguntas, desarrollo de tres temas y supuesto práctico",
+    "Idiomas (inglés, voluntaria, hasta 1 punto)",
+    "Reconocimiento médico (eliminatorio)"
+   ],
+   "cita": "Esta prueba será de carácter obligatoria y eliminatoria, y consistirá en la realización de ejercicios",
+   "nivel": "literal"
+  },
+  "temas": {
+   "valor": 50,
+   "cita": "Consistirá en contestar, en un tiempo de 50 minutos, un cuestionario de 50 preguntas, extraídas del temario",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "curso selectivo impartido por la Comunidad Autónoma de Canarias y periodo de prácticas de 1.200 horas de servicio efectivo",
+   "cita": "realizarán un periodo de prácticas de 1.200 horas de servicio efectivo prestado en este Ayuntamiento",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Agente de la Policía Local"
+   ],
+   "cita": "nueve plazas de Policía, pertenecientes a la Escala Básica"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 9,
+   "cita": "por el sistema de oposición, turno libre"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "no",
+   "cita": "no se menciona la creación de bolsa o lista de espera en el texto"
+  }
+ }
+}

@@ -5,16 +5,21 @@
   "fuente": "BOCYL",
   "url": "https://bocyl.jcyl.es/html/2022/12/28/html/BOCYL-D-28122022-83.do",
   "fecha": "2022-12-28",
-  "huella": "c25d5560fa480970a37c132c59ccb123045e779b76527388e62e81ab1f6b5e6b"
+  "huella": "4ac67342c0f28faa804c39c837f463312dc1f7881737343eccd9184a76a9bc7d"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:56:12+00:00",
- "lote": "msgbatch_014eT3dLLVopBnuVgQ4syWD9",
+ "extraido": "2026-10-31T15:25:34+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
-   "valor": "SOCORRISTA",
-   "cita": "BASES Y CONVOCATORIA EXCEPCIONAL DE ESTABILIZACIÓN DE EMPLEO TEMPORAL DE DOS PLAZAS DE SOCORRISTAS",
+   "valor": "SOCORRISTAS",
+   "cita": "la convocatoria excepcional de estabilización de empleo temporal de larga duración, por el sistema de concurso, de DOS plazas de SOCORRISTAS",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "otro",
+   "cita": "DOS SOCORRISTAS por el sistema de CONCURSO DE VALORACIÓN DE MÉRITOS en el marco",
    "nivel": "literal"
   },
   "vinculo": {
@@ -24,36 +29,31 @@
   },
   "sistema": {
    "valor": "concurso",
-   "cita": "por el sistema de CONCURSO DE VALORACIÓN DE MÉRITOS en el marco del proceso de estabilización",
+   "cita": "por el sistema de CONCURSO DE VALORACIÓN DE MÉRITOS en el marco del proceso",
    "nivel": "literal"
   },
   "plazas_total": {
    "valor": 2,
-   "cita": "la contratación de DOS SOCORRISTAS por el sistema de CONCURSO",
+   "cita": "convocatoria excepcional de estabilización de empleo temporal de larga duración, por el sistema de concurso, de DOS plazas",
    "nivel": "literal"
   },
   "plazas_turno_libre": {
    "valor": 2,
-   "cita": "Las DOS plazas de SOCORRISTAS están incluidas en la Oferta de Empleo Público para la estabilización",
-   "nivel": "literal"
-  },
-  "titulacion": {
-   "valor": "Estar en posesión, o en condiciones de obtener la titulación académica mínima exigible para la plaza",
-   "cita": "Estar en posesión, o en condiciones de obtener la titulación académica mínima exigible para la plaza a la que se opta",
+   "cita": "convocatoria excepcional de estabilización de empleo temporal de larga duración, por el sistema de concurso, de DOS plazas",
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Nacionalidad española o de la UE o según Ley; capacidad funcional; tener cumplidos dieciséis años y no exceder de la edad de jubilación forzosa; no haber sido separado del servicio público ni inhabilitado",
-   "cita": "Poseer la capacidad funcional para el desempeño de las tareas propias de la categoría a la que se solicita acceder",
+   "valor": "Tener la nacionalidad española o ser nacional de Estado de la UE, o cónyuge o descendiente en las condiciones previstas. Capacidad funcional para las tareas. Tener cumplidos dieciséis años y no exceder la edad máxima de jubilación forzosa. No haber sido separado del servicio público ni inhabilitado.",
+   "cita": "Tener cumplidos dieciséis años y no exceder, en su caso, de la edad máxima de jubilación forzosa.",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "veinte días naturales desde el día siguiente a la publicación del anuncio en el BOE",
+   "valor": "veinte días naturales a contar desde el día siguiente a la publicación de este anuncio en el Boletín Oficial del Estado",
    "cita": "se abre el plazo de presentación de solicitudes, que será de veinte días naturales a contar desde el día siguiente",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Preferentemente telemática a través de la sede electrónica del Ayuntamiento; también en el Registro General o por Correos",
+   "valor": "Preferentemente de forma telemática a través de la Sede Electrónica del Ayuntamiento; también en el Registro General del Ayuntamiento o por Correos en sobre abierto.",
    "cita": "Se presentarán preferentemente de forma telemática a través de la Sede Electrónica del Ayuntamiento",
    "nivel": "literal"
   },
@@ -62,29 +62,25 @@
    "cita": "se publicarán en el Boletín Oficial de la Provincia, en la sede electrónica del Ayuntamiento y en el Tablón de Anuncios",
    "nivel": "literal"
   },
-  "meritos": {
-   "valor": "Experiencia profesional hasta 40 puntos (0,303 por mes en el Ayuntamiento, 0,123 en otras Administraciones Locales, 0,111 en otras Administraciones Públicas); formación hasta 6 puntos; otros méritos hasta 4 puntos; máximo total 50",
-   "cita": "La puntuación máxima de la valoración del concurso será de 50,00 puntos",
+  "ejercicios": {
+   "valor": [
+    "Concurso de valoración de méritos: experiencia profesional (máximo 40,00 puntos)",
+    "Formación (máximo 6,00 puntos)",
+    "Otros méritos (máximo 4,00 puntos)"
+   ],
+   "cita": "La puntuación máxima de la valoración del concurso será de 50,00 puntos.",
    "nivel": "literal"
   },
-  "practicas_o_curso": {
-   "valor": "no previsto en las bases",
-   "cita": "Cumplidos los requisitos precedentes, y presentada la documentación establecida en la base décima el Alcalde efectuará la formalización del contrato",
+  "meritos": {
+   "valor": "Experiencia profesional hasta 40 puntos (0,303 por mes en el Ayuntamiento, 0,123 en otras Administraciones Locales, 0,111 en otras Administraciones Públicas); formación hasta 6 puntos; otros méritos hasta 4 puntos. Puntuación mínima para superar: 1,00 punto.",
+   "cita": "La puntuación máxima de la valoración del concurso será de 50,00 puntos.",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, bolsa de trabajo de personal laboral temporal para quienes superen el proceso sin ser contratados, con vigencia máxima de tres años",
+   "cita": "Se prevé para aquellas personas que habiendo superado el proceso selectivo",
    "nivel": "literal"
   }
  },
- "rechazados": {
-  "ejercicios": {
-   "motivo": "cita_no_literal",
-   "valor": [
-    "Concurso de valoración de méritos: experiencia profesional, formación y otros méritos"
-   ],
-   "cita": "Se valorarán los méritos obtenidos, en todo caso, a la fecha de finalización del plazo de presentación de solicitudes"
-  },
-  "bolsa": {
-   "motivo": "cita_no_literal",
-   "valor": "sí, bolsa de trabajo de personal laboral temporal para quienes superen el proceso y no resulten contratados, con vigencia máxima de tres años",
-   "cita": "Se prevé para aquellas personas que habiendo superado el proceso selectivo... su inclusión en una bolsa de trabajo"
-  }
- }
+ "rechazados": {}
 }

@@ -1,0 +1,48 @@
+{
+ "proceso": "bopgranada:BOPGR-2022-130-009",
+ "documento": {
+  "id": "bopgranada:BOPGR-2022-130-009",
+  "fuente": "BOP-GRANADA",
+  "url": null,
+  "fecha": "2022-07-11",
+  "huella": "f6092398e40b0f54b42325f929222aefc7cf076cdce66cab6b8a43759efbafb1"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T15:25:42+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
+ "no_son_bases": false,
+ "campos": {
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "plaza de personal funcionario administrativo, por concurso-oposición libre aprobadas",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "donde dice Número de Vacantes: 2 debería decir Número de Vacates:1",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "BOP de Granada",
+   "cita": "procediéndose a la publicación de dicha subsanación en el BOP de Granada",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Fase de oposición: máximo 6 puntos (corregido desde 4)",
+    "Fase de concurso: se valorará en un cuarenta por ciento"
+   ],
+   "cita": "la fase de oposición debe necesariamente ser de 6 puntos",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Administrativo"
+   ],
+   "cita": "Rectificación bases selección de una plaza de Administrativo estabilización concurso-oposición"
+  }
+ }
+}

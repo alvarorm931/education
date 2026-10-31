@@ -5,11 +5,11 @@
   "fuente": "BOPB",
   "url": "https://bop.diba.cat/anunci/3965997/bases-i-convocatoria-del-proces-selectiu-per-a-la-provisio-del-lloc-de-treball-de-gerent-de-l-ajuntament-com-a-directiu-public-professional-ajuntament-de-vic",
   "fecha": "2026-07-07",
-  "huella": "39d403b1a26d7004c534eeff22ce4e8d14a9a75cd161cb54caa9f8fc00fd70c2"
+  "huella": "43b6dd42052215a5b905277a977659a265af1cbed43f244f0871758720e76edd"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T08:18:08+00:00",
- "lote": "msgbatch_01BrnYw6KkevFx7at547B5g8",
+ "extraido": "2026-10-31T15:25:32+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
@@ -35,12 +35,12 @@
    "nivel": "literal"
   },
   "titulacion": {
-   "valor": "llicenciatura o grau universitari",
+   "valor": "Llicenciatura o grau universitari",
    "cita": "Titulació: llicenciatura o grau universitari.",
    "nivel": "literal"
   },
   "idioma_cooficial": {
-   "valor": "català, nivell de suficiència C1",
+   "valor": "Català, nivell C1 (suficiència)",
    "cita": "posseir els coneixements de llengua catalana del nivell de suficiència C1",
    "nivel": "literal"
   },
@@ -50,36 +50,42 @@
    "nivel": "literal"
   },
   "exenciones_tasa": {
-   "valor": "No consta exenció expressa en el text; la taxa no es retorna en cas d'exclusió o desistiment.",
-   "cita": "En cas d'exclusió per no complir els requisits anteriors o per desistiment no es tindrà dret a la devolució de la taxa",
+   "valor": "No se citan exenciones; en exclusió o desistiment no es retorna la taxa",
+   "cita": "En cas d'exclusió per no complir els requisits anteriors o per desistiment no es tindrà dret a la devolució",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "deu dies hàbils des de l'endemà de la publicació de la convocatòria en el BOPB o en el DOGC",
-   "cita": "El termini de presentació de sol·licituds serà de deu dies hàbils des de l'endemà de la data de publicació",
+   "valor": "Deu dies hàbils des de l'endemà de la publicació de la convocatòria en el BOPB o DOGC",
+   "cita": "El termini de presentació de sol·licituds serà de deu dies hàbils des de l'endemà",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Seu Electrònica de l'Ajuntament de Vic, apartat «oferta pública d'ocupació»",
+   "valor": "Web Seu Electrònica Ajuntament de Vic, apartat oferta pública d'ocupació",
    "cita": "Tota aquesta documentació es publicarà a través del web Seu Electrònica Ajuntament de Vic",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Prova de llengua catalana (eliminatòria, apte/no apte)",
-    "Primera prova: cas pràctic de planificació estratègica i direcció executiva (150 min, 0-10 punts, mínim 5)",
-    "Segona prova: test de personalitat i/o competències (màx. 60 min) i entrevista competencial (màx. 90 min)"
+    "Primera prova: cas pràctic de planificació estratègica i direcció executiva, 150 minuts, eliminatòria amb mínim 5 punts sobre 10",
+    "Segona prova: test de personalitat i/o competències, màx. 60 minuts, eliminatori",
+    "Entrevista competencial, màx. 90 minuts, eliminatòria",
+    "Prova de llengua catalana, apte/no apte, eliminatòria"
    ],
    "cita": "Consistirà en la resolució d'un cas pràctic, amb un o diversos supòsits",
    "nivel": "literal"
   },
   "meritos": {
-   "valor": "No consta baremació de mèrits; la selecció es fa per valoració de proves, currículum i entrevista competencial.",
+   "valor": "No se valoren méritos en concurso; el proceso se basa en pruebas, currículum y entrevista",
    "cita": "De la valoració de les proves realitzades, dels currículums i del resultat de les entrevistes",
    "nivel": "literal"
   },
+  "bolsa": {
+   "valor": "no",
+   "cita": "El nomenament / contractació recaurà en el persona candidata",
+   "nivel": "literal"
+  },
   "practicas_o_curso": {
-   "valor": "període de prova de 6 mesos",
+   "valor": "Periodo de prueba de 6 meses",
    "cita": "S'establirà un període de prova de 6 mesos.",
    "nivel": "literal"
   }
@@ -92,18 +98,13 @@
   },
   "otros_requisitos": {
    "motivo": "cita_no_literal",
-   "valor": "Haver complert 18 anys; nacionalitat espanyola o de la UE (o d'altres casos previstos); no haver estat separat del servei d'una Administració pública; capacitat funcional; experiència mínima de 5 anys en posicions de gerència/direcció.",
-   "cita": "Experiència mínima de 5 anys en posicions de gerència / direcció."
+   "valor": "18 anys, no superar edat de jubilació forçosa, nacionalitat, habilitació, capacitat funcional, experiència mínima de 5 anys en gerència o direcció",
+   "cita": "Experiència mínima de 5 anys en posicions de gerència / direcció. No es computaran els càrrecs desenvolupats com a càrrecs electes."
   },
   "presentacion": {
    "motivo": "cita_no_literal",
-   "valor": "Sol·licitud a l'Alcalde a l'Oficina d'Atenció Ciutadana (OAC) presencialment o per la seu electrònica de l'Ajuntament de Vic, amb certificat digital",
-   "cita": "La instància s'haurà de presentar a l'OAC o per qualsevol dels mitjans que autoritza l'article 16.4"
-  },
-  "bolsa": {
-   "motivo": "cita_no_literal",
-   "valor": "no",
-   "cita": "Es proposarà una terna dels millors candidats a la Presidència"
+   "valor": "Presencial a l'OAC o telemàtica a la Seu Electrònica de l'Ajuntament de Vic, amb certificat digital",
+   "cita": "Presentació telemàtica: Al web Seu Electrònica Ajuntament de Vic - Inici"
   }
  }
 }

@@ -5,16 +5,16 @@
   "fuente": "BOP-LEON",
   "url": "https://bop.dipuleon.es/export/sites/bop/.galleries/Documentos-Anuncios-en-PDF/firmado-1769579146552-final-70d25e7f.pdf",
   "fecha": "2026-01-28",
-  "huella": "71b8825981e2ced6ad498211953193dbcc28ea8ce66426b1cdb7b5d0a9875606"
+  "huella": "45fa396f48caca7e25d38a04565dfa95a0e9ac655b8888de32fabde1e44e50b3"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:42:15+00:00",
- "lote": "msgbatch_01W17mR271uYfWYL6CuSdriL",
+ "extraido": "2026-10-31T15:25:29+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
    "valor": "Auxiliar Administrativo",
-   "cita": "Plaza de Auxiliar Administrativo para este Ayuntamiento de El Burgo Ranero, mediante sistema de oposición libre",
+   "cita": "la plaza de Auxiliar Administrativo para este Ayuntamiento de El Burgo Ranero",
    "nivel": "literal"
   },
   "grupo": {
@@ -43,8 +43,8 @@
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Nacionalidad española o de un Estado miembro de la Unión Europea; capacidad funcional; tener cumplidos dieciséis años y no exceder de la edad máxima de jubilación forzosa; no haber sido separado de la Administración por expediente disciplinario ni inhabilitado",
-   "cita": "poseer la nacionalidad española o de algunos de los Estados miembros de la Unión Europea",
+   "valor": "Nacionalidad española o de Estado miembro de la UE; capacidad física y psíquica; tener cumplidos 16 años y no exceder la edad de jubilación forzosa; no haber sido separado por expediente disciplinario ni inhabilitado.",
+   "cita": "Nacionalidad: poseer la nacionalidad española o de algunos de los Estados miembros de la Unión Europea",
    "nivel": "literal"
   },
   "tasa_euros": {
@@ -53,17 +53,17 @@
    "nivel": "literal"
   },
   "exenciones_tasa": {
-   "valor": "La renuncia no da lugar a devolución salvo causa de fuerza mayor acreditada antes de aprobar las listas provisionales",
+   "valor": "No se indican exenciones ni reducciones de la tasa en las bases.",
    "cita": "La renuncia, expresa o tácita, a participar en este procedimiento, no dará lugar a la devolución del importe de la tasa",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
    "valor": "20 días hábiles desde el día siguiente a la publicación del anuncio en el Boletín Oficial del Estado",
-   "cita": "en el plazo de veinte días hábiles contados a partir del día siguiente al de la publicación del anuncio de la convocatoria",
+   "cita": "en el plazo de veinte días hábiles contados a partir del día siguiente al de la publicación del anuncio",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Registro Electrónico General del Ayuntamiento o lugares del artículo 16.4 de la Ley 39/2015, con solicitud (Anexo II) y documentación acompañada",
+   "valor": "Registro Electrónico General del Ayuntamiento o lugares del artículo 16.4 de la Ley 39/2015, mediante Anexo II",
    "cita": "se presentarán en el Registro Electrónico General de este Ayuntamiento o en alguno de los lugares previstos",
    "nivel": "literal"
   },
@@ -75,7 +75,7 @@
   "ejercicios": {
    "valor": [
     "Primer ejercicio: test de 50 preguntas, máximo 125 puntos, mínimo 62 para superar",
-    "Segundo ejercicio: dos supuestos prácticos, máximo 100 puntos, mínimo 50 para superar"
+    "Segundo ejercicio: supuestos prácticos, máximo 100 puntos, mínimo 50 para superar"
    ],
    "cita": "Primer ejercicio: test Puntuacion máxima 125 Puntuacion mínima para superarlo: 62",
    "nivel": "literal"
@@ -85,16 +85,27 @@
    "cita": "Tema 21. Sistemas ofimáticos. Procesador de textos: Word. Hojas de Cálculo: Excel.",
    "nivel": "literal"
   },
+  "meritos": {
+   "valor": "No se valoran méritos en concurso; el sistema es únicamente oposición.",
+   "cita": "El sistema de selección de los aspirantes será el de oposición.",
+   "nivel": "sin_signos"
+  },
   "bolsa": {
-   "valor": "sí, con los aspirantes que superen el primer ejercicio y no resulten seleccionados, para sustituciones temporales",
-   "cita": "Se constituirá una bolsa de empleo con las personas que superen el primer ejercicio (test) y no resulten seleccionadas",
+   "valor": "Sí, con los aspirantes que superen el primer ejercicio y no resulten seleccionados, para sustituciones temporales",
+   "cita": "Se constituirá una bolsa de empleo con las personas que superen el primer ejercicio (test)",
    "nivel": "literal"
   },
   "practicas_o_curso": {
-   "valor": "Toma de posesión en 20 días hábiles desde la notificación del nombramiento; no se prevé periodo de prácticas",
+   "valor": "No se indica periodo de prácticas ni curso selectivo; toma de posesión en 20 días hábiles desde la notificación del nombramiento",
    "cita": "El aspirante nombrado deberá tomar posesión de su cargo en el plazo de 20 días hábiles",
    "nivel": "literal"
   }
  },
- "rechazados": {}
+ "rechazados": {
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "mediante sistema de oposición libre"
+  }
+ }
 }

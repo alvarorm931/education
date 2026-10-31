@@ -5,20 +5,15 @@
   "fuente": "BOP-TOLEDO",
   "url": "https://bop.diputoledo.es/webEbop/DocGet?id=26010034;0&insert_number=57&insert_year=2026",
   "fecha": "2026-01-12",
-  "huella": "eada751b1682a2dcc06db10223e54ed62ae6948ad0eb3c8294b762351b72e045"
+  "huella": "cd29cf235f6cd715b328fa70e2f70c1f500afa0dc9dbe1f7bdd7f9a15e6fcca9"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:42:28+00:00",
- "lote": "msgbatch_01W17mR271uYfWYL6CuSdriL",
+ "extraido": "2026-10-31T15:25:29+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
-  "denominacion": {
-   "valor": "Operario de Servicios Múltiples",
-   "cita": "Bolsa de Trabajo de personal temporal de Operario de Servicios Múltiples de Albarreal de Tajo",
-   "nivel": "sin_signos"
-  },
   "grupo": {
-   "valor": "Oficial de Oficios",
+   "valor": "E / agrupaciones profesionales",
    "cita": "Ejecución de tareas normalmente de carácter estandarizado para cuya realización se aplicarán normas predeterminadas",
    "nivel": "literal"
   },
@@ -28,22 +23,22 @@
    "nivel": "literal"
   },
   "titulacion": {
-   "valor": "Título de ESO o titulación equivalente, o en condiciones de obtenerlo en la fecha de finalización del plazo de presentación de solicitudes",
+   "valor": "ESO o titulación equivalente, o en condiciones de obtenerlo en la fecha de finalización del plazo de presentación de solicitudes",
    "cita": "Estar en posesión del titulo de ESO o titulación equivalente, o en condiciones de obtenerlo",
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Nacionalidad española o de Estado miembro de la UE (o extranjeros con residencia legal en España, según supuestos); capacidad funcional; tener cumplidos 16 años y no exceder la edad de jubilación forzosa; no haber sido separado del servicio por expediente disciplinario; carné de conducir clase B",
-   "cita": "Poseer la capacidad funcional para el desempeño de las tareas. No padecer enfermedad o defecto físico que impida el desempeño",
+   "valor": "Nacionalidad española o de Estado miembro de la UE (o extranjeros con residencia legal, o cónyuge o descendientes según supuestos); capacidad funcional; tener 16 años cumplidos y no exceder edad de jubilación forzosa; no haber sido separado del servicio por expediente disciplinario; carné de conducir clase B",
+   "cita": "Tener cumplidos dieciséis años y no exceder, en su caso, de la edad máxima de jubilación forzosa",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "Cinco días hábiles contados a partir del día siguiente al de la publicación en el Boletín Oficial de la provincia de Toledo",
-   "cita": "en el plazo de cinco días hábiles contados a partir del día siguiente al de la publicación en “Boletín Oficial” de la provincia",
+   "valor": "cinco días hábiles contados a partir del día siguiente al de la publicación en el Boletín Oficial de la provincia de Toledo",
+   "cita": "en el plazo de cinco días hábiles contados a partir del día siguiente al de la publicación en “Boletín Oficial” de la provincia de Toledo",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Registro de entrada del Ayuntamiento en horario de 9:30 a 14:00, o procedimiento del artículo 16 de la Ley 39/2015",
+   "valor": "Registro de entrada del Ayuntamiento en horario de 9:30 a 14:00 horas, o por el procedimiento del artículo 16 de la Ley 39/2015",
    "cita": "se presentarán en el Registro de entrada de este Ayuntamiento en horario de 9:30h. a 14:00 horas",
    "nivel": "literal"
   },
@@ -54,27 +49,34 @@
   },
   "ejercicios": {
    "valor": [
-    "Baremación de méritos según Anexo II (situación sociofamiliar, formación o experiencia profesional, situación económica)"
+    "Baremación de méritos según Anexo II (situación sociofamiliar, formación o experiencia profesional y situación económica)"
    ],
    "cita": "Se procederá a la selección mediante la valoración establecida en el ANEXO II",
    "nivel": "literal"
   },
   "meritos": {
-   "valor": "Situación sociofamiliar hasta 3 puntos; formación o experiencia profesional hasta 4 puntos; situación económica hasta 3 puntos",
-   "cita": "El Tribunal Seleccionador valorará con hasta 3,00 puntos, bajo los siguientes criterios",
+   "valor": "Situación sociofamiliar hasta 3,00 puntos; formación o experiencia profesional hasta 4,00 puntos (experiencia en la administración, formación en control fitosanitario, preparación de suelo y limpieza viaria, ESO 0,50); situación económica hasta 3,00 puntos",
+   "cita": "El Tribunal Seleccionador valorará con hasta 4,00 puntos la formación o experiencia profesional",
    "nivel": "literal"
   },
   "bolsa": {
-   "valor": "Sí, para contratación temporal de personal laboral en cubrir plazas temporales y bajas o vacantes temporales con reserva de puesto",
-   "cita": "Será preciso que el órgano Competente realice la oportuna convocatoria para la contratación de personal laboral temporal",
+   "valor": "sí, para la contratación temporal de operarios de servicios múltiples (cubrir necesidades temporales y bajas con reserva de puesto)",
+   "cita": "la creación de una Bolsa de Trabajo que atienda a las necesidades temporales",
    "nivel": "literal"
   }
  },
  "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Operario de Servicios Múltiples"
+   ],
+   "cita": "Bases generales para la creación de una bolsa de trabajo de personal temporal de operario de servicios múltiples de Albarreal de Tajo"
+  },
   "sistema": {
    "motivo": "cita_no_literal",
    "valor": "concurso",
-   "cita": "la solicitud requiriendo participar en el concurso de méritos para ser incluidos en la bolsa de empleo"
+   "cita": "se presentan las solicitudes requiriendo participar en el concurso de méritos para ser incluidos en la bolsa de empleo"
   }
  }
 }

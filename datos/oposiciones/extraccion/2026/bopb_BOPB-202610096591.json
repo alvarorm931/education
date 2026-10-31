@@ -5,18 +5,18 @@
   "fuente": "BOPB",
   "url": "https://bop.diba.cat/anunci/3947618/anunci-de-les-bases-reguladores-i-convocatoria-del-proces-selectiu-per-a-la-provisio-de-quatre-places-d-agent-interi-d-una-durada-de-sis-mesos-per-programa-mitjancant-concurs-oposicio-per-via-d-urgencia-ajuntament-de-santa-susanna",
   "fecha": "2026-05-27",
-  "huella": "78034d5902151a5c8ffb193de2851b1f083373823f8b9ed499a8b87e9245dc50"
+  "huella": "4a322481fff76b1fd30586fffef89814e296bf3593c4eb6391bfea9c416df2fc"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:41:50+00:00",
- "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
+ "extraido": "2026-10-31T15:25:18+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
    "valor": [
-    "Agent de la Policia Local"
+    "Agent de la Policia local"
    ],
-   "cita": "quatre places d’agent de la Policia local",
+   "cita": "QUATRE PLACES D’AGENT DE LA POLICIA LOCAL DE L’AJUNTAMENT DE SANTA SUSANNA",
    "nivel": "literal"
   },
   "grupo": {
@@ -24,9 +24,14 @@
    "cita": "grup de titulació C1",
    "nivel": "literal"
   },
+  "vinculo": {
+   "valor": "funcionario interino",
+   "cita": "provisió de quatre places d’agent interí",
+   "nivel": "literal"
+  },
   "sistema": {
    "valor": "concurso-oposición",
-   "cita": "mitjançant el sistema de concurs oposició, per via d’urgència",
+   "cita": "mitjançant concurs oposició, per via d’urgència",
    "nivel": "literal"
   },
   "plazas_total": {
@@ -35,53 +40,53 @@
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Nacionalidad española; 18 años cumplidos y no superar la edad de jubilación forzosa; altura mínima 1,60 m mujeres y 1,65 m hombres; permiso de conducir A2 y B; no tener antecedentes penales ni delitos sexuales; aptitud física y médica",
+   "valor": "Nacionalidad española; 18 años y no superar la edad de jubilación forzosa; altura mínima 1,60 m mujeres y 1,65 m hombres; carné de conducir A2 y B; no haber sido condenado por delito; no tener impedimento físico o psíquico",
    "cita": "Tenir la nacionalitat espanyola, d'acord amb la legislació vigent",
    "nivel": "literal"
   },
   "idioma_cooficial": {
-   "valor": "Català, nivel intermedio B2",
+   "valor": "Catalán, nivel intermedio B2",
    "cita": "Tenir el nivell intermedi B2 de català de la Direcció General de Política Lingüística o equivalent",
    "nivel": "literal"
   },
   "exenciones_tasa": {
-   "valor": "Personas desempleadas sin cobrar prestación económica, con certificado del INEM o Servei Català d’Ocupació",
+   "valor": "Exentos quienes presenten certificado del INO o Servei Català d’Ocupació de situación de desocupación sin cobrar prestación económica",
    "cita": "Restaran exempts de pagar la taxa per drets d’examen, aquelles persones que presentin un certificat",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "10 días naturales a partir del día siguiente a la publicación del anuncio en el BOPB",
+   "valor": "10 días naturales desde el día siguiente a la publicación del anuncio en el BOPB",
    "cita": "El termini de presentació de sol·licituds serà de 10 dies naturals comptats a partir de l’endemà",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Preferentemente telemática por la web del Ayuntamiento; presencial en el Registro General; o cualquier medio del artículo 16 de la Ley 39/2015",
+   "valor": "Preferentemente telemática por la web del Ayuntamiento; presencial en el Registro General (plaça Catalunya s/n); o en cualquier forma del artículo 16 de la Ley 39/2015",
    "cita": "Preferentment de forma telemàtica, per la web de l’Ajuntament",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Prueba teórica tipo test de 20 preguntas (máximo 10 puntos)",
+    "Prueba teórica tipo test de 20 preguntas (45 minutos), eliminatoria con menos de 5 puntos",
     "Valoración de méritos (máximo 9 puntos)",
     "Entrevista personal (máximo 15 puntos)",
     "Prueba psicotécnica (apto/no apto)",
     "Reconocimiento médico (apto/no apto)"
    ],
-   "cita": "L’examen consistirà en 20 preguntes tipus test",
+   "cita": "El procediment de selecció serà el de concurs oposició, constarà de dues fases",
    "nivel": "literal"
   },
   "meritos": {
-   "valor": "Antigüedad como agente de la Policía Local (0,25 p/mes, máx. 3) y en otros cuerpos policiales (0,10 p/mes, máx. 2); titulaciones superiores (máx. 1); formación profesional (máx. 4); catalán superior a B2 (máx. 0,50); idiomas (máx. 0,50); ACTIC (máx. 1). Total máximo 9 puntos",
-   "cita": "La puntuació total de la valoració dels mèrits no pot ser, en cap cas, superior als 9 punts",
+   "valor": "Antigüedad como agente (máx. 3 pts), titulaciones superiores (máx. 1), formación profesional (máx. 4), catalán superior a B2 (máx. 0,50), idiomas extranjeros (máx. 0,50), ACTIC (máx. 1); total máximo 9 puntos",
+   "cita": "La puntuació total de la valoració dels mèrits no pot ser, en cap cas, superior als 9 punts.",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "No se menciona periodo de prácticas ni curso selectivo; nombramiento por seis meses",
+   "cita": "El nomenament que es farà serà el de nomenament com a funcionari/ària interí/na per programa",
    "nivel": "literal"
   }
  },
  "rechazados": {
-  "vinculo": {
-   "motivo": "cita_no_literal",
-   "valor": "funcionario interino",
-   "cita": "nomenament com a funcionari interí per programa de l’article 10.1.c de l’EBEP"
-  },
   "titulacion": {
    "motivo": "cita_no_literal",
    "valor": "Batxillerat, tècnic/a (cicle formatiu de grau mitjà) o equivalent o superior",
@@ -94,13 +99,13 @@
   },
   "publicaciones": {
    "motivo": "cita_no_literal",
-   "valor": "Tablón de anuncios de la Corporación y e-tablón de la sede electrónica, además de la web municipal y el BOPB",
-   "cita": "Les bases que regulen el procés selectiu es publicaran en el tauler d’anuncis de la seu electrònica"
+   "valor": "Tablón de anuncios de la sede electrónica, web municipal, BOPB y DOGC",
+   "cita": "es publicaran al tauler d’anuncis de la seu electrònica de l’Ajuntament"
   },
   "bolsa": {
    "motivo": "cita_no_literal",
-   "valor": "sí, para cubrir necesidades de la misma categoría; el proceso no deroga la bolsa vigente",
-   "cita": "Aquest procés selectiu no deroga la borsa vigent creada mitjançant decret d’alcaldia"
+   "valor": "sí, para cubrir necesidades; las personas seleccionadas se proponen al nombramiento de funcionarios interinos",
+   "cita": "Aquest procés selectiu no deroga la borsa vigent creada mitjançant decret d’alcaldia de 5 de gener de 2026"
   }
  }
 }

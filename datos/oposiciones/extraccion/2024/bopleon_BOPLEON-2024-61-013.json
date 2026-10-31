@@ -5,17 +5,17 @@
   "fuente": "BOP-LEON",
   "url": null,
   "fecha": "2024-03-26",
-  "huella": "e824b695a093c40b263a06d39ba9daa1043b7302ad558a9a89a0dda1db16d0d1"
+  "huella": "0a14a06b43055de0412441ad8c2d9c4d66335b3d85f0c5b4e16ad2df80946060"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:53:46+00:00",
- "lote": "msgbatch_01EQ4R6PVKpEwTXzXwPCmspm",
+ "extraido": "2026-10-31T15:25:42+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
    "valor": [
     "Técnico/a de Empleo y Desarrollo Local",
-    "Psicológo/a",
+    "Psicólogo/a",
     "Técnico/a de Gestión de Banco de Tierras",
     "Técnico/a Medio de Comunicación",
     "Informático",
@@ -44,47 +44,49 @@
   },
   "plazas_total": {
    "valor": 22,
-   "cita": "Bases y convocatoria para cubrir veintidós plazas de personal laboral, en el marco del proceso",
+   "cita": "Bases y convocatoria para cubrir veintidós plazas de personal laboral, en el marco del proceso de estabilización",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Se indicará de forma correspondiente en las correspondientes Bases específicas",
+   "cita": "Titulación: Se indicará de forma correspondiente en las correspondientes Bases específicas",
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Nacionalidad española o de Estados con libre circulación de trabajadores; capacidad funcional; tener 16 años y no superar la edad de jubilación forzosa; no haber sido separado del servicio público ni inhabilitado.",
+   "valor": "Nacionalidad española o acceso conforme al Real Decreto 543/2001; capacidad funcional; tener 16 años cumplidos y no superar la edad de jubilación forzosa; no haber sido separado del servicio público ni inhabilitado.",
    "cita": "Tener cumplidos los dieciséis años de edad y no haber alcanzado la edad máxima de jubilación forzosa.",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "20 días hábiles, contados a partir del siguiente al de la publicación del anuncio de la convocatoria en el BOE",
+   "valor": "20 días hábiles desde el siguiente a la publicación de la convocatoria en el BOE",
    "cita": "dentro del plazo de veinte (20) días hábiles, contados a partir del siguiente de la publicación del anuncio de la convocatoria en el BOE",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Preferentemente vía telemática por el Punto de Acceso General / sede electrónica; también en papel en el Registro General del Consejo Comarcal o en Correos",
+   "valor": "Preferentemente telemática a través del Punto de Acceso General de la Sede Electrónica, o en papel en el Registro General del Consejo Comarcal",
    "cita": "Preferentemente, se presentarán las solicitudes vía telemática.",
    "nivel": "literal"
   },
   "bolsa": {
    "valor": "sí, los aspirantes que superen el proceso sin plaza entran en la bolsa de trabajo",
-   "cita": "entrando los demás aspirantes que hayan superado el proceso en la bolsa de trabajo",
+   "cita": "entrando los demás aspirantes que hayan superado el proceso en la bolsa de trabajo.",
    "nivel": "literal"
   }
  },
  "rechazados": {
+  "tasa_euros": {
+   "motivo": "cita_no_literal",
+   "valor": 0,
+   "cita": "Las bases no establecen tasa ni derechos de examen para los aspirantes."
+  },
   "publicaciones": {
    "motivo": "cita_no_literal",
-   "valor": "BOP de León, Boletín Oficial de Castilla y León, extracto en el BOE, tablón de edictos y sede electrónica del Consejo Comarcal",
-   "cita": "Los resultados se harán públicos en el tablón de anuncios y en la Sede Electrónica del Consejo Comarcal de El Bierzo"
-  },
-  "ejercicios": {
-   "motivo": "cita_no_literal",
-   "valor": [
-    "Concurso: valoración de experiencia profesional (hasta 60 puntos)",
-    "Concurso: valoración de formación (hasta 40 puntos)"
-   ],
-   "cita": "Experiencia profesional. Hasta un máximo de 60 puntos. Formación, hasta un máximo de 40 puntos."
+   "valor": "BOP de León, BOCYL y extracto en el BOE; tablón de edictos y Sede Electrónica del Consejo Comarcal",
+   "cita": "se publicará en el BOLETÍN OFICIAL DE LA PROVINCIA, en los tablones de anuncios del Consejo Comarcal de El Bierzo y en su Sede Electrónica"
   },
   "meritos": {
    "motivo": "cita_no_literal",
-   "valor": "Experiencia profesional hasta 60 puntos (servicios en el Consejo Comarcal de El Bierzo, hasta 60 pts; servicios en otras Administraciones, hasta 60 pts) y formación hasta 40 puntos; calificación máxima 100 puntos",
+   "valor": "Experiencia profesional hasta 60 puntos y formación hasta 40 puntos; calificación máxima 100 puntos",
    "cita": "Experiencia profesional: Hasta un máximo de 60 puntos. Formación, hasta un máximo de 40 puntos."
   }
  }

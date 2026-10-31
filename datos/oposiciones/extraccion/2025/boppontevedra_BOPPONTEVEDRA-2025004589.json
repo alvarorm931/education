@@ -5,11 +5,11 @@
   "fuente": "BOP-PONTEVEDRA",
   "url": "https://boppo.depo.gal/web/boppo/detalle/-/boppo/2025/02/05/2025004589",
   "fecha": "2025-02-05",
-  "huella": "d4fe98986e410d4274b89e69e6fa165484f8e8d63d089af5f7a6103c5c4ab67b"
+  "huella": "84ca9f41b840bac72e6b7484c577a2d23319851b0360a48f5a8d32ff380d11fd"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:46:48+00:00",
- "lote": "msgbatch_01MQzQCLMZKxUrrPMAj7dr53",
+ "extraido": "2026-10-31T15:25:32+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
@@ -37,14 +37,14 @@
    "cita": "Establécese o de concurso-oposición mediante o procedemento de promoción interna",
    "nivel": "literal"
   },
-  "otros_requisitos": {
-   "valor": "Ter prestado servizos efectivos como persoal funcionario de carreira ou laboral fixo no Concello/Xerencia no grupo/subgrupo inmediato inferior durante dous anos; non estar separado de ningunha Administración; non exceder a idade máxima",
-   "cita": "Ter prestado servizos efectivos na condición de persoal funcionario de carreira ou persoal laboral fixo",
+  "titulacion": {
+   "valor": "título oficial de enxeñeiro industrial o máster en enxeñería industrial o equivalente (A1); licenciado o grao con máster en dereito, ciencias económicas o empresariais (Servizos Económicos); bacharelato, FP 2º grao o equivalente (Inspector)",
+   "cita": "os aspirantes deberán estar en posesión do título oficial de enxeñeiro industrial",
    "nivel": "literal"
   },
-  "idioma_cooficial": {
-   "valor": "Coñecemento do idioma galego valorado na fase de concurso (ata 1 punto)",
-   "cita": "Coñecemento do idioma galego (puntuación máxima 1 punto)",
+  "otros_requisitos": {
+   "valor": "Ter prestado servizos efectivos como persoal funcionario de carreira o persoal laboral fixo no grupo/subgrupo inmediato inferior durante un mínimo de dous anos; no pertencer a ningún corpo sancionado.",
+   "cita": "Ter prestado servizos efectivos na condición de persoal funcionario de carreira ou persoal laboral fixo",
    "nivel": "literal"
   },
   "tasa_euros": {
@@ -53,37 +53,41 @@
    "nivel": "literal"
   },
   "exenciones_tasa": {
-   "valor": "Non consta na base",
+   "valor": "Non consta exención ou reducción en el texto.",
    "cita": "Prazas do grupo C1: 21,50 €",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "20 días hábiles a partir do seguinte a aquel no que apareza o anuncio da convocatoria no Boletín Oficial do Estado",
-   "cita": "presentaranse no prazo de 20 días hábiles a partir do seguinte",
+   "valor": "20 días hábiles a partir do seguinte ao da publicación do anuncio da convocatoria no Boletín Oficial del Estado",
+   "cita": "presentaranse no prazo de 20 días hábiles a partir do seguinte a aquel no que apareza o anuncio",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Boletín Oficial da Provincia de Pontevedra, Diario Oficial de Galicia, taboleiro de edictos, páxina web www.vigo.org e Intranet municipal; anuncio da convocatoria no BOE",
+   "valor": "Boletín Oficial de la Provincia de Pontevedra, Diario Oficial de Galicia, Taboleiro de Edictos, web municipal www.vigo.org e Intranet municipal; anuncio de convocatoria en el BOE",
    "cita": "As presentes bases publicaranse no Boletín Oficial da Provincia de Pontevedra",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Concurso: experiencia, cursos, titulacións, coñecemento do galego, conciliación",
-    "Primeiro exercicio (eliminatorio): exposición escrita de dous temas de catro propostos, tres horas",
-    "Segundo exercicio (eliminatorio): supposto teórico-práctico, catro horas"
+    "Primeiro exercicio (teórico, obrigatorio e eliminatorio): dous temas a escoller de catro propostos, 3 horas, de 0 a 10",
+    "Segundo exercicio (teórico-práctico, obrigatorio e eliminatorio): suposto práctico, 4 horas, de 0 a 10"
    ],
-   "cita": "Constará de dous exercicios, todos eles obrigatorios e eliminatorios.",
+   "cita": "Consistirá en contestar por escrito, nun tempo máximo de tres horas, dous temas a escoller dos catro propostos",
    "nivel": "literal"
   },
   "temas": {
    "valor": 45,
-   "cita": "Tema 45.- A igualdade de xénero. O principio de igualdade e a tutela contra a discriminación.",
+   "cita": "Subgrupo A1: 45 temas",
    "nivel": "literal"
   },
-  "meritos": {
-   "valor": "Experiencia profesional máximo 7 puntos (0,30 por ano); cursos de formación máximo 3 puntos; titulacións académicas máximo 1 punto; coñecemento do idioma galego máximo 1 punto; exercicio de dereitos de conciliación máximo 1 punto",
-   "cita": "Experiencia profesional (máximo 7 puntos).",
+  "bolsa": {
+   "valor": "no",
+   "cita": "En ningún caso o tribunal poderá declarar que superaron o proceso selectivo un número maior de aspirantes ás prazas convocadas",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "no consta",
+   "cita": "Finalizado o proceso selectivo os/as que o superen serán nomeados/as funcionarios/as de carreira na praza correspondente.",
    "nivel": "literal"
   }
  },
@@ -96,27 +100,22 @@
   "plazas_turno_libre": {
    "motivo": "valor_no_en_cita",
    "valor": 0,
-   "cita": "Quenda promoción interna (segunda fase)"
+   "cita": "Quenda promoción interna (segunda fase), e correspondente ás seguintes prazas"
   },
   "plazas_promocion_interna": {
    "motivo": "valor_no_en_cita",
    "valor": 4,
    "cita": "Quenda promoción interna (segunda fase), e correspondente ás seguintes prazas"
   },
-  "titulacion": {
-   "motivo": "cita_no_literal",
-   "valor": "título oficial de enxeñeiro industrial ou máster en enxeñería industrial o equivalente (Enxeñeiro/a Industrial); licenciado/grao con máster en dereito, ciencias económicas ou empresariais o equivalente (Técnico/a Superior Servizos Económicos); bacharelato, FP de 2º grao o ciclo formativo de grao medio o superior (Inspector/a de Urbanismo)",
-   "cita": "o título oficial de enxeñeiro industrial ou másters en enxeñería industrial ou equivalente"
-  },
   "presentacion": {
    "motivo": "cita_no_literal",
-   "valor": "Electrónicamente a través do Rexistro Electrónico Xeral da Xerencia Municipal de Urbanismo, accesible desde a Sede Electrónica do Concello de Vigo",
-   "cita": "o Rexistro Electrónico Xeral da Xerencia Municipal de Urbanismo, ao que se accede ao través da Sede Electrónica"
+   "valor": "Obrigatoriamente por medios electrónicos a través do Rexistro Electrónico Xeral da Xerencia Municipal de Urbanismo, accesible desde la Sede Electrónica del Concello de Vigo",
+   "cita": "quen desexe participar nestas probas selectivas debe achegar a súa solicitude a través do Rexistro Electrónico Xeral"
   },
-  "bolsa": {
+  "meritos": {
    "motivo": "cita_no_literal",
-   "valor": "non",
-   "cita": "Non consta na base"
+   "valor": "Experiencia profesional (máx. 7 puntos, 0,30 por año); cursos de formación (máx. 3 puntos); titulaciones académicas (máx. 1 punto); coñecemento do idioma galego (máx. 1 punto); exercicio dos dereitos de conciliación (máx. 1 punto)",
+   "cita": "Experiencia profesional (máximo 7 puntos). Por cada ano ou por unha fracción superior a seis meses"
   }
  }
 }

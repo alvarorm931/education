@@ -5,11 +5,11 @@
   "fuente": "BOP-PALENCIA",
   "url": "https://www.diputaciondepalencia.es/system/files/bop/2026/20260713-bop-83-Ordinario.pdf",
   "fecha": "2026-07-13",
-  "huella": "eddddd314100336ad622b18d95d5226014f42585e870faddd251c39ffcf099f3"
+  "huella": "52ba1edf295ec2391288cc00f8a157652736b9dca998a1461aad3baa45e235da"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T07:52:00+00:00",
- "lote": "msgbatch_01NvbwpQGcC9vt1x7nWayvXt",
+ "extraido": "2026-10-31T15:25:38+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
@@ -26,45 +26,50 @@
   },
   "vinculo": {
    "valor": "funcionario interino",
-   "cita": "provisión mediante nombramiento interino del puesto de Secretaría de Entrada",
+   "cita": "provisión mediante nombramiento interino del puesto de Secretaría de Entrada, Clase 2ª",
    "nivel": "literal"
   },
   "sistema": {
    "valor": "concurso-oposición",
-   "cita": "Se convoca CONCURSO OPOSICIÓN para la provisión mediante nombramiento interino",
+   "cita": "Se convoca CONCURSO OPOSICIÓN para la provisión mediante nombramiento interino del puesto",
    "nivel": "literal"
   },
-  "titulacion": {
-   "valor": "Licenciado, Ingeniero, Arquitecto o Grado (subgrupo A1)",
-   "cita": "estar en posesión de alguno de los siguientes títulos académicos o en condiciones de obtenerlo",
+  "otros_requisitos": {
+   "valor": "Nacionalidad española; capacidad funcional; tener 16 años cumplidos y no superar la edad de jubilación forzosa; no haber sido separado del servicio público ni estar inhabilitado para cargos públicos",
+   "cita": "no haber sido separado mediante expediente disciplinario del servicio de cualquiera de las Administraciones públicas",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "10 días hábiles desde el siguiente al de la publicación de la convocatoria en el BOP",
+   "valor": "10 días hábiles desde el siguiente al de publicación de la convocatoria en el BOP",
    "cita": "presentándolas en el Registro del Ayuntamiento de Guardo en el plazo de 10 días hábiles",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Registro del Ayuntamiento de Guardo o registros del artículo 16 de la Ley 39/2015, según modelo Anexo I",
+   "valor": "Registro del Ayuntamiento de Guardo o registros del artículo 16 de la Ley 39/2015, según modelo del Anexo I",
    "cita": "Las solicitudes podrán presentarse también, a través de alguno de los registros previstos en el artículo 16",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de anuncios de la Sede Electrónica del Ayuntamiento de Guardo",
+   "cita": "Todas las publicaciones posteriores se realizarán en el tablón de anuncios de la Sede Electrónica del Ayuntamiento de Guardo",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Primera parte: cuestionario tipo test de 50 preguntas con cuatro opciones (1 hora), máximo 10 puntos",
-    "Segunda parte: resolución de un supuesto práctico jurídico (2 horas), de 0 a 10 puntos"
+    "Primera parte: cuestionario tipo test de 50 preguntas con cuatro opciones (máximo 10 puntos), 1 hora",
+    "Segunda parte: supuesto práctico jurídico relacionado con las funciones de Secretaría (máximo 10 puntos), 2 horas"
    ],
-   "cita": "consistirá en la contestación de un CUESTIONARIO TIPO TEST de CINCUENTA PREGUNTAS con CUATRO OPCIONES",
+   "cita": "la realización de un examen con dos partes que se celebrarán en una única sesión, el mismo día",
    "nivel": "literal"
   },
   "meritos": {
-   "valor": "Ejercicios superados de acceso a la subescala (hasta 3 p.); experiencia en puestos de habilitación nacional (hasta 4 p.); experiencia en A1 de administración general (hasta 2 p.); ejercicios de A1 (hasta 1 p.); titulaciones jurídicas o económicas (hasta 3 p.); máster (hasta 1 p.)",
-   "cita": "Por haber superado alguno o algunos de los ejercicios de las pruebas selectivas convocadas",
+   "valor": "Concurso: servicios en Secretarías y otros cuerpos (hasta 5 puntos), experiencia profesional (hasta 6 puntos), otros ejercicios aprobados (hasta 1 punto), titulaciones jurídicas o económicas (hasta 3 puntos), máster (hasta 1 punto)",
+   "cita": "Los méritos a valorar se ajustarán al siguiente baremo",
    "nivel": "literal"
   },
   "bolsa": {
-   "valor": "sí, lista ordenada por puntuación para proponer nombramientos de siguientes candidatos en caso de falta de acreditación, falta de toma de posesión o rehúse",
-   "cita": "El listado ordenado por puntuación servirá para que la Entidad Local pueda proponer a la Comunidad Autónoma el nombramiento de los siguientes",
+   "valor": "sí, para proponer a la Comunidad Autónoma el nombramiento de los siguientes de la lista en caso de falta de acreditación de requisitos, falta de toma de posesión o rehúse",
+   "cita": "El listado ordenado por puntuación servirá para que la Entidad Local pueda proponer a la Comunidad Autónoma el nombramiento de los siguientes de la lista",
    "nivel": "literal"
   }
  },
@@ -74,30 +79,15 @@
    "valor": 1,
    "cita": "provisión con carácter interino del puesto de Secretaría, Categoría de Entrada, Clase 2ª"
   },
-  "otros_requisitos": {
+  "titulacion": {
    "motivo": "cita_no_literal",
-   "valor": "Nacionalidad española; capacidad funcional; tener cumplidos dieciséis años y no superar la edad de jubilación forzosa; no haber sido separado de la Administración por expediente disciplinario ni hallarse inhabilitado.",
-   "cita": "tener la nacionalidad española; capacidad funcional para el desempeño de las funciones"
-  },
-  "tasa_euros": {
-   "motivo": "cita_no_literal",
-   "valor": 0,
-   "cita": "no se establece tasa de examen en las bases publicadas"
-  },
-  "publicaciones": {
-   "motivo": "cita_no_literal",
-   "valor": "Tablón de anuncios de la sede electrónica del Ayuntamiento de Guardo",
-   "cita": "se publicarán en el tablón de anuncios de la Sede Electrónica del Ayuntamiento de Guardo"
+   "valor": "Licenciado, Ingeniero, Arquitecto o Grado",
+   "cita": "estar en posesión de alguno de los siguientes títulos académicos: Licenciado, Ingeniero, Arquitecto o Grado"
   },
   "temas": {
-   "motivo": "cita_no_literal",
+   "motivo": "valor_no_en_cita",
    "valor": 22,
-   "cita": "Parte general: 22 temas; el programa de la parte especial consta de 38 temas"
-  },
-  "practicas_o_curso": {
-   "motivo": "cita_no_literal",
-   "valor": "no aparece en el texto",
-   "cita": ""
+   "cita": "PARTE GENERAL Tema 1. La Administración Pública en la Constitución"
   }
  }
 }

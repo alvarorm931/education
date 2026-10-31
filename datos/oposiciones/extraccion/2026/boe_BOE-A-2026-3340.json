@@ -5,16 +5,18 @@
   "fuente": "BOR",
   "url": "https://web.larioja.org/bor-portada/boranuncio?n=anu-575054",
   "fecha": "2026-02-04",
-  "huella": "969b34bdce706023a94f3e6bd6aec4bfd11b8e0c5fea38a6685190fe1870d499"
+  "huella": "77af919c6f846daea4b1372d06e9264fef71584a934ba19a0e660ede997b29e1"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:42:30+00:00",
- "lote": "msgbatch_01W17mR271uYfWYL6CuSdriL",
+ "extraido": "2026-10-31T15:25:29+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
-   "valor": "Trabajador Social, Escala de Administración Especial, Subescala Técnica, Categoría Media",
-   "cita": "una plaza de Trabajador Social, perteneciente a la Escala de Administración Especial, Subescala Técnica, Categoría Media",
+   "valor": [
+    "Trabajador Social"
+   ],
+   "cita": "Bases y convocatoria para la provisión, por el procedimiento de concurso-oposición, de una plaza de Trabajador Social",
    "nivel": "literal"
   },
   "grupo": {
@@ -27,24 +29,24 @@
    "cita": "provisión en propiedad con funcionario de carrera de una plaza de trabajador social",
    "nivel": "literal"
   },
-  "sistema": {
-   "valor": "concurso-oposición",
-   "cita": "mediante el sistema de concurso-oposición, turno libre",
-   "nivel": "literal"
-  },
   "plazas_total": {
    "valor": 1,
    "cita": "una plaza vacante en la plantilla de personal funcionario del Ayuntamiento",
    "nivel": "literal"
   },
   "titulacion": {
-   "valor": "Diplomado o Grado en Trabajo Social o equivalentes",
+   "valor": "Título de Diplomado o Grado en Trabajo Social o equivalentes",
    "cita": "Título de Diplomado o Grado en Trabajo Social o equivalentes, expedido por el Ministerio de Educación y Cultura",
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Nacionalidad (española, UE o cónyuge en condiciones), 16 años cumplidos y no exceder edad de jubilación, capacidad funcional, no separación disciplinaria ni inhabilitación, conocimiento adecuado del castellano si no se posee nacionalidad española.",
-   "cita": "Tener cumplidos 16 años y no exceder, en su caso, de la edad máxima de jubilación forzosa.",
+   "valor": "Nacionalidad (española, UE o cónyuge en los supuestos previstos), tener cumplidos 16 años y no exceder la edad de jubilación forzosa, capacidad funcional, no estar separado de servicio ni inhabilitado.",
+   "cita": "Tener cumplidos 16 años y no exceder, en su caso, de la edad máxima de jubilación forzosa",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "No se exige",
+   "cita": "Quienes no posean la nacionalidad española deberán acreditar un conocimiento adecuado del castellano",
    "nivel": "literal"
   },
   "tasa_euros": {
@@ -53,59 +55,64 @@
    "nivel": "literal"
   },
   "exenciones_tasa": {
-   "valor": "No constan exenciones ni reducciones de la tasa en el texto.",
-   "cita": "Junto con la instancia deberá acompañarse el resguardo acreditativo de haber satisfecho el importe de la tasa",
+   "valor": "No constan",
+   "cita": "Haber abonado la Tasa a la que se refiere la Base 3.3",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "Veinte días hábiles contados desde el siguiente a la publicación del extracto de la convocatoria en el Boletín Oficial del Estado",
-   "cita": "dentro del plazo de veinte días hábiles contados a partir del siguiente al de la publicación del extracto de la convocatoria en el Boletín Oficial del Estado",
+   "valor": "veinte días hábiles desde el siguiente al de la publicación del extracto de la convocatoria en el BOE",
+   "cita": "dentro del plazo de veinte días hábiles contados a partir del siguiente al de la publicación del extracto",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Instancia dirigida a la Sra. Alcaldesa-Presidenta, presentada en Registros del Ayuntamiento, Ley 39/2015 o Oficinas de Correos en sobre abierto",
-   "cita": "Las personas interesadas podrán presentar instancia dirigida a la Sra. Alcaldesa-Presidenta del Ayuntamiento de Arnedo",
+   "valor": "Instancia dirigida a la Alcaldesa-Presidenta, presentada en los Registros del Ayuntamiento o por los procedimientos de la Ley 39/2015, o en Oficinas de Correos",
+   "cita": "presentar instancia dirigida a la Sra. Alcaldesa-Presidenta del Ayuntamiento de Arnedo",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Boletín Oficial de La Rioja (BOR) y Tablón de Anuncios de la Corporación ubicado en la Sede Electrónica del Ayuntamiento de Arnedo",
-   "cita": "Dicha resolución se publicará en el Boletín Oficial de la Rioja (BOR) y en el Tablón de Anuncios de la Corporación",
+   "valor": "Boletín Oficial de La Rioja y Tablón de Anuncios de la Corporación en la Sede Electrónica del Ayuntamiento de Arnedo",
+   "cita": "Se publicará en el Boletín Oficial de La Rioja (BOR) y en el Tablón de Anuncios de la Corporación",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Primer ejercicio: test teórico de 120 preguntas con tres respuestas alternativas (máximo 30 puntos, mínimo 15)",
+    "Primer ejercicio: test de 120 preguntas con tres respuestas alternativas (máximo 30 puntos, mínimo 15)",
     "Segundo ejercicio: supuesto práctico escrito de Trabajo Social (máximo 40 puntos, mínimo 20)"
    ],
-   "cita": "consistirá en la realización de un test de 120 preguntas con tres respuestas alternativas",
-   "nivel": "literal"
-  },
-  "temas": {
-   "valor": 60,
-   "cita": "60. Iniciativa pública y privada. El tercer sector y su papel en acción social.",
+   "cita": "consistirá en la realización de dos ejercicios obligatorios y eliminatorios",
    "nivel": "literal"
   },
   "meritos": {
-   "valor": "Concurso máximo 30 puntos: experiencia profesional hasta 22 puntos; méritos académicos hasta 8 puntos (formación hasta 5 y superación de ejercicios hasta 3)",
+   "valor": "Concurso, máximo 30 puntos: méritos profesionales hasta 22 (0,50 puntos/mes en Administración Local), académicos hasta 8 (formación y superación de ejercicios)",
    "cita": "Los méritos se valorarán conforme a la siguiente puntuación: máximo de 30 puntos.",
    "nivel": "literal"
   },
   "bolsa": {
-   "valor": "Sí: lista de espera para nombramientos de interinos y contrataciones temporales en la categoría de Trabajador Social, con validez inicial de cinco años",
-   "cita": "servirá como lista de espera a efectos de nombramiento interinos o contrataciones temporales",
+   "valor": "sí, lista de espera para nombramientos de funcionarios interinos o contrataciones temporales en la categoría de Trabajador Social, con validez inicial de cinco años",
+   "cita": "Concluido el proceso selectivo, el Tribunal calificador procederá a confeccionar una lista de espera",
    "nivel": "literal"
   },
   "practicas_o_curso": {
-   "valor": "No consta periodo de prácticas ni curso selectivo; sí un periodo de prueba de dos meses para las relaciones de interinidad derivadas de la bolsa",
+   "valor": "Periodo de prueba de dos meses para las relaciones de interinidad derivadas de la bolsa",
    "cita": "las relaciones de interinidad a que dé lugar la bolsa formada conforme a este procedimiento, se someterán a un periodo de prueba de dos meses",
    "nivel": "literal"
   }
  },
  "rechazados": {
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "por el sistema de concurso-oposición, turno libre"
+  },
   "plazas_turno_libre": {
    "motivo": "valor_no_en_cita",
    "valor": 1,
    "cita": "mediante el sistema de concurso-oposición, turno libre"
+  },
+  "temas": {
+   "motivo": "cita_no_literal",
+   "valor": 60,
+   "cita": "ANEXO I Temario ... 60. Iniciativa pública y privada. El tercer sector"
   }
  }
 }

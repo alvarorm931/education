@@ -1,0 +1,47 @@
+{
+ "proceso": "boib:BOIB-2022-662610",
+ "documento": {
+  "id": "boib:BOIB-2022-662610",
+  "fuente": "BOIB",
+  "url": "https://www.caib.es/eboibfront/es/2022/11591/662610/resolucion-de-4-de-julio-de-2022-de-la-universidad",
+  "fecha": "2022-07-07",
+  "huella": "d370a51923ca2ec15313d15e5c13651877de20b45aae08b1d9bad76d0373462e"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T15:25:31+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Profesor Titular de Universidad, área de Literatura Española",
+    "Profesor Titular de Universidad, área de Geografía Humana",
+    "Profesor Titular de Universidad, área de Geografía Física"
+   ],
+   "cita": "Cuerpo al que pertenece: Profesor Titular de Universidad",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "comunica la convocatoria a concurso de acceso en el Boletín Oficial del Estado",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días naturales a partir del siguiente al de la publicación de esta convocatoria en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes será de veinte días naturales a partir del siguiente al de la publicación",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial del Estado",
+   "cita": "Las bases íntegras de la convocatoria aparecerán publicadas en el Boletín Oficial del Estado.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "convoca a concurso de acceso en el Boletín Oficial del Estado de las plazas de los cuerpos de funcionarios docentes universitarios"
+  }
+ }
+}

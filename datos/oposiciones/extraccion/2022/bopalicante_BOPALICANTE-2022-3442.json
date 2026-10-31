@@ -1,0 +1,55 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2022-3442",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2022-3442",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2022/05/30_101/2022_003442.pdf",
+  "fecha": "2022-05-30",
+  "huella": "6966363f6f121272b478ce8b336f824455b349544c20ebbbd5a94e00f531e7cb"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T15:25:49+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
+ "no_son_bases": false,
+ "campos": {
+  "plazas_total": {
+   "valor": 1,
+   "cita": "proceso de selección de una plaza de Auxiliar de Administración General",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "10 días hábiles, contados a partir del día siguiente a la publicación del presente Edicto en el Boletín Oficial de la Provincia",
+   "cita": "El plazo de presentación de solicitudes es de 10 días hábiles, contados a partir del día siguiente a la publicación",
+   "nivel": "sin_signos"
+  },
+  "presentacion": {
+   "valor": "Preferentemente por medios telemáticos, a través de la sede electrónica del Ayuntamiento de Busot, en el modelo aprobado al efecto",
+   "cita": "se presentarán preferentemente por medios telemáticos, a través de la sede electrónica del Ayuntamiento de Busot",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Auxiliar de Administración General"
+   ],
+   "cita": "proceso de selección de una plaza de Auxiliar de Administración General, procedimiento de estabilización de empleo temporal"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "otro",
+   "cita": "procedimiento de estabilización de empleo temporal"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "otro",
+   "cita": "procedimiento de estabilización de empleo temporal"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Tablón de Anuncios del Ayuntamiento y sede electrónica del Ayuntamiento de Busot",
+   "cita": "a disposición de las personas interesadas en la sede electrónica del Ayuntamiento de Busot y en el Tablón de Anuncios del Ayuntamiento"
+  }
+ }
+}

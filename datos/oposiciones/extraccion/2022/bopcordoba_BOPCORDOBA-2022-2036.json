@@ -1,0 +1,60 @@
+{
+ "proceso": "bopcordoba:BOPCORDOBA-2022-2036",
+ "documento": {
+  "id": "bopcordoba:BOPCORDOBA-2022-2036",
+  "fuente": "BOP-CORDOBA",
+  "url": "https://bop.dipucordoba.es/dia/16-06-2022",
+  "fecha": "2022-06-16",
+  "huella": "82107da7e9f47e8556ce9b69f858f046d49a1ab17fd561b5a02900723e7c1586"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T15:25:44+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Peón de jardinería"
+   ],
+   "cita": "BASES SELECCIÓN MEDIANTE CONCURSO DE PERSONAL LABORAL TEMPORAL PARA TAREAS DE PEÓN DE JARDINERÍA",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "E / agrupaciones profesionales",
+   "cita": "tareas de peón de jardinería",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "mediente concurso de personal laboral temporal, de peones de jardinería",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "diez días hábiles contados a partir del siguiente a la publicación del presente anuncio en el BOP",
+   "cita": "durante el plazo de diez días hábiles contados a partir del siguiente a la publicación",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "en el modelo de instancia aprobado",
+   "cita": "deberán solicitarlo en el modelo de instancia aprobado, durante el plazo de diez días hábiles",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia y tablón de anuncios de la sede electrónica del Ayuntamiento de Villa del Río",
+   "cita": "publicación del presente anuncio en el Boletín Oficial de la Provincia y tablón de anuncios de la sede electrónica",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, para la contratación de peones de jardinería por incremento ocasional e imprevisible",
+   "cita": "creación de una bolsa de empleo para la contatación, mediente concurso de personal laboral temporal",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso",
+   "cita": "mediante concurso de personal laboral temporal, de peones de jardinería"
+  }
+ }
+}

@@ -5,15 +5,17 @@
   "fuente": "BOP-TOLEDO",
   "url": "https://bop.diputoledo.es/webEbop/DocGet?id=26052078;0&insert_number=2105&insert_year=2026",
   "fecha": "2026-05-12",
-  "huella": "80bf488ef4eb121c2c5d9bcd2f5d49506ba5ba3f96d757b39c4c757bcef0bc06"
+  "huella": "b071f50590e240f32ccba8f3b051f37cd46be87a5a832acc26cb0d19732e88c0"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:42:00+00:00",
- "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
+ "extraido": "2026-10-31T15:25:25+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
-   "valor": "monitor actividades juveniles",
+   "valor": [
+    "monitor actividades juveniles"
+   ],
    "cita": "selección de personal laboral temporal monitor actividades juveniles, para la temporada de verano de 2026",
    "nivel": "literal"
   },
@@ -28,15 +30,21 @@
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "tablón de anuncios del Ayuntamiento y página web www.albarrealdetajo.es; sucesivos anuncios en tablón de edictos, página web y sede electrónica",
-   "cita": "Las bases de la convocatoria se encuentran publicadas en el tablón de anuncios del Ayuntamiento y en su página web",
+   "valor": "tablón de edictos, página web y sede electrónica del Ayuntamiento",
+   "cita": "Los sucesivos anuncios de esta convocatoria, cuando procedan de conformidad con las bases, se publicarán en el tablón de edictos, página web y sede electrónica del Ayuntamiento.",
    "nivel": "literal"
   },
   "bolsa": {
-   "valor": "sí, se aprueba una bolsa para esta convocatoria",
-   "cita": "se aprobaron las bases y la bolsa para la convocatoria para la selección de personal laboral temporal",
+   "valor": "sí, bolsa para la convocatoria de selección de personal laboral temporal monitor actividades juveniles",
+   "cita": "se aprobaron las bases y la bolsa para la convocatoria para la selección de personal laboral temporal monitor actividades juveniles",
    "nivel": "literal"
   }
  },
- "rechazados": {}
+ "rechazados": {
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "no aparece en el texto"
+  }
+ }
 }

@@ -1,0 +1,40 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2022-5674",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2022-5674",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2022/08/10_151/2022_005674.pdf",
+  "fecha": "2022-08-10",
+  "huella": "c73b07014df1721f6ab75e024db63381f30341bf306eb47c25cbfe324324f597"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T15:25:48+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Agente de Policía Local"
+   ],
+   "cita": "convocatoria de 3 plazas vacantes de Agente de Policía Local",
+   "nivel": "literal"
+  },
+  "plazas_turno_libre": {
+   "valor": 11,
+   "cita": "de las cuales 7 se cubrirán por tuno de movilidad y 11 por turno libre",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 18,
+   "cita": "el número total de plazas a cubrir en dicho procedimiento es de 18 plazas"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "BOP de Alicante, extracto en DOGV y BOE, tablón de anuncios y página web del Ayuntamiento",
+   "cita": "Publicar esta convocatoria y su sistema de cobertura a en el BOP de Alicante y, en extracto en el DOGV y BOE"
+  }
+ }
+}

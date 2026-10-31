@@ -5,18 +5,16 @@
   "fuente": "BOP-CORUNA",
   "url": "https://bop.dacoruna.gal/bopportal/publicado/2026/04/13/2026_0000002149.html",
   "fecha": "2026-04-13",
-  "huella": "c58dc7d3c26db38ed6569f2db467ddcfce7525f21ba239aa689a3a4ece4feb88"
+  "huella": "bef324cf343f09570c74842a02ba9ba4f68f77c68bb862cdaf67145e5ae86b18"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:40:30+00:00",
- "lote": "msgbatch_01E3wiYcGL8Lzho48bXWLyyb",
+ "extraido": "2026-10-31T15:25:48+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
-   "valor": [
-    "Técnico/a de Normalización Lingüística"
-   ],
-   "cita": "Convocatoria e bases selección persoal técnico normalización lingüística (FONL/2026)",
+   "valor": "Técnico/a de Normalización Lingüística",
+   "cita": "Convocatoria e bases selección persoal técnico normalización lingüística",
    "nivel": "literal"
   },
   "grupo": {
@@ -26,22 +24,12 @@
   },
   "vinculo": {
    "valor": "laboral temporal",
-   "cita": "Persoal Laboral temporal",
+   "cita": "Persoal Laboral temporal ao abeiro do programa FONL/2026",
    "nivel": "literal"
   },
   "sistema": {
    "valor": "concurso-oposición",
-   "cita": "Convocatoria e Proceso de Selección por Concurso-Oposición (Persoal Laboral temporal)",
-   "nivel": "literal"
-  },
-  "plazas_total": {
-   "valor": 1,
-   "cita": "INICIACIÓN DO EXPEDIENTE DE CONVOCATORIA E PROCESO DE SELECCIÓN POR CONCURSO-OPOSICIÓN DUNHA BOLSA DE 1 TÉCNICO/A",
-   "nivel": "literal"
-  },
-  "plazas_turno_libre": {
-   "valor": 1,
-   "cita": "INICIACIÓN DO EXPEDIENTE DE CONVOCATORIA E PROCESO DE SELECCIÓN POR CONCURSO-OPOSICIÓN DUNHA BOLSA DE 1 TÉCNICO/A",
+   "cita": "proceso de selección por concurso-oposición dunha bolsa",
    "nivel": "literal"
   },
   "titulacion": {
@@ -50,49 +38,65 @@
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Nacionalidad española o equivalente según art. 57 EBEP, mayoría de dieciséis años, capacidad funcional, permiso de conducir clase B, certificado de delitos de naturaleza sexual actualizado a 2026, no separación del servicio público ni inhabilitación",
-   "cita": "Ter cumpridos dezaseis anos e non exceder, no seu caso, da idade máxima de xubilación forzosa",
+   "valor": "Nacionalidade española (con excepcións legais), 16 anos cumpridos, capacidade funcional, carné de conducir clase B en vigor, certificado de delitos de natureza sexual actualizado a 2026, non ter sido separado do servizo público",
+   "cita": "Carecer de antecedentes penais por delitos sexuais, acreditado mediante o Certificado de Delitos de Natureza Sexual",
    "nivel": "literal"
   },
   "idioma_cooficial": {
-   "valor": "CELGA 5 o equivalente (galego); de no acreditarse, prueba específica de conocimiento",
+   "valor": "Galego: CELGA 5 ou equivalente; quen non o acredite deberá superar proba específica",
    "cita": "Estar en posesión do CELGA 5 ou equivalente 1",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "15 días hábiles desde el día siguiente a la publicación del anuncio en el BOP de A Coruña",
-   "cita": "prazo de presentación de solicitudes que será de 15 días hábiles , contados a partir do día seguinte",
+   "valor": "15 días hábiles desde o día seguinte á publicación do anuncio no BOP da Coruña",
+   "cita": "no prazo de quince días hábiles contados a partir do día seguinte ao da publicación do anuncio",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Dirigidas al Alcalde-Presidente, en el Registro Electrónico General del Concello o en los lugares del art. 16.4 de la Ley 39/2015",
+   "valor": "Dirixida ao Sr. Alcalde-Presidente, no Rexistro Electrónico Xeral do Concello ou en lugares do artigo 16.4 da Lei 39/2015",
    "cita": "presentaranse no Rexistro Electrónico Xeneral deste Concello ou nalgún dos lugares previstos no artigo 16.4",
-   "nivel": "literal"
-  },
-  "publicaciones": {
-   "valor": "Sede electrónica del Concello (sede.concellodabana.gal) y página web del Concello",
-   "cita": "as bases da convocatoria publicaranse na sede electrónica deste Concello",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Primera parte: test de 60 preguntas más 5 de reserva, eliminatorio (máx. 45 puntos)",
-    "Segunda parte: supuesto práctico de una hora, eliminatorio (máx. 15 puntos)",
-    "Prueba de conocimiento de la lengua gallega (apto/no apto), previa a la oposición"
+    "Primeira parte: test de 60 preguntas más 5 de reserva, 60 minutos, eliminatorio (45 puntos máximo)",
+    "Segunda parte: caso práctico, una hora, eliminatorio (15 puntos máximo)",
+    "Proba de coñecemento da lingua galega, apto/non apto, eliminatoria para quen non acredite CELGA 5"
    ],
    "cita": "EXERCICIO: PRIMEIRA PARTE: (Cuestionario tipo test ). Será obrigatorio e eliminatorio.",
    "nivel": "literal"
   },
   "meritos": {
-   "valor": "Fase de concurso, máximo 40 puntos: formación complementaria de al menos 20 horas relacionada con materias transversales, y servicios prestados en la Administración o en el sector privado",
+   "valor": "Fase de concurso, máximo 40 puntos: formación complementaria (mínimo 20 horas) relacionada con materias transversais, y servizos prestados en Administración o sector privado",
    "cita": "A puntuación total a outorgar no concurso será de 40 puntos.",
    "nivel": "literal"
   },
   "bolsa": {
-   "valor": "sí, bolsa de emprego para contratación laboral temporal de Técnico/a de Normalización Lingüística, vigente hasta el 31 de diciembre de 2026",
-   "cita": "A bolsa de emprego que se constitúa ao abeiro da presente convocatoria terá vixencia ata o 31 de decembro de 2026",
+   "valor": "Sí, bolsa de emprego para contratación laboral temporal como Técnico/a de Normalización Lingüística, vixente ata o 31 de decembro de 2026",
+   "cita": "Esta bolsa de emprego terá unha vixencia ata a vindeira convocatoria",
    "nivel": "literal"
   }
  },
- "rechazados": {}
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 1,
+   "cita": "SELECCIÓN DE 1 TÉCNICO/A DE NORMALIZACIÓN LINGÜÍSTICA"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Sede electrónica e páxina web do Concello (listas provisionais e definitivas, bases)",
+   "cita": "publicaranse na sede electrónica deste Concello así como na Páxina Web do Concello"
+  },
+  "temas": {
+   "motivo": "valor_no_numerico",
+   "valor": "Ver Anexo I (temario no anexo, no transcrito en el texto)",
+   "cita": "ANEXO I.- TEMARIO."
+  },
+  "practicas_o_curso": {
+   "motivo": "cita_no_literal",
+   "valor": "No se menciona",
+   "cita": ""
+  }
+ }
 }

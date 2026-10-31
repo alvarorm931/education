@@ -5,21 +5,28 @@
   "fuente": "BOP-TOLEDO",
   "url": "https://bop.diputoledo.es/webEbop/DocGet?id=24076697;0&insert_number=3977&insert_year=2024",
   "fecha": "2024-08-02",
-  "huella": "fdca0edebd820301ecda989cb9252497864f84c84e0216e9cf00c34427e4575a"
+  "huella": "1d841733ab09170d200b58d18e890206fb27c8a49187d6839c8e4202ce712bb8"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:49:23+00:00",
- "lote": "msgbatch_016yasWxkCXTWjPAb8LjB3ob",
+ "extraido": "2026-10-31T15:25:40+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
-   "valor": "Policía, escala Básica, Cuerpo de Policía Local de Recas",
-   "cita": "pruebas selectivas para ingreso en la escala Básica, categoría Policía",
+   "valor": [
+    "Policía del Cuerpo de Policía Local de Recas (escala Básica, categoría Policía)"
+   ],
+   "cita": "ingreso en la escala Básica, categoría Policía, con sujeción a las siguientes",
    "nivel": "literal"
   },
   "grupo": {
    "valor": "C1",
    "cita": "clasificada/s en el subgrupo C-1 de los establecidos en el artículo 76",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "Se convocan pruebas selectivas para cubrir por turno libre y mediante oposición UNA PLAZA",
    "nivel": "literal"
   },
   "sistema": {
@@ -29,22 +36,22 @@
   },
   "plazas_total": {
    "valor": 1,
-   "cita": "cubrir por turno libre y mediante oposición UNA PLAZA en la escala Básica",
+   "cita": "Se convocan pruebas selectivas para cubrir por turno libre y mediante oposición UNA PLAZA",
    "nivel": "literal"
   },
   "titulacion": {
-   "valor": "Título de Bachiller, Técnico de formación Profesional o equivalente",
-   "cita": "posesión, o en condiciones de obtener en la fecha en que termine el plazo de presentación de solicitudes, del título de Bachiller",
+   "valor": "Título de Bachiller, Técnico de Formación Profesional o equivalente",
+   "cita": "del título de Bachiller, Técnico de formación Profesional o equivalente",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Directamente en las oficinas del Ayuntamiento, en la sede electrónica municipal o según la Ley 39/2015",
+   "valor": "Oficinas del Ayuntamiento, sede electrónica del Ayuntamiento o según Ley 39/2015",
    "cita": "La presentación de solicitudes podrá hacerse directamente en las oficinas de este Ayuntamiento, en la sede electrónica",
    "nivel": "literal"
   },
-  "publicaciones": {
-   "valor": "Boletín Oficial de la Provincia de Toledo, tablón de anuncios de la web municipal (www.recas.es) y locales de celebración",
-   "cita": "Los sucesivos anuncios de celebración de la segunda y restantes pruebas se efectuará por el Tribunal calificador en el tablón de anuncios de la web municipal",
+  "meritos": {
+   "valor": "No se valoran méritos en concurso; la puntuación final la determina la prueba de conocimientos",
+   "cita": "La puntuación final, en orden a determinar los aspirantes que superan la fase de oposición del proceso selectivo, vendrá determinada por la prueba de conocimientos",
    "nivel": "literal"
   },
   "practicas_o_curso": {
@@ -54,20 +61,15 @@
   }
  },
  "rechazados": {
-  "vinculo": {
-   "motivo": "cita_no_literal",
-   "valor": "funcionario de carrera",
-   "cita": "convocan pruebas selectivas para ingreso en la escala Básica, categoría Policía"
-  },
   "plazas_turno_libre": {
    "motivo": "valor_no_en_cita",
    "valor": 1,
-   "cita": "BASES PARA LA CONVOCATORIA POR TURNO LIBRE DE PLAZAS DE POLICÍA"
+   "cita": "BASES PARA LA CONVOCATORIA POR TURNO LIBRE DE PLAZAS DE POLICÍA DEL CUERPO"
   },
   "otros_requisitos": {
    "motivo": "cita_no_literal",
-   "valor": "Nacionalidad española; 18 años cumplidos y no exceder la edad de jubilación forzosa; permisos de conducción B y A o A2; carecer de antecedentes penales por delitos dolosos; no haber sido separado de la Administración ni condenado por delitos contra la libertad sexual; compromiso de portar armas; aptitud física y psíquica.",
-   "cita": "Tener la nacionalidad española. Tener cumplidos dieciocho años de edad y no exceder de la edad de jubilación forzosa."
+   "valor": "Nacionalidad española; 18 años cumplidos y no exceder la edad de jubilación forzosa; permisos de conducción B y A o A2; no separación disciplinaria; carecer de antecedentes penales por delitos dolosos; compromiso de portar armas; aptitud física y psíquica",
+   "cita": "Tener la nacionalidad española. Tener cumplidos dieciocho años de edad y no exceder de la edad de jubilación forzosa"
   },
   "tasa_euros": {
    "motivo": "cita_no_literal",
@@ -79,30 +81,30 @@
    "valor": "veinte días hábiles, contados a partir del día siguiente al de la publicación del anuncio de la convocatoria en el Boletín Oficial del Estado",
    "cita": "El plazo de presentación de solicitudes será de veinte días hábiles, contados a partir del día siguiente"
   },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Boletín Oficial de la Provincia de Toledo y tablón de anuncios de la web municipal (www.recas.es)",
+   "cita": "Se publicará en el Boletín Oficial de la provincia de Toledo; tablón de anuncios de la web municipal"
+  },
   "ejercicios": {
    "motivo": "cita_no_literal",
    "valor": [
     "Primera prueba: aptitud física (carrera 60 m, carrera 1.000 m, salto de longitud, lanzamiento de balón medicinal)",
-    "Segunda prueba: test de conocimientos (80 preguntas más 5 de reserva, 75 minutos)",
-    "Tercera prueba: prueba psicotécnica (entrevista y dos test)",
+    "Segunda prueba: test de conocimientos (80 preguntas y 5 de reserva, 75 minutos)",
+    "Tercera prueba: prueba psicotécnica (entrevista y dos tests)",
     "Cuarta prueba: reconocimiento médico"
    ],
    "cita": "La fase de oposición constará de las cuatro pruebas siguientes, todas ellas obligatorias y eliminatorias"
   },
   "temas": {
    "motivo": "valor_no_en_cita",
-   "valor": 52,
+   "valor": 53,
    "cita": "PARTE GENERAL TEMA 1. La Constitución Española de 1978"
-  },
-  "meritos": {
-   "motivo": "cita_no_literal",
-   "valor": "No se valoran méritos en concurso; la puntuación final se determina por la prueba de conocimientos.",
-   "cita": "La puntuación final, en orden a determinar los aspirantes que superan la fase de oposición, vendrá determinada por la prueba de conocimientos."
   },
   "bolsa": {
    "motivo": "cita_no_literal",
    "valor": "no",
-   "cita": "Finalizada la fase de oposición del proceso selectivo, el Tribunal hará pública la relación de aprobados"
+   "cita": "Finalizada la fase de oposición del proceso selectivo"
   }
  }
 }

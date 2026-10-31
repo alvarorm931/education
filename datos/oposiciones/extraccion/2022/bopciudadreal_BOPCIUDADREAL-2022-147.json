@@ -1,0 +1,45 @@
+{
+ "proceso": "bopciudadreal:BOPCIUDADREAL-2022-147",
+ "documento": {
+  "id": "bopciudadreal:BOPCIUDADREAL-2022-147",
+  "fuente": "BOP-CIUDADREAL",
+  "url": "https://bop.dipucr.es/bop/2022/01/21",
+  "fecha": "2022-01-21",
+  "huella": "9a73db69caffec5e207e529c77a439aff2a7f3dbbabbe5968df3a34d8f61ef27"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T15:24:12+00:00",
+ "lote": "msgbatch_01QGBJzFrJk89N3kyh4ZuSEx",
+ "no_son_bases": false,
+ "campos": {
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles contados a partir del día siguiente al de la publicación de este anuncio de convocatoria en el BOP",
+   "cita": "El plazo de presentación de solicitudes será de 20 días hábiles contados a partir del día siguiente al de la publicación",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "sede electrónica del Ayuntamiento de Herencia (bases)",
+   "cita": "Las Bases se encuentran publicadas en la sede electrónica del Ayuntamiento de Herencia.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Peones de Jardinería"
+   ],
+   "cita": "la convocatoria para la constitución de una bolsa de trabajo de Peones de Jardinería del Ayuntamiento de Herencia"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "la convocatoria para la constitución de una bolsa de trabajo de Peones de Jardinería"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, para constituir una bolsa de trabajo de Peones de Jardinería",
+   "cita": "la convocatoria para la constitución de una bolsa de trabajo de Peones de Jardinería del Ayuntamiento de Herencia"
+  }
+ }
+}

@@ -1,0 +1,51 @@
+{
+ "proceso": "doe:DOE-2022080627",
+ "documento": {
+  "id": "doe:DOE-2022080627",
+  "fuente": "DOE",
+  "url": "https://doe.juntaex.es/otrosFormatos/html.php?xml=2022080627&anio=2022&doe=980o",
+  "fecha": "2022-05-24",
+  "huella": "8ae713bd8adaebc8075bc254cd614f8f8db93086bd561dd93422035866604a8b"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T15:25:47+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Oficial Electricista",
+    "Ayudante de Electricista"
+   ],
+   "cita": "dos plazas de Oficial Electricista y una plaza de Ayudante de Electricista",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "mediante el sistema de oposición libre",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles a contar desde el siguiente al de la publicación de este anuncio en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes será de 20 días hábiles a contar desde el siguiente al de la publicación de este anuncio en el Boletín Oficial del Estado",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de anuncios de la corporación, página web www.almendralejo.es y Boletín Oficial de la Provincia de Badajoz",
+   "cita": "Los sucesivos anuncios referentes a esta convocatoria, cuando procedan de conformidad con las bases, se harán públicos en el Tablón de anuncios de esta corporación",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "personal laboral fijo",
+   "cita": ""
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 3,
+   "cita": "dos plazas de Oficial Electricista y una plaza de Ayudante de Electricista"
+  }
+ }
+}

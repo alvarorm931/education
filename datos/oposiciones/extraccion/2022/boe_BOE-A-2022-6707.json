@@ -1,0 +1,106 @@
+{
+ "proceso": "boe:BOE-A-2022-6707",
+ "documento": {
+  "id": "bopcordoba:BOPCORDOBA-2022-815",
+  "fuente": "BOP-CORDOBA",
+  "url": "https://bop.dipucordoba.es/dia/23-03-2022",
+  "fecha": "2022-03-23",
+  "huella": "e8f382fc14e4e693684984826c435487649c7751fb1ebd15134be9b764edf1dc"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T15:25:34+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Policía Local (Escala Básica, Escala de Administración Especial, Subescala de Servicios Especiales, categoría de Policía)"
+   ],
+   "cita": "TRES plazas de policía local de este Ayuntamiento, mediante el sistema de oposición libre",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C1",
+   "cita": "Grupo/ Subgrupo: C1.",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "provisión como funcionarios de carrera, mediante el sistema de acceso de turno libre",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 3,
+   "cita": "Números de plazas: 3 (tres).",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Título de Bachiller, Técnico o equivalente",
+   "cita": "e) Estar en posesión del título de Bachiller, Técnico o equivalente.",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española; 18 años y no superar la edad de jubilación forzosa; estatura mínima 1,65 m hombres y 1,60 m mujeres; compromiso de portar armas; no haber sido condenado por delito doloso; permisos de conducción A2 y B; compromiso de conducir vehículos policiales",
+   "cita": "Tener dieciocho años de edad y no haber cumplido la edad de jubilación forzosa.",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 55,
+   "cita": "Resguardo acreditativo de haber satisfecho el importe de los derechos de examen que ascienden a 55 euros.",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles desde el siguiente al de la publicación del anuncio en el Boletín Oficial del Estado",
+   "cita": "se abre el plazo de presentación de solicitudes, que será de 20 días hábiles a contar desde el día siguiente a la publicación",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Registro General del Ayuntamiento de forma presencial o a través de la sede electrónica del Ayuntamiento",
+   "cita": "Las solicitudes, conforme al Anexo IV, se presentarán en el Registro General del Ayuntamiento de forma presencial o a través de la sede electrónica",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia de Córdoba (listas de admitidos y excluidos y primer ejercicio); tablón de anuncios electrónico del Ayuntamiento para el resto de anuncios",
+   "cita": "El resto de anuncios que integran el proceso selectivo, se publicarán únicamente en el Tablón de Anuncios Electrónico del Ayuntamiento",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Primera prueba: conocimientos (examen tipo test de 50 preguntas más 5 de reserva, y caso práctico), eliminatoria",
+    "Segunda prueba: aptitud física (apto/no apto), eliminatoria",
+    "Tercera prueba: psicotecnia (apto/no apto)",
+    "Cuarta prueba: examen médico (apto/no apto)",
+    "Segunda fase: curso de ingreso en el Instituto de Emergencias y Seguridad Pública de Andalucía o escuelas"
+   ],
+   "cita": "Primera prueba: conocimientos. Esta fase constará de dos ejercicios, teórico y práctico.",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, para cubrir renuncias o no presentación de documentación de los aspirantes que obtengan plaza",
+   "cita": "que única y exclusivamente operará en el caso que se produzcan renuncia expresa por los aspirantes que hayan obtenido plaza",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Curso de ingreso en el Instituto de Emergencias y Seguridad Pública de Andalucía, Escuela Concertada o Escuela Municipal de Policía Local, con nombramiento como funcionarios en prácticas",
+   "cita": "Para obtener el nombramiento como funcionario de carrera, será necesario superar con aprovechamiento el curso de ingreso",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "oposición",
+   "cita": "mediante el procedimiento selectivo oposición libre, de tres plazas vacantes"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 3,
+   "cita": "provisión como funcionarios de carrera, mediante el sistema de acceso de turno libre"
+  },
+  "temas": {
+   "motivo": "valor_no_en_cita",
+   "valor": 40,
+   "cita": "ANEXO I TEMARIO 1. El Estado. Concepto. Elementos. La división de poderes."
+  }
+ }
+}

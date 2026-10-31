@@ -1,0 +1,43 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2022-3753",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2022-3753",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2022/06/16_114/2022_003753.pdf",
+  "fecha": "2022-06-16",
+  "huella": "e599a52761eacc0502776201780bc5781f78d078ad943d24ef8e1c28eed92eea"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T15:25:49+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "funcionario interino",
+   "cita": "provisión en interinidad de las plazas que se indican a continuación",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "10 días hábiles desde el siguiente a la publicación del anuncio en el BOP de Alicante",
+   "cita": "Se establece un plazo de 10 días hábiles para la presentación de solicitudes",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 10,
+   "cita": "Una plaza de Tesorero/a - Una plaza de Oficial Conductor de Obras - Una plaza de Oficial Fontanero/a"
+  },
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "preferentemente a través de la sede electrónica www.santapola.es en el Registro General",
+   "cita": "Todas las solicitudes se presentarán preferentemente a través de la sede electrónica"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Tablón de Anuncios del Ayuntamiento y página web www.santapola.es (Empleo Público)",
+   "cita": "Los aspirantes serán convocados mediante anuncio expuesto en el Tablón de Anuncios de la Corporación"
+  }
+ }
+}

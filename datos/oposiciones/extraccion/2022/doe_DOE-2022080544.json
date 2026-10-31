@@ -1,0 +1,50 @@
+{
+ "proceso": "doe:DOE-2022080544",
+ "documento": {
+  "id": "doe:DOE-2022080544",
+  "fuente": "DOE",
+  "url": "https://doe.juntaex.es/otrosFormatos/html.php?xml=2022080544&anio=2022&doe=880o",
+  "fecha": "2022-05-10",
+  "huella": "53cb7c3e2a2d7c237d92bc6ac8cc9de431c076e86cab1d2ac287401f7053cfbf"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T15:25:33+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "otro",
+   "cita": "procedimiento de provisión del puesto de trabajo de Gerente de la entidad",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "acordó las bases que regirán el procedimiento de provisión del puesto de trabajo de Gerente",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "10 días hábiles a contar desde el siguiente a la publicación del presente anuncio en el Diario Oficial de Extremadura",
+   "cita": "será de 10 días hábiles a contar desde el siguiente a la publicación del presente anuncio en el Diario Oficial de Extremadura",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "en el modelo normalizado",
+   "cita": "El plazo de presentación de las solicitudes, en el modelo normalizado, será de 10 días hábiles",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "página web del Consorcio Teatro López de Ayala, en la Sección de empleo",
+   "cita": "pueden ser consultadas y descargadas en la página web del Consorcio Teatro López de Ayala",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Gerente del Consorcio López de Ayala"
+   ],
+   "cita": "para atender a las necesidades de personal del Consorcio López de Ayala, el Consejo Rector"
+  }
+ }
+}

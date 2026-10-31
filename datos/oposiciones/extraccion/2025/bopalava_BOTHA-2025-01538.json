@@ -5,21 +5,23 @@
   "fuente": "BOTHA",
   "url": "http://www.araba.eus/botha/Boletines/2025/063/2025_063_01538_C.pdf",
   "fecha": "2025-06-06",
-  "huella": "585ad65e0b1bfbe9d2beddc8326e096eaaa3907d3da2e78cb6b56306c9616a7b"
+  "huella": "1608ca8299f70ad31f406d91543e3d3d6507b0a231b5e9cf29a3e2fb80afa3c7"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:45:09+00:00",
- "lote": "msgbatch_016re6aGcimwSVmdrWa6qBd9",
+ "extraido": "2026-10-31T15:25:30+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
-   "valor": "peón, escala administración general, subescala administración especial",
+   "valor": [
+    "peón"
+   ],
    "cita": "Denominación y clase de puesto: peón escala: administración general.",
    "nivel": "literal"
   },
   "vinculo": {
-   "valor": "laboral temporal",
-   "cita": "La bolsa de empleo resultante del proceso podrá utilizarse para necesidades temporales de personal laboral y funcionario.",
+   "valor": "otro",
+   "cita": "Bases que regirán la creación de una bolsa de trabajo temporal de peón",
    "nivel": "literal"
   },
   "sistema": {
@@ -29,67 +31,51 @@
   },
   "titulacion": {
    "valor": "certificado de escolaridad",
-   "cita": "a) Estar en posesión del certificado de escolaridad.",
+   "cita": "Estar en posesión del certificado de escolaridad.",
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Nacionalidad española o requisitos del art. 57 TREBEP; 18 años y no exceder la edad de jubilación forzosa; capacidad funcional; permiso de conducción B en vigor.",
-   "cita": "b) Tener en vigor el permiso de conducción B.",
+   "valor": "Nacionalidad española o requisitos del artículo 57 TREBEP; 18 años y no exceder la edad de jubilación forzosa; capacidad funcional; no separación disciplinaria ni inhabilitación; tener en vigor el permiso de conducción B.",
+   "cita": "Tener en vigor el permiso de conducción B.",
    "nivel": "literal"
   },
   "idioma_cooficial": {
-   "valor": "PL1 no preceptivo; valorado euskera nivel B-1 (PL1 o equivalente) como mérito, 1 punto",
-   "cita": "a) PL1 o alguno de los títulos o certificados oficiales acreditativos del conocimiento del euskera equiparados con el nivel B-1",
+   "valor": "PL1 no preceptivo; PL1 o equivalente B-1 valorado como mérito (1 punto)",
+   "cita": "Perfil Lingüístico: P . L 1 no preceptivo.",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
    "valor": "diez días hábiles desde el siguiente al de la publicación del anuncio de la convocatoria en el BOTHA",
-   "cita": "El plazo de presentación de instancias será de diez días hábiles, contados a partir del siguiente al de la publicación",
+   "cita": "El plazo de presentación de instancias será de diez días hábiles, contados a partir del siguiente",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Registro General del Ayuntamiento, sede electrónica, o en la forma del art. 16.4 Ley 39/2015 (oficinas de correos)",
-   "cita": "Se podrán presentar presencialmente, ante el Registro General del Ayuntamiento de Ribera Alta., los días y horas",
+   "valor": "Registro General del Ayuntamiento, sede electrónica, o en la forma del artículo 16.4 de la Ley 39/2015 (correos).",
+   "cita": "Se podrán presentar presencialmente, ante el Registro General del Ayuntamiento de Ribera Alta.",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "tablón de anuncios y página web del Ayuntamiento de Ribera Alta; convocatoria también en el BOTHA",
-   "cita": "Las sucesivas publicaciones a que dé lugar el procedimiento se efectuarán en el tablón de anuncios y en la página web",
+   "valor": "tablón de anuncios y página web del Ayuntamiento de Ribera Alta; bases y convocatoria también en el BOTHA",
+   "cita": "se publicará en el BOTHA y en el tablón de anuncios del Ayuntamiento de Ribera Alta.",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Fase de concurso (méritos): experiencia, formación complementaria y euskera"
+    "Concurso: valoración de méritos (experiencia, formación complementaria, euskera), hasta 14 puntos"
    ],
    "cita": "La valoración de méritos alegados y debidamente acreditados se puntuará hasta un máximo de 14 puntos",
    "nivel": "literal"
   },
   "meritos": {
-   "valor": "Experiencia administración pública 0,6 pts/mes (máx 7); sector privado 0,30 pts/mes (máx 3); formación complementaria (máx 3); euskera B-1 (1 pt). Máximo 14 puntos",
+   "valor": "Experiencia (máx. 10): sector público 0,6 p/mes hasta 7; sector privado 0,30 p/mes hasta 3. Formación (máx. 3): grado básico 1; grado medio 2; cursos de 250 h o más 0,5 c/u hasta 1; carné de fitosanitarios 1. Euskera (máx. 1): PL1 o B-1, 1 punto.",
    "cita": "La valoración de méritos alegados y debidamente acreditados se puntuará hasta un máximo de 14 puntos",
    "nivel": "literal"
   },
   "bolsa": {
-   "valor": "sí, bolsa de trabajo temporal de peón, vigencia tres años prorrogables hasta tres más",
-   "cita": "La vigencia de esta bolsa será de tres años desde el día siguiente a su publicación",
+   "valor": "sí; bolsa de trabajo temporal de peón, vigencia tres años prorrogables hasta tres más, para necesidades temporales de personal laboral y funcionario",
+   "cita": "La bolsa de empleo resultante del proceso podrá utilizarse para necesidades temporales de personal laboral y funcionario.",
    "nivel": "literal"
   }
  },
- "rechazados": {
-  "grupo": {
-   "motivo": "cita_no_literal",
-   "valor": "no consta",
-   "cita": ""
-  },
-  "plazas_total": {
-   "motivo": "cita_no_literal",
-   "valor": 0,
-   "cita": ""
-  },
-  "practicas_o_curso": {
-   "motivo": "cita_no_literal",
-   "valor": "no consta",
-   "cita": ""
-  }
- }
+ "rechazados": {}
 }

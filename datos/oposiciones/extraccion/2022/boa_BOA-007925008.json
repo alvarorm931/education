@@ -1,0 +1,40 @@
+{
+ "proceso": "boa:BOA-007925008",
+ "documento": {
+  "id": "boa:BOA-007925008",
+  "fuente": "BOA",
+  "url": "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VERDOC&BASE=BOLE&SEC=BUSQUEDA_AVANZADA&DOCN=007925008",
+  "fecha": "2022-06-01",
+  "huella": "273716641fa55fc7a0cb0c8e2d05e70d6c79b7afbdeddd06c3741491a95c7344"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T15:25:36+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Profesor Contratado Doctor"
+   ],
+   "cita": "convocar concurso público para la provisión de una plaza, asignadas a este Centro Universitario de la Defensa",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "convocar concurso público para la provisión de una plaza, asignadas a este Centro Universitario de la Defensa",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Según los procedimientos definidos en las bases de la convocatoria",
+   "cita": "Las solicitudes deberán presentarse de acuerdo con los procedimientos definidos en las bases de la convocatoria",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Página web del CUD-AGM (http://cud.unizar.es/tablon)",
+   "cita": "La información completa pueden consultarse en la página web del CUD-AGM"
+  }
+ }
+}

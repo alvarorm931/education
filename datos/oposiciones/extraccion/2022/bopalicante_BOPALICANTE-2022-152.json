@@ -1,0 +1,50 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2022-152",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2022-152",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2022/01/21_14/2022_000152.pdf",
+  "fecha": "2022-01-21",
+  "huella": "804ae2035ca5f52f3a7352ee4e20db5ea94416c119053fdede58c323706e0d5e"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T15:24:06+00:00",
+ "lote": "msgbatch_01QGBJzFrJk89N3kyh4ZuSEx",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Conserje de Cementerio"
+   ],
+   "cita": "aprobación, entre otros, de las bases que regirán la convocatoria para la creación de una bolsa de trabajo en puesto de Conserje de Cementerio",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "otro",
+   "cita": "creación de una bolsa de trabajo en puesto de Conserje de Cementerio de este Ayuntamiento",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, bolsa de trabajo para el puesto de Conserje de Cementerio",
+   "cita": "creación de una bolsa de trabajo en puesto de Conserje de Cementerio de este Ayuntamiento",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "no"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "diez días hábiles, contados a partir del día siguiente al de la publicación del presente anuncio en el Boletín Oficial de la Provincia de Alicante",
+   "cita": "presentar su solicitud de participación durante el plazo de DIEZ DIAS hábiles, contados a partir del día siguiente"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Tablón de Anuncios y página web del Ayuntamiento de Monóvar",
+   "cita": "El texto íntegro de las bases de referencia está publicado en el Tablón de Anuncios y en la página web del Ayuntamiento"
+  }
+ }
+}

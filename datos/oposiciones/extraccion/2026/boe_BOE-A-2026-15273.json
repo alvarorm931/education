@@ -5,11 +5,11 @@
   "fuente": "BOE",
   "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-15273",
   "fecha": "2026-07-13",
-  "huella": "69068b4ddaac0d975d0187ca9119faf47e4103dee1f38d58ef3c04b9a26e8616"
+  "huella": "cedc1a0bd7bb32ddc30c3e5b797a2dc4ee9c4d8520eb0d87fe88b1062e18d16e"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T07:51:49+00:00",
- "lote": "msgbatch_01NvbwpQGcC9vt1x7nWayvXt",
+ "extraido": "2026-10-31T15:25:49+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
@@ -21,12 +21,7 @@
   },
   "grupo": {
    "valor": "C1",
-   "cita": "por el sistema de concurso-oposición. El número de plazas ofertadas es de tres.",
-   "nivel": "literal"
-  },
-  "vinculo": {
-   "valor": "funcionario de carrera",
-   "cita": "mantener hasta el momento de la toma de posesión como personal funcionario de carrera los siguientes requisitos",
+   "cita": "Escala Técnica Básica de Servicios, especialidad Producción de Contenidos Digitales de la Universidad Politécnica de Cartagena (subgrupo C1)",
    "nivel": "literal"
   },
   "sistema": {
@@ -50,36 +45,41 @@
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Nacionalidad española o de Estado de la UE (o aplicación de libre circulación); tener cumplidos dieciséis años y no exceder la edad máxima de jubilación; capacidad funcional; no estar separado del servicio ni inhabilitado; conocimiento adecuado del español.",
+   "valor": "Nacionalidad española o de Estado de la UE o al que aplique libre circulación; tener 16 años y no exceder la edad de jubilación; capacidad funcional; no estar separado del servicio ni inhabilitado; conocimiento adecuado del español.",
    "cita": "Tener cumplidos dieciséis años y no exceder, en su caso, la edad máxima de jubilación.",
    "nivel": "literal"
   },
+  "idioma_cooficial": {
+   "valor": "no aplica",
+   "cita": "La lengua oficial en la que tendrá lugar el desarrollo de las pruebas será el español.",
+   "nivel": "literal"
+  },
   "exenciones_tasa": {
-   "valor": "Exentos: discapacidad igual o superior al 33 %, familia numerosa de categoría especial, víctimas del terrorismo y víctimas de violencia de género. Bonificaciones del 75 % (desempleo, familia numerosa general) y 20 % (carné joven), no acumulables.",
-   "cita": "Estarán exentas del pago de esta tasa las personas que acrediten cualquiera de las siguientes circunstancias",
+   "valor": "Exentos: discapacidad igual o superior al 33 %, familia numerosa categoría especial, víctimas del terrorismo y víctimas de violencia de género. Bonificaciones no acumulables del 75 % (desempleo, familia numerosa general) y 20 % (carné joven).",
+   "cita": "Estarán exentas del pago de esta tasa las personas que acrediten cualquiera de las siguientes circunstancias:",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "quince días hábiles contados a partir del siguiente al de la publicación de esta convocatoria en el «Boletín Oficial del Estado»",
-   "cita": "El plazo de presentación de solicitudes será de quince días hábiles contados a partir del siguiente al de la publicación",
+   "valor": "quince días hábiles contados a partir del siguiente al de la publicación de la convocatoria en el BOE",
+   "cita": "El plazo de presentación de solicitudes será de quince días hábiles contados a partir del siguiente al de la publicación de esta convocatoria",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Solicitud a través de la sede electrónica de la Universidad Politécnica de Cartagena (sede.upct.es, trámite «Participación en procesos selectivos»), identificándose con certificado electrónico, cl@ve o usuario y contraseña.",
+   "valor": "Telemáticamente a través de la sede electrónica de la UPCT, trámite «Participación en procesos selectivos», https://sede.upct.es/tramites",
    "cita": "deberán hacerlo presentando la solicitud a través de la sede electrónica de la Universidad Politécnica de Cartagena",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Tablón Oficial Electrónico de la Universidad y dirección electrónica https://www.upct.es/convocatorias; resoluciones de admitidos en el Boletín Oficial de la Región de Murcia.",
-   "cita": "La relación de personas aprobadas se publicará en el Tablón Oficial Electrónico de la Universidad",
+   "valor": "Tablón Oficial Electrónico de la Universidad, sede electrónica y web https://www.upct.es/convocatorias; resoluciones de admisión en el Boletín Oficial de la Región de Murcia",
+   "cita": "se publicará en el Tablón Oficial Electrónico de la Universidad y en la dirección electrónica https://www.upct.es/convocatorias.",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Fase de oposición: cuestionario de 80 preguntas tipo test (40 teóricas y 40 prácticas), 120 minutos, máximo 70 puntos, mínimo 35 para aprobar",
-    "Fase de concurso: experiencia profesional y titulación superior, máximo 30 puntos"
+    "Fase de oposición: cuestionario de 80 preguntas tipo test (40 prácticas), eliminatorio, 0 a 70 puntos, 120 minutos, mínimo 35 puntos",
+    "Fase de concurso (no eliminatoria): méritos de experiencia profesional y titulación superior, máximo 30 puntos"
    ],
-   "cita": "Consistirá en contestar un cuestionario de 80 preguntas, 40 de ellas, de carácter práctico",
+   "cita": "Fase de oposición. Se valorará con un máximo de 70 puntos y constituirá el 70 % del total de la puntuación de la prueba.",
    "nivel": "literal"
   },
   "temas": {
@@ -88,21 +88,36 @@
    "nivel": "literal"
   },
   "meritos": {
-   "valor": "Experiencia profesional de los últimos 5 años (máximo 30 puntos) y titulación académica superior a la exigida, según nivel MECES (máximo 3 puntos).",
-   "cita": "A) Experiencia profesional, durante los últimos 5 años, con un máximo de 30 puntos",
+   "valor": "Experiencia profesional últimos 5 años, máximo 30 puntos; titulación superior a la exigida según MECES, máximo 3 puntos",
+   "cita": "Experiencia profesional, durante los últimos 5 años, con un máximo de 30 puntos:",
    "nivel": "literal"
   },
   "bolsa": {
-   "valor": "sí, lista de espera para interinidades para atender necesidades urgentes hasta nuevas pruebas selectivas",
+   "valor": "sí, lista de espera para necesidades urgentes e interinidades hasta nuevas pruebas selectivas",
    "cita": "Con el fin de atender las necesidades urgentes que se produzcan hasta la celebración de nuevas pruebas selectivas, se procederá a constituir una lista de espera",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "no consta",
+   "cita": "La toma de posesión de las personas aspirantes que hubieran superado el proceso selectivo se efectuará en el plazo de un mes",
    "nivel": "literal"
   }
  },
  "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "para su ingreso como personal funcionario de carrera"
+  },
   "plazas_turno_libre": {
    "motivo": "valor_no_en_cita",
    "valor": 2,
    "cita": "Del total de plazas convocadas se reserva una para ser cubierta por persona con un grado de discapacidad"
+  },
+  "tasa_euros": {
+   "motivo": "valor_no_numerico",
+   "valor": "no consta",
+   "cita": "El abono de la tasa por derechos de examen será el siguiente:"
   }
  }
 }

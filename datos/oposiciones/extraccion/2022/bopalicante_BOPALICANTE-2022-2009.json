@@ -1,0 +1,55 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2022-2009",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2022-2009",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2022/04/06_67/2022_002009.pdf",
+  "fecha": "2022-04-06",
+  "huella": "27dee24c4da3b7a04f6d7cb5c57a76de55da28004264de581fdca12adb5b2418"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T15:25:46+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "otro",
+   "cita": "constitución de una bolsa de trabajo personal Técnico de Administración General",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Sin detalle en el anuncio; las bases completas están publicadas en la sede electrónica del Ayuntamiento y en el tablón de edictos municipal",
+   "cita": "se han publicado íntegramente las bases de la convocatoria",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de edictos municipal y sede electrónica del Ayuntamiento",
+   "cita": "Los sucesivos anuncios relacionados con la presente convocatoria se publicarán únicamente en el tablón de edictos municipal",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Técnico de Administración General"
+   ],
+   "cita": "aprobadas las bases específicas reguladoras de la convocatoria 22/03 para la constitución de una bolsa de trabajo personal Técnico de Administración General"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "aprobadas las bases específicas reguladoras de la convocatoria 22/03"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "10 días naturales, contados a partir del día siguiente al de la publicación del anuncio en el Boletín Oficial de la Provincia",
+   "cita": "El plazo de presentación de instancias será de 10 días naturales, contados a partir del día siguiente"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, para constituir una bolsa de trabajo de Técnico de Administración General",
+   "cita": "para la constitución de una bolsa de trabajo personal Técnico de Administración General"
+  }
+ }
+}

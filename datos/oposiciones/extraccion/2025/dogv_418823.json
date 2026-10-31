@@ -5,11 +5,11 @@
   "fuente": "DOGV",
   "url": "https://dogv.gva.es/datos/2025/04/28/pdf/2025_10656_es.pdf",
   "fecha": "2025-04-28",
-  "huella": "3c00388c1e90c9b7ee5efdffcb5dc2204873617e5a8afcd5dd993e022e39837b"
+  "huella": "9f50e5c1ad7e4d44265e6b14c26a2592b4a84c78c4963d2e02b94f707a28db07"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:46:05+00:00",
- "lote": "msgbatch_017vJZdAmjTkBDdH14aLEdCv",
+ "extraido": "2026-10-31T15:25:21+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
@@ -17,85 +17,80 @@
    "cita": "Puesto número 1: técnico/a superior en documentación sanitaria",
    "nivel": "literal"
   },
+  "grupo": {
+   "valor": "nivel 1 del MECES o nivel 5 del EQF",
+   "cita": "formación correspondiente al nivel 1 del MECES o nivel 5 del EQF",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "otro",
+   "cita": "contratación en materia de personal por parte del IIS La Fe debe realizarse según protocolos o instrucciones internas",
+   "nivel": "literal"
+  },
   "plazas_total": {
    "valor": 1,
    "cita": "Número de plazas: 1",
    "nivel": "literal"
   },
-  "plazas_turno_libre": {
-   "valor": 1,
-   "cita": "el número de puestos a cubrir será uno, la forma de acceso será por turno libre",
-   "nivel": "literal"
-  },
   "titulacion": {
-   "valor": "Técnico Superior en Documentación Sanitaria (nivel 1 del MECES o nivel 5 del EQF) o titulación equivalente",
-   "cita": "formación correspondiente al nivel 1 del MECES o nivel 5 del EQF, correspondientes con el título de Técnico Superior en Documentación Sanitaria",
+   "valor": "Título de Técnico Superior en Documentación Sanitaria o cualquier titulación equivalente que habilite para las funciones del puesto",
+   "cita": "cualquier titulación con denominación equivalente que, de acuerdo con los planes de estudio vigentes, habiliten",
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Nacionalidad española o de la UE (o permiso de trabajo), tener 16 años cumplidos y no exceder la edad de jubilación, capacidad funcional, no haber sido separado del servicio público ni inhabilitado.",
+   "valor": "Nacionalidad española o de la UE (o permiso de trabajo), tener cumplidos 16 años y no exceder la edad de jubilación, capacidad funcional, no haber sido separado del servicio público ni inhabilitado, y cumplir requisitos de permisos de trabajo",
    "cita": "Tener cumplidos 16 años y no exceder, en su caso, de la edad máxima de jubilación forzosa",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "diez (10) días hábiles desde el día siguiente a la publicación de la resolución en el DOGV",
-   "cita": "El plazo de presentación de solicitudes para participar en este proceso selectivo será de diez (10) días hábiles",
+   "valor": "diez (10) días hábiles contados desde el día siguiente a la publicación de la resolución en el DOGV",
+   "cita": "será de diez (10) días hábiles contados a partir del día siguiente a la publicación",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Inscripción online en la web del IIS La Fe con documentación acreditativa adjunta",
+   "valor": "Inscripción online siguiendo los pasos indicados en la web del IIS La Fe, aportando la documentación acreditativa",
    "cita": "Las personas aspirantes deberán inscribirse online, siguiendo los pasos que se indicarán en la web del IIS La Fe",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Web del IIS La Fe (https://www.iislafe.es/es/empleo/)",
+   "cita": "toda la información que deba ser conocida por las personas aspirantes se publicará en la web del IIS La Fe",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Concurso de méritos (60%, máximo 6 puntos)",
-    "Prueba y exposición oral de memoria ante el tribunal (40%, máximo 4 puntos)"
+    "Concurso de méritos (60%, máximo 6,20 puntos con condiciones especiales)",
+    "Prueba y exposición oral de una memoria ante el tribunal (40%, máximo 4 puntos)"
    ],
-   "cita": "La prueba y exposición oral constará de una única prueba obligatoria.",
+   "cita": "La prueba y exposición oral constará de una única prueba obligatoria. Dicha prueba consistirá en la presentación y defensa",
    "nivel": "literal"
   },
   "meritos": {
-   "valor": "Bloque 1 experiencia máx. 3,5 pts; bloque 2 académicos y otros méritos máx. 2,5 pts; condiciones especiales máx. 0,20 pts",
-   "cita": "Tiempo de servicio prestado en el IIS La Fe con funciones relacionadas con el puesto",
+   "valor": "Experiencia profesional hasta 3,5 puntos; méritos académicos y formación hasta 2,5 puntos; otros méritos hasta 1 punto; condiciones especiales hasta 0,20 puntos",
+   "cita": "Tiempo de servicio prestado en el IIS La Fe con funciones relacionadas con el puesto al que se opta, a razón de 0,10 puntos",
    "nivel": "literal"
   }
  },
  "rechazados": {
-  "grupo": {
-   "motivo": "cita_no_literal",
-   "valor": "no consta",
-   "cita": ""
-  },
-  "vinculo": {
-   "motivo": "cita_no_literal",
-   "valor": "otro",
-   "cita": "Sin especificar"
-  },
   "sistema": {
    "motivo": "cita_no_literal",
    "valor": "concurso-oposición",
    "cita": "Concurso de méritos (60%). Prueba y exposición oral (40%)."
+  },
+  "plazas_turno_libre": {
+   "motivo": "cita_no_literal",
+   "valor": 1,
+   "cita": "convocar por turno libre, para su cobertura indefinida mediante el proceso selectivo"
   },
   "tasa_euros": {
    "motivo": "valor_no_en_cita",
    "valor": 0,
    "cita": "No se generarán tasas por la participación en este proceso selectivo."
   },
-  "publicaciones": {
-   "motivo": "cita_no_literal",
-   "valor": "Web del IIS La Fe (https://www.iislafe.es/es/empleo/)",
-   "cita": "Durante el proceso de selección y hasta la finalización del mismo, toda la información se publicará en la web del IIS La Fe"
-  },
   "bolsa": {
    "motivo": "cita_no_literal",
    "valor": "no",
-   "cita": ""
-  },
-  "practicas_o_curso": {
-   "motivo": "cita_no_literal",
-   "valor": "no consta",
-   "cita": ""
+   "cita": "la presente convocatoria... cobertura definitiva del puesto de trabajo número 1"
   }
  }
 }

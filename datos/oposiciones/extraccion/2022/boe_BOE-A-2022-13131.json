@@ -1,0 +1,76 @@
+{
+ "proceso": "boe:BOE-A-2022-13131",
+ "documento": {
+  "id": "boe:BOE-A-2022-13131",
+  "fuente": "BOE",
+  "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2022-13131",
+  "fecha": "2022-08-04",
+  "huella": "157564e01c3973048432053d1374d7db0793a234c74e0e3d43c655767df1b6f7"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T15:25:48+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Titulado/A Superior (Médico). Servicio de Actividades Deportivas (SADUS)",
+    "Técnico/A Auxiliar de Almacén. Área de Contratación y Patrimonio",
+    "Técnico/A Auxiliar de Laboratorio. Departamento de Estructuras de Edificación e Ingeniería del Terreno",
+    "Técnico/a Auxiliar de Laboratorio (perfil: Fundición). Departamento de Escultura e Historia de las Artes Plásticas",
+    "Técnico/a Auxiliar de Laboratorio (Informática)",
+    "Técnico/A Auxiliar de Medios Audiovisuales",
+    "Técnico/A Auxiliar de Servicios de Conserjería"
+   ],
+   "cita": "Plazas vacantes en régimen laboral con carácter fijo, correspondientes a los Grupos I y IV del Convenio Colectivo",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "I y IV",
+   "cita": "correspondientes a los Grupos I y IV del Convenio Colectivo del Personal Laboral de las Universidades Públicas de Andalucía",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "plazas vacantes en régimen laboral con carácter fijo, correspondientes a los Grupos I y IV",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "provisión por acceso libre y mediante el sistema de concurso, de plazas vacantes en régimen laboral",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Grupo I: Licenciado/A, Graduado/A, Arquitecto/A, Ingeniero/A o titulación equivalente. Grupo IV: Educación Secundaria Obligatoria, titulación equivalente o experiencia laboral equivalente",
+   "cita": "categoría cuya titulación de acceso es la de Licenciado/A, Graduado/A, Arquitecto/A, Ingeniero/A o titulación equivalente",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días naturales, contados a partir del siguiente al de la publicación de este anuncio en el BOE",
+   "cita": "El plazo de presentación de solicitudes será de veinte días naturales, contados a partir del siguiente al de la publicación",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Telemática, mediante solicitud (modelo 761) a través de los medios electrónicos habilitados en la página web de Recursos Humanos de la Universidad de Sevilla, adjuntando la documentación requerida",
+   "cita": "deberán inscribirse telemáticamente, cumplimentando la solicitud (modelo 761) a través de los medios electrónicos habilitados",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Página web de Recursos Humanos de la Universidad de Sevilla",
+   "cita": "Los sucesivos anuncios referentes a esta convocatoria se publicarán únicamente en la página web de Recursos Humanos",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 26,
+   "cita": "Titulado/A Superior (Médico) una; Técnico/A Auxiliar de Almacén una; Técnico/a Auxiliar de Laboratorio dos plazas"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 26,
+   "cita": "provisión por acceso libre y mediante el sistema de concurso, de plazas vacantes en régimen laboral"
+  }
+ }
+}

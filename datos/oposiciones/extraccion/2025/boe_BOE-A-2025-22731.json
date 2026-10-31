@@ -5,11 +5,11 @@
   "fuente": "BOE",
   "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2025-22731",
   "fecha": "2025-11-10",
-  "huella": "9f83900f06edc5fdb92718f4fcd251fb678831851fd8172348aa3c979c75e7d9"
+  "huella": "944e4fe826b462ab1e027e1b23c5e121a0b5d0258c1b1ca4eb4768dedbcd8e8e"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:41:16+00:00",
- "lote": "msgbatch_01UNq3BNhPPHoTK3TEJzun1h",
+ "extraido": "2026-10-31T15:25:17+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
@@ -22,9 +22,14 @@
    "cita": "Escala Superior de Técnicos de Administración de la Universidad Politécnica de Cartagena (subgrupo A1)",
    "nivel": "literal"
   },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "mantener hasta el momento de la toma de posesión como personal funcionario de carrera los siguientes requisitos",
+   "nivel": "literal"
+  },
   "sistema": {
    "valor": "concurso-oposición",
-   "cita": "por el sistema de concurso-oposición",
+   "cita": "por el sistema de concurso-oposición. El número de plazas ofertadas es de dos",
    "nivel": "literal"
   },
   "plazas_total": {
@@ -34,27 +39,27 @@
   },
   "titulacion": {
    "valor": "Graduado, Licenciado, Ingeniero o Arquitecto o equivalente",
-   "cita": "la titulación de Graduado, Licenciado, Ingeniero o Arquitecto o equivalente",
+   "cita": "Estar en posesión o en condiciones de obtener, una vez pagada las tasas del título, la titulación de Graduado, Licenciado, Ingeniero o Arquitecto",
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Nacionalidad española o de Estado UE o de libre circulación; 16 años cumplidos y no exceder edad de jubilación; capacidad funcional; no separación del servicio ni inhabilitación; conocimiento adecuado del español",
+   "valor": "Nacionalidad española o de Estado miembro de la UE o de aplicación de libre circulación; tener cumplidos 16 años y no exceder la edad de jubilación; capacidad funcional; no estar separado del servicio ni inhabilitado; conocimiento adecuado del español",
    "cita": "Tener cumplidos dieciséis años y no exceder, en su caso, la edad máxima de jubilación.",
    "nivel": "literal"
   },
   "idioma_cooficial": {
-   "valor": "no aplicable",
-   "cita": "La lengua oficial en la que tendrá lugar el desarrollo de las pruebas será el español.",
+   "valor": "Solo conocimiento del español (no cooficial)",
+   "cita": "Poseer un conocimiento adecuado del español. En su caso, se podrá exigir la superación de una prueba que lo acredite.",
    "nivel": "literal"
   },
   "exenciones_tasa": {
-   "valor": "Discapacidad igual o superior al 33%; familia numerosa categoría especial; víctimas del terrorismo; víctimas de violencia de género. Bonificaciones del 75% (desempleo, familia numerosa general) y 20% (carné joven)",
+   "valor": "Bonificación 75% desempleo, 20% carné joven, 75% familia numerosa general; exención grado discapacidad igual o superior al 33 %, familia numerosa especial, víctima del terrorismo o de violencia de género",
    "cita": "Estarán exentas del pago de esta tasa las personas que acrediten cualquiera de las siguientes circunstancias",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "quince días hábiles",
-   "cita": "El plazo de presentación de solicitudes será de quince días hábiles contados a partir del siguiente de la publicación de esta convocatoria",
+   "valor": "Quince días hábiles desde el siguiente a la publicación de la convocatoria en el BOE",
+   "cita": "El plazo de presentación de solicitudes será de quince días hábiles contados a partir del siguiente de la publicación",
    "nivel": "literal"
   },
   "presentacion": {
@@ -63,17 +68,8 @@
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Tablón Oficial Electrónico de la Universidad y https://www.upct.es/convocatorias; resoluciones de admisión también en el Boletín Oficial de la Región de Murcia",
+   "valor": "Tablón Oficial Electrónico de la Universidad y https://www.upct.es/convocatorias; resoluciones también en el BORM",
    "cita": "se publicará en el Tablón Oficial Electrónico de la Universidad y en la dirección electrónica https://www.upct.es/convocatorias",
-   "nivel": "literal"
-  },
-  "ejercicios": {
-   "valor": [
-    "Primer ejercicio (eliminatorio): desarrollo escrito de dos temas de tres extraídos al azar, con lectura pública, 0 a 30 puntos",
-    "Segundo ejercicio (eliminatorio): supuesto práctico escrito con lectura ante el Tribunal, 0 a 30 puntos",
-    "Tercer ejercicio (no eliminatorio): mediación lingüística en inglés nivel B2, 0 a 10 puntos"
-   ],
-   "cita": "El procedimiento de selección de las personas aspirantes, constará de las fases de concurso y de oposición.",
    "nivel": "literal"
   },
   "temas": {
@@ -82,31 +78,25 @@
    "nivel": "literal"
   },
   "meritos": {
-   "valor": "Experiencia profesional últimos 5 años hasta 30 puntos; titulación superior (Doctor 3 puntos; Máster 1,5 puntos); fase de concurso máximo 30 puntos",
+   "valor": "Experiencia profesional últimos 5 años hasta 30 puntos; titulación superior MECES nivel 4 (3 puntos) o nivel 3 (1,5 puntos). Fase de concurso máximo 30 puntos",
    "cita": "La puntuación máxima de esta fase será de 30 puntos y constituirá el 30% del total de la puntuación de la prueba selectiva.",
    "nivel": "literal"
   },
   "bolsa": {
-   "valor": "sí, lista de espera para necesidades urgentes de interinidades hasta nuevas pruebas selectivas",
+   "valor": "Sí, lista de espera para necesidades urgentes de interinidades hasta nuevas pruebas selectivas",
    "cita": "se procederá a constituir una lista de espera con las personas aspirantes que hayan superado la fase de oposición",
-   "nivel": "literal"
-  },
-  "practicas_o_curso": {
-   "valor": "no consta",
-   "cita": "La toma de posesión de las personas aspirantes que hubieran superado el proceso selectivo se efectuará en el plazo de un mes",
    "nivel": "literal"
   }
  },
  "rechazados": {
-  "vinculo": {
+  "ejercicios": {
    "motivo": "cita_no_literal",
-   "valor": "funcionario de carrera",
-   "cita": "poseer y mantener hasta el momento de la toma de posesión como personal funcionario de carrera los siguientes requisitos"
-  },
-  "tasa_euros": {
-   "motivo": "valor_no_numerico",
-   "valor": "no consta",
-   "cita": "El abono de la tasa por derechos de examen será el siguiente"
+   "valor": [
+    "Primer ejercicio eliminatorio: desarrollo escrito de dos temas de tres extraídos al azar (0-30 puntos), con lectura pública",
+    "Segundo ejercicio eliminatorio: supuesto práctico escrito y leído ante el Tribunal (0-30 puntos)",
+    "Tercer ejercicio no eliminatorio: mediación lingüística de español a inglés nivel B2 sin diccionario (0-10 puntos)"
+   ],
+   "cita": "El primer ejercicio será de 0 a 30 puntos, cada tema se valora de 0 a 15 puntos"
   }
  }
 }

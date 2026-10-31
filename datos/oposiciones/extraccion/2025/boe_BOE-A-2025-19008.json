@@ -5,11 +5,11 @@
   "fuente": "BOP-TENERIFE",
   "url": "http://www.bopsantacruzdetenerife.es/bopsc2/sumario.php?codigopub=1&fecha_mas_reciente=2025-07-04",
   "fecha": "2025-07-04",
-  "huella": "31dca3d08161d67ce5d783b1154cc2dbc189757e1dc96b457dee8c5d641eaf8f"
+  "huella": "5ae67a14b238ac0096a10f585c83844fa663297e18f685a0a398ee92da156651"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:43:05+00:00",
- "lote": "msgbatch_01XofVwxKEhyEjSzGog6wsD4",
+ "extraido": "2026-10-31T15:25:22+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
@@ -26,7 +26,7 @@
   },
   "vinculo": {
    "valor": "funcionario de carrera",
-   "cita": "mediante funcionarios/as de carrera de cuatro (4) plazas vacantes de Técnico/a Auxiliar",
+   "cita": "mediante funcionarios/as de carrera de cuatro (4) plazas vacantes de Técnico/a Auxiliar de Servicios Públicos",
    "nivel": "literal"
   },
   "sistema": {
@@ -36,68 +36,73 @@
   },
   "plazas_total": {
    "valor": 4,
-   "cita": "cubrir mediante funcionarios/as de carrera cuatro (4) plazas vacantes de Técnico/a Auxiliar",
+   "cita": "cubrir mediante funcionarios/as de carrera cuatro (4) plazas vacantes de Técnico/a Auxiliar de Servicios Públicos",
    "nivel": "literal"
   },
   "titulacion": {
    "valor": "Título de Bachiller o Técnico o equivalente o en condiciones de obtenerla en el plazo de presentación de solicitudes",
-   "cita": "Estar en posesión de alguna de las siguientes titulaciones: Título de Bachiller o Técnico o equivalente",
+   "cita": "Título de Bachiller o Técnico o equivalente o en condiciones de obtenerla en el plazo de presentación de solicitudes",
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Nacionalidad (española o de Estados con libre circulación de trabajadores); tener cumplidos 16 años y no exceder la edad ordinaria de jubilación; capacidad funcional; no haber sido separado del servicio público por expediente disciplinario",
+   "valor": "Nacionalidad española o de Estados con libre circulación de trabajadores; tener cumplidos dieciséis años y no exceder la edad ordinaria de jubilación; capacidad funcional; no haber sido separado de la Administración ni inhabilitado",
    "cita": "Tener cumplidos dieciséis años de edad y no exceder de la edad ordinaria de jubilación establecida legalmente",
    "nivel": "literal"
   },
-  "tasa_euros": {
-   "valor": 20.4,
-   "cita": "será de VEINTE EUROS CON CUARENTA CÉNTIMOS (20,40 €)",
-   "nivel": "literal"
-  },
   "plazo_solicitudes": {
-   "valor": "veinte (20) días hábiles desde el siguiente al de la publicación del anuncio de la convocatoria en el BOE",
+   "valor": "Veinte (20) días hábiles desde el siguiente al de la publicación del anuncio de la convocatoria en el Boletín Oficial del Estado",
    "cita": "El plazo de presentación de instancias será de VEINTE (20) DÍAS HÁBILES, contados a partir del siguiente al de la publicación",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Registro Electrónico del Ayuntamiento de Santa Cruz de Tenerife o demás registros electrónicos del artículo 16.4 a) de la Ley 39/2015, con modelo del Anexo I",
+   "valor": "Registro Electrónico del Ayuntamiento de Santa Cruz de Tenerife o restantes registros electrónicos del artículo 16.4 a) de la Ley 39/2015",
    "cita": "deberán presentar su solicitud ... en el Registro Electrónico del Excmo. Ayuntamiento de Santa Cruz de Tenerife",
    "nivel": "fragmentos"
   },
   "publicaciones": {
-   "valor": "Boletín Oficial de la Provincia, Tablón de Edictos Corporativo y sede electrónica del Ayuntamiento",
-   "cita": "se harán públicas, además de por el medio indicado, a través del Tablón de Edictos Corporativo y la sede electrónica",
+   "valor": "Boletín Oficial de la Provincia; Tablón de Edictos Corporativo y sede electrónica del Ayuntamiento",
+   "cita": "a través del Tablón de Edictos Corporativo y la sede electrónica del Ayuntamiento de Santa Cruz de Tenerife",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Fase de oposición (puntuación máxima 10 puntos), ejercicios obligatorios y eliminatorios sobre temario de 40 temas",
-    "Fase de concurso (méritos según bases)"
+    "Fase de oposición con ejercicios obligatorios y eliminatorios sobre temario de dos bloques (materias comunes y específicas)",
+    "Fase de concurso"
    ],
    "cita": "Todos los ejercicios que integran esta fase son de carácter obligatorio y eliminatorio",
    "nivel": "literal"
   },
   "temas": {
-   "valor": 13,
-   "cita": "TEMA 13: Principales elementos con relación a los firmes. Firmes reciclados. Mezclas bituminosas. Pavimentos de hormigón TEMA 14: Ordenanza municipal de gestión",
-   "nivel": "contado"
+   "valor": 40,
+   "cita": "El número de temas que integrará el programa ... será el que se señala a continuación: Grupo / Subgrupo Número de temas C / C1 40",
+   "nivel": "fragmentos"
+  },
+  "meritos": {
+   "valor": "Valoración en la fase de concurso; puntuación máxima no consta en el extracto del texto aportado",
+   "cita": "El sistema selectivo será el concurso-oposición",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "no consta en el texto",
+   "cita": "El sistema selectivo será el concurso-oposición",
+   "nivel": "literal"
   }
  },
  "rechazados": {
+  "tasa_euros": {
+   "motivo": "cita_no_literal",
+   "valor": 20.4,
+   "cita": "El importe de la Tasa, conforme dispone la Ordenanza Municipal reguladora de la Tasa por Derechos de Examen, será de VEINTE EUROS CON CUARENTA CÉNTIMOS (20,40 €)"
+  },
   "exenciones_tasa": {
    "motivo": "cita_no_literal",
-   "valor": "Están exentas del pago las personas que se encuentren en los supuestos previstos en la Ordenanza Fiscal reguladora de la Tasa por Derechos de Examen",
+   "valor": "Exentas las personas que se encuentren en los supuestos previstos en la Ordenanza Fiscal reguladora de la Tasa por Derechos de Examen, acreditado con certificados de la Administración competente",
    "cita": "Están exentas del pago de la Tasas o derechos de examen, las personas que se encuentren en los supuestos previstos en la Ordenanza"
   },
   "bolsa": {
    "motivo": "cita_no_literal",
    "valor": "no",
-   "cita": "Llamamiento único; no se prevé en el texto la creación de bolsa de empleo"
-  },
-  "practicas_o_curso": {
-   "motivo": "cita_no_literal",
-   "valor": "no consta",
-   "cita": "Este campo no aparece en las bases"
+   "cita": "Las vacantes que se produzcan... podrán acumularse hasta un máximo de un diez por cien adicional"
   }
  }
 }

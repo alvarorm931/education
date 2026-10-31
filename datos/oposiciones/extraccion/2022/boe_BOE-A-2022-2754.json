@@ -1,0 +1,45 @@
+{
+ "proceso": "boe:BOE-A-2022-2754",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2022-466",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2022/02/11_29/2022_000466.pdf",
+  "fecha": "2022-02-11",
+  "huella": "32aeaaeb13e064ac3a43c470e2428a5d48cbbcd1cad1d618be5c9d543a814fdf"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T15:24:14+00:00",
+ "lote": "msgbatch_01QGBJzFrJk89N3kyh4ZuSEx",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "para la provisión con carácter de funcionario de carrera, por el sistema de concurso-oposición",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "para cubrir con carácter de funcionario de carrera una plaza de Auxiliar Administrativo",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Auxiliar Administrativo de Administración General"
+   ],
+   "cita": "una plaza de Auxiliar Administrativo de Administración General, Escala Administración General, Subescala Auxiliar"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "por el sistema de concurso-oposición de una plaza de Auxiliar Administrativo"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Tablón de Anuncios y página web del Ayuntamiento de Monóvar",
+   "cita": "está publicado en el Tablón de Anuncios y en la página web del Ayuntamiento de Monóvar"
+  }
+ }
+}

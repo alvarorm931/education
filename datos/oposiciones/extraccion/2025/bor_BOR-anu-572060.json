@@ -5,21 +5,23 @@
   "fuente": "BOR",
   "url": "https://web.larioja.org/bor-portada/boranuncio?n=anu-572060",
   "fecha": "2025-09-19",
-  "huella": "28999043177b74a62a6e4c4345132d895b103ceef0cb02e757ddd0e0e3c60d17"
+  "huella": "b8c79fe35c0881c17a23116942ac1ddc34babb377945a2cc1360403144992454"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:43:08+00:00",
- "lote": "msgbatch_01XofVwxKEhyEjSzGog6wsD4",
+ "extraido": "2026-10-31T15:25:42+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
-   "valor": "Operario/a. Escala de Administración Especial, Subescala Servicios Especiales, Categoría Personal de Oficios",
-   "cita": "Escala de Administración Especial, Subescala Servicios Especiales, Categoría Personal de Oficios, Grupo/Subgrupo Agrupación de Funcionarios",
+   "valor": [
+    "Operario/a"
+   ],
+   "cita": "Aprobación de las bases de la convocatoria para la provisión mediante personal funcionario de carrera de veintitrés plazas de Operario/a",
    "nivel": "literal"
   },
   "grupo": {
    "valor": "Agrupación de Funcionarios",
-   "cita": "Grupo/Subgrupo Agrupación de Funcionarios",
+   "cita": "Grupo/Subgrupo Agrupación de Funcionarios, en turno libre, 20 plazas y en turno de discapacidad general, 3 plazas",
    "nivel": "literal"
   },
   "vinculo": {
@@ -29,12 +31,12 @@
   },
   "sistema": {
    "valor": "concurso-oposición",
-   "cita": "El proceso de selección del aspirante será el de Concurso-Oposición.",
+   "cita": "la provisión en propiedad como funcionario/a de carrera, por el procedimiento de Concurso-Oposición, de veintitrés plazas",
    "nivel": "literal"
   },
   "plazas_total": {
    "valor": 23,
-   "cita": "veintitrés plazas de Operario/a, pertenecientes a la Escala de Administración Especial",
+   "cita": "la provisión en propiedad como funcionario/a de carrera, por el procedimiento de Concurso-Oposición, de veintitrés plazas de Operario/a",
    "nivel": "literal"
   },
   "plazas_turno_libre": {
@@ -49,21 +51,21 @@
   },
   "titulacion": {
    "valor": "certificado de escolaridad o equivalente",
-   "cita": "Estar en posesión del certificado de escolaridad o equivalente o en condiciones de obtenerlo al término del plazo",
+   "cita": "Estar en posesión del certificado de escolaridad o equivalente o en condiciones de obtenerlo al término del plazo de presentación de instancias",
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Tener cumplidos 16 años y no haber alcanzado la edad de jubilación forzosa; nacionalidad española o de la UE; capacidad funcional; no estar separado del servicio público; carné de conducir clase B o equivalente",
-   "cita": "Estar en posesión del Carnet de Conducir clase B o equivalente.",
+   "valor": "Tener cumplidos 16 años de edad y no haber alcanzado la edad para la jubilación forzosa; nacionalidad española o de la Unión Europea; capacidad funcional; carné de conducir clase B o equivalente",
+   "cita": "Estar en posesión del Carnet de Conducir clase B o equivalente",
    "nivel": "literal"
   },
   "tasa_euros": {
    "valor": 32.71,
-   "cita": "la instancia se acompañará del documento acreditativo de pago de la cantidad de 32,71 Euros.",
+   "cita": "la instancia se acompañará del documento acreditativo de pago de la cantidad de 32,71 Euros",
    "nivel": "literal"
   },
   "exenciones_tasa": {
-   "valor": "Personas aspirantes en situación de desempleo que lo justifiquen mediante certificado: pagan 1,04 euros",
+   "valor": "Aspirantes en situación de desempleo que lo justifiquen mediante certificado pagan 1,04 euros",
    "cita": "Aquellas personas aspirantes que en el momento de la solicitud se encuentren en situación de desempleo y lo justifiquen mediante certificado emitido al efecto, deberán acompañar documento acreditativo del pago de la cantidad de 1,04 Euros.",
    "nivel": "literal"
   },
@@ -73,37 +75,32 @@
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Registro General del Ayuntamiento de Logroño o Registro Auxiliar de la Dirección General del Conocimiento y Competencias Profesionales, o en la forma del artículo 16 de la Ley 39/2015",
+   "valor": "Registro General del Ayuntamiento de Logroño o Registro Auxiliar de la Dirección General del Conocimiento y Competencias Profesionales, o forma del artículo 16 de la Ley 39/2015",
    "cita": "utilizando el Registro General del Excelentísimo Ayuntamiento de Logroño o el Registro Auxiliar de la Dirección General",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Boletín Oficial de La Rioja, Tablón de anuncios de la Dirección General del Conocimiento y Competencias Profesionales y web municipal",
+   "valor": "Boletín Oficial de La Rioja, tablón de anuncios de la Dirección General del Conocimiento y Competencias Profesionales y web municipal (www.logrono.es)",
    "cita": "Tanto la convocatoria como sus Bases se publicarán íntegramente en el Boletín Oficial de La Rioja",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Primer ejercicio: cuestionario tipo test de 65 preguntas sobre temario común y específico, 120 minutos",
-    "Segundo ejercicio: prueba de conocimiento de materiales y herramientas, test de 55 preguntas, una hora",
-    "Tercer ejercicio: pruebas físicas de fuerza, habilidad o agilidad, máximo 30 minutos"
+    "Primer ejercicio: cuestionario tipo test de 65 preguntas (60 evaluables), 120 minutos, mínimo 5 puntos",
+    "Segundo ejercicio: prueba de conocimiento de materiales y herramientas con cuestionario tipo test, 1 hora, mínimo 5 puntos",
+    "Tercer ejercicio: pruebas físicas de fuerza, habilidad o agilidad, máximo 30 minutos, mínimo 5 puntos"
    ],
-   "cita": "Consistirá en la resolución de un cuestionario tipo test, que versará sobre el Temario adjunto en el Anexo, de sesenta y cinco preguntas",
+   "cita": "La Fase de oposición consistirá en la realización de tres ejercicios, todos ellos obligatorios y eliminatorios.",
    "nivel": "literal"
   },
   "meritos": {
-   "valor": "Servicios prestados (máximo 11,00 puntos) y cursos de formación (máximo 2,50 puntos); fase de concurso máxima 13,50 puntos",
+   "valor": "Servicios prestados (máximo 11 puntos) y cursos de formación (máximo 2,50 puntos); fase de concurso máxima 13,50 puntos",
    "cita": "La puntuación máxima de la fase de concurso no podrá superar 13,50 puntos.",
-   "nivel": "literal"
-  },
-  "bolsa": {
-   "valor": "no",
-   "cita": "El Tribunal queda facultado para resolver las dudas que se presenten",
    "nivel": "literal"
   },
   "practicas_o_curso": {
    "valor": "no consta",
-   "cita": "Las personas aspirantes propuestas presentarán en el Ayuntamiento de Logroño, dentro del plazo de veinte días hábiles, los documentos",
+   "cita": "Una vez aprobada la propuesta de nombramientos que formule el Tribunal calificador",
    "nivel": "literal"
   },
   "temas": {
@@ -112,5 +109,11 @@
    "nivel": "contado"
   }
  },
- "rechazados": {}
+ "rechazados": {
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "no",
+   "cita": "Asimismo, en los casos no especificados en estas bases no se crea bolsa"
+  }
+ }
 }

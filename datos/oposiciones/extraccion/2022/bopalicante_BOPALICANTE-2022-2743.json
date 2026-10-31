@@ -1,0 +1,45 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2022-2743",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2022-2743",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2022/05/04_83/2022_002743.pdf",
+  "fecha": "2022-05-04",
+  "huella": "a5714af77d20ae25efdf218d9f391c651cfcc67465ad0b457c61795e2a9df9da"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T15:25:44+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
+ "no_son_bases": false,
+ "campos": {
+  "plazo_solicitudes": {
+   "valor": "10 días hábiles, contados a partir del día siguiente al de la publicación del presente anuncio en el Boletín Oficial de la Provincia",
+   "cita": "El plazo de presentación de instancias será 10 días hábiles, contados a partir del día siguiente al de la publicación",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de edictos electrónico y página web del Ayuntamiento de Rojales",
+   "cita": "Los sucesivos anuncios relacionados con la presente convocatoria se publicarán en el tablón de edictos electrónico y en la página web del Ayuntamiento de Rojales",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Socorrista (bolsa de trabajo para provisión temporal)"
+   ],
+   "cita": "convocatoria para la constitución de una bolsa de trabajo para provisión temporal de puestos de trabajo de socorristas"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "laboral temporal",
+   "cita": "constitución de una bolsa de trabajo para provisión temporal de puestos de trabajo de socorristas"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, para provisión temporal de puestos de trabajo de socorristas",
+   "cita": "para la constitución de una bolsa de trabajo para provisión temporal de puestos de trabajo de socorristas"
+  }
+ }
+}

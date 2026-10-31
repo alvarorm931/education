@@ -5,19 +5,19 @@
   "fuente": "BOP-PALENCIA",
   "url": "https://www.diputaciondepalencia.es/system/files/bop/2024/20240524-bop-63-Ordinario.pdf",
   "fecha": "2024-05-24",
-  "huella": "dcdd3fd7d3dec34b354c14cf1a1c811aad8b722c5323720d1c73fe6974481a7f"
+  "huella": "216c600a12f6f16ad768b938a3c18234e525b74b5e95ca77af478ebd1a864e57"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:54:22+00:00",
- "lote": "msgbatch_01HRnX7cDVMkRZD7mBamCmLu",
+ "extraido": "2026-10-31T15:25:28+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
    "valor": [
-    "Monitor/a de Tiempo Libre",
-    "Monitor/a de Inglés",
-    "Monitor/a Deportivo",
-    "Monitor/a de Apoyo"
+    "Monitor-a de Tiempo Libre",
+    "Monitor-a de Inglés",
+    "Monitor-a Deportivo",
+    "Monitor-a de Apoyo"
    ],
    "cita": "BASES PARA LA CONVOCATORIA Y SELECCIÓN DE PERSONAL LABORAL TEMPORAL DE DISTINTOS MONITORES-AS PARA EL CAMPAMENTO URBANO 2024",
    "nivel": "literal"
@@ -38,52 +38,62 @@
    "nivel": "literal"
   },
   "titulacion": {
-   "valor": "Monitor/a de Tiempo Libre; Maestro/a Especialidad Inglés, Licenciado/a en Filología Inglesa o Nivel B2 EOI; Coordinador/a de Tiempo Libre y/o afines; Maestro/a Educación Física, Licenciado/a INEF o Técnico/a Superior en Actividades Físicas y Deportivas, según puesto",
-   "cita": "Estar en posesión del Título de Monitor-a de Tiempo Libre.",
+   "valor": "Monitor-a de Tiempo Libre; Maestro-a especialidad Inglés, Licenciado-a en Filología Inglesa o Nivel B2 de Escuela Oficial de Idiomas; Coordinador de Tiempo Libre y/o afines; Maestro-a especialidad Educación Física, Licenciado-a en INEF o Técnico-a Superior en Actividades Físicas y Deportivas, según puesto",
+   "cita": "PARA MONITORES-AS DE TIEMPO LIBRE: Estar en posesión del Título de Monitor-a de Tiempo Libre.",
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Nacionalidad o los supuestos equivalentes, capacidad funcional, tener cumplidos dieciséis años, no haber sido separado del servicio público, y certificado negativo del Registro Central de delincuentes sexuales",
+   "valor": "Nacionalidad o los supuestos de extranjeros previstos; capacidad funcional; mayoría de dieciséis años; no haber sido separado de la Administración ni inhabilitado; no haber sido condenado por delitos contra la libertad e indemnidad sexuales ni de trata",
    "cita": "Tener cumplidos dieciséis años y no exceder, en su caso, de la edad máxima de jubilación forzosa.",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "siete días naturales a contar del siguiente de su publicación en el BOLETÍN OFICIAL DE LA PROVINCIA",
-   "cita": "El plazo de presentación de solicitudes será de siete días naturales a contar del siguiente de su publicación",
+   "valor": "siete días naturales",
+   "cita": "El plazo de presentación de solicitudes será de siete días naturales a contar del siguiente de su publicación en el BOLETÍN OFICIAL DE LA PROVINCIA.",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Tablón de Edictos del Ayuntamiento, página web del Ayuntamiento (www.ventadebanos.es) y lista de correo del Ayuntamiento",
-   "cita": "Las bases íntegras se publicarán en el BOLETÍN OFICIAL DE LA PROVINCIA de Palencia, en Tablón de Edictos del Ayuntamiento",
+   "valor": "Tablón de Edictos del Ayuntamiento y página web www.ventadebanos.es",
+   "cita": "Todos los demás anuncios correspondientes a estas pruebas selectivas se harán públicos únicamente en el Tablón de Edictos del Ayuntamiento",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Valoración de méritos"
+    "Valoración de méritos (fase única)"
    ],
-   "cita": "Procedimiento de selección: constará de una fase: Valoración de méritos",
+   "cita": "constará de una fase: Valoración de méritos",
    "nivel": "literal"
   },
   "meritos": {
-   "valor": "Formación profesional, máximo 5 puntos; experiencia profesional en área de Infancia y/o Juventud, máximo 5 puntos; total máximo 10 puntos",
+   "valor": "Formación profesional, máximo 5 puntos (no se puntúa la titulación de acceso); experiencia profesional en infancia y/o juventud, máximo 5 puntos: 0,30 por mes en administraciones públicas y 0,20 por mes en empresas privadas",
    "cita": "La fase de valoración de méritos tendrá una puntuación máxima de 10 puntos.",
    "nivel": "literal"
   },
   "bolsa": {
-   "valor": "sí, bolsa de trabajo para cubrir vacantes temporales, sustituciones, programas temporales y exceso o acumulación de tareas",
+   "valor": "sí, bolsa de trabajo para sustituciones, vacantes temporales, programas temporales y exceso de tareas",
    "cita": "La Alcaldía dictará resolución formando una bolsa de trabajo con todos-as los-as candidatosas presentados",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "periodo de prueba de quince días",
+   "cita": "El periodo de prueba del contrato se establece en quince días",
    "nivel": "literal"
   }
  },
  "rechazados": {
   "plazas_total": {
    "motivo": "valor_no_en_cita",
-   "valor": 18,
+   "valor": 20,
    "cita": "doce monitores-as de tiempo libre; un monitor-a de inglés; un monitor deportivo y tres monitores-as de apoyo"
+  },
+  "tasa_euros": {
+   "motivo": "cita_no_literal",
+   "valor": 0,
+   "cita": "no se exige tasa de examen en las bases"
   },
   "presentacion": {
    "motivo": "cita_no_literal",
-   "valor": "Registro General del Ayuntamiento de Venta de Baños, de 9 a 14 h., o en la forma prevista en el Art 16.4 y 5 de la Ley 39/2015",
+   "valor": "Registro General del Ayuntamiento de Venta de Baños, de 9 a 14 h., o en la forma del Art. 16.4 y 5 de la Ley 39/2015, conforme al Anexo I",
    "cita": "Las instancias se presentarán en el Registro General del Ayuntamiento de Venta de Baños, de 9 a 14 h."
   }
  }

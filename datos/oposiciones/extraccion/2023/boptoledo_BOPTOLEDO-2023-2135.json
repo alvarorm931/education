@@ -5,11 +5,11 @@
   "fuente": "BOP-TOLEDO",
   "url": "https://bop.diputoledo.es/webEbop/DocGet?id=23037416;0&insert_number=2135&insert_year=2023",
   "fecha": "2023-04-11",
-  "huella": "9e9d29e81a1c612eac67feb03747c845cb4d0f1db3197fd72b259fb6ee17d108"
+  "huella": "1f4d4b65717e3a722033da8c7a784f1063a1ed5cf2f1628eee8429f305739cdf"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:59:16+00:00",
- "lote": "msgbatch_012nGabRM1G4b7cEKJh1Bcx1",
+ "extraido": "2026-10-31T15:25:18+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
@@ -32,12 +32,12 @@
    "nivel": "literal"
   },
   "titulacion": {
-   "valor": "Título de Formación Profesional de Técnico de Grado Medio de atención a personas en situación de dependencia, de atención socio-sanitaria o de cuidados auxiliares de enfermería, o certificado de profesionalidad equivalente (Auxiliar de Ayuda a Domicilio); graduado escolar o equivalente (Auxiliar Administrativo)",
+   "valor": "Título de Formación profesional de Técnico de Grado Medio de atención a personas en situación de dependencia, de atención socio-sanitaria o de cuidados auxiliares de enfermería o certificado de profesionalidad equivalente (auxiliar de ayuda a domicilio)",
    "cita": "Título de Formación profesional de Técnico de Grado Medio de atención a personas en situación de dependencia",
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Nacionalidad española o de la UE, tener 16 años y no exceder la edad de jubilación forzosa, capacidad funcional, no estar incurso en incapacidad o incompatibilidad, no haber sido separado de la Administración",
+   "valor": "Nacionalidad española o de un Estado miembro de la UE; mayor de dieciséis años; capacidad funcional; no inhabilitación para empleo público. Auxiliar Administrativo: titulación de graduado escolar o equivalente.",
    "cita": "Tener la nacionalidad española o de un Estado miembro de la Unión Europea.",
    "nivel": "literal"
   },
@@ -47,63 +47,59 @@
    "nivel": "literal"
   },
   "exenciones_tasa": {
-   "valor": "Exentas las personas con discapacidad igual o superior al 33%",
-   "cita": "estarán exentas de pago de los derechos de examen las personas que se presenten al proceso y acrediten una discapacidad igual o superior al 33%.",
+   "valor": "Exentos quienes acrediten discapacidad igual o superior al 33%",
+   "cita": "estarán exentas de pago de los derechos de examen las personas que se presenten al proceso y acrediten una discapacidad igual o superior al 33%",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "Veinte días hábiles desde el día siguiente a la publicación del anuncio en el Boletín Oficial del Estado",
+   "valor": "20 días hábiles desde el día siguiente a la publicación del anuncio en el BOE",
    "cita": "Se abre el plazo de presentación de solicitudes, que será de 20 días hábiles a contar desde el día siguiente",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Registro de entrada del Ayuntamiento o procedimiento del artículo 16 de la Ley 39/2015, conforme al modelo del Anexo I",
-   "cita": "se presentarán en el Registro de entrada de este Ayuntamiento o bien mediante el procedimiento que regula el artículo 16 de la Ley 39/2015",
+   "valor": "Registro de entrada del Ayuntamiento o procedimiento del artículo 16 de la Ley 39/2015",
+   "cita": "se presentarán en el Registro de entrada de este Ayuntamiento o bien mediante el procedimiento que regula el artículo 16",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Tablón de anuncios del Ayuntamiento, sede electrónica del Ayuntamiento y Boletín Oficial de la Provincia de Toledo",
+   "valor": "Tablón de anuncios del Ayuntamiento y sede electrónica del Ayuntamiento; bases en el BOP de Toledo",
    "cita": "Todos los actos de desarrollo del proceso selectivo se harán públicos en el tablón de anuncios del Ayuntamiento",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Concurso de méritos: valoración de experiencia profesional y méritos académicos u otros méritos"
+    "Concurso de méritos: valoración de experiencia profesional (hasta 60 puntos)",
+    "Méritos académicos y otros (hasta 40 puntos)"
    ],
    "cita": "El sistema será el de concurso de valoración de méritos con una puntuación de 0 a 100 puntos",
    "nivel": "literal"
   },
   "meritos": {
-   "valor": "Experiencia profesional hasta 60 puntos (1 punto/mes en el Ayuntamiento; 0,15 puntos/mes en otras Administraciones); méritos académicos y otros hasta 40 puntos (cursos de formación relacionados y de prevención de riesgos laborales)",
-   "cita": "hasta un máximo de 60 puntos. A.1. Los servicios prestados como laboral temporal",
+   "valor": "Experiencia profesional hasta 60 puntos (1 punto por mes en el Ayuntamiento; 0,15 por mes en otras AAPP); méritos académicos y otros hasta 40 puntos (cursos de formación y prevención de riesgos)",
+   "cita": "A) Experiencia profesional: hasta un máximo de 60 puntos.",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "no",
+   "cita": "Se abre el plazo de presentación de solicitudes",
    "nivel": "literal"
   },
   "practicas_o_curso": {
-   "valor": "No consta",
+   "valor": "Superación del período de prueba que corresponda según la normativa laboral",
    "cita": "Podrá establecerse la superación del período de prueba que corresponda de acuerdo con la normativa laboral",
    "nivel": "literal"
   }
  },
  "rechazados": {
-  "grupo": {
-   "motivo": "cita_no_literal",
-   "valor": "Sin clasificar en el texto",
-   "cita": "no consta grupo de clasificación"
-  },
   "plazas_total": {
-   "motivo": "valor_no_en_cita",
+   "motivo": "cita_no_literal",
    "valor": 4,
-   "cita": "Auxiliar Administrativo 1 Disposición adicional sexta (concurso) Auxiliar de Ayuda a Domicilio 2"
+   "cita": "Auxiliar Administrativo 1 Auxiliar de Ayuda a Domicilio 2 Socorrista (fijo-discontinuo) 2"
   },
   "plazas_turno_libre": {
    "motivo": "valor_no_en_cita",
    "valor": 4,
-   "cita": "mediante el sistema de acceso libre y a través del procedimiento de concurso de méritos"
-  },
-  "bolsa": {
-   "motivo": "cita_no_literal",
-   "valor": "no",
-   "cita": "no consta creación de bolsa o lista de espera"
+   "cita": "Es objeto de esta convocatoria la provisión, mediante el sistema de acceso libre y a través del procedimiento de concurso de méritos"
   }
  }
 }

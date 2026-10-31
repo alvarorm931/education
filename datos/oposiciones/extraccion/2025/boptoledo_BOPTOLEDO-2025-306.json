@@ -5,31 +5,33 @@
   "fuente": "BOP-TOLEDO",
   "url": "https://bop.diputoledo.es/webEbop/DocGet?id=25010411;0&insert_number=306&insert_year=2025",
   "fecha": "2025-01-21",
-  "huella": "a1bc205b7a521f09e96df3310a6a96bee983e9d70edaf5536cc59a05691ffa42"
+  "huella": "276956ab25541b91ffe45f089e60f9c577315382ab68cf2891af6a5f44f59e12"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:49:37+00:00",
- "lote": "msgbatch_018TPQE8scQozfAUdc1n8RyC",
+ "extraido": "2026-10-31T15:25:19+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
-   "valor": "DIRECTOR DEL PDM de Toledo (A1/26-CP:15.754,56)",
-   "cita": "Se convoca concurso singularizado de méritos para la provisión con personal laboral fijo del puesto de trabajo de DIRECTOR DEL PDM de Toledo",
+   "valor": [
+    "DIRECTOR DEL PDM de Toledo"
+   ],
+   "cita": "provisión del puesto de trabajo de DIRECTOR (CLASIFICADO EN EL SUBGRUPO A1) de la plantilla de personal del Patronato Deportivo Municipal de Toledo",
    "nivel": "literal"
   },
   "grupo": {
    "valor": "A1",
-   "cita": "Podrán participar en el concurso el personal laboral fijo del PDM de Toledo, Subgrupo de clasificación A1",
+   "cita": "Subgrupo de clasificación A1 y reúnan el requisito de titulación académica",
    "nivel": "literal"
   },
   "vinculo": {
    "valor": "personal laboral fijo",
-   "cita": "con personal laboral fijo del puesto de trabajo de DIRECTOR DEL PDM de Toledo",
+   "cita": "Se convoca concurso singularizado de méritos para la provisión con personal laboral fijo del puesto",
    "nivel": "literal"
   },
   "sistema": {
    "valor": "concurso",
-   "cita": "Se convoca concurso singularizado de méritos para la provisión",
+   "cita": "Se convoca concurso singularizado de méritos para la provisión con personal laboral fijo del puesto",
    "nivel": "literal"
   },
   "titulacion": {
@@ -37,24 +39,19 @@
    "cita": "titulación académica de GRADO/ LICENCIADO o equivalente",
    "nivel": "literal"
   },
-  "plazo_solicitudes": {
-   "valor": "15 días hábiles desde el día siguiente a la publicación del anuncio de la convocatoria en el Boletín Oficial del Estado",
-   "cita": "Las solicitudes para participar en el concurso se presentarán dentro del plazo de 15 días hábiles, contados a partir del día siguiente",
+  "otros_requisitos": {
+   "valor": "Ser personal laboral fijo del PDM de Toledo, subgrupo A1; cumplir las condiciones de situación administrativa y tiempos de permanencia de las bases 3.1 a 3.6",
+   "cita": "Podrán participar en el concurso el personal laboral fijo del PDM de Toledo, Subgrupo de clasificación A1",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Conforme al modelo disponible en la Sede Electrónica del Patronato Deportivo Municipal de Toledo",
+   "valor": "Modelo disponible en la Sede Electrónica del Patronato Deportivo Municipal de Toledo",
    "cita": "Se presentarán conforme al modelo disponible en la Sede Electrónica del Patronato Deportivo Municipal de Toledo",
    "nivel": "literal"
   },
-  "publicaciones": {
-   "valor": "Boletín Oficial de la provincia de Toledo y Tablón de Anuncios de la sede electrónica del PDM de Toledo",
-   "cita": "publicará la resolución con la adjudicación del puesto en el Boletín Oficial de la provincia de Toledo, así en el Tablón de Anuncios de la sede electrónica",
-   "nivel": "literal"
-  },
-  "practicas_o_curso": {
-   "valor": "no se establece",
-   "cita": "Para la adjudicación del puesto de trabajo será necesario haber obtenido una puntuación mínima del 40 por cien",
+  "bolsa": {
+   "valor": "no",
+   "cita": "Se convoca concurso singularizado de méritos para la provisión con personal laboral fijo del puesto",
    "nivel": "literal"
   }
  },
@@ -62,17 +59,22 @@
   "plazas_total": {
    "motivo": "valor_no_en_cita",
    "valor": 1,
-   "cita": "Se convoca concurso singularizado de méritos para la provisión con personal laboral fijo del puesto de trabajo"
+   "cita": "Se convoca concurso singularizado de méritos para la provisión con personal laboral fijo del puesto de trabajo de DIRECTOR"
   },
-  "otros_requisitos": {
+  "plazo_solicitudes": {
    "motivo": "cita_no_literal",
-   "valor": "Personal laboral fijo del PDM de Toledo, subgrupo A1, que reúna la titulación exigida; con dos años desde la toma de posesión definitiva en su último destino a la fecha de publicación",
-   "cita": "El personal laboral sólo podrá participar en el concurso si, a la fecha de publicación de la convocatoria, han transcurrido dos años desde la toma de posesión"
+   "valor": "15 días hábiles desde el día siguiente a la publicación del anuncio de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "dentro del plazo de 15 días hábiles, contados a partir del día siguiente al de la publicación del anuncio"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Boletín Oficial de la provincia de Toledo y Tablón de Anuncios de la sede electrónica del Patronato Deportivo Municipal de Toledo",
+   "cita": "se publicará en el Boletín Oficial de la provincia de Toledo y en el Tablón de Anuncios de la sede electrónica"
   },
   "meritos": {
    "motivo": "cita_no_literal",
-   "valor": "Fase generales hasta 70 puntos (grado personal 20, trabajo desarrollado 20, cursos 10, antigüedad 20); fase específicos hasta 30 puntos (experiencia 20, formación específica 10); mínimo 40% en cada fase",
-   "cita": "Los méritos se valorarán hasta un máximo de 100 puntos, distribuidos en dos fases: méritos generales, hasta un máximo de 70 puntos, y méritos específicos, hasta un máximo de 30 puntos"
+   "valor": "Hasta 100 puntos: méritos generales hasta 70 (grado personal 20, trabajo desarrollado 20, cursos 10, antigüedad 20) y específicos hasta 30 (experiencia 20, formación específica 10); mínimo 40% en cada fase",
+   "cita": "Los méritos se valorarán hasta un máximo de 100 puntos, distribuidos en dos fases"
   }
  }
 }

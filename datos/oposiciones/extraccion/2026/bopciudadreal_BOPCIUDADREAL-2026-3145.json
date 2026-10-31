@@ -5,12 +5,61 @@
   "fuente": "BOP-CIUDADREAL",
   "url": "https://bop.dipucr.es/bop/2026/10/01",
   "fecha": "2026-10-01",
-  "huella": "685d6104ac24848a64f908657a30a67e58688b8ce089c614c784a5b629bd2215"
+  "huella": "49def85ecb6f3102984f6872f33184a5eb3f72b2965ee335933285356200c86b"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T07:28:40+00:00",
- "lote": "msgbatch_01QUU3nKnMRQfp1xxi4asvKD",
- "no_son_bases": true,
- "campos": {},
- "rechazados": {}
+ "extraido": "2026-10-31T15:25:46+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "Coordinador/a de Recursos Humanos",
+   "cita": "para la provisión de una plaza de Coordinador/a de RRHH, funcionario/a de carrera, correspondiente a la OEP 2023",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "para la provisión de una plaza de Coordinador/a de RRHH, funcionario/a de carrera, correspondiente a la OEP 2023",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "para la provisión de una plaza de Coordinador/a de RRHH, funcionario/a de carrera",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Veinte días hábiles desde el día siguiente a la publicación del anuncio en el BOE",
+   "cita": "abriendo nuevo plazo de veinte días hábiles para la presentación de solicitudes, a contar desde el día siguiente al de la publicación del anuncio en este último",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Fase de concurso: valoración de méritos (no es oposición escrita en este extracto)"
+   ],
+   "cita": "no pudiendo aportar más del 25 % de la nota máxima total del proceso selectivo",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "La fase de concurso consiste en la comprobación y valoración de los méritos de las personas aspirantes"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Boletín Oficial de la Provincia de Ciudad Real y Boletín Oficial del Estado",
+   "cita": "Publicar el texto de la modificación en el BOP de Ciudad Real y nuevo anuncio en el BOE"
+  },
+  "temas": {
+   "motivo": "valor_no_en_cita",
+   "valor": 70,
+   "cita": "PARTE GENERAL. 1. La Constitución Española de 1978."
+  },
+  "meritos": {
+   "motivo": "cita_no_literal",
+   "valor": "Cursos de formación (máximo 3 puntos) y experiencia profesional (máximo 2 puntos); fase de concurso ponderada con máximo 33,33 puntos",
+   "cita": "el baremo máximo de 5 puntos para la fase de concurso (desglosado en un máximo de 3 puntos en formación y perfeccionamiento y 2 puntos en experiencia profesional)"
+  }
+ }
 }

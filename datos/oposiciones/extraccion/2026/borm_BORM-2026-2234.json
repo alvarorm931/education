@@ -5,21 +5,23 @@
   "fuente": "BORM",
   "url": "https://www.borm.es/#/home/anuncio/19-05-2026/2234",
   "fecha": "2026-05-19",
-  "huella": "fbefdc9e69c6fd896eeacb42efd107223eff586de47256bf9464e0ff452b6e36"
+  "huella": "1e9a4170453540972f5490f3635567251a931470705b6a0263d4f275530c792b"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:41:42+00:00",
- "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
+ "extraido": "2026-10-31T15:25:21+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
-   "valor": "Profesores Titulares de Universidad, área de conocimiento Medicina, plaza 86/2026, departamento Atención Sociosanitaria",
-   "cita": "Cuerpo de Profesores Titulares de Universidad Concurso de méritos Plaza número: 86/2026 Área/especialidad de conocimiento: Medicina",
+   "valor": [
+    "Profesores Titulares de Universidad - Área de conocimiento: Medicina (plaza nº 86/2026, código 211591)"
+   ],
+   "cita": "Resuelve convocar el presente concurso de méritos para acceso a plazas vacantes del cuerpo de Profesores Titulares de Universidad que se detallan en el anexo I",
    "nivel": "literal"
   },
   "grupo": {
    "valor": "A1",
-   "cita": "Profesores Titulares de Universidad",
+   "cita": "Resuelve convocar el presente concurso de méritos para acceso a plazas vacantes del cuerpo de Profesores Titulares de Universidad",
    "nivel": "literal"
   },
   "vinculo": {
@@ -29,17 +31,22 @@
   },
   "sistema": {
    "valor": "concurso",
-   "cita": "Resuelve convocar el presente concurso de méritos para acceso a plazas vacantes del cuerpo de Profesores Titulares",
+   "cita": "convocar el presente concurso de méritos para acceso a plazas vacantes del cuerpo",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "Cada plaza convocada se tramitará como un procedimiento independiente",
    "nivel": "literal"
   },
   "titulacion": {
    "valor": "Título de Doctora o Doctor",
-   "cita": "Título de Doctora o Doctor en el supuesto de títulos no expedidos por el Rector de la Universidad de Murcia",
+   "cita": "Título de Doctora o Doctor en el supuesto de títulos no expedidos por el Rector",
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Requisitos de los artículos 7, 8 y 9 del Reglamento regulador; para concursos de acceso, estar contratado como profesorado permanente laboral o contratado doctor permanente, con dos años de servicios efectivos en ese puesto de origen",
-   "cita": "estar contratado en la categoría de profesorado permanente laboral o profesorado contratado doctor permanente, que haya prestado, como mínimo, dos años de servicios efectivos",
+   "valor": "Requisitos de participación de los artículos 7 y 8 del Reglamento regulador; contratación en la categoría de profesorado permanente laboral o profesorado contratado doctor permanente, con al menos dos años de servicios efectivos en el puesto de origen",
+   "cita": "estar contratado en la categoría de profesorado permanente laboral o profesorado contratado doctor permanente, que haya prestado, como mínimo, dos años",
    "nivel": "literal"
   },
   "tasa_euros": {
@@ -48,59 +55,54 @@
    "nivel": "literal"
   },
   "exenciones_tasa": {
-   "valor": "Exentas las personas participantes que acrediten discapacidad con grado igual o superior al 33%, en el plazo de presentación de solicitudes",
+   "valor": "Exentas las personas participantes que acrediten condición de discapacitada con grado igual o superior al 33%, en el plazo de presentación de solicitudes",
    "cita": "Estarán exentas del pago de los derechos de examen las personas participantes que acrediten la condición de discapacitada con un grado igual o superior al 33%",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "quince días hábiles desde el día siguiente a la publicación de la convocatoria en el BOE",
+   "valor": "Quince días hábiles desde el día siguiente a la publicación de la convocatoria en el Boletín Oficial del Estado",
    "cita": "El plazo de presentación de solicitudes será de quince días hábiles, contados a partir del día siguiente a la publicación",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Telemática a través de la aplicación CONVOCUM PDI (convocum.um.es), con firma electrónica mediante la pasarela de firma de la Universidad de Murcia",
-   "cita": "La presentación y registro de la solicitud se realizará por vía telemática a través de la propia aplicación web CONVOCUM PDI",
+   "valor": "Telemática a través de la aplicación web CONVOCUM PDI (https://convocum.um.es), con firma electrónica mediante la pasarela de firma de la Universidad de Murcia",
+   "cita": "La presentación y registro de la solicitud se realizará por vía telemática a través de la propia aplicación web",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Lugar donde se realicen las pruebas y aplicación CONVOCUM PDI",
+   "valor": "Lugar donde se realicen las pruebas, aplicación CONVOCUM PDI y oficina virtual de Recursos Humanos; BOE y BORM para nombramientos",
    "cita": "Las calificaciones de la prueba se publicarán en el lugar donde se realicen las pruebas y en la aplicación «CONVOCUM PDI».",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Prueba única: exposición oral de méritos y defensa de proyecto docente y/o de investigación, hasta una hora",
-    "Debate con la comisión, hasta una hora"
+    "Prueba única: exposición oral de méritos y defensa del proyecto docente y/o de investigación (máx. 1 hora)",
+    "Debate con la comisión sobre lo aportado o expuesto (máx. 1 hora)"
    ],
-   "cita": "La prueba será pública y consistirá en las plazas de profesorado titular de universidad, en la exposición oral por el/la participante, en un tiempo máximo de una hora",
+   "cita": "La prueba será pública y consistirá en las plazas de profesorado titular de universidad, en la exposición oral",
    "nivel": "literal"
   },
   "meritos": {
-   "valor": "Experiencia docente, investigadora, de transferencia e intercambio de conocimiento, y proyecto docente y/o investigación, valorados según baremo del Reglamento regulador",
-   "cita": "la experiencia docente y la experiencia investigadora de cada participante, incluyendo la de transferencia e intercambio de conocimiento",
-   "nivel": "literal"
-  },
-  "bolsa": {
-   "valor": "no",
-   "cita": "Lista de reservas:",
+   "valor": "Experiencia docente, investigadora y de transferencia e intercambio de conocimiento, y proyecto docente y/o investigador, según baremo del Anexo 1 del Reglamento regulador",
+   "cita": "deberá valorarse la experiencia docente y la experiencia investigadora de cada participante",
    "nivel": "literal"
   },
   "practicas_o_curso": {
-   "valor": "Toma de posesión en 20 días hábiles desde la publicación del nombramiento en el BOE; la plaza deberá desempeñarse al menos dos años antes de participar en otro concurso",
-   "cita": "La plaza obtenida tras el concurso de acceso deberá desempeñarse durante dos años, al menos, antes de poder participar en un nuevo concurso",
+   "valor": "En el plazo máximo de veinte días hábiles desde el día siguiente a la publicación del nombramiento en el BOE, deberá tomar posesión; la plaza deberá desempeñarse durante dos años, al menos, antes de poder participar en un nuevo concurso",
+   "cita": "La plaza obtenida tras el concurso de acceso deberá desempeñarse durante dos años, al menos",
    "nivel": "literal"
   }
  },
  "rechazados": {
-  "plazas_total": {
-   "motivo": "valor_no_en_cita",
-   "valor": 1,
-   "cita": "Cuerpo de Profesores Titulares de Universidad Concurso de méritos Plaza número: 86/2026"
-  },
   "plazas_turno_libre": {
    "motivo": "valor_no_en_cita",
    "valor": 1,
-   "cita": "Resuelve convocar el presente concurso de méritos para acceso a plazas vacantes del cuerpo de Profesores Titulares"
+   "cita": "Plaza número: 86/2026 Área/especialidad de conocimiento: Medicina Departamento: Atención Sociosanitaria"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "no",
+   "cita": "Anexo II Comisión de Selección Cuerpo de Profesores Titulares de Universidad Lista de reservas"
   }
  }
 }

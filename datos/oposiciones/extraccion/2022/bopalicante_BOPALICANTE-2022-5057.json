@@ -1,0 +1,62 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2022-5057",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2022-5057",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2022/07/08_128/2022_005057.pdf",
+  "fecha": "2022-07-08",
+  "huella": "cd60c16df67b32c350f01b9f5b1bdc4875bb2ff803bcac0da214de0a151fa49b"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T15:25:35+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Agente de la Policía Local"
+   ],
+   "cita": "selección de cuatro agentes de la Policía Local",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "dos mediante el sistema de oposición y curso selectivo",
+   "nivel": "literal"
+  },
+  "plazas_turno_libre": {
+   "valor": 2,
+   "cita": "dos mediante el sistema de oposición y curso selectivo",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Ejercicio Escrito de Preguntas con Respuestas Alternativas, obligatorio y eliminatorio, de 0 a 50 puntos, mínimo 25"
+   ],
+   "cita": "Ejercicio Escrito de Preguntas con Respuestas Alternativas, de carácter obligatorio y eliminatorio",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "como personal funcionario de carrera"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 4,
+   "cita": "selección de cuatro agentes de la Policía Local, dos por turno de movilidad"
+  },
+  "plazas_promocion_interna": {
+   "motivo": "cita_no_literal",
+   "valor": 2,
+   "cita": "dos por turno de movilidad y dos mediante el sistema de oposición"
+  },
+  "practicas_o_curso": {
+   "motivo": "cita_no_literal",
+   "valor": "curso selectivo",
+   "cita": "mediante el sistema de oposición y curso selectivo como personal funcionario de carrera"
+  }
+ }
+}

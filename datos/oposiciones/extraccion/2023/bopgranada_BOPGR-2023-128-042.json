@@ -5,16 +5,16 @@
   "fuente": "BOP-GRANADA",
   "url": null,
   "fecha": "2023-07-10",
-  "huella": "0ad7933c89002875e9b2b83bd6e74ed704b8949ab7926f19ae13d3aea3a2fea4"
+  "huella": "581f4bb162e28da94d73ca69f50fdb42073a1ea1b16c1d614c24b7c22264e4df"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:59:22+00:00",
- "lote": "msgbatch_012nGabRM1G4b7cEKJh1Bcx1",
+ "extraido": "2026-10-31T15:25:30+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
    "valor": "Técnico de gestión en materia de contratación y presupuestaria",
-   "cita": "Técnico de gestión en materia de contratación y presupuestaria",
+   "cita": "Técnico de gestión en materia de contratación y presupuestaria.",
    "nivel": "literal"
   },
   "grupo": {
@@ -24,12 +24,7 @@
   },
   "vinculo": {
    "valor": "funcionario de carrera",
-   "cita": "una plaza de funcionario de carrera en ejecución de la OEP 2023",
-   "nivel": "literal"
-  },
-  "sistema": {
-   "valor": "concurso-oposición",
-   "cita": "mediante el sistema de concurso oposición, se abre un plazo",
+   "cita": "la provisión en propiedad de la plaza que se incluye en la Oferta Pública de Empleo",
    "nivel": "literal"
   },
   "plazas_total": {
@@ -43,13 +38,18 @@
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Nacionalidad española (con excepciones del art. 57 TREBEP); capacidad funcional; tener cumplidos 16 años y no exceder la edad de jubilación forzosa; no haber sido separado del servicio ni inhabilitado; título homologado si es obtenido en el extranjero",
+   "valor": "Nacionalidad española; capacidad funcional; tener cumplidos 16 años y no exceder la edad máxima de jubilación forzosa; no estar separado ni inhabilitado para empleo público.",
    "cita": "Tener la nacionalidad española sin perjuicio de lo dispuesto en el artículo 57",
    "nivel": "literal"
   },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles desde el día siguiente a la publicación del anuncio de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "que será de veinte días hábiles contados a partir del día siguiente al de la publicación del anuncio de la convocatoria en el Boletín Oficial del Estado",
+   "nivel": "literal"
+  },
   "presentacion": {
-   "valor": "Registro Electrónico General del Ayuntamiento o en los lugares del artículo 16.4 de la Ley 39/2015",
-   "cita": "se presentarán en el Registro Electrónico General de este Ayuntamiento o en alguno de los lugares previstos",
+   "valor": "Registro Electrónico General del Ayuntamiento o lugares del artículo 16.4 de la Ley 39/2015, dirigidas al Sr. Alcalde-Presidente",
+   "cita": "se presentarán en el Registro Electrónico General de este Ayuntamiento o en alguno de los lugares previstos en el artículo 16.4",
    "nivel": "literal"
   },
   "publicaciones": {
@@ -59,48 +59,48 @@
   },
   "ejercicios": {
    "valor": [
-    "Primer ejercicio (teórico): preguntas cortas sobre parte general y específica del programa, 0 a 20 puntos, mínimo 10 para aprobar",
-    "Segundo ejercicio: supuesto práctico relacionado con las funciones de la plaza, 0 a 40 puntos, mínimo 20 para aprobar"
+    "Primer ejercicio (20 puntos): preguntas cortas por escrito sobre parte general y específica del programa (mínimo 10 puntos)",
+    "Segundo ejercicio (40 puntos): resolución de un supuesto práctico relacionado con la plaza (mínimo 20 puntos)"
    ],
-   "cita": "Segundo ejercicio (40 puntos): Consistirá en la resolución de un supuesto práctico",
+   "cita": "Primer ejercicio (20 puntos): Consistirá en contestar por escrito a una serie de preguntas cortas",
    "nivel": "literal"
   },
   "meritos": {
-   "valor": "Fase concurso 40 puntos: formativos máximo 10 puntos; experiencia profesional máximo 30 puntos (servicios en plaza idéntica 0,35 puntos por mes; similar 0,25; empresa privada 0,15)",
-   "cita": "Experiencia profesional (30 puntos como máximo): a) Por servicios efectivos prestados",
-   "nivel": "literal"
-  },
-  "bolsa": {
-   "valor": "no",
-   "cita": "Los sucesivos anuncios de esta convocatoria, cuando procedan",
-   "nivel": "literal"
-  },
-  "practicas_o_curso": {
-   "valor": "no consta",
-   "cita": "El aspirante propuesto acreditará ante la Administración, dentro del plazo de veinte días hábiles",
+   "valor": "Formativos (máx. 10 puntos) y experiencia profesional (máx. 30 puntos), según baremo de cursos y servicios prestados",
+   "cita": "2.- Experiencia profesional (30 puntos como máximo)",
    "nivel": "literal"
   }
  },
  "rechazados": {
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "mediante el sistema de concurso oposición, se abre un plazo de presentación de solicitudes"
+  },
   "plazas_turno_libre": {
    "motivo": "valor_no_en_cita",
    "valor": 1,
    "cita": "Turno libre."
   },
   "tasa_euros": {
-   "motivo": "valor_no_en_cita",
-   "valor": 40.29,
-   "cita": "los derechos de examen ascienden, de acuerdo con lo establecido en el art. 3"
-  },
-  "plazo_solicitudes": {
    "motivo": "cita_no_literal",
-   "valor": "veinte días hábiles contados a partir del día siguiente al de la publicación del anuncio de la convocatoria en el Boletín Oficial del Estado",
-   "cita": "se abre un plazo de presentación de solicitudes que será de veinte días hábiles contados a partir del día siguiente"
+   "valor": 40.29,
+   "cita": "los derechos de examen ascienden, de acuerdo con lo establecido en el art. 3 de la Ordenanza Fiscal, a la cantidad de 40,29 euros"
   },
   "temas": {
-   "motivo": "valor_no_en_cita",
+   "motivo": "cita_no_literal",
    "valor": 60,
-   "cita": "ANEXO I PROGRAMA DE LA CONVOCATORIA MATERIAS COMUNES TEMA 1. LA CONSTITUCIÓN ESPAÑOLA DE 1978."
+   "cita": "TEMA 60. LAS FORMAS DE ACTIVIDAD ADMINISTRATIVA."
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "no",
+   "cita": "no se hace mención a la creación de bolsa o lista de espera en el texto"
+  },
+  "practicas_o_curso": {
+   "motivo": "cita_no_literal",
+   "valor": "no",
+   "cita": "no se hace mención a periodo de prácticas ni curso selectivo en el texto"
   }
  }
 }

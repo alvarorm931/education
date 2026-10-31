@@ -5,38 +5,31 @@
   "fuente": "BOP-TOLEDO",
   "url": "https://bop.diputoledo.es/webEbop/DocGet?id=22125309;0&insert_number=6804&insert_year=2022",
   "fecha": "2022-12-30",
-  "huella": "fe0f420b5615f97ae0b041f6bdefb79835b4ecb65046817efd1f822eb94878a4"
+  "huella": "63965a35aba1796d8292e48bc84723b1aa3fadd096abab7b1c984d313b23a1b3"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:55:41+00:00",
- "lote": "msgbatch_014eT3dLLVopBnuVgQ4syWD9",
+ "extraido": "2026-10-31T15:25:46+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
-  "denominacion": {
-   "valor": [
-    "Administrativo biblioteca"
-   ],
-   "cita": "Aprobadas por Decreto de Alcaldía nº 1067 , de 21/12/2022, las bases que regirán la convocatoria del proceso selectivo para la estabilización de 1 plaza de Administrativo biblioteca",
-   "nivel": "literal"
-  },
   "grupo": {
    "valor": "C1",
-   "cita": "Nº Subgr. Denominación Escala Sist. acceso Sist. selectivo Clase Procedencia RPT 1 C1 Advo. Biblioteca - Libre C L BIBLIO004",
+   "cita": "1 C1 Advo. Biblioteca",
    "nivel": "literal"
   },
   "vinculo": {
    "valor": "personal laboral fijo",
-   "cita": "PROVISIÓN DE 1 PLAZA VACANTE DE ADMINISTRATIVO BIBLIOTECA EN RÉGIMEN DE PERSONAL LABORAL FIJO",
+   "cita": "la condición de personal laboral fijo",
    "nivel": "literal"
   },
   "sistema": {
    "valor": "concurso",
-   "cita": "PROCESO SELECTIVO POR CONCURSO PARA LA PROVISIÓN DE 1 PLAZA VACANTE",
+   "cita": "La selección de los aspirantes se realizará por el sistema de selección de concurso",
    "nivel": "literal"
   },
-  "plazas_turno_libre": {
+  "plazas_total": {
    "valor": 1,
-   "cita": "Nº Subgr. Denominación Escala Sist. acceso Sist. selectivo Clase Procedencia RPT 1 C1 Advo. Biblioteca - Libre",
+   "cita": "para la provisión de 1 plaza vacante de Administrativo biblioteca",
    "nivel": "literal"
   },
   "titulacion": {
@@ -45,8 +38,8 @@
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Nacionalidad española o de Estados Miembros de la UE u otros con residencia legal; 16 años cumplidos y no exceder la edad de jubilación forzosa; capacidad funcional; no haber sido separado del servicio por expediente disciplinario ni inhabilitado.",
-   "cita": "Tener cumplidos dieciséis años de edad y no exceder de la edad de jubilación forzosa.",
+   "valor": "Nacionalidad española o de Estado Miembro de la UE, o extranjeros con residencia legal o en virtud de Tratados; tener 16 años y no exceder la edad de jubilación forzosa; capacidad funcional; no haber sido separado de la Administración ni inhabilitado",
+   "cita": "Tener cumplidos dieciséis años de edad y no exceder de la edad de jubilación forzosa",
    "nivel": "literal"
   },
   "tasa_euros": {
@@ -55,53 +48,60 @@
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "20 días hábiles contados a partir del día siguiente al de la publicación del anuncio de la convocatoria en el BOE",
+   "valor": "20 días hábiles",
    "cita": "El plazo de presentación de solicitudes será de 20 días hábiles contados a partir del día siguiente al de la publicación del anuncio de la convocatoria en el BOE",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Preferentemente por registro electrónico en la Sede electrónica del Ayuntamiento de Torrijos; también presencial en el SAC o por otras formas del art. 16.4 Ley 39/2015.",
+   "valor": "Preferentemente registro electrónico de la Sede electrónica del Ayuntamiento; también presencial en el SAC o por otras formas del artículo 16.4 de la Ley 39/2015",
    "cita": "La presentación de la solicitud se hará preferentemente a través del registro electrónico dispuesto en la Sede electrónica del Ayuntamiento de Torrijos",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Portal de internet del Ayuntamiento de Torrijos (https://www.torrijos.es/oep/2022-oep/oferta-de-empleo-publico-extraordinaria-de-estabilizacion.html), BOP de Toledo y BOE (convocatoria)",
-   "cita": "Estas bases de selección se publicarán íntegramente en el Portal de Internet",
+   "valor": "Portal de internet del Ayuntamiento (torrijos.es, OEP 2022); BOP de Toledo para las relaciones de admitidos y excluidos y la composición del tribunal",
+   "cita": "Las publicaciones de los actos del proceso de selección posteriores a la lista definitiva de admitidos y excluidos serán publicados en el Portal de internet",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
     "Concurso: valoración de méritos profesionales (100 puntos)"
    ],
-   "cita": "La selección de los aspirantes se realizará por el sistema de selección de concurso",
+   "cita": "La valoración del concurso se efectuará sobre una puntuación de 100 concerniente exclusivamente a los servicios previos",
    "nivel": "literal"
   },
   "meritos": {
-   "valor": "Méritos profesionales (100 puntos): servicios prestados en la plaza convocada en el Ayto Torrijos 1 punto/mes; otras plazas en el Ayto 0,50; misma plaza en otras AA.PP. 0,25; otras plazas en otras AA.PP. 0,12.",
-   "cita": "Servicios prestados en la plaza convocada en el Ayto Torrijos 1 punto/mes",
+   "valor": "Méritos profesionales, 100 puntos: 1 punto/mes en la plaza convocada en el Ayto. Torrijos; 0,50 en otras plazas del Ayto.; 0,25 en la plaza convocada en otras AA.PP.; 0,12 en otras plazas de otras AA.PP.",
+   "cita": "Experiencia profesional. Servicios prestados en la A.P . Mes completo (JC) Servicios prestados en la plaza convocada en el Ayto Torrijos 1 punto/mes",
    "nivel": "literal"
   },
   "bolsa": {
-   "valor": "sí, bolsa de trabajo para contratación como personal laboral temporal con los aspirantes que no sean propuestos para la contratación",
+   "valor": "sí, para contrataciones como personal laboral temporal",
    "cita": "Los aspirantes que no sean propuestos para la contratación constituirán una bolsa de trabajo",
    "nivel": "literal"
   },
   "practicas_o_curso": {
-   "valor": "Superar el período de prueba que corresponda, de acuerdo con las normas del derecho laboral",
-   "cita": "Superar el período de prueba que corresponda, de acuerdo con las normas del derecho laboral.",
+   "valor": "Periodo de prueba según normas del derecho laboral",
+   "cita": "Superar el período de prueba que corresponda, de acuerdo con las normas del derecho laboral",
    "nivel": "literal"
   }
  },
  "rechazados": {
-  "plazas_total": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Administrativo biblioteca"
+   ],
+   "cita": "Administrativo biblioteca - Libre C L BIBLIO004"
+  },
+  "plazas_turno_libre": {
    "motivo": "valor_no_en_cita",
    "valor": 1,
-   "cita": "el detalle de la plaza convocada es el siguiente, OEP 2022 TAEET EXCEPCIONAL"
+   "cita": "Advo. Biblioteca - Libre C L BIBLIO004"
   },
   "exenciones_tasa": {
    "motivo": "cita_no_literal",
-   "valor": "Personas inscritas como demandantes de empleo con fecha anterior a la publicación de la convocatoria, debiendo justificarlo con documentos válidos.",
-   "cita": "estarán exentos del pago de esta tasa las personas que se encuentren inscritas como demandantes de empleo con fecha anterior a la publicación de esta convocatoria"
+   "valor": "Exentas las personas inscritas como demandantes de empleo con fecha anterior a la publicación de la convocatoria, justificándolo con documentos válidos",
+   "cita": "estarán exentos del pago de esta tasa las personas que se encuentren inscritas como demandantes de empleo con fecha anterior a la publicación"
   }
  }
 }

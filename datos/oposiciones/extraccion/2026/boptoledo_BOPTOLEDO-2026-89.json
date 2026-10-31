@@ -5,26 +5,23 @@
   "fuente": "BOP-TOLEDO",
   "url": "https://bop.diputoledo.es/webEbop/DocGet?id=26010059;0&insert_number=89&insert_year=2026",
   "fecha": "2026-01-13",
-  "huella": "358a457143e7f8c1448e9813579b97abf1e429c1e2640edd4c29f1e2b17bd200"
+  "huella": "133d0cc719e8e69be3b23170d3df3c1ea1325ea6370e7ec274d30acfaed33a7e"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:42:16+00:00",
- "lote": "msgbatch_01W17mR271uYfWYL6CuSdriL",
+ "extraido": "2026-10-31T15:25:44+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
-   "valor": "Personal de limpieza (bolsa de trabajo temporal de limpieza extraordinaria del colegio público)",
+   "valor": [
+    "Personal de limpieza (bolsa de trabajo temporal de limpieza extraordinaria del colegio público)"
+   ],
    "cita": "BASES GENERALES PARA LA CREACCION DE UNA BOLSA DE TRABAJO DE PERSONAL TEMPORAL DE LIMPIEZA EXTRAORDINARIA",
-   "nivel": "literal"
-  },
-  "grupo": {
-   "valor": "C",
-   "cita": "ordenanza fiscal de aplicación que corresponde al grupo C: 10,00 euros",
    "nivel": "literal"
   },
   "vinculo": {
    "valor": "laboral temporal",
-   "cita": "se procederá a efectuar el nombramiento como personal laboral temporal mediante resolución de Alcaldía",
+   "cita": "contratación temporal en régimen laboral, y por tiempo máximo de hasta tres meses",
    "nivel": "literal"
   },
   "sistema": {
@@ -38,17 +35,17 @@
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Nacionalidad española (sin perjuicio del artículo 57 TREBEP); capacidad funcional para las tareas; tener cumplidos 16 años y no exceder la edad máxima de jubilación forzosa; no haber sido separado de la Administración ni inhabilitado.",
-   "cita": "Tener la nacionalidad española, sin perjuicio de lo dispuesto en el artículo 57 del texto refundido",
+   "valor": "Nacionalidad española (sin perjuicio del art. 57 TREBEP); capacidad funcional para las tareas; tener cumplidos 16 años y no exceder la edad máxima de jubilación forzosa; no haber sido separado de la Administración ni inhabilitado.",
+   "cita": "Tener cumplidos 16 años y no exceder, en su caso, de la edad máxima de jubilación forzosa",
    "nivel": "literal"
   },
   "tasa_euros": {
    "valor": 10,
-   "cita": "El importe de los derechos por participación en el proceso selectivo es el indicado en la ordenanza fiscal de aplicación que corresponde al grupo C: 10,00 euros",
+   "cita": "corresponde al grupo C: 10,00 euros y se deberá ingresar en la cuenta municipal",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "Tres días naturales contados a partir del día siguiente al de la publicación del anuncio de la convocatoria en el tablón de anuncios y página web",
+   "valor": "Tres días naturales desde el día siguiente a la publicación del anuncio de la convocatoria en el tablón de anuncios y página web del Ayuntamiento",
    "cita": "en el plazo de tres días naturales contados a partir del día siguiente al de la publicación del anuncio",
    "nivel": "literal"
   },
@@ -64,32 +61,21 @@
   },
   "ejercicios": {
    "valor": [
-    "Concurso de méritos (baremo de hasta 10 puntos: experiencia pública, privada, situación de desempleo y antigüedad en el paro)"
+    "Concurso de méritos (máximo 10 puntos)"
    ],
    "cita": "El sistema elegido para proveer la plaza es el de concurso por méritos presentados",
    "nivel": "literal"
   },
   "meritos": {
-   "valor": "Experiencia en Administración pública en limpieza: 0,20 puntos/mes, máx. 4; experiencia en sector privado en limpieza: 0,10 puntos/mes, máx. 3; situación legal de desempleado: 1 punto; antigüedad en el paro: 0,06 por mes hasta 36 meses, máx. 2. Total máximo 10 puntos.",
+   "valor": "Experiencia en Administración Pública como personal de limpieza: 0,20 puntos/mes (máx. 4). Sector privado: 0,10 puntos/mes (máx. 3). Situación legal de desempleado: 1 punto. Antigüedad en el paro: 0,06 por mes hasta 36 meses (máx. 2).",
    "cita": "Haber trabajado para la Administración Pública en la categoría de personal de limpiezas: 0,20 puntos por mes trabajado",
    "nivel": "literal"
   },
   "bolsa": {
-   "valor": "sí, bolsa de trabajo para cubrir puestos temporales de limpieza extraordinaria mientras dure la subvención de la Diputación de Toledo y sus prórrogas",
-   "cita": "la creación de una bolsa de trabajo que atienda a las necesidades temporales generadas",
-   "nivel": "literal"
-  },
-  "practicas_o_curso": {
-   "valor": "No aplica",
-   "cita": "El tiempo del contrato será de tres meses.",
+   "valor": "sí, para cubrir puestos temporales de limpieza extraordinaria mientras dure la subvención de la Diputación de Toledo y sus prórrogas",
+   "cita": "mientras dure la subvención de Diputación Toledo, así como para cubrir las posibles prorrogas de la misma",
    "nivel": "literal"
   }
  },
- "rechazados": {
-  "plazas_total": {
-   "motivo": "valor_no_en_cita",
-   "valor": 1,
-   "cita": "Es objeto de la presente bolsa de trabajo la regulación en el Ayuntamiento de Albarreal de Tajo"
-  }
- }
+ "rechazados": {}
 }

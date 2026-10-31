@@ -1,0 +1,121 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2022-4215",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2022-4215",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2022/06/22_118/2022_004215.pdf",
+  "fecha": "2022-06-22",
+  "huella": "d34a952f4d3ffa6883e111d480a953571194e170da13834381f2becb19a3fc70"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T15:25:32+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Agente de la Policía Local"
+   ],
+   "cita": "PLAZAS AGENTE POLICÍA LOCAL DE ALBATERA: 2 LIBRE Y 2 MOVILIDAD",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C1",
+   "cita": "Grupo/Categoría: C/C1 Vinculo: Funcionario",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "Vinculo: Funcionario",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 4,
+   "cita": "Plaza/as totales: 4 Turno Libre: (L) 2 - Oposición Turno Movilidad (M) 2 – Concurso Méritos",
+   "nivel": "literal"
+  },
+  "plazas_turno_libre": {
+   "valor": 2,
+   "cita": "Turno Libre: (L) 2 - Oposición Turno Movilidad (M) 2 – Concurso Méritos",
+   "nivel": "literal"
+  },
+  "plazas_promocion_interna": {
+   "valor": 2,
+   "cita": "Turno Movilidad (M) 2 – Concurso Méritos Plaza: Agente de la Policía Local",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Título de Bachiller o técnico o equivalente",
+   "cita": "Titulación: título de Bachiller o técnico o, en su caso, de la titulación equivalente",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 40,
+   "cita": "Grupo Tasa ordinaria Tasa con bonificación C1 Policía 40 euros 20 euros",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Tasa con bonificación de 20 euros para el grupo C1 Policía",
+   "cita": "Grupo Tasa ordinaria Tasa con bonificación C1 Policía 40 euros 20 euros",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles desde la publicación del anuncio extractado en el BOE",
+   "cita": "pudiendo los interesados presentar solicitudes por plazo de 20 días hábiles, a partir de la publicación en el Boletín Oficial del Estado",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Prueba de aptitud física (apto/no apto)",
+    "Psicotécnico (apto/no apto)",
+    "Cuestionario tipo test de 50 preguntas",
+    "Ejercicio práctico escrito de una hora",
+    "Reconocimiento médico (apto/no apto)"
+   ],
+   "cita": "Primer ejercicio: Prueba de Aptitud física. De carácter obligatorio y eliminatorio.",
+   "nivel": "sin_signos"
+  },
+  "temas": {
+   "valor": 40,
+   "cita": "Tema 40. Menores infractores. Hechos delictivos de personas menores de edad.",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Curso selectivo de carácter teórico-práctico en el IVASPE con periodo de prácticas como funcionario en prácticas",
+   "cita": "deberán superar en el IVASPE un curso de carácter selectivo, de contenido teórico-práctico, y un periodo de prácticas",
+   "nivel": "sin_signos"
+  }
+ },
+ "rechazados": {
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "oposición",
+   "cita": "El proceso de selección del Turno Libre será mediante Oposición"
+  },
+  "otros_requisitos": {
+   "motivo": "cita_no_literal",
+   "valor": "Nacionalidad española; carecer de antecedentes penales; permisos de conducción B y A2; compromiso de portar armas; estatura mínima 1,65 m hombres y 1,58 m mujeres",
+   "cita": "Tener una estatura mínima de 1’65 metros para los hombres y 1’58 metros para las mujeres"
+  },
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Según plazos, formato y contenido de las Bases Generales; instancia descargable de la web del Ayuntamiento",
+   "cita": "La presentación de solicitudes se ajustará a los plazos, formato, y contenido fijado en el apartado 5 de las Bases Generales."
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Tablón de Anuncios/Sede Electrónica del Ayuntamiento y Boletín Oficial de la Provincia",
+   "cita": "publicación de la relación definitiva de aprobados en el Tablón de Anuncios/Sede Electrónica del Ayuntamiento y en el Boletín Oficial de la Provincia"
+  },
+  "meritos": {
+   "motivo": "cita_no_literal",
+   "valor": "Valoración de servicios prestados (12 puntos), titulaciones académicas (5), idiomas (5), cursos de formación (15), premios y distinciones (2) y otros méritos (1); máximo 40 puntos",
+   "cita": "La puntuación máxima que pueden alcanzar los méritos alegados es de 40 puntos."
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "no",
+   "cita": "Tras la aprobación de los ejercicios no se menciona la creación de bolsa de empleo o lista de espera"
+  }
+ }
+}

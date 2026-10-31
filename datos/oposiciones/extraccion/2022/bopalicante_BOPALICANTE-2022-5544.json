@@ -1,0 +1,45 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2022-5544",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2022-5544",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2022/08/04_147/2022_005544.pdf",
+  "fecha": "2022-08-04",
+  "huella": "4a4fbbddf5bea7b56163a6eadb35895287106dbd56d83145ad5a7b4c84969db5"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T15:25:33+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Peón de Servicios"
+   ],
+   "cita": "para la cobertura de posibles vacantes de Peón de Servicios, por el procedimiento de oposición libre",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "por el procedimiento de oposición libre",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "diez días naturales, contados a partir del día siguiente al de la publicación del presente anuncio en el Boletín Oficial de la Provincia de Alicante",
+   "cita": "El plazo de presentación de instancias será de diez días naturales, contados a partir del día siguiente"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Las características de la convocatoria se encuentran en las bases, disponibles en la página web del Ayuntamiento teuladamoraira.sedelectronica.es y en el Servicio de Información y Tramitación",
+   "cita": "se encuentran en las correspondientes bases, que están a disposición de cuantos interesados las soliciten en la página web"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, para la cobertura de posibles vacantes de Peón de Servicios",
+   "cita": "para la formación de una Bolsa de Trabajo para la cobertura de posibles vacantes de Peón de Servicios"
+  }
+ }
+}

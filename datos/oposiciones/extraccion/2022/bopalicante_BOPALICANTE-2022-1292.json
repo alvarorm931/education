@@ -1,0 +1,55 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2022-1292",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2022-1292",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2022/03/21_55/2022_001292.pdf",
+  "fecha": "2022-03-21",
+  "huella": "a10d1c3df49ca548910748558748807f1867107bd2530651cc9a15ad0861c026"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T15:25:39+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
+ "no_son_bases": false,
+ "campos": {
+  "presentacion": {
+   "valor": "Registro Electrónico del Ayuntamiento",
+   "cita": "se puedan presentar en el Registro Electrónico del Ayuntamiento las correspondientes instancias",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Profesor de Flauta del Conservatorio Profesional de Música de Almoradí"
+   ],
+   "cita": "convocatoria de proceso selectivo para constituir una bolsa de trabajo temporal de Profesores del Conservatorio Profesional de Música de Almoradí, en la especialidad de Flauta"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "laboral temporal",
+   "cita": "constituir una bolsa de trabajo temporal de Profesores del Conservatorio"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "no"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "10 días hábiles contados a partir del siguiente al de la publicación del extracto de la convocatoria en el Boletín Oficial de la Provincia",
+   "cita": "en el plazo de 10 días hábiles contados a partir del siguiente al de la publicación del extracto"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "página web oficial del Ayuntamiento de Almoradí y su sede electrónica (www.almoradi.es)",
+   "cita": "Las bases específicas se pueden consultar en la página web oficial del Ayuntamiento de Almoradí"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, bolsa de trabajo temporal de Profesores de Flauta del Conservatorio Profesional de Música de Almoradí",
+   "cita": "constituir una bolsa de trabajo temporal de Profesores del Conservatorio Profesional de Música de Almoradí"
+  }
+ }
+}

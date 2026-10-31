@@ -1,0 +1,93 @@
+{
+ "proceso": "boe:BOE-A-2022-5475",
+ "documento": {
+  "id": "bopcadiz:BOP-CADIZ-2022-12.266",
+  "fuente": "BOP-CADIZ",
+  "url": "https://www.bopcadiz.es/boletin/Boletin-numero-038-del-ano-2022",
+  "fecha": "2022-02-24",
+  "huella": "626adbf5692dc92b5514114db772142b89e8d34c6aaf5628bbefcdad45faa712"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T15:25:26+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Operario Servicios Múltiples-Sepulturero"
+   ],
+   "cita": "provisión en propiedad por el procedimiento de oposición libre de tres plazas de Operario-Sepulturero",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "E y AP",
+   "cita": "Grupo/Subgrupo: E y AP (Ley 30/84 y Agrupaciones Profesionales Ley 7/2007, de 12 de abril).",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 3,
+   "cita": "Número de vacantes: 3.",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Certificado de Escolaridad",
+   "cita": "Titulación exigida: Certificado de Escolaridad.",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española; tener cumplidos dieciséis años y no exceder de la edad máxima de jubilación forzosa; capacidad funcional para el desempeño de las tareas; no haber sido separado del servicio ni inhabilitado.",
+   "cita": "Tener nacionalidad española sin perjuicio de lo dispuesto en el artículo 57",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles desde el siguiente al de la publicación en el BOE del anuncio de la convocatoria",
+   "cita": "En el plazo de veinte días hábiles, a contar desde el siguiente al de la publicación en el Boletín Oficial del Estado",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Con carácter preferente en la sede electrónica del Ayuntamiento (https://sede.algeciras.es), o en cualquiera de las formas del artículo 16 de la Ley 39/2015",
+   "cita": "Las solicitudes se presentarán, con carácter preferente, en la sede electrónica del Excmo. Ayuntamiento de Algeciras",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de Anuncios Electrónico (Sede Electrónica del Ayuntamiento) y Boletín Oficial de la Provincia",
+   "cita": "Los sucesivos anuncios para la celebración de las restantes pruebas se harán públicos en Tablón de Anuncios Electrónico",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Primer ejercicio: cuestionario tipo test de 50 preguntas en 90 minutos, eliminatorio (0 a 10, mínimo 5)",
+    "Segundo ejercicio: prueba práctica relacionada con los cometidos de la plaza, eliminatorio (0 a 10, mínimo 5)"
+   ],
+   "cita": "Primer Ejercicio: Consistirá en contestar en un plazo máximo 90 minutos, un cuestionario de 50 preguntas",
+   "nivel": "literal"
+  },
+  "temas": {
+   "valor": 10,
+   "cita": "Tema 10. Operaciones Aritméticas.",
+   "nivel": "contado"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "provisión en propiedad ... de tres plazas de Operario-Sepulturero vacante en la plantilla de personal funcionario."
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "oposición",
+   "cita": "procedimiento de selección ... será el de oposición libre"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 3,
+   "cita": "Sistema de selección: Oposición Libre."
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "no",
+   "cita": "El Tribunal publicará ... la relación de aprobados ... proponiendo para su nombramiento a tantos aspirantes como plazas convocadas"
+  }
+ }
+}

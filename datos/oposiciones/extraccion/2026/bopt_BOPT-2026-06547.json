@@ -5,21 +5,21 @@
   "fuente": "BOPT",
   "url": "https://www.dipta.cat/bopt/web/anunci/362163/borsa-de-treball-de-cap-d-equip-de-brigada-bases-i-convocatoria-ajuntament-alcanar",
   "fecha": "2026-07-13",
-  "huella": "c051d9aab8be163457dda146a38a7c44882ffc21509bc247b4bcf617723cfecc"
+  "huella": "41338ba8f590865f053bcc07e068ca13b9e15e1f1f2c560737c909d75cc18def"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T08:17:59+00:00",
- "lote": "msgbatch_01BrnYw6KkevFx7at547B5g8",
+ "extraido": "2026-10-31T15:25:44+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
    "valor": "Cap d'equip de brigada",
-   "cita": "Denominació de la plaça Cap d'equip de brigada Règim Laboral temporal",
+   "cita": "Denominació de la plaça Cap d’equip de brigada Règim Laboral temporal",
    "nivel": "literal"
   },
   "grupo": {
    "valor": "C2",
-   "cita": "Assimilable a grup professional C2 Retribucions Salari Base",
+   "cita": "Assimilable a grup professional C2",
    "nivel": "literal"
   },
   "vinculo": {
@@ -39,54 +39,56 @@
   },
   "titulacion": {
    "valor": "Graduat en ESO o equivalent",
-   "cita": "Titulació exigible Graduat en ESO o equivalent",
+   "cita": "Titulació exigible Graduat en ESO o equivalent Jornada",
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Nacionalitat espanyola (amb excepcions), capacitat funcional, setze anys complerts, no separat del servei públic ni inhabilitat, i permís de conducció de la classe B en vigor.",
+   "valor": "Nacionalitat espanyola (o article 57 TREBEP), setze anys complerts, capacitat funcional, no estar separat del servei ni inhabilitat, permís de conducció B vigent durant tota la relació laboral.",
    "cita": "Estar en possessió del permís de conducció de la classe B, en vigor, i mantenir-ne la vigència durant tota la relació laboral.",
    "nivel": "literal"
   },
   "idioma_cooficial": {
    "valor": "Català nivell B1",
-   "cita": "Acreditar els coneixements de llengua catalana de nivell B1,, d'acord amb el que estableix",
+   "cita": "Acreditar els coneixements de llengua catalana de nivell B1,",
    "nivel": "literal"
   },
   "tasa_euros": {
    "valor": 20,
-   "cita": "Juntament amb la sol·licitud, les persones aspirants han d e presentar el justificant d'haver satisfet la taxa de drets d'examen, 20€",
+   "cita": "Juntament amb la sol·licitud, les persones aspirants han d e presentar el justificant d’haver satisfet la taxa de drets d’examen, 20€",
    "nivel": "literal"
   },
   "exenciones_tasa": {
-   "valor": "Les persones en situació legal de desocupació, acreditada amb documentació del Servei Públic d'Ocupació (SOC o SEPE).",
+   "valor": "Persones en situació legal de desocupació, acreditada mitjançant documentació oficial del Servei Públic d'Ocupació (SOC o SEPE).",
    "cita": "Estaran exemptes del pagament de la taxa les persones que es trobin en situació legal de desocupació",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
    "valor": "7 dies hàbils des del dia següent a la publicació de l'anunci al DOGC",
-   "cita": "El termini de presentació de sol·licituds serà de 7 dies hàbils, a comptar des del dia següent",
+   "cita": "El termini de presentació de sol·licituds serà de 7 dies hàbils, a comptar des del dia següent al de la publicació",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Preferiblement per la seu electrònica de l'Ajuntament (catàleg de tràmits, Recursos humans); també presencialment al Registre General o per qualsevol mitjà de l'article 16.4 de la Llei 39/2015",
-   "cita": "Preferiblement, s'ha de presentar la sol·licitud per internet mitjançant la seu electrònica de l'Ajuntament d'Alcanar",
+   "valor": "Preferiblement per la seu electrònica de l'Ajuntament (certificat digital); també presencialment al Registre General o en qualsevol forma de l'art. 16.4 Llei 39/2015",
+   "cita": "Preferiblement, s’ha de presentar la sol·licitud per internet mitjançant la seu electrònica de l’Ajuntament d’Alcanar",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Seu electrònica i tauler d'anuncis de l'Ajuntament, pàgina web (apartat Recursos Humans); l'anunci al DOGC",
+   "cita": "Es publicaran igualment a la seu electrònica d'a quest Ajuntament",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Exercici únic: projecte pràctic escrit sobre funcions del lloc (120 minuts, fins a 70 punts, mínim 35)"
+    "Exercici únic: projecte pràctic per escrit sobre funcions del lloc (120 minuts, 0 a 70 punts, mínim 35)",
+    "Prova prèvia de llengua catalana (apte/no apte), si escau",
+    "Prova de llengua castellana (apte/no apte), si escau"
    ],
-   "cita": "EXERCICI ÚNIC. Projecte pràctic L'exercici consistirà en l'elaboració per escrit d'un projecte o proposta d'actuació",
-   "nivel": "literal"
-  },
-  "meritos": {
-   "valor": "Formació acadèmica i complementària (fins a 10 punts) i mèrits professionals d'experiència (fins a 20 punts); concurs fins a 30 punts",
-   "cita": "Mèrits professionals (experiència): fins a un màxim de 20 punts. Per haver prestat serveis com a cap d'equip",
+   "cita": "L'exercici consistirà en l'elaboració per escrit d'un projecte o proposta d'actuació relacionada amb les funcions pròpies",
    "nivel": "literal"
   },
   "bolsa": {
-   "valor": "sí, per cobrir vacants, substitucions i altres contingències temporals; vigència màxima de dos anys",
-   "cita": "La borsa de treball tindrà una vigència màxima de dos anys a comptar des de la data de la seva constitució",
+   "valor": "sí, borsa de treball per cobrir vacants, substitucions i contingències temporals de la brigada municipal, vigència màxima de dos anys",
+   "cita": "constitució d’una borsa de treball de cap d’equip de brigada, amb caràcter de màxima urgència, per cobrir vacants, substitucions",
    "nivel": "literal"
   },
   "practicas_o_curso": {
@@ -96,15 +98,20 @@
   }
  },
  "rechazados": {
-  "publicaciones": {
-   "motivo": "cita_no_literal",
-   "valor": "Tauler d'anuncis de la seu electrònica de l'Ajuntament; BOPT i DOGC per a les bases i la convocatòria; web municipal (apartat Recursos Humans)",
-   "cita": "Es publicaran igualment a la seu electrònica d'aquest Ajuntament. Quedarà a la disposició dels interessats a la pàgina web"
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "TORN: lliure DENOMINACIÓ DE LA PLAÇA: cap d’equip de brigada"
   },
   "temas": {
    "motivo": "valor_no_en_cita",
    "valor": 10,
    "cita": "ANNEX IV TEMARI PER A LA FASE OPOSICIÓ Tema 1. Organització municipal"
+  },
+  "meritos": {
+   "motivo": "cita_no_literal",
+   "valor": "Formació acadèmica i complementària (màx. 10 punts); mèrits professionals com a cap d'equip o encarregat, similars en l'Administració i en empresa privada (màx. 20 punts)",
+   "cita": "Formació acadèmica i complementària: fins a un màxim de 10 punts. Mèrits professionals (experiència): fins a un màxim de 20 punts."
   }
  }
 }

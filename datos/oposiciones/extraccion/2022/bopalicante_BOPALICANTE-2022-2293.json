@@ -1,0 +1,53 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2022-2293",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2022-2293",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2022/04/13_72/2022_002293.pdf",
+  "fecha": "2022-04-13",
+  "huella": "bb7db070a48693a39e94cedd4ef8fd41e3982b34bb26afaa535c8b2fb08f8757"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T15:25:41+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
+ "no_son_bases": false,
+ "campos": {
+  "sistema": {
+   "valor": "oposición",
+   "cita": "aprobó la convocatoria y las bases específicas para la provisión en propiedad",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "de 1 plaza de Veterinario/a , vacante en la plantilla municipal",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Veterinario/a",
+   "cita": "provisión en propiedad, con funcionario/funcionaria de carrera, de 1 plaza de Veterinario/a"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "provisión en propiedad, con funcionario/funcionaria de carrera, de 1 plaza de Veterinario/a"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "por el turno libre, perteneciente a la Oferta de Empleo Público del año 2020"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "veinte días hábiles a contar desde el día siguiente a la publicación del extracto de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "será de veinte días hábiles a contar desde el día siguiente a la publicación del extracto"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Tablón de Anuncios del Servicio de Recursos Humanos y página web municipal",
+   "cita": "estarán a disposición de los interesados en el Tablón de Anuncios del Servicio de Recursos Humanos"
+  }
+ }
+}

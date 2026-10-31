@@ -5,12 +5,46 @@
   "fuente": "BOCM",
   "url": "https://www.bocm.es/bocm-20261006-41",
   "fecha": "2026-10-06",
-  "huella": "d37eb89a0f6d24deda9bdca2093840b4ca4363731a8d25cc27ca0b277ac7708a"
+  "huella": "294b819417d3f4ff1b5037672d50d0c203556224bf63a050e7f224495c3a40ff"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:42:03+00:00",
- "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
- "no_son_bases": true,
- "campos": {},
- "rechazados": {}
+ "extraido": "2026-10-31T15:25:21+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "jefe/a del Departamento de Contratación"
+   ],
+   "cita": "Designar el tribunal de selección para la cobertura de 1 plaza personal funcionario de jefe/a del Departamento de Contratación",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "la cobertura de 1 plaza personal funcionario de jefe/a del Departamento de Contratación",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "por el sistema de concurso-oposición, en turno de promoción interna",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "la cobertura de 1 plaza personal funcionario de jefe/a",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de anuncios del Ayuntamiento (lista definitiva de admitidos) y tablón de anuncios de la página web del Ayuntamiento; resolución publicada en el BOCM",
+   "cita": "Publicar esta resolución en el BOLETÍN OFICIAL DE LA COMUNIDAD DE MADRID y en el tablón de anuncios de la página web",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_promocion_interna": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "por el sistema de concurso-oposición, en turno de promoción interna"
+  }
+ }
 }

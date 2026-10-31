@@ -5,11 +5,11 @@
   "fuente": "BOCYL",
   "url": "https://bocyl.jcyl.es/html/2023/01/10/html/BOCYL-D-10012023-26.do",
   "fecha": "2023-01-10",
-  "huella": "4cbeaacd44c6e11e65f2710ca6db799997c63f53e4354825b0d4439edc6754d7"
+  "huella": "08d92121d780bf7499af7b63823c1a689f10e8a0f303e3d7281bae088da8c4f1"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T14:56:48+00:00",
- "lote": "msgbatch_0167qWfLXqjGo8Hv43cM3LuM",
+ "extraido": "2026-10-31T15:25:48+00:00",
+ "lote": "msgbatch_013JFBgPYuz52E2SLvJZwykK",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
@@ -19,32 +19,37 @@
     "Técnico/a Medio de Turismo",
     "Auxiliar Administrativo de Turismo"
    ],
-   "cita": "TÉCNICO DE EMPLEO Y DESARROLLO LOCAL (3 PLAZAS). BASES DE LA CONVOCATORIA.",
+   "cita": "PROCESO DE ESTABILIZACIÓN Y CONSOLIDACIÓN EXPTE 2021/1- TÉCNICO DE EMPLEO Y DESARROLLO LOCAL (3 PLAZAS)",
    "nivel": "literal"
   },
   "vinculo": {
    "valor": "personal laboral fijo",
-   "cita": "Modalidad del contrato. El carácter del contrato es de personal laboral fijo del Consejo Comarcal de El Bierzo.",
+   "cita": "El carácter del contrato es de personal laboral fijo del Consejo Comarcal de El Bierzo.",
    "nivel": "literal"
   },
   "plazas_total": {
    "valor": 3,
-   "cita": "Aprobar las Bases y la convocatoria para la cobertura del turno libre mediante el concurso de méritos, de TRES PLAZAS DE TÉCNICO DE EMPLEO Y DESARROLLO LOCAL",
+   "cita": "BASES DE LA CONVOCATORIA PARA LA COBERTURA, POR TURNO LIBRE, MEDIANTE CONCURSO DE MÉRITOS, DE TRES PLAZAS DE TÉCNICO DE EMPLEO Y DESARROLLO LOCAL",
    "nivel": "literal"
   },
   "plazas_turno_libre": {
    "valor": 3,
-   "cita": "la cobertura del turno libre mediante el concurso de méritos, de TRES PLAZAS DE TÉCNICO DE EMPLEO Y DESARROLLO LOCAL, como personal laboral fijo",
+   "cita": "Aprobar las Bases y la convocatoria para la cobertura del turno libre mediante el concurso de méritos, de TRES PLAZAS DE TÉCNICO DE EMPLEO",
    "nivel": "literal"
   },
   "titulacion": {
-   "valor": "Título de Grado, Licenciado/a, Ingeniero/a o Arquitecto/a (Técnico de Empleo y Desarrollo Local)",
-   "cita": "deberán estar en posesión en la fecha de finalización del presente plazo de presentación de instancias de un nivel de titulación equivalente al título de Grado",
-   "nivel": "literal"
+   "valor": "Grado, Licenciado/a, Ingeniero/a o Arquitecto/a",
+   "cita": "deberán estar en posesión ... de un nivel de titulación equivalente al título de Grado, Licenciado/a, Ingeniero/a o Arquitecto/a.",
+   "nivel": "fragmentos"
   },
   "otros_requisitos": {
-   "valor": "Nacionalidad española o equivalente según normativa; capacidad funcional; tener 16 años cumplidos y no superar la edad de jubilación forzosa; no haber sido separado del servicio público ni inhabilitado.",
-   "cita": "Tener la nacionalidad española conforme a lo establecido en el ANEXO del Real Decreto 543/2001",
+   "valor": "Nacionalidad española o requisitos del art. 57 TREBEP según Real Decreto 543/2001; capacidad funcional; mínimo 16 años y sin jubilación forzosa; no haber sido separado de la Administración ni inhabilitado; discapacidad igual o superior al 33% si se acredita",
+   "cita": "Tener la nacionalidad española conforme a lo establecido en el ANEXO del Real Decreto 543/2001, de 18 de mayo",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Prueba de castellano para aspirantes extranjeros sin acreditación previa",
+   "cita": "deberán acreditar el conocimiento de este mediante la realización de una prueba en la que se comprobara que poseen un nivel adecuado",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
@@ -53,23 +58,35 @@
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Preferentemente por vía telemática (Punto de Acceso General, sede electrónica del Consejo) o en el Registro General del Consejo Comarcal, Avenida de la Minería s/n, Ponferrada, o en la forma del art. 16.4 LPACAP.",
+   "valor": "Preferentemente telemática por el Punto de Acceso General (sede electrónica) o en papel en el Registro General, Avenida de la Minería s/n, Ponferrada",
    "cita": "Preferentemente, se presentarán las solicitudes vía telemática.",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Tablón de anuncios y sede electrónica del Consejo Comarcal de El Bierzo (https://portal.ccbierzo.com/), además del BOP de León",
+   "valor": "Tablón de anuncios y sede electrónica del Consejo Comarcal, además de B.O.P. de León",
    "cita": "El resto de los anuncios relativos al proceso de selección se publicarán exclusivamente en Tablón de anuncios del Consejo Comarcal, y en su sede Electrónica.",
    "nivel": "literal"
   },
+  "ejercicios": {
+   "valor": [
+    "Fase de concurso: valoración de méritos (experiencia profesional y titulación)"
+   ],
+   "cita": "PROCEDIMIENTO DE SELECCIÓN CONCURSO.",
+   "nivel": "literal"
+  },
   "meritos": {
-   "valor": "Experiencia profesional en el Consejo Comarcal y en otras administraciones (con certificado o vida laboral y contratos), titulación; máximo 100 puntos. Puntuaciones concretas en el apartado de baremo de la convocatoria.",
+   "valor": "Experiencia profesional en el Consejo Comarcal y en otras Administraciones, y titulación; calificación máxima de 100 puntos en total",
    "cita": "La puntuación final será la resultante de sumar calificación obtenida en todos los apartados de la fase de concurso, siendo la calificación máxima de 100 puntos.",
    "nivel": "literal"
   },
   "bolsa": {
-   "valor": "sí, para crear bolsa de empleo con los aspirantes que superen el proceso sin ser propuestos",
-   "cita": "entrando los demás aspirantes que hayan superado el proceso en la bolsa de trabajo.",
+   "valor": "sí, para crear bolsa de empleo con los aspirantes que superen el proceso",
+   "cita": "CONSOLIDACIÓN DE EMPLEO TEMPORAL DEL CONSEJO COMARCAL DE EL BIERZO Y CREACIÓN DE BOLSA DE EMPLEO.",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "no aparece periodo de prácticas ni curso selectivo",
+   "cita": "Se realizará la propuesta a favor de aquellos aspirantes que hayan tenido máxima puntuación",
    "nivel": "literal"
   }
  },
@@ -77,19 +94,17 @@
   "grupo": {
    "motivo": "cita_no_literal",
    "valor": "A1",
-   "cita": "para la cobertura del turno libre mediante el concurso de méritos, de TRES PLAZAS DE TÉCNICO DE EMPLEO Y DESARROLLO LOCAL, grupo A1"
+   "cita": "Tres plazas de Técnico de Empleo y Desarrollo Local, grupo A1, correspondiente a la Oferta de Empleo Público"
   },
   "sistema": {
    "motivo": "cita_no_literal",
    "valor": "concurso",
-   "cita": "el procedimiento de selección correspondiente a la Oferta de Empleo Público del Consejo Comarcal de El Bierzo será Concurso al tratarse de procesos de estabilización"
+   "cita": "el procedimiento de selección correspondiente a la Oferta de Empleo Público será Concurso al tratarse de procesos de estabilización"
   },
-  "ejercicios": {
+  "tasa_euros": {
    "motivo": "cita_no_literal",
-   "valor": [
-    "Fase de concurso: valoración de méritos (experiencia profesional, titulación y otros méritos)"
-   ],
-   "cita": "el procedimiento de selección correspondiente a la Oferta de Empleo Público del Consejo Comarcal de El Bierzo será Concurso"
+   "valor": 0,
+   "cita": "no aparece importe de tasa en el texto"
   }
  }
 }
