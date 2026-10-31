@@ -122,7 +122,19 @@ REGLAS_ACTO: list[tuple[str, tuple[str, ...]]] = [
     ("nombramiento", ("se nombra", "nombramiento", "nombran funcionari", "toma de posesion", "se promociona",
                       "formalizacion de la contratacion como personal",
                       "nomenament", "es nomena", "presa de possessio", "nomeamento", "nomease")),
+    # Resoluciones del proceso que salían como convocatoria u «otro» (procesos sin plazo, 31/10/2026): «por la que se
+    # resuelve la convocatoria pública para la provisión…», «se adjudica destino definitivo al personal que superó…»,
+    # «se constituye la bolsa», «se aprueba la bolsa de empleo derivada del proceso selectivo». Después de
+    # «nombramiento»: «se procede al nombramiento… y se le adjudica destino» es un nombramiento
+    ("aprobados", ("se resuelve la convocatoria", "se resuelve el proceso selectivo", "se resuelve el concurso",
+                   "se resuelve parcialmente la convocatoria", "es resol la convocatoria", "es resol el concurs",
+                   "es resol el proces", "resolvese a convocatoria", "resolvese o concurso", "se resolve a convocatoria",
+                   "se adjudica destino", "se adjudican destinos", "adjudicacion de destinos", "s'adjudica destinacio",
+                   "s'adjudiquen destinacions", "adxudicanse destinos", "se adxudica destino",
+                   "se constituye la bolsa", "es constitueix la borsa", "constituese a bolsa", "se aprueba la bolsa",
+                   "bolsa de empleo derivada", "lista de espera derivada", "s'aprova la borsa", "aprobase a bolsa")),
     ("tribunal", ("tribunal calificador", "composicion del tribunal", "tribunal que ha de juzgar", "comision de seleccion",
+                  "composicion nominal del tribunal", "composicio nominal del tribunal", "composicion nominal de la comision",
                   "miembros del tribunal", "membres del tribunal", "membros do tribunal",
                   "organo de seleccion", "comision evaluadora", "composicion de la comision",
                   "tribunal qualificador", "composicio del tribunal", "organ de seleccio", "organ qualificador",

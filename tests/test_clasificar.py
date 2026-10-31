@@ -95,3 +95,19 @@ def test_peticion_con_salida_estructurada_y_nombre_plano():
                       "nombre": "Escuela de Finanzas Ejemplo", "cita_nombre": "Escuela de Finanzas Ejemplo",
                       "confianza": "alta", "motivo": "x"}, t)
     assert n["tipo_centro"] is None and n["nombre"] == "Escuela de Finanzas Ejemplo"
+
+
+def test_resoluciones_del_proceso_no_son_convocatorias():
+    from motor.autonomicos.comun import clasificar as clasificar_titulo
+    casos = {
+        "ORDEN de 21 de enero de 2026 por la que se resuelve la convocatoria pública para la provisión de un puesto": "aprobados",
+        "RESOLUCIÓN de 16 de enero de 2026 por la que se adjudica destino definitivo al personal funcionario que superó el proceso selectivo": "aprobados",
+        "Resolución por la cual se constituye la bolsa de trabajo de auxiliares administrativos": "aprobados",
+        "RESOLUCIÓN por la que se aprueba la bolsa de empleo derivada del correspondiente proceso selectivo": "aprobados",
+        "Resolución SLT/80/2026, por la que se hace pública la composición nominal del tribunal correspondiente a la convocatoria": "tribunal",
+        "RESOLUCIÓN de 24 de julio de 2026 por la que se procede al nombramiento como personal funcionario de carrera y se le adjudica destino": "nombramiento",
+        "Bases que han de regir los procesos especiales para la constitución de la bolsa de trabajo de Monitor Deportivo": "bases",
+        "Resolución de 7 de abril de 2026, de la Universidad Autónoma de Madrid, por la que se publica la convocatoria de pruebas selectivas": "convocatoria",
+    }
+    for titulo, tipo in casos.items():
+        assert clasificar_titulo(titulo)["tipo_acto"] == tipo, titulo
