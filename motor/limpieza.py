@@ -333,6 +333,59 @@ RE_TRIBUNAL = re.compile(r"(?i)\b(?:vocal|presidente|presidenta|president|secret
                          r"membre|kidea|idazkari|lehendakari|asesor)\b")
 
 
+# Entrada numerada de una lista de personas: «23.González Cabral, María Del Mar», «2.-Barba Albarrán, Miriam Del
+# Rocío», «28.Ivanysmyna, Tetyana» (BOP de Huelva, 19/06/2023: la v1 solo veía «Apellido Apellido, Nombre» sin número
+# pegado ni partículas con mayúscula, y una sonda publicó nombres). Con el número delante basta la forma: apellidos y
+# nombre con mayúscula separados por una coma, hasta el final de la línea.
+_PART = r"(?i:de|del|la|las|los|y|i|e|da|das|do|dos|van|von|di)"
+_PALL = rf"[{_MAY}Ü](?:[\w’'-]+|ª)"
+RE_ENTRADA_DE_LISTA = re.compile(
+    rf"^\s*\d{{1,4}}\s*[.\-–)º][\s.\-–)º]*(?P<a>{_PALL}(?:\s+(?:{_PART}|{_PALL})){{0,5}}),\s*"
+    rf"(?P<p>{_PALL}\.?(?:\s+(?:{_PART}|{_PALL}\.?)){{0,4}})\s*[.;]?\s*$")
+
+
+APARTADOS_DE_BASES = {
+    "lugar", "fecha", "fechas", "hora", "plazo", "plazos", "solicitud", "solicitudes", "calendario", "requisito",
+    "requisitos", "tribunal", "temario", "programa", "admision", "exclusion", "publicacion", "publicaciones",
+    "presentacion", "derechos", "examen", "normas", "generales", "objeto", "funciones", "retribuciones", "sistema",
+    "seleccion", "fase", "fases", "oposicion", "concurso", "ejercicio", "ejercicios", "pruebas", "desarrollo",
+    "calificacion", "nombramiento", "toma", "posesion", "bolsa", "empleo", "recursos", "proteccion", "datos", "base",
+    "plazas", "plaza", "tasas", "tasa", "documentacion", "meritos", "valoracion", "incidencias", "impugnacion",
+    "legislacion", "aplicable", "regimen", "juridico", "contratacion", "duracion", "jornada", "horario", "periodo",
+    "practicas", "formacion", "titulacion", "anexo", "anexos", "modelo", "instancia", "lista", "listas", "admitidos",
+    "excluidos", "aspirantes", "puntuacion", "puntuaciones", "relacion", "aprobados", "vigencia", "efectos",
+}
+
+
+def _sin_ligaduras(texto: str) -> str:
+    # pypdf saca las ligaduras con un espacio detrás («Garﬁ a», «de ﬁ nitivas»)
+    return re.sub(r"\s?([ﬁﬂ])\s?(?=[a-záéíóúñ])", r"\1", texto).replace("ﬁ", "fi").replace("ﬂ", "fl")
+
+
+def _entrada_de_lista(texto: str) -> bool:
+    m = RE_ENTRADA_DE_LISTA.match(_sin_ligaduras(texto or ""))
+    if not m:
+        return False
+    nombre = m.group("p").split()
+    # en el nombre de pila no hay «y» que una dos palabras («1. Concepto, Elementos y Clases», «Recuperació,
+    # Transformació i Resiliència», temarios)
+    if any(w in ("y", "Y", "i", "I", "e", "E") for w in nombre[1:]):
+        return False
+    todo = m.group("a") + " " + m.group("p")
+    letras = [c for c in todo if c.isalpha()]
+    if letras and all(c.isupper() for c in letras):
+        # en mayúsculas, como los títulos de los apartados («5. PREMIOS, DISTINCIONES…»): solo con un nombre de pila
+        if not _es_pila(nombre[0].rstrip(".")):
+            return False
+    elif any(len(w) >= 2 and w.isupper() and w.isalpha() and w.lower() not in PARTICULAS for w in todo.split()):
+        return False  # siglas en una línea con minúsculas («15. Protocolos UDP, TCP.»)
+    palabras = [_sin_tildes(w.lower().rstrip(".")) for w in todo.split()]
+    palabras = [w for w in palabras if w not in PARTICULAS]
+    # «1. Ayuntamiento de Cala, Huelva», «3. Temario, Anexo», «10. Lugar, Fecha y Hora»: instituciones y apartados de
+    # unas bases no son personas
+    return not any(w in NO_APELLIDO or w in APARTADOS_DE_BASES or CARGOS.match(w) for w in palabras)
+
+
 def _apellidos_y_nombre(texto: str) -> bool:
     for m in [*RE_APELLIDOS_NOMBRE.finditer(texto or ""), *RE_APELLIDOS_NOMBRE_MAY.finditer(texto or ""),
               *(RE_APELLIDOS_NOMBRE_TRIBUNAL.finditer(texto or "") if RE_TRIBUNAL.search(texto or "") else [])]:
@@ -386,7 +439,7 @@ def tiene_nombre_de_persona(texto: str) -> bool:
     t = texto or ""
     return (any(_es_persona(m) for m in RE_TRATAMIENTO.finditer(t))
             or any(_es_designado(m) for r in RE_DESIGNADO for m in r.finditer(t))
-            or _nombre_suelto(t) or _apellidos_y_nombre(t))
+            or _nombre_suelto(t) or _apellidos_y_nombre(t) or _entrada_de_lista(t))
 
 
 def titulo_sin_nombres(titulo: str | None) -> str | None:

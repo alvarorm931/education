@@ -88,3 +88,20 @@ def test_documentos_enmascarados_con_asteriscos():
         assert RE_DOCUMENTO.search(t), t
     r = limpiar_texto("Relación de vehículos\n1 GC-0290-AB RENAULT *****899-P\nPlazo de diez días.\n")
     assert "899" not in r["texto"] and r["lineas_omitidas_por_datos_personales"] == 1
+
+
+def test_entradas_numeradas_de_una_lista_son_personas():
+    # BOP de Huelva, 19/06/2023 (formato; nombres inventados): número pegado, partículas con mayúscula, un solo
+    # apellido, nombres de pila poco frecuentes y la ligadura «ﬁ» con un espacio detrás
+    for t in ("23.Gómez Ferrer, Lucía Del Mar", "2.-Prados Ruiz, Inés Del Rocío", "28.Kovalenko, Oksana",
+              "33.Lobato Lobato, Expedita", "69.Sáez De La Vega, Isabel Rocío", "11.Gil Garﬁ as, Ruth",
+              "60.Rey Molina, Mª De La Cinta", "5º Pardo Iglesias, Anselmo", "2.– Etxeberria Goñi, Unai.",
+              "1. Abad Mora Francisco, Javier.", "3. MORENO SÁEZ, MARÍA"):
+        assert tiene_nombre_de_persona(t), t
+    # apartados de unas bases y temas de un temario no son personas
+    for t in ("1. Ayuntamiento de Cala, Huelva", "3. Temario, Anexo I", "10. Lugar, Fecha y Hora", "2. Solicitudes, Plazo",
+              "5. PREMIOS, DISTINCIONES Y CONDECORACIONES.", "14. LLISTA DE PERSONES APROVADES, CONTRACTACIÓ I CONDICIONS",
+              "1. Concepto, Elementos y Clases.", "15. Protocolos UDP, TCP.", "1.-NÚMERO, DENOMINACIÓN E CARACTERÍSTICAS.",
+              "11. Funcionament del Pla de Recuperació, Transformació i Resiliència.", "5135",
+              "1.1.1 .- Para la provisión de 1 plaza de MÉDICO/A", "1 " + ". " * 40 + "5167"):
+        assert not tiene_nombre_de_persona(t), t
