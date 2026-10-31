@@ -177,8 +177,21 @@ def retirar_caducados(raiz: Path) -> int:
     return n
 
 
-def elegir(raiz: Path, n: int, estados: set[str]) -> list[tuple[dict, dict]]:
-    """Procesos de esos estados, los más recientes primero, con texto de bases y sin extraer con ese texto."""
+def en_lotes_pendientes(raiz: Path) -> set[str]:
+    """Procesos de los lotes enviados que aún no se han recogido (no se vuelven a enviar)."""
+    out: set[str] = set()
+    for f in (raiz / "datos" / "oposiciones" / "extraccion" / "lotes").glob("pendiente-*.json"):
+        try:
+            out |= {i["proceso"] for i in json.loads(f.read_text(encoding="utf-8"))["indice"].values()}
+        except (ValueError, KeyError):
+            continue
+    return out
+
+
+def elegir(raiz: Path, n: int, estados: set[str], excluir: set[str] | None = None) -> list[tuple[dict, dict]]:
+    """Procesos de esos estados, los más recientes primero, con texto de bases y sin extraer con ese texto (ni en
+    un lote enviado sin recoger, ni en `excluir`)."""
+    excluir = (excluir or set()) | en_lotes_pendientes(raiz)
     procesos = []
     for f in sorted((raiz / "datos" / "oposiciones" / "procesos").glob("*.jsonl"), reverse=True):
         for l in f.open(encoding="utf-8"):
@@ -188,6 +201,8 @@ def elegir(raiz: Path, n: int, estados: set[str]) -> list[tuple[dict, dict]]:
     procesos.sort(key=lambda p: p.get("apertura_plazo") or "", reverse=True)
     out = []
     for p in procesos:
+        if p["id"] in excluir:
+            continue
         doc = _documento(raiz, p)
         if not doc:
             continue
@@ -341,10 +356,11 @@ def _respuesta_json(crudo: str) -> dict | None:
     return d if isinstance(d, dict) else None
 
 
-def preparar(raiz: Path, n: int, estados: set[str], carpeta: Path) -> tuple[Path, Path]:
-    elegidos = elegir(raiz, n, estados)
+def preparar(raiz: Path, n: int, estados: set[str], carpeta: Path, excluir: set[str] | None = None,
+             nombre: str = "lote") -> tuple[Path, Path]:
+    elegidos = elegir(raiz, n, estados, excluir)
     carpeta.mkdir(parents=True, exist_ok=True)
-    lote, indice = carpeta / "lote.jsonl", carpeta / "indice.json"
+    lote, indice = carpeta / f"{nombre}.jsonl", carpeta / f"indice-{nombre}.json"
     filas, info = [], {}
     for k, (p, doc) in enumerate(elegidos):
         cid = f"p{k:05d}"
@@ -440,6 +456,63 @@ def _guardar_resumen(salida: Path, resumen: dict) -> None:
         ensure_ascii=False))
 
 
+def enviar(lote: Path, ruta_indice: Path, lotes: Path) -> tuple[dict, Path, dict]:
+    """Envía el lote a la API y deja el fichero para retomarlo si no termina a tiempo (solo ids, rutas y huellas;
+    ningún texto)."""
+    reqs = [json.loads(l) for l in lote.read_text(encoding="utf-8").splitlines() if l.strip()]
+    b = _api("POST", API, json={"requests": reqs}, timeout=900).json()  # hasta unos 150 MB
+    indice = json.loads(ruta_indice.read_text(encoding="utf-8"))
+    lotes.mkdir(parents=True, exist_ok=True)
+    pendiente = lotes / f"pendiente-{b['id']}.json"
+    pendiente.write_text(json.dumps({"id": b["id"], "indice": indice}, ensure_ascii=False), encoding="utf-8")
+    print(f"Lote enviado: {b['id']} ({len(reqs)} procesos)")
+    return b, pendiente, indice
+
+
+def recoger_pendientes(datos: Path, salida: Path, lotes: Path, minutos: float) -> int:
+    """Recoge los lotes enviados que ya terminaron (de esta ejecución o de otras), hasta `minutos`. Devuelve
+    cuántos quedan sin terminar."""
+    fin = time.time() + minutos * 60
+    while True:
+        quedan = 0
+        for f in sorted(lotes.glob("pendiente-*.json")):
+            info = json.loads(f.read_text(encoding="utf-8"))
+            b = _api("GET", f"{API}/{info['id']}", timeout=60).json()
+            if b.get("processing_status") != "ended":
+                quedan += 1
+                print(f"{datetime.now(timezone.utc):%H:%M:%S} {info['id']} {b.get('processing_status')} "
+                      f"{b.get('request_counts')}")
+                continue
+            _guardar_resumen(salida, recoger(datos, b, info["indice"], salida))
+            f.unlink(missing_ok=True)
+        if not quedan or time.time() > fin:
+            return quedan
+        time.sleep(60)
+
+
+def varios_lotes(a: argparse.Namespace, lotes: Path) -> int:
+    """Varios lotes de --n procesos en una ejecución (la API admite como mucho 256 MB por lote): se envían todos y
+    se recogen según terminan. Lo que no termine a tiempo se recoge en la siguiente ejecución."""
+    print(f"Resultados retirados porque su texto cambió: {retirar_caducados(a.datos)}")
+    estados = set() if a.estados.strip() == "todos" else {e for e in a.estados.split(",") if e}
+    recoger_pendientes(a.datos, a.salida, lotes, 0)
+    elegidos: set[str] = set()
+    enviados = 0
+    for k in range(a.lotes):
+        lote, ruta_indice = preparar(a.datos, a.n, estados, a.trabajo, excluir=elegidos, nombre=f"lote{k}")
+        if not lote.read_text(encoding="utf-8").strip():
+            break
+        _, _, indice = enviar(lote, ruta_indice, lotes)
+        elegidos |= {i["proceso"] for i in indice.values()}
+        lote.unlink()
+        enviados += 1
+    quedan = recoger_pendientes(a.datos, a.salida, lotes, a.esperar_min)
+    print(f"Lotes enviados: {enviados}; sin terminar: {quedan}")
+    if quedan:
+        print(f"::warning title=Extracción de bases::{quedan} lotes sin terminar; se recogen en la siguiente ejecución")
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser()
     p.add_argument("orden", choices=["lote", "retomar", "preparar"])
@@ -448,12 +521,15 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--n", type=int, default=40)
     p.add_argument("--estados", default="plazo_abierto")
     p.add_argument("--esperar-min", type=float, default=50)
+    p.add_argument("--lotes", type=int, default=1, help="lotes de --n procesos que se envían en esta ejecución")
     p.add_argument("--lote-json", type=Path)
     p.add_argument("--trabajo", type=Path, default=Path("extraccion-bases"),
                    help="lote enviado e índice (fuera de la rama de datos)")
     a = p.parse_args(argv)
     trabajo = a.trabajo
     lotes = a.salida / "datos" / "oposiciones" / "extraccion" / "lotes"
+    if a.orden == "lote" and a.lotes > 1:
+        return varios_lotes(a, lotes)
     if a.orden in ("lote", "preparar"):
         if a.orden == "lote":
             print(f"Resultados retirados porque su texto cambió: {retirar_caducados(a.datos)}")
@@ -461,14 +537,7 @@ def main(argv: list[str] | None = None) -> int:
         lote, ruta_indice = preparar(a.datos, a.n, estados, trabajo)
         if a.orden == "preparar" or not lote.read_text(encoding="utf-8").strip():
             return 0
-        reqs = [json.loads(l) for l in lote.read_text(encoding="utf-8").splitlines() if l.strip()]
-        b = _api("POST", API, json={"requests": reqs}).json()
-        indice = json.loads(ruta_indice.read_text(encoding="utf-8"))
-        # Si no termina a tiempo, se retoma con este fichero (solo ids, rutas y huellas; ningún texto)
-        lotes.mkdir(parents=True, exist_ok=True)
-        pendiente = lotes / f"pendiente-{b['id']}.json"
-        pendiente.write_text(json.dumps({"id": b["id"], "indice": indice}, ensure_ascii=False), encoding="utf-8")
-        print(f"Lote enviado: {b['id']}")
+        b, pendiente, indice = enviar(lote, ruta_indice, lotes)
         b = esperar(b["id"], a.esperar_min)
     else:
         pendiente = a.lote_json

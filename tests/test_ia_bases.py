@@ -90,3 +90,46 @@ def test_retirar_si_el_texto_cambia(tmp_path):
     t = raiz / "datos" / "provinciales" / "bopguadalajara" / "textos" / "2025" / "09" / "BOPGUADALAJARA-2025-2844.json"
     t.write_text(json.dumps({"texto": None, "corte_dudoso": True}))
     assert b.retirar_caducados(raiz) == 1 and not r.exists()
+
+
+def test_varios_lotes_sin_repetir_procesos(tmp_path, monkeypatch):
+    import argparse
+    raiz, p = _datos(tmp_path)
+    # un segundo proceso con su texto
+    t = raiz / "datos" / "provinciales" / "bopguadalajara" / "textos" / "2025" / "09" / "BOPGUADALAJARA-2025-2900.json"
+    t.write_text(json.dumps({"texto": BASES + " Otra."}))
+    q = {**p, "id": "boe:BOE-A-2026-19999", "apertura_plazo": "2026-09-10",
+         "otras_publicaciones": [{**p["otras_publicaciones"][1], "id": "bopguadalajara:BOPGUADALAJARA-2025-2900"}]}
+    f = raiz / "datos" / "oposiciones" / "procesos" / "2026.jsonl"
+    f.write_text(f.read_text() + json.dumps(q) + "\n")
+    enviados, estado = [], {}
+
+    class R:
+        def __init__(self, d, texto=""):
+            self.d, self.text = d, texto
+
+        def json(self):
+            return self.d
+
+    def api(metodo, url, **kw):
+        if metodo == "POST":
+            bid = f"msgbatch_{len(enviados)}"
+            enviados.append([r["custom_id"] for r in kw["json"]["requests"]])
+            estado[bid] = "in_progress"
+            return R({"id": bid})
+        bid = url.rsplit("/", 1)[-1]
+        if bid == "results":
+            return R({}, "")
+        return R({"id": bid, "processing_status": estado.get(bid, "in_progress"), "results_url": url + "/results"})
+    monkeypatch.setattr(b, "_api", api)
+    monkeypatch.setattr(b.time, "sleep", lambda s: None)
+    a = argparse.Namespace(datos=raiz, salida=raiz, n=1, lotes=3, estados="plazo_abierto", esperar_min=0,
+                           trabajo=tmp_path / "trabajo")
+    lotes = raiz / "datos" / "oposiciones" / "extraccion" / "lotes"
+    assert b.varios_lotes(a, lotes) == 0
+    assert len(enviados) == 2 and len(list(lotes.glob("pendiente-*.json"))) == 2  # dos procesos, uno por lote
+    # los procesos de lotes sin recoger no se vuelven a enviar
+    assert b.elegir(raiz, 10, {"plazo_abierto"}) == []
+    # al terminar, la siguiente ejecución los recoge y borra el pendiente
+    estado.update({k: "ended" for k in estado})
+    assert b.recoger_pendientes(raiz, raiz, lotes, 0) == 0 and not list(lotes.glob("pendiente-*.json"))

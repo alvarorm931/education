@@ -23,6 +23,9 @@ on:
       retomar:
         description: "Id de un lote ya enviado que no terminó a tiempo (solo recoger)"
         default: ""
+      lotes:
+        description: "Lotes de n procesos que se envían a la vez (n por lote como mucho 5000: 256 MB por lote)"
+        default: "1"
 
 permissions:
   contents: write
@@ -34,7 +37,7 @@ concurrency:
 jobs:
   lote:
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    timeout-minutes: 330
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -54,6 +57,7 @@ jobs:
           ESTADOS: ${{ inputs.estados || 'todos' }}
           ESPERAR: ${{ inputs.esperar_min || '70' }}
           RETOMAR: ${{ inputs.retomar }}
+          LOTES: ${{ inputs.lotes || '1' }}
         run: |
           set -o pipefail
           if [ -n "$RETOMAR" ]; then
@@ -61,7 +65,7 @@ jobs:
               --lote-json "salida/datos/oposiciones/extraccion/lotes/pendiente-$RETOMAR.json" --esperar-min "$ESPERAR" 2>&1 | tail -n 40
           else
             python -m motor.ia.bases lote --datos salida --salida salida --trabajo trabajo --n "$N" --estados "$ESTADOS" \
-              --esperar-min "$ESPERAR" 2>&1 | tail -n 40
+              --esperar-min "$ESPERAR" --lotes "$LOTES" 2>&1 | tail -n 60
           fi
       - name: Guardar
         if: always()
