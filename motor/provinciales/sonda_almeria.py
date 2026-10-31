@@ -68,7 +68,7 @@ def main(argv: list[str] | None = None) -> int:
         print(_seguro(json.dumps(d, ensure_ascii=False, indent=1))[:12000])
         # Adónde lleva cada miniatura de la primera fila
         imgs = pagina.locator(".z-listitem").first.locator("img")
-        n = imgs.count()
+        n = imgs.count() if not a.fecha else 0
         print("miniaturas de la primera fila:", n)
         for k in range(n):
             try:
@@ -86,10 +86,7 @@ def main(argv: list[str] | None = None) -> int:
             print("cajas de fecha:", fechas.count())
             if fechas.count():
                 fechas.first.fill(dd)
-                fechas.first.press("Tab")
-                if fechas.count() > 1:
-                    fechas.nth(1).fill(dd)
-                    fechas.nth(1).press("Tab")
+                fechas.first.press("Tab")  # «Igual»: la segunda caja (hasta) está oculta
                 pagina.get_by_text("Buscar", exact=True).first.click()
                 pagina.wait_for_load_state("networkidle", timeout=30000)
                 pagina.wait_for_timeout(5000)
