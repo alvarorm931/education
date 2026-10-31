@@ -42,6 +42,55 @@ RE_GENERICA = re.compile(r"(?i)/(admissions?|admision|admisiones|blog|news|notic
 RE_MASTER_URL = re.compile(r"(?i)m[aàá]ster|\bmba\b|[-_/]mba[-_/]|\bmsc\b|[-_/]msc[-_/]|[-_/]mim[-_/]|\bllm\b|[-_/]llm[-_/]")
 
 
+CDX = "https://index.commoncrawl.org/{crawl}-index?url={host}/*&output=json&fl=url,status,mime&filter=status:200&page={page}"
+MAX_PAGINAS_CDX = 8
+
+
+def urls_de_common_crawl(host: str, crawls: int = 2) -> list[str]:
+    """Las páginas de la web que Common Crawl tiene en sus dos últimos índices (solo la dirección: no se baja ni se
+    reproduce nada). Las escuelas con poco sitemap (IE) tienen ahí sus fichas de programa."""
+    from motor.estudios.commoncrawl import ultimo_crawl
+    from motor.http import obtener
+
+    out: set[str] = set()
+    for n in range(crawls):
+        try:
+            crawl = ultimo_crawl(n)
+        except Exception:  # noqa: BLE001
+            break
+        for page in range(MAX_PAGINAS_CDX):
+            try:
+                r = obtener(CDX.format(crawl=crawl, host=host, page=page), intentos=2, timeout=60, limite_total=120)
+            except Exception:  # noqa: BLE001 - página fuera de rango o índice ocupado: se sigue con lo que hay
+                break
+            if r.status != 200 or not r.contenido.strip():
+                break
+            for linea in r.contenido.decode("utf-8", "replace").splitlines():
+                try:
+                    x = json.loads(linea)
+                except ValueError:
+                    continue
+                if "html" in str(x.get("mime", "")) and str(x.get("status")) == "200":
+                    out.add(x["url"].split("#")[0])
+            time.sleep(1)
+    return sorted(out)
+
+
+def unir_common_crawl(res: dict, urls_cc: list[str]) -> dict:
+    """Añade al rastreo las fichas de programa y las páginas de precio que solo ve Common Crawl."""
+    from motor.estudios.rastreador import SUBPAGINA_PRECIO, es_programa
+
+    progs = set(res.get("programas") or []) | {u for u in urls_cc if es_programa(u)}
+    raices = {urlparse(u).path.rstrip("/") for u in progs}
+    precio = set(res.get("subpaginas_precio") or [])
+    for u in urls_cc:
+        ruta = urlparse(u).path.rstrip("/")
+        padre = ruta.rsplit("/", 1)[0]
+        if SUBPAGINA_PRECIO.search(ruta.rsplit("/", 1)[-1]) and (padre in raices or padre.rsplit("/", 1)[0] in raices):
+            precio.add(u)
+    return {**res, "programas": sorted(progs), "subpaginas_precio": sorted(precio)}
+
+
 def filas(res: dict, dominio: str, max_paginas: int = 300) -> list[dict]:
     """Las fichas de máster (primero) y sus páginas de precio, como filas de la extracción de no oficiales: si la
     página es la de un máster oficial, fichas_masters la une después por el nombre del RUCT."""
@@ -116,13 +165,15 @@ def ejecutar(dominio: str, salida: Path, max_paginas: int = 300, max_minutos: fl
     e = ESCUELAS[dominio]
     res = rastrear(e["web"], None, max_urls=60000, muestra=2, max_peticiones=220, profundo=True,
                    listados=e.get("listados") or [])
+    urls_cc = urls_de_common_crawl(urlparse(res.get("base_final") or e["web"]).netloc) if e.get("common_crawl", True) else []
+    res = unir_common_crawl(res, urls_cc)
     destino = salida / "datos" / "estudios" / "extraccion" / f"escuela_{dominio.replace('.', '_')}"
     destino.mkdir(parents=True, exist_ok=True)
     fs = filas(res, dominio, max_paginas)
     resumen = {"dominio": dominio, "rastreo": {k: res.get(k) for k in ("base_final", "error", "veto_robots", "urls",
                                                                         "urls_programa", "via", "peticiones")},
                "fichas_master": sum(1 for f in fs if RE_MASTER_URL.search(urlparse(f["url"]).path)),
-               "paginas_precio": len(res.get("subpaginas_precio") or []), "filas": len(fs)}
+               "paginas_precio": len(res.get("subpaginas_precio") or []), "urls_common_crawl": len(urls_cc), "filas": len(fs)}
     muestra = destino / "escuela.jsonl"
     muestra.write_text("".join(json.dumps(f, ensure_ascii=False) + "\n" for f in fs), encoding="utf-8")
     if fs:

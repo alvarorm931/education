@@ -67,3 +67,13 @@ def test_segunda_vuelta_con_las_paginas_de_precio_enlazadas(tmp_path, monkeypatc
     fs = escuelas.segunda_vuelta(tmp_path, "ie.edu")
     assert [x["url"] for x in fs] == ["https://www.ie.edu/masters/master-in-finance/admissions-fees"]
     assert fs[0]["grupo"] == "no_oficial" and fs[0]["proveedor"] == "prov-4a48f430b0"
+
+
+def test_common_crawl_anade_fichas_y_paginas_de_precio():
+    res = {"programas": ["https://www.ie.edu/masters/master-in-finance/"], "subpaginas_precio": []}
+    cc = ["https://www.ie.edu/masters/master-in-management/", "https://www.ie.edu/masters/master-in-management/admissions-fees",
+          "https://www.ie.edu/news/2026/x", "https://www.ie.edu/masters/master-in-finance/tuition"]
+    r = escuelas.unir_common_crawl(res, cc)
+    assert "https://www.ie.edu/masters/master-in-management/" in r["programas"]
+    assert set(r["subpaginas_precio"]) == {"https://www.ie.edu/masters/master-in-management/admissions-fees",
+                                          "https://www.ie.edu/masters/master-in-finance/tuition"}
