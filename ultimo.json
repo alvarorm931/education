@@ -1,20 +1,70 @@
 {
- "fecha": "2026-10-31T14:20:58+00:00",
- "fecha_madrid": "31/10 15:20",
+ "fecha": "2026-10-31T14:46:04+00:00",
+ "fecha_madrid": "31/10 15:46",
  "ventana_horas": 6.0,
  "resumen": {
-  "ejecuciones_revisadas": 129,
-  "fallos": 0,
+  "ejecuciones_revisadas": 133,
+  "fallos": 1,
   "fallos_pendientes": 0,
   "relanzados": 0,
-  "colas_largas": 0,
-  "flujos_programados_parados": [],
+  "colas_largas": 1,
+  "flujos_programados_parados": [
+   "seo.yml"
+  ],
   "programaciones_lanzadas_a_mano": [],
   "avisos_de_fuentes": 0,
   "almacen": "ok"
  },
- "fallos": [],
- "colas_largas": [],
+ "fallos": [
+  {
+   "flujo": "Limpiar historial (datos de personas)",
+   "fichero": "limpiar-historial.yml",
+   "id": 41210060505,
+   "intento": 1,
+   "evento": "workflow_dispatch",
+   "rama": "main",
+   "commit": "0f6ee5b",
+   "titulo": "Limpiar historial (datos de personas)",
+   "conclusion": "failure",
+   "cuando": "31/10 15:25",
+   "url": "https://github.com/alvarorm931/education/actions/runs/41210060505",
+   "superado": true,
+   "en_curso": null,
+   "pasajero": false,
+   "detalle": [
+    {
+     "trabajo": "limpiar",
+     "pasos": [
+      "Sustituir el historial por un solo commit con el contenido actual"
+     ],
+     "ejecutor": "GitHub Actions 1000001771",
+     "etiquetas": [
+      "ubuntu-latest"
+     ],
+     "final_registro": [
+      "fatal: couldn't find remote ref refs/heads/prueba-historial",
+      "##[error]Process completed with exit code 128.",
+      "...",
+      "\u001b[36;1m    exit 1\u001b[0m",
+      "\u001b[36;1m  fi\u001b[0m",
+      "\u001b[36;1mdone\u001b[0m",
+      "\u001b[36;1mcat ../resultado.md >> \"$GITHUB_STEP_SUMMARY\"\u001b[0m",
+      "fatal: couldn't find remote ref refs/heads/prueba-historial",
+      "##[error]Process completed with exit code 128."
+     ]
+    }
+   ]
+  }
+ ],
+ "colas_largas": [
+  {
+   "flujo": "Prueba de conector",
+   "id": 41208605878,
+   "en_cola_min": 39,
+   "trabajos_empezados": 0,
+   "url": "https://github.com/alvarorm931/education/actions/runs/41208605878"
+  }
+ ],
  "programados": {
   "motor.yml": {
    "ultimo_bien": "31/10 14:25",
@@ -26,7 +76,7 @@
   },
   "seo.yml": {
    "ultimo_bien": "30/10 13:27",
-   "parado": false
+   "parado": true
   }
  },
  "respaldo_programaciones": [],
@@ -46,7 +96,7 @@
    "url": "https://github.com/alvarorm931/education/actions/runs/41207905674",
    "lanzada": "31/10 14:57",
    "desplazada_por": "https://github.com/alvarorm931/education/actions/runs/41208337476",
-   "relanzada": "aún no: hay otra esperando en el grupo"
+   "relanzada": true
   },
   {
    "flujo": "Mantenimiento de datos",
