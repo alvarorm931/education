@@ -125,7 +125,9 @@ def expediente(titulo: str | None) -> str | None:
 
 
 RE_CORTE_CUERPO = re.compile(r"\s+(?:por|mediante|en|para|con|vacantes?|turno|sistema|grupo|subgrupo|oferta|oep|"
-                             r"correspondient\w*|y fecha|i data|e data|y se)\b.*$", re.IGNORECASE)
+                             r"correspondient\w*|y fecha|i data|e data|y se|a\s+(?:don|do[nñ]a|propuesta)|"
+                             r"a\s+(?:la|las|los)\s+(?:persona|personas|aspirantes?|funcionari\w+)|al\s+aspirante)\b.*$",
+                             re.IGNORECASE)  # «… Inspectores de Educación a la persona seleccionada», no «… al Servicio de»
 
 
 GENERICOS = {"vacantes", "varias", "diversas", "diversos", "distintas", "plantilla", "estructural", "estructurales",

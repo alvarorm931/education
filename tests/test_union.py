@@ -27,6 +27,10 @@ def test_puesto_del_titulo():
     assert u.puesto("Nombramiento de funcionaria de carrera (Técnica de Exacciones y Rentas).") == "tecnico-exaccion-renta"
     assert u.puesto("NOMBRAMIENTO FUNCIONARIO DE CARRERA INSPECTOR DE POLICÍA LOCAL.") == "inspector-policia-local"
     assert u.puesto("Lista provisional del proceso para la selección de un Notificador mediante") == "notificador"
+    assert u.puesto("Orden EFD/1583/2025, por la que se nombra funcionaria de carrera del Cuerpo de Inspectores de "
+                    "Educación a la persona seleccionada en el concurso-oposición") == "inspector-educacion"
+    assert u.puesto("por la que se convoca proceso selectivo para ingreso en el Cuerpo de Arquitectos Técnicos al "
+                    "Servicio de la Hacienda Pública") == "arquitecto-tecnico-al-servicio-hacienda-publica"
     # la provincia entre paréntesis y «plazas vacantes» no son puestos
     assert u.puesto("Resolución de 6 de mayo de 2026, del Ayuntamiento de Baena (Córdoba), referente a la "
                     "convocatoria para proveer varias plazas vacantes.") is None
