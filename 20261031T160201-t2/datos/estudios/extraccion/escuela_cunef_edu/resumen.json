@@ -1,0 +1,102 @@
+{
+ "pedidas": 25,
+ "enviadas": 25,
+ "enviadas_pintadas": 0,
+ "minutos_captura": 0.6,
+ "minutos_lote": 7.6,
+ "extraidas": 25,
+ "respuestas_con_pensamiento": 0,
+ "id": "msgbatch_01LjpUZKCQPPoHDSzeJfcEPj",
+ "uso_tokens": {
+  "input_tokens": 66454,
+  "output_tokens": 25552,
+  "cache_creation_input_tokens": 0,
+  "cache_read_input_tokens": 23650
+ },
+ "coste_usd": 0.009829,
+ "coste_usd_por_pagina": 0.000393,
+ "tokens_entrada_por_pagina": 2658,
+ "tokens_salida_por_pagina": 1022,
+ "hechos_aceptados": 284,
+ "hechos_revision": 4,
+ "motivos_revision": {
+  "valor_no_en_cita": 1,
+  "cita_no_literal": 3
+ },
+ "niveles_cita": {
+  "literal": 284,
+  "sin_signos": 1,
+  "ninguno": 3
+ },
+ "almacen": {
+  "nuevos": 21,
+  "ya_estaban": 7,
+  "claves_privadas": {
+   "resultados": "extraccion-masters/2026/10/31/c6e965c760564e54733f87e574ddbd76ad8fa5ab7bbd9d648adefee63f4bd6a3.resultados.jsonl.gz",
+   "hechos_con_cita": "extraccion-masters/2026/10/31/7db8eb24c3f7d27cc70d98c7278e2afeebd4ee64683cc80d7a6c1783f5c13e67.hechos.jsonl.gz"
+  }
+ },
+ "por_campo": {
+  "nombre": {
+   "aceptado": 25
+  },
+  "tipo_titulo": {
+   "aceptado": 24,
+   "revision": 1
+  },
+  "universidad_que_expide": {
+   "aceptado": 23
+  },
+  "centro_que_imparte": {},
+  "creditos_ects": {
+   "aceptado": 25
+  },
+  "duracion": {
+   "aceptado": 1
+  },
+  "modalidad": {
+   "aceptado": 25
+  },
+  "sedes": {},
+  "idioma": {
+   "aceptado": 25
+  },
+  "fecha_inicio": {
+   "aceptado": 5
+  },
+  "plazo_admision": {},
+  "horario": {},
+  "plazas": {},
+  "precio_total": {},
+  "precio_credito": {},
+  "reserva_matricula": {},
+  "descuentos_becas": {},
+  "requisitos_acceso": {
+   "aceptado": 9
+  },
+  "proceso_admision": {},
+  "asignaturas": {
+   "aceptado": 25
+  },
+  "practicas": {
+   "aceptado": 23,
+   "revision": 2
+  },
+  "tfm": {
+   "aceptado": 25
+  },
+  "metodologia": {
+   "aceptado": 14
+  },
+  "evaluacion": {
+   "aceptado": 1
+  },
+  "habilita_profesion": {
+   "aceptado": 10
+  },
+  "salidas": {
+   "aceptado": 24,
+   "revision": 1
+  }
+ }
+}
