@@ -1,0 +1,15 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/motor/runner/_trabajo/education/education/motor/provinciales/sonda_pdf_texto.py", line 75, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/motor/runner/_trabajo/education/education/motor/provinciales/sonda_pdf_texto.py", line 49, in main
+    r = obtener(a.url, accept=a.accept, intentos=2)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/motor/runner/_trabajo/education/education/motor/http.py", line 277, in obtener
+    comprobar_robots(url, http)
+  File "/home/motor/runner/_trabajo/education/education/motor/http.py", line 244, in comprobar_robots
+    raise RobotsProhibe(f"robots.txt de {_origen(url)} no permite {url} ({regla})")
+motor.http.RobotsProhibe: robots.txt de https://s2.diphuelva.es no permite https://s2.diphuelva.es/portalweb/bop/boletines/20230619-1.pdf (Disallow: /)
+codigo=1
