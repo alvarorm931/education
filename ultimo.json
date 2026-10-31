@@ -1,15 +1,17 @@
 {
- "fecha": "2026-10-31T06:55:02+00:00",
- "fecha_madrid": "31/10 07:55",
+ "fecha": "2026-10-31T07:06:29+00:00",
+ "fecha_madrid": "31/10 08:06",
  "ventana_horas": 6.0,
  "resumen": {
-  "ejecuciones_revisadas": 83,
+  "ejecuciones_revisadas": 85,
   "fallos": 0,
   "fallos_pendientes": 0,
   "relanzados": 0,
   "colas_largas": 0,
   "flujos_programados_parados": [],
-  "programaciones_lanzadas_a_mano": [],
+  "programaciones_lanzadas_a_mano": [
+   "motor.yml"
+  ],
   "avisos_de_fuentes": 0,
   "almacen": "ok"
  },
@@ -29,8 +31,23 @@
    "parado": false
   }
  },
- "respaldo_programaciones": [],
- "programaciones_tardias_canceladas": [],
+ "respaldo_programaciones": [
+  {
+   "flujo": "motor.yml",
+   "prevista": "31/10 07:47",
+   "lanzado": true
+  }
+ ],
+ "programaciones_tardias_canceladas": [
+  {
+   "flujo": "masters-diario.yml",
+   "id": 41179060297,
+   "prevista": "31/10 02:17",
+   "disparada": "31/10 08:03",
+   "ya_lanzada": "https://github.com/alvarorm931/education/actions/runs/41155473450",
+   "cancelada": true
+  }
+ ],
  "ficheros_de_mas_de_80_mb": [],
  "latido": "en marcha",
  "boe": {
