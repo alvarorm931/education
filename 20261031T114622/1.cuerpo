@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+    <html lang="es">
+
+    <head>
+        <title>Boletín Oficial de la Provincia de Sevilla</title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"> <meta name="robots" content="index, follow"><meta name="revisit-after" content="7 days">
+
+<script src="/export/system/modules/com.saga.inpro.theme.bop/resources/js/jquery-3.5.1.min.js?v=135"></script>
+    <script src="/export/system/modules/com.saga.inpro.theme.bop/resources/js/tinymce/tinymce.min.js?v=132"></script>
+    <script src="/export/system/modules/com.saga.inpro.theme.bop/resources/js/tinymce/jquery.tinymce.min.js?v=132"></script>
+    <script src="/export/system/modules/com.saga.inpro.theme.bop/resources/js/vendors/jquery-validation-1.19.2/dist/jquery.validate.min.js?v=134"></script>
+    <script src="/export/system/modules/com.saga.inpro.theme.bop/resources/js/vendors/jquery-validation-1.19.2/dist/additional-methods.min.js?v=134"></script>
+    <script src="/export/system/modules/com.saga.inpro.theme.bop/resources/js/vendors/select-multiple-checkbox-i9/src/i9multiselect.js?v=134"></script>
+    <script src="/export/system/modules/com.saga.inpro.theme.bop/resources/js/autoscript/autoscript.js?v=132"></script>
+    <script src="/export/system/modules/com.saga.inpro.theme.bop/resources/js/autoscript/constantes.js?v=132"></script>
+    <script src="/export/system/modules/com.saga.inpro.theme.bop/resources/js/select2/select2.min.js?v=25"></script>
+    <script src="/export/system/modules/com.saga.inpro.theme.bop/resources/js/select2/es.js?v=25"></script>
+    <script src="/export/system/modules/com.saga.script.cookieconsent/resources/js/cookieconsent.min.js?v=3"></script>
+    <script src="/export/system/modules/com.saga.inpro.theme.bop/resources/js/vendors/pdfobject.min.js?v=134"></script>
+    <script src="/export/system/modules/com.saga.inpro.theme.bop/resources/js/vendors/jquery.modal.min.js?v=134"></script>
+    <script src="/export/system/modules/com.saga.inpro.theme.bop/resources/js/frontend_functions.js?v=140"></script>
+    <script src="/export/system/modules/com.saga.inpro.theme.bop/resources/js/frontend.js?v=143"></script>
+    <script src="/export/system/modules/com.saga.inpro.theme.bop/resources/js/vendors/bs-fileinput-master/fileinput.js?v=130"></script>
+    
+<link rel="stylesheet" href="/export/system/modules/com.saga.inpro.theme.bop/resources/js/vendors/select-multiple-checkbox-i9/src/i9multiselect.css?v=134" type="text/css"></link>
+<link rel="stylesheet" href="/export/system/modules/com.saga.inpro.theme.bop/resources/css/bs-fileinput-master/fileinput.min.css?v=130" type="text/css"></link>
+<link rel="stylesheet" href="/export/system/modules/com.saga.inpro.theme.bop/resources/css/vendors/evo-calendar/evo-calendar.min.css?v=115" type="text/css"></link>
+<link rel="stylesheet" href="/export/system/modules/com.saga.inpro.theme.bop/resources/css/estilos.css?v=185" type="text/css"></link>
+<link rel="stylesheet" href="/export/system/modules/com.saga.inpro.theme.bop/resources/css/jquery.modal.min.css?v=135" type="text/css"></link>
+<link rel="stylesheet" href="/export/system/modules/com.saga.inpro.theme.bop/resources/css/select2/select2.min.css?v=25" type="text/css"></link>
+<link rel="stylesheet" href="/export/system/modules/com.saga.script.cookieconsent/resources/css/cookieconsent.min.css?v=3" type="text/css"></link>
+<link rel="stylesheet" href="/export/system/modules/com.saga.inpro.theme.bop/resources/css/vendors/fontawesome/all.min.css?v=31" type="text/css"></link>
+<link rel="stylesheet" href="/export/system/modules/com.saga.contenidos/resources/css/estilos-ElementoTitulo.css" type="text/css"></link>
+<link rel="stylesheet" href="/export/system/modules/com.saga.grid/resources/css/sgGrid.css" type="text/css"></link>
+<script type="text/javascript" src="/export/system/modules/com.saga.recursos.css/resources/js/css_al_vuelo.min.js"></script>
+<script type="text/javascript" src="/export/system/modules/com.saga.contenidos/resources/js/ElementoTitulo.js"></script>
+<script type="text/javascript" src="/export/system/modules/com.saga.grid/resources/js/grid.js"></script><link rel="stylesheet" type="text/css" href="/publica/custom_css_bop.css"/>
+    <script>
+    /* Variables globales de JS*/
+    /**
+     * Intervalo de meses que se permite como máximo en el buscador público de anuncios
+     */
+    const INTERVALO_MESES_BUSCADOR = 6;
+    /**
+     * Indica si está activa la funcionalidad del intervalo de fechas obligatorio en el buscador de anuncios
+     */
+    const INTERVALO_FECHAS_ACTIVO = false;
+    /**
+     * Indica si estamos en el proyecto Online
+     */
+    const IS_ONLINE = true;
+
+    /**
+     * Día y año que queremos que empiece a mostrarse el calendario.
+     * Si no tenemos valor en el mes pero si en el año, el mes será 0 = Enero. Si no tenemos año, se mostrará el calendario completo
+     */
+    const MES_INICIO_SAGA_CALENDARIO_BOP = '';
+    const ANIO_INICIO_SAGA_CALENDARIO_BOP = '';
+
+</script>
+<script src="/export/system/modules/com.saga.inpro.theme.bop/resources/js/sesion.js?v=62"></script>
+    <script>
+        /* Variables globales de JS*/
+        let sesionFinalizada = false;
+        const usuarioLogado = false;
+        const idUsuario = '9d621efd-c454-39a9-a475-bd1f828bb103';
+
+        
+        const tiempoDeSesion = 999999999;
+        
+
+        $(document).ready(function () {
+            iniciarControlDeSesion();
+        });
+    </script>
+<style type="text/css">
+    .visible_offline, .visible_offline_2 {
+        text-transform: none !important;
+    }
+</style>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script type="text/plain" cookie-consent="Google-Analytics" async src="https://www.googletagmanager.com/gtag/js?id=G-6L738B7KWS"></script>
+<script type="text/plain" cookie-consent="Google-Analytics">
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'G-6L738B7KWS');
+</script>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+        <!--::dominioOnline::bopsevilla.dipusevilla.es::-->
+        <!--::isOnline::true::-->
+        <!--::not empty dominioOnline::true::-->
+        <!--::empty dominioOnline::false::-->
+        <!--::isOnline && not empty dominioOnline::true::-->
+
+        <script>
+                const dominioOnline = 'bopsevilla.dipusevilla.es';
+                let hostname = window.location.hostname;
+                console.log('hostname: ', hostname);
+                if (hostname !== dominioOnline && hostname !== 'bopsevilla-1.dipusevilla.es' && hostname !== 'bopsevilla-2.dipusevilla.es' && hostname !== 'bopsevilla-3.dipusevilla.es') {
+                    console.log('Redirigimos desde el template a: ', dominioOnline);
+                    window.location.href = window.location.protocol +
+                        '//' +
+                        dominioOnline +
+                        window.location.pathname +
+                        window.location.search;
+                }
+            </script>
+        </head>
+
+        <body class="p_f1a688d8-1a0e-11ec-86b6-0d019e695c38 n_index.html estado_online no-es_detalle no-logado">
+    <div  id="displayFormatterLoader" ></div><div id="page" class="contenedor-principal web-publica">
+            
+
+
+
+
+
+
+
+    
+    
+        
+        
+        
+        
+        
+        
+        
+        
+    
+
+    
+    
+    
+    
+
+
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+    <header>
+        
+            
+                
+                
+
+                    
+                        <div class="contentedor-header">
+                            <div class="barra-menu-responsive visible_xs_block">
+                                <div class="barras-menu">
+                                    <span class="icon-bar icon-bar-1"></span>
+                                    <span class="icon-bar icon-bar-2"></span>
+                                    <span class="icon-bar icon-bar-3"></span>
+                                </div>
+                            </div>
+                            <div class="cabecera-logo">
+                                
+                                    
+                                        
+                                            
+                                            
+                                            
+                                            
+
+                                            
+                                            
+                                            
+                                            
+
+                                            
+                                            
+
+                                            <a href="/"
+                                               title="Diputación de Sevilla - Logo" >
+                                                <img src="/export/sites/bop/.assets/diputacion_logo.png" alt="Diputación de Sevilla - Logo"/>
+                                            </a>
+                                        
+                                    
+                                    
+                                
+                            </div>
+
+                                
+                            <h1>
+                                
+                                    
+                                        Boletín oficial <span>de la provincia de Sevilla</span>
+                                    
+                                    
+                                
+                            </h1>
+                        </div>
+                    
+                
+            
+        
+    </header>
+<section>
+            <article>
+                <div  id="grid_container" ><div class="sgsection-main_container section-menu-publica  anchoCompleto"  data-cssid="sgsection_n439826">
+                <div class="sgsection-main_wrapper">
+                <div class="cms_container-section" ><div class="sgrow-main_container fila-menu-publico columnasFullWidth     " id="sgrow_n455263" data-cssid="sgrow_n455263" >
+        <div class="sgrow-wrapper">
+
+
+        <div class="sgrow-columna col_xxs-12 col_xs-12 col_sm-12 col_md-12 col_lg-12"  data-cssid="sgrowcolumn_n500953" data-recursos-tipo="cabecera">
+
+                    <div class="cms_container-row" ><div id="menu" class="menu-horizontal-wrapper">
+			<div class="barra-menu-responsive visible_xs_block">
+					<div class="barras-menu">
+						<span class="icon-bar icon-bar-1"></span>
+						<span class="icon-bar icon-bar-2"></span>
+						<span class="icon-bar icon-bar-3"></span>
+					</div>
+			</div>
+
+			<ul class="menu-horizontal nivel-1 nav">
+				<li id="li-menu-lateral-1" class="item-menu-vertical nivel-1" nivel="1">
+							<a href="/publica/consulta-de-bops/"
+							   title="Consulta de boletines" >
+								<span class="section-text">Consulta de boletines</span></a>
+						</li>
+				<li id="li-menu-lateral-1" class="item-menu-vertical nivel-1" nivel="1">
+							<a href="/publica/buscador-anuncios/"
+							   title="Buscador anuncios" >
+								<span class="section-text">Buscador anuncios</span></a>
+						</li>
+				<li id="li-menu-lateral-1" class="item-menu-vertical nivel-1" nivel="1">
+							<a href="/publica/buscador-cve/"
+							   title="Buscador CVE" >
+								<span class="section-text">Buscador CVE</span></a>
+						</li>
+				<li id="li-menu-lateral-1" class="item-menu-vertical nivel-1" nivel="1">
+							<a href="/publica/boletines-anteriores/"
+							   title="Boletines anteriores" >
+								<span class="section-text">Boletines anteriores</span></a>
+						</li>
+				<li id="li-menu-lateral-1" class="item-menu-vertical nivel-1" nivel="1">
+							<a href="/publica/suscripcion-bop/"
+							   title="Suscripción BOP" >
+								<span class="section-text">Suscripción BOP</span></a>
+						</li>
+				<li id="li-menu-lateral-1" class="item-menu-vertical nivel-1" nivel="1">
+							<a href="/publica/documentos-de-interes/"
+							   title="Documentos de interés" >
+								<span class="section-text">Documentos de interés</span></a>
+						</li>
+				<li id="li-menu-lateral-1" class="item-menu-vertical nivel-1" nivel="1">
+							<a href="/publica/Zona-Anunciantes"
+							   title="Zona Anunciantes" >
+								<span class="section-text">Zona Anunciantes</span></a>
+						</li>
+				</ul>
+		</div>
+	</div><input type="hidden" 
+                           data-cssid="sgrowcolumn_n500953" />
+
+                    </div>
+                <input type="hidden"  data-cssid="sgrow_n455263" />
+        </div>
+        </div>
+
+        </div><input type="hidden" 
+                       data-cssid="sgsection_n439826"  />
+                </div>
+                </div>
+
+                <div class="sgsection-main_container   anchoCompleto"  data-cssid="sgsection_n439827">
+                <div class="sgsection-main_wrapper">
+                <div class="cms_container-section" ><div class="sgrow-main_container  columnasFullWidth  filaFullWidth   " id="sgrow_n455264" data-cssid="sgrow_n455264" >
+        <div class="sgrow-wrapper">
+
+
+        <div class="sgrow-columna col_xxs-12 col_xs-12 col_sm-12 col_md-12 col_lg-12"  data-cssid="sgrowcolumn_n500954" data-recursos-tipo="cabecerabop">
+
+                    <div class="cms_container-row" ><div class="cabecera-bop" style="background-image:url('/system/modules/com.saga.inpro.theme.bop/resources/img/cabecera-bop.png');">
+                    <div class="contenedor-cabecera">
+                        <div class="caja-bop">
+                            <h2 class="bop-dia">
+                                BOP del día
+                            </h2>
+                            <div class="numero">BOP nº211</div>
+                                <p>
+                                        viernes 30  de  octubre  de  2026</p>
+                                <a class="ver-boletin" href="/publica/consulta-de-bops/buscador/BOP-30-10-2026/" target="_self" title="Ver boletín del dia" data-fecha="2026-10-30">
+                                    Ver boletín
+                                </a>
+
+                                </div>
+                            <div class="accesos-directos">
+                                <div class="acceso-directo-1">
+                                            <div class="contenedor">
+                                            <a href="/publica/buscador-anuncios/"
+                                                       target="_self"
+                                                       title="Buscar anuncios y BOPs"
+                                                       aria-label="Ir al buscador de anuncios y BOPs">
+                                                            <div class="icono">
+                                                    <img src="/export/sites/bop/publica/.galleries/IMAGENES-Iconos-de-destacados/icono-buscar.png_1137276361.png" width="18" height="18" alt="" /></div>
+                                            <div class="titulo-acceso">
+                                                        Buscar anuncios</div>
+                                            <div class="descripcion-acceso">
+                                                        <p>Encuentra anuncios y BOPs</p></div></a>
+                                                </div>
+                                    </div>
+                                <div class="acceso-directo-2">
+                                            <div class="contenedor">
+                                            <a href="/publica/buscador-cve/"
+                                                       target="_self"
+                                                       title="Buscar publicaciones por código CVE"
+                                                       aria-label="Ir al buscador por CVE">
+                                                            <div class="icono">
+                                                    <img src="/export/sites/bop/publica/.galleries/IMAGENES-Iconos-de-destacados/icono-cve.png_1137276361.png" width="18" height="18" alt="" /></div>
+                                            <div class="titulo-acceso">
+                                                        Buscar por CVE</div>
+                                            <div class="descripcion-acceso">
+                                                        <p>Localiza publicaciones por código CVE</p></div></a>
+                                                </div>
+                                    </div>
+                                <div class="acceso-directo-3">
+                                            <div class="contenedor">
+                                            <a href="/publica/boletines-anteriores/"
+                                                       target="_self"
+                                                       title="Buscar boletines anteriores a diciembre de 2022"
+                                                       aria-label="Ver boletines anteriores a diciembre de 2022">
+                                                            <div class="icono">
+                                                    <img src="/export/sites/bop/publica/.galleries/IMAGENES-Iconos-de-destacados/icono-calendario.png_1137276361.png" width="18" height="18" alt="" /></div>
+                                            <div class="titulo-acceso">
+                                                        Hemeroteca</div>
+                                            <div class="descripcion-acceso">
+                                                        <p>BOPs anteriores a diciembre de 2022</p></div></a>
+                                                </div>
+                                    </div>
+                                </div>
+                        </div>
+                </div>
+            </div><input type="hidden" 
+                           data-cssid="sgrowcolumn_n500954" />
+
+                    </div>
+                <input type="hidden"  data-cssid="sgrow_n455264" />
+        </div>
+        </div>
+
+        </div><input type="hidden" 
+                       data-cssid="sgsection_n439827"  />
+                </div>
+                </div>
+
+                <div class="sgsection-main_container con_padding  anchoCompleto"  data-cssid="sgsection_n439828">
+                <div class="sgsection-main_wrapper">
+                <div class="cms_container-section" ><div class="sgrow-main_container fila-contenedor  columnasNoPadding    " id="sgrow_n455265" data-cssid="sgrow_n455265" >
+        <div class="sgrow-wrapper">
+
+
+        <div class="sgrow-columna col_xxs-12 col_xs-12 col_sm-12 col_md-12 col_lg-12"  data-cssid="sgrowcolumn_n500955" data-recursos-tipo="content">
+
+                    <div class="cms_container-row" ><div class="SagaContenidos ElementoTitulo nivel_div alinear_izquierda" data-cssid="elemento_titulo-n15159" data-tipo-formatter="general">
+                <div class="ElementoTitulo-titulo" data-cssid="elemento_titulo-n15159_titulo" >
+                        Consulta de boletines<br><span class="descripcion">Seleccione una fecha para consultar BOP publicado en ese día</span></div><input type="hidden"  data-cssid="elemento_titulo-n15159"  />
+                <input type="hidden"  data-cssid="elemento_titulo-n15159_titulo" />
+
+                </div>
+            <div class="calendario-bops">
+                        <link rel="stylesheet" href="/export/system/modules/com.saga.listado/resources/css/SagaListado.css?v=45" type="text/css"/>
+    <link rel="stylesheet" href="/export/system/modules/com.saga.listado/resources/css/venobox.min.css?v=45" type="text/css"/>
+    <link rel="stylesheet" href="/export/system/modules/com.saga.contenidos/resources/css/evo-calendar.min.css?v=17" type="text/css"/>
+    <link rel="stylesheet" href="/export/system/modules/com.saga.contenidos/resources/css/estilos-CalendarioSAGA.css?v=17" type="text/css"/>
+    <div class="SagaContenidos CalendarioSAGA con_calendario eventos_futuros modo_horizontal" data-cssid="calendario_saga-n15152" data-tipo-formatter="general">
+                        <div class="CalendarioSAGA-contenedor">
+
+                            <div class="CalendarioSAGA-calendario">
+
+                                <div class="CalendarioSAGA-futuro-titulo">
+                                    <p>
+                                        Titulo</p>
+                                </div>
+
+                                <div id="CalendarioSAGA-calendario_saga-n15152"></div>
+
+                                <div class="CalendarioSAGA-futuro">
+                                        <input type="hidden" class="paginaActual" value="1"/>
+                        <input type="hidden" class="totalPages" value="1"/>
+                    <div class="mensajeInfo noResults">
+
+                                            No se han localizado actividades</div>
+                                <script>
+                                $('#CalendarioSAGA-calendario_saga-n15152').find('.paginaActualFormatter').val(1);
+                                $('#CalendarioSAGA-calendario_saga-n15152').find('.paginaActual').val(1);
+                                $('#CalendarioSAGA-calendario_saga-n15152').find('.totalPagesFormatter').val(1);
+                                $('#CalendarioSAGA-calendario_saga-n15152').find('.totalPages').val(1);
+                            </script>
+                        </div>
+                                </div>
+                        </div>
+
+
+                        <input type="hidden"  data-cssid="calendario_saga-n15152" />
+
+
+                    </div>
+                    <script src="/export/system/modules/com.saga.listado/resources/js/SagaListado.js?v=47"></script>
+    <script src="/export/system/modules/com.saga.listado/resources/js/lottie-player.js?v=45"></script>
+    <script src="/export/system/modules/com.saga.listado/resources/js/venobox.min.js?v=45"></script>
+    <script src="/export/system/modules/com.saga.contenidos/resources/js/evo-calendar.js?v=18"></script>
+    <script src="/export/system/modules/com.saga.recursos.css/resources/js/css_al_vuelo.min.js?v=3"></script>
+    <script src="/export/system/modules/com.saga.contenidos/resources/js/CalendarioSAGA.js?v=17"></script>
+    <script src="/export/system/modules/com.saga.inpro.theme.bop/resources/js/CalendarioSagaBop.js?v=9"></script>
+    <script>
+                        $(document).ready(function () {
+                            $("#CalendarioSAGA-calendario_saga-n15152").evoCalendar({
+                                language: 'es',
+                                format: "yyyy-mm-dd",
+                                sidebarDisplayDefault: false,
+                                sidebarToggler: false,
+                                eventDisplayDefault: true,
+                                eventListToggler: false,
+
+                                mensajeNoresults: 'No se han localizado actividades',
+                                mensajeNoresultsDia: 'No se han localizado actividades',
+                                mensajeAccesoLugar: '???evento.lugar.link.title???'
+                            });
+                            // console.log(jsonCalendario);
+
+                            $('#CalendarioSAGA-calendario_saga-n15152 .calendar-sidebar').append('<div class="cerrarSelector"></div>');
+
+                            var htmlCalendarioFuturo = $('.CalendarioSAGA[data-cssid="calendario_saga-n15152"] .CalendarioSAGA-futuro').html();
+                            var htmlCalendarioFuturoReplace = htmlCalendarioFuturo.replace(/<script>([^<]*)<\/script>/g, '');
+
+
+                            $('<div class="CargandoCalendario oculto"><lottie-player src="/export/system/modules/com.saga.contenidos/resources/json/cargando-calendario.json" background="transparent" loop autoplay></lottie-player></div>').appendTo($('.CalendarioSAGA[data-cssid="calendario_saga-n15152"] .calendar-events'));
+
+                            $('#CalendarioSAGA-calendario_saga-n15152 .calendar-events .event-list').html(htmlCalendarioFuturoReplace);
+                            $('.CalendarioSAGA[data-cssid="calendario_saga-n15152"] .CalendarioSAGA-futuro').remove();
+                            $('#CalendarioSAGA-calendario_saga-n15152 .event-header').html($('.CalendarioSAGA[data-cssid="calendario_saga-n15152"] .CalendarioSAGA-futuro-titulo').html());
+                            $('.CalendarioSAGA[data-cssid="calendario_saga-n15152"] .CalendarioSAGA-futuro-titulo').remove();
+
+
+                            $("#CalendarioSAGA-calendario_saga-n15152").CalendarioSaga({
+                                urlAjax: '/system/modules/com.saga.contenidos/elements/CalendarioSaga-element.jsp',
+                                urlActual: '/publica/consulta-de-bops/index.html',
+                                urlBase: '',
+                                subSiteActual: '/publica/',
+                                localeActual: 'es',
+                                that: 'CalendarioSAGA-calendario_saga-n15152',
+                                IndexacionFecha: 'xmlFechaListado_es_dt',
+                                ResultadosPorPagina: '4',
+                                mostrarImagen: 'false',
+                                mostrarDescripcion: 'false',
+                                mostrarDianas: 'true',
+                                permitirCreacion: 'true',
+                                permitirEliminacion: 'true',
+                                QueryExtra: '&fq=type:(bop)&fq=parent-folders:("/sites/bop/.content/bop/")&fq=xmlPublicado_es_s:true',
+                                plantilla_elemento_individual: '/system/modules/com.saga.inpro.theme.bop/elements/SagaListado/SagaListado-element-individual-CalendarioSaga.jsp',
+                                MetodoNombresCategorias: 'BuscandoTitles',
+                                RaizNombresCategorias: '/.categories/',
+                                //Campos personalizados
+                                campoPersonalizado1: 'xmlNumeroBop_es_i',campoPersonalizado2: 'xmlSumario_es_s',campoPersonalizado3: 'xmlNumeroAnuncios_es_i',campoPersonalizado1Tipo: 'string',campoPersonalizado2Tipo: 'string',campoPersonalizado3Tipo: 'string',
+                                SoloClickDia: true,
+                                ServicioCargaEventos: '/system/modules/com.saga.contenidos/services/proximos-eventos.jsp',
+                                QueryConstructorResultRequest: '&fq=type:(bop)&fq=parent-folders:("/sites/bop/.content/bop/")&fq=xmlPublicado_es_s:true'
+                            });
+                        });
+                    </script>
+                </div>
+            </div><input type="hidden" 
+                           data-cssid="sgrowcolumn_n500955" />
+
+                    </div>
+                <input type="hidden" data-customprops="true" data-cssid="sgrow_n455265" data-psup="65"data-pinf="65"/>
+        </div>
+        </div>
+
+        <div class="sgrow-main_container fila-contenedor cuatro-col-home      " id="sgrow_n455266" data-cssid="sgrow_n455266" >
+        <div class="sgrow-wrapper">
+
+
+        <div class="sgrow-columna col_xxs-12 col_xs-12 col_sm-6 col_md-3 col_lg-3"  data-cssid="sgrowcolumn_n500956" data-recursos-tipo="content">
+
+                    <div class="cms_container-row" ><div class="destacado-bop">
+                    <div class="contenedor-destacado">
+                        <div class="imagen-destacado">
+                                <img src="/publica/.galleries/IMAGENES-Iconos-de-destacados/icono-suscripcion.svg" alt="Suscripción al BOP"/>
+                            </div>
+                        <h2>
+                            Suscripción al BOP</h2>
+                    <div class="contenido h2">
+                            <p>Recibe por correo los contenidos del BOP que te interesan.</p></div>
+                    <a class="enlace-destacado" href="/publica/suscripcion-bop/" title="Configura tu suscripción del BOP" target="_self">
+                                Ir a suscribirte</a>
+                    </div>
+                </div>
+
+            </div><input type="hidden" 
+                           data-cssid="sgrowcolumn_n500956" />
+
+                    </div>
+                <div class="sgrow-columna col_xxs-12 col_xs-12 col_sm-6 col_md-3 col_lg-3"  data-cssid="sgrowcolumn_n500957" data-recursos-tipo="content">
+
+                    <div class="cms_container-row" ><div class="destacado-bop">
+                    <div class="contenedor-destacado">
+                        <div class="imagen-destacado">
+                                <img src="/publica/.galleries/IMAGENES-Iconos-de-destacados/icono-historico.svg" alt="Histórico de BOPs"/>
+                            </div>
+                        <h2>
+                            Histórico de BOPs</h2>
+                    <div class="contenido h2">
+                            <p>Acceso a boletines anteriores al año 1999</p></div>
+                    <a class="enlace-destacado" href="https://archivoypublicaciones.dipusevilla.es/documentos-digitalizados/boletin-oficial-de-la-provincia-de-sevilla/" title="Ver boletines anteriores al año 1999" target="_blank">
+                                Ver el histórico de boletines</a>
+                    </div>
+                </div>
+
+            </div><input type="hidden" 
+                           data-cssid="sgrowcolumn_n500957" />
+
+                    </div>
+                <div class="sgrow-columna col_xxs-12 col_xs-12 col_sm-6 col_md-3 col_lg-3"  data-cssid="sgrowcolumn_n500958" data-recursos-tipo="content">
+
+                    <div class="cms_container-row" ><div class="destacado-bop">
+                    <div class="contenedor-destacado">
+                        <div class="imagen-destacado">
+                                <img src="/publica/.galleries/IMAGENES-Iconos-de-destacados/icono-documentos.svg" alt="Documentación"/>
+                            </div>
+                        <h2>
+                            Documentación</h2>
+                    <div class="contenido h2">
+                            <p>Consulta la documentación y normativa del BOP.</p></div>
+                    <a class="enlace-destacado" href="/publica/documentos-de-interes/" title="Ver documentación y normativa del BOP" target="_self">
+                                Ver documentación de interés</a>
+                    </div>
+                </div>
+
+            </div><input type="hidden" 
+                           data-cssid="sgrowcolumn_n500958" />
+
+                    </div>
+                <div class="sgrow-columna col_xxs-12 col_xs-12 col_sm-6 col_md-3 col_lg-3"  data-cssid="sgrowcolumn_n500959" data-recursos-tipo="content">
+
+                    <div class="cms_container-row" ><div class="destacado-bop">
+                    <div class="contenedor-destacado">
+                        <div class="imagen-destacado">
+                                <img src="/publica/.galleries/IMAGENES-Iconos-de-destacados/icono-login.svg" alt="Acceso anunciantes"/>
+                            </div>
+                        <h2>
+                            Acceso anunciantes</h2>
+                    <div class="contenido h2">
+                            <p>Acceso para anunciantes del BOP de Sevilla.</p></div>
+                    <a class="enlace-destacado" href="/login-entidad/" title="Acceder a la plataforma del BOP" target="_blank">
+                                Acceso a usuarios anunciantes</a>
+                    </div>
+                </div>
+
+            </div><input type="hidden" 
+                           data-cssid="sgrowcolumn_n500959" />
+
+                    </div>
+                <input type="hidden" data-customprops="true" data-cssid="sgrow_n455266" data-minf="30"/>
+        </div>
+        </div>
+
+        </div><input type="hidden" 
+                       data-cssid="sgsection_n439828"  />
+                </div>
+                </div>
+
+                </div></article>
+        </section>
+
+        
+
+
+
+
+
+
+
+
+<script>
+    window.CookieConsent.init({
+        modalMainTextMoreLink: '/publica/Politica-de-cookies',
+        modalMainCookiePolicyLink: null,
+        showRejectAllButton: true,
+        theme: {
+            barColor: '',
+            barTextColor: '#FFF',
+            barMainButtonColor: '#FFF',
+            barMainButtonTextColor: '#333',
+            modalMainButtonColor: '',
+            modalMainButtonTextColor: '#FFF'
+        },
+        language: {
+            current: 'es',
+            locale: {
+                es: {
+                    barMainText: 'Usamos cookies y otras técnicas de rastreo para mejorar tu experiencia de navegación en nuestra web, para mostrarte contenidos personalizados y anuncios adecuados, para analizar el tráfico en nuestra web y para comprender de dónde llegan nuestros visitantes. <a href="/publica/Politica-de-cookies"> Ver política de cookies.</a>',
+                    barLinkSetting: 'Configurar Cookies',
+                    barBtnAcceptAll: 'Aceptar todas las Cookies',
+                    barBtnRejectAll: 'Rechazar todas las Cookies',
+                    modalMainTitle: 'Configuracion de cookies',
+                    modalMainText: 'Las cookies son un pequeño conjunto de datos enviados desde un sitio web y almacenados en el ordenador del usuario por el navegador web del usuario mientras el usuario está navegando. Su navegador almacena cada mensaje en un pequeño archivo, llamado cookie. Cuando solicita otra página del servidor, su navegador envía la cookie de vuelta al servidor. Las cookies fueron diseñadas para ser un mecanismo confiable para que los sitios web recuerden información o registren la actividad de navegación del usuario.',
+                    modalCookiePolicyLinkText: 'Política de cookies',
+                    modalBtnSave: 'Confirmar preferencias',
+                    modalBtnAcceptAll: 'Aceptar todas las Cookies',
+                    modalBtnRejectAll: 'Rechazar todas las Cookies',
+                    modalAffectedSolutions: 'Servicios Afectados:',
+                    learnMore: ' Ver más en política de cookies',
+                    on: 'On',
+                    off: 'Off'
+                }
+            }
+        },
+        categories: {
+            necessary: {
+                needed: true,
+                wanted: true,
+                checked: true,
+                language: {
+                    locale: {
+                        es: {
+                            name: 'Cookies estríctamente necesarias',
+                            description: 'Estos cookies son esenciales para proveerte los servicios disponibles en nuestra web y para permitirte utilizar algunas características de nuestra web.' +
+                            '\n' +
+                            'Sin estas cookies, no podemos proveer algunos servicios de nuestro sitio web.'
+                        },
+                        en: {
+                            name: 'Strictly Necessary Cookies',
+                            description: 'These cookies are essential to provide you with the services available on our website and to allow you to use some features of our website.  ' +
+                            '\n' +
+                            'Without these cookies, we cannot provide some services of our website.',
+                        }
+                    }
+                }
+            },
+            tracking: {
+                needed: false,
+                wanted: false,
+                checked: false,
+                language: {
+                    locale: {
+                        es: {
+                            name: 'Cookies de rastreo y rendimiento',
+                            description: 'Estas cookies son utilizadas para recopilar información, para analizar el tráfico y la forma en que los usuarios utilizan nuestra web.' +
+                            '\n' +
+                            'Por ejemplo, estas cookies pueden recopilar datos como cuánto tiempo llevas navegado en nuestro sitio web o qué páginas visitas, cosa que nos ayuda a comprender cómo podemos mejorar nuestra web para ti.\n' +
+                            '\n' +
+                            'La información recopilada con estas cookies de rastreo y rendimiento no identifican a ningún visitante individual.',
+                        },
+                        en: {
+                            name: 'Tracking cookies',
+                            description: 'These cookies are used to collect information to analyze the traffic to our website and how visitors are using our website.\n' +
+                            '\n' +
+                            'For example, these cookies may track things such as how long you spend on the website or the pages you visit which helps us to understand how we can improve our website site for you.\n' +
+                            '\n' +
+                            'The information collected through these tracking and performance cookies do not identify any individual visitor.',
+                        }
+                    }
+                }
+            }
+        },
+        services: {
+            google: {
+                category: 'tracking',
+                type: 'dynamic-script',
+                search: 'Google-Analytics',
+                language: {
+                    locale: {
+                        es: {
+                            name: 'Google Analytics'
+                        },
+                        en: {
+                            name: 'Google Analytics'
+                        }
+                    }
+                }
+            }
+        }
+    });
+</script>
+
+
+
+
+
+
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+
+    
+    
+        
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+        <footer id="pie" class="pie">
+
+            <div class="contenedor-footer">
+                <div class="footer-superior">
+                    <div class="pie-izquierda">
+                        <div class="logo_pie">
+                            
+                                <div class="logo">
+                                    
+                                    
+                                        
+                                    
+                                    <img class="logo_pie-img" src="/export/sites/bop/.assets/diputacion_de_sevilla-logo-pie.png" alt="DIPUTACIÓN DE SEVILLA" title="DIPUTACIÓN DE SEVILLA"/>
+                                </div>
+                            
+                            <div class="textos">
+                                
+                                    <span class="linea_1">
+                                            DIPUTACIÓN DE SEVILLA
+                                    </span>
+                                
+                                
+                                    <span class="linea_2">
+                                        Avda. Menéndez y Pelayo, 32. | 41071 Sevilla, España |  T. 954 55 00 00
+                                    </span>
+                                
+                                
+                            </div>
+
+                        </div>
+                    </div>
+                    
+                        <div class="pie-derecha">
+                            <div class="redes_sociales">
+                                
+                                    
+                                    
+                                    
+                                    
+
+                                    
+                                    
+                                    
+
+                                    
+                                    
+
+                                    
+                                        
+                                        
+                                        
+                                        
+                                        
+                                            
+                                            
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                    
+
+                                    <a class="red_social facebook-f" href="https://www.facebook.com/dipusevi/" target="_blank" title="Facebook">
+                                            Facebook
+                                        <div class="fab fa-facebook-f"></div>
+                                    </a>
+
+                                
+                                    
+                                    
+                                    
+                                    
+
+                                    
+                                    
+                                    
+
+                                    
+                                    
+
+                                    
+                                        
+                                        
+                                        
+                                        
+                                            
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                    
+
+                                    <a class="red_social x-twitter" href="https://twitter.com/dipusevi" target="_blank" title="X (Twitter)">
+                                            X (Twitter)
+                                        <div class="fab fa-x-twitter"></div>
+                                    </a>
+
+                                
+                                    
+                                    
+                                    
+                                    
+
+                                    
+                                    
+                                    
+
+                                    
+                                    
+
+                                    
+                                        
+                                            
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                    
+
+                                    <a class="red_social youtube" href="https://www.youtube.com/user/dipusevi" target="_blank" title="YouTube">
+                                            YouTube
+                                        <div class="fab fa-youtube"></div>
+                                    </a>
+
+                                
+                                    
+                                    
+                                    
+                                    
+
+                                    
+                                    
+                                    
+
+                                    
+                                    
+
+                                    
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                            
+                                            
+                                        
+                                    
+
+                                    <a class="red_social flickr" href="https://www.flickr.com/photos/97618632@N05/sets/" target="_blank" title="flickr">
+                                            flickr
+                                        <div class="fab fa-flickr"></div>
+                                    </a>
+
+                                
+                                    
+                                    
+                                    
+                                    
+
+                                    
+                                    
+                                    
+
+                                    
+                                    
+
+                                    
+                                        
+                                        
+                                            
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                    
+
+                                    <a class="red_social instagram" href="https://www.instagram.com/dipusevi/" target="_blank" title="Instagram">
+                                            Instagram
+                                        <div class="fab fa-instagram"></div>
+                                    </a>
+
+                                
+                                    
+                                    
+                                    
+                                    
+
+                                    
+                                    
+                                    
+
+                                    
+                                    
+
+                                    
+                                        
+                                        
+                                        
+                                            
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                    
+
+                                    <a class="red_social linkedin" href="https://www.linkedin.com/company/diputacion-de-sevilla?originalSubdomain=es" target="_blank" title="Linkedin">
+                                            Linkedin
+                                        <div class="fab fa-linkedin"></div>
+                                    </a>
+
+                                
+                            </div>
+
+                        </div>
+                    
+                </div>
+
+                
+
+                
+                    <div class="footer-inferior">
+                        
+                            
+                        <a href="javascript:void(0);" class="ccb__edit" title="Configurar cookies">
+                            Configurar cookies
+                        </a>
+                            
+
+                        
+
+
+                            
+                                
+                                
+                                
+
+                                
+                                
+                                
+
+                                
+                                
+                                
+
+                                
+                                    <a href="/publica/accesibilidad/" title="Accesibilidad" target="_self">
+                                            Accesibilidad
+                                    </a>
+                                
+
+                            
+                                
+                                
+                                
+
+                                
+                                
+                                
+
+                                
+                                
+                                
+
+                                
+                                    <a href="/publica/aviso-legal/" title="Aviso legal" target="_self">
+                                            Aviso legal
+                                    </a>
+                                
+
+                            
+                                
+                                
+                                
+
+                                
+                                
+                                
+
+                                
+                                
+                                
+
+                                
+                                    <a href="/publica/politica-de-privacidad/" title="Política de privacidad y protección de datos" target="_self">
+                                            Política de privacidad y protección de datos
+                                    </a>
+                                
+
+                            
+                                
+                                
+                                
+
+                                
+                                
+                                
+
+                                
+                                
+                                
+
+                                
+                                    <a href="/publica/contacto/" title="Contacto" target="_self">
+                                            Contacto
+                                    </a>
+                                
+
+                            
+
+                        
+                    </div>
+                
+            </div>
+        </footer>
+    
+<span class="servidor" style="margin: 0;padding: 0;font-size: xx-small;float: left;background-color: #1ec699;width: 100%;">bopsevilla-2</span>
+    </div>
+
+    <div id="modalLogout" class="modal">
+        <div class="contenido_modal">
+            <div class="mensajeInfo">
+                Para cerrar la sesión activa con certificado correctamente deberá cerrar el navegador</div>
+        </div>
+        <div class="acciones_modal centradas cerrar_sesion">
+            <a href="/login-?accion=logoff" class="boton_generico positivo">
+                Aceptar</a>
+            <a class="boton_generico" rel="modal:close">
+                Cerrar</a>
+        </div>
+    </div>
+
+    <script>
+        function applySelect2(element) {
+            $(element).not('.select2-hidden-accessible').select2();
+        }
+
+        
+        $(document).ready(function () {
+            // Inicializar Select2 en todos los selects presentes
+            applySelect2('select');
+
+            $(document).on('DOMNodeInserted', function (e) {
+                if ($(e.target).is('select')) {
+                    applySelect2(e.target);
+                } else {
+                    $(e.target).find('select').each(function () {
+                        applySelect2(this);
+                    });
+                }
+            });
+        });
+    </script>
+    </body>
+    </html>
