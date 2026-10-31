@@ -1,9 +1,9 @@
 {
- "fecha": "2026-10-31T12:40:17+00:00",
- "fecha_madrid": "31/10 13:40",
+ "fecha": "2026-10-31T13:03:47+00:00",
+ "fecha_madrid": "31/10 14:03",
  "ventana_horas": 6.0,
  "resumen": {
-  "ejecuciones_revisadas": 150,
+  "ejecuciones_revisadas": 138,
   "fallos": 0,
   "fallos_pendientes": 0,
   "relanzados": 0,
@@ -18,14 +18,14 @@
   {
    "flujo": "Boletines autonómicos",
    "id": 41199265305,
-   "en_cola_min": 39,
+   "en_cola_min": 62,
    "trabajos_empezados": 2,
    "url": "https://github.com/alvarorm931/education/actions/runs/41199265305"
   },
   {
    "flujo": "Boletines autonómicos",
    "id": 41181249916,
-   "en_cola_min": 304,
+   "en_cola_min": 328,
    "trabajos_empezados": 46,
    "url": "https://github.com/alvarorm931/education/actions/runs/41181249916"
   }
@@ -36,7 +36,7 @@
    "parado": false
   },
   "autonomicos.yml": {
-   "ultimo_bien": "31/10 12:55",
+   "ultimo_bien": "31/10 14:02",
    "parado": false
   },
   "seo.yml": {
@@ -45,7 +45,16 @@
   }
  },
  "respaldo_programaciones": [],
- "programaciones_tardias_canceladas": [],
+ "programaciones_tardias_canceladas": [
+  {
+   "flujo": "motor.yml",
+   "id": 41203845835,
+   "prevista": "31/10 07:47",
+   "disparada": "31/10 14:03",
+   "ya_lanzada": "https://github.com/alvarorm931/education/actions/runs/41179277221",
+   "cancelada": true
+  }
+ ],
  "ficheros_de_mas_de_80_mb": [],
  "latido": "en marcha",
  "boe": {
