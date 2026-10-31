@@ -308,6 +308,23 @@ def _tabla_a_lineas(m: re.Match) -> str:
     return "<div>" + "</div><div>".join(_html.escape(f, quote=False) for f in filas) + "</div>"
 
 
+MOJIBAKE = re.compile("â[\x80-\x9f\u201a]¬|Ã[\x80-\xff]")
+
+
+def texto_bien_decodificado(r) -> str:
+    """El texto con la codificación correcta (cabecera, <meta charset> o UTF-8) y, si aun así sale UTF-8 leído como
+    Latin-1 («â‚¬» por «€», «Ã¡» por «á»: Comillas), otra vez como UTF-8."""
+    from motor.estudios.rastreador import texto_de
+
+    texto = texto_de(r)
+    if len(MOJIBAKE.findall(texto)) >= 3:
+        try:
+            return r.content.decode("utf-8")
+        except UnicodeDecodeError:
+            pass
+    return texto
+
+
 def lineas_json(texto: str) -> list[str]:
     """Líneas de los textos de un JSON de datos de página, en su orden: los que traen HTML, con lineas_html."""
     salida: list[str] = []
@@ -587,10 +604,11 @@ def ejecutar(catalogo: list[dict], rastreos: Path, salida: Path, max_minutos: fl
             res["sha256"] = hashlib.sha256(r.content).hexdigest()
             res["formato"] = formato
             try:
-                if es_json and not r.text.lstrip("\ufeff \n").startswith(("{", "[")):
+                texto = texto_bien_decodificado(r) if not es_pdf else ""
+                if es_json and not texto.lstrip("\ufeff \n").startswith(("{", "[")):
                     res["formato"], es_json = "no_es_json", False  # la dirección devolvió otra cosa (la página)
-                paginas = (texto_pdf(r.content) if es_pdf else ["\n".join(lineas_json(r.text))] if es_json
-                           else ["\n".join(lineas_html(r.text))])
+                paginas = (texto_pdf(r.content) if es_pdf else ["\n".join(lineas_json(texto))] if es_json
+                           else ["\n".join(lineas_html(texto))])
                 res["paginas"] = len(paginas)
                 gs = list(por_u.get(p["codigo_universidad"], []))
                 gs += [por_cod[c] for c in p.get("grados_rastreo") or [] if c in por_cod and por_cod[c] not in gs]
@@ -598,7 +616,7 @@ def ejecutar(catalogo: list[dict], rastreos: Path, salida: Path, max_minutos: fl
                 if not res.get("curso_documento") and (c := curso_de_fichero(r_url)):
                     res["curso_documento"], res["curso_por_el_nombre_del_fichero"] = c, True
                 if es_html and not res.get("lineas_con_importe"):
-                    res["diagnostico"] = diagnostico_html(r.text)
+                    res["diagnostico"] = diagnostico_html(texto)
             except Exception as e:  # noqa: BLE001 - un documento roto no para el resto
                 res["error"] = f"{type(e).__name__}: {str(e)[:120]}"
         elif r is not None and r.status_code == 200:

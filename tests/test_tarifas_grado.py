@@ -320,3 +320,11 @@ def test_curso_del_nombre_del_fichero():
 def test_lineas_json_de_datos_de_pagina():
     datos = {"result": {"data": {"grados": [{"titulo": "Grado en Psicología", "html": "<p>Precio anual: 9.900 €</p>"}]}}}
     assert tg.lineas_json(__import__("json").dumps(datos)) == ["Grado en Psicología", "Precio anual: 9.900 €"]
+
+
+def test_texto_bien_decodificado_sin_mojibake():
+    class R:
+        content = "Matrícula 1.234,00 € y 9.999,00 € más 12.000,00 €".encode("utf-8")
+        headers = {"content-type": "text/html; charset=ISO-8859-1"}
+        text = content.decode("latin-1")
+    assert "€" in tg.texto_bien_decodificado(R()) and "â‚¬" not in tg.texto_bien_decodificado(R())

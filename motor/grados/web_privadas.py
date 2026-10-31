@@ -251,6 +251,10 @@ def importes(html: str) -> list[dict]:
     return salida[:40]
 
 
+# webs que el RUCT da con un dominio antiguo que ahora lleva a otro (el rastreo no sigue enlaces de otro dominio)
+WEB_ACTUAL = {
+    "033": "https://www.comillas.edu",  # Comillas: el RUCT da www.upcomillas.es (responde 421 a GitHub)
+}
 LISTADO = re.compile(r"grados?|graus?|estudios|estudis|titulaciones|titulacions|carreras|oferta|degrees?|bachelor|"
                      r"undergraduate|estudia", re.I)
 
@@ -335,7 +339,9 @@ def recorrer(universidad: dict, grados: list[dict], archivo: Archivo | None, max
         if r is None or r.status_code != 200 or "html" not in (r.headers.get("content-type") or ""):
             fichas[codigo] = {**u, "estado": r.status_code if r is not None else None}
             continue
-        html = texto_de(r)
+        from motor.grados.tarifas_grado import texto_bien_decodificado
+
+        html = texto_bien_decodificado(r)  # también si la cabecera dice Latin-1 y la página es UTF-8 (Comillas)
         m = medir_pagina(html, u["url"])
         imp = importes(html)
         for p in m.get("pdf_precio") or []:
@@ -393,7 +399,7 @@ def objetivos(catalogo: list[dict], centros: Path) -> list[tuple[dict, list[dict
                 nombres[u["codigo"]] = u["nombre"]
     salida = []
     for cod, gs in sorted(por_u.items(), key=lambda x: -len(x[1])):
-        web = (fichas_u.get(cod) or {}).get("web") or ""
+        web = WEB_ACTUAL.get(cod) or (fichas_u.get(cod) or {}).get("web") or ""
         if not re.match(r"https?://[^/]+\.[a-z]{2,}", web):
             continue  # sin web o con una web mal escrita en el registro: no se adivina
         salida.append(({"codigo": cod, "nombre": nombres[cod], "web": web}, gs))
