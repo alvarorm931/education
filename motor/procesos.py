@@ -650,6 +650,10 @@ def _plazo_desde_cita(a: dict, plazo: dict, otras: list[dict] | None = None) -> 
             "cuenta_desde_fecha": fechas[0], "de_cita": True}
 
 
+# Lo que suele tardar el anuncio del BOE tras las bases del BOP: pasado esto, ya no se espera (31/10/2026)
+DIAS_ESPERA_BOE = 240
+
+
 def _proceso(a: dict, posteriores: list[dict], otras: list[dict], hoy: date, ident: str,
              solo_bases: bool = False) -> dict:
     plazo = a.get("plazo") or {}
@@ -672,6 +676,7 @@ def _proceso(a: dict, posteriores: list[dict], otras: list[dict], hoy: date, ide
     for x in posteriores:  # una corrección o modificación posterior puede abrir un plazo nuevo
         if x.get("tipo_acto") in ("modificacion", "correccion") and (x.get("plazo") or {}).get("fin_estimado"):
             plazo = {**x["plazo"], "de_acto": x["id"]}
+    pendiente_extra: list[str] = []
     fin = plazo.get("fin_estimado")
     temporal = bool(RE_TEMPORAL.search(normalizar(a.get("titulo") or ""))) or a.get("modalidad") == "bolsa"
     if any(x.get("tipo_acto") == "anulacion" for x in posteriores):
@@ -680,8 +685,14 @@ def _proceso(a: dict, posteriores: list[dict], otras: list[dict], hoy: date, ide
         estado = "plazo_por_abrir"  # «el plazo comenzará el día 4 de enero de 2027…»
     elif fin:
         estado = "plazo_abierto" if fin >= hoy.isoformat() else "plazo_cerrado"
-    elif solo_bases and not temporal and "Boletín Oficial del Estado" in (plazo.get("cuenta_desde") or ""):
+    elif solo_bases and not temporal and "Boletín Oficial del Estado" in (plazo.get("cuenta_desde") or "") and \
+            _dias_entre(a["fecha"], hoy.isoformat()) <= DIAS_ESPERA_BOE:
         estado = "bases_publicadas_pendiente_boe"
+    elif solo_bases and not temporal and "Boletín Oficial del Estado" in (plazo.get("cuenta_desde") or ""):
+        # Bases de hace más de 8 meses sin anuncio del BOE enlazado: o salió y no se ha podido unir, o no salió. No se
+        # dice «pendiente del BOE» de unas bases de 2023 (4.869 de 6.474 a 31/10/2026 eran de 2022 a 2025)
+        estado = "sin_datos_de_plazo"
+        pendiente_extra = ["anuncio_boe_sin_enlazar"]
     else:
         estado = "sin_datos_de_plazo"
     todos = [a] + posteriores + otras
@@ -714,7 +725,7 @@ def _proceso(a: dict, posteriores: list[dict], otras: list[dict], hoy: date, ide
         "actualizado": max(x["fecha"] for x in todos),
         "fuente": NOMBRE_FUENTE.get(a["fuente"], a["fuente"]),
         "fuentes": fuentes,
-        "pendiente": a.get("pendiente") or [],
+        "pendiente": (a.get("pendiente") or []) + pendiente_extra,
         "temporal": temporal,
         "solo_bases_locales": solo_bases,
         # Sedes y tablones que citan la convocatoria o sus bases: donde saldrán notas y listas (seguimiento)

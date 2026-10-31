@@ -93,6 +93,9 @@ def test_bases_locales_sin_anuncio_en_el_boe():
     assert ps["boe:L9"]["convocante"]["codigo_ine"] == "08121"
     assert ps["bopb:BOPB-1"]["estado"] == "bases_publicadas_pendiente_boe" and ps["bopb:BOPB-1"]["solo_bases_locales"]
     assert ps["bopb:BOPB-2"]["estado"] == "plazo_abierto" and ps["bopb:BOPB-2"]["temporal"]
+    # Ocho meses después sin anuncio del BOE enlazado, ya no se dice «pendiente del BOE»
+    tarde = {p["id"]: p for p in construir(boe, date(2027, 7, 1), autonomicos)}["bopb:BOPB-1"]
+    assert tarde["estado"] == "sin_datos_de_plazo" and "anuncio_boe_sin_enlazar" in tarde["pendiente"]
     r = resumen(list(ps.values()), date(2026, 10, 29))["enlaces_locales"]
     assert r["con_bases_enlazadas"] == 1 and r["procesos_solo_con_bases_locales"] == {"BOPB": 2}
 
