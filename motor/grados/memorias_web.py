@@ -429,7 +429,13 @@ def leer(urls: list[dict], salida: Path, max_minutos: float, muestras: int = 3) 
 
 def urls_de(carpeta: Path, parte: tuple[int, int] | None) -> list[dict]:
     """URL de los ficheros de `cc`, sin repetir, repartidas por servidor entre las partes (cada servidor en una)."""
+    # solo lo nuevo: las URL que una lectura anterior ya pidió con respuesta (sus memorias_*.jsonl) no se repiten
     vistas, urls = set(), []
+    for f in sorted(carpeta.rglob("memorias_web/memorias_*.jsonl")):
+        for linea in f.read_text(encoding="utf-8").splitlines():
+            x = json.loads(linea)
+            if x.get("estado") is not None:
+                vistas.add(x["url"])
     for f in sorted(carpeta.rglob("memorias_web/urls_*.jsonl")):
         for linea in f.read_text(encoding="utf-8").splitlines():
             x = json.loads(linea)

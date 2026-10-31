@@ -84,6 +84,9 @@ def test_urls_repartidas_por_servidor(tmp_path):
     (d / "urls_x_0_1.jsonl").write_text("\n".join(json.dumps(x) for x in filas + filas[:2]), encoding="utf-8")
     todas = mw.urls_de(tmp_path, None)
     assert len(todas) == 9
+    (d / "memorias_1_x.jsonl").write_text(json.dumps({"url": filas[0]["url"], "estado": 200}), encoding="utf-8")
+    assert len(mw.urls_de(tmp_path, None)) == 8  # ya pedida en una lectura anterior
+    (d / "memorias_1_x.jsonl").unlink()
     partes = [mw.urls_de(tmp_path, (i, 2)) for i in range(2)]
     assert sum(len(p) for p in partes) == 9
     assert not {x["dominio"] for x in partes[0]} & {x["dominio"] for x in partes[1]}
