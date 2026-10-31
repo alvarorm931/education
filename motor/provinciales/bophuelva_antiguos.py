@@ -59,8 +59,9 @@ RE_CABECERA = re.compile(
 RE_PIE = re.compile(r"(?i)^\s*(?:Diputaci[oó]n Provincial(?: de Huelva\.?(?: Bolet[ií]n Oficial de la Provincia)?)?\s*$|"
                     r"Documento firmado electr[oó]nicamente|Autenticidad verificable)")
 RE_NUMERO_BOLETIN = re.compile(rf"(?i){_FECHA}\s+N[úu]mero\s+(?P<n>\d{{1,4}})")
-RE_SECCION = re.compile(r"^(?:ADMINISTRACI[ÓO]N(?:\s+(?:LOCAL|DEL ESTADO|DE JUSTICIA|AUTON[ÓO]MICA|GENERAL DEL ESTADO|"
-                        r"DE LA JUNTA DE ANDALUC[ÍI]A))?|JUNTA DE ANDALUC[ÍI]A|ANUNCIOS(?: PARTICULARES| OFICIALES)?|"
+# «ADMINISTRACIÓN LOCAL», «ADMINISTRACIÓN ELECTORAL» (suplementos de elecciones), «JUNTA DE ANDALUCÍA»…
+RE_SECCION = re.compile(r"^(?:ADMINISTRACI[ÓO]N(?:\s+[A-ZÁÉÍÓÚÑ]+(?:\s+(?:DE|DEL|LA|DE LA)?\s*[A-ZÁÉÍÓÚÑ]+){0,3})?|"
+                        r"JUNTA DE ANDALUC[ÍI]A|ANUNCIOS(?: PARTICULARES| OFICIALES)?|"
                         r"OTR[OA]S ANUNCIOS|OTRAS ADMINISTRACIONES|OTRAS ENTIDADES|DIPUTACI[ÓO]N PROVINCIAL)$")
 RE_ENTIDAD_SUMARIO = re.compile(r"^\s*[–—-]\s+(?P<e>\S.*)$")
 # puntos hasta la página, o uno solo con dos espacios («…de empleo temporal .  5173»)
