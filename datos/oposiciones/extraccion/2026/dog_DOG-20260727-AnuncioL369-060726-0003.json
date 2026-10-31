@@ -1,0 +1,38 @@
+{
+ "proceso": "dog:DOG-20260727-AnuncioL369-060726-0003",
+ "documento": {
+  "id": "dog:DOG-20260727-AnuncioL369-060726-0003",
+  "fuente": "DOG",
+  "url": "https://www.xunta.gal/dog/Publicados/2026/20260727/AnuncioL369-060726-0003_es.html",
+  "fecha": "2026-07-27",
+  "huella": "1cfb2d429545991c560f09e1386fb37f6a440f2cdc8b44115145a072686b2fd6"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T08:18:23+00:00",
+ "lote": "msgbatch_01BrnYw6KkevFx7at547B5g8",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "C1",
+   "cita": "escala de la Administración general, oficial de Administración, subescala administrativa",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "1 plaza de personal funcionario, escala de la Administración general",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 3,
+   "cita": "Las plazas a cubrir corresponde al turno de promoción interna"
+  },
+  "plazas_promocion_interna": {
+   "motivo": "valor_no_en_cita",
+   "valor": 3,
+   "cita": "La relación de las plazas a cubrir corresponde al turno de promoción interna"
+  }
+ }
+}

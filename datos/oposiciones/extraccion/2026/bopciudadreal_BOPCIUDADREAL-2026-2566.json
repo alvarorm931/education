@@ -1,0 +1,50 @@
+{
+ "proceso": "bopciudadreal:BOPCIUDADREAL-2026-2566",
+ "documento": {
+  "id": "bopciudadreal:BOPCIUDADREAL-2026-2566",
+  "fuente": "BOP-CIUDADREAL",
+  "url": "https://bop.dipucr.es/bop/2026/08/06",
+  "fecha": "2026-08-06",
+  "huella": "51b7cc202123a0b5f568f14fab037e9ce74916030245afb6b411a101a96152c0"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T08:18:21+00:00",
+ "lote": "msgbatch_01BrnYw6KkevFx7at547B5g8",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Auxiliar Administrativo/a"
+   ],
+   "cita": "Bases que han de regir la selección de funcionario/a interino/a para la provisión del puesto de Auxiliares Administrativos/as",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario interino",
+   "cita": "selección de funcionario/a interino/a para la provisión del puesto de Auxiliares Administrativos/as",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "C2",
+   "cita": "grupo C, subgrupo C-2, mediante oposición, en el Ayuntamiento de Puertollano"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "oposición",
+   "cita": "mediante oposición, en el Ayuntamiento de Puertollano"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "5 días hábiles a partir del siguiente al de la publicación de estas bases en los tablones de anuncios de este Ayuntamiento",
+   "cita": "El plazo de presentación de solicitudes será de 5 días hábiles a partir del siguiente al de la publicación"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "tablón de Anuncios y página web del Ayuntamiento de Puertollano, sección de empleo, y Boletín Oficial de la Provincia de Ciudad Real",
+   "cita": "Las bases íntegras de esta convocatoria se encuentran expuestas en el tablón de Anuncios y página web del Ayuntamiento"
+  }
+ }
+}

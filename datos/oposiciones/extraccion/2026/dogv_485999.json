@@ -1,0 +1,88 @@
+{
+ "proceso": "dogv:485999",
+ "documento": {
+  "id": "dogv:485999",
+  "fuente": "DOGV",
+  "url": "https://dogv.gva.es/datos/2026/07/21/pdf/2026_24672_es.pdf",
+  "fecha": "2026-07-21",
+  "huella": "fcf5b2f59d67557bc3f0a9c928a6fe43b745dff79d5d3c9bda6dd36e63372ea2"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T08:18:17+00:00",
+ "lote": "msgbatch_01BrnYw6KkevFx7at547B5g8",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "A1",
+   "cita": "Profesorado titular de universidad",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "Podrá participar, asimismo, quien tenga la condición de funcionario/a del cuerpo de profesores y profesoras titulares de universidad.",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "la provisión de 1 plaza (OPE 2024) y de 189 plazas (OPE 2026) de profesorado titular de universidad",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Poseer el título de doctor o doctora",
+   "cita": "Poseer el título de doctor o doctora.",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española, de estado miembro de la UE u otros supuestos previstos; no haber alcanzado la edad de jubilación forzosa; no haber sido separado de la función pública por expediente disciplinario; capacidad funcional; acreditación para el cuerpo de profesores titulares de universidad.",
+   "cita": "No haber alcanzado la edad de jubilación forzosa establecida por la legislación vigente en la fecha de finalización del plazo para la presentación de solicitudes.",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 27,
+   "cita": "El pago de la tasa (27 euros) se realizará mediante tarjeta bancaria a través de la pasarela de pagos",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Exentas: discapacidad igual o superior al 33%, familias numerosas de categoría especial, familias monoparentales de categoría especial, víctimas de violencia sobre la mujer o personas en exclusión social. Bonificación del 50%: familias numerosas y monoparentales de categoría general.",
+   "cita": "Estarán exentas del pago de la tasa las personas que acrediten una discapacidad en grado igual o superior al 33%",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días desde el día siguiente a la publicación de la convocatoria en el BOE",
+   "cita": "Plazo de presentación:veinte días a contar desde el día siguiente de la publicación de esta convocatoria en el BOE.",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Obligatoriamente a través del formulario electrónico en la sede electrónica de la Universitat de València (https://seu.uv.es)",
+   "cita": "Las solicitudes se presentarán obligatoriamente a través del formulario electrónico correspondiente a la presente convocatoria",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón oficial de anuncios de la Universitat de València (https://webges.uv.es/uvTaeWeb/) y, con carácter informativo, página web del Servei de Recursos Humans PDI",
+   "cita": "se publicará en el tablón oficial de anuncios de la Universitat de València",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Primera fase: exposición oral y pública de méritos del currículum académico, docente, investigador y de gestión, con debate posterior (máximo una hora cada parte), 0 a 100 puntos",
+    "Segunda fase: defensa pública de proyecto docente y proyecto investigador (máximo 90 minutos) y debate posterior (máximo 90 minutos), 0 a 100 puntos"
+   ],
+   "cita": "La primera fase consistirá en la exposición oral y pública, durante un tiempo máximo de una hora, de los méritos del currículum",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Profesorado titular de universidad"
+   ],
+   "cita": "Este rectorado convoca a concurso público (convocatoria 211/2026), la provisión de 1 plaza (OPE 2024) y de 189 plazas (OPE 2026) de profesorado titular de universidad"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 190,
+   "cita": "la provisión de 1 plaza (OPE 2024) y de 189 plazas (OPE 2026) de profesorado titular de universidad"
+  }
+ }
+}

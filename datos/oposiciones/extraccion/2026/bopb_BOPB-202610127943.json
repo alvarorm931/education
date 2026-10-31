@@ -1,0 +1,104 @@
+{
+ "proceso": "bopb:BOPB-202610127943",
+ "documento": {
+  "id": "bopb:BOPB-202610127943",
+  "fuente": "BOPB",
+  "url": "https://bop.diba.cat/anunci/3977081/bases-especifiques-i-convocatoria-del-proces-selectiu-per-a-la-constitucio-d-una-borsa-de-treball-de-personal-tecnic-d-administracio-general-ajuntament-d-abrera",
+  "fecha": "2026-07-31",
+  "huella": "37f8219dfe9b5fbd5169e659877bf49c2b7e545a831a4f1cfc9b5e43e6b46c62"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T08:18:17+00:00",
+ "lote": "msgbatch_01BrnYw6KkevFx7at547B5g8",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Personal técnico de administración general (borsa de trabajo)"
+   ],
+   "cita": "constitució d’una borsa de tècnics d’administració general",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "A1",
+   "cita": "Grup A, subgrup A1",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario interino",
+   "cita": "Classe de personal: funcionari/ària interí/na",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "El sistema de selecció és el de concurs-oposició.",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad (española o UE/extensiones previstas), edad mínima 16 años, capacidad funcional, no separación de la función pública ni inhabilitación, no incompatibilidad.",
+   "cita": "Haver complert 16 anys abans del termini de presentació d’instàncies",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Catalán nivel C1 (o acreditación equivalente; prueba eliminatoria si no se acredita)",
+   "cita": "Tenir coneixements de llengua catalana de nivell C1",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles desde el día siguiente a la última publicación del anuncio de la convocatoria en el BOPB",
+   "cita": "El termini per a la presentació de sol·licituds serà de vint (20) dies hàbils a comptar a partir de l’endemà",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "BOPB, tablón de anuncios de la sede electrónica y web municipal",
+   "cita": "al tauler d’anuncis de la seu electrònica de l’Ajuntament d’Abrera i al web de l’ajuntament",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Primera prueba: test de conocimientos generales y específicos (50 preguntas, 60 min, eliminatoria, máx. 25 puntos)",
+    "Segunda prueba: dos supuestos prácticos (máx. 180 min, máx. 55 puntos)",
+    "Tercera prueba: conocimientos de catalán (apto/no apto, eliminatoria) y de castellano si procede"
+   ],
+   "cita": "Primera prova. Prova de coneixements generals i específics. De caràcter obligatori.",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "Sí, para cubrir con carácter de urgencia necesidades temporales mediante nombramiento de funcionarios interinos; vigencia de 2 años.",
+   "cita": "disposar de persones candidates per cobrir, amb caràcter d’urgència, necessitats temporals",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Período de prueba de cuatro (4) meses",
+   "cita": "Durant el període de prova, amb una duració de quatre (4) mesos",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "titulacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Licenciatura o grado universitario",
+   "cita": "Tenir la titulació mínima de Llicenciatura o grau universitari"
+  },
+  "tasa_euros": {
+   "motivo": "cita_no_literal",
+   "valor": 35,
+   "cita": "les persones aspirants hauran d'abonar en concepte de taxa d'inscripció (taxa drets d’examen) l’import corresponent de 35,00 euros."
+  },
+  "exenciones_tasa": {
+   "motivo": "cita_no_literal",
+   "valor": "Exención para personas demandantes de empleo en situación de desempleo que no perciban prestación (certificado SEPE/Oficina de Trabajo).",
+   "cita": "figurar com a demandants d’ocupació... certificat del SEPE de situació actual conforme no es beneficiari de prestacions per atur."
+  },
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Preferentemente en el registro electrónico del Ayuntamiento o de las administraciones públicas; también presencial, Correos, representaciones diplomáticas u oficinas de asistencia.",
+   "cita": "Preferentment en el registre electrònic de l’Ajuntament o en el registre electrònic de les administracions públiques"
+  },
+  "meritos": {
+   "motivo": "cita_no_literal",
+   "valor": "Experiencia profesional (máx. 10 puntos, 0,25 por trimestre); formación (máx. 5 puntos); otros títulos académicos (máx. 3 puntos); catalán superior (máx. 0,5); TIC/ACTIC (máx. 1,25).",
+   "cita": "Cada període de tres mesos complerts de servei acreditats desenvolupant tasques equivalents"
+  }
+ }
+}

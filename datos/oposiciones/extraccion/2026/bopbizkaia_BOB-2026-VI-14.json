@@ -1,0 +1,86 @@
+{
+ "proceso": "bopbizkaia:BOB-2026-VI-14",
+ "documento": {
+  "id": "bopbizkaia:BOB-2026-VI-14",
+  "fuente": "BOB",
+  "url": "http://www.bizkaia.eus/lehendakaritza/Bao_bob/2026/06/16/VI-14_cas.pdf",
+  "fecha": "2026-06-16",
+  "huella": "d13d51836c6458373a9f48b2d1ac44cf467eeb23d6efd7d281abaee2dd45b045"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T08:17:51+00:00",
+ "lote": "msgbatch_01BrnYw6KkevFx7at547B5g8",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "Las contrataciones laborales serán de carácter temporal.",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 3,
+   "cita": "El importe de la tasa es de 3,00 euros.",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "10 días naturales desde el día siguiente a la publicación de la convocatoria en el BOB y en la web de la Mancomunidad",
+   "cita": "El plazo para la presentación de las mismas será de 10 días naturales, a partir del día siguiente de la publicación",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Sede electrónica de la Mancomunidad, o presencialmente en la oficina de registro de la calle Egigurentarren, 2 bajo de Eibar, o en lugares del artículo 16.4 de la Ley 39/2015",
+   "cita": "Solicitud electrónica en sede electrónica a) https://debabarrena.eus/es/atencion-al-ciudadano-y-tramites/tramites/oferta-de-empleo",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Página web de la Mancomunidad (www.debabarrena.eus) y tablón de anuncios de los Ayuntamientos de la Comarca del Bajo Deba; convocatoria también en el BOG y BOB",
+   "cita": "Las comunicaciones y notificaciones derivadas de este procedimiento se efectuarán por medio de su publicación en la página web de la Entidad",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Entrevista curricular sobre competencias (máximo 3 puntos)",
+    "Valoración de experiencia laboral (máximo 3 puntos)",
+    "Conocimientos de euskera (máximo 0,75 puntos)",
+    "Carnet de conducir B (0,75 puntos)"
+   ],
+   "cita": "Fase de oposición: Máximo 3 puntos. Entrevista curricular sobre las siguientes competencias",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Experiencia laboral en puestos de peón hasta 3 puntos (0,20 por mes); euskera PL1 0,5 y PL2 0,75 puntos; carnet de conducir B 0,75 puntos. Máximo fase de concurso 4,5 puntos",
+   "cita": "Se puntuará 0,20 puntos por mes trabajado La puntuación máxima a obtener en este apartado en total será de 3,00 puntos",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "Sí, para cubrir necesidades temporales de personal de peón en RU, garbigunes y LV mediante contratos temporales",
+   "cita": "Esta bolsa se utilizará, para cubrir las necesidades de personal que surjan por licencias, vacaciones del personal",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Peón",
+    "Peón polivalente"
+   ],
+   "cita": "puestos de peón o peón polivalente de los servicios de RU, garbigunes y de LV"
+  },
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "AP",
+   "cita": "Tasa: 3,00 euros"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "Fase de oposición: Máximo 3 puntos. Fase de concurso: Máximo 4,5 puntos"
+  },
+  "exenciones_tasa": {
+   "motivo": "cita_no_literal",
+   "valor": "Exentos quienes no estén dados de alta en Seguridad Social con contratos inferiores a un año, a tiempo parcial o con retribución neta inferior a 1.200 euros; reducción del 50 % para familias numerosas generales.",
+   "cita": "Están exentas del pago de la tasa: no estén dados de alta en ningunos de los regímenes de la Seguridad Social"
+  }
+ }
+}

@@ -1,0 +1,45 @@
+{
+ "proceso": "bopcoruna:BOPCORUNA-2026-4077",
+ "documento": {
+  "id": "bopcoruna:BOPCORUNA-2026-4077",
+  "fuente": "BOP-CORUNA",
+  "url": "https://bop.dacoruna.gal/bopportal/publicado/2026/06/18/2026_0000004077.html",
+  "fecha": "2026-06-18",
+  "huella": "de85c9a53e0a5a8e21c0ada3a7b70f2dd4957811cddbe58de72d2135bff61bd9"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T08:18:23+00:00",
+ "lote": "msgbatch_01BrnYw6KkevFx7at547B5g8",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Brigada de prevención e defensa contra incendios forestais (1 xefe de brigada, 1 peón condutor e 3 peóns de brigada)"
+   ],
+   "cita": "Convocatoria selección brigada de prevención e defensa contra incendios forestais de 5 compoñentes",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "taboleiro de anuncios da sede electrónica do Concello de Boimorto",
+   "cita": "poderán ser obxecto de consulta e descarga no taboleiro de anuncios da sede electrónica",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, bolsa de traballo para a brigada de prevención e defensa contra incendios forestais",
+   "cita": "CONVOCATORIA PARA A SELECCIÓN E FORMACIÓN BOLSA DE TRABALLO DA BRIGADA",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "formación bolsa de traballo por concurso oposición para brigada de prevención"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 5,
+   "cita": "1 xefe de brigada, 1 peón condutor e 3 peóns de brigada"
+  }
+ }
+}

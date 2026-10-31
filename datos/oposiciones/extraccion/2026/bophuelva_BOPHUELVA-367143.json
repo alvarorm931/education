@@ -1,0 +1,53 @@
+{
+ "proceso": "bophuelva:BOPHUELVA-367143",
+ "documento": {
+  "id": "bophuelva:BOPHUELVA-367143",
+  "fuente": "BOP-HUELVA",
+  "url": "https://s2.diphuelva.es/portalweb/bope/anuncios/Anuncio_367143_BOP-135_2026.pdf",
+  "fecha": "2026-07-15",
+  "huella": "680a7d5cc0c120bdd071dde277158007367a0bdfae5f46f69b1e605c577b9c22"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T08:18:18+00:00",
+ "lote": "msgbatch_01BrnYw6KkevFx7at547B5g8",
+ "no_son_bases": false,
+ "campos": {
+  "bolsa": {
+   "valor": "sí, constitución de una bolsa de empleo",
+   "cita": "CONSTITUCIÓN DE UNA BOLSA DE EMPLEO",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Auxiliar administrativo/a",
+   "cita": "la selección de un/a auxiliar administrativo/a como funcionario/a interino/a"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario interino",
+   "cita": "la selección de un/a auxiliar administrativo/a como funcionario/a interino/a"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "mediante concurso-oposición, se abre el plazo de presentación de solicitudes"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "10 días hábiles a contar desde el día siguiente a la publicación de este anuncio en el BOP de Huelva",
+   "cita": "el plazo de presentación de solicitudes, que será de 10 días hábiles a contar desde el día siguiente a la publicación"
+  },
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Sede electrónica municipal, https://calanas.sedelectronica.es/board (texto íntegro de las bases en el tablón de anuncios)",
+   "cita": "El texto íntegro de las bases se encuentra disponible en el tablón de anuncios de la sede electrónica municipal"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Sede electrónica del Ayuntamiento y Tablón de Anuncios",
+   "cita": "se publicarán en la sede electrónica del este Ayuntamiento y en el Tablón de Anuncios, para mayor difusión"
+  }
+ }
+}

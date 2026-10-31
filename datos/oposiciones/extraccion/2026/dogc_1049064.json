@@ -1,0 +1,65 @@
+{
+ "proceso": "dogc:1049064",
+ "documento": {
+  "id": "dogc:1049064",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1049064",
+  "fecha": "2026-07-07",
+  "huella": "f32f3328be22f81438413d20b589f6cac5f385f40dbb3740bec20067efaefc0b"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T08:18:17+00:00",
+ "lote": "msgbatch_01BrnYw6KkevFx7at547B5g8",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Agente de la Policía Local"
+   ],
+   "cita": "per cobrir 6 places d' AGENT DE LA POLICIA LOCAL, Escala d'Administració Especial",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "per cobrir 6 places d' AGENT DE LA POLICIA LOCAL, Escala d'Administració Especial, Subescala Serveis Especials",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "pel sistema d'oposició lliure, per cobrir 6 places",
+   "nivel": "literal"
+  },
+  "plazas_turno_libre": {
+   "valor": 6,
+   "cita": "pel sistema d'oposició lliure, per cobrir 6 places d' AGENT",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles, contados a partir del día siguiente de la última de las publicaciones",
+   "cita": "El termini improrrogable per presentar les sol·licituds és de 20 dies hàbils, comptats a partir del dia següent",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia de Barcelona; las posteriores publicaciones en la página web municipal",
+   "cita": "Les posteriors publicacions es faran a la pàgina web municipal",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, para constituir una bolsa de trabajo",
+   "cita": "i constitució d'una borsa de treball, aprovat per Decret d'Alcaldia",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "C1",
+   "cita": "no consta grupo en el texto"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 19,
+   "cita": "per cobrir 6 places d' AGENT DE LA POLICIA LOCAL, més 13 places addicionals per cobrir vacants"
+  }
+ }
+}

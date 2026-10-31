@@ -1,0 +1,89 @@
+{
+ "proceso": "bopt:BOPT-2026-06876",
+ "documento": {
+  "id": "bopt:BOPT-2026-06876",
+  "fuente": "BOPT",
+  "url": "https://www.dipta.cat/bopt/web/anunci/362508/borsa-de-treball-d-auxiliar-tecnic-a-bases-i-convocatoria-consorci-teatre-bartrina-reus",
+  "fecha": "2026-08-03",
+  "huella": "a854e015e41c823b6257c6c9668a57146ea2818ff9d9fc9317580f406d854258"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T08:18:24+00:00",
+ "lote": "msgbatch_01BrnYw6KkevFx7at547B5g8",
+ "no_son_bases": false,
+ "campos": {
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "El procediment de selecció és el concurs-oposició lliure amb entrevista.",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Certificat d'estudis primaris, graduat escolar, educació secundaria obligatòria o equivalent o cicle formatiu de grau mitjà",
+   "cita": "Estar en possessió del certificat d'estudis primaris, graduat escolar, educació secundaria obligatòria o equivalent",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalitat espanyola o de la UE (o familiares con derecho); tener 16 años y no superar la edad de jubilación forzosa; no padecer enfermedad que impida el ejercicio; no estar inhabilitado; no haber sido condenado por delitos contra la libertad e indemnidad sexual",
+   "cita": "Haver complert 16 anys i no superar l’edat establerta per a la jubilació forçosa",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "10 días hábiles desde el día siguiente a la publicación de las bases y la convocatoria en el BOPT",
+   "cita": "s’hauran de presentar en el termini de 10 dies hàbils, a comptar de l’endemà al de la publicació de les bases",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Telemáticamente en la sede electrónica del Ayuntamiento de Reus; presencialmente en las oficinas de administración del Consorci (Plaça del Teatre, 1, Reus); o en cualquiera de las formas del artículo 16 de la Ley 39/2015",
+   "cita": "Telemàticament, a través del tràmit habilitat a la seu electrònica de l’Ajuntament de Reus.",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón del Teatro Bartrina y página web www.teatrebartrina.cat; BOPT",
+   "cita": "Les bases i la convocatòria d’aquesta selecció es publicaran al Butlletí Oficial de la Província",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Coneixement de llengua catalana (obligatorio, eliminatorio, apto/no apto)",
+    "Coneixement de llengua castellana (solo no nacionales españoles, eliminatorio)",
+    "Prova pràctica sobre funcions del lloc i temari (obligatori, eliminatori, 15 punts, mínim 7,5)",
+    "Entrevista personal (obligatoria, no eliminatoria, 0 a 5 punts)",
+    "Fase de concurso: experiencia, servicios prestados y formación"
+   ],
+   "cita": "El procediment de selecció és el concurs-oposició lliure amb entrevista.",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Experiencia profesional hasta 3 puntos (1 punto por año); serveis prestats a l'Administració hasta 1 punto (0,05 por mes); formación hasta 2 puntos según horas",
+   "cita": "a) Experiència professional (fins a 3 punts) Es valorarà haver treballat al sector públic o privat",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Auxiliar tècnic/a (borsa de treball, plantilla de personal laboral del Consorci del Teatre Bartrina)",
+   "cita": "constitució d’una borsa de treball «d’auxiliar tècnic/a», de la plantilla de personal laboral del Consorci del Teatre Bartrina de Reus"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "laboral temporal",
+   "cita": "per a la posterior provisió, amb caràcter temporal, de places «d’auxiliar tècnic»"
+  },
+  "idioma_cooficial": {
+   "motivo": "cita_no_literal",
+   "valor": "Català, nivell B1 (suficiència); castellà, nivell B2 solo para no nacionales españoles",
+   "cita": "Estar en possessió del certificat de coneixement de llengua catalana equivalent al nivell elemental de català (nivell B1)"
+  },
+  "temas": {
+   "motivo": "cita_no_literal",
+   "valor": 7,
+   "cita": "Tema 1. Producció i gestió d’espectacles. Tema 7. Riscos professionals a l’espectacle en viu."
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, para cubrir plazas vacantes, sustituciones, acumulaciones de tareas o urgencias; vigencia de dos años",
+   "cita": "per a la posterior provisió, amb caràcter temporal, de places «d’auxiliar tècnic»"
+  }
+ }
+}

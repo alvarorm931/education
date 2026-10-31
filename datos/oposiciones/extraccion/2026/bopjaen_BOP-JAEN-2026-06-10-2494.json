@@ -1,0 +1,51 @@
+{
+ "proceso": "bopjaen:BOP-JAEN-2026-06-10-2494",
+ "documento": {
+  "id": "bopjaen:BOP-JAEN-2026-06-10-2494",
+  "fuente": "BOP-JAEN",
+  "url": "https://bop.dipujaen.es/descargarws.dip?fechaBoletin=2026-06-10&numeroEdicto=2494&boletinSuplemento=0&ejercicioBop=2026&tipo=bop&anioExpedienteEdicto=2026",
+  "fecha": "2026-06-10",
+  "huella": "380384adcee3671e73f693d47e22fd3ba2ef464fd414d04ac40b8e3b6f03619a"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T08:18:15+00:00",
+ "lote": "msgbatch_01BrnYw6KkevFx7at547B5g8",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Policía (turno libre)",
+    "Policía (movilidad sin ascenso)"
+   ],
+   "cita": "para cubrir cinco plazas de Policía, mediante el sistema de acceso de turno libre",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "para cubrir cinco (5) plazas de Policía, mediante el sistema de acceso de turno libre",
+   "nivel": "literal"
+  },
+  "plazas_turno_libre": {
+   "valor": 5,
+   "cita": "cinco (5) plazas de Policía, mediante el sistema de acceso de turno libre",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de anuncios municipal de la Sede Electrónica del Excmo. Ayuntamiento de Úbeda (https://sede.ubeda.es) y Portal de Transparencia (efectos informativos)",
+   "cita": "aparecerá publicado en el tablón de anuncios municipal de la Sede Electrónica del Excmo. Ayuntamiento de Úbeda",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "plazas de Policía, pertenecientes a la Escala de Administración Especial, Subescala de Servicios Especiales"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 6,
+   "cita": "cinco (5) plazas de Policía, mediante el sistema de acceso de turno libre y una (1) plaza"
+  }
+ }
+}

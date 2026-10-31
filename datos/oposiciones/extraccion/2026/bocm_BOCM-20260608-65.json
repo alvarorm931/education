@@ -1,0 +1,59 @@
+{
+ "proceso": "bocm:BOCM-20260608-65",
+ "documento": {
+  "id": "bocm:BOCM-20260608-65",
+  "fuente": "BOCM",
+  "url": "https://www.bocm.es/bocm-20260608-65",
+  "fecha": "2026-06-08",
+  "huella": "414ed3f3fdaab62c8eafb5d4fa06d548ae741d8a03f0a22f7bd0c39ded051b2d"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T08:18:14+00:00",
+ "lote": "msgbatch_01BrnYw6KkevFx7at547B5g8",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Capataz Servicios Mantenimiento",
+    "Capataz Servicios Auxiliares Instalaciones y Deportes",
+    "Capataz Servicios Generales Nocturnos",
+    "Capataz Servicios Generales",
+    "Capataz Servicios Mantenimiento taller mecánico municipal"
+   ],
+   "cita": "Dos plazas de Capataz, Capataz Servicios Mantenimiento, correspondientes a la Oferta de Empleo Público de 2023",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "en régimen de personal laboral fijo, mediante el sistema selectivo de concurso-oposición en turno de promoción interna",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mediante el sistema selectivo de concurso-oposición en turno de promoción interna",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles, a contar desde el día siguiente al de la publicación del presente anuncio en el BOLETÍN OFICIAL DE LA COMUNIDAD DE MADRID",
+   "cita": "El plazo de presentación de solicitudes de participación será de veinte días hábiles, a contar desde el día siguiente",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de anuncios y edictos electrónico del Ayuntamiento de Leganés y página web municipal (bases reguladoras)",
+   "cita": "Las bases reguladoras de los procesos selectivos se encuentran publicadas íntegramente en el tablón de anuncios y edictos electrónico del Ayuntamiento",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 12,
+   "cita": "Dos plazas de Capataz; Cuatro plazas de Capataz; Dos plazas de Capataz; Cuatro plazas de Capataz; Una plaza de Capataz"
+  },
+  "plazas_promocion_interna": {
+   "motivo": "valor_no_en_cita",
+   "valor": 12,
+   "cita": "en turno de promoción interna, de diversas plazas de la categoría 622, Capataz"
+  }
+ }
+}

@@ -1,0 +1,65 @@
+{
+ "proceso": "dogc:1046973",
+ "documento": {
+  "id": "dogc:1046973",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1046973",
+  "fecha": "2026-06-12",
+  "huella": "5ece785eb14953bd6a6804c77df13e58eb74f8758188926bf1d6fd54636b8da6"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T08:18:13+00:00",
+ "lote": "msgbatch_01BrnYw6KkevFx7at547B5g8",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Caporal Policia Local"
+   ],
+   "cita": "Denominació de la plaça segons plantilla: Caporal Policia Local",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C1",
+   "cita": "Grup de classificació: C1",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "Règim jurídic: funcionarial",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "Sistema de selecció: concurs oposició",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "per a la provisió d'1 plaça de Caporal de la Policia Local",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles desde el siguiente a la publicación del extracto de la convocatoria en el BOE",
+   "cita": "dins el termini improrrogable de vint (20) dies hàbils, a comptar des del següent al de la publicació de l'extracte",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Registro General del Ayuntamiento, presencial o telemáticamente mediante el registro electrónico",
+   "cita": "s'han de presentar al Registre General de l'Ajuntament, presencialment o de forma telemàtica mitjançant el servei de registre electrònic",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_promocion_interna": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "Torn: Promoció interna"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "BOPT y BOE (extracto de la convocatoria)",
+   "cita": "es publiquen íntegrament la convocatòria i les bases al BOPT de data 9 de juny de 2026"
+  }
+ }
+}

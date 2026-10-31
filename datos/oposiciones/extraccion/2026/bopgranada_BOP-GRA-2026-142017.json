@@ -1,0 +1,52 @@
+{
+ "proceso": "bopgranada:BOP-GRA-2026-142017",
+ "documento": {
+  "id": "bopgranada:BOP-GRA-2026-142017",
+  "fuente": "BOP-GRANADA",
+  "url": "https://bop.dipgra.es/publica/buscador-anuncios/anuncio/Aprobacion-de-las-bases-y-convocatoria-para-la-constitucion-de-una-bolsa-de-trabajo-temporal-como-monitor-a-voleibol-gimnasia-ritmica-o-fitness-del-Excmo-Ayuntamiento-de-Gojar-Gest-822-2026/",
+  "fecha": "2026-07-27",
+  "huella": "aca2112469e2614bf97822db1660f0ef8d9a9a469a29fe623233281645d8bd93"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T08:18:21+00:00",
+ "lote": "msgbatch_01BrnYw6KkevFx7at547B5g8",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "constitución de una bolsa de trabajo temporal como monitor/a voleibol, gimnasia rítmica o fitness",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Cómputo desde el día siguiente a la fecha de publicación en el Boletín Oficial de la Provincia",
+   "cita": "siendo el día siguiente a la fecha de publicación en dicho boletín, la que servirá para el cómputo del plazo",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Sede electrónica del Ayuntamiento de Gójar, tablón de anuncios y Boletín Oficial de la Provincia",
+   "cita": "Publicar las bases en la sede electrónica del Ayuntamiento de Gójar",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, bolsa de trabajo temporal como monitor/a de voleibol, gimnasia rítmica o fitness",
+   "cita": "constitución de una bolsa de trabajo temporal como monitor/a voleibol, gimnasia rítmica o fitness",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Monitor/a de voleibol",
+    "Monitor/a de gimnasia rítmica",
+    "Monitor/a de fitness"
+   ],
+   "cita": "constitución de una bolsa de trabajo temporal como MONITOR/A DE VOLEIBOL, GIMNASIA RÍTMICA o FITNESS"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "no"
+  }
+ }
+}

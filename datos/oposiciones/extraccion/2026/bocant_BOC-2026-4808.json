@@ -1,0 +1,60 @@
+{
+ "proceso": "bocant:BOC-2026-4808",
+ "documento": {
+  "id": "bocant:BOC-2026-4808",
+  "fuente": "BOC-CANT",
+  "url": "https://boc.cantabria.es/boces/verAnuncioAction.do?idAnuBlob=436753",
+  "fecha": "2026-06-15",
+  "huella": "b8d764d93e980b762192c84d6f72190d247175a1fd3937821fb819dfa2e780e5"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T08:17:51+00:00",
+ "lote": "msgbatch_01BrnYw6KkevFx7at547B5g8",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Médico/a de Urgencia Hospitalaria"
+   ],
+   "cita": "convocan pruebas selectivas para el acceso, mediante el sistema de concurso-oposición, a plazas de la categoría estatutaria de Médico/a de Urgencia Hospitalaria",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "A1",
+   "cita": "clasificada como Personal Sanitario, Grupo A, Subgrupo A1",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal estatutario fijo",
+   "cita": "cobertura por personal estatutario fijo de nuevo ingreso de 2 plazas por el turno de acceso libre",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mediante el sistema de concurso-oposición, a plazas de la categoría estatutaria",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 2,
+   "cita": "cobertura por personal estatutario fijo de nuevo ingreso de 2 plazas por el turno de acceso libre",
+   "nivel": "literal"
+  },
+  "plazas_turno_libre": {
+   "valor": 2,
+   "cita": "de nuevo ingreso de 2 plazas por el turno de acceso libre de la categoría",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de Cantabria",
+   "cita": "Contra la presente Orden cabe interponer recurso contencioso-administrativo ante la Sala",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "practicas_o_curso": {
+   "motivo": "cita_no_literal",
+   "valor": "no aparece en el texto",
+   "cita": ""
+  }
+ }
+}

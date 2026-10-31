@@ -1,0 +1,108 @@
+{
+ "proceso": "bopb:BOPB-202610099626",
+ "documento": {
+  "id": "bopb:BOPB-202610099626",
+  "fuente": "BOPB",
+  "url": "https://bop.diba.cat/anunci/3950373/modificacio-de-l-aprovacio-de-les-bases-i-la-convocatoria-per-a-la-constitucio-d-una-borsa-de-treball-de-personal-d-oficial-de-la-brigada-d-obres-ajuntament-de-sant-cugat-del-valles",
+  "fecha": "2026-06-05",
+  "huella": "38160e4330231af27c64579f47215cfcbf20aaa76bb481ad86f16fcfe6c95f80"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T08:18:25+00:00",
+ "lote": "msgbatch_01BrnYw6KkevFx7at547B5g8",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "C2",
+   "cita": "Grup C, subgrup C2 Titulació: ESO, cicle formatiu de grau mitjà",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "Règim jurídic: Laboral Denominació: Oficial/a tècnic/a Grup i subgrup professional",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "El procediment de selecció serà el de concurs oposició.",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "ESO, cicle formatiu de grau mitjà, formació professional de 1r grau o equivalent",
+   "cita": "Titulació: ESO, cicle formatiu de grau mitjà, formació professional de 1r grau o equivalent",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalitat (UE o asimilada), 16 anys sin exceder edad de jubilación, capacidad funcional, no separación de la función pública, carnet de conducir clase B. Para instalaciones: Cicle Formatiu de Grau Mitjà instal·lacions elèctriques o Carnet d'instal·lador elèctric",
+   "cita": "Estar en possessió del permís de conduir de la classe B.",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Sede electrónica del Ayuntamiento (Trámites → Recursos Humanos → Convocatorias de Empleo Público → Solicitar), con certificado digital o Idcat mòbil",
+   "cita": "Les sol·licituds per participar en la convocatòria es poden presentar a la seu electrònica de l'Ajuntament",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "BOPB y web del Ayuntamiento; anuncio en el DOGC; la seu electrónica municipal será el medio para los anuncios del proceso",
+   "cita": "el web de l'Ajuntament serà el mitjà on es publicaran tots els anuncis relatius al procés selectiu.",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Experiencia profesional en Administración pública (0,1 punto por mes, hasta 8), sector privado (0,09 por mes, hasta 6) y otras experiencias relacionadas (0,08 por mes, hasta 4); prueba competencial hasta 6 puntos",
+   "cita": "Per experiència professional a l'administració pública ... 0,1 punts per mes treballat o fracció, fins un màxim de 8 punts.",
+   "nivel": "fragmentos"
+  },
+  "bolsa": {
+   "valor": "sí, para constituir bolsas de trabajo para cubrir temporalmente necesidades de personal oficial en las especialidades convocadas",
+   "cita": "Finalitzat el procés de concurs, es crearà una borsa de treball per cadascuna de les especialitats convocades.",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Periodo de prueba de hasta 6 meses",
+   "cita": "S'establirà un període de prova, la durada del qual dependrà de la durada del contracte, per un màxim de 6 mesos de durada.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Oficial/a tècnic/a Mecànica",
+    "Oficial/a Pintura viària",
+    "Oficial/a Paleta",
+    "Oficial/a tècnic/a d'instal·lacions"
+   ],
+   "cita": "La borsa estarà formada per 4 llistes, corresponents als grups d'especialitats vinculats al lloc de treball"
+  },
+  "idioma_cooficial": {
+   "motivo": "cita_no_literal",
+   "valor": "Català nivell B1",
+   "cita": "Estar en possessió del certificat de nivell B1 de llengua catalana de la Secretaria de Política Lingüística o equivalent."
+  },
+  "tasa_euros": {
+   "motivo": "cita_no_literal",
+   "valor": 11,
+   "cita": "la taxa per drets d'examen d'aquesta convocatòria ... és d'11 euros"
+  },
+  "exenciones_tasa": {
+   "motivo": "cita_no_literal",
+   "valor": "Personas en situación de desocupación sin prestación económica y las que dispongan de informe de incapacidad de pago emitido por servicios sociales",
+   "cita": "Resten exemptes del seu pagament les persones aspirants que es trobin en situació de desocupació i que no percebin cap prestació econòmica"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "veinte días hábiles a contar desde el día siguiente a la publicación de la convocatoria en el DOGC",
+   "cita": "les persones aspirants disposaran ... el termini de vint dies hàbils a comptar de l'endemà de la data de publicació de la convocatòria al DOGC."
+  },
+  "ejercicios": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Fase de oposición: prova teórico-práctica (escrita y práctica), hasta 30 puntos, eliminatoria, mínimo 15 puntos",
+    "Coneixements de llengua catalana i castellana (apte/no apte)",
+    "Fase de concurso: experiencia profesional, hasta 8 puntos",
+    "Prueba competencial (entrevista y/o psicotécnicas), hasta 6 puntos"
+   ],
+   "cita": "Fase d'oposició (fins a 30 punts) ... La qualificació màxima que es podrà obtenir per a cadascuna de les especialitats en aquesta prova serà de 30 punts."
+  }
+ }
+}

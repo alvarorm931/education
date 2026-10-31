@@ -1,0 +1,61 @@
+{
+ "proceso": "dogc:1048617",
+ "documento": {
+  "id": "dogc:1048617",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1048617",
+  "fecha": "2026-07-02",
+  "huella": "80061df63de60919a04d99809c23957c316abc9e96092660753f4e2115d689b5"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T08:18:15+00:00",
+ "lote": "msgbatch_01BrnYw6KkevFx7at547B5g8",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "C1",
+   "cita": "grup de classificació C1, de la plantilla de personal funcionari",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "plantilla de personal funcionari de l'Ajuntament d'Agramunt",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "pel sistema de concurs oposició lliure, d'una plaça d'administratiu",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles desde el día siguiente a la publicación de la resolución en el BOE",
+   "cita": "El termini per la presentació de les sol·licituds serà de vint dies hàbils, a comptar des de el dia següent",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, constitución de una bolsa de trabajo",
+   "cita": "i constitució d'una borsa de treball",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Plaza de administrativo en régimen funcionarial",
+    "Bolsa con una jornada del 100% de la escala de administración general, subescala administrativa"
+   ],
+   "cita": "una plaça d'administratiu en règim funcionarial i una borsa amb una jornada del 100% de l'escala d'administració general"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 1,
+   "cita": "el sistema de concurs oposició lliure, d'una plaça d'administratiu en règim funcionarial"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Tablón de anuncios de la Corporación y sede electrónica municipal; la lista provisional de admitidos y excluidos se publicará en el plazo de un mes desde que finalice el plazo de solicitudes",
+   "cita": "Els successius anuncis referents a aquesta convocatòria, quan procedeixi, es faran públics en el Tauler d'Anuncis de la Corporació i Seu Electrónica municipal."
+  }
+ }
+}

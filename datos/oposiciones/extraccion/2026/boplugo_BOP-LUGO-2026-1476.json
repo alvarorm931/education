@@ -1,0 +1,52 @@
+{
+ "proceso": "boplugo:BOP-LUGO-2026-1476",
+ "documento": {
+  "id": "boplugo:BOP-LUGO-2026-1476",
+  "fuente": "BOP-LUGO",
+  "url": "https://deputacionlugo.gal/sites/deputacionlugo.org/files/inline-files/06-06-2026.pdf#page=2",
+  "fecha": "2026-06-06",
+  "huella": "39e6564c3d4377af1eee3a2887549ed9ffa0b434ac1403b06e49ade45dcf517b"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T08:18:23+00:00",
+ "lote": "msgbatch_01BrnYw6KkevFx7at547B5g8",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "selección de persoal laboral temporal",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "selección en réxime laboral temporal e mediante concurso – oposición",
+   "nivel": "sin_signos"
+  },
+  "plazo_solicitudes": {
+   "valor": "dez (10) días naturais a contar desde a publicación deste anuncio no Boletín Oficial da Provincia",
+   "cita": "o prazo de presentación de solicitudes de dez (10) días naturais a contar desde a publicación deste anuncio",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "páxina web do Concello (www.concellodebegonte.es/gl/concello/emprego), taboleiro municipal de anuncios da sede electrónica e oficinas municipais",
+   "cita": "As ditas bases están a disposición dos interesados na páxina web do Concello",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Xefe de Brigada",
+    "Peón de Brigada",
+    "Peón-Condutor"
+   ],
+   "cita": "selección de 1 Xefe de Brigada, 3 Peóns de Brigada e 1 Peón- Condutor"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 5,
+   "cita": "1 Xefe de Brigada, 3 Peóns de Brigada e 1 Peón- Condutor"
+  }
+ }
+}

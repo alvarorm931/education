@@ -1,0 +1,124 @@
+{
+ "proceso": "bopb:BOPB-202610113571",
+ "documento": {
+  "id": "bopb:BOPB-202610113571",
+  "fuente": "BOPB",
+  "url": "https://bop.diba.cat/anunci/3963239/bases-reguladores-i-convocatoria-per-a-la-constitucio-de-borses-de-treball-per-les-necessitats-de-personal-temporal-consell-comarcal-del-valles-oriental",
+  "fecha": "2026-07-03",
+  "huella": "1bf39d07005e0db8d21c2f51c689def11cd9fa57d609780ac767ecd08306de69"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T08:18:11+00:00",
+ "lote": "msgbatch_01BrnYw6KkevFx7at547B5g8",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "constitució de borses de treball per les necessitats de personal temporal",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "El sistema de selecció i provisió d’aquestes places serà per concurs oposició i torn lliure",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Administratiu/va: Batxiller o Tècnic/a de formació professional de grau mitjà (C1). Educador/a social: Grau en Educació Social o equivalent (A2). Tècnic/a de gestió: títol universitari de grau o equivalent (A2)",
+   "cita": "Estar en possessió del títol de Batxiller, del títol de Tècnic/a de formació professional de grau mitjà",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalitat espanyola o de la UE (amb requisits lingüístics); 16 anys i no superar l'edat de jubilació forçosa; capacitat funcional; no haver estat separat del servei de cap administració; no condemnat per delictes sexuals.",
+   "cita": "Haver complert 16 anys i no superar l'edat establerta per a la jubilació forçosa",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Català nivell C1 (obligatori i eliminatori, o exempció acreditada)",
+   "cita": "Certificat de coneixement del català del nivell C1 expedit per la Direcció General de Política Lingüística",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 dies hàbils a partir de l'endemà de la publicació de l'anunci al BOPB",
+   "cita": "El termini per presentar les sol·licituds serà de 20 dies hàbils, a comptar a partir de l’endemà",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Registre electrònic del Consell Comarcal o altres registres electrònics, presencial a les oficines de registre o a Correus",
+   "cita": "En el registre electrònic del Consell Comarcal o en el registre electrònic de les administracions públiques",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tauler d'edictes i seu electrònica del Consell Comarcal; BOPB; DOGC",
+   "cita": "Publicar íntegrament les bases i la convocatòria en el Butlletí Oficial de la província de Barcelona",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Prova de coneixements de llengua catalana (obligatòria, eliminatòria, apte/no apte)",
+    "Coneixements teòrics (tipus test/preguntes, 0-10 punts, mínim 5)",
+    "Coneixements pràctics (supòsits pràctics, 0-10 punts, mínim 5)",
+    "Fase de concurs: valoració de mèrits"
+   ],
+   "cita": "Contestar preguntes en relació amb el temari de l’annex",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Experiència professional fins a 4 punts (1 punt per any en administració; 0,80 per any en empresa privada); formació i altres mèrits del barem",
+   "cita": "Per desenvolupar activitats públiques substancialment coincidents o anàlogues en el seu contingut professional",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Administratiu/va (C1)",
+    "Educador/a social (A2)",
+    "Tècnic/a de gestió (A2)"
+   ],
+   "cita": "Llocs de treball d’administratiu/va del grup de classificació C1, subescala administrativa"
+  },
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "C1",
+   "cita": "Llocs de treball d’administratiu/va del grup de classificació C1, subescala administrativa"
+  },
+  "plazas_discapacidad": {
+   "motivo": "valor_no_numerico",
+   "valor": "reserva de discapacidad del 7%",
+   "cita": "es reservarà un contingent no inferior al set per cent de les vacants"
+  },
+  "tasa_euros": {
+   "motivo": "valor_no_numerico",
+   "valor": {
+    "A1_A2": 31.65,
+    "C1_C2": 13.55
+   },
+   "cita": "A1 i A2: 31,65 EUR C1 i C2: 13,55 EUR"
+  },
+  "exenciones_tasa": {
+   "motivo": "cita_no_literal",
+   "valor": "Exempció parcial del 50% per persones en situació legal d'atur sense prestació, amb certificat de l'OTG",
+   "cita": "Queden exempts parcialment del pagament els subjectes passius que es trobin en situació legal d'atur"
+  },
+  "temas": {
+   "motivo": "valor_no_numerico",
+   "valor": {
+    "administratiu": 14,
+    "educador": 19,
+    "tecnico_gestion": 22
+   },
+   "cita": "Annex 1. Temari administratiu/va — subgrup C1"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, per cobrir necessitats de personal temporal; vigència de 2 anys",
+   "cita": "La vigència ordinària de la borsa serà de dos anys a comptar des de la seva constitució"
+  },
+  "practicas_o_curso": {
+   "motivo": "cita_no_literal",
+   "valor": "període de pràctiques de sis mesos (funcionaris); període de prova per personal laboral",
+   "cita": "s'estableix un període de pràctiques amb una durada de sis mesos per a totes les places"
+  }
+ }
+}

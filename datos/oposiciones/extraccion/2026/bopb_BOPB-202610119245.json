@@ -1,0 +1,100 @@
+{
+ "proceso": "bopb:BOPB-202610119245",
+ "documento": {
+  "id": "bopb:BOPB-202610119245",
+  "fuente": "BOPB",
+  "url": "https://bop.diba.cat/anunci/3967999/aprovacio-de-les-bases-especifiques-i-convocatoria-del-proces-de-seleccio-per-a-la-creacio-d-una-borsa-de-treball-d-agent-de-la-policia-local-ajuntament-de-manlleu",
+  "fecha": "2026-07-14",
+  "huella": "5dc6faa3e275d48f2090f1a6eef833b8dd6cfe70a3ab550d36878bb7cfe09e99"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T08:18:18+00:00",
+ "lote": "msgbatch_01BrnYw6KkevFx7at547B5g8",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "AGENT DE LA POLICIA LOCAL",
+   "cita": "Denominació del lloc de treball: AGENT DE LA POLICIA LOCAL Nivell de titulació",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C1",
+   "cita": "agent policia local. Pel que fa a la forma de pagament",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "Sistema selectiu: concurs-oposició",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Título de bachillerato, técnico o equivalente o superior",
+   "cita": "Títol de batxillerat, tècnic o un altre d'equivalent o superior",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles desde el día siguiente a la publicación de la convocatoria en el DOGC y el BOPB",
+   "cita": "el termini de presentació de sol·licituds és de vint dies hàbils a comptar de l'endemà",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Prueba cultural (40 preguntas tipo test, eliminatoria, mínimo 5 puntos)",
+    "Prueba de catalán (apto/no apto, eliminatoria)",
+    "Prueba de aptitud física (apto/no apto, eliminatoria)",
+    "Prueba psicotécnica (apto/no apto, eliminatoria)",
+    "Fase de concurso (méritos, 6 puntos)",
+    "Reconocimiento médico (apto/no apto)"
+   ],
+   "cita": "Consisteix en contestar, en un període màxim de 45 minuts, un qüestionari de 40 preguntes tipus test",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Antigüedad hasta 1,5 puntos; formación hasta 1 punto; titulación de grado universitario 1,5 puntos; catalán hasta 1 punto; recompensas y distinciones hasta 1 punto",
+   "cita": "La fase de concurs tindrà una puntuació total de 6 punts.",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, para cubrir interinamente ausencias, vacantes y necesidades urgentes del puesto de agente de la Policía Local, con vigencia de dos años",
+   "cita": "La vigència d'aquesta borsa de treball serà de dos anys",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario interino",
+   "cita": "amb un règim de funcionari interí de l'Ajuntament de Manlleu"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 0,
+   "cita": "Nombre de llocs: borsa de treball"
+  },
+  "otros_requisitos": {
+   "motivo": "cita_no_literal",
+   "valor": "Nacionalidad española; 18 años cumplidos y no superar la edad de jubilación forzosa; altura mínima 1,65 m hombres y 1,55 m mujeres; carnet de conducir clase B; no tener antecedentes penales; no haber sido separado de la Administración; no padecer enfermedades ni impedimentos físicos o psíquicos",
+   "cita": "Tenir la nacionalitat espanyola, de conformitat amb la legislació vigent"
+  },
+  "idioma_cooficial": {
+   "motivo": "cita_no_literal",
+   "valor": "catalán, nivel intermedio B2",
+   "cita": "Llengua catalana: nivell intermedi de la llengua catalana (B2)"
+  },
+  "exenciones_tasa": {
+   "motivo": "cita_no_literal",
+   "valor": "Exención de la tasa aplicable al aspirante que cumpla los requisitos legales acreditados",
+   "cita": "excepte en el supòsit en què l'aspirant compleixi els requisits per a la seva exempció degudament acreditats"
+  },
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Obligatoriamente por la sede electrónica del Ayuntamiento, www.manlleu.cat",
+   "cita": "Les sol·licituds d'admissió en el procés selectiu s'hauran de presentar necessàriament a la seu electrònica"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Tablón electrónico municipal de anuncios; web municipal; DOGC y BOPB para la convocatoria; las sucesivas en el tablón electrónico",
+   "cita": "els successius anuncis es publicaran exclusivament en el tauler electrònic d'anuncis de l'Ajuntament"
+  }
+ }
+}

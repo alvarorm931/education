@@ -1,0 +1,48 @@
+{
+ "proceso": "bopb:BOPB-202610116065",
+ "documento": {
+  "id": "bopb:BOPB-202610116065",
+  "fuente": "BOPB",
+  "url": "https://bop.diba.cat/anunci/3965362/bases-especifiques-i-convocatoria-del-proces-selectiu-de-funcionari-aria-interi-ina-tecnic-a-superior-grup-a-subgrup-a1-tecnic-a-de-proteccio-de-la-salut-pel-sistema-de-concurs-oposicio-per-cobrir-interinament-places-vacants-fins-a-la-provisio-definitiva-i-la-constitucio-d-una-borsa-de-treball-ajuntament-de-castelldefels",
+  "fecha": "2026-07-08",
+  "huella": "4777a40c7fad04bf66e05838638d7dd46c368e21c1730a19cf5f796b1d6d53a2"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T08:17:59+00:00",
+ "lote": "msgbatch_01BrnYw6KkevFx7at547B5g8",
+ "no_son_bases": false,
+ "campos": {
+  "publicaciones": {
+   "valor": "web municipal (Procesos de selección - Ajuntament de Castelldefels)",
+   "cita": "publicada íntegrament al web municipal (Processos de selecció - Ajuntament de Castelldefels)",
+   "nivel": "sin_signos"
+  },
+  "bolsa": {
+   "valor": "sí, para constituir una bolsa de trabajo",
+   "cita": "fins a la provisió definitiva i la constitució d’una borsa de treball",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario/a interino/a, técnico/a superior, tècnic/a de protecció de la salut",
+   "cita": "funcionari/a interí/na, tècnic/a superior, grup A, subgrup A1, tècnic/a de protecció de la salut"
+  },
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "A1",
+   "cita": "grup A, subgrup A1, tècnic/a de protecció de la salut"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario interino",
+   "cita": "funcionari/a interí/na, tècnic/a superior, grup A, subgrup A1"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "pel sistema de concurs-oposició, per cobrir interinament places vacants"
+  }
+ }
+}

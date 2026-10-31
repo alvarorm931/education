@@ -1,0 +1,110 @@
+{
+ "proceso": "boe:BOE-A-2026-15714",
+ "documento": {
+  "id": "bopb:BOPB-202610120315",
+  "fuente": "BOPB",
+  "url": "https://bop.diba.cat/anunci/3969277/bases-reguladores-per-a-la-seleccio-mitjancant-el-sistema-de-concurs-oposicio-en-torn-lliure-d-una-placa-de-personal-laboral-fix-categoria-oficial-polivalent-aixi-com-la-constitucio-d-una-borsa-de-treball-ajuntament-de-sant-feliu-de-codines",
+  "fecha": "2026-07-13",
+  "huella": "7a21d97ecf1a721d8860d790ecbed4ee49070b692abb59d98682bba06145c3b1"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T08:18:21+00:00",
+ "lote": "msgbatch_01BrnYw6KkevFx7at547B5g8",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "Personal laboral fix, categoria Oficial Polivalent",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "selecció, mitjançant el sistema de concurs oposició, torn lliure",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "Nombre de places: 1 (una)",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Título de Graduado en ESO o titulación equivalente",
+   "cita": "Estar en possessió del títol de grau en ESO o titulació equivalent.",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española (con excepciones del art. 57 TREBEP); capacidad funcional; no estar separado del servicio ni inhabilitado; haber cumplido 16 años y no superar la edad de jubilación forzosa; permiso de conducir B; cumplir requisitos de la normativa del contrato de relevo.",
+   "cita": "Haver complert 16 anys i no superar l'edat establerta per a la jubilació forçosa.",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Catalán nivel B1",
+   "cita": "Acreditar coneixements de llengua catalana de nivell B1 (nivell elemental de català)",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles desde el día siguiente a la publicación de la convocatoria en el DOGC",
+   "cita": "El termini de presentació de sol·licituds ... serà de 20 dies hàbils, comptadors des de l’endemà de la publicació",
+   "nivel": "fragmentos"
+  },
+  "presentacion": {
+   "valor": "Presencial en el registro del Ayuntamiento (9 a 14 h), o por cualquiera de los medios del art. 16.4 LPAC",
+   "cita": "La sol·licitud també es pot presentar per qualsevol dels mitjans que estableix l'article 16.4 de la LPAC.",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón electrónico (E-TAULER), BOPB, extracto en DOGC y web https://santfeliudecodines.eadministracio.cat",
+   "cita": "es publicaran al tauler electrònic de l'Ajuntament de Sant Feliu de Codines (E-TAULER), al Butlletí Oficial",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Primer ejercicio: test de 20 preguntas sobre temario general (máx. 10 puntos)",
+    "Segundo ejercicio: casos teórico-prácticos sobre temario específico (máx. 20 puntos)",
+    "Tercer ejercicio: prueba de catalán nivel B1 (apto/no apto)",
+    "Cuarto ejercicio: prueba de castellano para no nacionales (apto/no apto)"
+   ],
+   "cita": "Consistirà en la realització d’una bateria de 20 preguntes tipus test",
+   "nivel": "literal"
+  },
+  "temas": {
+   "valor": 4,
+   "cita": "Tema 1. El municipi. ... Tema 4. Les competències municipals",
+   "nivel": "fragmentos"
+  },
+  "meritos": {
+   "valor": "Experiencia profesional (máx. 11 pts); titulaciones (máx. 3 pts); formación profesional (máx. 5 pts); otros méritos, nivel de catalán (máx. 1 pt). Total fase concurso máx. 20 pts.",
+   "cita": "La fase de concurs consistirà en la valoració dels mèrits al·legats i acreditats documentalment",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "Sí, para cubrir sustituciones derivadas de cualquier incidencia; duración de dos años",
+   "cita": "La finalitat de la borsa és cobrir substitucions derivades de qualsevol incidència",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Oficial Polivalent"
+   ],
+   "cita": "una plaça de personal laboral fix, categoria Oficial Polivalent, assimilada al grup C2"
+  },
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "C2",
+   "cita": "Oficial Polivalent, assimilada al grup C2"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "la selecció, mitjançant el sistema de concurs oposició en torn lliure"
+  },
+  "practicas_o_curso": {
+   "motivo": "cita_no_literal",
+   "valor": "Periodo de prueba de 2 meses",
+   "cita": "Es preveu la realització d’un període de prova de 2 mesos."
+  }
+ }
+}
