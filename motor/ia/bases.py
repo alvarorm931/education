@@ -125,8 +125,8 @@ def _documento(raiz: Path, p: dict) -> dict | None:
     if fuente == "boe" and p.get("ambito") == "local":
         return None  # el BOE solo trae el extracto de las bases locales
     origen = next((a for a in p.get("actos") or [] if a.get("id") in (xid, p.get("id"))), None)
-    if not origen:
-        return None
+    if not origen or origen.get("tipo") not in ("convocatoria", "bases", None):
+        return None  # un nombramiento o una lista no son las bases (el 29 % de un lote de «todos», 31/10/2026)
     t = texto_anuncio(raiz, fuente, xid, origen["fecha"])
     if t and len(t) > 800:
         return {"id": p["id"], "fuente": origen.get("fuente"), "url": origen.get("url"), "fecha": origen["fecha"],
