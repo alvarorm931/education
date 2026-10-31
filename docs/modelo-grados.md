@@ -363,13 +363,20 @@ textos largos quedan solo en el almacén privado; en `sondas` va su tamaño y su
   en un JSON público («/page-data/…/page-data.json», en su dominio de recursos `assets.griddo.nebrija.com`): se lee
   como una página más (`tarifas_grado.lineas_json`, 26 grados con precio de 2026-2027).
 
-  Resultado (30/10, 23:50, con las reglas nuevas, la relectura de las listas de las 45 privadas y sus centros y la
-  de sus páginas de grado): **527 de 1.410 grados y dobles de privadas con precio por curso** (159 de su página y
+  Resultado (31/10, 07:20, con las reglas nuevas, la relectura de las listas de las 45 privadas y sus centros y la
+  de sus páginas de grado): **551 de 1.410 grados y dobles de privadas con precio por curso** (183 de su página y
   368 de sus listas de precios), de 28 universidades (antes de estas reglas, 358 de 27). Entran sobre todo San
-  Pablo-CEU (74), Nebrija (26 más, de los datos de su página de precios), Francisco de Vitoria (53), Deusto (32), San
-  Jorge (27) y Alfonso X (22). 51 llevan varios precios de la lista («desde»). De los 101 dobles con precio, 10
-  tienen total estimado (los demás, el precio de un curso). Y 15 grados de centros adscritos de públicas con el
-  precio de su web.
+  Pablo-CEU (74), Nebrija (26 más, de los datos de su página de precios), Francisco de Vitoria (53), Deusto (32),
+  Comillas (28), San Jorge (27) y Alfonso X (22). 51 llevan varios precios de la lista («desde»). De los 113 dobles
+  con precio, 10 tienen total estimado (los demás, el precio de un curso). Y 15 grados de centros adscritos de
+  públicas con el precio de su web.
+
+  **Comillas (31/10 de madrugada).** El RUCT da su web antigua (`www.upcomillas.es`, que responde 421 a GitHub) y el
+  rastreo no salía de ese dominio: `web_privadas.WEB_ACTUAL` le pone la actual (`www.comillas.edu`), con 29 sitemaps
+  y 31 páginas de grado leídas. Además su servidor dice Latin-1 y sirve UTF-8, y el «€» llegaba como «â‚¬»:
+  `tarifas_grado.texto_bien_decodificado` lo detecta y vuelve a leer en UTF-8. Cada página da matrícula, mensualidad
+  y total (Derecho: 1.657,80 € + 9 × 1.576,80 € = 15.849 €, comprobado en la página); no dice el curso (la fecha de
+  inicio es el 01/09/2027), y la ficha no lo pone.
 
   **Quinta revisión independiente (30/10, 23:30, antes de sumar Nebrija).** Un revisor sin acceso al código comparó 12 precios nuevos con su
   fuente (Deusto, San Pablo-CEU, Cardenal Herrera, Alfonso X y Mare Nostrum, San Jorge, Francisco de Vitoria; informe
@@ -384,12 +391,10 @@ textos largos quedan solo en el almacén privado; en `sondas` va su tamaño y su
   dirección casa con el grado pero el título dice que es de otro estudio (un doble para un grado simple, una FP,
   otro grado, o un doble con otros grados), la página no vale para ese grado (`web_privadas.titulo_contradice`);
   un título genérico («Admisión») no contradice nada. Descartó 29 uniones, 4 con precio (por ejemplo, un doble de
-  Economía con Finanzas tomado por el de Economía y ADE). De las 478 privadas sin precio cuya página se leyó, 197
+  Economía con Finanzas tomado por el de Economía y ADE). De las 477 privadas sin precio cuya página se leyó, 196
   tienen un formulario que pide el correo: la ficha lo dice como hecho medido («la universidad no publica el
   precio en la página del grado; su formulario pide correo»), sin juicio (`pagina_privada_sin_precio`). Sin
-  ninguna página leída: Navarra (sin sitemap; su portada no enlaza los grados; su lista de precios sí se lee), Comillas (responde 421 a
-  GitHub; desde el servidor de España responde, pero no tiene sitemap legible y su portada no enlaza ningún grado),
-  UOC (403) y Ramón Llull (sus grados están en las webs de sus centros).
+  ninguna página leída: Navarra (sin sitemap; su portada no enlaza los grados; su lista de precios sí se lee), UOC (403) y Ramón Llull (sus grados están en las webs de sus centros).
 
 - **Listas oficiales de precios halladas a mano (30/10 por la tarde)**, para las privadas sin precio: una búsqueda
   dirigida en el dominio de cada universidad (sin copias de terceros), en `tarifas_grado.URLS_CONOCIDAS`. Leídas:
@@ -590,7 +595,7 @@ pasada sobre los mismos datos no crea ninguna.
 
 Une catálogo, genérico, QEDU, indicadores del SIIU, plan del BOE, ficha del RUCT y precios de las privadas sin
 pedir nada a ninguna fuente, y marca cada ficha como indexable o no, con el motivo. Con todo lo capturado hasta el
-30/10/2026 a las 23:50:
+31/10/2026 a las 07:20:
 
 | | Fichas |
 |---|---|
@@ -600,7 +605,7 @@ pedir nada a ninguna fuente, y marca cada ficha como indexable o no, con el moti
 | Con nota de corte | 2.532 |
 | Con precio de primera matrícula (públicas) | 2.113 de 2.239 grados y 498 de 647 dobles de públicas |
 | De ellos, con el precio de la norma de su comunidad (QEDU no lo da) | 508 |
-| Privadas con precio por curso | 527 de 1.410 (y 15 centros adscritos de públicas con el precio de su web) |
+| Privadas con precio por curso | 551 de 1.410 (y 15 centros adscritos de públicas con el precio de su web) |
 | Con histórico de notas de corte comprobado | 1.430 (1.569 centros; 963 con cinco cursos o más; 1.030 con los cupos de reserva) |
 | Con inserción laboral | 1.703 |
 | Con indicadores de rendimiento del SIIU | 3.125 |
@@ -608,11 +613,11 @@ pedir nada a ninguna fuente, y marca cada ficha como indexable o no, con el moti
 | Grados con plan del BOE | 3.095 de 3.265 |
 | Grados con plan comprobado | 2.145 (1.536 por asignaturas, el resto por materias) |
 | Dobles con los planes de sus dos grados comprobados | 557 |
-| **Indexables** con los datos mínimos decididos | **2.162** (1.758 grados y 404 dobles; 1.775 de públicas y 387 de privadas) |
+| **Indexables** con los datos mínimos decididos | **2.181** (1.766 grados y 415 dobles; 1.775 de públicas y 406 de privadas) |
 
 El resto va con `noindex` y su motivo: 950 con plan que no
 cuadra, 644 sin plan (o doble sin los dos planes comprobados) y
-881 sin nota ni precio (casi todas, privadas que no publican el precio); una
+857 sin nota ni precio (casi todas, privadas que no publican el precio); una
 ficha puede tener varios.
 
 Para rehacerlo todo desde `sondas`: bajar las carpetas con `datos/estudios/grados/` y ejecutar en orden
@@ -662,10 +667,9 @@ comprobados por asignaturas:
    `trabajo/memorias_prioridad_v2.txt`). El lector ya está en las fichas
    (`fichas.plan_de_memoria`: el plan de la memoria entra si el del BOE no cuadra y él sí cuadra con los créditos
    por tipo del RUCT; con una página sin leer no cuenta como comprobado).
-3. Privadas sin precio (883): la Europea retiró sus PDF de 2025-2026 (404 también desde el
+3. Privadas sin precio (859): la Europea retiró sus PDF de 2025-2026 (404 también desde el
    servidor de España, 30/10) y la tabla 2026-2027 solo aparece en copias de terceros, que no son fuente; Católica de
-   Valencia publica su tabla 2026-2027 en una ruta que su robots.txt prohíbe (no se pide); Comillas, sin sitemap ni
-   enlaces a sus grados en la portada; UNIR, VIU, UDIMA, CUNEF y la Europea no publican tabla; lo que no esté
+   Valencia publica su tabla 2026-2027 en una ruta que su robots.txt prohíbe (no se pide); UNIR, VIU, UDIMA, CUNEF y la Europea no publican tabla; lo que no esté
    publicado, peticiones a cada universidad cuando el portal tenga dirección pública
    (`docs/estrategia-informacion-cerrada.md` §3.4). El índice de Common Crawl de los dominios de centros dio 710
    direcciones más y solo 3 grados con importe: esa vía está agotada.
