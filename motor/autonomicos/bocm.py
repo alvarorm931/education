@@ -39,7 +39,7 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 
 from motor.archivo import Archivo, solo_huella_por_defecto
-from motor.autonomicos.comun import Freno
+from motor.autonomicos.comun import Freno, estado_dia
 from motor.boe.clasificar import REGLAS_ACTO, REGLAS_MODALIDAD, _primera, alcance, normalizar
 from motor.http import obtener
 from motor.limpieza import parrafos_seguros
@@ -195,15 +195,28 @@ def ultimo_numero(raiz: Path, d: date) -> tuple[int, date] | None:
     """Último boletín leído del mismo año antes de d (los números empiezan en 1 cada año)."""
     x = d - timedelta(days=1)
     while x.year == d.year and (d - x).days <= 20:
-        r = _ruta(raiz, "dias", x, "json")
-        if r.exists():
-            inf = json.loads(r.read_text(encoding="utf-8"))
-            if inf.get("resultado") == "ok" and str(inf.get("numero") or "").isdigit():
-                extra = [int(json.loads(f.read_text(encoding="utf-8")).get("numero") or 0)
-                         for f in r.parent.glob(f"{x:%d}-*.json")]
-                return max([int(inf["numero"]), *extra]), x
+        numeros = numeros_leidos(raiz, x)
+        if numeros:
+            return max(numeros), x
         x -= timedelta(days=1)
     return None
+
+
+def numeros_leidos(raiz: Path, x: date) -> list[int]:
+    """Números de los boletines leídos bien del día x: el del informe del día («DD.json») y los hallados al buscar
+    huecos («DD-NNN.json»). Antes solo contaba el del día: con el informe del día en error y el boletín recuperado
+    por los huecos (julio de 2026), los días siguientes no sabían su número y la carga se paraba ahí (del 9/9 al
+    27/10/2026 sin leer)."""
+    r = _ruta(raiz, "dias", x, "json")
+    out = []
+    for f in [r, *sorted(r.parent.glob(f"{x:%d}-*.json"))] if r.parent.exists() else []:
+        try:
+            inf = json.loads(f.read_text(encoding="utf-8")) if f.exists() else {}
+        except ValueError:
+            continue
+        if inf.get("resultado") == "ok" and str(inf.get("numero") or "").isdigit():
+            out.append(int(inf["numero"]))
+    return out
 
 
 def procesar_dia(d: date, raiz: Path, archivo: Archivo) -> dict:
@@ -404,8 +417,9 @@ def main(argv: list[str] | None = None) -> int:
             print("Tiempo agotado; se continúa en la siguiente ejecución")
             break
         ruta = _ruta(a.salida, "dias", d, "json")
-        if a.saltar_existentes and ruta.exists() and \
-                json.loads(ruta.read_text(encoding="utf-8")).get("resultado") in {"ok", "sin_boletin"}:
+        hecho, reintento = estado_dia(ruta)
+        if a.saltar_existentes and (hecho or numeros_leidos(a.salida, d)):
+            # leído (o recuperado al buscar huecos, «DD-NNN.json»): no se vuelve a pedir
             d += timedelta(days=1)
             continue
         try:
@@ -415,7 +429,7 @@ def main(argv: list[str] | None = None) -> int:
         ruta.parent.mkdir(parents=True, exist_ok=True)
         ruta.write_text(json.dumps(inf, ensure_ascii=False, indent=1), encoding="utf-8")
         informes.append(inf)
-        if freno.anotar(inf):
+        if freno.anotar(inf, reintento=reintento):
             break
         print(f"BOCM {d}: {inf.get('resultado')} {inf.get('disposiciones', '')} disposiciones, "
               f"{inf.get('empleo_publico', '')} de empleo público")

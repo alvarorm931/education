@@ -88,3 +88,16 @@ def test_huecos_no_se_buscan_cada_dia(tmp_path, monkeypatch):
     assert res == [{"numero": 191, "fecha": None, "resultado": "no_encontrado"}] and len(pedidas) == 3 == len(pausas)
     assert bocm.rellenar_huecos(tmp_path, a, hoy=date(2026, 11, 10)) == [] and len(pedidas) == 3
     assert len(bocm.rellenar_huecos(tmp_path, a, hoy=date(2026, 12, 1))) == 1 and len(pedidas) == 6
+
+
+def test_numero_del_boletin_recuperado_por_los_huecos(tmp_path):
+    import json as _json
+    from datetime import date as _date
+    from motor.autonomicos import bocm as b
+    dia = b._ruta(tmp_path, "dias", _date(2026, 7, 15), "json")
+    dia.parent.mkdir(parents=True)
+    dia.write_text(_json.dumps({"fecha": "2026-07-15", "resultado": "error_formato", "alertas": []}))
+    (dia.parent / "15-167.json").write_text(_json.dumps({"fecha": "2026-07-15", "resultado": "ok", "numero": "167",
+                                                         "extraordinario": True}))
+    assert b.numeros_leidos(tmp_path, _date(2026, 7, 15)) == [167]
+    assert b.ultimo_numero(tmp_path, _date(2026, 7, 16)) == (167, _date(2026, 7, 15))
