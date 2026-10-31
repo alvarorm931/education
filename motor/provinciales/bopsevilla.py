@@ -19,7 +19,8 @@ BOLETIN = saga.Boletin(
     fuente="bopsevilla", siglas="BOP-SEVILLA", base="https://bopsevilla.dipusevilla.es", provincia="Sevilla",
     nombres=("Boletín Oficial de la Provincia de Sevilla",), inicio=date(2022, 1, 1),
     cabecera_pdf=re.compile(r"^(?:Boletín Oficial de la Provincia de Sevilla|Número \d+ .*|Página \d+.*|"
-                            r"BOP-SE-\d{4}-\d+|.*Pág\. \d+|CVE: BOP-SE-\d{4}-\d+.*)$", re.IGNORECASE))
+                            r"BOP-SE-\d{4}-\d+|.*Pág\. \d+|CVE: BOP-SE-\d{4}-\d+.*)$", re.IGNORECASE),
+    publica_sabados=True)
 
 
 def main(argv: list[str] | None = None) -> int:

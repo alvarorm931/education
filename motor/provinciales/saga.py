@@ -54,9 +54,19 @@ class Boletin:
     nombres: tuple[str, ...]
     inicio: date            # primer día que el portal sirve con este formato
     cabecera_pdf: re.Pattern
+    # El BOP de Sevilla también salía los sábados (en 2023, del n.º 4 al 296 faltaba uno de cada seis): esos días se
+    # piden al portal en lugar de darlos por sin boletín
+    publica_sabados: bool = False
 
     def url_dia(self, d: date) -> str:
         return f"{self.base}/publica/consulta-de-bops/buscador/BOP-{d:%d-%m-%Y}/"
+
+
+def _fin_de_semana_sin_pedir(ruta: Path) -> bool:
+    try:
+        return json.loads(ruta.read_text(encoding="utf-8")).get("nota") == "fin de semana"
+    except (OSError, ValueError):
+        return False
 
 
 def _texto(s: str) -> str:
@@ -271,7 +281,9 @@ def main(b: Boletin, argv: list[str] | None = None) -> int:
     while d >= desde:
         ruta = _ruta(b, a.salida, "dias", d, "json")
         hecho, reintento = estado_dia(ruta)
-        if d.weekday() >= 5 and not hecho:
+        if b.publica_sabados and d.weekday() == 5 and hecho and _fin_de_semana_sin_pedir(ruta):
+            hecho = False
+        if (d.weekday() == 6 or d.weekday() == 5 and not b.publica_sabados) and not hecho:
             escribir_json(ruta, {"fecha": d.isoformat(), "resultado": "sin_boletin", "nota": "fin de semana",
                                  "alertas": []})
             hecho = True
