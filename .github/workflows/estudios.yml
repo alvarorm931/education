@@ -55,7 +55,11 @@ jobs:
       - run: pip install -q -e ".[estudios,almacen]"
       - name: Chromium para las páginas que solo se pintan con JavaScript (extracción con --navegador)
         if: contains(matrix.args, '--navegador')
-        run: pip install -q "playwright>=1.45" && python -m playwright install --with-deps chromium
+        # en el servidor propio no hay sudo: solo el navegador (las librerías del sistema las instala su administrador)
+        run: |
+          pip install -q "playwright>=1.45"
+          if [ "$RUNNER_ENVIRONMENT" = self-hosted ]; then python -m playwright install chromium
+          else python -m playwright install --with-deps chromium; fi
       - name: Traer entradas de la rama sondas
         if: inputs.entrada != ''
         env:

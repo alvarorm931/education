@@ -197,6 +197,16 @@ def test_codigos_ya_leidos_por_nivel_y_sello():
 
 def test_memoria_va_a_su_carpeta(monkeypatch, tmp_path):
     monkeypatch.setattr(ruct, "leer_ficha", lambda l, c, tipo="M": {"codigo": c, "fuente": {}})
-    monkeypatch.setattr(ruct, "leer_memoria", lambda l, f, max_paginas=0, ligera=False: {"plan": []})
+    monkeypatch.setattr(ruct, "leer_memoria", lambda l, f, max_paginas=0, ligera=False, fin=None: {"plan": []})
     ruct.ejecutar(["A"], tmp_path, "memoria", 5, pausa_corte=0)
     assert (tmp_path / "datos/estudios/masters/ruct_memoria/A.json").exists()
+
+
+def test_memoria_cortada_por_tiempo_no_se_guarda(monkeypatch, tmp_path):
+    # la memoria que no se acaba a tiempo no cuenta como leída: queda para la siguiente pasada
+    monkeypatch.setattr(ruct, "leer_ficha", lambda l, c, tipo="M": {"codigo": c, "fuente": {}})
+    monkeypatch.setattr(ruct, "leer_memoria",
+                        lambda l, f, max_paginas=0, ligera=False, fin=None: {"plan": [], "avisos": ["tiempo agotado"]})
+    res = ruct.ejecutar(["A", "B"], tmp_path, "memoria", 5, pausa_corte=0)
+    assert not (tmp_path / "datos/estudios/masters/ruct_memoria/A.json").exists()
+    assert res["sin_leer"] == 2 and "tiempo agotado" in res["alerta"]

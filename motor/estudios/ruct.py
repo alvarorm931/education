@@ -457,7 +457,8 @@ def _comprobar(pagina: str, nombre_esperado: str) -> bool:
     return _clave(nombre_esperado).startswith(a[: max(10, len(a) - 3)])
 
 
-def leer_memoria(lector: Lector, ficha: dict, max_paginas: int = 250, ligera: bool = False) -> dict:
+def leer_memoria(lector: Lector, ficha: dict, max_paginas: int = 250, ligera: bool = False,
+                 fin: float | None = None) -> dict:
     """ligera=True: sin la página de cada asignatura (sus nombres salen igual de la materia; sus créditos, del plan
     del BOE) ni la de resultados de aprendizaje. Unas 15 peticiones menos por máster, para cuando el servidor
     pide ir despacio."""
@@ -475,6 +476,11 @@ def leer_memoria(lector: Lector, ficha: dict, max_paginas: int = 250, ligera: bo
         return {"cod": cod, "error": f"memoria no disponible o de otro título (estado {estado})"}
 
     def pagina(ruta: str) -> str | None:
+        # el límite de tiempo se mira en cada página: una memoria de 50 páginas despacio pasa de 10 minutos
+        if fin is not None and time.time() > fin:
+            if "tiempo agotado" not in avisos:
+                avisos.append("tiempo agotado")
+            return None
         if lector.peticiones > inicio + max_paginas:
             avisos.append(f"límite de {max_paginas} páginas alcanzado")
             return None
@@ -723,7 +729,12 @@ def ejecutar(codigos: list[str], raiz: Path, nivel: str, max_minutos: float, pau
         if "error" in ficha:
             errores[ficha["error"]] += 1
         elif nivel == "memoria":
-            ficha["memoria"] = leer_memoria(lector, ficha, max_paginas=MAX_PAGINAS, ligera=ligera)
+            ficha["memoria"] = leer_memoria(lector, ficha, max_paginas=MAX_PAGINAS, ligera=ligera, fin=fin)
+            if "tiempo agotado" in (ficha["memoria"].get("avisos") or []):
+                # memoria a medias: no se guarda, así la siguiente pasada la lee entera (--pendientes-de-sondas)
+                pendientes.insert(0, codigo)
+                alerta = f"tiempo agotado: quedan {len(pendientes)} códigos"
+                break
             resumenes[codigo] = resumen_memoria(ficha["memoria"])
         (destino / f"{codigo}.json").write_text(json.dumps(ficha, ensure_ascii=False, indent=1), encoding="utf-8")
         hechos += 1
