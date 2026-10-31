@@ -1,35 +1,27 @@
 {
- "fecha": "2026-10-31T14:06:13+00:00",
- "fecha_madrid": "31/10 15:06",
+ "fecha": "2026-10-31T14:18:39+00:00",
+ "fecha_madrid": "31/10 15:18",
  "ventana_horas": 6.0,
  "resumen": {
-  "ejecuciones_revisadas": 127,
+  "ejecuciones_revisadas": 126,
   "fallos": 0,
   "fallos_pendientes": 0,
   "relanzados": 0,
-  "colas_largas": 1,
+  "colas_largas": 0,
   "flujos_programados_parados": [],
   "programaciones_lanzadas_a_mano": [],
   "avisos_de_fuentes": 0,
   "almacen": "ok"
  },
  "fallos": [],
- "colas_largas": [
-  {
-   "flujo": "Grados por tramos",
-   "id": 41188372738,
-   "en_cola_min": 285,
-   "trabajos_empezados": 2,
-   "url": "https://github.com/alvarorm931/education/actions/runs/41188372738"
-  }
- ],
+ "colas_largas": [],
  "programados": {
   "motor.yml": {
    "ultimo_bien": "31/10 14:25",
    "parado": false
   },
   "autonomicos.yml": {
-   "ultimo_bien": "31/10 14:02",
+   "ultimo_bien": "31/10 15:13",
    "parado": false
   },
   "seo.yml": {
@@ -42,11 +34,19 @@
  "desplazadas_de_la_espera": [
   {
    "flujo": "Motor de datos",
+   "id": 41208337476,
+   "url": "https://github.com/alvarorm931/education/actions/runs/41208337476",
+   "lanzada": "31/10 15:03",
+   "desplazada_por": "https://github.com/alvarorm931/education/actions/runs/41209513022",
+   "relanzada": "no hace falta: la sustituye otra del mismo flujo"
+  },
+  {
+   "flujo": "Motor de datos",
    "id": 41207905674,
    "url": "https://github.com/alvarorm931/education/actions/runs/41207905674",
    "lanzada": "31/10 14:57",
    "desplazada_por": "https://github.com/alvarorm931/education/actions/runs/41208337476",
-   "relanzada": "no hace falta: la sustituye otra del mismo flujo"
+   "relanzada": "aún no: hay otra esperando en el grupo"
   },
   {
    "flujo": "Mantenimiento de datos",
