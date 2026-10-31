@@ -1,6 +1,6 @@
-# Vigilancia 31/10 16:20 (Madrid)
+# Vigilancia 31/10 16:32 (Madrid)
 
-- Ejecuciones revisadas (últimas 6 h): 137
+- Ejecuciones revisadas (últimas 6 h): 134
 - Fallos: 1; pendientes: 0; relanzados ahora: 0
 - Colas de más de 30 minutos: 1
 - Flujos programados parados: seo.yml
@@ -24,4 +24,4 @@ https://github.com/alvarorm931/education/actions/runs/41210060505 (intento 1, wo
       fatal: couldn't find remote ref refs/heads/prueba-historial
       ##[error]Process completed with exit code 128.
 
-- En cola 74 min: Prueba de conector https://github.com/alvarorm931/education/actions/runs/41208605878
+- En cola 86 min: Prueba de conector https://github.com/alvarorm931/education/actions/runs/41208605878
