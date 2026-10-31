@@ -48,3 +48,15 @@ def test_tratamientos_y_organismo_oficial():
     u = ubicar_convocante({"tipo": "Ayuntamiento", "nombre": "Facheca", "provincia": "Alicante",
                            "organismo": "AYUNTAMIENTO FAGECA"})
     assert u["codigo_ine"] == "03067"
+
+
+def test_municipio_con_nombre_aproximado_dentro_de_la_provincia():
+    from motor.catalogo.territorio import municipio
+    casos = {("Ciutadella", "07"): "07015", ("Vandellòs i Hospitalet Infant", "43"): "43162",
+             ("Torre Esteban Hambran", "45"): "45171", ("Torrecardela", "18"): "18178",
+             ("Zahara de la Sierra", "11"): "11042", ("Ávila.- Recursos Humanos", "05"): "05019",
+             ("Molins de Rei. Molivers Societat Municipal, SL", "08"): "08123", ("Polopos - la Mamola", "18"): "18162"}
+    for (n, p), c in casos.items():
+        assert municipio(n, p)["codigo_ine"] == c, n
+    assert municipio("Santa", "08") is None and municipio("Villanueva", "41") is None
+    assert municipio("Ciutadella") is None  # sin provincia ni comunidad, solo el nombre exacto

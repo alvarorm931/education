@@ -173,10 +173,57 @@ def _candidatos(nombre: str, provincia_codigo: str | None, comunidad_codigo: str
     return set(lista)
 
 
+PARTICULAS_MUNICIPIO = {"de", "del", "la", "las", "los", "el", "l'", "d'", "i", "y", "les", "els", "da", "do", "das", "dos",
+                        "a", "o", "en", "es", "sa", "ses", "s'"}
+
+
+def _palabras_municipio(k: str) -> tuple[str, ...]:
+    k = re.sub(r"\b([ld])'", r"\1' ", k)
+    return tuple(w for w in k.replace("-", " ").split() if w not in PARTICULAS_MUNICIPIO)
+
+
+@lru_cache(maxsize=None)
+def _por_provincia(provincia_codigo: str) -> list[tuple[str, str, tuple[str, ...]]]:
+    out = []
+    for codigo, nombre in _oficiales().items():
+        if codigo[:2] == provincia_codigo:
+            for v in variantes(nombre):
+                out.append((codigo, v, _palabras_municipio(v)))
+    return out
+
+
+def _candidatos_aproximados(nombre: str, provincia_codigo: str | None, comunidad_codigo: str | None) -> set[str]:
+    """Formas que el nombre exacto no reconoce, solo dentro de una provincia o comunidad: con lo que sigue al nombre
+    («Ávila.- Recursos Humanos», «Molins de Rei. Molivers Societat Municipal, SL», «Polopos - la Mamola»), sin las
+    partículas o el guion («Torre Esteban Hambran», «Torrecardela», «Vandellòs i Hospitalet Infant») y, en una
+    provincia, el nombre corto o largo del oficial («Ciutadella» = «Ciutadella de Menorca», «Zahara de la Sierra» =
+    «Zahara»). (31/10/2026: unos 300 convocantes locales de 2026 sin código INE.)"""
+    if not provincia_codigo and not comunidad_codigo:
+        return set()
+    corte = re.split(r"\s*\.\s*-?\s+|\.-|\s+-\s+|,\s+", nombre, maxsplit=1)[0]
+    if corte != nombre and (c := _candidatos(corte, provincia_codigo, comunidad_codigo)):
+        return c
+    k = clave(corte)
+    provs = [provincia_codigo] if provincia_codigo else [p for p, (_, ccaa, _) in PROVINCIAS.items() if ccaa == comunidad_codigo]
+    pal = _palabras_municipio(k)
+    compacto = "".join(pal)
+    if not pal:
+        return set()
+    exactos = {c for p in provs for c, v, w in _por_provincia(p) if w == pal or "".join(w) == compacto}
+    if exactos or not provincia_codigo:
+        return exactos
+    # Prefijo por palabras enteras, en la provincia: el nombre corto o el largo
+    return {c for c, v, w in _por_provincia(provincia_codigo)
+            if len(min(w, pal, key=len)) >= 1 and (w[:len(pal)] == pal or pal[:len(w)] == w) and w and
+            len(" ".join(min(w, pal, key=len))) >= 5}
+
+
 def municipio(nombre: str | None, provincia_codigo: str | None = None, comunidad_codigo: str | None = None) -> dict | None:
     if not nombre:
         return None
     codigos = _candidatos(nombre, provincia_codigo, comunidad_codigo)
+    if not codigos:
+        codigos = _candidatos_aproximados(nombre, provincia_codigo, comunidad_codigo)
     if not codigos and "/" in nombre:
         # «Elx/Elche», «Alcoi/Alcoy»: cada mitad por separado; vale si todas las que se reconocen coinciden
         partes = [_candidatos(p, provincia_codigo, comunidad_codigo) for p in nombre.split("/") if p.strip()]
