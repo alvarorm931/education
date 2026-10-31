@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/runner/work/education/education/codigo/motor/http.py", line 245, in comprobar_robots
+    raise RobotsProhibe(f"robots.txt de {_origen(url)} no permite {url} ({regla})")
+motor.http.RobotsProhibe: robots.txt de https://www.bopalmeria.es no permite https://www.bopalmeria.es/ (robots.txt no disponible)
