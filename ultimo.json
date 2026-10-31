@@ -1,11 +1,11 @@
 {
- "fecha": "2026-10-31T01:02:40+00:00",
- "fecha_madrid": "31/10 02:02",
+ "fecha": "2026-10-31T01:20:44+00:00",
+ "fecha_madrid": "31/10 02:20",
  "ventana_horas": 6.0,
  "resumen": {
-  "ejecuciones_revisadas": 176,
-  "fallos": 1,
-  "fallos_pendientes": 0,
+  "ejecuciones_revisadas": 171,
+  "fallos": 2,
+  "fallos_pendientes": 1,
   "relanzados": 0,
   "colas_largas": 2,
   "flujos_programados_parados": [],
@@ -14,6 +14,48 @@
   "almacen": "ok"
  },
  "fallos": [
+  {
+   "flujo": "Motor de datos",
+   "fichero": "motor.yml",
+   "id": 41146163155,
+   "intento": 2,
+   "evento": "workflow_dispatch",
+   "rama": "main",
+   "commit": "94424c2",
+   "titulo": "Motor de datos",
+   "conclusion": "failure",
+   "cuando": "31/10 02:20",
+   "url": "https://github.com/alvarorm931/education/actions/runs/41146163155",
+   "superado": false,
+   "en_curso": null,
+   "pasajero": false,
+   "detalle": [
+    {
+     "trabajo": "motor",
+     "pasos": [
+      "Avisar si hay huecos o errores"
+     ],
+     "ejecutor": "GitHub Actions 1000001423",
+     "etiquetas": [
+      "ubuntu-latest"
+     ],
+     "final_registro": [
+      "##[error]Huecos en el BOE: {\"dias_con_error\": [\"2026-10-31\"]}",
+      "...",
+      "\u001b[36;1mpython - <<'EOF'\u001b[0m",
+      "\u001b[36;1mimport json, sys\u001b[0m",
+      "\u001b[36;1mh = json.load(open(\"salida/datos/boe/huecos.json\"))\u001b[0m",
+      "\u001b[36;1mproblemas = {k: v for k, v in h.items() if k in (\"numeros_de_diario_que_faltan\", \"dias_sin_procesar\", \"dias_con_error\") and v}\u001b[0m",
+      "\u001b[36;1mif problemas:\u001b[0m",
+      "\u001b[36;1m    print(\"::error::Huecos en el BOE: \" + json.dumps(problemas, ensure_ascii=False)[:500])\u001b[0m",
+      "\u001b[36;1m    sys.exit(1)\u001b[0m",
+      "\u001b[36;1mprint(\"Sin huecos en el BOE. Anuncios sin texto:\", h.get(\"anuncios_sin_texto\"))\u001b[0m",
+      "\u001b[36;1mEOF\u001b[0m",
+      "##[error]Huecos en el BOE: {\"dias_con_error\": [\"2026-10-31\"]}"
+     ]
+    }
+   ]
+  },
   {
    "flujo": "Prueba de conector",
    "fichero": "prueba.yml",
@@ -67,14 +109,14 @@
   {
    "flujo": "Estudios por tramos",
    "id": 41140514779,
-   "en_cola_min": 134,
+   "en_cola_min": 152,
    "trabajos_empezados": 0,
    "url": "https://github.com/alvarorm931/education/actions/runs/41140514779"
   },
   {
    "flujo": "Estudios por tramos",
    "id": 41119697629,
-   "en_cola_min": 303,
+   "en_cola_min": 321,
    "trabajos_empezados": 2,
    "url": "https://github.com/alvarorm931/education/actions/runs/41119697629"
   }
