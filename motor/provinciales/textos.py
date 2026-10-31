@@ -34,6 +34,8 @@ CON_PDF_POR_ANUNCIO = {"bopzamora", "bopalava", "bopavila", "bopjaen", "bopsalam
 # BOP con el PDF del boletín entero: campo con su dirección
 BOLETIN_ENTERO = {"boplugo": "url_pdf", "boppalencia": "url_pdf", "boptenerife": "url_pdf",
                   "boplaspalmas": "url_pdf_boletin", "bopalbacete": "url_pdf_boletin"}
+# Cortados por el número de registro del sumario y con las columnas en orden de lectura (ver cortar_por_registro)
+POR_REGISTRO = {"boptenerife"}
 
 
 # Cabeceras y pies de página que no son texto del anuncio, por fuente (líneas enteras)
@@ -46,6 +48,8 @@ CABECERAS = {
         rf"(?:\s+\d{{1,4}})?|{_DIAS},?\s+\d{{1,2}}\s+de\s+\w+\s+de\s+\d{{4}}\s+N\.?\s?º\s*\d+(?:\s+\d{{1,4}})?|R\.\s?\d{{2,5}}"
         r"|(?:Powered by TCPDF \(www\.tcpdf\.org\)\s*)?Anuncio publicado en: Num BOP .*|Powered by TCPDF.*)$"),
 }
+CABECERAS["boptenerife"] = re.compile(
+    r"(?i)^(?:Bolet[íi]n Oficial de la Provincia de Santa Cruz de Tenerife\.\s*N[úu]mero\s+\d+.*|\d{3,6})$")
 # Registro al final de cada anuncio en el BOP de Lugo («R. 0816»): marca dónde acaba un anuncio y empieza el siguiente
 RE_REGISTRO = re.compile(r"(?m)^[ \t]*R\.\s?\d{2,5}[ \t]*$")
 
@@ -226,6 +230,147 @@ def _posicion_bruto(bruto: str, titulo: str | None, desde: int = 0) -> int:
     return -1
 
 
+# --- BOP de Santa Cruz de Tenerife (31/10/2026) ---------------------------------------------------------------------
+# El cuerpo va a dos columnas y el texto plano de pypdf las mezcla (una columna antes que la otra, o trozos de las dos),
+# y el título del sumario no se repite en el cuerpo: cada anuncio empieza con la cabecera de su órgano, «ANUNCIO» y
+# una línea con su número y su número de registro («4640 2187336»). El sumario del PDF da el registro de cada asunto
+# («2187336 Anuncio relativo a la adjudicación … ...... 29612»). Así que se lee con la disposición de la página, se
+# ponen las columnas en orden de lectura y se corta de la línea de registro de un anuncio a la del siguiente.
+
+RE_MARCA_REGISTRO = re.compile(r"^\s*(\d{1,5})\s+(\d{5,8})\s*$")
+RE_ENTRADA_SUMARIO = re.compile(r"^\s*(\d{5,8})\s+(\S.*)$")
+RE_FIN_ENTRADA = re.compile(r"(?:\.{3,}|…{2,})\s*\d{3,6}\s*$")
+RE_ENCABEZADO = re.compile(r"^\s*(?:ANUNCIO|EDICTO|ANUNCIOS?\s+\S.*)\s*$")
+
+
+def columnas_en_orden(texto: str) -> str:
+    """Texto de una página leída con extraction_mode="layout", con las dos columnas en orden de lectura: por tramos,
+    primero la columna izquierda y luego la derecha; las líneas que cruzan el hueco entre columnas (títulos, texto a
+    toda la anchura) cortan los tramos y quedan en su sitio."""
+    from collections import Counter
+    lineas = [l.rstrip() for l in texto.splitlines()]
+    ancho = max((len(l) for l in lineas), default=0)
+    # Comienzo de la columna derecha: donde más líneas tienen texto tras un hueco de tres o más espacios, hacia el centro
+    inicios = Counter()
+    for l in lineas:
+        for m in re.finditer(r"\S {3,}(?=\S)", l):
+            if 0.3 * ancho < m.end() < 0.7 * ancho:
+                inicios[m.end()] += 1
+    if not inicios:
+        return texto
+    corte, _ = max(((c, sum(n for c2, n in inicios.items() if abs(c2 - c) <= 2)) for c in inicios), key=lambda x: x[1])
+    if sum(n for c, n in inicios.items() if abs(c - corte) <= 2) < 3:
+        return texto
+
+    def partes(l: str) -> tuple[str, str] | None:
+        """(izquierda, derecha) si la línea respeta el hueco; None si lo cruza."""
+        if len(l) < corte - 1:
+            return l.strip(), ""
+        if not l[:corte - 2].strip():
+            return "", l.strip()
+        for m in re.finditer(r"\S( {2,})(?=\S)", l):
+            if abs(m.end() - corte) <= 2:
+                return l[:m.start() + 1].strip(), l[m.end():].strip()
+        return None
+
+    def volcar(filas: list[tuple[str, str]], antes_de_ancha: bool) -> list[str]:
+        """Izquierda y luego derecha. Antes de un tramo a toda la anchura, las filas que siguen a la última con texto
+        a la derecha son ya de ese tramo (su «ANUNCIO» y su registro, cortos), no del final de la columna izquierda."""
+        ultima = max((k for k, (_, d) in enumerate(filas) if d), default=-1)
+        corte_cola = len(filas)
+        if antes_de_ancha and ultima >= 0:
+            # Si la columna izquierda sigue más abajo que la derecha con texto corrido, es suya; la cola empieza en
+            # la primera línea en blanco, «ANUNCIO» o registro
+            corte_cola = next((k for k in range(ultima + 1, len(filas)) if not filas[k][0]
+                               or RE_ENCABEZADO.match(filas[k][0]) or RE_MARCA_REGISTRO.match(filas[k][0])), len(filas))
+        cabeza, cola = filas[:corte_cola], filas[corte_cola:]
+        return ([i for i, d in cabeza if i or not d] + [d for _, d in filas if d] + [i for i, _ in cola])
+
+    salida, filas = [], []
+    for l in lineas:
+        p = partes(l)
+        if p is None:
+            salida += volcar(filas, True) + [l.strip()]
+            filas = []
+            continue
+        filas.append(p)
+    salida += volcar(filas, False)
+    return "\n".join(salida)
+
+
+def paginas_pdf_columnas(contenido: bytes) -> list[str]:
+    from pypdf import PdfReader
+    logging.getLogger("pypdf").setLevel(logging.ERROR)
+    return [columnas_en_orden(p.extract_text(extraction_mode="layout") or "") for p in PdfReader(io.BytesIO(contenido)).pages]
+
+
+def entradas_sumario(paginas: list[str]) -> list[tuple[str, str]]:
+    """(registro, asunto) de cada entrada del sumario, en su orden: empieza con el registro y acaba en la página."""
+    out, actual = [], None
+    for pag in paginas:
+        for l in pag.splitlines():
+            if RE_MARCA_REGISTRO.match(l):
+                return out  # empieza el cuerpo
+            m = RE_ENTRADA_SUMARIO.match(l)
+            if m and actual is None:
+                actual = [m.group(1), m.group(2)]
+            elif actual is not None and l.strip():
+                actual[1] += " " + l.strip()
+            if actual is not None and RE_FIN_ENTRADA.search(l):
+                out.append((actual[0], RE_FIN_ENTRADA.sub("", actual[1]).rstrip(" .…")))
+                actual = None
+    return out
+
+
+def _parecido(a: str, b: str) -> bool:
+    x, y = _plano(a).replace(" ", ""), _plano(b).replace(" ", "")
+    n = min(len(x), len(y), 60)
+    return n >= 12 and x[:n] == y[:n]
+
+
+def cortar_por_registro(paginas: list[str], anuncios: list[dict]) -> dict[str, tuple[str, list[int]]]:
+    """Texto de cada anuncio: de la línea con su registro a la cabecera del anuncio siguiente. El registro sale del
+    sumario del PDF, casando cada asunto con su entrada en el mismo orden. Sin registro o sin su línea, sin texto."""
+    sumario = entradas_sumario(paginas)
+    registro, j = {}, 0
+    for x in anuncios:
+        for k in range(j, min(j + 4, len(sumario))):
+            if _parecido(x.get("titulo") or "", sumario[k][1]):
+                registro[x["id"]], j = sumario[k][0], k + 1
+                break
+    lineas, pagina_de = [], []
+    for n, pag in enumerate(paginas, 1):
+        for l in pag.splitlines():
+            lineas.append(l)
+            pagina_de.append(n)
+    marcas = [(k, m.group(2)) for k, l in enumerate(lineas) if (m := RE_MARCA_REGISTRO.match(l))]
+    posicion = {}
+    for k, reg in marcas:
+        posicion.setdefault(reg, k)
+    siguientes = {k: (marcas[i + 1][0] if i + 1 < len(marcas) else len(lineas)) for i, (k, _) in enumerate(marcas)}
+    out = {}
+    for x in anuncios:
+        reg = registro.get(x["id"])
+        if reg not in posicion:
+            continue
+        ini = posicion[reg]
+        fin = siguientes[ini]
+        if fin < len(lineas):
+            # Fuera la cabecera del anuncio siguiente: «ANUNCIO» y, antes, su órgano, servicio y sección (líneas sin
+            # punto final), como mucho doce
+            f = fin - 1
+            if f > ini and RE_ENCABEZADO.match(lineas[f]):
+                f -= 1
+                tope = max(ini + 1, f - 12)
+                while f > tope and lineas[f].strip() and not lineas[f].rstrip().endswith((".", ":", ";", ")")):
+                    f -= 1
+                fin = f + 1
+        else:
+            fin = min(fin, next((k for k in range(ini, len(lineas)) if pagina_de[k] > pagina_de[ini] + 2), fin))
+        out[x["id"]] = ("\n".join(lineas[ini + 1:fin]), sorted(set(pagina_de[ini:fin])))
+    return out
+
+
 def original_guardado(raiz: Path, fuente: str, fecha: str, url: str) -> tuple[bytes, dict] | None:
     """El PDF de esa URL si ya se guardó en el almacén (por el índice del archivo), con los datos de su captura."""
     from motor.archivo import almacen_por_defecto
@@ -278,7 +423,10 @@ def textos_boletin_entero(raiz: Path, fuente: str, archivo: Archivo, max_minutos
             captura = archivo.guardar(fuente + "-boletin", date.fromisoformat(fecha), r.contenido, url, "pdf",
                                       r.status, r.cabeceras)
         try:
-            cortes = cortar(paginas_pdf(contenido), todas)
+            if fuente in POR_REGISTRO:
+                cortes = cortar_por_registro(paginas_pdf_columnas(contenido), todas)
+            else:
+                cortes = cortar(paginas_pdf(contenido), todas)
         except Exception:  # un PDF mal formado no detiene la carga
             errores += len(lista)
             continue
