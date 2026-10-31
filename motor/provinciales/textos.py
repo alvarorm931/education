@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import argparse
 import io
+import json
 import logging
 import re
 import sys
@@ -36,6 +37,47 @@ BOLETIN_ENTERO = {"boplugo": "url_pdf", "boppalencia": "url_pdf", "boptenerife":
                   "boplaspalmas": "url_pdf_boletin", "bopalbacete": "url_pdf_boletin"}
 # Cortados por el número de registro del sumario y con las columnas en orden de lectura (ver cortar_por_registro)
 POR_REGISTRO = {"boptenerife"}
+# Cortados buscando el título del sumario en el cuerpo: el texto tiene que hablar de lo que dice su título (coherente)
+POR_TITULO = {"boplaspalmas", "bopalbacete"}
+GENERICAS = set("""bases reguladoras regir convocatoria convocatorias pruebas selectivas selectivo selectiva proveer
+plaza plazas para mediante sistema concurso oposicion libre turno anuncio relativo aprobacion lista listas provisional
+definitiva admitidos admitidas excluidos excluidas personal funcionario funcionaria funcionarios carrera laboral fijo
+fija cobertura procedimiento proceso cubrir provision propiedad interino interina interinos temporal bolsa empleo
+publico publica resolucion decreto acuerdo correccion error errores anexo numero fecha boletin oficial provincia palmas
+albacete ayuntamiento cabildo insular excmo ilustre alcaldia presidencia corporacion municipal general generales
+especifica especificas puesto puestos trabajo categoria escala subescala grupo subgrupo clase""".split())
+
+
+def _palabras_titulo(titulo: str | None) -> set[str]:
+    return {w for w in _plano(titulo or "").split() if len(w) >= 4 and not w.isdigit() and w not in GENERICAS}
+
+
+def coherente(titulo: str | None, texto: str | None) -> bool:
+    """El comienzo del texto nombra lo que dice el título: al menos una de cada cuatro de sus palabras propias (sin
+    las de todas las bases: «convocatoria», «plaza», «ayuntamiento»…). Con menos de dos palabras propias no se
+    puede saber y se da por bueno. Caso real (BOP de Las Palmas, 30/10/2026): «Bases… 1 plaza de Pedagogo» con el
+    texto de las bases de la venta ambulante de Yaiza, que empiezan igual."""
+    propias = _palabras_titulo(titulo)
+    if len(propias) < 2 or not texto:
+        return True
+    inicio = set(_plano(texto[:4000]).split())
+    return sum(1 for w in propias if w in inicio) >= max(1, len(propias) / 4)
+
+
+def revisar_cortes(raiz: Path, fuente: str) -> int:
+    """Los textos ya cortados por el título que no son coherentes con él pasan a «sin texto» (corte_dudoso), para no
+    publicar el de otro anuncio. Devuelve cuántos."""
+    n = 0
+    for f in (raiz / "datos" / "provinciales" / fuente / "textos").glob("*/*/*.json"):
+        try:
+            d = json.loads(f.read_text(encoding="utf-8"))
+        except ValueError:
+            continue
+        if d.get("texto") and not coherente(d.get("titulo"), d["texto"]):
+            escribir_json(f, {**{k: v for k, v in d.items() if k not in ("texto", "tablas")}, "texto": None,
+                              "tablas": [], "corte_dudoso": True})
+            n += 1
+    return n
 
 
 # Cabeceras y pies de página que no son texto del anuncio, por fuente (líneas enteras)
@@ -494,6 +536,9 @@ def textos_boletin_entero(raiz: Path, fuente: str, archivo: Archivo, max_minutos
             if x.get("tipo_acto") in CON_TEXTO:
                 datos = {"titulo": x.get("titulo"),
                          **{k: v for k, v in limpiar_texto(bruto, CABECERAS.get(fuente)).items() if k != "titulo"}}
+                if fuente in POR_TITULO and not coherente(x.get("titulo"), datos.get("texto")):
+                    # El corte por el título puede caer en otro anuncio que empieza igual: sin texto, nunca el de otro
+                    datos = {"titulo": x.get("titulo"), "texto": None, "tablas": [], "corte_dudoso": True}
             else:
                 datos = {"titulo": x.get("titulo"), "texto": None, "tablas": [], "solo_recuento": True,
                          "lineas_con_documento_de_identidad": sum(1 for l in bruto.splitlines() if RE_DOCUMENTO.search(l)),
@@ -512,7 +557,11 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--salida", type=Path, default=Path("."))
     p.add_argument("--max-minutos", type=float, default=0)
     p.add_argument("--pausa", type=float, default=1.0)
+    p.add_argument("--revisar", action="store_true", help="pasar a sin texto los cortes por título no coherentes")
     a = p.parse_args(argv)
+    if a.revisar:
+        print(f"{a.fuente}: {revisar_cortes(a.salida, a.fuente)} textos dudosos pasan a sin texto")
+        return 0
     archivo = Archivo(a.salida / "archivo", indice_por_fuente=True, solo_huella=solo_huella_por_defecto())
     if a.fuente in BOLETIN_ENTERO:
         hechos, errores, pendientes = textos_boletin_entero(a.salida, a.fuente, archivo, a.max_minutos, a.pausa)

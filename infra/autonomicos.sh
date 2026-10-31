@@ -224,6 +224,8 @@ for c in $CONECTORES; do
       "$G" "BOP Albacete: histórico"
       # Textos: el anuncio cortado del PDF del boletín completo (enlace leído del sumario original en el almacén)
       ejecutar motor.provinciales.bopalbacete --reparar-boletin --salida "$S"
+      # Los cortes por título que no hablan de lo que dice su título pasan a sin texto (nunca el de otro anuncio)
+      ejecutar motor.provinciales.textos bopalbacete --revisar --salida "$S"
       ejecutar motor.provinciales.textos bopalbacete --salida "$S" --max-minutos "$M"
       "$G" "BOP Albacete: textos"
       ;;
@@ -288,6 +290,8 @@ for c in $CONECTORES; do
       ejecutar motor.provinciales.boplaspalmas --desde 2022-01-01 --salida "$S" --max-minutos "$M"
       "$G" "BOP Las Palmas: días"
       # Textos: el anuncio cortado del PDF del boletín entero (motor/provinciales/textos.py)
+      # Los cortes por título que no hablan de lo que dice su título pasan a sin texto (nunca el de otro anuncio)
+      ejecutar motor.provinciales.textos boplaspalmas --revisar --salida "$S"
       ejecutar motor.provinciales.textos boplaspalmas --salida "$S" --max-minutos "$M"
       "$G" "BOP Las Palmas: textos"
       ;;

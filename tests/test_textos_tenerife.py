@@ -87,3 +87,19 @@ def test_no_se_lleva_el_texto_de_un_anuncio_sin_registro_encontrado():
     p3 = "102\nAYUNTAMIENTO DE ARONA\nANUNCIO\n4650 2100002 texto pegado\nSe aprueba la oferta de empleo público."
     cortes = t.cortar_por_registro([sumario, p2, p3], anuncios)
     assert cortes["B2"][0].strip() == "Se aprueba la oferta de empleo público." and "oferta" not in cortes["B1"][0]
+
+
+def test_corte_por_titulo_coherente(tmp_path):
+    import json
+    titulo = "Bases reguladoras de la convocatoria de las pruebas selectivas para proveer 1 plaza de Pedagogo/Pedagoga"
+    otro = ("BASES REGULADORAS DE LA CONVOCATORIA PARA LA CONCESIÓN DE AUTORIZACIONES PARA LA VENTA AMBULANTE. "
+            "Constituye el objeto la concesión de 35 autorizaciones de venta ambulante en Yaiza.")
+    bueno = "BASES DE LA CONVOCATORIA DE UNA PLAZA DE PEDAGOGO/PEDAGOGA. Primera. Objeto."
+    assert not t.coherente(titulo, otro) and t.coherente(titulo, bueno)
+    assert t.coherente("Convocatoria de plazas", otro)  # sin palabras propias no se puede saber
+    f = tmp_path / "datos" / "provinciales" / "boplaspalmas" / "textos" / "2026" / "10" / "X.json"
+    f.parent.mkdir(parents=True)
+    f.write_text(json.dumps({"id": "X", "titulo": titulo, "texto": otro, "captura_sha256": "a"}))
+    assert t.revisar_cortes(tmp_path, "boplaspalmas") == 1
+    d = json.loads(f.read_text())
+    assert d["texto"] is None and d["corte_dudoso"] and d["captura_sha256"] == "a"
