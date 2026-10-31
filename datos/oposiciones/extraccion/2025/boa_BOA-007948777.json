@@ -1,0 +1,70 @@
+{
+ "proceso": "boa:BOA-007948777",
+ "documento": {
+  "id": "boa:BOA-007948777",
+  "fuente": "BOA",
+  "url": "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VERDOC&BASE=BOLE&SEC=BUSQUEDA_AVANZADA&DOCN=007948777",
+  "fecha": "2025-05-05",
+  "huella": "89d5be43cd398a19fed919e99e3521c227a2d09645df9781c495b73f85278323"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:46:15+00:00",
+ "lote": "msgbatch_017vJZdAmjTkBDdH14aLEdCv",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Ingeniero/a Técnico"
+   ],
+   "cita": "convocar procedimiento de movilidad voluntaria para cubrir 9 plazas de personal estatutario en la categoría de Ingeniero/a Técnico",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "Las plazas serán adjudicadas a los concursantes de acuerdo con el baremo de méritos",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 9,
+   "cita": "convocar procedimiento de movilidad voluntaria para cubrir 9 plazas de personal estatutario",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "un mes a partir del día siguiente al de la publicación de esta convocatoria en el Boletín Oficial de Aragón",
+   "cita": "El plazo de presentación de solicitudes será de un mes a partir del día siguiente al de la publicación",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de Aragón y página web del Gobierno de Aragón",
+   "cita": "la autoridad convocante aprobará y publicará en el Boletín Oficial de Aragón y en la página web la relación definitiva",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "baremo de méritos según anexo I de la convocatoria (no reproducido en el texto)",
+   "cita": "Las plazas serán adjudicadas a los concursantes de acuerdo con el baremo de méritos que figura como anexo I",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "no",
+   "cita": "Los traslados derivados de este concurso tienen carácter voluntario, no generando derecho alguno al abono",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "no aplica: no hay periodo de prácticas ni curso selectivo, se trata de movilidad voluntaria",
+   "cita": "Los traslados derivados de este concurso tienen carácter voluntario",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "personal estatutario fijo",
+   "cita": "Podrá participar en este procedimiento de movilidad voluntaria: El personal estatutario fijo del Sistema Nacional de Salud"
+  },
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "vía web en empleo.salud.aragon.es, telemática con certificado digital o Cl@ve permanente",
+   "cita": "Las instancias se formalizará vía web en la dirección https://empleo.salud.aragon.es"
+  }
+ }
+}

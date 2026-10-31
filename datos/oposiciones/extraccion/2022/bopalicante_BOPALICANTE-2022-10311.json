@@ -1,0 +1,118 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2022-10311",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2022-10311",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2022/12/16_238/2022_010311.pdf",
+  "fecha": "2022-12-16",
+  "huella": "f227d46648c12a984a0709a9ef9c710ffb35de51e65ee020441b2128e7535bb7"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:25+00:00",
+ "lote": "msgbatch_01B4ETF5xB4buYCHqPiHTXzF",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Auxiliar Administrativo/a (Administración General)",
+    "Auxiliar Técnico de Turismo (Administración Especial)",
+    "Trabajador/a Social",
+    "Educador/a Social",
+    "Auxiliar de Hogar"
+   ],
+   "cita": "SUBGRUP O ESCALA SUBESCALA CATEGORIA VACANTES FECHA DE ADSCRIPCIÓN SISTEMA DE ACCESO",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": [
+    "C2",
+    "C1",
+    "A2",
+    "AP"
+   ],
+   "cita": "Las características de las plazas estructurales vacantes son",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "Las características de las plazas estructurales vacantes son",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "CONVOCATORIA Y PROCESO DE SELECCIÓN POR CONCURSO y CONCURSO - OPOSICIÓN",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "la exigida en cada convocatoria específica",
+   "cita": "La titulación, formación y requisitos exigidos en las convocatorias guardarán relación con los procedimientos",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española o de Estados miembros de la UE según art. 56 TREBEP; capacidad funcional; tener 16 años y no exceder la edad de jubilación forzosa; no haber sido separado del servicio ni inhabilitado.",
+   "cita": "Tener la nacionalidad española. También podrán acceder como personal funcionario en igualdad de condiciones",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "valenciano valorado como mérito hasta 5 puntos según nivel (A2 a C2)",
+   "cita": "c) Valenciano. Máximo 5 puntos. Se valorará el conocimiento del valenciano",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "10 días hábiles contados a partir del día siguiente al de la publicación del anuncio de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "en el plazo de 10 días hábiles contados a partir del día siguiente al de la publicación del anuncio",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Registro Electrónico General de la Mancomunitat en https://pegoilesvalls.sedelectronica.es o lugares del art. 16.4 Ley 39/2015; los empleados públicos, necesariamente en sede electrónica",
+   "cita": "se presentarán en el Registro Electrónico General de la Mancomunitat de serveis socials i turisme",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia, sede electrónica https://pegoilesvalls.sedelectronica.es y Tablón de Anuncios; extracto en el DOGV y BOE",
+   "cita": "Las convocatorias y las bases íntegras se publicarán en el Boletín Oficial de la Provincia y en la sede electrónica",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Concurso: valoración de méritos (máximo 100 puntos) en el sistema de concurso",
+    "Concurso-oposición: fase de oposición de 60 %, con primera prueba tipo test y segunda prueba práctica",
+    "Fase de concurso de 40 % (experiencia profesional y otros méritos)"
+   ],
+   "cita": "La puntuación de la fase de oposición será del 60% y la de concurso del 40% del valor de la nota final",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, bolsas de personal funcionario interino o laboral temporal para quienes no superen el proceso con 15 puntos o más",
+   "cita": "Se prevé para aquellas personas que no superen el proceso selectivo, su inclusión en bolsas",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 8,
+   "cita": "Las características de las plazas estructurales vacantes son"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 8,
+   "cita": "el sistema selectivo será el de concurso de turno libre de valoración de méritos"
+  },
+  "plazas_promocion_interna": {
+   "motivo": "cita_no_literal",
+   "valor": 0,
+   "cita": "ninguna promoción interna"
+  },
+  "temas": {
+   "motivo": "valor_no_numerico",
+   "valor": "máximo 12 temas (C2), 18 (C1), 30 (A2)",
+   "cita": "El número de temas establecido para cada subgrupo será como máximo"
+  },
+  "meritos": {
+   "motivo": "cita_no_literal",
+   "valor": "Experiencia profesional hasta 37 puntos (0,30 por mes en Pego; 0,075 otras Administraciones locales); titulaciones 1 punto; formación hasta 1 punto; valenciano hasta 1 punto",
+   "cita": "Experiencia Profesional: Puntuación máxima 37 puntos. Se valorarán los servicios prestados"
+  }
+ }
+}

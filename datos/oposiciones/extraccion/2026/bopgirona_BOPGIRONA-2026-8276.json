@@ -1,124 +1,58 @@
 {
  "proceso": "bopgirona:BOPGIRONA-2026-8276",
  "documento": {
-  "id": "bopgirona:BOPGIRONA-2026-8276",
-  "fuente": "BOP-GIRONA",
-  "url": "https://ssl4.ddgi.cat/bopV1/pdf/2026/186/202618608276.pdf",
-  "fecha": "2026-09-28",
-  "huella": "8935c8d832fb5bc10d212b457a6a5a35df4ab82e1810b159f7356422b4ba18e2"
+  "id": "dogc:1056049",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1056049",
+  "fecha": "2026-10-06",
+  "huella": "8a019b1d25890796ff615336b3db2576823d07e2c19da0699e8f734d23550fca"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T08:03:43+00:00",
- "lote": "msgbatch_013xFoLdqcGqWcqkzh7qrdGg",
+ "extraido": "2026-10-31T14:41:32+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
  "no_son_bases": false,
  "campos": {
-  "grupo": {
-   "valor": "A2",
-   "cita": "categoria tècnic/a mitjà, grup A, subgrup A2",
+  "denominacion": {
+   "valor": "tècnic/a mitjà/na d'informàtica",
+   "cita": "categoria tècnic/a mitjà/na d'informàtica, grup A, subgrup A2",
    "nivel": "literal"
   },
-  "vinculo": {
-   "valor": "funcionario de carrera",
-   "cita": "personal funcionari de carrera, categoria tècnic/a mitjà, grup A",
+  "grupo": {
+   "valor": "A2",
+   "cita": "grup A, subgrup A2, adscrita a l'àrea de Govern Obert i Administració Digital",
    "nivel": "literal"
   },
   "sistema": {
    "valor": "concurso-oposición",
-   "cita": "pel sistema concurs oposició en torn lliure",
+   "cita": "pel sistema de concurs oposició en torn lliure",
    "nivel": "literal"
   },
   "plazas_total": {
    "valor": 1,
-   "cita": "convocatòria 1 plaça informàtic",
+   "cita": "per a la cobertura definitiva, pel sistema de concurs oposició en torn lliure, d'una plaça",
    "nivel": "literal"
   },
   "plazas_turno_libre": {
    "valor": 1,
-   "cita": "pel sistema de concurs oposició en torn lliure, d'una plaça",
-   "nivel": "literal"
-  },
-  "titulacion": {
-   "valor": "Grau universitari, Llicenciatura universitària o titulació equivalent",
-   "cita": "Estar en possessió de titulació de Grau universitari, Llicenciatura universitària o titulació equivalent",
-   "nivel": "literal"
-  },
-  "otros_requisitos": {
-   "valor": "Edad mínima de acceso y no exceder la edad de jubilación forzosa; nacionalidad española o de la UE (o según tratados); capacidad funcional; no haber sido separado de la Administración por expediente disciplinario; certificado de catalán C1 (o prueba equiparable).",
-   "cita": "Haver complert l'edat mínima exigida per accedir a l'ocupació pública i no excedir de l'edat de jubilació forçosa.",
-   "nivel": "literal"
-  },
-  "tasa_euros": {
-   "valor": 28,
-   "cita": "Es fixa una taxa de 28€ com a dret d'examen",
-   "nivel": "literal"
-  },
-  "exenciones_tasa": {
-   "valor": "Exentos del 100%: personas inscritas como demandantes de empleo en la fecha de solicitud; personas con certificado de diversidad funcional igual o superior al 33%.",
-   "cita": "Queden exempts d'abonar el 100% d'aquesta taxa els aspirants que compleixin alguns dels següents requisits",
+   "cita": "pel sistema de concurs oposició en torn lliure, d'una plaça de personal funcionari de carrera",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "Veinte días hábiles desde el día siguiente a la publicación de la convocatoria en el Diari Oficial de la Generalitat de Catalunya",
-   "cita": "El termini de presentació de sol·licituds serà de vint dies hàbils comptadors a partir de l'endemà de la publicació de la convocatòria al Diari Oficial",
-   "nivel": "literal"
-  },
-  "presentacion": {
-   "valor": "Telemática a través de la sede electrónica (olot.selectaoep.es) o presencial en la Oficina d'Atenció al Ciutadà con cita previa",
-   "cita": "a través de la web de l'Ajuntament d'Olot accedint a la seu electrònica",
+   "valor": "vint dies hàbils comptadors a partir de l'endemà de la publicació de la convocatòria al Diari Oficial de la Generalitat de Catalunya",
+   "cita": "El termini de presentació de sol·licituds és de vint dies hàbils comptadors a partir de l'endemà de la publicació",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Tablón de anuncios electrónico del Ayuntamiento de Olot (tauler.seu.cat) y web del Ayuntamiento (seu electrónica – convocatorias de personal)",
-   "cita": "Els restants i successius anuncis d'aquesta convocatòria es faran públics únicament en el taulell d'anuncis electrònic",
-   "nivel": "literal"
-  },
-  "ejercicios": {
-   "valor": [
-    "Prova teòrica: test o preguntes curtes, 0-15 punts, mínim 7,5 (eliminatòria)",
-    "Prova pràctica: supòsits pràctics, 0-30 punts, mínim 15 (eliminatòria)",
-    "Prova de personalitat i competències: 0-15 punts, mínim 7,5 (eliminatòria)",
-    "Prova de català: apte/no apte (eliminatòria)",
-    "Prova de castellano: apte/no apto, solo extranjeros sin nacionalidad española (eliminatoria)"
-   ],
-   "cita": "Aquesta fase estarà formada per cinc exercicis obligatoris i eliminatoris",
-   "nivel": "literal"
-  },
-  "meritos": {
-   "valor": "Experiencia profesional (máx 5): 0,15/mes en administración pública y 0,10/mes en empresa privada. Formación (máx 4,5). Certificación ACTIC (máx 0,5). Otros méritos (máx 0,5). Puntuación máxima del concurso: 10 puntos.",
-   "cita": "La puntuació màxima del concurs de mèrits és de 10 punts.",
-   "nivel": "literal"
-  },
-  "bolsa": {
-   "valor": "Sí, para futuras necesidades de contratación similares y para cubrir vacantes de tècnic/a mitjà informàtic de las ofertas públicas 2027 y 2028",
-   "cita": "Quan l'Ajuntament d'Olot necessiti contractar un treballador a partir de la borsa de treball",
-   "nivel": "literal"
-  },
-  "practicas_o_curso": {
-   "valor": "Periodo de prácticas de seis meses",
-   "cita": "El període de pràctiques és de sis mesos.",
+   "valor": "tauler d'anuncis electrònic de l'Ajuntament d'Olot",
+   "cita": "Els restants i successius anuncis d'aquesta convocatòria es faran públics únicament en el tauler d'anuncis electrònic",
    "nivel": "literal"
   }
  },
  "rechazados": {
-  "denominacion": {
+  "vinculo": {
    "motivo": "cita_no_literal",
-   "valor": "Tècnic/a mitjà/na d'informàtica",
-   "cita": "una plaça de personal funcionari de carrera, categoria tècnic/a mitjà, grup A, subgrup A2"
-  },
-  "plazas_discapacidad": {
-   "motivo": "valor_no_en_cita",
-   "valor": 0,
-   "cita": "S'admetran, per tant, les persones amb minusvalidesa amb igualtat de condicions"
-  },
-  "idioma_cooficial": {
-   "motivo": "cita_no_literal",
-   "valor": "Català C1 (suficiència, MERC)",
-   "cita": "certificat de coneixements de català de la Direcció General de Política Lingüística del nivell de suficiència C1 del MERC"
-  },
-  "temas": {
-   "motivo": "cita_no_literal",
-   "valor": 40,
-   "cita": "Temari General i Temari Específic (annex 3)"
+   "valor": "funcionario de carrera",
+   "cita": "la cobertura definitiva d'una plaça de personal funcionari de carrera"
   }
  }
 }

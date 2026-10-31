@@ -1,0 +1,104 @@
+{
+ "proceso": "doe:DOE-2025061244",
+ "documento": {
+  "id": "doe:DOE-2025061244",
+  "fuente": "DOE",
+  "url": "https://doe.juntaex.es/otrosFormatos/html.php?xml=2025061244&anio=2025&doe=660o",
+  "fecha": "2025-04-04",
+  "huella": "48b85ffb08773364eaac9e7f947aa402afb12ea3647568e396e64faf3ec1fe24"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:45:48+00:00",
+ "lote": "msgbatch_017vJZdAmjTkBDdH14aLEdCv",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "plazas de personal funcionario de carrera del Cuerpo de Profesoras y Profesores Titulares de Universidad",
+   "nivel": "literal"
+  },
+  "plazas_turno_libre": {
+   "valor": 19,
+   "cita": "diecinueve (19) plazas para acceso por turno libre a plazas de personal funcionario de carrera",
+   "nivel": "literal"
+  },
+  "plazas_promocion_interna": {
+   "valor": 11,
+   "cita": "once (11) plazas para acceso por promoción interna a plazas del Cuerpo de Catedráticas y Catedráticos de Universidad",
+   "nivel": "literal"
+  },
+  "plazas_discapacidad": {
+   "valor": 1,
+   "cita": "una plaza para acceso por turno de discapacidad conforme al Decreto 111/2017",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Discapacidad igual o superior al 33% con certificación de capacidad funcional para la plaza de cupo de discapacidad; dos años desde la obtención de plaza por concurso en otra universidad si son funcionarios docentes; TU con dos años de servicios efectivos para concursar a CU.",
+   "cita": "la plaza del cupo de reserva de discapacidad, los candidatos deberán tener reconocida legalmente una discapacidad igual o superior al 33%",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 40,
+   "cita": "Para concursar se deberá abonar previamente a la Universidad de Extremadura, la cantidad de cuarenta euros",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Derecho a devolución de tasas si, por causas no imputables al sujeto pasivo, no se han prestado las actividades o servicios gravados",
+   "cita": "el sujeto pasivo tiene derecho a la devolución de las tasas que haya satisfecho si, por causas que no le son imputables",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte (20) días naturales a partir del día siguiente al de la publicación de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "en el plazo de veinte (20) días naturales a partir del día siguiente al de la publicación de la presente convocatoria en el Boletín Oficial del Estado",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Oficinas de Asistencia en Materia de Registro de la UEx, Registro Electrónico General (reg.redsara.es) u otros registros integrados en el SIR, dirigida al Rector",
+   "cita": "Quienes deseen tomar parte en el concurso de acceso, deberán presentar en las Oficinas de Asistencia en Materia de Registro",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de anuncios del Rectorado (Cáceres y Badajoz), web https://vrprofesorado.unex.es/concursos/, Boletín Oficial del Estado y Diario Oficial de Extremadura",
+   "cita": "Asimismo, se publicará la relación en la dirección de internet: https://vrprofesorado.unex.es/concursos/",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Primera prueba: exposición del currículum y proyecto docente e investigador (TU, 90 minutos) o historial académico, docente, investigador, de transferencia y gestión (CU, 90 minutos), seguida de debate de hasta dos horas",
+    "Segunda prueba (solo TU): exposición de un tema del programa del proyecto docente elegido por la candidata, de hasta una hora, seguida de debate de hasta dos horas"
+   ],
+   "cita": "La primera prueba comenzara en el plazo máximo de diez (10) días a contar desde el acto de presentación",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Profesoras y Profesores Titulares de Universidad",
+    "Catedráticas y Catedráticos de Universidad"
+   ],
+   "cita": "convocar, concurso para el acceso a plazas de los cuerpos docentes universitarios"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso",
+   "cita": "convocar, concurso para el acceso a plazas de los cuerpos docentes universitarios"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 31,
+   "cita": "diecinueve (19) plazas para acceso por turno libre a plazas de personal funcionario de carrera"
+  },
+  "titulacion": {
+   "motivo": "cita_no_literal",
+   "valor": "acreditación para el acceso al cuerpo docente correspondiente (TU) o acreditación/habilitación (CU)",
+   "cita": "podrán presentarse a los concursos de acceso a plazas de Profesor o Profesora Titular de Universidad quienes hayan obtenido la acreditación"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "no",
+   "cita": "no consta creación de bolsa o lista de espera en el texto"
+  }
+ }
+}

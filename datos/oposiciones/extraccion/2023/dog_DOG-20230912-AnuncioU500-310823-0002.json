@@ -1,0 +1,93 @@
+{
+ "proceso": "dog:DOG-20230912-AnuncioU500-310823-0002",
+ "documento": {
+  "id": "dog:DOG-20230912-AnuncioU500-310823-0002",
+  "fuente": "DOG",
+  "url": "https://www.xunta.gal/dog/Publicados/2023/20230912/AnuncioU500-310823-0002_es.html",
+  "fecha": "2023-09-12",
+  "huella": "a77265d2f76a6aec9a7a32a62a6ca6cafb5a45b0db7941b03f31ee46a0a4bb15"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:44+00:00",
+ "lote": "msgbatch_01SjfjDqJRwL6bpTvJz2YfVg",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Plaza nº 1 a 12, cuerpo de profesores titulares de universidad (TU2202), áreas de conocimiento indicadas en el anexo II"
+   ],
+   "cita": "Este rectorado, en el uso de las competencias reconocidas por la LOSU, ha resuelto convocar a concurso las plazas que figuran en el anexo I",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Título de doctor; acreditación para profesor titular de universidad; nacionalidad española o comunitaria; 16 años cumplidos y no superar los 70; no haber sido separado del servicio público; capacidad funcional; en algunas plazas, Programa Ramón y Cajal o equivalente y certificado I3",
+   "cita": "Estar en posesión de la titulación de doctor o doctora. En el caso de títulos obtenidos en el extranjero",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 44.17,
+   "cita": "Los derechos de examen para cada plaza (TU2202) serán de 44,17 euros.",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Exentos las personas con discapacidad igual o superior al 33 % y familias numerosas de categoría especial; bonificación del 50 % para familias numerosas general y personas demandantes de empleo seis meses sin prestación",
+   "cita": "estarán exentas del pago las personas con discapacidad igual o superior al 33 %",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles desde el día siguiente a la publicación de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes será de veinte días hábiles, contados a partir del día siguiente",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Formulario web específico y presentación en la sede electrónica de la Universidad de Vigo, procedimiento TU2202; no válido otro medio",
+   "cita": "deberá ser presentada junto con la documentación correspondiente en la sede electrónica de la Universidad de Vigo",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de anuncios de la sede electrónica de la Universidad de Vigo y página electrónica de la Universidad (divulgativo)",
+   "cita": "tanto la convocatoria como los actos y acuerdos que integran este proceso selectivo se publicarán a título divulgativo",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Única prueba: exposición oral pública de méritos, historial y proyecto docente e investigador (mínimo 30 minutos, máximo 2 horas)",
+    "Debate con la comisión sobre méritos y proyecto (máximo 2 horas)"
+   ],
+   "cita": "Los concursos constarán de una única prueba que será pública y que consistirá en la exposición oral",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Méritos del curriculum vitae (académicos, docentes, investigadores, publicaciones, proyectos, cargos de gestión, etc.) y proyecto docente e investigador; sin puntuación numérica",
+   "cita": "La Comisión valorará exclusivamente los méritos que, siendo alegados en el curriculum vitae",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Toma de posesión en el plazo máximo de veinte días hábiles desde la publicación del nombramiento en el BOE; no se menciona periodo de prácticas",
+   "cita": "En el plazo máximo de veinte días hábiles, a contar desde el siguiente al de la publicación del nombramiento",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "Se realizará el nombramiento como funcionario docente de carrera de las personas propuestas"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso",
+   "cita": "Este rectorado ha resuelto convocar a concurso las plazas que figuran en el anexo I"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 12,
+   "cita": "Plaza nº 1. Plaza nº 2. Plaza nº 3. Plaza nº 4. Plaza nº 5. Plaza nº 6."
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "no",
+   "cita": "Se nombrará como funcionario docente de carrera de las personas propuestas en un número que no exceda el de plazas convocadas"
+  }
+ }
+}

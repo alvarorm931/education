@@ -1,20 +1,22 @@
 {
  "proceso": "bopgirona:BOPGIRONA-2026-4811",
  "documento": {
-  "id": "bopgirona:BOPGIRONA-2026-4811",
-  "fuente": "BOP-GIRONA",
-  "url": "https://ssl4.ddgi.cat/bopV1/pdf/2026/109/202610904811.pdf",
-  "fecha": "2026-06-09",
-  "huella": "69ecb7b69a57ab291784a308ba87c756df0222a0be7d9de88aa2bd3244ce82de"
+  "id": "dogc:1046746",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1046746",
+  "fecha": "2026-06-10",
+  "huella": "aa4d6082385b05cf388ddc7b181768186d8c31ca3a881519385fa3a07cc3b2be"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T08:18:08+00:00",
- "lote": "msgbatch_01BrnYw6KkevFx7at547B5g8",
+ "extraido": "2026-10-31T14:41:33+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
-   "valor": "agutzil",
-   "cita": "creació d'una plaça d'agutzil amb torn de reserva per a persona amb la condició legal de persona amb discapacitat intel·lectual",
+   "valor": [
+    "agutzil"
+   ],
+   "cita": "Denominació: agutzil",
    "nivel": "literal"
   },
   "grupo": {
@@ -23,19 +25,19 @@
    "nivel": "literal"
   },
   "vinculo": {
-   "valor": "funcionario de carrera",
-   "cita": "cobrir mitjançant concurs oposició lliure accés",
+   "valor": "otro",
+   "cita": "Règim de dedicació: 50% de la jornada ordinària de l'Ajuntament",
    "nivel": "literal"
   },
   "sistema": {
    "valor": "concurso-oposición",
-   "cita": "cobrir mitjançant concurs oposició lliure accés",
+   "cita": "mitjançant concurs oposició lliure accés",
    "nivel": "literal"
   },
   "plazas_total": {
    "valor": 1,
-   "cita": "Nombre de places: 1 Sistema de selecció: concurs-oposició lliure accés.",
-   "nivel": "sin_signos"
+   "cita": "Nombre de places: 1",
+   "nivel": "literal"
   },
   "titulacion": {
    "valor": "no se requiere titulación",
@@ -43,12 +45,12 @@
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Certificado de discapacidad intelectual (límite leve/moderada) de grado igual o superior al 33%. Cumplirlos al finalizar el plazo de instancias y mantenerlos hasta la toma de posesión o contratación.",
+   "valor": "Certificado de discapacidad intelectual (límite leve/moderada) de grado igual o superior al 33%; compatibilidad del informe para las tareas del puesto; estar en posesión de los requisitos al finalizar el plazo de instancias y mantenerlos durante el proceso.",
    "cita": "només podran participar en aquest procés selectiu aquelles persones amb certificat de discapacitat intel·lectual (límit lleu/moderada) de grau igual o superior al 33%.",
    "nivel": "literal"
   },
   "idioma_cooficial": {
-   "valor": "catalán, nivel básico A2 (comprensión y expresión oral y conocimiento escrito)",
+   "valor": "catalán, nivel básico (A2)",
    "cita": "comprensió i expressió oral i coneixement escrit corresponent a nivell bàsic (A2)",
    "nivel": "literal"
   },
@@ -58,7 +60,7 @@
    "nivel": "literal"
   },
   "exenciones_tasa": {
-   "valor": "Bonificación del 100% para personas desempleadas en el plazo de presentación de solicitudes, acreditada con DONO o certificado; devolución si la exclusión no es imputable al aspirante.",
+   "valor": "Bonificación del 100% para personas en situación de desempleo en el plazo de presentación, acreditada con DONO o certificado; devolución si la exclusión no es imputable al aspirante.",
    "cita": "Les persones que es trobin en situació de desocupació en el termini de presentació de sol·licituds gaudiran d'una bonificació del 100% de l'import de la Taxa.",
    "nivel": "literal"
   },
@@ -68,39 +70,45 @@
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Sede electrónica del Ayuntamiento (trámite de inscripción en procesos de selección) o Registro general, según art. 16 Ley 39/2015",
-   "cita": "mitjançant el tràmit previst a la seu electrònica de l'Ajuntament",
+   "valor": "Sede electrónica del Ayuntamiento (Trámites y Gestiones – Recursos Humanos), o Registro general u otras formas del artículo 16 de la Ley 39/2015",
+   "cita": "mitjançant el tràmit previst a la seu electrònica de l'Ajuntament, Ajuntament de Calonge i Sant Antoni – Tràmits i Gestions – Recursos Humans",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "1r ejercicio: prueba teórico-práctica tipo test, 3 respuestas por pregunta, 1 correcta, máximo 1 hora, 25 puntos, mínimo 12,5, obligatorio y eliminatorio",
+    "2n ejercicio: prueba de catalán nivel equiparable A2, APTO/NO APTO, obligatorio y eliminatorio; exención con certificado A2",
+    "Entrevista: no obligatoria y no eliminatoria"
+   ],
+   "cita": "Exercicis: seran els que s'especifiquen a continuació i amb caràcter obligatori i eliminatori, excepte l'entrevista que no serà obligatòria i no eliminatòria.",
    "nivel": "literal"
   },
   "meritos": {
-   "valor": "Fase de concurso: méritos según el baremo de las bases generales; valoración máxima total de 8 puntos",
+   "valor": "Fase de concurso, valoración máxima total de 8 puntos según el baremo de las bases generales; se presentan documentos acreditativos en 5 días hábiles desde la publicación del resultado de la oposición.",
    "cita": "La valoració màxima total no podrà superar els 8 punts, d'acord amb el barem que determinen les bases generals.",
    "nivel": "literal"
   },
+  "bolsa": {
+   "valor": "no",
+   "cita": "Nombre de places: 1",
+   "nivel": "literal"
+  },
   "practicas_o_curso": {
-   "valor": "Período de prueba de 2 meses desde la contratación, evaluado por el jefe superior",
+   "valor": "período de prueba de 2 meses desde la contratación, evaluado por el jefe superior",
    "cita": "el període de prova serà de 2 (dos) mesos a comptar des de la contractació.",
    "nivel": "literal"
   }
  },
  "rechazados": {
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 0,
+   "cita": "destinada al torn de reserva per a persones que tinguin la condició legal de persona amb discapacitat intel·lectual"
+  },
   "plazas_discapacidad": {
-   "motivo": "cita_no_literal",
+   "motivo": "valor_no_en_cita",
    "valor": 1,
-   "cita": "torn de reserva per a persones amb discapacitat intel·lectual"
-  },
-  "publicaciones": {
-   "motivo": "cita_no_literal",
-   "valor": "No consta",
-   "cita": ""
-  },
-  "ejercicios": {
-   "motivo": "cita_no_literal",
-   "valor": [
-    "1r exercici: prova teòric pràctica, test de 3 respostes, màxim 1 hora, 25 punts, mínim 12,5 per superar",
-    "2n exercici: prova de català nivel A2, APTE/NO APTE (exenta con certificado A2)"
-   ],
-   "cita": "1r exercici. Prova teòric pràctica Consistirà en resoldre un qüestionari tipus test, cada pregunta tindrà 3 respostes alternatives"
+   "cita": "destinada al torn de reserva per a persones que tinguin la condició legal de persona amb discapacitat intel·lectual"
   }
  }
 }

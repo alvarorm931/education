@@ -1,0 +1,102 @@
+{
+ "proceso": "dogv:455753",
+ "documento": {
+  "id": "dogv:455753",
+  "fuente": "DOGV",
+  "url": "https://dogv.gva.es/datos/2025/11/28/pdf/2025_47466_es.pdf",
+  "fecha": "2025-11-28",
+  "huella": "8fdbf69f47161bfbe94d112cb860ce9c4d2fa61d86f609f18e12375932ab95ff"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:41:15+00:00",
+ "lote": "msgbatch_01UNq3BNhPPHoTK3TEJzun1h",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "C1",
+   "cita": "grupo C, subgrupo C1, de la escala básica de laboratorios de ciencias y tecnológicos",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "Ingreso en la escala básica de laboratorios de ciencias y tecnológicos de la Universidad de Alicante",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "por el sistema general de acceso libre, mediante el procedimiento de oposición",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "convocar proceso selectivo para cubrir 1 plaza correspondiente a la oferta pública de empleo",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "título de bachiller, técnica o técnico de formación profesional, o cumplir los requisitos para su obtención",
+   "cita": "Estar en posesión del título de bachiller, técnica o técnico de formación profesional o cumplir los requisitos para su obtención",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española, de la UE o acogido a tratados internacionales; tener cumplidos 16 años y no exceder la edad de jubilación forzosa; acreditación para funciones A, B y C en materia de animal de experimentación; capacidad física y psíquica; no haber sido separado de la Administración ni inhabilitado.",
+   "cita": "Tener cumplidos los dieciséis años y no exceder de la edad máxima de jubilación forzosa",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 15,
+   "cita": "Los derechos de examen serán de 15 euros.",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "diez días hábiles contados a partir del día siguiente al de la publicación del extracto de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "en el plazo de diez días hábiles contados a partir del día siguiente al de la fecha de publicación del extracto de esta convocatoria en el Boletín Oficial del Estado",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Obligatoriamente por medios electrónicos a través de la Sede electrónica de la Universidad de Alicante, trámite de solicitud para oposiciones del PTGAS; no se admiten otras vías.",
+   "cita": "la correspondiente solicitud, que habrá de ser cumplimentada a través de Sede electrónica",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Diari Oficial de la Generalitat Valenciana, Sede electrónica de la Universidad de Alicante y lugares previstos en la base 10",
+   "cita": "Dicha resolución se publicará en el Diari Oficial de la Generalitat Valenciana y en los lugares previstos en la base 10",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Primer ejercicio: cuestionario tipo test de 4 respuestas, máximo 100 preguntas, eliminatorio (mínimo 5 puntos)",
+    "Segundo ejercicio: preguntas de respuesta corta sobre la parte específica del temario, máximo 20 preguntas, eliminatorio (mínimo 5 puntos)",
+    "Tercer ejercicio: práctico o teórico-práctico sobre la parte específica del temario, eliminatorio (mínimo 5 puntos)"
+   ],
+   "cita": "Primer ejercicio. Consistirá en un cuestionario con 4 respuestas alternativas en cada pregunta",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, bolsa de trabajo conforme al Reglamento de confección de bolsas de trabajo de la Universidad de Alicante",
+   "cita": "La bolsa de trabajo se formará tal y como se establece en el primer párrafo del artículo 3",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "no se indica periodo de prácticas ni curso selectivo; toma de posesión en el plazo de un mes desde la publicación del nombramiento",
+   "cita": "La toma de posesión de las personas aspirantes aprobados será efectuada en el plazo de un mes",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "escala básica de laboratorios de ciencias y tecnológicos",
+   "cita": "plazas del grupo C, subgrupo C1, de la escala básica de laboratorios de ciencias y tecnológicos"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "por el sistema general de acceso libre, mediante el procedimiento de oposición"
+  },
+  "exenciones_tasa": {
+   "motivo": "cita_no_literal",
+   "valor": "Exención para discapacidad igual o superior al 33 %, familias numerosas o monoparentales de categoría especial, víctimas de violencia sobre la mujer y personas en exclusión social; bonificación del 50 % para familias numerosas o monoparentales de categoría general.",
+   "cita": "están exentos del pago de la tasa establecida en el punto anterior: Las o los aspirantes que tengan reconocido un grado de discapacidad igual o superior al 33 %"
+  }
+ }
+}

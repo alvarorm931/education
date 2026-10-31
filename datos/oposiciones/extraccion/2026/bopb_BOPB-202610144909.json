@@ -1,35 +1,57 @@
 {
  "proceso": "bopb:BOPB-202610144909",
  "documento": {
-  "id": "bopb:BOPB-202610144909",
-  "fuente": "BOPB",
-  "url": "https://bop.diba.cat/anunci/3994069/aprovacio-de-les-bases-reguladores-per-a-la-seleccio-de-personal-laboral-fix-mitjancant-concurs-oposicio-pel-torn-lliure-per-ocupar-una-placa-de-tecnic-a-de-projectes-impuls-economic-i-comerc-ajuntament-de-sentmenat",
+  "id": "dogc:1055607",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1055607",
   "fecha": "2026-10-02",
-  "huella": "dcd968f5932d80f4f202e9a37eed0bf64af177e657c656e91eb03879b6ed6467"
+  "huella": "0317432f06ec5e1b1b53a4ecdec737a25810728a804144b8544ad951098b9050"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T08:03:39+00:00",
- "lote": "msgbatch_013xFoLdqcGqWcqkzh7qrdGg",
+ "extraido": "2026-10-31T14:41:54+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
  "no_son_bases": false,
  "campos": {
+  "denominacion": {
+   "valor": [
+    "Tècnic/a de projectes (impuls econòmic i comerç)"
+   ],
+   "cita": "1 plaça de Tècnic/a de projectes (impuls econòmic i comerç), subgrup A2 (OPO 2023)",
+   "nivel": "literal"
+  },
   "grupo": {
    "valor": "A2",
-   "cita": "Grup A Subgrup A2 Naturalesa Laboral Nomenament Fixe",
+   "cita": "Tècnic/a de projectes (impuls econòmic i comerç), subgrup A2 (OPO 2023)",
    "nivel": "literal"
   },
   "vinculo": {
-   "valor": "personal laboral fixo",
-   "cita": "per a la selecció de personal laboral fixe, mitjançant concurs oposició",
+   "valor": "personal laboral fixe",
+   "cita": "selecció de personal laboral fixe, mitjançant concurs oposició, pel torn lliure",
    "nivel": "literal"
   },
   "sistema": {
-   "valor": "concurs-oposició",
-   "cita": "Sistema de selecció Concurs-oposició Complement de Destí 22",
+   "valor": "concurso-oposición",
+   "cita": "selecció de personal laboral fixe, mitjançant concurs oposició, pel torn lliure",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "per ocupar 1 plaça de Tècnic/a de projectes (impuls econòmic i comerç)",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Grau universitari o Diplomatura en l'àmbit de les ciències socials, econòmiques i/o jurídiques o turisme o titulació equivalent, o estar en condicions d'obtenir-la",
+   "cita": "Estar en possessió de la titulació de Grau universitari o Diplomatura en l'àmbit de les ciències socials",
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Nacionalitat espanyola o els supòsits equivalents de l'article 56 TREBEP; capacitat funcional; setze anys i no excedir l'edat de jubilació forçosa; no haver estat separat del servei; coneixement de castellà (B2) per a persones no espanyoles; permís de conduir B",
-   "cita": "Tenir la nacionalitat espanyola sense perjudici del que es disposa en l'article 57",
+   "valor": "Nacionalitat espanyola o requisits de l'article 57 EBEP; capacitat funcional; tenir setze anys i no excedir l'edat de jubilació; no estar separat del servei de cap Administració ni inhabilitat; permís de conduir B; acreditar pagament de la taxa.",
+   "cita": "i) Estar en possessió del Permís de conduir B",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Català, nivell C1 (MECR) o equivalent; prova eliminatòria si no s'acredita",
+   "cita": "Estar en possessió del certificat de nivell de suficiència de català (nivell C1 d'acord amb el MECR)",
    "nivel": "literal"
   },
   "tasa_euros": {
@@ -42,77 +64,57 @@
    "cita": "en el termini de vint dies hàbils comptats a partir de l'endemà al de la publicació de l'anunci de la convocatòria",
    "nivel": "literal"
   },
+  "presentacion": {
+   "valor": "Telemàticament al portal https://sentmenat.convoca.online/, presencialment amb cita prèvia al Registre General, o per correu postal administratiu",
+   "cita": "Els interessats poden formalitzar la sol·licitud de forma telemàtica a través del portal",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Portal https://sentmenat.convoca.online/, Tauler d'anuncis, BOPB, DOGC i seu electrònica de l'Ajuntament",
+   "cita": "les bases de la convocatòria es publicaran en el Butlletí Oficial de la Província de Barcelona, al Diari Oficial",
+   "nivel": "literal"
+  },
   "temas": {
    "valor": 60,
    "cita": "Tema 60. Utilitat i objectius d'un programa de fidelització.",
    "nivel": "literal"
   },
+  "meritos": {
+   "valor": "Experiència en administració (max 15), experiència privada (max 7), cursos de formació (max 5), titulació superior (max 3), certificat ACTIC (max 2), entrevista (max 5); fase de concurs 30 punts",
+   "cita": "7.2.1.a) Experiència professional per haver treballat en administracions públiques",
+   "nivel": "literal"
+  },
   "bolsa": {
-   "valor": "Sí, per cobrir interinament places vacants o substitucions; vigència de 2 anys",
-   "cita": "Els i les aspirants que hagin superat el procés de selecció i no resultin seleccionades pel nomenament, formaran part d’una borsa de treball",
+   "valor": "sí, per cobrir interinament places vacants o substitucions, amb vigència de 2 anys prorrogables 2 més",
+   "cita": "Els i les aspirants que hagin superat el procés de selecció i no resultin seleccionades pel nomenament, formaran part d'una borsa de treball",
    "nivel": "literal"
   },
   "practicas_o_curso": {
    "valor": "Període de prova de 6 mesos, valorat com apte o no apte",
-   "cita": "S’establirà un període de prova de 6 mesos, el qual serà valorat com apte o no apte",
+   "cita": "S'establirà un període de prova de 6 mesos, el qual serà valorat com apte o no apte",
    "nivel": "literal"
   }
  },
  "rechazados": {
-  "denominacion": {
-   "motivo": "cita_no_literal",
-   "valor": "Tècnic/a de projectes (Impuls econòmic i comerç)",
-   "cita": "Tècnic/a de projectes (Impuls econòmic i comerç), subgrup A2, OPO 2023"
-  },
-  "plazas_total": {
-   "motivo": "cita_no_literal",
-   "valor": 1,
-   "cita": "per ocupar 1 plaça de Tècnic/a de projectes (impuls econòmic i comerç)"
-  },
   "plazas_turno_libre": {
-   "motivo": "cita_no_literal",
+   "motivo": "valor_no_en_cita",
    "valor": 1,
-   "cita": "pel torn lliure per ocupar 1 plaça de Tècnic/a de projectes"
-  },
-  "titulacion": {
-   "motivo": "cita_no_literal",
-   "valor": "Grau universitari o Diplomatura en l'àmbit de les ciències socials, econòmiques i/o jurídiques o turisme o titulació equivalent",
-   "cita": "Estar en possessió de la titulació de Grau universitari o Diplomatura en l’àmbit de les ciències socials"
-  },
-  "idioma_cooficial": {
-   "motivo": "cita_no_literal",
-   "valor": "Català, nivell C1 (suficiència) del MECR",
-   "cita": "Estar en possessió del certificat de nivell de suficiència de català (nivell C1 d’acord amb el MECR)"
+   "cita": "selecció de personal laboral fixe, mitjançant concurs oposició, pel torn lliure"
   },
   "exenciones_tasa": {
    "motivo": "cita_no_literal",
-   "valor": "Persones en situació d'atur que no percebin cap prestació contributiva",
-   "cita": "Les persones que es trobin en situació d’atur i que no percebin cap tipus de prestació contributiva estaran exempts"
-  },
-  "presentacion": {
-   "motivo": "cita_no_literal",
-   "valor": "Registre Electrònic General, portal https://sentmenat.convoca.online/, presencialment amb cita prèvia o per Correus",
-   "cita": "Les sol·licituds es dirigiran a l'Alcaldia i es presentaran en el Registre Electrònic General"
-  },
-  "publicaciones": {
-   "motivo": "cita_no_literal",
-   "valor": "Tauler d'anuncis, portal https://sentmenat.convoca.online/, seu electrònica i DOGC/BOPB",
-   "cita": "es publicarà al portal https://sentmenat.convoca.online/ i en el Tauler d'anuncis"
+   "valor": "Exempts les persones en situació d'atur que no percebin cap tipus de prestació contributiva, acreditant-ho amb certificats del SEPE/SOC i de la Tresoreria de la Seguretat Social",
+   "cita": "Les persones que es trobin en situació d'atur i que no percebin cap tipus de prestació contributiva estaran exempts del pagament"
   },
   "ejercicios": {
    "motivo": "cita_no_literal",
    "valor": [
     "Prova teòrica tipus test (20 punts, eliminatòria, mínim 10)",
-    "Prova pràctica sobre supòsits del lloc (40 punts, eliminatòria, mínim 20)",
-    "Prova de coneixements de llengua catalana (apte/no apte)",
-    "Prova de llengua castellana per a persones no espanyoles (apte/no apte)"
+    "Prova pràctica sobre supòsits relacionats amb el lloc (40 punts, eliminatòria, mínim 20)",
+    "Prova de coneixements de llengua catalana (apte/no apte, eliminatòria)",
+    "Prova de coneixements de llengua castellana per a no nacionals (apte/no apte)"
    ],
-   "cita": "Prova teòrica (tipus test) i prova pràctica, ambdues eliminatòries, amb puntuacions mínimes"
-  },
-  "meritos": {
-   "motivo": "cita_no_literal",
-   "valor": "Experiència professional fins a 15 punts; cursos de formació fins a 5; titulació superior fins a 3; certificat ACTIC fins a 2; entrevista fins a 5 punts",
-   "cita": "7.2.1.a) Experiència professional per haver treballat en administracions públiques"
+   "cita": "Prova teòrica: contestar per escrit un qüestionari amb respostes múltiples, tipus test"
   }
  }
 }

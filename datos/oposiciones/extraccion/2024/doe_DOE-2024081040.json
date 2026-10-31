@@ -1,0 +1,50 @@
+{
+ "proceso": "doe:DOE-2024081040",
+ "documento": {
+  "id": "doe:DOE-2024081040",
+  "fuente": "DOE",
+  "url": "https://doe.juntaex.es/otrosFormatos/html.php?xml=2024081040&anio=2024&doe=1240o",
+  "fecha": "2024-06-27",
+  "huella": "a0ab864b028ab719a46ca5dd9d0967d6e472144deda134c57d6b7cfe9dc6b4d6"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:54:15+00:00",
+ "lote": "msgbatch_01HRnX7cDVMkRZD7mBamCmLu",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Agente de la Policía Local"
+   ],
+   "cita": "cuatro plazas de Agente de la Policía Local, encuadradas en la Escala de Administración Especial",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C1",
+   "cita": "Escala Básica, Categoría Agente; vacantes en la plantilla de personal funcionario",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "vacantes en la plantilla de personal funcionario del Ayuntamiento de Villanueva de la Serena",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "por el sistema de acceso de movilidad y el sistema de selección de concurso",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles a contar desde el siguiente a la publicación del anuncio de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "el plazo de presentación de solicitudes será de veinte días hábiles a contar desde el siguiente a la publicación",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 4,
+   "cita": "se publican íntegramente las bases de la convocatoria para la provisión, por el sistema de acceso de movilidad"
+  }
+ }
+}

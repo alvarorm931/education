@@ -1,0 +1,55 @@
+{
+ "proceso": "boe:BOE-A-2024-27320",
+ "documento": {
+  "id": "bocm:BOCM-20241211-79",
+  "fuente": "BOCM",
+  "url": "https://www.bocm.es/bocm-20241211-79",
+  "fecha": "2024-12-11",
+  "huella": "a9dea2c2d0fa8c29915c7cfee2562b25fd6b15ece73921a3cc65d68daa1d0de4"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:49:29+00:00",
+ "lote": "msgbatch_018TPQE8scQozfAUdc1n8RyC",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "policía"
+   ],
+   "cita": "convocatoria de las pruebas selectivas para la selección de veinticinco plazas de la categoría de policía",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "personal funcionario por el sistema selectivo de concurso-oposición en turno de libre",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "personal funcionario por el sistema selectivo de concurso-oposición en turno de libre",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 25,
+   "cita": "selección de veinticinco plazas de la categoría de policía",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles, contados a partir del siguiente al de la publicación de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "plazo de presentación de solicitudes de participación será de veinte días hábiles, contados a partir del siguiente",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 25,
+   "cita": "personal funcionario por el sistema selectivo de concurso-oposición en turno de libre"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "tablón de anuncios y edictos electrónico y página web del Ayuntamiento de Leganés (www.leganes.org/proceso-selectivos)",
+   "cita": "publicadas íntegramente en el tablón de anuncios y edictos electrónico y en la página web del Ayuntamiento de Leganés"
+  }
+ }
+}

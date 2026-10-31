@@ -1,109 +1,60 @@
 {
  "proceso": "bopb:BOPB-202610148115",
  "documento": {
-  "id": "bopb:BOPB-202610148115",
-  "fuente": "BOPB",
-  "url": "https://bop.diba.cat/anunci/3996737/aprovacio-de-la-convocatoria-i-les-bases-especifiques-que-regiran-el-proces-de-seleccio-pel-sistema-d-oposicio-torn-lliure-per-a-la-cobertura-interina-d-una-placa-de-tecnic-d-administracio-especial-enginyer-i-constitucio-d-una-borsa-de-treball-ajuntament-de-sitges",
-  "fecha": "2026-10-09",
-  "huella": "9a1a23a3436fc16fbc470d9207705ce9b7c1fe13e10760a3be6bff1ab9155089"
+  "id": "dogc:1057357",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1057357",
+  "fecha": "2026-10-21",
+  "huella": "2c37298f79679feac3cb1d0539e3079cb9968e89cf82336f7a0183ee91c07d35"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T08:03:31+00:00",
- "lote": "msgbatch_013xFoLdqcGqWcqkzh7qrdGg",
+ "extraido": "2026-10-31T14:41:56+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
  "no_son_bases": false,
  "campos": {
+  "denominacion": {
+   "valor": [
+    "TÈCNIC/A ADMINISTRACIÓ ESPECIAL (ENGINYER)"
+   ],
+   "cita": "la cobertura interina d'una plaça de TÈCNIC/A ADMINISTRACIÓ ESPECIAL (ENGINYER), número 7 de la plantilla",
+   "nivel": "literal"
+  },
   "grupo": {
    "valor": "A1",
-   "cita": "Grup: A - Subgrup: A1 - Nivell destí: 26",
+   "cita": "grup A1, personal funcionari",
    "nivel": "literal"
   },
   "vinculo": {
    "valor": "funcionario interino",
-   "cita": "cobertura interina d’una plaça de TÈCNIC D’ADMINISTRACIÓ ESPECIAL",
+   "cita": "per a la cobertura interina d'una plaça de TÈCNIC/A ADMINISTRACIÓ ESPECIAL",
    "nivel": "literal"
   },
   "sistema": {
    "valor": "oposición",
-   "cita": "pel sistema d’oposició, torn lliure, per a la cobertura interina",
-   "nivel": "literal"
-  },
-  "plazas_total": {
-   "valor": 1,
-   "cita": "per a la cobertura interina d’una plaça de TÈCNIC D’ADMINISTRACIÓ ESPECIAL",
-   "nivel": "literal"
-  },
-  "titulacion": {
-   "valor": "Llicenciatura o grau en enginyeria que habiliti per a l'exercici de la professió d'Enginyer",
-   "cita": "Acreditar que s'està en possessió del títol de llicenciat/da en enginyeria o de grau en enginyeria",
-   "nivel": "sin_signos"
-  },
-  "otros_requisitos": {
-   "valor": "Capacitat funcional; no haver estat separat/da ni acomiadat/da del servei de cap administració pública; no estar inhabilitat/da per sentència ferma; no estar afectat per incompatibilitats",
-   "cita": "Tenir la capacitat funcional per al desenvolupament de les funcions del lloc de treball",
-   "nivel": "literal"
-  },
-  "idioma_cooficial": {
-   "valor": "Català, nivell C1 (MERC) o equivalent o superior; castellà per a persones sense nacionalitat espanyola",
-   "cita": "Les persones aspirants han de tenir la certificació dels coneixements de llengua catalana de nivell C1",
-   "nivel": "literal"
-  },
-  "exenciones_tasa": {
-   "valor": "Titulars del Carnet Blau S de Sitges i persones en situació d'atur",
-   "cita": "Ser titular del Carnet Blau S de Sitges 2. Els que es trobin en situació d’atur.",
+   "cita": "pel sistema d'oposició torn lliure, per a la cobertura interina",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "20 dies hàbils a comptar de la darrera de les publicacions",
-   "cita": "que s’han de presentar en el termini improrrogable de 20 dies hàbils a comptar de la darrera de les publicacions",
+   "valor": "20 días hábiles, contados desde el día siguiente a la última de las publicaciones",
+   "cita": "El termini improrrogable per presentar les sol·licituds és de 20 dies hàbils, comptats a partir del dia següent de la darrera de les publicacions.",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Tauler d'anuncis de la Corporació, seu electrònica sitges.convoca.online i xarxes socials corporatives",
-   "cita": "Totes els anuncis referents a aquest procés de selecció es publicaran al tauler d’anuncis de la Corporació",
+   "valor": "Las posteriores publicaciones se harán en la página web municipal",
+   "cita": "Les posteriors publicacions es faran a la pàgina web municipal.",
    "nivel": "literal"
   },
-  "practicas_o_curso": {
-   "valor": "Període de prova de 6 mesos",
-   "cita": "10.- PERIODE PROVA Segons Base General 14: 6 mesos.",
+  "bolsa": {
+   "valor": "sí, se constituye una bolsa de trabajo",
+   "cita": "i constitució d'una borsa de treball, aprovat per Decret d'Alcaldia",
    "nivel": "literal"
   }
  },
  "rechazados": {
-  "denominacion": {
+  "plazas_total": {
    "motivo": "cita_no_literal",
-   "valor": "Tècnic d'Administració Especial (Enginyer), núm. 7 de la plantilla",
-   "cita": "TÈCNIC D’ADMINISTRACIÓ ESPECIAL (ENGINYER), núm. 7 de la plantilla"
-  },
-  "plazas_turno_libre": {
-   "motivo": "valor_no_en_cita",
    "valor": 1,
-   "cita": "pel sistema d’oposició, torn lliure, per a la cobertura interina"
-  },
-  "presentacion": {
-   "motivo": "cita_no_literal",
-   "valor": "Registre electrònic (sitges.convoca.online), presencial a les OAC, oficines de Correus, representacions diplomàtiques i oficines d'assistència en matèria de registres",
-   "cita": "En el registre electrònic de l’Ajuntament mitjançant el següent enllaç"
-  },
-  "ejercicios": {
-   "motivo": "cita_no_literal",
-   "valor": [
-    "Prova de llengua catalana (apte/no apte)",
-    "Prova de llengua castellana per a persones no espanyoles (apte/no apte)",
-    "Prova teòrica: 10 preguntes curtes sobre el temari (0-10, mínim 5)",
-    "Prova pràctica: supòsits de caràcter pràctic, durada màxima 2 hores (0-20, mínim 10)",
-    "Entrevista personal (0-5, no eliminatòria)"
-   ],
-   "cita": "Consisteix a respondre per escrit 10 preguntes curtes variades sobre el temari"
-  },
-  "temas": {
-   "motivo": "cita_no_literal",
-   "valor": 26,
-   "cita": "ANNEX: TEMARI 1. Reglamentació de seguretat de les instal·lacions elèctriques"
-  },
-  "bolsa": {
-   "motivo": "cita_no_literal",
-   "valor": "Sí: borsa de treball per substitucions, temporalitat o provisió temporal de vacants, vigència 2 anys",
-   "cita": "constitució d’una borsa de treball, ja sigui per substitucions, temporalitat o per la provisió temporal de vacants"
+   "cita": "una plaça de TÈCNIC/A ADMINISTRACIÓ ESPECIAL (ENGINYER), número 7 de la plantilla"
   }
  }
 }

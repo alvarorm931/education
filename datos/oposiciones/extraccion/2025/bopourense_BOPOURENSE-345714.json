@@ -1,0 +1,57 @@
+{
+ "proceso": "bopourense:BOPOURENSE-345714",
+ "documento": {
+  "id": "bopourense:BOPOURENSE-345714",
+  "fuente": "BOP-OURENSE",
+  "url": null,
+  "fecha": "2025-05-09",
+  "huella": "4270928792305189626028cd18d9526b338354ca7cb2ae15e2678ec02a788ddb"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:45:46+00:00",
+ "lote": "msgbatch_017vJZdAmjTkBDdH14aLEdCv",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "contrato laboral de duración determinada vinculado a programas financiados con fondos europeos",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "Sistema de selección: concurso-oposición.",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "cinco días hábiles",
+   "cita": "en los cinco días hábiles siguientes al de la publicación del presente anuncio de convocatoria en el BOP",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Registro General del Ayuntamiento, en horario de 9.00 a 14.00 horas, de lunes a viernes, o por cualquiera de los medios admitidos en derecho",
+   "cita": "en el Registro General del Ayuntamiento, en horario de 9.00 a 14.00 horas, de lunes a viernes",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "tablón de anuncios, página web del Ayuntamiento y sede electrónica del Ayuntamiento",
+   "cita": "El texto completo de las bases de selección está publicado en el tablón de anuncios, en la página web del Ayuntamiento",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "jefe/a de brigada",
+    "peón/a conductor/a",
+    "peón/a forestal"
+   ],
+   "cita": "Número y denominación de las plazas: 2 jefes/as de brigada, 2 peones/as conductores/as y 6 peones/as forestales"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 10,
+   "cita": "2 jefes/as de brigada, 2 peones/as conductores/as y 6 peones/as forestales"
+  }
+ }
+}

@@ -1,0 +1,60 @@
+{
+ "proceso": "bocm:BOCM-20241119-75",
+ "documento": {
+  "id": "bocm:BOCM-20241119-75",
+  "fuente": "BOCM",
+  "url": "https://www.bocm.es/bocm-20241119-75",
+  "fecha": "2024-11-19",
+  "huella": "14058381357dee6bcd1b20538ff6f03e11f433c2c1531e33c94db5e351225e97"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:49:39+00:00",
+ "lote": "msgbatch_018TPQE8scQozfAUdc1n8RyC",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "C2",
+   "cita": "personal laboral fijo asimilado a grupo C, subgrupo C2",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "personal laboral fijo asimilado a grupo C, subgrupo C2, según artículo 76",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "mediante promoción interna correspondiente a la Oferta de Empleo Público",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 11,
+   "cita": "para proveer once plazas de Conserje, personal laboral fijo asimilado",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles, contados a partir del día siguiente a la publicación de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes será de veinte días hábiles, contados a partir del día siguiente",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "página web www.paracuellosdejarama.es, apartado Empleo Público",
+   "cita": "Las bases específicas están expuestas íntegramente en la página web, cuya dirección es",
+   "nivel": "sin_signos"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Conserje"
+   ],
+   "cita": "ocho plazas de Conserje, personal laboral fijo asimilado a grupo C, subgrupo C2"
+  },
+  "plazas_promocion_interna": {
+   "motivo": "valor_no_en_cita",
+   "valor": 11,
+   "cita": "mediante promoción interna correspondiente a la Oferta de Empleo Público del ejercicio 2021"
+  }
+ }
+}

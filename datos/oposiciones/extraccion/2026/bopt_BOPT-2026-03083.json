@@ -1,0 +1,100 @@
+{
+ "proceso": "bopt:BOPT-2026-03083",
+ "documento": {
+  "id": "bopt:BOPT-2026-03083",
+  "fuente": "BOPT",
+  "url": "https://www.dipta.cat/bopt/web/anunci/358454/borsa-de-treball-d-infermer-a-bases-i-convocatoria-ajuntament-camarles",
+  "fecha": "2026-04-09",
+  "huella": "998dcf59a58eff215dbe2789816cd37542e880124045ea1a93ffa8b2801d48c6"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:40:50+00:00",
+ "lote": "msgbatch_01E3wiYcGL8Lzho48bXWLyyb",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "A2",
+   "cita": "denominació “ Infermer/a”, grup A2, per cobrir vacants, substitucions",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "constituir una borsa de treball de personal laboral temporal",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "mitjançant concurs de valoració de mèrits, torn lliure",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Graduat en Infermeria o equivalent",
+   "cita": "Posseir el títol de “Graduat en Infermeria” o equivalent",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalitat o libre circulación; capacidad funcional; mayoría de edad (16 años) sin exceder edad de jubilación; no inhabilitación para cargos públicos; no haber sido separado de la función pública; nivel C1 de catalán; castellano B2 o C2 si no es nacional de país hispanohablante",
+   "cita": "Haver complert setze anys i no excedir, en el seu cas, de l’edat màxima de jubilació",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "catalán, nivel C1",
+   "cita": "Posseir el certificat de nivell C1 de català emès/expedit per l'òrgan competent",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "5 días hábiles desde el día siguiente a la publicación de la convocatoria en el BOPT",
+   "cita": "El termini per presentar sol·licituds és de 5 dies hàbils a partir de l’endemà de la publicació",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Preferentemente en el registro electrónico del Ente; también presencial en el Registro General o en las formas del artículo 16.4 de la Ley 39/2015",
+   "cita": "Preferentment les instàncies es presentaran Electrònicament: al registre electrònic de l’Ens",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Seu electrónica del Ente y Portal de Transparencia; BOPT para la convocatoria",
+   "cita": "La present convocatòria es publicarà al Butlletí Oficial de la Província de Tarragona, a la Seu electrònica",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Fase prèvia de coneixement de llengua catalana (eliminatoria, apto/no apto)",
+    "Fase prèvia de coneixement de llengua castellana si procede (eliminatoria)",
+    "Fase de concurso: entrevista (no eliminatoria, máx. 5 puntos)",
+    "Experiencia laboral (máx. 5 puntos)",
+    "Formación relacionada (máx. 5 puntos)",
+    "Conocimientos de catalán nivel C2 (1 punto)"
+   ],
+   "cita": "Fase de concurs: Es valoraran els mèrits aportats per les persones aspirants",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Entrevista hasta 5 puntos; experiencia laboral hasta 5 puntos (0,20 por año en Administraciones públicas y 0,15 en empresas privadas); formación hasta 5 puntos; catalán C2 hasta 1 punto",
+   "cita": "Experiència laboral (màx. 5 punts): L’antiguitat en serveis prestats relacionada amb el lloc de treball",
+   "nivel": "sin_signos"
+  },
+  "bolsa": {
+   "valor": "sí, bolsa de trabajo para cubrir vacantes, sustituciones y cualquier contingencia temporal, con vigencia de dos años",
+   "cita": "La borsa tindrà una vigència de dos anys des de la seva constitució.",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "período de prueba de 1 mes",
+   "cita": "Les persones contractades hauran de superar un període de prova de 1 mes.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Infermer/a",
+   "cita": "Borsa de treball de personal laboral temporal, denominació “Infermer/a”, subgrup A2"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "torn lliure i s’ha de realitzar garantint el compliment"
+  }
+ }
+}

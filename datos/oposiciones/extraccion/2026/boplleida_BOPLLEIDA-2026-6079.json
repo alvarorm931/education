@@ -1,30 +1,25 @@
 {
  "proceso": "boplleida:BOPLLEIDA-2026-6079",
  "documento": {
-  "id": "boplleida:BOPLLEIDA-2026-6079",
-  "fuente": "BOP-LLEIDA",
-  "url": "https://ebop.diputaciolleida.cat/aplicacions/bop/bopV1/fitxers/pdf/2026/134/202613406079.pdf",
-  "fecha": "2026-07-16",
-  "huella": "4fe6d44b61166deff668a7e50d70b5d7f9f41c8c779e9a2e221ce412ce7cf8fc"
+  "id": "dogc:1052041",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1052041",
+  "fecha": "2026-08-06",
+  "huella": "e0816ea0f6fb206cdf87c62ffbef8375069a9b008eada97cd8ab820cb8403ccb"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T08:18:14+00:00",
- "lote": "msgbatch_01BrnYw6KkevFx7at547B5g8",
+ "extraido": "2026-10-31T14:41:34+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
  "no_son_bases": false,
  "campos": {
-  "denominacion": {
-   "valor": "Tècnic/a d'activitats i medi ambient, Escala d'Administració Especial, subescala Tècnica",
-   "cita": "plaça de tècnic/a d'activitats i medi ambient, de la plantilla de personal funcionari, de l'Escala d'Administració Especial, subescala Tècnica",
-   "nivel": "literal"
-  },
   "grupo": {
-   "valor": "A2",
-   "cita": "grup A, subgrup A2, mitjançant el sistema de concurs oposició lliure",
+   "valor": "C2",
+   "cita": "corresponent al subgrup de classificació C2, en règim laboral fix",
    "nivel": "literal"
   },
   "vinculo": {
-   "valor": "funcionario de carrera",
-   "cita": "cobertura en propietat d'una plaça de tècnic/a d'activitats i medi ambient, de la plantilla de personal funcionari",
+   "valor": "personal laboral fijo",
+   "cita": "serà contractada com a personal laboral fix amb les següents característiques",
    "nivel": "literal"
   },
   "sistema": {
@@ -34,35 +29,90 @@
   },
   "plazas_total": {
    "valor": 1,
-   "cita": "cobertura en propietat d'una plaça de tècnic/a d'activitats i medi ambient",
+   "cita": "Nombre de vacants: 1",
    "nivel": "literal"
   },
   "titulacion": {
-   "valor": "Títol universitari d'Enginyeria Tècnica, Superior o de Grau en Enginyeries Agrícola, Forestal, Industrial, d'Obres Públiques, Agrònoms, Camins, Canals i Ports, Ciències Ambientals o equivalent",
-   "cita": "Estar en possessió del títol universitari d'Enginyeria Tècnica, Superior o de Grau en Enginyeries Agrícola, Forestal, Industrial, d'Obres Públiques, Agrònoms, Camins, Canals i Ports, Ciències Ambientals o equivalent",
+   "valor": "Graduado en ESO, graduado escolar, técnico de grado medio de FP o equivalente o superior (oficial 1a d'obres); títol universitari d'Enginyeria Tècnica, Superior o de Grau en Enginyeries Agrícola, Forestal, Industrial, d'Obres Públiques, Agrònoms, Camins, Canals i Ports, Ciències Ambientals o equivalent (tècnic/a d'activitats i medi ambient, modificat)",
+   "cita": "Estar en possessió del títol de graduat o graduada en educació secundària, graduat o graduada escolar",
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Titulacions obtingudes a l'estranger: credencial d'homologació, declaració d'equivalència o reconeixement oficial; en professions regulades, reconeixement que habiliti per a l'exercici professional a l'Estat espanyol",
-   "cita": "Les persones aspirants que estiguin en possessió de titulacions obtingudes a l'estranger hauran d'acreditar que disposen de la corresponent credencial d'homologació",
+   "valor": "Nacionalidad de la UE o asimilada; 16 años cumplidos y no exceder la edad de jubilación forzosa; capacidad funcional; no haber sido separado de la administración; carné de conducir B en vigor.",
+   "cita": "Tenir la nacionalitat espanyola, o de qualsevol altre estat membre de la Unió Europea",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Català nivell B2 (o acreditar-lo mediante prueba obligatoria y eliminatoria).",
+   "cita": "Tenir coneixements de llengua catalana de nivell B2, d'acord amb el marc europeu comú de referència",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 20,
+   "cita": "Els drets d'examen es fixen en la quantitat de 20 euros",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "Vint (20) dies hàbils, comptats des de l'endemà de la darrera publicació de l'extracte de la modificació al DOGC o al BOE",
-   "cita": "Concedir un nou termini de vint (20) dies hàbils per a la presentació de sol·licituds de participació",
+   "valor": "20 días hábiles improrrogables desde el día siguiente a la última publicación del anuncio de la convocatoria en el DOGC o BOE",
+   "cita": "serà de 20 dies hàbils improrrogables comptats a partir de l'endemà de la darrera publicació",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Sede electrónica del Ayuntamiento de Alcarràs, registro electrónico, presencial en la OAC, Correos, representaciones diplomáticas o oficinas de asistencia a registros",
+   "cita": "El termini per a la presentació de sol·licituds serà de 20 dies hàbils improrrogables",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "BOP de Lleida, DOGC, BOE i tauler d'anuncis de la seu electrònica de l'Ajuntament d'Alcarràs",
-   "cita": "Publicar un anunci d'aquesta resolució al Butlletí Oficial de la Província de Lleida, al Diari Oficial de la Generalitat de Catalunya",
+   "valor": "BOP de Lleida, tablón de anuncios de la sede electrónica del Ayuntamiento, extracto en el DOGC y BOE",
+   "cita": "Les bases i la convocatòria es publicaran íntegrament al Butlletí Oficial de la Província de Lleida",
    "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Fase prèvia: prova de català (obligatoria y eliminatoria, para quien no lo acredite)",
+    "Fase prèvia: prova de castellà (para personas extranjeras no acreditadas)",
+    "Prova 1: teórica, 30 preguntas tipo test sobre temario (eliminatoria, mínimo 15 puntos)",
+    "Prova 2: práctica, pruebas relacionadas con las tareas del puesto (eliminatoria, 50 puntos)",
+    "Fase de concurso: valoración de méritos"
+   ],
+   "cita": "Prova 1. Teòrica. Coneixements temari general i específic",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Fase de concurso: valoración de méritos, con puntuación según anexo de baremación de la convocatoria",
+   "cita": "C. Fase de concurs. Valoració de mèrits",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, para cubrir de forma ágil necesidades concretas y prioritarias de personal de esta categoría o vacantes",
+   "cita": "el procés selectiu té per objecte la constitució d'una borsa de treball",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Periodo de prácticas o curso selectivo tras aprobar: no especificado",
+   "cita": "Les persones aspirants aprovades però que no hagin obtingut plaça s'han d'integrar en una borsa",
+   "nivel": "literal"
+  },
+  "temas": {
+   "valor": 20,
+   "cita": "Tema 20. La Llei de prevenció de riscos laborals. Conceptes i definicions. Material i normes de seguretat que cal tenir en compte en els diferents treballs de l",
+   "nivel": "contado"
   }
  },
  "rechazados": {
-  "presentacion": {
+  "denominacion": {
    "motivo": "cita_no_literal",
-   "valor": "D'acord amb la base 6 de les bases reguladores",
-   "cita": "Les interessades hauran de presentar les sol·licituds de participació d'acord amb el que disposa la base 6 de les bases reguladores"
+   "valor": [
+    "oficial 1a d'obres",
+    "arquitecte/a",
+    "tècnic/a d'activitats i medi ambient"
+   ],
+   "cita": "oficial 1a d'obres, corresponent al subgrup de classificació C2, en règim laboral fix"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "Modalitat d'accés: torn lliure"
   }
  }
 }

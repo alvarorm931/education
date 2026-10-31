@@ -1,0 +1,108 @@
+{
+ "proceso": "dogv:430308",
+ "documento": {
+  "id": "dogv:430308",
+  "fuente": "DOGV",
+  "url": "https://dogv.gva.es/datos/2025/06/30/pdf/2025_21981_es.pdf",
+  "fecha": "2025-06-30",
+  "huella": "5145a94402611b2bf1118b3ccfaac9dc06643aef3592aa53e2e35180e523b7a7"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:45:07+00:00",
+ "lote": "msgbatch_016re6aGcimwSVmdrWa6qBd9",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Profesor o profesora titular de universidad (plazas del anexo I)"
+   ],
+   "cita": "plazas que se relacionan en el anexo I de la presente resolución",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "concurso de acceso, por el sistema de acceso libre, las plazas que se relacionan",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Estar en posesión de una titulación específica según la plaza (homologación o equivalencia si es extranjera)",
+   "cita": "Requisito de titulación, consistente en estar en posesión de una titulación específica",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española (salvo art. 57 EBEP), capacidad física y psíquica, 16 años cumplidos y no exceder la edad de jubilación forzosa; acreditación nacional o habilitación para profesor titular de universidad",
+   "cita": "Tener la nacionalidad española, sin perjuicio de lo dispuesto en el artículo 57",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Conocimiento adecuado de alguna lengua oficial de la Comunitat Valenciana para personas no españolas; valenciano en plazas con enseñanza en lengua valenciana (C1 o equivalente)",
+   "cita": "deberán acreditar un conocimiento adecuado de cualquiera de las lenguas oficiales de la Comunitat Valenciana",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 35,
+   "cita": "el importe de la tasa es de 35 euros",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "10 días hábiles desde el día siguiente a la publicación en el BOE",
+   "cita": "en el plazo de 10 días hábiles a partir del día siguiente al de publicación de la presente convocatoria en el Boletín Oficial del Estado",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Telemática a través de la Sede Electrónica de la UA (Trámites, Solicitud de plazas de personal docente e investigador); no se admiten solicitudes por otros medios",
+   "cita": "En ningún caso de admitirán solicitudes recibidas sin utilizar este trámite",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Sede Electrónica de la UA, tablón de anuncios de los locales de la comisión y web del Servicio de Selección de Personal",
+   "cita": "Las publicaciones se realizarán en Sede Electrónica en «Otros documentos generales» del expediente",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Valorados en la primera prueba, a través del historial académico, docente e investigador (máx. 20 puntos)",
+   "cita": "Exposición oral de sus méritos e historial académico, docente e investigador",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "no",
+   "cita": "la propuesta de la comisión de no proveer la plaza convocada",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Toma de posesión en el plazo de 20 días desde el día siguiente a la publicación del nombramiento en el BOE",
+   "cita": "En el plazo máximo 20 días, a contar desde el día siguiente de la publicación del nombramiento en el BOE",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "A1",
+   "cita": "Ley orgánica 2/2023 sistema universitario"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "Estatuto de la Universidad de Alicante concursos de acceso a los cuerpos docentes universitarios"
+  },
+  "exenciones_tasa": {
+   "motivo": "cita_no_literal",
+   "valor": "Discapacidad igual o superior al 33 %; familias numerosas y monoparentales de categoría especial (50 % de bonificación para categoría general); víctimas de violencia sobre la mujer",
+   "cita": "Estarán exentos del pago de la tasa: Las personas aspirantes con una discapacidad igual o superior al 33 %"
+  },
+  "ejercicios": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Primera prueba: exposición oral de méritos e historial (máx. 20 puntos), exposición del proyecto docente (máx. 15) y del proyecto investigador (máx. 15); umbral 25 puntos",
+    "Segunda prueba: exposición oral de uno de los temas del proyecto docente elegido por sorteo (máx. 50 puntos); umbral 25 puntos"
+   ],
+   "cita": ""
+  },
+  "temas": {
+   "motivo": "valor_no_numerico",
+   "valor": "según proyecto docente",
+   "cita": "exposición oral de uno de los temas del proyecto docente presentado"
+  }
+ }
+}

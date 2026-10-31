@@ -1,0 +1,60 @@
+{
+ "proceso": "boplaspalmas:BOPLASPALMAS-2023-12-18-007",
+ "documento": {
+  "id": "boplaspalmas:BOPLASPALMAS-2023-12-18-007",
+  "fuente": "BOP-LASPALMAS",
+  "url": null,
+  "fecha": "2023-12-18",
+  "huella": "d1e3ad24735f00fdd9c94faa1e93de3c19d7b6cf4c9dbd07671fdcccf76b08cd"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:45+00:00",
+ "lote": "msgbatch_01SjfjDqJRwL6bpTvJz2YfVg",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "A1",
+   "cita": "GRUPO A, SUBGRUPO A1.",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "DE UNA PLAZA DE TÉCNICO DE ADMINISTRACIÓN ESPECIAL-AUDITOR, DE LA PLANTILLA DEL PERSONAL FUNCIONARIO",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "MEDIANTE EL SISTEMA DE CONCURSO- OPOSICIÓN, DE UNA PLAZA DE TÉCNICO",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "NÚMERO DE PLAZAS: Una.",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Licenciatura o Grado en Administración y Dirección de Empresas, o Licenciatura en Empresariales.",
+   "cita": "TITULACIÓN REQUERIDA: Licenciatura o Grado en Administración y Dirección de Empresas, o Licenciatura en Empresariales.",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia de Las Palmas",
+   "cita": "Boletín Oficial de la Provincia de Las Palmas. Número 152, lunes 18 de diciembre de 2023",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Técnico de Administración Especial-Auditor"
+   ],
+   "cita": "Técnico de Administración Especial-Auditor, GRUPO A, SUBGRUPO A1."
+  },
+  "temas": {
+   "motivo": "valor_no_en_cita",
+   "valor": 35,
+   "cita": "Tema 1. Ley 8/2015, de 1 de abril, de Cabildos Insulares."
+  }
+ }
+}

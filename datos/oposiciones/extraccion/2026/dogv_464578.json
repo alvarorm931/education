@@ -1,0 +1,65 @@
+{
+ "proceso": "dogv:464578",
+ "documento": {
+  "id": "dogv:464578",
+  "fuente": "DOGV",
+  "url": "https://dogv.gva.es/datos/2026/02/20/pdf/2026_3311_es.pdf",
+  "fecha": "2026-02-20",
+  "huella": "aadf19a8e0149f23781697b017d07e77247f78cad28410afeb9de4b45d841cc1"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:42:25+00:00",
+ "lote": "msgbatch_01W17mR271uYfWYL6CuSdriL",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Agente de la Policía Local"
+   ],
+   "cita": "tres plazas de agente de la policía local, dos de ellas de turno libre por oposición",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C1",
+   "cita": "grupo C, subgrupo C1.",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "vacantes en la plantilla del Ayuntamiento de San Isidro, incluidas en la oferta pública de empleo del año 2024 y reservadas a funcionarios de carrera.",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "dos de ellas de turno libre por oposición y una de turno de movilidad por concurso",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 3,
+   "cita": "tres plazas de agente de la policía local, dos de ellas de turno libre por oposición",
+   "nivel": "literal"
+  },
+  "plazas_turno_libre": {
+   "valor": 2,
+   "cita": "dos de ellas de turno libre por oposición",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles contados a partir del día siguiente de su publicación en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes será de (20) veinte días hábiles contados a partir del día siguiente de su publicación en el Boletín Oficial del Estado.",
+   "nivel": "sin_signos"
+  },
+  "publicaciones": {
+   "valor": "En la forma prevista en las bases",
+   "cita": "Los sucesivos anuncios referentes a esta convocatoria se harán públicos en la forma prevista en dichas bases.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_promocion_interna": {
+   "motivo": "valor_no_en_cita",
+   "valor": 0,
+   "cita": "una de turno de movilidad por concurso"
+  }
+ }
+}

@@ -1,0 +1,60 @@
+{
+ "proceso": "bopb:BOPB-202410107609",
+ "documento": {
+  "id": "bopb:BOPB-202410107609",
+  "fuente": "BOPB",
+  "url": "https://bop.diba.cat/anunci/3640079/aprovacio-de-la-nova-convocatoria-per-a-la-provisio-mitjancant-designacio-discrecional-del-lloc-de-treball-de-director-d-area-de-desenvolupament-economic-ajuntament-de-castelldefels",
+  "fecha": "2024-06-19",
+  "huella": "3b0a1fa6a97db2750d40458f5e2fb00d0cba4e2828bfea1b162b92b53aa93076"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:54:13+00:00",
+ "lote": "msgbatch_01HRnX7cDVMkRZD7mBamCmLu",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "A1",
+   "cita": "grup A, subgrup A1, nivell 30, adscrit a l'Àrea orgànica Gerència",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "otro",
+   "cita": "procediment per a la provisió mitjançant designació discrecional, lliure designació, restringit al personal de plantilla",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "procediment per a la provisió mitjançant designació discrecional, lliure designació, restringit al personal de plantilla",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 dies naturals a comptar a partir de l'endemà de la publicació del DOGC",
+   "cita": "podent-se presentar les sol·licituds a l'esmentada convocatòria, dins del termini de 20 dies naturals a comptar a partir del l'endemà de la publicació",
+   "nivel": "sin_signos"
+  },
+  "publicaciones": {
+   "valor": "Publicació de la convocatòria al DOGC i al web municipal; traslladar a Secció de Personal, Junta de Personal i Comitè d'Empresa",
+   "cita": "Quart.- Traslladar la present resolució al Director de Règim Interior i Desenvolupament Organitzatiu (DO), a la Secció de Personal",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Director/a d'Àrea de Desenvolupament Econòmic"
+   ],
+   "cita": "el lloc de treball de Director/a d'Àrea de Desenvolupament Econòmic de l'Ajuntament de Castelldefels, codi 9.4"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "del lloc de treball de Director/a d'Àrea de Desenvolupament Econòmic de l'Ajuntament de Castelldefels"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 0,
+   "cita": "restringit al personal de plantilla l'Ajuntament de Castelldefels amb reserva del lloc d'origen"
+  }
+ }
+}

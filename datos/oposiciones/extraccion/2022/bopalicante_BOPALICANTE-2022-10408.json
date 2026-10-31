@@ -1,0 +1,91 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2022-10408",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2022-10408",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2022/12/20_240/2022_010408.pdf",
+  "fecha": "2022-12-20",
+  "huella": "f54337374a9f4a974585cdc3f9fe16a45d41f33482694cbc9929215370ca657b"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:55:51+00:00",
+ "lote": "msgbatch_014eT3dLLVopBnuVgQ4syWD9",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Administrativo",
+    "Auxiliar Administrativo",
+    "Oficial de servicios múltiples",
+    "Operario de servicios múltiples",
+    "Personal de limpieza"
+   ],
+   "cita": "Denominación de la Plaza Grupo Escala Subescala Número vacantes",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C1",
+   "cita": "Administrativo C1 Administración General Administrativo 1 CD 21 CE 9.005,73€",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "Funcionarios de carrera Denominación de la Plaza Grupo Escala Subescala",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "la cobertura en propiedad, por el sistema de concurso, de todas las plazas",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española (sin perjuicio del art. 57 TREBEP; para plazas laborales, la normativa de extranjería); capacidad funcional; tener cumplidos dieciséis años y no exceder la edad máxima de jubilación forzosa; no haber sido separado de la Administración ni inhabilitado; carné de conducir tipo B para oficial y operario de servicios múltiples",
+   "cita": "Poseer la capacidad funcional para el desempeño de las tareas.",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días naturales contados desde el día siguiente a la publicación del anuncio en extracto de cada convocatoria específica en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de instancias será de veinte días naturales contados desde el día siguiente",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Preferentemente por vía electrónica en el Registro electrónico General del Ayuntamiento de Benilloba; en papel en el Registro General del Ayuntamiento o según el art. 16 de la Ley 39/2015",
+   "cita": "Las solicitudes se presentarán preferentemente por vía electrónica. La presentación de la solicitud",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia de Alicante, página web oficial del Ayuntamiento de Benilloba y Boletín Oficial del Estado (extracto de la convocatoria)",
+   "cita": "Estas bases se publicarán íntegramente en el Boletín Oficial de la Provincia de Alicante y en la web oficial del Ayuntamiento de Benilloba.",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Concurso de méritos: experiencia profesional y formación"
+   ],
+   "cita": "El sistema de selección será el de concurso de méritos.",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, bolsa de trabajo para las plazas convocadas con los aspirantes que obtengan 50 puntos o más",
+   "cita": "serán incluidos en la correspondiente bolsa de trabajo existente previamente, por orden decreciente de puntuación",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 6,
+   "cita": "Auxiliar Administrativo C2 Administración General Auxiliar Administrativo 1 Tiempo parcial 58,67% CD 11"
+  },
+  "titulacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Bachiller o equivalente (Administrativo); Graduado en ESO, EGB o equivalente (Auxiliar Administrativo, Oficial de servicios múltiples); Certificado de escolaridad o equivalente (Operario de servicios múltiples, Personal de limpieza)",
+   "cita": "Bachiller o equivalente. Graduado en educación secundaria obligatoria (ESO), EGB o equivalente."
+  },
+  "meritos": {
+   "motivo": "cita_no_literal",
+   "valor": "Experiencia profesional hasta 60 puntos (0,40 por mes en el Ayuntamiento de Benilloba; 0,25 en otras administraciones locales; 0,24 en el resto del sector público) y formación hasta 40 puntos",
+   "cita": "A.1 Experiencia profesional. Máximo 60 puntos. A.2. Formación. Máximo 40 puntos."
+  }
+ }
+}

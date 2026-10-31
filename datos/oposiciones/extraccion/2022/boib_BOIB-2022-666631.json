@@ -1,0 +1,94 @@
+{
+ "proceso": "boib:BOIB-2022-666631",
+ "documento": {
+  "id": "boib:BOIB-2022-666631",
+  "fuente": "BOIB",
+  "url": "https://www.caib.es/eboibfront/es/2022/11652/666631/convocatoria-del-proceso-excepcional-de-estabiliza",
+  "fecha": "2022-11-17",
+  "huella": "0e404fba4b472ecd9108524cd9d8ccb125e748d564d0273cd2a98c0ccfd01a19"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:09+00:00",
+ "lote": "msgbatch_01B4ETF5xB4buYCHqPiHTXzF",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Administración general del Consell Insular de Formentera",
+    "Administración especial del Consell Insular de Formentera"
+   ],
+   "cita": "proceso excepcional de estabilización por concurso extraordinario de méritos para cubrir las plazas de personal funcionario de la Administración general y especial del Consell Insular de Formentera",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "provisión de las plazas indicadas en el anexo 1 correspondientes al personal funcionario de la Administración general y especial",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "Se establece como procedimiento selectivo el de concurso extraordinario de méritos, incluida la reserva de personas con discapacidad.",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española o de las que permiten el acceso al empleo público según el artículo 57 del TREBEP; tener dieciséis años cumplidos y no haber llegado a la edad de jubilación forzosa; capacidad física y psíquica; no haber sido separado del servicio ni inhabilitado; no ser funcionario de carrera en el mismo cuerpo, escala o especialidad del Consell",
+   "cita": "Tener la nacionalidad española o alguna otra de las que permiten el acceso al empleo público según el artículo 57 del TREBEP.",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Conocimiento de lengua catalana, nivel establecido en el anexo 1 (el anexo no consta en el texto)",
+   "cita": "Disponer de los conocimientos de la lengua catalana establecidos en el anexo 1.",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 24.0,
+   "cita": "La tasa se fija en 24,00 €. El pago deberá efectuarse con tarjeta de crédito en la pasarela de pago habilitada",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Familias numerosas: descuento del 50% sobre la tasa",
+   "cita": "las familias numerosas tendrán un descuento del 50% sobre esta tasa.",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Veinte días hábiles contados a partir del día siguiente al de la publicación de la Resolución en el BOIB y en el BOE",
+   "cita": "El plazo de presentación de solicitudes es de veinte días hábiles contados a partir del día siguiente",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Solicitud electrónica mediante trámite telemático en la Sede Electrónica del Consell Insular de Formentera, a través de la OVAC",
+   "cita": "cumplimentando el correspondiente trámite telemático que está disponible en la Sede Electrónica del Consell Insular de Formentera",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Sede electrónica www.consellinsulardeformentera.cat, BOIB y tablón de anuncios del Consell",
+   "cita": "deben publicarse en la sede electrónica www.consellinsulardeformentera.cat.",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Valoración de méritos profesionales",
+    "Valoración de otros méritos (formación, catalán, titulación, trienios, ejercicios en convocatorias anteriores)"
+   ],
+   "cita": "Los méritos que se tienen que valorar para las plazas de personal funcionario del Consell Insular de Formentera",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, bolsa preferente de personal funcionario interino del cuerpo, escala y especialidad en que hayan participado, para aspirantes que no superen el proceso",
+   "cita": "deben incluirse en una bolsa de personal funcionario interino del correspondiente cuerpo, escala y especialidad en el que hayan participado.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_discapacidad": {
+   "motivo": "valor_no_numerico",
+   "valor": "10%",
+   "cita": "En esta convocatoria se reserva un 10% de las plazas para que sean cubiertas por personas con discapacidad."
+  },
+  "meritos": {
+   "motivo": "cita_no_literal",
+   "valor": "Méritos profesionales hasta 45 puntos; otros méritos hasta 55 puntos (superación de ejercicios 20, formación académica 15, catalán 15, cursos 20, trienios 15)",
+   "cita": "Méritos profesionales (máximo 45 puntos). Otros méritos (máximo 55 puntos)."
+  }
+ }
+}

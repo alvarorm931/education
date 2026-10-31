@@ -1,0 +1,60 @@
+{
+ "proceso": "bocm:BOCM-20250616-20",
+ "documento": {
+  "id": "bocm:BOCM-20250616-20",
+  "fuente": "BOCM",
+  "url": "https://www.bocm.es/bocm-20250616-20",
+  "fecha": "2025-06-16",
+  "huella": "129fa92ed29a8a860cd12cf4ceb668ec3ba8d1b0219c174c61720e1f2d090b7f"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:45:15+00:00",
+ "lote": "msgbatch_016re6aGcimwSVmdrWa6qBd9",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Profesores Titulares de Universidad: Ingeniería Telemática",
+    "Profesores Titulares de Universidad: Lenguajes y Sistemas Informáticos",
+    "Profesores Titulares de Universidad: Medicina Preventiva y Salud Pública",
+    "Profesores Titulares de Universidad: Filología Inglesa (x2)",
+    "Profesores Titulares de Universidad: Filosofía",
+    "Profesores Titulares de Universidad: Ingeniería Eléctrica"
+   ],
+   "cita": "Cuerpo: Profesores Titulares de Universidad",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "concursos de acceso a plazas de funcionarios de carrera de los Cuerpos Docentes Universitarios",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "se convocan concursos de acceso a plazas de funcionarios de carrera de los Cuerpos Docentes Universitarios",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días naturales a partir del siguiente al de la publicación en el Boletín Oficial del Estado",
+   "cita": "será de veinte días naturales a partir del siguiente al de la publicación de la correspondiente Resolución",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Instancias según modelo de la Resolución, dirigidas al Rector de la Universidad de Alcalá (plaza San Diego, sin número, 28801 Alcalá de Henares)",
+   "cita": "debiendo dirigirse estas al Rector de la Universidad de Alcalá (plaza San Diego, sin número, 28801 Alcalá de Henares, Madrid)",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 7,
+   "cita": "Área de Conocimiento: Ingeniería Telemática. Plazas: Una. Código: Z029/DIT213."
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 7,
+   "cita": "(Turno libre/Oferta de Empleo Público de 2024)"
+  }
+ }
+}

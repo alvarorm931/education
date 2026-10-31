@@ -1,0 +1,46 @@
+{
+ "proceso": "bopcoruna:BOPCORUNA-2024-4174",
+ "documento": {
+  "id": "bopcoruna:BOPCORUNA-2024-4174",
+  "fuente": "BOP-CORUNA",
+  "url": "https://bop.dacoruna.gal/bopportal/publicado/2024/06/17/2024_0000004174.html",
+  "fecha": "2024-06-17",
+  "huella": "3ede7923d9188f2d9718fef1d84e2efd249fdb27fd8a6c2acb0b6735570667e9"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:54:35+00:00",
+ "lote": "msgbatch_01HRnX7cDVMkRZD7mBamCmLu",
+ "no_son_bases": false,
+ "campos": {
+  "plazas_total": {
+   "valor": 5,
+   "cita": "aprobáronse as bases para a provisión de 5 prazas de persoal laboral temporal",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "cinco días hábiles desde o seguinte ó da publicación deste anuncio de convocatoria no Boletín Oficial da Provincia",
+   "cita": "o prazo de presentación de solicitudes para a brigada do 2024, será de cinco días hábiles",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Taboleiro de anuncios e web do Concello de Tordoia (www.tordoia.es)",
+   "cita": "As bases da convocatoria pódense consultar no taboleiro de anuncios ou na web do Concello de Tordoia",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Peón de brigada de prevención y defensa de incendios forestales",
+    "Xefe de brigada de prevención y defensa de incendios forestales"
+   ],
+   "cita": "selección de persoal laboral temporal para participar no proceso selectivo de 4 peóns e un xefe de brigada"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "laboral temporal",
+   "cita": "selección de persoal laboral temporal para participar no proceso selectivo de 4 peóns"
+  }
+ }
+}

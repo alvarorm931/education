@@ -1,0 +1,43 @@
+{
+ "proceso": "bophuelva:BOPHUELVA-351516",
+ "documento": {
+  "id": "bophuelva:BOPHUELVA-351516",
+  "fuente": "BOP-HUELVA",
+  "url": "https://s2.diphuelva.es/portalweb/bope/anuncios/Anuncio_351516_BOP-65_2026.pdf",
+  "fecha": "2026-04-07",
+  "huella": "a574a04127510a8689b0f5a20dac4005d00fe5d16be6ee0f27d81d639334b7ab"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:40:52+00:00",
+ "lote": "msgbatch_01E3wiYcGL8Lzho48bXWLyyb",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "para la provisión de varias plazas como personal laboral temporal, acogidas a las subvenciones",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Personal laboral temporal (varias plazas, concurso de méritos)",
+   "cita": "proceso de selección por concurso de méritos para la provisión de varias plazas como personal laboral temporal"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso",
+   "cita": "mediante el sistema de concurso de méritos para la provisión de varias plazas"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "diez días hábiles a contar desde el día siguiente a la publicación de este anuncio en el BOP",
+   "cita": "que será de diez días hábiles a contar desde el día siguiente a la publicación"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Tablón de Anuncios de la sede electrónica del Ayuntamiento",
+   "cita": "publicado en el Tablón de Anuncios de la sede electrónica de este Ayuntamiento"
+  }
+ }
+}

@@ -1,0 +1,60 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2022-8902",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2022-8902",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2022/11/15_217/2022_008902.pdf",
+  "fecha": "2022-11-15",
+  "huella": "6728f5eb8915547c65a640868f3656471ec341ee6c9c8fca312ebd4d7f34e850"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:11+00:00",
+ "lote": "msgbatch_01B4ETF5xB4buYCHqPiHTXzF",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Arquitecto/Arquitecta Técnico/a"
+   ],
+   "cita": "provisión en propiedad, con funcionario/funcionaria de carrera de 3 plazas de Arquitecto/Arquitecta Técnico/a",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "provisión en propiedad, con funcionario/funcionaria de carrera de 3 plazas de Arquitecto/Arquitecta Técnico/a",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "Esta convocatoria se regirá por las Bases Genéricas aprobadas por la Junta de Gobierno Local",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 3,
+   "cita": "con funcionario/funcionaria de carrera de 3 plazas de Arquitecto/Arquitecta Técnico/a",
+   "nivel": "literal"
+  },
+  "plazas_promocion_interna": {
+   "valor": 1,
+   "cita": "1 plaza por turno de promoción interna, perteneciente a la Oferta de Empleo Público del año 2021",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_turno_libre": {
+   "motivo": "cita_no_literal",
+   "valor": 2,
+   "cita": "2 plazas por turno libre, pertenecientes a la Oferta de Empleo Público del año 2022"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "veinte días hábiles a contar desde el día siguiente a la publicación del extracto de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "será de veinte días hábiles a contar desde el día siguiente a la publicación del extracto"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Tablón de Anuncios del Servicio de Recursos Humanos y página web municipal",
+   "cita": "estarán a disposición de los interesados en el Tablón de Anuncios del Servicio de Recursos Humanos"
+  }
+ }
+}

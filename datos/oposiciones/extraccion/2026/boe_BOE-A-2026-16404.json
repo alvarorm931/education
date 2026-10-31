@@ -1,54 +1,70 @@
 {
  "proceso": "boe:BOE-A-2026-16404",
  "documento": {
-  "id": "bocm:BOCM-20260716-53",
+  "id": "bocm:BOCM-20260716-54",
   "fuente": "BOCM",
-  "url": "https://www.bocm.es/bocm-20260716-53",
+  "url": "https://www.bocm.es/bocm-20260716-54",
   "fecha": "2026-07-16",
-  "huella": "7dc0e6a1c3912da8efee94a3ea2af71c254f953c56849c030d51a264dabc7d0c"
+  "huella": "f014b4c73629610281902a37a81ed94292e1a10b9e0c6d1a408dfabe6e37364f"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T11:20:07+00:00",
- "lote": "msgbatch_01MXXMFvrqAAHficSS2SFuRZ",
+ "extraido": "2026-10-31T14:41:44+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
    "valor": [
-    "Técnico Superior, escala Administración General, subescala Técnico, grupo A, subgrupo A1"
+    "Ingeniero/a de personal funcionario de carrera, escala de Administración Especial, subescala Técnica, clase Superior"
    ],
-   "cita": "para cubrir mediante el sistema de concurso-oposición en turno libre, una (1) plaza de personal funcionario, escala Administración General",
+   "cita": "para cubrir una (1) plaza de Ingeniero/a de personal funcionario de carrera, escala de Administración Especial",
    "nivel": "literal"
   },
   "grupo": {
    "valor": "A1",
-   "cita": "grupo A, subgrupo A1, adscrito al puesto de gestión y seguimiento de subvenciones",
+   "cita": "grupo A, subgrupo A1, incluidas en las Ofertas Públicas de Empleo de 2024",
    "nivel": "literal"
   },
   "vinculo": {
    "valor": "funcionario de carrera",
-   "cita": "cubrir mediante el sistema de concurso-oposición en turno libre, una (1) plaza de personal funcionario",
+   "cita": "plaza de Ingeniero/a de personal funcionario de carrera, escala de Administración Especial",
    "nivel": "literal"
   },
   "sistema": {
-   "valor": "concurso-oposición",
-   "cita": "cubrir mediante el sistema de concurso-oposición en turno libre, una (1) plaza",
+   "valor": "oposición",
+   "cita": "Sistema de selección: oposición turno libre.",
    "nivel": "literal"
   },
   "plazas_total": {
    "valor": 1,
-   "cita": "una (1) plaza de personal funcionario, escala Administración General",
+   "cita": "para cubrir una (1) plaza de Ingeniero/a de personal funcionario de carrera",
    "nivel": "literal"
   },
-  "plazas_turno_libre": {
-   "valor": 1,
-   "cita": "concurso-oposición en turno libre, una (1) plaza de personal funcionario",
+  "titulacion": {
+   "valor": "Máster Universitario en Ingeniería Industrial (Máster habilitante), o Título de Ingeniero Industrial conforme a planes anteriores, o titulación equivalente que habilite para el ejercicio profesional",
+   "cita": "Título oficial de Máster Universitario en Ingeniería Industrial (Máster habilitante), o",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 27.2,
+   "cita": "Tasa de derechos de examen: 27,20 euros.",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días naturales, contados a partir del siguiente al de la publicación del anuncio de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes será de veinte (20) días naturales, contados a partir del siguiente",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Tablón de edictos del Ayuntamiento, página web municipal (https://www.aytovillaviciosadeodon.es/) y BOCM",
-   "cita": "La lista provisional completa de admitidos y excluidos se encuentra publicado en el tablón de edictos del Ayuntamiento",
+   "valor": "Tablón de Edictos del Ayuntamiento y Portal de Empleo de la página web municipal",
+   "cita": "El texto íntegro de las bases se encuentra publicado en el tablón de Edictos del Ayuntamiento",
    "nivel": "literal"
   }
  },
- "rechazados": {}
+ "rechazados": {
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "Sistema de selección: oposición turno libre."
+  }
+ }
 }

@@ -1,108 +1,91 @@
 {
  "proceso": "bopgirona:BOPGIRONA-2026-7916",
  "documento": {
-  "id": "bopgirona:BOPGIRONA-2026-7916",
-  "fuente": "BOP-GIRONA",
-  "url": "https://ssl4.ddgi.cat/bopV1/pdf/2026/175/202617507916.pdf",
-  "fecha": "2026-09-10",
-  "huella": "769095e738b9657dbe9898807b9af94b53b27592318c2a515af9fdbb2690875a"
+  "id": "dogc:1054281",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1054281",
+  "fecha": "2026-09-15",
+  "huella": "f09cdca1b6e2cc19c4d7e6a7e42bb8e32aa5f72881ea8664503ff194f80980ac"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T07:39:42+00:00",
- "lote": "msgbatch_013q7o24qMms8ZNZdwMNkW1L",
+ "extraido": "2026-10-31T14:41:33+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
-   "valor": [
-    "Tècnic d'Administració General"
-   ],
-   "cita": "BASES DE CONVOCATÒRIA PER A L’ACCÉS, MITJANÇANT MOBILITAT HORITZONTAL, EN RÈGIM FUNCIONARI DE CARRERA, D’UNA PLAÇA DE TÈCNIC D’ADMINISTRACIÓ GENERAL",
+   "valor": "Tècnic d'Administració General",
+   "cita": "plaça de tècnic d'administració general, grup A1, plaça núm. F.150.4.05",
    "nivel": "literal"
   },
   "grupo": {
    "valor": "A1",
-   "cita": "d’una plaça de tècnic d’administració general, grup A1, plaça núm. F.150.4.05",
+   "cita": "grup de classificació A1, escala d'Administració General",
    "nivel": "literal"
   },
   "vinculo": {
    "valor": "funcionario de carrera",
-   "cita": "en règim de funcionari de carrera a l’Ajuntament de Caldes de Malavella",
-   "nivel": "literal"
-  },
-  "plazas_total": {
-   "valor": 1,
-   "cita": "s'han aprovat les bases reguladores de la convocatòria per a la selecció, mitjançant mobilitat horitzontal, d’una plaça",
-   "nivel": "literal"
-  },
-  "plazas_turno_libre": {
-   "valor": 1,
-   "cita": "s'han aprovat les bases reguladores de la convocatòria per a la selecció, mitjançant mobilitat horitzontal, d’una plaça",
-   "nivel": "literal"
-  },
-  "titulacion": {
-   "valor": "Personal funcionari de carrera de qualsevol Administració amb plaça del subgrup A1, escala i sotsescala",
-   "cita": "Acreditar ser personal funcionari de carrera de qualsevol Administració, amb plaça del subgrup A1, escala i sotsescala",
+   "cita": "en règim de funcionari de carrera a l'Ajuntament de Caldes de Malavella",
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Estar en servei actiu o altra situació administrativa excepte suspensió ferma; condicions físiques i psíquiques necessàries per exercir les funcions",
-   "cita": "Estar en situació de servei actiu o en qualsevol altra situació administrativa, excepte la de suspensió ferma.",
+   "valor": "Estar en servei actiu o altra situació administrativa (excepte suspensió ferma); ser funcionari de carrera de qualsevol Administració amb plaça del subgrup A1, escala i sotsescala; condicions físiques i psíquiques necessàries.",
+   "cita": "Estar en situació de servei actiu o en qualsevol altra situació administrativa, excepte la de suspensió ferma",
    "nivel": "literal"
   },
   "idioma_cooficial": {
-   "valor": "Català, nivell C1",
-   "cita": "Acreditació del nivell C1 de llengua catalana.",
+   "valor": "Català, nivell C1 (acreditació o exempció de la prova)",
+   "cita": "Acreditació del nivell C1 de llengua catalana",
    "nivel": "literal"
   },
-  "exenciones_tasa": {
-   "valor": "No consta",
+  "tasa_euros": {
+   "valor": 30,
    "cita": "Haver satisfet la taxa de participació per import de 30€",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "Vint dies naturals a comptar a partir de la publicació de l’extracte de la convocatòria en Butlletí Oficial de l’Estat (BOE)",
-   "cita": "El termini de presentació de sol·licituds serà de vint dies naturals, a comptar a partir de la publicació de l’extracte",
+   "valor": "Vint dies naturals a comptar des de la publicació de l'extracte de la convocatòria al BOE",
+   "cita": "El termini de presentació de sol·licituds serà de vint dies naturals, a comptar a partir de la publicació de l'extracte",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Per Internet a través de la seu electrònica municipal, Registre General de l'Ajuntament",
+   "valor": "Per Internet a través de la seu electrònica municipal (caldesdemalavella.eadministracio.cat), al Registre General",
    "cita": "s'efectuarà per Internet a través de la seu electrònica municipal",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Tauler d'anuncis electrònic de la corporació, BOP Girona, DOGC i web corporativa",
-   "cita": "Les bases es publicaran íntegrament en el tauler d’anuncis electrònic de l’Ajuntament, en el Butlletí Oficial de la Província de Girona",
+   "valor": "Tauler d'anuncis electrònic de la corporació; la publicació íntegra de les bases al BOPG i DOGC",
+   "cita": "Els restants i successius anuncis de cada convocatòria es faran públics únicament en el tauler d'anuncis electrònic",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Valoració de mèrits (màxim 60 punts): cursos de formació, formació reglada, experiència",
+    "Entrevista de coneixements (màxim 20 punts), a criteri del tribunal"
+   ],
+   "cita": "VALORACIÓ DE MÈRITS (Màxim 60 punts)",
    "nivel": "literal"
   },
   "meritos": {
-   "valor": "Cursos de formació fins 10 punts; formació reglada fins 10 punts; experiència fins 40 punts (0,5 punts/mes en mateixes funcions, 0,2 en funcions diferents)",
-   "cita": "La puntuació màxima d’aquest apartat serà de 10 punts. a) de 100 o més hores: 2 punts per curs",
+   "valor": "Cursos de formació (màx. 10 punts); formació reglada (màx. 10 punts); experiència (màx. 40 punts, 0,5 punts/mes en mateixes funcions i 0,2 punts/mes en funcions diferents), més grau consolidat (màx. 10 punts)",
+   "cita": "La puntuació màxima d'aquest apartat és de 40 punts.",
    "nivel": "literal"
   },
   "bolsa": {
    "valor": "no",
-   "cita": "Les bases reguladores de la convocatòria per a la selecció, mitjançant mobilitat horitzontal, d’una plaça",
-   "nivel": "literal"
-  },
-  "practicas_o_curso": {
-   "valor": "No consta",
-   "cita": "Dins el termini d'un mes, a partir de la data de notificació del nomenament, els aspirants nomenats funcionaris hauran de prendre possessió",
+   "cita": "Per la mera concurrència als processos selectius s'entén que l'aspirant accepta",
    "nivel": "literal"
   }
  },
  "rechazados": {
   "sistema": {
    "motivo": "cita_no_literal",
-   "valor": "concurso-oposición",
-   "cita": "Honorable: la convocatòria es resol mitjançant valoració de mèrits i entrevista de coneixements"
+   "valor": "concurso",
+   "cita": "CONCURS DE MOBILITAT HORITZONTAL"
   },
-  "ejercicios": {
+  "plazas_total": {
    "motivo": "cita_no_literal",
-   "valor": [
-    "Valoració de mèrits (màxim 60 punts): cursos, formació reglada, experiència",
-    "Entrevista de coneixements (màxim 20 punts)"
-   ],
-   "cita": "VALORACIÓ DE MÈRITS (Màxim 60 punts) ENTREVISTA DE CONEIXEMENTS (Màxim 20 punts)"
+   "valor": 1,
+   "cita": "una plaça de tècnic d'administració general, grup A1"
   }
  }
 }

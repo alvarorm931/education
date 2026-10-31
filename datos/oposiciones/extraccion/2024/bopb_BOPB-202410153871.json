@@ -1,0 +1,45 @@
+{
+ "proceso": "bopb:BOPB-202410153871",
+ "documento": {
+  "id": "bopb:BOPB-202410153871",
+  "fuente": "BOPB",
+  "url": "https://bop.diba.cat/anunci/3677558/esmena-d-error-material-en-l-anunci-d-aprovacio-de-les-bases-i-la-convocatoria-per-a-la-seleccio-de-dues-places-d-oficial-tecnic-a-ajuntament-de-terrassa",
+  "fecha": "2024-09-27",
+  "huella": "94e59cad8845e88e1fcea10976b8e3b400b9b341e73519b4407a0353bac9d2fd"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:50:08+00:00",
+ "lote": "msgbatch_01LpyYajgKGX9NyHT1uvynbR",
+ "no_son_bases": false,
+ "campos": {
+  "plazas_total": {
+   "valor": 2,
+   "cita": "per a la cobertura dues places vacants de la plantilla",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Ajuntament de Terrassa, anunci al Butlletí Oficial de la Província de Barcelona",
+   "cita": "Per resolució núm. 2024-09-25 ABPS-13265/2024, la Regidora d'Organització",
+   "nivel": "sin_signos"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "oficial tècnic/a"
+   ],
+   "cita": "categoria oficial tècnic/a"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "plantilla de personal funcionari de la categoria oficial tècnic/a"
+  },
+  "idioma_cooficial": {
+   "motivo": "cita_no_literal",
+   "valor": "català, nivell intermedi B2 (antic B) o superior, o prova específica de nivell B2 amb qualificació d'apte o no apte",
+   "cita": "certificat del nivell intermedi de català B2 (antic B)"
+  }
+ }
+}

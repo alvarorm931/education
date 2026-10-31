@@ -1,0 +1,52 @@
+{
+ "proceso": "bopciudadreal:BOPCIUDADREAL-2024-3550",
+ "documento": {
+  "id": "bopciudadreal:BOPCIUDADREAL-2024-3550",
+  "fuente": "BOP-CIUDADREAL",
+  "url": "https://bop.dipucr.es/bop/2024/09/27",
+  "fecha": "2024-09-27",
+  "huella": "ce7936ba6da70b651d10d32fef5710c2bcbbcc1f572212da1d8118858da5aeae"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:50:17+00:00",
+ "lote": "msgbatch_01LpyYajgKGX9NyHT1uvynbR",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Técnico/a Informático Auxiliar"
+   ],
+   "cita": "provisión, como funcionario/a de carrera, de una plaza de Técnico/a Informático Auxiliar",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "provisión, como funcionario/a de carrera, de una plaza de Técnico/a Informático Auxiliar",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "constitución de bolsa, mediante concurso-oposición libre, publicadas en el Boletín Oficial",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "provisión, como funcionario/a de carrera, de una plaza de Técnico/a Informático Auxiliar",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, constitución de bolsa",
+   "cita": "constitución de bolsa, mediante concurso-oposición libre, publicadas en el Boletín Oficial",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "ejercicios": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Test de cuatro respuestas, una correcta, valorado de cero a treinta puntos; eliminación bajo quince puntos"
+   ],
+   "cita": "Se valorará de cero a treinta puntos, quedando eliminados/as aquellos/as aspirantes que no alcancen los quince puntos."
+  }
+ }
+}

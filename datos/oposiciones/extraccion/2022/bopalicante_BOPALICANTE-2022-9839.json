@@ -1,0 +1,55 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2022-9839",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2022-9839",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2022/12/05_231/2022_009839.pdf",
+  "fecha": "2022-12-05",
+  "huella": "0e139a2174accaf2b3611a2d091c137025126e5c2a67e1dbe5050a1a702abcc3"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:21+00:00",
+ "lote": "msgbatch_01B4ETF5xB4buYCHqPiHTXzF",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Peón de servicios múltiples"
+   ],
+   "cita": "BOLSA LABORAL PEONES SERVICIOS MÚLTIPLES AYUNTAMIENTO DE BENIMARFULL",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "10 días naturales desde el día siguiente a la publicación del anuncio en el BOP de Alicante",
+   "cita": "a partir del día siguiente al de la publicación de este anuncio en el BOP de Alicante, se abre plazo de 10 días naturales",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Mediante instancia normalizada, disponible en el tablón de anuncios electrónico del Ayuntamiento y en Plaza Mayor, 1 de Benimarfull",
+   "cita": "junto a la instancia normalizada, en el tablón de anuncios electrónico del Ayuntamiento",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de anuncios electrónico del Ayuntamiento (www.benimarfull.es) y Plaza Mayor, 1 de Benimarfull",
+   "cita": "en el tablón de anuncios electrónico del Ayuntamiento (www .benimarfull.es) y en el sito en Plaza Mayor",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, Bolsa de Empleo de Peón de servicios múltiples",
+   "cita": "la Bolsa de Empleo de Peón de servicios múltiples, regulada por las bases aprobadas por la Alcaldía",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "otro",
+   "cita": "se abre plazo de 10 días naturales para la presentación de instancias a la Bolsa de Empleo de Peón"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso",
+   "cita": "se abre plazo de 10 días naturales para la presentación de instancias a la Bolsa de Empleo"
+  }
+ }
+}

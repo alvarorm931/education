@@ -1,22 +1,22 @@
 {
  "proceso": "boe:BOE-A-2026-17452",
  "documento": {
-  "id": "boc:BOC-A-2026-154-2777",
-  "fuente": "BOC",
-  "url": "https://www.gobiernodecanarias.org/boc/2026/154/2777.html",
-  "fecha": "2026-08-03",
-  "huella": "436ee2d6893b60275196399e0045e92fa01fa1b93be7ad2257be3de77fd8194b"
+  "id": "boptenerife:BOPTENERIFE-2026-07-24-011",
+  "fuente": "BOP-TENERIFE",
+  "url": "http://www.bopsantacruzdetenerife.es/bopsc2/sumario.php?codigopub=1&fecha_mas_reciente=2026-07-24",
+  "fecha": "2026-07-24",
+  "huella": "7f27a6763b5af6013a0bf57da444f291e2aad26687666fcc00c1209a24704cf2"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T07:39:49+00:00",
- "lote": "msgbatch_013q7o24qMms8ZNZdwMNkW1L",
+ "extraido": "2026-10-31T14:41:54+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
    "valor": [
     "Agente de Policía Local"
    ],
-   "cita": "dos plazas de Agente de Policía Local, Escala de Administración Especial, Subescala de Servicios Especiales, Grupo C",
+   "cita": "para la cobertura de dos plazas de Agente de Policía Local, Escala de Administración Especial",
    "nivel": "literal"
   },
   "grupo": {
@@ -26,17 +26,7 @@
   },
   "vinculo": {
    "valor": "funcionario de carrera",
-   "cita": "cobertura por personal funcionario de carrera de dos (2) plazas de Agente de Policía Local",
-   "nivel": "literal"
-  },
-  "sistema": {
-   "valor": "oposición",
-   "cita": "por el turno libre y mediante el sistema de oposición, correspondientes a la Oferta de Empleo Público",
-   "nivel": "literal"
-  },
-  "plazas_turno_libre": {
-   "valor": 2,
-   "cita": "Convocar el procedimiento selectivo para la cobertura por personal funcionario de carrera de dos (2) plazas",
+   "cita": "personal funcionario de carrera de DOS (2) PLAZAS de AGENTE DE POLICÍA LOCAL",
    "nivel": "literal"
   },
   "titulacion": {
@@ -46,67 +36,76 @@
   },
   "tasa_euros": {
    "valor": 25,
-   "cita": "El importe de la tasa, conforme dispone el artículo 6 de la Ordenanza fiscal reguladora de la Tasa por derechos de examen, es de veinticinco (25,00) euros",
+   "cita": "El importe de la tasa, conforme dispone el artículo 6 de la Ordenanza fiscal reguladora de la Tasa por derechos de examen, es de VEINTICINCO EUROS (25,00 euros).",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "veinte (20) días hábiles, contados a partir del siguiente al de la publicación del anuncio-extracto de la convocatoria en el Boletín Oficial del Estado",
-   "cita": "el plazo de presentación de instancias será de veinte (20) días hábiles, contados a partir del siguiente al de la publicación del anuncio-extracto",
+   "valor": "veinte días hábiles desde el siguiente a la publicación del anuncio-extracto en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de instancias será de VEINTE (20) DÍAS HÁBILES, contados a partir del siguiente al de la publicación del anuncio-extracto",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Registro Electrónico del Ayuntamiento de Barlovento a través de la sede electrónica, mediante el trámite específico creado para la convocatoria",
-   "cita": "Quienes deseen participar en la presente convocatoria deberán presentar su solicitud a través del Registro Electrónico del Excmo. Ayuntamiento de Barlovento",
+   "valor": "Registro Electrónico del Ayuntamiento de Barlovento, sede electrónica, mediante trámite específico",
+   "cita": "deberán presentar su solicitud a través del Registro Electrónico del Excmo. Ayuntamiento de Barlovento disponible en la sede electrónica",
    "nivel": "literal"
   },
-  "meritos": {
-   "valor": "No se valoran méritos; el sistema es de oposición",
-   "cita": "por el turno libre y mediante el sistema de oposición, correspondientes a la Oferta de Empleo Público",
+  "ejercicios": {
+   "valor": [
+    "Pruebas físicas",
+    "Reconocimiento médico",
+    "Pruebas psicotécnicas",
+    "Pruebas de conocimientos (parte general y específica)",
+    "Pruebas de aptitud (conducción)"
+   ],
+   "cita": "Pruebas físicas incluidas en la convocatoria y las bases para el ingreso en la policía local",
    "nivel": "literal"
   },
   "bolsa": {
    "valor": "sí, para cubrir vacantes que se produzcan por jubilación, fallecimiento y ascensos hasta un diez por cien adicional",
    "cita": "Al total de plazas se podrán acumular las vacantes que se produzcan por jubilación, fallecimiento, y ascensos",
    "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "funcionario/a en prácticas tras el proceso selectivo",
+   "cita": "antes de su nombramiento como personal funcionario/a en prácticas",
+   "nivel": "literal"
+  },
+  "temas": {
+   "valor": 23,
+   "cita": "Tema 23. Población y Ecología humana. Estructura de la población en Canarias. Multiculturalismo y cohesión social. Normativa actual en materia de extranjería. E",
+   "nivel": "contado"
   }
  },
  "rechazados": {
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "oposición",
+   "cita": "por el turno libre, mediante el sistema de oposición"
+  },
   "plazas_total": {
    "motivo": "cita_no_literal",
    "valor": 2,
-   "cita": "se ha procedido a la aprobación de la siguiente convocatoria para la cobertura de dos plazas"
+   "cita": "para la cobertura de DOS (2) PLAZAS de AGENTE DE POLICÍA LOCAL"
   },
-  "plazas_discapacidad": {
-   "motivo": "valor_no_en_cita",
+  "plazas_turno_libre": {
+   "motivo": "cita_no_literal",
+   "valor": 2,
+   "cita": "por el turno libre, mediante el sistema de oposición"
+  },
+  "plazas_promocion_interna": {
+   "motivo": "cita_no_literal",
    "valor": 0,
-   "cita": "Convocar el procedimiento selectivo para la cobertura por personal funcionario de carrera de dos (2) plazas"
+   "cita": "por el turno libre, mediante el sistema de oposición"
   },
   "otros_requisitos": {
    "motivo": "cita_no_literal",
-   "valor": "Nacionalidad española; mayor de edad y no exceder la edad para segunda actividad; permisos de conducción A2 y B; condiciones físicas acreditadas mediante certificación médica; carecer de antecedentes penales o tenerlos cancelados; no haber sido separado del servicio por expediente disciplinario",
+   "valor": "Nacionalidad española; mayor de edad sin exceder la edad para pase a segunda actividad; condiciones para ejercer funciones policiales; no separado de la Administración; carné de conducir A2 y B (o en condiciones de obtenerlo); condiciones físicas; sin antecedentes penales",
    "cita": "Tener la nacionalidad española. Ser mayor de edad y no exceder de la edad establecida para el pase a la situación de segunda actividad"
   },
   "publicaciones": {
    "motivo": "cita_no_literal",
-   "valor": "Tablón de anuncios electrónico de la sede electrónica del Ayuntamiento, Boletín Oficial de la Provincia de Santa Cruz de Tenerife, Boletín Oficial de Canarias y extracto en el Boletín Oficial del Estado",
-   "cita": "las notificaciones a las personas interesadas y publicaciones que procedan, se harán por la sede electrónica, a través del tablón de anuncios electrónicos"
-  },
-  "ejercicios": {
-   "motivo": "cita_no_literal",
-   "valor": [
-    "Pruebas selectivas por el sistema de oposición (detalle en las bases)"
-   ],
-   "cita": "Los ejercicios de la oposición se detallan en las bases de la convocatoria"
-  },
-  "temas": {
-   "motivo": "cita_no_literal",
-   "valor": 24,
-   "cita": "Tema 24. Ordenanza Municipal de Policía y Convivencia de Barlovento"
-  },
-  "practicas_o_curso": {
-   "motivo": "cita_no_literal",
-   "valor": "curso selectivo de formación y periodo de prácticas como funcionario en prácticas, con retribución equivalente al Grupo C, Subgrupo C1",
-   "cita": "Los/as aspirantes que hayan tomado posesión como funcionarios/as en prácticas percibirán una retribución equivalente al sueldo"
+   "valor": "Tablón de Anuncios Electrónicos de la sede electrónica del Ayuntamiento; Boletín Oficial de la Provincia de Santa Cruz de Tenerife; Boletín Oficial de Canarias; extracto en Boletín Oficial del Estado",
+   "cita": "las notificaciones a las personas interesadas y publicaciones que procedan, se harán por la sede electrónica, a través del Tablón de Anuncios Electrónicos"
   }
  }
 }

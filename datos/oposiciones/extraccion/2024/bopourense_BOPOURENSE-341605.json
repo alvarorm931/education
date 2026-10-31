@@ -1,0 +1,57 @@
+{
+ "proceso": "bopourense:BOPOURENSE-341605",
+ "documento": {
+  "id": "bopourense:BOPOURENSE-341605",
+  "fuente": "BOP-OURENSE",
+  "url": null,
+  "fecha": "2024-07-15",
+  "huella": "40302332b4ff91f726d040818b9ea6065b6b5747c80f762e3e507bcfd4027f14"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:49:22+00:00",
+ "lote": "msgbatch_016yasWxkCXTWjPAb8LjB3ob",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "jefe/a de brigada",
+    "peón/a-conductor/a",
+    "peón/a"
+   ],
+   "cita": "Convocatoria de selección de personal “Brigada incendios” para la provisión de los siguientes puestos de trabajo",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "cinco días hábiles siguientes al de la publicación de este anuncio en el BOP",
+   "cita": "durante el plazo de cinco días hábiles siguientes al de la publicación de este anuncio en el BOP",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Registro del Ayuntamiento, de 9.00 a 14.00 h",
+   "cita": "podrán presentar sus solicitudes en el Registro del Ayuntamiento, de 9.00 a 14.00 h",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Ayuntamiento y página web del Ayuntamiento de Ramirás",
+   "cita": "se encuentran a disposición del público en el Ayuntamiento y en la página web del Ayuntamiento de Ramirás",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, bolsa de trabajo",
+   "cita": "la creación de la bolsa de trabajo",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": ""
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 5,
+   "cita": "aprobó las bases de la convocatoria para contratar un capataz/a y cuatro peones/as de la brigada"
+  }
+ }
+}

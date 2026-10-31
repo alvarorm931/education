@@ -1,0 +1,58 @@
+{
+ "proceso": "dogc:993473",
+ "documento": {
+  "id": "dogc:993473",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=993473",
+  "fecha": "2024-08-28",
+  "huella": "95c4d2277d378a21236bca56a52a8583cd6c44e3f021a9cf20a435bea3420278"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:49:14+00:00",
+ "lote": "msgbatch_016yasWxkCXTWjPAb8LjB3ob",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "OPERARI/ÀRIA SERVEIS",
+   "cita": "Denominació de la plaça: OPERARI/ÀRIA SERVEIS",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "Règim jurídic: laboral fix",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "Sistema de selecció: concurs",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "Nombre de places convocades: 1",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles desde el día siguiente a la publicación del anuncio en el DOGC",
+   "cita": "El termini per presentar sol·licituds finalitza als 20 dies hàbils comptats a partir de l'endemà de la publicació",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "AP",
+   "cita": "Grupo profesional: AP"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "Torn: lliure."
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Sede electrónica del Ayuntamiento y otros medios que, en su caso, se indiquen en las Bases",
+   "cita": "s'publicaran a la seu electrònica de l'Ajuntament i en els altres mitjans que, en el seu cas, expressament s'indiquin en les Bases"
+  }
+ }
+}

@@ -1,0 +1,50 @@
+{
+ "proceso": "dogv:420836",
+ "documento": {
+  "id": "dogv:420836",
+  "fuente": "DOGV",
+  "url": "https://dogv.gva.es/datos/2025/05/05/pdf/2025_12649_es.pdf",
+  "fecha": "2025-05-05",
+  "huella": "40adb9715d65c7aa38e2213c189da0f654725ffd6e996f4536bb3118e238d223"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:46:04+00:00",
+ "lote": "msgbatch_017vJZdAmjTkBDdH14aLEdCv",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "enfermero o enfermera"
+   ],
+   "cita": "pruebas selectivas para el acceso a 80 plazas de enfermero o enfermera, grupo A/subgrupo A2",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "A2",
+   "cita": "enfermero o enfermera, grupo A/subgrupo A2, por el turno libre y promoción interna",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "Convocar pruebas selectivas para el acceso a 80 plazas de enfermero o enfermera",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 80,
+   "cita": "Convocar pruebas selectivas para el acceso a 80 plazas de enfermero o enfermera",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Recurso de reposición ante la Presidencia del CHGUV o demanda ante juzgados del orden social; el texto no indica el lugar de presentación de solicitudes",
+   "cita": "interponer, potestativamente recurso de reposición ante la Presidencia del CHGUV en el plazo de un mes",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Bases específicas y temario publicados en el DOGV mediante la resolución de la Presidencia del CHGUV",
+   "cita": "aprobar y publicación en el Diari Oficial de la Generalitat Valenciana, de las bases específicas"
+  }
+ }
+}

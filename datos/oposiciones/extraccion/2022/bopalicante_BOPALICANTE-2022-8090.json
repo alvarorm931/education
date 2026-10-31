@@ -1,0 +1,40 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2022-8090",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2022-8090",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2022/10/27_205/2022_008090.pdf",
+  "fecha": "2022-10-27",
+  "huella": "5b50d143db6341fad493db2df73a4ef578b82cb201642826cdc5a2a1d56a18d2"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:10+00:00",
+ "lote": "msgbatch_01B4ETF5xB4buYCHqPiHTXzF",
+ "no_son_bases": false,
+ "campos": {
+  "idioma_cooficial": {
+   "valor": "Nivel B1 (anterior nivel elemental de la JQCV) o nivel B2 (torn lliure y torn de mobilitat)",
+   "cita": "Torn lliure: Tenir acreditat el Nivell B1 (anterior nivell elemental de la JQCV) o nivell B2",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "BOP d'Alacant",
+   "cita": "publicades al BOP d’Alacant de data 12 de juliol de 2022",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Agentes de la Policía Local"
+   ],
+   "cita": "selecció de tres places d’Agents de la Policia Local aprovades per Junta de Govern Local"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 3,
+   "cita": "selecció de tres places d’Agents de la Policia Local aprovades per Junta de Govern Local de 20 de juny de 2022"
+  }
+ }
+}

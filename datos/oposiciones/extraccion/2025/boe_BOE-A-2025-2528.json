@@ -1,0 +1,53 @@
+{
+ "proceso": "boe:BOE-A-2025-2528",
+ "documento": {
+  "id": "bopsevilla:BOP-SE-2024-235035",
+  "fuente": "BOP-SEVILLA",
+  "url": "https://bopsevilla.dipusevilla.es/publica/buscador-anuncios/anuncio/Bases-Especificas-de-la-convocatoria-para-la-provision-mediante-oposicion-libre-de-una-plaza-de-Tecnico-de-Administracion-General-perteneciente-a-la-plantilla-de-personal-funcionario-OEP-2023-y-c/",
+  "fecha": "2024-12-03",
+  "huella": "91e2d296a7099bb6270fc1748148e75b1d23760622b36eb2cfee0d5c6a55852a"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:46:44+00:00",
+ "lote": "msgbatch_01MQzQCLMZKxUrrPMAj7dr53",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "A1",
+   "cita": "Grupo A, Subgrupo A1, incluida en la Oferta de Empleo Público correspondiente al ejercicio 2023",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "cuenta desde la fecha del anuncio de extracto de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "siendo la fecha de este anuncio la que servirá para el cómputo del plazo de presentación de instancias",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia de Sevilla, Boletín Oficial de la Junta de Andalucía, Tablón de Anuncios y sede electrónica del Ayuntamiento",
+   "cita": "exponiéndose en el Tablón de Anuncios y en la sede electrónica del Ayuntamiento de San Juan de Aznalfarache",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Técnico/a de Administración General, Escala de Administración General, Subescala Técnica, Categoría Superior",
+   "cita": "provisión en régimen de propiedad, mediante oposición libre, de una plaza de Técnico/a de Administración General, perteneciente a la plantilla de personal funcionario"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "perteneciente a la plantilla de personal funcionario de este Ayuntamiento, encuadrada en la Escala de Administración General"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "oposición",
+   "cita": "provisión en régimen de propiedad, mediante oposición libre, de una plaza de Técnico/a de Administración General"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, se crea una bolsa de trabajo con el proceso",
+   "cita": "así como proceder a la creación de una bolsa de trabajo"
+  }
+ }
+}

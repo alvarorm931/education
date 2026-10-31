@@ -1,0 +1,58 @@
+{
+ "proceso": "bopciudadreal:BOPCIUDADREAL-2025-2399",
+ "documento": {
+  "id": "bopciudadreal:BOPCIUDADREAL-2025-2399",
+  "fuente": "BOP-CIUDADREAL",
+  "url": "https://bop.dipucr.es/bop/2025/07/09",
+  "fecha": "2025-07-09",
+  "huella": "944d74b9067f54ddfa41efe93cb83b06c918ef035e1e275649f05b18ecb0f3a1"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:45:25+00:00",
+ "lote": "msgbatch_016re6aGcimwSVmdrWa6qBd9",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "Taquillero/a",
+   "cita": "Una plaza Taquillero/a, personal la boral, perteneciente al grupo C, (subgrupo C2)",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C2",
+   "cita": "perteneciente al grupo C, (subgrupo C2), mediante el sistema de concurso-oposición",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mediante el sistema de concurso-oposición, en turno promoción interna",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles a contar desde el siguiente al de la publicación de este acuerdo en el «Boletín Oficial de la Provincia»",
+   "cita": "El plazo de presentación de solicitudes será de veinte días hábiles a contar desde el siguiente al de la publicación",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "en la forma prevista en las propias bases",
+   "cita": "Los sucesivos anuncios referentes a esta convocatoria, cuando procedan de conformidad con las bases, se harán públicos en la forma prevista en las propias bases.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "laboral fijo",
+   "cita": "Una plaza Taquillero/a, personal laboral, perteneciente al grupo C"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 1,
+   "cita": "Una plaza Taquillero/a, personal laboral, perteneciente al grupo C"
+  },
+  "plazas_promocion_interna": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "mediante el sistema de concurso-oposición, en turno promoción interna"
+  }
+ }
+}

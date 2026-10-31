@@ -1,109 +1,64 @@
 {
  "proceso": "bopt:BOPT-2026-09262",
  "documento": {
-  "id": "bopt:BOPT-2026-09262",
-  "fuente": "BOPT",
-  "url": "https://www.dipta.cat/bopt/web/anunci/365067/placa-de-tecnic-a-superior-en-dret-2-bases-i-convocatoria-ajuntament-vendrell-el",
-  "fecha": "2026-10-06",
-  "huella": "780cb90120aedee9c6e4eba3e181bbe22acfa5763bd53313e215bbeb08c21202"
+  "id": "dogc:1056758",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1056758",
+  "fecha": "2026-10-14",
+  "huella": "62fc491612252ede9406029408327ec9390db725aab092674630fc30cb65d4b4"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T08:03:43+00:00",
- "lote": "msgbatch_013xFoLdqcGqWcqkzh7qrdGg",
+ "extraido": "2026-10-31T14:41:40+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
-   "valor": "Tècnic/a Superior en Dret",
-   "cita": "convocatòria del procés selectiu, mitjançant concurs oposició en torn lliure, per a la provisió en propietat de dues places de Tècnic /a Superior en Dret",
+   "valor": [
+    "Tècnic/a Superior en Dret"
+   ],
+   "cita": "dues places de Tècnic/a Superior en Dret, pertanyent a l'escala d'administració especial, escala superior",
    "nivel": "literal"
   },
   "grupo": {
    "valor": "A1",
-   "cita": "pertanyent a l’escala d’administració especial, escala superior, grup de titulació A1",
+   "cita": "grup de titulació A1, nivell de complement de destí 25",
    "nivel": "literal"
   },
   "vinculo": {
    "valor": "funcionario de carrera",
-   "cita": "vacants a la vigent plantilla del personal funcionari de l’Ajuntament del Vendrell",
+   "cita": "cobertura definitiva mitjançant concurs-oposició lliure, de dues places de Tècnic/a Superior en Dret",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "cobertura definitiva mitjançant concurs-oposició lliure, de dues places",
    "nivel": "literal"
   },
   "plazas_total": {
    "valor": 2,
-   "cita": "dues places de Tècnic/a Superior en Dret, pertanyent a l’escala d’administració especial",
-   "nivel": "sin_signos"
+   "cita": "dues places de Tècnic/a Superior en Dret, pertanyent a l'escala",
+   "nivel": "literal"
   },
   "plazas_turno_libre": {
    "valor": 2,
-   "cita": "concurs-oposició en torn lliure, per a la provisió en propietat de dues places",
-   "nivel": "sin_signos"
-  },
-  "titulacion": {
-   "valor": "Grau o Llicenciatura en Dret, o equivalent",
-   "cita": "Estar en possessió del títol universitari de Grau o Llicenciatura en Dret, o equivalent",
-   "nivel": "literal"
-  },
-  "otros_requisitos": {
-   "valor": "Nacionalitat espanyola o de la UE (o familiares en las condiciones previstas); edad mínima 16 años y no superar la edad de jubilación forzosa; capacidad funcional; no inhabilitación; no incompatibilidad.",
-   "cita": "Haver complert els 16 anys i no superar l’edat màxima establerta per a la jubilació forçosa",
-   "nivel": "literal"
-  },
-  "idioma_cooficial": {
-   "valor": "Català nivell C1 (MERC) o equivalente; castellano C2 para quienes no tengan nacionalidad española y no sean originarios de países de habla oficial castellana",
-   "cita": "Posseir la certificació dels coneixements de llengua catalana de nivell C1 (MERC) o equivalent o superior",
-   "nivel": "literal"
-  },
-  "tasa_euros": {
-   "valor": 37.31,
-   "cita": "Els drets d’examen es fixen en la quantitat de 37,31€ i han de ser satisfets",
+   "cita": "cobertura definitiva mitjançant concurs-oposició lliure, de dues places",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "20 días hábiles desde el día siguiente a la última publicación del anuncio extracto en el DOGC o BOE",
-   "cita": "termini de vint (20) dies hàbils, comptats a partir de l’endemà de la darrera publicació de l’anunci extracte",
+   "valor": "vint (20) dies hàbils, comptats a partir de l'endemà de la darrera publicació de l'anunci extracte de la convocatòria al DOGC o al BOE",
+   "cita": "El termini de presentació de les sol·licituds serà de vint (20) dies hàbils, comptats a partir de l'endemà",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Registre general de l'Ajuntament del Vendrell, a través de la Seu electrònica https://seu-e.cat/ca/web/elvendrell, adjuntant el model normalitzat indicat a les bases",
+   "cita": "Caldrà presentar les candidatures davant el Registre general de l'Ajuntament del Vendrell, a través de la Seu electrònica",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Tablón/web municipal (apartado Oferta Pública de Ocupación), BOPT, DOGC y BOE (anuncio extracto)",
-   "cita": "es publicarà al web municipal dins l’enllaç https://www.elvendrell.net/ajuntament/oferta-docupacio-publica",
-   "nivel": "literal"
-  },
-  "ejercicios": {
-   "valor": [
-    "Prueba de catalán (fase previa, eliminatoria)",
-    "Prueba de castellano (fase previa, si procede)",
-    "Prueba teórica: 40 preguntas tipo test, máx. 10 puntos, eliminatoria",
-    "Prueba práctica: supuestos escritos, máx. 65 puntos, eliminatoria",
-    "Fase de concurso: méritos, máx. 25 puntos, no eliminatoria"
-   ],
-   "cita": "La puntuació màxima assolibl e en la fase d’oposició serà 75 PUNTS",
-   "nivel": "literal"
-  },
-  "bolsa": {
-   "valor": "sí, para cubrir interinamente substituciones, vacantes sobrevenidas o necesidades de personal del mismo perfil",
-   "cita": "constituiran una borsa de treball en la categoria de Tècnic/a Superior en Dret",
+   "valor": "Web municipal de l'Ajuntament del Vendrell, apartat Oferta Pública d'Ocupació, espai de Processos Selectius Ordinaris",
+   "cita": "es faran a la web municipal de l'Ajuntament del Vendrell, dins l'apartat d'Oferta Pública d'Ocupació",
    "nivel": "literal"
   }
  },
- "rechazados": {
-  "sistema": {
-   "motivo": "cita_no_literal",
-   "valor": "concurso-oposición",
-   "cita": "mitjançant el sistema de concurs oposició lliure, de dues places de Tècnic/a Superior en Dret"
-  },
-  "presentacion": {
-   "motivo": "cita_no_literal",
-   "valor": "Registro General del Ayuntamiento, preferentemente telemático por la sede electrónica, con anexo II y declaración responsable",
-   "cita": "Les sol·licituds es presentaran davant del Registre General de l’Ajuntament del Vendrell, preferentment per via telemàtica"
-  },
-  "temas": {
-   "motivo": "cita_no_literal",
-   "valor": 70,
-   "cita": "71. Els plans d’inspecció i control. Naturalesa jurídica. Contingut."
-  },
-  "practicas_o_curso": {
-   "motivo": "cita_no_literal",
-   "valor": "no consta",
-   "cita": ""
-  }
- }
+ "rechazados": {}
 }

@@ -1,0 +1,95 @@
+{
+ "proceso": "boib:BOIB-2022-667811",
+ "documento": {
+  "id": "boib:BOIB-2022-667811",
+  "fuente": "BOIB",
+  "url": "https://www.caib.es/eboibfront/es/2022/11669/667811/resolucion-del-director-general-del-servicio-de-sa",
+  "fecha": "2022-12-20",
+  "huella": "c3051064e9c5dc2ce49bdf8ad9f374432385d88a6f37de7b9ecf6496d307715a"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:56:01+00:00",
+ "lote": "msgbatch_014eT3dLLVopBnuVgQ4syWD9",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "celador/celadora",
+    "electricista",
+    "pinche",
+    "telefonista"
+   ],
+   "cita": "concurso-oposición de las categorías profesionales de los oficios de celador/celadora, electricista, pinche y telefonista",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C2 y AP",
+   "cita": "de gestión y servicios de los oficios de celador/celadora, electricista, pinche y telefonista (subgrupos C2 y AP)",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal estatutario fijo",
+   "cita": "para cubrir 406 plazas para el acceso a la condición de personal estatutario fijo en las diferentes categorías profesionales",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "por el sistema de concurso extraordinario y/o concurso-oposición, para cubrir un total de 406 plazas básicas",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 406,
+   "cita": "para cubrir un total de 406 plazas básicas, todas ellas vacantes",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "catalán, nivel exigido según anexo 2",
+   "cita": "los aspirantes que se presenten a esta convocatoria tienen que disponer y acreditar el nivel de conocimientos de catalán exigido",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "un mes a contar desde el día siguiente de la publicación de la resolución en el BOIB",
+   "cita": "El plazo para presentar solicitudes es de un mes a contar desde el día siguiente de la fecha de publicación",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "trámite electrónico a través del enlace en www.ibsalut.es y la Sede Electrónica del Gobierno de las Islas Baleares",
+   "cita": "las solicitudes para participar en los procesos de selección se tienen que presentar por medio de trámite electrónico",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "portal web www.ibsalut.es, Sede Electrónica del Gobierno de las Islas Baleares y BOIB",
+   "cita": "Publicar esta resolución en el Boletín Oficial de las Islas Baleares, en el portal web www.ibsalut.es y en la Sede Electrónica",
+   "nivel": "sin_signos"
+  },
+  "ejercicios": {
+   "valor": [
+    "Prueba de examen de la modalidad de concurso-oposición"
+   ],
+   "cita": "Publicar la información relativa en las pruebas de examen de la modalidad de concurso-oposición",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_discapacidad": {
+   "motivo": "valor_no_numerico",
+   "valor": "cuota no inferior al 7 % de las vacantes",
+   "cita": "se han reservado en algunas de las categorías profesionales del concurso-oposición, una cuota no inferior al 7 % de las vacantes"
+  },
+  "meritos": {
+   "motivo": "cita_no_literal",
+   "valor": "baremo de méritos según bases generales de 1 de diciembre de 2022",
+   "cita": "las resoluciones del director general del Servicio de Salud de las Islas Baleares de 1 de diciembre de 2022 que regulan la modalidad de concurso extraordinario"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "no",
+   "cita": "no consta en el texto la creación de una bolsa o lista de espera"
+  },
+  "practicas_o_curso": {
+   "motivo": "cita_no_literal",
+   "valor": "no consta",
+   "cita": "no se menciona periodo de prácticas ni curso selectivo en el texto"
+  }
+ }
+}

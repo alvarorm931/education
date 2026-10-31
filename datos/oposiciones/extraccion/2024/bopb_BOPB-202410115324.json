@@ -1,0 +1,63 @@
+{
+ "proceso": "bopb:BOPB-202410115324",
+ "documento": {
+  "id": "bopb:BOPB-202410115324",
+  "fuente": "BOPB",
+  "url": "https://bop.diba.cat/anunci/3645313/esmena-d-error-material-en-l-anunci-d-aprovacio-de-les-bases-i-la-convocatoria-per-a-la-seleccio-d-una-placa-de-recepcionista-ajuntament-de-mollet-del-valles",
+  "fecha": "2024-07-01",
+  "huella": "114f939656cf84b0540a1a65b92f7ec4073445cb5f515e6e4a237997c9f21e3e"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:49:18+00:00",
+ "lote": "msgbatch_016yasWxkCXTWjPAb8LjB3ob",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Recepcionista/Recepcionista-telefonista (Lloc 472)",
+    "Recepcionista-Telefonista (Lloc 287)",
+    "Recepcionista-Telefonista (Lloc 519)",
+    "Recepcionista-Telefonista (Lloc 520)"
+   ],
+   "cita": "Un lloc de Recepcionista/Recepcionista-telefonista (Lloc 472)",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "en règim de funcionari/ària de carrera, mitjançant el procés de selecció de concurs-oposició",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mitjançant el procés de selecció de concurs-oposició per proveir",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 4,
+   "cita": "a les bases han de constar quatre llocs",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "diaris oficials corresponents",
+   "cita": "Publicar la següent resolució d’error material als diaris oficials corresponents",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, para cubrir vacantes de características similares y necesidades de ocupación durante la vigencia de la bolsa",
+   "cita": "també té per finalitat establir un ordre de preferència per proveir les vacants de característiques similars",
+   "nivel": "sin_signos"
+  }
+ },
+ "rechazados": {
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "no consta",
+   "cita": "Tampoco se indica grupo o subgrupo de clasificación en el texto"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "en torn lliure i pel sistema de concurs oposició"
+  }
+ }
+}

@@ -1,0 +1,38 @@
+{
+ "proceso": "boe:BOE-A-2025-14648",
+ "documento": {
+  "id": "dogv:430770",
+  "fuente": "DOGV",
+  "url": "https://dogv.gva.es/datos/2025/07/07/pdf/2025_22443_es.pdf",
+  "fecha": "2025-07-07",
+  "huella": "3adaadefecfcddadab90ec7077a47d330439d93b4bbfad495f7378e6d2bcba4e"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:45:09+00:00",
+ "lote": "msgbatch_016re6aGcimwSVmdrWa6qBd9",
+ "no_son_bases": false,
+ "campos": {
+  "plazas_total": {
+   "valor": 1,
+   "cita": "cubrir una plaza de administrativo/a para el Ayuntamiento de Albuixech",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles a contar desde el día siguiente a la publicación de este anuncio en el Boletín Oficial de Estado",
+   "cita": "se abre un plazo de presentación de solicitudes que será de veinte días hábiles a contar desde el día siguiente",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia de Valencia, sede electrónica del ayuntamiento y tablón de anuncios",
+   "cita": "Los sucesivos anuncios de esta convocatoria, cuando procedan de conformidad con las bases, se publicarán en el Boletín Oficial de la Provincia de Valencia",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "administrativo/a",
+   "cita": "aprobar las bases y la convocatoria para cubrir una plaza de administrativo/a para el Ayuntamiento de Albuixech"
+  }
+ }
+}

@@ -1,0 +1,73 @@
+{
+ "proceso": "bocm:BOCM-20240820-50",
+ "documento": {
+  "id": "bocm:BOCM-20240820-50",
+  "fuente": "BOCM",
+  "url": "https://www.bocm.es/bocm-20240820-50",
+  "fecha": "2024-08-20",
+  "huella": "23d21f6a7b60a8e0ef1c9cf680c5c16fa1671b1bc0af186db423b40d7c51dc57"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:49:03+00:00",
+ "lote": "msgbatch_016yasWxkCXTWjPAb8LjB3ob",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "oficial de Policía Local",
+   "cita": "seleccion de una plaza de oficial de Policía Local, categoría Oficial, grupo C1",
+   "nivel": "sin_signos"
+  },
+  "grupo": {
+   "valor": "C1",
+   "cita": "grupo C1, escala Administración Especial, escala Técnica o de Mando",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "plaza de oficial de Policía Local, categoría Oficial, grupo C1, escala Administración Especial",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "Sistema de selección: promoción interna por concurso-oposición y curso selectivo de formación.",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "para selección de una plaza de oficial de Policía Local, categoría Oficial",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 22.61,
+   "cita": "Derechos de examen: 22,61 euros (veintidós euros con sesenta y un céntimos)",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles a contar desde el día siguiente a la publicación de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "Plazo de presentación de solicitudes: veinte días hábiles a contar desde el día siguiente a la publicación",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "sede electrónica del Ayuntamiento de Valdemorillo (Portal de Transparencia, Empleo Público, Oferta de Empleo Público 2024)",
+   "cita": "El texto íntegro de las bases figura publicado en la sede electrónica de este Ayuntamiento",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "curso selectivo de formación",
+   "cita": "Sistema de selección: promoción interna por concurso-oposición y curso selectivo de formación.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_promocion_interna": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "Sistema de selección: promoción interna por concurso-oposición y curso selectivo de formación."
+  },
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Autoliquidación de la tasa mediante la Pasarela de pagos en la carpeta tributaria del Ayuntamiento",
+   "cita": "Derechos de examen: 22,61 euros (Autoliquidación: Pasarela de pagos https://carpetatributaria.aytovaldemorillo.com/ )"
+  }
+ }
+}

@@ -1,0 +1,60 @@
+{
+ "proceso": "boc:BOC-A-2024-126-2101",
+ "documento": {
+  "id": "boc:BOC-A-2024-126-2101",
+  "fuente": "BOC",
+  "url": "https://www.gobiernodecanarias.org/boc/2024/126/016.html",
+  "fecha": "2024-06-28",
+  "huella": "4e60d56efa01f53c773964fef84f53498460ff0d419d2ee9943766998a86507f"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:49:16+00:00",
+ "lote": "msgbatch_016yasWxkCXTWjPAb8LjB3ob",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Director/a Financiero/a"
+   ],
+   "cita": "cobertura, con carácter laboral indefinido, del puesto de trabajo Director/a Financiero/a",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "cobertura, con carácter laboral indefinido, del puesto de trabajo Director/a Financiero/a",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "No consta en el texto del anuncio; las bases íntegras están en la web de la sociedad",
+   "cita": "Las bases íntegras de la convocatoria de referencia pueden ser consultadas en la página web",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Página web www.hecansa.com; el anuncio se publica en el Boletín Oficial de Canarias",
+   "cita": "Los sucesivos anuncios referentes a esta convocatoria, cuando procedan de conformidad con las bases, se harán públicos en la página web",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, lista de reserva para posibles y futuras contrataciones de carácter temporal",
+   "cita": "así como la creación de una lista de reserva para posibles y futuras contrataciones de carácter temporal",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "no"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "cobertura, con carácter laboral indefinido, del puesto de trabajo Director/a Financiero/a"
+  },
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Telemática, a través del enlace habilitado en la web de Hoteles Escuela de Canarias, S.A.",
+   "cita": "deberán presentarse telemáticamente a través del enlace habilitado al efecto en la página web"
+  }
+ }
+}

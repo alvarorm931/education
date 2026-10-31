@@ -1,0 +1,65 @@
+{
+ "proceso": "boe:BOE-A-2025-12997",
+ "documento": {
+  "id": "bocm:BOCM-20250526-67",
+  "fuente": "BOCM",
+  "url": "https://www.bocm.es/bocm-20250526-67",
+  "fecha": "2025-05-26",
+  "huella": "fb5849d5af2413ca5b77876f722069a3ac1ddce832781184c28b825c8071a1f6"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:45:17+00:00",
+ "lote": "msgbatch_016re6aGcimwSVmdrWa6qBd9",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Auxiliar Administrativo"
+   ],
+   "cita": "se convocan cuatro plazas de auxiliar administrativo, funcionario de carrera",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C2",
+   "cita": "grupo C, subgrupo C2",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "auxiliar administrativo, funcionario de carrera, grupo C",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "mediante el sistema de oposición, en turno libre",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 4,
+   "cita": "se convocan cuatro plazas de auxiliar administrativo",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles, contados a partir del siguiente al de la publicación en el BOE de la convocatoria",
+   "cita": "será de veinte días hábiles, contados a partir del siguiente al de la publicación",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Las bases se publicarán en el tablón de edictos y en la web municipal del Ayuntamiento de Moralzarzal",
+   "cita": "Las bases se encuentran expuestas íntegramente en el tablón de edictos",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 4,
+   "cita": "mediante el sistema de oposición, en turno libre"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "no se indica",
+   "cita": ""
+  }
+ }
+}

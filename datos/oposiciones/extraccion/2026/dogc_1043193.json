@@ -1,0 +1,55 @@
+{
+ "proceso": "dogc:1043193",
+ "documento": {
+  "id": "dogc:1043193",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1043193",
+  "fecha": "2026-04-30",
+  "huella": "49672f2797afe064deed0d94ef1dd894e1727c27bc854feca85cb180ecb76722"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:41:49+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "C1",
+   "cita": "subgrup professional C1, vacant a la plantilla de personal del Consell Comarcal del Montsià",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mitjançant sistema de concurs oposició, d'una plaça de funcionari/ària",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "mitjançant sistema de concurs oposició, d'una plaça de funcionari/ària de carrera",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles desde el día siguiente a la última publicación extractada en el DOGC o en el BOE",
+   "cita": "El termini de presentació de sol·licituds és de vint dies hàbils que comptaran a partir de l'endemà",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de anuncios de la sede electrónica del Consell Comarcal del Montsià, y bases íntegras en el Butlletí Oficial de la Província",
+   "cita": "També s'han publicat al tauler d'anuncis de la seu electrònica del Consell Comarcal del Montsià.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Funcionario/a de carrera, escala de administración general, subescala administrativa"
+   ],
+   "cita": "una plaça de funcionari/ària de carrera, escala d'administració general, subescala administrativa"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "una plaça de funcionari/ària de carrera, escala d'administració general"
+  }
+ }
+}

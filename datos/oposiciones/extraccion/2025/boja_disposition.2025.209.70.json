@@ -1,0 +1,58 @@
+{
+ "proceso": "boja:disposition.2025.209.70",
+ "documento": {
+  "id": "boja:disposition.2025.209.70",
+  "fuente": "BOJA",
+  "url": "https://juntadeandalucia.es/eboja/2025/209/BOJA25-209-00001-13653-01_00327248.pdf",
+  "fecha": "2025-10-30",
+  "huella": "630ef8583960579ad5cf10008a22976ec0bb8ce437fef566b67b6c4b29043b6e"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:41:04+00:00",
+ "lote": "msgbatch_01UNq3BNhPPHoTK3TEJzun1h",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "C1",
+   "cita": "grupo C, subgrupo C1, mediante el sistema de acceso de acceso de turno libre",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "como funcionario de carrera, perteneciente a la subescala de Servicios Especiales",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "a través del procedimiento de oposición",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 3,
+   "cita": "para cubrir tres plazas de Agente de Policía Local de este Ayuntamiento",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles, a contar desde el siguiente al de la publicación de anuncio en extracto en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes será de 20 días hábiles, a contar desde el siguiente al de la publicación",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Bases disponibles en el tablón de anuncios de la sede electrónica del Ayuntamiento de Pilas y en la dirección web indicada",
+   "cita": "Las bases reguladoras pueden consultarse en el tablón de anuncios de la sede electrónica del Ayuntamiento de Pilas",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Agente de Policía Local",
+   "cita": "seleccionar tres plazas de Agente de Policía Local de este Ayuntamiento"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 3,
+   "cita": "mediante el sistema de acceso de acceso de turno libre y a través del procedimiento de oposición"
+  }
+ }
+}

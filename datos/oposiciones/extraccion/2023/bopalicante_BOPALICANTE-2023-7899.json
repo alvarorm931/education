@@ -1,0 +1,48 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2023-7899",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2023-7899",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2023/09/12_176/2023_007899.pdf",
+  "fecha": "2023-09-12",
+  "huella": "824a8d266bc2ebb1e0af7c764a90d96dc6b4b4c231b71fdb89ec74142c450c33"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:47+00:00",
+ "lote": "msgbatch_01SjfjDqJRwL6bpTvJz2YfVg",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "constitución de una bolsa de trabajo temporal de Técnico/a de Mantenimiento",
+   "nivel": "sin_signos"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mediante procedimiento concurso-oposición",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "10 días naturales, contados a partir del día siguiente al de la publicación del anuncio en el BOP",
+   "cita": "El plazo de presentación de instancias será de 10 días naturales, contados a partir del día siguiente",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de edictos municipal y sede electrónica del Ayuntamiento",
+   "cita": "Los sucesivos anuncios relacionados con la presente convocatoria se publicarán únicamente en el tablón de edictos",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Técnico/a de Mantenimiento (encargado taller cerrajería)",
+   "cita": "Técnico/a de Mantenimiento (encargado taller cerrajería, código puesto 12 RPT)"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, bolsa de trabajo temporal para Técnico/a de Mantenimiento",
+   "cita": "para la constitución de una bolsa de trabajo temporal de Técnico/a de Mantenimiento"
+  }
+ }
+}

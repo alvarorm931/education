@@ -1,15 +1,15 @@
 {
  "proceso": "bopt:BOPT-2026-07948",
  "documento": {
-  "id": "bopt:BOPT-2026-07948",
-  "fuente": "BOPT",
-  "url": "https://www.dipta.cat/bopt/web/anunci/363599/borsa-de-treball-d-oficial-a-de-primera-bases-i-convocatoria-ajuntament-roquetes",
-  "fecha": "2026-08-25",
-  "huella": "7e8bde58c5e9da7702067050f8efae3ee8de4d92739ad674c1dfe033f297f300"
+  "id": "dogc:1053248",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1053248",
+  "fecha": "2026-08-27",
+  "huella": "5afc39bb2a2aa021f06d22fe9bbda133168f020833ab2e9a7f1f39f040f19c14"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T08:03:42+00:00",
- "lote": "msgbatch_013xFoLdqcGqWcqkzh7qrdGg",
+ "extraido": "2026-10-31T14:41:55+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
  "no_son_bases": false,
  "campos": {
   "grupo": {
@@ -17,37 +17,72 @@
    "cita": "Subgrup C1, Categoria Personal d'oficis, per a possibles vacants",
    "nivel": "literal"
   },
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "com a personal laboral temporal de l'Ajuntament de Roquetes",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "la constitució, pel sistema de concurs oposició lliure, amb caràcter d'urgència",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Batxillerat, FP II grau, cicle formatiu de grau superior, o titulacions equivalents o superiors",
+   "cita": "Estar en possessió del títol de Batxillerat, FP II grau, cicle formatiu de grau superior, o titulacions equivalents",
+   "nivel": "literal"
+  },
   "otros_requisitos": {
-   "valor": "Nacionalitat espanyola o de la UE (o aplicable per tractats); 16 anys i no superar edat de jubilació forçosa; capacitat funcional; no estar separat per expedient disciplinari ni inhabilitat; no condemnat per delictes contra la llibertat i indemnitat sexual; permís de conduir B",
+   "valor": "Nacionalitat espanyola o de la Unió Europea (o altres supòsits de l'article 57 TREBEP); 16 anys i no superar l'edat de jubilació forçosa; capacitat funcional; no separació disciplinària ni inhabilitació; permís de conduir B",
    "cita": "Estar en possessió del permís de conduir B",
    "nivel": "literal"
   },
+  "idioma_cooficial": {
+   "valor": "Català, nivell intermedi (B2)",
+   "cita": "el certificat de nivell intermedi de català (B2), de la Direcció General de Política Lingüística",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 30,
+   "cita": "Cal haver satisfet la taxa pels drets d'examen de 30,00 €.",
+   "nivel": "literal"
+  },
   "exenciones_tasa": {
-   "valor": "Desocupació: 15,00 €; desocupació sense cap prestació: 0,00 € (justificant documental)",
-   "cita": "Drets d'examen en el cas que el subjecte passiu estigui en situació de desocupació",
+   "valor": "Bonificació del 50 % per a demandants d'ocupació no ocupats (DONO); bonificació del 100 % per a persones en atur que no perceben prestació ni subsidi",
+   "cita": "Per obtenir una bonificació del 100 % de la quota de la taxa les persones en situació d'atur",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "20 dies naturals des de l'endemà de la darrera publicació (BOPT, DOGC, e-tauler i seu)",
+   "valor": "20 dies naturals comptats des de l'endemà de la darrera publicació",
    "cita": "El termini de presentació de les sol·licituds serà de 20 dies naturals comptats des de l'endemà",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Registre general de l'Ajuntament, seu electrònica, o qualsevol forma de l'article 16 de la Llei 39/2015",
+   "cita": "les sol·licituds es podran presentar en qualsevol de les formes previstes a l'article 16",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Butlletí Oficial de la Província, Diari Oficial de la Generalitat de Catalunya, e-tauler i seu electrònica municipal",
+   "cita": "Les bases i la convocatòria es publicaran, íntegrament, al Butlletí Oficial de la Província",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Coneixement de la llengua catalana (APTE/NO APTE, eliminatori)",
-    "Coneixement de la llengua espanyola si escau (APTE/NO APTE)",
-    "Prova pràctica (300 punts, mínim 150, eliminatori)"
+    "Coneixement de la llengua catalana (eliminatori, APTE/NO APTE)",
+    "Coneixement de la llengua espanyola (eliminatori, només per a aspirants de països sense espanyol oficial)",
+    "Prova pràctica (eliminatòria, màxim 300 punts, mínim 150; màxim 2 hores)"
    ],
    "cita": "Consisteix en la realització d'exercicis de coneixements sintàctics i de comprensió de la llengua catalana",
    "nivel": "literal"
   },
   "meritos": {
-   "valor": "Experiència professional fins a 30 punts (0,10/mes sector públic; 0,06/mes privat); formació complementària fins a 30 punts segons durada dels cursos; fase de concurs màxim 60 punts",
-   "cita": "La puntuació màxima total de la fase de concurs serà de 60 punts.",
+   "valor": "Experiència professional, fins a 30 punts (0,10 punts/mes en administració pública; 0,06 en sector privat); formació complementària, fins a 30 punts (0,50 a 2 punts per curs segons durada)",
+   "cita": "Experiència professional desenvolupant tasques corresponents a la categoria i/o subescala de la plaça",
    "nivel": "literal"
   },
   "bolsa": {
-   "valor": "Sí, per cobrir possibles vacants com a personal laboral temporal, durada màxima de 2 anys",
+   "valor": "sí, per cobrir vacants de personal laboral temporal, durada màxima de 2 anys",
    "cita": "La borsa de treball tindrà una durada màxima de 2 anys a comptar des de la seva constitució",
    "nivel": "literal"
   }
@@ -55,43 +90,20 @@
  "rechazados": {
   "denominacion": {
    "motivo": "cita_no_literal",
-   "valor": "Oficial primera (borsa de treball)",
-   "cita": "constitució, pel sistema de concurs oposició lliure, amb caràcter d'urgència, d'una borsa de treball d'oficials primera"
+   "valor": [
+    "Oficial primera"
+   ],
+   "cita": "la constitució d'una borsa de treball d'oficials primera, Subgrup C1, Categoria Personal d'oficis"
   },
-  "vinculo": {
-   "motivo": "cita_no_literal",
-   "valor": "laboral temporal",
-   "cita": "com a personal laboral temporal de l'Ajuntament de Roquetes"
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 0,
+   "cita": "la constitució, pel sistema de concurs oposició lliure, amb caràcter d'urgència, d'una borsa de treball"
   },
-  "sistema": {
+  "practicas_o_curso": {
    "motivo": "cita_no_literal",
-   "valor": "concurso-oposición",
-   "cita": "pel sistema de concurs oposició lliure, amb caràcter d'urgència"
-  },
-  "titulacion": {
-   "motivo": "cita_no_literal",
-   "valor": "Batxillerat, FP II grau, cicle formatiu de grau superior, o titulacions equivalents o superiors",
-   "cita": "Estar en possessió del título de Batxillerat, FP II grau, cicle formatiu de grau superior"
-  },
-  "idioma_cooficial": {
-   "motivo": "cita_no_literal",
-   "valor": "Català, nivell intermedi B2 (es pot acreditar o superar prova eliminatòria)",
-   "cita": "aportar el certificat de nivell intermedi de català (B2)"
-  },
-  "tasa_euros": {
-   "motivo": "cita_no_literal",
-   "valor": 30,
-   "cita": "Cal haver satisfet la taxa pels drets d'examen de 30,00 €"
-  },
-  "presentacion": {
-   "motivo": "cita_no_literal",
-   "valor": "Model normalitzat al registre general de l'Ajuntament o seu electrònica, adreçat a l'alcalde-president; altres registres amb comunicació immediata per correu a seleccio.personal@roquetes.cat",
-   "cita": "Les sol·licituds es podran presentar en qualsevol de les formes previstes a l'article 16"
-  },
-  "publicaciones": {
-   "motivo": "cita_no_literal",
-   "valor": "Seu electrònica municipal i e-tauler (BOPT i DOGC per a la publicació íntegra)",
-   "cita": "Els restants i successius anuncis d'aquesta convocatòria es faran públics en la seu electrònica i e-tauler"
+   "valor": "no consta",
+   "cita": ""
   }
  }
 }

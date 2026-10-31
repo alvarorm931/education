@@ -1,0 +1,58 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2026-1563",
+ "documento": {
+  "id": "dogv:475050",
+  "fuente": "DOGV",
+  "url": "https://dogv.gva.es/datos/2026/06/04/pdf/2026_13763_es.pdf",
+  "fecha": "2026-06-04",
+  "huella": "55d981bae1e15258fc62ff93ac85e91a2333d6731ceea1d8057237ae6e6ad180"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:40:52+00:00",
+ "lote": "msgbatch_01E3wiYcGL8Lzho48bXWLyyb",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "C2",
+   "cita": "dotada con los emolumentos correspondientes al subgrupo de clasificación C2",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "para cubrir, por el procedimiento de oposición, 57 plazas de auxiliar sanitario titulado",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 57,
+   "cita": "para cubrir, por el procedimiento de oposición, 57 plazas de auxiliar sanitario titulado",
+   "nivel": "literal"
+  },
+  "plazas_turno_libre": {
+   "valor": 57,
+   "cita": "57 plazas de auxiliar sanitario titulado reservadas al turno libre",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "diez días hábiles, a contar desde el siguiente al de la publicación del anuncio extracto en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de instancias será de diez días hábiles, a contar desde el siguiente al de la publicación del anuncio extracto",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia de Alicante (listas de admitidos y excluidos y día, hora y lugar del primer ejercicio); tablón de anuncios de la corporación (sucesivos anuncios)",
+   "cita": "La resolución aprobatoria de la lista de aspirantes admitidos y excluidos se publicará en el Boletín Oficial de la Provincia de Alicante",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "auxiliar sanitario titulado",
+   "cita": "se convocan, por el procedimiento de oposición, 57 plazas de auxiliar sanitario titulado reservadas al turno libre"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "plazas incluidas en la escala de administración especial, subescala servicios especiales, clase personal de oficios"
+  }
+ }
+}

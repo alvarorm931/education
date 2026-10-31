@@ -1,0 +1,83 @@
+{
+ "proceso": "dog:DOG-20240122-AnuncioU500-110124-0001",
+ "documento": {
+  "id": "dog:DOG-20240122-AnuncioU500-110124-0001",
+  "fuente": "DOG",
+  "url": "https://www.xunta.gal/dog/Publicados/2024/20240122/AnuncioU500-110124-0001_es.html",
+  "fecha": "2024-01-22",
+  "huella": "84b6ed473938544b8467b80df351c04ba0da57cb28d56e95dfe5cbc3dee024cd"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:54:04+00:00",
+ "lote": "msgbatch_01EQ4R6PVKpEwTXzXwPCmspm",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "A1, A2, C1, C2",
+   "cita": "Subgrupo A1: 80 preguntas con 4 respuestas alternativas, de las que solo una será correcta",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "adquisición de la condición de funcionario/a de carrera del personal laboral fijo de esta universidad",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "consistirá en la superación de un concurso-oposición con las características que se indican",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Según subgrupo: A1 título universitario de grado, licenciado, arquitecto o ingeniero; A2 grado, diplomatura, ingeniería técnica o arquitectura técnica; C1 bachillerato o técnico; C2 graduado en educación secundaria o equivalente",
+   "cita": "Para la funcionarización en escalas pertenecientes al subgrupo A1: estar en posesión del título universitario de grado",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Ser titular de un puesto de la lista de la escala o subescala; en el proceso específico, al menos 2 años de servicios efectivos como PAS laboral en la categoría de acceso",
+   "cita": "En el proceso específico, además, tener prestados servicios efectivos como PAS laboral en la categoría desde la que se accede a la promoción durante al menos 2 años.",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "15 días hábiles desde el día siguiente a la publicación del anuncio en el DOG",
+   "cita": "El plazo de presentación de solicitudes será de 15 días hábiles, contados a partir del día siguiente",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Sede electrónica de la Universidad de Vigo, o registros presenciales de los campus de Vigo, Ourense y Pontevedra",
+   "cita": "Las solicitudes se presentarán en la sede electrónica de la Universidad de Vigo",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Fase de oposición: test tipo test eliminatorio (A1 80 preguntas, A2 70, C1 60, C2 50; específico 100 preguntas)",
+    "Fase de concurso: antigüedad y nombramiento previo, no eliminatoria"
+   ],
+   "cita": "consistirá en la superación de una prueba tipo test, de carácter eliminatorio, con cuatro respuestas alternativas",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Antigüedad hasta 10 puntos (según subgrupo y mes completo trabajado) y nombramiento en la categoría de acceso a personal laboral fijo: 2 puntos",
+   "cita": "Nombramiento en la categoría de acceso a la condición de personal laboral fijo: 2 puntos.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Escalas y subescalas de los grupos A1, A2, C1 y C2 del personal de administración y servicios de la Universidad de Vigo (proceso general y proceso específico)"
+   ],
+   "cita": "Esta convocatoria tiene por objeto la funcionarización del personal laboral fijo de administración y servicios"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Tablón electrónico de la Universidad de Vigo (sede.uvigo.gal); información en uvigo.gal",
+   "cita": "Los actos de este proceso que deban publicarse se publicarán en el tablón electrónico de la Universidad de Vigo"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "no",
+   "cita": ""
+  }
+ }
+}

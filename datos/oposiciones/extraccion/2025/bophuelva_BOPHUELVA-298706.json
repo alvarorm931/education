@@ -1,0 +1,59 @@
+{
+ "proceso": "bophuelva:BOPHUELVA-298706",
+ "documento": {
+  "id": "bophuelva:BOPHUELVA-298706",
+  "fuente": "BOP-HUELVA",
+  "url": "https://s2.diphuelva.es/portalweb/bope/anuncios/Anuncio_298706_BOP-54_2025.pdf",
+  "fecha": "2025-03-20",
+  "huella": "0c3b29c268c6c8757224171544f9c52b59ceaed15bf6ad20f3c3c477a7dfd39e"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:46:43+00:00",
+ "lote": "msgbatch_01MQzQCLMZKxUrrPMAj7dr53",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Peón de la construcción",
+    "Oficial de 1ª de la construcción",
+    "Socorrista",
+    "Taquilleros",
+    "Monitor/a de natación"
+   ],
+   "cita": "para constituir una bolsa de empleo para las ocupaciones de",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "selección de personal laboral temporal para cubrir necesidades de servicios básicos",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "diez días hábiles a contar desde el día siguiente a la publicación de este anuncio en el Boletín Oficial de la Provincia",
+   "cita": "que será de diez días hábiles a contar desde el día siguiente a la publicación",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Plazo de presentación de solicitudes, sin indicar canal en el anuncio; las bases íntegras se publicarán en la sede electrónica del ayuntamiento",
+   "cita": "El texto íntegro de las bases se publicarán en sede electrónica del ayuntamiento",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, para cubrir necesidades de servicios básicos",
+   "cita": "para cubrir necesidades de servicios básicos, para constituir una bolsa de empleo",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "oposición",
+   "cita": "proceso de selección de personal laboral temporal para cubrir necesidades de servicios básicos"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Sede electrónica del Ayuntamiento de Paterna del Campo (https://paternadelcampo.sedelectronica.es)",
+   "cita": "Los sucesivos anuncios de esta convocatoria, cuando procedan de conformidad con las bases, se publicarán en la sede electrónica"
+  }
+ }
+}

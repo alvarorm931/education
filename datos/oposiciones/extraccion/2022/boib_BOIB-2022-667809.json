@@ -1,0 +1,87 @@
+{
+ "proceso": "boib:BOIB-2022-667809",
+ "documento": {
+  "id": "boib:BOIB-2022-667809",
+  "fuente": "BOIB",
+  "url": "https://www.caib.es/eboibfront/es/2022/11669/667809/resolucion-del-director-general-del-servicio-de-sa",
+  "fecha": "2022-12-20",
+  "huella": "31bcd71330eb1865eb68cc1d30f5a18dbaa4fc1cb6645500ced6165510c97b2a"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:56:05+00:00",
+ "lote": "msgbatch_014eT3dLLVopBnuVgQ4syWD9",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "A1",
+   "cita": "personal estatutario facultativo sanitario (subgrupo A1), a excepción de los Técnicos/técnicas de salud pública",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal estatutario",
+   "cita": "para cubrir 506 plazas para el acceso a la condición de personal estatutario fijo",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "la modalidad de concurso extraordinario y/o concurso oposición, de un total de 506 plazas",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 506,
+   "cita": "Se convocan pruebas selectivas para cubrir 506 plazas para el acceso a la condición de personal estatutario fijo",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "exentos de acreditar el nivel de conocimientos de catalán",
+   "cita": "los aspirantes están exentos de acreditar como requisito el nivel de conocimientos de catalán",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "un mes desde el día siguiente a la publicación en el BOIB",
+   "cita": "El plazo para presentar solicitudes es de un mes a contar desde el día siguiente de la fecha de publicación",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "trámite electrónico, a través del enlace de www.ibsalut.es y la Sede Electrónica de Gobierno de las Islas Baleares",
+   "cita": "las solicitudes para participar en los procesos de selección se tienen que presentar por medio de trámite electrónico",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Concurso oposición: pruebas de examen (detalladas en el anexo 3, no transcrito)"
+   ],
+   "cita": "Publicar la información relativa a las pruebas de examen de la modalidad de concurso oposición",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "baremo de méritos en bases generales (BOIB 157/2022)",
+   "cita": "resoluciones del director general del Servicio de Salud de las Islas Baleares de 1 de diciembre de 2022",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "no",
+   "cita": "Aprobar la convocatoria específica que tiene que regir los procesos selectivos",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Personal facultativo sanitario (subgrupo A1)"
+   ],
+   "cita": "se aprueban los requisitos de titulación, y especialidad, si procede, para acceder a cada una de las categorías convocadas"
+  },
+  "plazas_discapacidad": {
+   "motivo": "valor_no_numerico",
+   "valor": "cuota no inferior al 7 % de las vacantes",
+   "cita": "se han reservado en algunas de las categorías profesionales del concurso oposición, una cuota no inferior al 7 %"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "portal web www.ibsalut.es y Sede Electrónica del Gobierno de las Islas Baleares",
+   "cita": "se publicarán en el portal web www.ibsalut.es, junto con las listas provisionales de candidatos admitidos y/o excluidos"
+  }
+ }
+}

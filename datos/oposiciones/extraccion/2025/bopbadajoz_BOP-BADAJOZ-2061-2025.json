@@ -1,0 +1,45 @@
+{
+ "proceso": "bopbadajoz:BOP-BADAJOZ-2061-2025",
+ "documento": {
+  "id": "doe:DOE-2025080936",
+  "fuente": "DOE",
+  "url": "https://doe.juntaex.es/otrosFormatos/html.php?xml=2025080936&anio=2025&doe=1080o",
+  "fecha": "2025-06-06",
+  "huella": "af32e6bd6951bbe9601a3083e4a7d76517f29c5c596d5f6fe7e6a11d90b7272f"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:45:34+00:00",
+ "lote": "msgbatch_016re6aGcimwSVmdrWa6qBd9",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Agente de la Policía Local"
+   ],
+   "cita": "tres plazas de Agente de la Policía Local, encuadradas en la Escala de Administración Especial",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "vacantes en la plantilla de personal funcionario del Ayuntamiento de Villanueva de la Serena",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "por el sistema de acceso de movilidad y el sistema de selección de concurso",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles a contar desde el siguiente a la publicación del anuncio de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "el plazo de presentación de solicitudes será de veinte días hábiles a contar desde el siguiente a la publicación",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 3,
+   "cita": "provisión de tres plazas de Agente de la Policía Local"
+  }
+ }
+}

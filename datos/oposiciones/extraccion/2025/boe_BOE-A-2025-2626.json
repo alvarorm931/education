@@ -1,0 +1,53 @@
+{
+ "proceso": "boe:BOE-A-2025-2626",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2025-634",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2025/01/31_21/2025_000634.pdf",
+  "fecha": "2025-01-31",
+  "huella": "6f5c37c382903e45e5d1dbbdf1ce76723ec22986713cee758c6c5939e0cead93"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:46:36+00:00",
+ "lote": "msgbatch_01MQzQCLMZKxUrrPMAj7dr53",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "Técnico de Administración General",
+   "cita": "para la provisión en propiedad de personal funcionario de carrera de 2 plazas de Técnico de Administración General",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "provisión en propiedad de personal funcionario de carrera de 2 plazas de Técnico de Administración General",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "mediante oposición por turno libre, perteneciente a la Oferta de Empleo Público",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 2,
+   "cita": "para la provisión en propiedad de personal funcionario de carrera de 2 plazas de Técnico",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de anuncios y edictos electrónicos del Ayuntamiento de Elche y página web municipal",
+   "cita": "estarán a disposición de las personas interesadas en la página web municipal",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 2,
+   "cita": "mediante oposición por turno libre, perteneciente a la Oferta de Empleo Público del año 2024"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "diez días hábiles a contar desde el día siguiente a la publicación del extracto de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes será de diez días hábiles a contar desde el día siguiente"
+  }
+ }
+}

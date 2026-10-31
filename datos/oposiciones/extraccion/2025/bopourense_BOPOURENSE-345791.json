@@ -1,0 +1,62 @@
+{
+ "proceso": "bopourense:BOPOURENSE-345791",
+ "documento": {
+  "id": "bopourense:BOPOURENSE-345791",
+  "fuente": "BOP-OURENSE",
+  "url": null,
+  "fecha": "2025-05-14",
+  "huella": "7a66d04f6047f58671bdb9fba86282eef85ee95fa157dfb383b5a81aab7be165"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:46:15+00:00",
+ "lote": "msgbatch_017vJZdAmjTkBDdH14aLEdCv",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "jefe de brigada",
+    "peón conductor",
+    "peón de brigada"
+   ],
+   "cita": "2 jefes de brigada, 2 peones conductores y 6 peones de brigada para la formación en 2025",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "temporal de duración determinada (DA quinta del RDL 32/2021, de 28 de diciembre), a jornada completa",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "Sistema de selección: concurso de méritos",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "5 días hábiles contados desde el siguiente a la publicación de este anuncio en el BOP",
+   "cita": "5 días hábiles contados desde el siguiente a la publicación de este anuncio en el BOP",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "en el registro del ayuntamiento o por cualquiera de los medios admitidos en derecho",
+   "cita": "en el registro del ayuntamiento o por cualquiera de los medios admitidos en derecho",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "tablón de anuncios del ayuntamiento y sede electrónica municipal (https://vilardebarrio.sedelectronica.gal)",
+   "cita": "publicado en el tablón de anuncios del ayuntamiento y en la sede electrónica municipal",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "no especificado",
+   "cita": ""
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 10,
+   "cita": "2 jefes de brigada, 2 peones conductores y 6 peones de brigada"
+  }
+ }
+}

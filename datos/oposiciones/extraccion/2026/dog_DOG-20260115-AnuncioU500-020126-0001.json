@@ -1,0 +1,111 @@
+{
+ "proceso": "dog:DOG-20260115-AnuncioU500-020126-0001",
+ "documento": {
+  "id": "dog:DOG-20260115-AnuncioU500-020126-0001",
+  "fuente": "DOG",
+  "url": "https://www.xunta.gal/dog/Publicados/2026/20260115/AnuncioU500-020126-0001_es.html",
+  "fecha": "2026-01-15",
+  "huella": "2774098f21d9a1744959809e384a03936fb3735d8829b352c75eb97c9177fad3"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:42:23+00:00",
+ "lote": "msgbatch_01W17mR271uYfWYL6CuSdriL",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "Profesor/a Titular de Universidad (reserva I3/R3), concurso de acceso por procedimiento de urgencia; plazas en Biología celular, Microbiología, Arqueología, Ingeniería química y Física de la tierra",
+   "cita": "convocar a concurso por el procedimiento de urgencia las plazas que figuran en el anexo I",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "A1",
+   "cita": "Profesores y Profesoras Titulares de Universidad",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "convocar a concurso por el procedimiento de urgencia las plazas",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 5,
+   "cita": "Plaza nº 1. Plaza nº 2. Plaza nº 3. Plaza nº 4. Plaza nº 5.",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Doctor o doctora",
+   "cita": "Estar en posesión de la titulación de doctor o doctora",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española o de Estado UE/aplicación libre circulación; 16 años cumplidos y no superar 70; acreditación para Profesor/a Titular de Universidad o habilitación; no separación del servicio; capacidad funcional; contratado/a como personal investigador doctor en el programa señalado; certificado I3/R3; no ocupar plaza de cuerpos docentes obtenida por concurso de acceso salvo dos años de desempeño",
+   "cita": "Estar contratado o haber sido contratado como personal investigador doctor en el programa o convocatoria competitiva",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Conocimiento de al menos una de las dos lenguas oficiales de la Universidad de Vigo (español B2 o superior, o gallego Celga 3 o equivalente)",
+   "cita": "Las personas candidatas acreditarán el conocimiento de al menos una de las dos lenguas oficiales de la Universidad de Vigo",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 44.17,
+   "cita": "Los derechos de examen para cada plaza (TU2501) serán de 44,17 euros.",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Exentas personas con discapacidad igual o superior al 33 % y familias numerosas de categoría especial; bonificación del 50 % para familias numerosas general y personas demandantes de empleo seis meses anteriores sin prestación",
+   "cita": "estarán exentas del pago las personas con discapacidad igual o superior al 33 %",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Veinte días hábiles desde el día siguiente a la publicación de la convocatoria en el BOE",
+   "cita": "El plazo de presentación de solicitudes será de veinte días hábiles, contados a partir del día siguiente",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de anuncios de la sede electrónica y, a título divulgativo, página de la Universidad de Vigo; publicación de la convocatoria en BOE y DOG",
+   "cita": "se publicarán a título divulgativo en la página electrónica de la Universidad de Vigo",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Acto de presentación de documentación (virtual)",
+    "Prueba única: exposición oral de méritos, historial e proyecto docente e investigador (30 minutos a 2 horas) y debate con la comisión (máximo 2 horas)"
+   ],
+   "cita": "consistirá en la exposición oral, durante un tiempo mínimo de treinta minutos y máximo de dos horas",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Experiencia investigadora y de transferencia y experiencia docente e innovación educativa, con igual peso, entre el 35 y el 45 % de la puntuación total; criterios fijados por la comisión",
+   "cita": "los méritos relativos a la experiencia investigadora y de transferencia y de experiencia docente y de innovación educativa deben tener el mismo peso",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Toma de posesión en 20 días hábiles desde la publicación del nombramiento en el BOE",
+   "cita": "En el plazo máximo de veinte (20) días hábiles, a contar desde el día siguiente al de la publicación del nombramiento",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "el rector efectuará el nombramiento como funcionario o funcionaria docente de carrera"
+  },
+  "plazas_discapacidad": {
+   "motivo": "valor_no_en_cita",
+   "valor": 0,
+   "cita": "reserva del 15 % de plazas para investigadores de excelencia con acreditación I3/R3"
+  },
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Solicitud telemática en la aplicación de inscripción y presentación en la sede electrónica de la Universidad de Vigo (procedimiento SPDI)",
+   "cita": "La solicitud generada a través de la inscripción anterior deberá ser presentada en la sede electrónica de la Universidad de Vigo"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "no",
+   "cita": "Se nombrarán para cada plaza los candidatos propuestos en un número que no exceda del número de plazas convocadas"
+  }
+ }
+}

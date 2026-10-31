@@ -1,0 +1,65 @@
+{
+ "proceso": "boe:BOE-A-2026-9241",
+ "documento": {
+  "id": "bocm:BOCM-20260413-53",
+  "fuente": "BOCM",
+  "url": "https://www.bocm.es/bocm-20260413-53",
+  "fecha": "2026-04-13",
+  "huella": "d395e59dce9aae2eb453d9fd74b450b5c0bc3984a62cec5dee3d4d9aa5ea2f00"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:41:59+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Policía Local"
+   ],
+   "cita": "cinco plazas de Policía Local por concurso oposición libre",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C1",
+   "cita": "Grupo C, Subgrupo C1 con los emolumentos y retribuciones",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "Escala Administración Especial, Subescala Servicios Especiales",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "cinco plazas de Policía Local por concurso oposición libre",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 5,
+   "cita": "para proveer cinco plazas de Policía Local por concurso oposición libre",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Veinte días hábiles contados a partir del siguiente al de la fecha de publicación de anuncio de esta convocatoria en el Boletín Oficial del Estado",
+   "cita": "Veinte días hábiles contados a partir del siguiente al de la fecha de publicación",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de anuncios del Ayuntamiento y página web www.colmenarviejo.com",
+   "cita": "expuestas íntegramente en el tablón de anuncios del Ayuntamiento y en la página web",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 4,
+   "cita": "con reserva de una plaza para militares profesionales de tropa y marinería"
+  },
+  "plazas_promocion_interna": {
+   "motivo": "valor_no_en_cita",
+   "valor": 0,
+   "cita": "con reserva de una plaza para militares profesionales de tropa y marinería"
+  }
+ }
+}

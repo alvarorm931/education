@@ -1,0 +1,50 @@
+{
+ "proceso": "dogc:988643",
+ "documento": {
+  "id": "dogc:988643",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=988643",
+  "fecha": "2024-06-25",
+  "huella": "57dbd893b5f4852d918d8d0a57442f818da263c581a7cd1a6d1e22f88549bf07"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:54:36+00:00",
+ "lote": "msgbatch_01HRnX7cDVMkRZD7mBamCmLu",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "provisió, en propietat, d'una plaça de Tècnic/a mig Serveis a les Persones (funcionari)",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días naturales desde el día siguiente a la última publicación de la convocatoria en el DOGC o BOE",
+   "cita": "El termini de presentació de sol·licituds serà de 20 dies naturals comptats des de l'endemà",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "e-tauler y sede electrónica del Ayuntamiento de Banyoles",
+   "cita": "a l'e-tauler i a la seu electrònica de l'Ajuntament de Banyoles",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Tècnic/a mig Serveis a les Persones",
+    "Tècnic/a mig Serveis Educatius",
+    "Educadors/es Socials",
+    "Treballador/social",
+    "Tècnic/a Programes Socials",
+    "Conserge d'esports"
+   ],
+   "cita": "una plaça de Tècnic/a mig Serveis a les Persones (funcionari); una plaça de Tècnic/a mig Serveis Educatius (funcionari)"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 8,
+   "cita": "una plaça de Tècnic/a mig Serveis a les Persones (funcionari); 2 places d'educadors/es Socials (funcionari)"
+  }
+ }
+}

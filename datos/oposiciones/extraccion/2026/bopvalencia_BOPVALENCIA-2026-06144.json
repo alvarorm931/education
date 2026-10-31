@@ -1,0 +1,55 @@
+{
+ "proceso": "bopvalencia:BOPVALENCIA-2026-06144",
+ "documento": {
+  "id": "bopvalencia:BOPVALENCIA-2026-06144",
+  "fuente": "BOP-VALENCIA",
+  "url": "https://bop.dival.es/bop/downloads?anuncioNumReg=2026/06144&lang=va",
+  "fecha": "2026-05-20",
+  "huella": "f1e91d18a307b328beca13cc3b8868dba7401ce9a3522d6035b79f3b33193e98"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:41:38+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "C2",
+   "cita": "correspondiente al grupo profesional C, subgrupo C2",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "creación de una bolsa de empleo temporal de monitores/as",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "mediante procedimiento de concurso de méritos",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, bolsa de empleo temporal de monitores/as de actividades de tiempo libre",
+   "cita": "para la creación de una bolsa de empleo temporal de monitores/as de actividades de tiempo libre",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "monitores/as de actividades de tiempo libre"
+   ],
+   "cita": "convocatoria de una bolsa de empleo temporal de monitores/as de actividades de tiempo libre"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "10 días hábiles a contar desde el día siguiente a la publicación del extracto informativo en el BOP",
+   "cita": "El plazo de presentación de instancias es de 10 días hábiles a contar desde el día siguiente"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "tablón de anuncios de la sede electrónica del Ayuntamiento de Rafelbunyol",
+   "cita": "El contenido íntegro de las bases se encuentra publicado en el tablón de anuncios de la sede electrónica"
+  }
+ }
+}

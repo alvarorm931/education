@@ -1,0 +1,66 @@
+{
+ "proceso": "dogc:1003775",
+ "documento": {
+  "id": "dogc:1003775",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1003775",
+  "fecha": "2025-01-10",
+  "huella": "66daa7e544c0e7e05922f0a7ced68c646df93b40bdbdd2b11b2e3035708908c8"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:49:43+00:00",
+ "lote": "msgbatch_018TPQE8scQozfAUdc1n8RyC",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "auxiliar administratiu/va",
+    "administratiu/va"
+   ],
+   "cita": "Convocatòria de 2 places d'auxiliar administratiu/va",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C2",
+   "cita": "grup/subgrup C2, mitjançant concurs-oposició (torn lliure)",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "en règim funcionari de carrera, de l'escala d'administració general",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mitjançant concurs-oposició (torn lliure), corresponents a l'Oferta Pública",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 2,
+   "cita": "cobertura de 2 places d'auxiliar administratiu/va a jornada completa",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "BOP de Tarragona, BOE y DOGC",
+   "cita": "La convocatòria i aquestes bases específiques van ser publicades en data 31 d'octubre de 2024 al BOP de Tarragona",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 2,
+   "cita": "mitjançant concurs-oposició (torn lliure), corresponents a l'Oferta Pública"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "20 dies hàbils, a comptar des del dia següent al de la publicació del present anunci al DOGC",
+   "cita": "les persones interessades poden presentar les instàncies de participació en aquest procés selectiu en el termini de 20 dies hàbils"
+  },
+  "practicas_o_curso": {
+   "motivo": "cita_no_literal",
+   "valor": "no consta",
+   "cita": ""
+  }
+ }
+}

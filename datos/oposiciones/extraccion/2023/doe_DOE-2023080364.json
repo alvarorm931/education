@@ -1,0 +1,58 @@
+{
+ "proceso": "doe:DOE-2023080364",
+ "documento": {
+  "id": "doe:DOE-2023080364",
+  "fuente": "DOE",
+  "url": "https://doe.juntaex.es/otrosFormatos/html.php?xml=2023080364&anio=2023&doe=410o",
+  "fecha": "2023-03-01",
+  "huella": "2bb068959469fa0547ed7b362c8081d03aa2b9af74b922f95343ba1511f81b20"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:56:35+00:00",
+ "lote": "msgbatch_0167qWfLXqjGo8Hv43cM3LuM",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "Trabajador/a Social",
+   "cita": "Una plaza de Trabajador/a Social, del SSB de la plantilla de personal laboral fijo",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "Una plaza de Trabajador/a Social, del SSB de la plantilla de personal laboral fijo",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "a cubrir por el sistema de concurso-oposición, en turno libre",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "Una plaza de Trabajador/a Social, del SSB de la plantilla de personal laboral fijo",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles a contar desde el siguiente al de la publicación de esta resolución en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes será de veinte días hábiles a contar desde el siguiente",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia de Cáceres, sede electrónica https://valledeljerte.sedelectronica.es/info.0 y tablón de anuncios de la Corporación",
+   "cita": "se harán públicos en el Boletín Oficial de la Provincia de Cáceres, en la sede electrónica",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "no consta",
+   "cita": ""
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "a cubrir por el sistema de concurso-oposición, en turno libre, de acuerdo con la oferta"
+  }
+ }
+}

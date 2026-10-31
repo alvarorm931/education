@@ -1,0 +1,65 @@
+{
+ "proceso": "bopciudadreal:BOPCIUDADREAL-2025-2353",
+ "documento": {
+  "id": "bopciudadreal:BOPCIUDADREAL-2025-2353",
+  "fuente": "BOP-CIUDADREAL",
+  "url": "https://bop.dipucr.es/bop/2025/07/07",
+  "fecha": "2025-07-07",
+  "huella": "c81cf7da04d8b928a5a022e537476416a3e378b5c737f7bef06fd3e40fbb1c4d"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:45:15+00:00",
+ "lote": "msgbatch_016re6aGcimwSVmdrWa6qBd9",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Administrativo"
+   ],
+   "cita": "Bases que regirán la convocatoria de pruebas selectivas para el acceso a una plaza como personal funcionario interino de Administrativo",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario interino",
+   "cita": "personal funcionario interino de Administrativo mediante el sistema de concurso-oposición libre",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mediante el sistema de concurso-oposición libre",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 24,
+   "cita": "La tasa por derechos de examen queda fijada en la cantidad de 24 euros",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Justificante de pago de la tasa (original o copia compulsada) acompañado a la instancia, mediante transferencia bancaria al IBAN indicado",
+   "cita": "El justificante de pago (original o copia compulsada) deberá acompañarse a la instancia.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "C1",
+   "cita": "Grupo/Subgrupo C1, Escala de Administración General"
+  },
+  "exenciones_tasa": {
+   "motivo": "cita_no_literal",
+   "valor": "Personas inscritas como demandantes de empleo durante al menos un mes anterior a la fecha del anuncio de la convocatoria; personas con discapacidad igual o superior al 33%, debidamente acreditada mediante certificado oficial.",
+   "cita": "b) Personas con discapacidad igual o superior al 33%, debidamente acreditada mediante certificado oficial."
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "Concesión de un plazo de 10 días hábiles desde la publicación del decreto de subsanación para presentar justificante del pago o acreditar la exención",
+   "cita": "Concesión de un plazo de 10 días hábiles desde su publicación para que los aspirantes presenten justificante del pago"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "BOP de Ciudad Real, tablón de edictos y web municipal",
+   "cita": "Publicación del decreto de subsanación en el BOP de Ciudad Real, tablón de edictos y web municipal."
+  }
+ }
+}

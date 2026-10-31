@@ -1,0 +1,62 @@
+{
+ "proceso": "bopourense:BOPOURENSE-340740",
+ "documento": {
+  "id": "bopourense:BOPOURENSE-340740",
+  "fuente": "BOP-OURENSE",
+  "url": null,
+  "fecha": "2024-06-10",
+  "huella": "4d66329ee3f31eef39baa899b3754c02a10674d4744f1d1ee0801398599caba3"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:54:21+00:00",
+ "lote": "msgbatch_01HRnX7cDVMkRZD7mBamCmLu",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "jefe/a de brigada",
+    "peón/a conductor/a",
+    "peón/a de brigada"
+   ],
+   "cita": "1 jefe/a de brigada, 1 peón/a conductor/a y 3 peones/as de brigada para la formación",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "contratación laboral temporal de personal para formar una brigada de prevención",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "Sistema de selección: concurso de méritos.",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "En el Registro del Ayuntamiento de Entrimo o por cualquiera de los medios admitidos en derecho.",
+   "cita": "en el Registro del Ayuntamiento de Entrimo o por cualquiera de los medios admitidos en derecho",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de anuncios del Ayuntamiento y sede electrónica municipal (http://entrimo.sedelectronica.es)",
+   "cita": "publicado en el tablón de anuncios del Ayuntamiento y en la sede electrónica municipal",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 5,
+   "cita": "1 jefe/a de brigada, 1 peón/a conductor/a y 3 peones/as de brigada"
+  },
+  "tasa_euros": {
+   "motivo": "cita_no_literal",
+   "valor": 0,
+   "cita": ""
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "5 días hábiles, que contarán desde el siguiente a la publicación de este anuncio en el BOP",
+   "cita": ""
+  }
+ }
+}

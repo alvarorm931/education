@@ -1,0 +1,58 @@
+{
+ "proceso": "boplaspalmas:BOPLASPALMAS-2026-04-17-012",
+ "documento": {
+  "id": "boplaspalmas:BOPLASPALMAS-2026-04-17-012",
+  "fuente": "BOP-LASPALMAS",
+  "url": null,
+  "fecha": "2026-04-17",
+  "huella": "12270aecf35360b2502c6f501b9759d631c17f4dbe79a31ca4ba789069f5d485"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:40:25+00:00",
+ "lote": "msgbatch_01E3wiYcGL8Lzho48bXWLyyb",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "ARQUITECTO TÉCNICO",
+   "cita": "DOS (2) PLAZAS DE ARQUITECTO TÉCNICO, GRUPO A, SUBGRUPO A2",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "A2",
+   "cita": "DOS (2) PLAZAS DE ARQUITECTO TÉCNICO, GRUPO A, SUBGRUPO A2",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "MEDIANTE EL SISTEMA DE CONCURSO OPOSICIÓN Y CON EL CARÁCTER",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 2,
+   "cita": "DOS (2) PLAZAS DE ARQUITECTO TÉCNICO, GRUPO A, SUBGRUPO A2",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles desde la publicación del acuerdo en el Boletín Oficial del Estado",
+   "cita": "estableciendo un plazo de VEINTE DÍAS HÁBILES para presentar las solicitudes que se estimen pertinentes desde la publicación",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de Anuncios del Ayuntamiento de La Oliva (sede electrónica)",
+   "cita": "El texto estará disponible para su consulta en el Tablón de Anuncios del Ayuntamiento de La Oliva",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "CON EL CARÁCTER DE FUNCIONARIO/A DE CARRERA DEL ILUSTRE AYUNTAMIENTO DE LA OLIVA"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 2,
+   "cita": "CUBRIR, POR EL TURNO LIBRE, MEDIANTE EL SISTEMA DE CONCURSO OPOSICIÓN"
+  }
+ }
+}

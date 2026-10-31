@@ -1,0 +1,52 @@
+{
+ "proceso": "boib:BOIB-2024-691868",
+ "documento": {
+  "id": "boib:BOIB-2024-691868",
+  "fuente": "BOIB",
+  "url": "https://www.caib.es/eboibfront/es/2024/11991/691868/resolucion-de-3-de-octubre-de-2024-de-la-universid",
+  "fecha": "2024-10-10",
+  "huella": "7ccb6ed5c79d5e71336f5f1f84a36cd3ac612aca038a00367f8aa9b8a6e3b22f"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:50:10+00:00",
+ "lote": "msgbatch_01LpyYajgKGX9NyHT1uvynbR",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Profesor Titular de Universidad (Derecho Constitucional)",
+    "Profesor Titular de Universidad (Lógica y Filosofía de la Ciencia)",
+    "Profesor Titular de Universidad (Filosofía)"
+   ],
+   "cita": "Cuerpo al que pertenece: Profesor Titular de Universidad.",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "la convocatoria a concurso de acceso en el Boletín Oficial del Estado de las plazas de los cuerpos de funcionarios docentes universitarios",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "comunica la convocatoria a concurso de acceso en el Boletín Oficial del Estado",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "diez días",
+   "cita": "El plazo de presentación de solicitudes será de diez días a partir del siguiente al de la publicación de esta convocatoria en el Boletín Oficial del Estado.",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Las bases íntegras de la convocatoria aparecerán publicadas en el Boletín Oficial del Estado.",
+   "cita": "Las bases íntegras de la convocatoria aparecerán publicadas en el Boletín Oficial del Estado.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 3,
+   "cita": "una plaza exenta de publicación de tasa de reposición y dos plazas correspondientes a la Oferta de Empleo Público"
+  }
+ }
+}

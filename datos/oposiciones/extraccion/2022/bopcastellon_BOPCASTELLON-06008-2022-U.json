@@ -1,0 +1,124 @@
+{
+ "proceso": "bopcastellon:BOPCASTELLON-06008-2022-U",
+ "documento": {
+  "id": "bopcastellon:BOPCASTELLON-06008-2022-U",
+  "fuente": "BOP-CASTELLON",
+  "url": null,
+  "fecha": "2022-12-24",
+  "huella": "a9fe75d76938c38009d5917f4bd066a3d17a18ec56638a8654a05f14fdef22af"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:55:57+00:00",
+ "lote": "msgbatch_014eT3dLLVopBnuVgQ4syWD9",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "Personal funcionario de carrera LF Personal laboral fijo PO Personal oficios",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "Libre-Concurso oposición TEMARIO DE LA FASE OPOSICIÓN",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Varía según la plaza: Grado universitario, Grado en ESO/EGB/graduado escolar, Título de bachiller o técnico, entre otras",
+   "cita": "Grado universitario, licenciatura, ingeniería o arquitectura",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de anuncios electrónico de la página Web del Ayuntamiento, BOP, DOGV y BOE",
+   "cita": "Publicar el texto íntegro de la presente resolución en el tablón de anuncios electrónico de la página Web del Ayuntamiento de Vila-real",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Fase de concurso (méritos)",
+    "Fase de oposición con temario de 30 temas (plazas de técnico/a Administración General, TSAE especialista menores, TMAE trabajador/a social)",
+    "Fase de oposición con temario de 10 temas (operario/a Educación)"
+   ],
+   "cita": "Tema 1. El derecho fundamental a la protección de datos",
+   "nivel": "literal"
+  },
+  "temas": {
+   "valor": 30,
+   "cita": "Tema 30. Prevención de riesgos en materia laboral y vigilancia de la salud",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Técnico/a Administración General",
+    "Técnico/a Superior Administración Especial arquitecto/a general",
+    "Técnico/a Superior Administración Especial especialista menores",
+    "Técnico/a de gestión Administración General",
+    "Agente de empleo y desarrollo local",
+    "Técnico/a Medio Administración Especial educador/a social",
+    "Técnico/a Medio Administración Especial ingeniero/a técn industrial",
+    "Técnico/a Medio Administración Especial trabajador/a social",
+    "Técnico/a Auxiliar Administración Especial animador/a",
+    "Técnico/a Auxiliar Administración Especial Relaciones Institucionales",
+    "Técnico/a Auxiliar Administración Especial de Promoción Económica",
+    "Técnico/a Auxiliar Administración Especial de Deportes",
+    "Auxiliar Administración General",
+    "Oficial PO Servicios Sociales",
+    "Oficial PO encargado/a Telecom",
+    "Oficial PO Cultura",
+    "Oficial PO Festejos",
+    "Encargado/a Mercados",
+    "Socorrista PCE",
+    "Monitor/a PCE Deportes",
+    "Auxiliar AE Bibliotecas",
+    "Auxiliar AE Catastro",
+    "Subalterno/a ordenanza",
+    "Ayudante PO Protección Civil",
+    "Ayudante PO socorrista",
+    "Operario/a PO Servicios Públicos",
+    "Operario/a PO Contratación-Gobernación",
+    "Operario/a PO Mercados",
+    "Operario/a PO Juventud",
+    "Operario/a PO Educación",
+    "Operario/a PO Deportes",
+    "Operario/a PO Cultura",
+    "Operario/a PO Cementerio",
+    "Operario/a Servicio Limpieza",
+    "Técnico/a Medio Administración General TMAE de Bibliotecas",
+    "Oficial jefe/a turno",
+    "Administrativo/a Administración General",
+    "Técnico/a Auxiliar Administración Especial TAAE de Catastro",
+    "Técnico/a Auxiliar Administración Especial TAAE gestor/a cultural",
+    "Técnico/a Auxiliar Administración Especial TAAE espacios culturales",
+    "Técnico/a Auxiliar Administración Especial TAAE de Bibliotecas",
+    "Oficial PO encargado/a Vía Pública",
+    "Oficial PO Servicios Públicos",
+    "Oficial PO Parques-Jardines",
+    "Oficial PO Ermitorio",
+    "Encargado/a Serv Limpieza DM",
+    "Ayudante PO Servicios Públicos",
+    "Ayudante PO Deportes",
+    "Operario/a Educación"
+   ],
+   "cita": "Plazas de Técnico/a Administración General, Técnico/a Superior, Técnico/a Medio, Auxiliar, Operario/a y otras categorías convocadas"
+  },
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "A1",
+    "A2",
+    "B",
+    "C1",
+    "C2",
+    "AP"
+   ],
+   "cita": "ejercicio: Grupo de titulación A1, A2, B, C1, C2 y AP"
+  },
+  "otros_requisitos": {
+   "motivo": "cita_no_literal",
+   "valor": "Ser personal funcionario de carrera del Ayuntamiento para promoción interna; colegiación en algunas plazas; título de socorrista, monitor o permiso de conducción B según plaza",
+   "cita": "Estar colegiado en virtud del art. 3 de la L.10/1982, de 13 de abril, de creación de los Colegios Oficiales de Asistentes Sociales"
+  }
+ }
+}

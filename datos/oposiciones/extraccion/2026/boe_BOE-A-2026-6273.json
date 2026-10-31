@@ -1,0 +1,70 @@
+{
+ "proceso": "boe:BOE-A-2026-6273",
+ "documento": {
+  "id": "dogc:1038989",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1038989",
+  "fecha": "2026-03-10",
+  "huella": "204d295d895d4ef88b866f72a0bdf0da267b6b8dbfc048ab24db9847a0593de5"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:40:33+00:00",
+ "lote": "msgbatch_01E3wiYcGL8Lzho48bXWLyyb",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "auxiliar administratiu/iva"
+   ],
+   "cita": "places d'auxiliar administratiu/iva, funcionari/a de carrera, Grup C",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C2",
+   "cita": "Grup C, Subgrup C2 (Escala d'Administració General, subescala auxiliar)",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "funcionari/a de carrera, Grup C, Subgrup C2",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "sistema de selecció concurs oposició, torn lliure",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 7,
+   "cita": "per a la provisió de 7 places d'auxiliar administratiu/iva",
+   "nivel": "literal"
+  },
+  "plazas_discapacidad": {
+   "valor": 1,
+   "cita": "Una de la places (codi AG17) està destinada al torn de reserva per a persones amb discapacitat",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles desde el día siguiente a la publicación del extracto en el DOGC o en el BOE",
+   "cita": "El termini per a la presentació de sol·licituds és de 20 dies hàbils a comptar des de l'endemà de la publicació",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Preferentment de forma electrònica a través de la seu de l'ens o presencialment al Registre General de l'Ajuntament de Montblanc (Plaça Major, 1) de 9:00h a 14:00h.",
+   "cita": "Les instàncies s'han de presentar preferentment de forma electrònica a través de la seu de l'ens o presencialment al Registre General",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Seu electrònica i Portal de Transparència de l'Ajuntament de Montblanc (www.montblanc.cat), y BOPT",
+   "cita": "a la Seu electrònica i al Portal de Transparència de l'Ajuntament de Montblanc ( www.montblanc.cat )",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 6,
+   "cita": "Una de la places (codi AG17) està destinada al torn de reserva per a persones amb discapacitat"
+  }
+ }
+}

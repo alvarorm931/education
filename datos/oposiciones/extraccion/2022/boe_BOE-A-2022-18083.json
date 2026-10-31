@@ -1,0 +1,72 @@
+{
+ "proceso": "boe:BOE-A-2022-18083",
+ "documento": {
+  "id": "boe:BOE-A-2022-18083",
+  "fuente": "BOE",
+  "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2022-18083",
+  "fecha": "2022-11-03",
+  "huella": "de6987ea1c280e6f32b109749f84083306cd8b70d315fc63da9bc79fc6ab79c7"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:07+00:00",
+ "lote": "msgbatch_01B4ETF5xB4buYCHqPiHTXzF",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "C2",
+   "cita": "Escala Auxiliar Administrativa (Subgrupo C2). 30 plazas.",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "convocatoria de procesos selectivos por el sistema general de acceso libre, por concurso de méritos",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "convocatoria de procesos selectivos por el sistema general de acceso libre, por concurso de méritos",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días naturales contados a partir del día siguiente al de la publicación del anuncio de las convocatorias en el Boletín Oficial Electrónico de la Universidad Carlos III de Madrid",
+   "cita": "El plazo para acceder a la aplicación habilitada al efecto y formular la solicitud será de veinte días naturales contados a partir del día siguiente",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "telemáticamente a través del enlace que se habilitará en la página web de la Universidad Carlos III de Madrid",
+   "cita": "Quienes deseen tomar parte en los concursos deberán presentar su solicitud telemáticamente a través del enlace que se habilitará",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "página web de la Universidad Carlos III de Madrid (https://www.uc3m.es/empleo/pas) y Boletín Oficial Electrónico de la Universidad Carlos III de Madrid",
+   "cita": "Las bases de las convocatorias se publicarán en la página web de esta Universidad",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Escala Auxiliar Administrativa (Subgrupo C2)",
+    "Escala de Gestión de Sistemas e Informática (Subgrupo A2)",
+    "Escala de Técnico Auxiliar de Informática (Subgrupo C1)",
+    "Escala de Gestión de Archivos y Bibliotecas (Subgrupo A2)",
+    "Escala de Técnico Auxiliar de Biblioteca (Subgrupo C1)",
+    "Escala Técnica Facultativa Superior A1 (Laboratorios)",
+    "Escala Técnica Facultativa de Grado Medio A2 (Mantenimiento y Obras)",
+    "Escala Técnica Facultativa de Grado Medio A2 (Prevención)"
+   ],
+   "cita": "se convocan procesos selectivos por el sistema general de acceso libre, por concurso de méritos"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 42,
+   "cita": "Escala Auxiliar Administrativa (Subgrupo C2). 30 plazas."
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 42,
+   "cita": "convocatoria de procesos selectivos por el sistema general de acceso libre, por concurso de méritos"
+  }
+ }
+}

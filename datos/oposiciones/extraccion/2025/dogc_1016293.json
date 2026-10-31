@@ -1,0 +1,53 @@
+{
+ "proceso": "dogc:1016293",
+ "documento": {
+  "id": "dogc:1016293",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1016293",
+  "fecha": "2025-06-10",
+  "huella": "ad761492e33f55df4a6882aff07ca0efadfa426a7a3b776343d41c4e5ead4960"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:45:05+00:00",
+ "lote": "msgbatch_016re6aGcimwSVmdrWa6qBd9",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "oficial/a",
+   "cita": "s'aproven les bases reguladores i es convoca el procés de selecció d'una plaça d'oficial/a",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "es convoca el procés de selecció d'una plaça d'oficial/a",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "es convoca el procés de selecció d'una plaça d'oficial/a",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles desde el día siguiente a la publicación del anuncio de convocatoria en el DOGC",
+   "cita": "El termini de presentació d'instàncies serà de 20 dies hàbils comptats des de l'endemà",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "sede electrónica",
+   "cita": "Els successius anuncis relacionats amb aquest procés es publicaran a la seu electrònica.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "una plaça d'oficial/a, personal funcionari de carrera, vinculada inicialment al lloc"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "inclosa a l'oferta pública d'ocupació de l'any 2023 en torn lliure"
+  }
+ }
+}

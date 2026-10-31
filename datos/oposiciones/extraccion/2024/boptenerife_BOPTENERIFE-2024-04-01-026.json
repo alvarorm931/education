@@ -1,0 +1,96 @@
+{
+ "proceso": "boptenerife:BOPTENERIFE-2024-04-01-026",
+ "documento": {
+  "id": "boptenerife:BOPTENERIFE-2024-04-01-026",
+  "fuente": "BOP-TENERIFE",
+  "url": "http://www.bopsantacruzdetenerife.es/bopsc2/sumario.php?codigopub=1&fecha_mas_reciente=2024-04-01",
+  "fecha": "2024-04-01",
+  "huella": "221cc6af9b0ef49f27fad06a4babd04c846b3f27e8e0fafe9b6356becbf9d5d5"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:53:46+00:00",
+ "lote": "msgbatch_01EQ4R6PVKpEwTXzXwPCmspm",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Policía Local (Escala de Administración Especial, Subescala de Servicios Especiales, Clase Policía Local, Escala Básica)"
+   ],
+   "cita": "PROVISIÓN EN PROPIEDAD DE VEINTE (20) PLAZAS DE POLICÍA LOCAL VACANTES PERTENECIENTES A LA ESCALA DE ADMINISTRACIÓN ESPECIAL",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C1",
+   "cita": "Subgrupo C1, por el sistema de oposición, turno libre.",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "por el sistema de oposición, turno libre",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 20,
+   "cita": "PROVISIÓN EN PROPIEDAD DE VEINTE (20) PLAZAS DE POLICÍA LOCAL VACANTES",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Bachiller, Formación Profesional de 2º Grado, o equivalente",
+   "cita": "Estar en posesión del título de Bachiller, Formación Profesional de 2º Grado, o equivalente.",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia y Tablón de Anuncios del Ayuntamiento",
+   "cita": "se publicará en el Boletín Oficial de la Provincia y en el Tablón de Anuncios del Ayuntamiento",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Aptitud Física",
+    "Psicotécnica",
+    "Conocimientos",
+    "Idiomas",
+    "Reconocimiento médico"
+   ],
+   "cita": "la fase de oposición constará de las siguientes pruebas y se desarrollarán con el orden que se establece",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "no",
+   "cita": "Los aspirantes que hayan superado el correspondiente proceso selectivo",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Curso selectivo impartido por la entidad competente de Canarias y período de prácticas de 1.200 horas de servicio efectivo en el Ayuntamiento",
+   "cita": "Será necesaria la realización de un período de prácticas de 1.200 horas de servicio efectivo prestado en el Ayuntamiento correspondiente",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "Los aspirantes que hayan superado el correspondiente proceso selectivo, una vez cumplidos los requisitos formales, serán nombrados funcionarios en prácticas"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 20,
+   "cita": "por el sistema de oposición, turno libre"
+  },
+  "otros_requisitos": {
+   "motivo": "cita_no_literal",
+   "valor": "Nacionalidad española; mayor de edad y no exceder la edad para segunda actividad; carné de conducir B y A2 (o capacidad de obtenerlo antes de la toma de posesión); sin antecedentes penales; no inhabilitado para la función pública; estatura mínima 1,65 m hombres y 1,52 m mujeres; índice de corpulencia máximo 28.",
+   "cita": "Tener la nacionalidad española. Ser mayor de edad y no exceder de la edad establecida para el pase a la situación de segunda actividad"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "veinte días hábiles a partir del siguiente al de publicación de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "deberán presentarse en plazo de VEINTE DÍAS HÁBILES a partir del siguiente al de publicación de la convocatoria respectiva en el Boletín Oficial del Estado."
+  },
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Registro Electrónico General del Ayuntamiento o lugares del artículo 16.4 de la Ley 39/2015, dirigidas al Sr. Concejal del área de Buen Gobierno",
+   "cita": "se presentarán en el Registro Electrónico General de este Ayuntamiento o en alguno de los lugares previstos en el artículo 16.4"
+  }
+ }
+}

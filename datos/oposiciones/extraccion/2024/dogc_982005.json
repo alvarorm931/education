@@ -1,0 +1,60 @@
+{
+ "proceso": "dogc:982005",
+ "documento": {
+  "id": "dogc:982005",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=982005",
+  "fecha": "2024-03-28",
+  "huella": "c681815a16b940dd58fa0566a2d156ee1564035e02a284ba5c8279b1cb31224b"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:54:03+00:00",
+ "lote": "msgbatch_01EQ4R6PVKpEwTXzXwPCmspm",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "A1",
+   "cita": "corresponent al grup A1-22, a cobrir pel sistema de concurs-oposició",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "personal funcionari de carrera (Escala d'Administració Especial, Subescala Tècnica)",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "a cobrir pel sistema de concurs-oposició, en torn lliure",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte (20) días naturales desde el día siguiente a la última de las publicaciones del extracto de la convocatoria en el DOGC y en el BOE",
+   "cita": "El termini de presentació de sol·licituds serà de vint (20) dies naturals comptats des de l'endemà de la darrera",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Los sucesivos anuncios de esta convocatoria se harán públicos en la forma prevista en las propias bases, cuando proceda",
+   "cita": "Els successius anuncis referents a aquesta convocatòria, quan sigui procedent de conformitat amb les bases, es faran públics",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Tècnic/a d'administració general"
+   ],
+   "cita": "per proveir dues places de tècnic/a d'administració general; personal funcionari de carrera"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 2,
+   "cita": "per proveir dues places de tècnic/a d'administració general"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 2,
+   "cita": "a cobrir pel sistema de concurs-oposició, en torn lliure"
+  }
+ }
+}

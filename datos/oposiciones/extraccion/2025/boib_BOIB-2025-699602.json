@@ -1,0 +1,35 @@
+{
+ "proceso": "boib:BOIB-2025-699602",
+ "documento": {
+  "id": "boib:BOIB-2025-699602",
+  "fuente": "BOIB",
+  "url": "https://www.caib.es/eboibfront/es/2025/12083/699602/constitucion-de-la-bolsa-de-trabajo-correspondient",
+  "fecha": "2025-04-19",
+  "huella": "6df8fac81139b5f59e5fb39dac11fb8782f51be4a0046df0b503af68424554d4"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:45:52+00:00",
+ "lote": "msgbatch_017vJZdAmjTkBDdH14aLEdCv",
+ "no_son_bases": false,
+ "campos": {
+  "publicaciones": {
+   "valor": "BOIB, tablón de anuncios y portal de transparencia de la sede electrónica del Ayuntamiento de Andratx",
+   "cita": "Publicar la presente resolución en el Boletín Oficial de las Islas Baleares (BOIB), tablón de anuncios",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, bolsa de trabajo para el proceso selectivo de Administrativos",
+   "cita": "Constituir la bolsa de trabajo correspondiente al proceso selectivo de Administrativos",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Administrativos"
+   ],
+   "cita": "la constitución de la bolsa de trabajo correspondiente al proceso selectivo de Administrativos"
+  }
+ }
+}

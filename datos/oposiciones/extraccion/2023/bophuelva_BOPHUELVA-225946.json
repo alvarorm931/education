@@ -1,0 +1,46 @@
+{
+ "proceso": "bophuelva:BOPHUELVA-225946",
+ "documento": {
+  "id": "bophuelva:BOPHUELVA-225946",
+  "fuente": "BOP-HUELVA",
+  "url": "https://s2.diphuelva.es/portalweb/bope/anuncios/Anuncio_225946_BOP-219_2023.pdf",
+  "fecha": "2023-11-17",
+  "huella": "5886a02b57f401e2591f492d840139fafeeba87bef2263225eaf9ce902c5655c"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:46+00:00",
+ "lote": "msgbatch_01SjfjDqJRwL6bpTvJz2YfVg",
+ "no_son_bases": false,
+ "campos": {
+  "bolsa": {
+   "valor": "sí, bolsa de trabajo para conductor y peón de limpieza viaria",
+   "cita": "para llevar a cabo proceso de selección para la creación de una bolsa de trabajo",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Conductor limpieza viaria",
+    "Peón limpieza viaria"
+   ],
+   "cita": "proceso de selección para la creación de una bolsa de trabajo de conductor limpieza viaria y peón limpieza viaria"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso",
+   "cita": "mediante sistema de concurso, aprobadas por Acuerdo de la Junta de Gobierno Local"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "Diez días hábiles, contados a partir del día siguiente al de la publicación del anuncio de la convocatoria en el BOP de Huelva",
+   "cita": "El plazo de presentación de solicitudes será de diez días hábiles, contados a partir del día siguiente"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Tablón de anuncios del Ayuntamiento (http://gibraleonsedelectronica.es)",
+   "cita": "están publicadas íntegramente las bases que han de regir la convocatoria"
+  }
+ }
+}

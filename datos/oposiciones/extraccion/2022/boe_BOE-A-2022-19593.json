@@ -1,0 +1,65 @@
+{
+ "proceso": "boe:BOE-A-2022-19593",
+ "documento": {
+  "id": "boe:BOE-A-2022-19593",
+  "fuente": "BOE",
+  "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2022-19593",
+  "fecha": "2022-11-25",
+  "huella": "b362422e6360355d211b5c775b20cbe3a17732111298f6d720a3f44f44ead5f5"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:29+00:00",
+ "lote": "msgbatch_01B4ETF5xB4buYCHqPiHTXzF",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "A1, A2, B1, B2, C1, C2 y C3 (niveles salariales)",
+   "cita": "grupos y niveles salariales A1, A2, B1, B2, C1, C2 y C3",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "ocupadas de forma temporal con anterioridad al 1 de enero de 2016",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "mediante concurso libre de méritos",
+   "nivel": "literal"
+  },
+  "plazas_turno_libre": {
+   "valor": 189,
+   "cita": "mediante concurso libre de méritos (Convocatoria excepcional de estabilización de empleo temporal de larga duración), 189 plazas",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días naturales contados a partir del día 1 de diciembre de 2022",
+   "cita": "Las solicitudes se presentarán en el plazo de veinte días naturales contados a partir del día 1 de diciembre de 2022",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Se dirigirán al Rector Magnífico de la Universidad Complutense de Madrid, en la forma y lugar que determinen las bases de la convocatoria",
+   "cita": "se dirigirán al Rector Magnífico de la Universidad Complutense de Madrid, en la forma y lugar que determinen las bases de la convocatoria",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Universidad Complutense y página web (www.ucm.es)",
+   "cita": "Las bases de la convocatoria se publicarán en el Boletín Oficial de la Universidad Complutense, así como en su página web (www.ucm.es)",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Plazas de grupos y niveles salariales A1, A2, B1, B2, C1, C2 y C3 (personal laboral, Convocatoria excepcional de estabilización de empleo temporal de larga duración)"
+   ],
+   "cita": "convocar proceso selectivo, mediante concurso libre de méritos (Convocatoria excepcional de estabilización de empleo temporal de larga duración)"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 189,
+   "cita": "convocar proceso selectivo, mediante concurso libre de méritos (Convocatoria excepcional de estabilización de empleo temporal de larga duración), 189 plazas ocupadas"
+  }
+ }
+}

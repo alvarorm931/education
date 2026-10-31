@@ -1,0 +1,69 @@
+{
+ "proceso": "boe:BOE-A-2022-20425",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2022-8710",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2022/11/21_221/2022_008710.pdf",
+  "fecha": "2022-11-21",
+  "huella": "012ce083a6d725d7fd104d7f78c45dfe67fb4fd17dcf43611ee81c84c3cbe551"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:23+00:00",
+ "lote": "msgbatch_01B4ETF5xB4buYCHqPiHTXzF",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Conserje de Edificio Público",
+    "Auxiliar de Administración General",
+    "Ingeniero Técnico de obras Públicas",
+    "Arquitecto - Ingeniero CCPP",
+    "Celador obras y servicios"
+   ],
+   "cita": "Conserje de Edificio Público Concurso C/C2 Escala Administración General/Subescala Auxiliar",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C2",
+   "cita": "Conserje de Edificio Público Concurso C/C2 Escala Administración General/Subescala Auxiliar",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "mediante el sistema de concurso, vacantes en la plantilla de este Ayuntamiento",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles, a contar desde el siguiente al de la publicación del extracto de las bases y convocatoria en el BOE",
+   "cita": "El plazo de presentación de instancias será de 20 días hábiles , a contar desde el siguiente al de la publicación del extracto",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Íntegra de las bases en el tablón de anuncios electrónico y en la página web municipal www.elcampello.es; extracto en el BOP",
+   "cita": "La publicación íntegra de las bases se realizará en el tablón de anuncios electrónico y en la página web municipal",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "no",
+   "cita": "Aprobar la convocatoria de las siguientes plazas",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "funcionario de carrera, derivadas del proceso de estabilización DA 6ª y 8ª Ley 20/2021"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 4,
+   "cita": "Segundo: Aprobar la convocatoria de las siguientes plazas: Grupo Clasificación Escala/Subescala Número de vacantes"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 4,
+   "cita": "Segundo: Aprobar la convocatoria de las siguientes plazas: Grupo Clasificación Escala/Subescala Número de vacantes"
+  }
+ }
+}

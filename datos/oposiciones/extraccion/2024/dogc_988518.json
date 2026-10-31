@@ -1,0 +1,53 @@
+{
+ "proceso": "dogc:988518",
+ "documento": {
+  "id": "dogc:988518",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=988518",
+  "fecha": "2024-06-20",
+  "huella": "8e4bde1d2e77da9e23f83e0b5d0566fd26569686526ac1b752542a3623dc96f6"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:54:38+00:00",
+ "lote": "msgbatch_01HRnX7cDVMkRZD7mBamCmLu",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "plazas vacantes de la plantilla de personal funcionario y laboral",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "por procedimiento excepcional de concurso de méritos, en turno libre",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 3,
+   "cita": "aprobar las bases y la convocatoria de 3 plazas vacantes de la plantilla",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles a contar desde el día siguiente de la fecha de publicación del presente anuncio",
+   "cita": "presentarse en el plazo de 20 días hábiles a contar desde el día siguiente de la fecha de publicación",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "BOPB, página web municipal y tablón de edictos electrónico de la Corporación; convocatoria también en el BOE",
+   "cita": "en la página web municipal y en el tablón de edictos electrónico de la Corporación",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 3,
+   "cita": "por procedimiento excepcional de concurso de méritos, en turno libre"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "no",
+   "cita": ""
+  }
+ }
+}

@@ -1,0 +1,65 @@
+{
+ "proceso": "boe:BOE-A-2025-20127",
+ "documento": {
+  "id": "dogv:449004",
+  "fuente": "DOGV",
+  "url": "https://dogv.gva.es/datos/2025/09/29/pdf/2025_40717_es.pdf",
+  "fecha": "2025-09-29",
+  "huella": "cfda7d724a9c7174bb690cc2ac7892b36b8ae263b23ac72b48e07e4ceda0f526"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:43:15+00:00",
+ "lote": "msgbatch_01XofVwxKEhyEjSzGog6wsD4",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Auxiliar Administrativo/a"
+   ],
+   "cita": "proveer diecisiete (17) plazas de Auxiliar Administrativo/a, dos (2) de las mismas tienen cupo de reserva por discapacidad",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C2",
+   "cita": "grupo C, subgrupo C2, vacantes en la plantilla de funcionarios del Ayuntamiento de Benicarló",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "vacantes en la plantilla de funcionarios del Ayuntamiento de Benicarló, por turno libre y sistema oposición",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "por turno libre y sistema oposición, en ejecución de las ofertas públicas de empleo",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 17,
+   "cita": "proveer diecisiete (17) plazas de Auxiliar Administrativo/a, dos (2) de las mismas tienen cupo de reserva",
+   "nivel": "literal"
+  },
+  "plazas_discapacidad": {
+   "valor": 2,
+   "cita": "dos (2) de las mismas tienen cupo de reserva por discapacidad",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles a contar a partir del siguiente al de la publicación del extracto de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes será de veinte días hábiles a contar a partir del siguiente al de la publicación del extracto",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia de Castellón, tablón de anuncios de la sede electrónica del Ayuntamiento de Benicarló y página web municipal (www.ajuntamentdebenicarlo.org, a efectos meramente informativos)",
+   "cita": "se publicarán en el Boletín Oficial de la Provincia de Castellón, en el tablón de anuncios de la sede electrónica",
+   "nivel": "sin_signos"
+  }
+ },
+ "rechazados": {
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 17,
+   "cita": "por turno libre y sistema oposición, en ejecución de las ofertas públicas de empleo"
+  }
+ }
+}

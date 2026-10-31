@@ -1,52 +1,115 @@
 {
  "proceso": "boe:BOE-A-2026-19244",
  "documento": {
-  "id": "dogv:487408",
-  "fuente": "DOGV",
-  "url": "https://dogv.gva.es/datos/2026/08/21/pdf/2026_26081_es.pdf",
-  "fecha": "2026-08-21",
-  "huella": "c003c789f1bf7c748adcbc86c298362400cb6e5e86214341beaf0247fdfcca16"
+  "id": "bopvalencia:BOPVALENCIA-2026-09432",
+  "fuente": "BOP-VALENCIA",
+  "url": "https://bop.dival.es/bop/downloads?anuncioNumReg=2026/09432&lang=va",
+  "fecha": "2026-07-30",
+  "huella": "0c6d85fb4c88ac47e68595a5ff06ee78413cc79912a7c0da048f5efd979b6a66"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T07:40:02+00:00",
- "lote": "msgbatch_013q7o24qMms8ZNZdwMNkW1L",
+ "extraido": "2026-10-31T14:41:41+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
  "no_son_bases": false,
  "campos": {
-  "denominacion": {
-   "valor": "oficial u oficiala de brigada de medio ambiente/agricultura",
-   "cita": "una plaza de oficial u oficiala de brigada de medio ambiente/agricultura, subgrupo C2",
-   "nivel": "literal"
-  },
-  "grupo": {
-   "valor": "C2",
-   "cita": "una plaza de oficial u oficiala de brigada de medio ambiente/agricultura, subgrupo C2",
-   "nivel": "literal"
-  },
-  "vinculo": {
-   "valor": "personal laboral fijo",
-   "cita": "naturaleza laboral fijo/fija",
-   "nivel": "literal"
-  },
   "sistema": {
    "valor": "concurso-oposición",
-   "cita": "por sistema de concurso-oposición libre, naturaleza laboral fijo/fija",
+   "cita": "La provisió s'efectua davall el sistema de concurs-oposició lliure.",
    "nivel": "literal"
   },
   "plazas_total": {
    "valor": 1,
-   "cita": "para la selección en propiedad de una plaza de oficial u oficiala",
+   "cita": "per a la selecció d'una plaça d'Oficial de Brigada de Medi Ambient/Agricultura",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Graduado en ESO, ciclo formativo de Grado Medio o equivalente, o en condiciones de obtenerlo",
+   "cita": "Estar en possessió del títol de graduat en ESO, cicle formatiu de Grau Mitjà o equivalent",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 25,
+   "cita": "els drets d’examen seran de 25,00 €",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Personas en situación de desempleo que no reciban prestación económica ni subsidio, acreditándolo con certificado del SEPE y vida laboral de máximo un mes de antigüedad",
+   "cita": "No estaran subjectes a la taxa aquelles persones que es troben en situació d’atur i que, a més, no reben cap prestació",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "diez días hábiles contados a partir del día siguiente a la publicación de este anuncio en el Boletín Oficial del Estado",
-   "cita": "El plazo de presentación de solicitudes será de diez días hábiles contados a partir del día siguiente",
+   "valor": "Diez días hábiles siguientes al de la publicación de la convocatoria en el BOE",
+   "cita": "El termini serà de DEU DIES HÀBILS següents al de la publicació de la convocatòria en el Butlletí Oficial de l’Estat",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Registro electrónico del Ayuntamiento de Alzira con firma electrónica (ACCV, FNMT o DNIe), con modelo de solicitud, autobaremación y justificante de tasa",
+   "cita": "Per a poder participar en el procés selectiu les persones interessades hauran de presentar per registre electrònic",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Boletín Oficial de la Provincia de Valencia (cuando proceda) y en la web municipal www.alzira.es, apartado «Empleo público y recursos humanos»",
-   "cita": "se publicarán únicamente en el Boletín Oficial de la Provincia de Valencia (cuando proceda) y en la web municipal",
+   "valor": "Sede electrónica municipal, web municipal (alzira.es) y extracto en DOGV y BOE; listas en la sede electrónica",
+   "cita": "Publique's íntegrament a la seu electrònica municipal i en el Butlletí Oficial de la Província",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Primer ejercicio: prueba teórica tipo test sobre temario general (20 puntos, no eliminatoria)",
+    "Primer ejercicio: prueba práctica sobre temario específico (30 puntos, eliminatoria, mínimo 15)",
+    "Segundo ejercicio: entrevista conductual estructurada por competencias (15 puntos, no eliminatoria)",
+    "Tercer ejercicio: prueba de conocimientos de valenciano, traducción (5 puntos, no eliminatoria)"
+   ],
+   "cita": "Prova teòrica test, de caràcter obligatori però no eliminatori (20 punts)",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, bolsa de trabajo para cubrir vacantes, sustituciones temporales o acumulaciones de tareas",
+   "cita": "Amb els resultats, s’obtindrà una borsa de treball amb les persones que no resulten seleccionades",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Periodo de prácticas de 2 meses para personal laboral, con entrevistas de acogida y evaluación (mínimo 5 sobre 10)",
+   "cita": "un període de pràctiques, que tindrà una durada de 4 mesos en el cas del personal funcionari i de 2 mesos en el cas de personal laboral",
    "nivel": "literal"
   }
  },
- "rechazados": {}
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Oficial de Brigada de Medi Ambient/Agricultura"
+   ],
+   "cita": "Convocatòria d'una plaça d'Oficial de Brigada de Medi Ambient/Agricultura, subgrup C2"
+  },
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "C2",
+   "cita": "Oficial de Brigada de Medi Ambient/Agricultura, subgrup C2"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "personal laboral fijo",
+   "cita": "com a laboral fix pel sistema de concurso-oposició lliure"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "com a laboral fix pel sistema de concursoposició lliure"
+  },
+  "otros_requisitos": {
+   "motivo": "cita_no_literal",
+   "valor": "Permiso de conducir B; carné fitosanitario básico o compromiso de obtenerlo antes de la incorporación; resto de condiciones de las bases generales y del TREBEP",
+   "cita": "Permís de conduir B. Estar en possessió del carnet fitosanitari bàsic o compromís d’obtindre’l."
+  },
+  "temas": {
+   "motivo": "cita_no_literal",
+   "valor": 20,
+   "cita": "Tema 1. La Constitució Espanyola de 1978 ... Tema 20. Prevenció de riscos laborals"
+  },
+  "meritos": {
+   "motivo": "cita_no_literal",
+   "valor": "Experiencia (40%, hasta 12 puntos por servicios prestados); formación y titulación (40%, hasta 2 puntos por titulaciones y 10 por cursos); conocimiento del valenciano (10%, hasta 3 puntos); idiomas comunitarios (10%, hasta 3 puntos)",
+   "cita": "Experiència(40%) ... Formació i titulació(40%) ... Coneixement del Valencià(10%) ... Coneixement d’idiomes comunitaris(10%)"
+  }
+ }
 }

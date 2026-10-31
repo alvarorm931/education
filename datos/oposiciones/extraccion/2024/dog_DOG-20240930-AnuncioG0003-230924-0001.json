@@ -1,0 +1,57 @@
+{
+ "proceso": "dog:DOG-20240930-AnuncioG0003-230924-0001",
+ "documento": {
+  "id": "dog:DOG-20240930-AnuncioG0003-230924-0001",
+  "fuente": "DOG",
+  "url": "https://www.xunta.gal/dog/Publicados/2024/20240930/AnuncioG0003-230924-0001_es.html",
+  "fecha": "2024-09-30",
+  "huella": "513543260fe172ee018fb8faa182506a4fc3da6770418e488ba2ccb1f89f6e18"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:50:21+00:00",
+ "lote": "msgbatch_01LpyYajgKGX9NyHT1uvynbR",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "movilidad interna del personal estatutario fijo de las categorías",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "procedimiento de movilidad interna de personal estatutario fijo",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "quince (15) días naturales, a partir del día siguiente al de su publicación en el Diario Oficial de Galicia",
+   "cita": "El plazo de presentación de solicitudes será de quince (15) días naturales, a partir del día siguiente al de su publicación en el Diario Oficial de Galicia",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablones de anuncios del Hospital Público de Cee y página web del espacio del profesional",
+   "cita": "Las bases íntegras de la presente convocatoria estarán expuestas en los tablones de anuncios del Hospital Público de Cee",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "no",
+   "cita": "Anunciar la convocatoria del procedimiento de movilidad interna de personal estatutario fijo",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "personal sanitario diplomado",
+    "personal sanitario de formación profesional",
+    "personal de gestión y servicios"
+   ],
+   "cita": "el concurso de movilidad interna del personal estatutario fijo de las categorías de personal sanitario diplomado, sanitario de formación profesional y de gestión y servicios"
+  },
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Formulario electrónico en la Oficina virtual del profesional (FIDES/procesos/movilidad voluntaria interna), impreso y presentado en el Registro del Hospital Público de Cee o en cualquiera de los registros del artículo 16 de la Lei 39/2015 y demás lugares del artículo 10 del Decreto 191/2011",
+   "cita": "las solicitudes se ajustarán necesariamente al formulario electrónico existente en la Oficina virtual del profesional"
+  }
+ }
+}

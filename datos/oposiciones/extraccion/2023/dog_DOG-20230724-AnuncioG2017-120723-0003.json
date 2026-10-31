@@ -1,0 +1,114 @@
+{
+ "proceso": "dog:DOG-20230724-AnuncioG2017-120723-0003",
+ "documento": {
+  "id": "dog:DOG-20230724-AnuncioG2017-120723-0003",
+  "fuente": "DOG",
+  "url": "https://www.xunta.gal/dog/Publicados/2023/20230724/AnuncioG2017-120723-0003_es.html",
+  "fecha": "2023-07-24",
+  "huella": "195ffcf51b36f4c826e5eb855fa12a7011bbbedc2688b7597c6fd47320ff618b"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:59:22+00:00",
+ "lote": "msgbatch_012nGabRM1G4b7cEKJh1Bcx1",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Profesor/a titular de universidad, Área de Ingeniería Mecánica (plaza 23/025)",
+    "Profesor/a titular de universidad, Área de Composición Arquitectónica (plaza 23/026)"
+   ],
+   "cita": "Número de concurso: 23/025. Número de plazas: 1. OEP: 2023. Cuerpo: profesor/a titular de universidad.",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "A1",
+   "cita": "Cuerpo: profesor/a titular de universidad.",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "el/la candidato/a propuesto/a deberá tomar posesión de su destino, momento en el que adquirirá la condición de funcionario/a docente universitario de carrera",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Ser doctor/a y estar acreditado o acreditada para el cuerpo docente de que se trate",
+   "cita": "Ser doctor/a y estar acreditado o acreditada para el cuerpo docente de que se trate, conforme a lo establecido en el Real decreto 1312/2007",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española, de la UE o de estados con libre circulación; edad mínima 16 años y no exceder la edad de jubilación; no separación de la Administración pública; no padecer enfermedad incompatible con las funciones.",
+   "cita": "Haber cumplido los dieciséis años y no exceder, en su caso, de la edad máxima de jubilación forzosa.",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "lengua propia de la UDC (conocimiento, sin nivel especificado)",
+   "cita": "19. Conocimiento de la lengua propia de la UDC.",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 44.17,
+   "cita": "Los derechos de examen serán de 44,17 euros y se ingresarán en la cuenta corriente",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Exentos: discapacidad igual o superior al 33 % y familias numerosas de categoría especial. Bonificación del 50 %: familias numerosas general y demandantes de empleo seis meses sin prestación.",
+   "cita": "Estarán exentas del pago de la tasa por derechos de examen las personas que tengan reconocida una discapacidad igual o superior al 33 %.",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "quince días, contados a partir del día siguiente al de publicación de la convocatoria en el BOE",
+   "cita": "en el plazo de quince días, contados a partir del día siguiente al de publicación de esta convocatoria en el Boletín Oficial del Estado",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Registro General (Rectorado, calle A Maestranza, 9, A Coruña), registros auxiliares de la UDC, o procedimientos del artículo 16 de la Ley 39/2015; en el extranjero, representaciones diplomáticas y consulares españolas.",
+   "cita": "Las solicitudes se presentarán en el Registro General (Rectorado, calle A Maestranza, 9, A Coruña), o en los registros auxiliares de la Universidad de A Coruña",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Acto de presentación de candidatos (público, entrega de currículum y proyecto docente e investigador)",
+    "Pruebas del concurso de acceso, públicas y eliminatorias, según el artículo 12 de la normativa de la UDC"
+   ],
+   "cita": "Los concursos de acceso constarán de las pruebas y se ajustarán al procedimiento que establece el artículo 12",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Historial académico, docente, investigador, de gestión y sanitario-asistencial, según el modelo del anexo IV; puntuación máxima no especificada en el texto.",
+   "cita": "El currículum vitae deberá ajustarse al modelo que se acompaña como anexo IV.",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Toma de posesión en el plazo de veinte días hábiles desde la publicación del nombramiento en el BOE",
+   "cita": "En el plazo máximo de veinte días hábiles, a contar desde el siguiente al de la publicación del nombramiento",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso",
+   "cita": "Este rectorado ha resuelto convocar concurso de acceso de las plazas que se relacionan en el anexo I"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 2,
+   "cita": "Número de concurso: 23/025. Número de plazas: 1. OEP: 2023."
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 2,
+   "cita": "Número de concurso: 23/026. Número de plazas: 1. OEP: 023."
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Tablón electrónico oficial de la Universidad de A Coruña (sede.udc.gal) y web de concursos de la UDC; tablón del centro para la propuesta",
+   "cita": "se publicará en el tablón electrónico oficial de la Universidad de A Coruña"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "no",
+   "cita": "Estas bases no mencionan la creación de bolsa o lista de espera."
+  }
+ }
+}

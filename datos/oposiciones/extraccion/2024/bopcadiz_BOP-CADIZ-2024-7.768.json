@@ -1,0 +1,40 @@
+{
+ "proceso": "bopcadiz:BOP-CADIZ-2024-7.768",
+ "documento": {
+  "id": "bopcadiz:BOP-CADIZ-2024-7.768",
+  "fuente": "BOP-CADIZ",
+  "url": "https://www.bopcadiz.es/boletin/Boletin-numero-021-del-ano-2024",
+  "fecha": "2024-01-30",
+  "huella": "2db42a82657c2351d9a654b06dc9354557733b3d5222d546c7d0cc12cb01ebca"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:54:08+00:00",
+ "lote": "msgbatch_01EQ4R6PVKpEwTXzXwPCmspm",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Grupo profesional 5 del Convenio Colectivo. Denominación: personal de obras y servicios. Categoría: peón obras"
+   ],
+   "cita": "formación de una bolsa de personal laboral temporal <<Grupo profesional 5 del Convenio Colectivo. Denominación: personal de obras y servicios. Categoría: peón obras>>",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "formación de una bolsa de personal laboral temporal <<Grupo profesional 5 del Convenio Colectivo",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia de Cádiz, tablón de anuncios de la sede electrónica del Ayuntamiento de Tarifa (Sección Entidad Local Autónoma de Tahivilla) y página web municipal www.aytotarifa.com",
+   "cita": "deberán anunciarse, en el Boletín Oficial de la Provincia de Cádiz y en el tablón de anuncios de la sede electrónica",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, para cubrir necesidades coyunturales urgentes, excepcionales e inaplazables en servicios prioritarios de obras o servicios o que afecten a servicios públicos esenciales",
+   "cita": "Aprobar la formación de una bolsa de personal laboral temporal para cubrir necesidades coyunturales urgentes, excepcionales e inaplazables"
+  }
+ }
+}

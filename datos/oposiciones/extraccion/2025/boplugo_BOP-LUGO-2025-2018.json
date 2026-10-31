@@ -1,0 +1,61 @@
+{
+ "proceso": "boplugo:BOP-LUGO-2025-2018",
+ "documento": {
+  "id": "boplugo:BOP-LUGO-2025-2018",
+  "fuente": "BOP-LUGO",
+  "url": "https://deputacionlugo.gal/sites/deputacionlugo.org/files/inline-files/18-07-2025.pdf#page=1",
+  "fecha": "2025-07-18",
+  "huella": "19c1c1532ab647fe5665b9c041b394bf08c648d1b144cf989068f8f60b24befe"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:45:10+00:00",
+ "lote": "msgbatch_016re6aGcimwSVmdrWa6qBd9",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Policía Local de Galicia, escala básica, categoría de policía (acceso por oposición libre, PR461B)",
+    "Policía Local de Galicia, escala básica, categoría de policía (provisión por mobilidade, PR461D)"
+   ],
+   "cita": "proceso selectivo de acceso por oposición libre (código de procedemento PR461B) e o proceso de provisión por mobilidade (código de procedemento PR461D)",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C1",
+   "cita": "nos corpos da Policía Local de Galicia, escala básica, categoría de policía",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "proceso selectivo de acceso por oposición libre (código de procedemento PR461B)",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles, a contar desde o día seguinte ao da publicación do anuncio da orde de convocatoria no Boletín Oficial do Estado",
+   "cita": "O prazo de presentación de solicitudes será de 20 días hábiles, a contar desde o día seguinte ao da publicación do anuncio",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Os sucesivos anuncios referentes a esta convocatoria faranse públicos de conformidade coas bases da mesma",
+   "cita": "Os sucesivos anuncios referentes a esta convocatoria faranse públicos de conformidade coas bases da mesma.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 134,
+   "cita": "TOTAIS 32 102"
+  },
+  "plazas_turno_libre": {
+   "motivo": "cita_no_literal",
+   "valor": 102,
+   "cita": "Acceso por oposición libre PR461B TOTAIS 32 102"
+  },
+  "plazas_promocion_interna": {
+   "motivo": "cita_no_literal",
+   "valor": 32,
+   "cita": "Provisión por mobilidade PR461D TOTAIS 32 102"
+  }
+ }
+}

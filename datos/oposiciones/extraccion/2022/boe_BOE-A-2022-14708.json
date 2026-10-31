@@ -1,0 +1,45 @@
+{
+ "proceso": "boe:BOE-A-2022-14708",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2022-5677",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2022/08/30_164/2022_005677.pdf",
+  "fecha": "2022-08-30",
+  "huella": "4a2205809ca62df98200e9ee78b0aa70ae890c19e1df159cd2e1e9e23c466f06"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:08+00:00",
+ "lote": "msgbatch_01B4ETF5xB4buYCHqPiHTXzF",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Trabajador/a Social"
+   ],
+   "cita": "creación de una bolsa de trabajo en puesto de Trabajador/a Social de este Ayuntamiento",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "DIEZ DIAS hábiles, contados a partir del día siguiente al de la publicación del anuncio en el BOP",
+   "cita": "presentar su solicitud de participación durante el plazo de DIEZ DIAS hábiles, contados a partir del día siguiente",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de Anuncios y página web del Ayuntamiento de Monóvar",
+   "cita": "está publicado en el Tablón de Anuncios y en la página web del Ayuntamiento de Monóvar",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, para crear una bolsa de trabajo en el puesto de Trabajador/a Social",
+   "cita": "para la creación de una bolsa de trabajo en puesto de Trabajador/a Social de este Ayuntamiento",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": ""
+  }
+ }
+}

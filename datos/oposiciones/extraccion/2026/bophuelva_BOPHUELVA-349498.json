@@ -1,0 +1,46 @@
+{
+ "proceso": "bophuelva:BOPHUELVA-349498",
+ "documento": {
+  "id": "bophuelva:BOPHUELVA-349498",
+  "fuente": "BOP-HUELVA",
+  "url": "https://s2.diphuelva.es/portalweb/bope/anuncios/Anuncio_349498_BOP-58_2026.pdf",
+  "fecha": "2026-03-25",
+  "huella": "299bb59fdaec228301bd499c236a718f1854fa272ccbe04bdfe6269d8d5b844c"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:40:36+00:00",
+ "lote": "msgbatch_01E3wiYcGL8Lzho48bXWLyyb",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "contratación de Monitores de Música en las especialidades de Percusión y Piano",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "Habiendo sido aprobadas a fecha 3 de marzo de 2026, por Resolución de esta Alcaldía, las Bases",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de Anuncios de la entidad",
+   "cita": "se encuentran a disposición de las personas interesadas en el Tablón de Anuncios de la entidad",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Monitor de Música en la especialidad de Percusión",
+    "Monitor de Música en la especialidad de Piano"
+   ],
+   "cita": "contratación de Monitores de Música en las especialidades de Percusión y Piano, adscritos al Área de Cultura"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "diez días hábiles a partir del día siguiente a esta publicación",
+   "cita": "concediéndose un plazo de diez días hábiles a partir del día siguiente a esta publicación para la presentación de solicitudes"
+  }
+ }
+}

@@ -1,0 +1,58 @@
+{
+ "proceso": "dog:DOG-20251020-AnuncioG0310-141025-2",
+ "documento": {
+  "id": "dog:DOG-20251020-AnuncioG0310-141025-2",
+  "fuente": "DOG",
+  "url": "https://www.xunta.gal/dog/Publicados/2025/20251020/AnuncioG0310-141025-2_es.html",
+  "fecha": "2025-10-20",
+  "huella": "ccc3fbedd8e1ae62378c09083d59a9bb52bec17ea4f7b8fa165f9a07eabe9f4b"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:41:27+00:00",
+ "lote": "msgbatch_01UNq3BNhPPHoTK3TEJzun1h",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "agente de aparcamiento",
+    "agente de depósito",
+    "agente de estación",
+    "controlador/a"
+   ],
+   "cita": "para las categorías de agente de aparcamiento, agente de depósito, agente de estación y controlador/a",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "grupo operativo (nivel retributivo IV)",
+   "cita": "contratación de un/una trabajador/a del grupo operativo de la Sociedad (nivel retributivo IV)",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "contratación de un/una trabajador/a del grupo operativo de la Sociedad",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "contratación de un/una trabajador/a del grupo operativo de la Sociedad",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "15 días naturales contados a partir del siguiente al de la publicación de este anuncio",
+   "cita": "El plazo de presentación de solicitudes será de 15 días naturales contados a partir del siguiente al de la publicación de este anuncio.",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "página web www.tussa.org, apartado convocatorias",
+   "cita": "se pueden descargar directamente de la página www.tussa.org, en el apartado convocatorias",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "concurso-oposición"
+  }
+ }
+}

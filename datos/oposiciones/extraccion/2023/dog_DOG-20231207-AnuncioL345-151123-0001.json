@@ -1,0 +1,56 @@
+{
+ "proceso": "dog:DOG-20231207-AnuncioL345-151123-0001",
+ "documento": {
+  "id": "dog:DOG-20231207-AnuncioL345-151123-0001",
+  "fuente": "DOG",
+  "url": "https://www.xunta.gal/dog/Publicados/2023/20231207/AnuncioL345-151123-0001_es.html",
+  "fecha": "2023-12-07",
+  "huella": "c8a50c64968022bad0e2a8f03c98474fad06e169d0b479b69c07a773d55f0c6d"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:51+00:00",
+ "lote": "msgbatch_01SjfjDqJRwL6bpTvJz2YfVg",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Auxiliar de ayuda a domicilio",
+    "Peón/limpiador"
+   ],
+   "cita": "Siete plazas de auxiliar de ayuda a domicilio a jornada completa de la plantilla de personal laboral fijo",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "de la plantilla de personal laboral fijo, mediante el sistema de concurso, en turno libre",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "Una plaza de auxiliar de ayuda a domicilio a jornada completa de la plantilla de personal laboral fijo, mediante el sistema de concurso-oposición",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles contados desde el siguiente al de la publicación de este anuncio en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes será de veinte días hábiles contados desde el siguiente al de la publicación",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "en la forma prevista en las propias bases",
+   "cita": "Los sucesivos anuncios referentes a esta convocatoria, cuando procedan de conformidad con las bases, se harán públicos en la forma prevista en las propias bases.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 14,
+   "cita": "Siete plazas de auxiliar de ayuda a domicilio a jornada completa de la plantilla de personal laboral fijo"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 14,
+   "cita": "mediante el sistema de concurso, en turno libre, dentro del proceso extraordinario de estabilización de empleo temporal 2022"
+  }
+ }
+}

@@ -1,0 +1,93 @@
+{
+ "proceso": "dogv:456950",
+ "documento": {
+  "id": "dogv:456950",
+  "fuente": "DOGV",
+  "url": "https://dogv.gva.es/datos/2025/12/09/pdf/2025_48663_es.pdf",
+  "fecha": "2025-12-09",
+  "huella": "dc7c2129b7028624e9ee6339195fce4aab6b974e3d941b0b035826e5338bc312"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:41:22+00:00",
+ "lote": "msgbatch_01UNq3BNhPPHoTK3TEJzun1h",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Especialista en proyectos de investigación (personal de administración y servicios contratado en régimen laboral)"
+   ],
+   "cita": "convoca oferta pública para cubrir puesto/s de trabajo, de acuerdo con las siguientes bases",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "personal de administración y servicios contratado en régimen laboral en los proyectos de investigación",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Título de bachiller, técnica o técnico o equivalente",
+   "cita": "Estar en posesión del título de bachiller, técnica o técnico o equivalente",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española o situación del artículo 57 EBEP; tener cumplidos 16 años y no exceder la edad de jubilación forzosa; capacidad física y psíquica para el puesto; no estar inhabilitado para funciones similares.",
+   "cita": "Tener cumplidos 16 años y no exceder de la edad máxima de jubilación forzosa",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Conocimiento adecuado de cualquiera de las lenguas oficiales de la Comunitat Valenciana para el desempeño del puesto de trabajo",
+   "cita": "Tener un conocimiento adecuado de cualquiera de las lenguas oficiales de la Comunitat Valenciana",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Diez días hábiles contados a partir del siguiente al de publicación de la convocatoria en el DOGV",
+   "cita": "en el plazo de diez días hábiles contados a partir del siguiente al de publicación de la presente convocatoria en el Diari Oficial",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Electrónicamente a través de la sede electrónica de la Universidad de Alicante (Trámites/Procesos selectivos y de provisión/Solicitud de plazas de personal técnico para proyectos de investigación)",
+   "cita": "se formalizará a través de la sede electrónica: https://seuelectronica.ua.es/",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Sede electrónica de la Universidad de Alicante, en el apartado «Otros documentos generales» del expediente del aspirante, y página web del Servicio de Selección de Personal",
+   "cita": "se realizarán en sede electrónica, en el apartado «Otros documentos generales» del expediente del aspirante",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Méritos del currículum relacionados con el objeto y perfil del anexo I, acreditados documentalmente; criterios de valoración específicos fijados por la comisión antes de la baremación. La entrevista se puntúa de 0 a 5 puntos.",
+   "cita": "La comisión valorará los méritos alegados por el personal aspirante en sus currículos",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "Sí, la comisión puede constituir una bolsa de trabajo con el personal aspirante no adjudicatario para cubrir renuncias, ausencias, bajas o nuevas necesidades de proyectos de la misma línea de investigación",
+   "cita": "La comisión encargada de la resolución de este proceso podrá acordar la constitución de una bolsa de trabajo",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "Sistema de selección con dos fases: 6.1 Baremación de méritos y 6.2 Entrevista personal"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "el número de plazas y características del puesto de trabajo convocado figura en el anexo I"
+  },
+  "ejercicios": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Baremación de méritos del currículum",
+    "Entrevista personal (0 a 5 puntos)"
+   ],
+   "cita": "Sistema de selección con dos fases: 6.1 Baremación de méritos y 6.2 Entrevista personal"
+  },
+  "practicas_o_curso": {
+   "motivo": "cita_no_literal",
+   "valor": "Ninguno",
+   "cita": "Sin periodo de prácticas o curso selectivo mencionado en el texto"
+  }
+ }
+}

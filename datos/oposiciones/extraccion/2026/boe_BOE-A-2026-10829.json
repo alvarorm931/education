@@ -1,0 +1,100 @@
+{
+ "proceso": "boe:BOE-A-2026-10829",
+ "documento": {
+  "id": "bopciudadreal:BOPCIUDADREAL-2026-1173",
+  "fuente": "BOP-CIUDADREAL",
+  "url": "https://bop.dipucr.es/bop/2026/04/20",
+  "fecha": "2026-04-20",
+  "huella": "26122a18a41c5d6d94e760de177b4f0c39af9079d490da926d891d2c6593e54b"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:41:32+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Policía Local"
+   ],
+   "cita": "Nº de vacantes 1 Sistema de selección Oposición libre",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C1",
+   "cita": "Grupo C Subgrupo C-1 Escala Administración especial Subescala Servicios especiales",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "acceso a la condición de personal funcionario de la Policía Local",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "cobertura, mediante sistema de oposición libre, de una plaza de Policía Local",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "Nº de vacantes 1 Sistema de selección Oposición libre",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "la exigida para el acceso a la plaza",
+   "cita": "Poseer la titulación exigida o cumplir los requisitos para su obtención en la fecha",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles desde el día siguiente a la publicación del anuncio de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "en el plazo de veinte días hábiles contados a partir del día siguiente al de la publicación del anuncio",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia y sede electrónica del Ayuntamiento",
+   "cita": "Las bases íntegras se publicarán en el Boletín Oficial de la Provincia en la sede electrónica de este Ayuntamiento",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, lista de reserva con un número de aspirantes como máximo igual al de aprobados",
+   "cita": "El tribunal elaborará, también por orden decreciente de puntuación, una lista de reserva",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_turno_libre": {
+   "motivo": "cita_no_literal",
+   "valor": 1,
+   "cita": "convocar pruebas selectivas para la cobertura, mediante sistema de oposición libre, de una plaza de Policía Local"
+  },
+  "otros_requisitos": {
+   "motivo": "cita_no_literal",
+   "valor": "Nacionalidad española; 18 años y no exceder la edad de jubilación forzosa; no haber sido separado del servicio ni inhabilitado; permisos de conducción reglamentarios; condiciones físicas y psíquicas; carecer de antecedentes penales por delitos dolosos; no condena por delitos contra la libertad e indemnidad sexual; compromiso de portar armas",
+   "cita": "Tener la nacionalidad española. Tener dieciocho años de edad y no exceder la edad de jubilación forzosa"
+  },
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Registro Electrónico General del Ayuntamiento o lugares del artículo 16.4 de la Ley 39/2015, mediante solicitud (Anexo II) dirigida a la Alcaldía",
+   "cita": "se presentarán en el Registro Electrónico General de este Ayuntamiento o en alguno de los lugares"
+  },
+  "ejercicios": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Prueba de aptitud física (carrera de velocidad, carrera de resistencia, salto de longitud y lanzamiento de balón medicinal)",
+    "Prueba de conocimientos (cuestionario de 70 a 90 preguntas con cuatro respuestas alternativas)",
+    "Prueba psicotécnica (entrevista y dos test)",
+    "Reconocimiento médico"
+   ],
+   "cita": "Consistirá en la contestación por escrito a un cuestionario de preguntas con cuatro respuestas alternativas"
+  },
+  "temas": {
+   "motivo": "valor_no_en_cita",
+   "valor": 52,
+   "cita": "Tema 1.- La Constitución Española de 1978: estructura y contenido."
+  },
+  "practicas_o_curso": {
+   "motivo": "cita_no_literal",
+   "valor": "curso selectivo de duración mínima de tres meses, como funcionario en prácticas",
+   "cita": "deberá realizar y superar un curso selectivo, de una duración mínima de tres meses"
+  }
+ }
+}

@@ -1,0 +1,76 @@
+{
+ "proceso": "bophuelva:BOPHUELVA-343702",
+ "documento": {
+  "id": "bophuelva:BOPHUELVA-343702",
+  "fuente": "BOP-HUELVA",
+  "url": "https://s2.diphuelva.es/portalweb/bope/anuncios/Anuncio_343702_BOP-39_2026.pdf",
+  "fecha": "2026-02-26",
+  "huella": "6bf29a6630db5321c623cf34ce0b7f7592b49bcb696876ef1df7f2c8e3a38896"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:42:30+00:00",
+ "lote": "msgbatch_01W17mR271uYfWYL6CuSdriL",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "la modalidad del contrato es la contratación de duración determinada, regulada por el artículo 15",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "por procedimiento Concurso - Oposición",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española (sin perjuicio de lo dispuesto en el artículo siguiente), capacidad funcional, tener cumplidos dieciséis años, no exceder de la edad máxima de jubilación forzosa, no estar separado ni inhabilitado para el empleo público, y superar la fase de oposición",
+   "cita": "Tener la nacionalidad española, sin perjuicio de lo dispuesto en el artículo siguiente.",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Servicio de Atención al Ciudadano o sede electrónica del Ayuntamiento de La Palma del Condado",
+   "cita": "deberán presentar su solicitud en el Servicio de Atención al Ciudadano de este Ayuntamiento, o bien en la sede electrónica",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de anuncios y sede electrónica del Ayuntamiento (sede electrónica y BOP para las bases)",
+   "cita": "El contenido íntegro de la Convocatoria y Bases se encuentra en el Tablón de Anuncios y la Sede Electrónica del Ayuntamiento",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Prueba práctica de albañilería, eliminatoria (Apto/No Apto)",
+    "Baremación de méritos (solo para aspirantes aptos)"
+   ],
+   "cita": "Consistirá en la realización de una prueba práctica de albañilería, con relación directa a las funciones a desempeñar.",
+   "nivel": "sin_signos"
+  },
+  "bolsa": {
+   "valor": "Sí, bolsa de empleo para contrataciones temporales por circunstancias de la producción",
+   "cita": "constitución de una bolsa de empleo para la selección de personal temporal PEONES DE ALBAÑILERIA",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Peones de Albañilería",
+   "cita": "convocatoria para la constitución de una bolsa de empleo temporal para la selección de personal temporal de peones de albañilería"
+  },
+  "titulacion": {
+   "motivo": "cita_no_literal",
+   "valor": "No se exige (se suprime el requisito de titulación)",
+   "cita": "Se suprime el requisito de la Titulación en virtud del artículo 76 del TREBEP"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "10 días hábiles siguientes al día siguiente de la publicación de la convocatoria en el tablón de anuncios y sede electrónica",
+   "cita": "durante los 10 días hábiles siguientes al día siguiente de la publicación de la convocatoria"
+  },
+  "meritos": {
+   "motivo": "cita_no_literal",
+   "valor": "Titulación (máximo 2 puntos); formación complementaria (máximo 10 puntos); experiencia profesional (máximo 70 puntos), 0,5 puntos por mes trabajado",
+   "cita": "Experiencia profesional (Hasta un máximo de 70 puntos): 0.5 por mes trabajado o fracción superior o igual a 15 días."
+  }
+ }
+}

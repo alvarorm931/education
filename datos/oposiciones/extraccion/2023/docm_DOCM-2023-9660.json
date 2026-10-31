@@ -1,0 +1,59 @@
+{
+ "proceso": "docm:DOCM-2023-9660",
+ "documento": {
+  "id": "docm:DOCM-2023-9660",
+  "fuente": "DOCM",
+  "url": "https://docm.jccm.es/portaldocm/verArchivoHtml.do?ruta=2023/12/11/html/2023_9660.html&tipo=rutaDocm",
+  "fecha": "2023-12-11",
+  "huella": "b17ac327fd15aee11f3a6d659dd1731fa8881407ea534f998c72593a5d2ae81c"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:58:03+00:00",
+ "lote": "msgbatch_01SjfjDqJRwL6bpTvJz2YfVg",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Conserje",
+    "Operario/a de telecomunicaciones",
+    "Monitor/personal apoyo servicios deportivos",
+    "Ayudante Informática",
+    "Promotor/a turística"
+   ],
+   "cita": "2 Plazas de conserje reserva discapacidad. 1 Plaza Operario/a de telecomunicaciones.",
+   "nivel": "sin_signos"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "para cubrir a través de concurso las plazas vacantes del Ayuntamiento de Villarrobledo",
+   "nivel": "literal"
+  },
+  "plazas_discapacidad": {
+   "valor": 2,
+   "cita": "2 Plazas de conserje reserva discapacidad.",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días naturales contados a partir del día siguiente al de la publicación del anuncio de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de instancias solicitando tomar parte en el proceso selectivo será de veinte días naturales",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "otro",
+   "cita": "plazas vacantes del Ayuntamiento de Villarrobledo que más adelante se indican, correspondientes a la Oferta de Empleo Público de Estabilización"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 6,
+   "cita": "2 Plazas de conserje reserva discapacidad. 1 Plaza Operario/a de telecomunicaciones."
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Boletín Oficial de la Provincia de Albacete número 151, de 28 de diciembre de 2022; Boletín Oficial del Estado",
+   "cita": "se han publicado íntegramente las bases generales y bases específicas de la convocatoria en el Boletín Oficial de la Provincia de Albacete"
+  }
+ }
+}

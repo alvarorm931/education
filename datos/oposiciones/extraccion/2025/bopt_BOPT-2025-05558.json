@@ -1,0 +1,73 @@
+{
+ "proceso": "bopt:BOPT-2025-05558",
+ "documento": {
+  "id": "dogc:1018836",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1018836",
+  "fecha": "2025-07-07",
+  "huella": "186a52e683a719d5d78cda546efecbec60189f3893318665776ef84ead4b4458"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:45:21+00:00",
+ "lote": "msgbatch_016re6aGcimwSVmdrWa6qBd9",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "Cobrador/a piscina",
+   "cita": "Denominació: Cobrador/a piscina",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "AP",
+   "cita": "Grup/Subgrup/Categoria professional: AP",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "Règim jurídic: Personal Laboral",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "Sistema de selecció a utilitzar: Torn lliure, concurs-oposició",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "Nombre de vacants: 1",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "No s'exigeix",
+   "cita": "Nivell de titulació: No s'exigeix",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles a partir del día siguiente a la publicación del anuncio en el DOGC",
+   "cita": "El termini per presentar sol·licituds finalitza als 20 dies hàbils comptats a partir de l'endemà de la publicació",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "no",
+   "cita": "Habilitació: OPO 2023 (Decret de l'Alcaldia núm. 2023-0000417 de data 18 de desembre de 2023)",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "Sistema de selecció a utilitzar: Torn lliure, concurs-oposició"
+  },
+  "plazas_discapacidad": {
+   "motivo": "valor_no_en_cita",
+   "valor": 0,
+   "cita": "Torn reserva discapacitats: No"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Seu electrònica de l'Ajuntament y otros medios que se indiquen en las bases",
+   "cita": "Els anuncis successius es publicaran a la seu electrònica de l'Ajuntament i en els altres mitjans"
+  }
+ }
+}

@@ -1,0 +1,61 @@
+{
+ "proceso": "boja:disposition.2025.201.77",
+ "documento": {
+  "id": "boja:disposition.2025.201.77",
+  "fuente": "BOJA",
+  "url": "https://juntadeandalucia.es/eboja/2025/201/BOJA25-201-00001-13693-01_00327289.pdf",
+  "fecha": "2025-10-20",
+  "huella": "222596a238fdc3dad2ced54c07951ec417711bb7d208247032e30a0adcaf1b68"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:41:21+00:00",
+ "lote": "msgbatch_01UNq3BNhPPHoTK3TEJzun1h",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Policía Local, funcionario/a de carrera, escala Administración Especial, subescala Servicios Especiales",
+    "Policía de los cuerpos de la Policía Local de Andalucía (movilidad sin ascenso)"
+   ],
+   "cita": "Policía Local, funcionario/a de carrera, escala Administración Especial, subescala Servicios Especiales, mediante oposición libre",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "proveer en propiedad cuatro plazas de Policía Local, funcionario/a de carrera",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "mediante oposición libre, y una plaza por movilidad sin ascenso",
+   "nivel": "literal"
+  },
+  "plazas_turno_libre": {
+   "valor": 4,
+   "cita": "mediante el sistema de acceso de turno libre y a través del procedimiento de selección de oposición de 4 plazas",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles, a contar desde el siguiente al de la publicación de esta resolución en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes será de 20 días hábiles, a contar desde el siguiente al de la publicación",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia de Sevilla, tablón de anuncios de la corporación y Sede Electrónica del Ayuntamiento de Castilleja de la Cuesta",
+   "cita": "se harán públicos en el Boletín Oficial de la Provincia de Sevilla, en el tablón de anuncios de la corporación",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 5,
+   "cita": "proveer en propiedad cuatro plazas de Policía Local y una plaza por movilidad sin ascenso"
+  },
+  "plazas_promocion_interna": {
+   "motivo": "valor_no_en_cita",
+   "valor": 0,
+   "cita": "mediante el sistema de acceso de turno libre y a través del procedimiento de selección de oposición de 4 plazas"
+  }
+ }
+}

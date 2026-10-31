@@ -1,0 +1,55 @@
+{
+ "proceso": "dogc:1004830",
+ "documento": {
+  "id": "dogc:1004830",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1004830",
+  "fecha": "2025-01-28",
+  "huella": "11f559d835ac9b8b0ff346e24690d7de1bab230a9a81b560229e8dd605e1cf49"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:46:44+00:00",
+ "lote": "msgbatch_01MQzQCLMZKxUrrPMAj7dr53",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "per a la provisió en propietat d'una plaça de tècnic/a superior (salut publica) de la plantilla de personal laboral",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mitjançant el sistema de concurs oposició i torn lliure",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "per a la provisió en propietat d'una plaça de tècnic/a superior",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días naturales desde el día siguiente a la publicación en el BOE del extracto de la convocatoria",
+   "cita": "finalitzarà als 20 dies naturals comptats a partir de l'endemà de la publicació en el Butlletí Oficial de l'Estat",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Los anuncios sucesivos se publicarán en el Diari Oficial de la Generalitat de Catalunya",
+   "cita": "Els anuncis successius d'aquesta convocatòria es publicaran en el Diari Oficial de la Generalitat de Catalunya",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Tècnic/a superior (salut pública)"
+   ],
+   "cita": "una plaça de tècnic/a superior (salut publica) de la plantilla de personal laboral de l'Ajuntament de Reus"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "mitjançant el sistema de concurs oposició i torn lliure"
+  }
+ }
+}

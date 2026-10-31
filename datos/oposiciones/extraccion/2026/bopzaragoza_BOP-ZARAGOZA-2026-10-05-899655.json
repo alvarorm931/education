@@ -1,52 +1,57 @@
 {
  "proceso": "bopzaragoza:BOP-ZARAGOZA-2026-10-05-899655",
  "documento": {
-  "id": "bopzaragoza:BOP-ZARAGOZA-2026-10-05-899655",
-  "fuente": "BOP-ZARAGOZA",
-  "url": null,
-  "fecha": "2026-10-05",
-  "huella": "c075e1c0bf36e8260bc4e201ac9da8ce2586ce0010af97c4790979da268876e4"
+  "id": "boa:BOA-007962004",
+  "fuente": "BOA",
+  "url": "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VERDOC&BASE=BOLE&SEC=BUSQUEDA_AVANZADA&DOCN=007962004",
+  "fecha": "2026-10-26",
+  "huella": "d6bba432ce84665146a102e04591cb947afbfa0ee963e38f8d0ff1cc78219c71"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T07:28:46+00:00",
- "lote": "msgbatch_01QUU3nKnMRQfp1xxi4asvKD",
+ "extraido": "2026-10-31T14:41:57+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
    "valor": [
-    "peón de mantenimiento"
+    "Peón de Mantenimiento"
    ],
-   "cita": "dos plazas de peón de mantenimiento, escala de Administración especial, subescala servicios especiales",
+   "cita": "dos plazas de Peón de Mantenimiento por el sistema de concurso-oposición libre",
    "nivel": "literal"
   },
   "grupo": {
    "valor": "E",
-   "cita": "clase personal de oficios, grupo E, agrupaciones profesionales",
+   "cita": "Grupo E - Agrupaciones Profesionales",
    "nivel": "literal"
   },
   "vinculo": {
    "valor": "funcionario de carrera",
-   "cita": "para proveer por funcionario de carrera, dos plazas de peón de mantenimiento",
+   "cita": "personal funcionario de este Ayuntamiento, encuadrado en la Escala de Administración Especial",
    "nivel": "literal"
   },
   "sistema": {
    "valor": "concurso-oposición",
-   "cita": "mediante concurso-oposición, vacantes en la plantilla y en la relación de puestos de trabajo",
+   "cita": "por el sistema de concurso-oposición libre",
    "nivel": "literal"
   },
   "plazas_total": {
    "valor": 2,
-   "cita": "para la selección de dos plazas de peón de mantenimiento, mediante concurso-oposición",
+   "cita": "dos plazas de Peón de Mantenimiento por el sistema de concurso-oposición libre",
+   "nivel": "literal"
+  },
+  "plazas_turno_libre": {
+   "valor": 2,
+   "cita": "dos plazas de Peón de Mantenimiento por el sistema de concurso-oposición libre",
    "nivel": "literal"
   },
   "titulacion": {
-   "valor": "Certificado de Escolaridad o equivalente",
-   "cita": "Certificado de Escolaridad o equivalente. Los aspirantes con titulaciones obtenidas en el extranjero",
+   "valor": "Certificado de escolaridad o equivalente",
+   "cita": "Estar en posesión de la siguiente titulación o en condiciones de obtenerla antes de la finalización del plazo",
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Nacionalidad española o de Estado miembro de la UE o de aplicación libre circulación; tener 16 años cumplidos y no exceder la edad de jubilación forzosa; carné de conducir B; capacidad funcional; no inhabilitación para empleo público.",
-   "cita": "Estar en posesión del carné de conducir B.",
+   "valor": "Tener cumplidos 16 años y no exceder de la edad máxima de jubilación forzosa; carnet de conducir B; nacionalidad española o de Estado miembro de la UE, con los supuestos de cónyuge y descendientes; capacidad funcional para las tareas.",
+   "cita": "Estar en posesión del carnet de conducir B.",
    "nivel": "literal"
   },
   "tasa_euros": {
@@ -55,32 +60,31 @@
    "nivel": "literal"
   },
   "exenciones_tasa": {
-   "valor": "Exentos los demandantes de empleo de larga duración que no perciban prestación por desempleo y cuya unidad familiar no supere 27.241,20 euros de ingresos en el ejercicio anterior.",
+   "valor": "Exentos los demandantes de empleo de larga duración que no sean beneficiarios de la prestación por desempleo y cuya unidad familiar no haya obtenido ingresos superiores a 27.241,20 euros.",
    "cita": "estarán exentos del pago del importe de la tasa por derechos de examen los demandantes de empleo de larga duración",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "veinte días hábiles desde el día siguiente a la publicación del anuncio de la convocatoria en el Boletín Oficial del Estado",
-   "cita": "en el plazo de veinte días hábiles contados a partir del día siguiente al de la publicación del anuncio de la convocatoria en el Boletín Oficial del Estado",
+   "valor": "veinte días hábiles contados a partir del día siguiente al de la publicación del anuncio de la convocatoria en el \"Boletín Oficial del Estado\"",
+   "cita": "en el plazo de veinte días hábiles contados a partir del día siguiente al de la publicación del anuncio de la convocatoria",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Registro Electrónico General del Ayuntamiento o lugares del artículo 16.4 de la Ley 39/2015, dirigidas a la Alcaldía, mediante anexo II",
+   "valor": "Registro Electrónico General del Ayuntamiento o lugares del artículo 16.4 de la Ley 39/2015, dirigida a la Alcaldía, con anexo II",
    "cita": "se presentarán en el Registro Electrónico General de este Ayuntamiento o en alguno de los lugares previstos en el artículo 16.4",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "BOPZ, tablón de edictos de la Corporación, sede electrónica y página web del Ayuntamiento",
-   "cita": "se hará pública en el BOPZ, en el tablón de edictos de la Corporación, en la sede electrónica y en la página web del Ayuntamiento",
+   "valor": "Tablón de anuncios de la Corporación, Sede electrónica y página web del Ayuntamiento; Boletín Oficial de la Provincia de Zaragoza",
+   "cita": "Tablón de edictos de la Corporación, en la Sede electrónica y en la página web del Ayuntamiento.",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Concurso: valoración de méritos (fase no eliminatoria, máximo 8 puntos)",
-    "Primer ejercicio: test de 20 preguntas con 3 respuestas en 30 minutos (0 a 6 puntos)",
+    "Primer ejercicio: test de 20 preguntas con tres respuestas alternativas en 30 minutos (0 a 6 puntos)",
     "Segundo ejercicio: supuestos prácticos relacionados con las tareas del puesto (0 a 6 puntos)"
    ],
-   "cita": "consistirá en contestar en un tiempo máximo de treinta minutos a un cuestionario de veinte preguntas tipo test",
+   "cita": "Consistirá en contestar en un tiempo máximo de treinta minutos a un cuestionario de veinte preguntas tipo test",
    "nivel": "literal"
   },
   "temas": {
@@ -89,26 +93,20 @@
    "nivel": "literal"
   },
   "meritos": {
-   "valor": "Experiencia profesional hasta 6 puntos (0,10 por mes como funcionario en peón de mantenimiento; 0,05 por mes en empresa privada). Cursos de perfeccionamiento hasta 2 puntos (0,25 a 1 punto según horas).",
-   "cita": "Tiempo de servicios prestados. Experiencia profesional (máximo de 6 puntos)",
+   "valor": "Experiencia profesional hasta 6 puntos (0,10 por mes en Administración Pública; 0,05 en empresa privada similar) y cursos de perfeccionamiento hasta 2 puntos; máximo 8 puntos.",
+   "cita": "La valoración de méritos por todos los conceptos enumerados podrá alcanzar un máximo de 8 puntos.",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, bolsa de empleo para nombramientos temporales de personal laboral y funcionario interino, con la puntuación de la fase de oposición",
+   "cita": "La bolsa derivada del presente proceso selectivo será válida para contrataciones temporales",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "no consta",
+   "cita": "Los requisitos referenciados en esta base deberán poseerse el día que finalice el plazo de presentación de instancias",
    "nivel": "literal"
   }
  },
- "rechazados": {
-  "plazas_turno_libre": {
-   "motivo": "valor_no_en_cita",
-   "valor": 2,
-   "cita": "por el sistema de concurso-oposición libre"
-  },
-  "bolsa": {
-   "motivo": "cita_no_literal",
-   "valor": "sí, para nombramientos temporales futuros de personal funcionario interino o personal laboral temporal, con los aspirantes que superen al menos el primer ejercicio",
-   "cita": "podrá proponer la creación de bolsa de empleo con los aspirantes que no hayan obtenido la plaza"
-  },
-  "practicas_o_curso": {
-   "motivo": "cita_no_literal",
-   "valor": "no consta",
-   "cita": ""
-  }
- }
+ "rechazados": {}
 }

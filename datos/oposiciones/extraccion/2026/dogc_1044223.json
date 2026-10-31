@@ -1,0 +1,58 @@
+{
+ "proceso": "dogc:1044223",
+ "documento": {
+  "id": "dogc:1044223",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1044223",
+  "fecha": "2026-05-14",
+  "huella": "1eced36af7b6d4eb0d3cca7d6b7310e9e1224040bb26121c6b9c4eed213988fc"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:41:46+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "tècnic/a de grau mitjà treballador/a social",
+   "cita": "provisió d'una plaça de personal en règim laboral fix, denominació tècnic/a de grau mitjà treballador/a social",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "A2",
+   "cita": "corresponent al grup A, Subgrup A2, escala administració especial",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mitjançant el sistema de concurs oposició, en torn lliure",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "provisió d'una plaça de personal en règim laboral fix corresponent a l'Oferta d'Ocupació Pública",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 dies hàbils a partir de l'endemà de la publicació d'aquest anunci al Diari Oficial de la Generalitat de Catalunya",
+   "cita": "El termini per a la presentació d'instàncies serà de 20 dies hàbils a partir de l'endemà de la publicació",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "tauler d'anuncis de la corporació i plataforma Convoca de la pàgina web del Consell Comarcal",
+   "cita": "es farà al tauler d'anuncis de la corporació i a la plataforma Convoca allotjada a la pàgina web",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "personal laboral fijo",
+   "cita": "una plaça de personal en règim laboral fix, denominació tècnic/a de grau mitjà"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "mitjançant el sistema de concurs oposició, en torn lliure"
+  }
+ }
+}

@@ -1,15 +1,15 @@
 {
  "proceso": "bopvalladolid:BOPVA-A-2026-02477",
  "documento": {
-  "id": "bopvalladolid:BOPVA-A-2026-02477",
-  "fuente": "BOP-VALLADOLID",
-  "url": "https://bop.sede.diputaciondevalladolid.es/boletines/2026/agosto/18/BOPVA-A-2026-02477.pdf",
-  "fecha": "2026-08-18",
-  "huella": "91b917904ece51ca19885a5a7f1f73b601f1d35ec92b584c7f1d48e5f0c9a497"
+  "id": "bocyl:BOCYL-D-19082026-160-33",
+  "fuente": "BOCYL",
+  "url": "https://bocyl.jcyl.es/html/2026/08/19/html/BOCYL-D-19082026-160-33.do",
+  "fecha": "2026-08-19",
+  "huella": "8cf433e847418c4a9aa40ee746a34b27bfd5de37e60afe317c9c37525f06f829"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T07:40:05+00:00",
- "lote": "msgbatch_013q7o24qMms8ZNZdwMNkW1L",
+ "extraido": "2026-10-31T14:41:33+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
@@ -31,62 +31,77 @@
   },
   "sistema": {
    "valor": "concurso-oposición",
-   "cita": "el sistema de selección será el de concursooposición, de acceso restringido y voluntario",
+   "cita": "mediante proceso de concurso-oposición, de un puesto de personal laboral fijo",
    "nivel": "literal"
   },
   "plazas_total": {
    "valor": 1,
-   "cita": "convocatoria específica por la que se regirá el proceso selectivo para la adquisición de la condición de funcionario de carrera, mediante proceso de concurso-oposición, de un puesto",
+   "cita": "proceso selectivo para la adquisición de la condición de funcionario de carrera, mediante proceso de concurso-oposición, de un puesto",
    "nivel": "literal"
   },
   "titulacion": {
-   "valor": "Título Universitario Oficial en el ámbito de las Ciencias Sociales y Jurídicas y postgrado específico como experto en Igualdad de Oportunidades, o los títulos de Grado correspondientes",
-   "cita": "Título Universitario Oficial en el ámbito de las Ciencias Sociales y Jurídicas y postgrado específico como experto en Igualdad de Oportunidades",
+   "valor": "Título Universitario Oficial en el ámbito de las Ciencias Sociales y Jurídicas y postgrado específico como experto en Igualdad de Oportunidades, o títulos de Grado correspondientes",
+   "cita": "deberán estar en posesión o en condiciones de obtener el Título Universitario Oficial en el ámbito de las Ciencias Sociales y Jurídicas",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Reunir los requisitos del apartado 3.2 de las Bases del procedimiento de funcionarización; deben cumplirse al finalizar el plazo de solicitudes y mantenerse durante todo el proceso",
+   "cita": "Los requisitos establecidos en estas bases deberán reunirse en la fecha de finalización del plazo de presentación de solicitudes",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días naturales contados desde el siguiente al de la publicación del extracto de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "será de veinte días naturales contados a partir del siguiente al de la publicación del extracto de la convocatoria en el Boletín Oficial del Estado",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Según las normas del apartado 3.3 de las Bases del procedimiento de funcionarización; solicitud en modelo Anexo III",
-   "cita": "La solicitud debe presentarse respetando las normas previstas en el apartado 3.3 de las Bases",
+   "valor": "Solicitud según modelo Anexo III, conforme a las normas del apartado 3.3 de las Bases generales",
+   "cita": "La solicitud debe presentarse respetando las normas previstas en el apartado 3.3 de las Bases del procedimiento",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia y página web del Ayuntamiento",
+   "cita": "Los datos pueden ser publicados en el Boletín Oficial de la Provincia y la página web del Ayuntamiento",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Concurso-oposición según apartado 3.6 de las bases generales del procedimiento de funcionarización"
+    "Oposición con temario específico de 99 temas (bloque I de 65 temas comunes y bloque II de 34 temas específicos)"
    ],
+   "cita": "Tema 1. La Constitución Española de 1978. Estructura y contenido esencial.",
+   "nivel": "literal"
+  },
+  "temas": {
+   "valor": 99,
+   "cita": "Tema 99. El sistema de género, la diversidad cultural, el multiculturalismo y las identidades.",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Valoración en la fase de concurso según el apartado 3.6 de las Bases generales (no detallada en el texto)",
    "cita": "Será de aplicación lo dispuesto en el apartado 3.6 de las Bases del procedimiento de funcionarización",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "no",
+   "cita": "Sistema de selección será el de concurso-oposición, de acceso restringido y voluntario para el personal laboral fijo",
    "nivel": "literal"
   },
   "practicas_o_curso": {
    "valor": "no consta",
-   "cita": "Será de aplicación lo dispuesto en el apartado 3.6 de las Bases del procedimiento de funcionarización",
+   "cita": "Tema 1. La Constitución Española de 1978.",
    "nivel": "literal"
   }
  },
  "rechazados": {
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "convocar pruebas selectivas con el objeto de proveer el puesto siguiente susceptible de funcionarización"
+  },
   "plazas_discapacidad": {
    "motivo": "valor_no_en_cita",
    "valor": 0,
    "cita": "Dada la naturaleza del presente proceso, no se establece cupo de reserva de discapacidad."
-  },
-  "otros_requisitos": {
-   "motivo": "cita_no_literal",
-   "valor": "Requisitos del apartado 3.2 de las bases generales; titulaciones extranjeras con convalidación o credencial de homologación; reunirse al finalizar el plazo de solicitudes y mantenerse durante el proceso",
-   "cita": "En el caso de titulaciones obtenidas en el extranjero se deberá estar en posesión de la correspondiente convalidación o de la credencial"
-  },
-  "plazo_solicitudes": {
-   "motivo": "cita_no_literal",
-   "valor": "veinte días naturales desde el siguiente a la publicación del extracto de la convocatoria en el Boletín Oficial del Estado",
-   "cita": "plazo de presentación de solicitudes será de veinte días naturales contados a partir del siguiente al de la publicación del extracto"
-  },
-  "publicaciones": {
-   "motivo": "cita_no_literal",
-   "valor": "Boletín Oficial de la Provincia de Valladolid y página web del Ayuntamiento de Valladolid",
-   "cita": "Los datos pueden ser publicados en el Boletín Oficial de la Provincia y la página web del Ayuntamiento"
-  },
-  "temas": {
-   "motivo": "cita_no_literal",
-   "valor": 99,
-   "cita": "Tema 99. El sistema de género, la diversidad cultural, el multiculturalismo y las identidades."
   }
  }
 }

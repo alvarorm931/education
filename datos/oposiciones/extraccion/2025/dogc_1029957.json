@@ -1,0 +1,60 @@
+{
+ "proceso": "dogc:1029957",
+ "documento": {
+  "id": "dogc:1029957",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1029957",
+  "fecha": "2025-11-24",
+  "huella": "b6427a9dabbe88189832976ab6b568b06356989839011beb25d585201530041a"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:41:09+00:00",
+ "lote": "msgbatch_01UNq3BNhPPHoTK3TEJzun1h",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "enginyer/a tècnic/a industrial"
+   ],
+   "cita": "la categoria d'enginyer/a tècnic/a industrial (grup A, subgrup A2)",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "A2",
+   "cita": "la categoria d'enginyer/a tècnic/a industrial (grup A, subgrup A2)",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "disposar d'una borsa de treball, per via d'urgència, de personal temporal",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "pel sistema de concurs oposició lliure, per disposar d'una borsa de treball",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "10 días hábiles a partir del día siguiente de la publicación de la convocatoria en el DOGC",
+   "cita": "El termini de presentació de sol·licituds comptarà des de la publicació de la convocatòria corresponent al DOGC, fins a 10 dies hàbils",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "sede electrónica del Ajuntament de Tarragona",
+   "cita": "Els restants i successius anuncis es faran mitjançant anunci a la seu electrònica d'aquest Ajuntament.",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, bolsa de trabajo de personal temporal para cubrir necesidades temporales, programas temporales, vacantes o sustituciones en régimen de interinidad",
+   "cita": "disposar d'una borsa de treball, per via d'urgència, de personal temporal en la categoria",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "sede electrónica del Ajuntament de Tarragona",
+   "cita": "les persones interessades podran presentar la sol·licitud a partir del dia següent de la publicació de l'anunci"
+  }
+ }
+}

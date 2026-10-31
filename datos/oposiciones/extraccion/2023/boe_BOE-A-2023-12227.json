@@ -1,0 +1,50 @@
+{
+ "proceso": "boe:BOE-A-2023-12227",
+ "documento": {
+  "id": "bopalbacete:BOP-ALBACETE-2022-12-07-173715",
+  "fuente": "BOP-ALBACETE",
+  "url": "https://bop.dipualba.es/servicesajax/descargararchivopaginaBOP/173715",
+  "fecha": "2022-12-07",
+  "huella": "4e93d71ad496c1e0b6fc98c67bddd2ae49f3826d0a78d78440150d4c2f5053c9"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:59:08+00:00",
+ "lote": "msgbatch_012nGabRM1G4b7cEKJh1Bcx1",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Personal laboral fijo del Instituto Municipal de Deportes de Albacete (proceso de estabilización)"
+   ],
+   "cita": "seleccion de personal laboral fijo del Instituto Municipal de Deportes en el marco de la estabilizacion del empleo publico temporal",
+   "nivel": "sin_signos"
+  },
+  "titulacion": {
+   "valor": "la que se requiera en las bases específicas de cada convocatoria",
+   "cita": "Poseer la titulación que se requiera en las bases específicas que rijan en cada convocatoria",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española o requisitos del artículo 39 de la Ley 4/2011; capacidad funcional; tener cumplidos 16 años y no exceder la edad de jubilación forzosa; no haber sido separado del servicio ni hallarse inhabilitado",
+   "cita": "Tener la nacionalidad española o cumplir los requisitos establecidos en el artículo 39 de la Ley del Empleo Público de Castilla-La Mancha",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Solicitud electrónica en la web del Instituto Municipal de Deportes (www.imd-albacete.es), con opción de presentación en soporte papel en el Registro",
+   "cita": "Cumplimentándose en el modelo electrónico que figure en la web del Instituto Municipal de Deportes",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "personal laboral fijo",
+   "cita": "selección del personal laboral fijo del Instituto Municipal de Deportes en el marco de la estabilización"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "la convocatoria no especifica sistema en estas bases generales"
+  }
+ }
+}

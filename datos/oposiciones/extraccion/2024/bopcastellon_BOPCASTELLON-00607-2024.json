@@ -1,0 +1,55 @@
+{
+ "proceso": "bopcastellon:BOPCASTELLON-00607-2024",
+ "documento": {
+  "id": "bopcastellon:BOPCASTELLON-00607-2024",
+  "fuente": "BOP-CASTELLON",
+  "url": null,
+  "fecha": "2024-02-08",
+  "huella": "255bd5c7dbc8d22fa7bd2a5a23612f45c3f7a99111f2c7daf9d5b2c0ee73fdfe"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:53:56+00:00",
+ "lote": "msgbatch_01EQ4R6PVKpEwTXzXwPCmspm",
+ "no_son_bases": false,
+ "campos": {
+  "plazo_solicitudes": {
+   "valor": "10 días hábiles a contar desde el día siguiente al de la publicación del extracto en el BOP de Castellón",
+   "cita": "El termini de presentació d’instàncies serà de 10 dies hàbils a comptar a partir del dia següent",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de Anuncios de la Sede Electrónica Municipal y página web municipal (www.vinaros.es)",
+   "cita": "es publicaran únicament en el Tauler d’Anuncis de la Seu Electrònica Municipal i la pàgina web municipal",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "TÈCNIC/A AUXILIAR INFORMÀTICA"
+   ],
+   "cita": "Borsa de Treball de TÈCNIC/A AUXILIAR INFORMÀTICA, grup C, subgrup C1."
+  },
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "C1",
+   "cita": "Borsa de Treball de TÈCNIC/A AUXILIAR INFORMÀTICA, grup C, subgrup C1."
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "otro",
+   "cita": "constitució d’una Borsa de Treball de TÈCNIC/A AUXILIAR INFORMÀTICA"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "Borsa de Treball de TÈCNIC/A AUXILIAR INFORMÀTICA"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, bolsa de trabajo para TÈCNIC/A AUXILIAR INFORMÀTICA",
+   "cita": "constitució d’una Borsa de Treball de TÈCNIC/A AUXILIAR INFORMÀTICA"
+  }
+ }
+}

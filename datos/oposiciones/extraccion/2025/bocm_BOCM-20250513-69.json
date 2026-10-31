@@ -1,0 +1,60 @@
+{
+ "proceso": "bocm:BOCM-20250513-69",
+ "documento": {
+  "id": "bocm:BOCM-20250513-69",
+  "fuente": "BOCM",
+  "url": "https://www.bocm.es/bocm-20250513-69",
+  "fecha": "2025-05-13",
+  "huella": "ca7645384965b99f9be7a99f47159ca86742afecadbdc270e93eedebd84dabd0"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:45:47+00:00",
+ "lote": "msgbatch_017vJZdAmjTkBDdH14aLEdCv",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "POLMA"
+   ],
+   "cita": "para proveer cuatro (4) plazas de POLMA del Ayuntamiento de Torres de la Alameda",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "agrupación profesional",
+   "cita": "Grupo/subgrupo: agrupación profesional.",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "por procedimiento de concurso-oposición y turno libre",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 6,
+   "cita": "alcanzando un total de 6 plazas, manteniéndose el resto del contenido",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días naturales desde el día siguiente a la publicación de la reseña de la convocatoria en el BOE",
+   "cita": "será de veinte días naturales a contar desde el día siguiente a la publicación",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "BOCM, sede electrónica del Ayuntamiento (http://torresdelaalameda.sedelectronica.es) y tablón de anuncios",
+   "cita": "se publicarán en la sede electrónica del este Ayuntamiento",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "personal laboral fijo",
+   "cita": "Naturaleza: laboral. Nombramiento: definitivo-fijo."
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 6,
+   "cita": "Sistema de selección: concurso-oposición libre."
+  }
+ }
+}

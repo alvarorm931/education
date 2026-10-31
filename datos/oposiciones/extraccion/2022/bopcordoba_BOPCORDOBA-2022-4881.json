@@ -1,0 +1,107 @@
+{
+ "proceso": "bopcordoba:BOPCORDOBA-2022-4881",
+ "documento": {
+  "id": "bopcordoba:BOPCORDOBA-2022-4881",
+  "fuente": "BOP-CORDOBA",
+  "url": "https://bop.dipucordoba.es/dia/19-12-2022",
+  "fecha": "2022-12-19",
+  "huella": "423cc63a23e9ad9f8779fa025e4bd829d935a435e833e695c870d951a6dce8a9"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:25+00:00",
+ "lote": "msgbatch_01B4ETF5xB4buYCHqPiHTXzF",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Auxiliar administrativo/a",
+    "Cocinero/a escuela infantil",
+    "Dinamizador/a Guadalinfo",
+    "Dinamizador/a radio",
+    "Director/a escuela de música",
+    "Director/a escuela infantil",
+    "Educador/a infantil",
+    "Encargado/a de obras",
+    "Limpiador/a de edificios",
+    "Monitor/a escuela de música",
+    "Peón limpieza viaria",
+    "Peón limpieza viaria (discapacidad)",
+    "Socorrista piscina",
+    "Taquillero/a piscina",
+    "Técnico/a de contabilidad",
+    "Técnico/a deportivo/a"
+   ],
+   "cita": "DENOMINACION PUESTO DE TRABAJO VINCULO JORNADA TITULACIÓN EXIGIDA DOS AUXILIAR ADMINISTRATIVO/A FUNCIONARIO COMPLETA",
+   "nivel": "sin_signos"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "DOS AUXILIAR ADMINISTRATIVO/A FUNCIONARIO COMPLETA Título de Graduado en Enseñanza Secundaria Obligatoria",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Varía según plaza: desde no exigida (D.A. 6ª TREBEP) hasta Título de Graduado en ESO, Bachiller, FP 2, Diplomatura/Grado, Licenciatura en Periodismo, Título superior de Música o Técnico Superior en Educación Infantil",
+   "cita": "Título de Graduado en Enseñanza Secundaria Obligatoria, Graduado Escolar, FP 1 o equivalente",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española; capacidad funcional; tener cumplidos 16 años y no exceder la edad máxima de jubilación forzosa; no haber sido separado del servicio público ni inhabilitado; certificación negativa del Registro Central de delincuentes sexuales",
+   "cita": "Tener la nacionalidad española sin perjuicio de lo dispuesto en el artículo 57 del texto refundido",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 40,
+   "cita": "GRUPO A / SUBGRUPO A1 y ASIMILADOS 40,00 EUROS GRUPO A/ SUGBGRUPO A2 y ASIMILADOS 35,00 EUROS",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles",
+   "cita": "el plazo de presentación de solicitudes, que será de 20 días hábiles a contar desde el día siguiente a la publicación de este anuncio en el Boletín Oficial del Estado",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Modelo oficial (Anexo II) dirigido al Presidente de la Corporación; presentación manual en el Registro General del Ayuntamiento o telemática conforme al artículo 16.4 de la Ley 39/2015",
+   "cita": "podrán presentarse manualmente en el Registro General del Ayuntamiento o telemáticamente conforme a lo dispuesto en el artículo 16.4",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia de Córdoba, sede electrónica municipal, tablón de anuncios y web del Ayuntamiento",
+   "cita": "Asimismo, se publicarán en la sede electrónica de este Ayuntamiento, página web municipal y Tablón de Anuncios",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Fase de concurso de méritos: experiencia profesional (hasta 80 puntos) y formación (hasta 20 puntos)"
+   ],
+   "cita": "Sistema selectivo excepcional de estabilización del empleo temporal de larga duración: Concurso de méritos, siendo la valoración máxima de 100 puntos",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "no",
+   "cita": "Asimismo, se publicarán en la sede electrónica de este Ayuntamiento",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Toma de posesión en el plazo de un mes desde la publicación del nombramiento como funcionarios de carrera; formalización del contrato en un mes para personal laboral fijo",
+   "cita": "La toma de posesión de los aspirantes para el personal funcionario que hubiesen superado el proceso selectivo se efectuará en el plazo de un mes",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso",
+   "cita": "Se abre el plazo de presentación de solicitudes, para cubrir las plazas enumeradas en el Anexo I, mediante sistema de concurso"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 38,
+   "cita": "Nº PLAZAS DENOMINACIÓN PUESTO DE TRABAJO VINCULO JORNADA TITULACIÓN EXIGIDA DOS AUXILIAR ADMINISTRATIVO/A FUNCIONARIO COMPLETA"
+  },
+  "meritos": {
+   "motivo": "cita_no_literal",
+   "valor": "Experiencia en cuerpo/escala/categoría: 0,9 puntos/mes en el Ayuntamiento y 0,2 puntos/mes en otras AAPP (máx. 71); experiencia en la Administración Pública: 0,30 puntos/mes (máx. 9); cursos de formación: 0,25 puntos/hora (máx. 20)",
+   "cita": "Se valorará el tiempo de servicios prestados, como funcionario interino o personal laboral temporal, a razón de 0,9 puntos por mes de servicio"
+  }
+ }
+}

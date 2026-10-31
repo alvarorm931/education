@@ -1,0 +1,102 @@
+{
+ "proceso": "dogv:469362",
+ "documento": {
+  "id": "dogv:469362",
+  "fuente": "DOGV",
+  "url": "https://dogv.gva.es/datos/2026/03/26/pdf/2026_8075_es.pdf",
+  "fecha": "2026-03-26",
+  "huella": "047aff2ad40b976bd863efeeede3cf2cedb0f1abc7339c8c92a9f2c5427333eb"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:40:24+00:00",
+ "lote": "msgbatch_01E3wiYcGL8Lzho48bXWLyyb",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "APT-APF-01 subalternos"
+   ],
+   "cita": "convocar pruebas selectivas de acceso a la agrupación profesional funcionarial, APT-APF-01, de subalternos, turno libre",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "convocar pruebas selectivas de acceso a la agrupación profesional funcionarial, APT-APF-01, de subalternos",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española o de un estado miembro de la UE o con libre circulación de trabajadores; tener 16 años cumplidos y no haber alcanzado la edad de jubilación; poseer capacidades físicas y psíquicas necesarias; no estar separado ni inhabilitado para funciones públicas",
+   "cita": "tener cumplidos 16 años y no haber alcanzado la edad de jubilación",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "valenciano: acreditación mediante certificados homologados o ejercicio específico; el personal que no lo acredite deberá realizar cursos de perfeccionamiento (Conocimientos Orales o A2)",
+   "cita": "acreditarán sus conocimientos de valenciano mediante la presentación de los certificados, diplomas o títulos",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 6.11,
+   "cita": "Los derechos de examen serán de 6,11 euros.",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Exentos: grado de discapacidad igual o superior al 33 %; familia numerosa o monoparental de categoría especial; mujeres víctimas de violencia de género; personas en exclusión social acreditada. Bonificación del 10 % por presentación telemática y 50 % para familia numerosa o monoparental general",
+   "cita": "Están exentas del pago de la tasa: a) Las personas que acrediten un grado de discapacidad igual o superior al 33 %.",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "10 días hábiles desde el día siguiente a la publicación de la convocatoria en el DOGV",
+   "cita": "El plazo para la presentación de solicitudes será de 10 días hábiles",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Por vía electrónica en el portal de la Administración de la Generalitat, con Cl@ve, certificado digital o DNIe, con pago telemático de la tasa y registro electrónico",
+   "cita": "Las solicitudes se presentarán por vía electrónica, de acuerdo con lo establecido en la normativa vigente.",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Diari Oficial de la Generalitat Valenciana y portal de la Administración de la Generalitat (breu.gva.es)",
+   "cita": "se publicarán en el portal de la Administración de la Generalitat",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Ejercicio único: cuestionario tipo test de 80 preguntas teóricas, con eliminatoria de 30 de 60 puntos"
+   ],
+   "cita": "consistirá en contestar por escrito un cuestionario tipo test de 80 preguntas teóricas",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "no",
+   "cita": "Para superar la oposición será necesario obtener un mínimo de 30 puntos.",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "no se especifica en el texto",
+   "cita": "En relación con la celebración de los ejercicios de los procesos selectivos",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "oposición",
+   "cita": "por el sistema de oposición, para cubrir las plazas"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_numerico",
+   "valor": "ver anexo I",
+   "cita": "En el anexo I se establecen el número de plazas a cubrir"
+  },
+  "plazas_discapacidad": {
+   "motivo": "valor_no_numerico",
+   "valor": "cupo de reserva según anexo I",
+   "cita": "así como el cupo de reserva que corresponda en su caso, según el tipo de discapacidad"
+  },
+  "temas": {
+   "motivo": "valor_no_numerico",
+   "valor": "ver anexo IV",
+   "cita": "sobre el contenido del temario que figura en el anexo IV"
+  }
+ }
+}

@@ -1,103 +1,43 @@
 {
  "proceso": "bopt:BOPT-2026-05372",
  "documento": {
-  "id": "bopt:BOPT-2026-05372",
-  "fuente": "BOPT",
-  "url": "https://www.dipta.cat/bopt/web/anunci/360934/placa-d-oficial-a-2a-de-la-brigada-municipal-1-bases-i-convocatoria-ajuntament-creixell",
-  "fecha": "2026-06-16",
-  "huella": "787cbd1964888ac7d4eb28b03844750c63a7081cf6aa9149e813c3bdae5b6b92"
+  "id": "dogc:1047843",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1047843",
+  "fecha": "2026-06-23",
+  "huella": "0c230394497701ee7f691be3f73012f1012caf1e5497744d427cabc932cc40c9"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T08:18:12+00:00",
- "lote": "msgbatch_01BrnYw6KkevFx7at547B5g8",
+ "extraido": "2026-10-31T14:41:41+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
  "no_son_bases": false,
  "campos": {
-  "grupo": {
-   "valor": "C2",
-   "cita": "Grup C2 Naturalesa Laboral Jornada Complerta",
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "règim laboral, mitjançant sistema de concurs-oposició",
    "nivel": "literal"
   },
   "sistema": {
    "valor": "concurso-oposición",
-   "cita": "pel sistema de concursoposició, s'obre el termini de presentació de sol·licituds",
+   "cita": "mitjançant sistema de concurs-oposició",
    "nivel": "literal"
   },
-  "plazas_total": {
-   "valor": 1,
-   "cita": "Núm. de vacants 1",
-   "nivel": "literal"
-  },
-  "titulacion": {
-   "valor": "Graduat en Educació Secundària Obligatòria o equivalent",
-   "cita": "Estar en possessió del títol de Graduat en Educació Secundària Obligatòria o equivalent.",
-   "nivel": "literal"
-  },
-  "otros_requisitos": {
-   "valor": "Nacionalitat espanyola o de la UE (o cònjuge/descendents); mínim 16 anys y no superar edad de jubilación forzosa; capacidad funcional; no estar separado de la Administración; permiso de conducción B, C y CAP en vigor.",
-   "cita": "Disposar del permís de conducció de la classe B i C, i CAP (Certificat d' Aptitud Professional) en vigor",
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles desde el día siguiente a la publicación del anuncio en el DOGC",
+   "cita": "serà de 20 dies hàbils a comptar des de l'endemà a la publicació d'aquest anunci en el Diari Oficial de la Generalitat de Catalunya",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Tablón de anuncios de la sede electrónica municipal (http://creixell.eadministracio.cat) y BOPT",
-   "cita": "Es publicaran igualment al tauler d'anuncis de la seu electrònica de l'aquest Ajuntament",
-   "nivel": "literal"
-  },
-  "temas": {
-   "valor": 20,
-   "cita": "20. Gestió de riscos laborals en el treball de brigada.",
-   "nivel": "literal"
-  },
-  "practicas_o_curso": {
-   "valor": "Periodo de prueba de dos meses",
-   "cita": "Es preveu un període de prova de dos mesos.",
+   "valor": "sede electrónica del Ayuntamiento (http://creixell.eadministracio.cat)",
+   "cita": "es publicaran a la seu electrònica de l'aquest Ajuntament",
    "nivel": "literal"
   }
  },
  "rechazados": {
   "denominacion": {
    "motivo": "cita_no_literal",
-   "valor": "Oficial de segona de la brigada municipal",
-   "cita": "plaça d'oficial de segona de la brigada municipal, en règim laboral, pel sistema de concursoposició"
-  },
-  "vinculo": {
-   "motivo": "cita_no_literal",
-   "valor": "personal laboral fijo",
-   "cita": "Les bases reguladores del procés selectiu per a la cobertura definitiva d'una plaça en la categoria d'oficial de segona"
-  },
-  "idioma_cooficial": {
-   "motivo": "cita_no_literal",
-   "valor": "Català nivell elemental B1; castellà nivell B2 para quien no tenga nacionalidad española ni de país de habla oficial castellana",
-   "cita": "Posseir els coneixements de llengua catalana de nivell elemental B1, així com de llengua castellana de nivell B2"
-  },
-  "plazo_solicitudes": {
-   "motivo": "cita_no_literal",
-   "valor": "Veinte días hábiles desde el día siguiente a la publicación del anuncio en el DOGC",
-   "cita": "el termini de presentació de sol·licituds, que serà de vint dies hàbils a comptar des de l'endemà a la publicació"
-  },
-  "presentacion": {
-   "motivo": "cita_no_literal",
-   "valor": "Registro Electrónico General del Ayuntamiento o lugares del artículo 16.4 de la Ley 39/2015",
-   "cita": "es presentaran en el Registre Electrònic General d'aquest Ajuntament o en algun dels llocs previstos"
-  },
-  "ejercicios": {
-   "motivo": "cita_no_literal",
-   "valor": [
-    "Prueba de conocimiento de catalán y/o castellano (eliminatoria)",
-    "Prueba teórica tipo test sobre temario (máx. 30 puntos, eliminatoria)",
-    "Prueba práctica sobre temario específico y funciones (máx. 40 puntos, eliminatoria)",
-    "Fase de concurso: méritos (máx. 28 puntos) y entrevista (máx. 2 puntos)"
-   ],
-   "cita": "Una prova teòrica de coneixements sobre el temari (general i específic), la puntuació màxima de la prova teòrica és de 30 punts"
-  },
-  "meritos": {
-   "motivo": "cita_no_literal",
-   "valor": "Experiencia profesional en Administración (0,50/mes) y sector privado (0,10/mes), máx. 13 puntos; formación complementaria máx. 5 puntos; entrevista máx. 2 puntos",
-   "cita": "Serveis prestats a l'Administració Pública del mateix grup/subgrup de titulació o assimilat, a raó de 0,50 per cada mes treballat"
-  },
-  "bolsa": {
-   "motivo": "cita_no_literal",
-   "valor": "sí, se propone la constitución de una bolsa de trabajo con las personas aprobadas por orden de puntuación",
-   "cita": "així com la proposta de constitució de la borsa de treball amb la relació de persones aprovades"
+   "valor": "oficial de segona de la brigada municipal",
+   "cita": "aprobar las bases y la convocatoria para cobrir una plaça d'oficial de segona de la brigada municipal"
   }
  }
 }

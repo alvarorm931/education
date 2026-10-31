@@ -1,17 +1,24 @@
 {
  "proceso": "bopb:BOPB-202610156853",
  "documento": {
-  "id": "bopb:BOPB-202610156853",
-  "fuente": "BOPB",
-  "url": "https://bop.diba.cat/anunci/4004521/aprovacio-de-la-convocatoria-i-les-bases-reguladores-del-proces-selectiu-per-a-la-cobertura-definitiva-d-una-placa-de-tecnic-a-superior-arquitecte-a-de-l-ajuntament-de-sant-fruitos-de-bages-ajuntament-de-sant-fruitos-de-bages",
-  "fecha": "2026-10-28",
-  "huella": "a8a7c20a221e0f2199cd55e03476ccc9214de9bbb18e5da5b2602ca352f3d518"
+  "id": "dogc:1058003",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1058003",
+  "fecha": "2026-10-29",
+  "huella": "dc8915e0111bba32e878906d47178424e00f7cd4f6954c6ffc3acb080e8255c4"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T07:28:41+00:00",
- "lote": "msgbatch_01QUU3nKnMRQfp1xxi4asvKD",
+ "extraido": "2026-10-31T14:41:45+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
  "no_son_bases": false,
  "campos": {
+  "denominacion": {
+   "valor": [
+    "Tècnic/a superior arquitecte/a"
+   ],
+   "cita": "plaça de tècnic/a superior arquitecte/a, a torn lliure, mitjançant concurs- oposició",
+   "nivel": "literal"
+  },
   "grupo": {
    "valor": "A1",
    "cita": "subgrup de classificació A1, de la plantilla de personal funcionari de carrera",
@@ -19,7 +26,7 @@
   },
   "vinculo": {
    "valor": "funcionario de carrera",
-   "cita": "Règim: Funcionari/a de carrera (prèvia superació del període de pràctiques)",
+   "cita": "plantilla de personal funcionari de carrera de l'Ajuntament de Sant Fruitós de Bages",
    "nivel": "literal"
   },
   "sistema": {
@@ -29,91 +36,85 @@
   },
   "plazas_total": {
    "valor": 1,
-   "cita": "per a la cobertura definitiva d’una plaça de tècnic/a superior arquitecte/a",
+   "cita": "per a la cobertura definitiva d'una plaça de tècnic/a superior arquitecte/a",
    "nivel": "literal"
   },
   "titulacion": {
-   "valor": "Llicenciatura en arquitectura o titulació universitària de grau en arquitectura, o el títol que habiliti per l’exercici d’aquesta professió regulada",
+   "valor": "llicenciatura en arquitectura o titulació universitària de grau en arquitectura, o el títol que habiliti per l'exercici d'aquesta professió regulada",
    "cita": "llicenciatura en arquitectura o titulació universitària de grau en arquitectura, o el títol que habiliti",
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Nacionalitat o estat civil habilitante; edad entre 16 años y jubilación forzosa; no tener antecedentes penales ni sanciones de separación; capacidad funcional; cumplir incompatibilidades.",
-   "cita": "Haver complert 16 anys i no passar de l’edat de jubilació forçosa en el moment de finalitzar el termini",
+   "valor": "Nacionalidad española o de la UE (o supuestos asimilados); tener 16 años y no superar la edad de jubilación forzosa; no tener antecedentes penales ni separación disciplinaria; capacidad funcional; cumplir régimen de incompatibilidades.",
+   "cita": "Haver complert 16 anys i no passar de l'edat de jubilació forçosa en el moment de finalitzar el termini",
    "nivel": "literal"
   },
   "idioma_cooficial": {
-   "valor": "Català, nivell de suficiència C1 o superior (acreditable o mediante prueba)",
+   "valor": "Català: nivell C1 (suficiència) o equivalent, acreditable o mediante prueba",
    "cita": "acreditar coneixements de llengua catalana equivalents o superiors al nivell de suficiència de llengua catalana (certificat C1)",
    "nivel": "literal"
   },
   "tasa_euros": {
    "valor": 10,
-   "cita": "taxa de 10 euros corresponent als drets d’examen",
+   "cita": "l'autoliquidació del pagament de la taxa de 10 euros corresponent als drets d'examen",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Bonificación del 50% (5 euros) para aspirantes inscritos como parados en el Servei d'Ocupació de Catalunya.",
+   "cita": "S'aplicarà una bonificació del 50% (5 euros) per aquells/es aspirants que acreditin la condició d'aturats",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "Veinte días hábiles desde el día siguiente a la publicación del anuncio de la convocatoria en el Boletín Oficial del Estado",
-   "cita": "El termini de presentació de sol·licituds serà de vint dies hàbils comptats des de l’endemà de la publicació",
+   "valor": "Veinte días hábiles desde el día siguiente a la publicación del anuncio de la convocatoria en el Boletín Oficial del Estado.",
+   "cita": "El termini de presentació de sol·licituds serà de vint dies hàbils comptats des de l'endemà de la publicació",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Preferentemente de forma electrónica a través de la sede electrónica municipal; también presencialmente en el registro general o en otros registros previstos",
+   "valor": "Preferentemente de forma electrónica mediante la solicitud en la sede electrónica municipal; también presencial en el registro general o por los medios del artículo 16 LPAC.",
    "cita": "preferentment de forma electrònica a través de la sol·licitud que trobareu en el següent enllaç",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "BOPB, DOGC, BOE, tablón de edictos y sede electrónica municipal, y web del Ayuntamiento",
-   "cita": "publicar els anuncis o extractes corresponents al Diari Oficial de la Generalitat de Catalunya i al Butlletí Oficial de l’Estat, així com al tauler d’ edictes i a la seu electrònica municipal",
+   "valor": "Tablón de edictos y sede electrónica municipal; la carpeta del proceso selectivo en la web municipal; anuncios en BOP, DOGC y BOE.",
+   "cita": "publicar els anuncis o extractes corresponents al Diari Oficial de la Generalitat de Catalunya i al Butlletí Oficial de l'Estat, així com al tauler d'edictes",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Primer exercici: prova de llengua catalana i llengua castellana (si no acreditada)",
-    "Segon exercici: prova teòrica sobre temari general i específic, eliminatoria, 30 puntos",
-    "Tercer exercici: prueba práctica y de conocimientos del temario específico, eliminatoria, 50 puntos"
+    "Primer ejercicio: prueba de lengua catalana y castellana (si procede), eliminatoria",
+    "Segundo ejercicio: prueba teórica sobre temario general y específico, 30 puntos, mínimo 15",
+    "Tercer ejercicio: prueba práctica sobre temario específico, 50 puntos, mínimo 25",
+    "Fase de concurso: méritos, máximo 20 puntos"
    ],
-   "cita": "El segon exercici, tindrà caràcter eliminatori i consistirà en respondre per escrit preguntes curtes i/o preguntes tipus test",
+   "cita": "El segon exercici, tindrà caràcter eliminatori i consistirà en respondre per escrit preguntes curtes",
    "nivel": "literal"
   },
   "meritos": {
-   "valor": "Experiencia profesional hasta 10 puntos; titulación adicional hasta 1; certificado ACTIC hasta 1; formación no reglada hasta 5; entrevista hasta 3 puntos",
-   "cita": "EXPERIÈNCIA PROFESSIONAL (fins a un màxim de 10 punts)",
+   "valor": "Experiencia profesional hasta 10 puntos; titulación adicional hasta 1; ACTIC o equivalente hasta 1; formación oficial no reglada hasta 5; entrevista profesional estructurada hasta 3.",
+   "cita": "Experiència professional per haver treballat en administracions públiques locals, realitzant funcions pròpies",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "Sí, para cubrir la no superación del período de prácticas o necesidades temporales de nombramiento de la plaza.",
+   "cita": "Finalitzat el procés de selecció s'elaborarà per rigorós ordre de puntuació una llista de candidats/es",
    "nivel": "literal"
   },
   "practicas_o_curso": {
-   "valor": "Periodo de prácticas de 6 meses desde el nombramiento como funcionario en prácticas",
-   "cita": "haurà de superar, com a part del procés selectiu, un període de pràctiques d’una durada de 6 mesos",
+   "valor": "Periodo de prácticas de 6 meses desde el nombramiento como funcionario en prácticas.",
+   "cita": "haurà de superar, com a part del procés selectiu, un període de pràctiques d'una durada de 6 mesos",
    "nivel": "literal"
   }
  },
  "rechazados": {
-  "denominacion": {
-   "motivo": "cita_no_literal",
-   "valor": [
-    "Tècnic/a superior arquitecte/a"
-   ],
-   "cita": "Denominació: Tècnic/a superior arquitecte/a - Adscripció: Àmbit de Promoció del Territori"
-  },
   "plazas_turno_libre": {
    "motivo": "valor_no_en_cita",
    "valor": 1,
    "cita": "a torn lliure, mitjançant concurs- oposició i segons el redactat"
   },
-  "exenciones_tasa": {
-   "motivo": "cita_no_literal",
-   "valor": "Bonificación del 50% (5 euros) para aspirantes inscritos como parados en el Servei d’Ocupació de Catalunya",
-   "cita": "S’aplicarà una bonificació del 50% (5 euros) per aquells/es aspirants que acreditin la condició d’aturats"
-  },
   "temas": {
-   "motivo": "valor_no_en_cita",
-   "valor": 72,
-   "cita": "18. Ordenances i reglaments locals. Procediment d’elaboració i aprovació. Els bans."
-  },
-  "bolsa": {
    "motivo": "cita_no_literal",
-   "valor": "Sí, para cubrir necesidades de nombramientos temporales o sustituir al funcionario en prácticas si no las supera (vigencia dos años)",
-   "cita": "Finalitzat el procés de selecció s’elaborarà per rigorós ordre de puntuació una llista de candidats/es"
+   "valor": 72,
+   "cita": "Temari general: 18 temes; temari específic: 54 temes (total 72 preguntes)"
   }
  }
 }

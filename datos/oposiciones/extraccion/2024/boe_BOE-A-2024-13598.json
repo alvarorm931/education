@@ -1,0 +1,65 @@
+{
+ "proceso": "boe:BOE-A-2024-13598",
+ "documento": {
+  "id": "dogc:988066",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=988066",
+  "fecha": "2024-06-14",
+  "huella": "1d097a340b58958f3bc2c53fe22980562aef6e08852779968036b4f831147ac1"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:48:57+00:00",
+ "lote": "msgbatch_016yasWxkCXTWjPAb8LjB3ob",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "C1",
+   "cita": "clase: Policia Local, grupo C1",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "oposición libre para cubrir en propiedad 1 plaza de agente vacante",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "oposición libre para cubrir en propiedad 1 plaza de agente vacante",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "oposición libre para cubrir en propiedad 1 plaza de agente vacante",
+   "nivel": "literal"
+  },
+  "plazas_turno_libre": {
+   "valor": 1,
+   "cita": "oposición libre para cubrir en propiedad 1 plaza de agente vacante",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles, a contar desde el siguiente al de la publicación del anuncio de la convocatoria en el DOGC",
+   "cita": "dentro del plazo improrrogable de 20 días hábiles, a contar desde el siguiente al de la publicación",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia de Barcelona, DOGC, BOE, tablón de anuncios y página web del Ayuntamiento (www.palleja.cat, sede electrónica)",
+   "cita": "Publicar los correspondientes anuncios en el Boletín Oficial de la provincia de Barcelona",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Agente de la Policía Local"
+   ],
+   "cita": "convocar oposición libre para cubrir en propiedad 1 plaza de agente vacante"
+  },
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Registre General del Ayuntamiento",
+   "cita": "las solicitudes se han de presentar en el Registre General del Ayuntamiento"
+  }
+ }
+}

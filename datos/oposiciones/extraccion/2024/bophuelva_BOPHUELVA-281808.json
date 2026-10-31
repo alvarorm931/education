@@ -1,0 +1,83 @@
+{
+ "proceso": "bophuelva:BOPHUELVA-281808",
+ "documento": {
+  "id": "bophuelva:BOPHUELVA-281808",
+  "fuente": "BOP-HUELVA",
+  "url": "https://s2.diphuelva.es/portalweb/bope/anuncios/Anuncio_281808_BOP-223_2024.pdf",
+  "fecha": "2024-11-15",
+  "huella": "37ba21f2200fb6af08b6802f50eb9051f2167b8b0a091eaa98a88c2bfce65116"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:50:23+00:00",
+ "lote": "msgbatch_01LpyYajgKGX9NyHT1uvynbR",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Peón barrendero",
+    "Peón jardinero"
+   ],
+   "cita": "10 peones barrenderos (94431016)",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Graduado Escolar o equivalente",
+   "cita": "La titulación mínima requerida para acceder a las plazas indicadas es el Graduado Escolar o equivalente.",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Solicitud de participación (Anexo I) presentada en la reunión informativa del Ayuntamiento con documentación acreditativa; reclamaciones en el Registro General presencial o telemático",
+   "cita": "Las reclamaciones podrán ser presentadas en el Registro General de manera presencial o telemática",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, para la contratación de personal laboral temporal por orden de prelación",
+   "cita": "Tras la resolución del proceso de selección se procederá al llamamiento de la persona según el orden de prelación.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "laboral temporal",
+   "cita": "Bases Reguladoras de los procesos de selección de personal laboral temporal para la ejecución de la subvención"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso",
+   "cita": "El sistema de selección será el de concurso de méritos"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 13,
+   "cita": "10 peones barrenderos (94431016). 3 peones jardineros (95121019)"
+  },
+  "otros_requisitos": {
+   "motivo": "cita_no_literal",
+   "valor": "Nacionalidad española o extranjero con residencia legal; capacidad funcional; tener 16 años cumplidos; no haber sido separado del servicio de Administraciones Públicas; inscripción como demandante de empleo no ocupado en el SAE; edad entre 18 y 35 años o 45 años o más.",
+   "cita": "Encontrarse en situación laboral de desempleo o demandantes no ocupados. Tener edad comprendida entre 18 y 35 años"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "Se abrirá tras la publicación del anuncio en el BOP, en el plazo del punto b) del apartado 6 de las Bases",
+   "cita": "se abrirá el plazo de presentación de solicitudes establecido en el punto b) del apartado 6 de dichas Bases, una vez publicado este anuncio en el BOP"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Tablón de Anuncios de la Corporación y sede electrónica del Ayuntamiento de Nerva",
+   "cita": "se publicará la relación provisional de admitidos excluidos en la sede electrónica del Ayuntamiento de Nerva y en el Tablón de Anuncios"
+  },
+  "ejercicios": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Concurso de méritos: valoración de méritos formativos y otros criterios"
+   ],
+   "cita": "El sistema de selección será el de concurso de méritos, consistente en la valoración de méritos"
+  },
+  "meritos": {
+   "motivo": "cita_no_literal",
+   "valor": "Formación complementaria máximo 20 puntos (5 puntos por cada 10 horas de curso de prevención de riesgos laborales; 2 puntos por cada 10 horas de cursos relacionados). Otros criterios máximo 40 puntos (víctima de violencia de género 10; discapacidad 10; carné de conducir clase B 10; desempleo de larga duración más de 365 días 10)",
+   "cita": "Por cada 10 horas de curso de prevención de riesgos laborales relacionados con el puesto a cubrir: 5 puntos"
+  }
+ }
+}

@@ -1,0 +1,63 @@
+{
+ "proceso": "dog:DOG-20240307-AnuncioL358-150224-0001",
+ "documento": {
+  "id": "dog:DOG-20240307-AnuncioL358-150224-0001",
+  "fuente": "DOG",
+  "url": "https://www.xunta.gal/dog/Publicados/2024/20240307/AnuncioL358-150224-0001_es.html",
+  "fecha": "2024-03-07",
+  "huella": "643e2b5b86aa21b94765884f81575ecb77d2cdeed05a5cfeefaf382efe13c0ed"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:53:48+00:00",
+ "lote": "msgbatch_01EQ4R6PVKpEwTXzXwPCmspm",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Conductor/chófer",
+    "Operario servicios varios",
+    "Peón obras",
+    "Jardinero/a-peón medio ambiente"
+   ],
+   "cita": "Dos plazas de conductor/chófer de la plantilla de personal laboral fijo, pertenecientes al grupo V",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "V",
+   "cita": "pertenecientes al grupo V, mediante el sistema de concurso, en turno libre",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "de la plantilla de personal laboral fijo, pertenecientes al grupo V",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "mediante el sistema de concurso, en turno libre, dentro del proceso extraordinario",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles, a contar desde el siguiente al de la publicación de este anuncio en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes será de veinte días hábiles, a contar desde el siguiente",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "En la forma prevista en las propias bases",
+   "cita": "Los sucesivos anuncios referentes a esta convocatoria, cuando proceda de conformidad con las bases, se harán públicos en la forma prevista en las propias bases.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 9,
+   "cita": "Dos plazas de conductor/chófer de la plantilla de personal laboral fijo"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 9,
+   "cita": "mediante el sistema de concurso, en turno libre, dentro del proceso extraordinario de estabilización"
+  }
+ }
+}

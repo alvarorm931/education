@@ -1,47 +1,105 @@
 {
  "proceso": "boe:BOE-A-2026-19238",
  "documento": {
-  "id": "dogv:484108",
-  "fuente": "DOGV",
-  "url": "https://dogv.gva.es/datos/2026/07/22/pdf/2026_22801_es.pdf",
-  "fecha": "2026-07-22",
-  "huella": "c5dadffec7955bc41d4d165cb47f8d4c1d301de26f2f941c0512fd0734fa31f3"
+  "id": "bopvalencia:BOPVALENCIA-2026-07942",
+  "fuente": "BOP-VALENCIA",
+  "url": "https://bop.dival.es/bop/downloads?anuncioNumReg=2026/07942&lang=va",
+  "fecha": "2026-06-30",
+  "huella": "c806d56b620a60b3a41c12a3bfab20bdfd1ed15d1e04ae64b9fbbc7ec3a78d56"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T07:39:57+00:00",
- "lote": "msgbatch_013q7o24qMms8ZNZdwMNkW1L",
+ "extraido": "2026-10-31T14:41:43+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
  "no_son_bases": false,
  "campos": {
-  "denominacion": {
-   "valor": "auxiliar de ayuda a domicilio",
-   "cita": "seis plazas de auxiliar de ayuda a domicilio, por el sistema de concurso-oposición, naturaleza laboral",
-   "nivel": "literal"
-  },
   "vinculo": {
    "valor": "personal laboral fijo",
-   "cita": "la selección, como personal laboral fijo, de seis plazas de auxiliar de ayuda a domicilio",
+   "cita": "Relació de servicis: personal laboral fixe.",
    "nivel": "literal"
   },
   "sistema": {
    "valor": "concurso-oposición",
-   "cita": "seis plazas de auxiliar de ayuda a domicilio, por el sistema de concurso-oposición, naturaleza laboral",
+   "cita": "Concurs-oposició, sent necessari superar la fase d’oposició per a poder avaluar la fase de concurs.",
    "nivel": "literal"
   },
   "plazas_total": {
    "valor": 6,
-   "cita": "la selección, como personal laboral fijo, de seis plazas de auxiliar de ayuda a domicilio",
+   "cita": "convocatòria de sis places d'auxiliar d'ajuda a domicili (SAD), subgrup C2. Convocatòria 11/2026.",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Graduat en ESO o titulació equivalent, més qualificació professional d'atenció sociosanitària a persones en el domicili (certificat de professionalitat o títol equivalent previst en la base 4.1)",
+   "cita": "Graduat en Educació Secundària Obligatòria (ESO) o titulació equivalent, i a més algun dels que s’indiquen a continuació.",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 25,
+   "cita": "s’hauran de pagar 25,00 € en drets d’examen.",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Aspirants en situació d'atur que no reben cap prestació econòmica ni subsidi, acreditada amb certificat del SEPE i vida laboral d'antiguitat no superior a un mes",
+   "cita": "No estaran subjectes a la taxa aquelles persones que es troben en situació d’atur i que, a més, no reben cap prestació econòmica ni subsidi.",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "diez días hábiles contados a partir del día siguiente a la publicación de este anuncio en el Boletín Oficial del Estado",
-   "cita": "El plazo de presentación de solicitudes será de diez días hábiles contados a partir del día siguiente a la publicación",
+   "valor": "Deu dies hàbils següents a la publicació de la convocatòria en el BOE",
+   "cita": "El termini serà de DEU DIES HÀBILS següents al de la publicació de la convocatòria en el Butlletí Oficial de l’Estat -BOE-.",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Registre electrònic de l'Ajuntament d'Alzira, amb certificat de firma electrònica (ACCV, FNMT o DNIe), adjuntant full d'autobaremació i justificant de pagament de la taxa",
+   "cita": "Per a poder participar en el procés selectiu les persones interessades hauran de presentar per registre electrònic d’este Ajuntament la sol·licitud",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Boletín Oficial de la Provincia de Valencia (cuando proceda) y web municipal www.alzira.es, apartado «Empleo público y Recursos Humanos»",
-   "cita": "Los sucesivos anuncios, referentes a esta convocatoria, se publicarán únicamente en el Boletín Oficial de la Provincia de Valencia",
+   "valor": "Seu electrònica municipal, web municipal (alzira.es), BOP de València; extracte al DOGV y BOE",
+   "cita": "Publique's íntegrament a la seu electrònica municipal i en el Butlletí Oficial de la Província de València i en extracte al DOGV i el BOE",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Primer exercici, prova teòrica test sobre temari general (20 punts, no eliminatòria)",
+    "Primer exercici, prova pràctica i de coneixements del temari específic (30 punts, eliminatòria, mínim 15)",
+    "Segon exercici, prova de coneixements de valencià: traducció (5 punts, no eliminatòria)",
+    "Tercer exercici, entrevista conductual estructurada (15 punts, no eliminatòria)"
+   ],
+   "cita": "Prova teòrica test, de caràcter obligatori però no eliminatori (20 punts).",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Experiència (màx. 12 punts); formació i titulació (titulacions complementàries màx. 2; cursos de formació màx. 10; coneixement de valencià màx. 3; idiomes comunitaris màx. 3); fase de concurs total 30 punts",
+   "cita": "S’atorgaran fins a un màxim de 12 punts pels serveis efectius prestats",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "Sí, borsa de treball amb les persones no seleccionades per a cobrir vacants, substitucions temporals o acumulacions de tasques",
+   "cita": "Amb els resultats, s’obtindrà una borsa de treball amb les persones que no resulten seleccionades per a ocupar els llocs",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Període de pràctiques de 2 mesos per a personal laboral, amb entrevista d'acollida i entrevista d'avaluació (mínim 5 sobre 10)",
+   "cita": "Esta fase consistix en un període de practiques, que tindrà una durada de 4 mesos en el cas del personal funcionari i de 2 mesos en el cas de personal laboral",
    "nivel": "literal"
   }
  },
- "rechazados": {}
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Auxiliar de Ajuda a Domicili (SAD)"
+   ],
+   "cita": "Auxiliar Ajuda a domicili (SAD) subgrup C2 pel sistema de concurs-oposició lliure"
+  },
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "C2",
+   "cita": "Auxiliar Ajuda a domicili (SAD) subgrup C2 pel sistema de concurs-oposició lliure"
+  },
+  "temas": {
+   "motivo": "valor_no_en_cita",
+   "valor": 20,
+   "cita": "Temari general 1. La Constitució Espanyola de 1978."
+  }
+ }
 }

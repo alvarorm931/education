@@ -1,0 +1,70 @@
+{
+ "proceso": "bocm:BOCM-20240903-64",
+ "documento": {
+  "id": "bocm:BOCM-20240903-64",
+  "fuente": "BOCM",
+  "url": "https://www.bocm.es/bocm-20240903-64",
+  "fecha": "2024-09-03",
+  "huella": "bddf2bbbb9eb38bed05d597dad4655698ff553977631898a689563c2a8950001"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:49:02+00:00",
+ "lote": "msgbatch_016yasWxkCXTWjPAb8LjB3ob",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Policía Local de Galapagar, escala de Administración Especial, subescala de Servicios Especiales, clase de Policía Local, categoría de Policía"
+   ],
+   "cita": "Cuerpo de Policía Local del Ayuntamiento de Galapagar (Madrid), correspondientes al subgrupo C1 de titulación",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C1",
+   "cita": "correspondiente al subgrupo C1 de titulación, escala de Administración Especial",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "Cuerpo de Policía Local del Ayuntamiento de Galapagar (Madrid), correspondientes al subgrupo C1 de titulación",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "cubrir mediante procedimiento de concurso-oposición en turno reserva para militares profesionales",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 2,
+   "cita": "para cubrir mediante procedimiento de concurso-oposición en turno reserva para militares profesionales de tropa y marinería de dos plazas",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Cinco días hábiles para subsanar, contados desde el siguiente a la publicación del extracto en el BOCM",
+   "cita": "dispondrán de un plazo único e improrrogable de cinco días hábiles, contados a partir del siguiente",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de anuncios de empleo público de la sede electrónica del Ayuntamiento de Galapagar y extracto en el Boletín Oficial de la Comunidad de Madrid",
+   "cita": "se hace pública mediante su inserción en el tablón de anuncios de empleo público de la sede electrónica del Ayuntamiento",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 0,
+   "cita": "convocatoria para la provisión mediante concurso-oposición libre reservadas para militares profesionales de tropa y marinería"
+  },
+  "plazas_promocion_interna": {
+   "motivo": "valor_no_en_cita",
+   "valor": 0,
+   "cita": "en turno reserva para militares profesionales de tropa y marinería de dos plazas de policía"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "no",
+   "cita": "no figuran datos de creación de bolsa o lista de espera en el texto"
+  }
+ }
+}

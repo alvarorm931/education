@@ -1,0 +1,53 @@
+{
+ "proceso": "bophuelva:BOPHUELVA-279210",
+ "documento": {
+  "id": "bophuelva:BOPHUELVA-279210",
+  "fuente": "BOP-HUELVA",
+  "url": "https://s2.diphuelva.es/portalweb/bope/anuncios/Anuncio_279210_BOP-221_2024.pdf",
+  "fecha": "2024-11-13",
+  "huella": "aa822cb50ba82c0cf4849bfef58759703bffec532a1b838dc8bb62fbd122f905"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:50:30+00:00",
+ "lote": "msgbatch_01LpyYajgKGX9NyHT1uvynbR",
+ "no_son_bases": false,
+ "campos": {
+  "plazo_solicitudes": {
+   "valor": "diez días hábiles a contar desde el día siguiente a la publicación de este anuncio en el Boletín Oficial de la Provincia",
+   "cita": "que será de diez días hábiles a contar desde el día siguiente a la publicación de este anuncio",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "sede electrónica del ayuntamiento https://paternadelcampo.sedelectronica.es",
+   "cita": "El texto íntegro de las bases se publicarán en sede electrónica del ayuntamiento",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Administrativo de la Escala de Administración General",
+   "cita": "constitución de una bolsa de empleo para cubrir las posibles vacantes en puestos de Administrativo de la Escala de Administración General"
+  },
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "C1",
+   "cita": "Administrativo de la Escala de Administración General, Grupo/Subgrupo C/C1."
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "otro",
+   "cita": "constitución de una bolsa de empleo para cubrir las posibles vacantes"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "otro",
+   "cita": "constitución de una bolsa de empleo para cubrir las posibles vacantes"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, bolsa de empleo para cubrir las posibles vacantes en puestos de Administrativo",
+   "cita": "para la constitución de una bolsa de empleo para cubrir las posibles vacantes"
+  }
+ }
+}

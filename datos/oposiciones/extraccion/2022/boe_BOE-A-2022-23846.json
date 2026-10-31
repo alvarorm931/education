@@ -1,0 +1,103 @@
+{
+ "proceso": "boe:BOE-A-2022-23846",
+ "documento": {
+  "id": "boe:BOE-A-2022-23846",
+  "fuente": "BOE",
+  "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2022-23846",
+  "fecha": "2022-12-30",
+  "huella": "6e59e09caccae74faab8c7825c13d4df14f6327f7f447772b11dff8bf3e99ab1"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:55:54+00:00",
+ "lote": "msgbatch_014eT3dLLVopBnuVgQ4syWD9",
+ "no_son_bases": false,
+ "campos": {
+  "sistema": {
+   "valor": "concurso",
+   "cita": "El proceso selectivo se realizará mediante el sistema de concurso",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 11,
+   "cita": "Se convoca proceso selectivo para cubrir once plazas, para la contratación como Doctor/a Fuera de Convenio",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Título de Doctor/a con una antigüedad mínima de tres años desde la lectura y aprobación de la tesis doctoral",
+   "cita": "Estar en posesión del título de Doctor/a con una antigüedad mínima de tres años.",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad conforme al artículo 26.2 de la Ley 14/2011 (española, UE, cónyuge de español o UE, residentes legales extranjeros, o incluidos en tratados de libre circulación); experiencia profesional acreditada en el certificado correspondiente",
+   "cita": "Nacionalidad: De acuerdo con lo dispuesto en el artículo 26.2 de la Ley 14/2011, de 1 de junio de la Ciencia, la Tecnología y la Innovación",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 31.1,
+   "cita": "El importe de la tasa por derechos de examen será, con carácter general, de 31,10 euros",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Discapacidad igual o superior al 33 %; demandantes de empleo con requisitos; familias numerosas (exención 100 % categoría especial, 50 % general); víctimas del terrorismo",
+   "cita": "Estarán exentos del pago de esta tasa: a) Las personas con un grado de discapacidad igual o superior al 33 por ciento",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Veinte días hábiles desde el día hábil siguiente a la publicación de la convocatoria en el BOE",
+   "cita": "la solicitud deberá presentarse en el plazo de veinte días hábiles contados a partir del día hábil siguiente",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Solo por vía electrónica, en Inscripción en Pruebas Selectivas del Punto de Acceso General, con Cl@ve",
+   "cita": "Las solicitudes de participación se presentarán únicamente por vía electrónica",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "BOE, Punto de Acceso General (www.administracion.gob.es), web del Ministerio de Ciencia e Innovación y web del Instituto de Salud Carlos III",
+   "cita": "se publicará en el «Boletín Oficial del Estado», en el Punto de Acceso General",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Primera fase de concurso (eliminatoria, hasta 40 puntos): exposición oral de méritos y debate",
+    "Segunda fase de concurso: exposición oral de visión y líneas de evolución del perfil científico (hasta 20 puntos)"
+   ],
+   "cita": "La primera fase de concurso, de carácter eliminatorio, que tiene por objeto la comprobación y calificación de los méritos",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Primera fase, hasta 40 puntos: I+D+i, publicaciones, dirección de tesis, comunicaciones, asesoramiento científico, entre otros",
+   "cita": "En esta fase del concurso se valorarán los méritos relacionados directamente con el perfil y tareas de la plaza, hasta un máximo de 40 puntos",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, lista de aspirantes suplentes para sustituir bajas durante doce meses desde la formalización del contrato",
+   "cita": "El periodo máximo durante el que podrán efectuarse estas sustituciones y la vigencia, por tanto, de la referida lista de aspirantes suplentes será de doce meses",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Periodo de prueba de tres meses",
+   "cita": "Una vez formalizado el contrato e incorporada la persona seleccionada, esta deberá superar un periodo de prueba de tres meses.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Doctor/a Fuera de Convenio"
+   ],
+   "cita": "personal laboral fijo, Doctor/a Fuera de Convenio, en el marco de la estabilización de empleo temporal"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "personal laboral fijo",
+   "cita": "convocar proceso selectivo para la contratación de personal laboral fijo, Doctor Fuera de Convenio"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 11,
+   "cita": "Forma de acceso, se consignará «L» (acceso Libre)"
+  }
+ }
+}

@@ -1,0 +1,45 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2025-4469",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2025-4469",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2025/07/07_126/2025_004469.pdf",
+  "fecha": "2025-07-07",
+  "huella": "f0619b39ebbb7f07fedcbf1ee597eda58fa56da2065ba6b20d3fa77754d0e05b"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:45:09+00:00",
+ "lote": "msgbatch_016re6aGcimwSVmdrWa6qBd9",
+ "no_son_bases": false,
+ "campos": {
+  "plazo_solicitudes": {
+   "valor": "diez días naturales, contados a partir del siguiente a la publicación del extracto de la convocatoria en el Boletín Oficial de la Provincia de Alicante",
+   "cita": "El plazo de presentación de instancias será de diez días naturales, contados a partir del siguiente a la publicación del extracto",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Sede electrónica del Ayuntamiento teuladamoraira.sedelectronica.es, donde están disponibles las bases",
+   "cita": "que están a disposición de los interesados en la sede electrónica del Ayuntamiento teuladamoraira.sedelectronica.es",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Profesor/a de Música, especialidad de Trompeta"
+   ],
+   "cita": "Profesor/a de Música, personal laboral asimilado al grupo A2 del Ayuntamiento de Teulada, en la especialidad de TROMPETA."
+  },
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "A2",
+   "cita": "Profesor/a de Música, personal laboral asimilado al grupo A2 del Ayuntamiento de Teulada"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "otro",
+   "cita": "personal laboral asimilado al grupo A2 del Ayuntamiento de Teulada"
+  }
+ }
+}

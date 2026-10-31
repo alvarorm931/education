@@ -1,0 +1,58 @@
+{
+ "proceso": "dogc:1029117",
+ "documento": {
+  "id": "dogc:1029117",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1029117",
+  "fecha": "2025-11-12",
+  "huella": "525b9a54cd2a4d54fe78ef6b7a45f52849169df0b8e1041c07c3f894d88efebe"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:41:24+00:00",
+ "lote": "msgbatch_01UNq3BNhPPHoTK3TEJzun1h",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "A2",
+   "cita": "grup A, subgrup A2, adscrita a l'àrea de Govern obert i administració digital",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "personal funcionari de carrera, enquadrada en l'escala d'administració general",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "pel sistema de concurs oposició en torn lliure",
+   "nivel": "literal"
+  },
+  "plazas_turno_libre": {
+   "valor": 1,
+   "cita": "pel sistema de concurs oposició en torn lliure, d'una plaça de tècnic/a mitjà/na",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles contados a partir del día siguiente a la publicación de la convocatoria en el DOGC",
+   "cita": "El termini de presentació de sol·licituds és de vint dies hàbils comptadors a partir de l'endemà de la publicació",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "tablón de anuncios electrónico del Ayuntamiento de Olot",
+   "cita": "es faran públics únicament en el tauler d'anuncis electrònic de l'Ajuntament d'Olot",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "plaza de tècnic/a mitjà/na, escala d'administració general, subescala tècnica mitjana",
+   "cita": "una plaça de tècnic/a mitjà/na, personal funcionari de carrera, enquadrada en l'escala d'administració general"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 1,
+   "cita": "una plaça de tècnic/a mitjà/na, personal funcionari de carrera"
+  }
+ }
+}

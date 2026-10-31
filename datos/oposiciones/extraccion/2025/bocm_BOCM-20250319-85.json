@@ -1,0 +1,60 @@
+{
+ "proceso": "bocm:BOCM-20250319-85",
+ "documento": {
+  "id": "bocm:BOCM-20250319-85",
+  "fuente": "BOCM",
+  "url": "https://www.bocm.es/bocm-20250319-85",
+  "fecha": "2025-03-19",
+  "huella": "0484ff508fbb42277502e470b97257899a989cfa192454975c7b6b3e13de63b4"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:46:22+00:00",
+ "lote": "msgbatch_01MQzQCLMZKxUrrPMAj7dr53",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "POLMA"
+   ],
+   "cita": "Denominación del puesto: POLMA.",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "agrupación profesional",
+   "cita": "Grupo/subgrupo: agrupación profesional.",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "por procedimiento de concurso-oposición y turno libre",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 4,
+   "cita": "Número de vacantes: cuatro (4).",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días naturales a contar desde el día siguiente a la publicación de la reseña de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "que será de 20 días naturales a contar desde el día siguiente a la publicación",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Comunidad de Madrid; sede electrónica del Ayuntamiento (http://torresdelaalameda.sedelectronica.es) y tablón de anuncios",
+   "cita": "se publicarán en la sede electrónica del este Ayuntamiento",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "personal laboral fijo",
+   "cita": "Naturaleza: laboral. Nombramiento: definitivo-fijo."
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 4,
+   "cita": "por procedimiento de concurso-oposición y turno libre"
+  }
+ }
+}

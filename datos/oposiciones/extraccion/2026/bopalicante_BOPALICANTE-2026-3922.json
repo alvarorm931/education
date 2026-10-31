@@ -1,0 +1,45 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2026-3922",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2026-3922",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2026/05/25_96/2026_003922.pdf",
+  "fecha": "2026-05-25",
+  "huella": "7e20cb1eaeb83c01e91729ef8fd21eee2a3ec0f57d0ba3d3890942c4cf77adf1"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:42:03+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Cuidador/a"
+   ],
+   "cita": "provisión en propiedad de 9 plazas de cuidador/a con destino al OAL Parra Conca",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mediante el sistema de concurso oposición reservado al turno libre",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 9,
+   "cita": "provisión en propiedad de 9 plazas de cuidador/a con destino al OAL Parra Conca",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Página Web del Ayuntamiento de Villajoyosa, apartado Ofertas de Empleo – Convocatorias ya publicadas pero no finalizadas- Organismos Autónomos",
+   "cita": "El texto íntegro de la citada Resolución puede ser consultado en la página Web del Ayuntamiento de Villajoyosa",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 9,
+   "cita": "mediante el sistema de concurso oposición reservado al turno libre"
+  }
+ }
+}

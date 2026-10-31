@@ -1,0 +1,60 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2026-723",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2026-723",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2026/02/09_26/2026_000723.pdf",
+  "fecha": "2026-02-09",
+  "huella": "75a0cc85374027a2227c8177477df4ee9737f05e3d7fce80ebad756c58fc9666"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:42:22+00:00",
+ "lote": "msgbatch_01W17mR271uYfWYL6CuSdriL",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Administrativo (Grupo C1)"
+   ],
+   "cita": "CONSTITUCIÓN BOLSA DE TRABAJO DE ADMINISTRATIVO (GRUPO C1)",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C1",
+   "cita": "bolsa de empleo de Administrativos (Grupo C1)",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "para la ejecución de programas de carácter temporal, cubrir vacantes con carácter interino",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Diez días hábiles contados a partir del día siguiente a la publicación del anuncio en el BOP de Alicante",
+   "cita": "será de diez d ías hábiles contados a partir del día siguiente al de la publicación del anuncio",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Presentación de solicitudes según las bases, publicadas en la sede electrónica y la web municipal",
+   "cita": "El texto íntegro de las bases específicas reguladoras de la convocatoria estará a disposición de los interesado",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de Edictos de la sede electrónica del Ayuntamiento y página web del Ayuntamiento",
+   "cita": "estará a disposición de los interesado en el Tablón de Edictos de la sede electrónica del Ayuntamiento",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, para ejecución de programas de carácter temporal, cubrir vacantes con carácter interino y cualquier otra necesidad del Ayuntamiento",
+   "cita": "para la constitución de una bolsa de empleo de Administrativos (Grupo C1)",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso",
+   "cita": "constituir una bolsa de empleo de Administrativos (Grupo C1), para la ejecución de programas"
+  }
+ }
+}

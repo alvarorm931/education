@@ -1,0 +1,108 @@
+{
+ "proceso": "boplleida:BOPLLEIDA-2026-3258",
+ "documento": {
+  "id": "boplleida:BOPLLEIDA-2026-3258",
+  "fuente": "BOP-LLEIDA",
+  "url": "https://ebop.diputaciolleida.cat/aplicacions/bop/bopV1/fitxers/pdf/2026/82/20268203258.pdf",
+  "fecha": "2026-04-30",
+  "huella": "8354b0be6d9dfd05bb90f26a13f70f5a421e6f19a6171f9604bdf5659e64bae6"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:41:43+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Plazas de personal funcionario y laboral del Ayuntamiento de Mollerussa (procesos selectivos generales)"
+   ],
+   "cita": "Bases Reguladores Generals dels Processos Selectius de Personal Funcionari i Laboral de l’Ajuntament de Mollerussa",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "Preferentment, el sistema de selecció per al personal funcionari de carrera i laboral fix serà el de concurs–oposició",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Según grupo: A1 grado o licenciatura; A2 grado o diplomatura; B técnico superior; C1 bachiller o técnico; C2 graduado en ESO o certificado de estudios; AP la que determine la RLT",
+   "cita": "Estar en possessió de la titulació oficial exigida a les bases específiques corresponents",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Tener 16 años cumplidos y no superar la edad máxima; nacionalidad española o de la UE o de los supuestos legales; capacidad funcional; no estar separado del servicio de ninguna administración pública ni inhabilitado",
+   "cita": "Haver complert 16 anys i no superar l’edat establerta per la normativa vigent d’accés a l’ocupació",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Catalán: nivel que se determine en las bases específicas según Decreto 161/2002; prueba eliminatoria APTO/NO APTO si no se acredita",
+   "cita": "El nivell de coneixement de la llengua catalana es farà constar a les bases específiques de la convocatòria",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Máximo 20 días naturales; en funcionariado de carrera o laboral fijo desde el día siguiente a la publicación en el DOGC; en temporales desde el día siguiente a la publicación en el BOPLL",
+   "cita": "El termini per a la presentació de sol·licituds serà de màxim 20 dies naturals",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de anuncios electrónico, web municipal (mollerussa.convoca.online) y BOPLL/DOGC según caso",
+   "cita": "es publicaran en el Butlletí Oficial de la Província de Lleida (BOPLL) i en el tauler d’anuncis electrònic i en el web municipal",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Oposición: prueba de catalán (si procede)",
+    "Prueba de castellano (si procede)",
+    "Pruebas de otros idiomas (si se establecen)",
+    "Pruebas de competencia digital (si se establecen)",
+    "Pruebas teóricas de conocimientos sobre temario",
+    "Pruebas prácticas",
+    "Evaluación psicológica de competencias y personalidad (si se prevé)"
+   ],
+   "cita": "Les proves tindran per objectiu avaluar les competències necessàries per desenvolupar les funcions del/s lloc/s de treball",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Concurso: 20 puntos sobre 60 total; experiencia profesional, formación y otros méritos, entrevista y declaración responsable de historial profesional",
+   "cita": "Fase de concurs: 20 punts (1/3; 33,3%)",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, las listas de espera se elaboran para contrataciones temporales; se crean listas de espera en procesos temporales",
+   "cita": "Quan es tracti de processos amb caràcter temporal, el termini s’iniciarà l’endemà de la data de publicació de la convocatòria al BOPLL",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Período de prácticas o prueba: 6 meses o 1 año según caso; en Policía Local, tras curso selectivo en el ISPC, obligatorio y eliminatorio",
+   "cita": "Durada general: 1 any.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "otro",
+   "cita": "Bases generales para la selección de personal funcionario y laboral, con procesos temporales y de carrera"
+  },
+  "plazas_promocion_interna": {
+   "motivo": "valor_no_numerico",
+   "valor": "Promoción interna: requiere dos años de antigüedad y servicio activo",
+   "cita": "Tenir un mínim de dos anys d’antiguitat a l’Ajuntament de Mollerussa"
+  },
+  "tasa_euros": {
+   "motivo": "valor_no_numerico",
+   "valor": "Según ordenanzas fiscales vigentes, por grupo (importe no especificado en el texto)",
+   "cita": "Les taxes tindran l’import que marquin en cada moment les ordenances fiscals corresponents"
+  },
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Solicitud en línea a través de la web municipal y la plataforma de convocatorias",
+   "cita": "la qual es podrà emplenar en línia a través de la web municipal, mitjançant l’enllaç https://mollerussa.convoca.online/"
+  },
+  "temas": {
+   "motivo": "valor_no_numerico",
+   "valor": "Según grupo: A1 90; A2 60; B 50; C1 40; C2 20; AP 10 (temario general del RD 896/1991)",
+   "cita": "grup A1: 90 temes · grup A2: 60 temes · grup B: 50 temes · grup C1: 40 temes · grup C2: 20 temes · grup AP: 10 temes"
+  }
+ }
+}

@@ -1,47 +1,40 @@
 {
  "proceso": "bopzaragoza:BOP-ZARAGOZA-2026-06-18-894542",
  "documento": {
-  "id": "bopzaragoza:BOP-ZARAGOZA-2026-06-18-894542",
-  "fuente": "BOP-ZARAGOZA",
-  "url": null,
-  "fecha": "2026-06-18",
-  "huella": "5f9dfb2f98073c0273c7a74dedd7f0d4b2e1f1bf9306aa4b77d445799d6fd4c0"
+  "id": "boa:BOA-007959535",
+  "fuente": "BOA",
+  "url": "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VERDOC&BASE=BOLE&SEC=BUSQUEDA_AVANZADA&DOCN=007959535",
+  "fecha": "2026-07-01",
+  "huella": "d5c4c0225c2d6c8eb19122b3bdba6cce73458534ab79d6f45a3d4544a7b3ad52"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T08:17:52+00:00",
- "lote": "msgbatch_01BrnYw6KkevFx7at547B5g8",
+ "extraido": "2026-10-31T14:41:45+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
  "no_son_bases": false,
  "campos": {
-  "denominacion": {
-   "valor": [
-    "agente de policía local del Ayuntamiento de Borja"
-   ],
-   "cita": "una plaza de agente de policía local del Ayuntamiento de Borja",
-   "nivel": "literal"
-  },
   "grupo": {
    "valor": "C1",
-   "cita": "integrada en el grupo/subgrupo de clasificación profesional C-C1, nivel 16",
+   "cita": "integrada en el grupo/subgrupo de clasificación profesional C-C1, Nivel 16",
    "nivel": "literal"
   },
   "vinculo": {
    "valor": "funcionario de carrera",
-   "cita": "como funcionario de carrera perteneciente a la escala de Administración Especial",
+   "cita": "como funcionario de carrera perteneciente a la Escala de Administración Especial",
    "nivel": "literal"
   },
   "sistema": {
    "valor": "concurso",
-   "cita": "por el procedimiento de concurso de méritos y al amparo de la movilidad",
+   "cita": "por el procedimiento de concurso de méritos y al amparo de la movilidad de funcionarios",
    "nivel": "literal"
   },
-  "titulacion": {
-   "valor": "no exigida como requisito; se valora titulación superior en la fase de méritos",
-   "cita": "Titulación superior a la exigida, con un límite de 1 punto",
+  "plazas_total": {
+   "valor": 1,
+   "cita": "de una plaza vacante de Policía Local, de acuerdo con la plantilla",
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Funcionario de carrera de la Administración Local, escala de Administración Especial, subescala de Servicios Especiales, categoría Policía Local o superior, grupo C1, con cinco años de permanencia mínima en el puesto; permisos de conducir A y B; no tener antecedentes penales; compromiso de portar armas.",
-   "cita": "Estar en posesión de los permisos de conducir de las clases A y B.",
+   "valor": "Ser funcionario de carrera de la Administración Local de la Escala de Administración Especial, Subescala de Servicios Especiales, grupo C1, con cinco años de permanencia en el puesto actual; permisos de conducir A y B; no tener antecedentes penales; compromiso de portar armas.",
+   "cita": "con una permanencia en el puesto de trabajo actual por un tiempo mínimo de cinco años",
    "nivel": "literal"
   },
   "tasa_euros": {
@@ -49,45 +42,57 @@
    "cita": "Resguardo acreditativo de haber satisfecho los derechos de examen por importe de 14,15 euros.",
    "nivel": "literal"
   },
-  "exenciones_tasa": {
-   "valor": "Sin exenciones detalladas; la falta de pago o de exención acreditada determina exclusión",
-   "cita": "Haber abonado la correspondiente tasa o acreditar convenientemente la exención de la misma.",
-   "nivel": "literal"
-  },
   "plazo_solicitudes": {
-   "valor": "veinte días hábiles desde el día siguiente a la publicación de la convocatoria en el Boletín Oficial de Aragón",
-   "cita": "El plazo de presentación de las instancias será de veinte días hábiles contados a partir del día siguiente",
+   "valor": "veinte días hábiles, contados a partir del día siguiente al de la publicación de la convocatoria en el Boletín Oficial de Aragón",
+   "cita": "El plazo de presentación de las instancias será de veinte días hábiles, contados a partir del día siguiente",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Registro general del Ayuntamiento (plaza de España 1, 10:00-14:00 lunes a viernes), sede electrónica o medios del artículo 16 de la Ley 39/2015",
-   "cita": "Las solicitudes se presentarán en el registro general del Ayuntamiento de Borja, situado en plaza de España, número 1",
+   "valor": "Registro General del Ayuntamiento de Borja, plaza de España 1, de lunes a viernes de 10:00 a 14:00; sede electrónica; o medios del artículo 16 de la Ley 39/2015",
+   "cita": "Las solicitudes se presentarán en el Registro General del Ayuntamiento de Borja, situado en plaza de España, número 1",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "BOPZ, tablón de anuncios de la Corporación y sede electrónica municipal",
-   "cita": "se hará pública en el BOPZ, en el tablón de anuncios de la Corporación y en la sede electrónica",
+   "valor": "Boletín Oficial de la Provincia de Zaragoza, Tablón de anuncios de la Corporación y Sede electrónica del Ayuntamiento",
+   "cita": "se hará pública en el \"Boletín Oficial de la Provincia de Zaragoza\", en el Tablón de anuncios de la Corporación",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Fase de valoración de méritos (máximo 4 puntos experiencia, 4 puntos cursos, 1 punto titulación; mínimo 3 puntos)",
-    "Fase de entrevista personal (máximo 4 puntos, mínimo 2 puntos; duración máxima 30 minutos)"
+    "Fase de valoración de méritos",
+    "Fase de entrevista personal"
    ],
-   "cita": "Esta fase del concurso se valorará con un máximo de 4 puntos, y para superarla será necesario obtener 2 puntos.",
+   "cita": "constará de una fase de valoración de los méritos aportados por los aspirantes",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Experiencia profesional como funcionario de carrera (máximo 4 puntos, 0,10 por mes); cursos de formación relacionados con la función policial (máximo 4 puntos); titulación superior a la exigida (máximo 1 punto)",
+   "cita": "hasta un máximo de 4 puntos, la experiencia profesional de los aspirante como funcionario de carrera",
    "nivel": "literal"
   },
   "bolsa": {
-   "valor": "sí, para cubrir renuncias de aspirantes propuestos antes del nombramiento o toma de posesión",
-   "cita": "cuando se produzcan renuncias de las personas aspirantes propuestas, antes de su nombramiento o toma de posesión",
+   "valor": "no",
+   "cita": "Sólo procederá la devolución de los derechos de examen satisfechos por los aspirantes",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "no",
+   "cita": "Compromiso de portar armas y de su utilización, en los casos previstos en la normativa vigente",
    "nivel": "literal"
   }
  },
  "rechazados": {
-  "plazas_total": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Agente de Policía Local"
+   ],
+   "cita": "plaza de Agente de Policía del Cuerpo de Policía del Ayuntamiento de Borja"
+  },
+  "plazas_turno_libre": {
    "motivo": "valor_no_en_cita",
-   "valor": 1,
-   "cita": "provisión con carácter definitivo por el procedimiento de concurso de méritos"
+   "valor": 0,
+   "cita": "de una plaza vacante de Policía Local, de acuerdo con la plantilla"
   }
  }
 }

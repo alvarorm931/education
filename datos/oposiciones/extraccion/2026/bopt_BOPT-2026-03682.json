@@ -1,0 +1,55 @@
+{
+ "proceso": "bopt:BOPT-2026-03682",
+ "documento": {
+  "id": "bopt:BOPT-2026-03682",
+  "fuente": "BOPT",
+  "url": "https://www.dipta.cat/bopt/web/anunci/359078/placa-d-operari-aria-de-neteja-viaria-1-bases-i-convocatoria-ajuntament-ulldecona",
+  "fecha": "2026-05-05",
+  "huella": "8bc7f917310f7efe5cddab8faf366f53f452b8b7bad935232fec3653b16b7a92"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:41:32+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
+ "no_son_bases": false,
+ "campos": {
+  "plazas_total": {
+   "valor": 1,
+   "cita": "d’una plaça d’operari/ària de neteja viària, en règim de personal laboral fix",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Butlletí Oficial de la Província de Tarragona",
+   "cita": "Butlletí Oficial de la Província de Tarragona I Data 5-5-2026 I CVE 2026-03682",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Plaza d'operari/ària de neteja viària"
+   ],
+   "cita": "per a la selecció, mitjançant concurs oposició lliure, d’una plaça d’operari/ària de neteja viària"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "personal laboral fijo",
+   "cita": "en règim de personal laboral fix, i per a la creació d’una borsa de treball"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "mitjançant concurs oposició lliure, d’una plaça d’operari/ària de neteja viària"
+  },
+  "plazas_turno_libre": {
+   "motivo": "cita_no_literal",
+   "valor": 1,
+   "cita": "mitjançant concurs oposició lliure, d’una plaça d’operari/ària de neteja viària"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, para la creación de una bolsa de trabajo",
+   "cita": "i per a la creació d’una borsa de treball, i simultàniament convocar les proves selectives"
+  }
+ }
+}

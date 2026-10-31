@@ -1,0 +1,58 @@
+{
+ "proceso": "bopcordoba:BOPCORDOBA-2025-429",
+ "documento": {
+  "id": "bopcordoba:BOPCORDOBA-2025-429",
+  "fuente": "BOP-CORDOBA",
+  "url": "https://bop.dipucordoba.es/dia/20-02-2025",
+  "fecha": "2025-02-20",
+  "huella": "a8b4a05a16ed51dce40cea1dca09f2b00215e912032460956fdb3030fab84aa8"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:46:17+00:00",
+ "lote": "msgbatch_01MQzQCLMZKxUrrPMAj7dr53",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "Oficial 1ª Jardinero/a",
+   "cita": "la selección en propiedad de 5 plazas de Oficial 1ª Jardinero/a, mediante el sistema concurso-oposición",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "Tener la condición de trabajador/a laboral fijo/a del Excmo. Ayuntamiento de Córdoba",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mediante el sistema concurso-oposición, en turno promoción interna",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 5,
+   "cita": "la selección en propiedad de 5 plazas de Oficial 1ª Jardinero/a",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Antigüedad de 2 años de servicio activo como trabajador/a laboral fijo/a del Ayuntamiento de Córdoba",
+   "cita": "con una antigüedad de 2 años de servicio activo, en categoría correspondiente al nivel VI, VII o VIII",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "BOP de Córdoba, Tablón Electrónico Edictal del Ayuntamiento de Córdoba y Sede Electrónica del Ayuntamiento",
+   "cita": "en el Tablón Electrónico Edictal del Ayuntamiento de Córdoba, y en la Sede Electrónica del Ayuntamiento",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "C",
+   "cita": "en una categoría correspondiente al nivel VI, VII o VIII, del Grupo C (Personal de Oficios)"
+  },
+  "plazas_promocion_interna": {
+   "motivo": "valor_no_en_cita",
+   "valor": 5,
+   "cita": "mediante el sistema concurso-oposición, en turno promoción interna"
+  }
+ }
+}

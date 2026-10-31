@@ -1,0 +1,115 @@
+{
+ "proceso": "boib:BOIB-2025-702580",
+ "documento": {
+  "id": "boib:BOIB-2025-702580",
+  "fuente": "BOIB",
+  "url": "https://www.caib.es/eboibfront/es/2025/12115/702580/resolucion-del-consejero-de-hacienda-y-funcion-pub",
+  "fecha": "2025-06-24",
+  "huella": "3af79526ce1b21730f732001d9bc2b16203d57b8ba2f327099804abd58d4b603"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:45:17+00:00",
+ "lote": "msgbatch_016re6aGcimwSVmdrWa6qBd9",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "A1",
+   "cita": "Grupo o subgrupo según el RDL 5/2015: A1. Clasificación: Escala de Administración Especial, subescala técnica, clase de técnico superior.",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "Vinculación: funcionario –a",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "Se establece como procedimiento selectivo el de concurso-oposición.",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Título de Ingeniero Industrial, grado en Ingeniería en Tecnologías Industriales o equivalentes (Ingeniero Industrial); Diplomatura en Turismo o equivalente (Técnico de Grado Medio)",
+   "cita": "Estar en posesión del título de Ingeniero Industrial (pre-Bolonia) o título de grado en Ingeniería en Tecnologías Industriales",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Carné de conducir B (Ingeniero Industrial). Certificado de nivel B1 de alemán y B2 de inglés del MCER (Técnico de Grado Medio).",
+   "cita": "Estar en posesión del carnet de conducir B.",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Catalán, nivel B2",
+   "cita": "Estar en posesión del título de conocimiento de la lengua catalana de nivel B2",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 27.57,
+   "cita": "La cuantía de la tasa del derecho de examen es de 27,57 euros",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Veinte días naturales, a contar desde el día siguiente a la publicación del anuncio de la convocatoria en el BOE",
+   "cita": "el plazo para la presentación de solicitudes será de veinte días naturales, a contar a partir del día siguiente de la publicación",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "BOIB y tablón de anuncios de la Sede Electrónica del Consell de Mallorca; anuncio de convocatoria en el BOE",
+   "cita": "Publicar esta Resolución y sus anexos en el Boletín Oficial de las Illes Balears (BOIB) y en el tablón de anuncios de la Sede Electrónica",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Fase de concurso: 30% de la puntuación global, valorando méritos según anexo A de las bases generales; no tiene carácter eliminatorio",
+   "cita": "La fase de concurso tiene que representar un 30% y la fase de oposición un 70% del resultado global",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": true,
+   "cita": "Este proceso selectivo generará una bolsa de personal funcionario interino que incluirá por orden de puntuación final",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Ingeniero/a Industrial",
+    "Técnico/a de Grado Medio diplomatura en Turismo"
+   ],
+   "cita": "Ingeniero –a Industrial. Número de vacantes: 3. Denominación: Técnico –a de Grado Medio diplomatura en Turismo."
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 5,
+   "cita": "Número de vacantes: 3. Denominación: Ingeniero –a Industrial."
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 5,
+   "cita": "el objeto de la convocatoria es la provisión de dos plazas por el turno libre de Técnico –a de Grado Medio diplomatura en turismo"
+  },
+  "plazas_discapacidad": {
+   "motivo": "valor_no_en_cita",
+   "valor": 0,
+   "cita": "En este procedimiento selectivo no se establece turno de reserva para personas con discapacidad."
+  },
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Telemáticamente a través del Portal de Selección y la Sede electrónica del Consell de Mallorca",
+   "cita": "disponible en el Portal de Selección y en la Sede electrónica del Consell de Mallorca"
+  },
+  "ejercicios": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Primer ejercicio: cuestionario tipo test de 100 preguntas (eliminatorio, mínimo 5 puntos)",
+    "Segundo ejercicio: cinco cuestiones teóricas a desarrollar en 150 minutos (eliminatorio)",
+    "Tercer ejercicio: caso práctico escrito en 120 minutos (eliminatorio, mínimo 5 puntos)"
+   ],
+   "cita": "El primer ejercicio es de carácter obligatorio y eliminatorio, y consistirá en responder un cuestionario de 100 preguntas de tipo test"
+  },
+  "temas": {
+   "motivo": "cita_no_literal",
+   "valor": 91,
+   "cita": "Temario general 1 a 19 y temario específico 20 a 91 (Anexo II, Ingeniero Industrial)"
+  }
+ }
+}

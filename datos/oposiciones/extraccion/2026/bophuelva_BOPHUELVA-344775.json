@@ -1,0 +1,66 @@
+{
+ "proceso": "bophuelva:BOPHUELVA-344775",
+ "documento": {
+  "id": "bophuelva:BOPHUELVA-344775",
+  "fuente": "BOP-HUELVA",
+  "url": "https://s2.diphuelva.es/portalweb/bope/anuncios/Anuncio_344775_BOP-36_2026.pdf",
+  "fecha": "2026-02-23",
+  "huella": "931481a7099ec30fde004cc516be444dc9edbadc862c287b03a8aeda0180d33e"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:42:36+00:00",
+ "lote": "msgbatch_01W17mR271uYfWYL6CuSdriL",
+ "no_son_bases": false,
+ "campos": {
+  "ejercicios": {
+   "valor": [
+    "Oposición (categoría Conductor-Perceptor)",
+    "Concurso-oposición (categorías Taller, Administración e Informática)"
+   ],
+   "cita": "Para la categoría de Conductor-Perceptor, el sistema será el de Oposición.",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, para constituir bolsas de trabajo en todas las categorías convocadas",
+   "cita": "Constitución de Bolsa de Trabajo de cuatro (4) plazas.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Conductor-Perceptor",
+    "Oficial 2ª Oficios Taller",
+    "Oficial 1ª Administrativo",
+    "Oficial 2ª Informática"
+   ],
+   "cita": "Conductor-Perceptor: Constitución de Bolsa de Trabajo de un máximo de treinta (30) plazas."
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "personal laboral fijo",
+   "cita": "Cobertura de una (1) plaza con carácter indefinido y constitución de Bolsa de Trabajo"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "El sistema de selección para las categorías de Taller, Administración e Informática será el de Concurso-Oposición."
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 30,
+   "cita": "Conductor-Perceptor: Constitución de Bolsa de Trabajo de un máximo de treinta (30) plazas."
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "veinticinco (25) días naturales desde el día siguiente a la publicación del anuncio en el BOP de Huelva",
+   "cita": "será de veinticinco (25) días naturales para todas las convocatorias, contados a partir del día siguiente"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Página web oficial de la entidad: www.emtusahuelva.es",
+   "cita": "se encuentran a disposición de los interesados en la página web oficial de la entidad: www.emtusahuelva.es"
+  }
+ }
+}

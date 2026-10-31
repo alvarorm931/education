@@ -1,0 +1,55 @@
+{
+ "proceso": "bocm:BOCM-20251104-93",
+ "documento": {
+  "id": "bocm:BOCM-20251104-93",
+  "fuente": "BOCM",
+  "url": "https://www.bocm.es/bocm-20251104-93",
+  "fecha": "2025-11-04",
+  "huella": "6fdb602b35f0c13f3713e558179473c1b4770ac65ee15a62f3379725aa3d40a6"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:41:19+00:00",
+ "lote": "msgbatch_01UNq3BNhPPHoTK3TEJzun1h",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "conserje"
+   ],
+   "cita": "tres (3) plazas de conserje del Ayuntamiento de San Martín de la Vega",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "cobertura por sistema de promoción interna y mediante concurso-oposición de tres (3) plazas",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 3,
+   "cita": "cobertura por sistema de promoción interna y mediante concurso-oposición de tres (3) plazas",
+   "nivel": "literal"
+  },
+  "plazas_promocion_interna": {
+   "valor": 3,
+   "cita": "cobertura por sistema de promoción interna y mediante concurso-oposición de tres (3) plazas",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "tablón de edictos y sede electrónica del ayuntamiento",
+   "cita": "el texto completo del acuerdo en tablón de edictos y en la sede electrónica de este ayuntamiento",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "personal laboral fijo",
+   "cita": "plazas incluidas en la plantilla de personal laboral del Ayuntamiento"
+  },
+  "tasa_euros": {
+   "motivo": "valor_no_en_cita",
+   "valor": 0,
+   "cita": "El proceso selectivo no conlleva pago de tasas de derechos de examen."
+  }
+ }
+}

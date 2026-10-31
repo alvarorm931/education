@@ -1,0 +1,114 @@
+{
+ "proceso": "boib:BOIB-2022-667728",
+ "documento": {
+  "id": "boib:BOIB-2022-667728",
+  "fuente": "BOIB",
+  "url": "https://www.caib.es/eboibfront/es/2022/11667/667728/resolucion-del-consejero-ejecutivo-de-hacienda-y-f",
+  "fecha": "2022-12-15",
+  "huella": "f9a625e1062c6298f763054db65d61ac373a4c2ec43e850a65a7884f5d3b01f9"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:30+00:00",
+ "lote": "msgbatch_01B4ETF5xB4buYCHqPiHTXzF",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "C1, C2 y E/AP",
+   "cita": "convocatoria del proceso selectivo de estabilización por el sistema extraordinario de concurso de méritos",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "cubrir las 26 plazas de personal laboral fijo de les categorías",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "por el sistema extraordinario de concurso de méritos para cubrir las 26 plazas",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 26,
+   "cita": "cubrir las 26 plazas de personal laboral fijo de les categorías",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Según anexo I para cada categoría o especialidad",
+   "cita": "Estar en posesión de la titulación académica que se indica en el Anexo I para cada categoría",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española o de acceso al empleo público, tener 16 años y no exceder edad de jubilación forzosa, capacidad física y psíquica, no haber sido separado del servicio ni inhabilitado, no ser personal laboral fijo en la misma categoría",
+   "cita": "Tener la nacionalidad española o alguna otra de las que permitan el acceso al empleo público",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Catalán: certificado B2 para acceder a lugares de trabajo del subgrupo C1; certificado B1 para subgrupo C2 y grupos AP/E",
+   "cita": "Para acceder a lugares de trabajo del subgrupo C1, se exige el certificado B2 de conocimientos de lengua catalana",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 13.77,
+   "cita": "cuya cuota íntegra son 13,77 € para todas las plazas",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Exención 100%: familia numerosa de categoría especial, discapacidad igual o superior al 33%, desempleo inscrito; exención 50%: familia monoparental",
+   "cita": "Aspirantes con grado de discapacidad igual o superior al 33 % (exención del 100 %)",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Veinte días hábiles desde el día siguiente a la publicación del anuncio de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "El plazo para presentar solicitudes es de veinte días hábiles y comienza al día siguiente",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Electrónica a través del trámite telemático en la Sede electrónica del Consell Insular de Mallorca, con certificado o DNI electrónico",
+   "cita": "Los aspirantes deben presentar de forma electrónica una solicitud de participación para cada una de las categorías",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Sede electrónica y tablón electrónico de edictos del Consell Insular de Mallorca; BOIB y anuncio en BOE",
+   "cita": "se deben publicar en la Sede electrónica y el tablón electrónico de edictos del Consell Insular de Mallorca",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Concurso de méritos (valoración de méritos alegados y acreditados)"
+   ],
+   "cita": "Este concurso consiste en calificar los méritos alegados y acreditados por las personas aspirantes",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Méritos profesionales, formación, conocimientos de catalán, titulación, trienios reconocidos (máximo 15 puntos), según baremo del anexo III",
+   "cita": "Se valorarán todos los cursos de formación certificados con aprovechamiento o asistencia",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Plazo de dos años para acreditar conocimiento de catalán tras la toma de posesión, para quienes estén exentos",
+   "cita": "quedarán obligadas, en el plazo de dos años, a contar a partir de la toma de posesión a acreditar el nivel",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Personal laboral fijo C1",
+    "Personal laboral fijo C2",
+    "Personal laboral fijo grupo E/AP"
+   ],
+   "cita": "Resolución del consejero ejecutivo de Hacienda y Función Pública, convocatoria proceso selectivo de estabilización personal laboral fijo"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 26,
+   "cita": "Turno libre ordinario"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "no",
+   "cita": "Estos méritos deben alegarse en referencia a la fecha en que finaliza el plazo para presentar las instancias"
+  }
+ }
+}

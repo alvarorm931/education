@@ -1,0 +1,76 @@
+{
+ "proceso": "boplaspalmas:BOPLASPALMAS-2023-02-08-026",
+ "documento": {
+  "id": "boplaspalmas:BOPLASPALMAS-2023-02-08-026",
+  "fuente": "BOP-LASPALMAS",
+  "url": null,
+  "fecha": "2023-02-08",
+  "huella": "e0b1ec6b789c7aa2d76ade0dcd627057988c41d44d7b789afdf98c1d45b4c7dd"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:56:29+00:00",
+ "lote": "msgbatch_0167qWfLXqjGo8Hv43cM3LuM",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "A1, A2, B, C1, C2, E / agrupaciones profesionales",
+   "cita": "Grupo A, dividido en dos Subgrupos, A1 y A2, según titulación exigida para el ingreso.",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "PARA LA PROVISIÓN, COMO PERSONAL FUNCIONARIO DE CARRERA, O PERSONAL LABORAL FIJO",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Según grupo: A1 licenciatura o grado; A2 diplomatura o grado; B técnico superior; C1 título de bachiller o FP2; C2 graduado en ESO o FP1; E no requiere",
+   "cita": "Poseer la titulación exigida para cada plaza objeto de convocatoria.",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española o UE/EEE (con conocimiento del castellano en su caso); capacidad funcional; tener 16 años y no exceder la edad de jubilación forzosa; no haber sido separado de la función pública ni inhabilitado",
+   "cita": "Tener cumplidos dieciséis años y no exceder, en su caso, de la edad máxima de jubilación forzosa.",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles desde el día siguiente a la publicación del anuncio de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "en el plazo de VEINTE DÍAS HÁBILES contados a partir del día siguiente al de la publicación del anuncio de la convocatoria en el Boletín Oficial del Estado.",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "A través del trámite habilitado en la Sede electrónica del Ayuntamiento de Santa Brígida, con modelo oficial de solicitud y justificante de pago de la tasa",
+   "cita": "se presentarán a través del trámite habilitado al efecto en la Sede electrónica del Ayuntamiento de Santa Brígida",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia de Las Palmas, Sede electrónica del Ayuntamiento y extracto en el Boletín Oficial del Estado",
+   "cita": "Las presentes bases generales, así como las específicas se publicarán íntegramente en el Boletín Oficial de la Provincia de Las Palmas y en la Sede electrónica de este Ayuntamiento",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Fase de oposición (solo en concurso-oposición): primer ejercicio, cuestionario tipo test sobre parte general del temario",
+    "Segundo ejercicio: caso práctico tipo test sobre parte específica del temario"
+   ],
+   "cita": "PRIMER EJERCICIO: Se realizará un cuestionario, tipo test, que contendrán preguntas relacionadas con la parte general del temario",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Experiencia profesional hasta 7 puntos (0,0486 por mes en el Ayuntamiento de Santa Brígida; 0,0162 por mes en otras Administraciones); antigüedad hasta 1 punto (0,0059 por mes); cursos de formación hasta 2 puntos; titulaciones académicas hasta 2 puntos. Máximo total del concurso: 10 puntos",
+   "cita": "Otros méritos: máximo 2 puntos. I. Por los cursos de formación recibidos",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "A TRAVÉS DEL SISTEMA DE CONCURSO-OPOSICIÓN DE LAS PLAZAS OFERTADAS"
+  },
+  "temas": {
+   "motivo": "valor_no_numerico",
+   "valor": "Subgrupo A1: 30; A2: 20; C1: 15; C2: 10; Agrupación profesional: 5",
+   "cita": "Para el subgrupo A1, un total de 30 temas."
+  }
+ }
+}

@@ -1,0 +1,65 @@
+{
+ "proceso": "bopvalencia:BOPVALENCIA-2023-05061",
+ "documento": {
+  "id": "bopvalencia:BOPVALENCIA-2023-05061",
+  "fuente": "BOP-VALENCIA",
+  "url": "https://bop.dival.es/bop/downloads?anuncioNumReg=2023/05061&lang=va",
+  "fecha": "2023-04-21",
+  "huella": "3dbe8a11faf5391288583eec241822c9571ed5849b4887febee575ecd950aaff"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:59:10+00:00",
+ "lote": "msgbatch_012nGabRM1G4b7cEKJh1Bcx1",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Agente de la Policía Local"
+   ],
+   "cita": "plazas ofertadas en la Resolución de Alcaldía núm 61 de fecha 18 de enero de 2023",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C1",
+   "cita": "clasificadas en el grupo C, subgrupo C1, siendo 5 el número de plazas total",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "Escala de Administración Especial, Subescala de Servicios Especiales, clase, Policía Local",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 5,
+   "cita": "siendo 5 el número de plazas total objeto de esta convocatoria",
+   "nivel": "literal"
+  },
+  "plazas_turno_libre": {
+   "valor": 3,
+   "cita": "3 por el torno libre",
+   "nivel": "literal"
+  },
+  "plazas_promocion_interna": {
+   "valor": 2,
+   "cita": "2 por el torno de movilidad",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia y tablón situado en la sede electrónica del Ayuntamiento de Picanya; extracto en el DOGV y en el BOE",
+   "cita": "Publicar esta Resolución en el Boletín Oficial de la Provincia y en el tablón situado en la sede electrónica",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "no",
+   "cita": "Ampliar en 2 el número de plazas ofertadas en la Resolución de Alcaldía núm 61",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "oposición",
+   "cita": "2 por el torno libre mediante oposición"
+  }
+ }
+}

@@ -1,0 +1,100 @@
+{
+ "proceso": "boa:BOA-007929422",
+ "documento": {
+  "id": "boa:BOA-007929422",
+  "fuente": "BOA",
+  "url": "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VERDOC&BASE=BOLE&SEC=BUSQUEDA_AVANZADA&DOCN=007929422",
+  "fecha": "2022-12-28",
+  "huella": "640f8275056b747055ff73d9e464916de00f2b0e1c6c925ee197d3e5639f4f7f"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:55:42+00:00",
+ "lote": "msgbatch_014eT3dLLVopBnuVgQ4syWD9",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "Plazas de la Administración General de la Comunidad Autónoma de Aragón (anexo, no incluido en el texto)",
+   "cita": "se convocan pruebas selectivas con sujeción a las siguientes bases",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "A2 y C2",
+   "cita": "para el acceso a la clase de especialidad correspondiente al Subgrupo A2",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "otro",
+   "cita": "para ingreso, por turno independiente para personas con discapacidad, como personal funcionario",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "el sistema de ingreso consiste en un concurso en el que se valorarán únicamente los méritos",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Título oficial exigido en función de la escala (no detallado en el texto extraído)",
+   "cita": "Estar en posesión o en condiciones de obtener el Título Oficial que a continuación se relaciona",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española o de un Estado miembro de la UE (o familiares en los términos legales); capacidad funcional; tener cumplidos dieciséis años y no exceder la edad máxima de jubilación forzosa; no haber sido separado del servicio por expediente disciplinario; grado de discapacidad igual o superior al 33 %.",
+   "cita": "Tener un grado de discapacidad igual o superior al treinta y tres por ciento, y poseer la capacidad funcional",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 28.9,
+   "cita": "28,90 euros, para el acceso a la clase de especialidad correspondiente al Subgrupo A2",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Víctimas de terrorismo (y cónyuges, parejas de hecho e hijos); personas desempleadas inscritas como demandantes al menos seis meses antes de la convocatoria; personas sin ingresos o con ingresos que no superen el salario mínimo interprofesional.",
+   "cita": "Las personas desempleadas que figuren inscritas como demandantes de empleo durante el plazo, al menos, de los seis meses",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Del 1 al 31 de marzo de 2023",
+   "cita": "las solicitudes podrán ser presentadas en el plazo comprendido entre el día 1 y 31 de marzo de 2023",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Telemática, a través del Registro Telemático de la Administración de la Comunidad Autónoma de Aragón (aragon.es/tramites), con modelo 524, DNI electrónico o certificado digital, o cl@ve permanente.",
+   "cita": "La presentación de solicitudes se realizará por vía telemática (https://www.aragon.es/tramites)",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de Aragón; tablones de anuncios de las Oficinas del Servicio de Información y Documentación Administrativa; web www.aragon.es/oposiciones",
+   "cita": "toda la información del proceso selectivo estará disponible en la página web www.aragon.es/oposiciones",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Concurso de méritos (valoración de méritos conforme a la Orden HAP/1865/2022)"
+   ],
+   "cita": "La selección se llevará a cabo mediante el sistema selectivo de concurso",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Méritos valorados según el baremo de la Orden HAP/1865/2022, de 14 de diciembre (incluye superación de ejercicios en procesos selectivos); deben estar perfeccionados a la fecha de publicación y justificados al finalizar el plazo de solicitudes",
+   "cita": "Todos los méritos alegados deberán estar perfeccionados en el día de publicación de esta convocatoria",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Periodo de prácticas y curso de formación, calificados como apto o no apto",
+   "cita": "El período de prácticas y el curso de formación darán lugar a una calificación de apto o no apto",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_discapacidad": {
+   "motivo": "valor_no_numerico",
+   "valor": "según anexo",
+   "cita": "por turno independiente para personas con discapacidad, como personal funcionario de la Administración General"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "no",
+   "cita": "no se establece bolsa de empleo en el texto"
+  }
+ }
+}

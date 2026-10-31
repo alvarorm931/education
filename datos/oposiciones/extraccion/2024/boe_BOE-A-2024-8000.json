@@ -1,0 +1,58 @@
+{
+ "proceso": "boe:BOE-A-2024-8000",
+ "documento": {
+  "id": "dog:DOG-20240322-AnuncioG1690-010324-0001",
+  "fuente": "DOG",
+  "url": "https://www.xunta.gal/dog/Publicados/2024/20240322/AnuncioG1690-010324-0001_es.html",
+  "fecha": "2024-03-22",
+  "huella": "9ce5b0bbdf9c412ec867d43245a7c383860897fd16313ad9f9bd50d9d02150a0"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:54:29+00:00",
+ "lote": "msgbatch_01HRnX7cDVMkRZD7mBamCmLu",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "conductor de tractor",
+   "cita": "Una plaza de conductor de tractor, a jornada completa, de la plantilla de personal laboral fijo",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "de la plantilla de personal laboral fijo, mediante el sistema de concurso-oposición",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mediante el sistema de concurso-oposición, en turno libre",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "Una plaza de conductor de tractor, a jornada completa",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días naturales contados desde el siguiente al de la publicación de este anuncio en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes será de veinte días naturales contados desde el siguiente",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "en la forma prevista en las propias bases",
+   "cita": "Los sucesivos anuncios referentes a esta convocatoria, cuando procedan de conformidad con las bases",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "no consta",
+   "cita": ""
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "mediante el sistema de concurso-oposición, en turno libre"
+  }
+ }
+}

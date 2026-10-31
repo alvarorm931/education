@@ -1,0 +1,126 @@
+{
+ "proceso": "bopcastellon:BOPCASTELLON-05570-2023",
+ "documento": {
+  "id": "bopcastellon:BOPCASTELLON-05570-2023",
+  "fuente": "BOP-CASTELLON",
+  "url": null,
+  "fecha": "2023-11-14",
+  "huella": "96c2dbabb93c3cdbd5ccee42fe62a655ecb6620cdf4553604d47ac557fffb1e5"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:58:03+00:00",
+ "lote": "msgbatch_01SjfjDqJRwL6bpTvJz2YfVg",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Oficial del cuerpo de Policía Local, escala ejecutiva"
+   ],
+   "cita": "places d'oficial del cos de Policia Local, pertanyents a l'escala d'Administració especial",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "B",
+   "cita": "classificades en el grup B, corresponents a l'Oferta d'ocupació pública",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "proveir en propietat huit (8) places d'oficial del cos de Policia Local",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "sis (6) de les quals estan reservades al torn de promoció interna ordinària, mitjançant concurs oposició",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 8,
+   "cita": "proveir en propietat huit (8) places d'oficial del cos de Policia Local vacants",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Título de técnico superior o equivalente (MECES 1)",
+   "cita": "Estar en possessió de títol de tècnic superior o equivalent.",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Personal funcionario de carrera de la categoría inmediatamente inferior, con al menos dos años de servicios; no haber sido suspendido ni inhabilitado; permisos de conducción B y A2.",
+   "cita": "Estar en possessió dels permisos de conducció de les classes B i A2, regulats en el Reglament general de conductors",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Conocimiento de valenciano valorado en el concurso (no eliminatorio en oposición: exercici obligatori, no eliminatori, máximo 4 puntos)",
+   "cita": "Exercici sobre coneixement del valencià, que serà obligatori però no eliminatori.",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 33,
+   "cita": "Els drets d'examen es fixen en trenta-tres euros (33,00 €).",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Diez (10) días naturales desde el día siguiente a la publicación del anuncio de la convocatoria en el BOE",
+   "cita": "en el termini de deu (10) dies comptadors des de l’endemà de la publicació de l'anunci de la convocatòria en el Butlletí Oficial de l'Estat",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Autoliquidación con pago y presentación electrónica en la sede electrónica del Ayuntamiento (https://sede.castello.es/)",
+   "cita": "tota aquesta documentació es presentarà per via electrònica mitjançant una sol·licitud en la seu electrònica de l'Ajuntament",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "BOP, tablón de anuncios y página web del Ayuntamiento (www.castello.es)",
+   "cita": "es publicarà en el Butlletí Oficial de la Província, en el tauler d'anuncis i en la pàgina web de l'Ajuntament",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Concurso: máximo 40 puntos (servicios prestados 12, titulaciones 5, idiomas 5, cursos de formación 15, premios y distinciones 2, otros méritos 1).",
+   "cita": "La puntuació màxima en aquesta fase de concurs serà de 40 punts.",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, bolsa de trabajo para plazas de oficial de Policía Local con los opositores de promoción interna ordinaria que superen la oposición sin plaza",
+   "cita": "l’òrgan tècnic de selecció elevarà una proposta de constitució de borsa de treball per a proveir llocs d'oficial de Policia Local",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Curso selectivo de 350 horas de duración",
+   "cita": "s'haurà de realitzar un curs de caràcter selectiu de 350 hores de duració.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 0,
+   "cita": "sis (6) de les quals estan reservades al torn de promoció interna ordinària"
+  },
+  "plazas_promocion_interna": {
+   "motivo": "valor_no_en_cita",
+   "valor": 7,
+   "cita": "sis (6) de les quals estan reservades al torn de promoció interna ordinària, mitjançant concurs oposició, una (1) plaça està reservada al torn de promoció interna interadministrativa"
+  },
+  "exenciones_tasa": {
+   "motivo": "cita_no_literal",
+   "valor": "Solo se devuelven a quienes no sean admitidos por falta de requisitos.",
+   "cita": "Els drets d'examen només seran retornats a les persones que no siguen admeses al procediment selectiu"
+  },
+  "ejercicios": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Pruebas de aptitud física (apto/no apto)",
+    "Prueba psicotécnica (apto/no apto)",
+    "Examen escrito tipo test sobre temario (0-30, mínimo 15)",
+    "Examen práctico sobre temario (0-30, mínimo 15)",
+    "Examen de valenciano (no eliminatorio, máximo 4 puntos)"
+   ],
+   "cita": ""
+  },
+  "temas": {
+   "motivo": "valor_no_en_cita",
+   "valor": 20,
+   "cita": "Tema 1. Règim sancionador en matèria de trànsit."
+  }
+ }
+}

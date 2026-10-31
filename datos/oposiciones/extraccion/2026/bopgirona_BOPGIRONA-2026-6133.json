@@ -1,15 +1,15 @@
 {
  "proceso": "bopgirona:BOPGIRONA-2026-6133",
  "documento": {
-  "id": "bopgirona:BOPGIRONA-2026-6133",
-  "fuente": "BOP-GIRONA",
-  "url": "https://ssl4.ddgi.cat/bopV1/pdf/2026/131/202613106133.pdf",
-  "fecha": "2026-07-10",
-  "huella": "d6618ba0304810c65257012b4bd6699d957ca611a35764f6383d61bc03aca06f"
+  "id": "dogc:1049903",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1049903",
+  "fecha": "2026-07-15",
+  "huella": "09016b1810a8c9697a0ec7624315f06f20fc5b6cae5cf1438ae61277cd1955b9"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T08:17:51+00:00",
- "lote": "msgbatch_01BrnYw6KkevFx7at547B5g8",
+ "extraido": "2026-10-31T14:41:50+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
  "no_son_bases": false,
  "campos": {
   "grupo": {
@@ -24,7 +24,7 @@
   },
   "sistema": {
    "valor": "concurso-oposición",
-   "cita": "El sistema de selecció és el de concurs oposició i el torn d'accés lliure",
+   "cita": "El sistema de selecció és el de concurs oposició i el torn d'accés lliure.",
    "nivel": "literal"
   },
   "plazas_total": {
@@ -38,13 +38,18 @@
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Ciutadania espanyola o de la UE (o equivalent); haver complert 16 anys i no superar l'edat de jubilació forçosa; capacitat funcional; no haver estat separat del servei per expedient disciplinari; no incórrer en incapacitat o incompatibilitat (Llei 53/1984)",
-   "cita": "Haver complert 16 anys i no superar l'edat de jubilació forçosa, el dia que acabi el termini de presentació de sol·licituds",
+   "valor": "Ciutadania espanyola o de la UE (o lliure circulació de treballadors); edat mínima 16 anys i no superar l'edat de jubilació forçosa; capacitat funcional; no haver estat separat del servei d'una administració pública; no estar incurs en incompatibilitat",
+   "cita": "Haver complert 16 anys i no superar l'edat de jubilació forçosa, el dia que acabi el termini de presentació de sol·licituds.",
    "nivel": "literal"
   },
   "idioma_cooficial": {
-   "valor": "Català, nivell C1 (equivalent al certificat de nivell de suficiència de català)",
+   "valor": "Català, nivell C1 (Certificat de nivell de suficiència de català, Junta Permanent de Català)",
    "cita": "Tenir coneixements de català equivalents al Certificat de nivell de suficiència de català",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Les quotes s'afavoriran de les bonificacions i exempcions previstes a les ordenances fiscals",
+   "cita": "s'afavoriran de les bonificacions i exempcions previstes a les ordenances fiscals",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
@@ -53,23 +58,31 @@
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Registre general de l'Ajuntament de Figueres o en la forma que estableix l'article 16 de la Llei 39/2015, mitjançant instància específica (annex 2)",
-   "cita": "Les instàncies es dirigiran a l'alcaldia presidència i es presentaran al registre general d'aquest Ajuntament",
+   "valor": "Registre general de l'Ajuntament o en la forma de l'article 16 de la Llei 39/2015, mitjançant instància específica (annex 2)",
+   "cita": "es presentaran al registre general d'aquest Ajuntament o en la forma que estableix l'article 16",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Tauler d'edictes electrònic municipal, BOP de Girona, web municipal www.figueres.cat i DOGC (extracte)",
+   "valor": "Tauler d'edictes electrònic municipal, BOP de Girona, web municipal www.figueres.cat i tauler d'anuncis de la Corporació; extracte al DOGC",
    "cita": "es publicarà íntegrament al tauler d'edictes electrònic municipal de l'Ajuntament i al Butlletí Oficial de la Província de Girona",
    "nivel": "literal"
   },
+  "ejercicios": {
+   "valor": [
+    "Exercici únic obligatori i eliminatori de coneixements pràctics, escrit, dues hores, fins a 20 punts (mínim 10)",
+    "Fase de concurs fins a 5 punts (experiència, formació, titulació complementària, ACTIC)"
+   ],
+   "cita": "Consistirà en resoldre, en un termini màxim de dues hores, el cas o els casos pràctics proposats pel tribunal",
+   "nivel": "literal"
+  },
   "meritos": {
-   "valor": "Fase de concurs (màx. 5 punts): experiència professional (màx. 3), formació (màx. 2, incloent titulació complementària i ACTIC)",
-   "cita": "B. Fase de concurs (5 punts). La fase de concurs consistirà en valorar determinades condicions de formació, mèrits",
+   "valor": "Experiència professional fins a 3 punts; formació fins a 2 punts; titulació complementària; certificat ACTIC fins a 0,25 punts. Fase de concurs màxim 5 punts",
+   "cita": "B.1. Experiència professional (màxim 3 punts)",
    "nivel": "literal"
   },
   "bolsa": {
-   "valor": "sí, per cobrir necessitats temporals (suplències, baixes, programes temporals, acumulacions de tasques) com a funcionari interí o personal laboral temporal, durant dos anys",
-   "cita": "la constitució d'una borsa de treball per cobrir necessitats de caràcter temporal",
+   "valor": "Sí: borsa de treball per cobrir necessitats temporals (suplències, baixes, programes temporals, acumulacions de tasques) com a funcionari interí o personal laboral temporal, durant dos anys",
+   "cita": "Els/les aspirants que hagin obtingut la puntuació mínima per superar el procés selectiu, podran ser cridats/ades",
    "nivel": "literal"
   }
  },
@@ -77,19 +90,19 @@
   "denominacion": {
    "motivo": "cita_no_literal",
    "valor": [
-    "Tècnic/a superior en intervenció, escala d'Administració especial, subescala de serveis especials, classe comeses especials"
+    "Tècnic/a superior en intervenció"
    ],
-   "cita": "procés de selecció d'una plaça de tècnic/a superior en intervenció, dins l'escala d'Administració especial"
+   "cita": "la plaça de tècnic/a superior en intervenció, dins l'escala d'Administració especial"
   },
   "plazas_turno_libre": {
    "motivo": "valor_no_en_cita",
    "valor": 1,
-   "cita": "El sistema de selecció és el de concurs oposició i el torn d'accés lliure"
+   "cita": "El sistema de selecció és el de concurs oposició i el torn d'accés lliure."
   },
   "temas": {
    "motivo": "cita_no_literal",
    "valor": 25,
-   "cita": "TEMARI: 1. L'organització municipal... 25. Les modificacions de crèdit"
+   "cita": "TEMARI: 1. L'organització municipal ... 25. Llei 25 temes"
   }
  }
 }

@@ -1,0 +1,51 @@
+{
+ "proceso": "bopcadiz:BOP-CADIZ-2023-76.724",
+ "documento": {
+  "id": "bopcadiz:BOP-CADIZ-2023-76.724",
+  "fuente": "BOP-CADIZ",
+  "url": "https://www.bopcadiz.es/boletin/Boletin-numero-110-del-ano-2023",
+  "fecha": "2023-06-13",
+  "huella": "8c48b39f8e86d75adc376dd01ff01a0afb434343485024eb5bcd1d6f21fc8716"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:59:31+00:00",
+ "lote": "msgbatch_012nGabRM1G4b7cEKJh1Bcx1",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "contrataciones de carácter temporal en la E.L.A de Estella del Marqués",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "exposición pública del expediente por 15 días hábiles en la Intervención Municipal",
+   "cita": "se procede a la exposición pública del expediente, por un plazo de 15 días hábiles desde el día siguiente",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, bolsa de empleo para atender necesidades temporales, específicas y concretas de personal",
+   "cita": "creación de una Bolsa de Empleo que atienda las necesidades temporales, específicas y concretas de personal",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "OFICIAL DE ALBAÑILERÍA",
+    "PEÓN ESPECIALISTA CONSTRUCCIÓN Y OBRAS PÚBLICAS EN GENERAL",
+    "PERSONAL DE LIMPIEZA",
+    "OFICIAL DE JARDINERÍA",
+    "ADMINISTRATIVO",
+    "MONITOR/A MAYORES ACTIVOS",
+    "MONITOR/A DINAMIZADOR PARA EL CENTRO GUADALINFO"
+   ],
+   "cita": "la creación de una Bolsa de Empleo que atienda las necesidades temporales, específicas y concretas de personal"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso",
+   "cita": "aprobó por mayoría de sus miembros presentes el acuerdo de la creación de las BASES DE LA BOLSA DE TRABAJO"
+  }
+ }
+}

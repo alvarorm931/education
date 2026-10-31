@@ -1,0 +1,58 @@
+{
+ "proceso": "docm:DOCM-2023-896",
+ "documento": {
+  "id": "docm:DOCM-2023-896",
+  "fuente": "DOCM",
+  "url": "https://docm.jccm.es/portaldocm/verArchivoHtml.do?ruta=2023/02/13/html/2023_896.html&tipo=rutaDocm",
+  "fecha": "2023-02-13",
+  "huella": "55a4d8ca3932a618f5c31c50c16b56f69b8d7dabca45262371804399c3b22b16"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:56:30+00:00",
+ "lote": "msgbatch_0167qWfLXqjGo8Hv43cM3LuM",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Auxiliar Administrativo",
+    "Auxiliar de Ayuda a Domicilio",
+    "Encargado de la Biblioteca",
+    "Operario de Mantenimiento"
+   ],
+   "cita": "Una plaza de Auxiliar Administrativo a jornada completa, de la plantilla de personal laboral fijo",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "de la plantilla de personal laboral fijo, mediante el sistema de concurso, en turno libre",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "Cuatro plazas de Auxiliar de Ayuda a Domicilio a jornada parcial, de la plantilla de personal laboral fijo, mediante el sistema de concurso-oposición",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles a contar desde el siguiente al de la publicación de la convocatoria en el «Boletín Oficial del Estado»",
+   "cita": "El plazo de presentación de solicitudes será de veinte días hábiles a contar desde el siguiente al de la publicación",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 7,
+   "cita": "Una plaza de Auxiliar Administrativo a jornada completa, de la plantilla de personal laboral fijo"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 7,
+   "cita": "mediante el sistema de concurso, en turno libre"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Página web de la Corporación y Tablón de anuncios; sucesivos anuncios en la forma prevista en las bases",
+   "cita": "se han publicado íntegramente en página web de la Corporación y en su Tablón de anuncios"
+  }
+ }
+}

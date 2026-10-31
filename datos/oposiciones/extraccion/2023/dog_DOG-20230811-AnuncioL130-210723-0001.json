@@ -1,0 +1,66 @@
+{
+ "proceso": "dog:DOG-20230811-AnuncioL130-210723-0001",
+ "documento": {
+  "id": "dog:DOG-20230811-AnuncioL130-210723-0001",
+  "fuente": "DOG",
+  "url": "https://www.xunta.gal/dog/Publicados/2023/20230811/AnuncioL130-210723-0001_es.html",
+  "fecha": "2023-08-11",
+  "huella": "30425f90188cbca243c3e8f7a35cd204fe0f783b83054deec83e15a14aea80fe"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:59:08+00:00",
+ "lote": "msgbatch_012nGabRM1G4b7cEKJh1Bcx1",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "ayudante (agrupaciones profesionales)",
+    "técnico/a medio/a de comunicación",
+    "oficial de servicios especiales",
+    "técnico/a de apoyo social",
+    "filólogo/a",
+    "ayudante de transportes (agrupaciones profesionales)",
+    "ayudante de cementerios (agrupaciones profesionales)"
+   ],
+   "cita": "1 plaza de ayudante (agrupaciones profesionales), C.E. 26/18, por el turno libre",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "A2",
+   "cita": "1 plaza de técnico/a medio/a de comunicación (subgrupo A2), C.E. 32/18",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "otro",
+   "cita": "dentro del proceso extraordinario de estabilización del empleo público.",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "otro",
+   "cita": "dentro del proceso extraordinario de estabilización del empleo público.",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días naturales contados desde el día siguiente a la publicación del anuncio de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "será de veinte días naturales contados desde el día siguiente a la publicación del anuncio",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "boletines oficiales correspondientes",
+   "cita": "Esta convocatoria y su resolución se publicarán en los boletines oficiales correspondientes.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 7,
+   "cita": "1 plaza de ayudante (agrupaciones profesionales), C.E. 26/18, por el turno libre"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 7,
+   "cita": "5 plazas de técnico/a de apoyo social (subgrupo A2), C.E. 2/22, por el turno libre"
+  }
+ }
+}

@@ -1,0 +1,96 @@
+{
+ "proceso": "dogv:456788",
+ "documento": {
+  "id": "dogv:456788",
+  "fuente": "DOGV",
+  "url": "https://dogv.gva.es/datos/2025/12/05/pdf/2025_48501_es.pdf",
+  "fecha": "2025-12-05",
+  "huella": "c07b28ccc47e851af757cef6517526b43ad5bf3f368d1eb4091937d9dbb476f7"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:41:14+00:00",
+ "lote": "msgbatch_01UNq3BNhPPHoTK3TEJzun1h",
+ "no_son_bases": false,
+ "campos": {
+  "sistema": {
+   "valor": "concurso",
+   "cita": "Sistema general de selección consistirá en una valoración de méritos acorde con la aplicación del baremo",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Título de doctor o doctora",
+   "cita": "Estar en posesión del título de doctor o doctora",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española o situación del artículo 57 del TREBEP; edad mínima 16 años y no exceder la jubilación forzosa; capacidad física y psíquica; no haber sido separado de la función pública ni inhabilitado; no ser profesorado contratado doctor, permanente laboral ni de cuerpos docentes en la misma área.",
+   "cita": "No ser profesorado contratado doctor o profesorado permanente laboral ni profesorado perteneciente a los cuerpos docentes universitarios",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Conocimiento adecuado de cualquiera de las lenguas oficiales de la Comunitat Valenciana para quienes no tengan la nacionalidad española",
+   "cita": "deberán tener un conocimiento adecuado de cualquiera de las lenguas oficiales de la Comunitat Valenciana",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 35,
+   "cita": "el importe de la tasa es de 35 euros",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Discapacidad igual o superior al 33%; familias numerosas y monoparentales de categoría especial (bonificación del 50% en categoría general); víctimas de violencia sobre la mujer; demandantes de empleo con al menos 3 meses de antigüedad y sin rentas superiores al SMI.",
+   "cita": "Las o los aspirantes con una discapacidad igual o superior al 33%",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "10 días hábiles desde el día siguiente a la publicación de la convocatoria en el DOGV, por cada plaza solicitada",
+   "cita": "presentarán en el plazo de 10 días hábiles contados a partir del día siguiente al de publicación",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Telemáticamente a través de la Sede electrónica de la Universidad de Alicante (trámite Solicitud de plazas de personal docente e investigador); no se admiten solicitudes por otros medios",
+   "cita": "En ningún caso se admitirán solicitudes recibidas sin utilizar este trámite",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Sede electrónica de la Universidad de Alicante y página web del Servicio de Selección de Personal (ssp.ua.es)",
+   "cita": "Las publicaciones se realizarán en Sede electrónica en 'Otros documentos generales'",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Valoración de méritos según baremo (anexo III), mínimo 35 puntos",
+    "Entrevista o supuesto práctico opcional, hasta 20 puntos"
+   ],
+   "cita": "El sistema general de selección consistirá en una valoración de méritos acorde con la aplicación del baremo",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Méritos según baremo del anexo III (no detallado en el texto); puntuación mínima 35 puntos; mérito preferente de docencia asociada previa con incremento del 20% de la valoración final",
+   "cita": "la puntuación mínima que se deberá obtener para la adjudicación de la plaza será de 35 puntos",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "Sí, relación de reserva de empleo para cubrir futuras necesidades de docencia en plazas de las mismas características en el mismo curso académico y los tres siguientes",
+   "cita": "se constituirá una relación de reserva de empleo con las o los aspirantes",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Profesor/a ayudante doctor/a",
+   "cita": "Profesorado ayudante doctor, contratado laboral de las universidades públicas valencianas"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "laboral temporal",
+   "cita": "regula los procesos de selección para la contratación de profesorado ayudante doctor"
+  },
+  "practicas_o_curso": {
+   "motivo": "cita_no_literal",
+   "valor": "No se menciona",
+   "cita": ""
+  }
+ }
+}

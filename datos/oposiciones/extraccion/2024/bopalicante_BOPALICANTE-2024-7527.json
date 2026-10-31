@@ -1,0 +1,55 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2024-7527",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2024-7527",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2024/10/30_209/2024_007527.pdf",
+  "fecha": "2024-10-30",
+  "huella": "53fdc6080f7b232cb5a9eecc4b149574b2fbf67be53789c82e8109ffde5e17a5"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:50:10+00:00",
+ "lote": "msgbatch_01LpyYajgKGX9NyHT1uvynbR",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Administrativo/a"
+   ],
+   "cita": "BASES PARA CONSTITUIR UNA BOLSA TEMPORAL DE EMPLEO DE ADMINISTRATIVO/A",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "5 días hábiles a contar desde el día siguiente de la publicación del presente anuncio en el Boletín Oficial de la Provincia de Alicante",
+   "cita": "El plazo de presentación de instancias para participar será de 5 días hábiles",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Instancia (Anexo I) disponible en la sede electrónica del Ayuntamiento de Onil y en las dependencias municipales",
+   "cita": "la instancia para participar en estas pruebas (Anexo I) y el formulario de autobaremación",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Web municipal www.onil.es, Sede electrónica del Ayuntamiento de Onil, Tablón de Anuncios, Sección Empleo",
+   "cita": "Este edicto será publicado en la web municipal (www.onil.es) - Sede electrónica",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario interino",
+   "cita": "para su nombramiento como funcionario/a interino/a o contratación temporal"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "Anexo II formulario de autobaremación y acreditación de méritos"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, bolsa de trabajo de Administrativo para su nombramiento como funcionario/a interino/a o contratación temporal",
+   "cita": "constitución de una bolsa de trabajo de Administrativo para su nombramiento como funcionario/a interino/a"
+  }
+ }
+}

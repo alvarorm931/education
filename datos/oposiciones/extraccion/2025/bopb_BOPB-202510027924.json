@@ -1,0 +1,63 @@
+{
+ "proceso": "bopb:BOPB-202510027924",
+ "documento": {
+  "id": "dogc:1006320",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1006320",
+  "fecha": "2025-02-13",
+  "huella": "a6b20a6f6663d9ebe3be0e64e47a8f4ca59ff90e80fc617cb028f913df5068c7"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:46:29+00:00",
+ "lote": "msgbatch_01MQzQCLMZKxUrrPMAj7dr53",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "C1",
+   "cita": "categoria professional C1, de la plantilla de personal laboral de l'Ajuntament",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "procés selectiu per a la cobertura temporal d'una plaça",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "cobertura temporal d'una plaça de Tècnic auxiliar de suport informàtic",
+   "nivel": "literal"
+  },
+  "plazas_turno_libre": {
+   "valor": 1,
+   "cita": "d'accés lliure i constitució d'una borsa de treball",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tauler anuncis de la Seu electrònica de l'Ajuntament de L'Ametlla del Vallès; actes i resultats al taulell d'anuncis de la SEU electrònica",
+   "cita": "Les bases es podran consultar al tauler anuncis de la Seu electrònica de l'Ajuntament",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, constitució d'una borsa de treball",
+   "cita": "d'accés lliure i constitució d'una borsa de treball",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Tècnic auxiliar de suport informàtic",
+   "cita": "per la cobertura temporal d'una plaça de Tècnic auxiliar de suport informàtic, categoria professional C1"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "laboral temporal",
+   "cita": "per la cobertura temporal d'una plaça de Tècnic auxiliar de suport informàtic"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "20 dies naturals, comptats a partir de l'endemà de la publicació de la convocatòria al DOGC",
+   "cita": "El termini d'admissió de sol·licituds és de 20 dies naturals, comptats a partir de l'endemà"
+  }
+ }
+}

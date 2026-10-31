@@ -1,0 +1,103 @@
+{
+ "proceso": "dog:DOG-20250515-AnuncioU500-060525-0001",
+ "documento": {
+  "id": "dog:DOG-20250515-AnuncioU500-060525-0001",
+  "fuente": "DOG",
+  "url": "https://www.xunta.gal/dog/Publicados/2025/20250515/AnuncioU500-060525-0001_es.html",
+  "fecha": "2025-05-15",
+  "huella": "15c6567597d9b1861681ffc767aaca8095e0dd9bb073102c027e017e86196803"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:46:13+00:00",
+ "lote": "msgbatch_017vJZdAmjTkBDdH14aLEdCv",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Profesor/a permanente laboral — 29 referencias (áreas de conocimiento listadas en el Anexo II)"
+   ],
+   "cita": "Las plazas que figuran en el anexo I a la presente resolución",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "convocar concurso, por el procedimiento de urgencia a las plazas que figuran en el anexo I",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Doctor o doctora",
+   "cita": "Estar en posesión de la titulación de doctor o doctora",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española o de Estado miembro UE (con excepciones); tener 16 años y no superar la edad de jubilación forzosa; evaluación positiva por ANECA o ACSUG; no haber sido separado del servicio por expediente disciplinario; capacidad funcional.",
+   "cita": "Tener nacionalidad española o ser nacional de un Estado miembro de la Unión Europea",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Conocimiento de al menos una de las dos lenguas oficiales de la Universidad de Vigo; gallego: Celga3 (o equivalente) o superior",
+   "cita": "La acreditación del conocimiento del idioma gallego se hará de conformidad con la normativa autonómica aplicable",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 44.17,
+   "cita": "Los derechos de examen para cada plaza (PPL2401) serán de 44,17 euros",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Exentas: discapacidad igual o superior al 33 % y familias numerosas de categoría especial. Bonificación del 50 %: familias numerosas general y demandantes de empleo sin prestación.",
+   "cita": "estarán exentas del pago las personas con discapacidad igual o superior al 33 %",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Veinte días hábiles desde el día siguiente a la publicación en el DOG",
+   "cita": "El plazo de presentación de solicitudes será de veinte días hábiles, contados a partir del día siguiente",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de anuncios de la sede electrónica de la Universidad de Vigo y, a título divulgativo, página web de la Universidad de Vigo",
+   "cita": "la convocatoria y los actos y acuerdos que integran este proceso selectivo se publicarán",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Acto de presentación de méritos y documentación (CVN, proyecto docente e investigador, publicaciones)",
+    "Prueba pública: exposición oral de méritos y proyecto docente e investigador (30 min a 2 h) y debate con la comisión (máx. 2 h)"
+   ],
+   "cita": "Los concursos constarán de una única prueba, que será pública",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Baremo y criterios fijados por la comisión; los méritos de experiencia investigadora y de transferencia y los de experiencia docente e innovación educativa tendrán el mismo peso, entre el 35 y el 45 % de la puntuación total",
+   "cita": "los méritos relativos a la experiencia investigadora y de transferencia y de experiencia docente y de innovación educativa deben tener el mismo peso",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Período de prueba de seis (6) meses",
+   "cita": "El período de prueba será de seis (6) meses, considerándose superado",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "laboral temporal",
+   "cita": "profesor/a permanente laboral. El contrato será de carácter fijo e indefinido"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 29,
+   "cita": "Referencia nº 1 Referencia nº 2 Referencia nº 3 Referencia nº 4 Referencia nº 5"
+  },
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Inscripción en la aplicación de la convocatoria y presentación telemática en la sede electrónica de la Universidad de Vigo (procedimiento SPDI-1er concurso público profesorado permanente laboral)",
+   "cita": "deberá ser presentada en la sede electrónica de la Universidad de Vigo"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "no",
+   "cita": "Las plazas se cubren mediante nombramiento de las personas propuestas en número que no exceda el de plazas convocadas"
+  }
+ }
+}

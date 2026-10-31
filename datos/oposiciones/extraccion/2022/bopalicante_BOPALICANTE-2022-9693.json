@@ -1,0 +1,107 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2022-9693",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2022-9693",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2022/12/13_235/2022_009693.pdf",
+  "fecha": "2022-12-13",
+  "huella": "fe897a411ea0f3f1b2d8ae461a994970029b77e241de119809af3043a6cafcf5"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:29+00:00",
+ "lote": "msgbatch_01B4ETF5xB4buYCHqPiHTXzF",
+ "no_son_bases": false,
+ "campos": {
+  "plazas_total": {
+   "valor": 1,
+   "cita": "cobrir una plaça persona d'auxiliar administrativa",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Graduado en Educación Secundaria Obligatoria (ESO) o equivalente",
+   "cita": "Estar en possessió del títol de Graduat en Educació Secundària Obligatòria (ESO) o equivalent",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española o de los términos de la Ley 5/2015 o de estados miembros de la UE; capacidad funcional; 16 años sin exceder la edad máxima de jubilación forzosa; no incompatibilidad, ni separación de servicio público ni inhabilitación.",
+   "cita": "Tindre setze anys, sense excedir de l'edat màxima de jubilació forçosa",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 20,
+   "cita": "S'estableix una taxa pels drets d'examen de 20 €",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de anuncios electrónico de la Eatim y sede electrónica; extracto en el BOE; bases en el BOP de Alicante",
+   "cita": "la convocatòria i les seues bases íntegres es publicaran en el Butlletí Oficial de la Província d'Alacant",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Concurso de méritos: méritos profesionales (hasta 60 puntos), académicos (hasta 40 puntos)"
+   ],
+   "cita": "la valoració de mèrits es desenvoluparà sobre un total de 100 punts",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Profesionales hasta 60 puntos (servicios en administración local 0,32 y 0,15 puntos/mes; otras administraciones 0,1 puntos/mes). Académicos hasta 40 puntos: titulación hasta 10, cursos de formación hasta 20, valenciano hasta 5, idiomas comunitarios hasta 5.",
+   "cita": "La valoració de mèrits es desenvoluparà sobre un total de 100 punts",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, bolsa de trabajo de personal laboral para contrataciones temporales, vacantes o sustituciones con quienes no obtengan plaza",
+   "cita": "seran relacionades en ordre decreixent de la puntuació final obtinguda per a formar una borsa d'ocupació",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Auxiliar administrativo"
+   ],
+   "cita": "cubrir una plaça persona d'auxiliar administrativa, incloses en els processos d'estabilització"
+  },
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "C2",
+   "cita": "ordenació"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "personal laboral fijo",
+   "cita": "Eatim contractació com a laboral fixa de la persona aspirant amb major puntuació"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso",
+   "cita": "mitjançant el sistema de concurs de mèrits"
+  },
+  "plazas_turno_libre": {
+   "motivo": "cita_no_literal",
+   "valor": 1,
+   "cita": "sistema de con curs de mèrits (procediment d'estabilització d'ocupació temporal segons disposició addicional sisena de la Llei 20/2021), torn lliure"
+  },
+  "plazas_discapacidad": {
+   "motivo": "valor_no_en_cita",
+   "valor": 0,
+   "cita": "Atés que el nombre de places no permet reservar un contingent no inferior al set per cent"
+  },
+  "exenciones_tasa": {
+   "motivo": "cita_no_literal",
+   "valor": "Exentas personas en situación de desempleo de más de 1 año y víctimas de violencia de género o discriminación sexual; bonificación del 50% para familias numerosas, monoparentales con dos o más hijos y personas con discapacidad igual o superior al 33%.",
+   "cita": "Estan exemptes del pagament de la taxa aquelles persones que es troben en alguna de les situacions"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "Veinte días hábiles desde el siguiente al de la publicación del extracto de las bases y convocatoria en el BOE",
+   "cita": "El termini de presentació d'instàncies serà de vint dies hàbils, a comptar des del següent"
+  },
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Preferentemente por sede electrónica de la Eatim de Jesús Pobre; registro general (plaza del Pou de la Murtera, 1) u otros medios del art. 16.4 Ley 39/2015",
+   "cita": "Preferentment, tramitació electrònica a través de la seu electrònica de l'Eatim de Jesús Pobre"
+  }
+ }
+}

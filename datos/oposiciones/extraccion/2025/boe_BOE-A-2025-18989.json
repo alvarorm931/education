@@ -1,0 +1,51 @@
+{
+ "proceso": "boe:BOE-A-2025-18989",
+ "documento": {
+  "id": "bopcaceres:BOP-2025-2570",
+  "fuente": "BOP-CACERES",
+  "url": "https://bop.dip-caceres.es/bop/services/anuncios/contenidoPdfIdAnuncio?csv=BOP-2025-2570",
+  "fecha": "2025-05-23",
+  "huella": "1f97427b84a2e700b5175b4d2345f0d5f6df8a851b35650d7473471b4cdd1c90"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:43:12+00:00",
+ "lote": "msgbatch_01XofVwxKEhyEjSzGog6wsD4",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Peón especialista",
+    "Socorrista"
+   ],
+   "cita": "la contratación de 2 Plazas de peón especialista, en régimen laboral fijo y 1 plaza de Socorrista",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "2 Plazas de peón especialista, en régimen laboral fijo y 1 plaza de Socorrista",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "por el sistema de concurso-oposición, se adjuntan en Anexo, las bases reguladoras",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "sede electrónica del Ayuntamiento",
+   "cita": "Asimismo, se publicarán en la sede electrónica de este Ayuntamiento: http://talayuela.sedelectronica.es",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 3,
+   "cita": "la contratación de 2 Plazas de peón especialista, en régimen laboral fijo y 1 plaza de Socorrista"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Boletín Oficial de la Provincia y sede electrónica del Ayuntamiento",
+   "cita": "Los sucesivos anuncios de esta convocatoria, cuando procedan, se publicarán en el Boletín Oficial de la Provincia"
+  }
+ }
+}

@@ -1,0 +1,65 @@
+{
+ "proceso": "dogc:1013323",
+ "documento": {
+  "id": "dogc:1013323",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1013323",
+  "fecha": "2025-05-08",
+  "huella": "4cba993f9768c8987bfacfc0386eb592fef0db6955540dae6dddf3d347a40a95"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:45:52+00:00",
+ "lote": "msgbatch_017vJZdAmjTkBDdH14aLEdCv",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "taquiller-auxiliar de la piscina municipal"
+   ],
+   "cita": "per a la provisió de dues places de taquillers-auxiliars de la piscina municipal",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "AP",
+   "cita": "escala personal laboral, subgrup AP, Complement de destí 12",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "laboral fijo",
+   "cita": "personal laboral fix discontinu - temporada estiu",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "pel sistema de concurs oposició, mitjançant torn lliure",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 2,
+   "cita": "per a la provisió de dues places de taquillers-auxiliars de la piscina municipal",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días naturales siguientes a la fecha de publicación del anuncio en el DOGC",
+   "cita": "El termini per a la presentació d'instàncies serà de 20 dies naturals següents a la data de publicació d'aquest anunci al DOGC.",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, constitució d'una borsa de treball",
+   "cita": "mitjançant torn lliure i constitució d'una borsa de treball",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 2,
+   "cita": "mitjançant torn lliure i constitució d'una borsa de treball"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "tablón de anuncios del Ayuntamiento y/o página web municipal",
+   "cita": "s'publicaran únicament en el tauler d'anuncis d'aquest Ajuntament i/o pàgina web municipal"
+  }
+ }
+}

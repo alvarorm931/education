@@ -1,0 +1,56 @@
+{
+ "proceso": "bopb:BOPB-202510180829",
+ "documento": {
+  "id": "dogc:1030287",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1030287",
+  "fecha": "2025-11-26",
+  "huella": "b5ff6860720178f8f3c9e85bcae57ab1a89619400fe7f6fb6a2351a5870dba28"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:41:20+00:00",
+ "lote": "msgbatch_01UNq3BNhPPHoTK3TEJzun1h",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "A1",
+   "cita": "equivalent a tècnic/a superior de gestió grup A1",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "les bases específiques que han de regir la creació i funcionament d'una borsa de treball",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "deu dies hàbils a partir de l'endemà de la publicació de l'anunci de convocatòria en el BOPB",
+   "cita": "El termini de presentació de sol·licituds serà de deu dies hàbils a partir de l'endemà de la publicació",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "tauler d'anuncis electrònic i seu electrònica de la Corporació",
+   "cita": "es troben publicades íntegrament al tauler d'anuncis electrònic i a la seu electrònica de la Corporació",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, bolsa de treball de tècnic/a de gestió documental y categorías similares",
+   "cita": "la creació i funcionament d'una borsa de treball de tècnic/a de gestió documental",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "tècnic/a de gestió documental",
+    "tècnic/a superior de gestió"
+   ],
+   "cita": "una borsa de treball de tècnic/a de gestió documental, així com aquells inclosos en la mateixa categoria"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "otro",
+   "cita": "una borsa de treball de tècnic/a de gestió documental"
+  }
+ }
+}

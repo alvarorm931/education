@@ -1,0 +1,104 @@
+{
+ "proceso": "dog:DOG-20250523-AnuncioG2017-130525-0001",
+ "documento": {
+  "id": "dog:DOG-20250523-AnuncioG2017-130525-0001",
+  "fuente": "DOG",
+  "url": "https://www.xunta.gal/dog/Publicados/2025/20250523/AnuncioG2017-130525-0001_es.html",
+  "fecha": "2025-05-23",
+  "huella": "ef29f18ab4897182ac3a0f2efa9ba66149d01dd2f4aa726c027ec730366dba91"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:45:16+00:00",
+ "lote": "msgbatch_016re6aGcimwSVmdrWa6qBd9",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Profesor/a titular de universidad (Derecho del Trabajo y de la Seguridad Social)",
+    "Profesor/a titular de universidad (Sociología)"
+   ],
+   "cita": "Número de concurso: 25/008. Número de plazas: 1. OEP: 2024. Cuerpo: profesor/a titular de universidad.",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "resuelve convocar los concursos de acceso de las plazas que se relacionan",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Título de doctor/a",
+   "cita": "Poseer el título de doctor/a.",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 44.17,
+   "cita": "la cantidad de 44,17 euros por cada plaza a la que se concurse",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Excluidos por causas no imputables a la persona aspirante tienen derecho a devolución; también se admite subsanación si se tiene derecho a exención.",
+   "cita": "Únicamente procederá la devolución de los derechos de examen a las personas aspirantes que sean excluidas por causas no imputables a ellas.",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Diez días hábiles a partir del día siguiente a la publicación de la convocatoria en el BOE",
+   "cita": "El plazo para la presentación de solicitudes será de diez (10) días hábiles a partir del día siguiente a la publicación",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Sede electrónica de la UDC (https://sede.udc.gal/), sección de trámites de gestión académica, con modelo oficial del anexo II y firma electrónica.",
+   "cita": "Las solicitudes deberán presentarse a través de la sede electrónica de la UDC",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Primera prueba: exposición y defensa oral de méritos e historial (máx. 60 min) y debate (máx. 2 h)",
+    "Segunda prueba: exposición oral del proyecto docente e investigador (máx. 60 min) y debate (máx. 2 h)"
+   ],
+   "cita": "El concurso constará de dos pruebas, ambas de carácter público y eliminatorio",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "no",
+   "cita": "Una vez realizadas las valoraciones, la Comisión de Selección formulará su propuesta de provisión",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "Ley orgánica 2/2023 ... nombrado funcionario docente de carrera"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 2,
+   "cita": "Número de concurso: 25/008. Número de plazas: 1. OEP: 2024."
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 2,
+   "cita": "resuelve convocar los concursos de acceso de las plazas que se relacionan en el anexo I"
+  },
+  "plazas_discapacidad": {
+   "motivo": "valor_no_en_cita",
+   "valor": 0,
+   "cita": "Número de plazas: 1. OEP: 2023."
+  },
+  "otros_requisitos": {
+   "motivo": "cita_no_literal",
+   "valor": "Nacionalidad española o de otro país que permita el acceso al empleo público; no haber sido despedido por expediente disciplinario; cumplir requisitos de edad; capacidad física y psíquica; acreditación ANECA o habilitación para titular de universidad; para la plaza 25/009, certificado I3 o R3.",
+   "cita": "Poseer el título de doctor/a. Contar con el certificado de acreditación para el acceso al cuerpo de profesores/as titulares de universidad"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Tablón electrónico oficial (TEO) de la UDC; resoluciones también en BOE y DOG",
+   "cita": "publicará en el tablón electrónico oficial (TEO) la resolución rectoral con la relación provisional"
+  },
+  "meritos": {
+   "motivo": "cita_no_literal",
+   "valor": "Formación académica, experiencia docente, experiencia investigadora y de transferencia, y experiencia profesional y de gestión (sin puntuación máxima indicada en el texto).",
+   "cita": "Los méritos se valorarán según los criterios de valoración que fije la comisión de selección"
+  }
+ }
+}

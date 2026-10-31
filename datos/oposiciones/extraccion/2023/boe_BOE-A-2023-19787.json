@@ -1,0 +1,79 @@
+{
+ "proceso": "boe:BOE-A-2023-19787",
+ "documento": {
+  "id": "bocyl:BOCYL-D-17072023-47",
+  "fuente": "BOCYL",
+  "url": "https://bocyl.jcyl.es/html/2023/07/17/html/BOCYL-D-17072023-47.do",
+  "fecha": "2023-07-17",
+  "huella": "3e3a416567a08f89fedab112145d161c077893eb20109cba966a2977ebfb4110"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:51+00:00",
+ "lote": "msgbatch_01SjfjDqJRwL6bpTvJz2YfVg",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Personal laboral del Ayuntamiento de Medina de Pomar (estabilización)",
+    "Personal laboral de la Escuela de Música Carmelo Alonso Bernaola (estabilización)",
+    "Personal laboral del Organismo Autónomo La Providencia (estabilización)"
+   ],
+   "cita": "BASES QUE HAN DE REGIR LA CONVOCATORIA Y PROCESO DE ESTABILIZACIÓN DE EMPLEO DEL AYUNTAMIENTO DE MEDINA DE POMAR",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "El sistema selectivo es el concurso.",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española o de la UE u otros supuestos del artículo 56 TREBEP; capacidad funcional; tener 16 años y no exceder edad de jubilación; no haber sido separado de la Administración ni inhabilitado; estar en posesión o condiciones de obtener la titulación exigida",
+   "cita": "Tener cumplidos dieciséis años y no exceder, en su caso, de la edad máxima de jubilación forzosa",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles desde el día siguiente a la publicación del anuncio de la convocatoria en el BOE",
+   "cita": "plazo de veinte días hábiles contados a partir del día siguiente al de la publicación del anuncio de la convocatoria en el Boletín Oficial del Estado",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Registro Electrónico General del Ayuntamiento o lugares del artículo 16.4 de la Ley 39/2015",
+   "cita": "se presentarán en el Registro Electrónico General de este Ayuntamiento de Medina de Pomar o en alguno de los lugares previstos",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de Anuncios de la Casa Consistorial y sede electrónica del Ayuntamiento, además de BOP y BOE según el caso",
+   "cita": "la exposición en el Tablón de Anuncios del Ayuntamiento de Medina de Pomar sito en la planta baja de la Casa Consistorial",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Concurso: valoración de méritos profesionales (60 puntos) y académicos u otros méritos (40 puntos), máximo 100 puntos"
+   ],
+   "cita": "La valoración de los méritos tendrá una puntuación máxima de 100 puntos",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "personal laboral fijo",
+   "cita": "proceso selectivo para el acceso a puestos de trabajo de personal laboral del Ayuntamiento de Medina de Pomar"
+  },
+  "plazas_discapacidad": {
+   "motivo": "valor_no_numerico",
+   "valor": "cupo no inferior al 7 por ciento de las vacantes",
+   "cita": "Se reservará un cupo no inferior al siete por ciento de las vacantes ofertadas"
+  },
+  "meritos": {
+   "motivo": "cita_no_literal",
+   "valor": "Profesionales hasta 60 puntos (0,50 por mes en plaza idéntica; 0,25 en otros cuerpos con funciones equivalentes; 0,10 en el resto del sector público). Académicos u otros hasta 40 puntos (titulaciones, cursos de formación y desarrollo profesional)",
+   "cita": "Méritos profesionales, 60 puntos. Méritos académicos u otros méritos, 40 puntos"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, bolsa de trabajo de personal laboral temporal para quienes superen el proceso sin ser contratados (vigencia máxima de tres años)",
+   "cita": "Se prevé para aquellas personas que habiendo superado el proceso selectivo y no resulten contratados, su inclusión en una bolsa de trabajo personal laboral temporal"
+  }
+ }
+}

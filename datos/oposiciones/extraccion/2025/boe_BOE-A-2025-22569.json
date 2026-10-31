@@ -1,0 +1,53 @@
+{
+ "proceso": "boe:BOE-A-2025-22569",
+ "documento": {
+  "id": "dog:DOG-20251029-AnuncioL406-081025-0001",
+  "fuente": "DOG",
+  "url": "https://www.xunta.gal/dog/Publicados/2025/20251029/AnuncioL406-081025-0001_es.html",
+  "fecha": "2025-10-29",
+  "huella": "13454138577c33ee4d480ec2a434395c256c33fcd42263aa4881ad3771f67762"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:41:14+00:00",
+ "lote": "msgbatch_01UNq3BNhPPHoTK3TEJzun1h",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "auxiliar administrativo, escala de la Administración general, subescala auxiliar",
+   "cita": "una plaza de auxiliar administrativo perteneciente a la escala de la Administración general, subescla auxiliar",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C2",
+   "cita": "subgrupo C2), para cubrir por el sistema de oposición, en turno libre",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "para cubrir por el sistema de oposición, en turno libre",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte (20) días hábiles, a contar desde el siguiente al de la publicación de este anuncio en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes será de veinte (20) días hábiles, a contar desde el siguiente al de la publicación",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la provincia de Lugo y sede electrónica del Ayuntamiento",
+   "cita": "Las bases de selección se hicieron públicas en el Boletín Oficial de la provincia de Lugo",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 1,
+   "cita": "para acceder a una plaza de auxiliar administrativo perteneciente a la escala"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "para cubrir por el sistema de oposición, en turno libre"
+  }
+ }
+}

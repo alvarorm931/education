@@ -1,0 +1,55 @@
+{
+ "proceso": "boe:BOE-A-2025-4642",
+ "documento": {
+  "id": "dogc:1006005",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1006005",
+  "fecha": "2025-02-11",
+  "huella": "ce5995995d8768d03139cea9f39c15363b3a73d765fa59ea1f97217a971cb5cd"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:46:33+00:00",
+ "lote": "msgbatch_01MQzQCLMZKxUrrPMAj7dr53",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "conserge d'escola"
+   ],
+   "cita": "per a la provisió en propietat de dues places de conserge (conserge escola) de la plantilla de personal laboral",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "de la plantilla de personal laboral de l'Ajuntament de Reus, incloses a l'Oferta Pública d'Ocupació per a l'any 2022",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mitjançant el sistema de concurs oposició en torn lliure",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 2,
+   "cita": "per a la provisió en propietat de dues places de conserge",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días naturales, contados a partir del día siguiente a la publicación del extracto de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "El termini de presentació de sol·licituds, acabarà als 20 dies naturals, comptats a partir de l'endemà de la publicació",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Diario Oficial de la Generalitat de Catalunya (DOGC)",
+   "cita": "Els anuncis successius d'aquesta convocatòria es publicaran en el Diari Oficial de la Generalitat de Catalunya",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 2,
+   "cita": "mitjançant el sistema de concurs oposició en torn lliure"
+  }
+ }
+}

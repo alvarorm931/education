@@ -1,20 +1,22 @@
 {
  "proceso": "bopb:BOPB-202610144994",
  "documento": {
-  "id": "bopb:BOPB-202610144994",
-  "fuente": "BOPB",
-  "url": "https://bop.diba.cat/anunci/3994392/bases-reguladores-i-convocatoria-de-seleccio-d-una-placa-d-arquitecte-a-municipal-grup-subgrup-a1-personal-funcionari-aria-de-carrera-i-constitucio-d-una-borsa-de-treball-ajuntament-de-sant-pere-de-vilamajor",
+  "id": "dogc:1055672",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1055672",
   "fecha": "2026-10-02",
-  "huella": "4be6e356819e12e634a28ad381a391b0e29ac19fdb26f2f33c51399b33e84af9"
+  "huella": "d8eee7e9cb4c6846cbe7cf2e9dd259dce82745a8f130c0d086255f625544cad4"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T07:39:58+00:00",
- "lote": "msgbatch_013q7o24qMms8ZNZdwMNkW1L",
+ "extraido": "2026-10-31T14:42:04+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
-   "valor": "Arquitecte/a municipal",
-   "cita": "plaça d’arquitecte/a municipal, grup/subgrup A1, personal funcionari/ària de carrera",
+   "valor": [
+    "Arquitecte/a"
+   ],
+   "cita": "plaça d'arquitecte/a municipal, grup/subgrup A1, personal funcionari/ària de carrera",
    "nivel": "literal"
   },
   "grupo": {
@@ -22,88 +24,94 @@
    "cita": "grup/subgrup A1, personal funcionari/ària de carrera",
    "nivel": "literal"
   },
-  "plazas_total": {
-   "valor": 1,
-   "cita": "Nombre de places: 1 - Sistema: Concurs oposició. Torn lliure",
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "plaça d'arquitecte/a municipal, grup/subgrup A1, personal funcionari/ària de carrera",
    "nivel": "literal"
   },
-  "plazas_turno_libre": {
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "Concurs oposició. Torn lliure",
+   "nivel": "literal"
+  },
+  "plazas_total": {
    "valor": 1,
-   "cita": "Nombre de places: 1 - Sistema: Concurs oposició. Torn lliure",
+   "cita": "Nombre de places: 1",
    "nivel": "literal"
   },
   "titulacion": {
-   "valor": "Títol universitari oficial superior en arquitectura (llicenciatura o grau) que habiliti per a l’exercici de la professió d’arquitecte/a",
-   "cita": "Estar en possessió del títol universitari oficial superior en arquitectura (llicenciatura o grau) que habiliti",
-   "nivel": "literal"
+   "valor": "Títol universitari oficial superior en arquitectura (llicenciatura o grau) que habiliti per a l'exercici de la professió d'arquitecte/a",
+   "cita": "Estar en possessió del títol universitari oficial superior en arquitectura (llicenciatura o grau)",
+   "nivel": "sin_signos"
   },
   "otros_requisitos": {
-   "valor": "Nacionalidad española, UE o las equiparadas; 16 años y no superar la edad de jubilación forzosa; capacidad funcional; permiso de conducir B; no tener antecedentes penales",
-   "cita": "Haver complert 16 anys i no superar l'edat establerta per a la jubilació forçosa.",
+   "valor": "Nacionalitat espanyola o de la UE (o amb lliure circulació); haver complert 16 anys i no superar l'edat de jubilació forçosa; capacitat funcional; carnet de conduir B; no tenir antecedents penals",
+   "cita": "Estar en possessió del permís de conduir classe B.",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
    "valor": "Veinte días hábiles desde el día siguiente a la publicación de la convocatoria en el DOGC",
-   "cita": "el termini de presentació de sol·licituds serà de vint (20) dies hàbils comptadors a partir de l’endemà de la publicació al DOGC",
+   "cita": "el termini de presentació de sol·licituds serà de vint (20) dies hàbils comptadors a partir de l'endemà de la publicació al DOGC",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Preferentemente en el registro electrónico del Ayuntamiento; también presencial, correos u otros registros",
-   "cita": "Preferentment en el registre electrònic de l’Ajuntament o en el registre electrònic de les administracions públiques",
+   "valor": "Preferentemente en el registro electrónico del Ayuntamiento; también presencial, en Correos o en las oficinas del registro municipal",
+   "cita": "Preferentment en el registre electrònic de l'Ajuntament o en el registre electrònic de les administracions públiques",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de anuncios del web municipal (www.vilamajor.cat); BOPB y DOGC para las bases y la convocatoria",
+   "cita": "Els successius actes de tràmit del procés selectiu es publicaran al tauler d'anuncis del web municipal",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Prueba teórica tipo test de 40 preguntas (eliminatoria, mínimo 10 puntos sobre 20)",
-    "Prueba práctica con dos supuestos prácticos (eliminatoria, mínimo 10 puntos sobre 20)",
-    "Prueba de catalán (obligatoria y eliminatoria, apto/no apto)",
-    "Prueba de castellano solo para no nacionales (apto/no apto)",
-    "Fase de concurso de méritos (máximo 10 puntos)"
+    "Primera prueba teórica tipo test de 40 preguntas (20 puntos, eliminatoria)",
+    "Segunda prueba práctica con dos supuestos (20 puntos, eliminatoria)",
+    "Prueba de catalán (apto/no apto, eliminatoria)",
+    "Prueba de castellano para no nacionales (apto/no apto, eliminatoria)",
+    "Fase de concurso de méritos (10 puntos)",
+    "Entrevista personal"
    ],
-   "cita": "Consisteix en la realització de dos supòsits pràctics vinculats a les funcions pròpies de la plaça",
+   "cita": "Fase d'oposició: prova teòrica, prova pràctica i prova de català i castellà, si s'escau.",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Experiencia laboral en administraciones públicas (máx. 5 puntos); formación oficial y continua (máx. 5 puntos); coneixements informàtics (1 punto)",
+   "cita": "Consisteix en la valoració dels mèrits al·legats i acreditats documentalment pels candidats/es",
    "nivel": "literal"
   },
   "bolsa": {
    "valor": "Sí, para cubrir posibles vacantes durante dos años desde el decreto de aprobación de la bolsa",
-   "cita": "constituir una borsa de treball",
+   "cita": "constituir una borsa de treball, d'acord amb l'oferta pública d'ocupació 2023",
    "nivel": "literal"
   },
   "practicas_o_curso": {
-   "valor": "Periodo de prácticas de seis meses bajo supervisión del jefe de la unidad, con informe de aptitud previo al nombramiento como funcionario de carrera",
+   "valor": "Periodo de prácticas de seis meses como funcionario en prácticas antes del nombramiento de carrera",
    "cita": "El període de pràctiques es realitzarà sota la supervisió del cap de la unitat administrativa",
    "nivel": "literal"
   }
  },
  "rechazados": {
-  "vinculo": {
-   "motivo": "cita_no_literal",
-   "valor": "funcionario de carrera",
-   "cita": "personal funcionari/ària de carrera, mitjançant el sistema de concurs-oposició"
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "Sistema: Concurs oposició. Torn lliure"
   },
-  "sistema": {
-   "motivo": "cita_no_literal",
-   "valor": "concurso-oposición",
-   "cita": "mitjançant el sistema de concurs-oposició, d’una plaça d’arquitecte/a"
+  "plazas_discapacidad": {
+   "motivo": "valor_no_en_cita",
+   "valor": 0,
+   "cita": "Nombre de places: 1"
   },
   "idioma_cooficial": {
    "motivo": "cita_no_literal",
-   "valor": "Català, nivell C1 (suficiència); castellà nivell B2 solo para aspirantes sin nacionalidad española",
+   "valor": "Català, nivell C1 (suficiència)",
    "cita": "Acreditar el coneixement adequat, oral i escrit, de la llengua catalana, amb el nivell de suficiència (nivell C1)"
-  },
-  "publicaciones": {
-   "motivo": "cita_no_literal",
-   "valor": "Tablón de anuncios del web municipal (www.vilamajor.cat); BOPB y DOGC para las bases y la convocatoria",
-   "cita": "Els successius actes de tràmit del procés selectiu es publicaran al tauler d’anuncis del web municipal"
   },
   "temas": {
    "motivo": "cita_no_literal",
    "valor": 70,
-   "cita": "ANNEX II TEMARI GENERAL 1. La Constitució Espanyola de 1978"
-  },
-  "meritos": {
-   "motivo": "cita_no_literal",
-   "valor": "Experiencia laboral en administraciones públicas (máx. 5 puntos) y formación oficial, continua e informática (máx. 5 puntos)",
-   "cita": "Consisteix en la valoració dels mèrits al·legats i acreditats documentalment"
+   "cita": "Temari específic: 70 temas (1 a 70) más temario general de 20 temas"
   }
  }
 }

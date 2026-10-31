@@ -1,0 +1,50 @@
+{
+ "proceso": "dogv:420828",
+ "documento": {
+  "id": "dogv:420828",
+  "fuente": "DOGV",
+  "url": "https://dogv.gva.es/datos/2025/05/05/pdf/2025_12641_es.pdf",
+  "fecha": "2025-05-05",
+  "huella": "36b284c600c1ce81e8a1a52b08a5569dabcb753b1d890bfae60236103c0c8393"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:45:56+00:00",
+ "lote": "msgbatch_017vJZdAmjTkBDdH14aLEdCv",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "A1",
+   "cita": "grupo A/subgrupo A1, por el turno libre y promoción interna",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "otro",
+   "cita": "Convocarlas pruebas selectivas para el acceso a 33 plazas de facultativo o facultativa especialista",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "Aprobar las normas o bases específicas por las que se regirá cada una de las convocatorias",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Requisitos específicos en función de cada especialidad, recogidos en el anexo III de la resolución.",
+   "cita": "Fijar los requisitos específicos que deberán reunir las personas aspirantes en función de cada una de las especialidades convocadas",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Facultativo o facultativa especialista"
+   ],
+   "cita": "convocar las pruebas selectivas para el acceso a 33 plazas de facultativo o facultativa especialista"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 33,
+   "cita": "convocar las pruebas selectivas para el acceso a 33 plazas de facultativo o facultativa especialista"
+  }
+ }
+}

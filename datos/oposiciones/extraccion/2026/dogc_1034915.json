@@ -1,0 +1,42 @@
+{
+ "proceso": "dogc:1034915",
+ "documento": {
+  "id": "dogc:1034915",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1034915",
+  "fecha": "2026-01-22",
+  "huella": "adde08fdcf9d450cbf3eb8f3a62f5a27ee03b5763b2f85895cfb17c3e7fb776f"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:42:17+00:00",
+ "lote": "msgbatch_01W17mR271uYfWYL6CuSdriL",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Cuerpo de gestión procesal y administrativa",
+    "Cuerpo de tramitación procesal y administrativa",
+    "Cuerpo de auxilio judicial"
+   ],
+   "cita": "Cuerpo de gestión procesal y administrativa: 124 plazas.",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "por el sistema general de acceso libre, mediante oposición, a los cuerpos",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 317,
+   "cita": "Cuerpo de gestión procesal y administrativa: 124 plazas."
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 317,
+   "cita": "por el sistema general de acceso libre, mediante oposición, a los cuerpos"
+  }
+ }
+}

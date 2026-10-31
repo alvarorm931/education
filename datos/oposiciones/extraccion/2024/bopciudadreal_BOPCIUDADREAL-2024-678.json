@@ -1,0 +1,53 @@
+{
+ "proceso": "bopciudadreal:BOPCIUDADREAL-2024-678",
+ "documento": {
+  "id": "bopciudadreal:BOPCIUDADREAL-2024-678",
+  "fuente": "BOP-CIUDADREAL",
+  "url": "https://bop.dipucr.es/bop/2024/02/28",
+  "fecha": "2024-02-28",
+  "huella": "eeb094035bdfc5dc9f6bc1e38bc74f2efce612145bcea6997461048fe072a659"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:53:52+00:00",
+ "lote": "msgbatch_01EQ4R6PVKpEwTXzXwPCmspm",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "Periodista",
+   "cita": "aprobar las bases de la convocatoria para la constitución de una bolsa de trabajo de Periodista",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "aprobar las bases de la convocatoria para la constitución de una bolsa de trabajo",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Sede electrónica y página web del Ayuntamiento; consulta de bases en la web municipal",
+   "cita": "El texto íntegro de las bases de la convocatoria y sus anexos están publicados en la página web y sede electrónica",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia de Ciudad Real; página web y sede electrónica del Ayuntamiento",
+   "cita": "publicación de este anuncio en el Boletín Oficial de la Provincia de Ciudad Real",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "laboral temporal",
+   "cita": "contratación en régimen laboral temporal y a jornada parcial"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "diez días hábiles contados a partir del día siguiente al de la publicación de este anuncio",
+   "cita": "El plazo de presentación de instancias será de diez días hábiles contados a partir del día siguiente"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, para cubrir de forma ágil vacantes, vacaciones, bajas, permisos, licencias y otras necesidades circunstanciales del servicio",
+   "cita": "constitución de una bolsa de trabajo de Periodista, para la contratación en régimen laboral temporal"
+  }
+ }
+}

@@ -1,0 +1,55 @@
+{
+ "proceso": "dogc:1006191",
+ "documento": {
+  "id": "dogc:1006191",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1006191",
+  "fecha": "2025-02-12",
+  "huella": "5d2913b6079061a4480ae3329c316d265e836b73ce0787dadfba3250c423a318"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:46:28+00:00",
+ "lote": "msgbatch_01MQzQCLMZKxUrrPMAj7dr53",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "administratiu/va"
+   ],
+   "cita": "de la categoria d'administratiu/va, grup C, subgrup C1, nivell 16",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C1",
+   "cita": "grup C, subgrup C1, nivell 16",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "a formar per mitjà d'un procés de concurs-oposició",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles, a partir del día siguiente a la última publicación del extracto del anuncio de convocatoria en el DOGC",
+   "cita": "El termini per a la presentació de sol·licituds serà de 20 dies hàbils, a partir de l'endemà de la darrera publicació",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Las bases se publicarán íntegramente en el BOP de Girona número 26 de 7 de febrero de 2025; los sucesivos anuncios solo en la sede electrónica del ayuntamiento www.peralada.org",
+   "cita": "Els successius anuncis de la convocatòria i del procés de selecció es faran públics únicament a la seu electrònica",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, bolsa de trabajo de personal laboral temporal para cubrir suplencias",
+   "cita": "creació d'una borsa de treball de personal laboral, amb caràcter temporal, ... amb la finalitat de cobrir suplències",
+   "nivel": "fragmentos"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "personal laboral fijo",
+   "cita": "una borsa de treball de personal laboral, amb caràcter temporal"
+  }
+ }
+}

@@ -1,0 +1,45 @@
+{
+ "proceso": "bophuelva:BOPHUELVA-347800",
+ "documento": {
+  "id": "bophuelva:BOPHUELVA-347800",
+  "fuente": "BOP-HUELVA",
+  "url": "https://s2.diphuelva.es/portalweb/bope/anuncios/Anuncio_347800_BOP-48_2026.pdf",
+  "fecha": "2026-03-11",
+  "huella": "8a94f7057ce0cd04fd6498fd276b7b3ec7dab4f47b9ec2cee8a60735886b177d"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:40:45+00:00",
+ "lote": "msgbatch_01E3wiYcGL8Lzho48bXWLyyb",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "Bolsa de Trabajo Temporal para selección de personal de ejecución de Programas de Empleo y Formación",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Bases íntegras en la sede electrónica del Ayuntamiento de Beas: https://beas.sedelectronica.es/board",
+   "cita": "cuyas bases íntegras se harán publicas en la sede electrónica del Ayuntamiento de Beas",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Sede electrónica del Ayuntamiento de Beas: https://beas.sedelectronica.es/board",
+   "cita": "cuyas bases íntegras se harán publicas en la sede electrónica del Ayuntamiento de Beas",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "personal de ejecución de Programas de Empleo y Formación"
+   ],
+   "cita": "Bases reguladoras de la Bolsa de Trabajo Temporal para selección de personal de ejecución de Programas de Empleo y Formación"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "10 días hábiles a contar desde el día siguiente a la publicación de este anuncio en el Boletín Oficial de la Provincia de Huelva",
+   "cita": "el plazo de presentación de solicitudes, que será de 10 días hábiles a contar desde el día siguiente"
+  }
+ }
+}

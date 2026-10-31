@@ -1,0 +1,50 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2026-1197",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2026-1197",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2026/02/27_40/2026_001197.pdf",
+  "fecha": "2026-02-27",
+  "huella": "8770892f2afc03835b6a7caebd662056d5e1181ac58389c5686b7940a56d8eae"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:40:26+00:00",
+ "lote": "msgbatch_01E3wiYcGL8Lzho48bXWLyyb",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Personal de Limpieza (bolsa de trabajo temporal)"
+   ],
+   "cita": "la constitución de una Bolsa de Trabajo Temporal de Personal de Limpieza, mediante el procedimiento concurso-oposición",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "constitución de una Bolsa de Trabajo Temporal de Personal de Limpieza",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mediante el procedimiento concurso-oposición",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "10 días naturales, contados a partir del día siguiente al de la publicación del presente anuncio en el Boletín Oficial de la Provincia",
+   "cita": "El plazo de presentación de instancias será de 10 días naturales, contados a partir del día siguiente",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, bolsa de trabajo temporal de personal de limpieza",
+   "cita": "para la constitución de una Bolsa de Trabajo Temporal de Personal de Limpieza",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Tablón de Edictos Municipal y Sede Electrónica del Ayuntamiento",
+   "cita": "Los sucesivos anuncios relacionados con la presente convocatoria se publicarán únicamente en el Tablón de Edictos Municipal"
+  }
+ }
+}

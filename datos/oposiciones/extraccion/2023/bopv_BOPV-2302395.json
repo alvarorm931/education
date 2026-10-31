@@ -1,0 +1,62 @@
+{
+ "proceso": "bopv:BOPV-2302395",
+ "documento": {
+  "id": "bopv:BOPV-2302395",
+  "fuente": "BOPV",
+  "url": "https://www.euskadi.eus/web01-bopv/es/bopv2/datos/2023/05/2302395a.shtml",
+  "fecha": "2023-05-22",
+  "huella": "09433f67403d862bd1297bd71c68934b9e14aee5ac08694413a4d4f164aa1247"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:59:20+00:00",
+ "lote": "msgbatch_012nGabRM1G4b7cEKJh1Bcx1",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Auxiliar Administrativo",
+    "Técnico de Medio Ambiente",
+    "Limpiadora"
+   ],
+   "cita": "Una plaza de Auxiliar Administrativo. Escala: Administración General. Subescala: Auxiliar Administrativo. Grupo C2.",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C2",
+   "cita": "Subescala: Auxiliar Administrativo. Grupo C2. Turno: libre, mediante el sistema de concurso.",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "se han publicado íntegramente las bases que han de regir la convocatoria para proveer las siguientes plazas",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "Turno: libre, mediante el sistema de concurso.",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles a contar desde el siguiente al de la publicación de este acuerdo en el «Boletín Oficial del Estado»",
+   "cita": "El plazo de presentación de solicitudes será de veinte días hábiles a contar desde el siguiente al de la publicación",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia de Gipuzkoa, web institucional www.alkiza.eus y tablón de edictos del Ayuntamiento de Alkiza",
+   "cita": "se harán públicos en el «Boletín Oficial de la Provincia de Gipuzkoa», y en la web institucional www.alkiza.eus",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 3,
+   "cita": "Una plaza de Auxiliar Administrativo. Una plaza de Técnico de Medio Ambiente. Una plaza de Limpiadora."
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 3,
+   "cita": "Turno: libre, mediante el sistema de concurso."
+  }
+ }
+}

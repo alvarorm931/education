@@ -1,0 +1,56 @@
+{
+ "proceso": "bopcoruna:BOPCORUNA-2023-3960",
+ "documento": {
+  "id": "bopcoruna:BOPCORUNA-2023-3960",
+  "fuente": "BOP-CORUNA",
+  "url": "https://bop.dacoruna.gal/bopportal/publicado/2023/05/23/2023_0000003960.html",
+  "fecha": "2023-05-23",
+  "huella": "bc8b80442461e37abb7b9b1913ce2457099ca21caa75e3d4cfcbeffa68742906"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:59:33+00:00",
+ "lote": "msgbatch_012nGabRM1G4b7cEKJh1Bcx1",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "selección de persoal laboral temporal, de 1 posto de tractorista e 3 peóns forestais",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "cinco (5) días hábiles, contados a partir del día siguiente a la publicación del anuncio en el BOP",
+   "cita": "O prazo de presentación de instancias será de cinco (5) días hábiles, contados a partir do día seguinte á data de publicación do presente anuncio no BOP.",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Taboleiro de anuncios da sede electrónica do Concello de Val do Dubra",
+   "cita": "As bases están a disposición dos/as interesados/as no taboleiro de anuncios da sede electrónica",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Tractorista",
+    "Peón forestal"
+   ],
+   "cita": "convocatoria para la selección de personal laboral temporal, de 1 puesto de tractorista e 3 peóns forestais"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "concurso-oposición"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 4,
+   "cita": "contratación laboral temporal de 3 peóns de obra pública a xornada parcial durante 6 meses"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 4,
+   "cita": "selección de persoal laboral temporal, de 1 posto de tractorista e 3 peóns forestais"
+  }
+ }
+}

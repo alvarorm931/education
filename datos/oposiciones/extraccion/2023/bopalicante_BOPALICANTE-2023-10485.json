@@ -1,0 +1,40 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2023-10485",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2023-10485",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2023/12/11_235/2023_010485.pdf",
+  "fecha": "2023-12-11",
+  "huella": "bbff9483d5ea71398ed2176a1710304d96aa30fc5558170f6a40564de6666fd4"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:49+00:00",
+ "lote": "msgbatch_01SjfjDqJRwL6bpTvJz2YfVg",
+ "no_son_bases": false,
+ "campos": {
+  "plazo_solicitudes": {
+   "valor": "10 días hábiles contados a partir del siguiente al de la publicación de esta convocatoria en el Boletín Oficial de la Provincia de Alicante",
+   "cita": "El plazo de presentación de instancias será de 10 días hábiles contados a partir del siguiente al de la publicación",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de Anuncios del Servicio de Recursos Humanos de la Corporación y página web www.lalfas.es",
+   "cita": "Las bases del proceso selectivo se publicarán íntegramente en el Tablón de Anuncios del Servicio de Recursos Humanos",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Coordinadores/as de Deportes"
+   ],
+   "cita": "creación de una Bolsa de Trabajo de Coordinadores/as de Deportes del Ayuntamiento"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, para crear una Bolsa de Trabajo de Coordinadores/as de Deportes",
+   "cita": "proceso selectivo para la creación de una Bolsa de Trabajo de Coordinadores/as de Deportes del Ayuntamiento"
+  }
+ }
+}

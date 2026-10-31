@@ -1,0 +1,88 @@
+{
+ "proceso": "bopb:BOPB-202510079047",
+ "documento": {
+  "id": "bopb:BOPB-202510079047",
+  "fuente": "BOPB",
+  "url": "https://bop.diba.cat/anunci/3756916/bases-i-convocatoria-del-proces-selectiu-per-a-la-creacio-d-una-borsa-de-treball-de-treballadors-es-familiars-de-la-plantilla-de-personal-laboral-ajuntament-de-parets-del-valles",
+  "fecha": "2025-04-22",
+  "huella": "4083cf5a4d2b2820f1410d44e93fce1dcfd403e092b648b1740b093857566978"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:45:49+00:00",
+ "lote": "msgbatch_017vJZdAmjTkBDdH14aLEdCv",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "C2",
+   "cita": "El lloc de treball es troba enquadrat en el grup de classificació C, subgrup C2",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "per crear una borsa de treball de Treballadors/es familiars de la plantilla de personal laboral",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Catalán, nivel B2 (suficiencia), exigido; prueba de catalán eliminatoria salvo exención",
+   "cita": "de conformitat amb el que preveu l'Ordre VCP/491/2009, de 12 de novembre",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "10 días hábiles contados desde el día siguiente a la publicación del anuncio de la convocatoria en el BOPB",
+   "cita": "El termini d'admissió de sol·licituds ... és de 10 dies hàbils comptats a partir de l’endemà de la data de la publicació",
+   "nivel": "fragmentos"
+  },
+  "ejercicios": {
+   "valor": [
+    "Prueba de catalán (eliminatoria, apto/no apto)",
+    "Prueba de castellano (solo no nacionales sin acreditación, apto/no apto)",
+    "Valoración de méritos (máx. 10 puntos)",
+    "Entrevista personal (máx. 5 puntos, mínimo 2,5)"
+   ],
+   "cita": "Consistirà en la valoració dels mèrits que s’acreditin per part dels candidats",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Experiencia profesional hasta 5 puntos (0,5 por año en administraciones públicas hasta 3; 0,25 por año en otros ámbitos hasta 2); formación hasta 2,5 puntos; cursos y titulaciones; otros méritos hasta 1 punto; total máximo 10 puntos",
+   "cita": "La valoració dels mèrits ... serà efectuada segons el següent barem de puntuació i fins un màxim de 10 punts.",
+   "nivel": "fragmentos"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Treballador/a familiar",
+   "cita": "BORSA DE TREBALL DE TREBALLADORS/RES FAMILIARS DE LA PLANTILLA DE PERSONAL LABORAL DE L’AJUNTAMENT DE PARETS DEL VALLÈS"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "mitjançant sistema de concurs amb proves per a contractacions temporals"
+  },
+  "titulacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Graduat en ESO o equivalent más título de Técnico/a en atención a personas en situación de dependencia o certificado de profesionalidad de atención sociosanitaria",
+   "cita": "Estar en possessió del títol de graduat en educació secundària obligatòria (E.S.O.), Graduat Escolar o equivalent"
+  },
+  "otros_requisitos": {
+   "motivo": "cita_no_literal",
+   "valor": "Nacionalidad española o de la UE (o equivalente según tratados); edad mínima 16 años y no superar la edad de jubilación forzosa; capacidad funcional; no estar inhabilitado ni separado del servicio de cualquier Administración; conocimiento de castellano para personas no españolas.",
+   "cita": "Haver complert 16 anys i no superar l’edat establerta per a la jubilació forçosa."
+  },
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Solicitud electrónica obligatoria a través del catálogo de trámites de la sede electrónica del Ayuntamiento, firmada con certificado digital",
+   "cita": "les persones ... han de presentar una sol·licitud electrònica a través del catàleg de tràmits de la seu electrònica"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Tablón de anuncios electrónico de la Sede del Ayuntamiento y BOPB",
+   "cita": "Les bases es podran consultar al tauler anuncis de la Seu electrònica de l'Ajuntament de Parets del Vallès"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "Sí, para contrataciones temporales por necesidades urgentes e inaplazables; vigencia de dos años",
+   "cita": "La vigència de la borsa de treball creada mitjançant aquest procés selectiu serà de dos anys"
+  }
+ }
+}

@@ -1,0 +1,50 @@
+{
+ "proceso": "bophuelva:BOPHUELVA-348659",
+ "documento": {
+  "id": "bophuelva:BOPHUELVA-348659",
+  "fuente": "BOP-HUELVA",
+  "url": "https://s2.diphuelva.es/portalweb/bope/anuncios/Anuncio_348659_BOP-61_2026.pdf",
+  "fecha": "2026-03-30",
+  "huella": "19bcf388fd0e78ab108c674085b808bc9f27d35b42334b3663e8c58089aec36c"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:40:55+00:00",
+ "lote": "msgbatch_01E3wiYcGL8Lzho48bXWLyyb",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "creación de una bolsa de trabajo para futuras contrataciones de personal laboral",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "todo ello mediante el sistema de concurso",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Sede Electrónica del Ayuntamiento de Hinojos (https://hinojos.sedelectronica.es/info.0)",
+   "cita": "Los sucesivos anuncios de esta convocatoria, cuando procedan de conformidad con las bases, se publicarán en la sede electrónica de este Ayuntamiento",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, para futuras contrataciones de personal laboral como oficial multiservicios",
+   "cita": "para la constitución de una bolsa de trabajo",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "oficial multiservicios"
+   ],
+   "cita": "la creación de una bolsa de trabajo para futuras contrataciones de personal laboral en el puesto o puestos de trabajo de oficial multiservicios"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "diez (10) días hábiles a contar desde el día siguiente a la publicación de este anuncio en Boletín Oficial de la Provincia",
+   "cita": "el plazo de presentación de solicitudes, que será de diez (10) días hábiles a contar desde el día siguiente a la publicación"
+  }
+ }
+}

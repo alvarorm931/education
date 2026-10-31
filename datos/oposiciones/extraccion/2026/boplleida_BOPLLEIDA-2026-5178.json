@@ -1,103 +1,107 @@
 {
  "proceso": "boplleida:BOPLLEIDA-2026-5178",
  "documento": {
-  "id": "boplleida:BOPLLEIDA-2026-5178",
-  "fuente": "BOP-LLEIDA",
-  "url": "https://ebop.diputaciolleida.cat/aplicacions/bop/bopV1/fitxers/pdf/2026/116/202611605178.pdf",
-  "fecha": "2026-06-19",
-  "huella": "010a4fd46e194f5a4aa1bd7beb624e2fc6a1e1b51782c26f5dd1f7ed84647718"
+  "id": "dogc:1048448",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1048448",
+  "fecha": "2026-06-30",
+  "huella": "427df03d3515597271daabd6bf278811a83e39c938ad6aebd8306442d41c4ee7"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T08:18:22+00:00",
- "lote": "msgbatch_01BrnYw6KkevFx7at547B5g8",
+ "extraido": "2026-10-31T14:41:45+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
-   "valor": "xofer",
+   "valor": [
+    "xofer"
+   ],
    "cita": "Denominació: xofer.",
    "nivel": "literal"
   },
-  "vinculo": {
-   "valor": "laboral fijo",
-   "cita": "Règim jurídic: laboral.",
+  "grupo": {
+   "valor": "no consta",
+   "cita": "Classificació professional: xofer",
    "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "Règim jurídic: laboral. Caràcter: indefinit.",
+   "nivel": "sin_signos"
   },
   "sistema": {
-   "valor": "concurs-oposició",
+   "valor": "concurso-oposición",
    "cita": "Sistema de selecció: concurs-oposició.",
-   "nivel": "literal"
-  },
-  "plazas_total": {
-   "valor": 4,
-   "cita": "quatre places de xofer de la societat URGELL NET, SA.",
    "nivel": "literal"
   },
   "plazas_turno_libre": {
    "valor": 4,
-   "cita": "convocatòria de quatre places de xofer de la societat URGELL NET, SA.",
+   "cita": "Convocatòria de quatre llocs de treball de xofer",
    "nivel": "literal"
   },
   "titulacion": {
    "valor": "No s'exigeix cap titulació prevista en el sistema educatiu",
-   "cita": "No s’exigeix cap titulació prevista en el sistema educatiu, de conformitat amb la disposició addicional 6a del TREBEP",
+   "cita": "No s'exigeix cap titulació prevista en el sistema educatiu, de conformitat amb la disposició addicional 6a del TREBEP",
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Nacionalitat (o residència i permisos), 18 anys i no excedir 65, capacitat funcional per al lloc, no separació ni inhabilitació, permís de conducció C o en condicions d'obtenir-lo i vehicle propi",
-   "cita": "Tenir el permís de conducció C, o en condicions d’obtenir -lo abans que finalitzi el termini de presentació d’instàncies, i tenir vehicle propi.",
+   "valor": "Nacionalitat; 18 anys i no excedir 65; capacitat funcional acreditada con certificado médico; no separado de la función pública; permiso de conducción C o en condiciones de obtenerlo, y vehículo propio.",
+   "cita": "Haver complert els 18 anys i no excedir els 65 anys.",
    "nivel": "literal"
   },
   "idioma_cooficial": {
-   "valor": "català nivell A2 bàsic (obligatori d'acreditar en un curs posterior si no s'acredita en el procés)",
-   "cita": "Els aspirants que siguin contractats per l’empresa Urgell Net, SA i no hagin acreditat en el procés de selecció el coneixement de la llengua catalana en un nivell bàsic, estaran obligats a dur a terme un curs",
+   "valor": "catalán, nivel A2 básico (requisito de obtención para contratados sin acreditación, en el plazo que establezca la empresa)",
+   "cita": "acreditar el coneixement oral i escrit de la llengua catalana equivalent al nivell A2 bàsic",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "20 dies hàbils a partir del dia següent a la publicació de la convocatòria al DOGC",
-   "cita": "El termini de presentació de sol·licituds serà de 20 dies hàbils a partir del dia següent a la data de publicació",
+   "valor": "20 días hábiles desde el siguiente al de la publicación de la convocatoria en el DOGC",
+   "cita": "El termini de presentació d'instàncies és de 20 dies hàbils comptadors a partir del següent al de la publicació",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Tauler d'anuncis de la societat i web corporatiu; bases i convocatòria íntegres en BOP i DOGC",
-   "cita": "La resolució es publicarà al tauler d’anuncis de la societat i al web corporatiu",
-   "nivel": "literal"
-  },
-  "ejercicios": {
-   "valor": [
-    "Prova de castellà (apte/no apte), només per a aspirants sense nacionalitat espanyola",
-    "Prova psicotècnica (apte/no apte)",
-    "Qüestionari de 10 preguntes tipus test (mínim 5 punts)",
-    "Prova de conducció (puntua sobre 10)"
-   ],
-   "cita": "Fase d’oposició 1: Prova de castellà: qualificació apte o no apte.",
+   "valor": "tablón de anuncios de la sociedad y web corporativa; las bases y convocatoria se publican íntegramente en BOP y DOGC",
+   "cita": "Els restants i successius anuncis d'aquesta convocatòria es faran públics únicament en el tauler d'anuncis de la societat.",
    "nivel": "literal"
   },
   "meritos": {
-   "valor": "Experiència professional en mateixes funcions fins a 15 punts; experiència com a mecànic d'automoció fins a 5; formació acadèmica fins a 8; cursos fins a 5; certificat de català A2 fins a 4; carnet CAP 2 punts; entrevista fins a 10",
-   "cita": "c) La formació acadèmica, que es valorarà fins a un màxim de 8 punts",
+   "valor": "Experiencia como conductor (máx. 15 pts); experiencia como mecánico de automoción (máx. 5 pts); formación académica y cursos (máx. 8 pts); catalán nivel A2 (4 pts); carné CAP (2 pts); máximo computable 8 puntos en concurso",
+   "cita": "L'experiència professional en l'administració pública o a l'empresa privada exercint les mateixes funcions de la plaça a cobrir, fins a un màxim de 15 punts.",
    "nivel": "literal"
   },
   "bolsa": {
-   "valor": "sí, borsa de treball per cobrir vacants sobrevingudes o substitucions, vigent dos anys",
-   "cita": "Tanmateix i a fi d'establir un procediment àgil per cobrir les necessitats, vacants o incidències que es puguin produir a l‘empresa, es crearà una borsa de treball",
-   "nivel": "literal"
-  },
-  "practicas_o_curso": {
-   "valor": "període de prova de dos mesos",
-   "cita": "El personal al qual s’hagi formalitzat el contracte de treball d’acord amb aquesta convocatòria ha de superar un període de prova de dos mesos.",
+   "valor": "sí, bolsa de trabajo para cubrir vacantes sobrevenidas o sustituciones, vigente dos años",
+   "cita": "es crearà una borsa de treball amb les persones que hagin obtingut la puntuació mínima exigida",
    "nivel": "literal"
   }
  },
  "rechazados": {
-  "tasa_euros": {
-   "motivo": "valor_no_en_cita",
-   "valor": 0,
-   "cita": "La presentació de sol·licituds no està sotmesa a cap taxa."
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 4,
+   "cita": "Instància que presento sol·licitud per participar a les proves de selecció de quatre xofers d'Urgell Net, SA."
   },
   "presentacion": {
    "motivo": "cita_no_literal",
-   "valor": "Al domicili social de la societat (c/ Agoders, 16, Tàrrega) mitjançant model de l'annex I, o en qualsevol registre de l'article 16.4 de la Llei 39/2015",
-   "cita": "Les sol·licituds s’han d’adreçar al President del Consell d’Administració de la societat URGELL NET,SA al domicili social"
+   "valor": "Presencialmente en el domicilio social de la sociedad (c/ Agoders, núm. 16, Tàrrega) o en cualquier lugar previsto en el art. 16.4 de la Ley 39/2015, según modelo del anexo I",
+   "cita": "Les sol·licituds s'han d'adreçar al President del Consell d'Administració de la societat URGELL NET,SA al domicili social"
+  },
+  "ejercicios": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Prueba de castellano (solo no nacionales): apto/no apto",
+    "Prueba psicotécnica: apto/no apto",
+    "Cuestionario de 10 preguntas tipo test",
+    "Prueba de conducción (puntúa sobre 10)",
+    "Fase de concurso: valoración de méritos",
+    "Entrevista personal (opcional, hasta 10 puntos)"
+   ],
+   "cita": "Fase d'oposició 4: Qüestionari. Fase d'oposició 5: Prova de conducció."
+  },
+  "practicas_o_curso": {
+   "motivo": "cita_no_literal",
+   "valor": "periodo de prueba de dos meses",
+   "cita": "El personal al qual s'hagi formalitzat el contracte de treball ha de superar un període de prova de dos mesos."
   }
  }
 }

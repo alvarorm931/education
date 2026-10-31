@@ -1,0 +1,50 @@
+{
+ "proceso": "bophuelva:BOPHUELVA-324290",
+ "documento": {
+  "id": "bophuelva:BOPHUELVA-324290",
+  "fuente": "BOP-HUELVA",
+  "url": "https://s2.diphuelva.es/portalweb/bope/anuncios/Anuncio_324290_BOP-181_2025.pdf",
+  "fecha": "2025-09-23",
+  "huella": "f592161dcd8da5286e81f25b19a1efcaecff1b4889345c3ea7f478396de9b525"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:42:54+00:00",
+ "lote": "msgbatch_01XofVwxKEhyEjSzGog6wsD4",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "dos plaza/s de monitor del aula de música, en régimen laboral temporal, por el sistema de concurso",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "en régimen laboral temporal, por el sistema de concurso, se abre el plazo",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "diez días hábiles a contar desde el día siguiente a la publicación de este anuncio en el Boletín Oficial de la Provincia",
+   "cita": "que será de diez días hábiles a contar desde el día siguiente a la publicación de este anuncio",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia y Tablón de Anuncios de la sede electrónica del Ayuntamiento (http://cortegana.sedelectronica.es)",
+   "cita": "se publicarán en el Tablón de Anuncios de la sede electrónica de este Ayuntamiento",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "monitor del aula de música"
+   ],
+   "cita": "se aprobación de dos plaza/s de monitor del aula de música, en régimen laboral temporal"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 2,
+   "cita": "se aprobación de dos plaza/s de monitor del aula de música"
+  }
+ }
+}

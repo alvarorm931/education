@@ -1,0 +1,125 @@
+{
+ "proceso": "bopcordoba:BOPCORDOBA-2022-5062",
+ "documento": {
+  "id": "bopcordoba:BOPCORDOBA-2022-5062",
+  "fuente": "BOP-CORDOBA",
+  "url": "https://bop.dipucordoba.es/dia/22-12-2022",
+  "fecha": "2022-12-22",
+  "huella": "463020d7df7051e1ba2e6e2f5d37d6aa4cb7cda992aee960a2a1b73e3b812522"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:55:56+00:00",
+ "lote": "msgbatch_014eT3dLLVopBnuVgQ4syWD9",
+ "no_son_bases": false,
+ "campos": {
+  "plazas_total": {
+   "valor": 78,
+   "cita": "TOTAL PLAZAS 78",
+   "nivel": "literal"
+  },
+  "plazas_discapacidad": {
+   "valor": 3,
+   "cita": "tres plazas (Códigos L-000040/00 y L-000217/00 se reservarán a personas con discapacidad general, y Código L-000304/00 a persona con discapacidad intelectual)",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Varía según plaza: Título de Arquitecto/a, Arqueólogo/a, Licenciado/a en Derecho, Bachiller, Graduado en ESO o sin titulación exigida (según Anexo I)",
+   "cita": "Título de Arqueólogo/a o aquel que habilite para el ejercicio de esta profesión",
+   "nivel": "sin_signos"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española; tener cumplidos 16 años y no exceder la edad máxima de jubilación forzosa; capacidad funcional; no haber sido separado del servicio por expediente disciplinario",
+   "cita": "Tener la nacionalidad española, sin perjuicio de lo dispuesto en el artículo 57 del Texto Refundido",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Desempleo superior a un mes, discapacidad igual o superior al 33%, familias numerosas, víctimas del terrorismo y de violencia de género",
+   "cita": "Se establece una reducción total de la tasa para aquellos aspirantes a participar en los diferentes procesos de selección",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Veinte días hábiles desde el siguiente a la publicación del anuncio de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "El plazo para su presentación será de veinte días hábiles a contar desde el siguiente al de la publicación del anuncio",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de anuncios electrónico del Ayuntamiento de Córdoba; complementariamente, página web de la GMU; BOP de Córdoba",
+   "cita": "se realizarán mediante la publicación en el tablón de anuncios electrónico del Ayuntamiento de Córdoba",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Concurso de méritos: valoración de experiencia profesional (hasta 60 puntos) y formación y perfeccionamiento (hasta 40 puntos)"
+   ],
+   "cita": "la selección se realizará a través del sistema de concurso de méritos",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Experiencia profesional hasta 60 puntos (0,0125 por día en GMU; 0,00625 en otras Administraciones; 0,0050 resto sector público y privado); formación y perfeccionamiento hasta 40 puntos (0,2000 por hora como alumno; 0,0600 por hora como docente o ponente)",
+   "cita": "Experiencia profesional adquirida como empleado público, en la categoría de la plaza convocada correspondiente",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "no",
+   "cita": "no se creará lista de reserva-bolsa con el resto de personas aspirantes no propuestas para ocupar las plazas convocadas",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "no",
+   "cita": "La formalización del contrato de trabajo del personal laboral fijo, por los/las aspirantes que hubiesen superado el proceso selectivo, se efectuará en el plazo de un mes",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Arqueólogo/a",
+    "Arquitecto/a",
+    "Arquitecto/a Técnico",
+    "Auxiliar Administrativo/a",
+    "Técnico/a Especialista",
+    "Conductor/a",
+    "Delineante",
+    "Diplomado/a en biblioteconomía y documentación",
+    "Jefe/a Administrativo/a",
+    "Licenciado/a en Derecho",
+    "Oficial 1ª oficios",
+    "Oficial Administrativo/a",
+    "Operario/a",
+    "Técnico/a Archivo"
+   ],
+   "cita": "Plazas de la plantilla de personal laboral en Gerencia Municipal de Urbanismo de Córdoba incluidas en el Anexo I"
+  },
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "A1, A2, B, C1, C2 y agrupaciones profesionales según plaza",
+   "cita": "Tasa por plazas con titulación de Licenciatura, Bachiller o sin titulación exigida"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "personal laboral fijo",
+   "cita": "convocatoria excepcional de estabilización de empleo temporal de larga duración por concurso, en turno libre"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso",
+   "cita": "convocatoria excepcional de estabilización de empleo temporal de larga duración por el sistema de concurso"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 78,
+   "cita": "Aprobar las Bases de selección, en turno libre, de la convocatoria excepcional para la Estabilización"
+  },
+  "tasa_euros": {
+   "motivo": "cita_no_literal",
+   "valor": "23,99 (titulación de Licenciatura o Diplomatura); 10,53 (Bachiller o Graduado); 5,06 (sin titulación exigida)",
+   "cita": "Licenciatura o Diplomatura Universitaria o titulaciones equivalentes..................................23,99"
+  },
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Telemáticamente a través de la Sede electrónica del Ayuntamiento de Córdoba (sede.cordoba.es), trámite Registro electrónico",
+   "cita": "deberán presentarse de manera telemática, a través de la Sede electrónica del Ayuntamiento de Córdoba"
+  }
+ }
+}

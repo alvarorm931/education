@@ -1,0 +1,62 @@
+{
+ "proceso": "dog:DOG-20250723-AnuncioL143-180725-0001",
+ "documento": {
+  "id": "dog:DOG-20250723-AnuncioL143-180725-0001",
+  "fuente": "DOG",
+  "url": "https://www.xunta.gal/dog/Publicados/2025/20250723/AnuncioL143-180725-0001_es.html",
+  "fecha": "2025-07-23",
+  "huella": "7d6a9111ecac4b2a4fb003db133d6d543c7739f4239aeaea81a631e6529d2ec2"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:42:42+00:00",
+ "lote": "msgbatch_01XofVwxKEhyEjSzGog6wsD4",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "operario/a de servicios múltiples",
+    "peón/peona del Servicio de Aguas",
+    "arquitecto/a técnico/a"
+   ],
+   "cita": "Una plaza de operario/a de servicios múltiples, personal laboral fijo, por el sistema de oposición, en turno libre.",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "A2",
+   "cita": "arquitecto/a técnico/a, personal funcionario de carrera, escala de Administración especial, subescala técnica, grupo A, subgrupo A2",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "Una plaza de operario/a de servicios múltiples, personal laboral fijo, por el sistema de oposición, en turno libre.",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "personal laboral fijo, por el sistema de oposición, en turno libre.",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles, a contar desde el siguiente al de la publicación de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes será de veinte días hábiles, a contar desde el siguiente al de la publicación de la convocatoria en el Boletín Oficial del Estado.",
+   "nivel": "sin_signos"
+  },
+  "publicaciones": {
+   "valor": "en la forma prevista en las propias bases",
+   "cita": "Los sucesivos anuncios referentes a esta convocatoria, cuando proceda de conformidad con las bases, se harán públicos en la forma prevista en las propias bases.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 3,
+   "cita": "Una plaza de operario/a de servicios múltiples, personal laboral fijo, por el sistema de oposición, en turno libre."
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 3,
+   "cita": "Una plaza de peón/peona del Servicio de Aguas, personal laboral fijo, por el sistema de oposición, en turno libre."
+  }
+ }
+}

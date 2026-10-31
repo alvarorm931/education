@@ -1,0 +1,45 @@
+{
+ "proceso": "bopb:BOPB-202410146163",
+ "documento": {
+  "id": "bopb:BOPB-202410146163",
+  "fuente": "BOPB",
+  "url": "https://bop.diba.cat/anunci/3671779/aprovacio-de-les-bases-especifiques-i-la-convocatoria-pel-sistema-de-concurs-per-a-la-creacio-d-una-borsa-de-treball-de-professorat-de-l-escola-municipal-de-musica-ajuntament-de-matadepera",
+  "fecha": "2024-09-09",
+  "huella": "ffdead0bda9fe805cef0978ea88284a3a70ce03062ad50a503eedfa078eb5c44"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:49:01+00:00",
+ "lote": "msgbatch_016yasWxkCXTWjPAb8LjB3ob",
+ "no_son_bases": false,
+ "campos": {
+  "plazo_solicitudes": {
+   "valor": "set dies hàbils des de la publicació de l'anunci de convocatòria en el BOPB",
+   "cita": "El termini de presentació de sol·licituds serà de set dies hàbils des de la publicació de l'anunci de convocatòria en el BOPB.",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "tauler d'anuncis electrònic i seu electrònica de la Corporació",
+   "cita": "es troben publicades íntegrament al tauler d'anuncis electrònic i a la seu electrònica de la Corporació",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, per a la creació i funcionament d'una borsa de treball de la categoria de professorat de l'escola municipal de música",
+   "cita": "les bases específiques que han de regir la creació i funcionament d'una borsa de treball de la categoria de professorat",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Professorat de l'escola municipal de música"
+   ],
+   "cita": "aprovades les bases específiques que han de regir la creació i funcionament d'una borsa de treball de la categoria de professorat de l'escola municipal de música"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso",
+   "cita": "per al sistema de concurs per a la creació d'una borsa de treball de professorat de l'escola municipal de música"
+  }
+ }
+}

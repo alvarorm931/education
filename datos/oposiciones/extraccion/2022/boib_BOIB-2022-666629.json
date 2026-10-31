@@ -1,0 +1,106 @@
+{
+ "proceso": "boib:BOIB-2022-666629",
+ "documento": {
+  "id": "boib:BOIB-2022-666629",
+  "fuente": "BOIB",
+  "url": "https://www.caib.es/eboibfront/es/2022/11652/666629/convocatoria-del-proceso-excepcional-de-estabiliza",
+  "fecha": "2022-11-17",
+  "huella": "276f285cef31863c0746b159d69d29183db6da11c1988a149ad9f24861b482c2"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:00+00:00",
+ "lote": "msgbatch_01B4ETF5xB4buYCHqPiHTXzF",
+ "no_son_bases": false,
+ "campos": {
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "Se establece como procedimiento selectivo el de concurso oposición, incluida la reserva de personas con discapacidad.",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "la indicada en el anexo 1 por cada cuerpo, escala y especialidad",
+   "cita": "Estar en posesión de la titulación académica que se indica en el anexo 1 por cada uno de los cuerpos, escalas y especialidades convocadas.",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española o de otro de los estados permitidos por el art. 57 TREBEP; 16 años cumplidos y no haber llegado a la jubilación forzosa; capacidad física y psíquica; no estar separado ni inhabilitado para cargos públicos",
+   "cita": "Tener la nacionalidad española o alguna otra de las que permiten el acceso al empleo público según el artículo 57 del TREBEP.",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "catalán, nivel según anexo 1",
+   "cita": "Disponer de los conocimientos de la lengua catalana que establecidos en el anexo 1.",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 24,
+   "cita": "La tasa se fija en 24,00 €, el pago deberá efectuarse con tarjeta de crédito, en la pasarela de pago habilitada",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Familias numerosas: descuento del 50% sobre la tasa",
+   "cita": "las familias numerosas tendrán un descuento del 50% sobre esta tasa.",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles desde el día siguiente a la publicación en el BOIB y en el BOE",
+   "cita": "El plazo de presentación de solicitudes es de veinte días hábiles contados a partir del día siguiente al de la publicación",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Sede electrónica del Consell Insular de Formentera y BOIB en los actos que lo determinen",
+   "cita": "los actos administrativos que integran este procedimiento y deban notificarse... deben publicarse en la sede electrónica del Consell Insular de Formentera",
+   "nivel": "fragmentos"
+  },
+  "ejercicios": {
+   "valor": [
+    "Fase de oposición (eliminatoria, 60%): ejercicio tipo test sobre temario de parte general y funciones comunes de la actividad administrativa",
+    "Fase de concurso (no eliminatoria, 40%): valoración de méritos"
+   ],
+   "cita": "La fase de oposición consta de un solo ejercicio, con carácter eliminatorio, con una prueba tipo test de un temario referido únicamente a la parte general",
+   "nivel": "literal"
+  },
+  "temas": {
+   "valor": 30,
+   "cita": "Tema 30. Marco normativo relativo a la protección de datos de las personas físicas.",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Méritos profesionales hasta 32 puntos; otros méritos hasta 8 puntos (ejercicios superados, formación académica hasta 3, catalán hasta 3, cursos hasta 3, trienios hasta 3)",
+   "cita": "Para valorar la experiencia previa, con el máximo de 32 puntos, se deben distinguir",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "no",
+   "cita": "Lo cual se publica, para general conocimiento, y conforme a la normativa de función pública.",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "no",
+   "cita": "Lo cual se publica, para general conocimiento, y conforme a la normativa de función pública.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "personal laboral del Consell Insular de Formentera (plazas de personal laboral de la oferta pública de estabilización)",
+   "cita": "Es el objeto de la convocatoria la provisión de las plazas indicadas en el anexo 1 correspondientes al personal laboral"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "laboral temporal",
+   "cita": "Es el objeto de la convocatoria la provisión de las plazas indicadas en el anexo 1 correspondientes al personal laboral"
+  },
+  "plazas_discapacidad": {
+   "motivo": "valor_no_numerico",
+   "valor": "10% de las plazas",
+   "cita": "En esta convocatoria se reserva un 10% de las plazas para que sean cubiertas por personas con discapacidad."
+  },
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Telemáticamente en la sede electrónica del Consell Insular de Formentera, a través de la OVAC",
+   "cita": "deben presentar una solicitud para cada uno del cuerpo, escala y/o especialidad convocada con la formalización del correspondiente trámite telemático"
+  }
+ }
+}

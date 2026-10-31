@@ -1,0 +1,51 @@
+{
+ "proceso": "bopb:BOPB-202410179956",
+ "documento": {
+  "id": "bopb:BOPB-202410179956",
+  "fuente": "BOPB",
+  "url": "https://bop.diba.cat/anunci/3699788/aprovacio-de-la-convocatoria-i-les-bases-especifiques-del-proces-selectiu-per-a-la-creacio-i-funcionament-d-una-borsa-de-treball-d-educadors-es-socials-i-equivalents-a-tecnic-mitja-de-gestio-mitjancant-el-sistema-de-concurs-lliure-ajuntament-de-matadepera",
+  "fecha": "2024-11-25",
+  "huella": "f82e4967230ef4088679ce618eb0404de652daa2fadcaaa1989317b203ed773f"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:49:42+00:00",
+ "lote": "msgbatch_018TPQE8scQozfAUdc1n8RyC",
+ "no_son_bases": false,
+ "campos": {
+  "plazo_solicitudes": {
+   "valor": "set dies hàbils a partir de l’endemà de la publicació de l’anunci de convocatòria en el BOPB",
+   "cita": "El termini de presentació de sol·licituds serà de set dies hàbils a partir de l’endemà de la publicació",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, per cobrir necessitats temporals urgents d’aquests llocs de treball de l’Ajuntament de Matadepera",
+   "cita": "per cobrir les necessitats temporals urgents d’aquests llocs de treball de l’Ajuntament de Matadepera",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Educadors/res socials",
+    "Tècnic mig de gestió"
+   ],
+   "cita": "creació i funcionament d’una borsa de treball d’Educadors/res socials, i equivalents tècnic mig de gestió grup A2"
+  },
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "A2",
+   "cita": "Educadors/res socials, i equivalents tècnic mig de gestió grup A2"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso",
+   "cita": "mitjançant el sistema de concurs lliure, de l’Ajuntament de Matadepera"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "tauler d’anuncis electrònic i seu electrònica de la Corporació",
+   "cita": "es troben publicades íntegrament al tauler d’anuncis electrònic i a la seu electrònica de la Corporació"
+  }
+ }
+}

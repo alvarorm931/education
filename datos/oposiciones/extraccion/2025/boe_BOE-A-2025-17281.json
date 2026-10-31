@@ -1,0 +1,55 @@
+{
+ "proceso": "boe:BOE-A-2025-17281",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2025-6170",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2025/08/20_157/2025_006170.pdf",
+  "fecha": "2025-08-20",
+  "huella": "b159696c76d742b9a56e128ffc011bfdc8f8e279746187b24bdd34ed2ca471a3"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:43:05+00:00",
+ "lote": "msgbatch_01XofVwxKEhyEjSzGog6wsD4",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Conserje de edificio público"
+   ],
+   "cita": "acumular la plaza de conserje de edificio público (plaza nº 69) a la convocatoria",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 3,
+   "cita": "pasando de dos a tres plazas de Conserje de Edificio Público",
+   "nivel": "literal"
+  },
+  "plazas_turno_libre": {
+   "valor": 2,
+   "cita": "dos plazas por el turno libre 212 y 234",
+   "nivel": "literal"
+  },
+  "plazas_discapacidad": {
+   "valor": 1,
+   "cita": "una plaza por el turno de diversidad funcional plaza nº 69",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "apertura de plazo de instancias exclusivamente para el turno de diversidad funcional",
+   "cita": "lo que conllevará el inicio de los trámites y la apertura de plazo de instancias exclusivamente para el turno de diversidad funcional",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "convocatoria de dos plazas de funcionario de carrera de conserje de edificio público"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "no aparece"
+  }
+ }
+}

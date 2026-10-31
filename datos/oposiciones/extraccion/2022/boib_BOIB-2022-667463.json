@@ -1,0 +1,103 @@
+{
+ "proceso": "boib:BOIB-2022-667463",
+ "documento": {
+  "id": "boib:BOIB-2022-667463",
+  "fuente": "BOIB",
+  "url": "https://www.caib.es/eboibfront/es/2022/11661/667463/resolucion-del-director-general-del-servicio-de-sa",
+  "fecha": "2022-12-03",
+  "huella": "e2202badfd30456598ce3beaeb530a50ea715998f99ffc5bcae9da249f7c27da"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:02+00:00",
+ "lote": "msgbatch_01B4ETF5xB4buYCHqPiHTXzF",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "A1, A2, C1, C2, AP (grupos profesionales sanitario y gestión y servicios)",
+   "cita": "Grupo profesional: sanitario A1 Grupo profesional: sanitario A2 Grupo profesional: sanitario C1",
+   "nivel": "sin_signos"
+  },
+  "vinculo": {
+   "valor": "personal estatutario fijo",
+   "cita": "Aprobar las bases generales y los baremos de méritos que deben regir las convocatorias de procesos de selección",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "por medio de la modalidad de concurso oposición, de un total de 2.496 plazas",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 2496,
+   "cita": "Aprobar las bases generales y los baremos de méritos que deben regir las convocatorias de procesos de selección, por medio de la modalidad de concurso oposición, de un total de 2.496 plazas",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "la titulación oficial mínima exigida para cada categoría profesional según anexo 3",
+   "cita": "Tener la titulación oficial mínima exigida para cada categoría profesional a la que se refiere el anexo 3",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española, de un Estado de la UE o de Estado de libre circulación; tener 16 años y no superar la edad de jubilación forzosa; capacidad funcional; no haber sido separado del servicio; no tener condena que impida ejercer con menores",
+   "cita": "Tener cumplidos dieciséis años y no sobrepasar la edad máxima de jubilación forzosa.",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Conocimiento de catalán según grupo profesional y normativa vigente",
+   "cita": "Acreditar el nivel de conocimientos de catalán exigido según el grupo profesional y de acuerdo con la normativa vigente.",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Exención por discapacidad; devolución en supuestos de exclusión por causa imputable a la Administración",
+   "cita": "Si el aspirante es excluido del proceso de selección, se le devolverá la tasa de inscripción",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "un mes desde el día siguiente a la publicación de la resolución de la convocatoria específica en el BOIB",
+   "cita": "El plazo para presentar solicitudes es de un mes a contar desde el día siguiente a la fecha de publicación",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Telemática, mediante el trámite electrónico disponible en el web del Servicio de Salud y en la sede electrónica de la CAIB",
+   "cita": "Las solicitudes de participación en los diferentes procesos de selección y el pago de las tasas de inscripción deben cursarse electrónicamente",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "BOIB (solo resoluciones de inicio y adjudicación definitiva); web del Servicio de Salud y sede electrónica de la CAIB (listas, actos y demás actuaciones)",
+   "cita": "Solo se publicarán en el BOIB esta resolución, las resoluciones de inicio de las convocatorias específicas",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Examen escrito (fase de oposición)",
+    "Valoración de méritos profesionales, académicos y de otra índole (fase de concurso)"
+   ],
+   "cita": "Se entiende por concurso oposición la modalidad de proceso de selección dividido básicamente en dos fases: la primera, un examen escrito",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Hasta 24 puntos por experiencia; hasta 10 o 12 puntos por formación, docencia y actividades científicas; 2 puntos por haber superado la fase de oposición en procesos del Servicio de Salud; hasta 4 puntos por catalán",
+   "cita": "La puntuación máxima que se puede obtener por la totalidad de los subapartados que lo integran es de 24 puntos.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Categorías profesionales y especialidades de personal estatutario del Servicio de Salud de las Islas Baleares (oferta 2022)"
+   ],
+   "cita": "Estas bases generales regulan los aspectos comunes que deben regir los procesos de selección para cubrir plazas vacantes de las categorías profesionales"
+  },
+  "plazas_promocion_interna": {
+   "motivo": "valor_no_en_cita",
+   "valor": 0,
+   "cita": "dado que no se han previsto plazas para el turno de promoción interna"
+  },
+  "plazas_discapacidad": {
+   "motivo": "valor_no_numerico",
+   "valor": "7 % de las vacantes como cuota mínima",
+   "cita": "tal como establece el artículo 59.1 del Texto refundido de la Ley del estatuto básico del empleado público, como criterio general hay que reservar una cuota mínima del 7 %"
+  }
+ }
+}

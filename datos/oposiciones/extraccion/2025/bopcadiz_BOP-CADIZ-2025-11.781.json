@@ -1,0 +1,47 @@
+{
+ "proceso": "bopcadiz:BOP-CADIZ-2025-11.781",
+ "documento": {
+  "id": "bopcadiz:BOP-CADIZ-2025-11.781",
+  "fuente": "BOP-CADIZ",
+  "url": "https://www.bopcadiz.es/boletin/Boletin-numero-025-del-ano-2025",
+  "fecha": "2025-02-06",
+  "huella": "40b74162afc856a0df12bc882f02c11d52b4c8a90f515df919fe1dee7e7cc561"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:46:41+00:00",
+ "lote": "msgbatch_01MQzQCLMZKxUrrPMAj7dr53",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Personal de apoyo Administrativo",
+    "Personal de apoyo a la Inserción Laboral",
+    "Personal Formador"
+   ],
+   "cita": "Plaza de Personal de apoyo Administrativo. Plaza de Personal de apoyo a la Inserción Laboral. Plaza de Personal Formador.",
+   "nivel": "sin_signos"
+  },
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "procedimiento de selección de personal laboral específico temporal, para la confección de una bolsa de trabajo",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "procedimiento de selección de personal laboral específico temporal, para la confección de una bolsa de trabajo",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, para la provisión de plazas en la ejecución de itinerarios de Formación Profesional para el Empleo en Programas de Empleo y Formación",
+   "cita": "para la confección de una bolsa de trabajo destinada a la provisión de plazas, para la ejecución de itinerarios",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "tablón de anuncios de la Mancomunidad y tablón de anuncios de su Sede electrónica, accesible desde la web (www.mmsierradecadiz.org)",
+   "cita": "podrán ser consultadas en la Mancomunidad de Municipios de la Sierra de Cádiz, sita en Avda. de la Diputación"
+  }
+ }
+}

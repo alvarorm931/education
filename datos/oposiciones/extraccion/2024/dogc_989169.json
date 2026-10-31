@@ -1,0 +1,52 @@
+{
+ "proceso": "dogc:989169",
+ "documento": {
+  "id": "dogc:989169",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=989169",
+  "fecha": "2024-07-01",
+  "huella": "2dea85a510062a876816a722e7ee32f799d3d847101d21d1e02622884cc4765a"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:49:18+00:00",
+ "lote": "msgbatch_016yasWxkCXTWjPAb8LjB3ob",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "peó brigada",
+    "conserge",
+    "dinamitzador/a juvenil"
+   ],
+   "cita": "1 plaça peó brigada – Codi SM04/04, personal laboral del subgrup AP",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "AP",
+   "cita": "personal laboral del subgrup AP, de l'escala d'administració general",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "Codi SM04/04, personal laboral del subgrup AP, de l'escala d'administració general",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 dies hàbils desde l'endemà de la publicació al DOGC",
+   "cita": "l'endemà de la present publicació al DOGC assenyalarà l'obertura del termini per a la presentació de sol·licituds",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurs-oposició",
+   "cita": "1 plaça de conserge – Codi SM05/03, personal laboral del subgrup AP, pel sistema de concurs oposició."
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 3,
+   "cita": "per resolució d'alcaldia núm. 176/2024, s'aprova la convocatòria de les següents places"
+  }
+ }
+}

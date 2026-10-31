@@ -1,0 +1,60 @@
+{
+ "proceso": "dog:DOG-20240529-AnuncioL358-060524-0001",
+ "documento": {
+  "id": "dog:DOG-20240529-AnuncioL358-060524-0001",
+  "fuente": "DOG",
+  "url": "https://www.xunta.gal/dog/Publicados/2024/20240529/AnuncioL358-060524-0001_es.html",
+  "fecha": "2024-05-29",
+  "huella": "abc2d009ca3c92170a7cfc45f613ca3e80e37af5c7e2726e77f83d0fdfb766e8"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:54:33+00:00",
+ "lote": "msgbatch_01HRnX7cDVMkRZD7mBamCmLu",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Peón grupo de emergencias supramunicipal (GES)"
+   ],
+   "cita": "Doce plazas de peón grupo de emergencias supramunicipal (GES) de la plantilla de personal laboral fijo",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "V",
+   "cita": "pertenecientes al grupo V, mediante el sistema de concurso, en turno libre",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "de la plantilla de personal laboral fijo, pertenecientes al grupo V",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "mediante el sistema de concurso, en turno libre, dentro del proceso extraordinario",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 12,
+   "cita": "Doce plazas de peón grupo de emergencias supramunicipal (GES) de la plantilla",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles, a contar desde el siguiente al de la publicación de este anuncio en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes será de veinte días hábiles, a contar desde el siguiente",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "En la forma prevista en las propias bases",
+   "cita": "Los sucesivos anuncios referentes a esta convocatoria, cuando proceda de conformidad con las bases, se harán públicos en la forma prevista en las propias bases.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 12,
+   "cita": "mediante el sistema de concurso, en turno libre, dentro del proceso extraordinario de estabilización"
+  }
+ }
+}

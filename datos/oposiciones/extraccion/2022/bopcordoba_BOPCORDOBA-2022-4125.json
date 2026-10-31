@@ -1,0 +1,40 @@
+{
+ "proceso": "bopcordoba:BOPCORDOBA-2022-4125",
+ "documento": {
+  "id": "bopcordoba:BOPCORDOBA-2022-4125",
+  "fuente": "BOP-CORDOBA",
+  "url": "https://bop.dipucordoba.es/dia/04-11-2022",
+  "fecha": "2022-11-04",
+  "huella": "23107dc8122777364ecdc6efa17c1783089c29eb55faa2c571186feafd2f45e6"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:33+00:00",
+ "lote": "msgbatch_01B4ETF5xB4buYCHqPiHTXzF",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "C2",
+   "cita": "Grupo C, Subgrupo C2, Escala: ADMINISTRACIÓN ESPECIAL",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "reservada a Personal Laboral, Grupo C, Subgrupo C2",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "OFICIAL 2ª JARDINERO/A"
+   ],
+   "cita": "para cubrir en propiedad dos plazas de OFICIAL 2ª JARDINERO/A"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 2,
+   "cita": "para cubrir en propiedad dos plazas de OFICIAL 2ª JARDINERO/A"
+  }
+ }
+}

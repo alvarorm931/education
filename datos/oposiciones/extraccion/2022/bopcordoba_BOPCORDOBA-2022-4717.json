@@ -1,0 +1,95 @@
+{
+ "proceso": "bopcordoba:BOPCORDOBA-2022-4717",
+ "documento": {
+  "id": "bopcordoba:BOPCORDOBA-2022-4717",
+  "fuente": "BOP-CORDOBA",
+  "url": "https://bop.dipucordoba.es/dia/02-12-2022",
+  "fecha": "2022-12-02",
+  "huella": "82abde1851fc4ba8318b946f5fa7698498d7d8777dd4718183c6d43e96295e14"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:19+00:00",
+ "lote": "msgbatch_01B4ETF5xB4buYCHqPiHTXzF",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "C1",
+   "cita": "ACCESO ADMINISTRATIVO C/C1 1 CONCURSO",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "el sistema de selección será el concurso conforme a la disposición adicional sexta",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Título de Bachiller, Técnico de grado medio o equivalente (Administrativo, Deportes, Juventud); Licenciatura/Grado Superior (Técnico Prevención Drogodependencias)",
+   "cita": "1.3. Titulación académica: Título de Bachiller, Técnico de grado medio o equivalente.",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española o de la UE en condiciones; capacidad funcional; tener 16 años y no exceder la edad de jubilación forzosa; no haber sido separado del servicio ni inhabilitado; poseer la titulación exigida.",
+   "cita": "Tener cumplidos dieciséis años y no exceder, en su caso, de la edad máxima de jubilación forzosa.",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles desde el siguiente al de la publicación del anuncio de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "en el plazo de veinte días hábiles a contar desde el siguiente al de la publicación del anuncio de la convocatoria en el Boletín Oficial del Estado",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Presidencia de la Mancomunidad; modelo normalizado en la web; telemática en Sede Electrónica con certificado digital, o impreso en el Registro de Baena o en Oficinas de Correos",
+   "cita": "Quienes estén en posesión de certificado digital, podrán realizar la presentación de la solicitud por vía telemática",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia de Córdoba, tablón de edictos de la Sede Electrónica, y reseña en el Boletín Oficial de la Junta de Andalucía",
+   "cita": "se publicarán íntegramente en el Boletín Oficial de la Provincia de Córdoba y en el tablón de edictos de la Sede Electrónica",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Concurso: valoración de méritos (experiencia profesional, antigüedad, cursos de formación)"
+   ],
+   "cita": "El concurso, cuya calificación final no podrá ser superior a 100 puntos, consistirá en la valoración por el Tribunal",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Experiencia profesional hasta 90 puntos (0,030 por día en la misma categoría en la Administración convocante; 0,010 en otras AAPP); antigüedad en AAPP hasta 6 puntos (0,003 por día); cursos de formación o perfeccionamiento hasta 4 puntos",
+   "cita": "Se valorará la experiencia profesional, con un máximo de 90 puntos, de acuerdo con el siguiente baremo",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, Bolsa de Necesidades Transitorias de Personal Temporal con los aspirantes no seleccionados, hasta un máximo de 80",
+   "cita": "Los aspirantes que no hayan obtenido plaza, en un número máximo de 80 y por el orden de puntuación obtenida, pasarán a formar parte de la Bolsa",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "ADMINISTRATIVO",
+    "TÉCNICO PREVENCIÓN DROGODEPENDENCIAS",
+    "TÉCNICO DEPORTES",
+    "TÉCNICO JUVENTUD"
+   ],
+   "cita": "1 plaza de ADMINISTRATIVO. 1 plaza de TÉCNICO PREVENCIÓN DROGODEPENDENCIAS"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "personal laboral fijo",
+   "cita": "provisión en propiedad, mediante proceso extraordinario de estabilización de empleo temporal de plazas vacantes en la plantilla de personal laboral"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 4,
+   "cita": "ACCESO ADMINISTRATIVO C/C1 1 CONCURSO TECNICO PREV. DROGODEPENDENCIAS A/A1 1 CONCURSO"
+  },
+  "plazas_turno_libre": {
+   "motivo": "cita_no_literal",
+   "valor": 4,
+   "cita": "1 plaza de ADMINISTRATIVO. Sistema de Selección: Concurso. Turno Libre."
+  }
+ }
+}

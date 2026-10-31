@@ -1,0 +1,61 @@
+{
+ "proceso": "boe:BOE-A-2026-1169",
+ "documento": {
+  "id": "boe:BOE-A-2026-1169",
+  "fuente": "BOE",
+  "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-1169",
+  "fecha": "2026-01-19",
+  "huella": "3c1d56229689ddb745d066b476226ab109de7aa85de185151832e3f721d90bc3"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:42:28+00:00",
+ "lote": "msgbatch_01W17mR271uYfWYL6CuSdriL",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Escala superior jurídica (grupo A, subgrupo A1), Referencia A08/25, Universidad de Alicante",
+    "Escala media de instrumentación e infraestructuras científico-técnicas (grupo A, subgrupo A2), Referencia B06/25, Universidad de Alicante"
+   ],
+   "cita": "Escala: superior jurídica (grupo A, subgrupo A1) (Referencia A08/25). de la Universidad de Alicante.",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "A1 / A2",
+   "cita": "Escala: superior jurídica (grupo A, subgrupo A1) (Referencia A08/25).",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "Régimen jurídico: funcionarial. Carácter: de carrera.",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición / oposición",
+   "cita": "Sistema selectivo: concurso-oposición. Turno: acceso libre.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 2,
+   "cita": "Número de plazas convocadas: una. Sistema selectivo: concurso-oposición."
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 2,
+   "cita": "Número de plazas convocadas: una. Sistema selectivo: oposición. Turno: acceso libre."
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "diez días hábiles contados a partir del siguiente a la publicación del extracto en el «Boletín Oficial del Estado»",
+   "cita": "El plazo para la presentación de solicitudes finaliza a los diez días hábiles contados a partir del siguiente."
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "«Diari Oficial de la Generalitat Valenciana» y/o sede electrónica, en el expediente del personal aspirante",
+   "cita": "Los sucesivos anuncios relativos a estas convocatorias se publicarán en el «Diari Oficial de la Generalitat Valenciana» y/o en sede electrónica."
+  }
+ }
+}

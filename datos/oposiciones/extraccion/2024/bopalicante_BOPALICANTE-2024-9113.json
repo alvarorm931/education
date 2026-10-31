@@ -1,0 +1,55 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2024-9113",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2024-9113",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2024/11/19_222/2024_009113.pdf",
+  "fecha": "2024-11-19",
+  "huella": "584a25b96aa9ea1fbf5ad47ef665ad8662816d53130468bb3a45206f63c9f79e"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:49:54+00:00",
+ "lote": "msgbatch_018TPQE8scQozfAUdc1n8RyC",
+ "no_son_bases": false,
+ "campos": {
+  "sistema": {
+   "valor": "oposición",
+   "cita": "proceso selectivo para la constitución de bolsa de empleo de profesor/a del conservatorio",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "cinco días naturales, contados a partir del siguiente a la publicación del extracto de la convocatoria en el Boletín Oficial de la Provincia de Alicante",
+   "cita": "El plazo de presentación de instancias será de cinco días naturales, contados a partir del siguiente a la publicación del extracto",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, bolsa de empleo para la categoría de Profesor/a de Música en la especialidad de Piano",
+   "cita": "para la constitución de bolsa de empleo de profesor/a del conservatorio profesional municipal de música en la especialidad de piano",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Profesor/a de Música, especialidad de Piano"
+   ],
+   "cita": "Profesor/a de Música, personal laboral asimilado al grupo A2 del Ayuntamiento de Teulada, en la especialidad de PIANO"
+  },
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "A2",
+   "cita": "personal laboral asimilado al grupo A2 del Ayuntamiento de Teulada"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "laboral temporal",
+   "cita": "Bolsa de empleo en la categoría profesional de Profesor/a de Música, personal laboral asimilado al grupo A2"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Sede electrónica del Ayuntamiento teuladamoraira.sedelectronica.es, donde están disponibles las bases",
+   "cita": "las bases, que están a disposición de los interesados en la sede electrónica del Ayuntamiento teuladamoraira.sedelectronica.es"
+  }
+ }
+}

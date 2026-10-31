@@ -1,0 +1,104 @@
+{
+ "proceso": "bopt:BOPT-2026-02488",
+ "documento": {
+  "id": "bopt:BOPT-2026-02488",
+  "fuente": "BOPT",
+  "url": "https://www.dipta.cat/bopt/web/anunci/357807/borsa-de-treball-d-auxiliar-administratiu-iva-bases-i-convocatoria-ajuntament-constanti",
+  "fecha": "2026-03-23",
+  "huella": "ac958e3d70420ca85a3a46014f05b219eb39e4143ca28a1dde2729122f69cd5b"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:40:49+00:00",
+ "lote": "msgbatch_01E3wiYcGL8Lzho48bXWLyyb",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "Borsa de treball d'Auxiliar Administratiu/va, funcionari interí C, subgrup C2",
+   "cita": "Borsa de treball d'Administratius/ves, funcionari interí C, subgrup C2, per cobrir les necessitats de recursos humans",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C2",
+   "cita": "funcionari interí C, subgrup C2",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario interino",
+   "cita": "Règim jurídic:Funcionari/a Interina",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mitjançant concurs-oposició, per via d'urgència",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Graduat en Educació Secundària, Educació General Bàsica o Formació Professional de Tècnic o Tècnic Auxiliar o equivalents",
+   "cita": "Posseir Títol de Graduat en Educació Secundària, Educació General Bàsica o Formació Professional de Tècnic",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 20,
+   "cita": "s'estableix un import de 20€ per dret d'examen",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Personas en situación de desempleo, acreditada con inscripción en el Servei Públic d'Ocupació de Catalunya (SOC)",
+   "cita": "Estaran exempts del pagament dels drets d'examen... les persones que estiguin en atur",
+   "nivel": "fragmentos"
+  },
+  "ejercicios": {
+   "valor": [
+    "Prueba de catalán, eliminatoria (APTO/NO APTO)",
+    "Prueba de castellano, solo para no nacionales de España, eliminatoria (APTO/NO APTO)",
+    "Prueba teórica tipo test de 20 preguntas (hasta 20 puntos)",
+    "Prueba práctica de 10 preguntas cortas (hasta 40 puntos)",
+    "Entrevista personal por competencias (hasta 10 puntos, no eliminatoria)"
+   ],
+   "cita": "La fase d'oposició constarà de tres exercicis obligatoris, amb una puntuació màxima total de 70 punts.",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Experiencia profesional en la Administración Local como auxiliar administrativo (grupo C2): 1 punto por mes trabajado, máximo 30 puntos",
+   "cita": "1 punt per mes treballant amb un màxim de 30 punts",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Período de prueba de tres meses",
+   "cita": "S'establirà un període de prova de tres mesos",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "otros_requisitos": {
+   "motivo": "cita_no_literal",
+   "valor": "Nacionalidad española o de un Estado de la UE (con extensiones previstas); tener 16 años y no superar la edad de jubilación forzosa; capacidad funcional; no estar inhabilitado; certificado negativo del Registro Central de delincuentes sexuales y de antecedentes penales",
+   "cita": "Haver complert 16 anys i no superar l'edat establerta per a la jubilació forçosa."
+  },
+  "idioma_cooficial": {
+   "motivo": "cita_no_literal",
+   "valor": "Català, nivell de suficiència C1 (obligatorio; exentos quienes acrediten C1 o superior)",
+   "cita": "Acreditar oficialment el coneixement de la llengua catalana, tant en l'expressió oral com en l'escrita, del nivell de suficiència C1."
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "10 días hábiles desde el día siguiente a la publicación de la convocatoria en el BOPT",
+   "cita": "El termini per lliurar la sol·licitud és de 10 dies hàbils a comptar de l'endemà"
+  },
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Registro General del Ayuntamiento, horario de atención al público, o en los lugares del art. 16 de la Ley 39/2015",
+   "cita": "Cal presentar una instància... al Registre General de l'Ajuntament, en horari d'atenció al públic"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Tablón de edictos electrónico y sede electrónica municipal",
+   "cita": "tots aquells anuncis successius s'exposaran al tauler d'edictes electrònic de l'Ajuntament de Constantí a la seu electrònica municipal."
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, borsa de treball para cubrir vacantes, sustituciones u otras necesidades temporales; vigencia de dos años",
+   "cita": "Borsa de treball... per cobrir vacants, possibles substitucions o altres necessitats de caràcter temporal"
+  }
+ }
+}

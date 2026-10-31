@@ -1,0 +1,55 @@
+{
+ "proceso": "bopcaceres:BOP-2023-307",
+ "documento": {
+  "id": "bopcaceres:BOP-2023-307",
+  "fuente": "BOP-CACERES",
+  "url": "https://bop.dip-caceres.es/bop/services/anuncios/contenidoPdfIdAnuncio?csv=BOP-2023-307",
+  "fecha": "2023-01-18",
+  "huella": "38f245af55062b3dd57c9451119e086a283c53243e95241d193f33c9f1e6950b"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:56:53+00:00",
+ "lote": "msgbatch_0167qWfLXqjGo8Hv43cM3LuM",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Auxiliar de Delineación (Funcionario)"
+   ],
+   "cita": "se aprueba la corrección de error en el Grupo de Clasificación de 1 plaza de Auxiliar de Delineación (Funcionario)",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "1 plaza de Auxiliar de Delineación (Funcionario)-Jornada 100-Sistema Concurso- Grupo C2 de Clasificación",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "mediante el procedimiento de concurso de méritos",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "se aprueba la corrección de error en el Grupo de Clasificación de 1 plaza de Auxiliar de Delineación",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "C2",
+   "cita": "Advertido error en el Grupo de Clasificación de la plaza de Auxiliar de Delineación (Funcionario)- Jornada 100 que consta C1 cuando debe ser C2."
+  },
+  "plazas_turno_libre": {
+   "motivo": "cita_no_literal",
+   "valor": 0,
+   "cita": "Plazas"
+  },
+  "plazas_promocion_interna": {
+   "motivo": "cita_no_literal",
+   "valor": 0,
+   "cita": "Plazas"
+  }
+ }
+}

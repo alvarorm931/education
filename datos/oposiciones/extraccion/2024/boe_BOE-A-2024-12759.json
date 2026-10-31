@@ -1,0 +1,53 @@
+{
+ "proceso": "boe:BOE-A-2024-12759",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2024-4424",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2024/06/07_109/2024_004424.pdf",
+  "fecha": "2024-06-07",
+  "huella": "16443d022e782846a869a56fd81ff6449f848f240e08fa4338443885cd693e27"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:54:18+00:00",
+ "lote": "msgbatch_01HRnX7cDVMkRZD7mBamCmLu",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "provisión en propiedad, con personal funcionario de carrera de 1 plaza",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "por turno libre, perteneciente a la Oferta de Empleo Público del año 2023",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "provisión en propiedad, con personal funcionario de carrera de 1 plaza",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "diez días hábiles a contar desde el día siguiente a la publicación del extracto de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes para tomar parte en las citadas pruebas selectivas será de diez días hábiles",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de Anuncios del Servicio de Recursos Humanos, sito en C/ Ànimes, 4 y página web municipal",
+   "cita": "estarán a disposición de las personas interesadas en el Tablón de Anuncios del Servicio de Recursos Humanos",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Conductor/a Encargado/a de Bibliobús",
+   "cita": "convocatoria para la provisión en propiedad, con personal funcionario de carrera de 1 plaza de Conductor/a Encargado/a de Bibliobús"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "por turno libre, perteneciente a la Oferta de Empleo Público del año 2023"
+  }
+ }
+}

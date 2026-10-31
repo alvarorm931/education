@@ -1,0 +1,45 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2023-10478",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2023-10478",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2023/12/11_235/2023_010478.pdf",
+  "fecha": "2023-12-11",
+  "huella": "45b74bdf5665ed88e4e287e83d9d7513e48aa9817e89447dd77f6442ba194b9b"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:41+00:00",
+ "lote": "msgbatch_01SjfjDqJRwL6bpTvJz2YfVg",
+ "no_son_bases": false,
+ "campos": {
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "se han aprobado las bases específicas y se ha autorizado la convocatoria del proceso selectivo",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "10 días hábiles contados a partir del siguiente al de la publicación de esta convocatoria en el Boletín Oficial de la Provincia de Alicante",
+   "cita": "El plazo de presentación de instancias será de 10 días hábiles contados a partir del siguiente al de la publicación",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de Anuncios del Servicio de Recursos Humanos de la Corporación y página web www.lalfas.es",
+   "cita": "Las bases del proceso selectivo se publicarán íntegramente en el Tablón de Anuncios del Servicio de Recursos Humanos",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Agentes de Innovación"
+   ],
+   "cita": "la creación de una Bolsa de Trabajo de Agentes de Innovación del Ayuntamiento de l’Alfàs del Pi"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, para la creación de una bolsa de trabajo de Agentes de Innovación",
+   "cita": "para la creación de una Bolsa de Trabajo de Agentes de Innovación del Ayuntamiento de l’Alfàs del Pi"
+  }
+ }
+}

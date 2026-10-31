@@ -1,0 +1,40 @@
+{
+ "proceso": "dogc:1003284",
+ "documento": {
+  "id": "dogc:1003284",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1003284",
+  "fecha": "2024-12-31",
+  "huella": "7ff0cdfdb60d4784aeac47b9d16c1e408801df65ee5f3792dcbffbddaa8b3478"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:49:46+00:00",
+ "lote": "msgbatch_018TPQE8scQozfAUdc1n8RyC",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "places de professorat laboral temporal, en la categoria de professorat Lector",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "La Comissió de selecció del concurs amb referència PLECT24/38",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "Nombre de places: una",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Professorat Lector"
+   ],
+   "cita": "convocatòria per Resolució de 21 d'octubre de 2024 del rector de la Universitat de Girona per la qual es convoquen a concurs diverses places de professorat laboral temporal, en la categoria de professorat Lector"
+  }
+ }
+}

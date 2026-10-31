@@ -1,0 +1,60 @@
+{
+ "proceso": "bocm:BOCM-20260114-27",
+ "documento": {
+  "id": "bocm:BOCM-20260114-27",
+  "fuente": "BOCM",
+  "url": "https://www.bocm.es/bocm-20260114-27",
+  "fecha": "2026-01-14",
+  "huella": "537c8391b2467454cc1c0af5af65614bd9cf22bc9c4de66a8690c510716f32ad"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:42:29+00:00",
+ "lote": "msgbatch_01W17mR271uYfWYL6CuSdriL",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Administrativo/a"
+   ],
+   "cita": "provisión de 16 plazas de Administrativo/a pertenecientes a la escala de Administración General",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C1",
+   "cita": "subgrupo C1 de personal funcionario del Ayuntamiento",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "subgrupo C1 de personal funcionario del Ayuntamiento, reservadas a promoción interna",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 16,
+   "cita": "provisión de 16 plazas de Administrativo/a pertenecientes a la escala",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles siguientes a aquel en que aparezca publicada la convocatoria en el Boletín Oficial del Estado",
+   "cita": "las solicitudes para participar en las convocatorias se presentarán dentro del plazo de 20 días hábiles",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón virtual y página web http://www.argandadelrey.es, sección de oferta pública de empleo dentro de la sede electrónica",
+   "cita": "Las bases están expuestas íntegramente en el tablón virtual y en la página web",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "Convocatoria proceso selectivo para la provisión de 16 plazas de Administrativo/a"
+  },
+  "plazas_promocion_interna": {
+   "motivo": "valor_no_en_cita",
+   "valor": 16,
+   "cita": "reservadas a promoción interna de personal de la subescala Auxiliar"
+  }
+ }
+}

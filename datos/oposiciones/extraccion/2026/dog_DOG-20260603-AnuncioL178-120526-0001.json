@@ -1,0 +1,53 @@
+{
+ "proceso": "dog:DOG-20260603-AnuncioL178-120526-0001",
+ "documento": {
+  "id": "dog:DOG-20260603-AnuncioL178-120526-0001",
+  "fuente": "DOG",
+  "url": "https://www.xunta.gal/dog/Publicados/2026/20260603/AnuncioL178-120526-0001_es.html",
+  "fecha": "2026-06-03",
+  "huella": "ae1f609e0c4c9183e10f9bd0a0688d88c84ff92a80f7116f52bd37196f9e8ac6"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:41:53+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "C2",
+   "cita": "tres (3) plazas de personal funcionario de carrera, bombero/a conductor/a, de la escala de Administración especial (subgrupo C2)",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "tres (3) plazas de personal funcionario de carrera, bombero/a conductor/a",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "por el turno libre mediante el sistema de oposición del Ayuntamiento de Santiago de Compostela",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte (20) días naturales a partir del día siguiente al de la publicación del extracto de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación será de veinte (20) días naturales a partir del día siguiente al de la publicación del extracto",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Los sucesivos anuncios se harán públicos en la forma prevista en las bases",
+   "cita": "Los sucesivos anuncios referentes a esta convocatoria, cuando proceda, de conformidad con las bases se harán públicos",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 12,
+   "cita": "tres (3) plazas de personal funcionario de carrera, bombero/a conductor/a"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 12,
+   "cita": "para la cobertura, por el turno libre, de tres (3) plazas"
+  }
+ }
+}

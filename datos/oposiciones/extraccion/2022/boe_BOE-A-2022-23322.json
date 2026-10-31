@@ -1,0 +1,50 @@
+{
+ "proceso": "boe:BOE-A-2022-23322",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2022-10199",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2022/12/21_241/2022_010199.pdf",
+  "fecha": "2022-12-21",
+  "huella": "a2cbda7ceebef2de5bb15812e2178e962ba80177566a0a649543352b4cf71b44"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:56:05+00:00",
+ "lote": "msgbatch_014eT3dLLVopBnuVgQ4syWD9",
+ "no_son_bases": false,
+ "campos": {
+  "sistema": {
+   "valor": "concurso",
+   "cita": "por el sistema de concurso de méritos de una plaza de Psicólogo, con adscripción al área de Servicios Sociales",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de Anuncios y página web del Ayuntamiento de Monóvar",
+   "cita": "El texto íntegro de las bases de referencia está publicado en el Tablón de Anuncios y en la página web del Ayuntamiento de Monóvar",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Psicólogo"
+   ],
+   "cita": "para proveer con carácter de personal laboral fijo por el sistema de concurso de méritos una plaza de Psicólogo"
+  },
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "A1",
+   "cita": "no consta"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "personal laboral fijo",
+   "cita": "la provisión con carácter de personal laboral fijo, por el sistema de concurso de méritos de una plaza de Psicólogo"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 1,
+   "cita": "para proveer con carácter de personal laboral fijo, por el sistema de concurso de méritos de una plaza de Psicólogo"
+  }
+ }
+}

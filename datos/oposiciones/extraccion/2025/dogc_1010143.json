@@ -1,0 +1,63 @@
+{
+ "proceso": "dogc:1010143",
+ "documento": {
+  "id": "dogc:1010143",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1010143",
+  "fecha": "2025-03-27",
+  "huella": "00f4c9cef9cf78848e0421ffdbbf409cfd9483cfacf0db029b06c50ff976447d"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:45:51+00:00",
+ "lote": "msgbatch_017vJZdAmjTkBDdH14aLEdCv",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "C2",
+   "cita": "assimilat al grup C, subgrup C2, vacant a la plantilla",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "Règim jurídic: laboral Caràcter: fix",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "Sistema selectiu: Concurs-Oposició Torn: Lliure",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "Núm. de places convocades: 1",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles a contar desde el día siguiente a la última publicación del extracto de la convocatoria en el DOGC",
+   "cita": "El termini de presentació de sol·licituds serà de 20 dies hàbils a comptar de l'endemà",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Los anuncios sucesivos se publicarán únicamente en la sede electrónica del Consell Comarcal",
+   "cita": "Els anuncis successius relatius a aquesta convocatòria es publicaran únicament a la seu electrònica",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Auxiliar administratiu/va (reservada persones amb discapacitat)",
+   "cita": "Auxiliar administratiu/va (reservada persones amb discapacitat), de personal laboral"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "Torn: Lliure"
+  },
+  "plazas_discapacidad": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "reservada persones amb discapacitat"
+  }
+ }
+}

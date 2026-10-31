@@ -1,0 +1,45 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2024-8548",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2024-8548",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2024/10/28_207/2024_008548.pdf",
+  "fecha": "2024-10-28",
+  "huella": "bf712df345937c8dcfe164aef83595613b67134b61fb8933d11354960c3c0120"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:50:36+00:00",
+ "lote": "msgbatch_01LpyYajgKGX9NyHT1uvynbR",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "PROFESIONAL DE JUVENTUD"
+   ],
+   "cita": "Bolsa de Empleo Temporal en el puesto de PROFESIONAL DE JUVENTUD para la ejecución de la “Xarxa Jove”",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "10 días hábiles desde el siguiente al de la publicación del anuncio-extracto en el BOP",
+   "cita": "El plazo de presentación de instancias será de 10 DÍAS HÁBILES , contados a partir del siguiente al de la publicación del presente anuncio -extracto en el BOP.",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de Anuncios de la Sede Electrónica Municipal",
+   "cita": "Los sucesivos anuncios de esta convocatoria se publicarán en el Tablón de Anuncios de la Sede Electrónica Municipal.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "laboral temporal",
+   "cita": "convocatoria para la constitución de una bolsa de empleo temporal en el puesto de PROFESIONAL DE JUVENTUD"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "ANUNCIO"
+  }
+ }
+}

@@ -1,0 +1,50 @@
+{
+ "proceso": "bophuelva:BOPHUELVA-350825",
+ "documento": {
+  "id": "bophuelva:BOPHUELVA-350825",
+  "fuente": "BOP-HUELVA",
+  "url": "https://s2.diphuelva.es/portalweb/bope/anuncios/Anuncio_350825_BOP-65_2026.pdf",
+  "fecha": "2026-04-07",
+  "huella": "13721a140c43a34855a1fa17aa3482acf5e75525b588afb140cff0a1bfd06b7e"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:40:22+00:00",
+ "lote": "msgbatch_01E3wiYcGL8Lzho48bXWLyyb",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "otro",
+   "cita": "cubrir las posibles vacantes temporales que sucedan en el puesto de Secretaría-Intervención",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "diez días hábiles, a contar desde el siguiente al de la publicación de esta convocatoria en el Boletín Oficial de la Provincia de Huelva",
+   "cita": "en el plazo de diez días hábiles, a contar desde el siguiente al de la publicación de esta convocatoria",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Secretaría-Intervención"
+   ],
+   "cita": "convocar de forma urgente proceso selectivo extraordinario para la ampliación de la bolsa existente"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "oposición",
+   "cita": "las personas que superen el proceso selectivo pasarán a formar parte de la bolsa de trabajo"
+  },
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "en el registro de este Ayuntamiento, o en cualquier otro de los previstos en el artículo 16.4 de la Ley 39/2015",
+   "cita": "deberán presentar su solicitud en el registro de este Ayuntamiento, o en cualquier otro de los previstos en el artículo 16.4"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, para cubrir las posibles vacantes temporales que sucedan en el puesto de Secretaría-Intervención",
+   "cita": "las personas que superen el proceso selectivo pasarán a formar parte de la bolsa de trabajo para cubrir el puesto"
+  }
+ }
+}

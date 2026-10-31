@@ -1,0 +1,55 @@
+{
+ "proceso": "boe:BOE-A-2026-6358",
+ "documento": {
+  "id": "dogc:1039552",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1039552",
+  "fecha": "2026-03-17",
+  "huella": "ade219fcd37b05a640cd1240c3d2c670f796839a966eb7e7bb8f6bd3b9d253db"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:40:21+00:00",
+ "lote": "msgbatch_01E3wiYcGL8Lzho48bXWLyyb",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "C2",
+   "cita": "Grupo de clasificación: C2.",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "régimen jurídico: funcionarial carácter: de carrera",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "Sistema de selección: concurso oposición",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "Número de plazas convocadas: 1",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles a contar desde el día siguiente al de la última de las publicaciones de este anuncio en el DOGC o BOE",
+   "cita": "finaliza a los 20 días hábiles a contar a partir del día siguiente al de la última de las publicaciones de este anuncio",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Auxiliar administrativo"
+   ],
+   "cita": "publica íntegramente la convocatoria y les bases que han de regir la convocatoria para cubrir una plaza de Auxiliar administrativo"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "Turno: libre"
+  }
+ }
+}

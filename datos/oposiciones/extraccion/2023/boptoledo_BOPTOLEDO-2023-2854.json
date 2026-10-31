@@ -1,0 +1,57 @@
+{
+ "proceso": "boptoledo:BOPTOLEDO-2023-2854",
+ "documento": {
+  "id": "boptoledo:BOPTOLEDO-2023-2854",
+  "fuente": "BOP-TOLEDO",
+  "url": "https://bop.diputoledo.es/webEbop/DocGet?id=23058138;0&insert_number=2854&insert_year=2023",
+  "fecha": "2023-05-16",
+  "huella": "6d245d1eca33191016c3dcb7364889f84b97f4feff9acedb575e0f6a79842cbc"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:59:13+00:00",
+ "lote": "msgbatch_012nGabRM1G4b7cEKJh1Bcx1",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "A2",
+   "cita": "PERSONAL LABORAL DENOMINACIÓN GRUPO/SUBGRUPO Nº PLAZAS JORNADA LABORAL PROVISIÓN Arquitecto Técnico A2 1",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "PERSONAL LABORAL DENOMINACIÓN GRUPO/SUBGRUPO Nº PLAZAS JORNADA LABORAL PROVISIÓN",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "para proveer por el sistema de concurso (ex Disposición adicional sexta de la Ley 20/2021",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte (20) días hábiles contados a partir del día siguiente al de la publicación del correspondiente Anuncio en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes será de veinte (20) días hábiles contados a partir del día siguiente",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Arquitecto Técnico",
+    "Operario Servicios Múltiples",
+    "Monitor de Pintura"
+   ],
+   "cita": "para proveer por el sistema de concurso las siguientes plazas"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 10,
+   "cita": "Operario Servicios Múltiples OPA / Subgrupo E 8 Jornada Completa Concurso"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "sede electrónica del Municipio de Quintanar de la Orden",
+   "cita": "En la sede electrónica del Municipio de Quintanar de la Orden se han publicado íntegramente las bases"
+  }
+ }
+}

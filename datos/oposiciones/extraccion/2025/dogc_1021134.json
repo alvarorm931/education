@@ -1,0 +1,43 @@
+{
+ "proceso": "dogc:1021134",
+ "documento": {
+  "id": "dogc:1021134",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1021134",
+  "fecha": "2025-07-31",
+  "huella": "ef7e901beed124fe29d64e92422822ef109f64030ec724e4d66a58b210b606d9"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:43:04+00:00",
+ "lote": "msgbatch_01XofVwxKEhyEjSzGog6wsD4",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "places de professorat laboral permanent, en la categoria de professorat Agregat",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "la Comissió adopta l'acord de proposta de contractació en favor de la persona, que ha obtingut millor valoració",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "Nombre de places: una",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "no aplica",
+   "cita": "Si contra aquest acord no s'interposés cap recurs, esdevindrà ferm i es contractarà a la persona seleccionada",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "professorat Agregat (professorat laboral permanent)",
+   "cita": "convocades a concurs diverses places de professorat laboral permanent, en la categoria de professorat Agregat"
+  }
+ }
+}

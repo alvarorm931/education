@@ -1,0 +1,73 @@
+{
+ "proceso": "boe:BOE-A-2025-2630",
+ "documento": {
+  "id": "bopzaragoza:BOP-ZARAGOZA-2024-08-07-840081",
+  "fuente": "BOP-ZARAGOZA",
+  "url": null,
+  "fecha": "2024-08-07",
+  "huella": "7ab4e4d17a1cdd3ce694e0f5fe1c9c46696829246092ca8386b9566a6d7bdea3"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:46:45+00:00",
+ "lote": "msgbatch_01MQzQCLMZKxUrrPMAj7dr53",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Bibliotecaria/o"
+   ],
+   "cita": "Cuatro plazas/puestos de bibliotecaria/o, identificadas del modo siguiente",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "integradas en el grupo de clasificación profesional A2 de la plantilla de personal laboral del Patronato",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 4,
+   "cita": "Cuatro plazas/puestos de bibliotecaria/o, identificadas del modo siguiente",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Por remisión a las bases (requisitos de titulación del artículo 76 TREBEP y convenio colectivo aplicable)",
+   "cita": "en lo relativo a las titulaciones académicas exigidas es conforme a lo dispuesto en el artículo 76 TREBEP",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "BOPZ, Boletín Oficial del Estado (extracto), tablón y web del Patronato Municipal de Educación y Bibliotecas",
+   "cita": "Asimismo, ordenar su publicación en el tablón y web del Patronato Municipal de Educación y Bibliotecas",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Primer ejercicio: test de respuestas alternativas y supuesto práctico, obligatorio y eliminatorio",
+    "Segundo ejercicio: exposición oral de dos temas del temario, obligatorio y eliminatorio"
+   ],
+   "cita": "El primero consistirá en realizar de forma conjunta y sucesiva el mismo día, un ejercicio tipo test",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "A2",
+   "cita": "integradas en el grupo/subgrupo A2, bibliotecaria/o mediante ingreso por el turno libre"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "oposición",
+   "cita": "por el sistema selectivo de oposición"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 4,
+   "cita": "mediante ingreso por el turno libre y el sistema selectivo de oposición"
+  },
+  "temas": {
+   "motivo": "valor_no_numerico",
+   "valor": "Número exigido ajustado al Real Decreto 896/1991 (no concretado en el texto)",
+   "cita": "El número de temas exigido, así como los contenidos mínimos se ajustan a los requisitos exigidos en el Real Decreto 896/1991"
+  }
+ }
+}

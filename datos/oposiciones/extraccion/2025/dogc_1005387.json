@@ -1,0 +1,61 @@
+{
+ "proceso": "dogc:1005387",
+ "documento": {
+  "id": "dogc:1005387",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1005387",
+  "fecha": "2025-02-04",
+  "huella": "1bd1cb5658499d6c093f79a1e835cfcb5e94cfb893cdbd9873c64a68c2e869ff"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:46:41+00:00",
+ "lote": "msgbatch_01MQzQCLMZKxUrrPMAj7dr53",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Administratiu/iva",
+    "Tècnic/ca mitjà/jana de gestió"
+   ],
+   "cita": "provisió, mitjançant el sistema de concurs oposició per promoció interna, en règim funcionarial, de dues places d'administratiu/iva",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "en règim funcionarial, de dues places d'administratiu/iva",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mitjançant el sistema de concurs oposició per promoció interna, en règim funcionarial",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles desde el día siguiente a la última publicación de la convocatoria en el DOGC o en el BOE",
+   "cita": "començarà l'endemà de la darrera publicació de la convocatòria en el Diari Oficial de la Generalitat de Catalunya o en el Boletín Oficial del Estado",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "seu electrònica municipal y Butlletí Oficial de la Província de Tarragona",
+   "cita": "La seu electrònica municipal i el Butlletí Oficial de la Província de Tarragona publiquen les bases íntegres",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "no consta",
+   "cita": ""
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 3,
+   "cita": "provisió, mitjançant el sistema de concurs oposició per promoció interna, en règim funcionarial, de dues places d'administratiu/iva"
+  },
+  "plazas_promocion_interna": {
+   "motivo": "valor_no_en_cita",
+   "valor": 3,
+   "cita": "mitjançant el sistema de concurs oposició per promoció interna, en règim funcionarial"
+  }
+ }
+}

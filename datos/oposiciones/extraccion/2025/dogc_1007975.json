@@ -1,0 +1,53 @@
+{
+ "proceso": "dogc:1007975",
+ "documento": {
+  "id": "dogc:1007975",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1007975",
+  "fecha": "2025-03-05",
+  "huella": "fbe0b008637eef59c3fe4b74f55a35b2268cb8cecc98e0d7e642f896fc0d4936"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:46:44+00:00",
+ "lote": "msgbatch_01MQzQCLMZKxUrrPMAj7dr53",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "C1",
+   "cita": "subgrup C1, adscrit a l'Àrea de Recursos Humans",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "a jornada completa, en règim funcionarial",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mitjançant el sistema de concurs oposició reservada a torn de promoció interna",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Íntegramente en la web municipal (www.ajberga.cat) y en el Butlletí Oficial de la Província de Barcelona; el resto de anuncios solo en la web municipal",
+   "cita": "es publicaran íntegrament al web municipal ( www.ajberga.cat ), i al Butlletí Oficial de la Província de Barcelona",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Tècnic/a Auxiliar de l'Ajuntament de Berga",
+   "cita": "el lloc de treball del Tècnic/a Auxiliar de l'Ajuntament de Berga, subgrup C1"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "provisió del lloc de treball de Tècnic Auxiliar a Recursos Humans"
+  },
+  "plazas_promocion_interna": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "mitjançant el sistema de concurs oposició reservada a torn de promoció interna"
+  }
+ }
+}

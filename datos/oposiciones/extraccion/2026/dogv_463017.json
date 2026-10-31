@@ -1,0 +1,57 @@
+{
+ "proceso": "dogv:463017",
+ "documento": {
+  "id": "dogv:463017",
+  "fuente": "DOGV",
+  "url": "https://dogv.gva.es/datos/2026/01/21/pdf/2026_1750_es.pdf",
+  "fecha": "2026-01-21",
+  "huella": "2ac05c467475808d7e80e2e36b5fe8a61c43f82d3c9f7a590341abefcdcfb7ce"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:42:21+00:00",
+ "lote": "msgbatch_01W17mR271uYfWYL6CuSdriL",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Auxiliares de enfermería (C2-03, escala C2-03-03)",
+    "Educación social (A2-04, escala A2-04-05)",
+    "Atención sociosanitaria (C1-04, escala C1-04-01)"
+   ],
+   "cita": "Auxiliares de enfermería, C2-03, cuerpo de servicios auxiliares, escala C2-03-03.",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "se convocaron bolsas de empleo temporal extraordinarias por razones de urgencia",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "aporte nuevos méritos, si los tuviese, obtenidos con posterioridad a la finalización del plazo",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "diez días hábiles, contados desde el día siguiente al de la publicación de la presente resolución en el DOGV",
+   "cita": "El plazo de inscripción y aportación de documentación para la valoración de méritos será de diez días hábiles",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Solicitud obligatoria a través de la aplicación Gvborses: https://gvborses.gva.es/gvborses",
+   "cita": "será necesario cumplimentar la solicitud a través de la aplicación Gvborses",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, bolsas de empleo temporal urgente en las tres categorías, vigentes hasta que la conselleria competente las deje sin efecto, sin exceder cuatro años",
+   "cita": "La ampliación de estas bolsas de urgencia estarán vigentes en tanto no sea dejada sin efecto",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Diari Oficial de la Generalitat Valenciana (citaciones en recursos contencioso-administrativos)",
+   "cita": "las citaciones en los recursos contencioso-administrativos se realizarán por medio de la inserción del correspondiente edicto en el DOGV"
+  }
+ }
+}

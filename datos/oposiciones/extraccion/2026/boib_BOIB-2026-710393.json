@@ -1,0 +1,111 @@
+{
+ "proceso": "boib:BOIB-2026-710393",
+ "documento": {
+  "id": "boib:BOIB-2026-710393",
+  "fuente": "BOIB",
+  "url": "https://www.caib.es/eboibfront/es/2026/12210/710393/acuerdo-del-consejo-de-administracion-de-la-agenci",
+  "fecha": "2026-01-01",
+  "huella": "d8b14526d771ca760678c9fa53ec8a88bd9c1b07ef9a7e2ff14a885112565836"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:42:14+00:00",
+ "lote": "msgbatch_01W17mR271uYfWYL6CuSdriL",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Técnico/técnica titulado/titulada de grado superior - Biología o Química",
+    "Técnico/técnica titulado/titulada de grado superior - Derecho",
+    "Técnico/técnica titulado/titulada de grado medio - Ingeniería técnica de Obras Públicas, Industrial o Naval"
+   ],
+   "cita": "Técnico/técnica titulado/titulada de grado superior- Biología o Química",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "A1 y B",
+   "cita": "Técnico/técnica titulado/titulada de grado superior- Biología o Química",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "por el turno libre, mediante el sistema de selección de concurso-oposición",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Grado en Biología o Química; grado en Derecho; ingeniería técnica de obras públicas, industrial o naval (pre-Bolonia) o título habilitante equivalente",
+   "cita": "Título de grado en Biología o equivalente",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española o de los países que permiten acceso al empleo público; 16 años cumplidos y no haber alcanzado la jubilación forzosa; capacidad física y psíquica; no estar separado ni inhabilitado para cargos públicos; conocimientos de catalán",
+   "cita": "Tener la nacionalidad española o alguna otra de las que permitan el acceso al empleo público",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "catalán, nivel exigido según anejo 1 del Decreto 11/2017",
+   "cita": "Disponer de los conocimientos de la lengua catalana que se indican en el anejo 1.",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "treinta días naturales a contar desde el día siguiente a la publicación en el BOIB",
+   "cita": "El plazo de presentación de solicitudes es de treinta días naturales a contar a partir del día siguiente de la publicación",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "trámite telemático en la web de la Agencia (abaqua.cat), o presencialmente en el Registro de la Agencia o en cualquier forma del artículo 16.4 de la Ley 39/2015",
+   "cita": "La presentación y la formalización de la solicitud de participación se realizará mediante el trámite telemático disponible en la web",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "web de la Agencia www.abaqua.cat y Boletín Oficial de las Islas Baleares cuando las bases lo determinen",
+   "cita": "deben publicarse en la web de la Agencia Balear del Agua y la Calidad Ambiental www.abaqua.cat",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Primer ejercicio (fase de oposición, eliminatorio)",
+    "Segundo ejercicio (fase de oposición)",
+    "Fase de concurso (valoración de méritos, no eliminatoria)"
+   ],
+   "cita": "Los ejercicios correspondientes a la fase de oposición del turno libre son los que se indican en el anejo 3.",
+   "nivel": "literal"
+  },
+  "temas": {
+   "valor": 21,
+   "cita": "Tema 21. La protección de datos de carácter personal.",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Titulaciones académicas (máx. 4 puntos), formación y perfeccionamiento (máx. 4), experiencia profesional (máx. 6), antigüedad (máx. 4), conocimiento de catalán (máx. 2); máximo total 20 puntos",
+   "cita": "La máxima puntuación que puede conseguirse en esta fase es de 20 puntos.",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, para sustituir renuncias antes del nombramiento o toma de posesión",
+   "cita": "el órgano convocante puede requerir a los tribunales una relación complementaria de las personas aspirantes",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "personal laboral fijo",
+   "cita": "concurso-oposición para cubrir las plazas de personal laboral fijo indicadas en el Anexo 1"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_numerico",
+   "valor": "no consta",
+   "cita": "Plazas convocadas por el turno libre, requisitos de titulación y de conocimientos de lengua catalana"
+  },
+  "plazas_discapacidad": {
+   "motivo": "valor_no_en_cita",
+   "valor": 0,
+   "cita": "En este procedimiento selectivo no se establece turno de reserva."
+  },
+  "practicas_o_curso": {
+   "motivo": "cita_no_literal",
+   "valor": "no consta",
+   "cita": "Plazo de diez días naturales para presentar documentos tras la resolución"
+  }
+ }
+}

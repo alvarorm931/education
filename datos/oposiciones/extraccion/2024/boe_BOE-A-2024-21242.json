@@ -1,0 +1,60 @@
+{
+ "proceso": "boe:BOE-A-2024-21242",
+ "documento": {
+  "id": "dogc:995934",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=995934",
+  "fecha": "2024-10-01",
+  "huella": "8c684df4c18250a0ac6878082b785f692ce6596b2d2a8c57cbb9686535848069"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:50:17+00:00",
+ "lote": "msgbatch_01LpyYajgKGX9NyHT1uvynbR",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "A2",
+   "cita": "pertanyent al grup A, subgrup A2, inclosa a l'oferta pública d'ocupació de l'any 2021",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "laboral fijo",
+   "cita": "la selecció, com a personal laboral fix, d'una plaça de tècnic/a mitjà/ana",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "a cobrir per torn lliure i pel sistema de concurs-oposició, per la qual cosa",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "la selecció, com a personal laboral fix, d'una plaça de tècnic/a mitjà/ana",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días naturales, contados desde el día siguiente a la publicación del anuncio de convocatoria en el DOGC",
+   "cita": "el termini de presentació d'instàncies serà de 20 dies naturals, comptats des de l'endemà de la publicació",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "sede electrónica",
+   "cita": "Els successius anuncis relacionats amb aquest procés es publicaran a la seu electrònica.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "tècnic/a mitjà/ana de prevenció de riscos laborals"
+   ],
+   "cita": "una plaça de tècnic/a mitjà/ana de prevenció de riscos laborals, pertanyent al grup A, subgrup A2"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "a cobrir per torn lliure i pel sistema de concurs-oposició"
+  }
+ }
+}

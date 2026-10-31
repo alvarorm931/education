@@ -1,0 +1,71 @@
+{
+ "proceso": "dogc:995529",
+ "documento": {
+  "id": "dogc:995529",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=995529",
+  "fecha": "2024-09-27",
+  "huella": "9bfcddecf9657a28a9714c931022886ddd1fd9e597c29b1fd61347d8564f4197"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:50:36+00:00",
+ "lote": "msgbatch_01LpyYajgKGX9NyHT1uvynbR",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Auxiliar Administrativo/a",
+    "Chófer"
+   ],
+   "cita": "Denominación de la plaza: Auxiliar Administrativo/a",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C2",
+   "cita": "Grup profesional: C2",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "convocatoria para cubrir 3 plazas, con carácter de laboral fijo del Ayuntamiento",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "Sistema de selección: concurso Turno: libre",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 3,
+   "cita": "convocatoria para cubrir 3 plazas, con carácter de laboral fijo del Ayuntamiento",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Título de Graduado en Educación Secundaria Obligatoria o equivalente (Auxiliar Administrativo/a); no se exige ninguna titulación prevista en el sistema educativo (Chófer)",
+   "cita": "Titulación exigible: Título de Graduado en Educación Secundaria Obligatoria o equivalente.",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles contados a partir del día siguiente de la última publicación de este anuncio en el DOGC",
+   "cita": "El plazo para presentar solicitudes finaliza a los 20 días hábiles contados a partir del día siguiente",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Sede electrónica del Ayuntamiento y demás medios que se indiquen en las Bases",
+   "cita": "Los anuncios sucesivos relativos a esta convocatoria se publicarán en la sede electrónica del Ayuntamiento",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 3,
+   "cita": "Turno: libre Denominación de la plaza: Chófer"
+  },
+  "plazas_discapacidad": {
+   "motivo": "valor_no_en_cita",
+   "valor": 0,
+   "cita": "Turno reserva discapacitados: No"
+  }
+ }
+}

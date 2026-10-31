@@ -1,0 +1,60 @@
+{
+ "proceso": "boe:BOE-A-2025-22383",
+ "documento": {
+  "id": "dogc:1028382",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1028382",
+  "fecha": "2025-11-04",
+  "huella": "316faa0a6d70d0e56d04d9e2c7e62e24e1a5c49e54eee47bb8f663ab29393628"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:41:00+00:00",
+ "lote": "msgbatch_01UNq3BNhPPHoTK3TEJzun1h",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "A2",
+   "cita": "subgrup de classificació professional A2, a l'Ajuntament de Tortosa",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "per a la cobertura, en règim funcionarial de carrera, d'UNA plaça",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mitjançant el sistema de concurs oposició lliure",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles, desde el día siguiente a la última publicación en el DOGC o en el BOE",
+   "cita": "finalitzarà als 20 dies hàbils, ambdós comptats a partir de l'endemà de la darrera publicació al Diari Oficial",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Butlletí Oficial de la Província de Tarragona, e-tauler y web del Ajuntament de Tortosa",
+   "cita": "es publicarà al Butlletí Oficial de la Província de Tarragona, a l'e-tauler i a la plana web de l'Ajuntament de Tortosa",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Tècnic/a de Recursos Humans"
+   ],
+   "cita": "convocar el procés de selecció per a la cobertura d'UNA plaça de la categoria professional de Tècnic/a de Recursos Humans"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 1,
+   "cita": "convocar el procés de selecció per a la cobertura d'UNA plaça"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "mitjançant el sistema de concurs oposició lliure, per a la cobertura"
+  }
+ }
+}

@@ -1,87 +1,102 @@
 {
  "proceso": "bopt:BOPT-2026-08404",
  "documento": {
-  "id": "bopt:BOPT-2026-08404",
-  "fuente": "BOPT",
-  "url": "https://www.dipta.cat/bopt/web/anunci/364106/borsa-de-treball-de-conserge-bases-i-convocatoria-ajuntament-morell-el",
+  "id": "dogc:1054190",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1054190",
   "fecha": "2026-09-14",
-  "huella": "e7e2213e42613c2b70bd703ccb02cb0f559e415c68b3571417ed1ae8694ccaf9"
+  "huella": "0d57d1f96f9767868bf8e7b4134d96e4cd89726f7fb8d0ad33df2632fefc5be1"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T08:03:35+00:00",
- "lote": "msgbatch_013xFoLdqcGqWcqkzh7qrdGg",
+ "extraido": "2026-10-31T14:41:53+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
    "valor": [
     "Conserge"
    ],
-   "cita": "Denominació del lloc de treball: Conserge Adscripció: Edificis Municipals.",
-   "nivel": "sin_signos"
+   "cita": "Denominació del lloc de treball: Conserge",
+   "nivel": "literal"
   },
   "grupo": {
    "valor": "AP",
-   "cita": "pertanyent al subgrup AP, escala d’administració general, subescala subalterna",
+   "cita": "pertanyent al subgrup AP, escala d'administració general, subescala subalterna",
    "nivel": "literal"
   },
   "vinculo": {
    "valor": "laboral temporal",
-   "cita": "Règim jurídic: Laboral Grup de classificació: Agrupacions Professionals",
-   "nivel": "sin_signos"
+   "cita": "constitució d'una borsa de treball de conserge, personal laboral temporal",
+   "nivel": "literal"
   },
   "sistema": {
    "valor": "oposición",
-   "cita": "mitjançant oposició, per a la creació d’una borsa de treball",
+   "cita": "Procés selectiu consisteix en la realització de les proves obligatòries i eliminatòries",
    "nivel": "literal"
   },
   "titulacion": {
-   "valor": "No se exige titulación",
-   "cita": "no s’exigeix estar en possessió de cap de les titulacions previstes al sistema educatiu",
+   "valor": "No se exige",
+   "cita": "no s'exigeix estar en possessió de cap de les titulacions previstes al sistema educatiu",
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Nacionalidad española o UE (o residencia legal), 18 años y no superar la edad de jubilación forzosa, capacidad funcional, no inhabilitación, no incompatibilidad, currículum vitae, certificado negativo de antecedentes penales y de delitos sexuales.",
-   "cita": "Tenir ciutadania espanyola o nacionalitat d’algun de ls estats membres de la Unió Europea",
+   "valor": "Nacionalidad española o de la UE (o residencia legal), 18 años, no superar la edad de jubilación forzosa, capacidad funcional, no inhabilitación, no incompatibilidad, currículum y certificado negativo de antecedentes penales y de delitos sexuales.",
+   "cita": "Tenir ciutadania espanyola o nacionalitat d'algun dels estats membres de la Unió Europea",
    "nivel": "literal"
   },
   "idioma_cooficial": {
-   "valor": "Catalán nivel B2",
-   "cita": "Acreditar el coneixement de la llengua catalana equivalent nivell B2 del Marc europeu comú de referència",
+   "valor": "Catalán nivel B2 (MERC)",
+   "cita": "Acreditar el coneixement de la llengua catalana equivalent nivell B2 del Marc europeu comú",
    "nivel": "literal"
   },
   "tasa_euros": {
    "valor": 20,
-   "cita": "Abonar 20.-€ en concepte de drets d’examen establerts a l’art. 4",
+   "cita": "Abonar 20.-€ en concepte de drets d'examen establerts a l'art. 4",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Reducción del 100% para personas inscritas en el paro y personas con discapacidad que lo acrediten.",
+   "cita": "Les persones que acreditin estar inscrites a l'atur i les persones que acreditin estar discapacitades tindran una reducció del 100%",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "10 días hábiles desde el día siguiente a la publicación del anuncio de la convocatoria en el BOPT y DOGC (la última de ambas)",
-   "cita": "El termini de 10 dies hàbils per la presentació d’instàncies a comptar de l’endemà de la publicació",
+   "valor": "10 días hábiles desde el día siguiente a la publicación del anuncio de la convocatoria en el BOPT y el DOGC, tomando como referencia la última de estas publicaciones.",
+   "cita": "El termini de 10 dies hàbils per la presentació d'instàncies a comptar de l'endemà de la publicació",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Preferentemente telemática en la sede electrónica del Ayuntamiento con certificado digital; también presencial en el Registro General",
-   "cita": "Telemàticament: A la seu electrònica de l'Ajuntament, mitjançant model oficial i normalitzat previst",
+   "valor": "Telemáticamente en la sede electrónica del Ayuntamiento (preferente, con certificado digital) o presencialmente en el Registro General del Ayuntamiento.",
+   "cita": "Telemàticament: A la seu electrònica de l'Ajuntament, mitjançant model oficial i normalitzat",
    "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de anuncios, web municipal, BOPT y DOGC; listas de admitidos y excluidos y puntuaciones en el tablón de edictos electrónico de la sede.",
+   "cita": "La llista d'aspirants admesos/es i exclosos/es... s'exposaran al tauler d'edictes electrònic de la seu",
+   "nivel": "fragmentos"
   },
   "ejercicios": {
    "valor": [
-    "Prueba de catalán (oral y escrita, apto/no apto)",
-    "Prueba de castellano (solo para no nacionales de países sin castellano oficial, apto/no apto)",
-    "Prueba práctica escrita sobre un caso de conserjería (60 min, máximo 10 puntos, mínimo 5)",
+    "Prueba de conocimientos de lengua catalana (eliminatoria, apto/no apto)",
+    "Prueba de conocimientos de lengua castellana (solo para extranjeros no originarios de países hispanohablantes, eliminatoria)",
+    "Prueba práctica escrita sobre casos de conserje (máx. 10 puntos, mínimo 5, 60 minutos)",
     "Prueba psicotécnica (eliminatoria, apto/no apto)",
-    "Entrevista competencial (no eliminatoria, máximo 5 puntos)"
+    "Entrevista competencial (máx. 5 puntos, no eliminatoria)"
    ],
-   "cita": "Tercera. Prova de coneixements pràctics: La prova pràctica consistirà en la resolució per escrit d’un cas pràctic",
+   "cita": "Prova pràctica consistirà en la resolució per escrit d'un cas pràctic relacionat amb les funcions pròpies del lloc de conserge",
    "nivel": "literal"
   },
   "meritos": {
-   "valor": "No se valoran méritos; la puntuación procede de la prueba práctica (máx. 10) y la entrevista (máx. 5)",
-   "cita": "Les proves psicotècniques són eliminatòries i es qualifiquen com a apte/a o no apte/a.",
+   "valor": "No se valoran méritos; la puntuación procede de la fase de oposición (prueba práctica y entrevista).",
+   "cita": "La puntuació definitiva de cada aspirant... serà el resultat de la suma dels punts obtinguts a la fase d'oposició",
+   "nivel": "fragmentos"
+  },
+  "bolsa": {
+   "valor": "Sí, borsa de treball de conserge para cubrir necesidades temporales de vacantes, sustituciones, refuerzos y otras circunstancias; duración de tres años.",
+   "cita": "La durada de la borsa serà de tres anys, que es podrà prorrogar",
    "nivel": "literal"
   },
   "practicas_o_curso": {
-   "valor": "Período de prueba de dos meses",
+   "valor": "Contrato laboral temporal con periodo de prueba de dos meses (ampliable hasta seis meses si no hay servicio efectivo).",
    "cita": "establint-se un període de prova de dos mesos de durada",
    "nivel": "literal"
   }
@@ -89,23 +104,8 @@
  "rechazados": {
   "plazas_total": {
    "motivo": "valor_no_en_cita",
-   "valor": 1,
-   "cita": "Denominació del lloc de treball: Conserge Adscripció: Edificis Municipals."
-  },
-  "exenciones_tasa": {
-   "motivo": "cita_no_literal",
-   "valor": "Reducción del 100% para personas inscritas en el paro y personas con discapacidad",
-   "cita": "Les persones que acreditin estar inscrites a l’atur i les persones que acreditin estar discapacitades tindran una reducció del 100%"
-  },
-  "publicaciones": {
-   "motivo": "cita_no_literal",
-   "valor": "Tablón de anuncios, web municipal, BOPT, DOGC, y tablón de edictos electrónico de la sede del Ayuntamiento",
-   "cita": "Les bases de la convocatòria es publicaran al tauler d’anuncis de l’Ajuntament del Morell"
-  },
-  "bolsa": {
-   "motivo": "cita_no_literal",
-   "valor": "Sí, bolsa de trabajo de conserje, con vigencia de tres años prorrogable",
-   "cita": "La durada de la borsa serà de tres anys, que es podrà prorrogar"
+   "valor": 0,
+   "cita": "la creació d'una borsa de treball de personal de conserge"
   }
  }
 }

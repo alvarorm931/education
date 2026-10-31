@@ -1,0 +1,60 @@
+{
+ "proceso": "boe:BOE-A-2026-4312",
+ "documento": {
+  "id": "dogv:461669",
+  "fuente": "DOGV",
+  "url": "https://dogv.gva.es/datos/2026/01/28/pdf/2026_402_es.pdf",
+  "fecha": "2026-01-28",
+  "huella": "51ed3db5892aaa07283182d57dbf05c1f0d6d079240cc249e5a6bc1a6a43a47f"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:42:13+00:00",
+ "lote": "msgbatch_01W17mR271uYfWYL6CuSdriL",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "B",
+   "cita": "grupo/subgrupo B, personal laboral, obrantes en la plantilla de este ayuntamiento",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "laboral fijo",
+   "cita": "grupo/subgrupo B, personal laboral, obrantes en la plantilla de este ayuntamiento",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "proceso selectivo, mediante concurso-oposición, de tres plazas de monitor o monitora ocupacionales",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 3,
+   "cita": "proceso selectivo, mediante concurso-oposición, de tres plazas de monitor o monitora ocupacionales",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "diez días hábiles, contados a partir del día siguiente al de la publicación del extracto de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "apertura de un plazo de presentación de solicitudes de diez días hábiles, contados a partir del día siguiente",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "instancia conforme al anexo II de las bases",
+   "cita": "Quienes deseen tomar parte en este proceso selectivo lo solicitarán en una instancia conforme al anexo II",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia de Alicante (bases y convocatoria); Boletín Oficial del Estado (extracto de la convocatoria)",
+   "cita": "publicadas íntegramente las bases específicas y convocatoria por las cuales se regirá el proceso selectivo",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Monitor o monitora ocupacional"
+   ],
+   "cita": "convocatoria de tres plazas de monitor o monitora ocupacionales, ID n.º 156, 1007 y 1246"
+  }
+ }
+}

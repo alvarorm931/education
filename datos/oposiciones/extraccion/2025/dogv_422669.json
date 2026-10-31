@@ -1,0 +1,65 @@
+{
+ "proceso": "dogv:422669",
+ "documento": {
+  "id": "dogv:422669",
+  "fuente": "DOGV",
+  "url": "https://dogv.gva.es/datos/2025/05/21/pdf/2025_14342_es.pdf",
+  "fecha": "2025-05-21",
+  "huella": "7030cdbd5f3bcb90821548cf8f7883946f43c8b475de8b69e752212d072669a3"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:46:00+00:00",
+ "lote": "msgbatch_017vJZdAmjTkBDdH14aLEdCv",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "C1",
+   "cita": "Grupo/Subgrupo Escala Subescala Denominación Vacantes Sistema selección C/C1 Administración general",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "las bases que tienen que regir el proceso selectivo (promoción interna) para cubrir las siguientes plazas vacantes",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "Vacantes Sistema selección C/C1 Administración general Administrativa Administrativo/administrativa 3 Concurso-oposición",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 3,
+   "cita": "Administrativo/administrativa 3 Concurso-oposición",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles desde el día siguiente a la publicación del anuncio del extracto de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "en el plazo de veinte días hábiles a contar desde el día siguiente al de la publicación del anuncio del extracto",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "de acuerdo con lo que establece la base tercera de las que rigen las convocatorias",
+   "cita": "Las instancias se presentarán de acuerdo con lo que establece la base tercera de las que rigen las convocatorias",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "sede electrónica municipal y tablón de anuncios del Ayuntamiento; resoluciones de admitidos y excluidos en el Boletín Oficial de la Provincia de Alicante",
+   "cita": "Los sucesivos anuncios relativos a las convocatoria, cuando proceda de conformidad con las bases, se publicarán en la sede electrónica municipal",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Administrativo/administrativa"
+   ],
+   "cita": "Denominación Vacantes Sistema selección C/C1 Administración general Administrativa Subescala Administrativo/administrativa"
+  },
+  "plazas_promocion_interna": {
+   "motivo": "valor_no_en_cita",
+   "valor": 3,
+   "cita": "proceso selectivo (promoción interna) para cubrir las siguientes plazas vacantes"
+  }
+ }
+}

@@ -1,0 +1,66 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2025-545",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2025-545",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2025/01/28_18/2025_000545.pdf",
+  "fecha": "2025-01-28",
+  "huella": "0a4000088659b431c642f69628a407a8929f5bdefb4cf13ba0a82969f36e2e00"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:46:23+00:00",
+ "lote": "msgbatch_01MQzQCLMZKxUrrPMAj7dr53",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Administrativo/a de administración general (C/C1)",
+    "Técnico de administración general (A/A1)"
+   ],
+   "cita": "para cubrir dos (2) plazas de ADMINISTRATIVO/A de administración general (C/C1), pertenecientes a la Oferta de Empleo Público 2024",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C1",
+   "cita": "plazas de ADMINISTRATIVO/A de administración general (C/C1), pertenecientes a la Oferta de Empleo Público 2024",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Según lo establecido en la Base Tercera de las que rigen las respectivas convocatorias",
+   "cita": "Las instancias se presentarán de acuerdo con lo que establece la Base Tercera de las que rigen",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "convocatoria y bases de selección de personal funcionario de carrera mediante el sistema de concurso-oposición"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "mediante el sistema de concurso-oposición (promoción interna), para cubrir dos (2) plazas"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 3,
+   "cita": "para cubrir dos (2) plazas de ADMINISTRATIVO/A y una (1) plaza de TÉCNICO"
+  },
+  "plazas_promocion_interna": {
+   "motivo": "valor_no_en_cita",
+   "valor": 3,
+   "cita": "sistema de concurso-oposición (promoción interna), para cubrir dos (2) plazas"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "20 días hábiles a contar desde el día siguiente al de la publicación del anuncio del extracto de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "en el plazo de 20 días hábiles a contar desde el día siguiente al de la publicación del anuncio del extracto"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Sede Electrónica Municipal y Tablón de Anuncios Municipal; las resoluciones de admitidos y excluidos, en el Boletín Oficial de la Provincia de Alicante",
+   "cita": "Los sucesivos anuncios relativos a las convocatorias se publicarán en la sede electrónica y tablón de anuncios del Ayuntamiento"
+  }
+ }
+}

@@ -1,0 +1,94 @@
+{
+ "proceso": "boe:BOE-A-2023-11037",
+ "documento": {
+  "id": "boe:BOE-A-2023-11037",
+  "fuente": "BOE",
+  "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2023-11037",
+  "fecha": "2023-05-09",
+  "huella": "8f653ac3d71b2426a99529c3f77075cc021a21fc18c764c9328be09411c60585"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:59:14+00:00",
+ "lote": "msgbatch_012nGabRM1G4b7cEKJh1Bcx1",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "militar de carrera o militar de complemento",
+   "cita": "para la incorporación como militar de carrera o adscripción como militar de complemento a las escalas de oficiales",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "El sistema de selección a emplear en los distintos procesos que se convocan será el de concurso-oposición.",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 105,
+   "cita": "Ofertar ciento cinco (105) plazas (33 para las escalas de oficiales, 38 para las escalas técnicas y 34 para militar de complemento)",
+   "nivel": "literal"
+  },
+  "plazas_turno_libre": {
+   "valor": 105,
+   "cita": "Ofertar ciento cinco (105) plazas (33 para las escalas de oficiales, 38 para las escalas técnicas y 34 para militar de complemento)",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Titulación universitaria exigida según la Orden DEF/462/2022, para las escalas de los Cuerpos de Ingenieros",
+   "cita": "Estar en posesión, o en condiciones de poseer, el nivel de estudios o la titulación para el acceso a la escala y cuerpo",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Quince (15) días hábiles contados a partir del día siguiente al de la publicación de la Resolución en el BOE",
+   "cita": "El plazo de presentación de solicitudes será de quince (15) días hábiles contados a partir del día siguiente al de la publicación",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Méritos militares (SIPERDEF), académicos (expediente universitario con calificaciones numéricas) y perfil de idiomas inglés; baremación conforme a Orden DEF/420/2020 y la titulación exigida con coeficiente 1,8",
+   "cita": "Solamente se valorarán aquellos méritos debidamente justificados que se posean en la fecha en que finaliza el plazo",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "no",
+   "cita": "Estar en posesión, o en condiciones de poseer, el nivel de estudios",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Escala de oficiales de los Cuerpos de Ingenieros de los ejércitos",
+    "Escala técnica de los Cuerpos de Ingenieros de los ejércitos",
+    "Militar de complemento adscrito a la escala de oficiales",
+    "Militar de complemento adscrito a la escala técnica"
+   ],
+   "cita": "Escala de oficiales de los Cuerpos de Ingenieros de los ejércitos, mediante la forma de ingreso directo"
+  },
+  "otros_requisitos": {
+   "motivo": "cita_no_literal",
+   "valor": "Nacionalidad española; edad máxima 30 años para militar de complemento en ingreso directo (sin límite en promoción); no tener antecedentes penales; carecer de inserciones o tatuajes contrarios a valores constitucionales; certificado médico oficial para pruebas físicas.",
+   "cita": "Poseer la nacionalidad española. No cumplir ni haber cumplido en el año 2023 las siguientes edades máximas"
+  },
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Sede electrónica del Ministerio de Defensa (https://sede.defensa.gob.es/acceda); también oficinas de asistencia en materia de registros y Subdelegaciones de Defensa",
+   "cita": "la solicitud de admisión se cursará directamente sobre la página web https://sede.defensa.gob.es/acceda"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Página web de reclutamiento del Ministerio de Defensa (https://reclutamiento.defensa.gob.es/proceso-acceso/)",
+   "cita": "el Director General de Reclutamiento y Enseñanza Militar publicará en la página web de reclutamiento del Ministerio de Defensa"
+  },
+  "ejercicios": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Prueba de lengua inglesa (si no se posee el perfil exigido)",
+    "Pruebas psicológicas",
+    "Reconocimiento médico",
+    "Pruebas físicas: potencia de tren inferior, potencia de tren superior, velocidad (50 m), resistencia (1.000 m), soltura acuática (50 m) y circuito de agilidad",
+    "Fase de concurso (méritos)"
+   ],
+   "cita": "Pruebas físicas: potencia de tren inferior, potencia de tren superior, velocidad (carrera de 50 metros), resistencia (carrera de 1000 metros)"
+  }
+ }
+}

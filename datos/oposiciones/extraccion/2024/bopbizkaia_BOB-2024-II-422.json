@@ -1,0 +1,73 @@
+{
+ "proceso": "bopbizkaia:BOB-2024-II-422",
+ "documento": {
+  "id": "bopbizkaia:BOB-2024-II-422",
+  "fuente": "BOB",
+  "url": "http://www.bizkaia.eus/lehendakaritza/Bao_bob/2024/02/02/II-422_cas.pdf",
+  "fecha": "2024-02-02",
+  "huella": "ae6da45f471ca9816326fb72143f1e4f709857494cbf508a38eebc2591f48517"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:53:51+00:00",
+ "lote": "msgbatch_01EQ4R6PVKpEwTXzXwPCmspm",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "C2",
+   "cita": "Grupo de Clasificación C2, Nivel 16, Perfil Lingüístico 2 preceptivo",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "a través del sistema de concurso oposición en turno libre",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "Convocatoria de una plaza de Auxiliar Administrativo",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Perfil Lingüístico 2 preceptivo",
+   "cita": "Grupo de Clasificación C2, Nivel 16, Perfil Lingüístico 2 preceptivo",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de Bizkaia, Tablón de anuncios municipal y página web del Ayuntamiento",
+   "cita": "Publicar la lista definitiva en el «Boletín Oficial de Bizkaia», en el Tablón de anuncios municipal",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Primer ejercicio: test teórico sobre temario general y específico (60 minutos)",
+    "Segundo ejercicio: test práctico sobre supuestos del temario específico (75 minutos)"
+   ],
+   "cita": "El primer ejercicio teórico consistirá en la contestación por escrito de un cuestionario tipo test",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "no",
+   "cita": "Convocatoria de una plaza de Auxiliar Administrativo",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Auxiliar Administrativo"
+   ],
+   "cita": "Convocatoria de una plaza de Auxiliar administrativo como funcionario de carrera"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "para la provisión de una plaza de Auxiliar administrativo como funcionario de carrera"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "a través del sistema de concurso oposición en turno libre"
+  }
+ }
+}

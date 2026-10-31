@@ -1,0 +1,53 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2023-2409",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2023-2409",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2023/03/30_63/2023_002409.pdf",
+  "fecha": "2023-03-30",
+  "huella": "e2d768cc8a22f4c0022621d49ddc370dd325ebfaf6f4324740d2e22fa97c569e"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:56:55+00:00",
+ "lote": "msgbatch_0167qWfLXqjGo8Hv43cM3LuM",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "Ingeniera/o Civil",
+   "cita": "para la provisión en propiedad con funcionario/funcionaria de carrera de 1 plaza de Ingeniera/o Civil",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "provisión en propiedad con funcionario/funcionaria de carrera de 1 plaza",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mediante concurso-oposición por turno libre, vacante en la plantilla municipal",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "para la provisión en propiedad con funcionario/funcionaria de carrera de 1 plaza de Ingeniera/o Civil",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles a contar desde el día siguiente a la publicación del extracto de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "será de veinte días hábiles a contar desde el día siguiente a la publicación del extracto de la convocatoria en el Boletín Oficial del Estado",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "mediante concurso-oposición por turno libre, vacante en la plantilla municipal"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Tablón de Anuncios del Servicio de Recursos Humanos y página web municipal",
+   "cita": "estarán a disposición de los interesados en el Tablón de Anuncios del Servicio de Recursos Humanos, sito en C/ Ànimes, 4 y en la página web municipal"
+  }
+ }
+}

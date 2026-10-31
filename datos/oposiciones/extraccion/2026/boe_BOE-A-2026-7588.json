@@ -1,0 +1,134 @@
+{
+ "proceso": "boe:BOE-A-2026-7588",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2026-1241",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2026/02/27_40/2026_001241.pdf",
+  "fecha": "2026-02-27",
+  "huella": "6ac98b68265ed3112d58aa163b805a6f6aca6279374a22581d2fa06428feec16"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:40:25+00:00",
+ "lote": "msgbatch_01E3wiYcGL8Lzho48bXWLyyb",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Agent de la Policia Local (torn lliure)",
+    "Agent de la Policia Local (torn mobilitat)"
+   ],
+   "cita": "3 places d'Agent de la Policia Local, enquadrades en l'Escala d'Administració Especial",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C1",
+   "cita": "GRUP C SUBGRUP C-1, DE L'AJUNTAMENT DE BENISSA",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "cobrir, com a funcionari de carrera, 3 places d'Agent de la Policia Local",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "El procediment selectiu serà el d'OPOSICIÓ en el cas del torn lliure",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 3,
+   "cita": "cobrir, com a funcionari de carrera, 3 places d'Agent de la Policia Local",
+   "nivel": "literal"
+  },
+  "plazas_turno_libre": {
+   "valor": 2,
+   "cita": "DOS PER TORN LLIURE I UNA PER TORN MOBILITAT",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 35,
+   "cita": "Resguard justificatiu d'haver pagat els drets d'examen (35 €).",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Exención para personas desempleadas acreditada con certificados de LABORA y SEPE emitidos dentro del plazo de presentación",
+   "cita": "Per a obtindre dret a l'exempció de la taxa, es requerirà junt amb la instància dos certificats",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles desde el siguiente a la publicación del extracto de la convocatoria en el Diari Oficial de la Generalitat Valenciana",
+   "cita": "el termini de presentació de sol·licituds serà de 20 dies hàbils, a partir del següent al de la publicació",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Telemáticamente en la Sede Electrónica del Ayuntamiento de Benissa (http://benissa.sedelectronica.es)",
+   "cita": "Aquestes sol·licituds es presentaran de forma telemàtica en la Seu Electrònica",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Presentación de certificado médico y prueba de medición de altura (eliminatorio)",
+    "Prueba de aptitud física (eliminatoria)",
+    "Prueba de aptitud psicotécnica (eliminatoria)",
+    "Prueba tipo test de conocimientos de 50 preguntas (eliminatoria)",
+    "Prueba escrita práctica de un caso (eliminatoria)",
+    "Prueba de conocimiento del valenciano (no eliminatoria)",
+    "Reconocimiento médico (eliminatorio)"
+   ],
+   "cita": "SEGON EXERCICI. Prova d'aptitud física. Obligatori i eliminatori.",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Para concurso de movilidad: servicios prestados (hasta 12 puntos), titulaciones académicas (hasta 5), idiomas (hasta 5), cursos de formación (hasta 15), premios y distinciones (hasta 2), otros méritos (hasta 1); puntuación máxima 40",
+   "cita": "La puntuació màxima que poden aconseguir els mèrits al·legats és de 40 punts.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_promocion_interna": {
+   "motivo": "valor_no_en_cita",
+   "valor": 0,
+   "cita": "no es realitza reserva de places per a dones"
+  },
+  "plazas_discapacidad": {
+   "motivo": "valor_no_en_cita",
+   "valor": 0,
+   "cita": "no es realitza reserva de places per a dones"
+  },
+  "titulacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Batxiller o Tècnic (FP) o equivalent",
+   "cita": "Estar en possessió de la titulació de Batxiller o Tècnic (FP) o equivalent"
+  },
+  "otros_requisitos": {
+   "motivo": "cita_no_literal",
+   "valor": "Nacionalidad española; no inhabilitación ni antecedentes penales; mínimo 18 años; permisos de conducción B y A2; altura mínima 1,65 m hombres y 1,58 m mujeres; compromiso de portar armas de fuego",
+   "cita": "Tindre la nacionalitat espanyola. Tindre almenys díhuit anys d'edat"
+  },
+  "idioma_cooficial": {
+   "motivo": "cita_no_literal",
+   "valor": "Valenciano: prueba de conocimiento obligatoria y no eliminatoria (traducción valenciano-castellano y viceversa, máximo 4 puntos)",
+   "cita": "Consistirà a traduir, del valencià al castellà, i viceversa, un text"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Tablón de anuncios de la sede electrónica del Ayuntamiento de Benissa y Boletín Oficial de la Provincia de Alicante",
+   "cita": "es publicaran en el Butlletí Oficial de la província d'Alacant i en la seu electrònica"
+  },
+  "temas": {
+   "motivo": "valor_no_en_cita",
+   "valor": 40,
+   "cita": "ANNEX I Temari. Grup C1. Agent"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, bolsa de trabajo de Agentes de Policía Local para nombramientos interinos",
+   "cita": "es formalitzarà una borsa de treball d'Agents de Policia Local, per a possibles nomenaments interins"
+  },
+  "practicas_o_curso": {
+   "motivo": "cita_no_literal",
+   "valor": "Curso selectivo en el IVASPE con contenido teórico-práctico y periodo de prácticas de doce semanas en el municipio correspondiente",
+   "cita": "El curs selectiu de formació per a l'accés a l'escala bàsica tindrà un contingut teoricopràctic i un període de pràctiques de dotze setmanes"
+  }
+ }
+}

@@ -1,0 +1,108 @@
+{
+ "proceso": "boa:BOA-007929224",
+ "documento": {
+  "id": "boa:BOA-007929224",
+  "fuente": "BOA",
+  "url": "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VERDOC&BASE=BOLE&SEC=BUSQUEDA_AVANZADA&DOCN=007929224",
+  "fecha": "2022-12-21",
+  "huella": "017fa970e541489cd8ba3f206a021da74c0ed2fe990199e61339d43ca1ad8378"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:55:50+00:00",
+ "lote": "msgbatch_014eT3dLLVopBnuVgQ4syWD9",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "A1",
+   "cita": "Médico de Familia de Atención Primaria, código de la categoría A164",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal estatutario",
+   "cita": "Convocar pruebas selectivas para la estabilización de empleo temporal de personal estatutario en plazas",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "el procedimiento selectivo por el sistema de concurso de méritos y una vez finalizado se continuará por el procedimiento selectivo propio del sistema de concurso-oposición",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 85,
+   "cita": "Se convoca procedimiento selectivo para cubrir 85 plazas básicas de la categoría de Médico de Familia de Atención Primaria",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Médico especialista en Medicina Familiar y Comunitaria o certificación equivalente",
+   "cita": "Poseer el título de Médico especialista en Medicina Familiar y Comunitaria o la Certificación prevista en el artículo 3 del Real Decreto 853/1993",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Edad mínima 16 años y no exceder la edad de jubilación forzosa; nacionalidad española, UE o equivalente; capacidad funcional; no haber sido separado del servicio en los seis años anteriores; no ser personal estatutario fijo en la categoría; no tener condena por delitos contra la libertad sexual",
+   "cita": "Tener cumplidos dieciséis años y no exceder, en su caso, de la edad de jubilación forzosa",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "No se exige conocimiento de lengua cooficial",
+   "cita": "Para ser admitidos a la realización del presente proceso selectivo, los aspirantes deberán reunir los siguientes requisitos",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 39.98,
+   "cita": "que asciende a 39,98 euros mediante pago telemático desde el propio portal",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Víctimas de terrorismo y sus cónyuges/parejas e hijos; demandantes de empleo inscritos seis meses; personas sin ingresos o con ingresos no superiores al salario mínimo en los seis meses anteriores",
+   "cita": "Sólo estarán exentas del pago de la tasa por derechos de examen",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Desde el 9 de enero hasta el 27 de enero de 2023, ambos incluidos",
+   "cita": "el plazo de presentación de solicitudes será desde el día 9 de enero hasta el día 27 de enero de 2023 ambos incluidos",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Vía web en empleo.salud.aragon.es (Portal Electrónico de Recursos Humanos), con certificado digital o Cl@ve permanente",
+   "cita": "Las instancias para participar en las pruebas selectivas se formalizarán vía web en la dirección https://empleo.salud.aragon.es",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablones de anuncios de centros del Servicio Aragonés de Salud, web oficial y BOA en los casos previstos",
+   "cita": "se fija como medio de comunicación de las publicaciones que se deriven de los actos integrantes del procedimiento selectivo, la exposición en los tablones de anuncios",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Méritos valorados según baremo del anexo II, con puntuación máxima de 100 puntos en la fase de concurso",
+   "cita": "La puntuación máxima posible que se puede obtener en el concurso será de 100 puntos",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Médico de Familia de Atención Primaria"
+   ],
+   "cita": "convocatoria de pruebas selectivas para la estabilización de empleo temporal de personal estatutario en plazas de Médico de Familia de Atención Primaria"
+  },
+  "plazas_discapacidad": {
+   "motivo": "valor_no_numerico",
+   "valor": "reserva con acumulación de plazas no cubiertas hasta un límite del 8%",
+   "cita": "Para el turno de personas discapacitadas, en caso de no cubrirse las plazas vacantes reservadas para dicho turno, se acumularán a posteriores ofertas hasta un límite del 8%."
+  },
+  "ejercicios": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Concurso de méritos (valoración de méritos, máximo 100 puntos)",
+    "Concurso-oposición: ejercicio tipo test de 100 preguntas más 10 de reserva, con respuestas alternativas y penalización de errores"
+   ],
+   "cita": ""
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "no",
+   "cita": "Cuando no se cubran plazas reservadas, se acumularán a las del turno libre, sin mención a bolsa de espera"
+  }
+ }
+}

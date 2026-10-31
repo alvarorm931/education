@@ -1,0 +1,35 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2025-4045",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2025-4045",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2025/06/04_105/2025_004045.pdf",
+  "fecha": "2025-06-04",
+  "huella": "67196a7ca6ff8dbdae35b3d1058e2b3af73200ecd16efe432fc68c9567d93b57"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:45:37+00:00",
+ "lote": "msgbatch_016re6aGcimwSVmdrWa6qBd9",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "plazas vacantes en la plantilla de funcionarios de carrera de este Ayuntamiento",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Agentes de la Policía Local"
+   ],
+   "cita": "proceso selectivo para la provisión tres (3) plazas de agentes de la Policía Local"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 4,
+   "cita": "Ampliar una plaza adicional, incluida en la oferta de Empleo Público del 2025"
+  }
+ }
+}

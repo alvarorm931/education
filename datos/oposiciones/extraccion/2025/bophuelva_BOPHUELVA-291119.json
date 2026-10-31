@@ -1,0 +1,53 @@
+{
+ "proceso": "bophuelva:BOPHUELVA-291119",
+ "documento": {
+  "id": "bophuelva:BOPHUELVA-291119",
+  "fuente": "BOP-HUELVA",
+  "url": "https://s2.diphuelva.es/portalweb/bope/anuncios/Anuncio_291119_BOP-13_2025.pdf",
+  "fecha": "2025-01-21",
+  "huella": "455e2e3bff0992ee06c7eb360df747372146aa3a7fe4dcd01e820078dcac1c59"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:49:42+00:00",
+ "lote": "msgbatch_018TPQE8scQozfAUdc1n8RyC",
+ "no_son_bases": false,
+ "campos": {
+  "plazas_total": {
+   "valor": 1,
+   "cita": "Número de vacantes: 1. Puesto: Auxiliar Administrativo.",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "diez días hábiles, contados a partir del siguiente al de la publicación del Anuncio extracto de la Convocatoria en el Boletín Oficial de la Provincia",
+   "cita": "que será de diez días hábiles, contados a partir del siguiente al de la publicación del Anuncio extracto de la Convocatoria",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Funcionario Interino de Auxiliar Administrativo del proyecto asfaltado 2025-2027",
+   "cita": "Funcionario Interino de Auxiliar Administrativo del proyecto asfaltado 2025-2027, que no se puede cubrir por funcionario de carrera"
+  },
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "C2",
+   "cita": "Grupo: C; Subgrupo C2; Escala de Administración General"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario interino",
+   "cita": "para cubrir una plaza como Funcionario Interino de Auxiliar Administrativo del proyecto asfaltado"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "oposición",
+   "cita": "se aprueban con carácter de urgencia las Bases Generales y Específica que han de regir el procedimiento de selección"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Tablón de Anuncios y Sede Electrónica del Ayuntamiento de La Palma del Condado",
+   "cita": "El contenido integro de la Convocatoria y Bases se encuentra en el Tablón de Anuncios y en la Sede Electrónica"
+  }
+ }
+}

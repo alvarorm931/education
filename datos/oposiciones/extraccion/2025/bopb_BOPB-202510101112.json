@@ -1,0 +1,55 @@
+{
+ "proceso": "bopb:BOPB-202510101112",
+ "documento": {
+  "id": "bopb:BOPB-202510101112",
+  "fuente": "BOPB",
+  "url": "https://bop.diba.cat/anunci/3772639/bases-especifiques-i-convocatoria-del-proces-de-seleccio-per-proveir-dues-places-de-personal-subaltern-de-l-escala-de-proces-de-seleccio-d-administracio-general-grup-c-subgrup-c2-i-constitucio-d-una-borsa-ajuntament-de-castelldefels",
+  "fecha": "2025-05-21",
+  "huella": "37cfd94aaff2c55f310bba5eae9617cc8176e4a88d4f5a72e37d340026987054"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:46:15+00:00",
+ "lote": "msgbatch_017vJZdAmjTkBDdH14aLEdCv",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "C2",
+   "cita": "grup C, subgrup C2, de la plantilla de personal funcionari",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "pel sistema de concurs- oposició lliure, de la plantilla de funcionaris",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 2,
+   "cita": "per proveir dues places de personal subaltern",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "web municipal (www.castelldefels.org)",
+   "cita": "aprovada per resolució de la regidora-delegada de Règim Interior, Hisenda i Gestió Econò mica financera i Igualtat i Festes de l’Ajuntament, amb data 16 de maig de 2025, i publicada íntegrament al web municipal",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, constitución de una borsa de treball",
+   "cita": "i constitució d’una borsa de treball, pel sistema de concurs- oposició lliure",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "personal subaltern de l'escala d'administració general, grup C, subgrup C2"
+   ],
+   "cita": "proveir dues places de personal subaltern, de l’escala d’administració general, grup C, subgrup C2"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "dues places de personal subaltern, de l’escala d’administració general"
+  }
+ }
+}

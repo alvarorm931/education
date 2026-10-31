@@ -1,0 +1,55 @@
+{
+ "proceso": "dogc:1022851",
+ "documento": {
+  "id": "dogc:1022851",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1022851",
+  "fecha": "2025-08-19",
+  "huella": "031fd95acc9685d683048ca0ec06a0c85ec880859af9007de8bc13dab713cb33"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:42:50+00:00",
+ "lote": "msgbatch_01XofVwxKEhyEjSzGog6wsD4",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "A2",
+   "cita": "subgrup de classificació A2",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mitjançant de concurs oposició lliure, d'una plaça de règim funcionarial",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "mitjançant de concurs oposició lliure, d'una plaça de règim funcionarial",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles contados a partir del día siguiente a la última de las publicaciones del anuncio de convocatoria en el DOGC, el BOE y el BOPB",
+   "cita": "El termini de presentació de sol·licituds per participar a l'esmentada convocatòria és de vint dies hàbils comptadors a partir de l'endemà de la darrera de les publicacions",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "DOGC, BOE y BOPB (anuncio de convocatoria)",
+   "cita": "s'han publicat íntegrament les Bases i la convocatòria del procés de selecció",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Plaça de règim funcionarial, administració general, subescala tècnica"
+   ],
+   "cita": "una plaça de règim funcionarial, administració general, sots escala tècnica, subgrup de classificació A2"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "una plaça de règim funcionarial, administració general, sots escala tècnica"
+  }
+ }
+}

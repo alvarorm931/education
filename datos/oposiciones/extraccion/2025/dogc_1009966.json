@@ -1,0 +1,105 @@
+{
+ "proceso": "dogc:1009966",
+ "documento": {
+  "id": "dogc:1009966",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1009966",
+  "fecha": "2025-03-26",
+  "huella": "a6be32f9f0fb1ebf939f448599a9f2de7cf79906d2ac765e68e5b420e937fc1f"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:45:42+00:00",
+ "lote": "msgbatch_017vJZdAmjTkBDdH14aLEdCv",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "Vincle: Funcionarial",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "El procés constarà d'una única fase selectiva que estarà formada per sis proves",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Títol universitari de Grau, diplomatura, enginyeria tècnica o títol de Batxiller/Tècnic o ESO segons la categoria",
+   "cita": "Estar en possessió del títol que s'indica a l'annex I per cadascuna de les categories convocades.",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalitat espanyola o d'estat membre de la UE (o assimilats); capacitat funcional; haver complert 16 anys i no superar l'edat de jubilació forçosa; no ser funcionari de carrera en la mateixa categoria; no haver estat separat del servei per expedient disciplinari.",
+   "cita": "Tenir la nacionalitat espanyola o la d'altres estats membres de la Unió Europea",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Català, nivell de suficiència C1",
+   "cita": "Les persones aspirants han d'estar en possessió dels coneixements de nivell de suficiència de català C1",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Vint dies naturals a comptar de l'endemà de la publicació de la convocatòria al DOGC",
+   "cita": "Per presentar la sol·licitud, les persones aspirants disposaran del termini de vint dies naturals",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Telemàticament a través de la web de Processos Selectius de l'Ajuntament de Barcelona o la Intranet municipal",
+   "cita": "la formalització, obtenció i presentació de sol·licituds s'ha de fer telemàticament",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Web de Processos Selectius de l'Ajuntament de Barcelona i Portal de selecció i provisió de la Intranet",
+   "cita": "La llista provisional i la llista definitiva de persones admeses i excloses, així com els successius anuncis",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Test aptitudinal (65 punts, eliminatori)",
+    "Prova d'ofimàtica (10 punts, eliminatori)",
+    "Prova de llengua estrangera (25 punts, no eliminatori)",
+    "Prova de coneixements de llengua catalana (eliminatòria)",
+    "Prova de coneixements de llengua castellana (eliminatòria, si escau)",
+    "Proves de personalitat i entrevista competencial (eliminatòria)"
+   ],
+   "cita": "El procés constarà d'una única fase selectiva que estarà formada per sis proves de caràcter obligatori",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, per a possibles nomenaments d'interinatges o contractacions temporals",
+   "cita": "l'Ajuntament constituirà Borses de treball en les categories indicades a l'annex I amb l'objectiu de realitzar possibles nomenaments d'interinatges o contractacions temporals",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "TS Arquitectura",
+    "TS Ciència de Dades",
+    "TS Dret",
+    "TS Medicina",
+    "TS TIC",
+    "Gestor/a",
+    "TM Arquitectura",
+    "TM Biblioteconomia (CBB)",
+    "TM Educació Social",
+    "TM Enginyeria",
+    "TM Infermeria",
+    "TM Treball Social",
+    "TA Biblioteques (CBB)",
+    "Auxiliar"
+   ],
+   "cita": "Ampliació de diferents borses de treball de l'Ajuntament de Barcelona de les categories següents"
+  },
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "A1, A2, B, C1, C2, E / agrupaciones profesionales",
+   "cita": "Consultar la categoria concreta a l'annex I de les bases"
+  },
+  "plazas_discapacidad": {
+   "motivo": "valor_no_numerico",
+   "valor": "5%",
+   "cita": "Es reservarà un 5% de les places de cada categoria al torn de reserva per a persones amb discapacitat."
+  }
+ }
+}

@@ -1,0 +1,55 @@
+{
+ "proceso": "boe:BOE-A-2025-9536",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2025-2302",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2025/04/14_71/2025_002302.pdf",
+  "fecha": "2025-04-14",
+  "huella": "6d32140462aa9651b0e820148c26981cfc8ece7ba76eac6742f67674bc3a9acf"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:46:03+00:00",
+ "lote": "msgbatch_017vJZdAmjTkBDdH14aLEdCv",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "provisión en propiedad de una plaza de funcionario de carrera, Trabajador social",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Trabajador social"
+   ],
+   "cita": "1 plaza de funcionario de carrera, Trabajador social, mediante el sistema de oposición"
+  },
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "No consta",
+   "cita": "No se indica"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "oposición",
+   "cita": "mediante el sistema de oposición, vacante en la plantilla de este Ayuntamiento"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 1,
+   "cita": "1 plaza de funcionario de carrera, Trabajador social, mediante el sistema de oposición"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "20 días hábiles, a contar desde el siguiente al de la publicación del extracto de las bases y convocatoria en el BOE",
+   "cita": "El plazo de presentación de instancias será de 20 días hábiles, a contar desde el siguiente al de la publicación del extracto"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "tablón de anuncios electrónico y página web municipal www.elcampello.es; extracto en el BOP",
+   "cita": "La publicación íntegra de las bases se realizará en el tablón de anuncios electrónico y en la página web municipal"
+  }
+ }
+}

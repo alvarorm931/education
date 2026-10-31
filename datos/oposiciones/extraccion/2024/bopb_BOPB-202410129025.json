@@ -1,0 +1,122 @@
+{
+ "proceso": "bopb:BOPB-202410129025",
+ "documento": {
+  "id": "bopb:BOPB-202410129025",
+  "fuente": "BOPB",
+  "url": "https://bop.diba.cat/anunci/3654996/aprovacio-de-les-bases-i-la-convocatoria-per-a-la-seleccio-d-una-placa-de-tecnic-a-informatic-a-i-la-constitucio-d-una-borsa-de-treball-ajuntament-de-premia-de-dalt",
+  "fecha": "2024-07-16",
+  "huella": "6463104a299ddf6e59230ff512874fab7215d4a716d649798077051e53f73b31"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:48:57+00:00",
+ "lote": "msgbatch_016yasWxkCXTWjPAb8LjB3ob",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Tècnic/a informàtic/a"
+   ],
+   "cita": "plaça vacant de tècnic/a informàtic/a, subgrup de classificació A2",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "A2",
+   "cita": "subgrup de classificació A2, de la plantilla de personal funcionari de la Corporació",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "pel sistema de concurs oposició, torn lliure, en règim de funcionari de carrera",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "Nombre de places: 1 - Tipus de jornada: Completa",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Grau d'enginyer/a tècnic en informàtica o telecomunicacions o Grau d'informàtica i sistemes, o telecomunicacions, o equivalents, o estar en condicions d'obtenir-la dins el termini de presentació de sol·licituds",
+   "cita": "Estar en possessió del títol de Grau d'enginyer/a tècnic en informàtica o telecomunicacions o Grau d'informàtica",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Català, nivel C1 (suficiencia), acreditado o mediante prueba",
+   "cita": "Tenir coneixements de nivell de suficiència de català (nivell C1)",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 33.62,
+   "cita": "Els drets d'examen es fixen en la quantitat de 33,62 € i han de ser satisfets",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Primera prueba: exercici teòric (test o preguntas sobre el temario), 10 puntos, mínimo 5",
+    "Primera prueba: supuesto práctico de funciones del puesto, 10 puntos, mínimo 5",
+    "Segunda prueba: conocimientos de lengua catalana (nivel C1), apto/no apto",
+    "Tercera prueba: conocimientos de lengua castellana (nivel C1), apto/no apto, solo si procede",
+    "Fase de concurso: valoración de méritos, hasta 10 puntos",
+    "Entrevista personal, hasta 3 puntos, no eliminatoria"
+   ],
+   "cita": "Aquesta fase consistirà en la superació dels exercicis de caràcter obligatori i eliminatori",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Experiencia profesional (hasta 7 puntos: administración pública 0,30/mes hasta 5; sector privado 0,20/mes hasta 2); formación (hasta 3 puntos: cursos y postgrados/másteres relacionados con el puesto)",
+   "cita": "A) Experiència professional (fins a 7 punts)",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "en règim de funcionari de carrera, pel sistema de concurs oposició, torn lliure"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "pel sistema de concurs oposició, torn lliure, en règim de funcionari de carrera"
+  },
+  "otros_requisitos": {
+   "motivo": "cita_no_literal",
+   "valor": "Ser major de 16 anys y no superar la edad de jubilación forzosa; nacionalidad española o de la UE (u otra con permiso de residencia y trabajo); capacidad funcional; no estar separado del servicio público ni inhabilitado; no incurrir en incompatibilidades; permiso de conducir clase B",
+   "cita": "Haver complert 16 anys d'edat i no superar l'edat establerta per a la jubilació forçosa"
+  },
+  "exenciones_tasa": {
+   "motivo": "cita_no_literal",
+   "valor": "Exentas las personas en situación de desempleo que no reciban prestación económica y lo acrediten con certificado de la OTG o INEM",
+   "cita": "Estaran exempts del pagament de la taxa per drets d'examen les persones que es trobin en situació d'atur"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "20 días hábiles desde el día siguiente a la publicación del anuncio de la convocatoria en el DOGC",
+   "cita": "El termini de presentació d'instàncies serà de 20 dies hàbils comptats a partir de l'endemà"
+  },
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Telemáticamente a través de la sede electrónica https://www.seu-e.cat/web/premiadedalt (instancia genérica); también presencial en la Oficina de Atención al Ciudadano con cita previa, o en las formas del art. 16 Ley 39/2015",
+   "cita": "presentar telemàticament les sol·licituds i la documentació a través de la seu electrònica"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Tablón de anuncios de la corporación y de la sede electrónica; BOP de Barcelona y DOGC (extracto)",
+   "cita": "es publicaran íntegrament en el Butlletí Oficial de la Província de Barcelona i en extracte en el Diari Oficial"
+  },
+  "temas": {
+   "motivo": "cita_no_literal",
+   "valor": 60,
+   "cita": "TEMARI GENERAL ... TEMARI ESPECIFIC ... 60. Funcionalitats plataformes Participació Ciutadana."
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, para sustituir empleados con reserva de puesto, cubrir vacantes temporalmente o atender necesidades urgentes, durante dos años",
+   "cita": "Els/les aspirants que hagin superat el procés de selecció, però que no han obtingut plaça, passaran a formar part d'una borsa de treball"
+  },
+  "practicas_o_curso": {
+   "motivo": "cita_no_literal",
+   "valor": "Periodo de prácticas de 6 meses como funcionario interino, con evaluación para ser nombrado funcionario de carrera",
+   "cita": "haurà de superar un període de pràctiques de 6 mesos"
+  }
+ }
+}

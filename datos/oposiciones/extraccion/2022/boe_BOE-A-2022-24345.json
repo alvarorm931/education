@@ -1,0 +1,78 @@
+{
+ "proceso": "boe:BOE-A-2022-24345",
+ "documento": {
+  "id": "bopbadajoz:BOP-BADAJOZ-5873-2022",
+  "fuente": "BOP-BADAJOZ",
+  "url": "https://www.dip-badajoz.es/bop/ventana_anuncio.php?id_anuncio=140831&FechaSolicitada=20221221000000",
+  "fecha": "2022-12-21",
+  "huella": "a27e93990482900531afbc5abb6c015279741a32bf6c76d674823ed223696c3e"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:56:03+00:00",
+ "lote": "msgbatch_014eT3dLLVopBnuVgQ4syWD9",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "plazas vacantes en la plantilla de personal funcionario del Ayuntamiento de Villanueva de la Serena",
+   "cita": "provisión, por el sistema de acceso de turno libre y el sistema de selección de concurso, de las plazas vacantes en la plantilla de personal funcionario del Ayuntamiento",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "sistema de selección de los aspirantes será el concurso, valorándose en el mismo exclusivamente los siguientes méritos",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "la que se indica para cada plaza en la relación de plazas (no consta en el texto extraído)",
+   "cita": "Estar en posesión de la siguiente titulación para cada plaza, o en condiciones de obtenerla",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española o requisitos del artículo 57 TREBEP; capacidad funcional; tener cumplidos dieciséis años y no exceder de la edad máxima de jubilación forzosa; no haber sido separado del servicio ni inhabilitado",
+   "cita": "Tener cumplidos dieciséis años y no exceder, en su caso, de la edad máxima de jubilación forzosa",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles desde el siguiente a la publicación del anuncio de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "dentro del plazo de veinte días hábiles contados a partir del siguiente a aquel en que aparezca la publicación",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Registro general del Ayuntamiento, registro electrónico, oficinas de Correos, representaciones diplomáticas o consulares, oficinas de asistencia en materia de registros",
+   "cita": "Las solicitudes se presentarán en el registro general del Ayuntamiento de Villanueva de la Serena",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de edictos de la Casa Consistorial, página web del Ayuntamiento y Boletín Oficial de la Provincia",
+   "cita": "se expondrá en el tablón de edictos de la Casa Consistorial, en la página web del Ayuntamiento",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "no",
+   "cita": "Los aspirantes nombrados deberán tomar posesión de su cargo en el plazo de los diez días hábiles siguientes",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "Ayuntamiento de Villanueva de la Serena se dictará resolución por el señor Alcalde-Presidente nombrando a los mismos funcionarios de carrera"
+  },
+  "tasa_euros": {
+   "motivo": "valor_no_numerico",
+   "valor": "importe establecido en la ordenanza fiscal (no consta en el texto extraído)",
+   "cita": "Para la admisión a las pruebas selectivas será obligatorio haber satisfecho los derechos de examen"
+  },
+  "meritos": {
+   "motivo": "cita_no_literal",
+   "valor": "Experiencia laboral (máximo 6 puntos) y formación (máximo 4 puntos)",
+   "cita": "Experiencia laboral (máximo 6 puntos). Formación (máximo 4 puntos)"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "no",
+   "cita": "Estabilización de empleo temporal previstos en la Ley 20/2021 de medidas urgentes"
+  }
+ }
+}

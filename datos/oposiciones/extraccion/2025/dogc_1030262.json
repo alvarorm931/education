@@ -1,0 +1,63 @@
+{
+ "proceso": "dogc:1030262",
+ "documento": {
+  "id": "dogc:1030262",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1030262",
+  "fecha": "2025-11-26",
+  "huella": "a5b9ca8f0b0dc1de4660cc6ee8f9a97921f8b8af50154746ccad43fd280e37b9"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:41:03+00:00",
+ "lote": "msgbatch_01UNq3BNhPPHoTK3TEJzun1h",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "tècnic/a auxiliar d'esports (personal laboral)",
+   "cita": "s'han aprovat les bases específiques i la convocatòria que regirà el procés de selecció d'una plaça de personal laboral, tècnic/a auxiliar d'esports",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "B",
+   "cita": "tècnic/a auxiliar d'esports, assimilada al grup B",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "a cobrir pel sistema de concurs oposició, promoció interna",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "s'han aprovat les bases específiques i la convocatòria que regirà el procés de selecció d'una plaça",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles a partir del día siguiente a la publicación del último anuncio de convocatoria en el BOPT, DOGC o BOE",
+   "cita": "Les instàncies es presentaran dins el termini de 20 dies hàbils a partir de l'endemà de la publicació de l'últim anunci",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "BOPT, tablón de edictos municipal y web del Ayuntamiento de Cambrils (www.cambrils.cat, Demanda de ocupación: Oferta pública de ocupación)",
+   "cita": "es publicaran íntegrament al BOPT i es troben inserides en el tauler d'edictes municipal i es poden consultar a l'adreça electrònica",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "no",
+   "cita": "Tot allò que no estigui previst en aquestes bases específiques es regirà pel que disposen les bases generals",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "personal laboral fijo",
+   "cita": "una plaça de personal laboral, tècnic/a auxiliar d'esports, assimilada al grup B"
+  },
+  "plazas_promocion_interna": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "a cobrir pel sistema de concurs oposició, promoció interna"
+  }
+ }
+}

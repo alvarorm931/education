@@ -1,0 +1,69 @@
+{
+ "proceso": "boe:BOE-A-2025-16092",
+ "documento": {
+  "id": "bocant:BOC-2025-6381",
+  "fuente": "BOC-CANT",
+  "url": "https://boc.cantabria.es/boces/verAnuncioAction.do?idAnuBlob=422904",
+  "fecha": "2025-07-22",
+  "huella": "f93064485f67a9a8b175ce37b27f2b94e75b4403e19094dd6c0e4060e617aaca"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:43:10+00:00",
+ "lote": "msgbatch_01XofVwxKEhyEjSzGog6wsD4",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "INGENIERO TÉCNICO INDUSTRIAL"
+   ],
+   "cita": "aprobar las bases especificas que regirán los procesos selectivos destinados a cubrir, mediante el sistema de oposición libre, plazas de INGENIERO TÉCNICO INDUSTRIAL vacantes",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "A2",
+   "cita": "encuadradas en la escala de Administración Especial, subescala Técnica, clase Técnicos Medios, Grupo A2",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "cubrir, mediante el sistema de oposición libre, plazas de INGENIERO TÉCNICO INDUSTRIAL vacantes en la plantilla",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Título de Ingeniero Técnico Industrial o cualquier otro que habilite para el ejercicio de esta profesión regulada",
+   "cita": "Estar en posesión del Título de Ingeniero Técnico Industrial o cualquier otro que habilite para el ejercicio de esta profesión regulada",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de Cantabria",
+   "cita": "publicadas en el Boletín Oficial de Cantabria número 25, de 6 de febrero de 2025",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Primer ejercicio: desarrollar por escrito dos temas del Bloque segundo, de cuatro extraídos al azar, en dos horas; eliminatorio, mínimo cinco puntos",
+    "Segundo ejercicio: desarrollar por escrito uno o varios supuestos prácticos relacionados con el programa, en dos horas; eliminatorio, mínimo cinco puntos",
+    "Tercer ejercicio: cuestionario tipo test de 50 preguntas más dos de reserva, en cincuenta minutos; eliminatorio, mínimo cinco puntos"
+   ],
+   "cita": "Consistirá en desarrollar por escrito dos temas del Bloque segundo (Programa de materias específicas) que figura como anexo",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "no",
+   "cita": "Las presentes bases y cuantos actos administrativos de ellas se deriven, podrán ser impugnados",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "cubrir en propiedad plazas de funcionario mediante el sistema de oposición, turno libre y discapacidad"
+  },
+  "temas": {
+   "motivo": "valor_no_numerico",
+   "valor": "Bloque segundo (Programa de materias específicas) en anexo",
+   "cita": "desarrollar por escrito dos temas del Bloque segundo (Programa de materias específicas) que figura como anexo a estas bases"
+  }
+ }
+}

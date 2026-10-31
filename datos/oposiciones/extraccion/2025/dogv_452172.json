@@ -1,0 +1,103 @@
+{
+ "proceso": "dogv:452172",
+ "documento": {
+  "id": "dogv:452172",
+  "fuente": "DOGV",
+  "url": "https://dogv.gva.es/datos/2025/11/11/pdf/2025_43885_es.pdf",
+  "fecha": "2025-11-11",
+  "huella": "b349da1389c92225a30efacd1bb2684441331b4b20ac84eee257f308939c20f6"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:41:00+00:00",
+ "lote": "msgbatch_01UNq3BNhPPHoTK3TEJzun1h",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "especialista técnico/a informático/a, perfil redes"
+   ],
+   "cita": "especialista técnico/a informático/a, perfil redes, grupo C, subgrupo C1, por el sistema especial de turno libre",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C1",
+   "cita": "grupo C, subgrupo C1, por el sistema especial de turno libre",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "Convocar una oposición para el ingreso en la escala técnica básica de informática",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "Convocar una oposición para el ingreso en la escala técnica básica de informática de la Universidad Miguel Hernández de Elche",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "Se convocan pruebas selectivas para cubrir una plaza vacante de la escala técnica básica de informática",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 15,
+   "cita": "Los derechos de participación serán los correspondientes a la plaza convocada, en este caso 15,00 €.",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Discapacidad igual o superior al 33 %, familias numerosas o monoparentales de categoría especial, víctimas de violencia sobre la mujer, exclusión social, demandantes de empleo sin rentas superiores al SMI; bonificación del 50 % para familias numerosas o monoparentales de categoría general.",
+   "cita": "están exentos del pago de la tasa establecida en la base 3.3: a) Los aspirantes con una discapacidad igual o superior al 33 %.",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "10 días hábiles contados desde el día siguiente a la publicación del extracto de la convocatoria en el BOE",
+   "cita": "en el plazo de 10 días hábiles contados a partir del día siguiente al de la publicación del extracto de esta convocatoria en el Boletín Oficial del Estado",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Telemática y obligatoria a través de la sede electrónica de la UMH (sede.umh.es), opción SELECCIÓN PTGAS-Funcionario de carrera, o espacio opositor",
+   "cita": "se deberá presentar solicitud de participación dirigida al rector de la Universidad Miguel Hernández de Elche, en el plazo de 10 días hábiles",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "DOGV (resoluciones administrativas); Boletín Oficial de la UMH (actos del tribunal); web https://servicioptai.umh.es/convocatorias/ (informativo)",
+   "cita": "Los actos del tribunal de selección se publicarán en el Boletín Oficial de la Universidad Miguel Hernández de Elche",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Oposición: parte 1, test de 80 preguntas del temario específico en 120 minutos, de 0 a 40 puntos",
+    "Parte 2, test de 40 preguntas de todo el temario en 90 minutos, de 0 a 20 puntos"
+   ],
+   "cita": "consistirá en la resolución de un test de 40 preguntas, en un tiempo de 90 minutos",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "No se valoran méritos; el procedimiento es de oposición (máximo 60 puntos, mínimo 30 para superar).",
+   "cita": "El procedimiento de selección de las personas aspirantes será el de oposición, con una puntuación máxima de 60 puntos",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, con el personal aspirante que haya superado la oposición, según la normativa vigente",
+   "cita": "La bolsa de trabajo se constituirá con el personal aspirante que haya superado la oposición, una vez finalizado el procedimiento.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "por el sistema especial de turno libre"
+  },
+  "temas": {
+   "motivo": "valor_no_en_cita",
+   "valor": 25,
+   "cita": "Temario específico 1. El modelo TCP/IP y el modelo de referencia de interconexión de sistemas abiertos (OSI) de ISO."
+  },
+  "practicas_o_curso": {
+   "motivo": "cita_no_literal",
+   "valor": "no aparece en el texto",
+   "cita": ""
+  }
+ }
+}

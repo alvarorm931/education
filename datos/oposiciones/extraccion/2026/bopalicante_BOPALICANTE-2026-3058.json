@@ -1,0 +1,50 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2026-3058",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2026-3058",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2026/05/04_81/2026_003058.pdf",
+  "fecha": "2026-05-04",
+  "huella": "5227ea3dce1464ab255e7a120619bfda1e823744d018dba8e40ce2c7ddc52830"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:41:33+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "personal de limpieza"
+   ],
+   "cita": "la provisión de una bolsa de trabajo de personal de limpieza",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "personal de limpieza para las dependencias municipales, en régimen de personal tempor al",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "5 días hábiles contados a partir del día siguiente hábil de la publicación del presente anuncio en el Boletín Oficial de la Provincia",
+   "cita": "El plazo de presentación de solicitudes será de 5 días hábiles contados a partir del día siguiente hábil de la publicación",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de anuncios y sede electrónica del Ayuntamiento de Pego",
+   "cita": "se encuentra publicado en el Tablón de anuncios y en la sede electrónica del Ayuntamiento de Pego",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, para constituir una bolsa de empleo de personal de limpieza para las dependencias municipales",
+   "cita": "para la constitución de una bolsa de empleo de personal de limpieza para las dependencias municipales",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso",
+   "cita": "mediante mediante el sistema de concurso"
+  }
+ }
+}

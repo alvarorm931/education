@@ -1,120 +1,16 @@
 {
  "proceso": "bopgirona:BOPGIRONA-2026-9057",
  "documento": {
-  "id": "bopgirona:BOPGIRONA-2026-9057",
-  "fuente": "BOP-GIRONA",
-  "url": "https://ssl4.ddgi.cat/bopV1/pdf/2026/208/202620809057.pdf",
-  "fecha": "2026-10-28",
-  "huella": "f675a21e8703d8642104de673cefddb51a809d6056c4fe83f42c14c472b7c843"
+  "id": "dogc:1058086",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1058086",
+  "fecha": "2026-10-30",
+  "huella": "bf6702a1ac8f4867305f1391e05a9e7eaa478cf0b49915ffdd87db56f20348e3"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T08:03:39+00:00",
- "lote": "msgbatch_013xFoLdqcGqWcqkzh7qrdGg",
- "no_son_bases": false,
- "campos": {
-  "denominacion": {
-   "valor": [
-    "Administratiu/iva C1 (SG15, SG16, SG26, SG23, SG49)"
-   ],
-   "cita": "Procés selectiu de personal administratiu C1, codis SG15, SG16, SG26, SG23 i SG49",
-   "nivel": "literal"
-  },
-  "grupo": {
-   "valor": "C1",
-   "cita": "subgrup C1, escala d’Administració general, subescala administrativa",
-   "nivel": "literal"
-  },
-  "vinculo": {
-   "valor": "funcionario de carrera",
-   "cita": "en règim de personal funcionari de carrera, de l’ajuntament de Puigcerdà",
-   "nivel": "literal"
-  },
-  "sistema": {
-   "valor": "oposición",
-   "cita": "Oposició Reposició – torn lliure",
-   "nivel": "literal"
-  },
-  "plazas_turno_libre": {
-   "valor": 4,
-   "cita": "quatre places d’administratiu/iva, torn lliure",
-   "nivel": "literal"
-  },
-  "plazas_discapacidad": {
-   "valor": 1,
-   "cita": "una plaça d’administratiu/iva, torn de reserva per a persones amb discapacitat",
-   "nivel": "literal"
-  },
-  "titulacion": {
-   "valor": "Batxiller o Tècnic, o titulació equivalent",
-   "cita": "Estar en possessió del títol de Batxiller o de Tècnic, o d’una titulació declarada equivalent",
-   "nivel": "literal"
-  },
-  "otros_requisitos": {
-   "valor": "Nacionalidad española o supuestos del art. 57 TREBEP; tener 16 años cumplidos y no exceder edad de jubilación forzosa; capacidad funcional; no haber sido separado del servicio por expediente disciplinario ni inhabilitado",
-   "cita": "Tenir complerts 16 anys i no excedir, si s’escau, l’edat màxima de jubilació forçosa",
-   "nivel": "literal"
-  },
-  "idioma_cooficial": {
-   "valor": "Catalán nivel C1 (certificado o prueba específica)",
-   "cita": "estar en possessió del certificat de nivell de suficiència de català C1 o d’un certificat",
-   "nivel": "literal"
-  },
-  "tasa_euros": {
-   "valor": 22,
-   "cita": "L’import de la taxa és de 22,00 euros, sens perjudici de les bonificacions",
-   "nivel": "literal"
-  },
-  "exenciones_tasa": {
-   "valor": "Bonificación del 100 % para inscritos en el servicio público de empleo y personas con discapacidad igual o superior al 33 %",
-   "cita": "a les persones inscrites al servei públic d’ocupació; i b) a les persones que acreditin un grau de discapacitat",
-   "nivel": "literal"
-  },
-  "presentacion": {
-   "valor": "Sede electrónica del Ayuntamiento de Puigcerdà mediante formulario específico; también presencial en Oficina de Atención Ciudadana o medios del art. 16.4 Ley 39/2015",
-   "cita": "La sol·licitud també es pot presentar presencialment a l’Oficina d’Atenció Ciutadana de l’Ajuntament",
-   "nivel": "literal"
-  },
-  "publicaciones": {
-   "valor": "Tablón de anuncios de la sede electrónica del Ayuntamiento; BOP de Girona y bases íntegras en la sede",
-   "cita": "Els anuncis posteriors relatius al desenvolupament del procés selectiu es publiquen al tauler d’anuncis de la seu electrònica",
-   "nivel": "literal"
-  },
-  "bolsa": {
-   "valor": "sí, para cubrir interinidades: relación de aprobados sin plaza y bolsa de trabajo de personal funcionario interino",
-   "cita": "Les persones aspirants que superin el procés selectiu sense obtenir plaça integren la relació d’aprovats",
-   "nivel": "literal"
-  },
-  "practicas_o_curso": {
-   "valor": "Período de prácticas previo al nombramiento como funcionario de carrera",
-   "cita": "Un cop superat el període de pràctiques, quan sigui exigible, són nomenades funcionàries de carrera",
-   "nivel": "literal"
-  }
- },
- "rechazados": {
-  "plazas_total": {
-   "motivo": "valor_no_en_cita",
-   "valor": 5,
-   "cita": "quatre places d’administratiu/iva, torn lliure, i una plaça d’administratiu/iva, torn de reserva"
-  },
-  "plazo_solicitudes": {
-   "motivo": "cita_no_literal",
-   "valor": "20 días hábiles desde el día siguiente a la publicación del anuncio de la convocatoria en el BOE",
-   "cita": "termini de vint (20) dies hàbils comptats a partir de partir de l’endemà de la publicació"
-  },
-  "ejercicios": {
-   "motivo": "cita_no_literal",
-   "valor": [
-    "Prueba teórica tipo test de 50 preguntas, 90 minutos, máximo 50 puntos, eliminatoria",
-    "Supuesto o supuestos prácticos, 120 minutos, máximo 50 puntos, eliminatoria",
-    "Prueba de catalán nivel C1 si no se acredita (apto/no apto)",
-    "Prueba de castellano B2 si no se acredita, para no nacionales (apto/no apto)"
-   ],
-   "cita": "La prova teòrica tipus test i la prova pràctica són obligatòries i eliminatòries"
-  },
-  "meritos": {
-   "motivo": "cita_no_literal",
-   "valor": "No se valoran méritos; el concurso no forma parte del sistema",
-   "cita": "La fase d’oposició té una puntuació màxima de 100 punts"
-  }
- }
+ "extraido": "2026-10-31T14:41:58+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
+ "no_son_bases": true,
+ "campos": {},
+ "rechazados": {}
 }

@@ -1,0 +1,65 @@
+{
+ "proceso": "dogc:999250",
+ "documento": {
+  "id": "dogc:999250",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=999250",
+  "fecha": "2024-11-12",
+  "huella": "72c7d2d2518f756957e251c91e27ce87a396a0d5331a50a2e136e01def15927e"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:50:04+00:00",
+ "lote": "msgbatch_01LpyYajgKGX9NyHT1uvynbR",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "educador/a"
+   ],
+   "cita": "Denominació: educador/a.",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C1",
+   "cita": "Grup: C1.",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "laboral fijo",
+   "cita": "Plantilla de personal laboral Contractació fixe.",
+   "nivel": "sin_signos"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "Sistema de selecció: Concurs-oposició, promoció interna.",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "Nombre de places: 1",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "10 días naturales desde el día siguiente a la publicación del extracto en el DOGC",
+   "cita": "dins del termini improrrogable de 10 dies naturals des de l'endemà de la publicació",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "En el Registro General del Ayuntamiento",
+   "cita": "s'han de presentar en el Registre General de l'Ajuntament",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Web municipal (www.ajhortons.cat) para consulta de las bases; publicación simultánea en el BOPB y anuncio en el DOGC",
+   "cita": "Les bases es poden consultar al web municipal ( www.ajhortons.cat ).",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_promocion_interna": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "Sistema de selecció: Concurs-oposició, promoció interna."
+  }
+ }
+}

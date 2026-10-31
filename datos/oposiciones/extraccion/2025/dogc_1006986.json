@@ -1,0 +1,66 @@
+{
+ "proceso": "dogc:1006986",
+ "documento": {
+  "id": "dogc:1006986",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1006986",
+  "fecha": "2025-02-21",
+  "huella": "10d5b2633526ea759daf58ea8a9f24ec7964f0169a1426990ee90e164846b66a"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:46:29+00:00",
+ "lote": "msgbatch_01MQzQCLMZKxUrrPMAj7dr53",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "agente de la policía local de cualquier ayuntamiento de Cataluña",
+    "mosso/a de la escala básica del cuerpo de Mossos Esquadra"
+   ],
+   "cita": "Haber resultado apto en la fase de oposición de algún proceso selectivo llevado a cabo para cubrir plazas de la categoría de agente de la policía local",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario interino",
+   "cita": "Abrir la convocatoria para formar parte de la bolsa de trabajo de personal interino para cubrir vacantes de las policías locales",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "título de bachillerato, de técnico u otro equivalente o superior",
+   "cita": "Tener el título de bachillerato, de técnico u otro equivalente o superior.",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Haber resultado apto en la fase de oposición de algún proceso selectivo para agente de policía local o mosso/a, no haber obtenido plaza, con publicación en el DOGC como máximo tres años antes de la solicitud",
+   "cita": "La fecha de publicación en el DOGC del proceso selectivo en el que se ha resultado apto tiene que ser como máximo tres años anterior",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Sin plazo expreso en el texto; la inscripción se hace en cualquier momento a través de la plataforma",
+   "cita": "Las personas interesadas en formar parte de esta bolsa de trabajo tienen que inscribirse a través de la plataforma tramits.gencat.cat.",
+   "nivel": "sin_signos"
+  },
+  "presentacion": {
+   "valor": "Inscripción a través de la plataforma tramits.gencat.cat",
+   "cita": "Las personas interesadas en formar parte de esta bolsa de trabajo tienen que inscribirse a través de la plataforma tramits.gencat.cat.",
+   "nivel": "sin_signos"
+  },
+  "publicaciones": {
+   "valor": "Resolución de admisión o inadmisión notificada mediante e-Notum; recursos publicados en el DOGC",
+   "cita": "se notificará a través del servicio de notificaciones electrónicas e-Notum",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, bolsa de trabajo de personal interino para cubrir vacantes de las policías locales en situaciones urgentes debidamente motivadas, con validez de tres años",
+   "cita": "con una validez de tres años desde la fecha de solicitud",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso",
+   "cita": "La bolsa de trabajo se forma con aspirantes que han superado procesos selectivos previos"
+  }
+ }
+}

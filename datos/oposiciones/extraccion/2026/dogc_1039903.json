@@ -1,0 +1,53 @@
+{
+ "proceso": "dogc:1039903",
+ "documento": {
+  "id": "dogc:1039903",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1039903",
+  "fecha": "2026-03-20",
+  "huella": "606ad6e1ba772fb7ebb6adb4d039787710043cd91c9d97c13e5579c5d26c95b6"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:40:36+00:00",
+ "lote": "msgbatch_01E3wiYcGL8Lzho48bXWLyyb",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "otro",
+   "cita": "cobrir una plaça d'arquitecte/a tècnic i la creació d'una borsa de treball a l'Ajuntament de Tossa de Mar",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mitjançant sistema de concurs-oposició, s'obre el termini de presentació de sol·licituds",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "per cobrir una plaça d'arquitecte/a tècnic i la creació d'una borsa de treball",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles desde el día siguiente a la publicación del anuncio en el DOGC",
+   "cita": "serà de 20 dies hàbils a comptar des de l'endemà a la publicació d'aquest anunci en el Diari Oficial de la Generalitat de Catalunya",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, bolsa de trabajo",
+   "cita": "la creació d'una borsa de treball a l'Ajuntament de Tossa de Mar",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "arquitecte/a tècnic",
+   "cita": "aprovar les bases i la convocatòria per cobrir una plaça d'arquitecte/a tècnic i la creació d'una borsa de treball"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "sede electrónica del Ayuntamiento y, en su caso, tablón de anuncios",
+   "cita": "es publicaran en la seu electrònica d'aquest Ajuntament i, en el seu cas, en el Tauler d'anuncis"
+  }
+ }
+}

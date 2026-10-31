@@ -1,0 +1,63 @@
+{
+ "proceso": "bopb:BOPB-202510134706",
+ "documento": {
+  "id": "bopb:BOPB-202510134706",
+  "fuente": "BOPB",
+  "url": "https://bop.diba.cat/anunci/3800105/aprovacio-de-l-esmena-de-les-bases-especifiques-reguladores-del-concurs-oposicio-lliure-per-cobrir-1-placa-d-oficial-a-conductor-de-la-plantilla-de-personal-laboral-ajuntament-de-vilanova-i-la-geltru",
+  "fecha": "2025-07-30",
+  "huella": "0b7ad69c4f021b248ac22df8bf60709d79be64aa41ab816d72856f83005886b7"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:42:56+00:00",
+ "lote": "msgbatch_01XofVwxKEhyEjSzGog6wsD4",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "Oficial 1a (conductor), plaza 10604, de la plantilla de personal laboral fijo",
+   "cita": "per cobrir la plaça 10604 d'Oficial 1a (conductor), grup C2-15, de la plantilla del personal laboral fix",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "de la plantilla del personal laboral fix de l'Ajuntament de Vilanova i la Geltrú",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "aprovar la convocatòria i les bases específiques reguladores del concurs oposició de lliure concurrència",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Permiso de conducir C + operador de camión pluma (el texto corrige el requisito de la letra e) del punto 2 de las bases).",
+   "cita": "e) Permís de conduir C + operador de camió ploma.",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días naturales a partir del día siguiente a la publicación de la resolución en el Diari Oficial de la Generalitat de Catalunya (DOGC)",
+   "cita": "El termini per la presentació de les instàncies serà de vint dies naturals comptadors a partir de l'endemà de la publicació",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Los restantes y sucesivos anuncios de la convocatoria se harán públicos en el apartado de Ofertas de trabajo de la web municipal www.vilanova.cat",
+   "cita": "Els restants i successius anuncis de la convocatòria es faran públics a l'apartat d'Ofertes de treball de la web municipal",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Carnés de conducir B+E y C+E, 0,25 puntos por carnet, máximo 0,5 puntos; Certificado de Aptitud Profesional (CAP), 0,5 puntos",
+   "cita": "Estar en possessió del Certifi cat d'Aptitud professional: 0,5 punt.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "C2",
+   "cita": "Oficial 1a (conductor), grup C2-15, de la plantilla del personal laboral fix"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "no",
+   "cita": "no"
+  }
+ }
+}

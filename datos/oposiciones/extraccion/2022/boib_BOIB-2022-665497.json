@@ -1,0 +1,46 @@
+{
+ "proceso": "boib:BOIB-2022-665497",
+ "documento": {
+  "id": "boib:BOIB-2022-665497",
+  "fuente": "BOIB",
+  "url": "https://www.caib.es/eboibfront/es/2022/11637/665497/resolucion-de-6-de-octubre-de-2022-de-la-universid",
+  "fecha": "2022-10-13",
+  "huella": "5e611f5cfee0cb634e62186e88b15ddd0ea6e36f5e76b4a223b97bd09f02d6a2"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:23+00:00",
+ "lote": "msgbatch_01B4ETF5xB4buYCHqPiHTXzF",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Catedrático de Universidad - Psiquiatría",
+    "Catedrático de Universidad - Física Teórica"
+   ],
+   "cita": "Cuerpo al que pertenece: Catedrático de Universidad",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "comunica la convocatoria a concurso de acceso en el Boletín Oficial",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días naturales a partir del siguiente al de la publicación de esta convocatoria en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes será de veinte días naturales a partir del siguiente",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial del Estado",
+   "cita": "Las bases íntegras de la convocatoria aparecerán publicadas en el Boletín Oficial del Estado.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "el cuerpo de funcionarios docentes universitarios"
+  }
+ }
+}

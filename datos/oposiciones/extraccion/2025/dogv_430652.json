@@ -1,0 +1,103 @@
+{
+ "proceso": "dogv:430652",
+ "documento": {
+  "id": "dogv:430652",
+  "fuente": "DOGV",
+  "url": "https://dogv.gva.es/datos/2025/07/04/pdf/2025_22325_es.pdf",
+  "fecha": "2025-07-04",
+  "huella": "c864696b7920c79dcf0e2b8cf81a640d6b11a2b5f04bdaeda74a279bb7030235"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:45:12+00:00",
+ "lote": "msgbatch_016re6aGcimwSVmdrWa6qBd9",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Profesorado titular de universidad (168 plazas, anexos I-A y I-B)"
+   ],
+   "cita": "provisión de 168 plazas de profesorado titular de universidad",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "acceso al cuerpo de profesores y profesoras titulares de universidad",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 168,
+   "cita": "convocar a concurso público (convocatoria 201/2025), la provisión de 168 plazas",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Doctor o doctora; acreditación para el acceso al cuerpo de profesores y profesoras titulares de universidad",
+   "cita": "Poseer el título de doctor o doctora",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española o de estado miembro de la UE (con excepciones); no haber alcanzado la edad de jubilación forzosa; no haber sido separado del servicio público; capacidad funcional; abono de derechos de examen",
+   "cita": "No haber alcanzado la edad de jubilación forzosa establecida por la legislación vigente",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 27,
+   "cita": "El pago de la tasa (27 euros) se realizará mediante tarjeta bancaria",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Exentas: discapacidad igual o superior al 33%, familias numerosas de categoría especial, familias monoparentales de categoría especial y víctimas de violencia sobre la mujer. Bonificación del 50%: familias numerosas y monoparentales de categoría general",
+   "cita": "Disfrutarán de una bonificación del 50% de la tasa las personas que formen parte de familias numerosas",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días a contar desde el día siguiente de la publicación de la convocatoria en el BOE",
+   "cita": "20 días a contar desde el día siguiente de la publicación de esta convocatoria en el BOE",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Obligatoriamente a través del formulario electrónico en la sede electrónica de la Universitat de València (https://seu.uv.es)",
+   "cita": "Las solicitudes se presentarán obligatoriamente a través del formulario electrónico correspondiente",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón oficial de anuncios de la Universitat de València (https://webges.uv.es/uvTaeWeb/) y web del Servei de Recursos Humans PDI",
+   "cita": "Se publicará en el tablón oficial de anuncios de la Universitat de València",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Primera fase: exposición oral y pública de méritos del currículum académico, docente, investigador y de gestión, con debate (máx. 1 h + 1 h), 0-100 puntos",
+    "Segunda fase: defensa de proyecto docente y proyecto investigador (máx. 90 min + 90 min de debate), 0-100 puntos"
+   ],
+   "cita": "La primera fase consistirá en la exposición oral y pública, durante un tiempo máximo de una hora",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Méritos del currículum académico, docente, investigador y de gestión, valorados en la primera fase con puntuación de 0 a 100 según criterios hechos públicos previamente",
+   "cita": "La comisión otorgará en esta primera fase una puntuación de 0 a 100 puntos",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "no",
+   "cita": "adquirirá la condición de funcionario/a docente universitario del cuerpo de que se trate",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso",
+   "cita": "convoca a concurso público (convocatoria 201/2025), la provisión de 168 plazas"
+  },
+  "plazas_discapacidad": {
+   "motivo": "valor_no_numerico",
+   "valor": "anexo I-B (turno de discapacidad)",
+   "cita": "relacionan en los anexos I-A y I-B (turno de discapacidad) de la presente resolución"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "no",
+   "cita": "Se procederá a la propuesta de provisión de la plaza"
+  }
+ }
+}

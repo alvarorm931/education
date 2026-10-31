@@ -1,0 +1,55 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2026-4162",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2026-4162",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2026/06/03_103/2026_004162.pdf",
+  "fecha": "2026-06-03",
+  "huella": "b97b9713c5340a9380c458bc2000f0caf1564b8dd1dde6cc107f63181b927e3c"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:42:00+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Agente de la Policía Local"
+   ],
+   "cita": "acumular a la convocatoria del proceso selectivo para la provisión en propiedad de plazas de Agente de Policía Local",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "otro",
+   "cita": "Acumular a la convocatoria del proceso selectivo para la provisión en propiedad de plazas de Agente de Policía Local",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "DOCE (12) PLAZAS por el turno libre , mediante el sistema de oposición.",
+   "nivel": "literal"
+  },
+  "plazas_turno_libre": {
+   "valor": 12,
+   "cita": "DOCE (12) PLAZAS por el turno libre , mediante el sistema de oposición.",
+   "nivel": "literal"
+  },
+  "plazas_promocion_interna": {
+   "valor": 7,
+   "cita": "SIETE (7) PLAZAS por el turno de movilidad , mediante el sistema de concurso.",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de Anuncios de la Sede Electrónica y en la página web del Ayuntamiento de Xàbia",
+   "cita": "Publicar el presente Decreto en el Boletín Oficial de la Provincia de Alicante, en el Tablón de Anuncios de la Sede Electrónica",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 19,
+   "cita": "el total de plazas de Agente convocadas en el presente proceso selectivo pasa a ser de diecinueve (19) PLAZAS"
+  }
+ }
+}

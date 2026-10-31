@@ -1,0 +1,115 @@
+{
+ "proceso": "boib:BOIB-2024-684935",
+ "documento": {
+  "id": "boib:BOIB-2024-684935",
+  "fuente": "BOIB",
+  "url": "https://www.caib.es/eboibfront/es/2024/11902/684935/resolucion-del-consejero-de-hacienda-y-funcion-pub",
+  "fecha": "2024-04-06",
+  "huella": "1ba45f891c3ede251589e4c48bfdeef91c235f5a402eb6f6644ecd98b44e775d"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:53:48+00:00",
+ "lote": "msgbatch_01EQ4R6PVKpEwTXzXwPCmspm",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "C2",
+   "cita": "Subgrupo: C2 Denominación: auxiliar de administración general",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "Aprobar las bases generales que tienen que regir los procesos selectivos para cubrir las plazas vacantes de personal funcionario",
+   "nivel": "literal"
+  },
+  "plazas_turno_libre": {
+   "valor": 34,
+   "cita": "Por el turno libre: 34 plazas",
+   "nivel": "literal"
+  },
+  "plazas_discapacidad": {
+   "valor": 4,
+   "cita": "Por el turno de reserva de personas con discapacidad: 4 plazas",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Graduado en educación secundaria obligatoria, graduado escolar o equivalente",
+   "cita": "Estar en posesión del título de la titulación oficial de graduado en educación secundaria obligatoria, graduado escolar o equivalente.",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Tener 16 años y no haber llegado a la edad de jubilación forzosa; nacionalidad española o requisitos del artículo 57 del TREBEP; no haber sido separado del servicio de ninguna administración pública mediante expediente disciplinario.",
+   "cita": "Tener 16 años y no haber llegado a la edad de jubilación forzosa.",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Catalán, nivel B2",
+   "cita": "Estar en posesión del título de conocimiento de la lengua catalana de nivel B2",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 13.77,
+   "cita": "La cuantía de la tasa del derecho de examen es de 13,77 euros",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, bolsa de personal funcionario interino derivada del proceso selectivo, con quienes superen como mínimo un ejercicio",
+   "cita": "El proceso selectivo generará una bolsa de personal funcionario interino que incluirá por orden de puntuación final",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Técnico de Administración General",
+    "Administrativo de Administración General",
+    "Auxiliar de Administración General"
+   ],
+   "cita": "Se aprueban las bases específicas y el temario que tienen que regir el proceso selectivo para cubrir las plazas vacantes de Técnico de Administración General"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "oposición",
+   "cita": "Convocar los procesos selectivos para cubrir las plazas vacantes de personal funcionario de la Administración General, para el sistema de oposición"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 55,
+   "cita": "la provisión de 21 plazas de Auxiliar de Administración General del Consell Insular de Mallorca, por el turno libre"
+  },
+  "exenciones_tasa": {
+   "motivo": "cita_no_literal",
+   "valor": "Exención del 100% para personas con discapacidad igual o superior al 33% y para personas en situación de paro; del 50% para familias numerosas de categoría general y familias monoparentales; del 100% para familias numerosas de categoría especial.",
+   "cita": "Exento del 100% aspirantes con grado de discapacidad igual o superior al 33%"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "Veinte días naturales a contar desde el día siguiente a la publicación del anuncio de la convocatoria en el BOE",
+   "cita": "el plazo de presentación de solicitudes será de veinte días naturales, a contar a partir del día siguiente"
+  },
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Telemáticamente, mediante el trámite de solicitud de participación en la Sede electrónica del Consell Insular de Mallorca (seu.conselldemallorca.net); en el caso del IMAS, en el Portal de Selección.",
+   "cita": "Las personas aspirantes tienen que presentar de forma telemática una solicitud de participación en la Sede electrónica"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "BOIB, tablón de anuncios de la Sede electrónica del Consell de Mallorca y, en el caso del IMAS, tablón electrónico del IMAS y Portal de Selección",
+   "cita": "Publicar las bases y las convocatorias en el Boletín Oficial de las Illes Balears (BOIB) y en la Sede electrónica del Consell de Mallorca."
+  },
+  "ejercicios": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Primer ejercicio: cuestionario de 70 preguntas tipo test de la parte general (65 evaluables), obligatorio y eliminatorio, 80 minutos",
+    "Segundo ejercicio: supuesto práctico tipo test sobre materias de la parte específica, obligatorio y eliminatorio, 50 minutos"
+   ],
+   "cita": "Primer ejercicio: cuestionario de 70 preguntas tipo test de la parte general del temario"
+  },
+  "temas": {
+   "motivo": "valor_no_en_cita",
+   "valor": 30,
+   "cita": "Parte general 1. La Constitución española"
+  }
+ }
+}

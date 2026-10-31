@@ -1,0 +1,53 @@
+{
+ "proceso": "boe:BOE-A-2026-2771",
+ "documento": {
+  "id": "dog:DOG-20260129-AnuncioL457-240126-0001",
+  "fuente": "DOG",
+  "url": "https://www.xunta.gal/dog/Publicados/2026/20260129/AnuncioL457-240126-0001_es.html",
+  "fecha": "2026-01-29",
+  "huella": "68755f0c669dfda7895207e249c18c95a8194e491d4ecdf5bb375735fcf82785"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:42:20+00:00",
+ "lote": "msgbatch_01W17mR271uYfWYL6CuSdriL",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "auxiliar gerocultor/a",
+   "cita": "se publicaron íntegramente las bases del proceso de provisión de una plaza de auxiliar gerocultor/a",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "con personal laboral fijo, mediante el sistema de concurso-oposición en turno libre",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mediante el sistema de concurso-oposición en turno libre",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte (20) días naturales contados a partir del día siguiente a aquel en que aparezca publicado el extracto de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "el plazo para la presentación de solicitudes será de veinte (20) días naturales contados a partir del día siguiente",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "sede electrónica del organismo autónomo: https://residenciamaioresnosasradocarme.sedelectronica.gal",
+   "cita": "Los sucesivos anuncios se realizarán en la sede electrónica del organismo autónomo",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 1,
+   "cita": "el proceso de provisión de una plaza de auxiliar gerocultor/a"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "mediante el sistema de concurso-oposición en turno libre"
+  }
+ }
+}

@@ -1,0 +1,63 @@
+{
+ "proceso": "bopb:BOPB-202410128266",
+ "documento": {
+  "id": "dogc:990982",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=990982",
+  "fecha": "2024-07-24",
+  "huella": "91bd381e2a55939a0a2e63b599b5abb134fff8b2144e81293546e98998ed2166"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:49:13+00:00",
+ "lote": "msgbatch_016yasWxkCXTWjPAb8LjB3ob",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "Agent de la Policia Local, escala d'Administració Especial, subescala Serveis Especials, classe Policia Local",
+   "cita": "per a la cobertura de 5 places d' AGENT DE LA POLICIA LOCAL, escala d'Administració Especial, subescala Serveis Especials",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C1",
+   "cita": "classe Policia Local, grup C1, més 6 places addicionals",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "pel sistema d'oposició lliure, per a la cobertura de 5 places",
+   "nivel": "literal"
+  },
+  "plazas_turno_libre": {
+   "valor": 5,
+   "cita": "per a la cobertura de 5 places d' AGENT DE LA POLICIA LOCAL",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles, contados a partir del día siguiente de la última de las publicaciones",
+   "cita": "El termini improrrogable per presentar les sol·licituds és de 20 dies hàbils, comptats a partir del dia següent de la darrera de les publicacions.",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Província de Barcelona y página web municipal",
+   "cita": "Les posteriors publicacions es faran a la pàgina web municipal.",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, bolsa de trabajo",
+   "cita": "constitució d'una borsa de treball",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "Hi ha 5 places d' AGENT DE LA POLICIA LOCAL"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 11,
+   "cita": "per a la cobertura de 5 places d' AGENT DE LA POLICIA LOCAL, més 6 places addicionals"
+  }
+ }
+}

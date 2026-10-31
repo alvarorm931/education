@@ -1,16 +1,93 @@
 {
  "proceso": "bopvalladolid:BOPVA-A-2026-01975",
  "documento": {
-  "id": "bopvalladolid:BOPVA-A-2026-01975",
-  "fuente": "BOP-VALLADOLID",
-  "url": "https://bop.sede.diputaciondevalladolid.es/boletines/2026/julio/03/BOPVA-A-2026-01975.pdf",
-  "fecha": "2026-07-03",
-  "huella": "4fedd180529e007a1ae478d39c5a23ebf0a0faef6e355c9f3beba8c0ad889035"
+  "id": "bocyl:BOCYL-D-20072026-138-26",
+  "fuente": "BOCYL",
+  "url": "https://bocyl.jcyl.es/html/2026/07/20/html/BOCYL-D-20072026-138-26.do",
+  "fecha": "2026-07-20",
+  "huella": "3b183a18db6af3a32c620c202c243112ff333f045451b0eb23cf02af09431a8b"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T08:18:23+00:00",
- "lote": "msgbatch_01BrnYw6KkevFx7at547B5g8",
- "no_son_bases": true,
- "campos": {},
- "rechazados": {}
+ "extraido": "2026-10-31T14:41:43+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Escala de administración general, Subescala Técnica, técnico de administración general"
+   ],
+   "cita": "Escala de administración general, Subescala Técnica, grupo y subgrupo A1, adscrita al puesto n.º 75",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "A1",
+   "cita": "grupo A, subgrupo A 1, adscrita al puesto de trabajo n.º 75",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario interino",
+   "cita": "para cubrir, como funcionario interino, una plaza vacante clasificada en la Escala",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "proceso selectivo específico mediante oposición en turno libre para cubrir",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "una (1) plaza de técnico de administración general vacante en la plantilla",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Licenciado o Grado en Derecho, Ciencias Políticas, Económicas o Empresariales, Intendente Mercantil o Actuario, o título equivalente",
+   "cita": "estar en posesión del título universitario oficial de Licenciado o Grado en Derecho, en Ciencias Políticas",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española, de otro Estado miembro de la UE o con libre circulación; tener cumplidos 16 años y no exceder la edad de jubilación forzosa; capacidad funcional; no estar separado del servicio ni inhabilitado",
+   "cita": "tener cumplidos dieciséis años y no exceder, en su caso, de la edad máxima de jubilación forzosa",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "siete (7) días naturales, contados desde el día siguiente a la publicación de la convocatoria en el BOCYL",
+   "cita": "será de siete (7) días naturales, contados a partir del día siguiente al de la publicación",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "A través de la sede electrónica del Ayuntamiento de Arroyo de la Encomienda, en el modelo del Anexo I",
+   "cita": "Las solicitudes presentarse a través de la sede electrónica del Ayuntamiento de Arroyo de la Encomienda",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Bases y convocatoria en el BOCYL y sede electrónica; resto de actuaciones en la sede electrónica del Ayuntamiento",
+   "cita": "Las bases íntegras, así como la convocatoria se publicarán en el Boletín Oficial de Castilla y León",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Prueba de aptitud teórica: cuatro preguntas por escrito en 60 minutos, valorada de 0 a 5 puntos",
+    "Prueba de aptitud práctica: supuesto práctico con informe y propuesta de resolución en 150 minutos, valorada de 0 a 5 puntos"
+   ],
+   "cita": "consistirá en contestar por escrito a cuatro (4) preguntas relacionadas con el temario",
+   "nivel": "literal"
+  },
+  "temas": {
+   "valor": 40,
+   "cita": "Tema 40. Competencias y normas específicas en materia de contratación en las Entidades Locales.",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, para la realización de funciones de técnico de administración general como funcionario interino, con vigencia de 4 años prorrogable hasta 2 años más",
+   "cita": "constitución de bolsa de empleo temporal para la realización de funciones de la categoría de Técnico de Administración General",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "proceso selectivo específico mediante oposición en turno libre para cubrir"
+  }
+ }
 }

@@ -1,0 +1,50 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2024-4848",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2024-4848",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2024/06/21_119/2024_004848.pdf",
+  "fecha": "2024-06-21",
+  "huella": "9482194191057f3cf2c2e1e22a8a6020971dbe4934be7df342d3f6d9304cacdc"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:54:18+00:00",
+ "lote": "msgbatch_01HRnX7cDVMkRZD7mBamCmLu",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "A2",
+   "cita": "perteneciente al Grupo de Clasificación A2",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "en los supuestos previstos en el artículo 18, apartado 2 de la Ley 4/2021",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de Anuncios de la sede electrónica y página web del Ayuntamiento de Guardamar del Segura",
+   "cita": "estará a disposición de los interesados en el Tablón de Anuncios de la sede electrónica",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Técnico Medio de Recursos Humanos"
+   ],
+   "cita": "para la provisión temporal, por mejora de empleo, de puesto vacante de Técnico Medio de Recursos Humanos"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "provisión temporal, por mejora de empleo, de puesto vacante de Técnico Medio de Recursos Humanos"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "10 días naturales contados a partir del día siguiente al de la publicación del anuncio en el Boletín Oficial de la Provincia de Alicante",
+   "cita": "será de 10 días naturales contados a partir del día siguiente al de la publicación"
+  }
+ }
+}

@@ -1,0 +1,55 @@
+{
+ "proceso": "dogv:406747",
+ "documento": {
+  "id": "dogv:406747",
+  "fuente": "DOGV",
+  "url": "https://dogv.gva.es/datos/2024/12/18/pdf/2024_12709_es.pdf",
+  "fecha": "2024-12-18",
+  "huella": "24bf53f55f08717309bd65bd9c5097b93b3990e1737243be486daa2d078abca3"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:49:28+00:00",
+ "lote": "msgbatch_018TPQE8scQozfAUdc1n8RyC",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Oficial de la Policía Local"
+   ],
+   "cita": "Clase: policía local. Categoría: oficial.",
+   "nivel": "sin_signos"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "se han publicado las bases específicas de la convocatoria para cubrir las siguientes plazas de funcionario/a en propiedad",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "Forma provisión: por el sistema de concurso-oposición.",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 2,
+   "cita": "Número de de plazas: dos.",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles contados a partir del día siguiente a la publicación de este anuncio en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes será de veinte días hábiles contados a partir del día siguiente a la publicación",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia de Valencia (cuando proceda) y web municipal www.alzira.es",
+   "cita": "Los sucesivos anuncios, referentes a esta convocatoria se publicarán únicamente en el Boletín Oficial de la Provincia de Valencia",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_promocion_interna": {
+   "motivo": "valor_no_en_cita",
+   "valor": 2,
+   "cita": "Turno: promoción interna ordinaria."
+  }
+ }
+}

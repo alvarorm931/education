@@ -1,0 +1,71 @@
+{
+ "proceso": "doe:DOE-2022063529",
+ "documento": {
+  "id": "doe:DOE-2022063529",
+  "fuente": "DOE",
+  "url": "https://doe.juntaex.es/otrosFormatos/html.php?xml=2022063529&anio=2022&doe=2220o",
+  "fecha": "2022-11-18",
+  "huella": "74eb0fa4556193edb217fd01e989bc358c1dd5d42d834a8e8d0cf2bdc0e5d239"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:08+00:00",
+ "lote": "msgbatch_01B4ETF5xB4buYCHqPiHTXzF",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "Base 12. Nombramiento como personal funcionario de carrera.",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Conocimiento de la lengua cooficial cuando sea requisito de ingreso, acreditado en la forma que establezcan las administraciones educativas",
+   "cita": "establezcan la forma de acreditar el conocimiento de la respectiva lengua cooficial, cuando dicho conocimiento constituya un requisito para el ingreso",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Portal PROFEX (profex.educarex.es) y Diario Oficial de Extremadura",
+   "cita": "esta convocatoria se publicará en https://profex.educarex.es, en adelante portal de PROFEX, y en el Diario Oficial de Extremadura.",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "no",
+   "cita": "no se derivará ningún derecho para el personal aspirante respecto a la integración en las listas de interinos",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "no",
+   "cita": "no tendrán que realizar una fase de prácticas.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Profesores de Enseñanza Secundaria",
+    "Profesores especialistas en Sectores Singulares",
+    "Profesores de Escuelas Oficiales de Idiomas",
+    "Profesores de Música y Artes Escénicas",
+    "Profesores de Artes Plásticas y Diseño",
+    "Maestros de Taller de Artes Plásticas y Diseño",
+    "Cuerpo de Maestro"
+   ],
+   "cita": "se convoca procedimiento selectivo de ingreso, mediante concurso de méritos, a plazas en los cuerpos de Profesores de Enseñanza Secundaria"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso",
+   "cita": "procedimiento selectivo de ingreso mediante concurso de méritos, a plazas en los cuerpos docentes"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 322,
+   "cita": "convocar procedimiento selectivo extraordinario para la estabilización del empleo docente"
+  },
+  "meritos": {
+   "motivo": "cita_no_literal",
+   "valor": "Valoración de méritos conforme al baremo de la convocatoria (Base 6 y Base 8)",
+   "cita": "Procedimiento de concurso de méritos, baremación de méritos de los aspirantes"
+  }
+ }
+}

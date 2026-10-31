@@ -1,0 +1,55 @@
+{
+ "proceso": "doe:DOE-2024081027",
+ "documento": {
+  "id": "doe:DOE-2024081027",
+  "fuente": "DOE",
+  "url": "https://doe.juntaex.es/otrosFormatos/html.php?xml=2024081027&anio=2024&doe=1230o",
+  "fecha": "2024-06-26",
+  "huella": "68582267c9802a8a92a6cdd473ca6aad0faffa75986942fd83a06983dd5c0fe2"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:54:31+00:00",
+ "lote": "msgbatch_01HRnX7cDVMkRZD7mBamCmLu",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Agente de la Policía Local"
+   ],
+   "cita": "para la provisión en propiedad de tres plazas de Agente de la Policía Local del Ilustrísimo Ayuntamiento de Don Benito",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "para la provisión en propiedad de tres plazas de Agente de la Policía Local",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "turno libre, mediante el sistema de oposición, correspondiente a la Oferta de Empleo Público de 2024",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 3,
+   "cita": "para la provisión en propiedad de tres plazas de Agente de la Policía Local",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles a contar desde el siguiente al de la publicación del anuncio en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes será de veinte días hábiles a contar desde el siguiente al de la publicación del anuncio en el Boletín Oficial del Estado.",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "En la forma prevista en las propias bases",
+   "cita": "Los sucesivos anuncios referentes a esta convocatoria, cuando procedan de conformidad con las bases, se harán públicos en la forma prevista en las propias bases.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 3,
+   "cita": "turno libre, mediante el sistema de oposición, correspondiente a la Oferta de Empleo Público de 2024"
+  }
+ }
+}

@@ -1,0 +1,73 @@
+{
+ "proceso": "borm:BORM-2025-4938",
+ "documento": {
+  "id": "borm:BORM-2025-4938",
+  "fuente": "BORM",
+  "url": "https://www.borm.es/#/home/anuncio/20-10-2025/4938",
+  "fecha": "2025-10-20",
+  "huella": "b7f15f36802bc22a97d34677213de321f6ae84f006150c6671da156a84ad34b9"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:41:15+00:00",
+ "lote": "msgbatch_01UNq3BNhPPHoTK3TEJzun1h",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "Profesorado Ayudante Doctor",
+   "cita": "convoca concurso público para la provisión de las plazas de profesorado ayudante doctor que se detallan en el Anexo I",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "El contrato concertado será el de profesora o profesor ayudante doctor",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "el sistema selectivo aplicable será el de concurso público, consistente únicamente en la valoración de méritos",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 23.34,
+   "cita": "Tasa General: 23,34 euros.",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "quince días hábiles desde el día siguiente al de la publicación de la convocatoria en el BORM",
+   "cita": "El plazo para la presentación de solicitudes será de quince días hábiles y computará desde el día siguiente",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón Oficial de la Universidad de Murcia (TOUM), https://sede.um.es/sede/tablon/inicio.seam",
+   "cita": "se efectuarán mediante publicación del acto o resolución de que se trate en el Tablón Oficial de la Universidad de Murcia",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Baremo según artículo 23 y anexo 1 del Reglamento regulador; procedimiento de concurso consistente únicamente en valoración de méritos",
+   "cita": "Las reglas atinentes a la evaluación de méritos son las contenidas en el artículo 23 del Reglamento regulador",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "A1",
+   "cita": "no consta"
+  },
+  "exenciones_tasa": {
+   "motivo": "cita_no_literal",
+   "valor": "Tasa Carné de Paro: 11,67 euros (requiere documento acreditativo de demanda de empleo); Tasa Carné Joven: 18,67 euros (requiere carné joven válido a fecha del plazo)",
+   "cita": "Tasa Carné de Paro: 11,67 euros. Tasa Carné Joven: 18,67 euros. Debe acreditarse su validez"
+  },
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Telemática a través de la aplicación CONVOCUM PDI (https://convocum.um.es/) con firma electrónica",
+   "cita": "cumplimentar el formulario web de la solicitud establecido específicamente para la plaza correspondiente, disponible en la aplicación CONVOCUM PDI"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "no",
+   "cita": "no consta"
+  }
+ }
+}

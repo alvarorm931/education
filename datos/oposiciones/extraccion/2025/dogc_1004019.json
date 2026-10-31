@@ -1,0 +1,55 @@
+{
+ "proceso": "dogc:1004019",
+ "documento": {
+  "id": "dogc:1004019",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1004019",
+  "fecha": "2025-01-15",
+  "huella": "476cc2cd0ec9dfd4a6c67e6f7ff039a3292126ad613c6c8c45874f525dcc27ca"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:49:29+00:00",
+ "lote": "msgbatch_018TPQE8scQozfAUdc1n8RyC",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "en règim de personal laboral fix i per la constitució d'una borsa de treball",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mitjançant concurs d'oposició lliure, per a proveir dues places",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 2,
+   "cita": "per a proveir dues places de psicòleg/oga (SEAIA)",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles a contar desde el día siguiente a la publicación del anuncio en el Diari Oficial de la Generalitat de Catalunya",
+   "cita": "S'obre el termini per a la presentació de sol·licituds de participació, que serà de 20 dies hàbils a comptar des de l'endemà",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón Virtual de Edictos de la Corporación y página web del Consell Comarcal",
+   "cita": "només es farà en el Tauler Virtual d'Edictes de la Corporació i en la pàgina web del Consell Comarcal",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, para constituir una bolsa de trabajo",
+   "cita": "i per la constitució d'una borsa de treball",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "psicòleg/oga (SEAIA)"
+   ],
+   "cita": "per proveir dues places de psicòleg/oga (SEAIA), en règim de personal laboral fix"
+  }
+ }
+}

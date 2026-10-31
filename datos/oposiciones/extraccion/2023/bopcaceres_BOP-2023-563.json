@@ -1,0 +1,45 @@
+{
+ "proceso": "bopcaceres:BOP-2023-563",
+ "documento": {
+  "id": "bopcaceres:BOP-2023-563",
+  "fuente": "BOP-CACERES",
+  "url": "https://bop.dip-caceres.es/bop/services/anuncios/contenidoPdfIdAnuncio?csv=BOP-2023-563",
+  "fecha": "2023-02-01",
+  "huella": "acea59c3785a436b1c72a7b16e49a3b4866b65a2169748fb72c8cf0323bdd03c"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:56:46+00:00",
+ "lote": "msgbatch_0167qWfLXqjGo8Hv43cM3LuM",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "otro",
+   "cita": "convocatoria y proceso de estabilización de una plaza de Operario/a servicio de agua y depuración",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "por el sistema de Concurso, publicadas en el Boletín Oficial de la Provincia de Cáceres",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Plazo de veinte días hábiles contados a partir del día siguiente al de la publicación del anuncio de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "Abrir un nuevo plazo de veinte días hábiles contados a partir del día siguiente al de la publicación del anuncio",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "A.1: 1 punto por mes de servicios en el Ayuntamiento convocante en el mismo puesto, máximo 60 puntos. A.2: 0,50 puntos por mes de servicios en cualquier Administración Pública en plazas de igual denominación y mismo grupo, máximo 60 puntos",
+   "cita": "se otorgará 1 punto por mes de trabajo hasta un máximo de 60 puntos",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Operario/a servicio de agua y depuración"
+   ],
+   "cita": "la plaza de Operario/a servicio de agua y depuración del Ayuntamiento de Valverde del Fresno"
+  }
+ }
+}

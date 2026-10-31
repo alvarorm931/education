@@ -1,0 +1,56 @@
+{
+ "proceso": "bopb:BOPB-202610076764",
+ "documento": {
+  "id": "bopb:BOPB-202610076764",
+  "fuente": "BOPB",
+  "url": "https://bop.diba.cat/anunci/3930725/aprovacio-de-les-bases-i-convocatoria-del-proces-selectiu-per-a-la-creacio-d-una-borsa-de-socorristes-aquatics-per-la-piscina-municipal-i-de-peo-de-serveis-i-obres-de-la-brigada-municipal-en-regim-de-pla-local-d-ocupacio-per-al-2026-ajuntament-de-sant-julia-de-cerdanyola",
+  "fecha": "2026-04-22",
+  "huella": "abd7131785813b272022da655e718c9539a246cb676288283b79f5dda678c65b"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:40:27+00:00",
+ "lote": "msgbatch_01E3wiYcGL8Lzho48bXWLyyb",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "otro",
+   "cita": "en règim de pla local d’ocupació per el 2026",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "procés selectiu per a la creació d’una borsa",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "10 dies naturals a partir del dia de la publicació de la convocatòria en el BOPB",
+   "cita": "durant el termini de 10 dies naturals, a partir del dia de la publicació de la convocatòria en el BOPB",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Socorrista aquàtic",
+    "Peó de serveis i obres"
+   ],
+   "cita": "creació d’una borsa de socorristes aqüàtics per la piscina municipal i de peó de serveis i obres de la brigada municipal"
+  },
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Seu electrònica https://santjuliadecerdanyola.eadministracio.cat o llocs previstos en l'article 16.4 de la Llei 39/2015",
+   "cita": "es presentaran a través de la seu electrònica o en algun dels llocs previstos en l’article 16.4 de la Llei 39/2015"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Tauler d'anuncis de l'Ajuntament i web www.santjuliadecerdanyola.cat",
+   "cita": "La resta de publicacions es duran a terme en el tauler d’anuncis de l’Ajuntament i a la web de l’ajuntament"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, para crear una bolsa de socorristas acuáticos y de peón de servicios y obras",
+   "cita": "per a la creació d’una borsa de socorristes aqüàtics per la piscina municipal"
+  }
+ }
+}

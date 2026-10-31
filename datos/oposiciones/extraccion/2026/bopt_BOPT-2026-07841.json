@@ -1,87 +1,120 @@
 {
  "proceso": "bopt:BOPT-2026-07841",
  "documento": {
-  "id": "bopt:BOPT-2026-07841",
-  "fuente": "BOPT",
-  "url": "https://www.dipta.cat/bopt/web/anunci/363494/provisio-de-diversos-llocs-de-treball-de-comandament-bases-i-convocatoria-ajuntament-cambrils",
-  "fecha": "2026-08-18",
-  "huella": "52dd833cb9ea29ad1a6a94ebfa814a8d430c2649c21ddbd8ffd48b778f80101c"
+  "id": "dogc:1056904",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1056904",
+  "fecha": "2026-10-15",
+  "huella": "b2cf2237bc2221464f9a4d0dd91f0f4091bbf6a23832e2466554d9b5093d9568"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T07:40:02+00:00",
- "lote": "msgbatch_013q7o24qMms8ZNZdwMNkW1L",
+ "extraido": "2026-10-31T14:41:48+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
  "no_son_bases": false,
  "campos": {
+  "denominacion": {
+   "valor": [
+    "Personal tècnic d'administració general, escala d'administració general, subescala gestió"
+   ],
+   "cita": "BASES ESPECÍFIQUES QUE HAN DE REGIR EL PROCÉS DE SELECCIÓ PER A LA PROVISIÓ PLAÇA DE PERSONAL TÈCNIC D'ADMINISTRACIÓ GENERAL FUNCIONARI DE CARRERA, ESCALA D'ADMINISTRACIÓ GENERAL, SUBESCALA GESTIÓ",
+   "nivel": "literal"
+  },
   "grupo": {
-   "valor": "A1",
-   "cita": "grup A, subgrup A1, de l’Ajuntament de Cambrils",
+   "valor": "A2",
+   "cita": "Grup de classificació: A Subgrup: A2 Nivell: 22",
    "nivel": "literal"
   },
   "vinculo": {
    "valor": "funcionario de carrera",
-   "cita": "entre personal funcionari de carrera de l’Ajuntament que compleixi els requisits establerts a la base tercera",
+   "cita": "Règim: Personal funcionari de carrera Places: 2",
    "nivel": "literal"
   },
   "sistema": {
-   "valor": "concurso",
-   "cita": "pel sistema de concurs específic de mèrits, del lloc de Cap del Departament de Serveis Jurídics",
+   "valor": "concurso-oposición",
+   "cita": "el procediment de selecció serà per concurs-oposició en convocatòria lliure",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 2,
+   "cita": "Places: 2 Departament o Serveis d'adscripció: 1 plaça a Tresoreria i 1 plaça a Contractació i Compres",
    "nivel": "literal"
   },
   "titulacion": {
-   "valor": "Grau universitari o llicenciatura en Dret, o titulació equivalent",
-   "cita": "Estar en possessió de la titulació universitària de grau o llicenciatura en Dret, o titulació equivalent",
+   "valor": "diplomatura, títol universitari de grau o equivalent",
+   "cita": "Estar en possessió, en la data que finalitzi el termini de presentació de sol·licituds, de la següent titulació: diplomatura, títol universitari de grau o equivalent.",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española o de la UE (con extensiones familiares), capacidad funcional, 16 años cumplidos, no separación disciplinaria ni inhabilitación, no incompatibilidad.",
+   "cita": "Tenir complerts setze anys i no excedir, si s'escau, l'edat màxima de jubilació forçosa.",
    "nivel": "literal"
   },
   "idioma_cooficial": {
-   "valor": "catalán, nivel C1 o superior",
-   "cita": "Tenir els coneixements de nivell de suficiència de llengua catalana (nivell C1) o superior",
+   "valor": "Català, nivel C1 de suficiència (nivel C)",
+   "cita": "Posseir el certificat de nivell de suficiència C1 de català (nivell C) acreditat mitjançant certificat",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 34.83,
+   "cita": "es fixen en 34,83 euros. El pagament d'aquesta taxa s'estableix com a requisit per participar",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Los aspirantes que indiquen haber superado la prueba de catalán en otros procesos del Ayuntamiento quedan exentos de acreditar ese conocimiento.",
+   "cita": "Les persones aspirants que indiquin en la sol·licitud haver superat la prova o l'exercici de caràcter obligatori i eliminatori, en altres processos selectius",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "15 días hábiles desde el día siguiente a la última publicación de la convocatoria en BOPT, DOGC o BOE",
-   "cita": "serà de 15 dies hàbils",
-   "nivel": "literal"
-  },
-  "presentacion": {
-   "valor": "Preferentemente telemática en el registro electrónico del Ajuntament mediante modelo de instancia específica firmado electrónicamente",
-   "cita": "s’hauran de presentar preferentment de forma telemàtica en el registre electrònic d’aquest Ajuntament",
-   "nivel": "literal"
-  },
-  "publicaciones": {
-   "valor": "Tablón de anuncios del Ajuntament y web https://seu.cambrils.cat",
-   "cita": "es farà pública mitjançant la seva exposició en el tauler d’anuncis de l’Ajuntament de Cambrils i al web",
+   "valor": "20 días hábiles desde el día siguiente a la publicación del último anuncio de la convocatoria en el BOPT, DOGC o BOE",
+   "cita": "El termini de presentació d'instàncies s'obrirà al dia següent de la publicació del darrer anunci d'aquesta convocatòria en el BOPT, DOGC o BOE i finalitzarà transcorreguts 20 dies hàbils.",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Concurso específico de méritos (máx. 28 puntos)",
-    "Entrevista competencial (máx. 4 puntos, no eliminatoria)",
-    "Prueba de lengua catalana (apto/no apto, para quien no acredite el nivel)"
+    "Prueba teórica tipo test de 50 preguntas (máximo 30 puntos, eliminatoria)",
+    "Prueba práctica de supuestos (máximo 30 puntos, eliminatoria)",
+    "Prueba de lengua catalana (eliminatoria, apto/no apto)",
+    "Prueba de lengua castellana si procede (eliminatoria, apto/no apto)"
    ],
-   "cita": "La puntuació total del concurs és de 28 punts. La puntuació mínima per superar el concurs serà de 10 punts totals.",
+   "cita": "Consistirà en contestar, en el temps màxim de 1 hora i 30 minuts, un qüestionari per escrit, de 50 preguntes",
+   "nivel": "literal"
+  },
+  "temas": {
+   "valor": 60,
+   "cita": "60. La Llei de Prevenció de Riscos Laborals. Normativa bàsica. Objecte, àmbit d'aplicació, drets i obligacions.",
    "nivel": "literal"
   },
   "meritos": {
-   "valor": "Experiencia en administración pública hasta 10 puntos; antigüedad hasta 3 puntos; formación hasta 4 puntos; titulaciones académicas hasta 3 puntos; grado personal hasta 3 puntos; ofimática hasta 1 punto; entrevista competencial hasta 4 puntos",
-   "cita": "Pel treball realitzat en altres llocs de les diferents administracions públiques, fins a 10 punts",
+   "valor": "Experiencia hasta 16 puntos (0,12 por mes como técnico A2); formación hasta 24 puntos; méritos de concurso no eliminatorio, máximo 40 puntos en total.",
+   "cita": "Es valorarà l'experiència prèvia com a tècnica/a d'administració general, subgrup A2, en qualsevol administració pública",
    "nivel": "literal"
   },
   "bolsa": {
-   "valor": "no",
-   "cita": "Si durant el procés, la comissió de valoració s’assabenta que algú dels/de les aspirants no reuneix els requisits exigits",
-   "nivel": "sin_signos"
+   "valor": "sí, para futuras contrataciones temporales (sustituciones, programas, acumulación o vacantes) durante 2 años",
+   "cita": "Totes les persones que superin el procés de selecció, però no sigui proposat el seu nomenament com a funcionari/ària en pràctiques, seran incloses en una borsa de treball",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Período de prácticas obligatorio y eliminatorio de ocho meses de trabajo efectivo",
+   "cita": "hauran de realitzar un període de pràctiques, obligatori i eliminatori, de vuit mesos de treball efectiu",
+   "nivel": "literal"
   }
  },
  "rechazados": {
-  "plazas_total": {
-   "motivo": "cita_no_literal",
-   "valor": 1,
-   "cita": "regular el procés de provisió definitiva, pel sistema de concurs específic de mèrits, del lloc de Cap del Departament"
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 2,
+   "cita": "mitjançant concurs oposició en convocatòria lliure, de la plantilla de personal funcionari de l'Ajuntament de Cambrils"
   },
-  "otros_requisitos": {
+  "presentacion": {
    "motivo": "cita_no_literal",
-   "valor": "Ser funcionario de carrera de l'Ajuntament de Cambrils del grupo A, subgrupo A1; estar en servicio activo o situación habilitante; capacidad funcional; no haber sido separado del servicio; tiempo mínimo de permanencia de 1 año en el puesto con destino definitivo.",
-   "cita": "Tenir la capacitat funcional per acomplir les funcions del lloc respecte del qual se sol·licita la participació"
+   "valor": "Preferentemente telemática en el registro electrónico del Ayuntamiento (seu.cambrils.cat), con firma electrónica; también en la forma del art. 16.4 de la Ley 39/2015.",
+   "cita": "s'han de presentar preferentment de forma telemàtica en el registre electrònic d'aquest Ajuntament, en els següent enllaç"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Tablón electrónico de edictos y sede electrónica del Ayuntamiento de Cambrils; el contenido íntegro en BOPT y anuncios en DOGC y BOE.",
+   "cita": "Les successives publicacions dels actes de tràmit d'aquesta convocatòria es publicaran exclusivament al tauler electrònic d'edictes"
   }
  }
 }

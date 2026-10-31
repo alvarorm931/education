@@ -1,0 +1,60 @@
+{
+ "proceso": "boe:BOE-A-2023-22627",
+ "documento": {
+  "id": "boe:BOE-A-2023-22627",
+  "fuente": "BOE",
+  "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2023-22627",
+  "fecha": "2023-11-06",
+  "huella": "007c0fa75b05e5b9e4159990d11a11e01eeb51c058ccf5fb9f429751d17b2b9d"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:39+00:00",
+ "lote": "msgbatch_01SjfjDqJRwL6bpTvJz2YfVg",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "Escala Auxiliar Administrativa de la Universidad Politécnica de Madrid",
+   "cita": "Escala Auxiliar Administrativa de la Universidad Politécnica de Madrid",
+   "nivel": "sin_signos"
+  },
+  "grupo": {
+   "valor": "C2",
+   "cita": "Subgrupo C2",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "turno libre mediante concurso-oposición",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 71,
+   "cita": "Número de plazas convocadas: 71.",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Veinte días naturales desde el siguiente a la publicación de la convocatoria en el BOCM",
+   "cita": "El plazo de presentación de instancias es de veinte días naturales",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Ejercicios a partir del mes de enero de 2024"
+   ],
+   "cita": "Ejercicios: a partir del mes de enero de 2024.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 71,
+   "cita": "Forma de provisión: turno libre mediante concurso-oposición."
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Página web de la Universidad (http://www.upm.es)",
+   "cita": "las bases se publicarán en la página web de la Universidad"
+  }
+ }
+}

@@ -1,0 +1,103 @@
+{
+ "proceso": "boe:BOE-A-2026-7932",
+ "documento": {
+  "id": "bopcordoba:BOPCORDOBA-2025-2348",
+  "fuente": "BOP-CORDOBA",
+  "url": "https://bop.dipucordoba.es/dia/11-07-2025",
+  "fecha": "2025-07-11",
+  "huella": "b3200b60757e3da8d55773aef17c9d4fbf4a39b38c25f0835b61453db67fd5f9"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:40:26+00:00",
+ "lote": "msgbatch_01E3wiYcGL8Lzho48bXWLyyb",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Sargento/a SPEIS"
+   ],
+   "cita": "Convocatoria para la provisión en propiedad de 4 plazas de Sargento SPEIS",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C1",
+   "cita": "Grupo C, Subgrupo C-1, pagas extraordinarias, trienios",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mediante el sistema de concurso-oposición, en turno promoción interna",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 4,
+   "cita": "provisión en propiedad de 4 plazas de Sargento/a SPEIS",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Bachiller, Técnico o equivalente",
+   "cita": "Estar en posesión del l Título de Bachiller, Técnico o equivalente (deberá acreditarse equivalencia)",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Funcionario de carrera del Ayuntamiento de Córdoba; al menos 2 años de servicio como Cabo, Bombero o Bombero-Conductor en el SPEIS del Ayuntamiento de Córdoba en Grupo C1 o C2; capacidad funcional para las tareas de Sargento del SPEIS",
+   "cita": "Tener la condición de funcionario/a de carrera del Excmo. Ayuntamiento de Córdoba. Es requisito exigible haber prestado servicio",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles contados a partir del siguiente al de la publicación del extracto de la convocatoria en el BOE",
+   "cita": "plazo de veinte días hábiles contados a partir del siguiente al de la publicación del extracto de la convocatoria de las plazas en el Boletín Oficial del Estado",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Telemática a través de la sede electrónica del Ayuntamiento de Córdoba, con identificación mediante Cl@ve",
+   "cita": "Las personas interesadas podrán presentar la solicitud ... de manera telemática, a través de la sede electrónica del Ayuntamiento de Córdoba",
+   "nivel": "fragmentos"
+  },
+  "publicaciones": {
+   "valor": "BOP de Córdoba, tablón electrónico edictal del Ayuntamiento de Córdoba y Oficina Virtual de la sede electrónica",
+   "cita": "se publicará en el Boletín Oficial de la Provincia de Córdoba (BOP), en el tablón electrónico edictal del Ayuntamiento de Córdoba",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Primer ejercicio: cuestionario de 70 preguntas con 3 respuestas alternativas (eliminatorio, mínimo 5 puntos)",
+    "Segundo ejercicio: resolución de un caso o prueba práctica (2 horas máximo, mínimo 5 puntos)"
+   ],
+   "cita": "Primer ejercicio: Cuestionario de 70 preguntas con 3 respuestas alternativas",
+   "nivel": "literal"
+  },
+  "temas": {
+   "valor": 19,
+   "cita": "19. El conjunto Histórico de Córdoba: características urbanas e hitos principales.",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Concurso (40% de la puntuación global): titulaciones académicas (máx. 4 p.), experiencia (máx. 15 p.), formación (máx. 15 p.), docencia (máx. 2 p.) y otros méritos (máx. 4 p.)",
+   "cita": "Fase que ponderá en 40% en la puntuación global",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Período de formación de 100 horas lectivas como mínimo como funcionarios/as en prácticas, con evaluación de apto o no apto",
+   "cita": "Este período tendrá una duración de 100 horas lectivas como mínimo.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "provisión en propiedad de 4 plazas de Sargento/a SPEIS, funcionarios/as de carrera"
+  },
+  "plazas_promocion_interna": {
+   "motivo": "valor_no_en_cita",
+   "valor": 4,
+   "cita": "mediante el sistema de concurso-oposición, en turno promoción interna"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "no",
+   "cita": "Las bases no mencionan la creación de una bolsa de empleo o lista de espera"
+  }
+ }
+}

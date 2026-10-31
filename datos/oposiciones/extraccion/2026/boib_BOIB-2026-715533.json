@@ -1,0 +1,50 @@
+{
+ "proceso": "boib:BOIB-2026-715533",
+ "documento": {
+  "id": "boib:BOIB-2026-715533",
+  "fuente": "BOIB",
+  "url": "https://www.caib.es/eboibfront/es/2026/12276/715533/resolucion-de-12-de-mayo-de-2026-de-la-universidad",
+  "fecha": "2026-05-19",
+  "huella": "c1fa3c52672541cc292f53aae8b8a18e0697eb82814a14b3eee806644e9a884a"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:42:01+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Profesor Titular de Universidad"
+   ],
+   "cita": "Cuerpo al que pertenece: Profesor Titular de Universidad.",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "convocatoria a concurso de acceso en el Boletín Oficial del Estado de las plazas de los cuerpos de funcionarios docentes universitarios",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "comunica la convocatoria a concurso de acceso en el Boletín Oficial del Estado",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "diez días a partir del siguiente al de la publicación de esta convocatoria en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes será de diez días a partir del siguiente al de la publicación",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial del Estado",
+   "cita": "Las bases íntegras de la convocatoria aparecerán publicadas en el Boletín Oficial del Estado.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 12,
+   "cita": "Número de concurso: 24/2026."
+  }
+ }
+}

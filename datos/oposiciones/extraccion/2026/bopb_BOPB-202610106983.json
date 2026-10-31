@@ -1,118 +1,68 @@
 {
  "proceso": "bopb:BOPB-202610106983",
  "documento": {
-  "id": "bopb:BOPB-202610106983",
-  "fuente": "BOPB",
-  "url": "https://bop.diba.cat/anunci/3957538/aprovacio-de-les-bases-reguladores-del-proces-selectiu-per-a-la-cobertura-definitiva-d-una-placa-en-la-categoria-de-tecnic-a-auxiliar-de-biblioteca-assimilada-a-c1-de-personal-laboral-mitjancant-el-sistema-de-concurs-oposicio-ajuntament-de-sant-pere-de-riudebitlles",
-  "fecha": "2026-06-19",
-  "huella": "dcfb7683331f88633d03b8fc7f49d539519e6b67253bd889be7ba87168f7d582"
+  "id": "dogc:1053526",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1053526",
+  "fecha": "2026-09-02",
+  "huella": "d1be0dc85e4da6ff1b26dcc4fa40436173bee0bd1daeeee141b5f87be39aaf53"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T08:17:57+00:00",
- "lote": "msgbatch_01BrnYw6KkevFx7at547B5g8",
+ "extraido": "2026-10-31T14:41:49+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
    "valor": "Tècnic/a Auxiliar de Biblioteca",
-   "cita": "Tècnic/a Auxiliar de Biblioteca, assimilada a C1, de personal laboral",
+   "cita": "la categoria de Tècnic/a Auxiliar de Biblioteca, assimilada al subgrup C1",
    "nivel": "literal"
   },
   "grupo": {
    "valor": "C1",
-   "cita": "Tècnic/a Auxiliar de Biblioteca, assimilada a C1, de personal laboral",
+   "cita": "assimilada al subgrup C1, de la plantilla de personal laboral",
    "nivel": "literal"
   },
   "vinculo": {
    "valor": "laboral fijo",
-   "cita": "Règim jurídic: Personal laboral. Assimilat al règim funcionarial C1.",
-   "nivel": "sin_signos"
+   "cita": "la cobertura definitiva, per concurs oposició i torn lliure, d'una plaça",
+   "nivel": "literal"
   },
   "sistema": {
    "valor": "concurso-oposición",
-   "cita": "mitjançant el sistema de concurs oposició i torn lliure",
+   "cita": "la cobertura definitiva, per concurs oposició i torn lliure, d'una plaça",
    "nivel": "literal"
   },
   "plazas_total": {
    "valor": 1,
-   "cita": "Nombre de places: 1.",
+   "cita": "la cobertura definitiva, per concurs oposició i torn lliure, d'una plaça",
    "nivel": "literal"
   },
-  "otros_requisitos": {
-   "valor": "Nacionalitat espanyola o d'estat membre de la UE (amb excepcions); haver complert 16 anys i no superar l'edat de jubilació forçosa; capacitat funcional; no estar inhabilitat; certificat negatiu de delictes contra la llibertat i indemnitat sexual i de tràfic d'éssers humans",
-   "cita": "Haver complert 16 anys i no superar l'edat establerta per a la jubilació forçosa.",
+  "plazas_turno_libre": {
+   "valor": 1,
+   "cita": "la cobertura definitiva, per concurs oposició i torn lliure, d'una plaça",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "Vint dies hàbils comptats des del dia següent al de la publicació de l'anunci al DOGC",
-   "cita": "El termini de presentació de les sol·licituds serà de vint dies hàbils comptats des del dia següent al de la publicació de l'anunci al DOGC.",
+   "valor": "vint dies hàbils comptadors a partir de l'endemà de la publicació de la convocatòria en el DOGC",
+   "cita": "el termini de presentació de sol·licituds serà de vint dies hàbils comptadors a partir de l'endemà de la publicació de la convocatòria en el DOGC",
    "nivel": "literal"
   },
-  "ejercicios": {
-   "valor": [
-    "Prova de coneixements de llengua catalana (C1) i castellana (B2), apte/no apte",
-    "Prova tipus test de coneixements teòrics (eliminatòria, 20 punts, mínim 10)",
-    "Prova pràctica (eliminatòria, 60 punts, mínim 30)",
-    "Fase de concurs: valoració de mèrits (20 punts, no eliminatòria)"
-   ],
-   "cita": "La fase d'oposició consistirà en la superació de tres proves de caràcter obligatori i eliminatori.",
+  "publicaciones": {
+   "valor": "Diari Oficial de la Generalitat de Catalunya i seu electrònica de l'ajuntament",
+   "cita": "L'anunci de convocatòria de la plaça es publica en el Diari Oficial de la Generalitat de Catalunya i a la seu electrònica de l'ajuntament",
    "nivel": "literal"
   },
-  "meritos": {
-   "valor": "Experiència professional fins 12 punts (0,125 per mes al sector públic del mateix grup; 0,08 per mes al sector privat) i formació complementària fins 8 punts",
-   "cita": "Serveis prestats a l'Administració Pública que siguin del mateix grup/subgrup de titulació o assimilat",
-   "nivel": "literal"
-  },
-  "practicas_o_curso": {
-   "valor": "Període de prova de 3 mesos",
-   "cita": "Es preveu un període de prova de 3 mesos.",
+  "bolsa": {
+   "valor": "sí, creació d'una borsa de treball",
+   "cita": "i la creació d'una borsa de treball, d'acord amb el següent detall",
    "nivel": "literal"
   }
  },
  "rechazados": {
-  "plazas_turno_libre": {
+  "plazas_promocion_interna": {
    "motivo": "valor_no_en_cita",
-   "valor": 1,
-   "cita": "Torn: Lliure."
-  },
-  "titulacion": {
-   "motivo": "cita_no_literal",
-   "valor": "Batxiller o títol de Tècnic (Cicle formatiu de grau mig) o equivalent o d'una titulació superior",
-   "cita": "Estar en possessió del títol de Batxiller o títol de Tècnic (Cicle formatiu de grau mig) o equivalent"
-  },
-  "idioma_cooficial": {
-   "motivo": "cita_no_literal",
-   "valor": "Català nivell C1 (suficiència), i castellà nivell B2 en els casos indicats",
-   "cita": "Posseir els coneixements de llengua catalana de nivell de suficiència C1"
-  },
-  "tasa_euros": {
-   "motivo": "cita_no_literal",
-   "valor": 15,
-   "cita": "per un import de 15,00€, vigent en el termini de presentació de sol·licituds"
-  },
-  "exenciones_tasa": {
-   "motivo": "cita_no_literal",
-   "valor": "Persones en atur que no siguin perceptores de cap quantitat en concepte de subsidi",
-   "cita": "Estan exemptes del pagament les persones que estiguin en atur i no siguin perceptors de cap quantitat en concepte de subsidi."
-  },
-  "presentacion": {
-   "motivo": "cita_no_literal",
-   "valor": "Preferentment telemàticament a través de la seu electrònica o registre general electrònic municipal; també per qualsevol mitjà de l'article 16.4 LPAC",
-   "cita": "La presentació de sol·licituds es farà preferentment en forma telemàtica, a través de la seu electrònica de l'Ajuntament"
-  },
-  "publicaciones": {
-   "motivo": "cita_no_literal",
-   "valor": "BOPB, DOGC i seu electrònica municipal",
-   "cita": "Els successius actes de tràmit, s'exposaran al tauler d'anuncis de la seu electrònica de l'Ajuntament"
-  },
-  "temas": {
-   "motivo": "cita_no_literal",
-   "valor": 40,
-   "cita": "40. Normativa interna de funcionament: règim de préstec, reserves, sancions i drets i deures dels usuaris."
-  },
-  "bolsa": {
-   "motivo": "cita_no_literal",
-   "valor": "sí, per cobrir necessitats temporals de personal en la categoria de Tècnic/a Auxiliar de Biblioteca, amb vigència de 2 anys",
-   "cita": "constitució d'una borsa de treball per cobrir necessitats temporals de personal en la categoria de Tècnic/a Auxiliar de Biblioteca"
+   "valor": 0,
+   "cita": "la cobertura definitiva, per concurs oposició i torn lliure, d'una plaça"
   }
  }
 }

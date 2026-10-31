@@ -1,0 +1,98 @@
+{
+ "proceso": "bopt:BOPT-2026-03216",
+ "documento": {
+  "id": "bopt:BOPT-2026-03216",
+  "fuente": "BOPT",
+  "url": "https://www.dipta.cat/bopt/web/anunci/358582/borsa-de-treball-de-personal-de-neteja-bases-i-convocatoria-ajuntament-puigpelat",
+  "fecha": "2026-04-15",
+  "huella": "3a15eaa02c232c77d2843470126e261ba31d108ea9dee9963378976d417e0564"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:40:34+00:00",
+ "lote": "msgbatch_01E3wiYcGL8Lzho48bXWLyyb",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "AP",
+   "cita": "grup AP , (equivalent al grup AP de personal funcionarial)",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "català nivell bàsic (A2)",
+   "cita": "Estar en possessió del títol del nivell bàsic de català (nivell A2)",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "personal de neteja",
+   "cita": "constitució d’una borsa de treball de personal laboral temporal, denominació “personal de neteja”, grup AP"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "laboral temporal",
+   "cita": "borsa de treball de personal laboral temporal, denominació “personal de neteja”"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso",
+   "cita": "seleccionat mitjançant concurs de valoració de mèrits, torn lliure"
+  },
+  "plazas_turno_libre": {
+   "motivo": "cita_no_literal",
+   "valor": 0,
+   "cita": "seleccionat mitjançant concurs de valoració de mèrits, torn lliure"
+  },
+  "titulacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Certificat d’Estudis Primaris o equivalent",
+   "cita": "Estar en possessió del Certificat d’Estudis Primaris o equivalent"
+  },
+  "otros_requisitos": {
+   "motivo": "cita_no_literal",
+   "valor": "Nacionalitat espanyola o de la UE (o aplicació de lliure circulació); tenir setze anys i no excedir l’edat de jubilació forçosa; capacitat funcional; no patir malaltia que impedeixi les funcions; no estar separat/da de l’Administració ni inhabilitat; permís de conduir B",
+   "cita": "Tenir setze anys i no excedir de l’edat de jubilació forçosa fixada per la llei"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "20 dies hàbils a partir de l’endemà de la publicació de la convocatòria en el BOPT",
+   "cita": "El termini per presentar sol·licituds és de 20 dies hàbils a partir de l’endemà de la publicació"
+  },
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Registre General de l’Ens, presencialment, o al registre electrònic amb certificat digital/signatura electrònica",
+   "cita": "al Registre General de l’Ens, presencialment, en horari d’atenció al públic, de dilluns a divendres"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Seu electrònica de l’Ens i Portal de Transparència; BOPT per la convocatòria; web corporativa a efectes informatius",
+   "cita": "La resta de publicacions del procés selectiu es realitzarà a la Seu electrònica de l’Ens"
+  },
+  "ejercicios": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Fase de coneixement de llengua catalana (nivell A2), apte/no apte",
+    "Fase de coneixement de llengua castellana (només si cal), apte/no apte",
+    "Fase de concurs: experiència, formació i titulació",
+    "Entrevista no eliminatòria (màxim 5 punts)"
+   ],
+   "cita": "Consisteix en la realització d'una prova de coneixements de llengua catalana"
+  },
+  "meritos": {
+   "motivo": "cita_no_literal",
+   "valor": "Experiència laboral màx. 15 punts (2 punts per any complet); formació relacionada màx. 5 punts; titulació (graduat escolar/ESO 10 punts; FP II, batxillerat superior 10 punts); entrevista màx. 5 punts",
+   "cita": "L’antiguitat en serveis prestats en funcions iguals o equivalent al lloc de treball, es valora a raó de 2 punts per any complet"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, borsa de treball per cobrir vacants, substitucions i contingències temporals, vigència de tres anys",
+   "cita": "La borsa tindrà una vigència de tres anys des de la seva constitució"
+  },
+  "practicas_o_curso": {
+   "motivo": "cita_no_literal",
+   "valor": "període de prova d’1 mes",
+   "cita": "Les persones contractades hauran de superar un període de prova d’1 mes"
+  }
+ }
+}

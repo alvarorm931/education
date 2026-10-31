@@ -1,0 +1,99 @@
+{
+ "proceso": "boib:BOIB-2022-668348",
+ "documento": {
+  "id": "boib:BOIB-2022-668348",
+  "fuente": "BOIB",
+  "url": "https://www.caib.es/eboibfront/es/2022/11672/668348/correccion-errores-convocatoria-estabilizacion-con",
+  "fecha": "2022-12-27",
+  "huella": "37353fb823ff4e2396f9acffa72d33ad3bd66df8b11cc79e8885d8a9407f786b"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:55:42+00:00",
+ "lote": "msgbatch_014eT3dLLVopBnuVgQ4syWD9",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Arquitecto/a",
+    "Técnico/a superior en psicología",
+    "Técnico/a superior en economía",
+    "Trabajador/a social",
+    "Educador/a social",
+    "Técnico/a medio en informática",
+    "Administrativo/a",
+    "Auxiliar informador/a"
+   ],
+   "cita": "3 plazas de técnicos superiores ( 1 de arquitecto, 1 técnico superior en psicología y 1 técnico superior en economía)",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "se establece como procedimiento selectivo lo de concurso extraordinario de méritos",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 12,
+   "cita": "Plazas convocadas Total: 12",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española o de las que permiten el acceso según el artículo 57 del TREBEP; dieciséis años cumplidos; capacidades físicas y psíquicas necesarias; no haber sido separado de ninguna administración mediante procedimiento disciplinario",
+   "cita": "Tener la nacionalidad española o alguna otra de las que permiten el acceso a la ocupación pública según el artículo 57",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Catalán, nivel exigido según la categoría (certificados oficiales del Gobierno balear o Escuela Balear de Administración Pública)",
+   "cita": "Acreditar el nivel de conocimiento de lengua catalana que se indica a continuación",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "No están sujetos a la tasa las personas con una discapacidad igual o superior al 33%. En el caso de resultar excluido/a de la convocatoria, la cuota se reducirá el 50%.",
+   "cita": "No están sujetos a la tasa las personas con una discapacidad igual o superior al 33%.",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles, contados a partir del día siguiente de la publicación del anuncio de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de las solicitudes y autobaremación será de veinte días hábiles",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Preferentemente en el Registro Electrónico General del Ayuntamiento de Palma, o presencialmente en Oficinas d'Atenció a la Ciudadania u otras formas del art. 16.4 de la Ley 39/2015",
+   "cita": "la solicitud se tendrá que presentar, preferentemente, en el Registro Electrónico General del Ayuntamiento de Palma",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Página web del Patronato (patronathabitatge.palma.cat), BOIB y BOE (anuncio de convocatoria); notificaciones en la sede electrónica del Patronato",
+   "cita": "Las bases se publicarán en el Boletín Oficial de las Islas Baleares (BOIB) y el anuncio de convocatoria Boletín Oficial del Estado (BOE)",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Concurso extraordinario de méritos (sin ejercicios de oposición)"
+   ],
+   "cita": "1.2.- Se establece como procedimiento selectivo lo de concurso extraordinario de méritos.",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, para constituir una bolsa de personal laboral temporal de la categoría correspondiente a quienes no superen el proceso, con al menos 10 puntos",
+   "cita": "se tienen que incluir en una bolsa de personal laboral temporal de la correspondiente categoría en la cual hayan participado",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "personal laboral fijo",
+   "cita": "ocupación pública de estabilización correspondiente al personal laboral al servicio del Patronato"
+  },
+  "plazas_discapacidad": {
+   "motivo": "valor_no_en_cita",
+   "valor": 0,
+   "cita": "no se puede motivar la convocatoria por turno de reserva de personas con discapacidad"
+  },
+  "meritos": {
+   "motivo": "cita_no_literal",
+   "valor": "Profesionales hasta 45 puntos (0,25 por mes en mismo nivel); otros méritos hasta 55 puntos: superación de ejercicios anteriores (20), formación académica (15), catalán (15), cursos (20), trienios (15)",
+   "cita": "Los méritos profesionales se tienen que baremar según los siguientes criterios generales"
+  }
+ }
+}

@@ -1,0 +1,53 @@
+{
+ "proceso": "bopcaceres:BOP-2025-624",
+ "documento": {
+  "id": "bopcaceres:BOP-2025-624",
+  "fuente": "BOP-CACERES",
+  "url": "https://bop.dip-caceres.es/bop/services/anuncios/contenidoPdfIdAnuncio?csv=BOP-2025-624",
+  "fecha": "2025-02-10",
+  "huella": "6c03b4f7514b4052c245b0301fd24175c237ad6751324632af7bda0b5c679233"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:46:17+00:00",
+ "lote": "msgbatch_01MQzQCLMZKxUrrPMAj7dr53",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "C1",
+   "cita": "retribuciones básicas correspondientes al Subgrupo C1 según artículo 76",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "cobertura en propiedad, de CUATRO plazas de ADMINISTRATIVO/A",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mediante el sistema de concurso oposición, por el turno libre",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "boletín oficial de la provincia",
+   "cita": "ordenándose su publicación a efectos de general conocimiento de las personas interesadas",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "ADMINISTRATIVO/A",
+   "cita": "cubrir en propiedad, de CUATRO plazas de ADMINISTRATIVO/A, pertenecientes a la Escala de Administración General"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 4,
+   "cita": "convoca pruebas selectivas para la cobertura en propiedad, de CUATRO plazas de ADMINISTRATIVO/A"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 4,
+   "cita": "mediante el sistema de concurso oposición, por el turno libre"
+  }
+ }
+}

@@ -1,0 +1,70 @@
+{
+ "proceso": "bopcordoba:BOPCORDOBA-2023-600",
+ "documento": {
+  "id": "bopcordoba:BOPCORDOBA-2023-600",
+  "fuente": "BOP-CORDOBA",
+  "url": "https://bop.dipucordoba.es/dia/01-03-2023",
+  "fecha": "2023-03-01",
+  "huella": "d4b16828a17671a84ddcee49a55dfc9093ea8bcdb897ee7a33209f576c8ff680"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:56:27+00:00",
+ "lote": "msgbatch_0167qWfLXqjGo8Hv43cM3LuM",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "C2",
+   "cita": "CATEGORÍA TITULACIÓN (.../…) AUXILIAR DE INSTALACIONES DEPORTIVAS C2 Titulo de Bachillerato",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "Bolsa de Trabajo para la celebración de contratos laborales temporales en esta Entidad",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "por el sistema de concurso, con carácter excepcional, y derivado de la OEP Extraordinaria",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Titulo de Bachillerato, Formación Profesional de Segundo Grado o equivalente",
+   "cita": "AUXILIAR DE INSTALACIONES DEPORTIVAS C2 Titulo de Bachillerato, Formación Profesional de Segundo Grado o equivalente",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Puntuación mínima de 30 puntos para formar parte de la bolsa de trabajo",
+   "cita": "hubieran alcanzado una puntuación mínima de 30 puntos quedando ordenados de mayor a menor puntuación obtenida",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia de Córdoba, Tablón de Edictos de la Sede Electrónica Municipal y Tablón de Edictos del Ayuntamiento de Zuheros",
+   "cita": "Publicar anuncio de la presente Resolución en el Boletín Oficial de la Provincia de Córdoba, en el Tablón de Edictos",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Auxiliar de Instalaciones Deportivas"
+   ],
+   "cita": "Rectificación del Anexo I: DEBE DECIR: UNA AUXILIAR DE INSTALACIONES DEPORTIVAS LABORAL PARCIAL"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 1,
+   "cita": "ANEXO I CONCURSO Nº PLAZAS DENOMINACIÓN PUESTO DE TRABAJO VÍNCULO JORNADA UNA AUXILIAR DE INSTALACIONES DEPORTIVAS"
+  },
+  "plazas_discapacidad": {
+   "motivo": "valor_no_numerico",
+   "valor": "cupo del 10% sobre el total de plazas en la ejecución de la bolsa",
+   "cita": "En la ejecución de esta Bolsa de Trabajo, se reservará un cupo equivalente al 10% sobre el total de plazas para personas con discapacidad"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, para la celebración de contratos laborales temporales en esta Entidad por razones motivadas de necesidades del servicio",
+   "cita": "Una vez finalizado el proceso selectivo y efectuada la adjudicación del destino mediante Resolución de Alcaldía se formará una Bolsa de Trabajo"
+  }
+ }
+}

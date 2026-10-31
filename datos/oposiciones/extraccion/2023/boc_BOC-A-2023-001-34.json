@@ -1,0 +1,58 @@
+{
+ "proceso": "boc:BOC-A-2023-001-34",
+ "documento": {
+  "id": "boc:BOC-A-2023-001-34",
+  "fuente": "BOC",
+  "url": "https://www.gobiernodecanarias.org/boc/2023/001/034.html",
+  "fecha": "2023-01-02",
+  "huella": "87910625ce1563dd57417e009d24c6bc369f849edd3b607e59464a83d73fcc62"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:56:00+00:00",
+ "lote": "msgbatch_014eT3dLLVopBnuVgQ4syWD9",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Educador/a Familiar",
+    "Monitor/a",
+    "Psicólogo/a",
+    "Trabajador/a Social"
+   ],
+   "cita": "Una plaza de Educador/a Familiar, Grupo A, Subgrupo A2, previsto en la plantilla de personal laboral fijo",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "laboral fijo",
+   "cita": "Una plaza de Educador/a Familiar, Grupo A, Subgrupo A2, previsto en la plantilla de personal laboral fijo",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "mediante concurso de méritos",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles a contar desde el siguiente al de la publicación de esta resolución en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes será de veinte días hábiles a contar desde el siguiente al de la publicación de esta resolución en el Boletín Oficial del Estado.",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia de Las Palmas, tablón de anuncios de la Mancomunidad de Municipios Centro Sur de Fuerteventura y web de la entidad (https://www.mancomunidadcentrosurftv.org)",
+   "cita": "se harán públicos en el Boletín Oficial de la Provincia de Las Palmas, en el tablón de anuncios de la Mancomunidad",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "A2 / C1 / A1 / A2",
+   "cita": "Una plaza de Monitor/a, Grupo C, Subgrupo C1, previsto en la plantilla de personal laboral fijo"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 5,
+   "cita": "Una plaza de Educador/a Familiar, Grupo A, Subgrupo A2, previsto en la plantilla de personal laboral fijo"
+  }
+ }
+}

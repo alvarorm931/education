@@ -1,0 +1,53 @@
+{
+ "proceso": "boe:BOE-A-2025-9431",
+ "documento": {
+  "id": "dog:DOG-20250430-AnuncioL457-250425-0001",
+  "fuente": "DOG",
+  "url": "https://www.xunta.gal/dog/Publicados/2025/20250430/AnuncioL457-250425-0001_es.html",
+  "fecha": "2025-04-30",
+  "huella": "984f8c249fdacc8a1e0db62e9ab2c52a489b579f63f5df92c97929c649de3ddc"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:46:01+00:00",
+ "lote": "msgbatch_017vJZdAmjTkBDdH14aLEdCv",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "auxiliar de clínica",
+   "cita": "se publicaron íntegramente las bases del proceso de provisión de una plaza de auxiliar de clínica",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "con personal laboral fijo, mediante el sistema de concurso-oposición en turno libre",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mediante el sistema de concurso-oposición en turno libre",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte (20) días naturales, contados a partir del siguiente a aquel en que aparezca publicado el extracto de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "el plazo para la presentación de solicitudes será de veinte (20) días naturales, contados a partir del siguiente",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "sede electrónica del organismo autónomo: https://residenciamaioresnosasradocarme.sedelectronica.gal",
+   "cita": "Los sucesivos anuncios se realizarán en la sede electrónica del organismo autónomo",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 1,
+   "cita": "el proceso de provisión de una plaza de auxiliar de clínica"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "mediante el sistema de concurso-oposición en turno libre"
+  }
+ }
+}

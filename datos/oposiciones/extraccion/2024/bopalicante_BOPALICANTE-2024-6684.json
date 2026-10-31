@@ -1,0 +1,55 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2024-6684",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2024-6684",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2024/08/22_161/2024_006684.pdf",
+  "fecha": "2024-08-22",
+  "huella": "d5eea7d3c2c4e72efb4ba6c499ee4a723b731edb2db8660e0499761082deb055"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:49:18+00:00",
+ "lote": "msgbatch_016yasWxkCXTWjPAb8LjB3ob",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Agentes de policía local, Escala Administración Especial, Subescala servicios especiales, clase policía local, Escala Básica, categoría de agente"
+   ],
+   "cita": "Agentes de policía local, Escala Administración Especial, Subescala servicios especiales, clase policía local, Escala Básica, categoría de agente",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C1",
+   "cita": "Grupo profesional de clasificación C, subgrupo C1",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "la provisión en propiedad de 6 plazas de funcionario de carrera, Agente de Policía",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 9,
+   "cita": "deben convocarse un total de 9 plazas de agente de policía local",
+   "nivel": "literal"
+  },
+  "plazas_turno_libre": {
+   "valor": 5,
+   "cita": "5 plazas por turno libre: plazas nº 105, 110 , 111, 112 y 141",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "oposición",
+   "cita": "3 por turno libre mediante el sistema de oposición plazas nº 105, 110 y 112"
+  },
+  "plazas_promocion_interna": {
+   "motivo": "valor_no_en_cita",
+   "valor": 0,
+   "cita": "4 plazas por el turno de movilidad: plazas nº 113, 120, 133 y 162"
+  }
+ }
+}

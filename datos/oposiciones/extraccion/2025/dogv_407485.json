@@ -1,0 +1,50 @@
+{
+ "proceso": "dogv:407485",
+ "documento": {
+  "id": "dogv:407485",
+  "fuente": "DOGV",
+  "url": "https://dogv.gva.es/datos/2025/01/08/pdf/2024_13447_es.pdf",
+  "fecha": "2025-01-08",
+  "huella": "2348186da4f0eb5ce3807c9073de2639ae43405b47893c08bcf03b5a800c5a51"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:49:38+00:00",
+ "lote": "msgbatch_018TPQE8scQozfAUdc1n8RyC",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "conductor/a albañil"
+   ],
+   "cita": "6 plazas polivalentes de conductor/a albañíl.",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "proveer mediante concurso varias plazas de personal laboral fijo",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 6,
+   "cita": "6 plazas polivalentes de conductor/a albañíl.",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "diez días hábiles, contados a partir del día siguiente de la publicación de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes será de diez días hábiles, contados a partir del día siguiente",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia de Valencia y Tablón de Anuncios del Ayuntamiento de Cofrentes (físico y electrónico en https://cofrentes.sedeletronica.es)",
+   "cita": "se publicarán en el Boletín Oficial de la Provincia de Valencia",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "personal laboral fijo",
+   "cita": "proceder mediante concurso varias plazas de personal laboral fijo"
+  }
+ }
+}

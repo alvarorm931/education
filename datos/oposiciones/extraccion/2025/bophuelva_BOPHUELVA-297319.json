@@ -1,0 +1,52 @@
+{
+ "proceso": "bophuelva:BOPHUELVA-297319",
+ "documento": {
+  "id": "bophuelva:BOPHUELVA-297319",
+  "fuente": "BOP-HUELVA",
+  "url": "https://s2.diphuelva.es/portalweb/bope/anuncios/Anuncio_297319_BOP-42_2025.pdf",
+  "fecha": "2025-03-04",
+  "huella": "84e47ab5e71c460b0552933f0492ac65b48f89d679a461b68c79a39661c3b095"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:46:17+00:00",
+ "lote": "msgbatch_01MQzQCLMZKxUrrPMAj7dr53",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "Contratación de personal laboral temporal para la ejecución de la subvención atención a personas inmigrantes",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de Anuncios de la sede electrónica del Ayuntamiento (https://lucenadelpuerto.sedelectronica.es/)",
+   "cita": "se encuentran publicadas en el Tablón de Anuncios de la sede electrónica de este Ayuntamiento",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Trabajador/a Social",
+    "Técnico/a Superior en Integración sociocultural",
+    "Tractorista"
+   ],
+   "cita": "mediante sistema de Concurso de méritos de un/a Trabajador/a Social, dos Técnicos/as Superior en Integración sociocultural y un/a Tractorista"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso",
+   "cita": "mediante sistema de Concurso de méritos de un/a Trabajador/a Social"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 4,
+   "cita": "dos Técnicos/as Superior en Integración sociocultural y un/a Tractorista"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "diez días naturales a contar desde el día siguiente a la publicación de este anuncio en Boletín Oficial de la Provincia",
+   "cita": "que será de diez días naturales a contar desde el día siguiente a la publicación de este anuncio"
+  }
+ }
+}

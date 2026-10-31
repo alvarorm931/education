@@ -1,0 +1,60 @@
+{
+ "proceso": "bocm:BOCM-20261026-86",
+ "documento": {
+  "id": "bocm:BOCM-20261026-86",
+  "fuente": "BOCM",
+  "url": "https://www.bocm.es/bocm-20261026-86",
+  "fecha": "2026-10-26",
+  "huella": "fbb544b459023d143ace6297988e70e65069515bb53ac158304ee805ed3eb953"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:41:53+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "Oferta de Empleo Público 2026, cuyas características son",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "proceso selectivo por concurso-oposición libre de 1 plaza de técnico de Gestión Informática",
+   "nivel": "literal"
+  },
+  "plazas_turno_libre": {
+   "valor": 1,
+   "cita": "proceso selectivo por concurso-oposición libre de 1 plaza de técnico de Gestión Informática",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días naturales contados a partir del siguiente a la publicación del extracto de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes será de veinte días naturales contados a partir del siguiente a la publicación del extracto",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Página web del Ayuntamiento de Guadarrama (https://www.guadarrama.es/indexb.php)",
+   "cita": "El texto íntegro de las bases se encuentra publicado en la página web del Ayuntamiento de Guadarrama",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "técnico de Gestión Informática"
+   ],
+   "cita": "Número de vacantes: 1. Funciones encomendadas: sí singularizado. Sistema de selección: concurso-oposición libre."
+  },
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "B",
+   "cita": "Grupo: B. Subgrupo: B. Escala: Administración Especial."
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 1,
+   "cita": "Número de vacantes: 1. Funciones encomendadas: sí singularizado."
+  }
+ }
+}

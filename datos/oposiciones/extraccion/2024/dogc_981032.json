@@ -1,0 +1,70 @@
+{
+ "proceso": "dogc:981032",
+ "documento": {
+  "id": "dogc:981032",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=981032",
+  "fecha": "2024-03-18",
+  "huella": "5995d8b14401f9729450aed6d7e9494fc6e3f180774411fac368e646b33b4bca"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:53:58+00:00",
+ "lote": "msgbatch_01EQ4R6PVKpEwTXzXwPCmspm",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "AP/E",
+   "cita": "personal laboral, grup AP/E, a l'Ajuntament de Molins de Rei",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "otro",
+   "cita": "una en règim de funcionari de carrera i l'altra com a personal laboral",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "en torn lliure i mitjançant concurs oposició",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles a partir del día siguiente a la publicación en el DOGC",
+   "cita": "hauran de presentar-se en el termini de 20 dies hàbils a partir de l'endemà de la publicació al Diari Oficial",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Las solicitudes se presentan según el modelo publicado en la web municipal (www.molinsderei.cat)",
+   "cita": "El model de sol·licitud per participar en el procés i la relació de mèrits es trobaran publicats a la web municipal",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Web municipal (www.molinsderei.cat); bases específicas en el BOPB de 11 de marzo de 2024",
+   "cita": "Les bases específiques reguladores es publicaran en el BOPB de data 11 de març de 2024 i al web municipal.",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, bolsa de treball con los aspirantes que superen las pruebas, sin plaza",
+   "cita": "la constitució d'una borsa de treball amb els aspirants que superin les proves, sense plaça",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "subaltern"
+   ],
+   "cita": "per cobrir 2 places de subaltern, una en règim de funcionari de carrera i l'altra com a personal laboral"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 2,
+   "cita": "per cobrir 2 places de subaltern"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 2,
+   "cita": "en torn lliure i mitjançant concurs oposició"
+  }
+ }
+}

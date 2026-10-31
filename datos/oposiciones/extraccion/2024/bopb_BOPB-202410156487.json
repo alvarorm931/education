@@ -1,0 +1,50 @@
+{
+ "proceso": "bopb:BOPB-202410156487",
+ "documento": {
+  "id": "bopb:BOPB-202410156487",
+  "fuente": "BOPB",
+  "url": "https://bop.diba.cat/anunci/3679969/resolucio-del-proces-selectiu-i-creacio-d-una-borsa-de-treball-d-auxiliars-administratius-ajuntament-de-sant-pere-de-riudebitlles",
+  "fecha": "2024-10-09",
+  "huella": "f76b4f2403674ff0a1b19a2bb7d5a051700d0cbb9d5b17f78b04e7356854454e"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:50:19+00:00",
+ "lote": "msgbatch_01LpyYajgKGX9NyHT1uvynbR",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "tres places d'Auxiliar Administratiu/va de la plantilla de personal funcionari de l'ajuntament",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Auxiliar Administrativo/a"
+   ],
+   "cita": "provisió, per concurs de mèrits i torn lliure, de tres places d'Auxiliar Administratiu/va de la plantilla de personal funcionari"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso",
+   "cita": "provisió, per concurs de mèrits i torn lliure, de tres places d'Auxiliar Administratiu/va"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 3,
+   "cita": "per a la provisió, per concurs de mèrits i torn lliure, de tres places d'Auxiliar Administratiu/va"
+  },
+  "plazas_turno_libre": {
+   "motivo": "cita_no_literal",
+   "valor": 3,
+   "cita": "per concurs de mèrits i torn lliure, de tres places d'Auxiliar Administratiu/va"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí: para el resto de aspirantes que no hayan superado el proceso selectivo",
+   "cita": "tot habilitant-se la constitució d'una borsa de treball per a la resta d'aspirants que no hagin superat el procés selectiu"
+  }
+ }
+}

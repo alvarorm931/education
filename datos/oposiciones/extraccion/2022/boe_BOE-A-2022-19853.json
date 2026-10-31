@@ -1,0 +1,117 @@
+{
+ "proceso": "boe:BOE-A-2022-19853",
+ "documento": {
+  "id": "bopguadalajara:BOPGUADALAJARA-2022-3324",
+  "fuente": "BOP-GUADALAJARA",
+  "url": "https://boletin.dguadalajara.es/boletin/pdf/pdf2022_3324.pdf",
+  "fecha": "2022-10-28",
+  "huella": "d0e6c78c5372c572bd152319f0097979a11e540ca529c884ea897858a71a80a9"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:08+00:00",
+ "lote": "msgbatch_01B4ETF5xB4buYCHqPiHTXzF",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Administrativo",
+    "Auxiliar Administrativo",
+    "Economista",
+    "Técnico Medio de Economía",
+    "Arquitecto Técnico",
+    "Oficial (Electricista)",
+    "Oficial Conductor (Maquinaria Pesada y Camión)",
+    "Oficial Conductor (CC.CC y Mantenimiento)",
+    "Oficial Conductor (Infraestructuras)",
+    "Oficial Conductor (Vehículos Ligeros, Maquinaria Obra Pública y Camión)",
+    "Oficial (Fontanero CC.CC)",
+    "Oficial (Albañil)",
+    "Ayudante (Albañilería CC.CC)",
+    "Ayudante (Limpieza)",
+    "Operario (Centros Comarcales)",
+    "Operario (Infraestructuras)"
+   ],
+   "cita": "PLAZAS VACANTES EN LA PLANTILLA DE FUNCIONARIOS CORRESPONDIENTES A LA ESTABILIZACIÓN DE EMPLEO",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "provisión en propiedad, mediante concurso libre de méritos, de plazas vacantes en la plantilla de funcionarios",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "por el sistema excepcional de concurso libre de méritos",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Título de Bachiller, FP-II, Graduado en ESO, Graduado Escolar, FP-I, Graduado/Licenciado/Diplomado en Ciencias Económicas, Arquitecto Técnico o certificado de escolaridad según plaza",
+   "cita": "Estar en posesión del título académico correspondiente a cada una de las especialidades/plazas (código)",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Carné de conducir (B, C+E, B+C según plaza); carné de instalador electricista para la plaza de Oficial (Electricista)",
+   "cita": "Estar en posesión, en su caso, del carnet de conducir correspondiente a las especialidades (código)",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Reducción al 50 % (9,66 € a 8,59 € según plaza) en caso de desempleo superior a 6 meses",
+   "cita": "19,32€ o 9,66€ (en caso de desempleo superior a 6 meses)",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Veinte días hábiles contados a partir del siguiente al de la publicación del anuncio de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "en el plazo de veinte días hábiles, contados a partir del siguiente al de la publicación del anuncio de la convocatoria en el Boletín Oficial del Estado",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Preferentemente de forma telemática, en la sede electrónica de la Diputación; también según el artículo 16 de la Ley 39/2015",
+   "cita": "preferentemente de forma telemática, en el plazo de veinte días hábiles",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia, tablón de anuncios y sede electrónica de la Corporación; bolsas en la sede electrónica",
+   "cita": "será publicada en el Boletín Oficial de la Provincia, Tablón de Anuncios y sede electrónica de esta Corporación",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Concurso libre de méritos"
+   ],
+   "cita": "la selección de las personas para las plazas convocadas se llevará a cabo... a través del concurso libre de méritos",
+   "nivel": "fragmentos"
+  },
+  "meritos": {
+   "valor": "Méritos profesionales (servicios como funcionario interino o laboral temporal), cursos de formación y perfeccionamiento, titulación complementaria superior, superación de ejercicios de pruebas selectivas; baremo según Base Octava de las Bases Generales",
+   "cita": "Las características del concurso y el baremo de méritos será el establecido en la Base Octava de las Bases Generales",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "A1, A2, C1, C2, AP",
+   "cita": "Subgrupo A1 A2 C1 C2 y agrupaciones profesionales según plaza"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 42,
+   "cita": "Plazas de estabilización de empleo temporal de larga duración, concurso libre de méritos personal funcionario"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 42,
+   "cita": "provisión en propiedad, por el sistema excepcional de concurso libre de méritos"
+  },
+  "tasa_euros": {
+   "motivo": "cita_no_literal",
+   "valor": 19.32,
+   "cita": "Ingresar a favor de la Diputación Provincial de Guadalajara la cantidad correspondiente a la especialidad solicitada"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, bolsa de trabajo con los aspirantes que obtengan al menos 80 puntos en el concurso de méritos",
+   "cita": "Se formará una bolsa de trabajo integrada por todos aquellos aspirantes que... hubiesen obtenido un mínimo de ochenta puntos (80 puntos)"
+  }
+ }
+}

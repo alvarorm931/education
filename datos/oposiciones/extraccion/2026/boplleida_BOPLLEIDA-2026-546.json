@@ -1,0 +1,95 @@
+{
+ "proceso": "boplleida:BOPLLEIDA-2026-546",
+ "documento": {
+  "id": "boplleida:BOPLLEIDA-2026-546",
+  "fuente": "BOP-LLEIDA",
+  "url": "https://ebop.diputaciolleida.cat/aplicacions/bop/bopV1/fitxers/pdf/2026/17/2026170546.pdf",
+  "fecha": "2026-01-27",
+  "huella": "e0adbcdc50f632dd9e8dd31a1e8642d04627c60159c8360fa401175bd728f02e"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:42:16+00:00",
+ "lote": "msgbatch_01W17mR271uYfWYL6CuSdriL",
+ "no_son_bases": false,
+ "campos": {
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "La fase d'oposició consistirà en la realització d’una prova d'aptitud eliminatòria",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Educació Secundària Obligatòria (ESO) o Educació General Bàsica (EGB)",
+   "cita": "Posseir la titulació d’Educació Secundària Obligatòria (ESO) o Educació General Bàsica (EGB)",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalitat espanyola (con excepciones del art. 57 TREBEP), capacidad funcional, tener 16 años, no haber sido separado de la Administración ni inhabilitado para cargos públicos",
+   "cita": "Tenir compliments setze anys i no excedir, si s'escau, de l'edat màxima de jubilació forçosa",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "català, nivel intermedio",
+   "cita": "Acreditar el nivell de català intermedi d’acord amb el decret 162002",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "10 días naturales desde el día siguiente a la publicación del anuncio en el BOP",
+   "cita": "en el termini de deu dies naturals comptats a partir de l'endemà al de la publicació",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Registro Electrónico General del Ayuntamiento o lugares del art. 16.4 Ley 39/2015",
+   "cita": "es presentaran en el Registre Electrònic General d'aquest Ajuntament o en algun dels llocs previstos",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Sede electrónica del Ayuntamiento",
+   "cita": "que es publicarà a la seu electrònica d'aquest Ajuntament",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Oposición: examen tipo test de 30 preguntas, 4 opciones, máximo 60 puntos, eliminatorio (mínimo 20)",
+    "Concurso de méritos: experiencia, títulos, formación, ACTIC (máximo 40 puntos)",
+    "Entrevista, en su caso, para desempate"
+   ],
+   "cita": "La fase d'oposició consistirà en la realització d’una prova d'aptitud eliminatòria i obligatòria",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Experiencia prèvia hasta 20 pt; títulos formativos oficiales hasta 8 pt; formación complementaria hasta 7 pt; ACTIC hasta 5 pt",
+   "cita": "La puntuació màxima de la fase de concurs serà de 40 punts",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, para cubrir necesidades urgentes y provisionales de personal administrativo",
+   "cita": "la creació d'una borsa d'ocupació per tenir preparat un mecanisme que doni cobertura legal a necessitats essencials",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Personal administratiu",
+    "Auxiliar administratiu"
+   ],
+   "cita": "realitzant les seves funcions en la categoria professional d’administratiu o auxiliar administratiu"
+  },
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "C1/C2",
+   "cita": "Experiència prèvia administració local auxiliar administratiu (C2) o administratiu (C1)"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionari interí",
+   "cita": "Els aspirants seran convocats en crida única per ordre alfabètic"
+  },
+  "plazas_discapacidad": {
+   "motivo": "valor_no_numerico",
+   "valor": "7%",
+   "cita": "Es reservarà un contingent no inferior al set per cent de les vacants ofertes"
+  }
+ }
+}

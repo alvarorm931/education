@@ -1,0 +1,61 @@
+{
+ "proceso": "dogc:1011711",
+ "documento": {
+  "id": "dogc:1011711",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1011711",
+  "fecha": "2025-04-15",
+  "huella": "efbfb74d4dd460ed9e211c262f86811dfda9f5858dcd873165b055cf79a43466"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:45:53+00:00",
+ "lote": "msgbatch_017vJZdAmjTkBDdH14aLEdCv",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Tècnic/a mitjà/na (A2), funcionari de carrera",
+    "Oficial 2ª (C2), personal laboral fix"
+   ],
+   "cita": "la provisió mitjançant concurs oposició lliure, d'una plaça de tècnic/a mitjà/na",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "A2",
+   "cita": "Tècnic/a mitjà/na adscrita inicialment al lloc de treball de Tècnic/a d'AODL del departament de Promoció Econòmica, grup A2",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "grup A2, com a personal funcionari de carrera i la provisió",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Simultàniament es convoquen els procediments i s'inicia el termini per presentar les sol·licituds de participació",
+   "cita": "s'inicia el termini per presentar les sol·licituds de participació",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Butlletí Oficial de la Província (BOP)",
+   "cita": "En el Butlletí Oficial de la Província del dia 11 d'abril de 2025 es publiquen les Bases",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, para ocupar con carácter transitorio suplencias de personal de la misma categoría",
+   "cita": "la constitució d'una borsa de treball per ocupar amb caràcter transitori suplències de personal de la mateixa categoria",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "la provisió mitjançant concurs-oposició lliure, de tres places d'oficial 2ª"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 4,
+   "cita": "d'una plaça de tècnic/a mitjà/na adscrita inicialment al lloc de treball"
+  }
+ }
+}

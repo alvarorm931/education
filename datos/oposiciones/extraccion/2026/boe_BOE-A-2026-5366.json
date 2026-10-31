@@ -1,0 +1,40 @@
+{
+ "proceso": "boe:BOE-A-2026-5366",
+ "documento": {
+  "id": "bocm:BOCM-20260303-53",
+  "fuente": "BOCM",
+  "url": "https://www.bocm.es/bocm-20260303-53",
+  "fecha": "2026-03-03",
+  "huella": "3944da2f6b3b6908b54bbb9719c20abf2af0eb36d5a923e5875d71cab235f6a9"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:40:55+00:00",
+ "lote": "msgbatch_01E3wiYcGL8Lzho48bXWLyyb",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "policía del Cuerpo de Policía Local de Majadahonda"
+   ],
+   "cita": "cobertura por turno libre de plazas de policía del Cuerpo de Policía Local de Majadahonda",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "aprobado las bases específicas por las que se regirán las convocatorias de los procesos selectivos",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "página web https://www.majadahonda.org/ del Ayuntamiento de Majadahonda",
+   "cita": "El contenido íntegro de las bases se encuentra publicado en la página web https://www.majadahonda.org/",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_turno_libre": {
+   "motivo": "valor_no_numerico",
+   "valor": "turno libre",
+   "cita": "cobertura por turno libre de plazas de policía del Cuerpo de Policía Local de Majadahonda"
+  }
+ }
+}

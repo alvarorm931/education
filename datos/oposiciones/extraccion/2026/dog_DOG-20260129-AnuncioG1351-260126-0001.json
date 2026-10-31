@@ -1,0 +1,50 @@
+{
+ "proceso": "dog:DOG-20260129-AnuncioG1351-260126-0001",
+ "documento": {
+  "id": "dog:DOG-20260129-AnuncioG1351-260126-0001",
+  "fuente": "DOG",
+  "url": "https://www.xunta.gal/dog/Publicados/2026/20260129/AnuncioG1351-260126-0001_es.html",
+  "fecha": "2026-01-29",
+  "huella": "f12e8057422365a89fd77643197e90b07407d1c1dffe6c5081abbfb329751aa5"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:42:29+00:00",
+ "lote": "msgbatch_01W17mR271uYfWYL6CuSdriL",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "bombero-conductor"
+   ],
+   "cita": "la cobertura de las siguientes plazas por turno libre del Consorcio Provincial contra Incendios y Salvamento de A Coruña",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "Cuarenta y dos (42) plazas de bombero-conductor, personal laboral fijo.",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 42,
+   "cita": "Cuarenta y dos (42) plazas de bombero-conductor, personal laboral fijo.",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "cinco (5) días hábiles a partir del día siguiente al de la publicación del extracto de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes será de cinco (5) días hábiles a partir del día siguiente al de la publicación del extracto",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "en la forma prevista en las bases",
+   "cita": "Los sucesivos anuncios referentes esta convocatoria, cuando proceda, de conformidad con las bases se harán públicos en la forma prevista en las mismas.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 42,
+   "cita": "la cobertura de las siguientes plazas por turno libre del Consorcio Provincial contra Incendios y Salvamento de A Coruña"
+  }
+ }
+}

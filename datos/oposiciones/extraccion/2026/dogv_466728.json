@@ -1,0 +1,93 @@
+{
+ "proceso": "dogv:466728",
+ "documento": {
+  "id": "dogv:466728",
+  "fuente": "DOGV",
+  "url": "https://dogv.gva.es/datos/2026/02/25/pdf/2026_5441_es.pdf",
+  "fecha": "2026-02-25",
+  "huella": "8a21a76bdc6e8f6d6c1a689348c686a00c21a05190cbe7558d7fc43d20a0c38b"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:42:28+00:00",
+ "lote": "msgbatch_01W17mR271uYfWYL6CuSdriL",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Investigador/a doctor/a júnior",
+    "Investigador/a doctor/a júnior",
+    "Investigador/a doctor/a júnior",
+    "Investigador/a doctor/a sénior",
+    "Investigador/a doctor/a sénior",
+    "Investigador/a doctor/a sénior"
+   ],
+   "cita": "Oferta pública de un puesto de trabajo de investigador/a doctor/a júnior.",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "A",
+   "cita": "Investigador/a doctor/a júnior. Grupo: A.",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "Convocar la oferta pública de varias plazas de este organismo con contrato laboral a cargo de una línea de investigación",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Doctor; en algunos anexos también grado en Biología, grado en Física o licenciatura/grado en Historia",
+   "cita": "1.6.1. Titulación: doctor.",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Mayor de 16 años; nacionalidad española o de la UE u otra con permiso de trabajo y residencia en la contratación; no padecer enfermedad incompatible; no estar inhabilitado para funciones públicas. Varios anexos exigen también certificados de inglés (C1 o B1) o portugués (B2).",
+   "cita": "Tener cumplidos, al menos, 16 años el día en que finaliza el plazo de presentación de solicitudes.",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "diez días hábiles a partir del siguiente hábil al de la publicación de la resolución en el DOGV",
+   "cita": "El plazo de presentación de las solicitudes será de diez días hábiles a partir del siguiente hábil al de la publicación de esta resolución en el Diari Oficial de la Generalitat Valenciana (DOGV).",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Solicitud electrónica obligatoria que la Universitat de València pondrá a disposición, con enlace publicado en la web del Servicio de Recursos Humanos",
+   "cita": "Deberán presentar la solicitud, junto con el currículo y los documentos que acrediten los méritos alegados, obligatoriamente, a través de la solicitud electrónica",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "DOGV, tablón oficial de anuncios de la Universitat de València y página web del Servicio de Recursos Humanos (PAS), Sección de PAS Investigación",
+   "cita": "Esta convocatoria se publicará en el Diari Oficial de la Generalitat Valenciana (DOGV), en el tablón oficial de anuncios",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Concurso: valoración de méritos curriculares",
+    "Entrevista, en su caso"
+   ],
+   "cita": "El proceso selectivo constará de un concurso que consistirá en la valoración de los méritos curriculares",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Producción científica hasta 40 puntos; méritos preferentes hasta 20; participación en proyectos competitivos hasta 15; transferencia del conocimiento hasta 15; estancias posdoctorales hasta 10",
+   "cita": "2.1. Producción científica (hasta 40 puntos): la dirección de tesis, publicación de artículos científicos",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, para cubrir llamamientos mientras dure la línea de investigación",
+   "cita": "La bolsa de trabajo que derive de este proceso selectivo permanecerá vigente mientras dure la línea de investigación para el que fue convocado.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso",
+   "cita": "La presente oferta tiene por objeto la selección de personal para cubrir varios puestos de personal laboral para la línea de investigación mediante el sistema de concurso."
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 6,
+   "cita": "Convocar la oferta pública de varias plazas de este organismo con contrato laboral a cargo de una línea de investigación"
+  }
+ }
+}

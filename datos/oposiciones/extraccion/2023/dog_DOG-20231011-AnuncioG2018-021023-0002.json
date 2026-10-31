@@ -1,0 +1,106 @@
+{
+ "proceso": "dog:DOG-20231011-AnuncioG2018-021023-0002",
+ "documento": {
+  "id": "dog:DOG-20231011-AnuncioG2018-021023-0002",
+  "fuente": "DOG",
+  "url": "https://www.xunta.gal/dog/Publicados/2023/20231011/AnuncioG2018-021023-0002_es.html",
+  "fecha": "2023-10-11",
+  "huella": "405f8e360e3b5bc9a788183a717e7b0003331e3bc06508d2c5fd198868953487"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:44+00:00",
+ "lote": "msgbatch_01SjfjDqJRwL6bpTvJz2YfVg",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "personal empleado investigador",
+   "cita": "Se convoca proceso selectivo para cubrir con personal fijo la plaza vacante",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "Se convoca proceso selectivo para cubrir con personal fijo la plaza vacante",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "El sistema de selección será el de concurso.",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Titulación que se recoge en el anexo II para la plaza convocada (el anexo II no figura en el texto recibido)",
+   "cita": "Estar en posesión da titulación que se recoge en el anexo II para la plaza convocada.",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española, de otro Estado miembro de la UE o extranjera en situación de legalidad con documento que habilite para trabajar; haber cumplido 16 años y no exceder la edad de jubilación forzosa; no tener condena firme por delitos contra la libertad sexual ni trata; aptitud médica; no estar separado del servicio ni inhabilitado",
+   "cita": "Haber cumplido los 16 años de edad y no exceder, en su caso, de la edad máxima de jubilación forzosa.",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Conocimiento de lengua gallega (certificado según anexo II; plazo de dos años desde la contratación para acreditarlo si no se aporta con la solicitud)",
+   "cita": "Fotocopia del certificado de conocimiento de lengua gallega que corresponda según lo recogido en el anexo II",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Veinte días naturales desde el día siguiente a la publicación del anuncio de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes es de veinte días naturales, contados a partir del siguiente",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Exclusivamente por medios electrónicos mediante el formulario de la sede electrónica de la USC",
+   "cita": "deberán formalizar su solicitud, así como abonar la tasa correspondiente, únicamente por medios electrónicos.",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón electrónico de la sede de la USC y página web del Servicio de Recursos Humanos de la USC; resoluciones en el Diario Oficial de Galicia",
+   "cita": "la relación de personas aspirantes con la indicación de la puntuación obtenida",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Concurso: méritos generales (experiencia, hasta 70 puntos)",
+    "Concurso: méritos específicos (formación, titulación, memoria, otros méritos, hasta 30 puntos)"
+   ],
+   "cita": "El sistema selectivo será el de concurso que constará de los siguientes apartados",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Experiencia hasta 70 puntos (últimos 10 años; 0,60 puntos/mes en la plaza en la USC; 0,20 en otras plazas USC o administraciones). Méritos específicos hasta 30 puntos: formación 9, titulación 1, memoria 15, otros méritos 5 (idiomas e investigación)",
+   "cita": "Experiencia: hasta un máximo de 70 puntos. Se valorarán únicamente los últimos 10 años",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "no",
+   "cita": "resuelve convocar proceso selectivo para cubrir la plaza que se relaciona en el anexo",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Período de prueba de seis meses para categorías de los grupos I y II y de dos meses para el resto",
+   "cita": "El período de prueba para el personal laboral de nuevo ingreso será de seis meses cuando se acceda",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "resuelve convocar proceso selectivo para cubrir la plaza que se relaciona en el anexo"
+  },
+  "plazas_turno_libre": {
+   "motivo": "cita_no_literal",
+   "valor": 1,
+   "cita": "convocar pruebas selectivas para cubrir, por el sistema de acceso libre, plazas de personal empleado investigador"
+  },
+  "tasa_euros": {
+   "motivo": "valor_no_numerico",
+   "valor": "Importe según anexo II (no figura en el texto recibido)",
+   "cita": "Las tasas se recogen en el anexo II de la plaza ofertada de la presente convocatoria."
+  },
+  "exenciones_tasa": {
+   "motivo": "cita_no_literal",
+   "valor": "Exención total: discapacidad igual o superior al 33 % y familia numerosa de categoría especial. 50 %: familia numerosa general y demandantes de empleo de al menos seis meses sin prestación",
+   "cita": "estarán exentas del pago: Las personas con discapacidad igual o superior al 33 %."
+  }
+ }
+}

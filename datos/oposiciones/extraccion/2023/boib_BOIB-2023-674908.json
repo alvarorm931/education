@@ -1,0 +1,51 @@
+{
+ "proceso": "boib:BOIB-2023-674908",
+ "documento": {
+  "id": "boib:BOIB-2023-674908",
+  "fuente": "BOIB",
+  "url": "https://www.caib.es/eboibfront/es/2023/11759/674908/resolucion-del-dia-16-de-junio-de-2023-de-la-unive",
+  "fecha": "2023-06-22",
+  "huella": "01ec165071573c4625bf36e908c25a1a3273aa0d58721413e5194f2e15a0629c"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:59:32+00:00",
+ "lote": "msgbatch_012nGabRM1G4b7cEKJh1Bcx1",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Profesor permanente laboral",
+    "Profesor ayudante doctor"
+   ],
+   "cita": "convoca el proceso de selección para la contratación de personal docente e investigador en las modalidades de profesor permanente laboral y profesor ayudante doctor",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "convoca el proceso de selección para la contratación de personal docente e investigador",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "convoca el proceso de selección para la contratación de personal docente e investigador",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón electrónico oficial de la Universidad de las Illes Balears",
+   "cita": "Las bases de la convocatoria y los plazos para presentar solicitudes se publicarán en el tablón electrónico oficial",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 43,
+   "cita": "Las contrataciones correspondientes a profesor permanente laboral se realizarán con un total de diez plazas"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 43,
+   "cita": "con un total de diez plazas de turno libre procedentes de la oferta de empleo público"
+  }
+ }
+}

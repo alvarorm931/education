@@ -1,0 +1,43 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2026-1778",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2026-1778",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2026/03/16_51/2026_001778.pdf",
+  "fecha": "2026-03-16",
+  "huella": "63e3bc831ec0ac478db909b215169207c581f700eec0b0f6977ac5f1acd2fc02"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:40:28+00:00",
+ "lote": "msgbatch_01E3wiYcGL8Lzho48bXWLyyb",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "educador/a",
+   "cita": "BASES GENERALES QUE HAN DE REGIR EL PROCESO DE SELECCIÓN PARA LA COBERTURA DE 1 PLAZA DE EDUCADOR/A",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mediante el sistema de concurso oposición reservado al turno libre",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Página Web del Ayuntamiento de Villajoyosa, apartado Ofertas de Empleo - Convocatorias ya publicadas pero no finalizadas - Organismos Autónomos",
+   "cita": "El texto íntegro de la citada Resolución puede ser consultado en la página Web del Ayuntamiento de Villajoyosa",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 1,
+   "cita": "para la provisión en propiedad de 1 plaza de educador/a con destino al OAL Parra Conca"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "mediante el sistema de concurso oposición reservado al turno libre"
+  }
+ }
+}

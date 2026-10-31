@@ -1,96 +1,47 @@
 {
  "proceso": "boptoledo:BOPTOLEDO-2026-4313",
  "documento": {
-  "id": "boptoledo:BOPTOLEDO-2026-4313",
-  "fuente": "BOP-TOLEDO",
-  "url": "https://bop.diputoledo.es/webEbop/DocGet?id=26094302;0&insert_number=4313&insert_year=2026",
-  "fecha": "2026-09-25",
-  "huella": "382b12b3ead03e56c9551ceb640395a872117552d4a1b7e5028ceaccfa5d3a76"
+  "id": "docm:DOCM-2026-7034",
+  "fuente": "DOCM",
+  "url": "https://docm.jccm.es/portaldocm/verArchivoHtml.do?ruta=2026/10/05/html/2026_7034.html&tipo=rutaDocm",
+  "fecha": "2026-10-05",
+  "huella": "6ff3014c77eb03a3e16b332aa34ba39cdceff8be8835113dad5df1910b180adc"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T08:03:38+00:00",
- "lote": "msgbatch_013xFoLdqcGqWcqkzh7qrdGg",
+ "extraido": "2026-10-31T14:41:53+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
-   "valor": "Policía, Escala Básica, Cuerpo de Policía Local de Santa Olalla (provisión por movilidad)",
-   "cita": "la provisión de una (1) plazas de Policía Local, vacantes en la plantilla municipal de policía local",
-   "nivel": "sin_signos"
-  },
-  "grupo": {
-   "valor": "C1",
-   "cita": "clasificada en el grupo C-1 de los establecidos en el artículo 76",
+   "valor": "Policía Local",
+   "cita": "provisión de una (1) plaza de policía local, vacante en la plantilla municipal de policía local",
    "nivel": "literal"
   },
   "vinculo": {
    "valor": "funcionario de carrera",
-   "cita": "Ser funcionario/a de carrera de un Cuerpo de la Policía Local de Castilla-La Mancha",
+   "cita": "provisión de una (1) plaza de policía local, vacante en la plantilla municipal de policía local",
    "nivel": "literal"
   },
   "sistema": {
    "valor": "concurso",
-   "cita": "mediante el sistema de concurso de movilidad",
+   "cita": "por el sistema de movilidad mediante concurso de méritos",
    "nivel": "literal"
   },
   "plazas_total": {
    "valor": 1,
-   "cita": "provisión de 1 plaza vacante en la Relación de Puestos de Trabajo",
-   "nivel": "literal"
-  },
-  "plazas_turno_libre": {
-   "valor": 1,
-   "cita": "provisión de 1 plaza vacante en la Relación de Puestos de Trabajo",
-   "nivel": "literal"
-  },
-  "otros_requisitos": {
-   "valor": "Funcionario de carrera de Cuerpo de Policía Local de Castilla-La Mancha, categoría Policía, Subescala de Servicios Especiales, con tres años de antigüedad y dos años en el último puesto obtenido; no estar inhabilitado ni en situación administrativa distinta a la de activo",
-   "cita": "tener una antigüedad mínima de tres años en la misma",
+   "cita": "provisión de una (1) plaza de policía local, vacante en la plantilla municipal de policía local",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "quince días hábiles desde el día siguiente a la publicación del anuncio de la convocatoria en el Diario Oficial de Castilla-La Mancha",
-   "cita": "el plazo de presentación de solicitudes será de quince días hábiles contados a partir del día siguiente",
+   "valor": "quince días hábiles contados a partir del día siguiente al de la publicación del anuncio de la convocatoria en Diario Oficial de Castilla-La Mancha",
+   "cita": "el plazo de presentación de solicitudes que será de quince días hábiles contados a partir del día siguiente al de la publicación",
    "nivel": "literal"
   },
-  "presentacion": {
-   "valor": "Presencialmente en la Oficina de Atención al Ciudadano, o telemáticamente en el registro electrónico con certificado electrónico, o por otras formas del art. 16 de la Ley 39/2015",
-   "cita": "Telemáticamente. A través del registro electrónico de este Ayuntamiento",
-   "nivel": "literal"
-  },
-  "ejercicios": {
-   "valor": [
-    "Concurso de méritos generales (antigüedad, titulaciones, cursos impartidos y recibidos; máximo 70 puntos)",
-    "Concurso de méritos específicos (entrevista, autoprotección, memoria; máximo 30 puntos)"
-   ],
-   "cita": "El concurso de méritos constará de dos (2) fases",
-   "nivel": "literal"
-  },
-  "meritos": {
-   "valor": "Valoración máxima de 100 puntos: generales hasta 70 (antigüedad 20, titulaciones 10, cursos impartidos 20, cursos recibidos 20) y específicos hasta 30 (entrevista 15, autoprotección 10, memoria 5)",
-   "cita": "El sistema de selección será el concurso de méritos y tendrá una valoración máxima de 100 puntos",
-   "nivel": "literal"
-  },
-  "bolsa": {
-   "valor": "no",
-   "cita": "Los puestos convocados no podrán ser declarados desiertos",
-   "nivel": "literal"
-  },
-  "practicas_o_curso": {
-   "valor": "no se establece periodo de prácticas ni curso selectivo; toma de posesión en cinco días hábiles",
-   "cita": "El plazo de toma de posesión será de cinco días hábiles a contar desde el cese en el puesto anterior",
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia, sede electrónica del Ayuntamiento y Tablón de Anuncios",
+   "cita": "se publicarán en el Boletín Oficial de la Provincia y en la sede electrónica de este Ayuntamiento",
    "nivel": "literal"
   }
  },
- "rechazados": {
-  "titulacion": {
-   "motivo": "cita_no_literal",
-   "valor": "Bachiller, Técnico o equivalente, o haber realizado las actividades formativas de dispensa previstas en la Ley 8/2002",
-   "cita": "Estar en posición del título de Bachiller, Técnico o equivalente"
-  },
-  "publicaciones": {
-   "motivo": "cita_no_literal",
-   "valor": "Boletín Oficial de la provincia de Toledo, Diario Oficial de Castilla-La Mancha (convocatoria) y sede electrónica del Ayuntamiento y tablón de anuncios",
-   "cita": "En el Diario Oficial de Castilla-La Mancha se publicará la convocatoria"
-  }
- }
+ "rechazados": {}
 }

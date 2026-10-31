@@ -1,0 +1,93 @@
+{
+ "proceso": "dogv:410780",
+ "documento": {
+  "id": "dogv:410780",
+  "fuente": "DOGV",
+  "url": "https://dogv.gva.es/datos/2025/02/19/pdf/2025_2613_es.pdf",
+  "fecha": "2025-02-19",
+  "huella": "eeb31c585cb1fdaff356958da26e3ae55e6254e94a4bc76ce4814a5c1fc6d34d"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:46:50+00:00",
+ "lote": "msgbatch_01MQzQCLMZKxUrrPMAj7dr53",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Profesorado asociado (plazas previstas en el anexo I)"
+   ],
+   "cita": "convocar un concurso para seleccionar profesorado asociado para las plazas previstas en el anexo I",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "otro",
+   "cita": "contrato laboral indefinido a tiempo parcial",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Titulación superior específica, o excepcionalmente otra, que se requiera para cada plaza en el anexo I",
+   "cita": "estar en posesión de la titulación superior específica, o excepcionalmente otra, que se requiera para cada plaza en el anexo I",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española o de la UE (o residencia legal); 16 años cumplidos y no superar edad de jubilación forzosa; no haber sido separado de la Administración ni inhabilitado; capacidad funcional; nivel C1 de castellano para extranjeros; ejercicio de actividad profesional remunerada como especialista durante al menos tres de los últimos cinco años",
+   "cita": "Tener cumplidos 16 años y no superar la edad máxima de jubilación forzosa",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Valenciano y/o lengua extranjera, según lo exija cada plaza en el anexo I",
+   "cita": "Lingüístico, consistente en el conocimiento del valenciano y/o de una determinada lengua extranjera",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 30.57,
+   "cita": "Los derechos de participación serán de 30,57 euros, por cada plaza a la que se desee concursar.",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Familia numerosa especial; víctimas de violencia sobre la mujer; diversidad funcional igual o superior al 33%; exclusión social. Bonificación del 50% familia numerosa general y 10% por presentación telemática",
+   "cita": "Las personas con diversidad funcional igual o superior al 33%. Para ello seleccionarán en el apartado de Exenciones",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "diez días hábiles desde el día siguiente a la publicación de la convocatoria en el DOGV",
+   "cita": "El plazo de presentación de solicitudes será de diez días hábiles, contados a partir del día siguiente",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Exclusivamente por vía electrónica en la Sede electrónica de la Universitat Politècnica de València, con identificación electrónica",
+   "cita": "Las solicitudes se cumplimentarán y presentarán exclusivamente por vía electrónica",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de anuncios del Departamento, y complementariamente microweb del Departamento o servidor UPV.noticias",
+   "cita": "hará pública en el tablón de anuncios del departamento, y complementariamente y sin carácter oficial la microweb",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Fase 1: concurso de méritos (máximo 100 puntos, mínimo 30)",
+    "Fase 2: exposición y debate sobre trayectoria profesional (máximo 30 puntos, mínimo 15)"
+   ],
+   "cita": "El procedimiento de selección constará de dos fases",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Méritos valorados según baremo del Acuerdo de 06.06.2024 del Consejo de Gobierno, hasta 100 puntos en la fase de concurso",
+   "cita": "Se valorarán los méritos acreditados por los aspirantes hasta un máximo de 100 puntos",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "Procedimiento de selección constará de dos fases: concurso de méritos y exposición y debate"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, lista de reserva para renuncia, causas que impidan la contratación o necesidades de sustitución",
+   "cita": "constituyéndose con el resto de aspirantes que hayan superado las dos fases del proceso, una lista de reserva"
+  }
+ }
+}

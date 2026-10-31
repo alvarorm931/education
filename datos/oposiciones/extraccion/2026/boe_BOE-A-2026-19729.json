@@ -1,108 +1,114 @@
 {
  "proceso": "boe:BOE-A-2026-19729",
  "documento": {
-  "id": "bopalicante:BOPALICANTE-2026-6168",
+  "id": "bopalicante:BOPALICANTE-2026-6165",
   "fuente": "BOP-ALICANTE",
-  "url": "https://www.dip-alicante.es/bop2/pdftotal/2026/08/07_148/2026_006168.pdf",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2026/08/07_148/2026_006165.pdf",
   "fecha": "2026-08-07",
-  "huella": "192f3f863cb0c194d3b4701aab559d170893e07b1e6f0bdb45ec2e46391d8f5a"
+  "huella": "0aefe49d42a588683353f9f22c58fd484762e0ed1e5228ec2389b1070fc4ea62"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T07:39:53+00:00",
- "lote": "msgbatch_013q7o24qMms8ZNZdwMNkW1L",
+ "extraido": "2026-10-31T14:41:55+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
    "valor": [
-    "Tècnic/a d'Orientació i Inserció Laboral"
+    "TÈCNIC/A GESTIÓ RRHH"
    ],
-   "cita": "Denominació del lloc TÈCNIC/A D’ORIENTACIÓ I INSERCIÓ LABORAL",
+   "cita": "Denominació del lloc TÈCNIC/A GESTIÓ RRHH Departament Recursos Humans",
    "nivel": "literal"
   },
   "grupo": {
    "valor": "A2",
-   "cita": "Grup/Subgrup A2 Nivell 20",
+   "cita": "Naturalesa lloc Funcionarial Grup/Subgrup A2 Nivell CD 22",
    "nivel": "literal"
   },
   "vinculo": {
-   "valor": "funcionario interino",
-   "cita": "cobertura interina fins cobrir la plaça en propiestat",
+   "valor": "funcionario de carrera",
+   "cita": "BASES PER A LA SELECCIÓ DE FUNCIONARI PER PROMOCIÓ INTERNA MITJANÇANT CONCURS DE MÈRITS",
    "nivel": "literal"
   },
   "sistema": {
-   "valor": "concurso-oposición",
-   "cita": "Sistema de selecció Concurs-oposició",
+   "valor": "concurso",
+   "cita": "Sistema de selecció Concurs",
    "nivel": "literal"
   },
   "plazas_total": {
    "valor": 1,
-   "cita": "cobertura interina fins cobrir la plaça en propiestat d’una plaça de tècnic/a d’orientació",
+   "cita": "per cobrir una plaça, en torn de promoció interna",
+   "nivel": "literal"
+  },
+  "plazas_promocion_interna": {
+   "valor": 1,
+   "cita": "cobrir una plaça, en torn de promoció interna",
    "nivel": "literal"
   },
   "titulacion": {
    "valor": "Grau, Llicenciatura, Diplomatura, Enginyer, Arquitecte o equivalent",
-   "cita": "Posseir la titulació de Grau, Llicenciatura, Diplomatura, Enginyer, Arquitecte o equivalent",
+   "cita": "Titulació Grau, Llicenciatura, Diplomatura, Enginyer, Arquitecte o equivalent",
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Nacionalidad española o de la UE en condiciones; 16 años cumplidos y no exceder la edad de jubilación; capacidad física y psíquica; no haber sido separado del servicio; no estar inscrito en el Registro Central de Delincuentes Sexuales",
-   "cita": "Haver complit setze anys i no excedir, en el seu cas, de l'edat màxima de jubilació forçosa",
+   "valor": "Ser funcionario de carrera del Ayuntamiento de Ondara, Grupo C, Escala de Administración General; antigüedad mínima de dos años como funcionario de carrera; certificado negativo del Registro Central de Delincuentes Sexuales",
+   "cita": "Ser funcionari de carrera de l'Ajuntament de Ondara, pertanyent al Grup: C; Escala d’Administració General",
    "nivel": "literal"
   },
   "idioma_cooficial": {
-   "valor": "Valenciano, certificado C1 o grado medio",
-   "cita": "Estar en possessió del certificat de coneixements de nivell C1 o grau mitjà de valencià",
+   "valor": "valenciano nivel C1",
+   "cita": "Acreditar la competència lingüística en els coneixements de valencià nivel C1",
    "nivel": "literal"
   },
   "exenciones_tasa": {
-   "valor": "Discapacidad igual o superior al 33 %; demandantes de empleo inscritos en LABORA sin prestación; bonificación del 50 % para familias numerosas",
-   "cita": "Les persones amb discapacitat igual o superior al 33 %, segons certificat oficial",
+   "valor": "Personas con discapacidad igual o superior al 33 %; inscritas en LABORA como demandantes sin prestación o subsidio; bonificación del 50 % para familias numerosas reconocidas",
+   "cita": "Es troben exempts del pagament de la taxa aquells subjectes passius que es troben en alguna de les situacions següents",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "10 días hábiles desde el día siguiente a la publicación del anuncio en el BOP de Alicante",
-   "cita": "en el termini de 10 dies hàbils , comptats a partir de l'endemà al de la publicació",
+   "valor": "20 días hábiles desde el día siguiente a la publicación de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "termini de 20 dies hàbils, comptats a partir de l'endemà al de la publicació de la convocatòria en el Butlletí Oficial de l'Estat",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Registro Electrónico General del Ayuntamiento o lugares del artículo 16.4 de la Ley 39/2015, según modelo en la sede electrónica",
-   "cita": "es presentaran en el Registre Electrònic General d'aquest Ajuntament o en algun dels llocs",
+   "valor": "Por medios telemáticos, según modelo publicado en la sede electrónica del Ayuntamiento",
+   "cita": "haurà de presentar-se, per mitjans telemàtics, en el termini de 20 dies hàbils",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Boletín Oficial de la Provincia, tablón de anuncios de la sede electrónica del Ayuntamiento",
-   "cita": "que es publicarà en el Butlletí Oficial de la Província i en el tauler d’anuncis de la Seu electrònica",
+   "valor": "Boletín Oficial de la Provincia, sede electrónica del Ayuntamiento (http://ondara.sedelectronica.es) y, en su caso, tablón de anuncios",
+   "cita": "La convocatòria s'anunciarà en el Butlletí Oficial de la Província, la seu electrònica de l'Ajuntament",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Fase de oposición (máx. 30 puntos): 10 preguntas escritas sobre el temario (mín. 5 puntos, eliminatoria), en una hora",
-    "Supuesto práctico a elegir entre dos (máx. 20 puntos, mín. 10), en un máximo de dos horas"
+    "Concurso: experiencia profesional (hasta 85 puntos)",
+    "Concurso: formación (hasta 14 puntos)",
+    "Concurso: conocimiento del valenciano (hasta 1 punto)"
    ],
-   "cita": "Constarà d'un exercici únic amb dues parts, la primera de caràcter teòric i la segona de supòsits pràctics.",
+   "cita": "PROCEDIMENT DE SELECCIÓ El procediment de selecció dels aspirants constarà de la següent fase: — Concurs.",
    "nivel": "literal"
   },
-  "temas": {
-   "valor": 34,
-   "cita": "Tema 34: Fons Europeu Next Generation UE",
+  "meritos": {
+   "valor": "Experiencia profesional hasta 85 puntos (0,50 por mes como Técnico/a RRHH; 0,30 como Administrativo; 0,15 como Auxiliar); formación hasta 14 puntos; conocimiento del valenciano C2 hasta 1 punto",
+   "cita": "La puntuació máxima en aquesta fase será de 100 punts.",
    "nivel": "literal"
   },
   "bolsa": {
-   "valor": "Sí, bolsa de trabajo para cubrir necesidades temporales mediante nombramiento de personal interino o contratación laboral",
-   "cita": "creació de borsa de treball",
+   "valor": "no",
+   "cita": "Quan siga necessari publicar un acte administratiu que continga dades personals",
    "nivel": "literal"
   }
  },
  "rechazados": {
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 0,
+   "cita": "cobrir una plaça, en torn de promoció interna"
+  },
   "tasa_euros": {
    "motivo": "cita_no_literal",
    "valor": 60,
    "cita": "per import de 60 euros per a participar en la celebració de les proves selectives"
-  },
-  "meritos": {
-   "motivo": "cita_no_literal",
-   "valor": "Experiencia profesional (máx. 10 puntos); formación (máx. 9 puntos); conocimiento del valenciano (máx. 1 punto); fase de concurso máx. 20 puntos en total",
-   "cita": "Experiència professional (màxim 10 punts). Formació (fins un màxim de 9 punts)"
   }
  }
 }

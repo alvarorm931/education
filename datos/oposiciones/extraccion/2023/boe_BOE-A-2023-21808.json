@@ -1,0 +1,85 @@
+{
+ "proceso": "boe:BOE-A-2023-21808",
+ "documento": {
+  "id": "bopvalencia:BOPVALENCIA-2022-15902",
+  "fuente": "BOP-VALENCIA",
+  "url": "https://bop.dival.es/bop/downloads?anuncioNumReg=2022/15902&lang=va",
+  "fecha": "2022-12-30",
+  "huella": "a3181f9e50c97c4318ba8b20786bbafcb1c263f89266800903af243d07305de9"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:53+00:00",
+ "lote": "msgbatch_01SjfjDqJRwL6bpTvJz2YfVg",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "OPERARIO/A CEMENTERIO",
+   "cita": "Denominación OPERARIO/A CEMENTERIO Código puesto RPT B130 Nº de vacantes 1",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "AP",
+   "cita": "Grupo/subgrupo AP Categoría Laboral Denominación OPERARIO/A CEMENTERIO",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "Categoría Laboral Denominación OPERARIO/A CEMENTERIO Código puesto RPT B130",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "para proveer en propiedad una plaza de operario/a cementerio por el sistema de concurso de méritos",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "Nº de vacantes 1 Sistema de selección Concurso",
+   "nivel": "literal"
+  },
+  "plazas_turno_libre": {
+   "valor": 1,
+   "cita": "mediante concurso de méritos por turno libre, para la provisión de una plaza de operario/a Cementerio",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Certificado de escolaridad",
+   "cita": "Estar en posesión del certificado de escolaridad.",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Estar en posesión del permiso de conducir tipo B.",
+   "cita": "Estar en posesión del permiso de conducir tipo B.",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Diez días hábiles a contar desde el día siguiente al de la publicación del extracto de la convocatoria en el BOE",
+   "cita": "será de diez días hábiles a contar desde el día siguiente al de la publicación del extracto de la convocatoria en el Boletín Oficial del Estado",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Concurso: baremación de méritos (experiencia profesional hasta 55 puntos y otros méritos hasta 45 puntos)"
+   ],
+   "cita": "El procedimiento de selección será el de concurso, que consistirá en la baremación de los méritos alegados y acreditados documentalmente",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Experiencia profesional hasta 55 puntos; otros méritos hasta 45 puntos: cursos de formación hasta 27, valenciano hasta 5, idiomas hasta 3, titulaciones académicas hasta 8, otros méritos hasta 2",
+   "cita": "CURSOS DE FORMACIÓN Y PERFECCIONAMIENTO: HASTA UN MÁXIMO DE 27 PUNTOS.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "idioma_cooficial": {
+   "motivo": "cita_no_literal",
+   "valor": "Conocimiento del valenciano valorado en el concurso hasta 5 puntos; el nivel se valora de A1 a C2 según JQCV o EOI",
+   "cita": "CONOCIMIENTO DEL VALENCIANO: HASTA UN MÁXIMO DE 5 PUNTOS."
+  },
+  "practicas_o_curso": {
+   "motivo": "cita_no_literal",
+   "valor": "No",
+   "cita": "Sin periodo de prácticas ni curso selectivo"
+  }
+ }
+}

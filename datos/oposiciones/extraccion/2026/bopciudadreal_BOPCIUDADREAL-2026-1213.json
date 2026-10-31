@@ -1,0 +1,48 @@
+{
+ "proceso": "bopciudadreal:BOPCIUDADREAL-2026-1213",
+ "documento": {
+  "id": "bopciudadreal:BOPCIUDADREAL-2026-1213",
+  "fuente": "BOP-CIUDADREAL",
+  "url": "https://bop.dipucr.es/bop/2026/04/23",
+  "fecha": "2026-04-23",
+  "huella": "abbba3fea018c3bbcadb54d674a7cd6a78ce9379b3678476fb9092bf54919969"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:40:26+00:00",
+ "lote": "msgbatch_01E3wiYcGL8Lzho48bXWLyyb",
+ "no_son_bases": false,
+ "campos": {
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mediante sistema de concurso-oposición por promoción interna, incluida en la Oferta de Empleo Público",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "aprobar la convocatoria y bases reguladoras del proceso de selección de una plaza",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles a contar a partir del siguiente a la publicación del extracto de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes será de 20 días hábiles a contar a partir del siguiente a la publicación del extracto",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de anuncios y sede electrónica del Ayuntamiento de Membrilla (https://www.membrilla.es y https://sedescr.dipucr.es/membrilla/)",
+   "cita": "Las bases íntegras de esta convocatoria se encuentran expuestas en el tablón de anuncios y sede electrónica del Ayuntamiento",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Oficial del Cuerpo de Policía Local del Ayuntamiento de Membrilla",
+   "cita": "una plaza de Oficial del Cuerpo de Policía Local del Ayuntamiento de Membrilla, por promoción interna"
+  },
+  "plazas_promocion_interna": {
+   "motivo": "cita_no_literal",
+   "valor": 1,
+   "cita": "una plaza de Oficial del Cuerpo de Policía Local del Ayuntamiento de Membrilla, por promoción interna"
+  }
+ }
+}

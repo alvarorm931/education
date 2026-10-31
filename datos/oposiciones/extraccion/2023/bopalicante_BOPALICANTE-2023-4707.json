@@ -1,0 +1,60 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2023-4707",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2023-4707",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2023/06/09_111/2023_004707.pdf",
+  "fecha": "2023-06-09",
+  "huella": "1b785d4dcc6f30483f56b9692fd4097e50ad6479e12a17973f7fe054b19f2394"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:59:28+00:00",
+ "lote": "msgbatch_012nGabRM1G4b7cEKJh1Bcx1",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "C2",
+   "cita": "Monitoras o Monitores (subgrupo C2)",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "aprobaron las bases específicas reguladoras que han de regir la creación de una bolsa",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "5 días hábiles desde el día siguiente a la publicación de la convocatoria en el BOP de Alicante",
+   "cita": "comenzará al día siguiente de la publicación de la convocatoria en el Boletín Oficial de la Provincia de Alicante durante 5 días hábiles",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Solicitud disponible en la sede electrónica del Ayuntamiento de Altea; bases y modelo consultables allí",
+   "cita": "Las bases íntegras y el modelo de solicitud de la convocatoria pueden consultarse en la sede electrónica del Ayuntamiento",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Monitoras o Monitores (bolsa de trabajo temporal, nombramiento interino o contratación laboral temporal)"
+   ],
+   "cita": "creación de una bolsa de trabajo temporal para el nombramiento interino o contratación laboral temporal de Monitoras o Monitores"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario interino",
+   "cita": "bolsa de trabajo temporal para el nombramiento interino o contratación laboral temporal"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Tablón de Anuncios del Ayuntamiento de Altea",
+   "cita": "El resto de anuncios del proceso selectivo únicamente se realizarán en el Tablón de Anuncios del Ayuntamiento de Altea"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, para nombramiento interino o contratación laboral temporal de Monitoras o Monitores (Plan Corresponsables)",
+   "cita": "creación de una bolsa de trabajo temporal para el nombramiento interino o contratación laboral temporal"
+  }
+ }
+}

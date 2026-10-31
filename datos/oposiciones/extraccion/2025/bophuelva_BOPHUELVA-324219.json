@@ -1,0 +1,45 @@
+{
+ "proceso": "bophuelva:BOPHUELVA-324219",
+ "documento": {
+  "id": "bophuelva:BOPHUELVA-324219",
+  "fuente": "BOP-HUELVA",
+  "url": "https://s2.diphuelva.es/portalweb/bope/anuncios/Anuncio_324219_BOP-173_2025.pdf",
+  "fecha": "2025-09-11",
+  "huella": "8eb5e894fd41da6581cb7443faf4447cc372305e5e02c26a829b3c0bfcdc950c"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:42:51+00:00",
+ "lote": "msgbatch_01XofVwxKEhyEjSzGog6wsD4",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "funcionario interino",
+   "cita": "Funcionario interino para la plaza de Administrativo Contratación",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Administrativo Contratación"
+   ],
+   "cita": "la plaza de Administrativo Contratación por como consecuencia de baja por maternidad"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "10 días hábiles a contar desde el día siguiente a la publicación de este anuncio en el Boletín Oficial de la Provincia",
+   "cita": "el plazo de presentación de solicitudes, que será de 10 días hábiles a contar desde el día siguiente a la publicación"
+  },
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "En la sede electrónica http://elcampillo.sedelectronica.es",
+   "cita": "En la sede electrónica http://elcampillo.sedelectronica.es. aparecen íntegramente publicadas las bases"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Sede electrónica http://elcampillo.sedelectronica.es",
+   "cita": "En la sede electrónica http://elcampillo.sedelectronica.es. aparecen íntegramente publicadas las bases"
+  }
+ }
+}

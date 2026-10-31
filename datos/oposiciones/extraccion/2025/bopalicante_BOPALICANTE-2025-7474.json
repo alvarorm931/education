@@ -1,0 +1,55 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2025-7474",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2025-7474",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2025/10/15_196/2025_007474.pdf",
+  "fecha": "2025-10-15",
+  "huella": "4378fda55fa3f9a130e29ad0ed36add477483ad3ecf493027104c68d52e2f6c3"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:41:21+00:00",
+ "lote": "msgbatch_01UNq3BNhPPHoTK3TEJzun1h",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "C1",
+   "cita": "correspondiente al Grupo profesional C, Subgrupo C1",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "creación de una Bolsa de Trabajo temporal de Administrativos/as",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "se aprobaron las bases específicas y se autorizó la convocatoria del proceso de selección",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "10 días hábiles contados a partir del día siguiente a la publicación del anuncio en el BOP de Alicante",
+   "cita": "El plazo de presentación de instancias será de de 10 días hábiles contados a partir del día siguiente",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Administrativos/as de Administración General, Subescala Administrativa"
+   ],
+   "cita": "Bolsa de Trabajo temporal de Administrativos/as de Administración General, Subescala Administrativa"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Tablón de Anuncios del Servicio de Recursos Humanos de la Corporación y página web www.lalfas.es",
+   "cita": "Las bases del proceso selectivo se publicarán íntegramente en el Tablón de Anuncios del Servicio de Recursos Humanos"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, bolsa de trabajo temporal de administrativos/as",
+   "cita": "para la creación de una Bolsa de Trabajo temporal de Administrativos/as de Administración General"
+  }
+ }
+}

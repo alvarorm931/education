@@ -1,0 +1,50 @@
+{
+ "proceso": "bopavila:BOP-AVILA-0624-24",
+ "documento": {
+  "id": "bopavila:BOP-AVILA-0624-24",
+  "fuente": "BOP-AVILA",
+  "url": "https://www.diputacionavila.es/bops/2024/07-03-2024/07-03-2024_062424.pdf",
+  "fecha": "2024-03-07",
+  "huella": "c5955131ef3966a16d22e1fac0b86d74605b8941f561fa2d909b2a83e1246499"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:54:02+00:00",
+ "lote": "msgbatch_01EQ4R6PVKpEwTXzXwPCmspm",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Chófer-Conductor"
+   ],
+   "cita": "provisión en propiedad de dos plazas de Chófer-Conductor, perteneciente a la Escala de Administración Especial",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "vacantes en la plantilla de personal funcionario de carrera de la Excma. Diputación Provincial de Ávila",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 2,
+   "cita": "provisión en propiedad de dos plazas de Chófer-Conductor de la Excma. Diputación Provincial de Ávila",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de Anuncios de la Sede Electrónica y página web de la Excma. Diputación Provincial de Ávila",
+   "cita": "Publicar la presente resolución en el Boletín Oficial de la Provincia, en el Tablón de Anuncios de la Sede Electrónica y en la página web",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "C2",
+   "cita": "Grupo C, Subgrupo C2, por el sistema de concurso-oposición en turno libre"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "por el sistema de concurso-oposición en turno libre"
+  }
+ }
+}

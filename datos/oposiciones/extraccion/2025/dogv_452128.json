@@ -1,0 +1,61 @@
+{
+ "proceso": "dogv:452128",
+ "documento": {
+  "id": "dogv:452128",
+  "fuente": "DOGV",
+  "url": "https://dogv.gva.es/datos/2025/11/11/pdf/2025_43841_es.pdf",
+  "fecha": "2025-11-11",
+  "huella": "d5c2826edf450287d3cef22830b4c41ce518dbab301c10951b03c41bc40717e3"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:41:04+00:00",
+ "lote": "msgbatch_01UNq3BNhPPHoTK3TEJzun1h",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Agente de policía local (oposición, turno libre)",
+    "Agente de policía local (concurso, turno de movilidad)"
+   ],
+   "cita": "Dos plazas de agente de policía local, pertenecientes a la escala de administración especial",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C1",
+   "cita": "Dos plazas de agente de policía local, pertenecientes a la escala de administración especial",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "pertenecientes a la escala de administración especial, subescala servicios especiales",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "Dos plazas de agente de policía local, pertenecientes a la escala de administración especial, subescala servicios especiales y clase policía local y sus auxiliares, por el sistema de oposición",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles a contar desde el siguiente al de la publicación de esta resolución en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes será de veinte días hábiles a contar desde el siguiente al de la publicación",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "En la forma prevista en las propias bases",
+   "cita": "Los sucesivos anuncios referentes a esta convocatoria, cuando procedan de conformidad con las bases, se harán públicos en la forma prevista en las propias bases.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 4,
+   "cita": "Dos plazas de agente de policía local, pertenecientes a la escala de administración especial"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 2,
+   "cita": "por el sistema de oposición, en turno libre"
+  }
+ }
+}

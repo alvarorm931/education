@@ -1,0 +1,69 @@
+{
+ "proceso": "boe:BOE-A-2026-4564",
+ "documento": {
+  "id": "dog:DOG-20250610-AnuncioL428-190525-0001",
+  "fuente": "DOG",
+  "url": "https://www.xunta.gal/dog/Publicados/2025/20250610/AnuncioL428-190525-0001_es.html",
+  "fecha": "2025-06-10",
+  "huella": "690af0cae5b1bf9fc33cfc56d1133ef876f65f82625ae8df8c57dd337f2298b1"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:40:23+00:00",
+ "lote": "msgbatch_01E3wiYcGL8Lzho48bXWLyyb",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "A2, C2, AP, B",
+   "cita": "encuadrada en la escala de la Administración general, subescala de gestión, subgrupo A2.",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "la cobertura de las siguientes plazas vacantes en la plantilla de personal funcionario del Ayuntamiento de Lugo",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "las bases específicas que regirán los procesos selectivos para la cobertura de las siguientes plazas vacantes",
+   "nivel": "literal"
+  },
+  "plazas_promocion_interna": {
+   "valor": 1,
+   "cita": "1 plaza de técnico/a medio/a de gestión, encuadrada en la escala de la Administración general, subescala de gestión, subgrupo A2. Turno de promoción interna.",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte (20) días hábiles contados desde el día siguiente al de la publicación del correspondiente anuncio en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes será de veinte (20) días hábiles contados desde el día siguiente al de la publicación",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Técnico/a medio/a de gestión",
+    "Auxiliar de biblioteca",
+    "Celador/a de CEIP",
+    "Operario/a de zona rural",
+    "Ordenanza",
+    "Técnico/a especialista TIC",
+    "Trabajador/a social",
+    "Oficial/a vigilante recaudador/a",
+    "Operarios/as de jardines",
+    "Auxiliar administrativo/a"
+   ],
+   "cita": "Se listan 10 tipos de plaza en el anuncio del Ayuntamiento de Lugo, cada uno con su número de plazas y turno."
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 14,
+   "cita": "1 plaza de técnico/a medio/a de gestión, 1 plaza de auxiliar de biblioteca, 1 plaza de celador/a de CEIP"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 13,
+   "cita": "Turno libre. 3 plazas de auxiliar administrativo/a, encuadradas en la escala de la Administración general"
+  }
+ }
+}

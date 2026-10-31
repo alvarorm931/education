@@ -1,0 +1,60 @@
+{
+ "proceso": "dogc:979695",
+ "documento": {
+  "id": "dogc:979695",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=979695",
+  "fecha": "2024-02-29",
+  "huella": "2b5e99be8a914b4161e4a809a4dd7e4555312036bab9c71ed1eb8edd561ad751"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:53:52+00:00",
+ "lote": "msgbatch_01EQ4R6PVKpEwTXzXwPCmspm",
+ "no_son_bases": false,
+ "campos": {
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mitjançant el procediment de concurs oposició lliure",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles",
+   "cita": "termini de 20 dies hàbils comptats a partir de l'endemà de l'última de les publicacions",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Butlletí Oficial de la Província de Girona (BOP Girona), DOGC o BOE",
+   "cita": "publicades íntegrament en el Butlletí Oficial de la Província de Girona número 38",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, para la creación de una bolsa de reposición de agentes",
+   "cita": "i per a la creació d'una borsa de reposició d'agents",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Agent de la Policia Local"
+   ],
+   "cita": "accés en propietat a tres places d'agent de la Policia Local de la plantilla"
+  },
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "C1",
+   "cita": "grup de titulació C1, categoria agent"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "accés en propietat a tres places d'agent de la Policia Local de la plantilla del personal funcionari"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 3,
+   "cita": "accés en propietat a tres places d'agent de la Policia Local"
+  }
+ }
+}

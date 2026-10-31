@@ -1,0 +1,55 @@
+{
+ "proceso": "boe:BOE-A-2025-16732",
+ "documento": {
+  "id": "bocm:BOCM-20250731-94",
+  "fuente": "BOCM",
+  "url": "https://www.bocm.es/bocm-20250731-94",
+  "fecha": "2025-07-31",
+  "huella": "83de36701a0f36abfa935495704b236957d2c523ee28784c881785faafc82bea"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:43:07+00:00",
+ "lote": "msgbatch_01XofVwxKEhyEjSzGog6wsD4",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "policía del cuerpo de la Policía Local del Ayuntamiento de Pinto"
+   ],
+   "cita": "seis plazas de policia del cuerpo de la Policia Local del Ayuntamiento de Pinto",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "para proveer mediante concurso-oposición acceso libre, seis plazas de policia",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 6,
+   "cita": "para proveer mediante concurso-oposición acceso libre, seis plazas de policia",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles a contar desde el día siguiente a la publicación del anuncio de convocatoria en el Boletín Oficial del Estado",
+   "cita": "estableciéndose el plazo de presentación de instancias de 20 días hábiles a contar desde el día siguiente",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Sede Electrónica (Tablón electrónico) del Ayuntamiento de Pinto, plataforma pinto.convoca.online y Boletín Oficial de la Comunidad de Madrid",
+   "cita": "Publicar las bases específicas en la Sede Electrónica (Tablón electrónico) del Ayuntamiento de Pinto",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "proveer mediante acceso libre de seis plazas de policía del cuerpo de la Policía Local"
+  },
+  "plazas_turno_libre": {
+   "motivo": "cita_no_literal",
+   "valor": 6,
+   "cita": "proveer mediante acceso libre de seis plazas de policía del cuerpo de la Policía Local"
+  }
+ }
+}

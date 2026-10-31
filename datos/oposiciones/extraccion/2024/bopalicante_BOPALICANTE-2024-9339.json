@@ -1,0 +1,55 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2024-9339",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2024-9339",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2024/11/18_221/2024_009339.pdf",
+  "fecha": "2024-11-18",
+  "huella": "57ea2ad6dec01f4c76be67985552054f699dab6796bcae477efb49c4b9cce7f4"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:49:47+00:00",
+ "lote": "msgbatch_018TPQE8scQozfAUdc1n8RyC",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Auxiliar de Administración General, Escala Administración General, Subescala auxiliar"
+   ],
+   "cita": "Auxiliar de Administración General, Escala Administración General, Subescala auxiliar, Grupo profesional de clasificación C, subgrupo C2.",
+   "nivel": "sin_signos"
+  },
+  "grupo": {
+   "valor": "C2",
+   "cita": "Grupo profesional de clasificación C, subgrupo C2.",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "acumulación de 4 plazas de la misma clase",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "siendo el sistema el de oposición con la denominación de Auxiliar de Administración General",
+   "nivel": "literal"
+  },
+  "plazas_turno_libre": {
+   "valor": 7,
+   "cita": "7 plazas turno libre: 38, 42, 43, 47, 50, 227 y 228",
+   "nivel": "literal"
+  },
+  "plazas_discapacidad": {
+   "valor": 2,
+   "cita": "2 plazas turno diversidad funcional 226 y 44",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 9,
+   "cita": "deben convocarse un total de 9 plazas de auxiliar de administración general"
+  }
+ }
+}

@@ -1,0 +1,53 @@
+{
+ "proceso": "bopb:BOPB-202610046565",
+ "documento": {
+  "id": "dogc:1040283",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1040283",
+  "fecha": "2026-03-25",
+  "huella": "84a22878945f76c149f69c2c836a32eeb6b72e85951431c61667c8215cb4dbd6"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:40:36+00:00",
+ "lote": "msgbatch_01E3wiYcGL8Lzho48bXWLyyb",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "A1",
+   "cita": "plaça de Tècnic/a de Salut Pública, subgrup A1, vacant a la plantilla",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "vacant a la plantilla del personal funcionari de l'Ajuntament de les Franqueses del Vallès",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "pel procediment de concurs oposició lliure, d'1 (una) plaça de Tècnic/a de Salut Pública",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles, desde el día siguiente a la publicación del edicto de convocatoria en el DOGC",
+   "cita": "el termini de presentació de sol·licituds, que és de vint dies hàbils, començarà a comptar a partir de l'endemà",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "tablón de anuncios de la sede electrónica del ayuntamiento (a efectos informativos)",
+   "cita": "es donarà publicitat de la convocatòria en el tauler d'anuncis de la seu electrònica de l'ajuntament",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Tècnic/a de Salut Pública",
+   "cita": "1 (una) plaça de Tècnic/a de Salut Pública, subgrup A1, vacant a la plantilla del personal funcionari"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 1,
+   "cita": "1 (una) plaça de Tècnic/a de Salut Pública, subgrup A1, vacant a la plantilla"
+  }
+ }
+}

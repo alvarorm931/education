@@ -1,0 +1,65 @@
+{
+ "proceso": "bocm:BOCM-20240514-37",
+ "documento": {
+  "id": "bocm:BOCM-20240514-37",
+  "fuente": "BOCM",
+  "url": "https://www.bocm.es/bocm-20240514-37",
+  "fecha": "2024-05-14",
+  "huella": "90a6c58a8acd07a447448f59516176b4e0ca970a6a82ea39a16afb0daa7b4557"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:54:37+00:00",
+ "lote": "msgbatch_01HRnX7cDVMkRZD7mBamCmLu",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Categorías profesionales (no especificadas en el texto)"
+   ],
+   "cita": "Se convocarán plazas correspondientes a los siguientes grupos y categorías profesionales",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "cobertura como personal laboral fijo por acceso libre y acceso restringido por promoción interna",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "Los procesos de selección se convocarán de conformidad con cuanto establecen los artículos 34",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 36,
+   "cita": "cobertura como personal laboral fijo por acceso libre y acceso restringido por promoción interna de 36 plazas",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Las bases generales y específicas se publicarán en la web del hospital; el texto no detalla requisitos de los aspirantes.",
+   "cita": "en las convocatorias y en las bases generales y específicas que regirán los procesos selectivos, que serán publicadas en la página web",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "página web del Hospital Universitario de Fuenlabrada (www.hospitaldefuenlabrada.org)",
+   "cita": "serán publicadas en la página web del Hospital Universitario de Fuenlabrada ( www.hospitaldefuenlabrada.org )",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "no",
+   "cita": "convocará en el período 2024-2026, los procesos selectivos correspondientes para la cobertura como personal laboral fijo",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_promocion_interna": {
+   "motivo": "valor_no_numerico",
+   "valor": "acceso restringido por promoción interna",
+   "cita": "acceso libre y acceso restringido por promoción interna de 36 plazas"
+  },
+  "plazas_discapacidad": {
+   "motivo": "valor_no_numerico",
+   "valor": "al menos un 7 por 100 de las vacantes",
+   "cita": "se reservará al menos un 7 por 100 de las vacantes para ser cubiertas entre personas con discapacidad"
+  }
+ }
+}

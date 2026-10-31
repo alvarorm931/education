@@ -1,0 +1,50 @@
+{
+ "proceso": "boe:BOE-A-2026-3935",
+ "documento": {
+  "id": "dogv:462190",
+  "fuente": "DOGV",
+  "url": "https://dogv.gva.es/datos/2026/02/06/pdf/2026_923_es.pdf",
+  "fecha": "2026-02-06",
+  "huella": "7af98c8179019969525a223ee4128882fba37d1c9ffe2d202c9e725545a49c39"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:42:40+00:00",
+ "lote": "msgbatch_01W17mR271uYfWYL6CuSdriL",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "peón o peona especialista"
+   ],
+   "cita": "la cobertura en propiedad, como personal laboral fijo, de dos plazas de peón o peona especialistas del Ayuntamiento",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "AP",
+   "cita": "grupo AP agrupaciones profesionales, clase personal de oficios",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "la cobertura en propiedad, como personal laboral fijo, de dos plazas de peón o peona especialistas",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "a través del sistema de oposición, turno libre, pertenecientes a la escala de administración especial",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 2,
+   "cita": "la cobertura en propiedad, como personal laboral fijo, de dos plazas de peón o peona especialistas",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 2,
+   "cita": "a través del sistema de oposición, turno libre, pertenecientes a la escala de administración especial"
+  }
+ }
+}

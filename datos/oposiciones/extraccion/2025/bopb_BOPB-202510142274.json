@@ -1,0 +1,60 @@
+{
+ "proceso": "bopb:BOPB-202510142274",
+ "documento": {
+  "id": "dogc:1023267",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1023267",
+  "fecha": "2025-08-27",
+  "huella": "dd0a9ee3c95737c6882ebfb73f72fef9b0ac1c496c32b5929f18ec27389d4d77"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:42:44+00:00",
+ "lote": "msgbatch_01XofVwxKEhyEjSzGog6wsD4",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "agente de la Policía Local de Viladecavalls"
+   ],
+   "cita": "para la cobertura definitiva de una plaza de agente de la Policía Local de Viladecavalls",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "proceso selectivo por concurso-oposición, turno libre, para la cobertura definitiva",
+   "nivel": "literal"
+  },
+  "plazas_turno_libre": {
+   "valor": 1,
+   "cita": "concurso-oposición, turno libre, para la cobertura definitiva de una plaza de agente",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "no consta",
+   "cita": "El plazo para presentar solicitudes, a fin de tomar parte en el proceso de selección, será de 20 días naturales",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Web municipal: https://tauler.seu.cat/inici.do?idens=830080001 y espacio de oferta pública de empleo de la web del Ayuntamiento",
+   "cita": "Los sucesivos anuncios se harán públicos en la web municipal en el espacio",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 2,
+   "cita": "proceso selectivo por concurso-oposición, turno libre, para la cobertura definitiva de una plaza de agente"
+  },
+  "plazas_promocion_interna": {
+   "motivo": "valor_no_en_cita",
+   "valor": 0,
+   "cita": "por turno restringido de movilidad para la cobertura de otra plaza de agente"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "20 días naturales a contar desde el día siguiente a la publicación del anuncio en el DOGC",
+   "cita": "El plazo para presentar solicitudes será de 20 días naturales a contar desde el día siguiente"
+  }
+ }
+}

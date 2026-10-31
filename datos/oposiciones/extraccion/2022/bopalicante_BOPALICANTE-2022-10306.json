@@ -1,0 +1,127 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2022-10306",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2022-10306",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2022/12/20_240/2022_010306.pdf",
+  "fecha": "2022-12-20",
+  "huella": "8d15f343417b941d462b1970c20792282262dd463a1029949b49fd7954482f55"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:55:42+00:00",
+ "lote": "msgbatch_014eT3dLLVopBnuVgQ4syWD9",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "A2, C1, C2, A1, E / agrupaciones profesionales",
+   "cita": "Grado Arquitectura Técnica, diplomatura arquitectura técnica o equivalente 1 ADMINISTRATIVO/A LABORAL C1",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "Sistema de Concurso de Méritos Extraordinario",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Según plaza: Grado/diplomatura/título de Bachiller o Graduado ESO según el Anexo I; grupo A2 título universitario de grado; C2 Graduado en ESO",
+   "cita": "A2 Título universitario de grado (o equivalente) C2 Título de Graduado/a en Educación Secundaria Obligatoria (o equivalente)",
+   "nivel": "sin_signos"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española (personal funcionario) o residencia legal en España (laboral); 16 años cumplidos; capacidad funcional; no haber sido separado de la Administración",
+   "cita": "Para la admisión a pruebas de personal funcionario de carrera se deberá tener la nacionalidad española",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 27.5,
+   "cita": "Grupo A1: 27,50 euros. Grupo A2: 24,06 euros. Grupo C1: 20,62 euros.",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Exención por discapacidad igual o superior al 33% y rentas inferiores al SMI; exención por desempleo inscrito al menos un mes antes; bonificación 100% familia numerosa especial y 50% general",
+   "cita": "Exención por tener el opositor/a reconocido un grado de minusvalía igual o superior al 33 por 100",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "10 días hábiles contados desde el día siguiente a la publicación del extracto de la convocatoria en el BOE",
+   "cita": "Las instancias se presentarán dentro del plazo de 10 días hábiles, contados a partir del día siguiente de la publicación del extracto",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Sede electrónica municipal (https://sede.villena.es) o presencialmente en el Registro de entrada del Ayuntamiento, Plaza del Rollo 1, Villena",
+   "cita": "deberán presentar su solicitud de participación o instancia en la sede electrónica municipal",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "BOP de Alicante y tablón de anuncios municipal (físico y electrónico en https://sede.villena.es); extracto en DOGV y BOE",
+   "cita": "Los demás anuncios referentes a este procedimiento de selección se publicarán en el Boletín Oficial de la Provincia de Alicante",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Experiencia profesional hasta 60 puntos (0,75 por mes en el Ayuntamiento y 0,25 en otra Administración); cursos, idiomas y titulaciones hasta 40 puntos (cursos 0,4 por hora)",
+   "cita": "Experiencia profesional. Máximo 60 puntos.",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, para incluir en bolsa de trabajo a quienes obtengan 50 puntos o más",
+   "cita": "Los aspirantes, que, habiendo participado en las pruebas selectivas, hayan obtenido una puntuación igual o superior a 50 puntos, serán incluidos en la correspondiente bolsa de trabajo",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "ARQUITECTO/A TÉCNICO",
+    "ADMINISTRATIVO/A",
+    "AUXILIAR ADMINISTRATIVO/A",
+    "ARCHIVERO/A BIBLIOTECARIO/A",
+    "ITOP",
+    "TRABAJADOR/A SOCIAL",
+    "INGENIERO TÉC. INDUSTRIAL",
+    "AGENTE DESARROLLO LOCAL",
+    "TÉCNICO MEDIO INFORMÁTICA",
+    "CONSERJE",
+    "AUXILIAR BIBLIOTECA",
+    "TÉCNICO/A AUXILIAR DE MUSEOS",
+    "TÉC. AUXILIAR DE BIBLIOTECAS",
+    "AYUDANTE ALBAÑIL",
+    "ENCARGADO MANTENIMIENTO DEPORTES",
+    "TRABAJADOR/A FAMILIAR",
+    "MONITOR INTEGRACIÓN SOCIAL",
+    "ANIMADOR/A JUVENIL",
+    "LIMPIADORAS/ES",
+    "AUXILIAR DE HOGAR",
+    "OFICIAL MANTENIMIENTO deportes",
+    "INSPECTOR RURAL",
+    "AYUDANTE SEPULTURERO",
+    "AYUDANTE deportes",
+    "PSICÓLOGO/A"
+   ],
+   "cita": "N.º PLAZAS DENOMINACIÓN NATURALEZA ESCALA GRUPO TITULACIÓN ESPECÍFICA REQUERIDA 1 ARQUITECTO/A TÉCNICO FUNCIONARIAL"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "otro",
+   "cita": "El régimen jurídico de la relación de servicios (funcionarial o laboral, según se indica en el Anexo I)"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 66,
+   "cita": "todas las plazas que constan en el ANEXO I, vacantes en la plantilla de personal del Ayuntamiento de Villena"
+  },
+  "ejercicios": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Concurso de méritos: experiencia profesional (máximo 60 puntos)",
+    "Cursos de formación, idiomas y otras titulaciones (máximo 40 puntos)"
+   ],
+   "cita": "Se valorarán los servicios prestados en la Administración Pública en puestos de trabajo de igual grupo/subgrupo"
+  },
+  "practicas_o_curso": {
+   "motivo": "cita_no_literal",
+   "valor": "no aparece",
+   "cita": ""
+  }
+ }
+}

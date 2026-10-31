@@ -1,0 +1,103 @@
+{
+ "proceso": "boib:BOIB-2022-666031",
+ "documento": {
+  "id": "boib:BOIB-2022-666031",
+  "fuente": "BOIB",
+  "url": "https://www.caib.es/eboibfront/es/2022/11644/666031/resolucion-de-la-presidenta-del-instituto-mallorqu",
+  "fecha": "2022-10-29",
+  "huella": "89dbe5dc2b4d678d07bd7ac244c576b4f0a2e8e4c932b7af655cc461f12b520e"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:31+00:00",
+ "lote": "msgbatch_01B4ETF5xB4buYCHqPiHTXzF",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "1 y 2",
+   "cita": "para cubrir 1 plaza de personal laboral de las categorías adscritas al grupo 1 y 3 plazas",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "Las personas aspirantes que superen el proceso quedarán integradas como personal empleado público del IMAS",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "catalán, certificado B2",
+   "cita": "Para participar en la convocatoria se debe acreditar un nivel de conocimiento de lengua catalana",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 27.57,
+   "cita": "la cuota de la cual son 27,57 €, o acreditar la situación de exención, reducción o bonificación de cuota",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Familia numerosa general 50%; especial 100%; discapacidad igual o superior al 33% 100%; desempleo inscrito al menos 1 mes 100%; familia monoparental 50%",
+   "cita": "Están exentos, en el porcentaje determinado, en el pago de la cuota íntegra de la tasa los sujetos pasivos siguientes",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles desde el día siguiente a la publicación del anuncio de la convocatoria en el BOE",
+   "cita": "El plazo para presentar solicitudes es de veinte días hábiles y empieza el día siguiente al que se haya publicado el anuncio",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Telemáticamente a través del Portal de Selección del IMAS (www.imasmallorca.net/rh) con certificado electrónico o DNI electrónico",
+   "cita": "La solicitud para participar en este proceso selectivo se ha de rellenar mediante la aplicación telemática del IMAS",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de anuncios electrónico del IMAS, Portal de Selección, Sede Electrónica del Consell de Mallorca y BOIB",
+   "cita": "deben publicarse en el tablón de anuncios electrónico del IMAS y en el Portal de Selección",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Méritos según baremo de las disposiciones adicionales séptima y octava del Decreto-ley 6/2022 (anexo III); puntuación máxima no detallada en el texto",
+   "cita": "Este concurso consiste en calificar los méritos alegados y acreditados por las personas aspirantes, de acuerdo con los baremos",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "no",
+   "cita": "Las personas aspirantes que superen el proceso quedarán integradas como personal empleado público del IMAS",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Categorías adscritas al grupo 1 (personal laboral de la Residencia Miquel Mir del IMAS)",
+    "Categorías adscritas al grupo 2 (personal laboral de la Residencia Miquel Mir del IMAS)"
+   ],
+   "cita": "Se convoca 1 plaza de personal laboral de las categorías adscritas al grupo 1 y 3 plazas de personal laboral de las categorías adscritas al grupo 2"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso",
+   "cita": "el sistema selectivo de los procesos de estabilización debe ser con carácter excepcional el concurso de méritos"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 4,
+   "cita": "cobertura de 1 plaza de las categorías adscritas al grupo 1 y 3 plazas de las categorías adscritas al grupo 2"
+  },
+  "plazas_discapacidad": {
+   "motivo": "valor_no_numerico",
+   "valor": "reserva para personas con discapacidad (cuota negociada, número no especificado en el texto)",
+   "cita": "Visto que el IMAS tiene puestos de trabajo reservados a personas con discapacidad que son objeto de la oferta"
+  },
+  "ejercicios": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Concurso de méritos: calificación de los méritos alegados y acreditados según baremo"
+   ],
+   "cita": ""
+  },
+  "practicas_o_curso": {
+   "motivo": "cita_no_literal",
+   "valor": "no",
+   "cita": "Los datos del texto no mencionan periodo de prácticas ni curso selectivo"
+  }
+ }
+}

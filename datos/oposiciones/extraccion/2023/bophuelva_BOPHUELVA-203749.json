@@ -1,0 +1,45 @@
+{
+ "proceso": "bophuelva:BOPHUELVA-203749",
+ "documento": {
+  "id": "bophuelva:BOPHUELVA-203749",
+  "fuente": "BOP-HUELVA",
+  "url": "https://s2.diphuelva.es/portalweb/bope/anuncios/Anuncio_203749_BOP-123_2023.pdf",
+  "fecha": "2023-06-29",
+  "huella": "794b5f4f948b7b4f5a552f2ff2223e21a1fd15a760aea0937d9980d636f9c506"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:59:30+00:00",
+ "lote": "msgbatch_012nGabRM1G4b7cEKJh1Bcx1",
+ "no_son_bases": false,
+ "campos": {
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mediante el sistema de concurso-oposición",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Monitor/a deportivo/a"
+   ],
+   "cita": "la plaza de monitor/a deportivo/a mediante el sistema de concurso-oposición"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "laboral temporal",
+   "cita": "la contratación temporal a jornada parcial de un trabajador relevista, en régimen de personal laboral"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "veinte días naturales, a contar desde el día siguiente al de la publicación del extracto de la convocatoria en el Boletín Oficial de la Provincia",
+   "cita": "El plazo de presentación de solicitudes será de veinte días naturales, a contar desde el día siguiente"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Sede electrónica del Ayuntamiento de Beas: https://beas.sedelectronica.es/info.0",
+   "cita": "los sucesivos anuncios de esta convocatoria se publicarán en la sede electrónica de este Ayuntamiento"
+  }
+ }
+}

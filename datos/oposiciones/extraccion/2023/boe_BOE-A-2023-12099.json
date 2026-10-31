@@ -1,0 +1,88 @@
+{
+ "proceso": "boe:BOE-A-2023-12099",
+ "documento": {
+  "id": "bopbizkaia:BOB-2022-II-5477",
+  "fuente": "BOB",
+  "url": "http://www.bizkaia.eus/lehendakaritza/Bao_bob/2022/12/16/II-5477_cas.pdf",
+  "fecha": "2022-12-16",
+  "huella": "8c2718820092d6b50e371b00464ab92ff4de3fe5a36e3a6ba394b993a2f1ea8c"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:59:19+00:00",
+ "lote": "msgbatch_012nGabRM1G4b7cEKJh1Bcx1",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Plazas de personal funcionario o laboral de estabilización del Ayuntamiento de Galdakao (excepto Agente de Policía Local)"
+   ],
+   "cita": "Aprobar las Bases Generales contenidas en el presente Decreto y que regularán todos los procesos selectivos excepcionales de estabilización de empleo del Ayuntamiento de Galdakao",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "otro",
+   "cita": "procesos selectivos de estabilización de empleo temporal derivados de las disposiciones adicionales 6.ª y 8.ª de la Ley 20/2021",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 16,
+   "cita": "Grupo A1 16,00 euros. Grupo A2 14,00 euros. Grupo C1 12,00 euros. Grupo C2 9,00 euros. Grupo E/AP 6,00 euros.",
+   "nivel": "sin_signos"
+  },
+  "exenciones_tasa": {
+   "valor": "Personas inscritas como demandantes de empleo al menos un mes antes de la convocatoria, sin rechazar ofertas adecuadas y sin rentas superiores al Salario Mínimo Interprofesional",
+   "cita": "Están exentas del pago de la tasa: Las personas que figuren como demandantes de empleo durante el plazo, al menos, de un mes anterior",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles a partir del siguiente al de la publicación del extracto de la convocatoria en el BOE",
+   "cita": "Deberán presentarse en el plazo de veinte (20) días hábiles a partir del siguiente al de la publicación del extracto",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Sede electrónica https://www.galdakao.eus/convocatorias o presencialmente en la oficina de Atención Ciudadana ESAN, calle Bilbo 4",
+   "cita": "Solicitud electrónica en sede electrónica: https://www.galdakao.eus/convocatorias En caso de optar por la presentación electrónica",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de Bizkaia, tablón de anuncios del Ayuntamiento y página web https://www.galdakao.eus/convocatorias",
+   "cita": "Las convocatorias de procesos selectivos serán publicadas, en los boletines oficiales correspondientes y, además, en el tablón de anuncios y la página web",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Concurso: examen y valoración de méritos por el Tribunal Calificador",
+    "Examen de euskera (obligatorio y eliminatorio si el puesto tiene perfil preceptivo; voluntario y no eliminatorio en el resto)"
+   ],
+   "cita": "El examen de euskera tendrá carácter obligatorio y eliminatorio en el caso de las plazas que lleven aparejado un puesto de trabajo con perfil lingüístico preceptivo",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "no",
+   "cita": "Finalizado el plazo de elección de destinos se confeccionará la relación provisional de personas seleccionadas y plazas objeto de adjudicación",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso",
+   "cita": "El proceso de la convocatoria excepcional de estabilización de empleo temporal de larga duración se articulará en base al sistema de concurso."
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_numerico",
+   "valor": "sin especificar",
+   "cita": "En este proceso se contempla un turno: a) libre."
+  },
+  "meritos": {
+   "motivo": "cita_no_literal",
+   "valor": "Experiencia hasta 80 puntos; titulaciones y pruebas hasta 20 puntos; méritos según baremo de cada convocatoria",
+   "cita": "Experiencia (Máximo 80 puntos). Titulaciones y pruebas (Máximo 20 puntos). Se valorarán hasta un máximo de 20 puntos los siguientes méritos"
+  },
+  "practicas_o_curso": {
+   "motivo": "cita_no_literal",
+   "valor": "no",
+   "cita": "Deberán presentar la documentación acreditativa de las condiciones exigidas en el plazo de 20 días hábiles"
+  }
+ }
+}

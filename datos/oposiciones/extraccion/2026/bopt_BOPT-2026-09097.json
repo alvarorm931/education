@@ -1,113 +1,53 @@
 {
  "proceso": "bopt:BOPT-2026-09097",
  "documento": {
-  "id": "bopt:BOPT-2026-09097",
-  "fuente": "BOPT",
-  "url": "https://www.dipta.cat/bopt/web/anunci/364892/placa-d-oficial-a-de-1a-brigada-municipal-2-bases-i-convocatoria-ajuntament-espluga-de-francoli-l",
-  "fecha": "2026-10-01",
-  "huella": "78f6de9a28e5a659dcd31443764266cd0241d034a4803ae6a26c3a41b1f2342f"
+  "id": "dogc:1056420",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1056420",
+  "fecha": "2026-10-08",
+  "huella": "c6d7e0b4242c53009ad63767242da4f3dfe688797a29af0d15ea608691992c5e"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T08:03:48+00:00",
- "lote": "msgbatch_013xFoLdqcGqWcqkzh7qrdGg",
+ "extraido": "2026-10-31T14:41:30+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
  "no_son_bases": false,
  "campos": {
+  "denominacion": {
+   "valor": "Oficial 1.ª",
+   "cita": "Denominación de la plaza según plantilla: Oficial 1.ª",
+   "nivel": "literal"
+  },
   "grupo": {
    "valor": "C2",
-   "cita": "grup professional: assimilat a C2, vacants a la plantilla de personal",
+   "cita": "Grupo de clasificación asimilado: C2",
    "nivel": "literal"
   },
   "vinculo": {
    "valor": "personal laboral fijo",
-   "cita": "dues places de personal laboral fix, oficial de 1a per la brigada municipal",
-   "nivel": "sin_signos"
+   "cita": "Régimen jurídico: laboral fijo",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "Sistema de selección: concurso-oposición",
+   "nivel": "literal"
   },
   "plazas_total": {
    "valor": 2,
-   "cita": "dues places de personal laboral fix, oficial de 1a per la brigada municipal",
-   "nivel": "sin_signos"
-  },
-  "otros_requisitos": {
-   "valor": "Nacionalidad o derecho de libre circulación, capacidad funcional, 16 años y no exceder la edad de jubilación, no separación de la Administración, permiso de conducir B sin restricciones",
-   "cita": "Posseir el permís de conduir de la classe B sense cap restricció sobre el v ehicle a conduir",
-   "nivel": "literal"
-  },
-  "idioma_cooficial": {
-   "valor": "Catalán nivel B1",
-   "cita": "Posseir el certificat de nivell B1 de català expedit per l’òrgan competent",
-   "nivel": "literal"
-  },
-  "tasa_euros": {
-   "valor": 21,
-   "cita": "Els drets d'examen d’aquesta convocatòria es fixen en la quantitat de 21,00 €",
+   "cita": "Número de plazas convocadas: 2",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "20 días hábiles a partir del día siguiente a la publicación del extracto de la convocatoria en el DOGC",
-   "cita": "El termini per presentar sol·licituds és de 20 dies hàbils a partir de l’endemà",
-   "nivel": "literal"
-  },
-  "presentacion": {
-   "valor": "Preferentemente electrónica por el registro electrónico del Ente; también presencial en el Registro General (C/ Torres Jordi, 16) o en otras formas del art. 16.4 Ley 39/2015",
-   "cita": "Preferentment les instàncies es presentaran electrònicament: al registre electrònic de l’Ens",
-   "nivel": "literal"
-  },
-  "ejercicios": {
-   "valor": [
-    "Fase de conocimiento de catalán (si procede) y castellano (si procede)",
-    "Prueba teórico-práctica: 20 preguntas por escrito en una hora (20 puntos, eliminatoria)",
-    "Prueba práctica: trabajos situacionales (40 puntos, eliminatoria)",
-    "Fase de concurso (máximo 40 puntos)"
-   ],
-   "cita": "b.1. Prova teòrica pràctica. De caràcter obligatori i eliminatori. (20 punts)",
-   "nivel": "literal"
-  },
-  "meritos": {
-   "valor": "Experiencia laboral máx. 20 pts (0,20 por año en administraciones públicas; 0,10 por año en empresas privadas); formación máx. 20 pts (titulaciones FP y cursos relacionados)",
-   "cita": "Experiència laboral (màx. 20 punts): L’antiguitat en serveis prestats es valora a raó de 0,20 punts",
-   "nivel": "sin_signos"
-  },
-  "bolsa": {
-   "valor": "sí, bolsa de trabajo con vigencia de 2 años desde su constitución",
-   "cita": "La borsa tindrà una vigència de 2 anys des de la seva cons titució",
-   "nivel": "literal"
-  },
-  "practicas_o_curso": {
-   "valor": "no consta",
-   "cita": "La puntuació final de les persones aspirants que formaran part de la borsa s’ ha de publicar",
+   "valor": "20 días hábiles contados a partir del día siguiente de la última publicación de este anuncio en el DOGC",
+   "cita": "El plazo para presentar solicitudes finaliza a los 20 días hábiles contados a partir del día siguiente de la última publicación",
    "nivel": "literal"
   }
  },
  "rechazados": {
-  "denominacion": {
-   "motivo": "cita_no_literal",
-   "valor": "Oficial de 1a de la brigada municipal",
-   "cita": "concurs-oposició, torn lliure, de dues places de personal laboral fix d’oficial 1a de la brigada municipal"
-  },
-  "sistema": {
-   "motivo": "cita_no_literal",
-   "valor": "concurso-oposición",
-   "cita": "mitjançant concurs-oposició, torn lliure, de dues places de personal laboral fix"
-  },
   "plazas_turno_libre": {
-   "motivo": "cita_no_literal",
+   "motivo": "valor_no_en_cita",
    "valor": 2,
-   "cita": "concurs-oposició, torn lliure, de dues places de personal laboral fix"
-  },
-  "titulacion": {
-   "motivo": "cita_no_literal",
-   "valor": "Graduado escolar, FP I, graduado en ESO, ciclo formativo de grado medio o equivalente",
-   "cita": "Posseir el títol de graduat escolar, FP I, graduat en ESO, cicle formatiu de grau mitjà o equivalent"
-  },
-  "publicaciones": {
-   "motivo": "cita_no_literal",
-   "valor": "Seu electrónica del Ente, Portal de Transparencia, BOPT y DOGC (extracto)",
-   "cita": "es publicarà al Butlletí Oficial de la Província de Tarragona, a la Seu electrònica i al Portal de Transparència"
-  },
-  "temas": {
-   "motivo": "cita_no_literal",
-   "valor": 20,
-   "cita": "ANNEX I: TEMARI 1. La Constitució Espanyola de 1978 ... 20. Ús i conservació de materials diversos de pintura."
+   "cita": "Turno: libre"
   }
  }
 }

@@ -1,0 +1,40 @@
+{
+ "proceso": "bophuelva:BOPHUELVA-219881",
+ "documento": {
+  "id": "bophuelva:BOPHUELVA-219881",
+  "fuente": "BOP-HUELVA",
+  "url": "https://s2.diphuelva.es/portalweb/bope/anuncios/Anuncio_219881_BOP-198_2023.pdf",
+  "fecha": "2023-10-18",
+  "huella": "1074d4a520d7536e9a5e56105360423dfbdb8b561dce9748068279642686ca88"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:59+00:00",
+ "lote": "msgbatch_01SjfjDqJRwL6bpTvJz2YfVg",
+ "no_son_bases": false,
+ "campos": {
+  "plazo_solicitudes": {
+   "valor": "diez días hábiles contados a partir del siguiente a aquél en el que se publique el presente anuncio",
+   "cita": "el plazo de presentación de solicitudes, que será de DIEZ DÍAS HÁBILES , contados a partir del siguiente",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de Anuncios de la Sede Electrónica del Ayuntamiento de Isla Cristina",
+   "cita": "El contenido íntegro de las bases se encuentra en el Tablón de Anuncios de la Sede Electrónica",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Peón"
+   ],
+   "cita": "la contratación laboral temporal en régimen de interinidad de un Peón vacante en la plantilla de laboral"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario interino",
+   "cita": "la contratación laboral temporal en régimen de interinidad de un Peón vacante"
+  }
+ }
+}

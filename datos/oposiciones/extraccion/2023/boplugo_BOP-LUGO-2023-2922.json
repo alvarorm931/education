@@ -1,0 +1,55 @@
+{
+ "proceso": "boplugo:BOP-LUGO-2023-2922",
+ "documento": {
+  "id": "boplugo:BOP-LUGO-2023-2922",
+  "fuente": "BOP-LUGO",
+  "url": "https://deputacionlugo.gal/sites/deputacionlugo.org/files/inline-files/16-09-2023.pdf#page=3",
+  "fecha": "2023-09-16",
+  "huella": "4ee5b4bfd975073abecf91a06e4c6d83a4d724db470d774ea576a7dd6feaee9a"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:52+00:00",
+ "lote": "msgbatch_01SjfjDqJRwL6bpTvJz2YfVg",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "como persoal laboral temporal, a xornada completa (100%), cunha duración de seis (6) meses",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "o procedemento para a selección dun posto de Auxiliar Administrativo",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "5 días hábiles desde el día siguiente a la publicación del anuncio de la convocatoria en el BOP de Lugo",
+   "cita": "durante o prazo de cinco (5) días hábiles, comenzando a computarse o dito prazo a partir do día seguinte",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Registro Xeral do Concello en horario de oficina, de 09:00 a 14:00; Rexistro Electrónico Xeneral (sede electrónica) o formas del artículo 16.4 de la Ley 39/2015",
+   "cita": "as instancias poderán rexistrarse no Rexistro Electrónico Xeneral do Concello de Bóveda",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Auxiliar Administrativo"
+   ],
+   "cita": "aprobáronse as bases xerais que rexerán o procedemento para a selección dun posto de Auxiliar Administrativo"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "para a selección dun posto de Auxiliar Administrativo"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Sede electrónica del Concello (tablón de anuncios) y tablón de anuncios físico del Concello",
+   "cita": "publicaranse na sede electrónica deste Concello (taboleiro de anuncios) e no taboleiro de anuncios físico"
+  }
+ }
+}

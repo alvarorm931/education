@@ -1,0 +1,51 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2022-10363",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2022-10363",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2022/12/19_239/2022_010363.pdf",
+  "fecha": "2022-12-19",
+  "huella": "99072e80c8c7d092f5391a902ccb5eaf1cf444690d43f5689de63f090fb2c7e3"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:22+00:00",
+ "lote": "msgbatch_01B4ETF5xB4buYCHqPiHTXzF",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Oficial albañil",
+    "Auxiliar de medioambiente"
+   ],
+   "cita": "Convocatoria plazas 213 y 216 incluidas en la modificación plantilla/RPT OEP 2022",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C/C2",
+   "cita": "Escala Administración Especial/personal de oficios (pendientes modificación plantilla 2022) Plaza número 213 UNA Oficial albañil",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "Escala Administración Especial/personal de oficios (pendientes modificación plantilla 2022) Plaza número 213 UNA Oficial albañil",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia de Alicante (BOP)",
+   "cita": "edita excma. diputació provincial d´alacant Nº 239 de 19/12/2022",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "Procedimiento estabilización Concurso oposición convocatoria plazas por modificación de plantilla"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 2,
+   "cita": "Convocatoria plazas 213 y 216 incluidas en la modificación plantilla/RPT OEP 2022"
+  }
+ }
+}

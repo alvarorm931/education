@@ -1,0 +1,65 @@
+{
+ "proceso": "dogv:466570",
+ "documento": {
+  "id": "dogv:466570",
+  "fuente": "DOGV",
+  "url": "https://dogv.gva.es/datos/2026/02/20/pdf/2026_5283_es.pdf",
+  "fecha": "2026-02-20",
+  "huella": "83ba253dccd028379358198d36af4d21660eb059dcd9b677b783d1704d0a3501"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:42:33+00:00",
+ "lote": "msgbatch_01W17mR271uYfWYL6CuSdriL",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "para la cobertura de once plazas de personal técnico de sistemas de información, de naturaleza laboral",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "por el sistema de concurso-oposición, para la cobertura de once plazas",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 11,
+   "cita": "cubrir, en propiedad, once puestos de trabajo de técnico o técnica de sistemas de información",
+   "nivel": "literal"
+  },
+  "plazas_discapacidad": {
+   "valor": 2,
+   "cita": "De los puestos convocados se reservan dos para personas con diversidad funcional",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "diez días hábiles, contados a partir del día siguiente al de la publicación del presente anuncio en el DOGV",
+   "cita": "el plazo para la presentación de solicitudes será de diez días hábiles, contados a partir del día siguiente",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "por vía electrónica, a través del formulario habilitado en la plataforma de empleo público de ISTEC",
+   "cita": "las solicitudes deberán presentarse por vía electrónica, a través del formulario habilitado en la plataforma",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "en la forma prevista en las propias bases",
+   "cita": "Los sucesivos anuncios referentes a esta convocatoria, cuando procedan de conformidad con las bases, se harán públicos en la forma prevista en las propias bases.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "técnico o técnica de sistemas de información"
+   ],
+   "cita": "convocatoria del proceso selectivo para la cobertura de once plazas de personal técnico de sistemas de información"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 11,
+   "cita": "por el turno de acceso libre"
+  }
+ }
+}

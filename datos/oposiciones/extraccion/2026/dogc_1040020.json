@@ -1,0 +1,115 @@
+{
+ "proceso": "dogc:1040020",
+ "documento": {
+  "id": "dogc:1040020",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1040020",
+  "fecha": "2026-03-23",
+  "huella": "a2e490dafbcbec6fda8203b53ada9492659fd9515a091dab2489e59116954f25"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:40:28+00:00",
+ "lote": "msgbatch_01E3wiYcGL8Lzho48bXWLyyb",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "A2",
+   "cita": "grup de classificació A, subgrup A2",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "per cobrir una plaça d' Enginyer/a Tècnic, com a funcionari/ària de carrera",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "pel procediment de concurs-oposició lliure, per a la cobertura d'una plaça",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "per cobrir una plaça d' Enginyer/a Tècnic, com a funcionari/ària de carrera",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Títol universitari de Grau en Enginyeria, Diplomatura en Enginyeria Tècnica o qualsevol altre títol declarat equivalent",
+   "cita": "Estar en possessió del títol universitari de Grau en Enginyeria, Diplomatura en Enginyeria Tècnica o qualsevol altre títol declarat equivalent",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalitat espanyola, UE o equivalent amb permís de residència i treball; 16 anys i no superar edat de jubilació forçosa; capacitat física i psíquica; no separat per expedient disciplinari; no incurs en incompatibilitat; no condemnat per delictes sexuals de sentència ferma",
+   "cita": "Haver complert els setze anys d'edat i no superar l'edat establerta per a la jubilació forçosa",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Català nivell C1 (o equivalent, o superar prova); castellà nivell C2 per a aspirants no espanyols i no originaris de països de llengua oficial castellana",
+   "cita": "Acreditar el nivell de coneixement de les dues llengües oficials a Catalunya",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 dies hàbils, comptats des de l'endemà de la publicació de l'anunci de la convocatòria al BOPB",
+   "cita": "El termini per a la presentació de sol·licituds serà de 20 dies hàbils, comptats des de l'endemà de la publicació",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Electrònicament a la seu electrònica de l'Ajuntament de Moià, Tràmits destacats / Selecció d'una plaça d'Enginyer/a, amb certificat digital o signatura electrònica",
+   "cita": "Les sol·licituds per prendre part a les proves d'accés es presentaran electrònicament a la seu electrònica de l'Ajuntament de Moià",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Bases al BOPB, tauler d'anuncis i web municipal; convocatòria al DOGC; successius anuncis al tauler i web municipal; llistes i actes al tauler d'edictes electrònic",
+   "cita": "Les bases es publicaran íntegrament al BOPB, al tauler d'anuncis i al web municipal",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Experiència professional fins a 20 punts (0,25 per mes a l'Administració local); formació fins a 10 punts (titulació, cursos, coneixements específics); entrevista fins a 3 punts",
+   "cita": "A) Experiència professional: fins a un màxim de 20 punts.",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "Sí, per cobrir treballs temporals, substitucions i interinitats, durant 2 anys i prorrogable fins a aprovar-ne una de nova",
+   "cita": "Les persones que, tot i haver superat les proves de les fases d'oposició i concurs no siguin proposades per ser nomenades, s'incorporen a una borsa de treball",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Període de pràctiques de sis mesos com a funcionari en pràctiques, amb mínim del 80% per ser nomenat funcionari de carrera",
+   "cita": "El període de pràctiques és de sis mesos. Durant aquest període els funcionaris han d'assistir als cursos de formació",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Enginyer/a Tècnic"
+   ],
+   "cita": "procés selectiu per cobrir una plaça d' Enginyer/a Tècnic, com a funcionari/ària de carrera"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "sistema de selecció: concurs-oposició, mitjançant accés lliure"
+  },
+  "plazas_discapacidad": {
+   "motivo": "valor_no_en_cita",
+   "valor": 0,
+   "cita": "Les persones aspirants amb la condició legal de discapacitats amb un grau igual o superior al 33% tenen dret a l'adaptació de les proves"
+  },
+  "ejercicios": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Primer exercici: prova teoricopràctica (part teòrica test de 50 preguntes, 0-25 punts; part pràctica supòsit, 0-45 punts; mínim 35 punts eliminatori)",
+    "Segon exercici: coneixement de llengües (català C1 i castellà, apte/no apte)",
+    "Fase de concurs: experiència professional i formació, fins a 30 punts (no eliminatòria)",
+    "Entrevista personal opcional, fins a 3 punts (no eliminatòria)"
+   ],
+   "cita": "Prova teoricopràctica: part teòrica i pràctica; màxim 70 punts en oposició"
+  },
+  "temas": {
+   "motivo": "valor_no_en_cita",
+   "valor": 60,
+   "cita": "TEMARI GENERAL 1. Els drets i deures fonamentals"
+  }
+ }
+}

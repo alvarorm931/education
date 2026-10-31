@@ -1,0 +1,50 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2023-8951",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2023-8951",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2023/10/23_203/2023_008951.pdf",
+  "fecha": "2023-10-23",
+  "huella": "d0122930556522fa2fa4b6c0b4064054ec98cd967025e7129dc3f67b37483cdb"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:55+00:00",
+ "lote": "msgbatch_01SjfjDqJRwL6bpTvJz2YfVg",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "C1",
+   "cita": "pertenecientes al Grupo de Clasificación C1",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "por el sistema de concurso de méritos",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de Anuncios de la sede electrónica y página web del Ayuntamiento de Guardamar del Segura",
+   "cita": "estará a disposición de los interesados en el Tablón de Anuncios de la sede electrónica",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Administrativo"
+   ],
+   "cita": "provisión temporal, por mejora de empleo, de puestos vacantes de Administrativo"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "provisión temporal, por mejora de empleo, de puestos vacantes de Administrativo"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "10 días naturales contados a partir del día siguiente al de la publicación en el BOP de Alicante",
+   "cita": "El plazo de presentación de solicitudes para tomar parte en la citada prueba selectiva será de 10 días naturales"
+  }
+ }
+}

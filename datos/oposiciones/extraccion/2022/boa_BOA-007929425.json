@@ -1,0 +1,100 @@
+{
+ "proceso": "boa:BOA-007929425",
+ "documento": {
+  "id": "boa:BOA-007929425",
+  "fuente": "BOA",
+  "url": "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VERDOC&BASE=BOLE&SEC=BUSQUEDA_AVANZADA&DOCN=007929425",
+  "fecha": "2022-12-28",
+  "huella": "72b8a902f41fb45774b0651e3cbc23ab63b31bd0cc109383394b3f145fa06f4c"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:56:19+00:00",
+ "lote": "msgbatch_014eT3dLLVopBnuVgQ4syWD9",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "Se convoca procedimiento selectivo extraordinario para la estabilización del empleo docente",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "Se convoca procedimiento selectivo extraordinario para la estabilización del empleo docente a través del sistema selectivo de ingreso mediante concurso oposición",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 388,
+   "cita": "para cubrir 388 plazas de los cuerpos docentes, con arreglo a la distribución señalada en el anexo I",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "doctor, licenciado, ingeniero, arquitecto o título de grado correspondiente, u otros títulos equivalentes a efectos de docencia (PES y EOI); diplomado, arquitecto técnico, ingeniero técnico o título de grado, licenciado, ingeniero o arquitecto, u otros títulos de técnico superior declarados equivalentes (sectores singulares)",
+   "cita": "Estar en posesión o reunir las condiciones para que le sea expedido alguno de los títulos de doctor, licenciado, ingeniero, arquitecto, o título de grado correspondiente",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española o de un Estado miembro de la UE (o aplicable); edad mínima de acceso a la función pública y no superar la edad de jubilación; no padecer enfermedad incompatible con las funciones; formación pedagógica y didáctica (máster habilitante o excepciones); no haber sido separado del servicio ni inhabilitado; no tener condena por delitos contra la libertad e indemnidad sexual; no ser funcionario de carrera del mismo Cuerpo",
+   "cita": "Tener cumplida la edad mínima de acceso a la función pública y no haber alcanzado la edad establecida, con carácter general, para la jubilación",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Solo acreditación de conocimiento adecuado del castellano para quienes no tengan nacionalidad española y su idioma oficial no sea el castellano",
+   "cita": "deberán acreditar un conocimiento adecuado de este idioma, en la forma que se establece en la base 6",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Plazo de presentación de solicitudes a través de la aplicación PADDOC (plazo concreto en la base 3)",
+   "cita": "Las solicitudes para participar en el procedimiento selectivo deberán cumplimentarse exclusivamente mediante procedimiento telemático",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Exclusivamente telemática a través de la aplicación PADDOC, accesible desde la web del Departamento de Educación, Cultura y Deporte",
+   "cita": "Solo se admitirán a trámite las solicitudes que se presenten a través de la aplicación PADDOC",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Web del Departamento de Educación, Cultura y Deporte y Boletín Oficial de Aragón",
+   "cita": "publicarán las listas en la web del Departamento de Educación, Cultura y Deporte",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Méritos valorados en la fase de concurso según el baremo del anexo II; solo pasan quienes obtengan al menos cinco puntos en la oposición",
+   "cita": "en esta fase se valorarán los méritos aportados, de acuerdo con el baremo y las especificaciones que figuran en el anexo II",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "Sí: quienes superen el proceso y no obtengan plaza pueden integrarse en las listas de aspirantes al desempeño de puestos en régimen de interinidad",
+   "cita": "quienes no obtengan una de las plazas convocadas en el procedimiento selectivo, serán incluidos en las listas de aspirantes al desempeño de puestos en régimen de interinidad",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Fase de prácticas tras superar oposición y concurso, para comprobar la aptitud para la docencia",
+   "cita": "tendrá lugar una vez superadas la fase de oposición y de concurso y su objeto será comprobar la aptitud para la docencia",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Profesores de enseñanza secundaria",
+    "Profesores de escuelas oficiales de idiomas",
+    "Profesores especialistas en sectores singulares de formación profesional"
+   ],
+   "cita": "procedimiento selectivo de ingreso a plazas en los cuerpos de profesores de enseñanza secundaria, profesores de escuelas oficiales de idiomas y profesores especialistas en sectores singulares de formación profesional"
+  },
+  "plazas_discapacidad": {
+   "motivo": "valor_no_numerico",
+   "valor": "8 % del total de plazas ofertadas",
+   "cita": "Las plazas reservadas para ser cubiertas por quienes tengan la condición legal de personas con discapacidad se ofertan conforme"
+  },
+  "ejercicios": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Fase de oposición: prueba única estructurada en dos partes (parte A y parte B, con B.1 y B.2), no eliminatorias",
+    "Fase de concurso: valoración de méritos conforme al anexo II"
+   ],
+   "cita": ""
+  }
+ }
+}

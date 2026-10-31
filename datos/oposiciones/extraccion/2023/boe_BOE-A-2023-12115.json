@@ -1,0 +1,93 @@
+{
+ "proceso": "boe:BOE-A-2023-12115",
+ "documento": {
+  "id": "bopcaceres:BOP-2022-6466",
+  "fuente": "BOP-CACERES",
+  "url": "https://bop.dip-caceres.es/bop/services/anuncios/contenidoPdfIdAnuncio?csv=BOP-2022-6466",
+  "fecha": "2022-12-28",
+  "huella": "f65e49f99aaf78a0c83563261ee003395f6dcaced53f79377c2c611c11f83b31"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:59:10+00:00",
+ "lote": "msgbatch_012nGabRM1G4b7cEKJh1Bcx1",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Plazas de Ayuntamiento de Plasencia (proceso de estabilización, 3 plazas, según Anexo I)"
+   ],
+   "cita": "PROCESO DE ESTABILIZACION DE EMPLEO TEMPORAL convocado por el EXCMO. AYUNTAMIENTO DE PLASENCIA",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "se realizará a través del sistema de concurso-oposición",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 3,
+   "cita": "para proveer 3 PLAZAS SEGÚN CATEGORIAS PROFESIONALES, GRUPO, SUBGRUPO",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Bonificación 50% familias numerosas especiales, 25% generales; exención desempleados (6 meses inscritos), discapacidad igual o superior al 33%, víctimas de terrorismo y de violencia de género",
+   "cita": "Quedarán exentas del pago de la tasa, las personas que acrediten una discapacidad igual o superior al 33%.",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles desde la publicación en el Boletín Oficial del Estado de la convocatoria",
+   "cita": "El plazo será de 20 días hábiles a partir de la publicación en el Boletín Oficial del Estado de la convocatoria.",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Instancia según Anexo III; disponible en Oficina de Información o web municipal; documentos adjuntos en registro o por sede electrónica",
+   "cita": "Las instancias, solicitando tomar parte en el proceso selectivo, se ajustarán al modelo que aparece en el Anexo III",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de Anuncios del Ayuntamiento, web municipal sede.plasencia.es (Empleo Público), y BOP de Cáceres",
+   "cita": "Todos los anuncios y listados serán expuestos en el Tablón de Anuncios del Excmo. Ayuntamiento de Plasencia",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Oposición: único ejercicio eliminatorio, supuesto o prueba práctica (120 min A1/A2; 90 min C1/C2/AP/E)",
+    "Concurso: servicios prestados y otros méritos (formación, titulación, idiomas), no eliminatorio"
+   ],
+   "cita": "Único ejercicio de carácter eliminatorio: consistirá en resolver un supuesto práctico o prueba práctica",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Servicios prestados: máximo 7,50 puntos (0,20 por mes en el Ayuntamiento; 0,10 por mes en otras AAPP). Otros méritos: máximo 2,50 puntos (formación, titulación superior y conocimiento de idiomas comunitarios)",
+   "cita": "A.1- Por cada mes de servicios prestados en la Administración Local convocante",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "no consta en el texto",
+   "cita": "Concluido el proceso selectivo, los aspirantes propuestos que hubieran superado el proceso selectivo dispondrán de un plazo de veinte días hábiles",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "PERSONAL LABORAL FIJO: puesto de funcionario o laboral fijo, según régimen"
+  },
+  "tasa_euros": {
+   "motivo": "valor_no_numerico",
+   "valor": "Importe según Anexo II (no consta en el texto)",
+   "cita": "El importe de las tasas se especifica en el Anexo II."
+  },
+  "temas": {
+   "motivo": "valor_no_numerico",
+   "valor": "Temario en Anexo IV (número no consta en el texto)",
+   "cita": "relacionados con el contenido del temario del Anexo IV"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí: lista de espera específica por cada cuerpo/especialidad o categoría, para cubrir vacantes tras el proceso de estabilización",
+   "cita": "Finalizado el proceso de estabilización derivado del artículo 2 de la Ley 20/2021 se constituirá"
+  }
+ }
+}

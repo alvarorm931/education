@@ -1,0 +1,113 @@
+{
+ "proceso": "dogv:409202",
+ "documento": {
+  "id": "dogv:409202",
+  "fuente": "DOGV",
+  "url": "https://dogv.gva.es/datos/2025/02/13/pdf/2025_1015_es.pdf",
+  "fecha": "2025-02-13",
+  "huella": "155476d32f9457b174f6d761e8e976ae98ee5f67028024b919f20ac90e2434c1"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:46:37+00:00",
+ "lote": "msgbatch_01MQzQCLMZKxUrrPMAj7dr53",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "técnico/a medio de traducción"
+   ],
+   "cita": "con denominación técnico/a medio de traducción, grupo C, subgrupo C1",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C1",
+   "cita": "grupo C, subgrupo C1, por el sistema general de turno libre",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "Convocar oposición para el ingreso en la escala técnica básica de traducción",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "Se convocan pruebas selectivas para cubrir una plaza vacante de la escala técnica básica",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Título de bachiller, formación profesional de segundo grado o equivalente",
+   "cita": "Estar en posesión del título de bachiller, formación profesional de segundo grado o su equivalente",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española o la que permita el acceso al empleo público; haber cumplido 16 años y no exceder la edad máxima de jubilación; capacidad física y psíquica; no haber sido separado del servicio ni inhabilitado.",
+   "cita": "Haber cumplido los 16 años y no exceder, en su caso, de la edad máxima de jubilación forzosa",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Titulación de nivel superior de Llengua Valenciana, o licenciatura/grado en Filologia Catalana",
+   "cita": "se requiere la titulación de nivel superior de Llengua Valenciana, o licenciatura/grado en Filologia Catalana",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 15,
+   "cita": "Los derechos de participación serán los correspondientes a la plaza convocada, en este caso 15,00 €",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Discapacidad igual o superior al 33 %; familias numerosas o monoparentales de categoría especial; víctimas de violencia sobre la mujer; exclusión social; demandantes de empleo con requisitos. Bonificación del 50 % para familias numerosas o monoparentales de categoría general.",
+   "cita": "están exentos del pago de la tasa establecida en la base 3.3",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "10 días hábiles desde el día siguiente a la publicación del extracto de la convocatoria en el BOE",
+   "cita": "en el plazo de 10 días hábiles contados a partir del día siguiente al de la publicación del extracto de esta convocatoria en el Boletín Oficial del Estado",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Solicitud electrónica a través de la sede electrónica de la UMH (sede.umh.es), procedimiento «SELECCIÓN PTGAS-Funcionario de carrera», pago de tasa con tarjeta bancaria",
+   "cita": "se deberá presentar solicitud de participación dirigida al rector de la Universidad Miguel Hernández de Elche",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Diari Oficial de la Generalitat Valenciana (DOGV) para resoluciones; Boletín Oficial de la UMH para actos del tribunal; web https://servicioptgas-pi.umh.es/convocatorias/",
+   "cita": "Los actos del tribunal de selección se publicarán en el Boletín Oficial de la Universidad Miguel Hernández de Elche",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Test de 80 preguntas del temario específico, 120 minutos, de 0 a 40 puntos",
+    "Test de 40 preguntas de todo el temario, 90 minutos, de 0 a 20 puntos"
+   ],
+   "cita": "consistirá en la resolución de un test de 80 preguntas, en un tiempo de 120 minutos",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, bolsa de trabajo con el personal aspirante que haya superado la oposición",
+   "cita": "La bolsa de trabajo se constituirá con el personal aspirante que haya superado la oposición",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "tomar posesión como personal funcionario de carrera"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "por el sistema general de turno libre"
+  },
+  "temas": {
+   "motivo": "cita_no_literal",
+   "valor": 22,
+   "cita": "Temario específico 1. El lenguaje administrativo ... 22. Adecuación, coherencia y cohesión"
+  },
+  "practicas_o_curso": {
+   "motivo": "cita_no_literal",
+   "valor": "no se menciona",
+   "cita": "Se establece periodo de prácticas o curso selectivo"
+  }
+ }
+}

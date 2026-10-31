@@ -1,0 +1,50 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2023-7080",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2023-7080",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2023/08/08_152/2023_007080.pdf",
+  "fecha": "2023-08-08",
+  "huella": "495b0410e3d0ba3078e9c57b9ce099c128cd82a7ae34f855b9482db70860e6a7"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:59:23+00:00",
+ "lote": "msgbatch_012nGabRM1G4b7cEKJh1Bcx1",
+ "no_son_bases": false,
+ "campos": {
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mediante procedimiento concurso oposición",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "10 días naturales, contados a partir del día siguiente al de la publicación del presente anuncio en el Boletín Oficial de la Provincia",
+   "cita": "El plazo de presentación de instancias será de 10 días naturales, contados a partir del día siguiente",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "tablón de edictos municipal y sede electrónica del Ayuntamiento",
+   "cita": "Los sucesivos anuncios relacionados con la presente convocatoria se publicarán únicamente en el tablón de edictos municipal",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Técnico/a de Juventud"
+   ],
+   "cita": "constitución de una bolsa de trabajo temporal de Técnico/a de Juventud de este Ayuntamiento"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "laboral temporal",
+   "cita": "constitución de una bolsa de trabajo temporal de Técnico/a de Juventud de este Ayuntamiento"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, bolsa de trabajo temporal de Técnico/a de Juventud",
+   "cita": "para la constitución de una bolsa de trabajo temporal de Técnico/a de Juventud de este Ayuntamiento"
+  }
+ }
+}

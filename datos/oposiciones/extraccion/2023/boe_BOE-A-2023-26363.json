@@ -1,0 +1,40 @@
+{
+ "proceso": "boe:BOE-A-2023-26363",
+ "documento": {
+  "id": "boe:BOE-A-2023-26363",
+  "fuente": "BOE",
+  "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2023-26363",
+  "fecha": "2023-12-27",
+  "huella": "2c9609affb8db8a49a6c6abc69a814f550e7a0682a41e2deec2290dd98e2eb17"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:45+00:00",
+ "lote": "msgbatch_01SjfjDqJRwL6bpTvJz2YfVg",
+ "no_son_bases": false,
+ "campos": {
+  "plazas_total": {
+   "valor": 33,
+   "cita": "cubrir treinta y tres plazas de las previstas en el Real Decreto 636/2021",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "un mes a contar desde el día siguiente al de la publicación de esta resolución en el «Boletín Oficial del Estado»",
+   "cita": "El plazo de presentación de solicitudes será de un mes a contar desde el día siguiente",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Las bases de la convocatoria se publicarán en la página web de la CNMC (www.cnmc.es) y en el punto de acceso general www.administracion.gob.es",
+   "cita": "Las bases de la convocatoria se publicarán en la página web de la CNMC",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Cuerpo o escala de la CNMC (plazas del anexo I; denominación concreta no consta en el texto extraído)"
+   ],
+   "cita": "tener por objeto cubrir treinta y tres plazas de las previstas en el Real Decreto 636/2021"
+  }
+ }
+}

@@ -1,0 +1,66 @@
+{
+ "proceso": "boe:BOE-A-2025-23778",
+ "documento": {
+  "id": "boe:BOE-A-2025-23778",
+  "fuente": "BOE",
+  "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2025-23778",
+  "fecha": "2025-11-24",
+  "huella": "96ebaba20035b1f783afc35b6de3372615122da4a22841bfb3eb0207c1c4f8f5"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:41:28+00:00",
+ "lote": "msgbatch_01UNq3BNhPPHoTK3TEJzun1h",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Técnica básica de informática (referencia 25/179925)",
+    "Técnica básica de informática (referencia 25/179938)"
+   ],
+   "cita": "Escala: técnica básica de informática (grupo C, subgrupo C1) (referencia 25/179925), administración especial",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C1",
+   "cita": "técnica básica de informática (grupo C, subgrupo C1) (referencia 25/179925)",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "Régimen jurídico: funcionarial de carrera. Escala: técnica básica de informática",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "Sistema selectivo: oposición. Turno: acceso libre.",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "diez días hábiles contados a partir del siguiente a la publicación de este extracto en el «Boletín Oficial del Estado»",
+   "cita": "El plazo para la presentación de solicitudes finaliza a los diez días hábiles contados a partir del siguiente",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Diari Oficial de la Generalitat Valenciana y/o Boletín Oficial de la Universidad Miguel Hernández de Elche; consulta informativa en https://servicioptgas-pi.umh.es/convocatorias/",
+   "cita": "Los sucesivos anuncios relativos a esta convocatoria se publicarán en el «Diari Oficial de la Generalitat Valenciana»",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 4,
+   "cita": "Número de plazas convocadas: 1. Sistema selectivo: oposición."
+  },
+  "plazas_turno_libre": {
+   "motivo": "cita_no_literal",
+   "valor": 4,
+   "cita": "Turno: acceso libre. Número de plazas convocadas: 3."
+  },
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Sede Electrónica de la UMH (https://sede.umh.es/procedimientos/, opción «SELECCIÓN PTGAS-Funcionario de carrera») o https://universite.umh.es/espacio-opositor",
+   "cita": "Las solicitudes deberán cumplimentarse a través de la Sede Electrónica en el portal https://sede.umh.es/procedimientos/"
+  }
+ }
+}

@@ -1,121 +1,73 @@
 {
  "proceso": "bopgirona:BOPGIRONA-2026-7973",
  "documento": {
-  "id": "bopgirona:BOPGIRONA-2026-7973",
-  "fuente": "BOP-GIRONA",
-  "url": "https://ssl4.ddgi.cat/bopV1/pdf/2026/179/202617907973.pdf",
-  "fecha": "2026-09-17",
-  "huella": "37d621b8f377047c84edd1b4cfcc9e28aa9592a5bed8eaec399264d7fe5c2c0f"
+  "id": "dogc:1055125",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1055125",
+  "fecha": "2026-09-25",
+  "huella": "71308674f0486d452bfaef541f80a67c0f538b1e64e56622166530f19add0159"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T08:03:50+00:00",
- "lote": "msgbatch_013xFoLdqcGqWcqkzh7qrdGg",
+ "extraido": "2026-10-31T14:42:01+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
-   "valor": [
-    "Conserge (tres places, personal laboral fijo, Cat. AP)"
-   ],
-   "cita": "Lloc de treball: Conserge Tres places. Cat. AP.",
+   "valor": "conserge",
+   "cita": "es convoca el concurs-oposició de tres places de conserge",
    "nivel": "literal"
   },
   "vinculo": {
    "valor": "personal laboral fijo",
-   "cita": "Contractació laboral fixa Complement específic: 10.969,39€ bruts anuals",
-   "nivel": "literal"
+   "cita": "tres places de conserge, vacants a la plantilla de personal laboral",
+   "nivel": "sin_signos"
   },
   "sistema": {
    "valor": "concurso-oposición",
-   "cita": "es convoca concurs -oposició de tres places de conserge",
+   "cita": "es convoca el concurs-oposició de tres places de conserge",
    "nivel": "literal"
   },
   "plazas_total": {
    "valor": 3,
-   "cita": "es convoca concurs -oposició de tres places de conserge",
+   "cita": "es convoca el concurs-oposició de tres places de conserge",
    "nivel": "literal"
   },
-  "titulacion": {
-   "valor": "Certificat d'Escolaritat o titulació equivalent",
-   "cita": "Estar en possessió del certificat d'Escolaritat o titulació equivalent.",
+  "otros_requisitos": {
+   "valor": "Certificado negativo de delitos de naturaleza sexual o declaración jurada (Annex III) de no haber sido condenado por sentencia firme por delitos contra la libertad e indemnidad sexual ni trata de seres humanos con fines de explotación sexual",
+   "cita": "Certificat negatiu de penats o declaració jurada que s'adjunta a les bases com Annex III",
    "nivel": "literal"
   },
-  "exenciones_tasa": {
-   "valor": "Quedan exentas las personas aspirantes cuyos ingresos o prestación mensual sean inferiores al salario mínimo interprofesional.",
-   "cita": "Quedaran exemptes de realitzar el pagament de la taxa, aquelles persones aspirants que acreditin",
+  "idioma_cooficial": {
+   "valor": "Acreditación de conocimientos de lengua catalana; y de lengua castellana si la persona aspirante no es de nacionalidad española",
+   "cita": "Acreditació dels coneixements de llengua catalana i, si les persones aspirants no són de nacionalitat espanyola, de llengua castellana",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 25.6,
+   "cita": "Resguard del pagament de la taxa de 25,60 € establerta en les ordenances fiscals",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte (20) días hábiles, a contar desde el día siguiente a la publicación de este edicto",
+   "cita": "en el termini de vint (20) dies hàbils, a comptar des del dia següent a la publicació d'aquest edicte",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Preferentemente de forma electrónica en la Sede electrónica del Ayuntamiento; también presencial con cita previa en la Oficina de Información y Atención Ciudadana o por ORVE en oficinas de correos.",
-   "cita": "preferiblement de forma electrònica a la Seu electrònica de l'Ajuntament de Lloret de Mar",
+   "valor": "preferentemente de forma electrónica en la Sede electrónica del Ayuntamiento de Lloret de Mar; también presencial en oficinas de correos mediante servicio ORVE",
+   "cita": "es poden presentar preferentment de forma electrònica a la Seu electrònica de l'Ajuntament de Lloret de Mar",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Sede electrónica del Ayuntamiento (Seu electrònica) y Boletín Oficial de la Provincia de Girona",
-   "cita": "La convocatòria es publicarà íntegrament en el Butlletí Oficial de la província de Girona",
-   "nivel": "literal"
-  },
-  "temas": {
-   "valor": 10,
-   "cita": "TEMA 10.-Reglament d'ús de les instal·lacions esportives municipals.",
-   "nivel": "literal"
-  },
-  "meritos": {
-   "valor": "Servicios prestados (máx. 3 pts), cursos (máx. 3 pts), idiomas (máx. 1 pt), entrevista personal estructurada (máx. 3 pts); la fase de concurso se suma solo si se supera la oposición.",
-   "cita": "Serveis prestats (màxim 3 punts): 0'2 punts per cada mes treballat a qualsevol administració pública",
-   "nivel": "sin_signos"
-  },
-  "bolsa": {
-   "valor": "sí, para cubrir interinidades o contratos temporales con las personas que superen el proceso sin ser propuestas",
-   "cita": "Es farà una llista amb les persones que, havent superat el procés selectiu",
-   "nivel": "literal"
-  },
-  "practicas_o_curso": {
-   "valor": "Periodo de prácticas obligatorio y eliminatorio, calificado como APTO/A o NO APTO/A",
-   "cita": "El període de pràctiques és obligatori i eliminatori, i la qualificació final serà d'APTE/A o NO APTE/A.",
+   "valor": "BOP de Girona y Sede Electrónica del Ayuntamiento",
+   "cita": "les successives actuacions d'aquesta convocatòria es faran públiques en el BOP de Girona i en la Seu Electrònica",
    "nivel": "literal"
   }
  },
  "rechazados": {
-  "grupo": {
+  "bolsa": {
    "motivo": "cita_no_literal",
-   "valor": "AP",
-   "cita": "Tot el temari general: Grup E (Subgrup AP)"
-  },
-  "plazas_turno_libre": {
-   "motivo": "valor_no_en_cita",
-   "valor": 3,
-   "cita": "Concurs-oposició lliure. Contractació laboral fixa"
-  },
-  "otros_requisitos": {
-   "motivo": "cita_no_literal",
-   "valor": "Nacionalidad española (art. 57 TREBEP); edad mínima 16 años y no exceder la jubilación forzosa; no padecer impedimento físico o psíquico; no estar inhabilitado; certificado negativo de delitos sexuales.",
-   "cita": "Tenir nacionalitat espanyola, sens perjudici del que disposa l'art. 57"
-  },
-  "idioma_cooficial": {
-   "motivo": "cita_no_literal",
-   "valor": "Català nivel B2 (exento si se acredita o se ha superado prueba en procesos anteriores)",
-   "cita": "Posseir el certificat de coneixements de nivell intermedi de català (Nivell B 2)"
-  },
-  "tasa_euros": {
-   "motivo": "valor_no_en_cita",
-   "valor": 25.6,
-   "cita": "Resguard del pagament de la taxa de 25 ,60 € establerta"
-  },
-  "plazo_solicitudes": {
-   "motivo": "cita_no_literal",
-   "valor": "veinte (20) días hábiles desde el día siguiente a la publicación del anuncio en el Diari Oficial de la Generalitat de Catalunya",
-   "cita": "en el termini de vint (20) dies hàbils, a comptar des del dia següent"
-  },
-  "ejercicios": {
-   "motivo": "cita_no_literal",
-   "valor": [
-    "Prueba de catalán (APTO/NO APTO)",
-    "Prueba de castellano si procede (APTO/NO APTO)",
-    "Prueba de conocimientos: test de 20 preguntas en 30 minutos (eliminatoria, mínimo 10)",
-    "Prueba práctica: tres supuestos prácticos (eliminatoria, mínimo 5)",
-    "Periodo de prácticas (APTO/NO APTO)"
-   ],
-   "cita": "Contestar, durant un termini màxim de trenta (30) minuts, un qüestionari tipus test de vint (20) preguntes"
+   "valor": "no",
+   "cita": ""
   }
  }
 }

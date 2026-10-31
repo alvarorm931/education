@@ -1,0 +1,86 @@
+{
+ "proceso": "doe:DOE-2025050203",
+ "documento": {
+  "id": "doe:DOE-2025050203",
+  "fuente": "DOE",
+  "url": "https://doe.juntaex.es/otrosFormatos/html.php?xml=2025050203&anio=2025&doe=2440o",
+  "fecha": "2025-12-19",
+  "huella": "7a864986e699c68f4cd09021003d3f92d60f9e6630d6fff8ffcc12ca4579b2d3"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:42:28+00:00",
+ "lote": "msgbatch_01W17mR271uYfWYL6CuSdriL",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Personal laboral de los Grupos III, IV y V de la Administración de la Comunidad Autónoma de Extremadura"
+   ],
+   "cita": "se convocan pruebas selectivas para cubrir, por el sistema de concurso-oposición, plazas de los Grupos III, IV y V de personal laboral",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "III, IV y V",
+   "cita": "plazas de los Grupos III, IV y V de personal laboral de la Administración de la Comunidad Autónoma",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "formalizarán los correspondientes contratos de trabajo como personal laboral fijo",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "para cubrir, por el sistema de concurso-oposición, plazas de los Grupos III, IV y V",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Discapacidad igual o superior al 33 % para el turno de discapacidad; no haber sido condenado por delitos contra la libertad e indemnidad sexual si hay contacto habitual con menores; no hallarse en supuestos del artículo 35 bis de la Ley 1/2014",
+   "cita": "deberán estar en posesión de certificación expedida por el órgano competente que acredite un grado de discapacidad igual o superior al 33 %",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Bonificación parcial del 50 % para participantes en situación legal de desempleo durante, al menos, los tres meses inmediatamente anteriores a la publicación; exenciones en la base 3.9 (no transcritas)",
+   "cita": "se aplicará una bonificación parcial del 50 % de la cuota para los participantes en pruebas selectivas que se encuentren en situación legal de desempleo",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Presentación electrónica de la solicitud de participación, con pago telemático de la tasa en el mismo acto",
+   "cita": "en caso de no estar exento, el abono de la tasa se efectuará de forma telemática en el mismo acto de presentación electrónica de la solicitud",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Fase de oposición (ejercicio único, prueba sobre funciones de la categoría y especialidad)",
+    "Fase de concurso (valoración de méritos)"
+   ],
+   "cita": "el contenido de la prueba que deberá versar sobre las funciones propias de la Categoría y Especialidad",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, lista de espera para cubrir temporalmente vacantes; quienes superen 4 puntos en la fase de oposición",
+   "cita": "formando parte de la lista de espera aquellas personas aspirantes que sin haber superado el proceso de selección, hayan alcanzado una puntuación mínima de cuatro puntos",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "tasa_euros": {
+   "motivo": "valor_no_numerico",
+   "valor": {
+    "grupo_III": 23.12,
+    "grupos_IV_y_V": 15.43
+   },
+   "cita": "la tasa por derechos de examen se fija por solicitud en la cantidad de 23,12 euros para el Grupo III"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Diario Oficial de Extremadura; listas expuestas en los lugares indicados en la base primera, apartado 5",
+   "cita": "la Dirección General de Función Pública publicará en el Diario Oficial de Extremadura resolución por la que se declaran aprobadas las listas provisionales"
+  },
+  "practicas_o_curso": {
+   "motivo": "cita_no_literal",
+   "valor": "No aparece en el texto",
+   "cita": "No aparece"
+  }
+ }
+}

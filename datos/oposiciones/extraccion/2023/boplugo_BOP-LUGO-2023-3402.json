@@ -1,0 +1,60 @@
+{
+ "proceso": "boplugo:BOP-LUGO-2023-3402",
+ "documento": {
+  "id": "boplugo:BOP-LUGO-2023-3402",
+  "fuente": "BOP-LUGO",
+  "url": "https://deputacionlugo.gal/sites/deputacionlugo.org/files/inline-files/07-11-2023_1.pdf#page=1",
+  "fecha": "2023-11-07",
+  "huella": "cbc1099618be3b25c7574d81f2cd60449cd69e062b7d516d7285cd0a12ad046b"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:40+00:00",
+ "lote": "msgbatch_01SjfjDqJRwL6bpTvJz2YfVg",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "peón"
+   ],
+   "cita": "aprobouse a convocatoria doproceso selectivo para a cobertura de dous postos de peons",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "aprobouse a convocatoria doproceso selectivo para a cobertura de dous postos",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "5 días hábiles desde el día siguiente a la publicación del anuncio en el BOP de Lugo",
+   "cita": "O prazo de presentación de solicitudes será de 5 días hábiles que comenzarán a contar a partir do día seguinte",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Registro General del Concello de Folgoso do Courel o en cualquiera de los lugares del art. 16.4 de la Ley 39/2015, con el modelo del Anexo I de las bases",
+   "cita": "No Rexistro Xeral do Concello de Folgoso do Courel ou en calquera dos lugares aos que se refire o artigo 16.4",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de anuncios y sede electrónica del Concello de Folgoso do Courel",
+   "cita": "As bases completas publicaranse no taboleiro de anuncios e na sede electrónica do Concello",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Periodo de 6 meses (contrato de duración determinada por el programa de reforzo del empleo)",
+   "cita": "durante un periodo de 6 mesesao abeiro do Programa de Reforzo do Emprego",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "otro",
+   "cita": "cobertura de dous postos de peons ao 75% da xornada, durante un periodo de 6 meses"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 2,
+   "cita": "cobertura de dous postos de peons ao 75% da xornada"
+  }
+ }
+}

@@ -1,0 +1,65 @@
+{
+ "proceso": "bopb:BOPB-202510198694",
+ "documento": {
+  "id": "dogc:1039235",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1039235",
+  "fecha": "2026-03-12",
+  "huella": "0aa20977c20a1cfa69d7efccb0676554d8be5ecf589d2a99824100b92f472beb"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:42:28+00:00",
+ "lote": "msgbatch_01W17mR271uYfWYL6CuSdriL",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "C1",
+   "cita": "classe Policia Local del grup de classificació C1",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "cobertura definitiva de 3 places d'agent de la Policia Local",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mitjançant procediment de concurs oposició lliure",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 3,
+   "cita": "cobertura definitiva de 3 places d'agent de la Policia Local",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tauler d'anuncis de la Seu electrònica de l'Ajuntament de Parets del Vallès (http://paretsdelvalles.eadministracio.cat)",
+   "cita": "Les bases es podran consultar al tauler anuncis de la Seu electrònica",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, para formar una bolsa de trabajo",
+   "cita": "i per la formació d'una borsa de treball",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Agent de la Policia Local"
+   ],
+   "cita": "per la cobertura definitiva de 3 places d'agent de la Policia Local de Parets del Vallès"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 3,
+   "cita": "mitjançant procediment de concurs oposició lliure"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "20 días hábiles a partir del día siguiente a la publicación del anuncio de la convocatoria en el BOE",
+   "cita": "El termini d'admissió de sol·licituds és de 20 dies hàbils comptats a partir de l'endemà"
+  }
+ }
+}

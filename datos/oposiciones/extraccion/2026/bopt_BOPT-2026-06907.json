@@ -1,111 +1,53 @@
 {
  "proceso": "bopt:BOPT-2026-06907",
  "documento": {
-  "id": "bopt:BOPT-2026-06907",
-  "fuente": "BOPT",
-  "url": "https://www.dipta.cat/bopt/web/anunci/362549/placa-de-peo-de-serveis-reservat-a-persones-amb-discapacitat-1-bases-i-convocatoria-ajuntament-perafort",
-  "fecha": "2026-07-21",
-  "huella": "30236cbd7c3586389d95b752d83f410fe27076275881cd76eb5e0877e25269b6"
+  "id": "dogc:1051455",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1051455",
+  "fecha": "2026-07-30",
+  "huella": "20cefb089cbf32d85755953fa78758ed0920fc6cc5acf522d46f807c7df12233"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T08:18:04+00:00",
- "lote": "msgbatch_01BrnYw6KkevFx7at547B5g8",
+ "extraido": "2026-10-31T14:41:54+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
  "no_son_bases": false,
  "campos": {
-  "grupo": {
-   "valor": "AP",
-   "cita": "Peó de serveis, Grup AP, personal laboral fix de l'Ajuntament de Perafort",
-   "nivel": "sin_signos"
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "amb caràcter de personal laboral fix, vacant a la plantilla",
+   "nivel": "literal"
   },
-  "plazas_total": {
-   "valor": 1,
-   "cita": "DENOMINACIÓ DEL LLOC: Peó de serveis VACANTS: 1 NATURALESA: Personal Laboral Fix",
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "pel sistema de concurs-oposició, torn reserva per a persones amb discapacitat",
    "nivel": "literal"
   },
   "plazas_discapacidad": {
    "valor": 1,
-   "cita": "torn reserva per a persones amb discapacitat intel·lectual d'una plaça de Peó de serveis",
+   "cita": "torn reserva per a persones amb discapacitat intel·lectual d'una placa de Peó",
    "nivel": "literal"
   },
-  "titulacion": {
-   "valor": "No s'exigeix cap titulació",
-   "cita": "TITULACIÓ EXIGIBLE: No s'exigeix cap titulació.",
-   "nivel": "literal"
-  },
-  "idioma_cooficial": {
-   "valor": "Català nivell bàsic A2 o equivalent",
-   "cita": "Posseir el certificat de nivell bàsic (A2) o equivalent de català",
-   "nivel": "literal"
-  },
-  "presentacion": {
-   "valor": "Registre electrònic de l'ens (certificat digital o signatura electrònica) o presencialment al registre general de l'Ajuntament, de dilluns a divendres de 9 a 13 h",
-   "cita": "Electrònicament: al registre electrònic de l'ens. Caldrà fer-ho amb certificat digital",
-   "nivel": "literal"
-  },
-  "publicaciones": {
-   "valor": "Butlletí Oficial de la Província de Tarragona, seu electrònica i Portal de Transparència; extracte al DOGC",
-   "cita": "es publicarà al Butlletí Oficial de la Província de Tarragona, a la seu electrònica i al Portal de Transparència",
-   "nivel": "literal"
-  },
-  "ejercicios": {
-   "valor": [
-    "Primer exercici: qüestionari escrit de 20 preguntes tipus test (obligatori i eliminatori, 10 punts)",
-    "Segon exercici: prova pràctica sobre tasques del lloc (obligatori i eliminatori, fins 20 punts)"
-   ],
-   "cita": "Primer exercici: De caràcter obligatori i eliminatori (10 punts).",
-   "nivel": "literal"
-  },
-  "temas": {
-   "valor": 10,
-   "cita": "TEMA 10. Normes bàsiques en la senyalització de les zones de treball.",
-   "nivel": "literal"
-  },
-  "meritos": {
-   "valor": "Experiència laboral (màx. 5 punts) i formació relacionada amb les funcions del lloc (màx. 10 punts)",
-   "cita": "Experiència laboral (màx.5 punts): Barem 1. Antiguitat (màxim 5 punts)",
-   "nivel": "literal"
-  },
-  "bolsa": {
-   "valor": "sí, per cobrir temporalment vacants i/o substitucions, vigència de dos anys",
-   "cita": "es constituirà una borsa de treball per cobrir temporalment les vacants i/o substitucions",
-   "nivel": "sin_signos"
-  },
-  "practicas_o_curso": {
-   "valor": "Període de prova de 2 mesos",
-   "cita": "El període de prova es realitzarà sota la supervisió del cap de la unitat administrativa",
+  "plazo_solicitudes": {
+   "valor": "20 días naturales desde el día siguiente a la publicación del anuncio en el DOGC",
+   "cita": "en el termini de 20 dies naturals a comptar des de l'endemà de la publicació",
    "nivel": "literal"
   }
  },
  "rechazados": {
   "denominacion": {
    "motivo": "cita_no_literal",
-   "valor": "Peó de serveis (AP), personal laboral fix, torn reserva per a persones amb discapacitat intel·lectual",
-   "cita": "una plaça de Peó de serveis (AP), amb caràcter de personal laboral fix"
+   "valor": "Peó de serveis (AP)",
+   "cita": "una placa de Peó de serveis (AP), amb caràcter de personal laboral fix"
   },
-  "vinculo": {
-   "motivo": "cita_no_literal",
-   "valor": "personal laboral fijo",
-   "cita": "amb caràcter de personal laboral fix, vacant a la plantilla de personal"
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "procediment de selecció per a la provisió, pel sistema de concurs-oposició"
   },
-  "sistema": {
+  "presentacion": {
    "motivo": "cita_no_literal",
-   "valor": "concurso-oposición",
-   "cita": "procés selectiu mitjançant concurs-oposició, torn reserva per a persones amb discapacitat"
-  },
-  "otros_requisitos": {
-   "motivo": "cita_no_literal",
-   "valor": "Nacionalitat espanyola o de la UE (o als quals sigui aplicable la lliure circulació); capacitat funcional; setze anys i no excedir l'edat de jubilació; no estar separat del servei de cap administració ni inhabilitat; discapacitat intel·lectual reconeguda igual o superior al 33%.",
-   "cita": "Posseir una discapacitat intel·lectual amb un grau de discapacitat reconegut igual o superior al 33%."
-  },
-  "tasa_euros": {
-   "motivo": "cita_no_literal",
-   "valor": 10,
-   "cita": "Justificant del pagament de la taxa de drets d'examen que són 10 euros."
-  },
-  "plazo_solicitudes": {
-   "motivo": "cita_no_literal",
-   "valor": "20 dies hàbils a partir de l'endemà de la publicació de l'extracte de la convocatòria en el DOGC",
-   "cita": "El termini per presentar sol·licituds és de 20 dies hàbils a partir de l'endemà"
+   "valor": "Sede electrónica del Ayuntamiento, Registro General o cualquier otra forma legalmente establecida, dirigidas al Alcalde-Presidente",
+   "cita": "es presentaran a la seu electrònica de l'Ajuntament, al Registre General de l'Ajuntament, o en qualsevol altra forma establerta legalment"
   }
  }
 }

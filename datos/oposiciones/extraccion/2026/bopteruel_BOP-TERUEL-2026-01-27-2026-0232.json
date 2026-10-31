@@ -1,0 +1,56 @@
+{
+ "proceso": "bopteruel:BOP-TERUEL-2026-01-27-2026-0232",
+ "documento": {
+  "id": "bopteruel:BOP-TERUEL-2026-01-27-2026-0232",
+  "fuente": "BOP-TERUEL",
+  "url": null,
+  "fecha": "2026-01-27",
+  "huella": "886733a18839bc0e903f6c0128290b50c2130f6727c936022428ea2c9a2ee053"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:42:40+00:00",
+ "lote": "msgbatch_01W17mR271uYfWYL6CuSdriL",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "Auxiliar Administrativo, escala de Administración General, subescala Auxiliar, clase Auxiliar",
+   "cita": "selección de 1 plaza vacante de Auxiliar Administrativo perteneciente a la escala de Administración General",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "por el sistema de oposición, en turno libre",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "selección de 1 plaza vacante de Auxiliar Administrativo",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia de Teruel, Tablón de Anuncios y página Web del Ayuntamiento de Alcalá de la Selva",
+   "cita": "Publicar la presente resolución en el Boletín Oficial de la Provincia de Teruel, en el Tablón de Anuncios y en la página Web",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Primer ejercicio teórico",
+    "Segundo ejercicio"
+   ],
+   "cita": "El segundo ejercicio se celebrará el día 9 de febrero a las 10:00 horas",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "por el sistema de oposición, en turno libre"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "no",
+   "cita": "Aprobar la lista DEFINITIVA de candidatos admitidos y excluidos a la convocatoria de pruebas selectivas"
+  }
+ }
+}

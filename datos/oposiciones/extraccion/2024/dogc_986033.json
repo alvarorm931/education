@@ -1,0 +1,60 @@
+{
+ "proceso": "dogc:986033",
+ "documento": {
+  "id": "dogc:986033",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=986033",
+  "fecha": "2024-05-21",
+  "huella": "69c5dc9ef2308dc608f0c04999bba5cf6945a71a3e9152dca270f6f0c2ed3fd8"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:54:28+00:00",
+ "lote": "msgbatch_01HRnX7cDVMkRZD7mBamCmLu",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "C2",
+   "cita": "funcionari, grup C2, de l'Ajuntament de Fogars de la Selva",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Graduado en educación secundaria, graduado escolar, técnico de grado medio de formación profesional, técnico auxiliar de formación profesional de primer grado o equivalente o superior",
+   "cita": "Estar en possessió del títol de graduat en educació secundària, graduat escolar, tècnic/a corresponent a cicles formatius de grau mitjà",
+   "nivel": "literal"
+  },
+  "temas": {
+   "valor": 20,
+   "cita": "Tema 20. El tràfic i la seguretat vial: concepte i objectius. L'home com a element de seguretat vial. Els conductors. Els vianants. El vehicle. Les vies. La Nor",
+   "nivel": "contado"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Agent de la Guàrdia Municipal de Fogars de la Selva"
+   ],
+   "cita": "per cobrir una plaça d'Agent de la Guàrdia Municipal de Fogars de la Selva"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "cobrir, en propietat, una plaça d'agent de la guàrdia municipal, funcionari de carrera"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "mitjançant concurs oposició lliure, a una plaça en propietat"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 1,
+   "cita": "per cobrir una plaça d'Agent de la Guàrdia Municipal de Fogars de la Selva"
+  },
+  "plazas_turno_libre": {
+   "motivo": "cita_no_literal",
+   "valor": 1,
+   "cita": "per cobrir una plaça d'Agent de la Guàrdia Municipal de Fogars de la Selva"
+  }
+ }
+}

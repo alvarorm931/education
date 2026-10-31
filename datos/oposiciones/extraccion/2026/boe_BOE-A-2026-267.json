@@ -1,0 +1,50 @@
+{
+ "proceso": "boe:BOE-A-2026-267",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2025-9351",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2025/12/24_245/2025_009351.pdf",
+  "fecha": "2025-12-24",
+  "huella": "5fbb84a48a3605b6b224675a1edea5f7f7ab911543666bee41d2a07c263175db"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:42:08+00:00",
+ "lote": "msgbatch_01W17mR271uYfWYL6CuSdriL",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Peón/na de Pintura"
+   ],
+   "cita": "borsa d'ocupació temporal de peó/na de Pintura, mitjançant sistema de concurs -oposició",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "constitució d'una borsa d'ocupació temporal de peó/na de Pintura",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mitjançant sistema de concurs -oposició, s'obri el termini de presentació de sol·licituds",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "10 días hábiles a contar desde el día siguiente a la publicación del anuncio en el BOP de Alicante",
+   "cita": "el termini de presentació de sol·licituds, que serà de 10 dies hàbils a c omptar des de l'endemà a la publicació d'aquest anunci",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "BOP de Alicante y tablón de anuncios de la Sede electrónica del Ayuntamiento de Pedreguer (http://pedreguer.sedelectronica.es)",
+   "cita": "es publicaran en el Butlletí Oficial de la Província d’Alacant i en el tauló d’anuncis de la Seu electrònica d'aquest Ajuntament",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, para constituir una bolsa de ocupación temporal de peón/na de Pintura",
+   "cita": "per a constitució d'una borsa d'ocupació temporal de peó/na de Pintura"
+  }
+ }
+}

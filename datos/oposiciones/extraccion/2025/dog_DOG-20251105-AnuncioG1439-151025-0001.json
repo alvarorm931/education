@@ -1,0 +1,60 @@
+{
+ "proceso": "dog:DOG-20251105-AnuncioG1439-151025-0001",
+ "documento": {
+  "id": "dog:DOG-20251105-AnuncioG1439-151025-0001",
+  "fuente": "DOG",
+  "url": "https://www.xunta.gal/dog/Publicados/2025/20251105/AnuncioG1439-151025-0001_es.html",
+  "fecha": "2025-11-05",
+  "huella": "25478d4445d739503a89ea5ef0e7263a8f9188598deb4887ee20c297819e8057"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:41:25+00:00",
+ "lote": "msgbatch_01UNq3BNhPPHoTK3TEJzun1h",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "peón/peona de granja"
+   ],
+   "cita": "Tres plazas de peón/peona de granja, de la plantilla de personal laboral, agrupaciones profesionales",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "E / agrupaciones profesionales",
+   "cita": "Tres plazas de peón/peona de granja, de la plantilla de personal laboral, agrupaciones profesionales",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "regulan los procesos selectivos para el ingreso en las plazas de personal laboral fijo",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mediante el sistema de concurso-oposición, cuota general, acceso libre",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 3,
+   "cita": "Tres plazas de peón/peona de granja, de la plantilla de personal laboral",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte (20) días naturales desde el día siguiente al de la publicación del extracto de la convocatoria y bases en el BOE",
+   "cita": "El plazo de presentación de solicitudes será de veinte (20) días naturales desde el día siguiente",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "BOP de Lugo, tablón edictal de la entidad y página web de la Diputación Provincial de Lugo",
+   "cita": "se publicarán en el BOP de Lugo, en el tablón edictal de esta entidad y en la página web de la Diputación Provincial de Lugo",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 3,
+   "cita": "mediante el sistema de concurso-oposición, cuota general, acceso libre"
+  }
+ }
+}

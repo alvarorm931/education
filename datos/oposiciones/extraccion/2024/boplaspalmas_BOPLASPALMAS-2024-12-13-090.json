@@ -1,0 +1,62 @@
+{
+ "proceso": "boplaspalmas:BOPLASPALMAS-2024-12-13-090",
+ "documento": {
+  "id": "boplaspalmas:BOPLASPALMAS-2024-12-13-090",
+  "fuente": "BOP-LASPALMAS",
+  "url": null,
+  "fecha": "2024-12-13",
+  "huella": "ea7ce759f83a2a9af49d15aa8cd209175bf969cececae1519c35ed05f645aeea"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:49:54+00:00",
+ "lote": "msgbatch_018TPQE8scQozfAUdc1n8RyC",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Arquitecto/a (Funcionario)",
+    "Auxiliares Administrativos (Funcionarios)",
+    "Ingeniero Técnico Industrial (Funcionario)",
+    "Letrado (Funcionario)",
+    "Técnico en Administración General (Funcionario)",
+    "Agente de Desarrollo Local, Técnico Superior (Laboral)",
+    "Psicólogos/as (Laboral)",
+    "Letrados/as (Laboral)",
+    "Veterinarios/as (Laboral)",
+    "Arquitecto/a (Laboral)",
+    "Músico/a 1ª parte (laboral)",
+    "Músico/a 2ª parte (laboral)",
+    "Músico/a solista (laboral)"
+   ],
+   "cita": "plazas de Arquitecto/a (Funcionarios)  (10) diez plazas de Auxiliares Administrativos",
+   "nivel": "sin_signos"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "Proceso Selectivo para la Estabilización de Empleo Temporal de Larga Duración para Personal Funcionario y Laboral",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "proceso selectivo a través del procedimiento de concurso de (3) tres plazas",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Publicar la presente resolución en el Boletín Oficial de la Provincia, en el tablón de anuncios y en la página web municipal",
+   "cita": "Publicar la presente resolución en el Boletín Oficial de la Provincia, en el tablón de anuncios y en la página web municipal.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 88,
+   "cita": "plazas de Arquitecto/a (Funcionarios) (10) diez plazas de Auxiliares Administrativos"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "no",
+   "cita": "aprobar las notas definitivas de los aspirantes para la provisión, por el sistema de concurso, de plazas convocadas"
+  }
+ }
+}

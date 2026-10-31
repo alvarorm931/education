@@ -1,117 +1,64 @@
 {
  "proceso": "bopb:BOPB-202610143329",
  "documento": {
-  "id": "bopb:BOPB-202610143329",
-  "fuente": "BOPB",
-  "url": "https://bop.diba.cat/anunci/3993097/bases-i-la-convocatoria-per-a-la-provisio-definitiva-pel-sistema-de-concurs-oposicio-de-3-places-vacants-d-administratiu-va-grup-subgrup-c1-de-la-mancomunitat-penedes-garraf-en-regim-de-personal-laboral-fix-i-la-constitucio-d-una-borsa-de-treball-mancomunitat-penedes-garraf",
-  "fecha": "2026-09-28",
-  "huella": "f09c24fa473dc0b90d8e3a843a6acda364b0c5e1cb1ca74d2a67335b8ce89751"
+  "id": "dogc:1055348",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1055348",
+  "fecha": "2026-09-29",
+  "huella": "149072789a83c7b25acebea0010949eb1078644d302e13ae49427900e054dfad"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T08:03:49+00:00",
- "lote": "msgbatch_013xFoLdqcGqWcqkzh7qrdGg",
+ "extraido": "2026-10-31T14:41:34+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
  "no_son_bases": false,
  "campos": {
+  "denominacion": {
+   "valor": [
+    "Administrativo/va"
+   ],
+   "cita": "3 plazas vacantes de Administrativo/va, grupo/subgrupo C1, de la Mancomunidad Penedès-Garraf",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C1",
+   "cita": "grupo/subgrupo C1, de la Mancomunidad Penedès-Garraf",
+   "nivel": "literal"
+  },
   "vinculo": {
    "valor": "personal laboral fijo",
-   "cita": "en règim de personal laboral fix i la constitució d’una borsa de treball",
+   "cita": "en régimen de personal laboral fijo y la constitución de una bolsa de trabajo",
    "nivel": "literal"
   },
   "sistema": {
    "valor": "concurso-oposición",
-   "cita": "Sistema de selecció: Concurs-Oposició - Règim contractual: Personal laboral fix.",
-   "nivel": "sin_signos"
+   "cita": "por el sistema de concurso-oposición, de 3 plazas vacantes",
+   "nivel": "literal"
   },
   "plazas_total": {
    "valor": 3,
-   "cita": "Nombre de places: 3 i constitució d’una borsa de treball.",
-   "nivel": "literal"
-  },
-  "otros_requisitos": {
-   "valor": "Nacionalidad o condición de extranjero habilitado; 16 años y no exceder la edad de jubilación forzosa; capacidad funcional; no haber sido separado de la función pública; permiso de conducir B1; conocimiento de castellano de nivel intermedio si no se tiene nacionalidad española.",
-   "cita": "Disposar del permís de conduir B1",
-   "nivel": "literal"
-  },
-  "idioma_cooficial": {
-   "valor": "Catalán, nivel C1",
-   "cita": "Estar en possessió del certificat de coneixements de llengua catalana de nivell C1 de català",
-   "nivel": "literal"
-  },
-  "tasa_euros": {
-   "valor": 22.15,
-   "cita": "Pagament de la taxa de drets d’examen de 22,15€, establerta a la base 4h).",
-   "nivel": "literal"
-  },
-  "exenciones_tasa": {
-   "valor": "Personas demandantes de empleo no ocupadas y personas con grado de discapacidad igual o superior al 33%, según ordenanzas fiscales.",
-   "cita": "exemptes de pagament per trobar-se en situació de demandant d’ocupació no ocupada",
+   "cita": "por el sistema de concurso-oposición, de 3 plazas vacantes de Administrativo/va",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "Diez días hábiles desde el día siguiente a la publicación de la convocatoria en el DOGC",
-   "cita": "dins del termini de deu dies hàbils a comptar des de l’endemà de la publicació",
+   "valor": "10 días hábiles, contados desde el día siguiente de la publicación de la presente convocatoria en el Diario Oficial de la Generalitat de Catalunya",
+   "cita": "dentro del plazo improrrogable de 10 días hábiles, contados desde el día siguiente de la publicación",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Preferentemente en el Registro Electrónico de la Mancomunitat; también en el Registro General o en las formas del art. 16.4 Ley 39/2015",
-   "cita": "Les sol·licituds per participar en la convocatòria es poden presentar preferentment a l Registre Electrònic",
+   "valor": "Las instancias se podrán presentar dentro del plazo improrrogable de 10 días hábiles",
+   "cita": "Las instancias solicitando formar parte en el proceso selectivo se podrán presentar dentro del plazo improrrogable",
    "nivel": "literal"
   },
-  "ejercicios": {
-   "valor": [
-    "Prueba de conocimiento de catalán (apto/no apto)",
-    "Prueba de conocimiento de castellano (apto/no apto)",
-    "Prueba teórica: test o preguntas cortas, 60 minutos, 0 a 10 puntos",
-    "Prueba práctica: supuesto práctico, 90 minutos, eliminatoria, 0 a 20 puntos",
-    "Fase de concurso: valoración curricular, hasta 15 puntos",
-    "Entrevista personal, potestativa, hasta 5 puntos"
-   ],
-   "cita": "Fase Oposició: 30 punts • Fase Concurs: 15 punts • Entrevista personal: 5 punts",
-   "nivel": "literal"
-  },
-  "meritos": {
-   "valor": "Experiencia profesional hasta 9 puntos (0,50 por mes en la Mancomunitat; 0,25 por mes en otras administraciones o empresa privada); formación complementaria hasta 6 puntos; ACTIC hasta 0,50 puntos.",
-   "cita": "Per experiència professional. fins a un màxim de 9 punts",
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia de Barcelona, tablón de edictos y web de la Mancomunitat",
+   "cita": "se publicaran en el Boletín Oficial de la Provincia de Barcelona, de fecha 29 de octubre de 2026, en el tablón de edictos, y en la web",
    "nivel": "literal"
   },
   "bolsa": {
-   "valor": "Sí, para cubrir futuras necesidades de personal no permanente con los aspirantes que superen la fase de oposición sin obtener plaza",
-   "cita": "constitució d’una borsa de treball",
+   "valor": "sí, bolsa de trabajo",
+   "cita": "la constitución de una bolsa de trabajo, ya previstas presupuestariamente dentro de ejercicio 2026",
    "nivel": "literal"
-  },
-  "practicas_o_curso": {
-   "valor": "Periodo de prueba de 2 meses",
-   "cita": "S’estableix un període de prova de 2 mesos",
-   "nivel": "literal"
-  },
-  "temas": {
-   "valor": 34,
-   "cita": "Tema 34. Funcionament dels òrgans de govern local Els òrgans necessaris i complementaris de les entitats locals. El Ple, la Presidència, la Junta de Govern Loca",
-   "nivel": "contado"
   }
  },
- "rechazados": {
-  "denominacion": {
-   "motivo": "cita_no_literal",
-   "valor": [
-    "Administratiu/va"
-   ],
-   "cita": "Administratiu/va, grup/subgrup C1, de la Mancomunitat Penedès-Garraf, en règim de personal laboral fix"
-  },
-  "grupo": {
-   "motivo": "cita_no_literal",
-   "valor": "C1",
-   "cita": "Administratiu/va, grup de classificació C1, en règim de personal laboral fix"
-  },
-  "titulacion": {
-   "motivo": "cita_no_literal",
-   "valor": "Título equivalente al subgrupo C1 (título de bachillerato o ciclo formativo de grado superior o equivalente)",
-   "cita": "Estar en possessió de la titulació equivalent a la pròpia el subgrup de classificació C1 del personal funcionari"
-  },
-  "publicaciones": {
-   "motivo": "cita_no_literal",
-   "valor": "Tablón de anuncios electrónico y web de la Mancomunitat, BOPB y anuncio en el DOGC",
-   "cita": "es publicarà íntegrament al tauler d’anuncis electrònic de la Mancomunitat"
-  }
- }
+ "rechazados": {}
 }

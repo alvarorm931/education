@@ -1,0 +1,50 @@
+{
+ "proceso": "doe:DOE-2023080301",
+ "documento": {
+  "id": "doe:DOE-2023080301",
+  "fuente": "DOE",
+  "url": "https://doe.juntaex.es/otrosFormatos/html.php?xml=2023080301&anio=2023&doe=340o",
+  "fecha": "2023-02-17",
+  "huella": "a8eaa4a9c6245a38e12a52234f5b9f9358d8a187fbe47bc5e0302bad64f35be3"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:56:40+00:00",
+ "lote": "msgbatch_0167qWfLXqjGo8Hv43cM3LuM",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Gerente"
+   ],
+   "cita": "procedimiento de provisión del puesto directivo profesional de Gerente de la entidad",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "otro",
+   "cita": "procedimiento de provisión del puesto directivo profesional de Gerente de la entidad",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "diez (10) días hábiles a contar desde el siguiente a la publicación del presente anuncio en el Diario Oficial de Extremadura",
+   "cita": "será de diez (10) días hábiles a contar desde el siguiente a la publicación",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "en el modelo normalizado",
+   "cita": "El plazo de presentación de las solicitudes, en el modelo normalizado, será de diez",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "provisión del puesto directivo profesional de Gerente de la entidad"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "página web del Consorcio Gran Teatro de Cáceres, sección de Empleo",
+   "cita": "podrán ser consultadas y descargadas en la página web del Consorcio Gran Teatro de Cáceres"
+  }
+ }
+}

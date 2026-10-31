@@ -1,0 +1,75 @@
+{
+ "proceso": "bopbadajoz:BOP-BADAJOZ-6006-2022",
+ "documento": {
+  "id": "bopbadajoz:BOP-BADAJOZ-6006-2022",
+  "fuente": "BOP-BADAJOZ",
+  "url": "https://www.dip-badajoz.es/bop/ventana_anuncio.php?id_anuncio=140965&FechaSolicitada=20221228000000",
+  "fecha": "2022-12-28",
+  "huella": "54597d71efa364cf641e872155d596b073f6eb15c7f1fab60deedf107c4d53de"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:56:07+00:00",
+ "lote": "msgbatch_014eT3dLLVopBnuVgQ4syWD9",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Personal laboral fijo, Grupo III, Ayuntamiento de Olivenza (varias plazas)"
+   ],
+   "cita": "provisión, mediante el sistema de concurso, turno libre, de distintas plazas de personal laboral fijo integradas en el Grupo III",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "III",
+   "cita": "distintas plazas de personal laboral fijo integradas en el Grupo III",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "distintas plazas de personal laboral fijo integradas en el Grupo III",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "el sistema selectivo para la provisión de las plazas será el de concurso de méritos",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles desde el día siguiente a la publicación del extracto de la convocatoria en el BOE",
+   "cita": "El plazo para presentar la solicitud será de veinte (20) días hábiles, contados a partir del día siguiente al de la publicación del extracto",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia de Badajoz, tablón de anuncios y tablón electrónico de la sede electrónica del ayuntamiento; extracto en el BOE",
+   "cita": "La convocatoria se publicará en el Boletín Oficial de la Provincia de Badajoz, en la sede electrónica del ayuntamiento de Olivenza",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Experiencia profesional y antigüedad hasta 9 puntos; formación hasta 2 puntos; valoración total máxima de 10 puntos en la fase de concurso",
+   "cita": "Los méritos alegados y acreditados por las personas interesadas se valorarán hasta un máximo de 11 puntos",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "no",
+   "cita": "El desarrollo de la presente convocatoria no dará lugar a la creación de una bolsa de trabajo.",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "no consta",
+   "cita": "Adquirida la condición de personal laboral fijo, les será de aplicación la normativa sobre incompatibilidades",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_turno_libre": {
+   "motivo": "valor_no_numerico",
+   "valor": "no consta",
+   "cita": "provisión, mediante el sistema de concurso, turno libre, de distintas plazas"
+  },
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Preferentemente a través de la sede electrónica del Ayuntamiento de Olivenza (con certificado digital); también en el Registro General del Ayuntamiento o según artículo 16.4 de la Ley 39/2015",
+   "cita": "deberán realizar la inscripción preferentemente a través de la sede electrónica del Ayuntamiento de Olivenza"
+  }
+ }
+}

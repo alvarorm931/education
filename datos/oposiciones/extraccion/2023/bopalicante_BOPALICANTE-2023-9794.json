@@ -1,0 +1,112 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2023-9794",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2023-9794",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2023/11/21_223/2023_009794.pdf",
+  "fecha": "2023-11-21",
+  "huella": "e452410f11e0ac23eeec00cd27aadc67ae287416b101cb61f37b06f363785828"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:44+00:00",
+ "lote": "msgbatch_01SjfjDqJRwL6bpTvJz2YfVg",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Agente de Policía Local (turno libre)",
+    "Agente de Policía Local (turno de movilidad)"
+   ],
+   "cita": "DOS PLAZAS DE AGENTE POLICÍA LOCAL, UNA POR TURNO LIBRE Y UNA POR TURNO DE MOVILIDAD",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C1",
+   "cita": "Grupo C, Subgrupo C1 de titulación del artículo 76 del Real Decreto Legislativo 5/2015",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "El procedimiento selectivo será el de OPOSICIÓN para el turno libre y CONCURSO DE MÉRITOS para el de movilidad.",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 2,
+   "cita": "provisión, en propiedad, de 2 plazas de AGENTES DE LA POLICÍA LOCAL",
+   "nivel": "literal"
+  },
+  "plazas_turno_libre": {
+   "valor": 1,
+   "cita": "1 de ellas se reservan para el turno libre y 1 para el turno de movilidad",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Bachiller o técnico o titulación equivalente",
+   "cita": "Estar en posesión del título de Bachiller o técnico o, en su caso, de la titulación equivalente",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española; no inhabilitado ni separado del servicio; sin antecedentes penales; 18 años y no exceder edad de jubilación; estatura mínima 1,65 m hombres y 1,58 m mujeres; compromiso de portar armas; permisos de conducción B y A2; aptitud física y médica",
+   "cita": "Tener al menos dieciocho años de edad y no exceder, en su caso, de la edad máxima de jubilación forzosa.",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 55,
+   "cita": "la justificación del pago de la tasa que será de 55 €",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles, contados a partir del siguiente a la publicación del extracto de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "durante el plazo de 20 días hábiles, contados a partir del siguiente a la publicación del extracto de la convocatoria",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Sede electrónica municipal (https://sanfulgencio.sedelectronica.es) o presencialmente en los Registros Generales del Ayuntamiento",
+   "cita": "La tramitación de las instancias es electrónica. El modelo de instancia... se presentará a través de la sede electrónica",
+   "nivel": "fragmentos"
+  },
+  "ejercicios": {
+   "valor": [
+    "Pruebas de aptitud física (eliminatoria, Apto/No apto)",
+    "Prueba de aptitud psicotécnica (eliminatoria, Apto/No apto)",
+    "Ejercicio de preguntas con respuestas alternativas, 50 preguntas (eliminatorio, 0-50 puntos)",
+    "Ejercicio práctico sobre caso planteado (eliminatorio, 0-50 puntos)",
+    "Reconocimiento médico (eliminatorio, Apto/No apto)"
+   ],
+   "cita": "Pruebas de aptitud física. De carácter obligatorio y eliminatorio.",
+   "nivel": "sin_signos"
+  },
+  "meritos": {
+   "valor": "Concurso de méritos según baremo del anexo VII del Decreto 179/2021 para el turno de movilidad",
+   "cita": "Se ajustará al baremo establecido en el anexo VII del Decreto 179/2021",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, bolsa de trabajo temporal para cubrir vacantes temporales con los aspirantes del turno libre que no obtengan plaza, vigencia máxima 3 años",
+   "cita": "Todos los aspirantes del turno libre que, habiendo superado el proceso de selección, no obtuvieran plaza, serán incluidas en una bolsa",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Curso selectivo en el IVASPE de formación teórico-práctica y periodo de prácticas de doce semanas en San Fulgencio (turno libre)",
+   "cita": "un periodo de prácticas de doce semanas en el municipio de San Fulgencio",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "Ayuntamiento de San Fulgencio plazas vacantes en la plantilla de personal funcionario de este Ayuntamiento"
+  },
+  "plazas_promocion_interna": {
+   "motivo": "valor_no_en_cita",
+   "valor": 0,
+   "cita": "Las plazas no cubiertas se acumularán al turno libre, cuando proceda."
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "BOP de Alicante, página web, tablón de anuncios y sede electrónica del Ayuntamiento; extracto en BOE y DOGV",
+   "cita": "Las listas provisionales y definitivas de admitidos, la composición del tribunal, y la fecha de inicio del proceso selectivo, se publicará en el BOPA"
+  }
+ }
+}

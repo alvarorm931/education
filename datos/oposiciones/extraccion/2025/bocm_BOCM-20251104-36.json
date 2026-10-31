@@ -1,0 +1,45 @@
+{
+ "proceso": "bocm:BOCM-20251104-36",
+ "documento": {
+  "id": "bocm:BOCM-20251104-36",
+  "fuente": "BOCM",
+  "url": "https://www.bocm.es/bocm-20251104-36",
+  "fecha": "2025-11-04",
+  "huella": "400b3de82b777085880f2b335f737eb0215d7f93c9d8795313a9e1d0efb4aa32"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:41:11+00:00",
+ "lote": "msgbatch_01UNq3BNhPPHoTK3TEJzun1h",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "plazas de los Cuerpos de funcionarios Docentes Universitarios, Profesorado titular de Universidad",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "convocatoria de plazas de los Cuerpos de funcionarios Docentes Universitarios",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Se contará a partir del día siguiente al de la publicación de la convocatoria en el BOE",
+   "cita": "El plazo de presentación de solicitudes se contará a partir del día siguiente al de la publicación de la convocatoria",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Las actuaciones se publicarán en el portal web http://www.uam.es/uam/pdi, y los nombramientos en el BOCM",
+   "cita": "El resto de las actuaciones necesarias para la conclusión de los concursos se irán haciendo públicas en los lugares anteriormente indicados",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Profesorado titular de Universidad"
+   ],
+   "cita": "convocan plazas de los Cuerpos de funcionarios Docentes Universitarios, Profesorado titular de Universidad"
+  }
+ }
+}

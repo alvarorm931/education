@@ -1,0 +1,45 @@
+{
+ "proceso": "boppontevedra:BOPPONTEVEDRA-2023055166",
+ "documento": {
+  "id": "boppontevedra:BOPPONTEVEDRA-2023055166",
+  "fuente": "BOP-PONTEVEDRA",
+  "url": "https://boppo.depo.gal/web/boppo/detalle/-/boppo/2023/08/24/2023055166",
+  "fecha": "2023-08-24",
+  "huella": "f5c3839edc19cdfe189f045570877db66a05b6554c7c962120f7afc25a24f988"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:48+00:00",
+ "lote": "msgbatch_01SjfjDqJRwL6bpTvJz2YfVg",
+ "no_son_bases": false,
+ "campos": {
+  "plazo_solicitudes": {
+   "valor": "5 días hábiles desde el día siguiente a la publicación del anuncio en el BOP",
+   "cita": "Ábrese o prazo de presentación de solicitudes, que será de 05 días hábiles a contar desde o día seguinte á publicación",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Sede electrónica del Concello (http://mos.sedelectronica.gal) y, potestativamente, web del Concello (http://mos.es)",
+   "cita": "publicaranse na sede electrónica deste Concello [http://mos.sedelectronica.gal] e, de forma potestativa, na páxina web",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Oficial de 2ª (bolsa de emprego, departamento de Obras e Servizos)"
+   ],
+   "cita": "convocatoria dunha BOLSA DE EMPREGO DE OFICIAL DE 2ª, para o departamento de Obras e Servizos"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "aprobar as bases e a convocatoria dunha BOLSA DE EMPREGO DE OFICIAL DE 2ª"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, bolsa de empleo de Oficial de 2ª",
+   "cita": "convocatoria dunha BOLSA DE EMPREGO DE OFICIAL DE 2ª, para o departamento de Obras e Servizos"
+  }
+ }
+}

@@ -1,0 +1,60 @@
+{
+ "proceso": "bopt:BOPT-2026-03293",
+ "documento": {
+  "id": "bopt:BOPT-2026-03293",
+  "fuente": "BOPT",
+  "url": "https://www.dipta.cat/bopt/web/anunci/358663/borsa-de-treball-d-oficial-a-de-serveis-especials-convocatoria-ajuntament-tarragona",
+  "fecha": "2026-04-22",
+  "huella": "577cecc197bab6eab4c2bce8441246fa9f713bdcfab1ee2f321d394d41a7c182"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:40:50+00:00",
+ "lote": "msgbatch_01E3wiYcGL8Lzho48bXWLyyb",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Oficial/a de serveis especials"
+   ],
+   "cita": "Borsa de treball, per urgència, d'oficial/a de serveis especials",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "personal temporal en la categoria d'oficial/a de serveis especials",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "pel sistema de concurs lliure, per disposar d'una borsa de treball",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "10 dies hàbils a partir de l'endemà de la publicació de la convocatòria corresponent al DOGC",
+   "cita": "fins a 10 dies hàbils a partir de l'endemà de la publicació",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Sol·licitud a la seu electrònica de l'Ajuntament de Tarragona, a partir del dia següent de la publicació de la convocatòria",
+   "cita": "Les persones interessades podran presentar la sol·licitud per a prendre part en el procés selectiu a partir del dia següent",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Seu electrònica de l'Ajuntament de Tarragona",
+   "cita": "Els restants i successius anuncis es faran mitjançant anunci a la seu electrònica d'aquest Ajuntament",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, per cobrir necessitats temporals, programes de caràcter temporal, places vacants o substitucions en règim d'interinitat",
+   "cita": "disposar d'una borsa de treball, per via d'urgència, de personal temporal",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "C2",
+   "cita": "oficial/a de serveis especials (grup C, subgrup C2)"
+  }
+ }
+}

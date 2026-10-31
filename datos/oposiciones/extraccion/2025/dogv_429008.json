@@ -1,0 +1,60 @@
+{
+ "proceso": "dogv:429008",
+ "documento": {
+  "id": "dogv:429008",
+  "fuente": "DOGV",
+  "url": "https://dogv.gva.es/datos/2025/06/27/pdf/2025_20681_es.pdf",
+  "fecha": "2025-06-27",
+  "huella": "08e6e5f7d25fb8558dffe0808d2ae91c16fd95eaf70741c12d371b84ae0aa948"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:45:25+00:00",
+ "lote": "msgbatch_016re6aGcimwSVmdrWa6qBd9",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "oficial de la policía local"
+   ],
+   "cita": "Dos plazas de oficial de la policía local, pertenecientes a la escala de administración especial",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "B",
+   "cita": "clase de policía local y sus auxiliares, grupo B mediante el sistema de promoción interna ordinaria",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "Personal funcionario Dos plazas de oficial de la policía local",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mediante el sistema de promoción interna ordinaria, cuyo acceso se realizará por concurso-oposición",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 2,
+   "cita": "Dos plazas de oficial de la policía local, pertenecientes a la escala de administración especial",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles a contar desde el siguiente al de la publicación de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes será de veinte días hábiles a contar desde el siguiente al de la publicación",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "página web de la corporación en la sección de selección de personal",
+   "cita": "Los restantes y sucesivos anuncios de la convocatoria se harán públicos únicamente en página web de la corporación",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_promocion_interna": {
+   "motivo": "valor_no_en_cita",
+   "valor": 2,
+   "cita": "mediante el sistema de promoción interna ordinaria, cuyo acceso se realizará por concurso-oposición"
+  }
+ }
+}

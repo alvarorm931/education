@@ -1,0 +1,111 @@
+{
+ "proceso": "boe:BOE-A-2022-19193",
+ "documento": {
+  "id": "bopciudadreal:BOPCIUDADREAL-2022-3453",
+  "fuente": "BOP-CIUDADREAL",
+  "url": "https://bop.dipucr.es/bop/2022/11/07",
+  "fecha": "2022-11-07",
+  "huella": "2bd9a7ad1ae450244b96de946afec8e7b77e8c15ec09d80bb946f2fdd84f59aa"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:29+00:00",
+ "lote": "msgbatch_01B4ETF5xB4buYCHqPiHTXzF",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Encargado de obras",
+    "Oficial de Servicios Técnicos",
+    "Trabajador/a Social",
+    "Educador/a Social"
+   ],
+   "cita": "Anexo I RELACIÓN DE PLAZAS OBJETO DE ESTABILIZACIÓN",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C1, C2, A2",
+   "cita": "Plazas Subgrupo A2: 29,70 €. Plazas Subgrupo C1: 23,84 €.",
+   "nivel": "sin_signos"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "El sistema de selección será el de concurso-oposición.",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Título de Bachiller o Técnico (Encargado de obras); Graduado en ESO (Oficial de Servicios Técnicos); Grado en Trabajo Social o Diplomatura (Trabajador/a Social); Grado en Educación Social o Diplomatura (Educador/a Social)",
+   "cita": "Estar en posesión del Título de Bachiller o Técnico o equivalente.",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Desempleados que no perciban prestación alguna; aspirantes con discapacidad igual o superior al 33%",
+   "cita": "Quienes se encuentren en situación laboral de desempleo y no perciban prestación alguna",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Telemática por registro electrónico, presencial en la OAC (c/ Santo Domingo, 1) o en cualquiera de los lugares del art. 16.4 de la Ley 39/2015",
+   "cita": "De forma telemática a través del registro electrónico de este Ayuntamiento.",
+   "nivel": "literal"
+  },
+  "temas": {
+   "valor": 15,
+   "cita": "TEMA 15.- Seguridad y salud en el trabajo.",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Servicios en la Administración Local hasta 36 puntos (0,60 por mes); otras AAPP 0,20 por mes; cursos de formación hasta 4 puntos (0,011 por hora); titulaciones académicas superiores",
+   "cita": "Servicios prestados en la Administración Pública (Hasta 36 puntos).",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "la cobertura en propiedad de plazas de funcionario/a vacantes en la plantilla"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 5,
+   "cita": "Encargado de obras 1 C1; Oficial de Servicios Técnicos 1 C2; Trabajador/a Social 3 A2 y Educador/a Social 1 A2"
+  },
+  "plazas_turno_libre": {
+   "motivo": "cita_no_literal",
+   "valor": 5,
+   "cita": "Encargado de obras 1 C1; Oficial de Servicios Técnicos 1 C2; Trabajador/a Social 3 A2 y Educador/a Social 1 A2"
+  },
+  "tasa_euros": {
+   "motivo": "valor_no_numerico",
+   "valor": "29,70 (A2), 23,84 (C1), 17,73 (C2)",
+   "cita": "Plazas Subgrupo A2: 29,70 €. Plazas Subgrupo C1: 23,84 €. Plazas Subgrupo C2: 17,73 €."
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "Veinte días hábiles desde el siguiente al de la publicación de la convocatoria en el BOE",
+   "cita": "Las solicitudes se presentarán en el plazo de veinte días hábiles, contados a partir del siguiente"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Tablón de anuncios y edictos de la sede electrónica del Ayuntamiento y página web del Ayuntamiento",
+   "cita": "se fija como medio de comunicación ... la exposición en el tablón de anuncios y edictos de la sede electrónica"
+  },
+  "ejercicios": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Primer ejercicio: test de 50 preguntas más 5 de reserva, 90 minutos, hasta 20 puntos",
+    "Segundo ejercicio: supuesto práctico escrito, 2 horas, hasta 40 puntos"
+   ],
+   "cita": "Primer ejercicio. No eliminatorio. Consistirá en contestar un cuestionario tipo test de 50 preguntas"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, lista de reserva para cubrir renuncias de los propuestos antes del nombramiento o toma de posesión",
+   "cita": "el Órgano de selección establecerá ... una lista de reserva"
+  },
+  "practicas_o_curso": {
+   "motivo": "cita_no_literal",
+   "valor": "no consta",
+   "cita": ""
+  }
+ }
+}

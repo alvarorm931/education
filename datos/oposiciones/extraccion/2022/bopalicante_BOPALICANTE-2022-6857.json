@@ -1,0 +1,50 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2022-6857",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2022-6857",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2022/09/15_176/2022_006857.pdf",
+  "fecha": "2022-09-15",
+  "huella": "b417fb01fed49b3c0c949dacbe22da7a709155af54961adbc99c7b35da79037f"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:12+00:00",
+ "lote": "msgbatch_01B4ETF5xB4buYCHqPiHTXzF",
+ "no_son_bases": false,
+ "campos": {
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mediante el procedimiento concurso-oposición",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "10 días naturales, contados a partir del día siguiente al de la publicación del presente anuncio en el Boletín Oficial de la Provincia",
+   "cita": "El plazo de presentación de instancias será de 10 días naturales, contados a partir del día siguiente",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de edictos municipal y sede electrónica del Ayuntamiento",
+   "cita": "Los sucesivos anuncios relacionados con la presente convocatoria se publicarán únicamente en el tablón de edictos municipal",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Técnico/a de Administración General (TAG) Especialista en Contratación"
+   ],
+   "cita": "constitución de una bolsa de trabajo temporal de Técnico/a de Administración General (TAG) Especialista en Contratación"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "laboral temporal",
+   "cita": "constitución de una bolsa de trabajo temporal de Técnico/a de Administración General"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, bolsa de trabajo temporal de Técnico/a de Administración General (TAG) Especialista en Contratación",
+   "cita": "para la constitución de una bolsa de trabajo temporal de Técnico/a de Administración General"
+  }
+ }
+}

@@ -1,0 +1,53 @@
+{
+ "proceso": "dog:DOG-20231023-AnuncioG1171-111023-0001",
+ "documento": {
+  "id": "dog:DOG-20231023-AnuncioG1171-111023-0001",
+  "fuente": "DOG",
+  "url": "https://www.xunta.gal/dog/Publicados/2023/20231023/AnuncioG1171-111023-0001_es.html",
+  "fecha": "2023-10-23",
+  "huella": "2da2e98d29a6e74f86df926bccf315ceefc8ba9dd7fc347aa85ffbe7ea8d729d"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:43+00:00",
+ "lote": "msgbatch_01SjfjDqJRwL6bpTvJz2YfVg",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "cubrir las necesidades docentes existentes mediante la contratación en régimen laboral de personal docente",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "resuelve convocar concurso público, por el procedimiento de urgencia, para cubrir las necesidades",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles, contados a partir del día siguiente al de la publicación de este anuncio en el Diario Oficial de Galicia",
+   "cita": "El plazo de presentación de solicitudes es de veinte días hábiles, contados a partir del día siguiente",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Dirigidas al director del CUD-ENM en modelo oficial, acompañadas de los documentos acreditativos previstos en la convocatoria",
+   "cita": "debiendo dirigirlas al director del CUD-ENM en modelo oficial, obligatoriamente acompañadas de los documentos acreditativos",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Profesor/a Contratado/a Doctor/a",
+    "Profesor/a Ayudante Doctor/a",
+    "Profesor/a Colaborador/a",
+    "Profesor/a Asociado/a"
+   ],
+   "cita": "convocar concurso público para cubrir las necesidades docentes existentes mediante la contratación en régimen laboral de personal docente, para las siguientes categorías"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Tablón de anuncios del CUD-ENM (plaza de España, s/n, Marín) y página web https://cud.uvigo.es",
+   "cita": "la información completa puede consultarse en el tablón de anuncios del Centro Universitario de la Defensa"
+  }
+ }
+}

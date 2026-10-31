@@ -1,0 +1,50 @@
+{
+ "proceso": "bopb:BOPB-202410156592",
+ "documento": {
+  "id": "bopb:BOPB-202410156592",
+  "fuente": "BOPB",
+  "url": "https://bop.diba.cat/anunci/3680389/esmena-d-error-material-en-l-anunci-d-aprovacio-de-les-bases-reguladores-del-proces-selectiu-mitjancant-el-sistema-de-concurs-extraordinari-i-excepcional-per-cobrir-diferents-places-corresponents-a-l-oferta-publica-d-estabilitzacio-de-l-any-2022-i-creacio-de-les-corresponents-borses-de-treball-ajuntament-de-capellades",
+  "fecha": "2024-10-03",
+  "huella": "ea42011bd2f863bfb83c4b0b5c88591eb52517626a16f788192a8dc3cea5187e"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:50:14+00:00",
+ "lote": "msgbatch_01LpyYajgKGX9NyHT1uvynbR",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Places de personal laboral de l'Ajuntament de Capellades de l'oferta pública d'estabilització de 2022 (inclou la plaça de Conserge)"
+   ],
+   "cita": "No consta en la relació la plaça de Conserge, però aquesta si que consta al Butlletí",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "procés selectiu, mitjançant el sistema de concurs, extraordinari i excepcional",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Ya no aplica: la base cinquena es corregeix perquè no es cobra cap taxa i per tant l'apartat d) no ha de constar",
+   "cita": "No ha de constar l’apartat d) perquè no es cobra cap taxa.",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Butlletí Oficial de la Província de Barcelona (BOPB)",
+   "cita": "Es fa públic per a informació general.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "personal laboral fijo",
+   "cita": "s'han detectat els errors següents processos selectius per a la cobertura definitiva de les places vacants de personal laboral"
+  },
+  "tasa_euros": {
+   "motivo": "valor_no_en_cita",
+   "valor": 0,
+   "cita": "No ha de constar l’apartat d) perquè no es cobra cap taxa."
+  }
+ }
+}

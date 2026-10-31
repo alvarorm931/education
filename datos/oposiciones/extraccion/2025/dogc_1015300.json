@@ -1,0 +1,50 @@
+{
+ "proceso": "dogc:1015300",
+ "documento": {
+  "id": "dogc:1015300",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1015300",
+  "fecha": "2025-05-30",
+  "huella": "d6d58208cd0a1bc9e0aaf446e092c7029e9af994dc58518d5b0f7d71ea042b45"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:45:32+00:00",
+ "lote": "msgbatch_016re6aGcimwSVmdrWa6qBd9",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "otro",
+   "cita": "personal laboral temporal o funcionari interí (segons la vacant)",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "BOPT número 2025-04235 de data 22 de maig de 2025; enllaç a les bases a https://s.lametlla.cat/khmki",
+   "cita": "Havent-se publicat al BOPT número 2025-04235 de data 22 de maig de 2025 el següent Edicte",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, per a la constitució d'una borsa de treball d'auxiliars administratius/ves polivalents",
+   "cita": "constitució d'una borsa de treball, mitjançant concurs oposició, d'auxiliars administratius/ves polivalents",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Auxiliar administratiu/va polivalent"
+   ],
+   "cita": "constitució d'una borsa d'auxiliars administratius/ves polivalents, grup C2"
+  },
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "C2",
+   "cita": "auxiliars administratius/ves polivalents, grup C2, personal laboral temporal o funcionari interí"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "constitució, mitjançant concurs oposició, d'auxiliars administratius/ves polivalents"
+  }
+ }
+}

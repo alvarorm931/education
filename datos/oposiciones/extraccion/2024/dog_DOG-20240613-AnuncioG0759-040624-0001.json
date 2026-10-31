@@ -1,0 +1,114 @@
+{
+ "proceso": "dog:DOG-20240613-AnuncioG0759-040624-0001",
+ "documento": {
+  "id": "dog:DOG-20240613-AnuncioG0759-040624-0001",
+  "fuente": "DOG",
+  "url": "https://www.xunta.gal/dog/Publicados/2024/20240613/AnuncioG0759-040624-0001_es.html",
+  "fecha": "2024-06-13",
+  "huella": "46f6a422b35c8a871fd2acff566a51b9fc139947912ca41a3dc92601128e767d"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:54:23+00:00",
+ "lote": "msgbatch_01HRnX7cDVMkRZD7mBamCmLu",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "policía local, categoría de policía, escala básica",
+   "cita": "Denominación: policía local Categoría: policía",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C1",
+   "cita": "Escala: básica Grupo: C1",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "Encontrarse en la situación administrativa de servicio activo en la categoría de policía.",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "Aprobar las bases generales reguladoras y convocar el proceso selectivo de acceso por oposición libre",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "bachiller o técnico",
+   "cita": "Estar en posesión de la titulación académica de bachiller o técnico.",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "gallego, prueba de conocimiento (Celga 4 o equivalente exime)",
+   "cita": "Prueba de evaluación del conocimiento de la lengua gallega, solo para aquellas personas que no pudieron acreditarlo documentalmente",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 33.13,
+   "cita": "se deberá abonar dentro del plazo de presentación de solicitudes, en concepto de derecho de inscripción, el importe de 33,13 euros",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Exentos: discapacidad igual o superior al 33 % y familias numerosas de categoría especial. Bonificación del 50 %: familias numerosas general, demandantes de empleo sin prestación y víctimas del terrorismo",
+   "cita": "Estarán exentos del pago de esta tasa por derecho de inscripción: Personas con discapacidad igual o superior al 33 %.",
+   "nivel": "sin_signos"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles desde el día siguiente a la publicación en el BOE",
+   "cita": "El plazo de presentación de solicitudes será de veinte (20) días hábiles, contados a partir del día siguiente al de la publicación",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Preferentemente por vía electrónica en la sede electrónica de la Xunta de Galicia (sede.xunta.gal); opcionalmente presencial en registros",
+   "cita": "Las solicitudes se presentarán preferiblemente por vía electrónica a través del formulario normalizado disponible en la sede electrónica",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Prueba de evaluación de conocimientos (100 preguntas tipo test)",
+    "Prueba de conocimiento de la lengua gallega (si no está exento)",
+    "Pruebas de aptitud física",
+    "Pruebas psicotécnicas",
+    "Reconocimiento médico"
+   ],
+   "cita": "La oposición constará de cinco pruebas eliminatorias",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Méritos de provisión por movilidad según tabla del anexo V (puntuación máxima no recogida en el texto extraído)",
+   "cita": "Tabla de méritos del proceso de provisión por movilidad (PR461D)",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, lista de reserva de personas aspirantes, como máximo igual al número de personas aprobadas",
+   "cita": "el órgano de selección elaborará, también por orden decreciente de puntuación, un listado de reserva",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "curso selectivo de formación de 1.400 horas (900 teórico-prácticas en la Agasp en régimen de internado y 500 de prácticas en el ayuntamiento)",
+   "cita": "El curso tendrá una duración de 1.400 horas lectivas, 900 horas de formación teórico-práctica en la Agasp en régimen de internado",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "valor_no_numerico",
+   "valor": "Anexo III",
+   "cita": "las plazas de los cuerpos de la Policía Local, escala básica, categoría de policía, subgrupo C1 que se detallan en el anexo III"
+  },
+  "otros_requisitos": {
+   "motivo": "cita_no_literal",
+   "valor": "Nacionalidad española; 18 años y no exceder de la edad de jubilación forzosa; no padecer enfermedad o defecto físico que impida las funciones; no haber sido separado del servicio ni inhabilitado; carecer de antecedentes penales por delito doloso; permisos de conducir A2 y B; compromiso de portar armas; informe de salud",
+   "cita": "Tener nacionalidad española. Haber cumplido los dieciocho años y no exceder, en su caso, de la edad de jubilación forzosa."
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Diario Oficial de Galicia (DOG) y página web de la Agasp (www.agasp.xunta.gal)",
+   "cita": "Se publicarán en el DOG y en la página web de la Agasp"
+  },
+  "temas": {
+   "motivo": "valor_no_en_cita",
+   "valor": 40,
+   "cita": "Anexo IV Temario para la primera prueba de evalucación de conocimimentos"
+  }
+ }
+}

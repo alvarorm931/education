@@ -1,0 +1,70 @@
+{
+ "proceso": "boe:BOE-A-2025-17059",
+ "documento": {
+  "id": "boe:BOE-A-2025-17059",
+  "fuente": "BOE",
+  "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2025-17059",
+  "fecha": "2025-08-21",
+  "huella": "a7a9fee364b0782048bbe68f5723d7137070432e7c4411bbb913fcf056e9de1e"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:42:53+00:00",
+ "lote": "msgbatch_01XofVwxKEhyEjSzGog6wsD4",
+ "no_son_bases": false,
+ "campos": {
+  "exenciones_tasa": {
+   "valor": "Víctimas de terrorismo, familia numerosa, grado de discapacidad igual o superior al 33 % y situación de desempleo",
+   "cita": "Estarán exentas del pago de la tasa de derechos de examen, quienes acrediten las situaciones recogidas en el apartado 2.5.d)",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Diez días hábiles, del 1 al 12 de septiembre de 2025",
+   "cita": "El plazo para la presentación de solicitudes es de diez días hábiles, desde el día 1 de septiembre hasta el día 12 de septiembre de 2025",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Telemáticamente en la sede electrónica del Ministerio de Sanidad (modelo 790); excepcionalmente presencial sin DNI/NIE",
+   "cita": "El modelo 790 de solicitud se cumplimentará electrónicamente a través de la Sede electrónica del Ministerio de Sanidad",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Cuestionario de examen tipo test sobre las áreas temáticas de cada titulación (Anexo II)"
+   ],
+   "cita": "En el anexo II se han reflejado las áreas sobre las que versará el contenido de las preguntas de los cuestionarios de examen",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "no",
+   "cita": "Estarán exentas del pago de la tasa de derechos de examen, quienes acrediten las situaciones recogidas en el apartado 2.5.d)",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 12269,
+   "cita": "Medicina: 9.276 plazas de las especialidades relacionadas en los apartados 1 y 5 del anexo I"
+  },
+  "plazas_discapacidad": {
+   "motivo": "valor_no_numerico",
+   "valor": "Medicina 928; Farmacia 36; Enfermería 228; Psicología 28; Química 3; Biología 8; Física 6",
+   "cita": "El número de plazas que pueden ser cubiertas con personas con discapacidad de las distintas titulaciones"
+  },
+  "titulacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Grado/licenciatura/diplomatura de Medicina, Farmacia, Enfermería y del ámbito de la Psicología, la Química, la Biología y la Física",
+   "cita": "para las personas con grado/licenciatura/diplomatura de Medicina, Farmacia, Enfermería y del ámbito de la Psicología, la Química, la Biología y la Física"
+  },
+  "tasa_euros": {
+   "motivo": "cita_no_literal",
+   "valor": 31.1,
+   "cita": "La tasa de derechos de examen será de 31,10 euros salvo en la titulación de Enfermería"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Página web del Ministerio de Sanidad (Formación Sanitaria Especializada)",
+   "cita": "Las relaciones provisionales de admitidos y excluidos se publicarán en la página web del Ministerio de Sanidad"
+  }
+ }
+}

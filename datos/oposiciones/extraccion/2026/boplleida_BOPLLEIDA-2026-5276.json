@@ -1,103 +1,59 @@
 {
  "proceso": "boplleida:BOPLLEIDA-2026-5276",
  "documento": {
-  "id": "boplleida:BOPLLEIDA-2026-5276",
-  "fuente": "BOP-LLEIDA",
-  "url": "https://ebop.diputaciolleida.cat/aplicacions/bop/bopV1/fitxers/pdf/2026/121/202612105276.pdf",
-  "fecha": "2026-06-29",
-  "huella": "a8962fce6f86e21e4e8145172d9e04e2bb8f7a823ca01468118f4afe34ecce8c"
+  "id": "dogc:1053116",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1053116",
+  "fecha": "2026-08-25",
+  "huella": "d438617d5cc493f29ecf344be8697702008369a39475d48293652d78e6559340"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T08:17:57+00:00",
- "lote": "msgbatch_01BrnYw6KkevFx7at547B5g8",
+ "extraido": "2026-10-31T14:42:04+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
-   "valor": "Tècnic auxiliar de biblioteca",
-   "cita": "Denominació del lloc Tècnic auxiliar de biblioteca Places vacants 1",
+   "valor": [
+    "Tècnic/a auxiliar de biblioteca amb funcions de direcció"
+   ],
+   "cita": "provisió, mitjançant concurs oposició lliure, d'una plaça de tècnic/a auxiliar de biblioteca amb funcions de direcció (C1)",
    "nivel": "literal"
   },
   "grupo": {
    "valor": "C1",
-   "cita": "Grup/Subgrup C1 Jornada Ordinaria i a torns",
+   "cita": "plaça de tècnic/a auxiliar de biblioteca amb funcions de direcció (C1), com a laboral fix",
    "nivel": "literal"
   },
   "vinculo": {
    "valor": "personal laboral fijo",
-   "cita": "selecció de personal laboral fix per cobrir una plaça de Tècnic auxiliar de biblioteca",
+   "cita": "com a laboral fix, inclosa en l'oferta pública d'ocupació de l'Ajuntament d'Almenar",
    "nivel": "literal"
   },
   "sistema": {
    "valor": "concurso-oposición",
-   "cita": "mitjançant sistema de concurs-oposició, s'obre el termini de presentació de sol·licituds",
+   "cita": "mitjançant concurs oposició lliure, d'una plaça de tècnic/a auxiliar de biblioteca",
    "nivel": "literal"
   },
   "plazas_total": {
    "valor": 1,
-   "cita": "Procés selectiu per cobrir 1 plaça de C1 tècnic auxiliar de biblioteca",
-   "nivel": "literal"
-  },
-  "titulacion": {
-   "valor": "Batxiller o títol de Tècnic (Cicle formatiu de grau mig) o equivalent o d’una titulació superior",
-   "cita": "Estar en possessió del títol de Batxiller o títol de Tècnic (Cicle formatiu de grau mig) o equivalent",
-   "nivel": "literal"
-  },
-  "otros_requisitos": {
-   "valor": "Nacionalitat espanyola o de la UE (o residents en el cas d'altres nacionalitats); capacitat funcional; tenir complerts 16 anys; no haver estat separat del servei de cap administració pública; certificat negatiu de delictes de naturalesa sexual",
-   "cita": "Posseir la capacitat funcional per a l'acompliment de les tasques",
-   "nivel": "literal"
-  },
-  "idioma_cooficial": {
-   "valor": "català, nivell intermedi C1",
-   "cita": "Acreditar el coneixement adequat, oral i escrit, de la llengua catalana, i en concret, amb el nivell intermedi de català (C1)",
+   "cita": "provisió, mitjançant concurs oposició lliure, d'una plaça de tècnic/a auxiliar de biblioteca",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "20 dies hàbils a comptar des de l'endemà a la darrera publicació de l'extracte de la convocatòria al DOGC",
-   "cita": "el termini de presentació de sol·licituds, que serà de 20 dies hàbils a comptar des de l'endemà",
+   "valor": "20 días hábiles a contar desde el día siguiente a la publicación del anuncio en el DOGC",
+   "cita": "El termini per presentar sol·licituds finalitza als 20 dies hàbils comptats a partir de l'endemà de la publicació",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Registre Electrònic General de l'Ajuntament o en algun dels llocs previstos en l'article 16.4 de la Llei 39/2015",
-   "cita": "es presentaran en el Registre Electrònic General d'aquest Ajuntament o en algun dels llocs previstos en l'article 16.4",
+   "valor": "Sede electrónica del Ayuntamiento de Almenar",
+   "cita": "Tota aquesta informació estarà a la disposició dels interessats a la seu electrònica d'aquest Ajuntament",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Tauler d'anuncis electrònic i seu electrònica de l'Ajuntament d'Almenar; BOPL i DOGC",
-   "cita": "La llista d'aspirants admesos i exclosos... s'exposaran al tauler d'anuncis electrònic de l'Ajuntament d'Almenar",
-   "nivel": "fragmentos"
-  },
-  "ejercicios": {
-   "valor": [
-    "Primera fase: coneixements de llengua catalana (apte/no apte) i castellana",
-    "Fase d'oposició: qüestionari teòric de 4 respostes alternatives (0 a 8 punts)",
-    "Fase d'oposició: supòsit pràctic escrit (0 a 7 punts, mínim 5)",
-    "Fase de concurs: experiència professional, formació i titulacions (màx. 5 punts)"
-   ],
-   "cita": "Primera fase: Coneixements de la llengua catalana i castellana Segona fase: Fase oposició Tercera fase: Concurs",
-   "nivel": "literal"
-  },
-  "meritos": {
-   "valor": "Experiència professional fins a 5 punts (0,20 per mes en biblioteques públiques en plaça de grup superior; 0,10 per mes en mateix grup); formació fins a 3 punts; titulacions fins a 3 punts; competències digitals fins a 0,5 punts; fase de concurs no eliminatòria de 5 punts",
-   "cita": "Un cop finalitzada la fase d’oposició... es procedirà a la valoració dels mèrits",
-   "nivel": "fragmentos"
-  },
-  "bolsa": {
-   "valor": "sí, borsa de treball de tècnic/a d'administració general per a nomenaments temporals, durada màxima fins tres anys",
-   "cita": "constitució de borsa, mitjançant sistema de concurs-oposició",
-   "nivel": "literal"
-  },
-  "practicas_o_curso": {
-   "valor": "període de prova de quatre mesos",
-   "cita": "Es preveu un període de prova de quatre mesos.",
+   "valor": "Boletín Oficial de la Provincia de Lleida (BOP núm. 121, de 29 de junio de 2026) y sede electrónica del Ayuntamiento",
+   "cita": "En el Butlletí Oficial de la Província de Lleida núm. 121, de 29 de juny de 2026, es publiquen íntegrament",
    "nivel": "literal"
   }
  },
- "rechazados": {
-  "temas": {
-   "motivo": "valor_no_numerico",
-   "valor": "El temari general consta de 12 temes i el específic de 48 temes",
-   "cita": "TEMARI GENERAL: 1. La Constitució Espanyola de 1978."
-  }
- }
+ "rechazados": {}
 }

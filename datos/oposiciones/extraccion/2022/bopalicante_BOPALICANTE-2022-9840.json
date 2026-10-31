@@ -1,0 +1,100 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2022-9840",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2022-9840",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2022/12/12_234/2022_009840.pdf",
+  "fecha": "2022-12-12",
+  "huella": "1c46d29f0488ee70f1c0739f2f4167b5dde925251ed58c19ed4ce85da26dd11b"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:56:59+00:00",
+ "lote": "msgbatch_01B4ETF5xB4buYCHqPiHTXzF",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "Peón de Deportes",
+   "cita": "Denominación: Peón deportes.",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "APST",
+   "cita": "Régimen/Clase Personal Laboral Fijo Grupo, Subgrupo APST Sueldo base",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "por turno libre, mediante el sistema de concurso de méritos",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Sin titulación requerida",
+   "cita": "b.1) Titulación exigida: Sin titulación requerida b.2) Titulación específica: NO",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española o acceso según base 4.a; no padecer enfermedad o defecto que impida el desempeño; tener 16 años cumplidos y no exceder la edad de jubilación forzosa; no haber sido separado del servicio público; certificado de carecer de antecedentes penales por delitos de naturaleza sexual",
+   "cita": "Requesitos específicos: Certificado de carecer de antecedentes penales por delitos de naturaleza sexual.",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 62,
+   "cita": "C-2 y AP 62,00 euros",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles desde el día siguiente a la publicación del extracto de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de instancias será de veinte días hábiles contados a partir del día siguiente al de la publicación del extracto",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Registro General del Ayuntamiento o en la forma del artículo 16 de la Ley 39/2015, mediante instancia (Anexo I), autobaremación (Anexo II) y documentación electrónica",
+   "cita": "La instancia deberá presentarse por Registro General o bien en la forma prevista en el artículo 16 de la Ley 39/2015",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de anuncios y página web oficial del Ayuntamiento de Rojales; sede electrónica; BOP de Alicante; Diario Oficial de la Generalitat Valenciana y BOE (extracto)",
+   "cita": "Las bases y la convocatoria se publicarán íntegramente en el tablón de anuncios electrónico del Ayuntamiento y en la página web municipal",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Concurso de méritos: valoración de méritos profesionales (máx. 60 puntos) y académicos (máx. 40 puntos)"
+   ],
+   "cita": "El sistema de selección será el de Concurso de méritos",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Profesionales (máx. 60): 0,25 puntos por mes en Ayuntamiento de Rojales y 0,06 por mes en otras Administraciones. Académicos (máx. 40): proceso selectivo previo 8 puntos; cursos 0,30 por hora (máx. 30); valenciano (máx. 1); idiomas comunitarios (máx. 1)",
+   "cita": "La valoración de méritos se realizará sobre un total de 100 puntos, de los cuales",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "no",
+   "cita": "El contrato deberá formalizarse en el plazo no superior un mes",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "personal laboral fijo",
+   "cita": "3 plazas de Peón de Deportes como personal laboral fijo del Ayuntamiento de Rojales"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 3,
+   "cita": "Peón de Deportes como personal laboral fijo del Ayuntamiento de Rojales (proceso extraordinario de consolidación)"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 3,
+   "cita": "por turno libre, mediante el sistema de concurso de méritos"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "no",
+   "cita": "Con el proceso no se menciona la creación de bolsa"
+  }
+ }
+}

@@ -1,0 +1,99 @@
+{
+ "proceso": "boe:BOE-A-2026-7734",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2026-1703",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2026/03/12_49/2026_001703.pdf",
+  "fecha": "2026-03-12",
+  "huella": "7a7618d3ffe09d6b26c4ff2a3121268d55a07dc366c59d57172089e6f31798a3"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:40:28+00:00",
+ "lote": "msgbatch_01E3wiYcGL8Lzho48bXWLyyb",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "E",
+   "cita": "encuadrada en el Grupo E (Agrupaciones Profesionales) de la Relación de Puestos de Trabajo",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "proveer, como personal laboral fijo, dos (2) plazas de Operario/a de Oficios Varios",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "El procedimiento será el de concurso-oposición, por turno libre, bajo los principios",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 2,
+   "cita": "dos plazas de Oficial Operario de Oficios Múltiples nº 2 y 3 en régimen laboral fijo",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "No se exige titulación del sistema educativo; se valora Certificado de Profesionalidad de nivel 2 en edificación u obra civil",
+   "cita": "no se exige estar en posesión de ninguna de las titulaciones previstas en el sistema educativo",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española o de un Estado miembro de la UE; tener 16 años cumplidos y no exceder la edad de jubilación forzosa; capacidad funcional; permiso de conducir clase B; no haber sido separado de ninguna Administración por expediente disciplinario",
+   "cita": "Tener cumplidos 16 años y no exceder la edad de jubilación forzosa.",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles desde el día siguiente a la publicación del anuncio en el BOE",
+   "cita": "plazo de presentación de solicitudes, que será de veinte días hábiles a contar desde el día siguiente",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Preferentemente telemática en la sede electrónica del Ayuntamiento de Algorfa; también presencial en el Registro General",
+   "cita": "Preferentemente por vía telemática en la sede electrónica del Ayuntamiento de Algorfa.",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de anuncios y web municipal; sucesivos anuncios en el BOP y en la sede electrónica",
+   "cita": "Se publicará en el Tablón de Anuncios y web municipal una resolución con la lista provisional",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Primer ejercicio teórico: test de 40 preguntas, 90 minutos, mínimo 5 para aprobar",
+    "Segundo ejercicio práctico relacionado con el oficio, mínimo 5 para aprobar"
+   ],
+   "cita": "Cuestionario tipo test de 40 preguntas con tres respuestas alternativas, sólo una válida",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Experiencia profesional hasta 10 puntos; formación hasta 4 puntos; carnés profesionales y TPC (0,4 cada uno, hasta 2 puntos); cursos de más de 10 horas (0,20 cada uno, máximo 2 puntos)",
+   "cita": "Experiencia profesional : Servicios en administraciones públicas o sector privado en puestos de oficial/ayudante",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, para cubrir necesidades temporales o sustituciones en el Ayuntamiento de Algorfa",
+   "cita": "integrarán una bolsa de empleo para cubrir necesidades temporales o sustituciones en el Ayuntamiento",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Oficial Operario de Oficios Múltiples",
+    "Operario/a de Oficios Varios"
+   ],
+   "cita": "dos plazas de Operario/a de Oficios Varios , encuadrada en el Grupo E"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 2,
+   "cita": "El procedimiento será el de concurso-oposición, por turno libre, bajo los principios"
+  },
+  "temas": {
+   "motivo": "valor_no_en_cita",
+   "valor": 10,
+   "cita": "Parte Común (Derecho Local) 1. La Constitución Española de 1978"
+  }
+ }
+}

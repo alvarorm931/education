@@ -1,0 +1,98 @@
+{
+ "proceso": "boib:BOIB-2023-670226",
+ "documento": {
+  "id": "boib:BOIB-2023-670226",
+  "fuente": "BOIB",
+  "url": "https://www.caib.es/eboibfront/es/2023/11698/670226/modificacion-bases-generales-reguladoras-de-los-pr",
+  "fecha": "2023-02-21",
+  "huella": "74eb0fe6831fe75e140a377ee0033b72e194eade7f6169a43ebcfd8972f9ee2e"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:56:28+00:00",
+ "lote": "msgbatch_0167qWfLXqjGo8Hv43cM3LuM",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "A1, A2, B, C1, C2, AP",
+   "cita": "Grupo A1: 2000 preguntas. Grupo A2: 1.500 preguntas. Grupo B: 1000 preguntas",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "Personal funcionario de carrera y laboral fijo, correspondientes a la oferta pública de estabilización",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "catalán: B1 (AP), B2 (B, C2), C1 (A1, A2, C1)",
+   "cita": "Grupos A1, A2 y C1: nivel C1 (dominio funcional efectivo). Grupos C2 y B: nivel B2 (avanzado).",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Exentas las personas con discapacidad igual o superior al 33%, acreditada con certificado; también las funcionarias/os en servicio activo que no acrediten catalán, sin exención de tasa",
+   "cita": "quedan exentas del pago de la tasa de derechos de examen las personas con igual grado de discapacidad o superior al 33%",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles desde el día siguiente a la publicación de la resolución de cada convocatoria específica en el BOE",
+   "cita": "en el plazo de veinte días hábiles a partir del día siguiente en que se publique la resolución de cada convocatoria específica en el Boletín Oficial del Estado",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Mediante solicitud, pudiendo exigirse relación telemática a través de la sede electrónica",
+   "cita": "la convocatoria específica puede establecer que los aspirantes queden obligados a relacionarse telemáticamente con el Ayuntamiento",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Fase de oposición: prueba tipo test de cuatro respuestas, eliminatoria (máximo 60 puntos)",
+    "Fase de concurso: méritos profesionales y otros méritos (máximo 40 puntos), no eliminatoria"
+   ],
+   "cita": "La fase de oposición constará de un solo ejercicio, prueba tipo test que tendrá carácter eliminatorio",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Concurso-oposición (máx. 40): méritos profesionales hasta 32; otros méritos hasta 8 (ejercicios anteriores, formación académica, catalán, cursos, trienios)",
+   "cita": "Méritos profesionales: hasta 32 puntos (80% de la puntuación). Otros méritos: hasta 8 puntos (20% de la puntuación)",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, para personal funcionario interino o laboral temporal (personas con mínimo 5 puntos en oposición o 10 en concurso)",
+   "cita": "las personas que no hayan superado el proceso selectivo pero que hayan obtenido un mínimo de 5 puntos en la fase de oposición, se incluirán en bolsas",
+   "nivel": "literal"
+  },
+  "temas": {
+   "valor": 30,
+   "cita": "Tema 30. Marco normativo relativo a la protección de datos de las personas físicas. Principios de la protección de datos personales. Derechos de personas. Respo",
+   "nivel": "contado"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Personal funcionario de carrera y laboral fijo (procesos de estabilización del empleo temporal)"
+   ],
+   "cita": "regularán los procesos selectivos del personal funcionario de carrera y laboral fijo"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "la forma de selección de los procesos de estabilización del empleo temporal será la de concurso-oposición"
+  },
+  "tasa_euros": {
+   "motivo": "valor_no_numerico",
+   "valor": "No se indica importe; se remite a la Ordenanza Fiscal vigente",
+   "cita": "Haber cumplido con el pago de la tasa para la participación en los procesos selectivos de acuerdo con la Ordenanza Fiscal vigente"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Tablón de anuncios de la sede electrónica corporativa, web municipal, BOIB y BOE para la convocatoria",
+   "cita": "se publicará íntegramente en el tablón de anuncios de la sede electrónica corporativa"
+  },
+  "practicas_o_curso": {
+   "motivo": "cita_no_literal",
+   "valor": "Periodo de prácticas: A1 y A2 6 meses; B 4 meses; C1 y C2 3 meses; AP 1 mes",
+   "cita": "Subgrupos A1 y A2: 6 meses. Subgrupo B: 4 meses. Subgrupos C1 y C2: 3 meses. Subgrupo AP: 1 mes"
+  }
+ }
+}

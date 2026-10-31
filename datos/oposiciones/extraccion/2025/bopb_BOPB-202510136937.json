@@ -1,0 +1,60 @@
+{
+ "proceso": "bopb:BOPB-202510136937",
+ "documento": {
+  "id": "dogc:1021775",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1021775",
+  "fecha": "2025-08-05",
+  "huella": "5e02ebe10c05060ed4d748233ffb1bd70513292ce7fa47c9900a10ee1678df12"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:42:55+00:00",
+ "lote": "msgbatch_01XofVwxKEhyEjSzGog6wsD4",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "agent de la Policia Local"
+   ],
+   "cita": "s'aproven les bases que han de regir la convocatòria de 2 places d'agent de la Policia Local",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "en règim de funcionari de carrera, mitjançant concurs-oposició lliure",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mitjançant concurs-oposició lliure adscrites a la Policia Local",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 2,
+   "cita": "convocatòria de 2 places d'agent de la Policia Local",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia de Barcelona, web municipal (www.montornes.cat) y tablón de anuncios electrónico del Ayuntamiento",
+   "cita": "publicades al Butlletí Oficial de la Província de Barcelona el 31 de juliol de 2025",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, para cubrir interinamente las posibles vacantes y sustituciones temporales",
+   "cita": "la creació d'una borsa de treball per cobrir interinament les possibles vacants i substitucions temporals",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 2,
+   "cita": "mitjançant concurs-oposició lliure adscrites a la Policia Local"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "20 días hábiles a contar desde el día siguiente a la publicación de la convocatoria en el DOGC",
+   "cita": "El termini d'admissió de sol·licituds serà de 20 dies hàbils a comptar a partir de l'endemà de la publicació"
+  }
+ }
+}

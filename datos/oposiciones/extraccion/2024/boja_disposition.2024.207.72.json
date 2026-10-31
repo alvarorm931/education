@@ -1,0 +1,63 @@
+{
+ "proceso": "boja:disposition.2024.207.72",
+ "documento": {
+  "id": "boja:disposition.2024.207.72",
+  "fuente": "BOJA",
+  "url": "https://juntadeandalucia.es/eboja/2024/207/BOJA24-207-00001-51527-01_00308476.pdf",
+  "fecha": "2024-10-23",
+  "huella": "37fbbead906f900f3ed77bd55e0eab6f807e34b0a71d87a7e986a1683592b9f1"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:50:16+00:00",
+ "lote": "msgbatch_01LpyYajgKGX9NyHT1uvynbR",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Asesor/a Jurídico CMIM",
+    "Dinamizador CMIM",
+    "Oficial Fontanería",
+    "Oficial 1.ª Construcción",
+    "Auxiliar Administrativo Guadalinfo",
+    "Conductor",
+    "Operario Oficios Múltiples",
+    "Operario Oficios Múltiples (50% jornada)",
+    "Auxiliar Ayuda a Domicilio"
+   ],
+   "cita": "1 plaza Asesor/a Jurídico CMIM (A1).",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "proceso de estabilización por concurso de méritos del personal laboral",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "proceso de estabilización por concurso de méritos del personal laboral",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles, a contar desde el siguiente a la publicación en el BOE de la presente convocatoria",
+   "cita": "El plazo para la presentación de solicitudes será de veinte días hábiles, a contar desde el siguiente",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia de Granada",
+   "cita": "se han publicado íntegramente las bases que han de regir el proceso",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "A1, A2, C2, E/AP",
+   "cita": "Asesor/a Jurídico CMIM (A1). Dinamizador CMIM (A2). Oficial Fontanería (C2)."
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 50,
+   "cita": "Auxiliar Ayuda a Domicilio (E/AP)."
+  }
+ }
+}

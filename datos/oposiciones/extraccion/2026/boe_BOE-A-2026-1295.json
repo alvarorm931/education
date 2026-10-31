@@ -1,0 +1,43 @@
+{
+ "proceso": "boe:BOE-A-2026-1295",
+ "documento": {
+  "id": "dogv:455176",
+  "fuente": "DOGV",
+  "url": "https://dogv.gva.es/datos/2025/12/10/pdf/2025_46889_es.pdf",
+  "fecha": "2025-12-10",
+  "huella": "ddc590616e558de998da5348b8dac9f42792ea04071ee317656f62da069705ec"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:42:28+00:00",
+ "lote": "msgbatch_01W17mR271uYfWYL6CuSdriL",
+ "no_son_bases": false,
+ "campos": {
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "plaza de peón de servicios múltiples, mediante el sistema de concurso-oposición",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "proceso selectivo de una plaza de peón de servicios múltiples",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles contados a partir del día siguiente a la publicación del extracto de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "el plazo de presentación de instancias será de veinte días hábiles contados a partir del día siguiente",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "tablón de anuncios y edictos de la sede electrónica del Ayuntamiento de Beniarjó (https://www.beniarjo.es)",
+   "cita": "la exposición en el tablón de anuncios y edictos, situado en su electrónica del Ayuntamiento de Beniarjó",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "peón de servicios múltiples",
+   "cita": "aprobado el proceso selectivo de una plaza de peón de servicios múltiples, mediante el sistema de concurso-oposición"
+  }
+ }
+}

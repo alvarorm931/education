@@ -1,0 +1,62 @@
+{
+ "proceso": "bopcaceres:BOP-2023-7088",
+ "documento": {
+  "id": "bopcaceres:BOP-2023-7088",
+  "fuente": "BOP-CACERES",
+  "url": "https://bop.dip-caceres.es/bop/services/anuncios/contenidoPdfIdAnuncio?csv=BOP-2023-7088",
+  "fecha": "2023-11-27",
+  "huella": "2d18fb7ddffd4304356dae0d1afdc7edea25cd3508aff1cdc6b08d22cadb8635"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:56+00:00",
+ "lote": "msgbatch_01SjfjDqJRwL6bpTvJz2YfVg",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Aedl (plaza 2)",
+    "Empleado de Servicios múltiples (plaza 11)",
+    "Empleado de Servicios múltiples de Valdencín (plaza 14)"
+   ],
+   "cita": "Una plaza de Aedl, Escala Administración especial, Subgrupo A2, código de Plaza 2.",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "A2",
+   "cita": "Una plaza de Aedl, Escala Administración especial, Subgrupo A2, código de Plaza 2.",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "para la cobertura en propiedad de las siguientes plazas como personal laboral fijo del Ayuntamiento de Torrejoncillo",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "mediante el sistema de concurso de méritos por el turno libre, para la cobertura en propiedad",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "diez días hábiles, a contar desde el siguiente al de la publicación de este anuncio en el Boletín Oficial del Estado",
+   "cita": "El Plazo de presentación de solicitudes será de diez días hábiles, a contar desde el siguiente al de la publicación de éste anuncio en el Boletín Oficial del Estado.",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia de Cáceres y sede electrónica del Ayuntamiento de Torrejoncillo (https://torrejoncillo.sedelectronica.es/info.0)",
+   "cita": "Los sucesivos anuncios referentes a esta convocatoria, de conformidad con las bases, se publicarán en el Boletín Oficial de la Provincia de Cáceres",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 3,
+   "cita": "Una plaza de Aedl, Una plaza de Empleado de Servicios múltiples, Una plaza de Empleado de Servicios múltiples de Valdencín"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 3,
+   "cita": "mediante el sistema de concurso de méritos por el turno libre, para la cobertura en propiedad de las siguientes plazas"
+  }
+ }
+}

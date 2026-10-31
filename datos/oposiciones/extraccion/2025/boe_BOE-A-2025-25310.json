@@ -1,0 +1,60 @@
+{
+ "proceso": "boe:BOE-A-2025-25310",
+ "documento": {
+  "id": "bocm:BOCM-20251202-81",
+  "fuente": "BOCM",
+  "url": "https://www.bocm.es/bocm-20251202-81",
+  "fecha": "2025-12-02",
+  "huella": "6fb6ad400b6fa340bf454de1c139568410fc5f62b621556c14e2aeae8d14a11e"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:41:24+00:00",
+ "lote": "msgbatch_01UNq3BNhPPHoTK3TEJzun1h",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "conductor"
+   ],
+   "cita": "Denominación del puesto: conductor.",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "Agrupación Profesional",
+   "cita": "Grupo/Subgrupo: Agrupación Profesional.",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "Sistema de selección: concurso-oposición.",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "Número de vacantes: uno (1).",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días naturales, a contar desde el día siguiente a la publicación de la reseña de la convocatoria en el BOE",
+   "cita": "el plazo de presentación de solicitudes, que será de 20 días naturales, a contar desde el día siguiente a la publicación",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Comunidad de Madrid, sede electrónica del Ayuntamiento y tablón de anuncios",
+   "cita": "Los sucesivos anuncios de esta convocatoria, cuando procedan de conformidad con las bases, se publicarán en el BOLETÍN OFICIAL DE LA COMUNIDAD DE MADRID.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "personal laboral fijo",
+   "cita": "Naturaleza: laboral. Nombramiento: definitivo-fijo."
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "Turno: libre."
+  }
+ }
+}

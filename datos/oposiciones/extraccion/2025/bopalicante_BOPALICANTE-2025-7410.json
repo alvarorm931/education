@@ -1,0 +1,58 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2025-7410",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2025-7410",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2025/10/29_206/2025_007410.pdf",
+  "fecha": "2025-10-29",
+  "huella": "858682449ed7deb88d00d11232569033df5a7524d533480999bda966734700a3"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:41:20+00:00",
+ "lote": "msgbatch_01UNq3BNhPPHoTK3TEJzun1h",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "Intendente de Policía Local (Escala Técnica de Policía Local, categoría Intendente)",
+   "cita": "provisión en propiedad de UNA plaza de Escala Técnica de Policía Local, Categoría Intendente",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "provisión de una plaza de la Escala Técnica de Policía Local, categoría Intendente, vacante en la plantilla de personal de este Ayuntamiento, como funcionario de carrera",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mediante el sistema selectivo de Concurso-oposición, por promoción interna",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "provisión en propiedad de UNA plaza de Escala Técnica de Policía Local, Categoría Intendente",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles, contados a partir del día siguiente al de la publicación del anuncio del extracto de esta convocatoria en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes será de veinte días hábiles, contados a partir del día siguiente al de la publicación",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Texto íntegro de las bases disponible en la página web municipal (torrevieja.es)",
+   "cita": "estará a disposición de las personas interesadas en el siguiente enlace de la página web municipal",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "A1",
+   "cita": ""
+  },
+  "plazas_promocion_interna": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "mediante el sistema selectivo de Concurso-oposición, por promoción interna"
+  }
+ }
+}

@@ -1,0 +1,57 @@
+{
+ "proceso": "bopourense:BOPOURENSE-346221",
+ "documento": {
+  "id": "bopourense:BOPOURENSE-346221",
+  "fuente": "BOP-OURENSE",
+  "url": null,
+  "fecha": "2025-06-13",
+  "huella": "6f0b96ba287a884fa110ad88848382fd0cc79f10c4168308a56e1d07a1756bb8"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:45:37+00:00",
+ "lote": "msgbatch_016re6aGcimwSVmdrWa6qBd9",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Jefe/a de brigada",
+    "Peón/a conductor/a",
+    "Peón/a forestal"
+   ],
+   "cita": "contratación laboral temporal de una brigada de incendios del Ayuntamiento de Boborás integrada por 1 jefe/a de brigada, 1 peón/a conductor/a y tres peones/as forestales",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "por el sistema de concurso-oposición",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "cinco (5) días hábiles contados a partir del día siguiente al de la publicación del presente anuncio en el Boletín Oficial de la Provincia de Ourense",
+   "cita": "en el plazo de cinco (5) días hábiles contados a partir del día siguiente al de la publicación del presente anuncio en el Boletín Oficial de la Provincia de Ourense",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Registro de entrada de documentos del Ayuntamiento, de 8.00 a 14.30 horas, o procedimiento del artículo 16.4 de la Ley 39/2015",
+   "cita": "podrán presentar sus solicitudes en el registro de entrada de documentos del Ayuntamiento, de 8.00 a 14.30 horas",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de anuncios del Ayuntamiento de Boborás y sede electrónica del Ayuntamiento de Boborás",
+   "cita": "se publicarán en el tablón de anuncios del Ayuntamiento de Boborás y en la sede electrónica del Ayuntamiento de Boborás",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "laboral temporal",
+   "cita": "para la contratación laboral temporal de una brigada forestal"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 5,
+   "cita": "integrada por 1 jefe/a de brigada, 1 peón/a conductor/a y tres peones/as forestales"
+  }
+ }
+}

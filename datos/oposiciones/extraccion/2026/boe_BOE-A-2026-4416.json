@@ -1,0 +1,114 @@
+{
+ "proceso": "boe:BOE-A-2026-4416",
+ "documento": {
+  "id": "bopb:BOPB-202610027058",
+  "fuente": "BOPB",
+  "url": "https://bop.diba.cat/anunci/3897339/bases-i-convocatoria-del-proces-selectiu-per-cobrir-una-placa-d-educador-a-de-l-escola-bressol-de-la-plantilla-de-personal-laboral-de-l-ajuntament-ajuntament-d-artes",
+  "fecha": "2026-02-16",
+  "huella": "174cafb79ba2d430724ab0b7c5219b7a4bc34d589fef9668ff9354387b83120b"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:40:36+00:00",
+ "lote": "msgbatch_01E3wiYcGL8Lzho48bXWLyyb",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Educador/a Escola Bressol"
+   ],
+   "cita": "plaça d’educador/a escola bressol, de la plantilla de personal laboral de l’Ajuntament d’Artés",
+   "nivel": "sin_signos"
+  },
+  "grupo": {
+   "valor": "C1",
+   "cita": "Grup: C1 Nombre de llocs: 1 Torn: reservada a promoció interna",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "Nombre de llocs: 1 Torn: reservada a promoció interna Sistema selectiu: Concurs oposició.",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles desde el día siguiente a la publicación de la convocatoria en el BOE",
+   "cita": "termini improrrogable de vint (20) dies hàbils, a comptar des del dia següent al de la publicació de la convocatòria del procés selectiu al Butlletí Oficial de l’Estat (BOE).",
+   "nivel": "sin_signos"
+  },
+  "publicaciones": {
+   "valor": "Tablón electrónico de anuncios del Ajuntament d’Artés (sucesivos anuncios exclusivamente); bases y convocatoria en BOPB, DOGC y tablón; extracto en BOE",
+   "cita": "Els successius anuncis es publicaran exclusivament en el tauler electrònic d’anuncis de l’Ajuntament d’Artés.",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "no",
+   "cita": "La persona aspirant proposada pel Tribunal haurà de presentar al servei de recursos humans de la corporació",
+   "nivel": "literal"
+  },
+  "temas": {
+   "valor": 40,
+   "cita": "Tema 40. Funcions dels professionals de les escoles bressols municipals.",
+   "nivel": "contado"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "personal laboral fijo",
+   "cita": "en règim de personal laboral fix, mitjançant el sistema de concurs oposició, reservada a promoció interna"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "mitjançant el sistema de concurs oposició, reservada a promoció interna"
+  },
+  "plazas_promocion_interna": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "Torn: reservada a promoció interna Sistema selectiu: Concurs oposició."
+  },
+  "titulacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Cicle Formatiu de Grau Superior en Educació Infantil o titulación equivalente o superior",
+   "cita": "Estar en possessió o en condicions d’obtenir la titulació acadèmica oficial de Cicle Formatiu de Grau Superior en Educació Infantil"
+  },
+  "otros_requisitos": {
+   "motivo": "cita_no_literal",
+   "valor": "Nacionalidad española o de la UE (con las extensiones previstas); edad mínima de 16 años; no padecer enfermedad ni impedimento; no estar separado del servicio ni inhabilitado; ser personal laboral fijo del Ajuntament d’Artés; antigüedad mínima de dos años en plaza de auxiliar de educación infantil (C2); no tener antecedentes por delitos sexuales.",
+   "cita": "Tenir una antiguitat mínima de dos (2) anys en una plaça d’auxiliar d’educació infantil, del grup professional C2 a l’Ajuntament d’Artés."
+  },
+  "idioma_cooficial": {
+   "motivo": "cita_no_literal",
+   "valor": "Catalán, nivel C1 (suficiencia)",
+   "cita": "Les persones aspirants hauran d’acreditar un coneixement de la llengua catalana equivalent al nivell de suficiència (C1)"
+  },
+  "tasa_euros": {
+   "motivo": "cita_no_literal",
+   "valor": 20,
+   "cita": "Al presentar les sol·licituds, els/les aspirants hauran de satisfer els drets d’examen que es fixen en l’import de 20,00.-€."
+  },
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Electrónicamente a través de la sede electrónica del Ajuntament (artes.eadministracio.cat), trámite “Proceso selectivo de una plaza de educador/a infantil de la Escuela Bressol”",
+   "cita": "s’hauran de presentar necessàriament de forma electrònica a través de la seu electrònica (https://artes.eadministracio.cat)"
+  },
+  "ejercicios": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Primer ejercicio: prueba escrita teórico-práctica, eliminatoria (40 puntos, mínimo 20; 90 minutos)",
+    "Segundo ejercicio: prueba de conocimientos de lenguas, eliminatoria (apto/no apto)",
+    "Fase de concurso: méritos (20 puntos, no eliminatoria)"
+   ],
+   "cita": "Aquesta prova consistirà en el desenvolupament, en el termini màxim de 90 minuts, de diversos supòsits teòric-pràctics"
+  },
+  "meritos": {
+   "motivo": "cita_no_literal",
+   "valor": "Experiencia profesional en la Administración (hasta 10 puntos, 0,10 por mes); cursos de formación y perfeccionamiento relacionados con las funciones (hasta 10 puntos)",
+   "cita": "Experiència professional (màxim 10 punts): es valorarà l’experiència professional a l’administració pública en llocs de treball d’auxiliar d’educació infantil"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "no",
+   "cita": "Finalitzat el procés selectiu, l’òrgan de selecció publicarà... una llista ordenada de les persones aspirants"
+  }
+ }
+}

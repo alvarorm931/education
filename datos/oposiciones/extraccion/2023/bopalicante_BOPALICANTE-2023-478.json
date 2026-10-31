@@ -1,0 +1,48 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2023-478",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2023-478",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2023/01/23_15/2023_000478.pdf",
+  "fecha": "2023-01-23",
+  "huella": "0c091dba50335f0ae44d61358bcaf64fc886e271a1a2ee60a495c34f34c0ed96"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:56:40+00:00",
+ "lote": "msgbatch_0167qWfLXqjGo8Hv43cM3LuM",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "ADMINISTRATIVO (Secretaría)",
+   "cita": "una plaza de ADMINISTRATIVO (Secretaría), perteneciente a la Oferta de Empleo Público",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "Modificar las Bases Reguladoras del concurso de méritos para la cobertura de la plaza de Administrativo/a",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "MODIFICACIÓN BASE OCTAVA CONVOCATORIA PLAZA 1 ADMINISTRATIVO (SECRETARIA)",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Experiencia profesional: 0,35 puntos por mes completo en el mismo puesto o con funciones idénticas al Cuerpo o Escala; 0,10 puntos por mes completo con funciones diferentes",
+   "cita": "0,35 por cada mes completo Servicios efectivos prestados como personal funcionario en Cuerpos o Escalas",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "Modificar las Bases Reguladoras del concurso de méritos para la cobertura de la plaza de Administrativo/a como personal funcionario"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "veinte días hábiles desde el día siguiente a la publicación del anuncio en el Boletín Oficial de la Provincia de Alicante",
+   "cita": "Otorgar un nuevo plazo de veinte días hábiles, contados a partir del día siguiente al de la publicación del presente anuncio"
+  }
+ }
+}

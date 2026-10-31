@@ -1,0 +1,68 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2026-607",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2026-607",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2026/02/11_28/2026_000607.pdf",
+  "fecha": "2026-02-11",
+  "huella": "0b647b132c672c680e21577e5c00b883f0c288374fab18509cca8004ebafdd57"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:42:34+00:00",
+ "lote": "msgbatch_01W17mR271uYfWYL6CuSdriL",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "Agente de la Policía Local",
+   "cita": "provisión en propiedad de 20 plazas de Agente de la Policía Local (12 por turno libre y 8 por turno de movilidad)",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C1",
+   "cita": "Grupo C, subgrupo C1",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "provisión en propiedad de 20 plazas de Agente de la Policía Local",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 28,
+   "cita": "el número total de plazas objeto de la convocatoria pasa a ser de 28 plazas",
+   "nivel": "literal"
+  },
+  "plazas_turno_libre": {
+   "valor": 17,
+   "cita": "Turno Libre: 17 plazas (12 iniciales + 5 acumuladas)",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Acumulación de 8 plazas vacantes de la OEP 2025 al proceso selectivo en ejecución; plazas de movilidad reservadas conforme al Decreto 179/2021",
+   "cita": "Acumular al proceso selectivo en ejecución para la provisión de 20 plazas de Agente de la Policía Local, las 8 plazas vacantes incluidas en la OEP de 2025",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "BOP, tablón de edictos de la sede electrónica del Ayuntamiento de Elda y página web municipal",
+   "cita": "Publicar la presente resolución en el Boletín Oficial de la Provincia (BOP), en el tablón de edictos de la sede electrónica",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "no",
+   "cita": "Acumular al proceso selectivo en ejecución para la provisión de 20 plazas de Agente de la Policía Local, las 8 plazas vacantes",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "oposición",
+   "cita": "fase de oposición del turno libre, reconocimiento médico"
+  },
+  "plazas_promocion_interna": {
+   "motivo": "valor_no_en_cita",
+   "valor": 0,
+   "cita": "Turno de Movilidad: 11 plazas (8 iniciales + 3 acumuladas)"
+  }
+ }
+}

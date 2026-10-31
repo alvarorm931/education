@@ -1,0 +1,40 @@
+{
+ "proceso": "dogc:1036984",
+ "documento": {
+  "id": "dogc:1036984",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1036984",
+  "fecha": "2026-02-16",
+  "huella": "44d0d24490677164a804a4ea8ba260b54e9279b9d77bf9a08766dd886901579a"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:42:26+00:00",
+ "lote": "msgbatch_01W17mR271uYfWYL6CuSdriL",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "peons"
+   ],
+   "cita": "constitució d'una borsa de treball de peons (Exp. 221/2026)",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles a contar desde el día siguiente a la publicación del extracto en el DOGC",
+   "cita": "s'obre el termini de presentació de sol·licituds, que serà de 20 dies hàbils a comptar des de l'endemà de la publicació de l'extracte",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "sede electrónica del Ayuntamiento (http://asco.eadministracio.cat)",
+   "cita": "es publicaran a la seu electrònica de l'Ajuntament http://asco.eadministracio.cat",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, para constituir una bolsa de trabajo de peones",
+   "cita": "per constituir una borsa de treball de peons"
+  }
+ }
+}

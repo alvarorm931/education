@@ -1,0 +1,67 @@
+{
+ "proceso": "dog:DOG-20260331-AnuncioG1439-090326-0001",
+ "documento": {
+  "id": "dog:DOG-20260331-AnuncioG1439-090326-0001",
+  "fuente": "DOG",
+  "url": "https://www.xunta.gal/dog/Publicados/2026/20260331/AnuncioG1439-090326-0001_es.html",
+  "fecha": "2026-03-31",
+  "huella": "f29d331b35386d5ee0c6cf895bc83119a0d4b29fc3ccf014d380b2a1cbbc0c21"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:40:45+00:00",
+ "lote": "msgbatch_01E3wiYcGL8Lzho48bXWLyyb",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Auxiliar de archivo",
+    "Auxiliar de sala",
+    "Maquinista-conductor/a"
+   ],
+   "cita": "Una plaza de auxiliar archivo (cupo general), de la plantilla de personal funcionario",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C1",
+   "cita": "grupo C-subgrupo C1, mediante el sistema de concurso-oposición, acceso libre",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "de la plantilla de personal funcionario, perteneciente a la escala de Administración especial",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mediante el sistema de concurso-oposición, acceso libre",
+   "nivel": "literal"
+  },
+  "plazas_discapacidad": {
+   "valor": 2,
+   "cita": "dos del cupo de reserva a personas con discapacidad",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte (20) días naturales, contados desde el siguiente al de la publicación del extracto de la convocatoria y bases en el BOE",
+   "cita": "El plazo de presentación de solicitudes será de veinte (20) días naturales, contados desde el siguiente al de la publicación del extracto",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "BOP de Lugo, tablón edictal de la Diputación Provincial y página web de la Diputación Provincial",
+   "cita": "se publicarán en el BOP de Lugo, en el tablón edictal de esta entidad y en la página web de la Diputación Provincial",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 6,
+   "cita": "Una plaza de auxiliar archivo (cupo general), Tres plazas de auxiliar sala, Dos plazas de maquinista-conductor/a"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 4,
+   "cita": "Tres plazas de auxiliar sala (una del cupo general y dos del cupo de reserva"
+  }
+ }
+}

@@ -1,0 +1,51 @@
+{
+ "proceso": "boib:BOIB-2025-702789",
+ "documento": {
+  "id": "boib:BOIB-2025-702789",
+  "fuente": "BOIB",
+  "url": "https://www.caib.es/eboibfront/es/2025/12118/702789/resolucion-de-24-de-junio-de-2025-de-la-universida",
+  "fecha": "2025-06-28",
+  "huella": "1fe2d21961477f5a53e1f53515d11743450ac119f9330e62827e50cf68590544"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:45:09+00:00",
+ "lote": "msgbatch_016re6aGcimwSVmdrWa6qBd9",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Profesor Titular de Universidad, Área de Obstetricia y Ginecología",
+    "Profesor Titular de Universidad, Área de Personalidad, Evaluación y Tratamiento Psicológico"
+   ],
+   "cita": "Número de concurso: 30/2025. Código de la plaza: 231209. Cuerpo al que pertenece: Profesor Titular de Universidad.",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "comunica la convocatoria a concurso de acceso en el Boletín Oficial del Estado de las plazas",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "diez días",
+   "cita": "El plazo de presentación de solicitudes será de diez días a partir del siguiente al de la publicación de esta convocatoria en el Boletín Oficial del Estado.",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial del Estado",
+   "cita": "Las bases íntegras de la convocatoria aparecerán publicadas en el Boletín Oficial del Estado.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "convoca a concurso de acceso en el Boletín Oficial del Estado de las plazas de los cuerpos de funcionarios docentes universitarios"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 2,
+   "cita": "Número de concurso: 30/2025. Código de la plaza: 231209."
+  }
+ }
+}

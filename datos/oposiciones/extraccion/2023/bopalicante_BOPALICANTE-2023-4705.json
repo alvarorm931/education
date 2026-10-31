@@ -1,0 +1,60 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2023-4705",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2023-4705",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2023/06/09_111/2023_004705.pdf",
+  "fecha": "2023-06-09",
+  "huella": "0e52c6876c4a346e773fae55b4df9a7e9729e81239876931f61009a1b84286c2"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:59:20+00:00",
+ "lote": "msgbatch_012nGabRM1G4b7cEKJh1Bcx1",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "AP",
+   "cita": "Cuidadoras o Cuidadores de Instalaciones (subgrupo AP)",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "5 días hábiles desde el día siguiente a la publicación de la convocatoria en el BOP de Alicante",
+   "cita": "El plazo de presentación de solicitudes comenzará al día siguiente de la publicación de la convocatoria en el Boletín Oficial de la Provincia de Alicante durante 5 días hábiles",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Sede electrónica del Ayuntamiento de Altea",
+   "cita": "Las bases íntegras y el modelo de solicitud de la convocatoria pueden consultarse en la sede electrónica del Ayuntamiento",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de Anuncios del Ayuntamiento de Altea",
+   "cita": "El resto de anuncios del proceso selectivo únicamente se realizarán en el Tablón de Anuncios del Ayuntamiento de Altea",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Cuidadora/es de Instalaciones"
+   ],
+   "cita": "bolsa de trabajo temporal para el nombramiento interino o contratación laboral temporal de Cuidadoras o Cuidadores de Instalaciones"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "otro",
+   "cita": "bolsa de trabajo temporal para el nombramiento interino o contratación laboral temporal"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "Sistema Selectivo/Concurso, de las correspondientes Bases Específicas"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, para nombramiento interino o contratación laboral temporal",
+   "cita": "creación de una bolsa de trabajo temporal para el nombramiento interino o contratación laboral temporal"
+  }
+ }
+}

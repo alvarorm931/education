@@ -1,0 +1,40 @@
+{
+ "proceso": "boplaspalmas:BOPLASPALMAS-2026-07-06-020",
+ "documento": {
+  "id": "boplaspalmas:BOPLASPALMAS-2026-07-06-020",
+  "fuente": "BOP-LASPALMAS",
+  "url": null,
+  "fecha": "2026-07-06",
+  "huella": "56ceadc99c20fec71c877baa27dcbb5729805ea2598d5f3221c695ddb97e8cca"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:41:53+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
+ "no_son_bases": false,
+ "campos": {
+  "sistema": {
+   "valor": "concurso",
+   "cita": "convoca un procedimiento selectivo para cubrir en comisión de servicios el puesto de trabajo",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "QUINCE DÍAS HÁBILES a contar desde el siguiente al de publicación de este anuncio en el Boletín Oficial de la Provincia de Las Palmas",
+   "cita": "El plazo de presentación de solicitudes es de QUINCE DÍAS HÁBILES a contar desde el siguiente al de publicación",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de anuncios del Ayuntamiento de Teror y su sede electrónica",
+   "cita": "se encuentran expuestos en el tablón de anuncios del Ayuntamiento de Teror y en el de su sede electrónica",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Jefatura de Negociado de Contabilidad Presupuestaria y Conceptos No Presupuestario"
+   ],
+   "cita": "convocar un procedimiento selectivo para cubrir en comisión de servicios el puesto de trabajo de Jefatura de Negociado de Contabilidad Presupuestaria"
+  }
+ }
+}

@@ -1,0 +1,48 @@
+{
+ "proceso": "boja:disposition.2023.26.19",
+ "documento": {
+  "id": "boja:disposition.2023.26.19",
+  "fuente": "BOJA",
+  "url": "https://juntadeandalucia.es/eboja/2023/26/BOJA23-026-00001-2405-01_00277484.pdf",
+  "fecha": "2023-02-08",
+  "huella": "b729e8b54a0502ede14c9273277c095892ad2b680015f568909fa3941737b5d1"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:56:52+00:00",
+ "lote": "msgbatch_0167qWfLXqjGo8Hv43cM3LuM",
+ "no_son_bases": false,
+ "campos": {
+  "plazas_total": {
+   "valor": 1,
+   "cita": "anuncia la convocatoria de un puesto cuyas bases se encuentran publicadas en la página web",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "hasta la fecha que figura en la convocatoria de empleo, publicada en dichos espacios",
+   "cita": "El plazo de presentación de solicitudes y datos curriculares, permanecerá abierto hasta la fecha que figura en la convocatoria",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "solicitudes y datos curriculares en los espacios de la convocatoria; bases en la web de la Fundación",
+   "cita": "Asimismo, la convocatoria se encuentra publicada en el espacio para las ofertas de empleo de entidades instrumentales",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "página web de la Fundación Pública Andaluza Progreso y Salud y espacio de ofertas de empleo de entidades instrumentales de la Junta de Andalucía",
+   "cita": "cuyas bases se encuentran publicadas en la página web de la Fundación Pública Andaluza Progreso y Salud",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "puesto de trabajo (cuerpo, escala o categoría no especificados en el texto)",
+   "cita": "la Dirección de Gestión y Organización Interna de esta Fundación anuncia la convocatoria de un puesto cuyas bases se encuentran publicadas"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "otro",
+   "cita": "la Dirección de Gestión y Organización Interna de esta Fundación anuncia la convocatoria de un puesto cuyas bases"
+  }
+ }
+}

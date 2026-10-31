@@ -1,0 +1,50 @@
+{
+ "proceso": "bopt:BOPT-2026-02910",
+ "documento": {
+  "id": "bopt:BOPT-2026-02910",
+  "fuente": "BOPT",
+  "url": "https://www.dipta.cat/bopt/web/anunci/358251/borsa-de-treball-d-agent-d-aparcament-bases-i-convocatoria-empresa-municipal-transports-publics-de-tarragona-sa",
+  "fecha": "2026-04-08",
+  "huella": "bd0f9c4a0c68809cf49fd4fa74923eeffb1786a5168c6f519541d83ce25288ec"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:40:54+00:00",
+ "lote": "msgbatch_01E3wiYcGL8Lzho48bXWLyyb",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "per la contractació laboral indefinida i temporal de Agent d'aparcament",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "MITJANÇANT CONCURS-OPOSICIÓ, PER L'EMPRESA MUNICIPAL D E TRANSPORTS PÚBLICS DE TARRAGONA,S.A",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "10 días hábiles desde el día siguiente a la publicación de la convocatoria en el BOPT",
+   "cita": "El termini de presentació d'instàncies s'obrirà al dia següent de la publicació de l'anunci d'aquesta convocatòria al BOPT",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Sede electrónica de la EMT (www.emtanemambtu.cat), web del Ayuntamiento de Tarragona y web de la EMT (emtanemambtu.cat)",
+   "cita": "Les Bases complertes de la referida convocatòria es troben exposades íntegrament a la seu electrònica de l'EMT",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Agent d'aparcament"
+   ],
+   "cita": "ampliació de la borsa de treball d'aspirants per la contractació laboral indefinida i temporal de Agent d'aparcament"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, para la contratación laboral indefinida y temporal de Agentes de aparcamiento",
+   "cita": "ampliació de la borsa de treball d'aspirants per la contractació laboral indefinida i temporal de Agent d'aparcament"
+  }
+ }
+}

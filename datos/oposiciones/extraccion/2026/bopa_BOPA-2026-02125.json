@@ -1,0 +1,60 @@
+{
+ "proceso": "bopa:BOPA-2026-02125",
+ "documento": {
+  "id": "bopa:BOPA-2026-02125",
+  "fuente": "BOPA",
+  "url": "https://miprincipado.asturias.es/bopa/disposiciones?p_p_id=pa_sede_bopa_web_portlet_SedeBopaDispositionWeb&p_p_lifecycle=0&_pa_sede_bopa_web_portlet_SedeBopaDispositionWeb_mvcRenderCommandName=%2Fdisposition%2Fdetail&p_r_p_dispositionText=2026-02125&p_r_p_dispositionReference=2026-02125&p_r_p_dispositionDate=18%2F03%2F2026",
+  "fecha": "2026-03-18",
+  "huella": "3b8ecdab09a875119352a057cfa8ee253cb48252c39da0b635b4417bbf276a9c"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:40:32+00:00",
+ "lote": "msgbatch_01E3wiYcGL8Lzho48bXWLyyb",
+ "no_son_bases": false,
+ "campos": {
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "convocar proceso selectivo para el acceso, a través del sistema de concurso oposición, a 6 plazas",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 6,
+   "cita": "convocar proceso selectivo para el acceso, a través del sistema de concurso oposición, a 6 plazas",
+   "nivel": "literal"
+  },
+  "plazas_promocion_interna": {
+   "valor": 2,
+   "cita": "(tres de turno libre y dos de turno promoción interna) y la otra plaza de la categoría lo será en la modalidad de Instituto Nacional de Silicosis (turno libre)",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial del Principado de Asturias",
+   "cita": "Ordenar la publicación de la presente Resolución en el Boletín Oficial del Principado de Asturias",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Bases aprobadas en el anexo I",
+   "cita": "Aprobar las bases que regirán la presente convocatoria y que se detallan en el anexo I",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Personal Técnico Titulado Superior del Servicio de Salud del Principado de Asturias"
+   ],
+   "cita": "convocar concurso oposición para el acceso a 6 plazas de personal estatutario fijo de la Categoría de Personal Técnico Titulado Superior"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "personal estatutario fijo",
+   "cita": "proceso selectivo para el acceso a la condición de personal estatutario fijo"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 4,
+   "cita": "cinco de las plazas a proveer será en la modalidad de Laboratorio de Servicio Médico e Investigación (tres de turno libre y dos de turno promoción interna)"
+  }
+ }
+}

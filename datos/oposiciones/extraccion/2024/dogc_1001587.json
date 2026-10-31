@@ -1,0 +1,58 @@
+{
+ "proceso": "dogc:1001587",
+ "documento": {
+  "id": "dogc:1001587",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1001587",
+  "fecha": "2024-12-12",
+  "huella": "c609ab0fe015cff5ec700c48590ac74768cc5c96d0f16e2a1edb44750265adb5"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:49:33+00:00",
+ "lote": "msgbatch_018TPQE8scQozfAUdc1n8RyC",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "C1",
+   "cita": "subgrupo profesional C1, personal funcionario de carrera, sistema concurso-oposición, turno libre",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "subgrupo profesional C1, personal funcionario de carrera, sistema concurso-oposición, turno libre",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "subgrupo profesional C1, personal funcionario de carrera, sistema concurso-oposición, turno libre",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 7,
+   "cita": "convocar el proceso de selección de siete plazas de administrativo/a",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles que contaran a partir del día siguiente de la última publicación extractada en el Diario Oficial de la Generalitat de Catalunya y en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes es de veinte días hábiles que contaran a partir del día siguiente",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Los sucesivos anuncios se publicarán en la sede electrónica del Consell Comarcal del Montsià y en el Boletín Oficial de la Provincia de Tarragona",
+   "cita": "Los sucesivos anuncios de esta convocatoria se publicarán en la sede electrónica del Consell Comarcal del Montsià",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "administrativo/a",
+   "cita": "la convocatoria de siete plazas de administrativo/a, subgrupo profesional C1, personal funcionario de carrera"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 7,
+   "cita": "sistema concurso-oposición, turno libre, en el marco de la Ley 20/2021"
+  }
+ }
+}

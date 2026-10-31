@@ -1,0 +1,40 @@
+{
+ "proceso": "bopb:BOPB-202410137004",
+ "documento": {
+  "id": "bopb:BOPB-202410137004",
+  "fuente": "BOPB",
+  "url": "https://bop.diba.cat/anunci/3661548/esmena-d-error-material-en-les-bases-de-la-convocatoria-per-a-l-ampliacio-de-la-borsa-de-treball-de-personal-prospector-vigent-en-el-sentit-de-publicar-l-annex-del-temari-de-la-convocatoria-consell-comarcal-del-baix-llobregat",
+  "fecha": "2024-07-30",
+  "huella": "88089ffc1d7c432ae9631f2e87f3fc128679ef3164c0d9c1f5612a3f5b4d07e6"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:49:05+00:00",
+ "lote": "msgbatch_016yasWxkCXTWjPAb8LjB3ob",
+ "no_son_bases": false,
+ "campos": {
+  "publicaciones": {
+   "valor": "Anunci al BOPB (edicte de correcció d'errada material)",
+   "cita": "en el sentit de publicar l'annex del temari de la convocatòria",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, per a cobrir necessitats de personal temporal d'aquest perfil professional o d'altres similars que requereixi el Servei de Control de Mosquits",
+   "cita": "per a donar cobertura a les necessitats de personal temporal d'aquest perfil professional o d'altres similars",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Personal prospector"
+   ],
+   "cita": "ampliació de la borsa de treball de personal prospector vigent"
+  },
+  "temas": {
+   "motivo": "valor_no_en_cita",
+   "valor": 14,
+   "cita": "1. El Servei de Control de Mosquits del Baix Llobregat. Estructura."
+  }
+ }
+}

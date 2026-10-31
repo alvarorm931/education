@@ -1,0 +1,48 @@
+{
+ "proceso": "boplleida:BOPLLEIDA-2024-10257",
+ "documento": {
+  "id": "dogc:1002008",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1002008",
+  "fecha": "2024-12-17",
+  "huella": "3967ec6c2baa54aa82bd9c0fcdedc71d89125d78bafe20ee69168497eab4431c"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:49:31+00:00",
+ "lote": "msgbatch_018TPQE8scQozfAUdc1n8RyC",
+ "no_son_bases": false,
+ "campos": {
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mitjançant Concurs-Oposició Lliure, d'una plaça d'Administratiu/iva",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "mitjançant Concurs-Oposició Lliure, d'una plaça d'Administratiu/iva, en règim de personal funcionari",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "deu (10) dies hàbils, a comptar de l'endemà de la publicació del present anunci al DOGC",
+   "cita": "El termini de presentació d'instàncies serà de deu (10) dies hàbils, a comptar de l'endemà de la publicació",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "BOP de Lleida i/o al Tauler d'Anuncis de la Corporació i a la Seu Electrònica municipal",
+   "cita": "es faran públics en el BOP de Lleida i/o al Tauler d'Anuncis de la Corporació i a la Seu Electrònica municipal",
+   "nivel": "sin_signos"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Administratiu/iva",
+   "cita": "una plaça d'Administratiu/iva, en règim de personal funcionari de carrera"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "una plaça d'Administratiu/iva, en règim de personal funcionari de carrera"
+  }
+ }
+}

@@ -1,0 +1,68 @@
+{
+ "proceso": "dog:DOG-20230915-AnuncioL358-250823-0001",
+ "documento": {
+  "id": "dog:DOG-20230915-AnuncioL358-250823-0001",
+  "fuente": "DOG",
+  "url": "https://www.xunta.gal/dog/Publicados/2023/20230915/AnuncioL358-250823-0001_es.html",
+  "fecha": "2023-09-15",
+  "huella": "f190fde95218a7a90b3e0fac9abdae82c938c207d6b120213e0193f169039bc5"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:38+00:00",
+ "lote": "msgbatch_01SjfjDqJRwL6bpTvJz2YfVg",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Técnico superior (pedagogo)",
+    "Agente de empleo y desarrollo local",
+    "Educador familiar",
+    "Técnico de información, orientación y prospección del empleo",
+    "Trabajador/a social",
+    "Administrativo/a",
+    "Monitor de ocio y tiempo libre",
+    "Monitor deportivo",
+    "Auxiliar administrativo"
+   ],
+   "cita": "Una plaza de técnico superior (pedagogo) de la plantilla de personal laboral fijo, perteneciente al grupo I",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "I, II, III, IV",
+   "cita": "perteneciente al grupo I, mediante el sistema de concurso, en turno libre",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "de la plantilla de personal laboral fijo, perteneciente al grupo I",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "mediante el sistema de concurso, en turno libre, dentro del proceso extraordinario",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles a contar desde el siguiente al de la publicación de este anuncio en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes será de veinte días hábiles a contar desde el siguiente al de la publicación",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "En la forma prevista en las propias bases",
+   "cita": "Los sucesivos anuncios referentes a esta convocatoria, cuando procedan de conformidad con las bases, se harán públicos en la forma prevista en las propias bases.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 21,
+   "cita": "Tres plazas de monitor de ocio y tiempo libre de la plantilla de personal laboral fijo"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 21,
+   "cita": "mediante el sistema de concurso, en turno libre, dentro del proceso extraordinario de estabilización"
+  }
+ }
+}

@@ -1,25 +1,22 @@
 {
  "proceso": "boplleida:BOPLLEIDA-2026-7900",
  "documento": {
-  "id": "boplleida:BOPLLEIDA-2026-7900",
-  "fuente": "BOP-LLEIDA",
-  "url": "https://ebop.diputaciolleida.cat/aplicacions/bop/bopV1/fitxers/pdf/2026/185/202618507900.pdf",
-  "fecha": "2026-09-28",
-  "huella": "6912d1498f479f243c4f4583210886bec50702b716ba3153de42d14f2683842e"
+  "id": "dogc:1055452",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1055452",
+  "fecha": "2026-09-30",
+  "huella": "5e3fc934e79d3628d2f44945b357b8204bad6efad97102231cb9db41779a04f9"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T08:03:36+00:00",
- "lote": "msgbatch_013xFoLdqcGqWcqkzh7qrdGg",
+ "extraido": "2026-10-31T14:41:45+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
-   "valor": "professor/a de música grau superior, especialitat violoncel",
-   "cita": "plaça de professor/a de música de grau superior, especialitat violoncel, i constitució d'una borsa de treball",
-   "nivel": "literal"
-  },
-  "grupo": {
-   "valor": "A1",
-   "cita": "Grup A1 Complement de destinació 22",
+   "valor": [
+    "Professor/a de música de grau superior, especialitat violoncel"
+   ],
+   "cita": "per proveir una plaça de professor/a de música de grau superior, especialitat violoncel, i constitució d'una borsa de treball",
    "nivel": "literal"
   },
   "vinculo": {
@@ -29,27 +26,27 @@
   },
   "sistema": {
    "valor": "concurso-oposición",
-   "cita": "Sistema de selecció Concurs-oposició",
+   "cita": "El procediment de selecció serà el de concurs-oposició i constarà de dues fases",
    "nivel": "literal"
   },
   "plazas_total": {
    "valor": 1,
-   "cita": "Nombre de places 1 Sistema de selecció Concurs-oposició",
-   "nivel": "literal"
-  },
-  "plazas_turno_libre": {
-   "valor": 1,
-   "cita": "Nombre de places 1 Sistema de selecció Concurs-oposició",
+   "cita": "la cobertura d'una plaça de professor/a de música de grau superior, especialitat violoncel",
    "nivel": "literal"
   },
   "titulacion": {
-   "valor": "Títol superior de música especialitat violoncel o grau superior de música en l'especialitat d'interpretació o pedagogia amb itinerari de violoncel, o equivalent",
+   "valor": "Títol superior de música especialitat violoncel o grau superior de música en l'especialitat d'interpretació o pedagogia i amb l'itinerari de violoncel, o qualsevol declarada equivalent",
    "cita": "Estar en possessió, en el moment de la presentació d'instàncies, d'un títol superior de música especialitat violoncel",
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Nacionalidad española (con excepciones de la UE); tener 16 años y no exceder la edad de jubilación forzosa; capacidad funcional; no haber sido separado de la administración ni inhabilitado; no condena por delitos contra la libertad e indemnidad sexual",
-   "cita": "Tenir la nacionalitat espanyola sense perjudici del que es disposa en l'article 57",
+   "valor": "Nacionalitat espanyola (sense perjudici de l'article 57 TREBEP), capacitat funcional, tenir complerts setze anys, no estar separat del servei de cap administració ni inhabilitat, no patir malaltia que impedeixi l'exercici, no haver estat condemnat per delictes contra la llibertat i indemnitat sexual",
+   "cita": "Tenir complerts setze anys i no excedir, si escau, de l'edat màxima de jubilació forçosa",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Català, certificat de nivell C1 del MERC o superior (exempció en els supòsits previstos)",
+   "cita": "estar en possessió del certificat de coneixements del nivell de suficiència de català, certificat de nivell C1",
    "nivel": "literal"
   },
   "tasa_euros": {
@@ -58,61 +55,52 @@
    "nivel": "literal"
   },
   "exenciones_tasa": {
-   "valor": "Bonificación para aspirantes que acrediten ser demandantes de empleo no ocupados (validado por el Ayuntamiento previa consulta al SOC)",
-   "cita": "Es bonificarà als aspirants que acreditin ser Dono (demanant d'ocupació no ocupat).",
+   "valor": "Bonificada per a aspirants que acreditin ser demandants d'ocupació no ocupats, validat per l'Ajuntament amb consulta al SOC",
+   "cita": "Es bonificarà als aspirants que acreditin ser Dono (demanant d'ocupació no ocupat)",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Registro electrónico del Ayuntamiento de Solsona, correos, oficinas consulares o registro presencial; copia por correo electrónico si no es electrónica",
+   "valor": "Registre electrònic de l'Ajuntament de Solsona (sede electrònica), oficines de Correus, oficines diplomàtiques o consulars, oficines d'assistència en matèria de registres o presencialment al Registre general",
    "cita": "Al Registre electrònic de l'Ajuntament de Solsona, que es troba a l'adreça",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tauler d'Edictes de l'Ajuntament i pàgina web municipal",
+   "cita": "Les Bases es publicaran al Tauler d'Edictes de l'Ajuntament i a la Pàgina Web municipal",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Coneixements de llengua catalana (nivel C1), apto/no apto, si no se acredita",
-    "Coneixements de llengua castellana, apto/no apto, si procede",
-    "Preparació d'una classe de violoncel (escrit, 30 minuts; hasta 20 puntos)",
-    "Impartir una classe a un alumno de violoncel (hasta 40 puntos)"
+    "Coneixements de llengua catalana (apte/no apte, si no s'acredita nivell C1)",
+    "Coneixements de llengua castellana (apte/no apte, només no nacionals espanyols)",
+    "Preparació d'una classe de violoncel (màx. 20 punts)",
+    "Impartir una classe de violoncel a un alumne (màx. 40 punts)",
+    "Fase de concurs: mèrits professionals i formació (màx. 32 punts) i entrevista (màx. 2 punts)"
    ],
-   "cita": "Preparació d'una classe de violoncel, amb uns requisits que seran indicats en el moment de la prova",
+   "cita": "Consistirà en la valoració dels mèrits al·legats i acreditats per les persones participants",
    "nivel": "literal"
   },
   "meritos": {
-   "valor": "Experiencia profesional (hasta 22 puntos); formación (hasta 8 puntos); entrevista personal opcional (hasta 2 puntos)",
+   "valor": "Mèrits professionals fins a 22 punts (experiència privada i pública); formació fins a 8 punts; altres titulacions fins a 1 punt; entrevista personal fins a 2 punts",
    "cita": "Aquesta fase consistirà en la valoració dels mèrits al·legats i acreditats per les persones participants, amb una puntuació màxima en la fase de concurs de 32 punts",
    "nivel": "literal"
   },
   "bolsa": {
-   "valor": "sí, para cubrir vacantes temporales por bajas por enfermedad, maternidad, etc.; vigencia máxima de dos años",
+   "valor": "Sí, borsa d'ocupació per cobrir futures vacants temporals (baixes per malaltia, maternitat, etc.), vigència màxima de dos anys",
    "cita": "Es constituirà una borsa d'ocupació amb les persones que superin el procés de selecció i no siguin contractes",
    "nivel": "literal"
   },
   "practicas_o_curso": {
-   "valor": "Periodo de prueba de 6 meses",
+   "valor": "Període de prova de 6 mesos",
    "cita": "s'estableix un període de prova que serà de 6 mesos, per tal de garantir la idoneïtat del candidat",
    "nivel": "literal"
   }
  },
  "rechazados": {
-  "plazas_discapacidad": {
-   "motivo": "valor_no_en_cita",
-   "valor": 0,
-   "cita": "En relació a les persones amb discapacitat podran demanar en la instància l'adaptació"
-  },
-  "idioma_cooficial": {
-   "motivo": "cita_no_literal",
-   "valor": "Català, nivel C1 (suficiencia), o exención acreditada",
-   "cita": "certificat de nivell C1 del MERC (antic Nivell C) o superior de la Direcció General de Política Lingüística"
-  },
   "plazo_solicitudes": {
    "motivo": "cita_no_literal",
-   "valor": "20 días hábiles, contados desde el día siguiente a la última publicación del anuncio de la convocatoria en el DOGC o en el BOP de Lleida",
-   "cita": "El termini per a la presentació d'instàncies és de 20 dies hàbils, comptats a partir de l'endemà de l'última publicació"
-  },
-  "publicaciones": {
-   "motivo": "cita_no_literal",
-   "valor": "Tablón de edictos del Ayuntamiento y página web municipal",
-   "cita": "Les Bases es publicaran al Tauler d'Edictes de l'Ajuntament i a la Pàgina Web municipal"
+   "valor": "20 dies hàbils",
+   "cita": "El termini per a la presentació d'instàncies és de 20 dies hàbils, comptats a partir de l'endemà"
   }
  }
 }

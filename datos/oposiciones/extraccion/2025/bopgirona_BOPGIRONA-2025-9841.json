@@ -1,0 +1,58 @@
+{
+ "proceso": "bopgirona:BOPGIRONA-2025-9841",
+ "documento": {
+  "id": "dogc:1028667",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1028667",
+  "fecha": "2025-11-06",
+  "huella": "d530215e8172a4acf6a58764da88b15ca648c934574e828d9f9fb1c7d50c4ab2"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:40:58+00:00",
+ "lote": "msgbatch_01UNq3BNhPPHoTK3TEJzun1h",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "en règim laboral, mitjançant concurs oposició per torn lliure",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mitjançant concurs oposició per torn lliure i la creació de la borsa de treball",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "el procés de selecció i provisió d'una plaça d'Arquitecte/a Tècnic/a",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días naturales desde el día siguiente a la publicación del extracto en el DOGC",
+   "cita": "El termini per a la presentació de sol·licituds és de vint dies naturals, comptats des de l'endemà",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, para crear una bolsa de trabajo correspondiente al proceso",
+   "cita": "la creació de la borsa de treball corresponent",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Arquitecte/a Tècnic/a",
+   "cita": "aprovació de les bases i de la convocatòria que han de regular el procés de selecció i provisió d'una plaça d'Arquitecte/a Tècnic/a"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "mitjançant concurs oposició per torn lliure i la creació de la borsa"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Boletín Oficial de la Provincia de Girona y tablón de edictos del Ayuntamiento tras publicarse en el DOGC",
+   "cita": "es publicaran al Butlletí Oficial de la Província de Girona núm. 210 i es publicaran al tauler d'edictes de l'Ajuntament"
+  }
+ }
+}

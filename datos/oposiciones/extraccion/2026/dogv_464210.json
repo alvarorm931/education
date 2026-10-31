@@ -1,0 +1,65 @@
+{
+ "proceso": "dogv:464210",
+ "documento": {
+  "id": "dogv:464210",
+  "fuente": "DOGV",
+  "url": "https://dogv.gva.es/datos/2026/02/18/pdf/2026_2943_es.pdf",
+  "fecha": "2026-02-18",
+  "huella": "cba9e93ab4d086222d10b8391f7c929071e4e7ae4e6eca68fa1c48a96494d5ce"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:42:40+00:00",
+ "lote": "msgbatch_01W17mR271uYfWYL6CuSdriL",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "inspector del cuerpo de la Policía Local"
+   ],
+   "cita": "dos plazas de inspector del cuerpo de la Policía Local, una por el turno libre",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "A2",
+   "cita": "con grupo/subgrupo de clasificación A2",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "para la cobertura en propiedad de dos plazas de inspector",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "para la cobertura en propiedad de dos plazas de inspector",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 2,
+   "cita": "se aprobaron las bases y la convocatoria para la cobertura en propiedad de dos plazas",
+   "nivel": "literal"
+  },
+  "plazas_turno_libre": {
+   "valor": 1,
+   "cita": "dos plazas de inspector del cuerpo de la Policía Local, una por el turno libre",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles, a contar del día siguiente a la publicación de este anuncio en el Boletín Oficial del Estado",
+   "cita": "El plazo para la presentación de solicitudes será de veinte días hábiles, a contar del día siguiente",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_promocion_interna": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "la otra por el turno de promoción interna"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Boletín Oficial de la Provincia de Valencia número 13, web municipal y tablón de edictos del Ayuntamiento",
+   "cita": "publicadas en el Boletín Oficial de la Provincia de Valencia número 13, de fecha 21 de enero de 2026, en la web municipal"
+  }
+ }
+}

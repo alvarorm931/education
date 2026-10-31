@@ -1,0 +1,97 @@
+{
+ "proceso": "boe:BOE-A-2022-23249",
+ "documento": {
+  "id": "bopleon:BOPLEON-2022-240-007",
+  "fuente": "BOP-LEON",
+  "url": null,
+  "fecha": "2022-12-19",
+  "huella": "90cbe315c1d08954f0d21fdc3aac6c2ed8c8a0796f41972e1f577577e4833de5"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:55:46+00:00",
+ "lote": "msgbatch_014eT3dLLVopBnuVgQ4syWD9",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "administrativo"
+   ],
+   "cita": "Denominación de la plaza administrativo régimen funcionario",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C1",
+   "cita": "Grupo/subgrupo/categoría profesional c1",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "Sistema de selección co ncurso",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "N.º de vacantes 1 funciones encomendadas",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Título de Bachiller o Título de Formación Profesional de Segundo Grado o Formación Profesional de Grado medio o en condiciones de obtenerlo",
+   "cita": "Estar en posesión al menos de un nivel de titulación equivalente al Título de Bachiller",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española (salvo art. 57 TREBEP), capacidad funcional, tener cumplidos 16 años y no exceder la edad de jubilación forzosa, no haber sido separado de la Administración ni inhabilitado.",
+   "cita": "Tener la nacionalidad española sin perjuicio de lo dispuesto en el artículo 57",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Veinte días hábiles contados a partir del día siguiente al de la publicación del anuncio de la convocatoria específica en el Boletín Oficial del Estado",
+   "cita": "en el plazo de veinte días hábiles contados a partir del día siguiente al de la publicación del anuncio",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Registro Electrónico General del Ayuntamiento o lugares del artículo 16.4 de la Ley 39/2015, mediante modelo de instancia (anexo I)",
+   "cita": "se presentarán en el registro Electrónico General de este ayuntamiento o en alguno de los lugares previstos",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Sede electrónica del Ayuntamiento (https://vegadeespinareda.sedelectronica.es), tablón de anuncios, BOP de León y BOCYL",
+   "cita": "Las Bases íntegras se publicarán en el BoLETíN ofIcIaL DE La ProvINcIa, en el Boletín Oficial de Castilla y León y en la sede electrónica",
+   "nivel": "sin_signos"
+  },
+  "ejercicios": {
+   "valor": [
+    "Fase de concurso de méritos (única fase, 100 puntos): experiencia profesional y formación"
+   ],
+   "cita": "La fase concurso, en la que la puntuación máxima a obtener será de 100 puntos",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Experiencia profesional hasta 60 puntos (0,40 por mes en la administración convocante; 0,15 por mes en otras administraciones) y formación hasta 40 puntos (titulación superior hasta 4 y cursos hasta 36)",
+   "cita": "Experiencia profesional: se computará por meses de servicio y hasta un máximo de 60 puntos",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, bolsa de empleo de personal funcionario interino para cubrir necesidades futuras",
+   "cita": "Se prevé para aquellas personas que no superen el proceso selectivo, su inclusión en bolsas de empleo de personal funcionario interino",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "no consta",
+   "cita": "Una vez publicado el nombramiento de funcionario, este deberá tomar posesión o incorporarse en el plazo de un mes.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "como funcionario, una plaza de administrativo mediante concurso de méritos"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "mediante el sistema de acceso libre y a través del procedimiento de concurso de méritos"
+  }
+ }
+}

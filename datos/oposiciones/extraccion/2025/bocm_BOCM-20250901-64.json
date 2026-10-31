@@ -1,0 +1,62 @@
+{
+ "proceso": "bocm:BOCM-20250901-64",
+ "documento": {
+  "id": "bocm:BOCM-20250901-64",
+  "fuente": "BOCM",
+  "url": "https://www.bocm.es/bocm-20250901-64",
+  "fecha": "2025-09-01",
+  "huella": "231607d302b337928eb009066d794fa1425d5a7f66451bfd8ae35f345a34652a"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:43:07+00:00",
+ "lote": "msgbatch_01XofVwxKEhyEjSzGog6wsD4",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "administrativo",
+    "animador juvenil",
+    "animador sociocultural"
+   ],
+   "cita": "una plaza de “administrativo”, una plaza de “animador juvenil” y una plaza de “animador sociocultural”",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "personal funcionario del Ayuntamiento de Tres Cantos, por el procedimiento de oposición",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "para cubrir, mediante promoción interna, una plaza de “administrativo”",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días naturales contados a partir del siguiente al de la publicación del anuncio extractado en el BOE",
+   "cita": "dentro del plazo de 20 días naturales contados a partir del siguiente al de la publicación",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "tablón de anuncios de la sede electrónica del Ayuntamiento de Tres Cantos",
+   "cita": "se harán públicos en el tablón de anuncios de la sede electrónica del Ayuntamiento de Tres Cantos (Madrid)",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 3,
+   "cita": "una plaza de “administrativo”, una plaza de “animador juvenil” y una plaza de “animador sociocultural”"
+  },
+  "plazas_promocion_interna": {
+   "motivo": "valor_no_en_cita",
+   "valor": 3,
+   "cita": "para cubrir, mediante promoción interna, una plaza de “administrativo”"
+  },
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Registro General del Ayuntamiento o cualquiera de las formas del artículo 16.4 de la Ley 39/2015",
+   "cita": "podrán presentar la solicitud en el Registro General del Ayuntamiento de Tres Cantos o por cualquiera de las formas previstas en el artículo 16.4"
+  }
+ }
+}

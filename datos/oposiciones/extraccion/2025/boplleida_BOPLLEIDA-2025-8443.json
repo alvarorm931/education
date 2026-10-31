@@ -1,0 +1,60 @@
+{
+ "proceso": "boplleida:BOPLLEIDA-2025-8443",
+ "documento": {
+  "id": "dogc:1028596",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1028596",
+  "fecha": "2025-11-06",
+  "huella": "3cffa443cf2c9580c84d97144ab18b641446aa0f5d1e047fa5ba9a838d6cb87b"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:41:27+00:00",
+ "lote": "msgbatch_01UNq3BNhPPHoTK3TEJzun1h",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "C1",
+   "cita": "grup C, subgrup C1, en règim laboral, jornada parcial",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "en règim laboral, jornada parcial i constitució d'una borsa de treball",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mitjançant concurs oposició lliure d'una plaça de tècnic auxiliar de música",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles, a contar desde el siguiente a la publicación en el DOGC",
+   "cita": "dins el termini improrrogable de 20 dies hàbils, a comptar des del següent a la publicació en el DOGC",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, constitución de una bolsa de trabajo",
+   "cita": "en règim laboral, jornada parcial i constitució d'una borsa de treball a l'Ajuntament d'Almacelles",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Tècnic auxiliar de música (especialitat de guitarra clàssica i/o guitarra elèctrica)"
+   ],
+   "cita": "accés, mitjançant concurs oposició lliure d'una plaça de tècnic auxiliar de música en l'especialitat de guitarra clàssica i/o guitarra elèctrica"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 1,
+   "cita": "accés, mitjançant concurs oposició lliure d'una plaça de tècnic auxiliar de música"
+  },
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Registro General del Ayuntamiento, dirigidas al presidente de la Corporación; también en cualquiera de las formas previstas en el artículo 16 de la Ley 39/2015",
+   "cita": "Les sol·licituds s'han de presentar al Registre General de l'Ajuntament, dins el termini improrrogable de 20 dies hàbils"
+  }
+ }
+}

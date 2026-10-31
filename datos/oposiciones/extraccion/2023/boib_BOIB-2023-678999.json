@@ -1,0 +1,106 @@
+{
+ "proceso": "boib:BOIB-2023-678999",
+ "documento": {
+  "id": "boib:BOIB-2023-678999",
+  "fuente": "BOIB",
+  "url": "https://www.caib.es/eboibfront/es/2023/11820/678999/resolucion-del-presidente-de-la-agencia-de-estrate",
+  "fecha": "2023-10-26",
+  "huella": "f16f1763cb73083946faaf21b544e6dd26b8ab6b55fec6c63e0f4aa407e83997"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:54+00:00",
+ "lote": "msgbatch_01SjfjDqJRwL6bpTvJz2YfVg",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Técnico o técnica superior (nivel A), grado en derecho",
+    "Arquitecto o arquitecta (nivel A), grado en Arquitectura o equivalente",
+    "Técnico o técnica superior (nivel A), cualquier licenciatura o grado universitario",
+    "Técnico o técnica de grado (nivel A), licenciado o licenciada en Geografía e Historia o equivalente",
+    "Administrativo o administrativa (nivel C), título de bachillerato o técnico"
+   ],
+   "cita": "categoría técnico o técnica superior (nivel A), licenciatura o grado en derecho",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "A",
+   "cita": "categoría técnico o técnica superior (nivel A), licenciatura o grado en derecho",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "el procedimiento de concurso, que tiene que consistir en la valoración de los méritos",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Según bolsa: licenciatura o grado en derecho; licenciatura o grado en Arquitectura o equivalente; cualquier licenciatura o grado universitario o equivalente; grado en Geografía e Historia o equivalente; título de bachillerato, técnico o técnica superior o técnico especialista (nivel C)",
+   "cita": "La titulación exigida para participar en cada una de las bolsas convocadas es la siguient",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española o de los permitidos por el artículo 57 TREBEP; tener 16 años y no haber llegado a la jubilación forzosa; no estar separado ni inhabilitado; capacidad física y psíquica; conocimiento de catalán nivel C1; certificado ISO 9000 o SICTED en una plaza de nivel C",
+   "cita": "Haber cumplido los dieciséis años y no haber llegado a la edad de la jubilación forzosa.",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Catalán, nivel C1",
+   "cita": "Estar en posesión del conocimiento de la lengua catalana del nivel C1",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Diez días hábiles a contar desde el día siguiente al de la publicación en el BOIB",
+   "cita": "El plazo para presentar solicitudes es de diez días hábiles a contar a partir del día siguiente",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Electrónicamente en el modelo oficial a través de la Sede Electrónica de la AETIB",
+   "cita": "La solicitud se tiene que formalizar electrónicamente en el modelo oficial a que se accede a través de la Sede Electrónica",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de las Illes Balears y Sede Electrónica de la AETIB",
+   "cita": "Publicar esta Resolución en el Boletín Oficial de las Illes Balears y en la Sede Electrónica de la AETIB.",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Fase de concurso: valoración de méritos (autobaremación verificada)"
+   ],
+   "cita": "el procedimiento de concurso, que tiene que consistir en la valoración de los méritos que detalla el anexo 2",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "Sí, para cubrir plazas vacantes estructurales de la AETIB y plazas temporales para la tramitación de fondos europeos MRR",
+   "cita": "crear bolsas para poder cubrir las necesidades actuales y otras que puedan surgir",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "laboral temporal",
+   "cita": "Se trata de contratos temporales sujetos al cumplimiento del término pactado"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 8,
+   "cita": "dos plazas, una de ellas tiene como requisito estar en posesión de una certificación"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 8,
+   "cita": "Aprobar la convocatoria de un procedimiento extraordinario para constituir bolsas de personal laboral temporal"
+  },
+  "plazas_discapacidad": {
+   "motivo": "valor_no_numerico",
+   "valor": "7 % de las vacantes",
+   "cita": "se reserva una cuota del 7 % de las vacantes para que las cubran personas"
+  },
+  "meritos": {
+   "motivo": "cita_no_literal",
+   "valor": "Experiencia profesional (hasta 50 puntos); conocimientos de ofimática (hasta 10 o 10 puntos según bolsa); titulaciones académicas (hasta 10 puntos); cursos de formación (hasta 20 puntos); inglés (hasta 5 puntos); catalán (hasta 5 puntos)",
+   "cita": "Anexo 2 Baremo de méritos: experiencia profesional, ofimática, titulaciones, cursos, lengua extranjera y catalana"
+  }
+ }
+}

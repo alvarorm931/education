@@ -1,50 +1,101 @@
 {
  "proceso": "boe:BOE-A-2026-15418",
  "documento": {
-  "id": "boc:BOC-A-2026-125-2197",
-  "fuente": "BOC",
-  "url": "https://www.gobiernodecanarias.org/boc/2026/125/2197.html",
-  "fecha": "2026-06-24",
-  "huella": "ca5879b4a1196e5aa85dade1d52ef29be7403558cb43664578586291c360cff2"
+  "id": "boplaspalmas:BOPLASPALMAS-2026-06-05-042",
+  "fuente": "BOP-LASPALMAS",
+  "url": null,
+  "fecha": "2026-06-05",
+  "huella": "8c97d664a9b75091fbea5932a908d3eeb82eb9fea332824edc09d805e6a65d6c"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T07:51:42+00:00",
- "lote": "msgbatch_01NvbwpQGcC9vt1x7nWayvXt",
+ "extraido": "2026-10-31T14:42:02+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
-   "valor": "Ingeniero/a Técnico Industrial, Escala de Administración Especial, Subescala Técnica",
-   "cita": "para cubrir una plaza (1) de Ingeniero/a Técnico Industrial, encuadrada en la Escala de Administración Especial, Subescala Técnica",
+   "valor": [
+    "Ingeniero/a Técnico Industrial"
+   ],
+   "cita": "una plaza (1) de Ingeniero/a Técnico Industrial, encuadrada en la Escala de Administración Especial",
    "nivel": "literal"
   },
   "grupo": {
    "valor": "A2",
-   "cita": "grupo A, subgrupo A2, mediante el sistema de oposición y por el turno libre",
+   "cita": "Escala de Administración Especial, Subescala Técnica, grupo A, subgrupo A2",
    "nivel": "literal"
   },
   "vinculo": {
-   "valor": "otro",
-   "cita": "para cubrir una plaza (1) de Ingeniero/a Técnico Industrial, encuadrada en la Escala de Administración Especial",
+   "valor": "funcionario de carrera",
+   "cita": "con el carácter de funcionariado de carrera de una plaza (1) de Ingeniero/a Técnico Industrial",
    "nivel": "literal"
   },
   "sistema": {
    "valor": "oposición",
-   "cita": "mediante el sistema de oposición y por el turno libre, del Ayuntamiento de Santa Lucía de Tirajana",
+   "cita": "mediante el sistema de oposición y con el carácter de funcionariado de carrera",
    "nivel": "literal"
   },
   "plazas_total": {
    "valor": 1,
-   "cita": "para cubrir una plaza (1) de Ingeniero/a Técnico Industrial, encuadrada en la Escala",
+   "cita": "una plaza (1) de Ingeniero/a Técnico Industrial, encuadrada en la Escala de Administración Especial",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Título universitario oficial de Ingeniería Técnica Industrial o título de Grado que habilite para el ejercicio de esta profesión regulada",
+   "cita": "Estar en posesión del título universitario oficial de Ingeniería Técnica Industrial o del título de Grado que habilite",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española o requisitos equivalentes para nacionales de la UE; capacidad funcional; tener 16 años y no exceder la edad máxima de jubilación; no haber sido separado del servicio ni inhabilitado.",
+   "cita": "Para ser admitidos a la realización de las pruebas selectivas, los aspirantes deberán reunir, a la fecha de finalización del plazo",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Conocimiento adecuado del castellano exigible a aspirantes extranjeros",
+   "cita": "deberán tener un conocimiento adecuado del castellano, pudiéndoseles exigir, en su caso, la superación de pruebas",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 36,
+   "cita": "La tasa por derechos de examen es de 36,00 euros",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "veinte días hábiles, a contar desde el siguiente al de la publicación de esta resolución en el Boletín Oficial del Estado",
-   "cita": "El plazo para la presentación de solicitudes será de veinte días hábiles, a contar desde el siguiente al de la publicación",
+   "valor": "20 días hábiles",
+   "cita": "El plazo de presentación de la solicitud de participación en el procedimiento selectivo será de (20) VEINTE DÍAS HÁBILES",
    "nivel": "literal"
   },
-  "publicaciones": {
-   "valor": "en la forma prevista en las bases que rigen la convocatoria",
-   "cita": "Los sucesivos anuncios referentes a esta convocatoria, cuando procedan de conformidad con las bases, se harán públicos en la forma prevista",
+  "presentacion": {
+   "valor": "Preferentemente a través de la plataforma Convoca (santaluciagc.convoca.online) con cl@ve PIN o certificado digital; o por cualquiera de los medios del artículo 16.4 de la Ley 39/2015",
+   "cita": "PREFERENTEMENTE se presentarán las solicitudes de participación en el proceso selectivo a través de la plataforma digital Convoca",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Primer ejercicio: test de 60 preguntas (más 5 de reserva), tres alternativas, 90 minutos, eliminatorio",
+    "Segundo ejercicio: desarrollo escrito de hasta 20 preguntas sobre la parte específica, 90 minutos, eliminatorio",
+    "Tercer ejercicio: supuesto práctico durante un máximo de dos horas, eliminatorio"
+   ],
+   "cita": "El primer ejercicio consistirá en la contestación de un cuestionario tipo test de sesenta (60) preguntas",
+   "nivel": "literal"
+  },
+  "temas": {
+   "valor": 60,
+   "cita": "Tema 60. Ordenanza Reguladora de Limpieza de Espacios Públicos y Gestión de Residuos sólidos Urbanos",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "No se valoran méritos en concurso; la fase única es de oposición con puntuación máxima de 10 puntos",
+   "cita": "La fase de oposición será valorada con una puntuación máxima de 10 puntos",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "Sí: lista de reserva para nombramientos interinos en la misma categoría",
+   "cita": "El proceso también permitirá la constitución de una lista de reserva para nombramientos interinos en la misma categoría",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Periodo de prácticas de cinco meses como funcionario en prácticas",
+   "cita": "Se fija un período de prácticas cuya duración será de cinco meses, contados desde la fecha de la toma de posesión",
    "nivel": "literal"
   }
  },
@@ -52,7 +103,17 @@
   "plazas_turno_libre": {
    "motivo": "valor_no_en_cita",
    "valor": 1,
-   "cita": "mediante el sistema de oposición y por el turno libre, del Ayuntamiento de Santa Lucía de Tirajana"
+   "cita": "por el turno libre y mediante el sistema de oposición"
+  },
+  "exenciones_tasa": {
+   "motivo": "cita_no_literal",
+   "valor": "Discapacidad igual o superior al 33 %; demandantes de empleo con requisitos de antigüedad, no rechazo de oferta y rentas inferiores al salario mínimo interprofesional",
+   "cita": "quedarán exentos del pago de la tasa: Los/as aspirantes con discapacidad igual o superior al 33 por 100"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Boletín Oficial de la Provincia, tablón de anuncios del Ayuntamiento, web municipal y Plataforma Convoca",
+   "cita": "Dicha Resolución se hará pública desde el día siguiente a la publicación en el Boletín Oficial de la Provincia, en el Tablón de Anuncios y en la página web municipal"
   }
  }
 }

@@ -1,0 +1,110 @@
+{
+ "proceso": "dogc:1038484",
+ "documento": {
+  "id": "dogc:1038484",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1038484",
+  "fecha": "2026-03-04",
+  "huella": "b1357edd5f1d04b1ffabe2e7791e6a5caccddb44bfdb33be537bd1fc282c79f1"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:40:53+00:00",
+ "lote": "msgbatch_01E3wiYcGL8Lzho48bXWLyyb",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "Vincle: Funcionarial",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "El procés constarà d'una única fase selectiva que estarà formada per sis proves",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Varía según categoría (grado, licenciatura, diplomatura o título de graduado en ESO según Annex I)",
+   "cita": "Estar en possessió del títol que s'indica a l'annex I per cadascuna de les categories convocades.",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad (UE u otros supuestos), capacidad funcional, 16 años y no superar la edad de jubilación forzosa, no ser funcionario/laboral fijo en la misma categoría, no haber sido separado por expediente disciplinario, y no condena por delitos sexuales en determinadas categorías",
+   "cita": "Haver complert els 16 anys d'edat i no superar l'edat establerta per a la jubilació forçosa.",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Catalán nivel C1 (suficiencia), acreditable o mediante prueba eliminatoria; castellano nivel B2 para quienes no tengan nacionalidad española",
+   "cita": "Han d'estar en possessió dels coneixements de nivell de suficiència de català C1 (antic C) o superior",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días naturales",
+   "cita": "Per presentar la sol·licitud, les persones aspirants disposaran del termini de vint dies naturals",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Telemática a través de la sede electrónica del Ajuntament de Barcelona (Procesos selectivos, convocatoria BS2026)",
+   "cita": "La formalització, obtenció i presentació de sol·licituds s'ha de fer telemàticament",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Web de Procesos Selectivos del Ajuntament de Barcelona y Portal de selección y provisión de la Intranet",
+   "cita": "es publicaran a la web de Processos Selectius de l'Ajuntament de Barcelona i al Portal de selecció i provisió",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Test aptitudinal (eliminatorio, 65 puntos)",
+    "Prueba de ofimática (eliminatoria, 10 puntos)",
+    "Prueba de lengua extranjera (no eliminatoria, 25 puntos)",
+    "Prueba de catalán (eliminatoria)",
+    "Prueba de castellano (eliminatoria, si procede)",
+    "Entrevista competencial (eliminatoria)"
+   ],
+   "cita": "Totes les proves tindran caràcter eliminatori a excepció de la prova de coneixements de llengua estrangera.",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "No se valoran méritos de concurso; la calificación se determina por la suma de puntuaciones de las tres primeras pruebas puntuables",
+   "cita": "La qualificació del procés es determinarà pel sumatori de les puntuacions obtingudes en la primera, segona i tercera prova.",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, para realizar posibles nombramientos de interinaje o contrataciones temporales",
+   "cita": "l'Ajuntament constituirà l'ampliació de Borses de treball en les categories indicades a l'annex I amb l'objectiu de realitzar possibles nomenaments d'interinatges o contractacions temporals.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "TS Arxivística",
+    "TS Ciència de Dades",
+    "TS Ciència i Tecnologia",
+    "TS Dret",
+    "TS Economia",
+    "TS Enginyeria",
+    "TS Medicina",
+    "TS Organització",
+    "TS Prevenció de Riscos Laborals (PRL)",
+    "TS Química",
+    "TS Tecnologies de la Informació i Comunicació (TS TIC)",
+    "TS Veterinària",
+    "Mestre/a d'Escola Bressol",
+    "TM Arquitectura",
+    "TM Biblioteconomia (CBB)",
+    "TM Enginyeria",
+    "TM Treball Social",
+    "Educador/a d'Escola Bressol",
+    "Auxiliar"
+   ],
+   "cita": "ampliar diferents borses de treball de l'Ajuntament de Barcelona en les categories que es relacionen a l'annex"
+  },
+  "plazas_discapacidad": {
+   "motivo": "valor_no_numerico",
+   "valor": "5%",
+   "cita": "Es reservarà un 5% de les places de cada categoria al torn de reserva per a persones amb discapacitat."
+  }
+ }
+}

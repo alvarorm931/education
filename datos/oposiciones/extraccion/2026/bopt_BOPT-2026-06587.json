@@ -1,99 +1,94 @@
 {
  "proceso": "bopt:BOPT-2026-06587",
  "documento": {
-  "id": "bopt:BOPT-2026-06587",
-  "fuente": "BOPT",
-  "url": "https://www.dipta.cat/bopt/web/anunci/362189/borsa-de-treball-d-administratiu-iva-bases-i-convocatoria-ajuntament-selva-del-camp-la",
-  "fecha": "2026-07-13",
-  "huella": "de7494b1a5e30f2d126e40bfd34d9952a30198fe49cf4bae660699e7cc0bc8d6"
+  "id": "dogc:1050017",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1050017",
+  "fecha": "2026-07-16",
+  "huella": "5d92e8c71f2a51517d73fbfe5184de3036ee6c9ee6730c62ae668a7a6a12d8f9"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T08:17:55+00:00",
- "lote": "msgbatch_01BrnYw6KkevFx7at547B5g8",
+ "extraido": "2026-10-31T14:41:58+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
    "valor": [
-    "Administratiu/va"
+    "Administrativo/a"
    ],
-   "cita": "Borsa de treball d'Administratiu/va, personal laboral temporal, de l'escala d'Administració General, Grup C, subgrup C1",
+   "cita": "bolsa de trabajo de Administrativo/a, personal laboral temporal, Grupo C, Subgrupo C1",
    "nivel": "literal"
   },
   "grupo": {
    "valor": "C1",
-   "cita": "GRUP C, SUBGRUP C1",
+   "cita": "Grupo C, Subgrupo C1, para el Ayuntamiento de La Selva del Camp",
    "nivel": "literal"
   },
   "vinculo": {
    "valor": "laboral temporal",
-   "cita": "personal laboral temporal, de l'escala d'Administració General",
+   "cita": "personal laboral temporal, Grupo C, Subgrupo C1",
    "nivel": "literal"
   },
   "sistema": {
    "valor": "oposición",
-   "cita": "El procediment de selecció serà el d'oposició",
+   "cita": "El procedimiento de selección será el de oposición",
    "nivel": "literal"
   },
-  "plazas_total": {
-   "valor": 1,
-   "cita": "la creació d'una borsa de treball que permeti cobrir",
+  "titulacion": {
+   "valor": "Bachillerato, Técnico/a, Ciclo Formativo de Grado Medio o titulación equivalente",
+   "cita": "Estar en posesión del título de Bachillerato, Técnico/a, Ciclo Formativo de Grado Medio o titulación equivalente",
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Nacionalidad española o UE (o acceso conforme a arts. 56 y 57 TREBEP); 16 años cumplidos y no superar edad de jubilación forzosa; capacidad funcional; no haber sido separado de la administración por expediente disciplinario ni inhabilitado. Castellano nivel B2 para no nacionales.",
-   "cita": "Tenir 16 anys complerts i no haver superat l'edat de jubilació forçosa",
+   "valor": "Nacionalidad española o de la UE (o derecho de acceso); tener cumplidos 16 años y no superar la edad de jubilación forzosa; capacidad funcional; no estar separado/a de la Administración ni inhabilitado/a",
+   "cita": "Tener cumplidos 16 años y no haber alcanzado la edad de jubilación forzosa",
    "nivel": "literal"
   },
   "idioma_cooficial": {
-   "valor": "Catalán nivel C1 (suficiencia) o superior",
-   "cita": "Estar en possessió del certificat de nivell de suficiència de català (nivell C1) o superior",
+   "valor": "Catalán, nivel C1 o superior (castellano B2 para aspirantes sin nacionalidad española)",
+   "cita": "Estar en posesión del certificado de nivel de suficiencia de catalán (nivel C1) o superior",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "20 días naturales desde el día siguiente a la publicación del anuncio de convocatoria en el DOGC",
-   "cita": "en el termini de 20 dies naturals comptats des de l'endemà de la publicació de l'anunci de convocatòria al DOGC",
+   "valor": "20 días naturales desde el día siguiente a la publicación del anuncio en el DOGC",
+   "cita": "deberán presentarse en el plazo de 20 días naturales, contados a partir del día siguiente",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Presencial en el Registro General del Ayuntamiento; telemática a través de la sede electrónica u otros medios del artículo 16.4 de la Ley 39/2015",
-   "cita": "Les sol·licituds es podran presentar presencialment al Registre General de l'Ajuntament de la Selva del Camp",
+   "valor": "Presencial en el Registro General, por sede electrónica municipal o por cualquier medio del artículo 16.4 de la Ley 39/2015",
+   "cita": "Por medios telemáticos, a través de la sede electrónica municipal",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Sede electrónica y tablón de anuncios; listas de resultados en la página web del Ayuntamiento",
-   "cita": "publicarà la llista de persones aspirants aprovades a la pàgina web de l'Ajuntament",
+   "valor": "Sede electrónica y tablón de anuncios del Ayuntamiento; lista de aprobados en la página web del Ayuntamiento",
+   "cita": "se publicará en la sede electrónica y en el tablón de anuncios del Ayuntamiento",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Prueba obligatoria y eliminatoria de catalán (apto/no apto)",
-    "Prueba de castellano para no nacionales (apto/no apto)",
-    "Examen tipo test de 50 preguntas sobre el temario (máx. 50 puntos)"
+    "Prueba de conocimiento de catalán (apto/no apto, eliminatoria)",
+    "Prueba de castellano para aspirantes no españoles (apto/no apto)",
+    "Cuestionario de 50 preguntas tipo test sobre el temario (máx. 50 puntos, mínimo 25)"
    ],
-   "cita": "Consistirà en respondre per escrit, durant un temps màxim determinat pel Tribunal que no podrà superar els 90 minuts, 50 preguntes tipus test",
-   "nivel": "literal"
-  },
-  "temas": {
-   "valor": 29,
-   "cita": "29. Paquet Office. Coneixements a nivell usuari.",
+   "cita": "Consistirá en responder por escrito, en un tiempo máximo fijado por el Tribunal",
    "nivel": "literal"
   },
   "bolsa": {
-   "valor": "sí, para cubrir vacantes temporales de personal laboral con vigencia de 2 años",
-   "cita": "La borsa tindrà una vigència de 2 anys des de la seva constitució",
+   "valor": "sí, para cubrir necesidades de contratación temporal, con vigencia de dos años",
+   "cita": "La bolsa tendrá una vigencia de dos años desde su constitución",
    "nivel": "literal"
   },
   "practicas_o_curso": {
-   "valor": "Periodo de prueba de 3 meses con tutor asignado",
-   "cita": "La persona aspirant nomenada tindrà un període de prova de 3 mesos",
+   "valor": "Período de prueba de tres meses con tutor o tutora",
+   "cita": "deberá superar un período de prueba de tres meses, durante el cual tendrá asignado un tutor o tutora",
    "nivel": "literal"
   }
  },
  "rechazados": {
-  "titulacion": {
+  "temas": {
    "motivo": "cita_no_literal",
-   "valor": "Batxillerat, Tècnic/a, Cicle formatiu de Grau Mitjà o equivalent",
-   "cita": "Estar en possessió del títol de Batxillerat, Tècnic/a, Cicle formatiu de Grau Mitjà o equivalent"
+   "valor": 29,
+   "cita": "Consistirá en responder por escrito un cuestionario de 50 preguntas tipo test relacionadas con el temario que figura en el Anexo"
   }
  }
 }

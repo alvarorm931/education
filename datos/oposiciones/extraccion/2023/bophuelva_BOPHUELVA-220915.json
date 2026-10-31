@@ -1,0 +1,58 @@
+{
+ "proceso": "bophuelva:BOPHUELVA-220915",
+ "documento": {
+  "id": "bophuelva:BOPHUELVA-220915",
+  "fuente": "BOP-HUELVA",
+  "url": "https://s2.diphuelva.es/portalweb/bope/anuncios/Anuncio_220915_BOP-206_2023.pdf",
+  "fecha": "2023-10-30",
+  "huella": "c2f1fd34183af80d690baf7bc9a384d8c21ab61af0d60f99368906bc9722de58"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:58:06+00:00",
+ "lote": "msgbatch_01SjfjDqJRwL6bpTvJz2YfVg",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "el contrato laboral que se formalizará es el de sustitución hasta que la vacante se cubra",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "mediante concurso público abierto",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "técnico/a (monitor/a) deportivo",
+   "cita": "aprobar la convocatoria para cubrir con carácter temporal el puesto de técnico/a (monitor/a) deportivo"
+  },
+  "otros_requisitos": {
+   "motivo": "cita_no_literal",
+   "valor": "Pendiente de determinar: el texto remite a la resolución de convocatoria y demás requisitos, no los detalla",
+   "cita": "el enlace donde los/as interesados/as podrán consultar la resolución de convocatoria y demás requisitos y trámites"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "diez días hábiles siguientes al de publicación del presente anuncio en el BOP de Huelva",
+   "cita": "presenten su solicitud en el plazo de diez días hábiles siguientes al de publicación del presente anuncio"
+  },
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Consultar la resolución de convocatoria en la sede electrónica del Ayuntamiento; el texto no detalla el modo de presentación",
+   "cita": "el enlace donde los/as interesados/as podrán consultar la resolución de convocatoria y demás requisitos y trámites"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Tablón de anuncios de la sede electrónica del Ayuntamiento",
+   "cita": "ubicado en el tablón de anuncios de la sede electrónica del Ayuntamiento"
+  },
+  "practicas_o_curso": {
+   "motivo": "cita_no_literal",
+   "valor": "No indicado en el texto",
+   "cita": "el puesto está incluido en el proceso de estabilización del empleo público"
+  }
+ }
+}

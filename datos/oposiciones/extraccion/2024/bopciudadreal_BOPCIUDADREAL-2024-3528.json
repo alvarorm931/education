@@ -1,0 +1,51 @@
+{
+ "proceso": "bopciudadreal:BOPCIUDADREAL-2024-3528",
+ "documento": {
+  "id": "bopciudadreal:BOPCIUDADREAL-2024-3528",
+  "fuente": "BOP-CIUDADREAL",
+  "url": "https://bop.dipucr.es/bop/2024/09/26",
+  "fecha": "2024-09-26",
+  "huella": "14b249535068ab6a0c784db2c7c6c54098036ac414f3e9ddfecffb0e6f6c1b8f"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:50:28+00:00",
+ "lote": "msgbatch_01LpyYajgKGX9NyHT1uvynbR",
+ "no_son_bases": false,
+ "campos": {
+  "sistema": {
+   "valor": "concurso",
+   "cita": "mediante el sistema de concurso de méritos, en la categoría de",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "cinco días hábiles a partir del siguiente a la publicación del anuncio en el BOP de Ciudad Real",
+   "cita": "El plazo de presentación de solicitudes será de cinco días hábiles a partir del siguiente",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Página web www.daimiel.es y sede electrónica del Ayuntamiento",
+   "cita": "Las Bases y el resto de información podrán consultarse en la página web",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Profesor/a de Música, especialidad guitarra",
+    "Profesor/a de Música de trompa y lenguaje musical"
+   ],
+   "cita": "constitución de dos Bolsas de Trabajo Temporal, para la Escuela Municipal de Música y Danza"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "laboral temporal",
+   "cita": "constitución de dos Bolsas de Trabajo Temporal, para la Escuela Municipal"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, bolsas de trabajo temporal para las dos categorías convocadas",
+   "cita": "constitución de dos Bolsas de Trabajo Temporal, para la Escuela Municipal de Música y Danza"
+  }
+ }
+}

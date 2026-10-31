@@ -1,0 +1,68 @@
+{
+ "proceso": "dogc:1012218",
+ "documento": {
+  "id": "dogc:1012218",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1012218",
+  "fecha": "2025-04-22",
+  "huella": "fc4bb370e2b6bbad2c65a0c6f84f1a1c869dd18aefc62d537d7752f5d291d7fe"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:46:03+00:00",
+ "lote": "msgbatch_017vJZdAmjTkBDdH14aLEdCv",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "C1",
+   "cita": "grup C, subgrup C1, nivell 18",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "laboral fijo",
+   "cita": "en règim de personal laboral, reservada al torn lliure",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mitjançant el sistema selectiu de concurs-oposició",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles, a partir del día siguiente a la publicación del anuncio de convocatoria en el DOGC",
+   "cita": "serà de vint dies hàbils, a partir de l'endemà de la publicació del present anunci",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "instancias según modelo del anexo 1 de las bases",
+   "cita": "segons model que consta com a annex 1, a les bases",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "BOP de Girona (núm. 69, 9-4-2025) y web municipal (castello.cat)",
+   "cita": "Les bases es poden trobar a la web municipal, en el següent enllaç",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, constitución de una bolsa de trabajo",
+   "cita": "la constitució d'una borsa de treball a l'Escola Infantil Municipal",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "administratiu/a, escala d'administració general, subescala administrativa",
+   "cita": "per cobrir definitivament una plaça d'administratiu/a, de l'escala d'administració general, subescala administrativa"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 1,
+   "cita": "per cobrir definitivament una plaça d'administratiu/a"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "reservada al torn lliure"
+  }
+ }
+}

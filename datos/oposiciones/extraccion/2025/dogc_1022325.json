@@ -1,0 +1,55 @@
+{
+ "proceso": "dogc:1022325",
+ "documento": {
+  "id": "dogc:1022325",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1022325",
+  "fecha": "2025-08-12",
+  "huella": "8c397a853f1e435b6a3dcf20b16de3b00ac99f18c352bf5279ce0d8e497454ab"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:42:47+00:00",
+ "lote": "msgbatch_01XofVwxKEhyEjSzGog6wsD4",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "A1",
+   "cita": "grup A subgrup A1",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "amb caràcter de personal funcionari de carrera",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "pel sistema de concurs oposició lliure",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles a partir del día siguiente a la última publicación en el DOGC y/o BOE",
+   "cita": "El termini de presentació de sol·licituds finalitza als vint dies hàbils a partir de l'endemà de la darrera publicació",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Seu electrónica de la corporación (https://seu.tarragona.cat)",
+   "cita": "Els anuncis successius relatius a aquestes convocatòries es publicaran únicament a la Seu electrònica de la corporació",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "tècnic/a en control intern"
+   ],
+   "cita": "convoca una plaça de tècnic/a en control intern, classificada a l'escala d'administració especial"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 1,
+   "cita": "convoca una plaça de tècnic/a en control intern"
+  }
+ }
+}

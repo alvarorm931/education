@@ -1,0 +1,53 @@
+{
+ "proceso": "boe:BOE-A-2023-15980",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2023-5018",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2023/06/13_113/2023_005018.pdf",
+  "fecha": "2023-06-13",
+  "huella": "52ac7bf663c26e9c6d38d0b4f5dda94d0a97b63cff731ffdc86e8ab358f62bf2"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:59:13+00:00",
+ "lote": "msgbatch_012nGabRM1G4b7cEKJh1Bcx1",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "PEÓ SOTERRADOR DE LA BRIGADA D'OBRES",
+   "cita": "contractació d'una plaça de PEÓ SOTERRADOR DE LA BRIGADA D’OBRES , codi SP047",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "en règim PERSONAL LABORAL i pel sistema d’oposició torn lliure",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "la contractació d’una plaça de PEÓ SOTERRADOR DE LA BRIGADA D’OBRES",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "oposición",
+   "cita": "pel sistema d’oposició torn lliure, s’obri un termini de presentació"
+  },
+  "plazas_turno_libre": {
+   "motivo": "cita_no_literal",
+   "valor": 1,
+   "cita": "pel sistema d’oposició torn lliure, s’obri un termini de presentació"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "veinte días hábiles desde el día siguiente a la publicación del anuncio en el Boletín Oficial del Estado",
+   "cita": "s’obri un termini de presentació de sol·licituds que serà de vint dies hàbils a comptar des de l'endemà a la publicació"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "tablón de anuncios y sede electrónica municipal; los sucesivos anuncios en el BOP y en la sede electrónica",
+   "cita": "les bases reguladores ... es troben íntegrament en el tauler d’anuncis de la seu electrònica municipal"
+  }
+ }
+}

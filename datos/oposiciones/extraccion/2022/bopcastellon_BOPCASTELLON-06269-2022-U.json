@@ -1,0 +1,67 @@
+{
+ "proceso": "bopcastellon:BOPCASTELLON-06269-2022-U",
+ "documento": {
+  "id": "bopcastellon:BOPCASTELLON-06269-2022-U",
+  "fuente": "BOP-CASTELLON",
+  "url": null,
+  "fecha": "2022-12-31",
+  "huella": "87c9c39138b0771f341c34f9139f475970cfe78ef1fe9df80157ead4b8cabecd"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:56:24+00:00",
+ "lote": "msgbatch_014eT3dLLVopBnuVgQ4syWD9",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Agente de empleo y desarrollo local",
+    "Personal limpieza",
+    "Operario de actividades diversas"
+   ],
+   "cita": "Agente de empleo y desarrollo local; personal de limpieza y operario de actividades diversas, de San Rafael del Río",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "No consta",
+   "cita": "Características de las plazas vacantes objeto de la convocatoria",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "mediante sistema concurso, publicadas en el BOP nº153 de 22/12/2022",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Diplomatura o grado (agente de empleo y desarrollo local); no se exige (personal limpieza y operario de actividades diversas)",
+   "cita": "AGENTE DE EMPLEO Y DESARROLLO LOCAL 1 Concurso Diplomatura o grado",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "10 días hábiles a contar desde el día siguiente a la publicación de este anuncio en el Boletín Oficial del Estado",
+   "cita": "que será de 10 días hábiles a contar desde el día siguiente a la publicación",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "No consta en el anuncio",
+   "cita": "Características de las plazas vacantes objeto de la convocatoria",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "laboral temporal",
+   "cita": "proceso extraordinario de estabilización de empleo temporal por concurso"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 3,
+   "cita": "Agente de empleo y desarrollo local 1 Concurso; Personal limpieza 1 Concurso; Operario 1 Concurso"
+  },
+  "plazas_turno_libre": {
+   "motivo": "cita_no_literal",
+   "valor": 3,
+   "cita": "Sistema de acceso Concurso"
+  }
+ }
+}

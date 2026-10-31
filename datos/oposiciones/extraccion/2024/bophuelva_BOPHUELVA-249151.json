@@ -1,0 +1,45 @@
+{
+ "proceso": "bophuelva:BOPHUELVA-249151",
+ "documento": {
+  "id": "bophuelva:BOPHUELVA-249151",
+  "fuente": "BOP-HUELVA",
+  "url": "https://s2.diphuelva.es/portalweb/bope/anuncios/Anuncio_249151_BOP-76_2024.pdf",
+  "fecha": "2024-04-19",
+  "huella": "b1b32e542127133636781ddce1fe60823797e3b9db04ff9be587c660600fdbd9"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:54:23+00:00",
+ "lote": "msgbatch_01HRnX7cDVMkRZD7mBamCmLu",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Oficiales 1ª Albañilería"
+   ],
+   "cita": "la creación de una bolsa de trabajo para la selección de Oficiales 1ª Albañilería, Grupo C, Subgrupo C2",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C2",
+   "cita": "Grupo C, Subgrupo C2",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "bolsa de trabajo",
+   "cita": "la creación de una bolsa de trabajo para la selección de Oficiales 1ª Albañilería",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "diez días hábiles contados a partir del siguiente a la publicación del anuncio",
+   "cita": "el plazo de presentación de solicitudes, que será de DIEZ DÍAS HÁBILES, contados a partir del siguiente"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Tablón de Anuncios de la Sede Electrónica de la Mancomunidad de Islantilla",
+   "cita": "El contenido íntegro de las bases se encuentra en el Tablón de Anuncios de la Sede Electrónica"
+  }
+ }
+}

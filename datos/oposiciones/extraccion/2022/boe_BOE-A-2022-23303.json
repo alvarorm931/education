@@ -1,0 +1,104 @@
+{
+ "proceso": "boe:BOE-A-2022-23303",
+ "documento": {
+  "id": "boptoledo:BOPTOLEDO-2022-6408",
+  "fuente": "BOP-TOLEDO",
+  "url": "https://bop.diputoledo.es/webEbop/DocGet?id=22124797;0&insert_number=6408&insert_year=2022",
+  "fecha": "2022-12-12",
+  "huella": "11521d0ec090f3e8f248fd5a557e146c6126687ed45bb9f8ebd0b2d557fe881c"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:56:09+00:00",
+ "lote": "msgbatch_014eT3dLLVopBnuVgQ4syWD9",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Bibliotecaria",
+    "Administrativo",
+    "Auxiliar administrativo",
+    "Técnico jardín de infancia",
+    "Auxiliar de puericultura",
+    "Auxiliar servicio de ayuda a domicilio",
+    "Peón servicios múltiples"
+   ],
+   "cita": "Anexo I RELACIÓN DE PLAZAS CONVOCADAS RESERVADAS A PERSONAL LABORAL CATEGORÍA GRUPO NÚMERO DE PLAZAS",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "A2, C1, C2, E",
+   "cita": "Bibliotecaria A2 1 - Licenciatura, diplomatura o grado en biblioteconomía",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "la provisión en propiedad de las plazas de personal laboral correspondiente a la oferta pública",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "mediante sistema de concurso, se abre el plazo de presentación de solicitudes",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Varía según la plaza: Bibliotecaria, licenciatura, diplomatura o grado en biblioteconomía; Administrativo, bachiller, FP II o equivalente; Auxiliar administrativo, graduado escolar o equivalente; Técnico jardín de infancia, técnico superior en educación infantil o habilitante; Auxiliar de puericultura, técnico superior en educación infantil o equivalente; Auxiliar servicio de ayuda a domicilio, técnico de grado medio de atención a personas en situación de dependencia o equivalente; Peón servicios múltiples, sin titulación",
+   "cita": "Peón servicios múltiples E 2 - Sin titulación",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española o de Estado miembro de la UE; capacidades físicas y psíquicas; tener 16 años cumplidos y no exceder la edad de jubilación forzosa; no haber sido separado del servicio ni inhabilitado; certificación negativa del Registro Central de delincuentes sexuales si implica contacto con menores",
+   "cita": "Poseer la nacionalidad española o de algunos de los Estados miembros de la Unión Europea",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Veinte días hábiles desde el día siguiente a la publicación del anuncio de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "el plazo de presentación de solicitudes será de veinte días hábiles, contados a partir del día siguiente al de la publicación del anuncio",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Telemáticamente a través de la sede electrónica o físicamente en el Registro General del Ayuntamiento, dirigidas al Alcalde-Presidente",
+   "cita": "se presentarán, telemáticamente a través de la sede electrónica o físicamente en el Registro General del Ayuntamiento",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia de Toledo, tablón de edictos de la sede electrónica del Ayuntamiento, extracto en el Boletín Oficial del Estado",
+   "cita": "Las bases íntegras se publicarán en el Boletín Oficial de la Provincia de Toledo y en el tablón de edictos de la sede electrónica",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Concurso de méritos: valoración de méritos profesionales y académicos"
+   ],
+   "cita": "el sistema selectivo será el de concurso de méritos",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Experiencia profesional hasta 90 puntos (1 punto por mes en el Ayuntamiento convocante; 0,25 en otras Administraciones Locales; 0,15 en otras Administraciones Públicas); méritos académicos hasta 10 puntos (formación hasta 5 y titulaciones hasta 5)",
+   "cita": "Se valorarán hasta con un máximo de 10 puntos, los méritos académicos",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, para la contratación temporal de personal en necesidades urgentes e inaplazables, con vigencia indefinida",
+   "cita": "Concluido el proceso selectivo se confeccionará una bolsa de trabajo de cada puesto para la contratación",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 10,
+   "cita": "Bibliotecaria A2 1 Administrativo C1 1 Auxiliar administrativo C2 2 Técnico jardín de infancia C1 1"
+  },
+  "tasa_euros": {
+   "motivo": "valor_no_numerico",
+   "valor": {
+    "Grupo I": 20,
+    "Grupo II": 18,
+    "Grupo III y C1": 15,
+    "Grupo IV y C2": 11,
+    "Grupo V": 5
+   },
+   "cita": "Grupo III y C1. 15 euros Grupo IV y C2 1 1 euros Grupo V. 5 euros"
+  }
+ }
+}

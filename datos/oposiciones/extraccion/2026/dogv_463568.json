@@ -1,0 +1,112 @@
+{
+ "proceso": "dogv:463568",
+ "documento": {
+  "id": "dogv:463568",
+  "fuente": "DOGV",
+  "url": "https://dogv.gva.es/datos/2026/01/26/pdf/2026_2301_es.pdf",
+  "fecha": "2026-01-26",
+  "huella": "b30e80e7945ae2d7ff40e4bb099b64b0c850c59e66353ee48848219936776f25"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:42:40+00:00",
+ "lote": "msgbatch_01W17mR271uYfWYL6CuSdriL",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Cantante de coro – Soprano",
+    "Cantante de coro – Alto",
+    "Cantante de coro – Tenor",
+    "Cantante de coro – Barítono / Bajo",
+    "Técnico o técnica superior de conservación fílmica",
+    "Proyeccionista de filmoteca",
+    "Técnico o técnica de producción cultural",
+    "Auxiliar de informática",
+    "Avisador/a-Atrilero/a"
+   ],
+   "cita": "Convocar la constitución de bolsas de empleo temporal de carácter extraordinario, destinadas a la cobertura de diversos puestos de trabajo del IVC.",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "A (Técnico o técnica superior de conservación fílmica); C (Proyeccionista de filmoteca, Técnico o técnica de producción cultural); D (Auxiliar de informática, Avisador/a-Atrilero/a)",
+   "cita": "Técnico o técnica superior de conservación fílmica A Título universitario de licenciatura o grado",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Cantante de coro: título de grado en enseñanzas artísticas superiores de Música (Interpretación o Pedagogía – Canto); Técnico superior de conservación fílmica: licenciatura o grado en Comunicación Audiovisual, Bellas Artes, Historia del Arte o Conservación y Restauración de Bienes Culturales; Proyeccionista y Técnico de producción cultural: Bachiller o grado medio de FP; Auxiliar de informática y Avisador/a-Atrilero/a: graduado en ESO o equivalente",
+   "cita": "Título universitario de licenciatura o grado en Comunicación Audiovisual, Bellas Artes, Historia del Arte o Conservación y Restauración de Bienes Culturales.",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española, de estado de la UE o con libre circulación; tener 16 años y no exceder la edad de jubilación; no estar inhabilitado para funciones públicas; poseer capacidad física y psíquica; no ser ya personal laboral fijo del IVC en el grupo",
+   "cita": "Tener cumplidos dieciséis años y no exceder en su caso de la edad máxima de jubilación.",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Diez días hábiles desde el día siguiente a la publicación de la convocatoria en el DOGV",
+   "cita": "El plazo para la presentación de solicitudes será de diez días hábiles contados a partir del día siguiente al de la publicación de esta convocatoria en el Diari Oficial de la Generalitat Valenciana.",
+   "nivel": "sin_signos"
+  },
+  "presentacion": {
+   "valor": "Telemáticamente en la plataforma de empleo público del IVC (https://ivc.convoca.online), con firma digital o DNI electrónico",
+   "cita": "Quienes deseen tomar parte en esta convocatoria deberán cumplimentar telemáticamente el modelo de solicitud que estará disponible en la plataforma de empleo público del IVC.",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, para cubrir la contratación temporal de los puestos de trabajo del IVC en las categorías convocadas",
+   "cita": "Convocar la constitución de bolsas de empleo temporal de carácter extraordinario, destinadas a la cobertura de diversos puestos de trabajo del IVC.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "personal laboral temporal",
+   "cita": "Las bolsas de empleo temporal de carácter extraordinario se constituyen para la cobertura de diversos puestos de trabajo del IVC."
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "Procedimiento de selección constará de una fase de pruebas y una fase de concurso también obligatoria."
+  },
+  "tasa_euros": {
+   "motivo": "valor_no_numerico",
+   "valor": {
+    "Cantante de coro": 15,
+    "Técnico superior de conservación fílmica": 15,
+    "Proyeccionista de filmoteca": 7.5,
+    "Técnico de producción cultural": 7.5,
+    "Auxiliar de informática": 5,
+    "Avisador/a-Atrilero/a": 5
+   },
+   "cita": "Los derechos de examen serán los siguientes: Cantante de coro: 15 euros."
+  },
+  "exenciones_tasa": {
+   "motivo": "cita_no_literal",
+   "valor": "Exentos: discapacidad igual o superior al 33 %; familia numerosa o monoparental de categoría especial; víctimas de violencia sobre la mujer o en situación de exclusión social. Bonificación del 50 % a familias numerosas o monoparentales de categoría general",
+   "cita": "Están exentas del pago de la tasa: Las personas que acrediten un grado de discapacidad igual o superior al 33 %."
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Diari Oficial de la Generalitat Valenciana y plataforma de empleo público del IVC (https://ivc.convoca.online)",
+   "cita": "La publicación de la presente convocatoria se realizará en el Diari Oficial de la Generalitat Valenciana y en la plataforma de empleo público del IVC."
+  },
+  "ejercicios": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Cantante de coro: ejercicio previo de envío de vídeo (apto/no apto) y ejercicio presencial en dos partes (interpretación de obras libres; lectura a primera vista e repertorio coral)",
+    "Técnico superior de conservación fílmica: test de 60 preguntas y supuesto práctico",
+    "Proyeccionista de filmoteca: pregunta teórica desarrollada por escrito y ejercicio posterior",
+    "Técnico de producción cultural: test de 40 preguntas y supuesto práctico",
+    "Auxiliar de informática: test de 20 preguntas y prueba práctica",
+    "Avisador/a-Atrilero/a: test de 20 preguntas y supuesto práctico"
+   ],
+   "cita": "Fase de pruebas de carácter obligatorio, eliminatorio y previo a la fase de concurso."
+  },
+  "meritos": {
+   "motivo": "cita_no_literal",
+   "valor": "Experiencia profesional (máximo 25 puntos), formación (máximo 15 puntos, incluyendo titulaciones, valenciano, idiomas comunitarios y cursos) e investigación para grupos A y B (máximo 1,50 puntos)",
+   "cita": "Méritos relacionados con la experiencia profesional: máximo 25 puntos."
+  }
+ }
+}

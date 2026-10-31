@@ -1,0 +1,55 @@
+{
+ "proceso": "bophuelva:BOPHUELVA-356755",
+ "documento": {
+  "id": "bophuelva:BOPHUELVA-356755",
+  "fuente": "BOP-HUELVA",
+  "url": "https://s2.diphuelva.es/portalweb/bope/anuncios/Anuncio_356755_BOP-83_2026.pdf",
+  "fecha": "2026-05-04",
+  "huella": "12eb2afc3c91683d63304e3dcfd55c16b267138b52a0a0d4f29a6c17ba7c9f97"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:41:41+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "C2",
+   "cita": "encuadrados en el grupo C, subgrupo C2, perteneciente a la Escala de Administración General",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mediante el sistema de Concurso-Oposición libre para el Excmo. Ayuntamiento de Lepe",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 2,
+   "cita": "selección, de forma interina, de dos Monitores de Deportes de diferentes especialidades",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "diez días hábiles, a contar desde el día siguiente a la publicación del presente Anuncio en el Boletín Oficial de la Provincia de Huelva",
+   "cita": "El plazo de presentación de solicitudes será de DIEZ DÍAS HÁBILES, a contar desde el día siguiente a la publicación",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de Anuncios del Ayuntamiento de Lepe y Sede Electrónica (http:lepe.sedelectronica.es)",
+   "cita": "se publicarán de forma íntegra en el Tablón de Anuncios del Ayuntamiento de Lepe y en la Sede Electrónica",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Monitor de Deportes de diferentes especialidades"
+   ],
+   "cita": "dos Monitores de Deportes de diferentes especialidades, encuadrados en el grupo C"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario interino",
+   "cita": "la selección de forma interina, de dos Monitores de Deportes de diferentes especialidades"
+  }
+ }
+}

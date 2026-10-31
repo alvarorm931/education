@@ -1,0 +1,48 @@
+{
+ "proceso": "bopb:BOPB-202510101054",
+ "documento": {
+  "id": "dogc:1016252",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1016252",
+  "fecha": "2025-06-10",
+  "huella": "e8bbd9c4207913e5d1f38fc1f5be8faed32597f18bfbb08eb6ed1ba68a546663"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:45:24+00:00",
+ "lote": "msgbatch_016re6aGcimwSVmdrWa6qBd9",
+ "no_son_bases": false,
+ "campos": {
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mitjançant concurs oposició d'accés lliure per via ordinària",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días naturales contados a partir del día siguiente a la publicación en el Diari Oficial de la Generalitat de Catalunya",
+   "cita": "serà de vint dies naturals comptats a partir de l'endemà d'aquesta publicació al Diari Oficial",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "taulell d'anuncis de la Corporació, Oficines d'Atenció ciutadana, centres cívics, telèfon 010 i web www.mataro.cat",
+   "cita": "es pot consultar al taulell d'anuncis de la Corporació, a les Oficines d'Atenció ciutadana",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Conserge (AP)",
+   "cita": "para cubrir 10 places de Conserge (AP), mitjançant concurs oposició d'accés lliure per via ordinària"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 10,
+   "cita": "para cubrir 10 places de Conserge (AP), mitjançant concurs oposició d'accés lliure"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 10,
+   "cita": "mitjançant concurs oposició d'accés lliure per via ordinària"
+  }
+ }
+}

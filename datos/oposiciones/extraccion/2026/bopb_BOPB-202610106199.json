@@ -1,17 +1,22 @@
 {
  "proceso": "bopb:BOPB-202610106199",
  "documento": {
-  "id": "bopb:BOPB-202610106199",
-  "fuente": "BOPB",
-  "url": "https://bop.diba.cat/anunci/3956625/aprovacio-de-les-bases-i-de-la-convocatoria-del-proces-de-seleccio-mitjancant-el-sistema-de-concurs-per-a-cobrir-un-lloc-de-treball-temporal-d-administratiu-iva-per-raons-d-urgencia-i-necessitat-ajuntament-de-font-rubi",
-  "fecha": "2026-06-15",
-  "huella": "37096ec2d1aafc764ecb168e781f63328d102bebbd3bb7ec24f1a9d063309b76"
+  "id": "dogc:1047406",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1047406",
+  "fecha": "2026-06-17",
+  "huella": "527a145e66346cee0f4d6ebd8728f9e05a5a5f8bd7e993b07d9583476ccd552d"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T08:18:16+00:00",
- "lote": "msgbatch_01BrnYw6KkevFx7at547B5g8",
+ "extraido": "2026-10-31T14:41:59+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
  "no_son_bases": false,
  "campos": {
+  "vinculo": {
+   "valor": "funcionario interino",
+   "cita": "amb caràcter d'interinitat per substitució transitòria de la titular de la plaça",
+   "nivel": "literal"
+  },
   "sistema": {
    "valor": "concurso-oposición",
    "cita": "Fase de concurs de mèrits (puntuació màxima 50 punts)",
@@ -19,75 +24,69 @@
   },
   "plazas_total": {
    "valor": 1,
-   "cita": "cobrir un lloc de treball temporal d'administratiu/va per raons d'urgència i necessitat",
+   "cita": "la cobertura d'una plaça vacant de la plantilla de personal funcionari",
    "nivel": "literal"
   },
   "titulacion": {
    "valor": "Batxillerat o títol de tècnic/a de Formació professional de grau mig o titulació equivalent",
-   "cita": "Estar en possessió de la titulació de batxillerat o títol de tècnic/a de Formació professional de grau mig",
+   "cita": "Estar en possessió de la titulació de batxillerat o títol de tècnic/a de Formació professional de grau mig o titulació equivalent",
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Nacionalitat espanyola (sense perjudici de l'article 57 TREBEP); capacitat funcional; tenir complerts setze anys i no superar l'edat màxima de jubilació forçosa; no haver estat separat del servei de cap administració pública ni inhabilitat",
+   "valor": "Nacionalitat espanyola (o, si no, acreditar coneixements de castellà); capacitat funcional; tenir setze anys complerts i no superar l'edat de jubilació forçosa; no haver estat separat del servei de cap administració pública ni inhabilitat.",
    "cita": "Tenir la nacionalitat espanyola, sense perjudici del que es disposa en l'article 57",
    "nivel": "literal"
   },
   "idioma_cooficial": {
-   "valor": "Català, nivell C1 (certificat de suficiència de llengua catalana oral i escrita o equivalent)",
-   "cita": "Posseir el certificat de coneixements de nivell de suficiència de llengua catalana orals i escrits",
+   "valor": "Català, nivell C1 (suficiència oral i escrita), o titulació equivalent; en cas de no acreditar-lo, prova corresponent",
+   "cita": "Posseir el certificat de coneixements de nivell de suficiència de llengua catalana orals i escrits (certificat nivell C1 de català)",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "10 dies hàbils a comptar a partir de l'endemà de la publicació de la convocatòria en el DOGC",
+   "cita": "en el termini de 10 dies hàbils a comptar a partir de l'endemà al de la publicació de la convocatòria en el Diari Oficial",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Tràmit online a la seu electrònica municipal (instància genèrica); també Registre General, Correus o altres mitjans de l'article 16.4 Llei 39/2015 amb còpia per correu electrònic",
+   "cita": "La presentació de sol·licituds es farà mitjançant el tràmit online, amb presentació de instància genèrica a la seu electrònica municipal",
    "nivel": "literal"
   },
   "publicaciones": {
    "valor": "Tauler d'anuncis i seu electrònica de la Corporació",
-   "cita": "es farà pública en el tauler d'anuncis i a la seu electrònica de la Corporació",
+   "cita": "que es farà pública en el tauler d'anuncis i a la seu electrònica de la Corporació",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Fase de concurs de mèrits (màxim 50 punts)",
-    "Entrevista d'aptitud professional i personal (màxim 10 punts)"
+    "Concurs de mèrits: experiència professional (fins a 30 punts)",
+    "Formació reglada i complementària (fins a 10 punts)",
+    "Entrevista d'aptitud professional i personal (fins a 10 punts)"
    ],
-   "cita": "Fase de concurs de mèrits (puntuació màxima 50 punts)",
-   "nivel": "literal"
-  },
-  "meritos": {
-   "valor": "Experiència professional (màx. 30 p.); formació reglada (màx. 3 p.) i complementària (màx. 7 p.), per cursos, titulacions i certificats ACTIC o SeTDIBA",
    "cita": "Es realitzarà una entrevista d'aptitud professional i personal de cadascú dels aspirants que hagin estat admesos",
    "nivel": "literal"
   },
+  "meritos": {
+   "valor": "Experiència professional fins a 30 punts (1 punt/mes en serveis similars vinculats al servei municipal d'aigua); formació fins a 10 punts; entrevista fins a 10 punts; total concurs 50 punts",
+   "cita": "Fase de concurs de mèrits (puntuació màxima 50 punts). Els mèrits es valoraran d'acord amb la data de finalització",
+   "nivel": "literal"
+  },
   "bolsa": {
-   "valor": "sí, per cobrir necessitats de personal no permanent, vigència màxima de 3 anys",
+   "valor": "Sí, borsa de treball per cobrir necessitats de personal no permanent, vigència màxima 3 anys",
    "cita": "Les persones aspirants que hagin superat el procés de selecció i que no hagin obtingut plaça passaran a formar part d'una borsa de treball",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Període de prova d'1 mes en el lloc de treball, supervisat per la secretària interventora",
+   "cita": "El període de prova serà d'1 mes en el lloc de treball d'adscripció",
    "nivel": "literal"
   }
  },
  "rechazados": {
   "denominacion": {
    "motivo": "cita_no_literal",
-   "valor": [
-    "Administratiu/va de Serveis generals – secretaria (codi SSGG03)"
-   ],
-   "cita": "Administratiu/va de Serveis generals – secretaria, codi SSGG03"
-  },
-  "vinculo": {
-   "motivo": "cita_no_literal",
-   "valor": "funcionario interino",
-   "cita": "cobrir una plaça vacant de la plantilla de personal funcionari d'aquesta Corporació, amb caràcter d'interinitat"
-  },
-  "plazo_solicitudes": {
-   "motivo": "cita_no_literal",
-   "valor": "10 dies hàbils a comptar a partir de l'endemà de la publicació de la convocatòria en el DOGC",
-   "cita": "en el termini de 10 dies hàbils a comptar a partir de l'endemà al de la publicació de la convocatòria en el Diari Oficial"
-  },
-  "presentacion": {
-   "motivo": "cita_no_literal",
-   "valor": "Tràmit online a la seu electrònica municipal (instància genèrica); també Registre General de l'Ajuntament, Correus o altres modalitats de l'art. 16.4 Llei 39/2015",
-   "cita": "La presentació de sol·licituds es farà mitjançant el tràmit online, amb presentació de instància genèrica a la seu electrònica municipal"
-  },
-  "practicas_o_curso": {
-   "motivo": "cita_no_literal",
-   "valor": "Període de prova d'1 mes en el lloc de treball d'adscripció",
-   "cita": "El període de prova serà d'1 mes en el lloc de treball d'adscripció"
+   "valor": "Administratiu/va de Serveis generals – secretaria, codi SSGG03",
+   "cita": "Administratiu/va de Serveis generals – secretaria, codi SSGG03, la qual està dotada amb una retribució de 1.715,10 euros bruts mensuals"
   }
  }
 }

@@ -1,0 +1,101 @@
+{
+ "proceso": "dogv:461803",
+ "documento": {
+  "id": "dogv:461803",
+  "fuente": "DOGV",
+  "url": "https://dogv.gva.es/datos/2026/01/14/pdf/2026_536_es.pdf",
+  "fecha": "2026-01-14",
+  "huella": "cfe8fc7d9877e794be579585abd39e68067aa32ae24e5d9a6b25c0f600bd264f"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:42:14+00:00",
+ "lote": "msgbatch_01W17mR271uYfWYL6CuSdriL",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "profesor titular de universidad",
+   "cita": "Categoría: profesor titular de universidad",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "Tipo de concurso: concurso de acceso de turno libre",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "convocar una plaza por el sistema de concurso de acceso de turno libre al cuerpo de profesores titulares de universidad",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Título de doctor o doctora",
+   "cita": "Poseer el título de doctor o doctora.",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española o de Estados de libre circulación de trabajadores; tener 16 años cumplidos y no haber alcanzado la edad de jubilación; no haber sido separado del servicio por expediente disciplinario; capacidad funcional; acreditación para profesor titular de universidad (Real decreto 678/2023) y evaluación I3 o certificado R3",
+   "cita": "Para poder participar en este concurso se precisarán los siguientes requisitos generales",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 30,
+   "cita": "el sistema le llevará directamente al pago telemático de 30 euros en concepto de derechos de participación",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Bonificación del 50 % para familias numerosas y monoparentales de categoría general; exención total para discapacidad igual o superior al 33 %, familias numerosas de categoría especial, familias monoparentales de categoría especial y víctimas de violencia sobre la mujer",
+   "cita": "Estarán exentas del pago de la tasa las personas que acrediten una discapacidad en grado igual o superior al 33%",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "diez días hábiles a partir del día siguiente a la publicación de esta convocatoria en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes será de diez días hábiles a partir del día siguiente a la publicación de esta convocatoria en el Boletín Oficial del Estado",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Exclusivamente por vía electrónica, mediante el formulario «Selección PDI-Funcionario» en la Sede electrónica de la Universidad Miguel Hernández de Elche",
+   "cita": "Las solicitudes se cumplimentarán y presentarán exclusivamente por vía electrónica",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Universidad Miguel Hernández de Elche (BOUMH), web de la Universidad, BOE y DOGV (nombramientos)",
+   "cita": "Dicha lista se hará pública en el Boletín Oficial de la Universidad Miguel Hernández de Elche (BOUMH)",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Primera prueba: exposición oral pública del historial académico, docente e investigador y de los proyectos docente e investigador, de hasta 90 minutos, seguida de debate",
+    "Segunda prueba: exposición oral pública de un tema elegido por la comisión de entre al menos tres del proyecto docente, de 45 minutos a hora y media, seguida de debate"
+   ],
+   "cita": "La primera prueba será pública y consistirá en la exposición oral por el concursante, durante un tiempo máximo de 90 minutos",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Primera prueba de hasta 100 puntos: 70 por méritos (actividad investigadora 30-35, actividad y proyecto docente 30-35, gestión y otros méritos 10) y 30 por adecuación a las necesidades de la Universidad",
+   "cita": "cada aspirante podrá obtener un máximo de 100 puntos, de los cuales 70 corresponderán a los méritos aportados y 30",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí: lista de reserva con el candidato Felip Riera Palou (TU Universidad de las Islas Baleares)",
+   "cita": "Lista de reserva 1. Felip Riera Palou – TU Universidad de las Islas Baleares",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "La plaza obtenida deberá desempeñarse durante dos años, al menos, antes de poder participar en un nuevo concurso para obtener una plaza en otra universidad",
+   "cita": "La plaza obtenida tras el concurso de acceso deberá desempeñarse durante dos años, al menos",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "Se convoca una plaza por el sistema de concurso de acceso de turno libre al cuerpo de profesores titulares de universidad"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "Tipo de concurso: concurso de acceso de turno libre"
+  }
+ }
+}

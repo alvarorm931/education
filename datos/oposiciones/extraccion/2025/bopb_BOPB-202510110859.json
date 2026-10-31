@@ -1,0 +1,54 @@
+{
+ "proceso": "bopb:BOPB-202510110859",
+ "documento": {
+  "id": "dogc:1017275",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1017275",
+  "fecha": "2025-06-19",
+  "huella": "512fbfd5338014d131d77f9cfc6353f155070d8aebbfd0d5d82349bb889f29c8"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:45:05+00:00",
+ "lote": "msgbatch_016re6aGcimwSVmdrWa6qBd9",
+ "no_son_bases": false,
+ "campos": {
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "pel sistema de concurs oposició lliure, per a la cobertura definitiva",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles, contados desde el día siguiente a la última de las publicaciones",
+   "cita": "El termini improrrogable per presentar les sol·licituds és de 20 dies hàbils, comptats a partir del dia següent de la darrera de les publicacions.",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Província de Barcelona; las posteriores publicaciones se harán en la página web municipal",
+   "cita": "Les posteriors publicacions es faran a la pàgina web municipal.",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, se constituyen bolsas de trabajo",
+   "cita": "i constitució de borses de treball, aprovat per la Junta de Govern Local",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "OFICIAL",
+    "OFICIAL PINTOR",
+    "OFICIAL ELECTRICISTA",
+    "AJUDANT/PEÓ PALETA",
+    "OPERARI DE MANTENIMENT"
+   ],
+   "cita": "una plaça d'OFICIAL, ID 62, una plaça d'OFICIAL PINTOR, ID 64, una plaça d'OFICIAL ELECTRICISTA, ID 68"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 6,
+   "cita": "una plaça d'OFICIAL, ID 62, una plaça d'OFICIAL PINTOR, ID 64, una plaça d'OFICIAL ELECTRICISTA, ID 68"
+  }
+ }
+}

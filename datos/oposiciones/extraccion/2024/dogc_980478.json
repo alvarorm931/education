@@ -1,0 +1,75 @@
+{
+ "proceso": "dogc:980478",
+ "documento": {
+  "id": "dogc:980478",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=980478",
+  "fecha": "2024-03-11",
+  "huella": "bbab53ca2d77aea593bc419b3462e97043062392da4afe285109b97583e52f30"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:53:51+00:00",
+ "lote": "msgbatch_01EQ4R6PVKpEwTXzXwPCmspm",
+ "no_son_bases": false,
+ "campos": {
+  "plazo_solicitudes": {
+   "valor": "15 días hábiles, contados desde las 9 h del primer día hábil siguiente al de la publicación en el DOGC",
+   "cita": "El plazo para presentar las solicitudes y la documentación que las acompaña es de 15 días hábiles",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Formulario electrónico a través de Canal Empresa o el apartado Trámites de la web de la Generalitat; no se admiten otros formularios",
+   "cita": "El formulario de solicitud se deberá obtener y presentar electrónicamente a través del portal corporativo",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Evaluación de solicitudes mediante valoración de proyecto de gestión según criterios de anexos 2, 3 y 4 (máximo 50 puntos)"
+   ],
+   "cita": "los criterios de provisión que se aplicarán para asignar el servicio, con un máximo de 50 puntos",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Proyecto de gestión valorado con máximo 50 puntos; mínimo 30 puntos (60%) para obtener la provisión",
+   "cita": "La entidad debe obtener el 60% de esta puntuación máxima, es decir, 30 puntos como mínimo.",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "no",
+   "cita": "Contra la resolución, que agota la vía administrativa, se puede interponer un recurso potestativo de reposición",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "no aplica",
+   "cita": "La provisión de los servicios en régimen de concierto social tiene una vigencia inicial de cuatro años",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Unidad integrada de atención a niños y adolescentes víctimas de abusos sexuales (Barnahus)",
+    "Servicio de centro residencial de acción educativa (CRAE)",
+    "Servicio de residencia o pisos para jóvenes vinculados a programas de inserción laboral (PIL)",
+    "Servicio de protección de emergencia para jóvenes migrantes solos (SPE)"
+   ],
+   "cita": "la provisión de plazas para el año 2024 unidad integrada de atención a niños"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concierto social",
+   "cita": "la provisión de servicios en régimen de concierto social tiene una vigencia inicial de cuatro años"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 59,
+   "cita": "Servicio de residencia o pisos para jóvenes vinculados a programas de inserción laboral"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Tablón electrónico de la Generalitat de Catalunya (tauler.gencat.cat) y notificación individual en el Área privada de Canal Empresa",
+   "cita": "la resolución se notificará individualmente a las entidades interesadas y se publicará adicionalmente en el Tablón electrónico"
+  }
+ }
+}

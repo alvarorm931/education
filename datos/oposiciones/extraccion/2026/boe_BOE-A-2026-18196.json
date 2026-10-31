@@ -1,57 +1,50 @@
 {
  "proceso": "boe:BOE-A-2026-18196",
  "documento": {
-  "id": "boc:BOC-A-2026-166-2992",
-  "fuente": "BOC",
-  "url": "https://www.gobiernodecanarias.org/boc/2026/166/2992.html",
-  "fecha": "2026-08-19",
-  "huella": "324a884dc1412c1910845b3a606df66f433bc8b129c178ea1f24ac51c3caa2b6"
+  "id": "boplaspalmas:BOPLASPALMAS-2026-08-12-013",
+  "fuente": "BOP-LASPALMAS",
+  "url": null,
+  "fecha": "2026-08-12",
+  "huella": "6a6b8dc9368459e7628d5cb19a5bb6d146182ee93411b063fd4b0e6353e57d97"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T07:39:57+00:00",
- "lote": "msgbatch_013q7o24qMms8ZNZdwMNkW1L",
+ "extraido": "2026-10-31T14:41:38+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
  "no_son_bases": false,
  "campos": {
-  "denominacion": {
-   "valor": [
-    "Policía Local (escala básica, empleo de policía)"
-   ],
-   "cita": "para la provisión de 4 plazas de policía local del Ilustre Ayuntamiento de la Villa de Ingenio",
-   "nivel": "literal"
-  },
   "grupo": {
    "valor": "C1",
-   "cita": "encuadradas en el Grupo C, Subgrupo C1, perteneciente a la Escala de la Administración Especial",
+   "cita": "encuadrada en el Grupo C, Subgrupo C1, perteneciente a la Escala de la Administración Especial",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "selección de personal para su nombramiento como funcionario/a de carrera",
    "nivel": "literal"
   },
   "sistema": {
    "valor": "oposición",
-   "cita": "mediante turno libre y por el sistema de oposición, para cubrir cuatro (4) plazas",
+   "cita": "por el turno libre y mediante el sistema de oposición",
    "nivel": "literal"
   },
   "plazas_total": {
    "valor": 4,
-   "cita": "Convocar proceso selectivo para cubrir en propiedad cuatro (4) plazas de policía local",
-   "nivel": "literal"
-  },
-  "plazas_turno_libre": {
-   "valor": 4,
-   "cita": "Convocar proceso selectivo para cubrir en propiedad cuatro (4) plazas de policía local",
+   "cita": "convocar proceso selectivo para cubrir en propiedad CUATRO (4) plazas de policía local",
    "nivel": "literal"
   },
   "titulacion": {
-   "valor": "Bachiller, Formación Profesional de 2.º Grado o equivalente",
-   "cita": "Estar en posesión del título de Bachiller, Formación Profesional de 2.º Grado o equivalente.",
+   "valor": "Bachiller, Formación Profesional de 2º Grado o equivalente",
+   "cita": "Estar en posesión del título de Bachiller, Formación Profesional de 2º Grado o equivalente",
    "nivel": "literal"
   },
   "tasa_euros": {
    "valor": 36,
-   "cita": "La tasa por derechos de examen es de treinta y seis (36,00) euros",
+   "cita": "La tasa por derechos de examen es de treinta y seis euros (36,00 euros)",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "20 días hábiles desde el siguiente a la publicación del extracto en el BOE",
-   "cita": "plazo de veinte (20) días hábiles contados a partir del siguiente a la publicación del extracto de la convocatoria en el Boletín Oficial de Estado",
+   "valor": "veinte días hábiles contados desde el siguiente a la publicación del extracto en el Boletín Oficial del Estado",
+   "cita": "plazo de VEINTE (20) DÍAS HÁBILES contados a partir del siguiente a la publicación del extracto",
    "nivel": "literal"
   },
   "presentacion": {
@@ -60,55 +53,59 @@
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "BOP Las Palmas, tablón de anuncios del Ayuntamiento, web municipal www.ingenio.es y plataforma Convoca",
-   "cita": "Se publicará en la página web del Ayuntamiento de la Villa de Ingenio, dentro del apartado creado al efecto",
+   "valor": "Boletín Oficial de la Provincia de Las Palmas, tablón de anuncios del Ayuntamiento, web municipal ingenio.es/oposiciones y plataforma Convoca",
+   "cita": "El texto íntegro de estas Bases se hará público en el Boletín Oficial de la Provincia",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Pruebas físicas (salto horizontal, flexión de brazos o flexión mantenida, Test de Cooper, 50 m estilo libre)",
+    "Pruebas físicas: salto horizontal, flexiones o flexión mantenida, Test de Cooper y natación 50 metros",
     "Pruebas psicotécnicas",
     "Pruebas de conocimiento e idiomas",
-    "Reconocimiento médico"
+    "Reconocimiento médico",
+    "Curso selectivo de formación",
+    "Fase de prácticas"
    ],
-   "cita": "La fase de oposición constará de las siguientes pruebas, en el siguiente orden: a) pruebas físicas; b) pruebas psicotécnicas",
+   "cita": "La fase de oposición constará de las siguientes pruebas, en el siguiente orden: a) pruebas físicas, b) pruebas psicotécnicas",
    "nivel": "literal"
   },
   "temas": {
    "valor": 25,
-   "cita": "Tema 25. Ordenanzas del municipio de Ingenio relativas al espacio público y a la convivencia.",
-   "nivel": "literal"
-  },
-  "meritos": {
-   "valor": "No se valoran méritos en concurso; el proceso es de oposición",
-   "cita": "Sistema selectivo. La selección se llevará a cabo mediante el sistema de oposición libre",
+   "cita": "Tema 25. Ordenanzas del municipio de Ingenio relativas al espacio público y a la convivencia",
    "nivel": "literal"
   },
   "bolsa": {
    "valor": "no",
-   "cita": "No podrá declararse superado en el presente proceso selectivo un número de aspirantes superior al de las plazas convocadas",
+   "cita": "Los/as aspirantes que resulten seleccionados/as para ocupar la plaza quedarán sometidos/as desde el momento de su toma de posesión",
    "nivel": "literal"
   },
   "practicas_o_curso": {
-   "valor": "Curso selectivo de formación y periodo de prácticas tras superar la oposición",
+   "valor": "Curso selectivo de formación y fase de prácticas tras superar la oposición",
    "cita": "Segunda fase: curso selectivo de formación. Tercera fase: de prácticas.",
    "nivel": "sin_signos"
   }
  },
  "rechazados": {
-  "vinculo": {
+  "denominacion": {
    "motivo": "cita_no_literal",
-   "valor": "funcionario de carrera",
-   "cita": "para nombramiento como funcionario/a de carrera, mediante turno libre y por el sistema de oposición"
+   "valor": [
+    "Policía Local (Escala Básica, Empleo de Policía)"
+   ],
+   "cita": "convocan cuatro plazas de policía local (escala básica, empleo de policía)"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 4,
+   "cita": "por el turno libre y mediante el sistema de oposición"
   },
   "otros_requisitos": {
    "motivo": "cita_no_literal",
-   "valor": "Nacionalidad española; mayoría de edad y no exceder la edad para pase a segunda actividad; no separación disciplinaria del servicio público; carecer de antecedentes penales; permiso de conducción A2 y B; condiciones físicas acreditadas por certificado médico oficial",
+   "valor": "Nacionalidad española; mayoría de edad y no exceder la edad para segunda actividad; permiso de conducción A2 y B; condiciones físicas acreditadas con certificado médico; carecer de antecedentes penales; no haber sido separado del servicio público",
    "cita": "Tener la nacionalidad española. Ser mayor de edad y no exceder de la edad establecida para el pase a la situación de segunda actividad"
   },
   "exenciones_tasa": {
    "motivo": "cita_no_literal",
-   "valor": "Exentas las personas demandantes de empleo con al menos un mes de antelación, sin rechazar ofertas adecuadas y con rentas inferiores al SMI, acreditado con certificados del SEPE",
+   "valor": "Exentas las personas demandantes de empleo durante al menos un mes antes de la apertura del plazo, sin rechazar ofertas adecuadas y con rentas inferiores al SMI, acreditado con certificados del SEPE",
    "cita": "estarán exentas del abono de dicha tasa: Las personas aspirantes que figurasen como demandantes de empleo"
   }
  }

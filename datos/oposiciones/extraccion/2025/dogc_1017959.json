@@ -1,0 +1,50 @@
+{
+ "proceso": "dogc:1017959",
+ "documento": {
+  "id": "dogc:1017959",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1017959",
+  "fecha": "2025-06-27",
+  "huella": "d9fa950051607059b1c1ca6703ebf1d2994bec4609fb17e4e48e72a0059defa0"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:45:17+00:00",
+ "lote": "msgbatch_016re6aGcimwSVmdrWa6qBd9",
+ "no_son_bases": false,
+ "campos": {
+  "sistema": {
+   "valor": "oposición",
+   "cita": "pel sistema de oposició lliure de cinc a vuit places vacants",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 8,
+   "cita": "ampliar d'aquesta manera de vuit les places convocades",
+   "nivel": "literal"
+  },
+  "plazas_turno_libre": {
+   "valor": 8,
+   "cita": "pel sistema de oposició lliure de cinc a vuit places vacants",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Seu electrònica de la Corporació (https://cornella.convoca.online/, apartat Oferta Pública d'Ocupació), BOPB, DOGC y BOE",
+   "cita": "Publicar a la seu electrònica de la Corporació: https://cornella.convoca.online/ a l'apartat d'Oferta Pública",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Agent de la policia municipal, escala d'administració especial, subescala de serveis especials, classe policia local, escala bàsica"
+   ],
+   "cita": "Agent de la policia municipal, de l'escala d'administració especial, subescala de serveis especials, classe policia local, escala bàsica"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "Agent de la policia municipal, de l'escala d'administració especial, subescala de serveis especials"
+  }
+ }
+}

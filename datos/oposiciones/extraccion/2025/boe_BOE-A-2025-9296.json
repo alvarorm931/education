@@ -1,0 +1,90 @@
+{
+ "proceso": "boe:BOE-A-2025-9296",
+ "documento": {
+  "id": "boe:BOE-A-2025-9296",
+  "fuente": "BOE",
+  "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2025-9296",
+  "fecha": "2025-05-13",
+  "huella": "932735a2b85eb5fd1889b652f61649dbb5ed96e28ca58bc05db54062e2f40abf"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:46:13+00:00",
+ "lote": "msgbatch_017vJZdAmjTkBDdH14aLEdCv",
+ "no_son_bases": false,
+ "campos": {
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "El sistema de selección a emplear en los distintos procesos que se convocan será el de concurso-oposición",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 148,
+   "cita": "Ofertar ciento cuarenta y ocho (148) plazas (54 para las escalas de oficiales, 57 para las escalas técnicas y 37 para militar de complemento)",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Exención o reducción para demandantes de empleo sin rentas superiores al SMI; familias numerosas (exención 100 % categoría especial, 50 % general); víctimas del terrorismo",
+   "cita": "Tendrán derecho a la reducción o estarán exentos de pago de la tasa de derechos de examen",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "15 días hábiles desde el día siguiente a la publicación en el BOE",
+   "cita": "será de quince (15) días hábiles contados a partir del día siguiente al de la publicación de esta resolución en el Boletín Oficial del Estado",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Página web de reclutamiento del Ministerio de Defensa (reclutamiento.defensa.gob.es), con efectos de notificación oficial",
+   "cita": "publicará –con efectos de notificación oficial– en la página web de reclutamiento del Ministerio de Defensa",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "no",
+   "cita": "Se constituirá un Tribunal Médico Militar de Apelación con la finalidad de resolver las revisiones",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Escala de oficiales de los Cuerpos de Ingenieros",
+    "Escala técnica de los Cuerpos de Ingenieros"
+   ],
+   "cita": "Procesos de selección para el ingreso en los centros docentes militares de formación para la incorporación como militar de carrera o adscripción como militar de complemento a las escalas de oficiales"
+  },
+  "otros_requisitos": {
+   "motivo": "cita_no_literal",
+   "valor": "Nacionalidad española; edad máxima de 30 años para ingreso directo como militar de complemento (sin límite en las demás formas); no haber sido separado del servicio público; carecer de inserciones o tatuajes contrarios a valores constitucionales; certificado médico oficial para pruebas físicas",
+   "cita": "Poseer la nacionalidad española. No cumplir ni haber cumplido en el año 2025 las siguientes edades máximas"
+  },
+  "tasa_euros": {
+   "motivo": "valor_no_numerico",
+   "valor": "Ver importe en plataforma de inscripción IPS (modelo 790); no consta importe en el texto",
+   "cita": "El importe de las tasas para cada proceso de selección es el que figura en la plataforma de inscripción"
+  },
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Sede electrónica del Ministerio de Defensa (sede.defensa.gob.es); presencial en oficinas de registro, Subdelegaciones de Defensa u Oficinas Delegadas",
+   "cita": "Solicitud de admisión: se cursarán directamente sobre la página web https://sede.defensa.gob.es/acceda"
+  },
+  "ejercicios": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Prueba de lengua inglesa (si no se posee perfil lingüístico, para la forma de ingreso directo)",
+    "Pruebas físicas: potencia de tren inferior, potencia de tren superior, velocidad, resistencia, soltura acuática y agilidad",
+    "Fase de concurso: valoración de méritos"
+   ],
+   "cita": "Pruebas físicas: Potencia de tren inferior, Potencia de tren superior, Velocidad (carrera de 50 metros), Resistencia (carrera de 1000 metros), Soltura acuática (50 metros) y Agilidad"
+  },
+  "meritos": {
+   "motivo": "cita_no_literal",
+   "valor": "Fase de concurso: méritos militares (SIPERDEF), académicos (certificación académica oficial, con coeficiente 1,8 para titulación requerida) e idiomas (perfil de inglés)",
+   "cita": "Méritos a valorar en la fase de concurso: méritos militares, méritos académicos y perfil de idiomas"
+  },
+  "practicas_o_curso": {
+   "motivo": "cita_no_literal",
+   "valor": "no consta",
+   "cita": "Los procesos de selección concluirán en la fecha de presentación, en los centros docentes militares de formación, de las personas propuestas como alumnos y alumnas"
+  }
+ }
+}

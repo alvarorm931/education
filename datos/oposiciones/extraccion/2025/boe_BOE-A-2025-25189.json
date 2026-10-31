@@ -1,0 +1,66 @@
+{
+ "proceso": "boe:BOE-A-2025-25189",
+ "documento": {
+  "id": "bocm:BOCM-20251120-77",
+  "fuente": "BOCM",
+  "url": "https://www.bocm.es/bocm-20251120-77",
+  "fecha": "2025-11-20",
+  "huella": "fd5e73c18856cb72dc4afa8ae6b4daf20b782af16d00ae1c8389aab15f923c78"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:41:24+00:00",
+ "lote": "msgbatch_01UNq3BNhPPHoTK3TEJzun1h",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Administrativo/a de Administración General (promoción interna, funcionario/a de carrera)",
+    "Administrativo/a de Administración General (turno libre, personal laboral fijo)"
+   ],
+   "cita": "Administrativo/a de Administración General, Funcionario/a de Carrera, Grupo C, Subgrupo C1",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C1",
+   "cita": "Grupo C, Subgrupo C1, sistema concurso-oposición, una plaza",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "Promoción interna, Administrativo/a de Administración General, Funcionario/a de Carrera",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "Grupo C, Subgrupo C1, sistema concurso-oposición, una plaza",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles a contar del siguiente al de la fecha de publicación de las convocatorias en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de instancias será de veinte días hábiles a contar del siguiente al de la fecha",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Sede electrónica del Ayuntamiento de La Serna del Monte, tablón de anuncios (https://lasernadelmonte.sedelectronica.es/)",
+   "cita": "El texto íntegro de la Resolución y las Bases, se publicará en la sede electrónica del Ayuntamiento",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 2,
+   "cita": "ambas correspondientes a la Oferta de Empleo Público de 2025"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "Sistema General turno libre, Administrativo/a de Administración General, Laboral Fijo"
+  },
+  "plazas_promocion_interna": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "Promoción interna, Administrativo/a de Administración General, Funcionario/a de Carrera"
+  }
+ }
+}

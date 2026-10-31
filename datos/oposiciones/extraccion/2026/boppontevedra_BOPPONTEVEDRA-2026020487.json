@@ -1,0 +1,55 @@
+{
+ "proceso": "boppontevedra:BOPPONTEVEDRA-2026020487",
+ "documento": {
+  "id": "boppontevedra:BOPPONTEVEDRA-2026020487",
+  "fuente": "BOP-PONTEVEDRA",
+  "url": "https://boppo.depo.gal/web/boppo/detalle/-/boppo/2026/03/23/2026020487",
+  "fecha": "2026-03-23",
+  "huella": "773622a30628761a68364d0dfe1755ff61190df3f4c2a763948918a7226aef7a"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:40:23+00:00",
+ "lote": "msgbatch_01E3wiYcGL8Lzho48bXWLyyb",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Administrativo/a"
+   ],
+   "cita": "para a cobertura dunha praza de Administrativo/a do Concello de Cuntis",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C1",
+   "cita": "Convocatoria e bases reguladoras do procedemento de selección",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mediante o sistema de concurso-oposición, de persoal funcionario de carreira",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "vinte (20) días naturais, contados desde o seguinte ao da publicación do anuncio da convocatoria no BOE",
+   "cita": "O prazo de presentación de solicitudes será de vinte (20) días naturais, contados desde o seguinte",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "taboleiro de edictos da sede electrónica municipal e taboleiro de edictos da Casa Consistorial",
+   "cita": "As bases íntegras publicaranse no taboleiro de edictos da sede electrónica municipal",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "selección de persoal funcionario de carreira para a cobertura dunha praza"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "para a cobertura dunha praza de Administrativo/a do Concello de Cuntis"
+  }
+ }
+}

@@ -1,118 +1,63 @@
 {
  "proceso": "bopb:BOPB-202610132312",
  "documento": {
-  "id": "bopb:BOPB-202610132312",
-  "fuente": "BOPB",
-  "url": "https://bop.diba.cat/anunci/3981557/bases-reguladores-i-convocatoria-del-proces-de-seleccio-per-a-la-cobertura-d-una-placa-d-oficial-primera-de-lampista-i-serveis-multiples-en-regim-de-personal-laboral-fix-i-la-creacio-d-una-borsa-de-treball-ajuntament-de-sant-pol-de-mar",
-  "fecha": "2026-08-11",
-  "huella": "890e63b56eca56c200ac07b33e9aaf22752fe09d936ced3ec0c42fe9d50e5813"
+  "id": "dogc:1052536",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1052536",
+  "fecha": "2026-08-13",
+  "huella": "79af9f74488c5eb2aad49d1b45fba796b02fc66f8459cb8c7f8fd1aa5f6415bf"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T08:03:37+00:00",
- "lote": "msgbatch_013xFoLdqcGqWcqkzh7qrdGg",
+ "extraido": "2026-10-31T14:42:02+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
  "no_son_bases": false,
  "campos": {
+  "grupo": {
+   "valor": "C2",
+   "cita": "assimilat a grup de classificació C2, vacant a la plantilla de personal laboral",
+   "nivel": "literal"
+  },
   "vinculo": {
    "valor": "personal laboral fijo",
-   "cita": "en règim personal laboral fix",
+   "cita": "en règim de personal laboral fix, assimilat a grup de classificació C2",
    "nivel": "literal"
   },
   "sistema": {
    "valor": "concurso-oposición",
-   "cita": "mitjançant concurs oposició, torn lliure",
+   "cita": "mitjançant el sistema de concurs oposició, torn lliure, i la creació d'una borsa de treball",
    "nivel": "literal"
   },
   "plazas_total": {
    "valor": 1,
-   "cita": "Nombre de places: 1",
+   "cita": "per a la cobertura d'una plaça d'oficial primera de lampista",
    "nivel": "literal"
   },
-  "titulacion": {
-   "valor": "Graduado en ESO, graduado escolar, técnico de grado medio o equivalente, más título habilitante profesionalmente",
-   "cita": "Estar en possessió del títol de graduat/ada en educació secundària, graduat/ada escolar",
-   "nivel": "literal"
-  },
-  "otros_requisitos": {
-   "valor": "Nacionalidad española o de la UE (con excepciones); 16 años y no superar edad de jubilación; carné de instalador autorizado de electricista o titulación equivalente; carné de conducir clase B; capacidad funcional; no condena ni inhabilitación",
-   "cita": "Estar en possessió del carnet d'instal·lador autoritzat per oficial Electricista o disposar de la titulació legal corresponent",
-   "nivel": "literal"
-  },
-  "exenciones_tasa": {
-   "valor": "Exentos quienes ya acrediten el nivel C1 de catalán o hayan superado prueba en procesos anteriores del Ayuntamiento",
-   "cita": "estan exemptes de realitzar la prova de coneixements de català les persones aspirants que hagin participat i obtingut plaça",
+  "plazas_turno_libre": {
+   "valor": 1,
+   "cita": "mitjançant el sistema de concurs oposició, torn lliure, i la creació d'una borsa de treball",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "20 días hábiles desde el día siguiente a la publicación de la convocatoria en el DOGC",
-   "cita": "serà de vint dies hàbils a comptar a partir de l’endemà de la publicació de la convocatòria al DOGC",
+   "valor": "veinte días hábiles a contar desde el día siguiente a la publicación del anuncio en el Diari Oficial de la Generalitat de Catalunya",
+   "cita": "El termini de presentació de sol·licituds serà de vint dies hàbils a comptar a partir de l'endemà de la publicació",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "tablón de anuncios electrónico del Ayuntamiento de Sant Pol de Mar y web de la corporación www.santpol.cat",
+   "cita": "El present anunci també es publicarà al tauler d'anuncis electrònic de l'Ajuntament de Sant Pol de Mar i al web",
    "nivel": "literal"
   },
   "bolsa": {
-   "valor": "sí, bolsa de trabajo para cubrir necesidades temporales de oficial primera de lampista y servicios múltiples, con vigencia de dos años",
-   "cita": "aquest procés generarà una borsa de treball d’oficial primera de lampista i serveis múltiples",
-   "nivel": "literal"
-  },
-  "practicas_o_curso": {
-   "valor": "Período de prueba obligatorio y eliminatorio: 2 meses para grupo C2 (indefinido); 1 mes si el nombramiento es superior a 6 meses",
-   "cita": "Grup titulació Durada de nomenament Durada període de pràctiques C2 Indefinit 2 mesos",
+   "valor": "sí, para crear una bolsa de trabajo con el proceso",
+   "cita": "la creació d'una borsa de treball",
    "nivel": "literal"
   }
  },
  "rechazados": {
   "denominacion": {
    "motivo": "cita_no_literal",
-   "valor": "Oficial primera de lampista i serveis múltiples",
-   "cita": "una plaça d’oficial primera de lampista i serveis múltiples, en règim de personal laboral fix"
-  },
-  "grupo": {
-   "motivo": "cita_no_literal",
-   "valor": "C2",
-   "cita": "assimilat a grup de classificació C, subgrup C2"
-  },
-  "plazas_turno_libre": {
-   "motivo": "valor_no_en_cita",
-   "valor": 1,
-   "cita": "mitjançant concurs oposició, torn lliure"
-  },
-  "plazas_discapacidad": {
-   "motivo": "valor_no_en_cita",
-   "valor": 0,
-   "cita": "Nombre de places: 1"
-  },
-  "idioma_cooficial": {
-   "motivo": "cita_no_literal",
-   "valor": "Catalán, nivel de suficiencia (C1); castellano nivel C2 para extranjeros no nacionales en España",
-   "cita": "Acreditar el coneixement adequat, oral i escrit, del nivell de suficiència (C1) de la llengua catalana"
-  },
-  "presentacion": {
-   "motivo": "cita_no_literal",
-   "valor": "Sede electrónica del Ayuntamiento mediante trámite de instancia genérica, adjuntando modelo normalizado; excepcionalmente presencial en la Oficina de Atención a la Ciudadanía, o cualquier forma del art. 16.4 Ley 39/2015",
-   "cita": "Les sol·licituds s'han de presentar, a través de la seu electrònica de l’Ajuntament de Sant Pol de Mar"
-  },
-  "publicaciones": {
-   "motivo": "cita_no_literal",
-   "valor": "Tablón de edictos electrónico del Ayuntamiento, web municipal www.santpol.cat y DOGC",
-   "cita": "es publicaran al tauler d’edictes electrònic de l’Ajuntament de Sant Pol de Mar"
-  },
-  "ejercicios": {
-   "motivo": "cita_no_literal",
-   "valor": [
-    "Fase previa: prueba obligatoria y eliminatoria de catalán (C1) y, si procede, de castellano",
-    "Fase de oposición: primera prueba, test de conocimientos generales y específicos (máx. 30 puntos)",
-    "Fase de concurso: valoración de méritos",
-    "Entrevista"
-   ],
-   "cita": "Consistirà en la realització d’exercicis de coneixements gramaticals i de comprensió escrita i oral"
-  },
-  "temas": {
-   "motivo": "valor_no_numerico",
-   "valor": "Temario general de 5 temas y temario específico de 16 temas",
-   "cita": "TEMARI GENERAL 1. L’Estatut d’autonomia de Catalunya de 2006."
-  },
-  "meritos": {
-   "motivo": "cita_no_literal",
-   "valor": "Fase de concurso con puntuación y barema previsto en las bases (ver base de méritos)",
-   "cita": "Document formalitzat ‘Relació de mèrits al·legats’, amb els mèrits que la persona aspirant desitgi"
+   "valor": "oficial primera de lampista i serveis múltiples",
+   "cita": "una plaça d'oficial primera de lampista i serveis múltiples, en règim de personal laboral fix"
   }
  }
 }

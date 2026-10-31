@@ -1,0 +1,58 @@
+{
+ "proceso": "bopt:BOPT-2025-02351",
+ "documento": {
+  "id": "dogc:1010390",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1010390",
+  "fecha": "2025-03-31",
+  "huella": "88893d2cd300ed0155ec863c53ff898407cafd27a879acf7c70d5dfbab16b5ca"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:46:47+00:00",
+ "lote": "msgbatch_01MQzQCLMZKxUrrPMAj7dr53",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "A2",
+   "cita": "de l'escala d'administració especial, subescala tècnica, grup/subgrup A2",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "en règim funcionari de carrera, de l'escala d'administració especial",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mitjançant concurs-oposició (torn lliure), corresponents a l'Oferta Pública",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "per a la cobertura d'1 plaça de tècnic/a mig Enginyer/a",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles, a contar desde el día siguiente al de la publicación del anuncio en el DOGC",
+   "cita": "Les persones interessades poden presentar les instàncies de participació en aquest procés selectiu (ref. CONV-FC1/2025) en el termini de 20 dies hàbils",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "BOP de Tarragona (12/02/2025) y BOE núm. 55 (05/03/2025) como anuncio de la convocatoria",
+   "cita": "La convocatòria i aquestes bases específiques van ser publicades en data 12 de febrer de 2025 al BOP de Tarragona",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Tècnic/a mig Enginyer/a",
+   "cita": "1 plaça de tècnic/a mig Enginyer/a , a jornada completa (100%), en règim funcionari de carrera"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "mitjançant concurs-oposició (torn lliure), corresponents a l'Oferta Pública d'Ocupació"
+  }
+ }
+}

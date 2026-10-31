@@ -1,0 +1,55 @@
+{
+ "proceso": "bophuelva:BOPHUELVA-331386",
+ "documento": {
+  "id": "bophuelva:BOPHUELVA-331386",
+  "fuente": "BOP-HUELVA",
+  "url": "https://s2.diphuelva.es/portalweb/bope/anuncios/Anuncio_331386_BOP-219_2025.pdf",
+  "fecha": "2025-11-17",
+  "huella": "3775b5be8be90a2ed782d3afd79ceca77360f062d22d1b1cd421c59bdc1871c2"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:41:17+00:00",
+ "lote": "msgbatch_01UNq3BNhPPHoTK3TEJzun1h",
+ "no_son_bases": false,
+ "campos": {
+  "plazo_solicitudes": {
+   "valor": "Diez días hábiles, contados a partir del siguiente a aquél en el que se publique el presente anuncio",
+   "cita": "el plazo de presentación de solicitudes, que será de DIEZ DÍAS HÁBILES , contados a partir del siguiente",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de Anuncios de la Sede Electrónica del Ayuntamiento de Isla Cristina",
+   "cita": "El contenido íntegro de las bases se encuentra en el Tablón de Anuncios de la Sede Electrónica",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Auxiliar de Ayuda a Domicilio"
+   ],
+   "cita": "la creación de una bolsa de trabajo para la selección de Auxiliares de Ayuda a Domicilio, Agrupaciones Profesionales"
+  },
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "Agrupaciones Profesionales",
+   "cita": "Auxiliares de Ayuda a Domicilio, Agrupaciones Profesionales, para el Excmo. Ayuntamiento de Isla Cristina"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "otro",
+   "cita": "la creación de una bolsa de trabajo para la selección de Auxiliares"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "otro",
+   "cita": "la creación de una bolsa de trabajo para la selección de Auxiliares"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, bolsa de trabajo",
+   "cita": "la convocatoria para la creación de una bolsa de trabajo para la selección de Auxiliares"
+  }
+ }
+}

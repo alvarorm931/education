@@ -1,30 +1,37 @@
 {
  "proceso": "bopb:BOPB-202610158316",
  "documento": {
-  "id": "bopb:BOPB-202610158316",
-  "fuente": "BOPB",
-  "url": "https://bop.diba.cat/anunci/4006462/aprovacio-de-la-convocatoria-i-les-bases-especifiques-que-regiran-el-concurs-oposicio-per-a-la-seleccio-de-dues-places-de-treballador-a-social-ajuntament-de-la-garriga",
+  "id": "dogc:1058087",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1058087",
   "fecha": "2026-10-30",
-  "huella": "88844e910660fbf0bec7f6f992ea8533844a027892ea03233ac71868b4497afb"
+  "huella": "ec5e0b7d629794d76643f7684682db81bd81c3d0c6660d64f8e6965c6c3bbaf0"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T08:03:33+00:00",
- "lote": "msgbatch_013xFoLdqcGqWcqkzh7qrdGg",
+ "extraido": "2026-10-31T14:42:05+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
  "no_son_bases": false,
  "campos": {
+  "denominacion": {
+   "valor": [
+    "treballador/a social"
+   ],
+   "cita": "convocar el procés de selecció de dues places de treballador/a social",
+   "nivel": "literal"
+  },
   "grupo": {
    "valor": "A2",
-   "cita": "grup de classificació A, subgrup A2, vacants a la Plantilla de personal funcionari",
+   "cita": "grup de classificació A, subgrup A2, vacants a la Plantilla",
    "nivel": "literal"
   },
   "vinculo": {
    "valor": "funcionario de carrera",
-   "cita": "vacants a la Plantilla de personal funcionari de l’Ajuntament de la Garriga",
+   "cita": "vacants a la Plantilla de personal funcionari de l'Ajuntament de la Garriga",
    "nivel": "literal"
   },
   "sistema": {
    "valor": "concurso-oposición",
-   "cita": "mitjançant concurs oposició lliure, previstes a l’Oferta Pública d’Ocupació",
+   "cita": "mitjançant concurs oposició lliure, previstes a l'Oferta Pública d'Ocupació",
    "nivel": "literal"
   },
   "plazas_total": {
@@ -33,88 +40,75 @@
    "nivel": "literal"
   },
   "titulacion": {
-   "valor": "Títol universitari de Grau en Treball Social, diplomatura en Treball Social o equivalent",
+   "valor": "Grau en Treball Social, diplomatura en Treball Social o equivalent",
    "cita": "Estar en possessió del títol universitari de Grau en Treball Social, diplomatura en Treball Social o equivalent",
    "nivel": "literal"
   },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española o de la UE; 16 años cumplidos y no exceder edad de jubilación; capacidad funcional; colegiación en el Col·legi Oficial de Treball Social de Catalunya; permiso de conducir clase B; certificación negativa del Registro Central de delincuentes sexuales",
+   "cita": "Estar col·legiat/ada en el Col·legi Oficial de Treball Social de Catalunya, d'acord amb l'article 3",
+   "nivel": "literal"
+  },
   "idioma_cooficial": {
-   "valor": "Català, nivell C1 MECR (Suficiència), o superar prova equivalente",
+   "valor": "catalán, certificado de suficiencia nivel C1 MECR",
    "cita": "Estar en possessió del certificat de coneixements de nivell Suficiència de català (certificat C1 MECR)",
    "nivel": "sin_signos"
   },
+  "tasa_euros": {
+   "valor": 25,
+   "cita": "Els drets del procediment es fixen en 25,00 € amb caràcter general",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "12,50 € para personas en situación de desempleo",
+   "cita": "12,50 € les persones que acreditin estar en situació d'atur",
+   "nivel": "literal"
+  },
   "plazo_solicitudes": {
-   "valor": "Vint dies naturals a comptar de l’endemà de la publicació de la convocatòria i les bases en el DOGC",
-   "cita": "en el termini que finalitzarà als vint dies naturals següents a comptar a partir de l’endemà de la publicació",
+   "valor": "veinte días naturales desde el día siguiente a la publicación de la convocatoria y bases en el DOGC",
+   "cita": "en el termini que finalitzarà als vint dies naturals següents a comptar a partir de l'endemà",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Preferentment telemàticament a la seu electrònica del web municipal www.lagarriga.cat, o presencialment a l’Oficina d’Atenció Ciutadana amb cita prèvia",
-   "cita": "Les sol·licituds es presentaran preferentment mitjançant instància telemàtica o per qualsevol dels mitjans previstos",
+   "valor": "Preferentemente por instancia telemática en la sede electrónica (www.lagarriga.cat) o presencialmente en la Oficina de Atención Ciudadana, previa cita",
+   "cita": "Les sol·licituds es presentaran preferentment mitjançant instància telemàtica o per qualsevol dels mitjans previstos a la Llei 39/2015",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de anuncios electrónico (e-TAULER) y sede electrónica del web municipal (www.lagarriga.cat)",
+   "cita": "s'exposarà en el tauler d'anuncis electrònic (e-TAULER) de la Corporació i a la seu electrònica",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Primera prova: coneixement de la llengua catalana (apte/no apte)",
+    "Segona prova: coneixement de la llengua castellana (apte/no apte)",
+    "Tercera prova: qüestionari de 50 preguntes con respuestas alternativas (máximo 10 puntos)",
+    "Cuarta prova: supuesto práctico (máximo 20 puntos)"
+   ],
+   "cita": "Consistirà a resoldre un supòsit pràctic que plantejarà el tribunal",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Experiencia profesional (hasta 4 puntos), titulaciones académicas (hasta 1 punto), formación (hasta 2 puntos), otros méritos (hasta 2 puntos); entrevista personal hasta 4 puntos; máximo fase de concurso 13 puntos",
+   "cita": "La puntuació total de la fase de concurs no pot ser, en cap cas, superior a 13 punts",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, para cubrir futuras vacantes de las ofertas de empleo público de los dos años siguientes a personas aprobadas sin plaza",
+   "cita": "podran ser cridades per a la cobertura de futures vacants a càrrec de les ofertes d'ocupació pública dels dos anys següents",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "fase de prueba de seis meses",
+   "cita": "s'establirà una fase de prova de sis mesos",
    "nivel": "literal"
   },
   "temas": {
    "valor": 43,
-   "cita": "Tema 43. Les competències municipals contra la violència masclista i protocols d’intervenció coordinada.",
-   "nivel": "literal"
-  },
-  "meritos": {
-   "valor": "Experiència professional (fins a 4 punts), titulacions (fins a 1), formació (fins a 2), altres mèrits (fins a 2); entrevista personal fins a 4 punts. Total concurs màxim 13 punts.",
-   "cita": "La puntuació total de la fase de concurs no pot ser, en cap cas, superior a 13 punts.",
-   "nivel": "literal"
-  },
-  "practicas_o_curso": {
-   "valor": "Fase de prova de sis mesos",
-   "cita": "s’establirà una fase de prova de sis mesos",
-   "nivel": "literal"
+   "cita": "Tema 43. Les competències municipals contra la violència masclista i protocols d'intervenció coordinada.",
+   "nivel": "contado"
   }
  },
- "rechazados": {
-  "denominacion": {
-   "motivo": "cita_no_literal",
-   "valor": [
-    "Treballador/a social"
-   ],
-   "cita": "convocatòria de dues places de treballador/a social, classificades a l’Escala d’Administració Especial"
-  },
-  "plazas_turno_libre": {
-   "motivo": "valor_no_en_cita",
-   "valor": 2,
-   "cita": "mitjançant concurs oposició lliure, previstes a l’Oferta Pública d’Ocupació"
-  },
-  "otros_requisitos": {
-   "motivo": "cita_no_literal",
-   "valor": "Nacionalitat espanyola o de la UE, 16 anys i no excedir edat de jubilació, capacitat funcional, col·legiació al Col·legi Oficial de Treball Social de Catalunya, permís de conduir classe B, certificació negativa del Registre de delinqüents sexuals.",
-   "cita": "Estar col·legiat/ada en el Col·legi Oficial de Treball Social de Catalunya"
-  },
-  "tasa_euros": {
-   "motivo": "cita_no_literal",
-   "valor": 25,
-   "cita": "Els drets del procediment es fixen en 25,00 € amb caràcter general"
-  },
-  "exenciones_tasa": {
-   "motivo": "cita_no_literal",
-   "valor": "12,50 € per a persones que acreditin estar en situació d’atur.",
-   "cita": "12,50 € les persones que acreditin estar en situació d’atur, d’acord amb el que determinen les ordenances fiscals"
-  },
-  "publicaciones": {
-   "motivo": "cita_no_literal",
-   "valor": "Tauler d’anuncis electrònic (e-TAULER) i seu electrònica del web municipal www.lagarriga.cat; bases al BOPB, DOGC i BOE",
-   "cita": "Publicar aquestes bases, conjuntament amb la convocatòria, en el BOPB, en el DOCG, en el BOE"
-  },
-  "ejercicios": {
-   "motivo": "cita_no_literal",
-   "valor": [
-    "Prova de coneixement de la llengua catalana (apte/no apte)",
-    "Prova de coneixement de la llengua castellana per a no nacionals (apte/no apte)",
-    "Qüestionari de coneixements generals i específics de 50 preguntes tipus test (0-10 punts)",
-    "Prova pràctica d’un supòsit relacionat amb el lloc (0-20 punts)"
-   ],
-   "cita": "Tercera prova: Coneixements generals i específics Constarà d’una prova que consistirà a contestar per escrit un qüestionari de màxim 50 preguntes"
-  },
-  "bolsa": {
-   "motivo": "cita_no_literal",
-   "valor": "Sí, les persones que superin totes les proves però no obtinguin plaça podran ser cridades per a futures vacants dels dos anys següents",
-   "cita": "Les persones que hagin superat totes les proves però no hagin obtingut plaça podran ser cridades per a la cobertura de futures vacants"
-  }
- }
+ "rechazados": {}
 }

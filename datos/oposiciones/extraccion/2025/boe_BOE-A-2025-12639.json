@@ -1,0 +1,53 @@
+{
+ "proceso": "boe:BOE-A-2025-12639",
+ "documento": {
+  "id": "bopcastellon:BOPCASTELLON-02522-2025-U",
+  "fuente": "BOP-CASTELLON",
+  "url": null,
+  "fecha": "2025-06-07",
+  "huella": "134d28a220f49f7166b74174643ffc818961a1b1ca2c5920c79871e97406554c"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:45:25+00:00",
+ "lote": "msgbatch_016re6aGcimwSVmdrWa6qBd9",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "con carácter laboral fijo, de una plaza de peón de limpieza de edificios municipales, vacante en la plantilla de personal laboral",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "diez días hábiles contados desde el día siguiente del anuncio de convocatoria en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes será de diez días hábiles contados desde el día siguiente del anuncio de convocatoria en el Boletín Oficial del Estado.",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Bases íntegras en el apartado 1.6.2. Oferta de empleo público del Portal de Transparencia de la Sede Electrónica municipal y en el Tablón de Anuncios físico municipal",
+   "cita": "Las bases que regulan esta convocatoria se publicarán íntegramente en el apartado 1.6.2. Oferta de empleo público, del Portal de Transparencia",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, para necesidades temporales que se generen del puesto",
+   "cita": "y la constitución de una bolsa de trabajo para necesidades temporales que se generen del puesto.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Peón de limpieza de edificios municipales",
+   "cita": "cobertura definitiva, por el proceso de concurso-oposición y con carácter laboral fijo, de una plaza de peón de limpieza de edificios municipales"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "por el proceso de concurso-oposición y con carácter laboral fijo, de una plaza"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 1,
+   "cita": "cobertura definitiva, por el proceso de concurso-oposición y con carácter laboral fijo, de una plaza de peón"
+  }
+ }
+}

@@ -1,0 +1,43 @@
+{
+ "proceso": "bopcordoba:BOPCORDOBA-2024-5111",
+ "documento": {
+  "id": "bopcordoba:BOPCORDOBA-2024-5111",
+  "fuente": "BOP-CORDOBA",
+  "url": "https://bop.dipucordoba.es/dia/26-12-2024",
+  "fecha": "2024-12-26",
+  "huella": "b14d2277c3fb18c6852cfe32b25bbad682cc8ba50844a5e4372e525292422157"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:49:47+00:00",
+ "lote": "msgbatch_018TPQE8scQozfAUdc1n8RyC",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "Bolsa de Trabajo de personal laboral temporal del Ayuntamiento de Villaviciosa de Córdoba",
+   "cita": "la convocatoria anual de la Bolsa de Trabajo de personal laboral temporal del Ayuntamiento de Villaviciosa de Córdoba",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "Bolsa de Trabajo de personal laboral temporal del Ayuntamiento de Villaviciosa de Córdoba",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón Web del Ayuntamiento",
+   "cita": "de la que se dará la debida publicidad en el Tablón Web del Ayuntamiento",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "20 días hábiles a partir del día siguiente a su publicación en el BOP de Córdoba",
+   "cita": "el plazo de presentación de solicitudes será de 20 días hábiles a partir del día siguiente de su publicación"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, bolsa de trabajo de vigencia de cuatro años desde su aprobación, con apertura anual en enero de un periodo de 20 días hábiles para nuevos méritos o nuevas solicitudes",
+   "cita": "la bolsa tendrá una vigencia de cuatro años desde su aprobación por el órgano competente"
+  }
+ }
+}

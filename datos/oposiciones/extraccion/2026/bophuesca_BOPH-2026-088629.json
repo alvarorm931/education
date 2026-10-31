@@ -1,0 +1,40 @@
+{
+ "proceso": "bophuesca:BOPH-2026-088629",
+ "documento": {
+  "id": "bophuesca:BOPH-2026-088629",
+  "fuente": "BOP-HUESCA",
+  "url": "https://bop.dphuesca.es/publica/buscador-anuncios/anuncio/Convocatoria-y-bases-reguladoras-para-la-provision-mediante-concurso-de-meritos-de-1-plaza-de-monitor-de-tiempo-libre-del-Ayuntamiento-para-el-servicio-publico-de-ludoteca-escuela-de-verano./",
+  "fecha": "2026-05-13",
+  "huella": "4408036693b80ca6a0b77d711f14e8250bf17f78f005712ff4363e1dd64f6fc7"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:42:02+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Monitor de tiempo libre"
+   ],
+   "cita": "aprobaron las bases y su convocatoria para la provisión para puesto de monitor de tiempo libre",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Sede electrónica del Ayuntamiento (https://torla.sedipualba.es/); los sucesivos anuncios se publicarán allí",
+   "cita": "Las bases de la convocatoria, y los sucesivos anuncios de esta, se encuentran en la sede electrónica de este Ayuntamiento",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso",
+   "cita": "provisión mediante concurso de meritos de 1 plaza de monitor de tiempo libre"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 1,
+   "cita": "provisión mediante concurso de meritos de 1 plaza de monitor de tiempo libre"
+  }
+ }
+}

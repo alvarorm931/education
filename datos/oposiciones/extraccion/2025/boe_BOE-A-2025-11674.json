@@ -1,0 +1,50 @@
+{
+ "proceso": "boe:BOE-A-2025-11674",
+ "documento": {
+  "id": "bopvalencia:BOPVALENCIA-2024-16623",
+  "fuente": "BOP-VALENCIA",
+  "url": "https://bop.dival.es/bop/downloads?anuncioNumReg=2024/16623&lang=va",
+  "fecha": "2024-12-18",
+  "huella": "36e01a14efddbef79a39732a4d186d61d8442e1d6a08787c3e39d32bba609a50"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:45:09+00:00",
+ "lote": "msgbatch_016re6aGcimwSVmdrWa6qBd9",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Auxiliar Administratiu/-va"
+   ],
+   "cita": "Denominació de la plaça Auxiliar Administratiu/-va Núm. de llocs 11",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 11,
+   "cita": "Denominació de la plaça Auxiliar Administratiu/-va Núm. de llocs 11",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "10 días hábiles, contados a partir del día siguiente a la publicación del correspondiente anuncio de la convocatoria en el BOE",
+   "cita": "El termini de presentació d'instàncies serà de 10 dies hàbils, comptats a partir de l'endemà de la publicació del corresponent anunci de la convocatòria en el BOE.",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "BOP y tablón de anuncios de la sede electrónica del ayuntamiento; texto íntegro en la web del ayuntamiento",
+   "cita": "la publicació de l'edicte en el BOP i en el tauler d'anuncis de la seu electrònica de l'ajuntament de l'Eliana",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "la provisión definitiva, mediante el sistema de concurso oposición, por torn lliure de diversos llocs"
+  },
+  "plazas_turno_libre": {
+   "motivo": "cita_no_literal",
+   "valor": 11,
+   "cita": "la provisión definitiva, mediante el sistema de concurso oposición, por torn lliure de diversos llocs"
+  }
+ }
+}

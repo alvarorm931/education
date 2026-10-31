@@ -1,0 +1,45 @@
+{
+ "proceso": "bopbizkaia:BOB-2022-II-5526",
+ "documento": {
+  "id": "bopbizkaia:BOB-2022-II-5526",
+  "fuente": "BOB",
+  "url": "http://www.bizkaia.eus/lehendakaritza/Bao_bob/2022/12/15/II-5526_cas.pdf",
+  "fecha": "2022-12-15",
+  "huella": "aea82e237045c7f38e543fb283d84fcbd4917b16d7c38a8ceca0c2c56a7a3739"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:10+00:00",
+ "lote": "msgbatch_01B4ETF5xB4buYCHqPiHTXzF",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Auxiliar administrativo"
+   ],
+   "cita": "para cobertura de la plaza vacante de auxiliar administrativo del Ayuntamiento de Ajangiz",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Desde la fecha del anuncio de extracto en el Boletín Oficial del Estado, que servirá para el cómputo del plazo de presentación de instancias",
+   "cita": "la fecha de este anuncio la que servirá para el cómputo del plazo de presentación de instancias",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de Bizkaia y sede electrónica del Ayuntamiento",
+   "cita": "Publicar el texto íntegro de las bases reguladoras en el «Boletín Oficial de Bizkaia» y en la sede electrónica de este Ayuntamiento",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "proceso selectivo de estabilización del empleo temporal derivados de la Disposición Adicional 6.ª"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "para cobertura de la plaza vacante de auxiliar administrativo del Ayuntamiento de Ajangiz"
+  }
+ }
+}

@@ -1,0 +1,58 @@
+{
+ "proceso": "boe:BOE-A-2025-10836",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2025-3536",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2025/05/21_95/2025_003536.pdf",
+  "fecha": "2025-05-21",
+  "huella": "4e5b001319e771fd245c3bd4e4ca9c96b1a5a8c99e8f3965218ef22dd072b9c7"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:45:11+00:00",
+ "lote": "msgbatch_016re6aGcimwSVmdrWa6qBd9",
+ "no_son_bases": false,
+ "campos": {
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mediante Concurso -Oposición por turno libre correspondiente a la Oferta de Empleo Público",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "convocatoria y Bases de 1 plaza de monitor/a por concurso oposición libre",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "diez días hábiles a contar desde el día siguiente a la publicación del extracto de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes para tomar parte en las citadas pruebas selectivas será de diez días hábiles",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Página web municipal y Tablón de anuncios y edictos electrónicos del Ayuntamiento de Elche",
+   "cita": "estarán a disposición de las personas interesadas en la página web municipal",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Monitor/a",
+   "cita": "convocatoria y las Bases Específicas para la provisión en propiedad de personal funcionario de carrera de 1 plaza de Monitor/a"
+  },
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "no consta",
+   "cita": ""
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "provisión en propiedad de personal funcionario de carrera de 1 plaza de Monitor/a"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "mediante Concurso -Oposición por turno libre correspondiente a la Oferta de Empleo Público del año 2022"
+  }
+ }
+}

@@ -1,0 +1,48 @@
+{
+ "proceso": "boe:BOE-A-2022-23603",
+ "documento": {
+  "id": "bopcaceres:BOP-2022-6311",
+  "fuente": "BOP-CACERES",
+  "url": "https://bop.dip-caceres.es/bop/services/anuncios/contenidoPdfIdAnuncio?csv=BOP-2022-6311",
+  "fecha": "2022-12-23",
+  "huella": "58244e4d88e8bc2cf8abca46dde7597536f53962135724e63c7241214b69632d"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:56:13+00:00",
+ "lote": "msgbatch_014eT3dLLVopBnuVgQ4syWD9",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "Agente de Empleo y Desarrollo Local",
+   "cita": "para cubrir una plaza de Agente de Empleo y Desarrollo Local para el Ayuntamiento",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "la provisión, por el turno de estabilización de la ley 20/2021, de 28 de diciembre",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "mediante el sistema de concurso, de una plaza de personal laboral fijo",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles a contar desde el día siguiente a la publicación de este anuncio en el Boletín Oficial del Estado",
+   "cita": "se abre el plazo de presentación de solicitudes, que será de 20 días hábiles a contar desde el día siguiente",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia, sede electrónica del Ayuntamiento y Tablón de Anuncios",
+   "cita": "Los sucesivos anuncios de esta convocatoria, cuando procedan de conformidad con las bases, se publicarán en el Boletín Oficial de la Provincia",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 1,
+   "cita": "mediante sistema de concurso, de una plaza de personal laboral fijo"
+  }
+ }
+}

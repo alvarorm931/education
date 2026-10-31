@@ -1,0 +1,113 @@
+{
+ "proceso": "bopcordoba:BOPCORDOBA-2022-4924",
+ "documento": {
+  "id": "bopcordoba:BOPCORDOBA-2022-4924",
+  "fuente": "BOP-CORDOBA",
+  "url": "https://bop.dipucordoba.es/dia/20-12-2022",
+  "fecha": "2022-12-20",
+  "huella": "11a294ae5292b650a4ddf46d3f2f1ad8abcd56b72919ea280ec0e377da9cd51f"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:56:06+00:00",
+ "lote": "msgbatch_014eT3dLLVopBnuVgQ4syWD9",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "C1",
+   "cita": "Grupo/Subgrupo: C1 - N.º plazas: 2",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "para el acceso a cuerpos o escalas de personal funcionario",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "se establece que el sistema de selección será el concurso",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Bachiller, Técnico, o equivalente (Administrativo); Licenciatura en Ingeniería de Caminos, Canales y Puertos o Grado de Ingeniería de Caminos, Canales y Puertos (Ingeniero Superior); Grado en Medio Ambiente o Licenciatura en Ciencias Ambientales (Técnico de Medio Ambiente); título de Ingeniero/a Técnico/a Industrial o Grado en Ingeniería (Ingeniero Técnico Industrial)",
+   "cita": "Titulación: Bachiller, Técnico, o equivalente.",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española (sin perjuicio del artículo 57 TREBEP); capacidad funcional; tener cumplidos 16 años y no exceder la edad de jubilación forzosa; no haber sido separado del servicio ni inhabilitado.",
+   "cita": "a) Tener la nacionalidad española, sin perjuicio de lo dispuesto en el artículo 57",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Exentas las personas con discapacidad igual o superior al 33 por 100 y demandantes de empleo con requisitos; bonificación del 50% para familia numerosa.",
+   "cita": "tendrán una bonificación del cincuenta por ciento (50%) del pago de la tasa",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Veinte días hábiles desde el día siguiente a la publicación del anuncio de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "en el plazo de veinte días hábiles contados a partir del día siguiente al de la publicación del anuncio",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Registro General de Entrada o lugares del artículo 16.4 de la Ley 39/2015, dirigida a la Sra. Alcaldesa-Presidenta",
+   "cita": "se presentarán en el Registro General de Entrada o en alguno de los lugares previstos",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia de Córdoba, Tablón electrónico de Edictos del Ayuntamiento y su página web; extracto en el Boletín Oficial del Estado",
+   "cita": "Publicar la convocatoria y el texto íntegro de las bases en el Boletín Oficial de la Provincia de Córdoba",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Concurso: valoración de méritos (experiencia profesional, antigüedad, formación)"
+   ],
+   "cita": "El Concurso consistirá en la valoración por el Tribunal de Selección",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Experiencia profesional hasta 81 puntos; antigüedad en Administraciones Públicas hasta 10 puntos; formación y perfeccionamiento hasta 9 puntos; puntuación máxima 100 puntos.",
+   "cita": "La puntuación máxima que se podrá alcanzar en el Concurso será de 100 puntos.",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "no",
+   "cita": "Asimismo podrá incorporar a empleados/as públicos/as",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "no",
+   "cita": "El nombramiento como funcionario de carrera se realizará en el plazo máximo de un mes",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Administrativo",
+    "Ingeniero Superior",
+    "Técnico de Medio Ambiente",
+    "Ingeniero Técnico Industrial"
+   ],
+   "cita": "Administrativo - Escala: Administración General -Subescala: Administrativa."
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 6,
+   "cita": "Administrativo - Grupo/Subgrupo: C1 - N.º plazas: 2"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 6,
+   "cita": "Oferta de Empleo Público para la estabilización de empleo temporal"
+  },
+  "tasa_euros": {
+   "motivo": "valor_no_numerico",
+   "valor": [
+    29.85,
+    35.9
+   ],
+   "cita": "Importe de la Tasa: 29,85 € 2º.- Ingeniero Superior."
+  }
+ }
+}

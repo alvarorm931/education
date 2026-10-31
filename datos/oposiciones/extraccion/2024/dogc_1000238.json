@@ -1,0 +1,62 @@
+{
+ "proceso": "dogc:1000238",
+ "documento": {
+  "id": "dogc:1000238",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1000238",
+  "fecha": "2024-11-22",
+  "huella": "df67e41eb5d992b03953a261d556c80de22b77c854120e704c45ab7a48ed428f"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:49:43+00:00",
+ "lote": "msgbatch_018TPQE8scQozfAUdc1n8RyC",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Personal de neteja",
+    "Cuiner/a",
+    "Monitor/a de menjador escolar"
+   ],
+   "cita": "Denominació: Personal de neteja",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "AP",
+   "cita": "Grup de classificació: Grup AP",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "otro",
+   "cita": "mitjançant concurs, en el marc del procés d'estabilització de l'ocupació temporal",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "Sistema de selecció: Concurs. Torn lliure",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles a partir del día siguiente a la publicación del anuncio en el DOGC",
+   "cita": "El termini per presentar sol·licituds finalitza als 20 dies hàbils comptats a partir de l'endemà",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Sede electrónica del Ayuntamiento y otros medios que se indiquen en las Bases",
+   "cita": "es publicaran a la seu electrònica de l'Ajuntament i en els altres mitjans que, en el seu cas",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 4,
+   "cita": "per cobrir una plaça de personal de neteja, dues places de monitor/a de menjador escolar i una plaça de cuiner/a"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 4,
+   "cita": "Sistema de selecció: Concurs. Torn lliure"
+  }
+ }
+}

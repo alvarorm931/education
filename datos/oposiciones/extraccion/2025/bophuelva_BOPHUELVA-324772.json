@@ -1,0 +1,50 @@
+{
+ "proceso": "bophuelva:BOPHUELVA-324772",
+ "documento": {
+  "id": "bophuelva:BOPHUELVA-324772",
+  "fuente": "BOP-HUELVA",
+  "url": "https://s2.diphuelva.es/portalweb/bope/anuncios/Anuncio_324772_BOP-176_2025.pdf",
+  "fecha": "2025-09-16",
+  "huella": "1bf3d14251a1e7fafd1611fc7b1353486d92f790da48e0d40be56b1204b3c2fd"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:42:44+00:00",
+ "lote": "msgbatch_01XofVwxKEhyEjSzGog6wsD4",
+ "no_son_bases": false,
+ "campos": {
+  "sistema": {
+   "valor": "oposición",
+   "cita": "proceso selectivo para la constitución de bolsa de trabajo",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "10 días hábiles, contados a partir del siguiente al de la publicación del presente anuncio en el Boletín Oficial de la Provincia",
+   "cita": "El plazo de presentación de solicitudes será de 10 días hábiles, contados a partir del siguiente al de la publicación",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "El texto íntegro de las Bases se publica en la sede electrónica municipal (https://minasderiotinto.sedelectronica.es/info)",
+   "cita": "El texto íntegro de las Bases se encuentra publicado en la sede electrónica municipal",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, bolsa de trabajo para contratación temporal de monitor/a de la Escuela Municipal de Música",
+   "cita": "para la constitución de una bolsa de trabajo de monitor/a de la Escuela Municipal de Música",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "monitor/a de música para la Escuela de Música Municipal"
+   ],
+   "cita": "Bolsa para contratación temporal de monitor/a de música para la Escuela de Música Municipal"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "laboral temporal",
+   "cita": "Bolsa para contratación temporal de monitor/a de música para la Escuela de Música Municipal"
+  }
+ }
+}

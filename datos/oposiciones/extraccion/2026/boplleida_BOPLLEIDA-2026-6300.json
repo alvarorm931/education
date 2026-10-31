@@ -1,113 +1,44 @@
 {
  "proceso": "boplleida:BOPLLEIDA-2026-6300",
  "documento": {
-  "id": "boplleida:BOPLLEIDA-2026-6300",
-  "fuente": "BOP-LLEIDA",
-  "url": "https://ebop.diputaciolleida.cat/aplicacions/bop/bopV1/fitxers/pdf/2026/139/202613906300.pdf",
-  "fecha": "2026-07-23",
-  "huella": "2d703179a225030cd4cc3f3d8c22abc432adc4427efbde42d9fdac3d2e0a95e4"
+  "id": "dogc:1051290",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1051290",
+  "fecha": "2026-07-29",
+  "huella": "a7140b423c91b1e543cd2b9ebbdb8a00d947b8120b16355f6fa5dd737eba9806"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T08:18:03+00:00",
- "lote": "msgbatch_01BrnYw6KkevFx7at547B5g8",
+ "extraido": "2026-10-31T14:41:44+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
-   "valor": "Auxiliar administratiu/va",
-   "cita": "una plaça d’Auxiliar administratiu/va, laboral fix, vacant a la plantilla",
-   "nivel": "literal"
-  },
-  "grupo": {
-   "valor": "C2",
-   "cita": "Grup: C2.",
+   "valor": [
+    "auxiliar administrativo/va"
+   ],
+   "cita": "plaza de auxiliar administrativo/va, laboral fijo, mediante el sistema selectivo de concurso-oposición",
    "nivel": "literal"
   },
   "vinculo": {
    "valor": "personal laboral fijo",
-   "cita": "una plaça d’Auxiliar administratiu/va, laboral fix, vacant a la plantilla",
+   "cita": "auxiliar administrativo/va, laboral fijo, mediante el sistema selectivo de concurso-oposición",
    "nivel": "literal"
   },
   "sistema": {
    "valor": "concurso-oposición",
-   "cita": "mitjançant el sistema selectiu de concurs-oposició",
-   "nivel": "literal"
-  },
-  "plazas_total": {
-   "valor": 1,
-   "cita": "Nombre de places: 1.",
-   "nivel": "literal"
-  },
-  "plazas_turno_libre": {
-   "valor": 1,
-   "cita": "Nombre de places: 1.",
-   "nivel": "literal"
-  },
-  "titulacion": {
-   "valor": "Graduado en ESO, FP Primer Grado, Ciclo Formativo de Grado Medio o equivalente",
-   "cita": "Estar en possessió del títol de graduat o graduada en Educació Secundària Obligatòria, Formació Professional de Primer Grau",
-   "nivel": "literal"
-  },
-  "otros_requisitos": {
-   "valor": "Nacionalidad española o de Estado miembro UE (con excepciones); tener 16 años y no superar la edad de jubilación forzosa; capacidad funcional; no estar separado del servicio ni inhabilitado; disponibilidad inmediata; acreditar castellano si no se tiene nacionalidad española",
-   "cita": "Estar en disposició d’incorporar-se de manera immediata.",
-   "nivel": "literal"
-  },
-  "idioma_cooficial": {
-   "valor": "Catalán, nivel C1 (suficiencia)",
-   "cita": "Acreditar coneixements de català equivalents al nivell C1 (suficiència) del marc europeu comú de referència",
-   "nivel": "literal"
-  },
-  "tasa_euros": {
-   "valor": 10,
-   "cita": "Haver satisfet la taxa de participació de 10,00 € corresponent",
+   "cita": "mediante el sistema selectivo de concurso-oposición",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "20 días hábiles a contar desde el día siguiente a la última publicación del anuncio de la convocatoria",
-   "cita": "serà de 20 dies hàbils a comptar des de l'endemà de la darrera publicació d'aquest anunci",
-   "nivel": "literal"
-  },
-  "presentacion": {
-   "valor": "Por registro electrónico a través de la web www.artesadesegre.cat o en el Registro Electrónico de cualquier Administración pública relacionada en el artículo 2.1 de la Ley 39/2015",
-   "cita": "s'hauran de formular per mitjans electrònics mitjançant registre d'entrada en aquest Ajuntament a través de la web www.artesadesegre.cat",
+   "valor": "20 días hábiles a contar desde el día siguiente a la publicación de este anuncio en el DOGC",
+   "cita": "el plazo de presentación de solicitudes, que será de 20 días hábiles a contar desde el día siguiente a la publicación",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Tablón de anuncios del Ayuntamiento y web municipal; BOP y DOGC para la convocatoria",
-   "cita": "tots els anuncis successius es faran al tauler d’anuncis de l’Ajuntament d’Artesa de Segre i al web municipal",
-   "nivel": "literal"
-  },
-  "ejercicios": {
-   "valor": [
-    "Fase I: prueba de catalán y prueba de castellano (aptos/no aptos, eliminatorias)",
-    "Fase II: prueba teórica tipo test de 30 preguntas (60 minutos, máximo 30 puntos)",
-    "Fase II: prueba práctica escrita sobre casos o preguntas cortas (120 minutos, máximo 30 puntos)",
-    "Fase III: concurso de méritos (máximo 40 puntos, no eliminatorio)"
-   ],
-   "cita": "Fase I: Proves prèvies, acreditació de coneixements de català i castellà . Fase II: Oposició . Fase III: Concurs",
-   "nivel": "literal"
-  },
-  "meritos": {
-   "valor": "Experiencia en funciones análogas hasta 15 pts; formación hasta 25 pts; catalán superior a C1 hasta 3 pts; otros méritos formativos hasta 3 pts (ACTIC/COMPETIC)",
-   "cita": "Experiència professional en funcions anàlogues. Fins a un màxim de 15 punts.",
-   "nivel": "literal"
-  },
-  "bolsa": {
-   "valor": "sí, para contrataciones como personal laboral temporal durante tres años desde la finalización del proceso",
-   "cita": "podran ser cridades per l’Ajuntament d’acord amb l’ordre rigorós de qualificació, per a la seva contractació com a personal laboral temporal en el termini de tres anys",
-   "nivel": "literal"
-  },
-  "practicas_o_curso": {
-   "valor": "período de prueba de tres meses, eliminatorio",
-   "cita": "Formarà part del procés selectiu la superació d’un període de prova de tres mesos, amb caràcter eliminatori.",
+   "valor": "tablón de anuncios del Ayuntamiento de Artesa de Segre y en la web municipal",
+   "cita": "se publicarán en el tablón de anuncios del Ayuntamiento de Artesa de Segre y en la web municipal",
    "nivel": "literal"
   }
  },
- "rechazados": {
-  "temas": {
-   "motivo": "valor_no_en_cita",
-   "valor": 20,
-   "cita": "1. La Constitució espanyola de 1978. Principis constitucionals."
-  }
- }
+ "rechazados": {}
 }

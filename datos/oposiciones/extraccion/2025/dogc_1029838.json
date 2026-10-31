@@ -1,0 +1,52 @@
+{
+ "proceso": "dogc:1029838",
+ "documento": {
+  "id": "dogc:1029838",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1029838",
+  "fecha": "2025-11-21",
+  "huella": "54ca0772d04e0501b9893c86c16ecc222edff15deb308cf5659204b81cd16075"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:41:07+00:00",
+ "lote": "msgbatch_01UNq3BNhPPHoTK3TEJzun1h",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "administrativos/vas (bolsa de vacantes temporales de los departamentos del ayuntamiento)",
+    "administrativos/vas (bolsa del departamento de turismo)",
+    "auxiliares administrativos/vas (bolsa de personal laboral o funcionario)"
+   ],
+   "cita": "dos bolsas de trabajo de administrativos/vas, una para cubrir las vacantes temporales",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mediante el sistema de concurso-oposición de carácter urgente",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "10 días hábiles, contados a partir del día siguiente de la última de las publicaciones de los anuncios de la convocatoria en el DOGC y en el BOE",
+   "cita": "dentro del plazo improrrogable de 10 días hábiles, contados a partir del día siguiente de la última",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Preferentemente en la sede electrónica del ayuntamiento; también en el Registro General OAC con cita previa, de 9 a 14 h de lunes a viernes, o según el art. 16.4 de la Ley 39/2015",
+   "cita": "se presentarán preferentemente en la sede electrónica del ayuntamiento en el apartado de convocatòries processos selectius",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Diario Oficial de la Generalitat de Catalunya (DOGC) y Boletín Oficial del Estado (BOE); sede electrónica del ayuntamiento",
+   "cita": "dentro del plazo improrrogable de 10 días hábiles, contados a partir del día siguiente de la última de las publicaciones de los anuncios de la convocatoria en el Diario Oficial de la Generalitat de Catalunya",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "otro",
+   "cita": "bolsas de trabajo de administrativos/vas, de la plantilla de personal laboral o funcionario del Ayuntamiento"
+  }
+ }
+}

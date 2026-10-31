@@ -1,20 +1,25 @@
 {
  "proceso": "boplleida:BOPLLEIDA-2026-8846",
  "documento": {
-  "id": "boplleida:BOPLLEIDA-2026-8846",
-  "fuente": "BOP-LLEIDA",
-  "url": "https://ebop.diputaciolleida.cat/aplicacions/bop/bopV1/fitxers/pdf/2026/203/202620308846.pdf",
-  "fecha": "2026-10-23",
-  "huella": "d715c1d52719cb4751d8136edf0df5e932470243f5f05a1a4d9751a44052c9d1"
+  "id": "dogc:1057815",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1057815",
+  "fecha": "2026-10-27",
+  "huella": "a9ae0b6d5c9664b4cf55db2522aaca938fc42afc4173f002f5d067d8fcca2a10"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T08:03:44+00:00",
- "lote": "msgbatch_013xFoLdqcGqWcqkzh7qrdGg",
+ "extraido": "2026-10-31T14:42:04+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
  "no_son_bases": false,
  "campos": {
+  "denominacion": {
+   "valor": "Tècnic/a de dinamització comercial",
+   "cita": "convoca amb caràcter de màxima urgència i mitjançant contractació laboral temporal 1 Tècnic/a de dinamització comercial",
+   "nivel": "literal"
+  },
   "grupo": {
    "valor": "A2",
-   "cita": "Les retribucions bàsiques corresponents al Subgrup A2",
+   "cita": "assignades les retribucions bàsiques corresponents al Subgrup A2, segons la classificació establerta per l'article 76",
    "nivel": "literal"
   },
   "vinculo": {
@@ -24,10 +29,15 @@
   },
   "sistema": {
    "valor": "concurso-oposición",
-   "cita": "pel procediment de concurs – oposició d'una plaça de tècnic/a de dinamització comercial",
+   "cita": "El procediment de selecció és el de concurs oposició. El procés de concurs oposició constarà de dues fases",
    "nivel": "literal"
   },
   "plazas_total": {
+   "valor": 1,
+   "cita": "convoca amb caràcter de màxima urgència i mitjançant contractació laboral temporal 1 Tècnic/a de dinamització comercial",
+   "nivel": "literal"
+  },
+  "plazas_turno_libre": {
    "valor": 1,
    "cita": "convoca amb caràcter de màxima urgència i mitjançant contractació laboral temporal 1 Tècnic/a de dinamització comercial",
    "nivel": "literal"
@@ -38,42 +48,32 @@
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Ciutadania, capacitat funcional, edat mínima de 16 anys, no separació del servei, no incompatibilitat, coneixement de la llengua castellana si no es té nacionalitat espanyola",
-   "cita": "Tenir setze anys i no excedir, si escau, de l'edat màxima de jubilació forçosa",
+   "valor": "Edad mínima 16 años y no exceder de la edad máxima de jubilación forzosa; capacidad funcional; requisitos de ciudadanía; no haber sido separado de la Administración ni inhabilitado; no incurrir en incompatibilidades.",
+   "cita": "Tenir setze anys i no excedir, si escau, de l'edat màxima de jubilació forçosa.",
    "nivel": "literal"
   },
   "idioma_cooficial": {
-   "valor": "Català, certificat de nivell de suficiència C1",
+   "valor": "Català nivell C1 (suficiència), oral i escrit, o titulación equivalente; prueba específica si no se acredita",
    "cita": "Posseir el certificat de coneixements de nivell de suficiència de llengua catalana orals i escrits (certificat nivell C1 de català)",
    "nivel": "literal"
   },
-  "exenciones_tasa": {
-   "valor": "No consta",
-   "cita": "Les instàncies es dirigiran a la Presidència i es presentaran al Registre General de la Paeria de Balaguer",
-   "nivel": "literal"
-  },
   "plazo_solicitudes": {
-   "valor": "10 dies hàbils des del següent de la publicació de la convocatòria al Diari Oficial de la Generalitat de Catalunya",
-   "cita": "el termini de presentació de sol·licituds serà de deu dies hàbils, des de la publicació al Diari Oficial de la Generalitat de Catalunya",
-   "nivel": "literal"
-  },
-  "presentacion": {
-   "valor": "Telemàticament al registre electrònic de la Paeria o presencialment en registres previstos a l'article 16 de la Llei 39/2015",
-   "cita": "Els/les aspirants que desitgin prendre part en les proves selectives podran presentar la sol·licitud en el model que està disponible a la pàgina web municipal",
+   "valor": "10 días hábiles desde la publicación en el Diari Oficial de la Generalitat de Catalunya",
+   "cita": "dins el termini de 10 dies hàbils, a comptar des del següent de la publicació de la convocatòria al Diari Oficial",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Tauler d'anuncis electrònic de la Paeria, Butlletí Oficial de la Província de Lleida i Diari Oficial de la Generalitat de Catalunya",
-   "cita": "Les bases es publicaran al tauler d'anuncis electrònic, al Butlletí Oficial de la Província de Lleida i al Diari Oficial de la Generalitat de Catalunya",
+   "valor": "Tablón de anuncios electrónico de la Paeria, Butlletí Oficial de la Província de Lleida y Diari Oficial de la Generalitat; web municipal",
+   "cita": "Les bases es publicaran al tauler d'anuncis electrònic, al Butlletí Oficial de la Província de Lleida i al Diari Oficial",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Primer exercici: prova de coneixements de català (apte/no apte)",
-    "Segon exercici: prova de castellà per a persones no espanyoles (apte/no apte)",
-    "Tercer exercici: resolució d'un supòsit pràctic (màxim 40 punts)"
+    "Primer exercici: prueba de catalán (apto/no apto)",
+    "Segon exercici: prueba de castellano para extranjeros no españoles (apto/no apto)",
+    "Tercer exercici: supuesto práctico (máximo 40 puntos)"
    ],
-   "cita": "Consistirà en la resolució d'un o més supòsits pràctics plantejats pel tribunal, que estaran basats en el temari",
+   "cita": "Primer exercici: Prova de coneixements de català (apte/a o no apte/a)",
    "nivel": "literal"
   },
   "temas": {
@@ -82,26 +82,26 @@
    "nivel": "literal"
   },
   "meritos": {
-   "valor": "Experiència professional (màx. 10), expedient acadèmic (màx. 5), formació complementària i altres mèrits (màx. 5); fase de concurs màxim 20 punts",
-   "cita": "La puntuació obtinguda en el concurs de mèrits es sumarà a la puntuació obtinguda en la fase oposició",
+   "valor": "Experiencia profesional (máx. 10 pts), expediente académico (máx. 5 pts), formación complementaria y otros méritos (máx. 5 pts); fase de concurso máximo 20 puntos",
+   "cita": "Consisteix en la valoració del currículum dels/de les aspirants, d'acord amb els següent barem",
    "nivel": "literal"
   },
   "bolsa": {
-   "valor": "No",
-   "cita": "Els/les aspirants discapacitats/des hauran d'aportar un certificat",
+   "valor": "no",
+   "cita": "Formalitzat el contracte s'haurà de comunicar a l'oficina pública d'ocupació",
    "nivel": "literal"
   },
   "practicas_o_curso": {
-   "valor": "Període de prova d'un mes",
+   "valor": "Período de prueba de un mes",
    "cita": "Existirà un període de prova d'un mes.",
    "nivel": "literal"
   }
  },
  "rechazados": {
-  "denominacion": {
+  "presentacion": {
    "motivo": "cita_no_literal",
-   "valor": "Tècnic/a de dinamització comercial",
-   "cita": "una plaça de tècnic/a de dinamització comercial de l'Ajuntament de Balaguer"
+   "valor": "Modelo disponible en web municipal; registro electrónico, Registro General de la Paeria, Correos u otros registros del artículo 16 Ley 39/2015",
+   "cita": "Els/les aspirants podran presentar la sol·licitud en el model que està disponible a la pàgina web municipal"
   }
  }
 }

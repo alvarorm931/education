@@ -1,0 +1,55 @@
+{
+ "proceso": "bocm:BOCM-20250506-78",
+ "documento": {
+  "id": "bocm:BOCM-20250506-78",
+  "fuente": "BOCM",
+  "url": "https://www.bocm.es/bocm-20250506-78",
+  "fecha": "2025-05-06",
+  "huella": "c4f79513923b68377fcc7c4a4da8da486c359b6bdcc02334a5670a0ae5ce1d05"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:45:58+00:00",
+ "lote": "msgbatch_017vJZdAmjTkBDdH14aLEdCv",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "vacante en la plantilla de personal funcionario e incluida en la Oferta de Empleo Público de 2023",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "por el sistema de concurso-oposición en turno de promoción interna, vacante en la plantilla",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "para la selección de una plaza de la categoría de Auxiliar Técnico Organización del Ayuntamiento de Leganés",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles, contados a partir del siguiente al de la publicación de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes de participación será de veinte días hábiles, contados a partir del siguiente",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de anuncios y edictos electrónico (sede.leganes.org) y página web del Ayuntamiento de Leganés (leganes.org/proceso-selectivos)",
+   "cita": "publicadas íntegramente en el tablón de anuncios y edictos electrónico",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Auxiliar Técnico Organización"
+   ],
+   "cita": "aprobar las bases que regirán la convocatoria de las pruebas selectivas para la selección de una plaza de la categoría de Auxiliar Técnico Organización"
+  },
+  "plazas_promocion_interna": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "por el sistema de concurso-oposición en turno de promoción interna, vacante en la plantilla de personal funcionario"
+  }
+ }
+}

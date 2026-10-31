@@ -1,0 +1,55 @@
+{
+ "proceso": "boe:BOE-A-2022-19148",
+ "documento": {
+  "id": "bopzaragoza:BOP-ZARAGOZA-2022-09-10-782486",
+  "fuente": "BOP-ZARAGOZA",
+  "url": null,
+  "fecha": "2022-09-10",
+  "huella": "52bf37d10b0cecaaf0f542203602b2e6f5c283e06a1792fcac1416b89bbc671d"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:11+00:00",
+ "lote": "msgbatch_01B4ETF5xB4buYCHqPiHTXzF",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "auxiliar administrativo"
+   ],
+   "cita": "para la provisión de una plaza de auxiliar administrativo, perteneciente a la plantilla de funcionarios",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C2",
+   "cita": "clasificada en el grupo laboral C2",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "perteneciente a la plantilla de funcionarios del Ayuntamiento de Zaragoza",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mediante ingreso por el turno de promoción interna cruzada y sistema selectivo de concurso-oposición",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "para la provisión de una plaza de auxiliar administrativo",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 0,
+   "cita": "mediante ingreso por el turno de promoción interna cruzada"
+  },
+  "plazas_promocion_interna": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "mediante ingreso por el turno de promoción interna cruzada y sistema selectivo"
+  }
+ }
+}

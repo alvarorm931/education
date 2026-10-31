@@ -1,0 +1,70 @@
+{
+ "proceso": "bopgranada:BOPGR-2023-142-038",
+ "documento": {
+  "id": "bopgranada:BOPGR-2023-142-038",
+  "fuente": "BOP-GRANADA",
+  "url": null,
+  "fecha": "2023-07-28",
+  "huella": "351c3b8f0feb19ec01efb533d7e4f2eb6791fd3a7ee514dd01f9db8b80247ea2"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:59:29+00:00",
+ "lote": "msgbatch_012nGabRM1G4b7cEKJh1Bcx1",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "A1",
+   "cita": "puestos reservados a la subescala de Intervención-Tesorería",
+   "nivel": "sin_signos"
+  },
+  "vinculo": {
+   "valor": "funcionario interino",
+   "cita": "cobertura mediante nombramiento interino de los puestos de Intervención y/o Tesorería",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "cobertura en régimen de interinidad de los puestos reservados a la Subescala de Intervención-Tesorería",
+   "nivel": "sin_signos"
+  },
+  "titulacion": {
+   "valor": "Funcionario de Administración Local con habilitación de carácter nacional",
+   "cita": "cuando no se produzca su cobertura por un Funcionario de Administración Local con habilitación de carácter nacional",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles desde la publicación de la convocatoria y las bases en el BOP y en la sede electrónica",
+   "cita": "por un plazo de veinte días hábiles, durante los cuales los interesados podrán presentar solicitudes",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Solicitudes durante el plazo indicado; el texto no especifica el procedimiento de presentación",
+   "cita": "durante los cuales los interesados podrán presentar solicitudes",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia de Granada y sede electrónica del Ayuntamiento de Lanjarón",
+   "cita": "Publicar la convocatoria y las bases mediante anuncio en el Boletín Oficial de la Provincia y en la sede electrónica",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "no",
+   "cita": "Convocar el proceso de selección para los referidos puestos.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Intervención-Tesorería"
+   ],
+   "cita": "para la provisión de los puestos reservados a la subescala de Intervención-Tesorería"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "Bases y convocatoria en régimen interinidad puesto Intervención-Tesorería"
+  }
+ }
+}

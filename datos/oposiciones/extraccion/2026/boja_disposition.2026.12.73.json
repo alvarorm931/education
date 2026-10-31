@@ -1,0 +1,50 @@
+{
+ "proceso": "boja:disposition.2026.12.73",
+ "documento": {
+  "id": "boja:disposition.2026.12.73",
+  "fuente": "BOJA",
+  "url": "https://juntadeandalucia.es/eboja/2026/12/BOJA26-012-00001-152-01_00331379.pdf",
+  "fecha": "2026-01-20",
+  "huella": "c06f29b0480777e01c3a0db102382f814bb68161038d8b3ed43210d4330855fe"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:42:20+00:00",
+ "lote": "msgbatch_01W17mR271uYfWYL6CuSdriL",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Plaza de personal funcionario (no especificada en el anuncio)"
+   ],
+   "cita": "Personal funcionario.",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "provisión en propiedad como funcionario de carrera, turno de promoción interna",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles, contados a partir del día siguiente a la publicación del anuncio de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes será de veinte días hábiles, contados a partir del día siguiente",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia de Huelva",
+   "cita": "se han publicado íntegramente las bases que han de regir la referida convocatoria",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "oposición",
+   "cita": ""
+  },
+  "plazas_promocion_interna": {
+   "motivo": "cita_no_literal",
+   "valor": 1,
+   "cita": ""
+  }
+ }
+}

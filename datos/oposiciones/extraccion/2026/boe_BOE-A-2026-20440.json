@@ -1,42 +1,81 @@
 {
  "proceso": "boe:BOE-A-2026-20440",
  "documento": {
-  "id": "dogv:491693",
-  "fuente": "DOGV",
-  "url": "https://dogv.gva.es/datos/2026/10/01/pdf/2026_30366_es.pdf",
-  "fecha": "2026-10-01",
-  "huella": "3400d3af8a0e11322127698417e6e21bd7ebe23e52a093f2bd2a295ec4d7b5ab"
+  "id": "bopvalencia:BOPVALENCIA-2026-10960",
+  "fuente": "BOP-VALENCIA",
+  "url": "https://bop.dival.es/bop/downloads?anuncioNumReg=2026/10960&lang=va",
+  "fecha": "2026-09-08",
+  "huella": "b6fd99d4c40800ed86eef6f93e5c40fe7b72ba0f6dc3b5769f0100062f8333b8"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T07:39:56+00:00",
- "lote": "msgbatch_013q7o24qMms8ZNZdwMNkW1L",
+ "extraido": "2026-10-31T14:42:05+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
    "valor": [
-    "técnico/a inclusión social"
+    "Técnico/a Inclusión Social"
    ],
-   "cita": "provisión en propiedad de dos plazas de técnico/a inclusión social, mediante el sistema de concurso-oposición",
+   "cita": "convocatoria del proceso selectivo para la cobertura en propiedad de dos plazas de Técnico/a Inclusión Social",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "A1",
+   "cita": "pertenecientes al grupo de titulación A1, establecido en el artículo 76 del Real Decreto Legislativo 5/2015",
    "nivel": "literal"
   },
   "vinculo": {
-   "valor": "otro",
-   "cita": "provisión en propiedad de dos plazas de técnico/a inclusión social",
+   "valor": "funcionario de carrera",
+   "cita": "Técnico/a Inclusión Social de naturaleza funcionarial mediante el sistema de concurso-oposición por turno libre",
    "nivel": "literal"
   },
   "sistema": {
    "valor": "concurso-oposición",
-   "cita": "mediante el sistema de concurso-oposición, por turno libre, vacantes en la plantilla de personal",
+   "cita": "mediante el sistema de concurso-oposición por turno libre vacantes en la plantilla",
    "nivel": "literal"
   },
   "plazas_total": {
    "valor": 2,
-   "cita": "provisión en propiedad de dos plazas de técnico/a inclusión social",
+   "cita": "cobertura en propiedad de dos plazas de técnico/a de inclusión social, mediante concurso-oposición, por turno libre",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española o supuestos del artículo 57 TRLEBEP; tener cumplidos dieciséis años y no exceder de la edad máxima de jubilación forzosa; capacidad física y psíquica; no estar separado del servicio ni inhabilitado para funciones públicas",
+   "cita": "Tener la nacionalidad española o encontrarse en alguno de los supuestos contemplados en el artículo 57",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "diez días hábiles a contar desde el día siguiente a la publicación de este anuncio en el Boletín Oficial del Estado",
-   "cita": "El plazo de presentación de solicitudes será de diez días hábiles a contar desde el día siguiente",
+   "valor": "10 días hábiles contados a partir del día siguiente al de la publicación de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "en el plazo de 10 días hábiles contados a partir del día siguiente al de la publicación de la convocatoria en el Boletín Oficial del Estado",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "BOPV y tablón de anuncios de la Sede Electrónica del Ayuntamiento de Bétera; extracto en DOGV y BOE",
+   "cita": "se publicarán íntegramente en el BOP de Valencia y Tablón de anuncios de la Sede Electrónica del Ayuntamiento de Bétera",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Primer ejercicio: test de hasta 60 preguntas en 90 minutos (eliminatorio, máximo 25 puntos)",
+    "Segundo ejercicio: resolución por escrito de casos prácticos (eliminatorio, 0 a 35 puntos, mínimo 17,50)",
+    "Fase de concurso de méritos (máximo 40 puntos)"
+   ],
+   "cita": "Primer ejercicio, De carácter obligatorio y eliminatorio. Consistirá en contestar por escrito en un plazo máximo de 90 minutos",
+   "nivel": "literal"
+  },
+  "temas": {
+   "valor": 61,
+   "cita": "TEMA 61 .I Plan de Igualdad de oportunidades entre mujeres y hombres de Bétera 2026 - 2030.",
+   "nivel": "sin_signos"
+  },
+  "meritos": {
+   "valor": "Experiencia profesional (máximo 22 puntos) y méritos académicos: formación (máximo 16 puntos) y conocimiento de valenciano (máximo 2 puntos); concurso máximo 40 puntos",
+   "cita": "La puntuación máxima en la fase de concurso será de 40 puntos, que se distribuirán de acuerdo con el siguiente baremo",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Nombramiento como funcionario en prácticas durante tres meses",
+   "cita": "será nombrada como personal funcionario en prácticas del Ayuntamiento de Bétera durante un periodo de tres meses",
    "nivel": "literal"
   }
  },
@@ -44,7 +83,27 @@
   "plazas_turno_libre": {
    "motivo": "valor_no_en_cita",
    "valor": 2,
-   "cita": "mediante el sistema de concurso-oposición, por turno libre, vacantes en la plantilla de personal"
+   "cita": "mediante el sistema de concurso-oposición por turno libre vacantes en la plantilla municipal"
+  },
+  "titulacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Título de Técnico Superior en Integración Social, o equivalente, o estar en condiciones para su obtención en la fecha de finalización para la presentación de solicitudes",
+   "cita": "Estar en posesión del título de Técnico Superior en Integración Social, o equivalente, o estar en condiciones para su obtención"
+  },
+  "tasa_euros": {
+   "motivo": "cita_no_literal",
+   "valor": 75,
+   "cita": "Las tasas por derechos de examen ascienden al importe de 75,00 €, según lo establecido en la Ordenanza Fiscal nº 19"
+  },
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Procedimiento electrónico «PERSONAL – Selecciones de Personal» en la sede electrónica, con certificado digital",
+   "cita": "Para ello se utilizará procedimiento electrónico “PERSONAL – Selecciones de Personal (Código SIA: 3101339)”, disponible en la Sede electrónica"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, bolsa de trabajo para proveer puestos de la categoría, duración de tres años prorrogables",
+   "cita": "El Tribunal elevará propuesta de constitución de Bolsa de Trabajo para proveer puestos de la categoría"
   }
  }
 }

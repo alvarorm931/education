@@ -1,0 +1,48 @@
+{
+ "proceso": "boe:BOE-A-2025-23658",
+ "documento": {
+  "id": "bopcaceres:BOP-2025-5485",
+  "fuente": "BOP-CACERES",
+  "url": "https://bop.dip-caceres.es/bop/services/anuncios/contenidoPdfIdAnuncio?csv=BOP-2025-5485",
+  "fecha": "2025-11-13",
+  "huella": "0f9160e1388c8661e40352286f9f25b69f8417e0e5be5f248e59ed0db5a88101"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:41:17+00:00",
+ "lote": "msgbatch_01UNq3BNhPPHoTK3TEJzun1h",
+ "no_son_bases": false,
+ "campos": {
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mediante el sistema de concurso-oposición por turno libre",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "cubrir una plaza de Oficial de Policía Local de este Ayuntamiento",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles desde el día siguiente a la publicación del anuncio en el BOE",
+   "cita": "el plazo de presentación de solicitudes, que será de 20 días hábiles a contar desde el día siguiente",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia y sede electrónica del Ayuntamiento",
+   "cita": "Los sucesivos anuncios de esta convocatoria, cuando procedan de conformidad con las bases, se publicarán en el Boletín Oficial de la Provincia",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Oficial de Policía Local",
+   "cita": "aprobar las bases y convocatoria para cubrir una plaza de Oficial de Policía Local"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "mediante el sistema de concurso-oposición por turno libre"
+  }
+ }
+}

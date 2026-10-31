@@ -1,0 +1,45 @@
+{
+ "proceso": "bocm:BOCM-20260911-14",
+ "documento": {
+  "id": "bocm:BOCM-20260911-14",
+  "fuente": "BOCM",
+  "url": "https://www.bocm.es/bocm-20260911-14",
+  "fecha": "2026-09-11",
+  "huella": "2dbf6ec47d0ce55e93f9752cd7678a9a24815f5308d096cade73637632fea0cd"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:42:04+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "Profesores Permanentes Laborales que se relacionan en el Anexo I",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "convocar a concurso de acceso plazas de Docentes Universitarios",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Desde el día siguiente al de publicación de la Resolución en el Boletín Oficial de la Comunidad de Madrid",
+   "cita": "El plazo de presentación de solicitudes se contará a partir del día siguiente al de la publicación",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Portal web de la Universidad, http://www.uam.es/uam/pdi",
+   "cita": "El resto de las actuaciones necesarias para la conclusión de los concursos se irán haciendo públicas en el portal web",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Profesor Permanente Laboral"
+   ],
+   "cita": "convocar a concurso de acceso plazas de Docentes Universitarios: Profesores Permanentes Laborales"
+  }
+ }
+}

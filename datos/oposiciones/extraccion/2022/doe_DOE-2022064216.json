@@ -1,0 +1,95 @@
+{
+ "proceso": "doe:DOE-2022064216",
+ "documento": {
+  "id": "doe:DOE-2022064216",
+  "fuente": "DOE",
+  "url": "https://doe.juntaex.es/otrosFormatos/html.php?xml=2022064216&anio=2022&doe=2490o",
+  "fecha": "2022-12-30",
+  "huella": "1183c5cb58081ac4de8b7128bca959cb053676a91f595521163e0af9080016f0"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:56:08+00:00",
+ "lote": "msgbatch_014eT3dLLVopBnuVgQ4syWD9",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Profesores de Enseñanza Secundaria",
+    "Profesores Especialistas en Sectores Singulares de Formación Profesional",
+    "Profesores de Escuelas Oficiales de Idiomas",
+    "Profesores de Música y Artes Escénicas",
+    "Profesores de Artes Plásticas y Diseño",
+    "Maestros de Taller de Artes Plásticas y Diseño",
+    "Cuerpo de Maestros"
+   ],
+   "cita": "Cuerpos de Profesores de Enseñanza Secundaria, Profesores Especialistas en Sectores Singulares de Formación Profesional",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mediante concurso-oposición, integración por primera vez en listas de espera ordinarias y supletorias",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Titulación exigida según la Orden vigente que establece las titulaciones para listas de espera de personal docente no universitario",
+   "cita": "Se deberá estar en posesión de la titulación o haber satisfecho los derechos de expedición de alguna de las titulaciones",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Cumplir los requisitos generales de participación de la Base IV, mantenidos hasta la toma de posesión como funcionario de carrera",
+   "cita": "Todos los requisitos enumerados en el apartado 4.1.1 de esta Base deberán reunirse en la fecha en que finalicen los plazos de presentación",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Presentación de solicitudes según Base VI.2 a través del portal de PROFEX",
+   "cita": "A fin de facilitar el acceso a la información, esta convocatoria se publicará en https://profex.educarex.es",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Portal de PROFEX (https://profex.educarex.es) y Diario Oficial de Extremadura",
+   "cita": "esta convocatoria se publicará en https://profex.educarex.es, en adelante portal de PROFEX, y en el Diario Oficial de Extremadura",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Parte A: desarrollo por escrito de un tema, no eliminatoria",
+    "Parte B: preparación y exposición de una Unidad Didáctica, no eliminatoria",
+    "Fase de concurso: baremo de méritos"
+   ],
+   "cita": "la fase de oposición constará de una única prueba estructurada en dos partes, que no tendrán carácter eliminatorio",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Experiencia docente previa máximo 7 puntos; formación académica máximo 2 puntos; otros méritos máximo 1 punto",
+   "cita": "el baremo se estructurará en tres bloques, experiencia docente previa con un máximo de siete puntos, formación académica con un máximo de dos puntos y otros méritos",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí: se constituyen listas de espera ordinarias y supletorias en cada especialidad para cubrir plazas docentes",
+   "cita": "se constituirán listas supletorias en cada una de las especialidades incluidas en el Anexo I",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Fase de prácticas tras la fase de oposición, con tutorización y evaluación del profesorado en prácticas",
+   "cita": "el proceso selectivo de ingreso consistirá en un concurso-oposición, existiendo además una fase de prácticas",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "procesos selectivos para ingreso extraordinario para la estabilización del empleo docente"
+  },
+  "plazas_discapacidad": {
+   "motivo": "valor_no_numerico",
+   "valor": "Se reserva un porcentaje de plazas convocadas para personas con grado de discapacidad igual o superior al 33 por ciento",
+   "cita": "se reserva un porcentaje de plazas convocadas para ser cubiertas por personas con un grado de discapacidad igual o superior al 33 por ciento"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "Plazo de presentación de solicitudes según Base VI, contado desde la publicación de la convocatoria",
+   "cita": "Todos los requisitos deberán reunirse en la fecha en que finalicen los plazos de presentación de solicitudes"
+  }
+ }
+}

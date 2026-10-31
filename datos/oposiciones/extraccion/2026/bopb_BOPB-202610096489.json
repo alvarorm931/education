@@ -1,0 +1,103 @@
+{
+ "proceso": "bopb:BOPB-202610096489",
+ "documento": {
+  "id": "bopb:BOPB-202610096489",
+  "fuente": "BOPB",
+  "url": "https://bop.diba.cat/anunci/3947429/bases-i-convocatoria-del-proces-de-seleccio-a-traves-de-plans-locals-d-ocupacio-d-un-peo-de-manteniment-ajuntament-de-la-nou-de-bergueda",
+  "fecha": "2026-05-29",
+  "huella": "4dd4ecef2792bd6da6e9048d77bdcf1875444afef4f7d2d432cf24b2f6364939"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:41:59+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "Naturalesa Personal Laboral Temporal Grup 10 Jornada Completa",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "mitjançant el concurs de mèrits lliure per a realitzar serveis múltiples",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "No se exige titulación específica; se valora formación relacionada con las tareas",
+   "cita": "Titulacions superiors a l'exigida en la convocatòria relacionada amb les tasques",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española (sin perjuicio del art. 57 TREBEP), capacidad funcional, mayoría de edad y no exceder de la edad máxima de jubilación forzosa, no haber sido separado de la Administración ni inhabilitado, permiso de conducir B1 e inscripción previa en la Oficina de Treball",
+   "cita": "Posseir el carnet de conduir B1. f) Trobar-se inscrit prèviament a l’Oficina de Treball.",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Diez días naturales a contar desde el día siguiente a la publicación del anuncio en el BOP",
+   "cita": "serà de deu dies naturals a comptar des de l'endemà a la publicació de l'anunci",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Solicitud acompañada de CV actualizado, DNI, carné de conducir B1, vida laboral y justificante de inscripción como demandante de empleo",
+   "cita": "Les sol·licituds s’hauran d’acompanyar dels documents següents: Currículum Vitae actualitzat",
+   "nivel": "sin_signos"
+  },
+  "publicaciones": {
+   "valor": "BOP, sede electrónica del Ayuntamiento (lanoudebergueda.eadministracio.cat) y tablón de anuncios",
+   "cita": "es publicaran al Butlletí Oficial de la Província i a la seu electrònica d’aquest Ajuntament",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Valoración de méritos de formación (hasta 4 puntos)",
+    "Valoración de experiencia (hasta 6,50 puntos)",
+    "Otros méritos, uso de maquinaria (hasta 1,50 puntos)",
+    "Entrevista (hasta 3 puntos)"
+   ],
+   "cita": "Entrevista: fins a un màxim de 3 punts. Consistirà en mantenir un diàleg amb el tribunal",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Periodo de prueba de dos meses",
+   "cita": "Existirà un període de prova de dos mesos.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Peó de manteniment",
+   "cita": "contractació de la plaça de peó de manteniment en relació amb el programa plans d’ocupació"
+  },
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "10",
+   "cita": "peó de manteniment (grup 10) amb contracte temporal durant 6 mesos"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 1,
+   "cita": "la cobertura d’1 peó de manteniment (grup 10) amb contracte temporal"
+  },
+  "plazas_turno_libre": {
+   "motivo": "cita_no_literal",
+   "valor": 1,
+   "cita": "la cobertura d’1 peó de manteniment (grup 10) amb contracte temporal"
+  },
+  "tasa_euros": {
+   "motivo": "valor_no_en_cita",
+   "valor": 0,
+   "cita": "Sistema selectiu Concurs"
+  },
+  "meritos": {
+   "motivo": "cita_no_literal",
+   "valor": "Formación hasta 4 pts (1 pt por título superior, 0,25 por curso, máx. 1 pt); experiencia hasta 6,50 pts (0,25 por año o fracción superior a 6 meses, máx. 3,25 por cada apartado); otros (maquinaria) hasta 1,50 pts; máximo total 15 puntos",
+   "cita": "Un cop obtinguda la qualificació final dels aspirants, on la puntuació màxima serà de 15 punts"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, para cubrir de forma rápida y ágil el puesto cuando quede vacante por bajas (enfermedad, maternidad, desistimiento, etc.), con vigencia máxima de 1 año",
+   "cita": "Es crearà una borsa de treball a fi de cobrir de manera ràpida i àgil el lloc de treball"
+  }
+ }
+}

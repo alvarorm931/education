@@ -1,0 +1,86 @@
+{
+ "proceso": "boptoledo:BOPTOLEDO-2023-6417",
+ "documento": {
+  "id": "boptoledo:BOPTOLEDO-2023-6417",
+  "fuente": "BOP-TOLEDO",
+  "url": "https://bop.diputoledo.es/webEbop/DocGet?id=23111698;0&insert_number=6417&insert_year=2023",
+  "fecha": "2023-11-23",
+  "huella": "645ab0ae0a8778dec3beb79d127b8155a2c4aa67f07a232572641e86e1b858f2"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:40+00:00",
+ "lote": "msgbatch_01SjfjDqJRwL6bpTvJz2YfVg",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "Electricista (bolsa de trabajo temporal)",
+   "cita": "BASES REGULADORAS PARA LA CREACIÓN DE UNA BOLSA DE TRABAJO TEMPORAL DEL PUESTO DE ELECTRICISTA",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "El sistema será el de concurso de valoración de méritos",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Graduado Escolar, Enseñanza Secundaria Obligatoria, Formación Profesional de primer grado o equivalente",
+   "cita": "Estar en posesión del título de Graduado Escolar, Enseñanza Secundaria Obligatoria, Formación Profesional de primer grado o equivalente",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Registro Electrónico General del Ayuntamiento o lugares del art. 16.4 de la Ley 39/2015, con Anexo I dirigido a la Sra. Alcaldesa-Presidenta",
+   "cita": "se presentarán en el Registro Electrónico General de este Ayuntamiento o en alguno de los lugares previstos en el artículo 16.4",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Experiencia profesional hasta 50 puntos (0,50 por mes trabajado); titulación académica superior hasta 20 puntos; carnet de instalador electricista 20 puntos; cursos de formación hasta 10 puntos",
+   "cita": "Por servicios prestados como personal laboral o personal funcionario en cualquier Administración Pública",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "laboral temporal",
+   "cita": "para disponer del personal laboral necesario para contratar cuando se dé alguna de las siguientes circunstancias"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 0,
+   "cita": "creación de una bolsa de trabajo temporal del puesto de electricista"
+  },
+  "otros_requisitos": {
+   "motivo": "cita_no_literal",
+   "valor": "Nacionalidad española (sin perjuicio del art. 57 TREBEP); capacidad funcional; tener cumplidos 16 años y no exceder la edad de jubilación forzosa; no haber sido separado del servicio público ni inhabilitado; permiso de conducción B; experiencia profesional como electricista de al menos 2 años.",
+   "cita": "Estar en posesión del permiso de conducción B. Tener una experiencia profesional como electricista como mínimo de 2 años."
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "Diez días hábiles contados a partir del día siguiente al de la publicación de las bases en el BOP de Toledo",
+   "cita": "en el plazo de diez días hábiles contados a partir del día siguiente al de la publicación de las presentes bases"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Sede electrónica municipal y tablón de anuncios del Ayuntamiento; bases íntegras en sede y tablón de edictos",
+   "cita": "se publicarán en la sede electrónica municipal y tablón de anuncios del Ayuntamiento"
+  },
+  "ejercicios": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Concurso de valoración de méritos: experiencia profesional (máx. 50 puntos)",
+    "Méritos académicos y otros (máx. 50 puntos): titulación, carnet de instalador, cursos"
+   ],
+   "cita": ""
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "Sí, bolsa de empleo de vigencia indefinida para contrataciones temporales de electricista",
+   "cita": "La bolsa de empleo del proceso que se convoca, tendrá una vigencia de carácter indefinido"
+  },
+  "practicas_o_curso": {
+   "motivo": "cita_no_literal",
+   "valor": "No aparece en el texto",
+   "cita": ""
+  }
+ }
+}

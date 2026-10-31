@@ -1,0 +1,62 @@
+{
+ "proceso": "boc:BOC-A-2023-101-1695",
+ "documento": {
+  "id": "boc:BOC-A-2023-101-1695",
+  "fuente": "BOC",
+  "url": "https://www.gobiernodecanarias.org/boc/2023/101/036.html",
+  "fecha": "2023-05-25",
+  "huella": "187564bd44234c9258b5b5fccbae98618cb1a3fb6117f9e2767993c661397fb2"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:59:09+00:00",
+ "lote": "msgbatch_012nGabRM1G4b7cEKJh1Bcx1",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Psicólogo/a",
+    "Psicopedagogo/a",
+    "Técnico/a de Cultura"
+   ],
+   "cita": "Dos plazas de Psicólogo/a, Grupo de clasificación A, Subgrupo A1.",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "A1",
+   "cita": "Grupo de clasificación A, Subgrupo A1.",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "para la cobertura, por turno libre, mediante concurso de méritos, como personal funcionario",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "para la cobertura, por turno libre, mediante concurso de méritos, como personal funcionario",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles a contar desde el siguiente al de la publicación de este anuncio en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes será de veinte días hábiles a contar desde el siguiente",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia de Santa Cruz de Tenerife, tablón de anuncios y sede electrónica del Ayuntamiento de Los Llanos de Aridane",
+   "cita": "se harán públicos en el Boletín Oficial de la Provincia de Santa Cruz de Tenerife, en el tablón de anuncios y sede electrónica",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 5,
+   "cita": "Dos plazas de Psicólogo/a, Dos plazas de Psicopedagogo/a, Una plaza de Técnico/a de Cultura"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 5,
+   "cita": "para la cobertura, por turno libre, mediante concurso de méritos"
+  }
+ }
+}

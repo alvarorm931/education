@@ -1,0 +1,48 @@
+{
+ "proceso": "bocm:BOCM-20260929-15",
+ "documento": {
+  "id": "bocm:BOCM-20260929-15",
+  "fuente": "BOCM",
+  "url": "https://www.bocm.es/bocm-20260929-15",
+  "fecha": "2026-09-29",
+  "huella": "0b5d782443dec74e4415f16b62ac85114e33aabaf3dbd71bbe0ab80f6c61612c"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:42:03+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
+ "no_son_bases": false,
+ "campos": {
+  "sistema": {
+   "valor": "concurso",
+   "cita": "se ha acordado la convocatoria de plazas de los Cuerpos de funcionarios Docentes Universitarios",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Bases y relación de plazas publicadas en el Boletín Oficial del Estado y en http://www.uam.es/uam/pdi",
+   "cita": "Las bases de la convocatoria y la relación de plazas convocadas figuran publicadas en el “Boletín Oficial del Estado”",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "a partir del día siguiente al de la publicación de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes se contará a partir del día siguiente al de la publicación de la convocatoria",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial del Estado, portal web http://www.uam.es/uam/pdi y lugares indicados; nombramientos en BOCM",
+   "cita": "El resto de las actuaciones necesarias para la conclusión de los concursos se irán haciendo públicas en los lugares anteriormente indicados",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Profesorado titular de Universidad",
+   "cita": "se convocan plazas de los Cuerpos de funcionarios Docentes Universitarios, Profesorado titular de Universidad"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "se convocan plazas de los Cuerpos de funcionarios Docentes Universitarios, Profesorado titular de Universidad"
+  }
+ }
+}

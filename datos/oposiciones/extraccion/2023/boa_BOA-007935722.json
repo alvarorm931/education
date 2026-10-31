@@ -1,0 +1,60 @@
+{
+ "proceso": "boa:BOA-007935722",
+ "documento": {
+  "id": "boa:BOA-007935722",
+  "fuente": "BOA",
+  "url": "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VERDOC&BASE=BOLE&SEC=BUSQUEDA_AVANZADA&DOCN=007935722",
+  "fecha": "2023-09-19",
+  "huella": "6a7d241cf455c340460f1a14ede6c8a048e1cdb12a44b1b18ece269aba0dc9ca"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:47+00:00",
+ "lote": "msgbatch_01SjfjDqJRwL6bpTvJz2YfVg",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Auxiliar Administrativo"
+   ],
+   "cita": "Una plaza de Auxiliar Administrativo, a jornada completa, de la plantilla de Personal Laboral",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C2",
+   "cita": "Categoría Profesional C2, mediante el sistema de concurso, en turno libre",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "de la plantilla de Personal Laboral, Categoría Profesional C2",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "mediante el sistema de concurso, en turno libre (proceso extraordinario de Estabilización de Empleo Temporal)",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "Una plaza de Auxiliar Administrativo, a jornada completa, de la plantilla de Personal Laboral",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles a contar desde el siguiente al de la publicación de esta Resolución en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes será de veinte días hábiles a contar desde el siguiente al de la publicación",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Los sucesivos anuncios se harán públicos en la forma prevista en las propias bases",
+   "cita": "Los sucesivos anuncios referentes a estas convocatorias, cuando procedan de conformidad con las bases, se harán públicos en la forma prevista en las propias bases.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "mediante el sistema de concurso, en turno libre (proceso extraordinario de Estabilización de Empleo Temporal)"
+  }
+ }
+}

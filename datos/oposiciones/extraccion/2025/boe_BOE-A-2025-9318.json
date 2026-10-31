@@ -1,0 +1,53 @@
+{
+ "proceso": "boe:BOE-A-2025-9318",
+ "documento": {
+  "id": "dogv:417788",
+  "fuente": "DOGV",
+  "url": "https://dogv.gva.es/datos/2025/04/23/pdf/2025_9621_es.pdf",
+  "fecha": "2025-04-23",
+  "huella": "72a12fe7714ef8e1dd813c8e129d6422a228da5e89f171764822c566e868e3c6"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:45:48+00:00",
+ "lote": "msgbatch_017vJZdAmjTkBDdH14aLEdCv",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "psicólogo/psicóloga, personal funcionario, escala de administración especial, subescala técnica superior",
+   "cita": "psicólogo/psicóloga, de personal funcionario, escala de administración especial, subescala técnica superior, grupo A",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "A1",
+   "cita": "grupo A, subgrupo A1, por el procedimiento de convocatoria pública",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "cubrir en propiedad una plaza vacante en la plantilla de este ayuntamiento",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "por el procedimiento de convocatoria pública, sistema de oposición, turno libre",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "cubrir en propiedad una plaza vacante en la plantilla de este ayuntamiento",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Quedará abierto cuando aparezca publicado en el Boletín Oficial del Estado el correspondiente anuncio",
+   "cita": "El plazo de presentación de instancias para la citada convocatoria quedará abierta cuando aparezca publicado en el Boletín Oficial del Estado el correspondiente anuncio.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "sistema de oposición, turno libre"
+  }
+ }
+}

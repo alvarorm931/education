@@ -1,50 +1,106 @@
 {
  "proceso": "boe:BOE-A-2026-16049",
  "documento": {
-  "id": "boc:BOC-A-2026-141-2517",
-  "fuente": "BOC",
-  "url": "https://www.gobiernodecanarias.org/boc/2026/141/2517.html",
-  "fecha": "2026-07-15",
-  "huella": "7e909c944eaa4317b0e1a0bbf95e4a252bbf01a7a681698badb15f45c04e0ec7"
+  "id": "boplaspalmas:BOPLASPALMAS-2026-06-29-037",
+  "fuente": "BOP-LASPALMAS",
+  "url": null,
+  "fecha": "2026-06-29",
+  "huella": "ed303664b404591bd6353d72f36b1e76a837a495bec6b5bd28a3a8869380cdfa"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T07:51:43+00:00",
- "lote": "msgbatch_01NvbwpQGcC9vt1x7nWayvXt",
+ "extraido": "2026-10-31T14:41:36+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
-   "valor": "Arquitecto/a Técnico/a de Grado Medio",
-   "cita": "una plaza de Arquitecto/a Técnico/a de Grado Medio, perteneciente a la Escala de Administración Especial",
+   "valor": [
+    "Arquitecto/a Técnico/a de Grado Medio"
+   ],
+   "cita": "para cubrir en propiedad una plaza de Arquitecto/a Técnico/a de Grado Medio, vacante en la plantilla",
    "nivel": "literal"
   },
   "grupo": {
    "valor": "A2",
-   "cita": "Grupo A, Subgrupo A2, mediante el procedimiento de oposición, en turno libre",
+   "cita": "Grupo A, Subgrupo A2, dotada de sueldo, trienios, pagas extraordinarias",
    "nivel": "literal"
   },
   "vinculo": {
    "valor": "funcionario de carrera",
-   "cita": "cubrir en propiedad una plaza de Arquitecto/a Técnico/a de Grado Medio",
+   "cita": "provisión en propiedad como funcionario/a de carrera, por el procedimiento de oposición",
    "nivel": "literal"
   },
   "sistema": {
    "valor": "oposición",
-   "cita": "mediante el procedimiento de selección de oposición por el sistema de acceso en turno libre",
+   "cita": "mediante el sistema de acceso en turno libre de una plaza de Arquitecto/a Técnico/a",
    "nivel": "literal"
   },
   "plazas_total": {
    "valor": 1,
-   "cita": "una plaza de Arquitecto/a Técnico/a de Grado Medio, perteneciente a la Escala de Administración Especial",
+   "cita": "para cubrir en propiedad una plaza de Arquitecto/a Técnico/a de Grado Medio",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Diplomatura/Grado de Arquitecto/a Técnico/a o títulos oficialmente reconocidos como equivalentes",
+   "cita": "Estar en posesión de la titulación, Diplomatura/Grado de Arquitecto/a Técnico/a o títulos oficialmente reconocidos",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española o de la UE (u otros supuestos del art. 57 TREBEP); tener cumplidos 16 años y no exceder la edad de jubilación forzosa; capacidad funcional; no haber sido separado del servicio público ni inhabilitado.",
+   "cita": "Tener cumplidos dieciséis años y no exceder, en su caso, de la edad máxima de jubilación forzosa.",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 30,
+   "cita": "el importe de la tasa correspondiente del derecho a examen, será de TREINTA EUROS (30 euros)",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Devolución de la tasa solo si la exclusión es por causas no imputables al aspirante.",
+   "cita": "procederá la devolución de la tasa por derechos de examen cuando el/a aspirante sea excluido/a por causas no imputables al mismo",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "20 días hábiles a contar desde el siguiente al de la publicación de un extracto de la convocatoria en el Boletín Oficial del Estado",
-   "cita": "El plazo de presentación de solicitudes será de 20 días hábiles a contar desde el siguiente al de la publicación",
+   "valor": "Veinte días hábiles desde el día siguiente a la publicación del extracto de la convocatoria en el BOE",
+   "cita": "El plazo de presentación de instancias será de VEINTE DÍAS HÁBILES, contados a partir del día siguiente",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Registro General del Ayuntamiento (calle Libertad, 50), registro electrónico, Correos u otros lugares del art. 16.4 Ley 39/2015",
+   "cita": "Las solicitudes debidamente cumplimentadas deberán presentarse en el Registro General de este Ayuntamiento",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Boletín Oficial de la Provincia de Las Palmas, tablón de anuncios electrónico en la sede electrónica del Ayuntamiento de Tías",
-   "cita": "se harán públicos en el Boletín Oficial de la Provincia de Las Palmas, en el tablón de anuncios electrónico",
+   "valor": "BOP Las Palmas y tablón de anuncios electrónico de la sede electrónica del Ayuntamiento",
+   "cita": "los sucesivos anuncios dimanantes de esta convocatoria se publicarán en el Boletín Oficial de la Provincia de Las Palmas",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Test de 50 preguntas con tres respuestas alternativas (70 minutos)",
+    "Desarrollo por escrito de un tema de la parte específica elegido por sorteo (una hora y media)",
+    "Supuesto práctico (dos horas)"
+   ],
+   "cita": "Esta fase constará de las siguientes pruebas que se desarrollarán con el orden que se establecen a continuación",
+   "nivel": "literal"
+  },
+  "temas": {
+   "valor": 61,
+   "cita": "Tema 61. Decreto Ley 3/2025, de 21 de abril, para la agilización de la tramitación de licencias urbanísticas",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "No existe fase de concurso; la fase de oposición no tiene méritos valorables.",
+   "cita": "Esta fase constará de las siguientes pruebas que se desarrollarán con el orden que se establecen a continuación",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, lista de reserva de cinco años para nombramientos interinos y sustituciones",
+   "cita": "La Lista de Reserva tendrá una vigencia de cinco años.",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "No se indica periodo de prácticas ni curso selectivo; toma de posesión en el plazo de un mes desde la notificación del nombramiento",
+   "cita": "que deberá tomar posesión en el plazo de UN MES, a contar del siguiente al que le sea notificado el nombramiento",
    "nivel": "literal"
   }
  },
@@ -52,7 +108,7 @@
   "plazas_turno_libre": {
    "motivo": "valor_no_en_cita",
    "valor": 1,
-   "cita": "mediante el procedimiento de oposición, en turno libre"
+   "cita": "mediante el procedimiento de selección de Oposición en turno libre"
   }
  }
 }

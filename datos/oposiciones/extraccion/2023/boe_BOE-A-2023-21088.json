@@ -1,0 +1,62 @@
+{
+ "proceso": "boe:BOE-A-2023-21088",
+ "documento": {
+  "id": "dog:DOG-20230914-AnuncioL428-240823-0001",
+  "fuente": "DOG",
+  "url": "https://www.xunta.gal/dog/Publicados/2023/20230914/AnuncioL428-240823-0001_es.html",
+  "fecha": "2023-09-14",
+  "huella": "9e4ae32fb44740cf370fa47b23d0b6445d69a85d36e54c8a9110ea29d9b29d71"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:58:04+00:00",
+ "lote": "msgbatch_01SjfjDqJRwL6bpTvJz2YfVg",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Trabajador/a social (3 plazas)",
+    "Operario/a de cementerio (1 plaza)",
+    "Ordenanza (1 plaza)"
+   ],
+   "cita": "Tres plazas de trabajador/a social, encuadradas en la escala de Administración especial",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "A2",
+   "cita": "Tres plazas de trabajador/a social, encuadradas en la escala de Administración especial, subescala técnica, subgrupo A2",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "para la cobertura de las siguientes plazas vacantes en la plantilla de personal funcionario en el Ayuntamiento de Lugo",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "se publicaron las bases de la convocatoria de varios procesos para la cobertura de las siguientes plazas",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles, contados desde el día siguiente al de la publicación del correspondiente anuncio en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes será de veinte días hábiles, contados desde el día siguiente al de la publicación del correspondiente anuncio en el Boletín Oficial del Estado.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 5,
+   "cita": "Tres plazas de trabajador/a social, encuadradas en la escala de Administración especial, subescala técnica"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 4,
+   "cita": "Tres plazas de trabajador/a social, encuadradas en la escala de Administración especial, subescala técnica, subgrupo A2, turno libre."
+  },
+  "plazas_discapacidad": {
+   "motivo": "valor_no_en_cita",
+   "valor": 2,
+   "cita": "Una plaza de operario/a de cementerio, encuadrada en la escala de Administración especial, subescala de servicios especiales"
+  }
+ }
+}

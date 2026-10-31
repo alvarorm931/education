@@ -1,0 +1,53 @@
+{
+ "proceso": "boe:BOE-A-2025-24383",
+ "documento": {
+  "id": "doe:DOE-2024082154",
+  "fuente": "DOE",
+  "url": "https://doe.juntaex.es/otrosFormatos/html.php?xml=2024082154&anio=2024&doe=2490o",
+  "fecha": "2024-12-26",
+  "huella": "f013dd68ec0f6dca643db73ea873f2e5ac59a23dbd253ab682296427bcfa2b35"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:40:57+00:00",
+ "lote": "msgbatch_01UNq3BNhPPHoTK3TEJzun1h",
+ "no_son_bases": false,
+ "campos": {
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mediante el sistema de concurso oposición, por el turno libre, de una plaza",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "convocatoria para la cobertura en propiedad de una plaza de Coordinador de Juventud",
+   "nivel": "literal"
+  },
+  "plazas_turno_libre": {
+   "valor": 1,
+   "cita": "mediante el sistema de concurso oposición, por el turno libre, de una plaza",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles contados a partir del día siguiente al de la fecha de publicación de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes será de 20 días hábiles contados a partir del día siguiente",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Coordinador/a de Juventud",
+   "cita": "la cobertura en propiedad de una plaza de Coordinador/a de Juventud, vacante en la plantilla de personal funcionario"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "la plaza de Coordinador/a de Juventud, vacante en la plantilla de personal funcionario"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Boletín Oficial de la Provincia de Cáceres y/o Tablón de Anuncios de la Sede Electrónica del Ayuntamiento de Cáceres, y apartado Ofertas de Empleo de https://sede.caceres.es",
+   "cita": "Los sucesivos anuncios referentes a esta convocatoria se harán públicos en el Boletín Oficial de la Provincia de Cáceres"
+  }
+ }
+}

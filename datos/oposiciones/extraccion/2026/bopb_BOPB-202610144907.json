@@ -1,40 +1,62 @@
 {
  "proceso": "bopb:BOPB-202610144907",
  "documento": {
-  "id": "bopb:BOPB-202610144907",
-  "fuente": "BOPB",
-  "url": "https://bop.diba.cat/anunci/3994173/aprovacio-de-les-bases-reguladores-per-a-la-seleccio-de-personal-laboral-fix-mitjancant-concurs-oposicio-pel-torn-lliure-per-ocupar-una-placa-d-educador-a-tutor-a-d-escola-bressol-ajuntament-de-sentmenat",
+  "id": "dogc:1055610",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1055610",
   "fecha": "2026-10-02",
-  "huella": "5c7e44567d08119c2d69bf79a80e62c1ba10391fa5776dfa6d4c0afb49c1fede"
+  "huella": "db3f729a48d2979c87c8e8c155c15246412e86af9c6127512bca4bcf990a2a55"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T08:03:32+00:00",
- "lote": "msgbatch_013xFoLdqcGqWcqkzh7qrdGg",
+ "extraido": "2026-10-31T14:41:42+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
-   "valor": "Educador/a Tutor/a Escola Bressol",
-   "cita": "Educador/a Tutor/a Escola Bressol, subgrup C1, OPO 2026 (exp. 5662/2026)",
+   "valor": [
+    "Educador/a Tutor/a Escola Bressol"
+   ],
+   "cita": "per ocupar 1 plaça d'Educador/a Tutor/a Escola Bressol, subgrup C1",
    "nivel": "literal"
   },
   "grupo": {
    "valor": "C1",
-   "cita": "Grup C Subgrup C1 Naturalesa Laboral Nomenament Fixe",
+   "cita": "per ocupar 1 plaça d'Educador/a Tutor/a Escola Bressol, subgrup C1",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fixe",
+   "cita": "selecció de personal laboral fixe, mitjançant concurs oposició",
    "nivel": "literal"
   },
   "sistema": {
    "valor": "concurso-oposición",
-   "cita": "Sistema de selecció Concurs-oposició Complement de Destí 20",
+   "cita": "mitjançant concurs oposició, pel torn lliure",
    "nivel": "literal"
   },
   "plazas_total": {
    "valor": 1,
-   "cita": "Núm. de vacants 1 Sistema de selecció Concurs-oposició",
+   "cita": "per ocupar 1 plaça d'Educador/a Tutor/a Escola Bressol",
+   "nivel": "literal"
+  },
+  "plazas_turno_libre": {
+   "valor": 1,
+   "cita": "pel torn lliure per ocupar 1 plaça d'Educador/a",
    "nivel": "literal"
   },
   "titulacion": {
-   "valor": "Cicle Formatiu de Grau Superior d'Educació Infantil o titulació equivalent o superior",
-   "cita": "Estar en possessió de la titulació de Cicle Formatiu de Grau Superior d'Educació Infantil o titulació equivalent o superior",
+   "valor": "Cicle Formatiu de Grau Superior d'Educació Infantil o titulació equivalent o superior, o en condicions d'obtenir-la",
+   "cita": "Estar en possessió de la titulació de Cicle Formatiu de Grau Superior d'Educació Infantil o titulació equivalent",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalitat espanyola o els supòsits previstos per la normativa; tenir setze anys i no excedir l'edat de jubilació forçosa; capacitat funcional; no haver estat separat del servei; títol de manipulador d'aliments; no haver estat condemnat per delictes sexuals (certificat del Registre Central de delinqüents sexuals).",
+   "cita": "Estar en possessió del Títol manipuladora d'aliments.",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Català, nivell de suficiència C1 (MECR)",
+   "cita": "Estar en possessió del certificat de nivell de suficiència de català (nivell C1 d'acord amb el MECR)",
    "nivel": "literal"
   },
   "tasa_euros": {
@@ -42,19 +64,29 @@
    "cita": "el preu de la taxa per a la participació en processos selectius ascendeix a 20,00 euros",
    "nivel": "literal"
   },
-  "exenciones_tasa": {
-   "valor": "Exentas las personas en situación de desempleo que no perciban ninguna prestación contributiva, acreditándolo con certificados del INEM o Servei d'Ocupació de Catalunya y de la Tesorería General de la Seguridad Social.",
-   "cita": "Les persones que es trobin en situació d'atur i que no percebin cap tipus de prestació contributiva",
+  "plazo_solicitudes": {
+   "valor": "Vint dies hàbils comptats a partir de l'endemà de la publicació de l'anunci de la convocatòria en el DOGC",
+   "cita": "en el termini de vint dies hàbils comptats a partir de l'endemà al de la publicació de l'anunci de la convocatòria",
    "nivel": "literal"
   },
-  "plazo_solicitudes": {
-   "valor": "Veinte días hábiles a partir del día siguiente a la publicación del anuncio de la convocatoria en el Diari Oficial de la Generalitat de Catalunya",
-   "cita": "en el termini de vint dies hàbils comptats a partir de l'endemà al de la publicació de l'anunci de la convocatòria en el Diari Oficial",
+  "presentacion": {
+   "valor": "Electrònicamente a la seu electrònica de l'Ajuntament o presencialment amb cita prèvia al Registre General; també per Correus.",
+   "cita": "Els interessats poden formalitzar la sol·licitud de forma telemàtica a través del portal Seu Electrònica",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Seu electrónica del Ayuntamiento (http://sentmenat.eadministracio.cat) y Tablón de anuncios",
-   "cita": "la seu electrònica d'aquest Ajuntament http://sentmenat.eadministracio.cat i en el Tauler d'anuncis",
+   "valor": "Seu electrònica de l'Ajuntament, Tauler d'anuncis, BOPB i DOGC",
+   "cita": "les bases de la convocatòria es publicaran en el Butlletí Oficial de la Província de Barcelona, al Diari Oficial de la Generalitat",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Prova teòrica: qüestionari tipus test de 0 a 20 punts (eliminatori, mínim 10)",
+    "Prova pràctica: supòsit pràctic de 0 a 40 punts (eliminatori, mínim 20)",
+    "Prova de coneixements de llengua catalana (apte/no apte)",
+    "Prova de llengua castellana per a aspirants sense nacionalitat espanyola (apte/no apte)"
+   ],
+   "cita": "La fase d'oposició consistirà en la realització de proves de capacitat i aptitud eliminatòries i obligatòries",
    "nivel": "literal"
   },
   "temas": {
@@ -63,56 +95,26 @@
    "nivel": "literal"
   },
   "meritos": {
-   "valor": "Experiencia profesional (hasta 15 puntos), cursos de formación (hasta 5 puntos), titulación superior a la requerida (hasta 3 puntos), certificado ACTIC (hasta 2 puntos), entrevista (hasta 5 puntos); la fase de concurso puntúa 30 puntos.",
-   "cita": "FASE CONCURS (30 PUNTS): La valoració de la fase de concurs no pot significar més d'un quaranta per cent",
+   "valor": "Experiència professional (fins 15 punts; 7 punts per l'àmbit privat); cursos de formació (fins 5 punts); titulació superior (fins 3 punts); certificat ACTIC (fins 2 punts); entrevista (fins 5 punts).",
+   "cita": "EXPERIÈNCIA PROFESSIONAL (15 PUNTS COM A MÀXIM)",
    "nivel": "literal"
   },
   "bolsa": {
-   "valor": "Sí, se constituye una bolsa de trabajo temporal para cubrir interinidades y sustituciones, con vigencia de 2 años prorrogable 2 años más.",
-   "cita": "la constitució d'una borsa de treball temporal",
+   "valor": "sí, per cobrir interinament places vacants o substitucions; vigència de 2 anys prorrogable per 2 més",
+   "cita": "Els i les aspirants que hagin superat el procés de selecció i no resultin seleccionades pel nomenament, formaran part d'una borsa de treball",
    "nivel": "literal"
   },
   "practicas_o_curso": {
-   "valor": "Periodo de prueba de 2 meses, valorado como apto o no apto",
+   "valor": "Període de prova de 2 mesos, valorat com apte o no apte",
    "cita": "S'establirà un període de prova de 2 mesos, el qual serà valorat com apte o no apte",
    "nivel": "literal"
   }
  },
  "rechazados": {
-  "vinculo": {
+  "exenciones_tasa": {
    "motivo": "cita_no_literal",
-   "valor": "personal laboral fijo",
-   "cita": "Per ocupar una plaça d'Educador/a Tutor/a Escola Bressol, subgrup C1 (OPO 2026)"
-  },
-  "plazas_turno_libre": {
-   "motivo": "cita_no_literal",
-   "valor": 1,
-   "cita": "per torn lliure per ocupar 1 plaça d'Educador/a Tutor/a Escola Bressol"
-  },
-  "otros_requisitos": {
-   "motivo": "cita_no_literal",
-   "valor": "Nacionalidad española o de Estados con libre circulación, o residencia legal en España; capacidad funcional; 16 años cumplidos y no exceder la edad de jubilación forzosa; no haber sido separado del servicio ni inhabilitado; título de manipulador de alimentos; no haber sido condenado por delitos sexuales; castellano nivel B2 para extranjeros no españoles.",
-   "cita": "Estar en possessió del Títol manipuladora d'aliments. No haver estat condemnat per sentència ferma per qualsevol delicte contra la llibertat i indemnitat sexuals"
-  },
-  "idioma_cooficial": {
-   "motivo": "cita_no_literal",
-   "valor": "Catalán, nivel C1 (suficiencia), exigido",
-   "cita": "Estar en possessió del certificat de nivell de suficiència de català (nivell C1 d'acord amb el MECR)"
-  },
-  "presentacion": {
-   "motivo": "cita_no_literal",
-   "valor": "Registro Electrónico General del Ayuntamiento, sede electrónica http://sentmenat.eadministracio.cat, presencialmente con cita previa en el Registro General, u oficinas de Correos",
-   "cita": "Els interessats poden formalitzar la sol·licitud de forma telemàtica a través del portal Seu Electrònica de l'Ajuntament de Sentmenat"
-  },
-  "ejercicios": {
-   "motivo": "cita_no_literal",
-   "valor": [
-    "Prueba teórica tipo test de 0 a 20 puntos, eliminatoria con mínimo 10 puntos",
-    "Prueba práctica de 0 a 40 puntos, eliminatoria con mínimo 20 puntos",
-    "Prueba de conocimiento de lengua catalana (apto/no apto)",
-    "Prueba de conocimiento de lengua castellana para no españoles (apto/no apto)"
-   ],
-   "cita": "La fase d'oposició consistirà en la realització de proves de capacitat i aptitud eliminatòries i obligatòries"
+   "valor": "Exempts les persones en situació d'atur que no perceben cap prestació contributiva, acreditant-ho amb certificats del SEPE/Servei d'Ocupació i de la Tresoreria de la Seguretat Social.",
+   "cita": "Les persones que es trobin en situació d'atur i que no percebin cap tipus de prestació contributiva estaran exempts del pagament"
   }
  }
 }

@@ -1,0 +1,60 @@
+{
+ "proceso": "boib:BOIB-2025-706416",
+ "documento": {
+  "id": "boib:BOIB-2025-706416",
+  "fuente": "BOIB",
+  "url": "https://www.caib.es/eboibfront/es/2025/12166/706416/resolucion-de-la-consejera-de-trabajo-funcion-publ",
+  "fecha": "2025-10-02",
+  "huella": "c423761ded757746f3fc5e4833b616ce569bc7fb8597c8a8058496169cd40c45"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:43:14+00:00",
+ "lote": "msgbatch_01XofVwxKEhyEjSzGog6wsD4",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "cuerpo auxiliar de la Administración general de la Comunidad Autónoma de las Illes Balears"
+   ],
+   "cita": "ingreso, por el turno libre, incluida la reserva para personas con discapacidad, en el cuerpo auxiliar, de la Administración general",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "plazas de personal funcionario de carrera del cuerpo auxiliar del turno libre",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "se aprobaron la convocatoria, las bases, los ejercicios y el temario de las pruebas selectivas para el ingreso",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles, a contar a partir del día siguiente de la publicación de esta Resolución en el Boletín Oficial de las Illes Balears",
+   "cita": "Otorgar un nuevo plazo de presentación de solicitudes de veinte días hábiles a contar a partir del día siguiente",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de las Illes Balears, Sede Electrónica de la Administración de la Comunidad Autónoma de las Illes Balears y Portal del Opositor",
+   "cita": "Publicar esta Resolución en el Boletín Oficial de las Illes Balears, en la Sede Electrónica de la Administración",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 161,
+   "cita": "Mallorca 110 plazas del turno libre, Menorca 6 plazas del turno libre, Eivissa 11 plazas del turno libre, Formentera 1 plaza del turno libre"
+  },
+  "plazas_turno_libre": {
+   "motivo": "cita_no_literal",
+   "valor": 161,
+   "cita": "Mallorca 110 plazas del turno libre, Menorca 6 plazas del turno libre, Eivissa 11 plazas del turno libre, Formentera 1 plaza del turno libre"
+  },
+  "plazas_discapacidad": {
+   "motivo": "valor_no_en_cita",
+   "valor": 8,
+   "cita": "110 plazas del turno libre, 6 de los cuales corresponden a la reserva para personas con discapacidad"
+  }
+ }
+}

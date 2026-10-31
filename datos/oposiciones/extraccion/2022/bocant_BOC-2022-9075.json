@@ -1,0 +1,83 @@
+{
+ "proceso": "bocant:BOC-2022-9075",
+ "documento": {
+  "id": "bocant:BOC-2022-9075",
+  "fuente": "BOC-CANT",
+  "url": "https://boc.cantabria.es/boces/verAnuncioAction.do?idAnuBlob=380225",
+  "fecha": "2022-12-01",
+  "huella": "7785b26d6b5dc159337084e3ee9a1b1239e496783c00b0e40b316533113f2edf"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:01+00:00",
+ "lote": "msgbatch_01B4ETF5xB4buYCHqPiHTXzF",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Profesor Titular de Universidad"
+   ],
+   "cita": "convocar a concurso de acceso plazas de Profesor Titular de Universidad",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "A1",
+   "cita": "concurso de acceso plazas de Profesor Titular de Universidad",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "Los funcionarios de carrera que se encuentren prestando servicios en la Universidad de Cantabria",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "convocar a concurso de acceso plazas de Profesor Titular de Universidad",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 45.81,
+   "cita": "deberán abonar a la Universidad de Cantabria la cantidad de 45,81 euros en concepto de derechos de examen",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "No se contemplan exenciones de la tasa en el texto de las bases.",
+   "cita": "La falta de abono de estos derechos a la finalización del plazo de presentación de instancias no es subsanable",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días naturales desde el día siguiente a la publicación de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes será de 20 días naturales, contados desde el día siguiente",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de anuncios del Rectorado (Pabellón de Gobierno, Santander) y página Web de Concursos PDI de la UC; nombramientos en el BOE y en el Boletín Oficial de Cantabria",
+   "cita": "Dicha resolución se publicará en el tablón de anuncios del Rectorado",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "no",
+   "cita": "Cumplida la presentación de documentos, el Rector procederá a los nombramientos conforme a la propuesta realizada",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Toma de posesión en el plazo máximo de veinte días desde la publicación del nombramiento en el BOE; la plaza debe desempeñarse durante al menos dos años antes de concursar en otra universidad",
+   "cita": "La plaza obtenida tras el concurso de acceso deberá desempeñarse durante dos años, al menos",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Sede Electrónica de la Universidad de Cantabria (procedimiento Convocatorias de PDI Funcionario) con certificado electrónico; sin certificado, opción Presentación Presencial y registro según art. 16.4 Ley 39/2015",
+   "cita": "Las solicitudes se presentarán a través de la Sede Electrónica de la Universidad de Cantabria"
+  },
+  "ejercicios": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Primera prueba: exposición del currículo y del proyecto docente e investigador (máximo 90 minutos) y debate posterior (máximo dos horas)",
+    "Segunda prueba: exposición pública de un tema elegido de entre tres extraídos por sorteo (máximo una hora) y debate posterior (máximo dos horas)"
+   ],
+   "cita": "La primera prueba consistirá en la exposición por el candidato ante la Comisión, durante un tiempo máximo de 90 minutos"
+  }
+ }
+}

@@ -1,0 +1,50 @@
+{
+ "proceso": "dog:DOG-20250919-AnuncioG2017-110925-0001",
+ "documento": {
+  "id": "dog:DOG-20250919-AnuncioG2017-110925-0001",
+  "fuente": "DOG",
+  "url": "https://www.xunta.gal/dog/Publicados/2025/20250919/AnuncioG2017-110925-0001_es.html",
+  "fecha": "2025-09-19",
+  "huella": "2e1438fb4908dc046028b10316adb5cb5feb8c5c453056fe6faae6c98dc345b7"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:42:42+00:00",
+ "lote": "msgbatch_01XofVwxKEhyEjSzGog6wsD4",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Profesor/a ayudante doctor/a"
+   ],
+   "cita": "Profesor/a ayudante doctor/a: 1 plaza.",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "concurso público, por tramitación de urgencia, para la contratación de personal docente e investigador",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "se convoca un concurso público, por tramitación de urgencia, para la contratación",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "Profesor/a ayudante doctor/a: 1 plaza.",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "diez (10) días hábiles, a contar desde el día siguiente al de la publicación del anuncio en el Diario Oficial de Galicia",
+   "cita": "El plazo de presentación de solicitudes es de diez (10) días hábiles, a contar desde el día siguiente al de la publicación",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "tablón electrónico oficial de la UDC y página web http://www.udc.es/pdi/concursos/concursos_contratacion/",
+   "cita": "La información completa puede consultarse en el tablón electrónico oficial de la UDC y en la página web"
+  }
+ }
+}

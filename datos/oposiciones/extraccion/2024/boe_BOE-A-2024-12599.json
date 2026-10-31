@@ -1,0 +1,65 @@
+{
+ "proceso": "boe:BOE-A-2024-12599",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2024-4552",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2024/06/07_109/2024_004552.pdf",
+  "fecha": "2024-06-07",
+  "huella": "ca7902f43e914730090ac856912fcad220f33637c6d003c90b15ff15a2c56cb8"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:54:36+00:00",
+ "lote": "msgbatch_01HRnX7cDVMkRZD7mBamCmLu",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Agente de Policía Local"
+   ],
+   "cita": "PROVISIÓN EN PROPIEDAD DE DOS PLAZAS DE AGENTES DE POLICÍA LOCAL",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 2,
+   "cita": "para cubrir DOS plazas de agente policía local",
+   "nivel": "literal"
+  },
+  "plazas_turno_libre": {
+   "valor": 1,
+   "cita": "una plaza por turno libre y otra plaza por turno de movilidad",
+   "nivel": "literal"
+  },
+  "plazas_promocion_interna": {
+   "valor": 1,
+   "cita": "una plaza por turno libre y otra plaza por turno de movilidad",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles a contar desde el día siguiente a la publicación de este anuncio en el Boletín Oficial del Estado",
+   "cita": "que será de 20 días hábiles a contar desde el día siguiente a la publicación de este anuncio",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "No consta en el texto del anuncio",
+   "cita": "se abre el plazo de presentación de solicitudes, que será de 20 días hábiles",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de Anuncios y sede electrónica del Ayuntamiento; Boletín Oficial de la Provincia cuando proceda",
+   "cita": "Las bases reguladoras que regirán la referida convocatoria se encuentran a disposición de los interesados en el Tablón de Anuncios y sede electrónica",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "proceso selectivo para cubrir DOS plazas de agente policía local"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "mediante sistema de concurso – oposición"
+  }
+ }
+}

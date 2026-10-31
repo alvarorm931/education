@@ -1,0 +1,50 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2026-4095",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2026-4095",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2026/05/29_100/2026_004095.pdf",
+  "fecha": "2026-05-29",
+  "huella": "9a8e1c2deadfbb118b5eded6f97e3b932c8d6380a98afe4916cfb6059a76695f"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:41:44+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Operario/a de limpieza de edificios municipales"
+   ],
+   "cita": "la constitución de una Bolsa de trabajo para la selección de operario/a de limpieza de edificios municipales",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "mediante la contratación temporal de personal para cubrir las posibles vacantes, sustituciones",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "10 días hábiles, contados a partir del día siguiente al de la publicación del presente anuncio en el Boletín Oficial de la Provincia",
+   "cita": "El plazo de presentación de instancias será 10 días hábiles, contados a partir del día siguiente",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Sede electrónica del Ayuntamiento de Benferri y tablón de edictos electrónico",
+   "cita": "Los sucesivos anuncios relacionados con la presente convocatoria se publicarán en la sede electrónica de este ayuntamiento",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, para cubrir posibles vacantes, sustituciones y demás situaciones temporales",
+   "cita": "la constitución de una Bolsa de trabajo para la selección de operario/a de limpieza",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "no consta en el texto"
+  }
+ }
+}

@@ -1,0 +1,50 @@
+{
+ "proceso": "boppontevedra:BOPPONTEVEDRA-2023048839",
+ "documento": {
+  "id": "boppontevedra:BOPPONTEVEDRA-2023048839",
+  "fuente": "BOP-PONTEVEDRA",
+  "url": "https://boppo.depo.gal/web/boppo/detalle/-/boppo/2023/07/21/2023048839",
+  "fecha": "2023-07-21",
+  "huella": "fbc20bdb926fe27452c72998564ade0911879863e935dbd9b5f8a26be23018e9"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:59:34+00:00",
+ "lote": "msgbatch_012nGabRM1G4b7cEKJh1Bcx1",
+ "no_son_bases": false,
+ "campos": {
+  "plazo_solicitudes": {
+   "valor": "10 días hábiles desde el día siguiente a la publicación del anuncio de la convocatoria en el BOP de Pontevedra",
+   "cita": "O prazo de presentación de solicitudes será de 10 días hábiles, contados dende o día seguinte á publicación do anuncio",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Preferentemente a través de la Sede Electrónica del Concello, mediante el trámite habilitado; también de forma presencial en la Oficina de asistencia en materia de registros o en cualquiera de las formas del artículo 16.4 de la Lei 39/2015",
+   "cita": "preferentemente, a través da Sede Electrónica do Concello, a través do trámite habilitado ao efecto",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de anuncios de la Sede Electrónica y portal de Transparencia del Concello de O Rosal",
+   "cita": "As bases publicaranse integramente no taboleiro de anuncios da Sede Electrónica e no portal de Transparencia",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, para formar una bolsa de empleo de limpiadores/as de edificios municipales",
+   "cita": "para a formación dunha bolsa de emprego de limpadores/as de edificios municipais",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Limpiadores/as de edificios municipales"
+   ],
+   "cita": "para la formación de una bolsa de empleo de limpiadores/as de edificios municipales"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "mediante el sistema de concurso oposición"
+  }
+ }
+}

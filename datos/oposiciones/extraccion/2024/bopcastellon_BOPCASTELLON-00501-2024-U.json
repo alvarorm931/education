@@ -1,0 +1,60 @@
+{
+ "proceso": "bopcastellon:BOPCASTELLON-00501-2024-U",
+ "documento": {
+  "id": "bopcastellon:BOPCASTELLON-00501-2024-U",
+  "fuente": "BOP-CASTELLON",
+  "url": null,
+  "fecha": "2024-02-01",
+  "huella": "ed996e6bf9513bc0f580fd727dc6a99a465b326a74ad3c734b382beff7d89faa"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:53:48+00:00",
+ "lote": "msgbatch_01EQ4R6PVKpEwTXzXwPCmspm",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "AGENTE MEDIOAMBIENTAL"
+   ],
+   "cita": "PLAZA: AGENTE MEDIOAMBIENTAL Nº de plazas: 1",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C2",
+   "cita": "Grupo/Subgrupo (o equivalencia): C2",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "Naturaleza: Funcionario Escala (o equivalencia): Administración Especial",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "para la selección y cobertura de una plaza de AGENTE MEDIOAMBIENTAL por el sistema de concurso",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "PLAZA: AGENTE MEDIOAMBIENTAL Nº de plazas: 1",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de Anuncios del Ayuntamiento alojado en la Sede Electrónica del Ayuntamiento de Almenara y Portal de Transparencia del Ayuntamiento de Almenara; BOP de Castellón",
+   "cita": "Tablón de Anuncios del Ayuntamiento alojado en la Sede Electrónica del Ayuntamiento de Almenara",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "por el sistema de concurso, turno libre (estabilización)"
+  },
+  "practicas_o_curso": {
+   "motivo": "cita_no_literal",
+   "valor": "no aparece en el texto",
+   "cita": "no aparece en el texto"
+  }
+ }
+}

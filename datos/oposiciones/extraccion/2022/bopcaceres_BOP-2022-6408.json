@@ -1,0 +1,45 @@
+{
+ "proceso": "bopcaceres:BOP-2022-6408",
+ "documento": {
+  "id": "bopcaceres:BOP-2022-6408",
+  "fuente": "BOP-CACERES",
+  "url": "https://bop.dip-caceres.es/bop/services/anuncios/contenidoPdfIdAnuncio?csv=BOP-2022-6408",
+  "fecha": "2022-12-28",
+  "huella": "0dead6069459b069899099dda8385a2f32e7b2f3a38bd6c63166a0f61a98db50"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:55:52+00:00",
+ "lote": "msgbatch_014eT3dLLVopBnuVgQ4syWD9",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "C2",
+   "cita": "Grupo C, Subgrupo C2, de la Plantilla de personal funcionario del Organismo Autónomo",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "Plantilla de personal funcionario del Organismo Autónomo de Recaudación y Gestión Tributaria",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "provisión de seis plazas de Auxiliares Administrativos/as mediante Concurso de Méritos",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 6,
+   "cita": "convocatoria para la provisión de seis plazas de Auxiliares Administrativos/as mediante Concurso de Méritos",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Auxiliar Administrativo/a"
+   ],
+   "cita": "la convocatoria para la provisión de seis plazas de Auxiliares Administrativos/as mediante Concurso de Méritos"
+  }
+ }
+}

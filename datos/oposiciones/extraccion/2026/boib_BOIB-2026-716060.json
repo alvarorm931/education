@@ -1,0 +1,101 @@
+{
+ "proceso": "boib:BOIB-2026-716060",
+ "documento": {
+  "id": "boib:BOIB-2026-716060",
+  "fuente": "BOIB",
+  "url": "https://www.caib.es/eboibfront/es/2026/12281/716060/resolucion-del-director-gerente-de-la-fundacion-in",
+  "fecha": "2026-05-30",
+  "huella": "2f54d322306b4e88567090235c79a60d48edd81f05184c1e65c3d24c6f40576b"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:41:49+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "C",
+   "cita": "técnico o técnica de gestión de recursos humanos, del grupo profesional C (código L03130017)",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "Tipo de contrato: contrato de interinidad hasta cobertura de plaza mediante Oferta Pública de Empleo",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "Valoración de méritos acreditados por las personas aspirantes, de acuerdo con el siguiente baremo, además de una entrevista personal",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "para cubrir una plaza vacante hasta su cobertura en Oferta Pública de Empleo",
+   "nivel": "literal"
+  },
+  "plazas_turno_libre": {
+   "valor": 1,
+   "cita": "Existe en el IdISBa una reserva del 7 % de los lugares de trabajo para personas con discapacidad, según el Real Decreto Ley 5/2015 del TREBEP. No obstante, esta plaza no está reservada para este fin.",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "título de bachillerato o formación profesional en la rama de administración y finanzas",
+   "cita": "Estar en posesión de un título de bachillerato o formación profesional en la rama de administración y finanzas.",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Tener cumplidos dieciséis años y no exceder de la edad máxima de jubilación forzosa; nacionalidad española o de la UE u otra admitida; capacidad funcional; experiencia mínima de un año en Recursos Humanos; no haber sufrido despido disciplinario ni inhabilitación",
+   "cita": "Acreditar un mínimo de un año de experiencia en el área de Recursos Humanos.",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "catalán, nivel C1",
+   "cita": "Tener el nivel C1 de catalán.",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "15 días hábiles desde el día siguiente de la fecha de publicación de la convocatoria",
+   "cita": "El plazo de recepción de solicitudes será de 15 días hábiles desde el día siguiente de la fecha de publicación de la convocatoria.",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "registro físico de la Fundación o correo electrónico idisba.convocatorias@idisba.es, indicando el código de expediente 2026-34-RLTIDISBA en el asunto",
+   "cita": "Las solicitudes se pueden presentar en el registro físico de la Fundación Instituto de Investigación Sanitaria Illes Balears o mediante el correo electrónico",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "página web del IdISBa (www.idisba.es)",
+   "cita": "Esta resolución se publicará en la página web del IdISBa ( www.idisba.es ).",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Experiencia profesional 4 puntos máx.; formación 4 puntos máx. (titulación superior relacionada, ofimática, gestión de personal y nóminas); conocimiento de idiomas 1 punto máx.",
+   "cita": "Experiencia profesional (4 puntos máx.)",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, bolsa de trabajo durante dos años en el mismo puesto, con el orden de puntuación",
+   "cita": "que implicará la constitución de una bolsa de trabajo para los dos años siguientes en el mismo puesto ofertado",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "técnico o técnica de gestión de recursos humanos",
+   "cita": "la convocatoria para la cobertura de una plaza de técnico o técnica de gestión de recursos humanos, del grupo profesional C"
+  },
+  "plazas_discapacidad": {
+   "motivo": "valor_no_en_cita",
+   "valor": 0,
+   "cita": "No obstante, esta plaza no está reservada para este fin."
+  },
+  "ejercicios": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Valoración de méritos acreditados (baremo de experiencia, formación e idiomas, hasta 9 puntos)",
+    "Entrevista personal sobre temas relacionados con la oferta de trabajo (1 punto máx.)"
+   ],
+   "cita": ""
+  }
+ }
+}

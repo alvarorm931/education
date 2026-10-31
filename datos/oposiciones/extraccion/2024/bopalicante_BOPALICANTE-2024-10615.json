@@ -1,0 +1,60 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2024-10615",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2024-10615",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2024/12/31_250/2024_010615.pdf",
+  "fecha": "2024-12-31",
+  "huella": "3b877155f9d82089e428fea28bc70151b992a1c162692e805131f0fa6a8aaa77"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:49:59+00:00",
+ "lote": "msgbatch_018TPQE8scQozfAUdc1n8RyC",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Palmerera/o"
+   ],
+   "cita": "provisión en propiedad, con personal funcionario de carrera de 4 plazas de Palmerera/o, vacantes en la plantilla municipal",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "provisión en propiedad, con personal funcionario de carrera de 4 plazas de Palmerera/o",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mediante concurso-oposición por turno libre, pertenecientes a la Oferta de Empleo Público",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 4,
+   "cita": "provisión en propiedad, con personal funcionario de carrera de 4 plazas de Palmerera/o",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "diez días hábiles a contar desde el día siguiente a la publicación del extracto de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes para tomar parte en las citadas pruebas selectivas será de diez días hábiles",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de Anuncios del Servicio de Recursos Humanos y página web municipal (http://www.elche.es/recursos-humanos/oferta-publica-de-empleo/)",
+   "cita": "estarán a disposición de las personas interesadas en el Tablón de Anuncios del Servicio de Recursos Humanos",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "no consta",
+   "cita": ""
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 4,
+   "cita": "mediante concurso-oposición por turno libre, pertenecientes a la Oferta de Empleo Público"
+  }
+ }
+}

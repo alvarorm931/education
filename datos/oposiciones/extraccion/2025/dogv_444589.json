@@ -1,0 +1,70 @@
+{
+ "proceso": "dogv:444589",
+ "documento": {
+  "id": "dogv:444589",
+  "fuente": "DOGV",
+  "url": "https://dogv.gva.es/datos/2025/09/10/pdf/2025_36302_es.pdf",
+  "fecha": "2025-09-10",
+  "huella": "f0954439d62a262a6bda496c5e86dd75b25d370a3690c7e7ed3e34bb93ceca5f"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:43:09+00:00",
+ "lote": "msgbatch_01XofVwxKEhyEjSzGog6wsD4",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Técnico/a medio/a de administración especial, trabajador/a social"
+   ],
+   "cita": "convocatoria para la cobertura en propiedad de las siguientes plazas de técnico/a medio/a de administración especial, trabajador/a social",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "A2",
+   "cita": "Servicios Sociales A2 24 14",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "convocatoria para la cobertura en propiedad de las siguientes plazas",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "L-CO (D) AE TMAE trabajador/a social",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "diez días hábiles, a partir del día siguiente a la publicación del anuncio de la convocatoria en el DOGV",
+   "cita": "El plazo de presentación de solicitudes para esta convocatoria será de diez días hábiles, a partir del día siguiente a la publicación",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Modelo disponible en la sede electrónica del Ayuntamiento, adjuntando la documentación del apartado 6º de la base 5ª de las bases específicas",
+   "cita": "según modelo disponible en sede electrónica del Ayuntamiento, adjuntando la documentación a la que se refiere el apartado 6º de la base 5ª",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Los sucesivos anuncios referentes a esta convocatoria se harán públicos en la sede electrónica del Ayuntamiento (https://seuelectronica.vila-real.es), de conformidad con las bases",
+   "cita": "Los sucesivos anuncios referentes a esta convocatoria se harán públicos de conformidad con las bases",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 5,
+   "cita": "AE TMAE trabajador/a social 1-28-8 3-48-9 Servicios Sociales A2"
+  },
+  "plazas_turno_libre": {
+   "motivo": "cita_no_literal",
+   "valor": 5,
+   "cita": "L = Turno libre CO = Concurso-oposición"
+  },
+  "plazas_discapacidad": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "L-CO (D) AE TMAE trabajador/a social"
+  }
+ }
+}

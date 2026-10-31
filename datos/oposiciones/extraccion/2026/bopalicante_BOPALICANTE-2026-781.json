@@ -1,0 +1,50 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2026-781",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2026-781",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2026/02/17_32/2026_000781.pdf",
+  "fecha": "2026-02-17",
+  "huella": "a578a4809678188f40c4c0e1716b942ddda2244c9cbabc046f45ccc0c88eb5c9"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:42:29+00:00",
+ "lote": "msgbatch_01W17mR271uYfWYL6CuSdriL",
+ "no_son_bases": false,
+ "campos": {
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mediante el procedimiento concurso oposición",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "10 días naturales, contados a partir del día siguiente al de la publicación del presente anuncio en el Boletín Oficial de la Provincia",
+   "cita": "El plazo de presentación de instancias será de 10 días naturales, contados a partir del día siguiente",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Arquitecto/a"
+   ],
+   "cita": "Bases Específicas Reguladoras de la Convocatoria 26/01, para la constitución de una Bolsa de Trabajo Temporal de Arquitecto/a"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "laboral temporal",
+   "cita": "constitución de una Bolsa de Trabajo Temporal de Arquitecto/a"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Tablón de Edictos Municipal y Sede Electrónica del Ayuntamiento",
+   "cita": "Los sucesivos anuncios relacionados con la presente convocatoria se publicarán únicamente en el Tablón de Edictos Municipal"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, bolsa de trabajo temporal de Arquitecto/a",
+   "cita": "para la constitución de una Bolsa de Trabajo Temporal de Arquitecto/a"
+  }
+ }
+}

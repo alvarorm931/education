@@ -1,0 +1,50 @@
+{
+ "proceso": "boe:BOE-A-2025-9541",
+ "documento": {
+  "id": "dogv:422048",
+  "fuente": "DOGV",
+  "url": "https://dogv.gva.es/datos/2025/05/05/pdf/2025_13861_es.pdf",
+  "fecha": "2025-05-05",
+  "huella": "9aa93d3fbc03e6639bebe69e3bc5ed892e7d1e5bcf24d4450b479e1c379bb466"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:46:07+00:00",
+ "lote": "msgbatch_017vJZdAmjTkBDdH14aLEdCv",
+ "no_son_bases": false,
+ "campos": {
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "Las bases reguladoras del procedimiento se encuentran publicadas íntegramente",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 4,
+   "cita": "cubrir cuatro plazas de agente de policía local para el Ayuntamiento de Albuixech",
+   "nivel": "literal"
+  },
+  "plazas_turno_libre": {
+   "valor": 2,
+   "cita": "dos por turno libre y dos por turno de movilidad",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles a contar desde el día siguiente a la publicación de este anuncio en el Boletín Oficial de Estado",
+   "cita": "se abre un plazo de presentación de solicitudes que será de veinte días hábiles a contar desde el día siguiente",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia, sede electrónica del ayuntamiento y tablón de anuncios",
+   "cita": "Los sucesivos anuncios de esta convocatoria, cuando procedan de conformidad con las bases, se publicarán en el Boletín Oficial de la Provincia",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "agente de policía local"
+   ],
+   "cita": "convocar cuatro plazas de agente de policía local para el Ayuntamiento de Albuixech"
+  }
+ }
+}

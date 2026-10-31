@@ -1,0 +1,65 @@
+{
+ "proceso": "bopb:BOPB-202610017617",
+ "documento": {
+  "id": "dogc:1035599",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1035599",
+  "fecha": "2026-01-30",
+  "huella": "0b1daa2c9d267c440b207ddb61c07e90a5966c7657ab3c0b5278efe4eade6a15"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:42:19+00:00",
+ "lote": "msgbatch_01W17mR271uYfWYL6CuSdriL",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "administratiu/va"
+   ],
+   "cita": "plaça en règim funcionari, d'administratiu/va, grup C1, de l'Escala d'Administració General",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C1",
+   "cita": "d'administratiu/va, grup C1, de l'Escala d'Administració General",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "plaça en règim funcionari, d'administratiu/va, grup C1",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mitjançant el sistema de concurs oposició, d'una plaça",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "mitjançant el sistema de concurs oposició, d'una plaça en règim funcionari",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles desde el día siguiente a la publicación de las bases en el BOPB",
+   "cita": "El termini de presentació d'instàncies serà de 20 dies hàbils comptats a partir de l'endemà de a publicació de les bases",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Model d'instància normalitzada disponible a l'e-tauler de l'Ajuntament",
+   "cita": "Les bases i el model d'instància normalitzada e podran consultar a l'e-tauler",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, para constituir una bolsa de trabajo",
+   "cita": "i constitució de la borsa de treball corresponent",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "e-tauler del Ayuntamiento (tauler.seu.cat), accesible desde la web municipal (stasusanna.cat)",
+   "cita": "es faran públics mitjançant l'e-tauler, accessibles des del lloc web municipal"
+  }
+ }
+}

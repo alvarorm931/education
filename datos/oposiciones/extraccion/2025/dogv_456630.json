@@ -1,0 +1,83 @@
+{
+ "proceso": "dogv:456630",
+ "documento": {
+  "id": "dogv:456630",
+  "fuente": "DOGV",
+  "url": "https://dogv.gva.es/datos/2025/12/11/pdf/2025_48343_es.pdf",
+  "fecha": "2025-12-11",
+  "huella": "3dcf4d560e99cc144dc5fed605551d9ca20b069e2b17479774c718aafa19215f"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:40:59+00:00",
+ "lote": "msgbatch_01UNq3BNhPPHoTK3TEJzun1h",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "plaza de cuerpo docente universitario (concurso de acceso, profesor titular de universidad)",
+   "cita": "convocar a concurso de acceso, por el sistema de acceso libre, la plaza que se relacionan en el anexo I",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "Estar en posesión de la acreditación para el cuerpo de profesor o profesora titular de universidad",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "Los concursos de acceso a plazas de profesor o profesora titular de universidad constarán de dos pruebas.",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 35,
+   "cita": "el importe de la tasa es de 35 euros",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Exentos: personas con discapacidad igual o superior al 33 %; familias numerosas y monoparentales de categoría especial; víctimas de violencia sobre la mujer. Bonificación del 50 % para familias numerosas y monoparentales de categoría general.",
+   "cita": "Estarán exentos del pago de la tasa: a) Las personas aspirantes con una discapacidad igual o superior al 33 %",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "10 días hábiles a partir del día siguiente al de publicación de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "presentarán, en el plazo de 10 días hábiles a partir del día siguiente al de publicación de la presente convocatoria en el Boletín Oficial del Estado",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Sede electrónica (expediente del aspirante); tablón de anuncios de los locales de la comisión en actuaciones presenciales; página web del Servicio de Selección de Personal",
+   "cita": "Las publicaciones se realizarán en sede electrónica en «Otros documentos generales» del expediente del aspirante",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Primera prueba: exposición oral de méritos e historial académico, docente e investigador (máx. 20 puntos)",
+    "Primera prueba: exposición del proyecto docente (máx. 15 puntos)",
+    "Primera prueba: exposición del proyecto investigador (máx. 15 puntos)",
+    "Segunda prueba: exposición oral de uno de los temas del proyecto docente, elegido por sorteo (máx. 50 puntos)"
+   ],
+   "cita": "Los concursos de acceso a plazas de profesor o profesora titular de universidad constarán de dos pruebas.",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "No se valoran méritos en un baremo: la comisión valora méritos e historial académico, docente e investigador en la primera prueba (hasta 20 puntos) dentro de la prueba oral",
+   "cita": "exposición oral de sus méritos e historial académico, docente e investigador. Tendrá un valor máximo de 20 puntos.",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "no",
+   "cita": "Se incluyen los miembros de la lista de reserva resultante del sorteo",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Toma de posesión en el plazo máximo de 20 días desde el día siguiente a la publicación del nombramiento en el BOE; no se menciona periodo de prácticas",
+   "cita": "En el plazo máximo 20 días, a contar desde el día siguiente de la publicación del nombramiento en el BOE, la o el candidato propuesto deberá tomar posesión.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Telemática a través de la sede electrónica de la Universidad de Alicante (seuelectronica.ua.es), trámite de solicitud de plazas de PDI; no se admiten solicitudes por otra vía",
+   "cita": "deberá ser cumplimentada a través de sede electrónica (https://seuelectronica.ua.es)"
+  }
+ }
+}

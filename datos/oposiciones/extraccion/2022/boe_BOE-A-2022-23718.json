@@ -1,0 +1,115 @@
+{
+ "proceso": "boe:BOE-A-2022-23718",
+ "documento": {
+  "id": "boe:BOE-A-2022-23718",
+  "fuente": "BOE",
+  "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2022-23718",
+  "fecha": "2022-12-29",
+  "huella": "b0e3f40b582f3d20c17bd52ee7794ee7caf90d384bb12382443b33f31396daef"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:56:11+00:00",
+ "lote": "msgbatch_014eT3dLLVopBnuVgQ4syWD9",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Profesores Titulares de Universidad"
+   ],
+   "cita": "Cuerpo: Profesores Titulares de Universidad",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "A1",
+   "cita": "Cuerpo: Profesores Titulares de Universidad",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "concurso público para la estabilización de plazas temporales de Personal Docente e Investigador",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "Número de plazas: 1.",
+   "nivel": "literal"
+  },
+  "plazas_turno_libre": {
+   "valor": 1,
+   "cita": "Número de plazas: 1.",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Título de Doctor",
+   "cita": "Estar en posesión del título de Doctor.",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española o de Estado miembro de la UE (con excepciones); tener 16 años cumplidos y no exceder edad de jubilación; no haber sido separado del servicio ni inhabilitado; no padecer enfermedad o defecto que impida el desempeño; acreditación nacional o habilitación.",
+   "cita": "Tener cumplidos dieciséis años y no exceder, en su caso, de la edad máxima de jubilación forzosa.",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "No aplica",
+   "cita": "Nacionalidad extranjera no comunitaria, cuando, en el Estado de su nacionalidad, a los españoles se les reconozca aptitud legal",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 30,
+   "cita": "Justificante de ingreso o abono en cuenta de la Universidad Rey Juan Carlos de la cantidad de 30 euros en concepto de derechos examen.",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Personas desempleadas con al menos seis meses de antigüedad como demandantes de empleo; personas con discapacidad de grado igual o superior al 33 por 100; víctimas del terrorismo, sus cónyuges e hijos.",
+   "cita": "Las personas con discapacidad de grado igual o superior al 33 por 100.",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Quince días hábiles desde el siguiente a la publicación de la convocatoria en el BOE",
+   "cita": "en el plazo de quince días hábiles, contados a partir del siguiente a la publicación de la presente convocatoria en el «Boletín Oficial del Estado»",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Ante el Rector, según modelo del anexo II, por cualquiera de los procedimientos del artículo 16.4 de la Ley 39/2015",
+   "cita": "remitirán la correspondiente solicitud al Rector de la Universidad Rey Juan Carlos, según modelo establecido en el anexo II",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón electrónico oficial de la URJC (sede.urjc.es/tablon-de-anuncios), además de BOE y BOCM",
+   "cita": "se publicará en el tablón electrónico oficial de la Universidad Rey Juan Carlos",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Primera prueba: exposición oral, máximo hora y media, del historial académico, docente e investigador, proyecto docente e investigador y méritos; eliminatoria",
+    "Debate posterior, máximo tres horas",
+    "Segunda prueba: exposición oral de una hora de uno de los temas del temario del proyecto docente",
+    "Debate posterior sobre la exposición, máximo tres horas"
+   ],
+   "cita": "La primera consistirá en la exposición oral durante un máximo de hora y media del historial académico",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Historial académico, docente e investigador, proyecto docente e investigador y otros méritos; se tendrá en cuenta mayoritariamente la experiencia en el cuerpo, escala o categoría",
+   "cita": "se tendrá en cuenta mayoritariamente la experiencia en el cuerpo, escala, categoría o equivalente.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "Ser funcionario de carrera del cuerpo docente universitario"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "no",
+   "cita": "La comisión podrá declarar desierta la plaza convocada."
+  },
+  "practicas_o_curso": {
+   "motivo": "cita_no_literal",
+   "valor": "No aplica",
+   "cita": "Tomar posesión en el plazo máximo de veinte días hábiles desde la publicación del nombramiento en el BOE"
+  }
+ }
+}

@@ -1,0 +1,75 @@
+{
+ "proceso": "boptenerife:BOPTENERIFE-2024-09-20-005",
+ "documento": {
+  "id": "boptenerife:BOPTENERIFE-2024-09-20-005",
+  "fuente": "BOP-TENERIFE",
+  "url": "http://www.bopsantacruzdetenerife.es/bopsc2/sumario.php?codigopub=1&fecha_mas_reciente=2024-09-20",
+  "fecha": "2024-09-20",
+  "huella": "635780590176d3765978d39ce0c92f06d49b47cd617480d34d7de05b807bca36"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:50:11+00:00",
+ "lote": "msgbatch_01LpyYajgKGX9NyHT1uvynbR",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "Podrá participar el personal laboral fijo del CIATF siempre que reúna los requisitos",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "la provisión de los puestos de trabajo se realizará mediante el procedimiento de concurso ordinario",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 22,
+   "cita": "TOTAL PUESTOS DE TRABAJO OFERTADOS 22",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles a contar desde el día siguiente a la publicación del anuncio de la convocatoria en el Boletín Oficial de la Provincia",
+   "cita": "presentarán su solicitud de participación en el plazo de VEINTE DÍAS HÁBILES, a contar a partir del día siguiente a la publicación",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Registro Electrónico General de la AGE, Registro del CIATF (Calle Leoncio Rodríguez nº 3, Edificio El Cabo) o medios del art. 16.4 Ley 39/2015",
+   "cita": "podrá ser presentada a través del registro electrónico, en la dirección del Registro Electrónico General",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de Anuncios del CIATF y página web www.aguastenerife.org",
+   "cita": "mediante anuncio en el Tablón de Anuncios del CIATF y en la página web institucional www.aguastenerife.org",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Valoración del trabajo desarrollado, experiencia, antigüedad, competencias digitales, cursos de formación, titulaciones académicas, titulaciones profesionales e idiomas, según bases",
+   "cita": "Las bases podrán considerar como méritos, entre otros, la valoración del trabajo desarrollado en los puestos anteriores",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "no",
+   "cita": "Los puestos, una vez adjudicados, no son renunciables, debiendo el empleado/la empleada permanecer dos años como mínimo",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Auxiliar Administrativo/a de la plantilla de personal laboral del Consejo Insular de Aguas de Tenerife (CIATF)"
+   ],
+   "cita": "vinculadas a las plazas de AUXILIAR ADMINISTRATIVO/A de la Plantilla de Personal Laboral del CIATF"
+  },
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "C2",
+   "cita": "se encuadran en el Grupo C, Subgrupo C2"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 0,
+   "cita": "TOTAL PUESTOS DE TRABAJO OFERTADOS 22"
+  }
+ }
+}

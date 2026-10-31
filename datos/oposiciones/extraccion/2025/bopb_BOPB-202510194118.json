@@ -1,0 +1,60 @@
+{
+ "proceso": "bopb:BOPB-202510194118",
+ "documento": {
+  "id": "dogc:1032338",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1032338",
+  "fecha": "2025-12-18",
+  "huella": "355cec7aac06f96392b1a11ccfe5eb607f2f79cbcedcf5e7fdaec2c56c1d124d"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:41:07+00:00",
+ "lote": "msgbatch_01UNq3BNhPPHoTK3TEJzun1h",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Auxiliar d'administració general (auxiliar administratiu/va)"
+   ],
+   "cita": "s'aproven les bases reguladores i es convoca el procés per a la selecció com a funcionaris/àries de carrera, de 36 places d'auxiliar d'administració general",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C2",
+   "cita": "pertany al grup C, subgrup C2, en torn lliure",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "la selecció com a funcionaris/àries de carrera, de 36 places d'auxiliar d'administració general",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "es convoca el procés per a la selecció com a funcionaris/àries de carrera",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 dies hàbils comptats des de l'endemà de la data de publicació d'aquest anunci de convocatòria al Diari Oficial de la Generalitat de Catalunya (DOGC)",
+   "cita": "El termini de presentació d'instàncies serà de 20 dies hàbils comptats des de l'endemà",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Els successius anuncis relacionats amb aquest procés es publicaran a la seu electrònica",
+   "cita": "Els successius anuncis relacionats amb aquest procés es publicaran a la seu electrònica.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 36,
+   "cita": "aquest procés, de 36 places d'auxiliar d'administració general, vinculades al lloc"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 36,
+   "cita": "pertany al grup C, subgrup C2, en torn lliure"
+  }
+ }
+}

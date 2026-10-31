@@ -1,0 +1,64 @@
+{
+ "proceso": "dog:DOG-20240426-AnuncioL345-050424-0001",
+ "documento": {
+  "id": "dog:DOG-20240426-AnuncioL345-050424-0001",
+  "fuente": "DOG",
+  "url": "https://www.xunta.gal/dog/Publicados/2024/20240426/AnuncioL345-050424-0001_es.html",
+  "fecha": "2024-04-26",
+  "huella": "28bfe474310e9e95cf93ceb2b8c646f5ecbb84f9899e7bab9f9b81356871d075"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:54:36+00:00",
+ "lote": "msgbatch_01HRnX7cDVMkRZD7mBamCmLu",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Peón/operario servicios varios",
+    "Subalterno C.P.I.",
+    "Chófer",
+    "Peón/sin calificar",
+    "Socorrista/piscinas"
+   ],
+   "cita": "Una plaza de peón/operario servicios varios a jornada completa de la plantilla de funcionario",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "Una plaza de peón/operario servicios varios a jornada completa de la plantilla de funcionario",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "para cubrir varias plazas, mediante los sistemas de concurso y concurso-oposición",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte (20) días hábiles a contar desde el siguiente al de la publicación de este anuncio en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes será de veinte (20) días hábiles a contar desde el siguiente",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Los sucesivos anuncios referentes a esta convocatoria se harán públicos en la forma prevista en las propias bases",
+   "cita": "Los sucesivos anuncios referentes a esta convocatoria, cuando procedan de conformidad con las bases, se harán públicos en la forma prevista en las propias bases.",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "no",
+   "cita": "Los sucesivos anuncios referentes a esta convocatoria, cuando procedan de conformidad con las bases",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 12,
+   "cita": "Una plaza de peón/operario servicios varios a jornada completa de la plantilla de funcionario"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 12,
+   "cita": "Tres plazas de peón/sin calificar a jornada completa de la plantilla de laboral fijo, mediante el sistema de concurso-oposición, en turno libre"
+  }
+ }
+}

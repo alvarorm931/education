@@ -1,25 +1,27 @@
 {
  "proceso": "bopb:BOPB-202610157965",
  "documento": {
-  "id": "bopb:BOPB-202610157965",
-  "fuente": "BOPB",
-  "url": "https://bop.diba.cat/anunci/4006282/aprovacio-de-la-convocatoria-i-les-bases-reguladores-del-proces-selectiu-per-a-la-cobertura-definitiva-de-quatre-places-administratives-una-reservada-a-persones-amb-discapacitats-de-l-ajuntament-de-sant-fruitos-de-bages-ajuntament-de-sant-fruitos-de-bages",
-  "fecha": "2026-10-28",
-  "huella": "f4ef528c9b8117cf7f0204eaa1cc402f9a56774c25f009c8afda5b981db67164"
+  "id": "dogc:1057962",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1057962",
+  "fecha": "2026-10-29",
+  "huella": "8b74cb0b63c08824f0fc764a816b6e60795be6b2bf9958b1910d30c41d011636"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T07:28:40+00:00",
- "lote": "msgbatch_01QUU3nKnMRQfp1xxi4asvKD",
+ "extraido": "2026-10-31T14:41:37+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
-   "valor": "Administratiu/va (escala d'administració general, subescala administrativa)",
-   "cita": "quatre places administratives, una reservada a persones amb discapacitats, pertanyent a l'escala d'administració general, subescala administrativa",
+   "valor": [
+    "Administratiu/va"
+   ],
+   "cita": "Denominació: Administratiu/va",
    "nivel": "literal"
   },
   "grupo": {
    "valor": "C1",
-   "cita": "subgrup de classificació C1, de la plantilla de personal funcionari de carrera",
+   "cita": "Subgrup de classificació: C1",
    "nivel": "literal"
   },
   "vinculo": {
@@ -28,13 +30,13 @@
    "nivel": "literal"
   },
   "sistema": {
-   "valor": "concurs-oposició",
+   "valor": "concurso-oposición",
    "cita": "mitjançant concurs-oposició i segons el redactat que consta en l'Annex I",
    "nivel": "literal"
   },
   "plazas_total": {
    "valor": 4,
-   "cita": "quatre places administratives, una reservada a persones amb discapacitats, a torn lliure",
+   "cita": "per a la cobertura definitiva de quatre places administratives, una reservada a persones amb discapacitats",
    "nivel": "literal"
   },
   "plazas_discapacidad": {
@@ -44,47 +46,62 @@
   },
   "titulacion": {
    "valor": "Títol de Batxiller, Tècnic especialista (Cicle Formatiu de Grau Superior, FPII), o titulació equivalent",
-   "cita": "títol de Batxiller, Tècnic especialista (Cicle Formatiu de Grau Superior, FPII), o titulació equivalent",
+   "cita": "Estar en possessió, en el moment de la presentació d'instàncies, de la següent titulació: títol de Batxiller",
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Tenir 16 anys i no superar l'edat de jubilació forçosa; nacionalitat espanyola, d'un estat de la UE o els supòsits equivalents; no tenir antecedents penals; capacitat funcional; discapacitat igual o superior al 33% en la plaça reservada.",
+   "valor": "Nacionalitat (espanyola, UE o cònjuge/descendents), tenir 16 anys i no superar l'edat de jubilació forçosa, no tenir antecedents penals, capacitat funcional; discapacitat igual o superior al 33% per a la plaça reservada.",
    "cita": "Haver complert 16 anys i no passar de l'edat de jubilació forçosa en el moment de finalitzar el termini de presentació d'instàncies.",
    "nivel": "literal"
   },
   "idioma_cooficial": {
-   "valor": "Català, nivell C1 (suficiència) o superior, o prova d'aptitud",
+   "valor": "Català, nivell C1 (suficiència) o superior, amb prova si no s'acredita",
    "cita": "acreditar coneixements de llengua catalana equivalents o superiors al nivell de suficiència de llengua catalana (certificat C1)",
    "nivel": "literal"
   },
   "tasa_euros": {
    "valor": 10,
-   "cita": "taxa de 10 euros corresponent als drets d'examen",
+   "cita": "l'autoliquidació del pagament de la taxa de 10 euros corresponent als drets d'examen",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Bonificació del 50% (5 euros) per a les persones aspirants aturades inscrites al Servei d'Ocupació de Catalunya",
+   "cita": "S'aplicarà una bonificació del 50% (5 euros) per aquells/es aspirants que acreditin la condició d'aturats al Servei d'Ocupació de Catalunya",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "Vint dies hàbils",
-   "cita": "El termini de presentació de sol·licituds serà de vint dies hàbils comptats des de l'endemà de la publicació de l'anunci de la convocatòria al Butlletí Oficial de l'Estat.",
+   "valor": "Vint dies hàbils comptats des de l'endemà de la publicació de l'anunci de la convocatòria al Butlletí Oficial de l'Estat",
+   "cita": "El termini de presentació de sol·licituds serà de vint dies hàbils comptats des de l'endemà de la publicació de l'anunci",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Preferentment de forma electrònica a través de la seu electrònica municipal; també presencial en registre o altres mitjans",
-   "cita": "Les sol·licituds per a prendre part en el procés de selecció s'han de presentar en el registre general de l'Ajuntament, preferentment de forma electrònica",
+   "valor": "Preferentment de forma electrònica a través de la sol·licitud en la seu electrònica municipal; també presencial en el registre general o per altres vies previstes",
+   "cita": "preferentment de forma electrònica a través de la sol·licitud que trobareu en el següent enllaç",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tauler d'edictes i seu electrònica municipal, web de l'Ajuntament, Butlletí Oficial de la Província de Barcelona, DOGC i BOE",
+   "cita": "publicar els anuncis o extractes corresponents al Diari Oficial de la Generalitat de Catalunya i al Butlletí Oficial de l'Estat",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Primer: prova de llengua catalana i castellana (si cal), eliminatòria",
-    "Segon: prova teòrica sobre temari general i específic, 30 punts (mínim 15), eliminatòria",
-    "Tercer: prova pràctica i de coneixements del temari específic, 50 punts (mínim 25), eliminatòria",
-    "Fase de concurs (màxim 20 punts): experiència, titulació addicional, ACTIC, formació i entrevista"
+    "Primer: prova de llengua catalana i castellana (si no s'acredita el nivell), apte/no apte",
+    "Segon: prova teòrica sobre temari general i específic, 30 punts, mínim 15",
+    "Tercer: prova pràctica i de coneixements del temari específic, 50 punts, mínim 25",
+    "Fase de concurs: experiència, titulació addicional, ACTIC, formació, entrevista (màxim 20 punts)"
    ],
    "cita": "El segon exercici, tindrà caràcter eliminatori i consistirà en respondre per escrit preguntes curtes i/o preguntes tipus test",
    "nivel": "literal"
   },
   "meritos": {
-   "valor": "Experiència professional (fins a 10 punts), titulació addicional (fins a 1), ACTIC (fins a 1), formació (fins a 5), entrevista (fins a 3)",
-   "cita": "La puntuació màxima de la fase de concurs serà de 20 punts.",
+   "valor": "Experiència professional (màx. 10), titulació addicional (màx. 1), ACTIC o equivalent (màx. 1), formació oficial no reglada (màx. 5), entrevista professional estructurada (màx. 3)",
+   "cita": "EXPERIÈNCIA PROFESSIONAL (fins a un màxim de 10 punts)",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "Sí, per cobrir necessitats temporals i substitució de funcionaris en pràctiques (vigència de dos anys)",
+   "cita": "La borsa tindrà una vigència de dos anys i es podrà prorrogar fins a l'aprovació d'una nova borsa.",
    "nivel": "literal"
   },
   "practicas_o_curso": {
@@ -99,25 +116,10 @@
    "valor": 3,
    "cita": "quatre places administratives, una reservada a persones amb discapacitats, a torn lliure"
   },
-  "exenciones_tasa": {
-   "motivo": "cita_no_literal",
-   "valor": "Bonificació del 50% (5 euros) per aspirants inscrits com a aturats al Servei d'Ocupació de Catalunya",
-   "cita": "S'aplicarà una bonificació del 50% (5 euros) per aquells/es aspirants que acreditin la condició d'aturats"
-  },
-  "publicaciones": {
-   "motivo": "cita_no_literal",
-   "valor": "BOPB, DOGC, BOE, tauler d'edictes i seu electrònica municipal",
-   "cita": "publicació de l'anunci de la convocatòria al Butlletí Oficial de la Província de Barcelona, al Diari Oficial de la Generalitat de Catalunya"
-  },
   "temas": {
-   "motivo": "valor_no_numerico",
-   "valor": "Temari general de 10 temes i temari específic de 30 temes",
-   "cita": "TEMARI GENERAL: 1. La Constitució Espanyola de 1978."
-  },
-  "bolsa": {
    "motivo": "cita_no_literal",
-   "valor": "Sí; borsa per cobrir necessitats temporals i substitució de funcionaris en pràctiques, vigència de dos anys",
-   "cita": "Finalitzat el procés de selecció s'elaborarà per rigorós ordre de puntuació una llista de candidats/es"
+   "valor": 30,
+   "cita": "Temari general de 10 temes i específic de 30 temes"
   }
  }
 }

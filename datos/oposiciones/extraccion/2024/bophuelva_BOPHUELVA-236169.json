@@ -1,0 +1,53 @@
+{
+ "proceso": "bophuelva:BOPHUELVA-236169",
+ "documento": {
+  "id": "bophuelva:BOPHUELVA-236169",
+  "fuente": "BOP-HUELVA",
+  "url": "https://s2.diphuelva.es/portalweb/bope/anuncios/Anuncio_236169_BOP-34_2024.pdf",
+  "fecha": "2024-02-16",
+  "huella": "de734daab9fe78d47e851613c3f261b2320e8ea4fb4f0c645cf715cb10048175"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:54:00+00:00",
+ "lote": "msgbatch_01EQ4R6PVKpEwTXzXwPCmspm",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "Auxiliar Administrativo",
+   "cita": "Puesto: Auxiliar Administrativo.",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "procedimiento de selección para cubrir dos plaza como Funcionario Interino",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 2,
+   "cita": "Número de vacantes: 2.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "C2",
+   "cita": "Grupo: C; Subgrupo C2; Escala de Administración General;"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario interino",
+   "cita": "selección para cubrir dos plaza como Funcionario Interino de Auxiliar Administrativo"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "diez días hábiles, contados a partir del siguiente al de la publicación del Anuncio extracto de la Convocatoria en el Boletín Oficial de la Provincia",
+   "cita": "será de diez días hábiles, contados a partir del siguiente al de la publicación del Anuncio extracto"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Tablón de Anuncios y Sede Electrónica del Ayuntamiento de La Palma del Condado",
+   "cita": "se encuentra en el Tablón de Anuncios y en la Sede Electrónica del Ayuntamiento de la Palma del Condado"
+  }
+ }
+}

@@ -1,47 +1,98 @@
 {
  "proceso": "boe:BOE-A-2026-19728",
  "documento": {
-  "id": "boc:BOC-A-2026-160-2876",
-  "fuente": "BOC",
-  "url": "https://www.gobiernodecanarias.org/boc/2026/160/2876.html",
-  "fecha": "2026-08-11",
-  "huella": "dcda92d21c7422fec522b4deca5132bde87b128c6e8f08baac375740e0b2599a"
+  "id": "boptenerife:BOPTENERIFE-2026-07-13-030",
+  "fuente": "BOP-TENERIFE",
+  "url": "http://www.bopsantacruzdetenerife.es/bopsc2/sumario.php?codigopub=1&fecha_mas_reciente=2026-07-13",
+  "fecha": "2026-07-13",
+  "huella": "94415e5c2823316e216e8f576febc57444fb21a4f4937cca375ec2e9f775f0b9"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T07:40:01+00:00",
- "lote": "msgbatch_013q7o24qMms8ZNZdwMNkW1L",
+ "extraido": "2026-10-31T14:41:34+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
-   "valor": "Auxiliar Administrativo, Escala de Administración General, Subescala Auxiliar",
-   "cita": "dos (2) plazas de Auxiliar Administrativo, pertenecientes a la Escala de Administración General, Subescala Auxiliar",
-   "nivel": "literal"
-  },
-  "grupo": {
-   "valor": "C2",
-   "cita": "Grupo C/Subgrupo C2, vacantes en la plantilla del personal funcionario",
+   "valor": [
+    "Auxiliar Administrativo"
+   ],
+   "cita": "Auxiliar Administrativo, perteneciente a la Escala de Administración General, Subescala Auxiliar, Grupo C / Subgrupo C2",
    "nivel": "literal"
   },
   "vinculo": {
    "valor": "funcionario de carrera",
-   "cita": "vacantes en la plantilla del personal funcionario del Ilmo. Ayuntamiento de San Sebastián de La Gomera",
+   "cita": "vacantes en la plantilla de personal funcionario del Ilmo. Ayuntamiento de San Sebastián de La Gomera",
    "nivel": "literal"
   },
   "sistema": {
    "valor": "concurso-oposición",
-   "cita": "por el sistema de concurso-oposición, de dos (2) plazas de Auxiliar Administrativo",
+   "cita": "para la cobertura, por el sistema de concurso – oposición, de dos (2) plazas de Auxiliar Administrativo",
    "nivel": "literal"
   },
   "plazas_total": {
    "valor": 2,
-   "cita": "dos (2) plazas de Auxiliar Administrativo, pertenecientes a la Escala de Administración General",
+   "cita": "Nº de vacantes 2 Código de plaza presupuestaria 231- 004 925- 014",
    "nivel": "literal"
   },
-  "publicaciones": {
-   "valor": "Boletín Oficial de la Provincia de Santa Cruz de Tenerife y tablón de anuncios, físico y electrónico, en la sede electrónica del Ayuntamiento; extracto en el Boletín Oficial del Estado",
-   "cita": "se harán públicos íntegramente en el Boletín Oficial de la Provincia de Santa Cruz de Tenerife y en el tablón de anuncios",
+  "titulacion": {
+   "valor": "Título de graduado en educación secundaria obligatoria",
+   "cita": "Titulación académica Título de graduado en educación secundaria obligatoria",
    "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Tener cumplidos dieciséis (16) años de edad y no exceder de la edad máxima de jubilación forzosa. Nacionalidad española o de Estados UE/EEE o familiares, o nacional con libre circulación. No haber sido separado del servicio de Administraciones Públicas ni inhabilitado. No padecer enfermedad o discapacidad que impida las funciones.",
+   "cita": "Tener cumplidos dieciséis (16) años de edad y no exceder, en su caso, de la edad máxima de jubilación forzosa.",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 12,
+   "cita": "siendo el importe de DOCE EUROS (12,00.- €), que deberá hacerse efectivo dentro del plazo de presentación de instancia",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "VEINTE (20) DÍAS HÁBILES contados a partir del día siguiente al de la publicación del anuncio de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "en el plazo de VEINTE (20) DÍAS HÁBILES contados a partir del día siguiente al de la publicación del anuncio de la convocatoria en el Boletín Oficial del Estado",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Solicitud (Anexo II) dirigida a la Sra. Alcaldesa-Presidenta, presentada exclusivamente por medios electrónicos",
+   "cita": "se deberán realizar la presentación de las solicitudes y documentación... a través de medios electrónicos, exclusivamente",
+   "nivel": "fragmentos"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia de Santa Cruz de Tenerife, tablón de anuncios municipal y sede electrónica del Ayuntamiento; extracto en el BOE",
+   "cita": "El texto íntegro de estas bases se hará público en el Boletín Oficial de la Provincia de Santa Cruz de Tenerife, en el Boletín Oficial de Canarias, en el tablón de anuncios municipal y en la sede electrónica",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Primer ejercicio: cuestionario tipo test de 40 preguntas sobre el temario, 60 minutos, eliminatorio (mínimo 5 puntos)",
+    "Segundo ejercicio: dos supuestos prácticos, parte escrita de preguntas cortas (60 minutos) y parte informática de reproducción de documento (45 minutos)"
+   ],
+   "cita": "El primer ejercicio consistirá en la contestación de un cuestionario de cuarenta (40) preguntas concretas extraídas del temario",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Fase de concurso, máximo 5 puntos; experiencia profesional máximo 3,5 puntos (0,0584 por mes en Administraciones Públicas Locales en plaza de igual escala y subescala)",
+   "cita": "Fase de concurso: Esta fase tendrá una puntuación máxima de 5 puntos. Su peso será del 20% del total",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, lista de reserva para nombramientos interinos en la misma categoría",
+   "cita": "constitución de una LISTA DE RESERVA para nombramientos interinos en la misma categoría a la convocada",
+   "nivel": "literal"
+  },
+  "temas": {
+   "valor": 40,
+   "cita": "Tema 40.- Ley Orgánica 3/2018, de 5 de diciembre, de Protección de Datos Personales y garantía de los derechos digitales: Tratamiento de datos relativos a infra",
+   "nivel": "contado"
   }
  },
- "rechazados": {}
+ "rechazados": {
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "C2",
+   "cita": "Grupo C / Subgrupo C2 Escala Administración General Subescala Auxiliar"
+  }
+ }
 }

@@ -1,0 +1,92 @@
+{
+ "proceso": "bopt:BOPT-2026-04503",
+ "documento": {
+  "id": "bopt:BOPT-2026-04503",
+  "fuente": "BOPT",
+  "url": "https://www.dipta.cat/bopt/web/anunci/360028/borsa-de-treball-de-jurista-bases-i-convocatoria-consell-comarcal-baix-ebre",
+  "fecha": "2026-05-19",
+  "huella": "226785dc2bfbd858d6197f7b627d8e651acf57c9ad92ad8d2da5b13926fb0c7b"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:41:40+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "Jurista",
+   "cita": "constituir, mitjançant concurs, torn lliure, una borsa de treball de jurista, A1",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "A1",
+   "cita": "borsa de treball de jurista, subgrup professional A1, per cobrir vacants",
+   "nivel": "sin_signos"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "seleccionat mitjançant concurs de mèrits, torn lliure",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Llicenciatura o grau universitari en Dret",
+   "cita": "Estar en possessió del títol de llicenciatura o grau universitari en Dret",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalitat espanyola o de la UE (o aplicable); capacitat funcional; setze anys i no superar l'edat de jubilació; no separat ni inhabilitat per a l'ocupació pública; castellà si no es té nacionalitat espanyola ni de país castellanoparlant; permís de conduir classe B i disponibilitat per desplaçar-se amb vehicle propi.",
+   "cita": "Permís de conduir classe B i disponibilitat per desplaçar-se amb vehicle propi",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Català, nivell C1",
+   "cita": "Posseir el certificat de nivell C1 de català expedit per l'òrgan competent",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 30,
+   "cita": "fixen els drets d'examen per accedir a aquesta convocatòria en la quantitat de 30 euros",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "10 dies hàbils, a comptar des de l'endemà de la publicació de la convocatòria al BOPT",
+   "cita": "El termini per presentar sol·licituds comença l'endemà de la publicació de la convocatòria",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Electrònicament al registre electrònic del Consell, amb certificat digital o signatura electrònica, mitjançant el tràmit «Borsa de treball de terapeuta» de la seu electrònica",
+   "cita": "Les instàncies es presentaran electrònicament: al registre electrònic del Consell",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Fase de coneixement de llengua catalana (si no s'acredita C1; apte/no apte)",
+    "Fase de coneixement de llengua castellana (si escau; apte/no apte)",
+    "Fase de concurs de mèrits (màxim 40 punts)"
+   ],
+   "cita": "Consisteix en la realització d'una prova de coneixements de llengua catalana",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "Sí, borsa de treball de jurista per cobrir vacants, substitucions i contingències temporals, amb vigència de 2 anys",
+   "cita": "La borsa tindrà una vigència de 2 anys des de la seva constitució.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario interino",
+   "cita": "en règim de funcionari interí o personal laboral temporal"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Convocatòria i bases al BOPT, tauler d'anuncis de la seu electrònica i Portal de transparència; resta de publicacions a la seu electrònica del Consell Comarcal",
+   "cita": "La resta de publicacions del procés selectiu es realitzarà a la seu electrònica"
+  },
+  "meritos": {
+   "motivo": "cita_no_literal",
+   "valor": "Experiència laboral (màx. 20 punts): sector públic 0,20 per mes; sector privat 0,10 per mes. Formació (màx. 20 punts): cursos i titulacions relacionades amb el lloc.",
+   "cita": "Experiència laboral (màx. 20 punts). Formació (màxim 20 punts)"
+  }
+ }
+}

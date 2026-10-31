@@ -1,0 +1,53 @@
+{
+ "proceso": "boe:BOE-A-2024-14952",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2024-4917",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2024/06/27_122/2024_004917.pdf",
+  "fecha": "2024-06-27",
+  "huella": "c700d226e4a3df55ee5e29b401bc18104ee9c7afbd0fb7746526b1583361a3ae"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:49:11+00:00",
+ "lote": "msgbatch_016yasWxkCXTWjPAb8LjB3ob",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "personal funcionario de carrera para cubrir dos (2) plazas de Médico/a",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "pruebas selectivas para la provisión de personal funcionario de carrera",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles, contados a partir del día siguiente al de la publicación del extracto de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "será de veinte días hábiles, contados a partir del día siguiente al de la publicación del extracto",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de Edictos de la Corporación, sede electrónica (https://sedeelectronica.alicante.es/edictos.php) y página web municipal (https://w3.alicante.es/rrhh/oposiciones/)",
+   "cita": "estarán a disposición de los interesados en el Tablón de Edictos de la Corporación",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Médico/a",
+   "cita": "convocatoria para cubrir dos (2) plazas de Médico/a por el turno libre"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 2,
+   "cita": "cubrir dos (2) plazas de Médico/a por el turno libre"
+  },
+  "plazas_turno_libre": {
+   "motivo": "cita_no_literal",
+   "valor": 2,
+   "cita": "cubrir dos (2) plazas de Médico/a por el turno libre"
+  }
+ }
+}

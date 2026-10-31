@@ -1,0 +1,50 @@
+{
+ "proceso": "bopt:BOPT-2026-02912",
+ "documento": {
+  "id": "bopt:BOPT-2026-02912",
+  "fuente": "BOPT",
+  "url": "https://www.dipta.cat/bopt/web/anunci/358253/borsa-de-treball-d-inspector-a-de-zona-regulada-bases-i-convocatoria-empresa-municipal-transports-publics-de-tarragona-sa",
+  "fecha": "2026-04-08",
+  "huella": "a4d0b5226c21961d51b3782ea03561e7c587daf4d284c8510dfcc61efd1de1e4"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:40:45+00:00",
+ "lote": "msgbatch_01E3wiYcGL8Lzho48bXWLyyb",
+ "no_son_bases": false,
+ "campos": {
+  "plazo_solicitudes": {
+   "valor": "10 días hábiles desde el día siguiente a la publicación en el BOPT",
+   "cita": "finalitzarà transcorreguts 10 dies hàbils comptats a partir de l'endemà de la publicació",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Sede electrónica de la EMT (www.emtanemambtu.cat), web del Ayuntamiento de Tarragona y web de la EMT",
+   "cita": "Les Bases complertes de la referida convocatòria es troben exposades íntegrament a la seu electrònica de l'EMT",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, para la contratación laboral indefinida y temporal de Inspector/a Zona Regulada",
+   "cita": "aprovat l'ampliació de la borsa de treball d'aspirants per la contractació laboral indefinida i temporal",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Inspector/a de Zona Regulada"
+   ],
+   "cita": "creació d'una borsa de treball per la categoria d'inspectors/es de zona regulada, mitjançant concurs-oposició"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "laboral temporal",
+   "cita": "ampliació de la borsa de treball d'aspirants per la contractació laboral indefinida i temporal de Inspector/a Zona Regulada"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "mitjançant concurs-oposició, per l'EMT de Tarragona, S.A."
+  }
+ }
+}

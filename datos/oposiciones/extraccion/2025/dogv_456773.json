@@ -1,0 +1,55 @@
+{
+ "proceso": "dogv:456773",
+ "documento": {
+  "id": "dogv:456773",
+  "fuente": "DOGV",
+  "url": "https://dogv.gva.es/datos/2025/12/05/pdf/2025_48486_es.pdf",
+  "fecha": "2025-12-05",
+  "huella": "24cfb3de2351a05e59ad3cd945fbd31e9f43b90273d9a3cabbff2cbe281a1502"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:41:21+00:00",
+ "lote": "msgbatch_01UNq3BNhPPHoTK3TEJzun1h",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "agente de la Policía Local de Rafal"
+   ],
+   "cita": "proveer en propiedad una plaza de agente de la Policía Local de Rafal",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "proveer en propiedad una plaza de agente de la Policía Local de Rafal",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "mediante el sistema de oposición, en turno libre",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "proveer en propiedad una plaza de agente de la Policía Local de Rafal",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles, a contar desde el día siguiente a la publicación del extracto de esta convocatoria en el Boletín Oficial del Estado (BOE)",
+   "cita": "El plazo de presentación de solicitudes será de 20 días hábiles, a contar desde el día siguiente a la publicación",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "tablón de edictos y página web oficial del Ayuntamiento de Rafal (https://www.rafal.es), y, en su caso, Boletín Oficial de la Provincia de Alicante",
+   "cita": "Los sucesivos anuncios relativos a la convocatoria se publicarán en el tablón de edictos y en la página web oficial",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "mediante el sistema de oposición, en turno libre"
+  }
+ }
+}

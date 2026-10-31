@@ -1,0 +1,84 @@
+{
+ "proceso": "doe:DOE-2025060902",
+ "documento": {
+  "id": "doe:DOE-2025060902",
+  "fuente": "DOE",
+  "url": "https://doe.juntaex.es/otrosFormatos/html.php?xml=2025060902&anio=2025&doe=560o",
+  "fecha": "2025-03-21",
+  "huella": "f835b66f8039fd1a1d1b9befd5400b1205e1a7867638ffaa97e263b9eec4a572"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:46:33+00:00",
+ "lote": "msgbatch_01MQzQCLMZKxUrrPMAj7dr53",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Profesores de Enseñanza Secundaria",
+    "Profesores Especialistas en Sectores Singulares de Formación Profesional"
+   ],
+   "cita": "Proceso selectivo de ingreso en los Cuerpos de Profesores de Enseñanza Secundaria y Profesores Especialistas en Sectores Singulares de Formación Profesional mediante concurso-oposición",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "Proceso selectivo de ingreso en los Cuerpos de Profesores de Enseñanza Secundaria y Profesores Especialistas",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "establece que el sistema de ingreso en la función pública docente será el de concurso-oposición",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 279,
+   "cita": "se acuerda publicar en la presente convocatoria 279 plazas de la mencionada oferta de empleo",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Requisitos generales y específicos de participación establecidos en la base IV; grado de discapacidad igual o superior al 33 por ciento para la reserva de discapacidad",
+   "cita": "se reserva un porcentaje no inferior al 10 por 100 del total de plazas convocadas para ser cubiertas por personas con un grado de discapacidad igual o superior al 33 por ciento",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "diez días hábiles, contados a partir del siguiente al de la publicación de esta resolución en el Diario Oficial de Extremadura",
+   "cita": "El plazo de presentación de solicitudes será de diez días hábiles, contados a partir del siguiente al de la publicación",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Solicitud telemática obligatoria en el portal https://profex.educarex.es",
+   "cita": "deberá rellenarse de forma telemática, con carácter obligatorio, y que se encontrará disponible en el portal https://profex.educarex.es",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Primera prueba: demostración de conocimientos específicos de la especialidad, en dos partes",
+    "Segunda prueba: parte 2A con programación didáctica y parte 2B de la especialidad"
+   ],
+   "cita": "Tendrá por objeto la demostración de conocimientos específicos de la especialidad a la que se opta",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, listas de espera ordinarias y listas de espera supletorias de las especialidades convocadas",
+   "cita": "Proceso de creación de listas de espera supletorias de los Cuerpos de Profesores de Enseñanza Secundaria",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Fase de prácticas evaluada por una Comisión Calificadora, de al menos veinte horas de actividades de formación, concluida al término del segundo trimestre del siguiente curso escolar",
+   "cita": "Las prácticas se considerarán concluidas al término del segundo trimestre del siguiente curso escolar a la celebración",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_discapacidad": {
+   "motivo": "valor_no_numerico",
+   "valor": "no inferior al 10 por 100 del total de plazas convocadas",
+   "cita": "se reserva un porcentaje no inferior al 10 por 100 del total de plazas convocadas para ser cubiertas por personas"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Diario Oficial de Extremadura y portal PROFEX (https://profex.educarex.es)",
+   "cita": "Previo al inicio del proceso selectivo, se publicará en el portal de https://profex.educarex.es la siguiente información"
+  }
+ }
+}

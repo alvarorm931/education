@@ -1,0 +1,127 @@
+{
+ "proceso": "boib:BOIB-2022-668099",
+ "documento": {
+  "id": "boib:BOIB-2022-668099",
+  "fuente": "BOIB",
+  "url": "https://www.caib.es/eboibfront/es/2022/11670/668099/acuerdo-adoptado-por-el-consejo-de-administracion-",
+  "fecha": "2022-12-22",
+  "huella": "bfc0fa129b3a5892337ea57d26511b6cbde19b36ef6359918fd931c55dda2cc8"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:56:15+00:00",
+ "lote": "msgbatch_014eT3dLLVopBnuVgQ4syWD9",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Facultativo/a superior, especialidad jurídico/a",
+    "Facultativo/a superior, especialidad práctico/a",
+    "Facultativo/a técnico/a, especialidad arquitectura técnica",
+    "Facultativo/a técnico/a, especialidad relaciones laborales",
+    "Técnico/a especialista, especialidad informática",
+    "Administrativo/a",
+    "Administrativo/a, especialidad contabilidad",
+    "Auxiliar administrativo/a",
+    "Técnico/a auxiliar, especialidad informática",
+    "Guardamuelles",
+    "Guardamuelles auxiliar"
+   ],
+   "cita": "Facultativo/a superior, especialidad jurídico/a (grupo A) Título de grado en Derecho o equivalente.",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "A1, A2, B, C1, C2, E / agrupaciones profesionales",
+   "cita": "Facultativo/a superior, especialidad jurídico/a (grupo A) Título de grado en Derecho o equivalente.",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "se establece como procedimiento selectivo el de concurso extraordinario de méritos, incluida la reserva de personas con discapacidad.",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 84,
+   "cita": "concurso extraordinario de méritos para cubrir 84 plazas de personal laboral de Puertos de las Illes Balears",
+   "nivel": "literal"
+  },
+  "plazas_discapacidad": {
+   "valor": 1,
+   "cita": "En esta convocatoria se reserva una plaza para que sea cubierta por una persona que acredite una discapacidad",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española o de otro país con acceso al empleo público; tener 16 años y no haber llegado a la edad de jubilación forzosa; capacidad física y psíquica; no estar separado ni inhabilitado para cargos públicos; no ser personal laboral fijo en la misma categoría; haber pagado la tasa.",
+   "cita": "Tener dieciséis años cumplidos y no haber llegado a la edad de jubilación forzosa.",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Catalán: certificado oficial de conocimiento exigido (nivel según categoría)",
+   "cita": "Contar con los conocimientos de lengua catalana que se indican a continuación",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Personas en desempleo sin percepciones de paro o solo subsidio, y personas con discapacidad igual o superior al 33 %",
+   "cita": "Quedarán exentas del pago de la tasa las personas en situación de desempleo que no reciban percepciones económicas",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Treinta días hábiles desde el día siguiente a la publicación del Acuerdo en el BOIB",
+   "cita": "El plazo de presentación de solicitudes será de treinta días hábiles a partir del día siguiente alde la publicación",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Telemáticamente en la web de Puertos de las Illes Balears; presencial solo mediante requerimiento de subsanación o cita previa en la OAMR",
+   "cita": "Las personas aspirantes deberán presentar una solicitud para cada una de las categorías y especialidades convocadas",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Web de Puertos de las Illes Balears (www.portsib.es) y, en su caso, BOIB",
+   "cita": "Se publicarán en la web de Puertos de las Illes Balears www.portsib.es",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Experiencia previa (máx. 45 p.); otros méritos (máx. 55 p.): formación académica (15), catalán (15), cursos de formación (25), trienios (15), otros méritos (15); suma de otros méritos máx. 55",
+   "cita": "La suma de todos estos méritos no podrá superar los 55 puntos.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "laboral temporal",
+   "cita": "Plazas ocupadas de manera temporal de larga duración por personal laboral."
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 83,
+   "cita": "Turno libre ordinario"
+  },
+  "titulacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Según categoría: grado en Derecho, capitán de la Marina Mercante, arquitectura técnica, relaciones laborales, ciclo formativo de grado superior o medio, bachiller o graduado en educación secundaria",
+   "cita": "Los requisitos de titulación para acceder a cada una de las categorías y especialidades convocadas figuran en el anexo 4."
+  },
+  "tasa_euros": {
+   "motivo": "valor_no_numerico",
+   "valor": {
+    "A": 31.7,
+    "B": 25.36,
+    "C": 19.01,
+    "D": 15.21
+   },
+   "cita": "Grupo A: 31,70 € Grupo B: 25,36 € Grupo C: 19,01 € Grupo D: 15,21 €"
+  },
+  "ejercicios": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Concurso extraordinario de méritos (sin ejercicios escritos)"
+   ],
+   "cita": "Se establece como procedimiento selectivo el de concurso extraordinario de méritos."
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, bolsas preferentes de personal laboral temporal",
+   "cita": "aprobar las bolsas preferentes de personal laboral temporal."
+  }
+ }
+}

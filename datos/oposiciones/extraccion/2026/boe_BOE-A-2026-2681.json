@@ -1,0 +1,48 @@
+{
+ "proceso": "boe:BOE-A-2026-2681",
+ "documento": {
+  "id": "dogc:1034197",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1034197",
+  "fecha": "2026-01-15",
+  "huella": "b35b526d6a4b18a15ea8e52f15f5aa4c10c5c8fa9482d9e7af3eeda5c8011979"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:42:31+00:00",
+ "lote": "msgbatch_01W17mR271uYfWYL6CuSdriL",
+ "no_son_bases": false,
+ "campos": {
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mediante concurso-oposición, turno libre, de veintinueve plazas",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles",
+   "cita": "El plazo de presentación de solicitudes es de 20 días hábiles a contar desde el día siguiente",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Sede electrónica de la corporación y web www.diputaciodetarragona.cat",
+   "cita": "se publicarán únicamente en la Sede electrónica de la corporación y en la web",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "convocatorias siguientes: personal funcionario de carrera de auxiliar administrativo/a"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 30,
+   "cita": "de veintinueve plazas de personal funcionario de carrera"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 30,
+   "cita": "mediante concurso-oposición, turno libre, de veintinueve plazas"
+  }
+ }
+}

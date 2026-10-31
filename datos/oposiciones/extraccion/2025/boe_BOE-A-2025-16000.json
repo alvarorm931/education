@@ -1,0 +1,53 @@
+{
+ "proceso": "boe:BOE-A-2025-16000",
+ "documento": {
+  "id": "dogc:1019467",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1019467",
+  "fecha": "2025-07-14",
+  "huella": "fd973dfac442354531517d443cfd96eb5e95874885e4c0a8c4b92cc58a189374"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:42:46+00:00",
+ "lote": "msgbatch_01XofVwxKEhyEjSzGog6wsD4",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "places de treballador/a social de la plantilla de personal laboral de l'Ajuntament de Reus",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mitjançant el sistema de concurs oposició en torn lliure",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días naturales, contados desde el día siguiente a la publicación del extracto de la convocatoria en el BOE",
+   "cita": "acabarà als 20 dies naturals, comptats a partir de l'endemà de la publicació,en el Butlletí Oficial de l'Estat de l'extracte de la convocatòria",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Los anuncios sucesivos de esta convocatoria se publicarán en el Diari Oficial de la Generalitat de Catalunya",
+   "cita": "Els anuncis successius d'aquesta convocatòria es publicaran en el Diari Oficial de la Generalitat de Catalunya",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "treballador/a social (personal laboral)",
+   "cita": "publica les bases específiques per a la provisió en propietat disset places de treballador/a social de la plantilla de personal laboral"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 17,
+   "cita": "per a la provisió en propietat disset places de treballador/a social"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 17,
+   "cita": "mitjançant el sistema de concurs oposició en torn lliure"
+  }
+ }
+}

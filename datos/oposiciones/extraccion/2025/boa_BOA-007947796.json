@@ -1,0 +1,102 @@
+{
+ "proceso": "boa:BOA-007947796",
+ "documento": {
+  "id": "boa:BOA-007947796",
+  "fuente": "BOA",
+  "url": "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VERDOC&BASE=BOLE&SEC=BUSQUEDA_AVANZADA&DOCN=007947796",
+  "fecha": "2025-03-26",
+  "huella": "8aad193ad7bec0a6d49d1576775eeffc4ae3e5e55eff5b82f1797ff790036b07"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:45:40+00:00",
+ "lote": "msgbatch_017vJZdAmjTkBDdH14aLEdCv",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "Profesor/a Ayudante Doctor/a",
+   "cita": "para la provisión de las plazas de profesores/as ayudantes doctores/as relacionadas en el anexo I",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "otro",
+   "cita": "plazas de profesores/as ayudantes doctores/as relacionadas en el anexo I",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "Los contratos de profesorado en régimen de derecho laboral no están sujetos a condiciones",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "Este concurso se regirá por lo dispuesto en la LOSU",
+   "nivel": "literal"
+  },
+  "plazas_discapacidad": {
+   "valor": 1,
+   "cita": "En el caso de la plaza número 63, la persona solicitante tendrá que poseer un grado de discapacidad igual o superior al 33 por ciento.",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Estar en posesión del título de Doctor",
+   "cita": "Estar en posesión del título de Doctor.",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad indiferente (contratos laborales). Conocimiento adecuado del idioma español, pudiendo exigirse prueba específica. Haber completado menos de seis años como Profesor Ayudante Doctor (computando contratos anteriores según LOU). Requisitos generales de acceso al empleo público (artículos 56 y 57 del EBEP).",
+   "cita": "Tener un conocimiento adecuado del idioma español para el desempeño de la labor docente asignada.",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 20,
+   "cita": "Haber efectuado el pago de veinte euros (20 ) en concepto de derechos de participación.",
+   "nivel": "sin_signos"
+  },
+  "exenciones_tasa": {
+   "valor": "Exentos: discapacidad igual o superior al 33 %; demandantes de empleo al menos un mes antes de la convocatoria, sin rentas superiores al SMI; familias numerosas (exención total categoría especial, 50 % general); víctimas del terrorismo.",
+   "cita": "Tendrán exención de pago: Las personas con un grado de discapacidad igual o superior al 33 por ciento",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Quince días naturales contados a partir del día hábil siguiente a la publicación de la convocatoria en el Boletín Oficial de Aragón",
+   "cita": "El plazo de presentación de solicitudes es de quince días naturales contados a partir del día hábil siguiente",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Formulario oficial electrónico en https://sede.unizar.es/solicita, con certificado electrónico, Cl@ve o claves NIP; currículo y documentación en pdf por la misma vía",
+   "cita": "Las solicitudes, dirigidas al Rector de la Universidad, se presentarán en el formulario oficial electrónico habilitado al efecto.",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón oficial electrónico de la Universidad de Zaragoza (e-TOUZ), https://ae.unizar.es/?app=touz",
+   "cita": "Todos los actos administrativos propios del procedimiento que así lo requieran se publicarán en el Tablón oficial electrónico",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Valoración de méritos del currículo según criterios del área (puntuación obligatoria)",
+    "Entrevista con los candidatos, si la comisión lo acuerda",
+    "Prueba objetiva, solo si los criterios de valoración la prevén"
+   ],
+   "cita": "La Comisión podrá realizar una entrevista con los candidatos que estime oportuno",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Méritos según criterios de valoración publicados por área; acreditación vigente de Profesor Ayudante Doctor como mérito preferente con puntuación adicional del 10 % del máximo",
+   "cita": "la acreditación vigente de Profesor/a Ayudante Doctor/a se considerará como un mérito preferente",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 63,
+   "cita": "Número plaza: 63 plazas ayudantes doctores 2.2 persona solicitante discapacidad"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, lista de espera para suplir renuncias o bajas, válida hasta finalizar el curso académico 2025-2026",
+   "cita": "Los candidatos idóneos que figuren en el orden de prelación pasarán a formar parte de una lista de espera"
+  }
+ }
+}

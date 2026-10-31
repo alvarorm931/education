@@ -1,0 +1,113 @@
+{
+ "proceso": "dog:DOG-20260220-AnuncioU500-100226-0001",
+ "documento": {
+  "id": "dog:DOG-20260220-AnuncioU500-100226-0001",
+  "fuente": "DOG",
+  "url": "https://www.xunta.gal/dog/Publicados/2026/20260220/AnuncioU500-100226-0001_es.html",
+  "fecha": "2026-02-20",
+  "huella": "ca6b41a6a9a2d7f109180e11ed4b5ab1df685e114dfe29137ee03fec4d9fda1a"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:42:16+00:00",
+ "lote": "msgbatch_01W17mR271uYfWYL6CuSdriL",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Profesor/a titular de universidad (concurso de acceso, reserva I3/R3) — plazas nº 1 a 11, áreas de conocimiento indicadas en anexo II"
+   ],
+   "cita": "convocar a concurso por el procedimiento de urgencia las plazas que figuran en el anexo I",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "Este concurso se regirá por la LOSU, el RDCA",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Doctor o doctora, y estar acreditado/a para el cuerpo de profesores titulares de universidad (o habilitado/a)",
+   "cita": "Estar en posesión de la titulación de doctor o doctora",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española o de la UE (con excepciones), edad entre 16 y 70 años, no separación del servicio por expediente, capacidad funcional, contratación como personal investigador doctor en el programa indicado con certificado I3/R3, conocimiento de lengua oficial (español B2 o gallego Celga3).",
+   "cita": "Haber cumplido los dieciséis años de edad y no haber superado los setenta",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 44.17,
+   "cita": "Los derechos de examen para cada plaza (TU2502) serán de 44,17 euros",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Exentas personas con discapacidad igual o superior al 33 % y familias numerosas de categoría especial; bonificación del 50 % familias numerosas general y demandantes de empleo con requisitos",
+   "cita": "estarán exentas del pago las personas con discapacidad igual o superior al 33 %",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Veinte días hábiles desde el día siguiente a la publicación de la convocatoria en el BOE",
+   "cita": "El plazo de presentación de solicitudes será de veinte días hábiles, contados a partir del día siguiente",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de anuncios de la sede electrónica de la Universidad de Vigo y, a título divulgativo, la página web de la Universidad de Vigo",
+   "cita": "se publicarán a título divulgativo en la página electrónica de la Universidad de Vigo",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Acto de presentación de documentación (en soporte electrónico)",
+    "Prueba única: exposición oral de méritos y proyecto docente e investigador (30 min a 2 h) y debate con la comisión (máximo 2 h)"
+   ],
+   "cita": "Los concursos constarán de una única prueba que será pública y obligatoria",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Criterios fijados por la comisión; méritos de experiencia investigadora y de transferencia y de experiencia docente e innovación educativa con el mismo peso, entre el 35 y el 45 % del total de la puntuación",
+   "cita": "los méritos relativos a experiencia investigadora y de transferencia y de experiencia docente y de innovación educativa deben tener el mismo peso",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Toma de posesión en el plazo de veinte días hábiles desde la publicación del nombramiento en el BOE",
+   "cita": "En el plazo máximo de veinte (20) días hábiles, a contar desde el siguiente al de la publicación del nombramiento",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "A1",
+   "cita": "Cuerpo de profesores y profesoras titulares de universidad, en el texto no aparece grupo de clasificación"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "el rector efectuará el nombramiento como funcionario o funcionaria docente de carrera"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 11,
+   "cita": "convocar a concurso por el procedimiento de urgencia las plazas que figuran en el anexo I"
+  },
+  "plazas_discapacidad": {
+   "motivo": "valor_no_en_cita",
+   "valor": 0,
+   "cita": "reserva del 15 % de plazas para investigadores de excelencia con acreditación I3/R3"
+  },
+  "idioma_cooficial": {
+   "motivo": "cita_no_literal",
+   "valor": "Gallego: diploma Celga3 o equivalente o superior (o español B2 para extranjeros no hispanohablantes, al menos una de las dos lenguas)",
+   "cita": "La acreditación del conocimiento del idioma gallego se hará mediante un diploma Celga3 (o equivalente) o superior"
+  },
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Formulario telemático por referencia de plaza y pago de tasas en la aplicación de inscripción; documentación en la sede electrónica de la Universidad de Vigo (procedimiento SPDI)",
+   "cita": "se presentarán los siguientes documentos a través de la sede electrónica de la Universidad de Vigo"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "no",
+   "cita": "no aparece mención a bolsa de empleo o lista de espera"
+  }
+ }
+}

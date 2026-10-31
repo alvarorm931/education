@@ -1,118 +1,55 @@
 {
  "proceso": "bopt:BOPT-2026-08924",
  "documento": {
-  "id": "bopt:BOPT-2026-08924",
-  "fuente": "BOPT",
-  "url": "https://www.dipta.cat/bopt/web/anunci/364682/placa-de-tecnic-a-auxiliar-biblioteca-1-bases-i-convocatoria-ajuntament-castellvell-del-camp",
-  "fecha": "2026-09-30",
-  "huella": "14fc601a35e1482da5fe1199c8fcca08d1bd656122fbbe95cd61302f23612de2"
+  "id": "dogc:1056210",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1056210",
+  "fecha": "2026-10-07",
+  "huella": "4afcde42c414143d9c5be57c5ee4b1c43cb300288c2b2cfb298fb38ec4c42437"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T08:03:35+00:00",
- "lote": "msgbatch_013xFoLdqcGqWcqkzh7qrdGg",
+ "extraido": "2026-10-31T14:41:48+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
-   "valor": "Tècnic/a auxiliar de Biblioteca",
-   "cita": "concurs oposició, per a la cobertura definitiva d’una plaça de tècnic/a auxiliar de la Biblioteca, subgrup C1",
+   "valor": [
+    "técnico/a auxiliar de la Biblioteca"
+   ],
+   "cita": "convocar el proceso selectivo para la contratación laboral fija de un/a técnico/a auxiliar de la Biblioteca",
    "nivel": "literal"
   },
   "grupo": {
    "valor": "C1",
-   "cita": "per a la cobertura definitiva d’una plaça de tècnic/a auxiliar de la Biblioteca, subgrup C1",
+   "cita": "técnico/a auxiliar de la Biblioteca, subgrupo C1, como personal laboral fijo",
    "nivel": "literal"
   },
   "vinculo": {
    "valor": "personal laboral fijo",
-   "cita": "subgrup C1, com a laboral fix i la constitució d’una borsa de treball",
-   "nivel": "literal"
-  },
-  "plazas_turno_libre": {
-   "valor": 1,
-   "cita": "Tècnic/a aux. Biblioteca C/C1 1 Concurs-oposició Parcial",
-   "nivel": "literal"
-  },
-  "titulacion": {
-   "valor": "Batxiller o Tècnic, o algun altre títol equivalent",
-   "cita": "Estar en possessió del títol de Batxiller o de Tècnic, o d’algun altre títol equivalent",
-   "nivel": "literal"
-  },
-  "otros_requisitos": {
-   "valor": "Nacionalitat espanyola o de la UE (o amb lliure circulació); estrangers no hispanoparlants amb nivell C1 de castellà; 16 anys; no excedir edat de jubilació; capacitat funcional; no separat del servei de cap Administració pública.",
-   "cita": "Haver complert setze anys i no excedir de l’edat de jubilació forçosa fixada per la llei",
-   "nivel": "literal"
-  },
-  "tasa_euros": {
-   "valor": 26.78,
-   "cita": "es fixa la quantitat de 26,78 euros pel lloc de treball de tècnic auxiliar de biblioteca",
-   "nivel": "literal"
-  },
-  "exenciones_tasa": {
-   "valor": "Demandants de feina almenys un mes abans de la convocatòria; rendes mensuals inferiors al salari mínim interprofessional.",
-   "cita": "Estan exempts del pagament de la taxa les persones que figurin com a demandants de treball durant el termini",
+   "cita": "subgrupo C1, como personal laboral fijo, y la constitución de una bolsa de trabajo",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "Vint dies hàbils des de l’endemà de la publicació de l’extracte al DOGC",
-   "cita": "El termini per a la presentació de sol·licituds és de vint dies hàbils, comptats des de l’endemà",
+   "valor": "veinte días hábiles a partir del día siguiente al de la última publicación del anuncio en el Diario Oficial de la Generalitat de Catalunya",
+   "cita": "El plazo de presentación de solicitudes finaliza a los veinte días hábiles a partir del día siguiente al de la última publicación del anuncio en el Diario Oficial de la Generalitat de Catalunya.",
    "nivel": "literal"
   },
-  "presentacion": {
-   "valor": "Electrònicament a la seu electrònica de l’Ajuntament o presencialment al Registre General, de dilluns a divendres de 9 a 14 h",
-   "cita": "Electrònicament: Des de la web de l’Ajuntament, en el següent enllaç",
-   "nivel": "literal"
-  },
-  "meritos": {
-   "valor": "Experiència professional (fins a 9 punts); cursos de formació (fins a 1,5 punts); formació reglada (fins a 3 punts); ACTIC (fins a 1,5 punts); entrevista (fins a 1 punt)",
-   "cita": "c.1) Experiència professional: (màxim 9 punts)",
+  "publicaciones": {
+   "valor": "página web municipal y tablón de edictos de la Sede electrónica de la corporación (https://seu-e.cat/ca/web/castellvelldelcamp/)",
+   "cita": "Los anuncios sucesivos relativos a esta convocatoria se publicarán en la página web municipal y en el tablón de edictos de la Sede electrónica de la corporación",
    "nivel": "literal"
   },
   "bolsa": {
-   "valor": "Sí, per cobrir necessitats temporals en places idèntiques, amb vigència de dos anys",
-   "cita": "la constitució d’una borsa de treball, d’acord amb les bases que tot seguit es transcriuen",
-   "nivel": "sin_signos"
-  },
-  "practicas_o_curso": {
-   "valor": "Període de prova de 3 mesos",
-   "cita": "La persona contractada haurà de superar un període de prova de 3 mesos.",
+   "valor": "sí, para constituir una bolsa de trabajo",
+   "cita": "y la constitución de una bolsa de trabajo",
    "nivel": "literal"
   }
  },
  "rechazados": {
   "sistema": {
    "motivo": "cita_no_literal",
-   "valor": "concurso-oposición",
-   "cita": "mitjançant concur s oposició, per a la cobertura definitiva d’una plaça"
-  },
-  "plazas_total": {
-   "motivo": "valor_no_en_cita",
-   "valor": 1,
-   "cita": "Denominació Grup/ Subgrup Nombre vacants Sistema selecció Jornada"
-  },
-  "idioma_cooficial": {
-   "motivo": "cita_no_literal",
-   "valor": "Català, nivell C1",
-   "cita": "Estar en possessió del certificat de coneixements de llengua catalana, certificat C1"
-  },
-  "publicaciones": {
-   "motivo": "cita_no_literal",
-   "valor": "Tauler d’edictes i anuncis de l’Ajuntament, pàgina web i BOPT; la llista d’admesos a la web municipal",
-   "cita": "La resta de publicacions del procés selectiu es realitzarà al taulell d’anuncis de l’Ajuntament"
-  },
-  "ejercicios": {
-   "motivo": "cita_no_literal",
-   "valor": [
-    "Primer exercici: qüestionari de 50 preguntes tipus test, una hora (eliminatori, 10 punts)",
-    "Segon exercici: prova pràctica amb dos casos d’entre tres, dues hores (eliminatori, 24 punts)",
-    "Fase de concurs: experiència, formació, titulació i ACTIC (16 punts)",
-    "Entrevista sobre aspectes curriculars (fins a 1 punt)"
-   ],
-   "cita": "Consistirà en respondre per escrit, en un període màxim d’una hora, un qüestionari de 50 preguntes"
-  },
-  "temas": {
-   "motivo": "valor_no_en_cita",
-   "valor": 40,
-   "cita": "ANNEX I. Temari 1. La Constitució espanyola de 1978"
+   "valor": "oposición",
+   "cita": ""
   }
  }
 }

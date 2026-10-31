@@ -1,0 +1,60 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2022-7050",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2022-7050",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2022/09/27_184/2022_007050.pdf",
+  "fecha": "2022-09-27",
+  "huella": "2241611b1a2081be3a81d6e26ab606d049f917fa060a198c2fd72b599e5193fe"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:12+00:00",
+ "lote": "msgbatch_01B4ETF5xB4buYCHqPiHTXzF",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "provisión con carácter temporal, en Comisión de Servicios voluntaria",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "Formulario aportación de méritos",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Agente de la Policía Local"
+   ],
+   "cita": "dos puestos vacantes de agente de la policía local del Ayuntamiento de Onil"
+  },
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "C1",
+   "cita": "clasificados en el grupo C1, de la Escala de Administración Especial"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 2,
+   "cita": "aprobar las bases específicas y la convocatoria para la provisión con carácter temporal"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "veinte días hábiles desde la publicación del extracto de esta convocatoria en el Boletín Oficial de la Provincia de Alicante",
+   "cita": "Las solicitudes se presentarán en el plazo de veinte días hábiles desde la publicación del extracto"
+  },
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Instancias disponibles en la sede electrónica del Ayuntamiento de Onil (www.onil.es), Tablón de Anuncios, sección Instancias",
+   "cita": "Las instancias para participar en estas pruebas están disponibles en la web municipal"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Tablón tradicional y web municipal (www.onil.es), sede electrónica, Tablón de Anuncios, sección Empleo",
+   "cita": "Las bases de la presente convocatoria se encuentran publicadas en el tablón tradicional y en la web municipal"
+  }
+ }
+}

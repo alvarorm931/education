@@ -1,24 +1,17 @@
 {
  "proceso": "boe:BOE-A-2026-15497",
  "documento": {
-  "id": "boc:BOC-A-2026-136-2413",
-  "fuente": "BOC",
-  "url": "https://www.gobiernodecanarias.org/boc/2026/136/2413.html",
-  "fecha": "2026-07-08",
-  "huella": "8153028360902bb2452997bf31149b1235eb4056f9338fa475913d4dfc41e38b"
+  "id": "boptenerife:BOPTENERIFE-2026-06-17-028",
+  "fuente": "BOP-TENERIFE",
+  "url": "http://www.bopsantacruzdetenerife.es/bopsc2/sumario.php?codigopub=1&fecha_mas_reciente=2026-06-17",
+  "fecha": "2026-06-17",
+  "huella": "c17f48ba79ea1c97f52c7e2382d3f954cc33450bbf35471a093f57bae97963c5"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T07:51:57+00:00",
- "lote": "msgbatch_01NvbwpQGcC9vt1x7nWayvXt",
+ "extraido": "2026-10-31T14:41:51+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
  "no_son_bases": false,
  "campos": {
-  "denominacion": {
-   "valor": [
-    "Policía Local (Escala de Administración Especial, Subescala de Servicios Especiales, Escala Básica)"
-   ],
-   "cita": "tres (3) plazas de Policía Local, pertenecientes a la Escala de la Administración Especial, Subescala de Servicios Especiales",
-   "nivel": "literal"
-  },
   "grupo": {
    "valor": "C1",
    "cita": "Grupo C, Subgrupo C1",
@@ -31,75 +24,84 @@
   },
   "sistema": {
    "valor": "oposición",
-   "cita": "la selección se llevará a cabo mediante el sistema de oposición libre",
+   "cita": "OPOSICIÓN LIBRE, PERTENECIENTE A LA ESCALA DE ADMINISTRACIÓN ESPECIAL",
    "nivel": "literal"
   },
-  "plazas_total": {
+  "plazas_turno_libre": {
    "valor": 3,
-   "cita": "la provisión como personal funcionario de carrera de tres (3) plazas de Policía Local",
+   "cita": "BASES DE LA CONVOCATORIA PARA LA SELECCIÓN DE TRES (3) PLAZAS DE POLICÍA LOCAL, MEDIANTE EL PROCEDIMIENTO DE OPOSICIÓN LIBRE",
    "nivel": "literal"
   },
   "titulacion": {
    "valor": "Título de Bachiller o Técnico o equivalente, o en condiciones de obtenerlo al terminar el plazo de instancias",
-   "cita": "Estar en posesión del Título de Bachiller o Técnico o equivalente",
+   "cita": "Estar en posesión del Título de Bachiller o Técnico o equivalente, o, en su defecto, estar en condiciones de obtenerlo",
    "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Nacionalidad española; mayor de edad y no exceder la edad para pasar a segunda actividad; permiso de conducción A2 y B (o en condiciones de obtenerlo antes de la toma de posesión); condiciones físicas acreditadas con certificado médico oficial; carecer de antecedentes penales o tenerlos cancelados",
+   "valor": "Nacionalidad española; mayor de edad y no exceder la edad para segunda actividad; carecer de antecedentes penales o tenerlos cancelados; permiso de conducción A2 y B; condiciones físicas para las pruebas físicas; no haber sido separado de la Administración.",
    "cita": "Tener la nacionalidad española. Ser mayor de edad y no exceder de la edad establecida para el pase a la situación de segunda actividad",
    "nivel": "sin_signos"
   },
   "plazo_solicitudes": {
-   "valor": "veinte (20) días hábiles, contados desde el siguiente al de la publicación del anuncio-extracto de la convocatoria en el Boletín Oficial del Estado",
-   "cita": "El plazo de presentación de instancias será de veinte (20) días hábiles, contados a partir del siguiente",
+   "valor": "veinte (20) días hábiles, contados a partir del siguiente al de la publicación del anuncio extracto de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de instancias será de VEINTE (20) DÍAS HÁBILES, contados a partir del siguiente al de la publicación",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Registro Electrónico General del Ayuntamiento (sede electrónica) o en los lugares del artículo 16 de la Ley 39/2015",
+   "cita": "Quienes deseen participar en la presente convocatoria deberán presentar su solicitud a través del Registro Electrónico General",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Boletín Oficial de la Provincia de Santa Cruz de Tenerife, Boletín Oficial de Canarias, tablón de edictos y anuncios de la sede electrónica del Ayuntamiento y Boletín Oficial del Estado (extracto)",
-   "cita": "Así mismo, habrán de publicarse en el tablón de edictos y anuncios de la sede electrónica",
+   "valor": "Tablón de edictos y anuncios de la sede electrónica del Ayuntamiento; BOP de Santa Cruz de Tenerife; Boletín Oficial de Canarias",
+   "cita": "se harán por la sede electrónica, a través del Tablón de Anuncios Electrónicos del Ayuntamiento",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Prueba de conocimientos (temario de 26 temas)",
+    "Pruebas físicas",
+    "Prueba de idiomas (opcional: inglés, francés o alemán)",
+    "Reconocimiento médico",
+    "Pruebas psicotécnicas",
+    "Curso de formación"
+   ],
+   "cita": "Opto por realizar la prueba de idiomas (Marca con una X) Inglés. Francés. Alemán.",
+   "nivel": "sin_signos"
+  },
+  "bolsa": {
+   "valor": "no",
+   "cita": "Al total de plazas se podrán acumular las vacantes que se produzcan por jubilación, fallecimiento y ascensos",
    "nivel": "literal"
   },
   "practicas_o_curso": {
-   "valor": "Fase de curso selectivo de formación y fase de prácticas tras superar la oposición; retribución como funcionarios en prácticas equivalente al Grupo C1",
-   "cita": "Para acceder a la segunda y tercera fases habrá de superarse la fase de oposición",
+   "valor": "funcionario en prácticas",
+   "cita": "la toma de posesión como personal funcionario en prácticas",
    "nivel": "literal"
   },
   "temas": {
    "valor": 25,
-   "cita": "Tema 25. Ordenanzas y Bandos del municipio relativas al espacio público y a la convivencia. Regulación y licencias de actividades. Normativa de urbanismo y de o",
+   "cita": "Tema 25. Ordenanzas y Bandos del municipio relativas al espacio público y a la convivencia.",
    "nivel": "contado"
   }
  },
  "rechazados": {
-  "plazas_turno_libre": {
-   "motivo": "valor_no_en_cita",
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Policía Local"
+   ],
+   "cita": "tres (3) plazas de Policía Local, pertenecientes a la Escala de la Administración Especial"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
    "valor": 3,
-   "cita": "por el turno de acceso libre y mediante el sistema de oposición"
+   "cita": "tres (3) plazas de Policía Local, pertenecientes a la Escala de la Administración Especial"
   },
   "tasa_euros": {
    "motivo": "valor_no_en_cita",
    "valor": 0,
-   "cita": "No se establecen."
-  },
-  "presentacion": {
-   "motivo": "cita_no_literal",
-   "valor": "Registro Electrónico General del Ayuntamiento (https://tazacorte.sedelectronica.es/info.0), u otros lugares del artículo 16 de la Ley 39/2015, mediante Anexo I",
-   "cita": "Quienes deseen participar deberán presentar su solicitud a través del Registro Electrónico General"
-  },
-  "ejercicios": {
-   "motivo": "cita_no_literal",
-   "valor": [
-    "Pruebas físicas (salto horizontal, flexiones/flexión mantenida, Test de Cooper, 50 m estilo libre; apto/no apto)",
-    "Pruebas psicotécnicas",
-    "Prueba de conocimientos e idiomas",
-    "Reconocimiento médico"
-   ],
-   "cita": "La fase de oposición constará de las siguientes pruebas, que se desarrollarán con el orden que se establece"
-  },
-  "bolsa": {
-   "motivo": "cita_no_literal",
-   "valor": "no",
-   "cita": "Concluido el proceso selectivo, los aspirantes que lo hubieren superado, cuyo número no podrá exceder en ningún caso al de plazas convocadas, serán nombrados"
+   "cita": "3.6. TASAS. No se establecen."
   }
  }
 }

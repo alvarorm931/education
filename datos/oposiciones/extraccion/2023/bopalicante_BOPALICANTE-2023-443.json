@@ -1,0 +1,85 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2023-443",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2023-443",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2023/01/20_14/2023_000443.pdf",
+  "fecha": "2023-01-20",
+  "huella": "9e502b1fe6259744c4ee0c96314533915be2feb6917c9eed555ae510786670bf"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:56:36+00:00",
+ "lote": "msgbatch_0167qWfLXqjGo8Hv43cM3LuM",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Oficiales de Obras / Vías Públicas / Jardinería – Forestal",
+    "Peones de cometidos varios",
+    "Operario/a de Limpieza",
+    "Conserjes / Vigilantes / Controladores espacios públicos"
+   ],
+   "cita": "4 Oficiales de Obras / Vías Públicas / Jardinería – Forestal. 22 Peones de cometidos varios.",
+   "nivel": "sin_signos"
+  },
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "contratación temporal de personal inscrito en el Servicio Público de Empleo",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "La selección de los aspirantes se hará mediante el sistema selectivo de concurso de méritos.",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Estar inscrito en el servicio público de empleo con una antigüedad mínima de 1 mes ininterrumpido; no percibir prestaciones o subsidios por desempleo superiores a 500 €; ser español, nacional de la UE o extranjero con residencia legal y permiso de trabajo.",
+   "cita": "Estar inscrito en el servicio público de empleo con una antigüedad mínima de 1 mes ininterrumpido.",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles desde el siguiente a la publicación de las bases en el Boletín Oficial de la Provincia y tablón de edictos",
+   "cita": "dentro del plazo de 20 días hábiles, contados a partir del siguiente al de la publicación",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Registro General de Entrada del Ayuntamiento o los registros del art. 16.4 de la Ley 39/2015",
+   "cita": "La presentación de solicitudes podrá hacerse en el Registro General de Entrada del Ayuntamiento",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Baremación de méritos mediante concurso"
+   ],
+   "cita": "El procedimiento de selección se realizará por concurso de méritos",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Demandante de empleo (máx. 10 puntos), no percibir prestación (10), ayuda de Servicios Sociales (10), familia numerosa (10), cónyuge e hijos demandantes (hasta 20), vivienda hipotecada o alquilada (10), familia monoparental (10), discapacidad o dependencia por miembro (10), servicios prestados (máx. 5 puntos)",
+   "cita": "A) Por estar inscrito como demandante de empleo.: 0,5 puntos por cada mes completo de inscripción, con un máximo de 10 puntos.",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Periodo de prueba de 15 días en el contrato de trabajo",
+   "cita": "Se establecerá en el contrato de trabajo un periodo de prueba de 15 días.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 43,
+   "cita": "4 Oficiales de Obras / Vías Públicas / Jardinería – Forestal. 22 Peones de cometidos varios."
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Tablón de edictos del Ayuntamiento y página web",
+   "cita": "Todos los anuncios de trámites posteriores se publicarán en el tablón de edictos del Ayuntamiento y página web."
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, con el resto de aspirantes para cubrir posibles vacantes",
+   "cita": "Con el resto de aspirantes se formarán bolsas de trabajo para cubrir posibles vacantes."
+  }
+ }
+}

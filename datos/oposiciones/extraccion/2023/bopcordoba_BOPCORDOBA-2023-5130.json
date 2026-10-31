@@ -1,0 +1,96 @@
+{
+ "proceso": "bopcordoba:BOPCORDOBA-2023-5130",
+ "documento": {
+  "id": "bopcordoba:BOPCORDOBA-2023-5130",
+  "fuente": "BOP-CORDOBA",
+  "url": "https://bop.dipucordoba.es/dia/01-12-2023",
+  "fecha": "2023-12-01",
+  "huella": "8eeb39a7ec84889c6f41f0f561e39413372854414d7fe645a0455e2b43008caa"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:48+00:00",
+ "lote": "msgbatch_01SjfjDqJRwL6bpTvJz2YfVg",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Auxiliar Administrativo/a",
+    "Monitor/a Sociocultural",
+    "Oficial/a 1ª Albañil",
+    "Peón/a Albañil",
+    "Personal de Limpieza",
+    "Jardinero/a",
+    "Ayudante de Mantenimiento"
+   ],
+   "cita": "AUXILIAR ADMINISTRATIVO/A MONITOR/A SOCIO-CULTURAL OFICIAL/A 1ª ALBAÑIL PEÓN/A ALBAÑIL PERSONAL DE LIMPIEZA JARDINERO/A AYUDANTE DE MANTENIMIENTO",
+   "nivel": "sin_signos"
+  },
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "Bolsa de Trabajo de Personal Laboral Temporal del Ayuntamiento de Villaviciosa de Córdoba",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "El sistema de selección consistirá en un concurso en el que se valorarán los méritos",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "No necesario acreditar titulación académica para la mayoría de puestos; Título de Graduado en ESO, Graduado Escolar o equivalente para Auxiliar Administrativo/a y Monitor/a Sociocultural; Certificado de Escolaridad o equivalente para Ayudante de mantenimiento",
+   "cita": "Título de Graduado en Enseñanza Secundaria Obligatoria, o Título de Graduado Escolar, o Formación Profesional de Primer Grado, o equivalente.",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Ser español o nacional de la UE; tener 16 años cumplidos; capacidad funcional; no estar inhabilitado; Carné de conducir B1 para jardinero y ayudante de mantenimiento; Carné de manipulador de productos fitosanitarios para jardinero",
+   "cita": "Carnet de manipulador de productos fitosanitarios. Carnet de conducir B1",
+   "nivel": "sin_signos"
+  },
+  "presentacion": {
+   "valor": "Registro General del Ayuntamiento o en cualquiera de las formas del artículo 16 de la Ley 39/2015; solicitud telemática en pdf con comunicación al correo correoayuntamientovillaviciosa@gmail.com",
+   "cita": "se presentarán en el Registro General del Ayuntamiento de Villaviciosa de Córdoba o en cualquiera de las formas que determina el artículo 16",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Concurso de méritos: titulación académica (máx. 2,5 puntos)",
+    "Formación complementaria (máx. 2 puntos)",
+    "Experiencia profesional (máx. 2,5 puntos)",
+    "Situación como demandante de empleo (máx. 3 puntos)"
+   ],
+   "cita": "El sistema de selección consistirá en un concurso en el que se valorarán los méritos alegados",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Titulación académica máx. 2,5 pts; formación máx. 2 pts (0,005 pts/hora); experiencia profesional máx. 2,5 pts (0,005 pts/día Admón. Pública; 0,003 pts/día privada); demandante de empleo máx. 3 pts (0,009 pts/día desempleado)",
+   "cita": "Se puntuará a razón de 0,005 puntos por día completo trabajado por funciones realizadas en el ámbito de la Administración Pública.",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, bolsa de trabajo temporal con vigencia de cuatro años para cubrir necesidades temporales de personal",
+   "cita": "Es objeto de las presentes bases la constitución de una bolsa de trabajo en la que se cubrirán puestos de carácter temporal",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "periodo de prueba de 15 días (contratos de uno a tres meses) o 30 días (contratos superiores a tres meses)",
+   "cita": "Los/as aspirantes tendrán un periodo de prueba de 15 días para contratos con duración de uno a tres meses y 30 días",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_discapacidad": {
+   "motivo": "valor_no_numerico",
+   "valor": "cupo no inferior al diez por ciento de las vacantes ofertadas",
+   "cita": "Se reservará un cupo no inferior al diez por ciento de las vacantes ofertadas"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "20 días hábiles desde el día siguiente a la publicación en el BOP de Córdoba",
+   "cita": "el plazo de 20 días hábiles, contados a partir del siguiente de la publicación de la convocatoria en el Boletín Oficial de la Provincia de Córdoba"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Tablón de Anuncios de la Sede Electrónica y Tablón de Edictos Web del Ayuntamiento, y BOP de Córdoba",
+   "cita": "se fija como medio de comunicación de las publicaciones la exposición en el Tablón de Anuncios de la Sede Electrónica"
+  }
+ }
+}

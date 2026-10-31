@@ -1,0 +1,63 @@
+{
+ "proceso": "bopguadalajara:BOPGUADALAJARA-2024-3055",
+ "documento": {
+  "id": "bopguadalajara:BOPGUADALAJARA-2024-3055",
+  "fuente": "BOP-GUADALAJARA",
+  "url": "https://boletin.dguadalajara.es/boletin/pdf/pdf2024_3055.pdf",
+  "fecha": "2024-10-02",
+  "huella": "67ee94a67632098f440474d23dfc3dcc6d6e590b83aa0ffabc5bae5c5ade432f"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:50:31+00:00",
+ "lote": "msgbatch_01LpyYajgKGX9NyHT1uvynbR",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Auxiliar Administrativo"
+   ],
+   "cita": "PARA LA PROVISIÓN EN PROPIEDAD DE 11 + 9 PLAZAS DE AUXILIAR ADMINISTRATIVO, POR OPOSICIÓN Y TURNO LIBRE",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C2",
+   "cita": "pertenecientes al Grupo C2, encuadradas en la Escala de Administración General",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "POR OPOSICIÓN Y TURNO LIBRE, VACANTES EN LA PLANTILLA DE PERSONAL FUNCIONARIO",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Primer ejercicio tipo test",
+    "Segundo ejercicio de carácter práctico"
+   ],
+   "cita": "para la realización del primer ejercicio tipo test y un segundo ejercicio de carácter práctico",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "PARA LA PROVISIÓN EN PROPIEDAD DE 11 + 9 PLAZAS DE AUXILIAR ADMINISTRATIVO, VACANTES EN LA PLANTILLA DE PERSONAL FUNCIONARIO"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 20,
+   "cita": "provisión en propiedad de 11 plazas de auxiliar administrativo más 9 acumuladas"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 20,
+   "cita": "POR OPOSICIÓN Y TURNO LIBRE, VACANTES EN LA PLANTILLA DE PERSONAL FUNCIONARIO"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Boletín Oficial de la Provincia de Guadalajara, página web del Ayuntamiento y Tablón de Anuncios de la Corporación",
+   "cita": "Publicar la presente resolución en el Boletín Oficial de la Provincia de Guadalajara, en la página web del Ayuntamiento"
+  }
+ }
+}

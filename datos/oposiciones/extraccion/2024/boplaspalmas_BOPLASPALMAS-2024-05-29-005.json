@@ -1,0 +1,93 @@
+{
+ "proceso": "boplaspalmas:BOPLASPALMAS-2024-05-29-005",
+ "documento": {
+  "id": "boplaspalmas:BOPLASPALMAS-2024-05-29-005",
+  "fuente": "BOP-LASPALMAS",
+  "url": null,
+  "fecha": "2024-05-29",
+  "huella": "43398bf369f35de61c6266b6aee878eedd780d2b8dd8c6b7706a140c4f394dee"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:54:20+00:00",
+ "lote": "msgbatch_01HRnX7cDVMkRZD7mBamCmLu",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Plazas de personal laboral de la plantilla del Cabildo de Gran Canaria (bases generales)"
+   ],
+   "cita": "BASES GENERALES DE CONVOCATORIAS PARA LA PROVISIÓN, EN TURNO LIBRE, DE PLAZAS V ACANTES DE LA PLANTILLA DEL PERSONAL LABORAL",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "el sistema de acceso será el de Concurso- Oposición",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española (salvo excepciones del art. 57 EBEP), edad mínima 16 años sin exceder la edad de jubilación forzosa, capacidad funcional y no estar inhabilitado para empleo público",
+   "cita": "Tener la nacionalidad española, sin perjuicio de lo establecido en el artículo 57",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Exención si se acredita la documentación justificativa",
+   "cita": "En caso de estar exento del pago, deberá aportar la documentación que justifique dicha exención.",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles desde el día siguiente a la publicación del anuncio de convocatoria en el Boletín Oficial del Estado",
+   "cita": "El plazo será de VEINTE DÍAS HÁBILES contados a partir del día siguiente al de la fecha de publicación",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Sede electrónica del Cabildo, registros presenciales del Cabildo u oficinas de Correos",
+   "cita": "Por medios electrónicos: Las personas aspirantes podrán presentar su solicitud por medios electrónicos a través de la sede electrónica",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "BOP de Las Palmas, tablón de anuncios de la Oficina de Información y Atención Ciudadana y web www.grancanaria.com",
+   "cita": "Dicha Resolución deberá publicarse en el \"Boletín Oficial de la Provincia de Las Palmas\", en el Tablón de Anuncios",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Fase de oposición obligatoria: parte teórica (cuestionario tipo test y desarrollo escrito por temas) y parte práctica (casos prácticos escritos o prueba práctica según grupo)",
+    "Fase de concurso (no eliminatoria): experiencia profesional, titulaciones oficiales, cursos de formación, otros méritos"
+   ],
+   "cita": "De carácter obligatorio, formada por una parte teórica y una parte práctica",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Experiencia profesional 50%, titulaciones oficiales 20%, cursos de formación 20%, otros méritos 10% de la fase de concurso; la fase de concurso pondera un 40% de la puntuación final",
+   "cita": "La calificación final de la fase de concurso será como máximo de 10 puntos.",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, los aspirantes que superen el proceso sin plaza se integran en una lista de reserva para contrataciones temporales",
+   "cita": "serán integrados de oficio en una lista de reserva para futuras contrataciones temporales",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "periodo de prueba previsto en el IV Convenio Colectivo del Cabildo de Gran Canaria",
+   "cita": "El personal que se contrate quedará sometido al período de prueba previsto en el IV Convenio Colectivo",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "personal laboral fijo",
+   "cita": "provisión, en turno libre, de plazas vacantes de la plantilla del personal laboral"
+  },
+  "titulacion": {
+   "motivo": "cita_no_literal",
+   "valor": "la exigida para el ingreso en la categoría a la que se aspira",
+   "cita": "Estar en posesión de la titulación exigida para el ingreso en la categoría a la que se aspira"
+  },
+  "temas": {
+   "motivo": "valor_no_numerico",
+   "valor": "según grupo: 90 temas en Grupo I, 60 en II, 40 en III, 20 en IV y 10 en V",
+   "cita": "Plazas del Grupo I: 90 temas (18 comunes y 72 específicos)."
+  }
+ }
+}

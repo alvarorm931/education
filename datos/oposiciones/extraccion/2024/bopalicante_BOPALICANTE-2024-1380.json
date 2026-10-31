@@ -1,0 +1,50 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2024-1380",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2024-1380",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2024/03/01_44/2024_001380.pdf",
+  "fecha": "2024-03-01",
+  "huella": "d531ab0bf0817a33cce88889341d1d48e2a21fe6a93339912c90aa90fb307ac7"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:53:55+00:00",
+ "lote": "msgbatch_01EQ4R6PVKpEwTXzXwPCmspm",
+ "no_son_bases": false,
+ "campos": {
+  "sistema": {
+   "valor": "otro",
+   "cita": "aprobación de las bases específicas y autorización de convocatoria para bolsa de trabajo",
+   "nivel": "sin_signos"
+  },
+  "plazo_solicitudes": {
+   "valor": "10 días hábiles contados a partir del siguiente al de la publicación de esta convocatoria en el Boletín Oficial de la Provincia de Alicante",
+   "cita": "El plazo de presentación de instancias será de 10 días hábiles contados a partir del siguiente",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de Anuncios del Servicio de Recursos Humanos de la Corporación y página web www.lalfas.es",
+   "cita": "Las bases del proceso selectivo se publicarán íntegramente en el Tablón de Anuncios del Servicio",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Peones de la Brigada de Obras"
+   ],
+   "cita": "creación de una Bolsa de Trabajo de Peones de la Brigada de Obras del Ayuntamiento"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "otro",
+   "cita": "para la creación de una Bolsa de Trabajo de Peones de la Brigada de Obras"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, para la creación de una Bolsa de Trabajo de Peones de la Brigada de Obras",
+   "cita": "para la creación de una Bolsa de Trabajo de Peones de la Brigada de Obras del Ayuntamiento"
+  }
+ }
+}

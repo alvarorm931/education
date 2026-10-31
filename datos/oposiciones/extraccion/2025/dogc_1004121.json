@@ -1,0 +1,43 @@
+{
+ "proceso": "dogc:1004121",
+ "documento": {
+  "id": "dogc:1004121",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1004121",
+  "fecha": "2025-01-16",
+  "huella": "0acdbb8bdc3952e6ab2b9e86d7c1e482d057bd7e374396f472ad9237a3ace372"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:49:47+00:00",
+ "lote": "msgbatch_018TPQE8scQozfAUdc1n8RyC",
+ "no_son_bases": false,
+ "campos": {
+  "sistema": {
+   "valor": "concurso",
+   "cita": "la Comissió adopta l'acord de proposta de contractació en favor de la persona",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "Nombre de places: una",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tauler d'anuncis de la seu electrònica de la UdG, espai web «Treballa a la UdG» i DOGC",
+   "cita": "El present acord s'ha de publicar al tauler d'anuncis de la seu electrònica de la Universitat de Girona",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Professorat Lector (places de professorat laboral temporal)",
+   "cita": "concurs a diverses places de professorat laboral temporal, en la categoria de professorat Lector"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "laboral temporal",
+   "cita": "convocades places de professorat laboral temporal, en la categoria de professorat Lector"
+  }
+ }
+}

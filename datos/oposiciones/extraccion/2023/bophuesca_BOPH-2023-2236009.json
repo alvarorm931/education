@@ -1,0 +1,55 @@
+{
+ "proceso": "bophuesca:BOPH-2023-2236009",
+ "documento": {
+  "id": "bophuesca:BOPH-2023-2236009",
+  "fuente": "BOP-HUESCA",
+  "url": "https://bop.dphuesca.es/publica/buscador-anuncios/anuncio/Convocatoria-para-la-provision-de-1-plaza-de-Operario-de-Servicios-Municipales-incluida-en-el-proceso-de-estabilizacion-de-empleo-temporal.-Plazo-de-presentacion-de-solicitudes/",
+  "fecha": "2023-11-23",
+  "huella": "fc32e375e6942b2819464c1d45144d9e23b5774d9c2a56a0fd96a7ad59209194"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:58:06+00:00",
+ "lote": "msgbatch_01SjfjDqJRwL6bpTvJz2YfVg",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "una plaza de Operario de Servicios Municipales vacante en la plantilla de personal laboral de este Ayuntamiento",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días naturales a contar desde el día siguiente a la publicación de este anuncio en el Boletín Oficial de la Provincia de Huesca",
+   "cita": "se abre el plazo de veinte días naturales a contar a partir del siguiente al que aparezca publicado este anuncio",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Las solicitudes se presentan junto con los justificantes de los méritos a valorar por el Tribunal calificador",
+   "cita": "para que las personas interesadas en participar en este concurso presenten su solicitud junto con los justificantes de los méritos",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Justificantes de los méritos a valorar por el Tribunal calificador, según lo previsto en la base tercera de la convocatoria",
+   "cita": "presenten su solicitud junto con los justificantes de los méritos a valorar por el Tribunal calificador",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Operario de Servicios Municipales"
+   ],
+   "cita": "para proveer, mediante concurso, una plaza de Operario de Servicios Municipales vacante en la plantilla"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso",
+   "cita": "para proveer, mediante concurso, una plaza de Operario de Servicios Municipales vacante"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 1,
+   "cita": "para proveer, mediante concurso, una plaza de Operario de Servicios Municipales vacante"
+  }
+ }
+}

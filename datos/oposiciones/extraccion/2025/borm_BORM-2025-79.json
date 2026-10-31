@@ -1,0 +1,101 @@
+{
+ "proceso": "borm:BORM-2025-79",
+ "documento": {
+  "id": "borm:BORM-2025-79",
+  "fuente": "BORM",
+  "url": "https://www.borm.es/#/home/anuncio/08-01-2025/79",
+  "fecha": "2025-01-08",
+  "huella": "d724247768605deff19068c22ead9ee7f790dc36e6532240a2790ecc0e1413b3"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:49:45+00:00",
+ "lote": "msgbatch_018TPQE8scQozfAUdc1n8RyC",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "Catedrático de Universidad",
+   "cita": "convocar el presente concurso de méritos reservado a plazas de promoción interna para el acceso a plazas vacantes del cuerpo de Catedráticos de Universidad",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "A1",
+   "cita": "Cuerpo de Catedráticos de Universidad",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "adquirirá la condición de funcionario o funcionaria de carrera del cuerpo de Catedráticos de Universidad",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "convocar el presente concurso de méritos reservado a plazas de promoción interna",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Acreditación estatal para el Cuerpo de Catedráticos de Universidad",
+   "cita": "Estar acreditado o acreditada para el Cuerpo de Catedráticos de Universidad, de acuerdo con lo establecido en el Título I",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Ser funcionario de carrera del Cuerpo de Profesores Titulares de Universidad o de la Escala de Investigadores Científicos de los Organismos Públicos de Investigación, con al menos dos años de servicios efectivos en dicha condición",
+   "cita": "Ser funcionario o funcionaria de carrera del Cuerpo de Profesores Titulares de Universidad o de la Escala de Investigadores Científicos",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 48.61,
+   "cita": "Los derechos de examen serán de 48,61 euros.",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Personas con discapacidad igual o superior al 33%",
+   "cita": "Estarán exentas del pago de los derechos de examen las personas aspirantes que acrediten tener una discapacidad con un grado igual o superior al 33%",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "quince días hábiles desde el día siguiente a la publicación de la convocatoria en el BOE",
+   "cita": "El plazo de presentación de solicitudes será de quince días hábiles, contados a partir del día siguiente a la publicación",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Telemática a través de la aplicación CONVOCUM PDI (https://convocum.um.es/), con firma electrónica",
+   "cita": "La presentación y registro de la solicitud se realizará por vía telemática a través de la propia aplicación web CONVOCUM PDI",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón oficial de la Universidad de Murcia (TOUM), aplicación CONVOCUM PDI y tablón del lugar de las pruebas",
+   "cita": "se publicará en el tablón oficial de la Universidad de Murcia (TOUM), dirección electrónica",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Prueba única: exposición oral de méritos y defensa del proyecto de investigación (máximo una hora)",
+    "Debate con la comisión sobre lo aportado o expuesto (máximo dos horas)"
+   ],
+   "cita": "la exposición oral por el/la concursante, en un tiempo máximo de una hora, de los méritos alegados y la defensa del proyecto de investigación presentado",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Experiencia docente, investigadora y de transferencia e intercambio de conocimiento, valoradas según el baremo del Reglamento regulador; puntuación máxima no indicada en el texto",
+   "cita": "la experiencia docente y la experiencia investigadora, incluyendo la de transferencia e intercambio del conocimiento",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Toma de posesión en el plazo máximo de veinte días hábiles desde la publicación del nombramiento en el BOE; desempeño de la plaza al menos dos años antes de participar en otro concurso",
+   "cita": "En el plazo máximo de veinte días hábiles, a contar desde el día siguiente al de la publicación del nombramiento en el Boletín Oficial del Estado",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_promocion_interna": {
+   "motivo": "valor_no_numerico",
+   "valor": "plazas reservadas a promoción interna",
+   "cita": "concurso de méritos reservado a plazas de promoción interna para el acceso a plazas vacantes"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "no",
+   "cita": "no se crea bolsa en el texto"
+  }
+ }
+}

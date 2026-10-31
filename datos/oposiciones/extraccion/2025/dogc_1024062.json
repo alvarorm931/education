@@ -1,0 +1,53 @@
+{
+ "proceso": "dogc:1024062",
+ "documento": {
+  "id": "dogc:1024062",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1024062",
+  "fecha": "2025-09-10",
+  "huella": "06baab702772a67013481b12070ce518a62fd4953df0bbffe397519b23485d2f"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:43:08+00:00",
+ "lote": "msgbatch_01XofVwxKEhyEjSzGog6wsD4",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "A1",
+   "cita": "classificada a l'escala d'administració general, subescala tècnica, grup A, subgrup A1",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "d'una plaça de tècnic/a en administració general, per l'àrea de Territori",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles a partir del día siguiente a la última publicación en el DOGC y/o BOE",
+   "cita": "El termini de presentació de sol·licituds finalitza als vint dies hàbils a partir de l'endemà de la darrera publicació",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Seu electrónica de la corporación (https://seu.tarragona.cat)",
+   "cita": "Els anuncis successius relatius a aquestes convocatòries es publicaran únicament a la Seu electrònica de la corporació",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "tècnic/a en administració general, àrea de Territori",
+   "cita": "per a la provisió, amb caràcter de personal funcionari de carrera, pel sistema de concurs oposició lliure, d'una plaça de tècnic/a en administració general"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "amb caràcter de personal funcionari de carrera, pel sistema de concurs oposició lliure"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "pel sistema de concurs oposició lliure, d'una plaça de tècnic/a en administració general"
+  }
+ }
+}

@@ -1,0 +1,55 @@
+{
+ "proceso": "boe:BOE-A-2025-7997",
+ "documento": {
+  "id": "dogc:1011969",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1011969",
+  "fecha": "2025-04-17",
+  "huella": "fb29864cf9ec744b5fa9b9a2754a61d920775b37cfea9b14591696c4bc53b759"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:45:46+00:00",
+ "lote": "msgbatch_017vJZdAmjTkBDdH14aLEdCv",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "E",
+   "cita": "Grupo de clasificación: E",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "Régimen jurídico: funcionarial Carácter: de carrera",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "Sistema de selección: concurso oposición",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "Número de plazas convocadas: 1",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles contados a partir del día siguiente a la última de la publicación de este anuncio en el DOGC o BOE",
+   "cita": "El plazo para presentar solicitudes finaliza a los 20 días hábiles contados a partir del día siguiente a la última de la publicación",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Vigilante/a municipal"
+   ],
+   "cita": "Denominación de la plaza según plantilla: Vigilante/a municipal"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "Turno: libre"
+  }
+ }
+}

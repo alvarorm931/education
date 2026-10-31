@@ -1,0 +1,61 @@
+{
+ "proceso": "dogc:987468",
+ "documento": {
+  "id": "dogc:987468",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=987468",
+  "fecha": "2024-06-07",
+  "huella": "1a160b709a5d8341ad554908741f8c52e0383b1fc1448dc5e7fc5fbd482107d0"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:54:33+00:00",
+ "lote": "msgbatch_01HRnX7cDVMkRZD7mBamCmLu",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Netejador/-a",
+    "Monitor/-a de menjador escolar"
+   ],
+   "cita": "2 places de netejador/-a; Escala: Administració especial; Subescala: Serveis especials",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "AP",
+   "cita": "Classe: personal d'oficis; Grup: AP; Sistema de selecció: concurs",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "Règim: laboral; Grup: AP; Sistema de selecció: concurs",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "Sistema de selecció: concurs",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles a contar desde el día siguiente a la publicación del anuncio en el Diari Oficial de la Generalitat de Catalunya",
+   "cita": "El termini de presentació de sol·licituds serà de vint dies hàbils a comptar des de l'endemà de la publicació",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia de Tarragona (bases publicadas el 15 de diciembre de 2022)",
+   "cita": "Al Butlletí Oficial de la Província de Tarragona de data 15 de desembre de 2022 es van publicar les Bases",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 7,
+   "cita": "2 places de netejador/-a; 5 places de monitor/-a de menjador escolar"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 7,
+   "cita": "Torn lliure, vacant/s a la plantilla de personal d'aquest Ajuntament"
+  }
+ }
+}

@@ -1,0 +1,50 @@
+{
+ "proceso": "bopciudadreal:BOPCIUDADREAL-2024-1299",
+ "documento": {
+  "id": "bopciudadreal:BOPCIUDADREAL-2024-1299",
+  "fuente": "BOP-CIUDADREAL",
+  "url": "https://bop.dipucr.es/bop/2024/04/17",
+  "fecha": "2024-04-17",
+  "huella": "aae304581d0742dfe41ebbadc8469218cfe239af91b9eb223b4a2c535ddf3c67"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:54:02+00:00",
+ "lote": "msgbatch_01EQ4R6PVKpEwTXzXwPCmspm",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "otro",
+   "cita": "oferta de empleo público para la estabilización del empleo temporal del Excmo. Ayuntamiento",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 14,
+   "cita": "La tasa de 14 € debe ingresarse en Globalcaja el número de cuenta",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días naturales a contar desde el siguiente al de la publicación de este anuncio en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes será de veinte días naturales a contar desde el siguiente",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Limpiadores/as"
+   ],
+   "cita": "provisión de 4 plazas vacantes de Limpiadores/as en ejecución de la oferta de empleo público"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 4,
+   "cita": "provisión de 4 plazas vacantes de Limpiadores/as en ejecución de la oferta"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "BOPCR, sede electrónica y página web del Ayuntamiento de Villarrubia de los Ojos, tablón de edictos y DOCM",
+   "cita": "Los sucesivos anuncios en relación con esta convocatoria se realizará en la página web del Ayuntamiento"
+  }
+ }
+}

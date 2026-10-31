@@ -1,0 +1,50 @@
+{
+ "proceso": "dog:DOG-20231221-AnuncioG2017-121223-0001",
+ "documento": {
+  "id": "dog:DOG-20231221-AnuncioG2017-121223-0001",
+  "fuente": "DOG",
+  "url": "https://www.xunta.gal/dog/Publicados/2023/20231221/AnuncioG2017-121223-0001_es.html",
+  "fecha": "2023-12-21",
+  "huella": "569dfcb0bc3f639d023b6604ecc3ab1d7a20cc2bb680f8bde824822639bd16fc"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:39+00:00",
+ "lote": "msgbatch_01SjfjDqJRwL6bpTvJz2YfVg",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Profesorado permanente laboral"
+   ],
+   "cita": "se convoca un concurso para la provisión de las siguientes plazas de profesorado permanente laboral",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "para la provisión de las siguientes plazas de profesorado permanente laboral",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "se convoca un concurso para la provisión de las siguientes plazas",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 2,
+   "cita": "Oferta de empleo público año 2022: dos (2) plazas.",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "diez días hábiles, contados desde el día siguiente al de la publicación del presente anuncio en el Diario Oficial de Galicia",
+   "cita": "El plazo de presentación de solicitudes es de diez días hábiles, contados desde el día siguiente al de la publicación",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Tablón electrónico oficial de la UDC y página web http://www.udc.es/pdi/concursos/concursos_contratacion/",
+   "cita": "La información completa puede consultarse en el tablón electrónico oficial de la UDC y en la página web"
+  }
+ }
+}

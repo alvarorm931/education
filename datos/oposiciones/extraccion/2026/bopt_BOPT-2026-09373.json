@@ -1,15 +1,15 @@
 {
  "proceso": "bopt:BOPT-2026-09373",
  "documento": {
-  "id": "bopt:BOPT-2026-09373",
-  "fuente": "BOPT",
-  "url": "https://www.dipta.cat/bopt/web/anunci/365169/borsa-de-treball-d-enginyer-a-municipal-bases-i-convocatoria-ajuntament-roquetes",
+  "id": "dogc:1056630",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1056630",
   "fecha": "2026-10-13",
-  "huella": "5bc0056cb27e6cb9ef3532cd7ea646eda802fa04cdf6a3e79c12321244a835ad"
+  "huella": "134a2a612fa06befb3c8e4fbf6a6732938cd268404bd16be82809f696769f829"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T08:03:40+00:00",
- "lote": "msgbatch_013xFoLdqcGqWcqkzh7qrdGg",
+ "extraido": "2026-10-31T14:41:56+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
  "no_son_bases": false,
  "campos": {
   "grupo": {
@@ -19,42 +19,71 @@
   },
   "vinculo": {
    "valor": "funcionario de carrera",
-   "cita": "règim funcionarial, subgrup A2, escala d'administració especial",
+   "cita": "règim funcionarial, subgrup A2, escala d'administració especial, sots-escala tècnica",
    "nivel": "literal"
   },
   "sistema": {
    "valor": "concurso-oposición",
-   "cita": "mitjançant concurs oposició lliure, d'una borsa de treball d'enginyers/es",
+   "cita": "mitjançant el sistema de concurs oposició lliure, d'una borsa d'enginyers/es municipals",
    "nivel": "literal"
   },
   "titulacion": {
-   "valor": "Títol d'enginyer tècnic industrial o graduat en enginyeria de la rama industrial, o en condicions d'obtenir-lo",
+   "valor": "Títol d'enginyer tècnic industrial o graduat en enginyeria de la rama industrial, o en condicions d'obtenir-lo en la data en què finalitzi el termini de presentació d'instàncies",
    "cita": "Estar en possessió del títol d'enginyer tècnic industrial o graduat en enginyeria de la rama industrial",
    "nivel": "literal"
   },
+  "otros_requisitos": {
+   "valor": "Nacionalitat espanyola, de la UE o als termes de l'article 57 de l'EBEP; edat mínima 16 anys i no superar l'edat de jubilació forçosa; capacitat funcional; no separat del servei d'administració pública ni inhabilitat; no condemnat per delictes contra la llibertat i indemnitat sexual; compatibilitat",
+   "cita": "Haver complert els 16 anys d'edat i no superar l'edat màxima establerta per a la jubilació forçosa",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Català, nivell de suficiència C1 (o prova APTE/A)",
+   "cita": "Les persones aspirants hauran d'acreditar el coneixement de \"nivell de suficiència de català\"(C1)",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 30,
+   "cita": "Cal haver satisfet la taxa pels drets d'examen de 30,00 €",
+   "nivel": "literal"
+  },
   "exenciones_tasa": {
-   "valor": "Bonificació del 50 % (15 €) per a demandants d'ocupació no ocupats (DONO); del 100 % per a persones en atur sense cap prestació o subsidi",
-   "cita": "Per obtenir una bonificació del 100 % de la quota de la taxa les persones en situació d'atur i que no percebin cap tipus de prestació",
+   "valor": "Bonificació del 50 % per demandants d'ocupació no ocupats (DONO); bonificació del 100 % per persones en atur sense cap prestació o subsidi",
+   "cita": "Per obtenir una bonificació del 100 % de la quota de la taxa les persones en situació d'atur",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 dies naturals comptats des de l'endemà de la darrera publicació de les bases i la convocatòria",
+   "cita": "El termini de presentació de les sol·licituds serà de 20 dies naturals comptats des de l'endemà",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Model normalitzat al registre general de l'Ajuntament o per qualsevol forma de l'article 16 de la Llei 39/2015; també per la seu electrònica municipal",
+   "valor": "Model normalitzat al registre general de l'Ajuntament o a la seu electrònica; també en qualsevol forma de l'article 16 de la Llei 39/2015",
    "cita": "Les sol·licituds es podran presentar en qualsevol de les formes previstes a l'article 16 de la Llei 39/2015",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Web municipal (apartat \"Treballa a l'Ajuntament\"), e-tauler i seu electrònica; BOPT i DOGC per a les bases i la convocatòria",
+   "valor": "Web municipal (apartat \"Treballa a l'Ajuntament\"), e-tauler i seu electrònica municipal; BOP i DOGC per a les bases",
    "cita": "Les bases i la convocatòria es publicaran, íntegrament, al Butlletí Oficial de la Província",
    "nivel": "literal"
   },
-  "bolsa": {
-   "valor": "Sí, per a la cobertura de necessitats d'enginyers/es municipals, durada màxima de 2 anys",
-   "cita": "La borsa de treball tindrà una durada màxima de 2 anys a comptar des de la seva constitució",
+  "ejercicios": {
+   "valor": [
+    "Coneixement de la llengua catalana (eliminatori, APTE/A)",
+    "Coneixement de la llengua espanyola (eliminatori, APTE/A, si escau)",
+    "Supòsit pràctic sobre el temari de l'Annex I (eliminatori, mínim 200 de 400 punts)"
+   ],
+   "cita": "Consistirà en la resolució, ja sigui per escrit o per demostració pràctica, a criteri del Tribunal",
    "nivel": "literal"
   },
-  "practicas_o_curso": {
-   "valor": "No consta",
-   "cita": "Recursos Humans requerirà a la persona seleccionada per a què aporti la documentació original",
+  "meritos": {
+   "valor": "Experiència professional (màx. 10 punts); formació reglada, màster (màx. 30 punts); formació complementària específica (màx. 10 punts); puntuació màxima total de la fase de concurs 50 punts, no eliminatòria",
+   "cita": "La puntuació màxima total de la fase de concurs serà de 50 punts, no essent eliminatòria.",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "Sí, per crear una borsa de treball de durada màxima de 2 anys des de la seva constitució",
+   "cita": "La borsa de treball tindrà una durada màxima de 2 anys a comptar des de la seva constitució",
    "nivel": "literal"
   }
  },
@@ -62,53 +91,19 @@
   "denominacion": {
    "motivo": "cita_no_literal",
    "valor": [
-    "Enginyer/a municipal"
+    "Enginyers/es municipals (borsa de treball)"
    ],
-   "cita": "constitució d'una borsa de treball d'enginyers/es municipals"
+   "cita": "constitució, mitjançant concurs oposició lliure, d'una borsa de treball d'enginyers/es municipals"
   },
   "plazas_total": {
-   "motivo": "valor_no_en_cita",
+   "motivo": "cita_no_literal",
    "valor": 0,
-   "cita": "constitució, per via d'urgència, mitjançant concurs oposició lliure, d'una borsa de treball"
-  },
-  "otros_requisitos": {
-   "motivo": "cita_no_literal",
-   "valor": "Nacionalitat espanyola o de la UE (amb excepcions); tenir 16 anys i no superar l'edat de jubilació forçosa; capacitat funcional; no estar separat per expedient disciplinari de l'Administració; no haver estat condemnat per delictes contra la llibertat i indemnitat sexual",
-   "cita": "Poden prendre part, en el procés selectiu, aquelles persones que reuneixin les condicions següents"
-  },
-  "idioma_cooficial": {
-   "motivo": "cita_no_literal",
-   "valor": "Català, nivell de suficiència (C1)",
-   "cita": "Les persones aspirants hauran d'acreditar el coneixement de \"nivell de suficiència de català\"(C1)"
-  },
-  "tasa_euros": {
-   "motivo": "cita_no_literal",
-   "valor": 30,
-   "cita": "Cal haver satisfet la taxa pels drets d'examen de 30,00 €"
-  },
-  "plazo_solicitudes": {
-   "motivo": "cita_no_literal",
-   "valor": "20 dies naturals comptats des de l'endemà de la darrera publicació",
-   "cita": "El termini de presentació de les sol·licituds serà de 20 dies naturals comptats des de"
-  },
-  "ejercicios": {
-   "motivo": "cita_no_literal",
-   "valor": [
-    "Coneixement de la llengua catalana (APTE/NO APTE)",
-    "Coneixement de la llengua espanyola (només per a persones de països sense espanyol oficial)",
-    "Supòsit pràctic (eliminatori, 400 punts, mínim 200)"
-   ],
-   "cita": "3r Exercici. Supòsit pràctic Consistirà en la resolució, ja sigui per escrit o per demostració pràctica"
+   "cita": "borsa de treball, en funció de les necessitats a cobrir"
   },
   "temas": {
    "motivo": "valor_no_en_cita",
    "valor": 48,
-   "cita": "ANNEX I TEMARI ESPECÍFIC 1. L'enginyer municipal."
-  },
-  "meritos": {
-   "motivo": "cita_no_literal",
-   "valor": "Experiència professional (màx. 10 p.); formació reglada, màster universitari (màx. 30 p.); formació complementària específica (màx. 10 p.); total fase de concurs 50 punts, no eliminatòria",
-   "cita": "La puntuació màxima total de la fase de concurs serà de 50 punts, no essent eliminatòria."
+   "cita": "ANNEX I TEMARI ESPECÍFIC 1. L'enginyer municipal"
   }
  }
 }

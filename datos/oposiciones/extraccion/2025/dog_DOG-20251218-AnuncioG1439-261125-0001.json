@@ -1,0 +1,66 @@
+{
+ "proceso": "dog:DOG-20251218-AnuncioG1439-261125-0001",
+ "documento": {
+  "id": "dog:DOG-20251218-AnuncioG1439-261125-0001",
+  "fuente": "DOG",
+  "url": "https://www.xunta.gal/dog/Publicados/2025/20251218/AnuncioG1439-261125-0001_es.html",
+  "fecha": "2025-12-18",
+  "huella": "51de761fe27eabd5ac2b752a54c2abc02575d1fe7e480eebe66f8c2390681c61"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:42:28+00:00",
+ "lote": "msgbatch_01W17mR271uYfWYL6CuSdriL",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Portero/a",
+    "Auxiliar"
+   ],
+   "cita": "Cuatro plazas de portero/a (tres de la cuota general y una de la cuota de reserva a personas con discapacidad)",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C2",
+   "cita": "Cinco plazas de auxiliar, pertenecientes a la escala de la Administración general, subescala auxiliar, grupo C-subgrupo C2",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "se publican las convocatorias y bases específicas que regulan los procesos selectivos para el ingreso en las plazas de personal funcionario de carrera",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "Cuatro plazas de portero/a (tres de la cuota general y una de la cuota de reserva a personas con discapacidad)",
+   "nivel": "literal"
+  },
+  "plazas_discapacidad": {
+   "valor": 1,
+   "cita": "una de la cuota de reserva a personas con discapacidad",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte (20) días naturales desde el siguiente al de la publicación del extracto de la convocatoria y bases en el Boletín Oficial del Estado (BOE)",
+   "cita": "El plazo de presentación de solicitudes será de veinte (20) días naturales desde el siguiente al de la publicación del extracto",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "BOP de Lugo, tablón edictal de la entidad y página web de la diputación provincial",
+   "cita": "se publicarán en el BOP de Lugo, en el tablón edictal de esta entidad y en la página web de la diputación provincial",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 9,
+   "cita": "Cuatro plazas de portero/a (tres de la cuota general y una de la cuota de reserva a personas con discapacidad)"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 8,
+   "cita": "mediante el sistema de concurso-oposición, acceso libre"
+  }
+ }
+}

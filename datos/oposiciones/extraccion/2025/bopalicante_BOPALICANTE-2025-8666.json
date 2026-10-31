@@ -1,0 +1,43 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2025-8666",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2025-8666",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2025/11/26_226/2025_008666.pdf",
+  "fecha": "2025-11-26",
+  "huella": "8b50d7bdd8d0a8a1a857f3fb5e716c7419525053987db2e81a7d7e848fb00481"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:41:06+00:00",
+ "lote": "msgbatch_01UNq3BNhPPHoTK3TEJzun1h",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "OFICIAL/A DE FONTANERIA",
+   "cita": "convocó pruebas selectivas, mediante concurso -oposición, por turno libre, de 3 plazas de OFICIAL/A DE FONTANERIA",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "convocó pruebas selectivas, mediante concurso -oposición, por turno libre",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 4,
+   "cita": "resultando un total de 4 plazas para cubrir en el mencionado proceso selectivo",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 4,
+   "cita": "convocó pruebas selectivas, mediante concurso -oposición, por turno libre"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "No consta en el texto",
+   "cita": ""
+  }
+ }
+}

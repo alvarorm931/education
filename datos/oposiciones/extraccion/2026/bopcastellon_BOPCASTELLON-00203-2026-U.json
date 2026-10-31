@@ -1,0 +1,55 @@
+{
+ "proceso": "bopcastellon:BOPCASTELLON-00203-2026-U",
+ "documento": {
+  "id": "bopcastellon:BOPCASTELLON-00203-2026-U",
+  "fuente": "BOP-CASTELLON",
+  "url": null,
+  "fecha": "2026-01-22",
+  "huella": "f8d3efdd183a90db56dde8389350d9b41ba4bdc50edf639b2a4b66ffbd7bafa9"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:42:14+00:00",
+ "lote": "msgbatch_01W17mR271uYfWYL6CuSdriL",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Administrativo"
+   ],
+   "cita": "tres plazas de Administrativo por turno libre, mediante concurso-oposición",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "para cubrir en propiedad tres plazas de Administrativo por turno libre",
+   "nivel": "literal"
+  },
+  "plazas_turno_libre": {
+   "valor": 3,
+   "cita": "tres plazas de Administrativo por turno libre, mediante concurso-oposición",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Sin plazo específico en el texto de corrección; la corrección sustituye el plazo original de 10 días hábiles contados desde el día siguiente a la publicación del anuncio de la convocatoria en el BOE",
+   "cita": "pudiendo los interesados presentar solicitudes en el plazo de 10 días hábiles",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "C1",
+   "cita": "PLAZAS DE ADMINISTRATIVO (GRUPO C, SUBGRUPO C1)"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "para cubrir en propiedad, mediante concurso-oposición, tres plazas de Administrativo"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 3,
+   "cita": "para cubrir en propiedad, mediante concurso-oposición, tres plazas de Administrativo"
+  }
+ }
+}

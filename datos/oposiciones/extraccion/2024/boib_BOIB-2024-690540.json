@@ -1,0 +1,63 @@
+{
+ "proceso": "boib:BOIB-2024-690540",
+ "documento": {
+  "id": "boib:BOIB-2024-690540",
+  "fuente": "BOIB",
+  "url": "https://www.caib.es/eboibfront/es/2024/11973/690540/acuerdo-de-23-de-diciembre-de-2022-del-consejo-eje",
+  "fecha": "2024-09-05",
+  "huella": "0401b7edc37f932e13ca502c9c14dc0f15362b3255b29209f68c02aa94486dc2"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:49:10+00:00",
+ "lote": "msgbatch_016yasWxkCXTWjPAb8LjB3ob",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Auxiliar de enfermería",
+    "Fisioterapeuta",
+    "Enfermero/a",
+    "Trabajador/a social"
+   ],
+   "cita": "Ocho plazas de auxiliar de enfermería , personal laboral, grupo C, subgrupo C2",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C2",
+   "cita": "Ocho plazas de auxiliar de enfermería , personal laboral, grupo C, subgrupo C2",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "personal laboral, grupo C, subgrupo C2, por el turno de promoción interna",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "por el turno de promoción interna y mediante el sistema de concurso-oposición.",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días naturales a contar desde el siguiente al de la publicación de esta convocatoria en el BOIB",
+   "cita": "El plazo de presentación será de veinte días naturales a contar desde el siguiente al de la publicación",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Sede electrónica del Consell Insular d'Eivissa (seu.conselldeivissa.es) y Boletín Oficial de las Islas Baleares (BOIB)",
+   "cita": "se harán públicos en la sede electrónica del Consell Insular d'Eivissa (seu.conselldeivissa.es) y en el Boletín Oficial de las Islas Baleares (BOIB).",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 16,
+   "cita": "Ocho plazas de auxiliar de enfermería , personal laboral, grupo C, subgrupo C2"
+  },
+  "plazas_promocion_interna": {
+   "motivo": "valor_no_en_cita",
+   "valor": 16,
+   "cita": "por el turno de promoción interna y mediante el sistema de concurso-oposición."
+  }
+ }
+}

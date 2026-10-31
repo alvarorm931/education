@@ -1,0 +1,118 @@
+{
+ "proceso": "dog:DOG-20251017-AnuncioG2018-081025-0001",
+ "documento": {
+  "id": "dog:DOG-20251017-AnuncioG2018-081025-0001",
+  "fuente": "DOG",
+  "url": "https://www.xunta.gal/dog/Publicados/2025/20251017/AnuncioG2018-081025-0001_es.html",
+  "fecha": "2025-10-17",
+  "huella": "10b8c7cd88c914c79828cd3a660c7507dc234ebb874e75f4c2005347de246505"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:41:14+00:00",
+ "lote": "msgbatch_01UNq3BNhPPHoTK3TEJzun1h",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "médico/a del trabajo",
+   "cita": "convocar pruebas selectivas para cubrir una plaza de la categoría profesional de médico/a del trabajo",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "I",
+   "cita": "médico/a del trabajo, grupo I, del Convenio colectivo para el personal laboral de la USC",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "El sistema de selección será el de concurso-oposición.",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "convocan pruebas selectivas para cubrir una (1) plaza de la categoría profesional",
+   "nivel": "literal"
+  },
+  "plazas_turno_libre": {
+   "valor": 1,
+   "cita": "una (1) plaza de la categoría profesional de médico/a del trabajo, grupo I, del Convenio colectivo para el personal laboral de la USC, por el turno de acceso libre",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Graduado/a o licenciado/a en Medicina, especialidad de Medicina del Trabajo o diploma de Médico de Empresa",
+   "cita": "Estar en posesión de titulación universitaria oficial de graduado/a o licenciado/a en Medicina, en la especialidad de Medicina del Trabajo",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española o de Estado miembro de la UE o extranjero según artículo 52 de la Ley 2/2015; haber cumplido 16 años y no exceder la edad de jubilación forzosa; aptitud médica; no estar separado de servicio de las administraciones públicas",
+   "cita": "Haber cumplido los 16 años de edad y no exceder, en su caso, la edad máxima de jubilación forzosa",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Conocimiento de lengua gallega (Celga 4 o equivalente), acreditable mediante prueba",
+   "cita": "Certificado de conocimiento de lengua gallega (Celga 4 o equivalente)",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 44.17,
+   "cita": "Los derechos de examen serán de 44,17 €.",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Exentas personas con discapacidad igual o superior al 33 %, y miembros de familias numerosas especiales; 50 % para familias numerosas generales y demandantes de empleo seis meses",
+   "cita": "Las personas con discapacidad igual o superior al 33 %. Las personas que sean miembros de familias numerosas clasificadas en la categoría especial.",
+   "nivel": "sin_signos"
+  },
+  "plazo_solicitudes": {
+   "valor": "Veinte días naturales desde el día siguiente a la publicación del anuncio de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes será de veinte días naturales, contados a partir del siguiente al de la publicación",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Exclusivamente por medios electrónicos, mediante formulario de la sede electrónica de la USC con credenciales corporativas, certificados digitales o Cl@ve",
+   "cita": "deberá formalizar su solicitud y abonar la tasa correspondiente únicamente por medios electrónicos",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón electrónico de la sede de la USC y página web de la USC; resoluciones en el Diario Oficial de Galicia",
+   "cita": "Los sucesivos anuncios de celebración de los demás ejercicios se efectuarán en el tablón electrónico",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Primer ejercicio: comprensión y expresión en lengua gallega (eliminatorio, exento con Celga 4)",
+    "Segundo ejercicio: 120 preguntas tipo test de conocimientos específicos, con mínimo 60 % de aciertos (0-25 puntos)",
+    "Tercer ejercicio: dos supuestos prácticos de programa específico (0-30 puntos, mínimo 12,5)",
+    "Cuarto ejercicio: 30 preguntas tipo test de conocimientos no específicos, obligatorio y no eliminatorio (0-5 puntos)"
+   ],
+   "cita": "Segundo ejercicio: consistirá en contestar por escrito un cuestionario de 120 preguntas tipo test",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Fase de concurso máximo 40 puntos: experiencia hasta 35 puntos (0,40 puntos/mes en misma categoría y especialidad); formación hasta 5 puntos",
+   "cita": "Experiencia: máximo 35 puntos",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, lista de espera de personas que superen algún ejercicio de la oposición distinto del de gallego, para posible contratación como personal laboral fijo",
+   "cita": "Se elaborará una lista de espera con las personas aspirantes que superen algún ejercicio de la fase de oposición distinto del de gallego.",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Período de prueba de seis meses",
+   "cita": "El período de prueba será de seis meses",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "personal laboral fijo",
+   "cita": "serán contratada como personal laboral fijo"
+  },
+  "temas": {
+   "motivo": "valor_no_en_cita",
+   "valor": 42,
+   "cita": "Real decreto 488/1997, de 14 de abril, sobre disposiciones mínimas de seguridad y salud relativas al trabajo que incluye pantallas de visualización."
+  }
+ }
+}

@@ -1,0 +1,53 @@
+{
+ "proceso": "dog:DOG-20251126-AnuncioU500-211125-0006",
+ "documento": {
+  "id": "dog:DOG-20251126-AnuncioU500-211125-0006",
+  "fuente": "DOG",
+  "url": "https://www.xunta.gal/dog/Publicados/2025/20251126/AnuncioU500-211125-0006_es.html",
+  "fecha": "2025-11-26",
+  "huella": "82769a40e74ab2714829cabbda5087309c3b67bd9bff72f1ffac1f5453198844"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:41:23+00:00",
+ "lote": "msgbatch_01UNq3BNhPPHoTK3TEJzun1h",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "Profesorado asociado, referencia AS2502",
+   "cita": "Categoría: profesorado asociado. Número de plazas: 1.",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "resuelve anunciar la convocatoria del siguiente concurso público",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "Número de plazas: 1.",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "diez (10) días hábiles, contados desde el día siguiente al de la publicación del presente anuncio en el Diario Oficial de Galicia",
+   "cita": "El plazo de presentación de solicitudes es de diez (10) días hábiles, contados desde el día siguiente al de la publicación",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Modelo oficial dirigido al rector, acompañado obligatoriamente de los documentos acreditativos previstos en la convocatoria",
+   "cita": "se deben dirigir al rector en el modelo oficial, obligatoriamente acompañadas de los documentos acreditativos previstos en la convocatoria",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Sede electrónica de la Universidad de Vigo (https://sede.uvigo.gal/) y página electrónica https://secretaria.uvigo.gal/uv/web/convocatoria/public/index",
+   "cita": "La información completa puede consultarse en la sede electrónica de la Universidad de Vigo",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "otro",
+   "cita": "convoca el siguiente concurso público: Referencia: AS2502. Categoría: profesorado asociado."
+  }
+ }
+}

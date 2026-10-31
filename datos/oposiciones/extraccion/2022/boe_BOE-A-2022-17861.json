@@ -1,0 +1,38 @@
+{
+ "proceso": "boe:BOE-A-2022-17861",
+ "documento": {
+  "id": "boe:BOE-A-2022-17861",
+  "fuente": "BOE",
+  "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2022-17861",
+  "fecha": "2022-11-01",
+  "huella": "936ba016bade149789a8beed1d3189e2b35e7cd65c310de2b1c03932fca1d259"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:17+00:00",
+ "lote": "msgbatch_01B4ETF5xB4buYCHqPiHTXzF",
+ "no_son_bases": false,
+ "campos": {
+  "sistema": {
+   "valor": "oposición",
+   "cita": "Una vez finalizada la fase de oposición del proceso selectivo, y según la propuesta de aspirantes aptos",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Plazas acumuladas a los programas de Edificación (total cinco plazas, destino Arsenal de Cádiz-Base Naval de Rota) e Informática (total once plazas, destino Cuartel General de la Armada, Madrid)",
+   "cita": "Incrementar en una plaza, cupo acceso general, el número de las inicialmente convocadas en el programa de «Informática»",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Cuerpo de Ingenieros Técnicos de Arsenales de la Armada",
+   "cita": "Resolución 400/38466/2021, de 22 de diciembre, se convocó proceso selectivo para ingreso por el sistema general de acceso libre en el Cuerpo de Ingenieros Técnicos de Arsenales de la Armada"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 2,
+   "cita": "Incrementar en una plaza, cupo acceso general, el número de las inicialmente convocadas en el programa de «Edificación»"
+  }
+ }
+}

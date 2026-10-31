@@ -1,0 +1,60 @@
+{
+ "proceso": "bopcaceres:BOP-2023-1322",
+ "documento": {
+  "id": "doe:DOE-2023080453",
+  "fuente": "DOE",
+  "url": "https://doe.juntaex.es/otrosFormatos/html.php?xml=2023080453&anio=2023&doe=510o",
+  "fecha": "2023-03-15",
+  "huella": "8e2d69bedbaba9eec3006a2646aeb4428bb255cae82edf965af44038fa3417af"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:56:52+00:00",
+ "lote": "msgbatch_0167qWfLXqjGo8Hv43cM3LuM",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Auxiliar Administrativo"
+   ],
+   "cita": "una (1) plaza de Auxiliar Administrativo, encuadrada en la escala de Administración General",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C2",
+   "cita": "grupo C, subgrupo C2, vacante en la plantilla de personal funcionario del Ayuntamiento",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "la cobertura en propiedad, por el sistema general de turno libre",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "mediante el procedimiento de oposición, de una (1) plaza de Auxiliar Administrativo",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "una (1) plaza de Auxiliar Administrativo, encuadrada en la escala de Administración General",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles, a contar desde el siguiente al de la publicación de este anuncio en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes será de veinte días hábiles, a contar desde el siguiente al de la publicación",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia, Tablón de Edictos de la sede electrónica del Ayuntamiento y Tablón de Edictos del Ayuntamiento",
+   "cita": "se harán públicos en el Boletín Oficial de la Provincia, en el Tablón de Edictos de la sede electrónica del Ayuntamiento",
+   "nivel": "sin_signos"
+  }
+ },
+ "rechazados": {
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "por el sistema general de turno libre, mediante el procedimiento de oposición"
+  }
+ }
+}

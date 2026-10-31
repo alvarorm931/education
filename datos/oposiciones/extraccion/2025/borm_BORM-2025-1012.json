@@ -1,0 +1,115 @@
+{
+ "proceso": "borm:BORM-2025-1012",
+ "documento": {
+  "id": "borm:BORM-2025-1012",
+  "fuente": "BORM",
+  "url": "https://www.borm.es/#/home/anuncio/05-03-2025/1012",
+  "fecha": "2025-03-05",
+  "huella": "4413452de36942d21ee87764c3370c7e1f64fbba12efc07b045ccdfd9bc1bfef"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:46:36+00:00",
+ "lote": "msgbatch_01MQzQCLMZKxUrrPMAj7dr53",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Catedráticos de Universidad (vinculados) — Cirugía",
+    "Catedráticos de Universidad (vinculados) — Medicina",
+    "Catedráticos de Universidad (vinculados) — Obstetricia y Ginecología"
+   ],
+   "cita": "Cuerpo de Catedráticos de Universidad (vinculados)",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "A1",
+   "cita": "Cuerpo de Catedráticos de Universidad",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "Concurso de méritos (promoción interna)",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Título de Especialista Sanitario en la especialidad de la plaza convocada",
+   "cita": "Estar en posesión del Título de Especialista Sanitario en la Especialidad de la plaza convocada.",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Acreditación para el Cuerpo de Catedráticos de Universidad o situación equivalente; ser funcionario de carrera de Profesores Titulares de Universidad o Escala de Investigadores con dos años de servicios efectivos; nacionalidad, edad y capacidad funcional según requisitos generales.",
+   "cita": "Poseer la acreditación para el Cuerpo de Catedráticos de Universidad, de acuerdo con lo establecido en el Título I del Real Decreto 678/2023",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 48.61,
+   "cita": "Los derechos de examen serán de 48,61 euros.",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Personas aspirantes con discapacidad igual o superior al 33%, acreditada en el plazo de presentación de solicitudes.",
+   "cita": "Estarán exentas del pago de los derechos de examen las personas aspirantes que acrediten tener una discapacidad con un grado igual o superior al 33%",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Quince días hábiles desde el día siguiente a la publicación de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes será de quince días hábiles, contados a partir del día siguiente a la publicación",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Telemática a través de la aplicación CONVOCUM PDI (convocum.um.es), con firma electrónica mediante la pasarela de firma de la Universidad de Murcia.",
+   "cita": "La presentación y registro de la solicitud se realizará por vía telemática a través de la propia aplicación web CONVOCUM PDI",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón oficial de la Universidad de Murcia (TOUM), aplicación CONVOCUM PDI y tablón de anuncios del lugar de las pruebas",
+   "cita": "se publicará en el tablón oficial de la Universidad de Murcia (TOUM)",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Prueba única: exposición oral de los méritos alegados y defensa del proyecto de investigación, máximo una hora",
+    "Debate ante la comisión sobre lo aportado o expuesto, máximo dos horas"
+   ],
+   "cita": "la exposición oral por el/la concursante, en un tiempo máximo de una hora, de los méritos alegados",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Experiencia docente, investigadora (incluida transferencia e intercambio de conocimiento) y asistencial sanitaria, con proyecto de investigación; valoración según baremo del Reglamento regulador de la Universidad de Murcia",
+   "cita": "deberá valorarse la experiencia docente y la experiencia investigadora de cada candidato/a, incluyendo la de transferencia",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Toma de posesión en el plazo máximo de veinte días hábiles desde la publicación del nombramiento en el BOE; la plaza debe desempeñarse al menos dos años antes de concursar a otra",
+   "cita": "En el plazo máximo de veinte días hábiles, a contar desde el día siguiente al de la publicación del nombramiento",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "funcionario de carrera del cuerpo de Catedráticos de Universidad"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 3,
+   "cita": "Plaza número: 1V/2025"
+  },
+  "plazas_promocion_interna": {
+   "motivo": "valor_no_en_cita",
+   "valor": 3,
+   "cita": "Concurso reservado a las plazas de promoción interna"
+  },
+  "idioma_cooficial": {
+   "motivo": "cita_no_literal",
+   "valor": "No aplica",
+   "cita": "Conocimiento adecuado del idioma español para personas de nacionalidad no española o de Estado sin lengua oficial castellana"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "no",
+   "cita": "Las bases no mencionan la creación de bolsa o lista de espera"
+  }
+ }
+}

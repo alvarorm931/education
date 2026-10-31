@@ -1,0 +1,52 @@
+{
+ "proceso": "bopcoruna:BOPCORUNA-2024-4789",
+ "documento": {
+  "id": "bopcoruna:BOPCORUNA-2024-4789",
+  "fuente": "BOP-CORUNA",
+  "url": "https://bop.dacoruna.gal/bopportal/publicado/2024/07/05/2024_0000004789.html",
+  "fecha": "2024-07-05",
+  "huella": "3cb1e64e8a5b9e0b787d4f327302c651df9f505a7567854f618f379b4b60f2df"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:49:16+00:00",
+ "lote": "msgbatch_016yasWxkCXTWjPAb8LjB3ob",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "para a contratación laboral temporal das persoas traballadoras que integrarán a brigada",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "aprobáronse as bases de selección para a contratación laboral temporal das persoas traballadoras",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "5 días hábiles a partir do día seguinte á publicación deste anuncio",
+   "cita": "Prazo de presentación de instancias: 5 días hábiles a partir do día seguinte á publicación deste anuncio.",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Taboleiro de anuncios municipal e sede electrónica do Concello",
+   "cita": "As bases da convocatoria pódense consultar no taboleiro de anuncios municipal e na sede electrónica do Concello",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Xefe/a de brigada",
+    "Peón/peoa condutor/a",
+    "Peón/peoa de brigada"
+   ],
+   "cita": "convoca as seguintes prazas: 1 xefe/a de brigada, 1 peón/peoa condutor/a, 3 peóns/peoas de brigada"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 5,
+   "cita": "1 xefe/a de brigada, 1 peón/peoa condutor/a, 3 peóns/peoas de brigada"
+  }
+ }
+}

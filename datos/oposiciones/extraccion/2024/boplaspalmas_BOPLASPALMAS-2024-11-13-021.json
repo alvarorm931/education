@@ -1,0 +1,100 @@
+{
+ "proceso": "boplaspalmas:BOPLASPALMAS-2024-11-13-021",
+ "documento": {
+  "id": "boplaspalmas:BOPLASPALMAS-2024-11-13-021",
+  "fuente": "BOP-LASPALMAS",
+  "url": null,
+  "fecha": "2024-11-13",
+  "huella": "098dfc89e085adba6c934f862937d1291d89e8dc788b81732e7600bab5cac621"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:50:09+00:00",
+ "lote": "msgbatch_01LpyYajgKGX9NyHT1uvynbR",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "C2 / AP",
+   "cita": "Subgrupo C2 y Grupo AP del Excmo. Ayuntamiento de Arucas",
+   "nivel": "sin_signos"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "plazas vacantes reservadas para el personal laboral (Subgrupo C2 y Grupo AP)",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Dicha titulación se determinará en las bases específicas que se aprueben",
+   "cita": "Dicha titulación se determinará en las bases específicas que se aprueben.",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad o situación equivalente, tener 16 años y no exceder la edad de jubilación forzosa, capacidad funcional y no haber sido separado del servicio público por expediente disciplinario.",
+   "cita": "Tener cumplidos los dieciséis años y no exceder, en su caso, de la edad de jubilación forzosa.",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 15,
+   "cita": "El importe de la tasa a satisfacer para participar en la convocatoria será de 15 euros para las plazas del grupo C (subgrupo C2)",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Bonificación del 50% o 100% para familias numerosas; 50% para discapacidad igual o superior al 33%, demandantes de empleo y procesos de funcionarización y promoción interna",
+   "cita": "Tendrán derecho a una bonificación en la cuota íntegra de la tasa los sujetos pasivos que ostenten la condición de miembro de familia numerosa",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles desde el día siguiente a la publicación del anuncio de convocatoria en el Boletín Oficial del Estado",
+   "cita": "El plazo será de veinte días hábiles contados a partir del día siguiente al de la fecha de publicación del correspondiente anuncio de convocatoria en el “Boletín Oficial del Estado”.",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Sede electrónica del Ayuntamiento (con certificado digital) o presencialmente en el Registro General del Ayuntamiento de Arucas, calle Alcalde Suárez Franchy, 11, y otras formas del artículo 16 de la Ley 39/2015",
+   "cita": "Con certificado digital, a través de la sede electrónica del Excmo. Ayuntamiento de Arucas",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia, Portal de Transparencia y Tablón de Anuncios de la Sede Electrónica del Ayuntamiento",
+   "cita": "La misma se hará pública en el Boletín Oficial de la Provincia, Portal de Transparencia y Tablón de Anuncios de la Sede Electrónica del Ayuntamiento.",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Prueba física (solo algunas plazas, apto/no apto)",
+    "Primer ejercicio: test teórico de 65 preguntas (Subgrupo C2) o 35 preguntas (AP), 100 o 60 minutos",
+    "Segundo ejercicio: práctico, hasta tres pruebas de oficios"
+   ],
+   "cita": "Consistirá en la resolución de un cuestionario tipo test, que versará sobre el temario, de sesenta y cinco (65) preguntas",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Fase concurso con puntuación máxima de 2,5 puntos: experiencia profesional (máx. 2,1), formación y otros méritos académicos",
+   "cita": "Esta fase tendrá una puntuación máxima de 2,5 puntos.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Subgrupo C2",
+    "Grupo AP"
+   ],
+   "cita": "para la cobertura definitiva de las plazas vacantes reservadas para el personal laboral (Subgrupo C2 y Grupo AP)"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "el sistema selectivo para la cobertura definitiva de las plazas del personal laboral es concurso oposición"
+  },
+  "plazas_discapacidad": {
+   "motivo": "valor_no_numerico",
+   "valor": "7%",
+   "cita": "Se reserva el siete por ciento de las plazas incluidas en las Ofertas de Empleo Público"
+  },
+  "temas": {
+   "motivo": "valor_no_numerico",
+   "valor": "20 temas (Subgrupo C2); 10 temas (Agrupaciones Profesionales)",
+   "cita": "Subgrupo C2: 20 temas Agrupaciones profesionales: 10 temas"
+  }
+ }
+}

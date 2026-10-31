@@ -1,0 +1,48 @@
+{
+ "proceso": "boib:BOIB-2023-678504",
+ "documento": {
+  "id": "boib:BOIB-2023-678504",
+  "fuente": "BOIB",
+  "url": "https://www.caib.es/eboibfront/es/2023/11814/678504/resolucion-de-6-de-octubre-de-2023-de-la-universid",
+  "fecha": "2023-10-12",
+  "huella": "826cb21c54c7fe501d07e576b6f7fda48652383027d0da96b9a7c2c330cc0b37"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:58:07+00:00",
+ "lote": "msgbatch_01SjfjDqJRwL6bpTvJz2YfVg",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "Catedrático de Universidad, Área de conocimiento: Derecho Administrativo",
+   "cita": "Cuerpo al que pertenece: Catedrático de Universidad",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días naturales a partir del siguiente al de la publicación de esta convocatoria en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes será de veinte días naturales a partir del siguiente al de la publicación",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial del Estado",
+   "cita": "Las bases íntegras de la convocatoria aparecerán publicadas en el Boletín Oficial del Estado.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "convocatoria a concurso de acceso de plazas de los cuerpos de funcionarios docentes universitarios"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso",
+   "cita": "convocatoria a concurso de acceso de plazas de los cuerpos de funcionarios docentes universitarios"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "Número de concurso: 21/2023 Código de la plaza: 050246"
+  }
+ }
+}

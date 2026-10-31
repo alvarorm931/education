@@ -1,0 +1,70 @@
+{
+ "proceso": "bopcastellon:BOPCASTELLON-02364-2025-U",
+ "documento": {
+  "id": "bopcastellon:BOPCASTELLON-02364-2025-U",
+  "fuente": "BOP-CASTELLON",
+  "url": null,
+  "fecha": "2025-05-31",
+  "huella": "1d13cde44b501f20d8db0bad2fc120c202ded35b58f49c8c1c1321908caefb95"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:45:19+00:00",
+ "lote": "msgbatch_016re6aGcimwSVmdrWa6qBd9",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "C1",
+   "cita": "C C1 Administrativa 1 Administrativo-a Turno libre",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "FUNCIONARIOS DE CARRERA ADMINISTRACIÓN GENERAL Grupo Subgrupo Subescala plazas",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de anuncios de la Corporación, sede electrónica del Ayuntamiento y Boletín Oficial de la Provincia",
+   "cita": "publicar la oferta de empleo público en el tablón de anuncios de la Corporación, así como en la sede electrónica",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "no",
+   "cita": "CONVOCAR LAS PLAZAS OFERTADAS en ejecución de la presente Oferta de Empleo Público dentro del plazo legalmente establecido",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Administrativo-a",
+    "Auxiliar administrativo-a",
+    "Arquitecto-a técnico-a",
+    "Trabajador-a social",
+    "Técnico-a dinamizador juventud",
+    "Agente policía local"
+   ],
+   "cita": "Administrativo-a Turno libre Auxiliar administrativo-a Turno libre Arquitecto-a técnico-a Turno libre"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "oposición",
+   "cita": "Turno libre Administrativa 2 Administrativo-a p.interna"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 7,
+   "cita": "contiene los siguientes puestos de trabajo: FUNCIONARIOS DE CARRERA ADMINISTRACIÓN GENERAL"
+  },
+  "plazas_turno_libre": {
+   "motivo": "cita_no_literal",
+   "valor": 5,
+   "cita": "Administrativo-a Turno libre Auxiliar administrativo-a Turno libre"
+  },
+  "plazas_promocion_interna": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "Administrativa 2 Administrativo-a p.interna"
+  }
+ }
+}

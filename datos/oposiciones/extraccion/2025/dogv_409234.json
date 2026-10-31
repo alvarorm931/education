@@ -1,0 +1,83 @@
+{
+ "proceso": "dogv:409234",
+ "documento": {
+  "id": "dogv:409234",
+  "fuente": "DOGV",
+  "url": "https://dogv.gva.es/datos/2025/02/17/pdf/2025_1047_es.pdf",
+  "fecha": "2025-02-17",
+  "huella": "d17ff2b4b88f62b79fa465142ff649745bd53dc31f7a861e14f1cf52da128c76"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:46:38+00:00",
+ "lote": "msgbatch_01MQzQCLMZKxUrrPMAj7dr53",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Profesor o profesora titular de universidad"
+   ],
+   "cita": "Convocar concurso público para el acceso a las plazas de profesor o profesora titular de universidad",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "otro",
+   "cita": "Convocar concurso público para el acceso a las plazas de profesor o profesora titular de universidad",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "Convocar concurso público para el acceso a las plazas de profesor o profesora titular de universidad",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 30,
+   "cita": "El importe de la tasa por derechos de examen será de 30 euros.",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Bonificación del 50 % para familias numerosas o monoparentales de categoría general; exención total para familias de categoría especial, víctimas de violencia sobre la mujer, discapacidad igual o superior al 33 % y exclusión social acreditada",
+   "cita": "Disfrutan de exención del pago de la tasa: a) Las personas que forman parte de una familia numerosa de categoría especial",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Veinte días desde el día siguiente a la publicación de la convocatoria en el BOE",
+   "cita": "El plazo para presentar la solicitud de participación en este proceso selectivo es de veinte días a contar desde el día siguiente",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de anuncios oficial de la Universitat Jaume I (TAO-UJI), Diari Oficial de la Generalitat Valenciana y Boletín Oficial del Estado",
+   "cita": "Publicar las bases de la convocatoria en el tablón de anuncios oficial de la Universitat Jaume I (TAO-UJI), en el Diari Oficial de la Generalitat Valenciana (DOGV) y en el Boletín Oficial del Estado (BOE).",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Criterios generales: investigación, transferencia e intercambio de conocimiento 40 %; méritos docentes 40 %; formación académica 5 %; dirección y liderazgo 5 %; conocimiento de la lengua propia de la Universitat 5 %; lenguas extranjeras y otros méritos 5 %",
+   "cita": "Investigación, transferencia e intercambio de conocimiento 40 % Méritos docentes 40 %",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "no",
+   "cita": "La plaza obtenida después del concurso de acceso deberá ejercerse durante dos años, al menos",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "no",
+   "cita": "En el plazo máximo de 20 días, a contar desde el día siguiente al de la publicación del nombramiento en el Boletín Oficial del Estado, la persona nombrada debe tomar posesión de la plaza.",
+   "nivel": "sin_signos"
+  }
+ },
+ "rechazados": {
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Por vía electrónica a través del Registro Electrónico de la Universitat Jaume I, mediante el enlace del TAO-UJI, con certificado digital, DNI electrónico o Cl@ve",
+   "cita": "Las solicitudes se presentarán por vía electrónica. Para presentar la solicitud por vía electrónica, es necesario poseer un certificado digital"
+  },
+  "ejercicios": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Primera fase: presentación de proyecto docente y proyecto investigador",
+    "Actos de presentación y desarrollo del concurso conforme al RSPDIUJI"
+   ],
+   "cita": "En los concursos de profesorado titular de universidad, los concursantes deben entregar el proyecto docente y el proyecto investigador"
+  }
+ }
+}

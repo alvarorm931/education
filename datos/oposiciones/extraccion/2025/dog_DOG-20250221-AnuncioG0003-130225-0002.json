@@ -1,0 +1,51 @@
+{
+ "proceso": "dog:DOG-20250221-AnuncioG0003-130225-0002",
+ "documento": {
+  "id": "dog:DOG-20250221-AnuncioG0003-130225-0002",
+  "fuente": "DOG",
+  "url": "https://www.xunta.gal/dog/Publicados/2025/20250221/AnuncioG0003-130225-0002_es.html",
+  "fecha": "2025-02-21",
+  "huella": "b20e918aa578a8703e999af8b2faef1b94913c6f15245e80476ba2bf3f27b8e0"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:46:33+00:00",
+ "lote": "msgbatch_01MQzQCLMZKxUrrPMAj7dr53",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "personal fijo, diplomado y titulado sanitario",
+    "personal de gestión y servicios"
+   ],
+   "cita": "procedimiento de movilidad interna voluntaria para personal fijo, diplomado y titulado sanitario y personal de gestión y servicios",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "movilidad interna voluntaria para personal fijo, diplomado y titulado sanitario",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "procedimiento de movilidad interna voluntaria para personal fijo",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles a partir del siguiente al de la publicación",
+   "cita": "El plazo para la presentación de solicitudes será de veinte (20) días hábiles a partir del siguiente al de la presente publicación.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Formulario electrónico en la Oficina Virtual del Profesional, impreso y registrado preferentemente en el registro del Hospital Público da Mariña, o por cualquier medio del artículo 16 de la Ley 39/2015",
+   "cita": "Las solicitudes se ajustarán al formulario electrónico existente en la Oficina Virtual del Profesional"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "No consta en el texto",
+   "cita": ""
+  }
+ }
+}

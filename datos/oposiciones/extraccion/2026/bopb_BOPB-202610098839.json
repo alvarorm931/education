@@ -1,114 +1,52 @@
 {
  "proceso": "bopb:BOPB-202610098839",
  "documento": {
-  "id": "bopb:BOPB-202610098839",
-  "fuente": "BOPB",
-  "url": "https://bop.diba.cat/anunci/3949744/aprovacio-de-la-convocatoria-i-bases-especifiques-que-han-de-regir-el-proces-de-seleccio-pel-sistema-d-oposicio-torn-lliure-per-a-la-constitucio-d-una-borsa-de-treball-de-psicoleg-ajuntament-de-sitges",
-  "fecha": "2026-06-04",
-  "huella": "96bc4c01a6affec3c5befe78838fab58abf3e6a9dd372e7a4ea6b5f74a2a2c7b"
+  "id": "dogc:1047027",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1047027",
+  "fecha": "2026-06-15",
+  "huella": "fd3215f44187d019e392a87fa81abc0945d946d48c2a261c7e95f0c0a858b215"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T11:20:09+00:00",
- "lote": "msgbatch_01MXXMFvrqAAHficSS2SFuRZ",
+ "extraido": "2026-10-31T14:41:54+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
  "no_son_bases": false,
  "campos": {
+  "denominacion": {
+   "valor": "PSICÒLEG",
+   "cita": "per a la constitució d'una borsa de treball de PSICÒLEG, número 38 de la plantilla de la Corporació",
+   "nivel": "literal"
+  },
   "grupo": {
    "valor": "A2",
-   "cita": "Grup: A - Subgrup: A2 - Nivell destí: 25",
+   "cita": "grup A2, personal laboral, aprovat per la Junta de Govern Local",
    "nivel": "literal"
   },
   "vinculo": {
    "valor": "laboral temporal",
-   "cita": "Tipus de personal: laboral - Denominació: PSICÒLEG",
+   "cita": "grup A2, personal laboral, aprovat per la Junta de Govern Local",
    "nivel": "literal"
   },
   "sistema": {
    "valor": "oposición",
-   "cita": "pel sistema d´oposició, torn lliure, per a la constitució d´una borsa de treball",
-   "nivel": "literal"
-  },
-  "plazas_turno_libre": {
-   "valor": 1,
-   "cita": "pel sistema d´oposició, torn lliure, per a la constitució d´una borsa de treball",
-   "nivel": "literal"
-  },
-  "titulacion": {
-   "valor": "Grau universitari en psicologia o un altre d'equivalent o superior",
-   "cita": "Acreditar que s'està en possessió o en condicions d'obtenir el títol de grau universitari en psicologia",
-   "nivel": "literal"
-  },
-  "otros_requisitos": {
-   "valor": "Nacionalitat espanyola (con excepciones para nacionales UE y de terceros países en plazas laborales); capacidad funcional; no haber sido separado de la administración pública por resolución disciplinaria firme; no estar incurso en incompatibilidades",
-   "cita": "Tenir la nacionalitat espanyola. Igualment, i sempre i quan el lloc objecte de la convocatòria",
-   "nivel": "literal"
-  },
-  "idioma_cooficial": {
-   "valor": "Català nivel C1 (MERC) o equivalente o superior; prueba obligatoria y eliminatoria para quien no lo acredite",
-   "cita": "Les persones aspirants han de tenir la certificació de l nivell C1 (Marc Europeu Comú de Referència, MERC)",
-   "nivel": "literal"
-  },
-  "exenciones_tasa": {
-   "valor": "Titulares del Carnet Blau S de Sitges y personas en situación de atur",
-   "cita": "D'acord amb l’ordenança vigent, gaudiran d’exempció aquells contribuents en que concorri alguna",
+   "cita": "pel sistema d'oposició, torn lliure, per a la constitució d'una borsa",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "20 días hábiles a contar desde la última de las publicaciones",
-   "cita": "en el termini improrrogable de 20 dies hàbils a comptar de la darrera de les publicacions",
-   "nivel": "literal"
-  },
-  "presentacion": {
-   "valor": "Registro electrónico municipal (sitges.convoca.online), presencial en OAC, Correos, representaciones diplomáticas u oficinas de asistencia en registros",
-   "cita": "La instància s´adreçarà a l´Alcaldessa de la Corporació, i es presentarà d’acord amb la convocatòria",
+   "valor": "20 días hábiles desde el día siguiente a la última de las publicaciones",
+   "cita": "El termini improrrogable per presentar les sol·licituds és de 20 dies hàbils, comptats a partir de l'endemà de la darrera",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Tablón de anuncios de la Corporación y sede electrónica (sitges.convoca.online); anuncio en BOP de Barcelona y DOGC",
-   "cita": "Totes els anuncis referents a aquest procés de selecció es publicaran al tauler d’anuncis de la Corporació i a la seu electrònica",
+   "valor": "Boletín Oficial de la Provincia de Barcelona; las posteriores publicaciones se harán en la página web municipal",
+   "cita": "Les posteriors publicacions es faran a la pàgina web municipal.",
    "nivel": "literal"
   },
-  "ejercicios": {
-   "valor": [
-    "Prueba de catalán (apto/no apto)",
-    "Prueba de castellano para no nacionales españoles (apto/no apto)",
-    "Prueba teórica: 10 preguntas cortas sobre temario, máximo 1 hora (0-10, mínimo 5)",
-    "Prueba práctica: supuestos de carácter práctico, máximo 2 horas (0-20, mínimo 10)",
-    "Entrevista personal, no eliminatoria (0-5)"
-   ],
-   "cita": "Consisteix a respondre per escrit 10 preguntes curtes vari ades sobre el temari",
-   "nivel": "literal"
-  },
-  "meritos": {
-   "valor": "No se valoran méritos en el concurso; solo oposición y entrevista",
-   "cita": "Finalitzada la qualificació dels exercicis i, si s’escau, de l’entrevista personal",
-   "nivel": "literal"
-  },
-  "practicas_o_curso": {
-   "valor": "Período de prueba de 6 meses",
-   "cita": "Segons Base General 14: 6 mesos.",
+  "bolsa": {
+   "valor": "sí, para constituir una bolsa de trabajo",
+   "cita": "per a la constitució d'una borsa de treball de PSICÒLEG",
    "nivel": "literal"
   }
  },
- "rechazados": {
-  "denominacion": {
-   "motivo": "cita_no_literal",
-   "valor": "PSICÒLEG, núm. 38 de la plantilla",
-   "cita": "PSICÒLEG, núm. 38 de la plantilla de la Corporació, ja sigui per substitucions"
-  },
-  "plazas_total": {
-   "motivo": "cita_no_literal",
-   "valor": 1,
-   "cita": "PSICÒLEG, núm. 38 de la plantilla de la Corporació, ja sigui per substitucions"
-  },
-  "temas": {
-   "motivo": "cita_no_literal",
-   "valor": 20,
-   "cita": "ANNEX: TEMARI 1. .La psicologia social. ... 20. Definició i tipus de violències digitals."
-  },
-  "bolsa": {
-   "motivo": "cita_no_literal",
-   "valor": "sí, para cubrir substituciones, temporalidad o provisión temporal de vacantes hasta la provisión reglamentaria; vigencia 2 años",
-   "cita": "Tenint la vigència d’aquesta borsa de treball tindrà una durada de 2 anys"
-  }
- }
+ "rechazados": {}
 }

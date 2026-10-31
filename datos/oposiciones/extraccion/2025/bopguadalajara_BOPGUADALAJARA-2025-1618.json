@@ -1,0 +1,103 @@
+{
+ "proceso": "bopguadalajara:BOPGUADALAJARA-2025-1618",
+ "documento": {
+  "id": "bopguadalajara:BOPGUADALAJARA-2025-1618",
+  "fuente": "BOP-GUADALAJARA",
+  "url": "https://boletin.dguadalajara.es/boletin/pdf/pdf2025_1618.pdf",
+  "fecha": "2025-05-28",
+  "huella": "86d4aeb5cb285c65784e84cdbf64e98cce851a33ee0cf3a7b98e71c8fe844fac"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:45:30+00:00",
+ "lote": "msgbatch_016re6aGcimwSVmdrWa6qBd9",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "contratos vinculados a programas de activación de empleo, por plazo de 6 meses y a jornada completa",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 9,
+   "cita": "de 9 trabajadores con la categoría de peón, para la ejecución del proyecto",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "No se exige titulación; las personas contratadas no deben contar con las titulaciones previstas en el artículo 11.3 del Estatuto de los Trabajadores para jóvenes con baja cualificación",
+   "cita": "carecer de las titulaciones previstas en el artículo 11.3 del texto refundido de la Ley del Estatuto de los Trabajadores",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Pertenecer a alguno de los colectivos vulnerables establecidos (demandantes de empleo no ocupados inscritos en Oficina Emplea de Castilla-La Mancha, discapacidad igual o superior al 33%, jóvenes con baja cualificación, víctimas de violencia de género, entre otros)",
+   "cita": "Las contrataciones deberán formalizarse con personas incluidas en alguno de los siguientes colectivos vulnerables",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Entre el 30 de mayo y el 13 de junio de 2025",
+   "cita": "en el plazo de comprendido entre el 30 de mayo y el 13 de junio de 2025",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Sede electrónica y página web del Ayuntamiento",
+   "cita": "se publicará en la sede electrónica y en la página web del Ayuntamiento",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Proceso de selección mediante valoración de méritos por Comisión Local de Selección",
+    "Acción formativa previa: Limpieza en espacios abiertos e instalaciones industriales (SEAG0209)"
+   ],
+   "cita": "La acción formativa que se llevará a cabo se denomina LIMPIEZA EN ESPACIOS ABIERTOS E INSTALACIONES INDUSTRIALES",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "Sí, bolsa de trabajo para vacantes, sustituciones, bajas temporales o renuncias de los aspirantes seleccionados",
+   "cita": "Los aspirantes no seleccionados, pasarán a formar parte... a una Bolsa de trabajo para los supuestos de vacante, sustitución",
+   "nivel": "fragmentos"
+  },
+  "practicas_o_curso": {
+   "valor": "Periodo de prueba de un mes",
+   "cita": "quedarán sometidas a un periodo de prueba de un mes",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Peón"
+   ],
+   "cita": "contratos de 9 trabajadores con la categoría de peón"
+  },
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "otro",
+   "cita": "contratación laboral temporal de personas desempleadas y en exclusión social"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso",
+   "cita": "Valoración de méritos: Los aspirantes admitidos serán valorados hasta un máximo de 12,20 puntos"
+  },
+  "plazas_discapacidad": {
+   "motivo": "valor_no_numerico",
+   "valor": "7% de los contratos reservados a personas en exclusión social con discapacidad igual o superior al 33%",
+   "cita": "dentro de este 25%, un 7% para personas con discapacidad igual o superior al 33%"
+  },
+  "tasa_euros": {
+   "motivo": "valor_no_en_cita",
+   "valor": 0,
+   "cita": "La participación del alumnado en cualquier acción formativa será gratuita"
+  },
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "En el Registro del Ayuntamiento de 9,00 a 14 horas o mediante el procedimiento del artículo 16.4 de la Ley 39/2015",
+   "cita": "se presentarán, conforme al modelo que consta en el anexo I, en el Registro del Ayuntamiento"
+  },
+  "meritos": {
+   "motivo": "cita_no_literal",
+   "valor": "Tiempo de permanencia en desempleo (máx. 3,2 puntos); renta per cápita familiar (máx. 5 puntos); responsabilidades familiares (máx. 2 puntos); situación de cuidador de persona dependiente (1 punto); discapacidad (máx. 1 punto)",
+   "cita": "Los aspirantes admitidos serán valorados hasta un máximo de 12,20 puntos"
+  }
+ }
+}

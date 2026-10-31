@@ -1,0 +1,56 @@
+{
+ "proceso": "dogc:999036",
+ "documento": {
+  "id": "dogc:999036",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=999036",
+  "fecha": "2024-11-11",
+  "huella": "44a4587b4abbedf67a5dce92881e8f19f5d06aacd11fcf7981f88f4a4e777747"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:50:28+00:00",
+ "lote": "msgbatch_01LpyYajgKGX9NyHT1uvynbR",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Auxiliar Administratiu/va",
+    "Auxiliar Administratiu/va"
+   ],
+   "cita": "Denominació de la plaça: Auxiliar Administratiu/va",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "places amb caràcter funcionarial de carrera de l'Ajuntament de La Pobla de Montornès",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "Sistema de selecció: concurs",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles a partir del día siguiente a la última publicación del anuncio en el Boletín Oficial correspondiente",
+   "cita": "El termini per presentar sol·licituds finalitza als 20 dies hàbils comptats a partir de l'endemà de l'última publicació",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "sede electrónica del Ayuntamiento y otros medios indicados en las bases",
+   "cita": "Els anuncis successius relatius a aquesta convocatòria es publicaran a la seu electrònica de l'Ajuntament",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 2,
+   "cita": "Nombre de places convocades: 1"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 2,
+   "cita": "Torn: lliure"
+  }
+ }
+}

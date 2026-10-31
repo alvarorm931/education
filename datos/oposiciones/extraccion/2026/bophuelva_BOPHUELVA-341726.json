@@ -1,0 +1,50 @@
+{
+ "proceso": "bophuelva:BOPHUELVA-341726",
+ "documento": {
+  "id": "bophuelva:BOPHUELVA-341726",
+  "fuente": "BOP-HUELVA",
+  "url": "https://s2.diphuelva.es/portalweb/bope/anuncios/Anuncio_341726_BOP-28_2026.pdf",
+  "fecha": "2026-02-11",
+  "huella": "71cac8ec08a10af9d620cde2928e38fbed44967ce101e076982c526b74063db5"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:42:07+00:00",
+ "lote": "msgbatch_01W17mR271uYfWYL6CuSdriL",
+ "no_son_bases": false,
+ "campos": {
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "Bolsa de Empleo por Concurso Oposición para el puesto personal funcionario interino",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "diez días hábiles a contar desde el día siguiente a la publicación de este anuncio en el Boletín Oficial de la Provincia",
+   "cita": "el plazo de presentación de solicitudes, que será de diez días hábiles a contar desde el día siguiente a la publicación",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Funcionario interino - Administrativo/a - departamento de contabilidad"
+   ],
+   "cita": "para cubrir el puesto de funcionario interino por acumulación de tareas en el área de Contabilidad"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario interino",
+   "cita": "para cubrir el puesto de funcionario interino por acumulación de tareas en el área de Contabilidad"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "tablón de anuncios de la sede electrónica, página web y tablón físico de la entidad",
+   "cita": "se encontrará en el tablón de anuncios de la sede electrónica de la Entidad Local Autónoma de Tharsis"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, bolsa de empleo para cubrir por funcionario interino por acumulación de tareas",
+   "cita": "se abre el plazo de presentación de solicitudes para la constitución de una bolsa de empleo"
+  }
+ }
+}

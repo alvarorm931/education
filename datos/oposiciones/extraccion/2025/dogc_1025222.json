@@ -1,0 +1,70 @@
+{
+ "proceso": "dogc:1025222",
+ "documento": {
+  "id": "dogc:1025222",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1025222",
+  "fecha": "2025-09-30",
+  "huella": "c5efa05a9b029576b2c9ba70ee5af9846db3f7b9acb7363599c377f70c923efc"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:43:09+00:00",
+ "lote": "msgbatch_01XofVwxKEhyEjSzGog6wsD4",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Agent de la Policia Local, escala d'administració especial, subescala serveis especials, classe Policia Local"
+   ],
+   "cita": "sis places d'agent, de l'escala d'administració especial, subescala serveis especials, classe Policia Local",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C1",
+   "cita": "grup C, subgrup C1, en règim de funcionari de carrera",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "en règim de funcionari de carrera, mitjançant el sistema selectiu",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mitjançant el sistema selectiu de concurs-oposició, torn lliure i creació d'una borsa de treball",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 6,
+   "cita": "procés selectiu per a provisió en propietat de sis places d'agent",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Mediante instancia según modelo anexo 1 de las bases",
+   "cita": "El termini per a la presentació d'instàncies, (segons model que consta com a annex 1, a les bases)",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Bases íntegras en el BOP de Girona; anuncio extractado en el DOGC y BOE; bases en la web municipal",
+   "cita": "publicar la convocatòria, juntament amb el text íntegre de les bases en el Butlletí Oficial de la Província de Girona",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, creación de una bolsa de trabajo",
+   "cita": "mitjançant el sistema selectiu de concurs-oposició, torn lliure i creació d'una borsa de treball",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 6,
+   "cita": "concurs-oposició, torn lliure i creació d'una borsa de treball"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "veinte días hábiles, a partir del día siguiente a la publicación del anuncio de convocatoria en el DOGC",
+   "cita": "El termini per a la presentació d'instàncies, serà de vint dies hàbils, a partir de l'endemà de la publicació"
+  }
+ }
+}

@@ -1,0 +1,124 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2022-10240",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2022-10240",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2022/12/15_237/2022_010240.pdf",
+  "fecha": "2022-12-15",
+  "huella": "c8e11c8a2f1f56e24366b89aa29afeae1a40cce116a2cbf4c401ab7f2825fce5"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:20+00:00",
+ "lote": "msgbatch_01B4ETF5xB4buYCHqPiHTXzF",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "C2, C1, A2, Agrupaciones Profesionales",
+   "cita": "GRUPO/ SUBGRUPO ESCALA SUBESCALA CATEGORIA VACANTES FECHA DE ADSCRIPCIÓN SISTEMA DE ACCESO C / C2",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "Las características de las plazas estructurales vacantes son: PERSONAL FUNCIONARIO",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "CONCURSO - OPOSICIÓN ART. 2 DE LA LEY 20/2021 DE 28 DE DICIEMBRE.",
+   "nivel": "sin_signos"
+  },
+  "titulacion": {
+   "valor": "Titulación académica exigida en la respectiva convocatoria (según bases específicas)",
+   "cita": "Poseer la titulación exigida en la respectiva convocatoria.",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española o de la UE/cónyuge/Tratados internacionales; capacidad funcional; tener 16 años y no exceder la edad de jubilación forzosa; no haber sido separado del servicio ni inhabilitado para empleo público.",
+   "cita": "Tener cumplidos dieciséis años y no exceder, en su caso, de la edad máxima de jubilación forzosa.",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Valenciano valorable como mérito (A2/B1/B2/C1/C2 según puntuación)",
+   "cita": "Se valorará el conocimiento del valenciano siempre que se acredite estar en posesión del certificado",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Registro Electrónico General de la Mancomunitat (sede electrónica) o lugares del artículo 16.4 de la Ley 39/2015",
+   "cita": "se presentarán en el Registro Electrónico General de la Mancomunitat de serveis socials i turisme de Pego",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia, sede electrónica y tablón de anuncios de la Mancomunitat; extracto en el DOGV y BOE",
+   "cita": "Las convocatorias y las bases íntegras se publicarán en el Boletín Oficial de la Provincia y en la sede electrónica",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Fase de oposición (60%): uno o dos ejercicios obligatorios y no eliminatorios",
+    "Primera prueba: cuestionario tipo test con respuestas alternativas",
+    "Segunda prueba: práctica, supuesto propuesto por el tribunal",
+    "Fase de concurso (40%): experiencia profesional y otros méritos"
+   ],
+   "cita": "La fase de oposición estará integrada por uno o dos ejercicios que serán obligatorios y no eliminatorios",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Experiencia profesional máx. 37 puntos (0,30/mes en Ayuntamiento de Pego; 0,075/mes otra Administración Local); otros méritos máx. 3 puntos (titulaciones 1, formación 1, valenciano 1)",
+   "cita": "La puntuación máxima a obtener en la fase de concurso será de 40 puntos.",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, bolsas de personal funcionario interino o laboral temporal para quienes no superen el proceso con 15 puntos o más",
+   "cita": "Se prevé para aquellas personas que no superen el proceso selectivo, su inclusión en bolsas de personal funcionario interino",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Auxiliar Administrativo/a (Administración General, Auxiliar)",
+    "Auxiliar Técnico/a de Turismo (Administración Especial, Técnica Auxiliar)",
+    "Trabajador/a Social",
+    "Educador/a Social",
+    "Auxiliar de Hogar"
+   ],
+   "cita": "Auxiliar Administrativo/a, Administración General. Auxiliar Técnico/a de Turismo. Trabajador/a Social. Educador/a Social. Auxiliar de Hogar"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 8,
+   "cita": "Las características de las plazas estructurales vacantes son: PERSONAL FUNCIONARIO"
+  },
+  "plazas_turno_libre": {
+   "motivo": "cita_no_literal",
+   "valor": 8,
+   "cita": "El procedimiento de selección ... se articulará por el sistema de CONCURSO - OPOSICIÓN de turno libre"
+  },
+  "plazas_discapacidad": {
+   "motivo": "cita_no_literal",
+   "valor": 0,
+   "cita": "el procedimiento ... de estabilización ... en las presentes pruebas serán admitidas las personas discapacitadas en igualdad de condiciones"
+  },
+  "tasa_euros": {
+   "motivo": "cita_no_literal",
+   "valor": 0,
+   "cita": "no aparece importe de tasa en el texto"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "10 días hábiles desde el día siguiente a la publicación del anuncio de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "en el plazo de 10 días hábiles contados a partir del día siguiente al de la publicación del anuncio de la convocatoria en el Boletín Oficial del Estado."
+  },
+  "temas": {
+   "motivo": "valor_no_numerico",
+   "valor": "máximo: A1 35, A2 30, B 25, C1 18, C2 12, AP 5 temas",
+   "cita": "El número de temas establecido para cada subgrupo será como máximo"
+  },
+  "practicas_o_curso": {
+   "motivo": "cita_no_literal",
+   "valor": "no aparece",
+   "cita": "no aparece periodo de prácticas ni curso selectivo"
+  }
+ }
+}

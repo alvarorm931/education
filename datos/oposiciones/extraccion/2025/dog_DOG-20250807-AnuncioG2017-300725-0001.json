@@ -1,0 +1,50 @@
+{
+ "proceso": "dog:DOG-20250807-AnuncioG2017-300725-0001",
+ "documento": {
+  "id": "dog:DOG-20250807-AnuncioG2017-300725-0001",
+  "fuente": "DOG",
+  "url": "https://www.xunta.gal/dog/Publicados/2025/20250807/AnuncioG2017-300725-0001_es.html",
+  "fecha": "2025-08-07",
+  "huella": "e7053b0009a7278afed20f42985bf62a28dfc7d7741601d57378643ee1031a11"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:42:53+00:00",
+ "lote": "msgbatch_01XofVwxKEhyEjSzGog6wsD4",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Profesor/a ayudante doctor/a"
+   ],
+   "cita": "Profesor/a ayudante doctor/a: 7 plazas.",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "se convoca un concurso público, por tramitación de urgencia, para la contratación de personal docente e investigador",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 7,
+   "cita": "Profesor/a ayudante doctor/a: 7 plazas.",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "diez días hábiles, contados desde el día siguiente al de la publicación del presente anuncio en el Diario Oficial de Galicia",
+   "cita": "El plazo de presentación de solicitudes es de diez días hábiles, contados desde el día siguiente al de la publicación del presente anuncio en el Diario Oficial de Galicia.",
+   "nivel": "sin_signos"
+  },
+  "publicaciones": {
+   "valor": "tablón electrónico oficial de la UDC y página web http://www.udc.es/pdi/concursos/concursos_contratacion/",
+   "cita": "La información completa (bases de la convocatoria, modelo de solicitud, etc.) puede consultarse en el tablón electrónico oficial de la UDC",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "personal laboral fijo",
+   "cita": ""
+  }
+ }
+}

@@ -1,0 +1,69 @@
+{
+ "proceso": "dog:DOG-20240111-AnuncioG1091-050124-1",
+ "documento": {
+  "id": "dog:DOG-20240111-AnuncioG1091-050124-1",
+  "fuente": "DOG",
+  "url": "https://www.xunta.gal/dog/Publicados/2024/20240111/AnuncioG1091-050124-1_es.html",
+  "fecha": "2024-01-11",
+  "huella": "a7e46b49ea1db31f1e043df95a5697609dd94e3d1ede4197f9aa02e5e4b99d4b"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:45+00:00",
+ "lote": "msgbatch_01SjfjDqJRwL6bpTvJz2YfVg",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "técnico-técnica de medio ambiente",
+    "técnico-técnica de infraestructuras",
+    "policía portuaria",
+    "administrativo-administrativa",
+    "técnico-técnica de recursos humanos y organización"
+   ],
+   "cita": "1 plaza de técnico-técnica de medio ambiente GII BII N8.",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "GII BII N8",
+   "cita": "1 plaza de técnico-técnica de medio ambiente GII BII N8.",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "por el procedimiento de concurso-oposición",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte (20) días hábiles, contados a partir del día siguiente a la publicación del anuncio de la convocatoria en el Diario Oficial de Galicia (DOG)",
+   "cita": "dispondrán de un plazo de veinte (20) días hábiles, contados a partir del día siguiente",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Solicitudes en plazo de veinte días hábiles desde el día siguiente a la publicación en el DOG; impresos disponibles en las páginas web indicadas",
+   "cita": "Las bases de las convocatorias y los impresos de solicitud están disponibles en la página web",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "páginas web www.apvigo.es, www.puertos.es y www.administracion.gob.es",
+   "cita": "disponibles en la página web de la Autoridad Portuaria de Vigo www.apvigo.es",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "personal laboral fijo",
+   "cita": "convoca plazas de personal laboral fijo sujeto a convenio colectivo"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 14,
+   "cita": "realiza convocatoria para cubrir las siguientes plazas de personal laboral fijo"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 14,
+   "cita": "realiza convocatoria para cubrir las siguientes plazas de personal laboral fijo"
+  }
+ }
+}

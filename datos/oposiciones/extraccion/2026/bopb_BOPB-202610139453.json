@@ -1,22 +1,27 @@
 {
  "proceso": "bopb:BOPB-202610139453",
  "documento": {
-  "id": "bopb:BOPB-202610139453",
-  "fuente": "BOPB",
-  "url": "https://bop.diba.cat/anunci/3989223/bases-i-convocatoria-del-proces-selectiu-per-a-la-creacio-d-una-borsa-de-treball-de-treballador-a-social-subgrup-a2-ajuntament-de-ripollet",
-  "fecha": "2026-09-10",
-  "huella": "ae179f57f67bf01895bcaf14156c1d6509b37e4baa77b1a7e6202f338bf0c06e"
+  "id": "dogc:1054252",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1054252",
+  "fecha": "2026-09-15",
+  "huella": "e8b45631935e21f7b7f4c4e908c72601a0c65b25166fbd702daf3a9655509c65"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T08:03:42+00:00",
- "lote": "msgbatch_013xFoLdqcGqWcqkzh7qrdGg",
+ "extraido": "2026-10-31T14:41:56+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
    "valor": [
     "Treballador/a social"
    ],
-   "cita": "BORSA DE TREBALL PER COBRIR, AMB CARÀCTER D’URGÈNCIA, EL LLOC DE TREBALL DE TREBALLADOR/A SOCIAL, SUBGRUP A2",
+   "cita": "BORSA DE TREBALL PER COBRIR, AMB CARÀCTER D'URGÈNCIA, EL LLOC DE TREBALL DE TREBALLADOR/A SOCIAL, SUBGRUP A2",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "A2",
+   "cita": "El lloc de treball objecte d'aquesta selecció estarà adscrit a l'Àrea de Serveis a les Persones",
    "nivel": "literal"
   },
   "vinculo": {
@@ -29,9 +34,14 @@
    "cita": "mitjançant concurs-oposició en torn lliure",
    "nivel": "literal"
   },
+  "titulacion": {
+   "valor": "Grau universitari de Treball social o diplomatura en Treball social, o titulació equivalent o superior",
+   "cita": "Estar en possessió de la titulació de grau universitari de Treball social o diplomatura en Treball social",
+   "nivel": "literal"
+  },
   "otros_requisitos": {
-   "valor": "Nacionalitat espanyola, de la UE o residència legal; 16 anys i no excedir edat de jubilació; coneixement de castellà B2 si no es té nacionalitat espanyola; capacitat funcional; no condemna; certificat negatiu del Registre de Delinqüents Sexuals",
-   "cita": "Tenir 16 anys i no excedir, si escau, de l’edat màxima de jubilació forçosa",
+   "valor": "Ser ciutadà de la UE o estrangers amb residència legal a Espanya, tenir 16 anys, capacitat funcional, no haver estat condemnat, no estar inhabilitat, no patir malalties incompatibles amb la funció",
+   "cita": "Tenir 16 anys i no excedir, si escau, de l'edat màxima de jubilació forçosa per a l'accés a la funció pública.",
    "nivel": "literal"
   },
   "idioma_cooficial": {
@@ -41,64 +51,64 @@
   },
   "tasa_euros": {
    "valor": 25,
-   "cita": "Haver satisfet la taxa d’inscripció corresponent al grup de classificació A2: 25€.",
+   "cita": "Haver satisfet la taxa d'inscripció corresponent al grup de classificació A2: 25€.",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "No consta",
+   "cita": "Els drets d'examen de 25 €, han de ser satisfets pels aspirants dins el termini de presentació de sol·licituds",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "Deu (10) dies hàbils a comptar des de l’endemà de la publicació d’aquesta convocatòria al BOPB",
-   "cita": "El termini de presentació de sol·licituds serà de deu (10) dies hàbils",
+   "valor": "Deu (10) dies hàbils a comptar des de l'endemà de la publicació de la convocatòria al BOPB",
+   "cita": "El termini de presentació de sol·licituds serà de deu (10) dies hàbils a comptar des de l'endemà de la publicació",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Preferentment telemàtica a la seu electrònica amb certificat digital; excepcionalment presencial a l'Oficina d'Atenció Ciutadana o a qualsevol registre electrònic",
-   "cita": "La sol·licitud de participació ... es realitzarà preferiblement de forma telemàtica",
-   "nivel": "fragmentos"
+   "valor": "Preferentment telemàtica a la seu electrònica de Ripollet amb certificat digital; excepcionalment presencial a l'Oficina d'Atenció Ciutadana o a qualsevol registre electrònic",
+   "cita": "La sol·licitud de participació i l'aportació de documentació es realitzarà preferiblement de forma telemàtica",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Convocatòria i bases al BOPB, DOGC i tauler d'edictes electrònic; resta d'anuncis al tauler d'edictes electrònic de l'Ajuntament",
+   "cita": "Els restants i successius anuncis relacionats amb aquesta convocatòria es faran públics únicament al tauler d'edictes electrònic",
+   "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Exercici 1: coneixement de la llengua catalana (apte/no apte)",
-    "Exercici addicional: coneixement de la llengua castellana per a persones sense nacionalitat espanyola (apte/no apte)",
-    "Exercici 2: qüestionari tipus test de 60 preguntes (40 de temari, 20 de supòsits pràctics) en 90 minuts"
+    "Exercici 1: coneixement de la llengua catalana (C1), apte/no apte, eliminatori",
+    "Exercici addicional: coneixement de la llengua castellana per a aspirants no espanyols, apte/no apte",
+    "Exercici 2: qüestionari tipus test de 60 preguntes (40 temari, 20 supòsits pràctics), 90 minuts, mínim 50 punts"
    ],
-   "cita": "Constarà d’un exercici corresponent al nivell de català corresponent al nivell C1.",
-   "nivel": "literal"
-  },
-  "temas": {
-   "valor": 12,
-   "cita": "ANNEX 1: TEMARI 1. Llei 12/2007, de serveis social.",
+   "cita": "Constarà d'un exercici corresponent al nivell de català corresponent al nivell C1.",
    "nivel": "literal"
   },
   "meritos": {
    "valor": "Certificat ACTIC: nivell mitjà 1 punt; nivell avançat 2 punts (només el de nivell superior acreditat)",
-   "cita": "Nivell mitjà: 1 punt. Nivell avançat: 2 punts.",
-   "nivel": "sin_signos"
+   "cita": "Es puntuaran les persones que acreditin disposar del certificat ACTIC, de la següent manera",
+   "nivel": "literal"
   },
   "bolsa": {
-   "valor": "sí, per cobrir necessitats de nomenaments de personal funcionari interí o contractacions temporals, derivats de substitucions temporals, places interines o altres circumstàncies temporals",
-   "cita": "La vigència de la borsa de treball serà de dos anys",
+   "valor": "Sí, borsa de treball per cobrir necessitats de nomenaments interins o contractacions temporals; vigència de dos anys, prorrogable un any",
+   "cita": "La vigència de la borsa de treball serà de dos anys a partir de la resolució de la llista definitiva",
    "nivel": "literal"
   },
   "practicas_o_curso": {
-   "valor": "Període de prova de fins a sis mesos",
-   "cita": "S’estableix un període de prova per un màxim de sis mesos",
+   "valor": "Període de prova/pràctiques de fins a 6 mesos; en nomenaments de funcionari, valoració d'adequació al sisè mes",
+   "cita": "S'estableix un període de prova per un màxim de sis mesos en què es podrà deixar sense efectes el nomenament",
    "nivel": "literal"
   }
  },
  "rechazados": {
-  "grupo": {
+  "plazas_total": {
    "motivo": "cita_no_literal",
-   "valor": "A2",
-   "cita": "Lloc de treball ... pertany al grup de classificació A2"
+   "valor": 1,
+   "cita": "per cobrir necessitats de nomenaments de personal funcionari interí o contractacions temporals"
   },
-  "titulacion": {
-   "motivo": "cita_no_literal",
-   "valor": "Grau universitari de Treball social o diplomatura en Treball social, o titulació equivalent o superior",
-   "cita": "Estar en possessió de la titulació de grau universitari de Treball social o diplomatura en Treball social"
-  },
-  "publicaciones": {
-   "motivo": "cita_no_literal",
-   "valor": "Tauler d'edictes electrònic i pàgina web de l'Ajuntament",
-   "cita": "Els restants i successius anuncis relacionats amb aquesta convocatòria es faran públics únicament al tauler d’edictes electrònic"
+  "temas": {
+   "motivo": "valor_no_en_cita",
+   "valor": 12,
+   "cita": "ANNEX 1: TEMARI"
   }
  }
 }

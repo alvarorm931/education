@@ -1,0 +1,92 @@
+{
+ "proceso": "bopt:BOPT-2026-04123",
+ "documento": {
+  "id": "bopt:BOPT-2026-04123",
+  "fuente": "BOPT",
+  "url": "https://www.dipta.cat/bopt/web/anunci/359579/ampliacio-de-la-borsa-de-treball-de-personal-de-neteja-bases-i-convocatoria-reus-mobilitat-i-serveis-sa",
+  "fecha": "2026-05-12",
+  "huella": "80a1097a3c19e509902d0f650178a57e96a8dfc3ae7d2b6e4e26e3df15cf0db5"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:41:33+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
+ "no_son_bases": false,
+ "campos": {
+  "sistema": {
+   "valor": "concurs-oposició",
+   "cita": "El procediment de selecció es el concurs oposició lliure.",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 dies naturals a partir del dia següent de la publicació de les bases al web de la societat",
+   "cita": "Les sol·licituds es podran presentar en el termini de 20 dies naturals a partir del dia següent de la publicació de les bases al web de la societat.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Personal de neteja"
+   ],
+   "cita": "Bases que han de regir la convocatòria per l'ampliació de la borsa de treball de personal de neteja compartida"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "laboral temporal",
+   "cita": "Les sol·licituds per prendre part en el procés selectiu, per la presentació de les quals no s'haurà de pagar cap import"
+  },
+  "otros_requisitos": {
+   "motivo": "cita_no_literal",
+   "valor": "Ciutadania espanyola, de la UE o amb residència i permís de treball; 18 anys i no superar l'edat de jubilació forçosa; no inhabilitat; no discapacitat que impedeixi la funció; certificat de discapacitat mínim 33%; no formar part de la borsa actual de neteja",
+   "cita": "Atesa la condició de CET de la societat, caldrà disposar del certificat de discapacitat que acrediti un mínim del 33%"
+  },
+  "idioma_cooficial": {
+   "motivo": "cita_no_literal",
+   "valor": "català nivell A2 (prova eliminatòria si no s'acredita)",
+   "cita": "Les persones aspirants hauran d'acreditar un nivell de coneixement de nivell de A2"
+  },
+  "tasa_euros": {
+   "motivo": "valor_no_en_cita",
+   "valor": 0,
+   "cita": "per la presentació de les quals no s'haurà de pagar cap import"
+  },
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Oficina d'Atenció al públic (carrer Sardà i Cailà s/n, 2n pis, Edifici Mercat Central) o per correu electrònic a relacions.laborals@reusmobilitat.cat i relacions.laborals@reustransport.cat",
+   "cita": "Les sol·licituds es presentaran en l'Oficina d'Atenció al públic de la societat, ubicades al carrer Sardà i Cailà s/n"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Pàgines web de les societats http://reusmobilitat.cat i http://reustransport.cat",
+   "cita": "També es publicarà a les pàgines web de les societats http://www.reusmobilitat.cat i http://www.reustransport.cat"
+  },
+  "ejercicios": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Prova de coneixement de llengua catalana (eliminatòria, apte/no apte)",
+    "Prova de coneixement de llengua castellana (eliminatòria, si escau)",
+    "Test psicotècnic (0-10 punts)",
+    "Prova d'exercici pràctic (0-40 punts, eliminatòria)",
+    "Exercici de coneixements, qüestionari de 25 preguntes tipus test (0-30 punts)",
+    "Entrevista personal (0-5 punts)"
+   ],
+   "cita": "El tribunal qualificador de la selecció estarà format pel president/a i 2 vocals"
+  },
+  "meritos": {
+   "motivo": "cita_no_literal",
+   "valor": "Experiència professional fins a 7 punts (0,10 per mes); cursos de formació fins a 1 punt; altres mèrits específics (titulació superior, altra formació, carnet B) fins a 2 punts",
+   "cita": "Capacitat i experiència demostrada en serveis prestats al sector públic o privat, com a netejador/a o equivalent"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, per a la contractació temporal de personal de neteja de les societats Reus Mobilitat i Serveis S.A. i Reus Transport Públic S.A.",
+   "cita": "La present borsa de treball de personal de neteja per la societat Reus Mobilitat i Serveis S.A. serà compartida amb la societat pública Reus Transport Públic S.A."
+  },
+  "practicas_o_curso": {
+   "motivo": "cita_no_literal",
+   "valor": "període de prova de tres mesos o el màxim indicat al conveni col·lectiu",
+   "cita": "el període de prova que serà de tres mesos, o la màxima indicada al conveni col·lectiu d'aplicació"
+  }
+ }
+}

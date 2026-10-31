@@ -1,0 +1,65 @@
+{
+ "proceso": "boe:BOE-A-2026-7396",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2026-1638",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2026/03/23_55/2026_001638.pdf",
+  "fecha": "2026-03-23",
+  "huella": "62e6d1d7d9109d949da941cfda8c153cd57233698644d4dcda7c8844abd4c315"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:40:27+00:00",
+ "lote": "msgbatch_01E3wiYcGL8Lzho48bXWLyyb",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Agente de la Policía Local"
+   ],
+   "cita": "BASES ESPECÍFICAS PARA LA PROVISIÓN, COMO FUNCIONARIO DE CARRERA, DE 4 PLAZAS DE AGENTE DE LA POLICÍA LOCAL",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C1",
+   "cita": "Grupo C, subgrupo C1, correspondiente a la Oferta de Empleo Público del año 2025",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "para la provisión, como funcionario de carrera, de cuatro (4) plazas de agente de la policía local",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "como funcionario de carrera, mediante oposición, Grupo C, subgrupo C1",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 4,
+   "cita": "de cuatro (4) plazas de agente de la policía local dos (2) por turno libre",
+   "nivel": "literal"
+  },
+  "plazas_turno_libre": {
+   "valor": 2,
+   "cita": "dos (2) por turno libre y dos (2) por movilidad",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de Anuncios de la Corporación (https://catral.sedelectronica.es/board) y en la página web municipal (www.catral.es)",
+   "cita": "estarán a disposición de los interesados en el Tablón de Anuncios de la Corporación",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_promocion_interna": {
+   "motivo": "valor_no_en_cita",
+   "valor": 0,
+   "cita": "dos (2) por turno libre y dos (2) por movilidad"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "veinte días hábiles, contados a partir del día siguiente al de la publicación del extracto de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes para tomar parte en las pruebas selectivas será de veinte días hábiles"
+  }
+ }
+}

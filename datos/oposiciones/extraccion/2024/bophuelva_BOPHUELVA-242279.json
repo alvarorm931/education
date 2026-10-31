@@ -1,0 +1,50 @@
+{
+ "proceso": "bophuelva:BOPHUELVA-242279",
+ "documento": {
+  "id": "bophuelva:BOPHUELVA-242279",
+  "fuente": "BOP-HUELVA",
+  "url": "https://s2.diphuelva.es/portalweb/bope/anuncios/Anuncio_242279_BOP-62_2024.pdf",
+  "fecha": "2024-04-01",
+  "huella": "2036374f81bbc42077796c30aa40120317994404c3c35d3c522eaa4a8ac7ddc7"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:54:00+00:00",
+ "lote": "msgbatch_01EQ4R6PVKpEwTXzXwPCmspm",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "personal de servicios básicos y mantenimiento"
+   ],
+   "cita": "creación de una bolsa de empleo temporal de personal de servicios básicos y mantenimientos para el municipio de Minas de Riotinto",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "creación de una bolsa de empleo temporal de personal de servicios básicos y mantenimientos",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "tablón de anuncios de la sede electrónica del Ayuntamiento de Minas de Riotinto",
+   "cita": "En el tabón de anuncios de la sede electrónica del Ayuntamiento de Minas de Riotinto",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, bolsa de empleo temporal",
+   "cita": "creación de una bolsa de empleo temporal de personal de servicios básicos y mantenimientos",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "fue aprobada la convocatoria"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "veinte días hábiles a contar desde el día siguiente a la publicación de este anuncio",
+   "cita": "El plazo de presentación de solicitudes será de veinte días hábiles a contar desde el día siguiente a la publicación"
+  }
+ }
+}

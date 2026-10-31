@@ -1,76 +1,109 @@
 {
  "proceso": "boplleida:BOPLLEIDA-2026-7901",
  "documento": {
-  "id": "boplleida:BOPLLEIDA-2026-7901",
-  "fuente": "BOP-LLEIDA",
-  "url": "https://ebop.diputaciolleida.cat/aplicacions/bop/bopV1/fitxers/pdf/2026/185/202618507901.pdf",
-  "fecha": "2026-09-28",
-  "huella": "4b6b212e9c4e367b868a1085da9199239ad3491b71971aeaadc0f1ccaf78ebe4"
+  "id": "dogc:1055419",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1055419",
+  "fecha": "2026-09-30",
+  "huella": "6a9af822b39fab38e41731d300339b4547a9bc12ac252cd252ceb0a868919349"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T08:03:39+00:00",
- "lote": "msgbatch_013xFoLdqcGqWcqkzh7qrdGg",
+ "extraido": "2026-10-31T14:41:33+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
-   "valor": "Encarregat/ada d'equipament cultural",
-   "cita": "Denominació del lloc: Encarregat/ada d'equipament cultural Plaça amb referència Àrea de cultura",
+   "valor": [
+    "Encarregat/da d'equipament cultural"
+   ],
+   "cita": "una plaça d'encarregat/da d'equipament cultural, i constitució d'una borsa de treball",
    "nivel": "literal"
   },
   "grupo": {
    "valor": "C1",
-   "cita": "Plaça d'encarregat d'equipament cultural, subgrup C1, de la plantilla de personal",
+   "cita": "SUBGRUP C1, DE LA PLANTILLA DE PERSONAL I CONSTITUCIÓ D'UNA BORSA DE TREBALL",
    "nivel": "literal"
   },
   "vinculo": {
-   "valor": "personal laboral fijo",
-   "cita": "Naturalesa Personal laboral fix Nombre de places 1",
+   "valor": "laboral temporal",
+   "cita": "la plantilla de personal laboral d'aquest Ajuntament",
    "nivel": "literal"
   },
   "sistema": {
    "valor": "concurso-oposición",
-   "cita": "Sistema de selecció Concurs-oposició",
+   "cita": "El procediment de selecció és per concurs oposició",
    "nivel": "literal"
   },
   "plazas_total": {
    "valor": 1,
-   "cita": "Nombre de places 1 Sistema de selecció Concurs-oposició",
+   "cita": "per cobrir una plaça d'encarregat d'equipament cultural",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Título de bachillerato o técnico equivalente (formación profesional de segundo grado)",
+   "cita": "Estar en possessió, en el moment de la presentació d'instàncies d'un títol de batxillerat o tècnic equivalent",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española (sin perjuicio del art. 57 TREBEP); capacidad funcional; tener cumplidos 16 años y no exceder la edad máxima de jubilación forzosa; no haber sido separado de la Administración ni inhabilitado; no padecer enfermedad que impida el desempeño de las funciones.",
+   "cita": "Tenir la nacionalitat espanyola sense perjudici del que es disposa en l'article 57",
    "nivel": "literal"
   },
   "idioma_cooficial": {
-   "valor": "Certificat de coneixements de llengua catalana de nivell C1 (requisit; exentos quienes lo acrediten)",
-   "cita": "estar en possessió del certificat de coneixements del nivell de suficiència de català, certificat de nivell C1 del MERC",
+   "valor": "Catalán, certificado de nivel C1 del MERC o superior (o exención según Decreto 161/2002)",
+   "cita": "estar en possessió del certificat de coneixements del nivell de suficiència de català, certificat de nivell C1",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Bonificación para aspirantes que acrediten ser demandantes de empleo no ocupados (DONO), validado por el Ayuntamiento previa consulta al SOC.",
+   "cita": "Es bonificarà als aspirants que acreditin ser Dono (demanant d'ocupació no ocupat).",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "20 días hábiles desde el día siguiente a la última publicación del anuncio de la convocatoria en el DOGC o en el BOP de Lleida",
+   "valor": "20 días hábiles, contados desde el día siguiente a la última publicación del anuncio de la convocatoria en el DOGC o en el BOP de Lleida",
    "cita": "El termini per a la presentació d'instàncies és de 20 dies hàbils, comptats a partir de l'endemà de l'última publicació",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Registro electrónico del Ayuntamiento de Solsona, Correos, oficinas consulares, oficinas de asistencia en materia de registros o presencialmente en el Registro general",
+   "valor": "Registro electrónico del Ayuntamiento de Solsona, oficinas de Correos, consulados, oficinas de registro o presencialmente en el Registro general; copia por correo electrónico si no es electrónica.",
    "cita": "Al Registre electrònic de l'Ajuntament de Solsona, que es troba a l'adreça",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Tablón de edictos y página web municipal (ajsolsona.cat)",
+   "valor": "Tablón de edictos del Ayuntamiento y página web municipal",
    "cita": "Les Bases es publicaran al Tauler d'Edictes de l'Ajuntament i a la Pàgina Web municipal",
    "nivel": "literal"
   },
-  "temas": {
-   "valor": 19,
-   "cita": "Tema 19. Principis bàsics de l'organització i funcionament de l'Administració local",
+  "ejercicios": {
+   "valor": [
+    "Prueba de catalán (nivel C1), solo para no acreditados: apto/no apto",
+    "Prueba de castellano para aspirantes extranjeros: apto/no apto",
+    "Prueba teórica: 40 preguntas, máximo 50 puntos, mínimo 25",
+    "Prueba práctica: caso práctico relacionado con el puesto, máximo 50 puntos, mínimo 25",
+    "Fase de concurso: experiencia, formación y entrevista (máximo 20 puntos)"
+   ],
+   "cita": "Consistirà en 40 preguntes sobre Solsona, el seu teixit associatiu, cultura, tradicions, equipaments i funcionament administratiu.",
    "nivel": "literal"
   },
   "meritos": {
-   "valor": "Experiencia laboral en puestos similares hasta 5 puntos (1 punto por 12 meses); formación relacionada con el puesto hasta 5 puntos según duración de los cursos",
-   "cita": "Experiència laboral en llocs de treball similars, fins a un màxim de 5 punts, que es puntuaran a raó de 1 punt per 12 mesos treballats.",
+   "valor": "Experiencia laboral en puestos similares: máximo 5 puntos (1 punto por 12 meses). Formación relacionada: máximo 5 puntos según duración de cursos. Entrevista personal competencial: máximo 20 puntos.",
+   "cita": "Experiència laboral en llocs de treball similars, fins a un màxim de 5 punts",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, para cubrir futuras vacantes temporales por bajas por enfermedad, maternidad, etc.; vigencia máxima de dos años",
+   "cita": "Es constituirà una borsa d'ocupació amb les persones que superin el procés de selecció i no resultin contractes",
    "nivel": "literal"
   },
   "practicas_o_curso": {
-   "valor": "Periodo de prueba de 3 meses desde el inicio de la prestación de servicios efectivos",
+   "valor": "Período de prueba de 3 meses desde el inicio de la prestación efectiva de servicios",
    "cita": "s'estableix dins del procés de selecció de la plaça amb contractació com a administratiu/va, un període de prova que serà de 3 mesos",
    "nivel": "literal"
+  },
+  "temas": {
+   "valor": 12,
+   "cita": "Tema 12. Equips audiovisuals i equips de so portàtils",
+   "nivel": "contado"
   }
  },
  "rechazados": {
@@ -78,26 +111,6 @@
    "motivo": "cita_no_literal",
    "valor": 20,
    "cita": "Els aspirants han de satisfer la taxa de participació en concurs per places de l'Ajuntament de Solsona, que és de 20,00 euros"
-  },
-  "exenciones_tasa": {
-   "motivo": "cita_no_literal",
-   "valor": "Bonificación para aspirantes que acrediten ser demandantes de ocupación no ocupados (DONO), validado por el Ayuntamiento previa consulta al SOC",
-   "cita": "Es bonificarà als aspirants que acreditin ser Dono (demanant d'ocupació no ocupat). Aquest requisit serà validat"
-  },
-  "ejercicios": {
-   "motivo": "cita_no_literal",
-   "valor": [
-    "Prueba teórica: 40 preguntas sobre Solsona, cultura y organización municipal, máximo 50 puntos, mínimo 25",
-    "Prueba práctica: caso práctico relacionado con el puesto, máximo 50 puntos, mínimo 25",
-    "Fase de concurso: experiencia (máx. 5), formación (máx. 5)",
-    "Entrevista competencial (máx. 20 puntos)"
-   ],
-   "cita": "Consistirà en 40 preguntas sobre Solsona, el seu teixit associatiu, cultura, tradicions, equipaments i funcionament administratiu."
-  },
-  "bolsa": {
-   "motivo": "cita_no_literal",
-   "valor": "sí, para cubrir vacantes temporales por bajas por enfermedad, maternidad, etc., con vigencia máxima de dos años",
-   "cita": "Es constituirà una borsa d'ocupació amb les persones que superin el procés de selecció i no resultin contractades"
   }
  }
 }

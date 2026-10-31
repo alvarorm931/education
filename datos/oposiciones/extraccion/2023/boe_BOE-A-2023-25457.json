@@ -1,0 +1,75 @@
+{
+ "proceso": "boe:BOE-A-2023-25457",
+ "documento": {
+  "id": "dog:DOG-20231011-AnuncioL445-200923-0001",
+  "fuente": "DOG",
+  "url": "https://www.xunta.gal/dog/Publicados/2023/20231011/AnuncioL445-200923-0001_es.html",
+  "fecha": "2023-10-11",
+  "huella": "0269bd10980c14b2cfc2191e42d554202dedcbce8a98ae650bd5ee4254d2366c"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:38+00:00",
+ "lote": "msgbatch_01SjfjDqJRwL6bpTvJz2YfVg",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "trabajador/a social",
+    "agente de empleo y desarrollo local",
+    "capataz",
+    "oficial de 1ª albañil",
+    "auxiliar de ayuda en el hogar",
+    "limpiador/a",
+    "administrativo/a",
+    "técnico/a auxiliar"
+   ],
+   "cita": "Una (1) plaza de trabajador/a social de la plantilla de laboral fijo",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C1",
+   "cita": "grupo C, subgrupo C1, mediante el sistema de concurso",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "plazas de personal funcionario/a de carrera o laboral fijo",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte (20) días hábiles, contados desde el día siguiente al de la publicación del extracto de la convocatoria y bases en el BOE",
+   "cita": "El plazo de presentación de solicitudes será de veinte (20) días hábiles, contados desde el día siguiente",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "BOP de Lugo, tablón de anuncios de la sede electrónica y página web del Ayuntamiento de Pedrafita do Cebreiro",
+   "cita": "se harán públicos en el BOP de Lugo, así como en el tablón de anuncios de la sede electrónica",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso",
+   "cita": "Una (1) plaza de trabajador/a social de la plantilla de laboral fijo, perteneciente al grupo de cotización 2, mediante el sistema de concurso"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 30,
+   "cita": "Tres (3) plazas de oficial de 1ª albañil de la plantilla de laboral fijo"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 30,
+   "cita": "cupo general, acceso libre"
+  },
+  "ejercicios": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Concurso (sistema de selección para la mayoría de plazas)",
+    "Concurso-oposición (nueve plazas de auxiliar de ayuda en el hogar)"
+   ],
+   "cita": "Nueve (9) plazas de auxiliar de ayuda en el hogar, de la plantilla de laboral fijo, mediante el sistema de concurso-oposición"
+  }
+ }
+}

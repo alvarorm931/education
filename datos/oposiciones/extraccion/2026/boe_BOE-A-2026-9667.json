@@ -1,0 +1,60 @@
+{
+ "proceso": "boe:BOE-A-2026-9667",
+ "documento": {
+  "id": "dogv:473096",
+  "fuente": "DOGV",
+  "url": "https://dogv.gva.es/datos/2026/04/24/pdf/2026_11809_es.pdf",
+  "fecha": "2026-04-24",
+  "huella": "043f58140a1e0dbf1d08562f565b528fef625ba8975a5d7481f5c91cb99a87fd"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:41:30+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Agente de la Policía Local"
+   ],
+   "cita": "se cubren tres de ellas a través del sistema de concurso",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C1",
+   "cita": "grupo C, subgrupo C1",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "vacantes en la plantilla de personal funcionario de carrera de este ayuntamiento",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 6,
+   "cita": "la cobertura en propiedad de seis plazas de agente de la Policía Local",
+   "nivel": "literal"
+  },
+  "plazas_turno_libre": {
+   "valor": 3,
+   "cita": "las otras tres, a través del sistema de oposición, por turno libre",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles, a partir del siguiente de la publicación en extracto de esta convocatoria en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes será de veinte días hábiles, a partir del siguiente de la publicación",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia de Valencia",
+   "cita": "En el Boletín Oficial de la Provincia de Valencia número 75, de 22 de abril de 2026",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "oposición",
+   "cita": ""
+  }
+ }
+}

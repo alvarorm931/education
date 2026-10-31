@@ -1,0 +1,107 @@
+{
+ "proceso": "bopt:BOPT-2026-02334",
+ "documento": {
+  "id": "bopt:BOPT-2026-02334",
+  "fuente": "BOPT",
+  "url": "https://www.dipta.cat/bopt/web/anunci/357643/borsa-de-treball-d-arquitecte-a-bases-i-convocatoria-consell-comarcal-baix-ebre",
+  "fecha": "2026-03-18",
+  "huella": "26174d9766a4ef7c692141547de331e81b985053e6e46a895ea19d90ed17f546"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:40:27+00:00",
+ "lote": "msgbatch_01E3wiYcGL8Lzho48bXWLyyb",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "arquitecte/a, Escala d'administració especial, subescala tècnica, classe superior",
+   "cita": "una borsa de treball d'arquitecte/a, en l'Escala d'administració especial, subescala tècnica, classe superior",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "A1",
+   "cita": "subgrup professional A1",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario interino",
+   "cita": "en règim de funcionari interí",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "mitjançant concurs de mèrits, torn lliure",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Títol de grau o estudis universitaris en arquitectura superior",
+   "cita": "Estar en possessió del títol de grau o estudis universitaris en arquitectura superior",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Català, nivell C1",
+   "cita": "Posseir el certificat de nivell C1 de català expedit per l'òrgan competent",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 30,
+   "cita": "es fixen els drets d'examen per accedir a aquesta convocatòria en la quantitat de 30 euros",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "No consta en las bases",
+   "cita": "Les quotes ingressades únicament podran ser retornades, prèvia sol·licitud, al subjecte passiu si no resulta admès",
+   "nivel": "sin_signos"
+  },
+  "presentacion": {
+   "valor": "Preferentment electrònicament al registre electrònic del Consell (seu electrònica, catàleg de tràmits, selecció de personal); presencialment al Registre General (carrer Barcelona, 152, Tortosa)",
+   "cita": "Preferentment les instàncies es presentaran electrònicament al registre electrònic del Consell",
+   "nivel": "sin_signos"
+  },
+  "ejercicios": {
+   "valor": [
+    "Fase de coneixement de llengua catalana (si no s'acredita C1), apte/no apte",
+    "Fase de coneixement de llengua castellana (si escau), apte/no apte i prova de 0 a 25 punts",
+    "Fase de concurs de mèrits, màxim 60 punts"
+   ],
+   "cita": "Consisteix en la realització d'una prova de coneixements de llengua catalana",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "Sí, borsa de treball de funcionari interí per cobrir vacants, substitucions i altres contingències temporals; vigència de 2 anys",
+   "cita": "La borsa tindrà una vigència de 2 anys des de la seva constitució",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 1,
+   "cita": "constituir, mitjançant concurs, torn lliure, una borsa de treball d'arquitecte/a"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "mitjançant concurs de mèrits, torn lliure"
+  },
+  "otros_requisitos": {
+   "motivo": "cita_no_literal",
+   "valor": "Nacionalitat espanyola o de la UE (o accés equivalent); capacitat funcional; setze anys i no excedir l'edat de jubilació; no estar separat del servei ni inhabilitat; permís de conduir classe B i disponibilitat per desplaçar-se amb vehicle propi",
+   "cita": "Posseir el permís de conduir classe B i disponibilitat per desplaçar-se amb vehicle propi"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "10 dies hàbils des de l'endemà de la publicació de l'anunci al BOPT",
+   "cita": "El termini per presentar sol·licituds serà de 10 dies hàbils a comptar des de l'endemà de la publicació"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Convocatòria i bases al BOPT, tauler d'anuncis de la seu electrònica i Portal de transparència; la resta de publicacions a la seu electrònica del Consell Comarcal",
+   "cita": "La resta de publicacions del procés selectiu es realitzarà a la seu electrònica del Consell Comarcal"
+  },
+  "meritos": {
+   "motivo": "cita_no_literal",
+   "valor": "Experiència laboral màx. 30 punts (0,30/mes en administració local; 0,10/mes en altres administracions; 0,50 per projecte executiu o direcció d'obra; 0,10/mes en privat). Formació màx. 30 punts (urbanisme, contractació, postgrau 3, màster 6, programari)",
+   "cita": "Experiència laboral (màx. 30 punts). Formació (màxim 30 punts)"
+  }
+ }
+}

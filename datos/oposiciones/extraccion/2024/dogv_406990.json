@@ -1,0 +1,40 @@
+{
+ "proceso": "dogv:406990",
+ "documento": {
+  "id": "dogv:406990",
+  "fuente": "DOGV",
+  "url": "https://dogv.gva.es/datos/2024/12/27/pdf/2024_12952_es.pdf",
+  "fecha": "2024-12-27",
+  "huella": "9edb6708c5687a3f3b5f432c867d882b3c0254398ed9c5cef3a30e2fe1ad4cf9"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:50:00+00:00",
+ "lote": "msgbatch_018TPQE8scQozfAUdc1n8RyC",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "personal laboral fijo al servicio del Ayuntamiento de Xeresa que ocupa el puesto de Agente de Empleo y Desarrollo Local",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "se ha publicado íntegramente las bases y la convocatoria del proceso de regularización",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "10 días hábiles siguientes al de la publicación del anuncio en el Boletín Oficial del Estado",
+   "cita": "presentar sus solicitudes en el plazo de 10 días hábiles siguientes al de la publicación del anuncio en el Boletín Oficial del Estado",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Agente de Empleo y Desarrollo Local (AEDL)"
+   ],
+   "cita": "la regularización de la relación jurídica del personal laboral fijo al servicio del Ayuntamiento de Xeresa que ocupa el puesto de Agente de Empleo y Desarrollo Local (AEDL)"
+  }
+ }
+}

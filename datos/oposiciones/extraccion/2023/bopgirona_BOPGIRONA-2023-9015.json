@@ -1,0 +1,118 @@
+{
+ "proceso": "bopgirona:BOPGIRONA-2023-9015",
+ "documento": {
+  "id": "bopgirona:BOPGIRONA-2023-9015",
+  "fuente": "BOP-GIRONA",
+  "url": "https://ssl4.ddgi.cat/bopV1/pdf/2023/207/202320709015.pdf",
+  "fecha": "2023-10-26",
+  "huella": "bca46a76b4d12664e2fe7ad89d0b4a86aa91b64dfc67c038506ef347ab73c457"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:34+00:00",
+ "lote": "msgbatch_01SjfjDqJRwL6bpTvJz2YfVg",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Policia local (borsa de treball, agent de policia local)"
+   ],
+   "cita": "constitució d’una borsa de treball de policia local pel sistema de concurs oposició i torn lliure",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C1",
+   "cita": "d’acord amb el grup a la que pertany la convocatòria (C1)",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "pel sistema de concurs oposició i torn lliure a l’Ajuntament de l’Escala",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Batxillerat, tècnic o equivalent o superior",
+   "cita": "Estar en possessió del títol de batxillerat, de tècnic, o un altre d'equivalent o superior",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Ciutadania espanyola; no haver estat condemnat per delicte; capacitat funcional; permís de conduir classe B; compromís de portar armes; no estar afectat per incompatibilitats",
+   "cita": "Tenir ciutadania espanyola, d’acord amb la legislació vigent",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 16,
+   "cita": "correspon una taxa de 16€",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Exempts les persones en situació de demandant d’ocupació no ocupat (DARDO), adjuntant còpia del document",
+   "cita": "estiguin exemptes de pagament per trobar-se en situació de demandant d’ocupació no ocupat (DARDO)",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 dies hàbils a partir de l’endemà de la publicació de la convocatòria al DOGC",
+   "cita": "El termini de presentació de sol·licituds serà de 20 dies hàbils comptadors a partir de l’endemà",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Preferentment per mitjans telemàtics; també presencialment a l’Oficina d’Atenció al Ciutadà o Registre General",
+   "cita": "preferentment per mitjans telemàtics o bé amb un model que es proporcionarà a l’Oficina d’Atenció",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "E-tauler de l’Ajuntament de l’Escala (efectes de notificació); bases íntegres al BOP de Girona i a la seu electrònica; extracte al DOGC",
+   "cita": "es publicaran exclusivament a l’e-tauler de l’Ajuntament de l’Escala",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Prova pràctica (0-10, mínim 5, eliminatòria)",
+    "Prova cultural (0-10, mínim 5, eliminatòria)",
+    "Prova d’aptitud física (apte/no apte)",
+    "Proves psicotècniques (apte/no apte)",
+    "Proves mèdiques (apte/no apte)",
+    "Curs selectiu a l’Institut de Seguretat Pública de Catalunya (apte/no apte)",
+    "Període de pràctiques a l’Escala (apte/no apte)"
+   ],
+   "cita": "Prova pràctica sobre les funcions de l’agent de policia local i el temari relacionat a l’annex II",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Experiència laboral (màxim 5 punts); titulacions acadèmiques (màxim 1 punt); formació (màxim 2,5 + 0,5 punts); coneixement de català (màxim 1 punt); recompenses (màxim 0,5 punts); certificat ACTIC (màxim 1 punt). Puntuació total del concurs màxim 10 punts",
+   "cita": "La puntuació total de la fase de concurs no pot ser en cap cas, superior als 10 punts",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "Sí; la borsa de treball serveix per cobrir interinament places vacants, substitucions o acumulacions de tasques, amb vigència màxima de 2 anys",
+   "cita": "Aquesta llista formarà la borsa de treball, que tindrà una vigència màxima de 2 anys",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario interino",
+   "cita": "nomenament com a funcionari/ària interí/ina amb un període de pràctiques de quatre mesos"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_numerico",
+   "valor": "Sense xifra concreta de places",
+   "cita": "constitució d’una borsa de treball per cobrir possibles baixes mèdiques o vacants sobrevingudes"
+  },
+  "idioma_cooficial": {
+   "motivo": "cita_no_literal",
+   "valor": "Català, nivell intermedi B2 o superior (exempció); si no s’acredita, prova obligatòria i eliminatòria",
+   "cita": "certificats de nivell intermedi de català, nivell B2 o superior, per tal de quedar exempt"
+  },
+  "temas": {
+   "motivo": "valor_no_numerico",
+   "valor": "Annex II organitzat en quatre blocs (coneixement de l’entorn, àmbit institucional, seguretat i policia, món local); nombre total de temes no indicat expressament",
+   "cita": "Prova pràctica sobre les funcions de l’agent de policia local i el temari relacionat a l’annex II"
+  },
+  "practicas_o_curso": {
+   "motivo": "cita_no_literal",
+   "valor": "Nomenament interí amb període de pràctiques de quatre mesos, amb tutor/a i informe d’aptitud; curs selectiu a l’Institut de Seguretat Pública de Catalunya",
+   "cita": "nomenament com a funcionari/ària interí/ina amb un període de pràctiques de quatre mesos"
+  }
+ }
+}

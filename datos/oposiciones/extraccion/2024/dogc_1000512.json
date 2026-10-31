@@ -1,0 +1,50 @@
+{
+ "proceso": "dogc:1000512",
+ "documento": {
+  "id": "dogc:1000512",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1000512",
+  "fecha": "2024-11-27",
+  "huella": "c934b62ae7b5bb02fd081d5b84a99a649ee96e4f76850b1948c5e8c13d4eb656"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:49:41+00:00",
+ "lote": "msgbatch_018TPQE8scQozfAUdc1n8RyC",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Professorat lector"
+   ],
+   "cita": "convocar concurs públic per a proveir places de professorat lector",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "otro",
+   "cita": "places de professorat lector que es fan públiques a la seu electrònica de la UB",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "convocar concurs públic per a proveir places de professorat lector",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles a partir de la publicación de la Resolución en el DOGC",
+   "cita": "El termini de presentació de sol·licituds és de 20 dies hàbils a partir de la publicació",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Oficinas de asuntos generales de las administraciones de centro correspondientes (Anexo 1)",
+   "cita": "les persones interessades han d'adreçar-se a les oficines d'afers generals de les administracions de centre",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Seu electrònica de la UB (https://seu.ub.edu/) y DOGC",
+   "cita": "places que es fan públiques a la seu electrònica de la UB"
+  }
+ }
+}

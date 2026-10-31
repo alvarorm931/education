@@ -1,0 +1,102 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2022-9093",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2022-9093",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2022/11/21_221/2022_009093.pdf",
+  "fecha": "2022-11-21",
+  "huella": "aec1c7583949e286bbd340b80a6a479ac3cf56d4b0736f7a7ddc55b80ffee35e"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:08+00:00",
+ "lote": "msgbatch_01B4ETF5xB4buYCHqPiHTXzF",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Administrativo",
+    "Técnico administración",
+    "Trabajador Social",
+    "Auxiliar ayuda domicilio",
+    "Educador"
+   ],
+   "cita": "05 Administrativo (Tiempo completo) 1 01 Técnico administración (Tiempo parcial) 1 02 Trabajador Social",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "El sistema selectivo será el de concurso -oposición para estos procesos, con una valoración en la fase de concurso",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 30,
+   "cita": "Grupo A1: 30 € Grupo A2: 25 € Grupo B: 20 € Grupo C1: 15 € Grupo C2: 10 €",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Reducción del 50 % para personas demandantes de empleo con dos años de antigüedad, acreditada con certificado de desempleo del Instituto Nacional de Empleo.",
+   "cita": "se aplicará una reducción, sobre las tarifas anteriores del 50 %.",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "VEINTE DIAS HÁBILES contados a partir del día siguiente de la publicación del anuncio de la convocatoria en el Boletín oficial de la Provincia",
+   "cita": "en el término de VEINTE D IAS HÁBILES contados a partir del día siguiente de la publicación del anuncio",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Fase de oposición (60 puntos, eliminatoria salvo acumulación): prueba teórico-práctica, opción 1 test de cuatro respuestas o opción 2 supuestos teórico-prácticos",
+    "Fase de concurso (40 %): méritos profesionales, académicos, formación e idiomas"
+   ],
+   "cita": "La fase de oposición tendrá carácter obligatorio y eliminatorio con una valoración total de 60 puntos",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Concurso-oposición: experiencia profesional hasta 36 puntos (concurso), cursos hasta 3 puntos, idiomas hasta 1 punto. Concurso de méritos (DA 6ª y 8ª): experiencia hasta 60 puntos, académicos hasta 40 puntos, cursos hasta 35 puntos, idiomas hasta 1 punto.",
+   "cita": "Méritos profesionales. Hasta 36 puntos: Se valorarán los servicios prestados, en la Administración pública",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, bolsa de trabajo con el resto de aspirantes para cubrir necesidades futuras",
+   "cita": "se constituirá una bolsa de trabajo con el orden resultante decreciente de puntuación",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "personal laboral fijo",
+   "cita": "la convocatoria excepcional de estabilización de empleo temporal de larga duración"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 7,
+   "cita": "DE PERSONAL LABORAL: Según la disposición adicional sexta. Ley 20/2021, de 28 de diciembre"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 7,
+   "cita": "Las plazas convocadas son las siguientes: DE PERSONAL LABORAL"
+  },
+  "titulacion": {
+   "motivo": "cita_no_literal",
+   "valor": "la requerida para cada plaza",
+   "cita": "Estar en posesión de la titulación requerida para cada plaza."
+  },
+  "otros_requisitos": {
+   "motivo": "cita_no_literal",
+   "valor": "Nacionalidad española (sin perjuicio del art. 57 TREBEP), capacidad funcional, 16 años cumplidos y no exceder la edad de jubilación forzosa, no estar inhabilitado, disponibilidad inmediata de incorporación y de turnos rotativos y jornada partida.",
+   "cita": "Tener dieciséis años cumplidos y no exceder la edad máxima de jubilación forzosa establecida legalmente."
+  },
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Registro Electrónico General de la entidad o cualquiera de las formas previstas en el artículo 16 de la Ley 39/2015",
+   "cita": "se presentarán en el Registro Electrónico General de la entidad, o en cualquiera de las formas previstas en el artículo 16"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Boletín Oficial de la Provincia, tablón de anuncios de la mancomunidad y sede electrónica",
+   "cita": "Las bases íntegras se publicarán en el Boletín oficial de la Provincia, en el Tablón de anuncios de la mancomunidad y en su sede electrónica"
+  }
+ }
+}

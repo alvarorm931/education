@@ -1,0 +1,87 @@
+{
+ "proceso": "bopcordoba:BOPCORDOBA-2022-3910",
+ "documento": {
+  "id": "bopcordoba:BOPCORDOBA-2022-3910",
+  "fuente": "BOP-CORDOBA",
+  "url": "https://bop.dipucordoba.es/dia/20-10-2022",
+  "fecha": "2022-10-20",
+  "huella": "9d0ab2def4ccfabf7464fdc7cd1d7aa05bd1a5fc4c36a3af089720d16c32acc0"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:04+00:00",
+ "lote": "msgbatch_01B4ETF5xB4buYCHqPiHTXzF",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Administrativo/a (funcionario)",
+    "Auxiliar Administrativo/a (funcionario)",
+    "Ingeniero/a Técnico Urbanismo (personal laboral)",
+    "Director/a Museo (personal laboral)",
+    "Arqueólogo/a (personal laboral)"
+   ],
+   "cita": "1 Plaza de Administrativo, funcionario.",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "1 Plaza de Administrativo, funcionario.",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "Sistema de selección será de concurso de méritos, de conformidad con lo previsto en la normativa reguladora.",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Bachiller, Técnico Superior o equivalente en ramas de administración (Administrativo); Grado en ingeniería, Ingeniero Técnico, Diplomado, Arquitecto Técnico o equivalente (Ingeniero Técnico Urbanismo)",
+   "cita": "estar en posesión o en condiciones de obtener el Título de Bachiller, Técnico Superior, o equivalente en las ramas de administración",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española o de Estado miembro UE; capacidad funcional; tener 16 años y no exceder la edad de jubilación forzosa; no haber sido separado del servicio por expediente disciplinario ni inhabilitado",
+   "cita": "Tener la nacionalidad española, sin perjuicio de lo dispuesto en el artículo 57",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles desde el día siguiente a la publicación de la convocatoria en el BOE",
+   "cita": "El plazo de presentación de las solicitudes será de veinte días hábiles a contar desde el día siguiente",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia de Córdoba y tablón de edictos de la sede electrónica del Ayuntamiento",
+   "cita": "Publicar esta Resolución en el Boletín Oficial de la Provincia de Córdoba y en el tablón de edictos de la sede electrónica",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Fase de concurso: valoración de méritos (40%)",
+    "Fase de oposición: ejercicio eminentemente práctico, de 0 a 10 puntos (60%)"
+   ],
+   "cita": "Consistirá en un ejercicio eminentemente práctico, que versará sobre el contenido del puesto",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "no",
+   "cita": "Se acuerda la NO creación de bolsas de trabajo para las cuatro plazas convocadas.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 4,
+   "cita": "Plazas vacantes: 1 Plaza de Administrativo, 1 Plaza de Auxiliar Administrativo, 1 Plaza de Ingeniero técnico urbanismo, 1 Plaza de Director Museo."
+  },
+  "plazas_discapacidad": {
+   "motivo": "valor_no_numerico",
+   "valor": "reserva del 10% de las vacantes para personas con discapacidad en concurso-oposición",
+   "cita": "se garantizará la reserva del 10% de las vacantes para ser cubiertas entre personas con discapacidad"
+  },
+  "meritos": {
+   "motivo": "cita_no_literal",
+   "valor": "Experiencia profesional hasta 81 puntos (0,025 p/día en el Ayuntamiento; 0,009 p/día en otras AAPP); antigüedad en AAPP hasta 9 puntos (0,003 p/día); cursos de formación hasta 10 puntos",
+   "cita": "Experiencia profesional, hasta un máximo de 81 puntos a razón del siguiente baremo"
+  }
+ }
+}

@@ -1,0 +1,103 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2025-7806",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2025-7806",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2025/11/03_209/2025_007806.pdf",
+  "fecha": "2025-11-03",
+  "huella": "6653e4d3b68b6f6923dcad84547bab2320308bcfcd3c2545316622bca3a56ac7"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:40:58+00:00",
+ "lote": "msgbatch_01UNq3BNhPPHoTK3TEJzun1h",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "provisión, en propiedad, de dos plazas de funcionario de carrera Agente de Policía Local",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "mediante el sistema de concurso, vacantes en la plantilla de este Ayuntamiento",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 2,
+   "cita": "convoca dos plazas de funcionario Agente de la Policía Local por el turno de movilidad",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Estar en posesión de los permisos de conducción de las clases B y A2",
+   "cita": "Estar en posesión de los permisos de conducción de las clases B y A2, regulados en el Reglamento general de conductores",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Ser personal funcionario de carrera de administración especial, subescala de servicios especiales, clase policía local, de cualquier municipio de la Comunitat Valenciana; haber prestado dos años de servicios efectivos en propiedad en la categoría; no estar suspendido ni inhabilitado; superar la prueba psicomédica",
+   "cita": "Ser personal funcionario de carrera de administración especial de la categoría que se convoca, integrado en la subescala de servicios especiales",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 35,
+   "cita": "abono de la tasa por importe de 35 euros, como requisito obligatorio para resultar admitido/a",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles desde el siguiente al de la publicación de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de instancias será de veinte días hábiles, a contar desde el siguiente al de la publicación de la convocatoria en el Boletín Oficial del Estado",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Solo por vía telemática a través del portal de administración electrónica del Ayuntamiento de Mutxamel, mediante el modelo normalizado de la sede electrónica",
+   "cita": "Las instancias se presentarán por las personas interesadas únicamente por vía telemática a través del portal de administración electrónica",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "BOP y tablón de anuncios de la sede electrónica; los posteriores anuncios solo en el tablón de anuncios de la sede electrónica, y página web del Ayuntamiento",
+   "cita": "Los posteriores anuncios del proceso selectivo serán publicados únicamente en el tablón de anuncios de la sede electrónica",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Prueba psicomédica: reconocimiento médico y prueba psicotécnica (obligatoria y eliminatoria)",
+    "Concurso de méritos"
+   ],
+   "cita": "Previamente a la valoración de los méritos del concurso de movilidad, las personas aspirantes deberán superar la prueba psicomédica",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Servicios como Agente de Policía Local en entidad local de la Comunitat Valenciana: 0,084 puntos por mes completo; servicios como auxiliar de policía o agente de movilidad urbana: 0,025 puntos por mes completo",
+   "cita": "Por cada mes completo de servicios prestados y reconocidos como funcionario de la policía local en categoría de Agente",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "no",
+   "cita": "Cubiertas las plazas en propiedad, el presente procedimiento no constituirá bolsa de trabajo.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Agente de Policía Local"
+   ],
+   "cita": "dos plazas de funcionario de carrera, Agente de Policía Local, vacantes en la plantilla"
+  },
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "C1",
+   "cita": "Agente de Policía Local por el turno de movilidad"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 0,
+   "cita": "las plazas no cubiertas por movilidad se acumularán al turno libre"
+  },
+  "plazas_promocion_interna": {
+   "motivo": "valor_no_en_cita",
+   "valor": 0,
+   "cita": "provisión, en propiedad, de dos plazas de funcionario de carrera Agente de Policía Local"
+  }
+ }
+}

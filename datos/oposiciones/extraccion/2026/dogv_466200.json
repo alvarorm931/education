@@ -1,0 +1,88 @@
+{
+ "proceso": "dogv:466200",
+ "documento": {
+  "id": "dogv:466200",
+  "fuente": "DOGV",
+  "url": "https://dogv.gva.es/datos/2026/02/20/pdf/2026_4913_es.pdf",
+  "fecha": "2026-02-20",
+  "huella": "5111884436dfe0838e90ebb5faa8a77d4c757d45d55b7741397d53a367724dbe"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:42:25+00:00",
+ "lote": "msgbatch_01W17mR271uYfWYL6CuSdriL",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Personal investigador colaborador (contratado en régimen laboral temporal, proyectos de investigación)"
+   ],
+   "cita": "convoca oferta pública para cubrir puestos de trabajo",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "personal investigador contratado en régimen laboral temporal y su contratación",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "Baremación de méritos: la comisión valorará los méritos alegados",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Grado en Ingeniería Biomédica o titulación con plan de estudios equivalente, más máster universitario oficial en Inteligencia Artificial o máster oficial equivalente",
+   "cita": "Estar en posesión o en condiciones de obtener la titulación de grado en Ingeniería Biomédica",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española o situación del artículo 57 TREBEP; tener cumplidos 16 años y no exceder la edad de jubilación forzosa; capacidad física y psíquica; no haber sido separado del servicio público ni inhabilitado",
+   "cita": "Tener la nacionalidad española o encontrarse en alguna de las situaciones recogidas en el artículo 57",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Conocimiento adecuado de cualquiera de las lenguas oficiales de la Comunitat Valenciana para el desempeño del puesto",
+   "cita": "Tener un conocimiento adecuado de cualquiera de las lenguas oficiales de la Comunitat Valenciana",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "10 días hábiles desde el siguiente a la publicación de la convocatoria en el DOGV",
+   "cita": "en el plazo de 10 días hábiles contados a partir del siguiente al de publicación de la presente convocatoria en el Diari Oficial",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Solicitud electrónica a través de la sede electrónica de la Universidad de Alicante (trámite Solicitud de plazas de personal investigador para proyectos de investigación); no se admiten solicitudes por otra vía",
+   "cita": "la correspondiente solicitud que se formalizará a través de la sede electrónica",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Sede electrónica de la UA (Otros documentos generales del expediente) y página web del Servicio de Selección de Personal",
+   "cita": "se realizarán en sede electrónica, en el apartado «Otros documentos generales» del expediente",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Méritos del currículum relacionados con el perfil del anexo I, valorados según criterios específicos del baremo (fase de baremo, apartados A y B)",
+   "cita": "la comisión valorará los méritos alegados por el personal aspirante en sus currículos",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "Sí: la comisión podrá constituir una bolsa de trabajo con el personal aspirante no adjudicatario, ordenada por puntuación, para renuncias, ausencias, bajas o nuevas necesidades de proyectos de las mismas líneas",
+   "cita": "La comisión encargada de la resolución de este proceso podrá acordar la constitución de una bolsa de trabajo",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "el número de plazas y características del puesto de trabajo convocado figura en el anexo I"
+  },
+  "ejercicios": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Baremación de méritos (fase de concurso)",
+    "Entrevista personal (0 a 2 puntos)"
+   ],
+   "cita": "Sistema de selección con dos fases: baremación de méritos y entrevista personal"
+  }
+ }
+}

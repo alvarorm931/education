@@ -1,0 +1,84 @@
+{
+ "proceso": "boe:BOE-A-2026-5025",
+ "documento": {
+  "id": "bopsevilla:BOP-SE-2026-021005",
+  "fuente": "BOP-SEVILLA",
+  "url": "https://bopsevilla.dipusevilla.es/publica/buscador-anuncios/anuncio/Bases-de-la-convocatoria-del-proceso-de-seleccion-para-la-contratacion-laboral-temporal-en-el-marco-del-Programa-Activa-T-Joven-00001/",
+  "fecha": "2026-02-02",
+  "huella": "ba0863589c47611130d0068b3e4361e95a3e7d847d0227873f0393bc11d0759b"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:40:53+00:00",
+ "lote": "msgbatch_01E3wiYcGL8Lzho48bXWLyyb",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "el período de contratación será de seis meses, mediante contrato para la mejora de la ocupabilidad",
+   "nivel": "literal"
+  },
+  "plazas_discapacidad": {
+   "valor": 1,
+   "cita": "CONSERJES (1 reservada para discapacidad)",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "No se establece plazo de solicitudes; los candidatos son propuestos por el Servicio Andaluz de Empleo",
+   "cita": "Una vez presentada la Oferta Genérica al SAE y enviados los candidatos al Ayuntamiento",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de Anuncios y Página Web del Ayuntamiento de Alcalá del Río",
+   "cita": "Todo ello se hará público en el Tablón de Anuncios y Página Web del Ayuntamiento",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Servicios prestados en puestos de igual categoría: 0,25 puntos por mes completo, máximo 10 puntos; acreditación mediante documentación oficial (vida laboral y contratos)",
+   "cita": "Por cada mes de servicios prestados en puestos de igual categoría se otorgarán 0,25 puntos",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Conserje",
+    "Barrendero/a",
+    "Oficial segunda pintor"
+   ],
+   "cita": "Puestos ofertados: CONSERJES, BARRENDEROS/AS, OFICIAL SEGUNDA PINTOR"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso",
+   "cita": "el procedimiento de selección de los aspirantes se realizará mediante concurso de méritos"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 4,
+   "cita": "CONSERJES (1 reservada para discapacidad)"
+  },
+  "titulacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Graduado en ESO, Graduado Escolar o FP de Primer Grado o equivalente para Oficial Segunda Pintor; Certificado de Escolaridad para Barrenderos/as y Conserjes",
+   "cita": "Poseer el Título de Graduado en Enseñanza Secundaria Obligatoria, o Título de Graduado Escolar"
+  },
+  "otros_requisitos": {
+   "motivo": "cita_no_literal",
+   "valor": "Ser español/a o nacional de Estados Miembros de la UE en los términos previstos; capacidad funcional para el desempeño; tener entre 18 y 29 años; estar inscrito como demandante de empleo no ocupado en el SAE y ser beneficiario del Sistema Nacional de Garantía Juvenil; ser preseleccionado en el sondeo del SAE",
+   "cita": "Ser español/a. Asimismo podrán ser admitidos/as a la convocatoria nacionales de los demás Estados Miembros"
+  },
+  "ejercicios": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Concurso de méritos (hasta 10 puntos)"
+   ],
+   "cita": "el procedimiento de selección de los aspirantes se realizará mediante concurso de méritos, hasta un máximo de diez puntos"
+  },
+  "practicas_o_curso": {
+   "motivo": "cita_no_literal",
+   "valor": "Certificado de inscripción y condición de beneficiario en el Sistema Nacional de Garantía Juvenil el día anterior al inicio de la relación laboral",
+   "cita": "El candidato, en el momento de la contratación deberá aportar un certificado acreditativo de su inscripción"
+  }
+ }
+}

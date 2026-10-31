@@ -1,0 +1,89 @@
+{
+ "proceso": "doe:DOE-2025050188",
+ "documento": {
+  "id": "doe:DOE-2025050188",
+  "fuente": "DOE",
+  "url": "https://doe.juntaex.es/otrosFormatos/html.php?xml=2025050188&anio=2025&doe=2440o",
+  "fecha": "2025-12-19",
+  "huella": "15686206a03f4e3242864a77dd315cbc01eefdb2a716f5b7721b875b87e22f6e"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:42:27+00:00",
+ "lote": "msgbatch_01W17mR271uYfWYL6CuSdriL",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "nombramiento como funcionarios/as de carrera de los Cuerpos Administrativo y Auxiliar",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "Se convocan pruebas selectivas para cubrir, por el sistema de concurso-oposición, plazas de los Cuerpos Administrativo y Auxiliar",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Poseer requisitos de participación al finalizar el plazo de solicitudes y mantenerlos hasta la toma de posesión; discapacidad igual o superior al 33 % para turno de discapacidad; certificado del Registro Central de Delincuentes Sexuales para puestos con contacto habitual con menores; no hallarse en supuestos del artículo 35 bis de la Ley 1/2014.",
+   "cita": "Para ser admitidas a la realización del proceso selectivo correspondiente, las personas aspirantes deberán poseer al día de finalización del plazo de presentación de solicitudes",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 23.12,
+   "cita": "La tasa por derechos de examen se fija en la cantidad por solicitud de 23,12 euros para la Cuerpo Administrativo",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Bonificación parcial del 50 % para personas en situación legal de desempleo durante al menos tres meses, acreditada mediante informe de vida laboral de la Tesorería General de la Seguridad Social.",
+   "cita": "Se aplicará una bonificación parcial del 50 % de la cuota para los participantes en pruebas selectivas que se encuentren en situación legal de desempleo",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Veinte días hábiles contados a partir del día 12 de enero de 2026, inclusive.",
+   "cita": "El plazo de presentación de solicitudes será de veinte días hábiles contados a partir del día 12 de enero de 2026, inclusive.",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Exclusivamente de forma telemática a través del Portal del Candidato de la Junta de Extremadura, con firma digital y pago de la tasa por la Pasarela de Pagos Telemáticos.",
+   "cita": "No se admitirá ninguna solicitud que no haya sido cumplimentada, generada, tramitada y registrada exclusivamente a través de la mencionada plataforma tecnológica.",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Diario Oficial de Extremadura y en las direcciones electrónicas del buscador de empleo público de la Junta de Extremadura y del Portal del Candidato",
+   "cita": "Las Bases de la presente convocatoria, así como todos sus anexos, se podrán consultar a través de internet",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Fase de oposición: ejercicio único teórico-práctico tipo test, calificado con un máximo de 10 puntos (mínimo 5 para aprobar)",
+    "Fase de concurso: valoración de servicios prestados, máximo 3 puntos"
+   ],
+   "cita": "La fase de oposición se compondrá de un único ejercicio de carácter teórico-práctico",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Servicios efectivos prestados en cualquier Administración Pública en cuerpo o categoría similar y mismo subgrupo, a razón de 0,042 puntos por mes o fracción, máximo 3 puntos; la valoración no supera el 30 % de la puntuación máxima.",
+   "cita": "Los servicios prestados se valorarán a razón de 0,042 puntos por mes o fracción, hasta un máximo de 3 puntos",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, para constituir listas de espera con aspirantes que superen 4 puntos en la fase de oposición sin aprobar el proceso",
+   "cita": "formando parte de la lista de espera aquellas personas aspirantes que sin haber superado el proceso de selección, hayan alcanzado una puntuación mínima de cuatro puntos",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Cuerpo Administrativo de la Administración de la Comunidad Autónoma de Extremadura",
+    "Cuerpo Auxiliar de la Administración de la Comunidad Autónoma de Extremadura"
+   ],
+   "cita": "pruebas selectivas para acceso a plazas vacantes de los Cuerpos Administrativo y Auxiliar de la Administración de la Comunidad Autónoma de Extremadura"
+  },
+  "plazas_discapacidad": {
+   "motivo": "valor_no_numerico",
+   "valor": "Las plazas que queden vacantes del turno de discapacidad se acumularán a las convocadas por el turno libre.",
+   "cita": "Las plazas que queden vacantes del turno de discapacidad se acumularán a las convocadas por el turno libre."
+  }
+ }
+}

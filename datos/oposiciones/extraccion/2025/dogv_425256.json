@@ -1,0 +1,100 @@
+{
+ "proceso": "dogv:425256",
+ "documento": {
+  "id": "dogv:425256",
+  "fuente": "DOGV",
+  "url": "https://dogv.gva.es/datos/2025/05/22/pdf/2025_16929_es.pdf",
+  "fecha": "2025-05-22",
+  "huella": "f4ed9f72219fe6fcff32109eba0f56bdc3a27c68b0a29fd115672d97083aecdd"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:45:56+00:00",
+ "lote": "msgbatch_017vJZdAmjTkBDdH14aLEdCv",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Investigador/a no doctor/a (Anexo I)",
+    "Investigador/a no doctor/a (Anexo II)",
+    "Investigador/a no doctor/a (Anexo III)"
+   ],
+   "cita": "Oferta pública de un puesto de trabajo de investigador/a no doctor/a.",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "A1",
+   "cita": "Grupo: A. Subgrupo: A1.",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "para cubrir un puesto de personal laboral para las líneas de investigación mediante el sistema de concurso.",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Anexo I: Grado en Administración y Dirección de Empresas; Anexo II: Grado en Comunicación Audiovisual; Anexo III: Licenciado en Física, Ingeniero en Informática, Grado en Ciencia de Datos, o en Matemáticas",
+   "cita": "Titulación: Grado en Administración y Dirección de Empresas.",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española o de país de la UE o de libre circulación; edad mínima 16 años; no padecer enfermedad incompatible; no estar inhabilitado para funciones públicas.",
+   "cita": "Tener cumplidos, al menos, 16 años el día en que finaliza el plazo de presentación de solicitudes.",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "10 días hábiles a partir del siguiente hábil al de la publicación de esta resolución en el DOGV",
+   "cita": "El plazo de presentación de las solicitudes será de 10 días hábiles a partir del siguiente hábil",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Solicitud electrónica obligatoria a través del enlace que la Universitat de València publicará en la web de la Sección de PAS Investigación",
+   "cita": "Deberán presentar la solicitud... obligatoriamente, a través de la solicitud electrónica que la Universitat de València pondrá a su disposición",
+   "nivel": "fragmentos"
+  },
+  "publicaciones": {
+   "valor": "DOGV, tablón oficial de anuncios de la Universitat de València y página web del Servicio de Recursos Humanos (PAS), sección investigación",
+   "cita": "Esta convocatoria se publicará en el Diari Oficial de la Generalitat Valenciana (DOGV), en el tablón oficial",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Concurso: valoración de méritos curriculares",
+    "Entrevista (en su caso, a criterio de la comisión)"
+   ],
+   "cita": "El proceso selectivo constará de un concurso que consistirá en la valoración de los méritos curriculares",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Méritos preferentes: nota media del expediente (base 10); beca de colaboración 0,05; premio extraordinario 0,25; publicaciones científicas hasta 1,70; congresos 0,05 por participación; otros méritos relacionados hasta 3 puntos",
+   "cita": "Los méritos se valorarán, de acuerdo con el baremo que figura en el anexo de la convocatoria",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, para llamamientos mientras dure la línea de investigación",
+   "cita": "Las bolsas de trabajo que deriven de estos procesos selectivos permanecerán vigentes mientras dure la línea de investigación",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "laboral temporal",
+   "cita": "ofertar plazas de este organismo con contrato laboral a cargo de diversas líneas de investigación"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 5,
+   "cita": "Oferta pública de un puesto de trabajo de investigador/a no doctor/a."
+  },
+  "tasa_euros": {
+   "motivo": "cita_no_literal",
+   "valor": 0,
+   "cita": "Las bases no establecen importe de tasa de derechos de examen."
+  },
+  "practicas_o_curso": {
+   "motivo": "cita_no_literal",
+   "valor": "no",
+   "cita": "Las bases no establecen periodo de prácticas ni curso selectivo."
+  }
+ }
+}

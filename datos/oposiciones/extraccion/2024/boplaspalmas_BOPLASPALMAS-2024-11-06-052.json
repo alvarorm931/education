@@ -1,0 +1,65 @@
+{
+ "proceso": "boplaspalmas:BOPLASPALMAS-2024-11-06-052",
+ "documento": {
+  "id": "boplaspalmas:BOPLASPALMAS-2024-11-06-052",
+  "fuente": "BOP-LASPALMAS",
+  "url": null,
+  "fecha": "2024-11-06",
+  "huella": "4aaa5f79bbf07705280961845459a37cfee6aa8f7f31fa125db0d68423db1e92"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:50:09+00:00",
+ "lote": "msgbatch_01LpyYajgKGX9NyHT1uvynbR",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "E (AP)",
+   "cita": "PERTENECIENTE AL GRUPO E (AP), NIVEL 14",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "DE PERSONAL LABORAL FIJO EN LA CATEGORÍA DE PEONES, PERTENECIENTE AL GRUPO E",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "MEDIANTE EL SISTEMA DE SELECCIÓN DE CONCURSO, OFERTADAS DE CONFORMIDAD CON LA DISPOSICIÓN ADICIONAL SEXTA",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 10,
+   "cita": "PROVISIÓN DE (10) DIEZ PLAZAS (UNA PLAZA POR DISCAPACIDAD IGUAL O SUPERIOR AL 33%",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "No consta en el texto",
+   "cita": "Se procederá a la formalización del correspondiente contrato de trabajo y a la incorporación al puesto dentro del plazo que se establezca",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "BOP Las Palmas",
+   "cita": "Bases convocatoria: BOP Las Palmas número 135, de 8 de noviembre de 2023",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Periodo de prueba según normativa laboral; superación culmina el proceso",
+   "cita": "Podrá establecerse la superación del período de prueba que corresponda de acuerdo con la normativa laboral",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "PEONES"
+   ],
+   "cita": "PROVISIÓN DE (10) DIEZ PLAZAS DE PERSONAL LABORAL FIJO EN LA CATEGORÍA DE PEONES"
+  },
+  "plazas_discapacidad": {
+   "motivo": "valor_no_en_cita",
+   "valor": 2,
+   "cita": "UNA PLAZA POR DISCAPACIDAD IGUAL O SUPERIOR AL 33%, Y OTRA POR DISCAPACIDAD INTELECTUAL"
+  }
+ }
+}

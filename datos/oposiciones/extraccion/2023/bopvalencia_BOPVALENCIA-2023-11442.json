@@ -1,0 +1,55 @@
+{
+ "proceso": "bopvalencia:BOPVALENCIA-2023-11442",
+ "documento": {
+  "id": "bopvalencia:BOPVALENCIA-2023-11442",
+  "fuente": "BOP-VALENCIA",
+  "url": "https://bop.dival.es/bop/downloads?anuncioNumReg=2023/11442&lang=va",
+  "fecha": "2023-09-11",
+  "huella": "85b680dfaa3939fec9bc5d8b19192fcd050a5c317195f69f0f384e408efe18fb"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:38+00:00",
+ "lote": "msgbatch_01SjfjDqJRwL6bpTvJz2YfVg",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "agrupaciones profesionales",
+   "cita": "personal d'oficis, altres agrupacions professionals",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles desde el día siguiente a la publicación del anuncio en el BOP de Valencia",
+   "cita": "en el termini de 20 dies hàbils, comptats des de l'endemà de la publicació d'aquest anunci",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Registro de Entrada del Ayuntamiento de Oliva por medios telemáticos o en la forma del artículo 16.4 de la Ley 39/2015",
+   "cita": "Les sol·licituds es presentaran en el Registre d'Entrada de l'Ajuntament d'Oliva per mitjans telemàtics",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Operaris d'obres i serveis"
+   ],
+   "cita": "constitució borsa de treball d'Operaris d'obres i serveis, Escala d'Administració Especial, Subescala Serveis Especials"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "otro",
+   "cita": "constitució borsa de treball d'Operaris d'obres i serveis"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "no"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, para constituir una borsa de treball de operarios de obras y servicios",
+   "cita": "constitució borsa de treball d'Operaris d'obres i serveis"
+  }
+ }
+}

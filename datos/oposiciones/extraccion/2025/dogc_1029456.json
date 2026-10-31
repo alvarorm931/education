@@ -1,0 +1,51 @@
+{
+ "proceso": "dogc:1029456",
+ "documento": {
+  "id": "dogc:1029456",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1029456",
+  "fecha": "2025-11-17",
+  "huella": "10ff9a7b84400c5d27429f61510ac84a9b6dfe7a679ef690048f7b63fe6910e0"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:41:07+00:00",
+ "lote": "msgbatch_01UNq3BNhPPHoTK3TEJzun1h",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Sergent de la Policia local",
+    "Xofer"
+   ],
+   "cita": "1 plaça de Sergent de la Policia local, mitjançant concurs-oposició en torn de promoció interna ampliat a membres d'altres cossos de policia",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mitjançant concurs-oposició en torn de promoció interna ampliat a membres d'altres cossos de policia",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días naturales desde el día siguiente a la publicación del anuncio en el Diari Oficial de la Generalitat de Catalunya",
+   "cita": "El període de presentació de sol·licituds serà de vint dies naturals comptats des de l'endemà de la publicació de l'anunci al Diari Oficial",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Butlletí Oficial de la Província de Barcelona (texto íntegro de las bases)",
+   "cita": "El text íntegre de les bases específiques d'aquestes convocatòries es pot consultar al Butlletí Oficial de la Província de Barcelona",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 2,
+   "cita": "1 plaça de Sergent de la Policia local, mitjançant concurs-oposició en torn de promoció interna"
+  },
+  "plazas_promocion_interna": {
+   "motivo": "valor_no_en_cita",
+   "valor": 2,
+   "cita": "mitjançant concurs-oposició en torn de promoció interna ampliat a membres d'altres cossos de policia"
+  }
+ }
+}

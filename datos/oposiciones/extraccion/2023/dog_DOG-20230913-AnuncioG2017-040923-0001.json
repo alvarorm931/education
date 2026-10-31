@@ -1,0 +1,101 @@
+{
+ "proceso": "dog:DOG-20230913-AnuncioG2017-040923-0001",
+ "documento": {
+  "id": "dog:DOG-20230913-AnuncioG2017-040923-0001",
+  "fuente": "DOG",
+  "url": "https://www.xunta.gal/dog/Publicados/2023/20230913/AnuncioG2017-040923-0001_es.html",
+  "fecha": "2023-09-13",
+  "huella": "e379a8453f322f3b0d2538f7e2ca29b2ef4da45a0ecdfc40a48c8f8291981d5c"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:40+00:00",
+ "lote": "msgbatch_01SjfjDqJRwL6bpTvJz2YfVg",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "profesor/a titular de universidad",
+   "cita": "Cuerpo: profesor/a titular de universidad.",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "resuelve convocar concurso de acceso a la plaza de los cuerpos de funcionarios docentes universitarios",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "Número de concurso: 23/029. Número de plazas: 1 OEP: 2023.",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Ser doctor/a y estar acreditado o acreditada para el cuerpo docente de que se trate",
+   "cita": "Ser doctor/a y estar acreditado o acreditada para el cuerpo docente de que se trate, conforme a lo establecido",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española o de la UE (o extranjeros según art. 4 RDCA), mayor de dieciséis años sin exceder la edad de jubilación, no separado de la Administración ni inhabilitado, sin enfermedad incompatible, y título oficial de especialista que corresponda a la plaza",
+   "cita": "deberán estar en posesión del título oficial de especialista que corresponda a la plaza",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 44.17,
+   "cita": "Los derechos de examen serán de 44,17 euros y se ingresarán en la cuenta corriente",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Exentos personas con discapacidad igual o superior al 33 % y familias numerosas categoría especial; bonificación del 50 % para familias numerosas general y para demandantes de empleo seis meses sin prestación",
+   "cita": "Estarán exentas del pago de la tasa por derechos de examen las personas que tengan reconocida una discapacidad igual o superior al 33 %",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "quince días desde el día siguiente a la publicación de la convocatoria en el BOE",
+   "cita": "en el plazo de quince días, contados a partir del día siguiente al de publicación de esta convocatoria en el Boletín Oficial del Estado",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Registro General (Rectorado, calle Maestranza, 9, A Coruña), registros auxiliares de Elviña y Ferrol, o procedimientos del artículo 16 de la Ley 39/2015; en el extranjero, representaciones diplomáticas",
+   "cita": "Las solicitudes se presentarán en el Registro General (Rectorado, calle Maestranza, 9, A Coruña)",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "tablón electrónico oficial de la Universidad de A Coruña y, a título divulgativo, web de concursos de funcionarios de la UDC; tablón de anuncios del centro para la propuesta",
+   "cita": "será publicada en el tablón electrónico oficial de la Universidad de A Coruña",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Acto de presentación de candidatos (público, con entrega de currículum y proyecto docente e investigador)",
+    "Pruebas del concurso de acceso, públicas y eliminatorias, según el artículo 12 de la normativa de la UDC"
+   ],
+   "cita": "Los concursos de acceso constarán de las pruebas y se ajustarán al procedimiento que establece el artículo 12",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Historial académico, docente, investigador, de gestión y sanitario-asistencial, según modelo del anexo IV; no se indica puntuación máxima",
+   "cita": "detallarán su historial académico, docente, investigador, de gestión y, en su caso, sanitario-asistencial",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "A1",
+   "cita": "no consta explícitamente en el texto"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "el candidato propuesto deberá tomar posesión de su destino, momento en el que adquirirá la condición de funcionario/a docente universitario de carrera"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "no",
+   "cita": "no consta en el texto"
+  },
+  "practicas_o_curso": {
+   "motivo": "cita_no_literal",
+   "valor": "no",
+   "cita": "no consta en el texto"
+  }
+ }
+}

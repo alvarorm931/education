@@ -1,0 +1,50 @@
+{
+ "proceso": "boib:BOIB-2024-692886",
+ "documento": {
+  "id": "boib:BOIB-2024-692886",
+  "fuente": "BOIB",
+  "url": "https://www.caib.es/eboibfront/es/2024/12003/692886/convocatoria-por-el-sistema-de-concurso-oposicion-",
+  "fecha": "2024-11-05",
+  "huella": "d94afee93f71c3b15ef24dd158166182e98a146671870e968f54acc6bb9eb536"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:50:32+00:00",
+ "lote": "msgbatch_01LpyYajgKGX9NyHT1uvynbR",
+ "no_son_bases": false,
+ "campos": {
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "las bases específicas para la convocatoria por el sistema de concurso oposición",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "diez (10) días naturales, contados a partir del día siguiente al de la publicación del anuncio de la convocatoria en el BOIB",
+   "cita": "Se abre el plazo para la presentación de solicitudes de diez (10) días naturales, contados a partir del día siguiente al de la publicación",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Las bases estarán publicadas y podrán consultarse mediante la web municipal (carpetaciutadana.org, Ayuntamiento de Maó)",
+   "cita": "Les bases que deben de regir este proceso, estarán publicadas y pueden ser consultadas mediante la web municipal",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Brigada del Ayuntamiento de Maó (bolsa de trabajo para puestos vacantes y necesidades de personal laboral)"
+   ],
+   "cita": "constitución de una bolsa de trabajo para cubrir puestos vacantes y/o necesidades de personal laboral de la brigada del Ayuntamiento de Maó"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "laboral temporal",
+   "cita": "constitución de una bolsa de trabajo para cubrir puestos vacantes y/o necesidades de personal laboral"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, para cubrir puestos vacantes y/o necesidades de personal laboral de la brigada del Ayuntamiento de Maó",
+   "cita": "para la constitución de una bolsa de trabajo para cubrir puestos vacantes"
+  }
+ }
+}

@@ -1,0 +1,98 @@
+{
+ "proceso": "doe:DOE-2022063728",
+ "documento": {
+  "id": "doe:DOE-2022063728",
+  "fuente": "DOE",
+  "url": "https://doe.juntaex.es/otrosFormatos/html.php?xml=2022063728&anio=2022&doe=2370o",
+  "fecha": "2022-12-13",
+  "huella": "017f1d4317ce8aa0e5faaf0577b99a7c521e64f953efea605333a2b21588384d"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:12+00:00",
+ "lote": "msgbatch_01B4ETF5xB4buYCHqPiHTXzF",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Escala de Auxiliar de Servicios (Servicios Generales)"
+   ],
+   "cita": "para el ingreso en la Escala de Auxiliar de Servicios (Servicios Generales) para ser cubierta por personas que acrediten discapacidad intelectual",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C2",
+   "cita": "Subgrupo C2, para ser cubierta por personas que acrediten discapacidad intelectual",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "personal funcionario de Administración y Servicios, esta Gerencia, en uso de la delegación",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mediante el sistema de concurso-oposición, recogidas en la Oferta de Empleo Público de 2020",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Plazo de presentación de solicitudes; los requisitos deben cumplirse en el último día de dicho plazo",
+   "cita": "Todos los requisitos enumerados en esta base deberán poseerse en el último día del plazo de presentación de solicitudes",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Instancia (Anexo I) en el Registro General de la Universidad (Badajoz y Cáceres) o en el Servicio de Información Administrativa",
+   "cita": "deberán hacerlo constar en instancia que será facilitada gratuitamente en el Registro General de esta Universidad",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Diario Oficial de Extremadura",
+   "cita": "Esta resolución será publicada en el Diario Oficial de Extremadura, junto con la relación de los aspirantes excluidos",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Fase de concurso: valoración de méritos",
+    "Fase de oposición: cuestionario de preguntas sobre temario general (15) y específico (25)"
+   ],
+   "cita": "El procedimiento de selección constará de una fase de concurso y una fase de oposición",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Méritos valorados en la fase de concurso, con la puntuación que establezca la convocatoria",
+   "cita": "La lista que contenga la valoración de méritos de la fase de concurso se hará pública",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, lista de espera para ofertar vacantes temporales de la plaza convocada",
+   "cita": "el órgano de selección elevara al Rectorado una lista ordenada de aquellos aspirantes que sin haber superado las correspondientes pruebas selectivas hayan superado el ejercicio",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "no consta",
+   "cita": "La toma de posesión de los aspirantes aprobados será efectuada en el plazo de un mes",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 1,
+   "cita": "convocar pruebas selectivas para cubrir 1 plaza de la Escala de Auxiliar de Servicios"
+  },
+  "plazas_discapacidad": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "para ser cubierta por personas que acrediten discapacidad intelectual, mediante el sistema de concurso-oposición"
+  },
+  "otros_requisitos": {
+   "motivo": "cita_no_literal",
+   "valor": "Acreditar discapacidad intelectual mediante tarjeta de discapacidad intelectual, aportada con la solicitud.",
+   "cita": "a la solicitud se acompañará una fotocopia legible de la tarjeta de discapacidad intelectual"
+  },
+  "temas": {
+   "motivo": "valor_no_en_cita",
+   "valor": 40,
+   "cita": "Las primeras 15 preguntas del cuestionario del ejercicio de la oposición versarán sobre el siguiente Temario General"
+  }
+ }
+}

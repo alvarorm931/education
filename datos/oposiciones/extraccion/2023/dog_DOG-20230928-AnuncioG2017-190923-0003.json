@@ -1,0 +1,53 @@
+{
+ "proceso": "dog:DOG-20230928-AnuncioG2017-190923-0003",
+ "documento": {
+  "id": "dog:DOG-20230928-AnuncioG2017-190923-0003",
+  "fuente": "DOG",
+  "url": "https://www.xunta.gal/dog/Publicados/2023/20230928/AnuncioG2017-190923-0003_es.html",
+  "fecha": "2023-09-28",
+  "huella": "10f6061cdb2d68a6a26581cb63ad8fd60b2b3e13c9eca6faa009691217d35b32"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:58:06+00:00",
+ "lote": "msgbatch_01SjfjDqJRwL6bpTvJz2YfVg",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "Profesor ayudante doctor",
+   "cita": "se convoca un concurso público para la contratación de personal docente e investigador por el turno de reserva para personas con discapacidad en la siguiente categoría",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "contratación de personal docente e investigador por el turno de reserva para personas con discapacidad",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "se convoca un concurso público para la contratación de personal docente e investigador",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "Profesor ayudante doctor: 1 plaza.",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "diez días hábiles contados desde el día siguiente al de la publicación del presente anuncio en el Diario Oficial de Galicia",
+   "cita": "El plazo de presentación de solicitudes es de diez días hábiles contados desde el día siguiente al de la publicación",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "tablón electrónico oficial de la UDC y página web de la universidad",
+   "cita": "puede consultarse en el tablón electrónico oficial de la UDC y en la página web de la universidad",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_discapacidad": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "por el turno de reserva para personas con discapacidad en la siguiente categoría"
+  }
+ }
+}

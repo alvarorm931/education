@@ -1,16 +1,108 @@
 {
  "proceso": "boe:BOE-A-2026-22369",
  "documento": {
-  "id": "dogv:494096",
-  "fuente": "DOGV",
-  "url": "https://dogv.gva.es/datos/2026/10/26/pdf/2026_32769_es.pdf",
-  "fecha": "2026-10-26",
-  "huella": "6fb2f3ccdcf2488aa6128c805f35c25188acb09c46ac7f99a762c1308f1895b7"
+  "id": "bopvalencia:BOPVALENCIA-2026-10954",
+  "fuente": "BOP-VALENCIA",
+  "url": "https://bop.dival.es/bop/downloads?anuncioNumReg=2026/10954&lang=va",
+  "fecha": "2026-09-08",
+  "huella": "65a79c0ee36c309f3bb4c39c81eab773abcf9b3578bea3373c4a312ac4084f9b"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T07:28:44+00:00",
- "lote": "msgbatch_01QUU3nKnMRQfp1xxi4asvKD",
- "no_son_bases": true,
- "campos": {},
- "rechazados": {}
+ "extraido": "2026-10-31T14:41:54+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Técnico/a Agente de Igualdad"
+   ],
+   "cita": "plaza de Técnico/a Agente de Igualdad mediante el sistema de concurso - oposición por turno libre",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "A1",
+   "cita": "pertenecientes al grupo de titulación A1, establecido en el artículo 76",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "Las plazas están encuadradas entre las reservadas a personal funcionario",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mediante el sistema de concurso - oposición por turno libre vacante en la plantilla",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "para la provisión en propiedad de una plaza de Técnico/a Agente de Igualdad",
+   "nivel": "literal"
+  },
+  "plazas_turno_libre": {
+   "valor": 1,
+   "cita": "para la provisión en propiedad de una plaza de Técnico/a Agente de Igualdad",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española o supuestos del art. 57 TRLEBEP; 16 años y no exceder edad de jubilación; capacidad física y psíquica; no separación del servicio ni inhabilitación",
+   "cita": "Tener la nacionalidad española o encontrarse en alguno de los supuestos contemplados en el artículo 57",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 75,
+   "cita": "Las tasas por derechos de examen ascienden al importe de 75,00 €",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "10 días hábiles contados a partir del día siguiente al de la publicación de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "en el plazo de 10 días hábiles contados a partir del día siguiente al de la publicación de la convocatoria",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Procedimiento electrónico «PERSONAL – Selecciones de Personal» en la Sede electrónica del Ayuntamiento, con certificado digital",
+   "cita": "Para ello se utilizará procedimiento electrónico “PERSONAL – Selecciones de Personal (Código SIA: 3101339)”, disponible en la Sede electrónica",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "BOP de Valencia, tablón de anuncios de la Sede Electrónica del Ayuntamiento, DOGV (extracto) y BOE (extracto)",
+   "cita": "Las presentes bases se publicarán íntegramente en el BOP de Valencia y Tablón de anuncios de la Sede Electrónica",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Primer ejercicio: test de hasta 60 preguntas en 90 minutos (máx. 25 puntos)",
+    "Segundo ejercicio: resolución por escrito de casos prácticos (0 a 35 puntos, mínimo 17,50)"
+   ],
+   "cita": "Consistirá en contestar por escrito en un plazo máximo de 90 minutos, un cuestionario tipo test",
+   "nivel": "literal"
+  },
+  "temas": {
+   "valor": 62,
+   "cita": "TEMA 62. II Plan de Igualdad del Ayuntamiento de Bétera 2026-2030. Estructura, principios rectores y contenido esencial.",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Experiencia profesional (máx. 22 puntos) y méritos académicos: formación (máx. 16) y conocimiento de valenciano (máx. 2)",
+   "cita": "Experiencia profesional (puntuación máxima 22 puntos)",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, bolsa de trabajo para proveer puestos de la categoría, duración tres años prorrogables",
+   "cita": "La citada Bolsa, tendrá una duración de tres años prorrogables",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Nombramiento como funcionario en prácticas durante tres meses",
+   "cita": "será nombrada como personal funcionario en prácticas del Ayuntamiento de Bétera durante un periodo de tres meses",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "titulacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Título Universitario oficial de Grado, o equivalente, del ámbito de estudios de género, feministas y políticas públicas de igualdad",
+   "cita": "Estar en posesión del Título Universitario oficial de Grado, o equivalente, o estar en condiciones para su obtención"
+  }
+ }
 }

@@ -1,0 +1,108 @@
+{
+ "proceso": "boib:BOIB-2022-667565",
+ "documento": {
+  "id": "boib:BOIB-2022-667565",
+  "fuente": "BOIB",
+  "url": "https://www.caib.es/eboibfront/es/2022/11663/667565/bases-especificas-procesos-de-estabilizacion-de-pe",
+  "fecha": "2022-12-08",
+  "huella": "4de811e48636627b9848705958b4f2d2f99958f66fb029e94c17551de6e5dcfb"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:14+00:00",
+ "lote": "msgbatch_01B4ETF5xB4buYCHqPiHTXzF",
+ "no_son_bases": false,
+ "campos": {
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "el sistema selectivo determinado para el POE22 es el concurso oposición",
+   "nivel": "literal"
+  },
+  "plazas_discapacidad": {
+   "valor": 1,
+   "cita": "son en total 11 plazas, de la cuales una se reserva a personas con discapacidad",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "la que se requiere en cada caso en las bases específicas",
+   "cita": "Estar en posesión de la titulación académica que se requiere en cada caso en las bases especificas",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española o de otra admitida por el art. 57 TREBEP; edad mínima legal; capacidad física y psíquica; no separación del servicio; acreditar conocimiento de catalán según convocatoria",
+   "cita": "Tener la nacionalidad española o alguna otra de las cuales permiten el acceso a la ocupación pública",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "catalán, nivel según convocatoria específica",
+   "cita": "Acreditar el conocimiento de la lengua catalana que se indique en la convocatoria para cada una de las plazas",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 50,
+   "cita": "que para el procesos de estabilización será de 50 €",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles desde el día siguiente hábil a la publicación del extracto del anuncio de la convocatoria en el BOE",
+   "cita": "dentro del plazo de 20 días hábiles, contados a partir del siguiente día hábil al de la publicación del extracto",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Sede electrónica del Ayuntamiento de Sineu o Registro General, o lugares del art. 16.4 LPACAP, mediante modelo oficial",
+   "cita": "se presentarán en la sede electrónica del Ayuntamiento de Sineu o en el Registro General del mismo",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "BOIB, tablón de anuncios del ayuntamiento y sede electrónica",
+   "cita": "que se publicará en el BOIB, en los tablones de anuncios de este ayuntamiento ubicado a la sede electrónica",
+   "nivel": "sin_signos"
+  },
+  "ejercicios": {
+   "valor": [
+    "Fase de oposición: ejercicio tipo test eliminatorio de 60 puntos (mínimo 21 puntos)",
+    "Fase de concurso: méritos profesionales y otros méritos (no eliminatoria)"
+   ],
+   "cita": "La fase de oposición constará de un solo ejercicio, con carácter eliminatorio",
+   "nivel": "literal"
+  },
+  "temas": {
+   "valor": 30,
+   "cita": "A1: 30 temas",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Méritos profesionales hasta 32 puntos; otros méritos hasta 8 puntos (superación de ejercicios, formación académica, catalán, cursos, trienios); total concurso 40 puntos",
+   "cita": "La fase de concurso se estructurará en los dos bloques de criterios de valoración",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, bolsas de personal funcionario interino específicas y preferentes para quienes no superen el proceso",
+   "cita": "Las personas que no superen el proceso selectivo de concurso oposición correspondiente serán incluidas en bolsas de personal funcionario interino",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "no consta periodo de prácticas o curso selectivo; plazo de toma de posesión de tres días hábiles",
+   "cita": "El plazo para la toma de posesión de la plaza se inicia el día siguiente a la publicación en el BOIB y será de tres días hábiles",
+   "nivel": "sin_signos"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Plaza de personal funcionario/laboral del Ayuntamiento de Sineu (proceso de estabilización 2022)"
+   ],
+   "cita": "Bases específicas de procesos de estabilización de personal"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "el alcalde ... nombramiento como funcionario de carrera (o contratación laboral fija)"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 12,
+   "cita": "Tal como se relacionan y clasifican en la tabla del anexo 1 de estas bases, son en total 11 plazas"
+  }
+ }
+}

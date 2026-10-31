@@ -1,0 +1,53 @@
+{
+ "proceso": "boe:BOE-A-2026-7742",
+ "documento": {
+  "id": "dogv:468138",
+  "fuente": "DOGV",
+  "url": "https://dogv.gva.es/datos/2026/03/24/pdf/2026_6851_es.pdf",
+  "fecha": "2026-03-24",
+  "huella": "db4b1a6da2976bd646d6f45ab109fbd123354dd590920c834b26895bf1132ddc"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:40:48+00:00",
+ "lote": "msgbatch_01E3wiYcGL8Lzho48bXWLyyb",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "Ingeniera o ingeniero técnico, escala de administración especial, subescala técnica media",
+   "cita": "una plaza vacante en la plantilla de este ayuntamiento de ingeniera o ingeniero técnicos",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "A2",
+   "cita": "grupo A, subgrupo A2, por el procedimiento de convocatoria pública",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "de personal funcionario, escala de administración especial, subescala técnica media",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "sistema de oposición, turno libre",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "aparecen publicados el anuncio de las bases, así como la convocatoria para cubrir en propiedad una plaza vacante",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Queda abierto cuando aparezca publicado en el Boletín Oficial del Estado el correspondiente anuncio",
+   "cita": "El plazo de presentación de instancias para la citada convocatoria quedará abierta cuando aparezca publicado en el Boletín Oficial del Estado",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "sistema de oposición, turno libre. La plaza está incluida en la oferta pública"
+  }
+ }
+}

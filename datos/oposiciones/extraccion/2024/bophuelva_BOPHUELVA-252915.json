@@ -1,0 +1,45 @@
+{
+ "proceso": "bophuelva:BOPHUELVA-252915",
+ "documento": {
+  "id": "bophuelva:BOPHUELVA-252915",
+  "fuente": "BOP-HUELVA",
+  "url": "https://s2.diphuelva.es/portalweb/bope/anuncios/Anuncio_252915_BOP-93_2024.pdf",
+  "fecha": "2024-05-14",
+  "huella": "040f4816efae136ad86e62962dd02e18ec4c45fd3432c5c8e2d78d1e0b17897e"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:54:30+00:00",
+ "lote": "msgbatch_01HRnX7cDVMkRZD7mBamCmLu",
+ "no_son_bases": false,
+ "campos": {
+  "plazo_solicitudes": {
+   "valor": "10 días hábiles a contar desde el día siguiente a la publicación de este anuncio en el Boletín Oficial de la Provincia de Huelva",
+   "cita": "que será de 10 días hábiles a contar desde el día siguiente a la publicación",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "SOCORRISTA"
+   ],
+   "cita": "para la cobertura puntual de las plazas de SOCORRISTA se abre el plazo"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "laboral temporal",
+   "cita": "acceso a la función pública del personal laboral temporal del Ayuntamiento"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso",
+   "cita": "concurso general de méritos restringido para el acceso a la función pública"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "sede electrónica del Ayuntamiento (apartado Anuncios) y tablón de anuncios",
+   "cita": "estará a disposición de los interesados en la sede electrónica de este Ayuntamiento"
+  }
+ }
+}

@@ -1,0 +1,53 @@
+{
+ "proceso": "bocm:BOCM-20241030-13",
+ "documento": {
+  "id": "bocm:BOCM-20241030-13",
+  "fuente": "BOCM",
+  "url": "https://www.bocm.es/bocm-20241030-13",
+  "fecha": "2024-10-30",
+  "huella": "103b218bf2317094b387662134da95118a8452186bda91a63f093e7a57a141ac"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:50:14+00:00",
+ "lote": "msgbatch_01LpyYajgKGX9NyHT1uvynbR",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "personal laboral fijo del Hospital Universitario Fundación Alcorcón, categorías profesionales, turnos y cupos según anexo",
+   "cita": "convocan pruebas selectivas para el acceso a la condición de personal laboral fijo del Hospital Universitario Fundación Alcorcón",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "convocan pruebas selectivas para el acceso a la condición de personal laboral fijo del Hospital",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "Los sistemas de selección para la contratación indefinida fija en el Hospital",
+   "nivel": "literal"
+  },
+  "plazas_turno_libre": {
+   "valor": 21,
+   "cita": "21 plazas correspondientes a la tasa de reposición 2022",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "30 días naturales, contados a partir del día siguiente al de la publicación de la Resolución en el BOCM",
+   "cita": "Establecer el plazo de presentación de las solicitudes en 30 días naturales, contados a partir del día siguiente",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 276,
+   "cita": "21 plazas correspondientes a la tasa de reposición 2022"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "intranet del Hospital y página web https://www.comunidad.madrid/hospital/fundacionalcorcon/ (apartado Oferta de Empleo Público, proceso OPE 2022-2023)",
+   "cita": "Publicar las bases de la convocatoria y los Anexos en la intranet del Hospital Universitario Fundación Alcorcón, así como en su página web"
+  }
+ }
+}

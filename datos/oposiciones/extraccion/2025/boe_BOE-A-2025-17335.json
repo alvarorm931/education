@@ -1,0 +1,65 @@
+{
+ "proceso": "boe:BOE-A-2025-17335",
+ "documento": {
+  "id": "dogc:1022904",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1022904",
+  "fecha": "2025-08-20",
+  "huella": "bf7345c57b22e03e4146dc653f6b00499d62b292806cbcbdc4ff46f1ecd1e1ef"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:43:09+00:00",
+ "lote": "msgbatch_01XofVwxKEhyEjSzGog6wsD4",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Agent d'ocupació i desenvolupament local (AODL)"
+   ],
+   "cita": "plaça d'agent d'ocupació i desenvolupament local (AODL), subgrup A2",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "A2",
+   "cita": "subgrup A2, amb caràcter de personal laboral fix",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "amb caràcter de personal laboral fix",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mitjançant concurs-oposició, torn lliure i lloc de treball",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "vint dies hàbils comptats a partir de l'endemà de la darrera publicació de l'extracte de la convocatòria en el DOGC o BOE",
+   "cita": "El termini per a presentar les sol·licituds finalitza als vint dies hàbils comptats a partir de l'endemà de la darrera publicació",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Seu electrònica (https://poblamafumet.eadministracio.cat/) o Registre d'entrada de l'Ajuntament de la Pobla de Mafumet, c/ Jacint Verdaguer, núm. 6, de dilluns a divendres de 10 a 14 hores",
+   "cita": "en el model normalitzat disponible a l'efecte en la Seu electrònica en el tràmit habilitat",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 1,
+   "cita": "una plaça d'agent d'ocupació i desenvolupament local"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "mitjançant concurs-oposició, torn lliure i lloc de treball"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Tauler d'anuncis de la seu electrònica de l'Ajuntament de la Pobla de Mafumet",
+   "cita": "s'publicaran al tauler d'anuncis de la seu electrònica de l'Ajuntament de la Pobla de Mafumet"
+  }
+ }
+}

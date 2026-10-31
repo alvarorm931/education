@@ -1,0 +1,90 @@
+{
+ "proceso": "bophuelva:BOPHUELVA-240151",
+ "documento": {
+  "id": "bophuelva:BOPHUELVA-240151",
+  "fuente": "BOP-HUELVA",
+  "url": "https://s2.diphuelva.es/portalweb/bope/anuncios/Anuncio_240151_BOP-52_2024.pdf",
+  "fecha": "2024-03-14",
+  "huella": "219708d544fdef28885f9a19deb993e29ab75d0568e21ba9a1ab985ee33abfd8"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:54:00+00:00",
+ "lote": "msgbatch_01EQ4R6PVKpEwTXzXwPCmspm",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "PEÓN",
+    "ENTRENADOR PERSONAL",
+    "PEÓN ELECTRICISTA",
+    "PEÓN FONTANERO"
+   ],
+   "cita": "DENOMINACIÓN GRUPO SUBGRUPO NÚMERO DE CONTRATACIONES CARACTERÍSTICAS DE LA CONTRATACIÓN PEÓN AP AP",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "AP",
+   "cita": "PEÓN AP AP Según las necesidades del servicio",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "Las contrataciones serán temporales, y de conformidad con lo dispuesto en el art.15",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española o extranjeros con residencia legal en España; tener cumplidos 16 años y no exceder la edad máxima de jubilación; estar inscrito como demandante no ocupado en el Servicio Andaluz de Empleo.",
+   "cita": "Encontrarse en situación laboral de desempleo o demandantes no ocupados.",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "10 días hábiles a contar desde el día siguiente a la publicación del anuncio en el BOP",
+   "cita": "se abre el plazo de presentación de solicitudes, que será de 10 días hábiles a contar desde el día siguiente",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Registro General del Ayuntamiento de Valdelarco, presencial o electrónico, mediante la sede electrónica del Ayuntamiento, o en los lugares del art. 16.4 de la Ley 39/2015",
+   "cita": "Estas instancias, se presentarán en el Registro General del Excmo Ayuntamiento de Valdelarco, de forma presencial o electrónica",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Formación complementaria hasta 5 puntos; experiencia profesional hasta 5 puntos; permiso de conducir B1 1 punto; circunstancias económicas y sociales hasta 5 puntos",
+   "cita": "CIRCUNSTANCIAS ECONÓMICAS Y SOCIALES: HASTA UN MÁXIMO DE 5 PUNTOS.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso",
+   "cita": "El sistema de selección será el de CONCURSO, valorándose los méritos alegados"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 4,
+   "cita": "PEON FONTANERO AP AP 1 La contratación tendrá carácter temporal a tiempo completo"
+  },
+  "tasa_euros": {
+   "motivo": "cita_no_literal",
+   "valor": 0,
+   "cita": "no aparece importe de tasa en el texto"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Tablón de Anuncios del Ayuntamiento de Valdelarco y BOP de Huelva",
+   "cita": "Los sucesivos anuncios de esta convocatoria, cuando procedan de conformidad con las bases, se publicarán en el BOP de Huelva."
+  },
+  "ejercicios": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Concurso: valoración de méritos formativos, profesionales, permiso de conducir B1 y circunstancias económicas y sociales"
+   ],
+   "cita": "El sistema de selección será el de CONCURSO, valorándose los méritos alegados y acreditados"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, bolsa de empleo para futuras contrataciones dentro del Plan de Desarrollo Económico y Social de la Provincia, con vigencia de 2 años",
+   "cita": "Esta bolsa estará en vigor durante un plazo de 2 años, a contar desde el día siguiente"
+  }
+ }
+}

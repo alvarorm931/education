@@ -1,0 +1,95 @@
+{
+ "proceso": "doe:DOE-2022050254",
+ "documento": {
+  "id": "doe:DOE-2022050254",
+  "fuente": "DOE",
+  "url": "https://doe.juntaex.es/otrosFormatos/html.php?xml=2022050254&anio=2022&doe=2470o",
+  "fecha": "2022-12-28",
+  "huella": "3996f6bdd78811c90c5287c0e171d181cdd58151cf5f8c3657f371308b5c6b15"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:56:25+00:00",
+ "lote": "msgbatch_014eT3dLLVopBnuVgQ4syWD9",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "Educador/a, Grupo II, Categoría Profesional/Especialidad Educador/a de personal laboral",
+   "cita": "para cubrir 2 plazas vacantes a tiempo parcial del Grupo II Categoría/Especialidad Educador/a de personal laboral",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "II",
+   "cita": "para cubrir 2 plazas vacantes a tiempo parcial del Grupo II Categoría/Especialidad Educador/a de personal laboral",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "mediante el procedimiento excepcional de concurso méritos, de conformidad con lo previsto",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 2,
+   "cita": "convocan pruebas selectivas para cubrir 2 plazas vacantes a tiempo parcial",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 34.66,
+   "cita": "La tasa por derechos de examen se fija en la cantidad de 34,66 euros por solicitud.",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Bonificación parcial del 50 % para personas en situación legal de desempleo al menos tres meses antes de la publicación; reintegro a tercer o ulterior hijo dependiente con rentas inferiores a cinco veces el SMI.",
+   "cita": "aplicará una bonificación parcial del 50 % de la cuota para los participantes en pruebas selectivas que se encuentren en situación legal de desempleo",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles contados a partir del día 1 de febrero de 2023",
+   "cita": "El plazo de presentación de solicitudes será de veinte días hábiles contados a partir del día 1 de febrero de 2023.",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Diario Oficial de Extremadura y en el buscador de empleo público de internet (https://www.juntaex.es), además de Oficinas de Asistencia a la Ciudadanía para las puntuaciones",
+   "cita": "Las Bases de la presente convocatoria, así como toda la información relacionada con los diferentes aspectos del proceso selectivo se podrá consultar a través de internet",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Valoración de méritos (concurso de méritos, sin ejercicios de oposición)"
+   ],
+   "cita": "se convocan pruebas selectivas ... mediante el procedimiento excepcional de concurso méritos",
+   "nivel": "fragmentos"
+  },
+  "meritos": {
+   "valor": "Servicios prestados en otras Administraciones Públicas (apartado a)3) y titulación académica (apartado b)3) del Anexo II; puntuaciones máximas no especificadas en el texto extraído",
+   "cita": "presentación de los méritos contemplados en el Anexo II, apartado a)3 Servicios prestados en otras Administraciones Públicas",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, lista de espera específica para el Cuerpo/Especialidad tras el proceso selectivo",
+   "cita": "Finalizado el proceso selectivo se constituirá una lista de espera específica.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "laboral temporal",
+   "cita": "plazas vacantes a tiempo parcial del Grupo II Categoría/Especialidad Educador/a de personal laboral de la Administración"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 0,
+   "cita": "Se convocan pruebas selectivas para cubrir 2 plazas vacantes a tiempo parcial"
+  },
+  "plazas_discapacidad": {
+   "motivo": "valor_no_en_cita",
+   "valor": 0,
+   "cita": "Se convocan pruebas selectivas para cubrir 2 plazas vacantes a tiempo parcial"
+  },
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Telemática a través del Portal de la Junta de Extremadura (buscador de empleo público), con certificado electrónico y pago de la tasa en el mismo acto.",
+   "cita": "cumplimentarán su solicitud y el pago de la tasa a través del apartado correspondiente del Portal de la Junta de Extremadura"
+  }
+ }
+}

@@ -1,122 +1,59 @@
 {
  "proceso": "bopb:BOPB-202610120861",
  "documento": {
-  "id": "bopb:BOPB-202610120861",
-  "fuente": "BOPB",
-  "url": "https://bop.diba.cat/anunci/3969734/bases-i-convocatoria-per-a-la-provisio-definitiva-d-una-placa-de-tecnic-a-mitja-ana-de-sanejament-i-creacio-d-una-borsa-de-treball-mancomunitat-penedes-garraf",
-  "fecha": "2026-07-16",
-  "huella": "21875ad052875ec7d603ac0a690eb23647d6361cbc3a50b0aaf5a37264d5f555"
+  "id": "dogc:1050152",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1050152",
+  "fecha": "2026-07-17",
+  "huella": "217e50ce560ec343900215520c3eff2a291fbc35e938674966161403cc3ea3fe"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T08:17:58+00:00",
- "lote": "msgbatch_01BrnYw6KkevFx7at547B5g8",
+ "extraido": "2026-10-31T14:42:03+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
    "valor": [
-    "Tècnic/a mitjà/na Sanejament"
+    "Técnico/a Medio/a de Proceso del servicio de Saneamiento"
    ],
-   "cita": "Tècnic/a mitjà/na Sanejament - Tècnic de procés, grup de classificació A2",
+   "cita": "una plaza de Técnico/a Medio/la, grupo A2, adscrita al puesto de trabajo de Técnico/a de Proceso",
    "nivel": "literal"
   },
   "grupo": {
    "valor": "A2",
-   "cita": "Grup de classificació: A2",
+   "cita": "una plaza de Técnico/a Medio/la, grupo A2, adscrita al puesto",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "en régimen de personal laboral fijo y la constitución de una bolsa de trabajo",
    "nivel": "literal"
   },
   "sistema": {
    "valor": "concurso-oposición",
-   "cita": "Sistema de selecció: Concurs-Oposició",
+   "cita": "por el sistema de concurso-oposición, de una plaza de Técnico/a Medio/la",
    "nivel": "literal"
   },
   "plazas_total": {
    "valor": 1,
-   "cita": "Nombre de places: 1 i constitució d’una borsa de treball.",
-   "nivel": "literal"
-  },
-  "plazas_turno_libre": {
-   "valor": 1,
-   "cita": "Nombre de places: 1 i constitució d’una borsa de treball.",
-   "nivel": "literal"
-  },
-  "titulacion": {
-   "valor": "Grau o equivalent en Biologia, Enginyeria industrial, Ciències ambientals o Química",
-   "cita": "Estar en possessió d’un Grau o equivalent en Biologia, Enginyeria industrial, Ciències ambientals o Química.",
-   "nivel": "literal"
-  },
-  "otros_requisitos": {
-   "valor": "Ciutadania espanyola o de la UE (o estrangera amb permís); haver complert 16 anys i no excedir l’edat de jubilació forçosa; capacitat funcional; no haver estat separat del servei d’una administració pública; permís de conduir B1.",
-   "cita": "Estar en possessió del permís de conduir B1.",
-   "nivel": "literal"
-  },
-  "tasa_euros": {
-   "valor": 27.27,
-   "cita": "Pagament de la taxa de drets d’examen de 27,27€, establerta a la base 4h).",
-   "nivel": "literal"
-  },
-  "exenciones_tasa": {
-   "valor": "Exempts les persones demandants d’ocupació no ocupades i les persones amb grau de discapacitat igual o superior al 33%, acreditant-ho documentalment.",
-   "cita": "Les persones que, d’acord amb les ordenances fiscals, estiguin exemptes de pagament per tenir reconegut un grau de discapacitat igual o superior al 33%",
+   "cita": "para la provisión definitiva, por el sistema de concurso-oposición, de una plaza de Técnico/a",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "Deu dies hàbils a comptar des de l’endemà de la publicació de la convocatòria en el Diari Oficial de la Generalitat de Catalunya",
-   "cita": "dins del termini de deu dies hàbils a comptar des de l’endemà de la publicació de la present convocatòria en el Diari Oficial",
+   "valor": "10 días hábiles, contados desde el día siguiente de la publicación de la presente convocatoria en el Diario Oficial de la Generalitat de Catalunya",
+   "cita": "dentro del plazo improrrogable de 10 días hábiles, contados desde el día siguiente de la publicación de la presente convocatoria",
    "nivel": "literal"
-  },
-  "presentacion": {
-   "valor": "Registre Electrònic de la Mancomunitat (preferent), Registre General o altres mitjans de l’article 16.4 de la Llei 39/2015 amb comunicació per correu electrònic a rrhh@mancomunitat.cat",
-   "cita": "es poden presentar preferentment a l Registre Electrònic de la Mancomunitat Penedès-Garraf",
-   "nivel": "literal"
-  },
-  "meritos": {
-   "valor": "Experiència professional fins a 9 punts; formació complementària fins a 6 punts; ACTIC fins a 1 punt",
-   "cita": "Valoració curricular: Fins a 15 punts",
-   "nivel": "literal"
-  },
-  "practicas_o_curso": {
-   "valor": "Període de prova de 6 mesos",
-   "cita": "S’estableix un període de prova de 6 mesos.",
-   "nivel": "sin_signos"
-  }
- },
- "rechazados": {
-  "vinculo": {
-   "motivo": "cita_no_literal",
-   "valor": "personal laboral fixo",
-   "cita": "en règim de personal laboral fix i la constitució d’una borsa de treball"
-  },
-  "idioma_cooficial": {
-   "motivo": "cita_no_literal",
-   "valor": "Català, nivell C1",
-   "cita": "Estar en possessió del certificat de coneixements de llengua catalana de nivell C1 de català"
   },
   "publicaciones": {
-   "motivo": "cita_no_literal",
-   "valor": "Tauler d’anuncis electrònic i pàgina web de la Mancomunitat, BOPB i anunci al DOGC",
-   "cita": "Aquestes bases i convocatòria es publicaran íntegrament al tauler d’anuncis electrònic de la Mancomunitat"
-  },
-  "ejercicios": {
-   "motivo": "cita_no_literal",
-   "valor": [
-    "Prova de coneixement de català (apte/no apte)",
-    "Prova de coneixement de castellà (apte/no apte, si escau)",
-    "Prova teòrica: test o preguntes curtes (0-10 punts)",
-    "Prova pràctica escrita sobre supòsits del lloc (0-20 punts, eliminatòria)",
-    "Valoració curricular (fins a 15 punts)",
-    "Entrevista personal potestativa (fins a 5 punts)"
-   ],
-   "cita": "Fase d’oposició: 30 punts · Fase concurs: 15 punts · Entrevista personal: 5 punts"
-  },
-  "temas": {
-   "motivo": "cita_no_literal",
-   "valor": 24,
-   "cita": "Temari General i Temari Específic"
+   "valor": "Boletín Oficial de la Provincia de Barcelona, tablón de edictos y web de la Mancomunitat",
+   "cita": "se publicaran en el Boletín Oficial de la Provincia de Barcelona, de fecha 16 de julio de 2026, en el tablón de edictos, y en la web de la Mancomunitat",
+   "nivel": "literal"
   },
   "bolsa": {
-   "motivo": "cita_no_literal",
-   "valor": "sí, per cobrir necessitats de personal no permanent i substituir places en cas de baixa, renúncia o no superació del període de prova",
-   "cita": "constitució d’una borsa de treball amb les persones aspirants que, havent superat la fase d’oposició, no obtinguin plaça"
+   "valor": "sí, constitución de una bolsa de trabajo",
+   "cita": "y la constitución de una bolsa de trabajo",
+   "nivel": "literal"
   }
- }
+ },
+ "rechazados": {}
 }

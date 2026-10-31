@@ -1,0 +1,48 @@
+{
+ "proceso": "dogc:1035671",
+ "documento": {
+  "id": "dogc:1035671",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1035671",
+  "fecha": "2026-02-02",
+  "huella": "9df1c0f7860d591ddbd726a37566d4fd44dcbf4e2be3c4ac0d8de4f3dfae22ac"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:42:14+00:00",
+ "lote": "msgbatch_01W17mR271uYfWYL6CuSdriL",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "funcionario interino",
+   "cita": "para la cobertura de puestos de trabajo de guardia del servicio de vigilantes del Ayuntamiento de Riudoms en régimen de funcionario interino",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mediante concurso-oposición para la cobertura de puestos de trabajo de guardia",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días naturales desde el día siguiente a la publicación del anuncio de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "durante el plazo de veinte (20) días naturales, a contar a partir del día siguiente de la publicación del anunció",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "al registro general del Ayuntamiento, en cualquiera de las formas que determina la Ley 39/2015",
+   "cita": "se presentaran al registro general del Ayuntamiento, durante el plazo de veinte (20) días naturales",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "vigilante de guardia del servicio de vigilantes del Ayuntamiento de Riudoms",
+   "cita": "cubrir puestos de trabajo de guardia del servicio de vigilantes del Ayuntamiento de Riudoms"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Boletín Oficial de la Provincia de Tarragona (BOPT) y web municipal",
+   "cita": "Las bases íntegras de la convocatoria están publicadas en el BOPT CVE 2026-00567 y en la web municipal"
+  }
+ }
+}

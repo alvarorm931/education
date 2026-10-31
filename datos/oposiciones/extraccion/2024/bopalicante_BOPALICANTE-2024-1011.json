@@ -1,0 +1,53 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2024-1011",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2024-1011",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2024/02/29_43/2024_001011.pdf",
+  "fecha": "2024-02-29",
+  "huella": "9e6130c473880fee4b118ba822f0e362ae45c497ae524957b8566cf379c1b63d"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:54:06+00:00",
+ "lote": "msgbatch_01EQ4R6PVKpEwTXzXwPCmspm",
+ "no_son_bases": false,
+ "campos": {
+  "sistema": {
+   "valor": "bolsa de empleo",
+   "cita": "para la constitución de una Bolsa de empleo en la categoría profesional de Profesor/a de Música",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "cinco días naturales, contados a partir del siguiente a la publicación del extracto de la convocatoria en el Boletín Oficial de la Provincia de Alicante",
+   "cita": "El plazo de presentación de instancias será de cinco días naturales, contados a partir del siguiente a la publicación del extracto",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Las bases están disponibles en la página web teuladamoraira.sedelectronica.es y en el Servicio de Información y Tramitación del Ayuntamiento",
+   "cita": "en la página web del Ayuntamiento teuladamoraira.sedelectronica.es, así como en el Servicio de Información y Tramitación",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, para constituir una bolsa de empleo de Profesor/a de Música especialidad de Tuba",
+   "cita": "para la constitución de bolsa de empleo de profesor/a del conservatorio profesional municipal de música en la especialidad de tuba",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Profesor/a de Música, especialidad de Tuba",
+   "cita": "Profesor/a de Música, personal laboral asimilado al grupo A2 del Ayuntamiento de Teulada, en la especialidad de TUBA"
+  },
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "A2",
+   "cita": "personal laboral asimilado al grupo A2 del Ayuntamiento de Teulada"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "otro",
+   "cita": "personal laboral asimilado al grupo A2 del Ayuntamiento de Teulada"
+  }
+ }
+}

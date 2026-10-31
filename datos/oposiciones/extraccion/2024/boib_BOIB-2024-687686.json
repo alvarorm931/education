@@ -1,0 +1,73 @@
+{
+ "proceso": "boib:BOIB-2024-687686",
+ "documento": {
+  "id": "boib:BOIB-2024-687686",
+  "fuente": "BOIB",
+  "url": "https://www.caib.es/eboibfront/es/2024/11936/687686/resolucion-del-consejero-de-hacienda-y-funcion-pub",
+  "fecha": "2024-06-15",
+  "huella": "65252ba71dad78c25bdc665acfd4af71ab2fcc77c7e93dd34703bfb1ab2a46d6"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:54:29+00:00",
+ "lote": "msgbatch_01HRnX7cDVMkRZD7mBamCmLu",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Plazas vacantes de personal funcionario de la Administración especial (bases generales)"
+   ],
+   "cita": "para cubrir las plazas vacantes de personal funcionario de la Administración especial",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "A2",
+   "cita": "Plan para la ejecución de la oferta pública de empleo",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "la convocatoria de un concurso de méritos de personal funcionario de carrera",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "Se llevarán a cabo, en todo caso, mediante el sistema de concurso oposición",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días naturales desde el día siguiente a la publicación del anuncio de la convocatoria correspondiente en el BOE",
+   "cita": "El plazo para la presentación de solicitudes será de veinte días naturales",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de anuncios de la sede electrónica del Consell de Mallorca y Boletín Oficial de las Illes Balears; en el caso del IMAS, tablón de la sede electrónica del IMAS y Portal de Selección",
+   "cita": "en el tablón de anuncios de la sede electrónica del Consell de Mallorca",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Fase de oposición (70% de la puntuación global en turno libre)",
+    "Fase de concurso (30% de la puntuación global en turno libre)"
+   ],
+   "cita": "La puntuación global del turno libre debe resultar de las puntuaciones obtenidas en las fases de oposición y de concurso",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Méritos profesionales hasta 32 puntos (solo para promoción interna) y otros méritos hasta 8 puntos; en turno libre la fase de concurso pesa el 30%",
+   "cita": "Con un máximo total de 40 puntos: Méritos profesionales: hasta un máximo de 32 puntos",
+   "nivel": "sin_signos"
+  }
+ },
+ "rechazados": {
+  "plazas_discapacidad": {
+   "motivo": "valor_no_numerico",
+   "valor": "no inferior al 7% de las vacantes",
+   "cita": "debe reservarse una cuota no inferior al 7% de las vacantes para que la cubran personas con discapacidad"
+  },
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Telemáticamente en la sede electrónica del Consell de Mallorca o a través del Portal de Selección del IMAS",
+   "cita": "debe presentar de forma telemática una solicitud de participación en la Sede electrónica del Consell Insular de Mallorca"
+  }
+ }
+}

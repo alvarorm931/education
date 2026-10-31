@@ -1,0 +1,100 @@
+{
+ "proceso": "boe:BOE-A-2025-19611",
+ "documento": {
+  "id": "boe:BOE-A-2025-19611",
+  "fuente": "BOE",
+  "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2025-19611",
+  "fecha": "2025-10-03",
+  "huella": "6bd4e53bfab67faa32497f848891ce81d8d230966c2effd91761c284fbe299e5"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:43:05+00:00",
+ "lote": "msgbatch_01XofVwxKEhyEjSzGog6wsD4",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "M1 Mantenimiento general",
+    "M2 Trabajo Social"
+   ],
+   "cita": "Se convocan procesos selectivos para ingreso por acceso libre, como personal laboral fijo sujeto al IV Convenio colectivo único",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "Se convocan procesos selectivos para ingreso por acceso libre, como personal laboral fijo sujeto al IV Convenio colectivo",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "El proceso selectivo se realizará mediante el sistema de oposición, con las valoraciones, ejercicios y puntuaciones",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "la indicada en el anexo VI según la especialidad",
+   "cita": "estar en posesión, o en condiciones de obtener a la fecha de finalización del plazo de presentación de solicitudes, del título que se indica en el anexo VI",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad según base 2.1.1; edad: tener cumplidos los dieciséis años; capacidad funcional; no haber sido separado del servicio público ni inhabilitado; para M1 Mantenimiento de Defensa, permiso de conducir B.",
+   "cita": "Edad: tener cumplidos los dieciséis años.",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Personas con discapacidad igual o superior al 33 %; demandantes de empleo en el mes anterior con rentas inferiores al Salario Mínimo Interprofesional.",
+   "cita": "Estarán exentas del pago de esta tasa: a. Las personas con un grado de discapacidad igual o superior al 33 por ciento",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles desde el día siguiente a la publicación de la reseña en el BOE",
+   "cita": "la solicitud deberá presentarse en el plazo de veinte días hábiles contados a partir del día siguiente al de la fecha de publicación",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Página web del Ministerio del Interior, www.administracion.gob.es y BOE para la resolución de admitidos y excluidos",
+   "cita": "La presente resolución y los actos que se deriven de ella se publicarán, al menos, en la página web del Ministerio del Interior",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "no",
+   "cita": "Quedan exentos del período de prueba las personas que hayan ya desempeñado las mismas funciones",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "periodo de prueba: tres meses para M2 y un mes para los demás grupos, o quince días laborables para personal sin titulación",
+   "cita": "El personal de nuevo ingreso de los grupos profesionales convocados tendrá que superar un período de prueba de tres meses para los grupos profesionales M3 y M2",
+   "nivel": "literal"
+  },
+  "temas": {
+   "valor": 32,
+   "cita": "Tema 32. El trabajo Social y otras profesiones: el papel del animador sociocultural, del psicólogo, del sociólogo, del pedagogo, del abogado, en los Servicios S",
+   "nivel": "contado"
+  }
+ },
+ "rechazados": {
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "M1 y M2",
+   "cita": "Se convocan procesos selectivos para ingreso por acceso libre como personal laboral fijo de la Administración General del Estado en los grupos profesionales M1 y M2."
+  },
+  "plazas_discapacidad": {
+   "motivo": "valor_no_numerico",
+   "valor": "reserva para personas con discapacidad igual o superior al 33 %",
+   "cita": "Del total de las plazas convocadas se reservarán las plazas que se han señalado en el cuadro anterior para quienes tengan la condición legal"
+  },
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Obligatoriamente por vía electrónica a través del servicio Inscripción en Procesos Selectivos del punto de acceso general, con certificado digital.",
+   "cita": "Las solicitudes deberán presentarse obligatoriamente por vía electrónica, de acuerdo con lo establecido en la disposición adicional primera"
+  },
+  "ejercicios": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "M2: primer ejercicio, cuestionario tipo test de 80 preguntas en dos bloques (parte común y específica), 80 minutos, máximo 40 puntos",
+    "M2: segundo ejercicio, prueba práctica de hasta dos horas, máximo 60 puntos",
+    "M1: ejercicio único en dos partes, tipo test de 80 preguntas (40 temario común y 40 específico) y 2 supuestos prácticos de 10 preguntas, 70 minutos en la segunda parte, máximo 100 puntos"
+   ],
+   "cita": "Primer ejercicio: consistirá en la contestación por escrito de un cuestionario de 80 preguntas con cuatro respuestas alternativas"
+  }
+ }
+}

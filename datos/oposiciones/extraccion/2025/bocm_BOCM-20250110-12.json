@@ -1,0 +1,55 @@
+{
+ "proceso": "bocm:BOCM-20250110-12",
+ "documento": {
+  "id": "bocm:BOCM-20250110-12",
+  "fuente": "BOCM",
+  "url": "https://www.bocm.es/bocm-20250110-12",
+  "fecha": "2025-01-10",
+  "huella": "03f1dd14e778604eda73113cc78a76d9f69bdeaeb465715a329e85e66c133313"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:49:50+00:00",
+ "lote": "msgbatch_018TPQE8scQozfAUdc1n8RyC",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Cuerpos docentes universitarios (concurso de acceso a plazas)"
+   ],
+   "cita": "convocar a concurso 2 plazas de turno libre",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "por la que se convoca concurso de acceso a plazas de cuerpos docentes universitarios",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 2,
+   "cita": "convocar a concurso 2 plazas de turno libre",
+   "nivel": "literal"
+  },
+  "plazas_turno_libre": {
+   "valor": 2,
+   "cita": "convocar a concurso 2 plazas de turno libre",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Se cuenta a partir del día siguiente al de la publicación de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de instancias se contará a partir del día siguiente al de la publicación de la convocatoria",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial del Estado y página web https://www.ucm.es/funcionarios-de-carrera-2 del Servicio de Gestión de Personal Docente e Investigador",
+   "cita": "Las bases de la convocatoria, los detalles de las plazas y la composición de las Comisiones Juzgadoras se publican en el",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "otro",
+   "cita": "convocar a concurso de acceso a plazas de cuerpos docentes universitarios"
+  }
+ }
+}

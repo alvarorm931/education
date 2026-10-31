@@ -1,0 +1,55 @@
+{
+ "proceso": "bopcoruna:BOPCORUNA-2025-6971",
+ "documento": {
+  "id": "bopcoruna:BOPCORUNA-2025-6971",
+  "fuente": "BOP-CORUNA",
+  "url": "https://bop.dacoruna.gal/bopportal/publicado/2025/10/28/2025_0000006971.html",
+  "fecha": "2025-10-28",
+  "huella": "cde707a4122cca17e052adab03b51b154c5a6f30507ba69271dd1d040396e8ac"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:41:27+00:00",
+ "lote": "msgbatch_01UNq3BNhPPHoTK3TEJzun1h",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "funcionario de carreira",
+   "cita": "mediante persoal funcionario de carreira, dunha praza de oficial albanel fontaneiro",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "proceso selectivo para a cobertura, en quenda libre e mediante persoal funcionario de carreira",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletíns Oficiais correspondentes, consonte ao previsto na normativa de aplicación e as bases reguladoras",
+   "cita": "Proceder á publicación deste acordo nos Boletíns Oficiais correspondentes, consonte ao previsto na normativa de aplicación",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Terceiro exercicio: cuestionario tipo test de 50 preguntas (e 3 de reserva), de carácter eliminatorio"
+   ],
+   "cita": "TERCEIRO EXERCICIO. Este exercicio, de carácter obrigatorio e eliminatorio para todas as persoas aspirantes",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "oficial albanel fontaneiro",
+   "cita": "cobertura dunha praza de oficial albanel fontaneiro que figura como vacante"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 1,
+   "cita": "cobertura dunha praza de oficial albanel fontaneiro que figura como vacante"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "para a cobertura, en quenda libre e mediante persoal funcionario de carreira"
+  }
+ }
+}

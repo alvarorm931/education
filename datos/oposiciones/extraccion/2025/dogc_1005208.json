@@ -1,0 +1,67 @@
+{
+ "proceso": "dogc:1005208",
+ "documento": {
+  "id": "dogc:1005208",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1005208",
+  "fecha": "2025-01-31",
+  "huella": "44fe3329d10040be3ff641bb19ba295bd097308500f4ec122088ab31e1e530f1"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:46:23+00:00",
+ "lote": "msgbatch_01MQzQCLMZKxUrrPMAj7dr53",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "oficial/a de serveis especialitzats (fusteria/muntatges)",
+    "oficial/a de serveis especialitzats (especialitat paleta)",
+    "tècnic/a de serveis a les persones"
+   ],
+   "cita": "per cobrir de manera temporal possibles substitucions, urgents i inajornables",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C2",
+   "cita": "grup C, subgrup C2, nivell de destinació 14",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "per cobrir de manera temporal possibles substitucions, urgents i inajornables (personal laboral temporal)",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "s'han aprovat les bases i la convocatòria d'un concurs per a la constitució d'una borsa de treball",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "s'han aprovat les bases i la convocatòria d'un concurs per a la constitució d'una borsa de treball",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "10 dies hàbils a comptar des de l'endemà a la publicació d'aquest anunci en el Diari Oficial de la Generalitat de Catalunya",
+   "cita": "El termini de presentació de sol·licituds per participar en aquests processos serà de 10 dies hàbils",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Butlletí Oficial de la Província de Barcelona (31 de gener de 2025) i seu electrònica de l'Ajuntament",
+   "cita": "Cada una de les bases d'aquestes convocatòries es publicaran íntegrament en el Butlletí Oficial de la Província de Barcelona",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "sol·licituds per participar en els processos; la seu electrònica de l'Ajuntament publicarà els successius anuncis",
+   "cita": "Els successius anuncis d'aquestes convocatòries es publicaran a la seu electrònica de l'aquest Ajuntament"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, per cobrir de manera temporal possibles substitucions, urgents i inajornables",
+   "cita": "per la constitució d'una borsa de treball d'oficial/a de serveis especialitzats"
+  }
+ }
+}

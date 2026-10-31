@@ -1,0 +1,56 @@
+{
+ "proceso": "boptenerife:BOPTENERIFE-2024-08-23-025",
+ "documento": {
+  "id": "boptenerife:BOPTENERIFE-2024-08-23-025",
+  "fuente": "BOP-TENERIFE",
+  "url": "http://www.bopsantacruzdetenerife.es/bopsc2/sumario.php?codigopub=1&fecha_mas_reciente=2024-08-23",
+  "fecha": "2024-08-23",
+  "huella": "8323255412a066cd63b1bb4cd5f5c05146e874d35b8eeff1ec628790c89917ed"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:49:06+00:00",
+ "lote": "msgbatch_016yasWxkCXTWjPAb8LjB3ob",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "se resuelve la contratación como personal laboral fijo para la provisión de TRES (3) plazas",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia de Santa Cruz de Tenerife y Tablón de Anuncios de la Corporación",
+   "cita": "Publicar la presente Resolución en el Boletín Oficial de la Provincia de Santa Cruz de Tenerife y en el Tablón de Anuncios",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, lista de reserva",
+   "cita": "Aprobar la Lista de Reserva configurada del presente proceso selectivo, en los siguientes términos",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "AUXILIAR ADMINISTRATIVO/A",
+    "EDUCADOR/A"
+   ],
+   "cita": "Contratar como personal laboral fijo para la cobertura de TRES (3) plazas de AUXILIAR ADMINISTRATIVO/A"
+  },
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "IV",
+   "cita": "Grupo IV de la plantilla del personal laboral de este Excmo. Ayuntamiento"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso",
+   "cita": "mediante el sistema de concurso de méritos, dentro del proceso selectivo extraordinario para la estabilización"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 3,
+   "cita": "Contratar como personal laboral fijo para la cobertura de TRES (3) plazas de AUXILIAR ADMINISTRATIVO/A"
+  }
+ }
+}

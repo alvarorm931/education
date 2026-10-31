@@ -1,0 +1,58 @@
+{
+ "proceso": "bopgirona:BOPGIRONA-2023-7764",
+ "documento": {
+  "id": "bopgirona:BOPGIRONA-2023-7764",
+  "fuente": "BOP-GIRONA",
+  "url": "https://ssl4.ddgi.cat/bopV1/pdf/2023/179/202317907764.pdf",
+  "fecha": "2023-09-15",
+  "huella": "435675dcf7a386e4e4672721aaeb5750d214f89a304714ee1dd3817bd35093bc"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:44+00:00",
+ "lote": "msgbatch_01SjfjDqJRwL6bpTvJz2YfVg",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "OPERARI/ÀRIA NETEJA",
+   "cita": "Denominació plaça: OPERARI/ÀRIA NETEJA Codi identificació: 05/2022",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "AP",
+   "cita": "Règim: Laboral Grup AP Nombre de places: 1",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "mitjançant el sistema de selecció de concurs de mèrits, torn lliure",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "Nombre de places: 1 Sistema de selecció: concurs de mèrits",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "vint dies naturals, comptats a partir del dia següent al de la publicació de l’extracte de la convocatòria en el DOGC",
+   "cita": "El termini de presentació de sol·licituds és de vint dies naturals, comptats a partir del dia següent",
+   "nivel": "sin_signos"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "laboral temporal",
+   "cita": "cobertura de la plaça que tot seguit s’indica, vacant a la plantilla de personal laboral de l’Ajuntament"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "mitjançant el sistema de selecció de concurs de mèrits, torn lliure"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "tauler d’anuncis de l’Ajuntament i pàgina web www.santjoanlesfonts.cat",
+   "cita": "Els restants i successius anuncis d’aquesta convocatòria es faran públics únicament en el tauler d’anuncis"
+  }
+ }
+}

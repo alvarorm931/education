@@ -1,25 +1,22 @@
 {
  "proceso": "bopb:BOPB-202610111121",
  "documento": {
-  "id": "bopb:BOPB-202610111121",
-  "fuente": "BOPB",
-  "url": "https://bop.diba.cat/anunci/3961123/bases-i-convocatoria-del-proces-selectiu-per-a-la-provisio-d-una-placa-de-treballador-a-familiar-ajuntament-d-arenys-de-mar",
+  "id": "dogc:1048238",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1048238",
   "fecha": "2026-06-29",
-  "huella": "62db2073e95dbfa29fc27eac236780edca3870d495efc662b66d646d3a68b427"
+  "huella": "a8aa953c3b9d41988ac39932cfd95f564c00c411296e1fef3cc534263f677e28"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T08:18:06+00:00",
- "lote": "msgbatch_01BrnYw6KkevFx7at547B5g8",
+ "extraido": "2026-10-31T14:41:30+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
-   "valor": "Treballador/a familiar",
-   "cita": "Codi: 01L/2026 Règim jurídic: personal laboral fix",
-   "nivel": "literal"
-  },
-  "grupo": {
-   "valor": "C2",
-   "cita": "assimilat al grup C, subgrup C2, del personal funcionari",
+   "valor": [
+    "Treballador/a familiar"
+   ],
+   "cita": "Treballador/a familiar, assimilada al grup C, subgrup C2, vinculada al lloc de treball de Treballador/a familiar",
    "nivel": "literal"
   },
   "vinculo": {
@@ -29,26 +26,21 @@
   },
   "sistema": {
    "valor": "concurso-oposición",
-   "cita": "Sistema de selecció: Concurs oposició. Torn Lliure",
+   "cita": "Concurs oposició. Torn Lliure",
    "nivel": "literal"
   },
   "plazas_total": {
    "valor": 1,
-   "cita": "Nombre de places: 1 Sistema de selecció: Concurs oposició.",
+   "cita": "Nombre de places: 1",
    "nivel": "literal"
   },
   "titulacion": {
-   "valor": "Educació secundària obligatòria (ESO), o equivalent, más título de auxiliar de atención a la dependencia",
+   "valor": "Educació secundària obligatòria (ESO), o equivalent, més un dels títols o certificats d'auxiliar d'atenció a la dependència reconeguts per la Generalitat",
    "cita": "Titulació: Títol en Educació secundària obligatòria (ESO), o equivalent.",
    "nivel": "literal"
   },
-  "otros_requisitos": {
-   "valor": "Nacionalidad española o UE (con excepciones); 16 años y no superar edad de jubilación forzosa; no estar inhabilitado; capacidad funcional; certificado negativo de antecedentes sexuales.",
-   "cita": "Disposar de la certificació negativa d’antecedents sexuals, en aplicació de la normativa vigent",
-   "nivel": "literal"
-  },
   "idioma_cooficial": {
-   "valor": "Catalán nivel B1 (elemental); castellano nivel B2 para no nacionales de países no hispanohablantes",
+   "valor": "Català, nivell B1 (elemental); castellà, nivell B2 si no es té la nacionalitat espanyola o d'un país de llengua oficial castellana",
    "cita": "Tenir el nivell elemental de català, nivell B1.",
    "nivel": "literal"
   },
@@ -57,59 +49,75 @@
    "cita": "categoria quarta (titulació subgrup C2): 8,35€",
    "nivel": "literal"
   },
-  "plazo_solicitudes": {
-   "valor": "Veinte días hábiles a contar desde el día siguiente a la publicación de la convocatoria en el DOGC",
-   "cita": "El termini de presentació de sol·licituds serà de vint dies hàbils comptadors a partir de l’endemà",
+  "exenciones_tasa": {
+   "valor": "Exempció de la prova de català per acreditar-lo en l'ensenyament obligatori o haver superat una prova de nivell B1 o superior en un procés de selecció de l'Ajuntament",
+   "cita": "Estan exemptes de fer la prova de català les persones candidates que acreditin el coneixement de català dins de l'ensenyament obligatori",
    "nivel": "literal"
   },
-  "presentacion": {
-   "valor": "Registro general electrónico (sede electrónica) preferentemente, o presencialmente en la OAC con cita previa",
-   "cita": "preferentment, o en el registre general de l’Ajuntament a l’Oficina d’Atenció Ciutadana",
+  "plazo_solicitudes": {
+   "valor": "Vint dies hàbils a comptar des de l'endemà de la publicació de la convocatòria al DOGC",
+   "cita": "El termini de presentació de sol·licituds serà de vint dies hàbils comptadors a partir de l'endemà de la publicació de la convocatòria al DOGC.",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "BOPB y tablón de anuncios de la sede electrónica municipal; convocatoria también en el DOGC",
-   "cita": "es publicarà íntegrament al BOPB i al tauler d’anuncis de la seu electrònica de l’Ajuntament.",
+   "valor": "Butlletí Oficial de la Província de Barcelona (BOPB), tauler d'anuncis de la seu electrònica municipal i pàgina web; convocatòria també al DOGC",
+   "cita": "El contingut d'aquestes bases i de la convocatòria es publicarà íntegrament al BOPB i al tauler d'anuncis de la seu electrònica",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Prueba psicotécnica (eliminatoria)",
-    "Prueba de catalán B1 si no se acredita (eliminatoria)",
-    "Prueba de castellano B2 si no se acredita (eliminatoria)",
-    "Prueba teórica tipo test o desarrollo, mínimo 15 de 30 puntos",
-    "Prueba práctica de supuesto, mínimo 20 de 40 puntos",
-    "Fase de concurso: méritos (30 puntos) y entrevista personal (3 puntos)"
+    "Prova psicotècnica (eliminatòria, apta/no apta)",
+    "Prova de català B1 si no s'acredita (eliminatòria)",
+    "Prova de castellà B2 si no s'acredita (eliminatòria)",
+    "Prova teòrica (fins 30 punts, mínim 15)",
+    "Prova pràctica (fins 40 punts, mínim 20)",
+    "Fase de concurs: experiència, formació, llengua catalana i competències digitals (fins 30 punts)",
+    "Entrevista personal dins la fase de concurs (fins 3 punts)"
    ],
-   "cita": "Primera prova. Prova psicotècnica Aquesta prova serà de caràcter obligatori i eliminatori.",
-   "nivel": "literal"
+   "cita": "Fase d'oposició (fins un màxim de 70 punts): Primera prova. Prova psicotècnica",
+   "nivel": "sin_signos"
   },
-  "temas": {
-   "valor": 25,
-   "cita": "25. Codi ètic del servei públic de Catalunya",
+  "meritos": {
+   "valor": "Experiència fins 15 punts (0,20/mes en administracions locals, màx 9); formació reglada fins 4 punts; llengua catalana superior fins 1,4; formació contínua fins 6; competències digitals fins 0,6; entrevista fins 3",
+   "cita": "a) L'experiència professional, fins a un màxim de 15 punts:",
    "nivel": "literal"
   },
   "bolsa": {
-   "valor": "sí, para cubrir interinamente posibles vacantes y/o sustituciones de la plaza convocada",
-   "cita": "formaran part d’una borsa de treball ordenada per la puntuació obtinguda en el procés de selecció",
+   "valor": "Sí, per cobrir interinament possibles vacants i substitucions de la plaça convocada; vigència màxima de dos anys",
+   "cita": "Les persones candidates que superin el procés selectiu, però que pel nombre de places convocades no siguin proposades per a la seva contractació, formaran part d'una borsa de treball",
    "nivel": "literal"
   },
   "practicas_o_curso": {
-   "valor": "Período de prueba de hasta 2 meses",
-   "cita": "La durada del període de prova serà de fins a 2 mesos",
+   "valor": "Període de prova de 2 mesos",
+   "cita": "Període de prova: 2 mesos",
    "nivel": "literal"
   }
  },
  "rechazados": {
-  "plazas_turno_libre": {
+  "grupo": {
    "motivo": "cita_no_literal",
-   "valor": 1,
-   "cita": "per cobrir pel sistema selectiu de concurs oposició, en torn lliure, una plaça vacant"
+   "valor": "C2",
+   "cita": "assimilada al grup C, subgrup C2, del personal funcionari"
   },
-  "meritos": {
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "Sistema de selecció: Concurs oposició. Torn Lliure"
+  },
+  "otros_requisitos": {
    "motivo": "cita_no_literal",
-   "valor": "Experiencia profesional hasta 15 puntos (administración local 0,20/mes, hasta 9; otras administraciones 0,15/mes, hasta 3; sector privado 0,10/mes, hasta 3); formación reglada, idiomas, formación continua y competencias digitales hasta 12 puntos; entrevista hasta 3 puntos.",
-   "cita": "b) La formació acadèmica, on es valora la formació reglada diferent i/o superior a l’exigida"
+   "valor": "Nacionalitat espanyola o de la UE (permís de residència per a extracomunitaris); major de 16 anys; no estar separat ni inhabilitat; capacitat funcional; certificat negatiu d'antecedents sexuals; capacitat per a les tasques de la plaça",
+   "cita": "Tenir la nacionalitat espanyola. Haver complert 16 anys i no superar l'edat establerta per a la jubilació forçosa."
+  },
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Registre general electrònic de l'Ajuntament (preferentment) o presencialment a l'OAC amb cita prèvia; també altres mitjans de l'article 16.4 LPAC",
+   "cita": "es presentarà en el registre general electrònic preferentment, o en el registre general de l'Ajuntament a l'Oficina d'Atenció Ciutadana (OAC)"
+  },
+  "temas": {
+   "motivo": "cita_no_literal",
+   "valor": 25,
+   "cita": "Temari general: 5 temes; temari específic: 20 temes (del 6 al 25)"
   }
  }
 }

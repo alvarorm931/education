@@ -1,55 +1,118 @@
 {
  "proceso": "boe:BOE-A-2026-19885",
  "documento": {
-  "id": "dogv:488848",
-  "fuente": "DOGV",
-  "url": "https://dogv.gva.es/datos/2026/09/15/pdf/2026_27521_es.pdf",
-  "fecha": "2026-09-15",
-  "huella": "d12dc7a3adcf78a060181e0518eac57ec41772ba66341aa69000fade33d925de"
+  "id": "bopvalencia:BOPVALENCIA-2026-10024",
+  "fuente": "BOP-VALENCIA",
+  "url": "https://bop.dival.es/bop/downloads?anuncioNumReg=2026/10024&lang=va",
+  "fecha": "2026-08-11",
+  "huella": "d2b1d5fc76aacdb45097981f0e0387fb6fefe5fd9bdf88de5630d99fb2568c36"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T07:39:44+00:00",
- "lote": "msgbatch_013q7o24qMms8ZNZdwMNkW1L",
+ "extraido": "2026-10-31T14:41:50+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
-   "valor": [
-    "oficial de primera de conductor o conductora de obras"
-   ],
-   "cita": "una plaza de oficial de primera de conductor o conductora de obras, subgrupo C2",
-   "nivel": "literal"
-  },
-  "grupo": {
-   "valor": "C2",
-   "cita": "oficial de primera de conductor o conductora de obras, subgrupo C2",
+   "valor": "Oficial 1ª conductor obres",
+   "cita": "Bases del procés selectiu per a la cobertura per concurs-oposició lliure d'una plaça d'oficial 1ª conductor obres",
    "nivel": "literal"
   },
   "vinculo": {
    "valor": "personal laboral fijo",
-   "cita": "naturaleza laboral fijo/fija",
+   "cita": "com a laboral fix pel sistema de concurs-oposició lliure",
    "nivel": "literal"
   },
   "sistema": {
    "valor": "concurso-oposición",
-   "cita": "por sistema de concurso-oposición libre, naturaleza laboral fijo/fija",
+   "cita": "Concurs-oposició, sent necessari superar la fase d'oposició per a poder avaluar la fase de concurs",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "una plaça d'Oficial 1ª Conductor Obres, subgrup C2",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Graduado en ESO, ciclo formativo de Grado Medio o equivalente, o en condiciones de obtenerlo al finalizar el plazo",
+   "cita": "Estar en possessió del títol de graduat en ESO, cicle formatiu de Grau Mitjà o equivalent",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Conocimiento de valenciano: prueba de traducción obligatoria no eliminatoria (5 puntos) y méritos de nivel de valenciano en la fase de concurso",
+   "cita": "Prova de coneixements de valència. Traducció (5 punts).",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 25,
+   "cita": "els drets d'examen seran de 25,00 €",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Personas en situación de desempleo que no reciban prestación económica ni subsidio, acreditándolo con certificado del SEPE y vida laboral de máximo un mes de antigüedad",
+   "cita": "No estaran subjectes a la taxa aquelles persones que es troben en situació d'atur i que, a més, no reben cap prestació",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "diez días hábiles contados a partir del día siguiente a la publicación de este anuncio en el Boletín Oficial del Estado",
-   "cita": "El plazo de presentación de solicitudes será de diez días hábiles contados a partir del día siguiente",
+   "valor": "Diez días hábiles siguientes a la publicación de la convocatoria en el BOE",
+   "cita": "El termini serà de DEU DIES HÀBILS següents al de la publicació de la convocatòria en el Butlletí Oficial de l'Estat -BOE-.",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Registro electrónico del Ayuntamiento con certificado de firma electrónica (ACCV, FNMT o DNIe), adjuntando autobaremación y justificante de tasa",
+   "cita": "Per a poder participar en el procés selectiu les persones interessades hauran de presentar per registre electrònic d'este Ajuntament la sol·licitud",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Boletín Oficial de la Provincia de Valencia, cuando proceda, y web municipal (www.alzira.es), apartado «Empleo público y recursos humanos»",
-   "cita": "se publicarán únicamente en el Boletín Oficial de la Provincia de Valencia , cuando proceda, y en la web municipal",
+   "valor": "Web municipal (alzira.es), sede electrónica, BOP de Valencia; extracto en DOGV y BOE",
+   "cita": "Tota la informació sobre esta convocatòria es publicarà a la web en el següent enllaç",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Primer ejercicio: prueba teórica tipo test sobre temario general (20 puntos, no eliminatoria)",
+    "Primer ejercicio: prueba práctica y de conocimientos del temario específico (30 puntos, eliminatoria, mínimo 15)",
+    "Segundo ejercicio: entrevista conductual estructurada por competencias (15 puntos, no eliminatoria)",
+    "Tercer ejercicio: prueba de conocimientos de valenciano, traducción (5 puntos, no eliminatoria)"
+   ],
+   "cita": "Prova pràctica i de coneixements sobre el temari específic (30 punts). Obligatòria i eliminatòria.",
+   "nivel": "literal"
+  },
+  "temas": {
+   "valor": 20,
+   "cita": "Tema 20. Recollida i trasllat de mobiliari urbà i col·locació en nova ubicació.",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Experiencia (40%, máx. 12 puntos); formación y titulación (40%, máx. 12 puntos complementarias); conocimiento de valenciano (10%, máx. 3 puntos); idiomas comunitarios (10%, máx. 3 puntos)",
+   "cita": "Experiència(40%) 1.1. S'atorgaran fins a un màxim de 12 punts pels serveis efectius prestats",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, para cubrir vacantes, sustituciones temporales o acumulaciones de tareas",
+   "cita": "Amb els resultats, s'obtindrà una borsa de treball amb les persones que no resulten seleccionades per a ocupar els llocs",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Periodo de prácticas de 2 meses para personal laboral",
+   "cita": "Esta fase consistix en un període de practiques, que tindrà una durada de 4 mesos en el cas del personal funcionari i de 2 mesos en el cas de personal laboral",
    "nivel": "literal"
   }
  },
  "rechazados": {
-  "plazas_total": {
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "C2",
+   "cita": "una plaça d'Oficial 1ª Conductor Obres, subgrup C2, pel sistema de concurs-oposició"
+  },
+  "plazas_turno_libre": {
    "motivo": "valor_no_en_cita",
    "valor": 1,
-   "cita": "se ha publicado la convocatoria 20/2026 y las bases específicas del proceso selectivo"
+   "cita": "pel sistema de concurs-oposició lliure"
+  },
+  "otros_requisitos": {
+   "motivo": "cita_no_literal",
+   "valor": "Permisos de conducir B y C; Certificado de aptitud profesional de conductores (CAP); carné fitosanitario básico o compromiso de obtenerlo",
+   "cita": "Permisos de conduir B i C. Certificat d'aptitud professional dels conductors (CAP)."
   }
  }
 }

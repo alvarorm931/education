@@ -1,0 +1,69 @@
+{
+ "proceso": "doe:DOE-2023064534",
+ "documento": {
+  "id": "doe:DOE-2023064534",
+  "fuente": "DOE",
+  "url": "https://doe.juntaex.es/otrosFormatos/html.php?xml=2023064534&anio=2024&doe=30o",
+  "fecha": "2024-01-04",
+  "huella": "6eebca28e9bdd9f2d01342ae2f55f0002b63e931f51e0b78eadfd0f58f89b33c"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:35+00:00",
+ "lote": "msgbatch_01SjfjDqJRwL6bpTvJz2YfVg",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "13 plazas de turno libre para personal funcionario de carrera del Cuerpo de Profesoras y Profesores Titulares de Universidad",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "convocar a concurso, tras la aprobación en Consejo de Gobierno de 12 de diciembre de 2023",
+   "nivel": "literal"
+  },
+  "plazas_promocion_interna": {
+   "valor": 23,
+   "cita": "23 plazas de promoción interna para el acceso al Cuerpo de Catedráticas y Catedráticos de Universidad",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de anuncios del Rectorado (Plaza de Caldereros, s/n., Cáceres y Avda. de Elvas, s/n., Badajoz) y www.unex.es/concursos",
+   "cita": "Asimismo, se publicará la relación en la dirección de internet: www.unex.es/concursos",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Primera prueba: exposición del currículo y del proyecto docente e investigador ante la comisión (máximo 90 minutos), seguida de debate (máximo dos horas)",
+    "Segunda prueba: pública, con resumen del trabajo presentado"
+   ],
+   "cita": "La primera prueba comenzará en el plazo máximo de diez días, a contar desde el acto de presentación",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Tras el nombramiento, la persona seleccionada debe tomar posesión en el plazo máximo de 20 días hábiles desde la publicación en el BOE del nombramiento",
+   "cita": "En el plazo máximo de 20 días hábiles, a contar desde el siguiente a la publicación en el Boletín Oficial del Estado del nombramiento",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Cuerpo de Profesoras y Profesores Titulares de Universidad",
+    "Cuerpo de Catedráticas y Catedráticos de Universidad"
+   ],
+   "cita": "convocar a concurso 13 plazas de turno libre para personal funcionario de carrera del Cuerpo de Profesoras y Profesores Titulares de Universidad"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 36,
+   "cita": "convocar a concurso 13 plazas de turno libre para personal funcionario de carrera del Cuerpo de Profesoras y Profesores Titulares de Universidad"
+  },
+  "plazas_turno_libre": {
+   "motivo": "cita_no_literal",
+   "valor": 13,
+   "cita": "convocar a concurso 13 plazas de turno libre para personal funcionario de carrera del Cuerpo de Profesoras y Profesores Titulares de Universidad"
+  }
+ }
+}

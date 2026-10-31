@@ -1,0 +1,58 @@
+{
+ "proceso": "bocm:BOCM-20240625-80",
+ "documento": {
+  "id": "bocm:BOCM-20240625-80",
+  "fuente": "BOCM",
+  "url": "https://www.bocm.es/bocm-20240625-80",
+  "fecha": "2024-06-25",
+  "huella": "9aa8a97c1f98dcd4d5c468e28865f9c0358e648ea9bb377cfce022580e7ae792"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:54:16+00:00",
+ "lote": "msgbatch_01HRnX7cDVMkRZD7mBamCmLu",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "Policía Local",
+   "cita": "Dos (2) plazas de Policía Local vacantes en la plantilla municipal del Ayuntamiento de Torres de la Alameda",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C1",
+   "cita": "grupo C, subgrupo C1, denominación Policía Local, nivel de complemento de destino 14",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "funcionario de carrera, oferta pública de empleo de 2024 (dos plazas)",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "en promoción interna, a través del sistema de concurso-oposición",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 2,
+   "cita": "proveer dos (2) plazas de policía del cuerpo del Ayuntamiento de Torres de la Alameda",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Comunidad de Madrid, sede electrónica del Ayuntamiento y tablón de anuncios",
+   "cita": "Los sucesivos anuncios de esta convocatoria, cuando procedan de conformidad con las bases, se publicarán en el BOLETÍN OFICIAL DE LA COMUNIDAD DE MADRID",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_promocion_interna": {
+   "motivo": "valor_no_en_cita",
+   "valor": 2,
+   "cita": "en promoción interna, a través del sistema de concurso-oposición"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "20 días hábiles a contar desde el día siguiente a la publicación de la reseña de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "que será de 20 días hábiles a contar desde el día siguiente a la publicación de la reseña de la convocatoria en el“Boletín Oficial del Estado”"
+  }
+ }
+}

@@ -1,0 +1,63 @@
+{
+ "proceso": "boe:BOE-A-2026-1814",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2025-9505",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2025/12/26_246/2025_009505.pdf",
+  "fecha": "2025-12-26",
+  "huella": "3e27eccc4b7122db66f3a6fe70db6a8611adad17f9da23d7fa5f5ef5b112741e"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:42:31+00:00",
+ "lote": "msgbatch_01W17mR271uYfWYL6CuSdriL",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "AUXILIAR DE POLICÍA LOCAL",
+   "cita": "para cubrir UNA (1) plaza de AUXILIAR DE POLICÍA LOCAL (Grupo/Subgrupo: C/C1)",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C1",
+   "cita": "para cubrir UNA (1) plaza de AUXILIAR DE POLICÍA LOCAL (Grupo/Subgrupo: C/C1)",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "una plaza de personal funcionario de carrera, mediante el sistema de concurso -oposición",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mediante el sistema de concurso -oposición y turno libre (OEP 2023)",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "para cubrir UNA (1) plaza de AUXILIAR DE POLICÍA LOCAL",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "de acuerdo con lo que establece la Base Tercera",
+   "cita": "Las instancias se presentarán de acuerdo con lo que establece la “Base Tercera” de las que rigen la citada convocatoria",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia de Alicante (listas de admitidos y excluidos); sede electrónica municipal y tablón de anuncios del Ayuntamiento (sucesivos anuncios)",
+   "cita": "Las resoluciones aprobatorias de las listas de aspirantes admitidos y excluidos se publicará en el Boletín Oficial de la Provincia de Alicante.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "POLICÍA LOCAL, POR EL SISTEMA DE CONCURSO-OPOSICIÓN (TURNO LIBRE)"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "20 días hábiles desde el día siguiente a la publicación del extracto de la convocatoria en el BOE",
+   "cita": "en el plazo de 20 días hábiles a contar desde el día siguiente al de la publicación del anuncio del extracto de la convocatoria en el Boletín Oficial del Estado"
+  }
+ }
+}

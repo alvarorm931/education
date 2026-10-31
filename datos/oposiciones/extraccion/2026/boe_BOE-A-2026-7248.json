@@ -1,0 +1,105 @@
+{
+ "proceso": "boe:BOE-A-2026-7248",
+ "documento": {
+  "id": "bopcordoba:BOPCORDOBA-2026-157",
+  "fuente": "BOP-CORDOBA",
+  "url": "https://bop.dipucordoba.es/dia/02-02-2026",
+  "fecha": "2026-02-02",
+  "huella": "8ce42d02816a04469a13fb9fd9b4e187fd233e59366bbb92ab457fdb83707832"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:40:50+00:00",
+ "lote": "msgbatch_01E3wiYcGL8Lzho48bXWLyyb",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Policía Local"
+   ],
+   "cita": "Escala de Administración Especial, Subescala de Servicios Especiales, categoría de Policía Local para su provisión en propiedad",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C1",
+   "cita": "Grupo C – Subgrupo: 1 – Escala: Administración Especial",
+   "nivel": "sin_signos"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "la provisión como funcionario de carrera, mediante el sistema de acceso de turno libre",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "mediante el sistema de oposición libre",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "Número de vacantes: 1",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Bachiller, Técnico Superior de Formación Profesional o equivalente",
+   "cita": "Estar en posesión del título de Bachiller, Técnico Superior de Formación Profesional o equivalente",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española; 18 años y no superar la edad de jubilación forzosa; estatura mínima 1,65 m hombres y 1,60 m mujeres; permisos de conducción A2 y B; no tener antecedentes penales por delitos dolosos",
+   "cita": "Tener dieciocho años de edad y no haber cumplido la edad de jubilación forzosa",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 15,
+   "cita": "ascendiendo el importe de la tarifa a 15,00 €",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles desde el siguiente al de la publicación en el BOE del extracto de la convocatoria",
+   "cita": "En el plazo de veinte días hábiles a contar desde el siguiente al de la publicación en el Boletín Oficial del Estado",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Sede electrónica del Ayuntamiento de Villafranca de Córdoba (procesos de selección), con Cl@ve o sin identificación; o impresa en el Registro General",
+   "cita": "Las solicitudes se cumplimentarán en la Sede Electrónica del Excmo. Ayuntamiento de Villafranca de Córdoba",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de Edictos de la Sede Electrónica del Ayuntamiento, además del BOP en los anuncios indicados",
+   "cita": "El resto de anuncios relativos a esta convocatoria se publicarán exclusivamente en el Tablón de Edictos de la Sede Electrónica del Ayuntamiento",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Primera prueba: conocimientos (test de 80 preguntas y caso práctico)",
+    "Segunda prueba: aptitud física (eliminatoria, apto/no apto)",
+    "Tercera prueba: psicotécnica (apto/no apto)",
+    "Cuarta prueba: examen médico (apto/no apto)"
+   ],
+   "cita": "Consistirá en la contestación, por escrito, de los temas o cuestionario de preguntas con respuestas alternativas",
+   "nivel": "literal"
+  },
+  "temas": {
+   "valor": 40,
+   "cita": "integrado por 40 temas establecidos en la Orden 22 de diciembre de 2003",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Curso de ingreso en el IESPA o Escuela Concertada, como funcionario en prácticas, con superación obligatoria para ser nombrado funcionario de carrera; periodo mínimo de permanencia de cinco años",
+   "cita": "Será requisito indispensable para la superación del proceso selectivo la superación del curso de ingreso",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "la provisión como funcionario de carrera, mediante el sistema de acceso de turno libre"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, para cubrir la plaza si hay renuncia o no presentación de documentos de los aprobados",
+   "cita": "que única y exclusivamente operará en el caso que se produzca renuncia expresa por los aspirantes que hayan obtenido plaza"
+  }
+ }
+}

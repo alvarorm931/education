@@ -1,0 +1,53 @@
+{
+ "proceso": "dogc:1040018",
+ "documento": {
+  "id": "dogc:1040018",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1040018",
+  "fecha": "2026-03-23",
+  "huella": "afa1722e76063d4e1e78930ca861e0530ab29026f6e9414aac18adf856308a71"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:40:34+00:00",
+ "lote": "msgbatch_01E3wiYcGL8Lzho48bXWLyyb",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "funcionario interino",
+   "cita": "mitjançant nomenament de personal funcionari interí, possibles suplències del personal de plantilla",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "constituir una borsa de treball (R-04/26)",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "10 días hábiles desde el día siguiente a la publicación del anuncio de convocatoria en el DOGC",
+   "cita": "fins a 10 dies hàbils a comptar de l'endemà de la publicació de l'anunci de convocatòria al Diari Oficial",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tauler d'anuncis electrònic de la Diputació de Barcelona, tauler de la Direcció dels Serveis de Recursos Humans, Portal de la transparència i web de la Diputació",
+   "cita": "s'han exposat al tauler d'anuncis electrònic de la Diputació de Barcelona",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, para suplencias de personal de plantilla de Tècnic/a Superior de Control Ambiental Local",
+   "cita": "constituir una borsa de treball (R-04/26)",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Tècnic/a Superior de Control Ambiental Local",
+   "cita": "ociat a la convocatòria amb el perfil professional de Tècnic/a Superior de Control Ambiental Local"
+  },
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Telemáticamente, a través del portal Trámites y servicios de la ciudadanía en la Sede electrónica de la Diputación de Barcelona, con modelo normalizado",
+   "cita": "formalitzar la sol·licitud telemàticament, a través del portal Tràmits i serveis de la ciutadania dins la Seu electrònica"
+  }
+ }
+}

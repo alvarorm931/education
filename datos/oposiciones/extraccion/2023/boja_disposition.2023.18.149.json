@@ -1,0 +1,63 @@
+{
+ "proceso": "boja:disposition.2023.18.149",
+ "documento": {
+  "id": "boja:disposition.2023.18.149",
+  "fuente": "BOJA",
+  "url": "https://juntadeandalucia.es/eboja/2023/18/BOJA23-018-00001-1319-01_00276480.pdf",
+  "fecha": "2023-01-27",
+  "huella": "5014aaf880cb8c6ff6e2c541dea1a7d92ce69a3986975b7fdb249549039efa4a"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:56:55+00:00",
+ "lote": "msgbatch_0167qWfLXqjGo8Hv43cM3LuM",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Auxiliar Administrativo/a",
+    "Encargado/a de Obras",
+    "Auxiliar Biblioteca",
+    "Dinamizador/a Deportes",
+    "Dinamizador/a Cultura y Juvenil",
+    "Dinamizador/a Guadalinfo",
+    "Electricista",
+    "Arquitecto",
+    "Limpieza Edificios"
+   ],
+   "cita": "Una plaza de Auxiliar Administrativo/a. Una plaza de Encargado/a de Obras. Una plaza de Auxiliar Biblioteca.",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "Plazas de la plantilla de personal laboral fijo, a cubrir por el sistema de concurso, en turno libre",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "a cubrir por el sistema de concurso, en turno libre",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días naturales a contar desde el siguiente al de la publicación de esta resolución en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes será de veinte días naturales a contar desde el siguiente al de la publicación",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "tablón de anuncios de la Sede Electrónica de la Corporación",
+   "cita": "se harán públicos en el tablón de anuncios de la Sede Electrónica de la Corporación",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 11,
+   "cita": "Una plaza de Auxiliar Administrativo/a. Dos plazas de Limpieza Edificios."
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 11,
+   "cita": "Plazas de la plantilla de personal laboral fijo, a cubrir por el sistema de concurso, en turno libre"
+  }
+ }
+}

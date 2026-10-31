@@ -1,0 +1,60 @@
+{
+ "proceso": "bocm:BOCM-20251114-22",
+ "documento": {
+  "id": "bocm:BOCM-20251114-22",
+  "fuente": "BOCM",
+  "url": "https://www.bocm.es/bocm-20251114-22",
+  "fecha": "2025-11-14",
+  "huella": "c493ab474fc3400226dff1ef3ae91088bd7b1082c72021092888149958a6569c"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:41:27+00:00",
+ "lote": "msgbatch_01UNq3BNhPPHoTK3TEJzun1h",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Profesores/as Titulares de Universidad"
+   ],
+   "cita": "Cuerpo: Profesores/as Titulares de Universidad",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "A1",
+   "cita": "Profesores/as Titulares de Universidad",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "se convoca concurso de acceso a plaza de funcionarios/as de carrera de los cuerpos docentes universitarios",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Instancias según el modelo de la Resolución, dirigidas al Rector de la Universidad de Alcalá (plaza San Diego, sin número, 28801 Alcalá de Henares)",
+   "cita": "debiendo dirigirse éstas al Rector de la Universidad de Alcalá (plaza San Diego, sin número, 28801 Alcalá de Henares, Madrid)",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "concurso de acceso a plazas de funcionario/as de carrera de los Cuerpos Docentes Universitarios"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 15,
+   "cita": "Área de Conocimiento: Química Inorgánica: Plazas: Una. Código: Z070/DQI224."
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 15,
+   "cita": "se convoca concurso de acceso a plaza de funcionarios/as de carrera de los cuerpos docentes universitarios"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "veinte días naturales a partir del siguiente al de la publicación de la correspondiente Resolución en el Boletín Oficial del Estado",
+   "cita": "plazo de presentación de instancias será de veinte días naturales a partir del siguiente al de la publicación"
+  }
+ }
+}

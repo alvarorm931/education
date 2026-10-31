@@ -1,0 +1,48 @@
+{
+ "proceso": "bocm:BOCM-20250807-7",
+ "documento": {
+  "id": "bocm:BOCM-20250807-7",
+  "fuente": "BOCM",
+  "url": "https://www.bocm.es/bocm-20250807-7",
+  "fecha": "2025-08-07",
+  "huella": "cca11c48ef30f573724964a2e9f3bae27c1af4943b5093633309150040c4777b"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:42:42+00:00",
+ "lote": "msgbatch_01XofVwxKEhyEjSzGog6wsD4",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "se convocan concursos de acceso a plazas de funcionarios de carrera de los cuerpos docentes universitarios",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "se convocan concursos de acceso a plazas de funcionarios de carrera de los cuerpos docentes universitarios",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días naturales a partir del siguiente al de la publicación de la correspondiente Resolución en el Boletín Oficial del Estado",
+   "cita": "será de 20 días naturales a partir del siguiente al de la publicación de la correspondiente Resolución en el",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Se dirigen al Rector de la Universidad de Alcalá (plaza San Diego, sin número, 28801 Alcalá de Henares, Madrid), según el modelo de la Resolución",
+   "cita": "debiendo dirigirse éstas al Rector de la Universidad de Alcalá (plaza San Diego, sin número, 28801 Alcalá de Henares, Madrid)",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 3,
+   "cita": "Matemática Aplicada: Plazas: Una. Física Aplicada: Plazas: Una. Física Aplicada: Plazas: Una."
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 3,
+   "cita": "Turno libre/Oferta de Empleo Público de 2024"
+  }
+ }
+}

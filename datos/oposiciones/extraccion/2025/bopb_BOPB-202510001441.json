@@ -1,0 +1,63 @@
+{
+ "proceso": "bopb:BOPB-202510001441",
+ "documento": {
+  "id": "dogc:1005190",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1005190",
+  "fecha": "2025-01-31",
+  "huella": "88b3bc54d2ac14283980b5359cbc0800d92890b0fc7362f1daaa9ecad909de7e"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:49:31+00:00",
+ "lote": "msgbatch_018TPQE8scQozfAUdc1n8RyC",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "A2",
+   "cita": "Grup A, Subgrup A2",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario interino",
+   "cita": "Inspector/a en interinatge, Grup A, Subgrup A2",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "procés de selecció per torn lliure i mitjançant concurs oposició",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "d'una plaça de l'Escala de Serveis Especials, classe Policia Local",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "10 dies hàbils a partir del dia següent de la publicació de la modificació en el BOPB",
+   "cita": "establint un termini de 10 dies hàbils més a partir del dia següent de la publicació",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Els successius anuncis relatius a aquesta convocatòria es publicaran únicament a la seu electrònica de l'Ajuntament de Palau-solità i Plegamans",
+   "cita": "Els successius relatius a aquesta convocatòria es publicaran únicament a la seu electrònica de l'Ajuntament",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, constitució d'una borsa de treball",
+   "cita": "Concurs oposició lliure d'una plaça d'inspector/a Interí/na de la Policia Local i constitució d'una Borsa de Treball",
+   "nivel": "sin_signos"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Inspector/a de la Policia Local (Escala de Serveis Especials, classe Policia Local)",
+   "cita": "Escala de Serveis Especials, classe Policia Local, Inspector/a en interinatge, Grup A, Subgrup A2"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "pel procés de selecció per torn lliure i mitjançant concurs oposició"
+  }
+ }
+}

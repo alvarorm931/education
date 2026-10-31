@@ -1,0 +1,103 @@
+{
+ "proceso": "bopgranada:BOPGR-2022-226-026",
+ "documento": {
+  "id": "bopgranada:BOPGR-2022-226-026",
+  "fuente": "BOP-GRANADA",
+  "url": null,
+  "fecha": "2022-11-25",
+  "huella": "566497bc2b3a235391086856417824bb84b7946f78298632a9426e64bea4b0fa"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:10+00:00",
+ "lote": "msgbatch_01B4ETF5xB4buYCHqPiHTXzF",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Auxiliar Administrativo",
+    "Educador/a Centro Ocupacional",
+    "Adjunto/a Formación Centro Ocupacional",
+    "Conductor/a Transporte",
+    "Limpiador/a"
+   ],
+   "cita": "Plazas Objeto de Convocatoria: PUESTO / Nº Vacantes / GRUPO / CD / DEDICACIÓN / Unidad / Área",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C2",
+   "cita": "Auxiliar Administrativo / 1 / C2 / 14/TC / Administración General",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "Las características de las plazas estructurales vacantes serán las relacionadas en el anexo.",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "la selección de las personas para las plazas convocadas se llevará a cabo a través del sistema de concurso.",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Graduado en educación secundaria obligatoria o equivalente (Auxiliar Administrativo); Diplomado/a o Grado en Educación Social, Trabajo Social o Magisterio (Educador/a); Bachiller o Formación Profesional de grado medio o equivalente, según puesto (Adjunto/a Formación); Graduado en ESO (Conductor/a)",
+   "cita": "Graduado en educación secundaria obligatoria o equivalente conforme a la Orden EDU/1603/2009, de 10 de junio.",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española; capacidad funcional; tener cumplidos 16 años y no exceder la edad máxima de jubilación forzosa; carné de conducir tipo D y D1 (Conductor/a); certificado negativo de delitos de naturaleza sexual (Educador/a, Adjunto/a, Conductor/a)",
+   "cita": "Tener la nacionalidad española sin perjuicio de lo dispuesto en el artículo 57",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles desde el día siguiente a la publicación del anuncio en el Boletín Oficial del Estado",
+   "cita": "que será de 20 días hábiles a contar desde el día siguiente a la publicación de este anuncio en el Boletín Oficial del Estado.",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Registro Electrónico General de la Mancomunidad o lugares del artículo 16.4 de la Ley 39/2015, mediante modelo normalizado disponible en la sede electrónica",
+   "cita": "se presentarán en el Registro Electrónico General de esta Mancomunidad o en alguno de los lugares previstos en el artículo 16.4",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia, sede electrónica de la Mancomunidad (tablón de anuncios / Empleo Público) y extracto en el Boletín Oficial del Estado",
+   "cita": "Las bases íntegras se publicarán en el Boletín Oficial de la Provincia y en la sede electrónica de esta Mancomunidad",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Fase de concurso: valoración de experiencia profesional (hasta 80 puntos)",
+    "Antigüedad en las Administraciones Públicas (hasta 10 puntos)",
+    "Otros méritos: formación y titulación académica (hasta 10 puntos)"
+   ],
+   "cita": "El concurso, cuya calificación final no podrá ser superior a 100 puntos, consistirá en la valoración por el Tribunal",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Experiencia profesional hasta 80 puntos (0,036 por día en la misma categoría; 0,018 por día en puestos homólogos); antigüedad en AAPP hasta 10 puntos (0,004 por día); formación hasta 10 puntos (0,1 por hora) y titulación académica (Máster/Licenciatura 4, Grado 3, Técnico Superior 2, Bachiller 1)",
+   "cita": "Se valorará hasta un máximo de 80 puntos, de acuerdo con el siguiente baremo",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, para personas que no superen el proceso con al menos 50 puntos, para constituir bolsas de personal funcionario interino o laboral temporal",
+   "cita": "Se prevé para aquellas personas que no superen el proceso selectivo, su inclusión en bolsas de personal funcionario interino o de personal laboral temporal específicas.",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Posible superación del período de prueba según la normativa laboral para personal laboral; el funcionario debe tomar posesión en el plazo de un mes tras el nombramiento",
+   "cita": "Podrá establecerse la superación del período de prueba que corresponda de acuerdo con la normativa laboral",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 8,
+   "cita": "Auxiliar Administrativo / 1 / C2 / 14/TC; Educador/a Centro Ocupacional / 3 / A2 / TC; Adjunto/a Formación Centro Ocupacional /1 / C1 / TC"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 8,
+   "cita": "proceso de estabilización de empleo temporal por concurso para cubrir varias plazas vacantes en esta Mancomunidad"
+  }
+ }
+}

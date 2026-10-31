@@ -1,0 +1,58 @@
+{
+ "proceso": "boe:BOE-A-2024-17104",
+ "documento": {
+  "id": "bocm:BOCM-20240812-49",
+  "fuente": "BOCM",
+  "url": "https://www.bocm.es/bocm-20240812-49",
+  "fecha": "2024-08-12",
+  "huella": "e9b33e9f4733c5bedce9eb339e767fda8561512584df812f2e2092ea89402093"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:49:06+00:00",
+ "lote": "msgbatch_016yasWxkCXTWjPAb8LjB3ob",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "Auxiliar administrativo",
+   "cita": "Denominación del puesto: Auxiliar administrativo.",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C2",
+   "cita": "Grupo/subgrupo: C/C2.",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "Sistema de selección: Concurso oposición.",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 3,
+   "cita": "Número de vacantes: Tres (3).",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles a contar desde el día siguiente a la publicación de la reseña de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "se abre el plazo de presentación de solicitudes, que será de 20 días hábiles a contar desde el día siguiente a la publicación",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Comunidad de Madrid, sede electrónica del Ayuntamiento y tablón de anuncios",
+   "cita": "Los sucesivos anuncios de esta convocatoria, cuando procedan de conformidad con las bases, se publicarán en el BOLETÍN OFICIAL DE LA COMUNIDAD DE MADRID.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "Naturaleza: Funcionarial. Nombramiento: Definitivo."
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 3,
+   "cita": "Turno: Libre."
+  }
+ }
+}

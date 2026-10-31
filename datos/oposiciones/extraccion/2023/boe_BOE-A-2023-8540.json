@@ -1,0 +1,87 @@
+{
+ "proceso": "boe:BOE-A-2023-8540",
+ "documento": {
+  "id": "bopbizkaia:BOB-2022-II-5815",
+  "fuente": "BOB",
+  "url": "http://www.bizkaia.eus/lehendakaritza/Bao_bob/2022/12/27/II-5815_cas.pdf",
+  "fecha": "2022-12-27",
+  "huella": "0bad7f80f50e226f26e66a3d11e23f48ecaa35d90f0e23280026f326488f70bc"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:59:25+00:00",
+ "lote": "msgbatch_012nGabRM1G4b7cEKJh1Bcx1",
+ "no_son_bases": false,
+ "campos": {
+  "titulacion": {
+   "valor": "Estar en posesión, o haber abonado los derechos para su expedición, de la titulación requerida, que se indicará en las correspondientes bases específicas.",
+   "cita": "Estar en posesión, o haber abonado los derechos para su expedición, de la titulación requerida, que se indicará",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Perfil lingüístico de euskera exigido según puesto; se acreditará mediante pruebas o certificado",
+   "cita": "Acreditar dentro del proceso selectivo estar en posesión del Perfil Lingüístico requerido para el puesto",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Personas en situación de desempleo, que deberán mostrar la tarjeta de demanda de empleo",
+   "cita": "Langabezian daudenek (enplegu eskatzeko txartela erakutsi beharko dute).",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles desde el día siguiente a la publicación del extracto de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "Deialdiaren laburpena Estatuko Aldizkari Ofizialean argitaratu eta hurrengo egunetik hogei (20) egun balioduneko epean",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Sede electrónica del Ayuntamiento, presencialmente en el registro y atención ciudadana u otros lugares del art. 16.4 Ley 39/2015",
+   "cita": "Solicitud electrónica en sede electrónica: Trámites municipales (amorebieta-etxano.eus)",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Experiencia general hasta 60 puntos (0,0274 por día) y específica hasta 20 puntos (0,00913 por día); formación hasta 20 puntos; permisos de conducir hasta 10 puntos",
+   "cita": "Por servicios prestados en la misma escala, subescala y/o categoría que la convocada, en cualquier administración pública",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Oficial Albañil",
+    "Técnico Jurídico Contable",
+    "Técnico de Vivienda"
+   ],
+   "cita": "Anexo III formularios de autovaloración por categoría: OFICIAL ALBAÑIL, TÉCNICO JURÍDICO CONTABLE, TÉCNICO DE VIVIENDA"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "otro",
+   "cita": "proceso excepcional de estabilización de empleo temporal de larga duración derivado de las disposiciones adicionales 6ª y 8ª"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso",
+   "cita": "El proceso de la convocatoria excepcional de estabilización se articulará en base al sistema de concurso."
+  },
+  "otros_requisitos": {
+   "motivo": "cita_no_literal",
+   "valor": "Tener 16 años cumplidos, capacidad funcional, no separación disciplinaria, nacionalidad española o de Estado miembro UE, perfil lingüístico y no ser funcionario de carrera de la misma escala en el Ayuntamiento",
+   "cita": "Tener cumplidos dieciséis años y no exceder, en su caso, de la edad máxima de jubilación forzosa."
+  },
+  "tasa_euros": {
+   "motivo": "valor_no_numerico",
+   "valor": {
+    "A1": 20.68,
+    "A2": 15.51,
+    "C1": 10.34,
+    "C2_LE": 6.2
+   },
+   "cita": "A1:20,68 €; A2: 15,51 €; C1:10,34 €; C2 edo LE:6,20 eurokoa izango da."
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Boletines oficiales correspondientes, tablón de anuncios y página web del Ayuntamiento",
+   "cita": "Las convocatorias de procesos selectivos serán publicadas, en los boletines oficiales correspondientes y, además, en el tablón de anuncios y la página web"
+  }
+ }
+}

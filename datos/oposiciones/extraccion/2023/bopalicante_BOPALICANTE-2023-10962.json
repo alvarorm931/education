@@ -1,0 +1,58 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2023-10962",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2023-10962",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2023/12/28_247/2023_010962.pdf",
+  "fecha": "2023-12-28",
+  "huella": "c0f36deef8a74fd4875d10d542916c341dd790bdd9c169d88c3ae3f73d196881"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:55+00:00",
+ "lote": "msgbatch_01SjfjDqJRwL6bpTvJz2YfVg",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "C2",
+   "cita": "Por resolución de esta Concejalía de Recursos Humanos",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "la provisión en propiedad con personal funcionario de carrera de 5 plazas",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mediante concurso -oposición, vacantes en la plantilla municipal",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 5,
+   "cita": "provisión en propiedad con personal funcionario de carrera de 5 plazas",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles a contar desde el día siguiente a la publicación del extracto de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes para tomar parte en las citadas pruebas selectivas será de veinte días hábiles",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de Anuncios del Servicio de Recursos Humanos y página web municipal",
+   "cita": "estarán a disposición de las personas interesadas en el Tablón de Anuncios del Servicio de Recursos Humanos",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Auxiliar de Administración General",
+   "cita": "5 plazas de Auxiliar de Administración General, mediante concurso-oposición"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 5,
+   "cita": "por turno libre con reserva para personas con discapacidad funcional física o sensorial"
+  }
+ }
+}

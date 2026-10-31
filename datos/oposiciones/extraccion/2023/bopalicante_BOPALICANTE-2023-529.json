@@ -1,0 +1,48 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2023-529",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2023-529",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2023/01/31_21/2023_000529.pdf",
+  "fecha": "2023-01-31",
+  "huella": "076e17f8335ca825151817b2ce14f9a5219ee87d3ee15697e35ff2cb670e4a0e"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:56:49+00:00",
+ "lote": "msgbatch_0167qWfLXqjGo8Hv43cM3LuM",
+ "no_son_bases": false,
+ "campos": {
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "por el sis tema de concursooposición turno libre de una plaza de Auxiliar Administrativo",
+   "nivel": "literal"
+  },
+  "plazas_turno_libre": {
+   "valor": 1,
+   "cita": "por el sis tema de concursooposición turno libre de una plaza de Auxiliar Administrativo de Administración General",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Auxiliar Administrativo de Administración General",
+   "cita": "provisión con carácter de funcionaria/o de carrera, por el sistema de concurso-oposición turno libre de una plaza de Auxiliar Administrativo de Administración General"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "provisión con carácter de funcionaria/o de carrera, por el sistema de concurso-oposición turno libre"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 1,
+   "cita": "convocatoria para la provisión con carácter de funcionaria/o de carrera de una plaza de Auxiliar Administrativo"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Tablón de Anuncios y página web del Ayuntamiento de Monóvar",
+   "cita": "El texto íntegro de las bases de referencia está publicado en el Tablón de Anuncios y en la página web del Ayuntamiento"
+  }
+ }
+}

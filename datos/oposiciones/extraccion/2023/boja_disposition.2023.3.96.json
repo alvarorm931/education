@@ -1,0 +1,53 @@
+{
+ "proceso": "boja:disposition.2023.3.96",
+ "documento": {
+  "id": "boja:disposition.2023.3.96",
+  "fuente": "BOJA",
+  "url": "https://juntadeandalucia.es/eboja/2023/3/BOJA23-003-00001-21159-01_00274332.pdf",
+  "fecha": "2023-01-05",
+  "huella": "6644db5c7cb2bd971cd6a0728ea6693d5e6bd9f445886688a0beaa253b2d253e"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:56:19+00:00",
+ "lote": "msgbatch_014eT3dLLVopBnuVgQ4syWD9",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "plazas vacantes incorporadas a la Oferta de Empleo Público Extraordinaria de Estabilización del empleo temporal",
+   "cita": "cubrir en propiedad diversas plazas vacantes, incorporadas a la Oferta de Empleo Público Extraordinaria de Estabilización",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "cubrir en propiedad diversas plazas vacantes, incorporadas a la Oferta de Empleo Público Extraordinaria",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "en la modalidad de concurso y concurso-oposición (D.A. 6.ª y 8.ª), por turno libre",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles, a contar desde el día siguiente a la publicación de este anuncio en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes será de veinte días hábiles, a contar desde el día siguiente",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia, tablón de anuncios del Ayuntamiento y sede electrónica del Ayuntamiento",
+   "cita": "se publicarán en el Boletín Oficial de la Provincia, en el tablón de anuncios del Ayuntamiento y sede electrónica",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_turno_libre": {
+   "motivo": "valor_no_numerico",
+   "valor": "no consta número",
+   "cita": "correspondientes a la tasa adicional para la estabilización del empleo temporal"
+  },
+  "otros_requisitos": {
+   "motivo": "cita_no_literal",
+   "valor": "Las plazas se convocan con jornada a tiempo parcial y como fijo/a discontinuo/a",
+   "cita": "Serán convocadas con jornada a tiempo parcial. Serán convocadas como fijo/a discontinuo/a."
+  }
+ }
+}

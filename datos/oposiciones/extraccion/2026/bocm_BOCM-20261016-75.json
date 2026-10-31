@@ -1,0 +1,56 @@
+{
+ "proceso": "bocm:BOCM-20261016-75",
+ "documento": {
+  "id": "bocm:BOCM-20261016-75",
+  "fuente": "BOCM",
+  "url": "https://www.bocm.es/bocm-20261016-75",
+  "fecha": "2026-10-16",
+  "huella": "4d50990e40bfa1a769b49458aea90fa6ea2e26613e56e1107cde0bfbff7cb30f"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:41:35+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "mediante concurso-oposición en turno promoción interna las siguientes plazas",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mediante concurso-oposición en turno promoción interna las siguientes plazas",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles a contar desde el día siguiente a la publicación del extracto de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes junto con la documentación requerida que se acompañe es de veinte días hábiles",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "web municipal del Ayuntamiento de Torrejón de Ardoz",
+   "cita": "El texto íntegro de las bases será publicado en la web municipal de este Ayuntamiento",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Oficial de Servicios e Información",
+    "Oficial Conductor"
+   ],
+   "cita": "4 plazas de Oficial de Servicios e Información. 1 plaza de Oficial Conductor."
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 5,
+   "cita": "4 plazas de Oficial de Servicios e Información. 1 plaza de Oficial Conductor."
+  },
+  "plazas_promocion_interna": {
+   "motivo": "valor_no_en_cita",
+   "valor": 5,
+   "cita": "mediante concurso-oposición en turno promoción interna las siguientes plazas"
+  }
+ }
+}

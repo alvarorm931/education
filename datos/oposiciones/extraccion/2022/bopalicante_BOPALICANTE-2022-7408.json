@@ -1,0 +1,48 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2022-7408",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2022-7408",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2022/10/07_192/2022_007408.pdf",
+  "fecha": "2022-10-07",
+  "huella": "2296f25a0ec5e96f8a3344bbdc218f9a06b740c7db4bed3e192aa4c1118cd168"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:06+00:00",
+ "lote": "msgbatch_01B4ETF5xB4buYCHqPiHTXzF",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "constitución de una bolsa de trabajo temporal de Profesor/a de la F.P.A",
+   "nivel": "sin_signos"
+  },
+  "publicaciones": {
+   "valor": "tablón de edictos municipal y sede electrónica del Ayuntamiento",
+   "cita": "Los sucesivos anuncios relacionados con la presente convocatoria se publicarán únicamente en el tablón de edictos municipal",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, bolsa de trabajo temporal de Profesor/a de la F.P.A.",
+   "cita": "constitución de una bolsa de trabajo temporal de Profesor/a de la F.P.A",
+   "nivel": "sin_signos"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Profesor/a de la F.P.A.",
+   "cita": "constitución de una bolsa de trabajo temporal de Profesor/a de la F.P.A de este Ayuntamiento"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "mediante mediante el procedimiento concurso-oposición"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "10 días naturales, contados a partir del día siguiente al de la publicación del presente anuncio en el Boletín Oficial de la Provincia",
+   "cita": "El plazo de presentación de instancias será de 10 días naturales, contados a partir del día siguiente"
+  }
+ }
+}

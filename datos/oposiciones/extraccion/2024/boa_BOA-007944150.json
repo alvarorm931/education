@@ -1,0 +1,40 @@
+{
+ "proceso": "boa:BOA-007944150",
+ "documento": {
+  "id": "boa:BOA-007944150",
+  "fuente": "BOA",
+  "url": "https://www.boa.aragon.es/cgi-bin/EBOA/BRSCGI?CMD=VERDOC&BASE=BOLE&SEC=BUSQUEDA_AVANZADA&DOCN=007944150",
+  "fecha": "2024-10-07",
+  "huella": "79e9b78fa23a17fa380e6d4037334abde7cef11d2bdf1370048c9484c01ece66"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:50:14+00:00",
+ "lote": "msgbatch_01LpyYajgKGX9NyHT1uvynbR",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "mediante contrato temporal de sustitución de persona trabajadora",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "quince días hábiles contados a partir del siguiente al de la publicación en el Boletín Oficial de Aragón",
+   "cita": "El plazo de presentación de solicitudes será de quince días hábiles contados a partir del siguiente al de la publicación",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Página web www.transpirenaica.org y Portal de Transparencia del Gobierno de Aragón",
+   "cita": "Toda la información de la convocatoria está a disposición de las personas interesadas en la página web: www.transpirenaica.org",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Consejero/a a la Dirección de la Fundación"
+   ],
+   "cita": "el Presidente del patronato anuncia la convocatoria para la provisión de la plaza de Consejero/a a la Dirección de la Fundación"
+  }
+ }
+}

@@ -1,0 +1,61 @@
+{
+ "proceso": "dogc:1009908",
+ "documento": {
+  "id": "dogc:1009908",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1009908",
+  "fecha": "2025-03-25",
+  "huella": "9b78563215e792a99ba8324cf1c79a89443ce8574f05b2ae0494abfedc706fa0"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:46:47+00:00",
+ "lote": "msgbatch_01MQzQCLMZKxUrrPMAj7dr53",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "caporal (promoción interna y turno libre, funcionario de carrera)",
+    "agente de carrera de la policía local (funcionario interino, borsa)"
+   ],
+   "cita": "tres places de caporal en règim funcionari mitjançant promoció interna i torn lliure",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "tres places de caporal en règim funcionari mitjançant promoció interna i torn lliure",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "cinc places d'agent de carrera de la policia local i la constitució d'una borsa",
+   "nivel": "literal"
+  },
+  "plazas_turno_libre": {
+   "valor": 5,
+   "cita": "cinc places d'agent de carrera de la policia local i la constitució d'una borsa",
+   "nivel": "literal"
+  },
+  "plazas_promocion_interna": {
+   "valor": 3,
+   "cita": "tres places de caporal en règim funcionari mitjançant promoció interna i torn lliure",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia (publicación de las bases y anuncios)",
+   "cita": "En el Butlletí Oficial de la Província del dia 21 de març de 2025 es publiquen les Bases",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, se crea una bolsa de trabajo de caporal y una bolsa de trabajo en régimen de funcionario interino de agente",
+   "cita": "la creació d'una borsa de treball; i de cinc places d'agent de carrera",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 8,
+   "cita": "tres places de caporal en règim funcionari mitjançant promoció interna i torn lliure"
+  }
+ }
+}

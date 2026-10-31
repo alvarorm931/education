@@ -1,0 +1,52 @@
+{
+ "proceso": "dogc:1039270",
+ "documento": {
+  "id": "dogc:1039270",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1039270",
+  "fecha": "2026-03-12",
+  "huella": "13e709149ac1aef5bf2bcd4f231d91bf729241c34932fb0f580a4d0dd7b6ed0e"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:40:37+00:00",
+ "lote": "msgbatch_01E3wiYcGL8Lzho48bXWLyyb",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "A2",
+   "cita": "Una plaça de tècnic/a de gestió del grup de classificació A2, escala administració general",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "subescala de gestió de la plantilla de personal laboral fix del Consell Comarcal",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "El sistema de selecció d'aquestes places serà per concurs-oposició i torn lliure",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Tècnic/a de gestió servei comarcal de joventut (SP036-1)",
+    "Tècnic/a gestió Desenvolupament Local-Ocupació (DL019-4)",
+    "Referent dependència de l'Àrea de Polítiques Socials i d'Igualtat (PSI022-2)"
+   ],
+   "cita": "tècnic/a de gestió servei comarcal de joventut de l'Àrea de Serveis Personals"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 3,
+   "cita": "Les places per seleccionar i proveir estan distribuïdes segons els sistemes de selecció de concurs-oposició"
+  },
+  "plazas_turno_libre": {
+   "motivo": "cita_no_literal",
+   "valor": 3,
+   "cita": "Oferta pública d'ocupació de l'any 2026 per torn lliure, aprovades pel Ple del Consell Comarcal"
+  }
+ }
+}

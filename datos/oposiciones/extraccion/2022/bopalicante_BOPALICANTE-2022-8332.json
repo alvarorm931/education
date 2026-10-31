@@ -1,0 +1,50 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2022-8332",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2022-8332",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2022/11/04_210/2022_008332.pdf",
+  "fecha": "2022-11-04",
+  "huella": "8011233560b4db7d0905f1fe28c38965d5f1bd464705c3d28ff76e02e459cf48"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:17+00:00",
+ "lote": "msgbatch_01B4ETF5xB4buYCHqPiHTXzF",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Auxiliar de Administración General"
+   ],
+   "cita": "CONVOCATORIA BOLSA DE TRABAJO DE EMPLEO TEMPORAL DE AUXILIARES DE ADMINISTRACIÓN GENERAL DEL AYUNTAMIENTO",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "10 días hábiles contados a partir del siguiente al de la publicación en el BOP de Alicante",
+   "cita": "El plazo de presentación de instancias será de 10 días hábiles contados a partir del siguiente",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "laboral temporal",
+   "cita": "creación de una Bolsa de Trabajo de empleo temporal de auxiliares de Administración General"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "otro",
+   "cita": "aprobar las bases específicas que han de regir la convocatoria para la creación de una Bolsa de Trabajo"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Tablón de Anuncios del Servicio de Recursos Humanos de la Corporación y página web www.lalfas.es",
+   "cita": "Las bases del proceso selectivo se publicarán íntegramente en el Tablón de Anuncios del Servicio de Recursos Humanos"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, bolsa de trabajo de empleo temporal de auxiliares de Administración General",
+   "cita": "creación de una Bolsa de Trabajo de empleo temporal de auxiliares de Administración General del Ayuntamiento"
+  }
+ }
+}

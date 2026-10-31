@@ -1,0 +1,50 @@
+{
+ "proceso": "boib:BOIB-2025-705983",
+ "documento": {
+  "id": "boib:BOIB-2025-705983",
+  "fuente": "BOIB",
+  "url": "https://www.caib.es/eboibfront/es/2025/12161/705983/constitucion-de-la-bolsa-de-trabajo-de-la-categori",
+  "fecha": "2025-09-20",
+  "huella": "56ade8e128ea3aec8539767fd06ce5853c73ab08d52064d7a65475587a857919"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:43:08+00:00",
+ "lote": "msgbatch_01XofVwxKEhyEjSzGog6wsD4",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "trabajador/a social"
+   ],
+   "cita": "Constitución de la Bolsa de trabajo de la categoría trabajador/a social del subgrupo A2",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "A2",
+   "cita": "Constitución de la Bolsa de trabajo de la categoría trabajador/a social del subgrupo A2",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "proceso selectivo por el sistema de concurso oposición para el ingreso como personal funcionario de carrera",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de las Islas Baleares (BOIB)",
+   "cita": "Publicar la presente resolución en el Boletín Oficial de las Islas Baleares con indicación de los recursos",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, para nombramientos como personal funcionario interino para sustituir bajas, permisos, licencias y cubrir vacantes",
+   "cita": "Se constituirá una bolsa de trabajo resultante del procedimiento selectivo",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario interino",
+   "cita": "para ser nombrados como personal funcionario interino para sustituir las posibles bajas"
+  }
+ }
+}

@@ -1,0 +1,50 @@
+{
+ "proceso": "bocm:BOCM-20251201-77",
+ "documento": {
+  "id": "bocm:BOCM-20251201-77",
+  "fuente": "BOCM",
+  "url": "https://www.bocm.es/bocm-20251201-77",
+  "fecha": "2025-12-01",
+  "huella": "ca8dc431ef4ababfdf65de3015250ad1aabe5db08f94889c3e0dc6f235390b96"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:40:57+00:00",
+ "lote": "msgbatch_01UNq3BNhPPHoTK3TEJzun1h",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "OSM peón barrendero-jardinero"
+   ],
+   "cita": "constitución de una bolsa de empleo de personal laboral temporal de OSM peón barrendero-jardinero",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "bolsa de empleo de personal laboral temporal de OSM peón barrendero-jardinero",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "10 días hábiles, contados a partir del día siguiente al de la publicación del anuncio de la convocatoria en el BOLETÍN OFICIAL DE LA COMUNIDAD DE MADRID",
+   "cita": "El plazo de presentación de solicitudes para participar es de 10 días hábiles, contados a partir del día siguiente",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de anuncios y edictos electrónicos, portal de transparencia y página web del Ayuntamiento",
+   "cita": "Las bases reguladoras están expuestas en el tablón de anuncios y edictos electrónicos",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, bolsa de empleo para personal laboral temporal de OSM peón barrendero-jardinero",
+   "cita": "constitución de una bolsa de empleo de personal laboral temporal de OSM peón barrendero-jardinero",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "no"
+  }
+ }
+}

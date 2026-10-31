@@ -1,0 +1,65 @@
+{
+ "proceso": "boe:BOE-A-2026-6157",
+ "documento": {
+  "id": "boppontevedra:BOPPONTEVEDRA-2026005107",
+  "fuente": "BOP-PONTEVEDRA",
+  "url": "https://boppo.depo.gal/web/boppo/detalle/-/boppo/2026/02/04/2026005107",
+  "fecha": "2026-02-04",
+  "huella": "93b79d4b2c005b53ddd69e38a81ce7b1d86d6384338f713db957ac482b6a0763"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:40:52+00:00",
+ "lote": "msgbatch_01E3wiYcGL8Lzho48bXWLyyb",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "V",
+   "cita": "encadrada no grupo V do Concello de Meis",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "mediante o sistema de concurso, para cubrir unha praza",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "cobertura, por quenda libre, dunha praza (1) de limpador/a",
+   "nivel": "literal"
+  },
+  "plazas_turno_libre": {
+   "valor": 1,
+   "cita": "cobertura, por quenda libre, dunha praza (1) de limpador/a",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte (20) días hábiles contados a partir del siguiente al de la publicación del anuncio de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "o prazo de presentación de instancias é de vinte (20) días hábiles contados a partir do seguinte",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia de Pontevedra y tablón de anuncios de la sede electrónica del Concello (https://meis.sedelectronica.gal)",
+   "cita": "publicaranse no Boletín Oficial da Provincia de Pontevedra e no taboleiro anuncios da sede electrónica",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Limpador/a"
+   ],
+   "cita": "convocatoria para cubrir unha praza como persoal laboral fixo da categoría de limpador/a"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "personal laboral fijo",
+   "cita": "Persoal laboral fixo (Concurso)"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, constitución de una lista de espera",
+   "cita": "e constitución dunha listaxe de agarda"
+  }
+ }
+}

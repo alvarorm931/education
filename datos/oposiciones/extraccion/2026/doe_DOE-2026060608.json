@@ -1,0 +1,98 @@
+{
+ "proceso": "doe:DOE-2026060608",
+ "documento": {
+  "id": "doe:DOE-2026060608",
+  "fuente": "DOE",
+  "url": "https://doe.juntaex.es/otrosFormatos/html.php?xml=2026060608&anio=2026&doe=510o",
+  "fecha": "2026-03-16",
+  "huella": "93c77fe5644a6c426fe36327a436677e8f766914fc13a28575a3dba2eea3fbf6"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:40:45+00:00",
+ "lote": "msgbatch_01E3wiYcGL8Lzho48bXWLyyb",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Cuerpo de Maestros"
+   ],
+   "cita": "Proceso selectivo de ingreso en el Cuerpo de Maestros (accesos 1 y 2).",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "A2",
+   "cita": "Proceso selectivo de ingreso en el Cuerpo de Maestros (accesos 1 y 2).",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "Proceso selectivo de adquisición de nuevas especialidades (acceso 5) del personal funcionario de carrera del Cuerpo de Maestros.",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 304,
+   "cita": "Se convoca procedimiento selectivo para cubrir 304 plazas del Cuerpo Maestros, situadas en el ámbito",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Grado de discapacidad igual o superior al 33 por ciento para la reserva de plazas; nacionalidad y demás requisitos generales en la Base IV.",
+   "cita": "se reserva un porcentaje no inferior al 10 por 100 del total de plazas convocadas para ser cubiertas por personas con un grado de discapacidad igual o superior al 33 por ciento.",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "diez días hábiles desde el 19 de marzo de 2026, finalizando el 1 de abril de 2026",
+   "cita": "El plazo de presentación de solicitudes será de diez días hábiles contados desde el día 19 de marzo de 2026",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Solicitud telemática obligatoria en el portal profex.educarex.es, con acceso mediante cl@ve",
+   "cita": "deberá rellenarse de forma telemática, con carácter obligatorio, y que se encontrará disponible en el portal https://profex.educarex.es.",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Primera prueba: prueba práctica y desarrollo por escrito de un tema elegido por la persona aspirante",
+    "Entrega de programación didáctica para la parte 2A, si el acceso lo exige"
+   ],
+   "cita": "la prueba constará de dos partes cuya realización es obligatoria, y consistirá en una prueba práctica y el desarrollo por escrito",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, listas de espera ordinarias y supletorias para cubrir interinidades en las especialidades convocadas",
+   "cita": "se constituirán listas supletorias en cada una de las especialidades incluidas en el Anexo I de la presente Resolución",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Fase de prácticas que se considera concluida al término del segundo trimestre del siguiente curso escolar a la celebración del proceso selectivo",
+   "cita": "Las prácticas se considerarán concluidas al término del segundo trimestre del siguiente curso escolar a la celebración del presente proceso selectivo",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "la disposición adicional duodécima de la Ley Orgánica 2/2006 establece que el sistema de ingreso en la función pública docente será el de concurso-oposición."
+  },
+  "plazas_discapacidad": {
+   "motivo": "valor_no_numerico",
+   "valor": "no inferior al 10 por 100 del total de plazas convocadas",
+   "cita": "se reserva un porcentaje no inferior al 10 por 100 del total de plazas convocadas para ser cubiertas por personas"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Diario Oficial de Extremadura y portal Profex (profex.educarex.es)",
+   "cita": "Las listas de espera se publicarán en el Diario Oficial de Extremadura y en la web http://profex.educarex.es"
+  },
+  "temas": {
+   "motivo": "cita_no_literal",
+   "valor": "no consta",
+   "cita": "el desarrollo por escrito de un tema elegido por la persona aspirante de entre un núm"
+  },
+  "meritos": {
+   "motivo": "cita_no_literal",
+   "valor": "Méritos del baremo del Anexo X (no detallado en el texto disponible), con valoración por la Comisión de Baremación",
+   "cita": "se valorarán los méritos que se hayan obtenido hasta la fecha de finalización del plazo de presentación de solicitudes"
+  }
+ }
+}

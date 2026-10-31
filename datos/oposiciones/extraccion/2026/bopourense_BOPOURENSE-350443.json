@@ -1,0 +1,42 @@
+{
+ "proceso": "bopourense:BOPOURENSE-350443",
+ "documento": {
+  "id": "bopourense:BOPOURENSE-350443",
+  "fuente": "BOP-OURENSE",
+  "url": null,
+  "fecha": "2026-04-13",
+  "huella": "4b45b50556ce711b3ec0c01a266180ce6a51b1dc08977dcf8ea1603da72bb909"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:40:50+00:00",
+ "lote": "msgbatch_01E3wiYcGL8Lzho48bXWLyyb",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Peón/a",
+    "Peón/a conductor/a",
+    "Jefe/a de brigada"
+   ],
+   "cita": "selección de doce peones/as, cuatro peones/as conductores/as y cuatro jefes/as de brigada",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "5 días hábiles desde el día siguiente a la publicación en el BOP de Ourense",
+   "cita": "El plazo para presentar solicitudes será de 5 días hábiles y se computaran a partir del día siguiente",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 20,
+   "cita": "doce peones/as, cuatro peones/as conductores/as y cuatro jefes/as de brigada"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Sede electrónica y página web www.mancoverín.gal",
+   "cita": "publica las bases que regirán el proceso selectivo en su sede electrónica y en la página web"
+  }
+ }
+}

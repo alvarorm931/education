@@ -1,0 +1,90 @@
+{
+ "proceso": "dogv:456959",
+ "documento": {
+  "id": "dogv:456959",
+  "fuente": "DOGV",
+  "url": "https://dogv.gva.es/datos/2025/12/05/pdf/2025_48672_es.pdf",
+  "fecha": "2025-12-05",
+  "huella": "850234462b2df231ff9a90ec07e08d265c8085ebc32fdca54afef335d3c98188"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:41:23+00:00",
+ "lote": "msgbatch_01UNq3BNhPPHoTK3TEJzun1h",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "Personal laboral para proyecto de investigación (anexo I, plaza única)",
+   "cita": "Convocar la oferta pública de una plaza para su contratación laboral a cargo de un proyecto de investigación, según figura en el anexo I",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "el contrato se formalizará por escrito, y se utilizará la modalidad de contrato de actividades científico-técnicas",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "La selección de personal para cubrir el puesto de personal laboral para proyecto de investigación se realizará mediante el sistema de concurso",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "Convocar la oferta pública de una plaza para su contratación laboral a cargo de un proyecto de investigación",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Título especificado en el anexo I para el puesto convocado",
+   "cita": "Estar en posesión del título especificado en el anexo I para el puesto de trabajo convocado",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Tener 16 años cumplidos al finalizar el plazo; nacionalidad española, de la UE o asimilada (con excepciones), o autorización de residencia temporal y trabajo para investigación en la contratación; capacidad funcional; no estar inhabilitado para funciones públicas",
+   "cita": "Tener cumplidos 16 años el día en que finalice el plazo de presentación de solicitudes",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Diez días hábiles desde el día siguiente a la publicación de la convocatoria en el DOGV",
+   "cita": "El plazo para la presentación de solicitudes será de diez días hábiles, contados a partir del día siguiente",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Electrónica: formulario en el portal del IVIA con Cl@ve, certificado digital o DNIe; excepcionalmente, por correo electrónico",
+   "cita": "Las solicitudes se presentarán por vía electrónica, de acuerdo con lo establecido en la normativa vigente",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "DOGV y web del IVIA (apartado de empleo, convocatorias de personal temporal)",
+   "cita": "El resto de las publicaciones que se derivan de los actos integrantes del proceso selectivo se publicarán en la web del IVIA",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Fase de concurso: valoración de méritos generales (máx. 60 puntos) y específicos (máx. 40 puntos)"
+   ],
+   "cita": "El concurso de méritos tendrá una puntuación total de 100 puntos divididos en dos apartados",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Méritos generales hasta 60 puntos y específicos relacionados con el puesto hasta 40 puntos; cada mérito solo puntúa en un apartado",
+   "cita": "Méritos generales (máximo de 60 puntos). Méritos específicos relacionados con las funciones del puesto específico que se convoca (máximo 40 puntos)",
+   "nivel": "sin_signos"
+  },
+  "bolsa": {
+   "valor": "Sí: lista de reserva vigente mientras se ejecute el proyecto de investigación",
+   "cita": "Una lista de reserva de la convocatoria, en la que se ordenará el resto de las personas aspirantes por orden de puntuación",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "No aplicable",
+   "cita": "Finalizado el proceso selectivo derivado de esta convocatoria, el contrato se formalizará por escrito",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "tasa_euros": {
+   "motivo": "cita_no_literal",
+   "valor": 0,
+   "cita": "Esta convocatoria no establece tasa ni derechos de examen"
+  }
+ }
+}

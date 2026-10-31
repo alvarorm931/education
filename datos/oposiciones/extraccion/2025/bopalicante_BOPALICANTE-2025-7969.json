@@ -1,0 +1,55 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2025-7969",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2025-7969",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2025/11/07_213/2025_007969.pdf",
+  "fecha": "2025-11-07",
+  "huella": "65c3cce9e2b847677fb069715d25265d88e1207459d67513c476d975016bdb2f"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:41:09+00:00",
+ "lote": "msgbatch_01UNq3BNhPPHoTK3TEJzun1h",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Agente de la Policía Local de Almoradí"
+   ],
+   "cita": "convocó pruebas de selección para la provisión en propiedad de siete plazas de Agente de la Policía Local de Almoradí",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C1",
+   "cita": "Agente de la Policía Local",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "provisión en propiedad de siete plazas de Agente de la Policía Local de Almoradí",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 11,
+   "cita": "un total de 11 plazas de Agente de Policía Local, 7 plazas por turno libre mediante concurso oposición y 4 por concurso",
+   "nivel": "literal"
+  },
+  "plazas_turno_libre": {
+   "valor": 7,
+   "cita": "7 plazas por turno libre mediante concurso oposición",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "7 plazas de Agente de Policía Local, 7 plazas por turno libre mediante concurso oposición y 4 por concurso por turno de movilidad"
+  },
+  "plazas_promocion_interna": {
+   "motivo": "valor_no_en_cita",
+   "valor": 0,
+   "cita": "por turno de movilidad"
+  }
+ }
+}

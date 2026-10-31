@@ -1,0 +1,40 @@
+{
+ "proceso": "bopourense:BOPOURENSE-345580",
+ "documento": {
+  "id": "bopourense:BOPOURENSE-345580",
+  "fuente": "BOP-OURENSE",
+  "url": null,
+  "fecha": "2025-05-09",
+  "huella": "5b1f7a875cbf64236bcc4d7af6e2f8f66713fbefe155610bea039e2c620d5924"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:45:43+00:00",
+ "lote": "msgbatch_017vJZdAmjTkBDdH14aLEdCv",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "operario/a de mantenimiento"
+   ],
+   "cita": "constitución de una bolsa de empleo de operario/a de mantenimiento",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "10 días hábiles desde la publicación del anuncio en el Boletín Oficial de la Provincia",
+   "cita": "se abre el plazo para la presentación de instancias, por un período de 10 días hábiles, a partir de la fecha de publicación del presente anuncio en el Boletín Oficial de la Provincia",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, para la cobertura de posibles vacantes del puesto de operario/a de mantenimiento",
+   "cita": "para la cobertura de posibles vacantes para el puesto de operario/a de mantenimiento",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "sede electrónica del Ayuntamiento de Melón y tablón de anuncios del Ayuntamiento de Melón",
+   "cita": "serán publicados en la sede electrónica del Ayuntamiento de Melón y para su mayor difusión en el tablón de anuncios del Ayuntamiento de Melón"
+  }
+ }
+}

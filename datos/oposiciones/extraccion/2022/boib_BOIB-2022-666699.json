@@ -1,0 +1,40 @@
+{
+ "proceso": "boib:BOIB-2022-666699",
+ "documento": {
+  "id": "boib:BOIB-2022-666699",
+  "fuente": "BOIB",
+  "url": "https://www.caib.es/eboibfront/es/2022/11653/666699/aprobacion-de-la-convocatoria-del-proceso-selectiv",
+  "fecha": "2022-11-18",
+  "huella": "c4df6b8afe15e41cc7fa13b0b0b2a41327c53a13ba12928b0b34cdfd3b083e13"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:56:57+00:00",
+ "lote": "msgbatch_01B4ETF5xB4buYCHqPiHTXzF",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Personal laboral del subgrupo A1 (plazas de personal laboral del subgrupo A1, estabilización extraordinaria)"
+   ],
+   "cita": "estabilización extraordinaria de la ocupación temporal del Ayuntamiento de Ciutadella de Menorca de las plazas de personal laboral del subgrupo A1",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "A1",
+   "cita": "plazas de personal laboral del subgrupo A1, por el sistema de concurso-oposición",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "estabilización extraordinaria de la ocupación temporal del Ayuntamiento de Ciutadella de Menorca de las plazas de personal laboral",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "por el sistema de concurso-oposición que se adjunta como Anexo"
+  }
+ }
+}

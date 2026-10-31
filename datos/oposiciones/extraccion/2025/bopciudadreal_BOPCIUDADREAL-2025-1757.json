@@ -1,0 +1,50 @@
+{
+ "proceso": "bopciudadreal:BOPCIUDADREAL-2025-1757",
+ "documento": {
+  "id": "bopciudadreal:BOPCIUDADREAL-2025-1757",
+  "fuente": "BOP-CIUDADREAL",
+  "url": "https://bop.dipucr.es/bop/2025/05/23",
+  "fecha": "2025-05-23",
+  "huella": "6ca8449453803dbd4aa4da928cc7f66a44bd3589655603fad385cc8408d74910"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:45:21+00:00",
+ "lote": "msgbatch_016re6aGcimwSVmdrWa6qBd9",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "Aprobación contrataciones como laboral fijo resultantes del proceso selectivo",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "proceso selectivo para la cobertura de varias plazas, dentro del proceso de estabilización",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "BOP de Ciudad Real, Tablón de Edictos de la sede electrónica de la Mancomunidad y Tablón de Anuncios de la oficina técnica sede de la Mancomunidad",
+   "cita": "Publicar la propuesta de contratación como personal laboral fijo en el BOP de Ciudad Real, Tablón de Edictos",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "no",
+   "cita": "Aprobar la contratación como laboral fijo para CONDUCTORES MAQUINISTAS",
+   "nivel": "sin_signos"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Conductor Maquinista"
+   ],
+   "cita": "proceso selectivo de 6 plazas de Conductor Maquinista de naturaleza laboral"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 6,
+   "cita": "proceso selectivo de 6 plazas de Conductor Maquinista de naturaleza laboral"
+  }
+ }
+}

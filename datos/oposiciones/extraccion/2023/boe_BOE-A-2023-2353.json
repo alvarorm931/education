@@ -1,0 +1,48 @@
+{
+ "proceso": "boe:BOE-A-2023-2353",
+ "documento": {
+  "id": "bopgranada:BOPGR-2022-221-006",
+  "fuente": "BOP-GRANADA",
+  "url": null,
+  "fecha": "2022-11-18",
+  "huella": "3b9ca16bf5cafd6261bc3a69a000172c6db79fbd6e2cf0946ff9c8f2b5fd47a3"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:56:42+00:00",
+ "lote": "msgbatch_0167qWfLXqjGo8Hv43cM3LuM",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "Policía Local, Escala de Administración Especial, categoría de Policía Local del Cuerpo de la Policía Local",
+   "cita": "PLAZA VACANTE EN LA PLANTILLA DE PERSONAL FUNCIONARIO DE ESTE AYUNTAMIENTO, PERTENECIENTE A LA ESCALA DE ADMINISTRACIÓN ESPECIAL, CATEGORÍA DE POLICÍA LOCAL",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "PROVISIÓN, COMO FUNCIONARIO DE CARRERA, DE UNA PLAZA VACANTE EN LA PLANTILLA",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "MEDIANTE TURNO LIBRE, A TRAVÉS DEL PROCEDIMIENTO DE OPOSICIÓN, RECOGIDA EN LA OFERTA",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "PROVISIÓN, COMO FUNCIONARIO DE CARRERA, DE UNA PLAZA VACANTE EN LA PLANTILLA",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "MEDIANTE TURNO LIBRE, A TRAVÉS DEL PROCEDIMIENTO DE OPOSICIÓN"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Boletín Oficial de la Provincia de Granada",
+   "cita": "Granada, viernes, 18 de noviembre de 2022 B.O.P. número 221"
+  }
+ }
+}

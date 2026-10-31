@@ -1,0 +1,57 @@
+{
+ "proceso": "bopcastellon:BOPCASTELLON-03105-2023-U",
+ "documento": {
+  "id": "bopcastellon:BOPCASTELLON-03105-2023-U",
+  "fuente": "BOP-CASTELLON",
+  "url": null,
+  "fecha": "2023-06-24",
+  "huella": "72cf1751ae7a3210cbe84bbd673a75729c7116d6c59154476a60f1ae6ee7c9b1"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:59:26+00:00",
+ "lote": "msgbatch_012nGabRM1G4b7cEKJh1Bcx1",
+ "no_son_bases": false,
+ "campos": {
+  "sistema": {
+   "valor": "oposición",
+   "cita": "Declarar aprovades les següents llistes provisionals d’aspirants admesos i exclosos",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "3 días hábiles desde el siguiente a la publicación de la lista en el BOP para subsanación; presentación de solicitudes del 29 de mayo al 9 de junio de 2023",
+   "cita": "El termini de subsanació de les sol.licituds serà de 3 dies hàbils, a comptar des del següent a la publicació",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Butlletí Oficial de la Província de Castelló",
+   "cita": "a comptar des del següent a la publicació de la llista en el Butlletí Oficial de la Província de Castelló",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Primer ejercicio: 26 de julio de 2023, 10:00 horas, Escola Superior de Ceràmica de l’Alcora"
+   ],
+   "cita": "Convocar als aspirants per a la realització del primer exercici el dia 26 de juliol de 2023",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, para la creación de una bolsa de trabajo de conserge",
+   "cita": "per a la creació d’una borsa de treball de conserge de l’Ajuntament de l’Alcora",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Conserge (borsa de treball)"
+   ],
+   "cita": "para la creación de una borsa de trabajo de conserge"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "otro",
+   "cita": "para la creación d’una borsa de treball de conserge de l’Ajuntament de l’Alcora"
+  }
+ }
+}

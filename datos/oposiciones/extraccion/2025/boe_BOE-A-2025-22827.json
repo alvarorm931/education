@@ -1,0 +1,53 @@
+{
+ "proceso": "boe:BOE-A-2025-22827",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2025-7900",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2025/11/03_209/2025_007900.pdf",
+  "fecha": "2025-11-03",
+  "huella": "deefc198a543067cef32daaad605b58ebb2cbb2a8f011207cda8fc5c52561b78"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:41:23+00:00",
+ "lote": "msgbatch_01UNq3BNhPPHoTK3TEJzun1h",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "Agente de Policía Local",
+   "cita": "provisión de una plaza de Agente de Policía Local perteneciente a la Escala de Administración Especial",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C1",
+   "cita": "Grupo C, Subgrupo C1 (plaza núm. 57)",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "otro",
+   "cita": "plaza de Agente de Policía Local perteneciente a la Escala de Administración Especial",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "para la provisión de una plaza de Agente de Policía Local perteneciente a la Escala",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de anuncios electrónico del Ayuntamiento de La Nucía, apartado Empleo Público",
+   "cita": "la publicación íntegra de las mismas, se encuentra publicada en el apartado Empleo Público del tablón de anuncios electrónico del Ayuntamiento",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "oposición",
+   "cita": "mediante oposición por turno libre, de acuerdo con lo dispuesto en la Oferta de Empleo Público de 2025"
+  },
+  "plazas_turno_libre": {
+   "motivo": "cita_no_literal",
+   "valor": 1,
+   "cita": "mediante oposición por turno libre, de acuerdo con lo dispuesto en la Oferta de Empleo Público"
+  }
+ }
+}

@@ -1,0 +1,123 @@
+{
+ "proceso": "boib:BOIB-2022-666073",
+ "documento": {
+  "id": "boib:BOIB-2022-666073",
+  "fuente": "BOIB",
+  "url": "https://www.caib.es/eboibfront/es/2022/11644/666073/resolucion-del-consejero-ejecutivo-de-hacienda-y-f",
+  "fecha": "2022-10-29",
+  "huella": "38cf6524ef0034c208f38d5001b2de83d733d4558695e0220087fe1c0185a842"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:56:57+00:00",
+ "lote": "msgbatch_01B4ETF5xB4buYCHqPiHTXzF",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Subgrupo A1, Administración general",
+    "Subgrupo A1, Administración especial",
+    "Subgrupo A2, Administración especial",
+    "Grupo B, Administración especial"
+   ],
+   "cita": "convocatoria del proceso selectivo de estabilización por el sistema extraordinario de concurso de méritos para cubrir las 144 plazas",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "A1, A2, B",
+   "cita": "para cubrir las 144 plazas de personal funcionario de las escalas, subescalas, clases y categorías",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "proceso selectivo de estabilización por el sistema extraordinario de concurso de méritos para cubrir las 144 plazas de personal funcionario",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 144,
+   "cita": "para cubrir las 144 plazas de personal funcionario de las escalas, subescalas, clases y categorías",
+   "nivel": "literal"
+  },
+  "plazas_discapacidad": {
+   "valor": 1,
+   "cita": "Se reserva en esta convocatoria 1 plaza para que sea ocupada por una persona que acredite una discapacidad",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Según Anexo I para cada categoría o especialidad",
+   "cita": "Estar en posesión de la titulación académica que se indica en el Anexo I para cada categoría o especialidad",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española o de las permitidas por el artículo 57 TREBEP; tener 16 años cumplidos y no exceder la edad de jubilación forzosa; no haber sido separado del servicio; carecer de condición de funcionario de carrera en la misma escala; capacidad física y psíquica.",
+   "cita": "Tener la nacionalidad española o alguna otra de las que permitan el acceso al empleo público según el artículo 57 del TREBEP.",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Catalán: certificado C1 para plazas de Administración general; certificado B2 para plazas de Administración especial",
+   "cita": "Para acceder a puestos de trabajo de los subgrupos A1 y A2, adscritos exclusivamente a escalas de la Administración especial, se exige el certificado B2",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Familia numerosa general (50%) y especial (100%); discapacidad igual o superior al 33% (100%); desempleo inscrito al menos 1 mes (100%); familia monoparental (50%)",
+   "cita": "Aspirantes con grado de discapacidad igual o superior al 33% (exención del 100%).",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Telemáticamente en la Sede electrónica del Consejo Insular de Mallorca, con certificado electrónico o DNI electrónico",
+   "cita": "Será necesario un certificado electrónico válido o DNI electrónico para la presentación de la solicitud de participación",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Sede electrónica y tablón electrónico de Edictos del Consejo Insular de Mallorca; BOIB en los casos que las bases determinen",
+   "cita": "deben publicarse en la Sede electrónica y en el tablón electrónico de Edictos del Consejo Insular de Mallorca",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Méritos según baremo del Anexo III (experiencia profesional, formación, conocimientos de catalán, trienios, entre otros); trienios hasta 15 puntos",
+   "cita": "Se valorará cada trienio reconocido como personal funcionario o como personal laboral con 3 puntos por trienio, hasta un máximo de 15 puntos.",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "no",
+   "cita": "Estos datos se obtendrán de la Administración General del Estado",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Plazo de dos años desde la toma de posesión para acreditar conocimiento de catalán",
+   "cita": "quedarán obligadas, en el plazo de dos años, a contar a partir de la toma de posesión a acreditar el nivel de conocimiento de la lengua catalana",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso",
+   "cita": "convocatoria por el sistema de concurso de méritos, con carácter excepcional y por una sola vez"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 143,
+   "cita": "Turno libre ordinario"
+  },
+  "tasa_euros": {
+   "motivo": "valor_no_numerico",
+   "valor": {
+    "A1_A2": 27.57,
+    "B": 13.77
+   },
+   "cita": "cuota son 27,57€ para las plazas de los subgrupos A1 y A2, y de 13,77€ para las plazas del grupo B"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "Plazo de presentación de solicitudes desde la publicación (no especificado en el extracto)",
+   "cita": "Las solicitudes deben presentarse de forma electrónica en el trámite de la Sede electrónica del Consejo Insular de Mallorca"
+  },
+  "ejercicios": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Concurso de méritos: calificación de méritos alegados y acreditados según baremo del Anexo III"
+   ],
+   "cita": ""
+  }
+ }
+}

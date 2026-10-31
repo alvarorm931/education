@@ -1,0 +1,55 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2023-7056",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2023-7056",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2023/08/16_157/2023_007056.pdf",
+  "fecha": "2023-08-16",
+  "huella": "934fbfb97870c6cfef47175ef39c3ccf41a53bb345fec269b55530964b99507c"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:59:22+00:00",
+ "lote": "msgbatch_012nGabRM1G4b7cEKJh1Bcx1",
+ "no_son_bases": false,
+ "campos": {
+  "plazas_total": {
+   "valor": 1,
+   "cita": "cobertura en propietat d’una plaça d’auxiliar administratiu en l’EATIM de Jesús Pobre",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "valenciano: nivel B1/elemental 11 puntos, B2 13 puntos, C1/medio 15 puntos, C2/superior 17 puntos (máximo 17 puntos)",
+   "cita": "b.3) Coneixement de valencià: fins a un màxim de 17 punts.",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "BOP, BOE y e-tablón municipal",
+   "cita": "Publicar la present Resolució en el BOP, BOE i en l'e-tauló municipal.",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Profesionales hasta 65 puntos: 0,34 por mes completo en la administración convocante y 0,10 por mes completo en otra administración local, proporcional a la jornada. Académicos hasta 35 puntos: cursos de formación hasta 3 puntos; valenciano hasta 17 puntos",
+   "cita": "Els mèrits professionals, fins a 65 punts. Es valorarà: a.1.) El temps de serveis prestats en l´administració local convocant",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Auxiliar administrativo"
+   ],
+   "cita": "Modificar les Bases que han de regir el procés extraordinari d´estabilització d´ocupació temporal per a la selecció i cobertura en propietat d’una plaça d’auxiliar administratiu"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "otro",
+   "cita": "procés extraordinari d´estabilització d´ocupació temporal per a la selecció i cobertura en propietat"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "els mèrits professionals i acadèmics en el sistema selectiu de concurs han de quedar redactats"
+  }
+ }
+}

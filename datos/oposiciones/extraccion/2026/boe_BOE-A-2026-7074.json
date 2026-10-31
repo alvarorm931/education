@@ -1,0 +1,58 @@
+{
+ "proceso": "boe:BOE-A-2026-7074",
+ "documento": {
+  "id": "bopciudadreal:BOPCIUDADREAL-2026-796",
+  "fuente": "BOP-CIUDADREAL",
+  "url": "https://bop.dipucr.es/bop/2026/03/18",
+  "fecha": "2026-03-18",
+  "huella": "6f83db67a3338dc76c22b6b6286f3ac07b20cd5b15dd4416a65a2829e44e20e4"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:40:55+00:00",
+ "lote": "msgbatch_01E3wiYcGL8Lzho48bXWLyyb",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "Educador/a Infantil",
+   "cita": "cobertura en propiedad de una plaza de Educador/a Infantil (Grupo A, Subgrupo A2)",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "A2",
+   "cita": "Grupo A, Subgrupo A2 del Ayuntamiento de Socuéllamos",
+   "nivel": "sin_signos"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "como funcionario/a de carrera, mediante sistema de concurso-oposición por turno libre",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "para cubrir en propiedad una plaza de Educador/a infantil",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de anuncios y sede electrónica del Ayuntamiento de Socuéllamos",
+   "cita": "Las bases íntegras de esta convocatoria se encuentran expuestas en el tablón de anuncios y sede electrónica",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "mediante sistema de concurso-oposición por turno libre, incluida en la Oferta de Empleo Público"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "mediante sistema de concurso-oposición por turno libre"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "20 días hábiles a partir del siguiente a la publicación del extracto de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes será de 20 días hábiles a partir del siguiente a la publicación"
+  }
+ }
+}

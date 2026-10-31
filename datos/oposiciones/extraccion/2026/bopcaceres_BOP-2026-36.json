@@ -1,0 +1,43 @@
+{
+ "proceso": "bopcaceres:BOP-2026-36",
+ "documento": {
+  "id": "bopcaceres:BOP-2026-36",
+  "fuente": "BOP-CACERES",
+  "url": "https://bop.dip-caceres.es/bop/services/anuncios/contenidoPdfIdAnuncio?csv=BOP-2026-36",
+  "fecha": "2026-01-08",
+  "huella": "cab10f9b343538d24122f7fc3b30f10f5e363c800830ccd941fa90dc79511656"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:42:17+00:00",
+ "lote": "msgbatch_01W17mR271uYfWYL6CuSdriL",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Peón de servicios múltiples",
+    "Auxiliar de ayuda a domicilio",
+    "Peones agrícolas",
+    "Oficiales primera de construcción"
+   ],
+   "cita": "constitución de una bolsa de trabajo para cubrir las posibles vacantes en los puestos siguientes",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "1 mes a contar desde el día siguiente a la publicación de este anuncio en Boletín Oficial de la Provincia",
+   "cita": "se abre el plazo de presentación de solicitudes, que será de 1 mes a contar desde el día siguiente a la publicación",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "ver nota"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Sede electrónica del Ayuntamiento (http://membrio.sedelectronica.es) y Tablón de Anuncios",
+   "cita": "Los sucesivos anuncios de esta convocatoria se publicarán en la sede electrónica de este Ayuntamiento"
+  }
+ }
+}

@@ -1,0 +1,50 @@
+{
+ "proceso": "bocm:BOCM-20260930-85",
+ "documento": {
+  "id": "bocm:BOCM-20260930-85",
+  "fuente": "BOCM",
+  "url": "https://www.bocm.es/bocm-20260930-85",
+  "fecha": "2026-09-30",
+  "huella": "b4ae755dec73f5a51911ba6ecaf42c80eaf2c43133f8ec93ee8edbf4cfdb6b04"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:42:02+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "profesor/a de inglés"
+   ],
+   "cita": "la creación de las listas de espera (bolsa de empleo) de profesor/a de inglés",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "para atender las necesidades del personal contratado de forma temporal o para sustituciones",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días naturales a contar desde el siguiente al de la publicación de este anuncio en el BOLETÍN OFICIAL DE LA COMUNIDAD DE MADRID",
+   "cita": "será de veinte días naturales a contar desde el siguiente al de la publicación",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "tablón de anuncios y página web del Ayuntamiento",
+   "cita": "se harán públicos en el tablón de anuncios y en la página web del Ayuntamiento",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, para atender las necesidades de personal contratado de forma temporal o para sustituciones",
+   "cita": "para la creación de las listas de espera (bolsa de empleo) de profesor/a de inglés",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": ""
+  }
+ }
+}

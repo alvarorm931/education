@@ -1,0 +1,53 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2022-11132",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2022-11132",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2022/12/29_247/2022_011132.pdf",
+  "fecha": "2022-12-29",
+  "huella": "0b5bab9184e6134d7acc87b0c050f99ca687797fe19b00625773c89b49f37e5a"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:56:06+00:00",
+ "lote": "msgbatch_014eT3dLLVopBnuVgQ4syWD9",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "Agente de Empleo y Desarrollo Local",
+   "cita": "una plaza de Agente de Empleo y Desarrollo Local (OEP Estabilización empleo temporal 2022)",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "A2",
+   "cita": "Grupo A, Subgrupo A2.",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "dentro de la plantilla de personal laboral fijo de esta Agencia",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "convocatoria de concurso libre para cubrir, dentro de la plantilla",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles a contar del siguiente al de la publicación de anuncio-extracto en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes será de veinte días hábiles a contar del siguiente al de la publicación",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "convocatoria de concurso libre para cubrir, dentro de la plantilla de personal laboral fijo"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Oficina de Información del Ayuntamiento y página web municipal (www.petrer.es)",
+   "cita": "a disposición de los interesados en la Oficina de Información del Ayuntamiento y en la página web municipal"
+  }
+ }
+}

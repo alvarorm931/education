@@ -1,0 +1,92 @@
+{
+ "proceso": "boib:BOIB-2022-668037",
+ "documento": {
+  "id": "boib:BOIB-2022-668037",
+  "fuente": "BOIB",
+  "url": "https://www.caib.es/eboibfront/es/2022/11669/668037/resolucion-del-consejero-ejecutivo-de-hacienda-y-f",
+  "fecha": "2022-12-20",
+  "huella": "0e6e7d050f246249843fb2792a5253be5460f3be95209224b13533e07f5b3dbb"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:56:08+00:00",
+ "lote": "msgbatch_014eT3dLLVopBnuVgQ4syWD9",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "médico/ca"
+   ],
+   "cita": "convocatoria de un procedimiento extraordinario de selección de funcionarios interinos de naturaleza simplificada para cubrir plazas vacantes de la categoría médico/ca",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario interino",
+   "cita": "convocatoria de un procedimiento extraordinario de selección de funcionarios interinos de naturaleza simplificada",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Título de licenciatura o grado en medicina o equivalente",
+   "cita": "Título de licenciatura o grado en medicina o equivalente.",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española o de los países que permite el artículo 57 TREBEP; dieciséis años cumplidos y no haber llegado a la jubilación forzosa; no estar separado del servicio ni inhabilitado; capacidad física y psíquica para la categoría; no estar afectado por resolución de exclusión de la bolsa",
+   "cita": "Tener la nacionalidad española o alguna otra de las que permiten el acceso al empleo público según el artículo 57",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "catalán nivel B2",
+   "cita": "Estar en posesión del conocimiento de la lengua catalana nivel B2, de conformidad con lo que dispone el artículo 3 b)",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "siete días hábiles, a contar a partir del día siguiente a la publicación de la convocatoria en el BOIB",
+   "cita": "el plazo para presentar solicitudes es de siete días hábiles, a contar a partir del día siguiente que se haya publicado",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "telemáticamente en la Sede electrónica del Consejo de Mallorca mediante el modelo oficial",
+   "cita": "La solicitud se debe cumplimentar electrónicamente en el modelo oficial, al cual se accede a través de la Sede electrónica",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "BOIB y Sede electrónica del Consejo de Mallorca (tablón de anuncios / Recursos Humanos)",
+   "cita": "Publicar esta Resolución en el Boletín Oficial de las Illes Balears y en la Sede Electrónica del Consejo de Mallorca",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Valoración de méritos (concurso), sin ejercicios escritos ni orales"
+   ],
+   "cita": "consistir en la valoración de los méritos que detalla el anexo 2 de esta convocatoria",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, bolsa de la categoría médico/ca para cubrir puestos vacantes y necesidades futuras",
+   "cita": "hay que crear una nueva bolsa para poder cubrir las necesidades actuales y otras que puedan acontecer",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso",
+   "cita": "se tiene que seleccionar mediante el procedimiento de concurso, que tiene que consistir en la valoración de los méritos"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": "no especificado",
+   "cita": ""
+  },
+  "plazas_discapacidad": {
+   "motivo": "valor_no_numerico",
+   "valor": "7%",
+   "cita": "se reserva una cuota del 7% de las vacantes para que las cubran personas con un grado de discapacidad igual o superior al 33%"
+  },
+  "meritos": {
+   "motivo": "cita_no_literal",
+   "valor": "Experiencia profesional hasta 70 puntos; conocimiento de catalán hasta 25 puntos; comisión de servicios o Unidad de Apoyo Coyuntural hasta 5 puntos",
+   "cita": "Servicios prestados en cualquier administración pública ... 0,25 puntos por mes, hasta un máximo de 70 puntos"
+  }
+ }
+}

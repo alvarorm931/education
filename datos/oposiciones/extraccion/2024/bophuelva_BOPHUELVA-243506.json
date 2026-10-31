@@ -1,0 +1,55 @@
+{
+ "proceso": "bophuelva:BOPHUELVA-243506",
+ "documento": {
+  "id": "bophuelva:BOPHUELVA-243506",
+  "fuente": "BOP-HUELVA",
+  "url": "https://s2.diphuelva.es/portalweb/bope/anuncios/Anuncio_243506_BOP-65_2024.pdf",
+  "fecha": "2024-04-04",
+  "huella": "84d76adb88d122704eff5225ae7565e811879b5f686e123c36c5fab85e650e5a"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:53:49+00:00",
+ "lote": "msgbatch_01EQ4R6PVKpEwTXzXwPCmspm",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "C2",
+   "cita": "Grupo C, Subgrupo C2",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "DIEZ DÍAS HÁBILES, contados a partir del siguiente a aquél en el que se publique el presente anuncio",
+   "cita": "el plazo de presentación de solicitudes, que será de DIEZ DÍAS HÁBILES, contados a partir del siguiente",
+   "nivel": "sin_signos"
+  },
+  "publicaciones": {
+   "valor": "Tablón de Anuncios de la Sede Electrónica del Ayuntamiento de Isla Cristina",
+   "cita": "El contenido íntegro de las bases se encuentra en el Tablón de Anuncios de la Sede Electrónica del Ayuntamiento",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Patrones-Coordinadores"
+   ],
+   "cita": "se aprueban las bases que han de regir la convocatoria para la creación de una bolsa de trabajo para la selección Patrones-Coordinadores"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "otro",
+   "cita": "se aprueban las bases que han de regir la convocatoria para la creación de una bolsa de trabajo"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso",
+   "cita": "se aprueban las bases que han de regir la convocatoria para la creación de una bolsa de trabajo"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, para la creación de una bolsa de trabajo para la selección de Patrones-Coordinadores",
+   "cita": "para la creación de una bolsa de trabajo para la selección Patrones-Coordinadores"
+  }
+ }
+}

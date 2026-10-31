@@ -1,0 +1,66 @@
+{
+ "proceso": "boe:BOE-A-2025-4991",
+ "documento": {
+  "id": "boe:BOE-A-2025-4991",
+  "fuente": "BOE",
+  "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2025-4991",
+  "fecha": "2025-03-13",
+  "huella": "c6931f8073c7e0e7939bbfd51942d4d9a11ab49376e339f43466f1a1e3832f28"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:46:48+00:00",
+ "lote": "msgbatch_01MQzQCLMZKxUrrPMAj7dr53",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Auxiliar técnica y de laboratorios (grupo C, subgrupo C2)",
+    "Media de administración (grupo A, subgrupo A2)"
+   ],
+   "cita": "Escala: auxiliar técnica y de laboratorios (grupo C, subgrupo C2) (referencia 24/355009), administración especial",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C2",
+   "cita": "Escala: auxiliar técnica y de laboratorios (grupo C, subgrupo C2) (referencia 24/355009)",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "Régimen jurídico: funcionarial de carrera. Escala: auxiliar técnica y de laboratorios",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "Número de plazas convocadas: 2. Sistema selectivo: concurso-oposición.",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Diez días hábiles contados a partir del siguiente a la publicación del extracto en el Boletín Oficial del Estado",
+   "cita": "El plazo para la presentación de solicitudes finaliza a los diez días hábiles contados a partir del siguiente",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Diari Oficial de la Generalitat Valenciana y/o Boletín Oficial de la Universidad Miguel Hernández de Elche; consulta informativa en la web del Servicio de Personal Técnico, de Gestión y de Administración y Servicios",
+   "cita": "Los sucesivos anuncios relativos a esta convocatoria se publicarán en el «Diari Oficial de la Generalitat Valenciana»",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 3,
+   "cita": "Número de plazas convocadas: 2. Sistema selectivo: concurso-oposición. Número de plazas convocadas: 1."
+  },
+  "plazas_turno_libre": {
+   "motivo": "cita_no_literal",
+   "valor": 3,
+   "cita": "Turno: acceso libre. Turno: acceso libre."
+  },
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Sede Electrónica (https://sede.umh.es/procedimientos/), opción «SELECCIÓN PTGAS-Funcionario de carrera», o URL https://universite.umh.es/espacio-opositor",
+   "cita": "Las solicitudes deberán cumplimentarse a través de la Sede Electrónica en el portal https://sede.umh.es/procedimientos/"
+  }
+ }
+}

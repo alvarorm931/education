@@ -1,0 +1,111 @@
+{
+ "proceso": "bopcordoba:BOPCORDOBA-2022-4929",
+ "documento": {
+  "id": "bopcordoba:BOPCORDOBA-2022-4929",
+  "fuente": "BOP-CORDOBA",
+  "url": "https://bop.dipucordoba.es/dia/20-12-2022",
+  "fecha": "2022-12-20",
+  "huella": "0b7dc453c9e09ebd5b8b20612f7fe23fdf8553b5d0c424c2953cedf69d9d462a"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:56:10+00:00",
+ "lote": "msgbatch_014eT3dLLVopBnuVgQ4syWD9",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Oficial electricista",
+    "Oficial fontanero",
+    "Químico",
+    "Sepulturero",
+    "Oficial electricista"
+   ],
+   "cita": "Oficial electricista (laboral) C2 1 Oficial fontanero (laboral) C2 1 Quimico (laboral) A1 1 Sepulturero (laboral) AP 1",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C2",
+   "cita": "Grupo/Subgrupo: C2 - N.º plazas: 1 -Titulación: E.S.O. o equivalente.",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "para el acceso a personal laboral fijo, mediante proceso extraordinario de estabilización de empleo temporal",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "por el procedimiento de concurso",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "E.S.O. o equivalente (oficiales electricista y fontanero); Licenciatura en Química o Grado en Química (químico); sin titulación (sepulturero)",
+   "cita": "Titulación: Licenciatura en Química o Grado en Química -Importe de la Tasa: 35,90 € 4º.- Sepulturero.",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española (sin perjuicio del art. 57 TREBEP); capacidad funcional; tener 16 años y no exceder la edad máxima de jubilación forzosa; no haber sido separado ni inhabilitado para empleo público",
+   "cita": "a) Tener la nacionalidad española, sin perjuicio de lo dispuesto en el artículo 57 del Real Decreto Legislativo 5/2015",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Personas con discapacidad igual o superior al 33 por 100; demandantes de empleo con requisitos; bonificación del 50% para familias numerosas",
+   "cita": "estarán exentas del pago de la tasa derivada de la participación como aspirantes en pruebas selectivas",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Veinte días hábiles desde el día siguiente a la publicación del anuncio de la convocatoria y bases íntegras en el Boletín Oficial del Estado",
+   "cita": "en el plazo de veinte días hábiles contados a partir del día siguiente al de la publicación del anuncio de la convocatoria",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Registro General de Entrada del Ayuntamiento o lugares del art. 16.4 Ley 39/2015, dirigida a la Sra. Alcaldesa-Presidenta, mediante formulario Anexo II",
+   "cita": "se presentarán en el Registro General de Entrada o en alguno de los lugares previstos en el artículo 16.4 de la Ley 39/2015",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón Electrónico de Edictos del Ayuntamiento, página web municipal, Boletín Oficial de la Provincia de Córdoba y extracto en el Boletín Oficial del Estado",
+   "cita": "Publicar la convocatoria y el texto íntegro de las bases en el Boletín Oficial de la Provincia de Córdoba, en el tablón de anuncios electrónico",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Concurso: valoración de experiencia profesional (máx. 81 puntos), antigüedad en Administraciones Públicas (máx. 10 puntos) y formación (máx. 9 puntos)"
+   ],
+   "cita": "El Concurso consistirá en la valoración por el Tribunal de Selección, con arreglo al baremo",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Experiencia profesional hasta 81 puntos (0,030/día en Administración Local convocante; 0,010/día en otras AAPP); antigüedad en AAPP hasta 10 puntos (0,0038/día); formación hasta 9 puntos (0,045/hora)",
+   "cita": "Se valorará la experiencia profesional, con un máximo de 81 puntos, de acuerdo con el siguiente baremo",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "no",
+   "cita": "El nombramiento como funcionario de carrera o la contratación como personal laboral fijo se realizará en el plazo máximo de un mes",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 5,
+   "cita": "Oficial electricista (funcionario) C2 1 Oficial electricista (laboral) C2 1 Oficial fontanero (laboral) C2 1 Quimico (laboral) A1 1 Sepulturero (laboral) AP 1"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 5,
+   "cita": "Oficial electricista (laboral) C2 1 Oficial fontanero (laboral) C2 1 Quimico (laboral) A1 1 Sepulturero (laboral) AP 1 Oficial electricista (funcionario) C2 1"
+  },
+  "tasa_euros": {
+   "motivo": "cita_no_literal",
+   "valor": 17.9,
+   "cita": "Oficial electricista (laboral) C2 1 Oficial fontanero (laboral) C2 1 Importe de la Tasa: 17,90 €"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "no",
+   "cita": "Tras el proceso, el Tribunal no podrá proponer un número superior de aspirantes al de plazas vacantes convocadas."
+  }
+ }
+}

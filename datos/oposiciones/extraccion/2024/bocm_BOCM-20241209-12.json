@@ -1,0 +1,50 @@
+{
+ "proceso": "bocm:BOCM-20241209-12",
+ "documento": {
+  "id": "bocm:BOCM-20241209-12",
+  "fuente": "BOCM",
+  "url": "https://www.bocm.es/bocm-20241209-12",
+  "fecha": "2024-12-09",
+  "huella": "f6de8f277ba712ec70ef65c95402dbfc5b180785d9571a5a120c1c328bd7cbc9"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:49:34+00:00",
+ "lote": "msgbatch_018TPQE8scQozfAUdc1n8RyC",
+ "no_son_bases": false,
+ "campos": {
+  "sistema": {
+   "valor": "concurso",
+   "cita": "por la que se convoca concurso de acceso a plazas de Docentes Universitarios",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Desde el día siguiente al de publicación de la resolución en el BOCM, en los términos de las bases",
+   "cita": "El plazo de presentación de solicitudes se contabilizará desde el día siguiente al de publicación",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Plazo de presentación de solicitudes según las bases publicadas en el portal web de la Universidad",
+   "cita": "las bases de la convocatoria, la plaza convocada y sus características figuran publicadas en el portal web de la Universidad",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Portal web de la Universidad (http://www.uam.es/uam/pdi, apartado de acceso a plazas docentes)",
+   "cita": "Las actuaciones necesarias para la conclusión de los concursos se irán haciendo públicas en los lugares anteriormente indicados",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Profesor Permanente Laboral (plazas de Docentes Universitarios)"
+   ],
+   "cita": "convocar concurso de acceso a plazas de Docentes Universitarios Profesores Permanentes Laborales"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "laboral temporal",
+   "cita": "concurso de acceso a plazas de Docentes Universitarios Profesores Permanentes Laborales"
+  }
+ }
+}

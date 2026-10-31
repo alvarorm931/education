@@ -1,0 +1,106 @@
+{
+ "proceso": "dog:DOG-20250123-AnuncioG2018-080125-0001",
+ "documento": {
+  "id": "dog:DOG-20250123-AnuncioG2018-080125-0001",
+  "fuente": "DOG",
+  "url": "https://www.xunta.gal/dog/Publicados/2025/20250123/AnuncioG2018-080125-0001_es.html",
+  "fecha": "2025-01-23",
+  "huella": "4e8d6f83fc1ee650d39d2549389e6814c7d12b30be4e51cf7a04d3123626ddc4"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:46:23+00:00",
+ "lote": "msgbatch_01MQzQCLMZKxUrrPMAj7dr53",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "profesorado ayudante doctor",
+   "cita": "Convocar los concursos públicos para la provisión de las 24 plazas de profesorado ayudante doctor",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "Ayudante doctor",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "resuelve convocar los concursos públicos para la provisión de las 24 plazas",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 24,
+   "cita": "convocar los concursos públicos para la provisión de las 24 plazas de profesorado ayudante doctor",
+   "nivel": "literal"
+  },
+  "plazas_discapacidad": {
+   "valor": 1,
+   "cita": "se reservará una de ellas para las personas que tengan reconocido legalmente un grado de discapacidad igual o superior al 33 por ciento",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "título de doctor",
+   "cita": "a) Poseer el título de doctor.",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española o de Estado miembro de la UE o de país que permita el acceso al empleo público; edad mínima y máxima legal; capacidad funcional; no haber sido separado de ninguna Administración; no haber agotado seis años como ayudante doctor.",
+   "cita": "No haber agotado el tiempo máximo de seis años de duración conjunta como contratado en la figura de profesor/a ayudante doctor/a",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Conocimiento de las dos lenguas oficiales de la USC: español (certificado B2 o superior) y gallego (Celga 3 o equivalente)",
+   "cita": "La acreditación del conocimiento del idioma gallego se hará mediante el certificado de lengua gallega Celga 3 o equivalente.",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 44.17,
+   "cita": "deberán abonar a la USC dentro del plazo de solicitud, por cada concurso en el que soliciten participar, la cantidad de 44,17 euros",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "diez días hábiles desde el siguiente a la publicación en el DOG",
+   "cita": "Las solicitudes deberán presentarse en el plazo de diez días hábiles contados a partir del siguiente al de la publicación de esta convocatoria en el Diario Oficial de Galicia",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Baremo máximo 100 puntos según anexo II: rendimiento académico (20), puestos en universidad u OPI (30), calidad docente, experiencia investigadora, experiencia profesional y otros méritos.",
+   "cita": "Para los diferentes apartados y subapartados del baremo se establece una valoración máxima",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "no",
+   "cita": "Esta resolución agota la vía administrativa",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 23,
+   "cita": "se reservará una de ellas para las personas que tengan reconocido legalmente un grado de discapacidad"
+  },
+  "exenciones_tasa": {
+   "motivo": "cita_no_literal",
+   "valor": "Exentas: discapacidad igual o superior al 33 % y familias numerosas de categoría especial. Bonificación del 50 %: familias numerosas general y demandantes de empleo sin prestación.",
+   "cita": "Estarán exentas del pago de la totalidad de la tasa por derechos de examen: Aquellas personas que tengan reconocido un grado"
+  },
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Solo por medios electrónicos, a través de la aplicación de pruebas selectivas del PDI en la sede electrónica de la USC",
+   "cita": "deberá formalizar su solicitud, acompañada de la documentación correspondiente, únicamente por medios electrónicos"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Tablón electrónico de la USC",
+   "cita": "se publicará en el tablón electrónico de la USC"
+  },
+  "ejercicios": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Primera fase: valoración de méritos e historial académico, docente, investigador y profesional (eliminatoria)",
+    "Segunda fase: presentación oral de un proyecto de actividades docentes, de hasta 20 minutos, con debate posterior (eliminatoria)"
+   ],
+   "cita": ""
+  }
+ }
+}

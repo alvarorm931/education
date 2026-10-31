@@ -1,0 +1,103 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2023-4104",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2023-4104",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2023/05/17_94/2023_004104.pdf",
+  "fecha": "2023-05-17",
+  "huella": "7ff015427740c75f73f1089d96ef92076e77ee2e30a4717494df22e70145cd9c"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:59:21+00:00",
+ "lote": "msgbatch_012nGabRM1G4b7cEKJh1Bcx1",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Personal de neteja"
+   ],
+   "cita": "NOM: PERSONAL DE NETEJA INTEGRADA EN: PERSONAL DE NETEJA",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "E",
+   "cita": "Personal de neteja, laboral, interí o temporal",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "PERSONAL LABORAL TITULACIÓ: Certificat d’escolaritat o equivalent",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "El sistema de selecció constarà d’un procediment de concurs -oposició.",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "Creació d’una borsa de treball de personal de neteja",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Certificado de escolaridad o equivalente",
+   "cita": "Estar en possessió del Certificat d’Escolaritat o equivalent.",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Tener cumplidos 16 años y no exceder de la edad máxima de jubilación forzosa; nacionalidad española, de la UE o con residencia legal; no haber sido separado del servicio de las administraciones públicas ni estar inhabilitado.",
+   "cita": "Tindre complits els 16 anys d’edat i no excedir, en el seu cas, de l’edat màxima de jubilació forçosa.",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 20,
+   "cita": "Resguard acreditatiu del pagament de la taxa (20 euros) per drets d’examen",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "10 días hábiles desde el día siguiente a la publicación del anuncio en el BOP de Alicante",
+   "cita": "en el termini de deu dies hàbils, que comp taran a partir de l’endemà al de la publicació",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Mediante la sede electrónica, dirigida al Sr. Presidente de la EATIM",
+   "cita": "la sol·licitud adreçada al Sr. President de l’Eatim, mitjançant la seu electrònica",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de anuncios de la sede electrónica, web de la EATIM, y BOP de Alicante",
+   "cita": "tant el tauler d’anuncis com el de la seu electrònica i en la web de l’Eatim",
+   "nivel": "sin_signos"
+  },
+  "meritos": {
+   "valor": "Experiencia: 1 punto por año en administración pública y 0,50 por año en empresa privada (máximo 7 puntos). Formación: 0,025 puntos por hora (máximo 3 puntos). Valenciano: B1 1 punto, C1 2 puntos, C2 3 puntos.",
+   "cita": "Es valoraran els serveis prestats com a personal de neteja, laboral, interí o temporal, en qualsevol administració pública",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "ejercicios": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Fase de oposición: examen escrito eliminatorio, de 0 a 10 puntos, mínimo 5 puntos",
+    "Fase de concurso: experiencia y formación (máximo 10 puntos) y conocimientos de valenciano"
+   ],
+   "cita": "consistirà en la realització d’un exercici per escrit dels temes de l’annex de les bases"
+  },
+  "temas": {
+   "motivo": "valor_no_en_cita",
+   "valor": 5,
+   "cita": "1.Materials i articles de neteja més usuals. 2.Formes de neteja segons el tipus de material"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "Sí, para sustituciones por incapacidad transitoria, permisos de vacaciones, acumulación de tareas, licencias o dispensa de asistencia",
+   "cita": "crear una borsa de treball de personal de neteja, enquadrada en la categoria de personal de neteja"
+  },
+  "practicas_o_curso": {
+   "motivo": "cita_no_literal",
+   "valor": "No consta",
+   "cita": "Sin cita"
+  }
+ }
+}

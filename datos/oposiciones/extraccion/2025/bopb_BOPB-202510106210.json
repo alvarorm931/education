@@ -1,0 +1,38 @@
+{
+ "proceso": "bopb:BOPB-202510106210",
+ "documento": {
+  "id": "dogc:1016186",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1016186",
+  "fecha": "2025-06-06",
+  "huella": "8f3a3795403353db6089c297346bbfa117cbde4e8c1f9a485566fdd2f610b537"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:45:26+00:00",
+ "lote": "msgbatch_016re6aGcimwSVmdrWa6qBd9",
+ "no_son_bases": false,
+ "campos": {
+  "tasa_euros": {
+   "valor": 10.05,
+   "cita": "de 10,05€ (OF 15) en la cuenta corriente del Ayuntamiento en el BANCO DE SABADELL",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "10 días hábiles contados a partir del día siguiente de la publicación de esta convocatoria en el DOGC",
+   "cita": "el plazo de 10 días hábiles contados a partir del día siguiente de la publicación de esta convocatoria en el DOGC",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "BOPB y web municipal (https://www.elpapiol.cat); la presente convocatoria se publica en el DOGC",
+   "cita": "El contenido completo de las bases se podrá consultar en el BOPB y en la web municipal",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Modelo normalizado de instancia genérica con documentos acreditativos; presencial en la Oficina de Atención Ciutadana del Ayuntamiento (Av. de la Generalitat de Catalunya, 7-9), o por cualquier forma del artículo 16.4 de la Ley 39/2015",
+   "cita": "Las solicitudes se tendrán que presentar mediante el modelo normalizado de instancia genérica acompañado de los documentos acreditativos"
+  }
+ }
+}

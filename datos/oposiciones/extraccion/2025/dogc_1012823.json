@@ -1,0 +1,50 @@
+{
+ "proceso": "dogc:1012823",
+ "documento": {
+  "id": "dogc:1012823",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1012823",
+  "fecha": "2025-04-30",
+  "huella": "b196f15bac5b4b623fcf962dd38922877d743f7bdc686034d7473e618a5ba4e4"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:45:50+00:00",
+ "lote": "msgbatch_017vJZdAmjTkBDdH14aLEdCv",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Trabajador/a familiar"
+   ],
+   "cita": "convocar el proceso de selección para constituir, mediante concurso-oposición, turno libre, una bolsa de trabajo de Trabajador/a familiar",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "AP",
+   "cita": "una bolsa de trabajo de Trabajador/a familiar, grupo AP, para cubrir vacantes",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "una bolsa de trabajo de Trabajador/a familiar, grupo AP, para cubrir vacantes, sustituciones",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mediante concurso-oposición, turno libre, una bolsa de trabajo de Trabajador/a familiar",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles a contar desde el día siguiente de la publicación del anuncio de la convocatoria en el Diari Oficial De la Generalitat de Catalunya",
+   "cita": "El plazo para la presentación de solicitudes será de 20 días hábiles a contar desde el día siguiente",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_turno_libre": {
+   "motivo": "valor_no_numerico",
+   "valor": "no_especificado",
+   "cita": "mediante concurso-oposición, turno libre, una bolsa de trabajo"
+  }
+ }
+}

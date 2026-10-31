@@ -1,0 +1,78 @@
+{
+ "proceso": "boe:BOE-A-2024-12586",
+ "documento": {
+  "id": "bopvalencia:BOPVALENCIA-2024-04629",
+  "fuente": "BOP-VALENCIA",
+  "url": "https://bop.dival.es/bop/downloads?anuncioNumReg=2024/04629&lang=va",
+  "fecha": "2024-04-25",
+  "huella": "ccef9522f1665d29560d0a870022ea9b7b37c9631ab25b4111172a8810dcb37c"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:54:25+00:00",
+ "lote": "msgbatch_01HRnX7cDVMkRZD7mBamCmLu",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Oficial (A1042)",
+    "Coordinador/a obras y servicios (A1050)",
+    "Coordinador/a de playa (A1051)",
+    "Coordinador/a de polideportivo (A1052)"
+   ],
+   "cita": "Los puestos de trabajo de Oficial (A1042), Coordinador/a obras y servicios (A1050), Coordinador/a playa (A1051), Coordinador/a de polideportivo (A1052)",
+   "nivel": "sin_signos"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "Naturaleza Grupo/ Subgrupo A1042 OFICIAL Laboral Fijo AP/C2",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "POR EL SISTEMA DE CONCURSO , TURNO LIBRE, DENTRO DE LOS PROCESOS EXTRAORDINARIOS",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 4,
+   "cita": "provisión definitiva de cuatro plazas de coordinadores/as de brigadas",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Certificado de escolaridad (AP) o Graduado en educación secundaria obligatoria o equivalente (C2)",
+   "cita": "a) Certificado de escolaridad (AP) o Graduado en educación secundaria obligatoria o equivalente (C2)",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles desde la publicación del anuncio de convocatoria en el BOE",
+   "cita": "abrirá el plazo de veinte días hábiles para la presentación de instancias por las personas interesadas",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "en la forma y medios que establecen la Base TERCERA de las Bases Generales",
+   "cita": "Las solicitudes y la documentación que le debe acompañar se deberá presentar en la forma y medios que establecen la Base TERCERA",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, bolsa de trabajo para posibles sustituciones",
+   "cita": "Se establecerá un bolsa de trabajo para posibles sustituciones, de conformidad con las reglas establecidas la base número 11",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "AP/C2",
+   "cita": "Oficial (A1042) Laboral Fijo AP/C2"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 4,
+   "cita": "POR EL SISTEMA DE CONCURSO , TURNO LIBRE, DENTRO DE LOS PROCESOS EXTRAORDINARIOS"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "tablón de anuncios de la Sede Electrónica y página web (esta última a efectos informativos); BOPV y BOE",
+   "cita": "Las publicaciones posteriores que exija el proceso selectivo se efectuará en el tablón de anuncios de la Sede Electrónica y en la página web"
+  }
+ }
+}

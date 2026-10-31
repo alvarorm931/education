@@ -1,0 +1,83 @@
+{
+ "proceso": "boe:BOE-A-2025-13690",
+ "documento": {
+  "id": "bopzaragoza:BOP-ZARAGOZA-2025-06-13-868799",
+  "fuente": "BOP-ZARAGOZA",
+  "url": null,
+  "fecha": "2025-06-13",
+  "huella": "d06702deeb10f44a232fb4e5aea7a993dc6d183a8735db6cd6ca32442eb8fbe1"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:45:16+00:00",
+ "lote": "msgbatch_016re6aGcimwSVmdrWa6qBd9",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "corrector/a (Imprenta)"
+   ],
+   "cita": "una plaza de corrector/a (Imprenta), nivel V del convenio colectivo",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "la cobertura mediante oposición, en turno libre, de la plaza",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "Una plaza de corrector/a (Imprenta), nivel V del convenio colectivo",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Certificado de haber cursado la ESO (Certificado de escolaridad) o equivalente",
+   "cita": "deberán estar en posesión o en condiciones de obtener el siguiente título académico",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 6.01,
+   "cita": "La tasa por «Derecho de examen» exigida en la presente convocatoria es de 6,01 euros",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "No consta en el texto",
+   "cita": "La tasa por «Derecho de examen» exigida en la presente convocatoria es de 6,01 euros",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Plazo de presentación de instancias (no se indica duración ni fecha de inicio en el texto)",
+   "cita": "dentro del referido plazo de presentación de instancias, mediante Ingreso en la cuenta",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Primer ejercicio: test de conocimiento, 60 preguntas con 4 respuestas, penalización, duración máxima 90 minutos, eliminatorio (mínimo 5 de 10)",
+    "Segundo ejercicio: uno o varios supuestos prácticos sobre las funciones propias, forma determinada por el tribunal, eliminatorio (mínimo 5 de 10)"
+   ],
+   "cita": "El sistema de selección será mediante oposición, que constará de dos ejercicios de carácter eliminatorio",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "No consta en el texto",
+   "cita": "Las presentes bases específicas serán de aplicación las bases generales",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "personal laboral fijo",
+   "cita": "Base 1 turno libre de plazas de funcionario de carrera y laboral fijo"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "la cobertura mediante oposición, en turno libre, de la plaza determinada"
+  },
+  "temas": {
+   "motivo": "valor_no_numerico",
+   "valor": "No aplica (el primer ejercicio es un test sobre el contenido del anexo II)",
+   "cita": "sobre conocimientos referidos a la materia contenida en el anexo II de la convocatoria"
+  }
+ }
+}

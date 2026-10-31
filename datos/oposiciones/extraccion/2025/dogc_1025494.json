@@ -1,0 +1,124 @@
+{
+ "proceso": "dogc:1025494",
+ "documento": {
+  "id": "dogc:1025494",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1025494",
+  "fecha": "2025-10-02",
+  "huella": "08747a00ed8a8a2c6f94cf73272296901a7f4107a2d66b9a9b8c3f92ef68ccac"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:42:47+00:00",
+ "lote": "msgbatch_01XofVwxKEhyEjSzGog6wsD4",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "C1",
+   "cita": "Grup: C1",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "Classe de personal: Funcionari/ària de carrera",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "Oposició lliure.",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 3,
+   "cita": "En primera crida, 3 places d'Agent de Policia incloses en l'Oferta parcial d'Ocupació Pública de 2025.",
+   "nivel": "literal"
+  },
+  "plazas_turno_libre": {
+   "valor": 3,
+   "cita": "En primera crida, 3 places d'Agent de Policia incloses en l'Oferta parcial d'Ocupació Pública de 2025.",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Batxillerat, Tècnic, o una altra d'equivalent o superior",
+   "cita": "Batxillerat, Tècnic, o una altra d'equivalent o superior.",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española; 18 años cumplidos y no superar la edad de jubilación forzosa; capacidad funcional; carné de conducir A2 y B; altura mínima 1,65 m hombres y 1,55 m mujeres; no tener antecedentes penales; compromiso de portar armas.",
+   "cita": "Estar en possessió dels carnets de conduir A2 i B.",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "catalán, nivel B2",
+   "cita": "Estar en possessió del títol de nivell B2 de català",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 25.55,
+   "cita": "Abonar l'import dels drets d'examen establert en 25,55€",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "No consta exención específica de la tasa en el texto.",
+   "cita": "Abonar l'import dels drets d'examen establert en 25,55€",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días naturales desde el siguiente día hábil de la última publicación del anuncio de convocatoria",
+   "cita": "El termini de presentació d'instàncies serà de 20 dies naturals comptats a partir del següent dia hàbil",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Presencial en el registro general (Oficina de Atención Ciudadana, Pl. Ajuntament, 1) o telemáticamente en la plataforma de trámites electrónicos tramits.igualada.cat",
+   "cita": "Presencialment: Al registre general de l'Ajuntament o Organisme Autònom Municipal ubicat a la Oficina d'Atenció Ciutadana",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de edictos del Ayuntamiento, tablón de edictos de la sede electrónica (www.seu-e.cat/web/igualada), BOP, BOE y DOGC",
+   "cita": "Taulell d'Edictes de la Seu Electrònica de l'Ajuntament d'Igualada",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Prueba de catalán nivel B2 (eliminatoria, apto/no apto)",
+    "Pruebas físicas (eliminatorias)",
+    "Prueba cultural tipo test (eliminatoria, mínimo 5)",
+    "Prueba teórica de conocimientos generales tipo test (eliminatoria, mínimo 5)",
+    "Prueba psicotécnica (aptitudes y personalidad)",
+    "Prueba de personalidad y competencial con entrevista",
+    "Prueba práctica con dos supuestos (eliminatoria)",
+    "Prueba médica (apto/no apto)"
+   ],
+   "cita": "Aquesta Fase consistirà en la realització de 7 proves obligatòries i eliminatòries",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "No consta fase de concurso de méritos; el sistema es oposición lliure.",
+   "cita": "Oposició lliure.",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, para cubrir necesidades de personal funcionario interino con la misma o similar categoría, vigente dos años",
+   "cita": "passaran a formar part de la borsa de treball, que serà vigent durant dos anys",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Curso selectivo de Formación Básica en el Instituto de Seguridad Pública de Cataluña, seguido de un periodo de prácticas en el municipio de 1 año de duración",
+   "cita": "Els aspirants que hagin superat el curs esmentat, hauran de superar un període de pràctiques al municipi d'1 any de durada",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Agent de la Policia Local (escala d'Administració Especial, subescala de Serveis Especials/Policia Local)"
+   ],
+   "cita": "places d'Agent de la Policia Local (escala d'Administració Especial, subescala de Serveis Especials/Policia Local)"
+  },
+  "temas": {
+   "motivo": "valor_no_numerico",
+   "valor": "Temario de conocimientos generales (4 áreas) y temario de conocimientos específicos (21 temas)",
+   "cita": "ANNEX 3 TEMARI DE CONEIXEMENTS GENERALS DE LES PLACES D'AGENT DE LA POLICIA LOCAL"
+  }
+ }
+}

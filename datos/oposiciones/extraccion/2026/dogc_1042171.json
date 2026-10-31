@@ -1,0 +1,56 @@
+{
+ "proceso": "dogc:1042171",
+ "documento": {
+  "id": "dogc:1042171",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1042171",
+  "fecha": "2026-04-17",
+  "huella": "f4951b7ef46b4fa1e3c6d446a41731723123c758d95a80ca3266b5f8b31170f8"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:40:39+00:00",
+ "lote": "msgbatch_01E3wiYcGL8Lzho48bXWLyyb",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Oficial/a jardiner",
+    "Operari/òria jardineria"
+   ],
+   "cita": "constitució de borses de treball d'OFICIAL/A JARDINER, grup C2, laboral, i OPERARI/ÀRIA JARDINERIA, grup AP, laboral",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "constitució de borses de treball d'OFICIAL/A JARDINER, grup C2, laboral, i OPERARI/ÀRIA JARDINERIA",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "procés de selecció pel sistema d'oposició lliure, per a la constitució de borses de treball",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles, contados a partir del día siguiente a la última de las publicaciones",
+   "cita": "El termini improrrogable per presentar les sol·licituds és de 20 dies hàbils, comptats a partir del dia següent",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia de Barcelona; las posteriores en la página web municipal",
+   "cita": "Les posteriors publicacions es faran a la pàgina web municipal",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "C2 (oficial/a jardiner); AP (operari/òria jardineria)",
+   "cita": "OFICIAL/A JARDINER, grup C2, laboral, i OPERARI/ÀRIA JARDINERIA, grup AP, laboral"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, para cubrir posibles vacantes, substituciones, relevos y temporalidades",
+   "cita": "per a la constitució de borses de treball, per possibles vacants, substitucions, relleus, temporalitats"
+  }
+ }
+}

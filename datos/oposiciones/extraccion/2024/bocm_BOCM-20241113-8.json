@@ -1,0 +1,51 @@
+{
+ "proceso": "bocm:BOCM-20241113-8",
+ "documento": {
+  "id": "bocm:BOCM-20241113-8",
+  "fuente": "BOCM",
+  "url": "https://www.bocm.es/bocm-20241113-8",
+  "fecha": "2024-11-13",
+  "huella": "33254130238e38fd9e6633805ac283354b7da9709b6f651fed24d1a4462144a5"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:50:10+00:00",
+ "lote": "msgbatch_01LpyYajgKGX9NyHT1uvynbR",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Profesor Titular de Universidad, Área de Psicología Social",
+    "Profesor Titular de Universidad, Área de Ciencia de los Materiales e Ingeniería Metalúrgica"
+   ],
+   "cita": "1 plaza en el Área de Conocimiento de Psicología Social con el número de concurso Y174/DF011310/04-11-2024.",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "otro",
+   "cita": "se convocan las siguientes plazas de Profesores Titulares de Universidad",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "quince días hábiles a partir del siguiente al de su publicación en el “Boletín Oficial del Estado”",
+   "cita": "será de quince días hábiles a partir del siguiente al de su publicación en el “Boletín Oficial del Estado”",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Solicitudes según modelo de la Resolución, dirigidas al Rector de la Universidad Rey Juan Carlos (calle Tulipán, sin número, 28933 Móstoles, Madrid)",
+   "cita": "debiendo dirigirse éstas al Rector de la Universidad Rey Juan Carlos (calle Tulipán, sin número, 28933 Móstoles, Madrid).",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso",
+   "cita": "RESOLUCIÓN de 4 de noviembre de 2024, de la Universidad Rey Juan Carlos, por la que se convoca concurso de acceso a plazas de cuerpos docentes universitarios."
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 2,
+   "cita": "1 plaza en el Área de Conocimiento de Psicología Social con el número de concurso Y174/DF011310/04-11-2024."
+  }
+ }
+}

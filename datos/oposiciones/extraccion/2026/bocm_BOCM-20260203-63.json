@@ -1,0 +1,68 @@
+{
+ "proceso": "bocm:BOCM-20260203-63",
+ "documento": {
+  "id": "bocm:BOCM-20260203-63",
+  "fuente": "BOCM",
+  "url": "https://www.bocm.es/bocm-20260203-63",
+  "fecha": "2026-02-03",
+  "huella": "5b9a922de76c4c3bb33c258da5c693f1ed354b0307e780685fc377b00b691731"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:42:21+00:00",
+ "lote": "msgbatch_01W17mR271uYfWYL6CuSdriL",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "ser funcionario/a de carrera del Ayuntamiento de San Sebastián de los Reyes",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "el sistema de selección será de libre designación",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "la que proceda según la descripción del puesto al que se opte",
+   "cita": "con la titulación que proceda según la descripción del puesto al que se opte",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Pertenecer a la escala correspondiente. No hallarse en suspensión firme de funciones ni en excedencia voluntaria por interés particular o agrupación familiar durante los dos años de permanencia obligatoria.",
+   "cita": "No hallarse en la situación administrativa de suspensión firme de funciones mientras dure la suspensión",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Exento de tasa.",
+   "cita": "6. Tasas: exento.",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Quince días hábiles, contados desde el siguiente al de la publicación de la convocatoria en el BOCM.",
+   "cita": "El plazo de presentación de solicitudes será de quince hábiles, contados a partir del siguiente",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Sede electrónica municipal (https://www.ssreyes.org/es/portal.do?TR=C&IDR=782)",
+   "cita": "las bases estarán expuestas íntegramente en la sede electrónica municipal",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Jefatura de Servicio de Obras y Servicios Públicos",
+    "Jefatura de Servicio de Artes Escénicas",
+    "Jefatura de Servicio de Contratación y Patrimonio",
+    "Titular de la Oficina Presupuestaria"
+   ],
+   "cita": "Jefatura de Servicio de Obras y Servicios Públicos. Jefatura de Servicio de Artes Escénicas."
+  },
+  "tasa_euros": {
+   "motivo": "valor_no_en_cita",
+   "valor": 0,
+   "cita": "6. Tasas: exento."
+  }
+ }
+}

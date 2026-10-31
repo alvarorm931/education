@@ -1,0 +1,75 @@
+{
+ "proceso": "boplaspalmas:BOPLASPALMAS-2024-09-27-006",
+ "documento": {
+  "id": "boplaspalmas:BOPLASPALMAS-2024-09-27-006",
+  "fuente": "BOP-LASPALMAS",
+  "url": null,
+  "fecha": "2024-09-27",
+  "huella": "f9f237fb11b7bf36cc3529b144c3af8c6adee11af8926c673aec3bca9e3cd83e"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:50:18+00:00",
+ "lote": "msgbatch_01LpyYajgKGX9NyHT1uvynbR",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "A2",
+   "cita": "Categoría equivalente al Subgrupo A2",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "diez (10) plazas que pasan de funcionario a personal laboral fijo",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "Convocar diez (10) plazas de laborales fijos en la categoría de Arquitecto/a Técnico, pertenecientes a la categoría equivalente al subgrupo A2, mediante concurso",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 10,
+   "cita": "Convocar diez (10) plazas de laborales fijos en la categoría de Arquitecto/a Técnico",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles desde el día siguiente a la publicación del extracto de la convocatoria en el BOE",
+   "cita": "Abrir el plazo para la presentación de las solicitudes de participación, por tiempo de (20) VEINTE DÍAS HÁBILES",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Sede electrónica del Ayuntamiento de Las Palmas de Gran Canaria",
+   "cita": "publicar íntegramente la presente convocatoria en el Boletín Oficial de la Provincia de Las Palmas (BOP), así como en la sede electrónica del Ayuntamiento",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "BOP Las Palmas y sede electrónica del Ayuntamiento de Las Palmas de Gran Canaria",
+   "cita": "Publicar íntegramente la presente convocatoria en el Boletín Oficial de la Provincia de Las Palmas (BOP), así como en la sede electrónica",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Méritos valorados hasta el 4 de agosto de 2023, fecha de fin del plazo de la convocatoria original",
+   "cita": "Los méritos presentados en esta convocatoria serán valorados hasta la fecha del 4 de agosto de 2023",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "no",
+   "cita": "Convocar diez (10) plazas de laborales fijos en la categoría de Arquitecto/a Técnico",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Arquitecto/a Técnico"
+   ],
+   "cita": "Resolución de la Directora General de Administración Pública número 50365/2022 ... convocatoria ... diez (10) plazas de Arquitecto/a Técnico"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 10,
+   "cita": "Publicación en el BOE número 162 ... mediante el sistema de concurso, en turno de acceso libre"
+  }
+ }
+}

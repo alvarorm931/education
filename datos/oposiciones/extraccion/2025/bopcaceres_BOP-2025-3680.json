@@ -1,0 +1,50 @@
+{
+ "proceso": "bopcaceres:BOP-2025-3680",
+ "documento": {
+  "id": "bopcaceres:BOP-2025-3680",
+  "fuente": "BOP-CACERES",
+  "url": "https://bop.dip-caceres.es/bop/services/anuncios/contenidoPdfIdAnuncio?csv=BOP-2025-3680",
+  "fecha": "2025-07-17",
+  "huella": "861da599508bf81c73d3f35147ceacc84717b22eed735e4fc21a1704a7d2d647"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:45:05+00:00",
+ "lote": "msgbatch_016re6aGcimwSVmdrWa6qBd9",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "OFICIAL DE PRIMERA DE JARDINES"
+   ],
+   "cita": "por la que se aprueban las bases y la convocatoria para la constitución de una bolsa de empleo para cubrir las posibles vacantes en los puestos siguientes OFICIAL DE PRIMERA DE JARDINES",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "constitución de una bolsa de empleo para cubrir las posibles vacantes en los puestos siguientes",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "diez días hábiles a contar desde el día siguiente a la publicación de este anuncio en Boletín Oficial de la Provincia",
+   "cita": "se abre el plazo de presentación de solicitudes, que será de diez días hábiles a contar desde el día siguiente a la publicación",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí: bolsa de empleo para cubrir las posibles vacantes de Oficial de Primera de Jardines",
+   "cita": "para la constitución de una bolsa de empleo para cubrir las posibles vacantes en los puestos siguientes",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "otro",
+   "cita": "se constituye una bolsa de empleo para cubrir las posibles vacantes en los puestos siguientes"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "sede electrónica del Ayuntamiento (https://casardecaceres.sedelectronica.es/info.0) y Tablón de Anuncios del Ayuntamiento de Casar de Cáceres",
+   "cita": "se publicarán en la sede electrónica de este Ayuntamiento y en el Tablón de Anuncio del Ayuntamiento de Casar de Cáceres"
+  }
+ }
+}

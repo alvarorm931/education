@@ -1,0 +1,53 @@
+{
+ "proceso": "bopvalencia:BOPVALENCIA-2025-01724",
+ "documento": {
+  "id": "bopvalencia:BOPVALENCIA-2025-01724",
+  "fuente": "BOP-VALENCIA",
+  "url": "https://bop.dival.es/bop/downloads?anuncioNumReg=2025/01724&lang=va",
+  "fecha": "2025-02-26",
+  "huella": "229c1b49799548761292b1b0b76404dbda687d0da9d3f509b506e77cc1be750d"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:46:33+00:00",
+ "lote": "msgbatch_01MQzQCLMZKxUrrPMAj7dr53",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "A2",
+   "cita": "categoria inspector/a, grup A2, a l'informe de l'Agència Valenciana",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "com a personal funcionari en propietat, d'una plaça en l'Ajuntament de Silla",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "pel procediment de concurs oposició lliure, codi 65, administració especial",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "vint dies hàbils, comptadors des de l'endemà de la publicació de l'extracte de la convocatòria al Butlletí Oficial de l'Estat",
+   "cita": "El termini per a la presentació de sol·licituds, serà de vint dies hàbils, comptadors des de l'endemà",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Les bases íntegres de la convocatòria es publicaran en els següents enllaços: silla.sede.dival.es y silla.convoca.online",
+   "cita": "Les bases íntegres de la convocatòria es publicaran en els següents enllaços",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Inspector/a de la Policia Local, escala tècnica de la policia local, subescala de serveis especials",
+   "cita": "una plaça en l'Ajuntament de Silla, pel procediment de concurs oposició lliure, codi 65, administració especial"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "l'adaptació de les bases específiques i la convocatòria que han de regir el procés de selecció"
+  }
+ }
+}

@@ -1,0 +1,109 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2022-6880",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2022-6880",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2022/09/21_180/2022_006880.pdf",
+  "fecha": "2022-09-21",
+  "huella": "0d82ee48116baf5644bce3c2896b86cb08b159a4949e8155c88e3406f6a7fcd9"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:12+00:00",
+ "lote": "msgbatch_01B4ETF5xB4buYCHqPiHTXzF",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Auxiliar administrativo",
+    "Ingeniero Técnico",
+    "Técnico Informática",
+    "Técnico ADL",
+    "Operario cometidos múltiples",
+    "Arquitecto Superior",
+    "Personal de limpieza",
+    "Auxiliar jardín de infancia",
+    "Personal limpieza viaria",
+    "Peón jardinería",
+    "Peón obras y servicios",
+    "Auxiliar biblioteca",
+    "Profesor/a F.P.A."
+   ],
+   "cita": "Auxiliar administrativo 21/04/2008 A/A2 AE Técnica 1 Ingeniero Técnico",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "PERSONAL LABORAL: CATEGORÍA LABORAL DENOMINACION VACANTES FECHA DE ADSCRIPCION 10 PERSONAL DE LIMPIEZA",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Valenciano valorado: A2 0,1; B1 0,2; B2 0,3; C1 0,4; C2 0,5 puntos (máximo 0,5)",
+   "cita": "Se valorará el conocimiento del valenciano siempre que se acredite estar en posesión del certificado expedido u homologado",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Fase de concurso: experiencia profesional (máx. 70 puntos)",
+    "Titulaciones (máx. 1 punto)",
+    "Formación específica (máx. 8 o 10 puntos según grupo)",
+    "Valenciano (máx. 0,5 puntos)",
+    "Idiomas comunitarios (máx. 0,5 puntos)",
+    "Entrevista semiestructurada (máx. 10 puntos, solo grupo A1)"
+   ],
+   "cita": "A) Para el acceso a plazas clasificadas en el grupo A1 (Sistema de Concurso de Méritos).",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "A1, A2, C1, C2 y agrupaciones profesionales",
+   "cita": "Sistema de Concurso de Méritos para el acceso a plazas clasificadas en los grupos A2, B, C1, C2 y agrupaciones profesionales"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso",
+   "cita": "Articulación de los procesos selectivos por el Sistema de CONCURSO DE MÉRITOS."
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 14,
+   "cita": "PERSONAL FUNCIONARIO: GRUPO/ SUBGRUPO ESCALA SUBESCALA VACANTES PUESTO/PLAZA FECHA DE ADSCRIPCION"
+  },
+  "plazas_turno_libre": {
+   "motivo": "cita_no_literal",
+   "valor": 14,
+   "cita": "Las plazas incluidas en la estabilización se convocan por sistema de concurso de méritos."
+  },
+  "titulacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Titulación académica o profesional exigida según subgrupo de pertenencia o categoría profesional",
+   "cita": "En las convocatorias de plazas en proceso de estabilización es de aplicación la normativa sobre titulación académica o profesional exigida"
+  },
+  "otros_requisitos": {
+   "motivo": "cita_no_literal",
+   "valor": "Ocupación temporal e ininterrumpida de la plaza con anterioridad a 1 de enero de 2016 o relación de naturaleza estructural anterior a esa fecha, según la Ley 20/2021.",
+   "cita": "Se prevé la posibilidad de convocar, por el sistema de concurso, aquellas plazas que hubieran estado ocupadas con carácter temporal de forma ininterrumpida con anterioridad a 1 de enero de 2016"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "Publicación de las convocatorias de cada proceso según calendario: primera quincena octubre o noviembre de 2022; plazo de presentación no especificado en el texto",
+   "cita": "Se establece el siguiente calendario de los procesos de estabilización del empleo temporal, teniendo en cuenta que la publicación de las convocatorias de todos estos procesos deberá producirse antes del 31 de diciembre de 2022"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Boletín Oficial de la Provincia, tablón de anuncios y página web municipal www.elverger.es",
+   "cita": "procede su publicación en el Boletín Oficial de la Provincia, así como en el Tablón de anuncios y en su página web municipal"
+  },
+  "meritos": {
+   "motivo": "cita_no_literal",
+   "valor": "Experiencia profesional máx. 70 puntos (0,30 por mes en el Ayuntamiento de El Verger; 0,060 otra Administración Local; 0,030 otra Administración Pública); titulaciones máx. 1 punto; formación específica máx. 8-10 puntos (0,05 por hora); valenciano máx. 0,5; idiomas comunitarios máx. 0,5; entrevista máx. 10 puntos (solo A1)",
+   "cita": "Se valorarán los servicios prestados en la Administración pública en igual grupo/subgrupo de titulación e igual naturaleza jurídica"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, para constituir bolsa de trabajo con aspirantes no propuestos que hayan obtenido igual o más de 15 puntos",
+   "cita": "De cada proceso selectivo se constituirá una bolsa de trabajo con los aspirantes que no sean propuestos para ocupar plaza y hayan obtenido una puntuación igual o superior a 15 puntos."
+  }
+ }
+}

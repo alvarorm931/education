@@ -1,0 +1,63 @@
+{
+ "proceso": "boe:BOE-A-2025-23503",
+ "documento": {
+  "id": "bopb:BOPB-202510169838",
+  "fuente": "BOPB",
+  "url": "https://bop.diba.cat/anunci/3846420/aprovacio-de-la-convocatoria-d-una-placa-d-auxiliar-administratiu-iva-grup-c2-en-regim-de-personal-funcionari-corresponent-a-l-execucio-de-l-oferta-d-ocupacio-publica-de-l-exercici-2022-ajuntament-de-matadepera",
+  "fecha": "2025-11-03",
+  "huella": "816e4d480b1dc0ff21363d470dbf8a8b33b5dd27387982dbbb52d8c71da05758"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:41:19+00:00",
+ "lote": "msgbatch_01UNq3BNhPPHoTK3TEJzun1h",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "auxiliar administratiu/va, escala d'administració general, subescala auxiliar",
+   "cita": "convocatòria d'una plaça d'auxiliar administratiu/va, escala d'administració general, subescala auxiliar, grup C2",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C2",
+   "cita": "grup de titulació C2, corresponent a l'oferta d'ocupació pública 2022",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mitjançant sistema de concurs oposició lliure",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 dies naturals a comptar a partir de l'endemà de la publicació de l'anunci oficial al BOE d'aquesta nova convocatòria",
+   "cita": "es tornarà a obrir un període de presentació d'instàncies de 20 dies naturals a comptar a partir de l'endemà",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "no",
+   "cita": "Determinar que aquesta convocatòria queda inclosa en el procés de selecció, i amb les mateixes bases específiques",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "en règim de personal funcionari, corresponent a l'execució de l'oferta d'ocupació pública de l'exercici 2022"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 5,
+   "cita": "procurarà la cobertura del total de 5 places d'auxiliar administratiu/va"
+  },
+  "plazas_turno_libre": {
+   "motivo": "cita_no_literal",
+   "valor": 5,
+   "cita": "procurarà la cobertura del total de 5 places d'auxiliar administratiu/va"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "tauler d'anuncis de l'Ajuntament i pàgina web municipal",
+   "cita": "que es farà pública al tauler d'anuncis de l'Ajuntament i a la pàgina web municipal"
+  }
+ }
+}

@@ -1,0 +1,40 @@
+{
+ "proceso": "bophuelva:BOPHUELVA-357483",
+ "documento": {
+  "id": "bophuelva:BOPHUELVA-357483",
+  "fuente": "BOP-HUELVA",
+  "url": "https://s2.diphuelva.es/portalweb/bope/anuncios/Anuncio_357483_BOP-94_2026.pdf",
+  "fecha": "2026-05-19",
+  "huella": "9cbcab4070804a98ed85b45d182961215ef6dc077f997ec52c5cfff03ac88a6b"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:41:36+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Monitores educativos"
+   ],
+   "cita": "Bolsa de empleo de monitores educativos",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "Bolsa de empleo de monitores educativos",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "veinte días hábiles, contados a partir del día siguiente al de la publicación de este anuncio extractado",
+   "cita": "que será de veinte días hábiles, contados a partir del día siguiente al de la publicación"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Tablón de Anuncios y Sede Electrónica del Ayuntamiento de La Palma del Condado",
+   "cita": "se hará en el Tablón de Anuncios y en la Sede Electrónica del Ayuntamiento"
+  }
+ }
+}

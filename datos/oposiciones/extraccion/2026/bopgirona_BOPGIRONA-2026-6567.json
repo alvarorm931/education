@@ -1,25 +1,32 @@
 {
  "proceso": "bopgirona:BOPGIRONA-2026-6567",
  "documento": {
-  "id": "bopgirona:BOPGIRONA-2026-6567",
-  "fuente": "BOP-GIRONA",
-  "url": "https://ssl4.ddgi.cat/bopV1/pdf/2026/142/202614206567.pdf",
-  "fecha": "2026-07-27",
-  "huella": "6615ac8d8c1f5972a1c5ec6fce8e9823f759b7ff2a88d84ff684a5cff91efc90"
+  "id": "dogc:1051257",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1051257",
+  "fecha": "2026-07-29",
+  "huella": "afe4ecb9bd2879aac068d2e25e5960ed286d9bc9cab5d911238dff66e8345542"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T08:18:22+00:00",
- "lote": "msgbatch_01BrnYw6KkevFx7at547B5g8",
+ "extraido": "2026-10-31T14:41:52+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
-   "valor": "Oficial de la brigada d'obres i serveis",
-   "cita": "dues places d’oficial de la brigada d’obres i serveis vacants a la plantilla de personal laboral",
+   "valor": [
+    "Oficial de la brigada d'obres i serveis"
+   ],
+   "cita": "dues places d'oficial de la brigada d'obres i serveis vacants a la plantilla de personal laboral",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C2",
+   "cita": "subgrup C2, en règim de personal laboral fix mitjançant concurs-oposició",
    "nivel": "literal"
   },
   "vinculo": {
    "valor": "personal laboral fijo",
-   "cita": "en règim de personal laboral fix mitjançant concurs-oposició",
+   "cita": "subgrup C2, en règim de personal laboral fix mitjançant concurs-oposició",
    "nivel": "literal"
   },
   "sistema": {
@@ -29,57 +36,63 @@
   },
   "plazas_total": {
    "valor": 2,
-   "cita": "cobertura definitiva de dues places d’oficial de la brigada d’obres i serveis",
-   "nivel": "literal"
-  },
-  "plazas_turno_libre": {
-   "valor": 2,
-   "cita": "cobertura definitiva de dues places d’oficial de la brigada d’obres i serveis",
+   "cita": "dues places d'oficial de la brigada d'obres i serveis vacants",
    "nivel": "literal"
   },
   "titulacion": {
-   "valor": "Graduat en ESO, graduat escolar, tècnic auxiliar (cicle formatiu de grau mig, FPI) o títol equivalent",
+   "valor": "Graduado en ESO, graduado escolar, técnico auxiliar (FPI de grado medio) o título declarado equivalente a efectos profesionales",
    "cita": "Estar en possessió del Graduat en ESO, graduat escolar, tècnic auxiliar (cicle formatiu de grau mig, FPI)",
    "nivel": "literal"
   },
+  "otros_requisitos": {
+   "valor": "Tener 16 años cumplidos; permiso de conducir clase B; carné de aplicador y manipulador de productos fitosanitarios nivel básico; capacidad física y psíquica; no estar separado del servicio público ni inhabilitado; no incurrir en incompatibilidades",
+   "cita": "Estar en possessió del permís de conduir de classe B.",
+   "nivel": "literal"
+  },
   "idioma_cooficial": {
-   "valor": "Catalán nivel B1 (elemental), acreditado o mediante prueba; castellano nivel B2 para personas no españolas, si no lo acreditan",
+   "valor": "Catalán, nivel elemental B1 (o prueba equivalente)",
    "cita": "Acreditar coneixements de llengua catalana de nivell elemental de català, nivell B1",
    "nivel": "literal"
   },
-  "tasa_euros": {
-   "valor": 18,
-   "cita": "La taxa a aplicar per cada proposició per a prendre part en concursos o oposicions pels llocs del grup C2 o per assimilació és de 18,00€",
-   "nivel": "literal"
-  },
   "exenciones_tasa": {
-   "valor": "Exentas las personas con discapacidad reconocida superior al 33%; bonificación del 90% para personas en situación de desempleo acreditada",
+   "valor": "Exentas las personas discapacitadas con reconocimiento superior al 33%; bonificación del 90% para personas en situación de desempleo",
    "cita": "estaran exemptes de pagament les persones discapacitades que presentin el certificat de reconeixement legal de disminució superior al 33%",
    "nivel": "literal"
   },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles desde el día siguiente a la publicación del extracto en el DOGC",
+   "cita": "en el termini de 20 dies hàbils comptats des de l'endemà de la publicació de l'extracte",
+   "nivel": "literal"
+  },
   "presentacion": {
-   "valor": "Por cualquier medio de la Ley 39/2015, mediante instancia Anexo II dirigida al Ayuntamiento de Sils",
+   "valor": "Instancia Annex II dirigida al Alcalde, por cualquiera de los medios de la Ley 39/2015",
    "cita": "Les sol·licituds de participació es presentaran per qualsevol dels mitjans que preveu la Llei 39/2015",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón electrónico de edictos del Ayuntamiento de Sils (sede electrónica), con efecto de notificación",
+   "cita": "es publicaran exclusivament en el tauler electrònic de l'Ajuntament de Sils, i aquesta publicació tindrà els efectes d'una notificació",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
     "Primer ejercicio: conocimientos de lengua catalana (apto/no apto)",
-    "Segundo ejercicio: conocimientos de lengua castellana, si procede (apto/no apto)",
+    "Segundo ejercicio: conocimientos de lengua castellana (apto/no apto, si procede)",
     "Tercer ejercicio: test de 20 preguntas sobre temario, 20 puntos, mínimo 10",
-    "Cuarto ejercicio: pruebas prácticas del puesto, 40 puntos, mínimo 20"
+    "Cuarto ejercicio: prueba práctica del puesto, 40 puntos, mínimo 20 (máximo 2 horas)",
+    "Fase de concurso: méritos hasta 40 puntos"
    ],
    "cita": "Tercer exercici: CONEIXEMENTS TEÒRICS (20 punts)",
    "nivel": "literal"
   },
   "meritos": {
-   "valor": "Experiencia profesional hasta 30 puntos; formación hasta 10 puntos; titulaciones superiores hasta 2 puntos; carnés profesionales hasta 2 puntos",
-   "cita": "Experiència professional (fins a un màxim de 30 punts)",
+   "valor": "Experiencia profesional hasta 30 puntos; actividades formativas hasta 10 puntos; titulaciones superiores hasta 2 puntos; carnés profesionales vinculados hasta 2 puntos",
+   "cita": "Experiència profssionael (fins a un màxim de 30 punts)",
    "nivel": "literal"
   },
   "bolsa": {
-   "valor": "sí, bolsa de trabajo de oficiales de brigada C2 para necesidades temporales durante dos años",
-   "cita": "integraran una borsa per cobrir necessitats temporals de la categoria d’oficial de la brigada d’obres i serveis, C2, per un període de dos anys",
+   "valor": "Sí; bolsa de trabajo de oficiales de brigada C2 para cubrir necesidades temporales, con vigencia máxima de dos años",
+   "cita": "Aquesta borsa de treball tindrà una vigència màxima de dos anys o inferior",
    "nivel": "literal"
   },
   "practicas_o_curso": {
@@ -89,30 +102,15 @@
   }
  },
  "rechazados": {
-  "grupo": {
+  "tasa_euros": {
    "motivo": "cita_no_literal",
-   "valor": "C2",
-   "cita": "places d’oficial de la brigada d’obres i serveis, subgrup C2, en règim de personal laboral fix"
-  },
-  "otros_requisitos": {
-   "motivo": "cita_no_literal",
-   "valor": "Tener 16 años cumplidos; permiso de conducir clase B; carné de aplicador y manipulador de productos fitosanitarios nivel básico; capacidad física y psíquica; no estar separado del servicio público; no incurrir en incompatibilidades",
-   "cita": "Haver complert els 16 anys d’edat. Estar en possessió del permís de conduir de classe B."
-  },
-  "plazo_solicitudes": {
-   "motivo": "cita_no_literal",
-   "valor": "20 días hábiles desde el día siguiente a la publicación del extracto en el DOGC",
-   "cita": "en el termini de 20 dies hàbils comptats des de l'endemà de la publicació de l’extracte de la convocatòria al Diari Oficial"
-  },
-  "publicaciones": {
-   "motivo": "cita_no_literal",
-   "valor": "Tablón electrónico de edictos del Ayuntamiento de Sils (sede electrónica); la publicación tiene efectos de notificación",
-   "cita": "les successives publicacions dels actes de tràmit d’aquesta convocatòria es publicaran exclusivament en el tauler electrònic de l’Ajuntament de Sils"
+   "valor": 18,
+   "cita": "La taxa a aplicar per cada proposició per a prendre part en concursos o oposicions pels llocs del grup C2 és de 18,00€"
   },
   "temas": {
    "motivo": "valor_no_en_cita",
    "valor": 20,
-   "cita": "1. El municipi: organització i competències. L’alcalde/ssa, els tinents d’alcalde, el Ple i la Junta de Govern Local."
+   "cita": "ANNEX I TEMARI 1. El municipi"
   }
  }
 }

@@ -1,0 +1,95 @@
+{
+ "proceso": "bophuelva:BOPHUELVA-214147",
+ "documento": {
+  "id": "bophuelva:BOPHUELVA-214147",
+  "fuente": "BOP-HUELVA",
+  "url": "https://s2.diphuelva.es/portalweb/bope/anuncios/Anuncio_214147_BOP-179_2023.pdf",
+  "fecha": "2023-09-20",
+  "huella": "8604c8f37d192c02331353ee4925cf749fd70d80fb3e1a8de59f5536cf556e13"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:53+00:00",
+ "lote": "msgbatch_01SjfjDqJRwL6bpTvJz2YfVg",
+ "no_son_bases": false,
+ "campos": {
+  "sistema": {
+   "valor": "concurso",
+   "cita": "Procedimiento de selección de los aspirantes constará de una única fase: Concurso.",
+   "nivel": "sin_signos"
+  },
+  "ejercicios": {
+   "valor": [
+    "Concurso: experiencia profesional (máximo 12 puntos)",
+    "Concurso: formación académica y complementaria (máximo 6 puntos)",
+    "Concurso: carnés de conducir B o C (máximo 2 puntos)",
+    "Concurso: situación de vulnerabilidad (acreditada por servicios sociales)"
+   ],
+   "cita": "Experiencia profesional, hasta un máximo de 12 puntos",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, bolsa de trabajo para futuras contrataciones laborales temporales para cubrir vacantes y bajas o vacaciones de personal, con vigencia de dos años",
+   "cita": "La Bolsa de Trabajo tendrá una vigencia de dos años desde la fecha que establezca la Resolución de la Alcaldía-Presidencia",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "periodo de prueba de 15 días",
+   "cita": "Se establece un periodo de prueba de 15 días.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Trabajadores/as de limpieza viaria y de edificios públicos"
+   ],
+   "cita": "formación de una bolsa de trabajadores/as de limpieza viaria y de edificios públicos de Hinojos mediante concurso"
+  },
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "otro",
+   "cita": "no consta grupo de clasificación en el texto"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "laboral temporal",
+   "cita": "El carácter del contrato es temporal, a tiempo completo, en horario de mañana o de tarde"
+  },
+  "plazas_discapacidad": {
+   "motivo": "cita_no_literal",
+   "valor": "10% de las vacantes",
+   "cita": "Se reservará una cuota del 10% de las vacantes para cubrirse con personas con discapacidad igual o superior al 33%"
+  },
+  "titulacion": {
+   "motivo": "cita_no_literal",
+   "valor": "no exigida",
+   "cita": "Para formar parte en las pruebas de selección, será necesario reunir los requisitos establecidos en el artículo 56"
+  },
+  "otros_requisitos": {
+   "motivo": "cita_no_literal",
+   "valor": "Nacionalidad española (sin perjuicio del artículo 57 TREBEP); capacidad funcional para las tareas; tener cumplidos dieciséis años y no exceder la edad máxima de jubilación forzosa; no haber sido separado del servicio por expediente disciplinario",
+   "cita": "Tener la nacionalidad española sin perjuicio de lo dispuesto en el artículo 57 del Texto Refundido"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "20 días hábiles desde el día siguiente a la publicación del anuncio de la convocatoria en el boletín oficial de la provincia de Huelva",
+   "cita": "en el plazo de 20 días hábiles contados a partir del día siguiente al de la publicación del anuncio de la convocatoria"
+  },
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Registro de entrada del Ayuntamiento o procedimiento del artículo 16.4 de la Ley 39/2015",
+   "cita": "se presentarán en el Registro de entrada de este Ayuntamiento o bien mediante el procedimiento que regula el artículo 16.4"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Tablón de anuncios del Ayuntamiento y sede electrónica",
+   "cita": "Las bases íntegras, baremación provisional y baremación definitiva, se publicarán en el Tablón de anuncios del Ayuntamiento y en la sede electrónica."
+  },
+  "meritos": {
+   "motivo": "cita_no_literal",
+   "valor": "Experiencia profesional hasta 12 puntos (0,20 por mes como limpiador/a; 0,10 por mes en puestos similares de obras y servicios); formación hasta 6 puntos (1 punto por titulación superior, cursos hasta 4 puntos); carnés B o C hasta 2 puntos (0,50 por carné)",
+   "cita": "Por servicios prestados, ya sea por cuenta ajena en cualquier administración o empresa privada, 0,20 puntos por mes de trabajo"
+  }
+ }
+}

@@ -1,0 +1,122 @@
+{
+ "proceso": "boe:BOE-A-2026-11911",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2025-5529",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2025/07/31_144/2025_005529.pdf",
+  "fecha": "2025-07-31",
+  "huella": "4f3489ca26d321abc8f01aa6199645529840377f64d750cf0e46a964f9a63e8e"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:41:51+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Agent de Policia Local (PM022)"
+   ],
+   "cita": "1 PLAÇA DE L'ESCALA BÀSICA DE POLICIA LOCAL, CATEGORIA AGENT, PM022",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "El procediment selectiu serà el d'oposició per torn lliure",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "cobrir UNA PLAÇA DE L'ESCALA BÀSICA DE POLICIA LOCAL, CATEGORIA AGENT",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Batxiller o tècnic o titulació equivalent",
+   "cita": "Estar en possessió del títol de Batxiller o tècnic o, en el seu cas, de la titulació equivalent",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Valenciano, conocimiento valorado (ejercicio voluntario no eliminatorio de traducción)",
+   "cita": "Exercici sobre el coneixement del valencià, que serà obligatori, però no eliminatori",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 90,
+   "cita": "S'estableix una quantitat en concepte de drets d'examen de 90,00 euros",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "No consta exención en el texto",
+   "cita": "no procedirà la devolució de la taxa ingressada en els supòsits d'exclusió definitiva",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles desde el siguiente a la publicación de las bases en el BOE",
+   "cita": "serà de 20 dies hàbils a comptar des de l'endemà a la publicació d'aquest anunci en el Butlletí Oficial de l'Estat",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Instancia dirigida a la Alcaldía, Registro General del Ayuntamiento o forma del art. 16.4 Ley 39/2015",
+   "cita": "Les instàncies podran presentar-se igualment en la forma que determina l'article 16.4 de la Llei 39/2015",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de anuncios del Ayuntamiento, sede electrónica municipal, BOP, extracto en DOGV y BOE",
+   "cita": "es publicaran íntegrament en el Tauler d'Anuncis de l'Ajuntament",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Pruebas de aptitud física (obligatoria y eliminatoria)",
+    "Prueba psicotécnica (eliminatoria)",
+    "Ejercicio escrito tipo test de 50 preguntas (0-50, mínimo 25)",
+    "Ejercicio práctico sobre supuesto (0-50, mínimo 25)",
+    "Ejercicio de valenciano (no eliminatorio, hasta 4 puntos)",
+    "Reconocimiento médico (eliminatorio)"
+   ],
+   "cita": "Les proves de selecció que es convoquen constaran de les següents fases i exercicis",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Solo en torno de movilidad: servicios prestados hasta 12 puntos, titulaciones hasta 5, idiomas hasta 5, cursos hasta 15, premios y distinciones hasta 2, otros méritos hasta 1",
+   "cita": "La puntuació màxima que poden aconseguir els mèrits al·legats és de 40 punts",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "no",
+   "cita": "Estar en possessió del títol de Batxiller o tècnic o, en el seu cas",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Curso selectivo teórico-práctico en el IVASPE, con periodo de prácticas de doce semanas en el municipio, como funcionario en prácticas",
+   "cita": "un període de pràctiques de dotze setmanes en el municipi corresponent",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "C1",
+   "cita": "corresponent al subgrup C1 de titulació"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "Selecció/provisió en propietat d'una plaça d'agent de la Policia Local"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "per oposició torn lliure, vacant en la plantilla de l'Ajuntament"
+  },
+  "otros_requisitos": {
+   "motivo": "cita_no_literal",
+   "valor": "Nacionalitat espanyola; no inhabilitado ni separado del servicio; sin antecedentes penales; mínimo 18 años; compromiso de portar armas de fuego; permisos de conducción B y A2; estatura mínima 1,65 m hombres y 1,58 m mujeres; no padecer enfermedad o defecto que impida las funciones",
+   "cita": "Tindre almenys díhuit anys d'edat i no excedir, en el seu cas, de l'edat màxima de jubilació forçosa"
+  },
+  "temas": {
+   "motivo": "valor_no_en_cita",
+   "valor": 40,
+   "cita": "TEMARI GRUP C1 AGENT DE POLICIA LOCAL"
+  }
+ }
+}

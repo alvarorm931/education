@@ -1,0 +1,73 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2022-9813",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2022-9813",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2022/12/16_238/2022_009813.pdf",
+  "fecha": "2022-12-16",
+  "huella": "b9dd9651948dbd517a7a8125af76d7a4c6706f78d2ba875542cea2974ed350d4"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:33+00:00",
+ "lote": "msgbatch_01B4ETF5xB4buYCHqPiHTXzF",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Conserje de Edificio Público"
+   ],
+   "cita": "Plaza número 58 de conserje de edificio público",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "E / agrupaciones profesionales",
+   "cita": "AP Escala Administración General/subescala subalterna (plaza número 58)",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "Dicha plaza está incluida en la OEP 2021 por estabilización y por el sistema de concurso oposición",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "Dicha plaza está incluida en la OEP 2021 por estabilización y por el sistema de concurso oposición",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "UNA Conserje de Edificio Público Concurso oposición",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Certificado de escolaridad o equivalente o en condiciones de obtenerlo",
+   "cita": "Estar en posesión del certificado de escolaridad o equivalente o en condiciones de obtenerlo",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 5.15,
+   "cita": "PLAZAS IMPORTE TASA Conserje de Edificio Público 5,15",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Prueba de conocimientos: cuestionario tipo test de 50 preguntas, más cinco de reserva, obligatoria y eliminatoria",
+    "Fase de concurso: méritos profesionales, académicos, formativos e idiomas"
+   ],
+   "cita": "PRUEBA DE CONOCIMIENTOS. Cuestionario tipo test. Obligatoria y Eliminatoria",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "temas": {
+   "motivo": "cita_no_literal",
+   "valor": 7,
+   "cita": "ANEXO III. PROGRAMAS DE LAS CONVOCATORIAS CONSERJE DE EDIFICIO PÚBLICO MATERIAS COMUNES"
+  },
+  "meritos": {
+   "motivo": "cita_no_literal",
+   "valor": "Experiencia profesional hasta 36 puntos; méritos académicos, formativos, idiomas y ejercicios superados hasta 4 puntos; formación específica hasta 4 puntos; procesos selectivos o ejercicios superados hasta 2 puntos; idiomas hasta 2 puntos",
+   "cita": "a) Méritos profesionales: 36 puntos. b) Méritos académicos u otros méritos: 4 puntos."
+  }
+ }
+}

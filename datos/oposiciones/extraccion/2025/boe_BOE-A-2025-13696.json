@@ -1,0 +1,123 @@
+{
+ "proceso": "boe:BOE-A-2025-13696",
+ "documento": {
+  "id": "bopb:BOPB-202510112210",
+  "fuente": "BOPB",
+  "url": "https://bop.diba.cat/anunci/3781262/bases-reguladores-del-proces-selectiu-per-la-cobertura-d-una-placa-d-operari-del-grup-professional-e-mitjancant-el-sistema-de-concurs-oposicio-de-la-plantilla-del-personal-laboral-de-l-ajuntament-ajuntament-de-sant-sadurni-d-anoia",
+  "fecha": "2025-06-17",
+  "huella": "6d73f162ae32baf68a3aa1adff7c531c6cbc81cde0c8f83a10258742e3e4b1b3"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:45:27+00:00",
+ "lote": "msgbatch_016re6aGcimwSVmdrWa6qBd9",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "Règim jurídic Laboral fix",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "El procés selectiu es farà pel sistema de concurs-oposició, per torn lliure",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "Número de places 1 Lloc de treball Peó de serveis comunitaris",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "No se exige titulación alguna",
+   "cita": "Per al grup professional E, no s’exigeix estar en possessió de cap de les titulacions",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española o de la UE (con permiso de residencia para extracomunitarios); edad mínima 16 años y no superar la edad de jubilación forzosa; no estar separado del servicio de la Administración ni inhabilitado; capacidad física y psíquica para las funciones; prueba de castellano si no se acredita nivel intermedio.",
+   "cita": "Tenir la nacionalitat espanyola. Igualment, i sempre i quan el lloc objecte de la convocatòria",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Catalán: nivel básico A2, oral y escrito; prueba eliminatoria si no se acredita",
+   "cita": "Posseir el certificat de coneixements de nivell bàsic de llengua catalana orals i escrits (certificat del nivell A2)",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 4.55,
+   "cita": "Acreditar, en el seu cas, el pagament de la taxa de 4,55€ per participar en el procés selectiu",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "No se indican exenciones o reducciones de la tasa en el texto",
+   "cita": "Acreditar, en el seu cas, el pagament de la taxa de 4,55€ per participar en el procés selectiu",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles desde el día siguiente a la última publicación del anuncio de la convocatoria en el BOE",
+   "cita": "en el termini de 20 dies hàbils comptats a partir de l’endemà de l’última de les publicacions",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Fase previa: prueba eliminatoria de lengua catalana (A2)",
+    "Fase previa: prueba eliminatoria de lengua castellana si no se acredita",
+    "Fase de oposición: cuestionario tipo test y/o supuestos teórico-prácticos (máximo 40 puntos; mínimo 20)",
+    "Fase de concurso: méritos profesionales y formación (máximo 25 puntos)"
+   ],
+   "cita": "Aquesta fase consistirà en contestar un qüestionari tipus test i/o en la resolució d’un o varis supòsits",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Experiencia en administraciones públicas (0,60 puntos/mes) y en sector privado (0,50 puntos/mes) en puestos iguales o similares, máximo 15 puntos; formación y perfeccionamiento, titulaciones y cursos especializados, máximo 10 puntos.",
+   "cita": "Experiència professional (màxim 15 punts) Experiència professional en administracions públiques i/o en el sector públic",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "No se indica la creación de bolsa o lista de espera en el texto",
+   "cita": "Un cop atorgades les puntuacions finals d’aquesta fase",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Periodo de prueba de un mes",
+   "cita": "La durada del període de prova serà d’ un mes corresponent a la categoria professional E.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Operari (peó de serveis comunitaris), grup professional E, personal laboral",
+   "cita": "cobertura d’una plaça d’operari, del grup professional E, mitjançant el sistema de concurs-oposició"
+  },
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "E",
+   "cita": "cobertura d’una plaça d’operari, del grup professional E, mitjançant el sistema de concurs-oposició"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "El procés selectiu es farà pel sistema de concurs-oposició, per torn lliure"
+  },
+  "plazas_discapacidad": {
+   "motivo": "valor_no_en_cita",
+   "valor": 0,
+   "cita": "Número de places 1 Lloc de treball Peó de serveis comunitaris"
+  },
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Instancia a través del modelo de la sede electrónica del Ayuntamiento, o presencialmente en el registro general o registro electrónico",
+   "cita": "Les persones que desitgin prendre part hauran de presentar instància a través del model de la seu electrònica"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Tablón de edictos y apartado «convocatorias procesos selectivos» de la sede electrónica del Ayuntamiento; BOPB, BOE y DOGC",
+   "cita": "i al tauler d’edictes i a l’apartat «convocatòries processos selectius» de la seu electrònica de l’Ajuntament"
+  },
+  "temas": {
+   "motivo": "valor_no_en_cita",
+   "valor": 8,
+   "cita": "Tema 1.- La Constitució Espanyola de 1978 i l’Estatut d’Autonomia de Catalunya: estructura i principis generals."
+  }
+ }
+}

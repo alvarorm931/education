@@ -1,64 +1,112 @@
 {
  "proceso": "boe:BOE-A-2026-11981",
  "documento": {
-  "id": "boc:BOC-A-2026-101-1789",
-  "fuente": "BOC",
-  "url": "https://www.gobiernodecanarias.org/boc/2026/101/1789.html",
-  "fecha": "2026-05-27",
-  "huella": "4d16df9c8f5973cb7b96aaeb8efb69fd49a4fed52b160f576be15288160bed8b"
+  "id": "boptenerife:BOPTENERIFE-2026-05-15-026",
+  "fuente": "BOP-TENERIFE",
+  "url": "http://www.bopsantacruzdetenerife.es/bopsc2/sumario.php?codigopub=1&fecha_mas_reciente=2026-05-15",
+  "fecha": "2026-05-15",
+  "huella": "2a691d5391f518790e08fa40f691197912269185472f89ad05a44db77ace944b"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T07:51:45+00:00",
- "lote": "msgbatch_01NvbwpQGcC9vt1x7nWayvXt",
+ "extraido": "2026-10-31T14:41:39+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
-   "valor": [
-    "Técnico/a de Administración General"
-   ],
-   "cita": "tres plazas de Técnico/a de Administración General, Escala de Administración General, Subescala Técnica",
+   "valor": "Arquitecto/a Técnico/a, Escala de Administración Especial, subescala técnica",
+   "cita": "una (1) plaza de Arquitecto/a Técnico/a, Escala de Administración Especial, subescala técnica, grupo de clasificación profesional A, subgrupo A2",
    "nivel": "literal"
   },
   "grupo": {
-   "valor": "A1",
-   "cita": "Grupo de Clasificación Profesional A, Subgrupo A1",
+   "valor": "A2",
+   "cita": "grupo de clasificación profesional A, subgrupo A2, del Ilustre Ayuntamiento de Guía de Isora",
    "nivel": "literal"
   },
   "vinculo": {
    "valor": "funcionario de carrera",
-   "cita": "funcionario/a de carrera, por el turno libre, de tres plazas",
+   "cita": "cobertura con funcionario/a de carrera por el turno libre de una (1) plaza",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "provisión, como personal funcionario de carrera, mediante el sistema de concurso-oposición",
    "nivel": "literal"
   },
   "plazas_total": {
-   "valor": 3,
-   "cita": "proceso selectivo para la provisión con funcionario/a de carrera, por el turno libre, de tres plazas",
+   "valor": 1,
+   "cita": "provisión, como personal funcionario de carrera, mediante el sistema de concurso-oposición, de UNA (1) plaza vacante",
    "nivel": "literal"
   },
   "plazas_turno_libre": {
-   "valor": 3,
-   "cita": "por el turno libre, de tres plazas de Técnico/a de Administración General",
+   "valor": 1,
+   "cita": "cobertura con funcionario/a de carrera por el turno libre de una (1) plaza",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Título de Arquitecto/a Técnico/a o título equivalente",
+   "cita": "Estar en posesión del Título de Arquitecto/a Técnico/a o del título equivalente atendiendo al marco establecido",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española, de otro Estado miembro de la UE o de los supuestos previstos; tener cumplidos 16 años y no exceder la edad máxima de jubilación forzosa; no haber sido separado del servicio público ni inhabilitado; capacidad funcional para las funciones de la plaza.",
+   "cita": "Tener cumplidos dieciséis años y no exceder, en su caso, de la edad máxima de jubilación forzosa",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 17,
+   "cita": "Los derechos de examen serán de 17 €, de conformidad con lo previsto en la Ordenanza Fiscal",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "veinte días hábiles, contados a partir del siguiente al de la publicación del correspondiente anuncio en el Boletín Oficial del Estado",
-   "cita": "El plazo de presentación de las instancias será de veinte días hábiles, contados a partir del siguiente al de la publicación",
+   "valor": "Veinte días hábiles desde el día siguiente a la publicación del anuncio de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de la solicitud de participación será de VEINTE DÍAS HÁBILES contados a partir del día siguiente",
    "nivel": "literal"
   },
-  "publicaciones": {
-   "valor": "Boletín Oficial de la Provincia de Santa Cruz de Tenerife, página web y tablón de anuncios de la Corporación",
-   "cita": "Los sucesivos anuncios se publicarán en el Boletín Oficial de la Provincia de Santa Cruz de Tenerife, en la página web y en el tablón de anuncios",
+  "presentacion": {
+   "valor": "Oficinas de Asistencia en Materia de Registro del Ayuntamiento, sede electrónica o medios del artículo 16.4 de la Ley 39/2015",
+   "cita": "podrá presentarse en las Oficinas de Asistencia en Materia de Registro del Ilustre Ayuntamiento de Guía de Isora, a través de su sede electrónica",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Primer ejercicio: test teórico de 100 preguntas (105 minutos), eliminatorio, máximo 10 puntos",
+    "Segundo ejercicio: desarrollo escrito de dos temas por sorteo (180 minutos), máximo 10 puntos",
+    "Tercer ejercicio: diez cuestiones prácticas por escrito (120 minutos), máximo 10 puntos",
+    "Fase de concurso: máximo 5 puntos"
+   ],
+   "cita": "El sistema selectivo constará de dos fases: una fase de oposición, integrada por tres pruebas de carácter eliminatorio con un peso de 30 puntos, y una fase de concurso de 5 puntos",
+   "nivel": "literal"
+  },
+  "temas": {
+   "valor": 69,
+   "cita": "Tema 69. Decreto Ley 3/2025, de 21 de abril, para la agilización de la tramitación de licencias urbanísticas",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, lista de reserva para atender necesidades temporales de personal al amparo del artículo 10 del TREBEP",
+   "cita": "al finalizar el procedimiento se configurará una lista de reserva para atender necesidades temporales de personal",
    "nivel": "literal"
   }
  },
  "rechazados": {
-  "sistema": {
+  "exenciones_tasa": {
    "motivo": "cita_no_literal",
-   "valor": "oposición",
-   "cita": ""
+   "valor": "No constan exenciones ni reducciones; la devolución de derechos de examen procede en los supuestos previstos en las bases.",
+   "cita": "Procederá la devolución de los derechos de examen en los siguientes casos"
   },
-  "plazas_promocion_interna": {
+  "publicaciones": {
    "motivo": "cita_no_literal",
-   "valor": 0,
+   "valor": "Boletín Oficial de la Provincia de Santa Cruz de Tenerife, tablón de anuncios y web municipal; anuncio de convocatoria en el BOE",
+   "cita": "Dicha Resolución se publicará en el Boletín Oficial de la Provincia de Santa Cruz de Tenerife"
+  },
+  "meritos": {
+   "motivo": "cita_no_literal",
+   "valor": "Experiencia profesional hasta 2 puntos; formación hasta 1,50 puntos; otras titulaciones hasta 1,50 puntos; total máximo 5 puntos",
+   "cita": "Experiencia profesional (Puntuación máxima 2 puntos)"
+  },
+  "practicas_o_curso": {
+   "motivo": "cita_no_literal",
+   "valor": "No consta",
    "cita": ""
   }
  }

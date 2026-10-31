@@ -1,0 +1,117 @@
+{
+ "proceso": "dogv:423972",
+ "documento": {
+  "id": "dogv:423972",
+  "fuente": "DOGV",
+  "url": "https://dogv.gva.es/datos/2025/05/16/pdf/2025_15645_es.pdf",
+  "fecha": "2025-05-16",
+  "huella": "146e4707ad472fb71140dd7f3501f0f9fd53a9b97e40dc9cb55ca32d8d4ff759"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:45:57+00:00",
+ "lote": "msgbatch_017vJZdAmjTkBDdH14aLEdCv",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "administrativo/a, escala auxiliar administrativa",
+   "cita": "plazas vacantes de la escala auxiliar administrativa, con denominación administrativo/a, grupo C, subgrupo C2",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C2",
+   "cita": "denominación administrativo/a, grupo C, subgrupo C2, por el sistema general de acceso libre",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "Convocar concurso-oposición para el ingreso en la escala auxiliar administrativa de la Universidad Miguel Hernández de Elche",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 19,
+   "cita": "convocan pruebas selectivas para cubrir 19 plazas vacantes de la escala auxiliar administrativa",
+   "nivel": "literal"
+  },
+  "plazas_turno_libre": {
+   "valor": 17,
+   "cita": "Cupo general: 17 plazas",
+   "nivel": "literal"
+  },
+  "plazas_discapacidad": {
+   "valor": 2,
+   "cita": "Cupo de reserva para personas con diversidad funcional: 2 plazas",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Graduado escolar, graduado en ESO, formación profesional de primer grado o equivalente",
+   "cita": "Estar en posesión del título de graduado escolar, graduado en ESO, formación profesional de primer grado o equivalente",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española o la que permita el acceso al empleo público; haber cumplido 16 años y no exceder la edad máxima de jubilación forzosa; capacidad física y psíquica para las funciones; no haber sido separado del servicio; haber abonado la tasa",
+   "cita": "Haber cumplido los 16 años y no exceder, en su caso, de la edad máxima de jubilación forzosa",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 10,
+   "cita": "Los derechos de participación serán los correspondientes a la plaza convocada, en este caso 10,00 €",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Discapacidad igual o superior al 33 %; familias numerosas o monoparentales de categoría especial; víctimas de violencia sobre la mujer; exclusión social; demandantes de empleo con requisitos. Bonificación del 50 % familias numerosas o monoparentales de categoría general",
+   "cita": "Los aspirantes con una discapacidad igual o superior al 33 %",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "diez días hábiles contados a partir del día siguiente al de la publicación del extracto de esta convocatoria en el Boletín Oficial del Estado",
+   "cita": "en el plazo de diez días hábiles contados a partir del día siguiente al de la publicación del extracto de esta convocatoria en el Boletín Oficial del Estado",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Solicitud telemática a través de la sede electrónica de la UMH (https://sede.umh.es/procedimientos/), opción Selección PTGAS-Funcionario de carrera",
+   "cita": "a través de la sede electrónica en el portal https://sede.umh.es/procedimientos/",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Diari Oficial de la Generalitat Valenciana (DOGV) para resoluciones; Boletín Oficial de la UMH para actos del tribunal; web https://servicioptgas-pi.umh.es/convocatorias/ a efectos informativos",
+   "cita": "Los actos del tribunal de selección se publicarán en el Boletín Oficial de la Universidad Miguel Hernández de Elche",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Fase de oposición: test de 80 preguntas del temario específico (120 minutos, hasta 40 puntos)",
+    "Test de 40 preguntas de todo el temario (90 minutos, hasta 20 puntos)",
+    "Fase de concurso: méritos profesionales, académicos y formación (hasta 40 puntos)"
+   ],
+   "cita": "1.ª parte: Consistirá en la resolución de un test de 80 preguntas, en un tiempo de 120 minutos",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Experiencia profesional hasta 22 puntos; nivel de responsabilidad hasta 8 puntos; cursos de formación hasta 2 puntos; valenciano hasta 1,25; idiomas comunitarios hasta 1,25; otras titulaciones hasta 1,5; superación de procedimientos selectivos en la UMH hasta 4",
+   "cita": "A) Méritos profesionales (máximo 30 puntos)",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, bolsa de trabajo con el personal aspirante que supere la fase de oposición",
+   "cita": "La bolsa de trabajo se constituirá con el personal aspirante que haya superado la fase de oposición",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "convocar pruebas selectivas para el ingreso como personal funcionario de carrera"
+  },
+  "temas": {
+   "motivo": "valor_no_numerico",
+   "valor": "Temario general de 6 temas y temario específico de 21 temas",
+   "cita": "Temario específico 1. Objetivos y ámbito de aplicación de las leyes 39/2015 y 40/2015"
+  },
+  "practicas_o_curso": {
+   "motivo": "cita_no_literal",
+   "valor": "no aparece",
+   "cita": ""
+  }
+ }
+}

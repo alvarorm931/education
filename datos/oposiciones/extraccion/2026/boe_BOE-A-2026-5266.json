@@ -1,0 +1,111 @@
+{
+ "proceso": "boe:BOE-A-2026-5266",
+ "documento": {
+  "id": "bopcadiz:BOP-CADIZ-2024-198.100",
+  "fuente": "BOP-CADIZ",
+  "url": "https://www.bopcadiz.es/boletin/Boletin-numero-250-del-ano-2024",
+  "fecha": "2024-12-31",
+  "huella": "c65df022696992d4cc41dfa81efb0c3a97bd0f5d1c6ca21fa31d0bf7ad501493"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:40:40+00:00",
+ "lote": "msgbatch_01E3wiYcGL8Lzho48bXWLyyb",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Arquitecto",
+    "Técnico de Gestión",
+    "Trabajador Social",
+    "Auxiliar Administrativo"
+   ],
+   "cita": "una plaza de Técnico de Gestión, una plaza de Trabajador Social y cinco plazas de Auxiliares Administrativos",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "la selección como funcionario de carrera, para cubrir las plazas que se encuentran vacantes",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "El procedimiento de selección de las personas aspirantes será el de Concurso-Oposición.",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Arquitecto: título universitario oficial que habilite para el ejercicio de la profesión reglada de arquitecto; Trabajador Social: Diplomado Universitario o Grado en Trabajo Social; Auxiliar Administrativo: Graduado en ESO o equivalente; Técnico de Gestión: la indicada en su anexo",
+   "cita": "Título Universitario oficial que habilite para el ejercicio de la profesión reglada de arquitecto.",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española o de Estado miembro de la UE; no padecer enfermedad o defecto físico que impida el desempeño; no haber sido separado del servicio público; tener cumplidos dieciséis años y no exceder la edad máxima de jubilación",
+   "cita": "Tener cumplidos dieciséis años y no exceder, en su caso, de la edad máxima de jubilación.",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles desde el siguiente día hábil a la publicación en el BOE del anuncio de la convocatoria",
+   "cita": "En el plazo de veinte días hábiles a contar desde el siguiente día hábil al de la publicación en el Boletín Oficial del Estado",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Preferentemente en sede electrónica (www.aytorota.es); también en la Oficina de Atención al Ciudadano o en los registros del art. 16.4 de la Ley 39/2015",
+   "cita": "Las solicitudes se presentarán preferentemente en sede electrónica en www.aytorota.es",
+   "nivel": "sin_signos"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia de Cádiz, tablón de anuncios del Ayuntamiento, sede electrónica y web municipal; extracto en BOJA y BOE",
+   "cita": "Estas bases, junto a la convocatoria de las plazas, se publicarán en el Boletín Oficial de la Provincia de Cádiz",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Arquitecto: primer ejercicio, test de 100 preguntas (120 min, máx. 8 puntos)",
+    "Arquitecto: segundo ejercicio, desarrollo escrito de dos temas (2 horas)",
+    "Arquitecto: tercer ejercicio, dos supuestos prácticos (3 horas)",
+    "Trabajador Social: primer ejercicio, desarrollo escrito de dos temas (3 horas)",
+    "Trabajador Social: segundo ejercicio, dos supuestos prácticos (3 horas)",
+    "Auxiliar Administrativo: primer ejercicio, test de 75 preguntas (90 min, máx. 12 puntos)",
+    "Auxiliar Administrativo: segundo ejercicio, supuesto práctico (máx. 12 puntos)"
+   ],
+   "cita": "El procedimiento de selección de las personas aspirantes será el de Concurso-Oposición.",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Fase de concurso máximo 16 puntos (40%): servicios prestados hasta 11 puntos, formación hasta 5 puntos",
+   "cita": "en ningún caso, la valoración de los méritos podrá ser superior a 16 puntos (40% de la puntuación máxima prevista)",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, bolsa de trabajo para contrataciones temporales o nombramientos como funcionarios interinos, con validez de tres años prorrogable",
+   "cita": "Del resultado del presente proceso selectivo se confeccionará una Bolsa de Trabajo para la realización de contrataciones temporales",
+   "nivel": "literal"
+  },
+  "temas": {
+   "valor": 60,
+   "cita": "TEMA 60. Los presupuestos locales. Contabilidad y cuentas.",
+   "nivel": "contado"
+  }
+ },
+ "rechazados": {
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "A1, A2, C2 (según plaza)",
+   "cita": "Arquitecto II A1 ... Técnico de Gestión III C2 Auxiliar 5 Auxiliar Administrativo V"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 8,
+   "cita": "una plaza de Arquitecto, una plaza de Técnico de Gestión, una plaza de Trabajador Social y cinco plazas de Auxiliares Administrativos"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 8,
+   "cita": "Acceso libre FUNCIONARIOS DE CARRERA ESCALA ADMINISTRACIÓN GENERAL"
+  },
+  "practicas_o_curso": {
+   "motivo": "cita_no_literal",
+   "valor": "no consta",
+   "cita": ""
+  }
+ }
+}

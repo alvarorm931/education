@@ -1,0 +1,50 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2025-573",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2025-573",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2025/01/31_21/2025_000573.pdf",
+  "fecha": "2025-01-31",
+  "huella": "030e513bbc34455f7235288be9f9d2b9633acc17929794e32b5e5e99c45cf4a8"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:46:36+00:00",
+ "lote": "msgbatch_01MQzQCLMZKxUrrPMAj7dr53",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "C1",
+   "cita": "pertenecientes al Grupo de Clasificación C1, en los supuestos previstos en el artículo 18",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "por el sistema de concurso de méritos",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de Anuncios de la sede electrónica del Ayuntamiento (guardamardelsegura.sedelectronica.es) y página web del Ayuntamiento (www.guardamardelsegura.es)",
+   "cita": "estará a disposición de los interesados en el Tablón de Anuncios de la sede electrónica",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, bolsa de empleo para la provisión temporal por mejora de empleo de puestos C1 vacantes o temporalmente sin ocupantes",
+   "cita": "CONVOCATORIA CONSTITUCIÓN BOLSA DE EMPLEO - MEJORA EMPLEO EN PUESTOS C1 VACANTES/TEMPORALMENTE SIN OCUPANTES",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Puestos del Grupo de Clasificación C1 vacantes o temporalmente sin ocupantes (provisión por mejora de empleo)"
+   ],
+   "cita": "provisión temporal, por mejora de empleo, de puestos que figuran en la plantilla del Ayuntamiento de Guardamar del Segura, pertenecientes al Grupo de Clasificación C1"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "10 días naturales contados a partir del día siguiente al de la publicación del anuncio en el Boletín Oficial de la Provincia de Alicante",
+   "cita": "El plazo de presentación de solicitudes para tomar parte en la citada prueba selectiva será de 10 días naturales"
+  }
+ }
+}

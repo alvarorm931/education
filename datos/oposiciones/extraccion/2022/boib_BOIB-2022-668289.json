@@ -1,0 +1,75 @@
+{
+ "proceso": "boib:BOIB-2022-668289",
+ "documento": {
+  "id": "boib:BOIB-2022-668289",
+  "fuente": "BOIB",
+  "url": "https://www.caib.es/eboibfront/es/2022/11671/668289/acuerdo-del-consejo-de-administracion-del-institut",
+  "fecha": "2022-12-24",
+  "huella": "320d2b4e70431cae71441d53875e1aadea2f98502b335866afc79d3575d4c2ae"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:55:59+00:00",
+ "lote": "msgbatch_014eT3dLLVopBnuVgQ4syWD9",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Personal laboral del Instituto Balear de Infraestructuras y Servicios Educativos (IBISEC), categorías según anexo 4"
+   ],
+   "cita": "concurso extraordinario de méritos para cubrir 15 plazas de personal laboral del Instituto Balear de Infraestructuras y Servicios Educativos",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "ocupadas de manera temporal por personal con una relación, de esta naturaleza, anterior al día 1 de enero de 2016",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "Aprobar la convocatoria de concurso extraordinario de méritos para cubrir 15 plazas",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 15,
+   "cita": "concurso extraordinario de méritos para cubrir 15 plazas de personal laboral",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Según categoría, anexo 4 (no detallada en el texto)",
+   "cita": "Aprobar los requisitos de titulación para acceder a cada una de las categorías convocadas que figuran en el anexo 4",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Plazo no especificado en el texto",
+   "cita": "Aprobar las instrucciones para tramitar las solicitudes telemáticas y las declaraciones responsables que constan en el anexo 5",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "página web https://www.caib.es/sites/ibisec/ca/pla_estabilitzacia/ y Boletín Oficial de las Illes Balears",
+   "cita": "Hacer público que el modelo de solicitud y de autobaremación de méritos para realizar el trámite telemático está disponible",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Baremo de méritos según anexo 3 (no detallado en el texto)",
+   "cita": "Aprobar el baremo de méritos que tiene que regular este proceso que figura como anexo 3",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "no",
+   "cita": "Aprobar la convocatoria de concurso extraordinario de méritos para cubrir 15 plazas",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_discapacidad": {
+   "motivo": "valor_no_numerico",
+   "valor": "limitada a los puestos de trabajo ocupados por personas con discapacidad que cumplen las previsiones de la Ley 20/2021",
+   "cita": "la reserva realizada en estas convocatorias se limita a los puestos de trabajo ocupados por personas con discapacidad"
+  },
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Telemática, obligatoria para los aspirantes, según instrucciones del anexo 5",
+   "cita": "los aspirantes que participen en los procesos de selección de estabilización queden obligados a relacionarse con la administración telemáticamente"
+  }
+ }
+}

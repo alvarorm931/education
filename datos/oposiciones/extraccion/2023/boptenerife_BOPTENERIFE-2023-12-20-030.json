@@ -1,0 +1,50 @@
+{
+ "proceso": "boptenerife:BOPTENERIFE-2023-12-20-030",
+ "documento": {
+  "id": "boptenerife:BOPTENERIFE-2023-12-20-030",
+  "fuente": "BOP-TENERIFE",
+  "url": "http://www.bopsantacruzdetenerife.es/bopsc2/sumario.php?codigopub=1&fecha_mas_reciente=2023-12-20",
+  "fecha": "2023-12-20",
+  "huella": "5db1405e3915078faab6a43b5d2a65fb4e22c11db3317a077341e97b24673b0c"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:58:02+00:00",
+ "lote": "msgbatch_01SjfjDqJRwL6bpTvJz2YfVg",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "PROFESOR/A DE PIANO"
+   ],
+   "cita": "contratación, como Personal Laboral fijo, para la cobertura de una plaza de PROFESOR/A DE PIANO",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "I",
+   "cita": "una plaza de PROFESOR/A DE PIANO, Grupo I, mediante el sistema de concurso de méritos",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "contratación como personal laboral fijo para la ocupación de una (1) plaza de PROFESOR/A DE PIANO",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "para la ocupación de una (1) plaza de PROFESOR/A DE PIANO, Grupo I",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso",
+   "cita": "mediante el sistema de concurso de méritos, dentro del proceso selectivo extraordinario de estabilización"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Boletín Oficial de la Provincia de Santa Cruz de Tenerife",
+   "cita": "Publicar la presente Resolución en el Boletín Oficial de la Provincia de Santa Cruz de Tenerife, y notificar la misma a la interesada"
+  }
+ }
+}

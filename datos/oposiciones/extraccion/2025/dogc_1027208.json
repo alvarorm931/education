@@ -1,0 +1,52 @@
+{
+ "proceso": "dogc:1027208",
+ "documento": {
+  "id": "dogc:1027208",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1027208",
+  "fecha": "2025-10-20",
+  "huella": "6eeb304e2bbd3d4dbc3aa30e95232a17f93d1ba67da229fa56db1e7a34b27627"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:41:27+00:00",
+ "lote": "msgbatch_01UNq3BNhPPHoTK3TEJzun1h",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "agent de la Policia Local de Dosrius"
+   ],
+   "cita": "per cobrir 2 places d'agent de la Policia Local de Dosrius",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 2,
+   "cita": "per cobrir 2 places d'agent de la Policia Local de Dosrius",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Temario específico de 40 temas (Annex I)"
+   ],
+   "cita": "ANNEX I. TEMARI ESPECÍFIC",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, per a substitucions",
+   "cita": "la creació d'una borsa de substitucions",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Butlletí Oficial de la Província de Barcelona, Diari Oficial de la Generalitat de Catalunya, tauler d'anuncis i pàgina web municipals",
+   "cita": "es van publicar íntegrament al Butlletí Oficial de la Província de Barcelona (BOPB), al Diari Oficial de la Generalitat de Catalunya (DOGC) i al tauler d'anuncis i pagina web municipals"
+  },
+  "temas": {
+   "motivo": "valor_no_en_cita",
+   "valor": 40,
+   "cita": "Llei 17/2015, de 21 de juliol, d'igualtat efectiva de dones i homes"
+  }
+ }
+}

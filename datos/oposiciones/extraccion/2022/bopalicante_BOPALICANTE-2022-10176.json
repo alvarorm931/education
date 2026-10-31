@@ -1,0 +1,63 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2022-10176",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2022-10176",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2022/12/15_237/2022_010176.pdf",
+  "fecha": "2022-12-15",
+  "huella": "ccc67172033c55bd14af41c6a3e8c1535e7c289ecd3d54630e0026613b78fc87"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:20+00:00",
+ "lote": "msgbatch_01B4ETF5xB4buYCHqPiHTXzF",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "TECNICO MEDIO DE EDUCACION Y JUVENTUD",
+    "AUXILIAR ADMINISTRATIVO/A",
+    "OFICIAL ALBAÑIL",
+    "SUBALTERNO Clase: CONSERJE"
+   ],
+   "cita": "Denominación Escala/Subescala Grupo Nº de plazas Nº RPT Sistema TECNICO MEDIO DE EDUCACION Y JUVENTUD",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "A2",
+   "cita": "TECNICO MEDIO DE EDUCACION Y JUVENTUD Administración Especial/Técnica A2 1 89 Concurso oposición",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "para la provisión en propiedad de varias plazas de funcionario/a de carrera",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 5,
+   "cita": "Oferta de Empleo Pública Extraordinaria de Estabilización 2022 (BOP nº 100 de 27-05-2022)",
+   "nivel": "sin_signos"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles a contar desde el día siguiente a la publicación del extracto de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes para tomar parte en las citadas pruebas selectivas será de veinte días hábiles",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "página web municipal https://www.crevillent.es/procesos-estabilizacion/",
+   "cita": "estarán a disposición de las personas interesadas en la página web municipal https://www.crevillent.es/procesos-estabilizacion/",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "mediante el sistema selectivo de CONCURSO OPOSICIÓN, de conformidad con lo dispuesto en el artículo"
+  },
+  "plazas_turno_libre": {
+   "motivo": "cita_no_literal",
+   "valor": 5,
+   "cita": "mediante el sistema selectivo de CONCURSO OPOSICIÓN, de conformidad con lo dispuesto en el artículo"
+  }
+ }
+}

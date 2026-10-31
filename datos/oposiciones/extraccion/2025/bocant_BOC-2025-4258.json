@@ -1,0 +1,60 @@
+{
+ "proceso": "bocant:BOC-2025-4258",
+ "documento": {
+  "id": "bocant:BOC-2025-4258",
+  "fuente": "BOC-CANT",
+  "url": "https://boc.cantabria.es/boces/verAnuncioAction.do?idAnuBlob=420115",
+  "fecha": "2025-05-19",
+  "huella": "6216df010bcc3036ccb0ed88178defda62ecb44981b599703d5cf93c71e9a7f9"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:45:45+00:00",
+ "lote": "msgbatch_017vJZdAmjTkBDdH14aLEdCv",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Personal docente no universitario de la Comunidad Autónoma de Cantabria"
+   ],
+   "cita": "convocatoria de la sustitución parcial de la jornada lectiva por actividades de otra naturaleza para el personal docente no universitario",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "Ser funcionario de carrera de cualquier cuerpo docente, en situación de servicio activo",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Tener 58 años o más a 31 de diciembre de 2025, al menos 15 años de servicios en enseñanza pública no universitaria, destino definitivo en el curso 2024/2025 en el mismo centro, docencia a grupo con ratio igual o superior a 12 y no tener comisión de servicios ni reducción de jornada",
+   "cita": "Cumplir o tener cumplidos 58 años de edad o más, a fecha de 31 de diciembre de 2025",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Desde el 23 de mayo al 4 de junio de 2025, ambos inclusive",
+   "cita": "El plazo para presentar la solicitud de sustitución de horas lectivas será desde el 23 de mayo al 4 de junio de 2025",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "En el centro educativo donde el docente tiene destino definitivo, dirigida a su dirección, con declaración responsable",
+   "cita": "deberá presentarse en el centro educativo en el que el docente desempeña un puesto de trabajo con carácter definitivo",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso",
+   "cita": "la sustitución parcial se concederá previa convocatoria pública y por curso completo"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Tablón de anuncios del centro y comunicación individual por correo electrónico",
+   "cita": "se publicará en el tablón de anuncios del centro, a efectos de notificaciones"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "no",
+   "cita": ""
+  }
+ }
+}

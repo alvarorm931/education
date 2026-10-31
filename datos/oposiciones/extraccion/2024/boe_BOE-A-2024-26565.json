@@ -1,0 +1,55 @@
+{
+ "proceso": "boe:BOE-A-2024-26565",
+ "documento": {
+  "id": "bocm:BOCM-20241210-73",
+  "fuente": "BOCM",
+  "url": "https://www.bocm.es/bocm-20241210-73",
+  "fecha": "2024-12-10",
+  "huella": "29f39e99a611a3a30116afc68698bc0475d9624eb16128079fa2c15259d7739a"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:49:54+00:00",
+ "lote": "msgbatch_018TPQE8scQozfAUdc1n8RyC",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "C1",
+   "cita": "pertenecientes al grupo profesional C1 del sistema de clasificación del personal laboral vigente",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "Tipo de personal: Laboral.",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "por el sistema de concurso-oposición de dos plazas de educador/a de personas con discapacidad",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Bases específicas, anexos y modelos de solicitud publicados en la página web del Ayuntamiento de Parla",
+   "cita": "Las bases específicas íntegras, junto con los anexos y modelos de solicitud normalizadas, se encuentran íntegramente publicadas en la página web",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Educador/a de personas con discapacidad"
+   ],
+   "cita": "Educador/a de personas con discapacidad. N.o Vacantes: 2."
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 2,
+   "cita": "Denominación: Educador/a de personas con discapacidad. N.o Vacantes: 2."
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 2,
+   "cita": "para cubrir por el turno libre por el procedimiento de concurso-oposición"
+  }
+ }
+}

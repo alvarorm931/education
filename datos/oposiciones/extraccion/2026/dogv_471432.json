@@ -1,0 +1,101 @@
+{
+ "proceso": "dogv:471432",
+ "documento": {
+  "id": "dogv:471432",
+  "fuente": "DOGV",
+  "url": "https://dogv.gva.es/datos/2026/04/14/pdf/2026_10145_es.pdf",
+  "fecha": "2026-04-14",
+  "huella": "a361400eea7d2476aeab56c99c45142029cd72af916dc276f0c7e54b9a10c791"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:40:41+00:00",
+ "lote": "msgbatch_01E3wiYcGL8Lzho48bXWLyyb",
+ "no_son_bases": false,
+ "campos": {
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "Los concursos para la provisión de plazas de profesor permanente laboral se desarrollarán en sesión pública",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "convocar a concurso una plaza de profesorado permanente laboral de carácter indefinido",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Título de doctora o doctor",
+   "cita": "Estar en posesión del título de doctora o doctor.",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Tener cumplidos 16 años y no haber cumplido la edad de jubilación forzosa; acreditación a profesorado permanente laboral (ANECA o AVAP); no haber sido separado del servicio por expediente disciplinario; capacidad funcional; permiso de residencia y trabajo si es extranjero no comunitario.",
+   "cita": "Tener cumplidos los 16 años y no haber cumplido la edad máxima de jubilación forzosa.",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 30,
+   "cita": "el sistema le llevará directamente al pago telemático de 30 euros en concepto de derechos de participación",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Exentos: discapacidad igual o superior al 33%, familias numerosas especiales, familias monoparentales especiales y víctimas de violencia sobre la mujer. Bonificación del 50%: familias numerosas y monoparentales de categoría general (pago de 15 euros).",
+   "cita": "Estarán exentas del pago de la tasa las personas que acrediten una discapacidad en grado igual o superior al 33%",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "10 días hábiles desde el día siguiente a la publicación de la convocatoria en el DOGV",
+   "cita": "El plazo de presentación de solicitudes será de 10 días hábiles contados a partir del día siguiente",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Exclusivamente por vía electrónica, en el formulario «Selección PDI-Laboral Fijo» de la sede electrónica de la UMH, con identificación electrónica",
+   "cita": "Las solicitudes se cumplimentarán y presentarán exclusivamente por vía electrónica, accediendo al formulario",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Primera prueba: exposición oral del historial académico, docente e investigador y de los proyectos docente e investigador (máx. 90 min; 100 puntos)",
+    "Segunda prueba: exposición oral de un tema elegido por la comisión de entre al menos tres presentados (45 min a 90 min)"
+   ],
+   "cita": "La primera prueba será pública y consistirá en la exposición oral por el concursante",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Primera prueba (70 puntos por méritos): actividad investigadora y proyecto investigador (30-35 puntos); actividad y proyecto docente (30-35 puntos); liderazgo en gestión y otros méritos (10 puntos). Adecuación a las necesidades de la UMH (30 puntos).",
+   "cita": "La comisión valorará los méritos aportados, de forma que cada aspirante podrá obtener un máximo de 100 puntos",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "no",
+   "cita": "Lista de reserva",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "no",
+   "cita": "Duración del contrato: Indefinido",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Profesorado Permanente Laboral, área de Bioquímica y Biología Molecular (plaza DC3574)",
+   "cita": "Categoría: Profesorado Permanente Laboral. Departamento: Bioquímica y Biología Molecular"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "laboral temporal",
+   "cita": "contratos de profesorado permanente laboral con carácter indefinido tienen naturaleza especial"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Boletín Oficial de la Universidad Miguel Hernández de Elche (BOUMH) y web del Servicio de Profesorado",
+   "cita": "se publicará la lista provisional de las personas admitidas y excluidas en el Boletín Oficial de la Universidad"
+  },
+  "temas": {
+   "motivo": "valor_no_numerico",
+   "valor": "al menos 3 temas presentados por el concursante",
+   "cita": "los concursantes entregarán a la comisión un resumen de, al menos, tres temas"
+  }
+ }
+}

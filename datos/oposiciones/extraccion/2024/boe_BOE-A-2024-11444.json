@@ -1,0 +1,50 @@
+{
+ "proceso": "boe:BOE-A-2024-11444",
+ "documento": {
+  "id": "boe:BOE-A-2024-11444",
+  "fuente": "BOE",
+  "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2024-11444",
+  "fecha": "2024-06-05",
+  "huella": "8b365cfb7371251a15eeeb17d6f9e565430f2bc6fc3b76853c9faa811bed3715"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:54:25+00:00",
+ "lote": "msgbatch_01HRnX7cDVMkRZD7mBamCmLu",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "A1",
+   "cita": "grupo A (subgrupo A1), por el turno libre, sector de administración especial",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "Oferta de empleo público extraordinaria de estabilización de empleo temporal del PAS 2022",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "por el procedimiento de concurso-oposición, de acceso al grupo A",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "la selección de personal para cubrir 1 puesto de trabajo vacante del grupo A",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Escala técnica superior de información, perfil periodista"
+   ],
+   "cita": "convocar pruebas selectivas por el procedimiento de concurso-oposición de acceso al grupo A (subgrupo A1)"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "por el turno libre, sector de administración especial, escala técnica superior de información"
+  }
+ }
+}

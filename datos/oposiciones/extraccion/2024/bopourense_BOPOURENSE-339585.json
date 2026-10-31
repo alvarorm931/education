@@ -1,0 +1,57 @@
+{
+ "proceso": "bopourense:BOPOURENSE-339585",
+ "documento": {
+  "id": "bopourense:BOPOURENSE-339585",
+  "fuente": "BOP-OURENSE",
+  "url": null,
+  "fecha": "2024-04-09",
+  "huella": "6ec006f74bf5e939ab8a1e3991bbaaf405cd30fb08f77f611a62ede82f8d499b"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:54:00+00:00",
+ "lote": "msgbatch_01EQ4R6PVKpEwTXzXwPCmspm",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "chófer/esa operario/a tractorista",
+    "albañil oficial/a de 1.ª",
+    "peones/as de obras y servicios"
+   ],
+   "cita": "un/a (1) chófer/esa operario/a tractorista, un/a (1) albañil oficial/a de 1.ª y siete (7) peones/as de obras y servicios",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "personal laboral temporal, mediante el sistema de concurso–oposición",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mediante el sistema de concurso–oposición de un/a (1) chófer/esa",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "cinco días hábiles siguientes al de la publicación de este anuncio en el BOP",
+   "cita": "durante el plazo de cinco días hábiles siguientes al de la publicación de este anuncio en el BOP",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Registro del Ayuntamiento, de 9.00 a 14.00 horas",
+   "cita": "podrán presentar sus solicitudes en el Registro del Ayuntamiento, de 9.00 a 14.00 horas",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "página web del ayuntamiento y sede electrónica",
+   "cita": "a disposición del público en la página web del ayuntamiento",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 9,
+   "cita": "un/a (1) chófer/esa operario/a tractorista, un/a (1) oficial/a albañil de 1.ª y siete (7) peones/as"
+  }
+ }
+}

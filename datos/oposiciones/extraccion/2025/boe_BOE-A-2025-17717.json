@@ -1,0 +1,57 @@
+{
+ "proceso": "boe:BOE-A-2025-17717",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2025-2257",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2025/04/23_76/2025_002257.pdf",
+  "fecha": "2025-04-23",
+  "huella": "abc4f8e921545819046a94ce7d7523e85f01e575c8047e725b0906427c041b44"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:42:50+00:00",
+ "lote": "msgbatch_01XofVwxKEhyEjSzGog6wsD4",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Trabajador/a Social",
+    "Diplomado/a en Informática",
+    "Enfermero/a, especialista en enfermería del trabajo"
+   ],
+   "cita": "CONVOCATORIA Y BASES ESPECÍFICAS PARA CUBRIR PLAZAS DE TRABAJADOR/A SOCIAL, DIPLOMADO/A EN INFORMÁTICA Y ENFERMERO/A",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "provisión de personal funcionario de carrera para cubrir varias plazas",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "pruebas selectivas para la provisión de personal funcionario de carrera",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles, contados a partir del día siguiente al de la publicación del extracto de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes para tomar parte en las pruebas selectivas será de veinte días hábiles",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de Edictos de la Corporación (https://sedeelectronica.alicante.es/edictos.php), Servicio de Recursos Humanos y página web municipal (https://w3.alicante.es/rrhh/oposiciones/)",
+   "cita": "estarán a disposición de los interesados en el Tablón de Edictos de la Corporación",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "no indicado",
+   "cita": "no aparece en el texto"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_numerico",
+   "valor": "varias",
+   "cita": "para cubrir varias plazas de Trabajador/a Social, Diplomado/a en Informática"
+  }
+ }
+}

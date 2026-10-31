@@ -1,0 +1,40 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2023-5103",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2023-5103",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2023/06/26_121/2023_005103.pdf",
+  "fecha": "2023-06-26",
+  "huella": "20177e83ce42df631fd3ef5b0513b6f6ed46e6fdf912e334db2a8b3f294191ae"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:59:36+00:00",
+ "lote": "msgbatch_012nGabRM1G4b7cEKJh1Bcx1",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Agente de la Policía Local"
+   ],
+   "cita": "proceso selectivo para cubrir diez plazas de agente de la Policía Local",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "Por Decreto de Alcaldía núm.2067 -2023, de fecha 13/06/2023, respecto al proceso selectivo",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 10,
+   "cita": "proceso selectivo para cubrir diez plazas de agente de la Policía Local",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_turno_libre": {
+   "motivo": "cita_no_literal",
+   "valor": 7,
+   "cita": "tres se cubrirán por turno de movilidad y siete por turno libre"
+  }
+ }
+}

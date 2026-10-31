@@ -1,27 +1,17 @@
 {
  "proceso": "boplleida:BOPLLEIDA-2026-5806",
  "documento": {
-  "id": "boplleida:BOPLLEIDA-2026-5806",
-  "fuente": "BOP-LLEIDA",
-  "url": "https://ebop.diputaciolleida.cat/aplicacions/bop/bopV1/fitxers/pdf/2026/128/202612805806.pdf",
-  "fecha": "2026-07-08",
-  "huella": "202328e0731907c0f7a7dea867ef3071d6036cae62ba28bafdaaf262bcc787ba"
+  "id": "dogc:1049680",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1049680",
+  "fecha": "2026-07-13",
+  "huella": "44931418441ec4d16c9e7c09b5ac8793c751bcf511bbbcf06a3cc1bc9098ae95"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T08:18:20+00:00",
- "lote": "msgbatch_01BrnYw6KkevFx7at547B5g8",
+ "extraido": "2026-10-31T14:41:40+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
  "no_son_bases": false,
  "campos": {
-  "denominacion": {
-   "valor": "Tècnic/a de projectes per afrontar el repte demogràfic",
-   "cita": "Tècnic/a de projectes per afrontar el repte demogràfic Nivell de destí: 21",
-   "nivel": "literal"
-  },
-  "grupo": {
-   "valor": "A2",
-   "cita": "Grup de classificació: A Subgrup: A2 Escala: Administració especial",
-   "nivel": "literal"
-  },
   "vinculo": {
    "valor": "funcionario interino",
    "cita": "en règim de funcionari/ària interí/na, i constitució d'una borsa de treball",
@@ -32,66 +22,77 @@
    "cita": "mitjançant concurs-oposició, en règim de funcionari/ària interí/na",
    "nivel": "literal"
   },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "procés de selecció d'un/a tècnic/a de projectes per afrontar el repte demogràfic",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Títol universitari oficial de llicenciatura, grau universitari o equivalent que habiliti per a l'exercici de les funcions del lloc de treball corresponent",
+   "cita": "Títol universitari oficial de llicenciatura, grau universitari o equivalent que habiliti per a l'exercici de les funcions",
+   "nivel": "literal"
+  },
   "otros_requisitos": {
-   "valor": "Nacionalidad española o de la UE (o con libre circulación); edad mínima 16 años y no exceder la edad de jubilación forzosa; no padecer enfermedad ni disminución que impida las funciones; no haber sido separado del servicio público ni inhabilitado; carnet de conducir B; nivel B2 de castellano si no es de país de habla castellana.",
-   "cita": "Estar en possessió del carnet de conduir B.",
+   "valor": "Nacionalitat espanyola o de la UE (o aplicable per lliure circulació); edat mínima 16 anys i no superar l'edat de jubilació forçosa; no tenir malaltia ni disminució que impedeixi les funcions; no haver estat separat del servei ni inhabilitat; carnet de conduir B; castellà B2 si no és de país castellanoparlant",
+   "cita": "Estar en possessió del carnet de conduir B",
    "nivel": "literal"
   },
   "idioma_cooficial": {
-   "valor": "Catalán, nivel C1 (suficiencia), o titulación equivalente; prueba si no se acredita",
-   "cita": "certificat de coneixements de nivell de suficiència de llengua catalana orals i escrits (certificat nivell C1)",
+   "valor": "Català, certificat de nivell de suficiència C1 (o equivalent); si no es posseeix, prova del Tribunal",
+   "cita": "Estar en possessió del certificat de coneixements de nivell de suficiència de llengua catalana orals i escrits (certificat nivell C1)",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "10 días hábiles desde el día siguiente a la última publicación del anuncio de la convocatoria en el BOP o DOGC",
+   "valor": "10 dies hàbils comptats a partir del dia següent a la darrera publicació de l'anunci de la convocatòria al BOP o al DOGC",
    "cita": "en el termini de 10 dies hàbils comptats a partir del dia següent al de la darrera publicació",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Modelo normalizado por sede electrónica del Ayuntamiento, Registro General en horario de atención al público, oficinas de correos o cualquier forma del art. 16.4 de la Ley 39/2015",
-   "cita": "per mitjans electrònics a través de la seu electrònica de l'Ajuntament de Massalcoreig o en hores d'atenció al públic al Registre General",
+   "valor": "Model normalitzat (Annex I) a través de la seu electrònica de l'Ajuntament, Registre General, oficines de correus o els mitjans de l'article 16.4 de la Llei 39/2015",
+   "cita": "a través de la seu electrònica de l'Ajuntament de Massalcoreig o en hores d'atenció al públic al Registre General",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Sede electrónica del Ayuntamiento (https://www.massalcoreig.cat/) y, en su caso, tablón de anuncios",
-   "cita": "Tots els anuncis subsegüents a les bases i la convocatòria es faran mitjançant la publicació a la seu electrònica de l'Ajuntament",
+   "valor": "Seu electrònica de l'Ajuntament (https://www.massalcoreig.cat/) i, si escau, tauler d'anuncis",
+   "cita": "Tots els anuncis subsegüents a les bases i la convocatòria es faran mitjançant la publicació a la seu electrònica",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Prueba de conocimientos de catalán (apto/no apto, si no acredita el certificado)",
-    "Prueba de conocimientos teóricos: 60 preguntas tipo test, máximo 70 puntos, mínimo 35 para superar",
-    "Fase de concurso: experiencia profesional (máx. 15) y formación (máx. 10)",
-    "Entrevista personal, máximo 5 puntos"
+    "Prova de coneixements teòrics: qüestionari de 60 preguntes tipus test, eliminatòria (70 punts, mínim 35)",
+    "Fase de concurs: experiència professional (màx. 15 punts) i formació (màx. 10 punts)",
+    "Entrevista individual (màx. 5 punts)"
    ],
-   "cita": "La fase d'oposició consistirà en la realització de ( una) 1 prova d'aptitud eliminatòria i obligatòria",
+   "cita": "La fase d'oposició consistirà en la realització de (una) 1 prova d'aptitud eliminatòria",
    "nivel": "literal"
   },
   "temas": {
    "valor": 42,
-   "cita": "42. Causes i conseqüències dels nous hàbits dels consumidors.",
+   "cita": "42. Causes i conseqüències dels nous hàbits dels consumidors",
    "nivel": "literal"
   },
   "bolsa": {
-   "valor": "sí, borsa de treball para cubrir vacantes en el puesto y sustituciones temporales, vigencia de 2 años",
-   "cita": "Les persones aspirants que hagin superat la fase d'oposició ... formaran part d'una borsa de treball",
-   "nivel": "fragmentos"
+   "valor": "Sí, borsa de treball per cobrir vacants i substitucions temporals del lloc, vigència de 2 anys",
+   "cita": "Les persones aspirants que hagin superat la fase d'oposició i hagin estat declarats aptes, formaran part d'una borsa de treball",
+   "nivel": "literal"
   },
   "practicas_o_curso": {
    "valor": "No consta",
-   "cita": "Tot allò que no s'hagi previst a les Bases de la convocatòria",
+   "cita": "Acabada la qualificació, el Tribunal publicarà en el Tauler d'anuncis de la seu electrònica",
    "nivel": "literal"
   }
  },
  "rechazados": {
-  "plazas_total": {
+  "denominacion": {
    "motivo": "cita_no_literal",
-   "valor": 1,
-   "cita": "procés de selecció d'un/a tècnic/a de projectes per afrontar el repte demogràfic"
+   "valor": [
+    "Tècnic/a de projectes per afrontar el repte demogràfic"
+   ],
+   "cita": "un/a tècnic/a de projectes per afrontar el repte demogràfic, mitjançant concurs-oposició"
   },
   "meritos": {
    "motivo": "cita_no_literal",
-   "valor": "Experiencia profesional hasta 15 puntos; formación hasta 10 puntos (incluye ACTIC y cursos); entrevista hasta 5 puntos",
+   "valor": "Experiència professional fins a 15 punts (0,5 per mes en Administració o empresa privada, segons lloc); formació fins a 10 punts (ACTIC fins a 2; cursos fins a 8); entrevista fins a 5 punts",
    "cita": "Experiència professional (màxim 15 punts) ... Formació (màxim 10 punts)"
   }
  }

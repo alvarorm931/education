@@ -1,0 +1,111 @@
+{
+ "proceso": "dogc:1035044",
+ "documento": {
+  "id": "dogc:1035044",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1035044",
+  "fecha": "2026-01-23",
+  "huella": "fb2882133ea79b41f8448fc8557c1ae6268c9c27ba54659db50dec95bba93e23"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:42:16+00:00",
+ "lote": "msgbatch_01W17mR271uYfWYL6CuSdriL",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "AP",
+   "cita": "grup professional AP (9.232,16€ bruts anuals)",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "personal de neteja en la modalitat de personal laboral fix",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mitjançant el sistema de concurs oposició lliure",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 5,
+   "cita": "El nombre total de places és: CINC PLACES (5).",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "certificado de escolaridad",
+   "cita": "Titulació: certificat d'escolaritat.",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Edad mínima 16 años y no superar la jubilación forzosa; nacionalidad española o de la UE (con excepciones); no inhabilitación ni incompatibilidad; capacidad funcional para el puesto; certificado negativo del Registro Central de Delincuentes Sexuales.",
+   "cita": "Tenir complerts els 16 anys i no superar l'edat establerta per a la jubilació forçosa legal",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "catalán, nivel mínimo A2 (certificado A o equivalente); prueba específica si no se acredita",
+   "cita": "Coneixement de la llengua catalana amb un nivell mínim equivalent al certificat A",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles desde el día siguiente a la última publicación del anuncio de la convocatoria en el DOGC o en el BOP de Barcelona",
+   "cita": "en el termini de vint (20) dies hàbils comptats a partir del dia següent de la última publicació",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Sede electrónica del Ayuntamiento mediante instancia (Anexo I), o en cualquiera de las formas del art. 16.4 de la Ley 39/2015; copia por correo electrónico si no se presenta en el registro",
+   "cita": "a través de la seu electrònica de l'Ajuntament de Sant Esteve de Palautordera mitjançant instància",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de anuncios de la sede electrónica del Ayuntamiento",
+   "cita": "Aquesta resolució es publicarà al taulell d'edictes de la seu electrònica",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Coneixement de les llengües oficials (eliminatorio, apto/no apto)",
+    "Prueba teórica tipo test de 20 preguntas (eliminatoria, máx. 20 puntos, mínimo 10)",
+    "Prueba práctica (eliminatoria, máx. 20 puntos, mínimo 15)",
+    "Fase de concurso: experiencia y formación (máx. 20 puntos)",
+    "Entrevista personal (optativa, máx. 10 puntos)"
+   ],
+   "cita": "Prova teòrica (de caràcter obligatori i eliminatori) (màxim 20 punts)",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Experiencia en servicios prestados a una Administración Pública en puestos similares: 1 punto por año, máximo 15 puntos; cursos y formación con aplicación directa al puesto o relacionados con la Administración Pública: 1 punto por curso, máximo 5 puntos.",
+   "cita": "Per serveis prestats a una Administració Pública ... 1 punt per cada any treballat, amb un màxim de 15 punts",
+   "nivel": "fragmentos"
+  },
+  "bolsa": {
+   "valor": "sí, bolsa unitaria de trabajo para cubrir necesidades de contrataciones temporales, con duración de dos años",
+   "cita": "La bossa tindrà una durada de dos anys comptats a partir de la data de finalització del procés de selecció",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "período de prueba de dos meses",
+   "cita": "Les persones contractades hauran de superar un període de prova de dos mesos.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "NETEJADOR/A"
+   ],
+   "cita": "Bases reguladores del proceso selectivo para el acceso a cinco plazas de personal de neteja en la modalidad de personal laboral fix"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 5,
+   "cita": "mitjançant el sistema de concurs oposició lliure"
+  },
+  "temas": {
+   "motivo": "cita_no_literal",
+   "valor": 11,
+   "cita": "Temari general 1. Coneixement del municipi ... 11. Classificació de residus i contenidors."
+  }
+ }
+}

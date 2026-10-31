@@ -1,0 +1,53 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2024-8929",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2024-8929",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2024/11/08_215/2024_008929.pdf",
+  "fecha": "2024-11-08",
+  "huella": "421fe28b3811da8b80c2d5e63ff7372bd8c9461230ed917dcebc416cad9e96f3"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:50:08+00:00",
+ "lote": "msgbatch_01LpyYajgKGX9NyHT1uvynbR",
+ "no_son_bases": false,
+ "campos": {
+  "sistema": {
+   "valor": "concurso",
+   "cita": "modificar les bases específiques, adequant-les al sistema de provisió passant de concurs oposició a concurs",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "per a la selecció d’una placa d’Arquitecte/a tècnic/a, funcionari/ària de carrera",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Plazo de presentación de instancias abierto de nuevo mediante nueva publicación del extracto en el BOE",
+   "cita": "Obertura del termini de presentació d’instàncies, en nova publicació de l’extracte convocatòria en el BOE.",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia de Alicante y sede electrónica del Ayuntamiento de Benissa",
+   "cita": "publicar la relació en el Butlletí Oficial de la Província d’Alacant i en la seu electrònica d'aquest Ajuntament",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Arquitecte/a tècnic/a, funcionari/ària de carrera per torn lliure",
+   "cita": "Arquitecte/a tècnic/a, funcionari/ària de carrera per torn lliure del procés d’estabilització"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "Arquitecte/a tècnic/a, funcionari/ària de carrera per torn lliure"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "funcionari/ària de carrera per torn lliure del procés d’estabilització d’ocupació temporal"
+  }
+ }
+}

@@ -1,0 +1,48 @@
+{
+ "proceso": "bopcadiz:BOP-CADIZ-2024-54.167",
+ "documento": {
+  "id": "bopcadiz:BOP-CADIZ-2024-54.167",
+  "fuente": "BOP-CADIZ",
+  "url": "https://www.bopcadiz.es/boletin/Boletin-numero-071-del-ano-2024",
+  "fecha": "2024-04-15",
+  "huella": "94583a9a66a733fde080a63379c4a42f8e34e6f8e184f6d50f6dc51b8c941f3f"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:54:09+00:00",
+ "lote": "msgbatch_01EQ4R6PVKpEwTXzXwPCmspm",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Personal Directivo",
+    "Personal de apoyo Administrativo",
+    "Personal de apoyo a la Inserción Laboral",
+    "Personal Formador"
+   ],
+   "cita": "Plaza de Personal Directivo, 6, una plaza para proyecto formativo.",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "procedimiento de selección de personal laboral específico temporal, para la provisión de plazas",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "procedimiento de selección de personal laboral específico temporal, para la provisión de plazas",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 24,
+   "cita": "Plaza de Personal Directivo, 6, una plaza para proyecto formativo."
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Tablón de anuncios y tablón de anuncios de la Sede electrónica de la Mancomunidad, accesible desde su web",
+   "cita": "podrán ser consultadas en la Mancomunidad de Municipios de la Sierra de Cádiz, sita en Avda. de la Diputación"
+  }
+ }
+}

@@ -1,0 +1,60 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2024-5272",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2024-5272",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2024/07/09_130/2024_005272.pdf",
+  "fecha": "2024-07-09",
+  "huella": "3ce1f73d2f2fed636ab970497bbc0729a3416b73d536c2001d2878c38946ebab"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:49:02+00:00",
+ "lote": "msgbatch_016yasWxkCXTWjPAb8LjB3ob",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "C1",
+   "cita": "dotadas con el sueldo correspondiente al Grupo C1 de clasificación profesional",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "la provisión, como personal funcionario de carrera de 10 plazas de Agente de la Policía Local",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "siete por TURNO LIBRE, mediante el sistema selectivo de Oposición, y tres por TURNO DE MOVILIDAD",
+   "nivel": "literal"
+  },
+  "plazas_turno_libre": {
+   "valor": 7,
+   "cita": "siete por TURNO LIBRE, mediante el sistema selectivo de Oposición",
+   "nivel": "literal"
+  },
+  "plazas_promocion_interna": {
+   "valor": 3,
+   "cita": "tres por TURNO DE MOVILIDAD, de conformidad con lo dispuesto en el Decreto",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Sede electrónica y página web municipal del Ayuntamiento, además del Boletín Oficial de la Provincia de Alicante",
+   "cita": "Publicar la presente resolución en el Boletín Oficial de la Provincia de Alicante. Asimismo, publicar en la sede electrónica",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Agente de Policía Local"
+   ],
+   "cita": "provisión en propiedad de 10 plazas de Agente de la Policía Local"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 10,
+   "cita": "provisión en propiedad de 10 plazas de Agente de la Policía Local"
+  }
+ }
+}

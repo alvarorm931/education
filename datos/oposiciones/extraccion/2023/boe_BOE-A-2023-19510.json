@@ -1,0 +1,58 @@
+{
+ "proceso": "boe:BOE-A-2023-19510",
+ "documento": {
+  "id": "bopgirona:BOPGIRONA-2023-7763",
+  "fuente": "BOP-GIRONA",
+  "url": "https://ssl4.ddgi.cat/bopV1/pdf/2023/179/202317907763.pdf",
+  "fecha": "2023-09-15",
+  "huella": "ce09e3dd8111faca1c59ca74f29f1b3ed4637454e0a438ac58151c37747c49c6"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:51+00:00",
+ "lote": "msgbatch_01SjfjDqJRwL6bpTvJz2YfVg",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "OFICIAL BRIGADA",
+   "cita": "Denominació plaça: OFICIAL BRIGADA Codi identificació: 01/2022 Règim: Laboral Subgrup C2",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C2",
+   "cita": "Règim: Laboral Subgrup C2 Nombre de places: 1",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mitjançant el sistema de selecció de concurs oposició, torn lliure, en el marc del procés",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "Nombre de places: 1 Sistema de selecció: concurs-oposició",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "vint dies naturals, comptats a partir del dia següent al de la publicació de l’extracte de la convocatòria en el Diari Oficial de la Generalitat de Catalunya",
+   "cita": "El termini de presentació de sol·licituds és de vint dies naturals, comptats a partir del dia següent",
+   "nivel": "sin_signos"
+  },
+  "publicaciones": {
+   "valor": "tauler d’anuncis de l’Ajuntament i pàgina web www.santjoanlesfonts.cat",
+   "cita": "Els restants i successius anuncis d’aquesta convocatòria es faran públics únicament en el tauler d’anuncis",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "laboral temporal",
+   "cita": "plaça vacant a la plantilla de personal laboral de l’Ajuntament de Sant Joan les Fonts"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "mitjançant el sistema de selecció de concurs oposició, torn lliure"
+  }
+ }
+}

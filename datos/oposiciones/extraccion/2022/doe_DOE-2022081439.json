@@ -1,0 +1,61 @@
+{
+ "proceso": "doe:DOE-2022081439",
+ "documento": {
+  "id": "doe:DOE-2022081439",
+  "fuente": "DOE",
+  "url": "https://doe.juntaex.es/otrosFormatos/html.php?xml=2022081439&anio=2022&doe=1730o",
+  "fecha": "2022-09-07",
+  "huella": "cc00e5d13345ada468875db77631cee430a0119ff550156bf81d96d4019c5b26"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:24+00:00",
+ "lote": "msgbatch_01B4ETF5xB4buYCHqPiHTXzF",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "gerente",
+    "auxiliar administrativo",
+    "trabajador/a social",
+    "educador/a social",
+    "psicólogo/a",
+    "dinamizador/a deportivo/a",
+    "agente-técnico/a de Igualdad",
+    "agente de empleo y desarrollo local",
+    "arquitecto/a",
+    "asesor/a Jurídico/a",
+    "arquitecto/a técnico",
+    "delineante"
+   ],
+   "cita": "Una plaza de gerente, una plaza de auxiliar administrativo, tres plazas de trabajador/a social",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "otro",
+   "cita": "proceso de estabilización de empleo temporal",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "para cubrir, mediante el sistema de concurso, de varias plazas",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles a contar desde el día siguiente a la publicación de este anuncio en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes será de veinte días hábiles a contar desde el día siguiente",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "sede electrónica de la Mancomunidad de Municipios Río Bodión https://sede.mriobodion.es",
+   "cita": "Los sucesivos anuncios de esta convocatoria, cuando procedan de conformidad con las bases, se publicarán en la sede electrónica",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 20,
+   "cita": "Una plaza de gerente, una plaza de auxiliar administrativo, tres plazas de trabajador/a social"
+  }
+ }
+}

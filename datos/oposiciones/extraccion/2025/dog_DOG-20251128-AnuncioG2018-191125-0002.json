@@ -1,0 +1,114 @@
+{
+ "proceso": "dog:DOG-20251128-AnuncioG2018-191125-0002",
+ "documento": {
+  "id": "dog:DOG-20251128-AnuncioG2018-191125-0002",
+  "fuente": "DOG",
+  "url": "https://www.xunta.gal/dog/Publicados/2025/20251128/AnuncioG2018-191125-0002_es.html",
+  "fecha": "2025-11-28",
+  "huella": "d302fd1ede53780d4a31f862a6eacbd945f390c49469f71e7a4cb0ce71ff7d2f"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:41:04+00:00",
+ "lote": "msgbatch_01UNq3BNhPPHoTK3TEJzun1h",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "A1",
+   "cita": "Los concursos de acceso a las plazas de los cuerpos docentes universitarios vinculadas con instituciones sanitarias",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "otro",
+   "cita": "plazas de los cuerpos docentes universitarios vinculadas con instituciones sanitarias que se relacionan en el anexo I",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "resuelve convocar los concursos de acceso a las plazas de los cuerpos docentes universitarios vinculadas con instituciones sanitarias",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Título de doctor/a o declaración de equivalencia al nivel académico de doctor/a",
+   "cita": "Estar en posesión del título de doctor/a o, en el caso de titulaciones expedidas por universidades extranjeras, de la declaración de equivalencia",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española, de un Estado miembro de la UE o de otro país con acceso permitido al empleo público; edad legal; capacidad física y psíquica; título oficial de especialista que corresponda a la plaza; acreditación para profesorado titular de universidad (RD 678/2023)",
+   "cita": "Estar en posesión del título oficial de especialista que corresponda a la plaza de las recogidas en el anexo I.",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Acreditar conocimiento de las dos lenguas oficiales de la USC (español nivel B2 o superior y gallego CELGA 3 o equivalente), tras el nombramiento",
+   "cita": "acreditar, una vez nombrados/as funcionarios/as, un nivel de conocimiento de las dos lenguas oficiales en la Universidad",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 44.17,
+   "cita": "deberán abonar a la USC dentro del plazo de solicitud, por cada concurso en el que soliciten participar, la cantidad de 44,17 euros",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Exentas: discapacidad igual o superior al 33 % y familias numerosas de categoría especial. Bonificación del 50 %: familias numerosas de categoría general y demandantes de empleo sin prestación.",
+   "cita": "Estarán exentas del pago de la totalidad de la tasa por derechos de examen aquellas personas que tengan reconocido un grado de discapacidad",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Quince días hábiles desde el siguiente al de publicación de la convocatoria en el BOE",
+   "cita": "Las solicitudes deberán presentarse en el plazo de quince días hábiles, contados a partir del siguiente al de publicación",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Solo por medios electrónicos, a través de los formularios normalizados en la sede electrónica de la USC",
+   "cita": "deberán presentar su solicitud, acompañada de la documentación correspondiente, únicamente por medios electrónicos, a través de los formularios",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Primera prueba: exposición y defensa oral de méritos e historial, máximo 100 puntos, eliminatoria",
+    "Segunda prueba: exposición oral del proyecto de actividades docentes y del proyecto investigador, máximo 100 puntos (50 cada uno), eliminatoria"
+   ],
+   "cita": "La primera prueba tendrá una valoración máxima de 100 puntos y consistirá en la exposición y defensa oral de los méritos",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Baremo: trayectoria investigadora y de transferencia (35), trayectoria docente (35), experiencia asistencial (20), otros méritos (10), proyecto de actividades docentes (50) y proyecto investigador (50)",
+   "cita": "Trayectoria investigadora y de transferencia (máximo de 45 puntos; 35 en el caso de plazas con vinculación asistencial)",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "no",
+   "cita": "Las personas aspirantes deberán abonar a la USC dentro del plazo de solicitud",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "no",
+   "cita": "En el momento de la toma de posesión, la persona candidata deberá presentar declaración de no estar afectada de incompatibilidad",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Profesora o profesor titular de universidad, área de Pediatría, Servicio de Pediatría, CHUAC",
+    "Profesora o profesor titular de universidad, área de Medicina, Servicio de Cardiología, CHUAC"
+   ],
+   "cita": "Profesoras y profesores titulares de universidad Nº de concurso: 3T-V/25 Nº de plazas: 1 (C02061) Área de conocimiento: Pediatría"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 2,
+   "cita": "Nº de concurso: 3T-V/25. Nº de plazas: 1 (C02061). Área de conocimiento: Pediatría."
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 2,
+   "cita": "Nº de concurso: 4T-V/25. Nº de plazas: 1 (C02062). Área de conocimiento: Medicina."
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Tablón electrónico de la USC (https://sede.usc.es/sede/publica/taboleiro/inicio.htm)",
+   "cita": "publicará en el tablón electrónico de la USC una resolución que apruebe la lista provisional de personas aspirantes admitidas y excluidas"
+  }
+ }
+}

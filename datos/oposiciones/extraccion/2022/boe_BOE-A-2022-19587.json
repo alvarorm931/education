@@ -1,0 +1,83 @@
+{
+ "proceso": "boe:BOE-A-2022-19587",
+ "documento": {
+  "id": "boib:BOIB-2022-666596",
+  "fuente": "BOIB",
+  "url": "https://www.caib.es/eboibfront/es/2022/11653/666596/aprobacion-de-las-bases-especificas-que-tiene-que-",
+  "fecha": "2022-11-18",
+  "huella": "d9fcb6d732a4bc44f1fedd568e35b08eb6da2e3d1a6bd2f759ceb787317cd6e6"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:10+00:00",
+ "lote": "msgbatch_01B4ETF5xB4buYCHqPiHTXzF",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Plazas de la administración territorial local de Menorca y organismos dependientes (Consejo Insular, ayuntamientos y patronatos)"
+   ],
+   "cita": "El objeto de estas bases es la selección, por el procedimiento de concurso y concurso oposición, de las plazas vacantes",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "fase de oposición consta de una sola prueba de carácter obligatorio y eliminatorio",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 30,
+   "cita": "La tasa para la inscripción en las pruebas selectivas será de 30 € para el acceso a plazas",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Exentas las personas en situación de desempleo y los miembros de familia numerosa o monoparental; debe acreditarse la circunstancia",
+   "cita": "Quedan exentos del pago de la tasa: Las personas que se encuentren en situación de desempleo en el momento",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Veinte días hábiles desde el día siguiente a la publicación del anuncio de convocatoria en el BOIB",
+   "cita": "El plazo para entregar la solicitud es de veinte días hábiles a contar desde el día siguiente",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Portal oficial del opositor http://oposicions.cime.es y BOIB para los actos que lo determinen, además de tablones de edictos",
+   "cita": "deben publicarse en el portal oficial del opositor (http://oposicions.cime.es)",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Fase de concurso (valoración de méritos)",
+    "Fase de oposición: una prueba tipo test obligatoria y eliminatoria, mínimo 35% (21 puntos)"
+   ],
+   "cita": "La fase de oposición consta de una sola prueba de carácter obligatorio y eliminatorio",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Concurso oposición: experiencia hasta 32 puntos; otros méritos hasta 8 puntos (superación de ejercicios, formación, catalán, cursos, trienios)",
+   "cita": "Por cada mes de servicios prestados y reconocidos en la administración convocante, como personal funcionario",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "no",
+   "cita": "Las personas que accedan por el turno de reserva",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Plazo de toma de posesión de tres días hábiles desde la publicación en el BOIB",
+   "cita": "El plazo de toma de posesión de la plaza y/o firma del contrato laboral se inicia al día siguiente de su publicación en el BOIB",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "otro",
+   "cita": "Oferta pública de empleo extraordinaria para la estabilización de la Administración local de Menorca"
+  },
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Telemática con firma electrónica, telemática mediante Cl@ve, o presencial en registros de cualquier administración u oficinas de correos",
+   "cita": "Las solicitudes se pueden presentar a través de los siguientes medios: Telemática con firma electrónica"
+  }
+ }
+}

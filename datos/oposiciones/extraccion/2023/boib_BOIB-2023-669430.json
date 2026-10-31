@@ -1,0 +1,55 @@
+{
+ "proceso": "boib:BOIB-2023-669430",
+ "documento": {
+  "id": "boib:BOIB-2023-669430",
+  "fuente": "BOIB",
+  "url": "https://www.caib.es/eboibfront/es/2023/11687/669430/resolucion-de-23-de-enero-de-2023-conjunta-de-la-u",
+  "fecha": "2023-01-26",
+  "huella": "5c4594c71a04418b76b1a7a3841aced2549b60ca9e5dacded385b3806d687b4f"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:56:52+00:00",
+ "lote": "msgbatch_0167qWfLXqjGo8Hv43cM3LuM",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Profesor Titular de Universidad"
+   ],
+   "cita": "Cuerpo al que pertenece: Profesor Titular de Universidad",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "A1",
+   "cita": "Profesor Titular de Universidad",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "plazas de los cuerpos de funcionarios docentes universitarios",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "convocatoria de la plaza vinculada a concurso de acceso",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días naturales a partir del siguiente al de la publicación de esta convocatoria en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes será de veinte días naturales a partir del siguiente",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial del Estado",
+   "cita": "Las bases íntegras de la convocatoria aparecerán publicadas en el Boletín Oficial del Estado.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 1,
+   "cita": "convoca la plaza vinculada a concurso de acceso"
+  }
+ }
+}

@@ -1,47 +1,106 @@
 {
  "proceso": "boe:BOE-A-2026-14925",
  "documento": {
-  "id": "dogv:480811",
-  "fuente": "DOGV",
-  "url": "https://dogv.gva.es/datos/2026/07/01/pdf/2026_19524_es.pdf",
-  "fecha": "2026-07-01",
-  "huella": "71e2e2ba859d0f365b9cfc2a528ff2e64919a0427a0676e952071f8b0bca5aa0"
+  "id": "bopvalencia:BOPVALENCIA-2026-06565",
+  "fuente": "BOP-VALENCIA",
+  "url": "https://bop.dival.es/bop/downloads?anuncioNumReg=2026/06565&lang=va",
+  "fecha": "2026-06-04",
+  "huella": "17be56a7d5c4ad77180619135f600ce21887d51cc7487f312415155ab9514796"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T07:51:57+00:00",
- "lote": "msgbatch_01NvbwpQGcC9vt1x7nWayvXt",
+ "extraido": "2026-10-31T14:42:04+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
-   "valor": [
-    "oficial 2 electricista",
-    "conductor/a",
-    "limpiador/a",
-    "operario/a de servicios varios"
-   ],
-   "cita": "se aprueban las bases y se convocan las pruebas relativas al procedimiento selectivo para cubrir en propiedad una plaza de oficial 2 electricista",
+   "valor": "NETEJADOR/A d'EDIFICIS MUNICIPALS",
+   "cita": "una plaça de netejador/a d'edificis municipals de l'Ajuntament de Buñol",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "E(AP)",
+   "cita": "Grup segons l'art. 76 del RDL 5/2015,de 30 d'Octubre: Grup E(AP)",
    "nivel": "literal"
   },
   "vinculo": {
    "valor": "funcionario de carrera",
-   "cita": "procedimiento selectivo para cubrir en propiedad una plaza de oficial 2 electricista del Ayuntamiento de Buñol",
+   "cita": "cobertura en propietat d'UNA PLAÇA DE NETEJADOR/A d'EDIFICIS MUNICIPALS",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "El Sistema selectiu serà el concurs oposició.",
    "nivel": "literal"
   },
   "plazas_total": {
    "valor": 1,
-   "cita": "para cubrir en propiedad una plaza de oficial 2 electricista del Ayuntamiento de Buñol",
+   "cita": "cobertura en propietat d'UNA PLAÇA DE NETEJADOR/A d'EDIFICIS MUNICIPALS",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "no s'exigeix",
+   "cita": "3) Titulació: no s'exigeix.",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española o equiparada (UE, cónyuges, extranjeros con residencia legal). Tener 16 años cumplidos y no exceder la edad máxima de jubilación forzosa. Capacidad física y psíquica para las funciones. No haber sido separado del servicio de Administraciones Públicas ni inhabilitado.",
+   "cita": "Tindre compliments 16 anys d'edat i no excedir, en el seu cas, de l'edat màxima de jubilació forçosa",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "20 días hábiles, a partir del siguiente de la publicación del extracto de la convocatoria en el Boletín Oficial del Estado",
-   "cita": "El plazo de presentación de instancias es de 20 días hábiles, a partir del siguiente de la publicación del extracto",
+   "valor": "20 días hábiles desde el siguiente a la publicación del extracto de la convocatoria en el BOE",
+   "cita": "El termini de presentació és de 20 dies hàbils , a partir del següent de la publicació de l'extracte",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Boletín Oficial de la Provincia de Valencia n.º 105, tablón de anuncios de la sede electrónica y página web del Ayuntamiento (www.bunyol.es, sin efectos jurídicos)",
-   "cita": "Las bases de convocatoria se encuentra publicadas en el Boletín Oficial de la Provincia de Valencia n.º 105",
+   "valor": "Tablón de anuncios (sede electrónica), web www.bunyol.es (sin efectos jurídicos) y BOPV",
+   "cita": "Les bases s'exposaran en el tauler d'anuncis de l'Ajuntament (de la seu electrònica) i en la pàgina web",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Experiencia hasta 4 puntos; formación hasta 5 puntos (titulaciones hasta 2, cursos hasta 3); valenciano hasta 0,5; idiomas comunitarios hasta 0,5. Máximo concurso 10 puntos.",
+   "cita": "Experiència: Es valorarà fins a un màxim de 4 punts",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, bolsa de trabajo temporal con los aspirantes que superen la fase de oposición, ordenados por puntuación final",
+   "cita": "Amb la totalitat d'aspirants que hagen superat les proves que integren la FASE D'OPOSICIÓ",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "periodo de prueba de dos meses dentro del contrato, tras el cual se adquiere la condición de personal laboral fijo",
+   "cita": "s'establirà un període de prova de dos mesos",
    "nivel": "literal"
   }
  },
- "rechazados": {}
+ "rechazados": {
+  "idioma_cooficial": {
+   "motivo": "cita_no_literal",
+   "valor": "valoración en fase de concurso: valenciano A1 a C2 (máx. 0,5 puntos)",
+   "cita": "El coneixement del valencià es valorarà fins a un màxim de 0,5 punts"
+  },
+  "tasa_euros": {
+   "motivo": "cita_no_literal",
+   "valor": "según Ordenanza Fiscal vigente",
+   "cita": "l'import que es determina com a drets d'examen de conformitat amb la vigent Ordenança Fiscal"
+  },
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Registro General del Ayuntamiento u otros medios del art. 16 Ley 39/2015; preferentemente instancia modelo por sede electrónica",
+   "cita": "Preferentment haurà d'utilitzar-se la instància model el que es publique en la pàgina web de l'Ajuntament"
+  },
+  "ejercicios": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Primer ejercicio: test obligatorio y eliminatorio de al menos 20 preguntas (más 5 de reserva)",
+    "Segundo ejercicio: prueba práctica obligatoria y eliminatoria sobre funciones del puesto"
+   ],
+   "cita": "Consistirà a contestar un qüestionari tipus test, amb un mínim de 20 preguntes"
+  },
+  "temas": {
+   "motivo": "cita_no_literal",
+   "valor": 11,
+   "cita": "Tema 11. Seguretat laboral en el maneig d'eines i maquinària: riscos i mesures preventives."
+  }
+ }
 }

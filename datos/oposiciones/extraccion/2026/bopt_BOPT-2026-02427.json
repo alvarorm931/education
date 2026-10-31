@@ -1,0 +1,87 @@
+{
+ "proceso": "bopt:BOPT-2026-02427",
+ "documento": {
+  "id": "bopt:BOPT-2026-02427",
+  "fuente": "BOPT",
+  "url": "https://www.dipta.cat/bopt/web/anunci/357754/borsa-de-treball-d-agutzil-bases-i-convocatoria-ajuntament-pont-d-armentera-el",
+  "fecha": "2026-03-25",
+  "huella": "fd590a717d04d082da9781a27f722f8c13948f319855414c4aef5d1e720b318d"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:40:41+00:00",
+ "lote": "msgbatch_01E3wiYcGL8Lzho48bXWLyyb",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "Agutzil",
+   "cita": "constituir una borsa de treball de personal laboral temporal per al lloc de treball d’agutzil, grup AP",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "AP",
+   "cita": "per al lloc de treball d’agutzil, grup AP, per cobrir vacants, substitucions",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "constituir una borsa de treball de personal laboral temporal per al lloc de treball d’agutzil",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "mitjançant concurs de mèrits, torn lliure",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Certificat d'escolaritat o equivalent",
+   "cita": "Posseir el certificat d'escolaritat o equivalent en la data que acaba el termini de presentació de sol·licituds",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalitat espanyola o de la UE (o les equiparades legalment); capacitat funcional per a les tasques; haver complert setze anys i no excedir l'edat de jubilació forçosa; per a persones no espanyoles d'origen no hispanoparlant, nivell B2 de castellà",
+   "cita": "Haver complert setze anys i no excedir, en el seu cas, de l’edat màxima de jubilació forçosa fixada per la llei",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Català, nivell bàsic (certificat A) o equivalent",
+   "cita": "Posseir el certificat de nivell de català de nivell bàsic (certificat A) o equivalent",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 dies naturals",
+   "cita": "El termini per presentar sol·licituds és de 20 dies naturals a partir de l’endemà de la publicació de la convocatòria en el BOPT",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Preferentment electrònicament al registre electrònic municipal (amb certificat digital o signatura electrònica); també presencialment al Registre General de l’Ens",
+   "cita": "Preferentment les instàncies es presentaran electrònicament: al registre electrònic municipal",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tauler electrònic de l'Ajuntament, Seu electrònica municipal i BOPT",
+   "cita": "La resta de publicacions del procés selectiu es realitzarà al tauler electrònic de l’Ajuntament",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Experiència laboral fins a 45 punts; formació reglada fins a 30 punts; formació contínua fins a 15 punts; entrevista fins a 10 punts",
+   "cita": "Experiència laboral (fins a un màxim de 45 punts): Per haver treballat a una entitat local, en un lloc de treball d’agutzil",
+   "nivel": "sin_signos"
+  },
+  "bolsa": {
+   "valor": "Sí, borsa de treball de personal laboral temporal para cubrir vacantes, sustituciones y cualquier contingencia temporal, con vigencia de 2 años",
+   "cita": "La borsa tindrà una vigència de 2 anys des de la seva constitució",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "ejercicios": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Fase de coneixement de llengües (català i, si cal, castellà), apte/no apte",
+    "Fase de concurs de mèrits (experiència, formació)",
+    "Entrevista (fins a 10 punts)"
+   ],
+   "cita": "El sistema de selecció serà per concurs de mèrits, amb la fase prèvia de coneixements de llengua catalana i castellana"
+  }
+ }
+}

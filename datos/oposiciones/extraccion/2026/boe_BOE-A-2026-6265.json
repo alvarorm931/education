@@ -1,0 +1,61 @@
+{
+ "proceso": "boe:BOE-A-2026-6265",
+ "documento": {
+  "id": "bocant:BOC-2026-1674",
+  "fuente": "BOC-CANT",
+  "url": "https://boc.cantabria.es/boces/verAnuncioAction.do?idAnuBlob=432050",
+  "fecha": "2026-03-09",
+  "huella": "c329f6e1e780e5fd4f580fec553f4f3c1332e22f28fb7ddd45a5d72ae73f76d0"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:40:31+00:00",
+ "lote": "msgbatch_01E3wiYcGL8Lzho48bXWLyyb",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "Funcionario de carrera, plazas de funcionario mediante el sistema de oposición, turno libre",
+   "cita": "cobertura en propiedad de plazas de funcionario, mediante el sistema de oposición, turno libre",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "cobertura en propiedad de plazas de funcionario",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "Oposición, turno libre.",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Título de Bachiller elemental, Graduado en Enseñanza Secundaria Obligatoria, Graduado Escolar, Formación Profesional de primer grado o equivalente",
+   "cita": "Estar en posesión del título de Bachiller elemental, Graduado en Enseñanza Secundaria Obligatoria, Graduado Escolar",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Primer ejercicio: cuestionario teórico tipo test de 50 preguntas más 2 de reserva, eliminatorio, valorado de 0 a 10",
+    "Segundo ejercicio: supuesto o supuestos prácticos relacionados con los cometidos del puesto, eliminatorio, valorado de 0 a 10"
+   ],
+   "cita": "Consistirá en contestar un cuestionario teórico tipo test de 50 preguntas más 2 de reserva",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "No se valoran méritos en el sistema de oposición",
+   "cita": "Oposición, turno libre.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "Plazo para presentar solicitudes, desde el día siguiente a la publicación del anuncio, no consta en el texto",
+   "cita": ""
+  },
+  "practicas_o_curso": {
+   "motivo": "cita_no_literal",
+   "valor": "No consta en el texto",
+   "cita": ""
+  }
+ }
+}

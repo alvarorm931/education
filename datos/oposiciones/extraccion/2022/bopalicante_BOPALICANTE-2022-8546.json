@@ -1,0 +1,97 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2022-8546",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2022-8546",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2022/11/10_214/2022_008546.pdf",
+  "fecha": "2022-11-10",
+  "huella": "3a28603e2bce89582e8240aabcef6da22f0a2c68c8aa75e994547fc028fd8634"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:16+00:00",
+ "lote": "msgbatch_01B4ETF5xB4buYCHqPiHTXzF",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Encarregat de zones verdes i medi ambient",
+    "Zelador",
+    "Zeladora",
+    "Oficial 1ª Fontaneria",
+    "Oficial 1ª Construcció",
+    "Oficial 2ª Construcció",
+    "Oficial 2ª Conductor 1",
+    "Oficial 2ª Conductor 2",
+    "Agent notificador",
+    "Auxiliar administratiu",
+    "Auxiliar biblioteca"
+   ],
+   "cita": "Personal laboral Plaça Grup titolació Data d’adscripció Procés estabilització Sistema d’accés Encarregat de zones verdes i medi ambient",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C1, C2, E",
+   "cita": "Encarregat de zones verdes i medi ambient C1 Gener 1991 DA 6ª Llei 20/2021",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "Personal laboral Plaça Grup titolació Data d’adscripció Procés estabilització Sistema d’accés",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "El sistema de selecció serà el de concurs -oposició",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Según grupo: C1 título de batxiller o técnico; C2 título de graduado en ESO o equivalente; agrupaciones profesionales sin titulación requerida",
+   "cita": "En les convocatòries de places en procés d’estabilització és d’aplicació la normativa sobre titulació acadèmica",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española o, para personal laboral, residencia legal en España (art. 57 TREBEP); edad mínima 16 años y no exceder la edad de jubilación forzosa; no estar separado del servicio ni inhabilitado; capacidad funcional; conocimientos de valenciano",
+   "cita": "Nacionalitat: per a l’admissió a proves de personal funcionari de carrera deurà tindre’s nacionalitat espanyola",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Diez días hábiles siguientes a la publicación del extracto en el Boletín Oficial del Estado",
+   "cita": "La presentació de sol·licituds per a prendre part en els procesos se realitzarà en els deu dies hàbils següents",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Instancia en modelo normalizado, documentación de méritos y autoliquidación de la tasa dentro del plazo de presentación",
+   "cita": "Instància en model normalitzat, on se relacionaran els mèrits al·legats per a la fase de concurs.",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de anuncios y sede electrónica del Ayuntamiento de Els Poblets (https://elspoblets.sedelectronica.es/), y BOP de Alicante",
+   "cita": "les llistes provisionals i definitives de persones admeses... se publicaran en el tauler d’anuncis de l’Ajuntament",
+   "nivel": "fragmentos"
+  },
+  "meritos": {
+   "valor": "Servicios prestados (máx. 70 puntos); titulaciones (máx. 1 punto); formación específica (máx. 10 puntos); conocimientos de valenciano (máx. 5 puntos); idiomas comunitarios (máx. 1 punto); otros méritos (máx. 1 punto)",
+   "cita": "Només seran valorats aquells serveis que estiguen degudament acreditats",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "no",
+   "cita": "Se contempla un únic sistema de participació, el de torn lliure.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "idioma_cooficial": {
+   "motivo": "cita_no_literal",
+   "valor": "Valenciano, nivel acreditado según grupo de titulación o superior",
+   "cita": "En la fase de concurs se valorarà estar en possessió del certificat acreditatiu del nivell corresponent"
+  },
+  "ejercicios": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Fase de concurso de méritos (no hay fase de oposición)"
+   ],
+   "cita": "Els sistema selectiu serà el concurs de mèrits."
+  }
+ }
+}

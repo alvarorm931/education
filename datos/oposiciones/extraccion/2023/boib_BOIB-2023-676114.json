@@ -1,0 +1,92 @@
+{
+ "proceso": "boib:BOIB-2023-676114",
+ "documento": {
+  "id": "boib:BOIB-2023-676114",
+  "fuente": "BOIB",
+  "url": "https://www.caib.es/eboibfront/es/2023/11780/676114/bases-reguladoras-para-la-creacion-de-una-bolsa-de",
+  "fecha": "2023-07-27",
+  "huella": "9c0ac495de6358808d9e61a1d277af263175c612998ea2e046ee276a2409839e"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:59:28+00:00",
+ "lote": "msgbatch_012nGabRM1G4b7cEKJh1Bcx1",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "se crea la presente bolsa de trabajo temporal con 4 especialidades",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "el mecanismo utilizado será el de concurso de méritos",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Graduado Escolar o título de Educación Secundaria Obligatoria (ESO), o equivalentes",
+   "cita": "Estar en posesión del título de Graduado Escolar o título de Educación Secundaria Obligatoria (ESO),o equivalentes",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española o de Estado miembro UE; 18 años; discapacidad igual o superior al 33% si plaza reservada; carné de conducir B en vigor; dos años de experiencia en taller mecánico como oficial 3.ª o superior; disponibilidad para cualquier turno",
+   "cita": "Dos años de experiencia en un taller mecánico como oficial 3ª o superior, que se deberá acreditar",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Catalán, nivel A2",
+   "cita": "estar en posesión del nivel de catalán A2, haberlo superado en otras convocatorias de Emaya",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "15 días hábiles desde la publicación en el BOIB de la convocatoria",
+   "cita": "deberán presentar la solicitud, en los 15 días hábiles siguientes a la publicación en el BOIB",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Telemática a través de la plataforma https://emaya.convoca.online/ (acceso desde web de EMAYA, apartado Trabaja en Emaya), con DNI electrónico, certificado electrónico, Cl@ve PIN o Cl@ve permanente",
+   "cita": "a través de la plataforma accesible desde la página web de Emaya https://emaya.convoca.online/",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Plataforma https://emaya.convoca.online/ y BOIB; publicación en periódicos locales",
+   "cita": "será publicada en el Boletín Oficial del Estado de las Islas Baleares (BOIB) y en la plataforma",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Concurso de méritos (máximo 100 puntos)",
+    "Prueba específica de catalán (eliminatoria, solo para quien no acredite el nivel)",
+    "Pruebas médicas"
+   ],
+   "cita": "La puntuación máxima de este proceso será de 100 puntos, los méritos se alegarán y acreditarán",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, bolsa de trabajo temporal para contrataciones temporales de oficial 3.ª de taller, con vigencia de hasta 3 años",
+   "cita": "se crea la presente bolsa de trabajo temporal con 4 especialidades",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Período de prueba establecido por convenio colectivo tras la incorporación",
+   "cita": "Una vez incorporada la persona, deberá superar el período de prueba establecido por convenio colectivo.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Oficial 3.ª taller (Mecánica)",
+    "Oficial 3.ª taller (Electricidad)",
+    "Oficial 3.ª taller (Chapa y pintura)",
+    "Oficial 3.ª taller (Soldadura)"
+   ],
+   "cita": "Oficial 3.ª taller. Área funcional: Operaria. Tipología de plaza: CÓDIGO DPT EM-ST-10"
+  },
+  "meritos": {
+   "motivo": "cita_no_literal",
+   "valor": "Experiencia profesional hasta 40; nivel de catalán hasta 5; permisos de conducir C y CAP hasta 15; formación no reglada hasta 10; formación reglada por especialidad hasta 30",
+   "cita": "Experiencia profesional: Hasta un máximo de 40 puntos. NIVEL DE CATALÁN: Hasta un máximo de 5 puntos"
+  }
+ }
+}

@@ -1,0 +1,112 @@
+{
+ "proceso": "dogv:428789",
+ "documento": {
+  "id": "dogv:428789",
+  "fuente": "DOGV",
+  "url": "https://dogv.gva.es/datos/2025/06/05/pdf/2025_20462_es.pdf",
+  "fecha": "2025-06-05",
+  "huella": "531b87aa284557c22ea3ebe9cf67ab7f01afb3f568b5188e9c8cd10ec8032d34"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:45:13+00:00",
+ "lote": "msgbatch_016re6aGcimwSVmdrWa6qBd9",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "Catedrático o catedrática de universidad, área de Fundamentos del Análisis Económico",
+   "cita": "convocar a concurso de acceso, por el sistema de acceso libre, la plaza que se relaciona en el anexo I",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "Los concursos de acceso a plazas de catedrático y catedrática de universidad convocadas por turno libre constarán de dos pruebas",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "Los concursos de acceso a plazas de catedrático y catedrática de universidad convocadas por turno libre constarán de dos pruebas",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Estar en posesión de la acreditación nacional para el cuerpo de catedrático o catedrática de universidad o de la habilitación nacional correspondiente",
+   "cita": "Reunir, al menos, uno de los siguientes requisitos: Estar en posesión de la acreditación para el cuerpo de catedrático",
+   "nivel": "sin_signos"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española (salvo excepciones del art. 57 EBEP); capacidad física y psíquica; mayor de dieciséis años y no exceder la edad de jubilación forzosa; no haber sido separado del servicio por expediente disciplinario ni inhabilitado",
+   "cita": "Tener cumplidos dieciséis años de edad y no exceder de la edad máxima de jubilación forzosa",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Las personas aspirantes no nacionales deben acreditar conocimiento adecuado de alguna lengua oficial de la Comunitat Valenciana",
+   "cita": "deberán acreditar un conocimiento adecuado de cualquiera de las lenguas oficiales de la Comunitat Valenciana",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 35,
+   "cita": "el importe de la tasa es de 35 euros",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Exentas: discapacidad igual o superior al 33 %; familias numerosas y monoparentales de categoría especial; víctimas de violencia sobre la mujer. Bonificación del 50 % para familias de categoría general",
+   "cita": "Estarán exentos del pago de la tasa: a) Las personas aspirantes con una discapacidad igual o superior al 33 %",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "10 días hábiles desde el día siguiente a la publicación de la convocatoria en el BOE",
+   "cita": "presentarán, en el plazo de 10 días hábiles a partir del día siguiente al de publicación de la presente convocatoria en el Boletín Oficial del Estado",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Telemáticamente, a través de la sede electrónica de la Universidad de Alicante (trámite de solicitud de plazas de personal docente e investigador); no se admiten solicitudes por otros medios",
+   "cita": "En ningún caso se admitirán solicitudes recibidas sin utilizar este trámite",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Sede electrónica de la UA; tablón de anuncios de los locales de la comisión en actuaciones presenciales; web del Servicio de Selección de Personal con carácter informativo",
+   "cita": "Las publicaciones se realizarán en sede electrónica en «Otros documentos generales» del expediente del aspirante",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Primera prueba: exposición oral de méritos e historial académico, docente e investigador (máx. 20 puntos)",
+    "Primera prueba: exposición de directrices del proyecto docente (máx. 30 puntos), mínimo 25 puntos conjuntos",
+    "Segunda prueba: exposición oral de un proyecto de investigación (máx. 50 puntos), mínimo 25 puntos"
+   ],
+   "cita": "Los concursos de acceso a plazas de catedrático y catedrática de universidad convocadas por turno libre constarán de dos pruebas",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Los méritos se valoran en la primera prueba (máx. 20 puntos), sin especificar criterios detallados en las bases; se valora el historial académico, docente e investigador acreditado a la fecha de cierre de solicitudes",
+   "cita": "exposición oral de sus méritos e historial académico, docente e investigador. Tendrá un valor máximo de 20 puntos",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "A1",
+   "cita": "concurso de acceso a plazas de catedrático o catedrática de universidad"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "la plaza que se relaciona en el anexo I de la presente resolución"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "convocar a concurso de acceso, por el sistema de acceso libre, la plaza que se relaciona"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "no",
+   "cita": "no se menciona bolsa ni lista de espera"
+  },
+  "practicas_o_curso": {
+   "motivo": "cita_no_literal",
+   "valor": "no",
+   "cita": "no se menciona periodo de prácticas ni curso selectivo"
+  }
+ }
+}

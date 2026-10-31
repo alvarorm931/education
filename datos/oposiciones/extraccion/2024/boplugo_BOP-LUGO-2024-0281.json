@@ -1,0 +1,55 @@
+{
+ "proceso": "boplugo:BOP-LUGO-2024-0281",
+ "documento": {
+  "id": "boplugo:BOP-LUGO-2024-0281",
+  "fuente": "BOP-LUGO",
+  "url": "https://deputacionlugo.gal/sites/deputacionlugo.org/files/inline-files/03-02-2024.pdf#page=1",
+  "fecha": "2024-02-03",
+  "huella": "db2bcb9e2e83e51a9673b4b8bef48d184c2ce4f94b75ff3adb1049c367c30145"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:54:08+00:00",
+ "lote": "msgbatch_01EQ4R6PVKpEwTXzXwPCmspm",
+ "no_son_bases": false,
+ "campos": {
+  "sistema": {
+   "valor": "concurso",
+   "cita": "Quen desexe formar parte no proceso selectivo deberá presentar solicitude no modelo oficial",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "10 días hábiles, contados a partir do seguinte ao desta publicación no BOP de Lugo",
+   "cita": "o prazo de presentación de instancias será de 10 días hábiles, contados a partir do seguinte",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Sede electrónica do Concello de Foz e taboleiro de anuncios",
+   "cita": "A resolución completa coas bases da convocatoria pódese consultar na sede electrónica do Concello",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Postos reservados a persoal funcionario da administración local con habilitación de carácter nacional, subescala de secretaría, categoría de entrada"
+   ],
+   "cita": "constitución dunha bolsa para a provisión con funcionario/a interino/a os postos reservados a persoal funcionario"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario interino",
+   "cita": "constitución dunha bolsa para a provisión con funcionario/a interino/a os postos reservados"
+  },
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Solicitude no modelo oficial nas dependencias administrativas do Concello de Foz, na web do Concello, dirixida ao Sr. Alcalde-Presidente, ou por os restantes medios admitidos legalmente",
+   "cita": "deberá presentar solicitude no modelo oficial a disposición das persoas interesadas nas dependencias administrativas"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, para a provisión con funcionario/a interino/a dos postos reservados",
+   "cita": "Anuncio Convocatoria para a constitución dunha bolsa para a provisión con funcionario/a interino/a"
+  }
+ }
+}

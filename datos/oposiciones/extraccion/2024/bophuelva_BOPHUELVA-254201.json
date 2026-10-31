@@ -1,0 +1,60 @@
+{
+ "proceso": "bophuelva:BOPHUELVA-254201",
+ "documento": {
+  "id": "bophuelva:BOPHUELVA-254201",
+  "fuente": "BOP-HUELVA",
+  "url": "https://s2.diphuelva.es/portalweb/bope/anuncios/Anuncio_254201_BOP-108_2024.pdf",
+  "fecha": "2024-06-04",
+  "huella": "4bfd7eb9aa62ab4df5e28ca4f47f24311742f1da519a7838eb17c8110b8047e3"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:54:22+00:00",
+ "lote": "msgbatch_01HRnX7cDVMkRZD7mBamCmLu",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "PEONES DE OBRAS PÚBLICAS"
+   ],
+   "cita": "PEONES DE OBRAS PÚBLICAS PEONES 20 SIN TITULACIÓN LIMPIEZA DE EDIFICIOS",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 20,
+   "cita": "PEONES DE OBRAS PÚBLICAS PEONES 20 SIN TITULACIÓN",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Sin titulación",
+   "cita": "PEONES DE OBRAS PÚBLICAS PEONES 20 SIN TITULACIÓN LIMPIEZA DE EDIFICIOS",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de Anuncios del Ayuntamiento",
+   "cita": "Ambas Resoluciones de Alcaldía se encuentra publicadas en el Tablón de Anuncios de este Ayuntamiento",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "Sin grupo de clasificación indicado",
+   "cita": "DENOMINACIÓN CATEGORÍA PROFESIONAL/GRUPO O SUBGRUPO PROFESIONAL PUESTOS DE TRABAJO"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "laboral temporal",
+   "cita": "Las contrataciones de este Plan de Empleo se harán solicitando oferta genérica al Servicio Andaluz de Empleo"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "No indicado",
+   "cita": "Los puestos a cubrir, que se irán tramitando en función de las necesidades existentes"
+  },
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Mediante oferta genérica al Servicio Andaluz de Empleo (SAE)",
+   "cita": "Las contrataciones de este Plan de Empleo se harán solicitando oferta genérica al Servicio Andaluz de Empleo"
+  }
+ }
+}

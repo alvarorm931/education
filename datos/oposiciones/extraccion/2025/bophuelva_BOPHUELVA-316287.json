@@ -1,0 +1,40 @@
+{
+ "proceso": "bophuelva:BOPHUELVA-316287",
+ "documento": {
+  "id": "bophuelva:BOPHUELVA-316287",
+  "fuente": "BOP-HUELVA",
+  "url": "https://s2.diphuelva.es/portalweb/bope/anuncios/Anuncio_316287_BOP-129_2025.pdf",
+  "fecha": "2025-07-08",
+  "huella": "5d111b2712322b62c33e681c642578e438ca5ce6d93d9b53ca25dacb71623e9d"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:45:31+00:00",
+ "lote": "msgbatch_016re6aGcimwSVmdrWa6qBd9",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "monitor deportivo"
+   ],
+   "cita": "para el puesto de monitor deportivo del Ayuntamiento de El Campillo",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "diez días hábiles desde el día siguiente a la publicación del anuncio",
+   "cita": "El plazo de presentación de solicitudes será de diez días hábiles a contar desde el día siguiente a la publicación de este anuncio"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "sede electrónica http://elcampillo.sedelectronica.es",
+   "cita": "Aparecen íntegramente publicadas las bases que han de regir la convocatoria en la sede electrónica"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, bolsa de empleo temporal para el puesto de monitor deportivo",
+   "cita": "la creación de una bolsa de empleo temporal para el puesto de monitor deportivo"
+  }
+ }
+}

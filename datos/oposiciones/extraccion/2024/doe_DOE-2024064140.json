@@ -1,0 +1,101 @@
+{
+ "proceso": "doe:DOE-2024064140",
+ "documento": {
+  "id": "doe:DOE-2024064140",
+  "fuente": "DOE",
+  "url": "https://doe.juntaex.es/otrosFormatos/html.php?xml=2024064140&anio=2024&doe=2490o",
+  "fecha": "2024-12-26",
+  "huella": "c1fccf7e1758774ad34ae19f9edaef56cebdc616395ef2051c4924c26a374121"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:49:48+00:00",
+ "lote": "msgbatch_018TPQE8scQozfAUdc1n8RyC",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "Celador",
+   "cita": "convoca proceso selectivo para cubrir 4 plazas básicas por el sistema de concurso oposición en la categoría de Celador",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "El proceso de selección de los aspirantes será el de concurso-oposición, que tendrá dos fases",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 4,
+   "cita": "Se convoca proceso selectivo para cubrir 4 plazas básicas por el sistema de concurso oposición",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Reconocimiento de un grado de discapacidad intelectual igual o superior al 33 por ciento, según Decreto 111/2017, de 18 de julio.",
+   "cita": "siempre que tengan reconocido un grado de discapacidad igual o superior al 33 por ciento",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Exentos del pago de la tasa los aspirantes con grado reconocido de discapacidad intelectual igual o superior al 33 por ciento.",
+   "cita": "Los aspirantes quedan exentos del pago de la tasa por derechos de examen, debiendo acompañar a la solicitud certificado",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles desde el día siguiente a la publicación de la convocatoria en el Diario Oficial de Extremadura",
+   "cita": "El plazo de presentación de solicitudes será de veinte días hábiles contados a partir del día siguiente",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Telemáticamente a través del Portal de Selección de Personal del Servicio Extremeño de Salud, con certificado o DNI electrónico",
+   "cita": "Toda la documentación requerida en el proceso selectivo deberá ser subida al perfil del candidato del Portal",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Fase de oposición (60 puntos) con temario de 6 temas",
+    "Fase de concurso (40 puntos) con autobaremo de méritos"
+   ],
+   "cita": "el proceso de selección de los aspirantes será el de concurso-oposición, que tendrá dos fases",
+   "nivel": "literal"
+  },
+  "temas": {
+   "valor": 6,
+   "cita": "Tema 6. Servicio Extremeño de Salud: Funciones. Organización y funcionamiento. Áreas de Salud.",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Formación continuada (máx. 10 puntos) y experiencia profesional (servicios prestados en centros sanitarios y administraciones; máx. 30 puntos según la puntuación máxima de la fase de concurso de 40 puntos)",
+   "cita": "La puntuación máxima total será de 40 puntos.",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "no se especifica en el texto",
+   "cita": "la superación del proceso selectivo no supondrá el derecho a la adquisición de la condición de personal estatutario fijo",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "personal laboral fijo",
+   "cita": "adquisición de la condición de personal estatutario fijo del Servicio Extremeño de Salud"
+  },
+  "plazas_discapacidad": {
+   "motivo": "valor_no_en_cita",
+   "valor": 4,
+   "cita": "para su cobertura por personas con discapacidad intelectual, siempre que tengan reconocido un grado de discapacidad"
+  },
+  "tasa_euros": {
+   "motivo": "valor_no_en_cita",
+   "valor": 0,
+   "cita": "Los aspirantes quedan exentos del pago de la tasa por derechos de examen"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Apartado Publicaciones del Portal de Selección de Personal del Servicio Extremeño de Salud y DOE",
+   "cita": "Todas las publicaciones de convocatorias, anexos, listados, resoluciones se realizarán a través del apartado Publicaciones del Portal"
+  },
+  "practicas_o_curso": {
+   "motivo": "cita_no_literal",
+   "valor": "Periodo de tutoría de dos meses con abono de 500 euros de actividades de tutoría y apoyo",
+   "cita": "se fija como importe de las actividades de tutoría y apoyo al proceso de adaptación de este personal la cantidad de 500 euros"
+  }
+ }
+}

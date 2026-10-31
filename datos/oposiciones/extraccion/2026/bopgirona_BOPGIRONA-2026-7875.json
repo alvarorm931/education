@@ -1,109 +1,58 @@
 {
  "proceso": "bopgirona:BOPGIRONA-2026-7875",
  "documento": {
-  "id": "bopgirona:BOPGIRONA-2026-7875",
-  "fuente": "BOP-GIRONA",
-  "url": "https://ssl4.ddgi.cat/bopV1/pdf/2026/177/202617707875.pdf",
-  "fecha": "2026-09-15",
-  "huella": "99367cf798e7f784c4575a91c9dbcd7c367b9b819dd739a82f79179fa38f9349"
+  "id": "dogc:1054479",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1054479",
+  "fecha": "2026-09-16",
+  "huella": "ab63e7b7c79086169672bef853db462664a84e5d6629866949d58830b62a4513"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T08:03:38+00:00",
- "lote": "msgbatch_013xFoLdqcGqWcqkzh7qrdGg",
+ "extraido": "2026-10-31T14:41:35+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
  "no_son_bases": false,
  "campos": {
-  "denominacion": {
-   "valor": [
-    "Tècnic/a d'urbanisme i obres"
-   ],
-   "cita": "BASES REGULADORES DEL PROCÉS SELECTIU, PER CONCURS OPOSICIÓ LLIURE, PER LA COBERTURA DEFINITIVA D’UNA PLAÇA DE TÈCNIC/A D’URBANISME I OBRES",
-   "nivel": "literal"
-  },
-  "grupo": {
-   "valor": "A2",
-   "cita": "Denominació de la plaça: Tècnic/a d’urbanisme i obres - Subescala: Tècnica - Règim: laboral - Classificació: A2",
-   "nivel": "literal"
-  },
   "vinculo": {
    "valor": "laboral temporal",
-   "cita": "Règim: laboral - Classificació: A2",
+   "cita": "en règim laboral, mitjançant concurs oposició per torn lliure",
    "nivel": "literal"
   },
   "sistema": {
    "valor": "concurso-oposición",
-   "cita": "El sistema de selecció serà el de concurs-oposició lliure.",
+   "cita": "mitjançant concurs oposició per torn lliure i la creació de la borsa",
    "nivel": "literal"
   },
   "plazas_total": {
    "valor": 1,
-   "cita": "per la cobertura definitiva d’una plaça de tècnic/a d’urbanisme i obres, personal laboral",
+   "cita": "el procés de selecció i provisió d'una plaça d'Arquitecte/a Tècnic/a",
    "nivel": "literal"
   },
-  "titulacion": {
-   "valor": "Grau universitari que habiliti per a l’exercici de la professió regulada d’Arquitecte/a Tècnic o d’Arquitecte/a",
-   "cita": "Estar en possessió de grau universitari que habiliti per a l’exercici de la professió regulada d’Arquitecte/a Tècnic",
+  "plazo_solicitudes": {
+   "valor": "veinte días naturales desde el día siguiente a la publicación del extracto en el DOGC",
+   "cita": "El termini per a la presentació de sol·licituds és de vint dies naturals, comptats des de l'endemà",
    "nivel": "literal"
   },
-  "otros_requisitos": {
-   "valor": "Tener 16 años cumplidos y no exceder edad de jubilación forzosa; nacionalidad española o de la UE; no padecer limitación incompatible; no estar separado de la Administración; carné de conducir B y vehículo propio.",
-   "cita": "Disposar del permís de conduir de la classe B, així com de vehicle propi per a l’exercici de les funcions del lloc de treball.",
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia de Girona y tablón de edictos del Ayuntamiento tras la publicación en el DOGC",
+   "cita": "es publicaran al tauler d'edictes de l'Ajuntament una vegada publicat al DOGC",
    "nivel": "literal"
   },
-  "idioma_cooficial": {
-   "valor": "Català, nivel C1 (suficiencia)",
-   "cita": "Acreditar coneixements de llengua catalana de nivell C1 (nivell de suficiència de català)",
-   "nivel": "literal"
-  },
-  "ejercicios": {
-   "valor": [
-    "Primera prova: coneixements teòrics, qüestionari de 50 preguntes (10 punts, eliminatori)",
-    "Segona prova: prova pràctica amb supòsits (20 punts, eliminatori)",
-    "Tercera prova: entrevista personal (3 punts, no eliminatori)"
-   ],
-   "cita": "11.1 Primera prova: Coneixements teòrics Consisteix en contestar un qüestionari de 50 preguntes",
-   "nivel": "literal"
-  },
-  "temas": {
-   "valor": 62,
-   "cita": "Tema 62. El patrimoni de les entitats locals: béns i drets que el conformen.",
-   "nivel": "literal"
-  },
-  "meritos": {
-   "valor": "Experiencia profesional hasta 6 puntos; formación hasta 4 puntos; puntuación máxima de la fase de concurso 10 puntos",
-   "cita": "Fase de concurs (puntuació màxima de 10 punts)",
-   "nivel": "literal"
-  },
-  "practicas_o_curso": {
-   "valor": "Periodo de prácticas de 6 meses bajo supervisión de tutor designado por el Alcalde",
-   "cita": "L’aspirant nomenat haurà de superar un període de pràctiques de 6 mesos",
+  "bolsa": {
+   "valor": "sí, para crear una bolsa de trabajo",
+   "cita": "i la creació de la borsa de treball corresponent",
    "nivel": "literal"
   }
  },
  "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Arquitecte/a Tècnic/a",
+   "cita": "la provisió d'una plaça d'Arquitecte/a Tècnic/a, en règim laboral"
+  },
   "plazas_turno_libre": {
-   "motivo": "cita_no_literal",
+   "motivo": "valor_no_en_cita",
    "valor": 1,
-   "cita": "per torn lliure, la creació de la borsa de treball corresponent"
-  },
-  "plazo_solicitudes": {
-   "motivo": "cita_no_literal",
-   "valor": "20 días naturales desde el día siguiente a la última publicación del anuncio de convocatoria en el BOPG o DOGC",
-   "cita": "el termini de presentació de sol·licituds és de vint (20) dies naturals a partir de l’endemà"
-  },
-  "presentacion": {
-   "motivo": "cita_no_literal",
-   "valor": "Preferiblemente electrónica en la sede electrónica municipal, o registro de entrada del Ayuntamiento, o en cualquiera de las formas del art. 16.4 Ley 39/2015",
-   "cita": "Es presentarà preferiblement en forma electrònica, o al registre d’entrada de l’Oficina d’Atenció Ciutadana"
-  },
-  "publicaciones": {
-   "motivo": "cita_no_literal",
-   "valor": "Tablón de anuncios y sede electrónica del Ayuntamiento; e-Tauler de la web municipal",
-   "cita": "Els successius anuncis es publicaran al tauler electrònic (e-Tauler) de la web municipal"
-  },
-  "bolsa": {
-   "motivo": "cita_no_literal",
-   "valor": "sí, para cubrir vacantes temporales o interinas y necesidades urgentes e inaplazables, con vigencia de dos años",
-   "cita": "crear la borsa de treball corresponent"
+   "cita": "mitjançant concurs oposició per torn lliure i la creació de la borsa"
   }
  }
 }

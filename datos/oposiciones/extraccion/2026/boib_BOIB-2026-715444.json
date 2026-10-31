@@ -1,0 +1,98 @@
+{
+ "proceso": "boib:BOIB-2026-715444",
+ "documento": {
+  "id": "boib:BOIB-2026-715444",
+  "fuente": "BOIB",
+  "url": "https://www.caib.es/eboibfront/es/2026/12275/715444/resolucion-del-director-gerente-de-la-fundacion-in",
+  "fecha": "2026-05-16",
+  "huella": "aba27539e0d490c1862c13937555e6363771e1a84d126a941dc817509b2212af"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:41:31+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "investigador o investigadora"
+   ],
+   "cita": "plaza de investigador o investigadora, del grupo profesional A, para el proyecto",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "Tipo de contrato: contrato indefinido sujeto a proyecto de investigación.",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "Valoración de méritos acreditados por las personas aspirantes, de acuerdo con el siguiente baremo, además de una entrevista personal",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "para cubrir una plaza de investigador o investigadora, del grupo profesional A",
+   "nivel": "literal"
+  },
+  "plazas_turno_libre": {
+   "valor": 1,
+   "cita": "Existe en el IdISBa una reserva del 7 % de los lugares de trabajo para personas con discapacidad, según el Real Decreto Ley 5/2015 del TREBEP. No obstante, esta plaza no está reservada para este fin.",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Formación MIR de cardiólogo",
+   "cita": "Formación MIR de cardiólogo. Tener cumplidos dieciséis años y no exceder",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Tener cumplidos dieciséis años y no exceder de la edad máxima de jubilación forzosa. Nacionalidad española o de otro estado en los casos del TREBEP. Capacidad funcional para desempeñar las tareas.",
+   "cita": "Tener cumplidos dieciséis años y no exceder, en su caso, de la edad máxima de jubilación forzosa.",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "10 días hábiles desde el día siguiente de la fecha de publicación de la convocatoria",
+   "cita": "El plazo de recepción de solicitudes será de 10 días hábiles desde el día siguiente de la fecha de publicación de la convocatoria.",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Registro físico de la Fundación IdISBa o correo electrónico idisba.convocatorias@idisba.es indicando el código de expediente 2026-19-PRHUSE",
+   "cita": "Las solicitudes se pueden presentar en el registro físico de la Fundación Instituto de Investigación Sanitaria Illes Balears o mediante el correo electrónico",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Página web del IdISBa (www.idisba.es)",
+   "cita": "Esta resolución se publicará en la página web del IdISBa ( www.idisba.es ).",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Valoración de méritos acreditados",
+    "Entrevista personal (hasta 1 punto)"
+   ],
+   "cita": "Valoración de méritos acreditados por las personas aspirantes, de acuerdo con el siguiente baremo, además de una entrevista personal",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Experiencia profesional (2,5 p.); formación (3 p.); actividad científica (2 p.); idiomas (1,5 p.); entrevista personal (1 p.)",
+   "cita": "Valoración de méritos acreditados por las personas aspirantes, de acuerdo con el siguiente baremo, además de una entrevista personal",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, bolsa de trabajo para los dos años siguientes en el mismo puesto ofertado",
+   "cita": "que implicará la constitución de una bolsa de trabajo para los dos años siguientes en el mismo puesto ofertado",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "A",
+   "cita": "grupo profesional A del I convenio colectivo para el personal laboral"
+  },
+  "plazas_discapacidad": {
+   "motivo": "valor_no_en_cita",
+   "valor": 0,
+   "cita": "No obstante, esta plaza no está reservada para este fin."
+  }
+ }
+}

@@ -1,112 +1,54 @@
 {
  "proceso": "bopt:BOPT-2026-06549",
  "documento": {
-  "id": "bopt:BOPT-2026-06549",
-  "fuente": "BOPT",
-  "url": "https://www.dipta.cat/bopt/web/anunci/362138/borsa-de-treball-de-peo-per-a-la-brigada-bases-i-convocatoria-ajuntament-alcanar",
-  "fecha": "2026-07-13",
-  "huella": "b06c5ad12243b353dbd81548fd27866e2e8dfeb76824d738f14ac2db24d86485"
+  "id": "dogc:1049860",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1049860",
+  "fecha": "2026-07-15",
+  "huella": "7015e5c2e69ca0b3bb9fa55c04d65dc814d5b383bbef19e83c9dce5e8210c883"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T08:18:26+00:00",
- "lote": "msgbatch_01BrnYw6KkevFx7at547B5g8",
+ "extraido": "2026-10-31T14:42:02+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
-   "valor": "Peó/ona de brigada",
-   "cita": "Denominació de la plaça Peó/ona de brigada Règim Laboral temporal",
-   "nivel": "literal"
-  },
-  "grupo": {
-   "valor": "AP",
-   "cita": "Categoria professional Assimilable a grup professional AP Retribucions",
+   "valor": [
+    "peón/ona para la brigada"
+   ],
+   "cita": "convocado del proceso selectivo, mediante concurso de valoración de méritos, para la constitución de una bolsa de trabajo de peón/ona para la brigada",
    "nivel": "literal"
   },
   "vinculo": {
-   "valor": "laboral temporal",
-   "cita": "Règim Laboral temporal Unitat/Àrea Brigada municipal- Serveis al territori",
+   "valor": "otro",
+   "cita": "constitución de una bolsa de trabajo de peón/ona para la brigada, con carácter de máxima urgencia",
    "nivel": "literal"
   },
   "sistema": {
    "valor": "concurso",
-   "cita": "Núm. de vacants 1 Sistema selectiu Concurs",
-   "nivel": "literal"
-  },
-  "plazas_total": {
-   "valor": 1,
-   "cita": "Núm. de vacants 1 Sistema selectiu Concurs",
-   "nivel": "literal"
-  },
-  "titulacion": {
-   "valor": "Certificat d'escolaritat o equivalent",
-   "cita": "Titulació exigible Certificat d’escolaritat o equivalent Jornada",
-   "nivel": "literal"
-  },
-  "otros_requisitos": {
-   "valor": "Nacionalitat espanyola (o normativa aplicable a nacionals UE/estrangers), capacitat funcional, haver complert 16 anys, no estar separat ni inhabilitat per a funció pública",
-   "cita": "Per ser admès/a al procés selectiu, les persones aspirants han de complir els requisits següents fins al darrer dia",
-   "nivel": "literal"
-  },
-  "idioma_cooficial": {
-   "valor": "català nivell A2",
-   "cita": "Acreditar els coneixements de llengua catalana de nivell A2, d’acord amb el que estableix el Decret 161/2002",
-   "nivel": "literal"
-  },
-  "tasa_euros": {
-   "valor": 20,
-   "cita": "Juntament amb la sol·licitud, les persones aspirants han de presentar el justificant d’haver satisfet la taxa de drets d’examen, 20€",
-   "nivel": "literal"
-  },
-  "exenciones_tasa": {
-   "valor": "Persones en situació legal de desocupació, acreditada mitjançant documentació oficial del Servei Públic d'Ocupació",
-   "cita": "Estaran exemptes del pagament de la taxa les persones que es trobin en situació legal de desocupació",
+   "cita": "mediante concurso de valoración de méritos, para la constitución de una bolsa de trabajo",
    "nivel": "literal"
   },
   "plazo_solicitudes": {
-   "valor": "7 dies hàbils des del dia següent a la publicació de l'anunci al DOGC",
-   "cita": "El termini de presentació de sol·licituds serà de 7 dies hàbils, a comptar des del dia següent al de la publicació",
+   "valor": "7 días hábiles, a contar desde el día siguiente al de la publicación del anuncio de la convocatoria en el DOGC",
+   "cita": "El plazo de presentación de solicitudes será de 7 días hábiles, a contar desde el día siguiente al de la publicación",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Preferiblement per la seu electrònica de l'Ajuntament d'Alcanar; també Registre General o qualsevol mitjà de l'article 16.4 de la Llei 39/2015",
-   "cita": "Preferiblement, s’ha de presentar la sol·licitud per internet mitjançant la seu electrònica de l’Ajuntament d’Alcanar",
+   "valor": "en cualquiera de las formas que determina el artículo 16.4 de la Ley 39/2015, de 1 de octubre",
+   "cita": "en cualquiera de las formas que determina el artículo 16.4, de la Ley 39/2015, de 1 de octubre",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Tauler d'anuncis de la seu electrònica de l'Ajuntament d'Alcanar; web municipal (apartat Recursos Humans); BOPT i DOGC",
-   "cita": "Es publicaran igualment a la seu electrònica d' aquest Ajuntament",
-   "nivel": "literal"
-  },
-  "ejercicios": {
-   "valor": [
-    "Fase prèvia: prova de llengua catalana (nivell A2), eliminatòria",
-    "Fase prèvia: prova de llengua castellana, només per a aspirants que no acreditin el coneixement",
-    "Fase de concurs: valoració de mèrits acadèmics i professionals"
-   ],
-   "cita": "El procediment de selecció de les persones aspirants serà el de concurs",
-   "nivel": "literal"
-  },
-  "meritos": {
-   "valor": "Acadèmics fins a 40 punts (titulacions superiors, cursos de formació fins a 30 punts); professionals fins a 60 punts (serveis com a peó en Administració 0,60 per mes; similars 0,40; empresa privada 0,30)",
-   "cita": "b) Mèrits professionals (experiència): fins a un màxim de 60 punts.",
+   "valor": "sede electrónica del ayuntamiento y Tablón de anuncios electrónico; también página web del Ayuntamiento, apartado de Recursos Humanos",
+   "cita": "Los sucesivos anuncios de esta convocatoria, cuando procedan de conformidad con las bases, se publicarán en la sede electrónica del ayuntamiento",
    "nivel": "literal"
   },
   "bolsa": {
-   "valor": "sí, per cobrir vacants, substitucions i altres contingències temporals de la brigada, vigència màxima de dos anys",
-   "cita": "Formaran part de la borsa de treball totes les persones aspirants que hagin superat el procés selectiu",
-   "nivel": "literal"
-  },
-  "practicas_o_curso": {
-   "valor": "Període de prova de dos mesos",
-   "cita": "La contractació inclourà un període de prova de dos mesos, d'acord amb el que estableix",
+   "valor": "sí, para cubrir vacantes, sustituciones y cualquier otra contingencia temporal de este grupo profesional",
+   "cita": "para cubrir vacantes, sustituciones y cualquier otra contingencia temporal de este grupo profesional",
    "nivel": "literal"
   }
  },
- "rechazados": {
-  "plazas_turno_libre": {
-   "motivo": "valor_no_en_cita",
-   "valor": 1,
-   "cita": "TORN: lliure DENOMINACIÓ DE LA PLAÇA: peó/ona de brigada"
-  }
- }
+ "rechazados": {}
 }

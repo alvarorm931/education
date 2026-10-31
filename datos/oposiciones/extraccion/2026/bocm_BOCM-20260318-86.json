@@ -1,0 +1,62 @@
+{
+ "proceso": "bocm:BOCM-20260318-86",
+ "documento": {
+  "id": "bocm:BOCM-20260318-86",
+  "fuente": "BOCM",
+  "url": "https://www.bocm.es/bocm-20260318-86",
+  "fecha": "2026-03-18",
+  "huella": "157c6cb12de4244480fb49a17c2df97b191ff0d5b181da6618ce47f79c95fee5"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:40:50+00:00",
+ "lote": "msgbatch_01E3wiYcGL8Lzho48bXWLyyb",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "concurso-oposición restringido para el acceso a la función pública del personal laboral del Ayuntamiento",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles a contar desde el día siguiente a la publicación de este anuncio en el Boletín Oficial del Estado",
+   "cita": "Se abre el plazo de presentación de solicitudes, que será de 20 días hábiles a contar desde el día siguiente",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial del Estado",
+   "cita": "plazo de presentación de solicitudes, que será de 20 días hábiles a contar desde el día siguiente a la publicación de este anuncio en el",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Arquitecto",
+    "Agente de Empleo y Desarrollo Local",
+    "Administrativo"
+   ],
+   "cita": "Denominación del puesto: Arquitecto. Escala: Administración Especial."
+  },
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "A1",
+   "cita": "Grupo: A. Subgrupo: A1. Jornada: 48 % de la Jornada."
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "Sistema de selección: Concurso-oposición. Denominación del puesto: Agente de Empleo"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 3,
+   "cita": "N.o de vacantes: 1. Sistema de selección: Concurso-oposición. Denominación del puesto: Agente"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 3,
+   "cita": "concurso-oposición restringido para el acceso a la función pública del personal laboral del Ayuntamiento"
+  }
+ }
+}

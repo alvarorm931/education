@@ -1,0 +1,50 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2023-8661",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2023-8661",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2023/10/26_206/2023_008661.pdf",
+  "fecha": "2023-10-26",
+  "huella": "32f48f83722e95102ea7f53bece42950c079e1c1fa08fddd7617577140fbd2f1"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:50+00:00",
+ "lote": "msgbatch_01SjfjDqJRwL6bpTvJz2YfVg",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Intendente de la Policía Local"
+   ],
+   "cita": "BASES CONVOCATORIA 23/25 PARA LA CONSTITUCION DE UNA BOLSA DE TRABAJO TEMPORAL DE INTENDENTE DE LA POLICIA LOCAL",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "mediante el sistema comisión de servicios",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "10 días naturales, contados desde el día siguiente a la publicación del anuncio en el BOP",
+   "cita": "El plazo de presentación de instancias será de 10 días naturales, contados a partir del día siguiente",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de edictos municipal y sede electrónica del Ayuntamiento de Calp",
+   "cita": "Los sucesivos anuncios relacionados con la presente convocatoria se publicarán únicamente en el tablón",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "laboral temporal",
+   "cita": "constitución de una bolsa de trabajo temporal para el desempeño de puesto de Intendente"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, bolsa de trabajo temporal para el desempeño del puesto de Intendente de la Policía Local",
+   "cita": "para la constitución de una bolsa de trabajo temporal para el desempeño de puesto de Intendente"
+  }
+ }
+}

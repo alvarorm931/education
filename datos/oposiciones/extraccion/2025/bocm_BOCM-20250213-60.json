@@ -1,0 +1,65 @@
+{
+ "proceso": "bocm:BOCM-20250213-60",
+ "documento": {
+  "id": "bocm:BOCM-20250213-60",
+  "fuente": "BOCM",
+  "url": "https://www.bocm.es/bocm-20250213-60",
+  "fecha": "2025-02-13",
+  "huella": "d252fceb6195f5b10186bfe0c4dc3ac40495a1365e9a093dde20254681d76d38"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:46:24+00:00",
+ "lote": "msgbatch_01MQzQCLMZKxUrrPMAj7dr53",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Policía Local (provisión temporal en comisión de servicios voluntaria)"
+   ],
+   "cita": "dos puestos de trabajo de policías vacantes clasificados en el Grupo C1",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C1",
+   "cita": "dos puestos de trabajo de policías vacantes clasificados en el Grupo C1",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "otro",
+   "cita": "provisión temporal, en comisión de servicios voluntaria, de dos puestos de trabajo",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "se han aprobado las bases que han de regir el proceso de selección",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 2,
+   "cita": "dos puestos de trabajo de policías vacantes clasificados en el Grupo C1",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles desde el día siguiente a la publicación del anuncio en el BOCM",
+   "cita": "dentro del plazo de veinte días hábiles, contados a partir del día siguiente al de la publicación",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "modelo normalizado disponible en Oficinas del Servicio de Atención al Ciudadano y Sede Electrónica, con documentación de la base 3.4",
+   "cita": "se ajustarán al modelo normalizado que se encuentra disponible tanto en las Oficinas del Servicio de Atención al Ciudadano",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Sede Electrónica de la web del Ayuntamiento de Parla (bases y oferta pública de empleo)",
+   "cita": "publicadas en la Sede Electrónica de la web del Ayuntamiento de Parla",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, lista de espera",
+   "cita": "el funcionamiento de la lista de espera se detallan en las bases"
+  }
+ }
+}

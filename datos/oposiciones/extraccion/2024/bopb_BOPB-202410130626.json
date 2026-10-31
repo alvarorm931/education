@@ -1,0 +1,46 @@
+{
+ "proceso": "bopb:BOPB-202410130626",
+ "documento": {
+  "id": "bopb:BOPB-202410130626",
+  "fuente": "BOPB",
+  "url": "https://bop.diba.cat/anunci/3655944/aprovacio-de-la-convocatoria-per-cobrir-tres-places-d-auxiliar-de-neteja-i-cinc-places-de-peo-de-brigada-del-proces-d-estabilitzacio-temporal-pel-sistema-de-concurs-ajuntament-de-gironella",
+  "fecha": "2024-07-24",
+  "huella": "de6c81063a7d20ab892155e434ccc64f45d5b5efd73a03650ebc4048713e6d82"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:49:13+00:00",
+ "lote": "msgbatch_016yasWxkCXTWjPAb8LjB3ob",
+ "no_son_bases": false,
+ "campos": {
+  "sistema": {
+   "valor": "concurso",
+   "cita": "pel sistema de concurs, s'obre el termini de presentació de sol·licituds",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "45 dies hàbils a comptar des de l'endemà a la publicació d'aquest anunci en el Butlletí Oficial de l’Estat",
+   "cita": "serà de 45 dies hàbils a comptar des de l'endemà a la publicació d'aquest anunci",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Butlletí Oficial de l’Estat",
+   "cita": "a comptar des de l'endemà a la publicació d'aquest anunci en el Butlletí Oficial de l’Estat",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Auxiliar de Neteja",
+    "Peó de Brigada"
+   ],
+   "cita": "Auxiliar de Neteja i Peó de Brigada del procés d’estabilització temporal"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 8,
+   "cita": "tres places d’Auxiliar de Neteja i cinc places de Peó de Brigada"
+  }
+ }
+}

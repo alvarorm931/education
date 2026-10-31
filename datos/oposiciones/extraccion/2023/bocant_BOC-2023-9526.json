@@ -1,0 +1,45 @@
+{
+ "proceso": "bocant:BOC-2023-9526",
+ "documento": {
+  "id": "bocant:BOC-2023-9526",
+  "fuente": "BOC-CANT",
+  "url": "https://boc.cantabria.es/boces/verAnuncioAction.do?idAnuBlob=395599",
+  "fecha": "2023-10-31",
+  "huella": "8f8f091f4a7adc61feaa1929cdc9ca15a66606c891df7e98024c7e74cd95c560"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:59+00:00",
+ "lote": "msgbatch_01SjfjDqJRwL6bpTvJz2YfVg",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Auxiliar de Policía Local"
+   ],
+   "cita": "provisión mediante el sistema de oposición libre, de funcionarios interinos Auxiliares de Policía Local",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "pruebas para la selección mediante el sistema de oposición libre",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Cuenta desde la fecha del anuncio de publicación del texto íntegro de las bases en el Boletín Oficial de Cantabria",
+   "cita": "siendo la fecha de este anuncio la que servirá para el cómputo del plazo de presentación de instancias",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de Cantabria y sede electrónica del Ayuntamiento (http://ribamontanalmar.sedelectronica.es)",
+   "cita": "publicar la relación en el Boletín Oficial de Cantabria y en la sede electrónica de este Ayuntamiento",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario interino",
+   "cita": "selección de funcionarios interinos Auxiliares de Policía Local"
+  }
+ }
+}

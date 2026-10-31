@@ -1,0 +1,61 @@
+{
+ "proceso": "dogv:425288",
+ "documento": {
+  "id": "dogv:425288",
+  "fuente": "DOGV",
+  "url": "https://dogv.gva.es/datos/2025/05/29/pdf/2025_16961_es.pdf",
+  "fecha": "2025-05-29",
+  "huella": "96658882f906d340cf86c7dcd31764de7b61acd3dddd6e99cecfa66778c27ca1"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:45:35+00:00",
+ "lote": "msgbatch_016re6aGcimwSVmdrWa6qBd9",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Conserje",
+    "Escala de administración general, subescala subalterna"
+   ],
+   "cita": "provisión en propiedad como funcionario o funcionaria de carrera, de nueve plazas de conserje por turno libre",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "AP",
+   "cita": "Las plazas corresponden a la escala de administración general, subescala subalterna, subgrupo AP.",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "provisión en propiedad como funcionario o funcionaria de carrera, de nueve plazas de conserje",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "por el que se aprueban las bases específicas que rigen el proceso selectivo mediante concurso-oposición",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 9,
+   "cita": "de nueve plazas de conserjes por turno libre (dos reservadas a personas con discapacidad)",
+   "nivel": "literal"
+  },
+  "plazas_discapacidad": {
+   "valor": 2,
+   "cita": "de nueve plazas de conserjes por turno libre (dos reservadas a personas con discapacidad)",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Diari Oficial de la Generalitat Valenciana y Boletín Oficial del Estado (extracto del anuncio de la convocatoria)",
+   "cita": "se proceda publicar en el Diari Oficial de la Generalitat Valenciana y en el Boletín Oficial del Estado un extracto del anuncio",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 7,
+   "cita": "de nueve plazas de conserjes por turno libre (dos reservadas a personas con discapacidad)"
+  }
+ }
+}

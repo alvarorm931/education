@@ -1,0 +1,40 @@
+{
+ "proceso": "bophuelva:BOPHUELVA-338833",
+ "documento": {
+  "id": "bophuelva:BOPHUELVA-338833",
+  "fuente": "BOP-HUELVA",
+  "url": "https://s2.diphuelva.es/portalweb/bope/anuncios/Anuncio_338833_BOP-3_2026.pdf",
+  "fecha": "2026-01-07",
+  "huella": "ef225395fbb2c8e115f52643c3eb57c089f74e2606b8feadbd85e9fc6b2073ac"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:42:14+00:00",
+ "lote": "msgbatch_01W17mR271uYfWYL6CuSdriL",
+ "no_son_bases": false,
+ "campos": {
+  "sistema": {
+   "valor": "concurso",
+   "cita": "Las bases que regulan dicho concurso se exponen en la sede electrónica",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Sede electrónica del Ayuntamiento y, en su caso, Tablón de Anuncios",
+   "cita": "Los sucesivos anuncios de esta convocatoria, cuando procedan de conformidad con las bases, se publicarán en la sede electrónica",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "monitor/a deportivo/a Escuelas Deportivas"
+   ],
+   "cita": "para cubrir temporalmente la plaza de monitor/a deportivo/a Escuelas Deportivas en Paymogo"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "laboral temporal",
+   "cita": "contratación en la modalidad tiempo completo, para cubrir temporalmente la plaza"
+  }
+ }
+}

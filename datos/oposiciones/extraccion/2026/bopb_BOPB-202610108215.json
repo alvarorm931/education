@@ -1,120 +1,121 @@
 {
  "proceso": "bopb:BOPB-202610108215",
  "documento": {
-  "id": "bopb:BOPB-202610108215",
-  "fuente": "BOPB",
-  "url": "https://bop.diba.cat/anunci/3958619/convocatoria-d-un-proces-selectiu-per-a-la-provisio-d-una-placa-de-tecnic-a-auxiliar-de-biblioteconomia-i-documentacio-ajuntament-de-teia",
+  "id": "dogc:1047492",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1047492",
   "fecha": "2026-06-18",
-  "huella": "897cc9ba3d2d9200f83d2966a644a90c351e217e985e4813f6eddf7ecaeb1859"
+  "huella": "11a64d1513b9b4af3b4fe8b65c25175ee31a54bba5db8394e02f3293e56008d4"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T08:17:52+00:00",
- "lote": "msgbatch_01BrnYw6KkevFx7at547B5g8",
+ "extraido": "2026-10-31T14:41:45+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
    "valor": [
-    "Tècnic/a Auxiliar de Biblioteconomia i Documentació"
+    "Tècnic/a Aux. Biblioteconomia i Documentació"
    ],
    "cita": "Tècnic/a Aux. Biblioteconomia i Documentació",
    "nivel": "literal"
   },
   "grupo": {
    "valor": "C1",
-   "cita": "Grup C, subgrup C1, vacant a la plantilla de personal laboral de l’Ajuntament de Teià",
+   "cita": "Grup C, subgrup C1, vacant a la plantilla de personal laboral",
    "nivel": "literal"
   },
   "vinculo": {
    "valor": "personal laboral fijo",
-   "cita": "vacant a la plantilla de personal laboral de l’Ajuntament de Teià",
+   "cita": "vacant a la plantilla de personal laboral de l'Ajuntament de Teià",
    "nivel": "literal"
   },
   "sistema": {
    "valor": "concurso-oposición",
-   "cita": "Sistema de selecció: Concurs-oposició Torn: Lliure",
+   "cita": "pel procediment de concurs-oposició, i constitució de borsa de treball",
    "nivel": "literal"
   },
-  "plazas_total": {
+  "plazas_turno_libre": {
    "valor": 1,
-   "cita": "per a la provisió d’una plaça de Tècnic/a Aux. Biblioteconomia i Documentació",
+   "cita": "en torn lliure, d'una plaça de tècnic/a aux. de biblioteconomia i documentació",
    "nivel": "literal"
   },
   "titulacion": {
-   "valor": "Título de bachillerato y técnico equivalente (ciclos formativos de grado medio o superior)",
-   "cita": "Titulació acadèmica: Equivalent a la pròpia del grup de classificació C1 dels funcionaris: Títol de batxillerat i tècnic/a equivalent",
-   "nivel": "sin_signos"
+   "valor": "Títol de batxillerat i tècnic/a equivalent (Cicles formatius de grau mitjà o superior)",
+   "cita": "Títol de batxillerat i tècnic/a equivalent (Cicles formatius de grau mitjà o superior)",
+   "nivel": "literal"
   },
   "otros_requisitos": {
-   "valor": "Nacionalidad o permiso de residencia y trabajo según normativa; capacidad funcional; haber cumplido 16 años y no superar la edad de jubilación forzosa; no haber sido separado de la administración pública; certificado de antecedentes penales sin delitos contra la libertad e indemnidad sexual",
-   "cita": "Haver complert 16 anys i no excedir l’edat de jubilació forçosa.",
+   "valor": "Nacionalitat (o condiciones de residencia y trabajo), capacidad funcional, edad mínima 16 años sin exceder la jubilación forzosa, no haber sido separado de la administración, certificado de antecedentes penales por delitos sexuales o trata de seres humanos.",
+   "cita": "Haver complert 16 anys i no excedir l'edat de jubilació forçosa.",
    "nivel": "literal"
   },
   "idioma_cooficial": {
-   "valor": "Catalán: nivel de suficiencia (C1) o superior, o prueba obligatoria y eliminatoria",
+   "valor": "Català nivell suficiència (C1) o superior; castellà si no se tiene la nacionalidad española (C2 en la prueba de suficiencia)",
    "cita": "Conèixer la llengua catalana tant en l'expressió oral com en l'escrita, en un nivell equivalent o superior al de suficiència",
    "nivel": "literal"
   },
   "tasa_euros": {
    "valor": 43.26,
-   "cita": "que s’han establert en la quantitat de 43.26 euros",
+   "cita": "que s'han establert en la quantitat de 43.26 euros",
    "nivel": "literal"
   },
   "exenciones_tasa": {
-   "valor": "Personas en situación de desempleo que no perciban prestación ni subsidio, acreditado mediante certificado de la oficina de trabajo",
-   "cita": "En el supòsit que l’aspirant es trobi en situació d’atur i als efectes de restar exempt de l’abonament de la taxa",
-   "nivel": "literal"
+   "valor": "Personas en situación de desempleo que no perciban prestación ni subsidio, acreditándolo con certificado de la oficina de trabajo.",
+   "cita": "En el supòsit que l'aspirant es trobi en situació d'atur... caldrà que aporti un certificat",
+   "nivel": "fragmentos"
   },
   "plazo_solicitudes": {
-   "valor": "10 días hábiles desde la publicación del último anuncio en el DOGC",
-   "cita": "que s'han de presentar en el termini improrrogable de 10 dies hàbils a comptar de la publicació",
+   "valor": "10 días hábiles a contar desde la publicación del último anuncio en el DOGC",
+   "cita": "en el termini improrrogable de 10 dies hàbils a comptar de la publicació, d'aquest darrer anunci al DOGC",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Telemáticamente por la sede electrónica del Ayuntamiento (preferentemente) o presencialmente en el Registro general (c/ Pere Noguera, 12)",
+   "cita": "Telemàticament: Seu Electrònica Ajuntament de Teià - Catàleg de tràmits",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Tablón de anuncios de la corporación, sede electrónica municipal y web municipal; BOPB y DOGC para la convocatoria",
-   "cita": "Els restants i successius anuncis es faran públics al tauler d’edictes de la corporació i a la web municipal.",
+   "valor": "Tablón de anuncios de la Corporación y web/sede electrónica municipal; el primer anuncio en el BOPB y el DOGC",
+   "cita": "Els restants i successius anuncis es faran públics al tauler d'edictes de la corporació i a la web municipal.",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Primer ejercicio: conocimiento de lenguas oficiales (apto/no apto)",
-    "Segundo ejercicio: prueba teórica escrita, 0 a 10 puntos, mínimo 5",
-    "Tercer ejercicio: prueba práctica, 0 a 10 puntos, mínimo 5",
-    "Fase de concurso: méritos, máximo 10 puntos (no eliminatoria)"
+    "Coneixement de llengües oficials (apte/no apte)",
+    "Prova teòrica (0-10, mínim 5)",
+    "Prova pràctica (0-10, mínim 5)",
+    "Fase de concurs (no eliminatoria, máx. 10 puntos)",
+    "Entrevista personal (máx. 1 punto, en concurso)"
    ],
-   "cita": "La puntuació total de la fase oposició serà la suma del resultat de la prova de caràcter teòric i el resultat de la prova pràctica.",
+   "cita": "1r Exercici. Coneixement de les llengües oficials",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Experiencia profesional máx. 4 puntos (0,25 por mes en administraciones públicas y 0,10 por mes en entidades privadas); formación máx. 5 puntos; entrevista máx. 1 punto.",
+   "cita": "Experiència professional. Màxim 4 punts.",
    "nivel": "literal"
   },
   "bolsa": {
-   "valor": "sí, para cubrir temporalmente necesidades urgentes e inaplazables de vacantes, sustituciones y necesidades temporales, con vigencia de 2 años",
-   "cita": "A més de cobrir de forma definitiva aquesta plaça, també es crearà borsa de treball per cobrir temporalment necessitats del servei",
+   "valor": "sí, para cubrir vacantes, sustituciones y necesidades temporales, con vigencia de 2 años",
+   "cita": "es crearà borsa de treball per cobrir temporalment necessitats del servei urgents i inajornables",
    "nivel": "literal"
   },
   "practicas_o_curso": {
-   "valor": "Período de prueba de 3 meses",
-   "cita": "El període de prova tindrà una durada de 3 mesos i serà supervisat pel responsable de la Unitat o Servei",
+   "valor": "período de prueba de 3 meses",
+   "cita": "El període de prova tindrà una durada de 3 mesos i serà supervisat",
    "nivel": "literal"
+  },
+  "temas": {
+   "valor": 8,
+   "cita": "Tema 8. Prevenció de riscos laborals. Marc normatiu bàsic. Conceptes bàsics sobre PRL. Seguretat en el treball: conceptes clau, normativa i accidents de treball",
+   "nivel": "contado"
   }
  },
  "rechazados": {
-  "plazas_turno_libre": {
-   "motivo": "valor_no_en_cita",
+  "plazas_total": {
+   "motivo": "cita_no_literal",
    "valor": 1,
-   "cita": "Sistema de selecció: Concurs-oposició Torn: Lliure"
-  },
-  "presentacion": {
-   "motivo": "cita_no_literal",
-   "valor": "Preferentemente telemáticamente en la sede electrónica del Ajuntament (catálogo de trámites) o presencialmente en el Registro general (c/ Pere Noguera, 12)",
-   "cita": "Telemàticament: Seu Electrònica Ajuntament de Teià - Catàleg de tràmits Presencialment : Registre general"
-  },
-  "temas": {
-   "motivo": "valor_no_en_cita",
-   "valor": 33,
-   "cita": "Temari específic 1. Definició, funcions i objectius de la biblioteca segons el manifest IFLA"
-  },
-  "meritos": {
-   "motivo": "cita_no_literal",
-   "valor": "Experiencia profesional máx. 4 puntos (0,25 por mes en administraciones públicas C1; 0,10 por mes en entidades privadas); formación máx. 5 puntos (cursos y nivel ACTIC); entrevista máx. 1 punto",
-   "cita": "A) Experiència professional. Màxim 4 punts. B) Formació Fins a un màxim de 5 punts"
+   "cita": "una plaça de tècnic/a aux. de biblioteconomia i documentació vacant"
   }
  }
 }

@@ -1,0 +1,60 @@
+{
+ "proceso": "dogc:1009886",
+ "documento": {
+  "id": "dogc:1009886",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1009886",
+  "fecha": "2025-03-25",
+  "huella": "0cfba6f5a1acc433062804f035415559e18e7b3a706840c05ffc227f603ec081"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:46:34+00:00",
+ "lote": "msgbatch_01MQzQCLMZKxUrrPMAj7dr53",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "administratiu/va"
+   ],
+   "cita": "provisió de 2 places de personal funcionari/ària de carrera, denominació administratiu/va",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C1",
+   "cita": "corresponent al grup C, Subgrup C1, escala administració general",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "provisió de 2 places de personal funcionari/ària de carrera",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mitjançant el sistema de concurs oposició, en torn lliure",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 2,
+   "cita": "provisió de 2 places de personal funcionari/ària de carrera",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles a partir del día siguiente a la publicación del anuncio en el Diari Oficial de la Generalitat de Catalunya",
+   "cita": "El termini per a la presentació d'instàncies serà de 20 dies hàbils a partir de l'endemà de la publicació",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "tablón de anuncios de la corporación y plataforma Convoca de la web del Consell Comarcal (https://baixemporda.convoca.online/)",
+   "cita": "es faran al tauler d'anuncis de la corporació i a la plataforma Convoca allotjada a la pàgina web",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 2,
+   "cita": "mitjançant el sistema de concurs oposició, en torn lliure"
+  }
+ }
+}

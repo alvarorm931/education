@@ -1,0 +1,45 @@
+{
+ "proceso": "boib:BOIB-2022-667143",
+ "documento": {
+  "id": "boib:BOIB-2022-667143",
+  "fuente": "BOIB",
+  "url": "https://www.caib.es/eboibfront/es/2022/11659/667143/correccion-convocatoria-de-las-plazas-del-proceso-",
+  "fecha": "2022-11-29",
+  "huella": "beeaed39c2d9a1fb5d98fb51cb9307f79e69051e2883eef68492afb7badfa1ab"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:15+00:00",
+ "lote": "msgbatch_01B4ETF5xB4buYCHqPiHTXzF",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "proceso de estabilización",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 8,
+   "cita": "el número de plazas de categoría auxiliar administrativo personal laboral sean 8",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles a partir del día siguiente al día en que se publique la convocatoria en el Boletín Oficial de las Islas Baleares",
+   "cita": "plazo general de presentación de solicitudes de veinte días hábiles a partir del día siguiente",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "tablón de anuncios y web del Ayuntamiento de Es Castell, y Boletín Oficial de las Islas Baleares",
+   "cita": "Publicar estos acuerdos en el tablón de anuncios y en la web del Ayuntamiento de Es Castell",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Auxiliar administrativo personal laboral"
+   ],
+   "cita": "establecer que el número de plazas de categoría auxiliar administrativo personal laboral sean 8"
+  }
+ }
+}

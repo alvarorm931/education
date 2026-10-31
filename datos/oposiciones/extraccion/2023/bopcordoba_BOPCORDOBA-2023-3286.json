@@ -1,0 +1,55 @@
+{
+ "proceso": "bopcordoba:BOPCORDOBA-2023-3286",
+ "documento": {
+  "id": "bopcordoba:BOPCORDOBA-2023-3286",
+  "fuente": "BOP-CORDOBA",
+  "url": "https://bop.dipucordoba.es/dia/25-07-2023",
+  "fecha": "2023-07-25",
+  "huella": "66cb074b228955524961ad852b65660815d3f0d2b4dc2e716f25d6e4e2699404"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:59:26+00:00",
+ "lote": "msgbatch_012nGabRM1G4b7cEKJh1Bcx1",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "auxiliar administrativo"
+   ],
+   "cita": "seleccion de un auxiliar administrativo a tiempo completo por concurso-oposicion",
+   "nivel": "sin_signos"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "contratación como personal laboral fijo a jornada completa",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "selección de un auxiliar administrativo a tiempo completo por concurso-oposición",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "un mes desde el día siguiente a la recepción de la notificación",
+   "cita": "deberá formalizar su contrato en el plazo de un mes a contar desde el día siguiente a la recepción de la notificación",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia, sede electrónica del Ayuntamiento y tablón de anuncios",
+   "cita": "publicar la Presente Resolución definitiva en el Boletín Oficial de la Provincia así como en la sede electrónica",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "no consta",
+   "cita": "no consta"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "la plaza de auxiliar administrativo a jornada completa"
+  }
+ }
+}

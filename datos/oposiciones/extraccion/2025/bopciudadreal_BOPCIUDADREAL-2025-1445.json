@@ -1,0 +1,55 @@
+{
+ "proceso": "bopciudadreal:BOPCIUDADREAL-2025-1445",
+ "documento": {
+  "id": "bopciudadreal:BOPCIUDADREAL-2025-1445",
+  "fuente": "BOP-CIUDADREAL",
+  "url": "https://bop.dipucr.es/bop/2025/04/25",
+  "fecha": "2025-04-25",
+  "huella": "76b44487920f69b008d3bcdf6b14f4404c1220b20dc0d22d3a39dcba3b0a2721"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:45:48+00:00",
+ "lote": "msgbatch_017vJZdAmjTkBDdH14aLEdCv",
+ "no_son_bases": false,
+ "campos": {
+  "sistema": {
+   "valor": "concurso",
+   "cita": "la cobertura mediante el sistema de movilidad de 1 puesto",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "la cobertura mediante el sistema de movilidad de 1 puesto de Agente",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "quince días hábiles contados a partir del de la publicación del presente anuncio en el Diario Oficial de Castilla la Mancha",
+   "cita": "en el plazo de quince días hábiles contados a partir del de la publicación del presente anuncio",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Directamente en las oficinas del Ayuntamiento, en la sede electrónica del Ayuntamiento o según la Ley 39/2015",
+   "cita": "podrá hacerse directamente en las oficinas de este Ayuntamiento, en la sede electrónica del Ayuntamiento",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Las bases reguladoras se encuentran publicadas en la sede electrónica del Ayuntamiento",
+   "cita": "Las bases reguladoras de las mismas se encuentran publicadas en la sede electrónica",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Agente de Policía Local del Cuerpo de Policía Local"
+   ],
+   "cita": "la cobertura mediante el sistema de movilidad de 1 puesto de Agente de Policía Local del Cuerpo de Policía Local"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "otro",
+   "cita": "la cobertura mediante el sistema de movilidad de 1 puesto de Agente de Policía Local"
+  }
+ }
+}

@@ -1,0 +1,70 @@
+{
+ "proceso": "boe:BOE-A-2025-24406",
+ "documento": {
+  "id": "dogv:443668",
+  "fuente": "DOGV",
+  "url": "https://dogv.gva.es/datos/2025/09/04/pdf/2025_35381_es.pdf",
+  "fecha": "2025-09-04",
+  "huella": "ccd3c7d76fb512d00871c5460d3481c5749f14505a34c38cb58f44935eeb548b"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:41:04+00:00",
+ "lote": "msgbatch_01UNq3BNhPPHoTK3TEJzun1h",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "agente de la policía local"
+   ],
+   "cita": "catorce plazas de agente de la policía local, mediante el sistema de oposición",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C1",
+   "cita": "Lo que se hace público para general conocimiento",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "cubrir en propiedad catorce plazas de agente de la policía local",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "mediante el sistema de oposición, por turno libre",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 14,
+   "cita": "cubrir en propiedad catorce plazas de agente de la policía local",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles a partir del siguiente al de la publicación del extracto de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "El plazo será de veinte días hábiles a partir del siguiente al de la publicación del extracto",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Registro electrónico en www.paterna.es, en el trámite habilitado, con Cl@ve, certificado digital o DNIe",
+   "cita": "se presentarán por registro electrónico en ( www.paterna.es ), en el trámite que se habilitará",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia y tablón de edictos de la Sede electrónica del Ayuntamiento de Paterna",
+   "cita": "publicadas en el Boletín Oficial de la Provincia número 120 de fecha 26/06/2025",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 9,
+   "cita": "por turno libre, las plazas número 359, 405, 108, 185, 188, 221, 224, 237 y 238"
+  },
+  "plazas_promocion_interna": {
+   "motivo": "valor_no_en_cita",
+   "valor": 0,
+   "cita": "por el sistema de concurso-oposición por turno de movilidad, las plazas 408, 27, 261, 378 y 400"
+  }
+ }
+}

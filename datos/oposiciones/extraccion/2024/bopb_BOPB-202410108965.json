@@ -1,0 +1,99 @@
+{
+ "proceso": "bopb:BOPB-202410108965",
+ "documento": {
+  "id": "bopb:BOPB-202410108965",
+  "fuente": "BOPB",
+  "url": "https://bop.diba.cat/anunci/3640888/aprovacio-de-les-bases-i-la-convocatoria-per-a-la-constitucio-d-una-borsa-de-treball-de-personal-administratiu-per-a-cobrir-en-primera-instancia-un-lloc-als-municipis-de-santa-coloma-de-cervello-i-la-palma-de-cervello-amb-adscripcio-a-l-area-d-accio-social-i-salut-del-consell-comarcal-consell-comarcal-del-baix-llobregat",
+  "fecha": "2024-06-14",
+  "huella": "d1dc14fe5a0d2585c29ee04fd1d7b72a52c096328c3df582de519c1d62c044f7"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:54:29+00:00",
+ "lote": "msgbatch_01HRnX7cDVMkRZD7mBamCmLu",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "C1",
+   "cita": "personal ADMINISTRATIU, GRUP C, SUBGRUP C1, per a cobrir en primera instància un lloc",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española o de Unión Europea (o aplicable); tener 16 años y no superar edad de jubilación forzosa; capacidad funcional; no haber sido separado del servicio de Administración pública; no padecer enfermedad que impida funciones.",
+   "cita": "Tenir nacionalitat espanyola o de qualsevol dels països membres de la Unió Europea, o la dels estats als quals",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "10 días hábiles desde el día siguiente a la publicación en el BOPB",
+   "cita": "El termini de presentació d'instàncies és de 10 dies hàbils, atesa la urgència, comptats a partir de l'endemà",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "periodo de prueba de 2 meses naturales para grupos C1 y C2",
+   "cita": "GRUPS C1 i C2. 2 mesos naturals.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Personal administratiu (funcionari/a interí/na de programa) - Àrea d'Acció Social i Salut"
+   ],
+   "cita": "CONVOCATÒRIA I BASES ESPECÍFIQUES QUE HAN DE REGIR EL PROCÉS DE SELECCIÓ PER A LA CONSTITUCIÓ D'UNA BORSA DE TREBALL DE PERSONAL TEMPORAL ADMINISTRATIU"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario interino",
+   "cita": "en primera instància un lloc de treball com a funcionari/a interí/na de programa"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso",
+   "cita": "El procediment de selecció serà el de concurs, atesa la urgència de la cobertura dels llocs"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 1,
+   "cita": "En primera instància es donarà cobertura a 1 lloc de treball com a funcionari/a interí/na de programa"
+  },
+  "titulacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Títol de Batxillerat, Formació Professional de segon grau o equivalent",
+   "cita": "Estar en possessió de la titulació requerida: Títol de Batxillerat, Formació Professional de segon grau o equivalent"
+  },
+  "idioma_cooficial": {
+   "motivo": "cita_no_literal",
+   "valor": "catalán, nivel C1 (suficiencia)",
+   "cita": "Acreditar estar en possessió del certificat de coneixements de llengua catalana nivell C de suficiència (certificat C1)"
+  },
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Necesariamente por vía electrónica a través del formulario de inscripción en https://elbaixllobregat.convoca.online/; no se admiten solicitudes por correo electrónico.",
+   "cita": "Les persones interessades hauran de presentar una sol·licitud necessàriament per via electrònica a través del formulari d'inscripció"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "BOPB, e-TAULER de la entidad, plataforma https://elbaixllobregat.convoca.online/ y tablón de anuncios del Consell Comarcal",
+   "cita": "Les bases es publicaran al BOPB i seran trameses a tots els serveis per a la seva màxima difusió, a l'e-TAULER de l'entitat"
+  },
+  "ejercicios": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Fase de concurso: valoración de méritos (máximo 10 puntos)",
+    "Entrevista competencial (máximo 3 puntos)",
+    "Prueba de catalán y castellano, en su caso (apto/no apto)"
+   ],
+   "cita": "El resultat final serà la suma de les puntuacions obtingudes entre els mèrits (puntuació màxima 10 punts) i l'entrevista"
+  },
+  "meritos": {
+   "motivo": "cita_no_literal",
+   "valor": "Experiencia profesional hasta 6 puntos (0,20 por mes como administrativo en sector público; 0,25 por año en otras categorías, máx. 2); formación reglada hasta 1 punto; formación específica hasta 2 puntos; acreditaciones ACTIC/COMPETIC hasta 1 punto.",
+   "cita": "Per serveis prestats en llocs de treball amb la categoria d'ADMINISTRATIU/VA, valorada amb 0,20 punts per mes complet treballat"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, para cubrir temporalmente vacantes y/o sustituciones (excluidas vacantes de plantilla de cobertura temporal), con vigencia máxima de dos años",
+   "cita": "constituiran una borsa de treball per a cobrir temporalment les vacants i/o substitucions prioritàries"
+  }
+ }
+}

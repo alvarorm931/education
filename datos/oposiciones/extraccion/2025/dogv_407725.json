@@ -1,0 +1,65 @@
+{
+ "proceso": "dogv:407725",
+ "documento": {
+  "id": "dogv:407725",
+  "fuente": "DOGV",
+  "url": "https://dogv.gva.es/datos/2025/01/03/pdf/2024_13687_es.pdf",
+  "fecha": "2025-01-03",
+  "huella": "43063cfc1a81b0f59ee322b8d609673c8a16041d7db3bd3ba240aa6c045ba439"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:49:30+00:00",
+ "lote": "msgbatch_018TPQE8scQozfAUdc1n8RyC",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Agente de policía local"
+   ],
+   "cita": "5 plazas de funcionario/a de carrera, agente de policía local subgrupo C1 del Ayuntamiento de Banyeres de Mariola",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C1",
+   "cita": "agente de policía local subgrupo C1 del Ayuntamiento de Banyeres de Mariola",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "proceso selectivo de 5 plazas de funcionario/a de carrera, agente de policía local subgrupo C1",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "3 por turno libre mediante el sistema de oposición y 2 por el turno de movilidad mediante el sistema de concurso",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 5,
+   "cita": "proceso selectivo de 5 plazas de funcionario/a de carrera, agente de policía local subgrupo C1",
+   "nivel": "literal"
+  },
+  "plazas_turno_libre": {
+   "valor": 3,
+   "cita": "3 por turno libre mediante el sistema de oposición",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles, contados a partir del día siguiente al de la publicación del anuncio de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de instancias será de 20 días hábiles, contados a partir del día siguiente al de la publicación del anuncio",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "En la forma prevista en las propias bases",
+   "cita": "Los sucesivos anuncios referentes a esta convocatoria, cuando procedan de conformidad con las bases, se harán públicos en la forma prevista en las propias bases.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_promocion_interna": {
+   "motivo": "valor_no_en_cita",
+   "valor": 0,
+   "cita": "2 por el turno de movilidad mediante el sistema de concurso"
+  }
+ }
+}

@@ -1,0 +1,123 @@
+{
+ "proceso": "boe:BOE-A-2025-5660",
+ "documento": {
+  "id": "bopb:BOPB-202510046048",
+  "fuente": "BOPB",
+  "url": "https://bop.diba.cat/anunci/3740103/aprovacio-de-les-bases-reguladores-i-la-convocatoria-per-a-la-cobertura-definitiva-de-cinc-places-d-operari-aria-de-recollida-de-brossa-vacants-a-la-plantilla-de-personal-laboral-ajuntament-de-pineda-de-mar",
+  "fecha": "2025-03-06",
+  "huella": "4a93aea3933d6268df72c35c0068df3e47af9f205f42499c4b8ab21f3a9c6789"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:46:45+00:00",
+ "lote": "msgbatch_01MQzQCLMZKxUrrPMAj7dr53",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "operari/ària recollida brossa"
+   ],
+   "cita": "cinc places d’operari/ària recollida brossa, vacants a la plantilla de personal laboral",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "pel sistema de concurs oposició lliure",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 5,
+   "cita": "cobertura definitiva de cinc places d’operari/ària",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Graduat en la ESO o Graduat Escolar i equivalents",
+   "cita": "Estar en possessió del títol de Graduat en la ESO o Graduat Escolar i equivalents",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española o de Estado de la UE (o equiparados); tener 16 años y no superar la edad de jubilación forzosa; no padecer limitación incompatible con las funciones; no estar inhabilitado para funciones públicas; no estar afectado por incompatibilidades",
+   "cita": "Haver complert 16 anys i no passar de l’edat establerta per a la jubilació forçosa",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "catalán, nivel elemental B1",
+   "cita": "Acreditar el nivell elemental en llengua catalana (B1)",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 22.7,
+   "cita": "els quals estan fixats en la quantitat de 22,70 €",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Familias numerosas de categoría especial y monoparentales; personas desempleadas sin prestación (acreditado por SEPE); discapacidad igual o superior al 33%; bonificación del 50% para familias numerosas de categoría general",
+   "cita": "Quedaran exempts del pagament les persones que es trobin en algun dels casos següents",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Preferentemente telemática en la sede electrónica del Ajuntament; también presencial en el registro general o por otros medios del art. 16.4 Ley 39/2015",
+   "cita": "La presentació de sol·licituds serà preferentment telemàtica",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Fase de concurso, máximo 13 puntos: formación profesional/titulaciones superiores (máx. 6), experiencia profesional en Administración pública y sector privado (máx. 6), conocimiento de catalán superior a B1 (máx. 1)",
+   "cita": "En aquesta fase es valoraran els mèrits que les persones aspirants hagin al·legat i acreditat documentalment fins a un màxim de 13 punts",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, bolsa de interinos para cubrir vacantes y sustituciones de personal laboral, vigencia máxima de tres años",
+   "cita": "Els/les aspirants que, un cop superats tot el procés selectiu no hagin obtingut plaça, passaran a formar part d’una borsa d’interins",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "período de prueba de 2 meses tras el nombramiento",
+   "cita": "Tribunal elevarà proposta de nomenament en règim de personal laboral indefinit ... qui hauran de superar un període de prova de 2 mesos",
+   "nivel": "fragmentos"
+  }
+ },
+ "rechazados": {
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "C2",
+   "cita": "grup de classificació professional C, sots grup C2"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "personal laboral fijo",
+   "cita": "cobertura definitiva de personal laboral fix"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 5,
+   "cita": "modalitat d’accés lliure mitjançant sistema selectiu de concurs-oposició"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "20 días hábiles improrrogables desde el día siguiente a la última publicación de la convocatoria en el DOGC o BOE",
+   "cita": "termini de presentació de sol·licituds serà de 20 dies hàbils improrrogables"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Tablón de anuncios de la Sede electrónica del Ayuntamiento; lista de admitidos y excluidos también en el DOGC y Portal de Transparencia",
+   "cita": "publicada al DOGC, al Portal de Transparència i al tauler d’anuncis de la Seu electrònica"
+  },
+  "ejercicios": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Prueba teórica: test de 30 preguntas en 60 minutos (mínimo 10 puntos)",
+    "Prueba práctica: casos prácticos en 90 minutos (mínimo 10 puntos)",
+    "Prueba de catalán (apto/no apto, eliminatoria; exenta con B1)",
+    "Prueba de castellano para aspirantes sin nacionalidad española (apto/no apto)"
+   ],
+   "cita": "La selecció pel sistema de concurs oposició consisteix en la valoració de determinades condicions"
+  },
+  "temas": {
+   "motivo": "valor_no_numerico",
+   "valor": {
+    "general": 7,
+    "especifico": 13
+   },
+   "cita": "PART ESPECÍFICA Tema 1.- Conceptes bàsics de seguretat i salut en el treball"
+  }
+ }
+}

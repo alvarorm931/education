@@ -1,113 +1,65 @@
 {
  "proceso": "bopgirona:BOPGIRONA-2026-6937",
  "documento": {
-  "id": "bopgirona:BOPGIRONA-2026-6937",
-  "fuente": "BOP-GIRONA",
-  "url": "https://ssl4.ddgi.cat/bopV1/pdf/2026/151/202615106937.pdf",
-  "fecha": "2026-08-07",
-  "huella": "5de1c5056a9aac076d5c0a4c959ef9db500b95793d9b92731f2e1f51d333764c"
+  "id": "dogc:1052886",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1052886",
+  "fecha": "2026-08-19",
+  "huella": "872244a3f89d86cfa8d823ef9412b5275cc485a493333bead597426a97cb369f"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T08:18:10+00:00",
- "lote": "msgbatch_01BrnYw6KkevFx7at547B5g8",
+ "extraido": "2026-10-31T14:41:33+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
  "no_son_bases": false,
  "campos": {
   "grupo": {
    "valor": "C1",
-   "cita": "grup C, subgrup C1, nivell 18, escala d'Administració especial",
+   "cita": "grup C, subgrup C1, en règim de personal laboral",
    "nivel": "literal"
   },
   "vinculo": {
-   "valor": "personal laboral fijo",
-   "cita": "en règim de personal laboral, reservada al torn lliure",
+   "valor": "laboral temporal",
+   "cita": "en règim de personal laboral, mitjançant el sistema selectiu",
    "nivel": "literal"
   },
   "sistema": {
    "valor": "concurso-oposición",
-   "cita": "mitjançant el sistema selectiu de concurs-oposició i creació d'una borsa de treball",
+   "cita": "mitjançant el sistema selectiu de concurs-oposició, torn lliure i creació d'una borsa",
    "nivel": "literal"
   },
   "plazas_total": {
    "valor": 1,
-   "cita": "provisió en propietat d'una (1) plaça de tècnic/a auxiliar d'informàtica",
+   "cita": "per a la provisió en propietat d'una plaça de tècnic/a auxiliar d'informàtica",
    "nivel": "literal"
   },
-  "titulacion": {
-   "valor": "Cicle formatiu de grau superior en l'àmbit de la informàtica, o batxillerat/FP de segon grau/cicle superior equivalent acompanyat d'una titulació universitària de l'àmbit de la informàtica",
-   "cita": "Estar en possessió o en condicions d'obtenir la titulació de cicle formatiu de grau superior en l'àmbit de la informàtica",
+  "plazas_turno_libre": {
+   "valor": 1,
+   "cita": "concurs-oposició, torn lliure i creació d'una borsa de treball",
    "nivel": "literal"
   },
-  "otros_requisitos": {
-   "valor": "Nacionalitat espanyola o de la UE (o equivalents); haver complert 16 anys i no excedir l'edat de jubilació forçosa; no haver estat separat del servei d'una administració pública; no patir limitacions que impedeixin les funcions; carnet de conduir B",
-   "cita": "Haver complert 16 anys i no excedir de l'edat màxima de jubilació forçosa",
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles desde el día siguiente a la publicación del anuncio de convocatoria en el DOGC",
+   "cita": "El termini per a la presentació d'instàncies, (segons model que consta com a annex 1, a les bases), serà de vint dies hàbils",
    "nivel": "literal"
   },
-  "idioma_cooficial": {
-   "valor": "Català, nivell de suficiència C1 (Junta Permanent de Català) o equivalent",
-   "cita": "Tenir coneixements de llengua catalana equivalents al Certificat de nivell de suficiència de català",
+  "publicaciones": {
+   "valor": "Butlletí Oficial de la Província de Girona (BOP) y web municipal",
+   "cita": "publicar la convocatòria, juntament amb el text íntegre de les bases en el Butlletí Oficial de la Província de Girona",
    "nivel": "literal"
-  },
-  "tasa_euros": {
-   "valor": 25,
-   "cita": "Justificant del pagament de les taxes d'examen per al grup C1 (25,00 €)",
-   "nivel": "literal"
-  },
-  "presentacion": {
-   "valor": "Registre general de l'Ajuntament (OMAC) o qualsevol forma de l'art. 16 de la Llei 39/2015; còpia a rrhh@castello.cat si es presenta en altres administracions o correus",
-   "cita": "Les sol·licituds per prendre part en aquest procés de selecció s'han de presentar per qualsevol de les formes que determina l'article 16",
-   "nivel": "literal"
-  },
-  "ejercicios": {
-   "valor": [
-    "Primera prova: coneixement de llengües oficials (apte/no apte)",
-    "Segona prova: exercici teòric, 5-10 preguntes curtes (màx. 20 punts)",
-    "Tercera prova: exercici pràctic, supòsit pràctic (màx. 20 punts)",
-    "Quarta prova: prova psicotècnica (apte/no apte)"
-   ],
-   "cita": "La valoració màxima total d'aquest concurs-oposició serà de 45 punts",
-   "nivel": "literal"
-  },
-  "meritos": {
-   "valor": "Experiència professional fins a 3 punts (0,10 punts/mes); titulació acadèmica fins a 2 punts (postgrau 0,50; màster 0,75; grau 1,00); total fase de concurs màxim 5 punts",
-   "cita": "La puntuació màxima en aquest apartat serà de 3 punts. Per serveis prestats en tasques de la mateixa categoria",
-   "nivel": "sin_signos"
   },
   "bolsa": {
-   "valor": "Sí, borsa de treball per a nomenaments interins o contractacions de la mateixa categoria, vigència de 2 anys prorrogables",
-   "cita": "la formació d'una borsa de treball",
-   "nivel": "literal"
-  },
-  "practicas_o_curso": {
-   "valor": "Període de prova de 6 mesos",
-   "cita": "El període de proves es realitzarà sota la supervisió dels tècnics de la unitat operativa",
+   "valor": "sí, para constituir una bolsa de trabajo",
+   "cita": "i creació d'una borsa de treball",
    "nivel": "literal"
   }
  },
  "rechazados": {
   "denominacion": {
    "motivo": "cita_no_literal",
-   "valor": "Tècnic/a auxiliar d'informàtica",
-   "cita": "provisió en propietat d'una plaça de tècnic/a auxiliar d'informàtica, de l'escala d'administració especial"
-  },
-  "plazas_turno_libre": {
-   "motivo": "valor_no_en_cita",
-   "valor": 1,
-   "cita": "reservada al torn lliure, mitjançant el sistema selectiu de concurs-oposició"
-  },
-  "plazo_solicitudes": {
-   "motivo": "cita_no_literal",
-   "valor": "20 dies hàbils a comptar des de l'endemà de la darrera publicació de l'anunci al DOGC",
-   "cita": "El termini per a la presentació de sol·licituds serà dins el termini improrrogable de 20 dies hàbils"
-  },
-  "publicaciones": {
-   "motivo": "cita_no_literal",
-   "valor": "BOP, tauler d'edictes electrònic (e-tauler) i seu electrònica municipal; anunci extractat al DOGC",
-   "cita": "Els successius anuncis de la convocatòria i del procés de selecció es faran públics únicament a la seu electrònica"
-  },
-  "temas": {
-   "motivo": "cita_no_literal",
-   "valor": 40,
-   "cita": "Temari general (9 temes) i temari específic de 31 temes"
+   "valor": [
+    "Tècnic/a auxiliar d'informàtica"
+   ],
+   "cita": "la plaça de tècnic/a auxiliar d'informàtica, de l'escala d'administració especial"
   }
  }
 }

@@ -1,0 +1,53 @@
+{
+ "proceso": "dogc:1035556",
+ "documento": {
+  "id": "dogc:1035556",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1035556",
+  "fecha": "2026-01-30",
+  "huella": "3db6d5c2f0b3c938a9fde634b0222fc299233c05b4bb31bb18c2d132f954cee8"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:42:13+00:00",
+ "lote": "msgbatch_01W17mR271uYfWYL6CuSdriL",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "funcionario interino",
+   "cita": "per tal de cobrir una plaça de funcionari/a interí/ina",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mitjançant el sistema de concurs oposició, d'un lloc de treball d'arquitecte/a",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles contados a partir del día siguiente a la publicación del extracto en el Diari Oficial de la Generalitat de Catalunya",
+   "cita": "El termini per a la presentació de les sol·licituds de participació en el procés convocat és de vint dies hàbils",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "seu electrónica del Consell Comarcal de la Cerdanya (https://seu-e.cat/ca/web/cccerdanya)",
+   "cita": "es pot consultar a la seu electrònica del Consell Comarcal de la Cerdanya",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "arquitecte/a del Consell Comarcal de la Cerdanya, tècnic superior",
+   "cita": "la convocatòria i les bases reguladores del procés de selecció per a un lloc de treball d'arquitecte/a del Consell Comarcal de la Cerdanya"
+  },
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "A1",
+   "cita": "un lloc de treball d'arquitecte/a del Consell Comarcal de la Cerdanya, tècnic superior, grup A1"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 1,
+   "cita": "un lloc de treball d'arquitecte/a del Consell Comarcal de la Cerdanya"
+  }
+ }
+}

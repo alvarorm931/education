@@ -1,111 +1,119 @@
 {
  "proceso": "bopb:BOPB-202610133821",
  "documento": {
-  "id": "bopb:BOPB-202610133821",
-  "fuente": "BOPB",
-  "url": "https://bop.diba.cat/anunci/3983494/aprovacio-de-la-convocatoria-i-proves-de-seleccio-per-cobrir-de-forma-definitiva-una-placa-de-recepcionista-adscrita-al-gabinet-d-alcaldia-i-la-creacio-d-una-borsa-de-treball-ajuntament-de-vallirana",
+  "id": "dogc:1052855",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1052855",
   "fecha": "2026-08-18",
-  "huella": "546c50c5bea1c158e9b4a449a3fb19b1fc8369ce7c8ac481de2d13c5d2fb5b92"
+  "huella": "ff29c3cf71628277f29bf0b69c7f5d85b5af04b1bce7400c1cfd77b5332a5c13"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T08:03:34+00:00",
- "lote": "msgbatch_013xFoLdqcGqWcqkzh7qrdGg",
+ "extraido": "2026-10-31T14:41:30+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
  "no_son_bases": false,
  "campos": {
-  "vinculo": {
-   "valor": "personal laboral fijo",
-   "cita": "Règim Personal laboral fix Unitat/Àrea Alcaldia Categoria professional Recepcionista",
+  "grupo": {
+   "valor": "C2",
+   "cita": "Per estar en possessió de titulacions oficials superiors a les exigides per a l'accés al subgrup C2",
    "nivel": "literal"
   },
-  "sistema": {
-   "valor": "concurso-oposición",
-   "cita": "Sistema selectiu Concurs-Oposició Núm. de vacants 1",
+  "vinculo": {
+   "valor": "laboral fijo",
+   "cita": "la modalitat del contracte és la del contracte concertat per temps indefinit",
    "nivel": "literal"
   },
   "plazas_total": {
    "valor": 1,
-   "cita": "Sistema selectiu Concurs-Oposició Núm. de vacants 1",
+   "cita": "s'inclou una plaça de recepcionista, adscrita a l'Alcaldia de l'Ajuntament de Vallirana",
    "nivel": "literal"
   },
-  "otros_requisitos": {
-   "valor": "Tener nacionalidad española o de la UE (o permiso de residencia y trabajo); tener 16 años cumplidos y no superar la edad de jubilación forzosa; capacidad funcional; no estar separado del servicio ni inhabilitado; carné de conducir tipo B.",
-   "cita": "Estar en possessió del carnet de conduir tipus B",
+  "plazas_turno_libre": {
+   "valor": 1,
+   "cita": "regular la provisió en propietat d'una plaça de Recepcionista, en règim de personal laboral",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Graduado en ESO o equivalente",
+   "cita": "Estar en possessió del títol de Grau en Educació Secundària Obligatòria (ESO) o equivalent",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Catalán, nivel C1 (suficiencia)",
+   "cita": "Posseir el certificat de coneixements de nivell de suficiència de català (certificat C1)",
    "nivel": "literal"
   },
   "exenciones_tasa": {
-   "valor": "Bonificación del 75% (5,32 €) para desempleados; 50% (10,65 €) para grado de discapacidad igual o superior al 33%.",
-   "cita": "Gaudiran d’una bonificació del 75% aquells aspirants que acreditin estar en situació d’atur (5,32 €).",
+   "valor": "Bonificación del 75% (5,32 €) para personas en situación de desempleo; bonificación del 50% (10,65 €) para grado de discapacidad igual o superior al 33%",
+   "cita": "Gaudiran d'una bonificació del 75% aquells aspirants que acreditin estar en situació d'atur",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "10 días hábiles desde el día siguiente a la última publicación de la convocatoria en el DOGC o BOP",
+   "cita": "El termini per presentar sol·licituds, serà de 10 dies hàbils a partir de l'endemà de la darrera publicació",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Registro de entrada del Ayuntamiento, instancia telemática a través de e-tram (Administració Oberta de Catalunya) o correo certificado",
+   "cita": "Les sol·licituds s'han de presentar en el registre d'entrada d'aquest Ajuntament, o mitjançant instància telemàtica a través del programa e-tram",
    "nivel": "literal"
   },
   "publicaciones": {
    "valor": "Tablón de anuncios y página web del Ayuntamiento, y e-tablón municipal",
-   "cita": "es publicaran íntegrament en el taulell d’anuncis i la pàgina web de l’Ajuntament.",
+   "cita": "es publicaran íntegrament en el taulell d'anuncis i la pàgina web de l'Ajuntament",
    "nivel": "literal"
   },
-  "ejercicios": {
-   "valor": [
-    "Prueba de conocimiento de catalán (nivel C1), apto/no apto, eliminatoria",
-    "Prueba de conocimiento de castellano, si procede, apto/no apto, eliminatoria",
-    "Primera prueba: test teórico de 30 preguntas (máx. 30 puntos, mínimo 15)",
-    "Segunda prueba: supuestos prácticos relacionados con el puesto (máx. 30 puntos, mínimo 15)",
-    "Fase de concurso: experiencia, formación y titulaciones (máx. 8 puntos)"
-   ],
-   "cita": "PRIMERA PROVA. PROVA TEÒRICA. Consisteix en contestar, per escrit, un qüestionari tipus test amb 30 preguntes",
+  "meritos": {
+   "valor": "Experiencia profesional hasta 4 puntos (0,20 por mes en administración; 0,10 por mes en sector privado); formación hasta 2 puntos; titulaciones superiores a C2 hasta 2 puntos. Máximo total 8 puntos",
+   "cita": "La valoració màxima s'estableix en un total de 8 punts, segons els mèrits descrits a continuació",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "Sí, para cubrir ausencias o bajas de personal de la misma categoría; vigencia 1 año prorrogable 1 año más",
+   "cita": "L'òrgan convocant crearà una bossa de treball, per un període d'1any, des de la data de la seva constitució, prorrogable per un any més",
    "nivel": "literal"
   },
   "practicas_o_curso": {
-   "valor": "Periodo de prácticas de 2 meses",
-   "cita": "S’estableix un període de pràctiques de 2 mesos per a l’aspirant seleccionat",
+   "valor": "Periodo de prácticas de 2 meses desde la fecha del contrato",
+   "cita": "S'estableix un període de pràctiques de 2 mesos per a l'aspirant seleccionat, a comptar des de la data del contracte",
    "nivel": "literal"
   }
  },
  "rechazados": {
   "denominacion": {
    "motivo": "cita_no_literal",
-   "valor": [
-    "Recepcionista, adscrita al Gabinet d'Alcaldia"
-   ],
-   "cita": "Recepcionista, adscrita al Gabinet d’Alcaldia, per concurs oposició, en règim de personal laboral fix"
+   "valor": "Recepcionista (auxiliar de gabinete de Alcaldía)",
+   "cita": "una plaça de Recepcionista, en règim de personal laboral, vacant a la plantilla de l'Ajuntament de Vallirana"
   },
-  "titulacion": {
+  "sistema": {
    "motivo": "cita_no_literal",
-   "valor": "Graduado en Educación Secundaria Obligatoria (ESO) o equivalente",
-   "cita": "Estar en possessió del títol de Grau en Educació Secundària Obligatòria (ESO) o equivalent."
+   "valor": "concurso-oposición",
+   "cita": "la modalitat del contracte es valorarà mitjançant concurs-oposició per cobrir de forma definitiva"
   },
-  "idioma_cooficial": {
+  "otros_requisitos": {
    "motivo": "cita_no_literal",
-   "valor": "Catalán, certificado C1 de suficiencia",
-   "cita": "Posseir el certificat de coneixements de nivell de suficiència de català (certificat C1)"
+   "valor": "Nacionalidad española o de UE (u otra con permiso de residencia y trabajo); tener 16 años y no superar la edad de jubilación forzosa; capacidad funcional; no haber sido separado del servicio ni inhabilitado; carné de conducir tipo B",
+   "cita": "Tenir la nacionalitat d'algun dels estats membres de la Unió Europea; estar en possessió del carnet de conduir tipus B"
   },
   "tasa_euros": {
-   "motivo": "cita_no_literal",
+   "motivo": "valor_no_en_cita",
    "valor": 21.3,
-   "cita": "Els/les aspirants satisfaran els drets d’examen, fixats en la quantia de vint-i-un euros amb trenta cèntims (21,30 €)."
+   "cita": "Els/les aspirants satisfaran els drets d'examen, fixats en la quantia de vint-i-un euros amb trenta cèntims"
   },
-  "plazo_solicitudes": {
+  "ejercicios": {
    "motivo": "cita_no_literal",
-   "valor": "10 días hábiles desde el día siguiente a la última publicación de la convocatoria en el DOGC o en el BOP",
-   "cita": "El termini per presentar sol·licituds, serà de 10 dies hàbils a partir de l’endemà de la darrera publicació"
-  },
-  "presentacion": {
-   "motivo": "cita_no_literal",
-   "valor": "Registro de entrada del Ayuntamiento, instancia telemática por e-tram (Administración Oberta de Catalunya) o correo certificado",
-   "cita": "Les sol·licituds s’han de presentar en el registre d’entrada d’aquest Ajuntament, o mitjançant instància telemàtica"
+   "valor": [
+    "Prueba de conocimientos de catalán (apto/no apto, eliminatoria)",
+    "Prueba de castellano para no nacionales (si procede)",
+    "Primera prueba: test teórico de 30 preguntas (máx. 30 puntos, mínimo 15)",
+    "Segunda prueba: supuesto práctico (máx. 30 puntos, mínimo 15)",
+    "Fase de concurso: experiencia profesional y formación (máx. 8 puntos)"
+   ],
+   "cita": ""
   },
   "temas": {
-   "motivo": "valor_no_en_cita",
+   "motivo": "cita_no_literal",
    "valor": 20,
-   "cita": "Bloc IV: Gestió Administrativa i Seguretat Tema 16. Gestió d'espais i sales"
-  },
-  "meritos": {
-   "motivo": "cita_no_literal",
-   "valor": "Experiencia profesional hasta 4 puntos (0,20 por mes en Ayuntamiento o administraciones; 0,10 por mes en sector privado); formación hasta 2 puntos; titulaciones oficiales superiores hasta 2 puntos (1 por grado medio, 2 por grado superior).",
-   "cita": "Per prestar serveis efectius a l’Ajuntament de Vallirana, a raó de 0,20 punts per mes treballat."
-  },
-  "bolsa": {
-   "motivo": "cita_no_literal",
-   "valor": "sí, para cubrir ausencias y bajas de personal de la misma categoría, con vigencia de 1 año prorrogable 1 más",
-   "cita": "L’òrgan convocant crearà una bossa de treball, per un període d’1any, des de la data de la seva constitució, prorrogable per un any més"
+   "cita": "Bloc I: Organització i Règim Jurídic; Bloc IV: Gestió Administrativa i Seguretat"
   }
  }
 }

@@ -1,0 +1,61 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2022-7017",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2022-7017",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2022/09/30_187/2022_007017.pdf",
+  "fecha": "2022-09-30",
+  "huella": "891e8426624a19eaf4a255e80b53f7928233517fbc270959f6060b88d4b21d64"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:25+00:00",
+ "lote": "msgbatch_01B4ETF5xB4buYCHqPiHTXzF",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Técnico de Administración General (turno libre)",
+    "Técnico de Administración General (promoción interna vertical)"
+   ],
+   "cita": "dos plazas de Técnico de Administración General (1 por turno libre y 1 por promoción interna vertical)",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "mediante el sistema de oposición, vacantes en la plantilla de este Ayuntamiento",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 2,
+   "cita": "provisión en propiedad de dos plazas de Técnico de Administración General",
+   "nivel": "literal"
+  },
+  "plazas_turno_libre": {
+   "valor": 1,
+   "cita": "Técnico de Administración General (1 por turno libre y 1 por promoción interna vertical)",
+   "nivel": "literal"
+  },
+  "plazas_promocion_interna": {
+   "valor": 1,
+   "cita": "1 por turno libre y 1 por promoción interna vertical",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí; bolsa de trabajo para nombramientos provisionales por mejora de empleo (promoción interna) y para nombramientos como funcionarios interinos (turno libre)",
+   "cita": "constituyéndose bolsa de trabajo con una lista de seleccionados por orden decreciente de puntuaciones",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "provisión en propiedad de dos plazas de funcionario de carrera, Técnico de Administración General"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "tablón de anuncios electrónico y web municipal (www.elcampello.es)",
+   "cita": "hará pública en el tablón de anuncios electrónico y en la web municipal (www.elcampello.es)"
+  }
+ }
+}

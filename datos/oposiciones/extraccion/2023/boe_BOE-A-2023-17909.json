@@ -1,0 +1,48 @@
+{
+ "proceso": "boe:BOE-A-2023-17909",
+ "documento": {
+  "id": "bopcaceres:BOP-2022-6685",
+  "fuente": "BOP-CACERES",
+  "url": "https://bop.dip-caceres.es/bop/services/anuncios/contenidoPdfIdAnuncio?csv=BOP-2022-6685",
+  "fecha": "2022-12-30",
+  "huella": "8833bd1ba8e05d29c1ba8730feddb13275b70699db1c10ac6b5acf45771767e4"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:59:27+00:00",
+ "lote": "msgbatch_012nGabRM1G4b7cEKJh1Bcx1",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "auxiliar administrativo",
+   "cita": "una plaza de auxiliar administrativo para el Ayuntamiento de Torrrequemada",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "la provisión, por el turno de estabilización de la ley 20/2021, de 28 de diciembre",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles a contar desde el día siguiente a la publicación de este anuncio en el Boletín Oficial del Estado",
+   "cita": "que será de 20 días hábiles a contar desde el día siguiente a la publicación",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia, sede electrónica del Ayuntamiento y Tablón de Anuncios",
+   "cita": "se publicarán en el Boletín Oficial de la Provincia. Asimismo, se publicarán en la sede electrónica",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso",
+   "cita": "mediante sistema de concurso, de una plaza de personal laboral fijo"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "para la provisión, por el turno de estabilización de la ley 20/2021"
+  }
+ }
+}

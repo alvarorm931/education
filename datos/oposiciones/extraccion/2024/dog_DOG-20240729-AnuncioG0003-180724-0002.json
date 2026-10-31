@@ -1,0 +1,52 @@
+{
+ "proceso": "dog:DOG-20240729-AnuncioG0003-180724-0002",
+ "documento": {
+  "id": "dog:DOG-20240729-AnuncioG0003-180724-0002",
+  "fuente": "DOG",
+  "url": "https://www.xunta.gal/dog/Publicados/2024/20240729/AnuncioG0003-180724-0002_es.html",
+  "fecha": "2024-07-29",
+  "huella": "f273da227dc99571ebacf5770de4a7d9c977e8ce4e034658f680643975be91ed"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:49:02+00:00",
+ "lote": "msgbatch_016yasWxkCXTWjPAb8LjB3ob",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "personal sanitario diplomado",
+    "personal de formación profesional",
+    "personal de gestión y servicios"
+   ],
+   "cita": "en las categorías de personal sanitario diplomado y de formación profesional y de personal de gestión y servicios del Hospital Público de Verín",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "Anunciar la convocatoria del procedimiento de movilidad interna voluntaria",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "desde el día siguiente a la publicación del anuncio en el Diario Oficial de Galicia hasta el 6 de septiembre de 2024",
+   "cita": "el plazo para presentarlas será desde el día siguiente a la fecha de la publicación del anuncio",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "en las unidades de registro de los centros de la Gerencia del Área Sanitaria de Ourense, Verín y O Barco de Valdeorras, o en cualquiera de los registros del artículo 16 de la Ley 39/2015",
+   "cita": "podrán presentarse a través de cualquiera de los registros previstos en el artículo 16 da Ley 39/2015",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "tablones de anuncios del Hospital Público de Verín y en la intranet de la Gerencia del Área Sanitaria de Ourense, Verín y El Barco de Valdeorras",
+   "cita": "Las bases íntegras de la citada convocatoria estarán expuestas en los tablones de anuncios del Hospital Público de Verín",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "personal estatutario",
+   "cita": "de conformidad con lo establecido en el Decreto 206/2005, de provisión de plazas de personal estatutario del Servicio Gallego de Salud"
+  }
+ }
+}

@@ -1,0 +1,53 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2022-8767",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2022-8767",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2022/11/11_215/2022_008767.pdf",
+  "fecha": "2022-11-11",
+  "huella": "60e70ce67d793d876aa3ee0c8f13cf1640e2e88db49110dd82477d7a006754d1"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:03+00:00",
+ "lote": "msgbatch_01B4ETF5xB4buYCHqPiHTXzF",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "C1",
+   "cita": "provisión temporal de un puesto de Administrativo/a perteneciente al grupo C1",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Administrativo/a",
+   "cita": "para provisión temporal de un puesto de Administrativo/a perteneciente al grupo C1"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "otro",
+   "cita": "proceso selectivo para mejora de empleo para provisión temporal de un puesto"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "otro",
+   "cita": "proceso selectivo para mejora de empleo para provisión temporal de un puesto"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 1,
+   "cita": "para provisión temporal de un puesto de Administrativo/a perteneciente al grupo C1"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "diez días hábiles a partir del siguiente al de la publicación del anuncio de la convocatoria en el Boletín Oficial de la Provincia de Alicante",
+   "cita": "El plazo de presentación de solicitudes será de diez días hábiles a partir del siguiente al de la publicación"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "sede electrónica del Ayuntamiento de Pinoso",
+   "cita": "Las bases íntegras y el modelo de solicitud de la convocatoria pueden consultarse en la sede electrónica del Ayuntamiento de Pinoso"
+  }
+ }
+}

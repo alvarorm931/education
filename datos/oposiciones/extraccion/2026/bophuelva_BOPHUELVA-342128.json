@@ -1,0 +1,43 @@
+{
+ "proceso": "bophuelva:BOPHUELVA-342128",
+ "documento": {
+  "id": "bophuelva:BOPHUELVA-342128",
+  "fuente": "BOP-HUELVA",
+  "url": "https://s2.diphuelva.es/portalweb/bope/anuncios/Anuncio_342128_BOP-22_2026.pdf",
+  "fecha": "2026-02-03",
+  "huella": "510c8c0206dec12d81fc2fed00ac7c7e31c6a8669b0ff2ecdabf4b72ccfd637a"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:42:22+00:00",
+ "lote": "msgbatch_01W17mR271uYfWYL6CuSdriL",
+ "no_son_bases": false,
+ "campos": {
+  "sistema": {
+   "valor": "bolsa de trabajo",
+   "cita": "para la creación de una bolsa de trabajo para la selección de Directores/as",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "DIEZ DÍAS HÁBILES, contados a partir del siguiente a aquél en el que se publique el presente anuncio",
+   "cita": "el plazo de presentación de solicitudes, que será de DIEZ DÍAS HÁBILES, contados a partir del siguiente",
+   "nivel": "sin_signos"
+  },
+  "bolsa": {
+   "valor": "sí, bolsa de trabajo para la selección de Directores/as para Programas de Empleo y Formación (PEFs)",
+   "cita": "para la creación de una bolsa de trabajo para la selección de Directores/as para Programas de Empleo y Formación",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Directores/as para Programas de Empleo y Formación (PEFs)",
+   "cita": "la convocatoria para la creación de una bolsa de trabajo para la selección de Directores/as para Programas de Empleo y Formación (PEFs)"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Tablón de Anuncios de la Sede Electrónica de la Mancomunidad de Islantilla",
+   "cita": "El contenido íntegro de las bases se encuentra en el Tablón de Anuncios de la Sede Electrónica de la Mancomunidad de Islantilla"
+  }
+ }
+}

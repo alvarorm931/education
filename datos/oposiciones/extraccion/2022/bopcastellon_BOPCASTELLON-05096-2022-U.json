@@ -1,0 +1,80 @@
+{
+ "proceso": "bopcastellon:BOPCASTELLON-05096-2022-U",
+ "documento": {
+  "id": "bopcastellon:BOPCASTELLON-05096-2022-U",
+  "fuente": "BOP-CASTELLON",
+  "url": null,
+  "fecha": "2022-11-22",
+  "huella": "64f0acddd0768e8dec9a0ac016da563954e9dcac373c5e9668e25bbaf7250605"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:18+00:00",
+ "lote": "msgbatch_01B4ETF5xB4buYCHqPiHTXzF",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Plazas de personal funcionario de carrera y personal laboral fijo (procesos de estabilización de la ocupación temporal, Ley 20/2021)"
+   ],
+   "cita": "Aquestes bases generals tenen per objecte establir els criteris que han de regir els processos extraordinaris de selecció dels empleats públics",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "per a l'accés a la condició de personal funcionari de carrera i personal laboral fix",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "es duran a terme d'acord amb el sistema de selecció de concurs o concurs oposició determinat en l'oferta pública",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "10 días hábiles desde el siguiente al de la publicación del extracto de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "El termini de presentació d'instàncies serà de 10 dies hàbils comptadors a partir del següent al de la publicació de l'extracte",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Telemáticamente en la sede electrónica del Ayuntamiento de Vinaròs (https://vinaros.sedelectronica.es), trámite de solicitud de admisión a pruebas selectivas; también por los medios del art. 16.4 de la Ley 39/2015",
+   "cita": "Les instàncies es presentaran telemàticament en la seu electrònica de l'Ajuntament de Vinaròs",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia de Castellón, tablón de anuncios de la sede electrónica y página web municipal (apartado de Recursos Humanos)",
+   "cita": "Les presents bases es publicaran en el Butlletí Oficial de la Província de Castelló, i en extracte, en el Diari Oficial de la Generalitat Valenciana",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Fase de oposición (60%): para subgrupos A1, A2, B, C1 y C2, dos ejercicios; para otras agrupaciones, una prueba práctica de 0 a 60 puntos",
+    "Primer ejercicio: test tipo cuestionario de cuatro respuestas alternativas (no eliminatorio, hasta 30 puntos)",
+    "Segundo ejercicio: supuesto práctico por escrito (no eliminatorio, de 0 a 30 puntos)",
+    "Fase de concurso (40%): experiencia, formación, titulación, valenciano e idiomas, según barema"
+   ],
+   "cita": "La fase d'oposició, que suposarà un 60% del total del concurs oposició, constarà del següent",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "Sí en los procesos de concurso-oposición, si lo determinan las bases específicas; no en los de concurso de méritos",
+   "cita": "En els processos realitzats mitjançant concurs-oposició, les bases específiques podran determinar la constitució d'una borsa de treball",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Periodo de prácticas o prueba, si lo fijan las bases específicas; exentos quienes sean personal temporal en la misma categoría y hayan ocupado la plaza al menos el año anterior",
+   "cita": "En les bases específiques es podrà fixar un període pràctiques o prova.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "temas": {
+   "motivo": "valor_no_numerico",
+   "valor": "30 temas para subgrupo A1, 25 para A2, 20 para B, 15 para C1, 8 para C2 y 4 para otras agrupaciones profesionales",
+   "cita": "Subgrup A1: 30 temes Subgrup A2: 25 temes Grup B: 20 temes Subgrup C1: 15 temes"
+  },
+  "meritos": {
+   "motivo": "cita_no_literal",
+   "valor": "Concurso-oposición (fase de concurso, 40%, máximo 40 puntos según barema): experiencia profesional hasta 28 puntos; cursos de formación hasta 6,60; titulación hasta 3,6; valenciano hasta 1,2; idiomas comunitarios hasta 0,6",
+   "cita": "Experiència professional (fins a un màxim 28 punts) Cursos de formació i perfeccionament (fins a un màxim 6,60 punts)"
+  }
+ }
+}

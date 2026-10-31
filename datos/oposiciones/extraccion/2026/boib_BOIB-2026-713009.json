@@ -1,0 +1,86 @@
+{
+ "proceso": "boib:BOIB-2026-713009",
+ "documento": {
+  "id": "boib:BOIB-2026-713009",
+  "fuente": "BOIB",
+  "url": "https://www.caib.es/eboibfront/es/2026/12244/713009/resolucion-de-alcaldia-2026-0635-de-dia-4-de-marzo",
+  "fecha": "2026-03-14",
+  "huella": "f0ac6f4b28f0b0c1469348809e396e721b52900657c68eb16b172370803a2582"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:40:47+00:00",
+ "lote": "msgbatch_01E3wiYcGL8Lzho48bXWLyyb",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "permiso municipal de autotaxi",
+   "cita": "se convoca y se aprueban las bases para obtener el permiso municipal de autotaxi",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "El procedimiento para obtener este permiso municipal consistirá en la superación de una prueba de aptitud.",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Permiso de conducción de clase C o superior, expedido con al menos dos años de antigüedad",
+   "cita": "Encontrarse en posesión del permiso de conducción de clase C o superior, expedido por la Prefectura de Tráfico.",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "No sufrir enfermedad infecciosa contagiosa ni impedimento físico o psíquico que dificulte el ejercicio; certificado médico; no ser consumidor habitual de estupefacientes o alcohol; no ejercer trabajos que afecten a la capacidad de conducción; conocimientos del municipio y normativa",
+   "cita": "Certificado médico acreditativo de no tener ningún impedimento físico o psíquico que imposibilite o dificulte el normal ejercicio de la profesión",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Conocimiento de catalán y castellano que permita la comprensión de las indicaciones de las personas usuarias",
+   "cita": "Tener conocimiento de catalán y castellano que permita la comprensión de las indicaciones de las personas usuarias",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 225,
+   "cita": "la cuota tributaria por este concepto es de 225.-€",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Desde el día siguiente a la publicación del anuncio en el BOIB, hasta 15 días naturales antes de la fecha prevista para la prueba de cada convocatoria",
+   "cita": "a partir del día siguiente a la publicación del anuncio de estas bases y convocatorias en el BOIB",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Registro General del Ayuntamiento o en cualquiera de los lugares del artículo 16.4 de la Ley 39/2015",
+   "cita": "se tendrán que presentar en el Registro General de este Ayuntamiento, o bien en cualquiera de los lugares señalados",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "BOIB, tablón de anuncios de la sede electrónica y web del Ayuntamiento",
+   "cita": "Publicar la presente resolución en el BOIB, en el tablón de anuncios de la sede electrónica de este Ayuntamiento y en la web del Ayuntamiento.",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "No se valoran méritos",
+   "cita": "El procedimiento para obtener este permiso municipal consistirá en la superación de una prueba de aptitud.",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "no",
+   "cita": "El procedimiento para obtener este permiso municipal consistirá en la superación de una prueba de aptitud.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "otro",
+   "cita": "permiso municipal de conductor o conductora de autotaxi"
+  },
+  "ejercicios": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Prueba de aptitud tipo test de 50 preguntas sobre el municipio, vías, normativa y tarifas (1,5 horas)",
+    "Prueba de nivel de lengua catalana y/o castellana, en su caso"
+   ],
+   "cita": "La prueba de aptitud consistirá en un examen de 50 preguntas tipo test."
+  }
+ }
+}

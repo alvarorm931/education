@@ -1,0 +1,55 @@
+{
+ "proceso": "dog:DOG-20250117-AnuncioG1651-090125-0001",
+ "documento": {
+  "id": "dog:DOG-20250117-AnuncioG1651-090125-0001",
+  "fuente": "DOG",
+  "url": "https://www.xunta.gal/dog/Publicados/2025/20250117/AnuncioG1651-090125-0001_es.html",
+  "fecha": "2025-01-17",
+  "huella": "3d37491fd055b45f20a737f65d43188e39968ec339a18bc010a9874bb22d788e"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:49:32+00:00",
+ "lote": "msgbatch_018TPQE8scQozfAUdc1n8RyC",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "cobertura definitiva de dos puestos de titulado/a superior en Química existentes en la plantilla de personal laboral",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "por el turno de acceso libre, mediante el sistema de concurso-oposición, para el ingreso en las categorías siguientes",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 2,
+   "cita": "cobertura definitiva de dos puestos de titulado/a superior en Química existentes en la plantilla",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte (20) días naturales a contar desde el día siguiente de la publicación de este anuncio en el Diario Oficial de Galicia",
+   "cita": "El plazo de presentación de solicitudes será de veinte (20) días naturales a contar desde el día siguiente",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Titulado/a superior en Química"
+   ],
+   "cita": "se anuncia la aprobación de la convocatoria para la cobertura definitiva de dos puestos de titulado/a superior en Química"
+  },
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "A1",
+   "cita": "no consta"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 2,
+   "cita": "por el turno de acceso libre, mediante el sistema de concurso-oposición"
+  }
+ }
+}

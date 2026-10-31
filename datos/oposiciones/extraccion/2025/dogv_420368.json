@@ -1,0 +1,109 @@
+{
+ "proceso": "dogv:420368",
+ "documento": {
+  "id": "dogv:420368",
+  "fuente": "DOGV",
+  "url": "https://dogv.gva.es/datos/2025/05/09/pdf/2025_12181_es.pdf",
+  "fecha": "2025-05-09",
+  "huella": "4e3bccec490a0eda5f6cefe3ec113b8875ba031d6ddedc0d1331ab34d650b1a5"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:45:58+00:00",
+ "lote": "msgbatch_017vJZdAmjTkBDdH14aLEdCv",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Jefe o Jefa de Proyecto",
+    "Jefe o Jefa de Proyecto"
+   ],
+   "cita": "Jefaturas de Proyecto, de naturaleza funcionarial, del grupo A, cuya forma de provisión es el concurso",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "A1",
+   "cita": "grupo A, subgrupo A1, sector de administración especial",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "el personal funcionario de carrera de la Universitat Politècnica de València que pertenezca al grupo A, subgrupo A1",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "Convocar mediante el procedimiento de concurso la provisión de los puestos de trabajo de jefatura de proyecto",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Grupo A, subgrupo A1",
+   "cita": "de naturaleza funcionarial, del grupo A, subgrupo A1, que se relacionan en el anexo I",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Personal funcionario de carrera de la UPV del grupo A, subgrupo A1, sector de administración especial; no haber tomado posesión de su último destino definitivo en menos de dos años; para puestos con requisito de idioma, acreditar inglés o quedar excluido.",
+   "cita": "Las personas candidatas deberán cumplir los requisitos de participación en la fecha de finalización del plazo de presentación de solicitudes",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Valenciano: certificado de nivel B1, B2, C1 o C2 valorable como mérito (hasta 1,50 puntos)",
+   "cita": "Certificat de nivell B1 (Elemental) 1,00 puntos Certificat de nivell B2 (Intermedi) 1,15 puntos",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "15 días hábiles desde el día siguiente a la publicación en el DOGV",
+   "cita": "El plazo de presentación de solicitudes será de 15 días hábiles contados a partir del día siguiente de la publicación de esta resolución",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Aplicación Bullent de la Intranet de la UPV; personal no activo, sede electrónica de la UPV (sede.upv.es) mediante presentación solicitud genérica",
+   "cita": "Quienes deseen participar en el presente concurso, deberán cumplimentar los datos de «Solicitud» ... de la Intranet de la UPV",
+   "nivel": "fragmentos"
+  },
+  "publicaciones": {
+   "valor": "Sede electrónica de la UPV (sede.upv.es, apartado anuncios), microweb de Vicegerencia de Recursos Humanos y Organización, y DOGV para resoluciones finales",
+   "cita": "Los resultados de cada una de las fases del concurso, comunicaciones o cualquier decisión que adopte la comisión",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Valoración de méritos según baremo del anexo II",
+    "Entrevista personal, exposición y defensa de memoria (puestos nivel 24 o superior, máximo 4 puntos)"
+   ],
+   "cita": "para la provisión de puestos de trabajo catalogados con un nivel de complemento de destino 24 o superiores se celebrará una entrevista personal pública",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Antigüedad hasta 10 puntos; nivel competencial hasta 2; experiencia profesional hasta 7; titulación hasta 0,50; cursos de formación hasta 5; valenciano hasta 1,50; idiomas hasta 1; víctimas del terrorismo o violencia de género 10; entrevista y memoria hasta 4",
+   "cita": "Antigüedad: se valorará con 1,25 puntos por cada año completo de servicios en un puesto de trabajo",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 2,
+   "cita": "Código del puesto: PF1300 ... Código del puesto: PF1303"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 2,
+   "cita": "Convocar mediante el procedimiento de concurso la provisión de los puestos de trabajo de jefatura de proyecto"
+  },
+  "tasa_euros": {
+   "motivo": "cita_no_literal",
+   "valor": 0,
+   "cita": "no hay tasa mencionada en el texto"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "no",
+   "cita": "no se menciona la creación de bolsa o lista de espera en el texto"
+  },
+  "practicas_o_curso": {
+   "motivo": "cita_no_literal",
+   "valor": "no",
+   "cita": "no se menciona periodo de prácticas o curso selectivo en el texto"
+  }
+ }
+}

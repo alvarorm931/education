@@ -1,0 +1,60 @@
+{
+ "proceso": "boja:disposition.2026.59.55",
+ "documento": {
+  "id": "boja:disposition.2026.59.55",
+  "fuente": "BOJA",
+  "url": "https://juntadeandalucia.es/eboja/2026/59/BOJA26-059-00001-3885-01_00335107.pdf",
+  "fecha": "2026-03-26",
+  "huella": "61342392a1c04860a25a9994da32cc6555d72377de6b4536f5ec03dd159f59db"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:40:33+00:00",
+ "lote": "msgbatch_01E3wiYcGL8Lzho48bXWLyyb",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Policía Local"
+   ],
+   "cita": "cuatro plazas de Policía Local del Ayuntamiento de Villanueva de Córdoba",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "cubrir cuatro plazas de Policía Local del Ayuntamiento de Villanueva de Córdoba",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "mediante sistema de oposición, turno libre, aprobadas por Resolución de Alcaldía",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 4,
+   "cita": "cubrir cuatro plazas de Policía Local del Ayuntamiento de Villanueva de Córdoba",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles desde el día siguiente a la publicación del anuncio en el BOE",
+   "cita": "El plazo de presentación de solicitudes será de veinte días hábiles, a contar desde el día siguiente",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Sede electrónica del Ayuntamiento",
+   "cita": "se publicarán en el Tablón de Edictos de la sede electrónica de este Ayuntamiento",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 4,
+   "cita": "mediante sistema de oposición, turno libre, aprobadas por Resolución de Alcaldía"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Boletín Oficial de la Provincia de Córdoba y Tablón de Edictos de la sede electrónica del Ayuntamiento",
+   "cita": "Los sucesivos anuncios se publicarán en el Boletín Oficial de la Provincia"
+  }
+ }
+}

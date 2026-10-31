@@ -1,0 +1,89 @@
+{
+ "proceso": "dogv:407775",
+ "documento": {
+  "id": "dogv:407775",
+  "fuente": "DOGV",
+  "url": "https://dogv.gva.es/datos/2025/01/07/pdf/2024_13737_es.pdf",
+  "fecha": "2025-01-07",
+  "huella": "a8621c26d51a14b8b6581e507a7415c0ed09c48cd47a2079cebd2bd7875444e8"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:49:39+00:00",
+ "lote": "msgbatch_018TPQE8scQozfAUdc1n8RyC",
+ "no_son_bases": false,
+ "campos": {
+  "sistema": {
+   "valor": "concurso",
+   "cita": "concurso público para la provisión de las plazas de personal docente e investigador en régimen de contratación laboral",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Titulación específica",
+   "cita": "Para concursar en las plazas de profesorado asociado es necesario estar en posesión de una titulación específica",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Tener cumplidos 16 años y no haber cumplido la edad de jubilación; permiso de residencia y trabajo si es extranjero no comunitario; no haber sido separado del servicio ni inhabilitado; capacidad funcional; acreditar ser especialista o profesor de reconocida competencia que ejerza su actividad principal fuera del ámbito universitario.",
+   "cita": "Tener cumplidos los 16 años y no haber cumplido la edad de jubilación.",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 30,
+   "cita": "pago telemático de 30 euros en concepto de derechos de participación",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Bonificación del 50% para familias numerosas y monoparentales de categoría general; exención total para discapacidad igual o superior al 33%, familias numerosas especiales, monoparentales especiales y víctimas de violencia sobre la mujer; 15 euros en exenciones parciales.",
+   "cita": "Estarán exentas del pago de la tasa las personas que acrediten una discapacidad en grado igual o superior al 33%",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Diez días hábiles desde el día siguiente a la publicación de la convocatoria en el DOGV",
+   "cita": "El plazo de presentación de solicitudes será de diez días hábiles contados a partir del día siguiente",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Exclusivamente por vía electrónica en la Sede electrónica de la UMH (procedimiento Selección PDI-Laboral Fijo), con identificación electrónica; una solicitud por plaza.",
+   "cita": "Las solicitudes se cumplimentarán y presentarán exclusivamente por vía electrónica",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Primera prueba: valoración de méritos y adecuación a las necesidades de la Universidad (70 puntos por méritos y 30 por adecuación)",
+    "Segunda prueba (eventual): entrevista pública, máximo 20% de la puntuación total"
+   ],
+   "cita": "Los concursos constarán de una primera prueba de evaluación y, si la comisión lo considera necesario, de una segunda prueba",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Actividades profesionales extrauniversitarias (máximo 50 puntos) y otros méritos (máximo 20 puntos); adecuación a las necesidades de la UMH (30 puntos)",
+   "cita": "Valoración de las actividades profesionales extrauniversitarias o, en su caso, obra artística. Máximo 50 puntos",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "no",
+   "cita": "Todos los concursos podrán resolverse con la ausencia de propuesta de provisión de la plaza o plazas.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Profesorado asociado — DC3728 (Derecho del Trabajo y de la Seguridad Social)",
+    "Profesorado asociado — DC3648 (Educación Física y Deportiva)"
+   ],
+   "cita": "Número de plaza: DC3728 Categoría: Profesorado asociado"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "laboral temporal",
+   "cita": "contratación laboral de las universidades públicas valencianas"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Boletín Oficial de la Universidad Miguel Hernández de Elche (BOUMH) y, a título informativo, página web de la Universidad",
+   "cita": "se publicará la lista provisional de las personas admitidas y excluidas en el Boletín Oficial de la Universidad Miguel Hernández de Elche (BOUMH)"
+  }
+ }
+}

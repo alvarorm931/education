@@ -1,0 +1,65 @@
+{
+ "proceso": "boplaspalmas:BOPLASPALMAS-2023-09-13-017",
+ "documento": {
+  "id": "boplaspalmas:BOPLASPALMAS-2023-09-13-017",
+  "fuente": "BOP-LASPALMAS",
+  "url": null,
+  "fecha": "2023-09-13",
+  "huella": "53e82ddfcb3bd7cd253ba3c353e5bfa8c0b475f9c727c8b39f838d8b29d2deed"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:58:06+00:00",
+ "lote": "msgbatch_01SjfjDqJRwL6bpTvJz2YfVg",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "A1",
+   "cita": "PLAZA ESCALA/SUBESCALA GRUPO/SUBGRUPO 4DIR015 Director/a General de Contratación y Patrimonio A/A1",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "Tipo de vinculación: Funcionario/ de carrera perteneciente al Subgrupo A1.",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Pertenencia a Cuerpos o escalas de funcionarios y/o grupos de titulación a los que se les exija para su ingreso el título de doctor, licenciado, ingeniero, arquitecto o grados equivalentes.",
+   "cita": "Titulación que se requiere para su desempeño: Pertenencia a Cuerpos o escalas de funcionarios y/o grupos de titulación",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "quince días hábiles contados a partir del día siguiente al de la fecha de publicación del anuncio de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "El plazo para la presentación de solicitudes de participación será de QUINCE DÍAS HÁBILES contados a partir del día siguiente",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Director/a General de Contratación y Patrimonio"
+   ],
+   "cita": "aprobar la convocatoria para la provisión mediante el sistema de libre designación del puesto directivo denominado Director/a General de Contratación y Patrimonio"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso",
+   "cita": "provisión mediante el sistema de libre designación, mediante publicidad y concurrencia"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "La plaza ofertada en el presente proceso selectivo se encuentra vacante"
+  },
+  "tasa_euros": {
+   "motivo": "valor_no_en_cita",
+   "valor": 0,
+   "cita": "Figuran incorporados a este expediente cuantificación y documentos contables por importe de veintinueve mil setecientos sesenta"
+  },
+  "practicas_o_curso": {
+   "motivo": "cita_no_literal",
+   "valor": "no aplica",
+   "cita": ""
+  }
+ }
+}

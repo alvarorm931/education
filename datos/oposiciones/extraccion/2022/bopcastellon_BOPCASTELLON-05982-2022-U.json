@@ -1,0 +1,82 @@
+{
+ "proceso": "bopcastellon:BOPCASTELLON-05982-2022-U",
+ "documento": {
+  "id": "bopcastellon:BOPCASTELLON-05982-2022-U",
+  "fuente": "BOP-CASTELLON",
+  "url": null,
+  "fecha": "2022-12-24",
+  "huella": "3caa6e46e1da4afdb76ef03d73d0dc1e596d33bd837c503470e14947cf00a66e"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:56:18+00:00",
+ "lote": "msgbatch_014eT3dLLVopBnuVgQ4syWD9",
+ "no_son_bases": false,
+ "campos": {
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "para cubrir mediante el sistema de CONCURSO-OPOSICIÓN las plazas que se indican a continuación",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles a partir del siguiente al de la publicación del extracto de la convocatoria en el BOE",
+   "cita": "El plazo de presentación de solicitudes de participación en el proceso selectivo será de 20 días hábiles",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Sede electrónica del Ayuntamiento de Benicarló o Registro General; también presencial en Oficinas de Atención al Ciudadano",
+   "cita": "La inscripción se realizará mediante el trámite electrónico habilitado en la sede electrónica del ayuntamiento de Benicarló",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "BOP de Castellón, tablón de anuncios de la sede electrónica y web municipal",
+   "cita": "El anuncio pertinente se publicará en el Boletín Oficial de la Provincia de Castellón (BOP), en el tablón",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Primer ejercicio: test de 0 a 30 puntos, eliminatorio (mínimo 15)",
+    "Segundo ejercicio: práctico de 0 a 30 puntos, eliminatorio (mínimo 15)"
+   ],
+   "cita": "Primer ejercicio de carácter obligatorio y eliminatorio. Test. Se calificará de 0 a 30 puntos.",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, para personal funcionario interino o personal laboral temporal, para aspirantes que superen el primer ejercicio",
+   "cita": "los aspirantes que no superen el proceso selectivo podrán incluirse en bolsas de personal funcionario interino o de personal laboral temporal",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "periodo de prácticas de hasta 6 meses para grupos A1 y A2, y de 2 meses para los restantes grupos",
+   "cita": "con la realización de un período de prácticas a desarrollar por en el puesto de trabajo asignado, durante un período máximo de 6 meses",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Auxiliar administrativo",
+    "Conserje de museo",
+    "Educador social",
+    "Auxiliar de turismo",
+    "Peón"
+   ],
+   "cita": "Plazas por concurso-oposición en el marco de los procesos de estabilización de empleo temporal"
+  },
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "A2 C1 C2 AP",
+   "cita": "clasificación de Grupos según la denominación de cuerpos o escalas que figuran en las bases"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "Cumplimentar la plaza mediante funcionario de carrera y personal laboral fijo"
+  },
+  "meritos": {
+   "motivo": "cita_no_literal",
+   "valor": "Fase concurso 40%: experiencia profesional hasta 30 puntos; titulación hasta 3; cursos de formación hasta 4; idiomas hasta 3",
+   "cita": "La experiencia se valorará hasta un máximo de 30 puntos. La titulación se valorará hasta un máximo de 3 puntos."
+  }
+ }
+}

@@ -1,0 +1,55 @@
+{
+ "proceso": "bopciudadreal:BOPCIUDADREAL-2024-14",
+ "documento": {
+  "id": "bopciudadreal:BOPCIUDADREAL-2024-14",
+  "fuente": "BOP-CIUDADREAL",
+  "url": "https://bop.dipucr.es/bop/2024/01/02",
+  "fecha": "2024-01-02",
+  "huella": "c4ab663f2f961639d31229ccfdc85f1ae9622daa6ce8b5396d525302625efa11"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:57:40+00:00",
+ "lote": "msgbatch_01SjfjDqJRwL6bpTvJz2YfVg",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Ingeniero Técnico Industrial"
+   ],
+   "cita": "Creación de una bolsa de Ingeniero Técnico Industrial, grupo A, subgrupo A-2",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "otro",
+   "cita": "Creación de una bolsa de Ingeniero Técnico Industrial, grupo A, subgrupo A-2",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, para cubrir necesidades futuras del puesto de Ingeniero Técnico Industrial hasta su agotamiento o creación de una nueva bolsa",
+   "cita": "dicha bolsa tendrá una vigencia hasta su agotamiento o creación de una nueva bolsa",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "A2",
+   "cita": "grupo A, subgrupo A-2, mediante concurso-oposición libre"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "mediante concurso-oposición libre, dicha bolsa tendrá una vigencia hasta su agotamiento"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "5 días hábiles a partir del siguiente al de la publicación del anuncio en el Boletín Oficial de la Provincia de Ciudad Real",
+   "cita": "El plazo de presentación de solicitudes será de 5 días hábiles a partir del siguiente de la publicación"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "tablón de Anuncios y página web del Ayuntamiento de Puertollano (www.puertollano.es)",
+   "cita": "Las bases íntegras de esta convocatoria se encuentran expuestas en el tablón de Anuncios y página web del Ayuntamiento"
+  }
+ }
+}

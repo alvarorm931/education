@@ -1,0 +1,54 @@
+{
+ "proceso": "boe:BOE-A-2024-17040",
+ "documento": {
+  "id": "bopvalencia:BOPVALENCIA-2024-10965",
+  "fuente": "BOP-VALENCIA",
+  "url": "https://bop.dival.es/bop/downloads?anuncioNumReg=2024/10965&lang=va",
+  "fecha": "2024-08-07",
+  "huella": "71ccf9763bc0302a9aaa5c81909f47cb334d673a3b219455369e3746dcde8c93"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:49:00+00:00",
+ "lote": "msgbatch_016yasWxkCXTWjPAb8LjB3ob",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Tècnic social",
+    "Mestre director infantil",
+    "Enginyer tècnic industrial",
+    "Arquitecte tècnic",
+    "Arquitecte"
+   ],
+   "cita": "Una plaça de Tècnic social. Una plaça de Mestre director infantil. Una plaça d'Enginyer tècnic industrial a temps parcial 35 %.",
+   "nivel": "sin_signos"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 dies hàbils a comptar des de l'endemà de la publicació d'este anunci",
+   "cita": "el terme per a presentar instàncies per a poder participar en el procediment, és de 20 dies hàbils a comptar dones de l'endemà",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Conforme a la base quinta de las bases generales reguladoras de los procesos de estabilización (BOP 242), que se presentarán según lo establecido en esa base.",
+   "cita": "Les sol·licituds es presentaran de conformitat amb el que s'establix en la base quinta de les bases generals reguladores",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de anuncios de la Corporación en la sede electrónica del Ayuntamiento y en la web del Ayuntamiento",
+   "cita": "El text íntegre de les bases específiques estan publicades al tauler d'anuncis de la Corporació situat en la seu electrònica",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso",
+   "cita": "aproven les bases específiques i la convocatòria de les següents places per concurs de mèrits"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 5,
+   "cita": "Una plaça de Tècnic social. Una plaça de Mestre director infantil."
+  }
+ }
+}

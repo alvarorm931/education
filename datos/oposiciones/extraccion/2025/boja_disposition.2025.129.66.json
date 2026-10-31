@@ -1,0 +1,40 @@
+{
+ "proceso": "boja:disposition.2025.129.66",
+ "documento": {
+  "id": "boja:disposition.2025.129.66",
+  "fuente": "BOJA",
+  "url": "https://juntadeandalucia.es/eboja/2025/129/BOJA25-129-00001-9000-01_00322599.pdf",
+  "fecha": "2025-07-08",
+  "huella": "c1ea05d319484cecba4f0f4ed8e5ff25a57f47e8ee63aadd0791b0469e3728cf"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:45:34+00:00",
+ "lote": "msgbatch_016re6aGcimwSVmdrWa6qBd9",
+ "no_son_bases": false,
+ "campos": {
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles contados a partir del día siguiente a la publicación del anuncio de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "presentar la solicitud en el plazo de 20 días hábiles contados a partir del día siguiente a la publicación",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de anuncios electrónico de la página web del Ayuntamiento y pestaña de procesos selectivos (www.alhaurindelatorre.es)",
+   "cita": "publicadas en el tablón de anuncios electrónico de la página web del Ayuntamiento",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Policía Local"
+   ],
+   "cita": "convocatoria de cuatro plazas de Policía Local del Ayuntamiento de Alhaurín de la Torre"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 4,
+   "cita": "convocatoria de cuatro plazas de Policía Local del Ayuntamiento de Alhaurín de la Torre"
+  }
+ }
+}

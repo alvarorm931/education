@@ -1,83 +1,102 @@
 {
  "proceso": "bopt:BOPT-2026-06001",
  "documento": {
-  "id": "bopt:BOPT-2026-06001",
-  "fuente": "BOPT",
-  "url": "https://www.dipta.cat/bopt/web/anunci/361608/placa-de-peo-de-serveis-multiples-1-bases-i-convocatoria-ajuntament-poboleda",
-  "fecha": "2026-07-03",
-  "huella": "b04e34cf76e9e5954115836e1cbdc20155cd0cc5d3798819316427381c3be46c"
+  "id": "dogc:1050298",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1050298",
+  "fecha": "2026-07-20",
+  "huella": "b9f730f75ebcfafbd7c605eac638764e69867c71f2ca14d808c2dd2aa86fe1a9"
  },
  "modelo": "claude-haiku-5-5",
- "extraido": "2026-10-31T08:18:06+00:00",
- "lote": "msgbatch_01BrnYw6KkevFx7at547B5g8",
+ "extraido": "2026-10-31T14:42:00+00:00",
+ "lote": "msgbatch_01VAo27mSuKdzZJ7Wo6betNM",
  "no_son_bases": false,
  "campos": {
   "denominacion": {
    "valor": [
-    "Peó de serveis múltiples"
+    "peón de servicios múltiples"
    ],
-   "cita": "convocar procés per a la selecció d'una plaça de peó de serveis múltiples, personal laboral fix",
+   "cita": "plaza de personal laboral fijo de peón de servicios múltiples del ayuntamiento de poboleda",
    "nivel": "literal"
   },
   "grupo": {
    "valor": "AP",
-   "cita": "enquadrada en el Grup AP mitjançant concurs-oposició, torn lliure",
+   "cita": "encuadrada en el Grupo AP mediante concurso-oposición, turno libre",
    "nivel": "literal"
   },
   "vinculo": {
    "valor": "personal laboral fijo",
-   "cita": "personal laboral fix, enquadrada en el Grup AP mitjançant concurs-oposició",
+   "cita": "una plaza de peón de servicios múltiples, personal laboral fijo, encuadrada en el Grupo AP",
    "nivel": "literal"
   },
   "sistema": {
    "valor": "concurso-oposición",
-   "cita": "selecció, mitjançant concurs-oposició, torn lliure, d'una plaça de peó de serveis múltiples",
+   "cita": "mediante concurso-oposición, turno libre, de una plaza de personal laboral fijo",
    "nivel": "literal"
   },
   "plazas_total": {
    "valor": 1,
-   "cita": "selecció, mitjançant concurs-oposició, torn lliure, d'una plaça de peó de serveis múltiples",
+   "cita": "convocar proceso para la selección de una plaza de peón de servicios múltiples",
    "nivel": "literal"
   },
   "titulacion": {
-   "valor": "No s'exigeix cap titulació prevista al sistema educatiu",
-   "cita": "No s'exigeix cap titulació prevista al sistema educatiu",
+   "valor": "No se exige ninguna titulación prevista en el sistema educativo",
+   "cita": "f) No se exige ninguna titulación prevista en el sistema educativo.",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española o de Estado de la UE (o aplicación de libre circulación); capacidad funcional; haber cumplido 16 años y no exceder la edad de jubilación forzosa; no haber sido separado del servicio público ni inhabilitado; permiso de conducir B.",
+   "cita": "h) Permiso de conducir B.",
    "nivel": "literal"
   },
   "idioma_cooficial": {
-   "valor": "Català, certificat de nivell bàsic (A2) o equivalent",
-   "cita": "Posseir el certificat de nivell bàsic (A2) o equivalent de català expedit per l'òrgan competent",
+   "valor": "catalán, nivel A2 (básico)",
+   "cita": "Poseer el certificado de nivel básico (A2) o equivalente de catalán expedido por el órgano competente",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles a partir del día siguiente al de la publicación del extracto de la convocatoria en el DOGC",
+   "cita": "El plazo para presentar solicitudes es de 20 días hábiles a partir del día siguiente al de la publicación del extracto",
    "nivel": "literal"
   },
   "presentacion": {
-   "valor": "Preferentment al registre electrònic de l'Ens amb certificat digital o signatura electrònica; presencialment al Registre General (C/Nou,94 de Poboleda)",
-   "cita": "Preferentment les instàncies es presentaran electrònicament: al registre electrònic de l'Ens",
+   "valor": "Preferentemente electrónica en el registro electrónico del Ente con certificado digital o firma electrónica; también presencial en el Registro General (C/Nou, 94 de Poboleda) de lunes a viernes de 9 a 14 horas",
+   "cita": "Preferentemente las instancias se presentarán electrónicamente: en el registro electrónico del Ente.",
    "nivel": "literal"
   },
   "publicaciones": {
-   "valor": "Seu electrònica de l'Ens i BOPT; extracte al DOGC; Portal de Transparència",
-   "cita": "La resta de publicacions del procés selectiu es realitzarà a la Seu electrònica de l'Ens",
+   "valor": "Sede electrónica del Ente, Portal de Transparencia y BOPT; extracto en el DOGC",
+   "cita": "se publicará en el Boletín Oficial de la Provincia de Tarragona, en la Sede electrónica y en el Portal de Transparencia del Ente.",
    "nivel": "literal"
   },
   "ejercicios": {
    "valor": [
-    "Fase de coneixements de llengua catalana i castellana (eliminatòria, si escau)",
-    "Primer exercici: prova de coneixements específics, test de 30 preguntes (màx. 10 punts, eliminatori)",
-    "Segon exercici: prova pràctica escrita (màx. 10 punts, eliminatori)",
-    "Fase de concurs: experiència, formació, formació específica (màx. 9 punts)",
-    "Entrevista (no eliminatòria, màx. 2 punts)"
+    "Primer ejercicio: prueba de conocimientos específicos, test de 30 preguntas (eliminatoria, 0-10)",
+    "Segundo ejercicio: prueba práctica por escrito (eliminatoria, 0-10)",
+    "Fase de concurso: méritos, máximo 9 puntos",
+    "Entrevista no eliminatoria, máximo 3 puntos"
    ],
-   "cita": "Aquesta prova consisteix en la realització d'un test de 30 preguntes amb diverses respostes alternatives",
+   "cita": "Consiste en la realización de un test de 30 preguntas con varias respuestas alternativas sobre el temario anexado.",
    "nivel": "literal"
   },
   "meritos": {
-   "valor": "Experiència laboral màx. 3 punts; formació màx. 2 punts; formació específica màx. 2 punts; entrevista (no eliminatòria) màx. 2 punts",
-   "cita": "Fase de concurs: 9 PUNTS",
+   "valor": "Experiencia laboral máximo 3 puntos; formación máximo 2 puntos; formación específica máximo 2 puntos; entrevista máximo 2 puntos según base, con total de fase de concurso de 9 puntos",
+   "cita": "c) Fase de concurso: 9 PUNTOS",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "Sí, bolsa de trabajo para futuras contrataciones de personal temporal, con vigencia de 2 años prorrogable 2 años más",
+   "cita": "Todas las personas que superen el proceso de selección y no resulten contratadas formarán parte de la bolsa de trabajo.",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Período de prueba de 6 meses",
+   "cita": "El período de prueba se realizará bajo la supervisión del jefe de la unidad administrativa donde sea destinado el personal laboral y tendrá una duración de 6 meses.",
    "nivel": "literal"
   },
   "temas": {
    "valor": 10,
-   "cita": "Tema 10. Drets i deures dels/de les empleats/des públics/ques. Normativa sobre igualtat efectiva de dones i homes. La igualtat de tracte i la no discriminació. ",
+   "cita": "Tema 10. Derechos y deberes de los/las empleados/as públicos/as. Normativa sobre igualdad efectiva de mujeres y hombres. La igualdad de trato y la no discrimina",
    "nivel": "contado"
   }
  },
@@ -85,27 +104,7 @@
   "plazas_turno_libre": {
    "motivo": "valor_no_en_cita",
    "valor": 1,
-   "cita": "concurs-oposició, torn lliure, vacant a la plantilla de personal d'aquest Ajuntament"
-  },
-  "otros_requisitos": {
-   "motivo": "cita_no_literal",
-   "valor": "Nacionalitat (UE o equiparables); capacitat funcional; tenir setze anys i no excedir l'edat de jubilació; no estar separat del servei de les administracions públiques ni inhabilitat; permís de conduir B",
-   "cita": "Haver complert setze anys i no excedir, en el seu cas, de l'edat de jubilació màxima forçosa fixada per la llei"
-  },
-  "plazo_solicitudes": {
-   "motivo": "cita_no_literal",
-   "valor": "20 dies hàbils a partir de l'endemà de la publicació de l'extracte de la convocatòria en el DOGC",
-   "cita": "El termini per presentar sol·licituds és de 20 dies hàbils a partir de l'endemà de la publicació"
-  },
-  "bolsa": {
-   "motivo": "cita_no_literal",
-   "valor": "sí, borsa de treball amb vigència de 2 anys, prorrogable 2 anys més",
-   "cita": "La borsa tindrà una vigència de 2 anys des de la seva constitució, amb una possible pròrroga de 2 anys més."
-  },
-  "practicas_o_curso": {
-   "motivo": "cita_no_literal",
-   "valor": "no consta",
-   "cita": "No consta"
+   "cita": "mediante concurso-oposición, turno libre, vacante en la plantilla de personal"
   }
  }
 }

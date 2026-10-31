@@ -1,0 +1,58 @@
+{
+ "proceso": "boe:BOE-A-2025-13472",
+ "documento": {
+  "id": "dogv:429948",
+  "fuente": "DOGV",
+  "url": "https://dogv.gva.es/datos/2025/06/17/pdf/2025_21621_es.pdf",
+  "fecha": "2025-06-17",
+  "huella": "78aa65aaf2f08cd138a7f5a723c91ce2647f9831a7337e24d9d30e20ecb7f2e8"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:45:15+00:00",
+ "lote": "msgbatch_016re6aGcimwSVmdrWa6qBd9",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "A2",
+   "cita": "Naturaleza funcionarial, grupo a, subgrupo A2.",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "Naturaleza funcionarial, grupo a, subgrupo A2.",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "por turno libre, concurso-oposición.",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "para proveer en propiedad una plaza vacante en la plantilla del Ayuntamiento",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "10 días hábiles, contados desde el día siguiente al de la publicación de la convocatoria en el Boletín Oficial del Estado (BOE)",
+   "cita": "El plazo de presentación de instancias será de 10 días hábiles, contados desde el día siguiente al de la publicación de la convocatoria en el Boletín Oficial del Estado",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "sede electrónica y página web del Ayuntamiento de Meliana, y en el Boletín Oficial de la Provincia de Valencia cuando sea procedente",
+   "cita": "Los anuncios sucesivos relacionados con la convocatoria se publicarán en la sede electrónica y la página web del Ayuntamiento de Meliana",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "agente de empleo y desarrollo local",
+   "cita": "la plaza vacante en la plantilla del Ayuntamiento de Meliana de agente de empleo y desarrollo local"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "por turno libre, concurso-oposición."
+  }
+ }
+}

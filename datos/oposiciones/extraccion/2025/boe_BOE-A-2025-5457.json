@@ -1,0 +1,128 @@
+{
+ "proceso": "boe:BOE-A-2025-5457",
+ "documento": {
+  "id": "bopb:BOPB-202510050230",
+  "fuente": "BOPB",
+  "url": "https://bop.diba.cat/anunci/3741801/aprovacio-de-les-bases-i-la-convocatoria-per-a-la-cobertura-de-27-places-de-professor-a-d-educacio-secundaria-3-places-de-professor-a-d-arts-plastiques-i-disseny-1-placa-de-mestre-a-de-taller-d-arts-plastiques-i-disseny-i-12-places-de-mestres-mitjancant-concurs-oposicio-lliure-ajuntament-de-barcelona",
+  "fecha": "2025-03-12",
+  "huella": "600e78da8abb016881aab640d74a70b85527358c34817924f45ffb20a8e7f126"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:46:45+00:00",
+ "lote": "msgbatch_01MQzQCLMZKxUrrPMAj7dr53",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "No consta",
+   "cita": "Places convocades: Es convoca concurs oposició per cobrir les següents places",
+   "nivel": "sin_signos"
+  },
+  "titulacion": {
+   "valor": "Professor/a educació secundària: títol de llicenciat, enginyer, arquitecte o grau corresponent (més formació pedagògica i didàctica); Professor/a arts plàstiques i disseny: llicenciat, enginyer, arquitecte o grau; Mestre/a de tallers: diplomat universitari, arquitecte tècnic, enginyer tècnic o grau; Mestre/a: títol de mestre, diplomatura de professor d'EGB o grau",
+   "cita": "Tenir el títol de llicenciat o llicenciada, enginyer o enginyera o arquitecte o arquitecta, o el títol de grau corresponent",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalitat espanyola o d'estat membre UE (o aplicable); edat per accedir a la funció pública i no excedir l'edat de jubilació; no patir malaltia ni limitació incompatible; no haver estat separat del servei ni inhabilitat; no condemna per delictes contra la llibertat i indemnitat sexual i tràfic d'éssers humans",
+   "cita": "Tenir l'edat per poder accedir a la funció pública i no excedir, en el moment del nomenament com a funcionari o funcionària de carrera, l'edat establerta",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Català, nivell de suficiència C1",
+   "cita": "Tenir els coneixements de llengua catalana de nivell de suficiència C1",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Situació de desocupació (reducció del 100%); família nombrosa o monoparental; discapacitat igual o superior al 33% (reducció del 100%)",
+   "cita": "En cas de trobar-se en situació d'alta com a demandant d'ocupació i NO percebre cap mena de prestació econòmica",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Vint dies naturals a comptar de l'endemà de la publicació de l'anunci de la convocatòria al DOGC",
+   "cita": "fins a vint dies naturals a comptar de l’endemà de la publicació de l’anunci de la convocatòria al Diari Oficial de la Generalitat de Catalunya",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Primera prova d'oposició",
+    "Segona prova d'oposició (supòsit pràctic tipus test)",
+    "Prova d'acreditació de llengua castellana (persones no espanyoles)",
+    "Prova de llengua catalana"
+   ],
+   "cita": "Annex 8 Temaris supòsit pràctic segons categoria",
+   "nivel": "sin_signos"
+  },
+  "meritos": {
+   "valor": "Barem de mèrits recollit a l'Annex 3 de les bases; mèrits acreditats a 'El meu currículum'",
+   "cita": "Annex 3: Barem de mèrits per al procediment de torn lliure i d e torn de reserva",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "No consta",
+   "cita": "Llista complementària de persones aspirants seleccionades",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Fase de pràctiques com a personal funcionari en pràctiques",
+   "cita": "11. Fase de pràctiques 11.1 Lloc i durada 11.2 Avaluació",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Professor/a d'educació secundària",
+    "Professor/a d'arts plàstiques i disseny",
+    "Mestre/a de tallers d'arts plàstiques i disseny",
+    "Mestre/a"
+   ],
+   "cita": "27 places de professor/a d’educació secundària, 3 places de professor/a arts plàstiques i disseny, 1 places de mestre/a de taller d’arts plàstiques i disseny i 12 places de mestres"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "Ser funcionari o funcionària de carrera ni laboral fix de l’Ajuntament de Barcelona"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "convocar aquests processos mitjançant el sistema de selecció de concurs oposició lliure"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 43,
+   "cita": "27 places de professor/a d’educació secundària, 3 places de professor/a arts plàstiques i disseny"
+  },
+  "plazas_turno_libre": {
+   "motivo": "cita_no_literal",
+   "valor": 43,
+   "cita": "Categoria: Mestre/a Nombre de places: 12 Especialitats Mestre/a Nre. Places torn lliure"
+  },
+  "plazas_discapacidad": {
+   "motivo": "valor_no_numerico",
+   "valor": "No consta",
+   "cita": "Només poden accedir al torn de reserva per a persones amb discapacitat les persones aspirants"
+  },
+  "tasa_euros": {
+   "motivo": "valor_no_numerico",
+   "valor": "No consta",
+   "cita": "El formulari de sol·licitud de participació telemàtica us indicarà automàticament l'import de la taxa."
+  },
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Telemàticament mitjançant la Seu electrònica de l'Ajuntament de Barcelona, convocatòria 'Convocatòria de 4 categories de personal docent any 2025', amb currículum i documentació annexa",
+   "cita": "Accedir a la Seu electrònica de l’Ajuntament de Barcelona, Processos selectius, Convocatòries"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Butlletí Oficial de la Província de Barcelona, Butlletí Oficial de l'Estat, Diari Oficial de la Generalitat de Catalunya i pàgina web de l'Ajuntament de Barcelona",
+   "cita": "PUBLICAR el present acord al Butlletí Oficial de la Província de Barcelona, al Butlletí Oficial de l’Estat"
+  },
+  "temas": {
+   "motivo": "valor_no_en_cita",
+   "valor": 10,
+   "cita": "TEMARI categoria 2511 PROFESSOR/A EDUCACIÓ SECUNDÀRIA: 1. El Consorci d'Educació de Barcelona."
+  }
+ }
+}

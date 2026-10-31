@@ -1,0 +1,65 @@
+{
+ "proceso": "boe:BOE-A-2024-11919",
+ "documento": {
+  "id": "boc:BOC-A-2024-093-1592",
+  "fuente": "BOC",
+  "url": "https://www.gobiernodecanarias.org/boc/2024/093/018.html",
+  "fecha": "2024-05-13",
+  "huella": "db5834953bf8e180c7335a0bbd98c2bd3e927f3ed78106960c5c0b4cb07b8bc8"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:54:36+00:00",
+ "lote": "msgbatch_01HRnX7cDVMkRZD7mBamCmLu",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Arquitecto/a",
+    "Letrado/a",
+    "Arquitecto/a Técnico/a",
+    "Diplomado/a en Empresariales",
+    "Ingeniero/a Técnico/a Industrial",
+    "Auxiliar Administrativo/a"
+   ],
+   "cita": "Una plaza de Arquitecto/a de la plantilla de personal funcionario/a, Escala Administración Especial, Subescala Técnica",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "A1",
+   "cita": "Grupo A, Subgrupo A1, a cubrir por el sistema de oposición, en turno libre",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "la plantilla de personal funcionario/a, Escala Administración Especial, Subescala Técnica",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "a cubrir por el sistema de oposición, en turno libre",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles a contar desde el siguiente al de la publicación de esta resolución en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes será de 20 días hábiles a contar desde el siguiente al de la publicación",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia y/o tablón de anuncios de la sede electrónica del Ayuntamiento de Mogán",
+   "cita": "se harán públicos en la Boletín Oficial de la Provincia y/o en el tablón de anuncios de la sede electrónica del Ayuntamiento de Mogán",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 6,
+   "cita": "Una plaza de Arquitecto/a, Letrado/a, Arquitecto/a Técnico/a, Diplomado/a, Ingeniero/a Técnico/a, dos plazas de Auxiliar"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 6,
+   "cita": "a cubrir por el sistema de oposición, en turno libre. Oferta de empleo 2022"
+  }
+ }
+}

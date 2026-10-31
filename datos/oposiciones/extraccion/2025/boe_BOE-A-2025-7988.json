@@ -1,0 +1,58 @@
+{
+ "proceso": "boe:BOE-A-2025-7988",
+ "documento": {
+  "id": "dogv:415292",
+  "fuente": "DOGV",
+  "url": "https://dogv.gva.es/datos/2025/04/08/pdf/2025_7125_es.pdf",
+  "fecha": "2025-04-08",
+  "huella": "1eb8a2c60bc5b9ed5376f26ca43f13781e6144c23633d826d8c918b5bd3e213b"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:46:02+00:00",
+ "lote": "msgbatch_017vJZdAmjTkBDdH14aLEdCv",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "A1",
+   "cita": "perteneciente a la escala de administración especial, subescala técnica y subgrupo A1",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "cubrir en propiedad dos plazas de psicólogo o psicóloga",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mediante el sistema de concurso-oposición, en turno libre",
+   "nivel": "literal"
+  },
+  "plazas_turno_libre": {
+   "valor": 2,
+   "cita": "dos plazas mediante el sistema de oposición en turno libre",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "diez días hábiles (psicólogo) y veinte días hábiles (agente de policía local), a contar desde el siguiente al de la publicación en el Boletín Oficial del Estado",
+   "cita": "el plazo de presentación de solicitudes será de diez días hábiles a contar desde el siguiente",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia de Castellón y tablón de edictos municipal",
+   "cita": "se harán públicos en el Boletín Oficial de la Provincia de Castellón y en el tablón de edictos municipal",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 5,
+   "cita": "dos plazas de psicólogo o psicóloga, perteneciente a la escala"
+  },
+  "plazas_promocion_interna": {
+   "motivo": "valor_no_en_cita",
+   "valor": 0,
+   "cita": "tres plazas de agente de policía local, perteneciente a la escala"
+  }
+ }
+}

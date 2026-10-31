@@ -1,0 +1,50 @@
+{
+ "proceso": "bopgirona:BOPGIRONA-2023-6550",
+ "documento": {
+  "id": "bopgirona:BOPGIRONA-2023-6550",
+  "fuente": "BOP-GIRONA",
+  "url": "https://ssl4.ddgi.cat/bopV1/pdf/2023/151/202315106550.pdf",
+  "fecha": "2023-08-04",
+  "huella": "a2bd2ec52c0294ac88eba09bb7b654a568f2318c6e2f2cb87f4ec3b282aae06f"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:59:08+00:00",
+ "lote": "msgbatch_012nGabRM1G4b7cEKJh1Bcx1",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "tècnic"
+   ],
+   "cita": "2 places de tècnic, Grup C, subgrup C1, escala d’administració especial",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C1",
+   "cita": "Grup C, subgrup C1, escala d’administració especial",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 2,
+   "cita": "2 places de tècnic, Grup C, subgrup C1, escala d’administració especial",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "personal laboral fijo",
+   "cita": "la contractació com a personal laboral fix, tècnic, Grup C, subgrup C1"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "sistema de selecció, concurso-oposició, torn lliure"
+  },
+  "plazas_turno_libre": {
+   "motivo": "cita_no_literal",
+   "valor": 2,
+   "cita": "sistema de selecció, concurso-oposició, torn lliure"
+  }
+ }
+}

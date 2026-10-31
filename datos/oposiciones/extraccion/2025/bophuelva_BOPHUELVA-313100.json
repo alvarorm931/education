@@ -1,0 +1,50 @@
+{
+ "proceso": "bophuelva:BOPHUELVA-313100",
+ "documento": {
+  "id": "bophuelva:BOPHUELVA-313100",
+  "fuente": "BOP-HUELVA",
+  "url": "https://s2.diphuelva.es/portalweb/bope/anuncios/Anuncio_313100_BOP-105_2025.pdf",
+  "fecha": "2025-06-04",
+  "huella": "10c9e1be6b8527a984f28f569b07de957c9383de87e2b623215413e04e87086b"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:45:35+00:00",
+ "lote": "msgbatch_016re6aGcimwSVmdrWa6qBd9",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "3a",
+   "cita": "Monitor de actividades deportivas. 3a Jornada Según puesto a cubrir temporalmente",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "Relación jurídica: Contrato laboral temporal.",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, para cubrir temporalmente los puestos de monitor deportivo",
+   "cita": "la formación de un bolsa de monitores deportivos/deportivos especializados",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Monitores deportivos/deportivos especializados"
+   ],
+   "cita": "formación de un bolsa de monitores deportivos/deportivos especializados para el polideportivo Municipal de Hinojos"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso",
+   "cita": "para la formación de un bolsa de monitores deportivos mediante concurso"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "sede electrónica http://hinojos.sedelectronica.es",
+   "cita": "BASES REGULADORAS DE BOLSA MONITORES DEPORTIVOS/DEPORTIVOS ESPECIALIZADOS (HTTP://hinojos.sedelectronica.es)"
+  }
+ }
+}

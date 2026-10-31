@@ -1,0 +1,50 @@
+{
+ "proceso": "doe:DOE-2023080235",
+ "documento": {
+  "id": "doe:DOE-2023080235",
+  "fuente": "DOE",
+  "url": "https://doe.juntaex.es/otrosFormatos/html.php?xml=2023080235&anio=2023&doe=280o",
+  "fecha": "2023-02-09",
+  "huella": "c908a43884f09ca2f568f2543ae2d4db5911fde7a3178275b8d12bc30286ee57"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:56:48+00:00",
+ "lote": "msgbatch_0167qWfLXqjGo8Hv43cM3LuM",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "tres plazas de personal laboral fijo en el Ayuntamiento de Solana de los Barros",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "selección, mediante el sistema de concurso de méritos de las 3 plazas de personal fijo",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 3,
+   "cita": "selección, mediante el sistema de concurso de méritos de las 3 plazas de personal fijo",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles a partir de la publicación de la presente resolución en el BOE",
+   "cita": "El plazo de presentación de solicitudes será de 20 días hábiles a partir de la publicación de la presente resolución en el BOE",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Los sucesivos anuncios referentes a esta convocatoria se publicarán de conformidad con las bases de la convocatoria",
+   "cita": "Los sucesivos anuncios referentes a esta convocatoria, cuando procedan se publicarán de conformidad con las bases de la convocatoria",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Plazas de personal laboral fijo del Ayuntamiento de Solana de los Barros (3 plazas)"
+   ],
+   "cita": "convocatoria para la selección de tres plazas de personal laboral fijo en el Ayuntamiento de Solana de los Barros"
+  }
+ }
+}

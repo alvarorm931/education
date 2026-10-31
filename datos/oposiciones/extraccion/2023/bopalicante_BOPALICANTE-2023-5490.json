@@ -1,0 +1,96 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2023-5490",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2023-5490",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2023/06/27_122/2023_005490.pdf",
+  "fecha": "2023-06-27",
+  "huella": "efe70945140718413967b28310102aa9ec2a31611c3bef16234a7874de9a9022"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:59:20+00:00",
+ "lote": "msgbatch_012nGabRM1G4b7cEKJh1Bcx1",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "PERSONAL DE LIMPIEZA",
+    "PEÓN SERVICIOS GENERALES",
+    "PEÓN DE JARDINERÍA",
+    "CONSERJE DE CASA DE CULTURA",
+    "CONSERJE DE DEPORTES",
+    "VIGILANTE AMBIENTAL",
+    "AUXILIAR ADMINISTRATIVO",
+    "AUXILIAR ADMINISTRATIVO TURISMO",
+    "ADMINISTRATIVO",
+    "AUXILIAR ADMINISTRATIVO DE BIBLIOTECA"
+   ],
+   "cita": "Número de puestos Código del puesto Denominación del puesto 10 164 PERSONAL DE LIMPIEZA 13 163 PEÓN SERVICIOS GENERALES",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "Contratación temporal de personal inscrito en el Servicio Público de Empleo",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "La selección de los aspirantes se hará mediante el sistema selectivo de concurso de méritos.",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Variable según puesto: ninguna titulación en peones, personal de limpieza y conserjes; graduado escolar o ESO en vigilante ambiental y auxiliares administrativos; bachillerato o grado medio de FP en administrativos",
+   "cita": "Administrativos: Estar en posesión del título de bachillerato o grado medio de de formación profesional.",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Inscripción en el servicio público de empleo con 3 meses mínimos, empadronamiento en Calp a 1 de enero de 2023, mayoría de 16 años, nacionalidad o residencia legal, carné de conducir tipo B para peones de obras",
+   "cita": "Estar empadronado en Calp a fecha 1 de enero de 2023.",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "15 días naturales desde el siguiente a la publicación del extracto en el Boletín Oficial de la Provincia",
+   "cita": "plazo de 15 días naturales, contados a partir del siguiente al de la publicación del extracto",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Registro General de Entrada del Ayuntamiento o los registros del art. 16.4 de la Ley 39/2015, con modelo de instancia del Anexo I",
+   "cita": "La presentación de solicitudes podrá hacerse en el Registro General de Entrada del Ayuntamiento",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de Edictos y página web del Ayuntamiento de Calp; extracto en el Boletín Oficial de la Provincia de Alicante",
+   "cita": "se publicarán íntegramente en el Tablón de Edictos y página web del Ayuntamiento de Calp.",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Concurso de méritos: baremación de méritos sociales y de empleo"
+   ],
+   "cita": "El procedimiento de selección se realizará por concurso de méritos, que se ajustará a las siguientes reglas",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Inscripción como demandante (0,5 pts/mes, máx. 10); ayuda de Servicios Sociales (10); familia numerosa (10); cónyuge e hijos demandantes sin prestación (10-20); vivienda hipotecada o alquilada (10); dependencia o discapacidad ≥33% (30); menor de 35 o mayor de 50 años (30)",
+   "cita": "Por ser menor de 35 años o mayor de 50 años: 30 puntos.",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Periodo de prueba de 15 días en el contrato de trabajo",
+   "cita": "Se establecerá en el contrato de trabajo un periodo de prueba de 15 días.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 56,
+   "cita": "Número de puestos Código del puesto Denominación del puesto 10 164 PERSONAL DE LIMPIEZA 13 163"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, para cubrir posibles vacantes con el resto de aspirantes",
+   "cita": "Con el resto de aspirantes se formarán bolsas de trabajo para cubrir posibles vacantes."
+  }
+ }
+}

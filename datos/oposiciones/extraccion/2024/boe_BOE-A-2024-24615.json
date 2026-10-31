@@ -1,0 +1,50 @@
+{
+ "proceso": "boe:BOE-A-2024-24615",
+ "documento": {
+  "id": "bocm:BOCM-20241025-94",
+  "fuente": "BOCM",
+  "url": "https://www.bocm.es/bocm-20241025-94",
+  "fecha": "2024-10-25",
+  "huella": "3629c587c8e86046df770ccc56ac91c14cb4a8090cced907f1fe8a88f8d89399"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:49:39+00:00",
+ "lote": "msgbatch_018TPQE8scQozfAUdc1n8RyC",
+ "no_son_bases": false,
+ "campos": {
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mediante concurso-oposición y turno libre",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 8,
+   "cita": "provisión de ocho plazas (ampliable a aquellas posibles vacantes",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días naturales, contados a partir del siguiente al de la publicación en el Boletín Oficial del Estado de la convocatoria",
+   "cita": "El plazo de presentación de solicitudes de participación será de veinte días naturales, contados a partir del siguiente",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "tablón de edictos, tablón virtual del Ayuntamiento y página web municipal",
+   "cita": "Las bases se encuentran expuestas íntegramente en el tablón de edictos, tablón virtual del Ayuntamiento",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "policía del Cuerpo de Policía Local"
+   ],
+   "cita": "provisión de ocho plazas de la categoría de policía del Cuerpo de Policía Local"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 8,
+   "cita": "mediante concurso-oposición y turno libre"
+  }
+ }
+}

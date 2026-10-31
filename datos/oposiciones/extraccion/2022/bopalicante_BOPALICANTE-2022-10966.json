@@ -1,0 +1,97 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2022-10966",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2022-10966",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2022/12/28_246/2022_010966.pdf",
+  "fecha": "2022-12-28",
+  "huella": "733d0ae7dbf4cc16be86d8762b0b8f65ae1a3aa4d09ccdff1c1490910529c3ea"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:56:22+00:00",
+ "lote": "msgbatch_014eT3dLLVopBnuVgQ4syWD9",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Agente de Empleo y Desarrollo Local"
+   ],
+   "cita": "DENOMINACIÓN AGENTE DE EMPLEO Y DESARROLLO LOCAL RÉGIMEN FUNCIONARIO DE CARRERA GRUPO/SUBGRUPO A2",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "RÉGIMEN FUNCIONARIO DE CARRERA GRUPO/SUBGRUPO A2 SISTEMA SELECTIVO CONCURSO DE MÉRITOS",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "proveer en propiedad, mediante concurso de méritos, una plaza de agente de empleo y desarrollo local",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "SISTEMA SELECTIVO CONCURSO DE MÉRITOS Nº PLAZAS 1 NIVEL CD 23",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Diplomatura, Grado o equivalente",
+   "cita": "TITILACIÓN EXIGIDA: Diplomatura, Grado o equivalente RETRIBUCIONES",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española o de otros Estados miembros de la UE (o como sus cónyuges/descendientes según art. 56 TREBEP); mayor de 16 años y no exceder la edad máxima de jubilación forzosa; capacidad funcional; no haber sido separado de la Administración ni inhabilitado para funciones públicas.",
+   "cita": "Ser mayor de 16 años y no exceder de la edad máxima de jubilación forzosa.",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Valenciano: se valora con 5 puntos el certificado o título expedido por la Junta Qualificadora de Coneiximents de Valencià",
+   "cita": "Conocimientos de Valenciano: 5 puntos. Certificado o título de conocimiento de Valenciano",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Presencial en el Registro General del Ayuntamiento o electrónica en el Registro Electrónico de la Corporación (sede electrónica de Rafal)",
+   "cita": "Las solicitudes se presentarán de manera presencial en el Registro General del Ayuntamiento o de manera electrónica",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de Anuncios electrónico del Ayuntamiento (sede electrónica https://rafal.sedelectronica.es/); bases íntegras en el BOP de Alicante y extracto en el BOE",
+   "cita": "Las bases específicas de la presente convocatoria se publicarán íntegramente en el Boletín Oficial de la Provincia de Alicante y en el Tablón de Anuncios electrónico",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Concurso de méritos: fase de concurso (única fase, valoración de méritos profesionales, académicos y valenciano)"
+   ],
+   "cita": "El procedimiento de selección es el de Concurso de méritos",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Méritos profesionales hasta 70 puntos (experiencia como Agente de Empleo y Desarrollo Local: 0,50 p/mes en la Administración convocante, 0,20 en otra Administración Local, 0,10 en otras Administraciones Públicas); méritos académicos hasta 30 puntos (cursos de formación hasta 25 puntos; conocimientos de valenciano 5 puntos)",
+   "cita": "1.- Méritos Profesionales: máximo 70 puntos 1.1 Experiencia profesional. La puntuación máxima a obtener en este apartado será de 70 puntos.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "A2",
+   "cita": "Administración Especial, subescala Técnica, grupo A, subgrupo A2"
+  },
+  "plazas_discapacidad": {
+   "motivo": "valor_no_en_cita",
+   "valor": 0,
+   "cita": "Dado que el número de plazas no permite reservar un cupo no inferior al siete por ciento de las vacantes ofertadas"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "veinte días hábiles, a contar desde el siguiente al de la publicación del extracto de las bases y convocatoria en el BOE",
+   "cita": "El plazo de presentación de instancias será de veinte días hábiles, a contar desde el siguiente al de la publicación del extracto"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "no",
+   "cita": "Las bases no mencionan la creación de bolsa o lista de espera."
+  }
+ }
+}

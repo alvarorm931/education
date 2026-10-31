@@ -1,0 +1,100 @@
+{
+ "proceso": "dogv:459620",
+ "documento": {
+  "id": "dogv:459620",
+  "fuente": "DOGV",
+  "url": "https://dogv.gva.es/datos/2026/01/08/pdf/2025_51333_es.pdf",
+  "fecha": "2026-01-08",
+  "huella": "a81d06fddcde17465745d743710c79ff6d81d64cbb5022f9daa8a4fcb95ea5c9"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:42:22+00:00",
+ "lote": "msgbatch_01W17mR271uYfWYL6CuSdriL",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Profesorado Permanente Laboral Vinculado (DC3763, Medicina Interna)",
+    "Profesorado Permanente Laboral Vinculado (DC3765, Hematología)",
+    "Profesorado Permanente Laboral Vinculado (DC3766, Medicina Interna)"
+   ],
+   "cita": "Concurso Público para la provisión de varias plazas vinculadas de profesorado permanente laboral",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "convocan Concurso Público para la provisión de varias plazas vinculadas de profesorado permanente laboral",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Título de Doctora o Doctor",
+   "cita": "Estar en posesión del título de Doctora o Doctor.",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Tener cumplidos los 16 años y no haber cumplido la edad máxima de jubilación forzosa; acreditación a Profesorado permanente laboral (ANECA o AVAP); título de especialista en ciencias de la salud según anexo I.",
+   "cita": "Tener cumplidos los 16 años y no haber cumplido la edad máxima de jubilación forzosa.",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 30,
+   "cita": "el sistema le llevará directamente al pago telemático de 30 euros en concepto de derechos de participación",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Bonificación del 50% para familias numerosas y monoparentales de categoría general; exentas las personas con discapacidad igual o superior al 33%, familias numerosas especiales, monoparentales especiales y víctimas de violencia sobre la mujer.",
+   "cita": "Estarán exentas del pago de la tasa las personas que acrediten una discapacidad en grado igual o superior al 33%",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "10 días hábiles contados a partir del día siguiente al de la publicación de la convocatoria en el DOGV",
+   "cita": "El plazo de presentación de solicitudes será de 10 días hábiles contados a partir del día siguiente",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Exclusivamente por vía electrónica, en el formulario «Selección PDI-Laboral Fijo» de la Sede electrónica de la Universidad Miguel Hernández de Elche",
+   "cita": "Las solicitudes se cumplimentarán y presentarán exclusivamente por vía electrónica",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "En la primera prueba: actividad investigadora y proyecto investigador (30-35 puntos); actividad y proyecto docente (30-35 puntos); liderazgo en gestión, actividad profesional y otros méritos (10 puntos); adecuación a las necesidades de la UMH (30 puntos)",
+   "cita": "La puntuación máxima que se puede obtener en este criterio estará comprendida entre 30 y 35 puntos.",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "no",
+   "cita": "Todos los concursos podrán resolverse con la ausencia de propuesta de provisión de la plaza o plazas.",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "no",
+   "cita": "Las personas concursantes que no hayan sido propuestas para ser nombradas para las plazas objeto de concurso",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "El concurso se desarrollará en sesión pública y constará de dos pruebas"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 3,
+   "cita": "varias plazas vinculadas de profesorado permanente laboral, conforme a las siguientes bases"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Boletín Oficial de la Universidad Miguel Hernández de Elche (BOUMH) y web de la Universidad (servicioprofesorado.umh.es)",
+   "cita": "se publicará la lista provisional de las personas admitidas y excluidas en el Boletín Oficial de la Universidad Miguel Hernández de Elche"
+  },
+  "ejercicios": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Primera prueba: exposición oral del historial académico, docente e investigador y proyectos, hasta 90 minutos (100 puntos)",
+    "Segunda prueba: exposición oral de un tema elegido por la comisión, entre 45 minutos y hora y media (100 puntos)"
+   ],
+   "cita": "constará de dos pruebas. La primera prueba será pública y consistirá en la exposición oral"
+  }
+ }
+}

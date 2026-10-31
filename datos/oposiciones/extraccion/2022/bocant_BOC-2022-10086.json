@@ -1,0 +1,78 @@
+{
+ "proceso": "bocant:BOC-2022-10086",
+ "documento": {
+  "id": "bocant:BOC-2022-10086",
+  "fuente": "BOC-CANT",
+  "url": "https://boc.cantabria.es/boces/verAnuncioAction.do?idAnuBlob=382324",
+  "fecha": "2022-12-29",
+  "huella": "6d970deb148a75fcd983befbf35c407b5d09d3c69e6f79e36546cbdffc12fcb3"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:56:13+00:00",
+ "lote": "msgbatch_014eT3dLLVopBnuVgQ4syWD9",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Plazas estructurales vacantes del Centro Especial de Empleo SERCA (Anexo V, no incluido en el texto)"
+   ],
+   "cita": "las características de las plazas estructurales vacantes son las que se detallan en el ANEXO V",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "selección de personal laboral fijo, mediante procedimiento de estabilización de empleo temporal",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "El sistema de selección será el concurso-oposición.",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días naturales contados a partir del día siguiente al de la publicación del anuncio de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "en el plazo de veinte días naturales contados a partir del día siguiente al de la publicación",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Registro General del Ayuntamiento de Torrelavega o lugares del artículo 16.4 de la Ley 39/2015, dirigidas a la Presidencia del Patronato Municipal de Educación",
+   "cita": "se presentarán en el Registro General de este Ayuntamiento o en alguno de los lugares previstos en el artículo 16.4",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de Cantabria, web del Patronato Municipal de Educación (https://pmetorrelavega.es) y tablón de anuncios del CEE SERCA; extracto en el BOE",
+   "cita": "se publicarán en el Boletín Oficial de la Provincia y en la web del Patronato Municipal de Educación",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Fase de oposición (60%, hasta 6 puntos): ejercicio teórico tipo test de 60 preguntas, no eliminatorio, máximo una hora",
+    "Fase de concurso (40%, hasta 4 puntos): méritos profesionales, académicos y permisos de conducir"
+   ],
+   "cita": "El ejercicio de la oposición será el siguiente: . Ejercicio teórico: hasta 60% [6 puntos].",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Experiencia profesional hasta 3 puntos (0,05 por mes en Administración local, 0,02 en estatal o autonómica, 0,01 en empresa privada); titulaciones hasta 0,20; cursos hasta 0,70; permisos de conducir hasta 0,10",
+   "cita": "Experiencia Profesional (máximo 3 puntos): Por cada mes prestando servicios, a tiempo completo, como personal laboral",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "no",
+   "cita": "la relación de aspirantes por orden de puntuación en la web del Patronato",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Período de prueba según la normativa laboral",
+   "cita": "Podrá establecerse la superación del período de prueba que corresponda de acuerdo con la normativa laboral",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "temas": {
+   "motivo": "valor_no_numerico",
+   "valor": "Anexo IV (número no especificado en el texto)",
+   "cita": "relacionadas con los temas que figuran en el anexo IV que se corresponda"
+  }
+ }
+}

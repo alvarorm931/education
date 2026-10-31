@@ -1,0 +1,35 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2024-4690",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2024-4690",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2024/06/11_111/2024_004690.pdf",
+  "fecha": "2024-06-11",
+  "huella": "39bf3f9090f71e5e21f3c2bb1934f1969e6e2ffe3378b667ca30f8b41e782c13"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:54:37+00:00",
+ "lote": "msgbatch_01HRnX7cDVMkRZD7mBamCmLu",
+ "no_son_bases": false,
+ "campos": {
+  "plazas_total": {
+   "valor": 12,
+   "cita": "de forma que el nombre total de places convocades siga de dotze places",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Agent de Policia Local"
+   ],
+   "cita": "Agregació del nombre de places d'Agent de Policia Local de l'expedient nº 1454/2020"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 12,
+   "cita": "Aprovar l'agregació del nombre de places d'Agent de Policia Local de l'expedient nº 1454/2020 en 3 places (torn lliure)"
+  }
+ }
+}

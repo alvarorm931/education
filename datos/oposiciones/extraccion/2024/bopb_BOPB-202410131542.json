@@ -1,0 +1,104 @@
+{
+ "proceso": "bopb:BOPB-202410131542",
+ "documento": {
+  "id": "bopb:BOPB-202410131542",
+  "fuente": "BOPB",
+  "url": "https://bop.diba.cat/anunci/3656572/aprovacio-de-les-bases-i-la-convocatoria-per-a-creacio-d-una-borsa-comarcal-de-personal-tecnic-superior-a1-consell-comarcal-del-maresme",
+  "fecha": "2024-07-29",
+  "huella": "26909e15a43b84f783d6fba91c8ba21c8af1686a9303ae642aa2e810186816ce"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:49:12+00:00",
+ "lote": "msgbatch_016yasWxkCXTWjPAb8LjB3ob",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Personal tècnic superior (A1)"
+   ],
+   "cita": "crear, mitjançant oposició, una borsa comarcal de personal tècnic superior (A1)",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "A1",
+   "cita": "Subgrup A1 Nivell de titulació requerida: Graduat/da o Llicenciat/da Universitari",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "Sistema de selecció: oposició.",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Català, nivell de suficiència C1",
+   "cita": "Nivell de coneixement de la llengua catalana: suficiència (C1).",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Exentos quienes acrediten estar en situación de desempleo laboral mediante documento DARDO del SOC",
+   "cita": "Queden exempts de liquidar aquesta taxa els/les candidats/es que acreditin trobar-se en situació d'atur laboral",
+   "nivel": "sin_signos"
+  },
+  "publicaciones": {
+   "valor": "Tablón de anuncios y web CONVOCA del Consell Comarcal del Maresme (ccmaresme.convoca.online), además del BOP y DOGC",
+   "cita": "es publicarà en el BOP, en el web - CONVOCA del Consell Comarcal del Maresme, en el tauler d'anuncis de la Institució",
+   "nivel": "sin_signos"
+  },
+  "ejercicios": {
+   "valor": [
+    "Prueba escrita tipo test de conocimientos de la práctica profesional (máximo 20 puntos, mínimo 10)",
+    "Prueba de castellano (solo no hispanohablantes sin acreditación, apto/no apto)",
+    "Prueba de catalán (si no se acredita C1, apto/no apto)"
+   ],
+   "cita": "Prova escrita tipus test basada en el temari adjunt (annex2), amb preguntes de resposta múltiple",
+   "nivel": "sin_signos"
+  },
+  "meritos": {
+   "valor": "No se valoran méritos en esta convocatoria. Entrevista personal de hasta 2 puntos en la fase de contratación",
+   "cita": "NO S'HAN D'ENTREGAR MÈRITS EN AQUESTA CONVOCATÒRIA.",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, borsa comarcal de personal tècnic superior A1 para ocupar temporalmente puestos en el CCM, ayuntamientos y organismos adheridos, con vigencia de 2 años",
+   "cita": "Mitjançant aquesta convocatòria es crearà la borsa comarcal de personal tècnic superior (A1)",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "otro",
+   "cita": "per ocupar temporalment llocs de treball indistintament de la seva naturalesa"
+  },
+  "titulacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Graduat/da o Llicenciat/da Universitari de qualsevol àmbit professional representat a l'Administració Local",
+   "cita": "Nivell de titulació requerida: Graduat/da o Llicenciat/da Universitari de qualsevol àmbit professional"
+  },
+  "otros_requisitos": {
+   "motivo": "cita_no_literal",
+   "valor": "Nacionalidad española o de Estado miembro UE (o aplicación libre circulación); edad mínima 16 años y no superar la edad de jubilación forzosa; no padecer enfermedad ni discapacidad que impida el ejercicio; no haber sido separado de la Administración ni inhabilitado; no incurrir en incompatibilidades.",
+   "cita": "Tenir la nacionalitat espanyola o la d'altres estats membres de la Unió Europea segons les normatives vigents"
+  },
+  "tasa_euros": {
+   "motivo": "cita_no_literal",
+   "valor": 25,
+   "cita": "per poder participar en la convocatòria caldrà fer efectiu el pagament d'una taxa per un import de de 25,00€ (Grup A)"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "20 días naturales a partir del día siguiente a su publicación en el DOGC",
+   "cita": "El termini de presentació de sol·licituds serà de 20 dies naturals comptats a partir de l'endemà al de la seva publicació en el DOGC"
+  },
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Sede electrónica/web del CCM (ccmaresme.convoca.online) o presencialmente con cita previa en el registro de la Plaça Miquel Biada, 1 de Mataró",
+   "cita": "Per sol·licitar prendre part al procés selectiu, la persona aspirant haurà d'accedir a: https://ccmaresme.convoca.online"
+  },
+  "temas": {
+   "motivo": "cita_no_literal",
+   "valor": 11,
+   "cita": "Annex 2: TEMARI: 1-El procediment administratiu ... 11- Gestió de recursos humans"
+  }
+ }
+}

@@ -1,0 +1,55 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2023-3379",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2023-3379",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2023/05/02_83/2023_003379.pdf",
+  "fecha": "2023-05-02",
+  "huella": "a977236fb4f5a9fcf9fad7d36d1c1d3d248371e15aeba1dccc5c46d7c6abe5a4"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T14:59:35+00:00",
+ "lote": "msgbatch_012nGabRM1G4b7cEKJh1Bcx1",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "C2",
+   "cita": "el puesto de trabajo de Auxiliar de Gestión, Grupo C, Subgrupo C2",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Comienza a partir del día siguiente a la publicación de este edicto",
+   "cita": "El plazo de presentación de solicitudes comenzará a partir del día siguiente a la publicación de este edicto.",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de Anuncios electrónico y Portal de Transparencia del Ayuntamiento de Finestrat",
+   "cita": "Las bases de selección se publicarán íntegramente, en el Tablón de Anuncios electrónico y en el Portal de Transparencia",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, para cubrir con carácter interino el puesto de Auxiliar de Gestión",
+   "cita": "la creación de una bolsa de empleo temporal para cubrir con carácter interino",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Auxiliar de Gestión"
+   ],
+   "cita": "la creación de una bolsa de empleo temporal para cubrir con carácter interino, mediante el sistema de oposición, el puesto de trabajo de Auxiliar de Gestión"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario interino",
+   "cita": "cubrir con carácter interino, mediante el sistema de oposición, el puesto de trabajo de Auxiliar de Gestión"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "oposición",
+   "cita": "la convocatoria para la creación de una bolsa de empleo temporal mediante el sistema de oposición"
+  }
+ }
+}
