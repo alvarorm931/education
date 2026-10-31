@@ -14,6 +14,7 @@ import json
 import os
 import re
 import time
+from collections import Counter
 from collections.abc import Callable, Iterable
 from datetime import date
 from pathlib import Path
@@ -470,6 +471,10 @@ def escribir_json(ruta: Path, datos: dict) -> None:
     _escribir_atomico(ruta, json.dumps(datos, ensure_ascii=False, indent=1))
 
 
+# Peticiones fallidas seguidas tras las que se deja de pedir textos a una fuente en esa ejecución
+MAX_FALLOS_SEGUIDOS_TEXTOS = 25
+
+
 def descargar_textos(pendientes: list[dict], destino: Callable[[dict], Path], url: Callable[[dict], str],
                      extraer: Callable[[bytes], dict], archivo: Archivo, fuente: str, max_minutos: float,
                      pausa: float, accept: str = "application/xml", ext: str = "xml",
@@ -482,9 +487,14 @@ def descargar_textos(pendientes: list[dict], destino: Callable[[dict], Path], ur
     por_registro: extraer recibe también el registro (p. ej. para no guardar el texto de una lista de personas).
     renovar_sesion: para portales que caducan la sesión (responden 400): abre otra y repite una vez.
     """
-    inicio, hechos, errores = time.monotonic(), 0, 0
+    inicio, hechos, errores, seguidos = time.monotonic(), 0, 0, 0
+    tipos: Counter = Counter()
     for x in pendientes:
         if max_minutos and (time.monotonic() - inicio) / 60 > max_minutos:
+            break
+        if seguidos >= MAX_FALLOS_SEGUIDOS_TEXTOS:
+            # La fuente no responde o no deja: no se insiste (lo pendiente sigue en la próxima ejecución)
+            tipos["parado por fallos seguidos"] += 1
             break
         u = url(x)
         try:
@@ -492,17 +502,23 @@ def descargar_textos(pendientes: list[dict], destino: Callable[[dict], Path], ur
             if r.status == 400 and renovar_sesion:
                 sesion = renovar_sesion()
                 r = obtener(u, accept=accept, formulario=formulario(x) if formulario else None, sesion=sesion)
-        except ConnectionError:
-            errores += 1
-            continue
-        if r.status != 200:
-            errores += 1
+        except ConnectionError as e:
+            errores, seguidos = errores + 1, seguidos + 1
+            tipos[type(e).__name__] += 1
             time.sleep(pausa)
             continue
+        if r.status != 200:
+            errores, seguidos = errores + 1, seguidos + 1
+            tipos[f"HTTP {r.status}"] += 1
+            time.sleep(pausa)
+            continue
+        seguidos = 0
         try:
             datos = extraer(r.contenido, x) if por_registro else extraer(r.contenido)
-        except Exception:  # un documento mal formado no detiene la carga; queda pendiente para revisarlo
+        except Exception as e:  # un documento mal formado no detiene la carga; queda pendiente para revisarlo
             errores += 1
+            tipos[f"formato ({type(e).__name__})"] += 1
+            time.sleep(pausa)
             continue
         captura = archivo.guardar(fuente + "-texto", date.fromisoformat(x["fecha"]), r.contenido, u, ext, r.status,
                                   r.cabeceras)
@@ -510,4 +526,7 @@ def descargar_textos(pendientes: list[dict], destino: Callable[[dict], Path], ur
                                    "capturado": captura["capturado"], "url": u})
         hechos += 1
         time.sleep(pausa)
+    if errores:
+        print(f"::warning title={fuente} textos::{hechos} descargados, {errores} fallos: "
+              + "; ".join(f"{t} ×{n}" for t, n in tipos.most_common(5)))
     return hechos, errores

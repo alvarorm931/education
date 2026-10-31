@@ -56,3 +56,22 @@ def test_dia_leido_a_medias_se_vuelve_a_leer(tmp_path):
     assert estado_dia(r) == (True, False)
     r.write_text(json.dumps({"resultado": "error_http"}))
     assert estado_dia(r) == (False, True)
+
+
+def test_bocm_textos_para_tras_fallos_seguidos(tmp_path, monkeypatch, capsys):
+    import json
+    from motor.archivo import Archivo
+    from motor.autonomicos import bocm
+    from motor.http import Respuesta
+    op = tmp_path / "datos" / "autonomicos" / "bocm" / "oposiciones" / "2026" / "10" / "30.jsonl"
+    op.parent.mkdir(parents=True)
+    op.write_text("".join(json.dumps({"id": f"BOCM-20261030-{k}", "fecha": "2026-10-30", "alcance": "acceso",
+                                      "url_xml": f"https://www.bocm.es/x/{k}.xml"}) + "\n" for k in range(60)))
+    pedidas, pausas = [], []
+    monkeypatch.setattr(bocm, "obtener", lambda url, **kw: pedidas.append(url) or
+                        Respuesta(url, 200, b"<html>Request Rejected</html", {"content-type": "text/html"}))
+    monkeypatch.setattr(bocm.time, "sleep", lambda s: pausas.append(s))
+    hechos, errores = bocm.descargar_textos(tmp_path, Archivo(tmp_path / "a", solo_huella=True), 0, 0.7)
+    # Se para a los 25 fallos seguidos, con pausa también tras cada fallo, y dice por qué
+    assert (hechos, errores) == (0, bocm.MAX_FALLOS_SEGUIDOS) and len(pedidas) == len(pausas) == bocm.MAX_FALLOS_SEGUIDOS
+    assert "no es XML" in capsys.readouterr().out

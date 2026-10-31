@@ -33,6 +33,7 @@ import time
 import html as html_mod
 import re
 import xml.etree.ElementTree as ET
+from collections import Counter
 from datetime import date, datetime, timedelta
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -291,24 +292,50 @@ def textos_pendientes(raiz: Path) -> list[dict]:
     return sorted(lista, key=lambda x: 0 if x.get("alcance") in (None, "acceso") else 1)
 
 
+MAX_FALLOS_SEGUIDOS = 25
+
+
 def descargar_textos(raiz: Path, archivo: Archivo, max_minutos: float, pausa: float) -> tuple[int, int]:
-    inicio, hechos, errores = time.monotonic(), 0, 0
+    """Textos pendientes, de uno en uno con una pausa tras cada petición (también tras un fallo). Si fallan
+    MAX_FALLOS_SEGUIDOS seguidos, se para: la fuente está caída o no deja, y no se insiste. Los tipos de fallo salen
+    como aviso en GitHub (hasta el 31/10/2026 el paso no avanzaba desde el 30/10 sin decir por qué)."""
+    inicio, hechos, errores, seguidos = time.monotonic(), 0, 0, 0
+    tipos: Counter = Counter()
+    ejemplo: dict[str, str] = {}
+
+    def fallo(tipo: str, detalle: str) -> bool:
+        nonlocal errores, seguidos
+        errores, seguidos = errores + 1, seguidos + 1
+        tipos[tipo] += 1
+        ejemplo.setdefault(tipo, detalle[:200])
+        time.sleep(pausa)
+        return seguidos >= MAX_FALLOS_SEGUIDOS
+
     for x in textos_pendientes(raiz):
         if max_minutos and (time.monotonic() - inicio) / 60 > max_minutos:
             break
         try:
             r = obtener(x["url_xml"], accept="application/xml")
-        except ConnectionError:
-            errores += 1
+        except ConnectionError as e:
+            if fallo(type(e).__name__, f"{x['url_xml']}: {e}"):
+                break
             continue
         if r.status != 200:
-            errores += 1
+            if fallo(f"HTTP {r.status}", x["url_xml"]):
+                break
             continue
         try:
             datos = texto_disposicion(r.contenido)
         except ET.ParseError:
-            errores += 1
+            if fallo("no es XML", f"{x['url_xml']}: {r.cabeceras.get('content-type') or r.cabeceras.get('Content-Type')} "
+                                  f"{r.contenido[:120]!r}"):
+                break
             continue
+        except Exception as e:  # noqa: BLE001 - un documento raro no para los demás
+            if fallo(type(e).__name__, f"{x['url_xml']}: {e}"):
+                break
+            continue
+        seguidos = 0
         d = date.fromisoformat(x["fecha"])
         captura = archivo.guardar(FUENTE + "-texto", d, r.contenido, x["url_xml"], "xml", r.status, r.cabeceras)
         destino = _base(raiz) / "textos" / x["fecha"][:4] / x["fecha"][5:7] / f"{x['id']}.json"
@@ -318,6 +345,10 @@ def descargar_textos(raiz: Path, archivo: Archivo, max_minutos: float, pausa: fl
                                       ensure_ascii=False, indent=1), encoding="utf-8")
         hechos += 1
         time.sleep(pausa)
+    if errores:
+        parado = " (parado por fallos seguidos)" if seguidos >= MAX_FALLOS_SEGUIDOS else ""
+        print(f"::warning title=BOCM textos::{hechos} descargados, {errores} fallos{parado}: "
+              + "; ".join(f"{t} ×{n} (p. ej. {ejemplo[t]})" for t, n in tipos.most_common(4)))
     return hechos, errores
 
 
@@ -337,7 +368,8 @@ def main(argv: list[str] | None = None) -> int:
 
     if a.textos:
         hechos, errores = descargar_textos(a.salida, archivo, a.max_minutos, a.pausa)
-        print(f"BOCM textos: {hechos} descargados, {errores} errores, {len(textos_pendientes(a.salida))} pendientes")
+        print(f"::notice title=BOCM textos::{hechos} descargados, {errores} errores, "
+              f"{len(textos_pendientes(a.salida))} pendientes")
         return 0
 
     if a.huecos:
