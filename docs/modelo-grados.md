@@ -728,3 +728,12 @@ del BOE declare el código del título («Código Titulación: …»), que desde
   omitidos), `tarifas_grado.diagnostico_html` dice sin texto por qué una página de precios no dio importes, y
   `fichas.precio_por_cuentas` admite ya la cuota redondeada al euro, la enseñanza en cuotas iguales sin la matrícula
   y el total de la fila con reserva y matrícula; las filas con beca no son precio.
+- **Másters (universidad de cada máster, visto el 31/10 a las 15:20 en el conjunto de las 02:45):**
+  `conjunto_masters.py` construye el mapa de código del catálogo a nombre de universidad con la primera impartición
+  de QEDU que encuentra (`universidades.setdefault`). Si esa impartición es de un máster interuniversitario, el
+  código recibe el nombre de la socia, así que los 54 másters de Alcalá salen como Autónoma de Madrid, los 56 de
+  Cádiz como Almería y los 15 de La Rioja como Lleida, y esas tres universidades desaparecen del conjunto. Aparte,
+  39 altas del BOE de másters interuniversitarios están puestas en Comillas o en la Pontificia de Salamanca aunque
+  su nombre oficial no las menciona. Arreglo posible: el nombre más frecuente por código, comprobando que contiene
+  el nombre corto del catálogo. Comprobación hecha desde grados, sin tocar su código:
+  `trabajo/scripts_masters/ranking.py`.
