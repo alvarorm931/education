@@ -1,0 +1,80 @@
+name: Peso del almacén
+
+# Mide lo que ocupa el almacén S3 de originales, solo listando (s3:ListBucket, sin leer ni escribir objetos), y
+# deja el resultado en la rama vigilancia (peso-s3.md y peso-s3.json). Lo lanza a mano la conversación de estado.
+# Coste: una petición LIST por cada 1.000 objetos (céntimos de céntimo).
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write   # subir el resultado a la rama vigilancia
+  id-token: write   # credenciales temporales del almacén (OIDC, claude/infraestructura.md)
+
+concurrency:
+  group: peso-almacen
+  cancel-in-progress: false
+
+jobs:
+  medir:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::369017477131:role/education-originales-github
+          aws-region: eu-south-2
+          role-session-name: peso-${{ github.run_id }}
+
+      - name: Medir (solo listar)
+        run: |
+          pip install -q boto3
+          mkdir -p informe
+          python3 - <<'EOF'
+          import boto3, collections, datetime, json
+          ALMACEN = "education-originales-finads"
+          n, total = 0, 0
+          por_carpeta, por_anio = collections.Counter(), collections.Counter()
+          n_carpeta, n_anio = collections.Counter(), collections.Counter()
+          for pagina in boto3.client("s3").get_paginator("list_objects_v2").paginate(Bucket=ALMACEN):
+              for o in pagina.get("Contents", []):
+                  partes = o["Key"].split("/")
+                  carpeta = partes[0] if len(partes) > 1 else "(raíz)"
+                  anio = carpeta + "/" + partes[1] if len(partes) > 2 else carpeta
+                  n += 1; total += o["Size"]
+                  por_carpeta[carpeta] += o["Size"]; n_carpeta[carpeta] += 1
+                  por_anio[anio] += o["Size"]; n_anio[anio] += 1
+          ahora = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+          datos = {"medido": ahora, "almacen": ALMACEN, "objetos": n, "bytes": total,
+                   "por_carpeta": {k: {"objetos": n_carpeta[k], "bytes": v} for k, v in por_carpeta.most_common()},
+                   "por_carpeta_y_anio": {k: {"objetos": n_anio[k], "bytes": v} for k, v in sorted(por_anio.items())}}
+          json.dump(datos, open("informe/peso-s3.json", "w"), ensure_ascii=False, indent=1)
+          gib = lambda b: f"{b / 2**30:.2f} GiB"
+          lineas = [f"# Peso del almacén S3 ({ahora}, versiones actuales)", "",
+                    f"- Objetos: {n}", f"- Total: {total} bytes ({gib(total)})", "", "## Por carpeta", ""]
+          lineas += [f"- {k}: {n_carpeta[k]} objetos, {gib(v)}" for k, v in por_carpeta.most_common()]
+          lineas += ["", "## Por carpeta y año", ""]
+          lineas += [f"- {k}: {n_anio[k]} objetos, {gib(v)}" for k, v in sorted(por_anio.items())]
+          open("informe/peso-s3.md", "w").write("\n".join(lineas) + "\n")
+          print("\n".join(lineas))
+          EOF
+
+      - name: Subir a la rama vigilancia
+        run: |
+          git config user.name "vigilante"
+          git config user.email "vigilante@users.noreply.github.com"
+          for i in 1 2 3 4 5; do
+            git fetch -q --depth 1 origin vigilancia
+            rm -rf rama && git worktree prune
+            git worktree add -q -B vigilancia rama origin/vigilancia
+            cp informe/peso-s3.json informe/peso-s3.md rama/
+            git -C rama add peso-s3.json peso-s3.md
+            git -C rama commit -qm "Peso del almacén S3" || exit 0
+            git -C rama push -q origin vigilancia && exit 0
+            sleep $((i * 10))
+          done
+          exit 1
