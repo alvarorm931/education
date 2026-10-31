@@ -45,7 +45,7 @@ EXCLUIR = (r"(?i)/[^/]*(m[aàá]ster|m%c3%a1ster|master|doctora|posgrad|postgrau
            r"responsab|sostenib|presupuest|cuentas|seguimiento|investigaci|memorias?[-_ ]?(de[-_ ]?)?(curso|gesti))[^/]*$")
 
 CONSULTA = """
-SELECT url_host_registered_domain AS dominio, url, fetch_time
+SELECT url_host_registered_domain AS dominio, url, CAST(fetch_time AS VARCHAR) AS visto
 FROM read_parquet('{fichero}')
 WHERE subset = 'warc' AND fetch_status = 200
   AND url_host_registered_domain IN ({dominios})
@@ -84,12 +84,17 @@ def buscar_cc(crawls: list[str], desde: int, hasta: int, salida: Path, max_minut
         for f in ficheros(crawl)[desde:hasta]:
             if time.time() > fin:
                 break
-            try:
-                for x in consultar(f, sorted(doms)):
-                    urls.setdefault(x["url"], {**x, **doms.get(x["dominio"], {}), "crawl": crawl})
-                hechos += 1
-            except Exception as e:  # noqa: BLE001 - un fichero que falla no para el resto
-                errores.append(f"{f.rsplit('/', 1)[-1]}: {type(e).__name__}: {str(e)[:100]}")
+            for intento in range(3):  # Common Crawl corta a veces con un error HTTP: dos reintentos con espera
+                try:
+                    for x in consultar(f, sorted(doms)):
+                        urls.setdefault(x["url"], {**x, **doms.get(x["dominio"], {}), "crawl": crawl})
+                    hechos += 1
+                    break
+                except Exception as e:  # noqa: BLE001 - un fichero que falla no para el resto
+                    if intento == 2 or "HTTP" not in type(e).__name__ + str(e)[:200]:
+                        errores.append(f"{f.rsplit('/', 1)[-1]}: {type(e).__name__}: {str(e)[:100]}")
+                        break
+                    time.sleep(15 * (intento + 1))
     destino = salida / "datos" / "estudios" / "grados" / "memorias_web"
     destino.mkdir(parents=True, exist_ok=True)
     nombre = f"urls_{'_'.join(crawls)}_{desde}_{hasta}"
