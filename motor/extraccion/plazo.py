@@ -35,7 +35,8 @@ from motor.boe.clasificar import normalizar
 from motor.extraccion.texto_es import MESES, numero
 from motor.calendario import etiqueta, fin_de_plazo, fin_de_plazo_meses
 
-VERSION = "plazo_general_v5"  # v5 (31/10/2026): frases sin «plazo» o sin «solicitud» que cuentan desde la
+VERSION = "plazo_general_v6"  # v6 (31/10/2026): «N días» sin clase (hábiles, Ley 39/2015 art. 30.2) y
+# sin los meses de duración del contrato; v5 (31/10/2026): frases sin «plazo» o sin «solicitud» que cuentan desde la
 # publicación de la convocatoria; v4: frases partidas tras «Sra.», «veinte (20) días», fin con fecha
 # v3 (30/10/2026): festivos de la comunidad del convocante
 
@@ -44,6 +45,15 @@ RE_FRASE = re.compile(r"(?<=[.;])\s+(?=[«(A-ZÁÉÍÓÚÑÀÈÒ0-9])")
 RE_DIAS = re.compile(
     rf"(?P<n>\d{{1,3}}|[{L}]+(?:-i-[{L}]+)?(?:\s+[ye]\s+[{L}]+)?)(?:\s*\(\d{{1,3}}\))?\s+(?:d[ií]as|dies)\s+"
     r"(?P<tipo>h[aáà]biles|h[aà]bils|feiners|naturales|naturals|naturais)", re.IGNORECASE)
+# «7 días a contar desde…» sin decir de qué clase: por la Ley 39/2015 (art. 30.2), los días son hábiles si no se dice
+# otra cosa (BOP de Ciudad Real, 2026: «contrato… de 7 meses…, se abre el plazo de solicitudes que será de 7 días»)
+RE_DIAS_SIN_TIPO = re.compile(
+    rf"\b(?P<n>\d{{1,3}}|[{L}]+(?:-i-[{L}]+)?(?:\s+[ye]\s+[{L}]+)?)(?:\s*\(\d{{1,3}}\))?\s+(?:d[ií]as|dies)\b"
+    r"(?!\s+(?:h[aáà]biles|h[aà]bils|feiners|naturales|naturals|naturais|laborables|lectivos))", re.IGNORECASE)
+# Meses que no son el plazo: la duración del contrato o del nombramiento («contrato… con una duración de 7 meses»)
+RE_MESES_AJENOS = re.compile(r"(?:duraci[oó]n|durada|duraci[oó]|vigencia|per[ií]odo\s+de|contrato|contracte|jornada)"
+                             r"[^.;]{0,40}$", re.IGNORECASE)
+RE_PALABRA_PLAZO = re.compile(r"\b(?:plazo|termini|prazo)\b", re.IGNORECASE)
 RE_MESES = re.compile(r"\b(?P<n>un|una|unha|dos|dous|dues|duas|tres|cuatro|quatre|catro|seis|sis|\d{1,2})\s+mes(?:es|os)?\b",
                       re.IGNORECASE)
 _DE = r"(?:\s+de\s+|\s+d[\'’]\s*)"  # «de octubre», «d'octubre»
@@ -56,6 +66,11 @@ RE_INICIO_EXPLICITO = re.compile(
     r"(?:\s+de\s+(?P<a>\d{4}))?", re.IGNORECASE)
 RE_FIN_EXPLICITO = re.compile(
     r"\b(?:finaliza\w*|finalitza\w*|termina\w*|concluy\w*|concluir\w*|conclou\w*|vence\w*|remata\w*|acabar[aà]\w*)"
+    rf"[^.;]{{0,60}}?\b(?:el|o)\s+(?:d[ií]a\s+)?(?P<d>\d{{1,2}}){_DE}(?P<m>[{L}]+)(?:\s+de\s+(?P<a>\d{{4}}))?",
+    re.IGNORECASE)
+RE_COMIENZO_EXPLICITO = re.compile(
+    r"\b(?:comenzar\w*|comienza\w*|empezar\w*|empieza\w*|iniciar\w*|inicia\w*|començar\w*|comença\w*|abrir[aá]\w*|"
+    r"s'obrir[aà]|comezar\w*|comeza\w*)"
     rf"[^.;]{{0,60}}?\b(?:el|o)\s+(?:d[ií]a\s+)?(?P<d>\d{{1,2}}){_DE}(?P<m>[{L}]+)(?:\s+de\s+(?P<a>\d{{4}}))?",
     re.IGNORECASE)
 RE_BOLETIN = re.compile(r"[«\"“](?P<b>(?:Boletín|Bolet[ií]n|Diario|Diari|Butlletí)[^»\"”]{3,80})[»\"”]")
@@ -182,7 +197,8 @@ def _candidata(f: str) -> int:
     publicación de la convocatoria o de las bases («El plazo es de quince días hábiles, a contar a partir del día
     siguiente al de la publicación de la convocatoria en el BOIB», tras el título «Plazo»)."""
     n = normalizar(f).replace("l·l", "l·l").replace("l.l", "l·l")
-    m = RE_DIAS.search(f) or RE_MESES.search(f) or RE_INTERVALO.search(f) or RE_FIN_EXPLICITO.search(f)
+    m = (RE_DIAS.search(f) or _duracion_sin_tipo(f) or RE_MESES.search(f) or RE_INTERVALO.search(f)
+         or RE_FIN_EXPLICITO.search(f))
     if not m:
         return 0
     # Lo que excluye se mira hasta poco después del plazo: una frase larga puede seguir con otra cosa («… y contendrán
@@ -213,6 +229,25 @@ RE_PUBLICACION_CONVOCATORIA = re.compile(
     r"publicaci[oó]n?\s+(?:\w+\s+){0,3}?(?:de\s+(?:la|esta|la\s+presente)\s+convocatoria|de\s+las\s+bases|del\s+extracto|"
     r"del\s+anuncio\s+de\s+(?:la\s+)?convocatoria|de\s+la\s+convocat[oò]ria|de\s+les\s+bases|"
     r"de\s+l'anunci\s+de\s+(?:la\s+)?convocat[oò]ria|da\s+convocatoria|das\s+bases)", re.IGNORECASE)
+
+
+def _meses(f: str) -> re.Match | None:
+    """Los meses del plazo, sin la duración del contrato o de la bolsa que la frase diga antes."""
+    return next((m for m in RE_MESES.finditer(f) if numero(m.group("n")) and not RE_MESES_AJENOS.search(f[:m.start()])),
+                None)
+
+
+def _duracion_sin_tipo(f: str) -> re.Match | None:
+    """Días sin decir si son hábiles o naturales, o meses que no son la duración de otra cosa: el que sigue a la
+    palabra «plazo» (o el primero si no la dice)."""
+    opciones = [d for d in RE_DIAS_SIN_TIPO.finditer(f) if numero(d.group("n"))]
+    if (mm := _meses(f)):
+        opciones.append(mm)
+    if not opciones:
+        return None
+    pl = RE_PALABRA_PLAZO.search(f)
+    tras = [o for o in opciones if pl and o.start() > pl.start()]
+    return min(tras or opciones, key=lambda o: o.start())
 
 
 PARTICULAS_FINALES = re.compile(r"(?:\s+(?:de|del|la|las|les|los|i|y))+$")
@@ -353,18 +388,27 @@ def _plazo_de_frase(f: str, pub: date, propios: set[str], comunidad: str | None)
         if fin and fin >= pub:
             res.update({"tipo": "fechas", "fin_estimado": fin.isoformat(), "fin_exacto": True,
                         "cuenta_desde": "fechas del texto"})
+            # «comenzará el día 4 de enero de 2027 y finalizará el día 24 de enero de 2027»: el inicio también
+            c = RE_COMIENZO_EXPLICITO.search(f[:m.start()]) or RE_INICIO_EXPLICITO.search(f[:m.start()])
+            if c and (ini := _fecha(c.group("d"), c.group("m"), c.group("a") or m.group("a"), pub)) and ini <= fin:
+                res["inicio"] = ini.isoformat()
             d0 = RE_DIAS.search(f)
             if d0 and numero(d0.group("n")):
                 res["dias"] = numero(d0.group("n"))
             return res
 
     dias = next((d for d in RE_DIAS.finditer(f) if numero(d.group("n"))), None)
-    meses = RE_MESES.search(f) if not dias else None
+    meses = None
     if dias:
         res.update({"dias": numero(dias.group("n")),
                     "tipo": "habiles" if normalizar(dias.group("tipo")) in ("habiles", "habils", "feiners") else "naturales"})
-    elif meses and numero(meses.group("n")):
+    elif (otra := _duracion_sin_tipo(f)) and "n" in otra.groupdict() and RE_MESES.fullmatch(otra.group(0)):
+        meses = otra
         res.update({"meses": numero(meses.group("n")), "tipo": "meses"})
+    elif otra:
+        dias = otra
+        res.update({"dias": numero(dias.group("n")), "tipo": "habiles",
+                    "tipo_supuesto": "días sin clase: hábiles (art. 30.2 de la Ley 39/2015)"})
     else:
         return None
 

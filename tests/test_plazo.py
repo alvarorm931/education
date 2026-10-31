@@ -282,3 +282,27 @@ def test_boletin_del_estado_escrito_de_otras_formas():
          "la darrera convocatòria de la publicació d'aquest anunci en el Diari Oficial de la Generalitat de Catalunya i/o BOE.")
     r = extraer_plazo(t, "2026-10-20", "Diari Oficial de la Generalitat de Catalunya")
     assert "Boletín Oficial del Estado" in r["cuenta_desde"] and not r.get("fin_estimado")
+
+
+def test_dias_sin_clase_son_habiles_y_no_la_duracion_del_contrato():
+    bop = "Boletín Oficial de la Provincia de Ciudad Real"
+    t = ("Habiéndose aprobado las bases para la selección de un Peón de Servicios Múltiples, en régimen de personal "
+         "laboral temporal, mediante contrato laboral con una duración de 7 meses a jornada completa, se abre el plazo "
+         "de solicitudes que será de 7 días a contar desde el día siguiente de la publicación de este anuncio.")
+    r = extraer_plazo(t, "2026-04-06", bop, "08")
+    assert r["dias"] == 7 and r["tipo"] == "habiles" and r["tipo_supuesto"] and "meses" not in r
+    assert r["fin_estimado"] == "2026-04-15"  # 7 hábiles desde el 07/04 (sin sábados ni domingos)
+    t = ("Las instancias se presentarán en el plazo de diez días a partir del siguiente al de la publicación del "
+         "presente anuncio en el Boletín Oficial de la Provincia.")
+    assert extraer_plazo(t, "2026-04-06", bop, "08")["dias"] == 10
+    t = ("El plazo de presentación de solicitudes será de un mes a contar desde el día siguiente a la publicación de "
+         "este anuncio en el Boletín Oficial de la Provincia de Ciudad Real.")
+    r = extraer_plazo(t, "2026-04-06", bop, "08")
+    assert r["meses"] == 1 and r["fin_estimado"] == "2026-05-06"
+
+
+def test_fechas_de_comienzo_y_fin_escritas():
+    t = ("El plazo de presentación de las solicitudes comenzará el día 4 de enero de 2027 y finalizará el día 24 de "
+         "enero de 2027.")
+    r = extraer_plazo(t, "2026-03-10", "Butlletí Oficial de les Illes Balears", "04")
+    assert r["inicio"] == "2027-01-04" and r["fin_estimado"] == "2027-01-24" and r["fin_exacto"]
