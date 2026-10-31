@@ -37,8 +37,10 @@ BOLETIN_ENTERO = {"boplugo": "url_pdf", "boppalencia": "url_pdf", "boptenerife":
                   "boplaspalmas": "url_pdf_boletin", "bopalbacete": "url_pdf_boletin"}
 # Cortados por el número de registro del sumario y con las columnas en orden de lectura (ver cortar_por_registro)
 POR_REGISTRO = {"boptenerife"}
+# Cortados por el registro con puntos que cierra cada anuncio en el cuerpo (ver cortar_por_registro_final)
+POR_REGISTRO_FINAL = {"boplaspalmas"}
 # Cortados buscando el título del sumario en el cuerpo: el texto tiene que hablar de lo que dice su título (coherente)
-POR_TITULO = {"boplaspalmas", "bopalbacete"}
+POR_TITULO = {"bopalbacete"}
 GENERICAS = set("""bases reguladoras regir convocatoria convocatorias pruebas selectivas selectivo selectiva proveer
 plaza plazas para mediante sistema concurso oposicion libre turno anuncio relativo aprobacion lista listas provisional
 definitiva admitidos admitidas excluidos excluidas personal funcionario funcionaria funcionarios carrera laboral fijo
@@ -73,6 +75,12 @@ def revisar_cortes(raiz: Path, fuente: str) -> int:
             d = json.loads(f.read_text(encoding="utf-8"))
         except ValueError:
             continue
+        if d.get("corte") == "registro_final":
+            continue  # cortado por su registro: exacto aunque el título del sumario no se repita en el cuerpo
+        if fuente in POR_REGISTRO_FINAL and d.get("corte_dudoso"):
+            f.unlink()  # se vuelve a cortar, ahora por el registro (31/10/2026)
+            n += 1
+            continue
         if d.get("texto") and not coherente(d.get("titulo"), d["texto"]):
             escribir_json(f, {**{k: v for k, v in d.items() if k not in ("texto", "tablas")}, "texto": None,
                               "tablas": [], "corte_dudoso": True})
@@ -92,6 +100,11 @@ CABECERAS = {
 }
 CABECERAS["boptenerife"] = re.compile(
     r"(?i)^(?:Bolet[íi]n Oficial de la Provincia de Santa Cruz de Tenerife\.\s*N[úu]mero\s+\d+.*|\d{3,6})$")
+# BOP de Las Palmas: «Boletín Oficial de la Provincia de Las Palmas. Número 130, viernes 30 de octubre de 2026  18639»
+# (las pares con el número delante), números de página y de anuncio sueltos y el registro con puntos al final
+CABECERAS["boplaspalmas"] = re.compile(
+    r"(?i)^(?:(?:\d{3,6}\s+)?Bolet[íi]n Oficial de la Provincia de Las Palmas\.\s*N[úu]mero\s+\d+.*|\d{3,6}|"
+    r"\d{1,3}(?:\.\d{3}){1,2})$")
 # Registro al final de cada anuncio en el BOP de Lugo («R. 0816»): marca dónde acaba un anuncio y empieza el siguiente
 RE_REGISTRO = re.compile(r"(?m)^[ \t]*R\.\s?\d{2,5}[ \t]*$")
 
@@ -471,6 +484,89 @@ def cortar_por_registro(paginas: list[str], anuncios: list[dict]) -> dict[str, t
     return out
 
 
+# BOP de Las Palmas (31/10/2026): el sumario del PDF da el registro de cada asunto («2198627 Expediente de Modificación
+# de Créditos número 52/2026 ........ 18639»; «2202972A», «2202972B»… para las partes de uno) y en el cuerpo cada
+# anuncio acaba con su registro con puntos, solo en su línea y a la derecha («2.198.627»)
+RE_ENTRADA_SUMARIO_FINAL = re.compile(r"^\s*(\d{6,8})([A-Z])?\s+(?!Bolet[íi]n Oficial)(\S.*)$")
+RE_MARCA_FINAL = re.compile(r"^\s*(\d{1,3}(?:\.\d{3}){1,2})\s*$")
+
+
+def entradas_sumario_final(paginas: list[str]) -> tuple[list[tuple[str, str, int]], int]:
+    """(registro, asunto, página del boletín) de cada asunto del sumario y el número de páginas del PDF que ocupa."""
+    out, actual, n_sumario = [], None, 0
+    for n, pag in enumerate(paginas):
+        lineas = pag.splitlines()
+        if not any(RE_FIN_ENTRADA.search(l) for l in lineas):
+            if out:
+                break
+            continue
+        n_sumario = n + 1
+        for l in lineas:
+            if re.search(r"(?i)Bolet[íi]n Oficial de la Provincia", l):
+                continue  # cabecera de la página (un asunto puede seguir en la siguiente)
+            m = RE_ENTRADA_SUMARIO_FINAL.match(l)
+            if m and actual is None:
+                actual = [m.group(1), m.group(3)]
+            elif actual is not None and l.strip():
+                actual[1] += " " + l.strip()
+            if actual is not None and (fin := RE_FIN_ENTRADA.search(l)):
+                asunto = " ".join(RE_FIN_ENTRADA.sub("", actual[1]).rstrip(" .…").split())
+                out.append((actual[0], asunto, int(re.search(r"(\d{3,6})\s*$", l).group(1))))
+                actual = None
+    return out, n_sumario
+
+
+def cortar_por_registro_final(paginas: list[str], anuncios: list[dict]) -> dict[str, tuple[str, list[int]]]:
+    """Texto de cada anuncio: de la marca de registro del anterior a la suya. El registro sale del sumario del PDF,
+    casando cada asunto con su entrada en el mismo orden. Si la marca de un asunto anterior no se encuentra (su texto
+    caería en el siguiente) o el cuerpo no sigue el orden del sumario, sin texto."""
+    sumario, n_sumario = entradas_sumario_final(paginas)
+    registro, j = {}, 0
+    for x in anuncios:
+        for k in range(j, min(j + 4, len(sumario))):
+            if _parecido(x.get("titulo") or "", sumario[k][1]):
+                registro[x["id"]], j = k, k + 1
+                break
+    conocidos = {r for r, _, _ in sumario}
+    lineas, pagina_de = [], []
+    for n, pag in enumerate(paginas[n_sumario:], n_sumario + 1):
+        for l in pag.splitlines():
+            lineas.append(l)
+            pagina_de.append(n)
+    marcas = [(k, r) for k, l in enumerate(lineas)
+              if (m := RE_MARCA_FINAL.match(l)) and (r := m.group(1).replace(".", "")) in conocidos]
+    # cada asunto del sumario (por su posición) con la línea de su marca: las partes de un mismo registro («A», «B»…)
+    # toman sus marcas por orden y, si hay menos marcas que partes, comparten la última
+    por_registro: dict[str, list[int]] = defaultdict(list)
+    for k, r in marcas:
+        por_registro[r].append(k)
+    marca_de, usadas = {}, defaultdict(int)
+    for i, (r, _, _) in enumerate(sumario):
+        lista = por_registro.get(r)
+        if lista:
+            marca_de[i] = lista[min(usadas[r], len(lista) - 1)]
+            usadas[r] += 1
+    out = {}
+    for x in anuncios:
+        i = registro.get(x["id"])
+        if i is None or i not in marca_de:
+            continue
+        fin = marca_de[i]
+        # el anuncio empieza tras la marca del asunto anterior del sumario (con otro registro); si esa no se encontró, o
+        # está después de la de este (el cuerpo no va en el orden del sumario), no se sabe dónde empieza
+        previo = i - 1
+        while previo >= 0 and sumario[previo][0] == sumario[i][0]:
+            previo -= 1
+        if previo >= 0:
+            if previo not in marca_de or marca_de[previo] >= fin:
+                continue
+            ini = marca_de[previo] + 1
+        else:
+            ini = 0
+        out[x["id"]] = ("\n".join(lineas[ini:fin]), sorted(set(pagina_de[ini:fin + 1])))
+    return out
+
+
 def original_guardado(raiz: Path, fuente: str, fecha: str, url: str) -> tuple[bytes, dict] | None:
     """El PDF de esa URL si ya se guardó en el almacén (por el índice del archivo), con los datos de su captura."""
     from motor.archivo import almacen_por_defecto
@@ -537,6 +633,9 @@ def textos_boletin_entero(raiz: Path, fuente: str, archivo: Archivo, max_minutos
         try:
             if fuente in POR_REGISTRO:
                 cortes = cortar_por_registro(paginas_pdf_columnas(contenido), todas)
+            elif fuente in POR_REGISTRO_FINAL:
+                from motor.pdf import paginas
+                cortes = cortar_por_registro_final(paginas(contenido, layout=True), todas)
             else:
                 cortes = cortar(paginas_pdf(contenido), todas)
         except Exception as e:  # noqa: BLE001 - un PDF mal formado no detiene la carga, pero se dice
@@ -559,6 +658,8 @@ def textos_boletin_entero(raiz: Path, fuente: str, archivo: Archivo, max_minutos
                 datos = {"titulo": x.get("titulo"), "texto": None, "tablas": [], "solo_recuento": True,
                          "lineas_con_documento_de_identidad": sum(1 for l in bruto.splitlines() if RE_DOCUMENTO.search(l)),
                          "citas": citas(bruto)}
+            if fuente in POR_REGISTRO_FINAL:
+                datos["corte"] = "registro_final"
             escribir_json(ruta_texto_pdf(base, x), {"id": x["id"], **datos, "paginas": pags,
                                                     "captura_sha256": captura["sha256"],
                                                     "capturado": captura["capturado"], "url": url})

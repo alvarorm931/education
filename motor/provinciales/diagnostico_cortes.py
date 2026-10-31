@@ -58,10 +58,22 @@ def main(argv: list[str] | None = None) -> int:
     if r.contenido[:4] != b"%PDF":
         return 0
     por_registro = a.fuente in t.POR_REGISTRO
-    paginas = t.paginas_pdf_columnas(r.contenido) if por_registro else t.paginas_pdf(r.contenido)
+    final = a.fuente in t.POR_REGISTRO_FINAL
+    if final:
+        from motor.pdf import paginas as paginas_pdf
+        paginas = paginas_pdf(r.contenido, layout=True)
+    else:
+        paginas = t.paginas_pdf_columnas(r.contenido) if por_registro else t.paginas_pdf(r.contenido)
     todas = sorted([x for x in todas if (x.get(campo) or "").split("#")[0] == url],
                    key=lambda x: (x.get("pagina") or 0, x.get("orden") or 0))
-    if por_registro:
+    if final:
+        cortes = t.cortar_por_registro_final(paginas, todas)
+        sumario, n_sumario = t.entradas_sumario_final(paginas)
+        conocidos = {x[0] for x in sumario}
+        marcas = [l for pg in paginas[n_sumario:] for l in pg.splitlines()
+                  if (m := t.RE_MARCA_FINAL.match(l)) and m.group(1).replace(".", "") in conocidos]
+        print(f"sumario: {len(sumario)} entradas en {n_sumario} páginas; cuerpo: {len(marcas)} marcas de registro")
+    elif por_registro:
         cortes = t.cortar_por_registro(paginas, todas)
         marcas = sum(1 for pg in paginas for l in pg.splitlines() if t.RE_MARCA_REGISTRO.match(l))
         print(f"sumario: {len(t.entradas_sumario(paginas))} entradas; cuerpo: {marcas} líneas de registro")
