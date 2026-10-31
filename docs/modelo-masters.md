@@ -768,3 +768,16 @@ ficha (segunda vuelta sobre el original guardado), extraídas con el navegador. 
 ESADE y EADA responden 403 y no se fuerzan (carta de permiso). Los másteres oficiales de la propia universidad se
 unen a su página por el nombre entero del título en inglés aunque la página no diga «oficial»; en castellano,
 «Máster en X» sin «Universitario» es título propio y no se une.
+
+### Guías docentes, tarifas y folletos de todo lo leído (31/10/2026, 17:45)
+
+- **Guías docentes**: `guias.py descubrir --paginas … --excluir … --y-leer` busca las guías en todas las páginas
+  de cada máster oficial del conjunto (4.250 páginas de 3.005 másteres, también las unidas por el nombre y sus
+  subpáginas de plan), sin volver a pedir las 2.757 ya leídas, y las lee en la misma ejecución.
+- **Tarifas y folletos en PDF**: los enlaces a precios, tarifas, matrícula o folleto de las 16.996 páginas leídas
+  desde el 30/10 (escuelas, subpáginas, catálogos) se leen con `tarifas.py todo`, detrás de las guías para no
+  coincidir en los mismos servidores.
+- **Lo que solo se da dejando el correo**: no se rellenan formularios ni se usan identidades (regla del proyecto y
+  `docs/estrategia-informacion-cerrada.md` §3.4). Se saca todo lo público (página, subpáginas, PDF enlazados sin
+  formulario, tablas de la universidad, guías, BOE y RUCT); el resto se pide al centro desde la cuenta del portal
+  cuando tenga dominio (decisión de Álvaro del 31/10).
