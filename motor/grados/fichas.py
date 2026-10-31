@@ -522,6 +522,52 @@ def indexar_ruct(carpeta: Path | None) -> dict[str, dict]:
     return salida
 
 
+def indexar_memorias_web(carpeta: Path | None) -> dict[str, list[dict]]:
+    """Código del título → memorias de verificación leídas del PDF que publica su universidad (memorias_web.py),
+    con plan y sin repetir el mismo PDF. Un PDF con varios códigos (varias memorias juntas) no se usa: no se sabe
+    de cuál es cada plan."""
+    salida: dict[str, list[dict]] = defaultdict(list)
+    if not carpeta:
+        return {}
+    vistos = set()
+    for f in sorted(carpeta.rglob("memorias_web/memorias_*.jsonl"), key=lambda x: str(x)):
+        for linea in f.read_text(encoding="utf-8").splitlines():
+            x = json.loads(linea)
+            if not x.get("plan") or x.get("sha256") in vistos or len(x.get("identificadores") or []) != 1:
+                continue
+            vistos.add(x.get("sha256"))
+            salida[x["identificadores"][0]].append(x)
+    return dict(salida)
+
+
+def memoria_web_vigente(r: dict | None, memorias: list[dict]) -> dict | None:
+    """De las memorias de la web de un título, la que corresponde a la vigente del RUCT: el código de la memoria del
+    RUCT lleva su fecha («1500526» + «20260622» + «01») y la del PDF va en su cabecera («Fecha : 22/06/2026»). Vale
+    la más reciente que no sea anterior a la vigente en más de 60 días; sin una de las dos fechas, ninguna (podría
+    ser una versión anterior del plan)."""
+    from datetime import datetime, timedelta
+
+    from motor.estudios.ruct import memoria_vigente
+
+    m = memoria_vigente(r) if r and r.get("memorias") else None
+    codigo = str((r or {}).get("codigo") or "")
+    if not m or not codigo or not str(m.get("cod", "")).startswith(codigo):
+        return None
+    try:
+        vigente = datetime.strptime(str(m["cod"])[len(codigo):len(codigo) + 8], "%Y%m%d")
+    except ValueError:
+        return None
+    validas = []
+    for w in memorias:
+        try:
+            f = datetime.strptime(w.get("fecha") or "", "%d/%m/%Y")
+        except ValueError:
+            continue
+        if f >= vigente - timedelta(days=60):
+            validas.append((f, w))
+    return max(validas, key=lambda x: x[0])[1] if validas else None
+
+
 def resumen_ruct(d: dict | None) -> dict | None:
     if not d:
         return None
@@ -774,7 +820,7 @@ def plan_de_memoria(r: dict | None) -> dict | None:
 def construir(catalogo: list[dict], genericos: list[dict], tarjetas: dict, detalles: dict,
               planes: dict, ind: dict | None = None, web: dict | None = None, ruct: dict | None = None,
               planes_id: dict | None = None, tarifas: dict | None = None,
-              paginas: dict | None = None) -> tuple[list[dict], list[dict]]:
+              paginas: dict | None = None, memorias_web: dict | None = None) -> tuple[list[dict], list[dict]]:
     gen_de = {c: g for g in genericos for c in g["titulos"]}
     por_ambito = Counter((clave_universidad(t["universidades"][0]["nombre"]), t.get("ambito")) for t in catalogo
                          if t["situacion"] == "Activo" and t["clase"] == "grado")
@@ -826,7 +872,17 @@ def construir(catalogo: list[dict], genericos: list[dict], tarjetas: dict, detal
             pm = plan_de_memoria(r)
             if pm and (plan_comprobado(pm) or not plan):
                 plan = {**resumen_plan({**pm, "identificador": None}), "boe": None, "origen": "memoria_ruct",
-                        "memoria": pm["memoria"], "fuente": pm["fuente"]}
+                        "memoria": pm["memoria"], "fuente": pm["fuente"], **({"notas": pm["notas"]} if pm.get("notas") else {})}
+        if not (plan and plan["comprobado"]) and memorias_web and t["codigo"] in memorias_web:
+            # la misma memoria, en el PDF que la universidad publica en su web (memorias_web.py): solo la vigente
+            w = memoria_web_vigente(r, memorias_web[t["codigo"]])
+            pw = plan_de_memoria({**r, "memoria": {"cod": None, "avisos": [], "plan": w["plan"]}}) if w else None
+            if pw and (plan_comprobado(pw) or not plan):
+                fuente_w = {"cita": f"{t['universidades'][0]['nombre']}, memoria de verificación publicada en su web",
+                            "url": w["url"], "capturado": w.get("capturado"), "sha256": w.get("sha256")}
+                plan = {**resumen_plan({**pw, "identificador": None}), "boe": None, "origen": "memoria_web",
+                        "memoria": None, "fecha_memoria": w.get("fecha"), "fuente": fuente_w,
+                        **({"notas": pw["notas"]} if pw.get("notas") else {})}
         notas = [c["nota_corte"] for c in centros if c["nota_corte"] is not None]
         precios = [c["precio_credito"] for c in centros if c["precio_credito"]]
         creditos = next((c["creditos"] for c in centros if c["creditos"]), None)
@@ -1173,6 +1229,7 @@ def main() -> None:
     p.add_argument("--ruct", help="carpeta con las fichas del RUCT (…/ruct/{código}.json)")
     p.add_argument("--tarifas", help="carpeta con los precios de PDF y páginas de precios (…/tarifas_grado/tarifas.jsonl)")
     p.add_argument("--notas", help="historico.jsonl de notas_corte.py (notas de corte de cada distrito por curso)")
+    p.add_argument("--memorias-web", help="carpeta con las memorias leídas de las webs (…/memorias_web/memorias_*.jsonl)")
     p.add_argument("--salida", required=True)
     a = p.parse_args()
     tarjetas, detalles = indexar_qedu(Path(a.qedu) if a.qedu else None)
@@ -1185,7 +1242,8 @@ def main() -> None:
                                     indexar_ruct(Path(a.ruct) if a.ruct else None),
                                     planes_por_identificador(Path(a.boe) if a.boe else None),
                                     indexar_tarifas(Path(a.tarifas) if a.tarifas else None),
-                                    indexar_paginas_privadas(Path(a.web_privadas) if a.web_privadas else None))
+                                    indexar_paginas_privadas(Path(a.web_privadas) if a.web_privadas else None),
+                                    indexar_memorias_web(Path(a.memorias_web) if a.memorias_web else None))
     hist = anadir_historico(fichas, _leer(Path(a.notas))) if a.notas else {}
     altas_f = Path(a.boe) / "boe_altas.jsonl" if a.boe else None
     proximas = fichas_proximas(_leer(altas_f), catalogo, indexar_planes(Path(a.boe), conocidas),

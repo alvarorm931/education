@@ -401,3 +401,26 @@ def test_plan_de_la_memoria_con_materias_repetidas_en_ingles_y_practicas_optativ
     assert any("inglés" in n for n in p["notas"]) and any("prácticas son optativos" in n for n in p["notas"])
     r["memoria"]["plan"][0]["ects"] = 24.0  # el módulo sí suma las dos: la de inglés no es una repetición
     assert not plan_comprobado(plan_de_memoria(r))
+
+
+def test_memoria_de_la_web_solo_si_es_la_vigente(tmp_path):
+    import json as _json
+
+    from motor.grados.fichas import indexar_memorias_web, memoria_web_vigente
+
+    d = tmp_path / "x" / "datos" / "estudios" / "grados" / "memorias_web"
+    d.mkdir(parents=True)
+    plan = [{"modulo": 1, "nombre": "M", "ects": 6.0, "materias": [{"nombre": "A", "caracter": "Básica", "ects": 6.0}]}]
+    filas = [{"url": "https://u.es/memoria-2015.pdf", "sha256": "a", "identificadores": ["2501234"], "fecha": "10/03/2015", "plan": plan},
+             {"url": "https://u.es/memoria-2021.pdf", "sha256": "b", "identificadores": ["2501234"], "fecha": "01/02/2021", "plan": plan},
+             {"url": "https://u.es/copia.pdf", "sha256": "b", "identificadores": ["2501234"], "fecha": "01/02/2021", "plan": plan},
+             {"url": "https://u.es/varias.pdf", "sha256": "c", "identificadores": ["2501234", "2509999"], "fecha": "01/02/2021", "plan": plan},
+             {"url": "https://u.es/sin-plan.pdf", "sha256": "e", "identificadores": ["2501234"], "fecha": "01/02/2021"}]
+    (d / "memorias_5_x.jsonl").write_text("\n".join(_json.dumps(x) for x in filas), encoding="utf-8")
+    m = indexar_memorias_web(tmp_path)
+    assert [x["url"] for x in m["2501234"]] == ["https://u.es/memoria-2015.pdf", "https://u.es/memoria-2021.pdf"]
+    r = {"codigo": "2501234", "memorias": [{"cod": "25012342021021501", "sit": "A"}, {"cod": "25012342015031001", "sit": "H"}]}
+    assert memoria_web_vigente(r, m["2501234"])["url"].endswith("2021.pdf")
+    r["memorias"] = [{"cod": "25012342024060101", "sit": "A"}]  # una modificación de 2024: ninguna de la web vale
+    assert memoria_web_vigente(r, m["2501234"]) is None
+    assert memoria_web_vigente({"codigo": "2501234"}, m["2501234"]) is None  # sin memorias en el RUCT, no se sabe
