@@ -105,3 +105,16 @@ def test_entradas_numeradas_de_una_lista_son_personas():
               "11. Funcionament del Pla de Recuperació, Transformació i Resiliència.", "5135",
               "1.1.1 .- Para la provisión de 1 plaza de MÉDICO/A", "1 " + ". " * 40 + "5167"):
         assert not tiene_nombre_de_persona(t), t
+
+
+def test_listas_con_puntuacion_resultado_o_unidas_en_un_parrafo():
+    # nombres inventados; formatos vistos en textos publicados (31/10/2026)
+    for t in ("23. Ruiz Gómez, Lucía 7,50", "23. Ruiz Gómez, Lucía (Admitida)", "23. Ruiz Gómez, Lucía - Admitida",
+              "4. Pardo Gil, M.ª del Carmen", "23.- KOVALENKO, OKSANA", "12. Gallego Plaza, Salud", "3. Segundo Fiscal, Ana",
+              "127. GARCÍA REQUENO, SARAY 18,144", "1. Ruiz Gómez, Lucía A",
+              "23.Gómez Ferrer, Lucía Del Mar 24.Pérez López, Juan 25.Mora Gil, Pedro"):
+        assert tiene_nombre_de_persona(t), t
+    assert not tiene_nombre_de_persona("8. LLISTA DE PERSONES APROVADES, PRESENTACIÓ DE DOCUMENTS I NOMENAMENT.")
+    # cada línea de la lista se quita antes de unir el párrafo
+    r = limpiar_texto("Admitidas\n23.Gómez Ferrer, Lucía Del Mar\n24.Pérez López, Juan\nExcluidas\nNinguna.")
+    assert "Gómez" not in r["texto"] and "Pérez" not in r["texto"] and r["lineas_omitidas_por_datos_personales"] == 2

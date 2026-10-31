@@ -337,11 +337,25 @@ RE_TRIBUNAL = re.compile(r"(?i)\b(?:vocal|presidente|presidenta|president|secret
 # Rocío», «28.Ivanysmyna, Tetyana» (BOP de Huelva, 19/06/2023: la v1 solo veía «Apellido Apellido, Nombre» sin número
 # pegado ni partículas con mayúscula, y una sonda publicó nombres). Con el número delante basta la forma: apellidos y
 # nombre con mayúscula separados por una coma, hasta el final de la línea.
-_PART = r"(?i:de|del|la|las|los|y|i|e|da|das|do|dos|van|von|di)"
-_PALL = rf"[{_MAY}Ü](?:[\w’'-]+|ª)"
+_PART = r"(?i:(?:de|del|la|las|los|y|i|e|da|das|do|dos|van|von|di)(?![\w’'-]))"
+_PALL = rf"(?:[{_MAY}Ü](?:[\w’'-]+|ª)|M\.\s?ª)"
+# Lo que puede seguir al nombre en la línea de una lista: la puntuación («7,50»), el resultado («(Admitida)»,
+# «- Apto») o la causa de exclusión con su letra («A», «B»)
+_COLA_LISTA = (r"(?:\s+[-–(]?\s*(?:\d+(?:[.,]\d+)?|[A-Z]|(?i:(?:no\s+)?(?:admitid[oa]s?|excluid[oa]s?|apt[oa]s?|"
+               r"aprobad[oa]s?|presentad[oa]s?|seleccionad[oa]s?|renuncia)))(?![\w’'-])\)?)*")
 RE_ENTRADA_DE_LISTA = re.compile(
     rf"^\s*\d{{1,4}}\s*[.\-–)º][\s.\-–)º]*(?P<a>{_PALL}(?:\s+(?:{_PART}|{_PALL})){{0,5}}),\s*"
-    rf"(?P<p>{_PALL}\.?(?:\s+(?:{_PART}|{_PALL}\.?)){{0,4}})\s*[.;]?\s*$")
+    rf"(?P<p>{_PALL}\.?(?:\s+(?:{_PART}|{_PALL}\.?)){{0,4}}){_COLA_LISTA}\s*[.;]?\s*$")
+# Dónde empieza otra entrada numerada cuando el texto las ha unido en un párrafo («23.Gómez Ferrer, Lucía 24.Pérez…»)
+RE_CORTE_LISTA = re.compile(rf"(?<=\S)\s+(?=\d{{1,4}}\s*[.\-–)º][\s.\-–)º]*{_PALL}[^,]{{0,60}},)")
+# En una entrada numerada, palabras que no son de personas (instituciones y partes de un documento). No sirve aquí la
+# lista de palabras que no son apellidos: «Gallego», «Plaza», «Segundo» o «Fiscal» lo son a menudo
+NO_PERSONA_EN_LISTA = {"ayuntamiento", "concello", "ajuntament", "diputacion", "consejeria", "conselleria",
+                       "universidad", "universitat", "junta", "gobierno", "govern", "servicio", "servei", "area",
+                       "departamento", "direccion", "ministerio", "cabildo", "consell", "comarca", "mancomunidad",
+                       "organismo", "instituto", "fundacion", "consorcio", "empresa", "sociedad", "tema", "temas",
+                       "bloque", "parte", "capitulo", "titulo", "articulo", "seccion", "materia", "modulo",
+                       "provincia", "comunidad", "estado", "boletin", "oficial", "ley", "decreto", "orden"}
 
 
 APARTADOS_DE_BASES = {
@@ -350,7 +364,7 @@ APARTADOS_DE_BASES = {
     "presentacion", "derechos", "examen", "normas", "generales", "objeto", "funciones", "retribuciones", "sistema",
     "seleccion", "fase", "fases", "oposicion", "concurso", "ejercicio", "ejercicios", "pruebas", "desarrollo",
     "calificacion", "nombramiento", "toma", "posesion", "bolsa", "empleo", "recursos", "proteccion", "datos", "base",
-    "plazas", "plaza", "tasas", "tasa", "documentacion", "meritos", "valoracion", "incidencias", "impugnacion",
+    "tasas", "tasa", "documentacion", "meritos", "valoracion", "incidencias", "impugnacion",
     "legislacion", "aplicable", "regimen", "juridico", "contratacion", "duracion", "jornada", "horario", "periodo",
     "practicas", "formacion", "titulacion", "anexo", "anexos", "modelo", "instancia", "lista", "listas", "admitidos",
     "excluidos", "aspirantes", "puntuacion", "puntuaciones", "relacion", "aprobados", "vigencia", "efectos",
@@ -373,9 +387,11 @@ def _entrada_de_lista(texto: str) -> bool:
         return False
     todo = m.group("a") + " " + m.group("p")
     letras = [c for c in todo if c.isalpha()]
+    apellidos = [w for w in m.group("a").split() if w.lower() not in PARTICULAS]
     if letras and all(c.isupper() for c in letras):
-        # en mayúsculas, como los títulos de los apartados («5. PREMIOS, DISTINCIONES…»): solo con un nombre de pila
-        if not _es_pila(nombre[0].rstrip(".")):
+        # en mayúsculas, como los títulos de los apartados («5. PREMIOS, DISTINCIONES…»): con un nombre de pila, o
+        # con la forma corta de un nombre («23.- KOVALENKO, OKSANA»)
+        if not _es_pila(nombre[0].rstrip(".")) and not (len(apellidos) <= 3 and len(nombre) <= 3):
             return False
     elif any(len(w) >= 2 and w.isupper() and w.isalpha() and w.lower() not in PARTICULAS for w in todo.split()):
         return False  # siglas en una línea con minúsculas («15. Protocolos UDP, TCP.»)
@@ -383,7 +399,15 @@ def _entrada_de_lista(texto: str) -> bool:
     palabras = [w for w in palabras if w not in PARTICULAS]
     # «1. Ayuntamiento de Cala, Huelva», «3. Temario, Anexo», «10. Lugar, Fecha y Hora»: instituciones y apartados de
     # unas bases no son personas
-    return not any(w in NO_APELLIDO or w in APARTADOS_DE_BASES or CARGOS.match(w) for w in palabras)
+    return not any(w in NO_PERSONA_EN_LISTA or w in APARTADOS_DE_BASES for w in palabras)
+
+
+def _entradas_unidas(texto: str) -> bool:
+    """Alguna entrada numerada de una lista de personas dentro de un párrafo que las ha unido."""
+    t = _sin_ligaduras(texto or "")
+    if not RE_CORTE_LISTA.search(t):
+        return False
+    return any(_entrada_de_lista(x) for x in RE_CORTE_LISTA.split(t))
 
 
 def _apellidos_y_nombre(texto: str) -> bool:
@@ -439,7 +463,7 @@ def tiene_nombre_de_persona(texto: str) -> bool:
     t = texto or ""
     return (any(_es_persona(m) for m in RE_TRATAMIENTO.finditer(t))
             or any(_es_designado(m) for r in RE_DESIGNADO for m in r.finditer(t))
-            or _nombre_suelto(t) or _apellidos_y_nombre(t) or _entrada_de_lista(t))
+            or _nombre_suelto(t) or _apellidos_y_nombre(t) or _entrada_de_lista(t) or _entradas_unidas(t))
 
 
 def titulo_sin_nombres(titulo: str | None) -> str | None:
@@ -562,7 +586,9 @@ def limpiar_texto(texto: str, ignorar: re.Pattern | None = None) -> dict:
             continue
         if ignorar is not None and ignorar.match(lin):
             continue
-        if RE_DOCUMENTO.search(lin):
+        if RE_DOCUMENTO.search(lin) or _entrada_de_lista(lin):
+            # una línea con documento o una entrada de una lista de personas («23.Apellido Apellido, Nombre»), antes
+            # de unirla al párrafo: unida, ya no se reconoce (31/10/2026, 20 textos publicados con listas así)
             lineas_omitidas += 1
             continue
         if actual and actual[-1].endswith("-") and lin[:1].islower():
