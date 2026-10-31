@@ -162,6 +162,21 @@ def ya_extraido(raiz: Path, p: dict, h: str) -> bool:
         return False
 
 
+def retirar_caducados(raiz: Path) -> int:
+    """Borra los resultados cuyo texto de origen ya no es el mismo (se rehízo o pasó a «sin texto» por dudoso): son
+    datos derivados y se vuelven a extraer del texto nuevo, si lo hay."""
+    n = 0
+    for f in (raiz / "datos" / "oposiciones" / "extraccion").glob("[0-9]*/*.json"):
+        try:
+            doc = json.loads(f.read_text(encoding="utf-8")).get("documento") or {}
+        except ValueError:
+            continue
+        if doc.get("huella") and _texto_documento(raiz, {"documento": doc}) is None:
+            f.unlink()
+            n += 1
+    return n
+
+
 def elegir(raiz: Path, n: int, estados: set[str]) -> list[tuple[dict, dict]]:
     """Procesos de esos estados, los más recientes primero, con texto de bases y sin extraer con ese texto."""
     procesos = []
@@ -440,6 +455,8 @@ def main(argv: list[str] | None = None) -> int:
     trabajo = a.trabajo
     lotes = a.salida / "datos" / "oposiciones" / "extraccion" / "lotes"
     if a.orden in ("lote", "preparar"):
+        if a.orden == "lote":
+            print(f"Resultados retirados porque su texto cambió: {retirar_caducados(a.datos)}")
         lote, ruta_indice = preparar(a.datos, a.n, {e for e in a.estados.split(",") if e}, trabajo)
         if a.orden == "preparar" or not lote.read_text(encoding="utf-8").strip():
             return 0

@@ -77,3 +77,16 @@ def test_temas_contados_sin_ia():
     assert b.temas_contados("Tema 1. Única materia") is None
     acept, _ = b.verificar({}, texto)
     assert acept["temas"]["valor"] == 20
+
+
+def test_retirar_si_el_texto_cambia(tmp_path):
+    raiz, p = _datos(tmp_path)
+    lote, indice = b.preparar(raiz, 10, {"plazo_abierto"}, tmp_path / "trabajo")
+    info = json.loads(indice.read_text())["p00000"]
+    r = raiz / info["ruta"]
+    r.parent.mkdir(parents=True)
+    r.write_text(json.dumps({"documento": info["documento"], "campos": {}}))
+    assert b.retirar_caducados(raiz) == 0 and r.exists()
+    t = raiz / "datos" / "provinciales" / "bopguadalajara" / "textos" / "2025" / "09" / "BOPGUADALAJARA-2025-2844.json"
+    t.write_text(json.dumps({"texto": None, "corte_dudoso": True}))
+    assert b.retirar_caducados(raiz) == 1 and not r.exists()
