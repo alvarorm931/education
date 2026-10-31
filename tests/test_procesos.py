@@ -326,3 +326,21 @@ def test_boletin_en_gallego_y_por_siglas():
     assert fuente_de_boletin("Boletín Oficial da Provincia de Pontevedra") == "BOP-PONTEVEDRA"
     assert fuente_de_boletin("BOP de Lugo") == "BOP-LUGO"
     assert fuente_de_boletin("BOP de Barcelona") == "BOPB"
+
+
+def test_puestos_que_casan_en_castellano_y_catalan():
+    from motor.procesos import _puestos_casan
+    assert _puestos_casan({"oficial-segona"}, {"oficial-segunda"})
+    assert _puestos_casan({"arquitecto-tecnico-como-funcionario-carrera"}, {"arquitecto-tecnico"})
+    assert _puestos_casan({"tecnica-administracio-general"}, {"tecnico-administracion-general"})
+    assert not _puestos_casan({"administrativo"}, {"auxiliar-administrativo"})
+    assert not _puestos_casan({"profesor-adjunto"}, {"profesor-adjunto-percusion"})
+
+
+def test_convocante_del_titulo_cuando_el_guardado_es_la_seccion():
+    from motor.autonomicos.actos import convocante_del_titulo
+    g = {"nombre": "Ayuntamientos", "organismo": "Ayuntamientos", "tipo": None, "provincia": None}
+    c = convocante_del_titulo({"convocante": g, "titulo": "Anuncio de 15 de mayo de 2026, del Ayuntamiento de Mengíbar, "
+                                                          "por el que se aprueban las bases"})
+    assert c["tipo"] == "Ayuntamiento" and c["nombre"] == "Mengíbar"
+    assert convocante_del_titulo({"convocante": {"nombre": "Utiel"}, "titulo": "del Ayuntamiento de Mengíbar"}) is None

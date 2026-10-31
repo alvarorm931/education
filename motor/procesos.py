@@ -439,7 +439,7 @@ def construir(actos: list[dict], hoy: date, autonomicos: list[dict] | None = Non
         if not px:
             continue
         cands = {a["id"]: a for k in _municipio(x.get("convocante"), [x.get("fuente")]) for a in boe_por_mun.get(k, [])
-                 if 0 <= _dias_entre(x.get("fecha"), a.get("fecha")) <= 180 and px & _puestos_de(a)}
+                 if 0 <= _dias_entre(x.get("fecha"), a.get("fecha")) <= 180 and _puestos_casan(px, _puestos_de(a))}
         lista = list(cands.values())
         if len(lista) > 1 and (t := turno_de(x.get("titulo"))):
             lista = [a for a in lista if all(p.get("turno") in (None, t) for p in a.get("plazas") or [])] or lista
@@ -557,6 +557,51 @@ def _puestos_de(x: dict) -> set[str]:
     return pu
 
 
+# Palabras que no cambian el puesto («arquitecto técnico como funcionario de carrera») y formas catalanas del mismo
+# puesto («oficial segona» = «oficial segunda»): para casar las bases del BOP con su anuncio del BOE (31/10/2026)
+RUIDO_PUESTO = {"como", "com", "municipal", "ayuntamiento", "ajuntament", "naturaleza", "funcionarial", "propiedad",
+                "plaza", "placa", "este", "esta", "aquest", "aquesta", "turno", "libre", "lliure", "jornada", "completa",
+                "parcial", "tiempo", "temps", "regimen", "interina", "interino", "funcionaria", "funcionari", "personal"}
+CATALAN_PUESTO = {"segona": "segunda", "tecnic": "tecnico", "tecnica": "tecnico", "administratiu": "administrativo",
+                  "administrativa": "administrativo", "enginyer": "ingeniero", "enginyera": "ingeniero",
+                  "arquitecte": "arquitecto", "arquitecta": "arquitecto", "treballador": "trabajador",
+                  "treballadora": "trabajador", "trabajadora": "trabajador", "educadora": "educador", "peo": "peon",
+                  "conserge": "conserje", "netejador": "limpiador", "netejadora": "limpiador", "limpiadora": "limpiador",
+                  "agent": "agente", "bomber": "bombero", "mestre": "maestro", "professor": "profesor",
+                  "professora": "profesor", "profesora": "profesor", "psicoleg": "psicologo", "psicologa": "psicologo",
+                  "infermer": "enfermero", "infermera": "enfermero", "enfermera": "enfermero", "informatic": "informatico",
+                  "jardiner": "jardinero", "dinamitzador": "dinamizador", "dinamitzadora": "dinamizador",
+                  "auxiliara": "auxiliar", "oficiala": "oficial", "operaria": "operario", "operari": "operario",
+                  "brigada": "brigada", "inspectora": "inspector", "inspectors": "inspector", "policies": "policia",
+                  "juridic": "juridico", "juridica": "juridico", "economista": "economista", "biblioteca": "biblioteca",
+                  "bibliotecaria": "bibliotecario", "bibliotecari": "bibliotecario", "delineant": "delineante",
+                  "electricista": "electricista", "conductora": "conductor", "monitora": "monitor", "socorrista": "socorrista"}
+
+
+CATALAN_PUESTO.update({"gestio": "gestion", "joventut": "juventud", "esports": "deporte", "deportes": "deporte",
+                       "medi": "medio", "ambient": "ambiente", "serveis": "servicio", "servicios": "servicio",
+                       "multiples": "multiple", "manteniment": "mantenimiento", "obres": "obras", "arxiu": "archivo",
+                       "turisme": "turismo", "igualtat": "igualdad", "desenvolupament": "desarrollo",
+                       "tresoreria": "tesoreria", "recaptacio": "recaudacion", "especial": "especial"})
+
+
+def _palabra_castellana(w: str) -> str:
+    w = CATALAN_PUESTO.get(w, w)
+    return w + "n" if w.endswith("cio") and len(w) > 5 else w  # «administració» -> «administración»
+
+
+def _palabras_puesto(clave: str) -> frozenset[str]:
+    from motor.union import _palabras
+    return frozenset(_palabra_castellana(w) for w in _palabras(clave) if w not in RUIDO_PUESTO)
+
+
+def _puestos_casan(px: set[str], pa: set[str]) -> bool:
+    """El mismo puesto: la misma clave, o las mismas palabras sin el ruido y con la forma castellana."""
+    if px & pa:
+        return True
+    return any(wk and wk == _palabras_puesto(q) for k in px if (wk := _palabras_puesto(k)) for q in pa)
+
+
 def _anuncio_del_puesto(x: dict, anuncios: list[dict]) -> dict | None:
     """Entre varios anuncios del BOE que citan la misma publicación local, el único cuyo puesto es el de ella (la
     misma clave o la mayor parte de las palabras)."""
@@ -566,7 +611,7 @@ def _anuncio_del_puesto(x: dict, anuncios: list[dict]) -> dict | None:
         return None
     def parecido(a: dict) -> float:
         pa = _puestos_de(a)
-        if px & pa:
+        if _puestos_casan(px, pa):
             return 1.0
         return max((len(_palabras(k) & _palabras(q)) / len(_palabras(k) | _palabras(q))
                     for k in px for q in pa if _palabras(k) | _palabras(q)), default=0.0)

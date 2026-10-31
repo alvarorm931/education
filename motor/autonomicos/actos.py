@@ -155,6 +155,32 @@ def convocante_local(x: dict) -> dict | None:
     return convocante_de_organismo(nombre)
 
 
+# Lo que algunos conectores guardan como convocante cuando es la sección (BOJA: «Ayuntamientos»): el convocante va en
+# el título («Anuncio de 15 de mayo de 2026, del Ayuntamiento de Mengíbar, por el que…»). Sin esto, unos 470 procesos de
+# 2026 del BOJA no tenían municipio, no se unían a su anuncio del BOE y salían como «pendientes del BOE» (31/10/2026)
+CONVOCANTES_GENERICOS = {"ayuntamientos", "administracion local", "entidades locales", "administracio local",
+                         "concellos", "ajuntaments", "corporaciones locales", "otras entidades", "otros entes",
+                         "diputaciones", "diputaciones provinciales", "mancomunidades", "anuncios", "entidades"}
+RE_ENTIDAD_EN_TITULO = re.compile(
+    r"\b(?:del|de\s+la|de\s+l['’]|de\s+los)\s+(?P<e>(?:Excmo\.?\s+|Ilmo\.?\s+|Iltre\.?\s+)?(?:Ayuntamiento|Ajuntament|"
+    r"Concello|Patronato|Diputaci[oó]n|Mancomunidad|Mancomunitat|Consorcio|Consorci|Entidad\s+Local|Instituto\s+Municipal|"
+    r"Gerencia\s+Municipal|Organismo\s+Aut[oó]nomo|Fundaci[oó]n\s+Municipal|Empresa\s+Municipal|Cabildo|Consell)\b"
+    r"[^,;:]*?)(?=\s*[,;:]|\s+(?:por\s+(?:el|la|los|las)|referente|relativ[oa]|sobre|en\s+relaci[oó]n|de\s+(?:bases|"
+    r"las\s+bases|modificaci[oó]n|aprobaci[oó]n|correcci[oó]n|rectificaci[oó]n|la\s+convocatoria|convocatoria|"
+    r"nombramiento|los\s+anexos))\b|\.?$)", re.IGNORECASE)
+
+
+def convocante_del_titulo(x: dict) -> dict | None:
+    """El convocante del título cuando el guardado es solo la sección («Ayuntamientos»)."""
+    conv = x.get("convocante")
+    if not conv or normalizar(conv.get("nombre") or "") not in CONVOCANTES_GENERICOS:
+        return None
+    m = RE_ENTIDAD_EN_TITULO.search(x.get("titulo") or "")
+    if not m or len(m.group("e")) > 90:
+        return None
+    return convocante_de_organismo(m.group("e"))
+
+
 # Asambleas de comunidades de usuarios de aguas y juntas de accionistas que algunos boletines seleccionaban como empleo
 # («ANUNCIO de la convocatoria de la asamblea general ordinaria», DOG): no son actos de ningún proceso
 from motor.autonomicos.dog import RE_ASAMBLEA  # noqa: E402
@@ -230,7 +256,7 @@ def construir_acto(fuente: str, x: dict, texto: str | None, recuento: int | None
         "organismo": x.get("organismo") or (x.get("entidad") if not x.get("convocante") else None),
         "seccion": " / ".join(p for p in (x.get("seccion"), x.get("subseccion") or x.get("apartado")) if p) or None,
         "ambito": x.get("ambito"),
-        "convocante": x.get("convocante") or convocante_local(x),
+        "convocante": convocante_del_titulo(x) or x.get("convocante") or convocante_local(x),
         # Con las reglas vigentes (motor/boe/clasificar.py), no con las del día de la captura: así una mejora de
         # las reglas se aplica a todo el histórico sin volver a seleccionar
         "tipo_acto": tipo,
