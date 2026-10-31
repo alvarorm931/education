@@ -213,30 +213,68 @@ def verificar(respuesta: dict, texto: str) -> tuple[dict, dict]:
                 laxa = ex._laxa(base) if laxa is None else laxa
                 nivel = ex.nivel_cita(cita, base, laxa)
         if nivel is None:
-            rechazados[campo] = "cita_no_literal"
+            rechazados[campo] = {"motivo": "cita_no_literal", "valor": valor, "cita": cita}
             continue
         if campo in NUMERICOS:
             num = ex.como_numero(valor)
             if num is None:
-                rechazados[campo] = "valor_no_numerico"
+                rechazados[campo] = {"motivo": "valor_no_numerico", "valor": valor, "cita": cita}
                 continue
             if not ex.numero_en_cita(num, cita) and not _numero_en_letra(num, cita):
-                rechazados[campo] = "valor_no_en_cita"
+                rechazados[campo] = {"motivo": "valor_no_en_cita", "valor": valor, "cita": cita}
                 continue
             valor = num
         aceptados[campo] = {"valor": valor, "cita": cita, "nivel": nivel}
     return aceptados, rechazados
 
 
-NUMEROS_LETRA = {"una": 1, "un": 1, "uno": 1, "dos": 2, "tres": 3, "cuatro": 4, "cinco": 5, "seis": 6, "siete": 7,
-                 "ocho": 8, "nueve": 9, "diez": 10, "once": 11, "doce": 12, "quince": 15, "veinte": 20,
-                 "veinticinco": 25, "treinta": 30, "cuarenta": 40, "cincuenta": 50, "sesenta": 60, "noventa": 90,
-                 "cien": 100}
+UNIDADES = {"un": 1, "una": 1, "uno": 1, "dos": 2, "tres": 3, "cuatro": 4, "cinco": 5, "seis": 6, "siete": 7, "ocho": 8,
+            "nueve": 9, "diez": 10, "once": 11, "doce": 12, "trece": 13, "catorce": 14, "quince": 15, "dieciseis": 16,
+            "diecisiete": 17, "dieciocho": 18, "diecinueve": 19, "veinte": 20, "veintiun": 21, "veintiuno": 21,
+            "veintiuna": 21, "veintidos": 22, "veintitres": 23, "veinticuatro": 24, "veinticinco": 25,
+            "veintiseis": 26, "veintisiete": 27, "veintiocho": 28, "veintinueve": 29,
+            # catalán, valenciano y gallego
+            "dues": 2, "duas": 2, "tres": 3, "quatre": 4, "cinc": 5, "sis": 6, "set": 7, "vuit": 8, "huit": 8,
+            "nou": 9, "deu": 10, "onze": 11, "dotze": 12, "tretze": 13, "catorze": 14, "quinze": 15, "vint": 20,
+            "vinte": 20, "unha": 1}
+DECENAS = {"treinta": 30, "cuarenta": 40, "cincuenta": 50, "sesenta": 60, "setenta": 70, "ochenta": 80, "noventa": 90,
+           "trenta": 30, "quaranta": 40, "cinquanta": 50, "seixanta": 60, "setanta": 70, "vuitanta": 80,
+           "noranta": 90, "trinta": 30, "corenta": 40, "cincuenta": 50, "sesenta": 60}
+CENTENAS = {"cien": 100, "ciento": 100, "doscientos": 200, "doscientas": 200, "trescientos": 300, "trescientas": 300,
+            "cuatrocientos": 400, "cuatrocientas": 400, "quinientos": 500, "quinientas": 500, "cent": 100}
+
+
+def numeros_en_letra(texto: str) -> set[int]:
+    """Números escritos con letra en un texto: «dos plazas», «noventa temas», «ciento veinte», «treinta y dos»."""
+    import unicodedata
+    t = "".join(c for c in unicodedata.normalize("NFD", (texto or "").lower()) if unicodedata.category(c) != "Mn")
+    palabras = re.findall(r"[a-zñ]+", t)
+    out, actual, k = set(), None, 0
+    while k < len(palabras):
+        w = palabras[k]
+        if w in CENTENAS:
+            actual = (actual or 0) + CENTENAS[w]
+        elif w in DECENAS:
+            actual = (actual or 0) + DECENAS[w]
+        elif w in UNIDADES and (actual is None or actual % 10 == 0):
+            actual = (actual or 0) + UNIDADES[w]
+        elif w in ("y", "i", "e") and actual is not None and k + 1 < len(palabras) and palabras[k + 1] in UNIDADES:
+            pass
+        else:
+            if actual is not None:
+                out.add(actual)
+                actual = None
+                if w in UNIDADES:
+                    continue  # otro número que empieza aquí («treinta y dos, dues»)
+        k += 1
+    if actual is not None:
+        out.add(actual)
+    return out
 
 
 def _numero_en_letra(num, cita: str) -> bool:
-    """«dos plazas», «noventa temas»: el número escrito con letra."""
-    return any(v == num and re.search(rf"\b{k}\b", ex._norma(cita)) for k, v in NUMEROS_LETRA.items())
+    """El número escrito con letra en la cita."""
+    return num in numeros_en_letra(cita)
 
 
 def _api(metodo: str, url: str, **kw) -> requests.Response:

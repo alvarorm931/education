@@ -57,7 +57,9 @@ def test_verificar_citas():
             "plazas_turno_libre": {"v": 3, "c": "la provisión en propiedad de dos plazas de Auxiliar"}}  # 3 no sale
     acept, rech = b.verificar(resp, BASES)
     assert set(acept) == {"grupo", "plazas_total", "tasa_euros", "temas"} and acept["tasa_euros"]["valor"] == 15
-    assert rech == {"titulacion": "cita_no_literal", "plazas_turno_libre": "valor_no_en_cita"}
+    assert {k: v["motivo"] for k, v in rech.items()} == {"titulacion": "cita_no_literal",
+                                                        "plazas_turno_libre": "valor_no_en_cita"}
+    assert b.numeros_en_letra("CIENTO VEINTITRÉS plazas y noventa temas; treinta y dos; dues places") >= {123, 90, 32, 2}
     assert b._respuesta_json('```json\n{"grupo": {"v": "C2", "c": "x"}}\n```') == {"grupo": {"v": "C2", "c": "x"}}
 
 
