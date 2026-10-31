@@ -1,15 +1,17 @@
 {
- "fecha": "2026-10-31T01:20:44+00:00",
- "fecha_madrid": "31/10 02:20",
+ "fecha": "2026-10-31T01:27:50+00:00",
+ "fecha_madrid": "31/10 02:27",
  "ventana_horas": 6.0,
  "resumen": {
-  "ejecuciones_revisadas": 171,
+  "ejecuciones_revisadas": 172,
   "fallos": 2,
   "fallos_pendientes": 1,
   "relanzados": 0,
   "colas_largas": 2,
   "flujos_programados_parados": [],
-  "programaciones_lanzadas_a_mano": [],
+  "programaciones_lanzadas_a_mano": [
+   "masters-diario.yml"
+  ],
   "avisos_de_fuentes": 0,
   "almacen": "ok"
  },
@@ -109,14 +111,14 @@
   {
    "flujo": "Estudios por tramos",
    "id": 41140514779,
-   "en_cola_min": 152,
+   "en_cola_min": 159,
    "trabajos_empezados": 0,
    "url": "https://github.com/alvarorm931/education/actions/runs/41140514779"
   },
   {
    "flujo": "Estudios por tramos",
    "id": 41119697629,
-   "en_cola_min": 321,
+   "en_cola_min": 328,
    "trabajos_empezados": 2,
    "url": "https://github.com/alvarorm931/education/actions/runs/41119697629"
   }
@@ -135,7 +137,13 @@
    "parado": false
   }
  },
- "respaldo_programaciones": [],
+ "respaldo_programaciones": [
+  {
+   "flujo": "masters-diario.yml",
+   "prevista": "31/10 02:17",
+   "lanzado": true
+  }
+ ],
  "programaciones_tardias_canceladas": [],
  "ficheros_de_mas_de_80_mb": [],
  "latido": "en marcha",
