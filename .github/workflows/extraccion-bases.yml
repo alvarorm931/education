@@ -15,7 +15,7 @@ on:
         description: "Procesos por lote (a 0,001 $ por proceso)"
         default: "600"
       estados:
-        description: "Estados de los procesos, separados por comas (vacío: todos)"
+        description: "Estados de los procesos, separados por comas («todos» para todos)"
         default: "plazo_abierto,bases_publicadas_pendiente_boe,admitidos_provisional,admitidos_definitivo,admitidos,tribunal,examen_convocado,plazo_cerrado"
       esperar_min:
         description: "Minutos de espera al lote"

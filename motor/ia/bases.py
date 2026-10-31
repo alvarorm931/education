@@ -457,7 +457,8 @@ def main(argv: list[str] | None = None) -> int:
     if a.orden in ("lote", "preparar"):
         if a.orden == "lote":
             print(f"Resultados retirados porque su texto cambió: {retirar_caducados(a.datos)}")
-        lote, ruta_indice = preparar(a.datos, a.n, {e for e in a.estados.split(",") if e}, trabajo)
+        estados = set() if a.estados.strip() == "todos" else {e for e in a.estados.split(",") if e}
+        lote, ruta_indice = preparar(a.datos, a.n, estados, trabajo)
         if a.orden == "preparar" or not lote.read_text(encoding="utf-8").strip():
             return 0
         reqs = [json.loads(l) for l in lote.read_text(encoding="utf-8").splitlines() if l.strip()]
