@@ -1,0 +1,117 @@
+{
+ "proceso": "boplleida:BOPLLEIDA-2026-7811",
+ "documento": {
+  "id": "boplleida:BOPLLEIDA-2026-7811",
+  "fuente": "BOP-LLEIDA",
+  "url": "https://ebop.diputaciolleida.cat/aplicacions/bop/bopV1/fitxers/pdf/2026/180/202618007811.pdf",
+  "fecha": "2026-09-21",
+  "huella": "aa3928c1022b5c16c7799f5f55a3b386796e5e78d29d3cf8e2507c5e9a54c3d1"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T07:39:53+00:00",
+ "lote": "msgbatch_013q7o24qMms8ZNZdwMNkW1L",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Oficial de jardineria",
+    "Operari/ària brigada d'obres",
+    "Operari/ària cementiri",
+    "Operari/ària de jardineria"
+   ],
+   "cita": "Operari/ària 5 E Brigada d'obres Oficial de jardineria 1 C2 Jardineria",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mitjançant el sistema de concurs-oposició, per a cobrir en règim laboral fix",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Graduado escolar, graduado en ESO o FP de primer grado (grupo C2); sin titulación exigida (grupo E)",
+   "cita": "Estar en possessió del títol de graduat escolar, graduat en ESO, FP de primer grau.",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española o requisitos del art. 57 TRLEBEP; tener 16 años y no superar la edad de jubilación forzosa; capacidad funcional; no haber sido separado del servicio; permiso de conducir B (excepto 1 plaza de operario de brigada de obras)",
+   "cita": "Tenir complerts els setze anys i no superar l'edat establerta per a la jubilació forçosa.",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Catalán nivel C1 (grupo C2) o A2 (grupo E)",
+   "cita": "Acreditar el coneixement de la llengua catalana mitjançant el certificat del nivell C1",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de anuncios de la Sede Electrónica municipal, web del Ayuntamiento y BOP de Lleida",
+   "cita": "Les bases i la convocatòria es publicaran íntegrament en el Butlletí Oficial de la Província",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Prueba teórica tipo test sobre temario (máx. 10 puntos, mínimo 5)",
+    "Prueba práctica con casos relacionados con las funciones del puesto (máx. 20 puntos, mínimo 10)",
+    "Fase de concurso de méritos (máx. 20 puntos, no eliminatoria)"
+   ],
+   "cita": "La fase d'oposició, de caràcter obligatori i eliminatori, constarà d'una prova teòrica i d'una prova pràctica",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Experiencia profesional (máx. 6 puntos), formación y perfeccionamiento (máx. 1,50 puntos), otras titulaciones (máx. 2,50 puntos)",
+   "cita": "Formació i perfeccionament sobre matèries relacionades amb el lloc de treball amb un màxim de 1,50 punts",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "periodo de prueba de trabajo efectivo fijado por el Estatuto de los Trabajadores",
+   "cita": "Les persones aspirants proposades hauran de passar un període de prova de treball efectiu",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "C2 y E",
+   "cita": "Oficial de jardineria 1 C2 Jardineria Operari/ària 5 E Brigada d'obres"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "personal laboral fijo",
+   "cita": "per cobrir en règim laboral fix 5 places d'operari/ària de brigada d'obres"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 13,
+   "cita": "Lloc de treball Nombre de places Grup professional de classificació Departament Operari/ària 5 E"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 13,
+   "cita": "mitjançant concurs oposició pel torn lliure, dels llocs de treball descrits a continuació"
+  },
+  "plazas_discapacidad": {
+   "motivo": "valor_no_en_cita",
+   "valor": 0,
+   "cita": "mitjançant concurs oposició pel torn lliure, dels llocs de treball descrits a continuació"
+  },
+  "plazo_solicitudes": {
+   "motivo": "cita_no_literal",
+   "valor": "20 días hábiles desde el día siguiente a la última publicación de la convocatoria en los diarios oficiales",
+   "cita": "El termini de presentació de sol·licituds serà de 20 dies hàbils comptadors a partir de l'endemà"
+  },
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Preferentemente por la sede electrónica del Ayuntamiento o por cualquiera de las vías previstas en la normativa de procedimiento administrativo",
+   "cita": "Les instàncies hauran de presentar-se preferentment per la seu electrònica de l'Ajuntament"
+  },
+  "temas": {
+   "motivo": "cita_no_literal",
+   "valor": 20,
+   "cita": "Tema 20. La gespa: espècies utilitzades a jardineria, plantació, tasques de manteniment."
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, para cubrir necesidades temporales del Ayuntamiento: vacantes, sustituciones, programas temporales, excesos de tareas",
+   "cita": "es preveu la constitució d'una borsa de personal dels diferents llocs de treball"
+  }
+ }
+}

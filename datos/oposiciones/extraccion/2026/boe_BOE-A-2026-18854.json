@@ -1,0 +1,50 @@
+{
+ "proceso": "boe:BOE-A-2026-18854",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2026-5155",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2026/07/06_124/2026_005155.pdf",
+  "fecha": "2026-07-06",
+  "huella": "cb23ba74a8fce66f354b696219ef1ac558cae313ebd4ec18692899f0456b001e"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T07:39:55+00:00",
+ "lote": "msgbatch_013q7o24qMms8ZNZdwMNkW1L",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Ingeniera/o Técnica/o Industrial"
+   ],
+   "cita": "una plaza de Ingeniera/o Técnica/o Industrial, Escala Administración Especial, Subescala Técnica",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "A2",
+   "cita": "Grupo A, Subgrupo A2, código de plaza 1.1.8.2",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "por el sistema de concursooposición de una plaza de Ingeniera/o Técnica/o Industrial",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de Anuncios y página web del Ayuntamiento de Monóvar (https://www.monovar.es/convocatorias/)",
+   "cita": "El texto íntegro de las bases de referencia está publicado en el Tablón de Anuncios y en la página web del Ayuntamiento de Monóvar",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "para la provisión con carácter de funcionaria/o de carrera, por el sistema de concurso"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "se ha acordado la aprobación de las Bases que han de regir la convocatoria"
+  }
+ }
+}

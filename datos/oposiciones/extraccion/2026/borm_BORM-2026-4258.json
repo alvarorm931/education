@@ -1,0 +1,55 @@
+{
+ "proceso": "borm:BORM-2026-4258",
+ "documento": {
+  "id": "borm:BORM-2026-4258",
+  "fuente": "BORM",
+  "url": "https://www.borm.es/#/home/anuncio/05-09-2026/4258",
+  "fecha": "2026-09-05",
+  "huella": "3ab25c424612ee7a3976e94e51146fc832033743e636d45e71ecc5685a7e6940"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T07:40:07+00:00",
+ "lote": "msgbatch_013q7o24qMms8ZNZdwMNkW1L",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Intervención y Tesorería"
+   ],
+   "cita": "Denominación: Intervención y Tesorería.",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "A1",
+   "cita": "*Grupo/Subgrupo: A/A1.",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "Escala: Habilitación Nacional.",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles, contados a partir del día siguiente al de la publicación en el Boletín Oficial de la Región de Murcia",
+   "cita": "El plazo de presentación de instancias de participación por parte de los aspirantes, será de veinte días hábiles",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "oposición",
+   "cita": "mediante oposición libre para la generación de una bolsa de empleo"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "tablón de edictos del Ayuntamiento y sede electrónica municipal",
+   "cita": "Publicar la convocatoria y el texto íntegro de las bases reguladoras de las pruebas selectivas mediante anuncio en el tablón de edictos"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "sí, para cubrir en régimen de interinidad las plazas de Intervención y Tesorería",
+   "cita": "Convocar las pruebas selectivas mediante oposición libre para la generación de una bolsa de empleo"
+  }
+ }
+}

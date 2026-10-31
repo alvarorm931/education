@@ -1,0 +1,95 @@
+{
+ "proceso": "bopt:BOPT-2026-09179",
+ "documento": {
+  "id": "bopt:BOPT-2026-09179",
+  "fuente": "BOPT",
+  "url": "https://www.dipta.cat/bopt/web/anunci/364984/borsa-de-treball-de-netejador-a-bases-i-convocatoria-ajuntament-corbera-d-ebre",
+  "fecha": "2026-10-07",
+  "huella": "2093db342c9f2a46cca45edf456c3d5fea4aa08de139c0e537c83d38196b6fe8"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T07:39:46+00:00",
+ "lote": "msgbatch_013q7o24qMms8ZNZdwMNkW1L",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "NETEJADOR/A",
+   "cita": "constituir una borsa de treball de personal laboral temporal, denominació “NETEJADOR/A”, grup AP, nivell 12",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "AP",
+   "cita": "denominació “NETEJADOR/A”, grup AP, nivell 12, per cobrir vacants",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "constituir una borsa de treball de personal laboral temporal, denominació “NETEJADOR/A”",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "mitjançant concurs de valoració de mèrits, torn lliure",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Certificat de nivell bàsic de català (A2)",
+   "cita": "Posseir el certificat de nivell bàsic de català (A2) expedit per l’òrgan competent",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 25.15,
+   "cita": "es fixa la quantitat de 25,15 € en concepte de taxa per drets d’examen",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "5 dies hàbils a partir de l’endemà de la publicació de la convocatòria en el BOPT",
+   "cita": "El termini per presentar sol·licituds és de 5 dies hàbils a partir de l’endemà de la publicació",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "Sí, borsa de treball per cobrir vacants, substitucions i altres contingències temporals; vigència de 3 anys",
+   "cita": "La borsa tindrà una vigència de 3 anys des de la seva constitució.",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Període de prova de 2 mesos",
+   "cita": "Les persones contractades hauran de superar un període de prova de 2 mesos.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_turno_libre": {
+   "motivo": "valor_no_numerico",
+   "valor": "torn lliure",
+   "cita": "seleccionat mitjançant concurs de valoració de mèrits, torn lliure"
+  },
+  "exenciones_tasa": {
+   "motivo": "cita_no_literal",
+   "valor": "Persones amb discapacitat igual o superior al 33%; persones demandants de treball almenys un mes abans de la convocatòria, sense rebutjar ofertes adequades i amb rendes no superiors al salari mínim interprofessional",
+   "cita": "Estan exemptes del pagament de la taxa les persones aspirants amb discapacitat igual o superior al 33%."
+  },
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Preferentment al registre electrònic de l’Ens amb certificat digital o signatura electrònica; presencialment al Registre General, de dilluns a divendres de 8 a 14 h; o en altres formes de l’article 16.4 de la Llei 39/2015",
+   "cita": "Preferentment les instàncies es presentaran electrònicament al registre electrònic de l’Ens."
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Seu electrònica de l’Ajuntament de Corbera d’Ebre; a efectes informatius també a la web corporativa",
+   "cita": "La resta de publicacions del procés selectiu es realitzarà a la Seu electrònica de l’Ajuntament"
+  },
+  "ejercicios": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Concurs de valoració de mèrits: entrevista (màx. 30 punts) i mèrits professionals (màx. 70 punts)"
+   ],
+   "cita": "Es valoraran els serveis efectius prestats fins a un màxim de 70 punts"
+  },
+  "meritos": {
+   "motivo": "cita_no_literal",
+   "valor": "Entrevista fins a 30 punts; serveis prestats fins a 70 punts: 0,15 punts per dia en Ajuntaments, 0,10 en altres administracions públiques i 0,05 en el sector privat",
+   "cita": "Es valoraran els serveis efectius prestats fins a un màxim de 70 punts, d’acord amb la següent puntuació"
+  }
+ }
+}

@@ -1,0 +1,45 @@
+{
+ "proceso": "boe:BOE-A-2026-17539",
+ "documento": {
+  "id": "bopcaceres:BOP-2026-220",
+  "fuente": "BOP-CACERES",
+  "url": "https://bop.dip-caceres.es/bop/services/anuncios/contenidoPdfIdAnuncio?csv=BOP-2026-220",
+  "fecha": "2026-01-23",
+  "huella": "f535e16bf39017f26c16125c1718a3cf3adee4bd64e884a84a9c3158fa7bfae2"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T07:39:44+00:00",
+ "lote": "msgbatch_013q7o24qMms8ZNZdwMNkW1L",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "PEÓN/A ALBAÑIL"
+   ],
+   "cita": "CONCURSO OPOSICIÓN, TURNO LIBRE, PERSONAL LABORAL",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "para la cobertura en propiedad de CINCO PLAZAS DE PEÓN/A ALBAÑIL, vacantes en la plantilla de personal laboral",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mediante el sistema de concurso oposición por el turno libre, para la cobertura en propiedad",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 5,
+   "cita": "para la cobertura en propiedad de CINCO PLAZAS DE PEÓN/A ALBAÑIL, vacantes en la plantilla",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 5,
+   "cita": "mediante el sistema de concurso oposición por el turno libre, para la cobertura en propiedad"
+  }
+ }
+}

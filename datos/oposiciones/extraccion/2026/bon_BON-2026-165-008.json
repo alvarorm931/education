@@ -1,0 +1,87 @@
+{
+ "proceso": "bon:BON-2026-165-008",
+ "documento": {
+  "id": "bon:BON-2026-165-008",
+  "fuente": "BON",
+  "url": "https://bon.navarra.es/es/anuncio/-/texto/2026/165/8",
+  "fecha": "2026-08-21",
+  "huella": "d1922dcff7d4459a283f2c6ecd35dcae60c5b67dba84045e0849fd55cb9e989b"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T07:39:42+00:00",
+ "lote": "msgbatch_013q7o24qMms8ZNZdwMNkW1L",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Secretaría de las entidades locales de Navarra"
+   ],
+   "cita": "plazas vacantes del puesto de secretaría de las entidades locales de Navarra",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "personal funcionario habilitado",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "mediante traslado por concurso de méritos",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "euskera: perfil preceptivo en algunas plazas según plantilla; en la zona vascófona y mixta se valora como mérito hasta 4,6 y 2,76 puntos",
+   "cita": "conocimiento de euskera establecido en la plaza a la que se opta, conforme al Marco Común Europeo",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "diez días naturales desde el siguiente al de publicación en el Boletín Oficial de Navarra, improrrogable",
+   "cita": "plazo de diez días naturales contados a partir del siguiente al de su publicación en el Boletín Oficial de Navarra",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "telemática a través de internet, apartado Empleo Público del Portal de Navarra, ficha de la convocatoria",
+   "cita": "solicitud de inscripción de forma telemática, a través de internet, en el apartado Empleo Público",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de Navarra y tablón de anuncios del Gobierno de Navarra, y ficha web de la convocatoria en el Portal de Navarra",
+   "cita": "Tribunal publicará en el tablón de anuncios del Gobierno de Navarra y en el apartado Empleo Público",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "A) Servicios en secretaría de entidad local de Navarra: 1 punto por año, máximo 40 puntos. B) Euskera en zona vascófona hasta 4,6 puntos y en zona mixta hasta 2,76 puntos",
+   "cita": "Servicios prestados en una entidad local de Navarra en puestos de secretaría: 1 punto por año (máximo 40 puntos).",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "A1/A2",
+   "cita": "no consta"
+  },
+  "plazas_discapacidad": {
+   "motivo": "valor_no_en_cita",
+   "valor": 0,
+   "cita": "Ninguna de las plazas está reservada al turno de personas con discapacidad."
+  },
+  "ejercicios": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Sin ejercicios: concurso de méritos"
+   ],
+   "cita": "sistema de concurso de méritos mediante traslado"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "no",
+   "cita": "no consta"
+  },
+  "practicas_o_curso": {
+   "motivo": "cita_no_literal",
+   "valor": "no",
+   "cita": "no consta"
+  }
+ }
+}

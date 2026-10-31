@@ -1,0 +1,94 @@
+{
+ "proceso": "dogv:489452",
+ "documento": {
+  "id": "dogv:489452",
+  "fuente": "DOGV",
+  "url": "https://dogv.gva.es/datos/2026/09/10/pdf/2026_28125_es.pdf",
+  "fecha": "2026-09-10",
+  "huella": "d4bcc521cf51722d6744ce56e3f33fe74cb9cdad5f8816a799ee5ef4cfb337ea"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T07:39:56+00:00",
+ "lote": "msgbatch_013q7o24qMms8ZNZdwMNkW1L",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Investigador/a no doctor/a (Anexo I)",
+    "Investigador/a no doctor/a (Anexo II)"
+   ],
+   "cita": "Oferta pública de un puesto de trabajo de investigador/a no doctor/a.",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "A1",
+   "cita": "Grupo: A. Subgrupo: A1.",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "Convocar la oferta pública de diferentes plazas de este organismo con contrato laboral",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "Esta oferta tiene por objeto la selección de personal para cubrir un puesto de personal laboral",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "cubrir un puesto de personal laboral para las líneas de investigación mediante el sistema de concurso.",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "grado/licenciatura en Física (Anexo I); licenciatura/grado en Ciencia y Tecnología de los Alimentos (Anexo II)",
+   "cita": "Titulación: grado/licenciatura en Física.",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española o de país miembro de la UE o con permiso de trabajo y residencia; tener al menos 16 años; no padecer enfermedad incompatible; no estar inhabilitado para funciones públicas.",
+   "cita": "Tener cumplidos, al menos, 16 años el día en que finaliza el plazo de presentación de solicitudes.",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Certificado oficial de valenciano nivel C1 (mérito preferente, Anexo I)",
+   "cita": "Certificado oficial de valenciano nivel C1.",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Diez días hábiles a partir del siguiente hábil al de la publicación de la resolución en el DOGV",
+   "cita": "El plazo de presentación de las solicitudes será de diez días hábiles a partir del siguiente hábil",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "DOGV, tablón de anuncios de la Universitat de València y página web del Servei de Recursos Humans PTGAS-PI",
+   "cita": "Esta convocatoria se publicará en el Diari Oficial de la Generalitat Valenciana (DOGV), en el Tablón de anuncios de la Universitat de València",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Concurso: valoración de méritos curriculares",
+    "Entrevista (en su caso, a criterio de la comisión)"
+   ],
+   "cita": "El proceso selectivo constará de un concurso que consistirá en la valoración de los méritos curriculares",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, para llamamientos mientras dure la línea de investigación",
+   "cita": "Las bolsas de trabajo que deriven de estos procesos selectivos permanecerán vigentes mientras dure la línea de investigación",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Solicitud electrónica obligatoria a través de la solicitud electrónica de la Universitat de València, cuyo enlace se publica en la web del Servei de Recursos Humans PTGAS-PI",
+   "cita": "deberán presentar la solicitud, junto con el currículo y los documentos que acrediten los méritos, obligatoriamente, a través de la solicitud electrónica"
+  },
+  "meritos": {
+   "motivo": "cita_no_literal",
+   "valor": "Méritos preferentes: nota media del expediente (base 10), beca de colaboración (0,05), premio extraordinario (0,25), publicaciones (hasta 1,70) y otros méritos relacionados (hasta 3 puntos)",
+   "cita": "Méritos preferentes: nota media del expediente académico de los estudios de licenciatura"
+  }
+ }
+}

@@ -1,0 +1,115 @@
+{
+ "proceso": "dogc:1055672",
+ "documento": {
+  "id": "dogc:1055672",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1055672",
+  "fecha": "2026-10-02",
+  "huella": "d8eee7e9cb4c6846cbe7cf2e9dd259dce82745a8f130c0d086255f625544cad4"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T07:39:43+00:00",
+ "lote": "msgbatch_013q7o24qMms8ZNZdwMNkW1L",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Arquitecto/a municipal (arquitecto/a superior)"
+   ],
+   "cita": "Denominació del lloc de treball: Arquitecte/a superior",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "A1",
+   "cita": "Grup i subgrup de classificació: A1",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "personal funcionari/ària de carrera, de l'Ajuntament de Sant Pere de Vilamajor",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "procediment de concurs oposició en torn lliure, d'una plaça d'arquitecte/a",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "Nombre de places: 1",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Título universitario oficial superior en arquitectura (licenciatura o grado) que habilite para el ejercicio de la profesión de arquitecto/a",
+   "cita": "Estar en possessió del títol universitari oficial superior en arquitectura (llicenciatura o grau)",
+   "nivel": "sin_signos"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española, de otro Estado miembro de la UE o de los Estados aplicables; tener 16 años y no superar la edad de jubilación forzosa; capacidad funcional; permiso de conducir clase B; no tener antecedentes penales",
+   "cita": "Haver complert 16 anys i no superar l'edat establerta per a la jubilació forçosa",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "catalán, nivel C1 (suficiencia)",
+   "cita": "Acreditar el coneixement adequat, oral i escrit, de la llengua catalana, i en concret, amb el nivell de suficiència (nivell C1)",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles desde el día siguiente a la publicación de la convocatoria en el DOGC",
+   "cita": "termini de presentació de sol·licituds serà de vint (20) dies hàbils comptadors a partir de l'endemà de la publicació al DOGC",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Registro electrónico preferente del Ayuntamiento u otros registros, presencial en el registro municipal, Correos o representaciones consulares",
+   "cita": "Preferentment en el registre electrònic de l'Ajuntament o en el registre electrònic de les administracions públiques",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de anuncios del web municipal (www.vilamajor.cat); BOPB para bases y nombramiento; DOGC en extracto",
+   "cita": "Els anuncis publicats al BOPB i al DOGC es publicaran igualment al tauler d'anuncis del web municipal",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Primera prueba teórica tipo test de 40 preguntas (eliminatoria, mínimo 10 puntos sobre 20)",
+    "Segunda prueba práctica con dos supuestos prácticos (mínimo 10 puntos sobre 20)",
+    "Prueba de conocimientos de lengua catalana (apto/no apto, eliminatoria)",
+    "Prueba de conocimientos de lengua castellana si procede (apto/no apto, eliminatoria)",
+    "Fase de concurso: valoración de méritos (máximo 10 puntos)",
+    "Entrevista personal: valoración de competencias"
+   ],
+   "cita": "Fase d'oposició (40 punts)",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, para cubrir posibles vacantes durante dos años",
+   "cita": "La resta de persones aspirants que hagin superat el procés passaran a formar part d'una borsa de treball",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "Sistema: Concurs oposició. Torn lliure"
+  },
+  "temas": {
+   "motivo": "cita_no_literal",
+   "valor": {
+    "general": 40,
+    "especifico": 70
+   },
+   "cita": "Llegint el temari: Temari general (20 temes) i temari específic de 70 temes"
+  },
+  "meritos": {
+   "motivo": "cita_no_literal",
+   "valor": "Experiencia laboral en administraciones públicas hasta 5 puntos (0,15 por mes local, 0,10 otras); formación hasta 5 puntos; conocimientos informáticos hasta 1 punto",
+   "cita": "Fase de concurs: valoració de mèrits; Experiència laboral (Màxim 5 punts)"
+  },
+  "practicas_o_curso": {
+   "motivo": "cita_no_literal",
+   "valor": "Periodo de prácticas de seis meses como funcionario/a en prácticas antes del nombramiento como funcionario/a de carrera",
+   "cita": "El període de pràctiques ... tindrà una durada de sis mesos"
+  }
+ }
+}

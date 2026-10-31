@@ -1,0 +1,58 @@
+{
+ "proceso": "boe:BOE-A-2026-19234",
+ "documento": {
+  "id": "dogv:488549",
+  "fuente": "DOGV",
+  "url": "https://dogv.gva.es/datos/2026/09/08/pdf/2026_27222_es.pdf",
+  "fecha": "2026-09-08",
+  "huella": "1319f3251c6ec1bf09ba1f41daf96cb7f3d3e0a8788306626d4b92d75e4c580d"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T07:39:42+00:00",
+ "lote": "msgbatch_013q7o24qMms8ZNZdwMNkW1L",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "arquitecto o arquitecta",
+   "cita": "se han publicado las bases específicas y la convocatoria para cubrir con carácter definitivo una plaza de arquitecto o arquitecta",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "cubrir con carácter definitivo una plaza de arquitecto o arquitecta vacante en la plantilla",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "por el sistema de concurso-oposición, turno libre, correspondiente a la oferta",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "cubrir con carácter definitivo una plaza de arquitecto o arquitecta vacante",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "diez días hábiles a contar desde el día siguiente a la publicación del extracto de este anuncio en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes será de diez días hábiles a contar desde el día siguiente a la publicación del extracto",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia de Castellón",
+   "cita": "La relación provisional de aspirantes admitidos y excluidos se publicará en el Boletín Oficial de la Provincia de Castellón",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "A1",
+   "cita": "ayuntamiento para el año 2025"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "por el sistema de concurso-oposición, turno libre, correspondiente a la oferta"
+  }
+ }
+}

@@ -1,0 +1,58 @@
+{
+ "proceso": "dogc:1054479",
+ "documento": {
+  "id": "dogc:1054479",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1054479",
+  "fecha": "2026-09-16",
+  "huella": "ab63e7b7c79086169672bef853db462664a84e5d6629866949d58830b62a4513"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T07:39:46+00:00",
+ "lote": "msgbatch_013q7o24qMms8ZNZdwMNkW1L",
+ "no_son_bases": false,
+ "campos": {
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mitjançant concurs oposició per torn lliure i la creació de la borsa de treball corresponent",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "el procés de selecció i provisió d'una plaça d'Arquitecte/a Tècnic/a",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días naturales, contados desde el día siguiente a la publicación del extracto de la convocatoria en el DOGC",
+   "cita": "El termini per a la presentació de sol·licituds és de vint dies naturals, comptats des de l'endemà",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia de Girona y tablón de edictos del Ayuntamiento, una vez publicado en el DOGC",
+   "cita": "es publicaran al tauler d'edictes de l'Ajuntament una vegada publicat al DOGC",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, para crear una bolsa de trabajo correspondiente al proceso",
+   "cita": "la creació de la borsa de treball corresponent",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Arquitecte/a Tècnic/a",
+   "cita": "la provisió d'una plaça d'Arquitecte/a Tècnic/a, en règim laboral, mitjançant concurs oposició per torn lliure"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "laboral temporal",
+   "cita": "la provisió d'una plaça d'Arquitecte/a Tècnic/a, en règim laboral, mitjançant concurs oposició"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "mitjançant concurs oposició per torn lliure i la creació de la borsa"
+  }
+ }
+}

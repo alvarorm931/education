@@ -1,0 +1,55 @@
+{
+ "proceso": "dog:DOG-20261016-AnuncioG2017-081026-0001",
+ "documento": {
+  "id": "dog:DOG-20261016-AnuncioG2017-081026-0001",
+  "fuente": "DOG",
+  "url": "https://www.xunta.gal/dog/Publicados/2026/20261016/AnuncioG2017-081026-0001_es.html",
+  "fecha": "2026-10-16",
+  "huella": "b49352d9eb77ad0fc87335c26861b04574da3ee1b8be76769fc71057e1f59add"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T07:39:48+00:00",
+ "lote": "msgbatch_013q7o24qMms8ZNZdwMNkW1L",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Profesor/a permanente laboral"
+   ],
+   "cita": "Profesor/a permanente laboral: Oferta de empleo público año 2024",
+   "nivel": "sin_signos"
+  },
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "se convoca un concurso público para la contratación de personal docente e investigador",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "se convoca un concurso público para la contratación de personal docente e investigador",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "diez días hábiles a contar desde el día siguiente al de la publicación del presente anuncio en el Diario Oficial de Galicia",
+   "cita": "El plazo de presentación de solicitudes es de diez días hábiles a contar desde el día siguiente",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "tablón electrónico oficial de la UDC y página web de la Universidad",
+   "cita": "puede consultarse en el tablón electrónico oficial de la UDC y en la página web de la Universidad",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 32,
+   "cita": "Oferta de empleo público año 2026: 25 plazas"
+  },
+  "plazas_discapacidad": {
+   "motivo": "valor_no_en_cita",
+   "valor": 0,
+   "cita": "2 plazas reservadas para la incorporación de personal investigador del Programa Ramón y Cajal"
+  }
+ }
+}

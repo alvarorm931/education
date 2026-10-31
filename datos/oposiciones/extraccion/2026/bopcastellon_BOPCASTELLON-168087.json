@@ -1,0 +1,80 @@
+{
+ "proceso": "bopcastellon:BOPCASTELLON-168087",
+ "documento": {
+  "id": "bopcastellon:BOPCASTELLON-168087",
+  "fuente": "BOP-CASTELLON",
+  "url": "https://bop.dipcas.es/PortalBOP/api/descargarAnuncio?idAnuncio=168087&idioma=es",
+  "fecha": "2026-09-22",
+  "huella": "7847b62d08a4a4c6510b4930efc9293f041ae9a32467fa512796787a37939bc8"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T07:39:47+00:00",
+ "lote": "msgbatch_013q7o24qMms8ZNZdwMNkW1L",
+ "no_son_bases": false,
+ "campos": {
+  "sistema": {
+   "valor": "concurso",
+   "cita": "por el sistema extraordinario de CONCURSO DE MÉRITOS, para proveer una lista",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española o de otro estado que permita el acceso al empleo público; haber cumplido dieciséis años y no exceder la edad máxima de jubilación; no haber sido separado de la Administración ni inhabilitado; no haber sido condenado por delitos contra la libertad e indemnidad sexual.",
+   "cita": "Tener la nacionalidad española o alguna otra que permita el acceso al empleo público.",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Valenciano: competencia lingüística según la normativa reglamentaria",
+   "cita": "Acreditar la competencia lingüística en los conocimientos de valenciano que se determine reglamentariamente",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Veinte días naturales desde el siguiente al de la publicación en el BOP de Castellón",
+   "cita": "será de veinte días naturales, desde el siguiente al de la publicación en el BOP de Castellón",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Telemáticamente, exclusivamente a través de la sede electrónica del CHPUCS (chpcs.sedelectronica.es), Catálogo de Trámites, carpeta Bolsa de Empleo Temporal",
+   "cita": "se realizará únicamente de forma telemática y exclusivamente a través del enlace situado en la página web",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Experiencia hasta 6 puntos (0,15/mes en Administración; 0,05/mes en empresa privada, máx. 1); cursos hasta 2 puntos; titulación superior hasta 0,5; trabajos docentes/investigación hasta 1; valenciano hasta 1,5",
+   "cita": "A) EXPERIENCIA: Hasta un máximo de 6 puntos, siempre que la experiencia esté acreditada fehacientemente.",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, bolsa de empleo temporal para cubrir necesidades temporales de la categoría",
+   "cita": "CONVOCAR BOLSA DE EMPLEO TEMPORAL por el sistema extraordinario de CONCURSO DE MÉRITOS",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Periodo de prueba según el Estatuto de los Trabajadores y convenio colectivo, reflejado en el contrato",
+   "cita": "sujeto a la superación del periodo de prueba establecido en el Estatuto de los Trabajadores",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "FACULTATIVO/A ESPECIALISTA EN FARMACIA HOSPITALARIA"
+   ],
+   "cita": "Convocatoria Bolsa de Empleo Temporal de FACULTATIVO/A ESPECIALISTA EN FARMACIA HOSPITALARIA"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "laboral temporal",
+   "cita": "constituir bolsas de empleo temporal... Para proveer una lista de personal de carácter laboral temporal"
+  },
+  "titulacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Licenciatura/Grado en Farmacia y Especialidad en Farmacia Hospitalaria",
+   "cita": "TITULACIÓN EXIGIBLE: Licenciatura/Grado en Farmacia y Especialidad en Farmacia Hospitalaria."
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Página web del Consorci (www.hospitalprovincial.es); además extracto en el DOGV",
+   "cita": "se publicará en la web del Consorci. Asimismo, se publicará un extracto en el DOGV"
+  }
+ }
+}

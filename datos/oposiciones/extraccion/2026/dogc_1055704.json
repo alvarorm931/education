@@ -1,0 +1,50 @@
+{
+ "proceso": "dogc:1055704",
+ "documento": {
+  "id": "dogc:1055704",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1055704",
+  "fecha": "2026-10-02",
+  "huella": "c85cdcdc1acb7c030b614624a1bb7ffdec3ee178ef2c5354f9dd6bea7c7aba78"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T07:39:58+00:00",
+ "lote": "msgbatch_013q7o24qMms8ZNZdwMNkW1L",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "A2",
+   "cita": "tècnic/a de grau mitjà de serveis econòmics (grup A2)",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "mobilitat de funcionaris entre Administracions Públiques, per a ocupar una plaça de personal funcionari",
+   "nivel": "sin_signos"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "procés de selecció mitjançant concurs interadministratiu (mobilitat de funcionaris entre Administracions Públiques)",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días naturales desde el día siguiente a la publicación del anuncio en el DOGC",
+   "cita": "El termini per a la presentació de sol·licituds és de vint dies naturals, comptats des de l'endemà de la publicació",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia de Girona y tablón de edictos electrónico de la Diputación de Girona; los actos de trámite solo en el tablón electrónico",
+   "cita": "es publicaran el dia 2 d'octubre de 2026, íntegrament, al Butlletí Oficial de la Província de Girona i al tauler d'edictes electrònic",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "tècnic/a de grau mitjà de serveis econòmics"
+   ],
+   "cita": "per ocupar una plaça de personal funcionari de la Diputació de Girona de tècnic/a de grau mitjà de serveis econòmics"
+  }
+ }
+}

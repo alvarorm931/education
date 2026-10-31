@@ -1,0 +1,107 @@
+{
+ "proceso": "boe:BOE-A-2026-20635",
+ "documento": {
+  "id": "bopvalencia:BOPVALENCIA-2026-08590",
+  "fuente": "BOP-VALENCIA",
+  "url": "https://bop.dival.es/bop/downloads?anuncioNumReg=2026/08590&lang=va",
+  "fecha": "2026-07-13",
+  "huella": "b4a76557dcf3f2fc4a67548633e374b8e371dda319088346cb78cc67f9649c24"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T07:39:59+00:00",
+ "lote": "msgbatch_013q7o24qMms8ZNZdwMNkW1L",
+ "no_son_bases": false,
+ "campos": {
+  "plazas_turno_libre": {
+   "valor": 1,
+   "cita": "una es proveirà mitjançant oposició per torn lliure i una per torn de mobilitat",
+   "nivel": "sin_signos"
+  },
+  "plazas_promocion_interna": {
+   "valor": 1,
+   "cita": "una es proveirà mitjançant oposició per torn lliure i una per torn de mobilitat",
+   "nivel": "sin_signos"
+  },
+  "titulacion": {
+   "valor": "Bachiller o técnico o titulación equivalente, o cumplir las condiciones para obtenerla al finalizar el plazo de presentación",
+   "cita": "Estar en possessió del títol de batxiller o tècnic o, si és el cas, de la titulació equivalent",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "10 días hábiles desde el día siguiente a la publicación de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "termini de 10 dies hàbils, comptats a partir de l'endemà de la publicació de la convocatòria en el Butlletí Oficial de l'Estat",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Por medios telemáticos, mediante el modelo normalizado; registro general del Ayuntamiento o lugares del artículo 16.4 de la Ley 39/2015",
+   "cita": "haurà de presentar-se, per mitjans telemàtics, en el termini de 10 dies hàbils",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia de València, tablón de anuncios electrónico y página web municipal, y sede electrónica",
+   "cita": "Així mateix, es publicaran en el tauler d'anuncis electrònic de l'Ajuntament i en la pàgina web municipal",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Prueba de aptitud física (obligatoria y eliminatoria, apto/no apto)",
+    "Prueba psicotécnica (obligatoria y eliminatoria, apto/no apto)",
+    "Examen tipo test de 50 preguntas (0 a 50 puntos, mínimo 25)",
+    "Supuesto práctico de 1 hora (0 a 50 puntos, mínimo 25)",
+    "Examen de conocimiento del valenciano (no eliminatorio, máximo 4 puntos)",
+    "Reconocimiento médico (obligatorio y eliminatorio, apto/no apto)"
+   ],
+   "cita": "Primer exercici. Proves d'aptitud física, de caràcter obligatori i eliminatori",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Concurso de movilidad conforme al Anexo VII del Decreto 179/2021 (antigüedad, formación, etc.); la valoración de servicios prestados (apartado D)1.2) fue anulada por sentencia",
+   "cita": "Per a la valoració dels referits serveis prestats, se atendrà a lo següent",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, bolsa de trabajo para nombramiento como personal funcionario interino con aspirantes que superen el ejercicio tipo test",
+   "cita": "El Tribunal podrà proposar la constitució d'una borsa de treball per al nomenament com a personal funcionari interí",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Curso selectivo teórico-práctico en el IVASPE y periodo de prácticas de doce semanas en el municipio correspondiente",
+   "cita": "un curs de caràcter selectiu de contingut teoricopràctic, a celebrar en l'IVASPE, i un període de pràctiques de dotze setmanes",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Agente de la Policía Local (Escala Básica, Subescala de Servicios Especiales, Clase Policía Local y sus auxiliares)"
+   ],
+   "cita": "Provisión en propiedad de dos plazas de Agente de la Policía Local, vacantes en la plantilla"
+  },
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "C1",
+   "cita": "Grupo C, Subgrupo C1 de titulación"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "Provisión en propiedad de dos plazas de Agente de la Policía Local, vacantes en la plantilla"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "oposición",
+   "cita": "una plaza se proveerá mediante oposición por turno libre y otra por turno de movilidad"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 2,
+   "cita": "provisión en propiedad de dos plazas de Agente de la Policía Local, vacantes en la plantilla"
+  },
+  "otros_requisitos": {
+   "motivo": "cita_no_literal",
+   "valor": "Nacionalidad española; no inhabilitado ni separado del servicio; sin antecedentes penales; mínimo 18 años; permisos de conducción B y A2; compromiso de portar armas; alturas mínimas 1,65 m hombres y 1,58 m mujeres; no padecer enfermedad o defecto físico impeditivo",
+   "cita": "Tindre la nacionalitat espanyola. No tindre antecedents penals. Tindre, com a mínim, díhuit anys"
+  }
+ }
+}

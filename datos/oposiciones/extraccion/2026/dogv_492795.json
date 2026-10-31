@@ -1,0 +1,90 @@
+{
+ "proceso": "dogv:492795",
+ "documento": {
+  "id": "dogv:492795",
+  "fuente": "DOGV",
+  "url": "https://dogv.gva.es/datos/2026/10/14/pdf/2026_31468_es.pdf",
+  "fecha": "2026-10-14",
+  "huella": "e27dc49f97bb0ba84e464491704a47e0174b5e2405bc8908e67ec2226d4668ee"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T07:39:51+00:00",
+ "lote": "msgbatch_013q7o24qMms8ZNZdwMNkW1L",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Ingeniería de montes"
+   ],
+   "cita": "Ingeniería de montes Turno libre",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "la provisión, como personal laboral indefinido, de dos puestos",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "El proceso de selección se realizará a través del sistema de concurso-oposición",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 2,
+   "cita": "la provisión, como personal laboral indefinido, de dos puestos incluidos",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Se acredita el abono o exención a través del trámite telemático de presentación de la solicitud; el importe figura en las bases",
+   "cita": "acreditado su abono o exención a través del mismo trámite telemático de presentación de la solicitud",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "15 días naturales, contados a partir del día siguiente al de la publicación de esta convocatoria en el Diari Oficial de la Generalitat Valenciana",
+   "cita": "El plazo para la presentación de solicitudes será de 15 días naturales, contados a partir del día siguiente",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Telemáticamente a través de la plataforma del Portal de Empleo de VAERSA, previa aceptación de la política de privacidad y acreditación de méritos en la misma plataforma",
+   "cita": "Dicha acreditación deberá realizarse necesariamente a través de la plataforma informática destinada a ello",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Portal de Empleo de VAERSA (https://empleo.portalvaersa.com)",
+   "cita": "Los sucesivos anuncios que procedan relativos a esta convocatoria, se publicarán en el Portal de Empleo de VAERSA",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Autobaremación provisional de la candidatura (sin efectos en el proceso)",
+    "Revisión de requisitos de acceso por el OTS (eliminatoria)",
+    "Prueba técnica teórico-práctica (eliminatoria, 60 % de la puntuación)",
+    "Baremación de méritos según perfil y baremo de la oferta (40 %)"
+   ],
+   "cita": "Pruebas técnicas de carácter teórico-práctico relacionadas con las funciones a desempeñar",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Baremación de las candidaturas en función del perfil profesional y baremo de la oferta de trabajo, hasta 40,00 puntos",
+   "cita": "Baremación de las candidaturas en función del perfil profesional y baremo de la oferta de trabajo",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "no",
+   "cita": "Los puestos de trabajo que se convoquen por el turno de promoción interna o diversidad funcional y resulten desiertos tras el correspondiente proceso selectivo, se acumularán",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 2,
+   "cita": "Ingeniería de montes Turno libre"
+  },
+  "plazas_discapacidad": {
+   "motivo": "cita_no_literal",
+   "valor": 1,
+   "cita": "Diversidad funcional DF inoF"
+  }
+ }
+}
