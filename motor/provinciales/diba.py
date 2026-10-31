@@ -137,6 +137,24 @@ def _ruta(b: Boletin, raiz: Path, carpeta: str, d: date, ext: str = "jsonl") -> 
     return _base(b, raiz) / carpeta / f"{d:%Y}" / f"{d:%m}" / f"{d:%d}.{ext}"
 
 
+# Fiestas locales de la capital (el boletín no sale): Barcelona, Lunes de Pascua Granada y La Mercè; Tarragona, Sant
+# Magí y Santa Tecla
+FIESTAS_CAPITAL = {"Barcelona": ("pascua+50", "09-24"), "Tarragona": ("08-19", "09-23")}
+
+
+def festivo(b: Boletin, d: date) -> bool:
+    from datetime import timedelta
+    from motor.calendario import domingo_de_pascua, es_habil
+    if not es_habil(d, "09"):
+        return True
+    for f in FIESTAS_CAPITAL.get(b.provincia, ()):
+        if f == "pascua+50" and d == domingo_de_pascua(d.year) + timedelta(days=50):
+            return True
+        if f == f"{d:%m-%d}":
+            return True
+    return False
+
+
 def procesar_dia(b: Boletin, d: date, raiz: Path, archivo: Archivo, pausa: float = 1.0) -> dict:
     informe = {"fecha": d.isoformat(), "alertas": []}
     anuncios, total, paginas = [], None, 1
@@ -146,8 +164,13 @@ def procesar_dia(b: Boletin, d: date, raiz: Path, archivo: Archivo, pausa: float
         r = obtener(url, accept="text/html")
         informe["status"] = r.status
         if r.status != 200:
-            if pagina == 1 and r.status >= 500 and d.weekday() >= 5:
+            if pagina == 1 and r.status >= 500 and (d.weekday() >= 5 or festivo(b, d)):
+                # Los días sin boletín (fines de semana y festivos) el servicio responde 500 en vez de una lista
+                # vacía: 40 de los 47 días «con error» del BOPB eran festivos de Cataluña; los demás, locales de la
+                # capital (31/10/2026)
                 informe["resultado"] = "sin_boletin"
+                if d.weekday() < 5:
+                    informe["nota"] = "festivo (el servicio responde HTTP 500)"
                 return informe
             informe["resultado"] = "error_http"
             informe["alertas"].append(f"{b.siglas} {d} página {pagina}: HTTP {r.status}")
