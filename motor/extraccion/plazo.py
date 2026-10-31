@@ -35,7 +35,8 @@ from motor.boe.clasificar import normalizar
 from motor.extraccion.texto_es import MESES, numero
 from motor.calendario import etiqueta, fin_de_plazo, fin_de_plazo_meses
 
-VERSION = "plazo_general_v4"  # v4 (31/10/2026): frases partidas tras «Sra.», «veinte (20) días», fin con fecha
+VERSION = "plazo_general_v5"  # v5 (31/10/2026): frases sin «plazo» o sin «solicitud» que cuentan desde la
+# publicación de la convocatoria; v4: frases partidas tras «Sra.», «veinte (20) días», fin con fecha
 # v3 (30/10/2026): festivos de la comunidad del convocante
 
 L = r"a-záéíóúñàèòïüç·"  # letras de castellano, catalán y gallego
@@ -131,19 +132,52 @@ def _fecha(d: str, m: str | None, a: str | None, referencia: date) -> date | Non
         return None
 
 
-def _candidata(f: str) -> bool:
+# Lo que se publica y abre el plazo («desde la publicación de la convocatoria / de las bases / de este anuncio…»)
+RE_PUBLICACION_DE = re.compile(
+    r"publicaci[oó]n?\s+(?:\w+\s+){0,4}?(?:de\s+la\s+convocatoria|de\s+las\s+bases|del\s+anuncio|de\s+este\s+anuncio|"
+    r"de\s+esta\s+resoluci[oó]n|de\s+la\s+presente|del\s+presente|del\s+extracto|de\s+la\s+resoluci[oó]n\s+de\s+convocatoria|"
+    r"de\s+la\s+convocat[oò]ria|de\s+les\s+bases|de\s+l'anunci|d'aquest\s+anunci|d'aquesta\s+resoluci[oó]|del\s+present|"
+    r"da\s+convocatoria|das\s+bases|deste\s+anuncio|desta\s+resoluci[oó]n)|a\s+esta\s+publicaci[oó]n|su\s+publicaci[oó]n|"
+    r"la\s+seva\s+publicaci[oó]|s[uú]a\s+publicaci[oó]n", re.IGNORECASE)
+
+
+def _candidata(f: str) -> int:
+    """0 si la frase no es del plazo de solicitudes. 1 si dice plazo y solicitud (o instancia); 2 si dice solicitud
+    (o presentar) sin la palabra plazo («disponen de 15 días naturales para presentar la solicitud, contados a partir
+    del día siguiente a la publicación de esta resolución»); 3 si dice plazo sin decir de qué, pero cuenta desde la
+    publicación de la convocatoria o de las bases («El plazo es de quince días hábiles, a contar a partir del día
+    siguiente al de la publicación de la convocatoria en el BOIB», tras el título «Plazo»)."""
     n = normalizar(f).replace("l·l", "l·l").replace("l.l", "l·l")
-    if not any(x in n for x in ("plazo", "termini", "prazo")):
-        return False
-    if not any(x in n for x in ("solicitud", "instancia", "sol·licitud", "sollicitud", "instanci")):
-        return False
     m = RE_DIAS.search(f) or RE_MESES.search(f) or RE_INTERVALO.search(f) or RE_FIN_EXPLICITO.search(f)
     if not m:
-        return False
+        return 0
     # Lo que excluye se mira hasta poco después del plazo: una frase larga puede seguir con otra cosa («… y contendrán
     # los requisitos… de la provisión de plazas de nombramiento discrecional», CGPJ)
     ventana = normalizar(f[:m.end() + 200]).replace("l.l", "l·l")
-    return not any(x in ventana for x in EXCLUIR)
+    if any(x in ventana for x in EXCLUIR):
+        return 0
+    plazo = any(x in n for x in ("plazo", "termini", "prazo"))
+    solicitud = any(x in n for x in ("solicitud", "instancia", "sol·licitud", "sollicitud", "instanci"))
+    if plazo and solicitud:
+        return 1
+    # Sin una de las dos palabras, solo si no habla de otra cosa (documentación de los aprobados, recursos,
+    # contratos, licitaciones…) y cuenta desde la publicación de la convocatoria (muestra del 31/10/2026)
+    if any(x in ventana for x in EXCLUIR_SIN_SOLICITUD):
+        return 0
+    publicacion = RE_PUBLICACION_DE.search(f)
+    if solicitud:
+        return 2 if publicacion else 0
+    return 3 if plazo and RE_PUBLICACION_CONVOCATORIA.search(f) else 0
+
+
+EXCLUIR_SIN_SOLICITUD = ("documentaci", "documents", "recurr", "reposici", "recus", "contrato", "contracte", "licitaci",
+                         "expresiones de interes", "cese", "opcion", "errores", "acredit", "juramento", "formalizaci",
+                         "incorporaci", "alega", "reclama", "subsana", "toma de", "presa de", "tribunal", "aprobad",
+                         "seleccionad", "propuest", "lista", "relacion", "llista", "relacio")
+RE_PUBLICACION_CONVOCATORIA = re.compile(
+    r"publicaci[oó]n?\s+(?:\w+\s+){0,3}?(?:de\s+la\s+convocatoria|de\s+las\s+bases|del\s+extracto|"
+    r"del\s+anuncio\s+de\s+(?:la\s+)?convocatoria|de\s+la\s+convocat[oò]ria|de\s+les\s+bases|"
+    r"de\s+l'anunci\s+de\s+(?:la\s+)?convocat[oò]ria|da\s+convocatoria|das\s+bases)", re.IGNORECASE)
 
 
 PARTICULAS_FINALES = re.compile(r"(?:\s+(?:de|del|la|las|les|los|i|y))+$")
@@ -198,18 +232,22 @@ def extraer_plazo(texto: str, publicacion: str, boletin_propio: str | tuple[str,
     """
     pub = date.fromisoformat(publicacion)
     propios = {normalizar(b) for b in ((boletin_propio,) if isinstance(boletin_propio, str) else boletin_propio)}
-    candidatas = [f for f in frases(texto) if _candidata(f)]
+    candidatas = [(f, k) for f in frases(texto) if (k := _candidata(f))]
     if not candidatas:
         return None
-    candidatas.sort(key=lambda f: 0 if any(x in normalizar(f) for x in PREFERIR) else 1)
-    # la primera que da la fecha de fin; si ninguna, la primera que da el plazo
-    primera = None
-    for f in candidatas[:8]:
-        r = _plazo_de_frase(f, pub, propios, comunidad)
-        if r and r.get("fin_estimado"):
-            return r
-        primera = primera or r
-    return primera
+    candidatas.sort(key=lambda fk: (fk[1], 0 if any(x in normalizar(fk[0]) for x in PREFERIR) else 1))
+    # Por clase de frase (ver _candidata): la primera que da la fecha de fin; si ninguna, la primera que da el plazo.
+    # Una frase de una clase peor solo cuenta si ninguna de las mejores da el plazo
+    for clase in (1, 2, 3):
+        primera = None
+        for f, _ in [fk for fk in candidatas if fk[1] == clase][:8]:
+            r = _plazo_de_frase(f, pub, propios, comunidad)
+            if r and r.get("fin_estimado"):
+                return r
+            primera = primera or r
+        if primera:
+            return primera
+    return None
 
 
 # Nombre genérico del boletín propio, sin la provincia o la comunidad («… desde el siguiente al de la publicación en el

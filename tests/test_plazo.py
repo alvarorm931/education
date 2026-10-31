@@ -191,3 +191,20 @@ def test_boletin_propio_con_otro_nombre_o_generico():
     # en un boletín autonómico, «el Boletín Oficial de la Provincia» es otro boletín
     r = extraer_plazo(t, "2026-03-02", "Diari Oficial de la Generalitat de Catalunya")
     assert r["dias"] == 10 and not r.get("fin_estimado")
+
+
+def test_frases_sin_plazo_o_sin_solicitud():
+    boib = "Butlletí Oficial de les Illes Balears"
+    t = "Plazo\nEl plazo es de quince días hábiles, a contar a partir del día siguiente al de la publicación de la convocatoria en el BOIB."
+    assert extraer_plazo(t, "2026-03-02", boib)["dias"] == 15
+    t = ("Las personas interesadas en participar en la convocatoria disponen de 15 días naturales para presentar la "
+         "solicitud, contados a partir del día siguiente a la publicación de esta resolución en el BOIB.")
+    assert extraer_plazo(t, "2026-03-02", boib)["fin_estimado"]
+    # lo que no es el plazo de solicitudes, aunque cuente desde una publicación
+    for t in ("Las personas relacionadas deberán presentar la documentación en el plazo de 10 días hábiles contados desde "
+              "el siguiente al de la publicación de la presente resolución en el BOIB.",
+              "La formalización del contrato deberá realizarse en el plazo de un mes a partir del día siguiente de su "
+              "publicación en el BOIB.",
+              "El presente acuerdo podrá ser recurrido potestativamente en reposición en el plazo de un mes a contar desde "
+              "el día siguiente al de su publicación."):
+        assert extraer_plazo(t, "2026-03-02", boib) is None, t

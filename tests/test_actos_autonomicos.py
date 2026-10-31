@@ -20,7 +20,7 @@ def test_acto_con_plazo_desde_el_propio_boletin(tmp_path):
     salida = [json.loads(l) for l in (tmp_path / "datos/autonomicos/actos/bocyl/2026/10.jsonl").read_text().splitlines()]
     a = salida[0]
     assert a["id"] == "bocyl:BOCYL-D-28102026-209-2" and a["fuente"] == "BOCYL"
-    assert a["plazo"]["fin_estimado"] == "2026-11-26" and a["extraccion"] == "plazo_general_v4"  # 2/11 festivo en CyL
+    assert a["plazo"]["fin_estimado"] == "2026-11-26" and a["extraccion"] == "plazo_general_v5"  # 2/11 festivo en CyL
     sin = json.loads((tmp_path / "datos/autonomicos/actos/bocyl/2026/09.jsonl").read_text())
     assert sin["pendiente"] == ["texto"]
 
