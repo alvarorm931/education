@@ -1,0 +1,85 @@
+name: Textos pendientes de los boletines
+
+# Pasada diaria extra para los boletines con más textos pendientes (anuncios de empleo sin su texto: bases,
+# convocatorias, listas que solo se cuentan). La carga diaria (autonomicos.yml) da a cada boletín 60 minutos de textos
+# y, a una petición por segundo, los que tienen decenas de miles pendientes (DOGC, BOCM, DOGV…) tardarían semanas.
+# Es el mismo trabajo por boletín (boletin.yml: lo del día, la carga histórica pendiente y los textos), así que lo del
+# día y el histórico ya hechos se saltan enseguida y casi todo el tiempo va a los textos. Reanudable.
+# Si coincide con la carga diaria del mismo boletín, espera a que acabe (grupo autonomico-<boletín> de boletin.yml).
+
+on:
+  schedule:
+    - cron: "41 13 * * *"   # 14:41 / 15:41 en Madrid, cuando ya ha acabado casi toda la carga diaria
+  workflow_dispatch:
+    inputs:
+      minutos:
+        description: "Minutos máximos por boletín para la carga histórica y, aparte, para los textos"
+        default: "150"
+      minutos_espana:
+        description: "Lo mismo para los boletines del servidor de España, que van de uno en uno"
+        default: "25"
+      conectores:
+        description: "Conectores de los servidores de GitHub, separados por espacios"
+        default: "dogc bocm dogv bopsevilla bopvalencia bopalicante boptenerife boib bopbizkaia borm bopgirona dog boptoledo bocyl boplaspalmas bopcordoba bopciudadreal bopb bopt bopguadalajara"
+      conectores_espana:
+        description: "Conectores del servidor de España, separados por espacios"
+        default: "bopa bon boplleida bopjaen bopgipuzkoa bopzaragoza bopvalladolid"
+
+permissions:
+  contents: write
+  id-token: write   # credenciales temporales del almacén S3 de originales (OIDC)
+
+jobs:
+  preparar:
+    runs-on: ubuntu-latest
+    outputs:
+      lista: ${{ steps.lista.outputs.lista }}
+      lista_espana: ${{ steps.lista.outputs.lista_espana }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Instalar y probar
+        run: |
+          pip install -e ".[$(python -c "import tomllib; print(','.join(tomllib.load(open('pyproject.toml', 'rb'))['project']['optional-dependencies']))")]"
+          python -m pytest -q
+      - id: lista
+        env:
+          CONECTORES: ${{ inputs.conectores || 'dogc bocm dogv bopsevilla bopvalencia bopalicante boptenerife boib bopbizkaia borm bopgirona dog boptoledo bocyl boplaspalmas bopcordoba bopciudadreal bopb bopt bopguadalajara' }}
+          ESPANA: ${{ inputs.conectores_espana || 'bopa bon boplleida bopjaen bopgipuzkoa bopzaragoza bopvalladolid' }}
+        run: |
+          python - >> "$GITHUB_OUTPUT" <<'EOF'
+          import json, os
+          print("lista=" + json.dumps(os.environ["CONECTORES"].split()))
+          print("lista_espana=" + json.dumps(os.environ["ESPANA"].split()))
+          EOF
+
+  boletin:
+    needs: preparar
+    if: needs.preparar.outputs.lista != '[]'
+    strategy:
+      fail-fast: false
+      # Ocho a la vez: el plan gratuito admite 20 trabajos a la vez en todo el repositorio
+      max-parallel: 8
+      matrix:
+        conector: ${{ fromJSON(needs.preparar.outputs.lista) }}
+    uses: ./.github/workflows/boletin.yml
+    with:
+      conector: ${{ matrix.conector }}
+      minutos: ${{ inputs.minutos || '150' }}
+      ejecutor: github
+
+  boletin-espana:
+    needs: preparar
+    if: needs.preparar.outputs.lista_espana != '[]'
+    strategy:
+      fail-fast: false
+      max-parallel: 1
+      matrix:
+        conector: ${{ fromJSON(needs.preparar.outputs.lista_espana) }}
+    uses: ./.github/workflows/boletin.yml
+    with:
+      conector: ${{ matrix.conector }}
+      minutos: ${{ inputs.minutos_espana || '25' }}
+      ejecutor: espana
