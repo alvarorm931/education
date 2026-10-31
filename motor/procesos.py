@@ -238,6 +238,17 @@ def fuente_de_boletin(nombre: str | None) -> str | None:
     return PROVINCIA_A_FUENTE.get(m.group("p").strip()) if m else None
 
 
+RE_UNION_DE_BOLETINES = re.compile(r"\s+o\s+(?=(?:Bolet|Diari|Butllet|BOE\b))")
+
+
+def fuente_de_computo(cuenta_desde: str | None) -> str | None:
+    """El boletín desde el que cuenta un plazo, si es uno solo: «BOE o DOGC» (lo que se publique antes, o el último)
+    no es ninguno de los dos."""
+    if not cuenta_desde or len(RE_UNION_DE_BOLETINES.split(cuenta_desde)) > 1:
+        return None
+    return fuente_de_boletin(cuenta_desde)
+
+
 def _leer(carpeta: Path) -> list[dict]:
     actos = []
     for f in sorted(carpeta.rglob("*.jsonl")):
@@ -506,9 +517,17 @@ def pares_bop_autonomico(locales: list[dict]) -> dict[str, tuple[dict, dict]]:
             continue
         cands = {y["id"]: y for k in _municipio(x.get("convocante"), [x.get("fuente")]) for y in bop_por.get(k, [])
                  if 0 <= _dias_entre(y.get("fecha"), x.get("fecha")) <= 90}
+        # el mismo municipio, no solo el mismo nombre: «Villanueva» o «Castejón» hay en varias provincias
+        ine_x = (ubicar_convocante(x.get("convocante"), [x.get("fuente")]) or {}).get("codigo_ine")
+        com_x = comunidad_de_fuentes([x.get("fuente")])
         buenos = []
         for y in cands.values():
-            desde_x = fuente_de_boletin((y.get("plazo") or {}).get("cuenta_desde")) == x.get("fuente")
+            uy = ubicar_convocante(y.get("convocante"), [y.get("fuente")]) or {}
+            if ine_x and uy.get("codigo_ine") and ine_x != uy["codigo_ine"]:
+                continue
+            if com_x and uy.get("comunidad") and uy["comunidad"] != com_x:
+                continue
+            desde_x = fuente_de_computo((y.get("plazo") or {}).get("cuenta_desde")) == x.get("fuente")
             if parecido(x, y) >= 0.5 or (desde_x and len(cands) == 1):
                 buenos.append(y)
         if len(buenos) == 1:
@@ -560,12 +579,16 @@ def _proceso(a: dict, posteriores: list[dict], otras: list[dict], hoy: date, ide
     plazo = a.get("plazo") or {}
     if not plazo.get("fin_estimado"):
         # La publicación autonómica puede fijar el plazo desde su propio boletín cuando el BOE remite a él; el anuncio
-        # local en el boletín de la comunidad (DOGC, DOGV…), cuando las bases del BOP cuentan desde él o no dicen nada
+        # local en el boletín de la comunidad (DOGC, DOGV…), cuando las bases del BOP cuentan desde él o no dicen
+        # nada. Con origen en el BOE, una publicación local solo si el plazo cuenta desde ella: si no, su fecha de fin
+        # sale de su propio boletín y el plazo corre desde el BOE
+        desde = fuente_de_computo(plazo.get("cuenta_desde"))
+        del_boe = (a.get("fuente") or "BOE") == "BOE"
         for x in otras:
             if not (x.get("plazo") or {}).get("fin_estimado"):
                 continue
-            if x.get("ambito") != "local" or not plazo.get("dias") and not plazo.get("meses") or \
-                    fuente_de_boletin(plazo.get("cuenta_desde")) == x.get("fuente"):
+            if x.get("ambito") != "local" or desde == x.get("fuente") or \
+                    not del_boe and not plazo.get("dias") and not plazo.get("meses"):
                 plazo = {**x["plazo"], "de_acto": x["id"]}
                 break
     for x in posteriores:  # una corrección o modificación posterior puede abrir un plazo nuevo

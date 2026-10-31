@@ -220,7 +220,8 @@ def procesar_dia(d: date, raiz: Path, archivo: Archivo, portal: Portal) -> dict:
         # de días seguidos, y se daban por días sin boletín (casi todo 2022-2025, ver reparar_dias)
         if not any(RE_SIN_RESULTADOS.search(r.contenido.decode("utf-8", errors="replace")) for r in respuestas):
             raise ErrorPortal("respuesta sin anuncios y sin el aviso de que no hay resultados")
-        informe["resultado"] = "sin_boletin"
+        # con el aviso del portal: reparar_dias no lo vuelve a pedir
+        informe.update({"resultado": "sin_boletin", "confirmado": True})
         return informe
     del_dia = [a for a in anuncios if a["fecha"] == d.isoformat()]
     if len(del_dia) != len(anuncios):

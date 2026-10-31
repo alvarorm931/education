@@ -161,3 +161,22 @@ def test_dia_completo(tmp_path):
     arquitecto = json.loads((base / "textos" / "2023" / "06" / "BOPHUELVA-2023-06-19-006.json").read_text())
     assert "Tasa: 30 euros" in arquitecto["texto"] and "Ingeniero Industrial" not in arquitecto["texto"]
     assert arquitecto["paginas"] == [5139]
+
+
+def test_texto_sin_el_del_asunto_siguiente_que_no_se_vio():
+    asuntos = h.sumario(PAGINAS)
+    lineas, comienzos = h.cuerpo(PAGINAS)
+
+    def texto(tramos, i):
+        ini, fin = tramos[i]
+        return "\n".join(l for _, l in lineas[ini:fin])
+    todos = h.tramos_de_texto(asuntos, comienzos, lineas, h.casar(asuntos, comienzos))
+    assert "Plazo de solicitudes" in texto(todos, 2) and "Ayamonte" not in texto(todos, 2)
+    # sin el comienzo de Ayamonte (página siguiente), las bases de El Almendro acaban con su página
+    sin_ayamonte = [c for c in comienzos if "AYAMONTE" not in c["entidad"]]
+    tramos = h.tramos_de_texto(asuntos, sin_ayamonte, lineas, h.casar(asuntos, sin_ayamonte))
+    assert "Plazo de solicitudes" in texto(tramos, 2) and "matrícula" not in texto(tramos, 2)
+    # sin el de El Almendro (en la misma página que el Consorcio), el Consorcio se queda sin texto
+    sin_almendro = [c for c in comienzos if "ALMENDRO" not in c["entidad"]]
+    tramos = h.tramos_de_texto(asuntos, sin_almendro, lineas, h.casar(asuntos, sin_almendro))
+    assert 1 not in tramos and 2 not in tramos and 0 in tramos

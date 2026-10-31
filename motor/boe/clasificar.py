@@ -124,7 +124,7 @@ REGLAS_ACTO: list[tuple[str, tuple[str, ...]]] = [
                       "nomenament", "es nomena", "presa de possessio", "nomeamento", "nomease")),
     # Resoluciones del proceso que salían como convocatoria u «otro» (procesos sin plazo, 31/10/2026): «por la que se
     # resuelve la convocatoria pública para la provisión…», «se adjudica destino definitivo al personal que superó…»,
-    # «se constituye la bolsa», «se aprueba la bolsa de empleo derivada del proceso selectivo». Después de
+    # «se constituye la bolsa», «se aprueba la bolsa de empleo». Después de
     # «nombramiento»: «se procede al nombramiento… y se le adjudica destino» es un nombramiento
     ("aprobados", ("se resuelve la convocatoria", "se resuelve el proceso selectivo", "se resuelve el concurso",
                    "se resuelve parcialmente la convocatoria", "es resol la convocatoria", "es resol el concurs",
@@ -132,7 +132,7 @@ REGLAS_ACTO: list[tuple[str, tuple[str, ...]]] = [
                    "se adjudica destino", "se adjudican destinos", "adjudicacion de destinos", "s'adjudica destinacio",
                    "s'adjudiquen destinacions", "adxudicanse destinos", "se adxudica destino",
                    "se constituye la bolsa", "es constitueix la borsa", "constituese a bolsa", "se aprueba la bolsa",
-                   "bolsa de empleo derivada", "lista de espera derivada", "s'aprova la borsa", "aprobase a bolsa",
+                   "s'aprova la borsa", "aprobase a bolsa",
                    # DOG: «… por la que se convoca para la elección de destino a las personas aspirantes que superaron…»
                    "para la eleccion de destino", "para la eleccion de destinos", "eleccion de plaza",
                    "para a eleccion de destino", "que superaron el proceso", "que superaron los procesos",
@@ -140,6 +140,9 @@ REGLAS_ACTO: list[tuple[str, tuple[str, ...]]] = [
                    "se hace publica la relacion", "se hace publica una relacion", "se hacen publicas las relaciones",
                    "fai publica a relacion", "fai publica unha relacion")),
     ("admitidos", ("excluye a personas aspirantes", "excluye a una persona aspirante", "se excluye a", "exclue a persoas")),
+    # «se hace pública la fecha de apertura del plazo de presentación de solicitudes» abre el plazo, no es un examen
+    ("convocatoria", ("fecha de apertura del plazo", "apertura del plazo de presentacion", "apertura de plazo de presentacion",
+                      "data d'obertura del termini", "obertura del termini de presentacio", "apertura do prazo de presentacion")),
     ("examen", ("se hace publica la fecha", "se hacen publicos la fecha", "se hacen publicas la fecha", "se hacen publicos el lugar",
                 "se hace publico el lugar", "fai publica a data", "fanse publicos a data")),
     ("tribunal", ("tribunal calificador", "composicion del tribunal", "tribunal que ha de juzgar", "comision de seleccion",

@@ -108,6 +108,8 @@ def test_resoluciones_del_proceso_no_son_convocatorias():
         "RESOLUCIÓN de 24 de julio de 2026 por la que se procede al nombramiento como personal funcionario de carrera y se le adjudica destino": "nombramiento",
         "Bases que han de regir los procesos especiales para la constitución de la bolsa de trabajo de Monitor Deportivo": "bases",
         "Resolución de 7 de abril de 2026, de la Universidad Autónoma de Madrid, por la que se publica la convocatoria de pruebas selectivas": "convocatoria",
+        "Convocatoria para la constitución de una bolsa de empleo derivada del proceso selectivo de Auxiliar": "convocatoria",
+        "Anuncio por el que se hace pública la fecha de apertura del plazo de presentación de solicitudes de la bolsa": "convocatoria",
     }
     for titulo, tipo in casos.items():
         assert clasificar_titulo(titulo)["tipo_acto"] == tipo, titulo

@@ -89,3 +89,21 @@ def test_reparar_dias_dados_por_sin_boletin(tmp_path):
     assert _json.loads((base / "dias" / "2022" / "02" / "14.json").read_text())["resultado"] == "ok"
     assert not (base / "dias" / "2022" / "02" / "16.json").exists()
     assert (base / "dias" / "2022" / "02" / "19.json").exists()
+
+
+def test_dia_sin_resultados_confirmado_por_el_portal(tmp_path):
+    import pytest
+
+    class Falso:
+        url = "https://example.org/bop"
+
+        def __init__(self, cuerpo):
+            self.cuerpo = cuerpo
+
+        def buscar(self, desde, hasta):
+            return [], 0, [Respuesta(self.url, 200, self.cuerpo)]
+    archivo = Archivo(tmp_path / "a", indice_por_fuente=True, solo_huella=True)
+    inf = v.procesar_dia(date(2022, 2, 16), tmp_path, archivo, Falso(b"<div class='ui-datagrid-empty'>No s'han trobat resultats</div>"))
+    assert inf["resultado"] == "sin_boletin" and inf["confirmado"]
+    with pytest.raises(v.ErrorPortal):
+        v.procesar_dia(date(2022, 2, 17), tmp_path, archivo, Falso(b"<partial-response></partial-response>"))

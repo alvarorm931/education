@@ -222,6 +222,26 @@ def casar(asuntos: list[dict], comienzos: list[dict]) -> dict[int, int]:
     return out
 
 
+def tramos_de_texto(asuntos: list[dict], comienzos: list[dict], lineas: list[tuple[int, str]],
+                    casados: dict[int, int]) -> dict[int, tuple[int, int]]:
+    """Índice del asunto -> (primera línea, fin) de su texto: desde su comienzo hasta el comienzo siguiente, como
+    mucho hasta el final de la página donde empieza el asunto siguiente. Si el comienzo del siguiente no se vio, su
+    texto (quizá una lista de personas) no puede ir en este: hasta su página, y nada si empieza en la misma."""
+    out: dict[int, tuple[int, int]] = {}
+    for i, j in casados.items():
+        ini = comienzos[j]["linea"]
+        fin = comienzos[j + 1]["linea"] if j + 1 < len(comienzos) else len(lineas)
+        sig = next((b["pagina"] for b in asuntos[i + 1:] if b["pagina"] >= asuntos[i]["pagina"]), None)
+        if sig is not None:
+            fin = min(fin, next((k for k in range(ini, len(lineas)) if lineas[k][0] > sig), len(lineas)))
+            if i + 1 < len(asuntos) and i + 1 not in casados:
+                if sig <= lineas[ini][0]:
+                    continue
+                fin = min(fin, next((k for k in range(ini, len(lineas)) if lineas[k][0] >= sig), len(lineas)))
+        out[i] = (ini, fin)
+    return out
+
+
 def _misma_entidad(a: str | None, b: str | None) -> bool:
     ka, kb = _clave_entidad(a), _clave_entidad(b)
     return bool(ka and kb) and (ka == kb or ka in kb or kb in ka)
@@ -239,6 +259,7 @@ def leer_pdf(d: date, url_pdf: str, pdf: bytes, captura: dict, raiz: Path, orden
     asuntos = sumario(pags)
     lineas, comienzos = cuerpo(pags)
     casados = casar(asuntos, comienzos)
+    tramos = tramos_de_texto(asuntos, comienzos, lineas, casados)
     m = RE_NUMERO_BOLETIN.search(pags[0] if pags else "")
     numero = m.group("n") if m else None
     filas, textos = [], {}
@@ -248,14 +269,8 @@ def leer_pdf(d: date, url_pdf: str, pdf: bytes, captura: dict, raiz: Path, orden
              "id": f"BOPHUELVA-{d.isoformat()}-{orden_inicial + i + 1:03d}", "fecha": d.isoformat(), "boletin": numero,
              "url_pdf": None, "url_pdf_boletin": url_pdf, "fuente": bh.SIGLAS, "captura_sha256": captura["sha256"]}
         filas.append(x)
-        if i in casados:
-            j = casados[i]
-            ini = comienzos[j]["linea"]
-            fin = comienzos[j + 1]["linea"] if j + 1 < len(comienzos) else len(lineas)
-            # como mucho hasta el final de la página donde empieza el asunto siguiente (por si su comienzo no se vio)
-            sig = next((b["pagina"] for b in asuntos[i + 1:] if b["pagina"] >= a["pagina"]), None)
-            if sig is not None:
-                fin = min(fin, next((k for k in range(ini, len(lineas)) if lineas[k][0] > sig), len(lineas)))
+        if i in tramos:
+            ini, fin = tramos[i]
             textos[x["id"]] = ("\n".join(l for _, l in lineas[ini:fin]), sorted({p for p, _ in lineas[ini:fin]}))
     empleo = bh.seleccionar(filas)
     escribir_jsonl(bh._ruta(raiz, "disposiciones", d), _con_previos(raiz, d, filas, orden_inicial))

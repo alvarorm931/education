@@ -247,3 +247,38 @@ def test_bases_del_bop_y_su_anuncio_en_el_dogc_son_un_proceso():
     segunda = {**bases, "id": "bopt:BOPT-2026-06300", "fecha": "2026-07-06"}
     ps = {p["id"] for p in construir([], date(2026, 7, 20), [bases, segunda, anuncio])}
     assert "dogc:1049484" in ps
+
+
+def test_plazo_de_la_publicacion_local_con_origen_en_el_boe():
+    from motor.procesos import _proceso, fuente_de_computo
+    assert fuente_de_computo("Boletín Oficial del Estado o Diari Oficial de la Generalitat de Catalunya") is None
+    assert fuente_de_computo("Diari Oficial de la Generalitat de Catalunya") == "DOGC"
+    boe = _acto("B1", "2026-10-20", "convocatoria", fuente="BOE", convocante={"tipo": "Ayuntamiento", "nombre": "Mijas",
+                                                               "provincia": "Málaga"}, plazo={})
+    bop = _acto("bopma:1", "2026-09-01", "bases", fuente="BOP-MALAGA",
+                plazo={"dias": 20, "tipo": "habiles", "fin_estimado": "2026-09-29",
+                       "cuenta_desde": "Boletín Oficial de la Provincia"})
+    # el BOE no dice el plazo y las bases del BOP calculan su fin desde el BOP: el plazo corre desde el BOE
+    assert _proceso(boe, [], [bop], date(2026, 10, 29), "boe:B1")["estado"] == "sin_datos_de_plazo"
+    # si el BOE dice que cuenta desde el BOP, sí
+    remite = {**boe, "plazo": {"dias": 20, "tipo": "habiles", "cuenta_desde": "Boletín Oficial de la Provincia de Málaga"}}
+    assert _proceso(remite, [], [bop], date(2026, 10, 29), "boe:B1")["plazo"]["de_acto"] == "bopma:1"
+    # con origen local (bases del BOP sin plazo), el anuncio en el boletín de la comunidad
+    bases = {**bop, "id": "bopma:2", "plazo": {}}
+    boja = _acto("boja:3", "2026-09-10", "convocatoria", fuente="BOJA",
+                 plazo={"dias": 20, "tipo": "habiles", "fin_estimado": "2026-10-08"})
+    assert _proceso(bases, [], [boja], date(2026, 10, 29), "bopma:2")["plazo"]["de_acto"] == "boja:3"
+
+
+def test_pareja_bop_autonomico_del_mismo_municipio():
+    from motor.procesos import pares_bop_autonomico
+    plazo = {"dias": 20, "tipo": "habiles", "cuenta_desde": "Diario Oficial de Castilla-La Mancha"}
+    anuncio = _acto("docm:1", "2026-07-10", "convocatoria", fuente="DOCM", titulo="Convocatoria de una plaza de peón",
+                    convocante={"tipo": "Ayuntamiento", "nombre": "Castejón"})
+    de_cuenca = _acto("bopcu:1", "2026-07-01", "bases", fuente="BOPCU", titulo="Bases de una plaza de peón", plazo=plazo,
+                      convocante={"tipo": "Ayuntamiento", "nombre": "Castejón", "provincia": "Cuenca"})
+    de_navarra = {**de_cuenca, "id": "bon:1", "fuente": "BON",
+                  "convocante": {"tipo": "Ayuntamiento", "nombre": "Castejón", "provincia": "Navarra"}}
+    assert pares_bop_autonomico([anuncio, de_cuenca])["docm:1"][1]["id"] == "bopcu:1"
+    # el mismo nombre en otra comunidad no es el mismo ayuntamiento
+    assert pares_bop_autonomico([anuncio, de_navarra]) == {}
