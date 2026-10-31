@@ -1,0 +1,741 @@
+<!doctype html>
+<html lang="es">
+    <head>
+    	<title>Buscador</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="description" content="">
+		<meta name="keywords" content="">
+		<meta name="robots" content="index, follow">
+		<meta name="theme-color" content="#005c90"/>
+		<meta name="revisit-after" content="7 days">
+		<meta name="google-site-verification" content="8urOn-5l6QC1atVkebmfQ1IPmlHytv2wf6styzrZMRE" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link rel="manifest" href="/manifest.json">
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <!-- Place favicon.ico in the root directory -->
+
+		<script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+ 		<script>window.jQuery || document.write('<script src="/export/system/modules/es.dipucadiz.template/resources/js/jquery-3.4.1.min.js"><\/script>')</script>
+		<script defer src="/export/system/modules/es.dipucadiz.template/resources/js/visible.js"></script>
+		<script defer src="/export/system/modules/es.dipucadiz.menu/resources/js/Menu_F.js"></script>
+		<link rel="stylesheet" media="screen" href="/export/system/modules/es.dipucadiz.template/resources/css/styles.css" />
+        <link rel="stylesheet" media="screen" href="/export/system/modules/es.dipucadiz.template/resources/css/custom.css" />
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" crossorigin="anonymous">
+		<link rel="stylesheet" media="screen" href="/export/system/modules/es.dipucadiz.template/resources/css/dipufont.css" />
+		<link rel="stylesheet" media="print" href="/export/system/modules/es.dipucadiz.template/resources/css/print.css">
+    </head>
+    <body>
+    	<!--[if lt IE 8]>
+            <p class="browserupgrade">Est� usando una versi�n <strong>descatalogada</strong> de Internet Explorer. Por favor <a href="http://browsehappy.com/">actualice su navegador</a> para mejorar su experiencia.</p>
+        <![endif]-->
+        <h1>Buscador</h1>
+        
+    	<div class="wrapper">
+    		<div class="header self_clear">
+				<div  id="header" ><div class="row self_clear bg-none">
+
+	<div class="col col-12-np" ><div class="menu_f">
+		<div class="staticMenu">
+					<div class="menu_box">
+						<div class="menu_wrapper">
+							<div class="enlaces">
+									<ul>
+										<li><a href="https://sede.dipucadiz.es" rel="nofollow noopener noreferrer" target="_blank" title="">Sede Electrónica</a></li>
+										</ul>
+								</div>
+							<div class="redes">
+								<a href="https://twitter.com/apcadiz" aria-label="URL de acceso al perfil de twitter" target="_blank" rel="nofollow noopener noreferrer">
+										<i class="fab fa-twitter" aria-hidden="true" title="URL de acceso al perfil de twitter"></i>
+										<p style="font-size: 0">URL de acceso al perfil de twitter</p>
+									</a> 
+								<a href="https://www.facebook.com/prensacadiz/?ref=br_rs" aria-label="URL de acceso al perfil de Facebook" target="_blank" rel="nofollow noopener noreferrer">
+										<i class="fab fa-facebook-f" aria-hidden="true" title="URL de acceso al perfil de Facebook"></i>
+										<p style="font-size: 0">URL de acceso al perfil de Facebook</p>
+									</a> 
+								<a href="https://www.youtube.com/user/PrensaCadiz" aria-label="URL de acceso al perfil de youtube" target="_blank" rel="nofollow noopener noreferrer">
+										<i class="fab fa-youtube" aria-hidden="true" title="URL de acceso al perfil de youtube"></i>
+										<p style="font-size: 0">URL de acceso al perfil de youtube</p>
+									</a> 
+								</div>
+							</div>
+					</div>
+				</div>
+			</div>
+<div id="mainMenu" class="menu_f horizontal stickyOnTop">
+		<div class="horizontalMenu">
+							<div id="main-logo">
+								<div class="menuLogoWrapper">
+											<a href="/">
+												<img src="/export/sites/default/.galerias/cabeceras/portada.png" alt="Imagen de portada de la Diputación" />
+											</a>
+										</div>
+									</div>
+							<div class="menu_box">
+								<div class="menu_wrapper">
+									<div id="side_burger">
+										<button aria-label="Menú Burger" type="button" class="">
+											<span></span>
+											<span></span>
+											<span></span>
+										</button>
+									</div>
+									<div id="search">
+										<div id="search_box">
+											<div class="search-open">
+												<form class="form-inline" name="searchFormHeader" action="/buscador/" method="post">
+													<div class="input-group animated fadeInDown" id="searchContentHeader">
+														<span class="input-group-btn">
+															<button aria-label="Icono de buscar" class="btn-u" type="button" onclick="this.form.submit(); return false;"><i class="icon-search"></i></button>
+														</span>
+														<input aria-label="Buscar" type="text" name="q" class="form-control" placeholder="Buscar" id="searchWidgetAutoCompleteHeader" />
+														<span id="close-search" class="close-button icon-desplegable-open-xl toggled"></span>
+													</div>
+												</form>
+											</div>
+										</div>
+										<i id="searchIcon" class="fas fa-search" aria-hidden="true"></i>
+									</div>
+									<script>
+											var current = null;
+											var currentSub = null;
+											
+											function checkMenu(elto) {
+												$('#mainMenu').toggleClass("open");
+												if(current != null){
+													current.parent().removeClass("active"); 
+													current = null;
+												} else if(elto != null && !elto.is(current)){
+													current = elto;
+													current.parent().addClass("active");
+												} else {
+													current = null;
+												}
+											}
+											
+											function checkSubmenu(elto) {
+												if(currentSub != null){
+													currentSub.parent().removeClass("toggled"); 
+													currentSub = null;
+												} else if(elto != null && !elto.is(current)) {
+													currentSub = elto;
+													currentSub.parent().addClass("toggled");
+												} else {
+													currentSub = null;
+												}
+												return false;
+											}
+										</script>
+										<div class="enlaces">
+											<ul>
+												<li>
+														<a href="/"  target="_self" title="">Inicio</a>
+															<!-- Desarrollo de los submenus -->
+														</li>
+													<li>
+														<a href="/boletin/"  target="_self" title="">Buscador</a>
+															<!-- Desarrollo de los submenus -->
+														</li>
+													<li>
+														<a href="/informacion/"  target="_self" title="">Información</a>
+															<!-- Desarrollo de los submenus -->
+														</li>
+													<li>
+														<a href="/contacto/"  target="_self" title="">Contacto</a>
+															<!-- Desarrollo de los submenus -->
+														</li>
+													</ul>
+										</div>
+									</div>
+							</div>
+						</div>
+
+						<script>
+							$(document).ready(function() {
+								$('.dropdown-toggle').click(function(){
+									return false;
+									//$('.dropdown-toggle .dropdown-menu').css('display', 'block');
+								});
+								
+								$('#side_burger button').click(function(){
+									$('#side_burger button').toggleClass("toggled");
+									$('#mainMenu .enlaces').toggleClass("toggled");
+									$('#mainMenu').toggleClass("open");
+								});
+							});
+						</script>
+					<div id="horizontalMenuFiller"></div>
+		</div>
+</div></div>
+</div></div>
+			<div class="page self_clear">
+				<div  id="page" ></div></div>
+			<div class="page_full self_clear">
+				<div  id="page2" ><div class="row self_clear bg-none">
+
+	<div class="col col-12-np" ><div class="Banner_F">
+		<a href="/" class="notitle">
+					<img class="imagenPrincipal fullWidth" src="/export/sites/default/.galerias/bopca2024.jpg_541957993.jpg" alt="bopca2024" />
+				</a>
+
+				</div>
+<div class="breadcrumbs_f bloque">
+		<div class="breadcrumbs_content">
+					<ul class="breadcrumb">
+						<li><a href="/index.html">Portada</a></li>
+						<li>
+								Buscador</li>
+						</ul>
+				</div>
+			</div>
+<div class="lista_l">
+		<div class="Titulo">
+					<h2 >Boletín Oficial de la Provincia de Cádiz</h2>
+				</div>
+				<div class="posts lists">
+					<div id="list_large_pages">
+			<div class="filters">
+					<form class="formFilters" method="post">
+						<div class="field fieldText">
+							<i class="fa fa-search"></i>
+							<label for="texto" >Buscar por texto</label>
+							<input aria-label="Buscar por texto" id="texto" type="text" value="" name="texto" placeholder="Escribe tu consulta" />
+						</div>
+						<div class="field fieldDate">
+							<label for="fch_ini" >Fecha boletín</label>
+							<input aria-label="Buscar por día de publicación" id="fch_ini" type="text" value="" name="fch_ini" onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="ej: dd/mm/yyyy" />
+						</div>
+						<div class="field fieldText">
+							<label for="anno" >Año</label>
+							<input aria-label="Buscar por año de publicación" id="anno" type="text" value="" name="anno" placeholder="ej: 2020" />
+						</div>
+						<div class="field fieldText">
+							<label for="n_boletin" >Número de boletín</label>
+							<input aria-label="Buscar por número de boletín" id="n_boletin" type="text" value="" name="n_boletin" placeholder="ej: 49" />
+						</div>
+						<div class="field fieldText">
+							<label for="n_anuncio" >Número de anuncio</label>
+							<input aria-label="Buscar por número de anuncio" id="n_anuncio" type="text" value="" name="n_anuncio" placeholder="ej: 2100" />
+						</div>
+						<div class="field fieldText">
+							<label for="organo_remitente" >Órgano remitente</label>
+							<input aria-label="Buscar por órgano remitente" id="organo_remitente" type="text" value="" name="organo_remitente" placeholder="Escribe tu consulta" />
+						</div>
+						<div class="field fieldText">
+							<label for="sortModifier" >Orden</label>
+							<select aria-label="Establecer orden de la consulta" id="sortModifier" name="sortModifier">
+								<option selected="selected" value="desc">Descendente</option>
+								<option value="asc">Ascendente</option>
+							</select>
+						</div>
+						<div class="field inputField">
+							<input aria-label="Enviar consulta" type="submit" value="Buscar" /> 
+						</div>
+					</form>
+				</div>
+			<div class="self_clear"></div>
+			
+			<div class="c1columns content-box">
+					<div class="listWEntry noticiaEntry">
+										<a href='/boletin/Boletin-numero-210-del-ano-2026'>
+											<div class="listData">
+												<h3>Boletín número 210 del año 2026</h3>
+												<p class="ewDate">
+													<span class="dayOfTheWeek">viernes</span>
+													<span class="dayAndMonth">30&#160;octubre</span>
+													<span class="dayOfTheWeek">2026</span>
+												</p>
+												<div>
+													<p>
+														Boletín número 210 del año 2026 210 2026 25 ADMINISTRACION DEL ESTADO 357.549.- Ministerio de
+Economía, Comercio y de Empresa. Instituto Nacional de Estadística. Oficina del Censo Electoral.
+Cádiz Lista provisional de candidatos a jurado. JUNTA DE AN</p>
+												</div>
+											</div>
+										</a>
+									</div>
+								</div>
+				<div class="self_clear"></div>
+				<div class="c1columns content-box">
+					<div class="listWEntry noticiaEntry">
+										<a href='/boletin/Boletin-numero-209-del-ano-2026'>
+											<div class="listData">
+												<h3>Boletín número 209 del año 2026</h3>
+												<p class="ewDate">
+													<span class="dayOfTheWeek">jueves</span>
+													<span class="dayAndMonth">29&#160;octubre</span>
+													<span class="dayOfTheWeek">2026</span>
+												</p>
+												<div>
+													<p>
+														Boletín número 209 del año 2026 209 2026 19 DIPUTACION PROVINCIAL DE CADIZ 375.388.- Área de
+Presidencia. Secretaría General. Extracto de los acuerdos del Pleno de la sesión ordinaria de 21 de
+octubre de 2026. 376.773.- Área de Transición Ecológica y</p>
+												</div>
+											</div>
+										</a>
+									</div>
+								</div>
+				<div class="self_clear"></div>
+				<div class="c1columns content-box">
+					<div class="listWEntry noticiaEntry">
+										<a href='/boletin/Boletin-numero-208-del-ano-2026'>
+											<div class="listData">
+												<h3>Boletín número 208 del año 2026</h3>
+												<p class="ewDate">
+													<span class="dayOfTheWeek">miércoles</span>
+													<span class="dayAndMonth">28&#160;octubre</span>
+													<span class="dayOfTheWeek">2026</span>
+												</p>
+												<div>
+													<p>
+														Boletín número 208 del año 2026 208 2026 19 JUNTA DE ANDALUCIA 250.620.- Consejeria de Universidad,
+Industria, Energía e Innovación. Cádiz. Autorización de instalación eléctrica de alta tensión a
+Sociedad Eólica Los Lances S.A. para PE Los Lances, t.</p>
+												</div>
+											</div>
+										</a>
+									</div>
+								</div>
+				<div class="self_clear"></div>
+				<div class="c1columns content-box">
+					<div class="listWEntry noticiaEntry">
+										<a href='/boletin/Boletin-numero-207-del-ano-2026'>
+											<div class="listData">
+												<h3>Boletín número 207 del año 2026</h3>
+												<p class="ewDate">
+													<span class="dayOfTheWeek">martes</span>
+													<span class="dayAndMonth">27&#160;octubre</span>
+													<span class="dayOfTheWeek">2026</span>
+												</p>
+												<div>
+													<p>
+														Boletín número 207 del año 2026 207 2026 23 DIPUTACION PROVINCIAL DE CADIZ 354.180.- Área de
+Desarrollo Local, Asistencia a Municipios y Servicios de Recaudación y Gestión Tributaria.
+Asistencia a Municipios. Asistencia Jurídica y Económica (SAEL). A</p>
+												</div>
+											</div>
+										</a>
+									</div>
+								</div>
+				<div class="self_clear"></div>
+				<div class="c1columns content-box">
+					<div class="listWEntry noticiaEntry">
+										<a href='/boletin/Boletin-numero-206-del-ano-2026'>
+											<div class="listData">
+												<h3>Boletín número 206 del año 2026</h3>
+												<p class="ewDate">
+													<span class="dayOfTheWeek">lunes</span>
+													<span class="dayAndMonth">26&#160;octubre</span>
+													<span class="dayOfTheWeek">2026</span>
+												</p>
+												<div>
+													<p>
+														Boletín número 206 del año 2026 206 2026 17 DIPUTACION PROVINCIAL DE CADIZ 368.139.- Área de
+Desarrollo Local, Asistencia a Municipios y Servicios de Recaudación y Gestión Tributaria.
+Asistencia a Municipios. Asistencia Jurídica y Económica (SAEL). A</p>
+												</div>
+											</div>
+										</a>
+									</div>
+								</div>
+				<div class="self_clear"></div>
+				<div class="c1columns content-box">
+					<div class="listWEntry noticiaEntry">
+										<a href='/boletin/Boletin-numero-205-del-ano-2026'>
+											<div class="listData">
+												<h3>Boletín número 205 del año 2026</h3>
+												<p class="ewDate">
+													<span class="dayOfTheWeek">viernes</span>
+													<span class="dayAndMonth">23&#160;octubre</span>
+													<span class="dayOfTheWeek">2026</span>
+												</p>
+												<div>
+													<p>
+														Boletín número 205 del año 2026 205 2026 21 ADMINISTRACION DEL ESTADO 347.329.- Ministerio de
+Inclusión, Seguridad Social y Migraciones. Tesorería General de la Seguridad Social. Cádiz. Segunda
+subasta pública, mediante procedimiento abierto, para la</p>
+												</div>
+											</div>
+										</a>
+									</div>
+								</div>
+				<div class="self_clear"></div>
+				<div class="c1columns content-box">
+					<div class="listWEntry noticiaEntry">
+										<a href='/boletin/Boletin-numero-204-del-ano-2026'>
+											<div class="listData">
+												<h3>Boletín número 204 del año 2026</h3>
+												<p class="ewDate">
+													<span class="dayOfTheWeek">jueves</span>
+													<span class="dayAndMonth">22&#160;octubre</span>
+													<span class="dayOfTheWeek">2026</span>
+												</p>
+												<div>
+													<p>
+														Boletín número 204 del año 2026 204 2026 23 DIPUTACION PROVINCIAL DE CADIZ 362.060.- Área de
+Desarrollo Local, Asistencia a Municipios y Servicios de Recaudación y Gestión Tributaria.
+Recaudación y Gestión Tributaria. Unidad de Recaudación Zona de la</p>
+												</div>
+											</div>
+										</a>
+									</div>
+								</div>
+				<div class="self_clear"></div>
+				<div class="c1columns content-box">
+					<div class="listWEntry noticiaEntry">
+										<a href='/boletin/Boletin-numero-203-del-ano-2026'>
+											<div class="listData">
+												<h3>Boletín número 203 del año 2026</h3>
+												<p class="ewDate">
+													<span class="dayOfTheWeek">miércoles</span>
+													<span class="dayAndMonth">21&#160;octubre</span>
+													<span class="dayOfTheWeek">2026</span>
+												</p>
+												<div>
+													<p>
+														Boletín número 203 del año 2026 203 2026 17 ADMINISTRACION LOCAL 174.633.- Ayuntamiento de Jerez de
+la Frontera. Concesión de calificación ambiental favorable a la actividad de Taller de reparación
+de vehículos, con emplazamiento en Cl. Zambia 10, P.</p>
+												</div>
+											</div>
+										</a>
+									</div>
+								</div>
+				<div class="self_clear"></div>
+				<div class="c1columns content-box">
+					<div class="listWEntry noticiaEntry">
+										<a href='/boletin/Boletin-numero-202-del-ano-2026'>
+											<div class="listData">
+												<h3>Boletín número 202 del año 2026</h3>
+												<p class="ewDate">
+													<span class="dayOfTheWeek">martes</span>
+													<span class="dayAndMonth">20&#160;octubre</span>
+													<span class="dayOfTheWeek">2026</span>
+												</p>
+												<div>
+													<p>
+														Boletín número 202 del año 2026 202 2026 26 DIPUTACION PROVINCIAL DE CADIZ 358.251.- Área de
+Presidencia. Secretaría General. Aprobación definitiva del expediente de modificación
+presupuestaria nº 69/2026. 358.266.- Área de Presidencia. Secretaría Ge</p>
+												</div>
+											</div>
+										</a>
+									</div>
+								</div>
+				<div class="self_clear"></div>
+				<div class="c1columns content-box">
+					<div class="listWEntry noticiaEntry">
+										<a href='/boletin/Boletin-numero-201-del-ano-2026'>
+											<div class="listData">
+												<h3>Boletín número 201 del año 2026</h3>
+												<p class="ewDate">
+													<span class="dayOfTheWeek">lunes</span>
+													<span class="dayAndMonth">19&#160;octubre</span>
+													<span class="dayOfTheWeek">2026</span>
+												</p>
+												<div>
+													<p>
+														Boletín número 201 del año 2026 201 2026 18 DIPUTACION PROVINCIAL DE CADIZ 349.800.- Área de
+Función Pública y Recursos Humanos. Relativo a la convocatoria pública de 25 plazas de Agente de
+Recaudación, 4 reservadas a personas con discapacidad, turno</p>
+												</div>
+											</div>
+										</a>
+									</div>
+								</div>
+				<div class="self_clear"></div>
+				<div class="c1columns content-box">
+					<div class="listWEntry noticiaEntry">
+										<a href='/boletin/Boletin-numero-200-del-ano-2026'>
+											<div class="listData">
+												<h3>Boletín número 200 del año 2026</h3>
+												<p class="ewDate">
+													<span class="dayOfTheWeek">viernes</span>
+													<span class="dayAndMonth">16&#160;octubre</span>
+													<span class="dayOfTheWeek">2026</span>
+												</p>
+												<div>
+													<p>
+														Boletín número 200 del año 2026 200 2026 14 JUNTA DE ANDALUCIA 294.260.- Consejería de Universidad,
+Industria, Energía e Innovación. Cádiz. Autorización de instalación eléctrica de alta tensión a
+Romero Candau S.L. para soterrar la línea aérea para m</p>
+												</div>
+											</div>
+										</a>
+									</div>
+								</div>
+				<div class="self_clear"></div>
+				<div class="c1columns content-box">
+					<div class="listWEntry noticiaEntry">
+										<a href='/boletin/Boletin-numero-199-del-ano-2026'>
+											<div class="listData">
+												<h3>Boletín número 199 del año 2026</h3>
+												<p class="ewDate">
+													<span class="dayOfTheWeek">jueves</span>
+													<span class="dayAndMonth">15&#160;octubre</span>
+													<span class="dayOfTheWeek">2026</span>
+												</p>
+												<div>
+													<p>
+														Boletín número 199 del año 2026 199 2026 14 JUNTA DE ANDALUCIA 316.065.- Consejeria de Universidad,
+Industria, Energía e Innovación. Cádiz. Petición de instalación eléctrica por Producción Solar
+Investment, S.L. para planta solar fotovoltaica Colonia</p>
+												</div>
+											</div>
+										</a>
+									</div>
+								</div>
+				<div class="self_clear"></div>
+				<div class="c1columns content-box">
+					<div class="listWEntry noticiaEntry">
+										<a href='/boletin/Boletin-numero-198-del-ano-2026'>
+											<div class="listData">
+												<h3>Boletín número 198 del año 2026</h3>
+												<p class="ewDate">
+													<span class="dayOfTheWeek">miércoles</span>
+													<span class="dayAndMonth">14&#160;octubre</span>
+													<span class="dayOfTheWeek">2026</span>
+												</p>
+												<div>
+													<p>
+														Boletín número 198 del año 2026 198 2026 17 DIPUTACION PROVINCIAL DE CADIZ 349.014.- Área de
+Transición Ecológica y Desarrollo a la Ciudadanía. Fundación Provincial de Cultura (Organismo
+Autónomo). Convocatoria de recursos de agrupaciones carnavalesc</p>
+												</div>
+											</div>
+										</a>
+									</div>
+								</div>
+				<div class="self_clear"></div>
+				<div class="c1columns content-box">
+					<div class="listWEntry noticiaEntry">
+										<a href='/boletin/Boletin-numero-197-del-ano-2026'>
+											<div class="listData">
+												<h3>Boletín número 197 del año 2026</h3>
+												<p class="ewDate">
+													<span class="dayOfTheWeek">martes</span>
+													<span class="dayAndMonth">13&#160;octubre</span>
+													<span class="dayOfTheWeek">2026</span>
+												</p>
+												<div>
+													<p>
+														Boletín número 197 del año 2026 197 2026 19 ADMINISTRACION LOCAL 2.802.- Ayuntamiento de Jerez de
+la Frontera. Concesión de calificación ambiental favorable a la actividad de Rehabilitación de
+edificio Cine Jerezano, con emplazamiento en C/ Rosario n</p>
+												</div>
+											</div>
+										</a>
+									</div>
+								</div>
+				<div class="self_clear"></div>
+				<div class="c1columns content-box">
+					<div class="listWEntry noticiaEntry">
+										<a href='/boletin/Boletin-numero-196-del-ano-2026'>
+											<div class="listData">
+												<h3>Boletín número 196 del año 2026</h3>
+												<p class="ewDate">
+													<span class="dayOfTheWeek">lunes</span>
+													<span class="dayAndMonth">12&#160;octubre</span>
+													<span class="dayOfTheWeek">2026</span>
+												</p>
+												<div>
+													<p>
+														Boletín número 196 del año 2026 196 2026 1 Pág ADMINISTRACION DEL ESTADO 347.320.- Ministerio de
+Economía, Comercio y Empresa. Instituto Nacional de Estadística. Oficina del Censo Electoral.
+Cádiz. Relación de mesas y locales electorales Elecciones a</p>
+												</div>
+											</div>
+										</a>
+									</div>
+								</div>
+				<div class="self_clear"></div>
+				</div>
+		
+		<!-- show pagination if it should be given and if it's really necessary -->
+		<div class="paginationWrapper">
+				<ul class="pagination">
+					<li class='disabled'>
+						<a href="javascript:void(0)" onclick='reloadInnerList("reloaded&page=1&sortModifier=desc")' aria-label='Primero'>
+							<span aria-hidden="true"><b>&lt;&lt;</b>Primero</span>
+						</a>
+					</li>
+					<li class='disabled'>
+						<a href="javascript:void(0)" onclick='reloadInnerList("reloaded&page=1&sortModifier=desc")' aria-label='Anterior'>
+							<span aria-hidden="true"><b>&lt;</b>Anterior</span>
+					</a>
+					</li>
+					<li class='active'>
+							<a href="javascript:void(0)" onclick='reloadInnerList("reloaded&page=1&sortModifier=desc")'>1</a>
+						</li>
+					<li >
+							<a href="javascript:void(0)" onclick='reloadInnerList("reloaded&page=2&sortModifier=desc")'>2</a>
+						</li>
+					<li >
+							<a href="javascript:void(0)" onclick='reloadInnerList("reloaded&page=3&sortModifier=desc")'>3</a>
+						</li>
+					<li class="threeDots">...</li>
+					<li >
+						<a aria-label='Siguiente' href="javascript:void(0)" onclick='reloadInnerList("reloaded&page=2&sortModifier=desc")'>
+						<span aria-hidden="true">Siguiente<b>&gt;</b></span>
+					</a>
+					</li>
+					<li >
+						<a aria-label='Último' href="javascript:void(0)" onclick='reloadInnerList("reloaded&page=448&sortModifier=desc")'>
+						<span aria-hidden="true">Último<b>&gt;&gt;</b></span>
+					</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+				<script>
+					var lock = false;
+					function reloadInnerList(searchStateParameters) {
+						$('.spinner').show();
+						$("#list_large_pages").hide();
+						$.get("/system/modules/es.dipucadiz.listas/elements/list-inner.jsp?tipo_=BOP_F:d67ba416-aec8-11e9-9ac3-286ed488c708&ruta_=/sites/default/.content/BOP_F/&incluirFiltros_=true&categoria_=&num_elements_=15&num_columns_=1&listConfig=/.content/Lista_L/Lista_L_00001.html&usepagination=true&ratio=r-box-21_9&".concat(searchStateParameters), function(resultList) {
+							$('.posts').html(resultList);
+							$('.spinner').css('animated infinite bounceOut');
+							reloadDomNodes();
+						});
+						$('html, body').animate({
+							scrollTop : $(".list_item:first").offset().top
+						}, 1000);
+					}
+
+					function appendInnerList(searchStateParameters) {
+						if (!lock) {
+							lock = true;
+							$('.spinner').show();
+							$.get("/system/modules/es.dipucadiz.listas/elements/list-inner.jsp?tipo_=BOP_F:d67ba416-aec8-11e9-9ac3-286ed488c708&ruta_=/sites/default/.content/BOP_F/&incluirFiltros_=true&categoria_=&num_elements_=15&num_columns_=1&listConfig=/.content/Lista_L/Lista_L_00001.html&usepagination=true&ratio=r-box-21_9&hideOptions=true&".concat(searchStateParameters),	function(resultList) {
+								$('#loadMore').parent().remove();
+								$(resultList).appendTo('#list_large_pages').find('.list_item');
+								lock = false;
+								$('.spinner').hide();
+							});
+						}
+					}
+				</script>
+			</div>
+</div></div>
+</div></div> 
+			<div class="page self_clear">
+				<div  id="page3" ></div></div>
+			<div class="page_full self_clear">
+				<div  id="page4" ></div></div> 
+			<div class="footer self_clear">
+				<div  id="footer" ><div class="row self_clear bg-none">
+
+	<div class="col col-4" ><div class="Banner_F">
+		<a href="http://www.dipucadiz.es/" class="notitle">
+					<img class="imagenPrincipal " src="/export/sites/default/.galerias/logo_dipu_blanco_small.png_541957993.png" alt="logo_dipu_blanco_small" />
+				</a>
+
+				</div>
+<div class="pagina_f_nopadding detail-page content-box"  >
+		<div class="Texto" >
+						<p class="specialFooterText" style="margin-top: 1rem; margin-left: 3.5rem; color: #fff; font-size: 1rem;">Plaza de España s/n<br />11006. Cádiz</p></div>
+				</div>
+</div><div class="col col-4" ><div class="pagina_f_nopadding detail-page content-box"  >
+		<div class="Titulo">
+						<h2 >Información</h2>
+					</div>
+				<div class="Texto" >
+						<div style="color: white;">
+<p><strong>La remisión de la documentación para la publicación en el BOP deberá hacerse a:</strong></p>
+<ul>
+<li>DIPUTACIÓN PROVINCIAL DE CADIZ</li>
+<li>Avda. Cuatro de Diciembre de 1977 - 11071.- Cádiz</li>
+<li>Teléfonos: 956 240 172/174/296/652</li>
+</ul>
+<p><strong>Las consultas relativas a su publicación deberán hacerse a:</strong></p>
+<ul>
+<li>Administración del BOLETIN OFICIAL DE LA PROVINCIA.</li>
+<li>Calle Ancha Num. 6 – 11001 Cádiz</li>
+<li>Email: <a href="mailto:boletin@bopcadiz.org">boletin@bopcadiz.org</a></li>
+<li>Teléfonos: 956 213 861 – 956 212 370</li>
+</ul>
+</div></div>
+				</div>
+</div><div class="col col-4" ><div class="Banner_F">
+		<a href="/" class="notitle">
+					<img class="imagenPrincipal " src="/export/sites/default/.galerias/APC_BOP_small.png_541957993.png" alt="APC_BOP_small" />
+				</a>
+
+				</div>
+</div></div>
+</div></div>
+			<div class="bottom_footer self_clear">
+				<div  id="bottom_footer" ><div class="row self_clear bg-none">
+
+	<div class="col col-4" ><div class="pagina_f_nopadding detail-page content-box"  >
+		<div class="Texto" >
+						<p><a class="logoEpicPie" style="height: 35px; line-height: 35px; margin: 20px 0; color: #fff; text-decoration: none; white-space: nowrap;" href="https://www.dipucadiz.es/epicsa/"> EPICSA</a></p></div>
+				</div>
+</div><div class="col col-8" ><div class="menu_f_pie">
+		<div class="redes">
+					<a href="https://twitter.com/apcadiz" target="_blank" rel="nofollow noopener noreferrer" aria-label="URL de acceso al perfil de twitter">
+							<i class="fab fa-twitter" aria-hidden="true" title="URL de acceso al perfil de twitter"></i>
+							<p style="font-size: 0">URL de acceso al perfil de twitter</p>
+						</a> 
+					<a href="https://www.facebook.com/prensacadiz/?ref=br_rs" target="_blank" rel="nofollow noopener noreferrer" aria-label="URL de acceso al perfil de facebook"> 
+							<i class="fab fa-facebook-f" aria-hidden="true" title="URL de acceso al perfil de facebook"></i>
+							<p style="font-size: 0">URL de acceso al perfil de facebook</p>
+						</a> 
+					<a href="https://www.youtube.com/user/PrensaCadiz" target="_blank" rel="nofollow noopener noreferrer" aria-label="URL de acceso al perfil de youtube">
+							<i class="fab fa-youtube" aria-hidden="true" title="URL de acceso al perfil de youtube"></i>
+							<p style="font-size: 0">URL de acceso al perfil de youtube</p>
+						</a> 
+					</div>
+				<div class="enlaces">
+						<ul>
+							<li><a href="/privacidad/"  target="_self" title="">Privacidad</a></li>
+							<li><a href="/mapa-web/"  target="_self" title="">Mapa Web</a></li>
+							<li><a href="/accesibilidad/"  target="_self" title="">Accesibilidad</a></li>
+							<li><a href="/aviso-legal/"  target="_self" title="">Aviso Legal</a></li>
+							</ul>
+					</div>
+				<script>
+					var currentFootMenu = null;
+
+					function checkFootmenu(elto) {
+						if(elto != null && !elto.is(currentFootMenu)) {
+							if(currentFootMenu != null){
+								currentFootMenu.parent().removeClass("toggled"); 
+							}
+							currentFootMenu = elto;
+							currentFootMenu.parent().addClass("toggled");
+						} else {
+							currentFootMenu.parent().removeClass("toggled"); 
+							currentFootMenu = null;
+						}
+						return false;
+					}
+				</script>
+			</div>
+</div></div>
+</div></div>
+    	</div>
+    
+		<script>
+			navigator.serviceWorker.getRegistrations().then(function(registrations) {
+			 	for(let registration of registrations) {
+					registration.unregister()
+				} 
+			});
+		</script>
+		
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-1517833-41"></script>
+		<script>
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
+
+		  gtag('config', 'UA-1517833-41');
+		</script>
+
+    </body>
+</html>
