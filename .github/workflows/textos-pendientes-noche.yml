@@ -20,7 +20,7 @@ on:
         default: "150"
       conectores:
         description: "Conectores de los servidores de GitHub, separados por espacios"
-        default: "dogc bocm dogv bopsevilla bopvalencia bopalicante boptenerife boib bopbizkaia borm bopgirona dog boptoledo bocyl boplaspalmas bopcordoba bopciudadreal bopb bopt bopguadalajara"
+        default: "dogc bocm dogv bopsevilla bopvalencia bopalicante boptenerife boib bopbizkaia borm bopgirona dog boptoledo bocyl boplaspalmas bopcordoba bopciudadreal bopb bopt bopguadalajara bopalbacete-almacen"
 
 permissions:
   contents: write
@@ -42,7 +42,7 @@ jobs:
           python -m pytest -q
       - id: lista
         env:
-          CONECTORES: ${{ inputs.conectores || 'dogc bocm dogv bopsevilla bopvalencia bopalicante boptenerife boib bopbizkaia borm bopgirona dog boptoledo bocyl boplaspalmas bopcordoba bopciudadreal bopb bopt bopguadalajara' }}
+          CONECTORES: ${{ inputs.conectores || 'dogc bocm dogv bopsevilla bopvalencia bopalicante boptenerife boib bopbizkaia borm bopgirona dog boptoledo bocyl boplaspalmas bopcordoba bopciudadreal bopb bopt bopguadalajara bopalbacete-almacen' }}
         run: |
           python - >> "$GITHUB_OUTPUT" <<'EOF'
           import json, os

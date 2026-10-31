@@ -105,3 +105,21 @@ def test_partes_con_su_letra():
     assert "IP-1" in cortes["LP-4"][0] and "TS-10" not in cortes["LP-4"][0]
     assert "TS-10" in cortes["LP-5"][0] and "IP-1" not in cortes["LP-5"][0]
     assert "Administrativo" in cortes["LP-6"][0] and "TS-10" not in cortes["LP-6"][0]
+
+
+def test_solo_almacen_no_pide_nada(tmp_path, monkeypatch):
+    import json as _json
+    from motor.archivo import Archivo
+    base = tmp_path / "datos" / "provinciales" / "bopalbacete"
+    fila = {"id": "BOPAB-1", "fecha": "2024-01-02", "titulo": "Bases de una plaza", "tipo_acto": "bases",
+            "url_pdf_boletin": "https://example.org/b.pdf"}
+    for carpeta in ("oposiciones", "disposiciones"):
+        (base / carpeta / "2024" / "01").mkdir(parents=True)
+        (base / carpeta / "2024" / "01" / "02.jsonl").write_text(_json.dumps(fila) + "\n")
+
+    def no(*a, **k):
+        raise AssertionError("no se pide nada a la fuente")
+    monkeypatch.setattr(t, "obtener", no)
+    hechos, errores, pendientes = t.textos_boletin_entero(tmp_path, "bopalbacete", Archivo(tmp_path / "archivo"), 0, 0,
+                                                          solo_almacen=True)
+    assert (hechos, errores, pendientes) == (0, 0, 1)

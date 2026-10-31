@@ -20,7 +20,7 @@ on:
         default: "25"
       conectores:
         description: "Conectores de los servidores de GitHub, separados por espacios"
-        default: "dogc bocm dogv bopsevilla bopvalencia bopalicante boptenerife boib bopbizkaia borm bopgirona dog boptoledo bocyl boplaspalmas bopcordoba bopciudadreal bopb bopt bopguadalajara"
+        default: "dogc bocm dogv bopsevilla bopvalencia bopalicante boptenerife boib bopbizkaia borm bopgirona dog boptoledo bocyl boplaspalmas bopcordoba bopciudadreal bopb bopt bopguadalajara bopalbacete-almacen"
       conectores_espana:
         description: "Conectores del servidor de España, separados por espacios («ninguno» para no usarlo)"
         default: "bopa bon boplleida bopjaen bopgipuzkoa bopzaragoza bopvalladolid"
@@ -46,7 +46,7 @@ jobs:
           python -m pytest -q
       - id: lista
         env:
-          CONECTORES: ${{ inputs.conectores || 'dogc bocm dogv bopsevilla bopvalencia bopalicante boptenerife boib bopbizkaia borm bopgirona dog boptoledo bocyl boplaspalmas bopcordoba bopciudadreal bopb bopt bopguadalajara' }}
+          CONECTORES: ${{ inputs.conectores || 'dogc bocm dogv bopsevilla bopvalencia bopalicante boptenerife boib bopbizkaia borm bopgirona dog boptoledo bocyl boplaspalmas bopcordoba bopciudadreal bopb bopt bopguadalajara bopalbacete-almacen' }}
           ESPANA: ${{ inputs.conectores_espana || 'bopa bon boplleida bopjaen bopgipuzkoa bopzaragoza bopvalladolid' }}
         run: |
           python - >> "$GITHUB_OUTPUT" <<'EOF'

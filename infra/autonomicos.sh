@@ -379,6 +379,12 @@ for c in $CONECTORES; do
       ejecutar motor.provinciales.bopteruel_antiguos --salida "$S" --max-minutos "$M"
       "$G" "BOP Teruel: boletines anteriores"
       ;;
+    bopalbacete-almacen)
+      # Textos de Albacete desde los PDF que ya están en el almacén, en los servidores de GitHub (el boletín solo
+      # responde desde España; allí los textos van de los nuevos a los antiguos y aquí al revés)
+      ejecutar motor.provinciales.textos bopalbacete --solo-almacen --salida "$S" --max-minutos "$M"
+      "$G" "BOP Albacete: textos del almacén"
+      ;;
     bopcadiz)
       # Página de cada boletín por su número y texto de cada anuncio de empleo cortado del PDF por su registro
       ejecutar motor.provinciales.bopcadiz --salida "$S" --max-minutos "$M"

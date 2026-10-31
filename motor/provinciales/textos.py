@@ -608,7 +608,11 @@ def _fallo_boletin(tipo: str, fecha: str, detalle: str) -> None:
     FALLOS_BOLETIN[tipo] = [n + 1, ejemplo]
 
 
-def textos_boletin_entero(raiz: Path, fuente: str, archivo: Archivo, max_minutos: float, pausa: float) -> tuple[int, int, int]:
+def textos_boletin_entero(raiz: Path, fuente: str, archivo: Archivo, max_minutos: float, pausa: float,
+                          solo_almacen: bool = False) -> tuple[int, int, int]:
+    """Textos pendientes cortados del PDF del boletín entero. Con solo_almacen, solo los boletines cuyo PDF ya está en
+    el almacén, de los más antiguos a los más nuevos y sin pedir nada a la fuente (para los servidores de GitHub, con
+    boletines que solo responden desde España, mientras la carga diaria de España va de los nuevos a los antiguos)."""
     base = raiz / "datos" / "provinciales" / fuente
     campo = BOLETIN_ENTERO[fuente]
     pendientes: dict[str, list[dict]] = defaultdict(list)
@@ -618,7 +622,10 @@ def textos_boletin_entero(raiz: Path, fuente: str, archivo: Archivo, max_minutos
                 pendientes[(x[campo].split("#")[0], x["fecha"])].append(x)
     inicio, hechos, errores = time.monotonic(), 0, 0
     FALLOS_BOLETIN.clear()
-    for (url, fecha), lista in pendientes.items():
+    orden = list(pendientes.items())
+    if solo_almacen:
+        orden.reverse()
+    for (url, fecha), lista in orden:
         if max_minutos and (time.monotonic() - inicio) / 60 > max_minutos:
             break
         todas = [x for f in (base / "disposiciones").glob(f"{fecha[:4]}/{fecha[5:7]}/{fecha[8:10]}*.jsonl")
@@ -630,6 +637,8 @@ def textos_boletin_entero(raiz: Path, fuente: str, archivo: Archivo, max_minutos
         guardado = original_guardado(raiz, fuente + "-boletin", fecha, url)
         if guardado:
             contenido, captura = guardado
+        elif solo_almacen:
+            continue
         else:
             time.sleep(pausa)
             try:
@@ -690,13 +699,15 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--max-minutos", type=float, default=0)
     p.add_argument("--pausa", type=float, default=1.0)
     p.add_argument("--revisar", action="store_true", help="pasar a sin texto los cortes por título no coherentes")
+    p.add_argument("--solo-almacen", action="store_true", help="solo los PDF que ya están en el almacén, sin pedir nada")
     a = p.parse_args(argv)
     if a.revisar:
         print(f"{a.fuente}: {revisar_cortes(a.salida, a.fuente)} textos dudosos pasan a sin texto")
         return 0
     archivo = Archivo(a.salida / "archivo", indice_por_fuente=True, solo_huella=solo_huella_por_defecto())
     if a.fuente in BOLETIN_ENTERO:
-        hechos, errores, pendientes = textos_boletin_entero(a.salida, a.fuente, archivo, a.max_minutos, a.pausa)
+        hechos, errores, pendientes = textos_boletin_entero(a.salida, a.fuente, archivo, a.max_minutos, a.pausa,
+                                                            solo_almacen=a.solo_almacen)
     else:
         hechos, errores, pendientes = descargar_textos_pdf(a.salida / "datos" / "provinciales" / a.fuente, a.fuente,
                                                            archivo, a.max_minutos, a.pausa, accept="application/pdf, */*")
