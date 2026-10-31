@@ -456,7 +456,9 @@ def _escribir_atomico(ruta: Path, texto: str) -> None:
     """Escribe en un fichero aparte y lo pone en su sitio de una vez: si el paso se corta por tiempo a mitad de
     escritura no queda un fichero vacío o a medias (un texto de 0 bytes de bopsevilla paraba el paso de actos)."""
     tmp = ruta.with_name(f".{ruta.name}.tmp")
-    tmp.write_text(texto, encoding="utf-8")
+    # Un PDF puede dar caracteres sueltos de un par sustituto («\udbc0»), que no se pueden escribir en UTF-8: se
+    # cambian por «�». Antes paraban todo el paso de textos de Sevilla en el mismo anuncio cada día (31/10/2026)
+    tmp.write_bytes(texto.encode("utf-8", errors="replace"))
     os.replace(tmp, ruta)
 
 

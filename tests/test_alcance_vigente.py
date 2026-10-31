@@ -93,3 +93,11 @@ def test_textos_para_si_el_servidor_da_otra_cosa(tmp_path, monkeypatch):
     hechos, errores = comun.descargar_textos(pend, lambda x: tmp_path / f"{x['id']}.json", lambda x: "https://x/" + x["id"],
                                              extraer, Archivo(tmp_path / "a", solo_huella=True), "dog", 0, 0)
     assert hechos == 0 and len(pedidas) == comun.MAX_FALLOS_SEGUIDOS_TEXTOS
+
+
+def test_escribir_con_sustitutos_sueltos(tmp_path):
+    import json
+    from motor.autonomicos.comun import escribir_json
+    r = tmp_path / "t.json"
+    escribir_json(r, {"texto": "Bases\udbc0 de la plaza"})
+    assert json.loads(r.read_text(encoding="utf-8"))["texto"].startswith("Bases")
