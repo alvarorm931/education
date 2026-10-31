@@ -1,0 +1,76 @@
+{
+ "fecha": "2026-10-31T14:20:58+00:00",
+ "fecha_madrid": "31/10 15:20",
+ "ventana_horas": 6.0,
+ "resumen": {
+  "ejecuciones_revisadas": 129,
+  "fallos": 0,
+  "fallos_pendientes": 0,
+  "relanzados": 0,
+  "colas_largas": 0,
+  "flujos_programados_parados": [],
+  "programaciones_lanzadas_a_mano": [],
+  "avisos_de_fuentes": 0,
+  "almacen": "ok"
+ },
+ "fallos": [],
+ "colas_largas": [],
+ "programados": {
+  "motor.yml": {
+   "ultimo_bien": "31/10 14:25",
+   "parado": false
+  },
+  "autonomicos.yml": {
+   "ultimo_bien": "31/10 15:13",
+   "parado": false
+  },
+  "seo.yml": {
+   "ultimo_bien": "30/10 13:27",
+   "parado": false
+  }
+ },
+ "respaldo_programaciones": [],
+ "programaciones_tardias_canceladas": [],
+ "desplazadas_de_la_espera": [
+  {
+   "flujo": "Motor de datos",
+   "id": 41208337476,
+   "url": "https://github.com/alvarorm931/education/actions/runs/41208337476",
+   "lanzada": "31/10 15:03",
+   "desplazada_por": "https://github.com/alvarorm931/education/actions/runs/41209513022",
+   "relanzada": "no hace falta: la sustituye otra del mismo flujo"
+  },
+  {
+   "flujo": "Motor de datos",
+   "id": 41207905674,
+   "url": "https://github.com/alvarorm931/education/actions/runs/41207905674",
+   "lanzada": "31/10 14:57",
+   "desplazada_por": "https://github.com/alvarorm931/education/actions/runs/41208337476",
+   "relanzada": "aún no: hay otra esperando en el grupo"
+  },
+  {
+   "flujo": "Mantenimiento de datos",
+   "id": 41202976373,
+   "url": "https://github.com/alvarorm931/education/actions/runs/41202976373",
+   "lanzada": "31/10 13:51",
+   "desplazada_por": "https://github.com/alvarorm931/education/actions/runs/41203845835",
+   "relanzada": "no hace falta: ya la relanzó quien la lanzó"
+  }
+ ],
+ "ficheros_de_mas_de_80_mb": [],
+ "latido": "en marcha",
+ "boe": {
+  "ultimo_diario": {
+   "fecha": "2026-10-31",
+   "numero": 271,
+   "anio": 2026
+  },
+  "ultima_ejecucion": "2026-10-31T12:24:10+01:00",
+  "alertas_ultima_ejecucion": []
+ },
+ "avisos_de_fuentes": [],
+ "almacen": {
+  "estado": "ok",
+  "detalle": null
+ }
+}
