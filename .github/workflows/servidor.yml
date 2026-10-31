@@ -1,0 +1,68 @@
+name: Estado del servidor de España
+
+# Mide la memoria, el disco y los ejecutores de motor-espana y lo deja en la rama vigilancia (servidor.md).
+# Solo lee: no instala ni cambia nada. Ocupa un ejecutor unos segundos. Lo lanza a mano la conversación de estado
+# (por ejemplo, tras añadir ejecutores, para ver si los 2 GB de memoria aguantan).
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write   # subir el resultado a la rama vigilancia
+
+concurrency:
+  group: estado-servidor
+  cancel-in-progress: false
+
+jobs:
+  medir:
+    runs-on: [self-hosted, espana]
+    timeout-minutes: 5
+    steps:
+      - name: Medir
+        run: |
+          {
+            echo "# Servidor de España ($(date -u +%Y-%m-%dT%H:%M:%SZ), ejecutor ${RUNNER_NAME})"
+            echo
+            echo '```'
+            uptime
+            echo
+            free -m
+            echo
+            df -h / /home 2>/dev/null | sort -u
+            echo
+            echo "Ejecutores instalados:"
+            ls -d /home/motor/runner* 2>/dev/null || true
+            echo
+            echo "Servicios de ejecutor:"
+            systemctl list-units --type=service --no-legend 'actions.runner.*' 2>/dev/null || true
+            echo
+            echo "Procesos que más memoria usan:"
+            ps -eo rss=,comm= --sort=-rss | head -8 | awk '{printf "%6d MB  %s\n", $1/1024, $2}'
+            echo
+            echo "Carpetas de trabajo:"
+            du -sh /home/motor/runner*/_trabajo 2>/dev/null || true
+            echo '```'
+          } > servidor.md
+          cat servidor.md
+
+      - name: Subir a la rama vigilancia
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          rm -rf pub && mkdir pub && cp servidor.md pub/ && cd pub
+          git init -q && git config user.name "vigilante" && git config user.email "vigilante@users.noreply.github.com"
+          git remote add origin "https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git"
+          for i in 1 2 3 4 5; do
+            git fetch -q --depth 1 origin vigilancia && git reset -q FETCH_HEAD
+            git checkout -q -B vigilancia
+            cp ../servidor.md . && git add servidor.md
+            git commit -qm "Estado del servidor de España" || exit 0
+            git push -q origin vigilancia && exit 0
+            sleep $((i * 10))
+          done
+          exit 1
+
+      - name: Borrar la copia local
+        if: always()
+        run: rm -rf pub servidor.md
