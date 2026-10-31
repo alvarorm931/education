@@ -9,13 +9,13 @@
   "dias_sin_procesar": [],
   "dias_con_error": [],
   "dias_lunes_a_sabado_sin_boletin": [],
-  "anuncios_sin_texto": 3739,
+  "anuncios_sin_texto": 3731,
   "diarios_por_anio": {
    "2022": 314,
    "2023": 313,
    "2024": 315,
    "2025": 315,
-   "2026": 270
+   "2026": 271
   }
  },
  "fuentes": {
@@ -160,31 +160,24 @@
   "bocm": {
    "grupo": "autonomicos",
    "informes": {
-    "ok": 1469,
-    "sin_boletin": 266,
-    "error_formato": 8
+    "ok": 1512,
+    "sin_boletin": 281,
+    "error_formato": 7
    },
    "ultimo_boletin_leido": "2026-10-31",
    "dias_habiles_sin_boletin": 0,
-   "empleo_mediana_por_boletin": 18,
+   "empleo_mediana_por_boletin": 20,
    "empleo_ultimos_5_boletines": 82,
    "recuento_bajo": false,
-   "anuncios_empleo": 31937,
-   "textos": 5132,
-   "textos_pendientes": 26805,
+   "anuncios_empleo": 32876,
+   "textos": 9194,
+   "textos_pendientes": 23682,
    "ultimos_errores": [
     {
      "fecha": "2026-07-20",
      "resultado": "error_formato",
      "alertas": [
       "BOCM 2026-07-20: no hay boletín leído en los 20 días anteriores para saber el número"
-     ]
-    },
-    {
-     "fecha": "2026-07-19",
-     "resultado": "error_formato",
-     "alertas": [
-      "BOCM 2026-07-19: no hay boletín leído en los 20 días anteriores para saber el número"
      ]
     },
     {
@@ -207,43 +200,17 @@
      "alertas": [
       "BOCM 2026-07-16: no hay boletín leído en los 20 días anteriores para saber el número"
      ]
+    },
+    {
+     "fecha": "2026-07-15",
+     "resultado": "error_formato",
+     "alertas": [
+      "BOCM 2026-07-15: no hay boletín leído en los 20 días anteriores para saber el número"
+     ]
     }
    ],
-   "huecos_numeracion": {
-    "2026": [
-     215,
-     216,
-     217,
-     218,
-     219,
-     220,
-     221,
-     222,
-     223,
-     224,
-     225,
-     226,
-     227,
-     228,
-     229,
-     230,
-     231,
-     232,
-     233,
-     234,
-     235,
-     236,
-     237,
-     238,
-     239,
-     240,
-     241,
-     242,
-     243,
-     244
-    ]
-   },
-   "boletines_sin_leer_por_numeracion": 43,
+   "huecos_numeracion": {},
+   "boletines_sin_leer_por_numeracion": 0,
    "alerta": false
   },
   "bocyl": {
@@ -275,8 +242,8 @@
    "empleo_ultimos_5_boletines": 109,
    "recuento_bajo": false,
    "anuncios_empleo": 14855,
-   "textos": 8441,
-   "textos_pendientes": 6414,
+   "textos": 13747,
+   "textos_pendientes": 1108,
    "ultimos_errores": [],
    "huecos_numeracion": {},
    "boletines_sin_leer_por_numeracion": 0,
@@ -436,8 +403,8 @@
    "empleo_ultimos_5_boletines": 31,
    "recuento_bajo": false,
    "anuncios_empleo": 9114,
-   "textos": 2084,
-   "textos_pendientes": 7030,
+   "textos": 2285,
+   "textos_pendientes": 6829,
    "ultimos_errores": [],
    "huecos_numeracion": {},
    "boletines_sin_leer_por_numeracion": 0,
@@ -519,8 +486,8 @@
    "empleo_ultimos_5_boletines": 173,
    "recuento_bajo": false,
    "anuncios_empleo": 41022,
-   "textos": 11954,
-   "textos_pendientes": 29068,
+   "textos": 18410,
+   "textos_pendientes": 22612,
    "ultimos_errores": [],
    "huecos_numeracion": {},
    "boletines_sin_leer_por_numeracion": 0,
@@ -538,8 +505,8 @@
    "empleo_ultimos_5_boletines": 101,
    "recuento_bajo": false,
    "anuncios_empleo": 21232,
-   "textos": 5060,
-   "textos_pendientes": 16172,
+   "textos": 7235,
+   "textos_pendientes": 13997,
    "ultimos_errores": [],
    "huecos_numeracion": {
     "2024": [
@@ -555,27 +522,18 @@
   "bopalava": {
    "grupo": "provinciales",
    "informes": {
-    "sin_boletin": 1045,
-    "ok": 718,
-    "error_formato": 1
+    "sin_boletin": 1046,
+    "ok": 719
    },
-   "ultimo_boletin_leido": "2026-10-28",
-   "dias_habiles_sin_boletin": 2,
+   "ultimo_boletin_leido": "2026-10-30",
+   "dias_habiles_sin_boletin": 0,
    "empleo_mediana_por_boletin": 1,
    "empleo_ultimos_5_boletines": 13,
    "recuento_bajo": false,
-   "anuncios_empleo": 2099,
-   "textos": 2092,
+   "anuncios_empleo": 2100,
+   "textos": 2093,
    "textos_pendientes": 7,
-   "ultimos_errores": [
-    {
-     "fecha": "2026-10-30",
-     "resultado": "error_formato",
-     "alertas": [
-      "BOTHA 2026-10-30: página sin anuncios (posible cambio de formato)"
-     ]
-    }
-   ],
+   "ultimos_errores": [],
    "huecos_numeracion": {},
    "boletines_sin_leer_por_numeracion": 0,
    "alerta": false
@@ -591,8 +549,8 @@
    "empleo_ultimos_5_boletines": 19,
    "recuento_bajo": false,
    "anuncios_empleo": 3727,
-   "textos": 1958,
-   "textos_pendientes": 1769,
+   "textos": 2078,
+   "textos_pendientes": 1649,
    "ultimos_errores": [],
    "huecos_numeracion": {
     "2024": [
@@ -614,8 +572,8 @@
    "empleo_ultimos_5_boletines": 55,
    "recuento_bajo": false,
    "anuncios_empleo": 13122,
-   "textos": 3874,
-   "textos_pendientes": 9248,
+   "textos": 7555,
+   "textos_pendientes": 5567,
    "ultimos_errores": [],
    "huecos_numeracion": {},
    "boletines_sin_leer_por_numeracion": 0,
@@ -718,8 +676,8 @@
    "empleo_ultimos_5_boletines": 22,
    "recuento_bajo": false,
    "anuncios_empleo": 7949,
-   "textos": 6243,
-   "textos_pendientes": 1706,
+   "textos": 7949,
+   "textos_pendientes": 0,
    "ultimos_errores": [],
    "huecos_numeracion": {},
    "boletines_sin_leer_por_numeracion": 0,
@@ -736,8 +694,8 @@
    "empleo_ultimos_5_boletines": 47,
    "recuento_bajo": false,
    "anuncios_empleo": 11132,
-   "textos": 3705,
-   "textos_pendientes": 7427,
+   "textos": 6339,
+   "textos_pendientes": 4793,
    "ultimos_errores": [],
    "huecos_numeracion": {},
    "boletines_sin_leer_por_numeracion": 0,
@@ -816,17 +774,17 @@
   "bopcadiz": {
    "grupo": "provinciales",
    "informes": {
-    "ok": 208,
-    "error_formato": 2
+    "ok": 1025,
+    "error_formato": 5
    },
    "ultimo_boletin_leido": "2026-10-30",
    "dias_habiles_sin_boletin": 0,
    "empleo_mediana_por_boletin": 3,
    "empleo_ultimos_5_boletines": 22,
    "recuento_bajo": false,
-   "anuncios_empleo": 730,
-   "textos": 714,
-   "textos_pendientes": 16,
+   "anuncios_empleo": 4474,
+   "textos": 4370,
+   "textos_pendientes": 104,
    "ultimos_errores": [
     {
      "fecha": null,
@@ -841,31 +799,62 @@
      "alertas": [
       "BOP-CADIZ 196/2026: página sin fecha o sin anuncios (posible cambio de formato)"
      ]
+    },
+    {
+     "fecha": null,
+     "resultado": "error_formato",
+     "alertas": [
+      "BOP-CADIZ 53/2025: página sin fecha o sin anuncios (posible cambio de formato)"
+     ]
+    },
+    {
+     "fecha": null,
+     "resultado": "error_formato",
+     "alertas": [
+      "BOP-CADIZ 76/2024: página sin fecha o sin anuncios (posible cambio de formato)"
+     ]
+    },
+    {
+     "fecha": null,
+     "resultado": "error_formato",
+     "alertas": [
+      "BOP-CADIZ 65/2023: página sin fecha o sin anuncios (posible cambio de formato)"
+     ]
     }
    ],
    "huecos_numeracion": {
+    "2023": [
+     65
+    ],
+    "2024": [
+     76
+    ],
+    "2025": [
+     53
+    ],
     "2026": [
      146,
      196
     ]
    },
-   "boletines_sin_leer_por_numeracion": 2,
+   "boletines_sin_leer_por_numeracion": 5,
    "alerta": false
   },
   "bopcastellon": {
    "grupo": "provinciales",
    "informes": {
-    "ok": 356,
-    "error_formato": 2
+    "ok": 666,
+    "error_formato": 3,
+    "error_http": 1
    },
-   "ultimo_boletin_leido": "2026-10-29",
-   "dias_habiles_sin_boletin": 1,
+   "ultimo_boletin_leido": "2026-10-31",
+   "dias_habiles_sin_boletin": 0,
    "empleo_mediana_por_boletin": 5,
-   "empleo_ultimos_5_boletines": 29,
+   "empleo_ultimos_5_boletines": 30,
    "recuento_bajo": false,
-   "anuncios_empleo": 1869,
-   "textos": 1869,
-   "textos_pendientes": 0,
+   "anuncios_empleo": 4195,
+   "textos": 4193,
+   "textos_pendientes": 2,
    "ultimos_errores": [
     {
      "fecha": "2026-01-20",
@@ -880,9 +869,29 @@
      "alertas": [
       "BOP Castellón 2024-11-21: LimitReachedError: Reached maximum number of tokens per stream."
      ]
+    },
+    {
+     "fecha": "2023-02-07",
+     "resultado": "error_http",
+     "alertas": [
+      "BOP Castellón 2023-02-07: PDF HTTP 204"
+     ]
+    },
+    {
+     "fecha": "2022-12-15",
+     "resultado": "error_formato",
+     "alertas": [
+      "BOP Castellón 2022-12-15: LimitReachedError: Reached maximum number of tokens per stream."
+     ]
     }
    ],
    "huecos_numeracion": {
+    "2022": [
+     150
+    ],
+    "2023": [
+     16
+    ],
     "2024": [
      141
     ],
@@ -890,7 +899,7 @@
      9
     ]
    },
-   "boletines_sin_leer_por_numeracion": 2,
+   "boletines_sin_leer_por_numeracion": 4,
    "alerta": false
   },
   "bopciudadreal": {
@@ -905,8 +914,8 @@
    "empleo_ultimos_5_boletines": 13,
    "recuento_bajo": false,
    "anuncios_empleo": 6002,
-   "textos": 3095,
-   "textos_pendientes": 2907,
+   "textos": 4271,
+   "textos_pendientes": 1731,
    "ultimos_errores": [],
    "huecos_numeracion": {},
    "boletines_sin_leer_por_numeracion": 0,
@@ -1066,8 +1075,8 @@
    "empleo_ultimos_5_boletines": 36,
    "recuento_bajo": false,
    "anuncios_empleo": 10144,
-   "textos": 3573,
-   "textos_pendientes": 6571,
+   "textos": 4314,
+   "textos_pendientes": 5830,
    "ultimos_errores": [
     {
      "fecha": null,
@@ -1120,8 +1129,8 @@
    "empleo_ultimos_5_boletines": 47,
    "recuento_bajo": false,
    "anuncios_empleo": 9632,
-   "textos": 8723,
-   "textos_pendientes": 909,
+   "textos": 9265,
+   "textos_pendientes": 367,
    "ultimos_errores": [
     {
      "fecha": "2024-01-10",
@@ -1182,8 +1191,8 @@
    "empleo_ultimos_5_boletines": 7,
    "recuento_bajo": false,
    "anuncios_empleo": 3770,
-   "textos": 2118,
-   "textos_pendientes": 1652,
+   "textos": 3161,
+   "textos_pendientes": 609,
    "ultimos_errores": [],
    "huecos_numeracion": {
     "2022": [
@@ -1206,7 +1215,8 @@
    "grupo": "provinciales",
    "informes": {
     "ok": 842,
-    "sin_boletin": 387
+    "sin_boletin": 921,
+    "sin_anuncios": 2
    },
    "ultimo_boletin_leido": "2026-10-30",
    "dias_habiles_sin_boletin": 0,
@@ -1214,9 +1224,25 @@
    "empleo_ultimos_5_boletines": 12,
    "recuento_bajo": false,
    "anuncios_empleo": 2792,
-   "textos": 852,
-   "textos_pendientes": 1940,
-   "ultimos_errores": [],
+   "textos": 2277,
+   "textos_pendientes": 515,
+   "ultimos_errores": [
+    {
+     "fecha": "2023-05-02",
+     "resultado": "sin_anuncios",
+     "alertas": [
+      "BOP-HUELVA 2023-05-02: PDF sin asuntos en el sumario (posible cambio de formato)",
+      "BOP-HUELVA 2023-05-02: PDF sin asuntos en el sumario (posible cambio de formato)"
+     ]
+    },
+    {
+     "fecha": "2023-04-19",
+     "resultado": "sin_anuncios",
+     "alertas": [
+      "BOP-HUELVA 2023-04-19: PDF sin asuntos en el sumario (posible cambio de formato)"
+     ]
+    }
+   ],
    "huecos_numeracion": {},
    "boletines_sin_leer_por_numeracion": 0,
    "alerta": false
@@ -1233,8 +1259,8 @@
    "empleo_ultimos_5_boletines": 7,
    "recuento_bajo": false,
    "anuncios_empleo": 4208,
-   "textos": 3283,
-   "textos_pendientes": 925,
+   "textos": 4225,
+   "textos_pendientes": 0,
    "ultimos_errores": [],
    "huecos_numeracion": {
     "2025": [
@@ -1257,8 +1283,8 @@
    "empleo_ultimos_5_boletines": 22,
    "recuento_bajo": false,
    "anuncios_empleo": 6421,
-   "textos": 757,
-   "textos_pendientes": 5664,
+   "textos": 1074,
+   "textos_pendientes": 5347,
    "ultimos_errores": [],
    "huecos_numeracion": {
     "2022": [
@@ -1292,8 +1318,8 @@
    "empleo_ultimos_5_boletines": 46,
    "recuento_bajo": false,
    "anuncios_empleo": 8428,
-   "textos": 4153,
-   "textos_pendientes": 4275,
+   "textos": 6835,
+   "textos_pendientes": 1593,
    "ultimos_errores": [],
    "huecos_numeracion": {},
    "boletines_sin_leer_por_numeracion": 0,
@@ -1382,19 +1408,37 @@
   "boplugo": {
    "grupo": "provinciales",
    "informes": {
-    "ok": 961
+    "ok": 1414
    },
-   "ultimo_boletin_leido": "2026-10-30",
+   "ultimo_boletin_leido": "2026-10-31",
    "dias_habiles_sin_boletin": 0,
    "empleo_mediana_por_boletin": 2,
-   "empleo_ultimos_5_boletines": 7,
+   "empleo_ultimos_5_boletines": 9,
    "recuento_bajo": false,
-   "anuncios_empleo": 3319,
-   "textos": 2367,
-   "textos_pendientes": 952,
+   "anuncios_empleo": 4854,
+   "textos": 2922,
+   "textos_pendientes": 1932,
    "ultimos_errores": [],
    "huecos_numeracion": {
+    "2022": [
+     57,
+     65,
+     91,
+     92,
+     93,
+     101,
+     138,
+     154,
+     185,
+     192,
+     292
+    ],
     "2023": [
+     2,
+     25,
+     50,
+     139,
+     144,
      220,
      236,
      272,
@@ -1410,7 +1454,6 @@
      128,
      131,
      136,
-     175,
      182,
      221,
      259,
@@ -1419,18 +1462,15 @@
      296
     ],
     "2025": [
-     4,
      84,
-     85,
      129,
-     134,
      190
     ],
     "2026": [
      227
     ]
    },
-   "boletines_sin_leer_por_numeracion": 27,
+   "boletines_sin_leer_por_numeracion": 39,
    "alerta": false
   },
   "bopourense": {
@@ -1621,8 +1661,8 @@
    "empleo_ultimos_5_boletines": 34,
    "recuento_bajo": false,
    "anuncios_empleo": 11284,
-   "textos": 1596,
-   "textos_pendientes": 9688,
+   "textos": 2424,
+   "textos_pendientes": 8860,
    "ultimos_errores": [],
    "huecos_numeracion": {
     "2022": [
@@ -1670,7 +1710,7 @@
   "bopsoria": {
    "grupo": "provinciales",
    "informes": {
-    "sin_boletin": 1049,
+    "sin_boletin": 1051,
     "ok": 714
    },
    "ultimo_boletin_leido": "2026-10-30",
@@ -1700,8 +1740,8 @@
    "empleo_ultimos_5_boletines": 37,
    "recuento_bajo": false,
    "anuncios_empleo": 5204,
-   "textos": 815,
-   "textos_pendientes": 4389,
+   "textos": 911,
+   "textos_pendientes": 4293,
    "ultimos_errores": [
     {
      "fecha": "2026-09-23",
@@ -1755,8 +1795,8 @@
    "empleo_ultimos_5_boletines": 58,
    "recuento_bajo": false,
    "anuncios_empleo": 9252,
-   "textos": 60,
-   "textos_pendientes": 9192,
+   "textos": 5325,
+   "textos_pendientes": 3927,
    "ultimos_errores": [],
    "huecos_numeracion": {},
    "boletines_sin_leer_por_numeracion": 0,
@@ -1793,8 +1833,8 @@
    "empleo_ultimos_5_boletines": 29,
    "recuento_bajo": false,
    "anuncios_empleo": 8459,
-   "textos": 3925,
-   "textos_pendientes": 4534,
+   "textos": 5249,
+   "textos_pendientes": 3210,
    "ultimos_errores": [],
    "huecos_numeracion": {
     "2026": [
@@ -1836,18 +1876,49 @@
   "bopvalencia": {
    "grupo": "provinciales",
    "informes": {
-    "sin_boletin": 1615,
-    "ok": 150
+    "ok": 1207,
+    "sin_boletin": 554,
+    "fuente_inaccesible": 3,
+    "error_formato": 1
    },
    "ultimo_boletin_leido": "2026-10-30",
    "dias_habiles_sin_boletin": 0,
    "empleo_mediana_por_boletin": 10,
    "empleo_ultimos_5_boletines": 69,
    "recuento_bajo": false,
-   "anuncios_empleo": 12474,
-   "textos": 3157,
-   "textos_pendientes": 9317,
-   "ultimos_errores": [],
+   "anuncios_empleo": 12597,
+   "textos": 3940,
+   "textos_pendientes": 8657,
+   "ultimos_errores": [
+    {
+     "fecha": "2026-10-12",
+     "resultado": "error_formato",
+     "alertas": [
+      "BOP Valencia 2026-10-12: respuesta sin anuncios y sin el aviso de que no hay resultados"
+     ]
+    },
+    {
+     "fecha": "2026-10-09",
+     "resultado": "fuente_inaccesible",
+     "alertas": [
+      "No se pudo descargar https://bop.dival.es/bop/xhtml/portal.xhtml tras 4 intentos: HTTPSConnectionPool(host='bop.dival.es', port=443): Max retries exceeded with url: /bop/xhtml/portal.xhtml (Caused by ConnectTimeoutError(<HTTPSConnection(host='bop.dival.es', port=443) at 0x7f8dfdbd48f0>, 'Connection to bop.dival.es timed out. (connect timeout=30.0)'))"
+     ]
+    },
+    {
+     "fecha": "2026-08-28",
+     "resultado": "fuente_inaccesible",
+     "alertas": [
+      "No se pudo descargar https://bop.dival.es/bop/xhtml/portal.xhtml tras 4 intentos: HTTPSConnectionPool(host='bop.dival.es', port=443): Max retries exceeded with url: /bop/xhtml/portal.xhtml (Caused by ConnectTimeoutError(<HTTPSConnection(host='bop.dival.es', port=443) at 0x7f8dfdbd6a20>, 'Connection to bop.dival.es timed out. (connect timeout=30.0)'))"
+     ]
+    },
+    {
+     "fecha": "2026-06-24",
+     "resultado": "fuente_inaccesible",
+     "alertas": [
+      "No se pudo descargar https://bop.dival.es/bop/xhtml/portal.xhtml tras 4 intentos: HTTPSConnectionPool(host='bop.dival.es', port=443): Max retries exceeded with url: /bop/xhtml/portal.xhtml (Caused by ConnectTimeoutError(<HTTPSConnection(host='bop.dival.es', port=443) at 0x7f8dffc9de20>, 'Connection to bop.dival.es timed out. (connect timeout=30.0)'))"
+     ]
+    }
+   ],
    "huecos_numeracion": {},
    "boletines_sin_leer_por_numeracion": 0,
    "alerta": false
