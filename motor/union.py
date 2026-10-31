@@ -282,6 +282,7 @@ def unir(procesos: list[dict], origenes: dict[str, dict], actos: list[dict], cla
     from motor.procesos import clave_organo, fuente_de_boletin
     por_publicacion: dict[tuple[str, str], list[dict]] = defaultdict(list)  # (boletín, fecha) -> procesos
     por_convocante: dict[str, list[dict]] = defaultdict(list)
+    por_cuerpo_estatal: dict[str, list[dict]] = defaultdict(list)  # puesto -> procesos del Estado de cuerpos o escalas
     claves_proc: dict[str, set[str]] = {}
     puestos_proc: dict[str, set[str]] = {}
     for p in procesos:
@@ -308,6 +309,9 @@ def unir(procesos: list[dict], origenes: dict[str, dict], actos: list[dict], cla
             if (q := puesto(tit)):
                 pu.add(q)
         puestos_proc[p["id"]] = pu
+        if p.get("ambito") == "estatal" and RE_CUERPO.search(normalizar(p.get("titulo") or "")):
+            for q in pu:
+                por_cuerpo_estatal[q].append(p)
         e = expediente(p.get("titulo"))
         for k in conv:
             por_convocante[k].append(p)
@@ -396,6 +400,18 @@ def unir(procesos: list[dict], origenes: dict[str, dict], actos: list[dict], cla
             mejores = _por_rasgos(por_puesto_y_turno(mejores, None, t), x.get("titulo"))
             if len(mejores) == 1:
                 motivo, candidatos = "puesto_parecido_sin_confirmar", [mejores[0]["id"]]
+        # 4a. Cuerpos y escalas del Estado: el nombramiento lo firma la Secretaría de Estado de Función Pública y la
+        # convocatoria, el ministerio del cuerpo, que además cambia de nombre con cada reorganización («Hacienda y
+        # Función Pública», «Transformación Digital y Función Pública»). El cuerpo es único en el Estado: una sola
+        # convocatoria suya en la ventana, de cualquier ministerio
+        if not elegido and not (motivo or "").startswith(("varios", "convocante_puesto_lejano")) and q and \
+                (x.get("fuente") or "BOE") == "BOE" and x.get("ambito") == "estatal" and \
+                RE_CUERPO.search(normalizar(x.get("titulo") or "")):
+            cands = [c for c in por_cuerpo_estatal.get(q, []) if (c.get("apertura_plazo") or "") <= fecha
+                     and _dias(c.get("apertura_plazo"), fecha) <= VENTANA_DIAS]
+            cands = _por_rasgos(por_puesto_y_turno(cands, None, t), x.get("titulo"))
+            if len(cands) == 1 and _dias(cands[0].get("apertura_plazo"), fecha) <= _plazo_normal(x.get("tipo_acto")):
+                elegido, motivo, candidatos = cands[0], "cuerpo_estatal", []
         # 4b'. sin puesto en el título: si el convocante tiene una sola convocatoria en el año anterior al acto, y el
         # acto es de los que siguen pronto a la convocatoria (listas, tribunal, examen, resultados)
         if not elegido and not motivo and not q and claves and x.get("tipo_acto") in UNICO_TIPOS:
@@ -448,6 +464,7 @@ def unir(procesos: list[dict], origenes: dict[str, dict], actos: list[dict], cla
     return recuento, huerfanos
 
 
+RE_CUERPO = re.compile(r"\b(?:cuerpo|cuerpos|escala|escalas)\b")
 RE_ESTABILIZACION = re.compile(r"estabiliz|consolidaci[oó]n de empleo|disposicion adicional (?:sexta|octava)|"
                                r"ley 20/2021|excepcional")
 RE_NUM_PLAZAS = re.compile(r"\b(\d{1,3}|una|un|dos|tres|cuatro|cinco|seis|siete|ocho|nueve|diez)\s+(?:plazas?|places|prazas)\b")

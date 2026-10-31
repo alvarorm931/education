@@ -144,3 +144,27 @@ def test_puesto_del_texto_nunca_guarda_una_persona():
     assert u.puesto_en_texto("nombrar a D. Pedro Pérez como Técnico de Gestión") == "tecnico-gestion"
     assert u.puesto("Nombramiento de Margarita Bujosa Pocoví") is None
     assert u.puesto("RESOLUCIÓN por la que se modifica el plazo máximo de 10 plazas") is None
+
+
+def test_cuerpo_del_estado_con_otro_ministerio():
+    conv = ("Resolución de 3 de junio de 2025, de la Subsecretaría, por la que se convoca proceso selectivo para "
+            "ingreso, por el sistema general de acceso libre, en el Cuerpo Superior de Meteorólogos del Estado.")
+    p = {**_proc("boe:M", conv, "2025-06-10"), "ambito": "estatal"}
+    q = u.puesto(conv)
+    assert q
+    p["plazas"] = [{"puesto_clave": q}]
+    nombra = ("Resolución de 16 de enero de 2026, de la Secretaría de Estado de Función Pública, por la que se nombra "
+              "personal funcionario de carrera, por el sistema general de acceso libre, del Cuerpo Superior de "
+              "Meteorólogos del Estado.")
+    actos = [{"id": "n1", "fecha": "2026-01-20", "tipo_acto": "nombramiento", "ambito": "estatal", "fuente": "BOE",
+              "convocante": "funcion publica", "titulo": nombra}]
+    origenes = {"boe:M": {"convocante": "transicion ecologica"}}
+    clave = lambda a: [a["convocante"]] if a.get("convocante") else []  # noqa: E731
+    recuento, huerfanos = u.unir([p], origenes, actos, clave)
+    assert recuento["cuerpo_estatal"] == 1 and not huerfanos
+    # con dos convocatorias del mismo cuerpo en la ventana, no se elige
+    p2 = {**p, "id": "boe:M2", "apertura_plazo": "2025-11-10",
+          "actos": [{"id": "M2", "fecha": "2025-11-10", "tipo": "convocatoria"}]}
+    recuento, huerfanos = u.unir([{**p, "actos": list(p["actos"][:1])}, p2], {"boe:M": {}, "boe:M2": {}},
+                                 [dict(actos[0])], clave)
+    assert not recuento.get("cuerpo_estatal") and len(huerfanos) == 1
