@@ -296,6 +296,70 @@ def cancelar_programaciones_tardias(repo: str, t0: datetime, actuar: bool) -> li
     return salida
 
 
+GRUPO_FLUJO = re.compile(r'^concurrency:[ \t]*\n[ \t]+group:[ \t]*["\']?([^"\'\s#]+)', re.M)
+VENTANA_DESPLAZADA = timedelta(seconds=90)
+
+
+def grupos_de_concurrencia(carpeta: Path = Path(".github/workflows")) -> dict[str, str]:
+    """Grupo de concurrencia fijo, a nivel de flujo, de cada fichero de flujo (los que llevan expresiones no)."""
+    salida = {}
+    if carpeta.is_dir():
+        for f in sorted(carpeta.glob("*.yml")):
+            m = GRUPO_FLUJO.search(f.read_text(encoding="utf-8"))
+            if m and "${{" not in m.group(1):
+                salida[f.name] = m.group(1)
+    return salida
+
+
+def reponer_desplazadas(repo: str, runs: list[dict], actuar: bool, grupos: dict[str, str] | None = None) -> list[dict]:
+    """Con `concurrency` (sin cancel-in-progress), GitHub deja una sola ejecución esperando por grupo: si llega otra,
+    cancela la que esperaba, sin que haya empezado. Así, una programación que GitHub dispara tarde (y que luego se
+    cancela por repetida) o una del respaldo puede tirar una tanda que una conversación dejó esperando, o al revés.
+    Pasó el 31/10 a las 14:03: el motor de las 07:47 disparado tarde tiró un «Mantenimiento de datos» lanzado a mano.
+
+    Se reconoce porque se canceló sin ningún trabajo justo cuando se creó otra ejecución del mismo grupo. Solo se
+    miran las lanzadas con workflow_dispatch y en su primer intento. Se relanza una vez, con las mismas entradas,
+    salvo que la sustituya otra del mismo flujo que no se canceló, que quien la lanzó ya la haya relanzado, o que en
+    el grupo haya otra esperando (la tiraría a ella; se vuelve a mirar en la pasada siguiente)."""
+    grupos = grupos_de_concurrencia() if grupos is None else grupos
+    grupo = lambda r: grupos.get((r.get("path") or "").split("/")[-1])
+    actor = lambda r: (r.get("triggering_actor") or {}).get("login")
+    salida = []
+    for c in runs:
+        g = grupo(c)
+        if (not g or c.get("event") != "workflow_dispatch" or c.get("status") != "completed"
+                or c.get("conclusion") != "cancelled" or (c.get("run_attempt") or 1) != 1):
+            continue
+        fin, creada = fecha(c.get("updated_at")), fecha(c.get("created_at"))
+        quien = [o for o in runs if o["id"] != c["id"] and grupo(o) == g
+                 and creada < fecha(o["created_at"]) and fin - VENTANA_DESPLAZADA <= fecha(o["created_at"]) <= fin + timedelta(seconds=5)]
+        if not quien:
+            continue
+        try:
+            trabajos = api(f"/repos/{repo}/actions/runs/{c['id']}/jobs?per_page=5").get("jobs", [])
+        except Exception:
+            continue
+        if trabajos:   # llegó a empezar: no la desplazó la espera, la canceló alguien o el tiempo
+            continue
+        item = {"flujo": c.get("name"), "id": c["id"], "url": c.get("html_url"), "lanzada": madrid(creada),
+                "desplazada_por": quien[0].get("html_url"), "relanzada": False}
+        if any(o.get("path") == c.get("path") and o.get("conclusion") != "cancelled" for o in quien):
+            item["relanzada"] = "no hace falta: la sustituye otra del mismo flujo"
+        elif any(o["id"] != c["id"] and o.get("path") == c.get("path") and actor(o) == actor(c)
+                 and o.get("event") == "workflow_dispatch" and fecha(o["created_at"]) > fin for o in runs):
+            item["relanzada"] = "no hace falta: ya la relanzó quien la lanzó"
+        elif any(grupo(o) == g and o.get("status") in ("pending", "waiting", "requested") for o in runs):
+            item["relanzada"] = "aún no: hay otra esperando en el grupo"
+        elif actuar:
+            try:
+                api(f"/repos/{repo}/actions/runs/{c['id']}/rerun", metodo="POST", datos={})
+                item["relanzada"] = True
+            except urllib.error.HTTPError as e:
+                item["relanzada"] = f"no se pudo: {e.code}"
+        salida.append(item)
+    return salida
+
+
 LIMITE_AVISO_FICHERO = 80 * 1024 * 1024   # GitHub rechaza ficheros de más de 100 MB al subir
 
 
@@ -450,6 +514,7 @@ def main() -> None:
 
     respaldos = respaldo_programaciones(repo, runs, t0, a.relanzar)
     tardias = cancelar_programaciones_tardias(repo, t0, a.relanzar)
+    desplazadas = reponer_desplazadas(repo, runs, a.relanzar)
     grandes = ficheros_grandes(repo)
     latido = reanimar_latido(repo, t0, a.relanzar)
 
@@ -482,6 +547,7 @@ def main() -> None:
         "programados": programados,
         "respaldo_programaciones": respaldos,
         "programaciones_tardias_canceladas": tardias,
+        "desplazadas_de_la_espera": desplazadas,
         "ficheros_de_mas_de_80_mb": grandes,
         "latido": latido,
         "boe": {k: boe.get(k) for k in ("ultimo_diario", "ultima_ejecucion", "alertas_ultima_ejecucion")},
@@ -504,6 +570,8 @@ def main() -> None:
           f"{', '.join(r['flujo'] + ' (' + r['prevista'] + ')' for r in respaldos) or 'ninguna'}",
           f"- Programaciones que GitHub disparó tarde y repetían la del día (canceladas): "
           f"{', '.join(t['flujo'] + ' de las ' + t['prevista'] + ', disparada a las ' + t['disparada'] for t in tardias) or 'ninguna'}",
+          f"- Tandas que otra del mismo grupo de concurrencia sacó de la espera: "
+          f"{'; '.join(d['flujo'] + ' de las ' + d['lanzada'] + ' (' + ('relanzada' if d['relanzada'] is True else str(d['relanzada'])) + ')' for d in desplazadas if not str(d['relanzada']).startswith('no hace falta')) or 'ninguna'}",
           f"- Latido (relanza al vigilante cada ~25 min mientras GitHub no dispare programaciones): {latido}",
           f"- Ficheros de la rama datos de más de 80 MB (GitHub rechaza más de 100): "
           f"{', '.join(g['fichero'] + ' (' + str(g['mb']) + ' MB)' for g in grandes) or 'ninguno'}",
