@@ -108,3 +108,11 @@ def test_enlaces_a_memorias_de_una_pagina_de_calidad():
     </ul>"""
     assert mw.enlaces_a_memorias(html, "https://www.u.es/grado/calidad") == [
         "https://www.u.es/doc/grau-dret/memoria-verificada.pdf", "https://www.u.es/docs/G_Historia.pdf"]
+
+
+def test_subpaginas_de_calidad():
+    html = """<a href="/grado/derecho/calidad">Calidad</a> <a href="/grado/derecho/plan">Plan de estudios</a>
+      <a href="/master/x/calidad">Calidad del máster</a> <a href="/grado/derecho/docs">Documentación oficial</a>
+      <a href="/grado/derecho/memoria.pdf">Memoria</a>"""
+    assert mw.subpaginas(html, "https://www.u.es/grado/derecho") == [
+        "https://www.u.es/grado/derecho/calidad", "https://www.u.es/grado/derecho/docs"]

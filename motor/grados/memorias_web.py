@@ -147,6 +147,24 @@ def enlaces_a_memorias(html: str, base: str) -> list[str]:
     return list(dict.fromkeys(salida))
 
 
+def subpaginas(html: str, base: str) -> list[str]:
+    """Enlaces de una página a páginas de calidad, verificación o documentación oficial (no PDF)."""
+    from urllib.parse import urljoin
+
+    salida = []
+    for href, texto in ENLACE.findall(html or ""):
+        url = urljoin(base, href.strip()).split("#")[0]
+        texto = re.sub(r"<[^>]+>|\s+", " ", texto)
+        ruta = url.split("?")[0].lower()
+        if ruta.endswith(".pdf") or not url.startswith("http"):
+            continue
+        if (PAGINA_MEMORIA.search(ruta) or re.search(r"(?i)calidad|qualitat|verifica|memoria|documentaci[oó]n oficial|"
+                                                      r"informaci[oó]n oficial|sistema de garant", texto)) \
+                and not re.search(r"(?i)m[aá]ster|doctorad|noticia|news", ruta + " " + texto):
+            salida.append(url)
+    return list(dict.fromkeys(salida))
+
+
 def rastrear(codigo: str, universidad: str, dominios_u: list[str], max_paginas: int, fin: float) -> dict:
     """Sitemaps de la web de una universidad: PDF con nombre de memoria y páginas de calidad o verificación, de las
     que se sacan sus enlaces a memorias. Solo direcciones; los PDF los lee después `leer`."""
@@ -179,22 +197,46 @@ def rastrear(codigo: str, universidad: str, dominios_u: list[str], max_paginas: 
         cola = list(dict.fromkeys(hijos + cola))
         urls.extend(u for u in paginas if d.propio(u))
     res["sitemaps_leidos"], res["urls_sitemap"] = len(vistos), len(urls)
+    if len(urls) < 50:  # sin sitemap útil: portada y sus páginas de listado de estudios (como web_privadas)
+        from motor.grados.web_privadas import desde_portada
+
+        urls += desde_portada(d, max_listados=15)
+        res["via"] = "portada"
     pdfs = [u for u in dict.fromkeys(urls) if re.search(INCLUIR, urlparse_path(u)) and not re.search(EXCLUIR, urlparse_path(u))]
-    # primero las páginas que hablan de memoria o verificación, luego las de calidad
-    paginas = [u for u in dict.fromkeys(urls) if not urlparse_path(u).endswith(".pdf") and PAGINA_MEMORIA.search(urlparse_path(u))
-               and not re.search(r"(?i)m[aá]ster|doctorad|/blog|noticia|news|agenda|evento", urlparse_path(u))]
-    paginas.sort(key=lambda u: (not TEXTO_MEMORIA.search(urlparse_path(u)), len(u)))
-    for u in paginas[:max_paginas]:
+    # primero las páginas que hablan de memoria o verificación, luego las de calidad y, sin sitemap, las de grado
+    # (que enlazan su página de calidad); de cada página se siguen los enlaces a páginas de calidad o verificación
+    from motor.grados.web_privadas import es_url_grado
+
+    def candidata(u: str) -> int | None:
+        ruta = urlparse_path(u)
+        if ruta.endswith(".pdf") or re.search(r"(?i)m[aá]ster|doctorad|/blog|noticia|news|agenda|evento", ruta):
+            return None
+        if TEXTO_MEMORIA.search(ruta):
+            return 0
+        if PAGINA_MEMORIA.search(ruta):
+            return 1
+        return 2 if res.get("via") == "portada" and es_url_grado(u) else None
+
+    cola = sorted({u for u in urls if candidata(u) is not None}, key=lambda u: (candidata(u), len(u)))
+    res["paginas_candidatas"] = len(cola)
+    leidas = set()
+    while cola and res["paginas_leidas"] < max_paginas:
         if time.time() > fin:
             res["alerta"] = "tiempo agotado"
             break
+        u = cola.pop(0)
+        if u in leidas:
+            continue
+        leidas.add(u)
         r = d.get(u, guardar=False)
         if r is None or r.status_code != 200 or "html" not in (r.headers.get("content-type") or ""):
             continue
         res["paginas_leidas"] += 1
         pdfs += enlaces_a_memorias(r.text, r.url)
+        nuevas = [v for v in subpaginas(r.text, r.url) if d.propio(v) and v not in leidas and v not in cola]
+        cola = sorted(set(cola) | set(nuevas), key=lambda v: (candidata(v) if candidata(v) is not None else 3, len(v)))
     res["pdf"] = list(dict.fromkeys(sin_secreto(p) for p in pdfs))
-    res["paginas_candidatas"], res["peticiones"] = len(paginas), d.peticiones
+    res["peticiones"] = d.peticiones
     return res
 
 
