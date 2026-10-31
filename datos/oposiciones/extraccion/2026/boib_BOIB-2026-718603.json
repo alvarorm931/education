@@ -1,0 +1,105 @@
+{
+ "proceso": "boib:BOIB-2026-718603",
+ "documento": {
+  "id": "boib:BOIB-2026-718603",
+  "fuente": "BOIB",
+  "url": "https://www.caib.es/eboibfront/es/2026/12311/718603/resolucion-de-la-directora-gerente-del-institut-de",
+  "fecha": "2026-08-06",
+  "huella": "6e74b1816cb450aee4f6c62d17fdf335c8591cd99dfc24a6aa9e00b3fbed7e5d"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T07:51:45+00:00",
+ "lote": "msgbatch_01NvbwpQGcC9vt1x7nWayvXt",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Técnico/a titulado/a superior: Agronomía",
+    "Técnico/a titulado/a superior: Veterinaria",
+    "Técnico/a con titulación de grado medio: Ingeniería técnica agrícola",
+    "Administrativo/va: Sin especialidad",
+    "Administrativo/va: Contabilidad",
+    "Técnico especialista de laboratorio: Sin especialidad",
+    "Auxiliar administrativo/va: Sin especialidad",
+    "Auxiliar pecuario-a: Sin especialidad"
+   ],
+   "cita": "Categoría: Técnico/a titulado/a superior Especialidad: Agronomía 1",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "convocatoria de los procesos selectivos para cubrir las plazas de personal laboral fijo",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "se llevará a cabo mediante el sistema de selección de concurso oposición",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Según categoría: Ingeniería Superior Agrónoma o grado y máster habilitante (Agronomía); Licenciatura en Veterinaria o grado (Veterinaria); Ingeniero Técnico Agrícola (grado medio); bachillerato o técnico superior (Administrativo); título de graduado en ESO o técnico de grado medio (Auxiliar), todas con carné de conducir B",
+   "cita": "Estar en posesión de la titulación de Ingeniería Superior Agrónoma o grado y master habilitante del ámbito anterior",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española o de los permitidos por el artículo 57 del TREBEP; tener dieciséis años cumplidos; capacidades físicas y psíquicas; no estar inhabilitado; carné de conducir B; declaración responsable",
+   "cita": "Tener la nacionalidad española o alguna otra de las que permitan el acceso al empleo público según el artículo 57",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Catalán: certificado de conocimientos exigido según categoría (nivel establecido en el anexo 1 y Decreto 11/2017)",
+   "cita": "Requisito de conocimientos de lengua catalana.",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días naturales desde el día siguiente a la publicación de la convocatoria en el BOIB",
+   "cita": "El plazo de presentación de la solicitud es de veinte días naturales a contar desde el día siguiente",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Registro del IRFAP o cualquiera de las formas del artículo 16 de la Ley 39/2015, mediante el modelo del anexo 7 con autobaremación",
+   "cita": "Todas las solicitudes deben presentarse en el Registro del IRFAP o en cualquier otra de las formas",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Sede electrónica https://www.irfap.org/es/ (apartado Recursos Humanos) y BOIB cuando se indique expresamente",
+   "cita": "deben publicarse en la sede electrónica en https://www.irfap.org/es/, en el apartado de Recursos Humanos",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Fase de oposición (eliminatoria, 80 % para turno libre y 60 % para promoción interna)",
+    "Fase de concurso de méritos (20 % turno libre y 40 % promoción interna)"
+   ],
+   "cita": "La fase de oposición consiste en la realización del ejercicio previsto en el anexo 3",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Titulaciones académicas, formación y perfeccionamiento, experiencia profesional, antigüedad en administraciones públicas y conocimiento de catalán, con puntuación máxima según categoría (fase de concurso de 20 o 40 puntos)",
+   "cita": "La fase de concurso consiste en la valoración de los méritos, relacionados en el anexo 4",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, para crear bolsines de trabajo derivados del proceso para cada categoría y especialidad, para programas temporales o proyectos de investigación",
+   "cita": "se crearán bolsines de trabajo para las diferentes categorías y especialidades",
+   "nivel": "literal"
+  },
+  "temas": {
+   "valor": 67,
+   "cita": "Tema 67. Las Infraestructuras Científicas y Técnicas Singulares (ICTS). Concepto, objetivos y organización. Principales ICTS relacionadas con la agricultura, re",
+   "nivel": "contado"
+  }
+ },
+ "rechazados": {
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "A1, A2, B, C1, C2, E",
+   "cita": "Grupo A Grupo B Grupo C Grupo D"
+  },
+  "practicas_o_curso": {
+   "motivo": "cita_no_literal",
+   "valor": "Periodo de prueba: tres meses (grupos A y B), dos meses (grupo C), un mes (grupos D y E)",
+   "cita": "deben superar en cada caso los siguientes períodos de prueba"
+  }
+ }
+}

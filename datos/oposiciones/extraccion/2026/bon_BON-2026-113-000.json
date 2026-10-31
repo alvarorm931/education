@@ -1,0 +1,88 @@
+{
+ "proceso": "bon:BON-2026-113-000",
+ "documento": {
+  "id": "bon:BON-2026-113-000",
+  "fuente": "BON",
+  "url": "https://bon.navarra.es/es/anuncio/-/texto/2026/113/0",
+  "fecha": "2026-06-11",
+  "huella": "840d6d8de2bfbfa4d7e401d15c502f1a3dcc79b38fae1b93425f71a7fc360748"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T07:52:06+00:00",
+ "lote": "msgbatch_01NvbwpQGcC9vt1x7nWayvXt",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "laboral temporal",
+   "cita": "mediante contratación temporal en régimen administrativo",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "La selección de personal temporal se realizará mediante convocatoria",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "grado, diplomatura, ingeniería técnica, arquitectura técnica o título declarado equivalente",
+   "cita": "Estar posesión del título universitario de grado, diplomatura, ingeniería técnica, arquitectura técnica o título declarado equivalente",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española o de Estado de la UE (o acuerdo de libre circulación); tener 16 años cumplidos y no exceder la edad de jubilación forzosa; capacidad física y psíquica; no estar inhabilitado ni separado del servicio de una Administración pública.",
+   "cita": "Poseer la capacidad física y psíquica necesarias para el ejercicio de las correspondientes funciones.",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "diez días hábiles, contados a partir del siguiente al de la publicación en el Boletín Oficial de Navarra",
+   "cita": "será de diez días hábiles, contados a partir del siguiente al de la publicación en el Boletín Oficial de Navarra",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Telemática a través de la sede electrónica de la Universidad Pública de Navarra, en la reseña de la convocatoria",
+   "cita": "deberán presentar su solicitud de forma telemática a través de la sede electrónica de la Universidad Pública de Navarra",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón Electrónico Oficial de la Universidad Pública de Navarra, en la reseña correspondiente a la convocatoria (además del BON para la resolución de convocatoria)",
+   "cita": "careciendo de validez las que se lleven a cabo en lugares distintos",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Primera parte: test de 4 alternativas sobre el temario (máx. 80 puntos; cada error resta un tercio de acierto)",
+    "Segunda parte: ejercicios y/o preguntas prácticas o teórico-prácticas (máx. 20 puntos)"
+   ],
+   "cita": "La puntuación máxima de la prueba es de un total de 100 puntos",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "No se valoran méritos; el proceso es una prueba eliminatoria de 100 puntos.",
+   "cita": "Ambas partes serán eliminatorias, quedando eliminados quienes no alcancen la mitad de la puntuación máxima en cada parte.",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí: listas de aspirantes a la contratación temporal (larga y corta duración) y lista de aspirantes a la formación en servicios especiales",
+   "cita": "Se constituirán dos listas de aspirantes a la contratación temporal, una para contratos de larga duración y otra para contratos de corta duración",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "gestor/a de laboratorios mecánica"
+   ],
+   "cita": "la convocatoria de pruebas selectivas para la constitución de listas de aspirantes al desempeño del puesto de trabajo de gestor/a de laboratorios mecánica, nivel B"
+  },
+  "temas": {
+   "motivo": "cita_no_literal",
+   "valor": 15,
+   "cita": "Estructura de los materiales... Normativa en Laboratorios de ensayos mecánicos"
+  },
+  "practicas_o_curso": {
+   "motivo": "cita_no_literal",
+   "valor": "no consta",
+   "cita": "no aparece periodo de prácticas ni curso selectivo en el texto"
+  }
+ }
+}

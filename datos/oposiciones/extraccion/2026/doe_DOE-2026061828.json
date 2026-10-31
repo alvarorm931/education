@@ -1,0 +1,60 @@
+{
+ "proceso": "doe:DOE-2026061828",
+ "documento": {
+  "id": "doe:DOE-2026061828",
+  "fuente": "DOE",
+  "url": "https://doe.juntaex.es/otrosFormatos/html.php?xml=2026061828&anio=2026&doe=1360o",
+  "fecha": "2026-07-16",
+  "huella": "baa883c4e29cc0f836b8734f08e07f17d67ddae6106f1296b1e9dd7ba0833b55"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T07:51:54+00:00",
+ "lote": "msgbatch_01NvbwpQGcC9vt1x7nWayvXt",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Listas de espera extraordinarias de las especialidades docentes del Anexo I (cuerpos docentes no universitarios)"
+   ],
+   "cita": "convocar procedimiento para la constitución de listas de espera extraordinarias de aspirantes para ocupar puestos docentes en régimen de interinidad",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario interino",
+   "cita": "listas de espera extraordinarias de aspirantes para ocupar puestos docentes en régimen de interinidad",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "el procedimiento para la constitución de las listas de espera extraordinarias constará de un concurso de méritos",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Diez días hábiles desde el día siguiente a la publicación de la resolución en el DOE",
+   "cita": "El plazo de presentación de solicitudes será de diez días hábiles contados a partir del día siguiente",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Listas provisionales y definitivas, y sucesivas actuaciones, en http://profex.educarex.es y en el DOE",
+   "cita": "Las sucesivas actuaciones y publicaciones derivadas de la presente Resolución se harán públicas en el portal PROFEX",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Concurso de méritos según el Baremo del Decreto 51/2019; la actualización de méritos se refiere a la experiencia docente previa en centros públicos de la Consejería",
+   "cita": "La actualización de méritos se referirá, exclusivamente, a la experiencia docente previa en centros públicos",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí: listas de espera extraordinarias subsidiarias de las listas ordinarias y supletorias, para cubrir puestos vacantes en el curso escolar",
+   "cita": "se hace necesario disponer de listas de espera extraordinarias, o la renovación de las mismas",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Solicitud telemática obligatoria en https://profex.educarex.es, identificándose con cl@ve; una solicitud por especialidad, válida la última registrada",
+   "cita": "La participación se realizará a través de una única solicitud de participación que deberá rellenarse de forma telemática"
+  }
+ }
+}

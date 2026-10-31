@@ -1,0 +1,60 @@
+{
+ "proceso": "doe:DOE-2026080982",
+ "documento": {
+  "id": "doe:DOE-2026080982",
+  "fuente": "DOE",
+  "url": "https://doe.juntaex.es/otrosFormatos/html.php?xml=2026080982&anio=2026&doe=1140o",
+  "fecha": "2026-06-16",
+  "huella": "abaa808d8cdb47bdd83be738d46cf34279fce1acffa904455728f98a86448685"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T07:51:59+00:00",
+ "lote": "msgbatch_01NvbwpQGcC9vt1x7nWayvXt",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "Agrupaciones Profesionales",
+   "cita": "equiparando la estructura de su nómina a la del personal funcionario del Subgrupo Agrupaciones Profesionales y Clase Subalterno",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "reservado a personal laboral fijo, equiparando la estructura de su nómina",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mediante el procedimiento de concurso-oposición, de una (1) plaza de Operario",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "cobertura en propiedad, por el sistema general de turno libre, mediante el procedimiento de concurso-oposición, de una (1) plaza",
+   "nivel": "literal"
+  },
+  "plazas_turno_libre": {
+   "valor": 1,
+   "cita": "por el sistema general de turno libre, mediante el procedimiento de concurso-oposición, de una (1) plaza",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles, a contar desde el siguiente al de la publicación de este anuncio en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes será de veinte días hábiles, a contar desde el siguiente al de la publicación",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia, tablón de edictos del Ayuntamiento y tablón de edictos de la sede electrónica del Ayuntamiento",
+   "cita": "se harán públicos en el Boletín Oficial de la Provincia y en el tablón de edictos del Ayuntamiento",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Operario de Cometidos Múltiples"
+   ],
+   "cita": "la plaza de Operario de Cometidos Múltiples , reservado a personal laboral fijo"
+  }
+ }
+}

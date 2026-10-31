@@ -1,0 +1,97 @@
+{
+ "proceso": "bopciudadreal:BOPCIUDADREAL-2026-1928",
+ "documento": {
+  "id": "bopciudadreal:BOPCIUDADREAL-2026-1928",
+  "fuente": "BOP-CIUDADREAL",
+  "url": "https://bop.dipucr.es/bop/2026/06/19",
+  "fecha": "2026-06-19",
+  "huella": "6da8a68f291a13f6100992ba5749fbdda1f2cbeab00cbd6fe6fa7c73d5acd265"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T07:51:50+00:00",
+ "lote": "msgbatch_01NvbwpQGcC9vt1x7nWayvXt",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": "Agente de la Policía Local",
+   "cita": "Denominación del puesto en RPT: Agente Policía Local. Nº de plazas vacantes: Una.",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C1",
+   "cita": "Grupo: C. Subgrupo C1.",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "provisión por el procedimiento de movilidad... de una plaza de funcionario de carrera",
+   "nivel": "fragmentos"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "La selección de los aspirantes se efectuará mediante concurso, con un total de valoración de 100 puntos",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "Nº de plazas vacantes: Una.",
+   "nivel": "literal"
+  },
+  "plazas_turno_libre": {
+   "valor": 1,
+   "cita": "Nº de plazas vacantes: Una.",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Quince días hábiles desde el siguiente al de la publicación del anuncio de la convocatoria en el Diario Oficial de Castilla-La Mancha",
+   "cita": "deberá presentarse en el plazo de quince días hábiles, contados a partir del siguiente al de la publicación",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia, tablón de anuncios del Ayuntamiento y página web municipal",
+   "cita": "que se publicará en el Boletín Oficial de la Provincia y será expuesta además y con carácter adicional, en el tablón de anuncios",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Primera fase: méritos generales (titulaciones, cursos, condecoraciones), máximo 60 puntos",
+    "Segunda fase: memoria individualizada, máximo 10 puntos",
+    "Segunda fase: entrevista personal, máximo 30 puntos"
+   ],
+   "cita": "A. PRIMERA FASE.- MÉRITOS GENERALES (MÁXIMO 60 PUNTOS)",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Titulaciones académicas (máx. 20): Doctor o Máster 15, Licenciado o Grado 12, Diplomado en Criminología 10. Cursos de formación (máx. 35): 0,01 por hora. Condecoraciones (máx. 5).",
+   "cita": "A.1.- Titulaciones académicas (Máximo 20 puntos)",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "no",
+   "cita": "Nº de plazas vacantes: Una.",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Toma de posesión en el plazo de cinco días desde el cese en el puesto anterior",
+   "cita": "La toma de posesión deberá efectuarse en el plazo de cinco días a contar desde el cese en el puesto anterior",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "titulacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Bachiller, Técnico o equivalente, o haber realizado las actividades formativas de dispensa previstas en la Ley 8/2002",
+   "cita": "Estar en posesión del título de Bachiller, Técnico o equivalente, o haber realizado las actividades formativas"
+  },
+  "otros_requisitos": {
+   "motivo": "cita_no_literal",
+   "valor": "Ser funcionario de carrera del cuerpo de Policía Local, Escala básica, categoría Policía, con antigüedad mínima de tres años; haber permanecido dos años en el último puesto obtenido; permisos de conducir B y A o A2.",
+   "cita": "Tener la condición de funcionario/a de carrera del cuerpo de Policía Local, Escala básica, categoría Policía"
+  },
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Directamente en las oficinas del Ayuntamiento o en cualquier forma del artículo 16 de la Ley 39/2015",
+   "cita": "La presentación de solicitudes podrá hacerse directamente en las oficinas de este Ayuntamiento"
+  }
+ }
+}

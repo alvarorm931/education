@@ -1,0 +1,116 @@
+{
+ "proceso": "boib:BOIB-2026-717133",
+ "documento": {
+  "id": "boib:BOIB-2026-717133",
+  "fuente": "BOIB",
+  "url": "https://www.caib.es/eboibfront/es/2026/12294/717133/resolucion-de-la-gerente-de-la-fundacio-institut-s",
+  "fecha": "2026-06-27",
+  "huella": "03c24c8b53f2b55edd29e81cb497d1950aa409bb517cb6d268db133dbf5ab187"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T07:51:52+00:00",
+ "lote": "msgbatch_01NvbwpQGcC9vt1x7nWayvXt",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Grupo A",
+    "Grupo B",
+    "Grupo D"
+   ],
+   "cita": "Plazas convocadas MALLORCA Turno libre ordinario Grupo A Grupo B Grupo D",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "A, B, D",
+   "cita": "Turno libre ordinario Grupo A Grupo B Grupo D",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "se llevará a cabo por el sistema de concurso oposición",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 27,
+   "cita": "el número de plazas objeto de esta convocatoria es de 27",
+   "nivel": "literal"
+  },
+  "plazas_discapacidad": {
+   "valor": 2,
+   "cita": "En esta convocatoria se reservan 2 plazas para que sean cubiertas por personas que acrediten una discapacidad.",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Véase anexo 6 (requisitos de titulación por grupo y categoría)",
+   "cita": "Estar en posesión de la titulación que se indica en el anexo 6 por cada uno de los grupos",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española o de los países que permiten el acceso al empleo público; edad mínima legal; capacidad física y psíquica; no estar separado del servicio; certificado negativo del Registro Central de Delincuentes Sexuales",
+   "cita": "Tener la nacionalidad española o alguna otra de las que permiten el acceso al empleo público según el artículo 57",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Catalán, nivel según anexo 6",
+   "cita": "Disponer de los conocimientos de la lengua catalana que se indican en el anexo 6 por cada uno de los grupos",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles desde el día siguiente a la publicación de la convocatoria en el BOIB",
+   "cita": "El plazo para presentar solicitudes es de veinte días hábiles, contados desde el día siguiente a la publicación",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Prueba tipo test sobre temario general, específico y práctico (fase de oposición, máximo 60 puntos, eliminatoria)",
+    "Fase de concurso: valoración de méritos (máximo 40 puntos)",
+    "Periodo de prueba"
+   ],
+   "cita": "La prueba, en todos los grupos, consistirá en un cuestionario tipo test con cuatro respuestas alternativas",
+   "nivel": "literal"
+  },
+  "temas": {
+   "valor": 16,
+   "cita": "16. La Ley Orgánica 3/2018, de 5 de diciembre de protección de datos personales",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Concurso máximo 40 puntos: experiencia laboral, cursos de formación (máx. 10 puntos), conocimiento de idiomas UE (máx. 2 puntos), entre otros",
+   "cita": "La puntuación total máxima del presente baremo será de 40 puntos",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, bolsa de personal laboral temporal para quienes superen la oposición sin obtener plaza",
+   "cita": "se incluirán en una bolsa de personal laboral temporal de nueva creación que prevalecerá sobre otras bolsas",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Periodo de prueba de tres meses (grupos A y B) y de un mes (grupo D)",
+   "cita": "La duración del periodo de prueba en esta categoría es de tres meses, según dicta el convenio",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "personal laboral fijo",
+   "cita": "Resolución para cubrir 27 puestos de trabajo de personal laboral de la Fundación Instituto Socioeducativo S'Estel"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 25,
+   "cita": "En esta convocatoria se reservan 2 plazas para que sean cubiertas por personas que acrediten una discapacidad."
+  },
+  "presentacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Telemáticamente en la página web de la FISE o presencialmente en el registro de la FISE (C/ Francesc Salvà i Pizà s/n, 9 a 14 h)",
+   "cita": "presentarla de forma telemática en la página web de la FISE o presencialmente, haciendo el registro en la sede de la FISE"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Página web de la FISE (http://fundaciosestel.caib.es) y Boletín Oficial de las Illes Balears",
+   "cita": "Las listas se publicarán en la página web de la FISE y resoluciones en el BOIB"
+  }
+ }
+}

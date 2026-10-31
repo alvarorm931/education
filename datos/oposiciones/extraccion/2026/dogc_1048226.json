@@ -1,0 +1,58 @@
+{
+ "proceso": "dogc:1048226",
+ "documento": {
+  "id": "dogc:1048226",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1048226",
+  "fecha": "2026-06-29",
+  "huella": "4b08601f00c42bc6a194f0f26bf9397e53683487e6dc26b20dcc594e78e339cd"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T07:51:39+00:00",
+ "lote": "msgbatch_01NvbwpQGcC9vt1x7nWayvXt",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "C1",
+   "cita": "grup de classificació professional C, sots grup C1",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mitjançant sistema selectiu de concurs-oposició, grup de classificació professional C",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles improrrogables, a contar desde el día siguiente a la última publicación del anuncio en el DOGC o en el BOE",
+   "cita": "El termini de presentació de sol·licituds serà de 20 dies hàbils improrrogables, a comptar des de l'endemà",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "apartado Convocatorias de personal del Tablón de anuncios de la Sede electrónica del Ayuntamiento de Pineda de Mar",
+   "cita": "es publicaran únicament a l'apartat de Convocatòries de personal, ubicat a l'apartat Tauler d'anuncis de la Seu electrònica",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "administratius/-ves, personal funcionari de carrera",
+   "cita": "la selecció de tres places d'administratius/-ves, de personal funcionari de carrera, vacants a la plantilla"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "la selecció de tres places d'administratius/-ves, de personal funcionari de carrera"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 3,
+   "cita": "la selecció de tres places d'administratius/-ves"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 3,
+   "cita": "amb la modalitat d'accés lliure mitjançant sistema selectiu de concurs-oposició"
+  }
+ }
+}

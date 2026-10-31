@@ -1,0 +1,110 @@
+{
+ "proceso": "boe:BOE-A-2026-13237",
+ "documento": {
+  "id": "bopciudadreal:BOPCIUDADREAL-2026-1440",
+  "fuente": "BOP-CIUDADREAL",
+  "url": "https://bop.dipucr.es/bop/2026/05/08",
+  "fecha": "2026-05-08",
+  "huella": "ca904bca1a0607aaed423c4541f1bd9fe304b10994671130844a0b094d07d47b"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T07:52:00+00:00",
+ "lote": "msgbatch_01NvbwpQGcC9vt1x7nWayvXt",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Policía Local"
+   ],
+   "cita": "Convocatoria 9 plazas Policía Local, 1 reservada para Militar, oposición libre.",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C1",
+   "cita": "grupo C, subgrupo C1 de los establecidos en el artículo 76",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 9,
+   "cita": "se convocan pruebas selectivas para cubrir por turno libre y mediante oposición 9 plazas",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Bachiller, Técnico de formación Profesional o equivalente",
+   "cita": "estar en posesión, o en condiciones de obtener en la fecha en que termine el plazo",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 31.21,
+   "cita": "la tasa por derechos de examen, que se fija en la cantidad de 31,21 euros",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Demandantes de empleo sin prestación ni subsidio durante al menos un mes; discapacidad igual o superior al 33 por ciento",
+   "cita": "Los solicitantes que acrediten tener un grado de discapacidad igual o superior al 33 por ciento",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Veinte días hábiles desde el día siguiente a la publicación del anuncio de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "será de veinte días hábiles, contados a partir del día siguiente al de la publicación del anuncio",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Dirigidas a la Alcaldía-Presidencia; en el Registro del Ayuntamiento, en la sede electrónica o según Ley 39/2015",
+   "cita": "La presentación de solicitudes podrá hacerse directamente en las oficinas habilitadas para el Registro de este Ayuntamiento",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Sede electrónica www.puertollano.es y Boletín Oficial de la Provincia",
+   "cita": "Dicha resolución se publicará en el Boletín Oficial de la Provincia",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "no",
+   "cita": "sin perjuicio de que pueda emprender cuantas acciones tenga por convenientes en defensa de sus derechos.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "funcionario de carrera",
+   "cita": "adquirir la condición de funcionario de carrera será preciso superar un curso selectivo"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "oposición",
+   "cita": "mediante el procedimiento de oposición y constará de dos fases"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 8,
+   "cita": "De las nueve plazas se reserva 1, con el fin de no superar el 20 por ciento."
+  },
+  "otros_requisitos": {
+   "motivo": "cita_no_literal",
+   "valor": "Nacionalidad española; 18 años y no exceder la edad de jubilación forzosa; permisos de conducción B y A o A2; carecer de antecedentes penales por delitos dolosos; compromiso de portar armas; reserva militar: más de 5 años de servicio",
+   "cita": "Tener la nacionalidad española. Tener cumplidos dieciocho años de edad y no exceder de la edad de jubilación forzosa."
+  },
+  "ejercicios": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Aptitud física (carrera 50 m, resistencia 2.400 m, salto de longitud, lanzamiento de balón medicinal)",
+    "Test de conocimientos (80 preguntas tipo test, 75 minutos)",
+    "Prueba psicotécnica (entrevista y dos test)",
+    "Reconocimiento médico"
+   ],
+   "cita": "Primera prueba: aptitud física. Segunda prueba: test de conocimientos."
+  },
+  "temas": {
+   "motivo": "valor_no_en_cita",
+   "valor": 54,
+   "cita": "PARTE GENERAL TEMA 1.- La Constitución Española de 1978"
+  },
+  "practicas_o_curso": {
+   "motivo": "cita_no_literal",
+   "valor": "Curso selectivo en la Escuela de Protección Ciudadana tras la fase de oposición; nombramiento como funcionarios en prácticas",
+   "cita": "Para adquirir la condición de funcionario de carrera será preciso superar un curso selectivo en la Escuela de Protección Ciudadana"
+  }
+ }
+}

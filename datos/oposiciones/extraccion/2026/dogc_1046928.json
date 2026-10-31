@@ -1,0 +1,85 @@
+{
+ "proceso": "dogc:1046928",
+ "documento": {
+  "id": "dogc:1046928",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1046928",
+  "fecha": "2026-06-12",
+  "huella": "01cc0950e561fe6a51c3ff93f06179ba2e1b99a130b91a1d8f3d331db74f8f02"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T07:52:08+00:00",
+ "lote": "msgbatch_01NvbwpQGcC9vt1x7nWayvXt",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "T.S. Arquitecte/a",
+    "T.S. Arquitecte/a Tècnic/a i Edificació",
+    "T.S. Enginyer/a",
+    "T.S. Polítiques Ambientals",
+    "T.S. Cicle de l'Aigua",
+    "T.S. Mobilitat i Transport",
+    "T.S. Dret",
+    "T.S. Administració i Serveis",
+    "T.S. Gestió Econòmica",
+    "T.S. Comunicació i Relacions Institucionals",
+    "T.S. Tecnologies i Sistemes d'Informació",
+    "T.S. Polítiques Públiques",
+    "T.M. Arquitecte/a",
+    "T.M. Serveis Metropolitans",
+    "T.M. Recursos Humans i Ocupació",
+    "T.M. Sistemes d'Informació",
+    "Administratius/ves",
+    "Delineant/a",
+    "Inspector/a Taxi",
+    "T.E. Cicle de l'Aigua",
+    "T.E. Sistemes d'Informació"
+   ],
+   "cita": "Convocatòria T.S. ARQUITECTE/A (Exp. 904011/26).",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "Es convoca procés selectiu, pel sistema de concurs oposició: 40 places de la plantilla de l'AMB",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "Es convoca procés selectiu, pel sistema de concurs oposició: 40 places de la plantilla de l'AMB",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles desde el día siguiente a la publicación del anuncio",
+   "cita": "formalitzar la sol·licitud telemàticament en un termini de 20 dies hàbils a comptar de l'endemà",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Telemática, a través de www.amb.cat",
+   "cita": "les persones interessades han de formalitzar la sol·licitud telemàticament en un termini de 20 dies",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "no",
+   "cita": "Bases publicades en el BOP de 05/06/2026 i rectificades en el BOP de 08/06/2026.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "A1 (T.S.); A2 (T.M.); C1 (administratius, delineant, inspector taxi i T.E.)",
+   "cita": "grupo professional A, subgrup A1 de l'AMB"
+  },
+  "plazas_total": {
+   "motivo": "valor_no_numerico",
+   "valor": "Varias convocatorias: ver detalle por cuerpo (no unificado en el texto)",
+   "cita": "Es convoca procés selectiu, pel sistema de concurs oposició: 40 places de la plantilla de l'AMB"
+  },
+  "publicaciones": {
+   "motivo": "cita_no_literal",
+   "valor": "Boletín Oficial de la Provincia de Barcelona y web del AMB (www.amb.cat)",
+   "cita": "publicades al Butlletí Oficial de la Província de Barcelona i es poden consultar també a la pàgina web de l'AMB"
+  }
+ }
+}

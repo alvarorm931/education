@@ -1,0 +1,70 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2026-5610",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2026-5610",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2026/07/21_135/2026_005610.pdf",
+  "fecha": "2026-07-21",
+  "huella": "15bf2216da58c882989de9b43c76c76140a5aba9d543c2376e25fc76de44a975"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T07:52:03+00:00",
+ "lote": "msgbatch_01NvbwpQGcC9vt1x7nWayvXt",
+ "no_son_bases": false,
+ "campos": {
+  "grupo": {
+   "valor": "C1",
+   "cita": "Escala Básica, Grupo C, Subgrupo C1, vacantes en la plantilla de personal funcionario",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "Selección de 12 plazas de funcionarios de carrera de Agente de la Policía Local",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "7 por turno libre y sistema de oposición y 5 por turno de movilidad y sistema de concurso",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 12,
+   "cita": "ampliación de convocatoria para la provisión de 12 plazas de Agente de Policía Local",
+   "nivel": "literal"
+  },
+  "plazas_turno_libre": {
+   "valor": 7,
+   "cita": "7 por turno libre y sistema de oposición",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "10 días hábiles, contados a partir del día siguiente de la publicación del extracto de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "durante el plazo de 10 días hábiles, contados a partir del día siguiente de la publicación del extracto",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Nuevo plazo de presentación de solicitudes de participación durante 10 días hábiles desde el día siguiente a la publicación del extracto de la convocatoria en el BOE",
+   "cita": "Abrir nuevo plazo de presentación de solicitudes de participación durante el plazo de 10 días hábiles",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Diario Oficial de la Generalidad Valenciana y Boletín Oficial del Estado (anuncio de nueva convocatoria); Boletín Oficial de la Provincia de Alicante (resolución)",
+   "cita": "Publicar en el Diario Oficial de la Generalidad Valenciana y en el Boletín Oficial del Estado un anuncio de nueva convocatoria",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": [
+    "Agente de la Policía Local"
+   ],
+   "cita": "provisión de 12 plazas de Agente de la Policía Local por el sistema de oposición"
+  },
+  "plazas_promocion_interna": {
+   "motivo": "valor_no_en_cita",
+   "valor": 0,
+   "cita": "5 por turno de movilidad y sistema de concurso"
+  }
+ }
+}

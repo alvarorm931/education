@@ -1,0 +1,65 @@
+{
+ "proceso": "boe:BOE-A-2026-12575",
+ "documento": {
+  "id": "boe:BOE-A-2026-12575",
+  "fuente": "BOE",
+  "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-12575",
+  "fecha": "2026-06-10",
+  "huella": "46710ddb9c07fca3dece6c5d30e26e4d35e4a205e1054ec2aadd97baf9b91362"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T07:51:58+00:00",
+ "lote": "msgbatch_01NvbwpQGcC9vt1x7nWayvXt",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Auxiliar Técnica y de Laboratorios"
+   ],
+   "cita": "Escala: Auxiliar Técnica y de Laboratorios (grupo C, subgrupo C2) (referencia 26/36849), administración especial, en la Universidad Miguel Hernández de Elche.",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C2",
+   "cita": "Escala: Auxiliar Técnica y de Laboratorios (grupo C, subgrupo C2) (referencia 26/36849)",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "Régimen jurídico: funcionarial de carrera. Escala: Auxiliar Técnica y de Laboratorios",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "Sistema selectivo: concurso-oposición. Turno: acceso libre.",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 3,
+   "cita": "Número de plazas convocadas: 3. Sistema selectivo: concurso-oposición.",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "diez días hábiles contados a partir del siguiente a la publicación del extracto en el Boletín Oficial del Estado",
+   "cita": "El plazo para la presentación de solicitudes finaliza a los diez días hábiles contados a partir del siguiente a la publicación de este extracto en el «Boletín Oficial del Estado».",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Sede Electrónica de la UMH (https://sede.umh.es/procedimientos/, opción «Selección PTGAS-Funcionario de carrera») o URL https://universite.umh.es/espacio-opositor, según la base tercera",
+   "cita": "Las solicitudes para participar en este proceso deberán cumplimentarse a través de la Sede Electrónica en el portal",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Diari Oficial de la Generalitat Valenciana y/o Boletín Oficial de la Universidad Miguel Hernández de Elche; consulta informativa en https://servicioptai.umh.es/convocatorias/",
+   "cita": "Los sucesivos anuncios relativos a esta convocatoria se publicarán en el «Diari Oficial de la Generalitat Valenciana» y/o en el «Boletín Oficial de la Universidad Miguel Hernández»",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_turno_libre": {
+   "motivo": "cita_no_literal",
+   "valor": 3,
+   "cita": "Turno: acceso libre. Número de plazas convocadas: 3."
+  }
+ }
+}

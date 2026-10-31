@@ -1,0 +1,106 @@
+{
+ "proceso": "boe:BOE-A-2026-15411",
+ "documento": {
+  "id": "bocant:BOC-2026-5364",
+  "fuente": "BOC-CANT",
+  "url": "https://boc.cantabria.es/boces/verAnuncioAction.do?idAnuBlob=437584",
+  "fecha": "2026-07-03",
+  "huella": "2f874cda08191c46b2dbef7cac79b4177b2c19b03e14c3890f26a638037cb5dd"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T07:51:59+00:00",
+ "lote": "msgbatch_01NvbwpQGcC9vt1x7nWayvXt",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Oficial de Policía Local"
+   ],
+   "cita": "tres (3) plazas de Oficial de Policía Local, vacantes en la plantilla de personal funcionario de este Ayuntamiento",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "la provisión en propiedad, mediante el sistema de concurso-oposición por promoción interna, de tres (3) plazas",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mediante el sistema de concurso-oposición por promoción interna, de tres (3) plazas de Oficial de Policía Local",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 3,
+   "cita": "la provisión en propiedad, mediante el sistema de concurso-oposición por promoción interna, de tres (3) plazas",
+   "nivel": "literal"
+  },
+  "plazas_promocion_interna": {
+   "valor": 3,
+   "cita": "mediante el sistema de concurso-oposición por promoción interna, de tres (3) plazas de Oficial de Policía Local",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Bachiller o Técnico",
+   "cita": "Estar en posesión del título de Bachiller o Técnico. Las equivalencias de los títulos alegados",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte (20) días naturales, contados desde el siguiente al de la publicación del anuncio de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "durante el plazo de veinte (20) días naturales, contados a partir del siguiente (inclusive) al que aparezca el anuncio de la convocatoria",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Registro General del Ayuntamiento (Plaza de España nº 5, Reinosa), sede electrónica municipal, Oficinas de Correos",
+   "cita": "serán presentadas en el Registro General de la Corporación, sito en Plaza de España, nº 5, de Reinosa",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de Anuncios del Ayuntamiento (física y web municipal) y Boletín Oficial de Cantabria",
+   "cita": "Los restantes anuncios que se generen en la presente convocatoria y sus pruebas se publicarán, únicamente, en el Tablón de Anuncios del Ayuntamiento",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Primer ejercicio: prueba teórica, cuestionario de 100 preguntas tipo test, eliminatoria (mínimo 5 puntos)",
+    "Segundo ejercicio: prueba práctica con supuestos prácticos, eliminatoria (mínimo 5 puntos)",
+    "Tercer ejercicio: prueba psicotécnica, apto/no apto",
+    "Cuarto ejercicio: pruebas físicas (salto, lanzamiento balón, 60 m, 800 m, natación 25 m)",
+    "Quinto ejercicio: reconocimiento médico, apto/no apto"
+   ],
+   "cita": "Los ejercicios de la oposición, que serán todos ellos de carácter obligatorio y eliminatorio, serán los siguientes",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Fase de concurso (0 a 10 puntos, 25% de la puntuación global) según baremo del Decreto 46/2016 de Cantabria",
+   "cita": "esta fase de concurso se calificará de 0 a 10 puntos, y supondrá el 25 por ciento de dicha puntuación global",
+   "nivel": "literal"
+  },
+  "bolsa": {
+   "valor": "sí, lista de reserva para cubrir renuncias de los propuestos antes del nombramiento o toma de posesión",
+   "cita": "el Órgano de Selección establecerá... una lista de reserva a efectos de poder efectuar nombramiento para los casos en que se produzca renuncia",
+   "nivel": "fragmentos"
+  },
+  "practicas_o_curso": {
+   "valor": "nombramiento como funcionario en prácticas y superación de un curso básico de formación teórico-práctica en la Comunidad Autónoma de Cantabria",
+   "cita": "Una vez que haya tomado posesión como funcionario en prácticas deberá superar el curso básico de formación teórico-práctica",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "C1",
+   "cita": "integradas en el Grupo C1, (Escala de Administración Especial, Subescala de Servicios Especiales, Clase Policía Local"
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 0,
+   "cita": "el sistema selectivo será el de concurso-oposición por promoción interna"
+  },
+  "otros_requisitos": {
+   "motivo": "cita_no_literal",
+   "valor": "Nacionalidad española; 18 años cumplidos; permisos de conducción B y A o A2; compromiso de portar armas; no haber sido condenado por delito doloso; dos años de antigüedad en la categoría inferior de Policía; no estar en segunda actividad",
+   "cita": "Tener nacionalidad española. Tener cumplidos 18 años y no exceder, en su caso de la edad máxima de jubilación forzosa"
+  }
+ }
+}

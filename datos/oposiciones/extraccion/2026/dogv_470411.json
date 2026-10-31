@@ -1,0 +1,53 @@
+{
+ "proceso": "dogv:470411",
+ "documento": {
+  "id": "dogv:470411",
+  "fuente": "DOGV",
+  "url": "https://dogv.gva.es/datos/2026/07/21/pdf/2026_9124_es.pdf",
+  "fecha": "2026-07-21",
+  "huella": "2ef899f5f91d76c39d46e3a91353cfa643a91642c6552c35ca6076f7cb89b06f"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T07:51:39+00:00",
+ "lote": "msgbatch_01NvbwpQGcC9vt1x7nWayvXt",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "técnico/a medio de gestión de administración general",
+    "auxiliar técnico/a en ecología",
+    "técnico/a superior en informática",
+    "diplomado/a en filosofía y letras"
+   ],
+   "cita": "para cubrir varias plazas de técnico/a medio de gestión de administración general, auxiliar técnico/a en ecología, técnico/a superior en informática y diplomado/a en filosofía y letras",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "provisión de personal funcionario de carrera para cubrir varias plazas",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "pruebas selectivas para la provisión de personal funcionario de carrera",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles, contados a partir del día siguiente al de la publicación del extracto de la convocatoria en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes para tomar parte en las pruebas selectivas será de veinte días hábiles",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "tablón de edictos de la corporación, Servicio de Recursos Humanos del Ayuntamiento de Alicante y página web municipal",
+   "cita": "estarán a disposición de los interesados en el tablón de edictos de la corporación",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_promocion_interna": {
+   "motivo": "valor_no_numerico",
+   "valor": "varias",
+   "cita": "por el turno de promoción interna, correspondientes a la oferta pública de empleo"
+  }
+ }
+}

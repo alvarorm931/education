@@ -1,0 +1,107 @@
+{
+ "proceso": "bopalicante:BOPALICANTE-2026-5759",
+ "documento": {
+  "id": "bopalicante:BOPALICANTE-2026-5759",
+  "fuente": "BOP-ALICANTE",
+  "url": "https://www.dip-alicante.es/bop2/pdftotal/2026/07/30_142/2026_005759.pdf",
+  "fecha": "2026-07-30",
+  "huella": "bdedfcd0ce522282af2187f2fc9dac349235dc775cbf623de879ba184e3caf88"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T07:51:42+00:00",
+ "lote": "msgbatch_01NvbwpQGcC9vt1x7nWayvXt",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Arquitecto/a Superior",
+    "Arquitecto/a Técnico/a",
+    "Técnico/a de Administración General",
+    "Auxiliar Administrativo/a",
+    "Celador/a de Obras-Servicio de Inspección Urbanística"
+   ],
+   "cita": "Arquitecto/a Superior (A1) - Arquitecto/a Técnico/a (A2) - Técnico/a de Administración General (A1) - Auxiliar Administrativo/a (C2) - Celador/a de Obras-Servicio de Inspección Urbanística (C2).",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "A1",
+   "cita": "Arquitecto/a Superior (A1) - Arquitecto/a Técnico/a (A2)",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "proceso restringido de funcionarización del personal laboral fijo del Ayuntamiento de Polop",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "El proceso se desarrollará por el sistema de concurso -oposición",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Título universitario oficial que habilite para el ejercicio de la profesión regulada de Arquitecto, o equivalente (varía por puesto, véase Anexo II)",
+   "cita": "Título universitario oficial que habilite para el ejercicio de la profesión regulada de Arquitecto, o equivalente.",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española o de otro Estado miembro de la UE; personal laboral fijo del Ayuntamiento con al menos un año de antigüedad; capacidad funcional; tener 16 años y no exceder la edad de jubilación forzosa; no haber sido separado por expediente disciplinario.",
+   "cita": "Tener la nacionalidad española o la de otro Estado miembro de la Unión Europea",
+   "nivel": "literal"
+  },
+  "tasa_euros": {
+   "valor": 90,
+   "cita": "subgrupo A1, 90 €; subgrupo A2, 80 €; subgrupo C1, 55 €; subgrupo C2, 45 €",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Sin perjuicio de las exenciones y bonificaciones aplicables según la Ordenanza Fiscal reguladora de la tasa",
+   "cita": "sin perjuicio de las exenciones y bonificaciones aplicables",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "Veinte días naturales contados desde el día siguiente al de la publicación del anuncio en el BOP de Alicante",
+   "cita": "El plazo de presentación de instancias será de veinte días naturales",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "En la sede electrónica del Ayuntamiento (https://polop.sedelectronica.es), conforme al modelo del Anexo III",
+   "cita": "Las instancias se presentarán en la sede electrónica del Ayuntamiento",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Tablón de anuncios de la sede electrónica del Ayuntamiento",
+   "cita": "Los sucesivos anuncios relativos a este proceso se publicarán en el tablón de anuncios de la sede electrónica",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Fase de concurso (máximo 40 puntos, no eliminatoria): servicios prestados, titulaciones y formación",
+    "Fase de oposición (máximo 60 puntos, eliminatoria): curso selectivo de formación con evaluación continuada (0-40) y prueba final tipo test (0-20)"
+   ],
+   "cita": "El proceso se desarrollará por el sistema de concurso -oposición, con una puntuación máxima de 100 puntos",
+   "nivel": "sin_signos"
+  },
+  "meritos": {
+   "valor": "Servicios prestados (0,07 puntos/mes, máximo 20); titulaciones académicas distintas de la requisito (máximo 10); cursos de formación (0,10 puntos/hora, máximo 10). Total fase de concurso: 40 puntos",
+   "cita": "Servicios prestados como personal laboral o funcionario en cualquier Administración Pública",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "Curso selectivo de formación: 60 horas lectivas para A1 y A2; 40 horas para C1 y C2",
+   "cita": "La duración del curso, en los términos acordados en la negociación colectiva, será de 60 horas lectivas",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 5,
+   "cita": "comprende los siguientes puestos, actualmente ocupados por personal laboral fijo"
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "no",
+   "cita": "Tras el proceso, la propuesta de nombramiento no puede superar el número de plazas convocadas"
+  }
+ }
+}

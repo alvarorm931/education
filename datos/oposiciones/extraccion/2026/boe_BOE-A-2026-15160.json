@@ -1,0 +1,56 @@
+{
+ "proceso": "boe:BOE-A-2026-15160",
+ "documento": {
+  "id": "dog:DOG-20260702-AnuncioL428-260626-0002",
+  "fuente": "DOG",
+  "url": "https://www.xunta.gal/dog/Publicados/2026/20260702/AnuncioL428-260626-0002_es.html",
+  "fecha": "2026-07-02",
+  "huella": "e5d134872282a666e20a1169fe4fc022f901afda18f34de77fe89f4f477975a0"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T07:51:51+00:00",
+ "lote": "msgbatch_01NvbwpQGcC9vt1x7nWayvXt",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "policía local",
+    "bombero/a conductor/a"
+   ],
+   "cita": "4 plazas de policía local, encuadradas en la escala de Administración especial",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C1",
+   "cita": "subgrupo C1, turno de movilidad",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "plazas vacantes en la plantilla de personal funcionario del Ayuntamiento de Lugo",
+   "nivel": "literal"
+  },
+  "plazas_turno_libre": {
+   "valor": 17,
+   "cita": "17 plazas de bombero/a conductor/a, encuadradas en la escala de Administración especial",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles, a contar desde el día siguiente al de la publicación del correspondiente anuncio en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes será de veinte días hábiles, a contar desde el día siguiente",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "plazas_total": {
+   "motivo": "valor_no_en_cita",
+   "valor": 21,
+   "cita": "4 plazas de policía local, encuadradas en la escala de Administración especial"
+  },
+  "plazas_promocion_interna": {
+   "motivo": "valor_no_en_cita",
+   "valor": 0,
+   "cita": "plazas reservadas a promoción interna"
+  }
+ }
+}

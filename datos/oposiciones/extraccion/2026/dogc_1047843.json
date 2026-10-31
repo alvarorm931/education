@@ -1,0 +1,48 @@
+{
+ "proceso": "dogc:1047843",
+ "documento": {
+  "id": "dogc:1047843",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1047843",
+  "fecha": "2026-06-23",
+  "huella": "0c230394497701ee7f691be3f73012f1012caf1e5497744d427cabc932cc40c9"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T07:51:44+00:00",
+ "lote": "msgbatch_01NvbwpQGcC9vt1x7nWayvXt",
+ "no_son_bases": false,
+ "campos": {
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles desde el día siguiente a la publicación del anuncio en el DOGC",
+   "cita": "será de 20 dies hàbils a comptar des de l'endemà a la publicació d'aquest anunci en el Diari Oficial",
+   "nivel": "sin_signos"
+  },
+  "publicaciones": {
+   "valor": "sede electrónica del Ayuntamiento de Creixell (http://creixell.eadministracio.cat)",
+   "cita": "es publicaran a la seu electrònica de l'aquest Ajuntament",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "plaza de oficial de segunda de la brigada municipal",
+   "cita": "aprobar las bases y la convocatoria para cubrir una plaza de oficial de segunda de la brigada municipal"
+  },
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "personal laboral fijo",
+   "cita": "cubrir una plaza de oficial de segunda de la brigada municipal, régimen laboral"
+  },
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "concurso-oposición",
+   "cita": "mediante sistema de concurso-oposición"
+  },
+  "plazas_total": {
+   "motivo": "cita_no_literal",
+   "valor": 1,
+   "cita": "para cubrir una plaza de oficial de segunda de la brigada municipal"
+  }
+ }
+}

@@ -1,0 +1,55 @@
+{
+ "proceso": "boe:BOE-A-2026-15254",
+ "documento": {
+  "id": "docm:DOCM-2026-5024",
+  "fuente": "DOCM",
+  "url": "https://docm.jccm.es/portaldocm/verArchivoHtml.do?ruta=2026/07/06/html/2026_5024.html&tipo=rutaDocm",
+  "fecha": "2026-07-06",
+  "huella": "d7863d29702c25fb877497e0049beaa757af6b2a444e76bb8be4fdc11cb6a147"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T07:51:47+00:00",
+ "lote": "msgbatch_01NvbwpQGcC9vt1x7nWayvXt",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "oficial de servicios varios"
+   ],
+   "cita": "para cubrir la plaza vacante en la plantilla municipal denominada oficial de servicios varios",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "por turno libre mediante el sistema de oposición",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "para cubrir una plaza de oficial de servicios varios correspondiente a la Oferta de Empleo Público de 2025",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles a contar desde el día siguiente a la publicación del anuncio en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes será de veinte días hábiles a contar desde el día siguiente a la publicación del anuncio",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Boletín Oficial de la Provincia, sede electrónica del Ayuntamiento (https://talayuelas.sedelectronica.es) y Tablón de Anuncios",
+   "cita": "se publicarán en el Boletín Oficial de la Provincia y en la sede electrónica de este Ayuntamiento",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "personal laboral fijo",
+   "cita": ""
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 1,
+   "cita": "por turno libre mediante el sistema de oposición"
+  }
+ }
+}

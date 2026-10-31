@@ -1,0 +1,112 @@
+{
+ "proceso": "dogc:1047241",
+ "documento": {
+  "id": "dogc:1047241",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1047241",
+  "fecha": "2026-06-16",
+  "huella": "c971ffc7b1f0df8d4a165828fa48208f1d4b1a5326c7f656d343602e77ccfa1e"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T07:52:07+00:00",
+ "lote": "msgbatch_01NvbwpQGcC9vt1x7nWayvXt",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "para la selección de personal laboral fijo, previa convocatoria por promoción interna",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso-oposición",
+   "cita": "mediante concurso-oposición con una valoración total de 100 puntos",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 5,
+   "cita": "Convocar el proceso selectivo de 5 plazas vacantes de administrativo/a",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Título exigido en los requisitos específicos",
+   "cita": "El título exigido en los requisitos específicos o certificados que acrediten la obtención",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Nacionalidad española o de Estado miembro de la UE; mínimo 16 años; no haber sido separado de la Administración por expediente disciplinario; capacidad funcional; cumplir requisitos específicos de cada convocatoria en la fecha de publicación en el DOGC",
+   "cita": "Tener al menos 16 años y no superar la edad establecida por la jubilación forzosa",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Catalán, nivel de suficiencia de catalán (según anexos específicos)",
+   "cita": "Tener el nivel de suficiencia de catalán, que se señale en las bases específicas de cada convocatoria",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Desempleo sin prestación económica; discapacidad igual o superior al 33%. Bonificación 30% o 50% para familias monoparentales y numerosas",
+   "cita": "Personas que acrediten una discapacidad igual o superior al 33%, acreditado mediante el documento expedido",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles desde el día siguiente a la publicación de la convocatoria en el DOGC",
+   "cita": "Las solicitudes se presentarán en el plazo de 20 días hábiles contados a partir del día siguiente",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Formulario de solicitud en el sitio web del proceso de INCASÒL, disponible desde el día siguiente a la publicación en el DOGC",
+   "cita": "rellenar el formulario de solicitud de participación en el sitio web destinado por el INCASÒL",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "Web de INCASÒL y su área de proceso (incasol.selecta-oep.es), con anuncio en el DOGC",
+   "cita": "se publicará un anuncio en el Diari Oficial de la Generalitat de Catalunya (DOGC)",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Primera prueba: cuestionario tipo test de hasta 50 preguntas sobre temario (0-15 puntos)",
+    "Segunda prueba: supuestos prácticos tipo test y/o preguntas abiertas, posible defensa oral (0-45 puntos)",
+    "Fase de concurso de méritos (hasta 40 puntos)"
+   ],
+   "cita": "La puntuación máxima es de 60 puntos, 15 de los cuales corresponden al ejercicio teórico y 45 al ejercicio práctico",
+   "nivel": "literal"
+  },
+  "temas": {
+   "valor": 15,
+   "cita": "Tema 15 El régimen disciplinario. Los delitos contra la Administración pública",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Experiencia profesional hasta 36 puntos (7 por año en INCASÒL; 3,5 en otras administraciones; 1,5 en sector privado). Formación hasta 4 puntos (cursos hasta 3; titulaciones hasta 1)",
+   "cita": "La puntuación máxima posible según los criterios siguientes: Experiencia profesional: 36 puntos",
+   "nivel": "sin_signos"
+  },
+  "bolsa": {
+   "valor": "no",
+   "cita": "Cualquier incumplimiento de los requisitos establecidos por estas bases",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "no",
+   "cita": "Dentro del plazo máximo de 1 mes a contar desde la publicación de la citada resolución, se procederá a la formalización por escrito del contrato",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "Administrativo/a",
+   "cita": "Resolver: 1. Convocar el proceso selectivo de 5 plazas vacantes de administrativo/a"
+  },
+  "plazas_discapacidad": {
+   "motivo": "valor_no_numerico",
+   "valor": "reserva de plazas para personas con discapacidad",
+   "cita": "con observancia de la reserva de plazas para personas con discapacidad de conformidad"
+  },
+  "tasa_euros": {
+   "motivo": "valor_no_numerico",
+   "valor": "Según tabla de cuota de la convocatoria (importe por grupo de clasificación)",
+   "cita": "los importes de la tasa que deben satisfacer las personas que participen en estos procesos de selección"
+  }
+ }
+}

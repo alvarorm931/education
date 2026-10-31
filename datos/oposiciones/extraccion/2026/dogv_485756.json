@@ -1,0 +1,60 @@
+{
+ "proceso": "dogv:485756",
+ "documento": {
+  "id": "dogv:485756",
+  "fuente": "DOGV",
+  "url": "https://dogv.gva.es/datos/2026/08/06/pdf/2026_24429_es.pdf",
+  "fecha": "2026-08-06",
+  "huella": "73d8c574176de7081db846ff903d8da6c32c09c9f5be95cb7a1a2c1d478c095a"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T07:51:55+00:00",
+ "lote": "msgbatch_01NvbwpQGcC9vt1x7nWayvXt",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Agente policía local"
+   ],
+   "cita": "Agente policía local C1 4 2 oposición - 2 concurso-oposición",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "C1",
+   "cita": "Subgrupo: C1.",
+   "nivel": "literal"
+  },
+  "vinculo": {
+   "valor": "funcionario de carrera",
+   "cita": "para proveer la cobertura definitiva, en el Ayuntamiento de Torreblanca",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 4,
+   "cita": "Agente policía local C1 4 2 oposición - 2 concurso-oposición",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "veinte días hábiles, a contar desde el día siguiente a la publicación del extracto en el Boletín Oficial del Estado",
+   "cita": "El plazo de presentación de solicitudes será de veinte días hábiles, a contar desde el día siguiente a la publicación del extracto",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "en la forma prevista en las propias bases",
+   "cita": "Los sucesivos anuncios referentes a esta convocatoria, cuando procedan de conformidad con las bases, se harán públicos en la forma prevista en las propias bases.",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "sistema": {
+   "motivo": "cita_no_literal",
+   "valor": "oposición",
+   "cita": ""
+  },
+  "plazas_turno_libre": {
+   "motivo": "valor_no_en_cita",
+   "valor": 4,
+   "cita": "Turno libre movilidad"
+  }
+ }
+}

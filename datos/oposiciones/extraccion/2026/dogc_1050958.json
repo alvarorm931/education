@@ -1,0 +1,53 @@
+{
+ "proceso": "dogc:1050958",
+ "documento": {
+  "id": "dogc:1050958",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1050958",
+  "fecha": "2026-07-24",
+  "huella": "edf00ec82a65917afdcbe0eb83d75b4c4f5fee8d0f3dbe216a2a6f76eeccb718"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T07:51:50+00:00",
+ "lote": "msgbatch_01NvbwpQGcC9vt1x7nWayvXt",
+ "no_son_bases": false,
+ "campos": {
+  "vinculo": {
+   "valor": "personal laboral fijo",
+   "cita": "de la plantilla de personal laboral de la Diputació de Girona",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "oposición",
+   "cita": "procés de selecció mitjançant oposició d'una plaça vacant",
+   "nivel": "literal"
+  },
+  "plazas_total": {
+   "valor": 1,
+   "cita": "procés de selecció mitjançant oposició d'una plaça vacant d'oficial",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "vint dies naturals, comptats des de l'endemà de la publicació d'aquest anunci al Diari Oficial de la Generalitat de Catalunya",
+   "cita": "El termini per a la presentació de sol·licituds és de vint dies naturals, comptats des de l'endemà",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "tauler d'edictes electrònic de la Diputació de Girona",
+   "cita": "publicacions dels actes de tràmit d'aquesta convocatòria es publicaran exclusivament al tauler d'edictes electrònic",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "denominacion": {
+   "motivo": "cita_no_literal",
+   "valor": "oficial de primera de manteniment",
+   "cita": "aprovat el procés selectiu d'una plaça vacant d'oficial de primera de manteniment (Grup C1)"
+  },
+  "grupo": {
+   "motivo": "cita_no_literal",
+   "valor": "C1",
+   "cita": "oficial de primera de manteniment (Grup C1) de la plantilla de personal laboral"
+  }
+ }
+}

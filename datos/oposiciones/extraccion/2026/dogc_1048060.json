@@ -1,0 +1,110 @@
+{
+ "proceso": "dogc:1048060",
+ "documento": {
+  "id": "dogc:1048060",
+  "fuente": "DOGC",
+  "url": "https://dogc.gencat.cat/es/document-del-dogc/?documentId=1048060",
+  "fecha": "2026-06-26",
+  "huella": "ab1e47f6a45120c8ed2c83461e88e604eeb90c8ae015b6ebd440e7d77bf7203b"
+ },
+ "modelo": "claude-haiku-5-5",
+ "extraido": "2026-10-31T07:51:55+00:00",
+ "lote": "msgbatch_01NvbwpQGcC9vt1x7nWayvXt",
+ "no_son_bases": false,
+ "campos": {
+  "denominacion": {
+   "valor": [
+    "Fisioterapeuta (FT05)",
+    "Técnico-a Comunicación y Diseño Gráfico (OAC05)",
+    "Administrativo/a (IN05)",
+    "Recepcionista 2 (RE04)"
+   ],
+   "cita": "Bases específicas en relación con el puesto de trabajo FT05 (Fisioterapeuta)",
+   "nivel": "literal"
+  },
+  "grupo": {
+   "valor": "B",
+   "cita": "Categoría profesional: B",
+   "nivel": "literal"
+  },
+  "sistema": {
+   "valor": "concurso",
+   "cita": "convocatoria del proceso de selección mediante el sistema selectivo de concurso de méritos",
+   "nivel": "literal"
+  },
+  "titulacion": {
+   "valor": "Categorías profesionales B: título de grado medio o equivalente; C: título de bachillerato o técnico superior de grado superior",
+   "cita": "Categorías profesionales B: título de grado medio o equivalente.",
+   "nivel": "literal"
+  },
+  "otros_requisitos": {
+   "valor": "Tener 16 años cumplidos y no superar la edad máxima de jubilación forzosa; nacionalidad española, UE o residencia legal; capacidad funcional; no haber sido separado del servicio público ni inhabilitado; no tener condena por delitos contra la libertad sexual.",
+   "cita": "Haber cumplido 16 años y no superar, en su caso, la edad máxima de jubilación forzosa.",
+   "nivel": "literal"
+  },
+  "idioma_cooficial": {
+   "valor": "Catalán nivel C1 (suficiencia); castellano nivel C1 solo para aspirantes sin nacionalidad española",
+   "cita": "Las personas aspirantes deben tener los conocimientos de lengua catalana de nivel C1.",
+   "nivel": "literal"
+  },
+  "exenciones_tasa": {
+   "valor": "Exentas las personas en desempleo sin prestación, las jubiladas y las que acrediten discapacidad igual o superior al 33 %. Bonificaciones del 30 % y 50 % para familias monoparentales y numerosas y víctimas de violencia machista.",
+   "cita": "Están exentas de esta tasa, previa justificación documental de su situación, las personas en situación de desempleo",
+   "nivel": "literal"
+  },
+  "plazo_solicitudes": {
+   "valor": "20 días hábiles desde el día siguiente a la publicación de la convocatoria en el DOGC",
+   "cita": "plazo común y único de 20 días hábiles a contar desde el día siguiente de la publicación",
+   "nivel": "literal"
+  },
+  "presentacion": {
+   "valor": "Exclusivamente por medios electrónicos, mediante el formulario normalizado en la web de Trámites gencat",
+   "cita": "Las solicitudes deben presentarse, exclusivamente, por medios electrónicos.",
+   "nivel": "literal"
+  },
+  "publicaciones": {
+   "valor": "DOGC y Tablón electrónico de la Administración de la Generalitat (e-Tauler, tauler.gencat.cat)",
+   "cita": "Las publicaciones oficiales relativas a la convocatoria se realizan a través del Diari Oficial de la Generalitat",
+   "nivel": "literal"
+  },
+  "ejercicios": {
+   "valor": [
+    "Valoración de méritos (concurso, hasta 100 puntos)",
+    "Prueba acreditativa de conocimientos de lengua catalana (si no exento)",
+    "Prueba acreditativa de conocimientos de lengua castellana (si no exento y sin nacionalidad española)"
+   ],
+   "cita": "Consta de dos ejercicios: conocimientos de lengua catalana y conocimientos de lengua castellana.",
+   "nivel": "literal"
+  },
+  "meritos": {
+   "valor": "Servicios prestados hasta 60 puntos; titulaciones académicas relevantes hasta 20 puntos; cursos de formación hasta 20 puntos",
+   "cita": "Se valoran los servicios prestados hasta un máximo de 60 puntos",
+   "nivel": "literal"
+  },
+  "practicas_o_curso": {
+   "valor": "período de prueba según el grupo de clasificación de la categoría profesional",
+   "cita": "tendrán que superar, si procede, un período de prueba según el grupo de clasificación",
+   "nivel": "literal"
+  }
+ },
+ "rechazados": {
+  "vinculo": {
+   "motivo": "cita_no_literal",
+   "valor": "personal laboral fijo",
+   "cita": "la contratación como personal laboral fijo de las personas aspirantes"
+  },
+  "tasa_euros": {
+   "motivo": "valor_no_numerico",
+   "valor": {
+    "grupo_B": 56.7,
+    "grupo_C": 41.35
+   },
+   "cita": "Para acceder a un puesto de trabajo del grupo B: 56,70 euros."
+  },
+  "bolsa": {
+   "motivo": "cita_no_literal",
+   "valor": "no",
+   "cita": "Acceso a los puestos de trabajo mediante la contratación como personal laboral fijo"
+  }
+ }
+}
