@@ -653,18 +653,30 @@ comprobados por asignaturas:
 
 ## 5. Siguientes pasos
 
-1. **Decisiones de Álvaro:** la excepción del RUCT (§2), que tomó Claude y se puede revertir; Zaragoza (licencia
-   no comercial de sus datos abiertos de notas de corte).
+1. **Decisiones** (Álvaro las dejó a criterio de Claude el 31/10 a las 15:14; se pueden revertir):
+   - Excepción del RUCT (§2): **se mantiene**. Las memorias solo están en el RUCT (el catálogo abierto del SIIU no
+     las trae), el RUCT es público por norma y el robots.txt se vuelve a mirar en cada ejecución.
+   - Zaragoza: **sus datos abiertos de notas de corte siguen fuera** (CC BY-NC choca con una web con anuncios, y
+     tomar las mismas cifras de sus PDF sería saltarse esa licencia). Se pierde poco: QEDU da nota de corte a 71 de
+     sus 76 grados por centro y la del curso anterior a 70. Lo que falta (años anteriores y cupos) se pide a la
+     universidad cuando el portal tenga dirección pública.
+   - Precios de las privadas: **se mantiene el significado** de §2: precio del primer curso tal como lo da la
+     fuente, con reserva, matrícula y cargos cuando la fila da ese total, y la enseñanza aparte. El total del grado
+     sale de la enseñanza, y en los dobles solo si el precio es por crédito.
 2. Planes que no cuadran (sobre todo publicados solo por materias o sin carácter por asignatura): memorias del RUCT
-   de los 1.020 grados sin plan comprobado (decidido por Álvaro), solo las páginas del plan. **Parado:** desde
-   las 11:30 del 30/10 el RUCT no responde a GitHub (tiempo agotado en cada petición; 5 de 6 memorias del primer
+   de los 1.020 grados sin plan comprobado (decidido por Álvaro), solo las páginas del plan. Desde las 11:30 del 30/10 el RUCT no responde a GitHub (tiempo agotado en cada petición; 5 de 6 memorias del primer
    tramo vacías), así que se canceló la tanda de 170 tramos. **Desde el servidor de España sí responde** (prueba de
    las 13:30: la memoria de Ingeniería en Sistemas de Información, 63 páginas en unos siete minutos, 37 asignaturas,
    plan comprobado con los créditos del RUCT, 186 = 186). Ese servidor lo comparten todas las conversaciones y el
-   buzón de incidencias pide una sola lectura del RUCT a la vez en todo el proyecto: la noche del 30/10 lee másters;
-   las de grados (los 164 grados sin ningún plan y los 88 cuyo plan vigente no cuadra, 42 tandas de 6 de una en
-   una, unas 35 horas; los 1.020 serían unas 120) se lanzan en cuanto termine (Álvaro: «sigue a saco»; lista en
-   `trabajo/memorias_prioridad_v2.txt`). El lector ya está en las fichas
+   buzón de incidencias pide una sola lectura del RUCT a la vez en todo el proyecto: la noche del 30/10 leyó
+   másters; las de grados (los 164 grados sin ningún plan y los 88 cuyo plan vigente no cuadra, 42 tandas de 6 de
+   una en una; los 1.020 serían unas 170; lista en `trabajo/memorias_prioridad_v2.txt`) **corren desde las 11:10
+   del 31/10** (ejecución 41188372738). A las 15:24, 2 tandas terminadas y la tercera en curso: cada una tarda de
+   46 a 51 minutos, más las esperas cuando los boletines diarios ocupan el servidor, así que acabará el 2/11. Las
+   tandas van de una en una aunque el servidor gane ejecutores: más a la vez serían varias lecturas del RUCT. El
+   RUCT va lento (238 y 290 peticiones por tanda, unos 10 segundos cada una), así que una tanda no siempre lee sus
+   6 memorias antes de su límite de 42 minutos: la primera leyó 3 y la segunda 5. Los códigos que quedan sin leer se apuntan en
+   `trabajo/memorias_pendientes.txt` y se relanzan al final. El lector ya está en las fichas
    (`fichas.plan_de_memoria`: el plan de la memoria entra si el del BOE no cuadra y él sí cuadra con los créditos
    por tipo del RUCT; con una página sin leer no cuenta como comprobado).
 3. Privadas sin precio (859): la Europea retiró sus PDF de 2025-2026 (404 también desde el
