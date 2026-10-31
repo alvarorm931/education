@@ -110,10 +110,132 @@ def buscar_cc(crawls: list[str], desde: int, hasta: int, salida: Path, max_minut
     return res
 
 
+# ------------------------------------------------------------------------------------- rastreo de las webs
+
+# páginas que suelen enlazar la memoria: calidad, verificación, documentación oficial del título, SGIC, transparencia
+PAGINA_MEMORIA = re.compile(r"(?i)memori|mem%c3%b2ri|verifica|calidad|qualitat|calidade|kalitate|sgic|sgiq|sgc|"
+                            r"garantia|documentaci[oó]n[-_]oficial|informaci[oó]n[-_]oficial|transparen|"
+                            r"datos[-_]del[-_]t[ií]tulo|seguimiento|acreditaci")
+ENLACE = re.compile(r"""<a\b[^>]*?href\s*=\s*["']([^"'#]+)["'][^>]*>(.*?)</a>""", re.I | re.S)
+TEXTO_MEMORIA = re.compile(r"(?i)memori|mem[òo]ria|verifica")
+
+
+def enlaces_a_memorias(html: str, base: str) -> list[str]:
+    """PDF enlazados desde una página cuya dirección o texto del enlace hablan de memoria o verificación (no de
+    másters, doctorados ni memorias anuales)."""
+    from urllib.parse import urljoin
+
+    salida = []
+    for href, texto in ENLACE.findall(html or ""):
+        url = urljoin(base, href.strip())
+        ruta = url.split("?")[0].lower()
+        texto = re.sub(r"<[^>]+>|\s+", " ", texto)
+        if not (ruta.endswith(".pdf") or "pdf" in texto.lower() or "/download" in ruta or "bitstream" in ruta):
+            continue
+        if (TEXTO_MEMORIA.search(ruta) or TEXTO_MEMORIA.search(texto)) and not re.search(EXCLUIR, "/" + ruta.rsplit("/", 1)[-1]) \
+                and not re.search(r"(?i)m[aá]ster|doctorad|memoria anual|memoria econ", texto):
+            salida.append(url)
+    return list(dict.fromkeys(salida))
+
+
+def rastrear(codigo: str, universidad: str, dominios_u: list[str], max_paginas: int, fin: float) -> dict:
+    """Sitemaps de la web de una universidad: PDF con nombre de memoria y páginas de calidad o verificación, de las
+    que se sacan sus enlaces a memorias. Solo direcciones; los PDF los lee después `leer`."""
+    from motor.estudios.rastreador import Dominio, _xml, urls_de_sitemap
+
+    res = {"codigo_universidad": codigo, "universidad": universidad, "dominios": dominios_u, "pdf": [], "paginas_leidas": 0}
+    d = Dominio("https://www." + dominios_u[0], None, pausa=1.0, max_peticiones=max_paginas + 80)
+    for dom in dominios_u[1:]:
+        d.propios.add(dom)
+    sitemaps, responde = d.resolver_base()
+    if not responde:
+        res["error"] = "sin_respuesta"
+        return res
+    cola = list(dict.fromkeys(sitemaps or [d.base + "/sitemap.xml", d.base + "/sitemap_index.xml"]))
+    vistos, urls = set(), []
+    while cola and len(urls) < 200_000 and d.peticiones < 70 and time.time() < fin:
+        sm = cola.pop(0)
+        if sm in vistos:
+            continue
+        vistos.add(sm)
+        r = d.get(sm, guardar=False)
+        if r is None or r.status_code != 200:
+            continue
+        raiz = _xml(r.content)
+        if raiz is None:
+            continue
+        hijos, paginas = urls_de_sitemap(raiz)
+        hijos = sorted((h for h in hijos if h not in vistos), key=lambda h: (not re.search(
+            r"grado|grau|estudi|titulac|calidad|qualitat|page|pagina|attachment|media|document", h, re.I), h))
+        cola = list(dict.fromkeys(hijos + cola))
+        urls.extend(u for u in paginas if d.propio(u))
+    res["sitemaps_leidos"], res["urls_sitemap"] = len(vistos), len(urls)
+    pdfs = [u for u in dict.fromkeys(urls) if re.search(INCLUIR, urlparse_path(u)) and not re.search(EXCLUIR, urlparse_path(u))]
+    # primero las páginas que hablan de memoria o verificación, luego las de calidad
+    paginas = [u for u in dict.fromkeys(urls) if not urlparse_path(u).endswith(".pdf") and PAGINA_MEMORIA.search(urlparse_path(u))
+               and not re.search(r"(?i)m[aá]ster|doctorad|/blog|noticia|news|agenda|evento", urlparse_path(u))]
+    paginas.sort(key=lambda u: (not TEXTO_MEMORIA.search(urlparse_path(u)), len(u)))
+    for u in paginas[:max_paginas]:
+        if time.time() > fin:
+            res["alerta"] = "tiempo agotado"
+            break
+        r = d.get(u, guardar=False)
+        if r is None or r.status_code != 200 or "html" not in (r.headers.get("content-type") or ""):
+            continue
+        res["paginas_leidas"] += 1
+        pdfs += enlaces_a_memorias(r.text, r.url)
+    res["pdf"] = list(dict.fromkeys(sin_secreto(p) for p in pdfs))
+    res["paginas_candidatas"], res["peticiones"] = len(paginas), d.peticiones
+    return res
+
+
+def urlparse_path(u: str) -> str:
+    from urllib.parse import urlparse
+
+    return urlparse(u).path.lower()
+
+
+def sin_secreto(u: str) -> str:
+    from motor.estudios.commoncrawl import sin_secretos
+
+    return sin_secretos(u)
+
+
+def buscar_web(codigos: list[str], salida: Path, max_paginas: int, max_minutos: float) -> dict:
+    d = json.loads(DOMINIOS.read_text(encoding="utf-8"))
+    fin = time.time() + max_minutos * 60
+    destino = salida / "datos" / "estudios" / "grados" / "memorias_web"
+    destino.mkdir(parents=True, exist_ok=True)
+    resultados, filas = [], []
+    for i, cu in enumerate(codigos):
+        if time.time() > fin or cu not in d:
+            continue
+        # el tiempo se reparte entre las universidades que quedan
+        fin_u = time.time() + (fin - time.time()) / max(1, len(codigos) - i)
+        r = rastrear(cu, d[cu]["universidad"], d[cu]["dominios"], max_paginas, fin_u)
+        resultados.append(r)
+        for u in r["pdf"]:
+            from motor.estudios.rastreador import dominio_registrado
+            from urllib.parse import urlparse
+
+            filas.append({"dominio": dominio_registrado(urlparse(u).netloc.lower()), "url": u,
+                          "codigo_universidad": cu, "universidad": d[cu]["universidad"], "origen": "web"})
+    nombre = f"urls_web_{codigos[0] if codigos else 'x'}_{len(codigos)}"
+    with (destino / f"{nombre}.jsonl").open("w", encoding="utf-8") as fh:
+        for x in filas:
+            fh.write(json.dumps(x, ensure_ascii=False) + "\n")
+    res = {"universidades": len(resultados), "pdf": len(filas),
+           "por_universidad": {r["universidad"]: {k: r.get(k) for k in ("urls_sitemap", "paginas_candidatas", "paginas_leidas",
+                                                                          "error", "alerta")} | {"pdf": len(r["pdf"])}
+                               for r in resultados}}
+    (destino / f"resumen_{nombre}.json").write_text(json.dumps(res, ensure_ascii=False, indent=1), encoding="utf-8")
+    return res
+
+
 # --------------------------------------------------------------------------------------------- lectura del PDF
 
 IDENTIFICADOR = re.compile(r"Identificador\s*:\s*(\d{7,8})")
-FECHA = re.compile(r"Fecha\s*:\s*(\d{2}/\d{2}/\d{4})")
+FECHA = re.compile(r"(?i)Fecha\s*:\s*(\d{2}/\d{2}/\d{4})")
 DENOMINACION = re.compile(r"(Graduado\s+o\s+Graduada\s+en\s+[^\n]{3,200}?)(?:\s+por\s+la\s+|\s*\n)", re.I)
 NIVEL = re.compile(r"^\s*(?:\d+(?:\.\d+)*\s+)?NIVEL\s*([123])\s*:\s*(.+?)\s*$", re.I)
 CARACTERES = ("básica", "obligatoria", "optativa", "prácticas externas", "trabajo fin de grado / máster",
@@ -313,7 +435,9 @@ def urls_de(carpeta: Path, parte: tuple[int, int] | None) -> list[dict]:
 
 def main() -> None:
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    p.add_argument("paso", choices=["cc", "leer"])
+    p.add_argument("paso", choices=["cc", "web", "leer"])
+    p.add_argument("--universidades", default="", help="web: códigos de universidad separados por comas")
+    p.add_argument("--max-paginas", type=int, default=60, help="web: páginas de calidad o verificación por universidad")
     p.add_argument("--crawls", default="", help="crawls separados por comas: identificadores o posiciones (0 = el último)")
     p.add_argument("--archivos", default="0:400", help="ficheros del índice desde:hasta")
     p.add_argument("--urls", type=Path, help="carpeta con los urls_*.jsonl del paso cc")
@@ -328,6 +452,8 @@ def main() -> None:
         crawls = [ultimo_crawl(int(c)) if c.isdigit() else c for c in a.crawls.split(",") if c] or [ultimo_crawl()]
         desde, hasta = (int(x) for x in a.archivos.split(":"))
         res = buscar_cc(crawls, desde, hasta, a.salida, a.max_minutos)
+    elif a.paso == "web":
+        res = buscar_web([c for c in a.universidades.split(",") if c], a.salida, a.max_paginas, a.max_minutos)
     else:
         parte = tuple(int(x) for x in a.parte.split("/")) if a.parte else None
         res = leer(urls_de(a.urls, parte), a.salida, a.max_minutos)

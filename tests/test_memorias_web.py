@@ -92,3 +92,16 @@ def test_urls_repartidas_por_servidor(tmp_path):
 def test_dominios_de_las_universidades():
     doms = mw.dominios()
     assert doms["ucm.es"]["universidad"] == "Universidad Complutense de Madrid" and len(doms) > 90
+
+
+def test_enlaces_a_memorias_de_una_pagina_de_calidad():
+    html = """<ul>
+      <li><a href="/doc/grau-dret/memoria-verificada.pdf">Memòria verificada</a></li>
+      <li><a href="https://www.u.es/docs/G_Historia.pdf">Memoria de verificación del título</a></li>
+      <li><a href="/doc/master-x/memoria.pdf">Memoria del máster</a></li>
+      <li><a href="/doc/memoria-anual-2024.pdf">Memoria anual</a></li>
+      <li><a href="/doc/plan.pdf">Plan de estudios</a></li>
+      <li><a href="/grado/informe.html">Informe de verificación</a></li>
+    </ul>"""
+    assert mw.enlaces_a_memorias(html, "https://www.u.es/grado/calidad") == [
+        "https://www.u.es/doc/grau-dret/memoria-verificada.pdf", "https://www.u.es/docs/G_Historia.pdf"]
