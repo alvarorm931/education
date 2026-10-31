@@ -366,3 +366,11 @@ def test_boletin_en_mayusculas_y_el_resto_en_minusculas():
          "publicación de este anuncio en el BOLETÍN OFICIAL de la Comunidad de Madrid.")
     r = extraer_plazo(t, "2026-10-01", "Boletín Oficial de la Comunidad de Madrid")
     assert r["cuenta_desde"] == "Boletín Oficial de la Comunidad de Madrid" and r["fin_estimado"] == "2026-10-30"
+
+
+def test_el_propio_anuncio_abre_el_plazo():
+    t = "Esta publicación, según las bases, abre el plazo de 10 días hábiles para la presentación de solicitudes."
+    assert extraer_plazo(t, "2026-10-01", "Boletín Oficial de la Provincia de Sevilla")["fin_estimado"] == "2026-10-16"
+    t = ("Prazo de presentación de instancias: DEZ DÍAS HÁBILES (non contan sábados, domingos e festivos) a contar "
+         "dende o seguinte ó da publicación deste anuncio.")
+    assert extraer_plazo(t, "2026-10-01", "Boletín Oficial de la Provincia de Lugo")["fin_estimado"] == "2026-10-16"

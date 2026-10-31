@@ -111,7 +111,11 @@ RE_DESDE_PUBLICACION = re.compile(
     r"desde\s+(?:el\s+d[ií]a\s+)?(?:siguiente\s+)?(?:a|al)?\s*(?:la\s+)?(?:su\s+)?publicaci[oó]n|"
     r"endem[aà]\s+(?:de\s+la\s+|de\s+)?(?:seva\s+|la\s+seva\s+)?publicaci[oó]|"
     r"seg[uü]ents?\s+(?:al|a\s+la|a)\s+(?:de\s+la\s+)?(?:seva\s+)?publicaci[oó]|"
-    r"seguinte\s+(?:ao|á|a)\s+(?:da\s+|de\s+)?(?:súa\s+|sua\s+)?publicaci[oó]n|"
+    r"seguinte\s+(?:ao|á|a|ó|o)\s+(?:da\s+|de\s+)?(?:súa\s+|sua\s+)?publicaci[oó]n|"
+    # «Esta publicación, según las bases, abre el plazo de 10 días hábiles», «Mediante el presente anuncio se inicia
+    # el plazo…»: cuenta desde el propio anuncio
+    r"(?:esta|la\s+presente)\s+publicaci[oó]n?[^.;]{0,40}?\b(?:abre|inicia|obre)\b|"
+    r"(?:mediante|amb)\s+(?:el\s+presente|aquest|el\s+present)\s+anunci[o]?\s+(?:se\s+|s')?(?:inicia|abre|obre)|"
     r"a\s+partir\s+d[ae]\s+(?:la\s+|súa\s+|sua\s+)?publicaci[oó]n?|"
     r"(?:siguiente|seg[uü]ent|endem[aà])[^.;]{0,40}?(?:publicaci[oó]|inserci[oó]|aparezca|aparegui|se\s+publique|"
     r"es\s+publiqui)", re.IGNORECASE)
