@@ -120,6 +120,12 @@ def boletines_lista(contenido: bytes) -> list[dict]:
               "fecha": f"{m.group('a')}-{m.group('m')}-{m.group('d')}"} for m in RE_FILA.finditer(h)]
     tope = _date.today().year + 1
     validos = [b["fecha"] if 2000 <= int(b["fecha"][:4]) <= tope else None for b in lista]
+    # Un año posible pero que no cabe entre sus vecinos («BOP DE 18/07/2013» entre dos de julio de 2023) también es
+    # errata: la lista va del más nuevo al más antiguo
+    for k in range(1, len(lista) - 1):
+        nuevo, viejo = validos[k - 1], validos[k + 1]
+        if validos[k] and nuevo and viejo and viejo <= nuevo and not (viejo <= validos[k] <= nuevo):
+            validos[k] = None
     for k, b in enumerate(lista):
         if validos[k]:
             continue
@@ -168,6 +174,9 @@ def historico(argv: list[str] | None = None) -> int:
     inicio, freno, hechos, pagina = time.monotonic(), Freno(), 0, 0
     estado_ruta = base / "estado_historico.json"
     estado = json.loads(estado_ruta.read_text(encoding="utf-8")) if estado_ruta.exists() else {}
+    # Versión 2 (31/10/2026): una errata de año había dado el histórico por completo en el 19/07/2023
+    if estado.get("version") != 2:
+        estado = {"version": 2}
     while not estado.get("completo"):
         if a.max_minutos and (time.monotonic() - inicio) / 60 > a.max_minutos:
             print("Tiempo agotado; se continúa en la siguiente ejecución")
@@ -177,10 +186,13 @@ def historico(argv: list[str] | None = None) -> int:
         time.sleep(a.pausa)
         if not lista:
             break
-        for b in lista:
+        for k, b in enumerate(lista):
             if b["fecha"] < a.desde.isoformat():
-                estado["completo"] = True
-                break
+                # Completo solo si lo que sigue en la página también es anterior (una errata suelta no lo cierra)
+                if all(x["fecha"] < a.desde.isoformat() for x in lista[k:k + 3]):
+                    estado["completo"] = True
+                    break
+                continue
             d = date.fromisoformat(b["fecha"])
             ruta = base / "dias" / f"{d:%Y}" / f"{d:%m}" / f"{d:%d}.json"
             if b["id_nodo"] in cerrados or (ruta.exists() and json.loads(ruta.read_text(encoding="utf-8")).get(

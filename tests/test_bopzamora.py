@@ -44,3 +44,12 @@ def test_lugo_lista_con_errata_en_el_anio():
                                  f'<td><a href="/gl/node/{nodo}">BOP DE {f}</a>')
     h = "".join([fila("1", "10", "02/01/2024"), fila("297", "9", "29/12/8202"), fila("296", "8", "28/12/2023")])
     assert [b["fecha"] for b in lu.boletines_lista(h.encode())] == ["2024-01-02", "2023-12-29", "2023-12-28"]
+
+
+def test_lugo_errata_de_anio_posible():
+    """«BOP DE 18/07/2013» entre dos boletines de julio de 2023 daba el histórico por completo (31/10/2026)."""
+    from motor.provinciales import boplugo as lu
+    fila = ('<td class="views-field views-field-field-ail-codigo"> {c} </td><td><a href="/gl/node/{c}">BOP DE {f}</a>'
+            '</td>')
+    h = "".join(fila.format(c=c, f=f) for c, f in [(166, "20/07/2023"), (165, "18/07/2013"), (164, "17/07/2023")])
+    assert [b["fecha"] for b in lu.boletines_lista(h.encode())] == ["2023-07-20", "2023-07-18", "2023-07-17"]
