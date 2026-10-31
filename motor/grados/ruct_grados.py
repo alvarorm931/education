@@ -127,7 +127,7 @@ def resumen_memoria(m: dict) -> dict:
     }
 
 
-def leer_plan_memoria(lector, ficha: dict, max_paginas: int = MAX_PAGINAS) -> dict:
+def leer_plan_memoria(lector, ficha: dict, max_paginas: int = MAX_PAGINAS, fin: float | None = None) -> dict:
     """Solo el plan de la memoria vigente: módulos → materias → asignaturas (nombre, carácter, créditos, unidad
     temporal y despliegue). Es lo que falta en los grados cuyo plan del BOE no se puede comprobar; las páginas de
     actividades, evaluación, contenidos, acceso, catálogos y centros de cada memoria no se piden (en un grado son
@@ -149,6 +149,12 @@ def leer_plan_memoria(lector, ficha: dict, max_paginas: int = MAX_PAGINAS) -> di
     def pagina(ruta: str) -> str | None:
         if lector.peticiones > inicio + max_paginas:
             avisos.append(f"límite de {max_paginas} páginas alcanzado")
+            return None
+        # el tiempo del tramo también se mira entre páginas: un trabajo no pasa de su límite (58 minutos) aunque
+        # el RUCT frene; la memoria queda a medias y no cuenta como comprobada
+        if fin is not None and time.time() > fin:
+            if "límite de tiempo del tramo a mitad de la memoria" not in avisos:
+                avisos.append("límite de tiempo del tramo a mitad de la memoria")  # «límite»: no cuenta como comprobada
             return None
         estado, pg, _ = lector.get(ruct.SOL + ruta)
         if estado != 200:
@@ -236,7 +242,7 @@ def ejecutar(codigos: list[str], raiz: Path, nivel: str, max_minutos: float) -> 
             errores[ficha["error"]] += 1
         elif nivel in ("memoria", "plan"):
             memoria = ruct.leer_memoria(lector, ficha, max_paginas=MAX_PAGINAS) if nivel == "memoria" \
-                else leer_plan_memoria(lector, ficha)
+                else leer_plan_memoria(lector, ficha, fin=fin + 8 * 60)
             resumenes[codigo] = resumen_memoria(memoria)
             ficha["memoria"] = sin_textos(memoria)
         (destino / f"{codigo}.json").write_text(json.dumps(ficha, ensure_ascii=False, indent=1), encoding="utf-8")
