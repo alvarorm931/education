@@ -35,12 +35,13 @@ from motor.boe.clasificar import normalizar
 from motor.extraccion.texto_es import MESES, numero
 from motor.calendario import etiqueta, fin_de_plazo, fin_de_plazo_meses
 
-VERSION = "plazo_general_v3"  # v3 (30/10/2026): festivos de la comunidad del convocante
+VERSION = "plazo_general_v4"  # v4 (31/10/2026): frases partidas tras «Sra.», «veinte (20) días», fin con fecha
+# v3 (30/10/2026): festivos de la comunidad del convocante
 
 L = r"a-záéíóúñàèòïüç·"  # letras de castellano, catalán y gallego
 RE_FRASE = re.compile(r"(?<=[.;])\s+(?=[«(A-ZÁÉÍÓÚÑÀÈÒ0-9])")
 RE_DIAS = re.compile(
-    rf"(?P<n>\d{{1,3}}|[{L}]+(?:-i-[{L}]+)?(?:\s+[ye]\s+[{L}]+)?)\s+(?:d[ií]as|dies)\s+"
+    rf"(?P<n>\d{{1,3}}|[{L}]+(?:-i-[{L}]+)?(?:\s+[ye]\s+[{L}]+)?)(?:\s*\(\d{{1,3}}\))?\s+(?:d[ií]as|dies)\s+"
     r"(?P<tipo>h[aáà]biles|h[aà]bils|feiners|naturales|naturals|naturais)", re.IGNORECASE)
 RE_MESES = re.compile(r"\b(?P<n>un|una|unha|dos|dous|dues|duas|tres|cuatro|quatre|catro|seis|sis|\d{1,2})\s+mes(?:es|os)?\b",
                       re.IGNORECASE)
@@ -91,15 +92,32 @@ EXCLUIR = ("subsan", "esmen", "emenda", "renuncia", "recurso de", "recurso potes
            "plazo maximo", "termini maxim", "prazo maximo", "periodo de practicas", "periode de practiques",
            "aportar la documentacion", "aportar la documentacio", "desempleadas durante", "presentar la documentacion",
            "presentar la documentacio", "dentro del plazo de presentacion de instancias y", "declaracion responsable",
-           "declaracio responsable", "fecha de finalizacion del plazo")
+           "declaracio responsable", "fecha de finalizacion del plazo", "finalizacion del plazo", "terminacion del plazo",
+           "una vez recibidas las solicitudes")
 PREFERIR = ("presentacion de solicitudes", "presentacion de las solicitudes", "solicitudes se presentaran",
             "solicitudes deberan presentarse", "presentacion de instancias", "plazo de presentacion",
             "presentacio de sol·licituds", "presentacio de les sol·licituds", "presentacio d'instancies",
             "termini de presentacio", "prazo de presentacion")
 
 
+# Abreviaturas tras las que un punto no acaba la frase («se dirigirán a la Sra. Rectora Magnífica… y se presentarán en el
+# plazo de veinte días hábiles»: partida ahí, la frase del plazo no decía de qué era, BOE-A-2026-8173)
+RE_ABREVIATURA_FINAL = re.compile(
+    r"(?i)(?:^|[\s(«\"“])(?:sr|sra|sres|sras|srs|excmo|excma|excmos|ilmo|ilma|ilmos|iltre|d|dña|dª|dr|dra|dres|mgfco|mgfca|"
+    r"magfco|magfca|magnfco|núm|num|nº|art|arts|apdo|apdos|avda|av|pág|págs|pag|ej|etc|sig|ss|vol|cap|ap|aptdo|cía|"
+    r"[a-záéíóúñ])\.$")
+
+
 def frases(texto: str) -> list[str]:
-    return [f.strip() for p in (texto or "").split("\n") for f in RE_FRASE.split(p) if f.strip()]
+    out = []
+    for p in (texto or "").split("\n"):
+        trozos = [f.strip() for f in RE_FRASE.split(p) if f.strip()]
+        for t in trozos:
+            if out and out[-1][-1:] == "." and RE_ABREVIATURA_FINAL.search(out[-1][-12:]) and not out[-1].endswith("etc."):
+                out[-1] = out[-1] + " " + t
+            else:
+                out.append(t)
+    return out
 
 
 def _fecha(d: str, m: str | None, a: str | None, referencia: date) -> date | None:
@@ -119,9 +137,13 @@ def _candidata(f: str) -> bool:
         return False
     if not any(x in n for x in ("solicitud", "instancia", "sol·licitud", "sollicitud", "instanci")):
         return False
-    if any(x in n for x in EXCLUIR):
+    m = RE_DIAS.search(f) or RE_MESES.search(f) or RE_INTERVALO.search(f) or RE_FIN_EXPLICITO.search(f)
+    if not m:
         return False
-    return bool(RE_DIAS.search(f) or RE_MESES.search(f) or RE_INTERVALO.search(f))
+    # Lo que excluye se mira hasta poco después del plazo: una frase larga puede seguir con otra cosa («… y contendrán
+    # los requisitos… de la provisión de plazas de nombramiento discrecional», CGPJ)
+    ventana = normalizar(f[:m.end() + 200]).replace("l.l", "l·l")
+    return not any(x in ventana for x in EXCLUIR)
 
 
 PARTICULAS_FINALES = re.compile(r"(?:\s+(?:de|del|la|las|les|los|i|y))+$")
@@ -160,7 +182,10 @@ def _boletines(f: str, desde: int = 0) -> list[str]:
                 else:
                     break
             return list(dict.fromkeys(n for _, _, n in elegidos))
-    return list(dict.fromkeys(n for _, _, n in menciones))
+    # sin «publicación» detrás de la duración, los que se citan detrás de ella («… de 20 dies hàbils a partir de
+    # l'endemà del present anunci en el DOGC», tras «Les bases s'han publicat… al Butlletí Oficial de la Província»)
+    despues = [m for m in menciones if m[0] >= desde]
+    return list(dict.fromkeys(n for _, _, n in (despues or menciones)))
 
 
 def extraer_plazo(texto: str, publicacion: str, boletin_propio: str | tuple[str, ...],
@@ -177,7 +202,17 @@ def extraer_plazo(texto: str, publicacion: str, boletin_propio: str | tuple[str,
     if not candidatas:
         return None
     candidatas.sort(key=lambda f: 0 if any(x in normalizar(f) for x in PREFERIR) else 1)
-    f = candidatas[0]
+    # la primera que da la fecha de fin; si ninguna, la primera que da el plazo
+    primera = None
+    for f in candidatas[:8]:
+        r = _plazo_de_frase(f, pub, propios, comunidad)
+        if r and r.get("fin_estimado"):
+            return r
+        primera = primera or r
+    return primera
+
+
+def _plazo_de_frase(f: str, pub: date, propios: set[str], comunidad: str | None) -> dict | None:
     res: dict = {"cita": f, "metodo": VERSION}
 
     m = RE_INTERVALO.search(f)

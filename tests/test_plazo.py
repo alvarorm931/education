@@ -131,3 +131,51 @@ def test_castellano_sin_comillas_desde_el_boe():
          "quince días hábiles, a contar desde el siguiente al de la publicación de la presente convocatoria en el "
          "«Boletín Oficial del Estado».")
     assert extraer_plazo(t, "2025-11-25", BOE)["fin_estimado"] == "2025-12-17"
+
+
+def test_frase_partida_tras_una_abreviatura():
+    # BOE-A-2026-8173: «Sra. Rectora» partía la frase y la parte del plazo no decía que era de solicitudes
+    t = ("Las solicitudes se dirigirán a la Sra. Rectora Magnífica de la Universidad y se presentarán en el plazo de "
+         "veinte días hábiles, a contar desde el siguiente al de la publicación de la presente convocatoria en el "
+         "«Boletín Oficial del Estado».")
+    r = extraer_plazo(t, "2026-04-13", BOE)
+    assert r["dias"] == 20 and r["tipo"] == "habiles" and r["fin_estimado"]
+
+
+def test_numero_entre_parentesis_y_fin_con_fecha():
+    t = ("El plazo de presentación de solicitudes será de veinte (20) días naturales contados a partir del día siguiente "
+         "al de la publicación de esta resolución en el «Boletín Oficial del Estado».")
+    r = extraer_plazo(t, "2026-04-20", BOE)
+    assert r["dias"] == 20 and r["tipo"] == "naturales" and r["fin_estimado"] == "2026-05-11"  # el 10 es domingo
+    r = extraer_plazo("El plazo de presentación de solicitudes finaliza el día 27 de enero de 2025.", "2025-01-13", BOE)
+    assert r["fin_estimado"] == "2025-01-27" and r["fin_exacto"]
+
+
+def test_exclusion_solo_cerca_del_plazo():
+    # CGPJ: la frase sigue con «… de la provisión de plazas de nombramiento discrecional», que no es del plazo
+    t = ("Las solicitudes para la participación en el concurso se presentarán en el plazo de veinte días naturales, "
+         "contados a partir del siguiente al de la publicación del presente concurso en el «Boletín Oficial del Estado», "
+         "y contendrán los requisitos previstos en el artículo 326.2 de la Ley Orgánica del Poder Judicial y concordantes "
+         "del Reglamento 1/2010, de 25 de febrero de 2010, que regula la provisión de plazas de nombramiento "
+         "discrecional en los órganos judiciales.")
+    assert extraer_plazo(t, "2025-01-27", BOE)["fin_estimado"]
+    # la subsanación, en cambio, va junto al plazo
+    t = ("Las personas excluidas dispondrán de un plazo de diez días hábiles, contados a partir del siguiente al de la "
+         "publicación, para subsanar el defecto de su solicitud.")
+    assert extraer_plazo(t, "2025-01-27", BOE) is None
+
+
+def test_boletin_citado_detras_del_plazo():
+    dogc = "Diari Oficial de la Generalitat de Catalunya"
+    t = ("Les bases s'han publicat íntegrament en el Butlletí Oficial de la Província núm. 85 de 6 de maig de 2026 i el "
+         "termini de presentació d'instàncies serà de 20 dies hàbils a partir de l'endemà del present anunci en el DOGC.")
+    r = extraer_plazo(t, "2026-05-15", dogc)
+    assert r["cuenta_desde"] == dogc and r["fin_estimado"]
+
+
+def test_la_frase_con_fecha_de_fin_antes_que_la_incompleta():
+    t = ("Las instancias se podrán presentar durante el plazo de presentación de solicitudes que se indique. "
+         "Ordenar su publicación, concediendo un plazo de 10 días hábiles para presentar las solicitudes, contados a "
+         "partir del día siguiente al de la publicación de este anuncio en el Boletín Oficial de la Provincia de Sevilla.")
+    r = extraer_plazo(t, "2026-10-15", "Boletín Oficial de la Provincia de Sevilla")
+    assert r["dias"] == 10 and r["fin_estimado"]
