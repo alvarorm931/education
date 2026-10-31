@@ -16,7 +16,7 @@ on:
         default: "600"
       estados:
         description: "Estados de los procesos, separados por comas («todos» para todos)"
-        default: "plazo_abierto,bases_publicadas_pendiente_boe,admitidos_provisional,admitidos_definitivo,admitidos,tribunal,examen_convocado,plazo_cerrado"
+        default: "todos"
       esperar_min:
         description: "Minutos de espera al lote"
         default: "70"
@@ -51,7 +51,7 @@ jobs:
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           N: ${{ inputs.n || '600' }}
-          ESTADOS: ${{ inputs.estados || 'plazo_abierto,bases_publicadas_pendiente_boe,admitidos_provisional,admitidos_definitivo,admitidos,tribunal,examen_convocado,plazo_cerrado' }}
+          ESTADOS: ${{ inputs.estados || 'todos' }}
           ESPERAR: ${{ inputs.esperar_min || '70' }}
           RETOMAR: ${{ inputs.retomar }}
         run: |
