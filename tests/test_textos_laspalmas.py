@@ -91,3 +91,17 @@ def test_sin_la_marca_del_anterior_no_hay_texto():
     cortes = t.cortar_por_registro_final(sin_marca, ANUNCIOS)
     assert "LP-2" not in cortes and "LP-3" not in cortes  # el texto de LP-3 empezaría en el de LP-2
     assert "LP-1" in cortes and "LP-6" in cortes
+
+
+def test_partes_con_su_letra():
+    con_letras = [p.replace("""  Se aprueban definitivamente las ordenanzas fiscales IP-1 y TS-10.
+                                                                                                                                    2.202.972""",
+                            """  Se aprueba definitivamente la ordenanza fiscal IP-1.
+                                                                                                                                    2.202.972-A
+  Se aprueba definitivamente la ordenanza fiscal TS-10.
+                                                                                                                                    2.202.972-B""")
+                  for p in PAGINAS]
+    cortes = t.cortar_por_registro_final(con_letras, ANUNCIOS)
+    assert "IP-1" in cortes["LP-4"][0] and "TS-10" not in cortes["LP-4"][0]
+    assert "TS-10" in cortes["LP-5"][0] and "IP-1" not in cortes["LP-5"][0]
+    assert "Administrativo" in cortes["LP-6"][0] and "TS-10" not in cortes["LP-6"][0]

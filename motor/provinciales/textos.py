@@ -488,12 +488,14 @@ def cortar_por_registro(paginas: list[str], anuncios: list[dict]) -> dict[str, t
 # de Créditos número 52/2026 ........ 18639»; «2202972A», «2202972B»… para las partes de uno) y en el cuerpo cada
 # anuncio acaba con su registro con puntos, solo en su línea y a la derecha («2.198.627»)
 RE_ENTRADA_SUMARIO_FINAL = re.compile(r"^\s*(\d{6,8})([A-Z])?\s+(?!Bolet[íi]n Oficial)(\S.*)$")
-RE_MARCA_FINAL = re.compile(r"^\s*(\d{1,3}(?:\.\d{3}){1,2})\s*$")
+RE_MARCA_FINAL = re.compile(r"^\s*(\d{1,3}(?:\.\d{3}){1,2})(?:\s?[-/]?\s?([A-Z]))?\s*$")
 
 
 def entradas_sumario_final(paginas: list[str]) -> tuple[list[tuple[str, str, int]], int]:
-    """(registro, asunto, página del boletín) de cada asunto del sumario y el número de páginas del PDF que ocupa."""
+    """(registro, asunto, página del boletín) de cada asunto del sumario y el número de páginas del PDF que ocupa. Las
+    partes de un registro llevan su letra en otra lista (letras_sumario_final)."""
     out, actual, n_sumario = [], None, 0
+    _LETRAS.clear()
     for n, pag in enumerate(paginas):
         lineas = pag.splitlines()
         if not any(RE_FIN_ENTRADA.search(l) for l in lineas):
@@ -507,6 +509,7 @@ def entradas_sumario_final(paginas: list[str]) -> tuple[list[tuple[str, str, int
             m = RE_ENTRADA_SUMARIO_FINAL.match(l)
             if m and actual is None:
                 actual = [m.group(1), m.group(3)]
+                _LETRAS.append(m.group(2))
             elif actual is not None and l.strip():
                 actual[1] += " " + l.strip()
             if actual is not None and (fin := RE_FIN_ENTRADA.search(l)):
@@ -516,11 +519,16 @@ def entradas_sumario_final(paginas: list[str]) -> tuple[list[tuple[str, str, int
     return out, n_sumario
 
 
+# letra de cada asunto de la última lectura de entradas_sumario_final («A», «B»… o None), en el mismo orden
+_LETRAS: list[str | None] = []
+
+
 def cortar_por_registro_final(paginas: list[str], anuncios: list[dict]) -> dict[str, tuple[str, list[int]]]:
     """Texto de cada anuncio: de la marca de registro del anterior a la suya. El registro sale del sumario del PDF,
     casando cada asunto con su entrada en el mismo orden. Si la marca de un asunto anterior no se encuentra (su texto
     caería en el siguiente) o el cuerpo no sigue el orden del sumario, sin texto."""
     sumario, n_sumario = entradas_sumario_final(paginas)
+    letras = list(_LETRAS) if len(_LETRAS) == len(sumario) else [None] * len(sumario)
     registro, j = {}, 0
     for x in anuncios:
         for k in range(j, min(j + 4, len(sumario))):
@@ -533,15 +541,22 @@ def cortar_por_registro_final(paginas: list[str], anuncios: list[dict]) -> dict[
         for l in pag.splitlines():
             lineas.append(l)
             pagina_de.append(n)
-    marcas = [(k, r) for k, l in enumerate(lineas)
+    marcas = [(k, r, m.group(2)) for k, l in enumerate(lineas)
               if (m := RE_MARCA_FINAL.match(l)) and (r := m.group(1).replace(".", "")) in conocidos]
-    # cada asunto del sumario (por su posición) con la línea de su marca: las partes de un mismo registro («A», «B»…)
-    # toman sus marcas por orden y, si hay menos marcas que partes, comparten la última
+    # cada asunto del sumario (por su posición) con la línea de su marca: una parte («2202972A») con la marca de su
+    # letra; si no la lleva, las partes de un mismo registro toman sus marcas por orden y, si hay menos marcas que
+    # partes, comparten la última
     por_registro: dict[str, list[int]] = defaultdict(list)
-    for k, r in marcas:
+    por_letra: dict[tuple[str, str], int] = {}
+    for k, r, letra in marcas:
         por_registro[r].append(k)
+        if letra:
+            por_letra.setdefault((r, letra), k)
     marca_de, usadas = {}, defaultdict(int)
     for i, (r, _, _) in enumerate(sumario):
+        if letras[i] and (r, letras[i]) in por_letra:
+            marca_de[i] = por_letra[(r, letras[i])]
+            continue
         lista = por_registro.get(r)
         if lista:
             marca_de[i] = lista[min(usadas[r], len(lista) - 1)]
@@ -555,8 +570,8 @@ def cortar_por_registro_final(paginas: list[str], anuncios: list[dict]) -> dict[
         # el anuncio empieza tras la marca del asunto anterior del sumario (con otro registro); si esa no se encontró, o
         # está después de la de este (el cuerpo no va en el orden del sumario), no se sabe dónde empieza
         previo = i - 1
-        while previo >= 0 and sumario[previo][0] == sumario[i][0]:
-            previo -= 1
+        while previo >= 0 and marca_de.get(previo, -1) == fin:
+            previo -= 1  # partes que comparten la misma marca
         if previo >= 0:
             if previo not in marca_de or marca_de[previo] >= fin:
                 continue
