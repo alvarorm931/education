@@ -1,77 +1,19 @@
 {
- "fecha": "2026-10-31T00:41:12+00:00",
- "fecha_madrid": "31/10 01:41",
+ "fecha": "2026-10-31T00:47:42+00:00",
+ "fecha_madrid": "31/10 01:47",
  "ventana_horas": 6.0,
  "resumen": {
-  "ejecuciones_revisadas": 174,
-  "fallos": 2,
+  "ejecuciones_revisadas": 175,
+  "fallos": 1,
   "fallos_pendientes": 0,
-  "relanzados": 1,
-  "colas_largas": 1,
+  "relanzados": 0,
+  "colas_largas": 2,
   "flujos_programados_parados": [],
   "programaciones_lanzadas_a_mano": [],
   "avisos_de_fuentes": 0,
   "almacen": "ok"
  },
  "fallos": [
-  {
-   "flujo": "Motor de datos",
-   "fichero": "motor.yml",
-   "id": 41146163155,
-   "intento": 1,
-   "evento": "workflow_dispatch",
-   "rama": "main",
-   "commit": "94424c2",
-   "titulo": "Motor de datos",
-   "conclusion": "failure",
-   "cuando": "31/10 01:41",
-   "url": "https://github.com/alvarorm931/education/actions/runs/41146163155",
-   "superado": false,
-   "en_curso": null,
-   "pasajero": true,
-   "detalle": [
-    {
-     "trabajo": "motor",
-     "pasos": [
-      "Avisar si hay huecos o errores"
-     ],
-     "ejecutor": "GitHub Actions 1000001408",
-     "etiquetas": [
-      "ubuntu-latest"
-     ],
-     "final_registro": [
-      "##[error]Huecos en el BOE: {\"dias_con_error\": [\"2026-10-31\"]}",
-      "...",
-      "bopvalencia    último 2026-10-30 sin boletín    0 días hábiles | empleo  12471 | textos   3131 | {'sin_boletin': 1614, 'ok': 150}",
-      "bopvalladolid  último 2026-10-30 sin boletín    0 días hábiles | empleo   4795 | textos   1054 | {'ok': 1203, 'sin_boletin': 561}",
-      "bopzamora      último 2026-10-30 sin boletín    0 días hábiles | empleo    766 | textos    766 | {'ok': 401}",
-      "bopzaragoza    último 2026-10-30 sin boletín    0 días hábiles | empleo   7610 | textos   3648 | {'ok': 1447}",
-      "To https://github.com/alvarorm931/education",
-      " ! [rejected]              datos -> datos (fetch first)",
-      "error: failed to push some refs to 'https://github.com/alvarorm931/education'",
-      "hint: Updates were rejected because the remote contains work that you do not",
-      "hint: have locally. This is usually caused by another repository pushing to",
-      "hint: the same ref. If you want to integrate the remote changes, use",
-      "hint: 'git pull' before pushing again.",
-      "hint: See the 'Note about fast-forwards' in 'git push --help' for details.",
-      "remote: warning: See https://gh.io/lfs for more information.        ",
-      "remote: warning: File datos/oposiciones/procesos/2023.jsonl is 50.51 MB; this is larger than GitHub's recommended maximum file size of 50.00 MB        ",
-      "remote: warning: GH001: Large files detected. You may want to try Git Large File Storage - https://git-lfs.github.com.        ",
-      "\u001b[36;1mpython - <<'EOF'\u001b[0m",
-      "\u001b[36;1mimport json, sys\u001b[0m",
-      "\u001b[36;1mh = json.load(open(\"salida/datos/boe/huecos.json\"))\u001b[0m",
-      "\u001b[36;1mproblemas = {k: v for k, v in h.items() if k in (\"numeros_de_diario_que_faltan\", \"dias_sin_procesar\", \"dias_con_error\") and v}\u001b[0m",
-      "\u001b[36;1mif problemas:\u001b[0m",
-      "\u001b[36;1m    print(\"::error::Huecos en el BOE: \" + json.dumps(problemas, ensure_ascii=False)[:500])\u001b[0m",
-      "\u001b[36;1m    sys.exit(1)\u001b[0m",
-      "\u001b[36;1mprint(\"Sin huecos en el BOE. Anuncios sin texto:\", h.get(\"anuncios_sin_texto\"))\u001b[0m",
-      "\u001b[36;1mEOF\u001b[0m",
-      "##[error]Huecos en el BOE: {\"dias_con_error\": [\"2026-10-31\"]}"
-     ]
-    }
-   ],
-   "relanzado": true
-  },
   {
    "flujo": "Prueba de conector",
    "fichero": "prueba.yml",
@@ -86,7 +28,7 @@
    "url": "https://github.com/alvarorm931/education/actions/runs/41120449947",
    "superado": true,
    "en_curso": null,
-   "pasajero": false,
+   "pasajero": true,
    "detalle": [
     {
      "trabajo": "prueba",
@@ -101,16 +43,6 @@
      "final_registro": [
       "##[error]Process completed with exit code 1.",
       "...",
-      "ajustarse a los principios de imparcialidad y profesionalidad de sus miembros. ",
-      "Dicho tribunal calificador estará integrado por un presidente y dos vocales, de los cuales uno de ellos ejercerá ",
-      "la función secretario. Todos los miembros del tribunal tendrán voz y voto. ",
-      "La pertenencia al tribunal calificador será siempre a título individual, no pudiendo ostentarse esta en represen-",
-      "tación o por cuenta de nadie. ",
-      "Todos los miembros del tribunal, titulares y suplentes, serán funcionarios de carrera o personal laboral fijo de ",
-      "las di",
-      "codigo=0",
-      "\u001b[36;1mpython -m motor.mantenimiento.anonimizar \"prueba/$STAMP\"\u001b[0m",
-      "Sustituciones: 0",
       "\u001b[36;1mcd prueba\u001b[0m",
       "\u001b[36;1mgit init -q && git config user.name \"motor-prueba\" && git config user.email \"motor-prueba@users.noreply.github.com\"\u001b[0m",
       "\u001b[36;1mgit remote add origin \"***github.com/alvarorm931/education.git\"\u001b[0m",
@@ -135,9 +67,16 @@
   {
    "flujo": "Estudios por tramos",
    "id": 41140514779,
-   "en_cola_min": 113,
+   "en_cola_min": 119,
    "trabajos_empezados": 0,
    "url": "https://github.com/alvarorm931/education/actions/runs/41140514779"
+  },
+  {
+   "flujo": "Estudios por tramos",
+   "id": 41119697629,
+   "en_cola_min": 288,
+   "trabajos_empezados": 2,
+   "url": "https://github.com/alvarorm931/education/actions/runs/41119697629"
   }
  ],
  "programados": {
@@ -163,7 +102,7 @@
    "numero": 270,
    "anio": 2026
   },
-  "ultima_ejecucion": "2026-10-31T00:47:42+01:00",
+  "ultima_ejecucion": "2026-10-31T01:45:32+01:00",
   "alertas_ultima_ejecucion": []
  },
  "avisos_de_fuentes": [],
