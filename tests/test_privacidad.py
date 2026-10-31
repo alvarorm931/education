@@ -83,3 +83,22 @@ def test_mantenimiento_no_se_para_por_un_fichero_roto(tmp_path, capsys):
     bien.write_text(json.dumps({"titulo": "Bases", "texto": "Plazo.\nEl Alcalde, Juan Ejemplo Ficticio."}))
     assert privacidad.main(["--salida", str(tmp_path), "--sin-retirar-originales"]) == 0
     assert json.loads(bien.read_text())["texto"] == "Plazo."
+
+
+def test_filtro_de_las_sondas_con_listas_partidas():
+    from motor.provinciales.sonda_pdf_texto import _seguro
+    t = ("ORDEN Nombre DNI/NIF\n1 DANIEL INVENTADO\nEJEMPLAR\n2 VICENTE FICTICIO\nSUPUESTO\n"
+         "la Secretaria, D a M a del Pilar Inventada de Ejemplo Ficticia.\nAYUNTAMIENTO DE CARTAYA\nANUNCIO\n"
+         "Visto el certificado emitido por la Secretaría general del Ayuntamiento, de")
+    s = _seguro(t)
+    for x in ("DANIEL", "EJEMPLAR", "VICENTE", "SUPUESTO", "Pilar"):
+        assert x not in s, x
+    assert "ANUNCIO" in s and "Visto el certificado" in s
+
+
+def test_anonimizador_de_las_sondas_con_nombre_de_pila():
+    from motor.mantenimiento.anonimizar import anonimizar_texto
+    t, n = anonimizar_texto("1 DANIEL INVENTADO\nla Secretaria, D a M a del Pilar Inventada de Ejemplo.\n"
+                            "AYUNTAMIENTO DE CARTAYA\nEl Ayuntamiento aprueba las bases.")
+    assert "DANIEL" not in t and "Pilar Inventada" not in t and n >= 2
+    assert "AYUNTAMIENTO DE CARTAYA" in t and "aprueba las bases" in t

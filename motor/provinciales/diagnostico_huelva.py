@@ -46,9 +46,20 @@ def main(argv: list[str] | None = None) -> int:
         if i not in casados and x["pagina"] not in vistas:
             vistas.add(x["pagina"])
             de_la_pagina = [l for n, l in lineas if n == x["pagina"]][:a.lineas]
-            print(f"    --- líneas de la página {x['pagina']} ({len(de_la_pagina)}):")
-            for l in de_la_pagina:
-                print("      ", _seguro(l)[:140])
+            print(f"    --- estructura de la página {x['pagina']} ({len(de_la_pagina)} líneas):")
+            # Solo cabeceras (mayúsculas, tipos de anuncio, secciones); del texto corrido, cuántas líneas hay
+            seguidas = 0
+            for l in de_la_pagina + [""]:
+                cabecera = l and (h.RE_TIPO.match(l) or h.RE_SECCION.match(l) or h._mayusculas(l))
+                if cabecera:
+                    if seguidas:
+                        print(f"       · {seguidas} líneas de texto")
+                        seguidas = 0
+                    print("      ", _seguro(l)[:140])
+                elif l:
+                    seguidas += 1
+            if seguidas:
+                print(f"       · {seguidas} líneas de texto")
     return 0
 
 

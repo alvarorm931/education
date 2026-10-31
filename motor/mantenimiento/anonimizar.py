@@ -123,6 +123,23 @@ def anonimizar_texto(t: str) -> tuple[str, int]:
 
     t = RE_LINEA.sub(lambda m: con_documento(m.group(0)) if "<" not in m.group(0)
                      else RE_SEGMENTO.sub(lambda s: ">" + con_documento(s.group(1)) + "<", m.group(0)), t)
+
+    # Una racha de palabras con mayúscula que lleva un nombre de pila frecuente, aunque no haya documento ni
+    # tratamiento («1 DANIEL APELLIDO» en una lista partida en líneas, «D a M a del Pilar Apellido…» con el
+    # tratamiento roto por el PDF; sonda de Huelva del 31/10/2026, nombres inventados). En una sonda es mejor
+    # cambiar de más que publicar un nombre.
+    from motor.limpieza import _es_pila
+
+    def con_pila(m: re.Match) -> str:
+        nonlocal n
+        palabras = [w.strip(",.") for w in m.group(0).split()]
+        if RE_NO_PERSONA.search(m.group(0)) or not any(len(w) > 2 and _es_pila(w) for w in palabras):
+            return m.group(0)
+        n += 1
+        return "APELLIDO APELLIDO NOMBRE" if m.group(0).isupper() else "Apellido Apellido, Nombre"
+
+    t = RE_LINEA.sub(lambda m: RE_RACHA.sub(con_pila, m.group(0)) if "<" not in m.group(0)
+                     else RE_SEGMENTO.sub(lambda s: ">" + RE_RACHA.sub(con_pila, s.group(1)) + "<", m.group(0)), t)
     return RE_DOCUMENTO.sub(documento, t), n
 
 

@@ -19,11 +19,35 @@ from motor.http import obtener
 
 
 
+RE_PALABRA = re.compile(r"[A-Za-zÁÉÍÓÚÜÑáéíóúüñÀÈÒÏÇàèòïç·'’]+")
+RE_TRATAMIENTO_ROTO = re.compile(r"(?i)\b(?:d\s?[aª]|m\s?[aª]|d\.?\s?ñ?a|dña|doña|don|sr|sra|d)\b\.?\s+(?:m\s?[aª]\s+)?(?:del?\s+)?[A-ZÁÉÍÓÚÑ]")
+
+
+def _con_nombre_de_pila(l: str) -> bool:
+    """Algún nombre de pila frecuente en la línea, en mayúsculas o no («1 DANIEL APELLIDO»). Más estricto que la
+    limpieza de los textos: en una sonda, mejor omitir de más («Virgen del Pilar») que publicar un nombre."""
+    from motor.limpieza import _es_pila
+    return any(len(w) > 2 and _es_pila(w) for w in RE_PALABRA.findall(l))
+
+
 def _seguro(texto: str) -> str:
-    """Texto para imprimir en una sonda (rama pública): sin líneas con documentos de identidad ni con nombres."""
+    """Texto para imprimir en una sonda (rama pública): sin líneas con documentos de identidad, con nombres o con
+    algún nombre de pila (también partido entre líneas: tras una línea omitida, se omite la siguiente si es corta y
+    en mayúsculas o con mayúscula inicial, como el resto de un apellido)."""
     from motor.limpieza import RE_DOCUMENTO, tiene_nombre_de_persona
-    return "\n".join("[línea omitida: datos de personas]" if RE_DOCUMENTO.search(l) or tiene_nombre_de_persona(l) else l
-                     for l in texto.splitlines())
+    out, omitida = [], False
+    for l in texto.splitlines():
+        palabras = RE_PALABRA.findall(l)
+        resto_de_nombre = omitida and 0 < len(palabras) <= 4 and all(w[:1].isupper() for w in palabras)
+        principal = bool(RE_DOCUMENTO.search(l) or tiene_nombre_de_persona(l) or _con_nombre_de_pila(l) or
+                         RE_TRATAMIENTO_ROTO.search(l))
+        if principal or resto_de_nombre:
+            out.append("[línea omitida: datos de personas]")
+            omitida = principal  # el resto de un nombre ocupa como mucho una línea más
+        else:
+            out.append(l)
+            omitida = False
+    return "\n".join(out)
 
 
 def _pdf(contenido: bytes, paginas: int, modo: str = "plain") -> None:
