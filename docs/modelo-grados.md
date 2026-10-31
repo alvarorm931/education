@@ -686,6 +686,10 @@ comprobados por asignaturas:
    (`docs/estrategia-informacion-cerrada.md` §3.4). El índice de Common Crawl de los dominios de centros dio 710
    direcciones más y solo 3 grados con importe: esa vía está agotada.
 4. Dobles de públicas sin precio (149): resoluciones de cada programa en Salamanca; UPV y UPV/EHU, de su web.
+   Revisado el 31/10: en 65 de ellos sus dos grados tienen el mismo precio del crédito en QEDU. Aun así no se
+   deduce el del doble sin la regla publicada de su universidad o comunidad (como las de `precios.REGLA_DOBLE`),
+   porque Salamanca, por ejemplo, fija el de cada programa por resolución del rector. Tampoco es urgente: con ese
+   precio solo pasaría a indexable 1 ficha (27 ya lo son por su nota de corte y 37 esperan a su plan).
 5. Notas de corte del resto de distritos. Tampoco responden desde el servidor de España (prueba de las 13:29): CiUG
    de Galicia y Universidad de Oviedo (su robots.txt no contesta, así que no se pide nada), ULPGC y Extremadura
    (403), La Rioja (429); la Comunitat Valenciana solo deja la primera adjudicación de 2026-2027 de la UV.
