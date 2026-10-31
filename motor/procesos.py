@@ -459,14 +459,62 @@ def construir(actos: list[dict], hoy: date, autonomicos: list[dict] | None = Non
         procesos.append(_proceso(a, sorted(citados_por.get(a["id"], []), key=lambda x: x["fecha"]),
                                  gemelos + bases_enlazadas, hoy, f"boe:{a['id']}"))
 
+    # Las bases del BOP y su anuncio en el boletín de la comunidad (DOGC, DOGV, DOE…), si ningún anuncio del BOE las
+    # ha unido: un solo proceso, con las bases como origen (antes, dos procesos, y las bases sin plazo cuando este
+    # cuenta desde el anuncio autonómico; unos 2.800 pares en 2025-2026)
+    pareja = pares_bop_autonomico([x for x in autonomicos if es_origen_local(x) and x["id"] not in usados])
+    anuncio_de = {y["id"]: x for x, y in pareja.values()}
     for x in autonomicos:
         if x.get("ambito") != "local" and es_origen(x) and x["id"] not in usados:
             procesos.append(_proceso(x, [], [], hoy, x["id"]))
         elif es_origen_local(x) and x["id"] not in usados:
+            if x["id"] in pareja:
+                continue  # va en el proceso de sus bases del BOP
             # Bases locales sin anuncio en el BOE que las cite: bolsas y contratos temporales (no van al BOE) o
             # bases cuyo plazo empezará con el anuncio en el BOE, que aún no ha salido o no se ha podido enlazar
-            procesos.append(_proceso(x, [], [], hoy, x["id"], solo_bases=True))
+            otras = [anuncio_de[x["id"]]] if x["id"] in anuncio_de else []
+            procesos.append(_proceso(x, [], otras, hoy, x["id"], solo_bases=True))
     return procesos
+
+
+# Boletines de comunidades con más de una provincia, donde lo local sale en el BOP y se anuncia también en el de la
+# comunidad
+BOLETINES_DE_COMUNIDAD = {"DOGC", "DOGV", "DOE", "BOCYL", "BOA", "BOJA", "DOG", "DOCM", "BOC", "BOPV"}
+
+
+def pares_bop_autonomico(locales: list[dict]) -> dict[str, tuple[dict, dict]]:
+    """Anuncio local en el boletín de la comunidad -> (anuncio, bases del BOP): del mismo convocante, las bases como
+    mucho 90 días antes y del mismo puesto (o, si son las únicas, con el plazo contado desde ese boletín). Solo si
+    es la única pareja de cada uno."""
+    from motor.union import _palabras
+    bop_por: dict[str, list[dict]] = defaultdict(list)
+    for y in locales:
+        if y.get("fuente") not in BOLETINES_DE_COMUNIDAD:
+            for k in _municipio(y.get("convocante"), [y.get("fuente")]):
+                bop_por[k].append(y)
+
+    def parecido(a: dict, b: dict) -> float:
+        pa, pb = _puestos_de(a), _puestos_de(b)
+        if pa & pb:
+            return 1.0
+        return max((len(_palabras(k) & _palabras(q)) / len(_palabras(k) | _palabras(q))
+                    for k in pa for q in pb if _palabras(k) | _palabras(q)), default=0.0)
+
+    pares: dict[str, tuple[dict, dict]] = {}
+    for x in locales:
+        if x.get("fuente") not in BOLETINES_DE_COMUNIDAD:
+            continue
+        cands = {y["id"]: y for k in _municipio(x.get("convocante"), [x.get("fuente")]) for y in bop_por.get(k, [])
+                 if 0 <= _dias_entre(y.get("fecha"), x.get("fecha")) <= 90}
+        buenos = []
+        for y in cands.values():
+            desde_x = fuente_de_boletin((y.get("plazo") or {}).get("cuenta_desde")) == x.get("fuente")
+            if parecido(x, y) >= 0.5 or (desde_x and len(cands) == 1):
+                buenos.append(y)
+        if len(buenos) == 1:
+            pares[x["id"]] = (x, buenos[0])
+    veces = Counter(y["id"] for _, y in pares.values())
+    return {k: v for k, v in pares.items() if veces[v[1]["id"]] == 1}
 
 
 CIUDADES_AUTONOMAS = {"BOME": {"tipo": "Ayuntamiento", "nombre": "Melilla", "provincia": "Melilla"},
@@ -511,9 +559,13 @@ def _proceso(a: dict, posteriores: list[dict], otras: list[dict], hoy: date, ide
              solo_bases: bool = False) -> dict:
     plazo = a.get("plazo") or {}
     if not plazo.get("fin_estimado"):
-        # La publicación autonómica puede fijar el plazo desde su propio boletín cuando el BOE remite a él
+        # La publicación autonómica puede fijar el plazo desde su propio boletín cuando el BOE remite a él; el anuncio
+        # local en el boletín de la comunidad (DOGC, DOGV…), cuando las bases del BOP cuentan desde él o no dicen nada
         for x in otras:
-            if (x.get("plazo") or {}).get("fin_estimado") and x.get("ambito") != "local":
+            if not (x.get("plazo") or {}).get("fin_estimado"):
+                continue
+            if x.get("ambito") != "local" or not plazo.get("dias") and not plazo.get("meses") or \
+                    fuente_de_boletin(plazo.get("cuenta_desde")) == x.get("fuente"):
                 plazo = {**x["plazo"], "de_acto": x["id"]}
                 break
     for x in posteriores:  # una corrección o modificación posterior puede abrir un plazo nuevo

@@ -224,3 +224,26 @@ def test_completar_con_bases():
     r = {"id": "z", "datos_bases": {"campos": {"grupo": {"valor": "Agrupaciones Profesionales"}}}}
     completar_con_bases(r)
     assert r["grupo"] == "AP"
+
+
+def test_bases_del_bop_y_su_anuncio_en_el_dogc_son_un_proceso():
+    from motor.procesos import construir
+    bellvei = {"tipo": "Ayuntamiento", "nombre": "Bellvei", "provincia": "Tarragona"}
+    bases = _acto("bopt:BOPT-2026-06227", "2026-07-02", "convocatoria", fuente="BOPT", convocante=bellvei,
+                  titulo="Borsa de treball d'administratiu/iva. Bases i convocatòria.",
+                  plazo={"dias": 20, "tipo": "habiles", "cuenta_desde": "Diari Oficial de la Generalitat de Catalunya"})
+    anuncio = _acto("dogc:1049484", "2026-07-10", "convocatoria", fuente="DOGC", convocante=bellvei,
+                    titulo="Edicto relativo a la convocatoria para constituir una bolsa de trabajo de administrativo/a",
+                    plazo={"dias": 20, "tipo": "habiles", "cuenta_desde": "Diario Oficial de la Generalitat de Cataluña",
+                           "fin_estimado": "2026-08-07"})
+    otro = _acto("bopt:BOPT-2026-07001", "2026-07-05", "convocatoria", fuente="BOPT",
+                 convocante={"tipo": "Ayuntamiento", "nombre": "Cunit", "provincia": "Tarragona"},
+                 titulo="Bases de la convocatòria d'una plaça d'arquitecte")
+    ps = {p["id"]: p for p in construir([], date(2026, 7, 20), [bases, anuncio, otro])}
+    assert set(ps) == {"bopt:BOPT-2026-06227", "bopt:BOPT-2026-07001"}
+    p = ps["bopt:BOPT-2026-06227"]
+    assert p["estado"] == "plazo_abierto" and p["plazo"]["fin_estimado"] == "2026-08-07"
+    # con otra bolsa del mismo ayuntamiento y puesto en esos días, no se sabe cuál es: cada una por su lado
+    segunda = {**bases, "id": "bopt:BOPT-2026-06300", "fecha": "2026-07-06"}
+    ps = {p["id"] for p in construir([], date(2026, 7, 20), [bases, segunda, anuncio])}
+    assert "dogc:1049484" in ps
