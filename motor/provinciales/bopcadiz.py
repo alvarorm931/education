@@ -52,8 +52,9 @@ RE_SECCION = re.compile(r"<h3>\s*(?P<s>[^<]+?)\s*</h3>")
 RE_ENTRADA = re.compile(r'<p>\s*<a href="(?P<href>[^"]+?\.pdf(?:#page=(?P<pag>\d+))?)"[^>]*>\s*<strong>\s*'
                         r'(?P<reg>\d{1,3}(?:\.\d{3})*(?:/\d{2,4})?)\.?-\s*(?P<org>.*?)</strong>(?P<asunto>.*?)</a>\s*</p>',
                         re.S)
-# Fin de cada anuncio en el PDF: «Nº 357.549» (a veces con espacios dentro del número)
-RE_FIN_ANUNCIO = re.compile(r"(?m)^[ \t]*N[º°o]\s*(?P<reg>\d{1,3}(?:\s?\.\s?\d{3})*(?:\s?/\s?\d{2,4})?)[ \t]*$")
+# Fin de cada anuncio en el PDF: «Nº 357.549» en su línea o al final de la última, separado del texto por varios
+# espacios («…a su derecho.           Nº 3.796»); a veces con espacios dentro del número
+RE_FIN_ANUNCIO = re.compile(r"(?m)(?:^[ \t]*|[ \t]{2,})N[º°]\s*(?P<reg>\d{1,3}(?:\s?\.\s?\d{3})*(?:\s?/\s?\d{2,4})?)[ \t]*$")
 RE_CABECERA = re.compile(r"(?i)^(?:P[áa]gina \d+|(?:\d{1,2} de \w+ de \d{4} )?B\.O\.P\. DE CADIZ NUM\. \d+.*)$")
 SECCIONES_LOCALES = ("administracion local", "diputacion provincial")
 

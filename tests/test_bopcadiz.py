@@ -33,13 +33,13 @@ PAGINAS = ["Página 1\nSUMARIO\n...",
            "Nº 357.549\nJUNTA DE ANDALUCIA\nRESOLUCIÓN sobre una instalación eléctrica.\nNº 347.590",
            "Página 25\n30 de octubre de 2026 B.O.P. DE CADIZ NUM. 210\nAYUNTAMIENTO DE BENALUP-CASAS VIEJAS\n"
            "ANUNCIO\nBASES PARA LA COBERTURA DE 1 PLAZA DE ADMINISTRATIVO/A DE TESORERÍA.\nPrimera. Objeto.\n"
-           "Nº 358.235\nAYUNTAMIENTO DE UBRIQUE\nLISTA PROVISIONAL\n1 ***1234** PEREZ GARCIA, JUAN\nNº 358.241"]
+           "Publicado en el BOP Nº 243\nque pudiera estimar más conveniente a su derecho.           Nº 358.235\nAYUNTAMIENTO DE UBRIQUE\nLISTA PROVISIONAL\n1 ***1234** PEREZ GARCIA, JUAN\nNº 358.241"]
 
 
 def test_texto_por_registro(tmp_path, monkeypatch):
     t = c.textos_por_registro(PAGINAS)
     assert "BASES PARA LA COBERTURA" in t["358.235"] and "UBRIQUE" not in t["358.235"]
-    assert "Primera. Objeto." in t["358.235"] and "INSTALACIÓN" not in t["358.235"].upper().split("BASES")[0]
+    assert "Primera. Objeto." in t["358.235"] and "a su derecho." in t["358.235"] and "243" not in t and "INSTALACIÓN" not in t["358.235"].upper().split("BASES")[0]
 
     pagina = (FIX / "bopcadiz_2026_210.html").read_bytes()
 
