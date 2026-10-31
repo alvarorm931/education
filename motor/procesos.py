@@ -925,6 +925,9 @@ def _anio(x: dict) -> str:
     return (f or "sin-fecha")[:4]
 
 
+LIMITE_PARTE = 60_000_000
+
+
 def escribir_por_anio(destino: Path, nombre: str, filas: list[dict]) -> dict:
     """filas -> destino/nombre/AAAA.jsonl (y nombre/indice.json). Se borra lo que ya no toca: el fichero único de
     antes (nombre.jsonl) y los años que hayan quedado vacíos."""
@@ -937,8 +940,9 @@ def escribir_por_anio(destino: Path, nombre: str, filas: list[dict]) -> dict:
     partes: dict[str, list[str]] = defaultdict(list)
     for x in filas:
         partes[_anio(x)].append(json.dumps(x, ensure_ascii=False) + "\n")
-    # Un año que pase de 90 MB va por meses (GitHub no admite ficheros de más de 100 MB)
-    for anio in [a for a, l in partes.items() if sum(len(x.encode("utf-8")) for x in l) > 90_000_000]:
+    # Un año que pase de 60 MB va por meses: GitHub no admite ficheros de más de 100 MB y el vigilante avisa desde los
+    # 80. Con los datos de las bases (IA), 2022 y 2023 ocupaban 84 y 81 MB el 31/10/2026
+    for anio in [a for a, l in partes.items() if sum(len(x.encode("utf-8")) for x in l) > LIMITE_PARTE]:
         for linea in partes.pop(anio):
             x = json.loads(linea)
             f = x.get("apertura_plazo") or x.get("fecha") or ""
