@@ -428,3 +428,16 @@ def test_asignaturas_repetidas_cuentan_una_vez():
     fila = ["Prácticas/Proyecto de Investigación", 6]
     assert cm.asignaturas_validas([["Conceptos Básicos Cuánticos", 6]] + [fila] * 5) is None
     assert cm.asignaturas_validas([["Álgebra", 6], ["Análisis", 6], ["Geometría", 6]]) is not None
+
+
+def test_privada_total_por_debajo_de_25_por_credito_es_la_matricula():
+    por = {"tabla": {"precio_total": cm.campo(1000, "tarifa", "https://www.uax.com/guia.pdf", "2026-10-31")},
+           "web": {"precio_total": cm.campo(9800, "web", "https://www.uax.com/master", "2026-10-30")},
+           "ruct": {"creditos_ects": cm.campo(60, "ruct", "https://ruct", "2026-10-30")}}
+    campos = cm.unir(por)
+    assert campos["precio_total"]["valor"] == 1000
+    assert cm.quitar_totales_de_matricula(por, campos)
+    assert cm.unir(por)["precio_total"]["valor"] == 9800
+    # 49 € por crédito (Isabel I) sí es un precio
+    por2 = {"web": {"precio_total": cm.campo(2940, "web", "u", "d")}, "ruct": {"creditos_ects": cm.campo(60, "ruct", "u", "d")}}
+    assert not cm.quitar_totales_de_matricula(por2, cm.unir(por2))

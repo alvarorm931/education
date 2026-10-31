@@ -818,6 +818,9 @@ def campos_qedu(imps: list[dict]) -> dict[str, dict]:
 
 PRECIOS = ("precio_total", "precio_credito", "reserva_matricula")
 PRECIO_TOTAL_MINIMO = 300          # un máster no cuesta menos: es una tasa, la reserva o el precio de un crédito
+# Una privada no cobra menos de 25 € por crédito (la más barata medida, unos 45): un «total» por debajo es la matrícula
+# o la reserva (la guía de admisión de la Alfonso X da solo la matrícula: 1.000 € por un máster de 60 créditos)
+PRIVADA_MIN_CREDITO = 25
 PRECIO_CREDITO = (5, 1000)         # €/ECTS posibles (pública más barata ≈ 13; escuelas privadas, unos cientos)
 DESCARTES = Counter()
 
@@ -935,6 +938,22 @@ def poner_precio_calculado(campos: dict) -> None:
         DESCARTES["precio_total_web_incoherente"] += 1
         campos["precio_total"] = {**calc, "alternativas": [{"valor": pt["valor"], "fuente": pt["fuente"], "url": pt.get("url")}]
                                   + (pt.get("alternativas") or [])}
+
+
+def quitar_totales_de_matricula(por_fuente: dict[str, dict], campos: dict) -> bool:
+    """En una privada, el «precio total» que da menos de PRIVADA_MIN_CREDITO € por crédito es la matrícula o la
+    reserva, no el precio: fuera de cada fuente que lo dé."""
+    cr = (campos.get("creditos_ects") or {}).get("valor")
+    if not isinstance(cr, (int, float)) or cr <= 0:
+        return False
+    quitado = False
+    for f, d in por_fuente.items():
+        v = (d.get("precio_total") or {}).get("valor")
+        if isinstance(v, (int, float)) and v / cr < PRIVADA_MIN_CREDITO:
+            DESCARTES["precio_total_privada_es_matricula"] += 1
+            por_fuente[f] = {k: x for k, x in d.items() if k != "precio_total"}
+            quitado = True
+    return quitado
 
 
 def datos_minimos(campos: dict) -> list[str]:
@@ -1098,6 +1117,8 @@ def oficial(cod: str, cat: dict, ruct: dict | None, imps: list[dict], web: dict 
         por_fuente["ruct"] = {k: v for k, v in por_fuente["ruct"].items() if k != "evaluacion"}
         por_fuente["ruct_catalogo"] = {"evaluacion": ev}
     campos = unir(por_fuente)
+    if cat.get("universidad_tipo") == "Privada" and quitar_totales_de_matricula(por_fuente, campos):
+        campos = unir(por_fuente)
     poner_precio_calculado(campos)
     falta = datos_minimos(campos)
     return {
