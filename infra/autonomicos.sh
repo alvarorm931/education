@@ -353,9 +353,12 @@ for c in $CONECTORES; do
       "$G" "BOP Soria: textos"
       ;;
     bopteruel)
-      # Solo el boletín del día, por la portada (lo anterior solo está en PDF). Solo responde desde España
+      # El boletín del día por la portada; los anteriores, día a día desde el PDF del boletín entero
+      # (Redireccion?OpenPage&dia=AAAAMMDD). Solo responde desde España
       ejecutar motor.provinciales.bopteruel --salida "$S"
       "$G" "BOP Teruel: boletín del día"
+      ejecutar motor.provinciales.bopteruel_antiguos --salida "$S" --max-minutos "$M"
+      "$G" "BOP Teruel: boletines anteriores"
       ;;
     bopcastellon)
       # Último boletín y los del carrusel del buscador (unos dos meses y medio, portal JSF con sesión)
