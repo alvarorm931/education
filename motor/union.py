@@ -571,6 +571,6 @@ def fase_y_estado(p: dict, hoy: date) -> None:
     p["fase"], p["fase_fecha"] = fase, fecha
     if p.get("estado") == "anulado":
         return
-    if p.get("estado") == "plazo_abierto" and fase not in ("anulado", "desierto"):
+    if p.get("estado") in ("plazo_abierto", "plazo_por_abrir") and fase not in ("anulado", "desierto"):
         return  # sigue abierto el plazo (p. ej., la lista de admitidos de otra convocatoria del mismo puesto)
     p["estado"] = fase

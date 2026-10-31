@@ -282,3 +282,11 @@ def test_pareja_bop_autonomico_del_mismo_municipio():
     assert pares_bop_autonomico([anuncio, de_cuenca])["docm:1"][1]["id"] == "bopcu:1"
     # el mismo nombre en otra comunidad no es el mismo ayuntamiento
     assert pares_bop_autonomico([anuncio, de_navarra]) == {}
+
+
+def test_plazo_que_aun_no_ha_empezado():
+    from motor.procesos import _proceso
+    a = _acto("boib:1", "2026-03-10", "convocatoria", fuente="BOIB",
+              plazo={"tipo": "fechas", "inicio": "2027-01-04", "fin_estimado": "2027-01-24", "fin_exacto": True})
+    assert _proceso(a, [], [], date(2026, 10, 31), "boib:1")["estado"] == "plazo_por_abrir"
+    assert _proceso(a, [], [], date(2027, 1, 10), "boib:1")["estado"] == "plazo_abierto"

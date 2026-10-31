@@ -100,7 +100,7 @@ EXCLUIR = ("subsan", "esmen", "emenda", "renuncia", "recurso de", "recurso potes
            "presentar la documentacio", "dentro del plazo de presentacion de instancias y", "declaracion responsable",
            "declaracio responsable", "fecha de finalizacion del plazo", "finalizacion del plazo", "terminacion del plazo",
            "una vez recibidas las solicitudes", "solicitudes de revision", "solicitud de revision", "plazo para resolver",
-           "plazo de resolucion", "plazo maximo para resolver", "plazo de vigencia", "periodo de vigencia", "vigencia de la bolsa", "vigencia de las bolsas", "vigencia de la lista", "termini per resoldre",
+           "plazo de resolucion", "plazo maximo para resolver", "plazo transcurrido entre", "no podra exceder de", "la resolucion del concurso", "plazo de vigencia", "periodo de vigencia", "vigencia de la bolsa", "vigencia de las bolsas", "vigencia de la lista", "termini per resoldre",
            "sollicituds de revisio", "sol·licituds de revisio")
 PREFERIR = ("presentacion de solicitudes", "presentacion de las solicitudes", "solicitudes se presentaran",
             "solicitudes deberan presentarse", "presentacion de instancias", "plazo de presentacion",
@@ -218,13 +218,14 @@ RE_PUBLICACION_CONVOCATORIA = re.compile(
 PARTICULAS_FINALES = re.compile(r"(?:\s+(?:de|del|la|las|les|los|i|y))+$")
 
 
-RE_UNION = re.compile(r"^[\s»\"”,]*(?:o|y|i|e|u|ou|y/o|o\s+bien)\s+(?:en\s+|a\s+)?(?:el|la|al|o|a)?\s*[«\"“]?$",
+RE_UNION = re.compile(r"^[\s»\"”,]*(?:o|y|i|e|u|ou|y/o|i/o|e/ou|o\s+bien)\s+(?:en\s+|a\s+)?(?:el|la|al|o|a)?\s*[«\"“]?$",
                       re.IGNORECASE)
 
 
 # Los nombres genéricos escritos en minúscula («… en el boletín oficial de la provincia», «… del estado»)
 RE_BOLETIN_GENERICO = re.compile(
-    r"\b(?:(?P<estado>bolet[ií]n\s+oficial\s+del\s+estado)|(?P<prov>bolet[ií]n\s+oficial\s+de\s+la\s+provincia|"
+    r"\b(?:(?P<estado>bolet[ií]n\s+oficial\s+(?:del|de\s+l)\s+estado|butllet[ií]\s+oficial\s+de\s+l['’]\s*estat|"
+    r"diario\s+oficial\s+del\s+estado)|(?P<prov>bolet[ií]n\s+oficial\s+de\s+la\s+provincia|"
     r"butllet[ií]\s+oficial\s+de\s+la\s+prov[ií]ncia|bolet[ií]n\s+oficial\s+da\s+provincia))\b", re.IGNORECASE)
 
 
@@ -234,8 +235,10 @@ def _menciones(f: str) -> list[tuple[int, int, str]]:
     for m in list(RE_BOLETIN.finditer(f)) + list(RE_BOLETIN_LIBRE.finditer(f)):
         nombre = PARTICULAS_FINALES.sub("", " ".join(m.group("b").split()))
         k = normalizar(nombre)
+        # el final sin las partículas que se quitan del nombre («… de Catalunya i/o BOE»: la «i» es la unión)
+        fin = m.end() - (len(m.group("b")) - len(PARTICULAS_FINALES.sub("", m.group("b"))))
         if k not in vistos or m.start() < vistos[k][0]:
-            vistos[k] = (m.start(), m.end(), nombre)
+            vistos[k] = (m.start(), fin, nombre)
     for m in RE_SIGLAS.finditer(f):
         vistos.setdefault(normalizar(SIGLAS[m.group(1)]), (m.start(), m.end(), SIGLAS[m.group(1)]))
     for m in RE_BOLETIN_GENERICO.finditer(f):
@@ -277,6 +280,8 @@ def extraer_plazo(texto: str, publicacion: str, boletin_propio: str | tuple[str,
     de la comunidad del convocante, para contar con sus festivos.
     """
     pub = date.fromisoformat(publicacion)
+    # ligaduras de los PDF («Boletín Oﬁcial del Estado»)
+    texto = (texto or "").replace("ﬁ", "fi").replace("ﬂ", "fl").replace("昀椀", "fi")
     propios = {normalizar(b) for b in ((boletin_propio,) if isinstance(boletin_propio, str) else boletin_propio)}
     candidatas, cursor = [], 0
     for f in frases(texto):

@@ -599,6 +599,8 @@ def _proceso(a: dict, posteriores: list[dict], otras: list[dict], hoy: date, ide
     temporal = bool(RE_TEMPORAL.search(normalizar(a.get("titulo") or ""))) or a.get("modalidad") == "bolsa"
     if any(x.get("tipo_acto") == "anulacion" for x in posteriores):
         estado = "anulado"
+    elif fin and (plazo.get("inicio") or "") > hoy.isoformat():
+        estado = "plazo_por_abrir"  # «el plazo comenzará el día 4 de enero de 2027…»
     elif fin:
         estado = "plazo_abierto" if fin >= hoy.isoformat() else "plazo_cerrado"
     elif solo_bases and not temporal and "Boletín Oficial del Estado" in (plazo.get("cuenta_desde") or ""):

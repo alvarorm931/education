@@ -260,3 +260,25 @@ def test_boletin_en_minusculas_y_diari_de_la_provincia():
          "publicació de l'anunci de la convocatòria al Diari Oficial de la Província de Barcelona.")
     bopb = ("Butlletí Oficial de la Província de Barcelona", "Boletín Oficial de la Provincia de Barcelona")
     assert extraer_plazo(t, "2026-06-01", bopb)["fin_estimado"]
+
+
+def test_plazo_para_resolver_no_es_de_solicitudes():
+    t = ("El plazo transcurrido entre la publicación de la convocatoria en el Boletín Oficial de La Rioja y la "
+         "resolución del concurso no podrá exceder de cuatro meses, salvo causas justificadas.")
+    assert extraer_plazo(t, "2026-09-29", "Boletín Oficial de La Rioja") is None
+
+
+def test_boletin_del_estado_escrito_de_otras_formas():
+    bop = ("Butlletí Oficial de la Província de Barcelona", "Boletín Oficial de la Provincia de Barcelona")
+    for t in ("El termini de presentació de sol·licituds serà de vint dies hàbils comptats des de l’endemà de la "
+              "publicació de l’anunci de la convocatòria al Butlletí Oficial de l’Estat.",
+              "El plazo para la presentación de solicitudes será de 20 días hábiles a contar desde el día siguiente a la "
+              "publicación de anuncio en el Boletín Oﬁcial del Estado.",
+              "El plazo de presentación de solicitudes será de 20 días hábiles, contados a partir del siguiente al de la "
+              "publicación del extracto de esta convocatoria en el Boletín Oficial de l Estado."):
+        r = extraer_plazo(t, "2026-10-20", bop)
+        assert r["cuenta_desde"] == "Boletín Oficial del Estado" and not r.get("fin_estimado"), t
+    t = ("El termini de presentació de sol·licituds serà de vint dies hàbils improrrogables, a comptar des de l'endemà de "
+         "la darrera convocatòria de la publicació d'aquest anunci en el Diari Oficial de la Generalitat de Catalunya i/o BOE.")
+    r = extraer_plazo(t, "2026-10-20", "Diari Oficial de la Generalitat de Catalunya")
+    assert "Boletín Oficial del Estado" in r["cuenta_desde"] and not r.get("fin_estimado")
