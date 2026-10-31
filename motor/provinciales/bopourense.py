@@ -399,6 +399,13 @@ def reparar(raiz: Path, pausa: float, max_minutos: float) -> tuple[int, int]:
     return hechos, errores
 
 
+def _fin_de_semana_sin_pedir(ruta: Path) -> bool:
+    try:
+        return json.loads(ruta.read_text(encoding="utf-8")).get("nota") == "fin de semana"
+    except (OSError, ValueError):
+        return False
+
+
 def main(argv: list[str] | None = None) -> int:
     hoy = datetime.now(MADRID).date()
     p = argparse.ArgumentParser()
@@ -437,10 +444,14 @@ def main(argv: list[str] | None = None) -> int:
     while d >= a.desde:
         ruta = _ruta(a.salida, "dias", d, "json")
         hecho, reintento = estado_dia(ruta)
-        if d.weekday() >= 5 and not hecho:
+        # En 2022 y 2023 también salía los sábados (de cada seis números faltaba uno): el sábado se pide al portal y
+        # el que se dio por fin de semana sin pedirlo se vuelve a pedir; solo el domingo se da por sin boletín
+        if d.weekday() == 5 and hecho and _fin_de_semana_sin_pedir(ruta):
+            hecho = False
+        if d.weekday() == 6 and not hecho:
             escribir_json(ruta, {"fecha": d.isoformat(), "resultado": "sin_boletin", "nota": "fin de semana", "alertas": []})
             hecho = True
-        if not hecho or (d >= hoy - timedelta(days=1) and d.weekday() < 5):
+        if not hecho or (d >= hoy - timedelta(days=1) and d.weekday() < 6):
             if a.max_minutos and (time.monotonic() - inicio) / 60 > a.max_minutos:
                 print("Tiempo agotado; se continúa en la siguiente ejecución")
                 break
