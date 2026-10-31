@@ -1,55 +1,55 @@
-# Peso del almacén S3 (2026-10-31T10:11:21Z, versiones actuales)
+# Peso del almacén S3 (2026-10-31T10:15:09Z, versiones actuales)
 
-- Objetos: 334827
-- Total: 44165664602 bytes (41.13 GiB)
+- Objetos: 335732
+- Total: 44406061829 bytes (41.36 GiB)
 
 ## Por carpeta
 
-- bopgirona-texto: 3646 objetos, 5.90 GiB
+- bopgirona-texto: 3697 objetos, 6.07 GiB
 - web-centros: 81157 objetos, 5.49 GiB
 - bopcastellon: 365 objetos, 3.28 GiB
-- bopalicante-texto: 4944 objetos, 3.04 GiB
+- bopalicante-texto: 5022 objetos, 3.04 GiB
 - bopgranada-texto: 3642 objetos, 2.40 GiB
 - boptenerife-boletin: 482 objetos, 2.37 GiB
 - bopciudadreal-texto: 4270 objetos, 2.00 GiB
+- bopsevilla-texto: 1531 objetos, 1.97 GiB
 - bopb-texto: 7485 objetos, 1.95 GiB
-- bopsevilla-texto: 1501 objetos, 1.95 GiB
 - boplaspalmas-boletin: 751 objetos, 1.11 GiB
-- bopbizkaia-texto: 5208 objetos, 0.90 GiB
+- bopbizkaia-texto: 5256 objetos, 0.90 GiB
 - bopvalencia-texto: 3160 objetos, 0.74 GiB
 - bopgranada: 657 objetos, 0.70 GiB
 - bopleon: 1187 objetos, 0.59 GiB
 - bocce: 544 objetos, 0.57 GiB
-- bopguadalajara-texto: 2265 objetos, 0.55 GiB
+- bopguadalajara-texto: 2323 objetos, 0.56 GiB
 - bopcordoba-texto: 3385 objetos, 0.50 GiB
 - bopalbacete-boletin: 568 objetos, 0.50 GiB
 - bopavila-texto: 1883 objetos, 0.50 GiB
 - boplugo-boletin: 860 objetos, 0.49 GiB
-- boptoledo-texto: 5060 objetos, 0.44 GiB
+- boptoledo-texto: 5147 objetos, 0.44 GiB
 - extraccion-masters: 390 objetos, 0.35 GiB
 - bopzamora-texto: 766 objetos, 0.31 GiB
 - bophuelva-texto: 852 objetos, 0.31 GiB
 - bopteruel: 465 objetos, 0.29 GiB
 - bopvalladolid-texto: 1054 objetos, 0.25 GiB
 - boplleida-texto: 930 objetos, 0.23 GiB
-- bopcadiz-boletin: 481 objetos, 0.22 GiB
+- bopcadiz-boletin: 500 objetos, 0.22 GiB
 - bopalava-texto: 2093 objetos, 0.21 GiB
 - bopleon-texto: 999 objetos, 0.20 GiB
 - bophuesca-texto: 3414 objetos, 0.18 GiB
 - bopjaen-texto: 1074 objetos, 0.18 GiB
-- bopt-texto: 734 objetos, 0.18 GiB
+- bopt-texto: 739 objetos, 0.18 GiB
 - boppalencia: 400 objetos, 0.18 GiB
 - boe-texto: 32859 objetos, 0.17 GiB
 - boppalencia-boletin: 339 objetos, 0.15 GiB
 - bopsoria-texto: 755 objetos, 0.14 GiB
 - bopcastellon-texto: 154 objetos, 0.14 GiB
-- boib-texto: 8973 objetos, 0.11 GiB
+- boib-texto: 9097 objetos, 0.11 GiB
 - conjunto-masters: 6 objetos, 0.09 GiB
 - bopbadajoz-texto: 7949 objetos, 0.08 GiB
 - boe-sumario: 4394 objetos, 0.08 GiB
 - web-centros-render: 824 objetos, 0.07 GiB
 - bocant-xml: 1288 objetos, 0.06 GiB
-- dogc-texto: 11980 objetos, 0.06 GiB
+- dogc-texto: 12139 objetos, 0.06 GiB
 - bopvalladolid: 1209 objetos, 0.05 GiB
 - bopbizkaia: 1206 objetos, 0.05 GiB
 - bocyl-texto: 7266 objetos, 0.05 GiB
@@ -59,12 +59,12 @@
 - bopcoruna-texto: 6879 objetos, 0.04 GiB
 - bopcaceres: 1202 objetos, 0.03 GiB
 - bopzaragoza-texto: 5134 objetos, 0.03 GiB
-- ruct: 7857 objetos, 0.03 GiB
+- ruct: 7883 objetos, 0.03 GiB
 - bon-texto: 1593 objetos, 0.03 GiB
 - notas-corte: 93 objetos, 0.02 GiB
 - bopv-texto: 2068 objetos, 0.02 GiB
 - bon: 1367 objetos, 0.02 GiB
-- dogv-texto: 5696 objetos, 0.02 GiB
+- dogv-texto: 5756 objetos, 0.02 GiB
 - bopalava: 720 objetos, 0.02 GiB
 - bor-texto: 1408 objetos, 0.02 GiB
 - bopgipuzkoa-texto: 3473 objetos, 0.02 GiB
@@ -77,11 +77,11 @@
 - bopb: 1322 objetos, 0.02 GiB
 - bophuesca: 1150 objetos, 0.02 GiB
 - dog-texto: 3214 objetos, 0.01 GiB
+- boplugo: 1237 objetos, 0.01 GiB
 - bopcordoba: 1203 objetos, 0.01 GiB
-- boplugo: 1165 objetos, 0.01 GiB
 - doe-texto: 1840 objetos, 0.01 GiB
 - boppontevedra: 1212 objetos, 0.01 GiB
-- bocm-texto: 4836 objetos, 0.01 GiB
+- bocm-texto: 4901 objetos, 0.01 GiB
 - bopjaen: 1204 objetos, 0.01 GiB
 - bopourense: 2818 objetos, 0.01 GiB
 - bopburgos: 1190 objetos, 0.01 GiB
@@ -95,7 +95,7 @@
 - qedu: 13157 objetos, 0.00 GiB
 - bopcoruna: 891 objetos, 0.00 GiB
 - bocm: 294 objetos, 0.00 GiB
-- bopcadiz: 506 objetos, 0.00 GiB
+- bopcadiz: 526 objetos, 0.00 GiB
 - boc-texto: 680 objetos, 0.00 GiB
 - docm: 371 objetos, 0.00 GiB
 - docm-texto: 1100 objetos, 0.00 GiB
@@ -106,6 +106,7 @@
 - bopt: 426 objetos, 0.00 GiB
 - bophuelva: 842 objetos, 0.00 GiB
 - boplaspalmas: 762 objetos, 0.00 GiB
+- bopourense-boletin: 3 objetos, 0.00 GiB
 - bopalbacete: 728 objetos, 0.00 GiB
 - bopavila: 1209 objetos, 0.00 GiB
 - bopsevilla: 53 objetos, 0.00 GiB
@@ -153,7 +154,7 @@
 - bocce/2024: 190 objetos, 0.19 GiB
 - bocce/2025: 168 objetos, 0.18 GiB
 - bocce/2026: 138 objetos, 0.15 GiB
-- bocm-texto/2025: 1783 objetos, 0.00 GiB
+- bocm-texto/2025: 1848 objetos, 0.00 GiB
 - bocm-texto/2026: 3053 objetos, 0.01 GiB
 - bocm/2022: 1 objetos, 0.00 GiB
 - bocm/2023: 2 objetos, 0.00 GiB
@@ -199,7 +200,7 @@
 - boe-texto/2024: 1631 objetos, 0.01 GiB
 - boe-texto/2025: 793 objetos, 0.00 GiB
 - boe-texto/2026: 3333 objetos, 0.02 GiB
-- boib-texto/2022: 1069 objetos, 0.02 GiB
+- boib-texto/2022: 1193 objetos, 0.02 GiB
 - boib-texto/2023: 1868 objetos, 0.02 GiB
 - boib-texto/2024: 2959 objetos, 0.03 GiB
 - boib-texto/2025: 3049 objetos, 0.04 GiB
@@ -249,7 +250,7 @@
 - bopalbacete/2024: 149 objetos, 0.00 GiB
 - bopalbacete/2025: 152 objetos, 0.00 GiB
 - bopalbacete/2026: 127 objetos, 0.00 GiB
-- bopalicante-texto/2022: 1794 objetos, 0.82 GiB
+- bopalicante-texto/2022: 1872 objetos, 0.82 GiB
 - bopalicante-texto/2023: 865 objetos, 0.61 GiB
 - bopalicante-texto/2024: 1140 objetos, 0.81 GiB
 - bopalicante-texto/2025: 1087 objetos, 0.77 GiB
@@ -287,7 +288,7 @@
 - bopbizkaia-texto/2023: 962 objetos, 0.11 GiB
 - bopbizkaia-texto/2024: 1050 objetos, 0.10 GiB
 - bopbizkaia-texto/2025: 1168 objetos, 0.12 GiB
-- bopbizkaia-texto/2026: 916 objetos, 0.09 GiB
+- bopbizkaia-texto/2026: 964 objetos, 0.10 GiB
 - bopbizkaia/2022: 249 objetos, 0.01 GiB
 - bopbizkaia/2023: 249 objetos, 0.01 GiB
 - bopbizkaia/2024: 250 objetos, 0.01 GiB
@@ -303,10 +304,10 @@
 - bopcaceres/2024: 250 objetos, 0.01 GiB
 - bopcaceres/2025: 249 objetos, 0.01 GiB
 - bopcaceres/2026: 209 objetos, 0.00 GiB
-- bopcadiz-boletin/2024: 49 objetos, 0.02 GiB
+- bopcadiz-boletin/2024: 68 objetos, 0.03 GiB
 - bopcadiz-boletin/2025: 233 objetos, 0.11 GiB
 - bopcadiz-boletin/2026: 199 objetos, 0.08 GiB
-- bopcadiz/2024: 50 objetos, 0.00 GiB
+- bopcadiz/2024: 70 objetos, 0.00 GiB
 - bopcadiz/2025: 248 objetos, 0.00 GiB
 - bopcadiz/2026: 208 objetos, 0.00 GiB
 - bopcastellon-texto/2026: 154 objetos, 0.14 GiB
@@ -347,7 +348,7 @@
 - bopgipuzkoa/2024: 260 objetos, 0.00 GiB
 - bopgipuzkoa/2025: 259 objetos, 0.00 GiB
 - bopgipuzkoa/2026: 215 objetos, 0.00 GiB
-- bopgirona-texto/2024: 1104 objetos, 3.45 GiB
+- bopgirona-texto/2024: 1155 objetos, 3.61 GiB
 - bopgirona-texto/2025: 1400 objetos, 2.01 GiB
 - bopgirona-texto/2026: 1142 objetos, 0.44 GiB
 - bopgirona/2022: 249 objetos, 0.00 GiB
@@ -365,7 +366,7 @@
 - bopguadalajara-texto/2022: 601 objetos, 0.23 GiB
 - bopguadalajara-texto/2023: 363 objetos, 0.08 GiB
 - bopguadalajara-texto/2024: 391 objetos, 0.07 GiB
-- bopguadalajara-texto/2025: 406 objetos, 0.08 GiB
+- bopguadalajara-texto/2025: 464 objetos, 0.09 GiB
 - bopguadalajara-texto/2026: 504 objetos, 0.09 GiB
 - bopguadalajara/2022: 247 objetos, 0.00 GiB
 - bopguadalajara/2023: 246 objetos, 0.00 GiB
@@ -425,12 +426,13 @@
 - boplugo-boletin/2025: 264 objetos, 0.15 GiB
 - boplugo-boletin/2026: 219 objetos, 0.11 GiB
 - boplugo-boletin/8202: 1 objetos, 0.00 GiB
-- boplugo/2022: 40 objetos, 0.00 GiB
+- boplugo/2022: 112 objetos, 0.00 GiB
 - boplugo/2023: 289 objetos, 0.00 GiB
 - boplugo/2024: 289 objetos, 0.00 GiB
 - boplugo/2025: 296 objetos, 0.00 GiB
 - boplugo/2026: 250 objetos, 0.00 GiB
 - boplugo/8202: 1 objetos, 0.00 GiB
+- bopourense-boletin/2024: 3 objetos, 0.00 GiB
 - bopourense/2022: 124 objetos, 0.00 GiB
 - bopourense/2023: 247 objetos, 0.00 GiB
 - bopourense/2024: 796 objetos, 0.00 GiB
@@ -456,7 +458,7 @@
 - bopsalamanca/2024: 252 objetos, 0.00 GiB
 - bopsalamanca/2025: 251 objetos, 0.00 GiB
 - bopsalamanca/2026: 211 objetos, 0.00 GiB
-- bopsevilla-texto/2025: 1134 objetos, 1.49 GiB
+- bopsevilla-texto/2025: 1164 objetos, 1.51 GiB
 - bopsevilla-texto/2026: 367 objetos, 0.46 GiB
 - bopsevilla/2023: 15 objetos, 0.00 GiB
 - bopsevilla/2024: 12 objetos, 0.00 GiB
@@ -471,7 +473,7 @@
 - bopsoria/2024: 148 objetos, 0.00 GiB
 - bopsoria/2025: 146 objetos, 0.00 GiB
 - bopsoria/2026: 126 objetos, 0.00 GiB
-- bopt-texto/2026: 734 objetos, 0.18 GiB
+- bopt-texto/2026: 739 objetos, 0.18 GiB
 - bopt/2024: 61 objetos, 0.00 GiB
 - bopt/2025: 250 objetos, 0.00 GiB
 - bopt/2026: 115 objetos, 0.00 GiB
@@ -486,7 +488,7 @@
 - boptoledo-texto/2022: 1365 objetos, 0.17 GiB
 - boptoledo-texto/2023: 689 objetos, 0.05 GiB
 - boptoledo-texto/2024: 1049 objetos, 0.08 GiB
-- boptoledo-texto/2025: 883 objetos, 0.06 GiB
+- boptoledo-texto/2025: 970 objetos, 0.07 GiB
 - boptoledo-texto/2026: 1074 objetos, 0.07 GiB
 - boptoledo/2022: 248 objetos, 0.00 GiB
 - boptoledo/2023: 247 objetos, 0.00 GiB
@@ -572,11 +574,11 @@
 - dog/2024: 2 objetos, 0.00 GiB
 - dog/2025: 1 objetos, 0.00 GiB
 - dog/2026: 9 objetos, 0.00 GiB
-- dogc-texto/2024: 3039 objetos, 0.01 GiB
+- dogc-texto/2024: 3198 objetos, 0.01 GiB
 - dogc-texto/2025: 6793 objetos, 0.03 GiB
 - dogc-texto/2026: 2148 objetos, 0.01 GiB
 - dogc/2026: 3 objetos, 0.00 GiB
-- dogv-texto/2025: 3190 objetos, 0.01 GiB
+- dogv-texto/2025: 3250 objetos, 0.01 GiB
 - dogv-texto/2026: 2506 objetos, 0.01 GiB
 - dogv/2022: 2 objetos, 0.00 GiB
 - dogv/2023: 173 objetos, 0.00 GiB
@@ -587,7 +589,7 @@
 - notas-corte/2026: 93 objetos, 0.02 GiB
 - pruebas-almacen/2026: 3 objetos, 0.00 GiB
 - qedu/2026: 13157 objetos, 0.00 GiB
-- ruct/2026: 7857 objetos, 0.03 GiB
+- ruct/2026: 7883 objetos, 0.03 GiB
 - siiu-indicadores/2026: 10 objetos, 0.00 GiB
 - web-centros-render/2026: 824 objetos, 0.07 GiB
 - web-centros/2026: 81157 objetos, 5.49 GiB
