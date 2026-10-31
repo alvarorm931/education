@@ -261,6 +261,15 @@ def incompleto(ruta: Path) -> bool:
         return False
 
 
+def restaurado(ruta: Path) -> bool:
+    """Día devuelto a «ok» por reparar_dias con los anuncios que ya había: la lectura de entonces pudo quedarse a
+    medias (paginación) y el aviso «N anuncios leídos de M» se perdió al darlo por sin boletín."""
+    try:
+        return (json.loads(ruta.read_text(encoding="utf-8")).get("nota") or "").startswith("restaurado")
+    except (OSError, ValueError):
+        return False
+
+
 def reparar_dias(raiz: Path) -> tuple[int, int]:
     """Días entre semana dados por «sin boletín» sin el aviso del portal (respuestas vacías del 30-31/10/2026): si
     ya se habían leído (sus anuncios siguen en disposiciones/), vuelven a «ok»; si no, se borra el informe y se
@@ -323,7 +332,9 @@ def main(argv: list[str] | None = None) -> int:
     while d >= a.desde:  # del más reciente al más antiguo; lo ya hecho no se repite (salvo ayer y hoy)
         ruta = _ruta(a.salida, "dias", d, "json")
         hecho, reintento = estado_dia(ruta)
-        if hecho and incompleto(ruta):  # leído a medias por la paginación (se vuelve a leer entero)
+        if hecho and (incompleto(ruta) or restaurado(ruta)):
+            # leído a medias por la paginación, o restaurado de una lectura que pudo ser a medias: se vuelve a leer
+            # entero (el BOE cita bases de días restaurados con 30-40 anuncios en los que falta el municipio)
             hecho = False
         if d.weekday() >= 5 and not hecho:  # el BOP de Valencia no sale en fin de semana
             escribir_json(ruta, {"fecha": d.isoformat(), "resultado": "sin_boletin", "nota": "fin de semana",

@@ -87,6 +87,8 @@ def test_reparar_dias_dados_por_sin_boletin(tmp_path):
     (base / "disposiciones" / "2022" / "02" / "14.jsonl").write_text(_json.dumps({"id": "x", "boletin": "30"}) + "\n")
     assert v.reparar_dias(tmp_path) == (1, 1)
     assert _json.loads((base / "dias" / "2022" / "02" / "14.json").read_text())["resultado"] == "ok"
+    assert v.restaurado(base / "dias" / "2022" / "02" / "14.json")  # se vuelve a leer entero
+    assert not v.restaurado(base / "dias" / "2022" / "02" / "19.json")
     assert not (base / "dias" / "2022" / "02" / "16.json").exists()
     assert (base / "dias" / "2022" / "02" / "19.json").exists()
 
