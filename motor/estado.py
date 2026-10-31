@@ -98,6 +98,10 @@ def estado_fuente(carpeta: Path, hoy: date) -> dict:
                 ultimo_ok = fecha
     empleo = sum(_lineas(f) for f in (carpeta / "oposiciones").rglob("*.jsonl"))
     textos = sum(1 for _ in (carpeta / "textos").rglob("*.json"))
+    if not textos:
+        # BOJA y BOA guardan el texto dentro del propio anuncio (oposiciones/), no en textos/
+        textos = sum(1 for f in (carpeta / "oposiciones").rglob("*.jsonl") for l in f.open(encoding="utf-8")
+                     if '"texto": "' in l or '"solo_recuento": true' in l)
     sin_noticias = dias_habiles_entre(date.fromisoformat(ultimo_ok[:10]), hoy) if ultimo_ok else None
     errores.sort(key=lambda e: e.get("fecha") or "", reverse=True)
     huecos = huecos_numeracion(numeros)

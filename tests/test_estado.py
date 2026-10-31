@@ -28,3 +28,15 @@ def test_huecos_de_numeracion_por_serie():
     # BOME: ordinarios 64xx correlativos y extraordinarios 1, 2, 3… cada año; BOJA: ordinarios y 5xx.
     numeros = {"2026": {6424, 6426, 47, 48, 50}, "2025": {1, 2, 3, 501, 503}}
     assert estado.huecos_numeracion(numeros) == {"2025": [502], "2026": [49, 6425]}
+
+
+def test_textos_dentro_del_anuncio_cuentan(tmp_path):
+    """BOJA y BOA guardan el texto en el propio anuncio: no son textos pendientes."""
+    import json
+    from datetime import date
+    from motor.estado import estado_fuente
+    op = tmp_path / "oposiciones" / "2026" / "1.jsonl"
+    op.parent.mkdir(parents=True)
+    op.write_text(json.dumps({"id": "a", "texto": "Bases"}) + "\n" + json.dumps({"id": "b", "texto": None}) + "\n")
+    e = estado_fuente(tmp_path, date(2026, 10, 31))
+    assert (e["anuncios_empleo"], e["textos"], e["textos_pendientes"]) == (2, 1, 1)
