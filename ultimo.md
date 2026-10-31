@@ -24,4 +24,4 @@ https://github.com/alvarorm931/education/actions/runs/41210060505 (intento 1, wo
       fatal: couldn't find remote ref refs/heads/prueba-historial
       ##[error]Process completed with exit code 128.
 
-- En cola 78 min: Boletines autonómicos https://github.com/alvarorm931/education/actions/runs/41213532071
+- En cola 79 min: Boletines autonómicos https://github.com/alvarorm931/education/actions/runs/41213532071
