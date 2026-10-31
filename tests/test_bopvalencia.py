@@ -71,3 +71,21 @@ def test_busqueda_que_sale_por_la_pagina_anterior(monkeypatch, tmp_path):
     r = tmp_path / "d.json"
     r.write_text(json.dumps({"resultado": "ok", "alertas": ["BOP Valencia 2022-01-19: 1 anuncios leídos de 26"]}))
     assert v.incompleto(r) and not v.incompleto(tmp_path / "no.json")
+
+
+def test_reparar_dias_dados_por_sin_boletin(tmp_path):
+    import json as _json
+    from motor.provinciales import bopvalencia as v
+    base = tmp_path / "datos" / "provinciales" / "bopvalencia"
+    (base / "dias" / "2022" / "02").mkdir(parents=True)
+    (base / "disposiciones" / "2022" / "02").mkdir(parents=True)
+    for d in ("14", "16", "19"):
+        (base / "dias" / "2022" / "02" / f"{d}.json").write_text(
+            _json.dumps({"fecha": f"2022-02-{d}", "resultado": "sin_boletin", "alertas": []}))
+    (base / "dias" / "2022" / "02" / "19.json").write_text(  # sábado
+        _json.dumps({"fecha": "2022-02-19", "resultado": "sin_boletin", "nota": "fin de semana", "alertas": []}))
+    (base / "disposiciones" / "2022" / "02" / "14.jsonl").write_text(_json.dumps({"id": "x", "boletin": "30"}) + "\n")
+    assert v.reparar_dias(tmp_path) == (1, 1)
+    assert _json.loads((base / "dias" / "2022" / "02" / "14.json").read_text())["resultado"] == "ok"
+    assert not (base / "dias" / "2022" / "02" / "16.json").exists()
+    assert (base / "dias" / "2022" / "02" / "19.json").exists()

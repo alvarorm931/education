@@ -60,6 +60,7 @@ RE_REGISTRO = re.compile(r"Núm\. registre: </span>(?P<r>\d{4}/\d+)")
 RE_FECHA = re.compile(r'title="Butlletí complet">(?P<d>\d{2})/(?P<m>\d{2})/(?P<a>\d{4})</span>')
 RE_BOLETIN = re.compile(r'Butlletí: </span><a[^>]*>(?P<n>\d+)</a>')
 RE_TOTAL = re.compile(r"Mostrant del (?P<del>\d+) al \d+ de (?P<n>\d+)")
+RE_SIN_RESULTADOS = re.compile(r"trobat resultats|encontrado resultados|datagrid-empty|Mostrant del 0 al 0", re.IGNORECASE)
 RE_VIEWSTATE = re.compile(r'<update id="[^"]*javax\.faces\.ViewState[^"]*"><!\[CDATA\[(?P<v>[^\]]+)\]\]>')
 RE_REJILLA = re.compile(r'PrimeFaces\.cw\("DataGrid","\w+",\{id:"(?P<id>[^"]+)"[^}]*paginator')
 RE_FORM_REJILLA = re.compile(
@@ -215,6 +216,10 @@ def procesar_dia(d: date, raiz: Path, archivo: Archivo, portal: Portal) -> dict:
     for r in respuestas:
         archivo.guardar(FUENTE, d, r.contenido, portal.url, "xml", r.status, r.cabeceras)
     if total == 0:
+        # Solo si el portal dice que no hay resultados. El 30-31/10/2026 devolvió respuestas vacías al releer cientos
+        # de días seguidos, y se daban por días sin boletín (casi todo 2022-2025, ver reparar_dias)
+        if not any(RE_SIN_RESULTADOS.search(r.contenido.decode("utf-8", errors="replace")) for r in respuestas):
+            raise ErrorPortal("respuesta sin anuncios y sin el aviso de que no hay resultados")
         informe["resultado"] = "sin_boletin"
         return informe
     del_dia = [a for a in anuncios if a["fecha"] == d.isoformat()]
@@ -255,6 +260,37 @@ def incompleto(ruta: Path) -> bool:
         return False
 
 
+def reparar_dias(raiz: Path) -> tuple[int, int]:
+    """Días entre semana dados por «sin boletín» sin el aviso del portal (respuestas vacías del 30-31/10/2026): si
+    ya se habían leído (sus anuncios siguen en disposiciones/), vuelven a «ok»; si no, se borra el informe y se
+    vuelven a pedir. Devuelve (restaurados, por releer)."""
+    restaurados = releer = 0
+    for f in sorted((_base(raiz) / "dias").glob("*/*/*.json")):
+        try:
+            inf = json.loads(f.read_text(encoding="utf-8"))
+        except ValueError:
+            continue
+        if inf.get("resultado") != "sin_boletin" or inf.get("nota") or inf.get("confirmado"):
+            continue
+        d = date.fromisoformat(inf["fecha"])
+        if d.weekday() >= 5:
+            continue
+        disp = _ruta(raiz, "disposiciones", d)
+        if disp.exists():
+            filas = leer_jsonl(disp)
+            empleo = leer_jsonl(_ruta(raiz, "oposiciones", d)) if _ruta(raiz, "oposiciones", d).exists() else []
+            escribir_json(f, {"fecha": d.isoformat(), "resultado": "ok", "anuncios": len(filas),
+                              "disposiciones": len(filas), "empleo_publico": len(empleo),
+                              "boletin": next((x.get("boletin") for x in filas if x.get("boletin")), None),
+                              "nota": "restaurado: leído antes y luego dado por sin boletín por una respuesta vacía",
+                              "alertas": []})
+            restaurados += 1
+        else:
+            f.unlink()
+            releer += 1
+    return restaurados, releer
+
+
 def main(argv: list[str] | None = None) -> int:
     hoy = datetime.now(MADRID).date()
     p = argparse.ArgumentParser()
@@ -276,6 +312,10 @@ def main(argv: list[str] | None = None) -> int:
         print(f"BOP Valencia textos: {hechos} descargados, {errores} errores, {len(pend) - hechos} pendientes")
         return 0
 
+    restaurados, releer = reparar_dias(a.salida)
+    if restaurados or releer:
+        print(f"::notice title=BOP Valencia::{restaurados} días restaurados (ya leídos) y {releer} por releer, "
+              "que estaban como sin boletín por respuestas vacías del portal")
     inicio, informes, portal = time.monotonic(), [], None
     freno = Freno()
     d = a.hasta
