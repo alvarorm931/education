@@ -57,7 +57,8 @@ for c in $CONECTORES; do
       ejecutar motor.autonomicos.dog --salida "$S" --max-minutos "$((M * 2))"
       ejecutar motor.autonomicos.dog --desde 2022-01-01 --hasta "$((Y - 1))-12-31" --salida "$S" --max-minutos "$M"
       "$G" "DOG: boletines"
-      ejecutar motor.autonomicos.dog --textos --salida "$S" --max-minutos "$M"
+      # Pausa de 2 s: con 0,7 s el servidor deja de dar los textos tras unas 200 descargas (31/10/2026)
+      ejecutar motor.autonomicos.dog --textos --pausa 2 --salida "$S" --max-minutos "$M"
       "$G" "DOG: textos"
       ;;
     boa)
@@ -84,7 +85,8 @@ for c in $CONECTORES; do
       ejecutar motor.autonomicos.borm --salida "$S"
       ejecutar motor.autonomicos.borm --desde 2022-01-01 --saltar-existentes --salida "$S" --max-minutos "$M"
       "$G" "BORM: boletines"
-      ejecutar motor.autonomicos.borm --textos --salida "$S" --max-minutos "$M"
+      # Pausa de 2 s: con 0,7 s el servidor deja de dar los textos tras unas 200 descargas (31/10/2026)
+      ejecutar motor.autonomicos.borm --textos --pausa 2 --salida "$S" --max-minutos "$M"
       "$G" "BORM: textos"
       ;;
     boc)

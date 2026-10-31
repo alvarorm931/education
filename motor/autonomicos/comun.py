@@ -489,6 +489,7 @@ def descargar_textos(pendientes: list[dict], destino: Callable[[dict], Path], ur
     """
     inicio, hechos, errores, seguidos = time.monotonic(), 0, 0, 0
     tipos: Counter = Counter()
+    ejemplo: dict[str, str] = {}
     for x in pendientes:
         if max_minutos and (time.monotonic() - inicio) / 60 > max_minutos:
             break
@@ -512,14 +513,18 @@ def descargar_textos(pendientes: list[dict], destino: Callable[[dict], Path], ur
             tipos[f"HTTP {r.status}"] += 1
             time.sleep(pausa)
             continue
-        seguidos = 0
         try:
             datos = extraer(r.contenido, x) if por_registro else extraer(r.contenido)
         except Exception as e:  # un documento mal formado no detiene la carga; queda pendiente para revisarlo
-            errores += 1
-            tipos[f"formato ({type(e).__name__})"] += 1
+            # Muchos seguidos no son documentos raros: el servidor ha dejado de dar el documento (página de bloqueo
+            # o de error con HTTP 200). Caso real (DOG y BORM, 31/10/2026): tras unas 200 descargas, miles de fallos.
+            errores, seguidos = errores + 1, seguidos + 1
+            tipo = f"formato ({type(e).__name__})"
+            tipos[tipo] += 1
+            ejemplo.setdefault(tipo, f"{u}: {str(e)[:80]}; {r.contenido[:120]!r}")
             time.sleep(pausa)
             continue
+        seguidos = 0
         captura = archivo.guardar(fuente + "-texto", date.fromisoformat(x["fecha"]), r.contenido, u, ext, r.status,
                                   r.cabeceras)
         escribir_json(destino(x), {"id": x["id"], **datos, "captura_sha256": captura["sha256"],
@@ -528,5 +533,6 @@ def descargar_textos(pendientes: list[dict], destino: Callable[[dict], Path], ur
         time.sleep(pausa)
     if errores:
         print(f"::warning title={fuente} textos::{hechos} descargados, {errores} fallos: "
-              + "; ".join(f"{t} ×{n}" for t, n in tipos.most_common(5)))
+              + "; ".join(f"{t} ×{n}" + (f" (p. ej. {ejemplo[t]})" if t in ejemplo else "")
+                          for t, n in tipos.most_common(5)))
     return hechos, errores

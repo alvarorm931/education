@@ -75,3 +75,21 @@ def test_bocm_textos_para_tras_fallos_seguidos(tmp_path, monkeypatch, capsys):
     # Se para a los 25 fallos seguidos, con pausa también tras cada fallo, y dice por qué
     assert (hechos, errores) == (0, bocm.MAX_FALLOS_SEGUIDOS) and len(pedidas) == len(pausas) == bocm.MAX_FALLOS_SEGUIDOS
     assert "no es XML" in capsys.readouterr().out
+
+
+def test_textos_para_si_el_servidor_da_otra_cosa(tmp_path, monkeypatch):
+    """Muchos documentos seguidos que no se pueden leer: el servidor ha dejado de darlos; no se insiste."""
+    from motor.archivo import Archivo
+    from motor.autonomicos import comun
+    from motor.http import Respuesta
+    pedidas = []
+    monkeypatch.setattr(comun, "obtener", lambda url, **kw: pedidas.append(url) or Respuesta(url, 200, b"<html>bloqueo", {}))
+    monkeypatch.setattr(comun.time, "sleep", lambda s: None)
+
+    def extraer(c):
+        raise ValueError("sin div.story")
+
+    pend = [{"id": f"X{k}", "fecha": "2026-10-30"} for k in range(100)]
+    hechos, errores = comun.descargar_textos(pend, lambda x: tmp_path / f"{x['id']}.json", lambda x: "https://x/" + x["id"],
+                                             extraer, Archivo(tmp_path / "a", solo_huella=True), "dog", 0, 0)
+    assert hechos == 0 and len(pedidas) == comun.MAX_FALLOS_SEGUIDOS_TEXTOS
