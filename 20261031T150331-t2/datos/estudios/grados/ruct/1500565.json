@@ -1,0 +1,1009 @@
+{
+ "nombre": "Graduado o Graduada en Biomedicina por la Universidad Alfonso X el Sabio Mare Nostrum",
+ "codigo": "1500565",
+ "nivel": "Grado - RD 822/2021 (2)",
+ "meces": "2",
+ "rama": "Ciencias de la Salud",
+ "campo": "Ciencias Biomédicas",
+ "creditos": {
+  "obligatorios": 150.0,
+  "optativos": 12.0,
+  "practicas_externas": 12.0,
+  "tfm": 6.0,
+  "complementos_formativos": null,
+  "total": 240.0
+ },
+ "fecha_verificacion": "2025-09-09",
+ "fecha_consejo_ministros": "2025-11-25",
+ "boe": {
+  "acuerdo": {
+   "url": "http://www.boe.es/boe/dias/2025/12/06/pdfs/BOE-A-2025-24843.pdf",
+   "fecha": "2025-12-06",
+   "identificador": "BOE-A-2025-24843"
+  }
+ },
+ "curso_inicio": "2025/2026",
+ "autorizaciones_ccaa": [
+  {
+   "universidad": "Universidad Alfonso X el Sabio Mare Nostrum",
+   "ccaa_codigo": "01",
+   "ccaa": "Comunidad Autónoma de Andalucía",
+   "fecha": "2025-09-24",
+   "enlace": "http://www.juntadeandalucia.es/eboja/2025/189/BOJA25-189-00022-12928-01_00326526.pdf"
+  }
+ ],
+ "extincion": [],
+ "acreditaciones": [],
+ "centros": [
+  {
+   "universidad": "Universidad Alfonso X el Sabio Mare Nostrum",
+   "codigo": "29016409",
+   "centro": "Facultad de Salud y Deporte"
+  }
+ ],
+ "incidencias": [
+  {
+   "orden": "1",
+   "denominacion": "Graduado o Graduada en Biomedicina por la Universidad Alfonso X el Sabio Mare Nostrum",
+   "incidencia": "Alta Inicial",
+   "fecha": "2025-11-25",
+   "memoria": {
+    "cod": "15005652025070901",
+    "sit": "A"
+   }
+  }
+ ],
+ "memorias": [
+  {
+   "cod": "15005652025070901",
+   "sit": "A"
+  }
+ ],
+ "fuente": {
+  "cita": "Ministerio de Ciencia, Innovación y Universidades. Registro de Universidades, Centros y Títulos (RUCT)",
+  "url": "https://www.educacion.gob.es/ruct/estudio.action?codigoCiclo=SC&codigoTipo=G&CodigoEstudio=1500565&actual=estudios",
+  "sha256": "5e91a9af9ef58ae3b8c0d88f442a37204491b70470e63825a85b6944dda3dcd8",
+  "capturado": "2026-10-31T14:15:55+00:00"
+ },
+ "memoria": {
+  "cod": "15005652025070901",
+  "regimen": "Grado - RD 822/2021 (2)",
+  "solo_plan": true,
+  "plan": [
+   {
+    "modulo": 1,
+    "nombre": "FORMACIÓN BÁSICA",
+    "ects": 60.0,
+    "materias": [
+     {
+      "nombre": "Anatomía Humana",
+      "caracter": "Básica",
+      "ects": 6.0,
+      "unidad_temporal": "Cuatrimestral",
+      "despliegue": {
+       "1": 6.0
+      },
+      "hijos": [],
+      "textos": [],
+      "id": 1,
+      "asignaturas": []
+     },
+     {
+      "nombre": "Biología",
+      "caracter": "Básica",
+      "ects": 9.0,
+      "unidad_temporal": "Anual",
+      "despliegue": {
+       "1": 9.0
+      },
+      "hijos": [
+       {
+        "id": 1,
+        "nombre": "Biología celular y molecular"
+       }
+      ],
+      "textos": [],
+      "id": 2,
+      "asignaturas": [
+       {
+        "id": 1,
+        "nombre": "Biología celular y molecular",
+        "caracter": "Obligatoria",
+        "ects": 9.0,
+        "unidad_temporal": "Anual",
+        "despliegue": {
+         "1": 9.0
+        }
+       }
+      ]
+     },
+     {
+      "nombre": "Bioquímica",
+      "caracter": "Básica",
+      "ects": 12.0,
+      "unidad_temporal": "Cuatrimestral",
+      "despliegue": {
+       "1": 6.0,
+       "2": 6.0
+      },
+      "hijos": [
+       {
+        "id": 1,
+        "nombre": "Bioquímica: Estructura y función molecular"
+       },
+       {
+        "id": 2,
+        "nombre": "Bioquímica metabólica"
+       }
+      ],
+      "textos": [],
+      "id": 3,
+      "asignaturas": [
+       {
+        "id": 1,
+        "nombre": "Bioquímica: Estructura y función molecular",
+        "caracter": "Obligatoria",
+        "ects": 6.0,
+        "unidad_temporal": "Cuatrimestral",
+        "despliegue": {
+         "1": 6.0
+        }
+       },
+       {
+        "id": 2,
+        "nombre": "Bioquímica metabólica",
+        "caracter": "Obligatoria",
+        "ects": 6.0,
+        "unidad_temporal": "Cuatrimestral",
+        "despliegue": {
+         "2": 6.0
+        }
+       }
+      ]
+     },
+     {
+      "nombre": "Inmunología",
+      "caracter": "Básica",
+      "ects": 6.0,
+      "unidad_temporal": "Cuatrimestral",
+      "despliegue": {
+       "2": 6.0
+      },
+      "hijos": [],
+      "textos": [],
+      "id": 4,
+      "asignaturas": []
+     },
+     {
+      "nombre": "Fisiología humana",
+      "caracter": "Básica",
+      "ects": 9.0,
+      "unidad_temporal": "Anual",
+      "despliegue": {
+       "2": 9.0
+      },
+      "hijos": [],
+      "textos": [],
+      "id": 5,
+      "asignaturas": []
+     },
+     {
+      "nombre": "Microbiología",
+      "caracter": "Básica",
+      "ects": 12.0,
+      "unidad_temporal": "Cuatrimestral",
+      "despliegue": {
+       "2": 6.0,
+       "3": 6.0
+      },
+      "hijos": [
+       {
+        "id": 1,
+        "nombre": "Fundamentos de la microbiología"
+       },
+       {
+        "id": 2,
+        "nombre": "Microbiología médica"
+       }
+      ],
+      "textos": [],
+      "id": 6,
+      "asignaturas": [
+       {
+        "id": 1,
+        "nombre": "Fundamentos de la microbiología",
+        "caracter": "Obligatoria",
+        "ects": 6.0,
+        "unidad_temporal": "Cuatrimestral",
+        "despliegue": {
+         "2": 6.0
+        }
+       },
+       {
+        "id": 2,
+        "nombre": "Microbiología médica",
+        "caracter": "Obligatoria",
+        "ects": 6.0,
+        "unidad_temporal": "Cuatrimestral",
+        "despliegue": {
+         "3": 6.0
+        }
+       }
+      ]
+     },
+     {
+      "nombre": "Inmunopatología",
+      "caracter": "Básica",
+      "ects": 6.0,
+      "unidad_temporal": "Cuatrimestral",
+      "despliegue": {
+       "4": 6.0
+      },
+      "hijos": [],
+      "textos": [],
+      "id": 7,
+      "asignaturas": []
+     }
+    ]
+   },
+   {
+    "modulo": 2,
+    "nombre": "FORMACIÓN OBLIGATORIA",
+    "ects": 150.0,
+    "materias": [
+     {
+      "nombre": "Física",
+      "caracter": "Obligatoria",
+      "ects": 3.0,
+      "unidad_temporal": "Cuatrimestral",
+      "despliegue": {
+       "1": 3.0
+      },
+      "hijos": [
+       {
+        "id": 1,
+        "nombre": "Biofísica"
+       }
+      ],
+      "textos": [],
+      "id": 1,
+      "asignaturas": [
+       {
+        "id": 1,
+        "nombre": "Biofísica",
+        "caracter": "Obligatoria",
+        "ects": 3.0,
+        "unidad_temporal": "Cuatrimestral",
+        "despliegue": {
+         "1": 6.0
+        }
+       }
+      ]
+     },
+     {
+      "nombre": "Genética y Desarrollo",
+      "caracter": "Obligatoria",
+      "ects": 9.0,
+      "unidad_temporal": "Anual",
+      "despliegue": {
+       "1": 9.0
+      },
+      "hijos": [
+       {
+        "id": 1,
+        "nombre": "Genética y biología del desarrollo"
+       }
+      ],
+      "textos": [],
+      "id": 2,
+      "asignaturas": [
+       {
+        "id": 1,
+        "nombre": "Genética y biología del desarrollo",
+        "caracter": "Obligatoria",
+        "ects": 9.0,
+        "unidad_temporal": "Anual",
+        "despliegue": {
+         "1": 9.0
+        }
+       }
+      ]
+     },
+     {
+      "nombre": "Histología",
+      "caracter": "Obligatoria",
+      "ects": 9.0,
+      "unidad_temporal": "Cuatrimestral",
+      "despliegue": {
+       "3": 3.0,
+       "4": 6.0
+      },
+      "hijos": [
+       {
+        "id": 1,
+        "nombre": "Histología general"
+       },
+       {
+        "id": 2,
+        "nombre": "Histología especial"
+       }
+      ],
+      "textos": [],
+      "id": 3,
+      "asignaturas": [
+       {
+        "id": 1,
+        "nombre": "Histología general",
+        "caracter": "Mixta",
+        "ects": 3.0,
+        "unidad_temporal": "Cuatrimestral",
+        "despliegue": {
+         "3": 3.0
+        }
+       },
+       {
+        "id": 2,
+        "nombre": "Histología especial",
+        "caracter": "Obligatoria",
+        "ects": 6.0,
+        "unidad_temporal": "Cuatrimestral",
+        "despliegue": {
+         "4": 6.0
+        }
+       }
+      ]
+     },
+     {
+      "nombre": "Neurobiología",
+      "caracter": "Obligatoria",
+      "ects": 6.0,
+      "unidad_temporal": "Cuatrimestral",
+      "despliegue": {
+       "4": 6.0
+      },
+      "hijos": [],
+      "textos": [],
+      "id": 4,
+      "asignaturas": []
+     },
+     {
+      "nombre": "Historia y ética de la biomedicina",
+      "caracter": "Obligatoria",
+      "ects": 6.0,
+      "unidad_temporal": "Cuatrimestral",
+      "despliegue": {
+       "2": 3.0,
+       "3": 3.0
+      },
+      "hijos": [
+       {
+        "id": 1,
+        "nombre": "Historia y ética de la biomedicina I"
+       },
+       {
+        "id": 2,
+        "nombre": "Historia y ética de la biomedicina II"
+       }
+      ],
+      "textos": [],
+      "id": 5,
+      "asignaturas": [
+       {
+        "id": 1,
+        "nombre": "Historia y ética de la biomedicina I",
+        "caracter": "Obligatoria",
+        "ects": 3.0,
+        "unidad_temporal": "Cuatrimestral",
+        "despliegue": {
+         "2": 3.0
+        }
+       },
+       {
+        "id": 2,
+        "nombre": "Historia y ética de la biomedicina II",
+        "caracter": "Obligatoria",
+        "ects": 3.0,
+        "unidad_temporal": "Cuatrimestral",
+        "despliegue": {
+         "3": 3.0
+        }
+       }
+      ]
+     },
+     {
+      "nombre": "Idioma Moderno",
+      "caracter": "Obligatoria",
+      "ects": 6.0,
+      "unidad_temporal": "Cuatrimestral",
+      "despliegue": {
+       "1": 6.0
+      },
+      "hijos": [],
+      "textos": [],
+      "id": 6,
+      "asignaturas": []
+     },
+     {
+      "nombre": "Diagnóstico biomédico",
+      "caracter": "Obligatoria",
+      "ects": 10.0,
+      "unidad_temporal": "Cuatrimestral",
+      "despliegue": {
+       "3": 6.0,
+       "7": 4.0
+      },
+      "hijos": [
+       {
+        "id": 1,
+        "nombre": "Bioquímica clínica y biomedicina"
+       },
+       {
+        "id": 2,
+        "nombre": "Diagnóstico biológico"
+       }
+      ],
+      "textos": [],
+      "id": 7,
+      "asignaturas": [
+       {
+        "id": 1,
+        "nombre": "Bioquímica clínica y biomedicina",
+        "caracter": "Obligatoria",
+        "ects": 6.0,
+        "unidad_temporal": "Cuatrimestral",
+        "despliegue": {
+         "3": 6.0
+        }
+       },
+       {
+        "id": 2,
+        "nombre": "Diagnóstico biológico",
+        "caracter": "Obligatoria",
+        "ects": 4.0,
+        "unidad_temporal": "Cuatrimestral",
+        "despliegue": {
+         "7": 4.0
+        }
+       }
+      ]
+     },
+     {
+      "nombre": "Anatomía patológica",
+      "caracter": "Obligatoria",
+      "ects": 9.0,
+      "unidad_temporal": "Cuatrimestral",
+      "despliegue": {
+       "5": 3.0,
+       "6": 6.0
+      },
+      "hijos": [
+       {
+        "id": 1,
+        "nombre": "Anatomía patológica general"
+       },
+       {
+        "id": 2,
+        "nombre": "Anatomía patológica especial"
+       }
+      ],
+      "textos": [],
+      "id": 8,
+      "asignaturas": [
+       {
+        "id": 1,
+        "nombre": "Anatomía patológica general",
+        "caracter": "Obligatoria",
+        "ects": 3.0,
+        "unidad_temporal": "Cuatrimestral",
+        "despliegue": {
+         "5": 3.0
+        }
+       },
+       {
+        "id": 2,
+        "nombre": "Anatomía patológica especial",
+        "caracter": "Obligatoria",
+        "ects": 3.0,
+        "unidad_temporal": "Cuatrimestral",
+        "despliegue": {
+         "6": 6.0
+        }
+       }
+      ]
+     },
+     {
+      "nombre": "Farmacología y terapéutica",
+      "caracter": "Obligatoria",
+      "ects": 10.0,
+      "unidad_temporal": "Cuatrimestral",
+      "despliegue": {
+       "5": 4.0,
+       "6": 6.0
+      },
+      "hijos": [
+       {
+        "id": 1,
+        "nombre": "Farmacología general"
+       },
+       {
+        "id": 2,
+        "nombre": "Farmacología médica"
+       }
+      ],
+      "textos": [],
+      "id": 9,
+      "asignaturas": [
+       {
+        "id": 1,
+        "nombre": "Farmacología general",
+        "caracter": "Obligatoria",
+        "ects": 4.0,
+        "unidad_temporal": "Cuatrimestral",
+        "despliegue": {
+         "5": 4.0
+        }
+       },
+       {
+        "id": 2,
+        "nombre": "Farmacología médica",
+        "caracter": "Obligatoria",
+        "ects": 6.0,
+        "unidad_temporal": "Cuatrimestral",
+        "despliegue": {
+         "6": 6.0
+        }
+       }
+      ]
+     },
+     {
+      "nombre": "Genética médica",
+      "caracter": "Obligatoria",
+      "ects": 6.0,
+      "unidad_temporal": "Cuatrimestral",
+      "despliegue": {
+       "4": 6.0
+      },
+      "hijos": [],
+      "textos": [],
+      "id": 10,
+      "asignaturas": []
+     },
+     {
+      "nombre": "Fisiopatología",
+      "caracter": "Obligatoria",
+      "ects": 12.0,
+      "unidad_temporal": "Cuatrimestral",
+      "despliegue": {
+       "5": 6.0,
+       "6": 6.0
+      },
+      "hijos": [
+       {
+        "id": 1,
+        "nombre": "Fisiopatología I"
+       },
+       {
+        "id": 2,
+        "nombre": "Fisiopatología II"
+       }
+      ],
+      "textos": [],
+      "id": 11,
+      "asignaturas": [
+       {
+        "id": 1,
+        "nombre": "Fisiopatología I",
+        "caracter": "Obligatoria",
+        "ects": 6.0,
+        "unidad_temporal": "Cuatrimestral",
+        "despliegue": {
+         "5": 6.0
+        }
+       },
+       {
+        "id": 2,
+        "nombre": "Fisiopatología II",
+        "caracter": "Obligatoria",
+        "ects": 6.0,
+        "unidad_temporal": "Cuatrimestral",
+        "despliegue": {
+         "6": 6.0
+        }
+       }
+      ]
+     },
+     {
+      "nombre": "Bases moleculares de la patología",
+      "caracter": "Obligatoria",
+      "ects": 12.0,
+      "unidad_temporal": "Cuatrimestral",
+      "despliegue": {
+       "5": 6.0,
+       "6": 6.0
+      },
+      "hijos": [
+       {
+        "id": 1,
+        "nombre": "Bases moleculares de la patología I"
+       },
+       {
+        "id": 2,
+        "nombre": "Bases moleculares de la patología II"
+       }
+      ],
+      "textos": [],
+      "id": 12,
+      "asignaturas": [
+       {
+        "id": 1,
+        "nombre": "Bases moleculares de la patología I",
+        "caracter": "Obligatoria",
+        "ects": 6.0,
+        "unidad_temporal": "Cuatrimestral",
+        "despliegue": {
+         "5": 6.0
+        }
+       },
+       {
+        "id": 2,
+        "nombre": "Bases moleculares de la patología II",
+        "caracter": "Obligatoria",
+        "ects": 6.0,
+        "unidad_temporal": "Cuatrimestral",
+        "despliegue": {
+         "6": 6.0
+        }
+       }
+      ]
+     },
+     {
+      "nombre": "Análisis de datos y metodología",
+      "caracter": "Obligatoria",
+      "ects": 25.0,
+      "unidad_temporal": "Cuatrimestral",
+      "despliegue": {
+       "3": 6.0,
+       "5": 5.0,
+       "6": 6.0,
+       "7": 8.0
+      },
+      "hijos": [
+       {
+        "id": 1,
+        "nombre": "Bioestadística"
+       },
+       {
+        "id": 2,
+        "nombre": "Matemáticas aplicadas"
+       },
+       {
+        "id": 3,
+        "nombre": "Bioinformática"
+       },
+       {
+        "id": 4,
+        "nombre": "Genómica y proteómica/Genomics and proteomics"
+       },
+       {
+        "id": 5,
+        "nombre": "Ciencia de datos/Data Science"
+       }
+      ],
+      "textos": [],
+      "id": 13,
+      "asignaturas": [
+       {
+        "id": 1,
+        "nombre": "Bioestadística",
+        "caracter": "Obligatoria",
+        "ects": 6.0,
+        "unidad_temporal": "Cuatrimestral",
+        "despliegue": {
+         "3": 6.0
+        }
+       },
+       {
+        "id": 2,
+        "nombre": "Matemáticas aplicadas",
+        "caracter": "Obligatoria",
+        "ects": 5.0,
+        "unidad_temporal": "Cuatrimestral",
+        "despliegue": {
+         "5": 5.0
+        }
+       },
+       {
+        "id": 3,
+        "nombre": "Bioinformática",
+        "caracter": "Obligatoria",
+        "ects": 6.0,
+        "unidad_temporal": "Cuatrimestral",
+        "despliegue": {
+         "6": 6.0
+        }
+       },
+       {
+        "id": 4,
+        "nombre": "Genómica y proteómica/Genomics and proteomics",
+        "caracter": "Obligatoria",
+        "ects": 4.0,
+        "unidad_temporal": "Cuatrimestral",
+        "despliegue": {
+         "7": 4.0
+        }
+       },
+       {
+        "id": 5,
+        "nombre": "Ciencia de datos/Data Science",
+        "caracter": "Obligatoria",
+        "ects": 4.0,
+        "unidad_temporal": "Cuatrimestral",
+        "despliegue": {
+         "7": 4.0
+        }
+       }
+      ]
+     },
+     {
+      "nombre": "Metodología biomédica",
+      "caracter": "Obligatoria",
+      "ects": 9.0,
+      "unidad_temporal": "Cuatrimestral",
+      "despliegue": {
+       "3": 3.0,
+       "5": 6.0
+      },
+      "hijos": [
+       {
+        "id": 1,
+        "nombre": "Métodos y técnicas en biomedicina I"
+       },
+       {
+        "id": 2,
+        "nombre": "Métodos y técnicas en biomedicina/Methods and technics in biomedicine II"
+       }
+      ],
+      "textos": [],
+      "id": 14,
+      "asignaturas": [
+       {
+        "id": 1,
+        "nombre": "Métodos y técnicas en biomedicina I",
+        "caracter": "Obligatoria",
+        "ects": 3.0,
+        "unidad_temporal": "Cuatrimestral",
+        "despliegue": {
+         "3": 3.0
+        }
+       },
+       {
+        "id": 2,
+        "nombre": "Métodos y técnicas en biomedicina/Methods and technics in biomedicine II",
+        "caracter": "Obligatoria",
+        "ects": 6.0,
+        "unidad_temporal": "Cuatrimestral",
+        "despliegue": {
+         "5": 6.0
+        }
+       }
+      ]
+     },
+     {
+      "nombre": "Epidemiología y medicina preventiva",
+      "caracter": "Obligatoria",
+      "ects": 4.0,
+      "unidad_temporal": "Cuatrimestral",
+      "despliegue": {
+       "7": 4.0
+      },
+      "hijos": [],
+      "textos": [],
+      "id": 15,
+      "asignaturas": []
+     },
+     {
+      "nombre": "Avances en enfermedades de alta prevalencia",
+      "caracter": "Obligatoria",
+      "ects": 14.0,
+      "unidad_temporal": "Cuatrimestral",
+      "despliegue": {
+       "7": 14.0
+      },
+      "hijos": [
+       {
+        "id": 1,
+        "nombre": "Advances in cancer and aging diseases diagnosis and treatment"
+       },
+       {
+        "id": 2,
+        "nombre": "Advances in nervous system diseases diagnosis and treatment"
+       },
+       {
+        "id": 3,
+        "nombre": "Advances in cardiovascular system diseases diagnosis and treatment"
+       }
+      ],
+      "textos": [],
+      "id": 16,
+      "asignaturas": [
+       {
+        "id": 1,
+        "nombre": "Advances in cancer and aging diseases diagnosis and treatment",
+        "caracter": "Obligatoria",
+        "ects": 6.0,
+        "unidad_temporal": "Cuatrimestral",
+        "despliegue": {
+         "7": 6.0
+        }
+       },
+       {
+        "id": 2,
+        "nombre": "Advances in nervous system diseases diagnosis and treatment&#8239;",
+        "caracter": "Obligatoria",
+        "ects": 4.0,
+        "unidad_temporal": "Cuatrimestral",
+        "despliegue": {
+         "7": 4.0
+        }
+       },
+       {
+        "id": 3,
+        "nombre": "Advances in cardiovascular system diseases diagnosis and treatment",
+        "caracter": "Obligatoria",
+        "ects": 4.0,
+        "unidad_temporal": "Cuatrimestral",
+        "despliegue": {
+         "7": 4.0
+        }
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "modulo": 3,
+    "nombre": "FORMACIÓN OPTATIVA",
+    "ects": 12.0,
+    "materias": [
+     {
+      "nombre": "Anatomía Animal",
+      "caracter": "Optativa",
+      "ects": 6.0,
+      "unidad_temporal": "Cuatrimestral",
+      "despliegue": {
+       "8": 6.0
+      },
+      "hijos": [],
+      "textos": [],
+      "id": 1,
+      "asignaturas": []
+     },
+     {
+      "nombre": "Nanomedicina",
+      "caracter": "Optativa",
+      "ects": 6.0,
+      "unidad_temporal": "Cuatrimestral",
+      "despliegue": {
+       "8": 6.0
+      },
+      "hijos": [],
+      "textos": [],
+      "id": 2,
+      "asignaturas": []
+     },
+     {
+      "nombre": "Biología regenerativa y del envejecimiento",
+      "caracter": "Optativa",
+      "ects": 6.0,
+      "unidad_temporal": "Cuatrimestral",
+      "despliegue": {
+       "8": 6.0
+      },
+      "hijos": [],
+      "textos": [],
+      "id": 3,
+      "asignaturas": []
+     },
+     {
+      "nombre": "Biomedicina Forense",
+      "caracter": "Optativa",
+      "ects": 6.0,
+      "unidad_temporal": "Cuatrimestral",
+      "despliegue": {
+       "8": 6.0
+      },
+      "hijos": [],
+      "textos": [],
+      "id": 4,
+      "asignaturas": []
+     },
+     {
+      "nombre": "Fundamentos de diagnóstico por imagen",
+      "caracter": "Optativa",
+      "ects": 6.0,
+      "unidad_temporal": "Cuatrimestral",
+      "despliegue": {
+       "8": 6.0
+      },
+      "hijos": [],
+      "textos": [],
+      "id": 5,
+      "asignaturas": []
+     },
+     {
+      "nombre": "Scientific writing",
+      "caracter": "Optativa",
+      "ects": 6.0,
+      "unidad_temporal": "Cuatrimestral",
+      "despliegue": {
+       "8": 6.0
+      },
+      "hijos": [],
+      "textos": [],
+      "id": 6,
+      "asignaturas": []
+     },
+     {
+      "nombre": "Nutrition and feeding",
+      "caracter": "Optativa",
+      "ects": 6.0,
+      "unidad_temporal": "Cuatrimestral",
+      "despliegue": {
+       "8": 6.0
+      },
+      "hijos": [],
+      "textos": [],
+      "id": 7,
+      "asignaturas": []
+     }
+    ]
+   },
+   {
+    "modulo": 4,
+    "nombre": "PRÁCTICAS ACADÉMICAS EXTERNAS",
+    "ects": 12.0,
+    "materias": [
+     {
+      "nombre": "Prácticas Académicas Externas",
+      "caracter": "Prácticas Externas",
+      "ects": 12.0,
+      "unidad_temporal": "Cuatrimestral",
+      "despliegue": {
+       "8": 12.0
+      },
+      "hijos": [],
+      "textos": [],
+      "id": 1,
+      "asignaturas": []
+     }
+    ]
+   },
+   {
+    "modulo": 5,
+    "nombre": "TRABAJO FIN DE GRADO",
+    "ects": 6.0,
+    "materias": [
+     {
+      "nombre": "Trabajo Fin de Grado",
+      "caracter": "Trabajo Fin de Grado / Máster",
+      "ects": 6.0,
+      "unidad_temporal": "Cuatrimestral",
+      "despliegue": {
+       "8": 6.0
+      },
+      "hijos": [],
+      "textos": [],
+      "id": 1,
+      "asignaturas": []
+     }
+    ]
+   }
+  ],
+  "avisos": [],
+  "cobertura": {
+   "materias": 32,
+   "asignaturas": 31
+  },
+  "paginas": 85
+ }
+}
