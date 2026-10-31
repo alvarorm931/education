@@ -198,6 +198,11 @@ TIPOS_ENTIDAD = (
     ("consell comarcal del ", "Consejo Comarcal"),
     ("consell comarcal de ", "Consejo Comarcal"),
     ("consell comarcal d'", "Consejo Comarcal"),
+    # BOP de Tarragona: «CONSELL COMARCAL MONTSIÀ», «DIPUTACIÓ TARRAGONA - PERSONES I TALENT», «ENTITAT MUNICIPAL
+    # DESCENTRALITZADA - JESÚS (TORTOSA)» (sin el «de»)
+    ("consell comarcal ", "Consejo Comarcal"),
+    ("diputacio ", "Diputación Provincial"),
+    ("entitat municipal descentralitzada - ", "Entidad Local Menor"),
     ("mancomunitat ", "Mancomunidad"),
     ("consorci ", "Consorcio"),
     ("entitat municipal descentralitzada de ", "Entidad Local Menor"),
@@ -368,6 +373,9 @@ def convocante_de_organismo(organismo: str, capitales: Iterable[str] = ()) -> di
             nombre = (articulo[0] if articulo else "") + nombre_propio(resto)
             nombre = articulo_delante(nombre)
             nombre = nombre[:1].upper() + nombre[1:]  # «Ajuntament de la Garriga» -> «La Garriga»
+            if tipo == "Diputación Provincial":  # «Tarragona - Persones i Talent», «Barcelona. Direcció dels Serveis…»
+                nombre = re.split(r"\s+-\s+|\.\s+", nombre)[0]
+                nombre = nombre_propio(nombre) if nombre.isupper() else nombre
             if provincia:
                 prov = nombre_propio(provincia)
             elif tipo == "Diputación Provincial" or normalizar(nombre) in {normalizar(c) for c in capitales}:

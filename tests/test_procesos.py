@@ -347,3 +347,11 @@ def test_convocante_del_titulo_cuando_el_guardado_es_la_seccion():
                                                           "por el que se aprueban las bases"})
     assert c["tipo"] == "Ayuntamiento" and c["nombre"] == "Mengíbar"
     assert convocante_del_titulo({"convocante": {"nombre": "Utiel"}, "titulo": "del Ayuntamiento de Mengíbar"}) is None
+
+
+def test_entidades_catalanas_sin_el_de():
+    from motor.autonomicos.comun import convocante_de_organismo as c
+    assert c("CONSELL COMARCAL MONTSIÀ")["tipo"] == "Consejo Comarcal"
+    d = c("DIPUTACIÓ TARRAGONA - PERSONES I TALENT")
+    assert d["tipo"] == "Diputación Provincial" and d["nombre"] == "Tarragona"
+    assert c("DIPUTACIÓ DE BARCELONA. Direcció dels Serveis de Recursos Humans")["nombre"] == "Barcelona"
