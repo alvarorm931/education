@@ -140,7 +140,7 @@ def _ruta_informe(raiz: Path, anio: int, numero: int) -> Path:
 
 
 def ruta_texto(raiz: Path, x: dict) -> Path:
-    return _base(raiz) / "textos" / x["fecha"][:4] / x["fecha"][5:7] / f"{x['id'].replace('/', '-')}.json"
+    return _base(raiz) / "textos" / x["fecha"][:4] / x["fecha"][5:7] / f"{x['id']}.json"  # como actos.ruta_texto
 
 
 def procesar_boletin(anio: int, numero: int, raiz: Path, archivo: Archivo, pausa: float) -> dict:
@@ -157,7 +157,7 @@ def procesar_boletin(anio: int, numero: int, raiz: Path, archivo: Archivo, pausa
                 "alertas": [f"{SIGLAS} {numero}/{anio}: página sin fecha o sin anuncios (posible cambio de formato)"]}
     d = date.fromisoformat(s["fecha"])
     captura = archivo.guardar(FUENTE, d, r.contenido, url, "html", r.status, r.cabeceras)
-    filas = [{**x, "id": f"{SIGLAS}-{anio}-{x['registro']}", "fecha": d.isoformat(), "boletin": str(numero),
+    filas = [{**x, "id": f"{SIGLAS}-{anio}-{x['registro'].replace('/', '-')}", "fecha": d.isoformat(), "boletin": str(numero),
               "entidad": _entidad(x), "url_html": url,
               "url_pdf_boletin": s["url_pdf"], "fuente": SIGLAS, "captura_sha256": captura["sha256"]} for x in s["anuncios"]]
     empleo = seleccionar(filas)
