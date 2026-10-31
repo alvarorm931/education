@@ -422,6 +422,9 @@ def cargar_tablas(carpetas: list[Path]) -> list[dict]:
 # doble máster ni otro tipo de título) y de un curso que no esté pasado. Si dos filas igual de parecidas dan precios
 # distintos para el mismo concepto, no se pone ninguno.
 CONCEPTO_TABLA = {"total": "precio_total", "credito": "precio_credito", "reserva": "reserva_matricula"}
+# Documentos de la lista revisada que solo dan la matrícula o la reserva de cada máster, aunque la llamen precio
+# (comprobado a mano el 31/10/2026): su importe va como reserva, nunca como precio total.
+TABLAS_SOLO_MATRICULA = ("https://www.uax.com/download/68953/",)
 RE_DOBLE = re.compile(r"(?i)\b(doble|dobles|pceo|double)\b|\s\+\s")
 
 
@@ -465,6 +468,8 @@ def campos_tabla(nombre_oficial: str | None, filas: list[dict]) -> dict[str, dic
     mejores: dict[str, list[tuple]] = defaultdict(list)
     for x in filas:
         campo_ = CONCEPTO_TABLA.get(x.get("concepto"))
+        if campo_ in ("precio_total", "precio_credito") and str(x.get("url") or "").startswith(TABLAS_SOLO_MATRICULA):
+            campo_ = "reserva_matricula"
         año = _curso_tabla(x)
         if not campo_ or not año or año <= AÑO_ANTIGUO:
             continue
@@ -941,17 +946,21 @@ def poner_precio_calculado(campos: dict) -> None:
 
 
 def quitar_totales_de_matricula(por_fuente: dict[str, dict], campos: dict) -> bool:
-    """En una privada, el «precio total» que da menos de PRIVADA_MIN_CREDITO € por crédito es la matrícula o la
-    reserva, no el precio: fuera de cada fuente que lo dé."""
+    """En una privada, el «precio total» que da menos de PRIVADA_MIN_CREDITO € por crédito, o un «precio del
+    crédito» por debajo de esa cifra, es la matrícula o la reserva, no el precio: fuera de cada fuente que lo dé."""
     cr = (campos.get("creditos_ects") or {}).get("valor")
-    if not isinstance(cr, (int, float)) or cr <= 0:
-        return False
     quitado = False
     for f, d in por_fuente.items():
         v = (d.get("precio_total") or {}).get("valor")
-        if isinstance(v, (int, float)) and v / cr < PRIVADA_MIN_CREDITO:
-            DESCARTES["precio_total_privada_es_matricula"] += 1
-            por_fuente[f] = {k: x for k, x in d.items() if k != "precio_total"}
+        c = (d.get("precio_credito") or {}).get("valor")
+        fuera = set()
+        if isinstance(v, (int, float)) and isinstance(cr, (int, float)) and cr > 0 and v / cr < PRIVADA_MIN_CREDITO:
+            fuera.add("precio_total")
+        if isinstance(c, (int, float)) and c < PRIVADA_MIN_CREDITO:
+            fuera.add("precio_credito")
+        if fuera:
+            DESCARTES["precio_privada_es_matricula"] += 1
+            por_fuente[f] = {k: x for k, x in d.items() if k not in fuera}
             quitado = True
     return quitado
 

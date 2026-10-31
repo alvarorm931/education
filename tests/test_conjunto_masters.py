@@ -441,3 +441,16 @@ def test_privada_total_por_debajo_de_25_por_credito_es_la_matricula():
     # 49 € por crédito (Isabel I) sí es un precio
     por2 = {"web": {"precio_total": cm.campo(2940, "web", "u", "d")}, "ruct": {"creditos_ects": cm.campo(60, "ruct", "u", "d")}}
     assert not cm.quitar_totales_de_matricula(por2, cm.unir(por2))
+
+
+def test_guia_que_solo_da_la_matricula_va_como_reserva():
+    filas = [_fila_tabla("Máster Universitario en Estética Dental y Odontología Restauradora", 1900,
+                         url="https://www.uax.com/download/68953/file/AF_GUIA_ADMISIONES_POST_GRADOS_UAX_2026_27.pdf")]
+    c = cm.campos_tabla("Máster Universitario en Estética Dental y Odontología Restauradora por la Universidad Alfonso X "
+                        "El Sabio", filas)
+    assert "precio_total" not in c and c["reserva_matricula"]["valor"] == 1900
+
+
+def test_privada_credito_por_debajo_de_25_es_la_matricula():
+    por = {"web": {"precio_credito": cm.campo(18.46, "web", "https://www.uvic.cat/m", "2026-10-30")}}
+    assert cm.quitar_totales_de_matricula(por, cm.unir(por)) and "precio_credito" not in por["web"]
