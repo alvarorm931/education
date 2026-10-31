@@ -1,20 +1,28 @@
 {
- "fecha": "2026-10-31T08:10:23+00:00",
- "fecha_madrid": "31/10 09:10",
+ "fecha": "2026-10-31T08:35:28+00:00",
+ "fecha_madrid": "31/10 09:35",
  "ventana_horas": 6.0,
  "resumen": {
-  "ejecuciones_revisadas": 118,
+  "ejecuciones_revisadas": 123,
   "fallos": 0,
   "fallos_pendientes": 0,
   "relanzados": 0,
-  "colas_largas": 0,
+  "colas_largas": 1,
   "flujos_programados_parados": [],
   "programaciones_lanzadas_a_mano": [],
   "avisos_de_fuentes": 0,
   "almacen": "ok"
  },
  "fallos": [],
- "colas_largas": [],
+ "colas_largas": [
+  {
+   "flujo": "Prueba de conector",
+   "id": 41182076887,
+   "en_cola_min": 47,
+   "trabajos_empezados": 0,
+   "url": "https://github.com/alvarorm931/education/actions/runs/41182076887"
+  }
+ ],
  "programados": {
   "motor.yml": {
    "ultimo_bien": "31/10 00:33",
