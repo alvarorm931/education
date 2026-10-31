@@ -7,17 +7,19 @@ name: Extracción de las bases (oposiciones)
 # La clave ANTHROPIC_API_KEY (secreto de GitHub) solo llega al paso que llama a la API.
 
 on:
+  schedule:
+    - cron: "41 10 * * *"   # 11:41 / 12:41 en Madrid, tras el motor de la mañana: lo nuevo del día y lo que quede
   workflow_dispatch:
     inputs:
       n:
-        description: "Procesos por lote"
-        default: "40"
+        description: "Procesos por lote (a 0,001 $ por proceso)"
+        default: "600"
       estados:
         description: "Estados de los procesos, separados por comas (vacío: todos)"
-        default: "plazo_abierto"
+        default: "plazo_abierto,bases_publicadas_pendiente_boe,admitidos_provisional,admitidos_definitivo,admitidos,tribunal,examen_convocado,plazo_cerrado"
       esperar_min:
         description: "Minutos de espera al lote"
-        default: "50"
+        default: "70"
       retomar:
         description: "Id de un lote ya enviado que no terminó a tiempo (solo recoger)"
         default: ""
@@ -48,9 +50,9 @@ jobs:
       - name: Lote
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          N: ${{ inputs.n }}
-          ESTADOS: ${{ inputs.estados }}
-          ESPERAR: ${{ inputs.esperar_min }}
+          N: ${{ inputs.n || '600' }}
+          ESTADOS: ${{ inputs.estados || 'plazo_abierto,bases_publicadas_pendiente_boe,admitidos_provisional,admitidos_definitivo,admitidos,tribunal,examen_convocado,plazo_cerrado' }}
+          ESPERAR: ${{ inputs.esperar_min || '70' }}
           RETOMAR: ${{ inputs.retomar }}
         run: |
           set -o pipefail
