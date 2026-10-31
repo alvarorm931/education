@@ -75,8 +75,9 @@ jobs:
         env:
           MODULO: ${{ inputs.modulo }}
           ARGS: ${{ matrix.args }}
-          # La clave de la API solo llega a los módulos que llaman a Claude (extracción, clasificación, tarifas, recitar y guías).
-          ANTHROPIC_API_KEY: ${{ contains(fromJSON('["motor.estudios.extraer", "motor.estudios.clasificar", "motor.estudios.tarifas", "motor.estudios.recitar", "motor.estudios.guias"]'), inputs.modulo) && secrets.ANTHROPIC_API_KEY || '' }}
+          # La clave de la API solo llega a los módulos que llaman a Claude (extracción, clasificación, tarifas, recitar,
+          # guías, y la lectura de catálogos y de escuelas, que extraen en la misma ejecución).
+          ANTHROPIC_API_KEY: ${{ contains(fromJSON('["motor.estudios.extraer", "motor.estudios.clasificar", "motor.estudios.tarifas", "motor.estudios.recitar", "motor.estudios.guias", "motor.estudios.catalogos_uni", "motor.estudios.escuelas"]'), inputs.modulo) && secrets.ANTHROPIC_API_KEY || '' }}
           # Los módulos que leen webs de centros guardan el original de cada página (y la extracción, lo enviado a
           # la API y las citas) en el almacén privado de S3, con escritura única y credenciales OIDC que se renuevan
           # solas (motor/credenciales_aws.py). Nada de eso llega a la rama pública.
