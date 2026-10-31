@@ -1,7 +1,8 @@
 {
  "fecha": "2026-05-01",
- "resultado": "fuente_inaccesible",
  "alertas": [
-  "No se pudo descargar https://www.dipta.cat/bopt/web/anteriors/2026-05-01?bopb_dia%5BtipusAnunci%5D=23 tras 4 intentos: HTTPSConnectionPool(host='www.dipta.cat', port=443): Max retries exceeded with url: /bopt/web/anteriors/2026-05-01?bopb_dia%5BtipusAnunci%5D=23 (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.dipta.cat', port=443) at 0x7f548426e2d0>, 'Connection to www.dipta.cat timed out. (connect timeout=30.0)'))"
- ]
+  "BOPT 2026-05-01 página 1: HTTP 500"
+ ],
+ "status": 500,
+ "resultado": "error_http"
 }
