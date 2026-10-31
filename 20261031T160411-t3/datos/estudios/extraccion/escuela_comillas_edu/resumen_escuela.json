@@ -1,0 +1,219 @@
+{
+ "dominio": "comillas.edu",
+ "rastreo": {
+  "base_final": "https://www.comillas.edu",
+  "error": null,
+  "veto_robots": false,
+  "urls": 8233,
+  "urls_programa": 324,
+  "via": "sitemap+listados",
+  "peticiones": 56
+ },
+ "fichas_master": 216,
+ "paginas_precio": 0,
+ "filas": 216,
+ "lote": {
+  "pedidas": 216,
+  "enviadas": 216,
+  "enviadas_pintadas": 0,
+  "minutos_captura": 3.6,
+  "minutos_lote": 6.6,
+  "extraidas": 216,
+  "respuestas_con_pensamiento": 0,
+  "no_es_programa": 75,
+  "id": "msgbatch_01CWFg1xfRucUJZurKFdUuP3",
+  "uso_tokens": {
+   "input_tokens": 622041,
+   "output_tokens": 204718,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 204336
+  },
+  "coste_usd": 0.083303,
+  "coste_usd_por_pagina": 0.000386,
+  "tokens_entrada_por_pagina": 2880,
+  "tokens_salida_por_pagina": 948,
+  "hechos_aceptados": 2497,
+  "hechos_revision": 141,
+  "motivos_revision": {
+   "valor_no_en_cita": 83,
+   "valor_no_numerico": 5,
+   "cita_no_literal": 46,
+   "precio_total_demasiado_bajo": 3,
+   "numero_de_otra_celda": 4
+  },
+  "niveles_cita": {
+   "literal": 2583,
+   "sin_signos": 9,
+   "ninguno": 46
+  },
+  "almacen": {
+   "ya_estaban": 19,
+   "nuevos": 200,
+   "claves_privadas": {
+    "resultados": "extraccion-masters/2026/10/31/d61135620d57aec168c31f79ef51e186d0d0eae6a0d793aa056d8f6eca40eb30.resultados.jsonl.gz",
+    "hechos_con_cita": "extraccion-masters/2026/10/31/852959a909ec08d7cb806a7014a2fdbdf3e9a195d36f9b3af01122e9130faedc.hechos.jsonl.gz"
+   }
+  },
+  "por_campo": {
+   "nombre": {
+    "aceptado": 140,
+    "revision": 1
+   },
+   "tipo_titulo": {
+    "aceptado": 131,
+    "revision": 8
+   },
+   "universidad_que_expide": {
+    "aceptado": 84,
+    "revision": 15
+   },
+   "centro_que_imparte": {
+    "aceptado": 140,
+    "revision": 1
+   },
+   "creditos_ects": {
+    "aceptado": 131,
+    "revision": 2
+   },
+   "duracion": {
+    "aceptado": 131,
+    "revision": 1
+   },
+   "modalidad": {
+    "aceptado": 122,
+    "revision": 19
+   },
+   "sedes": {
+    "aceptado": 102,
+    "revision": 3
+   },
+   "idioma": {
+    "aceptado": 129,
+    "revision": 8
+   },
+   "fecha_inicio": {
+    "aceptado": 128,
+    "revision": 2
+   },
+   "plazo_admision": {
+    "aceptado": 81
+   },
+   "horario": {
+    "aceptado": 14,
+    "revision": 2
+   },
+   "plazas": {
+    "aceptado": 115,
+    "revision": 4
+   },
+   "precio_total": {
+    "aceptado": 123,
+    "revision": 4
+   },
+   "precio_credito": {},
+   "reserva_matricula": {
+    "revision": 11,
+    "aceptado": 25
+   },
+   "descuentos_becas": {
+    "aceptado": 59
+   },
+   "requisitos_acceso": {
+    "aceptado": 86,
+    "revision": 3
+   },
+   "proceso_admision": {
+    "aceptado": 82
+   },
+   "asignaturas": {
+    "aceptado": 117,
+    "revision": 6
+   },
+   "practicas": {
+    "aceptado": 108,
+    "revision": 17
+   },
+   "tfm": {
+    "aceptado": 116,
+    "revision": 4
+   },
+   "metodologia": {
+    "aceptado": 108,
+    "revision": 3
+   },
+   "evaluacion": {
+    "aceptado": 29
+   },
+   "habilita_profesion": {
+    "aceptado": 65,
+    "revision": 25
+   },
+   "salidas": {
+    "aceptado": 131,
+    "revision": 2
+   }
+  }
+ },
+ "segunda_vuelta": 7,
+ "lote_enlazadas": {
+  "pedidas": 7,
+  "enviadas": 7,
+  "enviadas_pintadas": 0,
+  "minutos_captura": 0.2,
+  "minutos_lote": 6.0,
+  "extraidas": 7,
+  "respuestas_con_pensamiento": 0,
+  "no_es_programa": 7,
+  "id": "msgbatch_011s3Jwy42uC39SdwH9mKh3m",
+  "uso_tokens": {
+   "input_tokens": 6746,
+   "output_tokens": 91,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 6622
+  },
+  "coste_usd": 0.000393,
+  "coste_usd_por_pagina": 5.6e-05,
+  "tokens_entrada_por_pagina": 964,
+  "tokens_salida_por_pagina": 13,
+  "hechos_aceptados": 0,
+  "hechos_revision": 0,
+  "motivos_revision": {},
+  "niveles_cita": {},
+  "almacen": {
+   "nuevos": 7,
+   "ya_estaban": 3,
+   "claves_privadas": {
+    "resultados": "extraccion-masters/2026/10/31/6d6c49afa84ffe7ea668aac9b2ea4054fcf24b3e055163a0be8334c420cf67d3.resultados.jsonl.gz",
+    "hechos_con_cita": "extraccion-masters/2026/10/31/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.hechos.jsonl.gz"
+   }
+  },
+  "por_campo": {
+   "nombre": {},
+   "tipo_titulo": {},
+   "universidad_que_expide": {},
+   "centro_que_imparte": {},
+   "creditos_ects": {},
+   "duracion": {},
+   "modalidad": {},
+   "sedes": {},
+   "idioma": {},
+   "fecha_inicio": {},
+   "plazo_admision": {},
+   "horario": {},
+   "plazas": {},
+   "precio_total": {},
+   "precio_credito": {},
+   "reserva_matricula": {},
+   "descuentos_becas": {},
+   "requisitos_acceso": {},
+   "proceso_admision": {},
+   "asignaturas": {},
+   "practicas": {},
+   "tfm": {},
+   "metodologia": {},
+   "evaluacion": {},
+   "habilita_profesion": {},
+   "salidas": {}
+  }
+ }
+}
