@@ -1,18 +1,33 @@
 {
  "fecha": "2023-04-19",
  "status": 200,
- "resultado": "sin_anuncios",
+ "resultado": "ok",
  "origen": "pdf_dia",
- "version": "pdf_dia_v1",
+ "version": "pdf_dia_v2",
  "sha256": "b4b05e1635011c790b2c378145cda3b6c24e5cab1a952c2b2f994197900a4417",
  "url_pdf": "https://s2.diphuelva.es/portalweb/bop/boletines/20230419-2.pdf",
  "numero": null,
- "disposiciones": 0,
- "empleo_publico": 0,
- "textos": 0,
- "comienzos": 5,
- "casados": 0,
+ "disposiciones": 26,
+ "empleo_publico": 9,
+ "textos": 5,
+ "comienzos": 15,
+ "casados": 10,
  "alertas": [
-  "BOP-HUELVA 2023-04-19: PDF sin asuntos en el sumario (posible cambio de formato)"
+  "BOP-HUELVA 2023-04-19: solo 2 de 6 asuntos casan con un anuncio del cuerpo (5 comienzos vistos)",
+  "BOP-HUELVA 2023-04-19: solo 8 de 20 asuntos casan con un anuncio del cuerpo (10 comienzos vistos)"
+ ],
+ "boletines": [
+  {
+   "url_pdf": "https://s2.diphuelva.es/portalweb/bop/boletines/20230419-2.pdf",
+   "numero": null,
+   "sha256": "b4b05e1635011c790b2c378145cda3b6c24e5cab1a952c2b2f994197900a4417",
+   "disposiciones": 6
+  },
+  {
+   "url_pdf": "https://s2.diphuelva.es/portalweb/bop/boletines/20230419-1.pdf",
+   "numero": "73",
+   "sha256": "a4015dd309f479db46513db2060b10464c512f97517f303936562d3bf958d251",
+   "disposiciones": 20
+  }
  ]
 }
