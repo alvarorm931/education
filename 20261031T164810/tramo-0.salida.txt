@@ -1,0 +1,21 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/runner/work/education/education/motor/grados/memorias_web.py", line 338, in <module>
+    main()
+  File "/home/runner/work/education/education/motor/grados/memorias_web.py", line 330, in main
+    res = buscar_cc(crawls, desde, hasta, a.salida, a.max_minutos)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/education/education/motor/grados/memorias_web.py", line 84, in buscar_cc
+    for f in ficheros(crawl)[desde:hasta]:
+             ^^^^^^^^^^^^^^^
+  File "/home/runner/work/education/education/motor/estudios/commoncrawl.py", line 98, in ficheros
+    lineas = gzip.decompress(r.contenido).decode().splitlines()
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/gzip.py", line 644, in decompress
+    if _read_gzip_header(fp) is None:
+       ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/gzip.py", line 473, in _read_gzip_header
+    raise BadGzipFile('Not a gzipped file (%r)' % magic)
+gzip.BadGzipFile: Not a gzipped file (b'<!')
+codigo=1

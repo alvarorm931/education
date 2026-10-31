@@ -1,0 +1,15 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/runner/work/education/education/motor/grados/memorias_web.py", line 338, in <module>
+    main()
+  File "/home/runner/work/education/education/motor/grados/memorias_web.py", line 328, in main
+    crawls = [ultimo_crawl(int(c)) if c.isdigit() else c for c in a.crawls.split(",") if c] or [ultimo_crawl()]
+              ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/education/education/motor/estudios/commoncrawl.py", line 92, in ultimo_crawl
+    r = obtener(COLLINFO)
+        ^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/education/education/motor/http.py", line 299, in obtener
+    raise ConnectionError(f"No se pudo descargar {url} tras {intentos} intentos: {ultimo_error}")
+ConnectionError: No se pudo descargar https://index.commoncrawl.org/collinfo.json tras 4 intentos: HTTPSConnectionPool(host='index.commoncrawl.org', port=443): Max retries exceeded with url: /collinfo.json (Caused by ConnectTimeoutError(<HTTPSConnection(host='index.commoncrawl.org', port=443) at 0x7f1990dda4b0>, 'Connection to index.commoncrawl.org timed out. (connect timeout=30.0)'))
+codigo=1
