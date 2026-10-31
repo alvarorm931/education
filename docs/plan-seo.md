@@ -30,7 +30,7 @@ La estrategia es la del documento del 30/10/2026 (qué maximizar y qué evitar).
    - sitemaps con `lastmod` real.
 8. **Vigilancia diaria del sitio servido y revisión mensual de la ley** contra la documentación oficial. Mi trabajo de cada día, semana y mes está en el capítulo 8.
 
-**Lo que necesito de Álvaro esta semana** (detalle en el capítulo 9):
+**Lo que necesito de Álvaro esta semana.** El anexo C de la estrategia ya está aprobado (31/10, 15:13). Falta esto (detalle en el capítulo 9):
 
 - el nombre y el dominio;
 - que la fábrica de páginas sea una sola y la lleve esta conversación;
@@ -138,7 +138,7 @@ Lo que más ha cambiado en un día:
 
 ### Páginas de listado y de lugar
 
-Umbrales propuestos en la estrategia del 30/10, pendientes de Álvaro. Se aplican sin contar las fichas de convocante genérico.
+Umbrales del anexo C de la estrategia, aprobados por Álvaro el 31/10/2026 a las 15:13. Se aplican sin contar las fichas de convocante genérico.
 
 | Página | Hoy | Criterio |
 |---|---|---|
@@ -146,7 +146,7 @@ Umbrales propuestos en la estrategia del 30/10, pendientes de Álvaro. Se aplica
 | `/oposiciones/en/{comunidad}/` | 19 | ídem |
 | `/oposiciones/{cuerpo}/` | 705 con 10 procesos o más (141 con 50 o más) | antes de unificar sinónimos |
 | `/oposiciones/{cuerpo}/{comunidad}/` | 791 con 10 procesos o más | ídem |
-| `/oposiciones/en/{municipio}/` | 2.696 (2.668 con 3 procesos o más y 28 con uno abierto) | umbral de la estrategia; la ley hoy pide uno |
+| `/oposiciones/en/{municipio}/` | 2.696 (2.668 con 3 procesos o más y 28 con uno abierto) | umbral aprobado; hay que subirlo también en la ley, que hoy pide uno |
 | Listados fijos (plazo abierto, por titulación) | 7 | |
 | `/grado/{grado}/` | 297 | con una ficha indexable o más (30/10) |
 | `/universidad/{universidad}/` | 68 | con algún grado indexable (30/10) |
@@ -225,7 +225,8 @@ Diez hallazgos de hoy. Cada uno dice la cifra, por qué importa para posicionar,
    - solo publica la segunda si algo de sus datos las distingue: destino, especialidad, sistema o turno. Si nada las distingue, la deja fuera y avisa;
    - además, el control de similitud ya bloquea dos páginas casi iguales;
    - las direcciones salen de una tabla estable como la de grados (`motor/grados/identificadores.py`): cada proceso recibe su dirección la primera vez y no la cede nunca;
-   - entre procesos distintos se distinguen por el destino o la especialidad («conserje-colegios»), o por el mes.
+   - se aplica la regla aprobada el 31/10: turno y, si hace falta, el mes;
+   - cuando ni el mes distingue, como en los cuatro de León del mismo día, hace falta una pieza más: el destino o la especialidad («conserje-colegios»). Es lo único de esta regla que pregunto a Álvaro.
 - **Quién**: yo, la tabla de direcciones y la regla; la conversación de oposiciones, la unión de duplicados.
 
 ### 4. La provincia, escrita de 77 maneras
@@ -402,7 +403,7 @@ Las cifras son las de hoy. Cada oleada se recalcula el día antes con el inventa
 | 4. Másters oficiales | 2.961 fichas en orden de reputación: QS (893), grupo 1 y escuelas de negocio con precio (76), grupo 2 y públicas grandes (1.262), resto (730); listados por área y ciudad | 2.961 y sus listados | la de la oleada 3 | marzo de 2027 (antes de la preinscripción de primavera) |
 | 5. Másters no oficiales y asignaturas | De las 8.933, las que pasen el filtro de reputación, el tope por grupo y la similitud; 1.928 páginas de «carreras con» | hasta 10.861 | decisión de Álvaro sobre el criterio; oleadas anteriores con su condición | abril-mayo de 2027 |
 
-Las fechas de las oleadas 3 y 4 son las del calendario de la estrategia. La oleada 1 se adelanta de enero a diciembre por dos razones:
+Las oleadas están aprobadas (anexo C). Las fechas de las oleadas 3 y 4 son las del calendario de la estrategia. Propongo adelantar la oleada 1 de enero a diciembre, por dos razones:
 
 - el inventario de oposiciones es 2,3 veces el que la estrategia daba por bueno para la oleada 1 (16.977 fichas con los mínimos el 30/10; 38.903 hoy);
 - un mes más de rastreo antes del arranque del año.
@@ -496,15 +497,25 @@ Las cuentas, las claves y las decisiones son de Álvaro. Claude no crea cuentas 
 
 ### Decisiones
 
+Ya aprobado el 31/10/2026 a las 15:13, en la conversación de estado («sí a todo»): todo el anexo C de la estrategia, es decir:
+
+- umbrales de las páginas de categoría;
+- no generar fichas por debajo del mínimo;
+- regla de direcciones;
+- secciones visibles en el diseño;
+- lanzamiento por oleadas.
+
+Quedan solo las decisiones que piden una elección concreta:
+
 | Decisión | Mi propuesta | Para cuándo | Qué bloquea |
 |---|---|---|---|
 | 1. Nombre y dominio | Revisar questudio.es (con historial en 2010 y 2024; el .com es de otra empresa) y dos o tres alternativas con `motor.seo.dominio`, más la marca en la OEPM y la EUIPO | antes del 9/11 | oleada 0, Search Console y Bing, y con ellas todo el calendario |
 | 2. Quién hace las páginas | Una sola fábrica (`motor/web/`) a cargo de esta conversación. Los módulos dan los datos y esta conversación hace la web, con un solo enlazado, una sola tabla de direcciones y un solo control | esta semana | semana 1 |
-| 3. Las propuestas del anexo C de la estrategia, con las cifras de hoy | Cuerpo con 10 procesos (705), cuerpo × comunidad con 10 (791), municipio con 3 o uno abierto (2.696); no generar fichas por debajo del mínimo; direcciones de la tabla estable; ventanas como secciones visibles; oleadas | antes del 15/11 | plantillas y listados |
+| 3. Un punto de la regla de direcciones | Cuando turno y mes no distinguen dos procesos (cuatro de Conserje en León el mismo día), añadir el destino o la especialidad («conserje-colegios») | antes del 15/11 | tabla de direcciones |
 | 4. Datos mínimos de la nota de corte | Nota de corte de al menos dos cursos de la fuente oficial, con plazas o con el documento del distrito | antes del 15/11 | oleada 3 |
 | 5. Extraer las bases de la oleada 1 | Sí: 6.115 fichas, unos 5 dólares | antes del 22/11 | contenido de la oleada 1 |
 | 6. Criterio de los másters no oficiales | Orden de reputación, tope de 100 fichas por grupo empresarial y proveedor, comprobación de «universidad» contra el RUCT, similitud | antes de marzo de 2027 | oleada 5 |
-| 7. Fechas de las oleadas | Las del capítulo 6 | antes del 29/11 | publicación |
+| 7. Adelantar la oleada 1 | Del calendario de la estrategia (enero de 2027) al 9/12/2026; las demás, como estaban | antes del 29/11 | publicación |
 
 ### Cuentas, claves y ajustes
 
